@@ -45,7 +45,7 @@ LABEL org.opensuse.release-stage="released"
 # endlabelprefix
 LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/prometheus-image/README.md"
 ENTRYPOINT ["/usr/bin/prometheus"]
-EXPOSE 9090
+EXPOSE 9090/tcp
 HEALTHCHECK --interval=5s --timeout=5s --retries=5 \
     CMD ["/usr/bin/curl", "-m", "2", "-sf", "http://localhost:9090/-/healthy"]
 

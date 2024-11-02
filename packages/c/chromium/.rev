@@ -5173,4 +5173,14 @@ boo#1224178</comment>
   * CVE-2024-10231: Type Confusion in V8</comment>
     <requestid>1218809</requestid>
   </revision>
+  <revision rev="436" vrev="1">
+    <srcmd5>993cf33ba2c4af1f14c208da53a2ef82</srcmd5>
+    <version>130.0.6723.91</version>
+    <time>1730491263</time>
+    <user>dimstar_suse</user>
+    <comment>- Chromium 130.0.6723.91 (boo#1232566)
+  * CVE-2024-10487: Out of bounds write in Dawn
+  * CVE-2024-10488: Use after free in WebRTC</comment>
+    <requestid>1219798</requestid>
+  </revision>
 </revisionlist>

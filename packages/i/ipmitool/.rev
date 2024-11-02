@@ -412,4 +412,12 @@ Please (assuming the request is OK), forward the fix to Factory
 soonish so that we can switch the default compiler. (forwarded request 1186610 from jamborm)</comment>
     <requestid>1192527</requestid>
   </revision>
+  <revision rev="50" vrev="4">
+    <srcmd5>a18ed14679f35270f92d27371bc56475</srcmd5>
+    <version>1.8.19.13.gbe11d94</version>
+    <time>1730491250</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1219793</requestid>
+  </revision>
 </revisionlist>

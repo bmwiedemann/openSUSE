@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 24 11:44:51 UTC 2024 - Yunhe Guo <i@guoyunhe.me>
+
+- Update to 0.9.1
+- Replace requires python-proton-vpn-connection with python-proton-vpn-api-core
+- Conflicts python-proton-vpn-network-manager-openvpn
+
+-------------------------------------------------------------------
 Wed May 22 11:59:17 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
 
 - Add keyring.patch to unlock Gnome Keyring if locked

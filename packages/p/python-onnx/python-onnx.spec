@@ -53,7 +53,7 @@ BuildRequires:  gcc11
 BuildRequires:  gcc11-c++
 %endif
 BuildRequires:  libstdc++-devel
-BuildRequires:  protobuf21-devel
+BuildRequires:  protobuf-devel
 BuildRequires:  python-rpm-macros
 Requires:       libonnx == %version
 Requires:       libonnx_proto == %version

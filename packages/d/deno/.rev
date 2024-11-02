@@ -2846,4 +2846,37 @@
   managing version names.</comment>
     <requestid>1218627</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>0031b404e5e846d0e3708633d7ccaf70</srcmd5>
+    <version>2.0.4</version>
+    <time>1730491609</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.4:
+  * fix: support watch flag to enable watching other files than the main module on serve subcommand
+  * Revert &quot;fix(ext/node): fix dns.lookup result ordering&quot;
+  * fix(ext/napi): export dynamic symbols list for {Free,Open}BSD
+  * fix(ext/node): compatibility with {Free,Open}BSD
+  * refactor(init): inline routing in deno init --serve template
+  * Revert &quot;fix(ext/node): use primordials in `ext/node/polyfills/https.ts`&quot;
+  * fix: provide hints in terminal errors for Node.js globals
+  * fix(check): expose more globals from @types/node
+  * fix: report exceptions from nextTick
+  * fix(compile): regression handling redirects
+  * fix(npm): match npm bearer token generation
+  * fix: do not panic when failing to write to http cache
+  * fix(ext/node): add path to `fs.stat` and `fs.statSync` error
+  * fix(watch): don't panic on invalid file specifiers
+  * docs(readme): Add winget instructions
+  * fix(cli): Make --watcher CLEAR_SCREEN clear scrollback buffer as well as visible screen
+  * fix(ext/node): use primordials in ext\node\polyfills\internal\crypto\_randomInt.ts
+  * perf: pass transpiled module to deno_core as known string
+  * fix(lsp): make missing import action fix infallible
+  * fix(install): cache json exports of JSR packages
+  * fix(upgrade): stop running `deno lsp` processes on windows before attempting to replace executable
+  * fix(check): ignore resolving `jsxImportSource` when jsx is not used in graph
+  * fix(install): regression - do not panic when config file contains \r\n newlines
+  * feat(lsp): &quot;typescript.preferences.preferTypeOnlyAutoImports&quot; setting
+</comment>
+    <requestid>1220004</requestid>
+  </revision>
 </revisionlist>

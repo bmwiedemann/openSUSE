@@ -107,4 +107,15 @@
 - switch to PEP517 build</comment>
     <requestid>1193951</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7c46ee513813c94103bf29e2664989d6</srcmd5>
+    <version>0.16.0</version>
+    <time>1730491624</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.0:
+  * Fix the document for python3.12 by @colinxu2020 in #142
+  * fix: handle small try blocks by @P403n1x87 in #145
+  * Add support for Python 3.13 by @MatthieuDartiailh in #146</comment>
+    <requestid>1220028</requestid>
+  </revision>
 </revisionlist>

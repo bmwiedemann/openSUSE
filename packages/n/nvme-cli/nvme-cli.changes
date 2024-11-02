@@ -1,9 +1,145 @@
 -------------------------------------------------------------------
+Thu Oct 31 13:11:48 UTC 2024 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 2.11:
+  * docs: update check-tls-key arguments
+  * nvme: add support to append TLS PSK to keyfile for check-tls-key
+  * nvme: return correct error code in append_keyfile
+  * docs: nvme-id-doman: dom{ia => ai}n
+  * ocp: fix latency monitoring data structure entry endian
+  * ocp: fix TCG configuration log endian
+  * ocp: fix firmware activation history entry endian
+  * docs: update gen-tls-key arguments
+  * nvme: add support to add derive TLS PSK to keyfile
+  * nvme: rename identity to version
+  * nvme: set file permission for keyfile to owner only
+  * nvme: export tls keys honoring version and hmac
+  * nvmf-keys: add udev rule to import tls keys
+  * docs: update TLS options
+  * fabrics: add support to connect to accept a PSK command line
+  * fabrics: add support to connect to accept a configuration
+  * nvme: use unsigned char for hmac and identity
+  * nvme-print: Add Sanitize Media Verification Event in PEL log
+  * netapp-ontapdev: add err msg for no ontapdevices
+  * netapp-smdev: add err msg for no smdevices
+  * doc: Add sanitize command emvs option
+  * ocp: combine to use GUID length definitions
+  * nvme: update tls_key() handling
+  * nvme-print-stdout: print VERS bit of SANICAP field
+  * nvme: add EMVS support to sanitize command
+  * ocp: remove callback function cast
+  * doc: added commit conventions to contribution guidelines
+  * ocp: fix ocp-print-stdout.c indentation error
+  * ocp: fix ocp-nvme.c indentation errors
+  * ocp: build ocp-nvme.c and ocp-telemetry-decode.c without json
+  * ocp: split TCG configuration log print codes
+  * ocp: split telemetry string log print codes
+  * ocp: split device capabilities log print codes
+  * ocp: split error recovery log print codes
+  * ocp: split unsupported requirement log print codes
+  * ocp: split latency monitor log print codes
+  * ocp: move ocp telemetry log print function into ocp-print
+  * ocp: split smart extended log print codes
+  * ocp: split ocp-fw-activation-history print codes
+  * plugins: update meson.build file to always build ocp plugin
+  * ocp-print: move json code into separate files
+  * nvme-print-json: display only verbose output
+  * ocp-nvme: ocp plugin version update
+  * nvme-print: print KV command set page header
+  * doc: show where self-test results can be found
+  * plugins/memblaze: fix a wrong id on smart-log-add
+  * plugins/dapustor: smart-log-add fix
+  * plugins/sed: add sid password change (bsc#1229677)
+  * plugins/solidigm: Automatic retry smaller log chunk size.
+  * ocp-nvme: Add LMDATA-37 for Latency Monitor Log
+  * ocp-nvme: remove ocp log page version checking
+  * wdc: Fix for Reading WDC C2 Vendor Unique Log Page
+  * ocp: Fixes for OCP 2.5 Telemetry DA1 FIFO Event Parsing
+  * nvme-print-json: update JSON verbose output for nvm-id-ctrl (bsc#1231668)
+  * wdc: Add Support for SN5100S
+  * nvme: Support show-regs for nvmeof
+  * ocp: fix option handling in internal-log
+  * Documentation: Added solidigm plugin commands
+  * wdc: add support for SNTMP drive
+  * nvme-print: print NSSES field of CAP register
+  * ocp: fix GUID output
+  * nvme-print-json: print controller register values in offset order
+  * nvme-print-json: print CMBEBS and CMBSWTP in json format
+  * nvme-print-stdout: update changed-ns-list-log output (bsc#1231668)
+  * nvme: fix uninitialized value in error-log (bsc#1231668)
+  * nvme: fix to convert metadata size to native byte order
+  * nvme-print: fix error information log page endianness error
+  * completions: add get-feature command changed option
+  * doc: add get-feature command changed option
+  * nvme: separate get NVME_GET_FEATURES_SEL_CHANGED definition
+  * nvme: use NVME_GET_FEATURES_SEL definitions
+  * nvme-print-stdout: use NVME_CTRL_OAES definitions
+  * completion: add ocp set-telemetry-profile to zsh
+  * completion: add solidgm work-tracker binding
+  * plugins/solidigm: Added Workload Tracker Triggers and Wall Time
+  * ocp: include util/types.h to use nvme_uint128_t
+  * ocp: fix to set log data pointer allocated
+  * nvme: use NVME_CHECK() to check get features select field value
+  * ocp: split ocp-hwcomp log
+  * completions: add ocp hardware-component-log command
+  * doc: add ocp hardware-component-log command
+  * ocp: add hwcomp log json output
+  * ocp: add hwcomp log command list option
+  * ocp: add hwcomp log command comp-id option
+  * ocp: add hwcomp dummy definition
+  * ocp: add support for hwcomp log page
+  * nvme: use NVME_CTRL_FNA definitions
+  * netapp-smdevices: print single device output too (bsc#1231668)
+  * netapp-smdevices: segregate print routines (bsc#1231668)
+  * Add Support for new SN655 PCI Device ID
+  * nvme-print-json: extern json object add functions
+  * ocp: add SMART / health information extended log page version 4
+  * ocp: add error recovery log page version 3
+  * ocp: add get-enable-ieee1667-silo command
+  * fabrics: fix incorrect access filename check (bsc#1231668)
+  * nvme: use NVME_GET_FEATURES_SEL_SUPPORTED definition
+  * nvme-print-json: use _cleanup_free_
+  * plugins/solidigm: fix use after free.
+  * ocp: fix ocp-nvme.c coding style errors
+  * ocp: Change C9 function names to use c9 instead
+  * ocp: fix to return c9 log page data error to open file
+  * ocp: fix to set return value to get c9 log page data
+  * nvme: update nvme_insert_tls_key_versioned() return handling (bsc#1231668)
+  * nvme-print-stdout: add print_array function
+  * logging: add print_info function
+  * util: extern uint128_t_to_double() function
+  * nvme-print: sanitize error-log output (bsc#1231668)
+  * plugins/solidigm : Fixing vs-internal-log to generate identify per allocated namespace.
+  * nvme-print: added new fields for nvm_id_ns
+  * plugins/fdp: bugfix error check to validate output format
+  * plugins/wdc: fix json output for vs-nand-stats
+  * nvme-print-stdout: use NVME_FEAT util definitions
+  * nvme-print: update subsys verbose outputs (bsc#1231668)
+  * nvme-print: add subsystype to the list-subsys output (bsc#1231668)
+  * netapp: print output for single device too (bsc#1231668)
+  * netapp: segregate the print routines (bsc#1231668)
+  * netapp: fix uninitialized value from heap error (bsc#1231668)
+  * nvme-print: print the new fields added in TP4142
+  * plugins/innogrit: modify for project tacoma
+  * wdc: Add Support for new SN-861 PCI device id
+  * nvme-print: use LC_MEASUREMENT to check fahrenheit temperature
+  * nvme-print: use Completion Condition enum
+  * completions: add the zsh completion of the dapustor plugin
+  * nvme-print: print the new fields added in TP4165
+  * plugins/dapustor: dapustor smart-log-add update
+  * nvme-print-stdout: Added print for new field CSER (TP4167)
+  * plugins: Add a new DapuStor plugin and the smart-log-add command
+  * docs: rename ocp-unsupported-req-log file
+- Drop build fix patch
+  * remove 0001-docs-rename-ocp-unsupported-req-log-file.patch
+- Install 70-nvmf-keys.rules to the default udev rules directory
+
+-------------------------------------------------------------------
 Fri Aug 02 08:27:05 UTC 2024 - Daniel Wager <daniel.wagner@suse.com>
 
 - Update to version 2.10:
   * sed: Fix parsing of Discovery0 features
-  * fabrics: avoid potential segfault in nvmf_dim()
+  * fabrics: avoid potential segfault in nvmf_dim() (bsc#1231668)
   * nvme: avoid segfault in show-topology (bsc#1226197)
   * fabrics: do not leak nvme_ctrl_t object on connect
   * nvme: extend help message when mmap regs fails
@@ -11,7 +147,7 @@ Fri Aug 02 08:27:05 UTC 2024 - Daniel Wager <daniel.wagner@suse.com>
   * wdc: OCP 2.5 Log Page Updates
   * fabrics: drop --quiet alias -S
   * fabrics: drop --disable-sqflow alias -d
-  * fabrics: check if json config is existing
+  * fabrics: check if json config is existing (bsc#1231668)
   * plugins/ocp: fix UAF when printing telemetry log
   * nvme-print-stdout: fix persistent-event-log set feature event output
   * fabrics: do not report error when no modules are loaded when disconnecting
@@ -65,7 +201,7 @@ Fri Aug 02 08:27:05 UTC 2024 - Daniel Wager <daniel.wagner@suse.com>
   * ocp: fix eol-plp-failure-mode command sel option value
   * doc: fix ocp eol-plp-failure-mode select short option
   * ocp: set UUID index for eol-plp-failure-mode command to get
-  * nvme: fix verbose logging
+  * nvme: fix verbose logging (bsc#1231668)
   * doc: fix micron ocp telemetry log parse title
   * nvme-rpmb: send RPMB_REQ_READ_RESULT for authentication key programming
   * plugins/micron: Add support for OCP telemetry log parsing
@@ -94,7 +230,7 @@ Fri Aug 02 08:27:05 UTC 2024 - Daniel Wager <daniel.wagner@suse.com>
   * nvme: change _cleanup_file_ to _cleanup_fd_ (bsc#1226197)
   * common.h: Avoid using unsupported load/store instructions in arm64 VMs
   * ocp: OCP 2.5 Telemetry DA 1 and 2 Parsing Updates
-  * nvme-print-stdout: refactor subsys config
+  * nvme-print-stdout: refactor subsys config (bsc#1231668)
   * wdc: Fix compiler warning.
   * nvme: add flags type nvme_print_flags_t
   * nvme-print: Use 'unsigned int' instead of 'unsigned'
@@ -238,7 +374,7 @@ Fri May 03 13:33:54 UTC 2024 - Daniel Wagner <daniel.wagner@suse.com>
   * nbft: Fix scandir() error check
   * nbft: Refactor connection attempt out
   * nvme-print: Use EOM optional data present macros changed
-  * nvme-print: Print cntlid number for controller
+  * nvme-print: Print cntlid number for controller (bsc#1224024)
   * nvme: check-tls-key fails despite having hostnqn file (bsc#1223331)
   * nvme: print retained key for gen-tls-key's -i option too (bsc#1223331)
   * fabrics : allow host to create duplicate connections to target
@@ -287,7 +423,7 @@ Fri May 03 13:33:54 UTC 2024 - Daniel Wagner <daniel.wagner@suse.com>
   * nvme: do not issue warning when nvme_core module is not loaded
   * wdc: Review changes and build fixes
   * wdc:  Fix timestamp displayed by vs-firmware-activate-history command
-  * logging: Split to output ioctl latency by log info level
+  * logging: Split to output ioctl latency by log info level (bsc#1231668)
   * nvme-print-stdout: Change hexadecimal value 0x prefix to use %#x
   * nvme-print-stdout: Fix LBA status DSLBA output as hexadecimal
   * nvme-print-stdout: Split line length exceeded 100 columns
@@ -308,8 +444,8 @@ Fri May 03 13:33:54 UTC 2024 - Daniel Wagner <daniel.wagner@suse.com>
   * nvme: Delete unusual fallthrough for cases have no body
   * nvme: Delete duplicated semicolon
   * nvme-print, common: Fix for whitespace change
-  * logging: output ioctl debugging info
-  * nvme: track verbose level
+  * logging: output ioctl debugging info (bsc#1231668)
+  * nvme: track verbose level (bsc#1231668)
   * logging: track log level globally
   * logging: move logging code to a new file
   * nvme: update include for libnvme

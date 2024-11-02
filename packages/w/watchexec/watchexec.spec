@@ -1,7 +1,7 @@
 #
 # spec file for package watchexec
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           watchexec
-Version:        1.23.0
+Version:        2.2.0
 Release:        0
 Summary:        Watches a path and runs a command whenever it detects modifications.
 License:        Apache-2.0
@@ -57,7 +57,6 @@ install -m 0644 doc/watchexec.1 %{buildroot}%{_mandir}/man1/watchexec.1
 %license LICENSE
 %doc README.md
 %doc doc/watchexec.1.md
-%doc doc/watchexec.1.pdf
 %{_mandir}/man1/watchexec.1%{?ext_man}
 %{_bindir}/watchexec
 

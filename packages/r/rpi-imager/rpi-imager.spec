@@ -17,36 +17,37 @@
 
 
 Name:           rpi-imager
-Version:        1.8.5
+Version:        1.9.0
 Release:        0
 Summary:        Raspberry Pi Imaging Utility
 License:        Apache-2.0
 Group:          Hardware/Other
 URL:            https://github.com/raspberrypi/rpi-imager
 Source:         https://github.com/raspberrypi/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         0000-remove-vendoring.patch
+
 BuildRequires:  cmake
-BuildRequires:  fdupes
-BuildRequires:  gcc
 BuildRequires:  gcc-c++
-BuildRequires:  git
-BuildRequires:  libqt5-qtquickcontrols2
+BuildRequires:  libarchive-devel
+BuildRequires:  libcurl-devel
+BuildRequires:  libgnutls-devel
 BuildRequires:  lzma-devel
-BuildRequires:  openssl-devel
-BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
+BuildRequires:  qt6-concurrent-devel
+BuildRequires:  qt6-core-devel
+BuildRequires:  qt6-dbus-devel
+BuildRequires:  qt6-linguist-devel
+BuildRequires:  qt6-quick-devel
+BuildRequires:  qt6-svg-devel
+BuildRequires:  qt6-widgets-devel
 BuildRequires:  util-linux-systemd
-BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Qml)
-BuildRequires:  pkgconfig(Qt5Quick)
-BuildRequires:  pkgconfig(Qt5QuickTest)
-BuildRequires:  pkgconfig(Qt5QuickWidgets)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(libarchive)
-BuildRequires:  pkgconfig(libcurl)
-ExcludeArch:    s390x
+
+Requires:       dosfstools
+Requires:       udisks2
+Requires:       util-linux-systemd
+
 Recommends:     polkit-gnome
+
+ExcludeArch:    s390x
 
 %description
 Raspberry Pi Imager is the quick and easy way to install Raspberry Pi OS and
@@ -66,23 +67,14 @@ NOTE: Relies on polkit when run as regular user. It doesn't have to be
 
 %build
 pushd src
-%cmake -DENABLE_CHECK_VERSION=0 -DENABLE_TELEMETRY=0
+%cmake -DENABLE_CHECK_VERSION=OFF -DENABLE_TELEMETRY=OFF -DENABLE_VENDORING=OFF
 %cmake_build
+popd
 
 %install
 pushd src
 %cmake_install
-
-mkdir -p %{buildroot}%{_datadir}/icons
-cp icons/rpi-imager.png %{buildroot}%{_datadir}/icons/.
-
-pwd
-pushd linux
-desktop-file-install --dir %{buildroot}%{_datadir}/applications/ org.raspberrypi.rpi-imager.desktop
-%suse_update_desktop_file org.raspberrypi.rpi-imager -r Settings HardwareSettings
-%suse_update_desktop_file org.raspberrypi.rpi-imager -G Imager
-
-%fdupes %{buildroot}
+popd
 
 %files
 %doc README.md

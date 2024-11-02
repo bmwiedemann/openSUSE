@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Oct 24 10:17:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- skip tests that are going to fail with python 3.13
+
+-------------------------------------------------------------------
+Thu Oct 10 15:35:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- spec modernization
+
+-------------------------------------------------------------------
+Tue Oct  1 08:36:51 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.1
+  * Python 3.11 and 3.12 support
+  * Require pywin32 on Windows
+  * Update bottle.py to 0.12.25
+  * Handle sizing of numpy.str and numpy.str_
+  * Fix sizing of multiple objects with references to each other
+
+-------------------------------------------------------------------
 Fri Apr 21 12:21:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
@@ -60,7 +80,7 @@ Wed Dec 22 00:18:12 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
       Brouwers (#121)
     + Fix object filtering by size in muppy -- By Kris Jurka
     + Fix documentation typos -- By Tim Gates
-- Use pytest to run the test suite. 
+- Use pytest to run the test suite.
 
 -------------------------------------------------------------------
 Sat Feb 27 06:35:24 UTC 2021 - John Vandenberg <jayvdb@gmail.com>

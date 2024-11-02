@@ -171,4 +171,12 @@
   * Fix loading of libglib on macOS</comment>
     <requestid>1194576</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>5e12b3eb5034f5c8f0fa7ec75f4c9718</srcmd5>
+    <version>0.32.1</version>
+    <time>1730491237</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1218777</requestid>
+  </revision>
 </revisionlist>

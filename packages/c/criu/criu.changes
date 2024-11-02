@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Oct 31 14:27:35 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- Update to criu 4.0:
+  New features:
+  * Shadow stack support
+  * CUDA plugin: Introduced a plugin to support checkpointing and restoring
+    NVIDIA CUDA applications.
+  Bugfixes:
+  * cgroup: Add support for restoring a thread in a correct v1 cgroup
+  * mem: fix some VMAs being incorrectly mapped wtih PROT_WRITE
+  * criu: fix a fatal failure if nft doesn't work
+  * net: Fix TOCTOU race condition in unix_conf_op
+  * pagemap-cache: handle short reads
+  * Fixes here and there.
+  Improvements:
+  * Pagemap cache: Added support for PAGEMAP_SCAN ioctl
+  * zdtm: Added tests for IP_TTL restore
+  * irmap: hardcode some more interesting paths
+  * util: use close_range when it's supported
+  * Fixes and improvements in amdgpu-plugin
+- Make criu-plugin-cuda subpackage
+
+-------------------------------------------------------------------
 Tue Nov 28 15:04:29 UTC 2023 - Takashi Iwai <tiwai@suse.com>
 
 - Update to criu 3.19:

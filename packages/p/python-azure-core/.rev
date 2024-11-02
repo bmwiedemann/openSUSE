@@ -531,4 +531,15 @@
 - Rename LICENSE.txt to LICENSE in %files section</comment>
     <requestid>1202546</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>d52db7b084a69025dde57fc5c1053be4</srcmd5>
+    <version>1.32.0</version>
+    <time>1730491656</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.32.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1220040 from glaubitz)</comment>
+    <requestid>1220048</requestid>
+  </revision>
 </revisionlist>

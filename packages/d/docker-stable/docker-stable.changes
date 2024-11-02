@@ -1,0 +1,50 @@
+-------------------------------------------------------------------
+Wed Oct 16 22:24:52 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Further merge docker and docker-stable specfiles to minimise the differences.
+  The main thing is that we now include both halves of the
+  Conflicts/Provides/Obsoletes dance in both specfiles.
+
+-------------------------------------------------------------------
+Wed Oct 16 05:37:14 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Update to docker-buildx v0.17.1 to match standalone docker-buildx package we
+  are replacing. See upstream changelog online at
+  <https://github.com/docker/buildx/releases/tag/v0.17.1>
+
+-------------------------------------------------------------------
+Tue Oct 15 04:58:46 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Allow users to disable SUSE secrets support by setting
+  DOCKER_SUSE_SECRETS_ENABLE=0 in /etc/sysconfig/docker. bsc#1231348
+
+-------------------------------------------------------------------
+Sat Sep  7 13:10:30 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Import specfile changes for docker-buildx as well as the changes to help
+  reduce specfile differences between docker-stable and docker. bsc#1230331
+  bsc#1230333
+
+-------------------------------------------------------------------
+Wed Aug 14 03:21:00 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Backport patch for CVE-2024-41110. bsc#1228324
+  + 0009-CVE-2024-41110-AuthZ-plugin-securty-fixes.patch
+
+-------------------------------------------------------------------
+Wed Jun 16 04:18:11 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Initial docker-stable release, forked from Docker 24.0.6-ce release
+  (packaged on 2023-10-11).
+- Update to Docker 24.0.9-ce, which is the latest version of the 24.0.x branch.
+  It seems likely this will be the last upstream version of the 24.0.x branch
+  (it seems Mirantis is going to do LTS for 23.0.x, not 24.0.x).
+  <https://docs.docker.com/engine/release-notes/24.0/#2409>
+- Fix BuildKit's symlink resolution logic to correctly handle non-lexical
+  symlinks. Backport of <https://github.com/moby/buildkit/pull/4896> and
+  <https://github.com/moby/buildkit/pull/5060>. bsc#1221916
+  + 0007-bsc1221916-update-to-patched-buildkit-version-to-fix.patch
+- Write volume options atomically so sudden system crashes won't result in
+  future Docker starts failing due to empty files. Backport of
+  <https://github.com/moby/moby/pull/48034>. bsc#1214855
+  + 0008-bsc1214855-volume-use-AtomicWriteFile-to-save-volume.patch

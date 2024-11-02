@@ -12,7 +12,7 @@ Signed-off-by: Takashi Iwai <tiwai@suse.de>
 
 --- a/Makefile.config
 +++ b/Makefile.config
-@@ -38,13 +38,16 @@ else
+@@ -42,13 +42,16 @@ else
  endif
  
  ifeq ($(call pkg-config-check,libnftables),y)
@@ -29,9 +29,9 @@ Signed-off-by: Takashi Iwai <tiwai@suse.de>
                  FEATURE_DEFINES	+= -DCONFIG_HAS_NFTABLES_LIB_API_1
 +                FEATURE_CFLAGS	+= $(CFLAGS_NFTABLES)
          else
-                 $(warning Warn: you have libnftables installed but it has incompatible API)
-                 $(warning Warn: Building without nftables support)
-@@ -75,7 +78,7 @@ endif
+                 $(info Warn: Building without nftables support (incompatible API version).)
+         endif
+@@ -78,7 +81,7 @@ endif
  endif
  
  export DEFINES += $(FEATURE_DEFINES)

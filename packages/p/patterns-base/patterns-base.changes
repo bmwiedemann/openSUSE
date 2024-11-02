@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 31 14:44:43 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Agama does not install chrony, add it to the pattern like on all
+  other products, so that it is always there, including on images.
+
+-------------------------------------------------------------------
 Thu Oct 24 07:10:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Remove openssl 1.0 related fips dependencies: openssl 1.0 is EOL

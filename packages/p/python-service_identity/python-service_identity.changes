@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 30 19:54:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.2.0:
+  * Python 3.13 is now officially supported.
+  * pyOpenSSL's identity extraction has been reimplemented using
+    *cryptography*'s primitives instead of deprecated pyOpenSSL
+    APIs.
+  * As a result, the oldest supported pyOpenSSL version is now
+    17.1.0.
+
+-------------------------------------------------------------------
 Sat Jan 20 20:31:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 24.1.0:

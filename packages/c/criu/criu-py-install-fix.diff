@@ -1,27 +1,21 @@
 ---
- crit/Makefile           |   12 +-----------
- lib/Makefile            |   12 +-----------
+ crit/Makefile           |    6 +-----
+ lib/Makefile            |    6 +-----
  scripts/crit-setup.py   |   28 ++++++++++++++++++++++++++++
  scripts/pycriu-setup.py |   28 ++++++++++++++++++++++++++++
- 4 files changed, 58 insertions(+), 22 deletions(-)
+ 4 files changed, 58 insertions(+), 10 deletions(-)
 
 --- a/crit/Makefile
 +++ b/crit/Makefile
-@@ -10,18 +10,8 @@ ${VERSION_FILE}:
+@@ -7,12 +7,8 @@ ${VERSION_FILE}:
  	$(Q) echo "__version__ = '${CRIU_VERSION}'" > $@
  
  install: ${VERSION_FILE}
--ifeq ($(PYTHON_EXTERNALLY_MANAGED),1)
--ifeq ($(PIP_BREAK_SYSTEM_PACKAGES),0)
--	$(E) "  SKIP INSTALL crit: Externally managed python environment (See PEP 668 for more information)"
--	$(E) "  Consider using PIP_BREAK_SYSTEM_PACKAGES=1 make install"
--else
+-ifeq ($(SKIP_PIP_INSTALL),0)
  	$(E) "  INSTALL " crit
--	$(Q) $(PYTHON) -m pip install --upgrade --ignore-installed --prefix=$(DESTDIR)$(PREFIX) ./crit
--endif
+-	$(Q) $(PYTHON) -m pip install $(PIPFLAGS) --prefix=$(DESTDIR)$(PREFIX) ./crit
 -else
--	$(E) "  INSTALL " crit
--	$(Q) $(PYTHON) -m pip install --upgrade --ignore-installed --prefix=$(DESTDIR)$(PREFIX) ./crit
+-	$(E) " SKIP INSTALL crit"
 -endif
 +	$(Q) $(PYTHON) scripts/crit-setup.py install --root=$(DESTDIR) --prefix=$(PREFIX)
  .PHONY: install
@@ -29,21 +23,15 @@
  uninstall:
 --- a/lib/Makefile
 +++ b/lib/Makefile
-@@ -57,18 +57,8 @@ install: lib-c lib-a lib-py lib/c/criu.p
+@@ -54,12 +54,8 @@ install: lib-c lib-a lib-py lib/c/criu.p
  	$(Q) mkdir -p $(DESTDIR)$(LIBDIR)/pkgconfig
  	$(Q) sed -e 's,@version@,$(CRIU_VERSION),' -e 's,@libdir@,$(LIBDIR),' -e 's,@includedir@,$(dir $(INCLUDEDIR)/criu/),' lib/c/criu.pc.in > lib/c/criu.pc
  	$(Q) install -m 644 lib/c/criu.pc $(DESTDIR)$(LIBDIR)/pkgconfig
--ifeq ($(PYTHON_EXTERNALLY_MANAGED),1)
--ifeq ($(PIP_BREAK_SYSTEM_PACKAGES),0)
--	$(E) "  SKIP INSTALL pycriu: Externally managed python environment (See PEP 668 for more information)"
--	$(E) "  Consider using PIP_BREAK_SYSTEM_PACKAGES=1 make install"
--else
+-ifeq ($(SKIP_PIP_INSTALL),0)
  	$(E) "  INSTALL " pycriu
--	$(Q) $(PYTHON) -m pip install --upgrade --ignore-installed --prefix=$(DESTDIR)$(PREFIX) ./lib
--endif
+-	$(Q) $(PYTHON) -m pip install $(PIPFLAGS) --prefix=$(DESTDIR)$(PREFIX) ./lib
 -else
--	$(E) "  INSTALL " pycriu
--	$(Q) $(PYTHON) -m pip install --upgrade --ignore-installed --prefix=$(DESTDIR)$(PREFIX) ./lib
+-	$(E) " SKIP INSTALL pycriu"
 -endif
 +	$(Q) $(PYTHON) scripts/pycriu-setup.py install --root=$(DESTDIR) --prefix=$(PREFIX)
  .PHONY: install

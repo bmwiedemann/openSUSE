@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-tables2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,8 +34,8 @@ BuildArch:      noarch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module Django >= 4.2}
 BuildRequires:  %{python_module django-filter >= 2.3.0}
-BuildRequires:  %{python_module fudge}
 BuildRequires:  %{python_module psycopg2}
+BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module tablib}
 # /SECTION
 %python_subpackages

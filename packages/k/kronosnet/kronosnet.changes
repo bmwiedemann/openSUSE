@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 27 06:32:49 UTC 2024 - Nicholas Yang <nicholas.yang@suse.com>
+
+- kronosnet-1.29
+  * Fix FORTIFY source detection
+  * libknet/tests: fix potential overflow with sprintf
+  * [man] update to latest doxyxml from libqb
+
+-------------------------------------------------------------------
 Wed Mar 27 09:55:48 UTC 2024 - Emil Penchev <emil.penchev@suse.com>
 
 - kronosnet-1.28

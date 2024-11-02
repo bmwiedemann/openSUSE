@@ -21,12 +21,13 @@
 %bcond_without check
 
 Name:           libnvme
-Version:        1.10+0.gdd51fa8
+Version:        1.11
 Release:        0
 Summary:        Linux-native nvme device management library
 License:        LGPL-2.1-or-later
 URL:            https://github.com/linux-nvme/libnvme/
 Source0:        libnvme-%{version}.tar.gz
+Patch01:        0001-linux-fix-derive_psk_digest-OpenSSL-1.1-version.patch
 BuildRequires:  dbus-1-devel
 BuildRequires:  gcc
 BuildRequires:  gcc-c++

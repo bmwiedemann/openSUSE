@@ -1231,4 +1231,17 @@
   | RPL-U 2+8      | Q0       | 06-ba-03/e0 | 00004121 | 00004122 | Core Gen13 (forwarded request 1200155 from msmeissn)</comment>
     <requestid>1200156</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>e004e238fdc0452d4c7b6ce540501927</srcmd5>
+    <version>20241029</version>
+    <time>1730491254</time>
+    <user>dimstar_suse</user>
+    <comment>- Intel CPU Microcode was updated to the 20241029 release (bsc#1230400)
+  Update for functional issues. Refer to [14th/13th Generation Intel® Core™ Processor Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/740518) for details.
+  Updated Platforms:
+  | Processor      | Stepping | F-M-S/PI    | Old Ver  | New Ver  | Products
+  |:---------------|:---------|:------------|:---------|:---------|:---------
+  | RPL-E/HX/S     | B0       | 06-b7-01/32 | 00000129 | 0000012b | Core Gen13/Gen14</comment>
+    <requestid>1219861</requestid>
+  </revision>
 </revisionlist>

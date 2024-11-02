@@ -46,7 +46,7 @@ LABEL org.opensuse.release-stage="released"
 LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/pcp-image/README.md"
 ENTRYPOINT ["/usr/local/bin/container-entrypoint"]
 CMD ["/usr/lib/systemd/systemd"]
-EXPOSE 44321 44322 44323
+EXPOSE 44321/tcp 44322/tcp 44323/tcp
 
 RUN set -euo pipefail; mkdir -p /usr/share/container-scripts/pcp; mkdir -p /etc/sysconfig
 COPY container-entrypoint healthcheck /usr/local/bin/

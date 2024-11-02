@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-port-for
-Version:        0.7.3
+Version:        0.7.4
 Release:        0
 License:        MIT
 Summary:        Utility that helps with local TCP ports managment

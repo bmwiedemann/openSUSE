@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov  1 08:19:20 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add patch from Fedora to enforce use of legacy OpenSSL API
+  + 0001-use-legacy-openssl-api.patch (bsc#1231686)
+
+-------------------------------------------------------------------
 Wed Oct 23 13:41:45 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release

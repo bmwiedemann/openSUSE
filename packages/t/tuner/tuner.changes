@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 31 20:51:49 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop unused pkgconfig(geocode-glib-1.0) and
+  pkgconfig(libgeoclue-2.0) BuildRequires.
+
+-------------------------------------------------------------------
 Sun Sep  1 16:33:33 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 1.5.2:

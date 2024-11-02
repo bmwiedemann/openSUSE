@@ -24,10 +24,9 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-gunicorn%{psuffix}
-Version:        22.0.0
+Version:        23.0.0
 Release:        0
 Summary:        WSGI HTTP Server for UNIX
 License:        MIT

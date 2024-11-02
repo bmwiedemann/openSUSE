@@ -1,7 +1,7 @@
 #
 # spec file for package callaudiod
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define apiver 0.1
 
 Name:           callaudiod
-Version:        0.1.9
+Version:        0.1.10
 Release:        0
 Summary:        Daemon for audio calls
 License:        GPL-3.0-or-later AND MIT

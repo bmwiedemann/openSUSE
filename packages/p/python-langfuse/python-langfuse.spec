@@ -18,23 +18,30 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-langfuse
-Version:        2.43.1
+Version:        2.44.0
 Release:        0
 Summary:        A client library for accessing langfuse
 License:        MIT
 URL:            https://github.com/langfuse/langfuse
 Source:         https://files.pythonhosted.org/packages/source/l/langfuse/langfuse-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core >= 1.0.0}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python-anyio
+Requires:       python-backoff
+Requires:       python-httpx
+Requires:       python-idna
+Requires:       python-packaging
+Requires:       python-pydantic
+Requires:       python-wrapt
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
 %description
-A client library for accessing langfuse, an open-source LLM engineering platform that helps teams 
+A client library for accessing langfuse, an open-source LLM engineering platform that helps teams
 collaboratively debug, analyze, and iterate on their LLM applications.
 
 %prep

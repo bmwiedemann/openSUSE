@@ -1,0 +1,27 @@
+##
+# Audit rules based on CIS Docker 1.6 Benchmark v1.0.0
+# https://benchmarks.cisecurity.org/tools2/docker/CIS_Docker_1.6_Benchmark_v1.0.0.pdf
+# Not all of these apply to SUSE.
+# 1.8 Audit docker daemon
+-w /usr/bin/docker -k docker
+# 1.9 Audit Docker files and directories
+-w /var/lib/docker -k docker
+# 1.10 Audit /etc/docker
+-w /etc/docker -k docker
+# 1.11 Audit Docker files and directories - docker-registry.service
+-w /usr/lib/systemd/system/docker-registry.service -k docker
+# 1.12 Audit Docker files and directories - docker.service
+-w /usr/lib/systemd/system/docker.service -k docker
+# 1.13 Audit Docker files and directories - /var/run/docker.sock
+-w /var/run/docker.sock -k docker
+# 1.14 Audit Docker files and directories - /etc/sysconfig/docker
+-w /etc/sysconfig/docker -k docker
+# 1.15 Audit Docker files and directories - /etc/sysconfig/docker-network
+-w /etc/sysconfig/docker-network -k docker
+# 1.16 Audit Docker files and directories - /etc/sysconfig/docker-registry
+-w /etc/sysconfig/docker-registry -k docker
+# 1.17 Audit Docker files and directories - /etc/sysconfig/docker-storage
+-w /etc/sysconfig/docker-storage -k docker
+# 1.18 Audit Docker files and directories - /etc/default/docker
+-w /etc/default/docker -k docker
+## end docker audit rules

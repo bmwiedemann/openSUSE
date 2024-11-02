@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Oct 27 15:36:23 UTC 2024 - Mikhail Paulyshka <me@mixaill.net>
+
+- adding 0000-remove-vendoring.patch
+- update dependencies
+- version 1.9.0
+  * appstream metainfo: Fix appstream-builder generation by @joebonrichie in #792
+  * Add a message when there are no storage devices. Fixes #798 by @jedahan in #801
+  * Update Italian language by @bovirus in #802
+  * imagewriter: Use QCoreApplication::translate by @tdewey-rpi in #805
+  * Update Italian language by @bovirus in #806
+  * Exposing 'DRIVELIST_FILTER_SYSTEM_DRIVES' as a cmake variable by @MrSmoer in #816
+  * OS Customisation: Validate usernames by @tdewey-rpi in #819
+  * Update issue creation templates by @tdewey-rpi in #823
+  * Update French translation by @martignoni in #833
+  * cli: Add disable-eject by @tdewey-rpi in #860
+  * Corrected the spelling for Kyiv by @diminDDL in #871
+  * Fix timeout on systems with large numbers of loops by @waveform80 in #872
+  * localectl doesn't work on modern Debian/Ubuntu by @waveform80 in #867
+  * Update zh-CN (Simplified Chinese) translation by @ykla in #879
+  * BCM2712d0 support by @tdewey-rpi in #884
+  * Fix GPT signature test by @jadonk in #895
+  * Linux/OSX: Fix reversed fsync check by @ali1234 in #903
+  * v1.9.0: Roll-up by @tdewey-rpi in #920
+
+-------------------------------------------------------------------
 Sun Apr  7 19:57:35 UTC 2024 - Christian Boltz <suse-beta@cboltz.de>
 
 - rpi-imager only supports little-endian architectures, stop trying

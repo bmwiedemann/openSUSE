@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 31 13:26:30 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Build on all architectures, but only man pages on architectures which
+  have pandoc
+
+-------------------------------------------------------------------
 Tue Aug 20 11:26:10 UTC 2024 - Antonio Feijoo <antonio.feijoo@suse.com>
 
 - Create new subpackage mkosi-initrd-tukit.

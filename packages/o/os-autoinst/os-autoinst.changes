@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 31 19:34:34 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1730368148.a4ace9f:
+  * Cover remaining code paths of `testapi.pm`
+  * Cover remaining code paths in `_check_backend_response`
+  * Improve unit test coverage of test API code handling timeouts
+  * Cover `testapi::_handle_found_needle` in unit tests
+  * generalhw: implement eject_cd
+  * t: don't hardcode line number in t/29-backend-generalhw.t
+
+-------------------------------------------------------------------
 Mon Oct 28 14:45:15 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1730126707.79e7c91:

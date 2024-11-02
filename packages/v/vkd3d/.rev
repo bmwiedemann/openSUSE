@@ -363,4 +363,14 @@
 If you have any suggestions for improvement, please let me know! (forwarded request 1204419 from DarkWav)</comment>
     <requestid>1204501</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>0edfd40d3e2de760f2588afb6cc709e0</srcmd5>
+    <version>1.13</version>
+    <time>1730491479</time>
+    <user>dimstar_suse</user>
+    <comment>- generate demo and docs, seperating them out into their own packages
+- be more explicit with buildflags, enabling opengl
+- write the spec file in more modern layout (forwarded request 1219907 from rrahl0)</comment>
+    <requestid>1219916</requestid>
+  </revision>
 </revisionlist>

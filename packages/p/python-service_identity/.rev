@@ -174,4 +174,18 @@
       label in a certificate. This is common practice by all major</comment>
     <requestid>1140210</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>6de96e2724a96ad793502f3af2786797</srcmd5>
+    <version>24.2.0</version>
+    <time>1730491244</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 24.2.0:
+  * Python 3.13 is now officially supported.
+  * pyOpenSSL's identity extraction has been reimplemented using
+    *cryptography*'s primitives instead of deprecated pyOpenSSL
+    APIs.
+  * As a result, the oldest supported pyOpenSSL version is now
+    17.1.0.</comment>
+    <requestid>1219726</requestid>
+  </revision>
 </revisionlist>

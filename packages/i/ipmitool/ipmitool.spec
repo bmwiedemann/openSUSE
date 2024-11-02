@@ -95,18 +95,15 @@ install -D -m 644 %{SOURCE3}  %{buildroot}%{_datadir}/misc/enterprise-numbers
 install -D -m 0755 contrib/exchange-bmc-os-info.init.redhat %{buildroot}/%{_sbindir}/exchange-bmc-os-info
 install -D -m 0644 contrib/exchange-bmc-os-info.service.redhat %{buildroot}%{_unitdir}/exchange-bmc-os-info.service
 install -D -m 0644 contrib/exchange-bmc-os-info.sysconf %{buildroot}/%{_sysconfdir}/exchange-bmc-os-info
-ln -sf service %{buildroot}%{_sbindir}/rcexchange-bmc-os-info
 
 # ipmievd service
 install -D -m 644 %{SOURCE1} %{buildroot}%{_unitdir}/ipmievd.service
 install -D -m 644 %{SOURCE2} %{buildroot}/%{_sysconfdir}/ipmievd
-ln -sf service %{buildroot}%{_sbindir}/rcipmievd
 
 # bmc-snmp-proxy
 install -D -m 755 contrib/bmc-snmp-proxy         %{buildroot}/%{_sbindir}/bmc-snmp-proxy
 install -D -m 644 contrib/bmc-snmp-proxy.service %{buildroot}%{_unitdir}/bmc-snmp-proxy.service
 install -D -m 755 contrib/bmc-snmp-proxy.sysconf %{buildroot}/%{_sysconfdir}/bmc-snmp-proxy
-ln -sf service %{buildroot}%{_sbindir}/rcbmc-snmp-proxy
 
 %pre
 %service_add_pre exchange-bmc-os-info.service ipmievd.service
@@ -139,8 +136,6 @@ ln -sf service %{buildroot}%{_sbindir}/rcbmc-snmp-proxy
 %attr(755,root,root) %{_bindir}/ipmitool
 %attr(755,root,root) %{_sbindir}/ipmievd
 %attr(755,root,root) %{_sbindir}/exchange-bmc-os-info
-%{_sbindir}/rcipmievd
-%{_sbindir}/rcexchange-bmc-os-info
 %config(noreplace) %{_sysconfdir}/exchange-bmc-os-info
 %config(noreplace) %{_sysconfdir}/ipmievd
 %{_unitdir}/exchange-bmc-os-info.service
@@ -151,7 +146,6 @@ ln -sf service %{buildroot}%{_sbindir}/rcbmc-snmp-proxy
 
 %files bmc-snmp-proxy
 %attr(755,root,root) %{_sbindir}/bmc-snmp-proxy
-%{_sbindir}/rcbmc-snmp-proxy
 %attr(644,root,root) %config(noreplace) %{_sysconfdir}/bmc-snmp-proxy
 %{_unitdir}/bmc-snmp-proxy.service
 

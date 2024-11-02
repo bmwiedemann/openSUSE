@@ -19,7 +19,7 @@
 %define oldpython python
 %{?sle15_python_module_pythons}
 Name:           python-M2Crypto
-Version:        0.42.0
+Version:        0.43.0
 Release:        0
 Summary:        Crypto and SSL toolkit for Python
 License:        MIT
@@ -32,6 +32,8 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing}
 BuildRequires:  %{python_module wheel}
+# For debugging
+BuildRequires:  %{python_module readline}
 BuildRequires:  fdupes
 BuildRequires:  openssl
 BuildRequires:  openssl-devel

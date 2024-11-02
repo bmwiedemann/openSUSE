@@ -1,7 +1,7 @@
 #
 # spec file for package criu
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@
 %define proto_c_ver %(protoc-c --version | head -1 | awk '{print $2}')
 
 Name:           criu
-Version:        3.19
+Version:        4.0
 Release:        0
 Summary:        Checkpoint/Restore In Userspace Tools
 License:        GPL-2.0-only
@@ -91,6 +91,15 @@ Requires:       %{name} = %{version}
 This package contains the AMDGPU ROCm support plugin for CRIU.
 %endif
 
+%package plugin-cuda
+Summary:        CUDA plugin for CRIU
+License:        GPL-2.0-only
+Group:          System/Console
+Requires:       %{name} = %{version}
+
+%description plugin-cuda
+This package contains the CUDA support plugin for CRIU.
+
 %package -n libcriu2
 Summary:        Library for CRIU
 License:        LGPL-2.1-only
@@ -122,6 +131,11 @@ to develop applications with CRIU library.
 
 %prep
 %autosetup -p1
+# workaround for Leap 15.x
+%if 0%{?suse_version} < 1600
+sed -i -e's/\(^.*-mshstk\)/# \1/' criu/pie/Makefile
+%endif
+
 # default off
 echo "BINFMT_MISC_VIRTUALIZED" > .config
 
@@ -188,6 +202,11 @@ rm -f %{buildroot}%{_mandir}/man1/criu-amdgpu-plugin.1
 %dir %{_libdir}/criu
 %{_libdir}/criu/amdgpu_plugin.so
 %endif
+
+%files plugin-cuda
+%doc plugins/cuda/README.md
+%dir %{_libdir}/criu
+%{_libdir}/criu/cuda_plugin.so
 
 %files -n libcriu2
 %{_libdir}/libcriu.so.*

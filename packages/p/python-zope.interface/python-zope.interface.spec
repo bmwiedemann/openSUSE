@@ -24,10 +24,10 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%global modname zope_interface
+%global modname zope.interface
 %{?sle15_python_module_pythons}
 Name:           python-zope.interface%{psuffix}
-Version:        7.1.0
+Version:        7.1.1
 Release:        0
 Summary:        Interfaces for Python
 License:        ZPL-2.1

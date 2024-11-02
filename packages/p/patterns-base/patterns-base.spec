@@ -120,6 +120,7 @@ Provides:       pattern-visible()
 Requires:       aaa_base
 Requires:       bash
 Requires:       ca-certificates-mozilla
+Requires:       chrony
 Requires:       coreutils
 Requires:       coreutils-systemd
 Requires:       glibc

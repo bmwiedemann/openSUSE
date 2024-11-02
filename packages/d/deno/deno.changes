@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Oct 31 17:03:47 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 2.0.4:
+  * fix: support watch flag to enable watching other files than the main module on serve subcommand
+  * Revert "fix(ext/node): fix dns.lookup result ordering"
+  * fix(ext/napi): export dynamic symbols list for {Free,Open}BSD
+  * fix(ext/node): compatibility with {Free,Open}BSD
+  * refactor(init): inline routing in deno init --serve template
+  * Revert "fix(ext/node): use primordials in `ext/node/polyfills/https.ts`"
+  * fix: provide hints in terminal errors for Node.js globals
+  * fix(check): expose more globals from @types/node
+  * fix: report exceptions from nextTick
+  * fix(compile): regression handling redirects
+  * fix(npm): match npm bearer token generation
+  * fix: do not panic when failing to write to http cache
+  * fix(ext/node): add path to `fs.stat` and `fs.statSync` error
+  * fix(watch): don't panic on invalid file specifiers
+  * docs(readme): Add winget instructions
+  * fix(cli): Make --watcher CLEAR_SCREEN clear scrollback buffer as well as visible screen
+  * fix(ext/node): use primordials in ext\node\polyfills\internal\crypto\_randomInt.ts
+  * perf: pass transpiled module to deno_core as known string
+  * fix(lsp): make missing import action fix infallible
+  * fix(install): cache json exports of JSR packages
+  * fix(upgrade): stop running `deno lsp` processes on windows before attempting to replace executable
+  * fix(check): ignore resolving `jsxImportSource` when jsx is not used in graph
+  * fix(install): regression - do not panic when config file contains \r\n newlines
+  * feat(lsp): "typescript.preferences.preferTypeOnlyAutoImports" setting
+
+-------------------------------------------------------------------
 Sun Oct 27 03:44:59 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 2.0.3:

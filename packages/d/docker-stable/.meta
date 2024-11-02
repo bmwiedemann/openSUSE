@@ -1,0 +1,5 @@
+<package name="docker-stable" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Virtualization:containers" package="docker-stable"/>
+</package>

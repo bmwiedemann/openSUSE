@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Oct 24 08:29:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.0.0:
+  * minor docs fixes (:pr:`3217`, :pr:`3089`, :pr:`3167`)
+  * worker_class parameter accepts a class (:pr:`3079`)
+  * fix deadlock if request terminated during chunked parsing
+    (:pr:`2688`)
+  * permit receiving Transfer-Encodings: compress, deflate, gzip
+    (:pr:`3261`)
+  * permit Transfer-Encoding headers specifying multiple
+    encodings. note: no parameters, still (:pr:`3261`)
+  * sdist generation now explicitly excludes sphinx build folder
+    (:pr:`3257`)
+  * decode bytes-typed status (as can be passed by gevent) as
+    utf-8 instead of raising TypeError (:pr:`2336`)
+  * raise correct Exception when encounting invalid chunked
+    requests (:pr:`3258`)
+  * the SCRIPT_NAME and PATH_INFO headers, when received from
+    allowed forwarders, are no longer restricted for containing
+    an underscore (:pr:`3192`)
+  * include IPv6 loopback address [::1] in default for
+    :ref:`forwarded-allow-ips` and :ref:`proxy-allow-ips`
+    (:pr:`3192`)
+
+-------------------------------------------------------------------
 Wed Apr 17 12:43:25 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 22.0.0

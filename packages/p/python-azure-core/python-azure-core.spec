@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-core
-Version:        1.31.0
+Version:        1.32.0
 Release:        0
 Summary:        Microsoft Azure Core Library for Python
 License:        MIT

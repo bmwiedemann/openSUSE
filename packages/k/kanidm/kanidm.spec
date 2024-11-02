@@ -20,7 +20,7 @@
 %define configdir %{_sysconfdir}/kanidm
 
 Name:           kanidm
-Version:        1.3.3~git0.f075d13
+Version:        1.4.0~git1.c297c3f
 Release:        0
 Summary:        A identity management service and clients.
 License:        ( Apache-2.0 OR BSL-1.0 ) AND ( Apache-2.0 OR ISC OR MIT ) AND ( Apache-2.0 OR MIT ) AND ( Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT ) AND ( CC0-1.0 OR Apache-2.0 ) AND ( MIT OR Apache-2.0 OR Zlib ) AND ( Unlicense OR MIT ) AND ( Zlib OR Apache-2.0 OR MIT ) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND ISC AND MIT AND MPL-2.0 AND MPL-2.0+
@@ -175,7 +175,7 @@ install -m 0755 %{_builddir}/kanidm-%{version}/target/release/build/completions/
 install -m 0755 %{_builddir}/kanidm-%{version}/target/release/build/completions/kanidm_ssh_authorizedkeys.bash %{buildroot}%{_sysconfdir}/bash_completion.d/kanidm_ssh_authorizedkeys.sh
 
 cp -r %{_builddir}/kanidm-%{version}/book/src/ %{buildroot}%{_datadir}/kanidm/docs/
-cp -r %{_builddir}/kanidm-%{version}/server/web_ui/pkg %{buildroot}%{_datadir}/kanidm/ui/pkg
+cp -r %{_builddir}/kanidm-%{version}/server/core/static %{buildroot}%{_datadir}/kanidm/ui/hpkg
 
 ## End install
 
@@ -264,10 +264,10 @@ cp -r %{_builddir}/kanidm-%{version}/server/web_ui/pkg %{buildroot}%{_datadir}/k
 %{_unitdir}/kanidm-ipa-sync.service
 %dir %{_datadir}/kanidm
 %dir %{_datadir}/kanidm/ui
-%dir %{_datadir}/kanidm/ui/pkg
-%dir %{_datadir}/kanidm/ui/pkg/external
-%{_datadir}/kanidm/ui/pkg/*
-%{_datadir}/kanidm/ui/pkg/external/*
+%dir %{_datadir}/kanidm/ui/hpkg
+%dir %{_datadir}/kanidm/ui/hpkg/external
+%{_datadir}/kanidm/ui/hpkg/*
+%{_datadir}/kanidm/ui/hpkg/external/*
 %dir %{configdir}
 %config(noreplace) %{configdir}/server.toml
 %dir %{_sysconfdir}/zsh_completion.d

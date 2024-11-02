@@ -1,0 +1,30 @@
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="url">https://github.com/moby/moby.git</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="versionformat">24.0.9_ce_%h</param>
+    <param name="revision">v24.0.9</param>
+    <param name="filename">docker</param>
+  </service>
+  <service name="tar_scm" mode="manual">
+    <param name="url">https://github.com/docker/cli.git</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="versionformat">24.0.9_ce</param>
+    <param name="revision">v24.0.9</param>
+    <param name="filename">docker-cli</param>
+  </service>
+  <service name="tar_scm" mode="manual">
+    <param name="url">https://github.com/docker/buildx.git</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="versionformat">0.17.1</param>
+    <param name="revision">v0.17.1</param>
+    <param name="filename">docker-buildx</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="file">docker-*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>

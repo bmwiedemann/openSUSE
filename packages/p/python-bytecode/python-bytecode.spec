@@ -18,11 +18,10 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-bytecode
-Version:        0.15.1
+Version:        0.16.0
 Release:        0
 Summary:        Python module to generate and modify bytecode
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/vstinner/bytecode
 Source:         https://files.pythonhosted.org/packages/source/b/bytecode/bytecode-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}

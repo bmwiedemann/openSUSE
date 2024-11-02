@@ -7,4 +7,34 @@
     <comment>needed for AI project</comment>
     <requestid>1199287</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>49f864fa7429ec79eec37b50665db2f1</srcmd5>
+    <version>2.44.0</version>
+    <time>1730491567</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing Requires.
+- version update to 2.44.0 
+  changes since v2.43.1
+  - fix: rename careers file to match hackernews post (#2115)
+  - fix: link of help link of eval log
+  - docs: careers file extension (#2105)
+  - docs: Update .env.prod.example (#2103)
+  - fix(ui): parse chatml messages where content is an array (#2100)
+  - fix(ui): spacing of user menu
+  - fix(ui): padding of second-level menu
+  - feat(ui): less padding in main menu (#2095)
+  - fix(api): merge tags when upserting a trace (#2091)
+  - fix: set cache control explicitly (#2088)
+  - fix(cloud): remove custom cookie management (#2087)
+  - chore: adjust sentry (#2086)
+  - feat(cloud): include data region in project invite emails
+  - feat(auth): improve auth error messages and logging
+  - fix(ui): use `svh` for fullscreen pages on mobile (#2076)
+  - feat(auth): capture unexpected credential sign-in errors
+  - feat(cloud): data region select and info modal (#2085)
+  - intercept OpenAI requests in worker testruns (#2020)
+  - fix(api): align get/v2/prompts meta response with api spec (#2079)
+</comment>
+    <requestid>1219953</requestid>
+  </revision>
 </revisionlist>

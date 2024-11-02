@@ -34,7 +34,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  upower
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-Requires:       dbus-1-x11
+Requires:       /usr/bin/dbus-daemon
 Requires:       python-dbus-python
 Requires:       python-gobject
 Provides:       python-dbusmock = %{version}

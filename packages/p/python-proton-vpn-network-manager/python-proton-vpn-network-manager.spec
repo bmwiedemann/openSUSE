@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-proton-vpn-network-manager
-Version:        0.4.2
+Version:        0.9.1
 Release:        0
 Summary:        Proton VPN library for NetworkManager
 License:        GPL-3.0-or-later
@@ -31,7 +31,7 @@ Patch1:         keyring.patch
 BuildRequires:  %{python_module gobject}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module proton-core}
-BuildRequires:  %{python_module proton-vpn-connection}
+BuildRequires:  %{python_module proton-vpn-api-core}
 BuildRequires:  %{python_module pycairo}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-cov}
@@ -44,8 +44,9 @@ BuildRequires:  python-rpm-macros
 Requires:       NetworkManager
 Requires:       python-gobject
 Requires:       python-proton-core
-Requires:       python-proton-vpn-connection
+Requires:       python-proton-vpn-api-core
 Requires:       python-pycairo
+Conflicts:      python-proton-vpn-network-manager-openvpn
 Conflicts:      python-protonvpn-nm-lib
 BuildArch:      noarch
 %python_subpackages
@@ -64,9 +65,8 @@ This package contains functionality for Proton VPN client to interact with Netwo
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# test case is broken
-# https://github.com/ProtonVPN/python-proton-vpn-network-manager/issues/2
-%pytest tests --deselect="tests/test_networkmanager.py::test_initialize_persisted_connection_determines_initial_connection_state"
+# buildroot doesn't provide network manager service, so it is not possible to run killswitch tests
+%pytest tests --deselect "tests/integration/killswitch/default/test_killswitch_connection.py" --deselect "tests/integration/killswitch/wireguard/test_killswitch_connection.py"
 
 %files %{python_files}
 %license LICENSE

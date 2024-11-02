@@ -103,4 +103,12 @@
   * Use PyObject_Call() instead of deprecated PyEval</comment>
     <requestid>1169422</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>0be40bd8be2f0df0af9eef5a2c92a25d</srcmd5>
+    <version>2.0.4</version>
+    <time>1730491251</time>
+    <user>dimstar_suse</user>
+    <comment>- fix_shebang on the postscript driver rpmhook</comment>
+    <requestid>1219796</requestid>
+  </revision>
 </revisionlist>

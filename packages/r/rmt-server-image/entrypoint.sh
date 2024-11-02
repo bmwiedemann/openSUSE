@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
 # PV could be empty, make sure the directories exist
@@ -23,30 +23,46 @@ MYSQL_USER="${MYSQL_USER:-rmt}"
 SCC_SYNC="${SCC_SYNC:-true}"
 
 # Create adjusted /etc/rmt.conf
-echo -e "database:\n  host: ${MYSQL_HOST}\n  database: ${MYSQL_DATABASE}\n  username: ${MYSQL_USER}\n  password: ${MYSQL_PASSWORD}" > /etc/rmt.conf
-echo -e "  adapter: mysql2\n  encoding: utf8\n  timeout: 5000\n  pool: 5\n" >> /etc/rmt.conf
-echo -e "scc:\n  username: ${SCC_USERNAME}\n  password:  ${SCC_PASSWORD}\n  sync_systems: true\n  scc_sync: ${SCC_SYNC}\n" >> /etc/rmt.conf
-echo -e "log_level:\n  rails: debug" >> /etc/rmt.conf
+cat > /etc/rmt.conf <<EOF
+database:
+  host: ${MYSQL_HOST}
+  database: ${MYSQL_DATABASE}
+  username: ${MYSQL_USER}
+  password: ${MYSQL_PASSWORD}
+  adapter: mysql2
+  encoding: utf8
+  timeout: 5000
+  pool: 5
+
+scc:
+  username: ${SCC_USERNAME}
+  password:  ${SCC_PASSWORD}
+  sync_systems: true
+  scc_sync: ${SCC_SYNC}
+
+log_level:
+  rails: debug
+EOF
 
 if [ $# -eq 0 ]; then
 	set -- /usr/share/rmt/bin/rails server -e production
 fi
 
-if [ "$1" == "/usr/share/rmt/bin/rails" -a "$2" == "server" ]; then
+if [ "$1" = "/usr/share/rmt/bin/rails" ] && [ "$2" = "server" ]; then
   echo "Create/migrate SUSE RMT database"
   pushd /usr/share/rmt > /dev/null
 	/usr/share/rmt/bin/rails db:create db:migrate RAILS_ENV=production
   popd > /dev/null
-  if [ ${SCC_SYNC} == "true" ]; then
+  if [ "${SCC_SYNC}" = "true" ]; then
     echo "Syncing product list"
     rmt-cli sync
     for PRODUCT in $SCC_PRODUCT_ENABLE
     do
-      rmt-cli products enable $PRODUCT
+      rmt-cli products enable "$PRODUCT"
     done
     for PRODUCT in $SCC_PRODUCT_DISABLE
     do
-      rmt-cli products disable $PRODUCT
+      rmt-cli products disable "$PRODUCT"
     done
     rmt-cli repos clean
   fi

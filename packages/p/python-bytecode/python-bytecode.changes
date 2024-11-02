@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov  1 08:33:19 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.16.0:
+  * Fix the document for python3.12 by @colinxu2020 in #142
+  * fix: handle small try blocks by @P403n1x87 in #145
+  * Add support for Python 3.13 by @MatthieuDartiailh in #146
+
+-------------------------------------------------------------------
 Wed Aug 14 15:03:42 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - use modern python on sle15

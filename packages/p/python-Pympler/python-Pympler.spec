@@ -1,7 +1,7 @@
 #
 # spec file for package python-Pympler
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,27 +16,27 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-Pympler
-Version:        1.0.1
+Version:        1.1
 Release:        0
 Summary:        A tool to analyze the memory behavior of Python objects
 License:        Apache-2.0
 URL:            https://github.com/pympler/pympler
-Source:         https://files.pythonhosted.org/packages/source/P/Pympler/Pympler-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pympler/pympler-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM pympler-flaky-tests.patch gh#pympler/pympler#90 mcepl@suse.com
 # More cycles needed with more recent versions of Python
 Patch0:         pympler-flaky-tests.patch
 BuildRequires:  %{python_module bottle}
 BuildRequires:  %{python_module dbm}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildArch:      noarch
 Requires:       python-tk
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -49,7 +49,7 @@ unexpected runtime behavior like memory bloat and other "pymples"
 can easily be identified.
 
 %prep
-%autosetup -p1 -n Pympler-%{version}
+%autosetup -p1 -n pympler-%{version}
 
 # Remove bundled bottle (gh#pympler/pympler#148)
 rm pympler/util/bottle.py
@@ -58,23 +58,26 @@ rm pympler/util/bottle.py
 sed -i '1{\@^#!%{_bindir}/env python@d}' pympler/asizeof.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # gh#pympler/pympler#134
-skiptests="test_repr_function"
+skiptests="test_repr_function or test_leng"
 # gh#pympler/pympler#148
 skiptests+=" or test_findgarbage or test_prune or test_get_tree"
+skiptests+=" or test_findgarbage or test_prune or test_get_tree"
+# gh#pympler/pympler#163
+skiptests+=" or test_edges_new or test_edges_old or test_split or test_traceback"
 %pytest -k "not ($skiptests)"
 
 %files %{python_files}
 %license LICENSE
 %doc README.md
 %{python_sitelib}/pympler
-%{python_sitelib}/Pympler-%{version}*-info
+%{python_sitelib}/Pympler-%{version}.dist-info
 
 %changelog

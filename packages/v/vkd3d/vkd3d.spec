@@ -16,60 +16,75 @@
 #
 
 
-%define major 1
-
+%define         major 1
 Name:           vkd3d
+Version:        1.13
+Release:        0
+Summary:        Direct3D 12 to Vulkan translation library
+License:        LGPL-2.1-or-later
+URL:            https://winehq.org
+Source0:        https://dl.winehq.org/vkd3d/source/vkd3d-%{version}.tar.xz
+Source1:        https://dl.winehq.org/vkd3d/source/vkd3d-%{version}.tar.xz.sign
+Source2:        https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xda23579a74d4ad9af9d3f945cefac8eaaf17519d#/%{name}.keyring
+Source3:        baselibs.conf
 BuildRequires:  bison
+BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  spirv-headers
-BuildRequires:  xcb-util-keysyms-devel
 BuildRequires:  pkgconfig(SPIRV-Tools)
+BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(vulkan) >= 1.3.228
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-event)
 BuildRequires:  pkgconfig(xcb-icccm)
-URL:            https://winehq.org/
-Summary:        Direct3D 12 to Vulkan translation library
-License:        LGPL-2.1-or-later
-Group:          System/X11/Utilities
-Version:        1.13
-Release:        0
-Source0:        https://dl.winehq.org/vkd3d/source/vkd3d-%version.tar.xz
-Source1:        https://dl.winehq.org/vkd3d/source/vkd3d-%version.tar.xz.sign
-Source2:        %name.keyring
-Source3:        baselibs.conf
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig(xcb-keysyms)
 
-%package -n libvkd3d%major
+%package -n lib%{name}%{major}
 Summary:        Direct3D 12 to Vulkan translation library
 Group:          System/Libraries
 
-%package -n libvkd3d-utils%major
+%package -n lib%{name}-utils%{major}
 Summary:        Direct3D 12 to Vulkan translation library utilities
 Group:          System/Libraries
 
-%package -n libvkd3d-shader%major
+%package -n lib%{name}-shader%{major}
 Summary:        Direct3D 12 to Vulkan translation shader library
 Group:          System/Libraries
 
 %package devel
 Summary:        Development headers for the Direct3D 12 to Vulkan translation library
 Group:          Development/Libraries/X11
-Requires:       libvkd3d%major = %version
-Requires:       libvkd3d-utils%major = %version
+Requires:       lib%{name}%{major} = %{version}
+Requires:       lib%{name}-utils%{major} = %{version}
+
+%package demos
+Summary:        Demos for %{name}
+Group:          System/Libraries
+Requires:       libvkd3d%{major} = %{version}
+
+%package docs
+Summary:        Documentation for %{name}
+Group:          System/Libraries
+BuildArch:      noarch
 
 %description
 This is a Direct3D 12 to Vulkan translation library for use by e.g. Wine.
 
-%description -n libvkd3d%major
+%description demos
 This is a Direct3D 12 to Vulkan translation library for use by e.g. Wine.
 
-%description -n libvkd3d-utils%major
+%description docs
+This is a Direct3D 12 to Vulkan translation library for use by e.g. Wine.
+
+%description -n lib%{name}%{major}
+This is a Direct3D 12 to Vulkan translation library for use by e.g. Wine.
+
+%description -n lib%{name}-utils%{major}
 This is a Direct3D 12 to Vulkan translation utilities library for use by e.g. Wine.
 
-%description -n libvkd3d-shader%major
+%description -n lib%{name}-shader%{major}
 This is a Direct3D 12 to Vulkan shader library for use by e.g. Wine.
 
 %description devel
@@ -78,61 +93,62 @@ This is a Direct3D 12 to Vulkan translation library for use by e.g. Wine.
 These are its development libraries and headers.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %configure \
-	--disable-static \
-	--disable-tests \
-	--with-xcb \
-	--with-spirv-tools
-
-make %{?_smp_mflags}
-
-%check
-make check
+  --disable-static \
+  --disable-tests \
+  --with-ncurses \
+  --with-opengl \
+  --enable-demos \
+  --with-xcb \
+  --with-spirv-tools
+%make_build
 
 %install
 %make_install
-rm %buildroot/%_libdir/*.la
+rm -rf %{buildroot}%{_libdir}/*.la
+%fdupes %{buildroot}
+%fdupes -s %{_builddir}/%{name}-%{version}/doc
 
-%fdupes %buildroot/%_prefix
+%check
+%make_build check
 
-%files -n libvkd3d%{major}
+%ldconfig_scriptlets -n libvkd3d%{major}
+%ldconfig_scriptlets -n libvkd3d-utils%{major}
+%ldconfig_scriptlets -n libvkd3d-shader%{major}
+
+%files -n lib%{name}%{major}
+%license COPYING LICENSE
 %doc README ANNOUNCE AUTHORS
-%license COPYING LICENSE
-%defattr(-,root,root)
-%_libdir/libvkd3d.so.%{major}*
+%{_libdir}/lib%{name}.so.%{major}*
 
-%files -n libvkd3d-utils%{major}
+%files -n lib%{name}-utils%{major}
 %license COPYING LICENSE
-%defattr(-,root,root)
-%_libdir/libvkd3d-utils.so.%{major}*
+%{_libdir}/lib%{name}-utils.so.%{major}*
 
-%files -n libvkd3d-shader%{major}
+%files -n lib%{name}-shader%{major}
 %license COPYING LICENSE
-%defattr(-,root,root)
-%_libdir/libvkd3d-shader.so.%{major}*
+%{_libdir}/lib%{name}-shader.so.%{major}*
+
+%files demos
+%license COPYING LICENSE
+%{_bindir}/%{name}-gears
+%{_bindir}/%{name}-triangle
 
 %files devel
-%defattr(-,root,root)
 %license COPYING LICENSE
 %doc AUTHORS README ANNOUNCE
-%_includedir/*
-%_libdir/*.so
-%_libdir/pkgconfig/libvkd3d.pc
-%_libdir/pkgconfig/libvkd3d-shader.pc
-%_libdir/pkgconfig/libvkd3d-utils.pc
-%_bindir/vkd3d-compiler
-%_bindir/vkd3d-dxbc
+%{_includedir}/%{name}
+%{_libdir}/lib%{name}{,-shader,-utils}.so
+%{_libdir}/pkgconfig/lib%{name}.pc
+%{_libdir}/pkgconfig/lib%{name}-shader.pc
+%{_libdir}/pkgconfig/lib%{name}-utils.pc
+%{_bindir}/%{name}-compiler
+%{_bindir}/%{name}-dxbc
 
-%post -n libvkd3d%{major} -p /sbin/ldconfig
-%postun -n libvkd3d%{major} -p /sbin/ldconfig
-
-%post -n libvkd3d-utils%{major} -p /sbin/ldconfig
-%postun -n libvkd3d-utils%{major} -p /sbin/ldconfig
-
-%post -n libvkd3d-shader%{major} -p /sbin/ldconfig
-%postun -n libvkd3d-shader%{major} -p /sbin/ldconfig
+%files docs
+%doc doc/html
 
 %changelog

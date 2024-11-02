@@ -31,7 +31,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  vala >= 0.44
 BuildRequires:  pkgconfig(gee-0.8)
-BuildRequires:  pkgconfig(geocode-glib-1.0)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(granite)
@@ -39,7 +38,6 @@ BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-player-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
-BuildRequires:  pkgconfig(libgeoclue-2.0)
 BuildRequires:  pkgconfig(libsoup-3.0)
 Recommends:     %{name}-lang
 Recommends:     gstreamer-plugins-base

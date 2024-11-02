@@ -125,4 +125,18 @@
   * Fixed mapping checks against Django's MultiValueDict</comment>
     <requestid>1179514</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>72484b183a9b2c8748c1498894afd525</srcmd5>
+    <version>4.4.0</version>
+    <time>1730491242</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.4.0:
+  * Added proper checking for method signatures in protocol
+    checks
+  * Fixed basic support for intersection protocols
+  * Fixed protocol checks running against the class of an
+    instance and not the instance itself (this produced wrong
+    results for non-method member checks)</comment>
+    <requestid>1219719</requestid>
+  </revision>
 </revisionlist>

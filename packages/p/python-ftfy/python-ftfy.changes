@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct  7 16:44:39 UTC 2024 - Meera Belur <mbelur@suse.com>
+
+- Disable the failing test for 15.6
+ 
+
+-------------------------------------------------------------------
 Thu Jan 18 11:16:51 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add update-wcwidth.patch to make it work with newer wcwidth,

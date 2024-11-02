@@ -1181,4 +1181,12 @@ Mon Nov  14 08:20:28 UTC 2023 - Fredrik Lönnegren &lt;fredrik.lonnegren@suse.co
     <comment></comment>
     <requestid>1194999</requestid>
   </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>dc71ac44d4fee9c0ec10560e4ad1c5e7</srcmd5>
+    <version>24.3</version>
+    <time>1730491464</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1219915</requestid>
+  </revision>
 </revisionlist>

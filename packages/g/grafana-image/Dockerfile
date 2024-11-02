@@ -51,7 +51,7 @@ ENV GF_PATHS_PLUGINS="/var/lib/grafana/plugins"
 ENV GF_PATHS_PROVISIONING="/etc/grafana/provisioning"
 
 ENTRYPOINT ["/run.sh"]
-EXPOSE 3000
+EXPOSE 3000/tcp
 COPY run.sh /run.sh
 RUN set -euo pipefail; chmod +x /run.sh
         

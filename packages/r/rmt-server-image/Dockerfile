@@ -22,7 +22,7 @@
 FROM opensuse/tumbleweed:latest
 
 RUN set -euo pipefail; \
-    zypper -n install --no-recommends rmt-server catatonit; \
+    zypper -n install --no-recommends rmt-server catatonit bash; \
     zypper -n clean; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
 

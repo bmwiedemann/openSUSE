@@ -18,6 +18,7 @@
 
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
+%global skip_python313 1
 Name:           python-nbformat
 Version:        5.10.4
 Release:        0

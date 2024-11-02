@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 31 10:16:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- skip build for python313 (not compatible)
+
+-------------------------------------------------------------------
 Sun Sep 15 16:18:13 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.10.4
@@ -152,7 +157,7 @@ Wed Aug  3 21:00:07 UTC 2022 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Wed Mar 23 19:04:57 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
-- Update dependencies 
+- Update dependencies
 
 -------------------------------------------------------------------
 Sat Mar 12 04:48:45 UTC 2022 - Arun Persaud <arun@gmx.de>
@@ -187,7 +192,7 @@ Thu Oct 28 19:12:16 UTC 2021 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Wed Sep  8 14:22:22 UTC 2021 - Stefan Schubert <schubi@suse.de>
 
-- Use libalternatives instead of update-alternatives. 
+- Use libalternatives instead of update-alternatives.
 
 -------------------------------------------------------------------
 Sat Apr 10 20:48:39 UTC 2021 - Ben Greiner <code@bnavigator.de>
@@ -300,9 +305,9 @@ Tue Sep 19 20:52:35 UTC 2017 - toddrme2178@gmail.com
   * Introduce ``source_hidden`` and ``outputs_hidden`` as official front-end
     metadata fields to indicate hiding source and outputs areas. **NB**: These
     fields should not be used to hide elements in exported formats.
-  * Fix ending the redundant storage of signatures in the signature database. 
+  * Fix ending the redundant storage of signatures in the signature database.
   * :func:`nbformat.validate` can be set to not raise a ValidationError if
-    additional properties are included. 
+    additional properties are included.
   * Fix for errors with connecting and backing up the signature database.
   * Dict-like objects added to NotebookNode attributes are now transformed to be
     NotebookNode objects; transformation also works for `.update()`.
@@ -347,7 +352,7 @@ Mon Oct 12 13:43:06 UTC 2015 - toddrme2178@gmail.com
   * setuptools entrypoint
   * Add label to format docs for cross referencing
   * ensure `--version` output has actual version
-  
+
 -------------------------------------------------------------------
 Mon Oct  5 10:01:17 UTC 2015 - toddrme2178@gmail.com
 

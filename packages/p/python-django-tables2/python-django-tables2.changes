@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 31 13:46:43 UTC 2024 - pgajdos@suse.com
+
+- does not require python-fudge for build
+- requires python-pytz for build
+
+-------------------------------------------------------------------
 Wed Dec  6 09:09:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.7.0:

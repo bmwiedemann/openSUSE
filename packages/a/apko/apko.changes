@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 31 20:05:38 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.19.7:
+  * Drop errgroup.WithContext and add withCause (#1380)
+  * Allow multiauthenticator to try all authenticators (#1379)
+
+-------------------------------------------------------------------
 Wed Oct 30 08:08:58 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.19.6:

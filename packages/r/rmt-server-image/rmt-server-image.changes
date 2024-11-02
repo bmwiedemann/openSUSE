@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 31 16:24:36 UTC 2024 - SUSE Update Bot <bci-internal@suse.de>
+
+- entry point refactoring
+
+-------------------------------------------------------------------
 Wed Oct 30 15:34:45 UTC 2024 - SUSE Update Bot <bci-internal@suse.de>
 
 - remove nonsensical org.opencontainers.image.authors - duplication of .vendor

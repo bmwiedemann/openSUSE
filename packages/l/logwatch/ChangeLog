@@ -2,6 +2,56 @@
 control logs (e.g. 'git log --oneline v1..v2'), as the Logwatch project does
 not release a change log themselves. ***
 
+==== 7.11 ====
+d32d105 (tag: 7.11) [logwatch.spec, logwatch.pl] Preparing for release 7.11
+f95ffd5 [journalctl] Added additional comments on usage.
+bbd9f3c [journalctl] Added comments on usage
+5d564f9 [systemd] Ignore Expecting, Relabeled
+c279f42 [omsa] Update for newer message format
+b199471 [amavis]  Add support for parsing LMTP and UTF8 encoding in amavis service, per Vladimir Elisseev.
+7e77e84 [systemd] Ignore "Watchdog running with a timeout of" message
+ce5c5c7 [smartd] whitespace removal
+ad05c07 [smartd] Handle .* Failed messages (such as Read SMART Self Test Log Failed)
+e1387a6 [smartd] Add smartd_ignore_removal option to ignore device removal and reconnect
+f49a625 [smartd] Add smartd_ignore_capabilities and smartd_ignore_power options
+2d80f92 [fail2ban] Added support for IP lookups.  Enabled in scripts/services/fail2ban. Proposed by Alexandre Vroublevski.
+196a410 [systemd] Handle "Reloading..."
+785c81e Merge /u/jasoncannon/logwatch/ branch master into master
+92b609b [dovecot] Adding imap(.*) to the services handled by the dovecot script.
+81156bb [sendmail] Sendmail 8.18.1 introduces new collect errors due to bare CR/LF.
+9f2558f [pop3] Handle additional LOGIN info introduced in pop3d 5.2.6, per Matthew M. Ogilvie
+dc9cac2 Make df_options example match the Linux deafults
+b6c42cb Exclude overlay file systems from output
+ea77967 [sudo] Allow ignoring commands with arguments
+27a5696 [evt*] More event de-duplication
+d483158 [clam-update] Updated documentation if it appears freshclam has not run.
+155cbd6 [sendmail] Fixing bug where email that generates a return receipt occurs before specified --range.
+
+==== 7.10 ====
+6924617 (tag: 7.10) [logwatch.spec,logwatch.pl] Added version 7.10 info.
+2b4aabf Change in format for some messages in Fedora 39
+da102ef Fix uninitialized value in PrettyTimes
+fee9286 Ignore qname minimsation due to ncache nxdomain
+d1fa2ac [logwatch.conf,logwatch.pl] Documented default Config variables, including Subject, as suggested by David Fernández.
+59da257 [iptables] Added iptables.log as valid log file (and iptables.log-* for archive).
+1238cd7 [clam-update] Add Last_Run_Only option
+4a7212f [named] Ignore rpz reload messages
+0d2e0fe [nut] At Detail 0, do not alert about recovered disconnects
+65c8520 [nut] Track battery low messages
+49070b9 [rsyslogd] Handle connection closed messages wiith error message
+4b5da85 [freeradius] Handle expired certificate login failures
+264ac92 [freeradius] Show wrong user detail at detail 3; Move Successful logins report lower
+b518c56 [clam-update] Fixed bug where WARNINGS and ERRORS were dropped  when using --range option in logwatch.
+        "Outdated" warnings now treated similar to other warnings.
+3c0dc54 [freeradius] Update for FreeRADIUS 3.0; Use "client" instead of "IP"
+f811f4d [kernel] Ignore HANDLING IBECC MEMEORY messages
+58582d5 Merge /u/ddemus/logwatch/ branch master into master
+1134db2 [dovecot] Fix to log connections closed with auth failure, by Reio Remma.
+bd5e68b [sendmail] Better matching of Unrecognized Commands in the OtherList hash.
+30f89c0 [systemd] Ignore "Running in initrd."
+e9a710f [fail2ban] Remove superfluous ] from BAN-time increases
+c373fa1 [omsa] Classify more messages as errors
+
 ==== 7.9 ====
 9393486 [rpm] corrected dates in specfile changelog, not released
 c3df994 [logwatch.spec,logwatch.pl] Preparing 7.9 release.

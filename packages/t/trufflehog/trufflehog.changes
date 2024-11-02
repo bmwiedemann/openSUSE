@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Oct 31 15:29:58 UTC 2024 - felix.niederwanger@suse.de
+
+- Update to version 3.83.2:
+  * fixed gitlab extradata overwriting (#3537)
+
+-------------------------------------------------------------------
+Thu Oct 31 10:46:20 UTC 2024 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 3.83.1:
+  * standardize email pattern (#3524)
+  * strip symbol table and DWARF generation (#3534)
+  * gcp cred not set (#3535)
+
+-------------------------------------------------------------------
+Thu Oct 31 08:07:23 UTC 2024 - felix.niederwanger@suse.de
+
+- Update to version 3.83.0:
+  * fix(deps): update module github.com/brianvoe/gofakeit/v7 to v7.1.2 (#3536)
+  * gcp cred not set (#3535)
+  * strip symbol and DWARF tables (#3534)
+  * standardize email pattern (#3524)
+  * Add Scanning team to CODEOWNERS (#3533)
+  * stop logging detailed group info (#3532)
+  * [analyze] Add Analyzer interface for Gitlab (#3232)
+  * [feat] Gitlab inclusion globbing (#3500)
+  * feat: added `v3` API version for the detector `captaindatago` (#3484)
+  * update aws descriptions (#3529)
+  * enforce timeout on circleci test (#3528)
+  * rm snifftest (#3527)
+  * Redact more source credentials (#3526)
+  * Create global log redaction capability (#3522)
+  * Adding basic "what is trufflehog" to the readme (#3514)
+  * Handle custom detector response and include in extra data (#3411)
+  * fix: fixed validation logic for `calendarific` (#3480)
+  * fix(deps): update github.com/tailscale/depaware digest to 3d7f3b3 (#3518)
+  * Move DecoderType into ResultWithMetadata #3502
+  * Addeded 403 account block status code handling for gitlab (#3471)
+  * updated gcpapplicationdefaultcredentials detector results with RawV2 (#3499)
+  * fix(deps): update module github.com/brianvoe/gofakeit/v7 to v7.1.1 (#3512)
+  * fix(deps): update module github.com/schollz/progressbar/v3 to v3.17.0 (#3510)
+  * fix(deps): update module cloud.google.com/go/secretmanager to v1.14.2 (#3498)
+
+-------------------------------------------------------------------
 Fri Oct 25 19:54:55 UTC 2024 - felix.niederwanger@suse.com
 
 - Update to version 3.82.13:

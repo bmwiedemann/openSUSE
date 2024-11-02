@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 30 11:16:19 CET 2024 - ro@suse.de
+
+- Chromium 130.0.6723.91 (boo#1232566)
+  * CVE-2024-10487: Out of bounds write in Dawn
+  * CVE-2024-10488: Use after free in WebRTC
+
+-------------------------------------------------------------------
 Mon Oct 28 12:13:15 CET 2024 - ro@suse.de
 
 - change BR for rust to require version 1.81

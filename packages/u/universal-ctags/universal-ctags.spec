@@ -1,7 +1,7 @@
 #
 # spec file for package universal-ctags
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,6 @@ Version:        6.0.0
 Release:        0
 Summary:        A program to generate language tag files used with various editors
 License:        GPL-2.0-only
-Group:          Development/Tools/Navigators
 URL:            https://github.com/universal-ctags/ctags
 Source:         https://github.com/universal-ctags/ctags/releases/download/v%{version}/universal-ctags-%{version}.tar.gz
 BuildRequires:  autoconf
@@ -29,12 +28,16 @@ BuildRequires:  automake
 BuildRequires:  gcc
 BuildRequires:  gzip
 BuildRequires:  make
+BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Pygments
 BuildRequires:  python3-docutils
 BuildRequires:  texlive-fancyvrb
 BuildRequires:  texlive-latex-bin-bin
 BuildRequires:  update-alternatives
+BuildRequires:  pkgconfig(jansson)
+BuildRequires:  pkgconfig(libseccomp)
+BuildRequires:  pkgconfig(yaml-0.1)
 Requires(post): update-alternatives
 Requires(pre):  update-alternatives
 
@@ -48,7 +51,7 @@ Emacs, Vim and several others.
 
 %build
 echo '#define CTAGS_REPOINFO "%{version}"' > main/repoinfo.h
-./autogen.sh
+autoreconf -fiv
 
 %configure
 %make_build

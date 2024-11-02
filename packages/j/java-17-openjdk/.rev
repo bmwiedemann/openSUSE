@@ -287,4 +287,12 @@
     <comment>July 2024 CPU</comment>
     <requestid>1188291</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>11dc3e1c1d55e3c0397fa957c86d8594</srcmd5>
+    <version>17.0.13.0</version>
+    <time>1730491651</time>
+    <user>dimstar_suse</user>
+    <comment>October 2024 CPU</comment>
+    <requestid>1220046</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 30 12:32:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop rcFOO symlinks (PED-266).
+
+-------------------------------------------------------------------
+Fri Sep 13 13:13:13 UTC 2024 - olaf@aepfle.de
+
+- To create rcipmievd, the service binary is required at
+  build time. This binary is provided by aaa_base. Make sure this
+  package is available during build.
+
+-------------------------------------------------------------------
 Wed Jul 10 13:07:32 UTC 2024 - Martin Jambor <mjambor@suse.com>
 
 - Added ipmitool-fix_init_from_incompat_ptr_type.patch fixing a type

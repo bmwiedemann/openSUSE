@@ -43,8 +43,7 @@ Provides:       protobuf = %{version}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  autoconf
-BuildRequires:  automake
+BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
@@ -163,11 +162,13 @@ sed -i '/google_test_dir/d' python/setup.py
 sed -i -e '/env python/d' python/google/protobuf/internal/*.py
 
 %build
-autoreconf -fvi
-%configure \
-	--disable-static
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 
-%make_build
+%cmake \
+  -Dprotobuf_BUILD_TESTS=OFF \
+  -Dprotobuf_ABSL_PROVIDER=package \
+  %{nil}
+%cmake_build
 
 %if %{with java}
 pushd java
@@ -191,7 +192,7 @@ popd
 %endif
 
 %install
-%make_install
+%cmake_install
 install -Dm 0644 editors/proto.vim %{buildroot}%{_datadir}/vim/site/syntax/proto.vim
 # no need for that
 find %{buildroot} -type f -name "*.la" -delete -print
@@ -227,22 +228,24 @@ popd
 
 %files -n libprotobuf%{sover}
 %license LICENSE
-%{_libdir}/libprotobuf-3.%{version}.so
+%{_libdir}/libprotobuf.so.3.%{version}*
 
 %files -n libprotoc%{sover}
-%{_libdir}/libprotoc-3.%{version}.so
+%{_libdir}/libprotoc.so.3.%{version}*
 
 %files -n libprotobuf-lite%{sover}
-%{_libdir}/libprotobuf-lite-3.%{version}.so
+%{_libdir}/libprotobuf-lite.so.3.%{version}*
 
 %files devel
 %doc CHANGES.txt CONTRIBUTORS.txt README.md
 %{_bindir}/protoc
+%{_bindir}/protoc-3.%{version}*
 %{_includedir}/google
 %{_libdir}/pkgconfig/*
 %{_libdir}/libprotobuf-lite.so
 %{_libdir}/libprotobuf.so
 %{_libdir}/libprotoc.so
+%{_libdir}/cmake/protobuf
 %{_datadir}/vim
 
 %if %{with java}

@@ -57,4 +57,12 @@ Rename libnozzle1-devel to libnozzle-devel
 Fix a typo from this change.</comment>
     <requestid>1181327</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d91951c7c2dd0bc235bb5d0b97ea0e8e</srcmd5>
+    <version>1.29</version>
+    <time>1730491246</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1219755</requestid>
+  </revision>
 </revisionlist>

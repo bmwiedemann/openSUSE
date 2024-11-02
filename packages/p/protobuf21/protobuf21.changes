@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug  9 09:02:58 UTC 2024 - Christian Goll <cgoll@suse.com>
+
+- switch to cmake buidling to that cmake projects can consume it
+
+-------------------------------------------------------------------
 Thu Feb 15 12:11:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer ship protobuf21-source package: there is no consumer of

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Oct 31 08:33:03 UTC 2024 - Angel Yankov <angel.yankov@suse.com>
+
+- Update to version 2.2.0:
+  * Explicitly watching files that are in your .gitignore no longer requires --no-vcs-ignore (#674, #859, contributed by @TheBlek)
+  * Fix Windows usage for legacy programs due to usage of UNC paths (#830, #858, contributed by @TheBlek)
+  * Various dependency upgrades
+
+- Version 2.1.0 changes:
+  * New: -W, --watch-non-recursive for watching paths without also watching subfolders.
+  * New: out-of-tree git repositories are now detected (i.e. when .git is a file rather than a folder)
+  * Logs are also improved slightly with less nonsense at startup.
+
+- Version 2.0.0 changelog:
+   * New: --wrap-process=MODE lets you choose between using process groups, process sessions, or nothing at all. (#794)
+  * New: the WATCHEXEC_TMPDIR environment variable can be used to customize where Watchexec will write temporary files, if for some reason your $TMPDIR is unwritable. (#814)
+  * Fix: watchexec no longer creates a temporary file at startup. (#814)
+  * Fix: the screen is no longer cleared on all events, only when starting a new process. (#809)
+  * Experimental new feature - filterp rograms with -j
+  * Full changelog for breaking changes in 2.0.0: https://github.com/watchexec/watchexec/releases/tag/v2.0.0
+
+-------------------------------------------------------------------
 Mon Oct 23 15:23:41 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Remove unneeded obscpio and obsinfo files.

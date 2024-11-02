@@ -58,4 +58,25 @@
   * GO-2024-3224 (forwarded request 1218850 from jfkw)</comment>
     <requestid>1218851</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>600275b4f15c559e6b44b15cd103b3d3</srcmd5>
+    <version>0.0.20241030T212825</version>
+    <time>1730491554</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.20241030T212825 2024-10-30T21:28:25Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2024-3230 CVE-2024-48921 GHSA-qjvc-p88j-j9rm
+  * GO-2024-3232 CVE-2024-10241 GHSA-6mvp-gh77-7vwh
+
+- Update to version 0.0.20241030T160108 2024-10-30T16:01:08Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2024-3226 CVE-2024-47827 GHSA-ghjw-32xw-ffwr
+  * GO-2024-3227 CVE-2024-10214 GHSA-hm57-h27x-599c
+  * GO-2024-3228 GHSA-wcx9-ccpj-hx3c
+- Packaging improvments:
+  * Backfill CVE aliases in recent changelog entries (forwarded request 1219997 from jfkw)</comment>
+    <requestid>1219998</requestid>
+  </revision>
 </revisionlist>

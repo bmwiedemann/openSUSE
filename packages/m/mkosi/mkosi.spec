@@ -33,7 +33,9 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
+%ifarch x86_64 aarch64
 BuildRequires:  pandoc
+%endif
 BuildRequires:  python-rpm-macros
 Requires:       bubblewrap
 Requires:       python3 >= 3.9
@@ -48,8 +50,8 @@ Recommends:     squashfs
 Recommends:     tar
 Recommends:     xz
 Recommends:     zstd
-BuildArch:      noarch
-ExclusiveArch:  x86_64 aarch64
+# pandoc is arch specific, so noarch will not work
+#BuildArch:      noarch
 
 %description
 A fancy wrapper around "dnf --installroot", "apt", "pacman", and "zypper" that
@@ -88,16 +90,20 @@ transactional systems.
 %autosetup -p1
 
 %build
+%ifarch x86_64 aarch64
 tools/make-man-page.sh
+%endif
 %pyproject_wheel
 
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}/%{$python_sitelib}/mkosi
 
+%ifarch x86_64 aarch64
 mkdir -p %{buildroot}%{_mandir}/man1
 cp %{buildroot}%{python3_sitelib}/mkosi/resources/mkosi.1* %{buildroot}%{_mandir}/man1/
 cp %{buildroot}%{python3_sitelib}/mkosi/initrd/resources/mkosi-initrd.1* %{buildroot}%{_mandir}/man1/
+%endif
 
 # Install mkosi-initrd conf
 mkdir -p %{buildroot}%{_prefix}/lib/mkosi-initrd
@@ -144,13 +150,17 @@ rm -f %{_prefix}/libexec/mkosi-initrd/mkosi-initrd
 %doc mkosi.md README.md
 %license LICENSE
 %{_bindir}/mkosi
+%ifarch x86_64 aarch64
 %{_mandir}/man1/mkosi.1*
+%endif
 %{python3_sitelib}/mkosi
 %{python3_sitelib}/mkosi-%{version}.dist-info
 
 %files initrd
 %{_bindir}/mkosi-initrd
+%ifarch x86_64 aarch64
 %{_mandir}/man1/mkosi-initrd.1*
+%endif
 %dir %{_prefix}/lib/mkosi-initrd
 %{_prefix}/lib/mkosi-initrd/mkosi.conf
 %dir %{_sysconfdir}/mkosi-initrd

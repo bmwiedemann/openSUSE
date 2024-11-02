@@ -439,4 +439,12 @@ This package is included in Debian.
     <comment></comment>
     <requestid>1219336</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>47c552815a3fa3a85e921175434b88a5</srcmd5>
+    <version>9.5.0</version>
+    <time>1730491630</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1220032</requestid>
+  </revision>
 </revisionlist>

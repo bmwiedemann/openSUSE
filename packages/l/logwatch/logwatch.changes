@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 31 19:35:27 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 7.11
+  See /usr/share/doc/packages/logwatch/ChangeLog for details
+
+-------------------------------------------------------------------
 Fri Mar  1 11:10:09 UTC 2024 - pgajdos@suse.com
 
 - Use %patch -P N instead of deprecated %patchN.

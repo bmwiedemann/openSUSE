@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 31 13:27:15 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- Intel CPU Microcode was updated to the 20241029 release (bsc#1230400)
+
+  Update for functional issues. Refer to [14th/13th Generation Intel® Core™ Processor Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/740518) for details.
+
+  Updated Platforms:
+  | Processor      | Stepping | F-M-S/PI    | Old Ver  | New Ver  | Products
+  |:---------------|:---------|:------------|:---------|:---------|:---------
+  | RPL-E/HX/S     | B0       | 06-b7-01/32 | 00000129 | 0000012b | Core Gen13/Gen14
+
+-------------------------------------------------------------------
 Wed Sep 11 14:02:21 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - Intel CPU Microcode was updated to the 20240910 release (bsc#1230400)

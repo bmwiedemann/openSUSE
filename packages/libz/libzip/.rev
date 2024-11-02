@@ -505,4 +505,12 @@
     created and when its data is read.</comment>
     <requestid>1105857</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>64ebc86c7f14181fb602d2a438d7c09d</srcmd5>
+    <version>1.11.1</version>
+    <time>1730491247</time>
+    <user>dimstar_suse</user>
+    <comment>update libzip to 1.11.1 (forwarded request 1219621 from yannboyer_dev)</comment>
+    <requestid>1219773</requestid>
+  </revision>
 </revisionlist>

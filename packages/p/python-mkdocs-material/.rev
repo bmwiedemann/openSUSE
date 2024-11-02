@@ -565,4 +565,12 @@ update to 9.5.26</comment>
     <comment></comment>
     <requestid>1216948</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>9fb6f0c2992cff98471520bd4961aac5</srcmd5>
+    <version>9.5.43</version>
+    <time>1730491617</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1220002</requestid>
+  </revision>
 </revisionlist>

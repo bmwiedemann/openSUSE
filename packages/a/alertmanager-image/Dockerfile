@@ -44,7 +44,7 @@ LABEL org.opensuse.release-stage="released"
 # endlabelprefix
 LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/alertmanager-image/README.md"
 ENTRYPOINT ["/usr/bin/prometheus-alertmanager"]
-EXPOSE 9093
+EXPOSE 9093/tcp
 HEALTHCHECK --interval=5s --timeout=5s --retries=5 \
     CMD ["/usr/bin/curl", "-m", "2", "-sf", "http://localhost:9093/-/healthy"]
 

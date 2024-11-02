@@ -283,4 +283,17 @@
 </comment>
     <requestid>1201279</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>e7bb8ff3f1b95cc553fa62d8028d05a0</srcmd5>
+    <version>5.10.4</version>
+    <time>1730491252</time>
+    <user>dimstar_suse</user>
+    <comment>- skip build for python313 (not compatible)
+
+- Update dependencies
+- Use libalternatives instead of update-alternatives.
+  * Fix ending the redundant storage of signatures in the signature database.
+    additional properties are included.</comment>
+    <requestid>1219805</requestid>
+  </revision>
 </revisionlist>

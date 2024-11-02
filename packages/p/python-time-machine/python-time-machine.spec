@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 Name:           python-time-machine
 Group:          Development/Languages/Python
-Version:        2.14.2
+Version:        2.16.0
 Release:        0
 Summary:        Travel through time in your tests
 License:        MIT

@@ -174,4 +174,14 @@
     travelling.</comment>
     <requestid>1184081</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ad08baf5bdd4ba68ad752b9ab8618ac2</srcmd5>
+    <version>2.16.0</version>
+    <time>1730491242</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.16.0:
+  * Drop Python 3.8 support.
+  * Include wheels for Python 3.13.</comment>
+    <requestid>1219722</requestid>
+  </revision>
 </revisionlist>

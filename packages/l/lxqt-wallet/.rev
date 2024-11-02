@@ -16,4 +16,12 @@
   * Fix a build issue</comment>
     <requestid>1219412</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e25d4ae8da80d3e3de183931fbdd71c3</srcmd5>
+    <version>4.0.1</version>
+    <time>1730491594</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1219981</requestid>
+  </revision>
 </revisionlist>

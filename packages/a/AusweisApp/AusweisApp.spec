@@ -24,6 +24,8 @@ License:        EUPL-1.2
 Group:          Productivity/Security
 URL:            https://www.ausweisapp.bund.de
 Source0:        https://github.com/Governikus/AusweisApp2/archive/%{version}.tar.gz
+# PATCH-FIX-OPENSUSE - Enforce use of old OpenSSL API (bsc#1231686)
+Patch0:         0001-use-legacy-openssl-api.patch
 BuildRequires:  cmake
 %if 0%{?suse_version} > 1500
 BuildRequires:  gcc-c++
@@ -64,6 +66,7 @@ reader or compatible NFC smart phone is required.
 
 %prep
 %setup -q -n %{name}-%{version}
+%patch -P0 -p1
 
 %build
 %if 0%{?suse_version} <= 1500

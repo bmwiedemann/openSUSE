@@ -64,6 +64,7 @@ export CFLAGS="%{optflags}"
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 make install-rpmhook DESTDIR=%{buildroot}
+%python3_fix_shebang_path %{buildroot}%{_rpmconfigdir}/postscriptdriver.prov
 
 %files %{python_files}
 %doc NEWS README TODO

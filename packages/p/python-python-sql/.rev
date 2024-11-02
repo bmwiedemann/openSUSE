@@ -121,4 +121,15 @@
   * Use parameter for limit and offset</comment>
     <requestid>1179081</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4b1dd9812132f9be43bbde36fc623cdc</srcmd5>
+    <version>1.5.2</version>
+    <time>1730491467</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.2:
+  * Use parameter for unary operator
+  * Support default values when inserting not matched merge
+  * Replace assert by ValueError</comment>
+    <requestid>1219912</requestid>
+  </revision>
 </revisionlist>

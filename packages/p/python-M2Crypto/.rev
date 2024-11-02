@@ -863,4 +863,16 @@ Update to 0.36.0:
 </comment>
     <requestid>1193147</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>1bb3a2ed7f2d49fb104aea8c52b39b03</srcmd5>
+    <version>0.43.0</version>
+    <time>1730491240</time>
+    <user>dimstar_suse</user>
+    <comment>factory
+
+
+
+(🤖: Submission of python-M2Crypto via https://src.opensuse.org/pool/python-M2Crypto/pulls/1 by mcepl)</comment>
+    <requestid>1219703</requestid>
+  </revision>
 </revisionlist>

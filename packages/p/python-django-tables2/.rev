@@ -91,4 +91,13 @@
     @tvanekeris</comment>
     <requestid>1131288</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>1396a6a16ba3cc009350b9f86bd1068d</srcmd5>
+    <version>2.7.0</version>
+    <time>1730491563</time>
+    <user>dimstar_suse</user>
+    <comment>- does not require python-fudge for build
+- requires python-pytz for build</comment>
+    <requestid>1219950</requestid>
+  </revision>
 </revisionlist>

@@ -20,7 +20,7 @@
 %define sover   25
 %define libname lib%{name}%{sover}
 Name:           proj
-Version:        9.4.1
+Version:        9.5.0
 Release:        0
 Summary:        Cartographic projection software
 License:        MIT
@@ -149,7 +149,7 @@ rm -rf %{buildroot}%{_datadir}/doc/${name}
 %ldconfig_scriptlets -n %{libname}
 
 %files
-%doc NEWS AUTHORS README ChangeLog
+%doc NEWS.md AUTHORS.md README.md ChangeLog
 %defattr(0755,root,root)
 %{_bindir}/cs2cs
 %{_bindir}/cct
@@ -176,6 +176,7 @@ rm -rf %{buildroot}%{_datadir}/doc/${name}
 %{_datadir}/%{name}/ITRF2000
 %{_datadir}/%{name}/ITRF2008
 %{_datadir}/%{name}/ITRF2014
+%{_datadir}/%{name}/ITRF2020
 %{_datadir}/%{name}/README.DATA
 %{_datadir}/%{name}/cz_cuzk_CR-2005.tif
 %{_datadir}/%{name}/cz_cuzk_README.txt

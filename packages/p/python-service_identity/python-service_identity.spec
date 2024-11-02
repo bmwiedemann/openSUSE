@@ -19,7 +19,7 @@
 %define oname   service_identity
 %{?sle15_python_module_pythons}
 Name:           python-service_identity
-Version:        24.1.0
+Version:        24.2.0
 Release:        0
 Summary:        Service identity verification for pyOpenSSL
 License:        MIT
@@ -34,7 +34,7 @@ BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling >= 1.14.0}
 BuildRequires:  %{python_module idna}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pyOpenSSL >= 17.0.0}
+BuildRequires:  %{python_module pyOpenSSL >= 17.1.0}
 BuildRequires:  %{python_module pyasn1-modules}
 BuildRequires:  %{python_module pyasn1}
 BuildRequires:  %{python_module pytest}
@@ -46,7 +46,7 @@ Requires:       python-cryptography
 Requires:       python-pyasn1
 Requires:       python-pyasn1-modules
 Recommends:     python-idna
-Recommends:     python-pyOpenSSL
+Recommends:     python-pyOpenSSL >= 17.1.0
 BuildArch:      noarch
 %ifpython2
 Requires:       python-ipaddress

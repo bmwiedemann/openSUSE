@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 30 19:48:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.4.0:
+  * Added proper checking for method signatures in protocol
+    checks
+  * Fixed basic support for intersection protocols
+  * Fixed protocol checks running against the class of an
+    instance and not the instance itself (this produced wrong
+    results for non-method member checks)
+
+-------------------------------------------------------------------
 Sat Jun  8 13:05:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.3.0:

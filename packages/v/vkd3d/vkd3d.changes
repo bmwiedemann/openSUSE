@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 31 00:48:49 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- generate demo and docs, seperating them out into their own packages
+- be more explicit with buildflags, enabling opengl
+- write the spec file in more modern layout
+
+-------------------------------------------------------------------
 Sat Sep 28 23:36:17 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to version 1.13:

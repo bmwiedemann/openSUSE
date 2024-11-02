@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 31 07:25:00 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.5.3:
+  * documentation improvements
+  * fix: tracklist shorthand not working
+  * feat: make MPRIS bus suffixes unique
+  * bump dependencies
+
+-------------------------------------------------------------------
 Mon Oct 21 08:23:33 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 1.5.2:

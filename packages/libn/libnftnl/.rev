@@ -225,4 +225,12 @@
 - Update to release 1.2.7</comment>
     <requestid>1194083</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>60aa4f952a4abcb4e258957cd3e5d355</srcmd5>
+    <version>1.2.8</version>
+    <time>1730491254</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.2.8</comment>
+    <requestid>1219814</requestid>
+  </revision>
 </revisionlist>

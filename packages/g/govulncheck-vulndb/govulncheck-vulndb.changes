@@ -1,34 +1,56 @@
 -------------------------------------------------------------------
+Wed Oct 30 21:28:25 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.0.20241030T212825 2024-10-30T21:28:25Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2024-3230 CVE-2024-48921 GHSA-qjvc-p88j-j9rm
+  * GO-2024-3232 CVE-2024-10241 GHSA-6mvp-gh77-7vwh
+
+-------------------------------------------------------------------
+Wed Oct 30 16:01:08 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.0.20241030T160108 2024-10-30T16:01:08Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2024-3226 CVE-2024-47827 GHSA-ghjw-32xw-ffwr
+  * GO-2024-3227 CVE-2024-10214 GHSA-hm57-h27x-599c
+  * GO-2024-3228 GHSA-wcx9-ccpj-hx3c
+- Packaging improvments:
+  * Backfill CVE aliases in recent changelog entries
+
+-------------------------------------------------------------------
 Mon Oct 28 15:20:02 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.0.20241028T152002 2024-10-28T15:20:02Z.
   Refs jsc#PED-11136
-  Go CVE Numbering Authority IDs added or updated:
-  * GO-2024-3207
-  * GO-2024-3208
-  * GO-2024-3210
-  * GO-2024-3211
-  * GO-2024-3212
-  * GO-2024-3213
-  * GO-2024-3214
-  * GO-2024-3215
-  * GO-2024-3216
-  * GO-2024-3217
-  * GO-2024-3219
-  * GO-2024-3220
-  * GO-2024-3221
-  * GO-2024-3222
-  * GO-2024-3223
-  * GO-2024-3224
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2024-3207 GHSA-p5wf-cmr4-xrwr
+  * GO-2024-3208 CVE-2024-47825 GHSA-3wwx-63fv-pfq6
+  * GO-2024-3210 CVE-2024-8901
+  * GO-2024-3211 CVE-2024-50312
+  * GO-2024-3212 GHSA-rjfv-pjvx-mjgv
+  * GO-2024-3213 CVE-2024-49380
+  * GO-2024-3214 CVE-2024-49381
+  * GO-2024-3215 CVE-2024-9264 GHSA-q99m-qcv4-fpm7
+  * GO-2024-3216 CVE-2024-49753 GHSA-6cf5-w9h3-4rqv
+  * GO-2024-3217 CVE-2024-49757 GHSA-3rmw-76m6-4gjc
+  * GO-2024-3219 GHSA-7h65-4p22-39j6
+  * GO-2024-3220 CVE-2023-32197 GHSA-7h8m-pvw3-5gh4
+  * GO-2024-3221 CVE-2024-22036 GHSA-h99m-6755-rgwc
+  * GO-2024-3222 GHSA-x7xj-jvwp-97rv
+  * GO-2024-3223 CVE-2022-45157 GHSA-xj7w-r753-vj8v
+  * GO-2024-3224 CVE-2024-39223 GHSA-8wxx-35qc-vp6r
 
 -------------------------------------------------------------------
 Thu Oct 17 15:37:30 UTC 2024 - Jeff Kowalczyk jkowalczyk@suse.com>
 
 - Update to version 0.0.20241017T153730 date 2024-10-17T15:37:30Z.
-  Go CVE Numbering Authority IDs added or updated:
-  * GO-2024-3189
-  * GO-2024-3203
-  * GO-2024-3204
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2024-3189 CVE-2024-38365 GHSA-27vh-h6mc-q6g8
+  * GO-2024-3203 CVE-2024-9486
+  * GO-2024-3204 CVE-2024-9594
 
 -------------------------------------------------------------------
 Wed Oct 16 14:47:39 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
@@ -44,48 +66,48 @@ Wed Oct 16 14:47:39 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 Tue Oct 15 18:38:57 UTC 2024 - Jeff Kowalczyk jkowalczyk@suse.com>
 
 - Update to version 0.0.20241015T183857 date 2024-10-15T18:38:57Z.
-  Go CVE Numbering Authority IDs added or updated:
-  * GO-2024-3189
-  * GO-2024-3196
-  * GO-2024-3199
-  * GO-2024-3200
-  * GO-2024-3201
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2024-3189 CVE-2024-38365 GHSA-27vh-h6mc-q6g8
+  * GO-2024-3196 CVE-2024-47877 GHSA-8rm2-93mq-jqhc
+  * GO-2024-3199 GHSA-vv6c-69r6-chg9
+  * GO-2024-3200 CVE-2024-48909 GHSA-3c32-4hq9-6wgj
+  * GO-2024-3201 CVE-2023-22644
 
 -------------------------------------------------------------------
 Mon Oct 14 19:20:43 UTC 2024 - Jeff Kowalczyk jkowalczyk@suse.com>
 
 - Update to version 0.0.20241014T192043 date 2024-10-14T19:20:43Z.
-  Go CVE Numbering Authority IDs added or updated:
-  * GO-2024-3166
-  * GO-2024-3171
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2024-3166 CVE-2024-47534 GHSA-4f8r-qqr9-fq8j
+  * GO-2024-3171 CVE-2024-9341 GHSA-mc76-5925-c5p6
 
 -------------------------------------------------------------------
 Fri Oct 10 14:32:39 UTC 2024 - Jeff Kowalczyk jkowalczyk@suse.com>
 
 - Update to version 0.0.20241011T143239 date 2024-10-11T14:32:39Z.
-  Go CVE Numbering Authority IDs added or updated:
-  * GO-2024-3161
-  * GO-2024-3162
-  * GO-2024-3163
-  * GO-2024-3164
-  * GO-2024-3166
-  * GO-2024-3167
-  * GO-2024-3168
-  * GO-2024-3169
-  * GO-2024-3170
-  * GO-2024-3172
-  * GO-2024-3173
-  * GO-2024-3174
-  * GO-2024-3175
-  * GO-2024-3179
-  * GO-2024-3181
-  * GO-2024-3182
-  * GO-2024-3184
-  * GO-2024-3185
-  * GO-2024-3186
-  * GO-2024-3188
-  * GO-2024-3190
-  * GO-2024-3191
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2024-3161 CVE-2024-22030 GHSA-h4h5-9833-v2p4
+  * GO-2024-3162 CVE-2024-7594 GHSA-jg74-mwgw-v6x3
+  * GO-2024-3163 CVE-2024-47182
+  * GO-2024-3164 CVE-2024-47003 GHSA-59hf-mpf8-pqjh
+  * GO-2024-3166 CVE-2024-47534 GHSA-4f8r-qqr9-fq8j
+  * GO-2024-3167 CVE-2024-9355 GHSA-3h3x-2hwv-hr52
+  * GO-2024-3168 CVE-2024-8975 GHSA-chqx-36rm-rf8h
+  * GO-2024-3169 CVE-2024-9407 GHSA-fhqq-8f65-5xfc
+  * GO-2024-3170 CVE-2024-8996 GHSA-m5gv-m5f9-wgv4
+  * GO-2024-3172 CVE-2024-33662 GHSA-9mjw-79r6-c9m8
+  * GO-2024-3173 CVE-2024-7558 GHSA-mh98-763h-m9v4
+  * GO-2024-3174 CVE-2024-8037 GHSA-8v4w-f4r9-7h6x
+  * GO-2024-3175 CVE-2024-8038 GHSA-xwgj-vpm9-q2rq
+  * GO-2024-3179 CVE-2024-47616 GHSA-r7rh-jww5-5fjr
+  * GO-2024-3181 CVE-2024-9313 GHSA-x5q3-c8rm-w787
+  * GO-2024-3182 GHSA-wpr2-j6gr-pjw9
+  * GO-2024-3184 CVE-2024-36814 GHSA-9cp9-8gw2-8v7m
+  * GO-2024-3185 CVE-2024-47832
+  * GO-2024-3186 CVE-2024-9675 GHSA-586p-749j-fhwp
+  * GO-2024-3188 CVE-2024-9312 GHSA-4gfw-wf7c-w6g2
+  * GO-2024-3190 CVE-2024-47067 GHSA-8pph-gfhp-w226
+  * GO-2024-3191 CVE-2024-9180 GHSA-rr8j-7w34-xp5j
 
 -------------------------------------------------------------------
 Thu Sep 26 18:24:03 UTC 2024 - Jeff Kowalczyk jkowalczyk@suse.com>

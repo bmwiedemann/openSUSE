@@ -56,7 +56,7 @@ You can contact the BCI team via https://github.com/SUSE/bci/discussions
           <volume name="/var/lib/docker-registry" />
         </volumes>
         <expose>
-          <port number="5000" />
+          <port number="5000/tcp" />
         </expose>
       </containerconfig>
     </type>
