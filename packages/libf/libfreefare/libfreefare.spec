@@ -18,28 +18,21 @@
 
 Name:           libfreefare
 %define lname	libfreefare0
+Version:        0.4.0
+Release:        0
 Summary:        API for Mifare card manipulations
 License:        LGPL-3.0+
 Group:          Development/Libraries/C and C++
-Version:        0.4.0
-Release:        0
-Url:            https://github.com/nfc-tools/libfreefare/
-
-#Git-Clone:	git://github.com/nfc-tools/libfreefare/
+URL:            https://github.com/nfc-tools/libfreefare/
 Source:         https://github.com/nfc-tools/libfreefare/archive/%name-%version.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Patch1:         gcc14.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  xz
-%if 0%{?suse_version} == 1110
-BuildRequires:  libnfc-devel >= 1.7.0
-BuildRequires:  libopenssl-devel
-%else
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libnfc) >= 1.7.0
-%endif
 
 %description
 The libfreefare project aims to provide a convenient API for Mifare
@@ -84,37 +77,32 @@ This package contains example programs using libfreefare for
 inspecting and manipulating Mifare cards.
 
 %prep
-%setup -qn %name-%name-%version
+%autosetup -n %name-%name-%version -p1
 
 %build
 if [ ! -e configure ]; then
 	autoreconf -fi
 fi
 %configure --disable-static
-make %{?_smp_mflags};
+%make_build
 
 %install
 b="%buildroot";
 %make_install
 rm -f "$b/%_libdir"/*.la;
 
-%post -n %lname -p /sbin/ldconfig
-
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/libfreefare.so.0*
 
 %files devel
-%defattr(-,root,root)
 %_includedir/freefare.h
 %_mandir/man3/*.3*
 %_libdir/libfreefare.so
 %_libdir/pkgconfig/libfreefare.pc
 
 %files tools
-%defattr(-,root,root)
 %_bindir/mifare-*
 
 %changelog
