@@ -19,18 +19,15 @@
 %define sle_version 0
 Name:           SDL3
 %define lname   libSDL3-0
-Version:        3.1.3
+Version:        3.1.6
 Release:        0
 Summary:        Simple DirectMedia Layer Library
 License:        Zlib
 Group:          Development/Libraries/X11
 URL:            https://libsdl.org/
 #Git-Clone:     https://github.com/libsdl-org/SDL
-#Source:         https://libsdl.org/release/%name-%version.tar.gz
-#Source2:        https://libsdl.org/release/%name-%version.tar.gz.sig
-Source:         https://github.com/libsdl-org/SDL/releases/download/preview-%version/%name-%version.tar.xz
+Source:         https://github.com/libsdl-org/SDL/releases/download/preview-%version/SDL3-%version.tar.gz
 Source3:        %name.keyring
-Patch1:         gcc14.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libdecor-devel
