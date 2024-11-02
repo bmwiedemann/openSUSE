@@ -262,4 +262,41 @@ packages. This library is fasted, easier to maintain and easier for a user to co
 </comment>
     <requestid>1208754</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>e71d15482aff05a45d16c916b2ef1bcb</srcmd5>
+    <version>3.6.1</version>
+    <time>1730560326</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.6.1:
+  * docs: improve explainer about lockfiles
+  * update service description file
+  * ensure lockfile creation
+  * minor: small refactor in generate_lockfile and vendor
+  * fix: forgot to use clap::ArgAction::Set. now finally added
+
+- Update to version 3.6.0:
+  * chore: release v3.6.0
+  * fix: used a different cargotoml. now using the correct one for flux
+  * find cargo vendor filterer by exporting PATH in container
+  * add forgotten run
+  * use traced test
+  * tests: add tests for cargotoml flag
+  * tests: lessen verbosity and rename nonexistent function to existing one
+  * tests: add tests for unfiltered and filtered option
+  * chore: update manifest and dependencies
+  * refactor: migrates almost all logic to libroast. 🎉
+  * fix: rectify mismatched types
+  * chore: remove dependencies since libroast is used internally
+  * add COC and CONTRIBUTING
+  * update changelog
+  * chore: release v3.5.4
+  * Bump rustsec to fix #99 and quick-xml because why not
+  * chore: release v3.5.2
+  * feat: add versioned-dirs flag
+
+- Update to version 3.5.4
+  * Bump rustsec to fix #99 and quick-xml because why not
+  * feat: add versioned-dirs flag</comment>
+    <requestid>1220185</requestid>
+  </revision>
 </revisionlist>

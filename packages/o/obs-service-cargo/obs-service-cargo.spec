@@ -22,14 +22,15 @@ License:        MPL-2.0
 Group:          Development/Tools/Building
 # Repository name subject to change
 URL:            https://github.com/openSUSE-Rust/%{name}
-Version:        3.3.3
+Version:        3.6.1
 Release:        0
 Source0:        https://github.com/openSUSE-Rust/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  pkgconfig(libzstd)
-Requires:       cargo-vendor-filterer
+# Version with fixed vendor filterer
+Requires:       cargo-vendor-filterer >= 0.5.16
 Requires:       (cargo or rustup)
 # At 0.6.0, vendor was introduced so we obsolete versions before that
 Conflicts:      obs-service-cargo_vendor
@@ -62,7 +63,7 @@ install -m0644 cargo_audit.service %{buildroot}%{_prefix}/lib/obs/service
 
 %files
 %defattr(-,root,root)
-%doc README.md
+%doc README.md CHANGELOG.md CONTRIBUTING.md CODE_OF_CONDUCT.md
 %license LICENSE
 %dir %{_prefix}/lib/obs
 %{_prefix}/lib/obs/service

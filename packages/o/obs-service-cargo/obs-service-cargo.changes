@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sat Nov  2 11:40:20 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 3.6.1:
+  * docs: improve explainer about lockfiles
+  * update service description file
+  * ensure lockfile creation
+  * minor: small refactor in generate_lockfile and vendor
+  * fix: forgot to use clap::ArgAction::Set. now finally added
+
+-------------------------------------------------------------------
+Sat Nov  2 09:28:44 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 3.6.0:
+  * chore: release v3.6.0
+  * fix: used a different cargotoml. now using the correct one for flux
+  * find cargo vendor filterer by exporting PATH in container
+  * add forgotten run
+  * use traced test
+  * tests: add tests for cargotoml flag
+  * tests: lessen verbosity and rename nonexistent function to existing one
+  * tests: add tests for unfiltered and filtered option
+  * chore: update manifest and dependencies
+  * refactor: migrates almost all logic to libroast. 🎉
+  * fix: rectify mismatched types
+  * chore: remove dependencies since libroast is used internally
+  * add COC and CONTRIBUTING
+  * update changelog
+  * chore: release v3.5.4
+  * Bump rustsec to fix #99 and quick-xml because why not
+  * chore: release v3.5.2
+  * feat: add versioned-dirs flag
+
+-------------------------------------------------------------------
+Sat Nov  2 01:58:19 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 3.5.4
+  * Bump rustsec to fix #99 and quick-xml because why not
+  * feat: add versioned-dirs flag
+    * Note: This is a BREAKING CHANGE
+  * refactor: migrate some ideas and move the compression logic to roast internally
+- Set version of vendor-filterer to >= 0.5.16. Contains a fix for the versioned-dirs
+
+-------------------------------------------------------------------
 Fri Oct 18 00:59:10 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - Update to version 3.3.3:
