@@ -17,7 +17,7 @@
 
 
 Name:           roast
-Version:        5.1.2
+Version:        5.1.6
 Release:        0
 Summary:        Simpler tar archiver and extractor
 License:        MPL-2.0
@@ -44,6 +44,14 @@ License:        MPL-2.0
 %description -n obs-service-roast
 Utility to roast source directories into highly compressed tape archives.
 
+%package -n obs-service-raw
+Version:        %{version}
+Summary:        OBS Source Service for raw
+License:        MPL-2.0
+
+%description -n obs-service-raw
+Utility to raw decompress tape archives to unarchived sources.
+
 %description
 Roast is a simple tar archiver and extractor with very high
 compression settings for supported formats such as zstd.
@@ -61,10 +69,12 @@ mkdir -p %{buildroot}%{_prefix}/lib/obs/service
 pushd roast-cli
 %{cargo_install} --bins
 popd
-cp -v %{buildroot}%{_bindir}/recomprizz %{buildroot}%{_prefix}/lib/obs/service/recomprizz
 cp -v %{buildroot}%{_bindir}/roast %{buildroot}%{_prefix}/lib/obs/service/roast
+install -m0644 roast.service %{buildroot}%{_prefix}/lib/obs/service
+cp -v %{buildroot}%{_bindir}/recomprizz %{buildroot}%{_prefix}/lib/obs/service/recomprizz
 install -m0644 recomprizz.service %{buildroot}%{_prefix}/lib/obs/service
-# TODO add roast .service file in the next release
+cp -v %{buildroot}%{_bindir}/raw %{buildroot}%{_prefix}/lib/obs/service/raw
+install -m0644 raw.service %{buildroot}%{_prefix}/lib/obs/service
 
 %check
 %{cargo_test}
@@ -76,6 +86,14 @@ install -m0644 recomprizz.service %{buildroot}%{_prefix}/lib/obs/service
 %license LICENCE
 %doc     CHANGELOG README.md
 
+%files -n obs-service-roast
+%dir %{_prefix}/lib/obs
+%dir %{_prefix}/lib/obs/service
+%{_prefix}/lib/obs/service/roast
+%{_prefix}/lib/obs/service/roast.service
+%license LICENCE
+%doc     CHANGELOG README.md
+
 %files -n obs-service-recomprizz
 %dir %{_prefix}/lib/obs
 %dir %{_prefix}/lib/obs/service
@@ -84,10 +102,11 @@ install -m0644 recomprizz.service %{buildroot}%{_prefix}/lib/obs/service
 %license LICENCE
 %doc     CHANGELOG README.md
 
-%files -n obs-service-roast
+%files -n obs-service-raw
 %dir %{_prefix}/lib/obs
 %dir %{_prefix}/lib/obs/service
-%{_prefix}/lib/obs/service/roast
+%{_prefix}/lib/obs/service/raw
+%{_prefix}/lib/obs/service/raw.service
 %license LICENCE
 %doc     CHANGELOG README.md
 

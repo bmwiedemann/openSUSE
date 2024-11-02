@@ -39,4 +39,25 @@ package called `obs-service-recomprizz`.</comment>
 </comment>
     <requestid>1220088</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f215f31e0cdafee95941c650b0a88d4d</srcmd5>
+    <version>5.1.6</version>
+    <time>1730560342</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.1.6:
+  * fix: revert 8977c6741364c6d25fb33408d8b4232d835a768b
+
+- Update to version 5.1.5:
+  * add service files. they serve as documentation
+  * fix mismatched types in roast-cli
+  * Bump zstd and infer
+  * clippy: rectify the needless pass by value
+  * chore: set resolver to 2 and enforce strict linting rules
+  * fix: just use an empty &quot;&quot; if strip fails
+  * add COC and CONTRIBUTING
+  * cleanup deps and begin cycle
+  * remove comment for 037aa62
+  * docs: removed warning. ensured reproducibility.</comment>
+    <requestid>1220280</requestid>
+  </revision>
 </revisionlist>
