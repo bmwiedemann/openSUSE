@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 27 07:49:09 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update http-conduit to version 2.3.9.1.
+  ## 2.3.9.1
+
+  * data-default-class -> data-default [#546](https://github.com/snoyberg/http-client/pull/546/files)
+
+-------------------------------------------------------------------
 Mon Aug 26 08:31:09 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update http-conduit to version 2.3.9.

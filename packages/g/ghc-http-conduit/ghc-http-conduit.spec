@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.3.9
+Version:        2.3.9.1
 Release:        0
 Summary:        HTTP client package with conduit interface and HTTPS support
 License:        BSD-2-Clause
@@ -68,8 +68,8 @@ BuildRequires:  ghc-cookie-devel
 BuildRequires:  ghc-cookie-prof
 BuildRequires:  ghc-crypton-connection-devel
 BuildRequires:  ghc-crypton-connection-prof
-BuildRequires:  ghc-data-default-class-devel
-BuildRequires:  ghc-data-default-class-prof
+BuildRequires:  ghc-data-default-devel
+BuildRequires:  ghc-data-default-prof
 BuildRequires:  ghc-hspec-devel
 BuildRequires:  ghc-hspec-prof
 BuildRequires:  ghc-network-devel
