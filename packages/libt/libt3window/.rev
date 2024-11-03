@@ -70,4 +70,12 @@
     <comment>update</comment>
     <requestid>999938</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>db280067dc8caa03292a408e7dd6f066</srcmd5>
+    <version>0.4.1</version>
+    <time>1730614685</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-build-fix-configure-failure-in-gcc-14.patch</comment>
+    <requestid>1220356</requestid>
+  </revision>
 </revisionlist>

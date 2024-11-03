@@ -1,0 +1,37 @@
+From 1b808e79311e016f8af3d25ecc64f3de26279f1a Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Sat, 2 Nov 2024 22:48:57 +0100
+Subject: [PATCH] build: fix configure failure in gcc-14
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+References: https://github.com/gphalkes/t3window/pull/2
+
+```
+$ ./configure
+[    5s] Checking for curses header file... no
+[    5s] !! Can not find curses/tinfo library. The curses/tinfo library is required to compile libt3key.
+$ cat config.log
+…
+.config.c:8:13: error: implicit declaration of function "setupterm";
+did you mean ‘set_term’? [-Wimplicit-function-declaration]
+```
+---
+ dist/config.pkg | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/dist/config.pkg b/dist/config.pkg
+index be5415e..c397384 100644
+--- a/dist/config.pkg
++++ b/dist/config.pkg
+@@ -121,6 +121,7 @@ EOF
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <curses.h>
++#include <term.h>
+ 
+ int main(int argc, char *argv[]) {
+ 	int args[9], error, fd;
+-- 
+2.47.0
+

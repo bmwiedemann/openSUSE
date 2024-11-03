@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov  2 21:51:13 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-build-fix-configure-failure-in-gcc-14.patch
+
+-------------------------------------------------------------------
 Mon Aug 29 09:49:32 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.4.1
