@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov  2 20:31:20 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch:
+  * tayga-fix-gcc14.patch
+
+-------------------------------------------------------------------
 Mon Feb 26 11:17:23 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

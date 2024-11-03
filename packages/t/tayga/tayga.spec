@@ -28,6 +28,7 @@ Source1:        tayga_setup_tun
 Source2:        tayga_destroy_tun
 Source3:        tayga.service
 Patch0:         tayga-obey-cflags.diff
+Patch1:         tayga-fix-gcc14.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 

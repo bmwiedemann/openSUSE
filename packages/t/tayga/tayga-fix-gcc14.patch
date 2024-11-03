@@ -1,0 +1,12 @@
+diff --git a/tayga.h b/tayga.h
+index 2284d2a..c8aadb8 100644
+--- a/tayga.h
++++ b/tayga.h
+@@ -20,6 +20,7 @@
+ #include <sys/stat.h>
+ #include <sys/ioctl.h>
+ #include <sys/socket.h>
++#include <sys/uio.h>
+ #include <netinet/in.h>
+ #include <arpa/inet.h>
+ #include <unistd.h>
