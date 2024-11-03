@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov  2 20:39:09 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch:
+  * vitetris-fix-gcc14.patch
+
+-------------------------------------------------------------------
 Tue Feb 20 13:28:55 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

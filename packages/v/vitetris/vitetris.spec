@@ -1,8 +1,8 @@
 #
 # spec file for package vitetris
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2019-2020, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2019-2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ URL:            http://victornils.net/tetris/
 Source:         https://github.com/vicgeralds/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vitetris.6
 Patch6:         vitetris-fix-font-path.patch
+Patch7:         vitetris-fix-gcc14.patch
 %if 0%{with allegro}
 BuildRequires:  liballeg-devel
 %endif
@@ -50,7 +51,6 @@ games by Nintendo, with the addition of a short lock delay which
 makes it possible to play at higher levels. (It does not make it
 possible to prevent the piece from ever locking by abusing lock delay
 resets.)
-
 
 %prep
 %autosetup -p1
