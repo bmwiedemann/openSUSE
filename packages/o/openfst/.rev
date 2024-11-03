@@ -15,4 +15,12 @@
     <comment>- Update to release 1.8.3</comment>
     <requestid>1145208</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c576ee3967e5b9ff36cc9fec43f48746</srcmd5>
+    <version>1.8.3</version>
+    <time>1730614692</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gcc14.patch</comment>
+    <requestid>1220364</requestid>
+  </revision>
 </revisionlist>

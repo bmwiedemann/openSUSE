@@ -26,6 +26,7 @@ Group:          Development/Libraries/C and C++
 URL:            http://www.openfst.org/
 Source:         http://www.openfst.org/twiki/pub/FST/FstDownload/%name-%version.tar.gz
 Patch1:         i586-80bitfp.patch
+Patch2:         gcc14.patch
 %if 0%{?suse_version} && 0%{?suse_version} < 1600
 BuildRequires:  gcc12-c++ >= 8.1.0
 %else
@@ -72,8 +73,7 @@ autoreconf -fi
 %make_install
 find %buildroot/%_libdir -type f -name "*.la" -print -delete
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files
 %license COPYING
