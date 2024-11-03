@@ -19,7 +19,7 @@
 %global commit_hx3compat f1f18201e5c0479cb5adf5f6028788b37f37b730
 
 Name:           haxe
-Version:        4.3.4
+Version:        4.3.6
 Release:        0
 Summary:        Multiplatform programming language
 License:        GPL-2.0-or-later AND MIT
@@ -52,6 +52,7 @@ BuildRequires:  pkgconfig(zlib)
 BuildRequires:  pcre2-devel
 BuildRequires:  mbedtls-devel < 3
 BuildRequires:  cmake
+BuildRequires:  fdupes
 Requires:       neko >= 2.3.0
 
 %description
@@ -85,6 +86,8 @@ mkdir -p %{buildroot}%{_datadir}/%{name}
 cp -p haxe %{buildroot}%{_bindir}
 cp -p haxelib %{buildroot}%{_bindir}
 cp -rfp std %{buildroot}%{_datadir}/%{name}
+
+%fdupes -s %{buildroot}%{_datadir}/%{name}
 
 # Generate man pages
 mkdir -p %{buildroot}%{_mandir}/man1

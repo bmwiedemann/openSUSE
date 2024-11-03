@@ -426,4 +426,12 @@ We're in the process of easing the installation process across different Linux d
 </comment>
     <requestid>1160503</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>79c78f6229f86e28177585c55a94f492</srcmd5>
+    <version>4.3.6</version>
+    <time>1730614705</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1220387</requestid>
+  </revision>
 </revisionlist>

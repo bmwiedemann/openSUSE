@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sat Aug 10 18:49:37 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- update to 4.3.6
+  * Bugfixes:
+    + display : do not define "display" for json rpc diagnostics (gh#HaxeFoundation/haxe#11746)
+    + cpp : null check interfaces (gh#HaxeFoundation/haxe#11743)
+    + hl : ignore WANT_READ/WANT_WRITE errors when the socket is known to be blocking (gh#HaxeFoundation/haxe#11655)
+    + hl : fix weird compiler error (gh#HaxeFoundation/haxe#11690)
+    + jvm : fix --java out -D jvm deprecation warning (gh#HaxeFoundation/haxe#11739)
+    + macro : Context.reportError should not abort build macros (gh#HaxeFoundation/haxe#11741)
+
+-------------------------------------------------------------------
+Tue Jul 23 20:07:30 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- update to 4.3.5
+  * General improvements:
+    + display : migrated diagnostics to Json RPC (gh#HaxeFoundation/haxe#11707)
+    + macro : expose TVar VStatic flag in macros. (gh#HaxeFoundation/haxe#11683)
+  * Bugfixes:
+    + all : fix @:structInit with getter + setter (gh#HaxeFoundation/haxe#11662)
+    + all : add missing recursion when checking abstract casts (gh#HaxeFoundation/haxe#11676)
+    + all : fail nicer if unify_min can't find a common type (gh#HaxeFoundation/haxe#11684)
+    + all : fix pretty errors failure (gh#HaxeFoundation/haxe#11700)
+    + all : disallow local statics when inlining (gh#HaxeFoundation/haxe#11725)
+    + display : unused pattern variables should be marked as unused (gh#HaxeFoundation/haxe#7282)
+    + display : diagnostics miss "used without being initialized" errors (gh#HaxeFoundation/haxe#7931)
+    + display : recursive inline is not supported on enum abstract constructor (gh#HaxeFoundation/haxe#11177)
+    + display : Void as value error disappears on second compilation (gh#HaxeFoundation/haxe#11184)
+    + display : false positives of "This cast has no effect, but some of its sub-expressions" (gh#HaxeFoundation/haxe#11203)
+    + cpp : inherit @:unreflective on generic classes
+    + hl : fix bit shift + assignment in while loop header (gh#HaxeFoundation/haxe#10783)
+    + hl : fix do-while loop in genhl+hlopt (gh#HaxeFoundation/haxe#11461)
+    + hl/c : use uint64 instead of uint64_t for shift cast (gh#HaxeFoundation/haxe#11721)
+    + macro : don't choke on namePos for reification pattern matching (gh#HaxeFoundation/haxe#11671)
+  * Deprecation / future version handling:
+    + macro : Compiler.include() warning when used outside init macros
+- Use fdupes to avoid having duplicated files
+
+-------------------------------------------------------------------
 Thu Mar 21 23:28:47 UTC 2024 - Andy Li <andy@onthewings.net>
 
 - update to 4.3.4
