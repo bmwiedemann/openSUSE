@@ -102,4 +102,19 @@
     <comment></comment>
     <requestid>1175022</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>730c513ec608123d398775f307233584</srcmd5>
+    <version>0.26.3</version>
+    <time>1730614651</time>
+    <user>dimstar_suse</user>
+    <comment>- Update outdated source service configuration
+- Disable update of dependencies
+- Update to version 0.26.3:
+  * update yanked dependency to libc to fix building with --locked.
+  * document breaking change in theme file format.
+  * support BUILD_GIT_COMMIT_ID enabling builds from git archive generated source tarballs or other outside a git repo
+  * breaking change: Theme format based on new changes from ratatui crate
+</comment>
+    <requestid>1220284</requestid>
+  </revision>
 </revisionlist>

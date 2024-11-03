@@ -23,7 +23,7 @@ Summary:        Provides the capability to generate java sources from schemas
 License:        Apache-2.0 AND BSD-2-Clause
 Group:          Development/Libraries/Java
 URL:            https://java.net/projects/maven-jaxb2-plugin/pages/Home
-Source0:        https://github.com/highsource/maven-jaxb2-plugin/archive/%{version}.tar.gz
+Source0:        https://github.com/highsource/jaxb-tools/archive/refs/tags/%{version}.tar.gz
 # Don't try to use an internal bundled resolver
 Patch0:         %{name}-0.14.0-dont-use-internal-resolver.patch
 # Adapt for Maven 3:
@@ -71,7 +71,7 @@ Group:          Documentation/HTML
 The API documentation of %{name}.
 
 %prep
-%setup -q
+%setup -q -n jaxb-tools-%{version}
 %patch -P 0 -p1
 %patch -P 1 -p1
 

@@ -71,4 +71,12 @@
     <comment>This runs with java 8 just fine</comment>
     <requestid>1170840</requestid>
   </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>a852126e05489bd0108e43503fceed02</srcmd5>
+    <version>2.3.1</version>
+    <time>1730614662</time>
+    <user>dimstar_suse</user>
+    <comment>Assure we are building against the correct apis</comment>
+    <requestid>1220318</requestid>
+  </revision>
 </revisionlist>

@@ -965,4 +965,12 @@ New upstream release</comment>
     <comment>New stable release (forwarded request 1205735 from iznogood)</comment>
     <requestid>1205804</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>1bf4fc2d67cb081afe7af731f4345f14</srcmd5>
+    <version>4.16.5</version>
+    <time>1730614633</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1220274</requestid>
+  </revision>
 </revisionlist>

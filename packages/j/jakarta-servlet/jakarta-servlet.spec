@@ -16,18 +16,20 @@
 #
 
 
+%global short_name servlet
 %global artifactId jakarta.servlet-api
-Name:           jakarta-servlet
-Version:        5.0.0
+Name:           jakarta-%{short_name}
+Version:        6.1.0
 Release:        0
 Summary:        Server-side API for handling HTTP requests and responses
 License:        Apache-2.0 AND (EPL-2.0 OR GPL-2.0-only WITH Classpath-exception-2.0)
-URL:            https://github.com/jakartaee/servlet
-Source0:        https://github.com/jakartaee/servlet/archive/refs/tags/%{version}-RELEASE.tar.gz
+Group:          Development/Libraries/Java
+URL:            https://projects.eclipse.org/projects/ee4j.%{short_name}
+Source0:        https://github.com/jakartaee/%{short_name}/archive/refs/tags/%{version}-RELEASE.tar.gz
 Source1:        %{name}-api-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 1.8
+BuildRequires:  java-devel >= 9
 BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
 
@@ -43,9 +45,9 @@ Group:          Documentation/HTML
 API documentation for %{name}.
 
 %prep
-%setup -q -n servlet-%{version}-RELEASE
-cp LICENSE.md api/src/main/resources/META-INF/
-cp NOTICE.md api/src/main/resources/META-INF/
+%setup -q -n %{short_name}-%{version}-RELEASE
+mkdir -p api/src/main/resources/META-INF/
+cp {NOTICE,LICENSE}.md api/src/main/resources/META-INF/
 
 cp %{SOURCE1} api/build.xml
 

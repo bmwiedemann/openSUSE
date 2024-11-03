@@ -281,9 +281,6 @@ Summary:        VLC without X dependencies
 Group:          Productivity/Multimedia/Video/Players
 Requires:       libvlc%{libvlc} = %{version}-%{release}
 Requires:       libvlccore%{libvlccore} = %{version}-%{release}
-# This is a hack only due to libbluray not having versioned symbols as well as
-# having a strange ABI/API break between 0.3 and 0.7
-%requires_ge    libbluray1
 Recommends:     %{name}-codecs
 Recommends:     libdvdcss
 Conflicts:      %{conflicts}-noX

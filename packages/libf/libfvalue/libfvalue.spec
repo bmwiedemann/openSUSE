@@ -27,6 +27,7 @@ URL:            https://github.com/libyal/libfvalue
 Source:         https://github.com/libyal/libfvalue/releases/download/%version/libfvalue-experimental-%version.tar.gz
 Source2:        https://github.com/libyal/libfvalue/releases/download/%version/libfvalue-experimental-%version.tar.gz.asc
 Source9:        %name.keyring
+Patch1:         0001-Export-libfvalue_value_get_entry.patch
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libcdata) >= 20240414

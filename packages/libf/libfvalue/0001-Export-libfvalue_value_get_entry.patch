@@ -1,0 +1,84 @@
+From 9829f2df776a28ac373a3235030123bcd902a06f Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Sat, 2 Nov 2024 16:36:19 +0100
+Subject: [PATCH] Export libfvalue_value_get_entry
+References: https://github.com/libyal/libfvalue/issues/6
+References: https://github.com/libyal/libfvalue/pull/7
+
+libesedb_multi_value.c:338:13: error: implicit declaration of function 'libfvalue_value_get_entry'; did you mean 'libfvalue_value_get_data'? [-Wimplicit-function-declaration]
+libesedb_multi_value.c:385:13: error: implicit declaration of function 'libfvalue_value_copy_entry_data'; did you mean 'libfvalue_value_set_entry_data'? [-Wimplicit-function-declaration]
+libesedb_record.c:3813:29: error: implicit declaration of function 'libfvalue_value_append_entry'; did you mean 'libfvalue_value_append_entry_data'? [-Wimplicit-function-declaration]
+libesedb_value_data_handle.c:175:29: error: implicit declaration of function 'libfvalue_data_handle_append_value_entry'; did you mean 'libfvalue_data_handle_append_value_entry_data'? [-Wimplicit-function-declaration]
+
+``libfvalue_value_get_entry`` et al is used externally, by libesedb.
+Hence, it needs to be exported for DLLs to work correctly. This patch
+corrects that problem.
+---
+ include/libfvalue.h.in |   33 +++++++++++++++++++++++++++++++++
+ 1 file changed, 33 insertions(+)
+
+Index: libfvalue-20240415/include/libfvalue.h.in
+===================================================================
+--- libfvalue-20240415.orig/include/libfvalue.h.in
++++ libfvalue-20240415/include/libfvalue.h.in
+@@ -210,6 +210,14 @@ int libfvalue_data_handle_set_value_entr
+      int encoding,
+      libfvalue_error_t **error );
+ 
++LIBFVALUE_EXTERN \
++int libfvalue_data_handle_append_value_entry(
++     libfvalue_data_handle_t *data_handle,
++     int *value_entry_index,
++     size_t value_entry_offset,
++     size_t value_entry_size,
++     libcerror_error_t **error );
++
+ /* Appends a value entry
+  * Returns if successful or -1 on error
+  */
+@@ -943,6 +951,14 @@ int libfvalue_value_get_number_of_value_
+      int *number_of_value_entries,
+      libfvalue_error_t **error );
+ 
++LIBFVALUE_EXTERN \
++int libfvalue_value_get_entry(
++     libfvalue_value_t *value,
++     int value_entry_index,
++     size_t *entry_data_offset,
++     size_t *entry_data_size,
++     libcerror_error_t **error );
++
+ /* Retrieves the entry data
+  * Returns 1 if successful, 0 if the value has no data or -1 on error
+  */
+@@ -967,6 +983,14 @@ int libfvalue_value_set_entry_data(
+      int encoding,
+      libfvalue_error_t **error );
+ 
++LIBFVALUE_EXTERN \
++int libfvalue_value_append_entry(
++     libfvalue_value_t *value,
++     int *value_entry_index,
++     size_t entry_data_offset,
++     size_t entry_data_size,
++     libcerror_error_t **error );
++
+ /* Appends the entry data
+  * Returns 1 if successful or -1 on error
+  */
+@@ -979,6 +1003,15 @@ int libfvalue_value_append_entry_data(
+      int encoding,
+      libfvalue_error_t **error );
+ 
++LIBFVALUE_EXTERN \
++int libfvalue_value_copy_entry_data(
++     libfvalue_value_t *value,
++     int value_entry_index,
++     uint8_t *entry_data,
++     size_t entry_data_size,
++     int *encoding,
++     libcerror_error_t **error );
++
+ /* Copies the value data from a boolean value
+  * Returns 1 if successful, 0 if value could not be set or -1 on error
+  */

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov  2 16:39:41 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 1.7.0+git106 (a253f54da)
+  * Build fixes for when linbox is built in a C++20 environment
+
+-------------------------------------------------------------------
 Tue Dec 14 11:25:03 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.7.0

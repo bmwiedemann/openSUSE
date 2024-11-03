@@ -18,7 +18,7 @@
 
 %define sover   0
 Name:           mpg123
-Version:        1.32.8
+Version:        1.32.9
 Release:        0
 Summary:        Console MPEG audio player and decoder library
 License:        LGPL-2.1-only

@@ -39,4 +39,12 @@
     <comment>Spec file cleanup</comment>
     <requestid>1205250</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>d29541a17ec73ecffa6078a8bdf06f9b</srcmd5>
+    <version>1.2.0</version>
+    <time>1730614645</time>
+    <user>dimstar_suse</user>
+    <comment>Some source generation mishap.</comment>
+    <requestid>1220316</requestid>
+  </revision>
 </revisionlist>

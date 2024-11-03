@@ -23,4 +23,14 @@
     <comment>- Set CPPFLAGS=-DGL_GLEXT_PROTOTYPES</comment>
     <requestid>662558</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>6f47fb10c219df42f69b7abfa02d6711</srcmd5>
+    <version>0.7.2</version>
+    <time>1730614657</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-Clean-up-warnings-in-luasocket-and-box2d.patch to
+  resolve FTBFS with gcc-14
+- Update tarball URL</comment>
+    <requestid>1220352</requestid>
+  </revision>
 </revisionlist>

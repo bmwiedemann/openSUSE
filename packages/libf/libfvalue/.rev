@@ -87,4 +87,12 @@
     <comment>- Update to release 20240415</comment>
     <requestid>1167892</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>7ed0dcbf680dd4fa2a09a66d14eeb04f</srcmd5>
+    <version>20240415</version>
+    <time>1730614662</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-Export-libfvalue_value_get_entry.patch</comment>
+    <requestid>1220307</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 29 22:49:52 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.6.5+git20241030
+- Specfile cleanup
+- Drop not longer needed patches:
+  * libshadowdive-soversion.patch
+  * openomf-set-cflags.patch
+
+-------------------------------------------------------------------
 Mon Feb 26 12:47:41 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

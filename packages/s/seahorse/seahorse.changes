@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 30 16:05:31 UTC 2024 - bjorn.lie@gmail.com
+
+- Update to version 47.0.1+6:
+  * build:
+    - Fix config.h target
+    - Fix symbolic icon name
+  * Updated translations.
+
+-------------------------------------------------------------------
 Wed Sep 18 12:53:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 47.0.1:

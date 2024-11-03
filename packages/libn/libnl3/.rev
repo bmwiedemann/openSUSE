@@ -368,4 +368,12 @@ Dunno.</comment>
     <comment>- Update to release 3.10</comment>
     <requestid>1188828</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>6614698dabd5e7120241ccafd4b6e5bc</srcmd5>
+    <version>3.11.0</version>
+    <time>1730614643</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.11</comment>
+    <requestid>1220309</requestid>
+  </revision>
 </revisionlist>

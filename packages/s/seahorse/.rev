@@ -936,4 +936,12 @@ A couple of patches for this are competing for upstream approval at bgo#659834 -
     <comment>SCripted push of GNOME 47</comment>
     <requestid>1205487</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>d68dea9d24b47cfc504d115152643d3f</srcmd5>
+    <version>47.0.1+6</version>
+    <time>1730614631</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1220273</requestid>
+  </revision>
 </revisionlist>

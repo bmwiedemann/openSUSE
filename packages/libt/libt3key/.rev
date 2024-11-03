@@ -54,4 +54,12 @@
     <comment>- Update to release 0.2.10</comment>
     <requestid>758355</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>9e9489d4be9ed3745805fabb8d138361</srcmd5>
+    <version>0.2.10</version>
+    <time>1730614656</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses.patch to fix FTBFS with gcc-14</comment>
+    <requestid>1220358</requestid>
+  </revision>
 </revisionlist>

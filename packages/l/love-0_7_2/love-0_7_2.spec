@@ -1,7 +1,7 @@
 #
 # spec file for package love-0_7_2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +22,11 @@ Release:        0
 Summary:        2D gaming engine written in Lua
 License:        Zlib
 Group:          Development/Languages/Other
-Url:            http://love2d.org/
-
-Source:         https://bitbucket.org/rude/love/downloads/love-0.7.2-linux-src.tar.gz
+URL:            http://love2d.org/
+Source:         https://github.com/love2d/love/releases/download/%version/love-%version-linux-src.tar.gz
 Patch1:         love-modplug.patch
 Patch2:         system-packages.diff
+Patch3:         0001-Clean-up-warnings-in-luasocket-and-box2d.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -50,8 +50,7 @@ BuildRequires:  pkgconfig(vorbisfile)
 LÖVE is a framework for making 2D games in Lua.
 
 %prep
-%setup -qn love-HEAD
-%patch -P 1 -P 2 -p1
+%autosetup -n love-HEAD -p1
 
 %build
 sed -i 's/\r$//' *.txt
@@ -59,16 +58,15 @@ mv configure.{in,ac}
 autoreconf -fi
 export CPPFLAGS="-DGL_GLEXT_PROTOTYPES"
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-b="%buildroot";
-make install DESTDIR="$b"
-mv "$b/%_bindir"/love{,-0.7.2}
+%make_install
+mv "%buildroot/%_bindir/love" "%buildroot/%_bindir/love-0.7.2"
 
 %files
-%defattr(-,root,root)
-%doc changes.txt license.txt readme.txt
+%license license.txt
+%doc readme.txt
 %_bindir/love-0.7.2
 
 %changelog

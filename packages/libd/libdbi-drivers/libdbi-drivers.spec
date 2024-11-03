@@ -28,10 +28,10 @@ Summary:        Database drivers for libdbi
 License:        LGPL-2.1+
 Group:          Productivity/Databases/Servers
 URL:            http://libdbi-drivers.sf.net/
-
 #Source:        http://downloads.sf.net/libdbi-drivers/%name-%version.tar.gz
 Source:		%name-%version.tar.xz
 Patch1:         0001-build-adjust-configure-for-postgresql-10-11.patch
+Patch2:         0001-build-resolve-build-failure-due-to-mismatching-types.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gettext
@@ -60,7 +60,6 @@ libdbi implements a database-independent abstraction layer in C,
 similar to the DBI/DBD layer in Perl. Drivers are distributed
 separately from the library itself.
 
-%if %build_freetds
 %package dbd-freetds
 Summary:        FreeTDS driver for libdbi
 Group:          System/Libraries
@@ -70,7 +69,6 @@ This driver provides connectivity to FreeTDS database servers
 through the libdbi database independent abstraction layer. Switching
 a program's driver does not require recompilation or rewriting source
 code.
-%endif
 
 %package dbd-mysql
 Summary:        MySQL driver for libdbi
@@ -124,7 +122,7 @@ fi
 	--with-dbi-libdir="%_libdir"		\
 	--disable-static			\
 	--docdir="%_docdir/%name" --disable-docs
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -135,23 +133,23 @@ make check || :
 
 %if %build_freetds
 %files dbd-freetds
-%doc COPYING
+%license COPYING
 %dir %_libdir/dbd
 %_libdir/dbd/libdbdfreetds.so
 %endif
 
 %files dbd-mysql
-%doc COPYING
+%license COPYING
 %dir %_libdir/dbd
 %_libdir/dbd/libdbdmysql.so
 
 %files dbd-pgsql
-%doc COPYING
+%license COPYING
 %dir %_libdir/dbd
 %_libdir/dbd/libdbdpgsql.so
 
 %files dbd-sqlite3
-%doc COPYING
+%license COPYING
 %dir %_libdir/dbd
 %_libdir/dbd/libdbdsqlite3.so
 

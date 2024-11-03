@@ -18,7 +18,7 @@
 
 Name:           gap-design
 Summary:        GAP: The Design Package for GAP
-Version:        1.8.1
+Version:        1.8.2
 Release:        0
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math

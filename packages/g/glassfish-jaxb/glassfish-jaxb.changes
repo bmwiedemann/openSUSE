@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov  2 17:34:46 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Assure that we are building against the older javax apis
+
+-------------------------------------------------------------------
 Mon Apr 29 15:25:33 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - The binaries are compatible with java 1.8

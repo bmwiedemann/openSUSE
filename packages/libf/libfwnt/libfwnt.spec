@@ -30,6 +30,7 @@ Source:         https://github.com/libyal/libfwnt/releases/download/%version/lib
 Source2:        https://github.com/libyal/libfwnt/releases/download/%version/libfwnt-alpha-%version.tar.gz.asc
 Source3:        %name.keyring
 Source11:       Locale_identifier_LCID.pdf
+Patch1:         0001-Added-missing-declaration-of-function-used-externall.patch
 BuildRequires:  %python_module devel
 BuildRequires:  %python_module setuptools
 BuildRequires:  c_compiler

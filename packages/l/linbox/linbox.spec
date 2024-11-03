@@ -1,7 +1,7 @@
 #
 # spec file for package linbox
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,14 +20,14 @@
 
 Name:           linbox
 %define lname   liblinbox0
-Version:        1.7.0
+Version:        1.7.0+git106
 Release:        0
 Summary:        C++ library for computation with matrices over ints and finite fields
 License:        LGPL-2.1-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://linalg.org/
-
-Source:         https://github.com/linbox-team/linbox/releases/download/v%version/linbox-%version.tar.gz
+#Source:         https://github.com/linbox-team/linbox/releases/download/v%version/linbox-%version.tar.gz
+Source:         https://github.com/linbox-team/linbox/archive/a253f54da0b82c7e85fd8ad144fdb572469961e3.tar.gz
 BuildRequires:  autoconf >= 2.61
 BuildRequires:  automake >= 1.8
 BuildRequires:  gcc-c++
@@ -74,7 +74,7 @@ This subpackage contains the include files and library links for
 developing against the Givaro library.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %name-a253f54da0b82c7e85fd8ad144fdb572469961e3
 
 %build
 autoreconf -fi
@@ -91,8 +91,7 @@ autoreconf -fi
 %make_install
 rm -f "%buildroot/%_libdir"/*.la
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %_libdir/liblinbox.so.0*

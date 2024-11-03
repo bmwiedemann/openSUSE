@@ -1,0 +1,8 @@
+<package name="properties-maven-plugin" project="openSUSE:Factory">
+  <title>The Properties Maven Plugin</title>
+  <description>The Properties Maven Plugin is here to make life a little easier when dealing with properties. It provides goals to read properties from files and URLs and write properties to files, and also to set system properties.
+
+It’s main use-case is loading properties from files or URLs instead of declaring them in pom.xml, something that comes in handy when dealing with different environments.</description>
+  <devel project="Java:packages" package="properties-maven-plugin"/>
+  <url>https://www.mojohaus.org/properties-maven-plugin/</url>
+</package>

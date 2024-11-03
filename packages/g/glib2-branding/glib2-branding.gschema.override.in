@@ -20,7 +20,6 @@ picture-options = "zoom"
 
 [org.gnome.desktop.screensaver]
 @@IF_openSUSE@@picture-uri = "@@WALLPAPER_URI@@"
-@@IF_openSUSE@@picture-uri-dark = "@@WALLPAPER_URI_DARK@@"
 @@IF_SLE@@picture-uri = "@@LOCKSCREEN_URI@@"
 picture-options = "zoom"
 @@IF_openSUSE@@primary-color = "#63bbb2ff"

@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Fri Jun 14 06:06:54 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.3.2
+  * No changelog provided by upstream
+
+-------------------------------------------------------------------
+Wed Sep 20 20:55:41 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.3.0
+  * No changelog provided by upstream
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
+Sun Apr 16 16:56:39 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Initial packaging with v3.2.17

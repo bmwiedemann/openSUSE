@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Oct 15 05:46:19 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to version 6.1.0
+  * Changes in version 6.1
+    + deprecate support for HTTP/2 push
+    + provide a mechanism (requested by WebSocket) for applications
+      to interact with an HTTP session outside of the standard HTTP
+      request processing
+    + remove references to the SecurityManager and associated APIs
+    + provide clarifications to expected behaviour where it has
+      been requested
+    + review outstanding enhancement requests and implement where
+      time allows
+  * Changes in version 6.0
+    + remove currently deprecated features
+    + consider removing / deprecating additional features
+    + add clarity to existing features
+    + implement requested enhancements
+- Update the URL tag in the spec file
+
+-------------------------------------------------------------------
 Wed Oct  2 15:44:07 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Spec file cleanup

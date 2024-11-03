@@ -288,4 +288,13 @@
     <comment></comment>
     <requestid>1137257</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>053ccb99ae5234418bed133c11cff340</srcmd5>
+    <version>1.1.1</version>
+    <time>1730614642</time>
+    <user>dimstar_suse</user>
+    <comment>try again
+- Update to release 1.1.1</comment>
+    <requestid>1220308</requestid>
+  </revision>
 </revisionlist>

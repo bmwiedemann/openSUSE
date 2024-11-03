@@ -1,16 +1,16 @@
 <services>
-  <service mode="disabled" name="tar_scm">
+  <service mode="manual" name="tar_scm">
     <param name="url">https://github.com/omf2097/openomf.git</param>
     <param name="revision">master</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
-    <param name="versionformat">@PARENT_TAG@+git.%cd</param>
+    <param name="versionformat">0.6.5+git%cd</param>
     <param name="package-meta">yes</param>
   </service>
-  <service mode="disabled" name="recompress">
+  <service mode="manual" name="recompress">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service mode="disabled" name="set_version"/>
+  <service mode="manual" name="set_version"/>
 </services>
 

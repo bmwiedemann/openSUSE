@@ -1,0 +1,6 @@
+<package name="jboss-vfs" project="openSUSE:Factory">
+  <title>JBoss VFS</title>
+  <description>JBoss VFS provides an API to represent a deployment as a read-only hierarchical file system regardless of whether it is packaged or not. It also allows deployments to be accessed both locally and remotely using a pluggable design so that new protocols can easily be added to those supplied by default (file, jar, memory).</description>
+  <devel project="Java:packages" package="jboss-vfs"/>
+  <url>https://www.jboss.org/</url>
+</package>

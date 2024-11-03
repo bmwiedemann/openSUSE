@@ -17,7 +17,7 @@
 
 
 Name:           seahorse
-Version:        47.0.1
+Version:        47.0.1+6
 Release:        0
 Summary:        GNOME interface for gnupg
 License:        GFDL-1.1-only AND GPL-2.0-or-later AND LGPL-2.1-or-later

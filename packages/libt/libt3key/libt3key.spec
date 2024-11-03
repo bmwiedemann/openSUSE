@@ -1,7 +1,7 @@
 #
 # spec file for package libt3key
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,11 @@ Summary:        The Tilde Toolkit's terminal key sequence database library
 License:        GPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://os.ghalkes.nl/t3/libt3key.html
-
 #Git-Clone:	https://github.com/gphalkes/t3key
 Source:         https://os.ghalkes.nl/dist/%name-%version.tar.bz2
 Source2:        https://os.ghalkes.nl/dist/%name-%version.tar.bz2.sig
 Source3:        %name.keyring
+Patch1:         ncurses.patch
 BuildRequires:  fdupes
 BuildRequires:  gettext-tools
 BuildRequires:  libtool
@@ -77,29 +77,27 @@ emulators, to key symbols.
 This subpackage contains the t3learnkeys and t3keyc programs.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 export CC=gcc
 %configure --docdir="%_docdir/%name"
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 rm -f "%buildroot/%_libdir"/*.la
+chmod a+x "%buildroot/%_libdir"/*.so*
 %fdupes %buildroot/%_prefix
 
-%post   -p /sbin/ldconfig -n %lname
-%postun -p /sbin/ldconfig -n %lname
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/libt3key.so.1*
-%doc COPYING
 %_datadir/%lname/
+%license COPYING
 
 %files devel
-%defattr(-,root,root)
 %_includedir/t3/
 %_libdir/libt3key.so
 %_libdir/pkgconfig/libt3key.pc
@@ -107,7 +105,6 @@ rm -f "%buildroot/%_libdir"/*.la
 %exclude %_docdir/%name/COPYING
 
 %files utils
-%defattr(-,root,root)
 %_bindir/t3*
 %_mandir/man1/t3*.1*
 

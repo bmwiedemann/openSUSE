@@ -17,7 +17,7 @@
 
 
 Name:           perl-Sys-Virt
-Version:        10.6.0
+Version:        10.9.0
 Release:        0
 %define cpan_name Sys-Virt
 Summary:        Represent and manage a libvirt hypervisor connection

@@ -1,13 +1,16 @@
 <services>
-	<service name="tar_scm" mode="disabled">
-		<param name="scm">git</param>
-		<param name="url">https://github.com/javaee/activation.git</param>
-		<param name="revision">JAF-1_2_0</param>
-		<param name="versionformat">1.2.0</param>
-		<param name="exclude">doc</param>
-	</service>
-	<service name="recompress" mode="disabled">
-		<param name="file">*.tar</param>
-		<param name="compression">xz</param>
-	</service>
+    <service name="tar_scm" mode="disabled">
+        <param name="scm">git</param>
+        <param name="url">https://github.com/javaee/activation.git</param>
+        <param name="revision">JAF-1_2_0</param>
+        <param name="versionformat">1.2.0</param>
+        <param name="exclude">doc</param>
+        <param name="exclude">.git*</param>
+        <param name="exclude">**/.git*</param>
+    </service>
+    <service name="recompress" mode="disabled">
+        <param name="file">*.tar</param>
+        <param name="compression">xz</param>
+    </service>
+	<service name="set_version" mode="disabled"/>
 </services>

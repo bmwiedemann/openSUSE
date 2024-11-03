@@ -47,4 +47,12 @@
     <comment>- Update to release 1.7.0</comment>
     <requestid>940464</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>184d30c4e73390c29728d5d09d2146fa</srcmd5>
+    <version>1.7.0+git106</version>
+    <time>1730614660</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to snapshot 1.7.0+git106 (a253f54da)</comment>
+    <requestid>1220311</requestid>
+  </revision>
 </revisionlist>

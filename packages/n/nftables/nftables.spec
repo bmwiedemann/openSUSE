@@ -22,13 +22,12 @@
 %define pyversion 0.1
 
 Name:           nftables
-Version:        1.0.9
+Version:        1.1.1
 Release:        0
 Summary:        Userspace utility to access the nf_tables packet filter
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Security
 URL:            https://netfilter.org/projects/nftables/
-
 #Git-Clone:	git://git.netfilter.org/nftables
 Source:         http://ftp.netfilter.org/pub/%name/%name-%version.tar.xz
 Source2:        http://ftp.netfilter.org/pub/%name/%name-%version.tar.xz.sig
@@ -48,7 +47,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(jansson)
 BuildRequires:  pkgconfig(libedit)
 BuildRequires:  pkgconfig(libmnl) >= 1.0.4
-BuildRequires:  pkgconfig(libnftnl) >= 1.2.6
+BuildRequires:  pkgconfig(libnftnl) >= 1.2.8
 BuildRequires:  pkgconfig(xtables) >= 1.6.1
 %python_subpackages
 
@@ -125,8 +124,7 @@ rm -f "%buildroot/%_libdir"/*.la
 mkdir -p "$b/%_docdir/%name/examples"
 mv -v "$b/%_datadir/nftables"/*.nft "$b/%_docdir/%name/examples/"
 
-%post   -n libnftables1 -p /sbin/ldconfig
-%postun -n libnftables1 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libnftables1
 
 %files
 %license COPYING
@@ -146,7 +144,7 @@ mv -v "$b/%_datadir/nftables"/*.nft "$b/%_docdir/%name/examples/"
 %_mandir/man3/*.3*
 
 %files %{python_files nftables}
-%{python_sitelib}/nftables
-%{python_sitelib}/nftables-%{pyversion}.dist-info
+%python_sitelib/nftables
+%python_sitelib/nftables-%pyversion.dist-info
 
 %changelog

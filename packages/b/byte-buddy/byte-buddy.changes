@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Nov  2 15:49:57 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v1.15.8
+  * Changes of v1.15.8
+    + Extend ClassInjector API to support lazy resolution of class
+      files.
+    + Extend DynamicType API to support lazy resolution of
+      auxiliary types.
+    + Extend AgentBuilder.Transformer.ForAdvice to support
+      injection of new classes by their name.
+
+-------------------------------------------------------------------
 Wed Oct 23 10:55:21 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v1.15.7

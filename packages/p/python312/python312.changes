@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 24 16:09:00 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add CVE-2024-9287-venv_path_unquoted.patch to properly quote
+  path names provided when creating a virtual environment
+  (bsc#1232241, CVE-2024-9287)
+
+-------------------------------------------------------------------
 Tue Oct  1 15:32:06 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 3.12.7:

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov  2 10:48:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop the requres_ge libbluray1 statement, which was added as a
+  hack due to a libbluray ABI brak at version 0.5. By now libbluray
+  is at .so.2, so that statement was actually a NOP. as RPM simply
+  ignored in-existing package dependencies.
+
+-------------------------------------------------------------------
 Thu Jun 27 13:54:03 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Restrict required version for libav* to avoid pulling in ffmpeg-6

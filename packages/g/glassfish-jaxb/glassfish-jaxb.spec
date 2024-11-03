@@ -46,7 +46,6 @@ BuildRequires:  mvn(org.apache.ant:ant)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-dependency-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-enforcer-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-shade-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-source-plugin)
 BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
@@ -71,6 +70,13 @@ Requires:       %{name}-txwc2 = %{version}-%{release}
 Requires:       %{name}-xjc = %{version}-%{release}
 Requires:       %{name}-xsom = %{version}-%{release}
 Requires:       java-headless >= 1.8
+#!BuildRequires: glassfish-dtd-parser
+#!BuildRequires: glassfish-fastinfoset
+#!BuildRequires: istack-commons-runtime
+#!BuildRequires: istack-commons-tools
+#!BuildRequires: stax-ex
+#!BuildRequires: xmlstreambuffer
+#!BuildRequires: xsom
 BuildArch:      noarch
 
 %description
@@ -249,6 +255,7 @@ perl -pi -e 's#com\.sun\.org\.apache\.xml\.internal\.resolver#org\.apache\.xml\.
 %pom_remove_plugin :gfnexus-maven-plugin
 %pom_remove_plugin :maven-site-plugin
 %pom_remove_plugin :buildnumber-maven-plugin
+%pom_remove_plugin :maven-enforcer-plugin
 
 %if %{?pkg_vcmp:%pkg_vcmp maven-antrun-plugin >= 3}%{!?pkg_vcmp:0}
 sed -i -e 's#tasks\>#target\>#g' xjc/pom.xml jxc/pom.xml

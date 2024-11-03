@@ -1445,4 +1445,14 @@ C API
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1219469</requestid>
   </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>98152fa71a3b3400812d64143821f914</srcmd5>
+    <version>3.11.10</version>
+    <time>1730614621</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2024-9287-venv_path_unquoted.patch to properly quote
+  path names provided when creating a virtual environment
+  (bsc#1232241, CVE-2024-9287)</comment>
+    <requestid>1220125</requestid>
+  </revision>
 </revisionlist>

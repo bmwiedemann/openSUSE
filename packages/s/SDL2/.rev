@@ -556,4 +556,12 @@
     <comment>- Update to release 2.30.8</comment>
     <requestid>1205021</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>e2da53398a998f6595d1263ce9986e1f</srcmd5>
+    <version>2.30.9</version>
+    <time>1730614630</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.30.9</comment>
+    <requestid>1220191</requestid>
+  </revision>
 </revisionlist>

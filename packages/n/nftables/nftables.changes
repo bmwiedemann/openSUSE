@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Oct  3 07:00:54 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.1.1
+  * Reduce netlink cache dependencies to speed up incremental
+    updates.
+  * Allow zero burst in byte ratelimiter expression.
+  * Fix double-free when users call nft_ctx_clear_vars() followed
+    by nft_ctx_free().
+  * Document that the tproxy statement is non-terminal (unlike in
+    iptables). This allows for tproxy+log and tproxy+mark combos,
+    see man nft(8) for details.
+  * Add egress support for the `list hooks` subcommand.
+
+-------------------------------------------------------------------
+Wed Jul 17 02:13:42 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.1.0
+  * Restore compatibility set element dump with <= 0.9.8
+  * Disallow empty interface names
+  * Restore rule replace command
+  * Search for group, rt_mark, rt_realms at
+    /etc/iproute2, /usr/share/iproute2
+  * Resolve some timezone issues
+  * Support for variables in map expressions
+  * VLAN support
+
+-------------------------------------------------------------------
 Thu Jan  4 08:04:39 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - buildrequire setuptools explicitly as pip drops the dependency

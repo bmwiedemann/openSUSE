@@ -1,0 +1,88 @@
+From 4441b8af44d78cb42135ee8d153212ee58e0caea Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Sat, 2 Nov 2024 13:34:05 +0100
+Subject: [PATCH] build: resolve build failure due to mismatching types
+References: https://sourceforge.net/p/libdbi-drivers/libdbi-drivers/merge-requests/2/
+
+src/constraint.c:104:22: error: assignment to
+"void (*)(Constraint *, const char *, intptr_t,  const char *, int,  TestReporter *)"
+{aka "void (*)(struct Constraint_ *, const char *, long int,  const char *, int,  struct TestReporter_ *)"}
+from incompatible pointer type
+"void (*)(Constraint *, const char *, const char *, intptr_t,  const char *, int,  TestReporter *)"
+{aka "void (*)(struct Constraint_ *, const char *, const char *, long int,  const char *, int,  struct TestReporter_ *)"}
+[-Wincompatible-pointer-types]
+
+test_dbi.c:4598:19: error: assignment to "time_t" {aka "long int"} from "const
+char *" makes integer from pointer without a cast [-Wint-conversion]
+ 4598 |          the_date = dbi_result_get_string(result, "the_date");
+test_dbi.c:4599:30: error: passing argument 3 of "assert_string_equal_" makes
+pointer from integer without a cast [-Wint-conversion]
+ 4599 |          assert_string_equal(the_date, "11-jul-1977");
+---
+ tests/cgreen/src/constraint.c | 6 +++---
+ tests/test_dbi.c              | 6 ++++--
+ 2 files changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/tests/cgreen/src/constraint.c b/tests/cgreen/src/constraint.c
+index 56c3625..03eec3c 100644
+--- a/tests/cgreen/src/constraint.c
++++ b/tests/cgreen/src/constraint.c
+@@ -22,7 +22,7 @@ static double unbox_double(intptr_t box);
+ static double as_double(intptr_t box);
+ 
+ static int compare_using_matcher(Constraint *constraint, intptr_t actual);
+-static void test_with_matcher(Constraint *constraint, const char *function, const char* matcher_name, intptr_t actual, const char *test_file, int test_line, TestReporter *reporter);
++static void test_with_matcher(Constraint *constraint, const char *function, intptr_t actual, const char *test_file, int test_line, TestReporter *reporter);
+ 
+ 
+ void destroy_constraint(void *abstract) {
+@@ -168,7 +168,7 @@ static int compare_using_matcher(Constraint *constraint, intptr_t actual) {
+     return matches((void *)actual);
+ }
+ 
+-static void test_with_matcher(Constraint *constraint, const char *function, const char* matcher_name, intptr_t matcher_function, const char *test_file, int test_line, TestReporter *reporter) {
++static void test_with_matcher(Constraint *constraint, const char *function, intptr_t matcher_function, const char *test_file, int test_line, TestReporter *reporter) {
+     (*reporter->assert_true)(
+             reporter,
+             test_file,
+@@ -176,7 +176,7 @@ static void test_with_matcher(Constraint *constraint, const char *function, cons
+             (*constraint->compare)(constraint, matcher_function),
+             "Wanted parameter [%s] to match [%s] in function [%s]",
+             constraint->parameter,
+-            matcher_name,
++            constraint->name,
+             function);
+ }
+ 
+diff --git a/tests/test_dbi.c b/tests/test_dbi.c
+index c3390ba..7a7aa0b 100644
+--- a/tests/test_dbi.c
++++ b/tests/test_dbi.c
+@@ -4588,13 +4588,13 @@ Ensure test_dbi_result_get_datetime() {
+    while (dbi_result_next_row(result)) {
+       errmsg = NULL;
+       time_t the_datetime = 0;
+-      time_t the_date = 0;
+-      time_t the_time = 0;
+ 
+       the_datetime = dbi_result_get_datetime(result, "the_datetime");
+       assert_equal( the_datetime, expect_longlong_from_name("the_datetime", cinfo.drivername));
+ 
+       if(!strcmp(cinfo.drivername, "msql")) {
++         const char *the_date, *the_time;
++
+          the_date = dbi_result_get_string(result, "the_date");
+          assert_string_equal(the_date, "11-jul-1977");
+ 
+@@ -4602,6 +4602,8 @@ Ensure test_dbi_result_get_datetime() {
+          assert_string_equal(the_time, "23:59:59");
+       }
+       else {
++         time_t the_date, the_time;
++
+          the_date = dbi_result_get_datetime(result, "the_date");
+          assert_equal(the_date, expect_longlong_from_name("the_date", cinfo.drivername));
+ 
+-- 
+2.47.0
+

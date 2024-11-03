@@ -4680,4 +4680,15 @@ bsc#1216656</comment>
   boo#1231798</comment>
     <requestid>1217084</requestid>
   </revision>
+  <revision rev="405" vrev="1">
+    <srcmd5>9946a2ca364db7575a994dd8d498bf2d</srcmd5>
+    <version>10.9.0</version>
+    <time>1730614624</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to libvirt 10.9.0
+  - jsc#PED-8909, jsc#9854, jsc#9855
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v10-9-0-2024-11-01</comment>
+    <requestid>1220116</requestid>
+  </revision>
 </revisionlist>

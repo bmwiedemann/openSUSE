@@ -10,9 +10,9 @@
   
   <property name="project.groupId" value="jakarta.servlet"/>
   <property name="project.artifactId" value="jakarta.servlet-api"/>
-  <property name="project.version" value="5.0.0"/>
+  <property name="project.version" value="6.1.0"/>
   
-  <property name="spec.version" value="5.0"/>
+  <property name="spec.version" value="6.1"/>
   <property name="bundle.version" value="${project.version}"/>
 
   <property name="compiler.source" value="1.8"/>
@@ -53,9 +53,24 @@
            verbose="false" 
            fork="false" 
            source="${compiler.source}">
+	  <exclude name="**/module-info.java"/>
       <src>
         <pathelement location="${build.srcDir}"/>
       </src>
+    </javac>
+    <javac destdir="${build.outputDir}" 
+           nowarn="false" 
+           debug="true" 
+           optimize="false" 
+           deprecation="true" 
+           target="9" 
+           verbose="false" 
+           fork="false" 
+           source="9">
+      <src>
+        <pathelement location="${build.srcDir}"/>
+      </src>
+	  <include name="**/module-info.java"/>
     </javac>
     <copy todir="${build.outputDir}">
       <fileset dir="${build.resourceDir}">

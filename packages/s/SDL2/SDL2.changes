@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov  2 11:45:47 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.30.9
+  * Fixed flicker when entering/exiting fullscreen or moving the
+    window between scaled and non-scaled displays under Wayland.
+
+-------------------------------------------------------------------
 Tue Oct  1 23:24:41 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.30.8

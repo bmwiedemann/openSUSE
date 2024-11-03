@@ -1,0 +1,28 @@
+From 6cf25f92098c192d22dc82b9888386fa52b4d797 Mon Sep 17 00:00:00 2001
+From: Bart van Strien <bart.bes+projects@gmail.com>
+Date: Sun, 29 Sep 2013 12:56:48 +0200
+Subject: [PATCH] Clean up warnings in luasocket and box2d
+
+diff --git a/src/libraries/Box2D/README.MODIFIED b/src/libraries/Box2D/README.MODIFIED
+new file mode 100644
+index 00000000..71388bce
+--- /dev/null
++++ b/src/libraries/Box2D/README.MODIFIED
+@@ -0,0 +1 @@
++PLEASE NOTE, this version of Box2D is NOT original, it has been MODIFIED by the LÖVE Development Team.
+diff --git a/src/libraries/luasocket/libluasocket/luasocket.c b/src/libraries/luasocket/libluasocket/luasocket.c
+index 798a3116..0d10bb1d 100644
+--- a/src/libraries/luasocket/libluasocket/luasocket.c
++++ b/src/libraries/luasocket/libluasocket/luasocket.c
+@@ -110,7 +110,7 @@ static int base_open(lua_State *L) {
+ /*-------------------------------------------------------------------------*\
+ * Initializes all library modules.
+ \*-------------------------------------------------------------------------*/
+-LUASOCKET_API luaopen_socket_core(lua_State *L) {
++int LUASOCKET_API luaopen_socket_core(lua_State *L) {
+     int i;
+     base_open(L);
+     for (i = 0; mod[i].name; i++) mod[i].func(L);
+-- 
+2.47.0
+

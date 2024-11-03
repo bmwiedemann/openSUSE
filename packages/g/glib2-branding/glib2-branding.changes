@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov  1 01:52:19 UTC 2024 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Remove "picture-uri-dark" in schema "org.gnome.desktop.screensaver",
+  there is no this key in schema currently.
+
+-------------------------------------------------------------------
 Tue Oct  1 19:32:14 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Align default wallpaper and screensaver urls with new light and dark

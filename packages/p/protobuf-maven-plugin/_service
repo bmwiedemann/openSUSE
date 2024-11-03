@@ -1,0 +1,15 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/xolstice/protobuf-maven-plugin.git</param>
+		<param name="revision">protobuf-maven-plugin-0.6.1</param>
+		<param name="match-tag">protobuf-maven-plugin-*</param>
+		<param name="versionformat">@PARENT_TAG@</param>
+		<param name="versionrewrite-pattern">protobuf-maven-plugin-(.*)</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

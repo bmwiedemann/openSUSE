@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Nov  2 13:07:53 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update outdated source service configuration
+- Disable update of dependencies
+
+-------------------------------------------------------------------
+Sat Oct 26 06:35:01 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 0.26.3:
+  * update yanked dependency to libc to fix building with --locked.
+  * document breaking change in theme file format.
+  * support BUILD_GIT_COMMIT_ID enabling builds from git archive generated source tarballs or other outside a git repo
+  * breaking change: Theme format based on new changes from ratatui crate
+
+-------------------------------------------------------------------
 Sat May 18 12:21:18 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to version 0.26.2:

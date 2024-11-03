@@ -1,0 +1,50 @@
+From d8b74e872ae054f16c55c144db9799297a7e6d0a Mon Sep 17 00:00:00 2001
+From: Joel Uckelman <joel.uckelman@aon.com>
+Date: Wed, 3 Jul 2024 17:44:20 +0100
+Subject: [PATCH] Added missing declaration of function used externally.
+References: https://github.com/libyal/libfwnt/pull/14
+
+---
+ include/libfwnt.h.in                | 4 ++++
+ libfwnt/libfwnt_locale_identifier.h | 3 +++
+ 2 files changed, 7 insertions(+)
+
+diff --git a/include/libfwnt.h.in b/include/libfwnt.h.in
+index 3c8c6aa..43e3806 100644
+--- a/include/libfwnt.h.in
++++ b/include/libfwnt.h.in
+@@ -128,6 +128,10 @@ int libfwnt_error_backtrace_sprint(
+  * Locale identifier (LCID) functions
+  * ------------------------------------------------------------------------- */
+ 
++LIBFWNT_EXTERN \
++const char *libfwnt_locale_identifier_language_tag_get_identifier(
++             uint16_t lcid_language_tag );
++
+ /* -------------------------------------------------------------------------
+  * Security descriptor functions
+  * ------------------------------------------------------------------------- */
+diff --git a/libfwnt/libfwnt_locale_identifier.h b/libfwnt/libfwnt_locale_identifier.h
+index cfa040d..ebea8bd 100644
+--- a/libfwnt/libfwnt_locale_identifier.h
++++ b/libfwnt/libfwnt_locale_identifier.h
+@@ -25,6 +25,8 @@
+ #include <common.h>
+ #include <types.h>
+ 
++#include "libfwnt_extern.h"
++
+ #if defined( __cplusplus )
+ extern "C" {
+ #endif
+@@ -46,6 +48,7 @@ struct libfwnt_locale_identifier_language_tag
+ 	const char *description;
+ };
+ 
++LIBFWNT_EXTERN \
+ const char *libfwnt_locale_identifier_language_tag_get_identifier(
+              uint16_t lcid_language_tag );
+ 
+-- 
+2.47.0
+
