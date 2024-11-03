@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Nov  3 00:28:07 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Add gcc14.diff
+
+-------------------------------------------------------------------
 Tue Apr  9 16:25:32 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Avoid making /usr/share/doc/packages itself part of the RPM

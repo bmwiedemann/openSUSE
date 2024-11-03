@@ -23,12 +23,12 @@ Summary:        DOOM source port with demo compatibility
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/3D/Shoot
 URL:            http://prboom-plus.sf.net/
-
 #Git-Clone:	https://github.com/coelckers/prboom-plus
 Source:         https://github.com/coelckers/prboom-plus/archive/refs/tags/v%version.tar.gz
 Patch1:         prboom-nodatetime.diff
 Patch3:         prboom-hbar-all.diff
 Patch4:         prboom-hbar-gradient.diff
+Patch5:         gcc14.diff
 BuildRequires:  Mesa-devel
 BuildRequires:  c++_compiler
 BuildRequires:  cmake

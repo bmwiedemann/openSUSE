@@ -1,0 +1,81 @@
+
+GLU uses a pre-C89 feature (functions with unspecified arguments);
+that feature's syntax has new meaning in C23. POSIX systems have
+C language extensions (for dlsym) and we can exploit that to get
+GLU programs building again.
+
+prboom2/src/gl_preprocess.c:497:41: error: passing argument 3 of ‘gluTessCallback’ from incompatible pointer type [-Wincompatible-pointer-types]
+  497 |   gluTessCallback(tess, GLU_TESS_BEGIN, ntessBegin);
+prboom2/src/gl_preprocess.c:498:42: error: passing argument 3 of ‘gluTessCallback’ from incompatible pointer type [-Wincompatible-pointer-types]
+  498 |   gluTessCallback(tess, GLU_TESS_VERTEX, ntessVertex);
+prboom2/src/gl_preprocess.c:499:41: error: passing argument 3 of ‘gluTessCallback’ from incompatible pointer type [-Wincompatible-pointer-types]
+  499 |   gluTessCallback(tess, GLU_TESS_ERROR, ntessError);
+prboom2/src/gl_preprocess.c:500:43: error: passing argument 3 of ‘gluTessCallback’ from incompatible pointer type [-Wincompatible-pointer-types]
+  500 |   gluTessCallback(tess, GLU_TESS_COMBINE, ntessCombine);
+
+Just signedness/constness:
+
+prboom2/src/gl_shader.c:149:40: error: passing argument 3 of ‘ReadLump’ from incompatible pointer type [-Wincompatible-pointer-types]
+  149 |   vp_size = ReadLump(filename, vpname, &vp_data);
+prboom2/src/gl_shader.c:84:81: note: expected ‘unsigned char **’ but argument is of type ‘char **’
+prboom2/src/gl_shader.c:165:51: error: passing argument 3 of ‘GLEXT_glShaderSourceARB’ from incompatible pointer type [-Wincompatible-pointer-types]
+  165 |     GLEXT_glShaderSourceARB(shader->hVertProg, 1, &vp_data, &vp_size);
+prboom2/src/gl_shader.c:166:51: error: passing argument 3 of ‘GLEXT_glShaderSourceARB’ from incompatible pointer type [-Wincompatible-pointer-types]
+  166 |     GLEXT_glShaderSourceARB(shader->hFragProg, 1, &fp_data, &fp_size);
+
+---
+ prboom2/src/gl_preprocess.c |    8 ++++----
+ prboom2/src/gl_shader.c     |   12 ++++++++----
+ 2 files changed, 12 insertions(+), 8 deletions(-)
+
+Index: prboom2/src/gl_preprocess.c
+===================================================================
+--- prboom2/src/gl_preprocess.c.orig
++++ prboom2/src/gl_preprocess.c
+@@ -494,10 +494,10 @@ static void gld_PrecalculateSector(int n
+     return;
+   }
+   // set callbacks
+-  gluTessCallback(tess, GLU_TESS_BEGIN, ntessBegin);
+-  gluTessCallback(tess, GLU_TESS_VERTEX, ntessVertex);
+-  gluTessCallback(tess, GLU_TESS_ERROR, ntessError);
+-  gluTessCallback(tess, GLU_TESS_COMBINE, ntessCombine);
++  gluTessCallback(tess, GLU_TESS_BEGIN, (_GLUfuncptr)(void *)ntessBegin);
++  gluTessCallback(tess, GLU_TESS_VERTEX, (_GLUfuncptr)(void *)ntessVertex);
++  gluTessCallback(tess, GLU_TESS_ERROR, (_GLUfuncptr)(void *)ntessError);
++  gluTessCallback(tess, GLU_TESS_COMBINE, (_GLUfuncptr)(void *)ntessCombine);
+   gluTessCallback(tess, GLU_TESS_END, ntessEnd);
+   if (levelinfo) fprintf(levelinfo, "sector %i, %i lines in sector\n", num, sectors[num].linecount);
+   // remove any line which has both sides in the same sector (i.e. Doom2 Map01 Sector 1)
+Index: prboom2/src/gl_shader.c
+===================================================================
+--- prboom2/src/gl_shader.c.orig
++++ prboom2/src/gl_shader.c
+@@ -146,10 +146,14 @@ static GLShader* gld_LoadShader(const ch
+   filename = malloc(MAX(vp_fnlen, fp_fnlen) + 1);
+ 
+   sprintf(filename, "%s/shaders/%s.txt", I_DoomExeDir(), vpname);
+-  vp_size = ReadLump(filename, vpname, &vp_data);
++  unsigned char *xyz = NULL;
++  vp_size = ReadLump(filename, vpname, &xyz);
++  vp_data = (char *)xyz;
+ 
+   sprintf(filename, "%s/shaders/%s.txt", I_DoomExeDir(), fpname);
+-  fp_size = ReadLump(filename, fpname, &fp_data);
++  xyz = NULL;
++  fp_size = ReadLump(filename, fpname, &xyz);
++  fp_data = (char *)xyz;
+   
+   if (vp_data && fp_data)
+   {
+@@ -158,8 +162,8 @@ static GLShader* gld_LoadShader(const ch
+     shader->hVertProg = GLEXT_glCreateShaderObjectARB(GL_VERTEX_SHADER_ARB);
+     shader->hFragProg = GLEXT_glCreateShaderObjectARB(GL_FRAGMENT_SHADER_ARB);	
+ 
+-    GLEXT_glShaderSourceARB(shader->hVertProg, 1, &vp_data, &vp_size);
+-    GLEXT_glShaderSourceARB(shader->hFragProg, 1, &fp_data, &fp_size);
++    GLEXT_glShaderSourceARB(shader->hVertProg, 1, (const char **)&vp_data, &vp_size);
++    GLEXT_glShaderSourceARB(shader->hFragProg, 1, (const char **)&fp_data, &fp_size);
+ 
+     GLEXT_glCompileShaderARB(shader->hVertProg);
+     GLEXT_glCompileShaderARB(shader->hFragProg);

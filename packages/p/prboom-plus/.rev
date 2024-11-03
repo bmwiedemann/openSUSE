@@ -171,4 +171,12 @@ Can't really provide infinitely many versions!</comment>
   following a change in the %cmake macro</comment>
     <requestid>1166487</requestid>
   </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>1e206d063eb9c8a43621f64a85973243</srcmd5>
+    <version>2.6.66</version>
+    <time>1730614696</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gcc14.diff</comment>
+    <requestid>1220373</requestid>
+  </revision>
 </revisionlist>
