@@ -296,4 +296,13 @@
   * Support permille units and `‰` symbol (PR #2033, Issue #1963)</comment>
     <requestid>1191755</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>d5c0d25edfe4196a55232fee5bb5b1a7</srcmd5>
+    <version>0.24.3</version>
+    <time>1730614701</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-python-313.patch:
+  * Do not mix frozen and non-frozen dataclasses.</comment>
+    <requestid>1220380</requestid>
+  </revision>
 </revisionlist>

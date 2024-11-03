@@ -24,6 +24,8 @@ Summary:        Physical quantities module
 License:        BSD-3-Clause
 URL:            https://github.com/hgrecco/pint
 Source:         https://files.pythonhosted.org/packages/source/p/pint/pint-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Based on gh#hgrecco/pint#2037
+Patch0:         support-python-313.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
@@ -64,7 +66,7 @@ and constants. Due to it's modular design, you to extend (or even rewrite!)
 the complete list without changing the source code.
 
 %prep
-%setup -q -n pint-%{version}
+%autosetup -p1 -n pint-%{version}
 
 %build
 %pyproject_wheel
