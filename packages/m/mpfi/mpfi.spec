@@ -23,11 +23,11 @@ Release:        0
 Summary:        Multi-precision floating-point interval arithmetic computation library
 License:        LGPL-2.1-or-later
 Group:          Productivity/Scientific/Math
-URL:            http://mpfi.gforge.inria.fr/
-
-#SVN-Clone:	svn://scm.gforge.inria.fr/svnroot/mpfi/trunk
-# Download depends on the file ID, not the filename!
-Source:         https://gforge.inria.fr/frs/download.php/file/38111/mpfi-1.5.4.tgz
+URL:            https://gitlab.inria.fr/mpfi/mpfi
+# gforge is gone and replaced by gitlab; tarballs apparently not retained
+#Source:         https://gforge.inria.fr/frs/download.php/file/38111/mpfi-1.5.4.tgz
+Source:         %name-%version.tgz
+Patch1:         0001-incorret-types-corrected.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gmp-devel >= 4.1.0
@@ -77,7 +77,7 @@ This subpackage provides the development headers and libraries for it.
 %build
 ./autogen.sh
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -86,8 +86,7 @@ rm -f "%buildroot/%_libdir"/*.la
 %check
 #make check #upstream broke it in 1.5.4
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %post devel
 %install_info --info-dir="%_infodir" "%_infodir/mpfi.info.gz"
@@ -102,5 +101,6 @@ rm -f "%buildroot/%_libdir"/*.la
 %_includedir/mpfi*.h
 %_libdir/libmpfi.so
 %_infodir/mpfi.info*
+%license COPYING*
 
 %changelog

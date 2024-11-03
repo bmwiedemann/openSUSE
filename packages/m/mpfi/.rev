@@ -44,4 +44,12 @@
     <comment>- Update to new upstream release 1.5.4</comment>
     <requestid>725975</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>558ab56e1bfe3a4e1f05f84b83f491b6</srcmd5>
+    <version>1.5.4</version>
+    <time>1730614691</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-incorret-types-corrected.patch</comment>
+    <requestid>1220360</requestid>
+  </revision>
 </revisionlist>
