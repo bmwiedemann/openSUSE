@@ -1,0 +1,27 @@
+From 43904d87b7ae7339e393ce9de465556e3da52d3c Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Thu, 20 Jun 2024 10:36:32 +0200
+Subject: [PATCH] Increase the time interval for window show workaround
+
+When the keepassxc window is shown something generetes a hide event, and it is hidden again immediately.
+
+The 50ms interval for avoiding hiding the window when shown is not enough, even on modern systems.
+
+Make the interval longer.
+---
+ src/gui/MainWindow.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/gui/MainWindow.cpp b/src/gui/MainWindow.cpp
+index 0bd949f10e..66eb4048bb 100644
+--- a/src/gui/MainWindow.cpp
++++ b/src/gui/MainWindow.cpp
+@@ -1818,7 +1818,7 @@ void MainWindow::hide()
+ {
+ #ifndef Q_OS_WIN
+     qint64 current_time = Clock::currentMilliSecondsSinceEpoch();
+-    if (current_time - m_lastShowTime < 50) {
++    if (current_time - m_lastShowTime < 250) {
+         return;
+     }
+ #endif

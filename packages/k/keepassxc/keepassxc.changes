@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov  2 19:11:06 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Backports 43904d87b7ae7339e393ce9de465556e3da52d3c.patch:
+  integrate changes from SR#1181559
+
+-------------------------------------------------------------------
 Sat Aug 17 17:04:37 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - build with Botan 3 on Leap 15.7

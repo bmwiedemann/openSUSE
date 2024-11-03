@@ -503,4 +503,13 @@
     <comment></comment>
     <requestid>1195129</requestid>
   </revision>
+  <revision rev="45" vrev="4">
+    <srcmd5>140f61be93cb38e82178b27ade787dd3</srcmd5>
+    <version>2.7.9</version>
+    <time>1730614684</time>
+    <user>dimstar_suse</user>
+    <comment>- Backports 43904d87b7ae7339e393ce9de465556e3da52d3c.patch:
+  integrate changes from SR#1181559</comment>
+    <requestid>1220334</requestid>
+  </revision>
 </revisionlist>
