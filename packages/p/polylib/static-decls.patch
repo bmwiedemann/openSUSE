@@ -1,0 +1,24 @@
+From: Jan Engelhardt <ej@inai.de>
+Date: 2024-11-03 00:14:45.456431711 +0100
+
+./applications/testCompressParms.c:58:9: error: implicit declaration of function ‘test_Constraints_Remove_parm_eqs’; did you mean ‘Constraints_Remove_parm_eqs’? [-Wimplicit-function-declaration]
+./applications/testCompressParms.c:59:9: error: implicit declaration of function ‘test_Polyhedron_Remove_parm_eqs’; did you mean ‘Polyhedron_Remove_parm_eqs’? [-Wimplicit-function-declaration]
+./applications/testCompressParms.c:60:9: error: implicit declaration of function ‘test_Constraints_fullDimensionize’; did you mean ‘Constraints_fullDimensionize’? [-Wimplicit-function-declaration]
+---
+ applications/testCompressParms.c |    3 +++
+ 1 file changed, 3 insertions(+)
+
+Index: polylib-5.22.5/applications/testCompressParms.c
+===================================================================
+--- polylib-5.22.5.orig/applications/testCompressParms.c
++++ polylib-5.22.5/applications/testCompressParms.c
+@@ -41,6 +41,9 @@
+                 } 
+ 
+ #define maxRays 200
++int test_Constraints_Remove_parm_eqs(Matrix * A, Matrix * B);
++int test_Polyhedron_Remove_parm_eqs(Matrix * A, Matrix * B);
++int test_Constraints_fullDimensionize(Matrix * A, Matrix * B, unsigned int nbSamples);
+ 
+ const char *origNames[] =
+ 	{"n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};

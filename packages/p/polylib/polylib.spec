@@ -25,6 +25,7 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://icps.u-strasbg.fr/polylib/
 Source:         https://icps.u-strasbg.fr/polylib/polylib_src/%name-%version.tar.gz
+Patch1:         static-decls.patch
 BuildRequires:  gcc-c++
 BuildRequires:  ntl-devel
 BuildRequires:  pkg-config
@@ -79,8 +80,7 @@ developing with PolyLib.
 %make_install
 find %buildroot -type f -name "*.la" -delete -print
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files
 %_bindir/c2p

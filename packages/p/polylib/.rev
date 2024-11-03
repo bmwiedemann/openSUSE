@@ -16,4 +16,12 @@
 - Require gmp from polylib-devel</comment>
     <requestid>1095073</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d57564b5f7d778b297c46a56c2ea000d</srcmd5>
+    <version>5.22.5</version>
+    <time>1730614693</time>
+    <user>dimstar_suse</user>
+    <comment>- Add static-decls.patch</comment>
+    <requestid>1220365</requestid>
+  </revision>
 </revisionlist>
