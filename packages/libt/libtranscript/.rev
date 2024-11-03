@@ -71,4 +71,12 @@
     <comment>- Add keyrings and HTTPS URLs.</comment>
     <requestid>758359</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>81cb38392b98e346699897d9eba21d6c</srcmd5>
+    <version>0.3.3</version>
+    <time>1730614691</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-build-fix-configure-failure-in-gcc-14.patch</comment>
+    <requestid>1220357</requestid>
+  </revision>
 </revisionlist>

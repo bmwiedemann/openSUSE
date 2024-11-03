@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov  2 22:22:48 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-build-fix-configure-failure-in-gcc-14.patch
+
+-------------------------------------------------------------------
 Fri Dec 20 00:02:08 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Add keyrings and HTTPS URLs.

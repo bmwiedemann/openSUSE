@@ -24,11 +24,11 @@ Summary:        A character set conversion library
 License:        GPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://os.ghalkes.nl/libtranscript.html
-
-#Git-Clone:	git://github.com/gphalkes/transcript
+#Git-Clone:	https://github.com/gphalkes/transcript
 Source:         https://os.ghalkes.nl/dist/%name-%version.tar.bz2
 Source2:        https://os.ghalkes.nl/dist/%name-%version.tar.bz2.sig
 Source3:        %name.keyring
+Patch1:         0001-build-fix-configure-failure-in-gcc-14.patch
 BuildRequires:  fdupes
 BuildRequires:  gettext-tools
 BuildRequires:  libtool
@@ -64,15 +64,14 @@ applications that want to make use of libtranscript.
 %build
 export CC=gcc
 %configure --docdir="%_docdir/%name"
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 rm -f "%buildroot/%_libdir"/*.la
 %fdupes %buildroot/%_prefix
 
-%post   -p /sbin/ldconfig -n %lname
-%postun -p /sbin/ldconfig -n %lname
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %_libdir/libtranscript.so.1*
