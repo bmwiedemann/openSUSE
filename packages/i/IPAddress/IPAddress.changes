@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Wed Feb 21 09:19:51 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
+Wed Sep 13 13:11:55 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: produce reproducible manifest with bnd
+
+-------------------------------------------------------------------
+Mon Mar  7 23:42:38 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of IPAddress 5.3.3

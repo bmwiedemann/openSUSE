@@ -1,0 +1,48 @@
+diff -urEbwB IPAddress-5.3.3/IPAddress/build.xml IPAddress-5.3.3.new/IPAddress/build.xml
+--- IPAddress-5.3.3/IPAddress/build.xml	2022-03-08 00:31:46.075367341 +0100
++++ IPAddress-5.3.3.new/IPAddress/build.xml	2022-03-08 00:38:54.077932492 +0100
+@@ -6,7 +6,6 @@
+ 	<property name="rootdistdir" location="${rootOffset}/dist"/>
+ 	<property name="javadocdir" value="javadoc"/>
+ 	<property name="rootjavadocdir" location="${rootOffset}/${javadocdir}"/>
+-	<property name="functional_doclet_dir" location="${rootOffset}/../../../git/Functional-Doclet-for-Javadoc/Functional Doclet for Javadoc" />
+ 	<property name="jarExtension" value=".jar"/>
+ 	<property name="module" value="/inet.ipaddr" />
+ 	<property name="src_location" value="${rootOffset}/src${module}" />
+@@ -88,17 +87,15 @@
+ 	</target>
+ 
+ 	<target name="create javadoc">
+-		<echo>${functional_doclet_dir}</echo>
+ 		<mkdir dir="${rootjavadocdir}"/>
+ 		<delete includeemptydirs="true" verbose="true">
+ 		    <fileset dir="${rootjavadocdir}" includes="**/*"/>
+ 		</delete>
+ 		<!-- these packages used internally - ${rootPackage}.format.validate -->
+ 		<javadoc sourcepath="${src_location}:${jdk_src_location}" destdir="${rootjavadocdir}"
+-			packagenames="${rootPackage}, ${rootPackage}.format, ${rootPackage}.format.util,
++			packagenames="${rootPackage}, ${rootPackage}.format, ${rootPackage}.format.util, ${rootPackage}.format.validate,
+ 				${rootPackage}.format.standard, ${rootPackage}.format.large, ${rootPackage}.format.string,
+ 				${rootPackage}.format.util.sql, ${rootPackage}.ipv6, ${rootPackage}.ipv4, ${rootPackage}.mac"
+-			stylesheetfile="${functional_doclet_dir}/stylesheet_custom.css"
+ 			author="true"
+ 			encoding="utf-8"
+ 			public="true"
+@@ -106,17 +103,9 @@
+ 			Windowtitle="IPAddress javadoc by seancfoley"
+ 			doctitle="IPAddress Java library for handling IP addresses and subnets, both IPv4 and IPv6"
+ 			>
+-			<doclet name="tools.doclets.formats.html.FunctionalDoclet"
+-				path="${functional_doclet_dir}/dist/FunctionalDoclet.jar">
+-				<param name="-tag" value="custom.core:a:Core" />
+-				<param name="-tag" value="implNote:a" />
+-				<param name="-tag" value="implSpec:a" />
+-				<param name="-tag" value="apiNote:a" />
+-			</doclet>
+ 			<classpath>
+ 				<pathelement location="${bin_location}"/>
+ 			</classpath>
+-			<link href="${jdk_link}"/>
+ 		</javadoc>
+ 	</target>
+ 	

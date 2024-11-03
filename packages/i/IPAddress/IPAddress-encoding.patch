@@ -1,0 +1,29 @@
+diff -urEbwB IPAddress-5.3.3/IPAddress/build.xml IPAddress-5.3.3.new/IPAddress/build.xml
+--- IPAddress-5.3.3/IPAddress/build.xml	2020-09-25 06:20:46.000000000 +0200
++++ IPAddress-5.3.3.new/IPAddress/build.xml	2022-03-08 00:29:25.281988242 +0100
+@@ -67,7 +67,7 @@
+ 					We compile everything java 9, then we will recompile java 8 but not the module-info.java -->
+ 		<!-- first compile entirely as java 9 to ensure compliance with module configuration -->
+ 		<echo message="compiling as Java 9"/>
+-		<javac srcdir="${src_location}" destdir="${bin_location}" debug="on"
++		<javac srcdir="${src_location}" destdir="${bin_location}" debug="on" encoding="utf-8"
+ 				source="9" target="9" failonerror="false" verbose="false" createMissingPackageInfoClass="false">
+ 			<include name="${rootPackagePath}/**/*.java"/>
+ 		</javac>
+@@ -79,7 +79,7 @@
+     		</fileset>
+     	</delete>
+ 		<echo message="compiling as Java 8"/>
+-		<javac srcdir="${src_location}" destdir="${bin_location}" debug="on"
++		<javac srcdir="${src_location}" destdir="${bin_location}" debug="on" encoding="utf-8"
+ 				source="1.8" target="1.8" failonerror="false" verbose="false" createMissingPackageInfoClass="false"
+ 				deprecation="true">
+ 			<include name="${rootPackagePath}/**/*.java"/>
+@@ -100,6 +100,7 @@
+ 				${rootPackage}.format.util.sql, ${rootPackage}.ipv6, ${rootPackage}.ipv4, ${rootPackage}.mac"
+ 			stylesheetfile="${functional_doclet_dir}/stylesheet_custom.css"
+ 			author="true"
++			encoding="utf-8"
+ 			public="true"
+ 			use="true"
+ 			Windowtitle="IPAddress javadoc by seancfoley"
