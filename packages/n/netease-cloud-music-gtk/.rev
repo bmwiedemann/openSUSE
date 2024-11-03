@@ -225,4 +225,20 @@
 </comment>
     <requestid>1193444</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>ee07c4e38e7a8120ad4defa75da96b0e</srcmd5>
+    <version>2.5.0</version>
+    <time>1730614703</time>
+    <user>dimstar_suse</user>
+    <comment>- Release version 2.5.0 
+ + Add lyrics scrolling playback function
+ + Persistent volume settings
+ + Lock gettext version
+ + Fix the problem of creating the same page multiple times
+ + Fix the missing icon of delete song button
+ + Add crown icon in front of username to mark VIP users
+ + Add heartbeat mode/smart play function
+</comment>
+    <requestid>1220382</requestid>
+  </revision>
 </revisionlist>

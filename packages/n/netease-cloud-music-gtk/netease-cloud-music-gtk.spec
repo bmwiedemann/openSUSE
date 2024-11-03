@@ -20,7 +20,7 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 %define _lto_cflags %{nil}
 Name:           netease-cloud-music-gtk
-Version:        2.4.1
+Version:        2.5.0
 Release:        0
 Summary:        Linux 平台下基于 Rust + GTK4 开发的网易云音乐播放器
 License:        GPL-3.0-or-later

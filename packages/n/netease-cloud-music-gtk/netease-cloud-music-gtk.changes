@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Nov  3 02:00:18 UTC 2024 - gmg 137 <gmg137@live.com>
+
+- Release version 2.5.0 
+ + Add lyrics scrolling playback function
+ + Persistent volume settings
+ + Lock gettext version
+ + Fix the problem of creating the same page multiple times
+ + Fix the missing icon of delete song button
+ + Add crown icon in front of username to mark VIP users
+ + Add heartbeat mode/smart play function
+
+-------------------------------------------------------------------
 Sat Aug 10 13:51:41 UTC 2024 - gmg 137 <gmg137@live.com>
 
 - Release version 2.4.1 
