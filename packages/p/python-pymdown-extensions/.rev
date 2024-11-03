@@ -73,4 +73,41 @@
   * Assert toc_tokens is a superset of what we are looking for.</comment>
     <requestid>1160508</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>17ff1c1d5cd6b5b4bda6ee6fd923cb95</srcmd5>
+    <version>10.12</version>
+    <time>1730614700</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 10.12:
+  * NEW: Blocks: Blocks extensions no longer considered in beta.
+  * NEW: Details: Details is marked as &quot;legacy&quot; in documentation in favor
+    of the new pymdownx.blocks.details approach.
+  * NEW: Tabbed: Tabbed is marked as &quot;legacy&quot; in documentation in favor of
+    the new pymdownx.blocks.tab approach.
+  * NEW: Caption: Add new &quot;blocks&quot; style extension called Caption which
+    helps with specifying figures with captions.
+  * NEW: Emoji: Add a new strict option that will raise an exception if an
+    emoji is used whose name has changed, removed, or never existed.
+  * FIX: Emoji: Emoji links should be generated such that they point to the
+    new CDN version.
+  * FIX: SuperFences: Fix a regression where certain patterns could cause
+    a hang.
+  * FIX: SuperFences: Fix regression where an omitted language in conjunction
+    with options in the fenced header can cause a fence to not be parsed.
+  * FIX: BetterEm: Add better support for *em, **em,strong*** and _em,
+    __em,strong___ cases.
+  * FIX: Caret: Add better support for *sup, **sup,ins***.
+  * FIX: Tilde: Add better support for *sub, **sub,del***.
+  * FIX: FancyLists: Remove a mistaken semicolon from injected classes.
+  * NEW: FancyLists: Add new FancyLists extension.
+  * NEW: Emoji: Update Twemoji data to the latest.
+  * FIX: PathConverter: Fixes for latest changes in Python regarding
+    urlunparse.
+  * NEW: Officially support Python 3.13.
+  * FIX: Snippets: Better handling of cases where URL snippet requests
+    contain no header length.
+  * FIX: Snippets: Fix snippet line range with a start of line 1.
+  * NEW: Require Python Markdown 3.6+.</comment>
+    <requestid>1220383</requestid>
+  </revision>
 </revisionlist>

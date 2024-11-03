@@ -17,15 +17,13 @@
 
 
 Name:           python-pymdown-extensions
-Version:        10.7.1
+Version:        10.12
 Release:        0
 Summary:        Extension pack for Python Markdown
 License:        MIT
 URL:            https://github.com/facelessuser/pymdown-extensions
 Source:         https://github.com/facelessuser/pymdown-extensions/archive/refs/tags/%{version}.tar.gz#/pymdown-extensions-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE Assert toc_tokens is a superset of what we want to check
-Patch0:         fix-toc-list-check.patch
-BuildRequires:  %{python_module Markdown >= 3.2}
+BuildRequires:  %{python_module Markdown >= 3.6}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 # test requirements
@@ -35,7 +33,7 @@ BuildRequires:  %{python_module pytest}
 #
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Markdown >= 3.2
+Requires:       python-Markdown >= 3.6
 Requires:       python-PyYAML >= 3.10
 Recommends:     python-Pygments >= 2.12
 BuildArch:      noarch

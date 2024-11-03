@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sun Nov  3 02:33:53 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 10.12:
+  * NEW: Blocks: Blocks extensions no longer considered in beta.
+  * NEW: Details: Details is marked as "legacy" in documentation in favor
+    of the new pymdownx.blocks.details approach.
+  * NEW: Tabbed: Tabbed is marked as "legacy" in documentation in favor of
+    the new pymdownx.blocks.tab approach.
+  * NEW: Caption: Add new "blocks" style extension called Caption which
+    helps with specifying figures with captions.
+  * NEW: Emoji: Add a new strict option that will raise an exception if an
+    emoji is used whose name has changed, removed, or never existed.
+  * FIX: Emoji: Emoji links should be generated such that they point to the
+    new CDN version.
+  * FIX: SuperFences: Fix a regression where certain patterns could cause
+    a hang.
+  * FIX: SuperFences: Fix regression where an omitted language in conjunction
+    with options in the fenced header can cause a fence to not be parsed.
+  * FIX: BetterEm: Add better support for *em, **em,strong*** and _em,
+    __em,strong___ cases.
+  * FIX: Caret: Add better support for *sup, **sup,ins***.
+  * FIX: Tilde: Add better support for *sub, **sub,del***.
+  * FIX: FancyLists: Remove a mistaken semicolon from injected classes.
+  * NEW: FancyLists: Add new FancyLists extension.
+  * NEW: Emoji: Update Twemoji data to the latest.
+  * FIX: PathConverter: Fixes for latest changes in Python regarding
+    urlunparse.
+  * NEW: Officially support Python 3.13.
+  * FIX: Snippets: Better handling of cases where URL snippet requests
+    contain no header length.
+  * FIX: Snippets: Fix snippet line range with a start of line 1.
+  * NEW: Require Python Markdown 3.6+.
+  * FIX: Fix some test cases.
+  * FIX: Fix warnings due to recent changes in Python Markdown.
+- Drop patch fix-toc-list-check.patch, no longer required.
+
+-------------------------------------------------------------------
 Fri Mar 22 02:46:48 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch fix-toc-list-check.patch:
