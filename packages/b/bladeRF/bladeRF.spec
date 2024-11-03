@@ -34,6 +34,7 @@ URL:            https://nuand.com/
 Source0:        https://github.com/Nuand/bladeRF/archive/%{release_name}.tar.gz#/%{name}-%{release_name}.tar.xz
 Source1:        ad9361.tar.xz
 Patch0:         bladeRF-doxygen-no-timestamp.patch
+Patch1:         gcc14-fix-calloc-arg-order.patch
 BuildRequires:  cmake >= 2.8.4
 BuildRequires:  doxygen
 BuildRequires:  fdupes

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov  2 19:56:06 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch:
+  * gcc14-fix-calloc-arg-order.patch
+    https://github.com/Nuand/bladeRF/commit/b55af91f6b0ccb9afd09dcd3a42b9110c7e5be6f
+
+-------------------------------------------------------------------
 Mon Apr  8 15:39:13 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add _service file to download ad9361.tar.xz file from git
