@@ -16,25 +16,25 @@
 #
 
 Name:           neko
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        A cross-platform lightweight virtual machine and language
 License:        MIT
 Group:          Development/Languages/Other
 Url:            https://nekovm.org
-Source0:        https://github.com/HaxeFoundation/neko/archive/v2-3-0/neko-%{version}.tar.gz
+Source0:        https://github.com/HaxeFoundation/neko/archive/v2-4-0/neko-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  git
 BuildRequires:  apache2-devel
 BuildRequires:  gc-devel
-BuildRequires:  gtk2-devel
+BuildRequires:  gtk3-devel
 BuildRequires:  libmysqlclient-devel
-BuildRequires:  pcre-devel-static
+BuildRequires:  pcre2-devel
 BuildRequires:  sqlite3-devel
 BuildRequires:  zlib-devel-static
-BuildRequires:  (mbedtls-devel >= 2.2.0 and mbedtls-devel < 3)
+BuildRequires:  mbedtls-devel >= 3
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       libneko2 = %{version}
 Provides:       nekovm = %version
@@ -76,7 +76,7 @@ Obsoletes:      nekovm-mysql < %version
 MySQL library for the Neko virtual machine.
 
 %prep
-%setup -q -n neko-2-3-0
+%setup -q -n neko-2-4-0
 
 %build
 %define __builder ninja

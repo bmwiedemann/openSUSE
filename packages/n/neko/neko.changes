@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Jul 23 20:29:00 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to neko 2.4.0
+  * all:
+    + deprecated neko (see README)
+    + added arm64 binaries for Linux and macOS, and universal binaries for macOS
+  * std:
+    + fixed put_env when null is passed in (gh#HaxeFoundation/neko#229
+      gh#HaxeFoundation/haxe#10395)
+    + added sys_cpu_arch (gh#HaxeFoundation/neko#275)
+    + fixed $int to respect whitespace and signs in hex notation and to ignore
+      trailing text (gh#HaxeFoundation/neko#258)
+  * cmake:
+    + update all dependencies
+    + fixed loading error when installing to /usr/local on Unix
+      (gh#HaxeFoundation/neko#271)
+  * regexp:
+    + migrated to pcre2, fixing matches with null characters
+      (gh#HaxeFoundation/neko#249)
+    + fixed stack overflow with large strings (gh#HaxeFoundation/neko#262)
+    + added regexp_matched_num function (gh#HaxeFoundation/neko#257)
+  * nekotools:
+    + allowed custom 404 handler for server (gh#HaxeFoundation/neko#278)
+    + added nekotools boot -c *.n option to help output
+      (gh#HaxeFoundation/neko#273)
+  * ui:
+    + migrated to gtk3 on Linux (gh#HaxeFoundation/neko#220)
+  * sqlite:
+    + fixed early finalizer call (gh#HaxeFoundation/neko#200)
+  * gc:
+    + fixed "GetThreadContext failed" error on Windows
+      (gh#HaxeFoundation/neko#264)
+  * vm:
+    + added more detailed errors for failed stack checks
+      (gh#HaxeFoundation/neko#284)
+  * ssl:
+    + migrated to mbedtls 3 (gh#HaxeFoundation/neko#290)
+    + ignored MBEDTLS_ERR_SSL_WANT_READ and
+      MBEDTLS_ERR_SSL_RECEIVED_NEW_SESSION_TICKET (gh#HaxeFoundation/neko#291)
+
+-------------------------------------------------------------------
 Mon May  1 20:46:23 UTC 2023 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Require the mbedtls-devel version to be lower than 3.0.0
