@@ -27,6 +27,8 @@ Source:         https://github.com/cxong/cdogs-sdl/archive/%{version}/%{name}-%{
 Source1:        cdogs-sdl.rpmlintrc
 Patch0:         fix-build.patch
 Patch1:         fix-env-script-interpreter.patch
+# PATCH-FIX-UPSTREAM - cdogs-sdl-gcc-14.patch - https://sources.debian.org/patches/cdogs-sdl/2.1.0%2Bdfsg-2/gcc-14.patch/
+Patch2:         cdogs-sdl-gcc-14.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  enet-devel
 BuildRequires:  fdupes

@@ -1,0 +1,16 @@
+Author: Reiner Herrmann <reiner@reiner-h.de>
+Description: Fix FTBFS with GCC 14
+Bug-Debian: https://bugs.debian.org/1074873
+Forwarded: https://github.com/cxong/cwolfmap/pull/3
+
+--- a/src/cdogs/cwolfmap/zip/zip.c
++++ b/src/cdogs/cwolfmap/zip/zip.c
+@@ -1673,7 +1673,7 @@
+     *bufsize = n;
+   }
+ 
+-  *buf = calloc(sizeof(unsigned char), n);
++  *buf = calloc(n, sizeof(unsigned char));
+   memcpy(*buf, zip->archive.m_pState->m_pMem, n);
+ 
+   return (ssize_t)n;

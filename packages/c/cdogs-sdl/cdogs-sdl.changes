@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov  2 14:21:27 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Add cdogs-sdl-gcc-14.patch, fixes building with gcc14
+
+-------------------------------------------------------------------
 Sun May 19 15:26:47 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - update to 2.1.0:
