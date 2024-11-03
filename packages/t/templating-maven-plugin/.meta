@@ -1,0 +1,6 @@
+<package name="templating-maven-plugin" project="openSUSE:Factory">
+  <title>Templating Maven Plugin</title>
+  <description>The Templating Maven Plugin handles copying files from a source to a given output directory, while filtering them. This plugin is useful to filter Java Source Code if you need for example to have things in that code replaced with some properties values.</description>
+  <devel project="Java:packages" package="templating-maven-plugin"/>
+  <url>https://github.com/mojohaus/templating-maven-plugin</url>
+</package>
