@@ -20,14 +20,15 @@ Using {} will clear it without running into a type error:
 ---
  src/CMakeLists.txt                           |    5 +++++
  src/common/engine/i_interface.cpp            |    8 --------
+ src/common/models/bonecomponents.h           |    1 +
  src/common/platform/posix/sdl/sdlglvideo.cpp |    2 +-
  src/playsim/p_effect.h                       |    7 +++++--
- 4 files changed, 11 insertions(+), 11 deletions(-)
+ 5 files changed, 12 insertions(+), 11 deletions(-)
 
-Index: gzdoom-g4.13.0/src/CMakeLists.txt
+Index: gzdoom-g4.13.2/src/CMakeLists.txt
 ===================================================================
---- gzdoom-g4.13.0.orig/src/CMakeLists.txt
-+++ gzdoom-g4.13.0/src/CMakeLists.txt
+--- gzdoom-g4.13.2.orig/src/CMakeLists.txt
++++ gzdoom-g4.13.2/src/CMakeLists.txt
 @@ -44,6 +44,11 @@ if( ${TARGET_ARCHITECTURE} MATCHES "x86_
  	set( X64 64 )
  	add_definitions( -DARCH_IA32 )
@@ -40,10 +41,10 @@ Index: gzdoom-g4.13.0/src/CMakeLists.txt
  
  if( NOT PROJECT_LIBRARIES )
  	set( PROJECT_LIBRARIES "" )
-Index: gzdoom-g4.13.0/src/common/engine/i_interface.cpp
+Index: gzdoom-g4.13.2/src/common/engine/i_interface.cpp
 ===================================================================
---- gzdoom-g4.13.0.orig/src/common/engine/i_interface.cpp
-+++ gzdoom-g4.13.0/src/common/engine/i_interface.cpp
+--- gzdoom-g4.13.2.orig/src/common/engine/i_interface.cpp
++++ gzdoom-g4.13.2/src/common/engine/i_interface.cpp
 @@ -6,14 +6,6 @@
  #include "gstrings.h"
  #include "version.h"
@@ -59,10 +60,22 @@ Index: gzdoom-g4.13.0/src/common/engine/i_interface.cpp
  // Some global engine variables taken out of the backend code.
  FStartupScreen* StartWindow;
  SystemCallbacks sysCallbacks;
-Index: gzdoom-g4.13.0/src/common/platform/posix/sdl/sdlglvideo.cpp
+Index: gzdoom-g4.13.2/src/common/models/bonecomponents.h
 ===================================================================
---- gzdoom-g4.13.0.orig/src/common/platform/posix/sdl/sdlglvideo.cpp
-+++ gzdoom-g4.13.0/src/common/platform/posix/sdl/sdlglvideo.cpp
+--- gzdoom-g4.13.2.orig/src/common/models/bonecomponents.h
++++ gzdoom-g4.13.2/src/common/models/bonecomponents.h
+@@ -43,6 +43,7 @@ struct ModelAnim
+ 	float framerate = 0;
+ 	double startFrame = 0;
+ 	int flags = MODELANIM_NONE;
++	int __padding = 0;
+ 	double startTic = 0; // when the current animation started (changing framerates counts as restarting) (or when animation starts if interpolating from previous animation)
+ 	double switchOffset = 0; // when the animation was changed -- where to interpolate the switch from
+ };
+Index: gzdoom-g4.13.2/src/common/platform/posix/sdl/sdlglvideo.cpp
+===================================================================
+--- gzdoom-g4.13.2.orig/src/common/platform/posix/sdl/sdlglvideo.cpp
++++ gzdoom-g4.13.2/src/common/platform/posix/sdl/sdlglvideo.cpp
 @@ -400,7 +400,7 @@ DFrameBuffer *SDLVideo::CreateFrameBuffe
  				builder.RequireExtension(names[i]);
  			auto instance = builder.Create();
@@ -72,10 +85,10 @@ Index: gzdoom-g4.13.0/src/common/platform/posix/sdl/sdlglvideo.cpp
  			if (!I_CreateVulkanSurface(instance->Instance, &surfacehandle))
  				VulkanError("I_CreateVulkanSurface failed");
  
-Index: gzdoom-g4.13.0/src/playsim/p_effect.h
+Index: gzdoom-g4.13.2/src/playsim/p_effect.h
 ===================================================================
---- gzdoom-g4.13.0.orig/src/playsim/p_effect.h
-+++ gzdoom-g4.13.0/src/playsim/p_effect.h
+--- gzdoom-g4.13.2.orig/src/playsim/p_effect.h
++++ gzdoom-g4.13.2/src/playsim/p_effect.h
 @@ -75,7 +75,10 @@ enum EParticleFlags
  class DVisualThinker;
  struct particle_t

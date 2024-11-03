@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Nov  2 16:40:47 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.13.2
+  * Added (SPF_)STRETCHPIXELS - for actors, makes rollsprites
+    levelstretched, for particles, puts them back to the original
+    stretch math as before, optional opt-in flag.
+  * Sector damage code reverted due to some critical bugs,
+    feature will be in 4.14 timeframe.
+
+-------------------------------------------------------------------
 Sat Oct 12 08:46:50 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.13.0

@@ -17,7 +17,7 @@
 
 
 Name:           gzdoom
-Version:        4.13.0
+Version:        4.13.2
 Release:        0
 Summary:        A DOOM source port with graphic and modding extensions
 License:        GPL-3.0-only
