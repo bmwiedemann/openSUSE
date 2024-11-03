@@ -83,6 +83,8 @@ unsorted:
   - HyperKitty 
   - HyperKitty-web 
   - HyperKitty-web-uwsgi 
+  - IPAddress 
+  - IPAddress-javadoc 
   - IccXML 
   - ImageMagick-config-7-upstream-limited 
   - ImageMagick-config-7-upstream-open 
@@ -9291,6 +9293,8 @@ unsorted:
   - jakarta-servlet-javadoc 
   - jakarta-taglibs-standard 
   - jakarta-taglibs-standard-javadoc 
+  - jakarta-validation-api 
+  - jakarta-validation-api-javadoc 
   - jameica 
   - jameica-devel 
   - jameica-javadoc 
@@ -9434,6 +9438,8 @@ unsorted:
   - jboss-modules 
   - jboss-modules-javadoc 
   - jboss-parent 
+  - jboss-vfs 
+  - jboss-vfs-javadoc 
   - jboss-websocket-1.0-api 
   - jboss-websocket-1.0-api-javadoc 
   - jc 
@@ -11804,9 +11810,6 @@ unsorted:
   - liba2ps1 
   - liba52-0-32bit 
   - liba52-devel 
-  - libaal-1_0-7 
-  - libaal-devel 
-  - libaal-minimal0 
   - libabigail-devel 
   - libabigail-tools 
   - libabigail4 
@@ -15902,8 +15905,6 @@ unsorted:
   - libregf1 
   - libregina3 
   - libregraphapi-devel 
-  - libreiser4-2_0-5 
-  - libreiser4-minimal-2_0-5 
   - librelp-devel 
   - librelp0 
   - librem6 
@@ -16026,7 +16027,6 @@ unsorted:
   - librep 
   - librep-devel 
   - librep16 
-  - librepair-2_0-5 
   - libreplaygain-devel 
   - libreplaygain1 
   - librepo-devel 
@@ -16224,7 +16224,6 @@ unsorted:
   - libsgutils-devel 
   - libsha1detectcoll-devel 
   - libshaderc_shared1-32bit 
-  - libshadowdive0_0_0-suse 
   - libshadowsocks-libev2 
   - libsharp-devel 
   - libsharp0 
@@ -23541,6 +23540,8 @@ unsorted:
   - promtail 
   - pronsole 
   - pronterface 
+  - properties-maven-plugin 
+  - properties-maven-plugin-javadoc 
   - prosody 
   - prosody-community-modules 
   - proteus 
@@ -23549,6 +23550,8 @@ unsorted:
   - protobuf-java-bom 
   - protobuf-java-javadoc 
   - protobuf-java-parent 
+  - protobuf-maven-plugin 
+  - protobuf-maven-plugin-javadoc 
   - protobuf21-devel 
   - protoc-gen-go 
   - proton-vpn 
@@ -27401,7 +27404,6 @@ unsorted:
   - python310-sphinxcontrib-jinja 
   - python310-sphinxcontrib-jquery 
   - python310-sphinxcontrib-jsmath 
-  - python310-sphinxcontrib-newsfeed 
   - python310-sphinxcontrib-nwdiag 
   - python310-sphinxcontrib-pecanwsme 
   - python310-sphinxcontrib-plantuml 
@@ -30959,7 +30961,6 @@ unsorted:
   - python311-sphinxcontrib-jinja 
   - python311-sphinxcontrib-jquery 
   - python311-sphinxcontrib-jsmath 
-  - python311-sphinxcontrib-newsfeed 
   - python311-sphinxcontrib-nwdiag 
   - python311-sphinxcontrib-pecanwsme 
   - python311-sphinxcontrib-plantuml 
@@ -34625,7 +34626,6 @@ unsorted:
   - python312-sphinxcontrib-jinja 
   - python312-sphinxcontrib-jquery 
   - python312-sphinxcontrib-jsmath 
-  - python312-sphinxcontrib-newsfeed 
   - python312-sphinxcontrib-nwdiag 
   - python312-sphinxcontrib-pecanwsme 
   - python312-sphinxcontrib-plantuml 
@@ -35920,8 +35920,6 @@ unsorted:
   - reimage-bash-completion 
   - reimage-fish-completion 
   - reimage-zsh-completion 
-  - reiser4progs 
-  - reiser4progs-devel 
   - rekor 
   - relaxngDatatype 
   - relaxngcc 
@@ -36986,7 +36984,6 @@ unsorted:
   - sha3sum 
   - shaderc 
   - shaderc-devel 
-  - shadowdive-devel 
   - shadowsocks-libev 
   - shadowsocks-libev-devel 
   - shadowsocks-libev-doc 
@@ -37877,6 +37874,8 @@ unsorted:
   - template-glib-lang 
   - template-resolver 
   - template-resolver-javadoc 
+  - templating-maven-plugin 
+  - templating-maven-plugin-javadoc 
   - tempo-cli 
   - tenmon 
   - tennebon-dynamic-wallpaper 
