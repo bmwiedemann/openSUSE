@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov 03 00:17:17 UTC 2024 - william.brown@suse.com
+
+- Update to version 1.4.0~git2.770efa8:
+  * Resolve incorrect handling of rhost in pam (#3171)
+
+-------------------------------------------------------------------
 Fri Nov 01 02:24:42 UTC 2024 - william.brown@suse.com
 
 - Update to version 1.4.0~git1.c297c3f:
