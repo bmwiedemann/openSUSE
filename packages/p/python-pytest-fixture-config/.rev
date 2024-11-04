@@ -60,4 +60,12 @@
   * Removed usage of path.py and path in favour of pathlib.</comment>
     <requestid>1216907</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>5e5249896d85cedf743ba7906b94c3df</srcmd5>
+    <version>1.8.0</version>
+    <time>1730756570</time>
+    <user>anag+factory</user>
+    <comment>- Remove not needed dep python-setuptools-git</comment>
+    <requestid>1220555</requestid>
+  </revision>
 </revisionlist>

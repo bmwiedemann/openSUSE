@@ -28,7 +28,7 @@ Source:         https://files.pythonhosted.org/packages/source/p/pytest-fixture-
 Patch0:         python-pytest-fixture-config-no-six.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools-git}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
