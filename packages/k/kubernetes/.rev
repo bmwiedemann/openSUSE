@@ -989,4 +989,16 @@
 * CoreDNS (corednsversionminus1) - 1.11.3</comment>
     <requestid>1207832</requestid>
   </revision>
+  <revision rev="107" vrev="47">
+    <srcmd5>4952963c08067c1dda90d9a53b12ca3f</srcmd5>
+    <version>unknown</version>
+    <time>1730756556</time>
+    <user>anag+factory</user>
+    <comment>- Bump meta package versions:
+* kubernetes (version) - 1.31.2
+* kubernetes (versionminus1) - 1.30.6
+* kubernetes (versionminus2) - 1.29.10
+* kubernetes (versionminus3) - 1.28.15</comment>
+    <requestid>1220535</requestid>
+  </revision>
 </revisionlist>
