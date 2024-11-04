@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-python-socks%{psuffix}
-Version:        2.5.2
+Version:        2.5.3
 Release:        0
 Summary:        Core proxy client functionality for Python
 License:        Apache-2.0

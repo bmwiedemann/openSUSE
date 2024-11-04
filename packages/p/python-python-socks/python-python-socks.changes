@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 28 17:01:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.3:
+  * Fix socks5 reply reading
+
+-------------------------------------------------------------------
 Tue Oct  1 12:44:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.5.2:

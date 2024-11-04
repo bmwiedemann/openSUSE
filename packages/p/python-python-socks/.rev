@@ -89,4 +89,12 @@
   * Use builtin async-timeout for Python&gt;=3.11</comment>
     <requestid>1204933</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d92c53e6216504b2a3ade5bb3cd85110</srcmd5>
+    <version>2.5.3</version>
+    <time>1730756586</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1221061</requestid>
+  </revision>
 </revisionlist>
