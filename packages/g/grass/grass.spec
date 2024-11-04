@@ -62,7 +62,6 @@ BuildRequires:  python3-dateutil
 BuildRequires:  python3-devel
 BuildRequires:  python3-numpy
 BuildRequires:  python3-opengl
-BuildRequires:  python3-six
 BuildRequires:  python3-xml
 BuildRequires:  readline-devel
 BuildRequires:  sqlite-devel

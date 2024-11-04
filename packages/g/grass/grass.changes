@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov  4 17:12:25 UTC 2024 - pgajdos@suse.com
+
+- python3-six is not required
+
+-------------------------------------------------------------------
 Tue Aug 20 12:45:25 UTC 2024 - Enno Tensing <tenno+suse@suij.in>
 
 - Update to 8.4.0, Changelog at https://github.com/OSGeo/grass/releases/tag/8.4.0 
