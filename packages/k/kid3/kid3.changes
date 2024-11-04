@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 31 05:57:28 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
+
+- build with qt6 (the default in upstream provided binaries)
+  (only on suse_version > 15.0)
+
+-------------------------------------------------------------------
 Sat Sep 21 18:03:30 UTC 2024 - enzokiel@kabelmail.de
 
 - Update to version 3.9.6

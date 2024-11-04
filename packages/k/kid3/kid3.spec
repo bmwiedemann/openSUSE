@@ -18,6 +18,11 @@
 
 # Internal QML imports
 %global __requires_exclude qmlimport\\(Kid3.*
+%if 0%{?suse_version} > 1500
+%define qt_version 6
+%else
+%define qt_version 5
+%endif
 
 Name:           kid3
 Version:        3.9.6
@@ -31,24 +36,26 @@ Source1:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{ver
 BuildRequires:  extra-cmake-modules
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  id3lib-devel
-BuildRequires:  kf5-filesystem
+BuildRequires:  kf%{qt_version}-filesystem
 BuildRequires:  libxslt-tools
 BuildRequires:  python3 >= 3.6
 BuildRequires:  readline-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF%{qt_version}DocTools)
+BuildRequires:  cmake(KF%{qt_version}KIO)
+BuildRequires:  cmake(Qt%{qt_version}Core)
+BuildRequires:  cmake(Qt%{qt_version}DBus)
+BuildRequires:  cmake(Qt%{qt_version}Gui)
+BuildRequires:  cmake(Qt%{qt_version}LinguistTools)
+BuildRequires:  cmake(Qt%{qt_version}Multimedia)
+BuildRequires:  cmake(Qt%{qt_version}Network)
+BuildRequires:  cmake(Qt%{qt_version}Qml)
+BuildRequires:  cmake(Qt%{qt_version}Quick)
+BuildRequires:  cmake(Qt%{qt_version}Test)
+BuildRequires:  cmake(Qt%{qt_version}UiTools)
+BuildRequires:  cmake(Qt%{qt_version}Widgets)
+BuildRequires:  cmake(Qt%{qt_version}Xml)
 BuildRequires:  config(docbook-xsl-stylesheets)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Multimedia)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5Qml)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5UiTools)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(libavcodec)
@@ -184,18 +191,25 @@ This package contains common libraries and data files used by kid3, kid3-qt, and
 %autosetup -p1
 
 %build
+export LC_ALL=en_US.UTF-8
 options+="-DWITH_LIBDIR=%{_lib}/kid3 -DWITH_PLUGINSDIR=%{_lib}/kid3/plugins "
 options+="-DWITH_CHROMAPRINT_FFMPEG=ON -DWITH_FFMPEG=ON -DWITH_GSTREAMER=ON "
 options+="-DWITH_DOCDIR=share/doc/packages/kid3-qt "
-options+="-DCMAKE_SKIP_RPATH=ON -DWITH_QMLDIR=%{_lib}/qt5/qml/kid3 "
+options+="-DCMAKE_SKIP_RPATH=ON -DWITH_QMLDIR=%{_lib}/qt%{qt_version}/qml/kid3 "
+%if %{qt_version} == 6
+%{cmake_kf6} -DBUILD_WITH_QT6=ON $options
+%{kf6_build}
+%else
 %cmake_kf5 -d build -- $options
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-
-LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8 %make_jobs
+%make_jobs
+%endif
 
 %install
+%if %{qt_version} == 6
+%{kf6_install}
+%else
 %kf5_makeinstall -C build
+%endif
 
 pushd %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/
 gzip -dS .svgz kid3.svgz
@@ -217,11 +231,11 @@ EOF
 
 %files
 %dir %{_datadir}/metainfo
-%{_kf5_bindir}/kid3
-%{_kf5_iconsdir}/hicolor/*/apps/kid3.*
-%{_kf5_kxmlguidir}/kid3/
-%{_kf5_applicationsdir}/org.kde.kid3.desktop
-%{_kf5_appstreamdir}/org.kde.kid3.appdata.xml
+%{expand:%{_kf%{qt_version}_bindir}}/kid3
+%{expand:%{_kf%{qt_version}_iconsdir}}/hicolor/*/apps/kid3.*
+%{expand:%{_kf%{qt_version}_kxmlguidir}}/kid3/
+%{expand:%{_kf%{qt_version}_applicationsdir}}/org.kde.kid3.desktop
+%{expand:%{_kf%{qt_version}_appstreamdir}}/org.kde.kid3.appdata.xml
 
 %files qt
 %dir %{_datadir}/metainfo
@@ -241,14 +255,14 @@ EOF
 %doc AUTHORS ChangeLog README
 %license COPYING LICENSE
 %{_libdir}/kid3/
-%{_libdir}/qt5/qml/kid3/
+%{_libdir}/qt%{qt_version}/qml/kid3/
 %config %{_sysconfdir}/ld.so.conf.d/kid3.conf
 %{_datadir}/dbus-1/interfaces/org.kde.Kid3.xml
 %{_mandir}/man1/kid3.1%{ext_man}
 %{_mandir}/*/man1/kid3.1%{ext_man}
 
 %files doc
-%doc %{_kf5_htmldir}/*/kid3/
+%doc %{expand:%{_kf%{qt_version}_htmldir}}/*/kid3/
 
 %files qt-doc
 %{_docdir}/kid3-qt/
