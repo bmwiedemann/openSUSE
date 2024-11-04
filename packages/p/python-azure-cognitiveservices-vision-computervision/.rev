@@ -122,4 +122,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1173258</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>07fdc46e31d33ba1383a06c9b10c5b82</srcmd5>
+    <version>0.9.1</version>
+    <time>1730756575</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 0.9.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ
+- Update Requires from setup.py (forwarded request 1220499 from glaubitz)</comment>
+    <requestid>1220573</requestid>
+  </revision>
 </revisionlist>

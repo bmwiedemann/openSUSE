@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov  4 08:47:44 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 0.9.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Fri May  3 16:42:40 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
 
 - Change version setting of Obsoletes to <= to trigger python3

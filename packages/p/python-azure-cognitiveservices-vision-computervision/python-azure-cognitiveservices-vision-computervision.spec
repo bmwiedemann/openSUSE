@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-cognitiveservices-vision-computervision
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 Summary:        Microsoft Azure Cognitive Services Computer Vision Client Library
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-cognitiveservices-vision-computervision/azure-cognitiveservices-vision-computervision-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure_cognitiveservices_vision_computervision/azure_cognitiveservices_vision_computervision-%{version}.tar.gz
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-cognitiveservices-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-cognitiveservices-vision-nspkg >= 3.0.0}
@@ -34,11 +34,10 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
 Requires:       python-azure-cognitiveservices-nspkg >= 3.0.0
 Requires:       python-azure-cognitiveservices-vision-nspkg >= 3.0.0
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-msrest >= 0.5.0
+Requires:       python-msrest >= 0.6.21
 Requires:       (python-azure-common >= 1.1 with python-azure-common < 2.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
@@ -54,10 +53,10 @@ This is the Microsoft Azure Cognitive Services Computer Vision Client Library.
 This package has been tested with Python 2.7, 3.5, 3.6 and 3.7.
 
 %prep
-%setup -q -n azure-cognitiveservices-vision-computervision-%{version}
+%setup -q -n azure_cognitiveservices_vision_computervision-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-cognitiveservices-vision-computervision-%{version}
+install -m 644 %{SOURCE1} %{_builddir}/azure_cognitiveservices_vision_computervision-%{version}
 %pyproject_wheel
 
 %install
