@@ -49,4 +49,12 @@ https://github.com/kubernetes/kubernetes/releases/tag/v1.30.0</comment>
     <comment>Monthly Patch Release – Sept, 2024: Update to version 1.30.5</comment>
     <requestid>1207828</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>38f22e91e3f53b84d52560afdbe03794</srcmd5>
+    <version>1.30.6</version>
+    <time>1730756552</time>
+    <user>anag+factory</user>
+    <comment>Monthly Patch Release – Oct, 2024: Update to version 1.30.6</comment>
+    <requestid>1220528</requestid>
+  </revision>
 </revisionlist>
