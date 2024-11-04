@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Nov  3 08:22:47 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Experiement with vendoring cargo home registry.
+
+-------------------------------------------------------------------
+Sat Nov  2 12:48:07 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Make source and vendor tarballs reproducible.
+
+-------------------------------------------------------------------
 Thu Oct 31 17:03:47 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 2.0.4:

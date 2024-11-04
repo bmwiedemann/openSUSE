@@ -27,7 +27,7 @@ License:        MIT
 Group:          Productivity/Other
 URL:            https://github.com/denoland/deno
 Source0:        %{name}-%{version}.tar.zst
-Source1:        vendor.tar.zst
+Source1:        registry.tar.zst
 BuildRequires:  cargo-packaging
 BuildRequires:  clang
 # needed by `libz-ng-sys` after 1.36.1
@@ -103,9 +103,10 @@ updated with the --reload flag.
 unlink $PWD/rusty_v8 || true
 ln -sf %{_libdir}/crates/rusty_v8 $PWD/rusty_v8
 echo -e "\n[patch.crates-io]\nv8 = { path = './rusty_v8' }" >> Cargo.toml
-%{__cargo} update --offline
+export CARGO_HOME=$PWD/.cargo
 
 %build
+export CARGO_HOME=$PWD/.cargo
 # Ensure that the clang version matches. This command came from Archlinux. Thanks.
 export CLANG_VERSION=$(clang --version | grep -m1 version | sed 's/.* \([0-9]\+\).*/\1/')
 export V8_FROM_SOURCE=1

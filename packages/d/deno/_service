@@ -13,15 +13,16 @@
    <param name="versionrewrite-replacement">\1</param>
    <param name="changesgenerate">enable</param>
  </service>
- <service name="cargo_vendor" mode="manual">
-    <param name="srcdir">deno</param>
+ <service name="cargo_vendor_home_registry" mode="manual">
     <param name="update">false</param>
+    <param name="src">deno</param>
  </service>
  <service mode="manual" name="set_version"/>
  <service name="roast" mode="manual">
    <param name="target">deno</param>
    <param name="outfile">deno-2.0.4.tar.zst</param>
    <param name="preserve-root">true</param>
+   <param name="reproducible">true</param>
  </service>
 </services>
 
