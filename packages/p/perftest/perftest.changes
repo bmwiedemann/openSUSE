@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Nov  4 17:21:05 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to v24.07.0-0.44 (jsc#PED-11328)
+  - Add minimum rx_depth size in case of SRQ and UD/UC qp type
+  - Perftest: Support selecting congestion control algorithms
+  - Perftest: Fix rx_depth check for XRC
+  - Implement get_cycles for hppa architecture
+  - Fix syntax of script run_perftest_loopback
+  - Fix format of man pages
+  - Perftest: Fix indentation between results after the fix of the BW unit
+  - Perftest: Version increase to 6.22
+  - Perftest: changing spec file version to 24.07.0.
+  - Display proper unit for MiB/sec results
+  - Fix Integer overflow issue
+
+-------------------------------------------------------------------
 Mon Aug 12 10:20:18 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Update to v24.04-00.41
