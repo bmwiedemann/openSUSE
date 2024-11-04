@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Nov  4 06:06:06 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.29.10:
+  * bump golang to 1.22.8
+  * kubeadm: fix a bug where the RemoveMember function did not return the correct member list when the member to be removed did not exist
+  * Fix deleted UDP endpoint detection
+  * Fix daemonset to ensure old unhealthy pods are counted towards max unavailable budget.
+  * fix: requeue pods rejected by Extenders properly
+  * kubeadm: check the member list status before adding or removing an etcd member
+  * kubeadm: check whether the peer URL for the added etcd member already exists when the MemberAddAsLearner/MemberAdd fails
+  * bugfix: endpoints controller track resource version conrrectly
+  * Remove `socat` and `ebtables` from kubeadm preflight checks
+  * fix memory leak from global MeterProvider
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.22.8`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.29.10/build/dependencies.yaml#L119-L121
+
+-------------------------------------------------------------------
 Mon Oct 14 07:02:35 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.29.9:
