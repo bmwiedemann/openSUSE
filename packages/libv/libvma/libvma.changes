@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov  4 16:18:15 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to v9.8.60 (jsc#PED-11338 jsc#PED-11339)
+  - RM #3749337 Fix TCP keepAlive timer when set to -1
+  - RM #3749310 Fix delayed TCP keepAlive probes
+  - RM #3604029 Fix releasing ring flow
+  - RM #3623373 Fix corruption during ring release
+  - RM #3655436 Add full TCP_KEEPALIVE support
+  - RM #3697720 Fixing socket destruction race
+  - RM #1214066 Update some unsigned char -> uint32_t for table_id
+
+
+-------------------------------------------------------------------
 Thu Sep  5 12:43:04 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Backport upstream patch to fix compilation GCC >= 14

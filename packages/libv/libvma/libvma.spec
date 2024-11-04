@@ -17,14 +17,14 @@
 
 
 #
-%define git_ver .0.ae7f37cbdd4f
+%define git_ver .0.536ca51fb61b
 %define lib_major 9
 
 Name:           libvma
 Summary:        A library for boosting TCP and UDP traffic (over RDMA hardware)
 License:        BSD-2-Clause OR GPL-2.0-only
 Group:          Development/Libraries/C and C++
-Version:        9.8.40
+Version:        9.8.60
 Release:        0
 Source0:        %{name}-%{version}%{git_ver}.tar.gz
 Source1:        vma.service
