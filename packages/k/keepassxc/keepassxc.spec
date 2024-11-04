@@ -94,8 +94,6 @@ BuildRequires:  zstd
 
 %if 0%{?suse_version}
 BuildRequires:  update-desktop-files
-Requires(post): update-desktop-files
-Requires(postun): update-desktop-files
 %endif
 Requires:       hicolor-icon-theme
 Requires(post): hicolor-icon-theme

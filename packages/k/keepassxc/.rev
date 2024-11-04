@@ -512,4 +512,12 @@
   integrate changes from SR#1181559</comment>
     <requestid>1220334</requestid>
   </revision>
+  <revision rev="46" vrev="5">
+    <srcmd5>1dc4c6adc8b0c16768224ec5b42db5ff</srcmd5>
+    <version>2.7.9</version>
+    <time>1730756579</time>
+    <user>anag+factory</user>
+    <comment>- drop runtime dependency on update-desktop-files</comment>
+    <requestid>1220583</requestid>
+  </revision>
 </revisionlist>
