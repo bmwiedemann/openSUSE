@@ -61,4 +61,12 @@
 - Do not test with Python 3.12 and above due to an upstream bug.</comment>
     <requestid>1216915</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>69c2ed0d916547d81c64c4a46a36dfcb</srcmd5>
+    <version>1.8.0</version>
+    <time>1730756559</time>
+    <user>anag+factory</user>
+    <comment>- Remove not needed python-setuptools-git</comment>
+    <requestid>1220557</requestid>
+  </revision>
 </revisionlist>

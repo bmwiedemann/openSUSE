@@ -41,7 +41,6 @@ Patch0:         remove_virtualenv.patch
 BuildRequires:  %{python_module pytest-virtualenv = %{version}}
 %endif
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools-git}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -50,7 +49,6 @@ Requires:       python-importlib-metadata
 Requires:       python-pytest
 Requires:       python-pytest-fixture-config
 Requires:       python-pytest-shutil
-Requires:       python-setuptools
 BuildArch:      noarch
 %python_subpackages
 
