@@ -100,4 +100,21 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1173260</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9fb4e66ff08e9c471c4367a9102d173f</srcmd5>
+    <version>3.1.1</version>
+    <time>1730756573</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 3.1.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Remove unzip package from BuildRequires
+- Rename LICENSE.txt to LICENSE in %files section
+- Switch source archive format to TAR.GZ
+- Update Requires from setup.py (forwarded request 1220518 from glaubitz)</comment>
+    <requestid>1220570</requestid>
+  </revision>
 </revisionlist>
