@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Nov  4 05:53:45 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.31.2:
+  * bump golang to 1.22.8
+  * kubeadm: fix a bug where the RemoveMember function did not return the correct member list when the member to be removed did not exist
+  * Fix deleted UDP endpoint detection
+  * kubeadm: check the member list status before adding or removing an etcd member
+  * kubeadm: check whether the peer URL for the added etcd member already exists when the MemberAddAsLearner/MemberAdd fails
+  * Install Nvidia Daemonset in test harness for GCE
+  * Add some simple tests for nvidia GPU(s)
+  * bugfix: endpoints controller track resource version conrrectly
+  * Remove `socat` and `ebtables` from kubeadm preflight checks
+  * Add activeDeadlineSeconds to kubeadm upgrade-health-check job
+  * API emulation versioning honors cohabitating resources
+  * update vendor
+  * fix memory leak from global MeterProvider
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.22.8`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.31.2/build/dependencies.yaml#L117-L119
+
+-------------------------------------------------------------------
 Tue Sep 24 12:05:12 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.31.1:
