@@ -107,4 +107,12 @@ Update changelog entries to mention fix for CVE-2024-24786, bsc#1229867</comment
     <comment>Monthly Patch Release – Sept, 2024: Update to version 1.28.14</comment>
     <requestid>1207830</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e84efc3f7f535fcd8322405433b1d5c0</srcmd5>
+    <version>1.28.15</version>
+    <time>1730756555</time>
+    <user>anag+factory</user>
+    <comment>Monthly Patch Release – Oct, 2024: Update to version 1.28.15</comment>
+    <requestid>1220533</requestid>
+  </revision>
 </revisionlist>
