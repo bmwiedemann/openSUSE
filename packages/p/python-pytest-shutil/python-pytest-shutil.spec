@@ -27,7 +27,6 @@ Source:         https://files.pythonhosted.org/packages/source/p/pytest-shutil/p
 BuildRequires:  %{python_module execnet}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools-git}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module termcolor}

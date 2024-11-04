@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov  4 11:05:21 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove not needed dep python-setuptools-git
+
+-------------------------------------------------------------------
 Tue Oct 22 06:08:51 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.8.0:

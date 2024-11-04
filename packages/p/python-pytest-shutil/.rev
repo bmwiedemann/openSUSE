@@ -100,4 +100,12 @@
   * stop-using-imp.patch</comment>
     <requestid>1216906</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>0e44599cb0b0c94fe57fbd9a03d74b44</srcmd5>
+    <version>1.8.0</version>
+    <time>1730756557</time>
+    <user>anag+factory</user>
+    <comment>- Remove not needed dep python-setuptools-git</comment>
+    <requestid>1220541</requestid>
+  </revision>
 </revisionlist>
