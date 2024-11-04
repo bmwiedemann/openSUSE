@@ -17,7 +17,7 @@
 
 
 Name:           opi
-Version:        5.3.0
+Version:        5.4.0
 Release:        0
 Summary:        OBS Package Installer (CLI)
 License:        GPL-3.0-only

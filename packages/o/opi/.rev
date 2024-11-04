@@ -648,4 +648,14 @@
   * Add Plugin to install Libation</comment>
     <requestid>1218231</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>4276b76222f8074bef055102c8f41ae2</srcmd5>
+    <version>5.4.0</version>
+    <time>1730756571</time>
+    <user>anag+factory</user>
+    <comment>- Version 5.4.0
+  * Show key ID when importing or deleting package signing keys
+  * Add option to install google-chrome-canary</comment>
+    <requestid>1220564</requestid>
+  </revision>
 </revisionlist>
