@@ -46,4 +46,12 @@
     <comment></comment>
     <requestid>1216991</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>1bed58f764b9c7487f84634d5f218592</srcmd5>
+    <version>17.0</version>
+    <time>1730756828</time>
+    <user>anag+factory</user>
+    <comment>- Add postgresql17-jsonb_jsonpath.patch as a temporary build fix.</comment>
+    <requestid>1220587</requestid>
+  </revision>
 </revisionlist>
