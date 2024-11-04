@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov  4 18:33:28 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- remove %suse_update_desktop_file, as it's deprecated
+- use autosetup
+- be more specific in the files section
+
+-------------------------------------------------------------------
+Mon Nov  4 17:49:31 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Remove elementary-cmake-modules BR, it seems unnecessary.
+
+-------------------------------------------------------------------
 Mon Oct  1 20:11:30 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 2.1.3:

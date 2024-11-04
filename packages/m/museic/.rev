@@ -55,4 +55,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>640696</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>d540953f1932802f361b0446f963d124</srcmd5>
+    <version>2.1.3</version>
+    <time>1730756594</time>
+    <user>anag+factory</user>
+    <comment>- remove %suse_update_desktop_file, as it's deprecated
+- use autosetup
+- be more specific in the files section (forwarded request 1221220 from rrahl0)</comment>
+    <requestid>1221221</requestid>
+  </revision>
 </revisionlist>
