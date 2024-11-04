@@ -74,4 +74,12 @@
 - Refreshed python-pytest-verbose-parametrize-no-six.patch</comment>
     <requestid>1216914</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>a035218d627fb8aefcd29cc3fe880ff5</srcmd5>
+    <version>1.8.0</version>
+    <time>1730756559</time>
+    <user>anag+factory</user>
+    <comment>- Remove not needed dep python-setuptools-git</comment>
+    <requestid>1220550</requestid>
+  </revision>
 </revisionlist>

@@ -26,7 +26,6 @@ Source:         https://files.pythonhosted.org/packages/source/p/pytest-verbose-
 # https://github.com/man-group/pytest-plugins/issues/209
 Patch0:         python-pytest-verbose-parametrize-no-six.patch
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools-git}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
