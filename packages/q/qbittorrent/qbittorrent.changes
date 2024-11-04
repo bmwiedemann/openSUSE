@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
-Tue Oct 29 09:16:30 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+Sat Nov  2 16:42:08 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
-- Update to version 5.0.1
+- Update to version 5.0.1 (fixes boo#1232731 CVE-2024-51774)
   Added features:
   * Add "Simple pread/pwrite" disk IO type
   Bug fixes:
@@ -31,7 +31,7 @@ Tue Oct 29 09:16:30 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 -------------------------------------------------------------------
 Mon Sep 30 06:38:35 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
-- Update to version 5.0.0
+- Update to version 5.0.0 (fixes boo#1231149)
   New features:
   * Support creating .torrent with larger piece size
   * Improve tracker entries handling
