@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Nov  4 10:11:17 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.11.1
+- Version 3.11.1
+  * Bug
+    + MJAVADOC-820: [REGRESSION] MJAVADOC-787 was merged
+      incompletely
+  * New Feature
+    + MJAVADOC-787: Automatic detection of release option for
+      JDK < 9
+  * Task
+    + MJAVADOC-819: Align archive generation code with Maven Source
+      Plugin
+    + MJAVADOC-821: Align toolchain discovery code with Maven
+      Compiler Plugin
+  * Dependency upgrade
+    + MJAVADOC-816: Bump org.codehaus.plexus:plexus-java from
+      1.2.0 to 1.3.0
+    + MJAVADOC-817: Upgrade to Doxia 2.0.0 GA Stack
+- Modified patches:
+  * maven-javadoc-plugin-bootstrap-resources.patch
+    + Regenerate from non-bootstrap build
+
+-------------------------------------------------------------------
 Thu Oct  3 22:19:41 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 3.10.1

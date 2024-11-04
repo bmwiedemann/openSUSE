@@ -23,7 +23,7 @@
 %bcond_with bootstrap
 %endif
 %global base_name maven-javadoc-plugin
-Version:        3.10.1
+Version:        3.11.1
 Release:        0
 Summary:        Maven plugin for creating javadocs
 License:        Apache-2.0
