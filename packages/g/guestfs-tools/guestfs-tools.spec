@@ -20,7 +20,7 @@
 %global patches_touch_autotools 1
 
 # The source directory.
-#%global source_directory 1.52-stable
+###%global source_directory 1.52-stable
 %global source_directory 1.53-development
 
 #
@@ -31,7 +31,7 @@
 
 Summary:        Tools to access and modify virtual machine disk images
 Name:           guestfs-tools
-Version:        1.53.3
+Version:        1.53.4
 Release:        0
 License:        GPL-2.0-or-later
 
@@ -57,7 +57,7 @@ BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  libguestfs-devel >= 1.45.3-1
 BuildRequires:  libguestfs-xfs
-BuildRequires:  libjansson-devel
+BuildRequires:  libjson-c-devel
 BuildRequires:  libosinfo-devel
 BuildRequires:  libvirt-devel
 BuildRequires:  libxcrypt-devel

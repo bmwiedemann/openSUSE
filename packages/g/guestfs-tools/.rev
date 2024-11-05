@@ -159,4 +159,12 @@
     <comment>Update guestfs-tools to version 1.53.3</comment>
     <requestid>1197947</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>0887a904e2a710aa965bbad8d2f29754</srcmd5>
+    <version>1.53.4</version>
+    <time>1730821535</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1221478</requestid>
+  </revision>
 </revisionlist>

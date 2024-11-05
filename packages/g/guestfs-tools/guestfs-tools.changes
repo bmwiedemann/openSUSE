@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 29 07:51:25 MDT 2024 - carnold@suse.com
+
+- Update to version 1.53.4 (jsc#PED-8910)
+  * mlcustomize: Update generated options for virt-v2v
+  * Various build fixes and dependency changes
+
+-------------------------------------------------------------------
 Thu Aug 29 15:15:13 MDT 2024 - carnold@suse.com
 
 - Update to version 1.53.3 (jsc#PED-8910)
