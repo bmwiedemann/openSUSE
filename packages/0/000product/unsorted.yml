@@ -486,7 +486,11 @@ unsorted:
   - agama 
   - agama-auto 
   - agama-cli 
+  - agama-cli-bash-completion 
+  - agama-cli-fish-completion 
+  - agama-cli-zsh-completion 
   - agama-integration-tests 
+  - agama-openapi 
   - agama-products-opensuse 
   - agama-products-sle 
   - agama-web-ui 
@@ -2209,7 +2213,6 @@ unsorted:
   - clBLAS-devel 
   - clFFT 
   - clFFT-devel 
-  - clack 
   - clagrange 
   - clair 
   - clairctl 
@@ -9262,6 +9265,9 @@ unsorted:
   - jackson-module-blackbird 
   - jackson-module-guice 
   - jackson-module-jaxb-annotations 
+  - jackson-module-jsonSchema 
+  - jackson-module-jsonSchema-jakarta 
+  - jackson-module-jsonSchema-javadoc 
   - jackson-module-mrbean 
   - jackson-module-no-ctor-deser 
   - jackson-module-osgi 
@@ -11775,8 +11781,6 @@ unsorted:
   - libXpm-tools 
   - libXpm4-32bit 
   - libXpresent-devel 
-  - libXprintUtil-devel 
-  - libXprintUtil1 
   - libXrandr-devel 
   - libXrandr-devel-32bit 
   - libXrandr2-32bit 
@@ -25096,7 +25100,6 @@ unsorted:
   - python310-circuitbreaker 
   - python310-ciscoconfparse 
   - python310-ciso8601 
-  - python310-cl 
   - python310-cleo 
   - python310-cli-helpers 
   - python310-click 
@@ -25592,7 +25595,6 @@ unsorted:
   - python310-fsspec 
   - python310-ftfy 
   - python310-ftputil 
-  - python310-fudge 
   - python310-funcparserlib 
   - python310-funcy 
   - python310-furl 
@@ -28744,7 +28746,6 @@ unsorted:
   - python311-circuitbreaker 
   - python311-ciscoconfparse 
   - python311-ciso8601 
-  - python311-cl 
   - python311-cleo 
   - python311-cli-helpers 
   - python311-click-aliases 
@@ -29226,7 +29227,6 @@ unsorted:
   - python311-fsspec 
   - python311-ftfy 
   - python311-ftputil 
-  - python311-fudge 
   - python311-funcparserlib 
   - python311-funcy 
   - python311-furl 
@@ -32321,7 +32321,6 @@ unsorted:
   - python312-circuitbreaker 
   - python312-ciscoconfparse 
   - python312-ciso8601 
-  - python312-cl 
   - python312-cleo 
   - python312-cli-helpers 
   - python312-click 
@@ -32817,7 +32816,6 @@ unsorted:
   - python312-fsspec 
   - python312-ftfy 
   - python312-ftputil 
-  - python312-fudge 
   - python312-funcparserlib 
   - python312-funcy 
   - python312-furl 
@@ -35908,6 +35906,8 @@ unsorted:
   - redshift-gtk 
   - reflectasm 
   - reflectasm-javadoc 
+  - reflections 
+  - reflections-javadoc 
   - regclient 
   - regclient-bash-completion 
   - regclient-fish-completion 
@@ -37586,6 +37586,7 @@ unsorted:
   - svg-schema-doc 
   - svgcleaner 
   - svgcleaner-gui 
+  - svgpp-devel 
   - svm-tools 
   - svn2git 
   - svxlink-server 
