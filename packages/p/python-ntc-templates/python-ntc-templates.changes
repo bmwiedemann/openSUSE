@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov  4 18:22:43 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.4.0
+  * Modified cisco_xr_show_ipv4_interface.
+  * FIX: Account for additional lines in cisco_nxos_bgp_summary.
+  * Feature/extreme slxos show ip interface brief.
+  * support for case of unassigned ipv6 address as chassis ID.
+  * Rename and support single nxos interface switchport.
+
+-------------------------------------------------------------------
 Wed Oct 23 19:37:07 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 7.3.0
