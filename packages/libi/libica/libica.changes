@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov  5 12:07:12 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied patches (bsc#1231302, bsc#1231303, bsc#1231304, bsc#1231305)
+  * libica-01-fips-update-remove-sigVer-from-fips-ECDSA-kat.patch
+  * libica-02-fips-update-Change-service-indicator-implementation.patch
+
+-------------------------------------------------------------------
 Tue Oct 29 06:22:04 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgrade libica to version 4.3.1 (jsc#PED-9560, jsc#PED-10289, jsc#PED-3276)

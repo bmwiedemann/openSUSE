@@ -1,0 +1,292 @@
+From 86c400a516a23ce807c1b7a5a3dec3c0ef441733 Mon Sep 17 00:00:00 2001
+From: Joerg Schmidbauer <jschmidb@de.ibm.com>
+Date: Mon, 28 Oct 2024 13:44:11 +0100
+Subject: [PATCH] fips update: Change service indicator implementation
+
+Perform checks for non-approved algorithms / parameters directly into the
+APIs that perform the services. Especially, indicate that using an external
+GCM iv in fips mode is non-compliant, but on the exception list.
+
+Signed-off-by: Joerg Schmidbauer <jschmidb@de.ibm.com>
+---
+ src/ica_api.c      | 53 ++++++++++++++++++++++++++++++++++++++++++++++
+ src/icainfo.c      |  1 +
+ src/include/fips.h |  7 ++++--
+ 3 files changed, 59 insertions(+), 2 deletions(-)
+
+diff --git a/src/ica_api.c b/src/ica_api.c
+index 0826af8..e0f6c43 100644
+--- a/src/ica_api.c
++++ b/src/ica_api.c
+@@ -94,7 +94,12 @@ int ica_external_gcm_iv_in_fips_mode_allowed = 0;
+ 
+ void ica_allow_external_gcm_iv_in_fips_mode(int allow)
+ {
++#ifdef ICA_FIPS
++	if (!fips_approved(AES_GCM_EXT_IV) && !fips_override(AES_GCM_EXT_IV))
++		return;
++
+ 	ica_external_gcm_iv_in_fips_mode_allowed = allow ? 1 : 0;
++#endif
+ }
+ 
+ 
+@@ -399,6 +404,8 @@ unsigned int ica_sha1(unsigned int message_part,
+ #ifdef ICA_FIPS
+ 	if (fips >> 1)
+ 		return EACCES;
++	if (!fips_approved(SHA1) && !fips_override(SHA1))
++		return EPERM;
+ #endif /* ICA_FIPS */
+ 
+ 	/* check for obvious errors in parms */
+@@ -454,6 +461,8 @@ unsigned int ica_sha224(unsigned int message_part,
+ #ifdef ICA_FIPS
+ 	if (fips >> 1)
+ 		return EACCES;
++	if (!fips_approved(SHA224) && !fips_override(SHA224))
++		return EPERM;
+ #endif /* ICA_FIPS */
+ 
+ 	/* check for obvious errors in parms */
+@@ -501,6 +510,8 @@ unsigned int ica_sha256(unsigned int message_part,
+ #ifdef ICA_FIPS
+ 	if (fips >> 1)
+ 		return EACCES;
++	if (!fips_approved(SHA256) && !fips_override(SHA256))
++		return EPERM;
+ #endif /* ICA_FIPS */
+ 
+ 	/* check for obvious errors in parms */
+@@ -548,6 +559,8 @@ unsigned int ica_sha384(unsigned int message_part,
+ #ifdef ICA_FIPS
+ 	if (fips >> 1)
+ 		return EACCES;
++	if (!fips_approved(SHA384) && !fips_override(SHA384))
++		return EPERM;
+ #endif /* ICA_FIPS */
+ 
+ 	/* check for obvious errors in parms */
+@@ -596,6 +609,8 @@ unsigned int ica_sha512(unsigned int message_part,
+ #ifdef ICA_FIPS
+ 	if (fips >> 1)
+ 		return EACCES;
++	if (!fips_approved(SHA512) && !fips_override(SHA512))
++		return EPERM;
+ #endif /* ICA_FIPS */
+ 
+ 	/* check for obvious errors in parms */
+@@ -644,6 +659,8 @@ unsigned int ica_sha512_224(unsigned int message_part,
+ #ifdef ICA_FIPS
+ 	if (fips >> 1)
+ 		return EACCES;
++	if (!fips_approved(SHA512_224) && !fips_override(SHA512_224))
++		return EPERM;
+ #endif /* ICA_FIPS */
+ 
+ 	/* check for obvious errors in parms */
+@@ -692,6 +709,8 @@ unsigned int ica_sha512_256(unsigned int message_part,
+ #ifdef ICA_FIPS
+ 	if (fips >> 1)
+ 		return EACCES;
++	if (!fips_approved(SHA512_256) && !fips_override(SHA512_256))
++		return EPERM;
+ #endif /* ICA_FIPS */
+ 
+ 	/* check for obvious errors in parms */
+@@ -740,6 +759,8 @@ unsigned int ica_sha3_224(unsigned int message_part,
+ #ifdef ICA_FIPS
+ 	if (fips >> 1)
+ 		return EACCES;
++	if (!fips_approved(SHA3_224) && !fips_override(SHA3_224))
++		return EPERM;
+ #endif /* ICA_FIPS */
+ 
+ 	/* check for obvious errors in parms */
+@@ -787,6 +808,8 @@ unsigned int ica_sha3_256(unsigned int message_part,
+ #ifdef ICA_FIPS
+ 	if (fips >> 1)
+ 		return EACCES;
++	if (!fips_approved(SHA3_256) && !fips_override(SHA3_256))
++		return EPERM;
+ #endif /* ICA_FIPS */
+ 
+ 	/* check for obvious errors in parms */
+@@ -834,6 +857,8 @@ unsigned int ica_sha3_384(unsigned int message_part,
+ #ifdef ICA_FIPS
+ 	if (fips >> 1)
+ 		return EACCES;
++	if (!fips_approved(SHA3_384) && !fips_override(SHA3_384))
++		return EPERM;
+ #endif /* ICA_FIPS */
+ 
+ 	/* check for obvious errors in parms */
+@@ -882,6 +907,8 @@ unsigned int ica_sha3_512(unsigned int message_part,
+ #ifdef ICA_FIPS
+ 	if (fips >> 1)
+ 		return EACCES;
++	if (!fips_approved(SHA3_512) && !fips_override(SHA3_512))
++		return EPERM;
+ #endif /* ICA_FIPS */
+ 
+ 	/* check for obvious errors in parms */
+@@ -931,6 +958,8 @@ unsigned int ica_shake_128(unsigned int message_part,
+ #ifdef ICA_FIPS
+ 	if (fips >> 1)
+ 		return EACCES;
++	if (!fips_approved(SHAKE128) && !fips_override(SHAKE128))
++		return EPERM;
+ #endif /* ICA_FIPS */
+ 
+ 	/* check for obvious errors in parms */
+@@ -986,6 +1015,8 @@ unsigned int ica_shake_256(unsigned int message_part,
+ #ifdef ICA_FIPS
+ 	if (fips >> 1)
+ 		return EACCES;
++	if (!fips_approved(SHAKE256) && !fips_override(SHAKE256))
++		return EPERM;
+ #endif /* ICA_FIPS */
+ 
+ 	/* check for obvious errors in parms */
+@@ -1052,6 +1083,8 @@ unsigned int ica_rsa_key_generate_mod_expo(ica_adapter_handle_t adapter_handle,
+ #ifdef ICA_FIPS
+ 	if (fips >> 1)
+ 		return EACCES;
++	if (!fips_approved(RSA_ME) && !fips_override(RSA_ME))
++		return EPERM;
+ #endif /* ICA_FIPS */
+ 
+ 	if (public_key->key_length != private_key->key_length)
+@@ -1094,6 +1127,8 @@ unsigned int ica_rsa_key_generate_crt(ica_adapter_handle_t adapter_handle,
+ #ifdef ICA_FIPS
+ 	if (fips >> 1)
+ 		return EACCES;
++	if (!fips_approved(RSA_CRT) && !fips_override(RSA_CRT))
++		return EPERM;
+ #endif /* ICA_FIPS */
+ 
+ 	if (public_key->key_length != private_key->key_length)
+@@ -1130,6 +1165,8 @@ unsigned int ica_rsa_mod_expo(ica_adapter_handle_t adapter_handle,
+ #ifdef ICA_FIPS
+ 	if (fips >> 1)
+ 		return EACCES;
++	if (!fips_approved(RSA_ME) && !fips_override(RSA_ME))
++		return EPERM;
+ #endif /* ICA_FIPS */
+ 
+ 	/* check for obvious errors in parms */
+@@ -1193,6 +1230,8 @@ unsigned int ica_rsa_crt_key_check(ica_rsa_key_crt_t *rsa_key)
+ #ifdef ICA_FIPS
+ 	if (fips >> 1)
+ 		return EACCES;
++	if (!fips_approved(RSA_CRT) && !fips_override(RSA_CRT))
++		return EPERM;
+ #endif /* ICA_FIPS */
+ 
+ 	/* check if p > q  */
+@@ -1266,6 +1305,8 @@ unsigned int ica_rsa_crt(ica_adapter_handle_t adapter_handle,
+ #ifdef ICA_FIPS
+ 	if (fips >> 1)
+ 		return EACCES;
++	if (!fips_approved(RSA_CRT) && !fips_override(RSA_CRT))
++		return EPERM;
+ #endif /* ICA_FIPS */
+ 
+ 	/* check for obvious errors in parms */
+@@ -1337,6 +1378,8 @@ ICA_EC_KEY* ica_ec_key_new(unsigned int nid, unsigned int *privlen)
+ #ifdef ICA_FIPS
+ 	if (fips >> 1)
+ 		return NULL;
++	if (!fips_approved(EC_KGEN) && !fips_override(EC_KGEN))
++		return EPERM;
+ #endif /* ICA_FIPS */
+ 
+ 	if ((key = malloc(sizeof(ICA_EC_KEY))) == NULL)
+@@ -1375,6 +1418,8 @@ int ica_ec_key_init(const unsigned char *X, const unsigned char *Y,
+ #ifdef ICA_FIPS
+ 	if (fips >> 1)
+ 		return EACCES;
++	if (!fips_approved(EC_KGEN) && !fips_override(EC_KGEN))
++		return EPERM;
+ 	if (fips & ICA_FIPS_MODE) {
+ 		if (!curve_supported_via_openssl(key->nid) ||
+ 			!curve_supported_via_cpacf(key->nid)) {
+@@ -1421,6 +1466,8 @@ int ica_ec_key_generate(ica_adapter_handle_t adapter_handle, ICA_EC_KEY *key)
+ #ifdef ICA_FIPS
+ 	if (fips >> 1)
+ 		return EACCES;
++	if (!fips_approved(EC_KGEN) && !fips_override(EC_KGEN))
++		return EPERM;
+ 	if (fips & ICA_FIPS_MODE) {
+ 		if (!curve_supported_via_openssl(key->nid) ||
+ 			!curve_supported_via_cpacf(key->nid))
+@@ -1494,6 +1541,8 @@ int ica_ecdh_derive_secret(ica_adapter_handle_t adapter_handle,
+ #ifdef ICA_FIPS
+ 	if (fips >> 1)
+ 		return EACCES;
++	if (!fips_approved(EC_DH) && !fips_override(EC_DH))
++		return EPERM;
+ 	if (fips & ICA_FIPS_MODE) {
+ 		if (!curve_supported_via_openssl(privkey_A->nid) ||
+ 			!curve_supported_via_cpacf(privkey_A->nid))
+@@ -1563,6 +1612,8 @@ int ica_ecdsa_sign_ex_internal(ica_adapter_handle_t adapter_handle,
+ #ifdef ICA_FIPS
+ 	if (fips >> 1)
+ 		return EACCES;
++	if (!fips_approved(EC_DSA_SIGN) && !fips_override(EC_DSA_SIGN))
++		return EPERM;
+ 	if (fips & ICA_FIPS_MODE) {
+ 		if (!curve_supported_via_openssl(privkey->nid) ||
+ 			!curve_supported_via_cpacf(privkey->nid))
+@@ -1654,6 +1705,8 @@ int ica_ecdsa_verify(ica_adapter_handle_t adapter_handle,
+ #ifdef ICA_FIPS
+ 	if (fips >> 1)
+ 		return EACCES;
++	if (!fips_approved(EC_DSA_VERIFY) && !fips_override(EC_DSA_VERIFY))
++		return EPERM;
+ 	if (fips & ICA_FIPS_MODE) {
+ 		if (!curve_supported_via_openssl(pubkey->nid) ||
+ 			!curve_supported_via_cpacf(pubkey->nid))
+diff --git a/src/icainfo.c b/src/icainfo.c
+index 608994f..b18cbfa 100644
+--- a/src/icainfo.c
++++ b/src/icainfo.c
+@@ -556,6 +556,7 @@ void print_fips_indicator(void)
+ 		}
+ 	}
+ 
++	printf("    GCM ext iv |      -     |      -     |      -     \n");
+ 	printf("------------------------------------------------------\n");
+ 
+ done:
+diff --git a/src/include/fips.h b/src/include/fips.h
+index c0af6b6..ec7f2c9 100644
+--- a/src/include/fips.h
++++ b/src/include/fips.h
+@@ -65,6 +65,8 @@ unsigned int ica_aes_gcm_initialize_internal(const unsigned char *iv,
+ 				unsigned char *ucb, unsigned char *subkey,
+ 				unsigned int direction);
+ 
++#define AES_GCM_EXT_IV      73
++
+ /*
+  * List of non-fips-approved algorithms
+  */
+@@ -73,14 +75,15 @@ static const int FIPS_BLACKLIST[] = {DES_ECB, DES_CBC, DES_CBC_CS, DES_OFB,
+     DES3_CBC, DES3_CBC_CS, DES3_OFB, DES3_CFB, DES3_CTR, DES3_CTRLST,
+     DES3_CBC_MAC, DES3_CMAC, ED25519_KEYGEN, ED25519_SIGN, ED25519_VERIFY,
+     ED448_KEYGEN, ED448_SIGN, ED448_VERIFY, X25519_KEYGEN, X25519_DERIVE,
+-    X448_KEYGEN, X448_DERIVE, RSA_ME, RSA_CRT, SHA512_DRNG };
++    X448_KEYGEN, X448_DERIVE, RSA_ME, RSA_CRT, SHA512_DRNG, AES_GCM_EXT_IV };
+ static const size_t FIPS_BLACKLIST_LEN
+ 	= sizeof(FIPS_BLACKLIST) / sizeof(FIPS_BLACKLIST[0]);
+ 
+ /*
+  * FIPS service indicator: List of tolerated but non-approved algorithms.
+  */
+-static const int FIPS_OVERRIDE_LIST[] = { RSA_ME, RSA_CRT, SHA512_DRNG };
++static const int FIPS_OVERRIDE_LIST[] = { RSA_ME, RSA_CRT, SHA512_DRNG,
++		AES_GCM_EXT_IV };
+ static const size_t FIPS_OVERRIDE_LIST_LEN
+ 	= sizeof(FIPS_OVERRIDE_LIST) / sizeof(FIPS_OVERRIDE_LIST[0]);
+ 

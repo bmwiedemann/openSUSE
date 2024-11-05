@@ -38,6 +38,9 @@ Source5:        %{name}-rpmlintrc
 Patch01:        libica-FIPS-make-it-possible-to-specify-fipshmac-binary.patch
 Patch99:        libica-sles15sp5-FIPS-hmac-key.patch
 ###
+Patch110:       libica-01-fips-update-remove-sigVer-from-fips-ECDSA-kat.patch
+Patch111:       libica-02-fips-update-Change-service-indicator-implementation.patch
+###
 
 BuildRequires:  autoconf
 BuildRequires:  automake
