@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  5 13:45:39 UTC 2024 - Michael Andres <ma@suse.com>
+
+- Add 0001-Fix-to-compile-with-gcc-14.2.1.patch
+  to compile with latest gcc.
+
+-------------------------------------------------------------------
 Mon Mar 15 08:14:49 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Enforce usage of optflags

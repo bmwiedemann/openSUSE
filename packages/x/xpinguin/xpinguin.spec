@@ -1,7 +1,7 @@
 #
 # spec file for package xpinguin
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Group:          Amusements/Toys/Graphics
 Source:         xpinguin.tar.gz
 Source1:        xpinguin.png
 Source2:        xpinguin.desktop
+Patch1:         0001-Fix-to-compile-with-gcc-14.2.1.patch
 BuildRequires:  imake
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files

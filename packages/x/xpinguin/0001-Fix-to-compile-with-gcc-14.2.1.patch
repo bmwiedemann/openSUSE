@@ -1,0 +1,85 @@
+From b413331a7ee84c4119e59d77351d62db14824b0c Mon Sep 17 00:00:00 2001
+From: Michael Andres <ma@suse.de>
+Date: Tue, 5 Nov 2024 13:24:44 +0100
+Subject: [PATCH] Fix to compile with gcc 14.2.1
+
+Add missing <stdlib.h> include and fix some wanings.
+---
+ xpinguin.c | 14 ++++++++------
+ 1 file changed, 8 insertions(+), 6 deletions(-)
+
+diff --git a/xpinguin.c b/xpinguin.c
+index ef3137c..7706358 100644
+--- a/xpinguin.c
++++ b/xpinguin.c
+@@ -26,6 +26,7 @@
+ #include <X11/xpm.h>
+ #endif
+ 
++#include <stdlib.h>
+ #include <stdio.h>
+ #include <string.h>
+ 
+@@ -44,13 +45,12 @@ static char *progname;
+ Display *display;
+ int screen_num;
+ 
+-void main(argc, argv)
++int main(argc, argv)
+      int argc;
+      char **argv;
+ {
+   /* Display, window and gc manipulation variables */
+   Window win;
+-  GC gc;
+   XSetWindowAttributes setwinattr;
+   XGCValues gcvalues;
+   unsigned long valuemask, gcvaluemask, inputmask;
+@@ -74,7 +74,6 @@ void main(argc, argv)
+   int bufsize = 20;
+   KeySym keysym;
+   XComposeStatus compose;
+-  int charcount;
+   Cursor cursor;
+ 
+ #ifndef NOXPM
+@@ -84,8 +83,10 @@ void main(argc, argv)
+   XpmAttributes xpmattributes;
+   XVisualInfo *visual_info, vinfo_template;
+   int nmatches;
++#ifdef DEBUG
+   static char *visual_name[]={ "StaticGray", "GrayScale", "StaticColor",
+ 				  "PseudoColor", "TrueColor", "DirectColor" };
++#endif
+ #endif
+ 
+   /* Window movement variables */
+@@ -154,7 +155,7 @@ void main(argc, argv)
+   gcvalues.foreground = BlackPixel(display,screen_num);
+   gcvalues.background = WhitePixel(display,screen_num);
+   gcvaluemask = GCForeground | GCBackground;
+-  gc = XCreateGC(display, win, gcvaluemask, &gcvalues);
++  XCreateGC(display, win, gcvaluemask, &gcvalues);
+ 
+ #ifdef NOXPM
+   /* Use b/w dithered X bitmap no matter what */
+@@ -355,8 +356,8 @@ void main(argc, argv)
+ 	  break;
+ 	case KeyPress:
+ 	  /* Exit on "q" or "Q" */
+-	  charcount = XLookupString(&report.xkey, buffer, bufsize,
+-				    &keysym, &compose);
++	  XLookupString(&report.xkey, buffer, bufsize,
++			&keysym, &compose);
+ 	  if((keysym == XK_Q) || (keysym == XK_q))
+ 	    {
+ 	      XCloseDisplay(display);
+@@ -368,4 +369,5 @@ void main(argc, argv)
+ 	  break;
+ 	} /* end switch */
+     } /* end while */
++  return 0;
+ }
+-- 
+2.35.3
+
