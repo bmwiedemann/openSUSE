@@ -21,7 +21,7 @@
 %define executable_name crossplane
 
 Name:           crossplane-cli
-Version:        1.17.2
+Version:        1.18.0
 Release:        0
 Summary:        The Cloud Native Control Plane
 License:        Apache-2.0

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 05 09:58:58 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.18.0:
+  Large update, please find the full changelog here:
+  https://github.com/crossplane/crossplane/releases/tag/v1.18.0
+  CLI-related changes:
+  * Support for converting to function-environment-configs.
+  * Support for passing credentials to functions in render function.
+  * beta validate improvements.
+
+-------------------------------------------------------------------
 Fri Oct 25 12:13:04 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.17.2:
