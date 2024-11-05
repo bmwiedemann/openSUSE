@@ -20,12 +20,10 @@ unsorted:
   - AdwSteamGtk 
   - AdwSteamGtk-lang 
   - AppCSXCAD 
-  - AppStream 
   - AppStream-compose 
   - AppStream-compose-devel 
   - AppStream-devel 
   - AppStream-doc 
-  - AppStream-lang 
   - AusweisApp 
   - Bear 
   - Botan 
@@ -3727,7 +3725,6 @@ unsorted:
   - eksctl-zsh-completion 
   - element-desktop 
   - element-web 
-  - elementary-cmake-modules 
   - elementary-icon-theme 
   - elementary-icon-theme-gimp-palette 
   - elementary-icon-theme-inkscape-palette 
@@ -8685,7 +8682,6 @@ unsorted:
   - hobbits-devel 
   - hollywood 
   - hollywood-data 
-  - holodev 
   - homebank 
   - homebank-lang 
   - homeshick 
@@ -23858,7 +23854,6 @@ unsorted:
   - python-saharaclient-doc 
   - python-senlinclient-doc 
   - python-shodan-doc 
-  - python-sip-doc 
   - python-sip4-common 
   - python-sip4-doc 
   - python-six-doc 
@@ -26215,7 +26210,6 @@ unsorted:
   - python310-mockito 
   - python310-model-bakery 
   - python310-modern-colorthief 
-  - python310-modernize 
   - python310-mohawk 
   - python310-mongoengine 
   - python310-more-itertools 
@@ -29816,7 +29810,6 @@ unsorted:
   - python311-mockito 
   - python311-model-bakery 
   - python311-modern-colorthief 
-  - python311-modernize 
   - python311-mohawk 
   - python311-mongoengine 
   - python311-more-itertools 
@@ -33435,7 +33428,6 @@ unsorted:
   - python312-mockito 
   - python312-model-bakery 
   - python312-modern-colorthief 
-  - python312-modernize 
   - python312-mohawk 
   - python312-mongoengine 
   - python312-more-itertools 
@@ -36397,7 +36389,6 @@ unsorted:
   - ruby3.3-rubygem-libyui-rake 
   - ruby3.3-rubygem-lightbox2 
   - ruby3.3-rubygem-liquid 
-  - ruby3.3-rubygem-liquid-4 
   - ruby3.3-rubygem-listen 
   - ruby3.3-rubygem-little-plugger 
   - ruby3.3-rubygem-llhttp-ffi 

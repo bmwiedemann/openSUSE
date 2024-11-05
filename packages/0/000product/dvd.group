@@ -3,6 +3,8 @@
   <packagelist relationship="recommends">
     <package name="389-ds" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="7zip" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="AppStream" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="AppStream-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="ImageMagick" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ImageMagick-config-7-SUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="Mesa" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -1089,8 +1091,8 @@
     <package name="kio-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kio_audiocd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kio_audiocd-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="kio_kamera" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="kio_kamera-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="kio_kamera" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_imaging -->
+    <package name="kio_kamera-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_imaging -->
     <package name="kipi-plugins" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kipi-plugins-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kirigami-addons6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
