@@ -1,5 +1,5 @@
 #
-# spec file for package rust1.81
+# spec file for package rust1.82
 #
 # Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019 Luke Jones, luke@ljones.dev
@@ -267,8 +267,10 @@ Source209:      %{dl_url}/rust-%{version_current}-riscv64gc-unknown-linux-gnu.ta
 NoSource:       209
 # Make factory-auto stop complaining...
 Source1000:     README.suse-maint
+
 # PATCH-FIX-OPENSUSE: edit src/librustc_llvm/build.rs to ignore GCC incompatible flag
 Patch0:         ignore-Wstring-conversion.patch
+Patch1:         ppc64le-float.patch
 # IMPORTANT - To generate patches for submodules in git so they apply relatively you can use
 #  git format-patch --text --dst-prefix=b/src/tools/cargo/  HEAD~2
 
