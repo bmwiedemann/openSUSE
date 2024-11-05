@@ -38,8 +38,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-pyqt-rpm-macros
 BuildRequires:  python-rpm-macros
 BuildRequires:  cmake(Qt6%{qtlib})
-%requires_ge    python-PyQt6
-%requires_ge    python-PyQt6-sip
+Requires:       python-PyQt6 >= %(rpm -q --whatprovides python3-PyQt6 --qf "%%{version}")
+Requires:       python-PyQt6-sip >= %(rpm -q --whatprovides python3-PyQt6-sip --qf "%%{version}")
 Provides:       python-qtcharts-qt6 = %{version}-%{release}
 %python_subpackages
 
