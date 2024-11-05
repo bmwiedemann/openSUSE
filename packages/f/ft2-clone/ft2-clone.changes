@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Nov  3 19:38:13 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.87
+  * Fixed: Stereo FLAC samples with a bitdepth of 24 didn't import
+    correctly if you chose to convert to mono.
+  * Added a Super Nintendo interpolation option ("Gaussian").
+  * Fixed wrong tuning when importing Gravis Ultrasound .PAT patch
+    files.
+  * Slightly improved the interpolation method for the tracker
+    scopes in "Lined" mode.
+  * Updated the help text to reflect the new interpolation option.
+  * Code cleanup.
+
+-------------------------------------------------------------------
 Tue Sep 17 18:44:43 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.86
