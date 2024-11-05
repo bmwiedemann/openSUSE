@@ -983,4 +983,12 @@ I need to make a separate request for the py2 version.
     <comment>fix SLE15 declaration</comment>
     <requestid>1141610</requestid>
   </revision>
+  <revision rev="117" vrev="7">
+    <srcmd5>475560c647a1ddd73103996a90f241f6</srcmd5>
+    <version>MACRO</version>
+    <time>1730818768</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1221347</requestid>
+  </revision>
 </revisionlist>

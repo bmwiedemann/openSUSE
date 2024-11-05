@@ -34,7 +34,7 @@ Source0:        README.SUSE
 BuildRequires:  %{python_module %{sipN}-devel}
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-%requires_eq    python-%{sipN}
+Requires:       python-%{sipN} = %{Nversion}
 %python_subpackages
 
 %description
@@ -47,7 +47,7 @@ to generate wxPython, the Python bindings for wxWidgets.
 %package devel
 Summary:        A Python bindings generator for C/C++ libraries
 Group:          Development/Libraries/Python
-%requires_eq    python-%{sipN}-devel
+Requires:       python-%{sipN}-devel = %{Nversion}
 
 %description devel
 SIP is a collection of tools that makes it very easy to create Python
@@ -65,7 +65,7 @@ specific version of SIP v<N>.
 Summary:        A Python bindings generator for C/C++ libraries -- common documentation
 Group:          Development/Libraries/Python
 Provides:       %{python_module sip-doc = %{version}-%{release}}
-%requires_eq    %{plainpython}-%{sipN}-doc
+Requires:       %{plainpython}-%{sipN}-doc = %{Nversion}
 
 %description -n python-sip-doc
 SIP is a tool that makes it very easy to create Python bindings for C
@@ -91,12 +91,12 @@ cp %{SOURCE0} .
 # only sip4 still provides the old python-sip package
 %files %{python_files}
 %doc README.SUSE
+
+%files -n python-sip-doc
+%doc README.SUSE
 %endif
 
 %files %{python_files devel}
-%doc README.SUSE
-
-%files -n python-sip-doc
 %doc README.SUSE
 
 %changelog

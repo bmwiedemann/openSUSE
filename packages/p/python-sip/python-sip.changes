@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov  5 07:40:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Only produce python-sip-doc when the default is SIP4: SIP6 does
+  not provide a -doc package. The previously generated meta package
+  only contained a README flle and no dependencies.
+
+-------------------------------------------------------------------
+Mon Nov  4 12:37:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not rely on %requires_eq macro: it expands too early and newly
+  errors out when the package specified does not exist. In case of
+  python single spec, the rewriting mechanism for the python ->
+  pythonXYZ flavor happens 'too late'.
+
+-------------------------------------------------------------------
 Thu Jan 25 20:08:40 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Remove old skip_python2
