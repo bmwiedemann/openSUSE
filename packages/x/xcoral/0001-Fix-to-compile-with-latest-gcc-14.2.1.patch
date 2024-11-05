@@ -1,0 +1,52 @@
+From 6ae0908979aed9f95f65a199ec4bf05a3a7da252 Mon Sep 17 00:00:00 2001
+From: Michael Andres <ma@suse.de>
+Date: Tue, 5 Nov 2024 16:17:02 +0100
+Subject: [PATCH] Fix to compile with latest gcc 14.2.1
+
+---
+ configure | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/configure b/configure
+index 62fa4df..6903eb3 100755
+--- a/configure
++++ b/configure
+@@ -630,7 +630,7 @@ cross_compiling=$ac_cv_prog_cc_cross
+ cat > conftest.$ac_ext <<EOF
+ #line 622 "configure"
+ #include "confdefs.h"
+-main(){return(0);}
++int main(){return(0);}
+ EOF
+ if { (eval echo configure:626: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest; then
+   ac_cv_prog_cc_works=yes
+@@ -2075,7 +2075,7 @@ find_stack_direction ()
+   else
+     return (&dummy > addr) ? 1 : -1;
+ }
+-main ()
++int main ()
+ {
+   exit (find_stack_direction() < 0);
+ }
+@@ -2126,7 +2126,7 @@ int     pid;
+ int     pg1, pg2, pg3, pg4;
+ int     ng, np, s, child;
+ 
+-main()
++int main()
+ {
+         pid = getpid();
+         pg1 = getpgrp(0);
+@@ -2204,7 +2204,7 @@ else
+  * If this system has a BSD-style setpgrp, which takes arguments, exit
+  * successfully.
+  */
+-main()
++int main()
+ {
+     if (setpgrp(1,1) == -1)
+ 	exit(0);
+-- 
+2.35.3
+

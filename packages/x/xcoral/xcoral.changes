@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  5 15:30:30 UTC 2024 - Michael Andres <ma@suse.com>
+
+- Add 0001-Fix-to-compile-with-latest-gcc-14.2.1.patch
+  to compile.
+
+-------------------------------------------------------------------
 Thu May  6 13:41:11 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 3.50.2

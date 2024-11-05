@@ -1,7 +1,7 @@
 #
 # spec file for package xcoral
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Group:          Productivity/Text/Editors
 URL:            http://xcoral.free.fr/
 Source:         http://xcoral.free.fr/xcoral-%{version}.tar.gz
 Patch0:         xcoral-compile.patch
+Patch1:         0001-Fix-to-compile-with-latest-gcc-14.2.1.patch
 BuildRequires:  libXft-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
