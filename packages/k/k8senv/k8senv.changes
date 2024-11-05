@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Nov 03 17:24:32 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.1.1:
+  * remove armv7 from docker release
+  * update dockerfile
+  * release v1.1.1
+  * makes sure patch version does not contain any build or subpatch
+    version
+  * fix #32
+
+-------------------------------------------------------------------
 Tue Oct 29 14:06:38 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.1.0:

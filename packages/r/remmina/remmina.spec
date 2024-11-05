@@ -55,16 +55,12 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gvnc-1.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libsecret-1)
-%if 0%{?sle_version} && 0%{?sle_version} <= 150500
-BuildRequires:  pkgconfig(libsoup-2.4)
-%else
 BuildRequires:  pkgconfig(libsoup-3.0)
-%endif
 BuildRequires:  pkgconfig(libssh)
 BuildRequires:  pkgconfig(libvncserver)
 BuildRequires:  pkgconfig(spice-client-gtk-3.0)
 BuildRequires:  pkgconfig(vte-2.91)
-BuildRequires:  pkgconfig(webkit2gtk-4.0)
+BuildRequires:  pkgconfig(webkit2gtk-4.1)
 %if 0%{?suse_version} > 1590
 BuildRequires:  pkgconfig(freerdp3) >= 3.0.0
 BuildRequires:  pkgconfig(winpr3)

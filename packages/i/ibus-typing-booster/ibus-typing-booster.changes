@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Nov 04 08:52:14 UTC 2024 - maiku.fabian@gmail.com
+
+- Update to 2.26.8
+- Get more information about the Pango rendering support for an emoji
+  and use fallback in emoji-picker only when necessary
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/508)
+- Also make it possible to show font file names, font versions,
+  and emoji related OpenType tables of the fonts used
+  (shown only in debug mode, i.e. when "emoji-picker --debug" is used,
+  when not in debug mode show only the font family name)
+- In do_reset() skip clearing input only when the surrounding
+  text **up to the cursor** ends with the current preedit
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/529)
+- Translation update from Weblate (kab 75.9%)
+
+-------------------------------------------------------------------
 Mon Oct 28 20:40:39 UTC 2024 - maiku.fabian@gmail.com
 
 - Update to 2.26.6

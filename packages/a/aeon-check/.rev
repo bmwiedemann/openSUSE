@@ -7,4 +7,13 @@
     <comment>Fixes for TPM2 issues in Aeon RC3</comment>
     <requestid>1190477</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>830f5f466845b636d97192a91f5cfb2a</srcmd5>
+    <version>1.0.2</version>
+    <time>1730756543</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.2:
+  * Use mktemp (boo#1228861)</comment>
+    <requestid>1220515</requestid>
+  </revision>
 </revisionlist>

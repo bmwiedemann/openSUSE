@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Oct 27 18:32:52 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 0.17.2
+  - Fix #4004: Support container-level SAS/SAT tokens for Azure
+    backend
+  - Fix #5047: Resolve potential error during concurrent cache
+    cleanup
+  - Fix #5050: Return error if tag fails to lock repository
+  - Fix #5057: Exclude irregular files from backups
+  - Fix #5063: Correctly backup extended metadata when using VSS on
+    Windows
+
+-------------------------------------------------------------------
 Thu Sep  5 21:11:14 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 0.17.1

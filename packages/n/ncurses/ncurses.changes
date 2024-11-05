@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov  4 08:12:21 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20241102
+  + remove djgpp-specific initialization to binary mode (report/patch by
+    Stas Sergeev).
+  + add extended-keys for djgpp 2.05 -TD
+- Add ncurses patch 20241026
+  + update ms-terminal -TD
+  + add ms-terminal-direct -TD
+  + correct dimensions in test/popup_msg.c, fixing an overrun (patch by
+    Stas Sergeev, cf: 20211219).
+
+-------------------------------------------------------------------
 Mon Oct 21 06:40:43 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20241019

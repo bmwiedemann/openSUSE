@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Thu Oct 31 09:48:30 UTC 2024 - Matthias Brugger <mbrugger@suse.com>
+
+- Add tinyxml2-devel to BuildRequiers
+- Update to version 1.5.191.0
+  - Reduce memory usage when burn single board with compressed Image.
+  - Http(s) prompt request username and passwords when require autherization.
+  - fix memory leak cause by getaddrinfo.
+  - fix crash when environment variable is last word in script
+  - Expand upload command, like uploading the value of a specific variable
+  - Fix segfault when boot data is zero in SDP.
+  - Fix issues when m_skip is not zero in fastboot.
+  - Fix issues when file size isn't divisible by block size in fastboot.
+  - Fix read uploaded data for FB.
+  - static link c++ library in prebuild linux image
+  - provide armlinux version image
+  - Add built spinand command support
+  - parser [-t timeout] for all protocol
+  - force use old libusb to run at ubuntu 18.04
+  - Increase default timeout to 10s
+  - Hot Fixed for SPDS crash for some images
+  - Support i.MX95
+  - Fixed usb pipe error when download image with FCB
+  - Support i.MX91
+  - Fixed a crash with -d option when change back file.
+  - Fix crash when get serial number at SPL/uboot if no serial_no exist at device descriptor
+  - Fix "imx91" device name as "imx93" when -lsusb
+  - Add dynamic `g_max_process_width` global variable to handle long lines
+
+-------------------------------------------------------------------
+Fri Oct 25 11:04:22 UTC 2024 - Matthias Brugger <mbrugger@suse.com>
+
+- Update to version 1.5.182.9
+  - Reduce memory usage when burn single board with compressed Image.
+  - Http(s) prompt request username and passwords when require autherization.
+  - fix memory leak cause by getaddrinfo.
+  - fix crash when environment variable is last word in script
+  - Expand upload command, like uploading the value of a specific variable
+  - Fix segfault when boot data is zero in SDP.
+  - Fix issues when m_skip is not zero in fastboot.
+  - Fix issues when file size isn't divisible by block size in fastboot.
+  - Fix read uploaded data for FB.
+  - static link c++ library in prebuild linux image
+  - provide armlinux version image
+  - Add built spinand command support
+  - parser [-t timeout] for all protocol
+  - force use old libusb to run at ubuntu 18.04
+  - Increase default timeout to 10s
+  - Hot Fixed for SPDS crash for some images
+  - Support i.MX95
+  - Fixed usb pipe error when download image with FCB
+  - Support i.MX91
+  - Fixed a crash with -d option when change back file.
+  - Fix crash when get serial number at SPL/uboot if no serial_no exist at device descriptor
+  - Fix "imx91" device name as "imx93" when -lsusb
+  - Add dynamic `g_max_process_width` global variable to handle long lines
+
+-------------------------------------------------------------------
 Mon Apr 17 13:26:03 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add mfgtools-gcc13.patch: Fix build using GCC 13.

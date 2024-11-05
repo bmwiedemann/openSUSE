@@ -164,4 +164,16 @@
     <comment>Package update to 1.2.3</comment>
     <requestid>1190654</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>73558d70102ee1cc13e4a6d97f291ec7</srcmd5>
+    <version>1.2.4</version>
+    <time>1730756544</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.2.4:
+  * Use mktemp (boo#1228861)
+  * fix(fallback): ask the user passphase twice, to be sure no accidental typos are in input
+  * don't fail migration if system is not encrypted
+  * Update README.md: more logical arrangement</comment>
+    <requestid>1220516</requestid>
+  </revision>
 </revisionlist>

@@ -16,8 +16,10 @@
 #
 
 
+%bcond_with vst3
+
 Name:           audacity
-Version:        3.6.4
+Version:        3.7.0
 Release:        0
 Summary:        A Multi Track Digital Audio Editor
 License:        CC-BY-3.0 AND GPL-2.0-or-later AND GPL-3.0-only
@@ -26,7 +28,9 @@ URL:            http://audacityteam.org/
 Source:         https://github.com/audacity/audacity/archive/Audacity-%{version}.tar.gz
 Source1:        audacity-license-nyquist
 Source2:        audacity-rpmlintrc
-Source3:        vst3sdk-3.7.12_build_20.tar.xz
+%if %{with vst3}
+#Source3:        vst3sdk-3.7.12_build_20.tar.xz
+%endif
 # PATCH-FIX-OPENSUSE audacity-no_buildstamp.patch davejplater@gmail.com -- Remove the buildstamp.
 Patch0:         audacity-no_buildstamp.patch
 # PATCH-FIX-UPSTREAM audacity-no_return_in_nonvoid.patch - Fix false positive errors Two new gcc10 ones ignoring assert
@@ -35,7 +39,7 @@ Patch1:         audacity-no_return_in_nonvoid.patch
 Patch3:         lib64-plugins-default-path.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  desktop-file-utils
-%if 0%{?suse_version} <= 1600
+%if 0%{?suse_version} < 1600
 BuildRequires:  gcc12
 BuildRequires:  gcc12-c++
 %else
@@ -133,10 +137,12 @@ rm -rf lib-src/{expat,libvamp,libsoxr,ffmpeg,lame}/
 #Included in src/AboutDialog.cpp but not supplied
 touch include/RevisionIdent.h
 
+%if %{with vst3}
 tar xf %{SOURCE3} --strip-components=1 --one-top-level=vst3sdk
+%endif
 
 %build
-%if 0%{?suse_version} <= 1600
+%if 0%{?suse_version} < 1600
 export CC=gcc-12
 export CXX=g++-12
 %endif
@@ -157,6 +163,9 @@ export CFLAGS="%{optflags} -fno-strict-aliasing -ggdb $(wx-config --cflags)"
        -Daudacity_lib_preference:STRING=system \
        -Duse_lame:STRING=system \
        -Daudacity_use_ffmpeg:STRING=loaded \
+%if %{without vst3}
+       -Daudacity_has_vst3=off \
+%endif
        -DVST3_DEFAULT_INSTALL_PATH=%{_libdir}/vst3/
 
 %cmake_build

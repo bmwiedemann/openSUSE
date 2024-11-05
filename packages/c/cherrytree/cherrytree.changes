@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Oct 15 06:44:50 UTC 2024 - gumsley_6@hotmail.com
+
+- Update to version 1.2.0:
+  * fixed crash pressing Ctrl+Z while editing table light cell
+  * trying to use gtksourceview to convert any encoding to utf8 and
+    lose libfribidi dependency
+  * trying to use gtksourceview to convert any encoding to utf8 and
+    lose libfribidi dependency
+  * do not prefix http:// when a URL-like prefix already exists
+    (#2570)
+  * updated create_ppa_package.py -22.10/mantic +24.10/oracular
+  * fixed links to nodes not working when exporting to html, single
+    file (#2570)
+  * fixed crash when moving (heavy) table row/column after porting
+    to libgtksourceview4 (#2562)
+  * implemented quick node selection typing part of the node name,
+    default keyboard shortcut to Ctrl+Shift+G
+    (#2552, work of @ericguin)
+  * implemented collapsible headers support when TOC is generated
+    (#2389)
+
+-------------------------------------------------------------------
 Thu Sep 12 10:59:13 UTC 2024 - dimstar@opensuse.org
 
 - Update to version 1.1.4+18:

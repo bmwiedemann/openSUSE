@@ -15,4 +15,21 @@
     <comment>- Update products translations (gh#openSUSE/agama#1607).</comment>
     <requestid>1202948</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>13dfd9068d645fae259cc885c0a60d3e</srcmd5>
+    <version>0</version>
+    <time>1730756545</time>
+    <user>anag+factory</user>
+    <comment>- sles_enhanced_base pattern was removed from SLES16, so replace
+  it with base pattern (bsc#1232618)
+
+- Use HTTP repositories for SLES16, HTTPS does not work because
+  of the internal SUSE CA used for the server SSL certificate
+  (gh#agama-project/agama#1688)
+
+- Added Slowroll to the product list (gh#agama-project/agama#1674)
+
+- Fixed typo in the SLES product name (bsc#1231663)</comment>
+    <requestid>1220519</requestid>
+  </revision>
 </revisionlist>

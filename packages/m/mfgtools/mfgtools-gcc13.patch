@@ -1,20 +1,21 @@
-Index: mfgtools-1.4.243.7/libuuu/libcomm.h
+@@ -0,0 +1,24 @@
+Index: b/libuuu/libcomm.h
 ===================================================================
---- mfgtools-1.4.243.7.orig/libuuu/libcomm.h
-+++ mfgtools-1.4.243.7/libuuu/libcomm.h
-@@ -33,6 +33,7 @@
+--- a/libuuu/libcomm.h
++++ b/libuuu/libcomm.h
+@@ -34,6 +34,7 @@
  #include <locale>
  #include <cctype>
  #include <algorithm>
 +#include <cstdint>
- #pragma once
+ #include "libuuu.h"
  
- using namespace std;
-Index: mfgtools-1.4.243.7/uuu/buildincmd.h
+ #pragma once
+Index: b/uuu/buildincmd.h
 ===================================================================
---- mfgtools-1.4.243.7.orig/uuu/buildincmd.h
-+++ mfgtools-1.4.243.7/uuu/buildincmd.h
-@@ -34,6 +34,7 @@
+--- a/uuu/buildincmd.h
++++ b/uuu/buildincmd.h
+@@ -35,6 +35,7 @@
  #include <map>
  #include <string>
  #include <vector>

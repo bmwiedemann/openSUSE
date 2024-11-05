@@ -17,7 +17,7 @@
 
 
 Name:           lf
-Version:        32
+Version:        33
 Release:        0
 Summary:        Terminal file manager (with sixel support)
 License:        MIT

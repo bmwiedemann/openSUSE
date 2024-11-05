@@ -444,7 +444,7 @@
  
  	if [ $name = $MAIN_LIBRARY ]
 --- misc/terminfo.src
-+++ misc/terminfo.src	2024-10-07 07:08:14.723203369 +0000
++++ misc/terminfo.src	2024-11-04 08:13:37.278661915 +0000
 @@ -305,7 +305,9 @@ dumb|80-column dumb tty,
  	am,
  	cols#80,
@@ -481,7 +481,7 @@
  	sgr=\E[0;10%?%p1%t;7%;%?%p2%t;4%;%?%p3%t;7%;%?%p4%t;5%;%?%p5
  	    %t;2%;%?%p6%t;1%;m%?%p9%t\016%e\017%;,
  	sgr0=\E[m\017, smacs=^N, use=linux2.2,
-@@ -5023,7 +5032,7 @@ xterm-new|modern xterm terminal emulator
+@@ -5064,7 +5073,7 @@ xterm-new|modern xterm terminal emulator
  # set it to BS (standard) or DEL (Linux's notion of "vt220").  xterm provides
  # either, depending on how the pseudoterminals are configured.
  xterm+kbs|fragment for backspace key,
@@ -490,7 +490,7 @@
  
  # Use this fragment for terminals that always use DEL for "backspace".
  linux+kbs|fragment for "backspace" key,
-@@ -5414,7 +5423,7 @@ xterm+88color2|xterm 88-color feature,
+@@ -5455,7 +5464,7 @@ xterm+88color2|xterm 88-color feature,
  
  # These variants of XFree86 3.9.16 xterm are built as a configure option.
  xterm-256color|xterm with 256 colors,
@@ -499,7 +499,7 @@
  xterm-88color|xterm with 88 colors,
  	use=xterm+osc104, use=xterm+88color,
  	use=xterm-256color,
-@@ -5683,9 +5692,25 @@ xterm-noapp|xterm with cursor keys in no
+@@ -5724,9 +5733,25 @@ xterm-noapp|xterm with cursor keys in no
  xterm-24|vs100|xterms|xterm terminal emulator 24-line (X Window System),
  	lines#24, use=xterm-old,
  
@@ -526,7 +526,7 @@
  
  # This entry assumes that xterm's handling of VT100 SI/SO is disabled by
  # setting the vt100Graphics resource to false.
-@@ -6137,7 +6162,7 @@ xterms-sun|small (80x24) xterm with sunF
+@@ -6178,7 +6203,7 @@ xterms-sun|small (80x24) xterm with sunF
  
  #### GNOME (VTE)
  # this describes the alpha-version of GNOME terminal shipped with Redhat 6.0
@@ -535,7 +535,7 @@
  	bce,
  	kdch1=^?, kf1=\EOP, kf2=\EOQ, kf3=\EOR, kf4=\EOS,
  	use=linux+kbs, use=xterm-color,
-@@ -6422,11 +6447,15 @@ mgt|Multi GNOME Terminal,
+@@ -6463,11 +6488,15 @@ mgt|Multi GNOME Terminal,
  #### KDE
  # This is kvt 0-18.7, shipped with Redhat 6.0 (though whether it supports bce
  # or not is debatable).
@@ -552,7 +552,7 @@
  # Konsole 1.0.1 (2001/11/25)
  # (formerly known as kvt)
  #
-@@ -6680,7 +6709,7 @@ mlterm3|multi lingual terminal emulator
+@@ -6721,7 +6750,7 @@ mlterm3|multi lingual terminal emulator
  mlterm2|multi lingual terminal emulator 2.x,
  	am, eslok, km, mc5i, mir, msgr, npc, xenl, XT,
  	colors#8, cols#80, lines#24, pairs#64,
@@ -561,7 +561,7 @@
  	bel=^G, bold=\E[1m, clear=\E[H\E[2J, cr=\r, cub1=^H, cud1=\n,
  	cup=\E[%i%p1%d;%p2%dH, dch=\E[%p1%dP, dch1=\E[P,
  	ech=\E[%p1%dX, ed=\E[J, el=\E[K, el1=\E[1K, enacs=,
-@@ -6758,8 +6787,8 @@ rxvt-basic|rxvt terminal base (X Window
+@@ -6799,8 +6828,8 @@ rxvt-basic|rxvt terminal base (X Window
  	    %p9%t\016%e\017%;,
  	sgr0=\E[0m\017, smir=\E[4h, smkx=\E=, smso=\E[7m,
  	smul=\E[4m, use=ansi+csr, use=ansi+idl, use=ansi+local,
@@ -572,7 +572,7 @@
  
  # Key Codes from rxvt reference:
  #
-@@ -6843,8 +6872,8 @@ rxvt-basic|rxvt terminal base (X Window
+@@ -6884,8 +6913,8 @@ rxvt-basic|rxvt terminal base (X Window
  # Removed kDN6, etc (control+shift) since rxvt does not implement this -TD
  rxvt+pcfkeys|rxvt fragment for PC-style fkeys,
  	kDC=\E[3$, kEND=\E[8$, kHOM=\E[7$, kIC=\E[2$, kLFT=\E[d,
@@ -583,7 +583,7 @@
  	kf21=\E[23$, kf22=\E[24$, kf23=\E[11\^, kf24=\E[12\^,
  	kf25=\E[13\^, kf26=\E[14\^, kf27=\E[15\^, kf28=\E[17\^,
  	kf29=\E[18\^, kf30=\E[19\^, kf31=\E[20\^, kf32=\E[21\^,
-@@ -6928,6 +6957,38 @@ rxvt-cygwin-native|rxvt terminal emulato
+@@ -6969,6 +6998,38 @@ rxvt-cygwin-native|rxvt terminal emulato
  	     \302x\263y\363z\362{\343|\330~\376,
  	use=rxvt-cygwin,
  
@@ -622,7 +622,7 @@
  # This variant is supposed to work with rxvt 2.7.7 when compiled with
  # NO_BRIGHTCOLOR defined.  rxvt needs more work...
  rxvt-16color|rxvt with 16 colors like aixterm,
-@@ -8260,7 +8321,7 @@ pty|4bsd pseudo teletype,
+@@ -8301,7 +8362,7 @@ pty|4bsd pseudo teletype,
  # https://github.com/emacs-mirror/emacs/blob/master/lisp/term.el
  #
  # The codes supported by the term.el terminal emulation in GNU Emacs 19.30
@@ -631,7 +631,7 @@
  	am, mir, xenl,
  	cols#80, lines#24,
  	bel=^G, bold=\E[1m, cr=\r, csr=\E[%i%p1%d;%p2%dr, cub1=^H,
-@@ -8270,6 +8331,13 @@ eterm|GNU Emacs term.el terminal emulati
+@@ -8311,6 +8372,13 @@ eterm|GNU Emacs term.el terminal emulati
  	smir=\E[4h, smso=\E[7m, smul=\E[4m, use=ansi+cpr,
  	use=ansi+erase, use=ansi+idl, use=ansi+local,
  	use=xterm+alt47,
@@ -645,7 +645,7 @@
  
  # The codes supported by the term.el terminal emulation in GNU Emacs 22.2
  eterm-color|Emacs term.el terminal emulator term-protocol-version 0.96,
-@@ -8513,11 +8581,18 @@ screen.xterm-xfree86|screen.xterm-new|sc
+@@ -8554,11 +8622,18 @@ screen.xterm-xfree86|screen.xterm-new|sc
  	E3@, use=screen+italics, use=screen+fkeys,
  	use=xterm+x11mouse, use=ecma+index, use=ansi+rep,
  	use=ecma+strikeout, use=xterm+pcfkeys,
@@ -665,7 +665,7 @@
  
  # xterm-r6 does not really support khome/kend unless it is propped up by
  # the translations resource.
-@@ -8602,7 +8677,7 @@ screen-w|VT 100/ANSI X3.64 virtual termi
+@@ -8643,7 +8718,7 @@ screen-w|VT 100/ANSI X3.64 virtual termi
  screen2|VT 100/ANSI X3.64 virtual terminal (old 2.x),
  	cols#80, lines#24,
  	clear=\E[2J\E[H, cr=\r, cub1=^H, cup=\E[%i%p1%d;%p2%dH,
@@ -674,7 +674,7 @@
  	kf2=\ET, kf3=\EU, kf4=\EV, kf5=\EW, kf6=\EP, kf7=\EQ, kf8=\ER,
  	kf9=\E0I, khome=\EH, nel=\r\n, rc=\E8, ri=\EM, rmso=\E[23m,
  	rmul=\E[24m, rs1=\Ec, sc=\E7, sgr0=\E[m, smso=\E[3m,
-@@ -10515,7 +10590,7 @@ hp700-wy|HP 700/41 emulating Wyse30,
+@@ -10579,7 +10654,7 @@ hp700-wy|HP 700/41 emulating Wyse30,
  	ri=\Ej, rmir=\Er, rmso=\EG0$<10/>, rmul=\EG0$<10/>,
  	sgr0=\EG0$<10/>, smir=\Eq, smso=\EG4$<10/>,
  	smul=\EG8$<10/>, tbc=\E0, vpa=\E[%p1%{32}%+%c,
@@ -683,7 +683,7 @@
  	am, da, db, xhp,
  	cols#80, lh#2, lines#24, lm#0, lw#8, nlab#8,
  	acsc=0cjgktlrmfn/q\,t5u6v8w7x., bel=^G, blink=\E&dA,
-@@ -18012,7 +18087,7 @@ ibm3101|i3101|IBM 3101-10,
+@@ -18076,7 +18151,7 @@ ibm3101|i3101|IBM 3101-10,
  	cup=\EY%p1%{32}%+%c%p2%{32}%+%c, cuu1=\EA, ed=\EJ,
  	el=\EI, home=\EH, hts=\E0, ind=\n, nel=\r\n, tbc=\EH,
  	use=vt52+arrows,
@@ -692,7 +692,7 @@
  	is2=\E S, rmacs=\E>B, rs2=\E S,
  	sgr=\E4%{64}%?%p1%t%{65}%|%;%?%p2%t%{66}%|%;%?%p3%t%{65}%|%;
  	    %?%p4%t%{68}%|%;%?%p5%t%{64}%|%;%?%p6%t%{72}%|%;%?%p7%t
-@@ -18248,7 +18323,7 @@ lft|lft-pc850|LFT-PC850|IBM LFT PC850 De
+@@ -18312,7 +18387,7 @@ lft|lft-pc850|LFT-PC850|IBM LFT PC850 De
  
  # "Megapel" refers to the display adapter, which was used with the IBM RT
  # aka IBM 6150.

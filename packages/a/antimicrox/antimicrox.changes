@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov  1 07:50:35 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.5.0
+  Fixed bugs:
+  * Horizontal mouse wheel is too fast when set on stick
+  * Fix binding labels for Wheel Left/Right buttons pull
+  * Set change sometimes returns to wrong set
+  * Wrong Keyboard Input on Assignment (Wayland)
+  Notable changes:
+  * Update translation for Finnish, Dutch, Russian
+  * New translation: Indonesian
+
+-------------------------------------------------------------------
 Mon Aug 12 05:22:35 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 3.4.1

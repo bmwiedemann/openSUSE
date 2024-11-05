@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Fri Apr 12 05:55:35 UTC 2024 - Mikhailov <amikhailov@airmail.cc>
+
+- Update to version 1.3.1
+  * Fix a few compiler warnings.
+  * Dropped C++03 compatibility.
+
+-------------------------------------------------------------------
+Tue Dec  6 01:12:18 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Initial package version (1.3.0)

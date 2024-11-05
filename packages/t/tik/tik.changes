@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 04 09:35:44 UTC 2024 - rbrown@suse.com
+
+- Update to version 1.2.4:
+  * Use mktemp (boo#1228861)
+  * fix(fallback): ask the user passphase twice, to be sure no accidental typos are in input
+  * don't fail migration if system is not encrypted
+  * Update README.md: more logical arrangement
+
+-------------------------------------------------------------------
 Wed Jul 31 12:30:38 UTC 2024 - rbrown@suse.com
 
 - Update to version 1.2.3:

@@ -1,4 +1,4 @@
-From 71bca819927dcd976ece1aab6cdb9ddd4aab8a09 Mon Sep 17 00:00:00 2001
+From 5656f9c533dfd7087af7475cb274afcc26f10c02 Mon Sep 17 00:00:00 2001
 From: Mikolaj Izdebski <mizdebsk@redhat.com>
 Date: Mon, 10 Jul 2017 10:37:50 +0200
 Subject: [PATCH 1/2] Port to TestNG 7.4.0
@@ -16,7 +16,7 @@ Subject: [PATCH 1/2] Port to TestNG 7.4.0
  9 files changed, 104 insertions(+), 31 deletions(-)
 
 diff --git a/pom.xml b/pom.xml
-index 432d7ebae..75a61b38e 100644
+index 46ed3c60a..36fbdc5df 100644
 --- a/pom.xml
 +++ b/pom.xml
 @@ -98,7 +98,7 @@
@@ -29,7 +29,7 @@ index 432d7ebae..75a61b38e 100644
      <maven.surefire.scm.devConnection>scm:git:https://gitbox.apache.org/repos/asf/maven-surefire.git</maven.surefire.scm.devConnection>
      <maven.site.path>surefire-archives/surefire-LATEST</maven.site.path>
 diff --git a/surefire-providers/surefire-testng-utils/pom.xml b/surefire-providers/surefire-testng-utils/pom.xml
-index 2816d9329..fbb357d02 100644
+index 19d6d0334..4e86fb9dc 100644
 --- a/surefire-providers/surefire-testng-utils/pom.xml
 +++ b/surefire-providers/surefire-testng-utils/pom.xml
 @@ -47,7 +47,6 @@
@@ -240,7 +240,7 @@ index c0e7838bd..5f180624d 100644
      }
  }
 diff --git a/surefire-providers/surefire-testng/pom.xml b/surefire-providers/surefire-testng/pom.xml
-index aa23267c3..33b1ef76f 100644
+index e180a41ac..72ac6bad5 100644
 --- a/surefire-providers/surefire-testng/pom.xml
 +++ b/surefire-providers/surefire-testng/pom.xml
 @@ -57,7 +57,6 @@
@@ -353,5 +353,5 @@ index 097a74d1e..8b34db85d 100755
      }
  
 -- 
-2.46.1
+2.47.0
 

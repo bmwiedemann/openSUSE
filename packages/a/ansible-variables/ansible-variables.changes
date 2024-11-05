@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov  3 17:25:03 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.1:
+  * deps: bump coactions/dynamic-matrix from 3 to 4 (#104)
+    (f7e5124)
+
+-------------------------------------------------------------------
 Wed Oct  2 05:50:05 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.0:

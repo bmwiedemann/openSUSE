@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Nov  3 23:45:15 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v1.15.10
+  * Changes of v1.15.10
+    + Fix Java 8 patterns for multi-release jars to avoid that
+      inner classes are excluded.
+  * Changes of v1.15.9
+    + Additional release after time out during previous Gradle
+      plugin release.
+
+-------------------------------------------------------------------
 Sat Nov  2 15:49:57 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v1.15.8

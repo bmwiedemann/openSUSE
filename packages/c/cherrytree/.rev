@@ -1562,4 +1562,29 @@
     <comment></comment>
     <requestid>1200543</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>297b37d91d868e4661bff9a9f72ce833</srcmd5>
+    <version>1.2.0</version>
+    <time>1730756533</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.2.0:
+  * fixed crash pressing Ctrl+Z while editing table light cell
+  * trying to use gtksourceview to convert any encoding to utf8 and
+    lose libfribidi dependency
+  * trying to use gtksourceview to convert any encoding to utf8 and
+    lose libfribidi dependency
+  * do not prefix http:// when a URL-like prefix already exists
+    (#2570)
+  * updated create_ppa_package.py -22.10/mantic +24.10/oracular
+  * fixed links to nodes not working when exporting to html, single
+    file (#2570)
+  * fixed crash when moving (heavy) table row/column after porting
+    to libgtksourceview4 (#2562)
+  * implemented quick node selection typing part of the node name,
+    default keyboard shortcut to Ctrl+Shift+G
+    (#2552, work of @ericguin)
+  * implemented collapsible headers support when TOC is generated
+    (#2389)</comment>
+    <requestid>1220505</requestid>
+  </revision>
 </revisionlist>

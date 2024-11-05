@@ -98,4 +98,12 @@
 - Add additional wireless settings (gh#openSUSE/agama#1602).</comment>
     <requestid>1202589</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>5dd1386495f9bd8e096ae39983fe3e51</srcmd5>
+    <version>0</version>
+    <time>1730756547</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1220523</requestid>
+  </revision>
 </revisionlist>

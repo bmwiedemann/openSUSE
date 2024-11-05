@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Oct 30 18:57:26 UTC 2024 - Gustavo Yokoyama Ribeiro <gyribeiro@suse.com>
+
+- sles_enhanced_base pattern was removed from SLES16, so replace
+  it with base pattern (bsc#1232618)
+
+-------------------------------------------------------------------
+Tue Oct 22 08:41:14 UTC 2024 - Ladislav Slezák <lslezak@suse.com>
+
+- Use HTTP repositories for SLES16, HTTPS does not work because
+  of the internal SUSE CA used for the server SSL certificate
+  (gh#agama-project/agama#1688)
+
+-------------------------------------------------------------------
+Thu Oct 17 21:58:46 UTC 2024 - WesfunOfficial <93811710+WesfunOfficial@users.noreply.github.com>
+
+- Added Slowroll to the product list (gh#agama-project/agama#1674)
+
+-------------------------------------------------------------------
+Thu Oct 17 08:16:42 UTC 2024 - Ladislav Slezák <lslezak@suse.com>
+
+- Fixed typo in the SLES product name (bsc#1231663)
+
+-------------------------------------------------------------------
 Tue Sep 24 09:30:26 UTC 2024 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Update products translations (gh#openSUSE/agama#1607).

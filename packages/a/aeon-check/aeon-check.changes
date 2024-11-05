@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 04 09:34:36 UTC 2024 - rbrown@suse.com
+
+- Update to version 1.0.2:
+  * Use mktemp (boo#1228861)
+
+-------------------------------------------------------------------
 Tue Jul 30 09:52:06 UTC 2024 - rbrown@suse.com
 
 - Initial packaging of version 1.0.1

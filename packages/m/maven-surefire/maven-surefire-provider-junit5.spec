@@ -18,7 +18,7 @@
 
 %global base_name maven-surefire
 Name:           %{base_name}-provider-junit5
-Version:        3.5.1
+Version:        3.5.2
 Release:        0
 Summary:        JUnit 5 provider for Maven Surefire
 License:        Apache-2.0 AND CPL-1.0
@@ -78,7 +78,6 @@ sed -i /-Xdoclint:all/d pom.xml
 
 # We don't need site-source
 %pom_remove_plugin :maven-assembly-plugin maven-surefire-plugin
-%pom_remove_dep -r ::::site-source
 
 %build
 pushd surefire-providers/surefire-junit-platform

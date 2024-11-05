@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 31 20:11:59 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace pkgconfig(webkit2gtk-4.0) with pkgconfig(webkit2gtk-4.1)
+  BuildRequires, following this drop conditional
+  pkgconfig(libsoup-2.4) BuildRequires, use only libsoup-3.0 going
+  forward.
+
+-------------------------------------------------------------------
 Thu Oct 10 06:39:29 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.4.36:

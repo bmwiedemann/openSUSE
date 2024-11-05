@@ -18,7 +18,7 @@
 
 %global base_name maven-surefire
 Name:           %{base_name}-plugins
-Version:        3.5.1
+Version:        3.5.2
 Release:        0
 Summary:        Test framework project
 License:        Apache-2.0 AND CPL-1.0
@@ -136,7 +136,6 @@ sed -i /-Xdoclint:all/d pom.xml
 
 # We don't need site-source
 %pom_remove_plugin :maven-assembly-plugin maven-surefire-plugin
-%pom_remove_dep -r ::::site-source
 
 # Disable all modules besides the 3 plugins
 for module in \

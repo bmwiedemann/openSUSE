@@ -2,7 +2,7 @@
 	<service name="tar_scm" mode="disabled">
 		<param name="scm">git</param>
 		<param name="url">https://github.com/apache/maven-surefire.git</param>
-		<param name="revision">surefire-3.5.1</param>
+		<param name="revision">surefire-3.5.2</param>
 		<param name="match-tag">surefire-*</param>
 		<param name="versionformat">@PARENT_TAG@</param>
 		<param name="versionrewrite-pattern">surefire-(.*)</param>

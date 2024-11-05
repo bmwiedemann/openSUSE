@@ -17,7 +17,7 @@
 
 
 Name:           aeon-check
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        Aeon Check and Repair Tool
 License:        MIT
@@ -54,6 +54,5 @@ install -D -m 644 aeon-check.service %{buildroot}%{_unitdir}/aeon-check.service
 %doc README.md
 %{_sbindir}/aeon-check
 %{_unitdir}/aeon-check.service
-
 
 %changelog

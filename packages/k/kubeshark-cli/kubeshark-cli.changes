@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Nov 03 17:24:03 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 52.3.88:
+  * :bookmark: Bump the Helm chart version to 52.3.88
+  * missing commit
+  * Improved resource limits and requests Helm templating
+  * Added an ability to override image names for a case, where when
+    using a CI, one needs to use individual image names (#1636)
+
+-------------------------------------------------------------------
 Thu Oct 31 10:46:01 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 52.3.87:

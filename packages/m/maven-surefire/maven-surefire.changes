@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Nov  4 09:51:10 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 3.5.2
+  * Bug
+    + SUREFIRE-2276: JUnit5's TestTemplate failures treated as
+      flakes with retries
+    + SUREFIRE-2277: RunResult#getFlakes() is lost during
+      serialisation/deserialisation to/from failsafe-summary.xml
+    + SUREFIRE-2283: FAQ site contains broken link to
+      failsafe-plugin
+  * Improvement
+    + SUREFIRE-2278: Don't say Please
+  * Task
+    + SUREFIRE-2282: surefire-report-plugin: Update Introduction
+      documentation page
+  * Dependency upgrade
+    + SUREFIRE-2281: Upgrade to Doxia 2.0.0 GA Stack
+- Modified patches:
+  * 0001-Port-to-TestNG-7.4.0.patch
+  * 0002-Unshade-surefire.patch
+    + rediff
+  * maven-surefire-bootstrap-resources.patch
+    + regenerate from non-bootstrap build
+
+-------------------------------------------------------------------
 Thu Oct  3 14:33:33 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to 3.5.1

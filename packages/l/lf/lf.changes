@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Sun Nov  3 08:25:10 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Remove changesgenerate from service as upstream has been shipping
+  useful and verbose changelogs for bit.
+- Update to version 33:
+  Breaking:
+  * The globsearch option, which previously affected both searching
+    and filtering, now affects only searching. A new globfilter
+    option is introduced to enable globs when filtering, and acts
+    independently from globsearch.
+  * The hidecursorinactive option is replaced by the
+    on-focus-gained and on-focus-lost hook commands. These commands
+    can be used to invoke custom behavior when the terminal gains
+    or loses focus.
+  * The ruler option (deprecated in favor of rulerfmt) is now
+    removed.
+  * Line numbers from the number and relativenumber options are
+    displayed in the main window only, instead of all windows.
+  New:
+  * Support for UNIX domain sockets (for communicating with the lf
+    server) is added for Windows.
+  * Color and icon configurations now support the target keyword
+    for symbolic links.
+  * A new option roundbox is added to use rounded corners when
+    drawbox is enabled.
+  * A new option watch is added to allow using filesystem
+    notifications to detect and display changes to files. This is
+    an alternative to the period option, which polls the filesystem
+    periodically for changes.
+  * Icons can now be colored independently of the filename.
+  * The info option now supports perm, user and group to display
+    the permissions, user and group respectively for each file.
+  * A new option showbinds is added to toggle whether the
+    keybinding hints are shown when a keybinding is partially
+    typed.
+  Fix:
+  * Sorting by extension is fixed for hidden files.
+  * The on-quit hook command is now triggered when the terminal is
+    closed.
+  * Previews no longer flicker when deleting files.
+  * Previews no longer flicker when directories are being reloaded.
+  * lfcd.nu now runs properly without raising errors.
+  * Image previews (composed of ASCII art) containing long lines
+    should now display properly.
+  * The performance is improved when copying files.
+  * lfcd.cmd now handles directories with special characters.
+  * Icon colors are no longer clipped when displaying in Windows
+    Terminal.
+  * The file stat info is now cleared when changing to an empty
+    directory.
+  * Error messages are cleared when opening files.
+
+-------------------------------------------------------------------
 Sun Jun  9 21:29:22 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Add main package to completion Requires

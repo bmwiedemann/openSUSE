@@ -243,4 +243,12 @@
   - Enh #4970: Make timeout for stuck requests customizable</comment>
     <requestid>1201755</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>e619400e4e11725108ebcd26810c0db0</srcmd5>
+    <version>0.17.2</version>
+    <time>1730756509</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1220415</requestid>
+  </revision>
 </revisionlist>

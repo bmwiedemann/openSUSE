@@ -4780,4 +4780,20 @@
   + use xterm+alt+title in wezterm -TD</comment>
     <requestid>1216639</requestid>
   </revision>
+  <revision rev="275" vrev="48">
+    <srcmd5>ceee0cb09d8d44f5cfad6a4dbbd279ba</srcmd5>
+    <version>unknown</version>
+    <time>1730756496</time>
+    <user>anag+factory</user>
+    <comment>- Add ncurses patch 20241102
+  + remove djgpp-specific initialization to binary mode (report/patch by
+    Stas Sergeev).
+  + add extended-keys for djgpp 2.05 -TD
+- Add ncurses patch 20241026
+  + update ms-terminal -TD
+  + add ms-terminal-direct -TD
+  + correct dimensions in test/popup_msg.c, fixing an overrun (patch by
+    Stas Sergeev, cf: 20211219).</comment>
+    <requestid>1220510</requestid>
+  </revision>
 </revisionlist>

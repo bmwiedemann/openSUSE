@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sun Nov  3 08:09:05 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20241101:
+  * dr735t: Add bell and favorite to extra settings and set their default values
+  * uv17pro: Expose static bank model for clarity
+  * Add static bank/model which refuses any change
+  * Add Baofeng UV-17R alias
+  * Add airband to all bandplans with default to AM
+  * Avoid restoring window to a negative coordinate
+  * Add 10-level squelch to BF 5RM and BF K5-Plus radios
+  * Add alias for TIDRADIO TD-V2
+  * Add UV-17M model alias
+  * Add Yaesu VX-177 support
+  * tdh3: Fix high VHF and UHF RX bands for HAM variant
+  * rt98: Enable V101 version for UHF variant
+  * rt21: Add BCL clarification tooltip
+  * Add Baofeng UV-5RH
+  * rt98: Add missing test image
+  * rt98: Add some tip docs for squelch settings
+  * anytone: Attempt flush input before ident
+  * Talkpod A36plus: add support for firmware v1.26
+  * New device: TYT TH-UV98
+  * btech.py: QYT KT8900D add new mcu version 
+  * btech.py: QYT KT8900 add new mcu version
+  * btech.py: Radioddity QB25 add new mcu version
+  * rt470x: Support 18MHz-1G per new firmware changes
+  * bff8hppro: Fix to include mid power level
+  * anytone: Fix missing DTCS->DTCS cross mode
+  * rt98: Add support for firmware V101
+  * icw32: Add 12.5kHz tuning step
+  * Add TYT TH-7900 model to alias map
+  * uvk5: Add OSFW-bd90ca3 as found in the wild
+  * btech: Handle failure to decode FM presets
+  * Add Baofeng BF-F8HP-PRO
+  * uv17pro: Fix AM emulation handling
+  * Add UV17R-Plus
+  * Add user-contributed US Aviation stock config
+  * rt470x: Enable proper AM mode handling
+  * ft8100: Update locale files
+  * ft8100: Changed upload and download prompt
+  * rt622: Add new identification string
+  * ga510v2: Limit name to 8 chars per OEM
+  * Add Baofeng AR-5RM to model alias map
+  * rt490: Hand-fix a complex settings list index
+  * rt470: Fix out-of-range setting handling
+  * Add MaxTalker TK-6 and MT-8S aliases
+  * Add Retevis RB626
+  * ga510: Add airband for SenhaiX 8800
+  * rt22: Fix tones not being enabled
+  * rt21: Fix "voice annunciation" typo
+  * senhaix8800: Fix setting tx inhibit on simplex
+  * ga510: Fix ANI group code out of range
+  * ft857, ft4, anytone778uv: Fix incorrect DTCS handling
+  * UI fixes and translations updates
+
+-------------------------------------------------------------------
 Wed Aug 28 15:41:04 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20240827:

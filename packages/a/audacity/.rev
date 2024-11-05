@@ -1220,4 +1220,34 @@ Remove spurious text from changes
     <comment></comment>
     <requestid>1203618</requestid>
   </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>f4f045e27bfbb29c8ac56268a5d24ef9</srcmd5>
+    <version>3.7.0</version>
+    <time>1730756503</time>
+    <user>anag+factory</user>
+    <comment>- Disable VST3 support due CVE-2024-50602 and misssing VST3 plugins UI
+- Fixes boo#1232608
+- Update to 3.7.0
+  * #6233, #7397, #6900 Improved Linux compatibility.
+  * #6702 Improved contrast in the light theme.
+  * #7008 MP3 exports: Renamed &quot;Insane&quot; to &quot;Excessive&quot;.
+  * #7570, #7452 Improved non-standard character handling for cloud
+    saving.
+  * #7486 Renamed &quot;Split cut/delete&quot; to &quot;Cut/delete and leave gap&quot;.
+  * #7293 Pasting clips no longer moves clips on other tracks if 
+    &quot;editing clips can move other clips&quot; is enabled.
+  * #7312, #7382 Fixed database compacting not working properly sometimes.
+  * #6851 Improved startup speed on systems with many audio devices.
+  * #7186 Multi view: Fixed the hitbox of the x being misaligned with
+    the visuals. (Thanks, Kurtsley)
+  * #7468 macOS: Fixed VST presets path.
+  * #7571 Adding, removing, replacing and reordering of effects now
+    is undoable.
+  * #7573 Closing a project upon turning a realtime effect stack on
+    and off doesn't crash Audacity anymore.
+  * #7610 Canceling a stereo track mid-operation no longer crashes Audacity.
+  * #7385 Importing Opus files using libopus no longer shifts the audio data.
+</comment>
+    <requestid>1220412</requestid>
+  </revision>
 </revisionlist>

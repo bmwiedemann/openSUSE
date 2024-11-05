@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov  2 11:48:53 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 9.7.4:
+  * Fix a leak of obsolete blob files left open until DB::Close().
+    This bug was introduced in version 9.4.0.
+
+-------------------------------------------------------------------
 Sun Oct 27 14:35:46 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 9.7.3

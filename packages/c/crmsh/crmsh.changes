@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Oct 29 06:09:09 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20241029.917b0d91:
+  * Dev: bootstrap: Refine remote_auth stage
+
+-------------------------------------------------------------------
+Tue Oct 29 02:43:00 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20241029.8adcb7c4:
+  * README.md: use crmsh-cd as build status badge
+
+-------------------------------------------------------------------
+Mon Oct 28 14:28:38 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20241028.94635ab9:
+  * Fix: behave: AppArmor profile "podman" specified but not loaded in opensuse tumbleweed
+  * Fix: scripts: health: failed to extract report when it is compressed in bz2
+  * Fix: behave: apply apparmor profile 'podman' if apparmor is enabled
+  * Dev: beahve: refine messages in the test runner script
+  * Dev: test_container: replace iptables with iptables-nft (#1572)
+  * Dev: behave: adjust test cases for podman network config (#1572)
+  * Fix: behave: adapt to podman network config (#1572)
+  * Fix: behave: add CAP_NET_ADMIN for firewall (#1572)
+  * Dev: behave: simplify container cleanup (#1572)
+  * Dev: github-actions: remove docker related configurations (#1572)
+  * Fix: behave: use jq to parse container network metadata (#1572)
+  * Dev: github-actions: run functional test script as root
+  * Dev: behave: use unprivileged podman containers instead of privileged docker containers (#1572)
+  * Fix: testcases: adapt to pacemaker updates
+  * use knet-1.29 image
+  * Fix: hahealth: return fail when report failed (bsc#1231840) (#1589)
+
+-------------------------------------------------------------------
+Fri Oct 25 06:29:33 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20241025.e3d8b015:
+  * Dev: behave: Adjust functional tests for previous commit
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: ocfs2: Drop support for configuring ocfs2 (jsc#PED-11038)
+
+-------------------------------------------------------------------
 Fri Oct 11 07:24:04 UTC 2024 - XLiang@suse.com
 
 - Update to version 5.0.0+20241011.05736903:

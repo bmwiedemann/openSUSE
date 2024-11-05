@@ -17,7 +17,7 @@
 
 
 Name:           maven-surefire
-Version:        3.5.1
+Version:        3.5.2
 Release:        0
 Summary:        Test framework project
 License:        Apache-2.0 AND CPL-1.0
@@ -161,11 +161,9 @@ sed -i /-Xdoclint:all/d pom.xml
 
 # Help plugin is needed only to evaluate effective Maven settings.
 # For building RPM package default settings will suffice.
-%pom_remove_plugin :maven-help-plugin surefire-its
 
 # We don't need site-source
 %pom_remove_plugin :maven-assembly-plugin maven-surefire-plugin
-%pom_remove_dep -r ::::site-source
 
 %build
 %{mvn_package} ":*tests*" __noinstall

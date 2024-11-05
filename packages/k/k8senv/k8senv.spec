@@ -17,7 +17,7 @@
 
 
 Name:           k8senv
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        Manage multiple versions of kubectl, helm and velero clients on same system/jumpbox/bastion
 License:        MIT

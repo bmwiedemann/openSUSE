@@ -643,4 +643,12 @@ Update to release 19.04.30.</comment>
     <comment></comment>
     <requestid>1219098</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>76e33ac5acc30281ec642e0ab6fe54e6</srcmd5>
+    <version>24.10.29</version>
+    <time>1730756501</time>
+    <user>anag+factory</user>
+    <comment>- Update to 24.10.29</comment>
+    <requestid>1220331</requestid>
+  </revision>
 </revisionlist>

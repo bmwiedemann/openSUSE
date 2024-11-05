@@ -26,7 +26,7 @@
 # NOTE: Appears there are no .pc files in qt6
 #%%(pkg-config --modversion Qt6Core)
 Name:           shotcut
-Version:        24.09.13
+Version:        24.10.29
 Release:        0
 Summary:        Video and audio editor and creator
 License:        GPL-3.0-or-later
@@ -71,7 +71,7 @@ Requires:       melt7
 # needed on runtime for the timeline to work see https://forums.opensuse.org/showthread.php/520592-shotcut-video-editor-timeline-blank/page3
 Requires:       qt6-sql-sqlite = %{qt6version}
 Recommends:     lame
-ExclusiveArch:  ppc64 ppc64le %{ix86} x86_64
+ExclusiveArch:  ppc64 ppc64le x86_64
 %if 0%{?suse_version} == 1500
 BuildRequires:  gcc13-c++
 %else
