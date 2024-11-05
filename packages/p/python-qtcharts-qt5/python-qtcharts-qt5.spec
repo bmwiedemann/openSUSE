@@ -35,7 +35,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-pyqt-rpm-macros
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(Qt5Charts)
-%requires_ge    python-qt5
+Requires:       python-qt5 >= %(rpm -q --whatprovides python3-qt5 --qf "%%{version}")
 Requires:       python-qt5-sip
 # PyPI name is without the s at the end
 Provides:       python-PyQtChart = %{version}-%{release}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  5 08:33:24 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Avoid using requires_eq, which after the last modifications
+  conflicts with python singlespec (order of expansion).
+
+-------------------------------------------------------------------
 Thu Jan 25 20:48:17 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Enable SLE15 python module for more modern python in 15.x
