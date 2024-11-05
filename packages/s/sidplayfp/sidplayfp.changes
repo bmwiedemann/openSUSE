@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov  3 19:37:06 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.11.0
+  * Added support for combined wave strength arguments.
+  * Made audio buffer size configurable.
+  * Properly check for player errors.
+
+-------------------------------------------------------------------
 Sun Oct  6 13:07:31 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.10.0
