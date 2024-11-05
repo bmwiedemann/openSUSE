@@ -362,4 +362,15 @@
 - Update Requires from setup.py (forwarded request 1199829 from glaubitz)</comment>
     <requestid>1199869</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>ff536dcd29d5d11ebf750117f4fa2ac1</srcmd5>
+    <version>4.0.0b20</version>
+    <time>1730817738</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 4.0.0b20
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1221328 from glaubitz)</comment>
+    <requestid>1221410</requestid>
+  </revision>
 </revisionlist>
