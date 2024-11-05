@@ -155,4 +155,12 @@
     <comment>- Actually update the code from 2.3-rc4 to 2.3</comment>
     <requestid>1116491</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b80ece77f8ecb8e38917b8629a908567</srcmd5>
+    <version>2.3.1</version>
+    <time>1730818521</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1221424</requestid>
+  </revision>
 </revisionlist>
