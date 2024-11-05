@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov  5 12:53:13 UTC 2024 - Robert Frohl <rfrohl@suse.com>
+
+- Update to 2.6.1
+  * On linux machines with IPv6 disabled, Scapy would crash on startup 
+  * The scapy.1 manpage was no longer installed
+  * Upon the first startup, there could be a crash related to the creation of 
+    Scapy's XDG-* related folders.
+  * other small bugs that could lead to issues during packaging. 
+    Thanks to the downstream package maintainers for their help.
+
+-------------------------------------------------------------------
 Mon Oct  7 14:01:07 UTC 2024 - Robert Frohl <rfrohl@suse.com>
 
 - Fix load of embedded manufdb, by explicitly targeting non-executable-scripts

@@ -17,7 +17,7 @@
 
 
 Name:           scapy
-Version:        2.6.0
+Version:        2.6.1
 Release:        0
 Summary:        Interactive Packet Manipulation Tool
 License:        GPL-2.0-only
@@ -75,6 +75,7 @@ cd test && ./run_tests -c configs/linux.utsc -K ci_only -K scanner -K netaccess
 %license LICENSE
 %doc README.md
 %{_bindir}/scapy
+%{_mandir}/man1/scapy.1%{?ext_man}
 %{python3_sitelib}/scapy*
 
 %changelog
