@@ -15,17 +15,15 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-aioitertools
-Version:        0.11.0
+Version:        0.12.0
 Release:        0
 Summary:        Itertools and builtins for AsyncIO and mixed iterables
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://aioitertools.omnilib.dev
-Source:         https://files.pythonhosted.org/packages/source/a/aioitertools/aioitertools-%{version}.tar.gz
+Source:         https://github.com/omnilib/aioitertools/archive/v%{version}.tar.gz#/aioitertools-%{version}.tar.gz
 BuildRequires:  %{python_module asyncio}
 BuildRequires:  %{python_module flit-core > 2}
 BuildRequires:  %{python_module pip}

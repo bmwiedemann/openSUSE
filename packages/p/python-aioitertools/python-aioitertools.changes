@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Nov  4 13:09:07 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.12.0:
+  * New: added `itertools.batched()` from Python 3.13 (#177)
+  * New: added `builtins.tuple()` (#152)
+  * Docs: fixed rendering of shell sections (#183)
+  * Python: added support for 3.12 and 3.13 (#154, #192)
+  * Python: dropped support for 3.6 and 3.7 (#154)
+  * Dev: updated gitignore and contributing guide (#176, #192)
+  * Dev: use `uv` for creating venv and installing deps when available (#192)
+- Switch package to modern Python Stack on SLE-15
+  * Use Python 3.11 on SLE-15 by default
+  * Drop support for older Python versions
+- Switch upstream source tarball from PyPi to Github
+
+-------------------------------------------------------------------
 Mon Oct 17 12:04:35 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.11.0:
