@@ -19,14 +19,18 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pygit2
-Version:        1.15.1
+Version:        1.16.0
 Release:        0
 Summary:        Python bindings for libgit2
 License:        GPL-2.0-only
 URL:            https://github.com/libgit2/pygit2
 Source:         https://files.pythonhosted.org/packages/source/p/pygit2/pygit2-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM const-parents.patch gh#libgit2/pygit2!1324 mcepl@suse.com
+# use correct type of git_commit_create() function
+Patch0:         const-parents.patch
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module cached-property}
-BuildRequires:  %{python_module cffi >= 1.16.0}
+BuildRequires:  %{python_module cffi >= 1.17.0}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -39,7 +43,7 @@ BuildRequires:  libgit2-devel >= 1.1
 BuildRequires:  libopenssl-devel
 BuildRequires:  python-rpm-macros
 Requires:       python-cached-property
-%requires_eq    python-cffi
+Requires:       python-cffi >= 1.17.0
 %python_subpackages
 
 %description
@@ -47,12 +51,6 @@ Bindings for libgit2, a linkable C library for the Git version-control system.
 
 %prep
 %autosetup -p1 -n pygit2-%{version}
-%if %{?pkg_vcmp:%pkg_vcmp libgit2-devel < 1.8}%{!?pkg_vcmp:1}
-%patch -P 3 -p1 -R
-%patch -P 2 -p1 -R
-%patch -P 1 -p1 -R
-%patch -P 0 -p1 -R
-%endif
 
 # do not add options to pytest
 rm pytest.ini

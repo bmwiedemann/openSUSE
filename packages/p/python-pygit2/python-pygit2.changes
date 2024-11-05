@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov  5 10:50:38 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 1.16.0:
+  - Add support for Python 3.13
+  - Drop support for Python 3.9
+  - New Repository.hashfile(...)
+  - New Option.GET_MWINDOW_FILE_LIMIT and
+    Option.SET_MWINDOW_FILE_LIMIT
+  - Fix overriding certificate_check(...) callback via argument
+    to RemoteCallbacks(...)
+  - Add py.typed
+  - Fix discover_repository(...) annotation
+- Add const-parents.patch to fix FTBFS (gh#libgit2/pygit2!1324).
+
+-------------------------------------------------------------------
 Mon Aug  5 11:21:06 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.15.1

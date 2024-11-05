@@ -473,4 +473,27 @@
     <comment></comment>
     <requestid>1191651</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>3e256539e164ab94830a6c6e19260428</srcmd5>
+    <version>1.16.0</version>
+    <time>1730817736</time>
+    <user>anag+factory</user>
+    <comment>Update to 1.16.0
+
+- Update to 1.16.0:
+  - Add support for Python 3.13
+  - Drop support for Python 3.9
+  - New Repository.hashfile(...)
+  - New Option.GET_MWINDOW_FILE_LIMIT and
+    Option.SET_MWINDOW_FILE_LIMIT
+  - Fix overriding certificate_check(...) callback via argument
+    to RemoteCallbacks(...)
+  - Add py.typed
+  - Fix discover_repository(...) annotation
+- Add const-parents.patch to fix FTBFS (gh#libgit2/pygit2!1324).
+
+
+(🤖: Submission of python-pygit2 via https://src.opensuse.org/pool/python-pygit2/pulls/2 by mcepl)</comment>
+    <requestid>1221428</requestid>
+  </revision>
 </revisionlist>
