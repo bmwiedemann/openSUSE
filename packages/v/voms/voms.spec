@@ -92,9 +92,6 @@ Summary:        Virtual Organization Membership Service Clients
 Group:          Applications/Internet
 Requires:       libvomsapi1%{?_isa} = %{version}-%{release}
 
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
-
 %description clients
 The Virtual Organization Membership Service (VOMS) is an attribute authority
 which serves as central repository for VO user authorization information,
@@ -159,62 +156,15 @@ rm -f %{buildroot}%{_docdir}/%{name}-%{version}/VOMS_CC_API/html/installdox
 # Handle duplicate files
 %fdupes %{buildroot}%{_docdir}
 
-# create a dummy target for /etc/alternatives/voms-proxy-*
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives
+%check
+make check
 
-## Rename client binaries and man pages and create symlinks
-for b in voms-proxy-init voms-proxy-info voms-proxy-destroy; do
-  # rename existing ones
-  mv %{buildroot}%{_bindir}/${b} %{buildroot}%{_bindir}/${b}2
-  mv %{buildroot}%{_mandir}/man1/${b}.1 %{buildroot}%{_mandir}/man1/${b}2.1
-
-  # Create symlinks
-  ln -s -f %{_sysconfdir}/alternatives/${b} %{buildroot}/%{_bindir}/${b}
-  ln -s -f %{_sysconfdir}/alternatives/${b}.1.gz %{buildroot}/%{_mandir}/man1/${b}.1.gz
-done
-
-%post -n libvomsapi1 -p /sbin/ldconfig
-%postun -n libvomsapi1 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libvomsapi1
 
 %posttrans
 # Recover /etc/vomses...
 if [ -r %{_sysconfdir}/vomses.rpmsave -a ! -r %{_sysconfdir}/vomses ] ; then
    mv %{_sysconfdir}/vomses.rpmsave %{_sysconfdir}/vomses
-fi
-
-%pre clients
-if [ $1 -eq 2 ]; then
-  for c in voms-proxy-init voms-proxy-info voms-proxy-destroy; do
-    if [[ -x %{_bindir}/$c && ! -L %{_bindir}/$c ]]; then
-      rm -f %{_bindir}/$c
-    fi
-  done
-fi
-
-%post clients
-%{_sbindir}/update-alternatives \
-    --install	%{_bindir}/voms-proxy-init voms-proxy-init \
-		%{_bindir}/voms-proxy-init2 50 \
-    --slave	%{_mandir}/man1/voms-proxy-init.1.gz voms-proxy-init-man \
-		%{_mandir}/man1/voms-proxy-init2.1.gz
-
-%{_sbindir}/update-alternatives \
-    --install	%{_bindir}/voms-proxy-info voms-proxy-info \
-		%{_bindir}/voms-proxy-info2 50 \
-    --slave	%{_mandir}/man1/voms-proxy-info.1.gz voms-proxy-info-man \
-		%{_mandir}/man1/voms-proxy-info2.1.gz
-
-%{_sbindir}/update-alternatives \
-    --install	%{_bindir}/voms-proxy-destroy voms-proxy-destroy \
-		%{_bindir}/voms-proxy-destroy2 50 \
-    --slave	%{_mandir}/man1/voms-proxy-destroy.1.gz voms-proxy-destroy-man \
-		%{_mandir}/man1/voms-proxy-destroy2.1.gz
-
-%postun clients
-if [ $1 -eq 0 ] ; then
-  %{_sbindir}/update-alternatives  --remove voms-proxy-init %{_bindir}/voms-proxy-init2
-  %{_sbindir}/update-alternatives  --remove voms-proxy-info %{_bindir}/voms-proxy-info2
-  %{_sbindir}/update-alternatives  --remove voms-proxy-destroy %{_bindir}/voms-proxy-destroy2
 fi
 
 %files -n libvomsapi1
@@ -239,31 +189,16 @@ fi
 
 %files clients
 %{_bindir}/voms-proxy-destroy
+%{_bindir}/voms-proxy-fake
 %{_bindir}/voms-proxy-info
 %{_bindir}/voms-proxy-init
+%{_bindir}/voms-proxy-list
 %{_bindir}/voms-verify
 
-%{_bindir}/voms-proxy-destroy2
-%{_bindir}/voms-proxy-info2
-%{_bindir}/voms-proxy-init2
-%{_bindir}/voms-proxy-fake
-%{_bindir}/voms-proxy-list
-
 %{_mandir}/man1/voms-proxy-destroy.1.gz
+%{_mandir}/man1/voms-proxy-fake.1.gz
 %{_mandir}/man1/voms-proxy-info.1.gz
 %{_mandir}/man1/voms-proxy-init.1.gz
-
-%{_mandir}/man1/voms-proxy-destroy2.1.gz
-%{_mandir}/man1/voms-proxy-info2.1.gz
-%{_mandir}/man1/voms-proxy-init2.1.gz
-%{_mandir}/man1/voms-proxy-fake.1.gz
 %{_mandir}/man1/voms-proxy-list.1.gz
-
-%ghost %{_sysconfdir}/alternatives/voms-proxy-destroy
-%ghost %{_sysconfdir}/alternatives/voms-proxy-info
-%ghost %{_sysconfdir}/alternatives/voms-proxy-init
-%ghost %{_sysconfdir}/alternatives/voms-proxy-destroy.1.gz
-%ghost %{_sysconfdir}/alternatives/voms-proxy-info.1.gz
-%ghost %{_sysconfdir}/alternatives/voms-proxy-init.1.gz
 
 %changelog

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  5 14:08:12 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Eliminate usage of update-alternatives: There is no actual
+  alternative provider available in openSUSE.
+
+-------------------------------------------------------------------
 Tue May 14 14:17:11 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - voms-gcc14.patch: fixed missing prototype
