@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  5 08:34:46 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Avoid using requires_eq, which after the last modifications
+  conflicts with python singlespec (order of expansion).
+
+-------------------------------------------------------------------
 Wed Sep 11 14:30:34 UTC 2024 - Gustavo Pichorim Boiko <gboiko@suse.com>
 
 - Disable building on all s390 and ppc platforms as Qt5WebEngine

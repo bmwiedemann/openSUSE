@@ -34,7 +34,7 @@ BuildRequires:  %{python_module sip-devel >= 5.3}
 BuildRequires:  python-pyqt-rpm-macros
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(Qt5WebEngine)
-%requires_ge    python-qt5
+Requires:       python-qt5 >= %(rpm -q --whatprovides python3-qt5 --qf "%%{version}")
 Requires:       python-qt5-sip
 Provides:       python-PyQtWebEngine = %{version}-%{release}
 # http://www.chromium.org/blink is not ported to PowerPC & s390, so Qt5WebEngine itself doesn't build on those archs
