@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov 04 22:54:25 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1730760855.29085e0:
+  * Require ffmpeg during tests
+  * Silence expected error message from sudo
+  * Cover remaining code paths of `testapi.pm`
+  * Cover remaining code paths in `_check_backend_response`
+  * Improve unit test coverage of test API code handling timeouts
+  * generalhw: implement eject_cd
+  * t: don't hardcode line number in t/29-backend-generalhw.t
+
+-------------------------------------------------------------------
 Thu Oct 31 19:34:34 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1730368148.a4ace9f:
