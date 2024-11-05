@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov  4 21:27:03 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Fix conflict/choice of providers
+
+-------------------------------------------------------------------
 Sat Nov  2 17:34:46 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Assure that we are building against the older javax apis

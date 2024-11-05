@@ -16,4 +16,12 @@ Version obsolete has been solved with a new upstream release, as long as this SR
     <comment></comment>
     <requestid>1127834</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>999d61e5cc829969fe07e7a86d412a4b</srcmd5>
+    <version>0.5.4</version>
+    <time>1730817707</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1221343</requestid>
+  </revision>
 </revisionlist>

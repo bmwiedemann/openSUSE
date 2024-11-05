@@ -17,15 +17,43 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
 %global ant_home %{_datadir}/ant
+%if "%{flavor}" == "antlr"
+%bcond_with bootstrap
+%bcond_with junit
+%bcond_with junit5
+%bcond_without antlr
+Name:           ant-antlr
+Summary:        Antlr Task for ant
+%else
+%if "%{flavor}" == "junit"
+%bcond_with bootstrap
+%bcond_without junit
+%bcond_with junit5
+%bcond_with antlr
+Name:           ant-junit
+Summary:        Optional junit tasks for ant
+%else
+%if "%{flavor}" == "junit5"
+%bcond_with bootstrap
+%bcond_with junit
+%bcond_without junit5
+%bcond_with antlr
+Name:           ant-junit5
+Summary:        Optional junit tasks for ant
+%else
 %bcond_without bootstrap
 %bcond_with junit
 %bcond_with junit5
 %bcond_with antlr
 Name:           ant
-Version:        1.10.14
-Release:        0
 Summary:        Java-based build tool
+%endif
+%endif
+%endif
+Version:        1.10.15
+Release:        0
 License:        Apache-2.0
 Group:          Development/Tools/Building
 URL:            https://ant.apache.org/

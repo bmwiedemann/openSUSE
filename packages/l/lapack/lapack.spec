@@ -49,6 +49,7 @@ Patch1:         fix-lapack-testing.patch
 Source98:       lapack.rpmlintrc
 Source99:       baselibs.conf
 BuildRequires:  cmake
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  ninja
@@ -291,6 +292,10 @@ sed -i -E '1{s@#!/usr/bin/env python[0-9]*@#!%{_bindir}/python%{python3_version}
 %if %{without shared}
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %endif
+%ifarch aarch64
+# https://github.com/scipy/scipy/issues/21475#issuecomment-2454203196
+%global optflags %{optflags} "-ffp-contract=off"  %{_lto_cflags}
+%endif
 %global optflags_f %{optflags}
 
 %cmake \
@@ -341,6 +346,7 @@ mv %{__builddir}/DOCS/man/man3/isnan{,-lapack}.3
 # Install man pages
 mkdir -p %{buildroot}%{_mandir}
 cp -r %{__builddir}/DOCS/man/man3 %{buildroot}%{_mandir}/
+%fdupes -s %{buildroot}/%{_mandir}
 %endif
 
 %check

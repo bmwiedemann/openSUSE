@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-sphinx-notfound-page
 Version:        1.0.4
 Release:        0

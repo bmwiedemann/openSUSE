@@ -289,4 +289,15 @@ Fixed buffer-overflow CVE-2021-20308 ( boo#1184424 ) (forwarded request 896478 f
     <comment></comment>
     <requestid>1198406</requestid>
   </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>990d3837d3a133e4076b4577a7a71368</srcmd5>
+    <version>1.9.18</version>
+    <time>1730817581</time>
+    <user>anag+factory</user>
+    <comment>- security update
+- added patches
+  fix CVE-2024-46478 [bsc#1232380], buffer overflow when handling tabs through the parse_pre function (ps-pdf.cxx)
+  + htmldoc-CVE-2024-46478.patch (forwarded request 1221327 from pgajdos)</comment>
+    <requestid>1221331</requestid>
+  </revision>
 </revisionlist>

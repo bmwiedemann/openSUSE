@@ -1334,4 +1334,13 @@
     <comment>KDE Release gear 24.08.2</comment>
     <requestid>1206816</requestid>
   </revision>
+  <revision rev="168" vrev="2">
+    <srcmd5>554e1a70fc7dfdd8eb60025df04c49aa</srcmd5>
+    <version>24.08.2</version>
+    <time>1730817667</time>
+    <user>anag+factory</user>
+    <comment>- Add patch:
+  * 0001-Fix-build-with-Qt-6.8.patch</comment>
+    <requestid>1221254</requestid>
+  </revision>
 </revisionlist>

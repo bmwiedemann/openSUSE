@@ -15,21 +15,19 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-kubernetes
-Version:        28.1.0
+Version:        30.1.0
 Release:        0
 Summary:        Kubernetes python client
 License:        Apache-2.0
 URL:            https://github.com/kubernetes-client/python
 # Source tar - https://pypi.org/project/kubernetes/#files
 Source:         https://files.pythonhosted.org/packages/source/k/kubernetes/kubernetes-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM kubernetes-client-python-pr2178-assertEqual-py312.patch gh#kubernetes-client/python#2178
-Patch0:         kubernetes-client-python-pr2178-assertEqual-py312.patch
 BuildRequires:  %{python_module PyYAML >= 5.4.1}
 BuildRequires:  %{python_module certifi >= 14.05.14}
 BuildRequires:  %{python_module google-auth >= 1.0.1}
-BuildRequires:  %{python_module oauthlib >= 3.2.2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python-dateutil >= 2.5.3}
 BuildRequires:  %{python_module requests-oauthlib}
@@ -46,11 +44,15 @@ BuildRequires:  %{python_module Sphinx >= 1.4}
 BuildRequires:  %{python_module pluggy >= 0.3.1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module recommonmark}
+%if 0%{?sle_version} && 0%{?sle_version} > 150400
+# Build python-kubernetes with oauthlib >=3.2.2, for sle_version > SLE-15-SP4
+BuildRequires:  %{python_module oauthlib >= 3.2.2}
 # /SECTION
+Requires:       python-oauthlib >= 3.2.2
+%endif
 Requires:       python-PyYAML >= 5.4.1
 Requires:       python-certifi >= 14.05.14
 Requires:       python-google-auth >= 1.0.1
-Requires:       python-oauthlib >= 3.2.2
 Requires:       python-python-dateutil >= 2.5.3
 Requires:       python-requests
 Requires:       python-requests-oauthlib
@@ -67,10 +69,24 @@ Python client for kubernetes http://kubernetes.io/
 %autosetup -p1 -n kubernetes-%{version}
 
 %build
+%if 0%{?sle_version} && 0%{?sle_version} >= 150500
+%bcond_without pyproject
+%else
+%bcond_with pyproject
+%endif
+
+%if %{with pyproject}
 %pyproject_wheel
+%else
+%python_build
+%endif
 
 %install
+%if %{with pyproject}
 %pyproject_install
+%else
+%python_install
+%endif
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -84,6 +100,6 @@ rm kubernetes/dynamic/test_discovery.py
 %license LICENSE
 %doc README.md CHANGELOG.md
 %{python_sitelib}/kubernetes
-%{python_sitelib}/kubernetes-%{version}.dist-info
+%{python_sitelib}/kubernetes-%{version}*-info
 
 %changelog

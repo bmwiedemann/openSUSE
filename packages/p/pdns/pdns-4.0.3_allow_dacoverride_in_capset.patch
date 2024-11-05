@@ -1,8 +1,8 @@
-Index: pdns-4.3.0-rc2/pdns/pdns.service.in
+Index: pdns-4.9.2/pdns/pdns.service.in
 ===================================================================
---- pdns-4.3.0-rc2.orig/pdns/pdns.service.in
-+++ pdns-4.3.0-rc2/pdns/pdns.service.in
-@@ -16,8 +16,8 @@ StartLimitInterval=0
+--- pdns-4.9.2.orig/pdns/pdns.service.in
++++ pdns-4.9.2/pdns/pdns.service.in
+@@ -17,8 +17,8 @@ StartLimitInterval=0
  RuntimeDirectory=pdns
  
  # Sandboxing

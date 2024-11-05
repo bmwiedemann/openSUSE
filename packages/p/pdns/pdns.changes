@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov  5 01:56:49 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- make the compiler handling for leap more readable
+  and also make it work for SLE15 < SP3
+
+-------------------------------------------------------------------
+Tue Nov  5 01:44:27 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 4.9.2
+  https://doc.powerdns.com/authoritative/changelog/4.9.html#change-4.9.2
+- drop powerdns-5_1_1-2_fix-build-with-boost-1_86_0.patch included
+  in update
+- refreshed pdns-4.0.3_allow_dacoverride_in_capset.patch
+
+-------------------------------------------------------------------
 Sun Sep 29 20:03:57 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - add powerdns-5_1_1-2_fix-build-with-boost-1_86_0.patch from arch

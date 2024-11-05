@@ -1,7 +1,7 @@
 #
 # spec file for package python-pykdumpfile
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,8 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  libkdumpfile-devel
 BuildRequires:  python-rpm-macros
-%requires_eq    python-cffi
+# assuming all python*-cffi packages have the same version
+Requires:       python-cffi = %(rpm -q --whatprovides python3-cffi --qf "%%{version}")
 Obsoletes:      python-libkdumpfile < %{version}
 Provides:       python-libkdumpfile = %{version}
 %python_subpackages

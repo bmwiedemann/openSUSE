@@ -824,4 +824,15 @@ https://doc.powerdns.com/recursor/changelog/4.4.html#change-4.4.3</comment>
   config in the package to the yaml format maybe</comment>
     <requestid>1204908</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>4afaf47a70120c6746b6753f269898be</srcmd5>
+    <version>5.1.2</version>
+    <time>1730817694</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.1.2 (boo#1231292 CVE-2024-25590)
+  https://doc.powerdns.com/recursor/changelog/5.1.html#change-5.1.2
+- drop powerdns-5_1_1-2_fix-build-with-boost-1_86_0.patch included
+  in update</comment>
+    <requestid>1221286</requestid>
+  </revision>
 </revisionlist>

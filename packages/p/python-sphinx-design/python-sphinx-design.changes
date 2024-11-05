@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Nov  3 14:46:01 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Sat Nov  2 03:11:31 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Initial release of 0.6.1. 

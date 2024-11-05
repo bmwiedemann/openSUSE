@@ -129,4 +129,12 @@
     <comment>Plasma 6.2.2 (forwarded request 1217086 from Vogtinator)</comment>
     <requestid>1217165</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>52bbd4aeffa264c2a5accf2ff7338a6f</srcmd5>
+    <version>6.2.2</version>
+    <time>1730817572</time>
+    <user>anag+factory</user>
+    <comment>- Update runtime appstream dependency</comment>
+    <requestid>1221235</requestid>
+  </revision>
 </revisionlist>

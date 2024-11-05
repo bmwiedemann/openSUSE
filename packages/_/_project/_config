@@ -1004,7 +1004,7 @@ Prefer: -scout-command-not-found
 Prefer: -deepin-kwin-devel
 
 # have choice for html2text
-Prefer: -python310-html2text -python311-html2text -python312-html2text
+Prefer: python311-html2text
 
 # have choice for (gnome-session or budgie-desktop) needed by gnome-shell: budgie-desktop gnome-session
 Prefer: -budgie-desktop
@@ -1745,7 +1745,7 @@ BuildFlags: onlybuild:alsa-plugins
 BuildFlags: onlybuild:alsa-ucm-conf
 BuildFlags: onlybuild:alsa-utils
 BuildFlags: onlybuild:ant
-BuildFlags: onlybuild:ant:ant-junit
+BuildFlags: onlybuild:ant:junit
 BuildFlags: onlybuild:antlr:antlr-bootstrap
 BuildFlags: onlybuild:apache-commons-io
 BuildFlags: onlybuild:apache-commons-logging

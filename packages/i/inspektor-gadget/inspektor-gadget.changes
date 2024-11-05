@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Mon Nov 04 19:57:27 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.34.0:
+  Welcome to the v0.34.0 release of Inspektor Gadget.
+  A selection of relevant changes are:
+    - introduce headless mode for k8s by @flyth in #3587
+    - otel-metrics: add support for named metric exporters and
+      otlp-grpc by @flyth in #3588
+    - operators: kubeipresolver for image-based gadgets by
+      @mqasimsarfraz in #3586
+  * General Improvements
+    - operators/localmanager: Do not print warning if the runtime
+      is not found by @mauriciovasquezbernal in #3540
+    - operators: Fix location of enriched fields by
+      @mauriciovasquezbernal in #3523
+    - formatters: enrich proto field to include protocol name in L4
+      endpoints by @Snehil-Shah in #3329
+    - pkg/operators/otel-metrics: Hide render datasource from
+      gadget users by @blanquicet in #3566
+    - operators/formatters: Hide endpoint subfield proto by
+      @mqasimsarfraz in #3599
+    - go.mod: update cilium/ebpf with some memory optimization by
+      @alban in #3595
+    - cmd/image: Print build logs when using verbose mode by
+      @mauriciovasquezbernal in #3598
+    - pkg/operators/wasm/testdata: Update go version by @blanquicet
+      in #3615
+    - go.mod: update cilium/ebpf with more memory optimization by
+      @alban in #3616
+    - gadgets: Automatically add annotations based on the field
+      types by @mauriciovasquezbernal in #3600
+    - Move authfile and pull-secret to GlobalParams and update
+      documentation by @Priyansurout in #3622
+    - Container enrichment: add container PID by @alban in #3501
+    - operators/kubeipresolver: Improve how endpoint is displayed
+      by @mqasimsarfraz in #3611
+    - Makefile: make the 'docker build' command configurable by
+      @alban in #3621
+    - oci: Expose pull-secret param only when running on k8s by
+      @mauriciovasquezbernal in #3628
+    - feat: Accepting IPv4 and IPv6 parameters as command line
+      input arguments by @MeherRushi in #3575
+    - operators/cli: Improve logic to print header by
+      @mauriciovasquezbernal in #3641
+    - tools/monitoring: fix typo by @vbatts in #3646
+    - Makefile: Introduce target to run go mod tidy by
+      @mauriciovasquezbernal in #3653
+  * Bug Fixes
+    - operators/ebpf: Fix race condition with wasm operator by
+      @mauriciovasquezbernal in #3542
+    - fix: json decoder out of sync error for gadgetrunner by
+      @mastersans in #3573
+    - operators/ebpf: Fix map iterators waiting logic by
+      @mauriciovasquezbernal in #3654
+  * Documentation Improvements
+    - readme: Add link for CDS 2024 by @mqasimsarfraz in #3553
+    - docs: Remove increasing sidebar_position from docs/gadgets by
+      @burak-ok in #3574
+    - docs/gadget-devel: How to use Data, DataArray and Packet in
+      WASM API by @blanquicet in #3610
+    - Add gadget user documentation for exporting metrics to
+      Prometheus by @flyth in #3539
+    - docs: Update l4endpoint formatting by @mqasimsarfraz in #3630
+    - docs: audit-seccomp: update runc requirement by @alban in
+      #3642
+    - docs/gadget-devel/gadget-intro: Specify support of Map
+      Iterators by @blanquicet in #3593
+  * Testing and Continue Integration
+    - Revert "ci: Use -j$(nproc) with gadgets Makefile." by
+      @mauriciovasquezbernal in #3555
+    - ci: Fix permission for release workflow by @mqasimsarfraz in
+      #3558
+    - Unit testing Image Based Gadgets by @mastersans in #3502
+    - cri: move tests to separate package by @alban in #3585
+    - tests: implement inner field tests by @mauriciovasquezbernal
+      in #3572
+    - build: fix dockerignore file by @alban in #3620
+    - test: Added tests for gadgets/snapshot_socket by @btwshivam
+      in #3283
+    - operators/wasm: add test for emitting packets from new
+      datasource by @Snehil-Shah in #3613
+    - tests: Disable TestTraceNetwork on containerd by @burak-ok in
+      #3669
+
+-------------------------------------------------------------------
 Fri Oct 11 08:25:27 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.33.0:

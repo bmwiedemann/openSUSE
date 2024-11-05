@@ -17,7 +17,7 @@
 
 
 Name:           apfsprogs
-Version:        0~git493
+Version:        0~git511
 Release:        0
 Summary:        Experimental APFS tools for Linux
 License:        GPL-2.0-only

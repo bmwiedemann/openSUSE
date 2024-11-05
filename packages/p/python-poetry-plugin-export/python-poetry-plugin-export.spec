@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-poetry-plugin-export
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-poetry-plugin-export%{psuffix}
-Version:        1.6.0
+Version:        1.8.0
 Release:        0
 Summary:        Poetry plugin to export the dependencies to various formats
 License:        MIT
@@ -36,8 +36,9 @@ URL:            https://python-poetry.org/
 Source:         https://files.pythonhosted.org/packages/source/p/poetry-plugin-export/poetry_plugin_export-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core >= 1.6.0}
+BuildRequires:  %{python_module poetry-core >= 1.7.0 with %python-poetry-core < 3}
 # No buildtime requirement of poetry: avoid build dep cycles!
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with test}
 BuildRequires:  %{python_module build}
@@ -47,9 +48,8 @@ BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 %endif
-BuildRequires:  fdupes
-Requires:       python-poetry >= 1.5.0
-Requires:       python-poetry-core >= 1.6.0
+Requires:       (python-poetry >= 1.8.0 with python-poetry < 3)
+Requires:       (python-poetry-core >= 1.7.0 with python-poetry-core < 3)
 Provides:       python-poetry_plugin_export = %{version}-%{release}
 BuildArch:      noarch
 %python_subpackages
@@ -79,7 +79,7 @@ Poetry plugin to export the dependencies to various formats
 %doc README.md
 %license LICENSE
 %{python_sitelib}/poetry_plugin_export
-%{python_sitelib}/poetry_plugin_export-%{version}*-info
+%{python_sitelib}/poetry_plugin_export-%{version}.dist-info
 %endif
 
 %changelog

@@ -1,0 +1,126 @@
+From 0ae3697cf40bcd3ae1de20621abad17cf6c5f52d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tor=20Arne=20Vestb=C3=B8?= <tor.arne.vestbo@qt.io>
+Date: Wed, 2 Oct 2024 17:04:25 +0200
+Subject: [PATCH] QQuickItem::map{To,From}Item: Account for not having a window
+ yet
+
+Prior to 06ace3e226b2394362e27d1bc4743c1170777af1 we would not
+account for items in different scenes, and would map them as if
+they were part of the same scene.
+
+After 06ace3e226b2394362e27d1bc4743c1170777af1 we took the scenes
+into account, but failed to guard against one or both of the items
+not having a scene (yet), causing potential crashes.
+
+We now properly check that both items have a scene before trying
+any scene to scene mapping.
+
+The semantics if one or both of the items are not in a scene is
+kept as it was before 06ace3e226b2394362e27d1bc4743c1170777af1,
+where we assume the two items are part of the same scene, and an
+item without a parent is assumed to be the root of its scene.
+
+Fixes: QTBUG-129500
+Change-Id: I897faf73d04dddd68a7a8797e5238743efdd4f73
+Reviewed-by: Shawn Rutledge <shawn.rutledge@qt.io>
+(cherry picked from commit 08b0e3e39e899bea013057a7ac038b8878809712)
+Reviewed-by: Qt Cherry-pick Bot <cherrypick_bot@qt-project.org>
+---
+ src/quick/items/qquickitem.cpp                | 14 +++++-----
+ .../data/mapCoordinatesWithWindows.qml        | 11 ++++++++
+ .../auto/quick/qquickitem2/tst_qquickitem.cpp | 27 +++++++++++++++++++
+ 3 files changed, 46 insertions(+), 6 deletions(-)
+
+diff --git a/src/quick/items/qquickitem.cpp b/src/quick/items/qquickitem.cpp
+index 9288df17a4..802f4dad55 100644
+--- a/src/quick/items/qquickitem.cpp
++++ b/src/quick/items/qquickitem.cpp
+@@ -8755,9 +8755,10 @@ QPointF QQuickItem::mapToItem(const QQuickItem *item, const QPointF &point) cons
+ {
+     QPointF p = mapToScene(point);
+     if (item) {
+-        const QQuickWindow *itemWindow = item->window();
+-        if (itemWindow != nullptr && itemWindow != window())
+-            p = itemWindow->mapFromGlobal(window()->mapToGlobal(p));
++        const auto *itemWindow = item->window();
++        const auto *thisWindow = window();
++        if (thisWindow && itemWindow && itemWindow != thisWindow)
++            p = itemWindow->mapFromGlobal(thisWindow->mapToGlobal(p));
+ 
+         p = item->mapFromScene(p);
+     }
+@@ -8862,9 +8863,10 @@ QPointF QQuickItem::mapFromItem(const QQuickItem *item, const QPointF &point) co
+     QPointF p = point;
+     if (item) {
+         p = item->mapToScene(point);
+-
+-        if (item->window() != window())
+-            p = window()->mapFromGlobal(item->window()->mapToGlobal(p));
++        const auto *itemWindow = item->window();
++        const auto *thisWindow = window();
++        if (thisWindow && itemWindow && itemWindow != thisWindow)
++            p = thisWindow->mapFromGlobal(itemWindow->mapToGlobal(p));
+     }
+     return mapFromScene(p);
+ }
+diff --git a/tests/auto/quick/qquickitem2/data/mapCoordinatesWithWindows.qml b/tests/auto/quick/qquickitem2/data/mapCoordinatesWithWindows.qml
+index 98fc0e77af..1696699a75 100644
+--- a/tests/auto/quick/qquickitem2/data/mapCoordinatesWithWindows.qml
++++ b/tests/auto/quick/qquickitem2/data/mapCoordinatesWithWindows.qml
+@@ -48,4 +48,15 @@ QtObject {
+             color: "cyan"
+         }
+     }
++
++    property Item itemWithoutWindowA: Item {
++        x: 20; y: 20
++    }
++    property Item itemWithoutWindowB: Item {
++        x: 40; y: 40
++        Item {
++            objectName: "childItemWithoutWindow"
++            x: 30; y: 30
++        }
++    }
+ }
+diff --git a/tests/auto/quick/qquickitem2/tst_qquickitem.cpp b/tests/auto/quick/qquickitem2/tst_qquickitem.cpp
+index 154c4a661f..eb4f62e65f 100644
+--- a/tests/auto/quick/qquickitem2/tst_qquickitem.cpp
++++ b/tests/auto/quick/qquickitem2/tst_qquickitem.cpp
+@@ -2945,6 +2945,33 @@ void tst_QQuickItem::mapCoordinatesWithWindows()
+         globalItemOffset(childItemInChildWindow, childItemInOtherWindow));
+     QCOMPARE(childItemInChildWindow->mapFromItem(childItemInOtherWindow, {0, 0}),
+         globalItemOffset(childItemInOtherWindow, childItemInChildWindow));
++
++    // If one or both of the items are not in a scene (yet), they are assumed
++    // to eventually be in the same scene.
++
++    auto *itemWithoutWindowA = root->property("itemWithoutWindowA").value<QQuickItem*>();
++    QVERIFY(itemWithoutWindowA);
++    auto *itemWithoutWindowB = root->property("itemWithoutWindowB").value<QQuickItem*>();
++    QVERIFY(itemWithoutWindowB);
++    auto *childItemWithoutWindow = itemWithoutWindowB->findChild<QQuickItem*>("childItemWithoutWindow");
++    QVERIFY(childItemWithoutWindow);
++
++    QPoint itemWithoutWindowAPos = itemWithoutWindowA->position().toPoint();
++    QPoint itemWithoutWindowBPos = itemWithoutWindowB->position().toPoint();
++
++    QCOMPARE(itemWithoutWindowA->mapToItem(childItemWithoutWindow, {0, 0}),
++        itemWithoutWindowAPos - (itemWithoutWindowBPos + childItemWithoutWindow->position()));
++    QCOMPARE(itemWithoutWindowA->mapFromItem(childItemWithoutWindow, {0, 0}),
++        (itemWithoutWindowBPos + childItemWithoutWindow->position()) - itemWithoutWindowAPos);
++
++    QCOMPARE(itemWithoutWindowA->mapToItem(childItem, {0, 0}),
++        itemWithoutWindowAPos - itemPos);
++    QCOMPARE(itemWithoutWindowA->mapFromItem(childItem, {0, 0}),
++        itemPos - itemWithoutWindowAPos);
++    QCOMPARE(childItem->mapToItem(itemWithoutWindowA, {0, 0}),
++        itemPos - itemWithoutWindowAPos);
++    QCOMPARE(childItem->mapFromItem(itemWithoutWindowA, {0, 0}),
++        itemWithoutWindowAPos - itemPos);
+ }
+ 
+ void tst_QQuickItem::transforms_data()
+-- 
+2.47.0
+

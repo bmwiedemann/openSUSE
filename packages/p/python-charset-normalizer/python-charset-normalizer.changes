@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 28 16:37:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- switch to PEP517 build
+
+-------------------------------------------------------------------
 Tue Oct 22 16:00:12 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.4.0:

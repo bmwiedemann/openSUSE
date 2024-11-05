@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Mon Nov  4 14:08:06 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
+
+- Upgrade to version 1.10.15
+  * Bug fixes:
+    + Fixes an regression, introduced in Ant 1.10.13, where
+      pathconvert would unintentionally trim the string output.
+      Bugzilla Report 67082
+    + Fixes a bug in <depend> task which would throw a
+      ClassFormatError if it encountered constant pool entry type
+      17.  Bugzilla Report 66552
+    + Launching ant.bat from within a Java program using
+      java.lang.Runtime.exec() could result in an unexpected
+      failure. This has now been fixed.  Bugzilla Report 67417
+    + Fixes an issue in bootstrap.bat when trying to detect if the
+      "javac" command in the JDK supports the "--release" option.
+      Github Pull Request #205
+    + Fixes a bug in
+      org.apache.tools.ant.taskdefs.email.EmailAddress which would
+      throw a java.lang.StringIndexOutOfBoundsException if the
+      email address passed to its constructor was an empty String.
+      Bugzilla Report 68462
+    + legacy-xml reporter of junitlauncher task was using a
+      non-buffered outputstream when generating the report. This
+      introduces severe performance penalties since the writes
+      translate to native write system calls. This has been fixed
+      to use a BufferedOutputStream.  Github Pull Request #207
+  * Other changes:
+    + exec task now logs the process' non-zero exit code at INFO
+      level instead of the previous ERROR level. The following
+      message from exec task is the one who's level has been
+      changed:
+      Result: 1
+      Bugzilla Report 26453
+    + Removes direct references to
+      com.sun.net.ssl.internal.ssl.Provider class from the mail
+      task, since that internal JDK class is no longer available in
+      recent versions of Java.  Bugzilla Report 68460
+    + <replaceregexp> has a new failOnError attribute which, when
+      enabled, makes the task throw a BuildException for certain
+      error cases that will only be logged otherwise.  Github Pull
+      Request #206
+    + <ftp> task now has a new "useSecureDataChannel" attribute
+      which can be set to true, when ftps is enabled, to enable
+      secure data channel.  Bugzilla Report 68773
+- Unify .spec files
+  * remove ant-antlr.changes
+  * remove ant-antlr.spec
+  * remove ant-junit.changes
+  * remove ant-junit.spec
+  * remove ant-junit5.changes
+  * remove ant-junit5.spec
+
+-------------------------------------------------------------------
 Sun Sep 29 19:45:59 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build after removal of the default %%{java_home} define

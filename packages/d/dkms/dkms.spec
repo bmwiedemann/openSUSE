@@ -17,7 +17,7 @@
 
 
 Name:           dkms
-Version:        3.0.13
+Version:        3.1.1
 Release:        0
 Summary:        Dynamic Kernel Module Support Framework
 License:        GPL-2.0-only
@@ -90,10 +90,8 @@ Zsh command line completion support for %{name}.
   SBIN=%{_sbindir} \
   MAN=%{_mandir}/man8 \
   LIBDIR=%{_libexecdir}/%{name} \
-  KCONF=%{_sysconfdir}/kernel
-
-install -p -m 755 -D kernel_install.d_dkms \
-	%{buildroot}%{_prefix}/lib/kernel/install.d/40-%{name}.install
+  KCONF=%{_sysconfdir}/kernel \
+  KINSTALL=%{_prefix}/lib/kernel/install.d
 
 # systemd
 install -p -m 644 -D dkms.service %{buildroot}%{_unitdir}/dkms.service
@@ -146,12 +144,10 @@ exit 0
 %{_mandir}/man8/dkms.8%{ext_man}
 %{_sysconfdir}/kernel/postinst.d/%{name}
 %{_sysconfdir}/kernel/prerm.d/%{name}
-%{_sysconfdir}/kernel/install.d/40-%{name}.install
 %{_unitdir}/dkms.service
 # these dirs are for plugins - owned by other packages
 %dir %{_sysconfdir}/kernel
 %dir %{_sysconfdir}/kernel/postinst.d
-%dir %{_sysconfdir}/kernel/install.d
 %dir %{_sysconfdir}/kernel/prerm.d
 %dir %{_prefix}/lib/kernel/
 %dir %{_prefix}/lib/kernel/install.d

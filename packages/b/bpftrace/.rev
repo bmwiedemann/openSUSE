@@ -223,4 +223,14 @@
     <comment></comment>
     <requestid>1218766</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>0d61d4dc965fab91209d219f4ebdbd94</srcmd5>
+    <version>0.21.2</version>
+    <time>1730817699</time>
+    <user>anag+factory</user>
+    <comment>- Backport fix for tools/bashreadline.bt needed for openQA testing (bsc#1232536)
+- Switch to gcc for compilation (bsc#1219008)
+</comment>
+    <requestid>1221317</requestid>
+  </revision>
 </revisionlist>

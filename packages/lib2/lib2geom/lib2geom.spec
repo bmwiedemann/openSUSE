@@ -106,7 +106,7 @@ ctest_exclude_regex="ellipse-test|elliptical-arc-test|line-test|polynomial-test|
 %endif
 # TW armv7l => passes
 # TW aarch64
-%ifarch aarch64
+%ifarch aarch64 ppc64le riscv64 s390x
 %define excluded_tests 1
 ctest_exclude_regex="elliptical-arc-test|polynomial-test"
 %endif

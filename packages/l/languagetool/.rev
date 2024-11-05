@@ -63,4 +63,12 @@
     <comment>bogus dependency on akka</comment>
     <requestid>1219786</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>e342fc83b20cd9ae44c872064f7b6fb4</srcmd5>
+    <version>4.8</version>
+    <time>1730817679</time>
+    <user>anag+factory</user>
+    <comment>Fix conflict/choice of providers</comment>
+    <requestid>1221268</requestid>
+  </revision>
 </revisionlist>

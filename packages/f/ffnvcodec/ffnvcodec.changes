@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Nov 03 02:35:26 UTC 2024 - mrueckert@suse.de
+
+- Update to version 12.2.72.0:
+  * Update headers from Video SDK 12.2
+  * Bump for (in-dev) 12.1.14.1
+  * Add cuCtxGetCurrent function
+  * Add cuDriverGetVersion
+  * Update headers from Video SDK 12.1
+
+-------------------------------------------------------------------
 Mon Oct 30 11:13:20 UTC 2023 - bjorn.lie@gmail.com
 
 - Update to version 12.0.16.1:

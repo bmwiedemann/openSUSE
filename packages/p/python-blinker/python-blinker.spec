@@ -26,6 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/pallets-eco/blinker/
 Source:         https://files.pythonhosted.org/packages/source/b/blinker/blinker-%{version}.tar.gz
 Patch1:         remove-sphinxextensions.patch
+BuildRequires:  %{python_module Pallets-Sphinx-Themes}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}

@@ -16,17 +16,18 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           inspektor-gadget
-Version:        0.33.0
+Version:        0.34.0
 Release:        0
 Summary:        A eBPF tool and systems inspection framework
 License:        Apache-2.0
 URL:            https://github.com/inspektor-gadget/inspektor-gadget
 Source:         inspektor-gadget-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go1.22
+BuildRequires:  bash-completion
+BuildRequires:  fish
+BuildRequires:  go >= 1.22
+BuildRequires:  zsh
 # /usr/bin/ig conflicts with igrep
 Conflicts:      igrep
 
@@ -123,9 +124,9 @@ mkdir -p %{buildroot}%{_datarootdir}/fish/vendor_completions.d/
 %{buildroot}/%{_bindir}/kubectl-gadget completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/kubectl-gadget.fish
 
 # create the zsh completion file
-mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d/
-%{buildroot}/%{_bindir}/gadgetctl completion zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_gadgetctl
-%{buildroot}/%{_bindir}/kubectl-gadget completion zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_kubectl-gadget
+mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
+%{buildroot}/%{_bindir}/gadgetctl completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_gadgetctl
+%{buildroot}/%{_bindir}/kubectl-gadget completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_kubectl-gadget
 
 %files
 %doc README.md
@@ -135,20 +136,15 @@ mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d/
 %{_bindir}/kubectl-gadget
 
 %files -n %{name}-bash-completion
-%dir %{_datarootdir}/bash-completion/completions/
 %{_datarootdir}/bash-completion/completions/gadgetctl
 %{_datarootdir}/bash-completion/completions/kubectl-gadget
 
 %files -n %{name}-fish-completion
-%dir %{_datarootdir}/fish
-%dir %{_datarootdir}/fish/vendor_completions.d
 %{_datarootdir}/fish/vendor_completions.d/gadgetctl.fish
 %{_datarootdir}/fish/vendor_completions.d/kubectl-gadget.fish
 
 %files -n %{name}-zsh-completion
-%defattr(-,root,root)
-%dir %{_datarootdir}/zsh_completion.d/
-%{_datarootdir}/zsh_completion.d/_gadgetctl
-%{_datarootdir}/zsh_completion.d/_kubectl-gadget
+%{_datarootdir}/zsh/site-functions/_gadgetctl
+%{_datarootdir}/zsh/site-functions/_kubectl-gadget
 
 %changelog

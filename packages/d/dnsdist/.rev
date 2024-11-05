@@ -127,4 +127,15 @@
 - track series file for easier patching</comment>
     <requestid>1204907</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a4f9580be918935cf026521b875200d6</srcmd5>
+    <version>1.9.7</version>
+    <time>1730817696</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.9.7:
+  https://dnsdist.org/changelog.html#change-1.9.7
+- drop powerdns-5_1_1-2_fix-build-with-boost-1_86_0.patch included
+  in update</comment>
+    <requestid>1221287</requestid>
+  </revision>
 </revisionlist>

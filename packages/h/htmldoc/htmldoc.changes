@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov  5 07:31:53 UTC 2024 - pgajdos@suse.com
+
+- security update
+- added patches
+  fix CVE-2024-46478 [bsc#1232380], buffer overflow when handling tabs through the parse_pre function (ps-pdf.cxx)
+  + htmldoc-CVE-2024-46478.patch
+
+-------------------------------------------------------------------
 Mon Sep  2 12:48:22 UTC 2024 - pgajdos@suse.com
 
 - security update

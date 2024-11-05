@@ -37,6 +37,8 @@ BuildRequires:  mvn(com.sun.xsom:xsom)
 BuildRequires:  mvn(net.java:jvnet-parent:pom:)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 Requires:       java-headless >= 1.8
+Requires:       xmlstreambuffer
+#!BuildRequires: xmlstreambuffer stax-ex
 BuildArch:      noarch
 
 %description

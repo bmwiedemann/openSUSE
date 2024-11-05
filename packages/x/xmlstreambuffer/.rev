@@ -39,4 +39,12 @@
     <comment>Assure we are building against the right apis</comment>
     <requestid>1220320</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>9eba10f278939697d0c731747b2718e1</srcmd5>
+    <version>1.5.4</version>
+    <time>1730817677</time>
+    <user>anag+factory</user>
+    <comment>Fix conflict/choice of providers</comment>
+    <requestid>1221263</requestid>
+  </revision>
 </revisionlist>

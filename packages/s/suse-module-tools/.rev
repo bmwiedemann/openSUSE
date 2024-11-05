@@ -860,4 +860,14 @@ source service setup which messed up my spec file.
     (bsc#1228929) (forwarded request 1204786 from mwilck)</comment>
     <requestid>1204787</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>0100879950877c9f73a70e7ed6e490c5</srcmd5>
+    <version>16.0.53</version>
+    <time>1730817557</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 16.0.53:
+  * udevrules: Add rule to set maximum readahead window
+    (jsc#PED-11154) (forwarded request 1220904 from mwilck)</comment>
+    <requestid>1220906</requestid>
+  </revision>
 </revisionlist>

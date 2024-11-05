@@ -2,6 +2,7 @@
 # spec file for package ldns
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +19,7 @@
 
 %define libname libldns3
 Name:           ldns
-Version:        1.8.3
+Version:        1.8.4
 Release:        0
 Summary:        A library for developing the Domain Name System
 License:        BSD-3-Clause
@@ -27,8 +28,7 @@ URL:            https://www.nlnetlabs.nl/projects/ldns/
 Source:         https://www.nlnetlabs.nl/downloads/ldns/ldns-%{version}.tar.gz
 Source1:        https://www.nlnetlabs.nl/downloads/ldns/ldns-%{version}.tar.gz.asc
 Source2:        ldns.keyring
-Patch0:         ldns-swig-4.2.patch
-Patch1:         ldns-swig-32bit.patch
+Patch2:         ldns-1.8.4-swig-3.4.0.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  libopenssl-devel
@@ -81,7 +81,7 @@ Python bindings for the ldns library
 Summary:        Perl bindings for ldns
 Group:          Development/Languages/Perl
 Requires:       %{libname} >= %{version}
-%libperl_requires
+%{libperl_requires}
 
 %description -n perl-DNS-LDNS
 Perl bindings for the ldns library.
@@ -109,13 +109,13 @@ export PYTHON=%{_bindir}/python3
   --with-examples         \
   --with-ca-path=%{_sysconfdir}/ssl/certs/ \
   $DISABLE_DANE
-make %{?_smp_mflags}
+%make_build
 
 # We cannot use the built-in --with-p5-dns-ldns
 pushd contrib/DNS-LDNS
 LD_LIBRARY_PATH="../../lib:$LD_LIBRARY_PATH" perl \
     Makefile.PL INSTALLDIRS=vendor  INC="-I. -I../.." LIBS="-L../../lib"
-make %{?_smp_mflags}
+%make_build
 popd
 
 %install
@@ -136,10 +136,10 @@ rm -f %{buildroot}%{perl_vendorarch}/auto/DNS/LDNS/{.packlist,LDNS.bs}
 rm -v %{buildroot}%{_libdir}/libldns.*a
 %fdupes %{buildroot}%{_mandir}
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files
+%license LICENSE
 %{_bindir}/drill
 %{_bindir}/ldns-chaos
 %{_bindir}/ldns-compare-zones
@@ -174,6 +174,7 @@ rm -v %{buildroot}%{_libdir}/libldns.*a
 %{_libdir}/libldns.so.*
 
 %files devel
+%license LICENSE
 %{_bindir}/ldns-config
 %{_includedir}/ldns/
 %{_libdir}/libldns.so
@@ -182,6 +183,7 @@ rm -v %{buildroot}%{_libdir}/libldns.*a
 %doc libdns.vim README*
 
 %files -n perl-DNS-LDNS
+%license LICENSE
 %{perl_vendorarch}/DNS/LDNS.pm
 %dir %{perl_vendorarch}/DNS/
 %{perl_vendorarch}/DNS/LDNS/
@@ -190,6 +192,7 @@ rm -v %{buildroot}%{_libdir}/libldns.*a
 %{_mandir}/man3/DNS::LDNS*3pm*
 
 %files -n python3-ldns
+%license LICENSE
 %{python3_sitearch}/*ldns*
 
 %changelog

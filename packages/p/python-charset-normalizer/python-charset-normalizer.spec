@@ -25,7 +25,9 @@ License:        MIT
 URL:            https://github.com/ousret/charset_normalizer
 Source:         https://github.com/Ousret/charset_normalizer/archive/refs/tags/%{version}.tar.gz#/charset_normalizer-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
@@ -46,10 +48,10 @@ Python Universal Charset detector.
 sed -i '/addopts/d' setup.cfg
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/normalizer
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 

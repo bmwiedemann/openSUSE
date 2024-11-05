@@ -11,7 +11,7 @@ diff -urEbwB tigervnc-1.13.1.orig/java/CMakeLists.txt tigervnc-1.13.1/java/CMake
 +      OUTPUT_VARIABLE COMPILATION_DATE
 +      OUTPUT_STRIP_TRAILING_WHITESPACE)
 +else ()
-+    string (TIMESTAMP COMPILATION_DATE "+%Y-%m-%dT%H:%M:%SZ")
++    STRING(TIMESTAMP COMPILATION_DATE "+%Y-%m-%dT%H:%M:%SZ")
 +endif ()
 +
  add_custom_command(OUTPUT VncViewer.jar

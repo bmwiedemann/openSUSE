@@ -31,6 +31,7 @@ BuildRequires:  mvn(net.java:jvnet-parent:pom:)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.jvnet.staxex:stax-ex)
 #!BuildRequires:  stax-ex
+Requires:       stax-ex
 BuildArch:      noarch
 
 %description

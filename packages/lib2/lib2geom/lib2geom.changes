@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 30 10:52:01 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Skip elliptical-arc-test and polynomial-test also on ppc64le, riscv64, s390x
+
+-------------------------------------------------------------------
 Fri Oct 25 12:31:51 UTC 2024 - thod_@gmx.de
 
 - Drop skip_failing_tests.diff and skip_failing_tests_gcc14.diff patches,

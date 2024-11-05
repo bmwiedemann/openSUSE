@@ -63,4 +63,12 @@
     <comment>KDE Frameworks 6.7.0 (forwarded request 1206249 from krop)</comment>
     <requestid>1207203</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>5dd6b45ba8a8bb60041b9ccc5d7a94d9</srcmd5>
+    <version>6.7.0</version>
+    <time>1730817633</time>
+    <user>anag+factory</user>
+    <comment>- Update package dependencies</comment>
+    <requestid>1220548</requestid>
+  </revision>
 </revisionlist>

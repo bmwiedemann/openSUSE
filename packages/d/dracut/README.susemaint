@@ -382,3 +382,4 @@ d0c82322 fix(dracut): do not add all lib subdirs to `LD_LIBRARY_PATH` with `--sy
 54cd6479 fix(nvmf): move /etc/nvme/host{nqn,id} requirement to hostonly
 41332702 fix(nvmf): require NVMeoF modules
 3748ed4d fix(nvmf): install (only) required nvmf modules
+d2ade8a6 fix(dm): remove 59-persistent-storage-dm.rules

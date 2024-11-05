@@ -550,4 +550,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>Qt 5.15.15 (forwarded request 1199183 from favogt)</comment>
     <requestid>1199210</requestid>
   </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>bfc8ca7d854bbce78fb197e3fffe925b</srcmd5>
+    <version>5.15.15+kde3</version>
+    <time>1730817636</time>
+    <user>anag+factory</user>
+    <comment>- Fix qdoc runtime dependency</comment>
+    <requestid>1220559</requestid>
+  </revision>
 </revisionlist>

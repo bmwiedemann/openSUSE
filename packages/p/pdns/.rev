@@ -938,4 +938,19 @@ https://doc.powerdns.com/authoritative/upgrading.html</comment>
 - track series file for easier patching</comment>
     <requestid>1204912</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>e23731c5d08f22d07726d7ff70a90889</srcmd5>
+    <version>4.9.2</version>
+    <time>1730817693</time>
+    <user>anag+factory</user>
+    <comment>- make the compiler handling for leap more readable
+  and also make it work for SLE15 &lt; SP3
+
+- Update to version 4.9.2
+  https://doc.powerdns.com/authoritative/changelog/4.9.html#change-4.9.2
+- drop powerdns-5_1_1-2_fix-build-with-boost-1_86_0.patch included
+  in update
+- refreshed pdns-4.0.3_allow_dacoverride_in_capset.patch</comment>
+    <requestid>1221285</requestid>
+  </revision>
 </revisionlist>

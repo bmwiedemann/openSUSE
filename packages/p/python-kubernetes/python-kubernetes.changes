@@ -1,7 +1,22 @@
 -------------------------------------------------------------------
+Mon Nov  4 04:42:43 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- version update to 30.1.0
+  * please refer to the changelog at https://github.com/kubernetes-client/python/blob/v30.1.0/CHANGELOG.md#v3010
+
+- remove patch: - kubernetes-client-python-pr2178-assertEqual-py312.patch
+  gh#kubernetes-client/python#2178 - merged upstream and released.
+
+-------------------------------------------------------------------
+Mon Oct 28 13:05:22 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- version update to 29.0.0
+  * please refer to the changelog at https://github.com/kubernetes-client/python/blob/v29.0.0/CHANGELOG.md#v2900
+
+-------------------------------------------------------------------
 Thu Sep 26 21:17:01 UTC 2024 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Fixed %{?sle15_python_module_pythons} 
+- Fixed %{?sle15_python_module_pythons}, jsc#PED-8481 
 
 -------------------------------------------------------------------
 Thu Jan 18 19:52:07 UTC 2024 - Ben Greiner <code@bnavigator.de>

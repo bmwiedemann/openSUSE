@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Oct 28 14:47:12 UTC 2024 - containers@suse.com
+
+- Update to version 1730126702.6c2bf3a:
+  * Bump version: 0.0.10 → 0.0.11
+  * Fix shebang of service to /usr/bin/python3
+  * Bump version: 0.0.9 → 0.0.10
+  * Unrestrict dev dependencies
+  * Add support for replacing package versions by capability
+  * Bump actions/setup-python from 5.2.0 to 5.3.0
+  * Bump actions/setup-python from 5.1.1 to 5.2.0
+  * Bump actions/setup-python from 5.1.0 to 5.1.1
+  * Bump actions/setup-python from 5.0.0 to 5.1.0
+  * Bump Gr1N/setup-poetry from 8 to 9
+  * Bump actions/cache from 3 to 4
+  * Whitespace cleanup
+  * Add instructions to update new releases in OBS
+  * How to cut a new release
+
+-------------------------------------------------------------------
 Fri Jun 14 18:33:15 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Fix shebang of the script to use the explicit version of Python

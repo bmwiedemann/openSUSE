@@ -67,6 +67,7 @@ BuildRequires:  mvn(org.simpleframework:simple-common)
 BuildRequires:  mvn(org.simpleframework:simple-http)
 BuildRequires:  mvn(org.simpleframework:simple-transport)
 BuildRequires:  mvn(xerces:xercesImpl)
+#!BuildRequires: istack-commons-maven-plugin
 BuildArch:      noarch
 %if %{without jp_minimal}
 BuildRequires:  mvn(com.github.spullara.mustache.java:compiler)

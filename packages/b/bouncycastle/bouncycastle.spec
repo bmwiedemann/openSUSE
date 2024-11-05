@@ -17,10 +17,10 @@
 
 
 %global ver_major 1
-%global ver_minor 78
-%global ver_micro 1
+%global ver_minor 79
+#%%global ver_micro 1
 %global gittag r%{ver_major}rv%{ver_minor}%{?ver_micro:v%{ver_micro}}
-%global archivever jdk18on-%{ver_major}%{ver_minor}%{?ver_micro:0%{ver_micro}}
+%global archivever jdk18on-%{ver_major}.%{ver_minor}%{?ver_micro:0%{ver_micro}}
 %global classname org.bouncycastle.jce.provider.BouncyCastleProvider
 Name:           bouncycastle
 Version:        %{ver_major}.%{ver_minor}%{?ver_micro:.%{ver_micro}}
@@ -161,6 +161,7 @@ touch %{buildroot}%{_sysconfdir}/java/security/security.d/2000-%{classname}
 
 install -dm 0755 %{buildroot}%{_javadir}
 install -dm 0755 %{buildroot}%{_mavenpomdir}
+
 for bc in bcprov bcpkix bcpg bcmail bctls bcutil bcjmail ; do
   install -pm 0644 build/artifacts/jdk1.8/jars/$bc-%{archivever}.jar %{buildroot}%{_javadir}/$bc.jar
   %{mvn_install_pom} %{_sourcedir}/$bc-jdk18on-%{version}.pom %{buildroot}%{_mavenpomdir}/$bc.pom

@@ -7722,4 +7722,41 @@ always built-in because vim has direct perl dependencies anyway.
     <comment></comment>
     <requestid>1199027</requestid>
   </revision>
+  <revision rev="374" vrev="1">
+    <srcmd5>668da03a902c9801f2d04e782aba4a89</srcmd5>
+    <version>9.1.0836</version>
+    <time>1730817625</time>
+    <user>anag+factory</user>
+    <comment>- update to 9.1.0836 
+ * 9.1.0836: The vimtutor can be improved
+ * 9.1.0835: :setglobal doesn't work properly for 'ffu' and 'tsrfu'
+ * 9.1.0834: tests: 2html test fails
+ * 9.1.0833: CI: recent ASAN changes do not work for indent tests
+ * 9.1.0832: :set doesn't work for 'cot' and 'bkc' after :setlocal
+ * runtime(doc): update help-toc description
+ * runtime(2html): Make links use color scheme colors in TOhtml
+ * 9.1.0831: 'findexpr' can't be used as lambad or Funcref
+ * Filelist: include helptoc package
+ * runtime(doc): include a TOC Vim9 plugin
+ * Filelist: ignore .git-blame-ignore-revs
+ * 9.1.0830: using wrong highlight group for spaces for popupmenu
+ * runtime(typst): synchronize updates from the upstream typst.vim
+ * git: ignore reformatting commit for git-blame (after v9.1.0829)
+ * 9.1.0829: Vim source code uses a mix of tabs and spaces
+ * 9.1.0828: string_T struct could be used more often
+ * 9.1.0827: CI: tests can be improved
+ * runtime(doc): remove stray sentence in pi_netrw.txt
+ * 9.1.0826: filetype: sway files are not recognized
+ * runtime(doc): Include netrw-gp in TOC
+ * runtime(doc): mention 'iskeyword' at :h charclass()
+ * runtime(doc): update help tags
+ * 9.1.0825: compile error for non-diff builds
+ * runtime(netrw): fix E874 when browsing remote directory which contains `~` character
+ * runtime(doc): update coding style documentation
+ * runtime(debversions): Add plucky (25.04) as Ubuntu release name
+ * 9.1.0824: too many strlen() calls in register.c
+ * 9.1.0823: filetype: Zephyr overlay files not recognized
+ * runtime(doc): Clean up minor formatting issues for builtin functions</comment>
+    <requestid>1220427</requestid>
+  </revision>
 </revisionlist>

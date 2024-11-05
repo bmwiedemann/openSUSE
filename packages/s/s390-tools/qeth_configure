@@ -48,6 +48,14 @@ debug_mesg () {
     esac
 }
 
+add_cio_channel() {
+	echo "$* # ${DATE}" >> /boot/zipl/active_devices.txt
+}
+
+remove_cio_channel() {
+	[ -w /boot/zipl/active_devices.txt ] && sed -i -e "/^${1}/d" /boot/zipl/active_devices.txt
+}
+
 usage(){
   echo "Usage: ${0} [options] <read chan> <write chan> <data chan> <online>"
   echo "      -i Configure IP takeover"
@@ -156,4 +164,11 @@ fi
 RC=${?}
 if [ ${RC} -ne 0 ]; then
   exit ${RC}
+fi
+
+if [ ${ON_OFF} == 1 ]; then
+  add_cio_channel "${QETH_READ_CHAN},${QETH_WRITE_CHAN},${QETH_DATA_CHAN}"
+else remove_cio_channel "${QETH_READ_CHAN}"
+     remove_cio_channel "${QETH_WRITE_CHAN}"
+     remove_cio_channel "${QETH_DATA_CHAN}"
 fi

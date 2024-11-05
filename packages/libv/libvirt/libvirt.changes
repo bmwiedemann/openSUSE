@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov  4 21:00:34 UTC 2024 - James Fehlig <jfehlig@suse.com>
+
+- json: do not call json_tokener_free with NULL
+  Fixes potential SEGV in libvirt-nss module
+  boo#1232726
+
+-------------------------------------------------------------------
 Fri Nov  1 19:52:45 UTC 2024 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 10.9.0

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 #
 # SPDX-FileCopyrightText: (c) 2023 SUSE LLC
@@ -171,6 +171,9 @@ def find_package_version(package, rpm_dir):
         version = find_package_version_in_obsinfo('.', package)
 
     if version is None:
+        version = find_package_version_by_capability(rpm_dir, package)
+
+    if version is None:
         raise Exception(f'Package {package} version not found')
     return str(version)
 
@@ -187,6 +190,26 @@ def find_package_version_in_local_repos(repo_path, package):
                 rpm_ver = get_pkg_version_from_rpm(rpm_file)
                 if version is None or labelCompare(rpm_ver, version) >= 0:
                     version = rpm_ver
+    return version
+
+
+def find_package_version_by_capability(
+    repo_path: str, capability: str
+) -> Optional[str]:
+    """Find the highest rpm package version of all packages in `repo_path` that
+    have a rpm provides containing the string `capability`.
+
+    """
+    version = None
+    for root, _, files in os.walk(repo_path):
+        packages = [f for f in files if f.endswith('rpm')]
+        for pkg in packages:
+            rpm_file = os.path.join(root, pkg)
+            for provide in get_pkg_provides_from_rpm(rpm_file):
+                if capability in provide:
+                    rpm_ver = get_pkg_version_from_rpm(rpm_file)
+                    if version is None or labelCompare(rpm_ver, version) >= 0:
+                        version = rpm_ver
     return version
 
 
@@ -234,6 +257,13 @@ def get_pkg_version_from_rpm(rpm_file: str) -> str:
         'rpm', '-qp', '--queryformat', '%{VERSION}', rpm_file
     ]
     return run_command(command)
+
+
+def get_pkg_provides_from_rpm(rpm_file: str) -> List[str]:
+    res = subprocess.run(['rpm', '-qP', rpm_file], stdout=subprocess.PIPE)
+    if res.returncode == 0:
+        return res.stdout.decode().strip().splitlines()
+    return []
 
 
 def get_pkg_version(package: str) -> str:

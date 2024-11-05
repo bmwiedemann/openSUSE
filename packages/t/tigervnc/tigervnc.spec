@@ -31,7 +31,7 @@
 %define _pam_vendordir %{_sysconfdir}/pam.d
 %endif
 Name:           tigervnc
-Version:        1.13.1
+Version:        1.14.1
 Release:        0
 Summary:        An implementation of VNC
 License:        GPL-2.0-only AND MIT
@@ -58,14 +58,15 @@ Source17:       vnc.sysusers
 Patch1:         u_tigervnc-Ignore-epipe-on-write.patch
 Patch2:         u_tigervnc-Build-libXvnc-as-separate-library.patch
 Patch3:         u_tigervnc-Add-autoaccept-parameter.patch
-Patch4:         u_tigervnc-Change-button-layout-in-ServerDialog.patch
-Patch5:         n_tigervnc-Date-time.patch
-Patch6:         n_tigervnc-Correct-path-in-desktop-file.patch
-Patch7:         n_tigervnc-Vncserver.patch
-Patch8:         n_tigervnc-Dont-sign-java-client.patch
+Patch4:         n_tigervnc-Date-time.patch
+%if %use_update_alternative
+Patch5:         n_tigervnc-Correct-path-in-desktop-file.patch
+%endif
+Patch6:         n_tigervnc-Vncserver.patch
+Patch7:         n_tigervnc-Dont-sign-java-client.patch
 # The "--date" option was added into jar in OpenJDK 17
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
-Patch9:         n_tigervnc-reproducible-jar-mtime.patch
+Patch8:         n_tigervnc-reproducible-jar-mtime.patch
 %endif
 Provides:       tightvnc = 1.5.0
 Obsoletes:      tightvnc < 1.5.0
@@ -246,7 +247,7 @@ It maps common x11vnc arguments to x0vncserver arguments.
 
 cp -r %{_prefix}/src/xserver/* unix/xserver/
 pushd unix/xserver
-patch -p1 < ../xserver21.1.1.patch
+patch -p1 < ../xserver21.patch
 popd
 
 %build

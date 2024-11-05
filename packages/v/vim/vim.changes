@@ -1,4 +1,247 @@
 -------------------------------------------------------------------
+Sun Nov  3 15:50:30 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 9.1.0836 
+ * 9.1.0836: The vimtutor can be improved
+ * 9.1.0835: :setglobal doesn't work properly for 'ffu' and 'tsrfu'
+ * 9.1.0834: tests: 2html test fails
+ * 9.1.0833: CI: recent ASAN changes do not work for indent tests
+ * 9.1.0832: :set doesn't work for 'cot' and 'bkc' after :setlocal
+ * runtime(doc): update help-toc description
+ * runtime(2html): Make links use color scheme colors in TOhtml
+ * 9.1.0831: 'findexpr' can't be used as lambad or Funcref
+ * Filelist: include helptoc package
+ * runtime(doc): include a TOC Vim9 plugin
+ * Filelist: ignore .git-blame-ignore-revs
+ * 9.1.0830: using wrong highlight group for spaces for popupmenu
+ * runtime(typst): synchronize updates from the upstream typst.vim
+ * git: ignore reformatting commit for git-blame (after v9.1.0829)
+ * 9.1.0829: Vim source code uses a mix of tabs and spaces
+ * 9.1.0828: string_T struct could be used more often
+ * 9.1.0827: CI: tests can be improved
+ * runtime(doc): remove stray sentence in pi_netrw.txt
+ * 9.1.0826: filetype: sway files are not recognized
+ * runtime(doc): Include netrw-gp in TOC
+ * runtime(doc): mention 'iskeyword' at :h charclass()
+ * runtime(doc): update help tags
+ * 9.1.0825: compile error for non-diff builds
+ * runtime(netrw): fix E874 when browsing remote directory which contains `~` character
+ * runtime(doc): update coding style documentation
+ * runtime(debversions): Add plucky (25.04) as Ubuntu release name
+ * 9.1.0824: too many strlen() calls in register.c
+ * 9.1.0823: filetype: Zephyr overlay files not recognized
+ * runtime(doc): Clean up minor formatting issues for builtin functions
+ * runtime(netrw): make :Launch/Open autoloadable
+ * runtime(netrw): fix regression with x mapping on Cygwin
+ * runtime(netrw): fix filetype detection for remote files
+ * 9.1.0822: topline might be changed in diff mode unexpectedly
+ * CI: huge linux builds should also run syntax & indent tests
+ * 9.1.0821: 'findexpr' completion doesn't set v:fname to cmdline argument
+ * 9.1.0820: tests: Mac OS tests are too flaky
+ * runtime(awk): Highlight more awk comments in syntax script
+ * runtime(netrw): add missing change for s:redir()
+ * 9.1.0819: tests: using findexpr and imported func not tested
+ * runtime(netrw): improve netrw's open-handling further
+ * runtime(netrw): fix syntax error in netrwPlugin.vim
+ * runtime(netrw): simplify gx file handling
+ * 9.1.0818: some global functions are only used in single files
+ * 9.1.0817: termdebug: cannot evaluate expr in a popup
+ * runtime(defaults): Detect putty terminal and switch to dark background
+ * 9.1.0816: tests: not clear what tests cause asan failures
+ * runtime(doc): Remove some completed items from todo.txt
+ * 9.1.0815: "above" virtual text causes wrong 'colorcolumn' position
+ * runtime(syntax-tests): tiny vim fails because of line-continuation
+ * 9.1.0814: mapset() may remove unrelated mapping
+ * 9.1.0813: no error handling with setglobal and number types
+ * 9.1.0812: Coverity warns about dereferencing NULL ptr
+ * 9.1.0811: :find expansion does not consider 'findexpr'
+ * 9.1.0810: cannot easily adjust the |:find| command
+ * 9.1.0809: filetype: petalinux config files not recognized
+ * 9.1.0808: Terminal scrollback doesn't shrink when decreasing 'termwinscroll'
+ * 9.1.0807: tests: having 'nolist' in modelines isn't always desired
+ * 9.1.0806: tests: no error check when setting global 'briopt'
+ * 9.1.0805: tests: minor issues in gen_opt_test.vim
+ * 9.1.0804: tests: no error check when setting global 'cc'
+ * 9.1.0803: tests: no error check when setting global 'isk'
+ * 9.1.0802: tests: no error check when setting global 'fdm' to empty value
+ * 9.1.0801: tests: no error check when setting global 'termwinkey'
+ * 9.1.0800: tests: no error check when setting global 'termwinsize'
+ * runtime(doc): :ownsyntax also resets 'spelloptions'
+ * 9.1.0799: tests: gettwinvar()/gettabwinvar() tests are not comprehensive
+ * runtime(doc): Fix wrong Mac default options
+ * 9.1.0798: too many strlen() calls in cmdhist.c
+ * 9.1.0797: testing of options can be further improved
+ * 9.1.0796: filetype: libtool files are not recognized
+ * (typst): add folding to typst ftplugin
+ * runtime(netrw): deprecate and remove netrwFileHandlers#Invoke()
+ * 9.1.0795: filetype: Vivado memory info file are not recognized
+ * 9.1.0794: tests: tests may fail on Windows environment
+ * runtime(doc): improve the :colorscheme documentation
+ * 9.1.0793: xxd: -e does add one extra space
+ * 9.1.0792: tests: Test_set_values() is not comprehensive enough
+ * runtime(swayconfig): add flag for bindsym/bindcode to syntax script
+ * 9.1.0791: tests: errors in gen_opt_test.vim are not shown
+ * runtime(compiler): check for compile_commands in build dirs for cppcheck
+ * 9.1.0790: Amiga: AmigaOS4 build should use default runtime (newlib)
+ * runtime(help): Update help syntax
+ * runtime(help): fix end of sentence highlight in code examples
+ * runtime(jinja): Support jinja syntax as secondary filetype
+ * 9.1.0789: tests: ':resize + 5' has invalid space after '+'
+ * 9.1.0788: <CSI>27;<mod>u is not decoded to literal Escape in kitty/foot
+ * 9.1.0787: cursor position changed when using hidden terminal
+ * 9.1.0786: tests: quickfix update test does not test location list
+ * runtime(doc): add some docs for file-watcher programs
+ * CI: uploading failed screendumps still fails on Cirrus CI
+ * 9.1.0785: cannot preserve error position when setting quickfix list
+ * 9.1.0784: there are several problems with python 3.13
+ * 9.1.0783: 'spell' option setting has problems
+ * 9.1.0782: tests: using wrong neomuttlog file name
+ * runtime(doc): add preview flag to statusline example
+ * 9.1.0781: tests: test_filetype fails
+ * 9.1.0780: MS-Windows: incorrect Win32 error checking
+ * 9.1.0779: filetype: neomuttlog files are not recognized
+ * 9.1.0778: filetype: lf config files are not recognized
+ * runtime(comment): fix commment toggle with mixed tabs & spaces
+ * runtime(misc): Use consistent "Vim script" spelling
+ * runtime(gleam): add ftplugin for gleam files
+ * runtime(doc): link help-writing from write-local-help
+ * 9.1.0777: filetype: Some upstream php files are not recognized
+ * runtime(java): Define javaBlockStart and javaBlockOtherStart hl groups
+ * runtime(doc): mention conversion rules for remote_expr()
+ * runtime(tutor): Fix missing :s command in spanish translation section 4.4
+ * 9.1.0776: test_strftime may fail because of missing TZ data
+ * translation(am): Add Armenian language translation
+ * 9.1.0775: tests: not enough tests for setting options
+ * 9.1.0774: "shellcmdline" doesn't work with getcompletion()
+ * 9.1.0773: filetype: some Apache files are not recognized
+ * 9.1.0772: some missing changes from v9.1.0771
+ * 9.1.0771: completion attribute hl_group is confusing
+ * 9.1.0770: current command line completion is a bit limited
+ * 9.1.0769: filetype: MLIR files are not recognized
+ * 9.1.0768: MS-Windows: incorrect cursor position when restoring screen
+ * runtime(nasm): Update nasm syntax script
+ * 9.1.0767: A condition is always true in ex_getln.c
+ * runtime(skill): Update syntax file to fix string escapes
+ * runtime(help): highlight CTRL-<Key> correctly
+ * runtime(doc): add missing usr_52 entry to toc
+ * 9.1.0766: too many strlen() calls in ex_getln.c
+ * runtime(doc): correct `vi` registers 1-9 documentation error
+ * 9.1.0765: No test for patches 6.2.418 and 7.3.489
+ * runtime(spec): set comments and commentstring options
+ * NSIS: Include libgcc_s_sjlj-1.dll again
+ * runtime(doc): clarify the effect of 'startofline' option
+ * 9.1.0764: [security]: use-after-free when closing a buffer
+ * runtime(vim): Update base-syntax file, improve class, enum and interface highlighting
+ * 9.1.0763: tests: cannot run single syntax tests
+ * 9.1.0762: 'cedit', 'termwinkey' and 'wildchar' may not be parsed correctly
+ * 9.1.0761: :cd completion fails on Windows with backslash in path
+ * 9.1.0760: tests: no error reported, if gen_opt_test.vim fails
+ * 9.1.0759: screenpos() may return invalid position
+ * runtime(misc): unset compiler in various ftplugins
+ * runtime(doc): update formatting and syntax
+ * runtime(compiler): add cppcheck linter compiler plugin
+ * runtime(doc): Fix style in documents
+ * runtime(doc): Fix to two-space convention in user manual
+ * runtime(comment): consider &tabstop in lines after whitespace indent
+ * 9.1.0758: it's possible to set an invalid key to 'wildcharm'
+ * runtime(java): Manage circularity for every :syn-included syntax file
+ * 9.1.0757: tests: messages files contains ANSI escape sequences
+ * 9.1.0756: missing change from patch v9.1.0754
+ * 9.1.0755: quickfix list does not handle hardlinks well
+ * runtime(doc): 'filetype', 'syntax' and 'keymap' only allow alphanumeric + some characters
+ * runtime(systemd): small fixes to &keywordprg in ftplugin
+ * CI: macos-12 runner is being sunset, switch to 13
+ * 9.1.0754: fixed order of items in insert-mode completion menu
+ * runtime(comment): commenting might be off by one column
+ * 9.1.0753: Wrong display when typing in diff mode with 'smoothscroll'
+ * 9.1.0752: can set 'cedit' to an invalid value
+ * runtime(doc): add `usr` tag to usr_toc.txt
+ * 9.1.0751: Error callback for term_start() not used
+ * 9.1.0750: there are some Win9x legacy references
+ * runtime(java): Recognise the CommonMark form (///) of Javadoc comments
+ * 9.1.0749: filetype: http files not recognized
+ * runtime(comment): fix syntax error
+ * CI: uploading failed screendump tests does not work Cirrus
+ * 9.1.0748: :keep* commmands are sometimes misidentified as :k
+ * runtime(indent): allow matching negative numbers for gnu indent config file
+ * runtime(comment): add gC mapping to (un)comment rest of line
+ * 9.1.0747: various typos in repo found
+ * 9.1.0746: tests: Test_halfpage_longline() fails on large terminals
+ * runtime(doc): reformat gnat example
+ * runtime(doc): reformat ada_standard_types section
+ * 9.1.0745: filetype: bun and deno history files not recognized
+ * runtime(glvs): Correct the tag name of glvs-autoinstal
+ * runtime(doc): include short form for :earlier/:later
+ * runtime(doc): remove completed TODO
+ * 9.1.0744: filetype: notmuch configs are not recognised
+ * 9.1.0743: diff mode does not handle overlapping diffs correctly
+ * runtime(glvs): fix a few issues
+ * runtime(doc): Fix typo in :help :command-modifiers
+ * 9.1.0742: getcmdprompt() implementation can be improved
+ * runtime(docs): update `:set?` command behavior table
+ * runtime(doc): update vim90 to vim91 in docs
+ * runtime(doc): fix typo in :h dos-colors
+ * 9.1.0741: No way to get prompt for input()/confirm()
+ * runtime(doc): fix typo in version9.txt nrformat -> nrformats
+ * runtime(rmd,rrst): 'fex' option not properly restored
+ * runtime(netrw): remove extraneous closing bracket
+ * 9.1.0740: incorrect internal diff with empty file
+ * 9.1.0739: [security]: use-after-free in ex_getln.c
+ * runtime(filetype): tests: Test_filetype_detection() fails
+ * runtime(dist): do not output a message if executable is not found
+ * 9.1.0738: filetype: rapid files are not recognized
+ * runtime(modconf): remove erroneous :endif in ftplugin
+ * runtime(lyrics): support multiple timestamps in syntax script
+ * runtime(java): Optionally recognise _module_ import declarations
+ * runtime(vim): Update base-syntax, improve folding function matches
+ * CI: upload failed screendump tests also for Cirrus
+ * 9.1.0737: tests: screendump tests may require a bit more time
+ * runtime(misc): simplify keywordprg in various ftplugins
+ * runtime(java): Optionally recognise all primitive constants in _switch-case_ labels
+ * runtime(zsh,sh): set and unset compiler in ftplugin
+ * runtime(netrw): using inefficient highlight pattern for 'mf'
+ * 9.1.0736: Unicode tables are outdated
+ * 9.1.0735: filetype: salt files are not recognized
+ * 9.1.0734: filetype: jinja files are not recognized
+ * runtime(zathurarc): add double-click-follow to syntax script
+ * translation(ru): Updated messages translation
+ * translation(it): updated xxd man page
+ * translation(ru): updated xxd man page
+ * 9.1.0733: keyword completion does not work with fuzzy
+ * 9.1.0732: xxd: cannot use -b and -i together
+ * runtime(java): Highlight javaConceptKind modifiers with StorageClass
+ * runtime(doc): reword and reformat how to use defaults.vim
+ * 9.1.0731: inconsistent case sensitive extension matching
+ * runtime(vim): Update base-syntax, match Vim9 bool/null literal args to :if/:while/:return
+ * runtime(netrw): delete confirmation not strict enough
+ * 9.1.0730: Crash with cursor-screenline and narrow window
+ * 9.1.0729: Wrong cursor-screenline when resizing window
+ * 9.1.0728: [security]: heap-use-after-free in garbage collection with location list user data
+ * runtime(doc): clarify the effect of the timeout for search()-functions
+ * runtime(idlang): update syntax script
+ * runtime(spec): Recognize epoch when making spec changelog in ftplugin
+ * runtime(spec): add file triggers to syntax script
+ * 9.1.0727: too many strlen() calls in option.c
+ * runtime(make): add compiler/make.vim to reset compiler plugin settings
+ * runtime(java): Recognise all available standard doclet tags
+ * 9.1.0726: not using correct python3 API with dynamic linking
+ * runtime(dosini): Update syntax script, spellcheck comments only
+ * runtime(doc): Revert outdated comment in completeopt's fuzzy documentation
+ * 9.1.0725: filetype: swiftinterface files are not recognized
+ * runtime(pandoc): Update compiler plugin to use actual 'spelllang'
+ * runtime(groff): Add compiler plugin for groff
+ * 9.1.0724: if_python: link error with python 3.13 and stable ABI
+ * 9.1.0723: if_python: dynamic linking fails with python3 >= 3.13
+ * 9.1.0722: crash with large id in text_prop interface
+ * 9.1.0721: tests: test_mksession does not consider XDG_CONFIG_HOME
+ * runtime(glvs): update GetLatestVimScripts plugin
+ * runtime(doc): Fix typo in :help :hide text
+ * runtime(doc): buffers can be re-used
+ * 9.1.0720: Wrong breakindentopt=list:-1 with multibyte or TABs
+ * 9.1.0719: Resetting cell widths can make 'listchars' or 'fillchars' invalid
+ * runtime(doc): Update version9.txt and mention $MYVIMDIR
+
+-------------------------------------------------------------------
 Thu Sep  5 16:41:57 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Update to 9.1.0718:

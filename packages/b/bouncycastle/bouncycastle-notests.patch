@@ -1,7 +1,7 @@
-Index: bc-java-r1rv78/ant/bc+-build.xml
+Index: bc-java-r1rv79/ant/bc+-build.xml
 ===================================================================
---- bc-java-r1rv78.orig/ant/bc+-build.xml
-+++ bc-java-r1rv78/ant/bc+-build.xml
+--- bc-java-r1rv79.orig/ant/bc+-build.xml
++++ bc-java-r1rv79/ant/bc+-build.xml
 @@ -280,7 +280,7 @@
  
      </target>
@@ -11,7 +11,7 @@ Index: bc-java-r1rv78/ant/bc+-build.xml
  
      <target name="build-lw" depends="initMacros">
          <!--
-@@ -935,149 +935,6 @@
+@@ -964,148 +964,6 @@
  
      </target>
  
@@ -98,7 +98,7 @@ Index: bc-java-r1rv78/ant/bc+-build.xml
 -        <property name="test.target.src.dir" value="${test.target.dir}/src" />
 -
 -        <mkdir dir="${basedir}/${build.dir}/${target.prefix}" />
--        <junit fork="yes" dir="${basedir}/${build.dir}/${target.prefix}" failureProperty="test.failed" printsummary="${junit.printsummary}">
+-        <junit fork="yes" dir="${basedir}/${build.dir}/${target.prefix}" failureProperty="test.failed" printsummary="${junit.printsummary}" maxmemory="${junit.maxmemory}">
 -            <classpath>
 -                <path refid="project.classpath" /> 
 -                <fileset dir="${artifacts.jars.dir}">
@@ -157,7 +157,6 @@ Index: bc-java-r1rv78/ant/bc+-build.xml
 -            <report format="frames" todir="${artifacts.reports.html.dir}" />
 -        </junitreport>
 -    </target>
--
+ 
      <target name="javadoc-libraries" depends="javadoc-util, javadoc-pkix, javadoc-mail, javadoc-jmail, javadoc-pg" />
  
-     <!--

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 25 05:18:36 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+- Fix build error under Leap.
+
+-------------------------------------------------------------------
 Mon Sep 02 13:54:46 UTC 2024 - mcepl@cepl.eu
 
 - Regenerate vendored js libraries (bsc#1229866).

@@ -1,7 +1,7 @@
 #
 # spec file for package kconfig
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Name:           kconfig
 Version:        5.116.0
 Release:        0
 Summary:        Advanced configuration system
-License:        LGPL-2.1-or-later AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 URL:            https://www.kde.org
 Source:         %{name}-%{version}.tar.xz
 %if %{with released}
@@ -75,7 +75,7 @@ KConfigCore provides access to the configuration files themselves.
 
 %package -n libKF5ConfigGui%{sonum}
 Summary:        Widgets hooks for configuration entities
-%requires_ge    libKF5ConfigCore5
+Requires:       libKF5ConfigCore%{sonum} >= %{version}
 %requires_ge    libQt5Core5
 %requires_ge    libQt5Gui5
 %requires_ge    libQt5Xml5
@@ -87,8 +87,8 @@ their changes to their respective configuration files.
 
 %package -n libKF5ConfigQml%{sonum}
 Summary:        QtQuick bindings for configuration entities
-%requires_ge    libKF5ConfigCore5
-%requires_ge    libKF5ConfigGui5
+Requires:       libKF5ConfigCore5 >= %{version}
+Requires:       libKF5ConfigGui5 >= %{version}
 %requires_ge    libQt5Core5
 %requires_ge    libQt5Gui5
 %requires_ge    libQt5Xml5

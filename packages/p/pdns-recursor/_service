@@ -1,6 +1,6 @@
 <services>
 <service name="cargo_vendor" mode="manual">
-  <param name="src">pdns-recursor-5.1.1/settings/rust/</param>
+  <param name="src">pdns-recursor-5.1.2/settings/rust/</param>
   <param name="compression">zst</param>
   <param name="update">true</param>
 </service>

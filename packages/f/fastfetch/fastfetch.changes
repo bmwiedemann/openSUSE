@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Nov  4 20:12:34 UTC 2024 - RN <R_Nik_C@proton.me>
+
+- update to 2.29.0
+  Features:
+   * Port to NetBSD and DragonFly BSD 
+     - Fastfetch now supports all major BSD variants
+   * Support DiskIO, NetIO, GPU and Users module on OpenBSD
+   * Report SD8E SOC name (CPU, Android)
+   * On Windows, try loading dlls from current exe path (Windows) 
+     - Fix Media module when installed with winget
+  Bugfixes:
+   * Fix the VIM version detection on Ubuntu (Editor, Linux)
+   * Improve performance of OS version detection on Proxmox 
+     (gh#fastfetch-cli/fastfetch#1370, OS, Linux)
+  Logo:
+   * Update OpenSuse Tumbleweed
+   * Add XCP-ng
+   * Add SummitOS
+   * Add Lilidog
+   * Update PikaOS
+   * Update OpenSUSE Leap
+   * Update aperture
+
+-------------------------------------------------------------------
 Wed Oct 23 17:45:08 UTC 2024 - RN <R_Nik_C@proton.me>
 
 - update to 2.28.0

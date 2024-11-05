@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Nov  3 19:04:23 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 0.11.0+0:
+  Added:
+  * Partial French translation!
+Fixed:
+  * [Unix] Files can now be encrypted with rage --passphrase when
+    piped over stdin, without requiring an explicit - argument as
+    INPUT.
+
+-------------------------------------------------------------------
 Fri Sep 20 04:57:20 UTC 2024 - William Brown <william.brown@suse.com>
 
 - bsc#1229959 - RUSTSEC-2024-0006 - CVE-2024-43806

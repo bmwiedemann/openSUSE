@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov  4 10:05:07 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not use the %requires_{ge,eq} macros on packages that are
+  built by this source package: It does not work, as the package in
+  question is not installed and thus not identifable as part of the
+  rpm database.
+
+-------------------------------------------------------------------
 Mon May  6 11:32:32 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.116.0

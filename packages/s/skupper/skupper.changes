@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov 04 19:49:49 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.8.2:
+  * update for 1.8.2
+  * refine peer link deletion (#1726)
+  * Fixed version in update test (#1711)
+  * Cleanup old link records.  When incoming link is deleted,
+    remove corresponding outgoing link.   (#1699)
+  * add v2 section (#1687)
+  * Update link cost when receiving a flow record (#1695)
+  * Podman sites update issue (#1675)
+
+-------------------------------------------------------------------
 Sat Sep 14 08:21:20 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.8.1:

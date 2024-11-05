@@ -391,4 +391,22 @@ Index: ldns-1.7.1.tar.gz.asc
     <comment></comment>
     <requestid>1186785</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c7d289e584f4bfc0bd068983adcd971b</srcmd5>
+    <version>1.8.4</version>
+    <time>1730817640</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.8.4:
+  * Fix Resolver uses nameserver commented out in /etc/resolv.conf
+  * Added RESINFO rrtype
+  * Added WALLET rrtype
+  * Added NXNAME rrtype
+  * Fix static code analysis findings, and developer visible fixes
+  * improve 'next-label' algorithm in ldns-walk
+  * Add functions to extract RFC 8914 extended errors
+  * Build system fixes and fixes for dependencies
+- upstreamed, droped: ldns-swig-4.2.patch, ldns-swig-32bit.patch
+- ldns-1.8.4-swig-3.4.0.patch: fix build with Swig 3.4.0 [boo#1231584]</comment>
+    <requestid>1220578</requestid>
+  </revision>
 </revisionlist>

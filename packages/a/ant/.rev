@@ -910,4 +910,12 @@ SPDX format (note that it should CDDL-1.1 if the (c) owner and license steward i
     <comment>Fix build after removal of the default %%{java_home} define</comment>
     <requestid>1204562</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>5d64f528a80958542373d8defb89473a</srcmd5>
+    <version>1.10.15</version>
+    <time>1730817580</time>
+    <user>anag+factory</user>
+    <comment>some distros don't support %elif</comment>
+    <requestid>1221304</requestid>
+  </revision>
 </revisionlist>

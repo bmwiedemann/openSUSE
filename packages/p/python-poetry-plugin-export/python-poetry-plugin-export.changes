@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Nov  4 19:08:14 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.8.0
+  ## Changed
+  * Relax the constraint on poetry and poetry-core to allow
+    (future) 2.* versions (#280).
+  ## Fixed
+  * Fix an issue where editable installs where not exported
+    correctly (#258).
+- Release 1.7.1
+  ## Changed
+  * Export --index-url before --extra-index-url to work around a
+    pip bug (#270).
+  ## Fixed
+  * Fix an issue where the source with the highest priority was
+    exported with --index-url despite PyPI being among the sources
+    (#270).
+- Release 1.7.0
+  ## Changed
+  * Bump minimum required poetry version to 1.8.0 (#263).
+  ## Fixed
+  * Fix an issue where all sources were exported with
+    --extra-index-url even though PyPI was deactivated (#263).
+
+-------------------------------------------------------------------
 Thu Dec 14 21:03:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.0:

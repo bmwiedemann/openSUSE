@@ -1,0 +1,45 @@
+From 14b83ac87608ab359f3913b86d31e6f02665f66d Mon Sep 17 00:00:00 2001
+From: Anthony Iliopoulos <ailiop@suse.com>
+Date: Thu, 31 Oct 2024 17:56:11 +0100
+Subject: [PATCH] tools/bashreadline: fix probe for dynamically linked readline
+Upstream-status: sent to https://github.com/bpftrace/bpftrace/pull/3564/
+Fixes: bsc#1232536
+
+When bash links against libreadline dynamically, the probe fails as the
+readline symbol is undefined until runtime. Fix this issue by adding a
+fallback probe that hooks directly into libreadline.
+
+Signed-off-by: Anthony Iliopoulos <ailiop@suse.com>
+[ pvorel: remove CHANGELOG.md change ]
+Signed-off-by: Petr Vorel <pvorel@suse.cz>
+Signed-off-by: Shung-Hsi Yu <shung-hsi.yu@suse.com>
+---
+ tools/bashreadline.bt | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/tools/bashreadline.bt b/tools/bashreadline.bt
+index 859ed6fe..30a1e706 100755
+--- a/tools/bashreadline.bt
++++ b/tools/bashreadline.bt
+@@ -15,13 +15,17 @@
+  * 06-Sep-2018	Brendan Gregg	Created this.
+  */
+ 
++config = { missing_probes = "ignore" }
++
+ BEGIN
+ {
+ 	printf("Tracing bash commands... Hit Ctrl-C to end.\n");
+ 	printf("%-9s %-6s %s\n", "TIME", "PID", "COMMAND");
+ }
+ 
+-uretprobe:/bin/bash:readline
++uretprobe:/bin/bash:readline,
++uretprobe:libreadline:readline
++/comm == "bash"/
+ {
+ 	time("%H:%M:%S  ");
+ 	printf("%-6d %s\n", pid, str(retval));
+-- 
+2.45.2
+

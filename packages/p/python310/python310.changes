@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov  4 21:49:20 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update sphinx-72.patch to include renaming :noindex: option to
+  :no-index: in Sphinx 7.2 (bsc#1232750).
+- While renaming drop fix-sphinx-72.patch.
+
+-------------------------------------------------------------------
 Fri Nov  1 21:38:45 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update CVE-2024-9287-venv_path_unquoted.patch according to the

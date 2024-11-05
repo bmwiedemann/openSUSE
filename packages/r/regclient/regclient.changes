@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Nov 04 19:50:32 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.7.2:
+  * Release v0.7.2
+  * Fix: Dedup warnings on image mod
+  * Fix: Race condition in the pqueue tests
+  * Fix: Add a warning if syft is not installed
+  * Chore: Update docker image base filesystem
+  * Chore: Remove OpenSSF scorecard and best practices
+  * Chore: Do not automatically assign myself
+  * Fix: Detect integer overflows on type conversion
+  * Feat: Add default host config
+  * Chore: Remove throttle package.
+  * Chore: Refactor to remove globals in regbot
+  * Chore: Refactoring to remove globals in regsync
+  * Fix: Prevent data race when reading blob and seeking
+  * Chore: Move throttle from config to reghttp
+  * Feat: Limit number of retries for a request
+  * Feat: Consolidate warnings
+  * Chore: Remove ReqPerSec in tests
+  * Feat: Support auth on redirect
+  * Refactor: Move logging into transport and rework backoff
+  * Refactor: Free up pqueue resources when last entry released
+  * Configure priority queue algorithm and reorder image copy steps
+  * Refactor: cleanup reghttp.Resp methods
+  * Refactor: remove time.Ticker for rate limiting
+  * Refactor: Remove reghttp.Resp interface
+  * Refactor: Remove digest calculation from reghttp
+  * Refactor: Remove multiple API support
+  * Feat: Add a priority queue for network requests
+  * Chore: Update staticcheck and fix linter warnings for Go 1.23
+  * Fix: Lookup referrers when registry does not give digest with
+    head
+  * Fix: Update GHA output generating steps
+
+-------------------------------------------------------------------
 Sun Aug 04 07:24:13 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.7.1:

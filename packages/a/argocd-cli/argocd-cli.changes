@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Nov 04 20:02:35 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.13.0:
+  Large update, please find the full changelog here:
+  https://build.opensuse.org/request/show/1220445
+  * Bump version to 2.13.0 (#20652)
+  * feat(cli): ignore tracking annotation on backup restore
+    (#18960)
+  * fix(cli): `admin settings rbac can` has inconsistency among
+    project resources (#17805)
+  * fix: notifications triggered from CLI fails for repo functions
+    (#19213)
+  * fix(cli): add optional password setting for headless redis
+    client (#19035) (#19039)
+  * fix(cli): Get Redis password from secret in `loadClusters()`
+    (#18951)
+  * fix(cli): skip printing summary when output mode is set to
+    json/yaml (issue: #18620) (#18797)
+  * test(cli): unstable unit test caused by unsorted array (#18722)
+  * feat(cli): add cmd to preview generated apps of appsets
+    (#10895) (#16781)
+
+-------------------------------------------------------------------
 Fri Oct 18 18:59:08 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.12.6:

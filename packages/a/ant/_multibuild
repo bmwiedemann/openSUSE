@@ -1,6 +1,6 @@
 <multibuild>
-  <package>ant-antlr</package>
-  <package>ant-junit</package>
-  <package>ant-junit5</package>
+  <flavor>antlr</flavor>
+  <flavor>junit</flavor>
+  <flavor>junit5</flavor>
 </multibuild>
 

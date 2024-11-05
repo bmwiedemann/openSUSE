@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Nov  4 11:25:41 UTC 2024 - Joan Torres <joan.torres@suse.com>
+
+- Update to tigervnc 1.14.1
+  * Default installation of native viewer can once again handle VncAuth
+  * Graphic acceleration now can now be disabled through the vncserver config file the same way as other features
+  * Command vncpasswd can again correctly update passwords
+  * Native viewer once again consider passwd file that contain more than one password valid
+  * Native viewer can once again connect to RealVNC servers
+  * Users of x0vncserver should no longer experience the mouse cursor moving to the upper left corner
+  * H264 encoding no longer causes crashing
+
+- Removed patches (no longer needed):
+  * u_tigervnc-Change-button-layout-in-ServerDialog.patch
+
+- Refreshed patches:
+  * n_tigervnc-Date-time.patch
+  * n_tigervnc-Dont-sign-java-client.patch
+  * n_tigervnc-reproducible-jar-mtime.patch
+  * u_tigervnc-Add-autoaccept-parameter.patch
+  * u_tigervnc-Build-libXvnc-as-separate-library.patch
+  * u_tigervnc-Ignore-epipe-on-write.patch
+
+-------------------------------------------------------------------
+Mon Nov  4 11:24:45 UTC 2024 - Joan Torres <joan.torres@suse.com>
+
+- Fix path on vncviewer desktop file. Use %use_update_alternative
+
+-------------------------------------------------------------------
 Mon Oct 28 08:49:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Require /usr/bin/dbus-launch insted of dbus-1-x11: Do not rely on

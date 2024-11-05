@@ -16,18 +16,19 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           regclient
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        OCI Registry Client in Go and tooling using those libraries
 License:        Apache-2.0
 URL:            https://github.com/regclient/regclient
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.22
+BuildRequires:  bash-completion
+BuildRequires:  fish
 BuildRequires:  git
+BuildRequires:  go >= 1.22
+BuildRequires:  zsh
 
 %description
 Client interface for the registry API. This packages includes regctl for a
@@ -99,8 +100,8 @@ do
     %{buildroot}/%{_bindir}/${executable} completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/${executable}.fish
 
     # create the zsh completion file
-    mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d/
-    %{buildroot}/%{_bindir}/${executable} completion zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_${executable}
+    mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
+    %{buildroot}/%{_bindir}/${executable} completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_${executable}
 
 done
 
@@ -119,23 +120,18 @@ done
 %{_bindir}/regsync
 
 %files -n %{name}-bash-completion
-%dir %{_datarootdir}/bash-completion/completions/
 %{_datarootdir}/bash-completion/completions/regbot
 %{_datarootdir}/bash-completion/completions/regctl
 %{_datarootdir}/bash-completion/completions/regsync
 
 %files -n %{name}-fish-completion
-%dir %{_datarootdir}/fish
-%dir %{_datarootdir}/fish/vendor_completions.d
 %{_datarootdir}/fish/vendor_completions.d/regbot.fish
 %{_datarootdir}/fish/vendor_completions.d/regctl.fish
 %{_datarootdir}/fish/vendor_completions.d/regsync.fish
 
 %files -n %{name}-zsh-completion
-%defattr(-,root,root)
-%dir %{_datarootdir}/zsh_completion.d/
-%{_datarootdir}/zsh_completion.d/_regbot
-%{_datarootdir}/zsh_completion.d/_regctl
-%{_datarootdir}/zsh_completion.d/_regsync
+%{_datarootdir}/zsh/site-functions/_regbot
+%{_datarootdir}/zsh/site-functions/_regctl
+%{_datarootdir}/zsh/site-functions/_regsync
 
 %changelog

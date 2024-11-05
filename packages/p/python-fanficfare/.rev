@@ -1463,4 +1463,16 @@
     <comment></comment>
     <requestid>1205187</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>72cbe720eba9c89eda77edfc99f3840c</srcmd5>
+    <version>4.40.0</version>
+    <time>1730817670</time>
+    <user>anag+factory</user>
+    <comment>factory
+
+Another attempt to upgrade Python-fanficfare, but I have my doubts.
+
+(🤖: Submission of python-fanficfare via https://src.opensuse.org/pool/python-fanficfare/pulls/4 by mcepl)</comment>
+    <requestid>1221255</requestid>
+  </revision>
 </revisionlist>

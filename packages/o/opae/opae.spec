@@ -44,6 +44,7 @@ Patch4:         opae-libs-xfpga-fix-strnlen-argument.patch
 Patch5:         opae-fix-support-with-newer-spdlog.patch
 Patch6:         opae-disable-FORTIFY_SOURCE.patch
 Patch7:         Gcc-13-2858.patch
+Patch8:         gcc14-fixes.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  boost-devel
 BuildRequires:  cli11-devel

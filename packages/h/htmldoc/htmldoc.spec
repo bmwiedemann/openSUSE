@@ -25,7 +25,9 @@ Group:          Productivity/Publishing/HTML/Tools
 URL:            https://michaelrsweet.github.io/htmldoc/index.html
 Source:         https://github.com/michaelrsweet/htmldoc/releases/download/v%{version}/htmldoc-%{version}-source.tar.gz
 # CVE-2024-45508 [bsc#1230022], HTMLDOC before 1.9.19 has an out-of-bounds write in parse_paragraph in ps-pdf.cxx because of an attempt to strip leading whitespace from a whitespace-only node.
-Patch0:          htmldoc-CVE-2024-45508.patch
+Patch0:         htmldoc-CVE-2024-45508.patch
+# CVE-2024-46478 [bsc#1232380], buffer overflow when handling tabs through the parse_pre function (ps-pdf.cxx)
+Patch1:         htmldoc-CVE-2024-46478.patch
 BuildRequires:  cups-devel
 BuildRequires:  fltk-devel
 BuildRequires:  gcc-c++

@@ -243,7 +243,7 @@ Command line client for communication over D-Bus.
 Summary:        Qt 6 Tool used by Qt to generate documentation
 License:        GPL-3.0-only
 # qdoc hardcodes clang include paths: boo#1109367, QTBUG-70687
-%requires_eq    libclang%{_llvm_sonum}
+%requires_eq    libclang-cpp%{_llvm_sonum}
 
 %description qdoc
 Qt 6 Tool used by Qt to generate documentation.

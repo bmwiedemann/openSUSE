@@ -19,6 +19,7 @@
 %{?sle15_python_module_pythons}
 # from imp import load_source
 %global skip_python312 1
+%global skip_python313 1
 %define packagename sat-stac
 Name:           python-sat-stac
 Version:        0.4.1

@@ -4691,4 +4691,14 @@ bsc#1216656</comment>
     https://libvirt.org/news.html#v10-9-0-2024-11-01</comment>
     <requestid>1220116</requestid>
   </revision>
+  <revision rev="406" vrev="2">
+    <srcmd5>a68fdbbe206486f957c792ec09488106</srcmd5>
+    <version>10.9.0</version>
+    <time>1730817575</time>
+    <user>anag+factory</user>
+    <comment>- json: do not call json_tokener_free with NULL
+  Fixes potential SEGV in libvirt-nss module
+  boo#1232726</comment>
+    <requestid>1221257</requestid>
+  </revision>
 </revisionlist>

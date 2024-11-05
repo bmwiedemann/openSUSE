@@ -163,4 +163,12 @@
   * fix: aiohttp 3.9 \_writer can't await</comment>
     <requestid>1128741</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>eb2f80a7bcd0c2e9d91003254a7a02cf</srcmd5>
+    <version>0.7.6</version>
+    <time>1730817585</time>
+    <user>anag+factory</user>
+    <comment>- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1221236</requestid>
+  </revision>
 </revisionlist>

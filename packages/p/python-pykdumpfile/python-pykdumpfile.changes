@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  5 08:12:24 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Avoid using requires_eq, which after the last modifications
+  conflicts with python singlespec (order of expansion).
+
+-------------------------------------------------------------------
 Tue Nov 21 06:42:26 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
 
 - Update to 0.5.4

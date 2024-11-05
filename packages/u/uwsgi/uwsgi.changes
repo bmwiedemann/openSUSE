@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Oct 29 17:46:07 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.28 (bsc#1222332, CVE-2024-24795):
+  * Bit more friendly log messages
+  * Add more integration tests
+  * Fix static library not found install error on conda
+  * pyuwsgi: avoid interleaving pywsgi threadstate
+  * Fix gracefully_kill_them_all with running requests
+  * Fix –catch-exceptions causing a segfault in Python 3.5+
+  * plugins/php: Add support for uwsgi.disconnect() function
+  * plugins/python: use PyOS_*Fork stable API functions on 3.7+
+  * core/uwsgi: set enable threads by default
+  * plugins/python: fix compilation with Python 3.13
+  * use pipe in gracefully_kill() to stop worker loop
+  * port pypy plugin to python3
+  * add some integrations tests
+  * apache2/mod_proxy_uwsgi: let httpd handle CL/TE for
+    non-http handlers CVE-2024-24795
+  * remove race-condition over termination of uWSGI process
+    when using need-app and lazy-apps (Hanan .T)
+  * fix 32-bit compilation with GCC14 (Rosen Penev)
+  * uwsgiconfig: get compiler version with -dumpfullversion
+  * Fix uwsgi_regexp_match() with pcre2
+- drop uwsgi-93d07ec38b31.patch (upstream)
+
+-------------------------------------------------------------------
 Thu Jul 25 16:31:34 UTC 2024 - Martin Jambor <mjambor@suse.com>
 
 - Added a backport of uwsgi-93d07ec38b31.patch to fix a type
@@ -89,7 +115,7 @@ Fri Jan  6 20:36:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
   * fix memory corruption in uwsgi_cache
   * Fix segfault from GEVENT_SWITCH
   * Support php 8.1
-  * Use parenthesis in print() statement 
+  * Use parenthesis in print() statement
 
 -------------------------------------------------------------------
 Tue Dec 13 19:44:00 UTC 2022 - sven@uebelacker.net
@@ -167,7 +193,7 @@ Thu Nov 26 18:51:29 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update 2.0.19.1:
   * Reverted CGI chunked encoding support
-  * Fixed bug with WSGI responses returning 
+  * Fixed bug with WSGI responses returning
   * Update travis to xenial (Terence D. Honles)
   * Fix segfault in logsocket plugin (Riccardo Magliocchetti, #2010)
   * Backport Coverity fixes from master (Riccardo Magliocchetti)
@@ -451,7 +477,7 @@ Wed Jun  8 18:53:26 UTC 2016 - buschmann23@opensuse.org
 - Update to 2.0.13.1:
   * Fixed support for python 2.5 and python 2.6
   * Fixed support for older glibc
-  * Reverted EPOLLEXCLUSIVE patch, requires more investigation 
+  * Reverted EPOLLEXCLUSIVE patch, requires more investigation
 
 -------------------------------------------------------------------
 Thu May 12 04:43:00 UTC 2016 - jfunk@funktronics.ca
@@ -514,7 +540,7 @@ Fri Nov  6 17:33:31 UTC 2015 - buschmann23@opensuse.org
     * fixed http-socket parser state after harakiri
     * fixed threaded request logger
     * fixed fastrouter subscriptions modifiers
-    * fixed alarm backlog 
+    * fixed alarm backlog
 
 -------------------------------------------------------------------
 Sat Sep 26 17:39:41 UTC 2015 - jfunk@funktronics.ca
@@ -565,7 +591,7 @@ Sat Sep 26 17:39:41 UTC 2015 - jfunk@funktronics.ca
 -------------------------------------------------------------------
 Wed Aug 12 11:10:35 UTC 2015 - dvaleev@suse.com
 
-- Don't build v8 plugin for PowerPC 
+- Don't build v8 plugin for PowerPC
 
 -------------------------------------------------------------------
 Sun Jun 28 18:10:21 UTC 2015 - jfunk@funktronics.ca
@@ -867,7 +893,7 @@ Sun Mar 16 18:00:35 UTC 2014 - jfunk@funktronics.ca
     * fixed end-for and end-if
     * fixed loop in internal-routing response chain
     * fixed pypy execute_source usage
-    * logpipe: Don't setsid() twice (credits: INADA Naoki) 
+    * logpipe: Don't setsid() twice (credits: INADA Naoki)
   * New features and improvements
     * CGI plugin
       * The plugin has been improved to support streaming
@@ -1025,7 +1051,7 @@ Changes from 2.0.0:
 Sun Nov 10 20:06:51 UTC 2013 - jfunk@funktronics.ca
 
 - Update to 1.9.19:
-  * This release starts the 'hardening' cycle for uWSGI 2.0 (scheduled for the 
+  * This release starts the 'hardening' cycle for uWSGI 2.0 (scheduled for the
     end of december 2013). The metrics subsystem was the last piece missing
     and this version (after 1 year of analysis) finally includes it. During
     the following 2 months we will start deprecating features or plugins that
@@ -1383,7 +1409,7 @@ Mon Sep 23 18:47:59 UTC 2013 - jfunk@funktronics.ca
 -------------------------------------------------------------------
 Fri Sep 20 15:06:48 UTC 2013 - dvaleev@suse.com
 
-- enable v8 conditionally (enables build for powerpc and s390) 
+- enable v8 conditionally (enables build for powerpc and s390)
 
 -------------------------------------------------------------------
 Thu Sep  5 18:43:14 CEST 2013 - mls@suse.de

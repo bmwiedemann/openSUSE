@@ -22,7 +22,7 @@
 %endif
 
 Name:           nfs-utils
-Version:        2.6.4
+Version:        2.8.1
 Release:        0
 Summary:        Support Utilities for Kernel nfsd
 License:        GPL-2.0-or-later
@@ -42,17 +42,6 @@ Source25:       rpc-svcgssd.options.conf
 Source26:       nfs.conf
 Source27:       nfs-kernel-server.tmpfiles.conf
 Patch0:         nfs-utils-1.0.7-bind-syntax.patch
-Patch1:         0001-exportfs-remove-warning-if-neither-subtree_check-or-.patch
-Patch2:         0002-conffile-don-t-report-error-from-conf_init_file.patch
-Patch3:         0003-conffile-allow-usr-etc-to-provide-any-config-files-e.patch
-Patch4:         0004-fsidd-call-anonymous-sockets-by-their-name-only-don-.patch
-# PATCH-FIX-UPSTREAM: fix build against libtirpc 1.3.5
-Patch5:         0001-gssd-revert-commit-a5f3b7ccb01c.patch
-Patch6:         0002-gssd-revert-commit-513630d720bd.patch
-Patch7:         0003-gssd-switch-to-using-rpc_gss_seccreate.patch
-Patch8:         0004-gssd-handle-KRB5_AP_ERR_BAD_INTEGRITY-for-machine-cr.patch
-Patch9:         0005-gssd-handle-KRB5_AP_ERR_BAD_INTEGRITY-for-user-crede.patch
-Patch10:        0006-configure-check-for-rpc_gss_seccreate.patch
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
@@ -66,9 +55,11 @@ BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libevent)
 BuildRequires:  pkgconfig(libkeyutils)
+BuildRequires:  pkgconfig(libnl-3.0)
 BuildRequires:  pkgconfig(libtirpc)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(mount)
+BuildRequires:  pkgconfig(readline)
 BuildRequires:  pkgconfig(sqlite3)
 Suggests:       python-base
 %{?systemd_ordering}
@@ -375,6 +366,7 @@ fi
 %{_sbindir}/rpc.mountd
 %{_sbindir}/rpc.nfsd
 %{_sbindir}/nfsdcltrack
+%{_sbindir}/nfsdctl
 %{_sbindir}/nfsref
 %attr(0755,root,root) %{_sbindir}/nfsdclddb
 %attr(0755,root,root) %{_sbindir}/nfsdclnts
@@ -386,6 +378,7 @@ fi
 %{_mandir}/man8/nfsref.8%{ext_man}
 %{_mandir}/man8/rpc.mountd.8%{ext_man}
 %{_mandir}/man8/rpc.nfsd.8%{ext_man}
+%{_mandir}/man8/nfsdctl.8%{ext_man}
 %{_mandir}/man8/nfsdcltrack.8%{ext_man}
 %config(noreplace) %{_localstatedir}/lib/nfs/etab
 %config(noreplace) %{_localstatedir}/lib/nfs/rmtab

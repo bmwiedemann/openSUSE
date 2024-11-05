@@ -320,4 +320,12 @@
     <comment>Qt 6.8.0 (forwarded request 1206590 from krop)</comment>
     <requestid>1207635</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>e70c404874c43e3b055123feb1d48d0f</srcmd5>
+    <version>6.8.0</version>
+    <time>1730817635</time>
+    <user>anag+factory</user>
+    <comment>- Fix qdoc runtime dependency</comment>
+    <requestid>1220558</requestid>
+  </revision>
 </revisionlist>

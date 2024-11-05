@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov  4 11:08:29 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.8.4:
+  * Fix Resolver uses nameserver commented out in /etc/resolv.conf
+  * Added RESINFO rrtype
+  * Added WALLET rrtype
+  * Added NXNAME rrtype
+  * Fix static code analysis findings, and developer visible fixes
+  * improve 'next-label' algorithm in ldns-walk
+  * Add functions to extract RFC 8914 extended errors
+  * Build system fixes and fixes for dependencies
+- upstreamed, droped: ldns-swig-4.2.patch, ldns-swig-32bit.patch
+- ldns-1.8.4-swig-3.4.0.patch: fix build with Swig 3.4.0 [boo#1231584]
+
+-------------------------------------------------------------------
 Wed Jul 10 13:43:44 UTC 2024 - Martin Jambor <mjambor@suse.com>
 
 - Added ldns-swig-4.2.patch and ldns-swig-32bit.patch in order to

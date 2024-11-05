@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov  3 15:05:58 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Add missing build require pallets_sphinx_themes
+  to fix build error under Leap.
+
+-------------------------------------------------------------------
 Tue Oct 22 11:58:39 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.2:

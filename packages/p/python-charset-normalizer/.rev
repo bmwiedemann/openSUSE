@@ -338,4 +338,12 @@
     changed when converting to utf-8 bytes.</comment>
     <requestid>1217078</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>55259261021c12cb965320f7f2236120</srcmd5>
+    <version>3.4.0</version>
+    <time>1730817583</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1221058</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Oct 28 20:35:07 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 7.0.2:
+  * rewritten SIMD acceleration logic and the search algorithm
+    selection decision logic to speed up pattern matching (the
+    actual speedup depends on the type of regex patterns specified)
+  * improved regex anchors and word boundary matching speed and
+    support
+  * fix option --xml pathnames with special characters, which are
+    unlikely to occur in pathnames, but aren't strictly forbidden
+  * updated option --hexdump with -ABC context hex lines before and
+    after a match
+  * the TUI now also uses the VISUAL environment variable if PAGER
+    is not set
+
+-------------------------------------------------------------------
 Wed Oct  9 05:24:34 UTC 2024 - jun wang <jgwang@suse.com>
 
 - disable AVX2/AVX512BW CPU extensions because of bsc#1222752

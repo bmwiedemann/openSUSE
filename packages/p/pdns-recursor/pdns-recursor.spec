@@ -26,7 +26,7 @@
 %endif
 
 Name:           pdns-recursor
-Version:        5.1.1
+Version:        5.1.2
 Release:        0
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -88,7 +88,6 @@ Source3:        vendor.tar.zst
 Source99:       series
 Patch1:         boost_context.patch
 Patch2:         cargo_build_fix.patch
-Patch3:         powerdns-5_1_1-2_fix-build-with-boost-1_86_0.patch
 #
 Summary:        Modern, advanced and high performance recursing/non authoritative nameserver
 License:        GPL-2.0-or-later

@@ -2,17 +2,17 @@ Index: tigervnc-1.12.0/java/com/tigervnc/rfb/CSecurityTLS.java
 ===================================================================
 --- tigervnc-1.12.0.orig/java/com/tigervnc/rfb/CSecurityTLS.java
 +++ tigervnc-1.12.0/java/com/tigervnc/rfb/CSecurityTLS.java
-@@ -66,6 +66,9 @@ public class CSecurityTLS extends CSecur
+@@ -66,6 +66,9 @@ public class CSecurityTLS extends CSecurity {
    public static StringParameter X509CRL
    = new StringParameter("X509CRL",
                          "X509 CRL file", "", Configuration.ConfigurationObject.ConfViewer);
 +  public static StringParameter x509autoaccept
 +  = new StringParameter("x509autoaccept",
 +                        "X509 Certificate SHA-1 fingerprint", "", Configuration.ConfigurationObject.ConfViewer);
-   public static UserMsgBox msg;
  
    private void initGlobal()
-@@ -85,6 +88,7 @@ public class CSecurityTLS extends CSecur
+   {
+@@ -84,6 +87,7 @@ public class CSecurityTLS extends CSecurity {
      setDefaults();
      cafile = X509CA.getData();
      crlfile = X509CRL.getData();
@@ -20,15 +20,15 @@ Index: tigervnc-1.12.0/java/com/tigervnc/rfb/CSecurityTLS.java
    }
  
    public static String getDefaultCA() {
-@@ -278,6 +282,7 @@ public class CSecurityTLS extends CSecur
+@@ -277,6 +281,7 @@ public class CSecurityTLS extends CSecurity {
  			      "do you want to continue?"))
            throw new AuthFailureException("server certificate has expired");
        }
 +      String thumbprint = getThumbprint(cert);
-       File vncDir = new File(FileUtils.getVncHomeDir());
+       File vncDir = new File(FileUtils.getVncStateDir());
        if (!vncDir.exists()) {
          try {
-@@ -337,6 +342,9 @@ public class CSecurityTLS extends CSecur
+@@ -336,6 +341,9 @@ public class CSecurityTLS extends CSecurity {
          store_pubkey(dbPath, client.getServerName().toLowerCase(), pk);
        } catch (java.lang.Exception e) {
          if (e.getCause() instanceof CertPathBuilderException) {
@@ -38,7 +38,7 @@ Index: tigervnc-1.12.0/java/com/tigervnc/rfb/CSecurityTLS.java
            vlog.debug("Server host not previously known");
            vlog.debug(info);
            String text =
-@@ -524,7 +532,7 @@ public class CSecurityTLS extends CSecur
+@@ -522,7 +530,7 @@ public class CSecurityTLS extends CSecurity {
    private SSLEngineManager manager;
    private boolean anon;
  

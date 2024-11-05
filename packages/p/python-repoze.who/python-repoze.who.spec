@@ -1,7 +1,7 @@
 #
 # spec file for package python-repoze.who
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,7 @@
 
 %global modname repoze.who
 %{?sle15_python_module_pythons}
+%global skip_python313 1
 Name:           python-repoze.who
 Version:        3.0.0
 Release:        0

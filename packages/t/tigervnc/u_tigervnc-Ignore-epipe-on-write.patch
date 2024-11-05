@@ -9,17 +9,17 @@ Index: tigervnc-1.13.1/common/rdr/FdOutStream.cxx
 ===================================================================
 --- tigervnc-1.13.1.orig/common/rdr/FdOutStream.cxx
 +++ tigervnc-1.13.1/common/rdr/FdOutStream.cxx
-@@ -128,8 +128,12 @@ size_t FdOutStream::writeFd(const void*
+@@ -133,8 +133,12 @@ size_t FdOutStream::writeFd(const uint8_t* data, size_t length)
  #endif
-   } while (n < 0 && (errno == EINTR));
+   } while (n < 0 && (errorNumber == EINTR));
  
 -  if (n < 0)
--    throw SystemException("write", errno);
+-    throw SystemException("write", errorNumber);
 +  if (n < 0) {
-+    if(errno == EPIPE)
++    if (errorNumber == EPIPE)
 +      n = length; // Ignore EPIPE and fake successfull write, it doesn't matter that we are writing to closed socket, we will find out once we try to read from it.
 +    else
-+      throw SystemException("write", errno);
++      throw SystemException("write", errorNumber);
 +  }
  
    gettimeofday(&lastWrite, NULL);

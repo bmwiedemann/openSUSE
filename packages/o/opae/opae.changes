@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov  5 06:33:26 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Add gcc14-fixes.patch for GCC14 support
+
+-------------------------------------------------------------------
 Mon Feb 26 12:39:53 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

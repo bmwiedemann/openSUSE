@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov  4 12:01:45 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Fix qdoc runtime dependency
+
+-------------------------------------------------------------------
 Wed Sep  4 20:09:38 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.15+kde3, rebased upstream:

@@ -11,7 +11,7 @@ Index: tigervnc-1.13.1/java/CMakeLists.txt
 ===================================================================
 --- tigervnc-1.13.1.orig/java/CMakeLists.txt
 +++ tigervnc-1.13.1/java/CMakeLists.txt
-@@ -154,15 +154,6 @@ add_custom_command(OUTPUT VncViewer.jar
+@@ -163,18 +163,6 @@ add_custom_command(OUTPUT VncViewer.jar
      com/jcraft/jsch/jce/*.class
      com/jcraft/jsch/*.class
      com/tigervnc/vncviewer/*.png
@@ -21,9 +21,12 @@ Index: tigervnc-1.13.1/java/CMakeLists.txt
 -    -DJAVA_KEYSTORE=${JAVA_KEYSTORE}
 -    -DJAVA_KEYSTORE_TYPE=${JAVA_KEYSTORE_TYPE}
 -    -DJAVA_STOREPASS=${JAVA_STOREPASS}
+-    -DJAVA_PKCS11_PROVIDER_CLASS=${JAVA_PKCS11_PROVIDER_CLASS}
+-    -DJAVA_PKCS11_PROVIDER_ARG=${JAVA_PKCS11_PROVIDER_ARG}
 -    -DJAVA_KEYPASS=${JAVA_KEYPASS}
 -    -DJAVA_KEY_ALIAS=${JAVA_KEY_ALIAS}
 -    -DJAVA_TSA_URL=${JAVA_TSA_URL}
+-    -DJAVA_CERT_CHAIN=${JAVA_CERT_CHAIN}
 -    -P ${SRCDIR}/cmake/SignJar.cmake)
 +    com/tigervnc/vncviewer/tigervnc.ico)
  

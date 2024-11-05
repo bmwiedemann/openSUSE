@@ -45,6 +45,8 @@ Patch3:         0001-Compiler-Wrap-raw-string-literals-in-QStringLiteral-.patch
 Patch4:         0001-QQuickItemView-fix-crash-with-zero-size-SwipeView-th.patch
 # PATCH-FIX-UPSTREAM
 Patch5:         0001-QQuickAccessibleAttached-Let-implicit-names-work-whe.patch
+# PATCH-FIX-UPSTREAM
+Patch6:         0001-QQuickItem-map-To-From-Item-Account-for-not-having-a.patch
 BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base

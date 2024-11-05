@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Oct 27 12:03:20 UTC 2024 - Alexandru Gabriel Bradatan <alex.bradatan85@yahoo.it>
+
+- Update to 3.1.0
+  * New more condensed output for most of the tasks
+  * Allow running the MOK certificate generation as a standalone
+    command (Nvidia / Gnome Software integration)
+  * Install kernel-install drop-in to /usr/lib instead of /etc
+  * Remove modules.weakdep as part of the cleanup
+  * Allow setting the maximum number of parallel jobs in
+    /etc/dkms/framework.conf
+- Update to 3.1.1
+  * Remove last remnants of log_action_msg from
+    dkms_autoinstaller.in
+  * Drop GNU/kFreeBSD
+  * Move local to one var per line and init on seperate line
+  * Do not print "terminated" message (issue #450)
+  * Update tests
+  * Fix passing multiple kernel versions
+
+-------------------------------------------------------------------
 Thu Mar  7 10:54:04 UTC 2024 - Alexandru Gabriel Bradatan <alex.bradatan85@yahoo.it>
 
 - Update to 3.0.13

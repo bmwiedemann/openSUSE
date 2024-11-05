@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Oct 29 10:05:55 UTC 2024 - Petr Vorel <pvorel@suse.cz>
+
+- Update to version 2.8.1
+  - https://lore.kernel.org/linux-nfs/4a86eea3-973e-4535-8aa5-f3b8b5f7934d@redhat.com/
+  - https://kernel.org/pub/linux/utils/nfs-utils/2.8.1/2.8.1-Changelog
+  - Add new binary nfsdctl
+  - The default number of nfsd threads is now 16 instead of 8
+- Removed patchs from previous releases
+  - 0001-exportfs-remove-warning-if-neither-subtree_check-or-.patch
+  - 0002-conffile-don-t-report-error-from-conf_init_file.patch
+  - 0003-conffile-allow-usr-etc-to-provide-any-config-files-e.patch
+  - 0004-fsidd-call-anonymous-sockets-by-their-name-only-don-.patch
+  - 0001-gssd-revert-commit-a5f3b7ccb01c.patch
+  - 0002-gssd-revert-commit-513630d720bd.patch
+  - 0003-gssd-switch-to-using-rpc_gss_seccreate.patch
+  - 0004-gssd-handle-KRB5_AP_ERR_BAD_INTEGRITY-for-machine-cr.patch
+  - 0005-gssd-handle-KRB5_AP_ERR_BAD_INTEGRITY-for-user-crede.patch
+  - 0006-configure-check-for-rpc_gss_seccreate.patch
+- Turn nfs-utils-1.0.7-bind-syntax.patch to git patch (bug reference,
+  easier to refresh via git, likely it can be now removed)
+- Add BuildRequires libnl-3.0, readline
+
+-------------------------------------------------------------------
 Tue Aug 20 20:21:14 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add 0001-gssd-revert-commit-a5f3b7ccb01c.patch,

@@ -16,27 +16,26 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
-%define archive_name sealed-secrets
-
 Name:           kubeseal
-Version:        0.27.1
+Version:        0.27.2
 Release:        0
 Summary:        CLI for encrypting secrets to SealedSecrets
 License:        Apache-2.0
 URL:            https://github.com/bitnami-labs/sealed-secrets
-Source:         %{archive_name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  go >= 1.22
 
 %description
 Problem: "I can manage all my K8s config in git, except Secrets."
 
-Solution: Encrypt your Secret into a SealedSecret, which is safe to store - even to a public repository. The SealedSecret can be decrypted only by the controller running in the target cluster and nobody else (not even the original author) is able to obtain the original Secret from the SealedSecret.
+Solution: Encrypt your Secret into a SealedSecret, which is safe to store -
+even to a public repository. The SealedSecret can be decrypted only by the
+controller running in the target cluster and nobody else (not even the original
+author) is able to obtain the original Secret from the SealedSecret.
 
 %prep
-%autosetup -p 1 -a 1 -n %{archive_name}-%{version}
+%autosetup -p 1 -a 1
 
 %build
 go build \

@@ -1,0 +1,54 @@
+commit b7d93f997338039212e6ccc2edb18afb0b5381fb
+Author: Nicolas Morey <nmorey@suse.com>
+Date:   Tue Nov 5 07:28:26 2024 +0100
+
+    gcc14 fixes
+    
+    - error: 'calloc' sizes specified with 'sizeof' in the earlier argument and not in the later argument [-Werror=calloc-transposed-args]
+    
+    Signed-off-by: Nicolas Morey <nmorey@suse.com>
+
+diff --git opae-libs/plugins/xfpga/metrics/metrics_utils.c opae-libs/plugins/xfpga/metrics/metrics_utils.c
+index a62d2aa3f664..5920a7cb046d 100644
+--- opae-libs/plugins/xfpga/metrics/metrics_utils.c
++++ opae-libs/plugins/xfpga/metrics/metrics_utils.c
+@@ -692,7 +692,7 @@ fpga_result get_bmc_metrics_values(fpga_handle handle,
+ 	}
+ 
+ 	if (_handle->_bmc_metric_cache_value == NULL) {
+-		_handle->_bmc_metric_cache_value = calloc(sizeof(struct _fpga_bmc_metric), num_sensors);
++	    _handle->_bmc_metric_cache_value = calloc(num_sensors, sizeof(struct _fpga_bmc_metric));
+ 		if (_handle->_bmc_metric_cache_value == NULL) {
+ 			OPAE_ERR("Failed to allocate memory");
+ 			result = FPGA_NO_MEMORY;
+diff --git tools/fpgametrics/fpgametrics.c tools/fpgametrics/fpgametrics.c
+index e6f025223fd9..34c6f2fef6aa 100644
+--- tools/fpgametrics/fpgametrics.c
++++ tools/fpgametrics/fpgametrics.c
+@@ -230,7 +230,7 @@ int main(int argc, char *argv[])
+ 	ON_ERR_GOTO(res, out_close, "get num of metrics");
+ 	printf("\n\n ------Number of Metrics Discovered = %ld ------- \n\n\n", num_metrics);
+ 
+-	metric_info = calloc(sizeof(struct fpga_metric_info), num_metrics);
++	metric_info = calloc(num_metrics, sizeof(struct fpga_metric_info));
+ 	if (metric_info == NULL) {
+ 		printf(" Failed to allocate memroy \n");
+ 		res = FPGA_NO_MEMORY;
+@@ -240,7 +240,7 @@ int main(int argc, char *argv[])
+ 	res = fpgaGetMetricsInfo(fpga_handle, metric_info, &num_metrics);
+ 	ON_ERR_GOTO(res, out_close, "get num of metrics info");
+ 
+-	id_array = calloc(sizeof(uint64_t), num_metrics);
++	id_array = calloc(num_metrics, sizeof(uint64_t));
+ 	if (id_array == NULL) {
+ 		printf(" Failed to allocate memroy \n");
+ 		res = FPGA_NO_MEMORY;
+@@ -262,7 +262,7 @@ int main(int argc, char *argv[])
+ 		id_array[i] = i;
+ 	}
+ 
+-	metric_array = calloc(sizeof(struct fpga_metric), num_metrics);
++	metric_array = calloc(num_metrics, sizeof(struct fpga_metric));
+ 	if (metric_array == NULL) {
+ 		printf(" Failed to allocate memroy \n");
+ 		res = FPGA_NO_MEMORY;

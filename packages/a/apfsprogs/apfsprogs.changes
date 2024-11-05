@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Nov  4 21:25:23 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0~git511
+  * apfs-label: Fix build of shared code
+  * apfsck: Add cli option to specify a tier 2 device
+  * apfsck: Add support for empty fusion drives
+  * mkapfs: Add support for fusion drives
+  * mkapfs: Remove obsolete comments about ip bitmaps
+  * mkapfs: Rework bash tests to use an array of sizes
+  * mkapfs: Run tests on fusion drives as well
+  * apfsck: Remove old comment on multiblock objects
+  * apfsck: Verify order of checkpoint mappings
+  * mkapfs: Allocate ephemeral objects on runtime
+  * Avoid sigbus during fusion drive tests
+  * mkapfs: Readjust image sizes for testing
+  * apfsck: Support wrapped ephemeral objects
+  * apfsck: Correct the ip bitmap list checks
+  * apfsck: Fix out-of-bounds write from last patch
+  * apfsck: Fix size checks for disks not used in full
+  * apfsck: Let the free ip bitmap list go backwards
+  * Replace exit(1) with exit(EXIT_FAILURE)
+    to improve code portablility (#15)
+
+-------------------------------------------------------------------
 Thu Oct  3 20:37:09 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0~git491

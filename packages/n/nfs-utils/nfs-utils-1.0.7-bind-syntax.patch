@@ -1,14 +1,21 @@
- support/export/export.c   |    2 
- support/include/misc.h    |    3 
- support/include/nfslib.h  |    1 
-================================================================================
+From 374a756bc6d372d242dbcc1178f9ac2f34e0ab32 Mon Sep 17 00:00:00 2001
+From: Petr Vorel <pvorel@suse.cz>
+Date: Tue, 29 Oct 2024 11:10:37 +0100
+Subject: [PATCH] exports: Ignore mount --bind
+References: bcs#229583, https://bugzilla.suse.com/attachment.cgi?id=110519&action=diff
+Upstream-status: SUSE specific workaround for nfs-utils 1.0.7 (SLES10-SP1), still needed?
+
+Signed-off-by: Olaf Kirch <okir@suse.com>
+Signed-off-by: Petr Vorel <pvorel@suse.cz>
 ---
- support/nfs/exports.c |    2 ++
+ support/nfs/exports.c | 2 ++
  1 file changed, 2 insertions(+)
 
+diff --git a/support/nfs/exports.c b/support/nfs/exports.c
+index a6816e60..b9143718 100644
 --- a/support/nfs/exports.c
 +++ b/support/nfs/exports.c
-@@ -684,6 +684,8 @@ bad_option:
+@@ -792,6 +792,8 @@ bad_option:
  		} else if (strncmp(opt, "replicas=", 9) == 0) {
  			ep->e_fslocmethod = FSLOC_REPLICA;
  			ep->e_fslocdata = strdup(opt+9);
@@ -17,3 +24,6 @@
  		} else if (strncmp(opt, "sec=", 4) == 0) {
  			active = parse_flavors(opt+4, ep);
  			if (!active)
+-- 
+2.45.2
+

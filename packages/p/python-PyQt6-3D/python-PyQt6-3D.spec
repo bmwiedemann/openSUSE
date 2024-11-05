@@ -45,8 +45,8 @@ BuildRequires:  cmake(Qt63DExtras)
 BuildRequires:  cmake(Qt63DInput)
 BuildRequires:  cmake(Qt63DLogic)
 BuildRequires:  cmake(Qt63DRender)
-%requires_ge    python-PyQt6
-%requires_ge    python-PyQt6-sip
+Requires:       python-PyQt6 >= %(rpm -q --whatprovides python3-PyQt6 --qf "%%{version}")
+Requires:       python-PyQt6-sip >= %(rpm -q --whatprovides python3-PyQt6-sip --qf "%%{version}")
 Provides:       python-qt3d-qt6 = %{version}-%{release}
 %python_subpackages
 

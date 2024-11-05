@@ -106,7 +106,7 @@ Requires:       appstream-provider
 Requires:       discover6 = %{version}
 # Technically libdiscover and not the backend implements AppStream support, but
 # it's useless without system package management
-%requires_eq    AppStream
+Requires:       AppStream
 Provides:       discover-backend-packagekit = %{version}
 Obsoletes:      discover-backend-packagekit < %{version}
 

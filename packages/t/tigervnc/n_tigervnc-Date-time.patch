@@ -64,8 +64,8 @@ Index: tigervnc-1.13.1/vncviewer/vncviewer.cxx
 -             "Built on: %s\n"
               "Copyright (C) 1999-%d TigerVNC Team and many others (see README.rst)\n"
               "See https://www.tigervnc.org for information on TigerVNC."),
--           PACKAGE_VERSION, BUILD_TIMESTAMP, 2022);
-+           PACKAGE_VERSION, 2022);
+-           PACKAGE_VERSION, BUILD_TIMESTAMP, 2024);
++           PACKAGE_VERSION, 2024);
  
    return buffer;
  }
@@ -73,9 +73,9 @@ Index: tigervnc-1.13.1/java/CMakeLists.txt
 ===================================================================
 --- tigervnc-1.13.1.orig/java/CMakeLists.txt
 +++ tigervnc-1.13.1/java/CMakeLists.txt
-@@ -22,12 +22,6 @@ set(JAVA_STOREPASS NOTFOUND CACHE STRING
- set(JAVA_KEYPASS NOTFOUND CACHE STRING "Password used to protect the private key of the specified keystore entry")
+@@ -25,12 +25,6 @@ set(JAVA_PKCS11_PROVIDER_ARG NOTFOUND CACHE STRING "Path to the PKCS11 security
  set(JAVA_TSA_URL NOTFOUND CACHE STRING "URL of Time Stamping Authority (TSA)")
+ set(JAVA_CERT_CHAIN NOTFOUND CACHE STRING "Path to CA certificate chain file")
  
 -if(NOT BUILD)
 -	STRING(TIMESTAMP BUILD "%Y%m%d" UTC)

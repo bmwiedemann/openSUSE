@@ -6808,4 +6808,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1232727</comment>
   </revision>
+  <revision rev="757" vrev="2">
+    <srcmd5>c53f7e21f3bec5943a923019fc4b4309</srcmd5>
+    <version>6.11.6</version>
+    <time>1730817554</time>
+    <user>anag+factory</user>
+    <comment>6.11.6 &amp; CONFIG_FB_DEVICE kept enabled &amp; other fixes; bugs: boo#1212947 bsc#1012628 bsc#1231825 bsc#1231832 bsc#1232727</comment>
+    <requestid>1220496</requestid>
+  </revision>
 </revisionlist>

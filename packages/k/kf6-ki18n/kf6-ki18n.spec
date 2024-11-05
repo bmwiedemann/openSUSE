@@ -42,6 +42,7 @@ BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_bugfix_version}
 BuildRequires:  python3
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 
 %description

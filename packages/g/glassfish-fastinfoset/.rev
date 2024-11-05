@@ -63,4 +63,12 @@
     <comment>This runs with java 8 just fine</comment>
     <requestid>1170839</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>649a1697318542a81fec3e6accdff3f6</srcmd5>
+    <version>1.2.15</version>
+    <time>1730817674</time>
+    <user>anag+factory</user>
+    <comment>Fix conflict/choice of providers</comment>
+    <requestid>1221261</requestid>
+  </revision>
 </revisionlist>

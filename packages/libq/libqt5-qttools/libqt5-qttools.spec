@@ -209,12 +209,7 @@ Provides:       libqt5-qtbase-doc = %{version}
 Obsoletes:      libqt5-qtbase-doc < %{version}
 # qdoc hardcodes clang include paths: boo#1109367, QTBUG-70687
 %global _clang_major_version %(printf %{pkg_version clang-devel} | cut -d. -f1)
-
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
-%requires_eq libclang%{_clang_major_version}
-%else
-%requires_eq clang%{_clang_major_version}
-%endif
+%requires_eq libclang-cpp%{_clang_major_version}
 
 %description doc
 Qt 5 tool used by Qt Developers to generate documentation for software projects.

@@ -68,7 +68,7 @@ HSpell, Enchant, ASpell and HUNSPELL.
 
 %package -n libKF5SonnetUi%{sonum}
 Summary:        KDE spell checking library
-%requires_ge    libKF5SonnetCore5
+Requires:       libKF5SonnetCore5 = %{version}
 %requires_ge    libQt5Gui5
 %requires_ge    libQt5Widgets5
 

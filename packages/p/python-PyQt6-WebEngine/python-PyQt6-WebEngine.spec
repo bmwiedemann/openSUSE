@@ -42,8 +42,8 @@ BuildRequires:  qt6-gui-private-devel
 BuildRequires:  cmake(Qt6WebEngineCore)
 BuildRequires:  cmake(Qt6WebEngineQuick)
 BuildRequires:  cmake(Qt6WebEngineWidgets)
-%requires_ge    python-PyQt6
-%requires_ge    python-PyQt6-sip
+Requires:       python-PyQt6 >= %(rpm -q --whatprovides python3-PyQt6 --qf "%%{version}")
+Requires:       python-PyQt6-sip >= %(rpm -q --whatprovides python3-PyQt6-sip --qf "%%{version}")
 Provides:       python-qtwebengine-qt6 = %{version}-%{release}
 # Mirror with qt6-webengine
 ExclusiveArch:  aarch64 x86_64 riscv64

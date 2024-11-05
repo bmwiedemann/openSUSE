@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov  4 21:30:35 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Fix conflict/choice of providers
+
+-------------------------------------------------------------------
 Thu Oct 31 08:12:15 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Remove bogus dependency on akka

@@ -1014,4 +1014,12 @@
     <comment>KDE Frameworks 5.116 (forwarded request 1173590 from krop)</comment>
     <requestid>1175185</requestid>
   </revision>
+  <revision rev="128" vrev="2">
+    <srcmd5>1f1b7b3f072a629e26c5c99952e0ea80</srcmd5>
+    <version>5.116.0</version>
+    <time>1730817632</time>
+    <user>anag+factory</user>
+    <comment>- Fix package dependencies</comment>
+    <requestid>1220545</requestid>
+  </revision>
 </revisionlist>

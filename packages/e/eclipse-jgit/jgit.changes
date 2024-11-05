@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov  4 21:23:22 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * jgit-bc-179.patch
+    + Allow building against bouncycastle 1.79
+
+-------------------------------------------------------------------
 Thu May 23 14:19:57 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Require hamcrest to avoid conflict of providers with hamcrest-core

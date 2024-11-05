@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 04 12:15:05 UTC 2024 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.651.gc186c6a8:
+  * fix(dm): remove 59-persistent-storage-dm.rules (bsc#1232063)
+
+-------------------------------------------------------------------
 Fri Sep 13 13:27:57 UTC 2024 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.648.g91732c01:

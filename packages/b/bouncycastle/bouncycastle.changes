@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Mon Nov  4 10:49:54 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.79:
+  * Defects Fixed:
+    - Leading zeroes were sometimes dropped from Ed25519 signatures
+      leading to verification errors in the PGP API.
+    - Default version string for Armored Output is now set correctly in 18on build.
+    - The Elephant cipher would fail on large messages.
+    - CMSSignedData.replaceSigners() would re-encode the digest algorithms
+      block, occassionally dropping ones where NULL had been previously
+      added as an algorithm parameter. The method now attempts to only use
+      the original digest algorithm identifiers.
+    - ERSInputStreamData would fail to generate the correct hash if
+      called a second time with a different hash algorithm.
+    - A downcast in the CrlCache which would cause FTP based CRLs to fail
+      to load has been removed.
+    - ECUtil.getNamedCurveOid() now trims curve names of excess space
+      before look up.
+    - The PhotonBeetle and Xoodyak digests did not reset properly after
+      a doFinal() call.
+    - Malformed AlgorithmIdentifiers in CertIDs could cause caching
+      issues in the OCSP cache.
+    - With Java 21 a provider service class will now be returned with
+      a null class name where previously a null would have been returned
+      for a service. This can cause a NullPointerException to be thrown
+      by the BC provider if a non-existant service is requested.
+    - CMS: OtherKeyAttribute.keyAttr now treated as optional.
+    - CMS: EnvelopedData and AuthEnvelopedData could calculate the wrong versions.
+    - The default version header for PGP armored output did not carry
+      the correct version string.
+    - In some situations the algorithm lookup for creating PGPDigestCalculators
+      would fail due to truncation of the algorithm name.
+  * Additional Features and Functionality:
+    - Object Identifiers have been added for ML-KEM, ML-DSA, and SLH-DSA.
+    - The PQC algorithms, ML-KEM, ML-DSA (including pre-hash), and SLH-DSA
+      (including pre-hash) have been added to the BC provider and the lightweight API.
+    - A new spec, ContextParameterSpec, has been added to support
+      signature contexts for ML-DSA and SLH-DSA.
+    - BCJSSE: Added support for security property
+      "jdk.tls.server.defaultDHEParameters" (disabled in FIPS mode).
+    - BCJSSE: Added support for signature_algorithms_cert configuration via
+      "org.bouncycastle.jsse.client.SignatureSchemesCert" and
+      "org.bouncycastle.jsse.server.SignatureSchemesCert" system properties
+      or BCSSLParameters property "SignatureSchemesCert".
+    - BCJSSE: Added support for boolean system property
+      "org.bouncycastle.jsse.fips.allowGCMCiphersIn12" (false by default).
+    - (D)TLS: Remove redundant verification of self-generated RSA signatures.
+    - CompositePrivateKeys now support the latest revision of the composite
+      signature draft.
+    - Delta Certificates now support the latest revision of the delta
+      certificate extension draft.
+    - A general KeyIdentifier class, encapsulating both PGP KeyID and the
+      PGP key fingerprint has been added to the PGP API.
+    - Support for the LibrePGP PreferredEncryptionModes signature subpacket
+      has been added to the PGP API.
+    - Support for Version 6 signatures, including salts, has been added to the PGP API.
+    - Support for the PreferredKeyServer signature supacket has been added to the PGP API.
+    - Support for RFC 9269, "Using KEMs in Cryptographic Message Syntax (CMS)",
+      has been added to the CMS API.
+    - Support for the Argon2 S2K has been added to the PGP API.
+    - The system property "org.bouncycastle.pemreader.lax" has been introduced
+      for situations where the BC PEM parsing is now too strict.
+    - The system property "org.bouncycastle.ec.disable_f2m" has been introduced
+      to allow F2m EC support to be disabled.
+  * Rebase bouncycastle-notests.patch
+
+-------------------------------------------------------------------
 Mon Apr 29 16:07:27 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version 1.78.1
@@ -17,6 +84,7 @@ Mon Apr 29 16:07:27 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 Mon Apr 29 06:39:43 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to version 1.78: [bsc#1223252, CVE-2024-30171]
+  [bsc#1224304, CVE-2024-30172] [bsc#1224299, CVE-2024-29857]
   * Security Advisories.
     - CVE-2024-29857: Importing an EC certificate with specially crafted
       F2m parameters can cause high CPU usage during parameter evaluation.

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov  1 15:27:43 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 4.40.0:
+  - Update Translations
+  - adapter_ficbooknet: Another site update,
+  - adapter_ficbooknet: Fixes for site changes,
+  - adapter_inkbunnynet: Add login for Get URLs from Page
+  - adapter_syosetucom: Fix for site changes,
+  - Change decode_emails default to true.
+  - adapter_deviantartcom: Site changes, new chapter text tag.
+
+-------------------------------------------------------------------
 Wed Oct  2 05:41:39 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 4.39.0:

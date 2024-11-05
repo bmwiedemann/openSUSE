@@ -45,11 +45,11 @@
 
 %if 0%{?sle_version} && 0%{?sle_version} < 160000
 # std::filesystem is supported since gcc8, but default gcc is 7
-BuildRequires:  gcc12
-BuildRequires:  gcc12-c++
-%define compiler_ver -12
+%if 0%{?sle_version} >= 150300
+%define force_gcc_version 12
 %else
-BuildRequires:  gcc-c++
+%define force_gcc_version 11
+%endif
 %endif
 
 %define services %{name}.service %{name}@.service %{?ixfrdist_services}
@@ -59,7 +59,7 @@ ExclusiveArch:  no-32bit-build
 %endif
 
 Name:           pdns
-Version:        4.9.1
+Version:        4.9.2
 Release:        0
 Summary:        Authoritative-only nameserver
 License:        GPL-2.0-only
@@ -72,12 +72,13 @@ Source10:       series
 Patch0:         pdns-4.0.3_allow_dacoverride_in_capset.patch
 # PATCH-FIX-OPENSUSE pdns-4.9.0-fix_boost.patch -- fix including boost headers with older releases
 Patch1:         pdns-4.9.0-fix_boost.patch
-Patch2:         powerdns-5_1_1-2_fix-build-with-boost-1_86_0.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  curl-devel
 BuildRequires:  flex
+BuildRequires:  gcc%{?force_gcc_version}
+BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  gdbm-devel
 BuildRequires:  libmysqlclient-devel
 BuildRequires:  libsodium-devel
@@ -271,8 +272,10 @@ This package holds the LMDB backend for pdns.
 %autosetup -n %{name}-%{version} -p1
 
 %build
-export CC=gcc%{?compiler_ver}
-export CXX=g++%{?compiler_ver}
+%if 0%{?force_gcc_version}
+export CC="gcc-%{?force_gcc_version}"
+export CXX="g++-%{?force_gcc_version}"
+%endif
 %configure \
   --docdir=%{_docdir}/%{name}/ \
   --disable-silent-rules \

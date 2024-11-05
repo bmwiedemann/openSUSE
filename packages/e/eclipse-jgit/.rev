@@ -159,4 +159,12 @@
     <comment>Fix conflict of providers on some distributions</comment>
     <requestid>1176499</requestid>
   </revision>
+  <revision rev="21" vrev="16">
+    <srcmd5>2b4fd2e0eb1e37d996fc1c2c068f6e3d</srcmd5>
+    <version>5.11.0</version>
+    <time>1730817672</time>
+    <user>anag+factory</user>
+    <comment>fix build with newer bouncycastle</comment>
+    <requestid>1221259</requestid>
+  </revision>
 </revisionlist>

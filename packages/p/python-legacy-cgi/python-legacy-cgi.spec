@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-legacy-cgi
 Version:        2.6.1
 Release:        0

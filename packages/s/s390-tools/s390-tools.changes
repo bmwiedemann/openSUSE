@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov  5 07:39:58 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Amended the *_configure scripts to update again the SUSE's specific file
+  '/boot/zipl/active_devices.txt' (bsc#1232474, bsc#1216257)
+  * ctc_configure
+  * dasd_configure
+  * qeth_configure
+  * zfcp_host_configure 
+
+-------------------------------------------------------------------
 Tue Oct  8 10:35:04 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 * Upgrade s390-tools to version 2.35 (jsc#PED-9591, jsc#PED-10303)

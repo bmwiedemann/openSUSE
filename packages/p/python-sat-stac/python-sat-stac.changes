@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 29 08:13:50 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- skip build on python313 as well
+
+-------------------------------------------------------------------
 Thu Mar 14 10:05:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - skip building for python312

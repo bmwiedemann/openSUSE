@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-puremagic
 Version:        1.28
 Release:        0

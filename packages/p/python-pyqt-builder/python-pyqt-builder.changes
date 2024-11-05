@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov  4 13:05:02 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Use pypi url for source
+- Update to 1.16.4
+  * Support for Windows on Arm for Qt6
+  * Support for Linux on Arm for Qt6
+1.16.3:
+  * Link to the stable SIP documentation
+  * missing multimedia libraries in Qt v6.7
+  * Added support for sub-wheels to pyqt-qt-wheel
+1.16.2:
+  * The links to the SIP documentation have been fixed.
+  * The ICU libraries were missing from the Linux Qt v6.7 wheels.
+
+-------------------------------------------------------------------
 Sun Apr 21 14:08:07 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.16.1

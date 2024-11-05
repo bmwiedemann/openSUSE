@@ -44,6 +44,14 @@ debug_mesg () {
     esac
 }
 
+add_cio_channel() {
+	echo "$* # ${DATE}" >> /boot/zipl/active_devices.txt
+}
+
+remove_cio_channel() {
+	[ -w /boot/zipl/active_devices.txt ] && sed -i -e "/^${1}/d" /boot/zipl/active_devices.txt
+}
+
 usage(){
   echo "Usage: ${0} <read channel> <write channel> <online> [<protocol>]"
   echo "	read/write channel = x.y.ssss where"
@@ -111,4 +119,10 @@ fi
 RC=${?}
 if [ ${RC} -ne 0 ]; then
   exit ${RC}
+fi
+
+if [ ${ON_OFF} == 1 ]; then
+  add_cio_channel "${CTC_READ_CHAN},${CTC_WRITE_CHAN}"
+else remove_cio_channel "${CTC_READ_CHAN}"
+     remove_cio_channel "${CTC_WRITE_CHAN}"
 fi

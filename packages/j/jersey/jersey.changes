@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov  4 21:29:39 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Fix conflict/choice of providers
+
+-------------------------------------------------------------------
 Wed Oct 30 07:53:13 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Build more modules since we have the dependencies

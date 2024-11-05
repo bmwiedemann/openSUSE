@@ -66,6 +66,8 @@ BuildRequires:  mvn(org.mockito:mockito-core)
 BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
 BuildRequires:  mvn(tech.units:indriya)
+#!BuildRequires: glassfish-jaxb-runtime
+Requires:       glassfish-jaxb-runtime
 %requires_eq    %{hunspell_library}
 %requires_ge    lucene-backward-codecs
 %requires_ge    lucene-core

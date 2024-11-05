@@ -920,4 +920,15 @@
   upstream PR gh#python/cpython!126301.</comment>
     <requestid>1220124</requestid>
   </revision>
+  <revision rev="52" vrev="4">
+    <srcmd5>756a60e2d2fb050a1e41cd255e89cb8e</srcmd5>
+    <version>3.10.15</version>
+    <time>1730817589</time>
+    <user>anag+factory</user>
+    <comment>- Update sphinx-72.patch to include renaming :noindex: option to
+  :no-index: in Sphinx 7.2 (bsc#1232750).
+- While renaming drop fix-sphinx-72.patch.
+</comment>
+    <requestid>1221276</requestid>
+  </revision>
 </revisionlist>

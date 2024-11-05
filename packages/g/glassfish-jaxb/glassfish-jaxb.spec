@@ -150,7 +150,10 @@ This package contains parent POM.
 %package runtime
 Summary:        JAXB Runtime
 Group:          Development/Libraries/Java
+Requires:       glassfish-fastinfoset
+Requires:       istack-commons-runtime
 Requires:       java-headless >= 1.8
+Requires:       stax-ex
 
 %description runtime
 JAXB (JSR 222) Reference Implementation
@@ -172,6 +175,8 @@ This package contains TXW parent POM.
 %package xjc
 Summary:        JAXB XJC
 Group:          Development/Libraries/Java
+Requires:       glassfish-dtd-parser
+Requires:       istack-commons-tools
 Requires:       java-headless >= 1.8
 
 %description xjc

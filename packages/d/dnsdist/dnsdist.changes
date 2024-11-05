@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov  5 01:50:12 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.9.7:
+  https://dnsdist.org/changelog.html#change-1.9.7
+- drop powerdns-5_1_1-2_fix-build-with-boost-1_86_0.patch included
+  in update
+
+-------------------------------------------------------------------
 Sun Sep 29 19:53:59 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 1.9.6:

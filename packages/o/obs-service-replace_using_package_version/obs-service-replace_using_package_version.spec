@@ -19,7 +19,7 @@
 %define service replace_using_package_version
 
 Name:           obs-service-%{service}
-Version:        0.0.9
+Version:        0.0.11
 Release:        0
 Summary:        An OBS service: Replaces a regex  with the version value of a package
 License:        GPL-3.0-or-later
@@ -29,8 +29,6 @@ Source0:        %{service}.py
 Source1:        %{service}.service
 Source2:        LICENSE
 BuildRequires:  sed
-# for the __python3 macro
-BuildRequires:  python-rpm-macros
 Requires:       python3-docopt
 Requires:       python3-rpm
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -47,15 +45,12 @@ cp %{S:1} .
 cp %{S:2} .
 
 %build
-sed -i "s|#!/usr/bin/env python3|#!/usr/bin/python3|g" %{service}.py
+# intentionally blank - nothing to do
 
 %install
 
 install -D -m 755 %{service}.py %{buildroot}%{_prefix}/lib/obs/service/%{service}
 install -D -m 644 %{service}.service %{buildroot}%{_prefix}/lib/obs/service/%{service}.service
-# Doing %%python3_fix_shebang_path old fashioned way for the backward compatibility
-sed -i "1s@#\\!.*python\S*@#\\!$(realpath %__python3)@" \
-    %{buildroot}%{_prefix}/lib/obs/service/%{service}
 
 %files
 %defattr(-,root,root)

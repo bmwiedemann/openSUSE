@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>835933</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>41badc945537a3029951d705f4530f76</srcmd5>
+    <version>2.03</version>
+    <time>1730817691</time>
+    <user>anag+factory</user>
+    <comment>- Add gcc14.patch</comment>
+    <requestid>1221282</requestid>
+  </revision>
 </revisionlist>

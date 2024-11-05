@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov  4 16:48:42 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix previous commit for static build on aarch64
+- Run %fdupes on man folder as suggested by rpmlint
+
+-------------------------------------------------------------------
+Mon Nov  4 09:42:18 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add -ffp-contract=off flag for aarch64 to avoid precision issues
+  https://github.com/scipy/scipy/issues/21475#issuecomment-2454203196
+
+-------------------------------------------------------------------
 Thu Jul  4 11:54:08 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add fix-lapack-testing.patch to fix tests

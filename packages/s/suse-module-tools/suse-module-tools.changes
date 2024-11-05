@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov  4 16:21:34 UTC 2024 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.53:
+  * udevrules: Add rule to set maximum readahead window
+    (jsc#PED-11154)
+
+-------------------------------------------------------------------
 Mon Sep 30 13:54:11 UTC 2024 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 16.0.52:

@@ -17,6 +17,7 @@
 
 
 %define skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-pydata-sphinx-theme
 Version:        0.15.4
 Release:        0
@@ -97,7 +98,7 @@ yarn install --offline
 
 # nodeenv generated with python3, no need to generate a different
 # nodeenv for each flavor
-python3 -m nodeenv --node=system --prebuilt --clean-src $PWD/.nodeenv
+python%python_bin_suffix -m nodeenv --node=system --prebuilt --clean-src $PWD/.nodeenv
 %pyproject_wheel
 
 %install

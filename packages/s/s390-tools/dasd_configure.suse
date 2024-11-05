@@ -43,6 +43,14 @@ debug_mesg () {
     esac
 }
 
+add_cio_channel() {
+	echo "$* # ${DATE}" >> /boot/zipl/active_devices.txt
+}
+
+remove_cio_channel() {
+	[ -w /boot/zipl/active_devices.txt ] && sed -i -e "/^${1}/d" /boot/zipl/active_devices.txt
+}
+
 usage(){
   echo "Usage: ${0} [-f -t <dasd_type> ] <ccwid> <online> [use_diag]"
   echo
@@ -155,6 +163,11 @@ elif [ ${ON_OFF} == 1 ]; then
       mesg "DASD ${CCW_CHAN_ID} is unformatted."
       exitcode=8
     fi
+fi
+
+if [ ${ON_OFF} == 1 ]; then
+  add_cio_channel "${CCW_CHAN_ID}"
+else remove_cio_channel "${CCW_CHAN_ID}"
 fi
 
 exit ${exitcode}

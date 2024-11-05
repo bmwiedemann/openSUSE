@@ -191,7 +191,7 @@ Patch19:        gh-78214-marshal_stabilize_FLAG_REF.patch
 # * gh#python/cpython#104163
 # * gh#python/cpython#104221
 # * gh#python/cpython#107246
-Patch21:        fix-sphinx-72.patch
+Patch21:        sphinx-72.patch
 # PATCH-FIX-UPSTREAM CVE-2023-52425-libexpat-2.6.0-backport.patch gh#python/cpython#117187 mcepl@suse.com
 # Make the test suite work with libexpat < 2.6.0
 Patch22:        CVE-2023-52425-libexpat-2.6.0-backport.patch

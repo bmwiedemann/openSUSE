@@ -23,7 +23,7 @@
 %bcond_without fish
 %endif
 Name:           ugrep
-Version:        6.5.0
+Version:        7.0.2
 Release:        0
 Summary:        Universal grep: a feature-rich grep implementation with focus on speed
 License:        BSD-3-Clause
@@ -45,13 +45,6 @@ Obsoletes:      ugrep-indexer < 1.0.0
 # the bzip3 version seems to old, the tests break with decompression errors
 %if 0%{?suse_version} > 1599
 BuildRequires:  pkgconfig(bzip3)
-%endif
-# lib/matcher_avx2.cpp is selected based on a runtime AVX2 check
-# lib/matcher_avx512bw.cpp is selected based on runtime AVX512BW check
-# Make OBS select an x86_64-v3 build host to reproducibly enable usage
-# without cross-compiling
-%ifarch x86_64
-#!BuildConstraint: hardware:cpu:flag x86-64-v3
 %endif
 
 %description
