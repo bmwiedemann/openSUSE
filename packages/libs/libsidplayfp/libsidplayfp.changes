@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Nov  3 19:36:00 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.11.0
+  * Removed buffer size limit from mixer.
+  * residfp: avoid quantization noise.
+  * residfp: implemented 6581 DC drift.
+  * residfp: properly adjusted 8580 Vref value.
+
+-------------------------------------------------------------------
 Sun Oct 20 20:14:40 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.10.1
