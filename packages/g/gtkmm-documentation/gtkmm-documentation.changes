@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Nov  4 11:24:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.12.0:
+  + dropdown/complex example: Add a missing
+    signal_unbind().connect().
+  + book/buildapp/step6, step7, step8, step9 and book/searchbar
+    examples: Use Gtk::SearchEntry2 if gtkmm-4.0 >= 4.13.2.
+  + index-in.docbook: Avoid <programlisting> elements within <para>
+    elements. Can confuse the translation tools (itstool and
+    friends).
+  + Remove link to developer-old.gnome.org.
+  + Add example and description of mouse events.
+  + Add support for code syntax highlighting in generated html
+    files.
+
+-------------------------------------------------------------------
 Wed Apr  3 13:37:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop zh_CN translations for now: makes the build fail.

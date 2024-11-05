@@ -17,7 +17,7 @@
 
 
 Name:           gtkmm-documentation
-Version:        4.10.1
+Version:        4.12.0
 Release:        0
 Summary:        C++ Bindings for GTK+ -- Documentation
 License:        GFDL-1.2-only AND GPL-2.0-or-later
