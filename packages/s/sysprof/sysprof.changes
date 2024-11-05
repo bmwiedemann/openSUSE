@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov  5 08:42:24 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 47.1:
+  + Webkit counter fixes.
+  + Add a lost counter for dropped perf events.
+  + Deprecation fixes for GTK.
+  + Ignore -1 for CPU/PID in log cells.
+  + Reduce glib build requirement.
+  + Ensure dbus-monitor exits after capturing.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Sep 17 07:10:11 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.0:

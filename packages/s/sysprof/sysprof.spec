@@ -22,7 +22,7 @@
 %define glib_version 2.76.0
 
 Name:           sysprof
-Version:        47.0
+Version:        47.1
 Release:        0
 Summary:        A system-wide Linux profiler
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
