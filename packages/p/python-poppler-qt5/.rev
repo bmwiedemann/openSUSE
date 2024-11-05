@@ -95,4 +95,15 @@
 - Force c++17 gh#frescobaldi/python-poppler-qt5#61 (forwarded request 1142197 from bnavigator)</comment>
     <requestid>1142198</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>a5c3d61a6aa02241eb3f945544bb8ca2</srcmd5>
+    <version>21.3.0</version>
+    <time>1730817721</time>
+    <user>anag+factory</user>
+    <comment>- Avoid using requires_eq, which after the last modifications
+  conflicts with python singlespec (order of expansion).
+  * gh#openSUSE/python-rpm-macros#185
+</comment>
+    <requestid>1221370</requestid>
+  </revision>
 </revisionlist>

@@ -32,8 +32,7 @@ BuildRequires:  %{python_module sip-devel > 5.3}
 BuildRequires:  libpoppler-qt5-devel
 BuildRequires:  python-pyqt-rpm-macros
 BuildRequires:  python-rpm-macros
-%requires_eq    python-qt5
-
+Requires:       python-qt5 = %(rpm -q --whatprovides python3-qt5 --qf "%%{version}")
 %python_subpackages
 
 %description
