@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 05 09:44:20 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.19.8:
+  * build(deps): bump google.golang.org/api from 0.203.0 to 0.204.0
+    (#1384)
+  * Re-instantiate each APK's tarfs after caching (#1383)
+
+-------------------------------------------------------------------
 Thu Oct 31 20:05:38 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.19.7:
