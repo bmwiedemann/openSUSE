@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Sep 28 07:03:17 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add /srv/www directories to filelist [bsc#1231027]
+
+-------------------------------------------------------------------
 Fri Jan 29 14:53:55 UTC 2021 - Christian Goll <cgoll@suse.com>
 
 - updated to 3.7.5 which fixes bsc#1179835

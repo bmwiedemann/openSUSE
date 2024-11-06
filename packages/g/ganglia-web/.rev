@@ -59,4 +59,12 @@
   in this version (bsc#1160761, CVE-2019-20378).</comment>
     <requestid>1032451</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>67cbc0a410ed1ecc6492e55966f119a7</srcmd5>
+    <version>3.7.5</version>
+    <time>1730908607</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1221769</requestid>
+  </revision>
 </revisionlist>

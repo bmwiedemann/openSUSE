@@ -1,7 +1,7 @@
 #
 # spec file for package ganglia-web
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -80,6 +80,8 @@ cp -v download_js.sh %{buildroot}%{_docdir}/%{name}/download_js.sh
 %doc AUTHORS TODO README README.SUSE
 %{_docdir}/%{name}/download_js.sh
 %license COPYING
+%dir /srv/www
+%dir /srv/www/htdocs
 %dir %{web_prefixdir}/
 %dir %{web_prefixdir}/dwoo
 %{web_prefixdir}/*
