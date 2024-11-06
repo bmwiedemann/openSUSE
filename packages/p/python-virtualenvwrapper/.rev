@@ -235,4 +235,21 @@
   required.</comment>
     <requestid>1156224</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>4035bb0ed5c0efa2aaf8e2d6aa485e84</srcmd5>
+    <version>6.1.1</version>
+    <time>1730908349</time>
+    <user>anag+factory</user>
+    <comment>- Update to 6.1.1:
+  - Update broken MSYS link in installation documentation
+  - Add additional line to mkvirtualenv help
+  - Update mkvirtualenv help to document -p/–python option
+  - move linkcheck out of main doc build
+  - make sure virtualenvwrapper_cd always tries to do something,
+    even when it cannot infer the current shell
+- Add python-virtualenvwrapper.rpmlintrc to quiet various
+  problems with shell scripts linting.
+</comment>
+    <requestid>1221618</requestid>
+  </revision>
 </revisionlist>

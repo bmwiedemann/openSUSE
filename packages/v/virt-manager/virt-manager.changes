@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  5 13:51:57 MST 2024 - carnold@suse.com
+
+- dbus-1-x11 is being removed from Tumbleweed so drop dependency in
+  virt-manager. Add dependency on python3-dbus-python.
+
+-------------------------------------------------------------------
 Tue Oct  8 09:29:00 MDT 2024 - carnold@suse.com
 
 - bsc#1231400 - Virt-manager is missing support for AMD sev-snp

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-zeroconf
-Version:        0.134.0
+Version:        0.136.0
 Release:        0
 Summary:        Pure Python Multicast DNS Service Discovery Library (Bonjour/Avahi compatible)
 License:        LGPL-2.0-only
@@ -54,8 +54,8 @@ does not force you to use a particular event loop or python-twisted.
 
 %install
 %pyproject_install
-%python_expand rm -f %{buildroot}%{$python_sitelib}/zeroconf/test.py
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_expand rm -f %{buildroot}%{$python_sitearch}/zeroconf/test.py
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
 # Skip tests:

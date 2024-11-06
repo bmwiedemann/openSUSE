@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov  5 13:02:39 UTC 2024 - Alice Brooks <alice.brooks@suse.com>
+
+- correct-container-search.patch: Fixes issues searching containers
+  bsc#1232687
+
+-------------------------------------------------------------------
+Fri Aug  9 17:49:45 UTC 2024 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Fix systemd units folder for leap and sle (Similar issue like boo#1226541)
+
+-------------------------------------------------------------------
 Wed Jul 31 12:42:45 UTC 2024 - Adam Majer <adam.majer@suse.de>
 
 - New version 91. Changes since 84:

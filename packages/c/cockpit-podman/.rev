@@ -193,4 +193,15 @@
   instead of regenerating.</comment>
     <requestid>1190948</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>c798d1fbe41e3dd12d72ace79643e9ad</srcmd5>
+    <version>91</version>
+    <time>1730908197</time>
+    <user>anag+factory</user>
+    <comment>- correct-container-search.patch: Fixes issues searching containers
+  bsc#1232687
+
+- Fix systemd units folder for leap and sle (Similar issue like boo#1226541)</comment>
+    <requestid>1221454</requestid>
+  </revision>
 </revisionlist>

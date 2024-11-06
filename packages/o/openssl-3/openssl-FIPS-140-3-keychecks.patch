@@ -1,23 +1,25 @@
-From b300beb172d5813b01b93bfd62fe191f8187fe1e Mon Sep 17 00:00:00 2001
+From 4512f620199126e6b87433ef184f0450652ee28a Mon Sep 17 00:00:00 2001
 From: Dmitry Belyavskiy <dbelyavs@redhat.com>
-Date: Mon, 21 Aug 2023 12:05:23 +0200
-Subject: [PATCH 20/48] 0044-FIPS-140-3-keychecks.patch
+Date: Thu, 4 Apr 2024 11:42:18 +0200
+Subject: [PATCH 19/50] 0044-FIPS-140-3-keychecks.patch
 
 Patch-name: 0044-FIPS-140-3-keychecks.patch
 Patch-id: 44
 Patch-status: |
     # Extra public/private key checks required by FIPS-140-3
+From-dist-git-commit: 4334bc837fbc64d14890fdc51679a80770d498ce
 ---
  crypto/dh/dh_key.c                            | 26 ++++++++++
+ crypto/rsa/rsa_gen.c                          |  3 ++
  .../implementations/exchange/ecdh_exch.c      | 19 ++++++++
  providers/implementations/keymgmt/ec_kmgmt.c  | 24 +++++++++-
  providers/implementations/keymgmt/rsa_kmgmt.c | 18 +++++++
  .../implementations/signature/ecdsa_sig.c     | 37 +++++++++++++--
  providers/implementations/signature/rsa_sig.c | 47 +++++++++++++++++--
- 6 files changed, 162 insertions(+), 9 deletions(-)
+ 7 files changed, 165 insertions(+), 9 deletions(-)
 
 diff --git a/crypto/dh/dh_key.c b/crypto/dh/dh_key.c
-index 4e9705beef..83773cceea 100644
+index 7132b9b68e..189bfc3e8b 100644
 --- a/crypto/dh/dh_key.c
 +++ b/crypto/dh/dh_key.c
 @@ -43,6 +43,9 @@ int ossl_dh_compute_key(unsigned char *key, const BIGNUM *pub_key, DH *dh)
@@ -30,7 +32,7 @@ index 4e9705beef..83773cceea 100644
  
      if (BN_num_bits(dh->params.p) > OPENSSL_DH_MAX_MODULUS_BITS) {
          ERR_raise(ERR_LIB_DH, DH_R_MODULUS_TOO_LARGE);
-@@ -54,6 +57,13 @@ int ossl_dh_compute_key(unsigned char *key, const BIGNUM *pub_key, DH *dh)
+@@ -60,6 +63,13 @@ int ossl_dh_compute_key(unsigned char *key, const BIGNUM *pub_key, DH *dh)
          return 0;
      }
  
@@ -44,7 +46,7 @@ index 4e9705beef..83773cceea 100644
      ctx = BN_CTX_new_ex(dh->libctx);
      if (ctx == NULL)
          goto err;
-@@ -262,6 +272,9 @@ static int generate_key(DH *dh)
+@@ -271,6 +281,9 @@ static int generate_key(DH *dh)
  #endif
      BN_CTX *ctx = NULL;
      BIGNUM *pub_key = NULL, *priv_key = NULL;
@@ -54,7 +56,7 @@ index 4e9705beef..83773cceea 100644
  
      if (BN_num_bits(dh->params.p) > OPENSSL_DH_MAX_MODULUS_BITS) {
          ERR_raise(ERR_LIB_DH, DH_R_MODULUS_TOO_LARGE);
-@@ -354,8 +367,21 @@ static int generate_key(DH *dh)
+@@ -369,8 +382,21 @@ static int generate_key(DH *dh)
      if (!ossl_dh_generate_public_key(ctx, dh, priv_key, pub_key))
          goto err;
  
@@ -76,8 +78,22 @@ index 4e9705beef..83773cceea 100644
      dh->dirty_cnt++;
      ok = 1;
   err:
+diff --git a/crypto/rsa/rsa_gen.c b/crypto/rsa/rsa_gen.c
+index 0cdbb3fde2..65ff9d2d47 100644
+--- a/crypto/rsa/rsa_gen.c
++++ b/crypto/rsa/rsa_gen.c
+@@ -464,6 +464,9 @@ static int rsa_keygen(OSSL_LIB_CTX *libctx, RSA *rsa, int bits, int primes,
+             rsa->dmp1 = NULL;
+             rsa->dmq1 = NULL;
+             rsa->iqmp = NULL;
++#ifdef FIPS_MODULE
++            abort();
++#endif /* defined(FIPS_MODULE) */
+         }
+     }
+     return ok;
 diff --git a/providers/implementations/exchange/ecdh_exch.c b/providers/implementations/exchange/ecdh_exch.c
-index 43caedb6df..73873f9758 100644
+index 5b8412aba1..1d98eba132 100644
 --- a/providers/implementations/exchange/ecdh_exch.c
 +++ b/providers/implementations/exchange/ecdh_exch.c
 @@ -489,6 +489,25 @@ int ecdh_plain_derive(void *vpecdhctx, unsigned char *secret,
@@ -107,13 +123,13 @@ index 43caedb6df..73873f9758 100644
      retlen = ECDH_compute_key(secret, size, ppubkey, privk, NULL);
  
 diff --git a/providers/implementations/keymgmt/ec_kmgmt.c b/providers/implementations/keymgmt/ec_kmgmt.c
-index a37cbbdba8..bca3f3c674 100644
+index 9390935394..1399be1751 100644
 --- a/providers/implementations/keymgmt/ec_kmgmt.c
 +++ b/providers/implementations/keymgmt/ec_kmgmt.c
-@@ -989,8 +989,17 @@ struct ec_gen_ctx {
-     int selection;
-     int ecdh_mode;
+@@ -991,8 +991,17 @@ struct ec_gen_ctx {
      EC_GROUP *gen_group;
+     unsigned char *dhkem_ikm;
+     size_t dhkem_ikmlen;
 +#ifdef FIPS_MODULE
 +    void *ecdsa_sig_ctx;
 +#endif
@@ -128,7 +144,7 @@ index a37cbbdba8..bca3f3c674 100644
  static void *ec_gen_init(void *provctx, int selection,
                           const OSSL_PARAM params[])
  {
-@@ -1009,6 +1018,10 @@ static void *ec_gen_init(void *provctx, int selection,
+@@ -1011,6 +1020,10 @@ static void *ec_gen_init(void *provctx, int selection,
              gctx = NULL;
          }
      }
@@ -139,7 +155,7 @@ index a37cbbdba8..bca3f3c674 100644
      return gctx;
  }
  
-@@ -1279,6 +1292,12 @@ static void *ec_gen(void *genctx, OSSL_CALLBACK *osslcb, void *cbarg)
+@@ -1291,6 +1304,12 @@ static void *ec_gen(void *genctx, OSSL_CALLBACK *osslcb, void *cbarg)
  
      if (gctx->ecdh_mode != -1)
          ret = ret && ossl_ec_set_ecdh_cofactor_mode(ec, gctx->ecdh_mode);
@@ -151,8 +167,8 @@ index a37cbbdba8..bca3f3c674 100644
 +#endif
  
      if (gctx->group_check != NULL)
-         ret = ret && ossl_ec_set_check_group_type_from_name(ec, gctx->group_check);
-@@ -1348,7 +1367,10 @@ static void ec_gen_cleanup(void *genctx)
+         ret = ret && ossl_ec_set_check_group_type_from_name(ec,
+@@ -1361,7 +1380,10 @@ static void ec_gen_cleanup(void *genctx)
  
      if (gctx == NULL)
          return;
@@ -161,11 +177,11 @@ index a37cbbdba8..bca3f3c674 100644
 +    ecdsa_freectx(gctx->ecdsa_sig_ctx);
 +    gctx->ecdsa_sig_ctx = NULL;
 +#endif
+     OPENSSL_clear_free(gctx->dhkem_ikm, gctx->dhkem_ikmlen);
      EC_GROUP_free(gctx->gen_group);
      BN_free(gctx->p);
-     BN_free(gctx->a);
 diff --git a/providers/implementations/keymgmt/rsa_kmgmt.c b/providers/implementations/keymgmt/rsa_kmgmt.c
-index 3ba12c4889..ff49f8fcd8 100644
+index c24cb8da88..4462afa041 100644
 --- a/providers/implementations/keymgmt/rsa_kmgmt.c
 +++ b/providers/implementations/keymgmt/rsa_kmgmt.c
 @@ -434,6 +434,7 @@ struct rsa_gen_ctx {
@@ -222,10 +238,10 @@ index 3ba12c4889..ff49f8fcd8 100644
      BN_clear_free(gctx->pub_exp);
      OPENSSL_free(gctx);
 diff --git a/providers/implementations/signature/ecdsa_sig.c b/providers/implementations/signature/ecdsa_sig.c
-index 865d49d100..ebeb30e002 100644
+index fe65ed8dc6..f158105e71 100644
 --- a/providers/implementations/signature/ecdsa_sig.c
 +++ b/providers/implementations/signature/ecdsa_sig.c
-@@ -32,7 +32,7 @@
+@@ -33,7 +33,7 @@
  #include "crypto/ec.h"
  #include "prov/der_ec.h"
  
@@ -234,7 +250,7 @@ index 865d49d100..ebeb30e002 100644
  static OSSL_FUNC_signature_sign_init_fn ecdsa_sign_init;
  static OSSL_FUNC_signature_verify_init_fn ecdsa_verify_init;
  static OSSL_FUNC_signature_sign_fn ecdsa_sign;
-@@ -43,7 +43,7 @@ static OSSL_FUNC_signature_digest_sign_final_fn ecdsa_digest_sign_final;
+@@ -44,7 +44,7 @@ static OSSL_FUNC_signature_digest_sign_final_fn ecdsa_digest_sign_final;
  static OSSL_FUNC_signature_digest_verify_init_fn ecdsa_digest_verify_init;
  static OSSL_FUNC_signature_digest_verify_update_fn ecdsa_digest_signverify_update;
  static OSSL_FUNC_signature_digest_verify_final_fn ecdsa_digest_verify_final;
@@ -243,8 +259,8 @@ index 865d49d100..ebeb30e002 100644
  static OSSL_FUNC_signature_dupctx_fn ecdsa_dupctx;
  static OSSL_FUNC_signature_get_ctx_params_fn ecdsa_get_ctx_params;
  static OSSL_FUNC_signature_gettable_ctx_params_fn ecdsa_gettable_ctx_params;
-@@ -104,7 +104,7 @@ typedef struct {
- #endif
+@@ -107,7 +107,7 @@ typedef struct {
+     unsigned int nonce_type;
  } PROV_ECDSA_CTX;
  
 -static void *ecdsa_newctx(void *provctx, const char *propq)
@@ -252,7 +268,7 @@ index 865d49d100..ebeb30e002 100644
  {
      PROV_ECDSA_CTX *ctx;
  
-@@ -370,7 +370,7 @@ int ecdsa_digest_verify_final(void *vctx, const unsigned char *sig,
+@@ -380,7 +380,7 @@ int ecdsa_digest_verify_final(void *vctx, const unsigned char *sig,
      return ecdsa_verify(ctx, sig, siglen, digest, (size_t)dlen);
  }
  
@@ -261,7 +277,7 @@ index 865d49d100..ebeb30e002 100644
  {
      PROV_ECDSA_CTX *ctx = (PROV_ECDSA_CTX *)vctx;
  
-@@ -581,6 +581,35 @@ static const OSSL_PARAM *ecdsa_settable_ctx_md_params(void *vctx)
+@@ -601,6 +601,35 @@ static const OSSL_PARAM *ecdsa_settable_ctx_md_params(void *vctx)
      return EVP_MD_settable_ctx_params(ctx->md);
  }
  
@@ -298,7 +314,7 @@ index 865d49d100..ebeb30e002 100644
      { OSSL_FUNC_SIGNATURE_NEWCTX, (void (*)(void))ecdsa_newctx },
      { OSSL_FUNC_SIGNATURE_SIGN_INIT, (void (*)(void))ecdsa_sign_init },
 diff --git a/providers/implementations/signature/rsa_sig.c b/providers/implementations/signature/rsa_sig.c
-index cd5de6bd51..d4261e8f7d 100644
+index 76db37dd02..22d93ead53 100644
 --- a/providers/implementations/signature/rsa_sig.c
 +++ b/providers/implementations/signature/rsa_sig.c
 @@ -34,7 +34,7 @@
@@ -328,7 +344,7 @@ index cd5de6bd51..d4261e8f7d 100644
  {
      PROV_RSA_CTX *prsactx = NULL;
      char *propq_copy = NULL;
-@@ -977,7 +977,7 @@ int rsa_digest_verify_final(void *vprsactx, const unsigned char *sig,
+@@ -974,7 +974,7 @@ int rsa_digest_verify_final(void *vprsactx, const unsigned char *sig,
      return rsa_verify(vprsactx, sig, siglen, digest, (size_t)dlen);
  }
  
@@ -337,7 +353,7 @@ index cd5de6bd51..d4261e8f7d 100644
  {
      PROV_RSA_CTX *prsactx = (PROV_RSA_CTX *)vprsactx;
  
-@@ -1455,6 +1455,45 @@ static const OSSL_PARAM *rsa_settable_ctx_md_params(void *vprsactx)
+@@ -1451,6 +1451,45 @@ static const OSSL_PARAM *rsa_settable_ctx_md_params(void *vprsactx)
      return EVP_MD_settable_ctx_params(prsactx->md);
  }
  
@@ -384,5 +400,5 @@ index cd5de6bd51..d4261e8f7d 100644
      { OSSL_FUNC_SIGNATURE_NEWCTX, (void (*)(void))rsa_newctx },
      { OSSL_FUNC_SIGNATURE_SIGN_INIT, (void (*)(void))rsa_sign_init },
 -- 
-2.41.0
+2.44.0
 

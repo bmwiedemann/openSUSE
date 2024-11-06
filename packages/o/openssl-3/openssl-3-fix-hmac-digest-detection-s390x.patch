@@ -1,0 +1,49 @@
+commit d5b3c0e24bc56614e92ffafdd705622beaef420a
+Author: Ingo Franzki <ifranzki@linux.ibm.com>
+Date:   Wed Aug 28 14:56:33 2024 +0200
+
+    s390x: Fix HMAC digest detection
+    
+    Use EVP_MD_is_a() instead of EVP_MD_get_type() to detect the digest
+    type. EVP_MD_get_type() does not always return the expected NID, e.g.
+    when running in the FIPS provider, EVP_MD_get_type() returns zero,
+    causing to skip the HMAC acceleration path.
+    
+    Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+    
+    Reviewed-by: Paul Dale <ppzgs1@gmail.com>
+    Reviewed-by: Tomas Mraz <tomas@openssl.org>
+    (Merged from https://github.com/openssl/openssl/pull/25304)
+
+diff --git a/crypto/hmac/hmac_s390x.c b/crypto/hmac/hmac_s390x.c
+index 8b0da0d59d..5db7e9a221 100644
+--- a/crypto/hmac/hmac_s390x.c
++++ b/crypto/hmac/hmac_s390x.c
+@@ -18,22 +18,16 @@ static int s390x_fc_from_md(const EVP_MD *md)
+ {
+     int fc;
+ 
+-    switch (EVP_MD_get_type(md)) {
+-    case NID_sha224:
++    if (EVP_MD_is_a(md, "SHA2-224"))
+         fc = S390X_HMAC_SHA_224;
+-        break;
+-    case NID_sha256:
++    else if (EVP_MD_is_a(md, "SHA2-256"))
+         fc = S390X_HMAC_SHA_256;
+-        break;
+-    case NID_sha384:
++    else if (EVP_MD_is_a(md, "SHA2-384"))
+         fc = S390X_HMAC_SHA_384;
+-        break;
+-    case NID_sha512:
++    else if (EVP_MD_is_a(md, "SHA2-512"))
+         fc = S390X_HMAC_SHA_512;
+-        break;
+-    default:
++    else
+         return 0;
+-    }
+ 
+     if ((OPENSSL_s390xcap_P.kmac[1] & S390X_CAPBIT(fc)) == 0)
+         return 0;

@@ -20,7 +20,7 @@
 # binaries are java 8 compatible
 %define __requires_exclude java-headless
 Name:           jackson-databind
-Version:        2.17.2
+Version:        2.17.3
 Release:        0
 Summary:        General data-binding package for Jackson (2.x)
 License:        Apache-2.0

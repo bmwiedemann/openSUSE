@@ -1,0 +1,15 @@
+--- openjdk/jdk/src/share/classes/java/io/File.java	2024-10-07 14:14:13.587124931 +0200
++++ openjdk/jdk/src/share/classes/java/io/File.java	2024-10-07 14:15:27.187669663 +0200
+@@ -1352,7 +1352,11 @@
+         if (isInvalid()) {
+             return false;
+         }
+-        return fs.createDirectory(this);
++        boolean result = fs.createDirectory(this);
++        if ( result && System.getenv("SOURCE_DATE_EPOCH") != null ) {
++            fs.setLastModifiedTime(this, 1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH")));
++        }
++        return result;
+     }
+ 
+     /**

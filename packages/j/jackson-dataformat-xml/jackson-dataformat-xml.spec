@@ -17,7 +17,7 @@
 
 
 Name:           jackson-dataformat-xml
-Version:        2.17.2
+Version:        2.17.3
 Release:        0
 Summary:        Jackson extension component for reading and writing XML encoded data
 License:        Apache-2.0

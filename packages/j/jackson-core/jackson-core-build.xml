@@ -11,7 +11,7 @@
   <property name="project.groupId" value="com.fasterxml.jackson.core"/>
   <property name="project.artifactId" value="jackson-core"/>
   <property name="project.name" value="Jackson-core"/>
-  <property name="project.version" value="2.17.2"/>
+  <property name="project.version" value="2.17.3"/>
   <property name="project.vendor" value="FasterXML"/>
   <property name="project.description" value="Core Jackson processing abstractions (aka Streaming API), implementation for JSON"/>
   <property name="bundle.version" value="${project.version}"/>

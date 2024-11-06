@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov  5 12:22:50 UTC 2024 - pgajdos@suse.com
+
+- version update to 0.7.9
+  * Python3 support
+  * Add support for v2 password hashes
+  * Updated to pyproject.toml
+  * Updated libraries
+
+-------------------------------------------------------------------
 Thu Mar 21 17:09:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.7.8:

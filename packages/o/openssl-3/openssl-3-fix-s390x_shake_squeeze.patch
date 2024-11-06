@@ -1,0 +1,98 @@
+From dc5afb7e87ee448f4fecad0dc624c643505ba7f1 Mon Sep 17 00:00:00 2001
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+Date: Wed, 4 Sep 2024 13:42:09 +0200
+Subject: [PATCH] s390x: Fix s390x_shake_squeeze() when MSA 12 is available
+
+On the first squeeze call, when finishing the absorb process, also set
+the NIP flag, if we are still in XOF_STATE_INIT state. When MSA 12 is
+available, the state buffer A has not been zeroed during initialization,
+thus we must also pass the NIP flag here. This situation can happen
+when a squeeze is performed without a preceding absorb (i.e. a SHAKE
+of the empty message).
+
+Add a test that performs a squeeze without a preceding absorb and check
+if the result is correct.
+
+Fixes: https://github.com/openssl/openssl/commit/25f5d7b85f6657cd2f9f1ab7ae87f319d9bafe54
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+
+Reviewed-by: Viktor Dukhovni <viktor@openssl.org>
+Reviewed-by: Tomas Mraz <tomas@openssl.org>
+(Merged from https://github.com/openssl/openssl/pull/25388)
+---
+ providers/implementations/digests/sha3_prov.c |  5 +++-
+ test/evp_xof_test.c                           | 29 +++++++++++++++++++
+ 2 files changed, 33 insertions(+), 1 deletion(-)
+
+Index: openssl-3.2.3/providers/implementations/digests/sha3_prov.c
+===================================================================
+--- openssl-3.2.3.orig/providers/implementations/digests/sha3_prov.c
++++ openssl-3.2.3/providers/implementations/digests/sha3_prov.c
+@@ -239,6 +239,7 @@ static int s390x_shake_final(void *vctx,
+ static int s390x_shake_squeeze(void *vctx, unsigned char *out, size_t outlen)
+ {
+     KECCAK1600_CTX *ctx = vctx;
++    unsigned int fc;
+     size_t len;
+ 
+     if (!ossl_prov_is_running())
+@@ -249,8 +250,10 @@ static int s390x_shake_squeeze(void *vct
+      * On the first squeeze call, finish the absorb process (incl. padding).
+      */
+     if (ctx->xof_state != XOF_STATE_SQUEEZE) {
++        fc = ctx->pad;
++        fc |= ctx->xof_state == XOF_STATE_INIT ? S390X_KLMD_NIP : 0;
+         ctx->xof_state = XOF_STATE_SQUEEZE;
+-        s390x_klmd(ctx->buf, ctx->bufsz, out, outlen, ctx->pad, ctx->A);
++        s390x_klmd(ctx->buf, ctx->bufsz, out, outlen, fc, ctx->A);
+         ctx->bufsz = outlen % ctx->block_size;
+         /* reuse ctx->bufsz to count bytes squeezed from current sponge */
+         return 1;
+Index: openssl-3.2.3/test/evp_xof_test.c
+===================================================================
+--- openssl-3.2.3.orig/test/evp_xof_test.c
++++ openssl-3.2.3/test/evp_xof_test.c
+@@ -479,6 +479,34 @@ err:
+     return ret;
+ }
+ 
++/* Test that a squeeze without a preceding absorb works */
++static int shake_squeeze_no_absorb_test(void)
++{
++    int ret = 0;
++    EVP_MD_CTX *ctx = NULL;
++    unsigned char out[1000];
++    unsigned char out2[1000];
++    const char *alg = "SHAKE128";
++
++    if (!TEST_ptr(ctx = shake_setup(alg))
++        || !TEST_true(EVP_DigestFinalXOF(ctx, out, sizeof(out))))
++        goto err;
++
++    if (!TEST_true(EVP_DigestInit_ex2(ctx, NULL, NULL))
++        || !TEST_true(EVP_DigestSqueeze(ctx, out2, sizeof(out2) / 2))
++        || !TEST_true(EVP_DigestSqueeze(ctx, out2 + sizeof(out2) / 2,
++                                        sizeof(out2) / 2)))
++        goto err;
++
++    if (!TEST_mem_eq(out2, sizeof(out2), out, sizeof(out)))
++        goto err;
++    ret = 1;
++
++err:
++    EVP_MD_CTX_free(ctx);
++    return ret;
++}
++
+ int setup_tests(void)
+ {
+     ADD_TEST(shake_kat_test);
+@@ -488,5 +516,7 @@ int setup_tests(void)
+     ADD_ALL_TESTS(shake_squeeze_kat_test, OSSL_NELEM(stride_tests));
+     ADD_ALL_TESTS(shake_squeeze_large_test, OSSL_NELEM(stride_tests));
+     ADD_ALL_TESTS(shake_squeeze_dup_test, OSSL_NELEM(dupoffset_tests));
++    ADD_TEST(shake_squeeze_no_absorb_test);
++
+     return 1;
+ }

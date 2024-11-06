@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sat Nov  2 18:19:58 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 1.19.1:
+  * Fixes backwards compatibility of heif_context_set_maximum_image_size_limit()
+
+- update to 1.19.0:
+  * The major new feature in this decoding separate tiles of images and
+    also encoding an image tile by tile. This allows to process
+    high-resolution images that do not fit into memory. We support three
+    tiling methods:
+    - grid, which is the default tiling method used in most existing
+      HEIC or AVIF images.
+    - unci, which is the built-in tiling method of the ISO 23001-17
+      uncompressed codec.
+    - tili, which is a proprietary scheme with much less overhead than
+      grid and which supports efficient streaming of high-resolution
+      images over networks without having to download huge amounts of
+      metadata. It also supports much larger images than possible with
+      grid. As an extra, it supports the processing of multi-dimensional
+      images, like 3D image cubes, or image sets addressed by several
+      parameter dimensions.
+  * decoding is faster, especially if you let libheif decide on the best
+    colorspace to work in by passing heif_colorspace_unknown and
+    heif_chroma_unknown to heif_decode_image(). It will then use the
+    input colorspace and avoid unnecessary conversions.
+  * support for multi-resolution pyramids (pymd) to show downscaled
+    versions of high-resolution images
+  * improved reader interface that enables to connect libheif to a
+    network source. Libheif will request the portions of the image file
+    that have to be downloaded from the server. This is especially
+    useful in connection with the tiling / multi-resolution pyramid
+    feature.
+  * function to generate overlay images
+  * decoding progress is signaled to the client application and decoding
+    can be cancelled
+  * decoding of AVC encoded images through OpenH264
+  * security limits can be changed to be able to read very large images
+- Skip test when HEVC encoder is unavailable
+  + only-run-test-when-HEVC-encoder-available.patch
+
+-------------------------------------------------------------------
 Mon Oct 21 13:25:54 UTC 2024 - pgajdos@suse.com
 
 - build *-test subpackage with multibuild for running the test suite

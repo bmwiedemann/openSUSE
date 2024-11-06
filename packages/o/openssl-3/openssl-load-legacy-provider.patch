@@ -13,11 +13,11 @@ From-dist-git-commit: 9409bc7044cf4b5773639cce20f51399888c45fd
  doc/man5/config.pod |  8 ++++++++
  2 files changed, 23 insertions(+), 22 deletions(-)
 
-Index: openssl-3.1.4/apps/openssl.cnf
+Index: openssl-3.2.3/apps/openssl.cnf
 ===================================================================
---- openssl-3.1.4.orig/apps/openssl.cnf
-+++ openssl-3.1.4/apps/openssl.cnf
-@@ -42,36 +42,29 @@ tsa_policy1 = 1.2.3.4.1
+--- openssl-3.2.3.orig/apps/openssl.cnf
++++ openssl-3.2.3/apps/openssl.cnf
+@@ -42,14 +42,6 @@ tsa_policy1 = 1.2.3.4.1
  tsa_policy2 = 1.2.3.4.5.6
  tsa_policy3 = 1.2.3.4.5.7
  
@@ -32,7 +32,9 @@ Index: openssl-3.1.4/apps/openssl.cnf
  [openssl_init]
  providers = provider_sect
  # Load default TLS policy configuration
- ssl_conf = ssl_module
+@@ -58,23 +50,24 @@ ssl_conf = ssl_module
+ [ evp_properties ]
+ # This section is intentionally added empty here to be tuned on particular systems
  
 -# List of providers to load
 +# Uncomment the sections that start with ## below to enable the legacy provider.
@@ -68,11 +70,11 @@ Index: openssl-3.1.4/apps/openssl.cnf
 +##activate = 1
  
  [ ssl_module ]
- 
-Index: openssl-3.1.4/doc/man5/config.pod
+ system_default = crypto_policy
+Index: openssl-3.2.3/doc/man5/config.pod
 ===================================================================
---- openssl-3.1.4.orig/doc/man5/config.pod
-+++ openssl-3.1.4/doc/man5/config.pod
+--- openssl-3.2.3.orig/doc/man5/config.pod
++++ openssl-3.2.3/doc/man5/config.pod
 @@ -273,6 +273,14 @@ significant.
  All parameters in the section as well as sub-sections are made
  available to the provider.

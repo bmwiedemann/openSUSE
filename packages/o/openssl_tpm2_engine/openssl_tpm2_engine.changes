@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov  5 14:19:12 UTC 2024 - James Bottomley <James.Bottomley@HansenPartnership.com>
+
+- Update to version 4.4.1
+  * OBS build fix
+
+-------------------------------------------------------------------
+Sat Nov  2 00:00:26 UTC 2024 - James Bottomley <James.Bottomley@HansenPartnership.com>
+
+- Update to version 4.4.0
+  * Use the NULL seed for salting sessions (and check against the kernel/file)
+  * close weaknesses in key certification using the qualified name
+  * 32 bit fixes
+
+-------------------------------------------------------------------
 Tue Aug  6 17:56:50 UTC 2024 - James Bottomley <James.Bottomley@HansenPartnership.com>
 
 - Update to version 4.3.0

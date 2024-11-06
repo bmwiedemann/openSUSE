@@ -18,7 +18,7 @@
 
 %define oldpython python
 Name:           python-xmldiff
-Version:        2.6.3
+Version:        2.7.0
 Release:        0
 Summary:        Tree to tree correction between XML documents
 License:        MIT
@@ -72,7 +72,7 @@ Garcia-Molina, and J. Widom, Stanford University, 1996.
 %python_uninstall_alternative xmldiff
 
 %files %{python_files}
-%doc CHANGES.rst README.rst README.txt
+%doc CHANGES.rst README.rst
 %license LICENSE.txt
 %python_alternative %{_bindir}/xmldiff
 %python_alternative %{_bindir}/xmlpatch

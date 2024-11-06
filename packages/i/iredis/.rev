@@ -91,4 +91,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1161075</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c46e9a315a9ae271dd2b149ba665c7bd</srcmd5>
+    <version>1.15.0</version>
+    <time>1730908345</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.15.0:
+ - Dependency: remove pendulum, add python-dateutil (thanks to deronnax)
+ - Dependency: Supports Python 3.12 Now! (thanks to deronnax)
+</comment>
+    <requestid>1221611</requestid>
+  </revision>
 </revisionlist>

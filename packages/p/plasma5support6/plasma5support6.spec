@@ -26,7 +26,7 @@
 %bcond_without released
 # Note: despite being in the plasma namespace upstream, the build system follows the frameworks conventions
 Name:           plasma5support6
-Version:        6.2.2
+Version:        6.2.3
 Release:        0
 Summary:        KF6 Porting aid
 License:        LGPL-2.0-or-later

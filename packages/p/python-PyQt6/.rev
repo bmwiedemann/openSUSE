@@ -204,4 +204,12 @@ in order to avoid conflicts like boo#1192300</comment>
   * Bug fixes.</comment>
     <requestid>1208477</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>1305ec5b4cb09fb803d335b846c0859b</srcmd5>
+    <version>6.8.0~dev2410061818</version>
+    <time>1730908175</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1221363</requestid>
+  </revision>
 </revisionlist>

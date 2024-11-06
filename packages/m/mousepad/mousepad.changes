@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Oct 21 10:27:05 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.6.3
+  * build: Force plugins to be built
+  * Added missing Keywords entry to .desktop file
+  * Do not set new file readonly when using admin protocol
+  * Take into account user cancellation when using the admin protocol
+  * Add support for admin protocol
+  * Apply .clang-format file
+  * Remove unnecessary dirname in local includes
+  * clang-format: Use IncludeBlocks::Regroup
+  * clang-format: Break after assignment operator
+  * clang-format: Insert a newline at end of file if missing
+  * print: Remove useless test
+  * Apply .clang-format file
+  * clang-format: Add file
+  * shortcuts-plugin: Fix shortcuts-editor include
+  * recent-menu: Do not add already open files
+  * Do not define G_DISABLE_CHECKS in release mode
+  * Do not use g_log_set_always_fatal()
+  * test-plugin: Update actions after previous commit
+  * Don't set buffer as unmodified before reloading if externally
+    modified
+  * Translation Updates
+
+-------------------------------------------------------------------
 Mon Feb  5 13:33:37 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.6.2

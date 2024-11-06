@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 05 16:21:44 UTC 2024 - cathy.hu@suse.com
+
+- Update to version 20241105:
+  * Allow virt_dbus_t to connect to virtd_t over unix_stream_socket (bsc#1232655)
+
+-------------------------------------------------------------------
 Thu Oct 31 07:35:49 UTC 2024 - cathy.hu@suse.com
 
 - Update to version 20241031:

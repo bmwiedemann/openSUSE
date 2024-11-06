@@ -192,13 +192,13 @@ Patch288:       virtman-fix-inspection-apps-window.patch
 BuildArch:      noarch
 
 %define verrel %{version}-%{release}
-Requires:       dbus-1-x11
 Requires:       dconf
 Requires:       gstreamer-plugins-good
 Requires:       gtk3
 Requires:       python3-gobject
 # For console widget
 Requires:       python3-cairo
+Requires:       python3-dbus-python
 Requires:       python3-gobject-Gdk
 Requires:       python3-gobject-cairo
 Recommends:     python3-SpiceClientGtk

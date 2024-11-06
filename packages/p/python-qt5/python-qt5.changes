@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  5 08:36:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Avoid using requires_eq, which after the last modifications
+  conflicts with python singlespec (order of expansion).
+
+-------------------------------------------------------------------
 Sun Oct 15 13:57:31 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.15.10

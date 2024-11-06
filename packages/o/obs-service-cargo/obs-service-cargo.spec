@@ -22,7 +22,7 @@ License:        MPL-2.0
 Group:          Development/Tools/Building
 # Repository name subject to change
 URL:            https://github.com/openSUSE-Rust/%{name}
-Version:        3.6.1
+Version:        4.0.2
 Release:        0
 Source0:        https://github.com/openSUSE-Rust/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
@@ -44,9 +44,12 @@ Provides:       obs-service-cargo_audit = %{version}
 %description
 This is an OBS Source Service that contains two main utilities:
 - OBS Service Cargo Vendor
-- OBS Service Cargo Audit
+- OBS Service Cargo Vendor Home Registry
 
 This vendors and audits dependencies for packaging Rust software.
+
+See the <https://github.com/openSUSE-Rust/obs-service-cargo/blob/master/README.md>
+for full documentation.
 
 %prep
 %autosetup -a1
@@ -57,9 +60,9 @@ This vendors and audits dependencies for packaging Rust software.
 %install
 mkdir -p %{buildroot}%{_prefix}/lib/obs/service
 install -m0755 %{_builddir}/%{name}-%{version}/target/release/cargo_vendor %{buildroot}%{_prefix}/lib/obs/service
+# This will get removed in the future.
 install -m0755 %{_builddir}/%{name}-%{version}/target/release/cargo_audit  %{buildroot}%{_prefix}/lib/obs/service
 install -m0644 cargo_vendor.service %{buildroot}%{_prefix}/lib/obs/service
-install -m0644 cargo_audit.service %{buildroot}%{_prefix}/lib/obs/service
 
 %files
 %defattr(-,root,root)

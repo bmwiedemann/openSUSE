@@ -231,4 +231,12 @@
     <comment>Qt 5.15.15 (forwarded request 1199183 from favogt)</comment>
     <requestid>1199187</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>86071981d94d4f58e48c9ab3bc577947</srcmd5>
+    <version>5.15.15+kde0</version>
+    <time>1730908170</time>
+    <user>anag+factory</user>
+    <comment>- Fix package dependencies</comment>
+    <requestid>1221278</requestid>
+  </revision>
 </revisionlist>

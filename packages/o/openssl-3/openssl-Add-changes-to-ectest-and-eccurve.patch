@@ -1135,9 +1135,9 @@ index afef85b0e6..4890b0555e 100644
          || !TEST_int_eq(1, BN_check_prime(p, ctx, NULL))
          || !TEST_true(BN_hex2bn(&a,         "FFFFFFFFFFFFFFFFFFFFFFFF"
 @@ -3015,7 +2857,7 @@ int setup_tests(void)
-         return 0;
  
      ADD_TEST(parameter_test);
+     ADD_TEST(ossl_parameter_test);
 -    ADD_TEST(cofactor_range_test);
 +    /* ADD_TEST(cofactor_range_test); */
      ADD_ALL_TESTS(cardinality_test, crv_len);
@@ -1145,4 +1145,3 @@ index afef85b0e6..4890b0555e 100644
  #ifndef OPENSSL_NO_EC2M
 -- 
 2.41.0
-

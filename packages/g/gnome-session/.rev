@@ -1581,4 +1581,12 @@ Index: gnome-session.changes
     <comment>SCripted push of GNOME 47</comment>
     <requestid>1205455</requestid>
   </revision>
+  <revision rev="210" vrev="2">
+    <srcmd5>06a09ba4729d24fe18f138cc625a585e</srcmd5>
+    <version>47.0.1</version>
+    <time>1730908173</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1221352</requestid>
+  </revision>
 </revisionlist>

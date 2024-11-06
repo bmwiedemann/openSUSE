@@ -2012,4 +2012,13 @@ by an upstream reviewed commit. (forwarded request 1109432 from mwilck)</comment
   (bug introduced in 0.9.9). (bsc#1229898) (forwarded request 1197366 from mwilck)</comment>
     <requestid>1197370</requestid>
   </revision>
+  <revision rev="167" vrev="1">
+    <srcmd5>7780dc1e59fd6403678d8115fb14b2c3</srcmd5>
+    <version>0.10.0+108+suse.2c2e597</version>
+    <time>1730908176</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.10.0+108+suse.2c2e597:
+  * Update fix for bsc#1232063 to upstream-accepted solution (forwarded request 1221365 from mwilck)</comment>
+    <requestid>1221366</requestid>
+  </revision>
 </revisionlist>

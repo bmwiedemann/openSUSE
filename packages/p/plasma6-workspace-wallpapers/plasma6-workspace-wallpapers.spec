@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           plasma6-workspace-wallpapers
-Version:        6.2.2
+Version:        6.2.3
 Release:        0
 Summary:        Additional Plasma Wallpapers
 License:        GPL-2.0-or-later

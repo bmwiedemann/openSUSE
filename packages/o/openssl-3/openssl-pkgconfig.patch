@@ -1,8 +1,8 @@
-Index: openssl-1.1.1-pre3/Configurations/unix-Makefile.tmpl
+Index: openssl-3.2.3/Configurations/unix-Makefile.tmpl
 ===================================================================
---- openssl-1.1.1-pre3.orig/Configurations/unix-Makefile.tmpl	2018-03-20 15:20:03.037124698 +0100
-+++ openssl-1.1.1-pre3/Configurations/unix-Makefile.tmpl	2018-03-20 15:21:04.206084731 +0100
-@@ -843,7 +843,7 @@ libcrypto.pc:
+--- openssl-3.2.3.orig/Configurations/unix-Makefile.tmpl
++++ openssl-3.2.3/Configurations/unix-Makefile.tmpl
+@@ -1453,7 +1453,7 @@ libcrypto.pc:
  	    echo 'Version: '$(VERSION); \
  	    echo 'Libs: -L$${libdir} -lcrypto'; \
  	    echo 'Libs.private: $(LIB_EX_LIBS)'; \
@@ -11,7 +11,7 @@ Index: openssl-1.1.1-pre3/Configurations/unix-Makefile.tmpl
  
  libssl.pc:
  	@ ( echo 'prefix=$(INSTALLTOP)'; \
-@@ -860,7 +860,7 @@ libssl.pc:
+@@ -1470,7 +1470,7 @@ libssl.pc:
  	    echo 'Version: '$(VERSION); \
  	    echo 'Requires.private: libcrypto'; \
  	    echo 'Libs: -L$${libdir} -lssl'; \

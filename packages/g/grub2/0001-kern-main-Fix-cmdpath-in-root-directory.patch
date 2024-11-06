@@ -1,0 +1,66 @@
+From 56b221476d31310de485af26550c8651618832bb Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Tue, 29 Oct 2024 11:54:28 +0800
+Subject: [PATCH] kern/main: Fix cmdpath in root directory
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The "cmdpath" environment variable is set at startup to the location
+from which the grub image is loaded. It includes a device part and,
+optionally, an absolute directory name if the grub image is booted as a
+file in a local file-system directory, or in a remote server directory,
+like TFTP.
+
+This entire process relies on firmware to provide the correct device
+path of the booted image.
+
+We encountered an issue when the image is booted from the root
+directory, where the absolute directory name "/" is discarded. This
+makes it unclear whether the root path was missing in the firmware
+provided device path or if it is simply the root directory. This
+ambiguity can cause confusion in custom scripts, potentially causing
+them to interpret firmware data incorrectly and trigger unintended
+fallback measures.
+
+This patch fixes the problem by properly assigning the "fwpath" returned
+by "grub_machine_get_bootlocation()" to "cmdpath". The fix is based on
+the fact that fwpath is NULL if the firmware didn’t provide a path part
+or an NUL character, "", if it represents the root directory. With this,
+it becomes possible to clearly distinguish:
+
+- cmdpath=(hd0,1) - Either the image is booted from the first (raw)
+  partition, or the firmware failed to provide the path part.
+- cmdpath=(hd0,1)/ - The image is booted from the root directory in the
+  first partition.
+
+As a side note, the fix is similar to [1], but without the renaming
+part.
+
+[1] https://mail.gnu.org/archive/html/grub-devel/2024-10/msg00155.html
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/kern/main.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/grub-core/kern/main.c b/grub-core/kern/main.c
+index ef3b3756d..f9ab12c74 100644
+--- a/grub-core/kern/main.c
++++ b/grub-core/kern/main.c
+@@ -136,7 +136,11 @@ grub_set_prefix_and_root (void)
+     {
+       char *cmdpath;
+ 
+-      cmdpath = grub_xasprintf ("(%s)%s", fwdevice, fwpath ? : "");
++      if (fwpath && *fwpath == '\0')
++	cmdpath = grub_xasprintf ("(%s)/", fwdevice);
++      else
++	cmdpath = grub_xasprintf ("(%s)%s", fwdevice, fwpath ? : "");
++
+       if (cmdpath)
+ 	{
+ 	  grub_env_set ("cmdpath", cmdpath);
+-- 
+2.47.0
+

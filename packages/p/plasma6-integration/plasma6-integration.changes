@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov  5 13:30:32 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.3
+- Changes since 6.2.2:
+  * update version for new release
+  * Update m_palettes even when KDE_COLOR_SCHEME_PATH is set
+
+-------------------------------------------------------------------
 Tue Oct 22 14:08:14 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.2:

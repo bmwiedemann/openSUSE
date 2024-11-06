@@ -17,16 +17,15 @@
 
 
 Name:           libcmpiutil
-Version:        0.5.7
+Version:        0.5.7+git3.cd438a8
 Release:        0
 Summary:        Library of utility functions for CMPI providers
 License:        LGPL-2.1-or-later
 URL:            http://libvirt.org/sources/CIM/
 Group:          Development/Libraries/C and C++
-Source:         %{name}-%{version}.tar.bz2
-Patch1:         0001-libcmpiutil-Fix-endianness-issues-in-embedded-object.patch
-Patch2:         0002-fix-ARM-build.patch
-Patch3:         0003-drop-duplicate-definition-of-_FORTIFY_SOURCE.patch
+Source:         %{name}-%{version}.tar.gz
+Patch1:         0001-fix-ARM-build.patch
+Patch2:         0002-drop-duplicate-definition-of-_FORTIFY_SOURCE.patch
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
@@ -58,6 +57,7 @@ standardizing method dispatch and argument checking.
 Summary:        Library of utility functions for CMPI providers
 Group:          Development/Libraries/C and C++
 Obsoletes:      libcmpiutil < %{version}-%{release}
+Provides:       libcmpiutil
 
 %description -n libcmpiutil0
 Libcmpiutil is a library of utility functions for CMPI providers.  The
@@ -81,11 +81,10 @@ standardizing method dispatch and argument checking.
 
 %prep
 %setup -q
-%patch -P 1 -p1
 %ifarch %arm
-%patch -P 2 -p1
+%patch -P 1 -p1
 %endif
-%patch -P 3 -p1
+%patch -P 2 -p1
 chmod -x *.c *.y *.h *.l
 
 %build

@@ -1,32 +1,25 @@
-From 97ac06e5a8e3a8699279c06eeb64c8e958bad7bd Mon Sep 17 00:00:00 2001
-From: Clemens Lang <cllang@redhat.com>
-Date: Fri, 15 Jul 2022 17:45:40 +0200
-Subject: [PATCH] FIPS: Use digest_sign & digest_verify in self test
+From dc41625dc4a793f0e21188165711181ca085339b Mon Sep 17 00:00:00 2001
+From: rpm-build <rpm-build>
+Date: Wed, 6 Mar 2024 19:17:16 +0100
+Subject: [PATCH 28/49] 
+ 0074-FIPS-Use-digest_sign-digest_verify-in-self-test.patch
 
-In review for FIPS 140-3, the lack of a self-test for the digest_sign
-and digest_verify provider functions was highlighted as a problem. NIST
-no longer provides ACVP tests for the RSA SigVer primitive (see
-https://github.com/usnistgov/ACVP/issues/1347). Because FIPS 140-3
-recommends the use of functions that compute the digest and signature
-within the module, we have been advised in our module review that the
-self tests should also use the combined digest and signature APIs, i.e.
-the digest_sign and digest_verify provider functions.
-
-Modify the signature self-test to use these instead by switching to
-EVP_DigestSign and EVP_DigestVerify. This requires adding more ifdefs to
-crypto/evp/m_sigver.c to make these functions usable in the FIPS module.
-
-Signed-off-by: Clemens Lang <cllang@redhat.com>
+Patch-name: 0074-FIPS-Use-digest_sign-digest_verify-in-self-test.patch
+Patch-id: 74
+Patch-status: |
+    # [PATCH 29/46]
+    # 0074-FIPS-Use-digest_sign-digest_verify-in-self-test.patch
+From-dist-git-commit: 4334bc837fbc64d14890fdc51679a80770d498ce
 ---
- crypto/evp/m_sigver.c           | 43 +++++++++++++++++++++++++++------
- providers/fips/self_test_kats.c | 37 +++++++++++++++-------------
- 2 files changed, 56 insertions(+), 24 deletions(-)
+ crypto/evp/m_sigver.c           | 54 ++++++++++++++++++++++++++++-----
+ providers/fips/self_test_kats.c | 43 +++++++++++++++-----------
+ 2 files changed, 73 insertions(+), 24 deletions(-)
 
-Index: openssl-3.1.4/crypto/evp/m_sigver.c
+Index: openssl-3.2.3/crypto/evp/m_sigver.c
 ===================================================================
---- openssl-3.1.4.orig/crypto/evp/m_sigver.c
-+++ openssl-3.1.4/crypto/evp/m_sigver.c
-@@ -90,6 +90,7 @@ static int update(EVP_MD_CTX *ctx, const
+--- openssl-3.2.3.orig/crypto/evp/m_sigver.c
++++ openssl-3.2.3/crypto/evp/m_sigver.c
+@@ -86,6 +86,7 @@ static int update(EVP_MD_CTX *ctx, const
      ERR_raise(ERR_LIB_EVP, EVP_R_ONLY_ONESHOT_SUPPORTED);
      return 0;
  }
@@ -34,7 +27,7 @@ Index: openssl-3.1.4/crypto/evp/m_sigver.c
  
  /*
   * If we get the "NULL" md then the name comes back as "UNDEF". We want to use
-@@ -125,8 +126,10 @@ static int do_sigver_init(EVP_MD_CTX *ct
+@@ -121,8 +122,10 @@ static int do_sigver_init(EVP_MD_CTX *ct
          reinit = 0;
          if (e == NULL)
              ctx->pctx = EVP_PKEY_CTX_new_from_pkey(libctx, pkey, props);
@@ -45,7 +38,7 @@ Index: openssl-3.1.4/crypto/evp/m_sigver.c
      }
      if (ctx->pctx == NULL)
          return 0;
-@@ -134,8 +137,10 @@ static int do_sigver_init(EVP_MD_CTX *ct
+@@ -132,8 +135,10 @@ static int do_sigver_init(EVP_MD_CTX *ct
      locpctx = ctx->pctx;
      ERR_set_mark();
  
@@ -56,7 +49,7 @@ Index: openssl-3.1.4/crypto/evp/m_sigver.c
  
      /* do not reinitialize if pkey is set or operation is different */
      if (reinit
-@@ -220,8 +225,10 @@ static int do_sigver_init(EVP_MD_CTX *ct
+@@ -218,8 +223,10 @@ static int do_sigver_init(EVP_MD_CTX *ct
              signature =
                  evp_signature_fetch_from_prov((OSSL_PROVIDER *)tmp_prov,
                                                supported_sig, locpctx->propquery);
@@ -67,7 +60,7 @@ Index: openssl-3.1.4/crypto/evp/m_sigver.c
              break;
          }
          if (signature == NULL)
-@@ -305,6 +312,7 @@ static int do_sigver_init(EVP_MD_CTX *ct
+@@ -303,6 +310,7 @@ static int do_sigver_init(EVP_MD_CTX *ct
              ctx->fetched_digest = EVP_MD_fetch(locpctx->libctx, mdname, props);
              if (ctx->fetched_digest != NULL) {
                  ctx->digest = ctx->reqdigest = ctx->fetched_digest;
@@ -75,7 +68,7 @@ Index: openssl-3.1.4/crypto/evp/m_sigver.c
              } else {
                  /* legacy engine support : remove the mark when this is deleted */
                  ctx->reqdigest = ctx->digest = EVP_get_digestbyname(mdname);
-@@ -313,11 +321,13 @@ static int do_sigver_init(EVP_MD_CTX *ct
+@@ -311,11 +319,13 @@ static int do_sigver_init(EVP_MD_CTX *ct
                      ERR_raise(ERR_LIB_EVP, EVP_R_INITIALIZATION_ERROR);
                      goto err;
                  }
@@ -89,7 +82,7 @@ Index: openssl-3.1.4/crypto/evp/m_sigver.c
      if (ctx->reqdigest != NULL
              && !EVP_PKEY_is_a(locpctx->pkey, SN_hmac)
              && !EVP_PKEY_is_a(locpctx->pkey, SN_tls1_prf)
-@@ -329,6 +339,7 @@ static int do_sigver_init(EVP_MD_CTX *ct
+@@ -327,6 +337,7 @@ static int do_sigver_init(EVP_MD_CTX *ct
              goto err;
          }
      }
@@ -97,7 +90,7 @@ Index: openssl-3.1.4/crypto/evp/m_sigver.c
  
      if (ver) {
          if (signature->digest_verify_init == NULL) {
-@@ -361,6 +372,7 @@ static int do_sigver_init(EVP_MD_CTX *ct
+@@ -359,6 +370,7 @@ static int do_sigver_init(EVP_MD_CTX *ct
      EVP_KEYMGMT_free(tmp_keymgmt);
      return 0;
  
@@ -105,7 +98,7 @@ Index: openssl-3.1.4/crypto/evp/m_sigver.c
   legacy:
      /*
       * If we don't have the full support we need with provided methods,
-@@ -432,6 +444,7 @@ static int do_sigver_init(EVP_MD_CTX *ct
+@@ -430,6 +442,7 @@ static int do_sigver_init(EVP_MD_CTX *ct
          ctx->pctx->flag_call_digest_custom = 1;
  
      ret = 1;
@@ -113,7 +106,7 @@ Index: openssl-3.1.4/crypto/evp/m_sigver.c
  
   end:
  #ifndef FIPS_MODULE
-@@ -474,7 +487,6 @@ int EVP_DigestVerifyInit(EVP_MD_CTX *ctx
+@@ -472,7 +485,6 @@ int EVP_DigestVerifyInit(EVP_MD_CTX *ctx
      return do_sigver_init(ctx, pctx, type, NULL, NULL, NULL, e, pkey, 1,
                            NULL);
  }
@@ -121,7 +114,7 @@ Index: openssl-3.1.4/crypto/evp/m_sigver.c
  
  int EVP_DigestSignUpdate(EVP_MD_CTX *ctx, const void *data, size_t dsize)
  {
-@@ -536,23 +548,29 @@ int EVP_DigestVerifyUpdate(EVP_MD_CTX *c
+@@ -544,24 +556,30 @@ int EVP_DigestVerifyUpdate(EVP_MD_CTX *c
      return EVP_DigestUpdate(ctx, data, dsize);
  }
  
@@ -130,13 +123,18 @@ Index: openssl-3.1.4/crypto/evp/m_sigver.c
                          size_t *siglen)
  {
 -    int sctx = 0, r = 0;
--    EVP_PKEY_CTX *dctx, *pctx = ctx->pctx;
+-    EVP_PKEY_CTX *dctx = NULL, *pctx = ctx->pctx;
 +    int r = 0;
 +#ifndef FIPS_MODULE
 +    int sctx = 0;
-+    EVP_PKEY_CTX *dctx;
++    EVP_PKEY_CTX *dctx = NULL;
 +#endif /* !defined(FIPS_MODULE) */
 +    EVP_PKEY_CTX *pctx = ctx->pctx;
+ 
+     if ((ctx->flags & EVP_MD_CTX_FLAG_FINALISED) != 0) {
+         ERR_raise(ERR_LIB_EVP, EVP_R_FINAL_ERROR);
+         return 0;
+     }
  
 +#ifndef FIPS_MODULE
      if (pctx == NULL
@@ -146,26 +144,26 @@ Index: openssl-3.1.4/crypto/evp/m_sigver.c
          goto legacy;
 +#endif /* !defined(FIPS_MODULE) */
  
-     if (sigret == NULL || (ctx->flags & EVP_MD_CTX_FLAG_FINALISE) != 0)
-         return pctx->op.sig.signature->digest_sign_final(pctx->op.sig.algctx,
-                                                          sigret, siglen,
-                                                          sigret == NULL ? 0 : *siglen);
 +#ifndef FIPS_MODULE
-     dctx = EVP_PKEY_CTX_dup(pctx);
-     if (dctx == NULL)
-         return 0;
-@@ -561,8 +579,10 @@ int EVP_DigestSignFinal(EVP_MD_CTX *ctx,
-                                                   sigret, siglen,
-                                                   *siglen);
-     EVP_PKEY_CTX_free(dctx);
-+#endif /* defined(FIPS_MODULE) */
+     if (sigret != NULL && (ctx->flags & EVP_MD_CTX_FLAG_FINALISE) == 0) {
+         /* try dup */
+         dctx = EVP_PKEY_CTX_dup(pctx);
+@@ -576,7 +594,14 @@ int EVP_DigestSignFinal(EVP_MD_CTX *ctx,
+     else
+         EVP_PKEY_CTX_free(dctx);
      return r;
++#else
++    r = pctx->op.sig.signature->digest_sign_final(pctx->op.sig.algctx,
++                                                  sigret, siglen,
++                                                  sigret == NULL ? 0 : *siglen);
++    return r;
++#endif /* !defined(FIPS_MODULE) */
  
 +#ifndef FIPS_MODULE
   legacy:
      if (pctx == NULL || pctx->pmeth == NULL) {
          ERR_raise(ERR_LIB_EVP, EVP_R_INITIALIZATION_ERROR);
-@@ -634,6 +654,7 @@ int EVP_DigestSignFinal(EVP_MD_CTX *ctx,
+@@ -649,6 +674,7 @@ int EVP_DigestSignFinal(EVP_MD_CTX *ctx,
          }
      }
      return 1;
@@ -173,7 +171,7 @@ Index: openssl-3.1.4/crypto/evp/m_sigver.c
  }
  
  int EVP_DigestSign(EVP_MD_CTX *ctx, unsigned char *sigret, size_t *siglen,
-@@ -664,21 +685,27 @@ int EVP_DigestSign(EVP_MD_CTX *ctx, unsi
+@@ -687,23 +713,29 @@ int EVP_DigestSign(EVP_MD_CTX *ctx, unsi
  int EVP_DigestVerifyFinal(EVP_MD_CTX *ctx, const unsigned char *sig,
                            size_t siglen)
  {
@@ -183,10 +181,15 @@ Index: openssl-3.1.4/crypto/evp/m_sigver.c
 +    unsigned char md[EVP_MAX_MD_SIZE];
      unsigned int mdlen = 0;
      int vctx = 0;
--    EVP_PKEY_CTX *dctx, *pctx = ctx->pctx;
-+    EVP_PKEY_CTX *dctx;
+-    EVP_PKEY_CTX *dctx = NULL, *pctx = ctx->pctx;
++    EVP_PKEY_CTX *dctx = NULL;
 +#endif /* !defined(FIPS_MODULE) */
 +    EVP_PKEY_CTX *pctx = ctx->pctx;
+ 
+     if ((ctx->flags & EVP_MD_CTX_FLAG_FINALISED) != 0) {
+         ERR_raise(ERR_LIB_EVP, EVP_R_FINAL_ERROR);
+         return 0;
+     }
  
 +#ifndef FIPS_MODULE
      if (pctx == NULL
@@ -196,25 +199,25 @@ Index: openssl-3.1.4/crypto/evp/m_sigver.c
          goto legacy;
 +#endif /* !defined(FIPS_MODULE) */
  
-     if ((ctx->flags & EVP_MD_CTX_FLAG_FINALISE) != 0)
-         return pctx->op.sig.signature->digest_verify_final(pctx->op.sig.algctx,
-                                                            sig, siglen);
 +#ifndef FIPS_MODULE
-     dctx = EVP_PKEY_CTX_dup(pctx);
-     if (dctx == NULL)
-         return 0;
-@@ -686,8 +713,10 @@ int EVP_DigestVerifyFinal(EVP_MD_CTX *ct
-     r = dctx->op.sig.signature->digest_verify_final(dctx->op.sig.algctx,
-                                                     sig, siglen);
-     EVP_PKEY_CTX_free(dctx);
-+#endif /* !defined(FIPS_MODULE) */
+     if ((ctx->flags & EVP_MD_CTX_FLAG_FINALISE) == 0) {
+         /* try dup */
+         dctx = EVP_PKEY_CTX_dup(pctx);
+@@ -717,7 +749,13 @@ int EVP_DigestVerifyFinal(EVP_MD_CTX *ct
+     else
+         EVP_PKEY_CTX_free(dctx);
      return r;
++#else
++    r = pctx->op.sig.signature->digest_verify_final(pctx->op.sig.algctx,
++                                                    sig, siglen);
++    return r;
++#endif /* !defined(FIPS_MODULE) */
  
 +#ifndef FIPS_MODULE
   legacy:
      if (pctx == NULL || pctx->pmeth == NULL) {
          ERR_raise(ERR_LIB_EVP, EVP_R_INITIALIZATION_ERROR);
-@@ -727,6 +756,7 @@ int EVP_DigestVerifyFinal(EVP_MD_CTX *ct
+@@ -758,6 +796,7 @@ int EVP_DigestVerifyFinal(EVP_MD_CTX *ct
      if (vctx || !r)
          return r;
      return EVP_PKEY_verify(pctx, sig, siglen, md, mdlen);
@@ -222,15 +225,15 @@ Index: openssl-3.1.4/crypto/evp/m_sigver.c
  }
  
  int EVP_DigestVerify(EVP_MD_CTX *ctx, const unsigned char *sigret,
-@@ -752,4 +782,3 @@ int EVP_DigestVerify(EVP_MD_CTX *ctx, co
+@@ -790,4 +829,3 @@ int EVP_DigestVerify(EVP_MD_CTX *ctx, co
          return -1;
      return EVP_DigestVerifyFinal(ctx, sigret, siglen);
  }
 -#endif /* FIPS_MODULE */
-Index: openssl-3.1.4/providers/fips/self_test_kats.c
+Index: openssl-3.2.3/providers/fips/self_test_kats.c
 ===================================================================
---- openssl-3.1.4.orig/providers/fips/self_test_kats.c
-+++ openssl-3.1.4/providers/fips/self_test_kats.c
+--- openssl-3.2.3.orig/providers/fips/self_test_kats.c
++++ openssl-3.2.3/providers/fips/self_test_kats.c
 @@ -450,10 +450,13 @@ static int self_test_sign(const ST_KAT_S
      int ret = 0;
      OSSL_PARAM *params = NULL, *params_sig = NULL;

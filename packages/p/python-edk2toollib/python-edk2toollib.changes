@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Oct 23 02:26:13 UTC 2024 - Richard Lyu <rlyu@suse.com>
+
+- Update version to 0.21.9
+  - Fix PCD parsing for PCDs containing single quotes 
+  - Add documentation on publishing a release 
+  - Dependency updates:
+    - coverage 7.5.3 -> 7.6.0
+    - ruff 0.4.7 -> 0.5.4
+    - setuptools 70.0.0 -> 71.1.0
+    - pytest 8.2.1 -> 8.3.1
+    - mkdocs-material 9.5.25 -> 9.5.29
+    - mkdocstrings-python 1.10.3 -> 1.10.5
+    - twine 5.1.0 -> 5.1.1
+
+-------------------------------------------------------------------
 Wed Jan 27 02:26:13 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Initial import version: 0.10.13
+

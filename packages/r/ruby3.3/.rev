@@ -106,4 +106,18 @@
   https://github.com/ruby/ruby/releases/tag/v3_3_5</comment>
     <requestid>1198533</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>960c2841ce21be18ad0ba42177113e53</srcmd5>
+    <version>3.3.6</version>
+    <time>1730908191</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.3.6
+  This is a routine update that includes minor bug fixes. It also
+  stops warning missing default gem dependencies that will be
+  bundled gems in Ruby 3.5. For more details, please refer to the
+  release notes on GitHub.
+  https://github.com/ruby/ruby/releases/tag/v3_3_5
+- drop 7939.diff</comment>
+    <requestid>1221450</requestid>
+  </revision>
 </revisionlist>

@@ -36,7 +36,7 @@
 %endif
 
 Name:           libheif
-Version:        1.18.2
+Version:        1.19.1
 Release:        0
 Summary:        HEIF/AVIF file format decoder and encoder
 License:        GPL-2.0-or-later
@@ -44,10 +44,12 @@ Group:          Productivity/Graphics/Other
 URL:            https://github.com/strukturag/libheif
 Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
+# PATCH-FIX=OPENSUSE - HEVC encoding is unavailable by default
+Patch0:         only-run-test-when-HEVC-encoder-available.patch
 BuildRequires:  chrpath
 BuildRequires:  cmake
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
+BuildRequires:  gcc-c++ >= 8
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(aom)
 BuildRequires:  pkgconfig(dav1d)
@@ -276,6 +278,7 @@ sed -i '/add_libheif_test(encode)/d' tests/CMakeLists.txt
 %else
 	-DWITH_KVAZAAR=OFF \
 %endif
+	-DWITH_OpenH264_DECODER=OFF \
 	-DWITH_OpenJPEG_DECODER=ON \
 	-DWITH_OpenJPEG_DECODER_PLUGIN=ON \
 	-DWITH_OpenJPEG_ENCODER=ON \

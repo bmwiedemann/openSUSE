@@ -1169,4 +1169,12 @@
   * Fixed compilation when using LibreSSL 4.0.0.</comment>
     <requestid>1217043</requestid>
   </revision>
+  <revision rev="96" vrev="2">
+    <srcmd5>270b4e7b9c472acbe0d0578c53606895</srcmd5>
+    <version>43.0.3</version>
+    <time>1730908179</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1221413</requestid>
+  </revision>
 </revisionlist>

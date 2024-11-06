@@ -1,0 +1,196 @@
+From 25f5d7b85f6657cd2f9f1ab7ae87f319d9bafe54 Mon Sep 17 00:00:00 2001
+From: Joerg Schmidbauer <jschmidb@de.ibm.com>
+Date: Thu, 29 Feb 2024 12:50:05 +0100
+Subject: [PATCH] s390x: support CPACF sha3/shake performance improvements
+
+On newer machines the SHA3/SHAKE performance of CPACF instructions KIMD and KLMD
+can be enhanced by using additional modifier bits. This allows the application
+to omit initializing the ICV, but also affects the internal processing of the
+instructions. Performance is mostly gained when processing short messages.
+
+The new CPACF feature is backwards compatible with older machines, i.e. the new
+modifier bits are ignored on older machines. However, to save the ICV
+initialization, the application must detect the MSA level and omit the ICV
+initialization only if this feature is supported.
+
+Signed-off-by: Joerg Schmidbauer <jschmidb@de.ibm.com>
+
+Reviewed-by: Paul Dale <ppzgs1@gmail.com>
+Reviewed-by: Tomas Mraz <tomas@openssl.org>
+(Merged from https://github.com/openssl/openssl/pull/25235)
+---
+ crypto/s390x_arch.h                           |  3 ++
+ crypto/s390xcpuid.pl                          |  4 +--
+ crypto/sha/sha3.c                             |  8 +++++-
+ providers/implementations/digests/sha3_prov.c | 28 +++++++++++++++----
+ 4 files changed, 34 insertions(+), 9 deletions(-)
+
+Index: openssl-3.2.3/crypto/s390x_arch.h
+===================================================================
+--- openssl-3.2.3.orig/crypto/s390x_arch.h
++++ openssl-3.2.3/crypto/s390x_arch.h
+@@ -191,6 +191,9 @@ extern int OPENSSL_s390xcex;
+ # define S390X_KMA_LAAD         0x200
+ # define S390X_KMA_HS           0x400
+ # define S390X_KDSA_D           0x80
++# define S390X_KIMD_NIP         0x8000
++# define S390X_KLMD_DUFOP       0x4000
++# define S390X_KLMD_NIP         0x8000
+ # define S390X_KLMD_PS          0x100
+ # define S390X_KMAC_IKP         0x8000
+ # define S390X_KMAC_IIMP        0x4000
+Index: openssl-3.2.3/crypto/s390xcpuid.pl
+===================================================================
+--- openssl-3.2.3.orig/crypto/s390xcpuid.pl
++++ openssl-3.2.3/crypto/s390xcpuid.pl
+@@ -308,7 +308,7 @@ s390x_kimd:
+ 	llgfr	%r0,$fc
+ 	lgr	%r1,$param
+ 
+-	.long	0xb93e0002	# kimd %r0,%r2
++	.long	0xb93e8002	# kimd %r0,%r2[,M3]
+ 	brc	1,.-4		# pay attention to "partial completion"
+ 
+ 	br	$ra
+@@ -329,7 +329,7 @@ s390x_klmd:
+ 	llgfr	%r0,$fc
+ 	l${g}	%r1,$stdframe($sp)
+ 
+-	.long	0xb93f0042	# klmd %r4,%r2
++	.long	0xb93f8042	# klmd %r4,%r2[,M3]
+ 	brc	1,.-4		# pay attention to "partial completion"
+ 
+ 	br	$ra
+Index: openssl-3.2.3/crypto/sha/sha3.c
+===================================================================
+--- openssl-3.2.3.orig/crypto/sha/sha3.c
++++ openssl-3.2.3/crypto/sha/sha3.c
+@@ -8,13 +8,19 @@
+  */
+ 
+ #include <string.h>
++#if defined(__s390x__) && defined(OPENSSL_CPUID_OBJ)
++# include "crypto/s390x_arch.h"
++#endif
+ #include "internal/sha3.h"
+ 
+ void SHA3_squeeze(uint64_t A[5][5], unsigned char *out, size_t len, size_t r, int next);
+ 
+ void ossl_sha3_reset(KECCAK1600_CTX *ctx)
+ {
+-    memset(ctx->A, 0, sizeof(ctx->A));
++#if defined(__s390x__) && defined(OPENSSL_CPUID_OBJ)
++    if (!(OPENSSL_s390xcap_P.stfle[1] & S390X_CAPBIT(S390X_MSA12)))
++#endif
++        memset(ctx->A, 0, sizeof(ctx->A));
+     ctx->bufsz = 0;
+     ctx->xof_state = XOF_STATE_INIT;
+ }
+Index: openssl-3.2.3/providers/implementations/digests/sha3_prov.c
+===================================================================
+--- openssl-3.2.3.orig/providers/implementations/digests/sha3_prov.c
++++ openssl-3.2.3/providers/implementations/digests/sha3_prov.c
+@@ -187,26 +187,32 @@ static size_t s390x_sha3_absorb(void *vc
+ {
+     KECCAK1600_CTX *ctx = vctx;
+     size_t rem = len % ctx->block_size;
++    unsigned int fc;
+ 
+     if (!(ctx->xof_state == XOF_STATE_INIT ||
+           ctx->xof_state == XOF_STATE_ABSORB))
+         return 0;
++    fc = ctx->pad;
++    fc |= ctx->xof_state == XOF_STATE_INIT ? S390X_KIMD_NIP : 0;
+     ctx->xof_state = XOF_STATE_ABSORB;
+-    s390x_kimd(inp, len - rem, ctx->pad, ctx->A);
++    s390x_kimd(inp, len - rem, fc, ctx->A);
+     return rem;
+ }
+ 
+ static int s390x_sha3_final(void *vctx, unsigned char *out, size_t outlen)
+ {
+     KECCAK1600_CTX *ctx = vctx;
++    unsigned int fc;
+ 
+     if (!ossl_prov_is_running())
+         return 0;
+     if (!(ctx->xof_state == XOF_STATE_INIT ||
+           ctx->xof_state == XOF_STATE_ABSORB))
+         return 0;
++    fc = ctx->pad | S390X_KLMD_DUFOP;
++    fc |= ctx->xof_state == XOF_STATE_INIT ? S390X_KLMD_NIP : 0;
+     ctx->xof_state = XOF_STATE_FINAL;
+-    s390x_klmd(ctx->buf, ctx->bufsz, NULL, 0, ctx->pad, ctx->A);
++    s390x_klmd(ctx->buf, ctx->bufsz, NULL, 0, fc, ctx->A);
+     memcpy(out, ctx->A, outlen);
+     return 1;
+ }
+@@ -214,14 +220,17 @@ static int s390x_sha3_final(void *vctx,
+ static int s390x_shake_final(void *vctx, unsigned char *out, size_t outlen)
+ {
+     KECCAK1600_CTX *ctx = vctx;
++    unsigned int fc;
+ 
+     if (!ossl_prov_is_running())
+         return 0;
+     if (!(ctx->xof_state == XOF_STATE_INIT ||
+           ctx->xof_state == XOF_STATE_ABSORB))
+         return 0;
++    fc = ctx->pad | S390X_KLMD_DUFOP;
++    fc |= ctx->xof_state == XOF_STATE_INIT ? S390X_KLMD_NIP : 0;
+     ctx->xof_state = XOF_STATE_FINAL;
+-    s390x_klmd(ctx->buf, ctx->bufsz, out, outlen, ctx->pad, ctx->A);
++    s390x_klmd(ctx->buf, ctx->bufsz, out, outlen, fc, ctx->A);
+     return 1;
+ }
+ 
+@@ -271,24 +280,28 @@ static int s390x_keccakc_final(void *vct
+     size_t bsz = ctx->block_size;
+     size_t num = ctx->bufsz;
+     size_t needed = outlen;
++    unsigned int fc;
+ 
+     if (!ossl_prov_is_running())
+         return 0;
+     if (!(ctx->xof_state == XOF_STATE_INIT ||
+           ctx->xof_state == XOF_STATE_ABSORB))
+         return 0;
++    fc = ctx->pad;
++    fc |= ctx->xof_state == XOF_STATE_INIT ? S390X_KIMD_NIP : 0;
+     ctx->xof_state = XOF_STATE_FINAL;
+     if (outlen == 0)
+         return 1;
+     memset(ctx->buf + num, 0, bsz - num);
+     ctx->buf[num] = padding;
+     ctx->buf[bsz - 1] |= 0x80;
+-    s390x_kimd(ctx->buf, bsz, ctx->pad, ctx->A);
++    s390x_kimd(ctx->buf, bsz, fc, ctx->A);
+     num = needed > bsz ? bsz : needed;
+     memcpy(out, ctx->A, num);
+     needed -= num;
+     if (needed > 0)
+-        s390x_klmd(NULL, 0, out + bsz, needed, ctx->pad | S390X_KLMD_PS, ctx->A);
++        s390x_klmd(NULL, 0, out + bsz, needed,
++                   ctx->pad | S390X_KLMD_PS | S390X_KLMD_DUFOP, ctx->A);
+ 
+     return 1;
+ }
+@@ -308,6 +321,7 @@ static int s390x_keccakc_squeeze(void *v
+ {
+     KECCAK1600_CTX *ctx = vctx;
+     size_t len;
++    unsigned int fc;
+ 
+     if (!ossl_prov_is_running())
+         return 0;
+@@ -323,7 +337,9 @@ static int s390x_keccakc_squeeze(void *v
+         memset(ctx->buf + ctx->bufsz, 0, len);
+         ctx->buf[ctx->bufsz] = padding;
+         ctx->buf[ctx->block_size - 1] |= 0x80;
+-        s390x_kimd(ctx->buf, ctx->block_size, ctx->pad, ctx->A);
++        fc = ctx->pad;
++        fc |= ctx->xof_state == XOF_STATE_INIT ? S390X_KIMD_NIP : 0;
++        s390x_kimd(ctx->buf, ctx->block_size, fc, ctx->A);
+         ctx->bufsz = 0;
+         /* reuse ctx->bufsz to count bytes squeezed from current sponge */
+     }

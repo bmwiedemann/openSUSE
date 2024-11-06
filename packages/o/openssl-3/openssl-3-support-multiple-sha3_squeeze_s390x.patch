@@ -1,0 +1,46 @@
+commit bff62480333680463c82e88fdc67ed5ec14a0017
+Author: Holger Dengler <dengler@linux.ibm.com>
+Date:   Wed Sep 27 11:18:18 2023 +0200
+
+    Support multiple calls of low level SHA3_squeeze() for s390x.
+    
+    The low level SHA3_Squeeze() function needed to change slightly so
+    that it can handle multiple squeezes. Support this on s390x
+    architecture as well.
+    
+    Signed-off-by: Holger Dengler <dengler@linux.ibm.com>
+    
+    Reviewed-by: Shane Lontis <shane.lontis@oracle.com>
+    Reviewed-by: Todd Short <todd.short@me.com>
+    Reviewed-by: Tomas Mraz <tomas@openssl.org>
+    (Merged from https://github.com/openssl/openssl/pull/22221)
+
+diff --git a/crypto/sha/asm/keccak1600-s390x.pl b/crypto/sha/asm/keccak1600-s390x.pl
+index 86233c7e38..7d5ebde117 100755
+--- a/crypto/sha/asm/keccak1600-s390x.pl
++++ b/crypto/sha/asm/keccak1600-s390x.pl
+@@ -472,7 +472,7 @@ SHA3_absorb:
+ .size	SHA3_absorb,.-SHA3_absorb
+ ___
+ }
+-{ my ($A_flat,$out,$len,$bsz) = map("%r$_",(2..5));
++{ my ($A_flat,$out,$len,$bsz,$next) = map("%r$_",(2..6));
+ 
+ $code.=<<___;
+ .globl	SHA3_squeeze
+@@ -484,6 +484,7 @@ SHA3_squeeze:
+ 	lghi	%r14,8
+ 	st${g}	$bsz,5*$SIZE_T($sp)
+ 	la	%r1,0($A_flat)
++	cijne	$next,0,.Lnext_block
+ 
+ 	j	.Loop_squeeze
+ 
+@@ -501,6 +502,7 @@ SHA3_squeeze:
+ 
+ 	brct	$bsz,.Loop_squeeze	# bsz--
+ 
++.Lnext_block:
+ 	stm${g}	$out,$len,3*$SIZE_T($sp)
+ 	bras	%r14,.LKeccakF1600
+ 	lm${g}	$out,$bsz,3*$SIZE_T($sp)

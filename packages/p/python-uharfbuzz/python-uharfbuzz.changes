@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Nov  5 14:56:05 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.41.1
+  * [pyproject.toml] Allow to build from source with the latest setuptools
+    on non-PyPy. For PyPy keep setuptools pinned to '<72.2' to workaround
+    compile error (#216).
+- from version 0.41.0
+  * Update to HarfBuzz 10.0.0
+- from version 0.40.1
+  * Fix deprecation message (#211)
+- from version 0.40.0
+  * Bind ot-metrics APIs (#204)
+  * Bind hb-ot-var APIs (#208)
+  * Deprecate most hb_ot_* functions and
+    make them methods of Face or Font
+  * classes. (#209)
+  * Drop wheels for Python < 3.8 (#207)
+- from version 0.39.5
+  * Fixed issue with PyPI deployment that caused the previous release
+    to fail to upload. No actual code changes since v0.39.4.
+- from version 0.39.4
+  * Added ability to dynamically link the uharfbuzz extension module
+    to an external harfbuzz library by setting the USE_SYSTEM_LIBS=1
+    environment variable (requires pkg-config) (#45, #201).
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ
+
+-------------------------------------------------------------------
 Tue Aug 13 20:34:02 UTC 2024 - Aline Werner <aline.werner@suse.com>
 
 - Initial package creation for python-uharfbuzz version 0.39.3   

@@ -18,7 +18,7 @@
 
 %define _sonum  3
 Name:           openssl
-Version:        3.1.7
+Version:        3.2.3
 Release:        0
 Summary:        Secure Sockets and Transport Layer Security
 # Yes there is no license but to not confuse people keep it aligned to the pkg

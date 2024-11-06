@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov  5 14:15:34 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.7.0
+  * Changed the comparison to make accurate and standard more accurate,
+    although fast gets less accurate as a result.
+  * Changed usage of deprecated `pkg_resources` package to `importlib.metadata`.
+  * A `use_replace` flag was added to the `XMLFormatter` by Thomas Pfitzinger.
+    It changes text replacement from delete and insert tags to a replace tag.
+    It's not currently accessaible thtough the CLI, the question is it is better
+    to add a new formatter name, or an option to pass in formatter flags.
+    + Added option to XMLFormatter to use replace tags
+    + in _make_diff_tags after diffing, neighboring delete/insert diffs are
+      joined to a replace tag
+    + the deleted text is added as an attribute ("old-text")
+    + the inserted text is the element's text
+- Drop README.txt from %files section, removed upstream
+
+-------------------------------------------------------------------
 Tue Mar  5 04:33:13 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.6.3:

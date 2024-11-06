@@ -340,4 +340,12 @@
   * Fix typo in update-entry help, should be  /etc/kernel/cmdline</comment>
     <requestid>1208617</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>52f19364eb6097cb3f61f988d430fd79</srcmd5>
+    <version>1+git20241105.3404bf8</version>
+    <time>1730908157</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1221390</requestid>
+  </revision>
 </revisionlist>

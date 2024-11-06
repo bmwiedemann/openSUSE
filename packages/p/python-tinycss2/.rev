@@ -115,4 +115,12 @@
 - switch of isort in testing. isort5 is out and breaks everything</comment>
     <requestid>1171457</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2d44dab74ff05ef205eae0edb541b15e</srcmd5>
+    <version>1.4.0</version>
+    <time>1730908200</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1221497</requestid>
+  </revision>
 </revisionlist>

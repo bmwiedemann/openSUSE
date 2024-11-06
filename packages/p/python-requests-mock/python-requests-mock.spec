@@ -24,9 +24,10 @@ Summary:        Module to mock out responses from the requests package
 License:        Apache-2.0
 URL:            https://github.com/jamielennox/requests-mock
 Source:         https://files.pythonhosted.org/packages/source/r/requests-mock/requests-mock-%{version}.tar.gz
+# https://github.com/jamielennox/requests-mock/issues/266
+Patch0:         python-requests-mock-no-purl.patch
 BuildRequires:  %{python_module fixtures}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module purl}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.3}
 BuildRequires:  %{python_module requests-futures}

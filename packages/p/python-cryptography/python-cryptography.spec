@@ -61,7 +61,8 @@ BuildRequires:  pkgconfig(libffi)
 # python-base is not enough, we need the _ssl module
 Requires:       python
 Requires:       python-bcrypt
-%requires_eq    python-cffi
+# assuming all python*-cffi packages have the same version
+Requires:       python-cffi = %(rpm -q --whatprovides python3-cffi --qf "%%{version}")
 %if %{with test}
 BuildRequires:  %{python_module bcrypt}
 BuildRequires:  %{python_module certifi}

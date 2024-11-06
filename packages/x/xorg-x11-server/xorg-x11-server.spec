@@ -36,7 +36,7 @@
 %endif
 
 Name:           xorg-x11-server
-Version:        21.1.12
+Version:        21.1.14
 Release:        0
 URL:            http://xorg.freedesktop.org/
 Summary:        X
@@ -244,8 +244,6 @@ Patch1960:      u_sync-pci-ids-with-Mesa.patch
 Patch2000:      u_fbdevhw_kernel6.9_break_fbdev_open.patch
 
 Patch1218176:   u_miCloseScreen_check_for_null_pScreen_dev_private.patch
-Patch1222442:   U_render-Avoid-possible-double-free-in-ProcRenderAddGl.patch
-Patch1222443:   U_xorg-xserver-e89edec497ba.patch
 
 %description
 This package contains the X.Org Server.
@@ -406,9 +404,6 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch -P 2000 -p1
 
 %patch -P 1218176 -p1
-
-%patch -P 1222442 -p1
-%patch -P 1222443 -p1
 
 %build
 # We have some -z now related errors during X default startup (boo#1197994):

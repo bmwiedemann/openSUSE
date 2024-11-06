@@ -1,0 +1,1781 @@
+commit 536649082212e7c643ab8d7bab89f620fbcd37f0
+Author: slontis <shane.lontis@oracle.com>
+Date:   Fri Jul 21 15:05:38 2023 +1000
+
+    Add EVP_DigestSqueeze() API.
+    
+    Fixes #7894
+    
+    This allows SHAKE to squeeze multiple times with different output sizes.
+    
+    The existing EVP_DigestFinalXOF() API has been left as a one shot
+    operation. A similar interface is used by another toolkit.
+    
+    The low level SHA3_Squeeze() function needed to change slightly so
+    that it can handle multiple squeezes. This involves changing the
+    assembler code so that it passes a boolean to indicate whether
+    the Keccak function should be called on entry.
+    At the provider level, the squeeze is buffered, so that it only requests
+    a multiple of the blocksize when SHA3_Squeeze() is called. On the first
+    call the value is zero, on subsequent calls the value passed is 1.
+    
+    This PR is derived from the excellent work done by @nmathewson in
+    https://github.com/openssl/openssl/pull/7921
+    
+    Reviewed-by: Paul Dale <pauli@openssl.org>
+    Reviewed-by: Tomas Mraz <tomas@openssl.org>
+    (Merged from https://github.com/openssl/openssl/pull/21511)
+
+Index: openssl-3.2.3/crypto/evp/digest.c
+===================================================================
+--- openssl-3.2.3.orig/crypto/evp/digest.c
++++ openssl-3.2.3/crypto/evp/digest.c
+@@ -502,6 +502,7 @@ int EVP_DigestFinal_ex(EVP_MD_CTX *ctx,
+     return ret;
+ }
+ 
++/* This is a one shot operation */
+ int EVP_DigestFinalXOF(EVP_MD_CTX *ctx, unsigned char *md, size_t size)
+ {
+     int ret = 0;
+@@ -526,10 +527,15 @@ int EVP_DigestFinalXOF(EVP_MD_CTX *ctx,
+         return 0;
+     }
+ 
++    /*
++     * For backward compatibility we pass the XOFLEN via a param here so that
++     * older providers can use the supplied value. Ideally we should have just
++     * used the size passed into ctx->digest->dfinal().
++     */
+     params[i++] = OSSL_PARAM_construct_size_t(OSSL_DIGEST_PARAM_XOFLEN, &size);
+     params[i++] = OSSL_PARAM_construct_end();
+ 
+-    if (EVP_MD_CTX_set_params(ctx, params) > 0)
++    if (EVP_MD_CTX_set_params(ctx, params) >= 0)
+         ret = ctx->digest->dfinal(ctx->algctx, md, &size, size);
+ 
+     ctx->flags |= EVP_MD_CTX_FLAG_FINALISED;
+@@ -553,6 +559,27 @@ legacy:
+     return ret;
+ }
+ 
++/* EVP_DigestSqueeze() can be called multiple times */
++int EVP_DigestSqueeze(EVP_MD_CTX *ctx, unsigned char *md, size_t size)
++{
++    if (ctx->digest == NULL) {
++        ERR_raise(ERR_LIB_EVP, EVP_R_INVALID_NULL_ALGORITHM);
++        return 0;
++    }
++
++    if (ctx->digest->prov == NULL) {
++        ERR_raise(ERR_LIB_EVP, EVP_R_INVALID_OPERATION);
++        return 0;
++    }
++
++    if (ctx->digest->dsqueeze == NULL) {
++        ERR_raise(ERR_LIB_EVP, EVP_R_METHOD_NOT_SUPPORTED);
++        return 0;
++    }
++
++    return ctx->digest->dsqueeze(ctx->algctx, md, &size, size);
++}
++
+ EVP_MD_CTX *EVP_MD_CTX_dup(const EVP_MD_CTX *in)
+ {
+     EVP_MD_CTX *out = EVP_MD_CTX_new();
+@@ -1032,6 +1059,12 @@ static void *evp_md_from_algorithm(int n
+                 fncnt++;
+             }
+             break;
++        case OSSL_FUNC_DIGEST_SQUEEZE:
++            if (md->dsqueeze == NULL) {
++                md->dsqueeze = OSSL_FUNC_digest_squeeze(fns);
++                fncnt++;
++            }
++            break;
+         case OSSL_FUNC_DIGEST_DIGEST:
+             if (md->digest == NULL)
+                 md->digest = OSSL_FUNC_digest_digest(fns);
+@@ -1075,7 +1108,7 @@ static void *evp_md_from_algorithm(int n
+             break;
+         }
+     }
+-    if ((fncnt != 0 && fncnt != 5)
++    if ((fncnt != 0 && fncnt != 5 && fncnt != 6)
+         || (fncnt == 0 && md->digest == NULL)) {
+         /*
+          * In order to be a consistent set of functions we either need the
+Index: openssl-3.2.3/crypto/evp/legacy_sha.c
+===================================================================
+--- openssl-3.2.3.orig/crypto/evp/legacy_sha.c
++++ openssl-3.2.3/crypto/evp/legacy_sha.c
+@@ -37,7 +37,8 @@ static int nm##_update(EVP_MD_CTX *ctx,
+ }                                                                              \
+ static int nm##_final(EVP_MD_CTX *ctx, unsigned char *md)                      \
+ {                                                                              \
+-    return fn##_final(md, EVP_MD_CTX_get0_md_data(ctx));                       \
++    KECCAK1600_CTX *kctx = EVP_MD_CTX_get0_md_data(ctx);                       \
++    return fn##_final(kctx, md, kctx->md_size);                                \
+ }
+ #define IMPLEMENT_LEGACY_EVP_MD_METH_SHAKE(nm, fn, tag)                        \
+ static int nm##_init(EVP_MD_CTX *ctx)                                          \
+Index: openssl-3.2.3/crypto/sha/asm/keccak1600-armv4.pl
+===================================================================
+--- openssl-3.2.3.orig/crypto/sha/asm/keccak1600-armv4.pl
++++ openssl-3.2.3/crypto/sha/asm/keccak1600-armv4.pl
+@@ -966,6 +966,8 @@ SHA3_squeeze:
+ 	stmdb	sp!,{r6-r9}
+ 
+ 	mov	r14,$A_flat
++	cmp	r4, #0                 @ r4 = 'next' argument
++	bne	.Lnext_block
+ 	b	.Loop_squeeze
+ 
+ .align	4
+@@ -1037,7 +1039,7 @@ SHA3_squeeze:
+ 
+ 	subs	$bsz,$bsz,#8		@ bsz -= 8
+ 	bhi	.Loop_squeeze
+-
++.Lnext_block:
+ 	mov	r0,r14			@ original $A_flat
+ 
+ 	bl	KeccakF1600
+Index: openssl-3.2.3/crypto/sha/asm/keccak1600-armv8.pl
+===================================================================
+--- openssl-3.2.3.orig/crypto/sha/asm/keccak1600-armv8.pl
++++ openssl-3.2.3/crypto/sha/asm/keccak1600-armv8.pl
+@@ -483,6 +483,8 @@ SHA3_squeeze:
+ 	mov	$out,x1
+ 	mov	$len,x2
+ 	mov	$bsz,x3
++	cmp	x4, #0				// x4 = 'next' argument
++	bne	.Lnext_block
+ 
+ .Loop_squeeze:
+ 	ldr	x4,[x0],#8
+@@ -497,7 +499,7 @@ SHA3_squeeze:
+ 
+ 	subs	x3,x3,#8
+ 	bhi	.Loop_squeeze
+-
++.Lnext_block:
+ 	mov	x0,$A_flat
+ 	bl	KeccakF1600
+ 	mov	x0,$A_flat
+Index: openssl-3.2.3/crypto/sha/asm/keccak1600-ppc64.pl
+===================================================================
+--- openssl-3.2.3.orig/crypto/sha/asm/keccak1600-ppc64.pl
++++ openssl-3.2.3/crypto/sha/asm/keccak1600-ppc64.pl
+@@ -668,6 +668,8 @@ SHA3_squeeze:
+ 	subi	$out,r4,1		; prepare for stbu
+ 	mr	$len,r5
+ 	mr	$bsz,r6
++	${UCMP}i r7,1                   ; r7 = 'next' argument
++	blt	.Lnext_block
+ 	b	.Loop_squeeze
+ 
+ .align	4
+@@ -698,6 +700,7 @@ SHA3_squeeze:
+ 	subic.	r6,r6,8
+ 	bgt	.Loop_squeeze
+ 
++.Lnext_block:
+ 	mr	r3,$A_flat
+ 	bl	KeccakF1600
+ 	subi	r3,$A_flat,8		; prepare for ldu
+Index: openssl-3.2.3/crypto/sha/asm/keccak1600-x86_64.pl
+===================================================================
+--- openssl-3.2.3.orig/crypto/sha/asm/keccak1600-x86_64.pl
++++ openssl-3.2.3/crypto/sha/asm/keccak1600-x86_64.pl
+@@ -503,12 +503,12 @@ SHA3_absorb:
+ .size	SHA3_absorb,.-SHA3_absorb
+ ___
+ }
+-{ my ($A_flat,$out,$len,$bsz) = ("%rdi","%rsi","%rdx","%rcx");
++{ my ($A_flat,$out,$len,$bsz,$next) = ("%rdi","%rsi","%rdx","%rcx","%r8");
+      ($out,$len,$bsz) = ("%r12","%r13","%r14");
+ 
+ $code.=<<___;
+ .globl	SHA3_squeeze
+-.type	SHA3_squeeze,\@function,4
++.type	SHA3_squeeze,\@function,5
+ .align	32
+ SHA3_squeeze:
+ .cfi_startproc
+@@ -520,10 +520,12 @@ SHA3_squeeze:
+ .cfi_push	%r14
+ 
+ 	shr	\$3,%rcx
+-	mov	$A_flat,%r8
++	mov	$A_flat,%r9
+ 	mov	%rsi,$out
+ 	mov	%rdx,$len
+ 	mov	%rcx,$bsz
++	bt	\$0,$next
++	jc	.Lnext_block
+ 	jmp	.Loop_squeeze
+ 
+ .align	32
+@@ -531,8 +533,8 @@ SHA3_squeeze:
+ 	cmp	\$8,$len
+ 	jb	.Ltail_squeeze
+ 
+-	mov	(%r8),%rax
+-	lea	8(%r8),%r8
++	mov	(%r9),%rax
++	lea	8(%r9),%r9
+ 	mov	%rax,($out)
+ 	lea	8($out),$out
+ 	sub	\$8,$len		# len -= 8
+@@ -540,14 +542,14 @@ SHA3_squeeze:
+ 
+ 	sub	\$1,%rcx		# bsz--
+ 	jnz	.Loop_squeeze
+-
++.Lnext_block:
+ 	call	KeccakF1600
+-	mov	$A_flat,%r8
++	mov	$A_flat,%r9
+ 	mov	$bsz,%rcx
+ 	jmp	.Loop_squeeze
+ 
+ .Ltail_squeeze:
+-	mov	%r8, %rsi
++	mov	%r9, %rsi
+ 	mov	$out,%rdi
+ 	mov	$len,%rcx
+ 	.byte	0xf3,0xa4		# rep	movsb
+Index: openssl-3.2.3/crypto/sha/keccak1600.c
+===================================================================
+--- openssl-3.2.3.orig/crypto/sha/keccak1600.c
++++ openssl-3.2.3/crypto/sha/keccak1600.c
+@@ -13,7 +13,7 @@
+ 
+ size_t SHA3_absorb(uint64_t A[5][5], const unsigned char *inp, size_t len,
+                    size_t r);
+-void SHA3_squeeze(uint64_t A[5][5], unsigned char *out, size_t len, size_t r);
++void SHA3_squeeze(uint64_t A[5][5], unsigned char *out, size_t len, size_t r, int next);
+ 
+ #if !defined(KECCAK1600_ASM) || !defined(SELFTEST)
+ 
+@@ -1090,10 +1090,16 @@ size_t SHA3_absorb(uint64_t A[5][5], con
+ }
+ 
+ /*
+- * sha3_squeeze is called once at the end to generate |out| hash value
+- * of |len| bytes.
++ * SHA3_squeeze may be called after SHA3_absorb to generate |out| hash value of
++ * |len| bytes.
++ * If multiple SHA3_squeeze calls are required the output length |len| must be a
++ * multiple of the blocksize, with |next| being 0 on the first call and 1 on
++ * subsequent calls. It is the callers responsibility to buffer the results.
++ * When only a single call to SHA3_squeeze is required, |len| can be any size
++ * and |next| must be 0.
+  */
+-void SHA3_squeeze(uint64_t A[5][5], unsigned char *out, size_t len, size_t r)
++void SHA3_squeeze(uint64_t A[5][5], unsigned char *out, size_t len, size_t r,
++                  int next)
+ {
+     uint64_t *A_flat = (uint64_t *)A;
+     size_t i, w = r / 8;
+@@ -1101,6 +1107,9 @@ void SHA3_squeeze(uint64_t A[5][5], unsi
+     assert(r < (25 * sizeof(A[0][0])) && (r % 8) == 0);
+ 
+     while (len != 0) {
++        if (next)
++            KeccakF1600(A);
++        next = 1;
+         for (i = 0; i < w && len != 0; i++) {
+             uint64_t Ai = BitDeinterleave(A_flat[i]);
+ 
+@@ -1123,8 +1132,6 @@ void SHA3_squeeze(uint64_t A[5][5], unsi
+             out += 8;
+             len -= 8;
+         }
+-        if (len)
+-            KeccakF1600(A);
+     }
+ }
+ #endif
+Index: openssl-3.2.3/crypto/sha/sha3.c
+===================================================================
+--- openssl-3.2.3.orig/crypto/sha/sha3.c
++++ openssl-3.2.3/crypto/sha/sha3.c
+@@ -10,12 +10,13 @@
+ #include <string.h>
+ #include "internal/sha3.h"
+ 
+-void SHA3_squeeze(uint64_t A[5][5], unsigned char *out, size_t len, size_t r);
++void SHA3_squeeze(uint64_t A[5][5], unsigned char *out, size_t len, size_t r, int next);
+ 
+ void ossl_sha3_reset(KECCAK1600_CTX *ctx)
+ {
+     memset(ctx->A, 0, sizeof(ctx->A));
+     ctx->bufsz = 0;
++    ctx->xof_state = XOF_STATE_INIT;
+ }
+ 
+ int ossl_sha3_init(KECCAK1600_CTX *ctx, unsigned char pad, size_t bitlen)
+@@ -51,6 +52,10 @@ int ossl_sha3_update(KECCAK1600_CTX *ctx
+     if (len == 0)
+         return 1;
+ 
++    if (ctx->xof_state == XOF_STATE_SQUEEZE
++        || ctx->xof_state == XOF_STATE_FINAL)
++        return 0;
++
+     if ((num = ctx->bufsz) != 0) {      /* process intermediate buffer? */
+         rem = bsz - num;
+ 
+@@ -84,13 +89,21 @@ int ossl_sha3_update(KECCAK1600_CTX *ctx
+     return 1;
+ }
+ 
+-int ossl_sha3_final(unsigned char *md, KECCAK1600_CTX *ctx)
++/*
++ * ossl_sha3_final()is a single shot method
++ * (Use ossl_sha3_squeeze for multiple calls).
++ * outlen is the variable size output.
++ */
++int ossl_sha3_final(KECCAK1600_CTX *ctx, unsigned char *out, size_t outlen)
+ {
+     size_t bsz = ctx->block_size;
+     size_t num = ctx->bufsz;
+ 
+-    if (ctx->md_size == 0)
++    if (outlen == 0)
+         return 1;
++    if (ctx->xof_state == XOF_STATE_SQUEEZE
++        || ctx->xof_state == XOF_STATE_FINAL)
++        return 0;
+ 
+     /*
+      * Pad the data with 10*1. Note that |num| can be |bsz - 1|
+@@ -103,7 +116,86 @@ int ossl_sha3_final(unsigned char *md, K
+ 
+     (void)SHA3_absorb(ctx->A, ctx->buf, bsz, bsz);
+ 
+-    SHA3_squeeze(ctx->A, md, ctx->md_size, bsz);
++    ctx->xof_state = XOF_STATE_FINAL;
++    SHA3_squeeze(ctx->A, out, outlen, bsz, 0);
++    return 1;
++}
++
++/*
++ * This method can be called multiple times.
++ * Rather than heavily modifying assembler for SHA3_squeeze(),
++ * we instead just use the limitations of the existing function.
++ * i.e. Only request multiples of the ctx->block_size when calling
++ * SHA3_squeeze(). For output length requests smaller than the
++ * ctx->block_size just request a single ctx->block_size bytes and
++ * buffer the results. The next request will use the buffer first
++ * to grab output bytes.
++ */
++int ossl_sha3_squeeze(KECCAK1600_CTX *ctx, unsigned char *out, size_t outlen)
++{
++    size_t bsz = ctx->block_size;
++    size_t num = ctx->bufsz;
++    size_t len;
++    int next = 1;
++
++    if (outlen == 0)
++        return 1;
++
++    if (ctx->xof_state == XOF_STATE_FINAL)
++        return 0;
++
++    /*
++     * On the first squeeze call, finish the absorb process,
++     * by adding the trailing padding and then doing
++     * a final absorb.
++     */
++    if (ctx->xof_state != XOF_STATE_SQUEEZE) {
++        /*
++         * Pad the data with 10*1. Note that |num| can be |bsz - 1|
++         * in which case both byte operations below are performed on
++         * same byte...
++         */
++        memset(ctx->buf + num, 0, bsz - num);
++        ctx->buf[num] = ctx->pad;
++        ctx->buf[bsz - 1] |= 0x80;
++        (void)SHA3_absorb(ctx->A, ctx->buf, bsz, bsz);
++        ctx->xof_state = XOF_STATE_SQUEEZE;
++        num = ctx->bufsz = 0;
++        next = 0;
++    }
++
++    /*
++     * Step 1. Consume any bytes left over from a previous squeeze
++     * (See Step 4 below).
++     */
++    if (num != 0) {
++        if (outlen > ctx->bufsz)
++            len = ctx->bufsz;
++        else
++            len = outlen;
++        memcpy(out, ctx->buf + bsz - ctx->bufsz, len);
++        out += len;
++        outlen -= len;
++        ctx->bufsz -= len;
++    }
++    if (outlen == 0)
++        return 1;
++
++    /* Step 2. Copy full sized squeezed blocks to the output buffer directly */
++    if (outlen >= bsz) {
++        len = bsz * (outlen / bsz);
++        SHA3_squeeze(ctx->A, out, len, bsz, next);
++        next = 1;
++        out += len;
++        outlen -= len;
++    }
++    if (outlen > 0) {
++        /* Step 3. Squeeze one more block into a buffer */
++        SHA3_squeeze(ctx->A, ctx->buf, bsz, bsz, next);
++        memcpy(out, ctx->buf, outlen);
++        /* Step 4. Remember the leftover part of the squeezed block */
++        ctx->bufsz = bsz - outlen;
++    }
+ 
+     return 1;
+ }
+Index: openssl-3.2.3/doc/life-cycles/digest.dot
+===================================================================
+--- openssl-3.2.3.orig/doc/life-cycles/digest.dot
++++ openssl-3.2.3/doc/life-cycles/digest.dot
+@@ -6,28 +6,30 @@ digraph digest {
+     initialised [label=initialised, fontcolor="#c94c4c"];
+     updated [label=updated, fontcolor="#c94c4c"];
+     finaled [label="finaled", fontcolor="#c94c4c"];
++    squeezed [label="squeezed", fontcolor="#c94c4c"];
+     end [label="freed", color="#deeaee", style="filled"];
+ 
+     begin -> newed [label="EVP_MD_CTX_new"];
+-    newed -> initialised [label="EVP_DigestInit"];
+-    initialised -> updated [label="EVP_DigestUpdate", weight=3];
++    newed -> initialised [label="EVP_DigestInit", weight=100];
++    initialised -> updated [label="EVP_DigestUpdate", weight=100];
+     updated -> updated [label="EVP_DigestUpdate"];
+-    updated -> finaled [label="EVP_DigestFinal"];
++    updated -> finaled [label="EVP_DigestFinal", weight=2];
+     updated -> finaled [label="EVP_DigestFinalXOF",
+                         fontcolor="#808080", color="#808080"];
+-    /* Once this works it should go back in:
+-    finaled -> finaled [taillabel="EVP_DigestFinalXOF",
+-                        labeldistance=9, labelangle=345,
+-                        labelfontcolor="#808080", color="#808080"];
+-    */
++    updated -> squeezed [label="EVP_DigestSqueeze", weight=3];
+     finaled -> end [label="EVP_MD_CTX_free"];
+-    finaled -> newed [label="EVP_MD_CTX_reset", style=dashed, weight=2,
++    finaled -> newed [label="EVP_MD_CTX_reset", style=dashed,
+                       color="#034f84", fontcolor="#034f84"];
+     updated -> newed [label="EVP_MD_CTX_reset", style=dashed,
+                       color="#034f84", fontcolor="#034f84"];
+-    updated -> initialised [label="EVP_DigestInit", weight=0, style=dashed,
++    updated -> initialised [label="EVP_DigestInit", style=dashed,
+                             color="#034f84", fontcolor="#034f84"];
+     finaled -> initialised [label="EVP_DigestInit", style=dashed,
+                             color="#034f84", fontcolor="#034f84"];
++    squeezed -> squeezed [label="EVP_DigestSqueeze"];
++    squeezed -> end [label="EVP_MD_CTX_free", weight=1];
++    squeezed -> newed [label="EVP_MD_CTX_reset", style=dashed,
++                      color="#034f84", fontcolor="#034f84"];
++    squeezed -> initialised [label="EVP_DigestInit", style=dashed,
++                            color="#034f84", fontcolor="#034f84"];
+ }
+-
+Index: openssl-3.2.3/doc/man3/EVP_DigestInit.pod
+===================================================================
+--- openssl-3.2.3.orig/doc/man3/EVP_DigestInit.pod
++++ openssl-3.2.3/doc/man3/EVP_DigestInit.pod
+@@ -12,6 +12,7 @@ EVP_MD_CTX_settable_params, EVP_MD_CTX_g
+ EVP_MD_CTX_set_flags, EVP_MD_CTX_clear_flags, EVP_MD_CTX_test_flags,
+ EVP_Q_digest, EVP_Digest, EVP_DigestInit_ex2, EVP_DigestInit_ex, EVP_DigestInit,
+ EVP_DigestUpdate, EVP_DigestFinal_ex, EVP_DigestFinalXOF, EVP_DigestFinal,
++EVP_DigestSqueeze,
+ EVP_MD_is_a, EVP_MD_get0_name, EVP_MD_get0_description,
+ EVP_MD_names_do_all, EVP_MD_get0_provider, EVP_MD_get_type,
+ EVP_MD_get_pkey_type, EVP_MD_get_size, EVP_MD_get_block_size, EVP_MD_get_flags,
+@@ -61,7 +62,8 @@ EVP_MD_CTX_type, EVP_MD_CTX_pkey_ctx, EV
+  int EVP_DigestInit_ex(EVP_MD_CTX *ctx, const EVP_MD *type, ENGINE *impl);
+  int EVP_DigestUpdate(EVP_MD_CTX *ctx, const void *d, size_t cnt);
+  int EVP_DigestFinal_ex(EVP_MD_CTX *ctx, unsigned char *md, unsigned int *s);
+- int EVP_DigestFinalXOF(EVP_MD_CTX *ctx, unsigned char *md, size_t len);
++ int EVP_DigestFinalXOF(EVP_MD_CTX *ctx, unsigned char *out, size_t outlen);
++ int EVP_DigestSqueeze(EVP_MD_CTX *ctx, unsigned char *out, size_t outlen);
+ 
+  EVP_MD_CTX *EVP_MD_CTX_dup(const EVP_MD_CTX *in);
+  int EVP_MD_CTX_copy_ex(EVP_MD_CTX *out, const EVP_MD_CTX *in);
+@@ -293,9 +295,16 @@ initialize a new digest operation.
+ =item EVP_DigestFinalXOF()
+ 
+ Interfaces to extendable-output functions, XOFs, such as SHAKE128 and SHAKE256.
+-It retrieves the digest value from I<ctx> and places it in I<len>-sized I<md>.
++It retrieves the digest value from I<ctx> and places it in I<outlen>-sized I<out>.
+ After calling this function no additional calls to EVP_DigestUpdate() can be
+ made, but EVP_DigestInit_ex2() can be called to initialize a new operation.
++EVP_DigestFinalXOF() may only be called once
++
++=item EVP_DigestSqueeze()
++
++Similar to EVP_DigestFinalXOF() but allows multiple calls to be made to
++squeeze variable length output data.
++EVP_DigestFinalXOF() should not be called after this.
+ 
+ =item EVP_MD_CTX_dup()
+ 
+@@ -480,8 +489,9 @@ EVP_MD_CTX_set_params() can be used with
+ =item "xoflen" (B<OSSL_DIGEST_PARAM_XOFLEN>) <unsigned integer>
+ 
+ Sets the digest length for extendable output functions.
+-It is used by the SHAKE algorithm and should not exceed what can be given
+-using a B<size_t>.
++The value should not exceed what can be given using a B<size_t>.
++It may be used by BLAKE2B-512, SHAKE-128 and SHAKE-256 to set the
++output length used by EVP_DigestFinal_ex() and EVP_DigestFinal().
+ 
+ =item "pad-type" (B<OSSL_DIGEST_PARAM_PAD_TYPE>) <unsigned integer>
+ 
+@@ -801,7 +811,8 @@ EVP_MD_CTX_get0_md() instead.
+ EVP_MD_CTX_update_fn() and EVP_MD_CTX_set_update_fn() were deprecated
+ in OpenSSL 3.0.
+ 
+-EVP_MD_CTX_dup() was added in OpenSSL 3.2.
++The functions EVP_MD_CTX_dup() and EVP_DigestSqueeze() were added in
++OpenSSL 3.2.
+ 
+ =head1 COPYRIGHT
+ 
+Index: openssl-3.2.3/doc/man7/EVP_MD-BLAKE2.pod
+===================================================================
+--- openssl-3.2.3.orig/doc/man7/EVP_MD-BLAKE2.pod
++++ openssl-3.2.3/doc/man7/EVP_MD-BLAKE2.pod
+@@ -25,6 +25,17 @@ Known names are "BLAKE2B-512" and "BLAKE
+ 
+ =back
+ 
++=head2 Settable Parameters
++
++"BLAKE2B-512" supports the following EVP_MD_CTX_set_params() key
++described in  L<EVP_DigestInit(3)/PARAMETERS>.
++
++=over 4
++
++=item "xoflen" (B<OSSL_DIGEST_PARAM_XOFLEN>) <unsigned integer>
++
++=back
++
+ =head2 Gettable Parameters
+ 
+ This implementation supports the common gettable parameters described
+Index: openssl-3.2.3/doc/man7/EVP_MD-SHAKE.pod
+===================================================================
+--- openssl-3.2.3.orig/doc/man7/EVP_MD-SHAKE.pod
++++ openssl-3.2.3/doc/man7/EVP_MD-SHAKE.pod
+@@ -70,8 +70,21 @@ For backwards compatibility reasons the
+ 32 (bytes) which results in a security strength of only 128 bits. To ensure the
+ maximum security strength of 256 bits, the xoflen should be set to at least 64.
+ 
++This parameter may be used when calling either EVP_DigestFinal_ex() or
++EVP_DigestFinal(), since these functions were not designed to handle variable
++length output. It is recommended to either use EVP_DigestSqueeze() or
++EVP_DigestFinalXOF() instead.
++
+ =back
+ 
++=head1 NOTES
++
++For SHAKE-128, to ensure the maximum security strength of 128 bits, the output
++length passed to EVP_DigestFinalXOF() should be at least 32.
++
++For SHAKE-256, to ensure the maximum security strength of 256 bits, the output
++length passed to EVP_DigestFinalXOF() should be at least 64.
++
+ =head1 SEE ALSO
+ 
+ L<EVP_MD_CTX_set_params(3)>, L<provider-digest(7)>, L<OSSL_PROVIDER-default(7)>
+Index: openssl-3.2.3/doc/man7/life_cycle-digest.pod
+===================================================================
+--- openssl-3.2.3.orig/doc/man7/life_cycle-digest.pod
++++ openssl-3.2.3/doc/man7/life_cycle-digest.pod
+@@ -32,6 +32,14 @@ additional input or generating output.
+ =item finaled
+ 
+ This state represents the MD when it has generated output.
++For an XOF digest, this state represents the MD when it has generated a
++single-shot output.
++
++=item squeezed
++
++For an XOF digest, this state represents the MD when it has generated output.
++It can be called multiple times to generate more output. The output length is
++variable for each call.
+ 
+ =item freed
+ 
+@@ -46,39 +54,57 @@ The usual life-cycle of a MD is illustra
+ 
+ =begin man
+ 
+-                     +-------------------+
+-                     |       start       |
+-                     +-------------------+
+-                       |
+-                       | EVP_MD_CTX_new
+-                       v
+-                     +-------------------+         EVP_MD_CTX_reset
+-                     |       newed       | <------------------------------+
+-                     +-------------------+                                |
+-                       |                                                  |
+-                       | EVP_DigestInit                                   |
+-                       v                                                  |
+-                     +-------------------+                                |
+-                +--> |    initialised    | <+ EVP_DigestInit              |
+-                |    +-------------------+  |                             |
+-                |      |                    |      EVP_DigestUpdate       |
+-                |      | EVP_DigestUpdate   |    +------------------+     |
+-                |      v                    |    v                  |     |
+-                |    +------------------------------------------------+   |
+- EVP_DigestInit |    |                    updated                     | --+
+-                |    +------------------------------------------------+   |
+-                |      |                    |                             |
+-                |      | EVP_DigestFinal    | EVP_DigestFinalXOF          |
+-                |      v                    v                             |
+-                |    +------------------------------------------------+   |
+-                +--- |                    finaled                     | --+
+-                     +------------------------------------------------+
+-                       |
+-                       | EVP_MD_CTX_free
+-                       v
+-                     +-------------------+
+-                     |       freed       |
+-                     +-------------------+
++                                  +--------------------+
++                                  |       start        |
++                                  +--------------------+
++                                    |                            EVP_MD_CTX_reset
++                                    | EVP_MD_CTX_new           +-------------------------------------------------+
++                                    v                          v                                                 |
++              EVP_MD_CTX_reset    + - - - - - - - - - - - - - - - - - - - - - - +    EVP_MD_CTX_reset            |
++            +-------------------> '                   newed                     ' <--------------------+         |
++            |                     + - - - - - - - - - - - - - - - - - - - - - - +                      |         |
++            |                       |                                                                  |         |
++            |                       | EVP_DigestInit                                                   |         |
++            |                       v                                                                  |         |
++            |   EVP_DigestInit    + - - - - - - - - - - - - - - - - - - - - - - +                      |         |
++       +----+-------------------> '                initialised                  ' <+  EVP_DigestInit   |         |
++       |    |                     + - - - - - - - - - - - - - - - - - - - - - - +  |                   |         |
++       |    |                       |                     ^                        |                   |         |
++       |    |                       | EVP_DigestUpdate    | EVP_DigestInit         |                   |         |
++       |    |                       v                     |                        |                   |         |
++       |    |                     +---------------------------------------------+  |                   |         |
++       |    +-------------------- |                                             |  |                   |         |
++       |                          |                                             |  |                   |         |
++       |      EVP_DigestUpdate    |                                             |  |                   |         |
++       |    +-------------------- |                                             |  |                   |         |
++       |    |                     |                   updated                   |  |                   |         |
++       |    +-------------------> |                                             |  |                   |         |
++       |                          |                                             |  |                   |         |
++       |                          |                                             |  |                   |         |
++  +----+------------------------- |                                             | -+-------------------+----+    |
++  |    |                          +---------------------------------------------+  |                   |    |    |
++  |    |                            |                                              |                   |    |    |
++  |    |                            | EVP_DigestSqueeze        +-------------------+                   |    |    |
++  |    |                            v                          |                                       |    |    |
++  |    |      EVP_DigestSqueeze   +---------------------------------------------+                      |    |    |
++  |    |    +-------------------- |                                             |                      |    |    |
++  |    |    |                     |                  squeezed                   |                      |    |    |
++  |    |    +-------------------> |                                             | ---------------------+    |    |
++  |    |                          +---------------------------------------------+                           |    |
++  |    |                                                       |                                            |    |
++  |    |                                                       +---------------------------------------+    |    |
++  |    |                                                                                               |    |    |
++  |    |                          +---------------------------------------------+  EVP_DigestFinalXOF  |    |    |
++  |    +------------------------- |             finaled                         | <--------------------+----+    |
++  |                               +---------------------------------------------+                      |         |
++  |   EVP_DigestFinal               ^                     |    |                                       |         |
++  +---------------------------------+                     |    | EVP_MD_CTX_free                       |         |
++                                                          |    v                                       |         |
++                                                          |  +------------------+  EVP_MD_CTX_free     |         |
++                                                          |  |      freed       | <--------------------+         |
++                                                          |  +------------------+                                |
++                                                          |                                                      |
++                                                          +------------------------------------------------------+
+ 
+ =end man
+ 
+@@ -91,19 +117,21 @@ This is the canonical list.
+ 
+ =begin man
+ 
+- Function Call                --------------------- Current State ----------------------
+-                              start   newed    initialised   updated     finaled   freed
++ Function Call                --------------------- Current State -----------------------------------
++                              start   newed    initialised   updated     finaled     squeezed   freed
+  EVP_MD_CTX_new               newed
+- EVP_DigestInit                    initialised initialised initialised initialised
++ EVP_DigestInit                    initialised initialised initialised initialised  initialised
+  EVP_DigestUpdate                                updated     updated
+  EVP_DigestFinal                                             finaled
+  EVP_DigestFinalXOF                                          finaled
++ EVP_DigestSqueeze                                           squeezed                squeezed
+  EVP_MD_CTX_free              freed   freed       freed       freed       freed
+  EVP_MD_CTX_reset                     newed       newed       newed       newed
+  EVP_MD_CTX_get_params                newed    initialised   updated
+  EVP_MD_CTX_set_params                newed    initialised   updated
+  EVP_MD_CTX_gettable_params           newed    initialised   updated
+  EVP_MD_CTX_settable_params           newed    initialised   updated
++ EVP_MD_CTX_copy_ex                   newed    initialised   updated                 squeezed
+ 
+ =end man
+ 
+@@ -118,6 +146,7 @@ This is the canonical list.
+     <th style="border:1px solid" align="center">initialised</th>
+     <th style="border:1px solid" align="center">updated</th>
+     <th style="border:1px solid" align="center">finaled</th>
++    <th style="border:1px solid" align="center">squeezed</th>
+     <th style="border:1px solid" align="center">freed</th></tr>
+ <tr><th style="border:1px solid" align="left">EVP_MD_CTX_new</th>
+     <td style="border:1px solid" align="center">newed</td>
+@@ -125,6 +154,7 @@ This is the canonical list.
+     <td style="border:1px solid" align="center"></td>
+     <td style="border:1px solid" align="center"></td>
+     <td style="border:1px solid" align="center"></td>
++    <td style="border:1px solid" align="center"></td>
+     <td style="border:1px solid" align="center"></td></tr>
+ <tr><th style="border:1px solid" align="left">EVP_DigestInit</th>
+     <td style="border:1px solid" align="center"></td>
+@@ -132,6 +162,7 @@ This is the canonical list.
+     <td style="border:1px solid" align="center">initialised</td>
+     <td style="border:1px solid" align="center">initialised</td>
+     <td style="border:1px solid" align="center">initialised</td>
++    <td style="border:1px solid" align="center">initialised</td>
+     <td style="border:1px solid" align="center"></td></tr>
+ <tr><th style="border:1px solid" align="left">EVP_DigestUpdate</th>
+     <td style="border:1px solid" align="center"></td>
+@@ -139,6 +170,7 @@ This is the canonical list.
+     <td style="border:1px solid" align="center">updated</td>
+     <td style="border:1px solid" align="center">updated</td>
+     <td style="border:1px solid" align="center"></td>
++    <td style="border:1px solid" align="center"></td>
+     <td style="border:1px solid" align="center"></td></tr>
+ <tr><th style="border:1px solid" align="left">EVP_DigestFinal</th>
+     <td style="border:1px solid" align="center"></td>
+@@ -146,6 +178,15 @@ This is the canonical list.
+     <td style="border:1px solid" align="center"></td>
+     <td style="border:1px solid" align="center">finaled</td>
+     <td style="border:1px solid" align="center"></td>
++    <td style="border:1px solid" align="center"></td>
++    <td style="border:1px solid" align="center"></td></tr>
++<tr><th style="border:1px solid" align="left">EVP_DigestSqueeze</th>
++    <td style="border:1px solid" align="center"></td>
++    <td style="border:1px solid" align="center"></td>
++    <td style="border:1px solid" align="center"></td>
++    <td style="border:1px solid" align="center">squeezed</td>
++    <td style="border:1px solid" align="center"></td>
++    <td style="border:1px solid" align="center">squeezed</td>
+     <td style="border:1px solid" align="center"></td></tr>
+ <tr><th style="border:1px solid" align="left">EVP_DigestFinalXOF</th>
+     <td style="border:1px solid" align="center"></td>
+@@ -153,6 +194,7 @@ This is the canonical list.
+     <td style="border:1px solid" align="center"></td>
+     <td style="border:1px solid" align="center">finaled</td>
+     <td style="border:1px solid" align="center"></td>
++    <td style="border:1px solid" align="center"></td>
+     <td style="border:1px solid" align="center"></td></tr>
+ <tr><th style="border:1px solid" align="left">EVP_MD_CTX_free</th>
+     <td style="border:1px solid" align="center">freed</td>
+@@ -160,6 +202,7 @@ This is the canonical list.
+     <td style="border:1px solid" align="center">freed</td>
+     <td style="border:1px solid" align="center">freed</td>
+     <td style="border:1px solid" align="center">freed</td>
++    <td style="border:1px solid" align="center"></td>
+     <td style="border:1px solid" align="center"></td></tr>
+ <tr><th style="border:1px solid" align="left">EVP_MD_CTX_reset</th>
+     <td style="border:1px solid" align="center"></td>
+@@ -167,6 +210,7 @@ This is the canonical list.
+     <td style="border:1px solid" align="center">newed</td>
+     <td style="border:1px solid" align="center">newed</td>
+     <td style="border:1px solid" align="center">newed</td>
++    <td style="border:1px solid" align="center"></td>
+     <td style="border:1px solid" align="center"></td></tr>
+ <tr><th style="border:1px solid" align="left">EVP_MD_CTX_get_params</th>
+     <td style="border:1px solid" align="center"></td>
+@@ -174,6 +218,7 @@ This is the canonical list.
+     <td style="border:1px solid" align="center">initialised</td>
+     <td style="border:1px solid" align="center">updated</td>
+     <td style="border:1px solid" align="center"></td>
++    <td style="border:1px solid" align="center"></td>
+     <td style="border:1px solid" align="center"></td></tr>
+ <tr><th style="border:1px solid" align="left">EVP_MD_CTX_set_params</th>
+     <td style="border:1px solid" align="center"></td>
+@@ -181,6 +226,7 @@ This is the canonical list.
+     <td style="border:1px solid" align="center">initialised</td>
+     <td style="border:1px solid" align="center">updated</td>
+     <td style="border:1px solid" align="center"></td>
++    <td style="border:1px solid" align="center"></td>
+     <td style="border:1px solid" align="center"></td></tr>
+ <tr><th style="border:1px solid" align="left">EVP_MD_CTX_gettable_params</th>
+     <td style="border:1px solid" align="center"></td>
+@@ -188,6 +234,7 @@ This is the canonical list.
+     <td style="border:1px solid" align="center">initialised</td>
+     <td style="border:1px solid" align="center">updated</td>
+     <td style="border:1px solid" align="center"></td>
++    <td style="border:1px solid" align="center"></td>
+     <td style="border:1px solid" align="center"></td></tr>
+ <tr><th style="border:1px solid" align="left">EVP_MD_CTX_settable_params</th>
+     <td style="border:1px solid" align="center"></td>
+@@ -195,6 +242,15 @@ This is the canonical list.
+     <td style="border:1px solid" align="center">initialised</td>
+     <td style="border:1px solid" align="center">updated</td>
+     <td style="border:1px solid" align="center"></td>
++    <td style="border:1px solid" align="center"></td>
++    <td style="border:1px solid" align="center"></td></tr>
++<tr><th style="border:1px solid" align="left">EVP_MD_CTX_copy_ex</th>
++    <td style="border:1px solid" align="center"></td>
++    <td style="border:1px solid" align="center">newed</td>
++    <td style="border:1px solid" align="center">initialised</td>
++    <td style="border:1px solid" align="center">updated</td>
++    <td style="border:1px solid" align="center"></td>
++    <td style="border:1px solid" align="center">squeezed</td>
+     <td style="border:1px solid" align="center"></td></tr>
+ </table>
+ 
+@@ -211,7 +267,7 @@ L<provider-digest(7)>, L<EVP_DigestInit(
+ 
+ =head1 COPYRIGHT
+ 
+-Copyright 2021 The OpenSSL Project Authors. All Rights Reserved.
++Copyright 2021-2023 The OpenSSL Project Authors. All Rights Reserved.
+ 
+ Licensed under the Apache License 2.0 (the "License").  You may not use
+ this file except in compliance with the License.  You can obtain a copy
+Index: openssl-3.2.3/doc/man7/provider-digest.pod
+===================================================================
+--- openssl-3.2.3.orig/doc/man7/provider-digest.pod
++++ openssl-3.2.3/doc/man7/provider-digest.pod
+@@ -198,8 +198,7 @@ This digest method can only handle one b
+ 
+ =item B<EVP_MD_FLAG_XOF>
+ 
+-This digest method is an extensible-output function (XOF) and supports
+-setting the B<OSSL_DIGEST_PARAM_XOFLEN> parameter.
++This digest method is an extensible-output function (XOF).
+ 
+ =item B<EVP_MD_FLAG_DIGALGID_NULL>
+ 
+Index: openssl-3.2.3/include/crypto/evp.h
+===================================================================
+--- openssl-3.2.3.orig/include/crypto/evp.h
++++ openssl-3.2.3/include/crypto/evp.h
+@@ -296,6 +296,7 @@ struct evp_md_st {
+     OSSL_FUNC_digest_init_fn *dinit;
+     OSSL_FUNC_digest_update_fn *dupdate;
+     OSSL_FUNC_digest_final_fn *dfinal;
++    OSSL_FUNC_digest_squeeze_fn *dsqueeze;
+     OSSL_FUNC_digest_digest_fn *digest;
+     OSSL_FUNC_digest_freectx_fn *freectx;
+     OSSL_FUNC_digest_dupctx_fn *dupctx;
+Index: openssl-3.2.3/include/internal/sha3.h
+===================================================================
+--- openssl-3.2.3.orig/include/internal/sha3.h
++++ openssl-3.2.3/include/internal/sha3.h
+@@ -22,23 +22,31 @@
+ 
+ typedef struct keccak_st KECCAK1600_CTX;
+ 
+-typedef size_t (sha3_absorb_fn)(void *vctx, const void *inp, size_t len);
+-typedef int (sha3_final_fn)(unsigned char *md, void *vctx);
++typedef size_t (sha3_absorb_fn)(void *vctx, const void *in, size_t inlen);
++typedef int (sha3_final_fn)(void *vctx, unsigned char *out, size_t outlen);
++typedef int (sha3_squeeze_fn)(void *vctx, unsigned char *out, size_t outlen);
+ 
+ typedef struct prov_sha3_meth_st
+ {
+     sha3_absorb_fn *absorb;
+     sha3_final_fn *final;
++    sha3_squeeze_fn *squeeze;
+ } PROV_SHA3_METHOD;
+ 
++#define XOF_STATE_INIT    0
++#define XOF_STATE_ABSORB  1
++#define XOF_STATE_FINAL   2
++#define XOF_STATE_SQUEEZE 3
++
+ struct keccak_st {
+     uint64_t A[5][5];
++    unsigned char buf[KECCAK1600_WIDTH / 8 - 32];
+     size_t block_size;          /* cached ctx->digest->block_size */
+     size_t md_size;             /* output length, variable in XOF */
+     size_t bufsz;               /* used bytes in below buffer */
+-    unsigned char buf[KECCAK1600_WIDTH / 8 - 32];
+     unsigned char pad;
+     PROV_SHA3_METHOD meth;
++    int xof_state;
+ };
+ 
+ void ossl_sha3_reset(KECCAK1600_CTX *ctx);
+@@ -46,7 +54,8 @@ int ossl_sha3_init(KECCAK1600_CTX *ctx,
+ int ossl_keccak_kmac_init(KECCAK1600_CTX *ctx, unsigned char pad,
+                           size_t bitlen);
+ int ossl_sha3_update(KECCAK1600_CTX *ctx, const void *_inp, size_t len);
+-int ossl_sha3_final(unsigned char *md, KECCAK1600_CTX *ctx);
++int ossl_sha3_final(KECCAK1600_CTX *ctx, unsigned char *out, size_t outlen);
++int ossl_sha3_squeeze(KECCAK1600_CTX *ctx, unsigned char *out, size_t outlen);
+ 
+ size_t SHA3_absorb(uint64_t A[5][5], const unsigned char *inp, size_t len,
+                    size_t r);
+Index: openssl-3.2.3/include/openssl/core_dispatch.h
+===================================================================
+--- openssl-3.2.3.orig/include/openssl/core_dispatch.h
++++ openssl-3.2.3/include/openssl/core_dispatch.h
+@@ -300,6 +300,7 @@ OSSL_CORE_MAKE_FUNC(int, provider_self_t
+ # define OSSL_FUNC_DIGEST_GETTABLE_PARAMS           11
+ # define OSSL_FUNC_DIGEST_SETTABLE_CTX_PARAMS       12
+ # define OSSL_FUNC_DIGEST_GETTABLE_CTX_PARAMS       13
++# define OSSL_FUNC_DIGEST_SQUEEZE                   14
+ 
+ OSSL_CORE_MAKE_FUNC(void *, digest_newctx, (void *provctx))
+ OSSL_CORE_MAKE_FUNC(int, digest_init, (void *dctx, const OSSL_PARAM params[]))
+@@ -308,6 +309,9 @@ OSSL_CORE_MAKE_FUNC(int, digest_update,
+ OSSL_CORE_MAKE_FUNC(int, digest_final,
+                     (void *dctx,
+                      unsigned char *out, size_t *outl, size_t outsz))
++OSSL_CORE_MAKE_FUNC(int, digest_squeeze,
++                    (void *dctx,
++                     unsigned char *out, size_t *outl, size_t outsz))
+ OSSL_CORE_MAKE_FUNC(int, digest_digest,
+                     (void *provctx, const unsigned char *in, size_t inl,
+                      unsigned char *out, size_t *outl, size_t outsz))
+Index: openssl-3.2.3/include/openssl/evp.h
+===================================================================
+--- openssl-3.2.3.orig/include/openssl/evp.h
++++ openssl-3.2.3/include/openssl/evp.h
+@@ -729,8 +729,10 @@ __owur int EVP_MD_CTX_copy(EVP_MD_CTX *o
+ __owur int EVP_DigestInit(EVP_MD_CTX *ctx, const EVP_MD *type);
+ __owur int EVP_DigestFinal(EVP_MD_CTX *ctx, unsigned char *md,
+                            unsigned int *s);
+-__owur int EVP_DigestFinalXOF(EVP_MD_CTX *ctx, unsigned char *md,
+-                              size_t len);
++__owur int EVP_DigestFinalXOF(EVP_MD_CTX *ctx, unsigned char *out,
++                              size_t outlen);
++__owur int EVP_DigestSqueeze(EVP_MD_CTX *ctx, unsigned char *out,
++                             size_t outlen);
+ 
+ __owur EVP_MD *EVP_MD_fetch(OSSL_LIB_CTX *ctx, const char *algorithm,
+                             const char *properties);
+Index: openssl-3.2.3/providers/implementations/digests/sha3_prov.c
+===================================================================
+--- openssl-3.2.3.orig/providers/implementations/digests/sha3_prov.c
++++ openssl-3.2.3/providers/implementations/digests/sha3_prov.c
+@@ -33,10 +33,12 @@ static OSSL_FUNC_digest_update_fn keccak
+ static OSSL_FUNC_digest_final_fn keccak_final;
+ static OSSL_FUNC_digest_freectx_fn keccak_freectx;
+ static OSSL_FUNC_digest_dupctx_fn keccak_dupctx;
++static OSSL_FUNC_digest_squeeze_fn shake_squeeze;
+ static OSSL_FUNC_digest_set_ctx_params_fn shake_set_ctx_params;
+ static OSSL_FUNC_digest_settable_ctx_params_fn shake_settable_ctx_params;
+ static sha3_absorb_fn generic_sha3_absorb;
+ static sha3_final_fn generic_sha3_final;
++static sha3_squeeze_fn generic_sha3_squeeze;
+ 
+ #if defined(OPENSSL_CPUID_OBJ) && defined(__s390__) && defined(KECCAK1600_ASM)
+ /*
+@@ -103,20 +105,37 @@ static int keccak_update(void *vctx, con
+ }
+ 
+ static int keccak_final(void *vctx, unsigned char *out, size_t *outl,
+-                        size_t outsz)
++                        size_t outlen)
+ {
+     int ret = 1;
+     KECCAK1600_CTX *ctx = vctx;
+ 
+     if (!ossl_prov_is_running())
+         return 0;
+-    if (outsz > 0)
+-        ret = ctx->meth.final(out, ctx);
++    if (outlen > 0)
++        ret = ctx->meth.final(ctx, out, ctx->md_size);
+ 
+     *outl = ctx->md_size;
+     return ret;
+ }
+ 
++static int shake_squeeze(void *vctx, unsigned char *out, size_t *outl,
++                         size_t outlen)
++{
++    int ret = 1;
++    KECCAK1600_CTX *ctx = vctx;
++
++    if (!ossl_prov_is_running())
++        return 0;
++    if (ctx->meth.squeeze == NULL)
++        return 0;
++    if (outlen > 0)
++        ret = ctx->meth.squeeze(ctx, out, outlen);
++
++    *outl = outlen;
++    return ret;
++}
++
+ /*-
+  * Generic software version of the absorb() and final().
+  */
+@@ -127,15 +146,28 @@ static size_t generic_sha3_absorb(void *
+     return SHA3_absorb(ctx->A, inp, len, ctx->block_size);
+ }
+ 
+-static int generic_sha3_final(unsigned char *md, void *vctx)
++static int generic_sha3_final(void *vctx, unsigned char *out, size_t outlen)
+ {
+-    return ossl_sha3_final(md, (KECCAK1600_CTX *)vctx);
++    return ossl_sha3_final((KECCAK1600_CTX *)vctx, out, outlen);
++}
++
++static int generic_sha3_squeeze(void *vctx, unsigned char *out, size_t outlen)
++{
++    return ossl_sha3_squeeze((KECCAK1600_CTX *)vctx, out, outlen);
+ }
+ 
+ static PROV_SHA3_METHOD sha3_generic_md =
+ {
+     generic_sha3_absorb,
+-    generic_sha3_final
++    generic_sha3_final,
++    NULL
++};
++
++static PROV_SHA3_METHOD shake_generic_md =
++{
++    generic_sha3_absorb,
++    generic_sha3_final,
++    generic_sha3_squeeze
+ };
+ 
+ #if defined(S390_SHA3)
+@@ -156,59 +188,60 @@ static size_t s390x_sha3_absorb(void *vc
+     return rem;
+ }
+ 
+-static int s390x_sha3_final(unsigned char *md, void *vctx)
++static int s390x_sha3_final(void *vctx, unsigned char *out, size_t outlen)
+ {
+     KECCAK1600_CTX *ctx = vctx;
+ 
+     if (!ossl_prov_is_running())
+         return 0;
+     s390x_klmd(ctx->buf, ctx->bufsz, NULL, 0, ctx->pad, ctx->A);
+-    memcpy(md, ctx->A, ctx->md_size);
++    memcpy(out, ctx->A, outlen);
+     return 1;
+ }
+ 
+-static int s390x_shake_final(unsigned char *md, void *vctx)
++static int s390x_shake_final(void *vctx, unsigned char *out, size_t outlen)
+ {
+     KECCAK1600_CTX *ctx = vctx;
+ 
+     if (!ossl_prov_is_running())
+         return 0;
+-    s390x_klmd(ctx->buf, ctx->bufsz, md, ctx->md_size, ctx->pad, ctx->A);
++    s390x_klmd(ctx->buf, ctx->bufsz, out, outlen, ctx->pad, ctx->A);
+     return 1;
+ }
+ 
+-static int s390x_keccakc_final(unsigned char *md, void *vctx, int padding)
++static int s390x_keccakc_final(void *vctx, unsigned char *out, size_t outlen,
++                               int padding)
+ {
+     KECCAK1600_CTX *ctx = vctx;
+     size_t bsz = ctx->block_size;
+     size_t num = ctx->bufsz;
+-    size_t needed = ctx->md_size;
++    size_t needed = outlen;
+ 
+     if (!ossl_prov_is_running())
+         return 0;
+-    if (ctx->md_size == 0)
++    if (outlen == 0)
+         return 1;
+     memset(ctx->buf + num, 0, bsz - num);
+     ctx->buf[num] = padding;
+     ctx->buf[bsz - 1] |= 0x80;
+     s390x_kimd(ctx->buf, bsz, ctx->pad, ctx->A);
+     num = needed > bsz ? bsz : needed;
+-    memcpy(md, ctx->A, num);
++    memcpy(out, ctx->A, num);
+     needed -= num;
+     if (needed > 0)
+-        s390x_klmd(NULL, 0, md + bsz, needed, ctx->pad | S390X_KLMD_PS, ctx->A);
++        s390x_klmd(NULL, 0, out + bsz, needed, ctx->pad | S390X_KLMD_PS, ctx->A);
+ 
+     return 1;
+ }
+ 
+-static int s390x_keccak_final(unsigned char *md, void *vctx)
++static int s390x_keccak_final(void *vctx, unsigned char *out, size_t outlen)
+ {
+-    return s390x_keccakc_final(md, vctx, 0x01);
++    return s390x_keccakc_final(vctx, out, outlen, 0x01);
+ }
+ 
+-static int s390x_kmac_final(unsigned char *md, void *vctx)
++static int s390x_kmac_final(void *vctx, unsigned char *out, size_t outlen)
+ {
+-    return s390x_keccakc_final(md, vctx, 0x04);
++    return s390x_keccakc_final(vctx, out, outlen, 0x04);
+ }
+ 
+ static PROV_SHA3_METHOD sha3_s390x_md =
+@@ -220,7 +253,7 @@ static PROV_SHA3_METHOD sha3_s390x_md =
+ static PROV_SHA3_METHOD keccak_s390x_md =
+ {
+     s390x_sha3_absorb,
+-    s390x_keccak_final
++    s390x_keccak_final,
+ };
+ 
+ static PROV_SHA3_METHOD shake_s390x_md =
+@@ -235,6 +268,14 @@ static PROV_SHA3_METHOD kmac_s390x_md =
+     s390x_kmac_final
+ };
+ 
++# define SHAKE_SET_MD(uname, typ)                                              \
++    if (S390_SHA3_CAPABLE(uname)) {                                            \
++        ctx->pad = S390X_##uname;                                              \
++        ctx->meth = typ##_s390x_md;                                            \
++    } else {                                                                   \
++        ctx->meth = shake_generic_md;                                          \
++    }
++
+ # define SHA3_SET_MD(uname, typ)                                               \
+     if (S390_SHA3_CAPABLE(uname)) {                                            \
+         ctx->pad = S390X_##uname;                                              \
+@@ -255,7 +296,7 @@ static PROV_SHA3_METHOD kmac_s390x_md =
+ static sha3_absorb_fn armsha3_sha3_absorb;
+ 
+ size_t SHA3_absorb_cext(uint64_t A[5][5], const unsigned char *inp, size_t len,
+-                    size_t r);
++                        size_t r);
+ /*-
+  * Hardware-assisted ARMv8.2 SHA3 extension version of the absorb()
+  */
+@@ -271,6 +312,19 @@ static PROV_SHA3_METHOD sha3_ARMSHA3_md
+     armsha3_sha3_absorb,
+     generic_sha3_final
+ };
++static PROV_SHA3_METHOD shake_ARMSHA3_md =
++{
++    armsha3_sha3_absorb,
++    generic_sha3_final,
++    generic_sha3_squeeze
++};
++# define SHAKE_SET_MD(uname, typ)                                              \
++    if (OPENSSL_armcap_P & ARMV8_HAVE_SHA3_AND_WORTH_USING) {                  \
++        ctx->meth = shake_ARMSHA3_md;                                          \
++    } else {                                                                   \
++        ctx->meth = shake_generic_md;                                          \
++    }
++
+ # define SHA3_SET_MD(uname, typ)                                               \
+     if (OPENSSL_armcap_P & ARMV8_HAVE_SHA3_AND_WORTH_USING) {                  \
+         ctx->meth = sha3_ARMSHA3_md;                                           \
+@@ -286,6 +340,7 @@ static PROV_SHA3_METHOD sha3_ARMSHA3_md
+ #else
+ # define SHA3_SET_MD(uname, typ) ctx->meth = sha3_generic_md;
+ # define KMAC_SET_MD(bitlen) ctx->meth = sha3_generic_md;
++# define SHAKE_SET_MD(uname, typ) ctx->meth = shake_generic_md;
+ #endif /* S390_SHA3 */
+ 
+ #define SHA3_newctx(typ, uname, name, bitlen, pad)                             \
+@@ -302,6 +357,20 @@ static void *name##_newctx(void *provctx
+     return ctx;                                                                \
+ }
+ 
++#define SHAKE_newctx(typ, uname, name, bitlen, pad)                            \
++static OSSL_FUNC_digest_newctx_fn name##_newctx;                               \
++static void *name##_newctx(void *provctx)                                      \
++{                                                                              \
++    KECCAK1600_CTX *ctx = ossl_prov_is_running() ? OPENSSL_zalloc(sizeof(*ctx))\
++                                                : NULL;                        \
++                                                                               \
++    if (ctx == NULL)                                                           \
++        return NULL;                                                           \
++    ossl_sha3_init(ctx, pad, bitlen);                                          \
++    SHAKE_SET_MD(uname, typ)                                                   \
++    return ctx;                                                                \
++}
++
+ #define KMAC_newctx(uname, bitlen, pad)                                        \
+ static OSSL_FUNC_digest_newctx_fn uname##_newctx;                              \
+ static void *uname##_newctx(void *provctx)                                     \
+@@ -333,6 +402,7 @@ const OSSL_DISPATCH ossl_##name##_functi
+ 
+ #define PROV_FUNC_SHAKE_DIGEST(name, bitlen, blksize, dgstsize, flags)         \
+     PROV_FUNC_SHA3_DIGEST_COMMON(name, bitlen, blksize, dgstsize, flags),      \
++    { OSSL_FUNC_DIGEST_SQUEEZE, (void (*)(void))shake_squeeze },               \
+     { OSSL_FUNC_DIGEST_INIT, (void (*)(void))keccak_init_params },             \
+     { OSSL_FUNC_DIGEST_SET_CTX_PARAMS, (void (*)(void))shake_set_ctx_params }, \
+     { OSSL_FUNC_DIGEST_SETTABLE_CTX_PARAMS,                                    \
+@@ -398,7 +468,7 @@ static int shake_set_ctx_params(void *vc
+                           SHA3_FLAGS)
+ 
+ #define IMPLEMENT_SHAKE_functions(bitlen)                                      \
+-    SHA3_newctx(shake, SHAKE_##bitlen, shake_##bitlen, bitlen, '\x1f')         \
++    SHAKE_newctx(shake, SHAKE_##bitlen, shake_##bitlen, bitlen, '\x1f')        \
+     PROV_FUNC_SHAKE_DIGEST(shake_##bitlen, bitlen,                             \
+                           SHA3_BLOCKSIZE(bitlen), SHA3_MDSIZE(bitlen),         \
+                           SHAKE_FLAGS)
+Index: openssl-3.2.3/test/build.info
+===================================================================
+--- openssl-3.2.3.orig/test/build.info
++++ openssl-3.2.3/test/build.info
+@@ -63,7 +63,7 @@ IF[{- !$disabled{tests} -}]
+           provfetchtest prov_config_test rand_test ca_internals_test \
+           bio_tfo_test membio_test bio_dgram_test list_test fips_version_test \
+           x509_test hpke_test pairwise_fail_test nodefltctxtest \
+-          x509_load_cert_file_test
++          evp_xof_test x509_load_cert_file_test
+ 
+   IF[{- !$disabled{'rpk'} -}]
+     PROGRAMS{noinst}=rpktest
+@@ -571,6 +571,10 @@ IF[{- !$disabled{tests} -}]
+   INCLUDE[evp_kdf_test]=../include ../apps/include
+   DEPEND[evp_kdf_test]=../libcrypto libtestutil.a
+ 
++  SOURCE[evp_xof_test]=evp_xof_test.c
++  INCLUDE[evp_xof_test]=../include ../apps/include
++  DEPEND[evp_xof_test]=../libcrypto libtestutil.a
++
+   SOURCE[evp_pkey_dparams_test]=evp_pkey_dparams_test.c
+   INCLUDE[evp_pkey_dparams_test]=../include ../apps/include
+   DEPEND[evp_pkey_dparams_test]=../libcrypto libtestutil.a
+Index: openssl-3.2.3/test/evp_xof_test.c
+===================================================================
+--- /dev/null
++++ openssl-3.2.3/test/evp_xof_test.c
+@@ -0,0 +1,492 @@
++/*
++ * Copyright 2023 The OpenSSL Project Authors. All Rights Reserved.
++ *
++ * Licensed under the Apache License 2.0 (the "License").  You may not use
++ * this file except in compliance with the License.  You can obtain a copy
++ * in the file LICENSE in the source distribution or at
++ * https://www.openssl.org/source/license.html
++ */
++
++#include <openssl/evp.h>
++#include <openssl/rand.h>
++#include <openssl/core_names.h>
++#include "testutil.h"
++#include "internal/nelem.h"
++
++static const unsigned char shake256_input[] = {
++    0x8d, 0x80, 0x01, 0xe2, 0xc0, 0x96, 0xf1, 0xb8,
++    0x8e, 0x7c, 0x92, 0x24, 0xa0, 0x86, 0xef, 0xd4,
++    0x79, 0x7f, 0xbf, 0x74, 0xa8, 0x03, 0x3a, 0x2d,
++    0x42, 0x2a, 0x2b, 0x6b, 0x8f, 0x67, 0x47, 0xe4
++};
++
++/*
++ * This KAT output is 250 bytes, which is more than
++ * the SHAKE256 block size (136 bytes).
++ */
++static const unsigned char shake256_output[] = {
++    0x2e, 0x97, 0x5f, 0x6a, 0x8a, 0x14, 0xf0, 0x70,
++    0x4d, 0x51, 0xb1, 0x36, 0x67, 0xd8, 0x19, 0x5c,
++    0x21, 0x9f, 0x71, 0xe6, 0x34, 0x56, 0x96, 0xc4,
++    0x9f, 0xa4, 0xb9, 0xd0, 0x8e, 0x92, 0x25, 0xd3,
++    0xd3, 0x93, 0x93, 0x42, 0x51, 0x52, 0xc9, 0x7e,
++    0x71, 0xdd, 0x24, 0x60, 0x1c, 0x11, 0xab, 0xcf,
++    0xa0, 0xf1, 0x2f, 0x53, 0xc6, 0x80, 0xbd, 0x3a,
++    0xe7, 0x57, 0xb8, 0x13, 0x4a, 0x9c, 0x10, 0xd4,
++    0x29, 0x61, 0x58, 0x69, 0x21, 0x7f, 0xdd, 0x58,
++    0x85, 0xc4, 0xdb, 0x17, 0x49, 0x85, 0x70, 0x3a,
++    0x6d, 0x6d, 0xe9, 0x4a, 0x66, 0x7e, 0xac, 0x30,
++    0x23, 0x44, 0x3a, 0x83, 0x37, 0xae, 0x1b, 0xc6,
++    0x01, 0xb7, 0x6d, 0x7d, 0x38, 0xec, 0x3c, 0x34,
++    0x46, 0x31, 0x05, 0xf0, 0xd3, 0x94, 0x9d, 0x78,
++    0xe5, 0x62, 0xa0, 0x39, 0xe4, 0x46, 0x95, 0x48,
++    0xb6, 0x09, 0x39, 0x5d, 0xe5, 0xa4, 0xfd, 0x43,
++    0xc4, 0x6c, 0xa9, 0xfd, 0x6e, 0xe2, 0x9a, 0xda,
++    0x5e, 0xfc, 0x07, 0xd8, 0x4d, 0x55, 0x32, 0x49,
++    0x45, 0x0d, 0xab, 0x4a, 0x49, 0xc4, 0x83, 0xde,
++    0xd2, 0x50, 0xc9, 0x33, 0x8f, 0x85, 0xcd, 0x93,
++    0x7a, 0xe6, 0x6b, 0xb4, 0x36, 0xf3, 0xb4, 0x02,
++    0x6e, 0x85, 0x9f, 0xda, 0x1c, 0xa5, 0x71, 0x43,
++    0x2f, 0x3b, 0xfc, 0x09, 0xe7, 0xc0, 0x3c, 0xa4,
++    0xd1, 0x83, 0xb7, 0x41, 0x11, 0x1c, 0xa0, 0x48,
++    0x3d, 0x0e, 0xda, 0xbc, 0x03, 0xfe, 0xb2, 0x3b,
++    0x17, 0xee, 0x48, 0xe8, 0x44, 0xba, 0x24, 0x08,
++    0xd9, 0xdc, 0xfd, 0x01, 0x39, 0xd2, 0xe8, 0xc7,
++    0x31, 0x01, 0x25, 0xae, 0xe8, 0x01, 0xc6, 0x1a,
++    0xb7, 0x90, 0x0d, 0x1e, 0xfc, 0x47, 0xc0, 0x78,
++    0x28, 0x17, 0x66, 0xf3, 0x61, 0xc5, 0xe6, 0x11,
++    0x13, 0x46, 0x23, 0x5e, 0x1d, 0xc3, 0x83, 0x25,
++    0x66, 0x6c
++};
++
++static const unsigned char shake256_largemsg_input[] = {
++    0xb2, 0xd2, 0x38, 0x65, 0xaf, 0x8f, 0x25, 0x6e,
++    0x64, 0x40, 0xe2, 0x0d, 0x49, 0x8e, 0x3e, 0x64,
++    0x46, 0xd2, 0x03, 0xa4, 0x19, 0xe3, 0x7b, 0x80,
++    0xf7, 0x2b, 0x32, 0xe2, 0x76, 0x01, 0xfe, 0xdd,
++    0xaa, 0x33, 0x3d, 0xe4, 0x8e, 0xe1, 0x5e, 0x39,
++    0xa6, 0x92, 0xa3, 0xa7, 0xe3, 0x81, 0x24, 0x74,
++    0xc7, 0x38, 0x18, 0x92, 0xc9, 0x60, 0x50, 0x15,
++    0xfb, 0xd8, 0x04, 0xea, 0xea, 0x04, 0xd2, 0xc5,
++    0xc6, 0x68, 0x04, 0x5b, 0xc3, 0x75, 0x12, 0xd2,
++    0xbe, 0xa2, 0x67, 0x75, 0x24, 0xbf, 0x68, 0xad,
++    0x10, 0x86, 0xb3, 0x2c, 0xb3, 0x74, 0xa4, 0x6c,
++    0xf9, 0xd7, 0x1e, 0x58, 0x69, 0x27, 0x88, 0x49,
++    0x4e, 0x99, 0x15, 0x33, 0x14, 0xf2, 0x49, 0x21,
++    0xf4, 0x99, 0xb9, 0xde, 0xd4, 0xf1, 0x12, 0xf5,
++    0x68, 0xe5, 0x5c, 0xdc, 0x9e, 0xc5, 0x80, 0x6d,
++    0x39, 0x50, 0x08, 0x95, 0xbb, 0x12, 0x27, 0x50,
++    0x89, 0xf0, 0xf9, 0xd5, 0x4a, 0x01, 0x0b, 0x0d,
++    0x90, 0x9f, 0x1e, 0x4a, 0xba, 0xbe, 0x28, 0x36,
++    0x19, 0x7d, 0x9c, 0x0a, 0x51, 0xfb, 0xeb, 0x00,
++    0x02, 0x6c, 0x4b, 0x0a, 0xa8, 0x6c, 0xb7, 0xc4,
++    0xc0, 0x92, 0x37, 0xa7, 0x2d, 0x49, 0x61, 0x80,
++    0xd9, 0xdb, 0x20, 0x21, 0x9f, 0xcf, 0xb4, 0x57,
++    0x69, 0x75, 0xfa, 0x1c, 0x95, 0xbf, 0xee, 0x0d,
++    0x9e, 0x52, 0x6e, 0x1e, 0xf8, 0xdd, 0x41, 0x8c,
++    0x3b, 0xaa, 0x57, 0x13, 0x84, 0x73, 0x52, 0x62,
++    0x18, 0x76, 0x46, 0xcc, 0x4b, 0xcb, 0xbd, 0x40,
++    0xa1, 0xf6, 0xff, 0x7b, 0x32, 0xb9, 0x90, 0x7c,
++    0x53, 0x2c, 0xf9, 0x38, 0x72, 0x0f, 0xcb, 0x90,
++    0x42, 0x5e, 0xe2, 0x80, 0x19, 0x26, 0xe7, 0x99,
++    0x96, 0x98, 0x18, 0xb1, 0x86, 0x5b, 0x4c, 0xd9,
++    0x08, 0x27, 0x31, 0x8f, 0xf0, 0x90, 0xd9, 0x35,
++    0x6a, 0x1f, 0x75, 0xc2, 0xe0, 0xa7, 0x60, 0xb8,
++    0x1d, 0xd6, 0x5f, 0x56, 0xb2, 0x0b, 0x27, 0x0e,
++    0x98, 0x67, 0x1f, 0x39, 0x18, 0x27, 0x68, 0x0a,
++    0xe8, 0x31, 0x1b, 0xc0, 0x97, 0xec, 0xd1, 0x20,
++    0x2a, 0x55, 0x69, 0x23, 0x08, 0x50, 0x05, 0xec,
++    0x13, 0x3b, 0x56, 0xfc, 0x18, 0xc9, 0x1a, 0xa9,
++    0x69, 0x0e, 0xe2, 0xcc, 0xc8, 0xd6, 0x19, 0xbb,
++    0x87, 0x3b, 0x42, 0x77, 0xee, 0x77, 0x81, 0x26,
++    0xdd, 0xf6, 0x5d, 0xc3, 0xb2, 0xb0, 0xc4, 0x14,
++    0x6d, 0xb5, 0x4f, 0xdc, 0x13, 0x09, 0xc8, 0x53,
++    0x50, 0xb3, 0xea, 0xd3, 0x5f, 0x11, 0x67, 0xd4,
++    0x2f, 0x6e, 0x30, 0x1a, 0xbe, 0xd6, 0xf0, 0x2d,
++    0xc9, 0x29, 0xd9, 0x0a, 0xa8, 0x6f, 0xa4, 0x18,
++    0x74, 0x6b, 0xd3, 0x5d, 0x6a, 0x73, 0x3a, 0xf2,
++    0x94, 0x7f, 0xbd, 0xb4, 0xa6, 0x7f, 0x5b, 0x3d,
++    0x26, 0xf2, 0x6c, 0x13, 0xcf, 0xb4, 0x26, 0x1e,
++    0x38, 0x17, 0x66, 0x60, 0xb1, 0x36, 0xae, 0xe0,
++    0x6d, 0x86, 0x69, 0xe7, 0xe7, 0xae, 0x77, 0x6f,
++    0x7e, 0x99, 0xe5, 0xd9, 0x62, 0xc9, 0xfc, 0xde,
++    0xb4, 0xee, 0x7e, 0xc8, 0xe9, 0xb7, 0x2c, 0xe2,
++    0x70, 0xe8, 0x8b, 0x2d, 0x94, 0xad, 0xe8, 0x54,
++    0xa3, 0x2d, 0x9a, 0xe2, 0x50, 0x63, 0x87, 0xb3,
++    0x56, 0x29, 0xea, 0xa8, 0x5e, 0x96, 0x53, 0x9f,
++    0x23, 0x8a, 0xef, 0xa3, 0xd4, 0x87, 0x09, 0x5f,
++    0xba, 0xc3, 0xd1, 0xd9, 0x1a, 0x7b, 0x5c, 0x5d,
++    0x5d, 0x89, 0xed, 0xb6, 0x6e, 0x39, 0x73, 0xa5,
++    0x64, 0x59, 0x52, 0x8b, 0x61, 0x8f, 0x66, 0x69,
++    0xb9, 0xf0, 0x45, 0x0a, 0x57, 0xcd, 0xc5, 0x7f,
++    0x5d, 0xd0, 0xbf, 0xcc, 0x0b, 0x48, 0x12, 0xe1,
++    0xe2, 0xc2, 0xea, 0xcc, 0x09, 0xd9, 0x42, 0x2c,
++    0xef, 0x4f, 0xa7, 0xe9, 0x32, 0x5c, 0x3f, 0x22,
++    0xc0, 0x45, 0x0b, 0x67, 0x3c, 0x31, 0x69, 0x29,
++    0xa3, 0x39, 0xdd, 0x6e, 0x2f, 0xbe, 0x10, 0xc9,
++    0x7b, 0xff, 0x19, 0x8a, 0xe9, 0xea, 0xfc, 0x32,
++    0x41, 0x33, 0x70, 0x2a, 0x9a, 0xa4, 0xe6, 0xb4,
++    0x7e, 0xb4, 0xc6, 0x21, 0x49, 0x5a, 0xfc, 0x45,
++    0xd2, 0x23, 0xb3, 0x28, 0x4d, 0x83, 0x60, 0xfe,
++    0x70, 0x68, 0x03, 0x59, 0xd5, 0x15, 0xaa, 0x9e,
++    0xa0, 0x2e, 0x36, 0xb5, 0x61, 0x0f, 0x61, 0x05,
++    0x3c, 0x62, 0x00, 0xa0, 0x47, 0xf1, 0x86, 0xba,
++    0x33, 0xb8, 0xca, 0x60, 0x2f, 0x3f, 0x0a, 0x67,
++    0x09, 0x27, 0x2f, 0xa2, 0x96, 0x02, 0x52, 0x58,
++    0x55, 0x68, 0x80, 0xf4, 0x4f, 0x47, 0xba, 0xff,
++    0x41, 0x7a, 0x40, 0x4c, 0xfd, 0x9d, 0x10, 0x72,
++    0x0e, 0x20, 0xa9, 0x7f, 0x9b, 0x9b, 0x14, 0xeb,
++    0x8e, 0x61, 0x25, 0xcb, 0xf4, 0x58, 0xff, 0x47,
++    0xa7, 0x08, 0xd6, 0x4e, 0x2b, 0xf1, 0xf9, 0x89,
++    0xd7, 0x22, 0x0f, 0x8d, 0x35, 0x07, 0xa0, 0x54,
++    0xab, 0x83, 0xd8, 0xee, 0x5a, 0x3e, 0x88, 0x74,
++    0x46, 0x41, 0x6e, 0x3e, 0xb7, 0xc0, 0xb6, 0x55,
++    0xe0, 0x36, 0xc0, 0x2b, 0xbf, 0xb8, 0x24, 0x8a,
++    0x44, 0x82, 0xf4, 0xcb, 0xb5, 0xd7, 0x41, 0x48,
++    0x51, 0x08, 0xe0, 0x14, 0x34, 0xd2, 0x6d, 0xe9,
++    0x7a, 0xec, 0x91, 0x61, 0xa7, 0xe1, 0x81, 0x69,
++    0x47, 0x1c, 0xc7, 0xf3
++};
++
++static const unsigned char shake256_largemsg_output[] = {
++    0x64, 0xea, 0x24, 0x6a, 0xab, 0x80, 0x37, 0x9e,
++    0x08, 0xe2, 0x19, 0x9e, 0x09, 0x69, 0xe2, 0xee,
++    0x1a, 0x5d, 0xd1, 0x68, 0x68, 0xec, 0x8d, 0x42,
++    0xd0, 0xf8, 0xb8, 0x44, 0x74, 0x54, 0x87, 0x3e,
++};
++
++static EVP_MD_CTX *shake_setup(const char *name)
++{
++    EVP_MD_CTX *ctx = NULL;
++    EVP_MD *md = NULL;
++
++    if (!TEST_ptr(md = EVP_MD_fetch(NULL, name, NULL)))
++        return NULL;
++
++    if (!TEST_ptr(ctx = EVP_MD_CTX_new()))
++        goto err;
++    if (!TEST_true(EVP_DigestInit_ex2(ctx, md, NULL)))
++        goto err;
++    EVP_MD_free(md);
++    return ctx;
++err:
++    EVP_MD_free(md);
++    EVP_MD_CTX_free(ctx);
++    return NULL;
++}
++
++static int shake_kat_test(void)
++{
++    int ret = 0;
++    EVP_MD_CTX *ctx = NULL;
++    unsigned char out[sizeof(shake256_output)];
++
++    if (!TEST_ptr(ctx = shake_setup("SHAKE256")))
++        return 0;
++    if (!TEST_true(EVP_DigestUpdate(ctx, shake256_input,
++                                    sizeof(shake256_input)))
++        || !TEST_true(EVP_DigestFinalXOF(ctx, out, sizeof(out)))
++        || !TEST_mem_eq(out, sizeof(out),
++                        shake256_output,sizeof(shake256_output))
++        /* Test that a second call to EVP_DigestFinalXOF fails */
++        || !TEST_false(EVP_DigestFinalXOF(ctx, out, sizeof(out)))
++        /* Test that a call to EVP_DigestSqueeze fails */
++        || !TEST_false(EVP_DigestSqueeze(ctx, out, sizeof(out))))
++        goto err;
++    ret = 1;
++err:
++    EVP_MD_CTX_free(ctx);
++    return ret;
++}
++
++static int shake_kat_digestfinal_test(void)
++{
++    int ret = 0;
++    unsigned int digest_length = 0;
++    EVP_MD_CTX *ctx = NULL;
++    unsigned char out[sizeof(shake256_output)];
++
++    if (!TEST_ptr(ctx = shake_setup("SHAKE256")))
++        return 0;
++    if (!TEST_true(EVP_DigestUpdate(ctx, shake256_input,
++                   sizeof(shake256_input)))
++        || !TEST_true(EVP_DigestFinal(ctx, out, &digest_length))
++        || !TEST_uint_eq(digest_length, 32)
++        || !TEST_mem_eq(out, digest_length,
++                        shake256_output, digest_length)
++        || !TEST_false(EVP_DigestFinalXOF(ctx, out, sizeof(out))))
++        goto err;
++    ret = 1;
++err:
++    EVP_MD_CTX_free(ctx);
++    return ret;
++}
++
++/*
++ * Test that EVP_DigestFinal() returns the output length
++ * set by the OSSL_DIGEST_PARAM_XOFLEN param.
++ */
++static int shake_kat_digestfinal_xoflen_test(void)
++{
++    int ret = 0;
++    unsigned int digest_length = 0;
++    EVP_MD_CTX *ctx = NULL;
++    unsigned char out[sizeof(shake256_output)];
++    OSSL_PARAM params[2];
++    size_t sz = 12;
++
++    if (!TEST_ptr(ctx = shake_setup("SHAKE256")))
++        return 0;
++
++    memset(out, 0, sizeof(out));
++    params[0] = OSSL_PARAM_construct_size_t(OSSL_DIGEST_PARAM_XOFLEN, &sz);
++    params[1] = OSSL_PARAM_construct_end();
++
++    if (!TEST_int_eq(EVP_MD_CTX_set_params(ctx, params), 1)
++        || !TEST_true(EVP_DigestUpdate(ctx, shake256_input,
++                                       sizeof(shake256_input)))
++        || !TEST_true(EVP_DigestFinal(ctx, out, &digest_length))
++        || !TEST_uint_eq(digest_length, (unsigned int)sz)
++        || !TEST_mem_eq(out, digest_length,
++                        shake256_output, digest_length)
++        || !TEST_uchar_eq(out[digest_length], 0))
++        goto err;
++    ret = 1;
++err:
++    EVP_MD_CTX_free(ctx);
++    return ret;
++}
++
++/*
++ * Test that multiple absorb calls gives the expected result.
++ * This is a nested test that uses multiple strides for the input.
++ */
++static int shake_absorb_test(void)
++{
++    int ret = 0;
++    EVP_MD_CTX *ctx = NULL;
++    unsigned char out[sizeof(shake256_largemsg_output)];
++    size_t total = sizeof(shake256_largemsg_input);
++    size_t i, stride, sz;
++
++    if (!TEST_ptr(ctx = shake_setup("SHAKE256")))
++        return 0;
++
++    for (stride = 1; stride < total; ++stride) {
++        sz = 0;
++        for (i = 0; i < total; i += sz) {
++            sz += stride;
++            if ((i + sz) > total)
++                sz = total - i;
++            if (!TEST_true(EVP_DigestUpdate(ctx, shake256_largemsg_input + i,
++                                            sz)))
++                goto err;
++        }
++        if (!TEST_true(EVP_DigestFinalXOF(ctx, out, sizeof(out)))
++            || !TEST_mem_eq(out, sizeof(out),
++                            shake256_largemsg_output,
++                            sizeof(shake256_largemsg_output)))
++            goto err;
++        if (!TEST_true(EVP_DigestInit_ex2(ctx, NULL, NULL)))
++            goto err;
++    }
++    ret = 1;
++err:
++    EVP_MD_CTX_free(ctx);
++    return ret;
++}
++
++/*
++ * Table containing the size of the output to squeeze for the
++ * initially call, followed by a size for each subsequent call.
++ */
++static const struct {
++    size_t startsz, incsz;
++} stride_tests[] = {
++    { 1, 1 },
++    { 1, 136 },
++    { 1, 136/2 },
++    { 1, 136/2-1 },
++    { 1, 136/2+1 },
++    { 1, 136*3 },
++    { 8, 8 },
++    { 9, 9 },
++    { 10, 10 },
++    { 136/2 - 1, 136 },
++    { 136/2 - 1, 136-1 },
++    { 136/2 - 1, 136+1 },
++    { 136/2, 136 },
++    { 136/2, 136-1 },
++    { 136/2, 136+1 },
++    { 136/2 + 1, 136 },
++    { 136/2 + 1, 136-1 },
++    { 136/2 + 1, 136+1 },
++    { 136, 2 },
++    { 136, 136 },
++    { 136-1, 136 },
++    { 136-1, 136-1 },
++    { 136-1, 136+1 },
++    { 136+1, 136 },
++    { 136+1, 136-1 },
++    { 136+1, 136+1 },
++    { 136*3, 136 },
++    { 136*3, 136 + 1 },
++    { 136*3, 136 - 1 },
++    { 136*3, 136/2 },
++    { 136*3, 136/2 + 1 },
++    { 136*3, 136/2 - 1 },
++};
++
++/*
++ * Helper to do multiple squeezes of output data using SHAKE256.
++ * tst is an index into the stride_tests[] containing an initial starting
++ * output length, followed by a second output length to use for all remaining
++ * squeezes. expected_outlen contains the total number of bytes to squeeze.
++ * in and inlen represent the input to absorb. expected_out and expected_outlen
++ * represent the expected output.
++ */
++static int do_shake_squeeze_test(int tst,
++                                 const unsigned char *in, size_t inlen,
++                                 const unsigned char *expected_out,
++                                 size_t expected_outlen)
++{
++    int ret = 0;
++    EVP_MD_CTX *ctx = NULL;
++    unsigned char *out = NULL;
++    size_t i = 0, sz = stride_tests[tst].startsz;
++
++    if (!TEST_ptr(ctx = shake_setup("SHAKE256")))
++        return 0;
++    if (!TEST_ptr(out = OPENSSL_malloc(expected_outlen)))
++        goto err;
++    if (!TEST_true(EVP_DigestUpdate(ctx, in, inlen)))
++        goto err;
++
++    while (i < expected_outlen) {
++        if ((i + sz) > expected_outlen)
++            sz = expected_outlen - i;
++        if (!TEST_true(EVP_DigestSqueeze(ctx, out + i, sz)))
++            goto err;
++        i += sz;
++        sz = stride_tests[tst].incsz;
++    }
++    if (!TEST_mem_eq(out, expected_outlen, expected_out, expected_outlen))
++        goto err;
++    ret = 1;
++err:
++    OPENSSL_free(out);
++    EVP_MD_CTX_free(ctx);
++    return ret;
++}
++
++static int shake_squeeze_kat_test(int tst)
++{
++    return do_shake_squeeze_test(tst, shake256_input, sizeof(shake256_input),
++                                 shake256_output, sizeof(shake256_output));
++}
++
++/*
++ * Generate some random input to absorb, and then
++ * squeeze it out in one operation to get a expected
++ * output. Use this to test that multiple squeeze calls
++ * on the same input gives the same output.
++ */
++static int shake_squeeze_large_test(int tst)
++{
++    int ret = 0;
++    EVP_MD_CTX *ctx = NULL;
++    unsigned char msg[16];
++    unsigned char out[2000];
++
++    if (!TEST_int_gt(RAND_bytes(msg, sizeof(msg)), 0)
++        || !TEST_ptr(ctx = shake_setup("SHAKE256"))
++        || !TEST_true(EVP_DigestUpdate(ctx, msg, sizeof(msg)))
++        || !TEST_true(EVP_DigestFinalXOF(ctx, out, sizeof(out))))
++        goto err;
++
++    ret = do_shake_squeeze_test(tst, msg, sizeof(msg), out, sizeof(out));
++err:
++    EVP_MD_CTX_free(ctx);
++    return ret;
++}
++
++static const size_t dupoffset_tests[] = {
++    1, 135, 136, 137, 136*3-1, 136*3, 136*3+1
++};
++
++/* Helper function to test that EVP_MD_CTX_dup() copies the internal state */
++static int do_shake_squeeze_dup_test(int tst, const char *alg,
++                                     const unsigned char *in, size_t inlen,
++                                     const unsigned char *expected_out,
++                                     size_t expected_outlen)
++{
++    int ret = 0;
++    EVP_MD_CTX *cur, *ctx = NULL, *dupctx = NULL;
++    unsigned char *out = NULL;
++    size_t i = 0, sz = 10;
++    size_t dupoffset = dupoffset_tests[tst];
++
++    if (!TEST_ptr(ctx = shake_setup(alg)))
++        return 0;
++    cur = ctx;
++    if (!TEST_ptr(out = OPENSSL_malloc(expected_outlen)))
++        goto err;
++    if (!TEST_true(EVP_DigestUpdate(ctx, in, inlen)))
++        goto err;
++
++    while (i < expected_outlen) {
++        if ((i + sz) > expected_outlen)
++            sz = expected_outlen - i;
++        if (!TEST_true(EVP_DigestSqueeze(cur, out + i, sz)))
++            goto err;
++        i += sz;
++        /* At a certain offset we swap to a new ctx that copies the state */
++        if (dupctx == NULL && i >= dupoffset) {
++            if (!TEST_ptr(dupctx = EVP_MD_CTX_dup(ctx)))
++                goto err;
++            cur = dupctx;
++        }
++    }
++    if (!TEST_mem_eq(out, expected_outlen, expected_out, expected_outlen))
++        goto err;
++    ret = 1;
++err:
++    OPENSSL_free(out);
++    EVP_MD_CTX_free(ctx);
++    EVP_MD_CTX_free(dupctx);
++    return ret;
++}
++
++/* Test that the internal state can be copied */
++static int shake_squeeze_dup_test(int tst)
++{
++    int ret = 0;
++    EVP_MD_CTX *ctx = NULL;
++    unsigned char msg[16];
++    unsigned char out[1000];
++    const char *alg = "SHAKE128";
++
++    if (!TEST_int_gt(RAND_bytes(msg, sizeof(msg)), 0)
++        || !TEST_ptr(ctx = shake_setup(alg))
++        || !TEST_true(EVP_DigestUpdate(ctx, msg, sizeof(msg)))
++        || !TEST_true(EVP_DigestFinalXOF(ctx, out, sizeof(out))))
++        goto err;
++
++    ret = do_shake_squeeze_dup_test(tst, alg, msg, sizeof(msg),
++                                    out, sizeof(out));
++err:
++    EVP_MD_CTX_free(ctx);
++    return ret;
++}
++
++int setup_tests(void)
++{
++    ADD_TEST(shake_kat_test);
++    ADD_TEST(shake_kat_digestfinal_test);
++    ADD_TEST(shake_kat_digestfinal_xoflen_test);
++    ADD_TEST(shake_absorb_test);
++    ADD_ALL_TESTS(shake_squeeze_kat_test, OSSL_NELEM(stride_tests));
++    ADD_ALL_TESTS(shake_squeeze_large_test, OSSL_NELEM(stride_tests));
++    ADD_ALL_TESTS(shake_squeeze_dup_test, OSSL_NELEM(dupoffset_tests));
++    return 1;
++}
+Index: openssl-3.2.3/test/recipes/30-test_evp_xof.t
+===================================================================
+--- /dev/null
++++ openssl-3.2.3/test/recipes/30-test_evp_xof.t
+@@ -0,0 +1,12 @@
++#! /usr/bin/env perl
++# Copyright 2023 The OpenSSL Project Authors. All Rights Reserved.
++#
++# Licensed under the Apache License 2.0 (the "License").  You may not use
++# this file except in compliance with the License.  You can obtain a copy
++# in the file LICENSE in the source distribution or at
++# https://www.openssl.org/source/license.html
++
++
++use OpenSSL::Test::Simple;
++
++simple_test("test_evp_xof", "evp_xof_test");
+Index: openssl-3.2.3/util/libcrypto.num
+===================================================================
+--- openssl-3.2.3.orig/util/libcrypto.num
++++ openssl-3.2.3/util/libcrypto.num
+@@ -5536,6 +5536,7 @@ X509_STORE_CTX_set_get_crl
+ X509_STORE_CTX_set_current_reasons      5664	3_2_0	EXIST::FUNCTION:
+ OSSL_STORE_delete                       5665	3_2_0	EXIST::FUNCTION:
+ BIO_ADDR_copy                           5666	3_2_0	EXIST::FUNCTION:SOCK
++EVP_DigestSqueeze                       ?	3_2_0	EXIST::FUNCTION:
+ ossl_safe_getenv                        ?	3_2_0	EXIST::FUNCTION:
+ ossl_ctx_legacy_digest_signatures_allowed ?	3_0_1	EXIST::FUNCTION:
+ ossl_ctx_legacy_digest_signatures_allowed_set ?	3_0_1	EXIST::FUNCTION:

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov  5 14:17:11 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.13
+  * Add support for Python 3.13 (Jendrik Seipp, #369).
+  * Add PyPI and conda-forge badges to README file (Trevor James Smith, #356).
+  * Include `tests/**/*.toml` in sdist (Colin Watson).
+- from version 2.12
+  * Use `ruff` for linting and formatting (Anh Trinh, #347, #349).
+  * Replace `tox` by `pre-commit` for linting and formatting (Anh Trinh, #349).
+  * Add `--config` flag to specify path to pyproject.toml configuration file
+    (Glen Robertson, #352).
+
+-------------------------------------------------------------------
 Sun Jan 21 11:11:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.11:

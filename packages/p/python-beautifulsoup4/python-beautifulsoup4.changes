@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov  1 07:22:57 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add soupsieve26-compat.patch to make tests more tolerant with
+  various versions of soupsieve (better solution for lp#2086199).
+
+-------------------------------------------------------------------
+Thu Oct 31 14:24:07 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Skip the test test_unsupported_pseudoclass (lp#2086199).
+
+-------------------------------------------------------------------
 Sat Jan 20 13:11:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.12.3:

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Nov  1 08:46:36 UTC 2024 - Michael Chang <mchang@suse.com>
+
+- Fix grub.cfg is loaded from an unexpected fallback directory instead of the
+  root directory during PXE boot when grub is loaded from the tftp root
+  directory (bsc#1232391)
+  * 0001-kern-main-Fix-cmdpath-in-root-directory.patch
+  * grub2.spec: Refine PPC grub.elf early config to derive root from cmdpath
+    directly, avoiding the unneeded search 
+
+-------------------------------------------------------------------
+Wed Oct 30 08:24:15 UTC 2024 - Michael Chang <mchang@suse.com>
+
+- Fix CVE-2024-49504 (bsc#1229163) (bsc#1229164)
+- Restrict CLI access if the encrypted root device is automatically unlocked by
+  the TPM. LUKS password authentication is required for access to be granted
+  * 0001-cli_lock-Add-build-option-to-block-command-line-inte.patch
+  * 0002-Requiring-authentication-after-tpm-unlock-for-CLI-ac.patch
+- Obsolete, as CLI access is now locked and granted access no longer requires
+  the previous restrictions
+  * 0002-Restrict-file-access-on-cryptodisk-print.patch
+  * 0003-Restrict-ls-and-auto-file-completion-on-cryptodisk-p.patch
+- Rediff
+  * 0004-Key-revocation-on-out-of-bound-file-access.patch
+
+-------------------------------------------------------------------
 Wed Oct 30 00:44:41 UTC 2024 - Michael Chang <mchang@suse.com>
 
 - Enable support of Radix, Xive and Radix_gtse on Power (jsc#PED-9881)

@@ -1,0 +1,90 @@
+commit a75d62637aa165a7f37e39a3a36e2a8b089913bc
+Author: Ingo Franzki <ifranzki@linux.ibm.com>
+Date:   Mon Aug 26 11:26:03 2024 +0200
+
+    s390x: Disable HMAC hardware acceleration when an engine is used for the digest
+    
+    The TLSProxy uses the 'ossltest' engine to produce known output for digests
+    and HMAC calls. However, when running on a s390x system that supports
+    hardware acceleration of HMAC, the engine is not used for calculating HMACs,
+    but the s390x specific HMAC implementation is used, which does produce correct
+    output, but not the known output that the engine would produce. This causes
+    some tests (i.e. test_key_share, test_sslextension, test_sslrecords,
+    test_sslvertol, and test_tlsextms) to fail.
+    
+    Disable the s390x HMAC hardware acceleration if an engine is used for the
+    digest of the HMAC calculation. This provides compatibility for engines that
+    provide digest implementations, and assume that these implementations are also
+    used when calculating an HMAC.
+    
+    Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+    
+    Reviewed-by: Neil Horman <nhorman@openssl.org>
+    Reviewed-by: Tomas Mraz <tomas@openssl.org>
+    (Merged from https://github.com/openssl/openssl/pull/25287)
+
+diff --git a/crypto/hmac/hmac_s390x.c b/crypto/hmac/hmac_s390x.c
+index 5db7e9a221..02e1cd1dd6 100644
+--- a/crypto/hmac/hmac_s390x.c
++++ b/crypto/hmac/hmac_s390x.c
+@@ -7,10 +7,16 @@
+  * https://www.openssl.org/source/license.html
+  */
+ 
++/* We need to use some engine deprecated APIs */
++#define OPENSSL_SUPPRESS_DEPRECATED
++
+ #include "crypto/s390x_arch.h"
+ #include "hmac_local.h"
+ #include "openssl/obj_mac.h"
+ #include "openssl/evp.h"
++#if !defined(OPENSSL_NO_ENGINE) && !defined(FIPS_MODULE)
++# include <openssl/engine.h>
++#endif
+ 
+ #ifdef OPENSSL_HMAC_S390X
+ 
+@@ -63,6 +69,31 @@ static void s390x_call_kmac(HMAC_CTX *ctx, const unsigned char *in, size_t len)
+     ctx->plat.s390x.ikp = 1;
+ }
+ 
++static int s390x_check_engine_used(const EVP_MD *md, ENGINE *impl)
++{
++# if !defined(OPENSSL_NO_ENGINE) && !defined(FIPS_MODULE)
++    const EVP_MD *d;
++
++    if (impl != NULL) {
++        if (!ENGINE_init(impl))
++            return 0;
++    } else {
++        impl = ENGINE_get_digest_engine(EVP_MD_get_type(md));
++    }
++
++    if (impl == NULL)
++        return 0;
++
++    d = ENGINE_get_digest(impl, EVP_MD_get_type(md));
++    ENGINE_finish(impl);
++
++    if (d != NULL)
++        return 1;
++# endif
++
++    return 0;
++}
++
+ int s390x_HMAC_init(HMAC_CTX *ctx, const void *key, int key_len, ENGINE *impl)
+ {
+     unsigned char *key_param;
+@@ -72,6 +103,11 @@ int s390x_HMAC_init(HMAC_CTX *ctx, const void *key, int key_len, ENGINE *impl)
+     if (ctx->plat.s390x.fc == 0)
+         return -1; /* Not supported by kmac instruction */
+ 
++    if (s390x_check_engine_used(ctx->md, impl)) {
++        ctx->plat.s390x.fc = 0;
++        return -1; /* An engine handles the digest, disable acceleration */
++    }
++
+     ctx->plat.s390x.blk_size = EVP_MD_get_block_size(ctx->md);
+     if (ctx->plat.s390x.blk_size < 0)
+         return 0;

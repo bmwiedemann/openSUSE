@@ -1,0 +1,32 @@
+commit 7aa45b8bb3269e881d0378aa785ff344efdd2897
+Author: Holger Dengler <dengler@linux.ibm.com>
+Date:   Wed Sep 27 15:36:23 2023 +0200
+
+    Fix state handling of sha3_absorb for s390x.
+    
+    The digest life-cycle state diagram has been updated for XOF. Fix the
+    state handling in s390x_sha3_aborb() according to the updated state
+    diagram.
+    
+    Signed-off-by: Holger Dengler <dengler@linux.ibm.com>
+    
+    Reviewed-by: Shane Lontis <shane.lontis@oracle.com>
+    Reviewed-by: Todd Short <todd.short@me.com>
+    Reviewed-by: Tomas Mraz <tomas@openssl.org>
+    (Merged from https://github.com/openssl/openssl/pull/22221)
+
+Index: openssl-3.2.3/providers/implementations/digests/sha3_prov.c
+===================================================================
+--- openssl-3.2.3.orig/providers/implementations/digests/sha3_prov.c
++++ openssl-3.2.3/providers/implementations/digests/sha3_prov.c
+@@ -188,6 +188,10 @@ static size_t s390x_sha3_absorb(void *vc
+     KECCAK1600_CTX *ctx = vctx;
+     size_t rem = len % ctx->block_size;
+ 
++    if (!(ctx->xof_state == XOF_STATE_INIT ||
++          ctx->xof_state == XOF_STATE_ABSORB))
++        return 0;
++    ctx->xof_state = XOF_STATE_ABSORB;
+     s390x_kimd(inp, len - rem, ctx->pad, ctx->A);
+     return rem;
+ }

@@ -469,4 +469,20 @@
   * Improve helpfulness of ServiceInfo.request assertions</comment>
     <requestid>1202578</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>4d6d82f8d95b61e3fab7714efe1f02f1</srcmd5>
+    <version>0.136.0</version>
+    <time>1730908338</time>
+    <user>anag+factory</user>
+    <comment>- Fix deduping
+- Update to 0.136.0
+  * fix: update python-semantic-release to fix release process
+  * fix: add ignore for .c file for wheels
+  * fix: correct typos
+  * feat: use SPDX license identifier
+- from version 0.135.0
+  * feat: improve performance of DNSCache backend
+</comment>
+    <requestid>1221614</requestid>
+  </revision>
 </revisionlist>

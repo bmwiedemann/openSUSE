@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-pdf-reader
-Version:        2.12.0
+Version:        2.13.0
 Release:        0
 %define mod_name pdf-reader
 %define mod_full_name %{mod_name}-%{version}
@@ -38,7 +38,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        A library for accessing the content of PDF files
 License:        MIT
-PreReq:         update-alternatives
 
 %description
 The PDF::Reader library implements a PDF parser conforming as much as possible

@@ -595,4 +595,15 @@ Build and package documentation (forwarded request 176044 from TheBlackCat)</com
 - Use recommended lxml parser instead of native one</comment>
     <requestid>1140116</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>2530d4275e2d8c7082c47fb9c7dfe842</srcmd5>
+    <version>4.12.3</version>
+    <time>1730908169</time>
+    <user>anag+factory</user>
+    <comment>- Add soupsieve26-compat.patch to make tests more tolerant with
+  various versions of soupsieve (better solution for lp#2086199).
+- Skip the test test_unsupported_pseudoclass (lp#2086199).
+</comment>
+    <requestid>1220019</requestid>
+  </revision>
 </revisionlist>

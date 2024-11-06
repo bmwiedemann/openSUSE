@@ -1,0 +1,17 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index bfd8d44..f88999e 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -54,12 +54,6 @@ warn_unused_ignores = false
+ testpaths = [
+     "tests",
+ ]
+-addopts = [
+-    "--cov=cmd2",
+-    "--cov-append",
+-    "--cov-report=term",
+-    "--cov-report=html",
+-]
+ 
+ [tool.ruff]
+ # Exclude a variety of commonly ignored directories.

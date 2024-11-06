@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-humanfriendly
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,6 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%bcond_without python2
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-humanfriendly%{psuffix}
 Version:        10.0
@@ -38,12 +36,16 @@ Source:         https://files.pythonhosted.org/packages/source/h/humanfriendly/h
 Patch0:         python-humanfriendly-no-mock.patch
 # PATCH-FIX-UPSTREAM gh#xolox/python-humanfriendly#65
 Patch1:         pytest-7-support.patch
+# PATCH-FIX-UPSTREAM gh#xolox/python-humanfriendly#75
+Patch2:         support-python-313.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module capturer >= 2.1}
@@ -52,12 +54,6 @@ BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module pytest >= 3.0.7}
 BuildRequires:  %{python_module pytest-cov >= 2.4.0}
 BuildRequires:  %{pythons}
-%if %{with python2}
-BuildRequires:  python2-monotonic
-%endif
-%endif
-%ifpython2
-Requires:       python-monotonic
 %endif
 %python_subpackages
 
@@ -79,11 +75,11 @@ text interfaces more user friendly.
 %autosetup -p1 -n humanfriendly-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/humanfriendly
 %{python_expand chmod a+x %{buildroot}%{$python_sitelib}/humanfriendly/tests.py
 sed -i "s|#!%{_bindir}/env python|#!%__$python|" %{buildroot}%{$python_sitelib}/humanfriendly/tests.py
@@ -110,7 +106,7 @@ $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/hu
 %doc README.rst
 %python_alternative %{_bindir}/humanfriendly
 %{python_sitelib}/humanfriendly
-%{python_sitelib}/humanfriendly-%{version}-py*.egg-info
+%{python_sitelib}/humanfriendly-%{version}.dist-info
 %endif
 
 %changelog

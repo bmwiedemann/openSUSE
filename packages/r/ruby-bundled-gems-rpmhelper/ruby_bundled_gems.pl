@@ -62,7 +62,7 @@ if (not $modes[$mode])  {
   die "No idea what to do with '$mode'\n";
 }
 
-print(STDERR "Running $0 in $mode\n");
+# print(STDERR "Running $0 in $mode\n");
 my $fh = *STDIN;
 while ( ! eof($fh) ) {
   defined( my $line = readline $fh ) or die "readline failed: $!";

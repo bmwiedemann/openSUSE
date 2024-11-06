@@ -1,0 +1,28 @@
+commit 19b87d2d2b022c20dd9043c3b6d021315011b45f
+Author: Ingo Franzki <ifranzki@linux.ibm.com>
+Date:   Tue Aug 20 11:35:20 2024 +0200
+
+    s390x: Fix memory leak in s390x_HMAC_CTX_copy()
+    
+    When s390x_HMAC_CTX_copy() is called, but the destination context already
+    has a buffer allocated, it is not freed before duplicating the buffer from
+    the source context.
+    
+    Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+    
+    Reviewed-by: Paul Dale <ppzgs1@gmail.com>
+    Reviewed-by: Shane Lontis <shane.lontis@oracle.com>
+    (Merged from https://github.com/openssl/openssl/pull/25238)
+
+diff --git a/crypto/hmac/hmac_s390x.c b/crypto/hmac/hmac_s390x.c
+index 1124d9bc5d..8b0da0d59d 100644
+--- a/crypto/hmac/hmac_s390x.c
++++ b/crypto/hmac/hmac_s390x.c
+@@ -263,6 +263,7 @@ int s390x_HMAC_CTX_copy(HMAC_CTX *dctx, HMAC_CTX *sctx)
+     memcpy(&dctx->plat.s390x.param, &sctx->plat.s390x.param,
+            sizeof(dctx->plat.s390x.param));
+ 
++    OPENSSL_clear_free(dctx->plat.s390x.buf, dctx->plat.s390x.size);
+     dctx->plat.s390x.buf = NULL;
+     if (sctx->plat.s390x.buf != NULL) {
+         dctx->plat.s390x.buf = OPENSSL_memdup(sctx->plat.s390x.buf,

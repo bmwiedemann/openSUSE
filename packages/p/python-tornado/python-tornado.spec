@@ -1,7 +1,7 @@
 #
 # spec file for package python-tornado
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,7 +51,7 @@ URL:            https://www.tornadoweb.org
 Source0:        README.SUSE
 BuildRequires:  %{python_module %{tornadoN}}
 BuildRequires:  python-rpm-macros
-%requires_eq    python-%{tornadoN}
+Requires:       python-%{tornadoN} = %{Nversion}
 BuildArch:      noarch
 %python_subpackages
 

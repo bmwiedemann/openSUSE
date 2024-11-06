@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 05 11:05:11 UTC 2024 - matthias.gerstner@suse.com
+
+- Update to version 1550+20241105.bedeeca:
+  * profiles: whitelist xfce mousepad pkexec action (bsc#1232231)
+
+-------------------------------------------------------------------
 Thu Oct 17 07:58:09 UTC 2024 - matthias.gerstner@suse.com
 
 - Update to version 1550+20241017.007e12d:

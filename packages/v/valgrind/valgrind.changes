@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Sun Apr 28 15:47:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
-- update to 3.23.0:
+- update to 3.23.0 (jsc#PED-10260):
   * Added ARM64 support for FreeBSD.
   * ARM64 now supports dotprod instructions (sdot/udot).
   * AMD64 better supports code build with -march=x86-64-v3.

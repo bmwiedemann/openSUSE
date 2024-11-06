@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-appconfiguration
-Version:        3.1.0
+Version:        4.0.0
 Release:        0
 Summary:        Microsoft Azure App Configuration Management Client Library
 License:        MIT

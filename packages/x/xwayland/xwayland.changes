@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 29 19:29:21 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Security update 21.1.14
+  This release addresses the following security issue
+  * CVE-2024-9632: Heap-based buffer overflow privilege escalation
+    in _XkbSetCompatMap (bsc#1231565)
+
+-------------------------------------------------------------------
 Thu Oct  3 21:35:10 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to bugfix release 24.1.3

@@ -1512,4 +1512,12 @@ See https://bugs.kde.org/show_bug.cgi?id=290719 (forwarded request 115750 from w
 - drop armv6-support.diff (obsolete)</comment>
     <requestid>1170624</requestid>
   </revision>
+  <revision rev="152" vrev="2">
+    <srcmd5>07927d5e980fc7b9397dbdf90a86556a</srcmd5>
+    <version>3.23.0</version>
+    <time>1730908235</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.23.0 (jsc#PED-10260):</comment>
+    <requestid>1221731</requestid>
+  </revision>
 </revisionlist>

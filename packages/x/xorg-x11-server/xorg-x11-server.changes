@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Oct 29 19:08:32 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- 21.1.14 covers also
+  * CVE-2024-31080 (bsc#1222309)
+  * CVE-2024-31081 (bsc#1222310) 
+  * CVE-2024-31082 (bsc#1222311)
+  * CVE-2024-31083 (bsc#1222312)
+
+-------------------------------------------------------------------
+Tue Oct 29 19:00:06 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Security update 21.1.14
+  This release addresses the following security issue
+  * CVE-2024-9632: Heap-based buffer overflow privilege escalation
+    in _XkbSetCompatMap (bsc#1231565)
+- supersedes U_render-Avoid-possible-double-free-in-ProcRenderAddGl.patch
+- supersedes U_xorg-xserver-e89edec497ba.patch
+
+-------------------------------------------------------------------
 Tue Sep 24 11:20:23 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - added conflicts to patterns-wsl-tmpfiles to Xserver packages

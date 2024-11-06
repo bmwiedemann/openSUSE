@@ -1,22 +1,22 @@
-From abeda0b0475adb0d4f89b0c97cfc349779915bbf Mon Sep 17 00:00:00 2001
+From 62721a92ebec8746888d94bea0082c8d8763219e Mon Sep 17 00:00:00 2001
 From: rpm-build <rpm-build>
-Date: Mon, 31 Jul 2023 09:41:28 +0200
-Subject: [PATCH 29/35] 
+Date: Wed, 6 Mar 2024 19:17:15 +0100
+Subject: [PATCH 27/49] 
  0073-FIPS-Use-OAEP-in-KATs-support-fixed-OAEP-seed.patch
 
 Patch-name: 0073-FIPS-Use-OAEP-in-KATs-support-fixed-OAEP-seed.patch
 Patch-id: 73
 Patch-status: |
-    # https://bugzilla.redhat.com/show_bug.cgi?id=2102535
-From-dist-git-commit: 9409bc7044cf4b5773639cce20f51399888c45fd
+    # # https://bugzilla.redhat.com/show_bug.cgi?id=2102535
+From-dist-git-commit: 4334bc837fbc64d14890fdc51679a80770d498ce
 ---
  crypto/rsa/rsa_local.h                        |  8 ++
  crypto/rsa/rsa_oaep.c                         | 34 ++++++--
- include/openssl/core_names.h                  |  3 +
  providers/fips/self_test_data.inc             | 79 ++++++++++---------
  providers/fips/self_test_kats.c               |  7 ++
  .../implementations/asymciphers/rsa_enc.c     | 41 +++++++++-
- 6 files changed, 128 insertions(+), 44 deletions(-)
+ util/perl/OpenSSL/paramnames.pm               |  1 +
+ 6 files changed, 126 insertions(+), 44 deletions(-)
 
 diff --git a/crypto/rsa/rsa_local.h b/crypto/rsa/rsa_local.h
 index ea70da05ad..dde57a1a0e 100644
@@ -36,7 +36,7 @@ index ea70da05ad..dde57a1a0e 100644
 +
  #endif /* OSSL_CRYPTO_RSA_LOCAL_H */
 diff --git a/crypto/rsa/rsa_oaep.c b/crypto/rsa/rsa_oaep.c
-index d9be1a4f98..b2f7f7dc4b 100644
+index b9030440c4..3d665c3860 100644
 --- a/crypto/rsa/rsa_oaep.c
 +++ b/crypto/rsa/rsa_oaep.c
 @@ -44,6 +44,10 @@ int RSA_padding_add_PKCS1_OAEP(unsigned char *to, int tlen,
@@ -75,14 +75,14 @@ index d9be1a4f98..b2f7f7dc4b 100644
      memcpy(db + emlen - flen - mdlen, from, (unsigned int)flen);
      /* step 3d: generate random byte string */
 +#ifdef FIPS_MODULE
-+    if (suse_st_seed != NULL && SUSE_FIPS_asym_cipher_st) {
++    if (suse_st_seed != NULL && SUSE_FIPS_asym_cipher_st) { 
 +        memcpy(seed, suse_st_seed, mdlen);
 +    } else
 +#endif
      if (RAND_bytes_ex(libctx, seed, mdlen, 0) <= 0)
          goto err;
  
-@@ -138,6 +148,18 @@ int ossl_rsa_padding_add_PKCS1_OAEP_mgf1_ex(OSSL_LIB_CTX *libctx,
+@@ -136,6 +146,18 @@ int ossl_rsa_padding_add_PKCS1_OAEP_mgf1_ex(OSSL_LIB_CTX *libctx,
      return rv;
  }
  
@@ -101,22 +101,8 @@ index d9be1a4f98..b2f7f7dc4b 100644
  int RSA_padding_add_PKCS1_OAEP_mgf1(unsigned char *to, int tlen,
                                      const unsigned char *from, int flen,
                                      const unsigned char *param, int plen,
-diff --git a/include/openssl/core_names.h b/include/openssl/core_names.h
-index 5e3c132f5b..c0cce14297 100644
---- a/include/openssl/core_names.h
-+++ b/include/openssl/core_names.h
-@@ -471,6 +471,9 @@ extern "C" {
- #define OSSL_ASYM_CIPHER_PARAM_OAEP_LABEL               "oaep-label"
- #define OSSL_ASYM_CIPHER_PARAM_TLS_CLIENT_VERSION       "tls-client-version"
- #define OSSL_ASYM_CIPHER_PARAM_TLS_NEGOTIATED_VERSION   "tls-negotiated-version"
-+#ifdef FIPS_MODULE
-+#define OSSL_ASYM_CIPHER_PARAM_SUSE_KAT_OEAP_SEED     "suse-kat-oaep-seed"
-+#endif
- 
- /*
-  * Encoder / decoder parameters
 diff --git a/providers/fips/self_test_data.inc b/providers/fips/self_test_data.inc
-index e0fdc0daa4..aa2012c04a 100644
+index 4b80bb70b9..c33ecd0791 100644
 --- a/providers/fips/self_test_data.inc
 +++ b/providers/fips/self_test_data.inc
 @@ -1296,14 +1296,21 @@ static const ST_KAT_PARAM rsa_priv_key[] = {
@@ -222,10 +208,10 @@ index e0fdc0daa4..aa2012c04a 100644
  
  #ifndef OPENSSL_NO_EC
 diff --git a/providers/fips/self_test_kats.c b/providers/fips/self_test_kats.c
-index 74ee25dcb6..a9bc8be7fa 100644
+index f13c41abd6..4ea10670c0 100644
 --- a/providers/fips/self_test_kats.c
 +++ b/providers/fips/self_test_kats.c
-@@ -641,14 +641,21 @@ static int self_test_ciphers(OSSL_SELF_TEST *st, OSSL_LIB_CTX *libctx)
+@@ -642,14 +642,21 @@ static int self_test_ciphers(OSSL_SELF_TEST *st, OSSL_LIB_CTX *libctx)
      return ret;
  }
  
@@ -248,7 +234,7 @@ index 74ee25dcb6..a9bc8be7fa 100644
  }
  
 diff --git a/providers/implementations/asymciphers/rsa_enc.c b/providers/implementations/asymciphers/rsa_enc.c
-index 9cd8904131..40de5ce8fa 100644
+index d548560f1f..f3443b0c66 100644
 --- a/providers/implementations/asymciphers/rsa_enc.c
 +++ b/providers/implementations/asymciphers/rsa_enc.c
 @@ -30,6 +30,9 @@
@@ -268,10 +254,10 @@ index 9cd8904131..40de5ce8fa 100644
 +#ifdef FIPS_MODULE
 +    char *suse_st_oaep_seed;
 +#endif /* FIPS_MODULE */
+     /* PKCS#1 v1.5 decryption mode */
+     unsigned int implicit_rejection;
  } PROV_RSA_CTX;
- 
- static void *rsa_newctx(void *provctx)
-@@ -192,12 +198,21 @@ static int rsa_encrypt(void *vprsactx, unsigned char *out, size_t *outlen,
+@@ -193,12 +199,21 @@ static int rsa_encrypt(void *vprsactx, unsigned char *out, size_t *outlen,
              }
          }
          ret =
@@ -295,7 +281,7 @@ index 9cd8904131..40de5ce8fa 100644
  
          if (!ret) {
              OPENSSL_free(tbuf);
-@@ -328,6 +343,9 @@ static void rsa_freectx(void *vprsactx)
+@@ -332,6 +347,9 @@ static void rsa_freectx(void *vprsactx)
      EVP_MD_free(prsactx->oaep_md);
      EVP_MD_free(prsactx->mgf1_md);
      OPENSSL_free(prsactx->oaep_label);
@@ -305,17 +291,17 @@ index 9cd8904131..40de5ce8fa 100644
  
      OPENSSL_free(prsactx);
  }
-@@ -447,6 +465,9 @@ static const OSSL_PARAM known_gettable_ctx_params[] = {
+@@ -455,6 +473,9 @@ static const OSSL_PARAM known_gettable_ctx_params[] = {
                      NULL, 0),
      OSSL_PARAM_uint(OSSL_ASYM_CIPHER_PARAM_TLS_CLIENT_VERSION, NULL),
      OSSL_PARAM_uint(OSSL_ASYM_CIPHER_PARAM_TLS_NEGOTIATED_VERSION, NULL),
 +#ifdef FIPS_MODULE
 +    OSSL_PARAM_octet_string(OSSL_ASYM_CIPHER_PARAM_SUSE_KAT_OEAP_SEED, NULL, 0),
 +#endif /* FIPS_MODULE */
+     OSSL_PARAM_uint(OSSL_ASYM_CIPHER_PARAM_IMPLICIT_REJECTION, NULL),
      OSSL_PARAM_END
  };
- 
-@@ -456,6 +477,10 @@ static const OSSL_PARAM *rsa_gettable_ctx_params(ossl_unused void *vprsactx,
+@@ -465,6 +486,10 @@ static const OSSL_PARAM *rsa_gettable_ctx_params(ossl_unused void *vprsactx,
      return known_gettable_ctx_params;
  }
  
@@ -326,7 +312,7 @@ index 9cd8904131..40de5ce8fa 100644
  static int rsa_set_ctx_params(void *vprsactx, const OSSL_PARAM params[])
  {
      PROV_RSA_CTX *prsactx = (PROV_RSA_CTX *)vprsactx;
-@@ -567,6 +592,18 @@ static int rsa_set_ctx_params(void *vprsactx, const OSSL_PARAM params[])
+@@ -576,6 +601,18 @@ static int rsa_set_ctx_params(void *vprsactx, const OSSL_PARAM params[])
          prsactx->oaep_labellen = tmp_labellen;
      }
  
@@ -345,6 +331,18 @@ index 9cd8904131..40de5ce8fa 100644
      p = OSSL_PARAM_locate_const(params, OSSL_ASYM_CIPHER_PARAM_TLS_CLIENT_VERSION);
      if (p != NULL) {
          unsigned int client_version;
+diff --git a/util/perl/OpenSSL/paramnames.pm b/util/perl/OpenSSL/paramnames.pm
+index c37ed7815f..70f7c50fe4 100644
+--- a/util/perl/OpenSSL/paramnames.pm
++++ b/util/perl/OpenSSL/paramnames.pm
+@@ -401,6 +401,7 @@ my %params = (
+     'ASYM_CIPHER_PARAM_TLS_CLIENT_VERSION' =>       "tls-client-version",
+     'ASYM_CIPHER_PARAM_TLS_NEGOTIATED_VERSION' =>   "tls-negotiated-version",
+     'ASYM_CIPHER_PARAM_IMPLICIT_REJECTION' =>       "implicit-rejection",
++    'ASYM_CIPHER_PARAM_SUSE_KAT_OEAP_SEED' =>     "suse-kat-oaep-seed",
+ 
+ # Encoder / decoder parameters
+ 
 -- 
-2.41.0
+2.44.0
 

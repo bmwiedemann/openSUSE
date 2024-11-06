@@ -1,0 +1,28 @@
+Index: requests-mock-1.12.1/tests/test_adapter.py
+===================================================================
+--- requests-mock-1.12.1.orig/tests/test_adapter.py
++++ requests-mock-1.12.1/tests/test_adapter.py
+@@ -14,9 +14,14 @@ import http.client
+ import io
+ import json
+ import re
++import unittest
+ import urllib.parse
+ 
+-import purl
++with_purl = True
++try:
++  import purl
++except:
++  with_purl = False
+ import requests
+ from urllib3 import HTTPResponse
+ 
+@@ -345,6 +350,7 @@ class SessionAdapterTests(base.TestCase)
+             resp = self.session.get(u)
+             self.assertEqual('resp', resp.text)
+ 
++    @unittest.skipUnless(with_purl, "purl not available")
+     def test_with_purl(self):
+         self.adapter.register_uri('GET',
+                                   purl.URL('mock://www.tester.com/a'),

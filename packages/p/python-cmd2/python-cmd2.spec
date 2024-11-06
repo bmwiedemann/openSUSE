@@ -1,7 +1,7 @@
 #
 # spec file for package python-cmd2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,16 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
 Name:           python-cmd2
-Version:        2.4.3
+Version:        2.5.2
 Release:        0
 Summary:        Extra features for standard library's cmd module
 License:        MIT
 URL:            https://github.com/python-cmd2/cmd2
-Source:         https://files.pythonhosted.org/packages/source/c/cmd2/cmd2-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+Source:         https://github.com/python-cmd2/cmd2/archive/refs/tags/%{version}.tar.gz#/cmd2-%{version}.tar.gz
+Patch0:         cmd2-no-coverage-tests.patch
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -72,16 +71,15 @@ Drop-in replacement adds several features for command-prompt tools:
     * test apps against sample session transcript (see example/example.py)
 
 %prep
-%setup -q -n cmd2-%{version}
+%autosetup -p1 -n cmd2-%{version}
 # Fix spurious-executable-perm
 chmod a-x README.md
-sed -i '/--cov/d' setup.cfg
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -92,6 +90,6 @@ sed -i '/--cov/d' setup.cfg
 %license LICENSE
 %doc CHANGELOG.md README.md
 %{python_sitelib}/cmd2
-%{python_sitelib}/cmd2-%{version}*-info
+%{python_sitelib}/cmd2-*-info
 
 %changelog

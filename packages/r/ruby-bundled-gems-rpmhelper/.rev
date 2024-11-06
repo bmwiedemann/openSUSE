@@ -28,4 +28,13 @@
   disable conflicts for now</comment>
     <requestid>1199088</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1c920e3878cfc31da7c61eb8c23a2683</srcmd5>
+    <version>0.0.6</version>
+    <time>1730908193</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.0.6
+  remove debug code</comment>
+    <requestid>1221451</requestid>
+  </revision>
 </revisionlist>

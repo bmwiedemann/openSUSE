@@ -377,8 +377,6 @@ Patch189:       arm64-Use-proper-memory-type-for-kernel-allocation.patch
 Patch190:       0001-luks2-Use-grub-tpm2-token-for-TPM2-protected-volume-.patch
 Patch191:       Fix-the-size-calculation-for-the-synthesized-initrd.patch
 Patch192:       0001-Improve-TPM-key-protection-on-boot-interruptions.patch
-Patch193:       0002-Restrict-file-access-on-cryptodisk-print.patch
-Patch194:       0003-Restrict-ls-and-auto-file-completion-on-cryptodisk-p.patch
 Patch195:       0004-Key-revocation-on-out-of-bound-file-access.patch
 # Workaround for 2.12 tarball
 Patch196:       fix_no_extra_deps_in_release_tarball.patch
@@ -419,6 +417,9 @@ Patch230:       0007-mkimage-create-new-ELF-Note-for-SBAT.patch
 Patch231:       0008-mkimage-adding-sbat-data-into-sbat-ELF-Note-on-power.patch
 Patch232:       0001-ieee1275-support-added-for-multiple-nvme-bootpaths.patch
 Patch233:       0001-kern-ieee1275-init-Add-IEEE-1275-Radix-support-for-K.patch
+Patch234:       0001-cli_lock-Add-build-option-to-block-command-line-inte.patch
+Patch235:       0002-Requiring-authentication-after-tpm-unlock-for-CLI-ac.patch
+Patch236:       0001-kern-main-Fix-cmdpath-in-root-directory.patch
 
 %if 0%{?suse_version} > 1600
 # Always requires a default cpu-platform package
@@ -948,8 +949,6 @@ echo "bpath=$bpath"
 if regexp '^(tftp|http)$' "$bdev"; then
   if [ -z "$bpath" ]; then
     echo "network booting via $bdev but firmware didn't provide loaded path from sever root"
-    bpath="/boot/grub2/powerpc-ieee1275"
-    echo "using bpath=$bpath as fallback path"
   fi
 elif [ -z "$ENV_FS_UUID" ]; then
   echo "Reading vars from ($bdev)"
@@ -993,6 +992,17 @@ fi
 set prefix=""
 set root=""
 set cfg="grub.cfg"
+
+if regexp '^(tftp|http)$' "$bdev"; then
+  cfg_dir=""
+  root="$bdev$bpart"
+  if [ -z "$bpath" ]; then
+    bpath="/boot/grub2/powerpc-ieee1275"
+    echo "using bpath=$bpath as fallback path"
+  fi
+  prefix="($root)$bpath"
+  cfg="grub.cfg"
+fi
 
 for uuid in $ENV_CRYPTO_UUID; do
   cryptomount -u $uuid

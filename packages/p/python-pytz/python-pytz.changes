@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov  4 12:11:44 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2024.02:
+  * Bump GitHub Actions
+  * Run other jobs if one fails
+  * Add support for Python 3.13
+  * Stop testing unavailable and EOL Python 3.5
+  * Squashed 'tz/' changes from 380c07cef..923e54bae
+  * Bump version numbers to 2024.2 / 2024b
+
+-------------------------------------------------------------------
 Fri May 31 21:53:27 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Clean up SPEC file.

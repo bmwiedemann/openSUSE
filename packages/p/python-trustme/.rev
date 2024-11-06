@@ -126,4 +126,12 @@
   * Also add Authority Key Identifiers to children certs.</comment>
     <requestid>1196403</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>52e4aa48d7b1ac4a032a085c461b3627</srcmd5>
+    <version>1.2.0</version>
+    <time>1730908203</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1221503</requestid>
+  </revision>
 </revisionlist>

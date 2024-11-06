@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov  5 19:46:13 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- 5.1.8 removed rpcgen dependency, remove it from spec file, too
+
+-------------------------------------------------------------------
 Mon Jun  3 02:21:09 UTC 2024 - David Disseldorp <ddiss@suse.com>
 
 - Fix xmlStructuredErrorFunc callback parameter type (bsc#1221682)

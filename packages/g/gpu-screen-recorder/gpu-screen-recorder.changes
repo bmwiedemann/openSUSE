@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 05 19:27:36 UTC 2024 - mantarimay@pm.me
+
+- Update to version 20241105:
+  * Add option to change video resolution
+  * Change quality parameters, file size was too large by default
+  * Add option to change video resolution
+  * Fix bitrate calculation being incorrect (it was too low)
+
+-------------------------------------------------------------------
 Tue Oct 22 18:58:39 UTC 2024 - mantarimay@pm.me
 
 - Update to version 20241022:

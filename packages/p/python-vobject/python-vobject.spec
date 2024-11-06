@@ -19,7 +19,7 @@
 %global modname vobject
 %{?sle15_python_module_pythons}
 Name:           python-vobject
-Version:        0.9.7
+Version:        0.9.8
 Release:        0
 Summary:        Python package for parsing and creating iCalendar and vCard files
 License:        Apache-2.0
@@ -28,11 +28,13 @@ URL:            https://github.com/py-vobject/vobject/
 Source:         https://files.pythonhosted.org/packages/source/v/vobject/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module PyICU}
 BuildRequires:  %{python_module devel >= 2.7}
-BuildRequires:  %{python_module python-dateutil >= 2.4.0}
+BuildRequires:  %{python_module python-dateutil >= 2.7.0}
+BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-python-dateutil >= 2.4.0
+Requires:       python-python-dateutil >= 2.7.0
+Requires:       python-pytz
 Requires:       python-six
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
@@ -70,7 +72,7 @@ done
 %python_install_alternative change_tz
 %python_install_alternative ics_diff
 
-%preun
+%postun
 %python_uninstall_alternative change_tz
 %python_uninstall_alternative ics_diff
 

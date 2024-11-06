@@ -26,11 +26,11 @@ From-dist-git-commit: 9409bc7044cf4b5773639cce20f51399888c45fd
  util/libcrypto.num                            |  2 +
  15 files changed, 209 insertions(+), 9 deletions(-)
 
-Index: openssl-3.1.4/crypto/context.c
+Index: openssl-3.2.3/crypto/context.c
 ===================================================================
---- openssl-3.1.4.orig/crypto/context.c
-+++ openssl-3.1.4/crypto/context.c
-@@ -78,6 +78,8 @@ struct ossl_lib_ctx_st {
+--- openssl-3.2.3.orig/crypto/context.c
++++ openssl-3.2.3/crypto/context.c
+@@ -82,6 +82,8 @@ struct ossl_lib_ctx_st {
      void *fips_prov;
  #endif
  
@@ -39,7 +39,7 @@ Index: openssl-3.1.4/crypto/context.c
      unsigned int ischild:1;
  };
  
-@@ -206,6 +208,10 @@ static int context_init(OSSL_LIB_CTX *ct
+@@ -222,6 +224,10 @@ static int context_init(OSSL_LIB_CTX *ct
          goto err;
  #endif
  
@@ -50,7 +50,7 @@ Index: openssl-3.1.4/crypto/context.c
      /* Low priority. */
  #ifndef FIPS_MODULE
      ctx->child_provider = ossl_child_prov_ctx_new(ctx);
-@@ -334,6 +340,11 @@ static void context_deinit_objs(OSSL_LIB
+@@ -365,6 +371,11 @@ static void context_deinit_objs(OSSL_LIB
      }
  #endif
  
@@ -62,7 +62,7 @@ Index: openssl-3.1.4/crypto/context.c
      /* Low priority. */
  #ifndef FIPS_MODULE
      if (ctx->child_provider != NULL) {
-@@ -625,6 +636,9 @@ void *ossl_lib_ctx_get_data(OSSL_LIB_CTX
+@@ -662,6 +673,9 @@ void *ossl_lib_ctx_get_data(OSSL_LIB_CTX
          return ctx->fips_prov;
  #endif
  
@@ -72,10 +72,10 @@ Index: openssl-3.1.4/crypto/context.c
      default:
          return NULL;
      }
-Index: openssl-3.1.4/crypto/evp/evp_cnf.c
+Index: openssl-3.2.3/crypto/evp/evp_cnf.c
 ===================================================================
---- openssl-3.1.4.orig/crypto/evp/evp_cnf.c
-+++ openssl-3.1.4/crypto/evp/evp_cnf.c
+--- openssl-3.2.3.orig/crypto/evp/evp_cnf.c
++++ openssl-3.2.3/crypto/evp/evp_cnf.c
 @@ -10,6 +10,7 @@
  #include <stdio.h>
  #include <openssl/crypto.h>
@@ -103,10 +103,10 @@ Index: openssl-3.1.4/crypto/evp/evp_cnf.c
          } else {
              ERR_raise_data(ERR_LIB_EVP, EVP_R_UNKNOWN_OPTION,
                             "name=%s, value=%s", oval->name, oval->value);
-Index: openssl-3.1.4/crypto/evp/m_sigver.c
+Index: openssl-3.2.3/crypto/evp/m_sigver.c
 ===================================================================
---- openssl-3.1.4.orig/crypto/evp/m_sigver.c
-+++ openssl-3.1.4/crypto/evp/m_sigver.c
+--- openssl-3.2.3.orig/crypto/evp/m_sigver.c
++++ openssl-3.2.3/crypto/evp/m_sigver.c
 @@ -15,6 +15,69 @@
  #include "internal/provider.h"
  #include "internal/numbers.h"   /* includes SIZE_MAX */
@@ -177,7 +177,7 @@ Index: openssl-3.1.4/crypto/evp/m_sigver.c
  
  #ifndef FIPS_MODULE
  
-@@ -251,6 +314,18 @@ static int do_sigver_init(EVP_MD_CTX *ct
+@@ -253,6 +316,18 @@ static int do_sigver_init(EVP_MD_CTX *ct
          }
      }
  
@@ -196,10 +196,10 @@ Index: openssl-3.1.4/crypto/evp/m_sigver.c
      if (ver) {
          if (signature->digest_verify_init == NULL) {
              ERR_raise(ERR_LIB_EVP, EVP_R_INITIALIZATION_ERROR);
-Index: openssl-3.1.4/crypto/evp/pmeth_lib.c
+Index: openssl-3.2.3/crypto/evp/pmeth_lib.c
 ===================================================================
---- openssl-3.1.4.orig/crypto/evp/pmeth_lib.c
-+++ openssl-3.1.4/crypto/evp/pmeth_lib.c
+--- openssl-3.2.3.orig/crypto/evp/pmeth_lib.c
++++ openssl-3.2.3/crypto/evp/pmeth_lib.c
 @@ -33,6 +33,7 @@
  #include "internal/ffc.h"
  #include "internal/numbers.h"
@@ -208,7 +208,7 @@ Index: openssl-3.1.4/crypto/evp/pmeth_lib.c
  #include "evp_local.h"
  
  #ifndef FIPS_MODULE
-@@ -959,6 +960,20 @@ static int evp_pkey_ctx_set_md(EVP_PKEY_
+@@ -951,6 +952,20 @@ static int evp_pkey_ctx_set_md(EVP_PKEY_
          return -2;
      }
  
@@ -229,10 +229,10 @@ Index: openssl-3.1.4/crypto/evp/pmeth_lib.c
      if (fallback)
          return EVP_PKEY_CTX_ctrl(ctx, -1, op, ctrl, 0, (void *)(md));
  
-Index: openssl-3.1.4/doc/man5/config.pod
+Index: openssl-3.2.3/doc/man5/config.pod
 ===================================================================
---- openssl-3.1.4.orig/doc/man5/config.pod
-+++ openssl-3.1.4/doc/man5/config.pod
+--- openssl-3.2.3.orig/doc/man5/config.pod
++++ openssl-3.2.3/doc/man5/config.pod
 @@ -304,6 +304,21 @@ Within the algorithm properties section,
  The value may be anything that is acceptable as a property query
  string for EVP_set_default_properties().
@@ -255,35 +255,35 @@ Index: openssl-3.1.4/doc/man5/config.pod
  =item B<fips_mode> (deprecated)
  
  The value is a boolean that can be B<yes> or B<no>.  If the value is
-Index: openssl-3.1.4/include/crypto/context.h
+Index: openssl-3.2.3/include/crypto/context.h
 ===================================================================
---- openssl-3.1.4.orig/include/crypto/context.h
-+++ openssl-3.1.4/include/crypto/context.h
-@@ -40,3 +40,6 @@ void ossl_rand_crng_ctx_free(void *);
- void ossl_thread_event_ctx_free(void *);
- void ossl_fips_prov_ossl_ctx_free(void *);
- void ossl_release_default_drbg_ctx(void);
+--- openssl-3.2.3.orig/include/crypto/context.h
++++ openssl-3.2.3/include/crypto/context.h
+@@ -46,3 +46,6 @@ void ossl_release_default_drbg_ctx(void)
+ #if defined(OPENSSL_THREADS)
+ void ossl_threads_ctx_free(void *);
+ #endif
 +
 +void *ossl_ctx_legacy_digest_signatures_new(OSSL_LIB_CTX *);
 +void ossl_ctx_legacy_digest_signatures_free(void *);
-Index: openssl-3.1.4/include/internal/cryptlib.h
+Index: openssl-3.2.3/include/internal/cryptlib.h
 ===================================================================
---- openssl-3.1.4.orig/include/internal/cryptlib.h
-+++ openssl-3.1.4/include/internal/cryptlib.h
-@@ -178,7 +178,8 @@ typedef struct ossl_ex_data_global_st {
- # define OSSL_LIB_CTX_PROVIDER_CONF_INDEX           16
- # define OSSL_LIB_CTX_BIO_CORE_INDEX                17
+--- openssl-3.2.3.orig/include/internal/cryptlib.h
++++ openssl-3.2.3/include/internal/cryptlib.h
+@@ -117,7 +117,8 @@ typedef struct ossl_ex_data_global_st {
  # define OSSL_LIB_CTX_CHILD_PROVIDER_INDEX          18
--# define OSSL_LIB_CTX_MAX_INDEXES                   19
-+# define OSSL_LIB_CTX_LEGACY_DIGEST_SIGNATURES_INDEX 19
-+# define OSSL_LIB_CTX_MAX_INDEXES                   20
+ # define OSSL_LIB_CTX_THREAD_INDEX                  19
+ # define OSSL_LIB_CTX_DECODER_CACHE_INDEX           20
+-# define OSSL_LIB_CTX_MAX_INDEXES                   20
++# define OSSL_LIB_CTX_LEGACY_DIGEST_SIGNATURES_INDEX 21
++# define OSSL_LIB_CTX_MAX_INDEXES                   21
  
  OSSL_LIB_CTX *ossl_lib_ctx_get_concrete(OSSL_LIB_CTX *ctx);
  int ossl_lib_ctx_is_default(OSSL_LIB_CTX *ctx);
-Index: openssl-3.1.4/include/internal/sslconf.h
+Index: openssl-3.2.3/include/internal/sslconf.h
 ===================================================================
---- openssl-3.1.4.orig/include/internal/sslconf.h
-+++ openssl-3.1.4/include/internal/sslconf.h
+--- openssl-3.2.3.orig/include/internal/sslconf.h
++++ openssl-3.2.3/include/internal/sslconf.h
 @@ -18,4 +18,8 @@ int conf_ssl_name_find(const char *name,
  void conf_ssl_get_cmd(const SSL_CONF_CMD *cmd, size_t idx, char **cmdstr,
                        char **arg);
@@ -293,10 +293,10 @@ Index: openssl-3.1.4/include/internal/sslconf.h
 +int ossl_ctx_legacy_digest_signatures_allowed_set(OSSL_LIB_CTX *libctx, int allow,
 +                                                  int loadconfig);
  #endif
-Index: openssl-3.1.4/providers/common/securitycheck.c
+Index: openssl-3.2.3/providers/common/securitycheck.c
 ===================================================================
---- openssl-3.1.4.orig/providers/common/securitycheck.c
-+++ openssl-3.1.4/providers/common/securitycheck.c
+--- openssl-3.2.3.orig/providers/common/securitycheck.c
++++ openssl-3.2.3/providers/common/securitycheck.c
 @@ -19,6 +19,7 @@
  #include <openssl/core_names.h>
  #include <openssl/obj_mac.h>
@@ -336,10 +336,10 @@ Index: openssl-3.1.4/providers/common/securitycheck.c
 +
      return 1;
  }
-Index: openssl-3.1.4/providers/common/securitycheck_default.c
+Index: openssl-3.2.3/providers/common/securitycheck_default.c
 ===================================================================
---- openssl-3.1.4.orig/providers/common/securitycheck_default.c
-+++ openssl-3.1.4/providers/common/securitycheck_default.c
+--- openssl-3.2.3.orig/providers/common/securitycheck_default.c
++++ openssl-3.2.3/providers/common/securitycheck_default.c
 @@ -15,6 +15,7 @@
  #include <openssl/obj_mac.h>
  #include "prov/securitycheck.h"
@@ -373,11 +373,11 @@ Index: openssl-3.1.4/providers/common/securitycheck_default.c
 +        mdnid = -1;
      return mdnid;
  }
-Index: openssl-3.1.4/providers/implementations/signature/dsa_sig.c
+Index: openssl-3.2.3/providers/implementations/signature/dsa_sig.c
 ===================================================================
---- openssl-3.1.4.orig/providers/implementations/signature/dsa_sig.c
-+++ openssl-3.1.4/providers/implementations/signature/dsa_sig.c
-@@ -123,12 +123,17 @@ static int dsa_setup_md(PROV_DSA_CTX *ct
+--- openssl-3.2.3.orig/providers/implementations/signature/dsa_sig.c
++++ openssl-3.2.3/providers/implementations/signature/dsa_sig.c
+@@ -125,12 +125,17 @@ static int dsa_setup_md(PROV_DSA_CTX *ct
          mdprops = ctx->propq;
  
      if (mdname != NULL) {
@@ -398,11 +398,11 @@ Index: openssl-3.1.4/providers/implementations/signature/dsa_sig.c
  
          if (md == NULL || md_nid < 0) {
              if (md == NULL)
-Index: openssl-3.1.4/providers/implementations/signature/ecdsa_sig.c
+Index: openssl-3.2.3/providers/implementations/signature/ecdsa_sig.c
 ===================================================================
---- openssl-3.1.4.orig/providers/implementations/signature/ecdsa_sig.c
-+++ openssl-3.1.4/providers/implementations/signature/ecdsa_sig.c
-@@ -237,7 +237,11 @@ static int ecdsa_setup_md(PROV_ECDSA_CTX
+--- openssl-3.2.3.orig/providers/implementations/signature/ecdsa_sig.c
++++ openssl-3.2.3/providers/implementations/signature/ecdsa_sig.c
+@@ -247,7 +247,11 @@ static int ecdsa_setup_md(PROV_ECDSA_CTX
                         "%s could not be fetched", mdname);
          return 0;
      }
@@ -414,10 +414,10 @@ Index: openssl-3.1.4/providers/implementations/signature/ecdsa_sig.c
      md_nid = ossl_digest_get_approved_nid_with_sha1(ctx->libctx, md,
                                                      sha1_allowed);
      if (md_nid < 0) {
-Index: openssl-3.1.4/providers/implementations/signature/rsa_sig.c
+Index: openssl-3.2.3/providers/implementations/signature/rsa_sig.c
 ===================================================================
---- openssl-3.1.4.orig/providers/implementations/signature/rsa_sig.c
-+++ openssl-3.1.4/providers/implementations/signature/rsa_sig.c
+--- openssl-3.2.3.orig/providers/implementations/signature/rsa_sig.c
++++ openssl-3.2.3/providers/implementations/signature/rsa_sig.c
 @@ -25,6 +25,7 @@
  #include "internal/cryptlib.h"
  #include "internal/nelem.h"
@@ -434,7 +434,7 @@ Index: openssl-3.1.4/providers/implementations/signature/rsa_sig.c
  
  OSSL_FUNC_signature_newctx_fn rsa_newctx;
  static OSSL_FUNC_signature_sign_init_fn rsa_sign_init;
-@@ -302,10 +304,15 @@ static int rsa_setup_md(PROV_RSA_CTX *ct
+@@ -317,10 +319,15 @@ static int rsa_setup_md(PROV_RSA_CTX *ct
  
      if (mdname != NULL) {
          EVP_MD *md = EVP_MD_fetch(ctx->libctx, mdname, mdprops);
@@ -452,7 +452,7 @@ Index: openssl-3.1.4/providers/implementations/signature/rsa_sig.c
  
          if (md == NULL
              || md_nid <= 0
-@@ -1386,8 +1393,15 @@ static int rsa_set_ctx_params(void *vprs
+@@ -1408,8 +1415,15 @@ static int rsa_set_ctx_params(void *vprs
      prsactx->pad_mode = pad_mode;
  
      if (prsactx->md == NULL && pmdname == NULL
@@ -469,10 +469,10 @@ Index: openssl-3.1.4/providers/implementations/signature/rsa_sig.c
  
      if (pmgf1mdname != NULL
          && !rsa_setup_mgf1_md(prsactx, pmgf1mdname, pmgf1mdprops))
-Index: openssl-3.1.4/ssl/t1_lib.c
+Index: openssl-3.2.3/ssl/t1_lib.c
 ===================================================================
---- openssl-3.1.4.orig/ssl/t1_lib.c
-+++ openssl-3.1.4/ssl/t1_lib.c
+--- openssl-3.2.3.orig/ssl/t1_lib.c
++++ openssl-3.2.3/ssl/t1_lib.c
 @@ -20,6 +20,7 @@
  #include <openssl/bn.h>
  #include <openssl/provider.h>
@@ -481,21 +481,23 @@ Index: openssl-3.1.4/ssl/t1_lib.c
  #include "internal/nelem.h"
  #include "internal/sizes.h"
  #include "internal/tlsgroups.h"
-@@ -1172,11 +1173,13 @@ int ssl_setup_sig_algs(SSL_CTX *ctx)
-         = OPENSSL_malloc(sizeof(*lu) * OSSL_NELEM(sigalg_lookup_tbl));
+@@ -1508,6 +1509,7 @@ int ssl_setup_sigalgs(SSL_CTX *ctx)
+     uint16_t *tls12_sigalgs_list = NULL;
      EVP_PKEY *tmpkey = EVP_PKEY_new();
      int ret = 0;
 +    int ldsigs_allowed;
  
-     if (cache == NULL || tmpkey == NULL)
+     if (ctx == NULL)
+         goto err;
+@@ -1523,6 +1525,7 @@ int ssl_setup_sigalgs(SSL_CTX *ctx)
          goto err;
  
      ERR_set_mark();
 +    ldsigs_allowed = ossl_ctx_legacy_digest_signatures_allowed(ctx->libctx, 0);
+     /* First fill cache and tls12_sigalgs list from legacy algorithm list */
      for (i = 0, lu = sigalg_lookup_tbl;
           i < OSSL_NELEM(sigalg_lookup_tbl); lu++, i++) {
-         EVP_PKEY_CTX *pctx;
-@@ -1196,6 +1199,11 @@ int ssl_setup_sig_algs(SSL_CTX *ctx)
+@@ -1544,6 +1547,11 @@ int ssl_setup_sigalgs(SSL_CTX *ctx)
              cache[i].enabled = 0;
              continue;
          }
@@ -507,13 +509,13 @@ Index: openssl-3.1.4/ssl/t1_lib.c
  
          if (!EVP_PKEY_set_type(tmpkey, lu->sig)) {
              cache[i].enabled = 0;
-Index: openssl-3.1.4/util/libcrypto.num
+Index: openssl-3.2.3/util/libcrypto.num
 ===================================================================
---- openssl-3.1.4.orig/util/libcrypto.num
-+++ openssl-3.1.4/util/libcrypto.num
-@@ -5439,3 +5439,5 @@ X509_get_default_cert_uri
- X509_get_default_cert_uri_env           ?	3_1_0	EXIST::FUNCTION:
- X509_get_default_cert_path_env          ?	3_1_0	EXIST::FUNCTION:
- ossl_safe_getenv                        ?	3_0_0	EXIST::FUNCTION:
+--- openssl-3.2.3.orig/util/libcrypto.num
++++ openssl-3.2.3/util/libcrypto.num
+@@ -5537,3 +5537,5 @@ X509_STORE_CTX_set_current_reasons
+ OSSL_STORE_delete                       5665	3_2_0	EXIST::FUNCTION:
+ BIO_ADDR_copy                           5666	3_2_0	EXIST::FUNCTION:SOCK
+ ossl_safe_getenv                        ?	3_2_0	EXIST::FUNCTION:
 +ossl_ctx_legacy_digest_signatures_allowed ?	3_0_1	EXIST::FUNCTION:
 +ossl_ctx_legacy_digest_signatures_allowed_set ?	3_0_1	EXIST::FUNCTION:

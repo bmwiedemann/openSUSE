@@ -28,6 +28,7 @@ Source11:       node_modules.spec.inc
 Source12:       update_version.sh
 %include %_sourcedir/node_modules.spec.inc
 Patch10:        load-css-overrides.patch
+Patch11:        correct-container-search.patch
 BuildArch:      noarch
 BuildRequires:  appstream-glib
 Requires:       cockpit-bridge >= 138
@@ -37,6 +38,7 @@ Requires:       podman >= 2.0.4
 BuildRequires:  cockpit-devel >= 298
 BuildRequires:  local-npm-registry
 BuildRequires:  sassc
+BuildRequires:  sed
 
 %description
 Cockpit component for managing Podman containers
@@ -58,6 +60,10 @@ npm run build
 export PREFIX=%{_prefix}
 %make_install
 appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/*
+
+%if 0%{?suse_version} == 1500
+sed -i -e 's#"/lib/systemd/system#"%{_unitdir}#' %{buildroot}%{_datadir}/cockpit/podman/manifest.json
+%endif
 
 %files
 %doc README.md

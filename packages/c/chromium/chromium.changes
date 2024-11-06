@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  6 00:52:13 CET 2024 - ro@suse.de
+
+- Chromium 130.0.6723.116 (boo#1232843)
+  * CVE-2024-10826: Use after free in Family Experiences
+  * CVE-2024-10827: Use after free in Serial
+
+-------------------------------------------------------------------
 Wed Oct 30 11:16:19 CET 2024 - ro@suse.de
 
 - Chromium 130.0.6723.91 (boo#1232566)

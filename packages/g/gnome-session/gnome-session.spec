@@ -100,6 +100,16 @@ This package contains a minimal version of gnome-session, that can be
 used for specific cases. The gnome-session package is needed for a fully
 functional GNOME desktop.
 
+%package xsession
+Summary:        Desktop file for X11 GNOME Session
+Provides:       gnome-session:%{_datadir}/xsessions/gnome.desktop
+Requires:       %{name} = %{version}
+Requires:       gnome-shell
+Requires:       xorg-x11-server
+
+%description xsession
+Desktop file to add GNOME (X11) to display manager session menu.
+
 %lang_package
 
 %prep
@@ -149,6 +159,8 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 
 %files
 %{_bindir}/gnome
+
+%files xsession
 %{_datadir}/xsessions/default.desktop
 %{_datadir}/xsessions/gnome.desktop
 %{_datadir}/xsessions/gnome-xorg.desktop

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Nov  5 13:29:57 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.3
+- Changes since 6.2.2:
+  * update version for new release
+  * input: don't crash if the internal handle is nullptr (wheelEvent)
+  * backends/x11: fix colormap leak
+  * Update ExpoCell contentItem position upon its parent change (kde#495501)
+  * scene: Fix item restacking repaints
+  * xwayland: Fix a couple of file descriptor leaks (kde#442846)
+  * plugins/keynotification: Fix event ID for notification (kde#495264)
+  * backends/drm: don't set backlight brightness to 1 in HDR mode (kde#495242)
+  * core/colorspace: ensure that we don't create elevated blacks with black point compensation (kde#494854)
+  * autotests: test that ColorPipeline and OpenGL shader results at least somewhat match
+  * core/colorpipeline: do ICtCp conversion the correct way around
+  * core/colorpipeline: use PQ with min. luminance zero for tone mapping
+  * core/colorpipeline: fix multiplier+matrix optimization
+  * core/colorpipeline: don't transpose the ICtCp matrix
+  * core/colorpipeline: fix tone mapping luminances being switched around
+  * backends/drm: check if m_commits is empty after waiting for commitPending
+  * use xcb_connection_has_error to check for failue
+  * Fix "window to next desktop" shortcut during interactive move/resize session
+  * backends/drm: add an environment variable to force glFinish on multi gpu copies
+  * backends/drm: disable software brightness if there was ever a hardware brightness device assigned
+
+-------------------------------------------------------------------
 Tue Oct 22 14:06:08 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.2:

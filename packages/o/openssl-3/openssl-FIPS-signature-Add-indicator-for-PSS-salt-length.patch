@@ -45,11 +45,11 @@ Signed-off-by: Clemens Lang <cllang@redhat.com>
  util/perl/OpenSSL/paramnames.pm               | 23 ++++++++++---------
  3 files changed, 37 insertions(+), 11 deletions(-)
 
-Index: openssl-3.1.4/include/openssl/evp.h
+Index: openssl-3.2.3/include/openssl/evp.h
 ===================================================================
---- openssl-3.1.4.orig/include/openssl/evp.h
-+++ openssl-3.1.4/include/openssl/evp.h
-@@ -801,6 +801,10 @@ __owur int EVP_CipherFinal(EVP_CIPHER_CT
+--- openssl-3.2.3.orig/include/openssl/evp.h
++++ openssl-3.2.3/include/openssl/evp.h
+@@ -804,6 +804,10 @@ __owur int EVP_CipherFinal(EVP_CIPHER_CT
  __owur int EVP_CipherFinal_ex(EVP_CIPHER_CTX *ctx, unsigned char *outm,
                                int *outl);
  
@@ -60,11 +60,11 @@ Index: openssl-3.1.4/include/openssl/evp.h
  __owur int EVP_SignFinal(EVP_MD_CTX *ctx, unsigned char *md, unsigned int *s,
                           EVP_PKEY *pkey);
  __owur int EVP_SignFinal_ex(EVP_MD_CTX *ctx, unsigned char *md, unsigned int *s,
-Index: openssl-3.1.4/providers/implementations/signature/rsa_sig.c
+Index: openssl-3.2.3/providers/implementations/signature/rsa_sig.c
 ===================================================================
---- openssl-3.1.4.orig/providers/implementations/signature/rsa_sig.c
-+++ openssl-3.1.4/providers/implementations/signature/rsa_sig.c
-@@ -1167,6 +1167,24 @@ static int rsa_get_ctx_params(void *vprs
+--- openssl-3.2.3.orig/providers/implementations/signature/rsa_sig.c
++++ openssl-3.2.3/providers/implementations/signature/rsa_sig.c
+@@ -1185,6 +1185,24 @@ static int rsa_get_ctx_params(void *vprs
          }
      }
  
@@ -89,7 +89,7 @@ Index: openssl-3.1.4/providers/implementations/signature/rsa_sig.c
      return 1;
  }
  
-@@ -1176,6 +1194,9 @@ static const OSSL_PARAM known_gettable_c
+@@ -1194,6 +1212,9 @@ static const OSSL_PARAM known_gettable_c
      OSSL_PARAM_utf8_string(OSSL_SIGNATURE_PARAM_DIGEST, NULL, 0),
      OSSL_PARAM_utf8_string(OSSL_SIGNATURE_PARAM_MGF1_DIGEST, NULL, 0),
      OSSL_PARAM_utf8_string(OSSL_SIGNATURE_PARAM_PSS_SALTLEN, NULL, 0),
@@ -99,51 +99,15 @@ Index: openssl-3.1.4/providers/implementations/signature/rsa_sig.c
      OSSL_PARAM_END
  };
  
-Index: openssl-3.1.4/include/openssl/core_names.h
+Index: openssl-3.2.3/util/perl/OpenSSL/paramnames.pm
 ===================================================================
---- openssl-3.1.4.orig/include/openssl/core_names.h
-+++ openssl-3.1.4/include/openssl/core_names.h
-@@ -458,6 +458,7 @@ extern "C" {
- #define OSSL_SIGNATURE_PARAM_MGF1_PROPERTIES    \
-     OSSL_PKEY_PARAM_MGF1_PROPERTIES
- #define OSSL_SIGNATURE_PARAM_DIGEST_SIZE        OSSL_PKEY_PARAM_DIGEST_SIZE
-+#define OSSL_SIGNATURE_PARAM_SUSE_FIPS_INDICATOR "suse-fips-indicator"
- 
- /* Asym cipher parameters */
- #define OSSL_ASYM_CIPHER_PARAM_DIGEST                   OSSL_PKEY_PARAM_DIGEST
-Index: openssl-3.1.4/providers/implementations/signature/rsa_sig.c
-===================================================================
---- openssl-3.1.4.orig/providers/implementations/signature/rsa_sig.c
-+++ openssl-3.1.4/providers/implementations/signature/rsa_sig.c
-@@ -696,8 +696,13 @@ static int rsa_verify_recover(void *vprs
-     size_t rsabits = RSA_bits(prsactx->rsa);
- 
-     if (rsabits < 2048) {
--        ERR_raise(ERR_LIB_FIPS, PROV_R_INVALID_KEY_LENGTH);
--        return 0;
-+        if (rsabits != 1024
-+            && rsabits != 1280
-+            && rsabits != 1536
-+            && rsabits != 1792) {
-+            ERR_raise(ERR_LIB_FIPS, PROV_R_INVALID_KEY_LENGTH);
-+            return 0;
-+        }
-     }
- # endif
- 
-@@ -792,8 +797,13 @@ static int rsa_verify(void *vprsactx, co
-     size_t rsabits = RSA_bits(prsactx->rsa);
- 
-     if (rsabits < 2048) {
--        ERR_raise(ERR_LIB_FIPS, PROV_R_INVALID_KEY_LENGTH);
--        return 0;
-+        if (rsabits != 1024
-+            && rsabits != 1280
-+            && rsabits != 1536
-+            && rsabits != 1792) {
-+            ERR_raise(ERR_LIB_FIPS, PROV_R_INVALID_KEY_LENGTH);
-+            return 0;
-+        }
-     }
- # endif
+--- openssl-3.2.3.orig/util/perl/OpenSSL/paramnames.pm
++++ openssl-3.2.3/util/perl/OpenSSL/paramnames.pm
+@@ -386,6 +386,7 @@ my %params = (
+     'SIGNATURE_PARAM_MGF1_PROPERTIES' =>    '*PKEY_PARAM_MGF1_PROPERTIES',
+     'SIGNATURE_PARAM_DIGEST_SIZE' =>        '*PKEY_PARAM_DIGEST_SIZE',
+     'SIGNATURE_PARAM_NONCE_TYPE' =>         "nonce-type",
++    'SIGNATURE_PARAM_SUSE_FIPS_INDICATOR' => "suse-fips-indicator",
+     'SIGNATURE_PARAM_INSTANCE' =>           "instance",
+     'SIGNATURE_PARAM_CONTEXT_STRING' =>     "context-string",
  

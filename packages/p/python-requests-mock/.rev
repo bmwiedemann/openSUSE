@@ -350,4 +350,12 @@
     <comment>- Use the %pyunittest macro to run tests (because of testtools)</comment>
     <requestid>1172635</requestid>
   </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>91aca136ba0be9befe96b9cdb841a5cf</srcmd5>
+    <version>1.12.1</version>
+    <time>1730908198</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1221494</requestid>
+  </revision>
 </revisionlist>

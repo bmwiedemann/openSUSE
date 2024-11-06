@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov  5 09:29:27 UTC 2024 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 0.10.0+108+suse.2c2e597:
+  * Update fix for bsc#1232063 to upstream-accepted solution
+
+-------------------------------------------------------------------
+Mon Nov  4 11:13:17 UTC 2024 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 0.10.0+106+suse.ffbdb7a:
+  * Fix reboot hang if uevent is processed for suspended device
+  (bsc#1232063)
+
+-------------------------------------------------------------------
 Thu Aug 29 07:00:18 UTC 2024 - Martin Wilck <mwilck@suse.com>
 
 - Update to 0.10.0+103+suse.0fc97cd

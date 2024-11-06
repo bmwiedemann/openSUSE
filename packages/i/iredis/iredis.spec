@@ -18,7 +18,7 @@
 
 %define pythons python3
 Name:           iredis
-Version:        1.14.1
+Version:        1.15.0
 Release:        0
 Summary:        Terminal client for Redis with auto-completion and syntax highlighting
 License:        BSD-3-Clause
@@ -35,9 +35,10 @@ BuildRequires:  psmisc
 BuildRequires:  python3-Pygments >= 2
 BuildRequires:  python3-click >= 8.0
 BuildRequires:  python3-configobj >= 5.0
+BuildRequires:  python3-dateutil >= 2.8.2
+BuildRequires:  python3-freezegun
 BuildRequires:  python3-mistune >= 3.0
 BuildRequires:  python3-packaging >= 23.0
-BuildRequires:  python3-pendulum >= 2.1.0
 BuildRequires:  python3-pexpect
 BuildRequires:  python3-pip
 BuildRequires:  python3-prompt_toolkit >= 3
@@ -50,9 +51,9 @@ BuildRequires:  redis >= 5.0.0
 Requires:       python3-Pygments >= 2
 Requires:       python3-click >= 8.0
 Requires:       python3-configobj >= 5.0
+Requires:       python3-dateutil >= 2.8.2
 Requires:       python3-mistune >= 2.0
 Requires:       python3-packaging >= 23.0
-Requires:       python3-pendulum >= 2.1.0
 Requires:       python3-prompt_toolkit >= 3
 Requires:       python3-redis >= 3
 Requires:       python3-wcwidth >= 0.1.9
@@ -93,7 +94,8 @@ redis-cli CONFIG SET save ""
 # skip test_peek_zset_fetch_all, test_peek_zset_fetch_part, reported upstream: https://github.com/laixintao/iredis/issues/432
 # skip test_auto_select_db_and_auth_for_reconnect_only_6 needs further inspection
 # skip test_timer and test_command_completion_when_a_command_is_another_command_substring and test_trasaction_syntax_error and test_subscribe because of timeouts (too slow) on s390x
-REDIS_VERSION=$(%{_sbindir}/redis-server --version | grep -o '[0-9]' | head -n 1) PATH=${PATH:+$PATH:}%{buildroot}%{_bindir} PYTHONPATH=${PYTHONPATH:+$PYTHONPATH:}%{buildroot}%{python3_sitelib} PYTHONDONTWRITEBYTECODE=1 pytest --ignore=_build.python3 -vv -k 'not (test_abort_reading_connection or test_peek_set_fetch_part or test_peek_stream or test_timestamp_completer_humanize_time_completion or test_peek_zset_fetch_all or test_peek_zset_fetch_part or test_auto_select_db_and_auth_for_reconnect_only_6 or test_timer or test_command_completion_when_a_command_is_another_command_substring) or test_trasaction_syntax_error or test_subscribe'
+# skip test_render_time and test_render_unixtime_config_raw because of timezone offsets
+REDIS_VERSION=$(%{_sbindir}/redis-server --version | grep -o '[0-9]' | head -n 1) PATH=${PATH:+$PATH:}%{buildroot}%{_bindir} PYTHONPATH=${PYTHONPATH:+$PYTHONPATH:}%{buildroot}%{python3_sitelib} PYTHONDONTWRITEBYTECODE=1 pytest --ignore=_build.python3 -vv -k 'not (test_abort_reading_connection or test_peek_set_fetch_part or test_peek_stream or test_timestamp_completer_humanize_time_completion or test_peek_zset_fetch_all or test_peek_zset_fetch_part or test_auto_select_db_and_auth_for_reconnect_only_6 or test_timer or test_command_completion_when_a_command_is_another_command_substring or test_trasaction_syntax_error or test_subscribe or test_render_time or test_render_unixtime_config_raw)'
 killall redis-server
 %endif
 

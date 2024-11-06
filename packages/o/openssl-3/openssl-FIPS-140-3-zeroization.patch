@@ -1,68 +1,8 @@
-Index: openssl-3.1.4/crypto/ffc/ffc_params.c
+Index: openssl-3.2.3/crypto/ec/ec_lib.c
 ===================================================================
---- openssl-3.1.4.orig/crypto/ffc/ffc_params.c
-+++ openssl-3.1.4/crypto/ffc/ffc_params.c
-@@ -27,10 +27,10 @@ void ossl_ffc_params_init(FFC_PARAMS *pa
- 
- void ossl_ffc_params_cleanup(FFC_PARAMS *params)
- {
--    BN_free(params->p);
--    BN_free(params->q);
--    BN_free(params->g);
--    BN_free(params->j);
-+    BN_clear_free(params->p);
-+    BN_clear_free(params->q);
-+    BN_clear_free(params->g);
-+    BN_clear_free(params->j);
-     OPENSSL_free(params->seed);
-     ossl_ffc_params_init(params);
- }
-Index: openssl-3.1.4/crypto/rsa/rsa_lib.c
-===================================================================
---- openssl-3.1.4.orig/crypto/rsa/rsa_lib.c
-+++ openssl-3.1.4/crypto/rsa/rsa_lib.c
-@@ -155,8 +155,8 @@ void RSA_free(RSA *r)
- 
-     CRYPTO_THREAD_lock_free(r->lock);
- 
--    BN_free(r->n);
--    BN_free(r->e);
-+    BN_clear_free(r->n);
-+    BN_clear_free(r->e);
-     BN_clear_free(r->d);
-     BN_clear_free(r->p);
-     BN_clear_free(r->q);
-Index: openssl-3.1.4/providers/implementations/kdfs/hkdf.c
-===================================================================
---- openssl-3.1.4.orig/providers/implementations/kdfs/hkdf.c
-+++ openssl-3.1.4/providers/implementations/kdfs/hkdf.c
-@@ -118,7 +118,7 @@ static void kdf_hkdf_reset(void *vctx)
-     void *provctx = ctx->provctx;
- 
-     ossl_prov_digest_reset(&ctx->digest);
--    OPENSSL_free(ctx->salt);
-+    OPENSSL_clear_free(ctx->salt, ctx->salt_len);
-     OPENSSL_free(ctx->prefix);
-     OPENSSL_free(ctx->label);
-     OPENSSL_clear_free(ctx->data, ctx->data_len);
-Index: openssl-3.1.4/providers/implementations/kdfs/pbkdf2.c
-===================================================================
---- openssl-3.1.4.orig/providers/implementations/kdfs/pbkdf2.c
-+++ openssl-3.1.4/providers/implementations/kdfs/pbkdf2.c
-@@ -92,7 +92,7 @@ static void *kdf_pbkdf2_new(void *provct
- static void kdf_pbkdf2_cleanup(KDF_PBKDF2 *ctx)
- {
-     ossl_prov_digest_reset(&ctx->digest);
--    OPENSSL_free(ctx->salt);
-+    OPENSSL_clear_free(ctx->salt, ctx->salt_len);
-     OPENSSL_clear_free(ctx->pass, ctx->pass_len);
-     memset(ctx, 0, sizeof(*ctx));
- }
-Index: openssl-3.1.4/crypto/ec/ec_lib.c
-===================================================================
---- openssl-3.1.4.orig/crypto/ec/ec_lib.c
-+++ openssl-3.1.4/crypto/ec/ec_lib.c
-@@ -752,12 +752,16 @@ EC_POINT *EC_POINT_new(const EC_GROUP *g
+--- openssl-3.2.3.orig/crypto/ec/ec_lib.c
++++ openssl-3.2.3/crypto/ec/ec_lib.c
+@@ -743,12 +743,16 @@ EC_POINT *EC_POINT_new(const EC_GROUP *g
  
  void EC_POINT_free(EC_POINT *point)
  {
@@ -79,3 +19,63 @@ Index: openssl-3.1.4/crypto/ec/ec_lib.c
  }
  
  void EC_POINT_clear_free(EC_POINT *point)
+Index: openssl-3.2.3/crypto/ffc/ffc_params.c
+===================================================================
+--- openssl-3.2.3.orig/crypto/ffc/ffc_params.c
++++ openssl-3.2.3/crypto/ffc/ffc_params.c
+@@ -27,10 +27,10 @@ void ossl_ffc_params_init(FFC_PARAMS *pa
+ 
+ void ossl_ffc_params_cleanup(FFC_PARAMS *params)
+ {
+-    BN_free(params->p);
+-    BN_free(params->q);
+-    BN_free(params->g);
+-    BN_free(params->j);
++    BN_clear_free(params->p);
++    BN_clear_free(params->q);
++    BN_clear_free(params->g);
++    BN_clear_free(params->j);
+     OPENSSL_free(params->seed);
+     ossl_ffc_params_init(params);
+ }
+Index: openssl-3.2.3/crypto/rsa/rsa_lib.c
+===================================================================
+--- openssl-3.2.3.orig/crypto/rsa/rsa_lib.c
++++ openssl-3.2.3/crypto/rsa/rsa_lib.c
+@@ -159,8 +159,8 @@ void RSA_free(RSA *r)
+     CRYPTO_THREAD_lock_free(r->lock);
+     CRYPTO_FREE_REF(&r->references);
+ 
+-    BN_free(r->n);
+-    BN_free(r->e);
++    BN_clear_free(r->n);
++    BN_clear_free(r->e);
+     BN_clear_free(r->d);
+     BN_clear_free(r->p);
+     BN_clear_free(r->q);
+Index: openssl-3.2.3/providers/implementations/kdfs/hkdf.c
+===================================================================
+--- openssl-3.2.3.orig/providers/implementations/kdfs/hkdf.c
++++ openssl-3.2.3/providers/implementations/kdfs/hkdf.c
+@@ -117,7 +117,7 @@ static void kdf_hkdf_reset(void *vctx)
+     void *provctx = ctx->provctx;
+ 
+     ossl_prov_digest_reset(&ctx->digest);
+-    OPENSSL_free(ctx->salt);
++    OPENSSL_clear_free(ctx->salt, ctx->salt_len);
+     OPENSSL_free(ctx->prefix);
+     OPENSSL_free(ctx->label);
+     OPENSSL_clear_free(ctx->data, ctx->data_len);
+Index: openssl-3.2.3/providers/implementations/kdfs/pbkdf2.c
+===================================================================
+--- openssl-3.2.3.orig/providers/implementations/kdfs/pbkdf2.c
++++ openssl-3.2.3/providers/implementations/kdfs/pbkdf2.c
+@@ -90,7 +90,7 @@ static void *kdf_pbkdf2_new(void *provct
+ static void kdf_pbkdf2_cleanup(KDF_PBKDF2 *ctx)
+ {
+     ossl_prov_digest_reset(&ctx->digest);
+-    OPENSSL_free(ctx->salt);
++    OPENSSL_clear_free(ctx->salt, ctx->salt_len);
+     OPENSSL_clear_free(ctx->pass, ctx->pass_len);
+     memset(ctx, 0, sizeof(*ctx));
+ }

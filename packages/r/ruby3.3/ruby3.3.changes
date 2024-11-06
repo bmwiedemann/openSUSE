@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov  5 13:25:12 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.3.6
+  This is a routine update that includes minor bug fixes. It also
+  stops warning missing default gem dependencies that will be
+  bundled gems in Ruby 3.5. For more details, please refer to the
+  release notes on GitHub.
+
+  https://github.com/ruby/ruby/releases/tag/v3_3_5
+- drop 7939.diff
+
+-------------------------------------------------------------------
 Tue Sep  3 13:35:24 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Added 7939.diff

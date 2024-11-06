@@ -1,0 +1,16 @@
+---
+ bs4/tests/test_css.py |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+--- a/bs4/tests/test_css.py
++++ b/bs4/tests/test_css.py
+@@ -332,7 +332,8 @@ class TestCSSSelectors(SoupTest):
+         assert "yes" == chosen.string
+ 
+     def test_unsupported_pseudoclass(self):
+-        with pytest.raises(NotImplementedError):
++        # Compatibility with various versions of soupsieve
++        with pytest.raises((NotImplementedError,SelectorSyntaxError)):
+             self.soup.select("a:no-such-pseudoclass")
+ 
+         with pytest.raises(SelectorSyntaxError):

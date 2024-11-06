@@ -18,23 +18,11 @@ Signed-off-by: Clemens Lang <cllang@redhat.com>
  .../ciphers/ciphercommon_gcm.c                | 25 +++++++++++++++++++
  4 files changed, 34 insertions(+)
 
-Index: openssl-3.1.4/include/openssl/core_names.h
+Index: openssl-3.2.3/include/openssl/evp.h
 ===================================================================
---- openssl-3.1.4.orig/include/openssl/core_names.h
-+++ openssl-3.1.4/include/openssl/core_names.h
-@@ -99,6 +99,7 @@ extern "C" {
- #define OSSL_CIPHER_PARAM_CTS_MODE             "cts_mode"     /* utf8_string */
- /* For passing the AlgorithmIdentifier parameter in DER form */
- #define OSSL_CIPHER_PARAM_ALGORITHM_ID_PARAMS  "alg_id_param" /* octet_string */
-+#define OSSL_CIPHER_PARAM_SUSE_FIPS_INDICATOR  "suse-fips-indicator" /* int */
- 
- #define OSSL_CIPHER_PARAM_TLS1_MULTIBLOCK_MAX_SEND_FRAGMENT                    \
-     "tls1multi_maxsndfrag" /* uint */
-Index: openssl-3.1.4/include/openssl/evp.h
-===================================================================
---- openssl-3.1.4.orig/include/openssl/evp.h
-+++ openssl-3.1.4/include/openssl/evp.h
-@@ -750,6 +750,10 @@ void EVP_CIPHER_CTX_set_flags(EVP_CIPHER
+--- openssl-3.2.3.orig/include/openssl/evp.h
++++ openssl-3.2.3/include/openssl/evp.h
+@@ -753,6 +753,10 @@ void EVP_CIPHER_CTX_set_flags(EVP_CIPHER
  void EVP_CIPHER_CTX_clear_flags(EVP_CIPHER_CTX *ctx, int flags);
  int EVP_CIPHER_CTX_test_flags(const EVP_CIPHER_CTX *ctx, int flags);
  
@@ -44,12 +32,12 @@ Index: openssl-3.1.4/include/openssl/evp.h
 +
  __owur int EVP_EncryptInit(EVP_CIPHER_CTX *ctx, const EVP_CIPHER *cipher,
                             const unsigned char *key, const unsigned char *iv);
- /*__owur*/ int EVP_EncryptInit_ex(EVP_CIPHER_CTX *ctx,
-Index: openssl-3.1.4/providers/implementations/ciphers/ciphercommon.c
+ __owur int EVP_EncryptInit_ex(EVP_CIPHER_CTX *ctx,
+Index: openssl-3.2.3/providers/implementations/ciphers/ciphercommon.c
 ===================================================================
---- openssl-3.1.4.orig/providers/implementations/ciphers/ciphercommon.c
-+++ openssl-3.1.4/providers/implementations/ciphers/ciphercommon.c
-@@ -149,6 +149,10 @@ static const OSSL_PARAM cipher_aead_know
+--- openssl-3.2.3.orig/providers/implementations/ciphers/ciphercommon.c
++++ openssl-3.2.3/providers/implementations/ciphers/ciphercommon.c
+@@ -152,6 +152,10 @@ static const OSSL_PARAM cipher_aead_know
      OSSL_PARAM_octet_string(OSSL_CIPHER_PARAM_AEAD_TAG, NULL, 0),
      OSSL_PARAM_size_t(OSSL_CIPHER_PARAM_AEAD_TLS1_AAD_PAD, NULL),
      OSSL_PARAM_octet_string(OSSL_CIPHER_PARAM_AEAD_TLS1_GET_IV_GEN, NULL, 0),
@@ -60,13 +48,13 @@ Index: openssl-3.1.4/providers/implementations/ciphers/ciphercommon.c
      OSSL_PARAM_END
  };
  const OSSL_PARAM *ossl_cipher_aead_gettable_ctx_params(
-Index: openssl-3.1.4/providers/implementations/ciphers/ciphercommon_gcm.c
+Index: openssl-3.2.3/providers/implementations/ciphers/ciphercommon_gcm.c
 ===================================================================
---- openssl-3.1.4.orig/providers/implementations/ciphers/ciphercommon_gcm.c
-+++ openssl-3.1.4/providers/implementations/ciphers/ciphercommon_gcm.c
-@@ -224,6 +224,31 @@ int ossl_gcm_get_ctx_params(void *vctx,
-             || !getivgen(ctx, p->data, p->data_size))
-             return 0;
+--- openssl-3.2.3.orig/providers/implementations/ciphers/ciphercommon_gcm.c
++++ openssl-3.2.3/providers/implementations/ciphers/ciphercommon_gcm.c
+@@ -238,6 +238,31 @@ int ossl_gcm_get_ctx_params(void *vctx,
+             break;
+         }
      }
 +
 +    /* We would usually hide this under #ifdef FIPS_MODULE, but
@@ -96,3 +84,15 @@ Index: openssl-3.1.4/providers/implementations/ciphers/ciphercommon_gcm.c
      return 1;
  }
  
+Index: openssl-3.2.3/util/perl/OpenSSL/paramnames.pm
+===================================================================
+--- openssl-3.2.3.orig/util/perl/OpenSSL/paramnames.pm
++++ openssl-3.2.3/util/perl/OpenSSL/paramnames.pm
+@@ -102,6 +102,7 @@ my %params = (
+     'CIPHER_PARAM_CTS_MODE' =>             "cts_mode",    # utf8_string
+ # For passing the AlgorithmIdentifier parameter in DER form
+     'CIPHER_PARAM_ALGORITHM_ID_PARAMS' =>  "alg_id_param",# octet_string
++    'CIPHER_PARAM_SUSE_FIPS_INDICATOR' =>  "suse-fips-indicator",# int
+     'CIPHER_PARAM_XTS_STANDARD' =>         "xts_standard",# utf8_string
+ 
+     'CIPHER_PARAM_TLS1_MULTIBLOCK_MAX_SEND_FRAGMENT' =>  "tls1multi_maxsndfrag",# uint

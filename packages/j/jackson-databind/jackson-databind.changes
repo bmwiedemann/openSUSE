@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  6 07:55:24 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.17.3
+  * #4718: Should not fail on trying to serialize
+    'java.time.DateTimeException'
+
+-------------------------------------------------------------------
 Mon Oct 28 07:07:17 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Remove LGPL-2.1-or-later license, since not found in the package

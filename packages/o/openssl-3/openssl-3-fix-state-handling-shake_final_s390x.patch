@@ -1,0 +1,32 @@
+commit 288fbb4b71343516cee6f6a44b9ec55d82fb1532
+Author: Holger Dengler <dengler@linux.ibm.com>
+Date:   Wed Sep 27 15:37:29 2023 +0200
+
+    Fix state handling of shake_final for s390x.
+    
+    The digest life-cycle state diagram has been updated for XOF. Fix the
+    state handling in s390x_shake_final() according to the updated state
+    diagram.
+    
+    Signed-off-by: Holger Dengler <dengler@linux.ibm.com>
+    
+    Reviewed-by: Shane Lontis <shane.lontis@oracle.com>
+    Reviewed-by: Todd Short <todd.short@me.com>
+    Reviewed-by: Tomas Mraz <tomas@openssl.org>
+    (Merged from https://github.com/openssl/openssl/pull/22221)
+
+Index: openssl-3.2.3/providers/implementations/digests/sha3_prov.c
+===================================================================
+--- openssl-3.2.3.orig/providers/implementations/digests/sha3_prov.c
++++ openssl-3.2.3/providers/implementations/digests/sha3_prov.c
+@@ -217,6 +217,10 @@ static int s390x_shake_final(void *vctx,
+ 
+     if (!ossl_prov_is_running())
+         return 0;
++    if (!(ctx->xof_state == XOF_STATE_INIT ||
++          ctx->xof_state == XOF_STATE_ABSORB))
++        return 0;
++    ctx->xof_state = XOF_STATE_FINAL;
+     s390x_klmd(ctx->buf, ctx->bufsz, out, outlen, ctx->pad, ctx->A);
+     return 1;
+ }

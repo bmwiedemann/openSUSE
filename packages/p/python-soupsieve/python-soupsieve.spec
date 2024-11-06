@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-soupsieve
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-soupsieve%{psuffix}
-Version:        2.5
+Version:        2.6
 Release:        0
 Summary:        A modern CSS selector implementation for BeautifulSoup
 License:        MIT

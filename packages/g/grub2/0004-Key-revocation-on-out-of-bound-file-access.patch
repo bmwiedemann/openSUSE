@@ -20,11 +20,17 @@ Signed-Off-by Michael Chang <mchang@suse.com>
  include/grub/file.h           |  1 +
  2 files changed, 37 insertions(+)
 
-diff --git a/grub-core/commands/crypttab.c b/grub-core/commands/crypttab.c
-index d3acc4b59..e09296c57 100644
 --- a/grub-core/commands/crypttab.c
 +++ b/grub-core/commands/crypttab.c
-@@ -121,6 +121,41 @@ grub_cryptokey_tpmkey_discard (void)
+@@ -6,6 +6,7 @@
+ #include <grub/mm.h>
+ #include <grub/list.h>
+ #include <grub/crypttab.h>
++#include <grub/file.h>
+ 
+ GRUB_MOD_LICENSE ("GPLv3+");
+ 
+@@ -89,6 +90,41 @@
      grub_cryptokey_discard();
  }
  
@@ -66,26 +72,97 @@ index d3acc4b59..e09296c57 100644
  static grub_err_t
  grub_cmd_crypttab_entry (grub_command_t cmd __attribute__ ((unused)),
  	       int argc, char **argv)
-@@ -153,6 +188,7 @@ GRUB_MOD_INIT(crypttab)
+@@ -121,6 +157,8 @@
  {
    cmd = grub_register_command ("crypttab_entry", grub_cmd_crypttab_entry,
  			       N_("VOLUME-NAME ENCRYPTED-DEVICE KEY-FILE") , N_("No description"));
 +  grub_file_filter_register (GRUB_FILE_FILTER_DISTRUST, grub_distrust_open);
-   grub_dl_set_persistent (mod);
++  grub_dl_set_persistent (mod);
  }
  
-diff --git a/include/grub/file.h b/include/grub/file.h
-index fcfd32ce2..daf23a9c9 100644
+ GRUB_MOD_FINI(crypttab)
 --- a/include/grub/file.h
 +++ b/include/grub/file.h
-@@ -185,6 +185,7 @@ extern grub_disk_read_hook_t EXPORT_VAR(grub_file_progress_hook);
+@@ -185,6 +185,7 @@
  /* Filters with lower ID are executed first.  */
  typedef enum grub_file_filter_id
    {
 +    GRUB_FILE_FILTER_DISTRUST,
-     GRUB_FILE_FILTER_NOCAT,
      GRUB_FILE_FILTER_VERIFY,
      GRUB_FILE_FILTER_GZIO,
--- 
-2.42.1
-
+     GRUB_FILE_FILTER_XZIO,
+--- a/grub-core/disk/diskfilter.c
++++ b/grub-core/disk/diskfilter.c
+@@ -558,6 +558,39 @@
+   return NULL;
+ }
+ 
++static int
++grub_diskfilter_has_cryptodisk (const struct grub_diskfilter_lv *lv)
++{
++  struct grub_diskfilter_pv *pv;
++
++  if (!lv)
++    return 0;
++
++  if (lv->vg->pvs)
++    for (pv = lv->vg->pvs; pv; pv = pv->next)
++      {
++	if (!pv->disk)
++	{
++	  grub_dprintf ("diskfilter", _("Couldn't find physical volume `%s'."
++			" Some modules may be missing from core image."),
++			pv->name);
++	  continue;
++	}
++
++	switch (pv->disk->dev->id)
++	  {
++	    case GRUB_DISK_DEVICE_CRYPTODISK_ID:
++	      return 1;
++	    case GRUB_DISK_DEVICE_DISKFILTER_ID:
++	      return grub_diskfilter_has_cryptodisk (pv->disk->data);
++	    default:
++	      break;
++	  }
++      }
++
++  return 0;
++}
++
+ static grub_err_t
+ grub_diskfilter_open (const char *name, grub_disk_t disk)
+ {
+@@ -589,6 +622,8 @@
+ 
+   disk->total_sectors = lv->size;
+   disk->max_agglomerate = GRUB_DISK_MAX_MAX_AGGLOMERATE;
++  disk->is_crypto_diskfilter = grub_diskfilter_has_cryptodisk (lv);
++
+   return 0;
+ }
+ 
+--- a/include/grub/disk.h
++++ b/include/grub/disk.h
+@@ -147,6 +147,8 @@
+ 
+   /* Device-specific data.  */
+   void *data;
++
++  int is_crypto_diskfilter;
+ };
+ typedef struct grub_disk *grub_disk_t;
+ 
+@@ -317,4 +319,12 @@
+ void grub_diskfilter_fini (void);
+ #endif
+ 
++static inline int
++grub_disk_is_crypto (grub_disk_t disk)
++{
++  return ((disk->is_crypto_diskfilter ||
++	   disk->dev->id == GRUB_DISK_DEVICE_CRYPTODISK_ID) ?
++	  1 : 0);
++}
++
+ #endif /* ! GRUB_DISK_HEADER */

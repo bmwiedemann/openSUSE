@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Nov  6 08:31:07 UTC 2024 - Klaus Kämpf <kkaempf@suse.de>
+
+- fix version number in _service
+
+-------------------------------------------------------------------
+Tue Nov 05 16:38:10 UTC 2024 - kkaempf@suse.de
+
+- Update to version v0.5.7+git20200407.cd438a8:
+  * github: enable lockdown of issues and merge requests
+  * libcmpiutil: Fix endianness issues in embedded object parsing
+  * Fix compilation on ARM
+  * Release 0.5.7
+  * libcmpiutil: add time and thread info in debug log
+  * libcmpiutil: fix potential debug print crash
+  * Added tag release_0_5_6 for changeset c7ba1bbeba54
+  * Bump version to 0.5.6
+  * libcmpiutil: Add libtool version info
+  * libcmpituil: Proper definition of LEX_OUTPUT_ROOT
+
+- drop 0001-libcmpiutil-Fix-endianness-issues-in-embedded-object.patch
+  (upstream)
+
+- rename 0002-fix-ARM-build.patch to 0001-fix-ARM-build.patch
+  0003-drop-duplicate-definition-of-_FORTIFY_SOURCE.patch
+  to 0002-drop-duplicate-definition-of-_FORTIFY_SOURCE.patch
+
+-------------------------------------------------------------------
 Thu Feb 22 10:09:07 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

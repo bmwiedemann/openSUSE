@@ -24,6 +24,9 @@ Summary:        HTML/XML Parser for Quick-Turnaround Applications Like Screen-Sc
 License:        MIT
 URL:            https://www.crummy.com/software/BeautifulSoup/
 Source:         https://files.pythonhosted.org/packages/source/b/beautifulsoup4/beautifulsoup4-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM soupsieve26-compat.patch lp#2086199 mcepl@suse.com
+# compatibility patch for various versions of soupsieve
+Patch0:         soupsieve26-compat.patch
 BuildRequires:  %{python_module cchardet}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
@@ -37,6 +40,7 @@ Requires:       python-cchardet
 Requires:       python-soupsieve >= 1.2
 Suggests:       python-html5lib
 Suggests:       python-lxml >= 3.4.4
+Provides:       python-bs4 = %{version}-%{release}
 BuildArch:      noarch
 %python_subpackages
 
@@ -79,7 +83,7 @@ Documentation and help files for %{name}
 %endif
 
 %prep
-%setup -q -n beautifulsoup4-%{version}
+%autosetup -p1 -n beautifulsoup4-%{version}
 
 %build
 %pyproject_wheel

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov  5 13:30:18 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.3
+- Changes since 6.2.2:
+  * update version for new release
+  * libx264encoder: Ensure stream size is always a multiple of 2 (kde#485733)
+  * encoder: Make it possble to override the filter graph used for software encode
+
+-------------------------------------------------------------------
 Tue Oct 22 14:07:26 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.2:

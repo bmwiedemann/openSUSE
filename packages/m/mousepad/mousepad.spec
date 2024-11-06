@@ -18,7 +18,7 @@
 
 %define libname libmousepad0
 Name:           mousepad
-Version:        0.6.2
+Version:        0.6.3
 Release:        0
 Summary:        Simple Text Editor for Xfce
 License:        GPL-2.0-or-later
@@ -33,7 +33,9 @@ BuildRequires:  pkgconfig(gmodule-2.0)  >= 2.56.2
 BuildRequires:  pkgconfig(gspell-1)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
 BuildRequires:  pkgconfig(gtksourceview-4) >= 4.0.0
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.17.5
 BuildRequires:  pkgconfig(libxfconf-0)
+BuildRequires:  pkgconfig(polkit-agent-1) >= 102
 
 %description
 Mousepad is a simple text editor for Xfce.
@@ -87,9 +89,11 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.xml
 %{_datadir}/glib-2.0/schemas/org.xfce.mousepad.plugins.gspell.gschema.xml
 %{_datadir}/metainfo/org.xfce.%{name}.appdata.xml
 %{_datadir}/icons/hicolor/*/apps/org.xfce.mousepad.*
+%{_datadir}/polkit-1/actions/org.xfce.mousepad.*
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/plugins
 %{_libdir}/%{name}/plugins/libmousepad-plugin-gspell.so
+%{_libdir}/%{name}/plugins/libmousepad-plugin-shortcuts.so
 
 %files -n %{libname}
 %{_libdir}/libmousepad.so.*

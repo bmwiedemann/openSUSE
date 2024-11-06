@@ -2220,4 +2220,13 @@ for 12.3</comment>
     <comment></comment>
     <requestid>1208560</requestid>
   </revision>
+  <revision rev="241" vrev="1">
+    <srcmd5>d9b066632dffbe8cf962c38147310207</srcmd5>
+    <version>1550+20241105.bedeeca</version>
+    <time>1730908177</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1550+20241105.bedeeca:
+  * profiles: whitelist xfce mousepad pkexec action (bsc#1232231)</comment>
+    <requestid>1221403</requestid>
+  </revision>
 </revisionlist>

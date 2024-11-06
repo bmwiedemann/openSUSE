@@ -1,4 +1,133 @@
 -------------------------------------------------------------------
+Tue Nov  5 11:48:50 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version jdk8u432 (icedtea-3.33.0)
+  * Security fixes
+    + JDK-8290367, JDK-8332643: Update default value and extend the
+      scope of com.sun.jndi.ldap.object.trustSerialData system
+      property
+    + JDK-8313626, JDK-8307769: C2 crash due to unexpected
+      exception control flow
+    + JDK-8328286, CVE-2024-21208, bsc#1231702: Enhance HTTP client
+    + JDK-8328544, CVE-2024-21210, bsc#1231711: Improve handling of
+      vectorization
+    + JDK-8328726: Better Kerberos support
+    + JDK-8331446, CVE-2024-21217, bsc#1231716: Improve
+      deserialization support
+    + JDK-8332644, CVE-2024-21235, bsc#1231719: Improve graph
+      optimizations
+    + JDK-8335713: Enhance vectorization analysis
+  * Import of OpenJDK 8 u432 build 06
+    + JDK-4660158: TTY: NumberFormatException while trying to set
+      values by 'set' command
+    + JDK-6544871: java/awt/event/KeyEvent/KeyTyped/CtrlASCII.html
+      fails from jdk b09 on windows.
+    + JDK-7188098: TEST_BUG: closed/javax/sound/midi/Synthesizer/
+      /Receiver/bug6186488.java fails
+    + JDK-8021775: compiler/8009761/Test8009761.java  "Failed: init
+      recursive calls: 51. After deopt 50"
+    + JDK-8030204: com/sun/jdi/JdbExprTest.sh: Required output
+      "Can't convert 2147483648 to int" not found
+    + JDK-8030795: java/nio/file/Files/probeContentType/
+      /ForceLoad.java failing with ServiceConfigurationError without
+      jtreg -agentvm option
+    + JDK-8035395: sun/management/jmxremote/startstop/
+      /JMXStartStopTest.java fails intermittently: Port already in
+      use
+    + JDK-8075511: Enable -Woverloaded-virtual C++ warning for
+      HotSpot build
+    + JDK-8137329: [windows] Build broken on VS2010 after
+      "8046148: JEP 158: Unified JVM Logging"
+    + JDK-8145919: sun/management/jmxremote/bootstrap/
+      /RmiSslBootstrapTest failed with Connection failed for no
+      credentials
+    + JDK-8152207: Perform array bound checks while getting a
+      length of bytecode instructions
+    + JDK-8193682: Infinite loop in ZipOutputStream.close()
+    + JDK-8196770: Add JNDI test
+      com/sun/jndi/ldap/blits/AddTests/AddNewEntry.java
+    + JDK-8221903: PIT: javax/swing/RepaintManager/IconifyTest/
+      /IconifyTest.java fails on ubuntu18.04
+    + JDK-8233364: Fix undefined behavior in
+      Canonicalizer::do_ShiftOp
+    + JDK-8238274: (sctp) JDK-7118373 is not fixed for SctpChannel
+    + JDK-8251188: Update LDAP tests not to use wildcard addresses
+    + JDK-8264328: Broken license in
+      javax/swing/JComboBox/8072767/bug8072767.java
+    + JDK-8266248: Compilation failure in
+      PLATFORM_API_MacOSX_MidiUtils.c with Xcode 12.5
+    + JDK-8278794: Infinite loop in DeflaterOutputStream.finish()
+    + JDK-8279164: Disable TLS_ECDH_* cipher suites
+    + JDK-8281096: Flags introduced by configure script are not
+      passed to ADLC build
+    + JDK-8284771: java/util/zip/CloseInflaterDeflaterTest.java
+      failed with "AssertionError: Expected IOException to be
+      thrown, but nothing was thrown"
+    + JDK-8298887: On the latest macOS+XCode the Robot API may
+      report wrong colors
+    + JDK-8299677: Formatter.format might take a long time to
+      format an integer or floating-point
+    + JDK-8305400: ISO 4217 Amendment 175 Update
+    + JDK-8305931: jdk/jfr/jcmd/TestJcmdDumpPathToGCRoots.java
+      failed with "Expected chains but found none"
+    + JDK-8307779: Relax the java.awt.Robot specification
+    + JDK-8309138: Fix container tests for jdks with symlinked conf
+      dir
+    + JDK-8311666: Disabled tests in test/jdk/sun/java2d/marlin
+    + JDK-8315117: Update Zlib Data Compression Library to Version
+      1.3
+    + JDK-8315863: [GHA] Update checkout action to use v4
+    + JDK-8316328: Test jdk/jfr/event/oldobject/
+      /TestSanityDefault.java times out for some heap sizes
+    + JDK-8318951: Additional negative value check in JPEG decoding
+    + JDK-8320964: sun/tools/native2ascii/Native2AsciiTests.sh
+      fails on Japanese
+    + JDK-8321480: ISO 4217 Amendment 176 Update
+    + JDK-8324632: Update Zlib Data Compression Library to Version
+      1.3.1
+    + JDK-8324723: GHA: Upgrade some actions to avoid deprecated
+      Node 16
+    + JDK-8326351: Update the Zlib version in
+      open/src/java.base/share/legal/zlib.md to 1.3.1
+    + JDK-8326521: JFR: CompilerPhase event test fails on windows
+      32 bit
+    + JDK-8326529: JFR: Test for CompilerCompile events fails due
+      to time out
+    + JDK-8327007: javax/swing/JSpinner/8008657/bug8008657.java
+      fails
+    + JDK-8330415: Update system property for Java SE specification
+      maintenance version
+    + JDK-8333126: Bump update version of OpenJDK: 8u432
+    + JDK-8333724: Problem list security/infra/java/security/cert/
+      /CertPathValidator/certification/CAInterop.java
+      #teliasonerarootcav1
+    + JDK-8334653: ISO 4217 Amendment 177 Update
+    + JDK-8334905: [8u] The test java/awt/Mixing/AWT_Mixing/
+      /JButtonOverlapping.java started to fail after 8159690
+    + JDK-8335851: [8u] Test JMXStartStopTest.java fails after
+      JDK-8334415
+    + JDK-8335894: [8u] Fix SupplementalJapaneseEraTest.java for
+      jdks with symlinked conf dir
+    + JDK-8336928: GHA: Bundle artifacts removal broken
+    + JDK-8337110: [8u] TestNoEagerReclaimOfHumongousRegions.java
+      should be in gc/g1 directory
+    + JDK-8337312: [8u] Windows x86 VS2010 build broken by
+      JDK-8320097
+    + JDK-8337664: Distrust TLS server certificates issued after
+      Oct 2024 and anchored by Entrust Root CAs
+    + JDK-8338144: [8u] Remove duplicate license files
+    + JDK-8341057: Add 2 SSL.com TLS roots
+    + JDK-8341059: Change Entrust TLS distrust date to November 12,
+      2024
+  * Bug fixes
+    + Revert flawed PR2691 distcc fix
+- Added patches:
+  * reproducible-directory-mtime.patch
+  * reproducible-javadoc-timestamp.patch
+  * reproducible-properties.patch
+    + miscelaneos reproducible fixes
+
+-------------------------------------------------------------------
 Thu Aug  1 06:21:31 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version jdk8u422 (icedtea-3.32.0)
@@ -15,7 +144,7 @@ Thu Aug  1 06:21:31 UTC 2024 - Fridrich Strba <fstrba@suse.com>
     + JDK-8323231, CVE-2024-21147, bsc#1228052: Improve array
       management
     + JDK-8323390: Enhance mask blit functionality
-    + JDK-8324559, CVE-2024-21145, bsc#1228051, : Improve 2D image
+    + JDK-8324559, CVE-2024-21145, bsc#1228051: Improve 2D image
       handling
     + JDK-8325600: Better symbol storage
   * Import of OpenJDK 8 u422 build 05

@@ -1,0 +1,16 @@
+--- openjdk/jdk/src/share/classes/java/util/Properties.java	2024-10-07 14:14:13.617125153 +0200
++++ openjdk/jdk/src/share/classes/java/util/Properties.java	2024-10-07 14:35:53.223317114 +0200
+@@ -826,7 +826,12 @@
+         if (comments != null) {
+             writeComments(bw, comments);
+         }
+-        bw.write("#" + new Date().toString());
++        Date now = new Date();
++        String sde = System.getenv("SOURCE_DATE_EPOCH");
++        if (sde != null) {
++            now = new Date(1000 * Long.parseLong(sde));
++        }
++        bw.write("#" + now.toString());
+         bw.newLine();
+         synchronized (this) {
+             for (Enumeration<?> e = keys(); e.hasMoreElements();) {

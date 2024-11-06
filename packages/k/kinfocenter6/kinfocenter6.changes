@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov  5 13:30:17 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.3
+- Changes since 6.2.2:
+  * update version for new release
+  * appiumtests: fix wayland
+
+-------------------------------------------------------------------
 Tue Oct 22 14:07:23 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.2:

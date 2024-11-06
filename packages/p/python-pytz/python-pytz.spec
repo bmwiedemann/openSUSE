@@ -21,7 +21,7 @@
 %define tzdata_version 2024a
 %{?sle15_python_module_pythons}
 Name:           python-pytz
-Version:        2024.1
+Version:        2024.2
 Release:        0
 Summary:        World timezone definitions, modern and historical
 License:        MIT

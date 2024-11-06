@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 05 19:27:16 UTC 2024 - mantarimay@pm.me
+
+- Update to version 20241105:
+  * default 15000kbps
+  * Change default bitrate
+  * Better error messages, always force urgent notification on kde,
+    recommend constant bitrate for replay
+  * Add video resolution option
+
+-------------------------------------------------------------------
 Tue Oct 22 18:58:44 UTC 2024 - mantarimay@pm.me
 
 - Update to version 20241022:

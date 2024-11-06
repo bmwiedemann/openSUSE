@@ -94,8 +94,7 @@ Examples for Qt5 Charts module.
 Summary:        QML imports for the Qt 5 Charts Library
 Group:          System/Libraries
 Requires:       %{libname} = %{version}
-%requires_ge    libQtCharts5
-Supplements:    (%{libname} and libQtCharts5)
+Supplements:    (%{libname} and libQtQuick5)
 
 %description imports
 This package contains QML import files.

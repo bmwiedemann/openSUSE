@@ -20,16 +20,16 @@
 %global cffi_min_version       0.6
 %global cssselect2_min_version 0.1
 %global fonttools_min_version  4.0.0
-%global html5lib_min_version   1.1
+%global tinyhtml5_min_version  2.0.0
 %global Pillow_min_version     9.1.0
-%global pypdf_min_version      0.10.0
+%global pypdf_min_version      0.11.0
 %global Pyphen_min_version     0.9.1
-%global tinycss2_min_version   1.3.0
+%global tinycss2_min_version   1.4.0
 %global zopfli_min_version     0.1.4
 
 %{?sle15_python_module_pythons}
 Name:           python-weasyprint
-Version:        62.3
+Version:        63.0
 Release:        0
 Summary:        Python module to convert web documents to PDF
 License:        BSD-3-Clause
@@ -67,7 +67,7 @@ BuildRequires:  %{python_module Pillow >= %{Pillow_min_version}}
 BuildRequires:  %{python_module Pyphen >= %{Pyphen_min_version}}
 BuildRequires:  %{python_module cffi   >= %{cffi_min_version}}
 BuildRequires:  %{python_module cssselect2 >= %{cssselect2_min_version}}
-BuildRequires:  %{python_module html5lib >= %{html5lib_min_version}}
+BuildRequires:  %{python_module tinyhtml5 >= %{tinyhtml5_min_version}}
 BuildRequires:  %{python_module pydyf >= %{pypdf_min_version}}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tinycss2 >= %{tinycss2_min_version}}

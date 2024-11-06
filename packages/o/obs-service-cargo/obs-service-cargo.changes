@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Wed Nov  6 03:01:31 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 4.0.2:
+  * refactor: check if all manifest needs to get vendored
+  * refactor: properly cleanup directories and exit if there are actually no dependencies
+  * docs: put the xml service to readme as well
+  * chore: improve descriptions of each flag
+  * deps: replace sha3 with sha2
+  * fmt: fix spaces and tabs and parentheses
+
+-------------------------------------------------------------------
+Wed Nov  6 00:16:12 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 4.0.0:
+  * update service description file
+  * docs: improve explainer about lockfiles
+  * fix: added trace feature
+  * minor: check the else clause
+  * improvements in the service file metadata
+  * remove bulk-updater
+  * refactor: This is a major refactor by combining home registry and vendor.
+  * refactor: implemented cargo vendor
+  * tests: update test suite in CI to conform with new code changes
+  * fix: remove unnecessary if-else that broke the vendor logic
+  * fix: again, vendor filterer does not support --locked
+  * improvements + filterer fixes
+  * fix: typoed a dash. it was an underscore
+  * fix: rework where we put vendor
+  * improvement: set env before everything for registry
+  * improvement: improve messages
+  * tests: add test of the output tarball
+  * do tests in release mode
+  * fix: change how custom root behaves on "regular" vendor
+  * ci(fix): properly alias the tests instead to run tests in release mode
+  * fix: create the paths first
+  * fix: 🎉 squashed all bugs and ready for user testing
+  * rename field from manifest-paths to manifest-path
+  * docs: update service file
+  * add one more test case
+  * docs: enhance README
+  * remove unstable-doc feature
+  * docs: remove cargo_audit in the examples [ci skip]
+  * docs: fix typo [ci skip]
+  * docs: spelling plus make alias clear
+  * remove cargo_audit.service. not needed anymore
+  * fix: if-else to check if it is a workspace or not has been corrected
+  * docs: update README. outdated statement removed [ci skip]
+  * docs: update README
+  * docs: explain how cargotoml behaviour works between methods
+  * tests: test bonk that it really has no dependencies
+  * tests: adjust if-else as without it will lead to failure since we are testing that raw cannot find a vendor tarball
+
+-------------------------------------------------------------------
 Sat Nov  2 11:40:20 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 3.6.1:

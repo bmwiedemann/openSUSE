@@ -44,6 +44,9 @@ ExclusiveArch:  x86_64 %ix86 ppc64le %arm aarch64
 %if "%{flavor}" != "test-py312"
 %define skip_python312 1
 %endif
+%if "%{flavor}" != "test-py313"
+%define skip_python313 1
+%endif
 # The obs server-side interpreter cannot use lua or rpm shrink
 %if "%pythons" == "" || "%pythons" == " " || "%pythons" == "  " || "%pythons" == "   " || "%pythons" == "    " || ( "%pythons" == "python311" && 0%{?skip_python311} )
 ExclusiveArch:  donotbuild

@@ -603,4 +603,15 @@
   * Xi: when removing a master search for a disabled paired device</comment>
     <requestid>1205602</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>daa7c3f44a83782703dd30026de38459</srcmd5>
+    <version>24.1.4</version>
+    <time>1730908159</time>
+    <user>anag+factory</user>
+    <comment>- Security update 21.1.14
+  This release addresses the following security issue
+  * CVE-2024-9632: Heap-based buffer overflow privilege escalation
+    in _XkbSetCompatMap (bsc#1231565)</comment>
+    <requestid>1221608</requestid>
+  </revision>
 </revisionlist>

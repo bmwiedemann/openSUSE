@@ -220,4 +220,18 @@
     <comment></comment>
     <requestid>1158246</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>7fd3fbf6ef83e2a0742caa1cf01301d5</srcmd5>
+    <version>2.6</version>
+    <time>1730908168</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.6:
+  * Add official support for Python 3.13.
+  * Add support for `&amp;` as scoping root per the CSS
+    Nesting Module, Level 1. When `&amp;` is used outside the
+  * context of nesting, it is treated as the scoping root
+  * Improve error message when an unrecognized pseudo-
+    class is used.</comment>
+    <requestid>1219721</requestid>
+  </revision>
 </revisionlist>

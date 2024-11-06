@@ -24,11 +24,11 @@
 #
 
 Name:           rubygem-css_parser
-Version:        1.17.1
+Version:        1.19.1
 Release:        0
 %define mod_name css_parser
 %define mod_full_name %{mod_name}-%{version}
-BuildRequires:  %{ruby >= 2.7}
+BuildRequires:  %{ruby >= 3.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/premailer/css_parser

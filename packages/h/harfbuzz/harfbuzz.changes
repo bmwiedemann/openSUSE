@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Nov  5 08:44:15 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 10.1.0:
+  + Fix the sign of fallback vertical glyph advance (used when font
+    has no vertical advance data).
+  + Increase maximum “CFF” operands limit 20 times to support more
+    complex fonts.
+  + Add “--face-loader” option to command line utilities.
+  + Support “COLR” v0 table in hb_font_get_glyph_extents().
+  + Add support for font functions that use Core Text APIs, similar
+    to FreeType font functions. This allows, for example, using
+    drawing fonts that use the new (and undocumented) “hvgl” table.
+  + Update IANA and OT language registries, as well ase USE data
+    files.
+  + Fix build with ICU 76.
+  + Various compiler warnings and build fixes.
+  + Various subsetter fixes.
+
+-------------------------------------------------------------------
 Wed Sep 25 08:26:48 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 10.0.1:

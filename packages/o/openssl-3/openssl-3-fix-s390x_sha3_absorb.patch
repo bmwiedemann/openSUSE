@@ -1,0 +1,50 @@
+From 979dc530010e3c0f045edf6e38c7ab894ffba7f2 Mon Sep 17 00:00:00 2001
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+Date: Thu, 5 Sep 2024 08:45:29 +0200
+Subject: [PATCH] s390x: Fix s390x_sha3_absorb() when no data is processed by
+ KIMD
+
+If the data to absorb is less than a block, then the KIMD instruction is
+called with zero bytes. This is superfluous, and causes incorrect hash
+output later on if this is the very first absorb call, i.e. when the
+xof_state is still XOF_STATE_INIT and MSA 12 is available. In this case
+the NIP flag is set in the function code for KIMD, but KIMD ignores the
+NIP flag when it is called with zero bytes to process.
+
+Skip any KIMD calls for zero length data. Also do not set the xof_state
+to XOF_STATE_ABSORB until the first call to KIMD with data. That way,
+the next KIMD (with non-zero length data) or KLMD call will get the NIP
+flag set and will then honor it to produce correct output.
+
+Fixes: https://github.com/openssl/openssl/commit/25f5d7b85f6657cd2f9f1ab7ae87f319d9bafe54
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+
+Reviewed-by: Viktor Dukhovni <viktor@openssl.org>
+Reviewed-by: Tomas Mraz <tomas@openssl.org>
+(Merged from https://github.com/openssl/openssl/pull/25388)
+---
+ providers/implementations/digests/sha3_prov.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+Index: openssl-3.2.3/providers/implementations/digests/sha3_prov.c
+===================================================================
+--- openssl-3.2.3.orig/providers/implementations/digests/sha3_prov.c
++++ openssl-3.2.3/providers/implementations/digests/sha3_prov.c
+@@ -192,10 +192,12 @@ static size_t s390x_sha3_absorb(void *vc
+     if (!(ctx->xof_state == XOF_STATE_INIT ||
+           ctx->xof_state == XOF_STATE_ABSORB))
+         return 0;
+-    fc = ctx->pad;
+-    fc |= ctx->xof_state == XOF_STATE_INIT ? S390X_KIMD_NIP : 0;
+-    ctx->xof_state = XOF_STATE_ABSORB;
+-    s390x_kimd(inp, len - rem, fc, ctx->A);
++    if (len - rem > 0) {
++        fc = ctx->pad;
++        fc |= ctx->xof_state == XOF_STATE_INIT ? S390X_KIMD_NIP : 0;
++        ctx->xof_state = XOF_STATE_ABSORB;
++        s390x_kimd(inp, len - rem, fc, ctx->A);
++    }
+     return rem;
+ }
+ 

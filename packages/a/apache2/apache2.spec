@@ -18,7 +18,7 @@
 
 %global upstream_name   httpd
 %global testsuite_name  %{upstream_name}-framework
-%global tversion        svn1901574
+%global tversion        svn1921782
 %global flavor          @BUILD_FLAVOR@%{nil}
 %define mpm             %{nil}
 %if "%{flavor}" == "prefork" || "%{flavor}" == "test_prefork"

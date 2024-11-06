@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov  5 21:20:03 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
+
+- Update to version 1.15.0:
+ - Dependency: remove pendulum, add python-dateutil (thanks to deronnax)
+ - Dependency: Supports Python 3.12 Now! (thanks to deronnax)
+
+-------------------------------------------------------------------
 Sun Mar 17 06:51:39 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
 
 - Update to version 1.14.1:

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Nov  5 13:30:41 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.3
+- Changes since 6.2.2:
+  * update version for new release
+  * Do early return for ServciesRunner::resolvedArgs in case of error
+  * Always show full logout screen for "Show Logout Screen" desktop menu item (kde#495390)
+  * lookandfeel: Explicitly set theme to Breeze in defaults
+  * kcms/users: crop character faces properly (kde#494487)
+  * kcms/users: Fix UI on mobile
+  * logout-greeter: don't doubt the daemon
+  * logout-greeter: categorize warnings
+  * logout-greeter: don't wake up packagekit needlessly
+  * appiumtests: fix kcm_cursortheme_test
+  * appiumtests: fix kcm_autostart_test
+  * appiumtests: fix kcm_users_test
+  * appiumtests: fix digitalclocktest
+  * components/dbus: fix invalid variant type since Qt 6.8
+  * appiumtests: fix systemdialogtest
+
+-------------------------------------------------------------------
 Tue Oct 22 14:06:15 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.2:

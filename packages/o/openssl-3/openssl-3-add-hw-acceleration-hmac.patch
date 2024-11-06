@@ -1,0 +1,506 @@
+commit 0499de5adda26b1ef09660f70c12b4710b5f7c8a
+Author: Ingo Franzki <ifranzki@linux.ibm.com>
+Date:   Thu Feb 1 15:15:27 2024 +0100
+
+    s390x: Add hardware acceleration for HMAC
+    
+    The CPACF instruction KMAC provides support for accelerating the HMAC
+    algorithm on newer machines for HMAC with SHA-224, SHA-256, SHA-384, and
+    SHA-512.
+    
+    Preliminary measurements showed performance improvements of up to a factor
+    of 2, dependent on the message size, whether chunking is used and the size
+    of the chunks.
+    
+    Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+    
+    Reviewed-by: Paul Dale <ppzgs1@gmail.com>
+    Reviewed-by: Tomas Mraz <tomas@openssl.org>
+    (Merged from https://github.com/openssl/openssl/pull/25161)
+
+Index: openssl-3.2.3/crypto/hmac/build.info
+===================================================================
+--- openssl-3.2.3.orig/crypto/hmac/build.info
++++ openssl-3.2.3/crypto/hmac/build.info
+@@ -2,5 +2,22 @@ LIBS=../../libcrypto
+ 
+ $COMMON=hmac.c
+ 
+-SOURCE[../../libcrypto]=$COMMON
+-SOURCE[../../providers/libfips.a]=$COMMON
++IF[{- !$disabled{asm} -}]
++  IF[{- ($target{perlasm_scheme} // '') ne '31' -}]
++    $HMACASM_s390x=hmac_s390x.c
++    $HMACDEF_s390x=OPENSSL_HMAC_S390X
++  ENDIF
++
++  # Now that we have defined all the arch specific variables, use the
++  # appropriate ones, and define the appropriate macros
++  IF[$HMACASM_{- $target{asm_arch} -}]
++    $HMACASM=$HMACASM_{- $target{asm_arch} -}
++    $HMACDEF=$HMACDEF_{- $target{asm_arch} -}
++  ENDIF
++ENDIF
++
++DEFINE[../../libcrypto]=$HMACDEF
++DEFINE[../../providers/libfips.a]=$HMACDEF
++
++SOURCE[../../libcrypto]=$COMMON $HMACASM
++SOURCE[../../providers/libfips.a]=$COMMON $HMACASM
+Index: openssl-3.2.3/crypto/hmac/hmac.c
+===================================================================
+--- openssl-3.2.3.orig/crypto/hmac/hmac.c
++++ openssl-3.2.3/crypto/hmac/hmac.c
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright 1995-2021 The OpenSSL Project Authors. All Rights Reserved.
++ * Copyright 1995-2024 The OpenSSL Project Authors. All Rights Reserved.
+  *
+  * Licensed under the Apache License 2.0 (the "License").  You may not use
+  * this file except in compliance with the License.  You can obtain a copy
+@@ -49,6 +49,12 @@ int HMAC_Init_ex(HMAC_CTX *ctx, const vo
+     if ((EVP_MD_get_flags(md) & EVP_MD_FLAG_XOF) != 0)
+         return 0;
+ 
++#ifdef OPENSSL_HMAC_S390X
++    rv = s390x_HMAC_init(ctx, key, len, impl);
++    if (rv >= 1)
++        return rv;
++#endif
++
+     if (key != NULL) {
+         reset = 1;
+ 
+@@ -111,6 +117,12 @@ int HMAC_Update(HMAC_CTX *ctx, const uns
+ {
+     if (!ctx->md)
+         return 0;
++
++#ifdef OPENSSL_HMAC_S390X
++    if (ctx->plat.s390x.fc)
++        return s390x_HMAC_update(ctx, data, len);
++#endif
++
+     return EVP_DigestUpdate(ctx->md_ctx, data, len);
+ }
+ 
+@@ -122,6 +134,11 @@ int HMAC_Final(HMAC_CTX *ctx, unsigned c
+     if (!ctx->md)
+         goto err;
+ 
++#ifdef OPENSSL_HMAC_S390X
++    if (ctx->plat.s390x.fc)
++        return s390x_HMAC_final(ctx, md, len);
++#endif
++
+     if (!EVP_DigestFinal_ex(ctx->md_ctx, buf, &i))
+         goto err;
+     if (!EVP_MD_CTX_copy_ex(ctx->md_ctx, ctx->o_ctx))
+@@ -161,6 +178,10 @@ static void hmac_ctx_cleanup(HMAC_CTX *c
+     EVP_MD_CTX_reset(ctx->o_ctx);
+     EVP_MD_CTX_reset(ctx->md_ctx);
+     ctx->md = NULL;
++
++#ifdef OPENSSL_HMAC_S390X
++    s390x_HMAC_CTX_cleanup(ctx);
++#endif
+ }
+ 
+ void HMAC_CTX_free(HMAC_CTX *ctx)
+@@ -212,6 +233,12 @@ int HMAC_CTX_copy(HMAC_CTX *dctx, HMAC_C
+     if (!EVP_MD_CTX_copy_ex(dctx->md_ctx, sctx->md_ctx))
+         goto err;
+     dctx->md = sctx->md;
++
++#ifdef OPENSSL_HMAC_S390X
++    if (s390x_HMAC_CTX_copy(dctx, sctx) == 0)
++        goto err;
++#endif
++
+     return 1;
+  err:
+     hmac_ctx_cleanup(dctx);
+Index: openssl-3.2.3/crypto/hmac/hmac_local.h
+===================================================================
+--- openssl-3.2.3.orig/crypto/hmac/hmac_local.h
++++ openssl-3.2.3/crypto/hmac/hmac_local.h
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright 1995-2020 The OpenSSL Project Authors. All Rights Reserved.
++ * Copyright 1995-2024 The OpenSSL Project Authors. All Rights Reserved.
+  *
+  * Licensed under the Apache License 2.0 (the "License").  You may not use
+  * this file except in compliance with the License.  You can obtain a copy
+@@ -10,6 +10,10 @@
+ #ifndef OSSL_CRYPTO_HMAC_LOCAL_H
+ # define OSSL_CRYPTO_HMAC_LOCAL_H
+ 
++# include "internal/common.h"
++# include "internal/numbers.h"
++# include "openssl/sha.h"
++
+ /* The current largest case is for SHA3-224 */
+ #define HMAC_MAX_MD_CBLOCK_SIZE     144
+ 
+@@ -18,6 +22,45 @@ struct hmac_ctx_st {
+     EVP_MD_CTX *md_ctx;
+     EVP_MD_CTX *i_ctx;
+     EVP_MD_CTX *o_ctx;
++
++    /* Platform specific data */
++    union {
++        int dummy;
++# ifdef OPENSSL_HMAC_S390X
++        struct {
++            unsigned int fc; /* 0 if not supported by kmac instruction */
++            int blk_size;
++            int ikp;
++            int iimp;
++            unsigned char *buf;
++            size_t size; /* must be multiple of digest block size */
++            size_t num;
++            union {
++                OSSL_UNION_ALIGN;
++                struct {
++                    uint32_t h[8];
++                    uint64_t imbl;
++                    unsigned char key[64];
++                } hmac_224_256;
++                struct {
++                    uint64_t h[8];
++                    uint128_t imbl;
++                    unsigned char key[128];
++                } hmac_384_512;
++            } param;
++        } s390x;
++# endif /* OPENSSL_HMAC_S390X */
++    } plat;
+ };
+ 
++# ifdef OPENSSL_HMAC_S390X
++#  define HMAC_S390X_BUF_NUM_BLOCKS 64
++
++int s390x_HMAC_init(HMAC_CTX *ctx, const void *key, int key_len, ENGINE *impl);
++int s390x_HMAC_update(HMAC_CTX *ctx, const unsigned char *data, size_t len);
++int s390x_HMAC_final(HMAC_CTX *ctx, unsigned char *md, unsigned int *len);
++int s390x_HMAC_CTX_copy(HMAC_CTX *dctx, HMAC_CTX *sctx);
++int s390x_HMAC_CTX_cleanup(HMAC_CTX *ctx);
++# endif /* OPENSSL_HMAC_S390X */
++
+ #endif
+Index: openssl-3.2.3/crypto/hmac/hmac_s390x.c
+===================================================================
+--- /dev/null
++++ openssl-3.2.3/crypto/hmac/hmac_s390x.c
+@@ -0,0 +1,298 @@
++/*
++ * Copyright 2024 The OpenSSL Project Authors. All Rights Reserved.
++ *
++ * Licensed under the Apache License 2.0 (the "License").  You may not use
++ * this file except in compliance with the License.  You can obtain a copy
++ * in the file LICENSE in the source distribution or at
++ * https://www.openssl.org/source/license.html
++ */
++
++#include "crypto/s390x_arch.h"
++#include "hmac_local.h"
++#include "openssl/obj_mac.h"
++#include "openssl/evp.h"
++
++#ifdef OPENSSL_HMAC_S390X
++
++static int s390x_fc_from_md(const EVP_MD *md)
++{
++    int fc;
++
++    switch (EVP_MD_get_type(md)) {
++    case NID_sha224:
++        fc = S390X_HMAC_SHA_224;
++        break;
++    case NID_sha256:
++        fc = S390X_HMAC_SHA_256;
++        break;
++    case NID_sha384:
++        fc = S390X_HMAC_SHA_384;
++        break;
++    case NID_sha512:
++        fc = S390X_HMAC_SHA_512;
++        break;
++    default:
++        return 0;
++    }
++
++    if ((OPENSSL_s390xcap_P.kmac[1] & S390X_CAPBIT(fc)) == 0)
++        return 0;
++
++    return fc;
++}
++
++static void s390x_call_kmac(HMAC_CTX *ctx, const unsigned char *in, size_t len)
++{
++    unsigned int fc = ctx->plat.s390x.fc;
++
++    if (ctx->plat.s390x.ikp)
++        fc |= S390X_KMAC_IKP;
++
++    if (ctx->plat.s390x.iimp)
++        fc |= S390X_KMAC_IIMP;
++
++    switch (ctx->plat.s390x.fc) {
++    case S390X_HMAC_SHA_224:
++    case S390X_HMAC_SHA_256:
++        ctx->plat.s390x.param.hmac_224_256.imbl += ((uint64_t)len * 8);
++        break;
++    case S390X_HMAC_SHA_384:
++    case S390X_HMAC_SHA_512:
++        ctx->plat.s390x.param.hmac_384_512.imbl += ((uint128_t)len * 8);
++        break;
++    default:
++        break;
++    }
++
++    s390x_kmac(in, len, fc, &ctx->plat.s390x.param);
++
++    ctx->plat.s390x.ikp = 1;
++}
++
++int s390x_HMAC_init(HMAC_CTX *ctx, const void *key, int key_len, ENGINE *impl)
++{
++    unsigned char *key_param;
++    unsigned int key_param_len;
++
++    ctx->plat.s390x.fc = s390x_fc_from_md(ctx->md);
++    if (ctx->plat.s390x.fc == 0)
++        return -1; /* Not supported by kmac instruction */
++
++    ctx->plat.s390x.blk_size = EVP_MD_get_block_size(ctx->md);
++    if (ctx->plat.s390x.blk_size < 0)
++        return 0;
++
++    if (ctx->plat.s390x.size !=
++        (size_t)(ctx->plat.s390x.blk_size * HMAC_S390X_BUF_NUM_BLOCKS)) {
++        OPENSSL_clear_free(ctx->plat.s390x.buf, ctx->plat.s390x.size);
++        ctx->plat.s390x.size = 0;
++        ctx->plat.s390x.buf = OPENSSL_zalloc(ctx->plat.s390x.blk_size *
++                                             HMAC_S390X_BUF_NUM_BLOCKS);
++        if (ctx->plat.s390x.buf == NULL)
++            return 0;
++        ctx->plat.s390x.size = ctx->plat.s390x.blk_size *
++            HMAC_S390X_BUF_NUM_BLOCKS;
++    }
++    ctx->plat.s390x.num = 0;
++
++    ctx->plat.s390x.ikp = 0;
++    ctx->plat.s390x.iimp = 1;
++
++    switch (ctx->plat.s390x.fc) {
++    case S390X_HMAC_SHA_224:
++    case S390X_HMAC_SHA_256:
++        ctx->plat.s390x.param.hmac_224_256.imbl = 0;
++        OPENSSL_cleanse(ctx->plat.s390x.param.hmac_224_256.h,
++                        sizeof(ctx->plat.s390x.param.hmac_224_256.h));
++        break;
++    case S390X_HMAC_SHA_384:
++    case S390X_HMAC_SHA_512:
++        ctx->plat.s390x.param.hmac_384_512.imbl = 0;
++        OPENSSL_cleanse(ctx->plat.s390x.param.hmac_384_512.h,
++                        sizeof(ctx->plat.s390x.param.hmac_384_512.h));
++        break;
++    default:
++        return 0;
++    }
++
++    if (key != NULL) {
++        switch (ctx->plat.s390x.fc) {
++        case S390X_HMAC_SHA_224:
++        case S390X_HMAC_SHA_256:
++            OPENSSL_cleanse(&ctx->plat.s390x.param.hmac_224_256.key,
++                            sizeof(ctx->plat.s390x.param.hmac_224_256.key));
++            key_param = ctx->plat.s390x.param.hmac_224_256.key;
++            key_param_len = sizeof(ctx->plat.s390x.param.hmac_224_256.key);
++            break;
++        case S390X_HMAC_SHA_384:
++        case S390X_HMAC_SHA_512:
++            OPENSSL_cleanse(&ctx->plat.s390x.param.hmac_384_512.key,
++                            sizeof(ctx->plat.s390x.param.hmac_384_512.key));
++            key_param = ctx->plat.s390x.param.hmac_384_512.key;
++            key_param_len = sizeof(ctx->plat.s390x.param.hmac_384_512.key);
++            break;
++        default:
++            return 0;
++        }
++
++        if (!ossl_assert(ctx->plat.s390x.blk_size <= (int)key_param_len))
++            return 0;
++
++        if (key_len > ctx->plat.s390x.blk_size) {
++            if (!EVP_DigestInit_ex(ctx->md_ctx, ctx->md, impl)
++                    || !EVP_DigestUpdate(ctx->md_ctx, key, key_len)
++                    || !EVP_DigestFinal_ex(ctx->md_ctx, key_param,
++                                           &key_param_len))
++                return 0;
++        } else {
++            if (key_len < 0 || key_len > (int)key_param_len)
++                return 0;
++            memcpy(key_param, key, key_len);
++            /* remaining key bytes already zeroed out above */
++        }
++    }
++
++    return 1;
++}
++
++int s390x_HMAC_update(HMAC_CTX *ctx, const unsigned char *data, size_t len)
++{
++    size_t remain, num;
++
++    if (len == 0)
++        return 1;
++
++    /* buffer is full, process it now */
++    if (ctx->plat.s390x.num == ctx->plat.s390x.size) {
++        s390x_call_kmac(ctx, ctx->plat.s390x.buf, ctx->plat.s390x.num);
++
++        ctx->plat.s390x.num = 0;
++    }
++
++    remain = ctx->plat.s390x.size - ctx->plat.s390x.num;
++    if (len > remain) {
++        /* data does not fit into buffer */
++        if (ctx->plat.s390x.num > 0) {
++            /* first fill buffer and process it */
++            memcpy(&ctx->plat.s390x.buf[ctx->plat.s390x.num], data, remain);
++            ctx->plat.s390x.num += remain;
++
++            s390x_call_kmac(ctx, ctx->plat.s390x.buf, ctx->plat.s390x.num);
++
++            ctx->plat.s390x.num = 0;
++
++            data += remain;
++            len -= remain;
++        }
++
++        if (!ossl_assert(ctx->plat.s390x.num == 0))
++            return 0;
++
++        if (len > ctx->plat.s390x.size) {
++            /*
++             * remaining data is still larger than buffer, process remaining
++             * full blocks of input directly
++             */
++            remain = len % ctx->plat.s390x.blk_size;
++            num = len - remain;
++
++            s390x_call_kmac(ctx, data, num);
++
++            data += num;
++            len -= num;
++        }
++    }
++
++    /* add remaining input data (which is < buffer size) to buffer */
++    if (!ossl_assert(len <= ctx->plat.s390x.size))
++        return 0;
++
++    if (len > 0) {
++        memcpy(&ctx->plat.s390x.buf[ctx->plat.s390x.num], data, len);
++        ctx->plat.s390x.num += len;
++    }
++
++    return 1;
++}
++
++int s390x_HMAC_final(HMAC_CTX *ctx, unsigned char *md, unsigned int *len)
++{
++    void *result;
++    unsigned int res_len;
++
++    ctx->plat.s390x.iimp = 0; /* last block */
++    s390x_call_kmac(ctx, ctx->plat.s390x.buf, ctx->plat.s390x.num);
++
++    ctx->plat.s390x.num = 0;
++
++    switch (ctx->plat.s390x.fc) {
++    case S390X_HMAC_SHA_224:
++        result = &ctx->plat.s390x.param.hmac_224_256.h[0];
++        res_len = SHA224_DIGEST_LENGTH;
++        break;
++    case S390X_HMAC_SHA_256:
++        result = &ctx->plat.s390x.param.hmac_224_256.h[0];
++        res_len = SHA256_DIGEST_LENGTH;
++        break;
++    case S390X_HMAC_SHA_384:
++        result = &ctx->plat.s390x.param.hmac_384_512.h[0];
++        res_len = SHA384_DIGEST_LENGTH;
++        break;
++    case S390X_HMAC_SHA_512:
++        result = &ctx->plat.s390x.param.hmac_384_512.h[0];
++        res_len = SHA512_DIGEST_LENGTH;
++        break;
++    default:
++        return 0;
++    }
++
++    memcpy(md, result, res_len);
++    if (len != NULL)
++        *len = res_len;
++
++    return 1;
++}
++
++int s390x_HMAC_CTX_copy(HMAC_CTX *dctx, HMAC_CTX *sctx)
++{
++    dctx->plat.s390x.fc = sctx->plat.s390x.fc;
++    dctx->plat.s390x.blk_size = sctx->plat.s390x.blk_size;
++    dctx->plat.s390x.ikp = sctx->plat.s390x.ikp;
++    dctx->plat.s390x.iimp = sctx->plat.s390x.iimp;
++
++    memcpy(&dctx->plat.s390x.param, &sctx->plat.s390x.param,
++           sizeof(dctx->plat.s390x.param));
++
++    dctx->plat.s390x.buf = NULL;
++    if (sctx->plat.s390x.buf != NULL) {
++        dctx->plat.s390x.buf = OPENSSL_memdup(sctx->plat.s390x.buf,
++                                              sctx->plat.s390x.size);
++        if (dctx->plat.s390x.buf == NULL)
++            return 0;
++    }
++
++    dctx->plat.s390x.size = sctx->plat.s390x.size;
++    dctx->plat.s390x.num = sctx->plat.s390x.num;
++
++    return 1;
++}
++
++int s390x_HMAC_CTX_cleanup(HMAC_CTX *ctx)
++{
++    OPENSSL_clear_free(ctx->plat.s390x.buf, ctx->plat.s390x.size);
++    ctx->plat.s390x.buf = NULL;
++    ctx->plat.s390x.size = 0;
++    ctx->plat.s390x.num = 0;
++
++    OPENSSL_cleanse(&ctx->plat.s390x.param, sizeof(ctx->plat.s390x.param));
++
++    ctx->plat.s390x.blk_size = 0;
++    ctx->plat.s390x.ikp = 0;
++    ctx->plat.s390x.iimp = 1;
++
++    ctx->plat.s390x.fc = 0;
++
++    return 1;
++}
++
++#endif
+Index: openssl-3.2.3/crypto/s390x_arch.h
+===================================================================
+--- openssl-3.2.3.orig/crypto/s390x_arch.h
++++ openssl-3.2.3/crypto/s390x_arch.h
+@@ -192,5 +192,8 @@ extern int OPENSSL_s390xcex;
+ # define S390X_KMA_HS           0x400
+ # define S390X_KDSA_D           0x80
+ # define S390X_KLMD_PS          0x100
++# define S390X_KMAC_IKP         0x8000
++# define S390X_KMAC_IIMP        0x4000
++# define S390X_KMAC_CCUP        0x2000
+ 
+ #endif

@@ -1017,4 +1017,14 @@ https://build.opensuse.org/request/show/1178504 </comment>
 </comment>
     <requestid>1219778</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>9d1fb1b1405a1665bfb2b61ca8d0cfbc</srcmd5>
+    <version>20241105</version>
+    <time>1730908205</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20241105:
+  * Allow virt_dbus_t to connect to virtd_t over unix_stream_socket (bsc#1232655)
+</comment>
+    <requestid>1221514</requestid>
+  </revision>
 </revisionlist>

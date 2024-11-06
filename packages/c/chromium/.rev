@@ -5183,4 +5183,14 @@ boo#1224178</comment>
   * CVE-2024-10488: Use after free in WebRTC</comment>
     <requestid>1219798</requestid>
   </revision>
+  <revision rev="437" vrev="1">
+    <srcmd5>3552a4b3a50f6bd6f818d542f5146ec1</srcmd5>
+    <version>130.0.6723.116</version>
+    <time>1730908352</time>
+    <user>anag+factory</user>
+    <comment>- Chromium 130.0.6723.116 (boo#1232843)
+  * CVE-2024-10826: Use after free in Family Experiences
+  * CVE-2024-10827: Use after free in Serial</comment>
+    <requestid>1221621</requestid>
+  </revision>
 </revisionlist>

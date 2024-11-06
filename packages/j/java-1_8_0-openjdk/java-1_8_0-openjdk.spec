@@ -18,7 +18,7 @@
 
 %{!?aarch64:%global aarch64 aarch64 arm64 armv8}
 %global jit_arches %{ix86} x86_64 ppc64 ppc64le %{aarch64} %{arm}
-%global icedtea_version 3.32.0
+%global icedtea_version 3.33.0
 %global buildoutputdir openjdk.build/
 # Convert an absolute path to a relative path.  Each symbolic link is
 # specified relative to the directory in which it is installed so that
@@ -31,8 +31,8 @@
 # priority must be 6 digits in total
 %global priority        1805
 %global javaver         1.8.0
-%global updatever       422
-%global buildver        05
+%global updatever       432
+%global buildver        06
 # Standard JPackage directories and symbolic links.
 %global sdklnk          java-%{javaver}-openjdk
 %global archname        %{sdklnk}
@@ -188,6 +188,12 @@ Patch14:        zero-javadoc-verbose.patch
 Patch15:        make-jobserver-detection.patch
 #
 # OpenJDK specific patches
+#
+# Reproducible stuff
+#
+Patch20:        reproducible-directory-mtime.patch
+Patch21:        reproducible-javadoc-timestamp.patch
+Patch22:        reproducible-properties.patch
 #
 # Patch for PPC
 Patch103:       ppc-zero-hotspot.patch
@@ -522,6 +528,10 @@ patch -p0 -i %{PATCH14}
 %endif
 
 patch -p0 -i %{PATCH15}
+
+patch -p0 -i %{PATCH20}
+patch -p0 -i %{PATCH21}
+patch -p0 -i %{PATCH22}
 
 %ifarch ppc ppc64 ppc64le
 # PPC fixes

@@ -25,7 +25,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kde-gtk-config6
-Version:        6.2.2
+Version:        6.2.3
 Release:        0
 Summary:        Daemon for GTK2 and GTK3 Applications Appearance Under KDE
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -111,6 +111,7 @@ sed -i 's#/usr/bin/env sh$#/usr/bin/sh#' %{buildroot}%{_kf6_sharedir}/kconf_upda
 %{_kf6_sharedir}/kcm-gtk-module/
 %{_kf6_sharedir}/kconf_update/gtkconfig.upd
 %{_kf6_sharedir}/kconf_update/remove_window_decorations_from_gtk_css.sh
+%{_kf6_debugdir}/kde-gtk-config.categories
 
 %files gtk3
 %license LICENSES/*

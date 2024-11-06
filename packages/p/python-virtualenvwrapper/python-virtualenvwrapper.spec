@@ -19,12 +19,13 @@
 %bcond_with test
 %global pythons python3
 Name:           python-virtualenvwrapper
-Version:        6.1.0
+Version:        6.1.1
 Release:        0
 Summary:        Enhancements to virtualenv
 License:        MIT
 URL:            https://virtualenvwrapper.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/v/virtualenvwrapper/virtualenvwrapper-%{version}.tar.gz
+Source99:       python-virtualenvwrapper.rpmlintrc
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
@@ -40,6 +41,8 @@ BuildRequires:  %{python_module stevedore}
 BuildRequires:  %{python_module virtualenv-clone}
 BuildRequires:  %{python_module virtualenv}
 %endif
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description

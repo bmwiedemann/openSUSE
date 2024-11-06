@@ -141,4 +141,12 @@
   * Add retries to the APIClient session</comment>
     <requestid>1160436</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>26f42a98c1cbdd652c7871d6c5a008a4</srcmd5>
+    <version>0.7.9</version>
+    <time>1730908287</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1221493</requestid>
+  </revision>
 </revisionlist>

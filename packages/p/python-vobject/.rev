@@ -59,4 +59,12 @@
   * repr changed for datetime.timedelta in python 3.7 (#122)</comment>
     <requestid>1171474</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4af6b680203e2b2e7300cc36abb27f1f</srcmd5>
+    <version>0.9.8</version>
+    <time>1730908201</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1221502</requestid>
+  </revision>
 </revisionlist>

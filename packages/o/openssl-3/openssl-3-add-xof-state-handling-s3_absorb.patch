@@ -1,0 +1,32 @@
+commit 1337b50936ed190a98af1ee6601d857b42a3d296
+Author: Holger Dengler <dengler@linux.ibm.com>
+Date:   Wed Sep 27 21:54:34 2023 +0200
+
+    Add xof state handing for generic sha3 absorb.
+    
+    The digest life-cycle diagram specifies state transitions to `updated`
+    (aka XOF_STATE_ABSORB) only from `initialised` and `updated`. Add this
+    checking to the generic sha3 absorb implementation.
+    
+    Signed-off-by: Holger Dengler <dengler@linux.ibm.com>
+    
+    Reviewed-by: Shane Lontis <shane.lontis@oracle.com>
+    Reviewed-by: Todd Short <todd.short@me.com>
+    Reviewed-by: Tomas Mraz <tomas@openssl.org>
+    (Merged from https://github.com/openssl/openssl/pull/22221)
+
+Index: openssl-3.2.3/providers/implementations/digests/sha3_prov.c
+===================================================================
+--- openssl-3.2.3.orig/providers/implementations/digests/sha3_prov.c
++++ openssl-3.2.3/providers/implementations/digests/sha3_prov.c
+@@ -143,6 +143,10 @@ static size_t generic_sha3_absorb(void *
+ {
+     KECCAK1600_CTX *ctx = vctx;
+ 
++    if (!(ctx->xof_state == XOF_STATE_INIT ||
++          ctx->xof_state == XOF_STATE_ABSORB))
++        return 0;
++    ctx->xof_state = XOF_STATE_ABSORB;
+     return SHA3_absorb(ctx->A, inp, len, ctx->block_size);
+ }
+ 

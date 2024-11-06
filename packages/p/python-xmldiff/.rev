@@ -216,4 +216,12 @@
 - Drop python-xmldiff-no-six-remains.patch, no longer required.</comment>
     <requestid>1154951</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ac8175940114f3cd3d57e1fb29b9e763</srcmd5>
+    <version>2.7.0</version>
+    <time>1730908288</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1221495</requestid>
+  </revision>
 </revisionlist>

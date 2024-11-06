@@ -1,10 +1,10 @@
 Don't use the legacy /etc/ssl/certs directory anymore but rather the
 p11-kit generated /var/lib/ca-certificates/openssl one (fate#314991)
-Index: openssl-1.1.1-pre1/include/internal/cryptlib.h
+Index: openssl-3.2.3/include/internal/common.h
 ===================================================================
---- openssl-1.1.1-pre1.orig/include/internal/cryptlib.h	2018-02-13 14:48:12.000000000 +0100
-+++ openssl-1.1.1-pre1/include/internal/cryptlib.h	2018-02-13 16:30:11.738161984 +0100
-@@ -59,8 +59,8 @@ DEFINE_LHASH_OF(MEM);
+--- openssl-3.2.3.orig/include/internal/common.h
++++ openssl-3.2.3/include/internal/common.h
+@@ -82,8 +82,8 @@ __owur static ossl_inline int ossl_asser
  
  # ifndef OPENSSL_SYS_VMS
  #  define X509_CERT_AREA          OPENSSLDIR

@@ -18,7 +18,7 @@
 
 %bcond_with test
 Name:           gpu-screen-recorder
-Version:        20241022
+Version:        20241105
 Release:        0
 Summary:        An extremely fast hardware-accelerated screen recorder
 License:        GPL-3.0-only

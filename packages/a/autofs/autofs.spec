@@ -84,9 +84,6 @@ Requires(pre):  %fillup_prereq
 Requires(pre):  aaa_base
 Recommends:     nfs-client
 %{?systemd_ordering}
-%if 0%{?suse_version} >= 1330
-BuildRequires:  rpcgen
-%endif
 %if %{with_sssd}
 BuildRequires:  sssd
 %endif

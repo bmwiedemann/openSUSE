@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 29 20:01:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- skip python313
+
+-------------------------------------------------------------------
 Mon Oct 21 13:14:22 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream patch numpy21.patch to enable support for NumPy 2.1

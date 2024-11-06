@@ -1,8 +1,8 @@
-Index: openssl-3.0.0-alpha5/util/perl/OpenSSL/config.pm
+Index: openssl-3.2.3/util/perl/OpenSSL/config.pm
 ===================================================================
---- openssl-3.0.0-alpha5.orig/util/perl/OpenSSL/config.pm
-+++ openssl-3.0.0-alpha5/util/perl/OpenSSL/config.pm
-@@ -525,14 +525,19 @@ EOF
+--- openssl-3.2.3.orig/util/perl/OpenSSL/config.pm
++++ openssl-3.2.3/util/perl/OpenSSL/config.pm
+@@ -592,14 +592,19 @@ EOF
              return { target => "linux-ppc64" } if $KERNEL_BITS eq '64';
  
              my %config = ();

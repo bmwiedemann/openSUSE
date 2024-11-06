@@ -1,0 +1,29 @@
+From 34fe49afa28628f1bdcd245bc664df4d40bd3003 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Thu, 23 Jun 2022 15:48:41 +0200
+Subject: [PATCH 2/2] drop duplicate definition of _FORTIFY_SOURCE
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Klaus Kämpf <kkaempf@suse.de>
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index e034760..8609be6 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -25,7 +25,7 @@ CC_WARNINGS="\
+ -Wno-format-y2k \
+ -Wno-unused-value"
+ 
+-CFLAGS="$CFLAGS $CC_WARNINGS -D_FORTIFY_SOURCE=2 -D_GNU_SOURCE"
++CFLAGS="$CFLAGS $CC_WARNINGS -D_GNU_SOURCE"
+ 
+ AC_CONFIG_HEADER([config.h])
+ 
+-- 
+2.47.0
+

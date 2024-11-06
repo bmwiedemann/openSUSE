@@ -1,0 +1,4 @@
+# Compatibility shims for zsh/bash compatibility are exceedingly ugly, but it doesn't look like an error
+addFilter("bin-sh-syntax-error /usr/bin/virtualenvwrapper.*");
+# construct while [ $something $op $# ] ; do is also ugly, but AFAIK not an error
+addFilter("potential-bashisms /usr/bin/virtualenvwrapper.*");

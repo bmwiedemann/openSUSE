@@ -765,4 +765,12 @@
     <comment>- Fixed privileges of /run/mpd directory (rpm -qlv mpd | grep /run).</comment>
     <requestid>1170512</requestid>
   </revision>
+  <revision rev="52" vrev="4">
+    <srcmd5>42b6369f4c8d22a3bfe5bc657795a852</srcmd5>
+    <version>0.23.15</version>
+    <time>1730908542</time>
+    <user>anag+factory</user>
+    <comment>- Added mpd-fmt11.patch for (fixed build with fmt 11.2).</comment>
+    <requestid>1221629</requestid>
+  </revision>
 </revisionlist>

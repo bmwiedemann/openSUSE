@@ -4144,4 +4144,23 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
   this needed directory (bsc#1230755)</comment>
     <requestid>1202929</requestid>
   </revision>
+  <revision rev="435" vrev="1">
+    <srcmd5>c4ee9818da4d5091be0582bd5d755f64</srcmd5>
+    <version>21.1.14</version>
+    <time>1730908161</time>
+    <user>anag+factory</user>
+    <comment>- 21.1.14 covers also
+  * CVE-2024-31080 (bsc#1222309)
+  * CVE-2024-31081 (bsc#1222310) 
+  * CVE-2024-31082 (bsc#1222311)
+  * CVE-2024-31083 (bsc#1222312)
+
+- Security update 21.1.14
+  This release addresses the following security issue
+  * CVE-2024-9632: Heap-based buffer overflow privilege escalation
+    in _XkbSetCompatMap (bsc#1231565)
+- supersedes U_render-Avoid-possible-double-free-in-ProcRenderAddGl.patch
+- supersedes U_xorg-xserver-e89edec497ba.patch</comment>
+    <requestid>1221609</requestid>
+  </revision>
 </revisionlist>

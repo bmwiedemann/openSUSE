@@ -17,7 +17,7 @@
 
 
 Name:           ruby-bundled-gems-rpmhelper
-Version:        0.0.4
+Version:        0.0.6
 Release:        0
 Summary:        A little helper to add provides for intree gems during a ruby build
 License:        MIT

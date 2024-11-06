@@ -57,6 +57,8 @@ Patch3:         uwsgi-1.9.11-systemd_logger-old_systemd.patch
 Patch4:         uwsgi-2.0.18-postgresql-config.patch
 # PATCH-FIX-UPSTREAM uwsgi-ld-noexecstack.patch - Do not create executable stack
 Patch5:         uwsgi-ld-noexecstack.patch
+# PATCH-FIX-UPSTREAM python313.patch - plugins/python: handle cframe removal from CPython thread state https://github.com/unbit/uwsgi/commit/699dc20f8204ee18812951600b0221156d217530
+Patch6:         python313.patch
 BuildRequires:  apache-rpm-macros
 %if 0%{suse_version} < 1500
 BuildRequires:  apache2-devel

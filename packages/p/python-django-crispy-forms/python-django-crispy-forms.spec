@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-django-crispy-forms
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,10 +25,10 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%define mod_name django-crispy-forms
+%define mod_name django_crispy_forms
 %{?sle15_python_module_pythons}
-Name:           python-%{mod_name}%{psuffix}
-Version:        2.1
+Name:           python-django-crispy-forms%{psuffix}
+Version:        2.3
 Release:        0
 Summary:        Django DRY Forms
 License:        MIT
@@ -40,11 +40,11 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with test}
-BuildRequires:  %{python_module %{mod_name} = %{version}}
 BuildRequires:  %{python_module Django >= 4.2}
 BuildRequires:  %{python_module crispy-bootstrap3}
 BuildRequires:  %{python_module crispy-bootstrap4}
 BuildRequires:  %{python_module crispy-bootstrap5}
+BuildRequires:  %{python_module django-crispy-forms = %{version}}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module pytest}
 %endif

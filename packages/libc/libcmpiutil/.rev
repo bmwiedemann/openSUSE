@@ -193,4 +193,29 @@ differences with the systemsmanagement:wbem packages.
     <comment>- Use %patch -P N instead of deprecated %patchN.</comment>
     <requestid>1149157</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e6e389f70f0e8c9884c6c55d154f3d68</srcmd5>
+    <version>0.5.7+git3.cd438a8</version>
+    <time>1730908328</time>
+    <user>anag+factory</user>
+    <comment>- fix version number in _service
+- Update to version v0.5.7+git20200407.cd438a8:
+  * github: enable lockdown of issues and merge requests
+  * libcmpiutil: Fix endianness issues in embedded object parsing
+  * Fix compilation on ARM
+  * Release 0.5.7
+  * libcmpiutil: add time and thread info in debug log
+  * libcmpiutil: fix potential debug print crash
+  * Added tag release_0_5_6 for changeset c7ba1bbeba54
+  * Bump version to 0.5.6
+  * libcmpiutil: Add libtool version info
+  * libcmpituil: Proper definition of LEX_OUTPUT_ROOT
+- drop 0001-libcmpiutil-Fix-endianness-issues-in-embedded-object.patch
+  (upstream)
+- rename 0002-fix-ARM-build.patch to 0001-fix-ARM-build.patch
+  0003-drop-duplicate-definition-of-_FORTIFY_SOURCE.patch
+  to 0002-drop-duplicate-definition-of-_FORTIFY_SOURCE.patch
+</comment>
+    <requestid>1221693</requestid>
+  </revision>
 </revisionlist>

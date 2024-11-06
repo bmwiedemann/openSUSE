@@ -15,9 +15,11 @@ Subject: Add support for PROFILE=SYSTEM system default cipherlist
  util/libcrypto.num                |    1 
  8 files changed, 110 insertions(+), 14 deletions(-)
 
---- a/Configurations/unix-Makefile.tmpl
-+++ b/Configurations/unix-Makefile.tmpl
-@@ -315,6 +315,10 @@ MANDIR=$(INSTALLTOP)/share/man
+Index: openssl-3.2.3/Configurations/unix-Makefile.tmpl
+===================================================================
+--- openssl-3.2.3.orig/Configurations/unix-Makefile.tmpl
++++ openssl-3.2.3/Configurations/unix-Makefile.tmpl
+@@ -324,6 +324,10 @@ MANDIR=$(INSTALLTOP)/share/man
  DOCDIR=$(INSTALLTOP)/share/doc/$(BASENAME)
  HTMLDIR=$(DOCDIR)/html
  
@@ -28,7 +30,7 @@ Subject: Add support for PROFILE=SYSTEM system default cipherlist
  # MANSUFFIX is for the benefit of anyone who may want to have a suffix
  # appended after the manpage file section number.  "ssl" is popular,
  # resulting in files such as config.5ssl rather than config.5.
-@@ -338,6 +342,7 @@ CC=$(CROSS_COMPILE){- $config{CC} -}
+@@ -347,6 +351,7 @@ CC=$(CROSS_COMPILE){- $config{CC} -}
  CXX={- $config{CXX} ? "\$(CROSS_COMPILE)$config{CXX}" : '' -}
  CPPFLAGS={- our $cppflags1 = join(" ",
                                    (map { "-D".$_} @{$config{CPPDEFINES}}),
@@ -36,14 +38,16 @@ Subject: Add support for PROFILE=SYSTEM system default cipherlist
                                    (map { "-I".$_} @{$config{CPPINCLUDES}}),
                                    @{$config{CPPFLAGS}}) -}
  CFLAGS={- join(' ', @{$config{CFLAGS}}) -}
---- a/Configure
-+++ b/Configure
+Index: openssl-3.2.3/Configure
+===================================================================
+--- openssl-3.2.3.orig/Configure
++++ openssl-3.2.3/Configure
 @@ -27,7 +27,7 @@ use OpenSSL::config;
  my $orig_death_handler = $SIG{__DIE__};
  $SIG{__DIE__} = \&death_handler;
  
--my $usage="Usage: Configure [no-<cipher> ...] [enable-<cipher> ...] [-Dxxx] [-lxxx] [-Lxxx] [-fxxx] [-Kxxx] [no-hw-xxx|no-hw] [[no-]threads] [[no-]shared] [[no-]zlib|zlib-dynamic] [no-asm] [no-egd] [sctp] [386] [--prefix=DIR] [--openssldir=OPENSSLDIR] [--with-xxx[=vvv]] [--config=FILE] os/compiler[:flags]\n";
-+my $usage="Usage: Configure [no-<cipher> ...] [enable-<cipher> ...] [-Dxxx] [-lxxx] [-Lxxx] [-fxxx] [-Kxxx] [no-hw-xxx|no-hw] [[no-]threads] [[no-]shared] [[no-]zlib|zlib-dynamic] [no-asm] [no-egd] [sctp] [386] [--prefix=DIR] [--openssldir=OPENSSLDIR] [--system-ciphers-file=SYSTEMCIPHERFILE] [--with-xxx[=vvv]] [--config=FILE] os/compiler[:flags]\n";
+-my $usage="Usage: Configure [no-<feature> ...] [enable-<feature> ...] [-Dxxx] [-lxxx] [-Lxxx] [-fxxx] [-Kxxx] [no-hw-xxx|no-hw] [[no-]threads] [[no-]thread-pool] [[no-]default-thread-pool] [[no-]shared] [[no-]zlib|zlib-dynamic] [no-asm] [no-egd] [sctp] [386] [--prefix=DIR] [--openssldir=OPENSSLDIR] [--with-xxx[=vvv]] [--config=FILE] os/compiler[:flags]\n";
++my $usage="Usage: Configure [no-<feature> ...] [enable-<feature> ...] [-Dxxx] [-lxxx] [-Lxxx] [-fxxx] [-Kxxx] [no-hw-xxx|no-hw] [[no-]threads] [[no-]thread-pool] [[no-]default-thread-pool] [[no-]shared] [[no-]zlib|zlib-dynamic] [no-asm] [no-egd] [sctp] [386] [--prefix=DIR] [--openssldir=OPENSSLDIR] [--system-ciphers-file=SYSTEMCIPHERFILE]  [--with-xxx[=vvv]] [--config=FILE] os/compiler[:flags]\n";
  
  my $banner = <<"EOF";
  
@@ -58,7 +62,7 @@ Subject: Add support for PROFILE=SYSTEM system default cipherlist
  # --banner=".." Output specified text instead of default completion banner
  #
  # -w            Don't wait after showing a Configure warning
-@@ -387,6 +391,7 @@ $config{prefix}="";
+@@ -393,6 +397,7 @@ $config{prefix}="";
  $config{openssldir}="";
  $config{processor}="";
  $config{libdir}="";
@@ -66,7 +70,7 @@ Subject: Add support for PROFILE=SYSTEM system default cipherlist
  my $auto_threads=1;    # enable threads automatically? true by default
  my $default_ranlib;
  
-@@ -989,6 +994,10 @@ while (@argvcopy)
+@@ -1047,6 +1052,10 @@ while (@argvcopy)
                          die "FIPS key too long (64 bytes max)\n"
                             if length $1 > 64;
                          }
@@ -77,9 +81,11 @@ Subject: Add support for PROFILE=SYSTEM system default cipherlist
                  elsif (/^--banner=(.*)$/)
                          {
                          $banner = $1 . "\n";
---- a/doc/man1/openssl-ciphers.pod.in
-+++ b/doc/man1/openssl-ciphers.pod.in
-@@ -186,6 +186,15 @@ As of OpenSSL 1.0.0, the B<ALL> cipher s
+Index: openssl-3.2.3/doc/man1/openssl-ciphers.pod.in
+===================================================================
+--- openssl-3.2.3.orig/doc/man1/openssl-ciphers.pod.in
++++ openssl-3.2.3/doc/man1/openssl-ciphers.pod.in
+@@ -190,6 +190,15 @@ As of OpenSSL 1.0.0, the B<ALL> cipher s
  
  The cipher suites not enabled by B<ALL>, currently B<eNULL>.
  
@@ -95,9 +101,11 @@ Subject: Add support for PROFILE=SYSTEM system default cipherlist
  =item B<HIGH>
  
  "High" encryption cipher suites. This currently means those with key lengths
---- a/include/openssl/ssl.h.in
-+++ b/include/openssl/ssl.h.in
-@@ -213,6 +213,11 @@ extern "C" {
+Index: openssl-3.2.3/include/openssl/ssl.h.in
+===================================================================
+--- openssl-3.2.3.orig/include/openssl/ssl.h.in
++++ openssl-3.2.3/include/openssl/ssl.h.in
+@@ -214,6 +214,11 @@ extern "C" {
   * throwing out anonymous and unencrypted ciphersuites! (The latter are not
   * actually enabled by ALL, but "ALL:RSA" would enable some of them.)
   */
@@ -109,9 +117,11 @@ Subject: Add support for PROFILE=SYSTEM system default cipherlist
  
  /* Used in SSL_set_shutdown()/SSL_get_shutdown(); */
  # define SSL_SENT_SHUTDOWN       1
---- a/ssl/ssl_ciph.c
-+++ b/ssl/ssl_ciph.c
-@@ -1443,6 +1443,53 @@ int SSL_set_ciphersuites(SSL *s, const c
+Index: openssl-3.2.3/ssl/ssl_ciph.c
+===================================================================
+--- openssl-3.2.3.orig/ssl/ssl_ciph.c
++++ openssl-3.2.3/ssl/ssl_ciph.c
+@@ -1455,6 +1455,53 @@ int SSL_set_ciphersuites(SSL *s, const c
      return ret;
  }
  
@@ -165,7 +175,7 @@ Subject: Add support for PROFILE=SYSTEM system default cipherlist
  STACK_OF(SSL_CIPHER) *ssl_create_cipher_list(SSL_CTX *ctx,
                                               STACK_OF(SSL_CIPHER) *tls13_ciphersuites,
                                               STACK_OF(SSL_CIPHER) **cipher_list,
-@@ -1457,15 +1504,25 @@ STACK_OF(SSL_CIPHER) *ssl_create_cipher_
+@@ -1469,15 +1516,25 @@ STACK_OF(SSL_CIPHER) *ssl_create_cipher_
      CIPHER_ORDER *co_list = NULL, *head = NULL, *tail = NULL, *curr;
      const SSL_CIPHER **ca_list = NULL;
      const SSL_METHOD *ssl_method = ctx->method;
@@ -193,16 +203,16 @@ Subject: Add support for PROFILE=SYSTEM system default cipherlist
  
      /*
       * To reduce the work to do we only want to process the compiled
-@@ -1487,7 +1544,7 @@ STACK_OF(SSL_CIPHER) *ssl_create_cipher_
-     co_list = OPENSSL_malloc(sizeof(*co_list) * num_of_ciphers);
-     if (co_list == NULL) {
-         ERR_raise(ERR_LIB_SSL, ERR_R_MALLOC_FAILURE);
--        return NULL;          /* Failure */
-+        goto err;
+@@ -1499,7 +1556,7 @@ STACK_OF(SSL_CIPHER) *ssl_create_cipher_
+     if (num_of_ciphers > 0) {
+         co_list = OPENSSL_malloc(sizeof(*co_list) * num_of_ciphers);
+         if (co_list == NULL)
+-            return NULL;          /* Failure */
++            goto err;
      }
  
      ssl_cipher_collect_ciphers(ssl_method, num_of_ciphers,
-@@ -1553,8 +1610,7 @@ STACK_OF(SSL_CIPHER) *ssl_create_cipher_
+@@ -1565,8 +1622,7 @@ STACK_OF(SSL_CIPHER) *ssl_create_cipher_
       * in force within each class
       */
      if (!ssl_cipher_strength_sort(&head, &tail)) {
@@ -212,18 +222,17 @@ Subject: Add support for PROFILE=SYSTEM system default cipherlist
      }
  
      /*
-@@ -1598,9 +1654,8 @@ STACK_OF(SSL_CIPHER) *ssl_create_cipher_
+@@ -1610,8 +1666,7 @@ STACK_OF(SSL_CIPHER) *ssl_create_cipher_
      num_of_alias_max = num_of_ciphers + num_of_group_aliases + 1;
      ca_list = OPENSSL_malloc(sizeof(*ca_list) * num_of_alias_max);
      if (ca_list == NULL) {
 -        OPENSSL_free(co_list);
-         ERR_raise(ERR_LIB_SSL, ERR_R_MALLOC_FAILURE);
 -        return NULL;          /* Failure */
 +        goto err;
      }
      ssl_cipher_collect_aliases(ca_list, num_of_group_aliases,
                                 disabled_mkey, disabled_auth, disabled_enc,
-@@ -1633,8 +1688,7 @@ STACK_OF(SSL_CIPHER) *ssl_create_cipher_
+@@ -1644,8 +1699,7 @@ STACK_OF(SSL_CIPHER) *ssl_create_cipher_
      OPENSSL_free(ca_list);      /* Not needed anymore */
  
      if (!ok) {                  /* Rule processing failure */
@@ -233,7 +242,7 @@ Subject: Add support for PROFILE=SYSTEM system default cipherlist
      }
  
      /*
-@@ -1642,10 +1696,13 @@ STACK_OF(SSL_CIPHER) *ssl_create_cipher_
+@@ -1653,10 +1707,13 @@ STACK_OF(SSL_CIPHER) *ssl_create_cipher_
       * if we cannot get one.
       */
      if ((cipherstack = sk_SSL_CIPHER_new_null()) == NULL) {
@@ -249,7 +258,7 @@ Subject: Add support for PROFILE=SYSTEM system default cipherlist
      /* Add TLSv1.3 ciphers first - we always prefer those if possible */
      for (i = 0; i < sk_SSL_CIPHER_num(tls13_ciphersuites); i++) {
          const SSL_CIPHER *sslc = sk_SSL_CIPHER_value(tls13_ciphersuites, i);
-@@ -1697,6 +1754,14 @@ STACK_OF(SSL_CIPHER) *ssl_create_cipher_
+@@ -1708,6 +1765,14 @@ STACK_OF(SSL_CIPHER) *ssl_create_cipher_
      *cipher_list = cipherstack;
  
      return cipherstack;
@@ -264,9 +273,11 @@ Subject: Add support for PROFILE=SYSTEM system default cipherlist
  }
  
  char *SSL_CIPHER_description(const SSL_CIPHER *cipher, char *buf, int len)
---- a/ssl/ssl_lib.c
-+++ b/ssl/ssl_lib.c
-@@ -661,7 +661,7 @@ int SSL_CTX_set_ssl_version(SSL_CTX *ctx
+Index: openssl-3.2.3/ssl/ssl_lib.c
+===================================================================
+--- openssl-3.2.3.orig/ssl/ssl_lib.c
++++ openssl-3.2.3/ssl/ssl_lib.c
+@@ -670,7 +670,7 @@ int SSL_CTX_set_ssl_version(SSL_CTX *ctx
                                  ctx->tls13_ciphersuites,
                                  &(ctx->cipher_list),
                                  &(ctx->cipher_list_by_id),
@@ -275,7 +286,7 @@ Subject: Add support for PROFILE=SYSTEM system default cipherlist
      if ((sk == NULL) || (sk_SSL_CIPHER_num(sk) <= 0)) {
          ERR_raise(ERR_LIB_SSL, SSL_R_SSL_LIBRARY_HAS_NO_CIPHERS);
          return 0;
-@@ -3286,7 +3286,7 @@ SSL_CTX *SSL_CTX_new_ex(OSSL_LIB_CTX *li
+@@ -3955,7 +3955,7 @@ SSL_CTX *SSL_CTX_new_ex(OSSL_LIB_CTX *li
      if (!ssl_create_cipher_list(ret,
                                  ret->tls13_ciphersuites,
                                  &ret->cipher_list, &ret->cipher_list_by_id,
@@ -283,10 +294,12 @@ Subject: Add support for PROFILE=SYSTEM system default cipherlist
 +                                SSL_SYSTEM_DEFAULT_CIPHER_LIST, ret->cert)
          || sk_SSL_CIPHER_num(ret->cipher_list) <= 0) {
          ERR_raise(ERR_LIB_SSL, SSL_R_LIBRARY_HAS_NO_CIPHERS);
-         goto err2;
---- a/test/cipherlist_test.c
-+++ b/test/cipherlist_test.c
-@@ -246,7 +246,9 @@ end:
+         goto err;
+Index: openssl-3.2.3/test/cipherlist_test.c
+===================================================================
+--- openssl-3.2.3.orig/test/cipherlist_test.c
++++ openssl-3.2.3/test/cipherlist_test.c
+@@ -261,7 +261,9 @@ end:
  
  int setup_tests(void)
  {
@@ -295,11 +308,41 @@ Subject: Add support for PROFILE=SYSTEM system default cipherlist
 +#endif
      ADD_TEST(test_default_cipherlist_explicit);
      ADD_TEST(test_default_cipherlist_clear);
-     return 1;
---- a/util/libcrypto.num
-+++ b/util/libcrypto.num
-@@ -5435,3 +5435,4 @@ EVP_MD_CTX_dup
- EVP_CIPHER_CTX_dup                      5563	3_1_0	EXIST::FUNCTION:
- BN_are_coprime                          5564	3_1_0	EXIST::FUNCTION:
- OSSL_CMP_MSG_update_recipNonce          5565	3_0_9	EXIST::FUNCTION:CMP
-+ossl_safe_getenv                        ?	3_0_0	EXIST::FUNCTION:
+     ADD_TEST(test_stdname_cipherlist);
+Index: openssl-3.2.3/util/libcrypto.num
+===================================================================
+--- openssl-3.2.3.orig/util/libcrypto.num
++++ openssl-3.2.3/util/libcrypto.num
+@@ -5536,3 +5536,4 @@ X509_STORE_CTX_set_get_crl
+ X509_STORE_CTX_set_current_reasons      5664	3_2_0	EXIST::FUNCTION:
+ OSSL_STORE_delete                       5665	3_2_0	EXIST::FUNCTION:
+ BIO_ADDR_copy                           5666	3_2_0	EXIST::FUNCTION:SOCK
++ossl_safe_getenv                        ?	3_2_0	EXIST::FUNCTION:
+Index: openssl-3.2.3/apps/openssl.cnf
+===================================================================
+--- openssl-3.2.3.orig/apps/openssl.cnf
++++ openssl-3.2.3/apps/openssl.cnf
+@@ -52,6 +52,11 @@ tsa_policy3 = 1.2.3.4.5.7
+ 
+ [openssl_init]
+ providers = provider_sect
++# Load default TLS policy configuration
++ssl_conf = ssl_module
++
++[ evp_properties ]
++# This section is intentionally added empty here to be tuned on particular systems
+ 
+ # List of providers to load
+ [provider_sect]
+@@ -71,6 +76,11 @@ default = default_sect
+ [default_sect]
+ # activate = 1
+ 
++[ ssl_module ]
++system_default = crypto_policy
++
++[ crypto_policy ]
++.include = /etc/crypto-policies/back-ends/opensslcnf.config
+ 
+ ####################################################################
+ [ ca ]

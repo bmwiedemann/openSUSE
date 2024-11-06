@@ -1,27 +1,19 @@
-Index: openssl-3.1.4/Configurations/00-base-templates.conf
+Index: openssl-3.2.3/Configurations/00-base-templates.conf
 ===================================================================
---- openssl-3.1.4.orig/Configurations/00-base-templates.conf
-+++ openssl-3.1.4/Configurations/00-base-templates.conf
-@@ -71,9 +71,12 @@ my %targets=(
-         lflags          =>
-             sub { $withargs{zlib_lib} ? "-L".$withargs{zlib_lib} : () },
-         ex_libs         =>
--            sub { !defined($disabled{zlib})
--                  && defined($disabled{"zlib-dynamic"})
--                  ? "-lz" : () },
-+            sub {
-+                   my @libs = ();
-+                   push(@libs, "-lz") if !defined($disabled{zlib}) && defined($disabled{"zlib-dynamic"});
-+                   push(@libs, "-ljitterentropy") if !defined($disabled{jitterentropy});
-+                   return join(" ", @libs);
-+                },
-         HASHBANGPERL    => "/usr/bin/env perl", # Only Unix actually cares
-         RANLIB          => sub { which("$config{cross_compile_prefix}ranlib")
-                                      ? "ranlib" : "" },
-Index: openssl-3.1.4/crypto/rand/rand_jitter_entropy.c
+--- openssl-3.2.3.orig/Configurations/00-base-templates.conf
++++ openssl-3.2.3/Configurations/00-base-templates.conf
+@@ -88,6 +88,7 @@ my %targets=(
+             sub {
+                 my @libs = ();
+                 push(@libs, "-lz") if !defined($disabled{zlib}) && defined($disabled{"zlib-dynamic"});
++		push(@libs, "-ljitterentropy") if !defined($disabled{jitterentropy});
+                 if (!defined($disabled{brotli}) && defined($disabled{"brotli-dynamic"})) {
+                     push(@libs, "-lbrotlienc");
+                     push(@libs, "-lbrotlidec");
+Index: openssl-3.2.3/crypto/rand/rand_jitter_entropy.c
 ===================================================================
 --- /dev/null
-+++ openssl-3.1.4/crypto/rand/rand_jitter_entropy.c
++++ openssl-3.2.3/crypto/rand/rand_jitter_entropy.c
 @@ -0,0 +1,97 @@
 +# include "jitterentropy.h"
 +# include "prov/jitter_entropy.h"
@@ -120,10 +112,10 @@ Index: openssl-3.1.4/crypto/rand/rand_jitter_entropy.c
 +    CRYPTO_THREAD_lock_free(jent_lock);
 +    jent_lock = NULL;
 +}
-Index: openssl-3.1.4/providers/implementations/rands/seeding/rand_unix.c
+Index: openssl-3.2.3/providers/implementations/rands/seeding/rand_unix.c
 ===================================================================
---- openssl-3.1.4.orig/providers/implementations/rands/seeding/rand_unix.c
-+++ openssl-3.1.4/providers/implementations/rands/seeding/rand_unix.c
+--- openssl-3.2.3.orig/providers/implementations/rands/seeding/rand_unix.c
++++ openssl-3.2.3/providers/implementations/rands/seeding/rand_unix.c
 @@ -20,6 +20,7 @@
  #include "internal/dso.h"
  #include "internal/nelem.h"
@@ -132,7 +124,7 @@ Index: openssl-3.1.4/providers/implementations/rands/seeding/rand_unix.c
  
  #ifdef __linux
  # include <sys/syscall.h>
-@@ -631,6 +632,31 @@ size_t ossl_pool_acquire_entropy(RAND_PO
+@@ -633,6 +634,31 @@ size_t ossl_pool_acquire_entropy(RAND_PO
  
      (void)entropy_available;    /* avoid compiler warning */
  
@@ -164,10 +156,10 @@ Index: openssl-3.1.4/providers/implementations/rands/seeding/rand_unix.c
  #   if defined(OPENSSL_RAND_SEED_GETRANDOM)
      {
          size_t bytes_needed;
-Index: openssl-3.1.4/providers/implementations/include/prov/jitter_entropy.h
+Index: openssl-3.2.3/providers/implementations/include/prov/jitter_entropy.h
 ===================================================================
 --- /dev/null
-+++ openssl-3.1.4/providers/implementations/include/prov/jitter_entropy.h
++++ openssl-3.2.3/providers/implementations/include/prov/jitter_entropy.h
 @@ -0,0 +1,17 @@
 +#ifndef OSSL_PROVIDERS_JITTER_ENTROPY_H
 +# define OSSL_PROVIDERS_JITTER_ENTROPY_H
@@ -186,10 +178,10 @@ Index: openssl-3.1.4/providers/implementations/include/prov/jitter_entropy.h
 +void FIPS_entropy_cleanup(void);
 +
 +#endif
-Index: openssl-3.1.4/providers/fips/self_test.c
+Index: openssl-3.2.3/providers/fips/self_test.c
 ===================================================================
---- openssl-3.1.4.orig/providers/fips/self_test.c
-+++ openssl-3.1.4/providers/fips/self_test.c
+--- openssl-3.2.3.orig/providers/fips/self_test.c
++++ openssl-3.2.3/providers/fips/self_test.c
 @@ -20,6 +20,7 @@
  #include "internal/tsan_assist.h"
  #include "prov/providercommon.h"
@@ -198,7 +190,7 @@ Index: openssl-3.1.4/providers/fips/self_test.c
  
  /*
   * We're cheating here. Normally we don't allow RUN_ONCE usage inside the FIPS
-@@ -392,6 +393,11 @@ int SELF_TEST_post(SELF_TEST_POST_PARAMS
+@@ -498,6 +499,11 @@ int SELF_TEST_post(SELF_TEST_POST_PARAMS
          return 0;
      }
  
@@ -210,10 +202,10 @@ Index: openssl-3.1.4/providers/fips/self_test.c
      if (st == NULL) {
          ERR_raise(ERR_LIB_PROV, PROV_R_MISSING_CONFIG_DATA);
          goto end;
-Index: openssl-3.1.4/include/openssl/proverr.h
+Index: openssl-3.2.3/include/openssl/proverr.h
 ===================================================================
---- openssl-3.1.4.orig/include/openssl/proverr.h
-+++ openssl-3.1.4/include/openssl/proverr.h
+--- openssl-3.2.3.orig/include/openssl/proverr.h
++++ openssl-3.2.3/include/openssl/proverr.h
 @@ -44,6 +44,7 @@
  # define PROV_R_FAILED_TO_GET_PARAMETER                   103
  # define PROV_R_FAILED_TO_SET_PARAMETER                   104
@@ -222,10 +214,10 @@ Index: openssl-3.1.4/include/openssl/proverr.h
  # define PROV_R_FIPS_MODULE_CONDITIONAL_ERROR             227
  # define PROV_R_FIPS_MODULE_ENTERING_ERROR_STATE          224
  # define PROV_R_FIPS_MODULE_IN_ERROR_STATE                225
-Index: openssl-3.1.4/providers/common/provider_err.c
+Index: openssl-3.2.3/providers/common/provider_err.c
 ===================================================================
---- openssl-3.1.4.orig/providers/common/provider_err.c
-+++ openssl-3.1.4/providers/common/provider_err.c
+--- openssl-3.2.3.orig/providers/common/provider_err.c
++++ openssl-3.2.3/providers/common/provider_err.c
 @@ -54,6 +54,8 @@ static const ERR_STRING_DATA PROV_str_re
      {ERR_PACK(ERR_LIB_PROV, 0, PROV_R_FAILED_TO_SET_PARAMETER),
      "failed to set parameter"},
@@ -235,22 +227,22 @@ Index: openssl-3.1.4/providers/common/provider_err.c
      {ERR_PACK(ERR_LIB_PROV, 0, PROV_R_FIPS_MODULE_CONDITIONAL_ERROR),
      "fips module conditional error"},
      {ERR_PACK(ERR_LIB_PROV, 0, PROV_R_FIPS_MODULE_ENTERING_ERROR_STATE),
-Index: openssl-3.1.4/crypto/rand/build.info
+Index: openssl-3.2.3/crypto/rand/build.info
 ===================================================================
---- openssl-3.1.4.orig/crypto/rand/build.info
-+++ openssl-3.1.4/crypto/rand/build.info
+--- openssl-3.2.3.orig/crypto/rand/build.info
++++ openssl-3.2.3/crypto/rand/build.info
 @@ -1,6 +1,6 @@
  LIBS=../../libcrypto
  
 -$COMMON=rand_lib.c
 +$COMMON=rand_lib.c rand_jitter_entropy.c
- $CRYPTO=randfile.c rand_err.c rand_deprecated.c prov_seed.c rand_pool.c
+ $CRYPTO=randfile.c rand_err.c rand_deprecated.c prov_seed.c rand_pool.c \
+         rand_uniform.c
  
- IF[{- !$disabled{'egd'} -}]
-Index: openssl-3.1.4/providers/fips/fipsprov.c
+Index: openssl-3.2.3/providers/fips/fipsprov.c
 ===================================================================
---- openssl-3.1.4.orig/providers/fips/fipsprov.c
-+++ openssl-3.1.4/providers/fips/fipsprov.c
+--- openssl-3.2.3.orig/providers/fips/fipsprov.c
++++ openssl-3.2.3/providers/fips/fipsprov.c
 @@ -27,6 +27,7 @@
  #include "crypto/context.h"
  #include "internal/core.h"
@@ -259,7 +251,7 @@ Index: openssl-3.1.4/providers/fips/fipsprov.c
  
  static const char FIPS_DEFAULT_PROPERTIES[] = "provider=fips,fips=yes";
  static const char FIPS_UNAPPROVED_PROPERTIES[] = "provider=fips,fips=no";
-@@ -603,6 +604,7 @@ const OSSL_SUSE_FIPSINDICATOR_ALGORITHM
+@@ -609,6 +610,7 @@ const OSSL_SUSE_FIPSINDICATOR_ALGORITHM
  
  static void fips_teardown(void *provctx)
  {
@@ -267,29 +259,29 @@ Index: openssl-3.1.4/providers/fips/fipsprov.c
      OSSL_LIB_CTX_free(PROV_LIBCTX_OF(provctx));
      ossl_prov_ctx_free(provctx);
  }
-Index: openssl-3.1.4/util/libcrypto.num
+Index: openssl-3.2.3/util/libcrypto.num
 ===================================================================
---- openssl-3.1.4.orig/util/libcrypto.num
-+++ openssl-3.1.4/util/libcrypto.num
-@@ -5441,3 +5441,5 @@ X509_get_default_cert_path_env
- ossl_safe_getenv                        ?	3_0_0	EXIST::FUNCTION:
+--- openssl-3.2.3.orig/util/libcrypto.num
++++ openssl-3.2.3/util/libcrypto.num
+@@ -5539,3 +5539,5 @@ BIO_ADDR_copy
+ ossl_safe_getenv                        ?	3_2_0	EXIST::FUNCTION:
  ossl_ctx_legacy_digest_signatures_allowed ?	3_0_1	EXIST::FUNCTION:
  ossl_ctx_legacy_digest_signatures_allowed_set ?	3_0_1	EXIST::FUNCTION:
 +FIPS_entropy_init                       ?	3_1_4   EXIST::FUNCTION:
 +FIPS_entropy_cleanup                    ?	3_1_4   EXIST::FUNCTION:
-Index: openssl-3.1.4/Configure
+Index: openssl-3.2.3/Configure
 ===================================================================
---- openssl-3.1.4.orig/Configure
-+++ openssl-3.1.4/Configure
-@@ -454,6 +454,7 @@ my @disablables = (
-     "fuzz-libfuzzer",
+--- openssl-3.2.3.orig/Configure
++++ openssl-3.2.3/Configure
+@@ -469,6 +469,7 @@ my @disablables = (
      "gost",
+     "http",
      "idea",
 +    "jitterentropy",
      "ktls",
      "legacy",
      "loadereng",
-@@ -550,6 +551,7 @@ our %disabled = ( # "what"         => "c
+@@ -573,6 +574,7 @@ our %disabled = ( # "what"         => "c
                    "external-tests"      => "default",
                    "fuzz-afl"            => "default",
                    "fuzz-libfuzzer"      => "default",
@@ -297,7 +289,7 @@ Index: openssl-3.1.4/Configure
                    "ktls"                => "default",
                    "md2"                 => "default",
                    "msan"                => "default",
-@@ -763,7 +765,7 @@ my %cmdvars = ();               # Stores
+@@ -801,7 +803,7 @@ my %cmdvars = ();               # Stores
  my %unsupported_options = ();
  my %deprecated_options = ();
  # If you change this, update apps/version.c
@@ -306,7 +298,7 @@ Index: openssl-3.1.4/Configure
  my @seed_sources = ();
  while (@argvcopy)
          {
-@@ -1231,6 +1233,9 @@ if (scalar(@seed_sources) == 0) {
+@@ -1291,6 +1293,9 @@ if (scalar(@seed_sources) == 0) {
  if (scalar(grep { $_ eq 'egd' } @seed_sources) > 0) {
      delete $disabled{'egd'};
  }
@@ -316,10 +308,10 @@ Index: openssl-3.1.4/Configure
  if (scalar(grep { $_ eq 'none' } @seed_sources) > 0) {
      die "Cannot seed with none and anything else" if scalar(@seed_sources) > 1;
      warn <<_____ if scalar(@seed_sources) == 1;
-Index: openssl-3.1.4/crypto/info.c
+Index: openssl-3.2.3/crypto/info.c
 ===================================================================
---- openssl-3.1.4.orig/crypto/info.c
-+++ openssl-3.1.4/crypto/info.c
+--- openssl-3.2.3.orig/crypto/info.c
++++ openssl-3.2.3/crypto/info.c
 @@ -15,6 +15,9 @@
  #include "internal/e_os.h"
  #include "buildinf.h"
@@ -353,11 +345,11 @@ Index: openssl-3.1.4/crypto/info.c
          seed_sources = seeds;
      }
      return 1;
-Index: openssl-3.1.4/INSTALL.md
+Index: openssl-3.2.3/INSTALL.md
 ===================================================================
---- openssl-3.1.4.orig/INSTALL.md
-+++ openssl-3.1.4/INSTALL.md
-@@ -463,6 +463,12 @@ if provided by the CPU.
+--- openssl-3.2.3.orig/INSTALL.md
++++ openssl-3.2.3/INSTALL.md
+@@ -511,6 +511,12 @@ if provided by the CPU.
  Use librandom (not implemented yet).
  This source is ignored by the FIPS provider.
  

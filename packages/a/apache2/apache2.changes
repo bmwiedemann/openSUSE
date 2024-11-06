@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov  5 18:16:04 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update httpd-framework to svn1921782.
+- Fixes Apache's impact on bsc#1218342.
+
+-------------------------------------------------------------------
+Mon Nov  4 21:23:51 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Explicitly mark start_apache2 as bash-dependent.
+
+-------------------------------------------------------------------
 Mon Sep 30 14:40:42 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add /srv/www directories to filelist [bsc#1231027] 

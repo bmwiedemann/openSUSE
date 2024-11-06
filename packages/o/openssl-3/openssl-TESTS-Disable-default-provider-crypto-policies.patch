@@ -1,0 +1,41 @@
+Index: openssl-3.2.3/apps/openssl.cnf
+===================================================================
+--- openssl-3.2.3.orig/apps/openssl.cnf
++++ openssl-3.2.3/apps/openssl.cnf
+@@ -45,7 +45,7 @@ tsa_policy3 = 1.2.3.4.5.7
+ [openssl_init]
+ providers = provider_sect
+ # Load default TLS policy configuration
+-ssl_conf = ssl_module
++##ssl_conf = ssl_module
+ 
+ [ evp_properties ]
+ # This section is intentionally added empty here to be tuned on particular systems
+@@ -60,20 +60,20 @@ ssl_conf = ssl_module
+ # to side-channel attacks and as such have been deprecated.
+ 
+ [provider_sect]
+-default = default_sect
++##default = default_sect
+ ##legacy = legacy_sect
+ 
+-[default_sect]
+-activate = 1
++##[default_sect]
++##activate = 1
+ 
+ ##[legacy_sect]
+ ##activate = 1
+ 
+-[ ssl_module ]
+-system_default = crypto_policy
++##[ ssl_module ]
++##system_default = crypto_policy
+ 
+-[ crypto_policy ]
+-.include = /etc/crypto-policies/back-ends/opensslcnf.config
++##[ crypto_policy ]
++##.include = /etc/crypto-policies/back-ends/opensslcnf.config
+ 
+ ####################################################################
+ [ ca ]

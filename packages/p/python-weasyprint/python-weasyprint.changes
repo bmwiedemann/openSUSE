@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Tue Nov  5 14:27:00 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 63.0
+  * #2252, #895: Handle page groups, with financial support from Code & Co.
+  * #1630, #2286: Support CSS Color Level 4
+  * #2192: Add PDF variant for debugging purpose
+  * #2208: Support submit inputs in PDF forms
+  * #2139: Support mask-border-* properties
+  * #1831, #2143: Support radio inputs in PDF forms
+  * #2262: Avoid integer overflows when converting units from/to doubles
+  * #2260: Avoid float collision with box establishing formatting context
+  * #2240, #2242: Handle svg tags with no size
+  * #2231, #1171, #2222, #1208: Fix several problems related to flex-direction: column
+  * #2239: Don’t fail when SVG markers are undefined references
+  * #2230, #2238: Set explicit flags when loading DLLs on Windows
+  * #2228, #1942: Store original and PDF stream images in different cache slots
+  * #2234: Apply stylesheet and other basic operations to SVG root tag
+  * #2054, #2233: Keep auto margins on flex layout boxes
+  * #1883: Don’t crash with empty list marker strings
+  * #2216: Fix vertical alignment of out-of-flow elements in tables
+  * #996, #2219: Don’t ignore absolutely positioned elements inside flex boxes
+  * #2217: Don’t crash with normal column gaps
+  * #1817: Don’t assume that lines break after spaces
+  * #1868: Don’t break rows with atomic cells
+  * #2166: Don’t display bottom border on cells in split rows
+  * 61852c4: Capture fontTools logs when subsetting fonts
+  * #2190: Don’t use a pattern when drawing backgrounds for no-repeat background images
+  * #2185: Check that Harfbuzz version is at least 4.1.0 to subset fonts
+  * #2180: Store width for all glyphs when font is not subset
+  * #2183: Respect break-inside: avoid for flex items
+  * #2055, #2058: Fix right-to-left tables with collapsed borders
+  * #2179, #1128: Handle buggy Adobe Photoshop CMYK JPEGs
+  * #2175: Don’t compress PDF metadata for PDF/A-1
+  * #2174: Fix extra width distribution for auto table layout
+  * #1155: Improve rendering speed for large colspan values
+  * #2120, #2178: Use Harfbuzz to subset fonts by default
+  * #2282, #2284: Simplify Alpine install instructions
+  * #2254: Add warning about antivirus false detection
+  * #2220: Add extra information to debug logs
+  * #2211: Fix link to samples
+  * #2195: Update cache argument documentation
+  * #2105, #2151: Use MSYS2 instead of GTK+3 for Windows
+- Update BuildRequires and Requires from pyproject.toml
+
+-------------------------------------------------------------------
 Sun Jun 30 08:16:19 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 62.3:

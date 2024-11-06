@@ -42,7 +42,7 @@ Index: openssl-3.1.7/crypto/provider_conf.c
      }
      CRYPTO_THREAD_unlock(pcgbl->lock);
  
-@@ -383,6 +387,33 @@ static int provider_conf_init(CONF_IMODU
+@@ -383,6 +387,32 @@ static int provider_conf_init(CONF_IMODU
              return 0;
      }
  
@@ -54,7 +54,6 @@ Index: openssl-3.1.7/crypto/provider_conf.c
 +            CONF *fips_conf = NCONF_new_ex(libctx, NCONF_default());
 +            if (NCONF_load(fips_conf, FIPS_LOCAL_CONF, NULL) <= 0)
 +                return 0;
-+
 +            if (provider_conf_load(libctx, "fips", "fips_sect", fips_conf) != 1) {
 +                NCONF_free(fips_conf);
 +                return 0;

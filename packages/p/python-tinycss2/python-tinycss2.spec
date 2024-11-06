@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-tinycss2
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        A tiny CSS parser
 License:        BSD-3-Clause

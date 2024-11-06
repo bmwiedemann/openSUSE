@@ -11,7 +11,7 @@
   <property name="project.groupId" value="com.fasterxml.jackson.core"/>
   <property name="project.artifactId" value="jackson-databind"/>
   <property name="project.name" value="jackson-databind"/>
-  <property name="project.version" value="2.17.2"/>
+  <property name="project.version" value="2.17.3"/>
   <property name="project.vendor" value="FasterXML"/>
   <property name="project.description" value="General data-binding functionality for Jackson: works on core streaming API"/>
   <property name="bundle.version" value="${project.version}"/>

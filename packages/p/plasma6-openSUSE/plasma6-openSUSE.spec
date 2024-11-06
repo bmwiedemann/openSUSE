@@ -20,7 +20,7 @@
 
 # Plasma 6 pulls in Qt 5 as well, tell qml-autoreqprov what to use
 %global __qml_requires_opts --qtver 6
-%global plasma_version 6.2.2
+%global plasma_version 6.2.3
 Name:           plasma6-openSUSE
 Version:        84.87~git20240313T170730~9c664b7
 Release:        0

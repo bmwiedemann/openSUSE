@@ -17,34 +17,34 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-PyFxA
-Version:        0.7.8
+Version:        0.7.9
 Release:        0
 Summary:        Firefox Accounts client library for Python
 License:        MPL-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/mozilla/PyFxA
-Source:         https://files.pythonhosted.org/packages/source/P/PyFxA/PyFxA-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/P/PyFxA/pyfxa-%{version}.tar.gz
 BuildRequires:  %{python_module PyBrowserID}
 BuildRequires:  %{python_module PyJWT}
 BuildRequires:  %{python_module cryptography}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module hawkauthlib}
+BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyotp}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.4.2}
 BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.14}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyBrowserID
 Requires:       python-PyJWT
 Requires:       python-cryptography
+Requires:       python-hawkauthlib
 Requires:       python-requests >= 2.4.2
-Requires:       python-six >= 1.14
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
@@ -54,7 +54,7 @@ BuildArch:      noarch
 This is python library for interacting with the Firefox Accounts ecosystem.
 
 %prep
-%setup -q -n PyFxA-%{version}
+%autosetup -p1 -n pyfxa-%{version}
 sed -i -e '/^#!\/usr\/bin\/env python/d' fxa/__main__.py
 find ./ -type f -exec chmod -x {} +
 
@@ -89,6 +89,6 @@ includedTests="\
 %doc CHANGES.txt README.rst
 %python_alternative %{_bindir}/fxa-client
 %{python_sitelib}/fxa
-%{python_sitelib}/PyFxA-%{version}.dist-info
+%{python_sitelib}/pyfxa-%{version}.dist-info
 
 %changelog

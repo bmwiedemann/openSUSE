@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon Nov  4 10:57:09 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.1.1
+  * Fix an issue that caused ``str(Request.headers)`` to always appear empty.
+    :issue:`2985`
+- from version 3.1.0
+  * Drop support for Python 3.8. :pr:`2966`
+  * Remove previously deprecated code. :pr:`2967`
+  * ``Request.max_form_memory_size`` defaults to 500kB instead of unlimited.
+    Non-file form fields over this size will cause a ``RequestEntityTooLarge``
+    error. :issue:`2964`
+  * ``OrderedMultiDict`` and ``ImmutableOrderedMultiDict`` are deprecated.
+    Use ``MultiDict`` and ``ImmutableMultiDict`` instead. :issue:`2968`
+  * Behavior of properties on ``request.cache_control`` and
+    ``response.cache_control`` has been significantly adjusted.
+    * Dict values are always ``str | None``. Setting properties will convert
+      the value to a string. Setting a property to ``False`` is equivalent to
+      setting it to ``None``. Getting typed properties will return ``None`` if
+      conversion raises ``ValueError``, rather than the string. :issue:`2980`
+    * ``max_age`` is ``None`` if present without a value, rather than ``-1``.
+      :issue:`2980`
+    * ``no_cache`` is a boolean for requests, it is ``True`` instead of
+      ``"*"`` when present. It remains a string for responses. :issue:`2980`
+    * ``max_stale`` is ``True`` if present without a value, rather
+      than ``"*"``. :issue:`2980`
+    * ``no_transform`` is a boolean. Previously it was mistakenly always
+      ``None``. :issue:`2881`
+    * ``min_fresh`` is ``None`` if present without a value, rather than
+      ``"*"``. :issue:`2881`
+    * ``private`` is ``True`` if present without a value, rather than ``"*"``.
+      :issue:`2980`
+    * Added the ``must_understand`` property. :issue:`2881`
+    * Added the ``stale_while_revalidate``, and ``stale_if_error``
+      properties. :issue:`2948`
+    * Type annotations more accurately reflect the values. :issue:`2881`
+  * Support Cookie CHIPS (Partitioned Cookies). :issue:`2797`
+  * Add 421 ``MisdirectedRequest`` HTTP exception. :issue:`2850`
+  * Increase default work factor for PBKDF2 to 1,000,000 iterations.
+    :issue:`2969`
+  * Inline annotations for ``datastructures``, removing stub files.
+    :issue:`2970`
+  * ``MultiDict.getlist`` catches ``TypeError`` in addition to ``ValueError``
+    when doing type conversion. :issue:`2976`
+  * Implement ``|`` and ``|=`` operators for ``MultiDict``, ``Headers``, and
+    ``CallbackDict``, and disallow ``|=`` on immutable types. :issue:`2977`
+
+-------------------------------------------------------------------
 Mon Oct 28 12:57:32 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 3.0.6 (bsc#1232449, CVE-2024-49767):

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  5 09:14:27 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Avoid using requires_eq, which after the last modifications
+  conflicts with python singlespec (order of expansion).
+
+-------------------------------------------------------------------
 Mon Apr 24 09:24:37 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Do not hardcode the python version to get the python-tornadoN

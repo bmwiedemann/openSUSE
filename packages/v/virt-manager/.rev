@@ -2086,4 +2086,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1219447</requestid>
   </revision>
+  <revision rev="264" vrev="30">
+    <srcmd5>7b99f53af868ab42736d05b191374336</srcmd5>
+    <version>4.1.0</version>
+    <time>1730908162</time>
+    <user>anag+factory</user>
+    <comment>dbus-1-x11 is being removed from Tumbleweed so drop dependency in virt-manager. Add dependency on python3-dbus-python.</comment>
+    <requestid>1221610</requestid>
+  </revision>
 </revisionlist>

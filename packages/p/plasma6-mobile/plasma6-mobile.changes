@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov  5 13:30:33 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.3
+- Changes since 6.2.2:
+  * update version for new release
+  * actiondrawer: Cleanup and simplify
+  * envmanager: Fix KWin effect and script reloading
+  * actiondrawer: Share components between portrait and landscape
+  * homescreens/folio: Remove icon on one of the settings delegates
+  * homescreens/folio: Never open both search and app drawer
+  * homescreens: Use WheelHandler on app list
+  * actioncenter: Reduce usage of transforms and cleanup
+  * homescreens/folio: Fix app icons being rounded to predefined sizes
+  * quicksettings: fix landscape not being scrollable
+
+-------------------------------------------------------------------
 Tue Oct 22 14:08:16 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.2:

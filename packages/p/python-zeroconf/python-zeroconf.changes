@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov  5 21:31:26 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Fix deduping
+
+-------------------------------------------------------------------
+Mon Nov  4 13:45:49 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.136.0
+  * fix: update python-semantic-release to fix release process
+  * fix: add ignore for .c file for wheels
+  * fix: correct typos
+  * feat: use SPDX license identifier
+- from version 0.135.0
+  * feat: improve performance of DNSCache backend
+
+-------------------------------------------------------------------
 Mon Sep 23 09:05:43 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.134.0:

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 30 19:49:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6:
+  * Add official support for Python 3.13.
+  * Add support for `&` as scoping root per the CSS
+    Nesting Module, Level 1. When `&` is used outside the
+  * context of nesting, it is treated as the scoping root
+  * Improve error message when an unrecognized pseudo-
+    class is used.
+
+-------------------------------------------------------------------
 Fri Mar 15 09:49:23 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
 
 - Fix rpmlint warnings on SLE/Leap (jsc#PED-7572)

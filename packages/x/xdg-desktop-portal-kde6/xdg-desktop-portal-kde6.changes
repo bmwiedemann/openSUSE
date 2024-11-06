@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov  5 13:30:49 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.3
+- Changes since 6.2.2:
+  * update version for new release
+  * [FileChooser] Properly pass along requested current filter
+  * Create region selection window before calling setScreen (kde#493293)
+
+-------------------------------------------------------------------
 Tue Oct 22 14:09:08 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.2:

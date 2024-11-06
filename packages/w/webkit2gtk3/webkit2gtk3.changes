@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov  4 16:08:38 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.46.3 (boo#1232747):
+  + Flatten layers to a plane when preseve-3d style is set.
+  + Fix DuckDuckGo links by adding a user agent quirk.
+  + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2044-44244, CVE-2024-44296.
+- Drop bug281492.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Mon Oct 21 15:09:18 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.46.2:
@@ -50,7 +60,7 @@ Tue Sep 17 19:04:26 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
     acceleration (enabled by default).
   + Undeprecate console messages API and make it available in 6.0
     API.
-  + Security fixes: CVE-2024-40866, CVE-2024-44187.
+  + Security fixes: CVE-2024-40866, CVE-2024-44187, CVE-2044-44185.
 
 -------------------------------------------------------------------
 Wed Sep 11 16:53:03 UTC 2024 - Michael Gorse <mgorse@suse.com>

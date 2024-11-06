@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov  5 13:30:30 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.3
+- Changes since 6.2.2:
+  * update version for new release
+  * Application Dashboard: Show app tooltips properly (kde#494802)
+  * applets/taskmanager: Fix icon alignment when is reversed (kde#489648)
+  * emojier: do substring search in emoji annotations as well (kde#435787)
+  * activitymanager: Avoid infinite loop in ActivityList
+  * positioner: Make sure we check deferMovePositions exist
+  * appiumtests: fix desktoptest
+  * appiumtests: fix kcm_plasmasearch_test
+  * applets/taskmanager: use TextMetrics directly to elide long recent items
+
+-------------------------------------------------------------------
 Tue Oct 22 14:08:08 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.2:

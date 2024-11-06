@@ -24,12 +24,12 @@
 #
 
 Name:           rubygem-Ascii85
-Version:        1.1.1
+Version:        2.0.1
 Release:        0
 %define mod_name Ascii85
 %define mod_full_name %{mod_name}-%{version}
+BuildRequires:  %{ruby >= 2.7.0}
 BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
 URL:            https://github.com/DataWraith/ascii85gem/
@@ -37,7 +37,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Ascii85 encoder/decoder
 License:        MIT
-PreReq:         update-alternatives
 
 %description
 Ascii85 provides methods to encode/decode Adobe's binary-to-text encoding of
@@ -50,7 +49,7 @@ the same name.
 %install
 %gem_install \
   --symlink-binaries \
-  --doc-files="History.txt LICENSE README.md" \
+  --doc-files="CHANGELOG.md LICENSE README.md" \
   -f
 
 %gem_packages

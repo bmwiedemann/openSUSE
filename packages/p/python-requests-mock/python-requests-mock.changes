@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov  5 13:07:00 UTC 2024 - pgajdos@suse.com
+
+- do not require python-purl
+- added patches
+  fix https://github.com/jamielennox/requests-mock/issues/266
+  + python-requests-mock-no-purl.patch
+
+-------------------------------------------------------------------
 Wed May  8 06:40:50 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use the %pyunittest macro to run tests (because of testtools) 

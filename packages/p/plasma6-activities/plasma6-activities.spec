@@ -22,7 +22,7 @@
 %define rname plasma-activities
 %bcond_without released
 Name:           plasma6-activities
-Version:        6.2.2
+Version:        6.2.3
 Release:        0
 Summary:        Plasma Activities support
 License:        GPL-2.0-or-later

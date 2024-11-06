@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov  6 07:49:57 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.17.3
+  * #1331: Update to FastDoubleParser v1.0.1 to fix 'BigDecimal'
+    decoding problem
+  * #1340: Missing 'JsonFactory' "provides" SPI with JPMS in
+    'jackson-core' module
+  * #1352: Fix infinite loop due to integer overflow when reading
+    large strings
+
+-------------------------------------------------------------------
 Thu Oct 10 13:48:21 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Build the module-info.java source too (with release=9)
@@ -19,43 +30,40 @@ Wed Jul 17 12:47:49 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 Mon May 20 12:29:23 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Update to 2.17.1
-  * #1241: Fix `NumberInput.looksLikeValidNumber()` implementation
-    (contributed by @pjfanning)
+  * #1241: Fix 'NumberInput.looksLikeValidNumber()' implementation
   * #1256: Revert #1117: change default recycler pool back to
-    `threadLocalPool()` for 2.17.1
+    'threadLocalPool()' for 2.17.1
 - Includes changes from 2.17.0
-  * #507: Add `JsonWriteFeature.ESCAPE_FORWARD_SLASHES` to allow
-    escaping of '/' for String values (contributed by Joo-Hyuk K)
-  * #1117: Change default `RecylerPool` implementation to
-    `newLockFreePool` (from `threadLocalPool`)
+  * #507: Add 'JsonWriteFeature.ESCAPE_FORWARD_SLASHES' to allow
+    escaping of '/' for String values
+  * #1117: Change default 'RecylerPool' implementation to
+    'newLockFreePool' (from 'threadLocalPool')
   * #1137: Improve detection of "is a NaN" to only consider
-    explicit cases, not `double` overflow/underflow
-  * #1145: `JsonPointer.appendProperty(String)` does not escape the
-    property name (reported by Robert E)
-  * #1149: Add `JsonParser.getNumberTypeFP()`
-  * #1157: Use fast parser (FDP) for large `BigDecimal`s (500+
-    chars) (contributed by @pjfanning)
-  * #1169: `ArrayIndexOutOfBoundsException` for specific invalid
+    explicit cases, not 'double' overflow/underflow
+  * #1145: 'JsonPointer.appendProperty(String)' does not escape the
+    property name
+  * #1149: Add 'JsonParser.getNumberTypeFP()'
+  * #1157: Use fast parser (FDP) for large 'BigDecimal's (500+
+    chars)
+  * #1169: 'ArrayIndexOutOfBoundsException' for specific invalid
     content, with Reader-based parser
-  * #1173: `JsonLocation` consistently off by one character for
-    many invalid JSON parsing cases (reported by Paul B)
-  * #1179: Allow configuring `DefaultPrettyPrinter` separators for
-    empty Arrays and Objects (contributed by Guillaume L)
-  * #1186: `BufferRecycler` should avoid setting replacement if one
-    already returned, bigger (suggested by @kkkkkhhhh)
-  * #1195: Use `BufferRecycler` provided by output (`OutputStream`,
-    `Writer`) object if available (contributed by Mario F)
-  * #1202: Add `RecyclerPool.clear()` method for dropping all
+  * #1173: 'JsonLocation' consistently off by one character for
+    many invalid JSON parsing cases
+  * #1179: Allow configuring 'DefaultPrettyPrinter' separators for
+    empty Arrays and Objects
+  * #1186: 'BufferRecycler' should avoid setting replacement if one
+    already returned, bigger
+  * #1195: Use 'BufferRecycler' provided by output ('OutputStream',
+    'Writer') object if available
+  * #1202: Add 'RecyclerPool.clear()' method for dropping all
     pooled Objects
-  * #1203: Faster division by 1000 (contributed by @xtonik)
+  * #1203: Faster division by 1000
   * #1205:
     JsonFactory.setStreamReadConstraints(StreamReadConstraints)
-    fails to update "maxNameLength" for symbol tables (reported by
-    @denizk)
-  * #1217: Optimize char comparison using bitwise OR (contributed
-    by @xtonik)
+    fails to update "maxNameLength" for symbol tables
+  * #1217: Optimize char comparison using bitwise OR
   * #1218: Simplify Unicode surrogate pair conversion for
-    generation (contributed by @xtonik)
+    generation
 
 -------------------------------------------------------------------
 Fri Mar  8 08:33:47 UTC 2024 - Gus Kenion <gkenion@suse.com>
@@ -63,26 +71,41 @@ Fri Mar  8 08:33:47 UTC 2024 - Gus Kenion <gkenion@suse.com>
 - Update to 2.16.1
   * 2.16.1 (24-Dec-2023)
     + #1141: NPE in Version.equals() if snapshot-info null
-    + #1161: NPE in "FastDoubleParser", method "JavaBigDecimalParser.parseBigDecimal()"
-    + #1168: JsonPointer.append(JsonPointer.tail()) includes the original pointer
+    + #1161: NPE in "FastDoubleParser", method
+      "JavaBigDecimalParser.parseBigDecimal()"
+    + #1168: JsonPointer.append(JsonPointer.tail()) includes the
+      original pointer
   * 2.16.0 (15-Nov-2023)
-    + #991: Change StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION default to false in Jackson 2.16
-    + #1007: Improve error message for StreamReadConstraints violations
-    + #1015: JsonFactory implementations should respect CANONICALIZE_FIELD_NAMES
-    + #1035: Root cause for failing test for testMangledIntsBytes() in ParserErrorHandlingTest
+    + #991: Change StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION
+      default to false in Jackson 2.16
+    + #1007: Improve error message for StreamReadConstraints
+      violations
+    + #1015: JsonFactory implementations should respect
+      CANONICALIZE_FIELD_NAMES
+    + #1035: Root cause for failing test for testMangledIntsBytes()
+      in ParserErrorHandlingTest
     + #1036: Allow all array elements in JsonPointerBasedFilter
-    + #1039: Indicate explicitly blocked sources as "REDACTED" instead of "UNKNOWN" in JsonLocation
+    + #1039: Indicate explicitly blocked sources as "REDACTED"
+      instead of "UNKNOWN" in JsonLocation
     + #1041: Start using AssertJ in unit tests
-    + #1042: Allow configuring spaces before and/or after the colon in DefaultPrettyPrinter (for Canonical JSON)
-    + #1046: Add configurable limit for the maximum number of bytes/chars of content to parse before failing
-    + #1047: Add configurable limit for the maximum length of Object property names to parse before failing
-    + #1048: Add configurable processing limits for JSON generator (StreamWriteConstraints)
+    + #1042: Allow configuring spaces before and/or after the colon
+      in DefaultPrettyPrinter (for Canonical JSON)
+    + #1046: Add configurable limit for the maximum number of
+      bytes/chars of content to parse before failing
+    + #1047: Add configurable limit for the maximum length of Object
+      property names to parse before failing
+    + #1048: Add configurable processing limits for JSON generator
+      (StreamWriteConstraints)
     + #1050: Compare _snapshotInfo in Version
-    + #1051: Add JsonGeneratorDecorator to allow decorating JsonGenerators
+    + #1051: Add JsonGeneratorDecorator to allow decorating
+      JsonGenerators
     + #1064: Add full set of BufferRecyclerPool implementations
-    + #1066: Add configurable error report behavior via ErrorReportConfiguration
-    + #1081: Make ByteSourceJsonBootstrapper use StringReader for < 8KiB byte[] inputs
-    + #1089: Allow pluggable buffer recycling via new RecyclerPool extension point
+    + #1066: Add configurable error report behavior via
+      ErrorReportConfiguration
+    + #1081: Make ByteSourceJsonBootstrapper use StringReader
+      for < 8KiB byte[] inputs
+    + #1089: Allow pluggable buffer recycling via new RecyclerPool
+      extension point
     + #1136: Change parsing error message to mention -INF
 
 -------------------------------------------------------------------

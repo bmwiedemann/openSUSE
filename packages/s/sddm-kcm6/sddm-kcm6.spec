@@ -23,7 +23,7 @@
 
 %bcond_without released
 Name:           sddm-kcm6
-Version:        6.2.2
+Version:        6.2.3
 Release:        0
 Summary:        A sddm control module for KDE
 License:        GPL-2.0-only

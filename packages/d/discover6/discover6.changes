@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov  5 13:30:11 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.3
+- Changes since 6.2.2:
+  * update version for new release
+  * FwupdBackend: Do not use more API now removed in fwupd 2.0.0
+  * ApplicationPage: Fix visibility of the reviews component (kde#495597)
+
+-------------------------------------------------------------------
 Mon Nov  4 20:10:14 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update runtime appstream dependency

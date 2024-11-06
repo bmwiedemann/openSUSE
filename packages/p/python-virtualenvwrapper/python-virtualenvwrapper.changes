@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct 14 06:37:26 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 6.1.1:
+  - Update broken MSYS link in installation documentation
+  - Add additional line to mkvirtualenv help
+  - Update mkvirtualenv help to document -p/–python option
+  - move linkcheck out of main doc build
+  - make sure virtualenvwrapper_cd always tries to do something,
+    even when it cannot infer the current shell
+- Add python-virtualenvwrapper.rpmlintrc to quiet various
+  problems with shell scripts linting.
+
+-------------------------------------------------------------------
 Fri Mar  8 05:47:59 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 6.1.0:

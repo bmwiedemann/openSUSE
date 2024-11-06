@@ -22,31 +22,31 @@ Patch-status: |
  test/sslapitest.c                             |  2 +-
  11 files changed, 76 insertions(+), 5 deletions(-)
 
-Index: openssl-3.1.4/doc/man3/SSL_CONF_cmd.pod
-===================================================================
---- openssl-3.1.4.orig/doc/man3/SSL_CONF_cmd.pod
-+++ openssl-3.1.4/doc/man3/SSL_CONF_cmd.pod
-@@ -524,6 +524,9 @@ B<ExtendedMasterSecret>: use extended ma
+diff --git a/doc/man3/SSL_CONF_cmd.pod b/doc/man3/SSL_CONF_cmd.pod
+index ae6ca43282..b83c04a308 100644
+--- a/doc/man3/SSL_CONF_cmd.pod
++++ b/doc/man3/SSL_CONF_cmd.pod
+@@ -524,6 +524,9 @@ B<ExtendedMasterSecret>: use extended master secret extension, enabled by
  default. Inverse of B<SSL_OP_NO_EXTENDED_MASTER_SECRET>: that is,
  B<-ExtendedMasterSecret> is the same as setting B<SSL_OP_NO_EXTENDED_MASTER_SECRET>.
  
 +B<RHNoEnforceEMSinFIPS>: allow establishing connections without EMS in FIPS mode.
-+This is a downstream specific option, and normally it should be set up via crypto-policies.
++This is a downstream specific option, and normally it should be set up via crypto policies.
 +
  B<CANames>: use CA names extension, enabled by
  default. Inverse of B<SSL_OP_DISABLE_TLSEXT_CA_NAMES>: that is,
  B<-CANames> is the same as setting B<SSL_OP_DISABLE_TLSEXT_CA_NAMES>.
-Index: openssl-3.1.4/doc/man5/fips_config.pod
-===================================================================
---- openssl-3.1.4.orig/doc/man5/fips_config.pod
-+++ openssl-3.1.4/doc/man5/fips_config.pod
-@@ -15,6 +15,19 @@ See the documentation for more informati
+diff --git a/doc/man5/fips_config.pod b/doc/man5/fips_config.pod
+index 1c15e32a5c..f2cedaf88d 100644
+--- a/doc/man5/fips_config.pod
++++ b/doc/man5/fips_config.pod
+@@ -15,6 +15,19 @@ for more information.
  
  This functionality was added in OpenSSL 3.0.
  
-+SUSE Linux Enterprise uses a supplementary downstream config for FIPS module located
-+in OpenSSL configuration directory and managed by crypto-policies. If present, it
-+should have the following format:
++SUSE Enterprise Linux uses a supplementary config for FIPS module located in
++OpenSSL configuration directory and managed by crypto policies. If present, it
++should have format
 +
 + [fips_sect]
 + tls1-prf-ems-check = 0
@@ -59,11 +59,11 @@ Index: openssl-3.1.4/doc/man5/fips_config.pod
 +
  =head1 COPYRIGHT
  
- Copyright 2019-2022 The OpenSSL Project Authors. All Rights Reserved.
-Index: openssl-3.1.4/include/openssl/fips_names.h
-===================================================================
---- openssl-3.1.4.orig/include/openssl/fips_names.h
-+++ openssl-3.1.4/include/openssl/fips_names.h
+ Copyright 2019-2021 The OpenSSL Project Authors. All Rights Reserved.
+diff --git a/include/openssl/fips_names.h b/include/openssl/fips_names.h
+index 5c77f6d691..8cdd5a6bf7 100644
+--- a/include/openssl/fips_names.h
++++ b/include/openssl/fips_names.h
 @@ -70,6 +70,14 @@ extern "C" {
   */
  # define OSSL_PROV_FIPS_PARAM_DRBG_TRUNC_DIGEST  "drbg-no-trunc-md"
@@ -79,23 +79,23 @@ Index: openssl-3.1.4/include/openssl/fips_names.h
  # ifdef __cplusplus
  }
  # endif
-Index: openssl-3.1.4/include/openssl/ssl.h.in
-===================================================================
---- openssl-3.1.4.orig/include/openssl/ssl.h.in
-+++ openssl-3.1.4/include/openssl/ssl.h.in
-@@ -420,6 +420,7 @@ typedef int (*SSL_async_callback_fn)(SSL
+diff --git a/include/openssl/ssl.h.in b/include/openssl/ssl.h.in
+index 0b6de603e2..26a69ca282 100644
+--- a/include/openssl/ssl.h.in
++++ b/include/openssl/ssl.h.in
+@@ -415,6 +415,7 @@ typedef int (*SSL_async_callback_fn)(SSL *s, void *arg);
       * interoperability with CryptoPro CSP 3.x
       */
  # define SSL_OP_CRYPTOPRO_TLSEXT_BUG                     SSL_OP_BIT(31)
 +# define SSL_OP_PERMIT_NOEMS_FIPS                        SSL_OP_BIT(48)
- 
  /*
-  * Option "collections."
-Index: openssl-3.1.4/providers/fips/fipsprov.c
-===================================================================
---- openssl-3.1.4.orig/providers/fips/fipsprov.c
-+++ openssl-3.1.4/providers/fips/fipsprov.c
-@@ -105,7 +105,7 @@ void *ossl_fips_prov_ossl_ctx_new(OSSL_L
+  * Disable RFC8879 certificate compression
+  * SSL_OP_NO_TX_CERTIFICATE_COMPRESSION: don't send compressed certificates,
+diff --git a/providers/fips/fipsprov.c b/providers/fips/fipsprov.c
+index 5ff9872bd8..eb9653a9df 100644
+--- a/providers/fips/fipsprov.c
++++ b/providers/fips/fipsprov.c
+@@ -105,7 +105,7 @@ void *ossl_fips_prov_ossl_ctx_new(OSSL_LIB_CTX *libctx)
      if (fgbl == NULL)
          return NULL;
      init_fips_option(&fgbl->fips_security_checks, 1);
@@ -104,11 +104,11 @@ Index: openssl-3.1.4/providers/fips/fipsprov.c
      init_fips_option(&fgbl->fips_restricted_drgb_digests, 0);
      return fgbl;
  }
-Index: openssl-3.1.4/providers/implementations/kdfs/tls1_prf.c
-===================================================================
---- openssl-3.1.4.orig/providers/implementations/kdfs/tls1_prf.c
-+++ openssl-3.1.4/providers/implementations/kdfs/tls1_prf.c
-@@ -222,6 +222,27 @@ static int kdf_tls1_prf_derive(void *vct
+diff --git a/providers/implementations/kdfs/tls1_prf.c b/providers/implementations/kdfs/tls1_prf.c
+index 25a6c79a2e..79bc7a9719 100644
+--- a/providers/implementations/kdfs/tls1_prf.c
++++ b/providers/implementations/kdfs/tls1_prf.c
+@@ -222,6 +223,27 @@ static int kdf_tls1_prf_derive(void *vctx, unsigned char *key, size_t keylen,
          }
      }
  
@@ -136,11 +136,11 @@ Index: openssl-3.1.4/providers/implementations/kdfs/tls1_prf.c
      return tls1_prf_alg(ctx->P_hash, ctx->P_sha1,
                          ctx->sec, ctx->seclen,
                          ctx->seed, ctx->seedlen,
-Index: openssl-3.1.4/ssl/ssl_conf.c
-===================================================================
---- openssl-3.1.4.orig/ssl/ssl_conf.c
-+++ openssl-3.1.4/ssl/ssl_conf.c
-@@ -389,6 +389,7 @@ static int cmd_Options(SSL_CONF_CTX *cct
+diff --git a/ssl/ssl_conf.c b/ssl/ssl_conf.c
+index 5146cedb96..086db98c33 100644
+--- a/ssl/ssl_conf.c
++++ b/ssl/ssl_conf.c
+@@ -389,6 +389,7 @@ static int cmd_Options(SSL_CONF_CTX *cctx, const char *value)
          SSL_FLAG_TBL("ClientRenegotiation",
                       SSL_OP_ALLOW_CLIENT_RENEGOTIATION),
          SSL_FLAG_TBL_INV("EncryptThenMac", SSL_OP_NO_ENCRYPT_THEN_MAC),
@@ -148,10 +148,10 @@ Index: openssl-3.1.4/ssl/ssl_conf.c
          SSL_FLAG_TBL("NoRenegotiation", SSL_OP_NO_RENEGOTIATION),
          SSL_FLAG_TBL("AllowNoDHEKEX", SSL_OP_ALLOW_NO_DHE_KEX),
          SSL_FLAG_TBL("PrioritizeChaCha", SSL_OP_PRIORITIZE_CHACHA),
-Index: openssl-3.1.4/ssl/statem/extensions_srvr.c
-===================================================================
---- openssl-3.1.4.orig/ssl/statem/extensions_srvr.c
-+++ openssl-3.1.4/ssl/statem/extensions_srvr.c
+diff --git a/ssl/statem/extensions_srvr.c b/ssl/statem/extensions_srvr.c
+index 00b1ee531e..22cdabb308 100644
+--- a/ssl/statem/extensions_srvr.c
++++ b/ssl/statem/extensions_srvr.c
 @@ -11,6 +11,7 @@
  #include "../ssl_local.h"
  #include "statem_local.h"
@@ -160,13 +160,13 @@ Index: openssl-3.1.4/ssl/statem/extensions_srvr.c
  
  #define COOKIE_STATE_FORMAT_VERSION     1
  
-@@ -1552,8 +1553,13 @@ EXT_RETURN tls_construct_stoc_etm(SSL *s
- EXT_RETURN tls_construct_stoc_ems(SSL *s, WPACKET *pkt, unsigned int context,
+@@ -1552,8 +1553,13 @@ EXT_RETURN tls_construct_stoc_etm(SSL *s, WPACKET *pkt, unsigned int context,
+                                   unsigned int context,
                                    X509 *x, size_t chainidx)
  {
 -    if ((s->s3.flags & TLS1_FLAGS_RECEIVED_EXTMS) == 0)
 +    if ((s->s3.flags & TLS1_FLAGS_RECEIVED_EXTMS) == 0) {
-+        if (FIPS_mode() && !(SSL_get_options(s) & SSL_OP_PERMIT_NOEMS_FIPS) ) {
++        if (FIPS_mode() && !(SSL_get_options(SSL_CONNECTION_GET_SSL(s)) & SSL_OP_PERMIT_NOEMS_FIPS) ) {
 +            SSLfatal(s, SSL_AD_HANDSHAKE_FAILURE, ERR_R_UNSUPPORTED);
 +            return EXT_RETURN_FAIL;
 +        }
@@ -175,10 +175,10 @@ Index: openssl-3.1.4/ssl/statem/extensions_srvr.c
  
      if (!WPACKET_put_bytes_u16(pkt, TLSEXT_TYPE_extended_master_secret)
              || !WPACKET_put_bytes_u16(pkt, 0)) {
-Index: openssl-3.1.4/ssl/t1_enc.c
-===================================================================
---- openssl-3.1.4.orig/ssl/t1_enc.c
-+++ openssl-3.1.4/ssl/t1_enc.c
+diff --git a/ssl/t1_enc.c b/ssl/t1_enc.c
+index 91238e6457..e8ad8ecd9e 100644
+--- a/ssl/t1_enc.c
++++ b/ssl/t1_enc.c
 @@ -20,6 +20,7 @@
  #include <openssl/obj_mac.h>
  #include <openssl/core_names.h>
@@ -186,7 +186,7 @@ Index: openssl-3.1.4/ssl/t1_enc.c
 +#include <openssl/fips.h>
  
  /* seed1 through seed5 are concatenated */
- static int tls1_PRF(SSL *s,
+ static int tls1_PRF(SSL_CONNECTION *s,
 @@ -75,8 +76,14 @@ static int tls1_PRF(SSL *s,
      }
  
@@ -198,17 +198,17 @@ Index: openssl-3.1.4/ssl/t1_enc.c
 +        if (FIPS_mode() && seed1_len >= TLS_MD_MASTER_SECRET_CONST_SIZE
 +            && memcmp(seed1, TLS_MD_MASTER_SECRET_CONST, TLS_MD_MASTER_SECRET_CONST_SIZE) == 0)
 +            SSLfatal(s, SSL_AD_HANDSHAKE_FAILURE, ERR_R_UNSUPPORTED);
-+        else
++	else
 +            SSLfatal(s, SSL_AD_INTERNAL_ERROR, ERR_R_INTERNAL_ERROR);
 +    }
      else
          ERR_raise(ERR_LIB_SSL, ERR_R_INTERNAL_ERROR);
      EVP_KDF_CTX_free(kctx);
-Index: openssl-3.1.4/test/recipes/30-test_evp_data/evpkdf_tls12_prf.txt
-===================================================================
---- openssl-3.1.4.orig/test/recipes/30-test_evp_data/evpkdf_tls12_prf.txt
-+++ openssl-3.1.4/test/recipes/30-test_evp_data/evpkdf_tls12_prf.txt
-@@ -22,6 +22,16 @@ Ctrl.client_random = hexseed:36c129d01a3
+diff --git a/test/recipes/30-test_evp_data/evpkdf_tls12_prf.txt b/test/recipes/30-test_evp_data/evpkdf_tls12_prf.txt
+index 44040ff66b..deb6bf3fcb 100644
+--- a/test/recipes/30-test_evp_data/evpkdf_tls12_prf.txt
++++ b/test/recipes/30-test_evp_data/evpkdf_tls12_prf.txt
+@@ -22,6 +22,16 @@ Ctrl.client_random = hexseed:36c129d01a3200894b9179faac589d9835d58775f9b5ea3587c
  Ctrl.server_random = hexseed:f6c9575ed7ddd73e1f7d16eca115415812a43c2b747daaaae043abfb50053fce
  Output = 202c88c00f84a17a20027079604787461176455539e705be730890602c289a5001e34eeb3a043e5d52a65e66125188bf
  
@@ -225,3 +225,18 @@ Index: openssl-3.1.4/test/recipes/30-test_evp_data/evpkdf_tls12_prf.txt
  FIPSversion = <=3.1.0
  KDF = TLS1-PRF
  Ctrl.digest = digest:SHA256
+diff --git a/test/sslapitest.c b/test/sslapitest.c
+index 169e3c7466..e67b5bb44c 100644
+--- a/test/sslapitest.c
++++ b/test/sslapitest.c
+@@ -574,7 +574,7 @@ static int test_client_cert_verify_cb(void)
+     STACK_OF(X509) *server_chain;
+     SSL_CTX *cctx = NULL, *sctx = NULL;
+     SSL *clientssl = NULL, *serverssl = NULL;
+-    int testresult = 0;
++    int testresult = 0, status;
+ 
+     if (!TEST_true(create_ssl_ctx_pair(libctx, TLS_server_method(),
+                                        TLS_client_method(), TLS1_VERSION, 0,
+-- 
+2.41.0
