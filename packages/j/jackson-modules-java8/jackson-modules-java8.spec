@@ -17,7 +17,7 @@
 
 
 Name:           jackson-modules-java8
-Version:        2.17.2
+Version:        2.17.3
 Release:        0
 Summary:        Set of support modules for Java 8 datatypes
 License:        Apache-2.0

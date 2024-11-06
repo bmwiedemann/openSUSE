@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov  6 08:05:26 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 2.17.3
+  * No changes since 2.17.2
+
+-------------------------------------------------------------------
 Wed Aug  7 10:28:19 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to 2.17.2
@@ -24,7 +30,6 @@ Fri Mar  8 08:33:47 UTC 2024 - Gus Kenion <gkenion@suse.com>
     and 2.16
   * #288: LocalDateTime serialization issue with custom-configured
     LocalDateTimeSerializer
-
 
 -------------------------------------------------------------------
 Wed Dec 20 19:29:17 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
