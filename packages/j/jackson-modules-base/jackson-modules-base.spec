@@ -17,7 +17,7 @@
 
 
 Name:           jackson-modules-base
-Version:        2.17.2
+Version:        2.17.3
 Release:        0
 Summary:        Jackson modules: Base
 License:        Apache-2.0
