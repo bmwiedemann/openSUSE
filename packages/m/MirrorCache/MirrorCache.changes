@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Nov 06 08:45:02 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.084:
+  * systemd: MOJO_TMPDIR=/var/lib/mirrorcache/tmp
+  * Smart handle of local symlinks
+
+-------------------------------------------------------------------
+Fri Oct 25 15:02:11 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.083:
+  * Escape regex in browse.html.ep (#527)
+
+-------------------------------------------------------------------
+Thu Oct 24 10:25:03 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.082:
+  * Redirect all local symlinks
+  * Detect only symlinks with specific name during remote scan
+  * fix encoding in the mirrors report when using MariaDB
+  * systemd: configure MOJO_TMP_DIR=/tmp/mirrorcache
+  * Set permission 750 to /etc/mirrorcache
+
+-------------------------------------------------------------------
 Fri Aug 09 09:48:52 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.081:
