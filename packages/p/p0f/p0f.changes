@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov  2 20:27:14 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch:
+  * p0f-fix-gcc14.patch
+
+-------------------------------------------------------------------
 Thu Feb 29 14:30:37 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

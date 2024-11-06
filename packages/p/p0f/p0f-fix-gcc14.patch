@@ -1,0 +1,31 @@
+diff --git a/build.sh b/build.sh
+index f674433..d130905 100755
+--- a/build.sh
++++ b/build.sh
+@@ -197,7 +197,7 @@ echo -n "[*] Checking if memory alignment is required... "
+ 
+ rm -f "$TMP" "$TMP.c" "$TMP.log" || exit 1
+ 
+-echo -e "#include \"types.h\"\nvolatile u8 tmp[6]; int main() { printf(\"%d\x5cn\", *(u32*)(tmp+1)); return 0; }" >"$TMP.c" || exit 1
++echo -e "#include \"stdio.h\"\n#include \"types.h\"\nvolatile u8 tmp[6]; int main() { printf(\"%d\x5cn\", *(u32*)(tmp+1)); return 0; }" >"$TMP.c" || exit 1
+ $CC $USE_CFLAGS $USE_LDFLAGS "$TMP.c" -o "$TMP" &>"$TMP.log"
+ 
+ if [ ! -x "$TMP" ]; then
+@@ -236,7 +236,7 @@ echo -n "[*] Checking for working libpcap... "
+ 
+ rm -f "$TMP" "$TMP.c" "$TMP.log" || exit 1
+ 
+-echo -e "#include <pcap.h>\nint main() { char i[PCAP_ERRBUF_SIZE]; pcap_lookupdev(i); return 0; }" >"$TMP.c" || exit 1
++echo -e "#include \"stdio.h\"\n#include <pcap.h>\nint main() { char i[PCAP_ERRBUF_SIZE]; pcap_lookupdev(i); return 0; }" >"$TMP.c" || exit 1
+ $CC $USE_CFLAGS $USE_LDFLAGS "$TMP.c" -o "$TMP" $USE_LIBS &>"$TMP.log"
+ 
+ if [ ! -x "$TMP" ]; then
+@@ -281,7 +281,7 @@ echo -n "[*] Checking for working BPF... "
+ 
+ rm -f "$TMP" "$TMP.c" "$TMP.log" || exit 1
+ 
+-echo -e "#include <pcap.h>\n#include <pcap-bpf.h>\nint main() { return 0; }" >"$TMP.c" || exit 1
++echo -e "#include \"stdio.h\"\n#include <pcap.h>\n#include <pcap-bpf.h>\nint main() { return 0; }" >"$TMP.c" || exit 1
+ $CC $USE_CFLAGS $USE_LDFLAGS "$TMP.c" -o "$TMP" $USE_LIBS &>"$TMP.log"
+ 
+ if [ ! -x "$TMP" ]; then
