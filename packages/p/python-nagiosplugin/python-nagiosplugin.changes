@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Wed Nov  6 11:05:45 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Skip the failing test test_check_users (gh#mpounsett/nagiosplugin#53)
+
+-------------------------------------------------------------------
+Thu Sep 29 17:09:04 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- 1.3.3 (2022-02-07)
+  * new: adding support for newer python releases (3.8, 3.9, 3.10)
+  * fix: various typos in docstrings (#39, )
+  * fix: change use of deprecated upload-dir to upload_dir in setup.cfg (#34)
+  * fix: Runtime class now sets None for stdout by default (#24)
+  * fix: corrected argument order in several calls to super() (#18)
+  * cleanup: many bits of code tidying to eliminate linter warnings 
+
+-------------------------------------------------------------------
+Thu Apr 22 06:28:03 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Do not build for Python 3.6, due to no NumPy. 
+
+-------------------------------------------------------------------
+Mon Mar 30 12:47:51 UTC 2020 - pgajdos@suse.com
+
+- version update to 1.3.2
+  - Include `doc` and `tests` directories in source distribution to support
+    Gentoo package building tests (#22)
+  - Update official python support to 2.7, 3.4+ in README
+  - Fixed a packaging bug
+  - New maintainer/contributor information and project home
+  - Updated tests and package metadata for recent Python 3 versions
+  - Newer tooling for tests/documentation
+
+-------------------------------------------------------------------
+Thu May  2 06:17:11 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias/spellos from description.
+
+-------------------------------------------------------------------
+Fri Aug 25 13:27:10 UTC 2017 - mardnh@gmx.de
+
+- Initial package, version 1.2.4
