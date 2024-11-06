@@ -1,0 +1,6 @@
+<package name="hey" project="openSUSE:Factory">
+  <title>hey</title>
+  <description>HTTP load generator, ApacheBench (ab) replacement, formerly known as rakyll/boom</description>
+  <devel project="network:utilities" package="hey"/>
+  <url>https://github.com/rakyll/hey</url>
+</package>
