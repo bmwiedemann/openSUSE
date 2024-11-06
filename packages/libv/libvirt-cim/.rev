@@ -397,4 +397,12 @@ into SLE12, e.g. making the change in some IBS project.  Thanks!
     <comment></comment>
     <requestid>1153873</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>139f0dc3506ed5015a887f708597da61</srcmd5>
+    <version>0.6.3+git92.a5a073c</version>
+    <time>1730908573</time>
+    <user>anag+factory</user>
+    <comment>update to fix build</comment>
+    <requestid>1221695</requestid>
+  </revision>
 </revisionlist>

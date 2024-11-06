@@ -1,0 +1,27 @@
+From 2604c1377e7c0525f813569b24309cc3bc14dbef Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@gmail.com>
+Date: Tue, 5 Nov 2024 17:28:18 +0100
+Subject: [PATCH 6/6] drop base_schema
+
+the respective CIM MOF files are provided via the cim-schema runtime
+requirement
+---
+ Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index bebaf60..91f847e 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,7 +1,7 @@
+ # Copyright IBM Corp. 2007-2014
+ AUTOMAKE_OPTIONS=dist-bzip2
+ 
+-SUBDIRS = libxkutil src doc base_schema
++SUBDIRS = libxkutil src doc
+ 
+ MOFS = \
+ 	$(top_srcdir)/schema/ComputerSystem.mof \
+-- 
+2.47.0
+

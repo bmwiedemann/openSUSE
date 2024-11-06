@@ -23,20 +23,21 @@
 
 Name:           libvirt-cim
 
-Url:            http://libvirt.org/CIM/
+Url:            http://libvirt.org
 License:        LGPL-2.1+
 Group:          System/Management
-Version:        0.6.3
+Version:        0.6.3+git92.a5a073c
 Release:        0
 Summary:        CMPI-based CIM provider implementing DMTF SVPC model
-Source:         %{name}-%{version}.tar.bz2
+Source:         %{name}-%{version}.tar.gz
 Source1:        libvirt-cim-rpmlintrc
 Source2:        README.SUSE
-Patch0:         provider-reg.patch
-Patch1:         automake.patch
-Patch2:         libvirt-cim-0.6.3-fix-bashisms.patch
-Patch3:         f6b7eeaf.patch
-Patch4:         memory_leaks.patch
+Patch1:         0001-provider-reg.patch
+Patch2:         0002-automake.patch
+Patch3:         0003-fix-bashisms.patch
+Patch4:         0004-memory-leaks.patch
+Patch5:         0005-include-stdlib.h.patch
+Patch6:         0006-drop-base_schema.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  automake
 BuildRequires:  autoconf
@@ -70,12 +71,6 @@ Libvirt-cim is a CMPI CIM provider that implements the DMTF SVPC
 virtualization model. The goal is to support most of the features
 exported by libvirt itself, enabling management of multiple platforms
 with a single provider.
-
-
-
-Authors:
---------
-    Dan Smith <danms@us.ibm.com>
 
 %define REGISTRATION %{_datadir}/%{name}/*.registration
 %define SCHEMA %{_datadir}/%{name}/*.mof
@@ -122,7 +117,6 @@ fi
 
 %post
 /sbin/ldconfig
-%{_datadir}/%{name}/install_base_schema.sh %{_datadir}/%{name}
 # Register libvirt-cim on the sfcb's providers list
 %{_datadir}/%{name}/provider-register.sh -t sfcb \
         -n root/virt \
@@ -171,9 +165,6 @@ fi
 %{_datadir}/%{name}/*.sh
 %{_datadir}/%{name}/*.mof
 %{_datadir}/%{name}/*.registration
-%{_datadir}/%{name}/cim_schema_*-MOFs.zip
-%{_datadir}/%{name}/cimv*-cimv2_mof
-%{_datadir}/%{name}/cimv*-interop_mof
 %dir %attr(0700, root, root) %{_sysconfdir}/libvirt
 %dir %attr(0700, root, root) %{_sysconfdir}/libvirt/cim
 %if 0%{?suse_version}

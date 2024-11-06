@@ -1,0 +1,20 @@
+<services>
+  <service name="download_files" mode="manual"/>
+  <service name="tar_scm" mode="manual">
+    <param name="url">https://gitlab.com/libvirt/libvirt-cim.git</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="revision">master</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="file">libvirt-cim-*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  <service name="set_version" mode="manual">
+    <param name="basename">libvirt-cim</param>
+  </service>
+</services>

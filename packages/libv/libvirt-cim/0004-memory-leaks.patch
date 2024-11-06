@@ -1,13 +1,20 @@
-Author: Adam Majer <amajer@suse.de>
-Date: Thu Dec  7 15:10:07 CET 2017
+From d07f47b783e8de1a49a744354ef9744334906fa4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@gmail.com>
+Date: Tue, 5 Nov 2024 17:19:57 +0100
+Subject: [PATCH 4/6] memory leaks
 
 Other asprintf memory leaks found. Forwarded upstream.
+Author: Adam Majer <amajer@suse.de>
+---
+ src/Virt_ComputerSystem.c             | 2 ++
+ src/Virt_SettingsDefineCapabilities.c | 6 ++++--
+ 2 files changed, 6 insertions(+), 2 deletions(-)
 
-Index: libvirt-cim-0.6.3/src/Virt_ComputerSystem.c
-===================================================================
---- libvirt-cim-0.6.3.orig/src/Virt_ComputerSystem.c
-+++ libvirt-cim-0.6.3/src/Virt_ComputerSystem.c
-@@ -417,6 +417,8 @@ static int set_other_id_info(const CMPIB
+diff --git a/src/Virt_ComputerSystem.c b/src/Virt_ComputerSystem.c
+index da07f93..c6cbfd2 100644
+--- a/src/Virt_ComputerSystem.c
++++ b/src/Virt_ComputerSystem.c
+@@ -417,6 +417,8 @@ static int set_other_id_info(const CMPIBroker *broker,
                                      CMPI_string);
          }
  
@@ -16,11 +23,11 @@ Index: libvirt-cim-0.6.3/src/Virt_ComputerSystem.c
          CMSetProperty(instance, "OtherIdentifyingInfo",
                        &id_info, CMPI_stringA);
  
-Index: libvirt-cim-0.6.3/src/Virt_SettingsDefineCapabilities.c
-===================================================================
---- libvirt-cim-0.6.3.orig/src/Virt_SettingsDefineCapabilities.c
-+++ libvirt-cim-0.6.3/src/Virt_SettingsDefineCapabilities.c
-@@ -1977,7 +1977,6 @@ static CMPIStatus set_input_props(const
+diff --git a/src/Virt_SettingsDefineCapabilities.c b/src/Virt_SettingsDefineCapabilities.c
+index 85cb27a..9750217 100644
+--- a/src/Virt_SettingsDefineCapabilities.c
++++ b/src/Virt_SettingsDefineCapabilities.c
+@@ -1980,7 +1980,6 @@ static CMPIStatus set_input_props(const CMPIObjectPath *ref,
          char *cap;
  
          if (get_input_dev_caption(type, bus, &cap) != 1) {
@@ -28,7 +35,7 @@ Index: libvirt-cim-0.6.3/src/Virt_SettingsDefineCapabilities.c
                  cu_statusf(_BROKER, &s,
                             CMPI_RC_ERR_NOT_FOUND,
                             "Unable to build input caption");
-@@ -1985,12 +1984,15 @@ static CMPIStatus set_input_props(const
+@@ -1988,12 +1987,15 @@ static CMPIStatus set_input_props(const CMPIObjectPath *ref,
          }
  
          if (caption != NULL) {
@@ -45,3 +52,6 @@ Index: libvirt-cim-0.6.3/src/Virt_SettingsDefineCapabilities.c
          }
  
          inst = sdc_rasd_inst(&s, ref, CIM_RES_TYPE_INPUT, DEVICE_RASD);
+-- 
+2.47.0
+

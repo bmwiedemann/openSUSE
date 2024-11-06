@@ -1,0 +1,26 @@
+From fd50bb9a521c26a6de4e9ab15ec0e71e4c4189c7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@gmail.com>
+Date: Tue, 5 Nov 2024 16:50:11 +0100
+Subject: [PATCH 1/6] provider-reg
+
+add " around echo parameters
+---
+ provider-register.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/provider-register.sh b/provider-register.sh
+index f66fe54..cd44462 100755
+--- a/provider-register.sh
++++ b/provider-register.sh
+@@ -742,7 +742,7 @@ gb_getopt()
+ 	      shift;;
+       esac
+     done
+-    echo $options $registrations $moffiles 
++    echo "$options $registrations $moffiles"
+ }
+ 
+ prepargs=`gb_getopt $*`
+-- 
+2.47.0
+

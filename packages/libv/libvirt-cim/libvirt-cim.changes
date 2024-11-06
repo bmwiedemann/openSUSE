@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Nov  6 08:32:58 UTC 2024 - Klaus Kämpf <kkaempf@suse.de>
+
+- fix version number in _service
+
+-------------------------------------------------------------------
+Tue Nov 05 15:47:35 UTC 2024 - kkaempf@suse.de
+
+- Update to version v0.6.3+git20230822.a5a073c:
+  * ci: lcitool: Maintain project package deps lists here
+  * README: Update link to upstream repo and drop mailing list refernce
+  * ci: refresh with latest lcitool manifest
+  * ci: mark bleeding edge distros as allowing failures
+  * configure: convert to using xz archives for dist
+  * ci: refresh with lcitool manifest
+  * Switch to new GitHub repo-lockdown configuration
+  * ci: remove obsolete refresh script and documentation
+  * ci: re-generate containers/gitlab config from manifest
+  * ci: define a CI manifest file
+
+- add 0005-include-stdlib.h.patch, 0006-drop-base_schema.patch
+
+- drop f6b7eeaf.patch, upstream
+
+- rename
+  provider-reg.patch to 0001-provider-reg.patch
+  automake.patch to 0002-automake.patch
+  libvirt-cim-0.6.3-fix-bashisms.patch to 0003-fix-bashisms.patch
+  memory_leaks.patch to 0004-memory-leaks.patch
+
+-------------------------------------------------------------------
 Fri Mar  1 10:17:28 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

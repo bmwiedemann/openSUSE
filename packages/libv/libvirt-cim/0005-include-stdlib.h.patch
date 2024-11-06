@@ -1,0 +1,37 @@
+From a3b3538d3a2a3d3193b044811ddeb0b53243d134 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@gmail.com>
+Date: Tue, 5 Nov 2024 17:24:24 +0100
+Subject: [PATCH 5/6] include stdlib.h
+
+to reduce warnings aroung malloc/realloc/free
+---
+ libxkutil/infostore.c      | 1 +
+ libxkutil/xml_parse_test.c | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/libxkutil/infostore.c b/libxkutil/infostore.c
+index d2b2f71..060a83b 100644
+--- a/libxkutil/infostore.c
++++ b/libxkutil/infostore.c
+@@ -26,6 +26,7 @@
+ #include <sys/stat.h>
+ #include <sys/file.h>
+ #include <string.h>
++#include <stdlib.h>
+ 
+ #include <libvirt/libvirt.h>
+ #include <libxml/parser.h>
+diff --git a/libxkutil/xml_parse_test.c b/libxkutil/xml_parse_test.c
+index 303880d..62bf224 100644
+--- a/libxkutil/xml_parse_test.c
++++ b/libxkutil/xml_parse_test.c
+@@ -1,5 +1,6 @@
+ #include <stdio.h>
+ #include <inttypes.h>
++#include <stdlib.h>
+ 
+ #include <getopt.h>
+ 
+-- 
+2.47.0
+

@@ -1,7 +1,17 @@
-diff -Ndur libvirt-cim-0.6.3/provider-register.sh libvirt-cim-0.6.3-fix-bashisms/provider-register.sh
---- libvirt-cim-0.6.3/provider-register.sh	2013-04-08 12:40:35.000000000 +0300
-+++ libvirt-cim-0.6.3-fix-bashisms/provider-register.sh	2014-11-29 22:21:08.224843458 +0200
-@@ -146,12 +146,12 @@
+From 010f6e617eb8d7b1ff7e9fe5f27953e3f8b58cb4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@gmail.com>
+Date: Tue, 5 Nov 2024 16:53:28 +0100
+Subject: [PATCH 3/6] fix bashisms
+
+---
+ provider-register.sh | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/provider-register.sh b/provider-register.sh
+index cd44462..0b60a9a 100755
+--- a/provider-register.sh
++++ b/provider-register.sh
+@@ -146,12 +146,12 @@ EOFP
      done
  
  #produce Capabilities
@@ -16,7 +26,7 @@ diff -Ndur libvirt-cim-0.6.3/provider-register.sh libvirt-cim-0.6.3-fix-bashisms
  	numcap=
  	for cap in $CAPS
  	do
-@@ -772,14 +772,14 @@
+@@ -792,14 +792,14 @@ mofs=$*
  if [ "$help" = "1" ]
  then
      usage
@@ -39,3 +49,6 @@ diff -Ndur libvirt-cim-0.6.3/provider-register.sh libvirt-cim-0.6.3-fix-bashisms
      echo
      echo Use this command to install schema mofs and register providers.
      echo CIM Server Type is required as well as at least one registration file and one mof.
+-- 
+2.47.0
+
