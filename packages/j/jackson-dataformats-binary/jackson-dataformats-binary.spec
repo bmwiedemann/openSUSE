@@ -19,7 +19,7 @@
 %bcond_with extra_dataformats
 # Extra formats are disabled because of circular dependencies
 Name:           jackson-dataformats-binary
-Version:        2.17.2
+Version:        2.17.3
 Release:        0
 Summary:        Jackson standard binary data format backends
 License:        Apache-2.0 AND BSD-3-Clause
