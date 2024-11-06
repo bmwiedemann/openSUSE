@@ -15,8 +15,8 @@
 
 #!UseOBSRepositories
 #!ExclusiveArch: aarch64 x86_64
-#!BuildTag: opensuse/bci/spack:0.22.1-%RELEASE%
-#!BuildTag: opensuse/bci/spack:0.22.1
+#!BuildTag: opensuse/bci/spack:0.22.2-%RELEASE%
+#!BuildTag: opensuse/bci/spack:0.22.2
 #!BuildTag: opensuse/bci/spack:0.22
 #!BuildTag: opensuse/bci/spack:latest
 
@@ -31,13 +31,13 @@ RUN set -euo pipefail; \
 # labelprefix=org.opensuse.bci.spack
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI Spack development"
 LABEL org.opencontainers.image.description="Spack development container for building containerized HPC solution stacks, based on the openSUSE Tumbleweed Base Container Image."
-LABEL org.opencontainers.image.version="0.22.1"
+LABEL org.opencontainers.image.version="0.22.2"
 LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
 LABEL org.opencontainers.image.source="%SOURCEURL%"
-LABEL org.opencontainers.image.ref.name="0.22.1-%RELEASE%"
-LABEL org.opensuse.reference="registry.opensuse.org/opensuse/bci/spack:0.22.1-%RELEASE%"
+LABEL org.opencontainers.image.ref.name="0.22.2-%RELEASE%"
+LABEL org.opensuse.reference="registry.opensuse.org/opensuse/bci/spack:0.22.2-%RELEASE%"
 LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"
@@ -65,7 +65,7 @@ RUN set -euo pipefail; mkdir -p /root/.spack \
     && rm -rf /root/*.* /run/nologin
 
 # sanity check that the version from the tag is equal to the version of spack that we expect
-RUN set -euo pipefail; [ "$(rpm -q --qf '%{version}' spack | cut -d '.' -f -3)" = "0.22.1" ]
+RUN set -euo pipefail; [ "$(rpm -q --qf '%{version}' spack | cut -d '.' -f -3)" = "0.22.2" ]
 
 WORKDIR /root
 SHELL ["docker-shell"]

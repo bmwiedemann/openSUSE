@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov  4 10:04:54 UTC 2024 - SUSE Update Bot <bci-internal@suse.de>
+
+- Bump spack version to 0.22.2
+
+-------------------------------------------------------------------
 Wed Oct 30 15:34:45 UTC 2024 - SUSE Update Bot <bci-internal@suse.de>
 
 - remove nonsensical org.opencontainers.image.authors - duplication of .vendor
