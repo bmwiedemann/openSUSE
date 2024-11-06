@@ -35,14 +35,14 @@ Summary:        A Python package for statistical models and design matrices
 License:        BSD-2-Clause
 URL:            https://github.com/pydata/patsy
 Source:         https://files.pythonhosted.org/packages/source/p/patsy/patsy-%{version}.tar.gz
+# https://github.com/pydata/patsy/pull/209
+Patch0:         python-patsy-no-python2.patch
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy
-Requires:       python-six
 Recommends:     python-scipy
 BuildArch:      noarch
 %if %{with test}
@@ -60,7 +60,7 @@ mini-language used in `R <http://www.r-project.org/>`_ and
 `S <https://secure.wikimedia.org/wikipedia/en/wiki/S_programming_language>`_.
 
 %prep
-%setup -q -n patsy-%{version}
+%autosetup -p1 -n patsy-%{version}
 
 %if !%{with test}
 %build

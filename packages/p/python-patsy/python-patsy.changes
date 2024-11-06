@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov  6 10:57:29 UTC 2024 - pgajdos@suse.com
+
+- drop python 2 support
+- added patches
+  fix https://github.com/pydata/patsy/pull/209
+  + python-patsy-no-python2.patch
+
+-------------------------------------------------------------------
 Tue Sep 10 13:12:02 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Skip tests failing with numpy 2
