@@ -24,4 +24,13 @@
 </comment>
     <requestid>1095906</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>85ec63d7fc3b59a2ee61b6b568af5219</srcmd5>
+    <version>1.0.1</version>
+    <time>1730908598</time>
+    <user>anag+factory</user>
+    <comment>- Clean up the SPEC file to build again.
+</comment>
+    <requestid>1221736</requestid>
+  </revision>
 </revisionlist>
