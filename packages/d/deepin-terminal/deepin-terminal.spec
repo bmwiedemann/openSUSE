@@ -51,8 +51,8 @@ BuildRequires:  gtest
 BuildRequires:  gmock
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libQt5Widgets-private-headers-devel
-BuildRequires:  lxqt-build-tools-devel
 BuildRequires:  update-desktop-files
+BuildRequires:  cmake(lxqt-build-tools)
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
