@@ -55,4 +55,12 @@
     <comment>Do not depend on jflex-maven-plugin</comment>
     <requestid>1203779</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f8dc48d11c697d97c569ed2fbf428cb2</srcmd5>
+    <version>2.17.3</version>
+    <time>1730908557</time>
+    <user>anag+factory</user>
+    <comment>2.17.3</comment>
+    <requestid>1221678</requestid>
+  </revision>
 </revisionlist>

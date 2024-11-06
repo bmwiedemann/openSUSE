@@ -17,7 +17,7 @@
 
 
 Name:           jackson-dataformats-text
-Version:        2.17.2
+Version:        2.17.3
 Release:        0
 Summary:        Jackson standard text-format data format backends
 License:        Apache-2.0
