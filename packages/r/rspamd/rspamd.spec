@@ -201,7 +201,7 @@ export CXX="g++-%{?force_gcc_version}"
   -DRUNDIR=%{_localstatedir}/run/rspamd     \
   -DLOGDIR=%{_localstatedir}/log/rspamd     \
   -DEXAMPLESDIR=%{_datadir}/examples/rspamd \
-  -DPLUGINSDIR=%{_datadir}/rspamd           \
+  -DPLUGINSDIR=%{_datadir}/rspamd/plugins   \
   -DLIBDIR=%{_libdir}/rspamd                \
   -DINCLUDEDIR=%{_includedir}               \
   -DWWWDIR=%{_wwwdir}/%{name}               \
@@ -456,11 +456,9 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %dir %{_sysconfdir}/rspamd/override.d
 
 %dir %{_datadir}/rspamd
-%{_datadir}/rspamd/aws_s3.lua
-%{_datadir}/rspamd/bimi.lua
+
 %{_datadir}/rspamd/effective_tld_names.dat
-%{_datadir}/rspamd/external_relay.lua
-%{_datadir}/rspamd/http_headers.lua
+
 
 %dir %{_datadir}/rspamd/elastic
 %{_datadir}/rspamd/elastic/kibana.json
@@ -469,53 +467,58 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %dir %{_datadir}/rspamd/languages
 %{_datadir}/rspamd/languages/*
 
-%{_datadir}/rspamd/antivirus.lua
-%{_datadir}/rspamd/arc.lua
-%{_datadir}/rspamd/asn.lua
-%{_datadir}/rspamd/bayes_expiry.lua
-%{_datadir}/rspamd/clickhouse.lua
-%{_datadir}/rspamd/clustering.lua
-%{_datadir}/rspamd/dcc.lua
-%{_datadir}/rspamd/dkim_signing.lua
-%{_datadir}/rspamd/dmarc.lua
-%{_datadir}/rspamd/dynamic_conf.lua
-%{_datadir}/rspamd/elastic.lua
-%{_datadir}/rspamd/emails.lua
-%{_datadir}/rspamd/external_services.lua
-%{_datadir}/rspamd/force_actions.lua
-%{_datadir}/rspamd/forged_recipients.lua
-%{_datadir}/rspamd/fuzzy_collect.lua
-%{_datadir}/rspamd/greylist.lua
-%{_datadir}/rspamd/gpt.lua
-%{_datadir}/rspamd/hfilter.lua
-%{_datadir}/rspamd/history_redis.lua
-%{_datadir}/rspamd/ip_score.lua
-%{_datadir}/rspamd/known_senders.lua
-%{_datadir}/rspamd/maillist.lua
-%{_datadir}/rspamd/maps_stats.lua
-%{_datadir}/rspamd/metadata_exporter.lua
-%{_datadir}/rspamd/metric_exporter.lua
-%{_datadir}/rspamd/mid.lua
-%{_datadir}/rspamd/milter_headers.lua
-%{_datadir}/rspamd/mime_types.lua
-%{_datadir}/rspamd/multimap.lua
-%{_datadir}/rspamd/mx_check.lua
-%{_datadir}/rspamd/neural.lua
-%{_datadir}/rspamd/once_received.lua
-%{_datadir}/rspamd/p0f.lua
-%{_datadir}/rspamd/phishing.lua
-%{_datadir}/rspamd/ratelimit.lua
-%{_datadir}/rspamd/rbl.lua
-%{_datadir}/rspamd/replies.lua
-%{_datadir}/rspamd/reputation.lua
-%{_datadir}/rspamd/rspamd_update.lua
-%{_datadir}/rspamd/settings.lua
-%{_datadir}/rspamd/spamassassin.lua
-%{_datadir}/rspamd/spamtrap.lua
-%{_datadir}/rspamd/spf.lua
-%{_datadir}/rspamd/trie.lua
-%{_datadir}/rspamd/url_redirector.lua
-%{_datadir}/rspamd/whitelist.lua
+%dir %{_datadir}/rspamd/plugins
+%{_datadir}/rspamd/plugins/aws_s3.lua
+%{_datadir}/rspamd/plugins/bimi.lua
+%{_datadir}/rspamd/plugins/external_relay.lua
+%{_datadir}/rspamd/plugins/http_headers.lua
+%{_datadir}/rspamd/plugins/antivirus.lua
+%{_datadir}/rspamd/plugins/arc.lua
+%{_datadir}/rspamd/plugins/asn.lua
+%{_datadir}/rspamd/plugins/bayes_expiry.lua
+%{_datadir}/rspamd/plugins/clickhouse.lua
+%{_datadir}/rspamd/plugins/clustering.lua
+%{_datadir}/rspamd/plugins/dcc.lua
+%{_datadir}/rspamd/plugins/dkim_signing.lua
+%{_datadir}/rspamd/plugins/dmarc.lua
+%{_datadir}/rspamd/plugins/dynamic_conf.lua
+%{_datadir}/rspamd/plugins/elastic.lua
+%{_datadir}/rspamd/plugins/emails.lua
+%{_datadir}/rspamd/plugins/external_services.lua
+%{_datadir}/rspamd/plugins/force_actions.lua
+%{_datadir}/rspamd/plugins/forged_recipients.lua
+%{_datadir}/rspamd/plugins/fuzzy_collect.lua
+%{_datadir}/rspamd/plugins/greylist.lua
+%{_datadir}/rspamd/plugins/gpt.lua
+%{_datadir}/rspamd/plugins/hfilter.lua
+%{_datadir}/rspamd/plugins/history_redis.lua
+%{_datadir}/rspamd/plugins/ip_score.lua
+%{_datadir}/rspamd/plugins/known_senders.lua
+%{_datadir}/rspamd/plugins/maillist.lua
+%{_datadir}/rspamd/plugins/maps_stats.lua
+%{_datadir}/rspamd/plugins/metadata_exporter.lua
+%{_datadir}/rspamd/plugins/metric_exporter.lua
+%{_datadir}/rspamd/plugins/mid.lua
+%{_datadir}/rspamd/plugins/milter_headers.lua
+%{_datadir}/rspamd/plugins/mime_types.lua
+%{_datadir}/rspamd/plugins/multimap.lua
+%{_datadir}/rspamd/plugins/mx_check.lua
+%{_datadir}/rspamd/plugins/neural.lua
+%{_datadir}/rspamd/plugins/once_received.lua
+%{_datadir}/rspamd/plugins/p0f.lua
+%{_datadir}/rspamd/plugins/phishing.lua
+%{_datadir}/rspamd/plugins/ratelimit.lua
+%{_datadir}/rspamd/plugins/rbl.lua
+%{_datadir}/rspamd/plugins/replies.lua
+%{_datadir}/rspamd/plugins/reputation.lua
+%{_datadir}/rspamd/plugins/rspamd_update.lua
+%{_datadir}/rspamd/plugins/settings.lua
+%{_datadir}/rspamd/plugins/spamassassin.lua
+%{_datadir}/rspamd/plugins/spamtrap.lua
+%{_datadir}/rspamd/plugins/spf.lua
+%{_datadir}/rspamd/plugins/trie.lua
+%{_datadir}/rspamd/plugins/url_redirector.lua
+%{_datadir}/rspamd/plugins/whitelist.lua
 
 %dir %{_datadir}/rspamd/lualib
 %{_datadir}/rspamd/lualib/ansicolors.lua

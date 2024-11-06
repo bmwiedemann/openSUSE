@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 25 08:36:33 UTC 2024 - Jacob Tilman Sievert <sievert@b1-systems.de>
+
+- Update to 3.10.3
+  - [Fix] move PluginDir to correct location to prevent recursive load of non plugins
+
+-------------------------------------------------------------------
 Mon Oct 21 09:05:39 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.10.2

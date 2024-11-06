@@ -391,4 +391,12 @@
   - [Fix] add EOF to openmetrics response in proxy and server</comment>
     <requestid>1216667</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>aad3bfe006f8d6be655fc1aedd6bc917</srcmd5>
+    <version>3.10.2</version>
+    <time>1730908601</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1221734</requestid>
+  </revision>
 </revisionlist>
