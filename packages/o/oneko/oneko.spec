@@ -1,7 +1,7 @@
 #
 # spec file for package oneko
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,8 +22,9 @@ Release:        0
 Summary:        A Cat Catches Your Mouse
 License:        SUSE-Public-Domain
 Group:          Amusements/Toys/Graphics
-Url:            http://www.daidouji.com/oneko/
-Source:         %{URL}/distfiles/oneko-%{version}.tar.gz
+URL:            https://www.daidouji.com/oneko/
+Source0:        %{URL}/distfiles/oneko-%{version}.tar.gz
+Patch0:         oneko-gcc14.patch
 BuildRequires:  imake
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
@@ -35,8 +36,10 @@ cursor.
 
 %prep
 %setup -q -b0
+%patch -P0 -b .p0
 
 %build
+%global optflags %{optflags} -fpermissive
 xmkmf -a
 make all %{?_smp_mflags}
 

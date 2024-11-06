@@ -1,0 +1,71 @@
+---
+ oneko.c |   12 ++++++------
+ oneko.h |    1 +
+ 2 files changed, 7 insertions(+), 6 deletions(-)
+
+--- oneko.c
++++ oneko.c	2024-11-06 07:49:39.813793979 +0000
+@@ -3,7 +3,7 @@
+  */
+ 
+ #ifndef	lint
+-static char rcsid[] = "$Header: /home/sun/unix/kato/xsam/oneko/oneko.c,v 1.5 90/10/19 21:25:16 kato Exp $";
++static const char rcsid[] = "$Header: /home/sun/unix/kato/xsam/oneko/oneko.c,v 1.5 90/10/19 21:25:16 kato Exp $";
+ #endif
+ 
+ #include "oneko.h"
+@@ -334,7 +334,7 @@ char	*resource;
+ /*
+  *	リソース・データベースからオプションを設定
+  */
+-
++void
+ GetResources()
+ {
+   char	*resource;
+@@ -433,7 +433,7 @@ GetResources()
+ /*
+  *	ねずみ型カーソルを作る
+  */
+-
++void
+ MakeMouseCursor()
+ {
+     Pixmap			theCursorSource;
+@@ -462,7 +462,7 @@ MakeMouseCursor()
+ /*
+  *	色を初期設定する
+  */
+-
++void
+ SetupColors()
+ {
+     XColor	theExactColor;
+@@ -624,7 +624,7 @@ InitScreen(DisplayName)
+     fprintf(stderr, "Display not suported shape extension.\n");
+     NoShape = True;
+ 				       }
+-#endif SHAPE
++#endif // SHAPE
+ 
+   theScreen = DefaultScreen(theDisplay);
+   theDepth = DefaultDepth(theDisplay, theScreen);
+@@ -809,7 +809,7 @@ DrawNeko(x, y, DrawAnime)
+ 			  0, 0, DrawMask, ShapeSet);
+ 
+       }
+-#endif SHAPE
++#endif // SHAPE
+       if (DontMapped) {
+ 	XMapWindow(theDisplay, theWindow);
+ 	DontMapped = 0;
+--- oneko.h
++++ oneko.h	2024-11-06 07:45:59.765802240 +0000
+@@ -20,6 +20,7 @@
+ #include <math.h>
+ #include <sys/time.h>
+ 
++#include <unistd.h>
+ 
+ /*
+  *	カーソルビットマップファイルの読み込み

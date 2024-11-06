@@ -115,4 +115,13 @@
     <comment></comment>
     <requestid>889397</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>6c8633a285bd68aa02f7bf0626462cf5</srcmd5>
+    <version>1.2.sakura.5</version>
+    <time>1730908569</time>
+    <user>anag+factory</user>
+    <comment>- Add patch oneko-gcc14.patch
+  * Make it build even with gcc14</comment>
+    <requestid>1221691</requestid>
+  </revision>
 </revisionlist>
