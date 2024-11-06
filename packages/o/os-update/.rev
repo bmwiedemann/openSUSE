@@ -223,4 +223,15 @@
   * Always refresh</comment>
     <requestid>1206097</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>0d0729bb7a9033f23992909e979e95f5</srcmd5>
+    <version>1.18+git.20241106</version>
+    <time>1730908589</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.18+git.20241106:
+  * Release version 1.18
+  * Move vendor config to /usr/share/os-update
+  * Unify indentation style</comment>
+    <requestid>1221725</requestid>
+  </revision>
 </revisionlist>

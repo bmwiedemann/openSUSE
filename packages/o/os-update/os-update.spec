@@ -21,7 +21,7 @@
 %endif
 
 Name:           os-update
-Version:        1.17+git.20241007
+Version:        1.18+git.20241106
 Release:        0
 Summary:        Updates the system regularly to stay current and safe
 License:        GPL-2.0-or-later
@@ -36,15 +36,15 @@ BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(systemd)
 Requires:       lsof
+Recommends:     rebootmgr
+Recommends:     systemd-status-mail
+BuildArch:      noarch
 %if 0%{?suse_version} >= 1500
 Requires:       zypper-needs-restarting
 %endif
 %if 0%{?suse_version} >= 1600
 Requires:       zypp-boot-plugin >= 0.0.4
 %endif
-Recommends:     rebootmgr
-Recommends:     systemd-status-mail
-BuildArch:      noarch
 
 %description
 Service to keep an OS update to date and secure. It is run by a
@@ -53,13 +53,13 @@ requires a reboot.
 
 %package -n systemd-status-mail
 Summary:        Send a mail if a systemd.timer fails and/or succeeds
+%sysusers_requires
 %if 0%{?suse_version} >= 1500
 Requires:       (/usr/sbin/sendmail or mailx)
 Suggests:       mailx
 %else
 Requires:       mailx
 %endif
-%sysusers_requires
 
 %description -n systemd-status-mail
 systemd-mail-status is called by systemd-status-mail@.service if the
@@ -73,7 +73,7 @@ of the service, the hostname and the output of
 
 %build
 ./autogen.sh
-%configure --enable-vendordir=%{_distconfdir}
+%configure
 %if 0%{?suse_version} < 1500
   %define make_build %{__make} -O %{?_smp_mflags}
 %endif
@@ -101,11 +101,8 @@ install -m 644 -D etc/default/systemd-status-mail %{buildroot}%{_distconfdir}/de
 %files
 %license COPYING
 %doc README.md
-%if 0%{?suse_version} < 1550
-%config(noreplace) %{_sysconfdir}/os-update.conf
-%else
-%{_distconfdir}/os-update.conf
-%endif
+%dir %{_datadir}/os-update
+%{_datadir}/os-update/os-update.conf
 %{_libexecdir}/os-update
 %{_prefix}/lib/systemd/system/os-update.service
 %{_prefix}/lib/systemd/system/os-update.timer

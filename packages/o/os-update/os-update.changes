@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 06 10:24:35 UTC 2024 - kukuk@suse.com
+
+- Update to version 1.18+git.20241106:
+  * Release version 1.18
+  * Move vendor config to /usr/share/os-update
+  * Unify indentation style
+
+-------------------------------------------------------------------
 Mon Oct 07 12:12:34 UTC 2024 - kukuk@suse.com
 
 - Update to version 1.17+git.20241007:
