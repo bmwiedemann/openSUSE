@@ -1,0 +1,9 @@
+<package name="micropython-lib" project="openSUSE:Factory">
+  <title>Core Python libraries ported to MicroPython</title>
+  <description>
+micropython-lib is a project to develop a non-monolothic standard library for MicroPython (https://github.com/micropython/micropython). Each module or package is available as a separate distribution package from PyPI. Each module is either written from scratch or ported from CPython.
+
+</description>
+  <devel project="devel:languages:python" package="micropython-lib"/>
+  <url>https://github.com/micropython/micropython-lib</url>
+</package>
