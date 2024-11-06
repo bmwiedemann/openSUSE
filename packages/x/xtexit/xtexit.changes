@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov  6 07:59:56 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch xtexit-gcc14.patch
+  * Make it build even with gcc14 
+
+-------------------------------------------------------------------
 Mon Feb 26 12:24:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

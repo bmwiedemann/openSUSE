@@ -1,0 +1,29 @@
+---
+ xtexit.c |    4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+--- xtexit.c
++++ xtexit.c	2024-11-06 07:58:06.684561955 +0000
+@@ -1,5 +1,5 @@
+ #ifndef lint
+-static char *RCSid = "@(#)$Id: xmexit.c,v 2.0 90/04/09 10:03:42 tot Exp $";
++static const char *RCSid = "@(#)$Id: xmexit.c,v 2.0 90/04/09 10:03:42 tot Exp $";
+ #endif /* not lint */
+ 
+ /* Program to shut down X server. Based on xmexit by Teemu Torma.
+@@ -32,6 +32,7 @@ static char *RCSid = "@(#)$Id: xmexit.c,
+ */
+ 
+ #include <X11/X.h>
++#include <X11/Xlibint.h>
+ #include <X11/Intrinsic.h>
+ #include <X11/StringDefs.h>
+ #include <X11/Xatom.h>
+@@ -40,6 +41,7 @@ static char *RCSid = "@(#)$Id: xmexit.c,
+ #include <X11/Shell.h>
+ #include <stdio.h>
+ #include <signal.h>
++#include <stdlib.h>
+ #include "xtexit.h"
+ 
+ /* Application resources. */

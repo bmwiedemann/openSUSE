@@ -1,7 +1,7 @@
 #
 # spec file for package xtexit
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -31,6 +31,7 @@ Group:          System/X11/Utilities
 Source:         xtexit.tar.gz
 Patch0:         xtexit.dif
 Patch1:         xtexit-Imakefile_comments.dif
+Patch2:         xtexit-gcc14.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{expand: %%global _exec_prefix %(type -p pkg-config &>/dev/null && pkg-config --variable prefix x11 || echo /usr/X11R6)}
 %if "%_exec_prefix" == "/usr/X11R6"

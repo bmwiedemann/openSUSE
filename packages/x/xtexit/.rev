@@ -115,4 +115,13 @@
     <comment></comment>
     <requestid>1151854</requestid>
   </revision>
+  <revision rev="18" vrev="1252">
+    <srcmd5>05222907b699003f55e729deb2dea922</srcmd5>
+    <version>0.42</version>
+    <time>1730908571</time>
+    <user>anag+factory</user>
+    <comment>- Add patch xtexit-gcc14.patch
+  * Make it build even with gcc14</comment>
+    <requestid>1221692</requestid>
+  </revision>
 </revisionlist>
