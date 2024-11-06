@@ -79,4 +79,12 @@
     <comment>build more modules, since the dependencies are there</comment>
     <requestid>1199235</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>bc8fe60c40b6606ee87377e5c899dc6c</srcmd5>
+    <version>2.17.3</version>
+    <time>1730908559</time>
+    <user>anag+factory</user>
+    <comment>2.17.3</comment>
+    <requestid>1221679</requestid>
+  </revision>
 </revisionlist>
