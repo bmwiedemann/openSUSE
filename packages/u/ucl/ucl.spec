@@ -1,7 +1,7 @@
 #
 # spec file for package ucl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,9 @@ Patch5:         05-Fix-double-free.patch
 Patch6:         06-Fix-memory-errors.patch
 Patch7:         07-Fix-FTBFS-on-x32.patch
 Patch8:         08-Asm-build-flags.patch
+BuildRequires:  automake
 BuildRequires:  gcc-c++
+BuildRequires:  libtool
 
 %description
 This package contains a lossless data compression library written in
@@ -65,6 +67,10 @@ Headers and other development files for UCL library.
 %autosetup -p1
 
 %build
+# Very old AC_PROG_LIBTOOL--AC_HEADER_STDC expansion falls pray to gcc-14
+# strictness. Regenerate to solve.
+autoreconf -fi
+
 %configure \
   --disable-static \
   --enable-shared
@@ -75,10 +81,9 @@ Headers and other development files for UCL library.
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files -n %{libname}
 %license COPYING

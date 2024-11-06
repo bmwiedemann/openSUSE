@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov  5 20:23:52 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Force-regenerate configure for gcc-14
+
+-------------------------------------------------------------------
 Wed Aug 31 19:39:05 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Remove upx-207.patch not mentioned in spec file as patch:
