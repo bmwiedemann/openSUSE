@@ -176,4 +176,13 @@
   * Update README.md: more logical arrangement</comment>
     <requestid>1220516</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4ad17cd38cccd00134a331c8e070d378</srcmd5>
+    <version>1.2.5</version>
+    <time>1730908604</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.2.5:
+  * mktemp as root, so SELinux allows root to write to the file</comment>
+    <requestid>1221741</requestid>
+  </revision>
 </revisionlist>

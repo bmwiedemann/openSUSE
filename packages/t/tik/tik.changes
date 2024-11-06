@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 06 12:31:17 UTC 2024 - rbrown@suse.com
+
+- Update to version 1.2.5:
+  * mktemp as root, so SELinux allows root to write to the file
+
+-------------------------------------------------------------------
 Mon Nov 04 09:35:44 UTC 2024 - rbrown@suse.com
 
 - Update to version 1.2.4:
