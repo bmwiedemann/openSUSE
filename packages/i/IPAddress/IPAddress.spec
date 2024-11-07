@@ -17,7 +17,7 @@
 
 
 Name:           IPAddress
-Version:        5.3.3
+Version:        5.5.1
 Release:        0
 Summary:        Library for handling IP addresses and subnets, both IPv4 and IPv6
 License:        Apache-2.0
@@ -55,7 +55,7 @@ echo "-snapshot: SNAPSHOT" >> IPAddress/ipaddress.bnd
 %build
 pushd IPAddress
 mkdir bin
-%{ant} "create dist jar" "create javadoc"
+%{ant} "create dist jar" "create javadoc" "create pom"
 
 %install
 # jar
@@ -64,7 +64,7 @@ install -m 0644 IPAddress/dist/IPAddress*.jar %{buildroot}%{_javadir}/%{name}.ja
 
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-%{mvn_install_pom} IPAddress/pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} IPAddress/dist/mavenlib/pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar
 
 # javadoc

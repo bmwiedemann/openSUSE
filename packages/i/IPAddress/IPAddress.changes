@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Thu Nov  7 14:30:24 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 5.5.1
+  * Fixes of 5.3.4:
+    + a fix to avoid ClassCastException when converting IPv4-mapped
+      address to java.net.Inet6Address (#73)
+    + fixed the creation of HostName from an unresolved
+      compressed-IPv6 socket address (#74)
+    + added IPAddressString.isIPv4Mapped for issue #75
+    + fixed a class-loading issue with string parsing (#79)
+    + removed AddressDivision.getDivisionValueCount() and
+      AddressDivision.getDivisionPrefixCount(int) because of
+      potential overflow with divisions 63 or 64 bits long. If you
+      have a segment, use getValueCount(), or with IPAddressSegment
+      use getPrefixValueCount(int), which both return int.
+      Otherwise, use getPrefixCount(int) or getCount() which return
+      BigInteger
+    + fixed issues with comparing non-standard division groupings
+      with address comparators
+    + added verification when host-masking multiple-valued segments
+    + added verification when splitting IPv6AddressSegment
+    + fixed check when reversing per-byte multiple-valued division
+    + fixed trie-printing method option withNonAddedKeys
+    + fixed an issue with serialization of parsed hosts with
+      qualifiers
+    + added control over parsing empty zones (a zone specifier
+      followed by no zone)
+    + added a small fix to host name parsing some unusual host names
+    + a fix to IPv4AddressSection.toMaxHost
+    + fixed a rare synchronization issue when generating division
+      strings in AddressDivisionBase
+  * Fixes of 5.4.0:
+    + added PrefixBlockAllocator for automatic CIDR prefix block
+      allocation
+    + added AddedTree and AssociativeAddedTree classes for expanded
+      constructAddedNodesTree methods
+    + added getBlockSize and getBitsForCount in AddressItem
+    + added matchUnordered and matchOrdered in Address
+    + eliminated invalid AddressValueException when joining a range
+      with the IPv4 max value to an IPv6 range (#86)
+    + fix to generation of strings from parsed address data (#87)
+    + fix to IPv4 address primitive int upper value generation (#96)
+  * Fix of 5.4.1:
+    + fix to invalid radix argument infinite loop
+      (#118, CVE-2023-50570)
+  * Fixes of 5.4.2:
+    + removed unnecessary SDK dependency incompatible with Java 8
+      that was introduced with version 5.4.1 (#121)
+  * Fixes of 5.5.0:
+    + added collection types for dual IPv4/v6 tries and for dual
+      IPv4/v6 associative tries, issue #103
+    + trie performance improvements for all trie operations
+    + added shortestPrefixMatch trie methods
+    + added enumerate methods, the inverse of the increment methods,
+      to find the position of an address in a subnet, or to find
+      the distance between two addresses
+    + added an increment method accepting a BigInteger argument to
+      IPv6Address and IPv6AddressSection
+    + added the ability to construct an IPv6Address from two longs
+    + added replace methods with address section parameter to
+      address classes
+    + added overlaps methods to check for overlapping subnets, and
+      for checking sequential range overlap with a subnet
+    + added floor/lower/ceiling/higher methods to the address trie
+      types, these methods previously accessible only from trie sets
+    + added the extraneous digits IPv4 parsing option
+      allow_inet_aton_extraneous_digits (#105)
+  * Fixes of 5.5.1:
+    + added new merge functions mergeToDualPrefixBlocks and
+      mergeToDualSequentialBlocks for combined IPv4/IPv6 merging
+    + added public constructors accepting message strings to
+      AddressValueException and IncompatibleAddressException (#127)
+    + removed caching functionality from containingFirstIterator,
+      use all-node containingFirstAllNodeIterator instead
+
+-------------------------------------------------------------------
 Wed Feb 21 09:19:51 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.
