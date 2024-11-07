@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Thu Nov  7 11:53:57 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 30.0.2
+  - fix: Make user removal more resilient in #48589
+  - fix(files): Reset context menu position on close in #47878
+  - fix(files): Add more visual move / copy notification in #48458
+  - fix: get rid of denied notification when accept in #48751
+  - fix(share): Return empty string if no label is set in #48703
+  - fix(files): Ensure children are removed from folder and not duplicated in #48240
+  - feat(comments): Support mentioning emails in #48785
+  - fix(appstore): Hide last modified information for shipped apps in #48754
+  - fix(security): Update code signing revocation list in #48778
+  - fix(activity): Fix download activity parameters in #48818
+  - fix(AppConfig): Add external JWT private key to sensitive keys in #48710
+  - build: Bump symfony/* to 6.4 in #48763
+  - fix(files_sharing): Add proper user facing messages on success in #48730
+  - ci: Update list of installed PHP extensions (as some are not default … in #48824
+  - fix(files): Ensure renaming state is correctly reset in #48731
+  - fix(filesexternal): Remove unneeded 3rdparty library use in #48550
+  - fix(logger): Remove more parameters of other methods in #48830
+  - fix: add PasswordConfirmationRequired to create user storages endpoint in #48748
+  - fix(app-store): Also proxy images of locally installed apps in #48868
+  - fix(app-store): Ensure the groups property is always an array in #48866
+  - fix(files): Adjust NavigationQuota for Nextcloud 30 design in #48834
+  - fix(files_sharing): Add correct context to translation in #48836
+  - [TextProcessing] Fix: Also list types that are available in task processing in #48877
+  - fix(app-store): Correctly render Markdown in app description in #48872
+  - build: Print RTL limited characters in translation-checker in #48856
+  - fix(ShareAPI): Send mails for mail shares by default in #48881
+  - refactor(ShareApiController): Check for null and empty strings with e… in #48890
+  - fix(files): handle empty view with error in #48893
+  - fix(files): add title for files list table header button in #48901
+  - fix: Allow overriding shouldApplyQuota check from child classes in #48635
+  - fix(dav): Cleanup view-only check in #48931
+  - fix(files_sharing): Cleanup error messages in #48937
+  - Bump guzzlehttp/guzzle from 7.8.1 to 7.8.2 in #48896
+  - fix: encrypt and store password, decrypt and retrieve the same in #48939
+  - fix(unified-search): Close on second ctrl+f in #48861
+  - fix(config): Mark more configs as sensitive in #48950
+  - fix(files_sharing): federated shares avatar in #48888
+  - fix(app-store): Update update count in navigation in #48945
+  - ci(psalm): Add missing imagick extension in #48957
+  - fix: do not reduce count for subadmins if they are members of group in #48571
+  - fix: Fix "Unknown path" error when source user files folder has not been initialized in #48746
+  - fix: add PasswordConfirmationRequired to the external storages mentioned in review in #48976
+  - Fix copying or moving from shared groupfolders in #48984
+  - fix(files): Do not jump to top when fileId is set to currentFolder in #48979
+  - fix: Shipped apps should include the Nextcloud version in the cache buster in #48701
+  - Fix disabled user list for subadmins in #48970
+  - Bump libphonenumber-js from 1.11.9 to 1.11.11 in #48667
+  - fix: provision api's status codes in #48474
+  - fix: Return correct list of managers for a user in #48622
+  - fix: Fix empty sections appearing in search results in #48624
+  - chore: Replace Twitter & Diaspora links and text in #48620
+  - fix: improve moving object store items to trashbin in #48245
+  - fix: Fix "Reasons to use Nextcloud" design in #48652
+  - fix(locking): Accept mixed as value on setTTL in #48694
+  - fix: add PasswordConfirmationRequired to saveGlobalCredentials in #49005
+  - Fix email share transfer accross storages in #48618
+  - fix(users): improve recently active search in #49001
+  - fix(FileList): Show correct avatar for federated share owner in #48294
+  - fix(files_sharing): Password field must not be required if already set in #49013
+  - feat(settings): migrate AppAPI ExApps management to settings in #48988
+  - fix(files-external): set password as sensitive in #49028
+  - fix(ShareEntryLinkList): Append new links to the end of list in #49022
+  - chore: Update code owners in #49057
+  - fix(apps-store): Fix exception on generating preview url for installed app screenshot in #49044
+  - fix(owncloud): Fix ownCloud migration with oauth2 app in #49076
+  - Update @nextcloud/dialogs to v6.0.1 in #49093
+  - fix(caldav): broken activity rich objects in #49080
+  - docs: update overwrite.cli.url wording in #49067
+
+-------------------------------------------------------------------
 Thu Oct 17 14:22:28 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 30.0.1
