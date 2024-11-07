@@ -16,12 +16,6 @@
 #
 
 
-%if 0%{suse_version} >= 1550
-%define shader_translation 1
-%else
-%define shader_translation 0
-%endif
-
 Name:           taisei
 Version:        1.4.2
 Release:        0
@@ -51,11 +45,9 @@ BuildRequires:  pkgconfig(libzstd) >= 1.4.0
 BuildRequires:  pkgconfig(opusfile)
 BuildRequires:  pkgconfig(sdl2) >= 2.0.16
 BuildRequires:  pkgconfig(zlib)
-%if %{shader_translation}
 BuildRequires:  shaderc
 BuildRequires:  pkgconfig(shaderc)
-BuildRequires:  pkgconfig(spirv-cross-c-shared)
-%endif
+BuildRequires:  spirv-cross-devel
 Requires:       %{name}-data
 Suggests:       gamemoded
 ExcludeArch:    %{ix86}
@@ -85,10 +77,8 @@ _v=%{version}
     -Db_pch=false \
     -Dinstall_macos_bundle=disabled \
     -Dinstall_relocatable=disabled \
-%if %{shader_translation}
     -Dshader_transpiler=enabled \
     -Dr_gles30=enabled \
-%endif
 %meson_build
 
 %install
