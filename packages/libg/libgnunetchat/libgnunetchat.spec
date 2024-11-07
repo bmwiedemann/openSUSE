@@ -17,7 +17,7 @@
 
 
 Name:           libgnunetchat
-Version:        0.5.0
+Version:        0.5.1
 Release:        0
 Summary:        Library for applications to utilize the Messenger service of GNUnet
 License:        AGPL-3.0-or-later
