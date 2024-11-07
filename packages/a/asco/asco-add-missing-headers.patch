@@ -1,0 +1,57 @@
+diff -up ASCO-0.4.11/auxfunc_alter.c.aaaa ASCO-0.4.11/auxfunc_alter.c
+--- ASCO-0.4.11/auxfunc_alter.c.aaaa	2022-01-19 11:57:57.494391114 +0100
++++ ASCO-0.4.11/auxfunc_alter.c	2024-11-07 13:47:06.988935197 +0100
+@@ -8,6 +8,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <unistd.h>
+ #ifdef __MINGW32__
+ #include <winsock2.h>
+ #endif
+diff -up ASCO-0.4.11/examples/rosen/bin/de36.c.aaaa ASCO-0.4.11/examples/rosen/bin/de36.c
+--- ASCO-0.4.11/examples/rosen/bin/de36.c.aaaa	2024-11-07 13:48:32.643498508 +0100
++++ ASCO-0.4.11/examples/rosen/bin/de36.c	2024-11-07 13:48:58.407199640 +0100
+@@ -168,7 +168,7 @@ double rnd_uni(long *idum)
+ 
+ 
+ 
+-main(int argc, char *argv[])
++int main(int argc, char *argv[])
+ /**C*F****************************************************************
+ **                                                                  **
+ ** SRC-FUNCTION   :main()                                           **
+diff -up ASCO-0.4.11/tools/alter/auxfunc_alter.c.aaaa ASCO-0.4.11/tools/alter/auxfunc_alter.c
+--- ASCO-0.4.11/tools/alter/auxfunc_alter.c.aaaa	2022-01-19 11:57:57.394389489 +0100
++++ ASCO-0.4.11/tools/alter/auxfunc_alter.c	2024-11-07 13:47:06.988935197 +0100
+@@ -8,6 +8,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <unistd.h>
+ #ifdef __MINGW32__
+ #include <winsock2.h>
+ #endif
+diff -up ASCO-0.4.11/tools/postp/auxfunc_measurefromlis.h.aaaa ASCO-0.4.11/tools/postp/auxfunc_measurefromlis.h
+--- ASCO-0.4.11/tools/postp/auxfunc_measurefromlis.h.aaaa	2010-01-12 11:45:21.000000000 +0100
++++ ASCO-0.4.11/tools/postp/auxfunc_measurefromlis.h	2024-11-07 13:47:06.988935197 +0100
+@@ -51,7 +51,7 @@ int ProcessMeasureVar(char *measure_var_
+ /* void PrintOneLine(char *lkk1,double *stats_,int num_measures,FILE **fSummary); */
+ /* void WriteToFile(int num_measures,char *laux_,int first,statistics *stats,FILE **fSummary); */
+ void DoMath(int num_measures);
+-/* int DetectsTransistorColumns(char *lelement, int index[]); */
++int DetectsTransistorColumns(char *lelement, int index[]);
+ /* int IsItATransistor(char *line, int mem, int i, char *nextline); */
+ 
+ 
+diff -up ASCO-0.4.11/tools/postp/auxfunc_updatelis.c.aaaa ASCO-0.4.11/tools/postp/auxfunc_updatelis.c
+--- ASCO-0.4.11/tools/postp/auxfunc_updatelis.c.aaaa	2022-01-19 11:57:57.426390009 +0100
++++ ASCO-0.4.11/tools/postp/auxfunc_updatelis.c	2024-11-07 13:47:06.988935197 +0100
+@@ -11,6 +11,7 @@
+ #include <math.h>
+ 
+ #include "auxfunc_updatelis.h"
++#include "auxfunc_measurefromlis.h"
+ #include "auxfunc.h"
+ 
+ 

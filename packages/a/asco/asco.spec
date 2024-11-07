@@ -1,7 +1,7 @@
 #
 # spec file for package asco
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            http://asco.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/asco/ASCO-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE asco_unbuffered.patch -- patch from QUCS team
 Patch0:         asco_unbuffered.patch
+# PATCH-FIX-OPENSUSE asco-add-missing-header.patch -- fix build for Tumbleweed
+Patch1:         asco-add-missing-headers.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -64,6 +66,8 @@ autoreconf -fi
 %install
 %make_install
 install -Dm 644 doc/ASCO.pdf %{buildroot}/%{_docdir}/%{name}/ASCO.pdf
+
+%check
 
 %files
 %license LICENSE

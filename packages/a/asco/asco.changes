@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov  7 12:55:30 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Add a patch asco-add-missing-headers.patch to fix build with 
+  gcc-14
+
+-------------------------------------------------------------------
 Tue May 30 07:36:27 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim filler wording from descriptions
