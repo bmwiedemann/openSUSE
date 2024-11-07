@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Nov  7 09:27:28 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
+
+- Upgrade to version 78
+  * Maintenance and update dependencies
+    + Full list of updated dependencies for all versions can be
+      found in RELEASE-NOTES.txt in source archive
+  * New features
+    + Add property commons.asm.version with the value "9.7.1".
+    + Add property commons.taglist.version with the value "3.2.1";
+      fixes
+    + https://github.com/mojohaus/taglist-maven-plugin/issues/165.
+  * Changes
+    + Fix spotbugs:check on Java 24-ea.
+- Includes changes from version 77
+  * Fixed bugs
+    + Pin maven-pmd-plugin to 3.24.0, site compatibility is broken
+      in 3.25.0.
+  * Maintenance and update dependencies
+  * Removed
+    + Remove "cobertura" profile, we use JaCoco, Cobertura is
+      unmaintained.
+- Includes changes from version 76
+  * Maintenance and update dependencies
+- Includes changes from version 75
+  * Maintenance and update dependencies
+- Includes changes from version 74
+  * Maintenance and update dependencies
+- Includes changes from version 73
+  * Maintenance and update dependencies
+- Includes changes from version 72
+  * New features
+    + Add org.codehaus.mojo:taglist-maven-plugin:3.1.0 to plugin
+    + management.
+  * Maintenance and update dependencies
+
+-------------------------------------------------------------------
 Thu Jul 11 12:54:13 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Upgrade to version 71

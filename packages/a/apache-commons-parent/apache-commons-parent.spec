@@ -19,7 +19,7 @@
 %define base_name       parent
 %define short_name      commons-%{base_name}
 Name:           apache-%{short_name}
-Version:        71
+Version:        78
 Release:        0
 Summary:        Apache Commons Parent Pom
 License:        Apache-2.0
@@ -66,7 +66,7 @@ The Project Object Model files for the apache-commons packages.
 %pom_remove_dep -r :junit-bom
 
 # Remove profiles for plugins that are useless in package builds
-for profile in animal-sniffer japicmp jacoco cobertura ; do
+for profile in animal-sniffer japicmp jacoco ; do
     %pom_xpath_remove "pom:profile[pom:id='$profile']"
 done
 
