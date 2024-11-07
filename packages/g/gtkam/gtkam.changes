@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov  7 10:51:37 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- gtkam-fix-build.patch: fix build with gcc14
+
+-------------------------------------------------------------------
 Sat Nov 11 00:04:16 UTC 2017 - zaitor@opensuse.org
 
 - Drop obsolete libgnomeui-devel BuildRequires: GNOME 2 support is

@@ -164,4 +164,12 @@
     <comment></comment>
     <requestid>541156</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>50fae34a535d5c9fa53dc5449f48475c</srcmd5>
+    <version>1.0</version>
+    <time>1730996426</time>
+    <user>dimstar_suse</user>
+    <comment>- gtkam-fix-build.patch: fix build with gcc14 (forwarded request 1222471 from msmeissn)</comment>
+    <requestid>1222486</requestid>
+  </revision>
 </revisionlist>
