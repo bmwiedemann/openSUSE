@@ -1,8 +1,0 @@
-<package name="rubygem-prawn" project="openSUSE:Factory">
-  <title>A fast and nimble PDF generator for Ruby</title>
-  <description>Prawn is a fast, tiny, and nimble PDF generator for Ruby
-
-</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-prawn"/>
-  <url>http://prawn.majesticseacreature.com</url>
-</package>
