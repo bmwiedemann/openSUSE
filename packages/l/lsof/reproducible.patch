@@ -1,0 +1,27 @@
+commit 514c942cd723eba5c2bbd63aaca0e7fb18bd88c6
+Author: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Date:   Mon Oct 28 10:03:44 2024 +0100
+
+    Don't store build host kernel version
+    
+    because it is not used anyway
+    and breaks reproducible builds.
+    
+    See https://reproducible-builds.org/ for why this matters.
+    
+    Fixes https://bugzilla.opensuse.org/show_bug.cgi?id=1232425
+
+diff --git a/configure.ac b/configure.ac
+index 65ab74b..536d4d5 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -12,7 +12,8 @@ AM_PROG_CC_C_O
+ # Detect OS
+ AC_CANONICAL_HOST
+ 
+-LSOF_VSTR=$(uname -r)
++# LSOF_VSTR is unused
++LSOF_VSTR=6.0.0
+ LSOF_DIALECT=unknown
+ LSOF_DIALECT_DIR=unknown
+ LSOF_TGT=unknown

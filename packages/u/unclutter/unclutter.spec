@@ -25,6 +25,7 @@ Group:          System/X11/Utilities
 URL:            https://www.ibiblio.org/pub/X11/contrib/utilities/
 Source:         %{name}-%{version}.tar.bz2
 Patch0:         %{name}-%{version}-return.diff
+Patch1:         %{name}-%{version}-gcc14.patch
 BuildRequires:  imake
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)

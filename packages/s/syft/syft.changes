@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Nov 05 09:43:28 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.16.0:
+  * chore: prevent file resolver from bubbling errors in binary
+    cataloger (#3410)
+  * chore(deps): update stereoscope to
+    cbd43fb4e5d348fe680066ee6329385fd6a4f827 (#3411)
+  * chore(deps): update CPE dictionary index (#3414)
+  * chore(deps): bump github.com/adrg/xdg from 0.5.2 to 0.5.3
+    (#3408)
+  * chore(deps): bump github.com/charmbracelet/lipgloss from 0.13.1
+    to 1.0.0 (#3409)
+  * chore(deps): update stereoscope to
+    2ce1e520983b1c21d5150d7fae2b39e8e5ab9063 (#3405)
+  * Issue #3143 – fixed format conversion docs link (#3407)
+  * feat: support dependencies and purl for Native Image SBOMs
+    (#3399)
+  * chore(deps): update stereoscope to
+    9c92fe30492ffeba14ed2e23ad1fd923341dda4f (#3398)
+  * feat: exclude devDependencies from package-lock.json parsing
+    (#3371)
+  * chore(deps): bump github.com/adrg/xdg from 0.5.1 to 0.5.2
+    (#3394)
+  * chore(deps): bump anchore/sbom-action from 0.17.5 to 0.17.6
+    (#3393)
+  * fix: stack overflow in spyingIoReadCloser (#3392)
+  * fix: bad pom files may cause infinite loop (#3391)
+
+-------------------------------------------------------------------
 Tue Oct 29 14:02:45 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.15.0:

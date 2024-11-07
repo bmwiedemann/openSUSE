@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-turbo-rails
-Version:        2.0.5
+Version:        2.0.11
 Release:        0
 %define mod_name turbo-rails
 %define mod_full_name %{mod_name}-%{version}

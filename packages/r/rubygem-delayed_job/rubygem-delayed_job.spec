@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-delayed_job
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,10 @@
 #
 
 Name:           rubygem-delayed_job
-Version:        4.1.11
+Version:        4.1.12
 Release:        0
 %define mod_name delayed_job
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
@@ -37,7 +36,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Database-backed asynchronous priority queue system -- Extracted from
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 Delayed_job (or DJ) encapsulates the common pattern of asynchronously

@@ -24,11 +24,11 @@
 #
 
 Name:           rubygem-rspec-rails
-Version:        6.1.3
+Version:        7.0.1
 Release:        0
 %define mod_name rspec-rails
 %define mod_full_name %{mod_name}-%{version}
-BuildRequires:  %{ruby >= 2.5.0}
+BuildRequires:  %{ruby >= 2.7.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  ruby-macros >= 5
@@ -39,7 +39,7 @@ Summary:        RSpec for Rails
 License:        MIT
 
 %description
-rspec-rails is a testing framework for Rails 5+.
+rspec-rails integrates the Rails testing helpers into RSpec.
 
 %prep
 

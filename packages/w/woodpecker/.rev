@@ -7,4 +7,12 @@
     <comment>new package woodpecker: server, agent and CLI for the Woodpecker CI system</comment>
     <requestid>1190327</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0c76a49eccac6cbe863f11398d8d6c73</srcmd5>
+    <version>2.7.3</version>
+    <time>1730993303</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1222090</requestid>
+  </revision>
 </revisionlist>

@@ -115,4 +115,13 @@
     <comment></comment>
     <requestid>1148412</requestid>
   </revision>
+  <revision rev="18" vrev="1069">
+    <srcmd5>0d7132c5e6a7789491dd74d9af7c3fa3</srcmd5>
+    <version>8</version>
+    <time>1730993336</time>
+    <user>anag+factory</user>
+    <comment>- Add patch unclutter-8-gcc14.patch
+  * Make it build even with gcc14</comment>
+    <requestid>1222151</requestid>
+  </revision>
 </revisionlist>

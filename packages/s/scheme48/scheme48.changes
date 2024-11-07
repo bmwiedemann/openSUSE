@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov  7 10:55:51 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Update to scheme48-1.9.3 (2024-11-15)
+  * Minor changes to configure to unbreak build on current setups.
+- Remove patch scheme48-1.9.2-gcc14.patch as now upstream
+
+-------------------------------------------------------------------
+Thu Nov  7 10:49:46 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch scheme48-1.9.2-gcc14.patch
+  * Make it build even with gcc14
+
+-------------------------------------------------------------------
 Mon Feb 26 13:06:39 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

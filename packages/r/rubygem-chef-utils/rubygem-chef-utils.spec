@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-chef-utils
-Version:        18.4.12
+Version:        18.5.0
 Release:        0
 %define mod_name chef-utils
 %define mod_full_name %{mod_name}-%{version}

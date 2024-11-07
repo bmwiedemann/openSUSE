@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Nov  4 17:17:07 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- ## 2.4.0 (2024-08-26)
+
+## Changed
+
+- Improve the `NotAuthorizedError` message to include the policy class.
+  Furthermore, in the case where the record passed is a class instead of an instance, the class name is given. (#812)
+
+## Added
+
+- Add customizable permit matcher description (#806)
+- Add support for filter_run_when_matching :focus with permissions helper. (#820)
+
+
+-------------------------------------------------------------------
 Fri Jun 21 10:25:50 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
 
 - New upstream release 2.3.2, see bundled CHANGELOG.md

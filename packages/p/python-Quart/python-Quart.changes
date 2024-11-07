@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov  6 12:52:26 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.19.8
+  * Bugfix Fix missing check that caused the previous fix to raise an error.
+- from version 0.19.7
+  * Security Fix how ``max_form_memory_size`` is applied when parsing large
+    non-file fields. https://github.com/advisories/GHSA-q34m-jh98-gwm2
+
+-------------------------------------------------------------------
 Thu Sep 19 05:15:41 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Initial release of 0.19.6. 

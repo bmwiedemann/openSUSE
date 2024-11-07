@@ -1,0 +1,7 @@
+-------------------------------------------------------------------
+Wed Oct 30 01:30:15 UTC 2024 - malcolmlewis@opensuse.org
+
+- Initial build at version 7.71+0.
+- Add QSVEnc-remove-git.patch: Remove git call for ENCODER_REV.
+- Add QSVEnc-enable-vulkan.patch: Enable Vulkan and Placebo.
+

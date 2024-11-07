@@ -1,5 +1,0 @@
-<package name="rubygem-swd" project="openSUSE:Factory">
-  <title>swd</title>
-  <description>SWD (Simple Web Discovery) Client Library</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-swd"/>
-</package>

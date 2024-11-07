@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-semantic_range
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,10 @@
 #
 
 Name:           rubygem-semantic_range
-Version:        3.0.0
+Version:        3.1.0
 Release:        0
 %define mod_name semantic_range
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
@@ -37,7 +36,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        node-semver rewritten in ruby, for comparison and inclusion of
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 node-semver rewritten in ruby, for comparison and inclusion of semantic

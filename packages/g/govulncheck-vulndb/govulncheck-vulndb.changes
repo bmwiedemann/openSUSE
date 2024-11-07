@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov  6 17:21:43 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.0.20241106T172143 2024-11-06T17:21:43Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2024-3251 CVE-2024-10389 GHSA-q3rp-vvm7-j8jg
+  * GO-2024-3252 CVE-2024-51746 GHSA-8pmp-678w-c8xx
+  * GO-2024-3253 CVE-2024-48057 GHSA-ghx4-cgxw-7h9p
+  * GO-2024-3254 CVE-2024-51735 GHSA-wvv7-wm5v-w2gv
+
+-------------------------------------------------------------------
 Mon Nov  4 15:44:16 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.0.20241104T154416 2024-11-04T15:44:16Z.

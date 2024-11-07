@@ -11,11 +11,11 @@ Subject: [PATCH 3/3] Add an appdata.xml file for Linux software galleries
  crawl-ref/source/linux/crawl.appdata.xml | 32 ++++++++++++++++++++++++++++++++
  2 files changed, 36 insertions(+)
 
-Index: stone_soup-0.25.1/source/Makefile
+Index: stone_soup-0.32.1/source/Makefile
 ===================================================================
---- stone_soup-0.25.1.orig/source/Makefile
-+++ stone_soup-0.25.1/source/Makefile
-@@ -1473,7 +1473,8 @@ endif
+--- stone_soup-0.32.1.orig/source/Makefile
++++ stone_soup-0.32.1/source/Makefile
+@@ -1587,7 +1587,8 @@ endif
  	$(COPY) linux/crawl.desktop $(prefix_fp)/share/applications
  	[ -d $(prefix_fp)/share/icons/hicolor/scalable/apps ] || mkdir -p $(prefix_fp)/share/icons/hicolor/scalable/apps
  	$(COPY) linux/crawl.svg $(prefix_fp)/share/icons/hicolor/scalable/apps
@@ -25,10 +25,10 @@ Index: stone_soup-0.25.1/source/Makefile
  ifeq ($(GAME),crawl.exe)
  	$(SED) -i 's/$$/\r/' `find $(datadir_fp) -iname '*.txt' -or -iname '*.des'`
  endif
-Index: stone_soup-0.25.1/source/linux/crawl.appdata.xml
+Index: stone_soup-0.32.1/source/linux/crawl.appdata.xml
 ===================================================================
 --- /dev/null
-+++ stone_soup-0.25.1/source/linux/crawl.appdata.xml
++++ stone_soup-0.32.1/source/linux/crawl.appdata.xml
 @@ -0,0 +1,32 @@
 +<?xml version="1.0" encoding="UTF-8"?>
 +<component type="desktop">

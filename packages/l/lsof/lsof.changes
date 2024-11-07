@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 28 09:06:23 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to not store build host kernel version (boo#1232425)
+
+-------------------------------------------------------------------
 Fri May 17 08:12:42 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
 
 - replace:

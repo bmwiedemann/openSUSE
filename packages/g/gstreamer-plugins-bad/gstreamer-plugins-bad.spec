@@ -83,7 +83,7 @@
 %endif
 
 Name:           gstreamer-plugins-bad
-Version:        1.24.8
+Version:        1.24.9
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -169,7 +169,6 @@ BuildRequires:  pkgconfig(libva-drm)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(lilv-0) >= 0.16
-BuildRequires:  pkgconfig(lrdf)
 %if %{with microdns}
 BuildRequires:  pkgconfig(microdns)
 %endif
@@ -912,6 +911,7 @@ export PYTHON=%{_bindir}/python3
 %endif
 	-D amfcodec=disabled \
 	-D directshow=disabled \
+	-D ladspa-rdf=disabled \
 	-D d3d11=disabled \
 	-D qt6d3d11=disabled \
 %if %{without webrtc_audio_processing_1}

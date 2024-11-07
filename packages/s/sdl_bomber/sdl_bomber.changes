@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sat Nov  2 21:08:53 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.10
+  * fix maxnetnodesconst linker error - no need for typename,
+    certainly no need as variable.
+  * use s*n*printf instead of sprintf.
+  * fix some warnings about buffer sizes.
+  * use $LDFLAGS in Makefile.
+  * fix some warnings.
+  * Add option to disable sound.
+  * Don't drop "action" keys in network.
+  * Fix stats handling.
+  * New double-linked list implementation, add death stats
+    (kills always 0).
+  * Redo some list foreach loops.
+  * remove limit of detonating bombs.
+  * Limit lifetime of controlled bombs.
+  * Improve foreach_list* macros.
+  * List rewrite.
+  * Remove global var "gountil".
+  * Restrict players to 10 bombs, use enum for tile types.
+  * More fixes for network code (slaves don't block anymore).
+  * Remove usage of some temporary vars.
+  * Display failure messages.
+  * use surf for random, async game search.
+  * Split source in more files, changed network behavior to
+    prepare for direct connect.
+  * Fix makefiles
+  * Some fixes, use datadir for sounds too
+  * Add datadir
+- Switch to new upstream
+  * https://git.stbuehler.de/stbuehler/sdlbomber
+- Specfile cleanup
+
+-------------------------------------------------------------------
 Wed Jun 19 08:39:11 UTC 2024 - hui <sturm-fr@web.de>
 
 - Fix broken file path in sdl_bomber.sh boo#1218788

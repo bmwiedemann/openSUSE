@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Nov  7 12:55:07 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Added fix-shebang.patch
+
+-------------------------------------------------------------------
+Mon Nov  4 16:55:56 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- 2.13.0:
+
+## What's Changed
+
+* Redirect to `@record` or path in controller generator by @jeromedalbert in https://github.com/rails/jbuilder/pull/569
+* Return early from collection partial rendering if blank by @tylerjc in https://github.com/rails/jbuilder/pull/560
+* Add missing ':see_other' status code in generated destroy controller method by @ldeld in https://github.com/rails/jbuilder/pull/538
+* Remove OpenStruct references from Jbuilder by @mtsmfm in https://github.com/rails/jbuilder/pull/567
+* Use new `params.expect` syntax instead of `params.require` by @jeromedalbert in https://github.com/rails/jbuilder/pull/573
+
+## New Contributors
+* @jeromedalbert made their first contribution in https://github.com/rails/jbuilder/pull/570
+* @tylerjc made their first contribution in https://github.com/rails/jbuilder/pull/560
+* @ldeld made their first contribution in https://github.com/rails/jbuilder/pull/538
+* @mtsmfm made their first contribution in https://github.com/rails/jbuilder/pull/567
+
+**Full Changelog**: https://github.com/rails/jbuilder/compare/v2.12.0...v2.13.0
+
+
+
+-------------------------------------------------------------------
 Fri Jun 21 10:04:32 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
 
 - 2.12.0:

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov  6 11:49:17 UTC 2024 - pgajdos@suse.com
+
+- tools: fix default cacert location
+- added patches
+  fix [bsc#1232541]
+  + rabbitmq-c-default-cacert-location.patch
+
+-------------------------------------------------------------------
 Wed Apr  3 11:31:37 UTC 2024 - pgajdos@suse.com
 
 - version update to 0.14.0

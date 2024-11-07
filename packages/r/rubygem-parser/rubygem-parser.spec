@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-parser
-Version:        3.3.3.0
+Version:        3.3.5.1
 Release:        0
 %define mod_name parser
 %define mod_full_name %{mod_name}-%{version}
@@ -37,7 +37,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        A Ruby parser written in pure Ruby
 License:        MIT
-PreReq:         update-alternatives
 
 %description
 A Ruby parser written in pure Ruby.

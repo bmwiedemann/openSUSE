@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rails-i18n
-Version:        7.0.9
+Version:        7.0.10
 Release:        0
 %define mod_name rails-i18n
 %define mod_full_name %{mod_name}-%{version}

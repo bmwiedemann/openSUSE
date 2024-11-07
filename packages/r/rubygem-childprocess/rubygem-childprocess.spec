@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-childprocess
-Version:        5.0.0
+Version:        5.1.0
 Release:        0
 %define mod_name childprocess
 %define mod_full_name %{mod_name}-%{version}

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov  4 17:43:55 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- ## 4.2.1 (22 September 2024)
+
+- fix Ruby 3.4 compatiblity, drop Ruby 2.3 and older support (#195)
+- fix typos (#194)
+
+
+-------------------------------------------------------------------
 Tue Nov 12 14:13:36 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 4.2.0

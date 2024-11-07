@@ -19,17 +19,19 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-BTrees
-Version:        6.0
+Version:        6.1
 Release:        0
 Summary:        Persistent B-tree object containers for Python
 License:        ZPL-2.1
 URL:            https://github.com/zopefoundation/BTrees
-Source:         https://files.pythonhosted.org/packages/source/B/BTrees/BTrees-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/b/btrees/btrees-%{version}.tar.gz
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module persistent-devel >= 4.1.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module transaction}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module zope.interface}
 BuildRequires:  %{python_module zope.testrunner}
 BuildRequires:  fdupes
@@ -37,7 +39,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-persistent >= 4.1.0
 Requires:       python-zope.interface
 Provides:       %{name}-doc = %{version}-%{release}
-Obsoletes:      %{name}-doc
+Obsoletes:      %{name}-doc < %{version}-%{release}
 %python_subpackages
 
 %description
@@ -58,14 +60,13 @@ Requires:       %{name} = %{version}
 This package contains the files needed for binding the %{name} C module.
 
 %prep
-%setup -q -n BTrees-%{version}
-rm -rf BTrees.egg-info
+%setup -q -n btrees-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %{python_expand rm %{buildroot}%{$python_sitearch}/BTrees/*.c
   %fdupes %{buildroot}%{$python_sitearch}
 }

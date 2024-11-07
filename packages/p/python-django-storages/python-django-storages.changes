@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Thu Nov  7 09:01:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.14.4:
+  * Pull AWS_SESSION_TOKEN from the environment
+  * Fix newline handling for text mode files
+  * Do not sign URLs when querystring_auth=False e.g public
+    buckets or static files
+  * Cache CloudFront Signers
+  * Fix collectstatic --clear
+  * Add mode kwarg to .url() to support creation of signed URLs
+    for upload
+  * Fix fetching user delegation key when custom domain is
+    enabled
+  * Add implementations of get_(modified|accessed)_time
+  * Add support for Python 3.12
+  * Conform to BaseStorage interface
+  * Add FTP_ALLOW_OVERWRITE setting
+  * Add support for Django 5.0 and Python 3.12
+  * Deprecated: The config class property has been deprecated in
+    favor of the client_config setting, a future version will
+    remove support for the property.
+  * Fix disabling CloudFront signing with class variables
+  * Fix AWS_S3_* environment variables lookup
+  * Add client_config/AWS_S3_CLIENT_CONFIG to configure advanced
+    botocore settings
+  * Fix re-gzipping already gzipped files
+  * Add SFTP_BASE_URL setting
+  * Fix saving files when SFTP_STORAGE_ROOT is set
+  * Add support for FTP TLS via ftps URLs
+  * Add support for passwords with urlchars
+  * Fix re-opening of S3File
+  * Revert raising ImproperlyConfigured when no bucket_name is
+    set
+  * Do not require both AccountName and AccountKey in
+    connection_string
+  * Work around boto3 closing the uploaded file
+  * Fix crash when cleaning up during aborted connection of
+    S3File.write
+  * Raise FileNotFoundError when attempting to read the size of a
+    non-existent file
+  * Move auth & CloudFront signer validation to init
+  * Raise ImproperlyConfigured if no bucket_name is set
+  * Fix tracking of S3File.closed
+  * Breaking: Drop support for Django 4.0
+  * Breaking: The long deprecated & removed (from Django)
+    (modified|created|accessed)_time methods have been removed
+    from the various storages, please replace with the
+    get_(modified|created|accessed)_time methods
+  * Add support for saving pathlib.PurePath names
+  * Add support for Django 4.2
+  * Set account_(name|key) from connection_string if not provided
+  * Deprecated: The name DropboxStorage.location has been
+    deprecated, please rename to DropboxStorage.root_path, a
+    future version will remove support for the old name.
+  * Storage and related names with a captialized B have been
+    changed to no longer have one e.g DropboxStorage has now
+    replaced DropBoxStorage. Aliases have been added so no change
+    is necessary at this time. A future version might deprecate
+    the old names.
+  * DropboxStorage now conforms to the BaseStorage interface
+  * Fix name mangling when saving with certain complex root paths
+  * Use setting BASE_URL if it is defined
+  * Breaking: Support for the deprecated GS_CACHE_CONTROL has
+    been removed. Please set the cache_control parameter of
+    GS_OBJECT_PARAMETERS instead.
+  * Reading a file that does not exist will now raise
+    FileNotFoundError
+  * Add closing context manager for standalone usage to ensure
+    connections are cleaned up
+  * Deprecated: AWS_S3_USE_THREADS has been deprecated in favor
+    of AWS_S3_TRANSFER_CONFIG
+  * Important: The namespace of this backend has changed from
+    S3Boto3 to S3. There are no current plans to deprecate and
+    remove the old namespace but please update if you can. All
+    paths, imports, and classes that previously referred to
+    s3boto are now s3. E.g S3Boto3Storage has been changed to
+    S3Storage and S3Boto3StorageFile has been changed to S3File.
+    (#1289). Additionally the install extra is now s3
+  * Add setting transfer_config/AWS_S3_TRANSFER_CONFIG to
+    customize any of the TransferConfig properties
+  * Enable passing security_token to constructor
+  * Do not overwrite a returned ContentType from
+    get_object_parameters
+  * Add support for setting cloudfront_key_id and cloudfront_key
+    via Django 4.2's OPTIONS
+  * Fix S3File.closed
+  * Fix opening new files in write mode with S3File
+  * Fix S3File not respecting mode on readlines
+  * Fix saving files with string content
+  * Fix retrieving files with SSE-C enabled
+
+-------------------------------------------------------------------
 Tue Apr 23 22:26:13 UTC 2024 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
 
 - Switch to sle15_python_module_pythons to build for newer Python stack

@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-stimulus-rails
-Version:        1.3.3
+Version:        1.3.4
 Release:        0
 %define mod_name stimulus-rails
 %define mod_full_name %{mod_name}-%{version}

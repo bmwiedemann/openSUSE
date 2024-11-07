@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov  4 17:25:14 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- 4.4.0:
+
+This release introduces a new lexer for P4 and adds support for Mojo language highlighting. We've also made improvements to the Dockerfile and Makefile lexers, and fixed some issues with the Mojo lexer. Thank you to all the wonderful contributors for this release!
+
+Full Changelog: https://github.com/rouge-ruby/rouge/compare/v4.3.0...v4.4.0
+
+
+
+-------------------------------------------------------------------
 Fri Jun 21 10:36:29 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
 
 - 4.3.0:

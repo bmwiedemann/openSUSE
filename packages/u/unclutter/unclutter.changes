@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov  7 11:42:31 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch unclutter-8-gcc14.patch
+  * Make it build even with gcc14
+
+-------------------------------------------------------------------
 Tue Feb 20 15:38:51 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

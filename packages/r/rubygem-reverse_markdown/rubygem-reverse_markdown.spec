@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-reverse_markdown
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,10 @@
 #
 
 Name:           rubygem-reverse_markdown
-Version:        2.1.1
+Version:        3.0.0
 Release:        0
 %define mod_name reverse_markdown
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
@@ -38,8 +37,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Convert html code into markdown
 License:        WTFPL
-Group:          Development/Languages/Ruby
-PreReq:         update-alternatives
 
 %description
 Map simple html back into markdown, e.g. if you want to import existing html

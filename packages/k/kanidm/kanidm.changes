@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 05 05:13:11 UTC 2024 - william.brown@suse.com
+
+- Update to version 1.4.1~git0.ad93202:
+  * Release 1.4.1
+  * Correct missing CSP header (#3177)
+  * Resolve pam services not always having a tty (#3176)
+
+-------------------------------------------------------------------
 Sun Nov 03 00:17:17 UTC 2024 - william.brown@suse.com
 
 - Update to version 1.4.0~git2.770efa8:

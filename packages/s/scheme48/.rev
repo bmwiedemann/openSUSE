@@ -23,4 +23,17 @@
     <comment>Prepare for RPM 4.20 (forwarded request 1151477 from dimstar)</comment>
     <requestid>1156385</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dd9a6c0dc20c77be5d83aa858f332d1c</srcmd5>
+    <version>1.9.3</version>
+    <time>1730993308</time>
+    <user>anag+factory</user>
+    <comment>- Update to scheme48-1.9.3 (2024-11-15)
+  * Minor changes to configure to unbreak build on current setups.
+- Remove patch scheme48-1.9.2-gcc14.patch as now upstream
+
+- Add patch scheme48-1.9.2-gcc14.patch
+  * Make it build even with gcc14</comment>
+    <requestid>1222138</requestid>
+  </revision>
 </revisionlist>

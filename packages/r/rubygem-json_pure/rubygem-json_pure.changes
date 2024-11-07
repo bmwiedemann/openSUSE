@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Mon Nov  4 16:58:32 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- 2.7.6:
+
+* Fix a regression in JSON.generate when dealing with Hash keys that are string subclasses, call `to_json` on them.
+
+**Full Changelog**: https://github.com/ruby/json/compare/v2.7.5...v2.7.6
+
+
+2.7.5:
+
+## What's Changed
+
+* Fix a memory leak when `#to_json` methods raise an exception.
+* Gracefully handle formatting configs being set to `nil` instead of `""`.
+* Workaround another issue caused by conflicting versions of both `json_pure` and `json` being loaded.
+
+**Full Changelog**: https://github.com/ruby/json/compare/v2.7.4...v2.7.5
+
+2.7.4:
+
+## What's Changed
+
+* Workaround a bug in 3.4.8 and older https://github.com/rubygems/rubygems/pull/6490.
+  This bug would cause some gems with native extension to fail during compilation.
+* Workaround different versions of `json` and `json_pure` being loaded (not officially supported).
+* Make `json_pure` Ractor compatible. 
+
+**Full Changelog**: https://github.com/ruby/json/compare/v2.7.3...v2.7.4
+
+2.7.3:
+
+## What's Changed
+
+* Numerous performance optimizations in `JSON.generate` and `JSON.dump` (up to 2 times faster).
+* Limit the size of ParserError exception messages, only include up to 32 bytes of the unparseable source.
+* Fix json-pure's `Object#to_json` to accept non state arguments 
+* Fix multiline comment support in `json-pure`.
+* Fix `JSON.parse` to no longer mutate the argument encoding when passed an ASCII-8BIT string.
+* Fix `String#to_json` to raise on invalid encoding in `json-pure`.
+* Delete code that was based on CVTUTF.
+* Use the pure-Ruby generator on TruffleRuby.
+* Fix `strict` mode in `json-pure` to not break on Integer.
+
+## `JSON.dump` Performance
+
+`JSON.dump` is now much faster, and on par or faster than alternative implementations:
+
+```
+== Encoding citm_catalog.json (500298 bytes)
+ruby 3.4.0preview2 (2024-10-07 master 32c733f57b) +YJIT +PRISM [arm64-darwin23]
+Warming up --------------------------------------
+        json (2.7.3)   123.000 i/100ms
+                  oj   124.000 i/100ms
+Calculating -------------------------------------
+        json (2.7.3)      1.312k (± 1.8%) i/s  (761.91 μs/i) -      6.642k in   5.062192s
+                  oj      1.278k (± 2.0%) i/s  (782.35 μs/i) -      6.448k in   5.046587s
+
+Comparison:
+        json (2.7.2):      884.0 i/s
+        json (2.7.3):     1312.5 i/s - 1.48x  faster
+                  oj:     1278.2 i/s - 1.45x  faster
+```
+
+```
+== Encoding twitter.json (466906 bytes)
+ruby 3.4.0preview2 (2024-10-07 master 32c733f57b) +YJIT +PRISM [arm64-darwin23]
+Warming up --------------------------------------
+        json (2.7.3)   213.000 i/100ms
+                  oj   222.000 i/100ms
+Calculating -------------------------------------
+        json (2.7.3)      2.140k (± 2.8%) i/s  (467.19 μs/i) -     10.863k in   5.079099s
+                  oj      2.303k (± 3.2%) i/s  (434.27 μs/i) -     11.544k in   5.018239s
+
+Comparison:
+        json (2.7.2):     1250.5 i/s
+                  oj:     2302.7 i/s - 1.84x  faster
+        json (2.7.3):     2140.5 i/s - 1.71x  faster
+```
+
+**Full Changelog**: https://github.com/ruby/json/compare/v2.7.2...v2.7.3
+
+2.7.3rc1:
+
+* Numerous performance optimizations in `JSON.generate` and `JSON.dump`.
+* Limit the size of ParserError exception messages, only include up to 32 bytes of the unparseable source.
+* Fix json-pure's `Object#to_json` to accept non state arguments 
+* Fix multiline comment support in `json-pure`.
+* Fix `JSON.parse` to no longer mutate the argument encoding when passed an ASCII-8BIT string.
+* Fix `String#to_json` to raise on invalid encoding in `json-pure`.
+* Delete code that was based on CVTUTF.
+* Use the pure-Ruby generator on TruffleRuby.
+* Fix `strict` mode in `json-pure` to not break on Integer.
+
+
+
+-------------------------------------------------------------------
 Fri Jun 21 10:06:22 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
 
 - 2.7.2:

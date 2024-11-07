@@ -19,13 +19,14 @@
 # These numbers are from readelf -a /usr/lib*/lib*.so* |grep soname (dots replaced by underscores)
 %define lib_version 5_1
 %define so_version 2
+%define upname LuaJIT
 Name:           luajit
-Version:        5.1.2.1.0+git.1724512491.f725e44
+Version:        5.1.2.1.0+git.1727870382.97813fb
 Release:        0
 Summary:        JIT compiler for Lua language
 License:        MIT
 URL:            https://luajit.org/
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %{upname}-%{version}.tar.xz
 Source1:        baselibs.conf
 # PATCH-FIX-OPENSUSE luajit-lua-versioned.patch mcepl@suse.com
 # Because we obsolete moonjit with version number higher than %%{version} we have to emulate Epoch
@@ -73,7 +74,7 @@ Provides:       libluajit-devel = %{version}-%{release}
 Devel files for luajit package
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{upname}-%{version}
 
 # Fix variables
 sed -i "s,PREFIX= %{_prefix}/local,PREFIX= %{_prefix}," Makefile

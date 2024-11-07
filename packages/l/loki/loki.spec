@@ -21,7 +21,7 @@
 %global promtail_datadir /var/lib/promtail
 
 Name:           loki
-Version:        2.8.11+git.1711098663.aa89d817
+Version:        3.2.1
 Release:        0
 Summary:        Loki: like Prometheus, but for logs
 License:        Apache-2.0
@@ -33,13 +33,14 @@ Source2:        promtail.service
 Source3:        sysconfig.loki
 Source4:        sysconfig.promtail
 Source99:       series
-Patch0:         harden_promtail.service.patch
-Patch1:         proper-data-directories.patch
+Patch0:         proper-data-directories.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-devel
-BuildRequires:  golang(API) = 1.20
+BuildRequires:  golang(API) = 1.21
 Requires:       logcli = %{version}
+Requires(pre):  group(loki)
+Requires(pre):  user(loki)
 Requires:       group(loki)
 Requires:       user(loki)
 Requires(post): %fillup_prereq
@@ -70,21 +71,34 @@ Loki is a horizontally-scalable, highly-available, multi-tenant log aggregation 
 
 This package contains the LogCLI command-line tool.
 
+%package -n lokitool
+Summary:        A command-line tool to manage Loki
+Group:          System/Monitoring
+
+%description -n lokitool
+Loki is a horizontally-scalable, highly-available, multi-tenant log aggregation system inspired by Prometheus.
+
+This package contains the lokitool command-line tool.
+
 %prep
 %autosetup -p1 %{name}-%{version}
 
 %build
 %define buildpkg github.com/grafana/loki/pkg/build
+DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
+BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")
+
 export CGO_ENABLED=0
 export GOFLAGS="-mod=vendor -buildmode=pie -tags=netgo"
-export GOLDFLAGS="-s -w -X %{buildpkg}.Version=%{version} \
-                        -X %{buildpkg}.Revision=%{release} \
-                        -X %{buildpkg}.Branch=NA \
-                        -X %{buildpkg}.BuildUser=NA \
-                        -X %{buildpkg}.BuildDate=NA"
+export GOLDFLAGS="-X %{buildpkg}.Version=%{version} \
+                  -X %{buildpkg}.Revision=v%{version} \
+                  -X %{buildpkg}.Branch=main \
+                  -X %{buildpkg}.BuildUser=openSUSE \
+                  -X %{buildpkg}.BuildDate=${BUILD_DATE}"
 
 go build -ldflags="$GOLDFLAGS" ./cmd/loki
 go build -ldflags="$GOLDFLAGS" ./cmd/logcli
+go build -ldflags="$GOLDFLAGS" ./cmd/lokitool
 CGO_ENABLED=1 go build -ldflags="$GOLDFLAGS" --tags=promtail_journal_enabled ./clients/cmd/promtail
 
 %install
@@ -107,6 +121,7 @@ install -Dm640 clients/cmd/promtail/promtail-local-config.yaml \
 # Binaries
 install -dm755 %{buildroot}%{_bindir}
 install -Dm755 loki %{buildroot}%{_bindir}
+install -Dm755 lokitool %{buildroot}%{_bindir}
 install -Dm755 promtail %{buildroot}%{_bindir}
 install -Dm755 logcli %{buildroot}%{_bindir}
 
@@ -161,5 +176,8 @@ install -D -d -m 0750 %{buildroot}%{promtail_datadir} %{buildroot}%{loki_datadir
 
 %files -n logcli
 %{_bindir}/logcli
+
+%files -n lokitool
+%{_bindir}/lokitool
 
 %changelog

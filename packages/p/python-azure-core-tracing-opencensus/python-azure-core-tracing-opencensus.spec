@@ -18,14 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-core-tracing-opencensus
-Version:        1.0.0b9
+Version:        1.0.0b10
 Release:        0
 Summary:        Azure Core Tracing OpenCensus client library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-core-tracing-opencensus/azure-core-tracing-opencensus-%{version}.zip
-Source1:        LICENSE.txt
+Source:         https://files.pythonhosted.org/packages/source/a/azure_core_tracing_opencensus/azure_core_tracing_opencensus-%{version}.tar.gz
 BuildRequires:  %{python_module azure-core < 2.0.0}
 BuildRequires:  %{python_module azure-core >= 1.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
@@ -52,10 +51,9 @@ BuildArch:      noarch
 Azure Core Tracing OpenCensus client library for Python
 
 %prep
-%setup -q -n azure-core-tracing-opencensus-%{version}
+%setup -q -n azure_core_tracing_opencensus-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-core-tracing-opencensus-%{version}
 %pyproject_wheel
 
 %install
@@ -68,7 +66,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
-%license LICENSE.txt
+%license LICENSE
 %{python_sitelib}/azure/core/tracing/ext/opencensus_span
 %{python_sitelib}/azure_core_tracing_opencensus-*.dist-info
 

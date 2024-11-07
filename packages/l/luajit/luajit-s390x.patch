@@ -24,6 +24,7 @@ Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
  src/Makefile           |    4 
  src/host/buildvm.c     |    2 
  src/host/buildvm_asm.c |   53 
+ src/jit/bcsave.lua     |    1 
  src/jit/dis_s390x.lua  |    1 
  src/lib_jit.c          |    2 
  src/lj_arch.h          |   19 
@@ -36,7 +37,7 @@ Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
  src/lj_target.h        |    2 
  src/lj_target_s390x.h  |   80 
  src/vm_s390x.dasc      | 4269 +++++++++++++++++++++++++++++++++++++++++++++++++
- 17 files changed, 6705 insertions(+)
+ 18 files changed, 6706 insertions(+)
  create mode 100644 dynasm/dasm_s390x.h
  create mode 100644 dynasm/dasm_s390x.lua
 
@@ -2333,6 +2334,16 @@ Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
  #else
      emit_asm_words(ctx, ctx->code+ofs, next-ofs);
  #endif
+--- a/src/jit/bcsave.lua
++++ b/src/jit/bcsave.lua
+@@ -101,6 +101,7 @@ local map_arch = {
+   mips64el =	{ e = "le", b = 64, m = 8, f = 0x80000007, },
+   mips64r6 =	{ e = "be", b = 64, m = 8, f = 0xa0000407, },
+   mips64r6el =	{ e = "le", b = 64, m = 8, f = 0xa0000407, },
++  s390x =	{ e = "be", b = 64, m = 22, },
+ }
+ 
+ local map_os = {
 --- /dev/null
 +++ b/src/jit/dis_s390x.lua
 @@ -0,0 +1 @@
@@ -2525,7 +2536,7 @@ Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
  #endif
 --- a/src/lj_err.c
 +++ b/src/lj_err.c
-@@ -448,6 +448,9 @@ LJ_FUNCA int lj_err_unwind_dwarf(int ver
+@@ -442,6 +442,9 @@ LJ_FUNCA int lj_err_unwind_dwarf(int ver
    if (version != 1)
      return _URC_FATAL_PHASE1_ERROR;
    cf = (void *)_Unwind_GetCFA(ctx);

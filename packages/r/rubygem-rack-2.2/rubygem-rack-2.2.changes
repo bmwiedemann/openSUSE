@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov  4 17:18:15 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- ## [2.2.10] - 2024-10-14
+
+- Fix compatibility issues with Ruby v3.4.0. ([#2248](https://github.com/rack/rack/pull/2248), [@byroot](https://github.com/byroot))
+
+
+-------------------------------------------------------------------
 Fri Mar 22 13:57:05 UTC 2024 - Eduardo Navarro <enavarro@suse.com>
 
 - update to version 2.2.9

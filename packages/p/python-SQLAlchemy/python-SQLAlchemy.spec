@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-SQLAlchemy
-Version:        2.0.32
+Version:        2.0.36
 Release:        0
 Summary:        Database Abstraction Library
 License:        MIT
 URL:            https://www.sqlalchemy.org
-Source:         https://files.pythonhosted.org/packages/source/S/SQLAlchemy/SQLAlchemy-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/s/sqlalchemy/sqlalchemy-%{version}.tar.gz
 Source1:        SQLAlchemy.keyring
 # devel is needed for optional C extensions cprocessors.so, cresultproxy.so and cutils.so
 BuildRequires:  %{python_module Cython >= 3}
@@ -71,7 +71,7 @@ This package contains HTML documentation, including tutorials and API
 reference for python-SQLAlchemy.
 
 %prep
-%autosetup -p1 -n SQLAlchemy-%{version}
+%autosetup -p1 -n sqlalchemy-%{version}
 
 rm -rf doc/build # Remove unnecessary scripts for building documentation
 sed -i 's/\r$//' examples/dynamic_dict/dynamic_dict.py

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov  4 17:35:58 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- **3.7.5** (Spet 19, 2024)
+
+* Fix `Sprockets::Base#unescape` #808.
+
+**3.7.4** (March 28, 2024)
+
+* Fix deprecated calls to the `uri` gem.
+
+
+-------------------------------------------------------------------
 Fri Jun 21 10:47:28 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
 
 - **3.7.3** (March 28, 2024)

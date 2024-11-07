@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-jwt
-Version:        2.8.2
+Version:        2.9.3
 Release:        0
 %define mod_name jwt
 %define mod_full_name %{mod_name}-%{version}

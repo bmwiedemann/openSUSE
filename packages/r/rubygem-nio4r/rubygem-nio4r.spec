@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-nio4r
-Version:        2.7.3
+Version:        2.7.4
 Release:        0
 %define mod_name nio4r
 %define mod_full_name %{mod_name}-%{version}
@@ -35,7 +35,7 @@ Release:        0
 %endif
 # /MANUAL
 BuildRequires:  ruby-macros >= 5
-BuildRequires:  %{rubydevel >= 2.4}
+BuildRequires:  %{rubydevel >= 2.6}
 BuildRequires:  %{rubygem gem2rpm}
 URL:            https://github.com/socketry/nio4r
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem

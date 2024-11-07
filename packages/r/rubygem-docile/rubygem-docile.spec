@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-docile
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,10 @@
 #
 
 Name:           rubygem-docile
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 %define mod_name docile
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.5.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
@@ -37,7 +36,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Ruby gem to treat Ruby objects as a domain-specific language
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 Docile treats the methods of a given ruby object as a DSL (domain specific

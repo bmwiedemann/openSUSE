@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-googleapis-common-protos-types
-Version:        1.15.0
+Version:        1.16.0
 Release:        0
 %define mod_name googleapis-common-protos-types
 %define mod_full_name %{mod_name}-%{version}

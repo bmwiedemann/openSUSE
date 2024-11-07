@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-json_pure
-Version:        2.7.2
+Version:        2.7.6
 Release:        0
 %define mod_name json_pure
 %define mod_full_name %{mod_name}-%{version}
@@ -32,7 +32,7 @@ BuildRequires:  %{ruby >= 2.3}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  ruby-macros >= 5
-URL:            https://flori.github.io/json
+URL:            https://ruby.github.io/json
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        JSON Implementation for Ruby
@@ -47,7 +47,7 @@ This is a JSON implementation in pure Ruby.
 
 %install
 %gem_install \
-  --doc-files="CHANGES.md LICENSE README.md" \
+  --doc-files="CHANGES.md COPYING LEGAL README.md" \
   -f
 
 %gem_packages

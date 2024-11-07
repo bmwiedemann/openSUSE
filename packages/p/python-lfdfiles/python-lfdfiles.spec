@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-lfdfiles
-Version:        2024.4.24
+Version:        2024.10.24
 Release:        0
 Summary:        Laboratory for Fluorescence Dynamics (LFD) file formats
 License:        BSD-3-Clause

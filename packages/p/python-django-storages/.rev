@@ -122,4 +122,41 @@
     <comment></comment>
     <requestid>1172100</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fd8ae684c29a5a2fa1296e344cf7fccc</srcmd5>
+    <version>1.14.4</version>
+    <time>1730993297</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.14.4:
+  * Pull AWS_SESSION_TOKEN from the environment
+  * Fix newline handling for text mode files
+  * Do not sign URLs when querystring_auth=False e.g public
+    buckets or static files
+  * Cache CloudFront Signers
+  * Fix collectstatic --clear
+  * Add mode kwarg to .url() to support creation of signed URLs
+    for upload
+  * Fix fetching user delegation key when custom domain is
+    enabled
+  * Add implementations of get_(modified|accessed)_time
+  * Add support for Python 3.12
+  * Conform to BaseStorage interface
+  * Add FTP_ALLOW_OVERWRITE setting
+  * Add support for Django 5.0 and Python 3.12
+  * Deprecated: The config class property has been deprecated in
+    favor of the client_config setting, a future version will
+    remove support for the property.
+  * Fix disabling CloudFront signing with class variables
+  * Fix AWS_S3_* environment variables lookup
+  * Add client_config/AWS_S3_CLIENT_CONFIG to configure advanced
+    botocore settings
+  * Fix re-gzipping already gzipped files
+  * Add SFTP_BASE_URL setting
+  * Fix saving files when SFTP_STORAGE_ROOT is set
+  * Add support for FTP TLS via ftps URLs
+  * Add support for passwords with urlchars
+  * Fix re-opening of S3File
+  * Revert raising ImproperlyConfigured when no bucket_name is</comment>
+    <requestid>1222049</requestid>
+  </revision>
 </revisionlist>

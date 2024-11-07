@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rails-7.0
-Version:        7.0.8.4
+Version:        7.0.8.6
 Release:        0
 %define mod_name rails
 %define mod_full_name %{mod_name}-%{version}
@@ -32,18 +32,18 @@ Release:        0
 # MANUAL
 BuildRequires:  ruby-common >= 3.2.1
 
-#!BuildIgnore: ruby3.1-rubygem-sprockets-3.7
+#!BuildIgnore:  ruby3.1-rubygem-sprockets-3.7
 BuildRequires:  %{rubygem activejob >= 7.0}
 BuildRequires:  %{rubygem activemodel:7.0}
 BuildRequires:  %{rubygem railties:7.0}
 
 # keep in sync with below
-BuildRequires:  %{rubygem puma:5}
+BuildRequires:  %{rubygem puma >= 5.0}
 BuildRequires:  %{rubygem bootsnap}
 BuildRequires:  %{rubygem importmap-rails}
 BuildRequires:  %{rubygem jbuilder}
 BuildRequires:  %{rubygem sprockets-rails}
-BuildRequires:  %{rubygem sqlite3:1 >= 1.4}
+BuildRequires:  %{rubygem sqlite3 >= 1.4}
 BuildRequires:  %{rubygem stimulus-rails}
 BuildRequires:  %{rubygem turbo-rails}
 BuildRequires:  %{rubygem web-console }

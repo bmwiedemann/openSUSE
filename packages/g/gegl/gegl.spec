@@ -26,7 +26,7 @@
 %bcond_with gegl_docs
 
 Name:           gegl
-Version:        0.4.48
+Version:        0.4.50
 Release:        0
 Summary:        Generic Graphics Library
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -35,9 +35,6 @@ URL:            http://gegl.org/
 Source0:        https://download.gimp.org/pub/gegl/0.4/%{name}-%{version}.tar.xz
 Source1:        normalize-gir.pl
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM
-Patch0:         https://gitlab.gnome.org/GNOME/gegl/-/commit/66de8124.patch
-Patch1:         revertleap.patch
 
 BuildRequires:  ImageMagick
 BuildRequires:  asciidoc

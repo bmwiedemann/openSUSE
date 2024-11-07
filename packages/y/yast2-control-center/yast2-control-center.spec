@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-control-center
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-control-center
-Version:        5.0.0
+Version:        5.0.1
 Release:        0
 URL:            https://github.com/yast/yast-control-center
 Summary:        YaST2 - Control Center
@@ -98,17 +98,17 @@ make install DESTDIR=%{buildroot}
 cd ..
 
 %suse_update_desktop_file -G "Administrator Settings"  %{buildroot}%{_datadir}/applications/org.opensuse.YaST.desktop Core-System X-SuSE-ControlCenter-System X-GNOME-SystemSettings
-%suse_update_desktop_file %{buildroot}%{_datadir}/kde4/services/YaST-systemsettings.desktop
 
 %files
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/org.opensuse.YaST.appdata.xml
 %{_datadir}/applications/org.opensuse.YaST.desktop
-%dir %{_datadir}/kde4/
-%dir %{_datadir}/kde4/services
-%{_datadir}/kde4/services/YaST-systemsettings.desktop
 %dir %{_datadir}/kservices5
 %{_datadir}/kservices5/YaST-systemsettings.desktop
+%dir %{_datadir}/plasma/
+%dir %{_datadir}/plasma/systemsettings/
+%dir %{_datadir}/plasma/systemsettings/externalmodules/
+%{_datadir}/plasma/systemsettings/externalmodules/YaST-systemsettings.desktop
 %{yast_icondir}
 
 %files qt

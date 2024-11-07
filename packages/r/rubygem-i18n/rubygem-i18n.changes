@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Nov  4 16:53:26 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- 1.14.6:
+
+## What's Changed
+
+**Ruby < 3.2 support will be dropped April 2025. Upgrade now to continue using i18n after that date.**
+
+
+
+* fix issues with RDoc generation by @davetron5000 in https://github.com/ruby-i18n/i18n/pull/698
+* Fix loading of .rb locale files when `load_path` is not a string by @stevegeek in https://github.com/ruby-i18n/i18n/pull/701
+* Fixes strings being interpolated multiple times by @alexpls in https://github.com/ruby-i18n/i18n/pull/699
+* Optimize pluralization logic in test data by @zachmargolis in https://github.com/ruby-i18n/i18n/pull/697
+* [FIX] Raise ArgumentError on nil key in exists? by @KinWang-2013 in https://github.com/ruby-i18n/i18n/pull/696
+
+## New Contributors
+* @davetron5000 made their first contribution in https://github.com/ruby-i18n/i18n/pull/698
+* @stevegeek made their first contribution in https://github.com/ruby-i18n/i18n/pull/701
+* @alexpls made their first contribution in https://github.com/ruby-i18n/i18n/pull/699
+* @zachmargolis made their first contribution in https://github.com/ruby-i18n/i18n/pull/697
+* @KinWang-2013 made their first contribution in https://github.com/ruby-i18n/i18n/pull/696
+
+**Full Changelog**: https://github.com/ruby-i18n/i18n/compare/v1.14.5...v1.14.6
+
+
+
+-------------------------------------------------------------------
 Fri Jun 21 10:03:33 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
 
 - 1.14.5:

@@ -208,4 +208,26 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1182788</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>2c12ceda970097bacffc856d9e993138</srcmd5>
+    <version>2.13.0</version>
+    <time>1730993208</time>
+    <user>anag+factory</user>
+    <comment>- Added fix-shebang.patch
+
+- 2.13.0:
+## What's Changed
+* Redirect to `@record` or path in controller generator by @jeromedalbert in https://github.com/rails/jbuilder/pull/569
+* Return early from collection partial rendering if blank by @tylerjc in https://github.com/rails/jbuilder/pull/560
+* Add missing ':see_other' status code in generated destroy controller method by @ldeld in https://github.com/rails/jbuilder/pull/538
+* Remove OpenStruct references from Jbuilder by @mtsmfm in https://github.com/rails/jbuilder/pull/567
+* Use new `params.expect` syntax instead of `params.require` by @jeromedalbert in https://github.com/rails/jbuilder/pull/573
+## New Contributors
+* @jeromedalbert made their first contribution in https://github.com/rails/jbuilder/pull/570
+* @tylerjc made their first contribution in https://github.com/rails/jbuilder/pull/560
+* @ldeld made their first contribution in https://github.com/rails/jbuilder/pull/538
+* @mtsmfm made their first contribution in https://github.com/rails/jbuilder/pull/567
+**Full Changelog**: https://github.com/rails/jbuilder/compare/v2.12.0...v2.13.0</comment>
+    <requestid>1222450</requestid>
+  </revision>
 </revisionlist>

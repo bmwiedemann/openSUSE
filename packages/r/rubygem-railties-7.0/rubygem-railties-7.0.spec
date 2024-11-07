@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-railties-7.0
-Version:        7.0.8.4
+Version:        7.0.8.6
 Release:        0
 %define mod_name railties
 %define mod_full_name %{mod_name}-%{version}
@@ -36,15 +36,22 @@ BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
 URL:            https://rubyonrails.org
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
-Source1:        gem2rpm.yml
+Source1:        series
+Source2:        gem2rpm.yml
+# MANUAL
+Patch0:         allow-newer-sqlite.patch
+# /MANUAL
 Summary:        Tools for creating, working with, and running Rails applications
 License:        MIT
-PreReq:         update-alternatives
 
 %description
 Rails internals: application bootup, plugins, generators, and rake tasks.
 
 %prep
+%gem_unpack
+%patch -P 0 -p1
+find -type f -print0 | xargs -0 touch -r %{S:0}
+%gem_build
 
 %build
 

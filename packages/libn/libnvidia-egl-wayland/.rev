@@ -139,4 +139,15 @@
     https://github.com/openSUSE/nvidia-driver-G06/issues/26</comment>
     <requestid>1206111</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>867c31a498d5d39df639f8f073532ce8</srcmd5>
+    <version>1.1.16</version>
+    <time>1730993154</time>
+    <user>anag+factory</user>
+    <comment>- 0001-egl-wayland-enable-CI-with-github-actions.patch
+  0002-egl-wayland-Fix-use-after-free-in-library-teardown.patch
+  0003-egl-wayland-Handle-failure-to-acquire-image-in-wlEgl.patch
+  * apply latest fixes from git</comment>
+    <requestid>1221803</requestid>
+  </revision>
 </revisionlist>

@@ -104,4 +104,12 @@
     <comment>Updated to 2.5.0 — Unicode 15.1 support (forwarded request 1117724 from NickLion)</comment>
     <requestid>1118192</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>95398e18984f41cf388770cb2ec334eb</srcmd5>
+    <version>2.6.0</version>
+    <time>1730993271</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1221924</requestid>
+  </revision>
 </revisionlist>

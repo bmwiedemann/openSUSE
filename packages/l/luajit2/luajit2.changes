@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov  7 08:00:47 UTC 2024 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 2.1.20241104 (2.1.1728714540).
+  * FFI: Added missing coercion when recording 64-bit bit.*().
+  * ARM64: Used ldr literal to load FP constants.
+
+-------------------------------------------------------------------
 Wed Aug 28 03:54:34 UTC 2024 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 2.1.20240815 (2.1.1723681758).

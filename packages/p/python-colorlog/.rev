@@ -119,4 +119,12 @@
   * Support Python 3.13's logging changes.</comment>
     <requestid>1218906</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>90242735aaee75691436130f229b932d</srcmd5>
+    <version>6.9.0</version>
+    <time>1730993283</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1221949</requestid>
+  </revision>
 </revisionlist>

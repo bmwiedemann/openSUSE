@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Nov  4 17:38:17 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- 1.3.4:
+
+## What's Changed
+
+* Stop suggesting lazy loading by @dhh in https://github.com/hotwired/stimulus-rails/pull/140
+* Changed install template system call to account for spaces in path by @marekhilton in https://github.com/hotwired/stimulus-rails/pull/137
+
+## New Contributors
+* @berti92 made their first contribution in https://github.com/hotwired/stimulus-rails/pull/115
+* @marekhilton made their first contribution in https://github.com/hotwired/stimulus-rails/pull/137
+
+**Full Changelog**: https://github.com/hotwired/stimulus-rails/compare/v1.3.3...v1.3.4
+
+
+
+-------------------------------------------------------------------
 Mon Jan 29 14:40:11 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
 
 - 1.3.3:

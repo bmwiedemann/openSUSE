@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.3.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           ruqola
-Version:        2.2.0
+Version:        2.3.1
 Release:        0
 Summary:        Rocket.chat Client
 License:        GPL-2.0-or-later
@@ -47,7 +47,7 @@ BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6NetworkManagerQt) >= %{kf6_version}
 BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
 BuildRequires:  cmake(KF6NotifyConfig) >= %{kf6_version}
-BuildRequires:  cmake(PlasmaActivities)
+BuildRequires:  cmake(PlasmaActivities) >= 6.1.0
 BuildRequires:  cmake(KF6Prison) >= %{kf6_version}
 BuildRequires:  cmake(KF6Purpose) >= %{kf6_version}
 BuildRequires:  cmake(KF6Sonnet) >= %{kf6_version}
@@ -90,7 +90,7 @@ available from Rocket.Chat project.
 %autosetup -p1
 
 %build
-%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
@@ -105,13 +105,14 @@ available from Rocket.Chat project.
 %license LICENSES/*
 %doc README.md
 %doc %lang(en) %{_kf6_htmldir}/en/ruqola/
-# # upstream installs with execute bit, gives a linter warning
+# upstream installs with execute bit, gives a linter warning
 %attr(0644,-,-) %{_kf6_applicationsdir}/org.kde.ruqola.desktop
 %{_kf6_appstreamdir}/org.kde.ruqola.appdata.xml
 %{_kf6_bindir}/ruqola
 %{_kf6_debugdir}/ruqola.categories
 %{_kf6_debugdir}/ruqola.renamecategories
 %{_kf6_iconsdir}/hicolor/*/*/ruqola.png
+%{_kf6_libdir}/libcmark-rc-copy.so.*
 %{_kf6_libdir}/librocketchatrestapi-qt.so.*
 %{_kf6_libdir}/libruqolacore.so.*
 %{_kf6_libdir}/libruqolawidgets.so.*

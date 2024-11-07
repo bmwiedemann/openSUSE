@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-webmock
-Version:        3.23.1
+Version:        3.24.0
 Release:        0
 %define mod_name webmock
 %define mod_full_name %{mod_name}-%{version}

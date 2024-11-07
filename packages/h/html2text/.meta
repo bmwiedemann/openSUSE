@@ -1,6 +1,0 @@
-<package name="html2text" project="openSUSE:Factory">
-  <title>HTML to ASCII Converter</title>
-  <description>A tool for converting from HTML to ASCII. It can reasonably handle
-tables.</description>
-  <devel project="Publishing" package="html2text"/>
-</package>

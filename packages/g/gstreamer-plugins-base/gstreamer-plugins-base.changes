@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Nov  5 09:39:07 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.24.9:
+  + allocators: drmdumb: Fix bpp value for P010
+  + audioconvert: fix dynamic handling of mix matrix, accept custom
+    upstream event for setting one
+  + decodebin3:
+    - Make update/posting of collection messages atomic
+    - Send selected stream message as long as not all the tracks
+      can't select decoders
+  + encodebasebin: Miscellaneous fixes
+  + exiftag: Check the result of gst_date_time_new_local_time(),
+    fixes criticals with malformed EXIF tags
+  + glcontext: egl: Unrestrict the support base DRM formats
+  + gldownload: use gst_gl_sync_meta_wait_cpu()
+  + gl: Fix configure error when libdrm is a subproject
+  + playback: Fix a variety of decodebin3/parsebin/urisourcebin
+    races
+  + playbin3: prevent crashing trying to play a corrupted mp4 file
+    (WARNING : HIGH PITCHED CORRUPTED SOUND)
+  + Revert "meson: Fix invalid include flag in uninstalled gl pc
+    file"
+  + urisourcebin:
+    - Allow more cases for posting stream-collection
+    - Ensure all stream-start are handled
+  + urisourcebin/parsebin: Improve collection creation and handling
+
+-------------------------------------------------------------------
 Mon Sep 23 13:08:20 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.24.8:

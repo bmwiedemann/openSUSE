@@ -1,0 +1,19 @@
+<services>
+  <service mode="disabled" name="obs_scm">
+    <param name="url">https://github.com/rigaya/QSVEnc.git</param>
+    <param name="scm">git</param>
+    <param name="submodules">enable</param>
+    <param name="revision">master</param>
+    <param name="changesgenerate">enable</param>
+    <param name="filename">QSVEnc</param>
+    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
+    <param name="versionrewrite-pattern">v([^\+]*)(?:\+0)?((?:\+[1-9][0-9]*)?)+\1\2</param>
+    <param name="versionrewrite-replacement">\1</param>
+  </service>
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version" />
+</services>

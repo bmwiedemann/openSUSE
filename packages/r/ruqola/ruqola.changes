@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Nov  6 09:46:32 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.3.1
+  * Implement Rocket.Chat Marketplace
+  * Allow to clean room history
+  * Allow to check new version
+  * Implement moderation (administrator mode)
+  * Add welcome page
+  * Implement pending users info (administrator mode)
+  * Use cmark-rc for markdown support
+  * Delete oldest files from some cache directories
+  * Clean market application model after 30 minutes (reduces
+    memory footprint)
+  * Fix show discussion name in completion
+  * Fix duplicated messages in search message dialog
+  * Add delegate in search rooms in team dialog
+  * Use "view-conversation-balloon-symbolic" icon when we have
+    private conversation with multi users
+  * Add version in market application information
+  * Fix reset password
+  * Fix mouse position when QT_SCREEN_SCALE_FACTORS != 1
+  * Add missing icons
+  * Fix create topic when creating teams
+  * Fix discussion count information
+  * Remove @ or # when we search user/channel
+  * Fix edit message logic
+
+-------------------------------------------------------------------
 Mon Jun 10 12:47:43 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 2.2.0

@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-liquid
-Version:        5.5.0
+Version:        5.5.1
 Release:        0
 %define mod_name liquid
 %define mod_full_name %{mod_name}-%{version}

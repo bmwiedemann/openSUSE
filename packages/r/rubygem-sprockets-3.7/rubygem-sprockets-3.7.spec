@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-sprockets-3.7
-Version:        3.7.3
+Version:        3.7.5
 Release:        0
 %define mod_name sprockets
 %define mod_full_name %{mod_name}-%{version}
@@ -38,7 +38,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Rack-based asset packaging system
 License:        MIT
-PreReq:         update-alternatives
 
 %description
 Sprockets is a Rack-based asset packaging system that concatenates and serves

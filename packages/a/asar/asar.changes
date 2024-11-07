@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov  7 10:57:33 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 3.2.17
+  * isUnpackedDir matches non-child directories that have same folder name prefix (gh#electron/asar#333)
+  * checking if symlink with same prefix points outside the directory (gh#electron/asar#335)
+
+-------------------------------------------------------------------
+Wed Nov  6 15:52:11 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 3.2.16
+  * Enable getNode to follow directory links (gh#electron/asar#248)
+
+-------------------------------------------------------------------
 Wed Sep 11 08:00:37 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 3.2.13

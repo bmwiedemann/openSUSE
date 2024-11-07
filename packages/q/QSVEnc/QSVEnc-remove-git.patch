@@ -1,0 +1,12 @@
+diff -Naur a/configure b/configure
+--- a/configure	2024-10-27 06:50:47.000000000 -0500
++++ b/configure	2024-10-29 19:06:34.553907631 -0500
+@@ -922,7 +922,7 @@
+     SRCS="$SRCS QSVEncC/$src"
+ done
+ 
+-ENCODER_REV=`git rev-list HEAD | wc --lines`
++ENCODER_REV=
+ 
+ cnf_write ""
+ cnf_write "Creating config.mak, rgy_config.h..."

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Nov  4 16:31:58 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- 4.1.12 - 2024-08-14
+=======================
+* Add missing require for extract_options
+* Fix rails 7.2 ActiveSupport::ProxyObject deprecation
+* Multiple contributors on current and legacy test suite improvements
+
+4.1.12.rc1 - 2024-08-13
+=======================
+* Validating trusted publishing release
+* Add missing require for extract_options
+* Fix rails 7.2 ActiveSupport::ProxyObject deprecation
+* Multiple contributors on current and legacy test suite improvements
+
+
+-------------------------------------------------------------------
 Mon Oct 10 13:02:36 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 4.1.11

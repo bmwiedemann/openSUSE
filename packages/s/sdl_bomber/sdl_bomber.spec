@@ -1,7 +1,7 @@
 #
-# spec file for package ssdl_bomber
+# spec file for package sdl_bomber
 #
-# Copyright (c) 2024 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,32 +12,30 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define oname   SDL_bomber
-%define name1   bomber
-%define name2   matcher
-
 Name:           sdl_bomber
-Version:        1.0.4
+Version:        1.0.10
 Release:        0
 Summary:        SDL Bomberman clone
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Amusements/Games/Action/Arcade
-Url:            http://www.linuxmotors.com/SDL_bomber/
-Source0:        http://www.linuxmotors.com/%{oname}/downloads/%{oname}-%{version}.tgz
+URL:            https://git.stbuehler.de/stbuehler/sdlbomber
+Source0:        https://git.stbuehler.de/stbuehler/sdlbomber/archive/debian/%{version}-1.tar.gz
 Source1:        %{name}.sh
 Source2:        %{name}-icons.tar
 Source3:        %{name}.desktop
 Source4:        %{name}-rpmlintrc
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(SDL_image)
+BuildRequires:  pkgconfig(SDL_mixer)
+BuildRequires:  pkgconfig(avahi-client)
+BuildRequires:  pkgconfig(sdl)
 %if 0%{?suse_version}
 BuildRequires:  update-desktop-files
 %endif
-BuildRequires:  pkgconfig(SDL_image)
-BuildRequires:  pkgconfig(SDL_mixer)
-BuildRequires:  pkgconfig(sdl)
 
 %description
 This is a SDL Bomberman clone.
@@ -61,23 +59,20 @@ case the only thing to avoid is accidentally killing yourself. Big deal...
 It's really a multiplayer game.
 
 %prep
-%setup -q -a2 -n %{oname}-%{version}
-#patch0
-
-# Remove not needed files
-rm -fr data/CVS
+%setup -q -a2 -n sdlbomber
 
 %build
-make %{?_smp_mflags} CPPFLAGS="%{optflags}"
+%make_build CPPFLAGS="%{optflags}"
+%make_build CPPFLAGS="%{optflags}" matcher
 
 %install
 # install wrapper
-install -Dm 0755 %{S:1} %{buildroot}%{_bindir}/%{name}
+install -Dm 0755 %{SOURCE1} %{buildroot}%{_bindir}/%{name}
 
 # install executables
 mkdir -p %{buildroot}%{_libexecdir}/%{name}
-install -Dm 0755 %{name1} %{buildroot}%{_libexecdir}/%{name}/%{name1}
-install -Dm 0755 %{name2} %{buildroot}%{_libexecdir}/%{name}/%{name2}
+install -Dm 0755 sdlbomber %{buildroot}%{_libexecdir}/%{name}/sdlbomber
+install -Dm 0755 matcher %{buildroot}%{_libexecdir}/%{name}/matcher
 
 # install directory
 cp -a data %{buildroot}%{_libexecdir}/%{name}/
@@ -88,15 +83,15 @@ for i in 22 32 48 64 72 96; do
 done
 
 # install Desktop file
-install -Dm 0644 %{S:3} %{buildroot}%{_datadir}/applications/%{name}.desktop
+install -Dm 0644 %{SOURCE3} %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %if 0%{?suse_version}
     %suse_update_desktop_file %{name}
 %endif
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog README
+%license COPYING
+%doc AUTHORS ChangeLog README
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor

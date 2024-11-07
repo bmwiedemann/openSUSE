@@ -28,6 +28,7 @@ Source:         https://github.com/lsof-org/lsof/archive/refs/tags/%{version}.ta
 Patch0:         lsof-4.99.3-fix-version-in-configure-ac.patch
 Patch1:         0001-tests-eliminate-use-of-fgrep.patch
 Patch2:         0002-linux-Maintain-original-output-for-pidfd-in-linux-6..patch
+Patch3:         reproducible.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  groff

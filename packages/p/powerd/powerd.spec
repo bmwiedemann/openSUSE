@@ -1,7 +1,7 @@
 #
 # spec file for package powerd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,7 @@ Source0:        powerd-%{version}.tar.bz2
 Source2:        powerd.service
 Patch0:         powerd-%{version}.dif
 Patch1:         powerd-%{version}-getaddrinfo.patch
+Patch2:         powerd-%{version}-gcc14.patch
 %if %{undefined _unitdir}
 %{expand: %%global %_unitdir %(pkg-config systemd --variable=systemdsystemunitdir)}
 %endif

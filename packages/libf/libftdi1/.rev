@@ -189,4 +189,12 @@ D 0001-Fix-race-during-build-of-python-bindings.patch
 Patch got integrated mainline</comment>
     <requestid>1207954</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>0d0956ea9a5627d387bd4875b5a78f06</srcmd5>
+    <version>1.5.42+git.de9f01e</version>
+    <time>1730993025</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1222035</requestid>
+  </revision>
 </revisionlist>

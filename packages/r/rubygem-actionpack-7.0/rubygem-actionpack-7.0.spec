@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-actionpack-7.0
-Version:        7.0.8.4
+Version:        7.0.8.6
 Release:        0
 %define mod_name actionpack
 %define mod_full_name %{mod_name}-%{version}

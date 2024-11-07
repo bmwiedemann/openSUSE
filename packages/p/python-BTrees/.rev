@@ -187,4 +187,12 @@
   * Build Windows wheels on GHA.</comment>
     <requestid>1178917</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>3f95c7564b1524a42707923c2069f4eb</srcmd5>
+    <version>6.1</version>
+    <time>1730993310</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1222093</requestid>
+  </revision>
 </revisionlist>

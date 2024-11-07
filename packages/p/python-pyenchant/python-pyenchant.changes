@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov  6 10:39:46 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Skip two tests failing with new enchant
+  * https://github.com/pyenchant/pyenchant/issues/313
+
+-------------------------------------------------------------------
 Mon Mar 11 17:11:43 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Skip problematic multprocessing test for ALP, bsc#1221034

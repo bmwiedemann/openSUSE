@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rubocop
-Version:        1.64.1
+Version:        1.68.0
 Release:        0
 %define mod_name rubocop
 %define mod_full_name %{mod_name}-%{version}
@@ -37,7 +37,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Automatic Ruby code style checking tool
 License:        MIT
-PreReq:         update-alternatives
 
 %description
 RuboCop is a Ruby code style checking and code formatting tool.

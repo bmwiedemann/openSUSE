@@ -107,4 +107,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1182828</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>41156cdec4ba6914f4a8e091b435b924</srcmd5>
+    <version>7.0.8.6</version>
+    <time>1730993205</time>
+    <user>anag+factory</user>
+    <comment>- Update allow-newer-sqlite.patch to also allow newer puma
+
+- Added allow-newer-sqlite.patch to loosen up the sqlite3
+  dependency similar to newer rails
+
+- ## Rails 7.0.8.6 (October 23, 2024) ##
+*   No changes.
+## Rails 7.0.8.5 (October 15, 2024) ##
+*   No changes.</comment>
+    <requestid>1222141</requestid>
+  </revision>
 </revisionlist>

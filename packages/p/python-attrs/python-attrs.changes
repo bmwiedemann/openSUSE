@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Nov  5 13:03:04 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Upgrade to 24.2.0:
+  - Big releases always carry the risk of regressions, but never
+    did I expect to break Python 3.14’s CI! On the plus side,
+    attrs runs on 3.14 now.
+- Upgrade to 24.1.0:
+  - The most notable is probably the possibility to receive self
+    and field definitions in your converters by wrapping them
+    into a attrs.Converter.
+  - The other big thing is our own replacement
+    for __init_subclass__ called (you guessed it)
+    __attrs_init_subclass__. Check out the docs, if you're not
+    sure what this is good for.
+  - Finally, we've made more important steps to promote our "new"
+    APIs (can you believe they're 4 years old!?) in the docs. If
+    we missed anything, please let us know.
+- Remove upstreamed patch:
+  - pytest8.patch
+
+-------------------------------------------------------------------
 Fri May 17 09:51:39 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Add patch pytest8.patch to adapt the tests to the new pytest

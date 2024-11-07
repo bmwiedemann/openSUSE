@@ -1,6 +1,0 @@
--------------------------------------------------------------------
-Wed Sep 16 17:18:00 UTC 2020 - Petr Vorel <pvorel@suse.cz>
-
-- initial package version
-- fixed description extention -> extension, but not rpm lint warning
-(reported upstream https://github.com/prawnpdf/prawn-templates/pull/28)

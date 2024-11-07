@@ -1,0 +1,40 @@
+From 218f67846472c9310355210ee9a7e1fabed95062 Mon Sep 17 00:00:00 2001
+From: shiningdracon <shiningdracon@gmail.com>
+Date: Sun, 8 Sep 2024 19:34:26 -0700
+Subject: [PATCH 3/3] egl-wayland: Handle failure to acquire image in
+ wlEglSendDamageEvent
+
+The image parameter of send_explicit_sync_points is assumed not to be
+null, however this is a case the rest of the code handles. This causes
+sporadic problems on KDE when running overnight as the image will not
+be valid at some point, causing us to crash.
+
+Fixes #143
+---
+ src/wayland-eglsurface.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/src/wayland-eglsurface.c b/src/wayland-eglsurface.c
+index 4e4dcff..ae6cafc 100644
+--- a/src/wayland-eglsurface.c
++++ b/src/wayland-eglsurface.c
+@@ -265,11 +265,13 @@ wlEglSendDamageEvent(WlEglSurface *surface,
+         }
+ 
+         image = pop_acquired_image(surface);
+-        if (image) {
+-            surface->ctx.currentBuffer = image->buffer;
+-            image->attached = EGL_TRUE;
++        if (!image) {
++            return EGL_FALSE;
+         }
+ 
++        surface->ctx.currentBuffer = image->buffer;
++        image->attached = EGL_TRUE;
++
+         /*
+          * Send our explicit sync acquire and release points. This needs to be done
+          * as part of the surface attach as it is a protocol error to specify these
+-- 
+2.43.0
+

@@ -27,8 +27,7 @@
 %define modname translate_toolkit
 
 %define binaries_and_manpages %{shrink:\
-    poclean pocompile poconflicts podebug pofilter pogrep pomerge porestructure posegment poswap poterminology \
-    pretranslate \
+    poclean pocompile poconflicts podebug pofilter pogrep pomerge porestructure posegment poswap poterminology pretranslate \
     android2po csv2po csv2tbx dtd2po flatxml2po html2po ical2po idml2po ini2po json2po \
     moz2po mozfunny2prop mozlang2po odf2xliff oo2po oo2xliff php2po phppo2pypo \
     po2csv po2dtd po2flatxml po2html po2ical po2idml po2ini po2json po2moz po2mozlang po2oo \
@@ -41,14 +40,15 @@
 %define manpages translatetoolkit %binaries_and_manpages
 
 Name:           translate-toolkit%{psuffix}
-Version:        3.13.1
+Version:        3.13.3
 Release:        0
 Summary:        Tools and API to assist with translation and software localization
 License:        GPL-2.0-or-later
 URL:            https://toolkit.translatehouse.org/
 Source:         https://files.pythonhosted.org/packages/source/t/%{modname}/%{modname}-%{version}.tar.gz
 Patch0:         xliff-xsd-no-network.patch
-Patch1:         sphinx-intersphinx.patch
+# PATCH-FIX-UPSTREAM https://github.com/translate/translate/pull/5349 feat: Python 3.13 compatibility
+Patch1:         py313.patch
 BuildRequires:  %{python_module Levenshtein >= 0.12}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module sphinx-bootstrap-theme}
@@ -65,6 +65,7 @@ BuildRequires:  %{python_module pyparsing}
 BuildRequires:  %{python_module setuptools >= 42}
 BuildRequires:  %{python_module setuptools_scm >= 6.2}
 BuildRequires:  %{python_module vobject >= 0.9.6.1}
+BuildRequires:  %{python_module wcwidth}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes

@@ -1,0 +1,20 @@
+Index: jbuilder-2.13.0/bin/release
+===================================================================
+--- jbuilder-2.13.0.orig/bin/release
++++ jbuilder-2.13.0/bin/release
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/bin/bash
+ 
+ VERSION=$1
+ 
+Index: jbuilder-2.13.0/bin/test
+===================================================================
+--- jbuilder-2.13.0.orig/bin/test
++++ jbuilder-2.13.0/bin/test
+@@ -1,4 +1,4 @@
+-#!/bin/env bash
++#!/bin/bash
+ set -e
+ 
+ bundle install

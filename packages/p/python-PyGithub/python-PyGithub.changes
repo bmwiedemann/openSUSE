@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov  7 06:44:31 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update to 2.5.0
+  * Make tests pass after 2024-11-25 (https://github.com/PyGithub/PyGithub/pull/3045, boo#1102840)
+
+-------------------------------------------------------------------
 Sun Sep  8 12:25:40 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.4.0

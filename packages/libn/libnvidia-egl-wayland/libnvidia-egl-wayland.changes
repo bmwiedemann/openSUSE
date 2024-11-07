@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov  6 15:53:40 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- 0001-egl-wayland-enable-CI-with-github-actions.patch
+  0002-egl-wayland-Fix-use-after-free-in-library-teardown.patch
+  0003-egl-wayland-Handle-failure-to-acquire-image-in-wlEgl.patch
+  * apply latest fixes from git
+
+-------------------------------------------------------------------
 Mon Oct  7 13:40:16 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - 0001-egl-wayland-bump-version-to-1.1.17.patch

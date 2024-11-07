@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Sep 30 13:47:39 UTC 2024 - Felix Dumbeck <felix@dumbeck.net>
+
+- Update to 2.8.2
+  + maintainer has changed their name from abiWord to rrthomas on
+    Github, hence update Source and URL to new home.
+  + Switch to vala.
+  + Use doxygen and groff-full for documentation.
+  + nuspell >= 5.1.0 is required.
+  + for more information see: NEWS
+- Add doxygen, vala and groff-full BuildRequires following upstream
+  changes.
+- Pass --docdir=%%{_defaultdocdir}/%%{name} to configure, package
+  the now built documentation in openSUSE standard.
+
+-------------------------------------------------------------------
 Fri Feb 24 12:40:55 UTC 2023 - pgajdos@suse.com
 
 - Use %bcond_without aspell, ref ALP push for as few mandatory

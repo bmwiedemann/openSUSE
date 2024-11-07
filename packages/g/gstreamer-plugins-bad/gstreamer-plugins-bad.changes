@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Nov  5 14:57:07 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Disable RDF parsing for Ladspa plugins. It provides hardly any
+  value (glfo#gstreamer/gstreamer#3168), but has a fairly large
+  reverse dependency set. Drop pkgconfig(lrdf) BuildRequires and
+  pass ladspa-rdf=disabled to meson setup.
+
+-------------------------------------------------------------------
+Tue Nov  5 09:51:24 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.24.9:
+  + avfdeviceprovider: Fix leak from the GstCaps
+  + codecparsers: add debug categories to bitwriters
+  + codectimestamper: Fix gint wraparound in pts_compare_func
+  + dvxa: Explicitly use cpp_std=c++11
+  + GstPlay: message parsing and documentation improvements
+  + h26xbitwriter: false have_space if aligning fails on aud
+  + kmsallocator: fix stride with planar formats
+  + kmssink: Add IMX-DCSS auto-detection
+  + mpegtsdemux: Handle PTS/DTS wraparound with ignore-pcr=true
+  + rtmp2sink: Initialize base_ts / last_ts with the actual first
+    observed timestamp
+  + scenechange: fix memory leak
+  + srt: Don't attempt to reconnect on authentication failures
+  + srtsink: Register SRT listen callback before binding socket
+  + tests:
+    - lc3: Allocate the same size for the buffer and the data
+    - va: fix vapostproc test for DMABuf
+  + va: Fix libdrm include, plus meson and wrap changes
+  + vp8decoder: Fix resolution change handling
+  + vtdec: add support for level 6 6.1 and 6.2
+  + vaav1enc: Do not enable palette mode by default
+  + wayland: Add NV15 support
+  + webrtcbin: Clean up bin elements when datachannel is removed
+
+-------------------------------------------------------------------
 Mon Sep 23 13:10:10 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.24.8:

@@ -1,4 +1,170 @@
 -------------------------------------------------------------------
+Thu Nov  7 11:38:10 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Allow newer puma as well
+
+-------------------------------------------------------------------
+Thu Nov  7 10:57:16 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- loosen the sqlite3 dependency following the change in railties
+  7.0
+
+-------------------------------------------------------------------
+Mon Nov  4 17:18:49 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- 7.0.8.6:
+
+## Active Support
+
+*   No changes.
+
+
+## Active Model
+
+*   No changes.
+
+
+## Active Record
+
+*   No changes.
+
+
+## Action View
+
+*   No changes.
+
+
+## Action Pack
+
+*   No changes.
+
+
+## Active Job
+
+*   No changes.
+
+
+## Action Mailer
+
+*   Fix NoMethodError in `block_format` helper
+
+    *Michael Leimstaedtner*
+
+
+## Action Cable
+
+*   No changes.
+
+
+## Active Storage
+
+*   No changes.
+
+
+## Action Mailbox
+
+*   No changes.
+
+
+## Action Text
+
+*   No changes.
+
+
+## Railties
+
+*   No changes.
+
+
+## Guides
+
+*   No changes.
+
+
+
+
+7.0.8.5:
+
+## Active Support
+
+*   No changes.
+
+
+## Active Model
+
+*   No changes.
+
+
+## Active Record
+
+*   No changes.
+
+
+## Action View
+
+*   No changes.
+
+
+## Action Pack
+
+*   Avoid regex backtracking in HTTP Token authentication
+
+    [CVE-2024-47887]
+
+*   Avoid regex backtracking in query parameter filtering
+
+    [CVE-2024-41128]
+
+
+## Active Job
+
+*   No changes.
+
+
+## Action Mailer
+
+*   Avoid regex backtracking in `block_format` helper
+
+    [CVE-2024-47889]
+
+
+## Action Cable
+
+*   No changes.
+
+
+## Active Storage
+
+*   No changes.
+
+
+## Action Mailbox
+
+*   No changes.
+
+
+## Action Text
+
+*   Avoid backtracing in plain_text_for_blockquote_node
+
+    [CVE-2024-47888]
+
+
+## Railties
+
+*   No changes.
+
+
+## Guides
+
+*   No changes.
+
+
+
+
+
+
+-------------------------------------------------------------------
 Fri Jun 21 10:29:00 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
 
 - 7.0.8.4:

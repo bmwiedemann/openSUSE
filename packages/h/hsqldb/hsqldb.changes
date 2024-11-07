@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov  7 08:51:16 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
+
+- Upgrade to version 2.7.4:
+  * version 2.7.4 jar requires JRE 11 or later - can be used as a
+    java module  - tested up to Java 21
+  * version 2.7.4 alternative jar requires JRE 8 or later
+  * added support for SQL:2023 LISTAGG aggregate function
+  * added support for update and delete visiblility in JDBC
+    scrollable and updatable result sets
+  * fixed a number of reported regressions and bugs (see tracker)
+
+-------------------------------------------------------------------
 Mon Sep 23 13:32:15 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Nov  2 20:13:16 CET 2024 - kurt@garloff.de
+
+- Update to dd_rescue-1.99.17:
+  * Plugin libddr_lzma.so: LZMA2/xz de/compression from Dmitrii
+    Ivanov. Covering the other end of the spectrum of LZO, with
+    high compression ratios at high CPU cost for compression.
+    (Decompression is cheap for both.)
+  * Code review and streamlining for dd_rescue integration by
+    Kurt Garloff.
+
+-------------------------------------------------------------------
 Sun Sep 29 20:48:16 CEST 2024 - kurt@garloff.de
 
 - Update to dd_rescue-1.99.16:

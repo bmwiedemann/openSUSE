@@ -9,11 +9,11 @@ Subject: [PATCH] Install Linux desktop icons in standardized directories
  crawl-ref/source/linux/crawl.svg | 2154 +++++++++++++++++++++++++++++++++++++++
  2 files changed, 2156 insertions(+)
 
-Index: stone_soup-0.25.1/source/Makefile
+Index: stone_soup-0.32.1/source/Makefile
 ===================================================================
---- stone_soup-0.25.1.orig/source/Makefile
-+++ stone_soup-0.25.1/source/Makefile
-@@ -1471,6 +1471,9 @@ endif
+--- stone_soup-0.32.1.orig/source/Makefile
++++ stone_soup-0.32.1/source/Makefile
+@@ -1585,6 +1585,9 @@ endif
  	$(COPY_R) ../settings/* $(datadir_fp)/settings/
  	[ -d $(prefix_fp)/share/applications ] || mkdir -p $(prefix_fp)/share/applications
  	$(COPY) linux/crawl.desktop $(prefix_fp)/share/applications
@@ -23,10 +23,10 @@ Index: stone_soup-0.25.1/source/Makefile
  ifeq ($(GAME),crawl.exe)
  	$(SED) -i 's/$$/\r/' `find $(datadir_fp) -iname '*.txt' -or -iname '*.des'`
  endif
-Index: stone_soup-0.25.1/source/linux/crawl.svg
+Index: stone_soup-0.32.1/source/linux/crawl.svg
 ===================================================================
 --- /dev/null
-+++ stone_soup-0.25.1/source/linux/crawl.svg
++++ stone_soup-0.32.1/source/linux/crawl.svg
 @@ -0,0 +1,2154 @@
 +<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 +<!-- Created with Inkscape (http://www.inkscape.org/) -->

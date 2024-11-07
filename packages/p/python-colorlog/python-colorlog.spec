@@ -18,14 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-colorlog
-Version:        6.8.2
+Version:        6.9.0
 Release:        0
 Summary:        Log formatting with colors
 License:        MIT
 URL:            https://github.com/borntyping/python-colorlog
 Source:         https://files.pythonhosted.org/packages/source/c/colorlog/colorlog-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Partial patch from gh#borntyping/python-colorlog#607485def2d60b60c40c0d682574324b47fc30ba
-Patch0:         support-python-313.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}

@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-sprockets-rails
-Version:        3.5.1
+Version:        3.5.2
 Release:        0
 %define mod_name sprockets-rails
 %define mod_full_name %{mod_name}-%{version}

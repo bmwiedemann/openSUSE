@@ -1,7 +1,7 @@
 #
 # spec file for package scheme48
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,20 @@
 
 #!BuildIgnore:  scheme48-vm
 Name:           scheme48
-Version:        1.9.2
+Version:        1.9.3
 Release:        0
 Summary:        An implementation of Scheme written by Richard Kelsey and Jonathan Rees
 License:        BSD-3-Clause
 Group:          Development/Languages/Scheme
-Url:            http://www.s48.org/
-Source0:        http://www.s48.org/1.9.2/scheme48-1.9.2.tgz 
+URL:            https://www.s48.org/
+Source0:        https://www.s48.org/1.9.3/scheme48-1.9.3.tgz
 Source1:        scheme48-rpmlintrc
 Patch0:         noreturn.patch
 Patch1:         no-env-trampoline.diff
 Patch2:         debian-user-name.diff
 Patch3:         man-properly-escape-minuses.diff
 Patch4:         security-tmpfile.patch
+#Patch5:         scheme48-1.9.2-gcc14.patch
 BuildRequires:  emacs-nox
 Requires:       %{name}-vm = %{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -132,7 +133,7 @@ emacs -q -no-site-file -batch -eval "(byte-compile-file \"emacs/cmuscheme48.el\"
 # It's now 2019, no latin text anymore
 for f in README COPYING
 do
-    iconv -f latin1 -t utf-8 -o $f.new $f 
+    iconv -f latin1 -t utf-8 -o $f.new $f
     touch -r $f $f.new
     mv $f.new $f
 done

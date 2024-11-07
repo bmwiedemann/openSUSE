@@ -18,9 +18,9 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-endesive
-Version:        2.17.2
+Version:        2.17.3
 Release:        0
-Summary:        Library for digital signing and verification of digital signatures.
+Summary:        Library for digital signing and verification of digital signatures
 License:        MIT
 URL:            https://github.com/m32/endesive
 Source:         https://github.com/m32/endesive/archive/refs/tags/v%{version}.tar.gz#/endesive-%{version}.tar.gz
@@ -68,6 +68,7 @@ Library for digital signing and verification of digital signatures in mail, PDF 
 sed -i 's|2.17.1|2.17.2|g' endesive/__init__.py
 # Set correct path to find the softhsm library, needed for test_create and test_load
 sed -i 's|softhsm/libsofthsm2.so|pkcs11/libsofthsm2.so|g' tests/test_hsm.py
+find . -name "*.py" -exec sed -i '/\/usr\/bin\/env.*python.*/d' {} \;
 
 %build
 %python_build

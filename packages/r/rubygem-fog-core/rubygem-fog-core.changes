@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Nov  4 16:42:39 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- 2.6.0 10/24/2024
+==========================================================
+
+- bump to excon ~> 1.0
+
+2.5.0 08/02/2024
+==========================================================
+
+- drop spec files from gem package
+- fix 3.4+ ruby issues (string literals and base64)
+- bump rubocop target
+- remove stale actions
+- fixes to ci
+- add security policy
+- add gem version badge
+- add funding info
+
+
+-------------------------------------------------------------------
 Mon Jan 29 14:00:54 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
 
 - 2.4.0 01/03/2024

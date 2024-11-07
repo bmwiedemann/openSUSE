@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-jbuilder
-Version:        2.12.0
+Version:        2.13.0
 Release:        0
 %define mod_name jbuilder
 %define mod_full_name %{mod_name}-%{version}
@@ -33,7 +33,11 @@ BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/rails/jbuilder
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
-Source1:        gem2rpm.yml
+Source1:        series
+Source2:        gem2rpm.yml
+# MANUAL
+Patch0:         fix-shebang.patch
+# /MANUAL
 Summary:        Create JSON structures via a Builder-style DSL
 License:        MIT
 
@@ -41,6 +45,10 @@ License:        MIT
 Create JSON structures via a Builder-style DSL.
 
 %prep
+%gem_unpack
+%patch -P 0 -p1
+find -type f -print0 | xargs -0 touch -r %{S:0}
+%gem_build
 
 %build
 

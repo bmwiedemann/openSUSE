@@ -70,3 +70,7 @@
 #     :post: |-
 #       /bin/echo foo
 :version_suffix: '-7.0'
+:sources:
+   - series
+:patches:
+  allow-newer-sqlite.patch: -p1

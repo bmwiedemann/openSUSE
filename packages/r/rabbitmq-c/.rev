@@ -123,4 +123,15 @@
   - rabbitmq-c can be compiled against BoringSSL (#814) (forwarded request 1164340 from pgajdos)</comment>
     <requestid>1167750</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>8904d63efa8482893038a2734d814072</srcmd5>
+    <version>0.14.0</version>
+    <time>1730993307</time>
+    <user>anag+factory</user>
+    <comment>- tools: fix default cacert location
+- added patches
+  fix [bsc#1232541]
+  + rabbitmq-c-default-cacert-location.patch</comment>
+    <requestid>1222118</requestid>
+  </revision>
 </revisionlist>

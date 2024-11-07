@@ -7,4 +7,13 @@
     <comment>Required by openSUSE:Factory:Staging:adi:22</comment>
     <requestid>989967</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8950120b52fa52342ddb960202ba639a</srcmd5>
+    <version>0.2.0</version>
+    <time>1730993180</time>
+    <user>anag+factory</user>
+    <comment>- Clean up the SPEC file.
+</comment>
+    <requestid>1221779</requestid>
+  </revision>
 </revisionlist>

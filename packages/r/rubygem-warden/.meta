@@ -1,8 +1,0 @@
-<package name="rubygem-warden" project="openSUSE:Factory">
-  <title>Rack middleware that provides authentication for rack applications</title>
-  <description>Rack middleware that provides authentication for rack applications
-
-</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-warden"/>
-  <url>http://github.com/hassox/warden</url>
-</package>

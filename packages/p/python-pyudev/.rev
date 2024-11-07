@@ -302,4 +302,14 @@
   * Support pytest 8 changes.</comment>
     <requestid>1174103</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>b090b1255fb75d5eeb572c5642551fa1</srcmd5>
+    <version>0.24.3</version>
+    <time>1730993024</time>
+    <user>anag+factory</user>
+    <comment>- Skipping test suite completely, it just doesn’t work in the
+  limited build environment (gh#pyudev/pyudev#404).
+- Remove unnecessary patch support-pytest-8.patch.</comment>
+    <requestid>1221963</requestid>
+  </revision>
 </revisionlist>

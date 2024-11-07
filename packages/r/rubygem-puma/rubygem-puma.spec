@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-puma
-Version:        6.4.2
+Version:        6.4.3
 Release:        0
 %define mod_name puma
 %define mod_full_name %{mod_name}-%{version}
@@ -41,7 +41,6 @@ Source1:        rubygem-puma-rpmlintrc
 Source2:        gem2rpm.yml
 Summary:        Puma is a simple, fast, threaded, and highly parallel HTTP 1.1
 License:        BSD-3-Clause
-PreReq:         update-alternatives
 
 %description
 Puma is a simple, fast, threaded, and highly parallel HTTP 1.1 server for

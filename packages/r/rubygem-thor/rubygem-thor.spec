@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-thor
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 %define mod_name thor
 %define mod_full_name %{mod_name}-%{version}
@@ -37,7 +37,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Thor is a toolkit for building powerful command-line interfaces
 License:        MIT
-PreReq:         update-alternatives
 
 %description
 Thor is a toolkit for building powerful command-line interfaces.

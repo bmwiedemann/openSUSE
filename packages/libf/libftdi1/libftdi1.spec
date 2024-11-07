@@ -26,6 +26,8 @@ License:        LGPL-2.1-only AND GPL-2.0-only AND GPL-2.0-with-classpath-except
 Group:          Hardware/Other
 URL:            https://www.intra2net.com/en/developer/libftdi
 Source:         libftdi1-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM     http://developer.intra2net.com/mailarchive/html/libftdi/2024/msg00024.html
+Patch1:         swig-4.3.patch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++

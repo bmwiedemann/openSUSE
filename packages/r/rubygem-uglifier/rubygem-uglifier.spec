@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-uglifier
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,20 +24,18 @@
 #
 
 Name:           rubygem-uglifier
-Version:        4.2.0
+Version:        4.2.1
 Release:        0
 %define mod_name uglifier
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 1.9.3}
+BuildRequires:  %{ruby >= 2.4.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
-Url:            http://github.com/lautis/uglifier
+URL:            https://github.com/lautis/uglifier
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Ruby wrapper for UglifyJS JavaScript compressor
-License:        MIT AND BSD-3-Clause
-Group:          Development/Languages/Ruby
+License:        BSD-3-Clause AND MIT
 
 %description
 Uglifier minifies JavaScript files by wrapping UglifyJS to be accessible in

@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-gli
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-gli
-Version:        2.21.1
+Version:        2.22.0
 Release:        0
 %define mod_name gli
 %define mod_full_name %{mod_name}-%{version}
@@ -33,12 +33,11 @@ BuildRequires:  %{ruby}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  update-alternatives
-Url:            http://davetron5000.github.io/gli
+URL:            http://davetron5000.github.io/gli
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Build command-suite CLI apps that are awesome
 License:        Apache-2.0
-PreReq:         update-alternatives
 
 %description
 Build command-suite CLI apps that are awesome.  Bootstrap your app, add

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov  4 17:23:51 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- ## 3.0.0 - October 2024
+- BREAKING: Dropped support for ruby 2.6.0 and lower
+- Bugfix for missing newline behind `ol`, thanks @Kevinrob, see #104
+- Add support for `iframe` tags, thanks @gagandeepsinghj, see #102
+- Support for frozen string literals, thanks @pat, see #105
+
+
+-------------------------------------------------------------------
 Tue Jan 25 07:27:50 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.1.1

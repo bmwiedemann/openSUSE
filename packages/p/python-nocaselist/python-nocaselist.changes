@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov  7 08:07:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.3:
+  * Fixed safety issues up to 2024-08-18.
+  * Fixed new issues from pylint 3.2.
+  * Fixed missing Python 3.12 in Trove classifiers.
+  * Increased vrsions of GitHub Actions plugins used, to eliminate
+    warnings about node v16.
+
+-------------------------------------------------------------------
 Tue Jun  4 20:40:32 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.2:

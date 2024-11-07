@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-bootsnap
-Version:        1.18.3
+Version:        1.18.4
 Release:        0
 %define mod_name bootsnap
 %define mod_full_name %{mod_name}-%{version}
@@ -37,7 +37,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Boot large ruby/rails apps faster
 License:        MIT
-PreReq:         update-alternatives
 
 %description
 Boot large ruby/rails apps faster.

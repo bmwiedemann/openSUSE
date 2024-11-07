@@ -4074,4 +4074,14 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
 </comment>
     <requestid>1219012</requestid>
   </revision>
+  <revision rev="280" vrev="2">
+    <srcmd5>a8b1602a609a04123573e54d614155e7</srcmd5>
+    <version>9.1.1</version>
+    <time>1730993058</time>
+    <user>anag+factory</user>
+    <comment>- Fix bsc#1232617:
+  * qemu-ga: Fix a SIGSEGV in ga_run_command() helper (bsc#1232617)
+</comment>
+    <requestid>1221801</requestid>
+  </revision>
 </revisionlist>

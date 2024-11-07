@@ -67,4 +67,7 @@
 #       bar
 #     :post: |-
 #       /bin/echo foo
-#
+:sources:
+  - series
+:patches:
+  fix-shebang.patch: -p1

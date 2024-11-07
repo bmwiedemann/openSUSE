@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov  6 15:41:28 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 6.9.0
+  * Support Python 3.13
+  * Satisfy mypy
+- Drop support-python-313.patch, merged upstream
+
+-------------------------------------------------------------------
 Tue Oct 29 04:28:54 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to autosetup and pyproject macros.

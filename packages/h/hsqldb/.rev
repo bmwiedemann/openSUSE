@@ -282,4 +282,12 @@
     <comment>Reproducible build</comment>
     <requestid>1202688</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>9b2c968338e8a84c10e167d204817cfa</srcmd5>
+    <version>2.7.4</version>
+    <time>1730993292</time>
+    <user>anag+factory</user>
+    <comment>Upgrade to version 2.7.4</comment>
+    <requestid>1222052</requestid>
+  </revision>
 </revisionlist>

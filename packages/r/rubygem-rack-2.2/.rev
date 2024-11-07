@@ -72,4 +72,12 @@ See installed CHANGELOG.md for more changes</comment>
   * Return empty when parsing a multi-part POST with only one end delimiter. (https://github.com/rack/rack/pull/2104) (forwarded request 1160695 from enavarro_suse)</comment>
     <requestid>1161337</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9008b8362fa39cd5a812d80bfbe45c4d</srcmd5>
+    <version>2.2.10</version>
+    <time>1730993255</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1221898</requestid>
+  </revision>
 </revisionlist>

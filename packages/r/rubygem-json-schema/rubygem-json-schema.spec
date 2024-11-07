@@ -24,11 +24,11 @@
 #
 
 Name:           rubygem-json-schema
-Version:        4.3.0
+Version:        5.0.1
 Release:        0
 %define mod_name json-schema
 %define mod_full_name %{mod_name}-%{version}
-BuildRequires:  %{ruby >= 2.5}
+BuildRequires:  %{ruby >= 2.7}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/voxpupuli/json-schema/

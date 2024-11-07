@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov  6 15:19:26 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.17.3
+  * Creating certificates with dates after 2040-01-04
+- Remove shebangs from Python source files
+- Remove period from summary line
+
+-------------------------------------------------------------------
 Thu Aug 22 20:51:33 UTC 2024 - Aline Werner <aline.werner@suse.com>
 
 - Add extra dependency and fix info files not found issue.

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov  4 16:05:34 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- ## 10.4.19.0
+* Removed `end value has mixed support, consider using flex-end` warning
+  since `end`/`start` now have good support.
+* Fixed removing `-webkit-box-orient` on `-webkit-line-clamp` (@Goodwine).
+* Fixed `user-select: contain` prefixes.
+
+
+-------------------------------------------------------------------
 Tue Nov 28 07:59:46 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
 
 - ## 10.4.16.0

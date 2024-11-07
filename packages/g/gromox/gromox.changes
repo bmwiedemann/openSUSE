@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Nov  6 15:51:31 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.36
+  * ews: fix an ABA locking problem when EWS unsubscribe actions
+    were processed
+  * genimport: fix a data juggling issue that led to mt2exm
+    printing ``proptag … from input stream has no named property
+    info``
+  * mbck: do not attempt to repair allocated_eids if repair mode
+    was not selected, fixing mbck printing ``sqlite3_prep(INSERT
+    INTO allocated_eids) ... inside a readonly TXN``.
+  * exmdb: fix an issue where creating new embedded messages
+    could lead to ``sqlite3_exec(… INSERT INTO messages ...
+    VALUES (65536, …): UNIQUE constraint failed: messages.message_id (19)``
+  * mkprivate et al: fix an issue where force-overwriting
+    databases would print "database is locked"
+  * mbop: new commands "ping", "for-all-users", "echo-username"
+  * exmdb: faster process shutdown through parallelized closing
+    of sqlite files
+  * exmdb: better location diagnostics for RO-RO transactions,
+    for RW-in-RO, and ROLLBACK issues
+  * exmdb: deactivate implicit integrity check when upgrading a
+    mailbox's database schema, it takes too much time
+    (Integrity checks can still be done offline with ``mkprivate
+    -U --integ``)
+
+-------------------------------------------------------------------
 Tue Oct 15 11:24:31 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.35

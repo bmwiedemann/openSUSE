@@ -30,19 +30,19 @@ BuildRequires:  ruby
 BuildRequires:  ruby-devel
 %endif
 Name:           swig
-Version:        4.2.1
+Version:        4.3.0
 Release:        0
 Summary:        Simplified Wrapper and Interface Generator
 License:        BSD-3-Clause AND GPL-3.0-or-later
 Group:          Development/Languages/C and C++
 URL:            https://www.swig.org/
-Source:         https://sourceforge.net/projects/swig/files/swig/swig-%{version}/%{name}-%{version}.tar.gz
+Source:         https://prdownloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 Source1:        %{name}.rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  pcre2-devel
 BuildRequires:  perl
 BuildRequires:  pkgconfig
-%if 0%{?suse_version} <= 1600
+%if 0%{?suse_version} < 1600
 BuildRequires:  gcc12
 BuildRequires:  gcc12-c++
 %else
@@ -120,10 +120,10 @@ This package contains SWIG examples, useful both for testing and
 understandig SWIG usage.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-%{version}
 
 %build
-%if 0%{?suse_version} <= 1600
+%if 0%{?suse_version} < 1600
 export CC=gcc-12
 export CXX=g++-12
 %endif
@@ -140,6 +140,10 @@ export CCSHARED="-fPIC"
 %check
 %if 0%{?suse_version} >= 1500 || 0%{?centos_version} >= 800
 export PY3=true
+%endif
+%if 0%{?suse_version} < 1600
+export CC=gcc-12
+export CXX=g++-12
 %endif
 %make_build check EXTRA_CXXFLAGS="-fexcess-precision=fast"
 

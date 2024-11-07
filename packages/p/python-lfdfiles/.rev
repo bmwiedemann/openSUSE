@@ -114,4 +114,16 @@
     <comment></comment>
     <requestid>1188217</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>cb2464a1099d0fdd839c0d4faf327609</srcmd5>
+    <version>2024.10.24</version>
+    <time>1730993297</time>
+    <user>anag+factory</user>
+    <comment>- update to 2024.10.24:
+  * Fix variable length little-endian base 128 decoding.
+  * Improve typing.
+  * Deprecate Python 3.9, support Python 3.13.
+  * Fix docstring examples not correctly rendered on GitHub.</comment>
+    <requestid>1222053</requestid>
+  </revision>
 </revisionlist>

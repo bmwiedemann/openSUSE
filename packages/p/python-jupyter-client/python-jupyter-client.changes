@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov  6 20:11:01 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Only skip the tests on python 3.13 due to missing dependencies
+
+-------------------------------------------------------------------
+Thu Oct 31 10:17:43 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- skip for python 313
+
+-------------------------------------------------------------------
 Thu Oct 24 07:29:00 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.6.3:

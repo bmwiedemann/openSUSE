@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-docker-api
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 %define mod_name docker-api
 %define mod_full_name %{mod_name}-%{version}
@@ -34,7 +34,7 @@ Requires: %{rubygem excon} >= 0.46.0
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{ruby}
 BuildRequires:  %{rubygem gem2rpm}
-Url:            https://github.com/upserve/docker-api
+URL:            https://github.com/upserve/docker-api
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        A simple REST client for the Docker Remote API

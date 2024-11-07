@@ -682,7 +682,6 @@ Requires:       selinux-tools
 Requires:       pattern() = minimal_base
 Recommends:     checkpolicy
 Recommends:     container-selinux
-Recommends:     restorecond
 Recommends:     selinux-policy-targeted
 
 %description selinux

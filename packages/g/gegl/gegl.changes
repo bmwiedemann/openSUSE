@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Wed Nov  6 22:42:54 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 0.4.50:
+  - Core:
+    - Better Gobject Introspection annotation coverage.
+    - Improved error handling for gegl chain processing.
+    - Added accessors for pad meta-data, to be able to show names and descriptions in UIs.
+    - GeglColor: more lax parameters for g_arapm_values_cmp
+  - Ops:
+    API: GEGL_OP_NAME needs to be uniqe .c filenames no longer
+    needs to be. First registered op with a given name now takes
+    precedence over later.
+    * exr-save: store 16bpc files as half, fixing gimp#10778
+    * ff-load, ff-save: fix build with FFmpeg 7
+    * dither: do processing in linear when all levels==2
+    * OpenCL: upgrade from 1.1 to 3.0, disable opencl caching
+      system - not crashing is more important than caching. And
+      fixes to the opencl operation of the following ops:
+    * alien-map
+    * color-to-alpha
+    * edge-sobel
+    * hue-chroma
+    * noise-reduction
+    * oilify
+    * snn-mean
+  - New Ops:
+    - styles: a UI for achieving many visual effects for use on
+      text and similar alpha defined shapes. bevel: simulate light
+      and shadow on an alpha defined shape. inner-glow: an inner
+      shadow glow effect
+  - New Ops in workshop:
+    - ctx-script: an experimental op for rendering ctx protocol
+      this might be a future basis for ctx-based vector layers.
+  - Build:
+    - Various meson cleanups.
+  - Updated vendored libraries
+    - ctx has been updated from upstream, perhaps most
+      significantly the protocol/drawing API has been fuzzed with
+      afl+
+- drop upstreamed patches:
+  66de8124.patch
+  revertleap.patch
+
+-------------------------------------------------------------------
 Mon Sep 16 11:20:53 UTC 2024 - Stephan Hemeier <Sauerlandlinux@gmx.de>
 
 - add revertleap.patch to get gegl build on older ffmpegs

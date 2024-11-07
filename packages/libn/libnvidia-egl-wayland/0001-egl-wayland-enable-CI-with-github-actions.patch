@@ -1,0 +1,108 @@
+From 40e835f197178e7e4387a042acc8f1dc42f810ee Mon Sep 17 00:00:00 2001
+From: Austin Shafer <ashafer@nvidia.com>
+Date: Wed, 9 Oct 2024 14:53:52 -0400
+Subject: [PATCH 1/3] egl-wayland: enable CI with github actions
+
+This enables CI for github actions builds, aimed for helping verify
+new pull requests. This adds tests for the meson and autotools builds
+on ubuntu 24.04. Other distros are apparently not supported by default
+so we aren't able to expand testing this way.
+---
+ .github/workflows/arch-build.yml       | 16 ++++++++++++++++
+ .github/workflows/autoconf-build.yml   | 14 ++++++++++++++
+ .github/workflows/meson-build.yml      | 14 ++++++++++++++
+ .github/workflows/meson-llvm-build.yml | 17 +++++++++++++++++
+ 4 files changed, 61 insertions(+)
+ create mode 100644 .github/workflows/arch-build.yml
+ create mode 100644 .github/workflows/autoconf-build.yml
+ create mode 100644 .github/workflows/meson-build.yml
+ create mode 100644 .github/workflows/meson-llvm-build.yml
+
+diff --git a/.github/workflows/arch-build.yml b/.github/workflows/arch-build.yml
+new file mode 100644
+index 0000000..3f56616
+--- /dev/null
++++ b/.github/workflows/arch-build.yml
+@@ -0,0 +1,16 @@
++name: Arch Build
++on: [push, pull_request]
++jobs:
++  Meson-Build:
++    runs-on: ubuntu-24.04
++    container:
++      image: archlinux:latest
++    steps:
++      - uses: actions/checkout@v4
++      - run: pacman --noconfirm -Syy
++      - run: pacman --noconfirm -S wayland-protocols libdrm libglvnd pkgconf
++      - run: pacman --noconfirm -S wayland eglexternalplatform
++      - run: pacman --noconfirm -S meson ninja gcc
++      - run: meson build
++      - run: ninja -C build
++      - run: ninja -C build install
+diff --git a/.github/workflows/autoconf-build.yml b/.github/workflows/autoconf-build.yml
+new file mode 100644
+index 0000000..c52ed92
+--- /dev/null
++++ b/.github/workflows/autoconf-build.yml
+@@ -0,0 +1,14 @@
++name: Autotools GCC Build
++on: [push, pull_request]
++jobs:
++  Meson-Build:
++    runs-on: ubuntu-24.04
++    steps:
++      - uses: actions/checkout@v4
++      - run: sudo apt update
++      - run: sudo apt install -y wayland-protocols libdrm-dev libegl-dev
++      - run: sudo apt install -y libwayland-dev libwayland-egl-backend-dev eglexternalplatform-dev
++      - run: sudo apt install -y meson ninja-build gcc
++      - run: ./autogen.sh
++      - run: make
++      - run: sudo make install
+diff --git a/.github/workflows/meson-build.yml b/.github/workflows/meson-build.yml
+new file mode 100644
+index 0000000..ca070d6
+--- /dev/null
++++ b/.github/workflows/meson-build.yml
+@@ -0,0 +1,14 @@
++name: Meson GCC Build
++on: [push, pull_request]
++jobs:
++  Meson-Build:
++    runs-on: ubuntu-24.04
++    steps:
++      - uses: actions/checkout@v4
++      - run: sudo apt update
++      - run: sudo apt install -y wayland-protocols libdrm-dev libegl-dev
++      - run: sudo apt install -y libwayland-dev libwayland-egl-backend-dev eglexternalplatform-dev
++      - run: sudo apt install -y meson ninja-build gcc
++      - run: meson build
++      - run: ninja -C build
++      - run: sudo ninja -C build install
+diff --git a/.github/workflows/meson-llvm-build.yml b/.github/workflows/meson-llvm-build.yml
+new file mode 100644
+index 0000000..83a8dbe
+--- /dev/null
++++ b/.github/workflows/meson-llvm-build.yml
+@@ -0,0 +1,17 @@
++name: Meson LLVM Build
++on: [push, pull_request]
++jobs:
++  Meson-Build:
++    runs-on: ubuntu-24.04
++    steps:
++      - uses: actions/checkout@v4
++      - run: sudo apt update
++      - run: sudo apt install -y wayland-protocols libdrm-dev libegl-dev
++      - run: sudo apt install -y libwayland-dev libwayland-egl-backend-dev eglexternalplatform-dev
++      - run: sudo apt install -y meson ninja-build clang
++      - name: meson build
++        run: meson build
++        env:
++          CC: clang
++      - run: ninja -C build
++      - run: sudo ninja -C build install
+-- 
+2.43.0
+

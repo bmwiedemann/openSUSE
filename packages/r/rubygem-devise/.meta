@@ -1,8 +1,0 @@
-<package name="rubygem-devise" project="openSUSE:Factory">
-  <title>Flexible authentication solution for Rails with Warden</title>
-  <description>Flexible authentication solution for Rails with Warden
-
-</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-devise"/>
-  <url>http://github.com/plataformatec/devise</url>
-</package>

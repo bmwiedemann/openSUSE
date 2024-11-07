@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov  4 17:34:13 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- 2024-10-22 version 2.4.0
+
+* Add missing base64 and logger gem as dependency for Ruby 3.4 and 3.5.
+* socket_manager: add feature to share sockets with another server.
+
+
+-------------------------------------------------------------------
 Tue Nov 14 15:37:09 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
 
 - New upstream release 2.3.2, see bundled Changelog

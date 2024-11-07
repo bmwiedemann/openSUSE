@@ -433,4 +433,12 @@ Update to 5.3.4</comment>
   * gh#jupyter/jupyter_client#787</comment>
     <requestid>1217927</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>2394f1f1c26c2e3771e3a1bf9cae35ad</srcmd5>
+    <version>8.6.3</version>
+    <time>1730993035</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1221952</requestid>
+  </revision>
 </revisionlist>

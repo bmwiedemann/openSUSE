@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Nov  7 09:34:29 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.22.2:
+  * v6.22.2
+  * Update CHANGELOG.md
+  * Fix number of threads on the new Intel Core Ultra CPUs
+  * Fix: don't use NaN in hashrate calculations
+  * v6.22.2-dev
+  * v6.22.1
+  * Update CHANGELOG.md
+  * Fixed --version output on ARM.
+  * Update hwloc for MSVC.
+  * Update deps
+  * Detect AMD engineering samples in randomx_boost.sh
+  * Added Zen5 to randomx_boost.sh
+  * RandomX: tweaks for Zen5
+  * Fixed threads auto-config on Zen5
+  * Always reset nonce on RandomX dataset change
+  * v6.22.1-dev
+
+-------------------------------------------------------------------
 Wed Aug 14 11:08:23 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 6.22.0:

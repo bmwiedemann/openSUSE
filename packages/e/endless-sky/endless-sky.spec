@@ -16,9 +16,12 @@
 #
 
 
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
+%define force_gcc_version 13
+%endif
 %define lname   io.github.endless_sky.endless_sky
 Name:           endless-sky
-Version:        0.10.8
+Version:        0.10.10
 Release:        0
 Summary:        Space exploration, trading, and combat game
 License:        CC-BY-3.0 AND CC-BY-SA-3.0 AND CC-BY-SA-4.0 AND GPL-3.0-only
@@ -29,7 +32,12 @@ Source0:        https://github.com/%{name}/%{name}/archive/v%{version}.tar.gz#/%
 Patch0:         endless-sky-fix-data-path.patch 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
+%if 0%{?suse_version} < 1600
+BuildRequires:  gcc%{?force_gcc_version}
+BuildRequires:  gcc%{?force_gcc_version}-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libjpeg8-devel
 BuildRequires:  libmad-devel
@@ -57,6 +65,8 @@ find some friendly aliens whose culture is more civilized than your own...
 %build
 %if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
 export CXXFLAGS="%{optflags} -fvisibility=hidden -fvisibility-inlines-hidden"
+export CC="gcc-%{?force_gcc_version}"
+export CXX="g++-%{?force_gcc_version}"
 %else
 export CXXFLAGS="%{optflags} -fvisibility=hidden -fvisibility-inlines-hidden -Wno-error=dangling-reference"
 %endif
@@ -66,6 +76,8 @@ scons
 %install
 %if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
 export CXXFLAGS="%{optflags} -fvisibility=hidden -fvisibility-inlines-hidden"
+export CC="gcc-%{?force_gcc_version}"
+export CXX="g++-%{?force_gcc_version}"
 %else
 export CXXFLAGS="%{optflags} -fvisibility=hidden -fvisibility-inlines-hidden -Wno-error=dangling-reference"
 %endif

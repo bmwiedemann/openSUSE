@@ -21,7 +21,7 @@
 %define _lto_cflags %{nil}
 %endif
 Name:           dd_rescue
-Version:        1.99.16
+Version:        1.99.17
 Release:        0
 Summary:        Data copying in the presence of I/O Errors
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -41,6 +41,7 @@ BuildRequires:  lzo-devel
 BuildRequires:  lzop
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
+BuildRequires:  xz-devel
 Requires:       bc
 Recommends:     dd_rescue-crypt
 Recommends:     dd_rescue-lzo
@@ -110,6 +111,26 @@ Some fuzz testing has been applied to the plugin's decompression routines,
 though more will have to be done to feel confident about feeding untrusted
 data to the decompressor; the plugin is still young and might expose bugs.
 
+%package lzma
+Summary:        LZMA (xz) de/compression plugin for dd_rescue
+Group:          System/Base
+Requires:       dd_rescue = %{version}
+
+%description lzma
+This plugin allows you do de/compress files during recovery copying
+with dd_rescue using the lzma compression algorithm. The lzma algorithm
+is fairly slow when compressing, but achieves a good compression ratio.
+Decompression is much faster.
+
+This plugin is still new and may not be very mature yet. It may be
+a bad idea to feed it with untrusted data, especially when running
+with elevated privileges.
+
+Authors:
+--------
+    Dmitrii Ivanov <dsivanov_9@edu.hse.ru>
+    Kurt Garloff <kurt@garloff.de>
+
 %prep
 %autosetup -p1
 
@@ -156,10 +177,14 @@ ln -sf %{_bindir}/dd_rescue %{buildroot}/bin
 %files crypt
 %{_mandir}/man1/ddr_crypt.1%{?ext_man}
 %{_libdir}/libddr_crypt.so
+%doc CRYPT_TODO PADDING
 
 %files lzo
 %{_libdir}/libddr_lzo.so
 %{_mandir}/man1/ddr_lzo.1%{?ext_man}
-%doc CRYPT_TODO PADDING
+
+%files lzma
+%{_libdir}/libddr_lzma.so
+%{_mandir}/man1/ddr_lzma.1%{?ext_man}
 
 %changelog

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov  4 17:05:37 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- 2024-10-03 1.7.3
+
+* Limit initial containers pre-allocation to `SHRT_MAX` (32k) entries.
+
+
+-------------------------------------------------------------------
 Fri Nov  3 07:46:23 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
 
 - 2023-07-18 1.7.2:

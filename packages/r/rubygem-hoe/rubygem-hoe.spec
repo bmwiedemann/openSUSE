@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-hoe
-Version:        4.2.1
+Version:        4.2.2
 Release:        0
 %define mod_name hoe
 %define mod_full_name %{mod_name}-%{version}
@@ -39,7 +39,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Hoe is a rake/rubygems helper for project Rakefiles
 License:        MIT
-PreReq:         update-alternatives
 
 %description
 Hoe is a rake/rubygems helper for project Rakefiles. It helps you

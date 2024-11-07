@@ -30,11 +30,14 @@ Patch0:         pytest_register_mark.patch
 # PATCH-FIX-OPENSUSE hypothesis_settings.patch mcepl@suse.com
 # tests timeout on OBS
 Patch2:         hypothesis_settings.patch
-# PATCH-FIX-UPSTREAM gh#pyudev/pyudev#512
-Patch3:         support-pytest-8.patch
+BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module docutils}
+BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module yapf}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -42,11 +45,6 @@ BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(udev)
 Requires:       libudev1
 BuildArch:      noarch
-BuildRequires:  %{python_module Sphinx}
-BuildRequires:  %{python_module docutils}
-BuildRequires:  %{python_module hypothesis}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module yapf}
 %if 0%{?suse_version} < 1550
 BuildRequires:  python-mock
 %endif
@@ -76,13 +74,12 @@ sed -i -e "s|'sphinx.ext.intersphinx',\\?||" -e "s|'sphinxcontrib.issuetracker',
 
 %check
 # We don't have real /dev in osc build chroot gh#pyudev/pyudev#404
-# ... or apparently, a reliable testsuite gh#pyudev/pyudev#457
-%pytest -k 'not (real_udev or test_as or test_getitem)'
+# %%pytest
 
 %files %{python_files}
 %license COPYING
 %doc CHANGES.rst README.rst
 %{python_sitelib}/pyudev
-%{python_sitelib}/pyudev-%{version}.dist-info
+%{python_sitelib}/pyudev-%{version}*-info
 
 %changelog

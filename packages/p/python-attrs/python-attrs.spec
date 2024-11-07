@@ -26,15 +26,13 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-attrs%{psuffix}
-Version:        23.2.0
+Version:        24.2.0
 Release:        0
 Summary:        Attributes without boilerplate
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/hynek/attrs/
 Source:         https://files.pythonhosted.org/packages/source/a/attrs/attrs-%{version}.tar.gz
-#PATCH-FIX-UPSTREAM https://github.com/python-attrs/attrs/pull/1249 Remove pytest.deprecated_call() in TestAssoc::test_unknown
-Patch:          pytest8.patch
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module hatchling}
@@ -92,7 +90,8 @@ python-attrs is the successor to python-characterstic
 %files %{python_files}
 %license LICENSE
 %doc CHANGELOG.md README.md
-%{python_sitelib}/attr*
+%{python_sitelib}/attr
+%{python_sitelib}/attrs
 %{python_sitelib}/attrs-%{version}*-info
 %endif
 

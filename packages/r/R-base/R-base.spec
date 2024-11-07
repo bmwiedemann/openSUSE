@@ -23,7 +23,7 @@
 %define release 1
 
 Name:           R-base
-Version:        4.4.1
+Version:        4.4.2
 Release:        %release
 %define Rversion %{version}
 Source0:        R-%{version}.tar.xz
@@ -1306,7 +1306,7 @@ Metapackage, Requires: all recommended Packages
 
 %package -n R-boot
 Summary:        Package provides recommended R-boot
-Version:        1.3.30
+Version:        1.3.31
 Release:        %release
 Requires:       R-base
 
@@ -1425,7 +1425,7 @@ This packages provides R-codetools, one of the recommended packages.
 
 %package -n R-foreign
 Summary:        Package provides recommended R-foreign
-Version:        0.8.86
+Version:        0.8.87
 Release:        %release
 Requires:       R-base
 
@@ -1518,7 +1518,7 @@ This packages provides R-lattice, one of the recommended packages.
 
 %package -n R-MASS
 Summary:        Package provides recommended R-MASS
-Version:        7.3.60.2
+Version:        7.3.61
 Release:        %release
 Requires:       R-base
 
@@ -1551,7 +1551,7 @@ This packages provides R-MASS, one of the recommended packages.
 
 %package -n R-Matrix
 Summary:        Package provides recommended R-Matrix
-Version:        1.7.0
+Version:        1.7.1
 Release:        %release
 Requires:       R-base
 Obsoletes:      R-Matrix-devel <= 1.3.2
@@ -1603,20 +1603,13 @@ This packages provides R-Matrix, one of the recommended packages.
 %{_libdir}/R/library/Matrix/include/Matrix/stubs.c
 %{_libdir}/R/library/Matrix/include/Matrix/version.h
 %dir %{_libdir}/R/library/Matrix/scripts/
-%{_libdir}/R/library/Matrix/scripts/AMD.patch
-%{_libdir}/R/library/Matrix/scripts/CAMD.patch
-%{_libdir}/R/library/Matrix/scripts/CCOLAMD.patch
-%{_libdir}/R/library/Matrix/scripts/CHOLMOD.patch
-%{_libdir}/R/library/Matrix/scripts/COLAMD.patch
-%{_libdir}/R/library/Matrix/scripts/CXSparse.patch
-%{_libdir}/R/library/Matrix/scripts/SuiteSparse_config.patch
-%{_libdir}/R/library/Matrix/scripts/api.patch
+%{_libdir}/R/library/Matrix/scripts/cholmod.h.patch
+%{_libdir}/R/library/Matrix/scripts/SuiteSparse.patch
 %{_libdir}/R/library/Matrix/scripts/disclaimer.txt
 %{_libdir}/R/library/Matrix/scripts/rules.mk
 %{_libdir}/R/library/Matrix/scripts/rules.sh
 %{_libdir}/R/library/Matrix/scripts/sources.mk
 %{_libdir}/R/library/Matrix/scripts/ssget.sh
-%{_libdir}/R/library/Matrix/scripts/wall.patch
 
 %package -n R-mgcv
 Summary:        Package provides recommended R-mgcv
@@ -1650,7 +1643,7 @@ This packages provides R-mgcv, one of the recommended packages.
 
 %package -n R-nlme
 Summary:        Package provides recommended R-nlme
-Version:        3.1.164
+Version:        3.1.166
 Release:        %release
 Requires:       R-base
 
@@ -1778,7 +1771,7 @@ This packages provides R-spatial, one of the recommended packages.
 
 %package -n R-survival
 Summary:        Package provides recommended R-survival
-Version:        3.6.4
+Version:        3.7.0
 Release:        %release
 Requires:       R-base
 

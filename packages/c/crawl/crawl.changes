@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Nov  1 17:10:38 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 0.32.1:
+  * Fix blockable beam attacks from monster spells being blocked 100% of the
+    time.
+  * 40 other bug fixes, interface improvements, and documentation updates.
+
+- update to 0.32.0:
+  * Beogh, Dithmenos, Yredelemnul, and Makhleb have been substantially revamped.
+  * Since everybody can become orcs, reworked Mountain Dwarves replace Hill Orcs.
+  * New species: Coglins, dual-wielding gizmo-inventing goblins in exosuits.
+  * More new spells, aimed at new school combinations and higher levels.
+  * Many more new and revamped monsters and decorations throughout the Dungeon,
+    see full changelog at https://github.com/crawl/crawl/releases/tag/0.32.0
+
+-------------------------------------------------------------------
 Sat Mar 16 19:43:35 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.31.0:

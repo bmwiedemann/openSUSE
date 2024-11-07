@@ -406,4 +406,23 @@
 </comment>
     <requestid>1196125</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3fd8b7a806b695e484d009cf4bbcd9c6</srcmd5>
+    <version>5.1.2.1.0+git.1727870382.97813fb</version>
+    <time>1730993037</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 5.1.2.1.0+git.1727870382.97813fb:
+  * macOS: Remove obsolete -single_module flag.
+  * macOS: Workaround for buggy XCode 15.0 - 15.2 linker.
+  * macOS: Fix macOS 15 / Clang 16 build.
+  * Fix bit op coercion in DUALNUM builds.
+  * Fix compiliation of getmetatable() for UDTYPE_IO_FILE.
+  * Remove ancient RtlUnwindEx workaround for MinGW64.
+  * Drop unused function wrapper.
+- Update luajit-s390x.patch from
+  gh#openresty/luajit2!195 (following the advice on
+  gh#LuaJIT/LuaJIT!631#issuecomment-2459913131).
+</comment>
+    <requestid>1221954</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 06 14:04:13 UTC 2024 - dfaggioli@suse.com
+
+- Fix bsc#1232617:
+  * qemu-ga: Fix a SIGSEGV in ga_run_command() helper (bsc#1232617)
+
+-------------------------------------------------------------------
 Tue Oct 29 11:03:28 UTC 2024 - Dario Faggioli <dfaggioli@suse.com>
 
 - Update to version 9.1.1:

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Nov  7 11:36:13 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update allow-newer-sqlite.patch to also allow newer puma
+
+-------------------------------------------------------------------
+Thu Nov  7 10:55:15 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Added allow-newer-sqlite.patch to loosen up the sqlite3
+  dependency similar to newer rails
+
+-------------------------------------------------------------------
+Mon Nov  4 17:20:16 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- ## Rails 7.0.8.6 (October 23, 2024) ##
+
+*   No changes.
+
+## Rails 7.0.8.5 (October 15, 2024) ##
+
+*   No changes.
+
+
+-------------------------------------------------------------------
 Fri Jun 21 10:30:25 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
 
 - ## Rails 7.0.8.4 (June 04, 2024) ##

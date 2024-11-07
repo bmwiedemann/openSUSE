@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov  7 09:07:27 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2024.10.24:
+  * Fix variable length little-endian base 128 decoding.
+  * Improve typing.
+  * Deprecate Python 3.9, support Python 3.13.
+  * Fix docstring examples not correctly rendered on GitHub.
+
+-------------------------------------------------------------------
 Wed Jul 17 08:02:14 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Revert pinning. NumPy 2 officially supported since 2024.4.24

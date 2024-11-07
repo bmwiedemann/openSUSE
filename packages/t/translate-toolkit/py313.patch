@@ -1,0 +1,197 @@
+From 4e13d660e820f658ed691d9b96a25ef06ab4c052 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Michal=20=C4=8Ciha=C5=99?= <michal@cihar.com>
+Date: Mon, 23 Sep 2024 09:36:54 +0200
+Subject: [PATCH] fix(pofilter): consistent --listfilters output between Python
+ versions
+
+The Python 3.13 has started to strip out leading whitespace from
+__doc__, so strip it in all versions.
+---
+ .../data/test_pofilter_listfilters/stdout.txt | 30 +++++++------------
+ translate/filters/decorators.py               | 15 ++++++++++
+ translate/filters/pofilter.py                 |  3 +-
+ 3 files changed, 26 insertions(+), 22 deletions(-)
+
+diff --git a/tests/cli/data/test_pofilter_listfilters/stdout.txt b/tests/cli/data/test_pofilter_listfilters/stdout.txt
+index 620f758f64..806c1f99a6 100644
+--- a/tests/cli/data/test_pofilter_listfilters/stdout.txt
++++ b/tests/cli/data/test_pofilter_listfilters/stdout.txt
+@@ -3,8 +3,7 @@ acronyms	Checks that acronyms that appear are unchanged.
+ blank	Checks whether a translation is totally blank.
+ brackets	Checks that the number of brackets in both strings match.
+ compendiumconflicts	Checks for Gettext compendium conflicts (#-#-#-#-#).
+-credits	Checks for messages containing translation credits instead of
+-        normal translations.
++credits	Checks for messages containing translation credits instead of normal translations.
+ doublequoting	Checks whether doublequoting is consistent between the two strings.
+ doublespacing	Checks for bad double-spaces by comparing to original.
+ doublewords	Checks for repeated words in the translation.
+@@ -17,26 +16,20 @@ functions	Checks that function names are not translated.
+ hassuggestion	Checks if there is at least one suggested translation for this unit.
+ isfuzzy	Check if the unit has been marked fuzzy.
+ isreview	Check if the unit has been marked review.
+-kdecomments	Checks to ensure that no KDE style comments appear in the
+-        translation.
+-long	Checks whether a translation is much longer than the original
+-        string.
+-musttranslatewords	Checks that words configured as definitely translatable don't appear
+-        in the translation.
++kdecomments	Checks to ensure that no KDE style comments appear in the translation.
++long	Checks whether a translation is much longer than the original string.
++musttranslatewords	Checks that words configured as definitely translatable don't appear in the translation.
+ newlines	Checks whether newlines are consistent between the two strings.
+-notranslatewords	Checks that words configured as untranslatable appear in the
+-        translation too.
++notranslatewords	Checks that words configured as untranslatable appear in the translation too.
+ nplurals	Checks for the correct number of noun forms for plural translations.
+-numbers	Checks whether numbers of various forms are consistent between the
+-        two strings.
++numbers	Checks whether numbers of various forms are consistent between the two strings.
+ options	Checks that command line options are not translated.
+ printf	Checks whether printf format strings match.
+ puncspacing	Checks for bad spacing after punctuation.
+ purepunc	Checks that strings that are purely punctuation are not changed.
+ pythonbraceformat	Checks whether python brace format strings match.
+ sentencecount	Checks that the number of sentences in both strings match.
+-short	Checks whether a translation is much shorter than the original
+-        string.
++short	Checks whether a translation is much shorter than the original string.
+ simplecaps	Checks the capitalisation of two strings isn't wildly different.
+ simpleplurals	Checks for English style plural(s) for you to review.
+ singlequoting	Checks whether singlequoting is consistent between the two strings.
+@@ -45,12 +38,9 @@ startcaps	Checks that the message starts with the correct capitalisation.
+ startpunc	Checks whether punctuation at the beginning of the strings match.
+ startwhitespace	Checks whether whitespace at the beginning of the strings matches.
+ tabs	Checks whether tabs are consistent between the two strings.
+-unchanged	Checks whether a translation is basically identical to the original
+-        string.
++unchanged	Checks whether a translation is basically identical to the original string.
+ untranslated	Checks whether a string has been translated at all.
+ urls	Checks that URLs are not translated.
+-validchars	Checks that only characters specified as valid appear in the
+-        translation.
+-variables	Checks whether variables of various forms are consistent between the
+-        two strings.
++validchars	Checks that only characters specified as valid appear in the translation.
++variables	Checks whether variables of various forms are consistent between the two strings.
+ xmltags	Checks that XML/HTML tags have not been translated.
+diff --git a/translate/filters/decorators.py b/translate/filters/decorators.py
+index 261037e0da..2c67cc5f5e 100644
+--- a/translate/filters/decorators.py
++++ b/translate/filters/decorators.py
+@@ -30,6 +30,17 @@ class Category:
+     NO_CATEGORY = 0
+ 
+ 
++def annotate_check(checkfunc):
++    """
++    Annotate check function with title attribute.
++
++    This is generated from the first list of docstring removing any
++    extra whitespace caused by indentation.
++    """
++    docstring = checkfunc.__doc__.strip().split("\n\n")[0]
++    checkfunc.title = " ".join(docstring.split())
++
++
+ def critical(f):
+     @wraps(f)
+     def critical_f(self, *args, **kwargs):
+@@ -38,6 +49,7 @@ def critical_f(self, *args, **kwargs):
+ 
+         return f(self, *args, **kwargs)
+ 
++    annotate_check(critical_f)
+     return critical_f
+ 
+ 
+@@ -49,6 +61,7 @@ def functional_f(self, *args, **kwargs):
+ 
+         return f(self, *args, **kwargs)
+ 
++    annotate_check(functional_f)
+     return functional_f
+ 
+ 
+@@ -60,6 +73,7 @@ def cosmetic_f(self, *args, **kwargs):
+ 
+         return f(self, *args, **kwargs)
+ 
++    annotate_check(cosmetic_f)
+     return cosmetic_f
+ 
+ 
+@@ -71,4 +85,5 @@ def extraction_f(self, *args, **kwargs):
+ 
+         return f(self, *args, **kwargs)
+ 
++    annotate_check(extraction_f)
+     return extraction_f
+diff --git a/translate/filters/pofilter.py b/translate/filters/pofilter.py
+index 125cec3198..211594290f 100644
+--- a/translate/filters/pofilter.py
++++ b/translate/filters/pofilter.py
+@@ -57,8 +57,7 @@ def getfilterdocs(self):
+         """Lists the docs for filters available on checker."""
+         filterdict = self.checker.getfilters()
+         filterdocs = [
+-            "{}\t{}".format(name, filterfunc.__doc__.strip().split("\n\n")[0])
+-            for (name, filterfunc) in filterdict.items()
++            f"{name}\t{filterfunc.title}" for (name, filterfunc) in filterdict.items()
+         ]
+         filterdocs.sort()
+ 
+From 4f5256ba23a26550c233acadcee496838aad886c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Michal=20=C4=8Ciha=C5=99?= <michal@cihar.com>
+Date: Mon, 23 Sep 2024 09:21:59 +0200
+Subject: [PATCH] fix(storage): safer operation with files when constructing
+ storage
+
+- use context processor to open files
+- do not access file handle attributes after closing (fixes #5347)
+---
+ translate/storage/base.py | 20 ++++++++++++++------
+ 1 file changed, 14 insertions(+), 6 deletions(-)
+
+diff --git a/translate/storage/base.py b/translate/storage/base.py
+index 505d54a3e..5e21ccda2 100644
+--- a/translate/storage/base.py
++++ b/translate/storage/base.py
+@@ -914,6 +914,14 @@ def save(self):
+             fileobj = open(filename, "wb")
+         self.savefile(fileobj)
+ 
++    @classmethod
++    def _from_handle(cls, storehandle):
++        storestring = storehandle.read()
++        newstore = cls.parsestring(storestring)
++        newstore.fileobj = storehandle
++        newstore._assignname()
++        return newstore
++
+     @classmethod
+     def parsefile(cls, storefile):
+         """
+@@ -921,16 +929,16 @@ def parsefile(cls, storefile):
+         to an object.
+         """
+         if isinstance(storefile, str):
+-            storefile = open(storefile, "rb")
++            with open(storefile, "rb") as storehandle:
++                return cls._from_handle(storehandle)
+         mode = getattr(storefile, "mode", "rb")
+         # For some reason GzipFile returns 1, so we have to test for that here
+         if mode == 1 or "r" in mode:
+-            storestring = storefile.read()
++            newstore = cls._from_handle(storefile)
+             storefile.close()
+-            newstore = cls.parsestring(storestring)
+-        else:
+-            storestring = ""
+-            newstore = cls()
++            return newstore
++
++        newstore = cls()
+         newstore.fileobj = storefile
+         newstore._assignname()
+         return newstore

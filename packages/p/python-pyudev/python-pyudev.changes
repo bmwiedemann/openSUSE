@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  6 14:37:49 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Skipping test suite completely, it just doesn’t work in the
+  limited build environment (gh#pyudev/pyudev#404).
+- Remove unnecessary patch support-pytest-8.patch.
+
+-------------------------------------------------------------------
 Wed May 15 04:57:43 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.24.3:

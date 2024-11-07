@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov  4 16:52:37 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- ## 1.0.7 (2024-06-06)
+
+- Explicitly require "cgi" to avoid `NameError` in some applications. (#50 by @flavorjones)
+
+## 1.0.6 (2024-06-01)
+
+- Fix error formatting bug in HTTP::CookieJar::AbstractStore (#42 by @andrelaszlo)
+- Allow non-RFC 3986-compliant URLs (#45 by @c960657)
+- Add coverage for Ruby 3.2 and 3.3 (#46 by @flavorjones)
+- Quash ruby 3.4 warnings (#47 by @flavorjones)
+
+
+-------------------------------------------------------------------
 Fri Jun 21 10:02:35 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
 
 - New upstream release 1.0.6, see bundled CHANGELOG.md

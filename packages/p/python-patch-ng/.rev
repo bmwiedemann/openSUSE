@@ -17,4 +17,14 @@
   * Fix: Fix DeprecationWarning/SyntaxWarning in regex</comment>
     <requestid>1208852</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>aa994f591c81c45cc0778a71d8151f13</srcmd5>
+    <version>1.18.1</version>
+    <time>1730993294</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.18.1:
+  * Fix: Added pyproject to avoid errors when installing on
+    python 3.13</comment>
+    <requestid>1222051</requestid>
+  </revision>
 </revisionlist>

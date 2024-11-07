@@ -21,7 +21,7 @@
 Your objective is to travel deep into a subterranean cave complex and retrieve the Orb of Zot, \
 which is guarded by many horrible and hideous creatures.
 Name:           crawl
-Version:        0.31.0
+Version:        0.32.1
 Release:        0
 Summary:        Roguelike dungeon exploration game
 License:        GPL-2.0-or-later

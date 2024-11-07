@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov  4 16:33:22 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- == 3.4.3 ==
+Require open3 unconditionally on Windows. Thanks @avdv!
+
+
+-------------------------------------------------------------------
 Thu Aug  4 13:07:04 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 3.4.2

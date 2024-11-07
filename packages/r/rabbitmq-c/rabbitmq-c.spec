@@ -27,6 +27,8 @@ License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/alanxz/rabbitmq-c
 Source0:        https://github.com/alanxz/rabbitmq-c/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# [bsc#1232541], https://github.com/alanxz/rabbitmq-c/issues/846
+Patch0:         rabbitmq-c-default-cacert-location.patch
 BuildRequires:  cmake > 2.8.12
 BuildRequires:  gcc
 BuildRequires:  openssl-devel
@@ -73,7 +75,7 @@ amqp-get            Get a message from a queue on an AMQP server
 amqp-publish        Publish a message on an AMQP server
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 # static lib required for tests

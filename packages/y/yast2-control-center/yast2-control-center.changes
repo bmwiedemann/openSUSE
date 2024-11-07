@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 26 11:21:09 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Install YaST-systemsettings.desktop into location for Plasma 6,
+  remove installation into KDE 4 location (gh#yast/yast-control-center#59)
+- 5.0.1
+
+-------------------------------------------------------------------
 Wed Aug 30 20:16:10 UTC 2023 - Josef Reidinger <jreidinger@suse.cz>
 
 - 5.0.0 (bsc#1185510)

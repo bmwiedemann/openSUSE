@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Nov  1 16:39:24 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 5.5.3:
+  * On Win32 change direction of horizontal mouse wheel and touchpad scrolling 
+    to match other applications. Bug #2449.
+
+- Update to version 5.5.2:
+  * Add SCI_SETCOPYSEPARATOR for separator between parts of a multiple 
+    selection when copied to the clipboard. Feature #1530.
+  * Add SCI_GETUNDOSEQUENCE to determine whether an undo sequence is active and
+    its nesting depth.
+  * Add SCI_STYLESETSTRETCH to support condensed and expanded text styles.
+  * Add SCI_LINEINDENT and SCI_LINEDEDENT. Feature #1524.
+  * Fix bug on Cocoa where double-click stopped working when system had been
+    running for a long time.
+  * On Cocoa implement more values of font weight and stretch.
+
+-------------------------------------------------------------------
 Fri Aug  2 05:34:20 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.5.1:

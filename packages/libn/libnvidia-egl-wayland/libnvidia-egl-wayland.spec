@@ -37,6 +37,9 @@ Patch6:         0006-egl-wayland-Accept-device-name-from-either-wl_drm-or.patch
 Patch7:         0007-egl-wayland-fix-device-name-case-where-only-wl_drm-e.patch
 Patch8:         0008-Add-ICD-json-file.patch
 Patch9:         0009-egl-wayland-Fix-roundtrip-eating-wl_drm-events-in-ge.patch
+Patch11:        0001-egl-wayland-enable-CI-with-github-actions.patch
+Patch12:        0002-egl-wayland-Fix-use-after-free-in-library-teardown.patch
+Patch13:        0003-egl-wayland-Handle-failure-to-acquire-image-in-wlEgl.patch
 BuildRequires:  gcc-c++
 BuildRequires:  meson >= 0.50
 BuildRequires:  ninja

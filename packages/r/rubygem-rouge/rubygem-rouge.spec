@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rouge
-Version:        4.3.0
+Version:        4.4.0
 Release:        0
 %define mod_name rouge
 %define mod_full_name %{mod_name}-%{version}
@@ -37,7 +37,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        A pure-ruby colorizer based on pygments
 License:        BSD-2-Clause OR MIT
-PreReq:         update-alternatives
 
 %description
 Rouge aims to a be a simple, easy-to-extend drop-in replacement for pygments.

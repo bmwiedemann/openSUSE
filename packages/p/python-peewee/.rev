@@ -389,4 +389,16 @@
   setup.py</comment>
     <requestid>1219559</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>fe6d14f6f00ca38f04844a03a542003d</srcmd5>
+    <version>3.17.7</version>
+    <time>1730993294</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.17.7:
+  * Add db_url support for psycopg3 via `psycopg3://`.
+  * Ensure double-quotes are escaped properly when introspecting
+    constraints.
+  * A few documentation-related fixes.</comment>
+    <requestid>1222054</requestid>
+  </revision>
 </revisionlist>

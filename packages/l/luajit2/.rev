@@ -33,4 +33,14 @@
   * Added ppc64le support.</comment>
     <requestid>1196383</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e49d32d3b2316619db4266daace298ab</srcmd5>
+    <version>2.1.20241104</version>
+    <time>1730993287</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 2.1.20241104 (2.1.1728714540).
+  * FFI: Added missing coercion when recording 64-bit bit.*().
+  * ARM64: Used ldr literal to load FP constants.</comment>
+    <requestid>1222025</requestid>
+  </revision>
 </revisionlist>

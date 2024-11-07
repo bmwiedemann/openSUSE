@@ -1,8 +1,8 @@
-gromox (2.35-0) unstable; urgency=low
+gromox (2.36-0) unstable; urgency=low
 
   * The build process is supposed to replace the entries here
     automatically from data present in gromox.changes.
     But if you see this message in installed systems,
     that would indicate a problem in debtransform(1).
 
- -- Gromox <null@gromox.com>  Tue, 15 Oct 2024 13:25:00 +0200
+ -- Gromox <null@gromox.com>  Wed, 06 Nov 2024 16:56:00 +0100

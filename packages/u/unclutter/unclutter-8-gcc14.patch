@@ -1,0 +1,55 @@
+---
+ unclutter.c |    7 ++++++-
+ vroot.h     |    1 +
+ 2 files changed, 7 insertions(+), 1 deletion(-)
+
+--- unclutter.c
++++ unclutter.c	2024-11-07 11:42:06.317430391 +0000
+@@ -24,9 +24,11 @@
+ #include <X11/Xutil.h>
+ #include <X11/Xproto.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ #include "vroot.h"
+ 
+ char *progname;
++void
+ pexit(str)char *str;{
+     fprintf(stderr,"%s: %s\n",progname,str);
+     exit(1);
+@@ -74,6 +76,7 @@ char **names;	/* -> argv list of names t
+  * return true if window has a wm_name and the start of it matches
+  * one of the given names to avoid
+  */
++int
+ nameinlist(display,window)
+ Display *display;
+ Window window;
+@@ -95,6 +98,7 @@ Window window;
+ /*
+  * create a small 1x1 curssor with all pixels masked out on the given screen.
+  */
++Cursor
+ createnullcursor(display,root)
+ Display *display;
+ Window root;
+@@ -119,7 +123,8 @@ Window root;
+     return cursor;
+ }
+ 
+-main(argc,argv)char **argv;{
++int
++main(argc,argv)int argc; char **argv;{
+     Display *display;
+     int screen,oldx = -99,oldy = -99,numscreens;
+     int doroot = 0, jitter = 0, idletime = 5, usegrabmethod = 0, waitagain = 0,
+--- vroot.h
++++ vroot.h	2024-11-07 11:40:16.247416397 +0000
+@@ -40,6 +40,7 @@
+ static Window
+ VirtualRootWindow(dpy, screen)
+ Display *dpy;
++int screen;
+ {
+ 	static Display *save_dpy = (Display *)0;
+ 	static int save_screen = -1;

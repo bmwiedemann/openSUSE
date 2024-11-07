@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Nov  4 17:00:23 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- ## 2.23.1 / 2024-10-25
+
+### Added
+
+* Allow CSS properties `min-height` and `max-height`. [#288] @lazyatom
+
+## 2.23.0 / 2024-10-24
+
+### Added
+
+* Allow CSS property `min-width`. [#287] @lazyatom
+
+
+-------------------------------------------------------------------
 Tue Nov 14 15:13:24 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
 
 - ## 2.22.0 / 2023-11-13

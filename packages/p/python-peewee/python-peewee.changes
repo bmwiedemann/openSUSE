@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov  7 09:08:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.17.7:
+  * Add db_url support for psycopg3 via `psycopg3://`.
+  * Ensure double-quotes are escaped properly when introspecting
+    constraints.
+  * A few documentation-related fixes.
+
+-------------------------------------------------------------------
 Wed Oct 30 12:42:57 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update license to MIT, that's what the project defines in the

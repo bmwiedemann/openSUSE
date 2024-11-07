@@ -1,7 +1,7 @@
 #
 # spec file for package enchant
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,24 +24,27 @@
 %bcond_without aspell
 
 Name:           enchant
-Version:        2.2.15
+Version:        2.8.2
 Release:        0
 Summary:        Generic Spell Checking Library
 License:        LGPL-2.1-or-later
-URL:            https://abiword.github.io/enchant/
-Source:         https://github.com/AbiWord/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
+URL:            https://rrthomas.github.io/enchant/
+Source:         https://github.com/rrthomas/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 %if %{with aspell}
 BuildRequires:  aspell-devel
 %endif
 BuildRequires:  dbus-1-glib-devel
+BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel
+BuildRequires:  groff-full
 BuildRequires:  hunspell-devel
 BuildRequires:  libvoikko-devel
+BuildRequires:  vala
 %if %{with nuspell}
 BuildRequires:  libboost_headers-devel
-BuildRequires:  nuspell-devel >= 4.1.0
+BuildRequires:  nuspell-devel >= 5.1.0
 %endif
 
 %description
@@ -139,7 +142,9 @@ to develop applications that require these.
 %if %{with aspell}
     --with-aspell \
 %endif
-    --disable-static
+    --disable-static \
+    --docdir=%{_defaultdocdir}/%{name}
+
 %make_build
 
 %install
@@ -152,12 +157,21 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files tools
 %{_bindir}/enchant-2
 %{_bindir}/enchant-lsmod-2
+
 %{_mandir}/man1/enchant-2.1%{?ext_man}
 %{_mandir}/man1/enchant-lsmod-2.1%{?ext_man}
+%{_mandir}/man5/enchant.5*
 
 %files -n libenchant-2-2
 %license COPYING.LIB
-%doc AUTHORS ChangeLog NEWS README
+
+%dir %{_defaultdocdir}/%{name}
+
+%doc AUTHORS ChangeLog NEWS README.md
+%doc %{_defaultdocdir}/%{name}/enchant.html
+%doc %{_defaultdocdir}/%{name}/enchant-2.html
+%doc %{_defaultdocdir}/%{name}/enchant-lsmod-2.html
+
 %{_libdir}/*.so.*
 %dir %{_libdir}/enchant-2
 
@@ -183,8 +197,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files data
 # The directories are not versioned, unfortunately. Not good for the SLPP.
-%dir %{_datadir}/enchant
-%{_datadir}/enchant/enchant.ordering
+%dir %{_datadir}/enchant-2
+%{_datadir}/enchant-2/enchant.ordering
 
 %files devel
 %{_includedir}/enchant-2

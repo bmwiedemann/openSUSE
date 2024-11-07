@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-i18n
-Version:        1.14.5
+Version:        1.14.6
 Release:        0
 %define mod_name i18n
 %define mod_full_name %{mod_name}-%{version}

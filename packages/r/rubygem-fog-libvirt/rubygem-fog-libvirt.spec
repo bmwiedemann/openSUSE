@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-fog-libvirt
-Version:        0.12.1
+Version:        0.12.2
 Release:        0
 %define mod_name fog-libvirt
 %define mod_full_name %{mod_name}-%{version}

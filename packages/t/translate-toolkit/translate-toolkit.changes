@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 30 17:12:33 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.13.3
+  * Improved handling of MO files
+- Drop merged sphinx-intersphinx.patch
+- Add py313.patch
+
+-------------------------------------------------------------------
 Thu Jul  4 13:04:05 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 3.13.1
@@ -7,6 +15,20 @@ Thu Jul  4 13:04:05 UTC 2024 - Markéta Machová <mmachova@suse.com>
   * Updated language definitions to include CLDR aliases.
   * Dropped unmatained Mozilla l10n scripts.
 - Drop merged 0001-tests-Adjust-to-changed-aeidon-behavior.patch
+
+-------------------------------------------------------------------
+Sat Jun 29 19:59:19 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.13.1:
+  * Compatibility with current pytest and setuptools.
+  * Updated language definitions to include CLDR aliases.
+  * Dropped unmatained Mozilla l10n scripts.
+  * Updated aeidon compatibility
+  * PO: Fixed newlines handling in notes
+  * PO: Improved header handling
+  * PO: Avoid adding duplicate context when merging duplicates
+- drop 0001-tests-Adjust-to-changed-aeidon-behavior.patch:
+  (upstream)
 
 -------------------------------------------------------------------
 Mon Apr  8 13:28:24 UTC 2024 - Ana Guerrero <ana.guerrero@suse.com>
@@ -130,11 +152,11 @@ Tue Feb  1 20:38:55 UTC 2022 - Luiz Fernando Ranghetti <elchevive@opensuse.org>
   * Fixed adding strings to empty Ruby YAML file
   * Better handling of multiline stringtable translations in po2rc
   * Update CLDR data to 37.0.0
-  
+
 -------------------------------------------------------------------
 Thu Dec  2 13:45:58 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- skip fluent from testing, we don't depend on it anyway (it is optional) 
+- skip fluent from testing, we don't depend on it anyway (it is optional)
 
 -------------------------------------------------------------------
 Mon Nov 29 20:54:40 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -186,8 +208,8 @@ Sun Dec  6 15:12:39 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 - refresh versionend_executables.patch
 - Fix name definition of -devel-doc package because of stricter
   python-rpm-macros %python_subpackages requirement
-- move html docs in common file tree to -doc package in order to 
-  avoid conflicts for multiple python flavor packages 
+- move html docs in common file tree to -doc package in order to
+  avoid conflicts for multiple python flavor packages
   gh#openSUSE/python-rpm-macros#66
 - replace my_install_alternatives by python_install_alternative
   * fix manpages alternatives install
@@ -340,7 +362,7 @@ Mon Aug 28 19:39:16 UTC 2017 - elchevive@opensuse.org
 	* po2txt no longer converts non-translatable strings.
 	* Improvement for puncspace check.
 	* Support for .xliff extension.
-                
+
 -------------------------------------------------------------------
 Mon Jun 26 19:06:30 UTC 2017 - elchevive@opensuse.org
 
@@ -409,7 +431,7 @@ Thu Sep  1 11:26:19 UTC 2016 - elchevive@opensuse.org
 - Update to 1.99.5 (2.0.0 Beta 5)
   * Minor fixes
 - require lxml 3.5.0 or newer
-  
+
 -------------------------------------------------------------------
 Wed Jul 27 09:53:37 UTC 2016 - buschmann23@opensuse.org
 
@@ -588,7 +610,7 @@ Format support:
  - Improved handling of trailing spaces in Mozilla DTD files
  - Removed unused support for _old_ KDE plurals in pocount
 
- ...and several small bugfixes 
+ ...and several small bugfixes
 
 -------------------------------------------------------------------
 Mon Dec 27 16:24:00 GMT 2010 - elchevive@opensuse.org

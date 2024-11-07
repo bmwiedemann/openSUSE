@@ -15,4 +15,13 @@
     <comment>Prepare for RPM 4.20 (forwarded request 1153316 from dimstar)</comment>
     <requestid>1153321</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a6cf44d5574e4ae5765ba6a99743221c</srcmd5>
+    <version>2.0.2</version>
+    <time>1730993340</time>
+    <user>anag+factory</user>
+    <comment>- Add patch powerd-2.0.2-gcc14.patch
+  * Make it build even with gcc14</comment>
+    <requestid>1222173</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Wed Nov  6 05:43:57 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Add fix-unlock-crashing.patch -- Fix gtklock crashing
+
+-------------------------------------------------------------------
+Thu Oct 24 00:10:20 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 4.0.0
+  * switch build system to meson
+  * modules: handle multiarch systems' libdir
+
+-------------------------------------------------------------------
+Fri Apr 19 15:25:36 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 3.0.0
+  * Update against gtklock 3.0.0
+
+-------------------------------------------------------------------
+Tue Jun  6 10:00:30 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to 2.1.0
+  * Added image-size option
+  * Improves compatibility with gtklock 2.1.0
+  
+-------------------------------------------------------------------
+Mon Nov 28 08:19:00 UTC 2022 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Initial package of the gtklock userinfo module for gtklock 2.0+

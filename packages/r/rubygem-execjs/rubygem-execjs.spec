@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-execjs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-execjs
-Version:        2.9.1
+Version:        2.10.0
 Release:        0
 %define mod_name execjs
 %define mod_full_name %{mod_name}-%{version}

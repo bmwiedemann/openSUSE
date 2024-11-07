@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Nov  4 17:44:16 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- ## 0.2.0 (2024-08-18)
+
+Features:
+
+  - Use String#unicode_normalize on Ruby >=2.2 unless unf_ext is already loaded.
+
+  - Reduce the gem size by removing unnecessary files. (GH #22)
+
+## 0.1.4 (2014-04-04)
+
+Bugfixes:
+
+  - Fix the gem platform name for JRuby.
+
+
+-------------------------------------------------------------------
 Mon Oct 13 18:51:44 UTC 2014 - coolo@suse.com
 
 - adapt to new rubygem packaging

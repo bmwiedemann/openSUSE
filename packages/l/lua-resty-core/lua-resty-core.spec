@@ -18,7 +18,7 @@
 
 %define lua_version 5.1
 Name:           lua-resty-core
-Version:        0.1.29
+Version:        0.1.30
 Release:        0
 Summary:        Lua API for ngx_http_lua_module and/or ngx_stream_lua_module
 License:        BSD-2-Clause

@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rake-compiler
-Version:        1.2.7
+Version:        1.2.8
 Release:        0
 %define mod_name rake-compiler
 %define mod_full_name %{mod_name}-%{version}
@@ -38,7 +38,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Rake-based Ruby Extension (C, Java) task generator
 License:        MIT
-PreReq:         update-alternatives
 
 %description
 Provide a standard and simplified way to build and package

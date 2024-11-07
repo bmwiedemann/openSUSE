@@ -18,7 +18,7 @@
 
 Name:           libbraiding
 %define lname	libbraiding0
-Version:        1.3
+Version:        1.3.1
 Release:        0
 Summary:        Library for computations on braid groups
 License:        GPL-2.0-or-later
@@ -26,6 +26,7 @@ Group:          Productivity/Scientific/Math
 URL:            https://github.com/miguelmarco/libbraiding
 Source:         https://github.com/miguelmarco/libbraiding/releases/download/%version/%name-%version.tar.gz
 BuildRequires:  gcc-c++
+BuildRequires:  pkg-config
 
 %description
 CBraid is a C++ library for various computations on braid groups,
@@ -71,6 +72,7 @@ rm -f "%buildroot/%_libdir"/*.la
 
 %files devel
 %_libdir/libbraiding.so
+%_libdir/pkgconfig/*.pc
 %_includedir/*braid*.h
 
 %changelog

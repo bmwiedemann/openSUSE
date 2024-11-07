@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-gettext_i18n_rails
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-gettext_i18n_rails
-Version:        1.12.0
+Version:        1.13.0
 Release:        0
 %define mod_name gettext_i18n_rails
 %define mod_full_name %{mod_name}-%{version}

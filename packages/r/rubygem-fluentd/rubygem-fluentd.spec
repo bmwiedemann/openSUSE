@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-fluentd
-Version:        1.17.0
+Version:        1.17.1
 Release:        0
 %define mod_name fluentd
 %define mod_full_name %{mod_name}-%{version}
@@ -39,7 +39,6 @@ Source2:        gem2rpm.yml
 Source3:        gem2rpm.yml
 Summary:        Fluentd event collector
 License:        Apache-2.0
-PreReq:         update-alternatives
 
 %description
 Fluentd is an open source data collector designed to scale and simplify log

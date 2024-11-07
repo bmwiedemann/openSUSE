@@ -1,8 +1,0 @@
-<package name="rubygem-rgl" project="openSUSE:Factory">
-  <title>Ruby Graph Library</title>
-  <description>RGL is a framework for graph data structures and algorithms.
-
-</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-rgl"/>
-  <url>https://github.com/monora/rgl</url>
-</package>

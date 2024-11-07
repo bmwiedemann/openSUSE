@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %global skip_python310 1
 Name:           python-PyChromecast
-Version:        14.0.4
+Version:        14.0.5
 Release:        0
 Summary:        Python module to talk to Google Chromecast
 License:        MIT

@@ -1,8 +1,0 @@
-<package name="rubygem-stream" project="openSUSE:Factory">
-  <title>stream - Extended External Iterators</title>
-  <description>Module Stream defines an interface for external iterators.
-
-</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-stream"/>
-  <url>https://github.com/monora/stream</url>
-</package>

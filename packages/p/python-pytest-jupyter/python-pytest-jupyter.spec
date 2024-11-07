@@ -20,6 +20,8 @@
 %if "%{flavor}" == "test"
 %define psuffix -test
 %bcond_without test
+# python-nbformat needed by the client subpackage is not available on python313
+%define skip_python313 1
 %else
 %define psuffix %{nil}
 %bcond_with test
@@ -28,7 +30,6 @@
 # defined at Ring1-MinimalX lettered staging prjconf
 # We do not want jupyter-server in ring1
 %bcond_with ringdisabled
-%define skip_python39 1
 Name:           python-pytest-jupyter%{psuffix}
 Version:        0.10.1
 Release:        0
@@ -109,8 +110,11 @@ mv pytest_jupyter pytest_jupyter.moved
 %{python_sitelib}/pytest_jupyter
 %{python_sitelib}/pytest_jupyter-%{version}.dist-info
 
+# python-nbformat needed by the client subpackage is not available on python313
+%if %{?python_version_nodots} < 313
 %files %{python_files client}
 %license LICENSE
+%endif
 
 %if !%{with ringdisabled}
 %files %{python_files server}

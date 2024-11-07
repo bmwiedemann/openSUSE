@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Nov  4 16:54:32 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
+
+- 2.0.3:
+
+## What's Changed
+
+* Fix compatibility with older Ruby versions @jhawthorn 
+
+**Full Changelog**: https://github.com/rails/importmap-rails/compare/v2.0.2...v2.0.3
+
+2.0.2:
+
+## What's Changed
+
+* Add package information in vendored package file by @faqndo97 in https://github.com/rails/importmap-rails/pull/227
+* Update default provider to use `jspm.io` instead of `jspm` by @josefarias in https://github.com/rails/importmap-rails/pull/234
+* Updated module_name regexp to not match incorrect indexes by @Caleb-T-Owens in https://github.com/rails/importmap-rails/pull/238
+* Invoke app:template via Rake::Task[].invoke to avoid reloading rakefile by @Caleb-T-Owens in https://github.com/rails/importmap-rails/pull/239
+* Handle String response for "find latest version" by @vietqhoang in https://github.com/rails/importmap-rails/pull/246
+* Allows preload to be determined by provided entry_point by @aseroff in https://github.com/rails/importmap-rails/pull/253
+* Fix ./bin/importmap update by @arni1981 in https://github.com/rails/importmap-rails/pull/262
+
+## New Contributors
+* @josefarias made their first contribution in https://github.com/rails/importmap-rails/pull/234
+* @wakairo made their first contribution in https://github.com/rails/importmap-rails/pull/249
+* @Caleb-T-Owens made their first contribution in https://github.com/rails/importmap-rails/pull/238
+* @schmijos made their first contribution in https://github.com/rails/importmap-rails/pull/260
+* @aseroff made their first contribution in https://github.com/rails/importmap-rails/pull/253
+* @arni1981 made their first contribution in https://github.com/rails/importmap-rails/pull/262
+* @corneverbruggen made their first contribution in https://github.com/rails/importmap-rails/pull/266
+
+**Full Changelog**: https://github.com/rails/importmap-rails/compare/v2.0.1...v2.0.2
+
+
+
+-------------------------------------------------------------------
 Mon Jan 29 14:08:13 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
 
 - 2.0.1:

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Oct 26 21:44:41 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.10.10
+  * The addition of the "silent jumps" and "silent scans"
+    attributes, which allow ships to jump and scan without playing
+    any sounds, not even the default ones.
+  * Particularly large capture defense values on some outfits were
+    reduced, to work better with changes to capturing mechanics in
+    0.10.9.
+  * Fixes and improvements to various Incipias, Remnant, and
+    Successor missions.
+  * Updated landing messages for some star sprites to improve
+    accuracy.
+- add conditional build for leap with force gcc version
+
+-------------------------------------------------------------------
 Sat Jun 22 20:12:55 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.10.8

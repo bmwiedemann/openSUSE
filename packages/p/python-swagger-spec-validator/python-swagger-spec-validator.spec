@@ -1,7 +1,7 @@
 #
 # spec file for package python-swagger-spec-validator
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,26 +18,29 @@
 
 %define skip_python2 1
 Name:           python-swagger-spec-validator
-Version:        3.0.3
+Version:        3.0.4
 Release:        0
 Summary:        Validation of Swagger specifications
 License:        Apache-2.0
-URL:            http://github.com/Yelp/swagger_spec_validator
 Group:          Development/Libraries/Python
+URL:            https://github.com/Yelp/swagger_spec_validator
 Source:         https://github.com/Yelp/swagger_spec_validator/archive/refs/tags/v%{version}.tar.gz#/swagger-spec-validator-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module importlib-resources}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
-# SECTION test requirements
-BuildRequires:  %{python_module jsonschema}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module typing_extensions}
-# /SECTION
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
-Requires:       python-jsonschema
+BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
+Requires:       python-jsonschema
 Requires:       python-typing_extensions
 BuildArch:      noarch
+# SECTION test requirements
+BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module jsonschema}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module typing_extensions}
+# /SECTION
 %python_subpackages
 
 %description
@@ -46,13 +49,13 @@ the Swagger 1.2 or Swagger 2.0 specification. The validator aims to check for
 full compliance with the Specification.
 
 %prep
-%setup -q -n swagger_spec_validator-%{version}
+%autosetup -p1 -n swagger_spec_validator-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -61,6 +64,7 @@ full compliance with the Specification.
 %files %{python_files}
 %doc README.md
 %license LICENSE.txt
-%{python_sitelib}/swagger_spec_validator*/
+%{python_sitelib}/swagger_spec_validator-%{version}*-info
+%{python_sitelib}/swagger_spec_validator
 
 %changelog

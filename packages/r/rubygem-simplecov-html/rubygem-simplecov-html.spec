@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-simplecov-html
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,10 @@
 #
 
 Name:           rubygem-simplecov-html
-Version:        0.12.3
+Version:        0.13.1
 Release:        0
 %define mod_name simplecov-html
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.4}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
@@ -37,7 +36,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Default HTML formatter for SimpleCov code coverage tool for ruby 2.4+
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 Default HTML formatter for SimpleCov code coverage tool for ruby 2.4+.

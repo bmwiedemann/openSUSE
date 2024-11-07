@@ -15,25 +15,22 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%define oldpython python
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-Durus
-Version:        4.2
+Version:        4.3
 Release:        0
 Summary:        A Python Object Database
 License:        CNRI-Python
 URL:            https://www.mems-exchange.org/software/durus/
-Source:         https://files.pythonhosted.org/packages/source/D/Durus/Durus-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/d/durus/durus-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
-%ifpython2
-Provides:       %{oldpython}-durus = %{version}
-Obsoletes:      %{oldpython}-durus < %{version}
-%endif
 %python_subpackages
 
 %description
@@ -41,18 +38,19 @@ Serves and manages changes to persistent objects being used in
 multiple client processes.
 
 %prep
-%setup -q -n Durus-%{version}
+%setup -q -n durus-%{version}
 # Fix non-executable scripts
 sed -i "1d" bin/db_renumber.py
 sed -i "1d" durus/__main__.py
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/durus
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %post
 %python_install_alternative durus
@@ -68,6 +66,7 @@ export CFLAGS="%{optflags}"
 %license LICENSE.txt
 %doc ACKS.txt CHANGES.txt README.md doc/FAQ.txt
 %python_alternative %{_bindir}/durus
-%{python_sitearch}/*
+%{python_sitearch}/durus
+%{python_sitearch}/Durus-%{version}.dist-info
 
 %changelog

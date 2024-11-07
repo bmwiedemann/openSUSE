@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-mime-types
-Version:        3.5.2
+Version:        3.6.0
 Release:        0
 %define mod_name mime-types
 %define mod_full_name %{mod_name}-%{version}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  5 16:29:38 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
+
+- Remove "Recommends: restorecond" from selinux pattern as we don't
+  want it to be installed by default.
+
+-------------------------------------------------------------------
 Thu Oct 31 14:44:43 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - Agama does not install chrony, add it to the pattern like on all

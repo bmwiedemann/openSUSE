@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-mocha
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 %define mod_name mocha
 %define mod_full_name %{mod_name}-%{version}

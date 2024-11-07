@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-path_expander
-Version:        1.1.2
+Version:        1.1.3
 Release:        0
 %define mod_name path_expander
 %define mod_full_name %{mod_name}-%{version}

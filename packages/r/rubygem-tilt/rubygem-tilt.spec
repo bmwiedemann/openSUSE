@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-tilt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-tilt
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 %define mod_name tilt
 %define mod_full_name %{mod_name}-%{version}
@@ -38,7 +38,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Generic interface to multiple Ruby template engines
 License:        MIT
-PreReq:         update-alternatives
 
 %description
 Generic interface to multiple Ruby template engines.

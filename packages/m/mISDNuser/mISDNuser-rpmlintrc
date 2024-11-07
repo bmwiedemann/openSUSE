@@ -1,6 +1,0 @@
-#[   17s] libcapi20-mod_misdn.x86_64: E: devel-file-in-non-devel-package (Badness: 50) /usr/lib64/capi/lib_capi_mod_misdn.so
-#false positive
-addFilter("devel-file-in-non-devel-package")
-
-#false positive, because mISDN is a so-called proper noun
-addFilter("summary-not-capitalized")

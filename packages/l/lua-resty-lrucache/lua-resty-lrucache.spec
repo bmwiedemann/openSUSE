@@ -18,7 +18,7 @@
 
 %define lua_version 5.1
 Name:           lua-resty-lrucache
-Version:        0.14
+Version:        0.15
 Release:        0
 Summary:        Lua-land LRU cache based on the LuaJIT FFI
 License:        BSD-2-Clause

@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-yard
-Version:        0.9.36
+Version:        0.9.37
 Release:        0
 %define mod_name yard
 %define mod_full_name %{mod_name}-%{version}
@@ -40,7 +40,6 @@ Patch0:         yard-do-not-record-timestamps.diff
 # /MANUAL
 Summary:        Documentation tool for consistent and usable documentation in Ruby
 License:        MIT
-PreReq:         update-alternatives
 
 %description
 YARD is a documentation generation tool for the Ruby programming language.

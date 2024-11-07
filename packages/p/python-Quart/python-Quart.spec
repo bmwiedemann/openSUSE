@@ -19,7 +19,7 @@
 # Can't build for Python 3.10 due to missing hypercorn
 %define skip_python310 1
 Name:           python-Quart
-Version:        0.19.6
+Version:        0.19.8
 Release:        0
 Summary:        A Python ASGI web microframework with the same API as Flask
 License:        MIT

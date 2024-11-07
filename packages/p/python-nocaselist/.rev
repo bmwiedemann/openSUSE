@@ -84,4 +84,17 @@
   * use f-streings</comment>
     <requestid>1178616</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>532cf2a36c91784add8d447885f2e88d</srcmd5>
+    <version>2.0.3</version>
+    <time>1730993289</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0.3:
+  * Fixed safety issues up to 2024-08-18.
+  * Fixed new issues from pylint 3.2.
+  * Fixed missing Python 3.12 in Trove classifiers.
+  * Increased vrsions of GitHub Actions plugins used, to eliminate
+    warnings about node v16.</comment>
+    <requestid>1222028</requestid>
+  </revision>
 </revisionlist>

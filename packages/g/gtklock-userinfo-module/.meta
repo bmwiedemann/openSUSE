@@ -1,0 +1,6 @@
+<package name="gtklock-userinfo-module" project="openSUSE:Factory">
+  <title>Module for gtklock which adds user info to the lockscreen</title>
+  <description>Adds a user image and user name to the lockscreen.</description>
+  <devel project="X11:Wayland" package="gtklock-userinfo-module"/>
+  <url>https://github.com/jovanlanik/gtklock-userinfo-module</url>
+</package>

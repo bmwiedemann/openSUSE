@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-http-cookie
-Version:        1.0.6
+Version:        1.0.7
 Release:        0
 %define mod_name http-cookie
 %define mod_full_name %{mod_name}-%{version}

@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Thu Nov  7 09:48:47 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Clean up the SPEC, switch to pyproject_* macros.
+
+-------------------------------------------------------------------
+Thu Nov  7 09:19:59 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 1.9.0 (2024-03-08):
+  - The logic for on_update* has been largely rewritten. As a
+    user-visible side effect, detailed debugging information
+    about 'on_update_*' tasks is now available.
+  - For improved flexibility, configuration sections
+    may now override global 'on_update_exec' and
+    'on_update_timeout'. Eearlier Fangfrisch versions only
+    examined the DEFAULTS section.
+  - Add internal default configurations for providers InterServer
+    (https://www.interserver.net/) and Fangfrisch News
+    (https://rseichter.github.io/fangfrisch/#ffnews). As per
+    usual, these new providers are disabled by default.
+- Update to 1.8.1 (2024-02-21):
+  - Python unit tests requiring network connections are now
+    disabled by default to facilitate sandboxed testing. Set
+    environment variable NETWORK_TESTS=1 to enable these tests.
+- Update to 1.8.0 (2024-02-14):
+  - Sanesecurity (https://sanesecurity.com) provider default
+    configuration overhaul. Switch to a less congested mirror
+    site, add/remove several signature URLs.
+  - Modernise Python build re PEP 517
+    (https://peps.python.org/pep-0517/).
+- Update to 1.7.0 (2024-02-03):
+  - Support user-defined connection timeouts.
+- Update to 1.6.1 (2023-02-21):
+  - Require SQLAlchemy version 1.4 or higher. Version 1.3 is no
+    longer maintained by the SQLAlchemy developers.
+- Update to 1.6.0 (2023-02-18):
+  - Use Python context management protocol to improve SQLAlchemy
+    session handling, in particular to more reliably release
+    resources like database connections.
+
+-------------------------------------------------------------------
+Mon Apr 25 13:23:59 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- fangfrisch - fetch third party clamav signatures

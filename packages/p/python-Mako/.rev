@@ -623,4 +623,12 @@ Switching over to update-alternatives for python 3 would be a huge undertaking a
     when traversing some bracketed situations.</comment>
     <requestid>1178620</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>bc9611c0c5d91c09ae50788fb99eca12</srcmd5>
+    <version>1.3.6</version>
+    <time>1730993156</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1221950</requestid>
+  </revision>
 </revisionlist>

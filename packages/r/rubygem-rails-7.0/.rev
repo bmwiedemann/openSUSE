@@ -92,4 +92,41 @@ updated to version 7.0.3.1
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1182826</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ccb5e79d7fa1f8bf9b9f5d451c895e50</srcmd5>
+    <version>7.0.8.6</version>
+    <time>1730993206</time>
+    <user>anag+factory</user>
+    <comment>- Allow newer puma as well
+
+- loosen the sqlite3 dependency following the change in railties
+  7.0
+
+- 7.0.8.6:
+## Active Support
+*   No changes.
+## Active Model
+*   No changes.
+## Active Record
+*   No changes.
+## Action View
+*   No changes.
+## Action Pack
+*   No changes.
+## Active Job
+*   No changes.
+## Action Mailer
+*   Fix NoMethodError in `block_format` helper
+    *Michael Leimstaedtner*
+## Action Cable
+*   No changes.
+## Active Storage
+*   No changes.
+## Action Mailbox
+*   No changes.
+## Action Text
+*   No changes.
+## Railties</comment>
+    <requestid>1222142</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-cssmin
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cssmin
 Version:        0.2.0
 Release:        0
@@ -26,11 +25,13 @@ Group:          Development/Languages/Python
 URL:            https://github.com/zacharyvoase/cssmin
 Source:         https://files.pythonhosted.org/packages/source/c/cssmin/cssmin-%{version}.tar.gz
 BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -38,18 +39,21 @@ BuildArch:      noarch
 This is a Python port of the YUI CSS Compressor.
 
 %prep
-%setup -q -n cssmin-%{version}
+%autosetup -p1 -n cssmin-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %{python_expand chmod a+x %{buildroot}%{$python_sitelib}/cssmin.py
 sed -i "s|^#!.*env python$|#!%{__$python}|" %{buildroot}%{$python_sitelib}/cssmin.py
 }
 %python_clone -a %{buildroot}%{_bindir}/cssmin
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+# Good upstream have never even heard about the idea of tests
 
 %post
 %python_install_alternative cssmin
@@ -59,8 +63,8 @@ sed -i "s|^#!.*env python$|#!%{__$python}|" %{buildroot}%{$python_sitelib}/cssmi
 
 %files %{python_files}
 %python_alternative %{_bindir}/cssmin
-%{python_sitelib}/cssmin.py*
-%{python_sitelib}/cssmin-%{version}-py*.egg-info
+%{python_sitelib}/cssmin.py
+%{python_sitelib}/cssmin-%{version}*-info
 %pycache_only %{python_sitelib}/__pycache__
 
 %changelog
