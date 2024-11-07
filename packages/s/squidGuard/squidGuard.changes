@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov  7 12:27:41 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- config_exit.patch: fix build failure due to undefined exit() in
+  configure.ac scripts
+- types.patch: fix types in mysql types
+
+-------------------------------------------------------------------
 Wed Apr 28 12:51:38 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to debian maintained version 1.6.0:

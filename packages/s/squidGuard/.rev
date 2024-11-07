@@ -371,4 +371,14 @@
     <comment></comment>
     <requestid>900116</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>9cbc36d02fae235e3c79ad9abf82e52e</srcmd5>
+    <version>1.6.0</version>
+    <time>1730999822</time>
+    <user>dimstar_suse</user>
+    <comment>- config_exit.patch: fix build failure due to undefined exit() in
+  configure.ac scripts
+- types.patch: fix types in mysql types</comment>
+    <requestid>1222481</requestid>
+  </revision>
 </revisionlist>

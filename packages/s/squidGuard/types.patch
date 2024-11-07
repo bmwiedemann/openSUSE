@@ -1,0 +1,42 @@
+Fix type
+
+Index: maintain_squidguard-upstream-1.6.0/src/sg.y.in
+===================================================================
+--- maintain_squidguard-upstream-1.6.0.orig/src/sg.y.in
++++ maintain_squidguard-upstream-1.6.0/src/sg.y.in
+@@ -46,6 +46,8 @@ static int date_switch = 0;
+ 
+ int numSource = 0;
+ 
++void sgSourceUserQuery(char *query);
++
+ void rfc1738_unescape(char *);
+ void
+ rfc1738_unescape(char *s)
+@@ -720,7 +722,7 @@ void sgSourceUserQuery(query)
+   char *dbhome = NULL, *f;
+   MYSQL *conn;
+   MYSQL_RES *res;
+-  MYSQL_ROW *row;
++  MYSQL_ROW row;
+   char line[MAX_BUF];
+   char *my_query, *my_user, *my_pass, *my_db;
+   char *str=";";
+@@ -2195,11 +2197,12 @@ void sgTimeSetAcl()
+   for(rew = Rewrite; rew != NULL; rew = rew->next){
+     if(rew->time != NULL){
+       rew->active = rew->time->active;
+-      if(rew->within == OUTSIDE)
+-	if(rew->active)
+-	  rew->active = 0;
+-	else
+-	  rew->active = 1;
++      if(rew->within == OUTSIDE) {
++    	if(rew->active)
++    	  rew->active = 0;
++    	else
++    	  rew->active = 1;
++      }
+     }
+   }
+ }

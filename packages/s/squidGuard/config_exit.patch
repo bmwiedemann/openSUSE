@@ -1,0 +1,68 @@
+Fix configure failure in configure due to undefined `exit`
+
+Index: maintain_squidguard-upstream-1.6.0/configure.ac
+===================================================================
+--- maintain_squidguard-upstream-1.6.0.orig/configure.ac
++++ maintain_squidguard-upstream-1.6.0/configure.ac
+@@ -237,7 +237,7 @@ if test "$with_ldap" = "yes"; then
+         {
+            LDAP *p;
+            p = ldap_init("localhost", LDAP_PORT);
+-           exit(0);
++           return 0;
+         }
+         ]])],,[
+            echo
+@@ -271,7 +271,7 @@ if test "$with_mysql" != "no"; then
+   fi
+ 
+   AC_MSG_CHECKING(for mysql)
+-  MYSQLLINE="                    | USERQUERY WORD WORD WORD WORD { sgSourceUserQuery(\$2,\$3,\$4,\$5); }"
++  MYSQLLINE="                    | USERQUERY WORD { sgSourceUserQuery(\$2); }"
+ 
+   for i in $mysql_directory; do
+     if test -r $i/include/mysql/mysql.h; then
+@@ -355,8 +355,8 @@ AC_RUN_IFELSE([AC_LANG_SOURCE([[
+ #endif
+         ver = major + ((float) minor / 1000);
+         if (ver >= 2.006)
+-			exit (0);
+-		exit (1);
++			return 0;
++		return 1;
+ 	}	
+ 	]])],
+ 	[db_ok_version=yes],
+@@ -390,8 +390,8 @@ AC_RUN_IFELSE([AC_LANG_SOURCE([[
+ #endif
+         ver = major + ((float) minor / 1000);
+         if (ver > 2.007 && ver < 3.002)
+-			exit (1);
+-		exit (0);
++			return 1;
++		return 0;
+ 	}	
+ 	]])],
+ 	[db_ok_version=yes],
+@@ -426,8 +426,8 @@ AC_RUN_IFELSE([AC_LANG_SOURCE([[
+ #endif
+         ver = major + ((float) minor / 1000);
+         if (ver >= 3.002)
+-			exit (0);
+-		exit (1);
++			return 0;
++		return 1;
+ 	}	
+ 	]])],
+ 	[dbg2_ok_version=yes],
+@@ -454,8 +454,8 @@ AC_RUN_IFELSE([AC_LANG_SOURCE([[
+ #endif
+         ver = major + ((float) minor / 1000);
+         if (ver >= 4.002)
+-			exit (0);
+-		exit (1);
++			return 0;
++		return 1;
+ 	}	
+ 	]])],
+ 	[dbg3_ok_version=yes],

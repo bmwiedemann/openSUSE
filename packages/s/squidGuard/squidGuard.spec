@@ -1,7 +1,7 @@
 #
 # spec file for package squidGuard
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,8 @@ Source3:        blocked.gif
 Patch0:         squidGuard-mysql.patch
 Patch1:         squidGuard-config.patch
 Patch2:         default_config_pathfixes.patch
+Patch3:         config_exit.patch
+Patch4:         types.patch
 BuildRequires:  bison
 BuildRequires:  db-devel
 BuildRequires:  flex
@@ -137,7 +139,10 @@ cp ANNOUNCE CHANGELOG FAQ README* %{buildroot}/%{_defaultdocdir}/%{name}/
 %config(noreplace) %attr(660, squid, squid) %{_localstatedir}/lib/squidGuard/db/blacklist/*
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
 %{_sbindir}/*
+%dir /srv/www
+%dir /srv/www/htdocs
 %dir %{imgdir}
+%dir %{cgidir}
 %{cgidir}/*
 %{imgdir}/*
 
