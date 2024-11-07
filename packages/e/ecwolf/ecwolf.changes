@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov  2 21:39:16 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch:
+  * ecwolf-fix-gcc14.patch
+
+-------------------------------------------------------------------
 Thu Feb 22 11:35:14 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

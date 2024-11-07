@@ -1,7 +1,7 @@
 #
 # spec file for package ecwolf
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ URL:            https://maniacsvault.net/ecwolf
 Source:         https://maniacsvault.net/ecwolf/files/ecwolf/1.x/%{name}-%{version}-src.tar.xz
 Patch1:         ecwolf-no-rpath.patch
 Patch2:         ecwolf-fix-path.patch
+Patch3:         ecwolf-fix-gcc14.patch
 BuildRequires:  cmake
 BuildRequires:  fluidsynth-devel
 BuildRequires:  gcc-c++
