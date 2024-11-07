@@ -213,4 +213,12 @@ The more cleanest fix for bnc#714439 is proposed.
 - Use %license</comment>
     <requestid>1149064</requestid>
   </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>a3afe2adf5bb97d743bd36ffb590727f</srcmd5>
+    <version>0.7.1</version>
+    <time>1730996427</time>
+    <user>dimstar_suse</user>
+    <comment>- camsource-fix.patch: fix build with new glibc (forwarded request 1222096 from msmeissn)</comment>
+    <requestid>1222487</requestid>
+  </revision>
 </revisionlist>

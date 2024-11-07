@@ -31,6 +31,7 @@ Source:         camsource-%{version}.tar.gz
 Source1:        camsource-rpmlintrc
 Patch0:         camsource-no_implicit_decls.diff
 Patch1:         camsource-v4l-conf-video_window-overwrite.patch
+Patch2:         camsource-fix.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
