@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Oct 29 21:35:58 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNUnet 0.22.2:
+  * GNUNET_STRINGS_get_utf8_args removed.
+  * Removed unsafe and unused functions for 2d/3d array allocation
+
+-------------------------------------------------------------------
+Sun Oct 20 07:03:17 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNUnet 0.22.1:
+  * New logging API to print/parse hex bytes
+  * Added RFC9180 HPKE and associated KEMs
+  * Replace oneshot PKE and KEM APIs with HPKE
+  * New Elligator KEM
+  * Namestore API allows multiple records to be inserted in a
+    single transaction (if plugin supports this)
+  * New ECDH API that uses KDFs instead of hash
+  * Renamed GNUNET_CRYPTO_hkdf to GNUNET_CRYPTO_hkdf_gnunet
+  * Added new standard SHA256-based HKDF APIs
+  * New hostlist bootstrap domain https://bootstrap.gnunet.org
+
+-------------------------------------------------------------------
 Sat Jun  8 11:17:19 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNUnet 0.21.2:

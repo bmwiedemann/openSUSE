@@ -19,7 +19,7 @@
 
 
 Name:           gnunet
-Version:        0.21.2
+Version:        0.22.2
 Release:        0
 Summary:        Security focused Peer-to-Peer Framework
 License:        AGPL-3.0-or-later
@@ -114,7 +114,7 @@ GNUnet is a part of the GNU project (https://www.gnu.org/).
 %gnunet_libpackage -l gnunettransportcommunicator -s 0\
 %gnunet_libpackage -l gnunettransportcore -s 0\
 %gnunet_libpackage -l gnunettransportmonitor -s 0\
-%gnunet_libpackage -l gnunetutil -s 16\
+%gnunet_libpackage -l gnunetutil -s 18\
 %gnunet_libpackage -l gnunetvpn -s 0\
 %gnunet_libpackage -l nss_gns4 -s 2 -d \-\
 %gnunet_libpackage -l nss_gns6 -s 2 -d \-\
