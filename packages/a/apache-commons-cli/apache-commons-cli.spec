@@ -19,7 +19,7 @@
 %global base_name       cli
 %global short_name      commons-%{base_name}
 Name:           apache-commons-cli
-Version:        1.8.0
+Version:        1.9.0
 Release:        0
 Summary:        Command Line Interface Library for Java
 License:        Apache-2.0

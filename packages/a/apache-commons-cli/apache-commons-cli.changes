@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Nov  7 09:47:59 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
+
+- Update to 1.9.0
+  * New features
+    + Add OptionGroup.isSelected().
+    + You can now extend HelpFormatter.Builder.
+    + Add 'since' attribute to Option to track when an Option was
+      introduced #292
+  * Fixed bugs
+    + CLI-334:  Fix Javadoc pathing #280.
+    + CLI-335:  Updated properties documentation #285.
+    + CLI-336:  Deprecation not always reported #284.
+    + Replace internal StringBuffer with StringBuilder.
+  * Updates
+    + Bump org.apache.commons:commons-parent from 70 to 72 #283.
+
+-------------------------------------------------------------------
 Mon Aug 12 12:14:19 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Update to 1.8.0
