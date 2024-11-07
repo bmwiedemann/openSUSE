@@ -246,6 +246,7 @@ unsorted:
   - QMPlay2 
   - QMPlay2-devel 
   - QR-Code-generator-devel 
+  - QSVEnc 
   - QTalarm 
   - QtAV 
   - QtAV-devel 
@@ -3132,6 +3133,7 @@ unsorted:
   - dcraw-lang 
   - dd_rescue 
   - dd_rescue-crypt 
+  - dd_rescue-lzma 
   - dd_rescue-lzo 
   - dd_rhelp 
   - ddclient 
@@ -7457,7 +7459,6 @@ unsorted:
   - gnome-screenshot-lang 
   - gnome-search-tool 
   - gnome-search-tool-lang 
-  - gnome-session-xsession 
   - gnome-settings-daemon-devel 
   - gnome-shell-devel 
   - gnome-shell-extension-customize-ibus 
@@ -7559,6 +7560,8 @@ unsorted:
   - gnunet 
   - gnunet-devel 
   - gnunet-fuse 
+  - gnunet-gtk 
+  - gnunet-gtk-devel 
   - gnunet-lang 
   - gnunet-messenger-cli 
   - gnunet-messenger-gtk 
@@ -8354,6 +8357,7 @@ unsorted:
   - gtkimageview-devel 
   - gtklock 
   - gtklock-lang 
+  - gtklock-userinfo-module 
   - gtkmm2-devel 
   - gtkmm2-tutorial 
   - gtkmm2-tutorial-lang 
@@ -8719,7 +8723,6 @@ unsorted:
   - html-dtd 
   - html-xml-utils 
   - html2ps 
-  - html2text 
   - htmlcxx 
   - htmlcxx-devel 
   - htmldoc 
@@ -12453,7 +12456,6 @@ unsorted:
   - libcapi20-3-32bit 
   - libcapi20-devel 
   - libcapi20-devel-32bit 
-  - libcapi20-mod_misdn 
   - libcapnp-1_0_2 
   - libcapnp-devel 
   - libcapstone-devel 
@@ -13565,6 +13567,7 @@ unsorted:
   - libgnunetgns0 
   - libgnunetgnsrecord0 
   - libgnunetgnsrecordjson0 
+  - libgnunetgtk3 
   - libgnunethello0 
   - libgnunetidentity1 
   - libgnunetjson0 
@@ -13597,7 +13600,7 @@ unsorted:
   - libgnunettransportcommunicator0 
   - libgnunettransportcore0 
   - libgnunettransportmonitor0 
-  - libgnunetutil16 
+  - libgnunetutil18 
   - libgnunetvpn0 
   - libgnuradio-3_10_11 
   - libgnuradio-funcube-devel 
@@ -14447,6 +14450,7 @@ unsorted:
   - liblqr-1-0-32bit 
   - liblqr-devel 
   - liblrdf-devel 
+  - liblrdf2 
   - liblrdf2-32bit 
   - liblrs1 
   - liblsan0-gcc12 
@@ -14666,7 +14670,6 @@ unsorted:
   - libmirage11 
   - libmirisdr-devel 
   - libmirisdr0 
-  - libmisdn1 
   - libmjpegutils-2_2-0-32bit 
   - libmjpegutils-devel 
   - libmlt++-7-7 
@@ -17755,6 +17758,7 @@ unsorted:
   - logwarn-nagios-plugin 
   - logwatch 
   - loki 
+  - lokitool 
   - lollypop 
   - lollypop-lang 
   - lomt-blackout-fonts 
@@ -18131,7 +18135,6 @@ unsorted:
   - lxqt-about-lang 
   - lxqt-archiver 
   - lxqt-archiver-lang 
-  - lxqt-build-tools-devel 
   - lxqt-build-tools-qt5-devel 
   - lxqt-config 
   - lxqt-config-lang 
@@ -18194,8 +18197,6 @@ unsorted:
   - lzo-devel-static 
   - m17n-lib 
   - m17n-lib-devel 
-  - mISDNuser 
-  - mISDNuser-devel 
   - mac 
   - mac-devel 
   - mac-robber 
@@ -25506,6 +25507,7 @@ unsorted:
   - python310-fakeredis 
   - python310-falcon 
   - python310-fanficfare 
+  - python310-fangfrisch 
   - python310-fann2 
   - python310-fastapi 
   - python310-fastbencode 
@@ -29137,6 +29139,7 @@ unsorted:
   - python311-fakeredis 
   - python311-falcon 
   - python311-fanficfare 
+  - python311-fangfrisch 
   - python311-fann2 
   - python311-fastapi 
   - python311-fastbencode 
@@ -32725,6 +32728,7 @@ unsorted:
   - python312-fakeredis 
   - python312-falcon 
   - python312-fanficfare 
+  - python312-fangfrisch 
   - python312-fann2 
   - python312-fastapi 
   - python312-fastbencode 
@@ -35721,7 +35725,6 @@ unsorted:
   - qtmpris 
   - qtmpris-devel 
   - qtodotxt 
-  - qtox 
   - qtractor 
   - qtractor-doc-pdf 
   - qtxdg-tools 
@@ -35992,6 +35995,7 @@ unsorted:
   - restic 
   - restic-bash-completion 
   - restic-zsh-completion 
+  - restorecond 
   - retext 
   - retro-gtk 
   - retro-gtk-devel 
@@ -36257,7 +36261,6 @@ unsorted:
   - ruby3.3-rubygem-aes_key_wrap 
   - ruby3.3-rubygem-afm 
   - ruby3.3-rubygem-agama-yast 
-  - ruby3.3-rubygem-airbrussh 
   - ruby3.3-rubygem-amq-protocol 
   - ruby3.3-rubygem-arel 
   - ruby3.3-rubygem-asciidoctor 
@@ -36278,8 +36281,6 @@ unsorted:
   - ruby3.3-rubygem-bundler 
   - ruby3.3-rubygem-bundler-audit 
   - ruby3.3-rubygem-byebug 
-  - ruby3.3-rubygem-capistrano 
-  - ruby3.3-rubygem-celluloid 
   - ruby3.3-rubygem-changelog_generator 
   - ruby3.3-rubygem-chef-utils 
   - ruby3.3-rubygem-childprocess 
@@ -36301,9 +36302,6 @@ unsorted:
   - ruby3.3-rubygem-delayed_job 
   - ruby3.3-rubygem-delayed_job_active_record 
   - ruby3.3-rubygem-descendants_tracker 
-  - ruby3.3-rubygem-devise 
-  - ruby3.3-rubygem-devise-i18n 
-  - ruby3.3-rubygem-devise_ldap_authenticatable 
   - ruby3.3-rubygem-diff-lcs 
   - ruby3.3-rubygem-diffy 
   - ruby3.3-rubygem-docile 
@@ -36374,7 +36372,6 @@ unsorted:
   - ruby3.3-rubygem-inifile 
   - ruby3.3-rubygem-jaro_winkler 
   - ruby3.3-rubygem-jbuilder 
-  - ruby3.3-rubygem-jekyll-watch 
   - ruby3.3-rubygem-jquery-rails 
   - ruby3.3-rubygem-js-routes 
   - ruby3.3-rubygem-json 
@@ -36429,7 +36426,6 @@ unsorted:
   - ruby3.3-rubygem-net-scp 
   - ruby3.3-rubygem-net-sftp 
   - ruby3.3-rubygem-net-ssh 
-  - ruby3.3-rubygem-net-ssh-6.1 
   - ruby3.3-rubygem-netrc 
   - ruby3.3-rubygem-nio4r 
   - ruby3.3-rubygem-nori 
@@ -36440,25 +36436,14 @@ unsorted:
   - ruby3.3-rubygem-orm_adapter 
   - ruby3.3-rubygem-os 
   - ruby3.3-rubygem-packaging_rake_tasks 
-  - ruby3.3-rubygem-paint 
-  - ruby3.3-rubygem-pairing_heap 
   - ruby3.3-rubygem-parallel 
   - ruby3.3-rubygem-parallel_tests 
   - ruby3.3-rubygem-parser 
   - ruby3.3-rubygem-passenger 
   - ruby3.3-rubygem-path_expander 
-  - ruby3.3-rubygem-pathutil 
-  - ruby3.3-rubygem-pdf-core 
-  - ruby3.3-rubygem-pdf-reader 
   - ruby3.3-rubygem-pg 
   - ruby3.3-rubygem-pkg-config 
   - ruby3.3-rubygem-po_to_json 
-  - ruby3.3-rubygem-polyglot 
-  - ruby3.3-rubygem-prawn 
-  - ruby3.3-rubygem-prawn-core 
-  - ruby3.3-rubygem-prawn-icon 
-  - ruby3.3-rubygem-prawn-table 
-  - ruby3.3-rubygem-prawn-templates 
   - ruby3.3-rubygem-pry 
   - ruby3.3-rubygem-pry-doc 
   - ruby3.3-rubygem-public_suffix 
@@ -36480,33 +36465,21 @@ unsorted:
   - ruby3.3-rubygem-rails-i18n 
   - ruby3.3-rubygem-railties-7.0 
   - ruby3.3-rubygem-rainbow 
-  - ruby3.3-rubygem-raindrops 
   - ruby3.3-rubygem-rake-compiler 
   - ruby3.3-rubygem-rb-fsevent 
   - ruby3.3-rubygem-rb-inotify 
-  - ruby3.3-rubygem-rb-kqueue 
-  - ruby3.3-rubygem-red-datasets 
   - ruby3.3-rubygem-regexp_parser 
-  - ruby3.3-rubygem-responders 
   - ruby3.3-rubygem-reverse_markdown 
-  - ruby3.3-rubygem-rgl 
-  - ruby3.3-rubygem-rice 
   - ruby3.3-rubygem-ronn-ng 
   - ruby3.3-rubygem-rouge 
   - ruby3.3-rubygem-rpm 
   - ruby3.3-rubygem-rspec 
-  - ruby3.3-rubygem-rspec-3_5 
   - ruby3.3-rubygem-rspec-core 
-  - ruby3.3-rubygem-rspec-core-3_5 
   - ruby3.3-rubygem-rspec-expectations 
-  - ruby3.3-rubygem-rspec-expectations-3_5 
   - ruby3.3-rubygem-rspec-its 
   - ruby3.3-rubygem-rspec-mocks 
-  - ruby3.3-rubygem-rspec-mocks-3_5 
   - ruby3.3-rubygem-rspec-rails 
-  - ruby3.3-rubygem-rspec-rails-4.0 
   - ruby3.3-rubygem-rspec-support 
-  - ruby3.3-rubygem-rspec-support-3_5 
   - ruby3.3-rubygem-rubocop 
   - ruby3.3-rubygem-rubocop-ast 
   - ruby3.3-rubygem-ruby-libvirt 
@@ -36524,7 +36497,6 @@ unsorted:
   - ruby3.3-rubygem-sass-rails-5.1 
   - ruby3.3-rubygem-sassc 
   - ruby3.3-rubygem-sassc-rails 
-  - ruby3.3-rubygem-sdoc 
   - ruby3.3-rubygem-semantic_range 
   - ruby3.3-rubygem-serverengine 
   - ruby3.3-rubygem-sexp_processor 
@@ -36541,23 +36513,14 @@ unsorted:
   - ruby3.3-rubygem-sprockets-helpers 
   - ruby3.3-rubygem-sprockets-rails 
   - ruby3.3-rubygem-sqlite3 
-  - ruby3.3-rubygem-sshkit 
   - ruby3.3-rubygem-stimulus-rails 
-  - ruby3.3-rubygem-stomp 
-  - ruby3.3-rubygem-stream 
   - ruby3.3-rubygem-strptime 
-  - ruby3.3-rubygem-swd 
-  - ruby3.3-rubygem-sync 
   - ruby3.3-rubygem-temple 
-  - ruby3.3-rubygem-terminal-table 
   - ruby3.3-rubygem-text 
   - ruby3.3-rubygem-thor 
   - ruby3.3-rubygem-thread_safe 
   - ruby3.3-rubygem-tilt 
-  - ruby3.3-rubygem-timers 
   - ruby3.3-rubygem-tomlrb 
-  - ruby3.3-rubygem-treetop 
-  - ruby3.3-rubygem-trollop 
   - ruby3.3-rubygem-ttfunk 
   - ruby3.3-rubygem-turbo-rails 
   - ruby3.3-rubygem-turbolinks 
@@ -36568,23 +36531,17 @@ unsorted:
   - ruby3.3-rubygem-unf 
   - ruby3.3-rubygem-unf_ext 
   - ruby3.3-rubygem-unicode-display_width 
-  - ruby3.3-rubygem-unicode-display_width-1 
   - ruby3.3-rubygem-validate_email 
   - ruby3.3-rubygem-validate_url 
   - ruby3.3-rubygem-version_gem 
   - ruby3.3-rubygem-virtus 
-  - ruby3.3-rubygem-warden 
   - ruby3.3-rubygem-web-console 
-  - ruby3.3-rubygem-webfinger 
   - ruby3.3-rubygem-webmock 
   - ruby3.3-rubygem-webpacker 
   - ruby3.3-rubygem-webrick 
   - ruby3.3-rubygem-websocket 
   - ruby3.3-rubygem-websocket-driver 
   - ruby3.3-rubygem-websocket-extensions 
-  - ruby3.3-rubygem-winrm 
-  - ruby3.3-rubygem-winrm-elevated 
-  - ruby3.3-rubygem-winrm-fs 
   - ruby3.3-rubygem-xdg 
   - ruby3.3-rubygem-xml-simple 
   - ruby3.3-rubygem-xmlhash 
