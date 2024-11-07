@@ -107,6 +107,7 @@ Recommends:     pattern() = gnome_utilities
 Recommends:     pattern() = imaging
 Recommends:     pattern() = multimedia
 %endif
+Requires:       gnome-session-xsession
 # #545263
 Requires:       seahorse
 Requires:       totem

@@ -391,4 +391,12 @@
     <comment></comment>
     <requestid>1219917</requestid>
   </revision>
+  <revision rev="44" vrev="23">
+    <srcmd5>5ac28cfd0452dd114789a79584a9ed93</srcmd5>
+    <version>20201210</version>
+    <time>1730993678</time>
+    <user>dimstar_suse</user>
+    <comment>- Require gnome-session-xsession in the gnome (X11) pattern.</comment>
+    <requestid>1222492</requestid>
+  </revision>
 </revisionlist>
