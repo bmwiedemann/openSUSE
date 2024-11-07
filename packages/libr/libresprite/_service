@@ -3,8 +3,8 @@
   <service name="tar_scm" mode="localonly">
     <param name="scm">git</param>
     <param name="url">https://github.com/LibreSprite/LibreSprite.git</param>
-    <param name="version">1.0</param>
-    <param name="revision">v1.0</param>
+    <param name="version">1.1</param>
+    <param name="revision">v1.1</param>
     <param name="submodules">enable</param>
   </service>
 

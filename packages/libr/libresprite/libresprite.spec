@@ -1,7 +1,7 @@
 #
 # spec file for package libresprite
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libresprite
-Version:        1.0
+Version:        1.1
 Release:        0
 Summary:        Animated sprite editor & pixel art tool
 License:        GPL-2.0-or-later AND MIT
@@ -25,8 +25,6 @@ Group:          Productivity/Graphics/Bitmap Editors
 Source:         LibreSprite-%{version}.tar.bz2
 URL:            https://libresprite.github.io/
 BuildRequires:  cmake >= 3.4
-# PATCH-FIX-UPSTREAM add missing includes for newer gcc https://github.com/LibreSprite/LibreSprite/issues/399
-Patch1:         LibreSprite-1.0_includes.patch
 %if 0%{?suse_version} <= 1500
 BuildRequires:  gcc10-c++
 %else
@@ -45,11 +43,13 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(SDL2_image)
 BuildRequires:  pkgconfig(duktape)
 BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(lua5.3)
 BuildRequires:  pkgconfig(pixman-1)
+BuildRequires:  pkgconfig(tinyxml2)
 BuildRequires:  pkgconfig(x11)
 
 %description
@@ -85,7 +85,7 @@ install -m0644 -D data/icons/ase64.png %{buildroot}%{_datadir}/icons/hicolor/64x
 %license LICENSE.txt
 %{_bindir}/%{name}
 %{_bindir}/%{name}-thumbnailer
-%{_datadir}/appdata/%{name}.appdata.xml
+%{_datadir}/metainfo/io.github.libresprite.%{name}.metainfo.xml
 %{_datadir}/%{name}/
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/mime/packages/aseprite.xml

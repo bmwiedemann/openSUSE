@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov  7 10:45:48 UTC 2024 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- update to version 1.1
+  * First official Android tablet support!
+  * Greatly expanded scripting API!
+  * Lots of bug fixes!
+  * Awesome Quilt drawn by our community in Discord!
+- Removed LibreSprite-1.0_includes.patch (included by upstream)
+
+-------------------------------------------------------------------
 Fri Mar  1 09:18:59 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

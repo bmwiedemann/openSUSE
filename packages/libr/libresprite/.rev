@@ -24,4 +24,18 @@
     <comment></comment>
     <requestid>1153812</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>50298e22d69f203115476ef1efd5bf5c</srcmd5>
+    <version>1.1</version>
+    <time>1730993352</time>
+    <user>anag+factory</user>
+    <comment>- update to version 1.1
+  * First official Android tablet support!
+  * Greatly expanded scripting API!
+  * Lots of bug fixes!
+  * Awesome Quilt drawn by our community in Discord!
+- Removed LibreSprite-1.0_includes.patch (included by upstream)
+</comment>
+    <requestid>1222192</requestid>
+  </revision>
 </revisionlist>
