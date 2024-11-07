@@ -2987,7 +2987,6 @@ unsorted:
   - cups-filters-devel 
   - cups-pdf 
   - cups-rpm-helper 
-  - cura 
   - cura-engine 
   - cura-fdm-materials 
   - curl-fish-completion 
@@ -7458,6 +7457,7 @@ unsorted:
   - gnome-screenshot-lang 
   - gnome-search-tool 
   - gnome-search-tool-lang 
+  - gnome-session-xsession 
   - gnome-settings-daemon-devel 
   - gnome-shell-devel 
   - gnome-shell-extension-customize-ibus 
@@ -8642,6 +8642,7 @@ unsorted:
   - hexedit 
   - hexter 
   - hexyl 
+  - hey 
   - hfst 
   - hfst-devel 
   - hfst-ospell 
@@ -18758,6 +18759,7 @@ unsorted:
   - microcom 
   - microos-devel-tools 
   - micropython 
+  - micropython-lib 
   - miller 
   - miltertest 
   - mimalloc-devel 
@@ -24238,6 +24240,7 @@ unsorted:
   - python310-Flask-Security-Too 
   - python310-Flask-SocketIO 
   - python310-Flask-Testing 
+  - python310-Flask-Versioned 
   - python310-Flask-WTF 
   - python310-Flask-doc 
   - python310-FontTools 
@@ -24955,7 +24958,6 @@ unsorted:
   - python310-azure-template 
   - python310-azuremetadata 
   - python310-babelfish 
-  - python310-backcall 
   - python310-backoff 
   - python310-backports.entry_points_selectable 
   - python310-backports.tarfile 
@@ -26132,7 +26134,6 @@ unsorted:
   - python310-magicalimport 
   - python310-mailman3-fedmsg-plugin 
   - python310-mailmanclient 
-  - python310-main-wrapper 
   - python310-makefun 
   - python310-mando 
   - python310-manuel 
@@ -26259,6 +26260,7 @@ unsorted:
   - python310-mysql-to-sqlite3 
   - python310-mysqlclient 
   - python310-myst-parser 
+  - python310-nagiosplugin 
   - python310-napalm 
   - python310-napalm-asa 
   - python310-napalm-procurve 
@@ -27239,7 +27241,6 @@ unsorted:
   - python310-sanlock 
   - python310-sarge 
   - python310-sarif-om 
-  - python310-sasl 
   - python310-sat-search 
   - python310-sat-stac 
   - python310-schedule 
@@ -27530,6 +27531,7 @@ unsorted:
   - python310-tinyarray 
   - python310-tinycss2 
   - python310-tinydb 
+  - python310-tinyhtml5 
   - python310-tinyrecord 
   - python310-tinyrpc 
   - python310-titlecase 
@@ -27909,6 +27911,7 @@ unsorted:
   - python311-Flask-Security-Too 
   - python311-Flask-SocketIO 
   - python311-Flask-Testing 
+  - python311-Flask-Versioned 
   - python311-Flask-WTF 
   - python311-Flask-doc 
   - python311-FontTools 
@@ -28607,7 +28610,6 @@ unsorted:
   - python311-azure-template 
   - python311-azuremetadata 
   - python311-babelfish 
-  - python311-backcall 
   - python311-backoff 
   - python311-backports.entry_points_selectable 
   - python311-backports.tarfile 
@@ -29734,7 +29736,6 @@ unsorted:
   - python311-magicalimport 
   - python311-mailman3-fedmsg-plugin 
   - python311-mailmanclient 
-  - python311-main-wrapper 
   - python311-makefun 
   - python311-mando 
   - python311-manuel 
@@ -29857,6 +29858,7 @@ unsorted:
   - python311-mysql-connector-python 
   - python311-mysql-to-sqlite3 
   - python311-myst-parser 
+  - python311-nagiosplugin 
   - python311-napalm 
   - python311-napalm-asa 
   - python311-napalm-procurve 
@@ -30801,7 +30803,6 @@ unsorted:
   - python311-sanlock 
   - python311-sarge 
   - python311-sarif-om 
-  - python311-sasl 
   - python311-sat-search 
   - python311-sat-stac 
   - python311-schedule 
@@ -31084,6 +31085,7 @@ unsorted:
   - python311-tinyarray 
   - python311-tinycss2 
   - python311-tinydb 
+  - python311-tinyhtml5 
   - python311-tinyrecord 
   - python311-tinyrpc 
   - python311-titlecase 
@@ -31458,6 +31460,7 @@ unsorted:
   - python312-Flask-Security-Too 
   - python312-Flask-SocketIO 
   - python312-Flask-Testing 
+  - python312-Flask-Versioned 
   - python312-Flask-WTF 
   - python312-Flask-doc 
   - python312-FontTools 
@@ -32175,7 +32178,6 @@ unsorted:
   - python312-azure-template 
   - python312-azuremetadata 
   - python312-babelfish 
-  - python312-backcall 
   - python312-backoff 
   - python312-backports.entry_points_selectable 
   - python312-backports.tarfile 
@@ -33350,7 +33352,6 @@ unsorted:
   - python312-magicalimport 
   - python312-mailman3-fedmsg-plugin 
   - python312-mailmanclient 
-  - python312-main-wrapper 
   - python312-makefun 
   - python312-mando 
   - python312-manuel 
@@ -33476,6 +33477,7 @@ unsorted:
   - python312-mysql-to-sqlite3 
   - python312-mysqlclient 
   - python312-myst-parser 
+  - python312-nagiosplugin 
   - python312-napalm 
   - python312-napalm-asa 
   - python312-napalm-procurve 
@@ -34458,7 +34460,6 @@ unsorted:
   - python312-sanlock 
   - python312-sarge 
   - python312-sarif-om 
-  - python312-sasl 
   - python312-schedule 
   - python312-schema 
   - python312-scikit-build 
@@ -34746,6 +34747,7 @@ unsorted:
   - python312-tinyarray 
   - python312-tinycss2 
   - python312-tinydb 
+  - python312-tinyhtml5 
   - python312-tinyrecord 
   - python312-tinyrpc 
   - python312-titlecase 
@@ -36325,7 +36327,6 @@ unsorted:
   - ruby3.3-rubygem-excon 
   - ruby3.3-rubygem-execjs 
   - ruby3.3-rubygem-fake_ftp 
-  - ruby3.3-rubygem-fake_ftp-0_1 
   - ruby3.3-rubygem-faraday 
   - ruby3.3-rubygem-faraday-follow_redirects 
   - ruby3.3-rubygem-faraday-net_http 
@@ -36461,7 +36462,6 @@ unsorted:
   - ruby3.3-rubygem-pry 
   - ruby3.3-rubygem-pry-doc 
   - ruby3.3-rubygem-public_suffix 
-  - ruby3.3-rubygem-public_suffix-3.1 
   - ruby3.3-rubygem-puma 
   - ruby3.3-rubygem-puma-5 
   - ruby3.3-rubygem-puma_worker_killer 
@@ -36472,6 +36472,7 @@ unsorted:
   - ruby3.3-rubygem-rack-oauth2 
   - ruby3.3-rubygem-rack-protection 
   - ruby3.3-rubygem-rack-proxy 
+  - ruby3.3-rubygem-rack-test 
   - ruby3.3-rubygem-rack-test-0_6 
   - ruby3.3-rubygem-rails-7.0 
   - ruby3.3-rubygem-rails-dom-testing 
@@ -36549,7 +36550,6 @@ unsorted:
   - ruby3.3-rubygem-sync 
   - ruby3.3-rubygem-temple 
   - ruby3.3-rubygem-terminal-table 
-  - ruby3.3-rubygem-terminal-table-2 
   - ruby3.3-rubygem-text 
   - ruby3.3-rubygem-thor 
   - ruby3.3-rubygem-thread_safe 
@@ -36563,7 +36563,6 @@ unsorted:
   - ruby3.3-rubygem-turbolinks 
   - ruby3.3-rubygem-turbolinks-source 
   - ruby3.3-rubygem-tzinfo 
-  - ruby3.3-rubygem-tzinfo-1.2 
   - ruby3.3-rubygem-tzinfo-data 
   - ruby3.3-rubygem-uglifier 
   - ruby3.3-rubygem-unf 
@@ -36587,7 +36586,6 @@ unsorted:
   - ruby3.3-rubygem-winrm-elevated 
   - ruby3.3-rubygem-winrm-fs 
   - ruby3.3-rubygem-xdg 
-  - ruby3.3-rubygem-xdg-2 
   - ruby3.3-rubygem-xml-simple 
   - ruby3.3-rubygem-xmlhash 
   - ruby3.3-rubygem-xmlrpc 
@@ -47932,7 +47930,6 @@ unsorted:
   - upplay 
   - upsm 
   - upx 
-  - uranium 
   - uranium-firmware-lulzbot 
   - uranium-lulzbot 
   - urbanlightscape 
