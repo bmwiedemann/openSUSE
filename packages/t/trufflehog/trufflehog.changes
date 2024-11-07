@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Nov 07 11:14:46 UTC 2024 - felix.niederwanger@suse.com
+
+- Update to version 3.83.4:
+  * add config option for s3 resumption (#3563)
+  * added pattern test cases for detectors starting with b (#3559)
+  * added pattern test cases for all detectors starting with Alphabet `a` (#3539)
+  * validate if twitter services are more than one before accessing it. (#3565)
+
+-------------------------------------------------------------------
+Wed Nov 06 09:50:46 UTC 2024 - felix.niederwanger@suse.de
+
+- Update to version 3.83.3:
+  * fix(deps): update module github.com/azuread/microsoft-authentication-library-for-go to v1.3.0 (#3561)
+  * [bug] - Correct Line Number Calculation (#3550)
+  * set verification error if failed to decode body (#3560)
+  * Add owner to github tokens (#3558)
+  * [feat] - Add Weights and Biases detector (#3551)
+  * [chore] - minor cleanup S3 source (#3554)
+  * fix(deps): update module github.com/golang-jwt/jwt/v4 to v4.5.1 (#3555)
+  * stop logging all GitLab projects (#3541)
+  * fix(deps): update module cloud.google.com/go/storage to v1.46.0 (#3544)
+  * fix(deps): update module github.com/snowflakedb/gosnowflake to v1.12.0 (#3531)
+  * fix(deps): update module google.golang.org/api to v0.204.0 (#3543)
+  * fix(deps): update module github.com/azuread/microsoft-authentication-library-for-go to v1.2.3 (#3540)
+
+-------------------------------------------------------------------
 Thu Oct 31 15:29:58 UTC 2024 - felix.niederwanger@suse.de
 
 - Update to version 3.83.2:

@@ -1551,4 +1551,16 @@
   * fixed gitlab extradata overwriting (#3537) (forwarded request 1219897 from ph03nix)</comment>
     <requestid>1219899</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>1cbde8860e11390707a792cd70f03241</srcmd5>
+    <version>3.83.4</version>
+    <time>1730999811</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.83.4:
+  * add config option for s3 resumption (#3563)
+  * added pattern test cases for detectors starting with b (#3559)
+  * added pattern test cases for all detectors starting with Alphabet `a` (#3539)
+  * validate if twitter services are more than one before accessing it. (#3565) (forwarded request 1222136 from ph03nix)</comment>
+    <requestid>1222480</requestid>
+  </revision>
 </revisionlist>
