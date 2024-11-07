@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov  4 14:02:24 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.5.7
+  * fix: close all /dev/urandom open fds (#4835)
+  * docs: update fips documentation to specify supported libcrypto (#4857)
+  * fix(bindings): correct poll_flush implementation (#4859)
+  * feat: Adds cleanup_final (#4853)
+  * test(bindings): Consolidate test pems (#4858)
+  * chore: bindings release 0.3.5 (#4860)
+  * chore: grant duvet action more permissions (#4854)
+  * (feat): Adds certificate match metrics API (#4844)
+
+-------------------------------------------------------------------
 Thu Oct 24 12:58:26 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.5.6

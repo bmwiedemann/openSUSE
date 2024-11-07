@@ -19,7 +19,7 @@
 %define library_version 1.0.0
 %define library_soversion 0unstable
 Name:           s2n
-Version:        1.5.6
+Version:        1.5.7
 Release:        0
 Summary:        AWS implementation of the TLS/SSL protocols
 License:        Apache-2.0
