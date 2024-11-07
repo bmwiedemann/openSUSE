@@ -1,0 +1,5 @@
+<package name="gnunet-gtk" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="filesharing" package="gnunet-gtk"/>
+</package>
