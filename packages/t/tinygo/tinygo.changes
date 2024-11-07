@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov  7 09:18:59 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildREquire nodejs >= 20 instead of nodejs20: allow also newer
+  versions of nodejs to be used.
+
+-------------------------------------------------------------------
 Tue Sep 17 19:31:51 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Packaging improvements:

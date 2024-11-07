@@ -9,4 +9,13 @@
 It reuses libraries used by the Go language tools alongside LLVM to provide an alternative way to compile programs written in the Go programming language.</comment>
     <requestid>1201677</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f883f8e7f5ba0b069c3fe0568c4d10af</srcmd5>
+    <version>0.33.0</version>
+    <time>1730999813</time>
+    <user>dimstar_suse</user>
+    <comment>- BuildREquire nodejs &gt;= 20 instead of nodejs20: allow also newer
+  versions of nodejs to be used. (forwarded request 1222061 from dimstar)</comment>
+    <requestid>1222479</requestid>
+  </revision>
 </revisionlist>

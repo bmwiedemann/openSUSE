@@ -1,7 +1,7 @@
 #
 # spec file for package tinygo
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,13 +29,12 @@ URL:            https://tinygo.org
 Source:         tinygo-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Patch0:         go-llvm-makefile-llvm-config.patch
-BuildRequires:  gcc-c++
-BuildRequires:  golang(API) >= 1.18
-BuildRequires:  llvm18-devel
 BuildRequires:  clang18-devel
+BuildRequires:  gcc-c++
+BuildRequires:  llvm18-devel
+BuildRequires:  golang(API) >= 1.18
 # for test:
-BuildRequires:  nodejs20
-
+BuildRequires:  nodejs >= 20
 
 %description
 TinyGo brings the Go programming language to embedded systems and to the modern
@@ -59,6 +58,7 @@ https://tinygo.org
 go build \
    -mod=vendor \
    -buildmode=pie
+
 %check
 
 export LDFLAGS="-lLLVM -lclang"
