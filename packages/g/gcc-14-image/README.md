@@ -94,9 +94,9 @@ openSUSE Tumbleweed.
 
 ## Licensing
 
-`SPDX-License-Identifier: MIT`
+`SPDX-License-Identifier: GPL-3.0-or-later`
 
-This documentation and the build recipe are licensed as MIT.
+This documentation and the build recipe are licensed as GPL-3.0-or-later.
 The container itself contains various software components under various open source licenses listed in the associated
 Software Bill of Materials (SBOM).
 
