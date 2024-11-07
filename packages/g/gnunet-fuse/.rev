@@ -7,4 +7,12 @@
     <comment>gnunet-fuse, a fuse add-on for gnunet</comment>
     <requestid>1160968</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>58fd6e57f527328a5d77724ff39e23d4</srcmd5>
+    <version>0.22.0</version>
+    <time>1730993588</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1222448</requestid>
+  </revision>
 </revisionlist>
