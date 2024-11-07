@@ -1,9 +1,0 @@
-<package name="rubygem-pairing_heap" project="openSUSE:Factory">
-  <title>Performant priority queue in pure ruby with support for changing</title>
-  <description>Performant priority queue in pure ruby with support for changing priority
-using pairing heap data structure.
-
-</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-pairing_heap"/>
-  <url>https://github.com/mhib/pairing_heap</url>
-</package>
