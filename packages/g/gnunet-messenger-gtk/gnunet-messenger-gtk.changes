@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 20 06:24:36 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.10.1:
+  * Implement discourse panel to allow live chat streaming voice and video
+  * Fix thread synchronization issues to reduce occasional crashes
+  * Reduce background CPU usage
+  * Fix minor UI issues
+
+-------------------------------------------------------------------
 Sat Jun 15 11:58:07 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.10.0:

@@ -17,4 +17,12 @@ libextractor -&gt; gnunet -&gt; gnunet-fuse </comment>
     <comment>gnunet-messenger-gtk 0.10.0 (forwarded request 1181021 from AndreasStieger)</comment>
     <requestid>1181022</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a3df208a44e5a510317416ae49ad1790</srcmd5>
+    <version>0.10.1</version>
+    <time>1730993587</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1222447</requestid>
+  </revision>
 </revisionlist>
