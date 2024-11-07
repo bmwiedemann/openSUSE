@@ -17,7 +17,7 @@
 
 
 Name:           ollama
-Version:        0.3.14
+Version:        0.4.0
 Release:        0
 Summary:        Tool for running AI models on-premise
 License:        MIT
@@ -26,7 +26,6 @@ Source:         %{name}-%{version}.tar
 Source1:        vendor.tar.zstd
 Source2:        ollama.service
 Source3:        %{name}-user.conf
-Patch0:         enable-lto.patch
 BuildRequires:  cmake >= 3.24
 BuildRequires:  git
 BuildRequires:  sysuser-tools

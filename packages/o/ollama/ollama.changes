@@ -1,14 +1,76 @@
 -------------------------------------------------------------------
+Thu Nov 07 12:06:09 UTC 2024 - adrian@suse.de
+
+- Update to version 0.4.0:
+  * Update README.md (#7516)
+  * One corrupt manifest should not wedge model operations (#7515)
+  * prompt: Use a single token when estimating mllama context size
+  * readme: add Hexabot to the list of community integrations
+  * Quiet down debug log of image payload (#7454)
+
+-------------------------------------------------------------------
+Wed Nov 06 12:31:53 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.4.0-rc8:
+  * CI: Switch to v13 macos runner (#7498)
+  * CI: matrix strategy fix (#7496)
+  * Sign windows arm64 official binaries (#7493)
+  * readme: add TextCraft to community integrations (#7377)
+  * nvidia libs have inconsistent ordering (#7473)
+  * CI: omit unused tools for faster release builds (#7432)
+  * llama: Improve error handling
+  * runner.go: Only allocate 1 element embedding batches for mllama
+  * refactor kv estimation
+  * mllama cross attention
+  * Add basic mllama integration tests (#7455)
+  * runner.go: Don't set cross attention before sending embeddings
+  * Give unicode test more time to run (#7437)
+
+-------------------------------------------------------------------
+Fri Nov 01 02:18:50 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Remove enable-lto.patch
+
+- Update to version 0.4.0-rc6:
+  * Refine default thread selection for NUMA systems (#7322)
+  * runner.go: Better abstract vision model integration
+  * Soften windows clang requirement (#7428)
+  * Remove submodule and shift to Go server - 0.4.0  (#7157)
+  * Move windows app out of preview (#7347)
+  * windows: Support alt install paths, fit and finish (#6967)
+  * add more tests for getting the optimal tiled canvas (#7411)
+  * Switch windows to clang (#7407)
+  * tests: Add test for Unicode processing
+  * runner.go: Better handle return NULL values from llama.cpp
+  * add mllama image processing to the generate handler (#7384)
+  * Bump to latest Go 1.22 patch (#7379)
+  * Fix deepseek deseret regex (#7369)
+  * Better support for AMD multi-GPU on linux (#7212)
+  * Fix unicode output on windows with redirect to file (#7358)
+  * Fix incremental build file deps (#7361)
+  * Improve dependency gathering logic (#7345)
+  * fix #7247 - invalid image input (#7249)
+  * integration: harden embedding test (#7306)
+  * default to "FROM ." if a Modelfile isn't present (#7250)
+  * Fix rocm windows build and clean up dependency gathering (#7305)
+  * runner.go: Merge partial unicode characters before sending
+  * readme: add Ollama for Swift to the community integrations (#7295)
+  * server: allow vscode-webview origin (#7273)
+  * image processing for llama3.2 (#6963)
+  * llama: Decouple patching script from submodule (#7139)
+  * llama: add compiler tags for cpu features (#7137)
+
+-------------------------------------------------------------------
 Wed Oct 30 01:47:37 UTC 2024 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 - Update to version 0.3.14:
   * New Models
-    + Granite 3 MoE: The IBM Granite 1B and 3B models are the 
-      first mixture of experts (MoE) Granite models from IBM 
+    + Granite 3 MoE: The IBM Granite 1B and 3B models are the
+      first mixture of experts (MoE) Granite models from IBM
       designed for low latency usage.
-    + Granite 3 Dense: The IBM Granite 2B and 8B models are 
-      designed to support tool-based use cases and support for 
-      retrieval augmented generation (RAG), streamlining code 
+    + Granite 3 Dense: The IBM Granite 2B and 8B models are
+      designed to support tool-based use cases and support for
+      retrieval augmented generation (RAG), streamlining code
       generation, translation and bug fixing.
 
 -------------------------------------------------------------------
@@ -19,21 +81,21 @@ Sat Oct 12 20:55:18 UTC 2024 - eyadlorenzo@gmail.com
     ~ Llama Guard 3: a series of models by Meta, fine-tuned for
       content safety classification of LLM inputs and responses.
     ~ ShieldGemma: ShieldGemma is set of instruction tuned models
-      from Google DeepMind for evaluating the safety of text 
-      prompt input and text output responses against a set of 
+      from Google DeepMind for evaluating the safety of text
+      prompt input and text output responses against a set of
       defined safety policies.
-  * Fixed issue where ollama pull would leave connections when 
+  * Fixed issue where ollama pull would leave connections when
     encountering an error
-  * ollama rm will now stop a model if it is running prior to 
+  * ollama rm will now stop a model if it is running prior to
     deleting it
 -------------------------------------------------------------------
 Sat Sep 28 03:53:10 UTC 2024 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 - Update to version 0.3.12:
-  * Llama 3.2: Meta's Llama 3.2 goes small with 1B and 3B 
+  * Llama 3.2: Meta's Llama 3.2 goes small with 1B and 3B
     models.
-  * Qwen 2.5 Coder: The latest series of Code-Specific Qwen 
-    models, with significant improvements in code generation, 
+  * Qwen 2.5 Coder: The latest series of Code-Specific Qwen
+    models, with significant improvements in code generation,
     code reasoning, and code fixing.
   * Ollama now supports ARM Windows machines
   * Fixed rare issue where Ollama would report a missing .dll
@@ -207,23 +269,23 @@ Sun Aug 11 02:40:06 UTC 2024 - Alessandro de Oliveira Faria <cabelo@opensuse.org
 
 - Update to version 0.3.4:
  * New embedding models
-  - BGE-M3: a large embedding model from BAAI distinguished for 
-    its versatility in Multi-Functionality, Multi-Linguality, and 
+  - BGE-M3: a large embedding model from BAAI distinguished for
+    its versatility in Multi-Functionality, Multi-Linguality, and
     Multi-Granularity.
   - BGE-Large: a large embedding model trained in english.
-  - Paraphrase-Multilingual: A multilingual embedding model 
+  - Paraphrase-Multilingual: A multilingual embedding model
     trained on parallel data for 50+ languages.
  * New embedding API with batch support
-   - Ollama now supports a new API endpoint /api/embed for 
+   - Ollama now supports a new API endpoint /api/embed for
      embedding generation:
  * This API endpoint supports new features:
-   - Batches: generate embeddings for several documents in 
+   - Batches: generate embeddings for several documents in
      one request
-   - Normalized embeddings: embeddings are now normalized, 
+   - Normalized embeddings: embeddings are now normalized,
      improving similarity results
-   - Truncation: a new truncate parameter that will error if 
+   - Truncation: a new truncate parameter that will error if
      set to false
-   - Metrics: responses include load_duration, total_duration and 
+   - Metrics: responses include load_duration, total_duration and
      prompt_eval_count metrics
 
 -------------------------------------------------------------------
@@ -234,17 +296,17 @@ Sat Aug 03 09:41:56 UTC 2024 - eyadlorenzo@gmail.com
     load_duration, and prompt_eval_count
   * Added usage metrics to the /v1/embeddings OpenAI compatibility
     API
-  * Fixed issue where /api/generate would respond with an empty 
+  * Fixed issue where /api/generate would respond with an empty
     string if provided a context
-  * Fixed issue where /api/generate would return an incorrect 
+  * Fixed issue where /api/generate would return an incorrect
     value for context
   * /show modefile will now render MESSAGE commands correctly
 
 - Update to version 0.3.2:
-  * Fixed issue where ollama pull would not resume download 
+  * Fixed issue where ollama pull would not resume download
     progress
   * Fixed issue where phi3 would report an error on older versions
-  
+
 -------------------------------------------------------------------
 Tue Jul 30 07:08:37 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
@@ -309,16 +371,16 @@ Wed Jul 24 14:28:08 UTC 2024 - adrian@suse.de
 -------------------------------------------------------------------
 Thu Jul 18 13:09:10 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
 
-- Fixed issue with shared libraries 
+- Fixed issue with shared libraries
 
 -------------------------------------------------------------------
 Thu Jul 18 12:27:54 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Added %check section
-- Use -v when building 
+- Use -v when building
 
 - Update to version 0.2.6:
-  * New models: MathΣtral is a 7B model designed for math 
+  * New models: MathΣtral is a 7B model designed for math
     reasoning and scientific discovery by Mistral AI.
   * Fixed issue where uppercase roles such as USER would no longer
     work in the chat endpoints
@@ -332,62 +394,62 @@ Sun Jul 14 17:48:36 UTC 2024 - eyadlorenzo@gmail.com
   * Fixed issue where a model's SYSTEM message not be applied
 
 - Update to version 0.2.4:
-  * Fixed issue where context, load_duration and total_duration 
+  * Fixed issue where context, load_duration and total_duration
     fields would not be set in the /api/generate endpoint.
-  * Ollama will no longer error if loading models larger than 
+  * Ollama will no longer error if loading models larger than
     system memory if disk space is available
 
 - Update to version 0.2.3:
   * Fix issue where system prompt would not be applied
 
 - Update to version 0.2.2:
-  * Fixed errors that occurred when using Ollama with Nvidia V100 
+  * Fixed errors that occurred when using Ollama with Nvidia V100
     GPUs
   * glm4 models will no longer fail to load from out of memory
     errors
-  * Fixed error that would occur when running deepseek-v2 and 
+  * Fixed error that would occur when running deepseek-v2 and
     deepseek-coder-v2 models
   * Fixed a series of out of memory issues when using Nvidia
     GPUs
-  * Fixed a series of errors that would occur when using multiple 
+  * Fixed a series of errors that would occur when using multiple
     Radeon GPUs
 
 - Update to version 0.2.1:
-  * Fixed issue where setting OLLAMA_NUM_PARALLEL would cause 
+  * Fixed issue where setting OLLAMA_NUM_PARALLEL would cause
     models to be reloaded after each request
 
 - Update to version 0.2.0:
-  * Ollama 0.2.0 is now available with concurrency support. 
+  * Ollama 0.2.0 is now available with concurrency support.
     This unlocks 2 specific features:
     ~ Ollama can now serve multiple requests at the same time
     ~ Ollama now supports loading different models at the same time
-  * New models: GLM-4: A strong multi-lingual general language 
+  * New models: GLM-4: A strong multi-lingual general language
     model with competitive performance to Llama 3.
-  * New models: CodeGeeX4: A versatile model for AI software 
+  * New models: CodeGeeX4: A versatile model for AI software
     development scenarios, including code completion.
-  * New models: Gemma 2: Improved output quality and base text 
+  * New models: Gemma 2: Improved output quality and base text
     generation models now available
-  * Ollama will now show a better error if a model architecture 
+  * Ollama will now show a better error if a model architecture
     isn't supported
   * Improved handling of quotes and spaces in Modelfile FROM lines
-  * Ollama will now return an error if the system does not have 
+  * Ollama will now return an error if the system does not have
     enough memory to run a model on Linux
 -------------------------------------------------------------------
 Sun Jul 07 19:18:11 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 0.1.48:
-  * Fixed issue where Gemma 2 would continuously output when 
+  * Fixed issue where Gemma 2 would continuously output when
     reaching context limits
   * Fixed out of memory and core dump errors when running Gemma 2
   * /show info will now show additional model information in
     ollama run
-  * Fixed issue where ollama show would result in an error on 
+  * Fixed issue where ollama show would result in an error on
     certain vision models
 
 - Update to version 0.1.48:
   * Added support for Google Gemma 2 models (9B and 27B)
   * Fixed issues with ollama create when importing from Safetensors
-  
+
 -------------------------------------------------------------------
 Mon Jun 24 10:11:17 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
 
@@ -422,44 +484,44 @@ Sat Jun 22 10:08:00 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
 -------------------------------------------------------------------
 Tue Jun 18 12:12:41 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
 
-- Added documentation files to .spec 
+- Added documentation files to .spec
 
 - Update to version 0.1.44:
-  * Fixed issue where unicode characters such as emojis would not 
+  * Fixed issue where unicode characters such as emojis would not
     be loaded correctly when running ollama create
   * Fixed certain cases where Nvidia GPUs would not be detected and
     reported as compute capability 1.0 devices
 
 - Update to version 0.1.43:
-  * New import.md guide for converting and importing models to 
+  * New import.md guide for converting and importing models to
     Ollama
-  * Fixed issue where embedding vectors resulting from 
+  * Fixed issue where embedding vectors resulting from
     /api/embeddings would not be accurate
-  * JSON mode responses will no longer include invalid escape 
+  * JSON mode responses will no longer include invalid escape
     characters
-  * Removing a model will no longer show incorrect File not found 
+  * Removing a model will no longer show incorrect File not found
     errors
-  * Fixed issue where running ollama create would result in an 
+  * Fixed issue where running ollama create would result in an
     error on Windows with certain file formatting
 
 - Update to version 0.1.42:
-  * New models: Qwen 2: a new series of large language models 
+  * New models: Qwen 2: a new series of large language models
     from Alibaba group
-  * Qwen 2: a new series of large language models from Alibaba 
+  * Qwen 2: a new series of large language models from Alibaba
     group
-  * ollama pull is now faster if it detects a model is already 
+  * ollama pull is now faster if it detects a model is already
     downloaded
   * ollama create will now automatically detect prompt templates
-    for popular model architectures such as Llama, Gemma, Phi and 
+    for popular model architectures such as Llama, Gemma, Phi and
     more.
-  * Ollama can now be accessed from local apps built with Electron 
+  * Ollama can now be accessed from local apps built with Electron
     and Tauri, as well as in developing apps in local html files
   * Update welcome prompt in Windows to llama3
-  * Fixed issues where /api/ps and /api/tags would show invalid 
+  * Fixed issues where /api/ps and /api/tags would show invalid
     timestamps in responses
 
 - Update to version 0.1.41:
-  * Fixed issue on Windows 10 and 11 with Intel CPUs with 
+  * Fixed issue on Windows 10 and 11 with Intel CPUs with
     integrated GPUs where Ollama would encounter an error
 
 -------------------------------------------------------------------
@@ -469,12 +531,12 @@ Sat Jun 01 21:12:20 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
   * New model: Codestral: Codestral is Mistral AI’s first-ever code
   	model designed for code generation tasks.
   * New model: IBM Granite Code: now in 3B and 8B parameter sizes.
-  * New model: Deepseek V2: A Strong, Economical, and Efficient 
+  * New model: Deepseek V2: A Strong, Economical, and Efficient
   	Mixture-of-Experts Language Model
-  * Fixed out of memory and incorrect token issues when running 
+  * Fixed out of memory and incorrect token issues when running
   	Codestral on 16GB Macs
-  * Fixed issue where full-width characters (e.g. Japanese, 
-  	Chinese, Russian) were deleted at end of the line when using 
+  * Fixed issue where full-width characters (e.g. Japanese,
+  	Chinese, Russian) were deleted at end of the line when using
   	ollama run
 
 -------------------------------------------------------------------
@@ -483,9 +545,9 @@ Wed May 29 11:38:26 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
 - Update to version 0.1.39:
   * New model: Cohere Aya 23: A new state-of-the-art, multilingual
   	LLM covering 23 different languages.
-  * New model: Mistral 7B 0.3: A new version of Mistral 7B with 
+  * New model: Mistral 7B 0.3: A new version of Mistral 7B with
   	initial support for function calling.
-  * New model: Phi-3 Medium: a 14B parameters, lightweight, 
+  * New model: Phi-3 Medium: a 14B parameters, lightweight,
   	state-of-the-art open model by Microsoft.
   * New model: Phi-3 Mini 128K and Phi-3 Medium 128K: versions of
   	the Phi-3 models that support a context window size of 128K
@@ -493,7 +555,7 @@ Wed May 29 11:38:26 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
   	IBM for Code Intelligence
   * It is now possible to import and quantize Llama 3 and its
   	finetunes from Safetensors format to Ollama.
-  * Full changelog at 
+  * Full changelog at
   	https://github.com/ollama/ollama/releases/tag/v0.1.39
 
 -------------------------------------------------------------------
@@ -507,7 +569,7 @@ Thu May 16 19:55:51 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
 - Update to version 0.1.38:
   * New model: Falcon 2: A new 11B parameters causal decoder-only
     model built by TII and trained over 5T tokens.
-  * New model: Yi 1.5: A new high-performing version of Yi, now 
+  * New model: Yi 1.5: A new high-performing version of Yi, now
     licensed as Apache 2.0. Available in 6B, 9B and 34B sizes.
   * Added ollama ps command
   * Added /clear command
@@ -532,7 +594,7 @@ Sun May 12 19:05:53 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
 Sun May 12 15:20:28 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Use obs_scm service instead of the deprecated tar_scm
-- Use zstd for vendor tarball compression 
+- Use zstd for vendor tarball compression
 
 -------------------------------------------------------------------
 Sun May 12 01:39:26 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
@@ -570,11 +632,11 @@ Sun May 12 01:39:26 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
   * New model: CodeGemma 1.1
   * New model: StableLM2 12B
   * New model: Moondream 2
-  * Fixed issues with LLaVa models where they would respond 
+  * Fixed issues with LLaVa models where they would respond
     incorrectly after the first request
-  * Fixed out of memory errors when running large models such as 
+  * Fixed out of memory errors when running large models such as
     Llama 3 70B
-  * Fixed various issues with Nvidia GPU discovery on Linux and 
+  * Fixed various issues with Nvidia GPU discovery on Linux and
     Windows
   * Fixed a series of Modelfile errors when running ollama create
   * Fixed no slots available error that occurred when cancelling a
@@ -592,13 +654,13 @@ Sun May 12 01:39:26 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
   * New model: Llama 3 Gradient 1048K
   * New model: Dolphin Llama 3
   * New model: Qwen 110B
-  * Fixed issues where the model would not terminate, causing the 
+  * Fixed issues where the model would not terminate, causing the
     API to hang.
   * Fixed a series of out of memory errors on Apple Silicon Macs
-  * Fixed out of memory errors when running Mixtral architecture 
+  * Fixed out of memory errors when running Mixtral architecture
     models
   * Aded experimental concurrency features:
-    ~ OLLAMA_NUM_PARALLEL: Handle multiple requests simultaneously 
+    ~ OLLAMA_NUM_PARALLEL: Handle multiple requests simultaneously
       for a single model
     ~ OLLAMA_MAX_LOADED_MODELS: Load multiple models simultaneously
 
