@@ -20,7 +20,7 @@
 # %%global _dashed_version 20230712-072601-f4abf8fd
 
 Name:           wezterm
-Version:        20240203.110809.5046fc22
+Version:        20240203.110809.5046fc22+git404
 Release:        0
 Summary:        GPU-accelerated cross-platform terminal emulator and multiplexer
 URL:            https://github.com/wez/wezterm
@@ -30,7 +30,7 @@ Source1:        vendor.tar.zst
 Patch0:         do-not-send-eof-when-closing-application.patch
 BuildRequires:  Mesa-libEGL-devel
 
-BuildRequires:  rust+cargo >= 1.43
+BuildRequires:  cargo >= 1.43
 %if 0%{?suse_version} > 1500
 BuildRequires:  cargo-packaging
 %endif
@@ -52,6 +52,7 @@ BuildRequires:  xcb-util-devel
 BuildRequires:  xcb-util-image-devel
 BuildRequires:  xcb-util-keysyms-devel
 BuildRequires:  xcb-util-wm-devel
+BuildRequires:  zstd
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(harfbuzz)
@@ -106,11 +107,12 @@ printf "%{version}" > .tag
 # export CFLAGS="%%optflags"
 # export CXXFLAGS="%%optflags"
 %if 0%{?suse_version} > 1500
-%{cargo_build} --no-default-features --features vendored-fonts,wayland,distro-defaults
+%{cargo_build} --no-default-features --features vendored-fonts,wayland,distro-defaults --locked
 %else
+unset LIBSSH2_SYS_USE_PKG_CONFIG
 export CARGO_FEATURE_VENDORED=1
 export RUSTFLAGS='%{rustflags}'
-cargo build --offline --release --no-default-features --features vendored-fonts,wayland,distro-defaults
+cargo build --offline --release --no-default-features --features vendored-fonts,wayland,distro-defaults --locked
 %endif
 
 %install

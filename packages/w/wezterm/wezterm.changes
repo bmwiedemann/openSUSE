@@ -1,4 +1,304 @@
 -------------------------------------------------------------------
+Fri Nov  8 06:08:50 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update _service file
+  * use recomprizz
+- Update to version 20240203.110809.5046fc22+git404:
+  * WezTerm.app/Contents/Info.plist: request network permissions
+  * Mark wayland-backend as optional dependency (#6342)
+  * hbwrap: from_raw_parts handling of null ptr
+  * Alter copr spec file for Fedora 41 and Rawhide
+  * docs: Put APT key into /etc/apt/keyrings
+  * docs: fix InputSelector.md typo
+  * add X11 xmonad to tiling_desktop_environments
+  * cirrus: token update
+  * Suppress compiler warnings, due to never type (!)
+  * Show support for ProxyUseFDpass in ssh docs
+  * PromptInputLine: fixup per code review
+  * feat: add a way to spawn populated LineEditor
+  * Custom prompt for PromptInputLine (#6054)
+  * wayland: handle left/right tiling too
+  * feat: implement toggle_fullscreen and hide for Wayland
+  * fix(wayland): match inner window and window frame sizes
+  * Handle # and ? characters in directory path
+  * update cachix public key
+  * Added: nix install docs
+  * Added: nix nightly build to cachix
+  * chore: remove redundant words in comment
+  * shell-integration: Fix syntax error due to missing double quote
+  * docs: fix mistake with PATH example
+  * deps: glium to 0.35
+  * wgpu -> 22.1
+  * shell integration: check for saved PS1 value before using it
+  * fix: add short circuit to set active pane
+  * Validate scrollback_lines to avoid crashes (#5996)
+  * Remove trailing sZs if exists
+  * Remove mux-server race condition.
+  * #5518: handling panic in copy_and_paste.rs line 105 (#6004)
+  * dependabot: turn off cargo updates
+  * Don't exit-program on X11 selection-event protocol errors
+  * Address some lint warnings from Clippy
+  * Don't pass ProxyCommand, just look it up
+  * Implement ProxyUseFDpass for ssh
+  * docs: format
+  * add ubuntu 24.04 arm to cirrus, tweak install instructions
+  * Add links to Ubuntu24 nightly .deb images
+  * Restrict bell events to the proper window. (#6012)
+  * Update appearance.md docs to clarify TOML is used
+  * Handle non-sRGB displays on macOS
+  * fix: Correctly rearrange lines in the modified diffs
+  * fix: docs typos
+  * fix: link to launcher menu
+  * Avoid potential panic, when starting in Wayland.
+  * cairo: fix unexpected `cfg` condition value
+  * remove cfg_attr(feature = "cargo-clippy" noise
+  * docs and related fix for #6099
+  * fix: only change stable row offset if screen has scrollback
+  * shell-integration: be resilient to nounset
+  * fix typo in CONTRIBUTING.md
+  * improve x11 startup times
+  * fix: Use cols not rows for left margin bound
+  * Add a CloseWithoutClear copy mode key assignment (#4924)
+  * mux: augment PKI SAN list with getaddrinfo AI_CANONNAME
+  * ssh domains: use default local echo threshol
+  * docs: fix some anchors
+  * sync color schemes
+  * docs: fixup absolute link warning for {{since(nightly)}}
+  * kill and reap ProxyCommand
+  * switch all fuzzy matches to nucleo
+  * flake.lock: Update
+  * remove some unused fields
+  * fix: PaneInformation.pixel_height returned width!
+  * allow some unused fields
+  * fix unused mut warning
+  * blob-lease: improve error handling
+  * fix: blob leases could be broken by tmpwatch
+  * fix potential panic on shutdown when mux_enable_ssh_agent=true
+  * fix: quickselect now matches paths with //
+  * Update quick_select_patterns.md to include info about capturing groups
+  * deps: harfbuzz -> 9.0.0
+  * config: show/hide close-tab button
+  * Upgrade smithay-client-toolkit to 0.19
+  * build(deps): bump the all group across 1 directory with 2 updates
+  * wezterm-ssh: avoid configuration default config files in tests
+  * cargo update
+  * Check for the presence of CARGO_BUILD_TARGET_DIR env variable  (#5430)
+  * flake.lock: Update
+  * Feature: The search overlay accepts IME composed input (#5564)
+  * Add arrows support for search field (#5416)
+  * docs: update with hints on building on Windows
+  * fix link
+  * docs: changlog for #5441 #5304
+  * deps: update rstest
+  * deps: metrics -> 0.23
+  * cargo update
+  * Fix: slow close non last tab (#5441)
+  * Fix notch avoidance padding in full screen mode
+  * docs: refine docker execdomain example
+  * Update docs to reflect CI nightly builds being available for Fedora 40.
+  * ignore .tag file
+  * flesh out Makefile a bit
+  * use correct flake dir in update-flake workflow
+  * wezterm-uds: impl AsRawSocket
+  * move uds stuff into new wezterm-uds crate
+  * filedescriptor: fix windows build
+  * deps: missed a cocoa
+  * deps: update macos specific packages
+  * speculative windows build fix
+  * termwiz: remove semver dep
+  * add Makefile
+  * deps: update terminfo
+  * termwiz: nix requires fs + mman for shm_open
+  * add X11 Qtile to tiling_desktop_environments
+  * deps: update strsim
+  * termwiz deps: update semver
+  * update metrics to latest version (0.22)
+  * add cargo deny config, update lru
+  * update libssh-rs
+  * update xcb-imdkit to pick up more from_raw_parts related fixes
+  * x11: fix exposures on child window
+  * wezterm cli list-clients: add ssh_auth_sock to json, tidy up duration
+  * codec: improve error messaging when remote is misconfigured
+  * Update wayland keymap handling for protocol 7+.
+  * remove unused local
+  * x11: fix positioning with --position arg
+  * Revert freetype2 to commit hash (was not actually at a tag 👀)
+  * chore(nix): Update refs to submodules & explain why this is needed
+  * fix wrapped long line copy problem on tmux
+  * add default_ssh_auth_sock option
+  * mux: enable ssh agent forwarding
+  * mux: record client ssh_auth_sock information
+  * mux: ssh: add override_proxy_command to SshDomain
+  * mux: proxy: extract unix domain from connected client
+  * Wire up agent forward for libssh backend (#5345)
+  * Handle missing data device manager more gracefully
+  * build(deps): bump base64 in the all group across 1 directory
+  * update image to 0.25
+  * deps: update harfbuzz to 8.4.0
+  * add PSUEDOCONSOLE_INHERIT_CURSOR as a flag
+  * windows: set  PSEUDOCONSOLE_INHERIT_CURSOR
+  * ringlog: suppress tracing, zbus INFO logs
+  * x11: fix window contents jumping on async resize
+  * fix #4985 - reimplement get_appearance for wayland
+  * Add missing docs, fix typo, bring to attention error. (#5150)
+  * Fix SSH config %h using Host (#5163)
+  * rustfmt
+  * Refactoring custom glyph drawing
+  * Cell diagonals
+  * Fill characters
+  * Shade characters
+  * Rename Edge to Block, add 'Block Elements'
+  * Smooth mosaic terminal graphic characters (quarter triangles)
+  * Smooth mosaic terminal graphic characters
+  * make activate-pane CLI honor unzoom_on_switch_pane
+  * fixed the issue #5348 and a typo
+  * docs: update for x11 dnd
+  * x11: refactor x11 dnd a little
+  * Accept drag and drop of URLs from browsers and plain text on X11
+  * Implement drag and drop for X11
+  * chore: Fix Nix build after recent dependencies updates
+  * sync-color-schemes: fix mis-parse of color schemes
+  * sync color schemes
+  * Eldritch theme
+  * windows: speculative compile fix for termwiz
+  * avoid unwrap when detaching seat
+  * Fix clippy lints
+  * Fix crash when setting cursor on non-existent pointer
+  * Fix crash when switching TTYs
+  * Drop old primary selection code
+  * Unwrap wayland fd acquisition rather than erroring without a message
+  * Add rust-src to Nix development shell
+  * Use PrimarySelectionHandler provided by SCTK
+  * Improve error messages for set_cursor
+  * Clean up delegates
+  * Use the existing CursorShapeManager provided by SCTK
+  * Remove/rename unused stuff
+  * Fix copy & paste
+  * Fix drag & drop
+  * Fix drag/selection offer retrieval
+  * Fix window todos
+  * Fix pointer todos
+  * Fix cursor setting
+  * Fix compilation
+  * Update smithay-client-toolkit to v0.18
+  * termwiz: support NO_COLOR environment variable (#5020)
+  * fix when running on rust 1.78
+  * rename .cargo/config -> .cargo/config.toml
+  * doc(wayland): update comments
+  * doc(wayland): update comment in show
+  * fix(wayland): ensure repaint event is sent in show
+  * maybe fixup windows build
+  * cargo update
+  * fix some warnings with newer rust
+  * fixed docs typo in MoveForwardSemanticZone
+  * Renamed MoveToSelectionOtherEnd to MoveToSelectionOtherEndHoriz in doc
+  * cargo update
+  * Bump whoami from 1.4.1 to 1.5.0
+  * Revert SCTK changes
+  * Update window/src/os/wayland/window.rs
+  * Update SCTK to 0.18
+  * Better decorations
+  * Update linux.md
+  * Change "more power" to "more powerful"
+  * Remove rust as dependency for Arch
+  * update deps, in particular git2
+  * gui: don't repaint during resize
+  * docs(front_end): default value of OpenGL
+  * gui: pass window to set_inner_size()
+  * fix linux `divine_process_list`
+  * Fix inconsistent spawn behaviour when using default_mux_server_domain.
+  * macos: speculative fix to drag-n-drop crash
+  * remove redundant imports.
+  * add docs for the wezterm.serde module.
+  * add unit tests for JSON/YAML/TOML parsers.
+  * add *_encode_pretty variants for TOML and JSON.
+  * add YAML/TOML serialization/deserialization feature
+  * wayland: avoid panic when closing/destroying window
+  * deps: update glium
+  * docs: mention arch supplemental fonts
+  * remove show_update_window functionality
+  * Implement SetInnerSizeCompleted events
+  * Update Lua Reference with Lua version
+  * wayland: hook up some resize handling
+  * wayland: avoid panic w/ resize of hidden frame, part 2
+  * wayland: don't try to resize a hidden frame
+  * wayland: improve error check
+  * docs: add forgotten appearance option for command palette
+  * rebase @tzx's wayland changes onto main
+  * Don't hardcode egl sizes
+  * Resize window frame correctly
+  * Implement working frame actions
+  * Initial window frame
+  * Make IME support optional since not all compositors support it
+  * Handle crash when using software/opengl due to active_surface_id
+  * Implement primary selection support
+  * Fix making wlr-output-management-unstable optional
+  * Implement wlr-output-management-unstable
+  * Implement shutdown for ime
+  * Implement inputhandler
+  * Start IME support
+  * Ignore drag source handlers (we don't drag from wezterm)
+  * Implement dispatch_dropped_files
+  * Implement paste
+  * Implement copying, pasting does not work
+  * Theme the pointer
+  * Implement forgotten PointerEventKind::Release, mouse features seem to work now
+  * Mouse seems to do something, but it is incorrect
+  * Starting pointer implementation
+  * Nuke pointer
+  * Don't use xkbcommon feature in smithay so we can use modifiers
+  * Use raw_code for process_wayland_key instead of keysym
+  * Ignore cursor handling for now
+  * Implement adding keymap
+  * Implement enter + emit_focus -> need to impl keymap
+  * Implement pressing a key
+  * Refactor windows to WaylandState
+  * Wayland refactor: Put handlers for windows in windows.rs, and separate WaylandState
+  * Store OutputState, CompositorState, XdgShell in WaylandState instead of binding them during new_window
+  * Handle window close -> no more crashes
+  * Handle scale factor changes: do nothing
+  * Implement getting screens
+  * Fix delegate dispatch for SurfaceUserData
+  * Implement most of dispatch pending_event
+  * Need to look into window frames
+  * A window renders now
+  * Implement do_paint -> renders window and then panics at frame()
+  * Handle panics after handling window configuration
+  * Implement handling window configuration
+  * Have user data associated with a surface
+  * Save the window: no more segfault + wgpu works too
+  * Trying to debug why WSurface has no good object id
+  * Attempt on Implementing EGL for windows
+  * Don't block ReadGuard after getting fd -> segfaulting webgpu
+  * No more todos! but I don't see a window
+  * WaylandWindowInner
+  * Window progress: no WindowInner though
+  * Implement the epoll stuff
+
+-------------------------------------------------------------------
+Sat Jun 15 13:55:41 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Remove .cargo/config. Future cargo config is now config.toml
+
+-------------------------------------------------------------------
+Sat Jun 15 13:42:49 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Cleanup _service file.
+- Update vendored dependencies
+
+-------------------------------------------------------------------
+Sat Jun 15 13:23:23 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Replace rust+cargo to cargo. There is a bug where it selects
+  the lowest version
+
+-------------------------------------------------------------------
+Sat Jun 15 13:21:09 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Leap still has no zstd when unpacking sources. Add it so that it can
+  be built on leap
+
+-------------------------------------------------------------------
 Sat Mar 23 00:45:08 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Filter platform specific dependencies. Only pull those that is required
@@ -35,15 +335,10 @@ Sat Feb 03 09:38:45 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncom
   * fix invalidation on palette change
   * xkeyboard: maybe workaround next_group weirdness
   * x11: improve keyboard trace diagnostics
-  * ci: regenerate workflows
-  * ci: Vendor cargo dependencies
-  * ci: Use scccache-action instead of rust-cache
   * Add additional outputs for nix's flake package
   * docs: update freetype_load_flags
   * be smarter about NO_HINTING
   * term: downgrade conpty tmux title mangling warning to debug
-  * Revert "ci: use new arm runners for macos builds"
-  * ci: use new arm runners for macos builds
   * fixup parser for freetype_load_flags
   * macos: constrain fallback to normal attributes
   * Upgrade rcgen to 0.12

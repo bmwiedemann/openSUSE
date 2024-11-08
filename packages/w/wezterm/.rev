@@ -979,4 +979,14 @@ Using filterer cut 120+MB of dependencies to ~50MB
 </comment>
     <requestid>1160857</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>5c2641fb61480148c18c2ddc21538c59</srcmd5>
+    <version>20240203.110809.5046fc22+git404</version>
+    <time>1731063668</time>
+    <user>anag+factory</user>
+    <comment>- Update _service file
+  * use recomprizz
+- Update to version 20240203.110809.5046fc22+git404</comment>
+    <requestid>1222645</requestid>
+  </revision>
 </revisionlist>
