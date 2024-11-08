@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov  8 07:49:41 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add missing dependency python-simple-websocket
+
+-------------------------------------------------------------------
 Fri Oct 18 10:52:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.10.1:

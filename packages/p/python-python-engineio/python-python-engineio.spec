@@ -30,6 +30,7 @@ BuildRequires:  %{python_module simple-websocket >= 0.10.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-simple-websocket
 Recommends:     python-eventlet
 Suggests:       python-aiohttp >= 3.4
 Suggests:       python-requests >= 2.21.0

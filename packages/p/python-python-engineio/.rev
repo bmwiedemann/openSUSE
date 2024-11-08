@@ -85,4 +85,12 @@
  * Remove executable permissions from files that lack shebang lines #240 (commit) (thanks Ben Beasley!)</comment>
     <requestid>1208853</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>c0c498df6573a5386c1b538ef9a1489c</srcmd5>
+    <version>4.10.1</version>
+    <time>1731063682</time>
+    <user>anag+factory</user>
+    <comment>- Add missing dependency python-simple-websocket</comment>
+    <requestid>1222660</requestid>
+  </revision>
 </revisionlist>
