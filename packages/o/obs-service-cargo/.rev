@@ -352,4 +352,33 @@ packages. This library is fasted, easier to maintain and easier for a user to co
   * tests: adjust if-else as without it will lead to failure since we are testing that raw cannot find a vendor tarball</comment>
     <requestid>1221623</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>85851a4e7e6b39b8886aeb463d54ba35</srcmd5>
+    <version>4.1.1</version>
+    <time>1731063641</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.1.1:
+  * Remove unnecessary if-elses
+
+- Update to version 4.1.0:
+  * tests: readd tests for lockfile hash comparisons between update false and update true
+  * fix: this should pass a valid manifest path-like-string
+  * improvements: use new dependency detection and return properly
+  * fix: this if-else condition is stupid. fixed
+  * misc: update warning message and remove comment
+  * docs: update README explaining how respect-lockfile behaves
+  * improvements: fix issues with how we respect lockfile
+  * docs: include respect-lockfile, and allowedvalue should be allowedvalues
+  * improvements: introduce the new dependency detection
+  * improvements: properly detect dependencies
+  * improvements: adjust where we pass around the update variable
+  * fix: reintroduce respect-lockfile flag
+  * misc: make vendor have a separate registry as well
+  * misc: move over the env initialisation to here
+
+  * docs: remove cargo_audit in the examples
+  * docs: fix typo
+  * docs: update README. outdated statement removed</comment>
+    <requestid>1222624</requestid>
+  </revision>
 </revisionlist>
