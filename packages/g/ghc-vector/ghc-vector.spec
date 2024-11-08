@@ -20,13 +20,12 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.13.1.0
+Version:        0.13.2.0
 Release:        0
 Summary:        Efficient Arrays
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
@@ -34,27 +33,25 @@ BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-deepseq-prof
 BuildRequires:  ghc-primitive-devel
 BuildRequires:  ghc-primitive-prof
+BuildRequires:  ghc-random-devel
+BuildRequires:  ghc-random-prof
 BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-tasty-devel
+BuildRequires:  ghc-tasty-prof
 BuildRequires:  ghc-vector-stream-devel
 BuildRequires:  ghc-vector-stream-prof
 ExcludeArch:    %{ix86}
 %if %{with tests}
-BuildRequires:  ghc-HUnit-devel
-BuildRequires:  ghc-HUnit-prof
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-QuickCheck-prof
 BuildRequires:  ghc-base-orphans-devel
 BuildRequires:  ghc-base-orphans-prof
 BuildRequires:  ghc-doctest-devel
 BuildRequires:  ghc-doctest-prof
-BuildRequires:  ghc-random-devel
-BuildRequires:  ghc-random-prof
-BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-hunit-devel
 BuildRequires:  ghc-tasty-hunit-prof
 BuildRequires:  ghc-tasty-inspection-testing-devel
 BuildRequires:  ghc-tasty-inspection-testing-prof
-BuildRequires:  ghc-tasty-prof
 BuildRequires:  ghc-tasty-quickcheck-devel
 BuildRequires:  ghc-tasty-quickcheck-prof
 BuildRequires:  ghc-template-haskell-devel
@@ -64,26 +61,15 @@ BuildRequires:  ghc-transformers-prof
 %endif
 
 %description
-An efficient implementation of 'Int'-indexed arrays (both mutable and
-immutable), with a powerful loop optimisation framework .
-
-It is structured as follows:
-
-["Data.Vector"] Boxed vectors of arbitrary types.
-
+. An efficient implementation of 'Int'-indexed arrays (both mutable and
+immutable), with a powerful loop optimisation framework . . It is structured as
+follows: . ["Data.Vector"] Boxed vectors of arbitrary types. .
 ["Data.Vector.Unboxed"] Unboxed vectors with an adaptive representation based
-on data type families.
-
-["Data.Vector.Storable"] Unboxed vectors of 'Storable' types.
-
-["Data.Vector.Primitive"] Unboxed vectors of primitive types as defined by the
-'primitive' package. "Data.Vector.Unboxed" is more flexible at no performance
-cost.
-
-["Data.Vector.Generic"] Generic interface to the vector types.
-
-There is also a (draft) tutorial on common uses of vector.
-
+on data type families. . ["Data.Vector.Storable"] Unboxed vectors of 'Storable'
+types. . ["Data.Vector.Primitive"] Unboxed vectors of primitive types as
+defined by the 'primitive' package. "Data.Vector.Unboxed" is more flexible at
+no performance cost. . ["Data.Vector.Generic"] Generic interface to the vector
+types. . There is also a (draft) tutorial on common uses of vector. .
 * <http://haskell.org/haskellwiki/Numeric_Haskell:_A_Vector_Tutorial>.
 
 %package devel
@@ -114,7 +100,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
