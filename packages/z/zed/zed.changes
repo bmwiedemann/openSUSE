@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Nov  8 00:15:10 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Fix build by uploading new vendored tarball from new version
+  of obs-service-cargo.
+
+-------------------------------------------------------------------
+Thu Nov 07 11:58:48 UTC 2024 - contact@marvinf.com
+
+- Update to version 0.160.7:
+  * v0.160.x stable
+  * assistant: Remove automatic diagnostic attachment to tab and file commands (#20297)
+  * Bump to 0.160.7 for @ConradIrwin
+  * ci: Update issue templates. Rename defect to bug and improve log formatting (#20246)
+  * Fix buffer restoration on ssh projects (#20215)
+  * zed 0.160.6
+  * assistant: Fix Gemini 1.5 Pro throwing "missing field 'index' at line N column M" (#20200)
+  * copilot: Add support for new models (#19968)
+  * Do not alter soft wrap based on .editorconfig contents (#20198)
+  * Bump to 0.160.5 for @SomeoneToIgnore
+  * Fix file reloading not populating the history (#20156)
+  * Do less work when revealing entries in the outline panel (#20031)
+  * Fix the outline panel's focus tracking (#20083) Closes #20073
+  * Bump to 0.160.4 for @ConradIrwin
+  * Remoting: Fix connecting to servers with long hostnames (#20093)
+  * Bump to 0.160.3 for @ConradIrwin
+
+-------------------------------------------------------------------
 Wed Oct 23 20:32:09 UTC 2024 - contact@marvinf.com
 
 - Update to version 0.158.1:
