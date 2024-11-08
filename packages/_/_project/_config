@@ -7,7 +7,7 @@ BuildFlags: genmetaalgo:1
 # The prjconf macros have a serial to help work around issues like https://github.com/openSUSE/open-build-service/issues/4088
 # On macros having impact on dep chains, update the serial (mainly ruby, python)
 # Using a date to indicate when we set the serial
-ExpandFlags: macroserial:20240827
+ExpandFlags: macroserial:20241108
 
 ExpandFlags: kiwi-nobasepackages
 ExpandFlags: docker-nobasepackages
@@ -259,7 +259,7 @@ FileProvides: /usr/bin/chmod busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/chown busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/chsh shadow
 FileProvides: /usr/bin/cksum busybox-coreutils coreutils coreutils-single
-FileProvides: /usr/bin/clang clang13 clang14 clang15 clang16 clang17 clang18
+FileProvides: /usr/bin/clang clang13 clang14 clang15 clang16 clang17 clang18 clang19
 FileProvides: /usr/bin/clear busybox-ncurses-utils ncurses-utils
 FileProvides: /usr/bin/clisp clisp
 FileProvides: /usr/bin/cmp busybox-diffutils diffutils
@@ -1492,8 +1492,8 @@ Prefer: kernel-default-devel
 # llvm exists in multiple versions
 Prefer: libclang13 libc++1 libc++abi1 libc++-devel libc++abi-devel
 
-Prefer: clang18-devel clang17-devel clang16-devel clang15-devel clang14-devel clang13-devel
-Prefer: llvm18-devel llvm17-devel llvm16-devel llvm15-devel llvm14-devel llvm13-devel
+Prefer: clang19-devel clang18-devel clang17-devel clang16-devel clang15-devel clang14-devel clang13-devel
+Prefer: llvm19-devel llvm18-devel llvm17-devel llvm16-devel llvm15-devel llvm14-devel llvm13-devel
 
 Prefer: -wxWidgets-3_0-devel wxWidgets-3_2-devel
 Prefer: -libwx_baseu-suse-nostl3_0_5 -libwx_baseu-suse3_0_5
@@ -2380,6 +2380,7 @@ BuildFlags: onlybuild:llvm
 BuildFlags: onlybuild:llvm15
 BuildFlags: onlybuild:llvm17
 BuildFlags: onlybuild:llvm18
+BuildFlags: onlybuild:llvm19
 BuildFlags: onlybuild:lmdb
 BuildFlags: onlybuild:logrotate
 BuildFlags: onlybuild:lttng-ust
@@ -3631,7 +3632,7 @@ Macros:
 %postgresql_default_ver 17
 
 # define which llvm package builds the system libraries
-%product_libs_llvm_ver 18
+%product_libs_llvm_ver 19
 
 # define which gcc package builds the system libraries
 %product_libs_gcc_ver 14
