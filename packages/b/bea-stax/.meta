@@ -1,0 +1,9 @@
+<package name="bea-stax" project="openSUSE:Factory">
+  <title>Streaming API for XML</title>
+  <description>The Streaming API for XML (StAX) is a groundbreaking new Java API for
+parsing and writing XML easily and efficiently.
+
+</description>
+  <devel project="Java:packages" package="bea-stax"/>
+  <url>http://stax.codehaus.org/Home</url>
+</package>

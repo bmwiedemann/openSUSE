@@ -1,0 +1,43 @@
+--- build.xml	2024-11-08 07:52:37.880504746 +0100
++++ build.xml	2024-11-08 07:57:18.365793506 +0100
+@@ -71,9 +71,10 @@
+     <!--mkdir dir="${api_src_dir}"/-->
+     <!--unjar src="${jar_api}" dest="${class_dir}"/-->
+     <javac srcdir="${src_api}"
+-      source="1.2" target="1.2"
++      source="8" target="8"
+       includes="${api_dirs}"
+       destdir="${class_dir}"
++      encoding="ISO-8859-1"
+       debug="true">
+       <classpath>
+         <pathelement path="${java.class.path}"/>
+@@ -105,9 +106,10 @@
+   <target name="compile" depends="init,api">
+     <!--javac srcdir="${src}:${api_src_dir}"-->
+     <javac srcdir="${src}"
+-      source="1.2" target="1.2"
++      source="8" target="8"
+       includes="${topdirs}"
+       destdir="${class_dir}"
++      encoding="ISO-8859-1"
+       debug="true">
+       <classpath>
+         <pathelement path="${java.class.path}"/>
+@@ -137,7 +139,7 @@
+   </target>
+   <target name="test_compile" depends="api, test_init">
+     <javac srcdir="${src}" includes="org/codehaus/stax/test/**/*.java"
+-      source="1.2" target="1.2"
++      source="8" target="8"
+       destdir="${test_class_dir}"
+       debug="true">
+       <classpath>
+@@ -205,6 +207,7 @@
+   <target name="javadoc" depends="init">
+     <!-- Build a dirpath that contains just the "source" tree -->
+     <javadoc windowtitle="${ProjectName}"
++         encoding="ISO-8859-1" source="8"
+          destdir="${javadoc_dir}" author="true"  version="true">
+       <packageset dir="${src}" defaultexcludes="yes">
+         <include name="com/bea/**" />
