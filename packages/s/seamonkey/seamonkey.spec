@@ -236,15 +236,7 @@ cp %{SOURCE12} GNUmakefile
 %patch -P 4 -p0
 %patch -P 5 -p1
 %patch -P 6 -p1
-
-# Fix Rust builds on Tumbleweed; see https://bugzilla.mozilla.org/show_bug.cgi?id=1896958
-%if 0%{?suse_version} > 1600
 %patch -P 7 -p1
-%endif
-# Fix Rust builds on openSUSE 15.6; see https://bugzilla.mozilla.org/show_bug.cgi?id=1896958
-%if 0%{?sle_version} == 150600 && 0%{?is_opensuse}
-%patch -P 7 -p1
-%endif
 
 # Fix --system-icu builds on Tumbleweed; see https://bugzilla.mozilla.org/show_bug.cgi?id=1862601
 %if 0%{?suse_version} > 1600
