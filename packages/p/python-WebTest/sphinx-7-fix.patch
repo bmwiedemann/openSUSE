@@ -1,13 +1,12 @@
-diff --git a/docs/conf.py b/docs/conf.py
-index 96746bf..fed362e 100644
---- a/docs/conf.py
-+++ b/docs/conf.py
-@@ -59,9 +59,11 @@ copyright = '2012-%s, Ian Bicking' % thisyear
+diff -Nru webtest-3.0.1.orig/docs/conf.py webtest-3.0.1/docs/conf.py
+--- webtest-3.0.1.orig/docs/conf.py	2024-08-30 08:15:19.000000000 +0000
++++ webtest-3.0.1/docs/conf.py	2024-11-07 12:39:25.092026893 +0000
+@@ -59,9 +59,11 @@
  # The version info for the project you're documenting, acts as replacement for
  # |version| and |release|, also used in various other places throughout the
  # built documents.
--import pkg_resources
--version = pkg_resources.get_distribution(project).version
+-import importlib.metadata
+-version = importlib.metadata.version(project)
 -release = version
 +import pathlib
 +lines = (pathlib.Path(__file__).parent.parent / 'PKG-INFO').open().readlines()

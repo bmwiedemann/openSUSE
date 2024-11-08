@@ -1,7 +1,7 @@
 #
 # spec file for package python-invocations
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-invocations
-Version:        3.0.2
+Version:        3.3.0
 Release:        0
 Summary:        Reusable Invoke tasks
 License:        BSD-2-Clause
 URL:            https://github.com/pyinvoke/invocations
 Source:         https://github.com/pyinvoke/invocations/archive/%{version}.tar.gz#/invocations-%{version}.tar.gz
 Patch0:         invocations-no-bundled.patch
+# PATCH-FIX-OPENSUSE drop-icecream-dep.patch -- daniel.garcia@suse.com
+Patch1:         drop-icecream-dep.patch
 BuildRequires:  %{python_module blessings >= 1.6}
 BuildRequires:  %{python_module invoke >= 1.7.2}
 BuildRequires:  %{python_module lexicon}

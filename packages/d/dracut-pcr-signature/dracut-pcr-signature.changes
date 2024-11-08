@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 31 09:37:56 UTC 2024 - aplanas@suse.com
+
+- Update to version 0.5+0:
+  * Normalize spec file
+  * Use a generator to mount ESP
+  * Avoid race condition when multiple disks are encrypted
+
+-------------------------------------------------------------------
 Mon Oct 07 14:52:41 UTC 2024 - aplanas@suse.com
 
 - Update to version 0.4+2:

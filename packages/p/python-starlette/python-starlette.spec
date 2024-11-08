@@ -90,7 +90,7 @@ ignored_tests="test_set_cookie"
 ignored_tests="$ignored_tests or test_expires_on_set_cookie"
 # fails to raise a deprecation warning as of 2024/04/25
 ignored_tests="$ignored_tests or test_lifespan_with_on_events"
-%pytest --asyncio-mode=strict -k "not ($ignored_tests)"
+%pytest -W ignore::PendingDeprecationWarning --asyncio-mode=strict -k "not ($ignored_tests)"
 
 %endif
 

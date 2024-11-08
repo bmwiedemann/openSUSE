@@ -1343,4 +1343,12 @@
   * 0001-Fix-build-with-Qt-6.8.patch</comment>
     <requestid>1221254</requestid>
   </revision>
+  <revision rev="169" vrev="1">
+    <srcmd5>8dde2b087f0681e9f168156e51c1f885</srcmd5>
+    <version>24.08.3</version>
+    <time>1731063429</time>
+    <user>anag+factory</user>
+    <comment>KDE Release gear 24.08.3 (forwarded request 1221581 from krop)</comment>
+    <requestid>1222248</requestid>
+  </revision>
 </revisionlist>

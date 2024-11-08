@@ -29,7 +29,7 @@
 %endif
 
 Name:           curl%{?psuffix}
-Version:        8.10.1
+Version:        8.11.0
 Release:        0
 Summary:        A Tool for Transferring Data from URLs
 License:        curl

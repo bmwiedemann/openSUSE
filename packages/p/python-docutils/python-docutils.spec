@@ -26,16 +26,16 @@
 %bcond_with test
 %endif
 Name:           python-docutils%{psuffix}
-Version:        0.20.1
+Version:        0.21.2
 Release:        0
 Summary:        Python Documentation Utilities
 License:        BSD-2-Clause AND Python-2.0 AND GPL-2.0-or-later AND GPL-3.0-or-later AND SUSE-Public-Domain
 URL:            https://pypi.python.org/pypi/docutils/
 Source:         https://files.pythonhosted.org/packages/source/d/docutils/docutils-%{version}.tar.gz
 Source99:       python-docutils-rpmlintrc
+BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(pre):  update-alternatives
@@ -46,8 +46,7 @@ Recommends:     python-Pygments
 Recommends:     python-roman
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module Pillow}
-BuildRequires:  %{python_module Pygments}
+BuildRequires:  %{python_module docutils = %{version}}
 BuildRequires:  %{python_module packaging}
 # BuildRequires:  %%{python_module roman}
 %endif
@@ -66,11 +65,8 @@ easy-to-read, what-you-see-is-what-you-get plaintext markup syntax.
 %autosetup -p1 -n docutils-%{version}
 # Remove useless ".py" ending from executables:
 for i in tools/rst*; do mv "$i" "${i/.py}"; done
-sed -i "s|'tools/\(rst.*\)\.py'|'tools/\1'|" setup.py
 find . -name \*.mp4 -print -exec chmod -x '{}' \;
-
-# Actually seems to work with Python 3.6
-sed -i -e '/python_requires/ s/7/6/' setup.py
+find . -name \*.swp -delete
 
 # Remove shebang from non-executable files
 sed -i '1{/^#!/d}' \
@@ -91,7 +87,7 @@ sed -i '1{/^#!/d}' \
 %install
 %if !%{with test}
 %pyproject_install
-for binary in docutils rst2html rst2latex rst2man rst2odt rst2odt_prepstyles rst2pseudoxml rst2s5 rst2xetex rst2xml rstpep2html rst2html4 rst2html5 ; do
+for binary in docutils rst2html rst2latex rst2man rst2odt rst2pseudoxml rst2s5 rst2xetex rst2xml rst2html4 rst2html5 ; do
     %python_clone -a %{buildroot}%{_bindir}/$binary
 done
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -108,7 +104,7 @@ done
 update-alternatives --query rst2html >/dev/null 2>&1 && update-alternatives --quiet --remove-all rst2html ||:
 
 %post
-%python_install_alternative docutils rst2html rst2latex rst2man rst2odt rst2odt_prepstyles rst2pseudoxml rst2s5 rst2xetex rst2xml rstpep2html rst2html4 rst2html5
+%python_install_alternative docutils rst2html rst2latex rst2man rst2odt rst2pseudoxml rst2s5 rst2xetex rst2xml rst2html4 rst2html5
 
 %postun
 %python_uninstall_alternative docutils
@@ -121,12 +117,10 @@ update-alternatives --query rst2html >/dev/null 2>&1 && update-alternatives --qu
 %python_alternative %{_bindir}/rst2latex
 %python_alternative %{_bindir}/rst2man
 %python_alternative %{_bindir}/rst2odt
-%python_alternative %{_bindir}/rst2odt_prepstyles
 %python_alternative %{_bindir}/rst2pseudoxml
 %python_alternative %{_bindir}/rst2s5
 %python_alternative %{_bindir}/rst2xetex
 %python_alternative %{_bindir}/rst2xml
-%python_alternative %{_bindir}/rstpep2html
 %python_alternative %{_bindir}/rst2html4
 %python_alternative %{_bindir}/rst2html5
 %{python_sitelib}/docutils/

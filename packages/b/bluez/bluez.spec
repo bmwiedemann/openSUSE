@@ -35,7 +35,7 @@
 %endif
 
 Name:           bluez
-Version:        5.78
+Version:        5.79
 Release:        0
 Summary:        Bluetooth Stack for Linux
 License:        GPL-2.0-or-later
@@ -62,8 +62,6 @@ Patch14:        hcidump-Add-assoc-dump-function-assoc-date-length-ch.patch
 Patch15:        hcidump-Fix-memory-leak-with-malformed-packet.patch
 # bsc#1013712 CVE-2016-9798
 Patch16:        hcidump-Fixed-malformed-segment-frame-length.patch
-# Fix crash when devices disconnect or go to sleep. Upstream issue 952
-Patch17:        Fix-crash-after-bt_uhid_unregister_all.patch
 # Upstream suggests to use btmon instead of hcidump and does not want those patches
 # => PATCH-FIX-OPENSUSE for those two :-)
 # fix some memory leak with malformed packet (reported upstream but not yet fixed)
@@ -427,6 +425,7 @@ done
 %{_mandir}/man1/bluetoothctl-assistant.1%{?ext_man}
 %{_mandir}/man1/btmgmt.1%{?ext_man}
 %{_mandir}/man5/org.bluez.*.5%{?ext_man}
+%{_mandir}/man7/hci.7%{?ext_man}
 %{_datadir}/dbus-1/system.d/bluetooth.conf
 # not packaged, boo#1151518
 ###%%{_datadir}/dbus-1/system.d/bluetooth-mesh.conf
@@ -437,6 +436,7 @@ done
 %if %{with mesh}
 %{_unitdir}/bluetooth-mesh.service
 %endif
+%{_userunitdir}/mpris-proxy.service
 %{_datadir}/dbus-1/system-services/org.bluez.service
 # not packaged, boo#1151518
 ###%%{_datadir}/dbus-1/system-services/org.bluez.mesh.service

@@ -18,7 +18,7 @@
 
 Name:           libXcursor
 %define lname	libXcursor1
-Version:        1.2.2
+Version:        1.2.3
 Release:        0
 Summary:        X Window System Cursor management library
 License:        MIT

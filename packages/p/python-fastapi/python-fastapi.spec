@@ -120,7 +120,7 @@ ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_response_model/test_
 donttest="$donttest or test_orjson_response_class"
 donttest="$donttest or (test_tutorial001 and test_get_custom_response)"
 %endif
-%pytest -W ignore::DeprecationWarning -W ignore::ResourceWarning $ignorefiles -k "not ($donttest)" tests
+%pytest -W ignore::DeprecationWarning -W ignore::PendingDeprecationWarning -W ignore::ResourceWarning $ignorefiles -k "not ($donttest)" tests
 
 %post
 %python_install_alternative fastapi

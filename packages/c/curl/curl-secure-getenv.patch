@@ -1,7 +1,7 @@
-Index: curl-8.10.0/lib/getenv.c
+Index: curl-8.11.0/lib/getenv.c
 ===================================================================
---- curl-8.10.0.orig/lib/getenv.c
-+++ curl-8.10.0/lib/getenv.c
+--- curl-8.11.0.orig/lib/getenv.c
++++ curl-8.11.0/lib/getenv.c
 @@ -29,6 +29,14 @@
  
  #include "memdebug.h"
@@ -16,23 +16,23 @@ Index: curl-8.10.0/lib/getenv.c
 +
  static char *GetEnv(const char *variable)
  {
- #if defined(_WIN32_WCE) || defined(CURL_WINDOWS_APP) || \
+ #if defined(_WIN32_WCE) || defined(CURL_WINDOWS_UWP) || \
 @@ -69,7 +77,7 @@ static char *GetEnv(const char *variable
      /* else rc is bytes needed, try again */
    }
  #else
 -  char *env = getenv(variable);
 +  char *env = secure_getenv(variable);
-   return (env && env[0])?strdup(env):NULL;
+   return (env && env[0]) ? strdup(env) : NULL;
  #endif
  }
-Index: curl-8.10.0/configure.ac
+Index: curl-8.11.0/configure.ac
 ===================================================================
---- curl-8.10.0.orig/configure.ac
-+++ curl-8.10.0/configure.ac
-@@ -5213,6 +5213,8 @@ if test "x$want_curldebug_assumed" = "xy
-   ac_configure_args="$ac_configure_args --enable-curldebug"
- fi
+--- curl-8.11.0.orig/configure.ac
++++ curl-8.11.0/configure.ac
+@@ -5370,6 +5370,8 @@ fi
+ 
+ CURL_PREPARE_CONFIGUREHELP_PM
  
 +AC_CHECK_FUNCS([__secure_getenv secure_getenv])
 +

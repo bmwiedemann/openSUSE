@@ -437,4 +437,13 @@
 - Add patch allow-new-starlette.patch.</comment>
     <requestid>1208759</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>b1ae853f2866566e715a6b87bbce8f94</srcmd5>
+    <version>0.115.2</version>
+    <time>1731063376</time>
+    <user>anag+factory</user>
+    <comment>- disable PendingDeprecatingWarning
+</comment>
+    <requestid>1222081</requestid>
+  </revision>
 </revisionlist>

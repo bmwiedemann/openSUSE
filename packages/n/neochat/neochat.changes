@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov  5 10:44:14 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.3/
+- Changes since 24.08.2:
+  * Cherry pick compatability changes for libquotient 0.9
+  * snap: add snap package
+- Drop patch, merged upstream:
+  * 0001-Cherry-pick-compatability-changes-for-libquotient-0.patch
+
+-------------------------------------------------------------------
 Mon Oct 28 07:59:23 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change:

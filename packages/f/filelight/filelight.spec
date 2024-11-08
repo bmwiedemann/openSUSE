@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           filelight
-Version:        24.08.2
+Version:        24.08.3
 Release:        0
 Summary:        Graphical disk usage viewer
 License:        GPL-2.0-only OR GPL-3.0-only

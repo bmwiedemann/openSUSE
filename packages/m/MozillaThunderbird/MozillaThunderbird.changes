@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Nov  6 19:54:16 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Thunderbird 128.4.2
+  * Increased the auto-compaction threshold to reduce the frequency
+    of compaction (bmo#1927656)
+  * fixed: New profile creation caused console errors (bmo#1912675)
+  * fixed: Repair folder could result in older messages showing
+    wrong date and time (bmo#1911916)
+  * fixed: Recently deleted messages could become undeleted if
+    message compaction failed (bmo#1924927)
+  * fixed: Visual and UX improvements
+    (bmo#1857413,bmo#1922934,bmo#1924437)
+  * fixed: Clicking on an HTML button could cause Thunderbird to
+    freeze (bmo#1879355)
+  * fixed: Messages could not be selected for dragging
+    (bmo#1887518)
+  * fixed: Could not open attached file in a MIME encrypted
+    message (bmo#1924637)
+  * fixed: Account creation "Setup Documentation" link was broken
+    (bmo#1925493)
+  * fixed: Unable to generate QR codes when exporting to mobile
+    in some cases (bmo#1928114)
+  * fixed: Operating system reauthentication was missing when
+    exporting QR codes for mobile (bmo#1928232)
+  * fixed: Could not drag all-day events from one day to another
+    in week view (bmo#1922944)
+
+-------------------------------------------------------------------
+Sat Nov  2 09:01:15 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 128.4.1
+  * Add the 20 year donation appeal (bmo#192538)
+
+-------------------------------------------------------------------
 Wed Oct 30 13:51:30 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 128.4.0

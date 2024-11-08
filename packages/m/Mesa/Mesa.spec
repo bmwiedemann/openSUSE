@@ -42,7 +42,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 24.1.7
+%define _version 24.2.6
 %define with_opencl 0
 %define with_rusticl 0
 %define with_vulkan 0
@@ -92,7 +92,7 @@
   %endif
   %ifarch riscv64
     %define with_vulkan 1
-    %define vulkan_drivers swrast,amd
+    %define vulkan_drivers swrast,amd,intel,intel_hasvk
   %endif
 %endif
 
@@ -107,8 +107,8 @@
 %endif
 
 %if "%{flavor}" == "drivers"
-  %define glamor 0
-%if ((0%{?suse_version} >= 1550) || (0%{?sle_version} >= 150600))  && 0%{with_opencl}
+  %define glamor 1
+%if 0%{?suse_version} >= 1550 && 0%{with_opencl}
   %define with_rusticl 1
 %endif
 %else
@@ -139,13 +139,13 @@
 
 # NVK aka Vulkan Nouveau dependencies
 %global _unicode_ident_crate_ver 1.0.12
-%global _syn_crate_ver 2.0.39
+%global _syn_crate_ver 2.0.68
 %global _quote_crate_ver 1.0.33
-%global _proc_macro2_ver 1.0.70
+%global _proc_macro2_ver 1.0.86
 %global _paste_crate_ver 1.0.14
 
 Name:           Mesa%{psuffix}
-Version:        24.1.7
+Version:        24.2.6
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
@@ -178,15 +178,19 @@ Patch11:        u_0001-intel-genxml-Drop-from-__future__-import-annotations.patc
 Patch12:        u_0002-intel-genxml-Add-a-untyped-OrderedDict-fallback-for-.patch
 Patch13:        python36-buildfix1.patch
 Patch14:        python36-buildfix2.patch
-Patch15:        u_fix_rust_bindgen.patch
+Patch17:        tlsdesc_test.patch
 # never to be upstreamed
 Patch54:        n_drirc-disable-rgb10-for-chromium-on-amd.patch
 Patch58:        u_dep_xcb.patch
 Patch100:       U_fix-mpeg1_2-decode-mesa-20.2.patch
 Patch400:       n_stop-iris-flicker.patch
-Patch500:       U_egl-x11-sw-fix-partial-image-uploads.patch
+Patch500:       0001-dril-Fixup-order-of-pixel-formats-in-drilConfigs.patch
+Patch1222040:   u_mesa-CVE-2023-45913.patch
+Patch1222041:   u_mesa-CVE-2023-45919.patch
+Patch1222042:   u_mesa-CVE-2023-45922.patch
+
 %ifarch %{ix86} x86_64
-BuildRequires:  DirectX-Headers
+BuildRequires:  DirectX-Headers >= 1.613.0
 %endif
 BuildRequires:  bison
 BuildRequires:  cmake
@@ -201,7 +205,11 @@ BuildRequires:  glslang-devel
 BuildRequires:  imake
 BuildRequires:  libtool
 BuildRequires:  memory-constraints
-BuildRequires:  meson >= 0.60
+%if 0%{with_rusticl}
+BuildRequires:  meson >= 1.4.0
+%else
+BuildRequires:  meson >= 1.1.0
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 # dataclasses is in standard library of python >= 3.7
@@ -209,23 +217,24 @@ BuildRequires:  python3-base
 BuildRequires:  python3-dataclasses
 %endif
 BuildRequires:  python3-Mako
+BuildRequires:  python3-PyYAML
 BuildRequires:  python3-xml
 BuildRequires:  pkgconfig(dri2proto)
 BuildRequires:  pkgconfig(dri3proto)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(glproto)
-BuildRequires:  pkgconfig(libdrm) >= 2.4.75
-BuildRequires:  pkgconfig(libdrm_amdgpu) >= 2.4.95
+BuildRequires:  pkgconfig(libdrm) >= 2.4.109
+BuildRequires:  pkgconfig(libdrm_amdgpu) >= 2.4.121
 BuildRequires:  pkgconfig(libdrm_nouveau) >= 2.4.66
 BuildRequires:  pkgconfig(libdrm_radeon) >= 2.4.71
-BuildRequires:  pkgconfig(libglvnd) >= 0.1.0
-%ifarch aarch64 x86_64 ppc64le s390x
+BuildRequires:  pkgconfig(libglvnd) >= 1.3.2
+%ifarch aarch64 x86_64 ppc64le s390x riscv64
 BuildRequires:  pkgconfig(valgrind)
 %endif
 BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(presentproto)
 %if "%{flavor}" == "drivers"
-BuildRequires:  pkgconfig(vdpau) >= 1.1
+BuildRequires:  pkgconfig(vdpau) >= 1.5
 %ifarch %{ix86} x86_64
 BuildRequires:  pkgconfig(vulkan)
 %endif
@@ -267,7 +276,7 @@ BuildRequires:  pkgconfig(libdrm_etnaviv) >= 2.4.89
 BuildRequires:  pkgconfig(libdrm_freedreno) >= 2.4.74
 BuildRequires:  pkgconfig(libelf)
 %endif
-%ifarch x86_64 %{ix86} aarch64 %{arm}
+%ifarch x86_64 %{ix86} aarch64 %{arm} riscv64
 BuildRequires:  libelf-devel
 BuildRequires:  pkgconfig(libdrm_intel) >= 2.4.75
 %else
@@ -281,10 +290,10 @@ BuildRequires:  pkgconfig(wayland-protocols) >= 1.8
 BuildRequires:  pkgconfig(wayland-server) >= 1.11
 %if 0%{with_llvm}
 %if 0%{?suse_version} >= 1550
-BuildRequires:  llvm-devel
+BuildRequires:  llvm-devel >= 15
 %else
-%if 0%{?sle_version} >= 150500
-BuildRequires:  llvm18-devel
+%if 0%{?sle_version} >= 150700
+BuildRequires:  llvm19-devel
 %endif
 %endif
 %endif
@@ -293,8 +302,8 @@ BuildRequires:  llvm18-devel
 %if 0%{?suse_version} >= 1550
 BuildRequires:  clang-devel
 %else
-%if 0%{?sle_version} >= 150500
-BuildRequires:  clang18-devel
+%if 0%{?sle_version} >= 150700
+BuildRequires:  clang19-devel
 %endif
 %endif
 BuildRequires:  libclc
@@ -553,6 +562,9 @@ Group:          System/Libraries
 Requires:       Mesa = %{version}
 Requires:       libvulkan1
 Supplements:    Mesa
+# merged into libgallium in 24.2.3
+Provides:       libvdpau_gallium = %{version}-%{release}
+Obsoletes:      libvdpau_gallium < %{version}-%{release}
 
 %description -n Mesa-dri
 This package contains Mesa DRI drivers for 3D acceleration.
@@ -832,7 +844,7 @@ cp %{SOURCE6} subprojects/packagecache/
 %if 0%{?suse_version} < 1550
 %patch -P 14 -p1
 %endif
-%patch -P 15 -p1
+%patch -P 17 -p1
 # no longer needed since gstreamer-plugins-vaapi 1.18.4
 %if 0%{?suse_version} < 1550
 %patch -P 54 -p1
@@ -840,8 +852,10 @@ cp %{SOURCE6} subprojects/packagecache/
 %patch -P 58 -p1
 %patch -P 100 -p1
 %patch -P 400 -p1
-%patch -P 500 -p1 -R
-
+%patch -P 500 -p1
+%patch -P 1222040 -p1
+%patch -P 1222041 -p1
+%patch -P 1222042 -p1
 # Remove requires to vulkan libs from baselibs.conf on platforms
 # where vulkan build is disabled; ugly ...
 %if 0%{?with_vulkan} == 0
@@ -929,24 +943,27 @@ egl_platforms=x11,wayland
             -Dvulkan-drivers= \
 %endif
   %ifarch %{ix86} x86_64
-            -Dgallium-drivers=r300,r600,radeonsi,nouveau,swrast,svga,virgl,iris,crocus,i915,d3d12,zink \
+            -Dgallium-drivers=r300,r600,radeonsi,nouveau,softpipe,llvmpipe,svga,virgl,iris,crocus,i915,d3d12,zink \
             -Dgallium-d3d12-video=enabled \
             -Dgallium-d3d12-graphics=enabled \
   %else
   %ifarch %{arm} aarch64
-            -Dgallium-drivers=r300,r600,radeonsi,nouveau,swrast,virgl,freedreno,vc4,etnaviv,lima,panfrost,v3d,svga,tegra,zink \
+            -Dgallium-drivers=r300,r600,radeonsi,nouveau,softpipe,llvmpipe,virgl,iris,freedreno,vc4,etnaviv,lima,panfrost,v3d,svga,tegra,zink \
   %else
   %ifarch ppc64 ppc64le riscv64
-            -Dgallium-drivers=r300,r600,radeonsi,nouveau,swrast,virgl,zink \
+            -Dgallium-drivers=r300,r600,radeonsi,nouveau,softpipe,llvmpipe,virgl,iris,zink \
   %else
-            -Dgallium-drivers=swrast \
+            -Dgallium-drivers=softpipe,llvmpipe \
   %endif
   %endif
   %endif
-%else
-            -Dgallium-drivers=swrast \
+%ifarch riscv64
+            -Dllvm-orcjit=true \
 %endif
-%ifarch aarch64 x86_64 ppc64le s390x
+%else
+            -Dgallium-drivers=softpipe \
+%endif
+%ifarch aarch64 x86_64 ppc64le s390x riscv64
             -Dvalgrind=enabled \
 %endif
             -Db_ndebug=true \
@@ -1009,14 +1026,17 @@ rm %{buildroot}/%{_libdir}/pkgconfig/dri.pc
 # in KHR-devel
 rm -rf %{buildroot}/%{_includedir}/KHR
 
-# workaround needed since Mesa 19.0.2
-rm -f %{buildroot}/%{_libdir}/vdpau/libvdpau_gallium.so
+# in libgbm-devel
+rm -f %{buildroot}%{_includedir}/gbm.h
+rm -f %{buildroot}%{_libdir}/libgbm.so*
+rm -f %{buildroot}%{_libdir}/pkgconfig/gbm.pc
 
 %else
 # package in Mesa-dri
 rm -rf %{buildroot}/%{_datadir}/drirc.d
 
 rm -f %{buildroot}/%{_libdir}/dri/*_dri.so
+rm -f %{buildroot}%{_libdir}/libgallium-*.so
 
 rm -f %{buildroot}%{_libdir}/libGLES*
 # glvnd needs a default provider for indirect rendering where it cannot
@@ -1143,6 +1163,7 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %{_includedir}/xa_*.h
 %{_libdir}/libxatracker.so
 %{_libdir}/pkgconfig/xatracker.pc
+
 %endif
 
 %if %{vdpau_nouveau}
@@ -1204,6 +1225,7 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %ifarch %{arm} aarch64
 %exclude %{_libdir}/dri/vc4_dri.so
 %endif
+%{_libdir}/libgallium-%{_version}.so
 
 %if 0%{with_opencl}
 # only built with opencl
@@ -1283,7 +1305,7 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %endif
 
 %if 0%{with_vulkan}
-%ifarch %{ix86} x86_64 aarch64 %{arm}
+%ifarch %{ix86} x86_64 aarch64 %{arm} riscv64
 %files -n libvulkan_intel
 %dir %{_datadir}/vulkan
 %dir %{_datadir}/vulkan/icd.d

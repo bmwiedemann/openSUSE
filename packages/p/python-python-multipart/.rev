@@ -77,4 +77,12 @@ Also a dep of fastapi (https://repology.org/project/python:fastapi/versions) and
   * Support PyYAML 6.0+</comment>
     <requestid>1153848</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ed2c26938d3c64801c5ba3d905164484</srcmd5>
+    <version>0.0.17</version>
+    <time>1731063364</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1221776</requestid>
+  </revision>
 </revisionlist>

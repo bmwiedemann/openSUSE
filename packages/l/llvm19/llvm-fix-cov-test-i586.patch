@@ -1,0 +1,13 @@
+diff --git a/llvm/test/tools/llvm-cov/mcdc-export-json.test b/llvm/test/tools/llvm-cov/mcdc-export-json.test
+index c2cebf52db8c..a55d7400c51e 100644
+--- a/llvm/test/tools/llvm-cov/mcdc-export-json.test
++++ b/llvm/test/tools/llvm-cov/mcdc-export-json.test
+@@ -5,7 +5,7 @@
+ // CHECK: 15,7,15,13,0,5,[true,true]
+ // CHECK: 15,19,15,25,0,5,[true,false]
+ // CHECK: 18,7,19,15,0,5,[true,true,false,true]
+-// CHECK: "mcdc":{"count":12,"covered":10,"notcovered":2,"percent":83.333333333333343}
++// CHECK: "mcdc":{"count":12,"covered":10,"notcovered":2,"percent":83.3333333333333{{([[:digit:]]{2})}}}
+ 
+ Instructions for regenerating the test:
+ 

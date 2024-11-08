@@ -16,7 +16,7 @@
 #
 
 
-%define _sonum 18
+%define _sonum 19
 
 %ifarch aarch64 ppc64 ppc64le %{ix86} x86_64
 %global has_openmp 1
@@ -40,6 +40,7 @@ Obsoletes:      %{1}14%{?2:-%{2}} \
 Obsoletes:      %{1}15%{?2:-%{2}} \
 Obsoletes:      %{1}16%{?2:-%{2}} \
 Obsoletes:      %{1}17%{?2:-%{2}} \
+Obsoletes:      %{1}18%{?2:-%{2}} \
 Obsoletes:      %{1}7%{?2:-%{2}} \
 Obsoletes:      %{1}8%{?2:-%{2}} \
 Obsoletes:      %{1}9%{?2:-%{2}}

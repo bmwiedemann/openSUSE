@@ -80,4 +80,12 @@
   * 0001-Fix-KAddressBook-crash-when-editing-a-contact-with-n.patch</comment>
     <requestid>1207545</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>82a549c9efc7b32d0a8ce9160d8e5543</srcmd5>
+    <version>24.08.3</version>
+    <time>1731063243</time>
+    <user>anag+factory</user>
+    <comment>KDE Release gear 24.08.3 (forwarded request 1221581 from krop)</comment>
+    <requestid>1222197</requestid>
+  </revision>
 </revisionlist>

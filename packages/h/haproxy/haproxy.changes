@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Thu Nov 07 18:40:53 UTC 2024 - mrueckert@suse.de
+
+- Update to version 3.0.6+git0.c2c009086:
+  * [RELEASE] Released version 3.0.6
+  * MINOR: debug: move the "recover now" warn message after the optional notes
+  * BUILD: Missing inclusion header for ssize_t type
+  * BUILD: debug: also declare strlen() in __ABORT_NOW()
+  * DEBUG: wdt: add a stats counter "BlockedTrafficWarnings" in show info
+  * DEBUG: wdt: make the blocked traffic warning delay configurable
+  * DEBUG: cli: make it possible for "debug dev loop" to trigger warnings
+  * DEBUG: wdt: better detect apparently locked up threads and warn about them
+  * MINOR: debug: add a function to dump a stuck thread
+  * MINOR: wdt: move the local timers to a struct
+  * MINOR: debug: remove the redundant process.thread_info array from post_mortem
+  * MINOR: debug: also add fdtab and acitvity to struct post_mortem
+  * MINOR: debug: also add a pointer to struct global to post_mortem
+  * MINOR: debug: do not limit backtraces to stuck threads
+  * MINOR: debug: print gdb hints when crashing
+  * MINOR: connection: add new sample fetch functions fc_err_name and bc_err_name
+  * MINOR: rawsock: set connection error codes when returning from recv/send/splice
+  * MINOR: connection: add more connection error codes to cover common errno
+  * BUG/MINOR: stats: Fix the name for the total number of streams created
+  * MINOR: stream/stats: Expose the total number of streams ever created in stats
+  * MINOR: stream/stats: Expose the current number of streams in stats
+  * MINOR: cli/debug: show dev: add cmdline and version
+  * BUG/MINOR: quic: fix malformed probing packet building
+  * CLEANUP: connection: properly name the CO_ER_SSL_FATAL enum entry
+  * DOC: config: document connection error 44 (reverse connect failure)
+  * BUG/MEDIUM: promex: Fix dump of extra counters
+  * MINOR: stream: Save last evaluated rule on invalid yield
+  * BUG/MINOR: http-ana: Report internal error if an action yields on a final eval
+  * BUG/MEDIUM: mux-h1: Fix how timeouts are applied on H1 connections
+  * DOC: config: add missing glitch_{cnt,rate} sample definitions
+  * DOC: config: add missing glitch_{cnt,rate} data types
+  * BUG/MINOR: ssl/cli: 'set ssl cert' does not check the transaction name correctly
+  * BUG/MINOR: trace: stop rewriting argv with -dt
+  * MINOR: cli: remove non-printable characters from 'debug dev fd'
+  * MINOR: debug: store important pointers in post_mortem
+  * MINOR: debug: place the post_mortem struct in its own section.
+  * MINOR: debug: place a magic pattern at the beginning of post_mortem
+  * MINOR: pools: export the pools variable
+  * BUILD: debug: silence a build warning with threads disabled
+  * BUG/MEDIUM: server: fix race on servers_list during server deletion
+  * BUG/MINOR: stconn: Don't disable 0-copy FF if EOS was reported on consumer side
+  * BUG/MINOR: http-ana: Fix wrong client abort reports during responses forwarding
+  * BUG/MEDIUM: stconn: Report blocked send if sends are blocked by an error
+  * BUG/MINOR: server: fix dynamic server leak with check on failed init
+  * MINOR: activity/memprofile: show per-DSO stats
+  * MINOR: activity/memprofile: always return "other" bin on NULL return address
+  * BUG/MEDIUM: connection/http-reuse: fix address collision on unhandled address families
+  * BUG/MEDIUM: mux-h2: Remove H2S from send list if data are sent via 0-copy FF
+  * BUG/MEDIUM: stats-html: Never dump more data than expected during 0-copy FF
+  * BUG/MINOR: mux-quic: do not close STREAM with empty FIN if no data sent
+  * BUG/MINOR: mworker: fix mworker-max-reloads parser
+  * DOC: config: fix rfc7239 forwarded typo in desc
+  * BUG/MEDIUM: quic: avoid freezing 0RTT connections
+  * BUG/MINOR: quic: avoid leaking post handshake frames
+  * REGTESTS: Never reuse server connection in http-messaging/truncated.vtc
+  * BUG/MAJOR: filters/htx: Add a flag to state the payload is altered by a filter
+  * BUG/MEDIUM: stconn: Check FF data of SC to perform a shutdown in sc_notify()
+  * BUG/MINOR: http-ana: Don't report a server abort if response payload is invalid
+  * BUG/MEDIUM: stconn: Wait iobuf is empty to shut SE down during a check send
+  * BUG/MINOR: httpclient: return NULL when no proxy available during httpclient_new()
+  * BUG/MEDIUM: queue: make sure never to queue when there's no more served conns
+  * BUG/MEDIUM: mux-quic: ensure timeout server is active for short requests
+  * BUG/MEDIUM: hlua: properly handle sample func errors in hlua_run_sample_{fetch,conv}()
+  * BUG/MEDIUM: hlua: make hlua_ctx_renew() safe
+  * BUG/MEDIUM: server: server stuck in maintenance after FQDN change
+  * MEDIUM: debug: on panic, make the target thread automatically allocate its buf
+  * MINOR: debug: replace ha_thread_dump() with its two components
+  * MINOR: debug: make ha_thread_dump_done() take the pointer to be used
+  * MINOR: debug: slightly change the thread_dump_pointer signification
+  * MINOR: debug: split ha_thread_dump() in two parts
+  * MINOR: chunk: drop the global thread_dump_buffer
+  * MINOR: debug: make mark_tainted() return the previous value
+  * BUG/MINOR: http-ana: Disable fast-fwd for unfinished req waiting for upgrade
+  * BUG/MINOR: mux-h1: Fix condition to set EOI on SE during zero-copy forwarding
+  * BUG/MEDIUM: queue: always dequeue the backend when redistributing the last server
+  * MINOR: server: make srv_shutdown_sessions() call pendconn_redistribute()
+  * BUG/MINOR: queue: make sure that maintenance redispatches server queue
+  * BUG/MEDIUM: stream: make stream_shutdown() async-safe
+  * MINOR: task: define two new one-shot events for use with WOKEN_OTHER or MSG
+  * MINOR: tools: do not attempt to use backtrace() on linux without glibc
+  * BUILD: tools: only include execinfo.h for the real backtrace() function
+  * BUG/MINOR: cfgparse-global: fix allowed args number for setenv
+  * BUG/MINOR: server: make sure the HMAINT state is part of MAINT
+  * BUG/MEDIUM: cli: Deadlock when setting frontend maxconn
+  * BUG/MEDIUM: cli: Be sure to catch immediate client abort
+  * BUG/MINOR: mux-quic: report glitches to session
+  * REGTESTS: shorten a bit the delay for the h1/h2 upgrade test
+  * REGTESTS: h1/h2: Update script testing H1/H2 protocol upgrades
+  * BUG/MEDIUM: mux-h1/mux-h2: Reject upgrades with payload on H2 side only
+  * MINOR: mux-h1: Set EOI on SE during demux when both side are in DONE state
+  * BUG/MINOR: h2: reject extended connect for h2c protocol
+  * BUG/MINOR: h1: do not forward h2c upgrade header token
+  * MINOR: connection: No longer include stconn type header in connection-t.h
+
+-------------------------------------------------------------------
 Mon Sep 30 19:36:53 UTC 2024 - mrueckert@suse.de
 
 - Update to version 3.0.5+git0.8e879a52e: (VUL-0: CVE-2024-49214 boo#1231612)

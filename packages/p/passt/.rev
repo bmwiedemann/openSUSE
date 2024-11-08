@@ -128,4 +128,12 @@ on SELinux-enabled projects e.g. SLFO. (forwarded request 1186132 from danishpra
     <comment></comment>
     <requestid>1200293</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ad90fedfc0fdd8d8bf16e7ecd8374c20</srcmd5>
+    <version>20241030.ee7d0b6</version>
+    <time>1731063372</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1222068</requestid>
+  </revision>
 </revisionlist>

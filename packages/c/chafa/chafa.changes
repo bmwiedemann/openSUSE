@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Nov  3 08:32:44 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 1.14.5:
+  Fixes:
+  * Improve sixel and general terminal support inside tmux
+  * Support JPEGs with CMYK color space
+  * Fix --font-ratio doing nothing
+  * Ensure CLI tool gets linked with libm.
+
+-------------------------------------------------------------------
 Tue Sep 10 05:20:04 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.14.4:

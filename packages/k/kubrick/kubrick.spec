@@ -20,7 +20,7 @@
 
 %bcond_without released
 Name:           kubrick
-Version:        24.08.2
+Version:        24.08.3
 Release:        0
 Summary:        Game based on Rubik's Cube
 License:        GPL-2.0-or-later

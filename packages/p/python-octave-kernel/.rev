@@ -104,4 +104,13 @@
   * Clarify use environment variable wording #229 (@goyalyashpal)</comment>
     <requestid>1201278</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>df999a279044d0470996088b57858c7b</srcmd5>
+    <version>0.36.0</version>
+    <time>1731063613</time>
+    <user>anag+factory</user>
+    <comment>- Exclude stdout test because of qt not found
+  gh#Calysto/octave_kernel#240</comment>
+    <requestid>1222584</requestid>
+  </revision>
 </revisionlist>

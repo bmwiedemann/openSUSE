@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  6 19:20:07 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch (pending upstream) to fix properties getting GC'd:
+  (QTBUG-128789, kde#494804)  
+  * 0001-WIP-speculative-gc-fix.patch
+
+-------------------------------------------------------------------
 Mon Nov  4 17:50:07 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change (QTBUG-129500, kde#495089):

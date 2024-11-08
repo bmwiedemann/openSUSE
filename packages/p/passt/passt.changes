@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Mon Nov 04 10:10:37 UTC 2024 - dcermak@suse.com
+
+- Update to version 20241030.ee7d0b6:
+  * util: Don't use errno after a successful call in __daemon()
+  * udp: Take care of cert-int09-c clang-tidy warning for enum udp_iov_idx
+  * treewide: Address cert-err33-c clang-tidy warnings for clock and timer functions
+  * treewide: Suppress clang-tidy warning if we already use O_CLOEXEC
+  * Makefile: Disable readability-math-missing-parentheses clang-tidy check
+  * treewide: Silence cert-err33-c clang-tidy warnings for fprintf()
+  * treewide: Comply with CERT C rule ERR33-C for snprintf()
+  * Makefile: Exclude qrap.c from clang-tidy checks
+  * tcp: unify l2 TCPv4 and TCPv6 queues and structures
+  * tcp: set ip and eth headers in l2 tap queues on the fly
+  * test: remove obsolete images
+  * tcp: cleanup tcp_buf_data_from_sock()
+  * tcp: Use runtime tests for TCP_INFO fields
+  * tcp: Generalise probing for tcpi_snd_wnd field
+  * tcp: Remove compile-time dependency on struct tcp_info version
+  * tcp_splice: fcntl(2) returns the size of the pipe, if F_SETPIPE_SZ succeeds
+  * tcp_splice: splice() all we have to the writing side, not what we just read
+  * tcp: Use structures to construct initial TCP options
+  * fwd: Direct inbound spliced forwards to the guest's external address
+  * test: Clarify test for spliced inbound transfers
+  * passt.1: Clarify and update "Handling of local addresses" section
+  * passt.1: Mark --stderr as deprecated more prominently
+  * test: Wait for DAD on DHCPv6 addresses
+  * test: Explicitly wait for DAD to complete on SLAAC addresses
+  * arp: Fix a handful of small warts
+  * tcp: Send "empty" handshake ACK before first data segment
+  * test: Pass TRACE from run_term() into ./run from_term
+  * test/lib/term: Always use printf for messages with escape sequences
+  * conf: Add --dns-host option to configure host side nameserver
+  * conf: Add command line switch to enable IP_FREEBIND socket option
+  * udp: Update UDP checksum using an iovec array
+  * tcp: Update TCP checksum using an iovec array
+  * checksum: Add an offset argument in csum_iov()
+  * pcap: Add an offset argument in pcap_iov()
+  * tcp: Use tcp_payload_t rather than tcphdr
+  * test: Kernel binary can now be passed via the KERNEL environmental variable
+  * inany: Add inany_pton() helper
+  * tcp, udp: Make {tcp,udp}_sock_init() take an inany address
+  * util, pif: Replace sock_l4() with pif_sock_l4()
+  * udp: Don't attempt to get dual-stack sockets in nonsensical cases
+  * tcp: Allow checksum to be disabled
+  * udp: Allow checksum to be disabled
+  * util: Remove possible quadratic behaviour from write_remainder()
+  * util: Add helper to write() all of a buffer
+  * tcp: Make tcp_update_seqack_wnd()s force_seq parameter explicitly boolean
+  * tcp: Simplify ifdef logic in tcp_update_seqack_wnd()
+  * tcp: Clean up tcpi_snd_wnd probing
+  * tcp: Make some extra functions private
+  * tcp: Avoid overlapping memcpy() in DUP_ACK handling
+  * tcp: Remove redundant initialisation of iov[TCP_IOV_ETH].iov_base
+
+-------------------------------------------------------------------
 Thu Sep 12 11:08:38 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
 
 - Fix passt-selinux to use selinux macros instead of calling semodule

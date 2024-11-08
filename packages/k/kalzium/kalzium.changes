@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov  5 10:42:55 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.3/
+- Changes since 24.08.2:
+  * Fix build with Qt 6.8
+- Drop patch, merged upstream:
+  * 0001-Fix-build-with-Qt-6.8.patch
+
+-------------------------------------------------------------------
 Mon Nov  4 20:36:52 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add patch:

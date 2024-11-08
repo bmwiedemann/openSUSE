@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov  6 08:16:30 UTC 2024 - Frederic Crozat <fcrozat@suse.com>
+
+- Update to 5.79:
+  * Fix issue with handling address type while pairing.
+  * Add support for allowing to set A2DP transport delay.
+  * Add support for persistent userspace HID operation.
+  * Add support for handling syncing to multiple BISes.
+- Drop Fix-crash-after-bt_uhid_unregister_all.patch, merged
+  upstream.
+
+-------------------------------------------------------------------
 Wed Sep 18 08:35:40 UTC 2024 - pallas wept <pallaswept@proton.me>
 
 - add Fix-crash-after-bt_uhid_unregister_all.patch to fix crashes

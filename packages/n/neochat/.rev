@@ -273,4 +273,12 @@
   * 0001-Cherry-pick-compatability-changes-for-libquotient-0.patch</comment>
     <requestid>1218725</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>ad059559a589e27e32913f388cc5c79f</srcmd5>
+    <version>24.08.3</version>
+    <time>1731063549</time>
+    <user>anag+factory</user>
+    <comment>KDE Release gear 24.08.3 (forwarded request 1221581 from krop)</comment>
+    <requestid>1222417</requestid>
+  </revision>
 </revisionlist>

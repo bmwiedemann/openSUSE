@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov  7 17:56:29 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.9.3
+  * Don't commit when garbage-collected in a different thread #81
+    (@davidbrochart)
+- Release 0.9.2
+  * Check for ID before creating a new record #78 (@Zsailer)
+  * Use a context manager for all write actions to prevent
+    indefinite database locks #77 (@Zsailer)
+
+-------------------------------------------------------------------
 Thu Mar  7 13:07:38 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip testing with python39: no longer supported since ipython

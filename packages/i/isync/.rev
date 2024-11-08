@@ -97,4 +97,12 @@ this time with COPYING, ChangeLog, AUTHORS and README</comment>
     makes isync handles the situation more gracefully (boo#1208166).</comment>
     <requestid>1068135</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>77a79cc50d4ca28ceec32dc164fd85f0</srcmd5>
+    <version>1.5.0</version>
+    <time>1731063581</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1222518</requestid>
+  </revision>
 </revisionlist>

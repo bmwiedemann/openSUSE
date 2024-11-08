@@ -168,4 +168,15 @@
     <comment></comment>
     <requestid>1151688</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>63fa811866d54509a1c8511e0c09be59</srcmd5>
+    <version>1.5.3</version>
+    <time>1731063354</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.5.3
+  * set_gamma_info: remove unnecessary round-trip to server
+  * Reworked transform fix from Arsalan Awan
+  * xrandr: Print/consume the CTM prop in human readable form</comment>
+    <requestid>1222571</requestid>
+  </revision>
 </revisionlist>

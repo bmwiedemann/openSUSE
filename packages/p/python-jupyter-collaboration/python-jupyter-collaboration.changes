@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Nov  7 17:16:34 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.0.0
+- This is a metapackge now, depending on:
+  * python-jupyter-collaboration_ui
+  * python-jupyter-docprovider
+  * python-jupyter-server-ydoc
+
+-------------------------------------------------------------------
+Thu Nov  7 15:47:44 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.1.5
+  * Backport 'Initialize and update the ydoc path property' #342
+    #357 (@brichet)
+  * [2.x] Support @jupyter/ydoc 2.x #316 (@fcollonval)
+
+-------------------------------------------------------------------
+Thu Oct 24 07:30:34 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.4:
+  * Backport 'Update jupyter_ydoc and pycrdt_websocket
+    dependencies' #367 #376 (@brichet)
+  * Backport 'Fix model format' #368 #369 (@davidbrochart)
+  * Backport 'Fix ignoring AnyIO warnings in tests' #359 #362
+    (@brichet)
+  * Backport 'Fix mypy' #358 #361 (@brichet)
+
+-------------------------------------------------------------------
 Fri Aug 30 10:41:21 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.1.2

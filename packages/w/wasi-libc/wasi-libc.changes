@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Sep 21 21:39:37 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version (wasi-sdk-)22.
+  * Add support for some network APIs.
+- Rebase workaround-broken-makefile.patch.
+- Backport upstream patches to fix build with Clang 19:
+  * ignore-gcc-con-destructive-size-macros.patch
+  * ignore-norm-max-macros.patch
+  * ignore-stdc-embed-macros.patch
+  * ignore-wasm-macros-indirect-function-table.patch
+
+-------------------------------------------------------------------
 Thu Feb 22 21:05:54 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version (wasi-sdk-)21.

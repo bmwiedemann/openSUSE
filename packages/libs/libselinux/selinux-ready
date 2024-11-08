@@ -167,19 +167,9 @@ check_initupstart()
 	fi
 }
 
-check_runlevel()
-{
-	if [ "$(systemctl is-enabled restorecond.service 2>/dev/null)" == "enabled" ]; then
-		printf "\tcheck_runlevel: OK. restorecond is enabled on your system\n"
-		return 0;
-	fi
-	printf "\tcheck_runlevel: ERR. please enable restorecond with systemctl enable restorecond.service.\n"
-	return 1
-}
-
 check_packages()
 {
-	PKGLST="checkpolicy policycoreutils selinux-tools libselinux1 libsepol2 libsemanage2 restorecond"
+	PKGLST="checkpolicy policycoreutils selinux-tools libselinux1 libsepol2 libsemanage2"
 	FAIL=0
 
 	for i in $PKGLST
@@ -240,6 +230,5 @@ check_packages
 check_config
 check_initupstart
 check_pam
-check_runlevel
 
 rm -rf $TD

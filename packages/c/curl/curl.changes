@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Wed Nov  6 08:43:16 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 8.11.0:
+  * Security fixes: [bsc#1232528, CVE-2024-9681]
+    - curl: HSTS subdomain overwrites parent cache entry
+  * Changes:
+    - curl: --create-dirs works for --dump-header as well
+    - gtls: Add P12 format support
+    - ipfs: add options to disable
+    - TLS: TLSv1.3 earlydata support for curl
+    - WebSockets: make support official (non-experimental)
+  * Bugfixes:
+    - build: clarify CA embed is for curl tool, mark default, improve summary
+    - build: show if CA bundle to embed was found
+    - build: tidy up and improve versioned-symbols options
+    - cmake/FindNGTCP2: use library path as hint for finding crypto module
+    - cmake: disable default OpenSSL if BearSSL, GnuTLS or Rustls is enabled
+    - cmake: rename LDAP dependency config variables to match Find modules
+    - cmake: replace 'check_include_file_concat()' for LDAP and GSS detection
+    - cmake: use OpenSSL for LDAP detection only if available
+    - curl: add build options for safe/no CA bundle search (Windows)
+    - curl: detect ECH support dynamically, not at build time
+    - curl_addrinfo: support operating systems with only getaddrinfo(3)
+    - ftp: fix 0-length last write on upload from stdin
+    - gnutls: use session cache for QUIC
+    - hsts: improve subdomain handling
+    - hsts: support "implied LWS" properly around max-age
+    - http2: auto reset stream on server eos
+    - json.md: cli-option '--json' is an alias of '--data-binary'
+    - lib: move curl_path.[ch] into vssh/
+    - lib: remove function pointer typecasts for hmac/sha256/md5
+    - libssh.c: handle EGAINS during proto-connect correctly
+    - libssh2: use the filename buffer when getting the homedir
+    - multi.c: warn/assert on stall only without timer
+    - negotiate: conditional check around GSS & SSL specific code
+    - netrc: cache the netrc file in memory
+    - ngtcp2: do not loop on recv
+    - ngtcp2: set max window size to 10x of initial (128KB)
+    - openssl quic: populate x509 store before handshake
+    - openssl: extend the OpenSSL error messages
+    - openssl: improve retries on shutdown
+    - quic: use send/recvmmsg when available
+    - schannel: fix TLS cert verification by IP SAN
+    - schannel: ignore error on recv beyond close notify
+    - select: use poll() if existing, avoid poll() with no sockets
+    - sendf: add condition to max-filesize check
+    - server/mqttd: fix two memory leaks
+    - setopt: return error for bad input to CURLOPT_RTSP_REQUEST
+    - setopt_cptr: make overflow check only done when needed
+    - tls: avoid abusing CURLE_SSL_ENGINE_INITFAILED
+    - tool: support --show-headers AND --remote-header-name
+    - tool_operate: make --skip-existing work for --parallel
+    - url: connection reuse on h3 connections
+    - url: use same credentials on redirect
+    - urlapi: normalize the IPv6 address
+    - version: say quictls in MSH3 builds
+    - vquic: fix compiler warning with gcc + MUSL
+    - vquic: recv_mmsg, use fewer, but larger buffers
+    - vtls: convert Curl_pin_peer_pubkey to use dynbuf
+    - vtls: convert pubkey_pem_to_der to use dynbuf
+  * Rebase curl-secure-getenv.patch
+
+-------------------------------------------------------------------
 Tue Sep 24 09:42:35 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 8.10.1:

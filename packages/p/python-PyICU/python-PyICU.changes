@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov  7 10:04:14 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.14
+  * added wrappers for UCPMap.get|getRange and Char.getIntPropertyMap
+  * added wrapper for Locale.getUnicodeKeywordValue
+  * added wrapper for UnicodeString.remove, UnicodeString.removeBetween
+  * added wrapper for UnicodeString.retainBetween, UnicodeString.truncate
+  * fixed bogus UBool uses on stack instead of int (Martin Jansche)
+  * added support for ICU 76.1
+
+-------------------------------------------------------------------
 Fri Jun 14 08:14:34 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 2.13.1:

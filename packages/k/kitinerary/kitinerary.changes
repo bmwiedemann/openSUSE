@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Nov  5 10:43:26 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.3/
+- Changes since 24.08.2:
+  * Add extractor for Thai state railway tickets
+  * Handle date format of NS RCT2 ticket barcodes
+  * Add planway.com extractor script
+  * Add VietJet Air extractor script
+  * Add Spanish language plain text extraction patterns for booking.com
+  * Sync OSM data types from KOSMIndoorMap
+  * Make Renfe barcode trigger pattern more strict (kde#494613)
+  * Extract passenger names from Renfe tickets when present
+  * Make Renfe extractor script more robust (kde#494617)
+  * Update Agoda extractor to handle confirmation mails in Spanish
+
+-------------------------------------------------------------------
 Tue Oct  8 12:01:39 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.2

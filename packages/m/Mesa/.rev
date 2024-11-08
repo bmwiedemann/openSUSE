@@ -5892,4 +5892,101 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
 - Rebase patches with quilt.</comment>
     <requestid>1200878</requestid>
   </revision>
+  <revision rev="520" vrev="392">
+    <srcmd5>2e5a9dad6001960420a75cf06383a9b3</srcmd5>
+    <version>unknown</version>
+    <time>1731063233</time>
+    <user>anag+factory</user>
+    <comment>- 0001-dril-Fixup-order-of-pixel-formats-in-drilConfigs.patch
+  * fixes colors for 'swrast' driver (boo#1230637, gitlab issue#11840)
+
+- Update to release 24.2.6
+  --&gt; https://docs.mesa3d.org/relnotes/24.2.6
+
+- added -32bit package for Mesa-libva since it's needed by Steam;
+  reported on packman ML:
+  https://lists.links2linux.de/pipermail/packman/2024-October/017985.html 
+
+- Enable intel Vulkan backends on riscv64 (boo#1231756)
+- Enable iris Gallium backend on riscv64, Power and on Arm, too
+
+- Update to release 24.2.5
+  --&gt; https://docs.mesa3d.org/relnotes/24.2.5
+- drop u_fix-llvm19-build.patch
+  included in upstream
+
+- Update to release 24.2.4
+  --&gt; https://docs.mesa3d.org/relnotes/24.2.4
+
+- u_mesa-CVE-2023-45913.patch
+  * NULL pointer dereference via dri2GetGlxDrawableFromXDrawableId()
+    (CVE-2023-45913, bsc#1222040)
+- u_mesa-CVE-2023-45919.patch
+  * buffer over-read in glXQueryServerString() 
+    (CVE-2023-45919, bsc#1222041)
+- u_mesa-CVE-2023-45922.patch
+  * segmentation violation in __glXGetDrawableAttribute()
+    (CVE-2023-45922, bsc#1222042) 
+
+
+- libvdpau_gallium was linked directly into libgallium-*.so.*.
+  Drop the subpackage and provides/obsolete it via Mesa-dri which
+  ships libgallium-*.so.*.
+
+- drop u_fix_rust_bindgen.patch 
+  included in update
+
+- Update to release 24.2.3
+  --&gt; https://docs.mesa3d.org/relnotes/24.2.3
+
+- disable build of rusticl on sle15; meson is just too old ... 
+
+- buildrequires: rusticl needs mesa &gt;= 1.4.0
+
+- tlsdesc_test.patch: disable LTO in tlsdesc_test to suppress TLS
+  relaxation (patch by Andreas Schwab &lt;schwab@suse.de&gt;); see also
+  https://gitlab.freedesktop.org/mesa/mesa/-/issues/11929
+
+- buildrequire llvm19-devel/clang19-devel on sle15-sp7
+
+- Add u_fix-llvm19-build.patch to fix build with LLVM 19 on ARM.
+- Update minimum version requirements based on meson.build.
+- Fix build on s390x: apparently we don't have libvdpau_gallium.so.
+
+- drop U_egl-x11-sw-fix-partial-image-uploads.patch:
+  the code in the function saw further fixes later on in the 24.2
+  branch.
+
+- integrated changes by Andreas Schwab &lt;schwab@suse.de&gt;
+  * enable glamor also for driver build
+  * update rust crates
+    + syn 2.0.39
+    + proc_macro2 1.0.86
+  * enable valgrind also on riscv64
+  * added libvdpau_gallium package for generic VDPAU state tracker
+  * switch from &quot;swrast&quot; to &quot;softpipe,llvmpipe&quot; drivers
+  * use &quot;-Dllvm-orcjit=true&quot; for riscv64 build
+  * added libgallium to Mesa-dri package
+
+- re-disable llvm for non-driver build by switching from &quot;swrast&quot;
+  to &quot;softpipe&quot; for gallium drivers in that case
+- make previous changelog a bit nicer
+
+- Update to release 24.2.2
+  --&gt; https://docs.mesa3d.org/relnotes/24.2.2
+  --&gt; https://docs.mesa3d.org/relnotes/24.2.1
+  --&gt; https://docs.mesa3d.org/relnotes/24.2.0
+- refreshed the following patches with quilt:
+  * U_fix-mpeg1_2-decode-mesa-20.2.patch
+  * n_add-Mesa-headers-again.patch
+  * n_stop-iris-flicker.patch
+  * u_dep_xcb.patch
+  * u_fix_rust_bindgen.patch
+- dropped U_radeonsi-vcn-Add-decode-DPB-buffers-as-CS-dependency.patch
+- New BuildRequires:
+  * python3-PyYAML
+- enable llvm also for non-driver build to fix:
+  &quot;llvmpipe requires LLVM and is enabled, but LLVM is disabled&quot;.</comment>
+    <requestid>1221967</requestid>
+  </revision>
 </revisionlist>

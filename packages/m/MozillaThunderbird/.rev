@@ -5558,4 +5558,12 @@ I cannot test locally unfortunately.
     Firefox ESR 128.4, and Thunderbird 128.4</comment>
     <requestid>1219576</requestid>
   </revision>
+  <revision rev="346" vrev="1">
+    <srcmd5>78ac605c28860bd6a5da12eb34633e98</srcmd5>
+    <version>128.4.2</version>
+    <time>1731063614</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1222591</requestid>
+  </revision>
 </revisionlist>

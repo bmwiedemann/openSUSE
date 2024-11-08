@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Nov  7 10:52:02 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.2.3 
+  * Change all *LoadImage(..., size) APIs to always return a cursor with the requested size.
+  * Remove unnecessary MIN calls
+  * build-fix
+  * fix compiler warnings
+  * improve manpage formatting
+  * trim redundant code from the resize-calls
+  * add new property "resized" and environment "XCURSOR_RESIZED"
+  * add getter/setter for "resized" property
+  * restore behavior of image-loading, provide resizing via internal function
+  * provide internal variants of existing functions to pass "resized" parameter
+  * use resized-parameter where available when loading images
+  * add/use _XcursorLibraryLoadImages to pass resized-parameter when loading
+  * add debug-logging for file.c, to help with analysis
+  * add traces for library.c and xlib.c, also another internal function for dpy
+  * document the new XCURSOR_RESIZED environment variable and resource "resized"
+  * document/tidy the new set/get functions
+  * changes will suggest new release
+  * ensure ncomment and nimage values are positive
+  * add debug-trace for the configuration information
+  * fix overlooked compiler-warning
+  * reduce the message-check to ignore the over-long one
+  * amend per merge_requests/22#note_2642034
+  * amend per merge_requests/22#note_2642042
+  * Ignore invalid cursor files
+
+-------------------------------------------------------------------
 Sun Mar  3 03:15:13 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.2.2

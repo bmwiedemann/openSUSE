@@ -1,7 +1,7 @@
 #
 # spec file for package linux-ftools
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define hg_version 2a7918d4b81b
 Name:           linux-ftools
-Version:        1.3
+Version:        1.3.1
 Release:        0
 Summary:        Linux command line tools for fallocate, fincore, fadvise, etc
 License:        Apache-2.0
 Group:          Development/Debug
-Url:            http://code.google.com/p/linux-ftools/
-Source:         linux-ftools-%{hg_version}.tar.gz
-Source1:        COPYING
-Patch0:         gcc46.diff
-Patch1:         linux-ftools_use_asm_unistd_h.patch
+URL:            http://code.google.com/p/linux-ftools/
+Source:         linux-ftools-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -43,24 +39,26 @@ determine information about the running kernel, improve system performance, and
 debug performance problems.
 
 %prep
-%setup -q -n linux-ftools-%{hg_version}
-%patch -P 0
-%patch -P 1 -p1
+%setup -q -n linux-ftools-%{version}
 
 %build
 autoreconf -fi
 %configure
 make %{?_smp_mflags}
-cp %{S:1} .
 
 %install
 make install DESTDIR=%{buildroot}
-# already shipped by util-linux
-rm -f %{buildroot}%{_bindir}/linux-fallocate
+install -D -m 0755 fallocate %{buildroot}%{_bindir}/linux-fallocate
+install -D -m 0755 fadvise %{buildroot}%{_bindir}/linux-fadvise
+install -D -m 0755 fincore %{buildroot}%{_bindir}/linux-fincore
+rm %{buildroot}%{_bindir}/fallocate
+rm %{buildroot}%{_bindir}/fadvise
+rm %{buildroot}%{_bindir}/fincore
 
 %files
 %defattr(-,root,root)
-%doc COPYING README
+%doc COPYING README.md
+%{_bindir}/linux-fallocate
 %{_bindir}/linux-fadvise
 %{_bindir}/linux-fincore
 

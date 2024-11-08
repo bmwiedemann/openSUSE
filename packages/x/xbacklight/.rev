@@ -110,4 +110,17 @@
     <comment></comment>
     <requestid>1151662</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>47c67b161ce2ede56f826667696733eb</srcmd5>
+    <version>1.2.4</version>
+    <time>1731063599</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.2.4
+  * gitlab CI: add a basic build test
+  * Build xz tarballs instead of bzip2
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Accept --help &amp; --version as aliases to -help &amp; -version
+  * xbacklight.man: Add missing items in SYNOPSIS</comment>
+    <requestid>1222565</requestid>
+  </revision>
 </revisionlist>

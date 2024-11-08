@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kanagram
-Version:        24.08.2
+Version:        24.08.3
 Release:        0
 Summary:        Anagram Game
 License:        GPL-2.0-or-later

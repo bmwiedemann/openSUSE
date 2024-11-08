@@ -24,7 +24,7 @@
 %bcond_without lame
 %bcond_without mad
 Name:           k3b
-Version:        24.08.2
+Version:        24.08.3
 Release:        0
 Summary:        CD/DVD/Blu-ray Burning Application by KDE
 License:        GPL-2.0-or-later
@@ -40,7 +40,6 @@ Patch0:         Don-t-suggest-to-install-libburn.patch
 Patch1:         0001-Revert-Enable-the-k3b-helper-by-default.patch
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
-BuildRequires:  libmusicbrainz-devel
 BuildRequires:  musepack-devel
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KCddb6)

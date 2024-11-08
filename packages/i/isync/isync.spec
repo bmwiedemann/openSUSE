@@ -1,7 +1,7 @@
 #
 # spec file for package isync
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,14 @@
 
 
 Name:           isync
-Version:        1.4.4
+Version:        1.5.0
 Release:        0
 Summary:        Utility to synchronize IMAP mailboxes with local maildir folders
 License:        GPL-2.0-only
 URL:            https://isync.sourceforge.io/
 Source:         https://prdownloads.sourceforge.net/isync/%{name}-%{version}.tar.gz
 Source1:        https://prdownloads.sourceforge.net/isync/%{name}-%{version}.tar.gz.asc
-# gpg2 --recv-keys 106457B8735659A4D40F56456F5447F95D001D85
-# gpg2 --export --armour oswald.buddenhagen@gmx.de > isync.keyring
-Source2:        %{name}.keyring
-# PATCH-FIX-UPSTREAM  work-around-unexpected-EOF-error-messages-at-end-of-SSL-connections.patch boo#1208166 yfjiang@suse.com -- handle the unexpected EOF error message at the end of ssl connection
-Patch0:         work-around-unexpected-EOF-error-messages-at-end-of-SSL-connections.patch
+Source2:        https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x63bfd037cad71e8dff3aea3ac17714f08d1bdbba#/%{name}.keyring
 BuildRequires:  db-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libsasl2)

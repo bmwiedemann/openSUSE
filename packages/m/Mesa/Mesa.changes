@@ -1,9 +1,157 @@
 -------------------------------------------------------------------
+Wed Nov  6 17:34:15 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- 0001-dril-Fixup-order-of-pixel-formats-in-drilConfigs.patch
+  * fixes colors for 'swrast' driver (boo#1230637, gitlab issue#11840)
+
+-------------------------------------------------------------------
+Thu Oct 31 19:35:20 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to release 24.2.6
+  --> https://docs.mesa3d.org/relnotes/24.2.6
+
+-------------------------------------------------------------------
+Thu Oct 31 19:15:10 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- added -32bit package for Mesa-libva since it's needed by Steam;
+  reported on packman ML:
+  https://lists.links2linux.de/pipermail/packman/2024-October/017985.html 
+
+-------------------------------------------------------------------
+Fri Oct 18 11:00:17 UTC 2024 - Andreas Färber <afaerber@suse.de>
+
+- Enable intel Vulkan backends on riscv64 (boo#1231756)
+- Enable iris Gallium backend on riscv64, Power and on Arm, too
+
+-------------------------------------------------------------------
+Thu Oct 17 10:16:01 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to release 24.2.5
+  --> https://docs.mesa3d.org/relnotes/24.2.5
+- drop u_fix-llvm19-build.patch
+  included in upstream
+
+-------------------------------------------------------------------
+Thu Oct  3 19:00:29 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to release 24.2.4
+  --> https://docs.mesa3d.org/relnotes/24.2.4
+
+-------------------------------------------------------------------
+Tue Oct  1 11:08:36 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- u_mesa-CVE-2023-45913.patch
+  * NULL pointer dereference via dri2GetGlxDrawableFromXDrawableId()
+    (CVE-2023-45913, bsc#1222040)
+- u_mesa-CVE-2023-45919.patch
+  * buffer over-read in glXQueryServerString() 
+    (CVE-2023-45919, bsc#1222041)
+- u_mesa-CVE-2023-45922.patch
+  * segmentation violation in __glXGetDrawableAttribute()
+    (CVE-2023-45922, bsc#1222042) 
+
+-------------------------------------------------------------------
+Mon Sep 23 16:56:40 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- libvdpau_gallium was linked directly into libgallium-*.so.*.
+  Drop the subpackage and provides/obsolete it via Mesa-dri which
+  ships libgallium-*.so.*.
+
+-------------------------------------------------------------------
+Mon Sep 23 16:37:33 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- drop u_fix_rust_bindgen.patch 
+  included in update
+
+-------------------------------------------------------------------
+Mon Sep 23 16:32:05 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to release 24.2.3
+  --> https://docs.mesa3d.org/relnotes/24.2.3
+
+-------------------------------------------------------------------
+Mon Sep 23 10:58:19 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- disable build of rusticl on sle15; meson is just too old ... 
+
+-------------------------------------------------------------------
+Mon Sep 23 10:51:31 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- buildrequires: rusticl needs mesa >= 1.4.0
+
+-------------------------------------------------------------------
+Mon Sep 23 10:40:35 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- tlsdesc_test.patch: disable LTO in tlsdesc_test to suppress TLS
+  relaxation (patch by Andreas Schwab <schwab@suse.de>); see also
+  https://gitlab.freedesktop.org/mesa/mesa/-/issues/11929
+
+-------------------------------------------------------------------
+Mon Sep 23 10:36:35 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- buildrequire llvm19-devel/clang19-devel on sle15-sp7
+
+-------------------------------------------------------------------
+Sun Sep 22 12:02:17 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add u_fix-llvm19-build.patch to fix build with LLVM 19 on ARM.
+- Update minimum version requirements based on meson.build.
+- Fix build on s390x: apparently we don't have libvdpau_gallium.so.
+
+-------------------------------------------------------------------
+Fri Sep 13 17:39:59 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- drop U_egl-x11-sw-fix-partial-image-uploads.patch:
+  the code in the function saw further fixes later on in the 24.2
+  branch.
+
+-------------------------------------------------------------------
 Fri Sep 13 15:42:12 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_egl-x11-sw-fix-partial-image-uploads.patch
   * culprit for the regression in 24.1.4; reverse apply this for
     now (boo#1228164)
+
+-------------------------------------------------------------------
+Tue Sep 10 14:35:00 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- integrated changes by Andreas Schwab <schwab@suse.de>
+  * enable glamor also for driver build
+  * update rust crates
+    + syn 2.0.39
+    + proc_macro2 1.0.86
+  * enable valgrind also on riscv64
+  * added libvdpau_gallium package for generic VDPAU state tracker
+  * switch from "swrast" to "softpipe,llvmpipe" drivers
+  * use "-Dllvm-orcjit=true" for riscv64 build
+  * added libgallium to Mesa-dri package
+
+-------------------------------------------------------------------
+Tue Sep 10 13:38:59 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- re-disable llvm for non-driver build by switching from "swrast"
+  to "softpipe" for gallium drivers in that case
+- make previous changelog a bit nicer
+
+-------------------------------------------------------------------
+Sun Sep  8 17:39:10 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to release 24.2.2
+  --> https://docs.mesa3d.org/relnotes/24.2.2
+  --> https://docs.mesa3d.org/relnotes/24.2.1
+  --> https://docs.mesa3d.org/relnotes/24.2.0
+
+- refreshed the following patches with quilt:
+  * U_fix-mpeg1_2-decode-mesa-20.2.patch
+  * n_add-Mesa-headers-again.patch
+  * n_stop-iris-flicker.patch
+  * u_dep_xcb.patch
+  * u_fix_rust_bindgen.patch
+- dropped U_radeonsi-vcn-Add-decode-DPB-buffers-as-CS-dependency.patch
+- New BuildRequires:
+  * python3-PyYAML
+- enable llvm also for non-driver build to fix:
+  "llvmpipe requires LLVM and is enabled, but LLVM is disabled".
 
 -------------------------------------------------------------------
 Thu Sep  5 19:20:59 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>

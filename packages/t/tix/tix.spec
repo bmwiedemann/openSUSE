@@ -33,7 +33,8 @@ Patch0:         %name.patch
 Patch1:         %name-c89.patch
 Patch2:         %name-implicit-int.patch
 Patch3:         %name-includes.patch
-%requires_ge    tk tcl
+%requires_ge    tcl
+%requires_ge    tk
 
 %description
 The Tix library has, by far, the greatest collection of widgets for

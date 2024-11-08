@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Mon Nov  4 19:55:23 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.0.0
+  ## Enhancements made
+  * Add the awareness in the shared document interface #282
+    (@brichet)
+  * Doc awareness #277 (@brichet)
+  * Improve notebook output stream initialization #275
+    (@davidbrochart)
+  * Add YDocument source getter/setter #273 (@davidbrochart)
+  * Allow empty notebook #266 (@davidbrochart)
+  * Add streamOutputChange attribute to cell change object #264
+    (@davidbrochart)
+  * Add hash property with setter and getter #262 (@krassowski)
+  * Expose execution_state in the JS package #259 (@krassowski)
+  * Add undo_manager to Y documents #248 (@davidbrochart)
+  * Add optional origin to transaction, filter out 'modeldb' origin
+    #246 (@davidbrochart)
+  * Add appendStreamOutput and removeStreamOutput methods #241
+    (@davidbrochart)
+  * Update python>=3.8, pycrdt>=0.8.11, pre-commit, README #217
+    (@davidbrochart)
+  * Store YBlob as bytes, not base64-encoded string #209
+    (@davidbrochart)
+  * Change notebook code cell stream output schema #201
+    (@davidbrochart)
+  * Add cell execution_state #197 (@davidbrochart)
+  ## Bugs fixed
+  * Fix attachments change attribute assignment #260 (@krassowski)
+  * Fix createOutputs, rename 'modeldb' origin to 'silent-change'
+    #254 (@davidbrochart)
+  ## Maintenance and upkeep improvements
+  * Revert #266 #280 (@davidbrochart)
+  * Improve notebook output stream initialization #275
+    (@davidbrochart)
+  * Fix dict type for python 3.8 #253 (@davidbrochart)
+  * Bump toshimaru/auto-author-assign from 2.1.0 to 2.1.1 #247
+    (@dependabot)
+  * Revert publish 3.0.0a0 (9c87cfd) #245 (@davidbrochart)
+  * Update releaser workflows #244 (@jtpio)
+  * Bump notebook version 1.0.0 -> 2.0.0 #236 (@davidbrochart)
+  * Fix subscription type, update pycrdt>=0.8.16 #222
+    (@davidbrochart)
+  * Update python>=3.8, pycrdt>=0.8.11, pre-commit, README #217
+    (@davidbrochart)
+  * Bump pre-commit/action from 3.0.0 to 3.0.1 #215 (@dependabot)
+  * Remove mention to y_py in docs #214 (@martinRenou)
+  * Bump toshimaru/auto-author-assign from 2.0.1 to 2.1.0 #212
+    (@dependabot)
+
+-------------------------------------------------------------------
 Fri Aug 30 11:06:24 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.1.1

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Nov  5 10:43:10 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.3/
+- Changes since 24.08.2:
+  * Fix crash caused by incorrect codec passed on opening subtitle (kde#495410)
+  * Fix shadowed variable causing incorrect clip removal on project opening
+  * Fix qml crash building timeline with Qt 6.8
+  * Fix generate proxy when frame size is above a value not using the current project setting
+  * Fix shadow variable causing clip removal on project opening
+  * Fix monitor seek to prev/next keyframe not working in rotoscoping
+  * Fix missing build-in LUT files not correctly fixed on project open
+  * Fix clip jobs like stabilize creating invalid folders
+  * Fix freeze loading project with invalid folder id
+  * Don't invalidate timeline preview when replacing an audio clip in bin
+  * Ensure monitor is cleared and ruler hidden when no clip or a folder is selected in bin
+
+-------------------------------------------------------------------
 Tue Oct  8 12:01:22 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.2

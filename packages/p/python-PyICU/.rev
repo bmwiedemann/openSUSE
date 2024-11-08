@@ -195,4 +195,12 @@
   - added wrappers for UProperty.IDENTIFIER_TYPE, UProperty.IDENTIFIER_STATUS</comment>
     <requestid>1180849</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>65d2ab69f1f0e141a0515afb0d4581be</srcmd5>
+    <version>2.14</version>
+    <time>1731063350</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1222456</requestid>
+  </revision>
 </revisionlist>

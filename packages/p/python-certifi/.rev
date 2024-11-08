@@ -363,4 +363,12 @@
   * SecureSign Root CA15 O=Cybertrust Japan Co., Ltd.</comment>
     <requestid>1217075</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>7312c9d8f5c2ccb5f4a79caf9488b6c9</srcmd5>
+    <version>2024.8.30</version>
+    <time>1731063365</time>
+    <user>anag+factory</user>
+    <comment>- Make the test suite working just with the standard library.</comment>
+    <requestid>1222059</requestid>
+  </revision>
 </revisionlist>

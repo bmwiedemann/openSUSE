@@ -23,7 +23,7 @@
 %define         psuffix %nil
 %endif
 Name:           streamlink%{psuffix}
-Version:        6.11.0
+Version:        7.0.0
 Release:        0
 Summary:        Program to pipe streams from services into a video player
 License:        Apache-2.0 AND BSD-2-Clause
@@ -35,7 +35,7 @@ BuildRequires:  fdupes
 BuildRequires:  python3-PySocks >= 1.5.6
 BuildRequires:  python3-Sphinx >= 4
 BuildRequires:  python3-certifi
-BuildRequires:  python3-devel >= 3.8
+BuildRequires:  python3-devel >= 3.9
 BuildRequires:  python3-isodate
 BuildRequires:  python3-lxml >= 4.6.4
 BuildRequires:  python3-mypy
@@ -44,7 +44,7 @@ BuildRequires:  python3-pycountry
 BuildRequires:  python3-pycryptodome >= 3.4.3
 BuildRequires:  python3-requests >= 2.26
 BuildRequires:  python3-setuptools
-BuildRequires:  python3-trio >= 0.22.0
+BuildRequires:  python3-trio >= 0.25.0
 BuildRequires:  python3-trio-typing
 BuildRequires:  python3-trio-websocket >= 0.9.0
 BuildRequires:  python3-typing_extensions >= 4.0.0
@@ -74,8 +74,10 @@ Requires:       python3-typing-extensions >= 4.0.0
 Requires:       python3-urllib3 >= 1.26.0
 Requires:       python3-websocket-client >= 1.2.1
 Conflicts:      python3-PySocks = 1.5.7
-
+# the behaviour of libsolv changed, so we now have to suggest the one we actually want
+# if no player is preinstalled or in the same install command
 Recommends:     (vlc or mpv)
+Suggests:       vlc
 Suggests:       ffmpeg
 BuildArch:      noarch
 

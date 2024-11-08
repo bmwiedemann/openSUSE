@@ -1,7 +1,7 @@
 #
 # spec file for package pam_ssh_agent_auth
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,12 @@ License:        OpenSSL
 Group:          Development/Tools/Other
 URL:            https://github.com/FlorianFranzen/pam_ssh_agent_auth
 Source:         %{name}-%{version}.tar.gz
+### 20241107: having issues compiling with gcc14, but this patch helps
+Patch0:         gcc14-configure.patch
+Patch1:         dot-c.patch
+Patch2:         bsd-misc.patch
+#BuildRequires:  gcc13
+#####
 BuildRequires:  git-core
 BuildRequires:  openssl-devel
 BuildRequires:  pam-devel
@@ -42,8 +48,16 @@ authentication via your keyring in a forwarded ssh-agent.
 
 %prep
 %setup -q -n %{name}-%{version}
+### 20241107: for gcc14
+%patch -p1 -P 0
+%patch -P 1
+%patch -P 2
+#####
 
 %build
+### 20241107: won't be required for gcc14
+#export CC=gcc-13
+#####
 # 'git submodule init; git submodule update'
 #   required before being tar'd up.
 %configure \

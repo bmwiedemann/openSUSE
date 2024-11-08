@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Oct  6 14:18:19 UTC 2024 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.8.27:
+  * The option -F was fixed: it now overrides the configuration
+    file setting again (this bug was introduced in 1.8.24), and
+    non-ASCII characters are now properly encoded in the From
+    header.
+  * The msmtpq script was improved by Github user Konfekt.
+  * The vim script for configuration file editing was improved by
+    Github user Konfekt.
+  * A testing infrastructure was added (make check).
+  * Translations were updated and a new Spanish translation was
+    added
+- update vim syntax path
+
+-------------------------------------------------------------------
 Thu Jun 13 16:35:20 UTC 2024 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 1.8.26:

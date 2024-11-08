@@ -1,0 +1,30 @@
+From d43dcc63d26013264bb58241e53bde9318349443 Mon Sep 17 00:00:00 2001
+From: Mike Hommey <mh@glandium.org>
+Date: Fri, 12 Jul 2024 08:11:35 +0900
+Subject: [PATCH] Adjust Makefile for LLVM trunk (19) as of 2024-07-10 (#512)
+
+https://github.com/llvm/llvm-project/commit/0e7590a25cd2e49c5849cc7d2facd5810f8900ce
+---
+ Makefile | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/Makefile b/Makefile
+index 0d2a3144..5e6e7734 100644
+--- a/Makefile
++++ b/Makefile
+@@ -872,6 +872,7 @@ check-symbols: startup_files libc
+ 	@# TODO: Filter out __MEMORY_SCOPE_* that are new to clang 18.
+ 	@# TODO: Filter out __GCC_(CON|DE)STRUCTIVE_SIZE that are new to clang 19.
+ 	@# TODO: Filter out __STDC_EMBED_* that are new to clang 19.
++	@# TODO: Filter out __*_NORM_MAX__ that are new to clang 19.
+ 	@# TODO: clang defined __FLT_EVAL_METHOD__ until clang 15, so we force-undefine it
+ 	@# for older versions.
+ 	@# TODO: Undefine __wasm_mutable_globals__ and __wasm_sign_ext__, that are new to
+@@ -912,6 +913,7 @@ check-symbols: startup_files libc
+ 	    | grep -v '^#define __MEMORY_SCOPE_' \
+ 	    | grep -v '^#define __GCC_\(CON\|DE\)STRUCTIVE_SIZE' \
+ 	    | grep -v '^#define __STDC_EMBED_' \
++	    | grep -v '^#define __\(DBL\|FLT\|LDBL\)_NORM_MAX__' \
+ 	    | grep -v '^#define NDEBUG' \
+ 	    | grep -v '^#define __OPTIMIZE__' \
+ 	    | grep -v '^#define assert' \

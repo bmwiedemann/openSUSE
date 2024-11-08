@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Oct 25 20:39:28 UTC 2024 - adam@mizerski.pl
+
+- Update to version 0.14.0:
+  * Packaging
+    + Minimum Rust version has been bumped to 1.74.0
+  * Added
+    + Support relative path imports from config files
+    + alacritty migrate support for TOML configuration changes
+    + Headless mode using alacritty --daemon
+  * Changed
+    + Pressing Alt with unicode input will now add ESC like for ASCII input
+    + Decorations use opaque style and system window background on macOS
+    + No longer source ~/.zshenv on macOS
+    + Moved config options import, working_directory, live_config_reload, and ipc_socket
+    + to the new general section
+    + Moved config option shell to terminal.shell
+    + ctrl+shift+u binding to open links to ctrl+shift+o to avoid collisions with IMEs
+    + Use Beam cursor for single char cursor inside the IME preview
+  * Fixed
+    + Crash when trying to create a new tab without decorations enabled
+    + New window being treated as focused when it's not on Wayland
+    + IME preview blending into text below it
+    + Dynamic title disabled for new windows when initial one has title as CLI option
+    + While terminal in mouse mode, mouse bindings that used the shift modifier and
+    + had multiple actions only performed the first action
+    + Leaking FDs when closing windows on Unix systems
+    + Config emitting errors for nonexistent import paths
+    + Kitty keyboard protocol reporting shifted key codes
+    + Broken search with words broken across line boundary on the first character
+    + Config import changes not being live reloaded
+    + Cursor color requests with default cursor colors
+    + Fullwidth semantic escape characters
+    + Windows app icon now displays properly in old alt+tab on Windows
+    + Alacritty not being properly activated with startup notify
+    + Invalid URL highlights after terminal scrolling
+    + Hollow block cursor not spanning multiple chars being edited inside the IME preview
+    + Vi inline search only working for direct key input without modifiers
+
+-------------------------------------------------------------------
 Sun Apr 21 15:22:01 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 0.13.2:

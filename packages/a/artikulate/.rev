@@ -1035,4 +1035,12 @@ Fri May  9 17:13:53 UTC 2014 - tittiatcoke@gmail.com
     <comment>KDE Release gear 24.08.2</comment>
     <requestid>1206778</requestid>
   </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>190f01901d3c98a156289a54d8d88004</srcmd5>
+    <version>24.08.3</version>
+    <time>1731063397</time>
+    <user>anag+factory</user>
+    <comment>KDE Release gear 24.08.3 (forwarded request 1221581 from krop)</comment>
+    <requestid>1222209</requestid>
+  </revision>
 </revisionlist>

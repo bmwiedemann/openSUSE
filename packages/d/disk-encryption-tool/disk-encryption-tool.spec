@@ -28,7 +28,7 @@ BuildRequires:  git-core
 %endif
 
 Name:           disk-encryption-tool
-Version:        1+git20241008.826cb75%{git_version}
+Version:        1+git20241107.fc90da6%{git_version}
 Release:        0
 Summary:        Tool to reencrypt kiwi raw images
 License:        MIT
@@ -59,12 +59,11 @@ created as well as the grub2 config adjusted.
 
 %install
 mkdir -p %buildroot/usr/lib/dracut/modules.d/95disk-encryption-tool
-for i in disk-encryption-tool{,-dracut,-dracut.service} module-setup.sh generate-recovery-key; do
+for i in disk-encryption-tool{,-dracut,-dracut.service} module-setup.sh; do
   cp "$i" %buildroot/usr/lib/dracut/modules.d/95disk-encryption-tool/"$i"
 done
 mkdir -p %buildroot/usr/bin
 ln -s ../lib/dracut/modules.d/95disk-encryption-tool/disk-encryption-tool %buildroot/usr/bin
-ln -s ../lib/dracut/modules.d/95disk-encryption-tool/generate-recovery-key %buildroot/usr/bin
 install -D -m 644 jeos-firstboot-diskencrypt-override.conf \
 	%{buildroot}/usr/lib/systemd/system/jeos-firstboot.service.d/jeos-firstboot-diskencrypt-override.conf
 install -D -m 644 jeos-firstboot-enroll %buildroot/usr/share/jeos-firstboot/modules/enroll
@@ -87,7 +86,6 @@ install -D -m 644 disk-encryption-tool-enroll.service %buildroot/%{_unitdir}/dis
 %license LICENSE
 /usr/bin/disk-encryption-tool
 /usr/bin/disk-encryption-tool-enroll
-/usr/bin/generate-recovery-key
 %dir /usr/lib/dracut
 %dir /usr/lib/dracut/modules.d
 /usr/lib/dracut/modules.d/95disk-encryption-tool

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-python-multipart
-Version:        0.0.9
+Version:        0.0.17
 Release:        0
 License:        Apache-2.0
 Summary:        Python streaming multipart parser
@@ -54,9 +54,10 @@ A streaming multipart parser for Python.
 %pytest
 
 %files %{python_files}
-%doc README.rst
+%doc README.md
 %license LICENSE.txt
 %{python_sitelib}/multipart
+%{python_sitelib}/python_multipart
 %{python_sitelib}/python_multipart-%{version}.dist-info
 
 %changelog

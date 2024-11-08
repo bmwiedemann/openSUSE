@@ -16,7 +16,7 @@
 #
 
 
-%define _libclc_llvm_ver 18.1.0
+%define _libclc_llvm_ver 19.1.0
 %define _version %_libclc_llvm_ver%{?_rc:rc%_rc}
 %define _tagver %_libclc_llvm_ver%{?_rc:-rc%_rc}
 
@@ -31,6 +31,7 @@ Source0:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%
 Source1:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{_tagver}/%{name}-%{_version}.src.tar.xz.sig
 Source100:      %{name}-rpmlintrc
 Source101:      https://releases.llvm.org/release-keys.asc#/%{name}.keyring
+Patch0:         fix-cmake-install.patch
 BuildRequires:  cmake
 %if 0%{?suse_version} >= 1550
 BuildRequires:  clang-devel
@@ -56,6 +57,7 @@ Library requirements of the OpenCL C programming language.
 
 %prep
 %setup -q -n libclc-%{_version}.src
+%autopatch
 
 %build
 # The libraries are bitcode files, so LTO is neither supported nor does it help.

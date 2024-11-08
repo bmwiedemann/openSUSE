@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov  7 09:20:47 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
+
+- disable PendingDeprecationWarning
+
+-------------------------------------------------------------------
 Wed Oct 16 04:18:23 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.41.0:

@@ -1,7 +1,7 @@
-Index: invocations-3.0.2/tests/packaging/release.py
+Index: invocations-3.3.0/tests/packaging/release.py
 ===================================================================
---- invocations-3.0.2.orig/tests/packaging/release.py
-+++ invocations-3.0.2/tests/packaging/release.py
+--- invocations-3.3.0.orig/tests/packaging/release.py
++++ invocations-3.3.0/tests/packaging/release.py
 @@ -3,7 +3,10 @@ from os import path
  import re
  import sys
@@ -14,12 +14,12 @@ Index: invocations-3.0.2/tests/packaging/release.py
  from invoke import MockContext, Result, Config, Exit
  from docutils.utils import Reporter
  from unittest.mock import Mock, patch, call
-Index: invocations-3.0.2/invocations/packaging/release.py
+Index: invocations-3.3.0/invocations/packaging/release.py
 ===================================================================
---- invocations-3.0.2.orig/invocations/packaging/release.py
-+++ invocations-3.0.2/invocations/packaging/release.py
-@@ -20,7 +20,10 @@ from glob import glob
- from io import StringIO
+--- invocations-3.3.0.orig/invocations/packaging/release.py
++++ invocations-3.3.0/invocations/packaging/release.py
+@@ -21,7 +21,10 @@ from io import StringIO
+ from pathlib import Path
  from shutil import rmtree
  
 -from invoke.vendor.lexicon import Lexicon

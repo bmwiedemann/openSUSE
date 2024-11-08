@@ -656,4 +656,29 @@
   % expat.keyring</comment>
     <requestid>1203777</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>d96d7bf97f99136c4d0e8240c46bed19</srcmd5>
+    <version>2.6.4</version>
+    <time>1731063223</time>
+    <user>anag+factory</user>
+    <comment>- version update to 2.6.4 
+  * Security fixes: [bsc#1232601]
+        #915  CVE-2024-50602 -- Fix crash within function XML_ResumeParser
+                from a NULL pointer dereference by disallowing function
+                XML_StopParser to (stop or) suspend an unstarted parser.
+                A new error code XML_ERROR_NOT_STARTED was introduced to
+                properly communicate this situation.  // CWE-476 CWE-754
+  * Other changes:
+        #903  CMake: Add alias target &quot;expat::expat&quot;
+        #905  docs: Document use via CMake &gt;=3.18 with FetchContent
+                and SOURCE_SUBDIR and its consequences
+        #902  tests: Reduce use of global parser instance
+        #904  tests: Resolve duplicate handler
+   #317 #918  tests: Improve tests on doctype closing (ex CVE-2019-15903)
+        #914  Fix signedness of format strings
+   #919 #920  Version info bumped from 10:3:9 (libexpat*.so.1.9.3)
+                to 11:0:10 (libexpat*.so.1.10.0); see https://verbump.de/
+                for what these numbers do (forwarded request 1222166 from pgajdos)</comment>
+    <requestid>1222170</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  5 11:47:14 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Split %requires_ge tcl tk into two lines: simple workaround
+  against the macro missing to add a newline in some cases.
+
+-------------------------------------------------------------------
 Mon Jul  1 16:51:07 UTC 2024 - Reinhard Max <max@suse.com>
 
 - boo#1225944: Add patches to build with gcc14:

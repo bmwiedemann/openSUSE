@@ -2450,4 +2450,13 @@
   /usr/share/X11/xorg.conf.d (boo#1173054)</comment>
     <requestid>817938</requestid>
   </revision>
+  <revision rev="343" vrev="20">
+    <srcmd5>3293fa0334d01df649fc34bb0bfa4152</srcmd5>
+    <version>7.6_1</version>
+    <time>1731063360</time>
+    <user>anag+factory</user>
+    <comment>- remove requires to xf86-video-fbdev, which has been dropped for TW
+- small cleanup (remove stuff for sle12)</comment>
+    <requestid>1221718</requestid>
+  </revision>
 </revisionlist>

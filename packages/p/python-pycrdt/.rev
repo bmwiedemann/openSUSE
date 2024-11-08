@@ -52,4 +52,31 @@
     <comment>- Bump upper limit of trio gh#jupyter-server/pycrdt#160</comment>
     <requestid>1199728</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>459d5ff820e40431a205a56fe34bc89b</srcmd5>
+    <version>0.10.6</version>
+    <time>1731063589</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.10.6
+  * Bump yrs v0.21.3 and pyo3 v0.22.5
+- Releases from 0.9.15 to 0.10.5
+  * Bump upper limit of trio by @bnavigator in #160
+  * Add documentation about undo manager by @davidbrochart in #164
+  * Add API reference by @davidbrochart in #165
+  * Update GitHub actions by @davidbrochart in #167
+  * Fix GitHub actions upload/download artifacts by @davidbrochart
+    in #168
+  * Fix GitHub action upload artifact by @davidbrochart in #169
+  * Add awareness by @davidbrochart in #171
+  * Add awareness features to handle server state by @brichet in
+    #170
+  * Fix set_local_state() and set_local_state_field() by
+    @davidbrochart in #176
+  * Bump Yrs v0.21.2 by @davidbrochart in #177
+  * Add awareness by @davidbrochart in #171
+  * Add CHANGELOG.md and automate release on tag.
+  * Add support for XML, Text attributes and embeds (#184) (PR by
+    @ColonelThirtyTwo). (forwarded request 1222539 from bnavigator)</comment>
+    <requestid>1222540</requestid>
+  </revision>
 </revisionlist>

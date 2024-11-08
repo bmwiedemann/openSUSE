@@ -18,7 +18,7 @@
 
 %bcond_with     tests
 Name:           httpcomponents-client
-Version:        4.5.12
+Version:        4.5.14
 Release:        0
 Summary:        HTTP agent implementation based on httpcomponents HttpCore
 License:        Apache-2.0
@@ -70,7 +70,7 @@ Group:          Documentation/HTML
 %{summary}.
 
 %prep
-%setup -q -a1
+%setup -q -c -a1
 %patch -P 0 -p1
 %patch -P 1 -p1
 

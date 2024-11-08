@@ -28,6 +28,8 @@
 %define gdk_pixbuf_binary_version 2.10.0
 %bcond_with x265
 %bcond_with kvazaar
+%bcond_with openh264
+%bcond_with openjph
 %bcond_with svtenc
 %if 0%{?suse_version} > 1500
 %ifarch aarch64 riscv64 x86_64
@@ -36,7 +38,7 @@
 %endif
 
 Name:           libheif
-Version:        1.19.1
+Version:        1.19.2
 Release:        0
 Summary:        HEIF/AVIF file format decoder and encoder
 License:        GPL-2.0-or-later
@@ -44,8 +46,6 @@ Group:          Productivity/Graphics/Other
 URL:            https://github.com/strukturag/libheif
 Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
-# PATCH-FIX=OPENSUSE - HEVC encoding is unavailable by default
-Patch0:         only-run-test-when-HEVC-encoder-available.patch
 BuildRequires:  chrpath
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -61,6 +61,12 @@ BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libwebp)
 %if %{with kvazaar}
 BuildRequires:  pkgconfig(kvazaar)
+%endif
+%if %{with openh264}
+BuildRequires:  pkgconfig(openh264)
+%endif
+%if %{with openjph}
+BuildRequires:  pkgconfig(openjph)
 %endif
 BuildRequires:  pkgconfig(rav1e)
 %if %{with svtenc}
@@ -156,6 +162,30 @@ Requires:       libheif1 = %{version}-%{release}
 %description openjpeg
 This plugin provides the OpenJPEG J2K encoder and decoder for JPEG to libheif. Packaged separately
 so that the libraries it requires are not pulled in by default by libheif.
+
+%if %{with openh264}
+%package openh264
+Summary:        Plugin OpenH264 decoder in HEIF
+Group:          System/Libraries
+Supplements:    libheif1
+Requires:       libheif1 = %{version}-%{release}
+
+%description openh264
+This plugin provides the OpenH264 decoder to libheif. Packaged separately
+so that the libraries it requires are not pulled in by default by libheif.
+%endif
+
+%if %{with openjph}
+%package openjph
+Summary:        Plugin OpenJPH HT-J2K encoder in HEIF
+Group:          System/Libraries
+Supplements:    libheif1
+Requires:       libheif1 = %{version}-%{release}
+
+%description openjph
+This plugin provides the OpenJPH HT-J2K encoder to libheif. Packaged separately
+so that the libraries it requires are not pulled in by default by libheif.
+%endif
 
 %package rav1e
 Summary:        Plugin rav1e encoder for AVIF
@@ -278,11 +308,22 @@ sed -i '/add_libheif_test(encode)/d' tests/CMakeLists.txt
 %else
 	-DWITH_KVAZAAR=OFF \
 %endif
-	-DWITH_OpenH264_DECODER=OFF \
 	-DWITH_OpenJPEG_DECODER=ON \
 	-DWITH_OpenJPEG_DECODER_PLUGIN=ON \
 	-DWITH_OpenJPEG_ENCODER=ON \
 	-DWITH_OpenJPEG_ENCODER_PLUGIN=ON \
+%if %{with openh264}
+	-DWITH_OpenH264_DECODER=ON \
+	-DWITH_OpenH264_DECODER_PLUGIN=ON \
+%else
+	-DWITH_OpenH264_DECODER=OFF \
+%endif
+%if %{with openjph}
+	-DWITH_OPENJPH_ENCODER=ON \
+	-DWITH_OPENJPH_ENCODER_PLUGIN=ON \
+%else
+	-DWITH_OPENJPH_ENCODER=OFF \
+%endif
 	-DWITH_FFMPEG_DECODER=ON \
 	-DWITH_FFMPEG_DECODER_PLUGIN=ON \
 	-DCMAKE_SKIP_RPATH=ON \
@@ -365,6 +406,16 @@ rm -f %{buildroot}%{_datadir}/thumbnailers/heif.thumbnailer
 %files openjpeg
 %{_libexecdir}/libheif/libheif-j2kdec.so
 %{_libexecdir}/libheif/libheif-j2kenc.so
+
+%if %{with openh264}
+%files openh264
+%{_libexecdir}/libheif/libheif-openh264dec.so
+%endif
+
+%if %{with openjph}
+%files openjph
+%{_libexecdir}/libheif/libheif-jphenc.so
+%endif
 
 %files rav1e
 %{_libexecdir}/libheif/libheif-rav1e.so

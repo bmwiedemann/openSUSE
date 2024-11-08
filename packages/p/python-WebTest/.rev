@@ -347,4 +347,21 @@
   * Add an optional parameter to TestApp, allowing the user to</comment>
     <requestid>1143455</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>a15d77351625f7b99c4bd88d8d5ae5a2</srcmd5>
+    <version>3.0.1</version>
+    <time>1731063352</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.0.1
+  * Multiple file input support.
+  * Drop support for Python 3.8 and bellow
+  * Allows the TestResponse to follow customised onclick buttons
+  * Response.pyquery object now use the html parser.
+  * You can use the Response.PyQuery method to customize pyquery init.
+  * Various docs / testing improvments
+  * Rename &quot;master&quot; git branch to &quot;main&quot;.
+- Refresh sphinx-7-fix.patch
+- drop py312.patch: upstream</comment>
+    <requestid>1222460</requestid>
+  </revision>
 </revisionlist>

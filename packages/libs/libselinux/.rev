@@ -685,4 +685,14 @@
     <comment></comment>
     <requestid>1208113</requestid>
   </revision>
+  <revision rev="81" vrev="3">
+    <srcmd5>c024c3d92628b7bebafeab5b16c22a29</srcmd5>
+    <version>3.7</version>
+    <time>1731063385</time>
+    <user>anag+factory</user>
+    <comment>- Drop check_runlevel from selinux-ready script and remove restorecond
+  from check_packages as we don't require it to be selinux-ready.
+</comment>
+    <requestid>1222034</requestid>
+  </revision>
 </revisionlist>

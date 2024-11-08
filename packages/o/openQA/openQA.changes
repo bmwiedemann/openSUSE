@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Nov 07 19:14:54 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1731000818.f1801750:
+  * Avoid repeating information in comments in doc generation code
+  * Fix generation of documentation as PDF document
+  * Move finished jobs filter subtest to correct file
+  * Reuse restartJob in order of restart jobs in Overview page
+  * Extend variable expansion to consider variables from worker config
+  * Avoid use of contraction in variable precedence documentation
+  * Improve documentation about variable expansion
+  * Bump ace-builds from 1.36.3 to 1.36.4
+  * Revert "Enable automatic updates of test code and needles by default"
+  * Add option to restart jobs upon comment submission
+
+-------------------------------------------------------------------
 Tue Nov 05 11:14:59 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1730743336.9ae638b2:

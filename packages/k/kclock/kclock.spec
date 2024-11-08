@@ -22,7 +22,7 @@
 
 %bcond_without  released
 Name:           kclock
-Version:        24.08.2
+Version:        24.08.3
 Release:        0
 Summary:        Clock application for Plasma
 License:        GPL-2.0-or-later

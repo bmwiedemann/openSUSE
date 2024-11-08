@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kaccounts-integration
-Version:        24.08.2
+Version:        24.08.3
 Release:        0
 Summary:        KDE Accounts Providers
 License:        GPL-2.0-or-later
@@ -93,6 +93,7 @@ This package provides development files.
 
 %files
 %{_kf6_applicationsdir}/kcm_kaccounts.desktop
+%{_kf6_debugdir}/kaccounts.categories
 %dir %{_kf6_plugindir}/kaccounts
 %dir %{_kf6_plugindir}/kaccounts/daemonplugins
 %{_kf6_plugindir}/kaccounts/daemonplugins/kaccounts_kio_webdav_plugin.so

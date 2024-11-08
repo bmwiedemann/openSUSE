@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Nov 07 16:58:20 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.61.0:
+  * build(deps): bump github.com/securego/gosec/v2 from 2.21.1 to 2.21.2 (#4997)
+  * build(deps): bump github.com/ckaznocha/intrange from 0.1.2 to 0.2.0 (#4996)
+  * build(deps): bump github.com/tetafro/godot from 1.4.16 to 1.4.17 (#4993)
+  * build(deps): bump github.com/ryancurrah/gomodguard from 1.3.3 to 1.3.5 (#4992)
+  * dev: fix nancy
+  * docs: add additionnal info about typecheck (#4985)
+  * gosec: disable G407 (#4983)
+  * build(deps): bump github.com/securego/gosec/v2 from 2.21.0 to 2.21.1 (#4982)
+  * build(deps): bump github.com/Crocmagnon/fatcontext from 0.4.0 to 0.5.2 (#4971)
+  * build(deps): bump github.com/Abirdcfly/dupword from 0.0.14 to 0.1.1 (#4954)
+  * feat: exclude Swagger Codegen files (#4967)
+  * feat: add junit-xml-extended format (#4918)
+  * build(deps): bump github.com/go-viper/mapstructure/v2 from 2.0.0 to 2.1.0 (#4910)
+  * build(deps): bump github.com/securego/gosec/v2 from 2.20.1-0.20240826145712-bcec04e78483 to 2.21.0 (#4981)
+  * build(deps): bump peter-evans/create-pull-request from 6 to 7 in the all group (#4978)
+  * build(deps): bump the all group across 4 directories with 8 updates (#4979)
+  * build(deps): bump golang.org/x/oauth2 from 0.22.0 to 0.23.0 in /scripts/gen_github_action_config in the all group (#4977)
+  * chore: improve dependabot configuration
+  * nolintlint: remove empty line in unused directive replacement (#4973)
+  * build(deps): bump github.com/daixiang0/gci from 0.13.4 to 0.13.5 (#4975)
+  * fix: improve runtime version parsing (#4961)
+  * build(deps): bump github.com/securego/gosec/v2 from ab3f6c1c83a0 to bcec04e78483 (#4960)
+  * build(deps): bump github.com/pelletier/go-toml/v2 from 2.2.2 to 2.2.3 (#4955)
+  * build(deps): bump micromatch from 4.0.5 to 4.0.8 in /docs (#4952)
+  * build(deps): bump micromatch from 4.0.5 to 4.0.8 in /.github/peril (#4951)
+  * build(deps): bump github.com/quasilyte/go-ruleguard to 0fe6f58b47b1 (#4949)
+  * docs: update documentation (#4945)
+  * docs: update GitHub Action assets (#4944)
+
+-------------------------------------------------------------------
 Sat Aug 24 18:32:40 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 1.60.3:

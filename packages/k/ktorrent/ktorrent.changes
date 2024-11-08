@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov  5 10:43:56 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.3/
+- Changes since 24.08.2:
+  * Accept HTTPS webseeds too (kde#492399)
+  * Fix tooltips having white on white text
+
+-------------------------------------------------------------------
 Tue Oct  8 12:02:10 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.2

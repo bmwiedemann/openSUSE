@@ -36,6 +36,7 @@ Source3:        README
 # Makefile to automate build process
 Source4:        Makefile
 Source5:        0001-Add-source-code-reference.patch
+Patch2:         0002-Use-bash-instead-of-env.patch
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  wire
@@ -59,7 +60,7 @@ dashboards and data with teams.
 
 %prep
 %setup -q -n grafana-%{version}
-%setup -q -T -D -a 1 -n grafana-%{version}
+%autosetup -T -D -a 1 -p1 -n grafana-%{version}
 
 %build
 %ifnarch ppc64

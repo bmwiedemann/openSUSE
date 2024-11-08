@@ -1,7 +1,7 @@
 #
 # spec file for package crow-translate
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,32 +19,31 @@
 
 %define  _name  io.crow_translate.CrowTranslate
 Name:           crow-translate
-Version:        2.10.0
+Version:        3.1.0
 Release:        0
 Summary:        A Qt GUI for Google, Yandex and Bing translators
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Web/Frontends
-URL:            https://crow-translate.github.io/
-Source0:        https://github.com/%{name}/%{name}/releases/download/%{version}/%{name}-%{version}-source.tar.gz
-Patch0:         third-party-library-static.patch
-Patch1:         cmakelists-txt.patch
-Patch2:         desktop-file.patch
+URL:            https://apps.kde.org/crowtranslate
+Source0:        https://download.kde.org/stable/crow-translate/%{version}/%{name}-v%{version}.tar.gz
+Source1:        https://download.kde.org/stable/crow-translate/%{version}/%{name}-v%{version}.tar.gz.sig
+# https://invent.kde.org/sysadmin/release-keyring/-/blob/master/keys/shatur@key1.asc?ref_type=heads
+Source2:        crow-translate.keyring
 BuildRequires:  cmake >= 3.16.0
 BuildRequires:  extra-cmake-modules
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Wayland)
 BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Multimedia)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5X11Extras)
+BuildRequires:  cmake(Qt5Concurrent)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5Multimedia)
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  pkgconfig(lept)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(tesseract) >= 4.0
@@ -59,30 +58,26 @@ text using Google, Yandex and Bing written with Qt5.
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n crow-translate-v%{version}
 
 %build
-%cmake
+%cmake_kf5 -d build
 %cmake_build
 
 %install
-%cmake_install
-%suse_update_desktop_file -r %{_name} Office Dictionary
+%kf5_makeinstall -C build
 
 %find_lang %{name} --with-qt
 
 %files
-%license COPYING
+%license LICENSES/*
 %doc README.md
-%{_bindir}/%{name}
-%{_datadir}/applications/%{_name}.desktop
-%{_datadir}/icons/hicolor/*/apps/%{name}.??g
-%{_datadir}/icons/hicolor/*/status/%{name}-tray-*.??g
-%{_datadir}/metainfo/%{_name}.metainfo.xml
+%{_kf5_applicationsdir}/org.kde.CrowTranslate.desktop
+%{_kf5_appstreamdir}/org.kde.CrowTranslate.metainfo.xml
+%{_kf5_bindir}/crow
+%{_kf5_iconsdir}/hicolor/*/apps/org.kde.CrowTranslate.*
+%{_kf5_iconsdir}/hicolor/*/status/org.kde.CrowTranslate-tray-*.*
 
 %files lang -f %{name}.lang
-%dir %{_datadir}/%{name}
-%dir %{_datadir}/%{name}/%{name}
-%dir %{_datadir}/%{name}/%{name}/translations
 
 %changelog

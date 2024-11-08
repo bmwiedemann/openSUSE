@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 30 14:13:12 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- don't replace %BASE_DIGEST% with empty string when not available
+
+-------------------------------------------------------------------
 Wed Sep 25 09:01:19 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Small cleanups:

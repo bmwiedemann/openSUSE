@@ -18,7 +18,7 @@
 
 %bcond_with tests
 Name:           httpcomponents-core
-Version:        4.4.13
+Version:        4.4.14
 Release:        0
 Summary:        Set of low level Java HTTP transport components for HTTP services
 License:        Apache-2.0
@@ -63,7 +63,7 @@ Group:          Development/Libraries/Java
 %{summary}.
 
 %prep
-%setup -q -a1
+%setup -c -q -a1
 
 %patch -P 0 -p1
 

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Nov 07 20:11:14 UTC 2024 - aplanas@suse.com
+
+- Update to version 1+git20241107.fc90da6:
+  * Clean enrollment key also in the jeos module
+
+-------------------------------------------------------------------
+Thu Nov 07 19:37:35 UTC 2024 - aplanas@suse.com
+
+- Update to version 1+git20241107.5a2eef7:
+  * Clean the enrollment key
+  * Set crypttab options
+  * Use sdbootutil to enroll recovery key
+  * use $tmpdir/mnt instead of /mnt as it's not there in the intird
+  * Fix variable name
+  * Reload disk partitions after resize
+  * Make only rootfs ro
+  * Remove SLE15 compatibility
+  * Remove GRUB2 configuration
+  * Remove image encryption support
+  * Remove prime support
+  * Encrypt multiple disks
+  * CI: Use OVMF image with included variable store
+  * Revert "CI: workaround for bug#1230912"
+
+-------------------------------------------------------------------
 Thu Oct 10 11:55:17 UTC 2024 - aplanas@suse.com
 
 - Update to version 1+git20241008.826cb75:

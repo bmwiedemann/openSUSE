@@ -1,0 +1,31 @@
+From 13ed98026d1e6f96fa4c0efce3ff849e3040fca3 Mon Sep 17 00:00:00 2001
+From: Mike Hommey <mh@glandium.org>
+Date: Tue, 30 Apr 2024 06:46:03 +0900
+Subject: [PATCH] Adjust Makefile for LLVM trunk (19) as of 2024-04-26 (#492)
+
+https://github.com/llvm/llvm-project/commit/72c373bfdc9860b3d75e72c219b2c81c90bc4364
+dded __GCC_(CON|DE)STRUCTIVE_SIZE macros.
+---
+ Makefile | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/Makefile b/Makefile
+index 2f9e9fde..f9fd3030 100644
+--- a/Makefile
++++ b/Makefile
+@@ -873,6 +873,7 @@ check-symbols: startup_files libc
+ 	@# TODO: Filter out __FPCLASS_* that are new to clang 17.
+ 	@# TODO: Filter out __FLT128_* that are new to clang 18.
+ 	@# TODO: Filter out __MEMORY_SCOPE_* that are new to clang 18.
++	@# TODO: Filter out __GCC_(CON|DE)STRUCTIVE_SIZE that are new to clang 19.
+ 	@# TODO: clang defined __FLT_EVAL_METHOD__ until clang 15, so we force-undefine it
+ 	@# for older versions.
+ 	@# TODO: Undefine __wasm_mutable_globals__ and __wasm_sign_ext__, that are new to
+@@ -907,6 +908,7 @@ check-symbols: startup_files libc
+ 	    | grep -v '^#define __FPCLASS_' \
+ 	    | grep -v '^#define __FLT128_' \
+ 	    | grep -v '^#define __MEMORY_SCOPE_' \
++	    | grep -v '^#define __GCC_\(CON\|DE\)STRUCTIVE_SIZE' \
+ 	    | grep -v '^#define NDEBUG' \
+ 	    | grep -v '^#define __OPTIMIZE__' \
+ 	    | grep -v '^#define assert' \

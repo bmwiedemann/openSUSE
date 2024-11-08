@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov  7 14:10:36 UTC 2024 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Use #!/usr/bin/bash shebang for package dependency generator to
+  work correctly.
+  * Add 0002-Use-bash-instead-of-env.patch
+
+-------------------------------------------------------------------
 Wed Oct 23 11:19:15 UTC 2024 - marius.kittler@suse.com
 
 - Update to version 11.3.0:

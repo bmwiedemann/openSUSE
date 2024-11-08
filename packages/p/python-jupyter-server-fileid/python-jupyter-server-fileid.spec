@@ -16,8 +16,8 @@
 #
 
 
-%define pyversion 0.9.1
-%define distversion 0.9.1
+%define pyversion 0.9.3
+%define distversion 0.9.3
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
@@ -89,13 +89,7 @@ sed -i 's/--color=yes//' pyproject.toml
 %check
 # flaky on obs
 donttest="test_get_path_oob_move_nested"
-export PYTHONDONTWRITEBYTECODE=1
-%{python_expand # don't test anything on python39: no jupyter-server-test anymore
-export PYTHONPATH=%{buildroot}%{$python_sitelib}
-if [ ${python_flavor} != "python39" ]; then
-  $python -m pytest  -k "not ($donttest)"
-fi
-}
+%pytest  -k "not ($donttest)"
 
 %pre
 %python_libalternatives_reset_alternative jupyter-fileid

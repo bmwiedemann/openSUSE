@@ -17,7 +17,7 @@
 
 
 Name:           python-jupyter-ydoc
-Version:        2.1.1
+Version:        3.0.0
 Release:        0
 Summary:        Document structures for collaborative editing using Ypy
 License:        BSD-3-Clause
@@ -29,20 +29,20 @@ Source1:        https://github.com/jupyter-server/jupyter_ydoc/archive/refs/tags
 Source2:        node_modules.tar.xz
 # Execute this on every package update. See comments in the script.
 Source3:        create_node_modules.sh
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatch_nodejs_version}
 BuildRequires:  %{python_module hatchling >= 1.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       (python-importlib-metadata >= 3.6 if python-base < 3.10)
-Requires:       (python-pycrdt >= 0.9 with python-pycrdt < 0.10)
+Requires:       (python-pycrdt >= 0.10.1 with python-pycrdt < 0.11)
 Provides:       python-jupyter_ydoc = %{version}-%{release}
 BuildArch:      noarch
 # SECTION test
 BuildRequires:  %{python_module importlib-metadata >= 3.6 if %python-base < 3.10}
-BuildRequires:  %{python_module pycrdt >= 0.9 with %python-pycrdt < 0.10}
-BuildRequires:  %{python_module pycrdt-websocket >= 0.14.1 with %python-pycrdt-websocket < 0.15}
+BuildRequires:  %{python_module pycrdt >= 0.10.1 with %python-pycrdt < 0.11}
+BuildRequires:  %{python_module pycrdt-websocket >= 0.15.0 with %python-pycrdt-websocket < 0.16}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module websockets >= 10.0}
@@ -71,7 +71,7 @@ Built-in documents include:
 
 %check
 # https://github.com/jupyter-server/jupyter_ydoc/issues/168
-%pytest -v && pkill -f yjs_client_0.js -e
+%pytest
 
 %files %{python_files}
 %{python_sitelib}/jupyter_ydoc

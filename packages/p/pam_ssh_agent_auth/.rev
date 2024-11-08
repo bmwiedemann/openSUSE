@@ -15,4 +15,28 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>947301</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>730ed59d36ef4d6b9522ff3876cc6430</srcmd5>
+    <version>0.10.4</version>
+    <time>1731063586</time>
+    <user>anag+factory</user>
+    <comment>Uncommenting 'Patch0: gcc14-configure.patch' for staging-bot.
+- Adding the following patches:
+  * bsd-misc.patch -&gt; address &quot;duplicate __progname&quot; issue
+  * dot-c.patch -&gt; this is basically '1000-gcc-14.patch' from Debian's patches
+    for v0.10.3 via udd.debian.org
+
+- Uncommenting out 'Patch0: gcc14-configure.patch' for factory-auto bot.
+
+- Adding (disabled) 'gcc14-configure.patch' so gcc14 build issues can be
+  partially addressed in the future; throws:
+    &quot;configure: error: *** compiler cannot create working executables, 
+      check config.log ***&quot;
+  otherwise.
+  * More info here:
+    - https://github.com/jbeverly/pam_ssh_agent_auth/issues/45
+    - https://github.com/jbeverly/pam_ssh_agent_auth/issues/47
+- Switching over to CC=gcc-13 until gcc14 builds can be fixed</comment>
+    <requestid>1222594</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov  5 10:42:51 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.3/
+- Changes since 24.08.2:
+  * Categorize logging
+  * Abort gracefully when file to remove doesn't exist (kde#495344)
+  * Avoid dangling reference in removeNetAttach
+
+-------------------------------------------------------------------
 Tue Oct  8 12:01:04 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.2

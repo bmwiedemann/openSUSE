@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov  5 10:44:22 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.3/
+- Changes since 24.08.2:
+  * work around bugged qmlcachegen (kde#494281)
+  * Fix negative animation duration without capture on click support (kde#495216)
+  * AnnotationViewport: fix stretching odd sized images
+  * Revert "Make screenshots with scales multiplied or divided by integers look sharper in AnnotationViewport"
+
+-------------------------------------------------------------------
 Tue Oct  8 12:02:37 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.2

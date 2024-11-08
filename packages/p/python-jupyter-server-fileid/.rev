@@ -56,4 +56,18 @@
 </comment>
     <requestid>1155953</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ce14236ec1181e0bc38a5a706b99c92e</srcmd5>
+    <version>0.9.3</version>
+    <time>1731063593</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.9.3
+  * Don't commit when garbage-collected in a different thread #81
+    (@davidbrochart)
+- Release 0.9.2
+  * Check for ID before creating a new record #78 (@Zsailer)
+  * Use a context manager for all write actions to prevent
+    indefinite database locks #77 (@Zsailer) (forwarded request 1222548 from bnavigator)</comment>
+    <requestid>1222549</requestid>
+  </revision>
 </revisionlist>

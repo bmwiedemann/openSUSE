@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Nov  6 14:13:57 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.0.17
+  * Handle PermissionError in fallback code for old import name #182
+- from version 0.0.16
+  * Add dunder attributes to `multipart` package #177
+- from version 0.0.15
+  * Replace `FutureWarning` to `PendingDeprecationWarning` #174
+  * Add missing files to SDist #171
+- from version 0.0.14
+  * Fix import scheme for `multipart` module #168
+- from version 0.0.13
+  * Rename import to `python_multipart` #166
+- from version 0.0.12
+  * Improve error message when boundary character does not match #124
+  * Add mypy strict typing #140
+  * Enforce 100% coverage #159
+- from version 0.0.11
+  * Improve performance, especially in data with many CR-LF #137
+  * Handle invalid CRLF in header name #141
+- from version 0.0.10
+  * Support `on_header_begin` #103
+  * Improve type hints on `FormParser` #104
+  * Fix `OnFileCallback` type #106
+  * Improve type hints #110
+  * Improve type hints on `File` #111
+  * Add type hint to helper functions #112
+  * Minor fix for Field.__repr__ #114
+  * Fix use of chunk_size parameter #136
+  * Allow digits and valid token chars in headers #134
+  * Fix headers being carried between parts #135
+- Add python_multipart Python directory to %files section
+- Rename README.rst to README.md in %files section
+
+-------------------------------------------------------------------
 Fri Mar  1 10:15:27 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.0.9:

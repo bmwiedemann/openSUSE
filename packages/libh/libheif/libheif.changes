@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov  6 17:54:42 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 1.19.2:
+  * fix DLL symbol export for non MSVC-compilers on Windows
+  * fix running the unit tests from the build directory when building
+    with plugins
+  * switch to catch2 testing framework. We can now check for prerequisites
+    at runtime and skip tests accordingly
+- Remove patch that is no longer needed
+  - only-run-test-when-HEVC-encoder-available.patch
+
+-------------------------------------------------------------------
 Sat Nov  2 18:19:58 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 1.19.1:

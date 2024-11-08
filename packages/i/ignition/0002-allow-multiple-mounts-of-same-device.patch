@@ -6,10 +6,10 @@ Upstream: Ticket opened [gh#coreos/ignition#890]
     e.g. to mount several subvolumes from a Btrfs device or bind mounting
     the device to multiple places, by also adding the path to the key.
 
-Index: ignition-2.16.2/config/v3_1/types/filesystem.go
+Index: ignition-2.20.0/config/v3_1/types/filesystem.go
 ===================================================================
---- ignition-2.16.2.orig/config/v3_1/types/filesystem.go
-+++ ignition-2.16.2/config/v3_1/types/filesystem.go
+--- ignition-2.20.0.orig/config/v3_1/types/filesystem.go
++++ ignition-2.20.0/config/v3_1/types/filesystem.go
 @@ -23,6 +23,9 @@ import (
  )
  
@@ -20,10 +20,10 @@ Index: ignition-2.16.2/config/v3_1/types/filesystem.go
  	return f.Device
  }
  
-Index: ignition-2.16.2/config/v3_2/types/filesystem.go
+Index: ignition-2.20.0/config/v3_2/types/filesystem.go
 ===================================================================
---- ignition-2.16.2.orig/config/v3_2/types/filesystem.go
-+++ ignition-2.16.2/config/v3_2/types/filesystem.go
+--- ignition-2.20.0.orig/config/v3_2/types/filesystem.go
++++ ignition-2.20.0/config/v3_2/types/filesystem.go
 @@ -23,6 +23,9 @@ import (
  )
  
@@ -34,10 +34,10 @@ Index: ignition-2.16.2/config/v3_2/types/filesystem.go
  	return f.Device
  }
  
-Index: ignition-2.16.2/config/v3_3/types/filesystem.go
+Index: ignition-2.20.0/config/v3_3/types/filesystem.go
 ===================================================================
---- ignition-2.16.2.orig/config/v3_3/types/filesystem.go
-+++ ignition-2.16.2/config/v3_3/types/filesystem.go
+--- ignition-2.20.0.orig/config/v3_3/types/filesystem.go
++++ ignition-2.20.0/config/v3_3/types/filesystem.go
 @@ -23,6 +23,9 @@ import (
  )
  
@@ -48,10 +48,10 @@ Index: ignition-2.16.2/config/v3_3/types/filesystem.go
  	return f.Device
  }
  
-Index: ignition-2.16.2/config/v3_4/types/filesystem.go
+Index: ignition-2.20.0/config/v3_4/types/filesystem.go
 ===================================================================
---- ignition-2.16.2.orig/config/v3_4/types/filesystem.go
-+++ ignition-2.16.2/config/v3_4/types/filesystem.go
+--- ignition-2.20.0.orig/config/v3_4/types/filesystem.go
++++ ignition-2.20.0/config/v3_4/types/filesystem.go
 @@ -23,6 +23,9 @@ import (
  )
  
@@ -62,10 +62,24 @@ Index: ignition-2.16.2/config/v3_4/types/filesystem.go
  	return f.Device
  }
  
-Index: ignition-2.16.2/config/v3_5_experimental/types/filesystem.go
+Index: ignition-2.20.0/config/v3_5/types/filesystem.go
 ===================================================================
---- ignition-2.16.2.orig/config/v3_5_experimental/types/filesystem.go
-+++ ignition-2.16.2/config/v3_5_experimental/types/filesystem.go
+--- ignition-2.20.0.orig/config/v3_5/types/filesystem.go
++++ ignition-2.20.0/config/v3_5/types/filesystem.go
+@@ -23,6 +23,9 @@ import (
+ )
+ 
+ func (f Filesystem) Key() string {
++ 	if (f.Path != nil) {
++ 		return f.Device + *f.Path
++ 	}
+ 	return f.Device
+ }
+ 
+Index: ignition-2.20.0/config/v3_6_experimental/types/filesystem.go
+===================================================================
+--- ignition-2.20.0.orig/config/v3_6_experimental/types/filesystem.go
++++ ignition-2.20.0/config/v3_6_experimental/types/filesystem.go
 @@ -23,6 +23,9 @@ import (
  )
  

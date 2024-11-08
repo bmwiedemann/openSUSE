@@ -794,4 +794,29 @@ This makes it possible to use Ignition also on bare metal (e.g. when dumping ima
     <comment></comment>
     <requestid>1199298</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>646f8c17b93ec01132c7f7d54bfcaac3</srcmd5>
+    <version>2.20.0</version>
+    <time>1731063356</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.20.0:
+  * Features
+    * Support partitioning disk with mounted partitions
+    * Support Proxmox VE
+    * Support gzipped Akamai user_data
+  * Changes
+    * The Dracut module now installs partx
+    * Mark the 3.5.0 config spec as stable
+    * No longer accept configs with version 3.5.0-experimental
+    * Create new 3.6.0-experimental config spec from 3.5.0
+  * Bug fixes
+    * Fix network race when phoning home on Equinix Metal
+    * Fix Akamai Ignition base64 decoding on padded payloads
+    * Fix Makefile GOARCH for loongarch64 (#1942)
+- Drop go build bugfix again, fixed upstream
+- Adapting 0002-allow-multiple-mounts-of-same-device.patch to new
+  3.6.0 spec
+</comment>
+    <requestid>1222585</requestid>
+  </revision>
 </revisionlist>

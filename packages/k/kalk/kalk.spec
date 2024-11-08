@@ -21,7 +21,7 @@
 
 %bcond_without  released
 Name:           kalk
-Version:        24.08.2
+Version:        24.08.3
 Release:        0
 Summary:        Convergent calculator
 License:        GPL-3.0-or-later

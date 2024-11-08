@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-readme_renderer
-Version:        43.0
+Version:        44.0
 Release:        0
 Summary:        A library for rendering "readme" descriptions
 License:        Apache-2.0

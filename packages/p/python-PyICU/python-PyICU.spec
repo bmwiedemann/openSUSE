@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %global modname PyICU
 Name:           python-%{modname}
-Version:        2.13.1
+Version:        2.14
 Release:        0
 Summary:        Python Extension Wrapping the ICU C++ API
 License:        MIT

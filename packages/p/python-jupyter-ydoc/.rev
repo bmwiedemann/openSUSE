@@ -103,4 +103,41 @@
     <comment></comment>
     <requestid>1199274</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>045b28874575cfab77fefc41a1c3eda2</srcmd5>
+    <version>3.0.0</version>
+    <time>1731063591</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.0.0
+  ## Enhancements made
+  * Add the awareness in the shared document interface #282
+    (@brichet)
+  * Doc awareness #277 (@brichet)
+  * Improve notebook output stream initialization #275
+    (@davidbrochart)
+  * Add YDocument source getter/setter #273 (@davidbrochart)
+  * Allow empty notebook #266 (@davidbrochart)
+  * Add streamOutputChange attribute to cell change object #264
+    (@davidbrochart)
+  * Add hash property with setter and getter #262 (@krassowski)
+  * Expose execution_state in the JS package #259 (@krassowski)
+  * Add undo_manager to Y documents #248 (@davidbrochart)
+  * Add optional origin to transaction, filter out 'modeldb' origin
+    #246 (@davidbrochart)
+  * Add appendStreamOutput and removeStreamOutput methods #241
+    (@davidbrochart)
+  * Update python&gt;=3.8, pycrdt&gt;=0.8.11, pre-commit, README #217
+    (@davidbrochart)
+  * Store YBlob as bytes, not base64-encoded string #209
+    (@davidbrochart)
+  * Change notebook code cell stream output schema #201
+    (@davidbrochart)
+  * Add cell execution_state #197 (@davidbrochart)
+  ## Bugs fixed
+  * Fix attachments change attribute assignment #260 (@krassowski)
+  * Fix createOutputs, rename 'modeldb' origin to 'silent-change'
+    #254 (@davidbrochart)
+  ## Maintenance and upkeep improvements (forwarded request 1222543 from bnavigator)</comment>
+    <requestid>1222544</requestid>
+  </revision>
 </revisionlist>

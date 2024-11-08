@@ -17,7 +17,7 @@
 
 
 Name:           alacritty
-Version:        0.13.2
+Version:        0.14.0
 Release:        0
 Summary:        A GPU-accelerated terminal emulator
 License:        Apache-2.0
@@ -26,17 +26,17 @@ Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Source3:        README.suse-maint
 BuildRequires:  cargo-packaging
-BuildRequires:  cmake
 BuildRequires:  fdupes
-BuildRequires:  freetype2-devel
 BuildRequires:  libxcb-devel
 BuildRequires:  libxkbcommon-devel
 BuildRequires:  pkgconfig
-BuildRequires:  rust >= 1.70
+BuildRequires:  rust >= 1.74
 BuildRequires:  scdoc
 BuildRequires:  update-desktop-files
 BuildRequires:  xclip
 BuildRequires:  pkgconfig(fontconfig)
+# taken from vendor/freetype-sys/build.rs
+BuildRequires:  pkgconfig(freetype2) >= 24.3.18
 Suggests:       terminfo
 
 %description
@@ -71,15 +71,6 @@ The official zsh completion script for alacritty.
 
 %prep
 %autosetup -a1
-
-%ifarch aarch64 ppc64le riscv64
-# Remove checksum of config.guess and config.sub since aarch64 and ppc64le modify them
-sed -i 's#"expat/conftools/config.guess":"ebaffe1c6683ae2c3dcabb87825a83b892f00391514756f7640c4a3dcafbad4f",##g' ./vendor/expat-sys/.cargo-checksum.json
-sed -i 's#"expat/conftools/config.sub":"523cb028db907d1fbbcecdcac6737f9e2eeba48fb639231dbc5ae69238f276c9",##g' ./vendor/expat-sys/.cargo-checksum.json
-%endif
-%ifarch riscv64
-sed -i -e 's#"config.guess":"e0c1d7ef8ce964fb57c35e7704ae8661d7e4ca87d6a3c18950e503ae26b62319",##' -e 's#"config.sub":"f7e62c3cb15cd5bbc4e7f3617793b227481fc554d39697a9c322a266d20fb626",##' vendor/servo-fontconfig-sys/.cargo-checksum.json
-%endif
 
 %build
 %{cargo_build}

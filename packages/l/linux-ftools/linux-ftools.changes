@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov  7 00:00:00 CET 2024 - dsterba@suse.cz
+
+- Update to 1.3.1
+  - build fixes
+- Removed patches: gcc46.diff, linux-ftools_use_asm_unistd_h.patch
+
+-------------------------------------------------------------------
 Fri Mar  1 10:47:46 UTC 2024 - pgajdos@suse.com
 
 - Use %patch -P N instead of deprecated %patchN.

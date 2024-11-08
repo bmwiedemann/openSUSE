@@ -17,13 +17,14 @@
 
 
 Name:           python-pycrdt
-Version:        0.9.11
+Version:        0.10.6
 Release:        0
 Summary:        Python bindings for Yrs
 License:        MIT
 URL:            https://github.com/jupyter-server/pycrdt
 Source0:        pycrdt-%{version}.tar.xz
 Source1:        vendor.tar.xz
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module maturin >= 1.4.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  cargo-packaging
@@ -49,8 +50,6 @@ all data replicas eventually converge to the same state.
 
 %prep
 %autosetup -p1 -n pycrdt-%{version} -a1
-# gh#jupyter-server/pycrdt#160
-sed -i '/trio/ s/<0.26/<0.27/' pyproject.toml
 
 %build
 %pyproject_wheel

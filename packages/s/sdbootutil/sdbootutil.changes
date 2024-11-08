@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 07 19:42:43 UTC 2024 - aplanas@suse.com
+
+- Update to version 1+git20241107.6f81ff3:
+  * Add list-devices command
+  * Ignore devices with x-sdbootutil.ignore mark
+  * Quote variable expansion
+  * Support empty crypttab options
+
+-------------------------------------------------------------------
 Thu Nov 07 08:04:18 UTC 2024 - aplanas@suse.com
 
 - Update to version 1+git20241107.542aa84:

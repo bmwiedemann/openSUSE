@@ -1,7 +1,7 @@
 #
 # spec file for package xorg-x11-driver-video
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,14 +30,6 @@ Source102:      xorg-confd-snippets.tar.bz2
 BuildRequires:  xorg-x11-server
 Requires:       xorg-x11-server
 Supplements:    xorg-x11-server
-## Requires of packages that we split away from xorg-x11-driver-video
-## and do not require any GPU hardware/emulation
-Requires:       xf86-video-fbdev
-# vesa X driver dropped from sle15
-%if 0%{?suse_version} < 1330
-Requires:       xf86-video-vesa
-%endif
-## End Requires of packages that we split away from xorg-x11-driver-video
 ## Get rid of old and no longer supported drivers (bnc#873443)
 Provides:       xorg-x11-driver-video-radeonhd
 Obsoletes:      xorg-x11-driver-video-radeonhd

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov  5 10:42:51 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.3/
+- Changes since 24.08.2:
+  * Fix conditional ripped file pattern parsing (kde#494653)
+  * Remove musicbrainz code (kde#494670)
+
+-------------------------------------------------------------------
 Tue Oct  8 12:01:03 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.2

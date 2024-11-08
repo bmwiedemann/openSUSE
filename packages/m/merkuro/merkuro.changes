@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Nov  5 10:44:12 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.3/
+- Changes since 24.08.2:
+  * Fix adding new incidence in day grid view
+  * Fix use of DayMouseArea (now DayTapHandler) in hourly view-based views
+  * Center alignment of text on incidence-less month list day entries
+  * Match top and bottom margins for month list incidence items
+  * Rename DayMouseArea to DayTapHandler
+  * Fix double opening of incidence add window when double-clicking day grid view square
+  * Replace DayMouseArea as key delegate in BasicMonthListView with background rectangle
+  * Fix uses of DayMouseArea in BasicMonthListView
+  * Convert DayMouseArea into a TapHandler
+  * Fix tag and name filtering incidences in calendar views
+  * Fix references to non-existent openNewSubTodoEditorDialog
+  * Once collection combo box model starts receiving collections, set a valid default collection by default
+  * Re-enable geolocation components in the incidence editor page
+  * Reenable use of map in incidence info contents
+  * Fix import of Calendar in LocationMap
+  * Adapt LocationMap to Qt6
+  * Fix broken Calendar references in task completion slider onMoved handler
+  * Fix incidence info popup positioning
+  * Add missing window parameter to onCreateNew... handlers in calendar main
+  * Fix error in incidenceinfodrawer in main caused by null currentItem in pageStack
+  * Fix workaround for incidence info drawer getting cut off when menu bar loaded
+  * Fix alignment of incidence info drawer header text
+  * Fix references to removed CalendarUiUtils.setUpAdd function
+  * Rename InfiniteCalendarViewModel to InfiniteMerkuroCalendarViewModel
+  * Fix showing/hiding of hamburger menu in Calendar main drawer
+  * Fix contact config
+
+-------------------------------------------------------------------
 Tue Oct  8 12:02:27 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.2

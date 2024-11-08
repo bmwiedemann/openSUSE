@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov  7 19:45:46 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.5.3
+  * set_gamma_info: remove unnecessary round-trip to server
+  * Reworked transform fix from Arsalan Awan
+  * xrandr: Print/consume the CTM prop in human readable form
+
+-------------------------------------------------------------------
 Mon Feb 26 12:23:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

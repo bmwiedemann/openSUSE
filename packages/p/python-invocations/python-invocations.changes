@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Nov  6 10:23:52 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add drop-icecream-dep.patch
+- Update to 3.3.0:
+   * Add mypy type-checking variant of the recently added import test,
+     in packaging.release.test_install. This helps prove packages
+     exposing py.typed in their source tree are including it in their
+     distributions correctly.
+- 3.2.0:
+   * Minor enhancements to the checks module:
+     - blacken now has a format alias (and will likely reverse the
+       real name and the alias in 4.0)
+     - Added lint task which currently just runs flake8, will likely
+       learn how to be configurable later.
+     - Added all_ default task for the collection, which runs both
+       blacken (in regular, not diff-only mode - idea is to be useful
+       for devs, not CI, which already does both independently) and
+       lint in series.
+- 3.1.0:
+    * Updated packaging.release.test_install to attempt imports of
+      freshly test-installed packages, to catch import-time errors on
+      top of install-time ones. This can be opted out of by giving the
+      skip_import kwarg (aka the --skip-import flag on the CLI).
+
+-------------------------------------------------------------------
 Thu Jun  1 13:06:53 UTC 2023 - pgajdos@suse.com
 
 - python-six is not required

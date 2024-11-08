@@ -34,6 +34,7 @@ BuildRequires:  %{python_module jupyter_kernel_test}
 BuildRequires:  %{python_module jupyter_packaging}
 BuildRequires:  %{python_module metakernel >= 0.24.0}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-notebook-filesystem
 BuildRequires:  octave
@@ -70,7 +71,7 @@ A kernel to allow Octave to be used in Jupyter.
 This package provides the jupyter notebook extension.
 
 %prep
-%setup -q -n octave_kernel-%{version}
+%autosetup -p1 -n octave_kernel-%{version}
 
 %build
 %pyproject_wheel
@@ -83,10 +84,9 @@ This package provides the jupyter notebook extension.
 
 %check
 export JUPYTER_PATH=%{buildroot}%{_jupyter_prefix}
-%{python_expand #
-xvfb-run $python -m octave_kernel.check
-xvfb-run $python -m unittest -v test_octave_kernel.py
-}
+xvfb-run python3 -m octave_kernel.check
+# no test_execute_stdout: gh#Calysto/octave_kernel#240 -- octave does not find qt toolkit backed
+%pytest test_octave_kernel.py -k "not test_execute_stdout"
 
 %files %{python_files}
 %license LICENSE.txt

@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           accessibility-inspector
-Version:        24.08.2
+Version:        24.08.3
 Release:        0
 Summary:        Accessibility inspector
 License:        LGPL-2.1-or-later

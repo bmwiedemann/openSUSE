@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Nov  7 13:28:54 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 44.0:
+  * Drop support for Python 3.8 (#315)
+  * Require docutils 0.21.2 and higher (#315)
+  * Remove HTML5 <s> tag from the list of allowed HTML tags (#315)
+  * Test all supported CPython and PyPy versions in CI (#315)
+  * Resolve Node 16 deprecation warnings in CI (#309)
+  * Lint specific directories (#312)
+  * Build a wheel once for all tox test environments (#308)
+  * Lazy open output files, and always close them (#314)
+  * Gitpod: Migrate to the Even Better TOML extension (#306)
+  * check-manifest: Remove a now-default .gitpod.yml exclusion (#307)
+
+-------------------------------------------------------------------
 Sat Mar 16 12:54:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 43.0:

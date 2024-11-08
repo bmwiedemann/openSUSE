@@ -1,0 +1,11 @@
+--- CMakeLists.txt
++++ CMakeLists.txt
+@@ -219,7 +219,7 @@
+        TARGET ${file}
+        INPUTS ${CMAKE_CURRENT_SOURCE_DIR}/generic/lib/${file}.ll
+     )
+-    install( FILES $<TARGET_PROPERTY:${file},TARGET_FILE> ARCHIVE
++    install( FILES $<TARGET_PROPERTY:${file},TARGET_FILE>
+       DESTINATION "${CMAKE_INSTALL_DATADIR}/clc" )
+   endforeach()
+ endif()

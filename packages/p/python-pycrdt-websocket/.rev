@@ -24,4 +24,20 @@
     <comment></comment>
     <requestid>1199273</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0691a755d17c60ee59df65bfd21737c3</srcmd5>
+    <version>0.15.1</version>
+    <time>1731063590</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.15.1
+  * Start the server awareness #78 (@brichet)
+- Release 0.15.0
+  * Broadcast server awareness to all clients #73 (@brichet)
+  * Apply awareness updates to server awareness #76
+    (@davidbrochart)
+- Release 0.14.3
+  * Remove the awareness in favor of the one from pycrdt #74
+    (@brichet) (forwarded request 1222541 from bnavigator)</comment>
+    <requestid>1222542</requestid>
+  </revision>
 </revisionlist>

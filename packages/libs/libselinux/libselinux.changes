@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov  7 08:24:33 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
+
+- Drop check_runlevel from selinux-ready script and remove restorecond
+  from check_packages as we don't require it to be selinux-ready.
+
+-------------------------------------------------------------------
 Thu Jul 11 19:47:41 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
 
 - Fix segfault caused by upstream changes in selabel_open():

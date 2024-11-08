@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov  5 10:44:24 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.3/
+- Changes since 24.08.2:
+  * Fix the "Add Account" button under Settings not working (kde#493485)
+  * Fix the notification page breaking when someone posts a status (kde#490556)
+  * Fix the "add list" and "edit list" pages not working
+  * Handle deletion inside of actionRedraft itself, fix lots of signals
+  * Fix undefined error in TimelinePage.title
+  * Fix AttachmentMenu runtime warnings
+  * Stop pins from duplicating themselves (kde#494871)
+  * Add test for SocialGraphModel, fix a bug
+
+-------------------------------------------------------------------
 Tue Oct  8 12:02:39 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.2

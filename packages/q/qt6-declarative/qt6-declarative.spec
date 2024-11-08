@@ -47,6 +47,8 @@ Patch4:         0001-QQuickItemView-fix-crash-with-zero-size-SwipeView-th.patch
 Patch5:         0001-QQuickAccessibleAttached-Let-implicit-names-work-whe.patch
 # PATCH-FIX-UPSTREAM
 Patch6:         0001-QQuickItem-map-To-From-Item-Account-for-not-having-a.patch
+# PATCH-FIX-UPSTREAM (https://codereview.qt-project.org/c/qt/qtdeclarative/+/601299)
+Patch7:         0001-WIP-speculative-gc-fix.patch
 BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
@@ -174,8 +176,8 @@ Additional tools for inspecting, testing, viewing QML imports and files.
 %package -n libQt6Qml6
 Summary:        Qt 6 Qml library
 License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
-Requires:       (qml-autoreqprov if rpm-build)
 Requires:       qt6-declarative-imports
+Requires:       (qml-autoreqprov if rpm-build)
 
 %description -n libQt6Qml6
 The Qt 6 Qml library.
@@ -432,6 +434,7 @@ Requires:       cmake(Qt6QuickWidgets) = %{real_version}
 %description -n qt6-quickwidgets-private-devel
 This package provides private headers of libQt6QuickWidgets that do not have any
 ABI or API guarantees.
+
 
 ### Private only libraries ###
 
@@ -879,6 +882,7 @@ Requires:       qt6-quickshapes-private-devel = %{version}
 %description -n qt6-quickvectorimage-private-devel
 Development files for the Qt 6 QuickVectorImage library.
 This library does not have any ABI or API guarantees.
+
 
 ### Static libraries ###
 

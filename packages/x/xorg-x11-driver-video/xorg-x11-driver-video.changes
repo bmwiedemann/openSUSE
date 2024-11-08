@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov  6 10:08:12 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- remove requires to xf86-video-fbdev, which has been dropped for TW
+- small cleanup (remove stuff for sle12)
+
+-------------------------------------------------------------------
 Tue Jun 30 19:31:06 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - moved sample config files from /etc/X11/xorg.conf.d to 

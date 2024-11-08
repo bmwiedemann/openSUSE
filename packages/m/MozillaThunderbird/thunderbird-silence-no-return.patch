@@ -1,10 +1,12 @@
---- a/comm/mailnews/base/src/MboxMsgInputStream.cpp.old	2024-09-29 13:27:36.274947489 +0200
-+++ b/comm/mailnews/base/src/MboxMsgInputStream.cpp	2024-09-29 13:27:47.384867824 +0200
-@@ -241,6 +241,7 @@
+Index: thunderbird-128.4.2/comm/mailnews/base/src/MboxMsgInputStream.cpp
+===================================================================
+--- thunderbird-128.4.2.orig/comm/mailnews/base/src/MboxMsgInputStream.cpp
++++ thunderbird-128.4.2/comm/mailnews/base/src/MboxMsgInputStream.cpp
+@@ -263,6 +263,7 @@ class MboxParser {
        default:
          MOZ_ASSERT_UNREACHABLE();  // should not happen
      }
 +    return data;
    }
  
-   // We're expecting a new message to start, or an EOF.
+   // Attempt to parse a "From " line to extract sender and timestamp.

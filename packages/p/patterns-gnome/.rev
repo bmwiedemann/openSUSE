@@ -399,4 +399,13 @@
     <comment>- Require gnome-session-xsession in the gnome (X11) pattern.</comment>
     <requestid>1222492</requestid>
   </revision>
+  <revision rev="45" vrev="24">
+    <srcmd5>3781ec47762a933f57c661144eb11f41</srcmd5>
+    <version>20201210</version>
+    <time>1731063349</time>
+    <user>anag+factory</user>
+    <comment>- Require gnome-session-xsession in the gnome (X11) pattern
+  (boo#1233064).</comment>
+    <requestid>1222497</requestid>
+  </revision>
 </revisionlist>

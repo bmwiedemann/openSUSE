@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov  5 10:43:46 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.3/
+- Changes since 24.08.2:
+  * Fix arrival delay parsing in NS onboard API
+  * Decode JSON numbers provided as strings as well
+  * Don't encode timezone information separately in UTC
+  * Add onboard backend for nstrein
+  * Remove DE and ES coverage from Navitia (kde#494608)
+  * Add namespace for Android as required by newer gradle versions
+
+-------------------------------------------------------------------
 Tue Oct  8 12:02:00 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.2

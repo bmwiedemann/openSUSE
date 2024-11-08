@@ -17,7 +17,7 @@
 
 
 Name:           golangci-lint
-Version:        1.60.3
+Version:        1.61.0
 Release:        0
 Summary:        A fast Go linters runner
 License:        GPL-3.0-only

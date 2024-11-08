@@ -1,0 +1,19 @@
+Index: invocations-3.3.0/tests/conftest.py
+===================================================================
+--- invocations-3.3.0.orig/tests/conftest.py
++++ invocations-3.3.0/tests/conftest.py
+@@ -5,9 +5,11 @@ from pytest import fixture
+ from invoke import MockContext
+ 
+ # Set up icecream globally for convenience.
+-from icecream import install
+-
+-install()
++try:
++    from icecream import install
++    install()
++except ModuleNotFoundError:
++    pass
+ 
+ 
+ @fixture

@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           libkdepim
-Version:        24.08.2
+Version:        24.08.3
 Release:        0
 Summary:        Base package of kdepim
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later

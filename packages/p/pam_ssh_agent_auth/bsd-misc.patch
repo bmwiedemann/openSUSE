@@ -1,0 +1,14 @@
+--- openbsd-compat/bsd-misc.c.smb	2024-11-07 15:30:13.895388809 -0500
++++ openbsd-compat/bsd-misc.c	2024-11-07 15:31:00.968886365 -0500
+@@ -34,9 +34,11 @@
+ 
+ #define UNUSED(expr) do { (void)(expr); } while (0)
+ 
++/*
+ #ifndef HAVE___PROGNAME
+ char *__progname;
+ #endif
++*/
+ 
+ /*
+  * NB. duplicate __progname in case it is an alias for argv[0]

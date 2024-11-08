@@ -18,11 +18,11 @@
 
 %define kf6_version 6.3.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.2.2
+%define kpim6_version 6.2.3
 
 %bcond_without released
 Name:           kalarm
-Version:        24.08.2
+Version:        24.08.3
 Release:        0
 Summary:        Personal Alarm Scheduler
 License:        GPL-2.0-only

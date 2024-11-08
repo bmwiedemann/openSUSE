@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep 21 21:25:02 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 19.1.0.
+  * Compatibility with LLVM 19, especially changes to debug info.
+  * Support for new extensions:
+    - SPV_INTEL_maximum_registers
+    - SPV_INTEL_subgroup_requirements
+    - SPV_INTEL_task_sequence
+
+-------------------------------------------------------------------
 Sun Sep  1 15:22:44 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 18.1.4.

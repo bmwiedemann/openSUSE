@@ -141,4 +141,12 @@
   * tix-includes.patch</comment>
     <requestid>1184347</requestid>
   </revision>
+  <revision rev="21" vrev="75">
+    <srcmd5>1c4a50984dd2f7cef62f146b9dd3925c</srcmd5>
+    <version>8.4.3</version>
+    <time>1731063376</time>
+    <user>anag+factory</user>
+    <comment>Forward fix for requires_eq changes</comment>
+    <requestid>1222092</requestid>
+  </revision>
 </revisionlist>

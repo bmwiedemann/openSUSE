@@ -132,10 +132,13 @@ fi
 if [ -f containers/annotation ]; then
     REGISTRY_REFNAME="$(sed -n 's/.*<registry_refname>\([^<]*\)<.*/\1/p' < containers/annotation)"
     REGISTRY_DIGEST="$(sed -n 's/.*<registry_digest>\(.*\)<.*/\1/p' < containers/annotation)"
-    sed -i"" \
-        -e "s#%BASE_REFNAME%#${REGISTRY_REFNAME}#g" \
-        -e "s#%BASE_DIGEST%#${REGISTRY_DIGEST}#g" \
-        "${files[@]}"
+
+    if [ -n "$REGISTRY_DIGEST" ]; then
+        sed -i"" \
+            -e "s#%BASE_REFNAME%#${REGISTRY_REFNAME}#g" \
+            -e "s#%BASE_DIGEST%#${REGISTRY_DIGEST}#g" \
+            "${files[@]}"
+    fi
 fi
 
 sed -i"" \

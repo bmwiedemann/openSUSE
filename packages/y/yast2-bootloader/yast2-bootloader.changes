@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov  5 09:57:58 UTC 2024 - Josef Reidinger <jreidinger@suse.com>
+
+- Sync warning text from s390 secure boot to be identical in
+  installation proposal and on running system (bsc#1219989)
+- 5.0.12
+
+-------------------------------------------------------------------
 Wed Aug 14 13:36:03 UTC 2024 - Josef Reidinger <jreidinger@suse.com>
 
 - add arm and riscv64 as not supported for secure boot

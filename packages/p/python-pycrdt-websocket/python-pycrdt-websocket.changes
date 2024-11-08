@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov  4 20:05:09 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.15.1
+  * Start the server awareness #78 (@brichet)
+- Release 0.15.0
+  * Broadcast server awareness to all clients #73 (@brichet)
+  * Apply awareness updates to server awareness #76
+    (@davidbrochart)
+- Release 0.14.3
+  * Remove the awareness in favor of the one from pycrdt #74
+    (@brichet)
+
+-------------------------------------------------------------------
 Fri Aug 30 10:36:09 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.14.2

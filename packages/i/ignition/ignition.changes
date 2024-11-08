@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Nov 07 19:58:35 UTC 2024 - iforster@suse.com
+
+- Update to version 2.20.0:
+  * Features
+    * Support partitioning disk with mounted partitions
+    * Support Proxmox VE
+    * Support gzipped Akamai user_data
+  * Changes
+    * The Dracut module now installs partx
+    * Mark the 3.5.0 config spec as stable
+    * No longer accept configs with version 3.5.0-experimental
+    * Create new 3.6.0-experimental config spec from 3.5.0
+  * Bug fixes
+    * Fix network race when phoning home on Equinix Metal
+    * Fix Akamai Ignition base64 decoding on padded payloads
+    * Fix Makefile GOARCH for loongarch64 (#1942)
+- Drop go build bugfix again, fixed upstream
+- Adapting 0002-allow-multiple-mounts-of-same-device.patch to new
+  3.6.0 spec
+
+-------------------------------------------------------------------
 Fri Aug 30 15:27:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop "go clean" from the upstream build script: since we build in

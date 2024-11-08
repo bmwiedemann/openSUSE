@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov  5 10:44:25 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.3/
+- Changes since 24.08.2:
+  * Fix concurrency queries, similar to previous commit
+  * Fix doubled projects after unchecking and checking again a data source
+  * akonadilivequeryhelperstest: factorize duplicated code
+
+-------------------------------------------------------------------
 Tue Oct  8 12:02:41 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.2

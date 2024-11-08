@@ -18,16 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-WebTest
-Version:        3.0.0
+Version:        3.0.1
 Release:        0
 Summary:        Helper to test WSGI applications
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://docs.pylonsproject.org/projects/webtest/
-Source:         https://files.pythonhosted.org/packages/source/W/WebTest/WebTest-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/w/webtest/webtest-%{version}.tar.gz
 Patch0:         sphinx-7-fix.patch
-# PATCH-FIX-UPSTREAM https://github.com/Pylons/webtest/commit/d82ec5bd2cf3c7109a1d49ad9fa802ae1eae1763 Replace deprecated unittest aliases for Python 3.12
-Patch1:         py312.patch
 BuildRequires:  %{python_module PasteDeploy}
 BuildRequires:  %{python_module WSGIProxy2}
 BuildRequires:  %{python_module WebOb >= 1.2}
@@ -69,7 +67,7 @@ Provides:       %{python_module WebTest-doc = %{version}}
 This package contains documentation files for %{name}.
 
 %prep
-%autosetup -p1 -n WebTest-%{version}
+%autosetup -p1 -n webtest-%{version}
 
 %build
 %python_build

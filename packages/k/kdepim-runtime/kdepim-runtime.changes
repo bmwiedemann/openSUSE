@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov  5 10:43:11 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.3/
+- Changes since 24.08.2:
+  * EWS: Check that mEventReq is not null in EwsSubscriptionManager (kde#495155)
+  * It generates warning
+
+-------------------------------------------------------------------
 Thu Oct 10 11:12:03 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Make use of libkolabxml optional (boo#1060506)

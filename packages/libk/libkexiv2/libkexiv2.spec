@@ -34,7 +34,7 @@
 %endif
 %bcond_without released
 Name:           libkexiv2%{?pkg_suffix}
-Version:        24.08.2
+Version:        24.08.3
 Release:        0
 Summary:        Library to manipulate picture meta data
 License:        GPL-2.0-or-later

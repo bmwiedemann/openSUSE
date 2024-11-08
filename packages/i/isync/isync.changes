@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Wed Oct  9 09:28:32 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.5.0
+  * Changed default config & state locations to follow the XDG basedir spec
+  * Added support for IMAP mailbox names with non-ASCII characters
+  * Added support for Maildir Paths with suffixes (not ending with a slash)
+  * Made the Channel side to expire with MaxMessages configurable
+  * MaxMessages and MaxSize can be used together now
+  * The unfiltered list of mailboxes in each Store can be printed now
+  * A proper summary is now printed prior to exiting.
+  * Added support for mirroring deletions more accurately; option ExpungeSolo
+  * Added new sync operation 'Old' to retry previously skipped messages
+  * Added --ext-exit option to indicate with the exit code whether Stores
+    were modified
+  * Added support for the LITERAL- IMAP extension, which improves upload
+    performance with f.ex. GMail somewhat
+  * Improved error handling when attempting to store too big messages
+  * Malformed messages with incomplete headers will be propagated now
+  * A notice is now emitted if the server does not support race-free Trash
+  * Improved checking for invalid command lines
+  * Options not supported due to the build configuration are still recognized
+    now, to make error messages more helpful
+  * he progress indicator is rate-limited now
+  * Added --dry-run option
+  * Various improvements to the debugging output
+  * Vastly extended the autotest suite
+  * The reference point for relative local paths in the configuration file
+    is now the file's containing directory
+  * Maildir Path cannot be nested into Inbox anymore (this was never documented)
+  * Renamed the ReNew/--renew/-N options to Upgrade/--upgrade/-u and
+    Delete/--delete/-d to Gone/--gone/-g
+  * Superseded SSLVersions option with TLSVersions, and disabled TLS v1.0
+    and v1.1 by default
+  * Renamed SSLType option to TLSType
+  * Placeholders will be now created for messages exceeding MaxSize even if they
+    are flagged on the source side
+  * Placeholder upgrades no longer pull flag updates along unless also requested
+  * New messages which we are about to expunge from the source side are not
+    propaged any more even if the target side would keep them
+  * Tunnel is now consistently assumed to be secure, so some warnings are gone
+  * Worked around "unexpected EOF" error messages at end of TLS connections;
+    affects f.ex. GMail
+  * Worked around protocol corruption issue with iCloud (mail.me.com)
+  * Fixed missing CAPABILITY command after logging in if the server does not
+    report updated capabilities automatically (affects f.ex. MS Exchange)
+  * Fixed CopyArrivalDate failing on some date strings
+  * Fixed propagation of new messages to non-UIDPLUS servers
+  * Fixed Timeout being ignored by DNS host resolution
+  * Fixed broken Tunnel potentially causing SIGPIPE
+  * Fixed Tunnel leaving behind zombie processes
+  * Fixed expunges not being propagated at all if the first run after they
+    occurred did not include --delete
+  * Fixed MaxMessages being exceeded when only --new was used
+  * Fixed messages being instantly expired despite being important when only
+    --new was used
+  * Trash-ing failures now prevent expunging and cause a non-zero exit code
+  * Fixed placeholders being needlessly trashed
+  * Fixed TrashNewOnly and TrashRemoteNew omitting messages for which only
+    a placeholder was synced
+  * Fixed TrashRemoteNew omitting messages which exceed MaxSize
+  * Fixed TrashRemoteNew not using race-free expunge
+  * Optimized some places with unnecessarily high CPU usage
+  * Fixed unnecessary network usage by non-selective uni-directional syncs when
+    no placeholders are present
+  * Fixed crash when Patterns yields nothing when built with new compilers
+  * Fixed crash when all flag propagations to a mailbox failed
+  * Fixed handling of errors during opening mailboxes
+  * Removed useless "lost track of ... messages" warnings when resuming after
+    an interruption
+  * Fixed many minor bugs in corner cases, mostly when resuming after
+    interruptions
+- remove patch work-around-unexpected-EOF-error-messages-at-end-of-SSL-connections.patch
+  as upstream integrated the patch
+
+-------------------------------------------------------------------
 Mon Feb 27 01:47:06 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
 
 - Add patch work-around-unexpected-EOF-error-messages-at-end-of-SSL-connections.patch

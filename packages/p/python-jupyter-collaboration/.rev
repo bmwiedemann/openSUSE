@@ -103,4 +103,16 @@
     <comment></comment>
     <requestid>1199275</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6e189e464fe214769906bf2fefc0b8bb</srcmd5>
+    <version>3.0.0</version>
+    <time>1731063594</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.0.0
+- This is a metapackge now, depending on:
+  * python-jupyter-collaboration_ui
+  * python-jupyter-docprovider
+  * python-jupyter-server-ydoc (forwarded request 1222551 from bnavigator)</comment>
+    <requestid>1222552</requestid>
+  </revision>
 </revisionlist>

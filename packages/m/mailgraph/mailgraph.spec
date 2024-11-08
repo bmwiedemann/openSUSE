@@ -1,7 +1,7 @@
 #
 # spec file for package mailgraph
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -86,13 +86,12 @@ Requires:       %name = %version
 Requires:       apache2-mod_perl
 
 %description apache
-This package contains files (and dependencies) to show the generated 
+This package contains files (and dependencies) to show the generated
 mailgraph statistics in an apache webserver.
 
 Mailgraph is a very simple mail statistics RRDtool frontend for Postfix
 that produces daily, weekly, monthly and yearly graphs of received/sent
 and bounced/rejected mail (SMTP traffic).
-
 
 %prep
 %autosetup -p1
@@ -178,6 +177,9 @@ install -d %{_localstatedir}/run/%{name}
 
 %files apache
 %defattr(-,root,root)
+%dir %{apache_serverroot}
+%dir %{apache_serverroot}/htdocs
+%dir %{cgi_dir}
 %{cgi_dir}/%{name}.cgi
 %{css_dir}/%{name}.css
 %{css_dir}/rrdtool.gif

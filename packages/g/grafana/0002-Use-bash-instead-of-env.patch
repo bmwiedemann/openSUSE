@@ -1,0 +1,30 @@
+Index: grafana-11.3.0/packaging/wrappers/grafana
+===================================================================
+--- grafana-11.3.0.orig/packaging/wrappers/grafana
++++ grafana-11.3.0/packaging/wrappers/grafana
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env bash
++#!/usr/bin/bash
+ 
+ # Wrapper for the grafana binary
+ # This file serves as a wrapper for the grafana binary. It ensures we set
+Index: grafana-11.3.0/packaging/wrappers/grafana-cli
+===================================================================
+--- grafana-11.3.0.orig/packaging/wrappers/grafana-cli
++++ grafana-11.3.0/packaging/wrappers/grafana-cli
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env bash
++#!/usr/bin/bash
+ 
+ # Wrapper for the grafana binary
+ # This file serves as a wrapper for the grafana binary. It ensures we set
+Index: grafana-11.3.0/packaging/wrappers/grafana-server
+===================================================================
+--- grafana-11.3.0.orig/packaging/wrappers/grafana-server
++++ grafana-11.3.0/packaging/wrappers/grafana-server
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env bash
++#!/usr/bin/bash
+ 
+ # Wrapper for the grafana binary
+ # This file serves as a wrapper for the grafana binary. It ensures we set

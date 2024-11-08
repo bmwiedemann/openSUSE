@@ -1,7 +1,7 @@
 #
 # spec file for package xbacklight
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           xbacklight
-Version:        1.2.3
+Version:        1.2.4
 Release:        0
 Summary:        Utility to adjust the screen backlight brightness
 License:        MIT
 Group:          System/X11/Utilities
 URL:            https://xorg.freedesktop.org/
-Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
+Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE xcb-util-0_3_6.diff
 Patch0:         xcb-util-0_3_6.diff
 BuildRequires:  autoconf

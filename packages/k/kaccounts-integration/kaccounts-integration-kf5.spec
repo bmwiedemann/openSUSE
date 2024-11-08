@@ -23,7 +23,7 @@
 %define sover 2
 %bcond_without released
 Name:           kaccounts-integration-kf5
-Version:        24.08.2
+Version:        24.08.3
 Release:        0
 Summary:        KDE Accounts Providers
 License:        GPL-2.0-or-later
@@ -42,7 +42,6 @@ BuildRequires:  cmake(AccountsQt5)
 BuildRequires:  cmake(KF5Config) >= %{kf5_version}
 BuildRequires:  cmake(KF5CoreAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5DBusAddons) >= %{kf5_version}
-BuildRequires:  cmake(KF5Declarative) >= %{kf5_version}
 BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
 BuildRequires:  cmake(KF5IconThemes) >= %{kf5_version}
 BuildRequires:  cmake(KF5KCMUtils) >= %{kf5_version}
@@ -110,6 +109,7 @@ Facebook, Owncloud, IMAP, Jabber and others. Devel files.
 %ldconfig_scriptlets -n libkaccounts%{sover}
 
 %files
+%{_kf5_debugdir}/kaccounts.categories
 %dir %{_kf5_qmldir}/org
 %dir %{_kf5_qmldir}/org/kde
 %{_kf5_qmldir}/org/kde/kaccounts/

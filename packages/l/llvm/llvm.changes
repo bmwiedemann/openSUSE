@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Sep 22 15:27:22 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 19.
+  * For details, see the release notes:
+    - https://releases.llvm.org/19.1.0/docs/ReleaseNotes.html
+    - https://releases.llvm.org/19.1.0/tools/clang/docs/ReleaseNotes.html
+    - https://releases.llvm.org/19.1.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+    - https://releases.llvm.org/19.1.0/projects/libcxx/docs/ReleaseNotes.html
+    - https://releases.llvm.org/19.1.0/tools/lld/docs/ReleaseNotes.html 
+
+-------------------------------------------------------------------
 Sun Mar 17 22:45:02 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Drop libomp-devel and python3-lldb where the versioned package is

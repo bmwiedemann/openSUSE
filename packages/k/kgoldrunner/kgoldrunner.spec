@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kgoldrunner
-Version:        24.08.2
+Version:        24.08.3
 Release:        0
 Summary:        Action & Puzzle Solving Game
 License:        GPL-2.0-or-later

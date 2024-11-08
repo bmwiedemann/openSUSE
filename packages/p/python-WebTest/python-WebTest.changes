@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov  7 12:40:50 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.0.1
+  * Multiple file input support.
+  * Drop support for Python 3.8 and bellow
+  * Allows the TestResponse to follow customised onclick buttons
+  * Response.pyquery object now use the html parser.
+  * You can use the Response.PyQuery method to customize pyquery init.
+  * Various docs / testing improvments
+  * Rename "master" git branch to "main".
+- Refresh sphinx-7-fix.patch
+- drop py312.patch: upstream
+
+-------------------------------------------------------------------
 Thu Feb  1 17:24:01 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - use python311 build for documentation on SLE15

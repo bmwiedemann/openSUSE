@@ -1,7 +1,8 @@
 -------------------------------------------------------------------
 Thu Nov  7 15:33:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
-- Require gnome-session-xsession in the gnome (X11) pattern.
+- Require gnome-session-xsession in the gnome (X11) pattern
+  (boo#1233064).
 
 -------------------------------------------------------------------
 Thu Oct 31 10:06:27 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>

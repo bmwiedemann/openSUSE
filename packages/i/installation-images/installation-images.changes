@@ -1,4 +1,39 @@
 --------------------------------------------------------------------
+Tue Nov 5 10:20:56 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#739
+- Remove obsolete ignores
+- 17.143
+
+--------------------------------------------------------------------
+Tue Nov 5 10:14:22 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#742
+- add uio_hv_generic.ko to module config
+- 17.142
+
+--------------------------------------------------------------------
+Tue Nov 5 09:45:17 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#741
+- Remove dependency on xf86-video-fbdev (boo#1212947).
+- 17.141
+
+--------------------------------------------------------------------
+Tue Nov 5 09:21:04 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#740
+- add uio_hv_generic for hv_fcopy_uio_daemon
+- 17.140
+
+--------------------------------------------------------------------
+Tue Nov 5 07:45:39 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#738
+- Add kernel modules for Qualcomm RB3Gen2 (bsc#1231167)
+- 17.139
+
+--------------------------------------------------------------------
 Thu Sep 5 14:43:08 UTC 2024 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#736

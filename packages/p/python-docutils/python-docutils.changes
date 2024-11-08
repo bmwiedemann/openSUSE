@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Nov  3 05:32:05 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.21.2:
+  * General:
+    + Drop support for Python 3.7 and 3.8.
+    + Provide rst2* "console_scripts" entry points (without the .py
+      extension) instead of installing the rst2*.py front end tools in the
+      binary PATH.
+    + Use docutils --reader=pep --writer=pep_html for a PEP preview.
+    + Use python -m docutils.writers.odf_odt.prepstyles to strip the page
+      size from an ODT writer stylesheet.
+    + Use the same CSV format for the :header: option and the main data of
+      the "csv-table" directive.
+    + New option "loading" for the "image" directive. Sets the new attribute
+      loading of the <image> doctree element.
+  * Configuration changes:
+    + New configuration setting root_prefix. Configurable root directory
+      for included files.
+    + New configuration setting sources for the "buildhtml.py" application.
+    + Simpler and more secure input encoding default behaviour:
+      # Do not use the locale encoding as fallback if Python is started in
+        UTF-8 mode. Stop using "latin1" as second fallback.
+      # Remove BOM (U+FEFF ZWNBSP at start of data) only if the
+        input_encoding configuration setting is None, '', 'utf-8-sig',
+        'utf-16', or 'utf-32'. Do not remove other ZWNBSPs.
+
+-------------------------------------------------------------------
 Sat Mar 30 15:15:42 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Fix update-alternatives updates: docutils is the master but

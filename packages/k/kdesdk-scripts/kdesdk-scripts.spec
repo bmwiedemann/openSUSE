@@ -23,7 +23,7 @@
 
 %bcond_without released
 Name:           kdesdk-scripts
-Version:        24.08.2
+Version:        24.08.3
 Release:        0
 Summary:        Scripts for KDE software development
 License:        GPL-2.0-only AND GFDL-1.2-only

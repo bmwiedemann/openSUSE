@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov  5 10:42:58 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.08.3/
+- Changes since 24.08.2:
+  * Fix sql copy/export is randomly ordered (kde#461419)
+  * formatting: Listen to all process signals properly
+  * KateViewSpace: Store session group name on save
+  * Fix QString.arg calls
+  * Add libffi8 needed by opensuse.
+  * snapcraft: Fix ld-library-config.
+
+-------------------------------------------------------------------
 Tue Oct  8 12:01:11 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.2

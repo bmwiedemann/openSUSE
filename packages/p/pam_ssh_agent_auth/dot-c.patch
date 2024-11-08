@@ -1,0 +1,26 @@
+--- ssh-ecdsa.c.smb	2024-11-07 15:05:17.466835334 -0500
++++ ssh-ecdsa.c	2024-11-07 15:05:53.693628381 -0500
+@@ -73,7 +73,7 @@
+     if (pamsshagentauth_buffer_get_bignum2_ret(&bb, sig->r) == -1 ||
+         pamsshagentauth_buffer_get_bignum2_ret(&bb, sig->s) == -1) {
+ #else
+-    DSA_SIG_get0(sig, &r, &s);
++    DSA_SIG_get0((const DSA_SIG*)sig, (const BIGNUM **)&r, (const BIGNUM **)&s);
+     if (pamsshagentauth_buffer_get_bignum2_ret(&bb, r) == -1 ||
+         pamsshagentauth_buffer_get_bignum2_ret(&bb, s) == -1) {
+ #endif
+--- ssh-rsa.c.smb	2024-11-07 15:06:16.830375761 -0500
++++ ssh-rsa.c	2024-11-07 15:07:30.423965837 -0500
+@@ -56,9 +56,9 @@
+ 		return -1;
+ 	}
+ 	md = EVP_MD_CTX_create();
+-	EVP_DigestInit(&md, evp_md);
+-	EVP_DigestUpdate(&md, data, datalen);
+-	EVP_DigestFinal(&md, digest, &dlen);
++	EVP_DigestInit(md, evp_md);
++	EVP_DigestUpdate(md, data, datalen);
++	EVP_DigestFinal(md, digest, &dlen);
+ 
+ 	slen = RSA_size(key->rsa);
+ 	sig = pamsshagentauth_xmalloc(slen);

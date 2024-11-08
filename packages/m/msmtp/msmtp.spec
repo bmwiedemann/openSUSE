@@ -17,7 +17,7 @@
 
 
 Name:           msmtp
-Version:        1.8.26
+Version:        1.8.27
 Release:        0
 BuildRequires:  gnutls-devel >= 3.4
 BuildRequires:  libidn2-devel
@@ -136,7 +136,7 @@ for vimsyntax in %{_datadir}/vim/{site,current,vim[0-9][0-9]}/syntax; do
         break
     fi
 done
-install -D -m 0644 scripts/vim/msmtp.vim %{buildroot}$vimsyntax/msmtp.vim
+install -D -m 0644 scripts/vim/syntax/msmtp.vim %{buildroot}$vimsyntax/msmtp.vim
 
 # main package doc files
 for f in \

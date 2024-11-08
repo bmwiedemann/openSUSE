@@ -2,4 +2,4 @@
 # SO name, but there is no reason to include the spurious 1 in the package
 # name as all releases are going to have a minor version 1, and there will
 # never be different ABIs for the same major version.
-addFilter("libLLVMSPIRVLib18.*shlib-policy-name-error")
+addFilter("libLLVMSPIRVLib.*shlib-policy-name-error")

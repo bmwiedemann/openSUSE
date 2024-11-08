@@ -1,0 +1,15 @@
+LTO defeats the -fpic workaround and enables TLS relaxation anyway
+
+Index: mesa-24.2.2/meson.build
+===================================================================
+--- mesa-24.2.2.orig/meson.build
++++ mesa-24.2.2/meson.build
+@@ -507,7 +507,7 @@ if not have_mtls_dialect
+     foreach tlsdesc_arg : ['-mtls-dialect=gnu2', '-mtls-dialect=desc']
+       # -fpic to force dynamic tls, otherwise TLS relaxation defeats check
+       tlsdesc_test = cc.run('int __thread x; int main() { return x; }',
+-                            args: [tlsdesc_arg, '-fpic'],
++                            args: [tlsdesc_arg, '-fpic', '-fno-lto'],
+                             name: tlsdesc_arg)
+       if tlsdesc_test.returncode() == 0 and (
+             # check for lld 13 bug: https://gitlab.freedesktop.org/mesa/mesa/-/issues/5665

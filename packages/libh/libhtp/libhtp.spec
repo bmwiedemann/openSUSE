@@ -21,7 +21,7 @@
 %define lname   %{name}%{sover}
 %bcond_without tests
 Name:           libhtp
-Version:        0.5.48
+Version:        0.5.49
 Release:        0
 Summary:        HTTP normalizer and parser
 License:        BSD-3-Clause

@@ -1,0 +1,33 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d2fabbc94c8ff561e47ff3c0949ee86c</srcmd5>
+    <version>19.1.3</version>
+    <time>1731063231</time>
+    <user>anag+factory</user>
+    <comment>- New release based on version 19.1.3.
+  * For details, see the release notes:
+    - https://releases.llvm.org/19.1.0/docs/ReleaseNotes.html
+    - https://releases.llvm.org/19.1.0/tools/clang/docs/ReleaseNotes.html
+    - https://releases.llvm.org/19.1.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+    - https://releases.llvm.org/19.1.0/projects/libcxx/docs/ReleaseNotes.html
+    - https://releases.llvm.org/19.1.0/tools/lld/docs/ReleaseNotes.html
+  * New LLVM tool: reduce-chunk-list to help find bugs using debug
+    counters. See the Programmer's Manual for usage.
+  * New Clang tools: clang-installapi for Apple-related package
+    management, clang-nvlink-wrapper as a wrapper around `nvlink`.
+- No longer include OpenMP offload libraries.
+- Rebase patches:
+  * clang-fix-openmp-test.patch
+  * libcxx-test-library-path.patch
+  * llvm-do-not-install-static-libraries.patch
+  * llvm_build_tablegen_component_as_shared_library.patch
+- Remove obsolete patches:
+  * lld-default-sha1.patch because upstream switched to sha1.
+  * llvm-remove-clang-only-flags.patch because warning flags are no
+    longer autodetected.
+  * openmp-dont-run-gpu-arch.patch because we're excluding the
+    offload project for now.
+- Require Python 3.11 on Leap because we need Python &gt;= 3.8 now.</comment>
+    <requestid>1220359</requestid>
+  </revision>
+</revisionlist>

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Nov  7 20:51:24 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding the following patches:
+  * bsd-misc.patch -> address "duplicate __progname" issue
+  * dot-c.patch -> this is basically '1000-gcc-14.patch' from Debian's patches
+    for v0.10.3 via udd.debian.org
+
+-------------------------------------------------------------------
+Thu Nov  7 17:11:49 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Uncommenting out 'Patch0: gcc14-configure.patch' for factory-auto bot.
+
+-------------------------------------------------------------------
+Thu Nov  7 16:17:27 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding (disabled) 'gcc14-configure.patch' so gcc14 build issues can be
+  partially addressed in the future; throws:
+    "configure: error: *** compiler cannot create working executables, 
+      check config.log ***"
+  otherwise.
+  * More info here:
+    - https://github.com/jbeverly/pam_ssh_agent_auth/issues/45
+    - https://github.com/jbeverly/pam_ssh_agent_auth/issues/47
+- Switching over to CC=gcc-13 until gcc14 builds can be fixed
+
+-------------------------------------------------------------------
 Tue Jan 11 20:54:12 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
 
 - [Re-]Adding pam_ssh_agent_auth-0.10.4.tar.gz which was removed,

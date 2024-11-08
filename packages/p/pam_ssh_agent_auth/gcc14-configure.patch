@@ -1,0 +1,84 @@
+diff --git a/configure b/configure
+index 0090b34..c474757 100755
+--- a/configure
++++ b/configure
+@@ -9088,6 +9088,7 @@ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
++#include <stdlib.h>
+ #include <stdio.h>
+ int main(){exit(0);}
+ 
+@@ -9851,6 +9852,7 @@ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
++#include <stdlib.h>
+ #include <sys/types.h>
+ #include <dirent.h>
+ int main(void){struct dirent d;exit(sizeof(d.d_name)<=sizeof(char));}
+@@ -10386,6 +10388,7 @@ else
+ /* end confdefs.h.  */
+ 
+ #include <stdlib.h>
++#include <unistd.h>
+ #include <errno.h>
+ int main(){errno=0; setresuid(0,0,0); if (errno==ENOSYS) exit(1); else exit(0);}
+ 
+@@ -10428,6 +10431,7 @@ else
+ /* end confdefs.h.  */
+ 
+ #include <stdlib.h>
++#include <unistd.h>
+ #include <errno.h>
+ int main(){errno=0; setresgid(0,0,0); if (errno==ENOSYS) exit(1); else exit(0);}
+ 
+@@ -10625,6 +10629,7 @@ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
++#include <stdlib.h>
+ #include <stdio.h>
+ int main(void){char b[5];snprintf(b,5,"123456789");exit(b[4]!='\0');}
+ 
+@@ -10775,6 +10780,7 @@ else
+ /* end confdefs.h.  */
+ 
+ #include <stdlib.h>
++#include <unistd.h>
+ main() { char template[]="conftest.mkstemp-test";
+ if (mkstemp(template) == -1)
+ 	exit(1);
+@@ -10815,10 +10821,12 @@ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
++#include <stdlib.h>
+ #include <stdio.h>
+ #include <sys/fcntl.h>
+ #include <sys/types.h>
+ #include <sys/wait.h>
++#include <pty.h>
+ 
+ int
+ main()
+@@ -11210,6 +11218,7 @@ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
++#include <stdlib.h>
+ #include <stdio.h>
+ #include <string.h>
+ #include <openssl/opensslv.h>
+@@ -11322,8 +11331,9 @@ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
++#include <stdlib.h>
+ #include <string.h>
+-#include <openssl/opensslv.h>
++#include <openssl/crypto.h>
+ int main(void) { exit(SSLeay() == OPENSSL_VERSION_NUMBER ? 0 : 1); }
+ 
+ _ACEOF

@@ -1700,4 +1700,12 @@ https://www.kde.org/announcements/announce-applications-16.08.2.php
     <comment>KDE Release gear 24.08.2</comment>
     <requestid>1207008</requestid>
   </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>69b53379abb7b5dea8de2b16db84ac36</srcmd5>
+    <version>24.08.3</version>
+    <time>1731063566</time>
+    <user>anag+factory</user>
+    <comment>KDE Release gear 24.08.3 (forwarded request 1221581 from krop)</comment>
+    <requestid>1222440</requestid>
+  </revision>
 </revisionlist>

@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           neochat
-Version:        24.08.2
+Version:        24.08.3
 Release:        0
 Summary:        A chat client for Matrix, the decentralized communication protocol
 License:        BSD-2-Clause AND GPL-3.0-only AND GPL-3.0-or-later
@@ -32,8 +32,6 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Cherry-pick-compatability-changes-for-libquotient-0.patch
 # Needed for leap 15.5
 BuildRequires:  cmark
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
