@@ -1,7 +1,7 @@
 #!/bin/sh
 while sleep 1h; do
     #if [ $(date +%H) = 23 ] ; then git pushf origin ; fi
-    git push --all
-    git push --tags
+    timeout 1h git push --all
+    timeout 1h git push --tags
     #git pull --ff-only bx900 master
 done
