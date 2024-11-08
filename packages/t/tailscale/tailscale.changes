@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov  8 03:46:50 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.76.6:
+  * Logging for when clients move home DERP regions is improved.
+  * Tailscale clients no longer move their home DERP server prematurely in 
+    response to unusual latency at very specific times.
+
+-------------------------------------------------------------------
 Tue Oct 22 18:34:42 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.76.3:
