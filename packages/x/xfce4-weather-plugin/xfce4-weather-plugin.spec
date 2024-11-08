@@ -20,7 +20,7 @@
 %define panel_version 4.14.0
 %define plugin weather
 Name:           xfce4-weather-plugin
-Version:        0.11.2
+Version:        0.11.3
 Release:        0
 Summary:        Weather Condition Monitoring Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
@@ -30,7 +30,7 @@ Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/0.11/%{name}-
 # PATCH-FIX-OPENSUSE 0001-relax-json-c-version.patch lower required json-c version to allow building for Leap which only has 0.13, which is enough, though.
 Patch1:         0001-relax-json-c-version.patch
 BuildRequires:  fdupes
-BuildRequires:  intltool
+BuildRequires:  gettext >= 0.19.8
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0) >= 2.64.0
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.64.0

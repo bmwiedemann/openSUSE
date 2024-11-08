@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Nov  7 09:38:35 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to 0.11.3
+  * Use subdomain for api.met.no
+  * Avoid calling libsoup callbacks when dialogs are destroyed
+  * weather-config: Fix memory leak on GtkBuilder
+  * scan-build: Add false positive file
+  * scan-build: Fix core.uninitialized.Branch
+  * scan-build: Fix deadcode.DeadStores
+  * scan-build: core.NullDereference
+  * icon: Apply translate logic to get_symbol_name
+  * build: Use XDT_VERSION_INIT and get rid of configure.ac.in
+  * weather-config: Fix memory management of source
+  * I18n: Update po/LINGUAS list
+  * build: Drop intltool requirements
+  * Translation Updates
+- Refresh 0001-relax-json-c-version.patch
+
+-------------------------------------------------------------------
 Fri Mar  8 09:35:49 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to 0.11.2

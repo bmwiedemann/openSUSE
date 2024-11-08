@@ -1,7 +1,7 @@
 diff -rup a/configure.ac b/configure.ac
---- a/configure.ac	2024-03-08 10:15:34.000000000 +0100
-+++ b/configure.ac	2024-03-08 10:48:22.176013554 +0100
-@@ -77,7 +77,7 @@ XDT_CHECK_PACKAGE([LIBXFCE4PANEL], [libx
+--- a/configure.ac	2024-11-06 19:11:36.000000000 +0100
++++ b/configure.ac	2024-11-07 10:42:44.155989629 +0100
+@@ -71,7 +71,7 @@ XDT_CHECK_PACKAGE([LIBXFCE4PANEL], [libx
  XDT_CHECK_PACKAGE([XFCONF], [libxfconf-0], [4.12.0])
  XDT_CHECK_PACKAGE([LIBXML], [libxml-2.0], [2.4.0])
  XDT_CHECK_PACKAGE([SOUP], [libsoup-2.4], [2.42.0])
@@ -11,9 +11,9 @@ diff -rup a/configure.ac b/configure.ac
                             [upower for adapting update interval to power state])
  
 diff -rup a/configure b/configure
---- a/configure	2024-03-08 10:16:22.000000000 +0100
-+++ b/configure	2024-03-08 10:48:10.762685202 +0100
-@@ -16038,9 +16038,9 @@ fi
+--- a/configure	2024-11-06 19:13:37.000000000 +0100
++++ b/configure	2024-11-07 10:42:59.302660393 +0100
+@@ -17470,9 +17470,9 @@ fi
  
  
  
@@ -26,7 +26,7 @@ diff -rup a/configure b/configure
      JSON_VERSION=`$PKG_CONFIG --modversion "json-c"`
      { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $JSON_VERSION" >&5
  printf "%s\n" "$JSON_VERSION" >&6; }
-@@ -16057,7 +16057,7 @@ printf %s "checking JSON_LIBS... " >&6;
+@@ -17489,7 +17489,7 @@ printf %s "checking JSON_LIBS... " >&6;
      { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $JSON_LIBS" >&5
  printf "%s\n" "$JSON_LIBS" >&6; }
  
@@ -35,7 +35,7 @@ diff -rup a/configure b/configure
  
  
  
-@@ -16081,7 +16081,7 @@ printf "%s\n" "found, but $xdt_cv_versio
+@@ -17513,7 +17513,7 @@ printf "%s\n" "found, but $xdt_cv_versio
  
        echo "*** The required package json-c was found on your system,"
        echo "*** but the installed version ($xdt_cv_version) is too old."
@@ -44,7 +44,7 @@ diff -rup a/configure b/configure
        echo "*** the PKG_CONFIG_PATH environment variable if you installed"
        echo "*** the new version of the package in a nonstandard prefix so"
        echo "*** pkg-config is able to find it."
-@@ -16093,7 +16093,7 @@ printf "%s\n" "not found" >&6; }
+@@ -17525,7 +17525,7 @@ printf "%s\n" "not found" >&6; }
  
  
        echo "*** The required package json-c was not found on your system."
