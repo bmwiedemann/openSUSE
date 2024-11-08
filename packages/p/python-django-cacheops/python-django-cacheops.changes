@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov  7 13:44:39 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- update to 7.1
+  * support and test against Python 3.12 and Django 5.0
+  * prevent dups in conjs and disjs by using proper data-structures
+  * unpin funcy major version
+  * fixed conj keys TTL in Redis 7.x
+  * updated and cleaned up tests
+
+-------------------------------------------------------------------
 Fri Nov 10 12:25:25 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.0.2:

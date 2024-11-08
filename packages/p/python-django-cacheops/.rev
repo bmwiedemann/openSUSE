@@ -110,4 +110,19 @@
   * allow funcy 2.0+</comment>
     <requestid>1124878</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>bf8c64933f093d5eb266a7a6d0372cb6</srcmd5>
+    <version>7.1</version>
+    <time>1731063673</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1222465 from mcalabkova
+
+- update to 7.1
+    * support and test against Python 3.12 and Django 5.0
+    * prevent dups in conjs and disjs by using proper data-structures
+    * unpin funcy major version
+    * fixed conj keys TTL in Redis 7.x
+    * updated and cleaned up tests</comment>
+    <requestid>1222643</requestid>
+  </revision>
 </revisionlist>
