@@ -61,4 +61,25 @@
 </comment>
     <requestid>1072753</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>766f4039c5c6d285f6ca5adaa6655830</srcmd5>
+    <version>2.6.0+git.1724375068.d60f8b2</version>
+    <time>1731063640</time>
+    <user>anag+factory</user>
+    <comment>- Switch to _service and download the code from GitHub repo,
+  upstream doesn't create releases.
+- Update to version 2.6.0+git.1724375068.d60f8b2:
+  * Add version history and credits
+  * Update fr Documentation
+  * Update br Documentation
+  * Update US Documentation
+  * Minor fixes
+  * Fix HTML Characters
+  * Update br Documentation
+  * Update Fr Documentation
+  * Update example
+- Enable the test suite.
+- Remove already upstreamed luasql-fix-configuration.patch</comment>
+    <requestid>1222599</requestid>
+  </revision>
 </revisionlist>

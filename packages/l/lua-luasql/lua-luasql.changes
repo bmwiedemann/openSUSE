@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov  5 10:25:55 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch to _service and download the code from GitHub repo,
+  upstream doesn't create releases.
+- Update to version 2.6.0+git.1724375068.d60f8b2:
+  * Add version history and credits
+  * Update fr Documentation
+  * Update br Documentation
+  * Update US Documentation
+  * Minor fixes
+  * Fix HTML Characters
+  * Update br Documentation
+  * Update Fr Documentation
+  * Update example
+- Enable the test suite.
+- Remove already upstreamed luasql-fix-configuration.patch
+
+-------------------------------------------------------------------
 Fri Mar 17 18:24:52 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Update to 2.6.0:

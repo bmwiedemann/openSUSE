@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package lua-luasql
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2014 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,12 +19,25 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %define flavor_dec $(c=%{flavor}; echo ${c:0:-1}.${c: -1})
-%define flavor_ver %{lua:ver, ok = string.gsub(rpm.expand("%{flavor}"), "lua(%d)(%d)", "%1.%2"); print(ver)}
+%define flavor_ver %{lua:ver, ok = string.gsub(rpm.expand("%{flavor}"), "lua(%{d})(%{d})", "%{1}.%{2}"); print(ver)}
 %define mod_name luasql
-%define lua_archdir	%{_libdir}/lua/%{flavor_ver}
-%define lua_incdir	%{_includedir}/lua%{flavor_ver}
-%define lua_noarchdir	%{_datadir}/lua/%{flavor_ver}
-
+Version:        2.6.0+git.1724375068.d60f8b2
+Release:        0
+Summary:        Simple interface from Lua to a DBMS
+License:        MIT
+Group:          Development/Libraries/Other
+URL:            https://github.com/lunarmodules/luasql
+# Source0:        https://github.com/lunarmodules/luasql/archive/refs/tags/%%{version}/%%{mod_name}-%%{version}.tar.gz
+Source0:        %{mod_name}-%{version}.tar.gz
+BuildRequires:  %{flavor}-devel
+BuildRequires:  libiodbc-devel
+BuildRequires:  libmysqlclient-devel
+BuildRequires:  lua-macros
+BuildRequires:  pkgconf
+BuildRequires:  postgresql-devel
+BuildRequires:  sqlite3-devel
+Requires:       %{flavor}
+Requires:       libmariadb3
 %lua_provides
 %if "%{flavor}" == ""
 Name:           lua-%{mod_name}
@@ -32,24 +45,6 @@ ExclusiveArch:  do_not_build
 %else
 Name:           %{flavor}-%{mod_name}
 %endif
-Version:        2.6.0
-Release:        0
-Summary:        Simple interface from Lua to a DBMS
-License:        MIT
-Group:          Development/Libraries/Other
-URL:            https://github.com/lunarmodules/luasql
-Source0:        https://github.com/lunarmodules/luasql/archive/refs/tags/%{version}/%{mod_name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM luasql-fix-configuration.patch gh#lunarmodules/luasql!152 mcepl@suse.com
-# Clean up building and add rpm optflags.
-Patch0:         luasql-fix-configuration.patch
-BuildRequires:  %{flavor}-devel
-BuildRequires:  libiodbc-devel
-BuildRequires:  libmysqlclient-devel
-BuildRequires:  pkgconf
-BuildRequires:  postgresql-devel
-BuildRequires:  sqlite3-devel
-Requires:       %{flavor}
-Requires:       libmariadb3
 
 %description
 A simple interface from Lua to a DBMS. It enables a Lua program to:
@@ -65,13 +60,13 @@ export OPTFLAGS="%{optflags}"
 export LUA_INC="%{lua_incdir}"
 
 # also oci8 firebird
-make %{?_smp_mflags} \
+%make_build \
     DRIVER_INCS="-I%{_includedir}" DRIVER_LIBS_sqlite3="-lsqlite3" sqlite3
-make %{?_smp_mflags} \
+%make_build \
     DRIVER_INCS="-I%{_includedir}/pgsql" DRIVER_LIBS_postgres="-lpq" postgres
-make %{?_smp_mflags} \
+%make_build \
     DRIVER_INCS="-I%{_includedir}/mysql" DRIVER_LIBS_mysql="-lmysqlclient -lz" mysql
-make %{?_smp_mflags} \
+%make_build \
     DRIVER_INCS="-I%{_includedir}" DRIVER_LIBS_odbc="-liodbc" odbc
 
 %install
@@ -79,6 +74,11 @@ make %{?_smp_mflags} \
 %make_install LUA_LIBDIR='$(DESTDIR)%{lua_archdir}' postgres
 %make_install LUA_LIBDIR='$(DESTDIR)%{lua_archdir}' mysql
 %make_install LUA_LIBDIR='$(DESTDIR)%{lua_archdir}' odbc
+
+%check
+export LUA_PATH='%{buildroot}%{lua_archdir}/?.lua;;'
+export LUA_CPATH='%{buildroot}%{lua_archdir}/?.so'
+lua%{lua_version} tests/test.lua sqlite3
 
 %files
 %doc doc/us/*
