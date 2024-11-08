@@ -1384,4 +1384,12 @@
     <comment></comment>
     <requestid>1220034</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>138894ccd91cab3966a3edd2ff148c2c</srcmd5>
+    <version>4.18.0+git6.02f3c99</version>
+    <time>1731063678</time>
+    <user>anag+factory</user>
+    <comment>- Added symlinks for wallpapers in Leap 15.6 (forwarded request 1222653 from mauriziogalli)</comment>
+    <requestid>1222657</requestid>
+  </revision>
 </revisionlist>

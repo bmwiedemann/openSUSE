@@ -32,7 +32,7 @@
 %define thunar_volman_version   %(rpm -q --queryformat '%%{VERSION}' thunar-volman)
 
 Name:           xfce4-branding-openSUSE
-Version:        4.18.0+git5.88e05bf
+Version:        4.18.0+git6.02f3c99
 Release:        0
 Summary:        openSUSE Branding of the Xfce Desktop Environment
 License:        CC-BY-SA-3.0 AND GPL-2.0-or-later
@@ -252,10 +252,14 @@ done
 
 # Installing default wallpapers symlinks
 mkdir -p %{buildroot}%{_datadir}/wallpapers
-%if 0%{?sle_version} == 150500 && 0%{?is_opensuse}
-cp -r ./wallpapers/leap %{buildroot}%{_datadir}/wallpapers/xfce
-%else 
+%if 0%{?suse_version} > 1600
 cp -r ./wallpapers/tumbleweed %{buildroot}%{_datadir}/wallpapers/xfce
+%endif
+%if 0%{?sle_version} == 150600 && 0%{?is_opensuse}
+cp -r ./wallpapers/leap-15.6 %{buildroot}%{_datadir}/wallpapers/xfce
+%endif
+%if 0%{?sle_version} == 150500 && 0%{?is_opensuse}
+cp -r ./wallpapers/leap-15.5 %{buildroot}%{_datadir}/wallpapers/xfce
 %endif
 
 %files -n xfce4-panel-branding-openSUSE

@@ -30,7 +30,7 @@
   <bdep name="libjitterentropy3" preinstall="1" notmeta="1" version="3.4.1" release="4.2" arch="x86_64" hdrmd5="00a3ed0f44998e510ebf5e62d797845f" project="openSUSE:Factory" repository="standard"/>
   <bdep name="liblua5_4-5" preinstall="1" notmeta="1" version="5.4.7" release="3.1" arch="x86_64" hdrmd5="a7de09bf4b5425166c0319186e9eec8c" project="openSUSE:Factory" repository="standard"/>
   <bdep name="liblzma5" preinstall="1" notmeta="1" version="5.6.3" release="1.1" arch="x86_64" hdrmd5="2fa4d85a5073bcc5be0758cb9e7df2d5" project="openSUSE:Factory" repository="standard"/>
-  <bdep name="libncurses6" preinstall="1" notmeta="1" version="6.5.20241019" release="47.1" arch="x86_64" hdrmd5="c8ae09fc100a8cc8ce7c75f7f443f513" project="openSUSE:Factory" repository="standard"/>
+  <bdep name="libncurses6" preinstall="1" notmeta="1" version="6.5.20241102" release="48.1" arch="x86_64" hdrmd5="7611e11b48222861619f6b23bc9d57d7" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libpcre2-8-0" preinstall="1" notmeta="1" version="10.44" release="1.1" arch="x86_64" hdrmd5="df35ba02cfff051eb2d33fab72d7d249" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libpopt0" preinstall="1" notmeta="1" version="1.19" release="1.8" arch="x86_64" hdrmd5="abbfa7e9f5897199cb003539738cee26" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libreadline8" preinstall="1" notmeta="1" version="8.2.13" release="2.1" arch="x86_64" hdrmd5="f8ddac10d990f4c31119dd6007206bf0" project="openSUSE:Factory" repository="standard"/>
@@ -41,9 +41,9 @@
   <bdep name="rpm" preinstall="1" notmeta="1" version="4.19.1.1" release="3.4" arch="x86_64" hdrmd5="11101243230d121370d68c42f45020c1" project="openSUSE:Factory" repository="standard"/>
   <bdep name="rpm-config-SUSE" preinstall="1" notmeta="1" version="20240214" release="2.1" arch="noarch" hdrmd5="8e66b5eb59ec0a1fbf034623daabcb76" project="openSUSE:Factory" repository="standard"/>
   <bdep name="system-user-root" preinstall="1" notmeta="1" version="20190513" release="2.16" arch="noarch" hdrmd5="7f2d689d313623f89185902b38a792a3" project="openSUSE:Factory" repository="standard"/>
-  <bdep name="terminfo-base" preinstall="1" notmeta="1" version="6.5.20241019" release="47.1" arch="x86_64" hdrmd5="9c45930f361ab5e9ba430b5cce4a4bfa" project="openSUSE:Factory" repository="standard"/>
+  <bdep name="terminfo-base" preinstall="1" notmeta="1" version="6.5.20241102" release="48.1" arch="x86_64" hdrmd5="2029e51ba5758007b505c77be104b35f" project="openSUSE:Factory" repository="standard"/>
   <bdep name="grep" vminstall="1" version="3.11" release="3.1" arch="x86_64" hdrmd5="8cf6e31c86baf335a20230a15ae3eb38" project="openSUSE:Factory" repository="standard"/>
-  <bdep name="kernel-obs-build" vminstall="1" notmeta="1" version="6.11.5" release="1.1" arch="x86_64" hdrmd5="d683a9f5bdfaa6dc47a12a1348172255" project="openSUSE:Factory" repository="standard"/>
+  <bdep name="kernel-obs-build" vminstall="1" notmeta="1" version="6.11.6" release="2.1" arch="x86_64" hdrmd5="b3fc0f168dd0d929efbdf27c49644d7b" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libaudit1" vminstall="1" version="4.0" release="3.1" arch="x86_64" hdrmd5="6f9aec06674207cf455f8945d563db3d" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libblkid1" vminstall="1" version="2.40.2" release="1.1" arch="x86_64" hdrmd5="652d5715560d82b653b579bf3c24b16f" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libcap-ng0" vminstall="1" version="0.8.5" release="1.1" arch="x86_64" hdrmd5="69ef67a757800b0f6a688248e3ce30cb" project="openSUSE:Factory" repository="standard"/>
@@ -102,7 +102,7 @@
   <bdep name="libgudev-1_0-0" version="238" release="1.4" arch="x86_64" hdrmd5="a5d203412415823679b69cebbb3abe24" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libcairo2" version="1.18.2" release="2.1" arch="x86_64" hdrmd5="ee2ebde57d6dcd7cb7e7135d4fd9b32c" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libxfce4panel-2_0-4" version="4.18.6" release="153.17" arch="x86_64" hdrmd5="584b1f73b5c09acd793a404c28d38ae0" project="X11:xfce" repository="openSUSE_Factory"/>
-  <bdep name="libsqlite3-0" version="3.46.0" release="1.1" arch="x86_64" hdrmd5="503106160b0ae60089c4c955cbe6488d" project="openSUSE:Factory" repository="standard"/>
+  <bdep name="libsqlite3-0" version="3.46.1" release="1.1" arch="x86_64" hdrmd5="8dfacc5a538e102672be7523ec8b978c" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libnotify-tools" version="0.8.3" release="2.2" arch="x86_64" hdrmd5="04ab6228300f8654d0da5f488bc2c067" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libexo-2-0" version="4.18.0" release="146.3" arch="x86_64" hdrmd5="4e5fbfeb28bc55c1183370eb0686504b" project="X11:xfce" repository="openSUSE_Factory"/>
   <bdep name="libwnck-3-0" version="43.1" release="1.1" arch="x86_64" hdrmd5="8b699bcfb49ca2134f36d47064ec6d4d" project="openSUSE:Factory" repository="standard"/>
@@ -119,7 +119,7 @@
   <bdep name="iceauth" version="1.0.10" release="1.2" arch="x86_64" hdrmd5="1e5a3f9c570fc4f28b364b55fc02c767" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libpolkit-gobject-1-0" version="123" release="4.1" arch="x86_64" hdrmd5="ef3afcd6d03df70ca8d524018cd46350" project="openSUSE:Factory" repository="standard"/>
   <bdep name="update-alternatives" version="1.22.11" release="1.1" arch="x86_64" hdrmd5="b142375c643e3c4566abe3d9ad60459a" project="openSUSE:Factory" repository="standard"/>
-  <bdep name="python311-base" version="3.11.10" release="1.2" arch="x86_64" hdrmd5="976c46b9553fab6c74e431b0731974de" project="openSUSE:Factory" repository="standard"/>
+  <bdep name="python311-base" version="3.11.10" release="3.1" arch="x86_64" hdrmd5="1fc23393e08b0ad4e826db9f290d0407" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libXcursor1" version="1.2.2" release="1.2" arch="x86_64" hdrmd5="f695dc54bd34fea0e5fbd7beb78e7e14" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libXi6" version="1.8.2" release="1.1" arch="x86_64" hdrmd5="35647ca5fdb3524b33b72006d3f196eb" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libfontconfig1" version="2.15.0" release="2.1" arch="x86_64" hdrmd5="e3fa19967fd65ebb21192a1bd34c9792" project="openSUSE:Factory" repository="standard"/>
@@ -159,7 +159,7 @@
   <bdep name="libwayland-client0" version="1.23.1" release="1.1" arch="x86_64" hdrmd5="51b167d68af91881afd85797649aae85" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libxkbcommon0" version="1.7.0" release="1.2" arch="x86_64" hdrmd5="512994ec5a11b24b52a9a4f06312674d" project="openSUSE:Factory" repository="standard"/>
   <bdep name="hicolor-icon-theme" version="0.17" release="4.4" arch="noarch" hdrmd5="a2b9e8603f7d5bfe1282895a6a94a600" project="openSUSE:Factory" repository="standard"/>
-  <bdep name="libharfbuzz0" version="10.0.1" release="1.1" arch="x86_64" hdrmd5="58297fef849d0cd007049d006a044e50" project="openSUSE:Factory" repository="standard"/>
+  <bdep name="libharfbuzz0" version="10.1.0" release="1.1" arch="x86_64" hdrmd5="963969d7779a6868c797af51485186c5" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libcups2" version="2.4.11" release="2.1" arch="x86_64" hdrmd5="afea9ff25e327b5c238c71b478979671" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libfribidi0" version="1.0.15" release="1.1" arch="x86_64" hdrmd5="bc604180878170b9afe05c724956eec2" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libwayland-cursor0" version="1.23.1" release="1.1" arch="x86_64" hdrmd5="e76b3975a788a487cdea1516c6fc4f3d" project="openSUSE:Factory" repository="standard"/>
@@ -169,7 +169,7 @@
   <bdep name="gtk3-data" version="3.24.43" release="3.1" arch="noarch" hdrmd5="8416187bf64ac2fa348403e89a8ca954" project="openSUSE:Factory" repository="standard"/>
   <bdep name="gtk3-schema" version="3.24.43" release="3.1" arch="noarch" hdrmd5="3601237cfdebb67c21bb6a73800b7d03" project="openSUSE:Factory" repository="standard"/>
   <bdep name="gtk3-tools" version="3.24.43" release="3.1" arch="x86_64" hdrmd5="d2b2b0d2371e8cfe066993407da7612c" project="openSUSE:Factory" repository="standard"/>
-  <bdep name="libpng16-16" version="1.6.43" release="3.2" arch="x86_64" hdrmd5="10f8f1af8426596a7d5d1e6d9e0f2d40" project="openSUSE:Factory" repository="standard"/>
+  <bdep name="libpng16-16" version="1.6.44" release="1.1" arch="x86_64" hdrmd5="3ae7790a2864fed35ffbba21fec1bfcb" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libjpeg8" version="8.3.2" release="81.1" arch="x86_64" hdrmd5="a312747645b4bca45e5d5a09dc3118c2" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libtiff6" version="4.7.0" release="1.1" arch="x86_64" hdrmd5="aceef2e2d1ffe3bdae3ca549fbf8e971" project="openSUSE:Factory" repository="standard"/>
   <bdep name="gdk-pixbuf-query-loaders" version="2.42.12" release="2.1" arch="x86_64" hdrmd5="91a0a5e39aa8d5d93b2f687b9fa7f67f" project="openSUSE:Factory" repository="standard"/>
@@ -177,7 +177,7 @@
   <bdep name="libX11-data" version="1.8.10" release="1.1" arch="noarch" hdrmd5="f3394c54559f10661534b1fa7c5be298" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libX11-xcb1" version="1.8.10" release="1.1" arch="x86_64" hdrmd5="a989aaf1440d62ab6a9a27b4baf0cba6" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libxcb-util1" version="0.4.1" release="1.4" arch="x86_64" hdrmd5="01820a8545295573ae91212bf6a1817b" project="openSUSE:Factory" repository="standard"/>
-  <bdep name="ncurses-utils" version="6.5.20241019" release="47.1" arch="x86_64" hdrmd5="d1dc14b0fe2d45284e250b75cc73f343" project="openSUSE:Factory" repository="standard"/>
+  <bdep name="ncurses-utils" version="6.5.20241102" release="48.1" arch="x86_64" hdrmd5="60e5bebe254fe2eab8c6d2626fad872c" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libmpfr6" version="4.2.1" release="1.4" arch="x86_64" hdrmd5="212d37bbdd04fdba7a295bf32f6f295a" project="openSUSE:Factory" repository="standard"/>
   <bdep name="pkgconf-pkg-config" version="2.2.0" release="1.1" arch="x86_64" hdrmd5="b09a6d77623319331b8e01ddf7aa5b3c" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libgtk-2_0-0" version="2.24.33" release="13.1" arch="x86_64" hdrmd5="b936aed30f8b022c32d6f8f5b018daf6" project="openSUSE:Factory" repository="standard"/>
@@ -201,14 +201,14 @@
   <bdep name="typelib-1_0-Pango-1_0" version="1.54.0" release="1.1" arch="x86_64" hdrmd5="d7438cd47ae177b03fabf8c00b4d9d0d" project="openSUSE:Factory" repository="standard"/>
   <bdep name="typelib-1_0-GdkPixbuf-2_0" version="2.42.12" release="2.1" arch="x86_64" hdrmd5="b7685c1ff1a4d8a13c197b0a9c3c4685" project="openSUSE:Factory" repository="standard"/>
   <bdep name="girepository-1_0" version="1.82.0" release="1.1" arch="x86_64" hdrmd5="0cd913255fdf11ea53bfac8f7ae89188" project="openSUSE:Factory" repository="standard"/>
-  <bdep name="typelib-1_0-HarfBuzz-0_0" version="10.0.1" release="1.1" arch="x86_64" hdrmd5="15dffa8c057b7f30a5af750c1a5184db" project="openSUSE:Factory" repository="standard"/>
+  <bdep name="typelib-1_0-HarfBuzz-0_0" version="10.1.0" release="1.1" arch="x86_64" hdrmd5="a1c41ad1302fad58c430716dd7dc6eae" project="openSUSE:Factory" repository="standard"/>
   <bdep name="typelib-1_0-Atk-1_0" version="2.54.0" release="1.1" arch="x86_64" hdrmd5="d312b80ba4c972194aa2c12c4bde1ced" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libpolkit-agent-1-0" version="123" release="4.1" arch="x86_64" hdrmd5="172ff11f71a54322edbf1180cedc3c5b" project="openSUSE:Factory" repository="standard"/>
   <bdep name="polkit" version="123" release="4.1" arch="x86_64" hdrmd5="f64d7c077817c6460f8cc61a4b92df77" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libplist-2_0-4" version="2.3.0" release="1.6" arch="x86_64" hdrmd5="f93039cef902c46fd448149f76850c2a" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libimobiledevice-1_0-6" version="1.3.0+190git.20230705" release="1.3" arch="x86_64" hdrmd5="158fdf39ef130b090c46d020171d9769" project="openSUSE:Factory" repository="standard"/>
-  <bdep name="libopenssl3" version="3.1.7" release="1.1" arch="x86_64" hdrmd5="965df25e82e147790831f0374f4e3b18" project="openSUSE:Factory" repository="standard"/>
-  <bdep name="libpython3_11-1_0" version="3.11.10" release="1.2" arch="x86_64" hdrmd5="a42c8467f3f679b32a7d9fdcb3f709e5" project="openSUSE:Factory" repository="standard"/>
+  <bdep name="libopenssl3" version="3.2.3" release="1.1" arch="x86_64" hdrmd5="e63f773fbc17e20cfc5bfb91ea470a66" project="openSUSE:Factory" repository="standard"/>
+  <bdep name="libpython3_11-1_0" version="3.11.10" release="3.1" arch="x86_64" hdrmd5="766cdec627831555f5bfeb889ff59623" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libexpat1" version="2.6.3" release="2.1" arch="x86_64" hdrmd5="e38f2c6d9247d3e717ea2c7989dffb01" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libffi8" version="3.4.6" release="1.1" arch="x86_64" hdrmd5="1d883217e99019653694d59093ea31d9" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libmpdec3" version="2.5.1" release="2.19" arch="x86_64" hdrmd5="aafa4e79e0828a54c2e6a2204438cdf1" project="openSUSE:Factory" repository="standard"/>
@@ -229,7 +229,7 @@
   <bdep name="rpm-build-perl" version="4.19.1.1" release="3.4" arch="x86_64" hdrmd5="adf2bdea595368ddb5ef11292b84a013" project="openSUSE:Factory" repository="standard"/>
   <bdep name="python311-packaging" version="24.1" release="1.1" arch="noarch" hdrmd5="ff525e8833bba6f06e02e1bd4f20833c" project="openSUSE:Factory" repository="standard"/>
   <bdep name="python-rpm-macros" version="20240618.c146b29" release="1.1" arch="noarch" hdrmd5="5e553199c5db3d3db2a6bfc0ab0d55a5" project="openSUSE:Factory" repository="standard"/>
-  <bdep name="xkeyboard-config" version="2.42" release="1.1" arch="noarch" hdrmd5="a825e5a7caeaaaeea7a1adad081c84df" project="openSUSE:Factory" repository="standard"/>
+  <bdep name="xkeyboard-config" version="2.42" release="2.1" arch="noarch" hdrmd5="55da85c925cf6c59892ed921061f1d1f" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libgraphite2-3" version="1.3.14" release="4.3" arch="x86_64" hdrmd5="369c31748a394b0361888c275d69252e" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libgnutls30" version="3.8.7" release="2.1" arch="x86_64" hdrmd5="6cd5bbe1e218e92bb2418c43aec73c88" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libavahi-common3" version="0.8" release="36.1" arch="x86_64" hdrmd5="ac89f558c20cfca85591c6252780112d" project="openSUSE:Factory" repository="standard"/>
@@ -247,7 +247,7 @@
   <bdep name="libdatrie1" version="0.2.13" release="1.15" arch="x86_64" hdrmd5="96afbe4652bfbcf4e607b1902862fbb3" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libthai-data" version="0.1.29" release="1.8" arch="x86_64" hdrmd5="8654f6ec553038c3c2d92ac997e3eb9d" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libgirepository-1_0-1" version="1.82.0" release="1.1" arch="x86_64" hdrmd5="cc9325bdae7614683ec639ee6961d492" project="openSUSE:Factory" repository="standard"/>
-  <bdep name="libharfbuzz-gobject0" version="10.0.1" release="1.1" arch="x86_64" hdrmd5="a48af3087f0e3a82cdcaf62928350dc8" project="openSUSE:Factory" repository="standard"/>
+  <bdep name="libharfbuzz-gobject0" version="10.1.0" release="1.1" arch="x86_64" hdrmd5="8edf254f2f9f2cce8ee36cd355836f1a" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libduktape207" version="2.7.0" release="3.3" arch="x86_64" hdrmd5="8c76c5b335840b8420597587e88b23ae" project="openSUSE:Factory" repository="standard"/>
   <bdep name="sysuser-shadow" version="3.3" release="6.1" arch="noarch" hdrmd5="40bd9facd3d03c1261feac7c08516e1b" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libusbmuxd-2_0-6" version="2.0.2" release="1.16" arch="x86_64" hdrmd5="115b84ef3f155da86aa585099b3e0a48" project="openSUSE:Factory" repository="standard"/>
@@ -272,7 +272,7 @@
   <bdep name="libhogweed6" version="3.10" release="1.1" arch="x86_64" hdrmd5="447ee61b02c2305bde15505e00b4dbc8" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libtasn1-6" version="4.19.0" release="1.7" arch="x86_64" hdrmd5="137bba01542ac5ef725c26755545372b" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libp11-kit0" version="0.25.5" release="1.1" arch="x86_64" hdrmd5="27cd26d9fd9d17f18a6309b490c8220f" project="openSUSE:Factory" repository="standard"/>
-  <bdep name="system-user-lp" version="20170617" release="25.4" arch="noarch" hdrmd5="8939b6c666cedab74901c2fa60489fd9" project="openSUSE:Factory" repository="standard"/>
+  <bdep name="system-user-lp" version="20170617" release="26.1" arch="noarch" hdrmd5="bdf18a2ad65ab9f14faed6e471e3b5a6" project="openSUSE:Factory" repository="standard"/>
   <bdep name="dbus-1-common" version="1.14.10" release="4.1" arch="noarch" hdrmd5="3fa3069e7151c9a1b18e8437c8f82e5c" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libpkgconf5" version="2.2.0" release="1.1" arch="x86_64" hdrmd5="1a0dc6d21fd740040178f59e3fb3d79a" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libbrotlicommon1" version="1.1.0" release="1.3" arch="x86_64" hdrmd5="ca02a6aecfea2b3d57d04064a367e602" project="openSUSE:Factory" repository="standard"/>
@@ -308,7 +308,7 @@
   <bdep name="libsemanage-conf" version="3.7" release="2.1" arch="x86_64" hdrmd5="deed82a7e8f5d2d5c3ead8c2d84d517a" project="openSUSE:Factory" repository="standard"/>
   <bdep name="gio-branding-upstream" version="2.82.2" release="1.1" arch="noarch" hdrmd5="ee2f1762f0a81a1a74a4efdd8e69237f" project="openSUSE:Factory" repository="standard"/>
   <bdep name="gdb" notmeta="1" version="14.2" release="2.1" arch="x86_64" hdrmd5="0de281adaf97c51b634aeeeedf59faca" project="openSUSE:Factory" repository="standard"/>
-  <bdep name="vim" notmeta="1" version="9.1.0718" release="1.1" arch="x86_64" hdrmd5="23ae5f65496af7fb1cd2922a53d2588a" project="openSUSE:Factory" repository="standard"/>
+  <bdep name="vim" notmeta="1" version="9.1.0836" release="1.1" arch="x86_64" hdrmd5="b3b230936d31ee0860ba8a07513f15ba" project="openSUSE:Factory" repository="standard"/>
   <bdep name="strace" notmeta="1" version="6.11" release="1.1" arch="x86_64" hdrmd5="3813517aa57e98dca60d598a52fb13b9" project="openSUSE:Factory" repository="standard"/>
   <bdep name="less" notmeta="1" version="661" release="2.1" arch="x86_64" hdrmd5="d64d4fec0a0a4be3b56b656d1c0d60e9" project="openSUSE:Factory" repository="standard"/>
   <bdep name="perl" notmeta="1" version="5.40.0" release="2.1" arch="x86_64" hdrmd5="9ae45234fd51857642a28d6c56175cb1" project="openSUSE:Factory" repository="standard"/>
@@ -317,14 +317,14 @@
   <bdep name="brp-check-suse" notmeta="1" version="84.87+git20230324.8680ce4" release="1.5" arch="x86_64" hdrmd5="c7f1589039b36411eaa2ab89ca01400d" project="openSUSE:Factory" repository="standard"/>
   <bdep name="post-build-checks" notmeta="1" version="84.87+git20240327.7996a0f" release="1.1" arch="noarch" hdrmd5="b4b2092a7f2cc0312f6716e4bffce8cd" project="openSUSE:Factory" repository="standard"/>
   <bdep name="build-compare" notmeta="1" version="20240801T083050.024a3a7" release="1.2" arch="noarch" hdrmd5="51c9175d885515f964ba9de2031b2476" project="openSUSE:Factory" repository="standard"/>
-  <bdep name="rpmlint-mini" notmeta="1" version="2.6.1+git20241024.1f09e50" release="15.244" arch="x86_64" hdrmd5="7ce35bba3a2c544548eeefb5e52cdc46" project="openSUSE:Factory" repository="standard"/>
+  <bdep name="rpmlint-mini" notmeta="1" version="2.6.1+git20241024.1f09e50" release="15.251" arch="x86_64" hdrmd5="7af9e4d9685741af1e065ad379c58310" project="openSUSE:Factory" repository="standard"/>
   <bdep name="babeltrace" notmeta="1" version="1.5.8" release="3.10" arch="x86_64" hdrmd5="7aa9a82e6921ea1ae288f5f4a8b360a8" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libsource-highlight4" notmeta="1" version="3.1.9" release="5.12" arch="x86_64" hdrmd5="769cbead39d8035a9c3e6a2f3a4f43f2" project="openSUSE:Factory" repository="standard"/>
   <bdep name="alts" notmeta="1" version="1.2+30.a5431e9" release="1.5" arch="x86_64" hdrmd5="58e22fa555921fd0dc172396c80248ec" project="openSUSE:Factory" repository="standard"/>
-  <bdep name="vim-data-common" notmeta="1" version="9.1.0718" release="1.1" arch="noarch" hdrmd5="273191f7c4869e738b008302d2c0006d" project="openSUSE:Factory" repository="standard"/>
-  <bdep name="xxd" notmeta="1" version="9.1.0718" release="1.1" arch="x86_64" hdrmd5="ea049509e750dc705f00bf4a748336fc" project="openSUSE:Factory" repository="standard"/>
+  <bdep name="vim-data-common" notmeta="1" version="9.1.0836" release="1.1" arch="noarch" hdrmd5="47971abf4fa463a997dfda7ccc59e792" project="openSUSE:Factory" repository="standard"/>
+  <bdep name="xxd" notmeta="1" version="9.1.0836" release="1.1" arch="x86_64" hdrmd5="061bf69d6bb34eaf18184724fd23bbc0" project="openSUSE:Factory" repository="standard"/>
   <bdep name="aaa_base-malloccheck" notmeta="1" version="84.87+git20240906.742565b" release="1.1" arch="x86_64" hdrmd5="ed72d55b7a6f422278c6726be063c88c" project="openSUSE:Factory" repository="standard"/>
-  <bdep name="polkit-default-privs" notmeta="1" version="1550+20241017.007e12d" release="1.1" arch="noarch" hdrmd5="e1f09181de02df04b42f5c9f4a5e2b22" project="openSUSE:Factory" repository="standard"/>
+  <bdep name="polkit-default-privs" notmeta="1" version="1550+20241105.bedeeca" release="1.1" arch="noarch" hdrmd5="e28d3ecbc0c6f7153b9bf96151e68a27" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libalternatives1" notmeta="1" version="1.2+30.a5431e9" release="1.5" arch="x86_64" hdrmd5="8e9a81123ae0cc45f6ef36e881a862eb" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libdebuginfod1" notmeta="1" version="0.191" release="2.1" arch="x86_64" hdrmd5="f8e136737e89a0455b63ad4c24824b1b" project="openSUSE:Factory" repository="standard"/>
   <bdep name="libcurl4" notmeta="1" version="8.10.1" release="1.1" arch="x86_64" hdrmd5="f74a7bbe8ff5cca210d45a009fa9c618" project="openSUSE:Factory" repository="standard"/>
