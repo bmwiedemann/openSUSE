@@ -106,4 +106,13 @@
 </comment>
     <requestid>1221370</requestid>
   </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>9295f24923529611c49f286093ef6533</srcmd5>
+    <version>21.3.0</version>
+    <time>1731063689</time>
+    <user>anag+factory</user>
+    <comment>- Fix requires_eq replacement gh#openSUSE/python-rpm-macros#185
+- Fix rpmlint complaints</comment>
+    <requestid>1222709</requestid>
+  </revision>
 </revisionlist>

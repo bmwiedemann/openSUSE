@@ -19,6 +19,7 @@
 
 
 %{?sle15_python_module_pythons}
+%define plainpython python
 Name:           python-poppler-qt5
 Version:        21.3.0
 Release:        0
@@ -32,7 +33,8 @@ BuildRequires:  %{python_module sip-devel > 5.3}
 BuildRequires:  libpoppler-qt5-devel
 BuildRequires:  python-pyqt-rpm-macros
 BuildRequires:  python-rpm-macros
-Requires:       python-qt5 = %(rpm -q --whatprovides python3-qt5 --qf "%%{version}")
+Requires:       python-PyQt5 = %(rpm -q --whatprovides python-PyQt5 --qf "%%{version}")
+Requires:       python-PyQt5-sip = %(rpm -q --whatprovides python-PyQt5-sip --qf "%%{version}")
 %python_subpackages
 
 %description
@@ -45,6 +47,7 @@ Group:          Development/Languages/Python
 Requires:       libpoppler-qt5-devel
 Requires:       python-qt5-devel
 Requires:       python-sip-devel
+Requires:       %plainpython(abi) = %{python_version}
 
 %description devel
 A Python binding for libpoppler-qt5 that aims for completeness
