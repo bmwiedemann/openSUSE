@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov  7 09:09:26 UTC 2024 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to feature release 3.10.0
+  * https://github.com/OSGeo/gdal/blob/v3.10.0/NEWS.md
+  * RFC 101: Raster dataset read-only thread-safety
+  * New read/write AVIF raster driver
+  * New read-only SNAP_TIFF raster driver for Sentinel Application
+    Processing GeoTIFF files
+  * New OGR read-only XODR driver for OpenDRIVE (#9504)
+  * Code linting and security fixes
+  * Bump of shared lib major version
+
+-------------------------------------------------------------------
 Sat Oct 26 14:59:07 UTC 2024 - Enno Tensing <tenno+suse@suij.in>
 
 - Update to release 3.9.3

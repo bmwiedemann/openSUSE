@@ -766,4 +766,21 @@ Otherwise compilation fails with hard to understand error that opj_codec_set is 
   https://github.com/OSGeo/gdal/blob/v3.9.3/NEWS.md (forwarded request 1218595 from tenno)</comment>
     <requestid>1218609</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>f4a0b5c7392ce50d7d8ba8be18b0048b</srcmd5>
+    <version>3.10.0</version>
+    <time>1731063630</time>
+    <user>anag+factory</user>
+    <comment>- Update to feature release 3.10.0
+  * https://github.com/OSGeo/gdal/blob/v3.10.0/NEWS.md
+  * RFC 101: Raster dataset read-only thread-safety
+  * New read/write AVIF raster driver
+  * New read-only SNAP_TIFF raster driver for Sentinel Application
+    Processing GeoTIFF files
+  * New OGR read-only XODR driver for OpenDRIVE (#9504)
+  * Code linting and security fixes
+  * Bump of shared lib major version
+</comment>
+    <requestid>1222598</requestid>
+  </revision>
 </revisionlist>
