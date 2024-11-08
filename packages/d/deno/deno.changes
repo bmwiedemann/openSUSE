@@ -1,7 +1,45 @@
 -------------------------------------------------------------------
+Thu Nov  7 11:32:30 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 2.0.5:
+  * fix: panic_hook hangs without procfs
+  * chore: deprecate run itests
+  * fix(install): handle invalid function error, and fallback to junctions regardless of the error
+  * fix: op_run_microtasks crash
+  * fix(add): better error message when adding package that only has pre-release versions
+  * chore: fix serve_watch_all test
+  * ci: use self-hosted mac arm runner for building on tags
+  * fix(workspace): support wildcard packages
+  * fix(ext/node): add `findSourceMap` to the default export of `node:module`
+  * fix(fmt): do not panic for jsx ignore container followed by jsx text
+  * fix(lsp): scope attribution for lazily loaded assets
+  * fix(types): missing `import` permission on `PermissionOptionsObject`
+  * fix(fmt): ignore file directive for YAML files
+  * refactor(runtime/permissions): use concrete error types
+  * chore: update dlint to v0.68.0 for internal
+  * perf(lsp): don't walk coverage directory
+  * fix(add): only add npm deps to package.json if it's at least as close as deno.json
+  * fix: improved support for cjs and cts modules
+  * chore: upgrade to rust 1.82 and LLVM 19
+  * fix(cli): set `npm_config_user_agent` when running npm packages or tasks
+  * fix(node): Implement `os.userInfo` properly, add missing `toPrimitive`
+  * fix(ext/node): resolve exports even if parent module filename isn't present
+  * fix(ext/node): convert errors from `fs.readFile/fs.readFileSync` to node format
+  * fix: surface package.json location on dep parse failure
+  * fix(coverage): exclude comment lines from coverage reports
+  * fix(fmt): fix several HTML and components issues
+  * fix(lsp): include unstable features from editor settings
+  * fix: clamp smi in fast calls by default
+  * fix: remove permission check in op_require_node_module_paths
+  * fix(ext/node): return `this` from `http.Server.ref/unref()`
+  * fix(serve): support serve hmr
+  * docs(console): Update docstrings for install and uninstall
+
+-------------------------------------------------------------------
 Sun Nov  3 08:22:47 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
-- Experiement with vendoring cargo home registry.
+- Experiment with vendoring cargo home registry. See the documentation at
+  https://github.com/openSUSE-Rust/obs-service-cargo/blob/master/README.md#cargo-vendor-home-registry
 
 -------------------------------------------------------------------
 Sat Nov  2 12:48:07 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
