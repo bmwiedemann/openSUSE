@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov  8 00:00:00 CET 2024 - dsterba@suse.cz
+
+- fix build problems
+- Added patch: 0001-ntfs.h-include-memory.patch
+
+-------------------------------------------------------------------
 Thu May  9 00:00:00 CEST 2024 - dsterba@suse.cz
 
 - update to version 20240115:

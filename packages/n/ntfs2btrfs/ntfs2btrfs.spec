@@ -23,6 +23,7 @@ Summary:        In-place conversion tool from NTFS to BTRFS
 License:        GPL-2.0-only
 URL:            https://github.com/maharmstone/ntfs2btrfs
 Source:         https://github.com/maharmstone/ntfs2btrfs/archive/refs/tags/%{version}.tar.gz
+Patch1:         0001-ntfs.h-include-memory.patch
 BuildRequires:  cmake
 BuildRequires:  fmt-devel
 BuildRequires:  gcc-c++
@@ -38,6 +39,7 @@ you want to keep the conversion you can delete this to free up space.
 
 %prep
 %setup -q
+%autosetup -p1
 
 %build
 %cmake

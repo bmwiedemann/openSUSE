@@ -23,4 +23,12 @@
     <comment>- update to version 20240115: (forwarded request 1172929 from dsterba)</comment>
     <requestid>1172930</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>bc50b067340fe7c0a859f603927ab5b6</srcmd5>
+    <version>20240115</version>
+    <time>1731063649</time>
+    <user>anag+factory</user>
+    <comment>- fix build problems (forwarded request 1222610 from dsterba)</comment>
+    <requestid>1222612</requestid>
+  </revision>
 </revisionlist>

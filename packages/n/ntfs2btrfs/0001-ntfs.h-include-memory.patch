@@ -1,0 +1,35 @@
+From 4375a142fe635044fe54e0c897bdc2bd07225d97 Mon Sep 17 00:00:00 2001
+From: Kefu Chai <tchaikov@gmail.com>
+Date: Mon, 15 Jul 2024 21:13:54 +0800
+Subject: [PATCH] ntfs.h: include <memory>
+
+when building with libstdc++ from GCC-14, we have
+```
+In file included from /builddir/build/BUILD/ntfs2btrfs-20240115-build/ntfs2btrfs-20240115/src/ntfs.cpp:21:
+/builddir/build/BUILD/ntfs2btrfs-20240115-build/ntfs2btrfs-20240115/src/ntfs.h:537:10: error: 'unique_ptr' in namespace 'std' does not name a template type
+  537 |     std::unique_ptr<ntfs_file> mft;
+      |          ^~~~~~~~~~
+```
+
+so include <memory> accordingly.
+
+Signed-off-by: Kefu Chai <tchaikov@gmail.com>
+---
+ src/ntfs.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/ntfs.h b/src/ntfs.h
+index 7a3c15122ebaf7..3a12527c3a660c 100644
+--- a/src/ntfs.h
++++ b/src/ntfs.h
+@@ -23,6 +23,7 @@
+ #include <string>
+ #include <list>
+ #include <functional>
++#include <memory>
+ 
+ #ifdef _WIN32
+ #include <windows.h>
+-- 
+2.45.0
+
