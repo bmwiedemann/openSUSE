@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov 05 10:16:30 UTC 2024 - gerald_chen@foxmail.com
+
+- Update _service file
+- Update to version 0.41.1:
+  * chore(release): v0.41.1
+  * HOTFIX: patch version
+  * HOTFIX: default plugins generic compilation issue
+  * chore(release): v0.41.0
+  * docs(changelog): base mode keybindings fix
+  * fix(ux): forward keys to pane in locked mode and base mode rather than hard-coded normal mode (#3715)
+  * docs(changelog): configuration fixes
+  * fix(ux): configuration fixes (#3713)
+  * docs(readme): add https to curl download
+  * docs(changelog): MoveFocusOrTab fullscreen awareness
+
+-------------------------------------------------------------------
 Wed May  8 09:54:06 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update _service:

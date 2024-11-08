@@ -1,11 +1,24 @@
 <services>
-  <service name="download_files" mode="manual" />
-  <service name="cargo_vendor" mode="manual">
-     <param name="srctar">zellij-*.tar.gz</param>
-     <param name="compression">zst</param>
-     <param name="update">true</param>
-     <param name="filter">true</param>
+  <service mode="disabled" name="obs_scm">
+    <param name="url">https://github.com/zellij-org/zellij.git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="scm">git</param>
+    <param name="revision">v0.41.1</param>
+    <param name="match-tag">*</param>
+    <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="changesgenerate">enable</param>
+    <param name="changesauthor">gerald_chen@foxmail.com</param>
   </service>
-  <service name="cargo_audit" mode="manual" />
+  <service mode="disabled" name="tar"/>
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+  <service name="cargo_vendor" mode="disabled">
+    <param name="src">zellij</param>
+    <param name="compression">zst</param>
+    <param name="update">true</param>
+  </service>
 </services>
-
