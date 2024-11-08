@@ -27,6 +27,8 @@ URL:            https://github.com/hykilpikonna/HyFetch
 Source:         https://files.pythonhosted.org/packages/source/H/HyFetch/HyFetch-%{version}.tar.gz
 # PATCH-FIX-SUSE Fix E: env-script-interpreter
 Patch0:         fix-shebang.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         https://patch-diff.githubusercontent.com/raw/hykilpikonna/hyfetch/pull/362.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -66,6 +68,8 @@ This is the forked version that is maintained together with hyfetch
 
 %prep
 %autosetup -p1 -n HyFetch-%{VERSION}
+# copy the patched neofetch to scripts/ - in git, this is a symlink, but the tarball has it as a regular file
+cp neofetch hyfetch/scripts/neowofetch
 
 %build
 sed -i 's/packages=find_namespace_packages(exclude=("tools", "tools.*")),/packages=find_namespace_packages(exclude=("tools", "tools.*", "docs")),/' setup.py
