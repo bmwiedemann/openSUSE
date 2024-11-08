@@ -7,4 +7,14 @@
     <comment>Dependency of the current breezy (supported port of bzr).</comment>
     <requestid>1172280</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>35b8190567a34de639b648902b8c9ca5</srcmd5>
+    <version>2.0.0</version>
+    <time>1731063666</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.0.0:
+  - Remove support for Python 2.
+- Remove upstreamed patch 0001-Remove-support-for-Python-2.patch</comment>
+    <requestid>1222644</requestid>
+  </revision>
 </revisionlist>

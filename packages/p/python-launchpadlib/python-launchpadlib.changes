@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov  8 06:21:44 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 2.0.0:
+  - Remove support for Python 2.
+- Remove upstreamed patch 0001-Remove-support-for-Python-2.patch
+
+-------------------------------------------------------------------
 Mon May  6 16:37:08 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Add 0001-Remove-support-for-Python-2.patch removing support for Python 2.

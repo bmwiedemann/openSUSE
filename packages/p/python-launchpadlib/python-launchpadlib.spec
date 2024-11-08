@@ -17,16 +17,12 @@
 
 
 Name:           python-launchpadlib
-Version:        1.11.0
+Version:        2.0.0
 Release:        0
 Summary:        Python client library for Launchpad's web service
 License:        LGPL-3.0-only
 URL:            https://pypi.org/project/launchpadlib/
 Source:         https://launchpad.net/launchpadlib/trunk/%{version}/+download/launchpadlib-%{version}.tar.gz
-# PATCH-FEATURE-UPSTREAM 0001-Remove-support-for-Python-2.patch mcepl@suse.com
-# Code from https://code.launchpad.net/~cjwatson/launchpadlib/+git/launchpadlib/+merge/461678
-# Remove support for Python 2
-Patch0:         0001-Remove-support-for-Python-2.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module httplib2}
 BuildRequires:  %{python_module lazr.restfulclient}
@@ -56,14 +52,16 @@ you can integrate your applications into Launchpad without knowing a lot about H
 
 %install
 %pyproject_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%{python_expand rm -r %{buildroot}%{$python_sitelib}/launchpadlib/docs
+%fdupes %{buildroot}%{$python_sitelib}
+}
 
 %check
 %pyunittest discover -v src/launchpadlib/tests/
 
 %files %{python_files}
 %license COPYING.txt
-%doc CONTRIBUTING.rst NEWS.rst README.rst
+%doc README.rst src/launchpadlib/docs/
 %{python_sitelib}/launchpadlib
 %{python_sitelib}/launchpadlib-%{version}*-info
 
