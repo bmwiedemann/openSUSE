@@ -187,4 +187,12 @@
 - BR redis to make the testsuite work</comment>
     <requestid>1131504</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>fbf84ff480ddda9ca437c9c53a35fe26</srcmd5>
+    <version>2.0</version>
+    <time>1731063666</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1222642</requestid>
+  </revision>
 </revisionlist>
