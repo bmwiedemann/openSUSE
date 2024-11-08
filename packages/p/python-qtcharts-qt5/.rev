@@ -106,4 +106,12 @@
     <comment></comment>
     <requestid>1221360</requestid>
   </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>f55e92bc33fcb92b8042d2d0f65c8e44</srcmd5>
+    <version>5.15.6</version>
+    <time>1731063687</time>
+    <user>anag+factory</user>
+    <comment>- Fix requires_eq replacement gh#openSUSE/python-rpm-macros#185</comment>
+    <requestid>1222708</requestid>
+  </revision>
 </revisionlist>
