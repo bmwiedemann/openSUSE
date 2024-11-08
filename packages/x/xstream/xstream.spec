@@ -17,10 +17,8 @@
 #
 
 
-%bcond_with  hibernate
-%bcond_with  stax
 Name:           xstream
-Version:        1.4.20
+Version:        1.4.21
 Release:        0
 Summary:        Java XML serialization library
 License:        BSD-3-Clause
@@ -32,7 +30,8 @@ BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  unzip
-BuildRequires:  mvn(cglib:cglib)
+BuildRequires:  mvn(cglib:cglib-nodep)
+BuildRequires:  mvn(com.fasterxml.woodstox:woodstox-core)
 BuildRequires:  mvn(dom4j:dom4j)
 BuildRequires:  mvn(javax.activation:activation)
 BuildRequires:  mvn(javax.xml.bind:jaxb-api)
@@ -43,21 +42,14 @@ BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-enforcer-plugin)
 BuildRequires:  mvn(org.codehaus.jettison:jettison)
 BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
-BuildRequires:  mvn(org.codehaus.woodstox:woodstox-core-asl)
 BuildRequires:  mvn(org.jdom:jdom)
 BuildRequires:  mvn(org.jdom:jdom2)
+BuildRequires:  mvn(stax:stax)
+BuildRequires:  mvn(stax:stax-api)
 BuildRequires:  mvn(xom:xom)
 BuildRequires:  mvn(xpp3:xpp3)
 BuildRequires:  mvn(xpp3:xpp3_min)
 BuildArch:      noarch
-%if %{with hibernate}
-BuildRequires:  mvn(org.hibernate:hibernate-core)
-BuildRequires:  mvn(org.hibernate:hibernate-envers)
-%endif
-%if %{with stax}
-BuildRequires:  mvn(stax:stax)
-BuildRequires:  mvn(stax:stax-api)
-%endif
 
 %description
 XStream is a simple library to serialize objects to XML
@@ -86,16 +78,6 @@ Group:          Documentation/HTML
 %description    javadoc
 %{name} API documentation.
 
-%if %{with hibernate}
-%package        hibernate
-Summary:        The hibernate module for %{name}
-Group:          Development/Libraries/Java
-Requires:       %{name} = %{version}-%{release}
-
-%description    hibernate
-This package contains the hibernate module for %{name}.
-%endif
-
 %package        benchmark
 Summary:        The benchmark module for %{name}
 Group:          Development/Libraries/Java
@@ -120,69 +102,23 @@ find . -name "*.jar" -print -delete
 
 # Require org.codehaus.xsite:xsite-maven-plugin
 %pom_disable_module xstream-distribution
+%pom_remove_plugin :xsite-maven-plugin
 
 # missing artifacts:
 #  org.openjdk.jmh:jmh-core:jar:1.11.1
 #  org.openjdk.jmh:jmh-generator-annprocess:jar:1.11.1
 %pom_disable_module xstream-jmh
 
-%pom_remove_plugin :xsite-maven-plugin
+%pom_disable_module xstream-hibernate
+
 # Unwanted
 %pom_remove_plugin :maven-source-plugin
 %pom_remove_plugin :maven-dependency-plugin
 %pom_remove_plugin :maven-eclipse-plugin
 %pom_remove_plugin :maven-release-plugin
 
-%pom_xpath_set "pom:dependency[pom:groupId = 'org.codehaus.woodstox' ]/pom:artifactId" woodstox-core-asl
-%pom_xpath_set "pom:dependency[pom:groupId = 'org.codehaus.woodstox' ]/pom:artifactId" woodstox-core-asl xstream
-%pom_xpath_set "pom:dependency[pom:groupId = 'cglib' ]/pom:artifactId" cglib
-%pom_xpath_set "pom:dependency[pom:groupId = 'cglib' ]/pom:artifactId" cglib xstream
 # Require unavailable proxytoys:proxytoys
-%pom_remove_plugin :maven-dependency-plugin xstream
-
-%pom_xpath_set "pom:project/pom:dependencies/pom:dependency[pom:groupId = 'cglib' ]/pom:artifactId" cglib xstream-hibernate
-%pom_xpath_inject "pom:project/pom:dependencies/pom:dependency[pom:groupId = 'junit' ]" "<scope>test</scope>" xstream-hibernate
-%pom_remove_plugin :maven-dependency-plugin xstream-hibernate
-
-%pom_xpath_inject "pom:project/pom:dependencies/pom:dependency[pom:groupId = 'junit' ]" "<scope>test</scope>" xstream-benchmark
-
-%pom_xpath_remove "pom:project/pom:profiles/pom:profile[pom:id = 'jdk12-ge' ]"
-
-%pom_xpath_inject "pom:project/pom:profiles" "
-    <profile>
-      <id>jdk18-ge</id>
-      <activation>
-        <jdk>[18,)</jdk>
-      </activation>
-      <properties>
-        <version.java.5>1.8</version.java.5>
-        <version.java.6>1.8</version.java.6>
-        <version.java.source>1.8</version.java.source>
-        <version.java.target>1.8</version.java.target>
-      </properties>
-    </profile>
-    <profile>
-      <id>jdk12-ge-18</id>
-      <activation>
-        <jdk>[12,18)</jdk>
-      </activation>
-      <properties>
-        <version.java.5>1.7</version.java.5>
-        <version.java.6>1.7</version.java.6>
-        <version.java.source>1.7</version.java.source>
-        <version.java.target>1.7</version.java.target>
-      </properties>
-    </profile>"
-
-%if %{without hibernate}
-%pom_disable_module xstream-hibernate
-%endif
-
-%if %{without stax}
-%pom_remove_dep -r stax:
-rm -f xstream/src/java/com/thoughtworks/xstream/io/xml/BEAStaxDriver.java \
-    xstream-benchmark/src/java/com/thoughtworks/xstream/tools/benchmark/products/XStreamBEAStax.java
-%endif
+%pom_remove_plugin :maven-dependency-plugin xstream xstream-hibernate
 
 %{mvn_file} :%{name} %{name}/%{name} %{name}
 %{mvn_file} :%{name}-benchmark %{name}/%{name}-benchmark %{name}-benchmark
@@ -192,7 +128,7 @@ rm -f xstream/src/java/com/thoughtworks/xstream/io/xml/BEAStaxDriver.java \
 %build
 %{mvn_build} -f -s -- \
     -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
-	-Dversion.java.source=8 -Dversion.java.target=8
+    -Dversion.java.source=8 -Dversion.java.target=8
 
 %install
 %mvn_install

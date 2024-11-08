@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Fri Nov  8 06:19:17 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 1.4.21
+  * Security fixes
+    + This maintenance release addresses the security vulnerability
+      CVE-2024-47072 (bsc#1233085), when using the BinaryDriver to
+      unmarshal a manipulated input stream causing a Denial of
+      Service due to a stack overflow.
+  * Major changes
+    + #350: Optimize memory allocation
+    + Add a converter for the WeakHashMap which does not write any
+      elements of the map. Avoids also access to the ReentrantLock
+      contained in the WeakHashMap since Java 19.
+  * Minor changes
+    + #335: Allow PrettyPrintWriter to replace invalid XML
+      characters when not running in quirks mode
+    + #331, #326: Fix handling of empty
+      java.util.concurrent.atomic.AtomicReference
+    + #334: Fix remaining buffer size calculation in QuickWriter
+    + #342: Optimize internal handling of children in DomReader
+      avoiding O(n^2) access times for siblings
+    + #349: Fix support of lambda objects for Java 21 and above
+    + #359: Add KEYS file with public keys to verify signed
+      artifacts.
+    + Detect input manipulation in
+      c.t.x.io.binary.BinaryStreamReader.
+    + Use Jettison 1.5.4 by default for Java Runtimes version 8 or
+      higher.
+  * API changes
+    + Added constant
+      c.t.x.io.xml.PrettyPrintWriter.XML_1_0_REPLACEMENT.
+    + Added constant
+      c.t.x.io.xml.PrettyPrintWriter.XML_1_1_REPLACEMENT.
+    + Added c.t.x.converters.collections.WeakHashMapConverter.
+    + Protected field fieldsToOmit of
+      c.t.x.mapper.ElementIgnoringMapper set to private.
+    + Protected field unknownElementsToIgnore of
+      c.t.x.mapper.ElementIgnoringMapper set to private.
+  * Stream compatibility
+    + The WeakHashMaps, that have been written with previous
+      versions of XStream, can still be deserialized.
+- Build against the stax:stax and stax:stax-api artifact
+  and without hibernate unconditionally
+- Modified patch:
+  * Revert-MXParser-changes.patch
+    + rediff
+
+-------------------------------------------------------------------
 Tue Feb 20 13:24:30 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

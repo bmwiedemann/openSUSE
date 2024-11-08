@@ -127,4 +127,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148101</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>6e7e9e0241f6af0e47136bc30ffd8f33</srcmd5>
+    <version>1.4.21</version>
+    <time>1731063675</time>
+    <user>anag+factory</user>
+    <comment>CVE-2024-47072, bsc#1233085</comment>
+    <requestid>1222655</requestid>
+  </revision>
 </revisionlist>
