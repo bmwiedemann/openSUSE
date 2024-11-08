@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov  7 22:57:37 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 3.3.9:
+  - Plenty of bug fixes
+  - Compatibility up to 3.12
+  - Add MergeProposal.__str__, MergeProposal.__repr__
+  - Explicitly track which URLs are used for GitLab
+- Add functional _service file.
+- python-launchpadlib should be Recommends, not Suggests.
+- Remove cargo_config (it is now included in the vendor tarball).
+
+-------------------------------------------------------------------
 Tue Oct 10 07:37:39 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 3.3.4:

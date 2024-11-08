@@ -135,4 +135,20 @@ This requires https://build.opensuse.org/request/show/790036 to build (already a
 </comment>
     <requestid>1116637</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a49c914483c57f603610deb33aff2e1f</srcmd5>
+    <version>3.3.9</version>
+    <time>1731063646</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.3.9:
+  - Plenty of bug fixes
+  - Compatibility up to 3.12
+  - Add MergeProposal.__str__, MergeProposal.__repr__
+  - Explicitly track which URLs are used for GitLab
+- Add functional _service file.
+- python-launchpadlib should be Recommends, not Suggests.
+- Remove cargo_config (it is now included in the vendor tarball).
+</comment>
+    <requestid>1222608</requestid>
+  </revision>
 </revisionlist>
