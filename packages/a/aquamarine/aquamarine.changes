@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Nov  9 16:40:43 UTC 2024 - Florian "spirit" <sp1rit@disroot.org>
+
+- Update to aquamarine-0.4.4:
+  * drm: guard cursorFB buffer in restoreAfterVT
+
+- Changes from aquamarine-0.4.3:
+  * fix drm lease crash
+
+- Changes from aquamarine-0.4.2:
+  * A minor update with some fixes and fresh new CTM support.
+  * Fixes:
+    - session: only dispatch udev in dispatchPendingEventsAsync if on
+	  linux
+	- wayland: log compositor name on startup
+
+-------------------------------------------------------------------
 Tue Sep 17 07:37:29 UTC 2024 - Alessio Biancalana <alessio.biancalana@suse.com>
 
 - Update to aquamarine-0.4.1
