@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov  9 13:47:41 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.10.0
+  + Bugs fixes
+    - Fixed empty query for ports args and paths
+  + New Features
+    - Added sorting search results by match score
+
+-------------------------------------------------------------------
 Wed Oct  9 11:09:03 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.9.0
