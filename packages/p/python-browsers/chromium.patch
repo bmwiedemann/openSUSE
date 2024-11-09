@@ -1,0 +1,11 @@
+--- a/browsers/linux.py	2023-04-19 23:19:27.970310924 +0200
++++ b/browsers/linux.py	2023-04-20 00:27:12.388333281 +0200
+@@ -9,7 +9,7 @@
+ LINUX_DESKTOP_ENTRY_LIST = (
+     # desktop entry name can be "firefox.desktop" or "firefox_firefox.desktop"
+     ("chrome", ("google-chrome",)),
+-    ("chromium", ("chromium", "chromium_chromium")),
++    ("chromium", ("chromium", "chromium-browser")),
+     ("firefox", ("firefox", "firefox_firefox")),
+     ("msedge", ("microsoft-edge",)),
+     ("opera", ("opera_opera",)),

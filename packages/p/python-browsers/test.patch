@@ -1,0 +1,93 @@
+--- a/tests/test_detect.py	2023-04-20 01:43:34.761649487 +0200
++++ b/tests/test_detect.py	2023-04-20 01:43:56.461768969 +0200
+@@ -14,7 +14,7 @@
+ @pytest.mark.parametrize(
+     "browser",
+     (
+-        pytest.param("chrome", id="chrome"),
++        pytest.param("chromium", id="chromium"),
+         pytest.param("firefox", id="firefox"),
+         pytest.param("safari", id="safari", marks=pytest.mark.skipif(sys.platform != "darwin", reason="osx-only")),
+         pytest.param(
+@@ -76,21 +76,21 @@
+             id="msedge-osx",
+         ),
+         pytest.param(
+-            "chrome",
++            "chromium",
+             {
+-                "browser_type": "chrome",
+-                "display_name": "Google Chrome",
+-                "path": "/usr/bin/google-chrome-stable",
++                "browser_type": "chromium",
++                "display_name": "Chromium Web Browser",
++                "path": "/usr/bin/chromium-browser",
+                 "version": ANY,
+             },
+             marks=pytest.mark.skipif(sys.platform != "linux", reason="linux-only"),
+-            id="chrome-linux",
++            id="chromium-linux",
+         ),
+         pytest.param(
+             "firefox",
+             {
+                 "browser_type": "firefox",
+-                "display_name": "Firefox Web Browser",
++                "display_name": "Firefox",
+                 "path": "firefox",
+                 "version": ANY,
+             },
+--- a/tests/test_launch.py	2023-04-20 01:43:34.761649487 +0200
++++ b/tests/test_launch.py	2023-04-20 01:44:34.041975888 +0200
+@@ -11,30 +11,36 @@
+ 
+ 
+ @pytest.mark.parametrize(
+-    "chrome_path",
++    "chromium_path",
+     (
+         pytest.param(
+-            "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+-            id="osx",
+-            marks=pytest.mark.skipif(sys.platform != "darwin", reason="osx-only"),
+-        ),
+-        pytest.param(
+-            "/usr/bin/google-chrome-stable",
+-            id="linux",
++            "/usr/bin/chromium-browser",
++            id="chromium-linux",
+             marks=pytest.mark.skipif(sys.platform != "linux", reason="linux-only"),
+         ),
++    ),
++)
++
++@mock.patch.object(browsers, "_launch")
++def test_launch_chromium(mock_launch: mock.MagicMock, chromium_path: str) -> None:
++    browsers.launch("chromium", url="file:///tmp/dummy.html")
++    mock_launch.assert_called_with("chromium", chromium_path, [], "file:///tmp/dummy.html")
++
++@pytest.mark.parametrize(
++    "firefox_path",
++    (
+         pytest.param(
+-            r"C:\Program Files\Google\Chrome\Application\chrome.exe",
+-            id="windows",
+-            marks=pytest.mark.skipif(sys.platform != "win32", reason="windows-only"),
++            "firefox",
++            id="firefox-linux",
++            marks=pytest.mark.skipif(sys.platform != "linux", reason="linux-only"),
+         ),
+     ),
+ )
+-@mock.patch.object(browsers, "_launch")
+-def test_launch(mock_launch: mock.MagicMock, chrome_path: str) -> None:
+-    browsers.launch("chrome", url="https://github.com/roniemartinez/browsers")
+-    mock_launch.assert_called_with("chrome", chrome_path, [], "https://github.com/roniemartinez/browsers")
+ 
++@mock.patch.object(browsers, "_launch")
++def test_launch_firefox(mock_launch: mock.MagicMock, firefox_path: str) -> None:
++    browsers.launch("firefox", url="file:///tmp/dummy.html")
++    mock_launch.assert_called_with("firefox", firefox_path, [], "file:///tmp/dummy.html")
+ 
+ @mock.patch.object(browsers, "_launch")
+ def test_launch_no_browser(mock_launch: mock.MagicMock) -> None:

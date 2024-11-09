@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Sat Nov  9 15:24:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.0:
+  * Drop Python 3.7
+  * Update README
+  * Fix badge
+  * Add GA to dependabot.yml
+  * Remove experimental.new-installer
+
+-------------------------------------------------------------------
+Wed Apr 19 21:22:36 UTC 2023 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Initial package
