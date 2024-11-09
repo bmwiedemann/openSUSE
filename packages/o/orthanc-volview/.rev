@@ -32,4 +32,13 @@
 </comment>
     <requestid>1208834</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>f44a6d83be1e5951d164585e1f5871ae</srcmd5>
+    <version>1.1</version>
+    <time>1731182324</time>
+    <user>dimstar_suse</user>
+    <comment>- licence tag adjusted ( see SR 1208945)
+</comment>
+    <requestid>1222965</requestid>
+  </revision>
 </revisionlist>

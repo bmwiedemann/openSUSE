@@ -19,7 +19,7 @@
 
 Name:           orthanc-volview
 Summary:        VolView plugin for Orthanc
-License:        AGPL-3.0-or-later
+License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
 Version:        1.1
 Release:        0
