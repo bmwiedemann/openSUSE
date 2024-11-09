@@ -18,4 +18,14 @@ https://github.com/adamchainz/flake8-comprehensions/blob/main/requirements/requi
   * Support Python 3.12.</comment>
     <requestid>1100445</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>faa479d9e2a66c920da277f978af50db</srcmd5>
+    <version>1.6.0</version>
+    <time>1731182356</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.0:
+  * Drop Python 3.8 support.
+  * Support Python 3.13.</comment>
+    <requestid>1222991</requestid>
+  </revision>
 </revisionlist>
