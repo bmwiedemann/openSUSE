@@ -607,6 +607,9 @@ Prefer: -python310-pypdf -python311-pypdf -python312-pypdf
 # have choice for pkgconfig(libmarkdown): libmarkdown-devel libmarkdown2-devel
 Prefer: -libmarkdown2-devel
 
+# have choice for rubygem(ruby:3.3.0:puma) >= 5.0: ruby3.3-rubygem-puma ruby3.3-rubygem-puma-5, have choice for rubygem(ruby:3.3.0:rack-test) >= 0.6.3 needed by ruby3.3-rubygem-actionpack-7.0: ruby3.3-rubygem-rack-test ruby3.3-rubygem-rack-test-0_6
+Prefer: -ruby3.3-rubygem-puma-5 -ruby3.3-rubygem-rack-test-0_6
+
 # unresolvable: have choice for cmake(lxqt-build-tools) >= 0.8.0: lxqt-build-tools-devel lxqt-build-tools-qt5-devel
 Prefer: -lxqt-build-tools-devel
 
@@ -1060,7 +1063,7 @@ Prefer: apache2-mod_%{php_pref}
 Prefer: php8:php8-cli
 
 # have choice for libomp.so()(64bit) needed by libispcrt1: libomp15-devel libomp16-devel
-Prefer: -libomp15-devel -libomp16-devel -libomp17-devel
+Prefer: -libomp15-devel -libomp16-devel -libomp17-devel -libomp18-devel
 
 # have choice for python3dist(jupyterlab) = 3.6.2 needed by jupyter-jupyterlab: python310-jupyterlab python311-jupyterlab python38-jupyterlab python39-jupyterlab
 Prefer: -python310-jupyterlab
