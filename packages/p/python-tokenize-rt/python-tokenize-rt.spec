@@ -17,7 +17,7 @@
 
 
 Name:           python-tokenize-rt
-Version:        6.0.0
+Version:        6.1.0
 Release:        0
 Summary:        A wrapper around the stdlib `tokenize` which roundtrips
 License:        MIT

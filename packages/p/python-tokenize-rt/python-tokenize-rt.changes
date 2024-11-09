@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov  9 15:59:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.0:
+  * handle unicode named escapes in fstring components
+  * add python 3.13
+
+-------------------------------------------------------------------
 Mon Oct  7 21:31:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.0.0:

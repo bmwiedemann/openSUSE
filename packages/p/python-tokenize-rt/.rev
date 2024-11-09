@@ -42,4 +42,14 @@
   * properly handle FSTRING_MIDDLE escaped braces</comment>
     <requestid>1206176</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4d470a1f79b7900baaf6d7ce18f3f654</srcmd5>
+    <version>6.1.0</version>
+    <time>1731182332</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.1.0:
+  * handle unicode named escapes in fstring components
+  * add python 3.13</comment>
+    <requestid>1222988</requestid>
+  </revision>
 </revisionlist>
