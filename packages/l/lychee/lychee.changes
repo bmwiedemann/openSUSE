@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Nov 09 10:10:11 UTC 2024 - alessio.biancalana@suse.com
+
+- Update to version 0.17.0~0:
+  * chore: release v0.17.0 (#1549)
+  * Add Forui to README.md's users section (#1551)
+  * Bump the dependencies group across 1 directory with 12 updates (#1544)
+  * Ignore casing when processing markdown fragments + check for percent encoded ancors (#1535)
+  * Refactor cache handling test to make it more robust (#1548)
+  * Fix format option in configuration file (#1547)
+  * Fix skipping of email addresses in stylesheets (#1546)
+  * Add support for relative links (#1489)
+  * Box Octocrab error as it is too large (#1543)
+  * Update link check action (#1542)
+  * Fix example usage of headers in configuration file (#1540)
+  * Add interesting projects who use lychee (#1537)
+  * Don't check prefix attribute (#1536)
+  * Add OWASP Threat Dragon to users
+  * Update `pkg-url` of cargo binstall (#1532)
+  * Bump the dependencies group with 3 updates (#1530)
+  * Allow excluding cache based on status code (#1403)
+  *  Ignore textContent links in html nodes (#1528)
+  * fix:  The 'as' keyword in the Dockerfile should be uppercase
+  * Respect timeout when retrieving archived link (#1526)
+  * Update TOC in README.md
+  * fix: Remove tokio console subscriber (#1524)
+  * Disable Wayback machine tests
+  * Delete release-plz.toml
+  * feat: Add tests for `dns-prefetch` (#1522)
+  * Exclude `rel=dns-prefetch` links (#1520)
+  * Extend documentation on excluding links
+  * Improve docs for fragment checker
+  * README: The Git home page and Git Credential Manager use lychee (#1519)
+  * Don't check preconnect links (#1187)
+  * Use custom token here to allow triggering other pipelines
+  * Use custom token here to allow triggering other pipelines
+  * Bump the dependencies group with 6 updates (#1516)
+
+-------------------------------------------------------------------
 Mon Oct 14 18:00:58 UTC 2024 - alessio.biancalana@suse.com
 
 - Update to version 0.16.1:
