@@ -88,4 +88,12 @@
     <comment>Fix conflict/choice of providers</comment>
     <requestid>1221267</requestid>
   </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>bc5cae1ef73bc6f5f6bed1e118b6b00e</srcmd5>
+    <version>2.28</version>
+    <time>1731182305</time>
+    <user>dimstar_suse</user>
+    <comment>Fix runtime problems with unshaded objectweb-asm</comment>
+    <requestid>1222906</requestid>
+  </revision>
 </revisionlist>

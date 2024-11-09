@@ -1,0 +1,11 @@
+--- jersey-2.28/core-server/src/main/java/org/glassfish/jersey/server/internal/scanning/AnnotationAcceptingListener.java	2024-10-30 04:43:55.553938491 +0100
++++ jersey-2.28/core-server/src/main/java/org/glassfish/jersey/server/internal/scanning/AnnotationAcceptingListener.java	2024-11-08 23:37:03.260572966 +0100
+@@ -164,7 +164,7 @@
+         private boolean isAnnotated;
+ 
+         private AnnotatedClassVisitor() {
+-            super(Opcodes.ASM5);
++            super(Opcodes.ASM7);
+         }
+ 
+         public void visit(final int version, final int access, final String name,

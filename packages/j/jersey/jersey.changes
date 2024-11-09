@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov  8 22:46:04 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * jersey-asm-version.patch
+    + our fix runtime errors because of the removal of repackaged
+      version of asm
+    + Opcodes.ASM5 is too low for the system objectweb-asm version
+
+-------------------------------------------------------------------
 Mon Nov  4 21:29:39 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Fix conflict/choice of providers

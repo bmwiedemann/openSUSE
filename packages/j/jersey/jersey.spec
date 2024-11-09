@@ -33,6 +33,7 @@ Patch2:         0002-Port-to-glassfish-jsonp-1.0.patch
 Patch3:         0003-Port-to-hibernate-validation-5.x.patch
 Patch4:         jersey-2.28-contended.patch
 Patch5:         java-util-concurrent-ThreadFactory-newThread.patch
+Patch6:         jersey-asm-version.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-annotations)
