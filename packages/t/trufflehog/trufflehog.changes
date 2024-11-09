@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Nov 09 09:47:31 UTC 2024 - felix.niederwanger@suse.com
+
+- Update to version 3.83.5:
+  * remove Analyze protos from gen_protos.sh #3571
+  * fix(jdbc): ignore invalid sqlserver URLs (#3429)
+  * Added pattern test cases for detectors starting with Alphabet C (#3564)
+  * added name back in extradata (#3569)
+  * feat(mailgun): update detector (#2679)
+  * fix(fetchrss): update detector logic (#2844)
+  * Add UUIDs to false positive checker (#2976)
+  * feat(sumologic): update detector (#3511)
+  * fix(mongodb): ignore invalid URLs (#3440)
+  * fix(rabbitmq): add dial timeout (#3421)
+
+-------------------------------------------------------------------
 Thu Nov 07 11:14:46 UTC 2024 - felix.niederwanger@suse.com
 
 - Update to version 3.83.4:
