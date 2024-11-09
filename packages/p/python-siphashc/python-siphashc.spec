@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-siphashc
-Version:        2.4.1
+Version:        2.5
 Release:        0
 Summary:        Python C module to calculate SipHashes
 License:        ISC
