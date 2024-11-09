@@ -121,4 +121,43 @@
     <comment></comment>
     <requestid>1218665</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c04627fbf11ebc1cf017bf9a0b90731e</srcmd5>
+    <version>18.0.3</version>
+    <time>1731182307</time>
+    <user>dimstar_suse</user>
+    <comment>- Use only tier 1 arches. Never heard of kakoune being used in other arches.
+- Remove vendor.tar.zst.
+- Add registry.tar.zst
+- Update _service file
+  * Use registry method for vendoring
+- Update to version 18.0.3:
+  * Update changelog for release
+  * Disable CI runs for a special &quot;docs&quot; branch
+  * Scala Metals: turn off Unicode icons until Kakoune can handle emoji width
+  * Simply use stdout instead of fd 3 for request sending
+  * Remove redundant fifo re-creation
+  * Elide temporary file when writing to fifo
+  * Fix escaping if session name starts with a dash
+  * Move loop-invariant set-option out of the loop
+  * Fix window/showMessageRequest ID deserialization
+  * lsp-disable: unset LSP modeline
+  * Fix eslint workaround
+  * Fix crash when &quot;language&quot; key is used in legacy kak-lsp.toml
+  * julia lsp configuration: move root_globs
+  * minor: fix typo in julia lsp config
+  * cargo update
+  * cargo clippy
+  * Fix crash in lsp-selection-range
+  * Show error instead of crashing if lsp_servers root is not an absolute path
+  * Block LSP requests after KakEnd to work around delay on bad config
+  * lsp-do-send: also block SIGINT once we have acquired the fifo
+  * README: update &quot;Pre-built binaries&quot; section
+  * Fix state transition when lsp-enable{,-window} are accidentally mixed
+  * Remove shell call from lsp-if-no-servers
+  * Remove misleading &quot;set-option -add lsp_server&quot; from default hooks
+  * lsp-object: fix crash on invalid param, improve docs
+</comment>
+    <requestid>1222908</requestid>
+  </revision>
 </revisionlist>
