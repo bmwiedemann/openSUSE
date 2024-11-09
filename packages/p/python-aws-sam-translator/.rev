@@ -283,4 +283,27 @@
     <comment></comment>
     <requestid>1206700</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>ccbae94b287ecdf63d721df9b2148c8f</srcmd5>
+    <version>1.92.0</version>
+    <time>1731182310</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.92.0:
+  * fix: Add the property UseAliasAsEventTarget to
+    AWS::Serverless::StateMachine and make associated events use
+    the state machine alias as a target.
+  * chore: Update Runtime to Python3.11
+  * fix: update cfn-lint versions and match tests
+  * fix: modify error message to show which cors key is invalid
+  * chore(schema): update
+  * chore: Fix Managed Policy ARNs with hardcoded partition in
+    tests
+  * chore: Fix hardcoded endpoint domain in test template
+
+  * fix: Throw appropriate error message when providing non map
+  * fix: Raise exception when using dynamic reference in CodeUri Uri
+- use python_expand for fdupes
+  * Resource level attributes support</comment>
+    <requestid>1222937</requestid>
+  </revision>
 </revisionlist>

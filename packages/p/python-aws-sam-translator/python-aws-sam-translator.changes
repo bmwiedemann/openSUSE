@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Nov  9 09:06:12 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.92.0:
+  * fix: Add the property UseAliasAsEventTarget to
+    AWS::Serverless::StateMachine and make associated events use
+    the state machine alias as a target.
+  * chore: Update Runtime to Python3.11
+  * fix: update cfn-lint versions and match tests
+  * fix: modify error message to show which cors key is invalid
+  * chore(schema): update
+  * chore: Fix Managed Policy ARNs with hardcoded partition in
+    tests
+  * chore: Fix hardcoded endpoint domain in test template
+
+-------------------------------------------------------------------
 Wed Oct  2 11:15:02 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.91.0
@@ -99,7 +114,7 @@ Fri Apr  5 09:04:00 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
 Tue Mar  5 10:16:31 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.85.0
-  * fix: Throw appropriate error message when providing non map 
+  * fix: Throw appropriate error message when providing non map
     route settings by @GavinZZ in #3507
   * chore(schema): update by @github-actions in #3508
 
@@ -116,7 +131,7 @@ Thu Feb  8 02:07:55 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
   * chore(schema): update by @github-actions in #3503
   * Drop python3.7 support for SAM-T by @xazhao in #3403
   * chore(schema): update by @github-actions in #3404
-  * fix: Raise exception when using dynamic reference in CodeUri Uri 
+  * fix: Raise exception when using dynamic reference in CodeUri Uri
     format by @GavinZZ in #3405
   * chore: Update how we download CFN documentation by @GavinZZ in #3406
   * chore(schema): update by @github-actions in #3409
@@ -1073,7 +1088,7 @@ Thu May  5 11:19:33 UTC 2022 - pgajdos@suse.com
 -------------------------------------------------------------------
 Tue Mar 15 08:48:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- use python_expand for fdupes 
+- use python_expand for fdupes
 
 -------------------------------------------------------------------
 Mon Dec  6 21:25:00 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -1094,7 +1109,7 @@ Thu Jun 10 08:57:30 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.36.0:
   * Optimize shared API usage plan handling
-  * Resource level attributes support 
+  * Resource level attributes support
 
 -------------------------------------------------------------------
 Mon Mar 29 02:34:19 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
