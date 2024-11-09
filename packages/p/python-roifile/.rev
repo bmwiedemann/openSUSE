@@ -92,4 +92,14 @@
     <comment></comment>
     <requestid>1188215</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>697b1294526e98b6de91818b603c475f</srcmd5>
+    <version>2024.9.15</version>
+    <time>1731182334</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2024.9.15:
+  * Improve typing.
+  * Deprecate Python 3.9, support Python 3.13.</comment>
+    <requestid>1222984</requestid>
+  </revision>
 </revisionlist>

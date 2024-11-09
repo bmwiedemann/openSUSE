@@ -18,7 +18,7 @@
 
 %define packagename roifile
 Name:           python-roifile
-Version:        2024.5.24
+Version:        2024.9.15
 Release:        0
 Summary:        Read and write ImageJ ROI format
 License:        BSD-3-Clause

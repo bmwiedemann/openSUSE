@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov  9 15:50:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2024.9.15:
+  * Improve typing.
+  * Deprecate Python 3.9, support Python 3.13.
+
+-------------------------------------------------------------------
 Wed Jul 17 07:49:50 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Revert numpy < 2 restriction
