@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov  8 21:30:32 UTC 2024 - Tony Jones <tonyj@suse.com>
+
+- Feature detection of perf_events API (required) was failing causing the
+  build to fail.  Reported by DimStar Build problem notification email.
+
+  New patch: oprofile-autoconf-fix-perf_events-detection.patch 
+
+-------------------------------------------------------------------
 Thu Sep 28 01:52:52 UTC 2023 - Tony Jones <tonyj@suse.com>
 
 - Fix build error,  change user/group pre handling to procedure specified

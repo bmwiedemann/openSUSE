@@ -1,0 +1,28 @@
+From: Tony Jones <tonyj@suse.de>
+Date: Fri Nov  8 01:23:51 PM PST 2024
+Subject: fix autoconf detection of perf_events
+Upstream: pending
+References: Message-ID: <169524738639.21909.3072410117418186253@localhost> 
+
+From: DimStar / Dominique Leuenberger <dimstar@opensuse.org>
+Subject: openSUSE:Factory - oprofile - Build problem notification
+
+Feature detection of perf_events API (required) was failing causing build
+to fail.  Fix forwarded to oprofile maintainer.
+
+---
+ configure.ac | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/configure.ac b/configure.ac
+index dc447f89..363bd440 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -116,6 +116,7 @@ if test "$kernel_may_have_perf_events_support" = "yes"; then
+ 		rm -f test-for-PERF_EVENT_OPEN
+ 		AC_LANG_CONFTEST(
+ 			[AC_LANG_PROGRAM([[#include <linux/perf_event.h>
++				#include <unistd.h>
+ 				#include <asm/unistd.h>
+ 				#include <sys/types.h>
+ 				#include <string.h>

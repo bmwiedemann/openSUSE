@@ -412,4 +412,15 @@
     <comment></comment>
     <requestid>1113945</requestid>
   </revision>
+  <revision rev="58" vrev="4">
+    <srcmd5>473f79ea443e9daef5b1cfcfdcbefbc0</srcmd5>
+    <version>1.4.0</version>
+    <time>1731182303</time>
+    <user>dimstar_suse</user>
+    <comment>- Feature detection of perf_events API (required) was failing causing the
+  build to fail.  Reported by DimStar Build problem notification email.
+  New patch: oprofile-autoconf-fix-perf_events-detection.patch 
+</comment>
+    <requestid>1222903</requestid>
+  </revision>
 </revisionlist>

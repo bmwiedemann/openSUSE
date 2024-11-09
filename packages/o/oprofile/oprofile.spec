@@ -1,7 +1,7 @@
 #
 # spec file for package oprofile
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ Source5:        README-BEFORE-ADDING-PATCHES
 Patch1:         %{name}-no-libjvm-version.patch
 Patch2:         %{name}-pfm-ppc.patch
 Patch3:         %{name}-binutils.patch
+Patch4:         %{name}-autoconf-fix-perf_events-detection.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  binutils-devel
