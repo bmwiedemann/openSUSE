@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20241107" schemaversion="4.1">
+<image name="OBS__openSUSE___20241108" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20241107</productvar>
+      <productvar name="VERSION">20241108</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20241107,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20241108,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20241107/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20241108/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -253,6 +253,7 @@
       <repopackage name="clamav"/>
       <repopackage name="clang-tools"/>
       <repopackage name="clang18"/>
+      <repopackage name="clang19"/>
       <repopackage name="clazy"/>
       <repopackage name="clicfs"/>
       <repopackage name="clutter-gtk-lang"/>
@@ -1392,8 +1393,10 @@
       <repopackage name="libclamav12"/>
       <repopackage name="libclammspack0"/>
       <repopackage name="libclang-cpp18"/>
+      <repopackage name="libclang-cpp19"/>
       <repopackage name="libclang13"/>
       <repopackage name="libclang_rt18"/>
+      <repopackage name="libclang_rt19"/>
       <repopackage name="libclastfm0"/>
       <repopackage name="libcloudproviders0"/>
       <repopackage name="libclucene-contribs-lib1"/>
@@ -2209,6 +2212,7 @@
       <repopackage name="liblirc_client0"/>
       <repopackage name="libliveMedia112"/>
       <repopackage name="libLLVM18"/>
+      <repopackage name="libLLVM19"/>
       <repopackage name="liblmdb-0_9_30"/>
       <repopackage name="libloader"/>
       <repopackage name="liblogging0"/>
@@ -3058,6 +3062,7 @@
       <repopackage name="linux-glibc-devel"/>
       <repopackage name="lklug-fonts"/>
       <repopackage name="llvm18-gold"/>
+      <repopackage name="llvm19-gold"/>
       <repopackage name="localsearch"/>
       <repopackage name="localsearch-lang"/>
       <repopackage name="login_defs"/>

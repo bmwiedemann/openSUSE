@@ -142,6 +142,7 @@ unsorted:
   - Mesa-libglapi-devel 
   - Mesa-libglapi-devel-32bit 
   - Mesa-libglapi0-32bit 
+  - Mesa-libva-32bit 
   - Mesa-vulkan-device-select 
   - Mesa-vulkan-device-select-32bit 
   - Mesa-vulkan-overlay 
@@ -1386,6 +1387,9 @@ unsorted:
   - bdf2psf 
   - bdfresize 
   - bdftopcf 
+  - bea-stax 
+  - bea-stax-api 
+  - bea-stax-javadoc 
   - bean-validation-api 
   - bean-validation-api-javadoc 
   - beansbinding 
@@ -2241,6 +2245,8 @@ unsorted:
   - clang17-doc 
   - clang18-devel 
   - clang18-doc 
+  - clang19-devel 
+  - clang19-doc 
   - clanlib 
   - clanlib-devel 
   - clanlib-doc 
@@ -2587,7 +2593,6 @@ unsorted:
   - coredns-for-k8s1.31-extras 
   - coreos-installer 
   - corepack-default 
-  - corepack20 
   - corepack22 
   - coreutils-doc 
   - coreutils-single 
@@ -9758,9 +9763,10 @@ unsorted:
   - jupyter-bqplot-jupyterlab 
   - jupyter-bqplot-notebook 
   - jupyter-cadabra2-kernel 
-  - jupyter-collaboration 
+  - jupyter-collaboration-ui 
   - jupyter-dash 
   - jupyter-doc 
+  - jupyter-docprovider 
   - jupyter-ipyevents 
   - jupyter-ipyevents-jupyterlab 
   - jupyter-ipyparallel 
@@ -9801,6 +9807,7 @@ unsorted:
   - jupyter-server-fileid 
   - jupyter-server-mathjax 
   - jupyter-server-terminals 
+  - jupyter-server-ydoc 
   - jupyter-sidecar-jupyterlab 
   - jupyter-widgetsnbextension 
   - jurand 
@@ -11312,14 +11319,16 @@ unsorted:
   - libLLVM17 
   - libLLVM17-32bit 
   - libLLVM18-32bit 
+  - libLLVM19-32bit 
   - libLLVMSPIRVLib-devel 
-  - libLLVMSPIRVLib18 
+  - libLLVMSPIRVLib19 
   - libLTO13 
   - libLTO14 
   - libLTO15 
   - libLTO16 
   - libLTO17 
   - libLTO18 
+  - libLTO19 
   - libLibreGraphAPI1 
   - libLimeSuite23_11-0 
   - libMagick++-7_Q16HDRI5 
@@ -12570,6 +12579,7 @@ unsorted:
   - libclang-cpp17 
   - libclang-cpp17-32bit 
   - libclang-cpp18-32bit 
+  - libclang-cpp19-32bit 
   - libclapper-0_0-0 
   - libclapper-gtk-0_0-0 
   - libclastfm-devel 
@@ -13420,7 +13430,7 @@ unsorted:
   - libgda-ui-6_0-tools 
   - libgda-xslt-6_0-6_0_0 
   - libgdal-drivers 
-  - libgdal35 
+  - libgdal36 
   - libgdata-devel 
   - libgdbm6-32bit 
   - libgdbm_compat4-32bit 
@@ -14413,6 +14423,7 @@ unsorted:
   - liblldb16 
   - liblldb17 
   - liblldb18 
+  - liblldb19 
   - liblldpctl4 
   - libllmodel0 
   - liblmdb-0_9_30-32bit 
@@ -15033,6 +15044,7 @@ unsorted:
   - libomp16-devel 
   - libomp17-devel 
   - libomp18-devel 
+  - libomp19-devel 
   - libonnx 
   - libonnx_proto 
   - liboop-devel 
@@ -17623,6 +17635,7 @@ unsorted:
   - lld16 
   - lld17 
   - lld18 
+  - lld19 
   - lldb 
   - lldb-devel 
   - lldb13 
@@ -17637,6 +17650,8 @@ unsorted:
   - lldb17-devel 
   - lldb18 
   - lldb18-devel 
+  - lldb19 
+  - lldb19-devel 
   - lldpd 
   - lldpd-devel 
   - llmnrd 
@@ -17716,10 +17731,22 @@ unsorted:
   - llvm18 
   - llvm18-devel 
   - llvm18-doc 
+  - llvm18-libc++-devel 
+  - llvm18-libc++1 
+  - llvm18-libc++abi-devel 
+  - llvm18-libc++abi1 
+  - llvm18-libclang13 
   - llvm18-opt-viewer 
   - llvm18-polly 
   - llvm18-polly-devel 
   - llvm18-vim-plugins 
+  - llvm19 
+  - llvm19-devel 
+  - llvm19-doc 
+  - llvm19-opt-viewer 
+  - llvm19-polly 
+  - llvm19-polly-devel 
+  - llvm19-vim-plugins 
   - lmarbles 
   - lmdb 
   - lmdb-devel 
@@ -19913,9 +19940,6 @@ unsorted:
   - nodejs-electron-doc 
   - nodejs-packaging 
   - nodejs-underscore 
-  - nodejs20 
-  - nodejs20-devel 
-  - nodejs20-docs 
   - nodejs22 
   - nodejs22-devel 
   - nodejs22-docs 
@@ -19960,7 +19984,6 @@ unsorted:
   - novprog-lang 
   - npkg 
   - npm-default 
-  - npm20 
   - npm22 
   - npth-devel 
   - nqp 
@@ -23932,6 +23955,7 @@ unsorted:
   - python3-clang16 
   - python3-clang17 
   - python3-clang18 
+  - python3-clang19 
   - python3-clingo 
   - python3-clinkgrammar 
   - python3-clustershell 
@@ -24035,6 +24059,7 @@ unsorted:
   - python3-lldb16 
   - python3-lldb17 
   - python3-lldb18 
+  - python3-lldb19 
   - python3-logreduce 
   - python3-lttngust 
   - python3-magnumclient 
@@ -25940,7 +25965,9 @@ unsorted:
   - python310-jupyter-bokeh 
   - python310-jupyter-client 
   - python310-jupyter-collaboration 
+  - python310-jupyter-collaboration-ui 
   - python310-jupyter-core 
+  - python310-jupyter-docprovider 
   - python310-jupyter-events 
   - python310-jupyter-kernel-test 
   - python310-jupyter-leaflet 
@@ -25951,6 +25978,8 @@ unsorted:
   - python310-jupyter-server-mathjax 
   - python310-jupyter-server-terminals 
   - python310-jupyter-server-test 
+  - python310-jupyter-server-ydoc 
+  - python310-jupyter-server-ydoc-test 
   - python310-jupyter-sphinx 
   - python310-jupyter-ydoc 
   - python310-jupyter_console 
@@ -29551,7 +29580,9 @@ unsorted:
   - python311-jupyter-bokeh 
   - python311-jupyter-client 
   - python311-jupyter-collaboration 
+  - python311-jupyter-collaboration-ui 
   - python311-jupyter-core 
+  - python311-jupyter-docprovider 
   - python311-jupyter-events 
   - python311-jupyter-kernel-test 
   - python311-jupyter-leaflet 
@@ -29562,6 +29593,8 @@ unsorted:
   - python311-jupyter-server-mathjax 
   - python311-jupyter-server-terminals 
   - python311-jupyter-server-test 
+  - python311-jupyter-server-ydoc 
+  - python311-jupyter-server-ydoc-test 
   - python311-jupyter-sphinx 
   - python311-jupyter-ydoc 
   - python311-jupyter_console 
@@ -33160,7 +33193,9 @@ unsorted:
   - python312-jupyter-bokeh 
   - python312-jupyter-client 
   - python312-jupyter-collaboration 
+  - python312-jupyter-collaboration-ui 
   - python312-jupyter-core 
+  - python312-jupyter-docprovider 
   - python312-jupyter-events 
   - python312-jupyter-kernel-test 
   - python312-jupyter-leaflet 
@@ -33171,6 +33206,8 @@ unsorted:
   - python312-jupyter-server-mathjax 
   - python312-jupyter-server-terminals 
   - python312-jupyter-server-test 
+  - python312-jupyter-server-ydoc 
+  - python312-jupyter-server-ydoc-test 
   - python312-jupyter-sphinx 
   - python312-jupyter-ydoc 
   - python312-jupyter_console 
@@ -36485,7 +36522,6 @@ unsorted:
   - ruby3.3-rubygem-ruby-libvirt 
   - ruby3.3-rubygem-ruby-openid 
   - ruby3.3-rubygem-ruby-progressbar 
-  - ruby3.3-rubygem-ruby-rc4 
   - ruby3.3-rubygem-ruby2_keywords 
   - ruby3.3-rubygem-ruby_parser 
   - ruby3.3-rubygem-rubyntlm 
@@ -36521,7 +36557,6 @@ unsorted:
   - ruby3.3-rubygem-thread_safe 
   - ruby3.3-rubygem-tilt 
   - ruby3.3-rubygem-tomlrb 
-  - ruby3.3-rubygem-ttfunk 
   - ruby3.3-rubygem-turbo-rails 
   - ruby3.3-rubygem-turbolinks 
   - ruby3.3-rubygem-turbolinks-source 
