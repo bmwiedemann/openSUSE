@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-robotframework
-Version:        7.0.1
+Version:        7.1.1
 Release:        0
 Summary:        Generic test automation framework for acceptance testing and ATDD
 License:        Apache-2.0
