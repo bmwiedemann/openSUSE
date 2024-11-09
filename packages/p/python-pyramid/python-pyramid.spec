@@ -25,16 +25,20 @@ Summary:        The Pyramid web application development framework
 License:        BSD-4-Clause AND ZPL-2.1 AND MIT
 URL:            https://pylonsproject.org
 Source0:        https://files.pythonhosted.org/packages/source/p/pyramid/pyramid-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/Pylons/pyramid/pull/3767/commits/bc84ac3af6dbbec655c0ab4544d811d92a175437
+Patch0:         https://github.com/Pylons/pyramid/pull/3767/commits/bc84ac3af6dbbec655c0ab4544d811d92a175437.patch#/py313-tests.patch
 BuildRequires:  %{python_module PasteDeploy >= 1.5.0}
 BuildRequires:  %{python_module WebOb >= 1.8.3}
 BuildRequires:  %{python_module WebTest >= 1.3.1}
 BuildRequires:  %{python_module hupper >= 1.5}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module plaster-pastedeploy}
 BuildRequires:  %{python_module plaster}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module translationstring >= 0.4}
 BuildRequires:  %{python_module venusian >= 1.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module zope.component >= 4.0}
 BuildRequires:  %{python_module zope.deprecation >= 3.5.0}
 BuildRequires:  %{python_module zope.interface >= 3.8.0}
@@ -51,7 +55,7 @@ Requires:       python-venusian >= 1.0
 Requires:       python-zope.deprecation >= 3.5.0
 Requires:       python-zope.interface >= 3.8.0
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %if %{with python2}
 BuildRequires:  python-repoze.lru >= 0.4
@@ -70,17 +74,21 @@ It was previously known as repoze.bfg (http://bfg.repoze.org).
 
 
 
+
+
+
+
+
 # NOTE: The documentation in the docs/ directory is under a
 # non-free license (CC-BY-NC-SA-3.0). Do not package it.
-
 %prep
-%setup -q -n pyramid-%{version}
+%autosetup -p1 -n pyramid-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 for p in pdistreport prequest proutes pserve pshell ptweens pviews; do
@@ -107,6 +115,7 @@ export LANG=en_US.UTF-8
 %python_alternative %{_bindir}/pshell
 %python_alternative %{_bindir}/ptweens
 %python_alternative %{_bindir}/pviews
-%{python_sitelib}/*
+%{python_sitelib}/pyramid
+%{python_sitelib}/pyramid-%{version}.dist-info
 
 %changelog

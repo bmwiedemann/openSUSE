@@ -1,0 +1,65 @@
+From bc84ac3af6dbbec655c0ab4544d811d92a175437 Mon Sep 17 00:00:00 2001
+From: Delta Regeer <bertjw@regeer.org>
+Date: Sat, 26 Oct 2024 15:09:46 -0600
+Subject: [PATCH] Update tests for Python 3.13, add nocover in pshell
+
+Inner functions such as:
+
+    def outer():
+        def inner():
+            pass
+
+Now have an attribute called `__name__`, which will be set to `inner`.
+
+Also it seems that there is a `__doc__` attribute that is now standard,
+and thus we add a pragma nocover to pshell.
+---
+ src/pyramid/scripts/pshell.py |  2 +-
+ tests/test_util.py            | 10 ++--------
+ 2 files changed, 3 insertions(+), 9 deletions(-)
+
+diff --git a/src/pyramid/scripts/pshell.py b/src/pyramid/scripts/pshell.py
+index 4d3817ffb2..6e392b1aef 100644
+--- a/src/pyramid/scripts/pshell.py
++++ b/src/pyramid/scripts/pshell.py
+@@ -193,7 +193,7 @@ def setup_env(self):
+                 if k not in orig_env or v is not orig_env[k]:
+                     if getattr(v, '__doc__', False):
+                         env_help[k] = v.__doc__.replace("\n", " ")
+-                    else:
++                    else:  # pragma: nocover -- Python >= 3.13 has a __doc__
+                         env_help[k] = v
+             del orig_env
+ 
+diff --git a/tests/test_util.py b/tests/test_util.py
+index bf4c089885..c96e7bb1f7 100644
+--- a/tests/test_util.py
++++ b/tests/test_util.py
+@@ -66,13 +66,10 @@ def worker(obj):
+         self.assertEqual(1, foo.y)
+ 
+     def test_property_without_name(self):
+-        def worker(obj):  # pragma: no cover
+-            pass
+-
+         foo = Dummy()
+         helper = self._getTargetClass()
+         self.assertRaises(
+-            ValueError, helper.set_property, foo, property(worker)
++            ValueError, helper.set_property, foo, "has_no___name__"
+         )
+ 
+     def test_property_with_name(self):
+@@ -271,11 +268,8 @@ def worker(obj):
+         self.assertEqual(1, foo.y)
+ 
+     def test_property_without_name(self):
+-        def worker(obj):  # pragma: no cover
+-            pass
+-
+         foo = self._makeOne()
+-        self.assertRaises(ValueError, foo.set_property, property(worker))
++        self.assertRaises(ValueError, foo.set_property, "has_no___name__")
+ 
+     def test_property_with_name(self):
+         def worker(obj):
