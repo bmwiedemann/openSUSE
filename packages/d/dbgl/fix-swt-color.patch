@@ -1,0 +1,46 @@
+Index: dbgl-0.97/src/java/org/dbgl/gui/controls/DarkTheme.java
+===================================================================
+--- dbgl-0.97.orig/src/java/org/dbgl/gui/controls/DarkTheme.java
++++ dbgl-0.97/src/java/org/dbgl/gui/controls/DarkTheme.java
+@@ -2,28 +2,29 @@ package org.dbgl.gui.controls;
+ 
+ import org.dbgl.service.SettingsService;
+ import org.eclipse.swt.graphics.Color;
++import org.eclipse.swt.widgets.Display;
+ 
+ 
+ public class DarkTheme {
+ 
+-	public static final Color defaultForeground = new Color(224, 224, 224);
++	public static final Color defaultForeground = new Color(Display.getCurrent(), 224, 224, 224);
+ 
+-	public static final Color dialogBackground = new Color(81, 86, 88);
+-	public static final Color inputBackground = new Color(47, 47, 47);
++	public static final Color dialogBackground = new Color(Display.getCurrent(), 81, 86, 88);
++	public static final Color inputBackground = new Color(Display.getCurrent(), 47, 47, 47);
+ 
+-	public static final Color toolbarBackground = new Color(71, 76, 78);
++	public static final Color toolbarBackground = new Color(Display.getCurrent(), 71, 76, 78);
+ 
+-	public static final Color tableHeaderBackground = new Color(56, 61, 63);
+-	public static final Color tableHeaderForeground = new Color(204, 204, 204);
+-	public static final Color tableHighlightedBackground = new Color(80, 80, 20);
++	public static final Color tableHeaderBackground = new Color(Display.getCurrent(), 56, 61, 63);
++	public static final Color tableHeaderForeground = new Color(Display.getCurrent(), 204, 204, 204);
++	public static final Color tableHighlightedBackground = new Color(Display.getCurrent(), 80, 80, 20);
+ 
+-	public static final Color tabForeground = new Color(187, 187, 187);
+-	public static final Color tabSelectedForeground = new Color(247, 248, 248);
++	public static final Color tabForeground = new Color(Display.getCurrent(), 187, 187, 187);
++	public static final Color tabSelectedForeground = new Color(Display.getCurrent(), 247, 248, 248);
+ 
+-	public static final Color linkForeground = new Color(111, 197, 238);
++	public static final Color linkForeground = new Color(Display.getCurrent(), 111, 197, 238);
+ 
+-	public static final Color conflictingForeground = new Color(138, 201, 242);
+-	public static final Color changedForeground = new Color(108, 210, 17);
++	public static final Color conflictingForeground = new Color(Display.getCurrent(), 138, 201, 242);
++	public static final Color changedForeground = new Color(Display.getCurrent(), 108, 210, 17);
+ 
+ 	private DarkTheme() {
+ 	}

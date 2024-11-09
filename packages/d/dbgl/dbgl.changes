@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Oct 31 08:13:36 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.98:
+  * Added support for eXoDOS V6 and V6r2. While both the convertor
+    and importer have been improved, using the importer has
+    advantages; it has the ability to import the custom DOSBox
+    versions that come with eXoDOS, creates filter tabs for
+    Playlists and can import the Media Pack Add-On and soundfonts.
+    More details can be found in section Game collection management
+  * Added support for the IBM Music Feature Card, in the profile
+    editor.
+  * Slovakian translation update.
+  * Implemented a workaround for strange zipfile check which
+    prevented certain GamePackArchives from being imported on
+    modern Java versions.
+  * Implemented another workaround for SWT bug resulting in broken
+    artwork on Linux.
+  * Allow parent directories to be considered relative, if
+    configured as such.
+  * Display image dimensions in thumb dialog title.
+  * Fixed a few crash bugs: when DOSBox dynamic options are somehow
+    invalid (red_avatar), when editing an imgmount with fstype=none
+    or when creating a filter with a very lengthy condition.
+  * Updated multiple Java libraries, most importantly SWT which now
+    requires Java 17.
+
+-------------------------------------------------------------------
+Mon Nov  6 12:37:15 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.97:
+  * Too many changes to be listed here, please read the changes at
+    https://dbgl.org/#changelog
+- Update the source url and the package main url
+- Add patch:
+  * fix-swt-color.patch
+
+-------------------------------------------------------------------
 Wed Jul 15 18:53:59 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.92

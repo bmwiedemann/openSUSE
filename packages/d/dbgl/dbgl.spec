@@ -1,8 +1,8 @@
 #
 # spec file for package dbgl
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2020-2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,25 @@
 #
 
 
-%define realver 092
+%define realver 098
+%define java_version 21
 Name:           dbgl
-Version:        0.92
+Version:        0.98
 Release:        0
 Summary:        DOSBox Game Launcher
 License:        GPL-2.0-only
 Group:          System/Emulators/Other
-URL:            http://home.quicknet.nl/qn/prive/blankendaalr/dbgl/
-Source0:        https://www.squadrablu.nl/dbgl/src%{realver}.zip
+URL:            https://dbgl.org
+Source0:        https://dbgl.org/download/src%{realver}.zip
 Source1:        %{name}-wrapper.sh
 Source2:        %{name}.appdata.xml
+Patch0:         fix-swt-color.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-io
 BuildRequires:  apache-commons-lang3
 BuildRequires:  apache-commons-text
 BuildRequires:  eclipse-swt
-BuildRequires:  java-devel
+BuildRequires:  java-devel >= %{java_version}
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 Requires:       apache-commons-io
@@ -41,7 +43,7 @@ Requires:       apache-commons-lang3
 Requires:       apache-commons-text
 Requires:       dosbox >= 0.70
 Requires:       eclipse-swt
-Requires:       java >= 1.8
+Requires:       java >= %{java_version}
 Requires:       javapackages-tools
 BuildArch:      noarch
 
@@ -51,6 +53,7 @@ proven interface of D-Fend.
 
 %prep
 %setup -q -c
+%autopatch -p1
 # unbundle libs
 rm ./src/dist/shared/lib/commons-lang3-*.jar
 rm ./src/dist/shared/lib/commons-io-*.jar
@@ -58,7 +61,7 @@ rm ./src/dist/shared/lib/commons-text-*.jar
 
 %build
 mkdir -p lib
-build-jar-repository -s -p lib commons-io commons-lang3 apache-commons-text swt
+build-jar-repository -s -p libtest commons-io commons-lang3 apache-commons-text swt
 ant distlinux
 
 %install
