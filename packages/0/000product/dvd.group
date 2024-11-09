@@ -4290,7 +4290,6 @@
     <package name="xf86-video-ati" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="xf86-video-chips" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="xf86-video-dummy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="xf86-video-fbdev" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xf86-video-i128" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="xf86-video-intel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="xf86-video-mach64" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->

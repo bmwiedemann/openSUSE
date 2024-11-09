@@ -8132,6 +8132,7 @@ unsorted:
   - grub2-x86_64-efi-bls 
   - grub2-x86_64-efi-debug 
   - grub2-x86_64-efi-extras 
+  - grub2-x86_64-xen-debug 
   - grub2-x86_64-xen-extras 
   - grype 
   - grype-bash-completion 
@@ -25047,6 +25048,7 @@ unsorted:
   - python310-branca 
   - python310-breathe 
   - python310-brewer2mpl 
+  - python310-browsers 
   - python310-bsddb3 
   - python310-bsddb3-devel 
   - python310-bson 
@@ -25111,6 +25113,7 @@ unsorted:
   - python310-cfn-lint 
   - python310-cfscrape 
   - python310-cftime 
+  - python310-changelog-chug 
   - python310-chardet 
   - python310-charset-normalizer 
   - python310-chartify 
@@ -27704,7 +27707,6 @@ unsorted:
   - python310-vcrpy 
   - python310-vcver 
   - python310-vcversioner 
-  - python310-vdf 
   - python310-vdirsyncer 
   - python310-vega 
   - python310-vega_datasets 
@@ -28701,6 +28703,7 @@ unsorted:
   - python311-branca 
   - python311-breathe 
   - python311-brewer2mpl 
+  - python311-browsers 
   - python311-bsddb3 
   - python311-bsddb3-devel 
   - python311-bson 
@@ -28762,6 +28765,7 @@ unsorted:
   - python311-cfn-lint 
   - python311-cfscrape 
   - python311-cftime 
+  - python311-changelog-chug 
   - python311-chardet 
   - python311-chartify 
   - python311-check-manifest 
@@ -31258,7 +31262,6 @@ unsorted:
   - python311-vcrpy 
   - python311-vcver 
   - python311-vcversioner 
-  - python311-vdf 
   - python311-vdirsyncer 
   - python311-vega 
   - python311-vega_datasets 
@@ -32277,6 +32280,7 @@ unsorted:
   - python312-branca 
   - python312-breathe 
   - python312-brewer2mpl 
+  - python312-browsers 
   - python312-bsddb3 
   - python312-bsddb3-devel 
   - python312-bson 
@@ -32340,6 +32344,7 @@ unsorted:
   - python312-cfn-lint 
   - python312-cfscrape 
   - python312-cftime 
+  - python312-changelog-chug 
   - python312-chardet 
   - python312-charset-normalizer 
   - python312-chartify 
@@ -34930,7 +34935,6 @@ unsorted:
   - python312-vcrpy 
   - python312-vcver 
   - python312-vcversioner 
-  - python312-vdf 
   - python312-vdirsyncer 
   - python312-vega 
   - python312-vega_datasets 
@@ -36485,7 +36489,6 @@ unsorted:
   - ruby3.3-rubygem-pry-doc 
   - ruby3.3-rubygem-public_suffix 
   - ruby3.3-rubygem-puma 
-  - ruby3.3-rubygem-puma-5 
   - ruby3.3-rubygem-puma_worker_killer 
   - ruby3.3-rubygem-pundit 
   - ruby3.3-rubygem-rack 
@@ -48772,7 +48775,6 @@ unsorted:
   - xhost 
   - xhtml-dtd 
   - xindy 
-  - xindy-doc 
   - xindy-rules 
   - xine-ui 
   - xinput 
