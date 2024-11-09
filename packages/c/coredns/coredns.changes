@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Nov 07 15:40:44 UTC 2024 - andrea.manzini@suse.com
+
+- Update to version 1.11.3+git129.387f34d:
+  * fix CVE-2024-51744 (https://bugzilla.suse.com/show_bug.cgi?id=1232991)
+    build(deps): bump github.com/golang-jwt/jwt/v4 from 4.5.0 to 4.5.1 (#6955)
+  * core: set cache-control max-age as integer, not float (#6764)
+  * Issue-6671: Fixed the order of plugins. (#6729)
+  * `root`: explicit mark `dnssec` support (#6753)
+  * feat: dnssec load keys from AWS Secrets Manager (#6618)
+  * fuzzing: fix broken oss-fuzz build (#6880)
+  * Replace k8s.io/utils/strings/slices by Go stdlib slices (#6863)
+  * Update .go-version to 1.23.2 (#6920)
+  * plugin/rewrite: Add "revert" parameter for EDNS0 options (#6893)
+  * Added OpenSSF Scorecard Badge (#6738)
+  * fix(cwd): Restored backwards compatibility of Current Workdir (#6731)
+  * fix: plugin/auto: call OnShutdown() for each zone at its own OnShutdown() (#6705)
+  * feature: log queue and buffer memory size configuration (#6591)
+  * plugin/bind: add zone for link-local IPv6 instead of skipping (#6547)
+  * only create PTR records for endpoints with hostname defined (#6898)
+  * fix: reverter should execute the reversion in reversed order (#6872)
+  * plugin/etcd: fix etcd connection leakage when reload (#6646)
+  * kubernetes: Add useragent (#6484)
+  * Update build (#6836)
+  * Update grpc library use (#6826)
+  * Bump go version from 1.21.11 to 1.21.12 (#6800)
+  * Upgrade antonmedv/expr to expr-lang/expr (#6814)
+  * hosts: add hostsfile as label for coredns_hosts_entries (#6801)
+  * fix TestCorefile1 panic for nil handling (#6802)
+
+-------------------------------------------------------------------
 Thu Sep 19 09:14:06 UTC 2024 - andrea.manzini@suse.com
 
 - Update to version 1.11.3:

@@ -18,7 +18,7 @@
 
 %define project github.com/coredns/coredns
 Name:           coredns
-Version:        1.11.3
+Version:        1.11.3+git129.387f34d
 Release:        0
 Summary:        DNS server written in Go
 License:        Apache-2.0
@@ -71,7 +71,7 @@ go build -mod=vendor -v -buildmode=pie -o coredns
 %check
 # Too many tests fail due to the restricted permissions in the build enviroment.
 # Updates must be tested manually.
-go test ./... -skip="TestZoneExternalCNAMELookupWithProxy|TestReadme|TestCorefile1"
+go test ./... -skip="TestZoneExternalCNAMELookupWithProxy|TestReadme|TestCorefile1|TestView"
 
 %install
 cd $HOME/go/src/%{project}
