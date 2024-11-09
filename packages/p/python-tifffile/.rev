@@ -228,4 +228,34 @@ This should fix ERROR: download_files is configured to fail when the upstream fi
     <comment></comment>
     <requestid>1188318</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5b96c8ec11d867520bbd4bd1d425a1ec</srcmd5>
+    <version>2024.9.20</version>
+    <time>1731182336</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2024.9.20:
+  * Pass 5107 tests.
+  * Fix writing colormap to ImageJ files (breaking).
+  * Improve typing.
+  * Remove support for Python 3.9.
+  * Support writing OME Dataset and some StructuredAnnotations
+    elements.
+  * Fix LSM scan types and dimension orders (#269, breaking).
+  * Use IO[bytes] instead of BinaryIO for typing (#268).
+  * Do not remove trailing length-1 dimension writing non-shaped
+    file (breaking).
+  * Fix writing OME-TIFF with certain modulo axes orders.
+  * Make imshow NaN aware.
+  * Relax bitspersample check for JPEG, JPEG2K, and JPEGXL
+    compression (#265).
+  * Fix reading contiguous multi-page series via Zarr store
+    (#67).
+  * Fix integer overflow in product function caused by numpy
+    types.
+  * Allow tag reader functions to fail.
+  * Enable memmap to create empty files with non-native byte
+    order.
+  * Deprecate Python 3.9, support Python 3.13.</comment>
+    <requestid>1222985</requestid>
+  </revision>
 </revisionlist>
