@@ -18,7 +18,7 @@
 
 %define __builder ninja
 Name:           pan
-Version:        0.160
+Version:        0.161
 Release:        0
 Summary:        A Newsreader for GNOME
 License:        GPL-2.0-or-later
@@ -39,6 +39,7 @@ BuildRequires:  pkgconfig(gcr-3)
 BuildRequires:  pkgconfig(gmime-3.0)
 BuildRequires:  pkgconfig(gnutls) >= 3.0.0
 BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gspell-1)
 BuildRequires:  pkgconfig(gtkspell3-3.0) >= 2.0.16
 BuildRequires:  pkgconfig(libnotify) >= 0.4.1
 BuildRequires:  pkgconfig(libsecret-1)
