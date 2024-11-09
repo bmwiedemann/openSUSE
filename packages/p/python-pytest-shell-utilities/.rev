@@ -51,4 +51,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1156333</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>65aaf8bcd59fe62d21447f5ddba56487</srcmd5>
+    <version>1.9.7</version>
+    <time>1731182337</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.9.7:
+  * Rigid support for net_connections was causing breakages,
+    hence monitor version of psutil and call connections
+    vs net_connections appropriately
+  * Need psutil &gt;= 6.0.0 to use net_connections
+  * fix: handle process shutdown with limited permissions
+  * Support for psutil 6.0.0</comment>
+    <requestid>1222983</requestid>
+  </revision>
 </revisionlist>

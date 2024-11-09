@@ -26,12 +26,12 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pytest-shell-utilities%{psuffix}
-Version:        1.9.0
+Version:        1.9.7
 Release:        0
 Summary:        Pytest plugin to simplify running shell commands against the system
 License:        Apache-2.0
 URL:            https://github.com/saltstack/pytest-shell-utilities
-Source:         https://files.pythonhosted.org/packages/source/p/pytest-shell-utilities/pytest-shell-utilities-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pytest-shell-utilities/pytest_shell_utilities-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 50.3.2}
 BuildRequires:  %{python_module setuptools_scm >= 3.4}
@@ -41,7 +41,7 @@ BuildRequires:  python-rpm-macros
 # SECTION test requirements
 %if %{with test}
 BuildRequires:  %{python_module attrs >= 22.1.0}
-BuildRequires:  %{python_module psutil >= 5.0.0}
+BuildRequires:  %{python_module psutil >= 6.0.0}
 BuildRequires:  %{python_module pytest >= 7.3.0}
 BuildRequires:  %{python_module pytest-helpers-namespace}
 BuildRequires:  %{python_module pytest-shell-utilities = %{version}}
@@ -52,7 +52,7 @@ BuildRequires:  %{python_module typing-extensions}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-attrs >= 22.1.0
-Requires:       python-psutil >= 5.0.0
+Requires:       python-psutil >= 6.0.0
 Requires:       python-pytest >= 7.3.0
 Requires:       python-pytest-helpers-namespace
 Requires:       python-pytest-skip-markers
@@ -64,7 +64,7 @@ BuildArch:      noarch
 Pytest plugin to simplify running shell commands against the system
 
 %prep
-%setup -q -n pytest-shell-utilities-%{version}
+%setup -q -n pytest_shell_utilities-%{version}
 
 %build
 %pyproject_wheel

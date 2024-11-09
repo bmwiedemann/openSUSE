@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov  7 13:31:16 UTC 2024 - Pablo Suárez Hernández <psuarezhernandez@suse.com>
+
+- update to 1.9.7:
+  * Rigid support for net_connections was causing breakages,
+    hence monitor version of psutil and call connections
+    vs net_connections appropriately
+  * Need psutil >= 6.0.0 to use net_connections
+  * fix: handle process shutdown with limited permissions
+  * Support for psutil 6.0.0
+
+-------------------------------------------------------------------
 Fri Mar  1 10:20:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.9.0:
