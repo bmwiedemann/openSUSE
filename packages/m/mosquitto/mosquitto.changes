@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov  8 16:32:01 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- systemd service: Wait till the network got setup to avoid
+  startup failure.
+
+-------------------------------------------------------------------
 Sat Oct 19 08:56:14 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.20

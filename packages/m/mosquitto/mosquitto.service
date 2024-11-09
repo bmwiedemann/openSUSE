@@ -1,6 +1,7 @@
 [Unit]
 Description=Mosquitto MQTT v3.1/v3.1.1 Broker
 Documentation=man:mosquitto.conf(5) man:mosquitto(8)
+After=network-online.target nss-lookup.target
 
 [Service]
 # added automatically, for details please see
