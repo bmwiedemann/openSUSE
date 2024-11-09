@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Nov  9 16:00:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.0:
+  * Mark individuals as reviewed
+    Individuals can now be marked as reviewed to keep track of
+    which profiles have already been checked and when. A profile can
+    be marked as reviewed more than once, it will show the date
+    of the last review.
+  * Wrong arrong direction when merging recommendations (#934)
+
+-------------------------------------------------------------------
 Mon Oct  7 20:49:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.0:

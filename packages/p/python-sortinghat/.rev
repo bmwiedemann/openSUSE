@@ -186,4 +186,18 @@
 - Update to version 0.7.20</comment>
     <requestid>1206170</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>643a8ea1fa10c2bf9ffab02a057bd2fd</srcmd5>
+    <version>1.5.0</version>
+    <time>1731182332</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.0:
+  * Mark individuals as reviewed
+    Individuals can now be marked as reviewed to keep track of
+    which profiles have already been checked and when. A profile can
+    be marked as reviewed more than once, it will show the date
+    of the last review.
+  * Wrong arrong direction when merging recommendations (#934)</comment>
+    <requestid>1222990</requestid>
+  </revision>
 </revisionlist>

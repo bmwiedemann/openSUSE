@@ -17,7 +17,7 @@
 
 
 Name:           python-sortinghat
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        A tool to manage identities
 License:        GPL-3.0-only
