@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Nov  8 09:56:48 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 1.98.5
+  * [UI]
+    - Debugging a target clock ratio selector issue
+  * [Build]
+    - Makefile compliant with the -s silent option
+    - [CI] Disable the unfound arm64v8/ubuntu:rolling
+  * [AMD]
+    - [Strix Point] Adding PRO series
+    - [Zen5][Zen5c] Introducing the TURIN architecture
+    - Supply a fallback thermal junction max to various Zen series
+    - [Zen5] Mitigation mechanisms and Features bits
+        SBPB,
+        SRSO_NO,
+        SRSO_USR_KNL_NO,
+        ERMSB,
+        FSRS,
+        FSRC_CMPSB,
+        PREFETCHI
+    - [Zen] Added remaining X3D processor models
+    - [PHOENIX2] Added the unlocked for overclocking Ryzen 5 8500GE
+    - [PHOENIX2] Added the unlocked for overclocking Ryzen 3 8300GE
+    - [SIENA] Added the EPYC Embedded 8004 Series
+    - [GENOA] Added a left over EPYC Embedded 9534
+    - [Turin] Employed the Genoa UMC decoder
+    - [Family 1Ah] Updated the PStateDef MSR
+    - [Zen] Completed CPUID leaf 0x80000021 from PPR 57238
+    - [Zen5/Granite Ridge] Added Ryzen 7 9800X3D processor
+  * [Intel]
+    - [ARL] Declare PCI ids to probe the IMC as a MTL controller
+    - [ARL][IMC] DDR5: tWR = tWRPRE - tCWL - 10
+    - [ADL-X/ADL-N] Declare PCI ids to probe the memory controller
+    - [LNL] Added PCI ids to probe any IMC and SMBUS
+    - [ARL] Completed with SMBUS PCI id
+    - [MTL-M] Declare PCI ids to probe the IMC and TCO
+    - [MTL-M] Set PCI ids into Daemon
+    - [RPL] Added remaining PX and H processor line platforms
+
+-------------------------------------------------------------------
 Fri Sep 20 13:22:21 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to 1.98.4

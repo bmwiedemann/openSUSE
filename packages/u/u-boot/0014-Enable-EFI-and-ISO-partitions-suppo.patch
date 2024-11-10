@@ -10,7 +10,7 @@ Subject: [PATCH] Enable EFI and ISO partitions support on socfpga_de0_nano_soc
  1 file changed, 2 deletions(-)
 
 diff --git a/configs/socfpga_de0_nano_soc_defconfig b/configs/socfpga_de0_nano_soc_defconfig
-index c16004fc29b..13b55f38c2d 100644
+index c16004fc29..13b55f38c2 100644
 --- a/configs/socfpga_de0_nano_soc_defconfig
 +++ b/configs/socfpga_de0_nano_soc_defconfig
 @@ -44,8 +44,6 @@ CONFIG_CMD_EXT4_WRITE=y

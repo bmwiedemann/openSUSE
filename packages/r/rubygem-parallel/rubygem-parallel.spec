@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-parallel
-Version:        1.25.1
+Version:        1.26.3
 Release:        0
 %define mod_name parallel
 %define mod_full_name %{mod_name}-%{version}

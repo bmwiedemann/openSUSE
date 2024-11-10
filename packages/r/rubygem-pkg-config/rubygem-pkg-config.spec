@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-pkg-config
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-pkg-config
-Version:        1.5.6
+Version:        1.5.7
 Release:        0
 %define mod_name pkg-config
 %define mod_full_name %{mod_name}-%{version}
@@ -47,7 +47,7 @@ for compiling Ruby native extensions.
 
 %install
 %gem_install \
-  --doc-files="NEWS README.rdoc" \
+  --doc-files="NEWS.md README.rdoc" \
   -f
 
 %gem_packages

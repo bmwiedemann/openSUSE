@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Nov  8 10:38:43 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.2.1
+  * Remove build from release env
+  * Remove ipaddress from dependencies
+- from version 0.2.0
+  * Updated licenses and headers
+  * Add MANIFEST.in
+  * Fix syntax warning over comparison of literals using is
+  * Passing serials for pass to certificate while creation
+  * Add __main__ for python -m certipy
+  * Add ci
+  * Update .gitignore
+  * Avoid permissions mods on top-level tmp
+  * Add flask and requests as dev dependencies
+  * Install dev dependencies from setup
+  * Add flask tls server to verify generated certs
+  * Switch to cryptography (#9)
+  * Switch to pyproject.toml
+  * Update requires-python and classifiers
+  * Disambiguate top-level package
+  * Add pre-commit yaml
+  * Fix ruff warnings, format with black
+  * Remove black since ruff already formats
+  * Remove black from dev dependencies
+  * Make version dynamic and move to separate file
+  * Add bump-my-version config
+  * Add release workflow
+  * Reference release environment
+- Add python-Flask and python-requests to BuildRequires
+- Switch package to modern Python Stack on SLE-15
+  * Use Python 3.11 on SLE-15 by default
+  * Drop support for older Python versions
+- Switch build system from setuptools to pyproject.toml
+  * Add python-pip and python-wheel to BuildRequires
+  * Replace %python_build with %pyproject_wheel
+  * Replace %python_install with %pyproject_install
+- Limit Python files matched in %files section
+- Drop setting default file attributes in %files section
+
+-------------------------------------------------------------------
 Tue Jan 19 05:53:17 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch from python3_only to python_alternative for certipy 

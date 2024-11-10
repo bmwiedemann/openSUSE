@@ -71,4 +71,12 @@
     <comment>- Update package dependencies</comment>
     <requestid>1220548</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6a434152ff13670f4f52e307cc6270a4</srcmd5>
+    <version>6.8.0</version>
+    <time>1731182042</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1222861</requestid>
+  </revision>
 </revisionlist>

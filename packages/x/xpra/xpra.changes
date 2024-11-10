@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Nov 08 15:55:50 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 6.3.0+git20241102.0dfe55ed:
+  * #4050 convert to json sbom using cyclonedx
+  * simple linter warnings
+  * avoid warnings when running with an older config installed
+  * we have some sbom for macos now
+
+-------------------------------------------------------------------
+Fri Nov  8 15:47:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require /usr/bin/dbus-launch instead of dbus-1-x11: the latter is
+  supposed to be removed after the move to dbus-broker.
+
+-------------------------------------------------------------------
+Tue Oct 29 13:53:16 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 6.3.0+git20241029.69e643f3:
+  * #4393 failure to redirect should not propagate
+  * #4393 don't try to capture stderr in GUI mode
+  * try to avoid ResourceWarning
+  * #4050 basic sbom for macos builds
+  * #4396 safer lookup
+
+-------------------------------------------------------------------
 Mon Oct 28 19:23:53 UTC 2024 - scott.bradnick@suse.com
 
 - Update to version 6.3.0+git20241028.fb72d902:

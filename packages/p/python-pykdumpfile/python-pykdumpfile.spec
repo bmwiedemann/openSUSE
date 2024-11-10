@@ -25,7 +25,7 @@ Summary:        Python bindings to libkdumpfile
 License:        GPL-2.0-or-later
 URL:            https://github.com/ptesarik/pykdumpfile
 Source:         https://files.pythonhosted.org/packages/source/p/pykdumpfile/pykdumpfile-%{version}.tar.gz
-BuildRequires:  %{python_module cffi >= 1.0.0}
+BuildRequires:  %{python_module cffi >= 1.8}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -34,8 +34,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  libkdumpfile-devel
 BuildRequires:  python-rpm-macros
-# assuming all python*-cffi packages have the same version
-Requires:       python-cffi = %(rpm -q --whatprovides python3-cffi --qf "%%{version}")
+Requires:       python-cffi >= 1.8
 Obsoletes:      python-libkdumpfile < %{version}
 Provides:       python-libkdumpfile = %{version}
 %python_subpackages

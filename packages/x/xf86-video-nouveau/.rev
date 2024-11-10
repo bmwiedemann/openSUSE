@@ -226,4 +226,35 @@
   with gcc14 (boo#1225956)</comment>
     <requestid>1186217</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>1b105dfb0bf7498b02b53e60b6aecc1c</srcmd5>
+    <version>1.0.18</version>
+    <time>1731182045</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.18
+  * Build xz tarballs instead of bzip2
+  * Update Sun license notices to current X.Org standard form
+  * gitlab CI: add a basic build test
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * gitlab CI: ensure libtool is installed in build container
+  * nouveau: fixup driver for new X server ABI
+  * bump minimal xorg version to 1.18
+  * drop check for xorg_list_init()
+  * drop compat for ancient server versions
+  * drop obsolete check for HAS_DIXREGISTERPRIVATEKEY
+  * drop compat with ancient ABI_VIDEODRV_VERSION &lt; 20
+  * use XNFalloc() instead of xnfalloc
+  * use XNFcallocarray() instead of xnfcalloc macro
+  * use dixDestroyPixmap() instead of direct driver call
+  * remove sarea.h usage
+  * Fix implicit declaration of wfbScreenInit
+  * nouveau: Rename functions that has origin from modesetting
+  * nouveau: fixup driver for new X server ABI
+  * nouveau: Remove consider_disabled from nouveau_pick_best_crtc
+  * nouveau: Use randr_crtc_covering_drawable used in modesetting
+  * nouveau: use modesetting randr_crtc_covering_drawable implementation
+  * nouveau: Implement nouveau_pick_best_crtc using rr_crtc_covering_box
+- supersedes U_nouveau-fixup-driver-for-new-X-server-ABI.patch</comment>
+    <requestid>1222853</requestid>
+  </revision>
 </revisionlist>

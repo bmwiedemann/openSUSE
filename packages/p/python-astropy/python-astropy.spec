@@ -49,7 +49,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-astropy%{psuffix}
-Version:        6.1.3
+Version:        6.1.5
 Release:        0
 Summary:        Community-developed python astronomy tools
 License:        BSD-3-Clause
@@ -73,7 +73,7 @@ BuildRequires:  hdf5-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 3.13
-Requires:       python-astropy-iers-data >= 0.2024.7.29.0.32.7
+Requires:       python-astropy-iers-data >= 0.2024.10.28.0.34.7
 Requires:       python-numpy >= 1.23
 Requires:       python-packaging >= 19.0
 Requires:       python-pyerfa >= 2.0.1.1
@@ -83,9 +83,7 @@ Requires(postun): update-alternatives
 Conflicts:      perl-Data-ShowTable
 # [recommended]
 Recommends:     python-scipy >= 1.8
-Recommends:     python-matplotlib >= 3.3
-Conflicts:      python-matplotlib = 3.4.0
-Conflicts:      python-matplotlib = 3.5.2
+Recommends:     python-matplotlib >= 3.5
 # [all]
 Suggests:       python-h5py
 Suggests:       python-beautifulsoup4
@@ -120,7 +118,7 @@ BuildRequires:  %{python_module fsspec >= 2023.4.0}
 BuildRequires:  %{python_module h5py}
 BuildRequires:  %{python_module html5lib}
 BuildRequires:  %{python_module jplephem}
-BuildRequires:  %{python_module matplotlib >= 3.3}
+BuildRequires:  %{python_module matplotlib >= 3.5}
 BuildRequires:  %{python_module mpmath}
 BuildRequires:  %{python_module pandas}
 %ifnarch %arm

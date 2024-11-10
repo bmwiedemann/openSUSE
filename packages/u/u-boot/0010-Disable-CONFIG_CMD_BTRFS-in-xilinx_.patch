@@ -9,7 +9,7 @@ Subject: [PATCH] Disable CONFIG_CMD_BTRFS in xilinx_zynqmp_virt_defconfig to
  1 file changed, 1 insertion(+)
 
 diff --git a/configs/xilinx_zynqmp_virt_defconfig b/configs/xilinx_zynqmp_virt_defconfig
-index 1133134e3fe..c025d3803df 100644
+index 1133134e3f..c025d3803d 100644
 --- a/configs/xilinx_zynqmp_virt_defconfig
 +++ b/configs/xilinx_zynqmp_virt_defconfig
 @@ -96,6 +96,7 @@ CONFIG_CMD_REGULATOR=y

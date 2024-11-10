@@ -18,7 +18,7 @@
 
 %bcond_with tests
 Name:           jdependency
-Version:        1.2
+Version:        1.4
 Release:        0
 Summary:        An API to analyse class dependencies
 License:        Apache-2.0

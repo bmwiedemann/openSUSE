@@ -88,4 +88,13 @@
   * Fix continuous integration</comment>
     <requestid>1217072</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0d08ef8be4b83fc9665159b47bca3bbc</srcmd5>
+    <version>0.2024.11.4.0.33.34</version>
+    <time>1731182277</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2024.11.4.0.33.34
+  * Update IERS Earth rotation and leap second tables</comment>
+    <requestid>1222845</requestid>
+  </revision>
 </revisionlist>

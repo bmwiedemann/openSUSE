@@ -19,13 +19,13 @@
 %define qt6_version 6.7.0
 
 %define rname attica
-# Full KF6 version (e.g. 6.7.0)
+# Full KF6 version (e.g. 6.8.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 # Last major and minor KF6 version (e.g. 6.0)
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-attica
-Version:        6.7.0
+Version:        6.8.0
 Release:        0
 Summary:        Open Collaboration Service client library
 License:        LGPL-2.1-or-later
@@ -49,8 +49,6 @@ Attica is a library to access Open Collaboration Service servers.
 %package -n libKF6Attica6
 Summary:        Open Collaboration Service client library
 Requires:       kf6-attica >= %{version}
-%requires_ge    libQt6Core6
-%requires_ge    libQt6Network6
 
 %description -n libKF6Attica6
 Attica is a library to access Open Collaboration Service servers.

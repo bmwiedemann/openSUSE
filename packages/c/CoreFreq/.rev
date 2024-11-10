@@ -342,4 +342,12 @@ There are 4 months worth of complicated commit, and I cannot go through them all
     <comment>Update to 1.98.4 (fixes build on kernel 6.11)</comment>
     <requestid>1202218</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>9ceaae8fbfdf45969373346aaba5caa2</srcmd5>
+    <version>1.98.5</version>
+    <time>1731182070</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.98.5</comment>
+    <requestid>1222716</requestid>
+  </revision>
 </revisionlist>

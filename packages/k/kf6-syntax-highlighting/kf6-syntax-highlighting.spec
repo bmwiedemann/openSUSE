@@ -19,13 +19,13 @@
 %define qt6_version 6.7.0
 
 %define rname syntax-highlighting
-# Full KF6 version (e.g. 6.7.0)
+# Full KF6 version (e.g. 6.8.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 # Last major and minor KF6 version (e.g. 6.0)
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-syntax-highlighting
-Version:        6.7.0
+Version:        6.8.0
 Release:        0
 Summary:        Syntax highlighting engine and library
 License:        LGPL-2.1-or-later AND GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-only AND MIT AND BSD-3-Clause AND Artistic-1.0

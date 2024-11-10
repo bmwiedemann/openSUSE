@@ -18,14 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-autoflake
-Version:        2.2.1
+Version:        2.3.1
 Release:        0
 Summary:        Program to removes unused Python imports and variables
 License:        MIT
 URL:            https://github.com/myint/autoflake
 Source:         https://files.pythonhosted.org/packages/source/a/autoflake/autoflake-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM support-python312.patch gh#PyCQA/autoflake#280
-Patch1:         support-python312.patch
 Requires:       python-tomli
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module hatchling}

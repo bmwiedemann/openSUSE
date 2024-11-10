@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Nov  7 09:06:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix requires_eq call: it does not, and never did, work on virtual
+  provides, only package names (in the past it was simply ignored,
+  newly throws an error exposing those things).
+
+-------------------------------------------------------------------
+Mon Nov  4 11:25:53 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.8.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.8.0
+- Changes since 6.7.0:
+  * Allow explicit setting of Python3 fallback executible path
+  * Update dependency version to 6.8.0
+  * Add missing include
+  * Trigger binding reevaluation on language change
+  * Propagate QML dependency for a static build with KTranscript enabled
+  * Add CI for static builds on Linux
+  * Update version to 6.8.0
+  * Reduce temporary allocations
+  * Modernize member initialization
+  * Fix container size type narrowing warnings
+  * Remove commented-out KLocale leftovers
+  * Align argument names between definition and declaration
+  * Re-evaluate the languages we translate to on QEvent::LanguageChange
+  * Cleanup KLocalizedContext d-ptr handling
+  * Special-case the language fallback for country-less English
+  * Use QStringView for locale splitting
+
+-------------------------------------------------------------------
 Mon Nov  4 11:24:47 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update package dependencies

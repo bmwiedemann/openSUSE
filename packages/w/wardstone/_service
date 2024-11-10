@@ -1,6 +1,6 @@
 <services>
   <service mode="disabled" name="obs_scm">
-    <param name="url">https://github.com/tshakalekholoane/wardstone</param>
+    <param name="url">https://github.com/openSUSE/wardstone</param>
     <param name="scm">git</param>
     <param name="versionformat">@PARENT_TAG@~@TAG_OFFSET@</param>
     <param name="revision">0.2.0</param>

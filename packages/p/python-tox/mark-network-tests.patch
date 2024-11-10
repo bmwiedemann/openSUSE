@@ -8,25 +8,25 @@ Subject: [PATCH 2/2] skip test which require network access
  .../python/virtual_env/package/test_package_cmd_builder.py     | 1 +
  2 files changed, 4 insertions(+)
 
-diff --git a/pyproject.toml b/pyproject.toml
-index 5e9b104a..b81c63ad 100644
---- a/pyproject.toml
-+++ b/pyproject.toml
-@@ -147,6 +147,9 @@ count = true
- [tool.pytest.ini_options]
- testpaths = ["tests"]
+Index: tox-4.23.2/pyproject.toml
+===================================================================
+--- tox-4.23.2.orig/pyproject.toml
++++ tox-4.23.2/pyproject.toml
+@@ -146,6 +146,9 @@ testpaths = [
+   "tests",
+ ]
  addopts = "--tb=auto -ra --showlocals --no-success-flaky-report"
 +markers = [
 +    "network: tests requiring network connection",
 +]
+ # Keep temporary directories only for failed or errored tests.
+ tmp_path_retention_policy = "failed"
  
- [tool.coverage]
- html.show_contexts = true
-diff --git a/tests/tox_env/python/virtual_env/package/test_package_cmd_builder.py b/tests/tox_env/python/virtual_env/package/test_package_cmd_builder.py
-index d29fe257..fb49a984 100644
---- a/tests/tox_env/python/virtual_env/package/test_package_cmd_builder.py
-+++ b/tests/tox_env/python/virtual_env/package/test_package_cmd_builder.py
-@@ -87,6 +87,7 @@ def test_install_pkg_via(tox_project: ToxProjectCreator, mode: str, pkg_with_ext
+Index: tox-4.23.2/tests/tox_env/python/virtual_env/package/test_package_cmd_builder.py
+===================================================================
+--- tox-4.23.2.orig/tests/tox_env/python/virtual_env/package/test_package_cmd_builder.py
++++ tox-4.23.2/tests/tox_env/python/virtual_env/package/test_package_cmd_builder.py
+@@ -86,6 +86,7 @@ def test_install_pkg_via(tox_project: To
  
  
  @pytest.mark.usefixtures("enable_pip_pypi_access")
@@ -34,6 +34,3 @@ index d29fe257..fb49a984 100644
  def test_build_wheel_external(tox_project: ToxProjectCreator, demo_pkg_inline: Path) -> None:
      ini = """
      [testenv]
--- 
-2.44.0
-

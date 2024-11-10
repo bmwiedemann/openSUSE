@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov  8 09:58:04 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 6.8.0.2
+- Drop patch, merged upstream:
+  * 0001-Lazy-Init-Support-Lazy-Subtypes-amended.patch
+
+-------------------------------------------------------------------
 Sat Oct 26 21:29:14 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add patches to fix issue found by the KDE CI (PYSIDE-2893)

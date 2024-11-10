@@ -1,7 +1,7 @@
 #
 # spec file for package xindy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,16 +20,14 @@ Name:           xindy
 Version:        2.5.1
 Release:        0
 Summary:        Index generator for structured documents like LaTeX or SGML
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Text/Utilities
-Url:            http://xindy.org/
-
+URL:            http://xindy.org/
 #DL-URL:	http://ctan.org/tex-archive/indexing/xindy/
 Source:         ftp://ctan.org/tex-archive/indexing/xindy/base/xindy-2.5.1.tar.gz
 Patch1:         fix-FHS.dpatch.diff
 Patch2:         help-option.dpatch.diff
 Patch3:         1000_Unescaped-left-brace-deprecated-in-regexps.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  automake
 BuildRequires:  clisp
 BuildRequires:  flex
@@ -46,10 +44,12 @@ BuildRequires:  tex(lgrcmr.fd)
 BuildRequires:  tex(lgrenc.def)
 %endif
 # Need this at runtime for indexing to work correctly:
-Requires:       clisp
+%requires_eq clisp
 Requires:       xindy-rules = %version
 # clisp is not present
 ExcludeArch:    armv4l ppc64 ppc64le
+Obsoletes:      xindy-doc < %version-%release
+Provides:       xindy-doc = %version-%release
 
 %description
 xindy is an index processor that can be used to generate book-like
@@ -75,40 +75,26 @@ indexes for arbitrary document-preparation systems.
 
 This package contains the rule files (the knowledge base) of xindy.
 
-%package doc
-Summary:        Documentation for Xindy
-Group:          Documentation/Other
-BuildArch:      noarch
-
-%description doc
-Documentation for the Xindy index generator.
-
 %prep
-%setup -q
-%patch -P 1 -P 2 -P 3 -p1
+%autosetup -p1
 
 %build
 autoreconf -fi
 %configure --docdir=%_docdir/%name
 # not safe for -j
-make -j1
+%make_build -j1
 
 %install
 %make_install
 rm -f "%buildroot/%_prefix/VERSION"
 
 %files
-%defattr(-,root,root)
-%doc COPYING
+%license COPYING
 %_bindir/*
 %_libdir/%name
+%doc %_mandir/man*/*
 
 %files rules
-%defattr(-,root,root)
 %_datadir/%name
-
-%files doc
-%defattr(-,root,root)
-%doc %_mandir/man*/*
 
 %changelog

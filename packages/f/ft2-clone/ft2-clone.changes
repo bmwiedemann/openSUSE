@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov  7 16:30:26 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.88
+  * Added an experimental .BRR (Super Nintendo) sample loader.
+    Thanks to astriid for suggesting this (and coming up with
+    some base code).
+  * The tracker scopes now show a waveform that is more correct
+    when using interpolation mode "No interpolation" and
+    "Linear (FT2)".
+  * Fixed: The "Gaussian (SNES)" interpolation option had a small
+    delay of one input sample point. Not a big deal, but I
+    corrected it anyway.
+
+-------------------------------------------------------------------
 Sun Nov  3 19:38:13 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.87

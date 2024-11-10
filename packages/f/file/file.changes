@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov  7 20:11:48 UTC 2024 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- file-seccomp.patch: glibc uses getrandom in malloc, rseq and prctl
+  in various other places, allow these syscalls in seccomp filter.
+
+-------------------------------------------------------------------
 Mon Feb 26 09:11:40 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Prepare for RPM 4.20 

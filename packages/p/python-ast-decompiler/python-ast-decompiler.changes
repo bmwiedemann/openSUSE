@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov  8 10:14:29 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.8.0
+  * Support Python 3.12 and 3.13; stop testing Python 3.6 and 3.7
+  * Fix all DeprecationWarnings in the codebase
+- Refresh no-relative-imports.patch
+
+-------------------------------------------------------------------
 Tue Oct 18 12:44:05 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Initial packaging effort for ast-decompiler 0.7.0.

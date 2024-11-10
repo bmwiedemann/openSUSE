@@ -208,4 +208,12 @@ On Wednesday 19 September 2012, Julian Mehnle wrote:
       Thanks to Giovanni &lt;g.bechis@snb.it&gt; (forwarded request 1182900 from tinita)</comment>
     <requestid>1182965</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>f2e3e192531bc0a06455c3328a19a2c2</srcmd5>
+    <version>3.202.406.170</version>
+    <time>1731181968</time>
+    <user>dimstar_suse</user>
+    <comment>- fix conflict with spfd daemon in libspf2 (forwarded request 1222490 from dstoecker)</comment>
+    <requestid>1222669</requestid>
+  </revision>
 </revisionlist>

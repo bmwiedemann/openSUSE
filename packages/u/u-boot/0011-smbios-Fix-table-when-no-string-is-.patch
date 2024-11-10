@@ -19,7 +19,7 @@ Series-cc: u-boot@lists.denx.de
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/lib/smbios.c b/lib/smbios.c
-index 7c24ea129eb..2db30bf6108 100644
+index 7c24ea129e..2db30bf610 100644
 --- a/lib/smbios.c
 +++ b/lib/smbios.c
 @@ -276,7 +276,7 @@ static int smbios_add_prop(struct smbios_ctx *ctx, const char *prop,

@@ -15,7 +15,7 @@ Signed-off-by: Matthias Brugger <mbrugger@suse.com>
  create mode 100644 arch/arm/dts/sunxi-spi-u-boot.dtsi
 
 diff --git a/arch/arm/dts/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/dts/sun8i-h2-plus-orangepi-zero.dts
-index 1b001f2ad0e..c2a4f169613 100644
+index 1b001f2ad0..c2a4f16961 100644
 --- a/arch/arm/dts/sun8i-h2-plus-orangepi-zero.dts
 +++ b/arch/arm/dts/sun8i-h2-plus-orangepi-zero.dts
 @@ -46,6 +46,7 @@
@@ -28,7 +28,7 @@ index 1b001f2ad0e..c2a4f169613 100644
  #include <dt-bindings/input/input.h>
 diff --git a/arch/arm/dts/sunxi-spi-u-boot.dtsi b/arch/arm/dts/sunxi-spi-u-boot.dtsi
 new file mode 100644
-index 00000000000..df89d02ff2f
+index 0000000000..df89d02ff2
 --- /dev/null
 +++ b/arch/arm/dts/sunxi-spi-u-boot.dtsi
 @@ -0,0 +1,8 @@

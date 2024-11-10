@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov  8 13:04:42 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- get rid of update-alternatives; it's no longer needed because with
+  upcoming G06 production driver, the nvidia packages will rely on
+  this implementation (JIRA#PED-11444)
+- added conflicts to packages for legacy nvidia drivers (G04,G05)
+
+-------------------------------------------------------------------
 Wed May 17 23:21:09 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build against recent opencl: pass

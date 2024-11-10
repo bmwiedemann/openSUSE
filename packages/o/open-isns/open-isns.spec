@@ -1,7 +1,7 @@
 #
 # spec file for package open-isns
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,10 +26,9 @@ Name:           open-isns
 Summary:        Partial Implementation of iSNS iSCSI registration
 License:        LGPL-2.1-or-later
 Group:          System/Kernel
-Version:        0.102
+Version:        0.103+2.296d533bd52a
 Release:        0
 Source:         %{name}-%{version}.tar.xz
-Patch1:         Quiet-a-commpiler-warning.patch
 URL:            https://github.com/open-iscsi/%{name}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
@@ -110,7 +109,7 @@ ln -sf /usr/sbin/service %{buildroot}/usr/sbin/rcisnsd
 %attr(0600,root,root) %config(noreplace) %{_sysconfdir}/isns/isnsdd.conf
 %{_sbindir}/rcisnsd
 %license COPYING
-%doc HACKING README TODO
+%doc HACKING README.md TODO
 %doc %{_mandir}/man8/isnsd.8%{?ext_man}
 %doc %{_mandir}/man8/isnsadm.8%{?ext_man}
 %doc %{_mandir}/man8/isnsdd.8%{?ext_man}

@@ -18,7 +18,7 @@ Signed-off-by: Matthias Brugger <mbrugger@suse.com>
  5 files changed, 2 insertions(+), 4 deletions(-)
 
 diff --git a/configs/sandbox64_defconfig b/configs/sandbox64_defconfig
-index dd0582d2a0c..a76f75e1c27 100644
+index dd0582d2a0..a76f75e1c2 100644
 --- a/configs/sandbox64_defconfig
 +++ b/configs/sandbox64_defconfig
 @@ -90,7 +90,6 @@ CONFIG_CMD_REGULATOR=y
@@ -30,7 +30,7 @@ index dd0582d2a0c..a76f75e1c27 100644
  CONFIG_CMD_CRAMFS=y
  CONFIG_CMD_EXT4_WRITE=y
 diff --git a/configs/sandbox_defconfig b/configs/sandbox_defconfig
-index dc5fcdbd1c9..fee9baff8c6 100644
+index dc5fcdbd1c..fee9baff8c 100644
 --- a/configs/sandbox_defconfig
 +++ b/configs/sandbox_defconfig
 @@ -125,7 +125,6 @@ CONFIG_CMD_AES=y
@@ -42,7 +42,7 @@ index dc5fcdbd1c9..fee9baff8c6 100644
  CONFIG_CMD_CRAMFS=y
  CONFIG_CMD_EROFS=y
 diff --git a/configs/socfpga_arria10_defconfig b/configs/socfpga_arria10_defconfig
-index 6d27deebd53..150180edb45 100644
+index 6d27deebd5..150180edb4 100644
 --- a/configs/socfpga_arria10_defconfig
 +++ b/configs/socfpga_arria10_defconfig
 @@ -67,3 +67,5 @@ CONFIG_DESIGNWARE_APB_TIMER=y
@@ -52,7 +52,7 @@ index 6d27deebd53..150180edb45 100644
 +# CONFIG_CMD_BTRFS is not set
 +# CONFIG_FS_BTRFS is not set
 diff --git a/configs/turris_mox_defconfig b/configs/turris_mox_defconfig
-index c62e0d04c9c..36237199e25 100644
+index c62e0d04c9..36237199e2 100644
 --- a/configs/turris_mox_defconfig
 +++ b/configs/turris_mox_defconfig
 @@ -48,7 +48,6 @@ CONFIG_CMD_CACHE=y
@@ -64,7 +64,7 @@ index c62e0d04c9c..36237199e25 100644
  CONFIG_MAC_PARTITION=y
  CONFIG_OF_LIST="armada-3720-turris-mox armada-3720-ripe-atlas"
 diff --git a/configs/turris_omnia_defconfig b/configs/turris_omnia_defconfig
-index 93f0bc53f9e..ba5fe1783c1 100644
+index 93f0bc53f9..ba5fe1783c 100644
 --- a/configs/turris_omnia_defconfig
 +++ b/configs/turris_omnia_defconfig
 @@ -79,7 +79,6 @@ CONFIG_CMD_TIME=y

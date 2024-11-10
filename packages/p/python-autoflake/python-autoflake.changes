@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Nov  8 08:48:43 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.3.1
+  * Update pre-commit config
+  * github/workflows/main: use pre-commit/action
+  * Always set encoding when reading setup.cfg
+- from version 2.3.0
+  * readme: add note about customizing args in pre-commit
+  * Add Python 3.12 to CI
+  * Update pre-commit config
+  * Add support for passing the .toml config in the arguments
+  * Add support of ignore comment on the top of the file
+- Drop support-python312.patch, merged upstream
+
+-------------------------------------------------------------------
 Wed Aug 14 14:48:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - switch to modern python on sle15

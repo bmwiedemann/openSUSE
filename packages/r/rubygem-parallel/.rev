@@ -91,4 +91,12 @@ See related SR https://build.opensuse.org/request/show/615279</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1182817</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5c002284634f4a2f57c4ac470fa52884</srcmd5>
+    <version>1.26.3</version>
+    <time>1731181963</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1221886</requestid>
+  </revision>
 </revisionlist>

@@ -298,4 +298,12 @@
   * 0001-build-Install-module-doc-snippet-files.patch</comment>
     <requestid>1218616</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>1e175417bdb2ccd64473d61bc598d497</srcmd5>
+    <version>6.8.0.2</version>
+    <time>1731182082</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1222739</requestid>
+  </revision>
 </revisionlist>

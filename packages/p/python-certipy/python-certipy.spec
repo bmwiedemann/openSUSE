@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-certipy
-Version:        0.1.3
+Version:        0.2.1
 Release:        0
 Summary:        Create and sign CAs and certificates
 License:        BSD-3-Clause
@@ -27,14 +26,18 @@ URL:            https://github.com/LLNL/certipy
 Source:         https://files.pythonhosted.org/packages/source/c/certipy/certipy-%{version}.tar.gz
 # MANIFEST.in was merged; check next release
 Source1:        https://raw.githubusercontent.com/LLNL/certipy/master/LICENSE
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pyOpenSSL
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module pyOpenSSL}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests}
 # /SECTION
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -50,10 +53,10 @@ mv certipy/test .
 sed -i 's/\.\.certipy/certipy/' test/*.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/certipy
 
@@ -72,6 +75,7 @@ export TMP=$(pwd)/tmp
 %doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/certipy
-%{python_sitelib}/*
+%{python_sitelib}/certipy
+%{python_sitelib}/certipy-%{version}.dist-info
 
 %changelog

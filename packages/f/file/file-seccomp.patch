@@ -1,0 +1,35 @@
+From 3cb58bb51d47b8e61611350324b751eaa46166a5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Cristian=20Rodr=C3=ADguez?= <crrodriguez@opensuse.org>
+Date: Fri, 8 Nov 2024 08:28:12 +0100
+Subject: [PATCH] Allow getrandom, rseq, and prctl for glibc malloc
+
+glibc uses getrandom in malloc, rseq, and prctl in various other
+places, allow these syscalls in seccomp filter.
+
+```
+export GLIBC_TUNABLES=glibc.mem.decorate_maps=1
+make check
+```
+
+Signed-off-by: Werner Fink <werner@suse.de>
+---
+ src/seccomp.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/seccomp.c b/src/seccomp.c
+index ce824330..8a2c8a4c 100644
+--- a/src/seccomp.c
++++ b/src/seccomp.c
+@@ -80,6 +80,9 @@ enable_sandbox(void)
+ 	if (ctx == NULL)
+ 		return -1;
+ 
++	ALLOW_RULE(prctl);
++	ALLOW_RULE(getrandom);
++	ALLOW_RULE(rseq);
+ 	ALLOW_RULE(access);
+ 	ALLOW_RULE(brk);
+ 	ALLOW_RULE(close);
+-- 
+2.43.0
+

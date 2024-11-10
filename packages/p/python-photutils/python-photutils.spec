@@ -17,16 +17,16 @@
 
 
 Name:           python-photutils
-Version:        1.13.0
+Version:        2.0.2
 Release:        0
 Summary:        An Astropy package for photometry
 License:        BSD-3-Clause
 Group:          Productivity/Scientific/Astronomy
 URL:            https://github.com/astropy/photutils
 Source:         https://files.pythonhosted.org/packages/source/p/photutils/photutils-%{version}.tar.gz
-BuildRequires:  %{python_module Cython >= 3 with %python-Cython < 3.1}
+BuildRequires:  %{python_module Cython >= 3 with %python-Cython < 4}
 BuildRequires:  %{python_module devel >= 3.9}
-BuildRequires:  %{python_module extension-helpers >= 1 with %python-extension-helpers < 2}
+BuildRequires:  %{python_module extension-helpers >= 1}
 BuildRequires:  %{python_module numpy-devel >= 1.25}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61.2}
@@ -34,24 +34,25 @@ BuildRequires:  %{python_module setuptools_scm >= 6.2}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-astropy >= 5.1
-Requires:       python-numpy >= 1.25
+Requires:       python-astropy >= 5.3
+Requires:       python-numpy >= 1.24
+Requires:       python-scipy >= 1.10
 Recommends:     python-Bottleneck
 Recommends:     python-Shapely
-Recommends:     python-gwcs >= 0.18
-Recommends:     python-matplotlib >= 3.5
+Recommends:     python-gwcs >= 0.19
+Recommends:     python-matplotlib >= 3.7
 Recommends:     python-rasterio
 Recommends:     python-scikit-image >= 0.19.0
-Recommends:     python-scipy >= 1.7.2
 Recommends:     python-tqdm
 # SECTION test requirements
 BuildRequires:  %{python_module Bottleneck}
-BuildRequires:  %{python_module astropy >= 5.1}
-BuildRequires:  %{python_module gwcs >= 0.18}
-BuildRequires:  %{python_module matplotlib >= 3.5}
+BuildRequires:  %{python_module astropy >= 5.3}
+BuildRequires:  %{python_module gwcs >= 0.19}
+BuildRequires:  %{python_module matplotlib >= 3.7}
 BuildRequires:  %{python_module pytest-astropy >= 0.10}
+BuildRequires:  %{python_module pytest-xdist >= 2.5}
 BuildRequires:  %{python_module scikit-image >= 0.19.0}
-BuildRequires:  %{python_module scipy >= 1.7.2}
+BuildRequires:  %{python_module scipy >= 1.10}
 # /SECTION
 %python_subpackages
 
@@ -61,7 +62,7 @@ and performing photometry of astronomical sources.
 
 %prep
 %autosetup -p1 -n photutils-%{version}
-sed -i 's/--color=yes//' pyproject.toml
+sed -i "/'--color=yes',/d" pyproject.toml
 
 %build
 export CFLAGS="%{optflags}"
@@ -73,7 +74,7 @@ export CFLAGS="%{optflags}"
 
 %check
 mv photutils photutils.src
-%pytest_arch --pyargs photutils -rsxfE
+%pytest_arch -n auto --pyargs photutils -rsxfE
 mv photutils.src photutils
 
 %files %{python_files}

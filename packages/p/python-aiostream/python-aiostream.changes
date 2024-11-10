@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Nov  8 08:34:07 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.6.4
+  * Drop support for python 3.8, add support
+    for python 3.13 by @fpgmaas in (#123)
+- from version 0.6.3
+  * Add MANIFEST.in to include tests/conftests.py in
+    source dist by @vxgmichel (issue #121, PR #122)
+- from version 0.6.2
+  * Fixing the issue of the lack of installation sections
+    by @thepapermen in (#113)
+  * Configure pytest test paths so test_utils.py is not
+    mistaken for a test file by @vxgmichel in (#117)
+  * Add strict parameter to stream.zip by @smheidrich in (#119)
+- from version 0.6.1
+  * Fix documentation build (42f9119)
+  * Expose Stream and sources_operator
+    in the aiostream package (e029efd)
+- from version 0.6.0
+  * Support python 3.12 (PR #93)
+  * Support pyright and improve typing in general (PR #99)
+  * Move from setup.* to pyproject.toml (PR #101, #102, #103, #110)
+  * Add typing to aiostream.test_utils (PR #104)
+  * Make operators a singleton object instead of a class (PR #106)
+  * Add sources operator to fix a breaking change in v0.5.x (PR #108, issue #95)
+- Add python-pytest-cov to BuildRequires
+- Drop sed command to remove coverage parameters from setup.cfg
+
+-------------------------------------------------------------------
 Thu Dec 14 09:13:36 UTC 2023 - Petr Gajdos <pgajdos@suse.com>
 
 - update to 0.5.2:

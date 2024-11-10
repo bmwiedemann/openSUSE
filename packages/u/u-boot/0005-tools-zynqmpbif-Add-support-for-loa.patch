@@ -34,7 +34,7 @@ Signed-off-by: Alexander Graf <agraf@suse.de>
  1 file changed, 15 insertions(+)
 
 diff --git a/tools/zynqmpbif.c b/tools/zynqmpbif.c
-index 82ce0ac1a52..b4302fa67ee 100644
+index 82ce0ac1a5..b4302fa67e 100644
 --- a/tools/zynqmpbif.c
 +++ b/tools/zynqmpbif.c
 @@ -42,6 +42,7 @@ enum bif_flag {

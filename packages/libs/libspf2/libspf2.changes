@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov  1 12:53:50 UTC 2024 - pgajdos@suse.com
+
+- fix https://github.com/shevek/libspf2/issues/54
+- added patches
+  + libspf2-gcc14.patch
+
+-------------------------------------------------------------------
 Fri Mar  1 09:57:29 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

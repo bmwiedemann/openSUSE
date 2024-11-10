@@ -16,7 +16,7 @@ Signed-off-by: Michal Suchanek <msuchanek@suse.de>
  4 files changed, 67 insertions(+), 1 deletion(-)
 
 diff --git a/arch/arm/include/asm/arch-sunxi/cpu.h b/arch/arm/include/asm/arch-sunxi/cpu.h
-index 768c6572d6b..86f4b1a103c 100644
+index 768c6572d6..86f4b1a103 100644
 --- a/arch/arm/include/asm/arch-sunxi/cpu.h
 +++ b/arch/arm/include/asm/arch-sunxi/cpu.h
 @@ -22,4 +22,15 @@
@@ -36,7 +36,7 @@ index 768c6572d6b..86f4b1a103c 100644
 +
  #endif /* _SUNXI_CPU_H */
 diff --git a/arch/arm/mach-sunxi/Kconfig b/arch/arm/mach-sunxi/Kconfig
-index 17666814c52..4114321f730 100644
+index 17666814c5..4114321f73 100644
 --- a/arch/arm/mach-sunxi/Kconfig
 +++ b/arch/arm/mach-sunxi/Kconfig
 @@ -1116,6 +1116,22 @@ source "board/sunxi/Kconfig"
@@ -63,7 +63,7 @@ index 17666814c52..4114321f730 100644
  	bool "Enable DIPs detection for CHIP board"
  	select SUPPORT_EXTENSION_SCAN
 diff --git a/arch/arm/mach-sunxi/board.c b/arch/arm/mach-sunxi/board.c
-index 046e9fbfc67..6f208346717 100644
+index 046e9fbfc6..6f20834671 100644
 --- a/arch/arm/mach-sunxi/board.c
 +++ b/arch/arm/mach-sunxi/board.c
 @@ -314,7 +314,30 @@ uint32_t sunxi_get_boot_device(void)
@@ -106,7 +106,7 @@ index 046e9fbfc67..6f208346717 100644
  
  	/* Enable non-secure access to some peripherals */
 diff --git a/cmd/boot.c b/cmd/boot.c
-index 9de90aca6c7..4e2da505ebb 100644
+index 9de90aca6c..4e2da505eb 100644
 --- a/cmd/boot.c
 +++ b/cmd/boot.c
 @@ -47,6 +47,7 @@ static int do_go(struct cmd_tbl *cmdtp, int flag, int argc, char *const argv[])

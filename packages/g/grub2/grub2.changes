@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Nov  8 14:42:12 UTC 2024 - Michael Chang <mchang@suse.com>
+
+- Fix previous change as the variable has to be set earlier 
+  * 0001-10_linux-Do-not-enable-BLSCFG-on-s390-emu.patch
+
+-------------------------------------------------------------------
+Fri Nov  8 05:21:47 UTC 2024 - Michael Chang <mchang@suse.com>
+
+- Do not enable blscfg on s390-emu 
+  * 0001-10_linux-Do-not-enable-BLSCFG-on-s390-emu.patch
+
+-------------------------------------------------------------------
+Wed Nov  6 07:45:21 UTC 2024 - Michael Chang <mchang@suse.com>
+
+- Fix xen package contains debug_info files with the .module suffix by moving
+  them to a separate xen-debug subpackage (bsc#1232573)
+
+-------------------------------------------------------------------
 Fri Nov  1 08:46:36 UTC 2024 - Michael Chang <mchang@suse.com>
 
 - Fix grub.cfg is loaded from an unexpected fallback directory instead of the

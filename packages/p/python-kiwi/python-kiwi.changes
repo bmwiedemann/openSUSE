@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Fri Nov 01 13:31:20 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix make build target
+
+  Move the actions done by the tox target into the
+  build target and call them there in a clean and easy
+  to spot sequence. There is no need to call tox to
+  prepare for the package submission, instead the
+  checks and poetry runs to prepare for the package
+  target should be called directly as part of the
+  build target. In the future we might get rid of
+  tox completely.
+
+-------------------------------------------------------------------
+Fri Nov 01 13:08:12 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.1.17 → 10.1.18
+
+-------------------------------------------------------------------
+Thu Oct 31 23:21:53 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed zipl caller environment
+
+  zipl gets confused with an active sysfs mount inside
+  the root tree at call time of zipl. This commit
+  umounts the /sys bind mount in the image tree prior
+  calling zipl
+
+-------------------------------------------------------------------
+Thu Oct 31 17:46:31 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix s390 test-image-disk build
+
+  Add missing kernel links used by suse tools
+
+-------------------------------------------------------------------
+Thu Oct 31 10:01:54 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.1.16 → 10.1.17
+
+-------------------------------------------------------------------
+Wed Oct 30 13:49:02 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix coloring of build_status.sh flags
+
+  Depending on the place of the status flag the color
+  setup might fail. This commit fixes it
+
+-------------------------------------------------------------------
+Wed Oct 30 10:24:38 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add pytest-container as optional dependency
+
+  The pyproject.toml listed pytest-container as dependency
+  but it is used only to run the container based integration
+  tests for the shell helper methods. For building the package
+  this dependency should not be pulled in
+
+-------------------------------------------------------------------
+Fri Oct 25 10:58:52 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix networking in erofs integration test
+
+  The network setup was systemd-networkd based but
+  the provided network config was not for systemd
+
+-------------------------------------------------------------------
 Wed Oct 23 12:21:32 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 10.1.15 → 10.1.16
@@ -733,6 +800,16 @@ Wed Jul 31 16:57:30 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
   os.path.basename was called on a MagicMock object which
   sometimes confused pytest
+
+-------------------------------------------------------------------
+Wed Jul 31 15:22:06 CEST 2024 - Neal Gompa <neal@gompa.dev>
+
+- CI: Add testing against Python 3.13
+
+  Python 3.13 is shipping in Fedora Linux for Fedora Linux 41, so we
+  should ensure kiwi is tested against it. The testing setup is
+  based on the latest development version of 3.13 as it is not
+  yet released.
 
 -------------------------------------------------------------------
 Wed Jul 31 12:09:20 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>

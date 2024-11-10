@@ -58,16 +58,18 @@
 %define ssh_add_pkg openssh-clients
 %define ssh_keygen_pkg openssh
 %define sphinx_pkg %{use_python_pkg}-sphinx
+%define ruamel_yaml_pkg %{use_python_pkg}-ruamel-yaml
 
 %if 0%{?suse_version}
 %define argparse_manpage_pkg %{use_python_pkg}-argparse-manpage
 %define obs_build_pkg build
 %define ssh_keygen_pkg openssh-common
 %define sphinx_pkg %{use_python_pkg}-Sphinx
+%define ruamel_yaml_pkg %{use_python_pkg}-ruamel.yaml
 %endif
 
 Name:           osc
-Version:        1.9.2
+Version:        1.10.1
 Release:        0
 Summary:        Command-line client for the Open Build Service
 License:        GPL-2.0-or-later
@@ -93,16 +95,18 @@ BuildRequires:  %{use_python_pkg}-devel >= 3.6
 BuildRequires:  %{use_python_pkg}-rpm
 BuildRequires:  %{use_python_pkg}-setuptools
 BuildRequires:  %{use_python_pkg}-urllib3
+BuildRequires:  %{ruamel_yaml_pkg}
 BuildRequires:  diffstat
 %if %{with fdupes}
 BuildRequires:  fdupes
 %endif
-# needed for git scm tests
+# needed for git scm tests and directory ownership of /usr/libexec/git for git-obs symlink
 BuildRequires:  git-core
 
 Requires:       %{use_python_pkg}-cryptography
 Requires:       %{use_python_pkg}-rpm
 Requires:       %{use_python_pkg}-urllib3
+Requires:       %{ruamel_yaml_pkg}
 
 # needed for showing download progressbars
 Recommends:     %{use_python_pkg}-progressbar
@@ -186,6 +190,10 @@ sphinx-build -b man doc .
 %install
 %{use_python} setup.py install -O1 --skip-build --force --root %{buildroot} --prefix %{_prefix}
 
+# symlink /usr/bin/git-obs to /usr/libexec/git/obs
+mkdir -p %{buildroot}%{_libexecdir}/git
+ln -s %{_bindir}/git-obs %{buildroot}%{_libexecdir}/git/obs
+
 # create plugin dirs
 install -d %{buildroot}%{osc_plugin_dir}
 install -d %{buildroot}%{_sharedstatedir}/osc-plugins
@@ -227,6 +235,7 @@ install -Dm0644 oscrc.5 %{buildroot}%{_mandir}/man5/oscrc.5
 
 # executables
 %{_bindir}/*
+%{_libexecdir}/git/obs
 
 # python modules
 %{python_sitelib}/osc

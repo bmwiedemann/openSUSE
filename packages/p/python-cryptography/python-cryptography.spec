@@ -61,8 +61,7 @@ BuildRequires:  pkgconfig(libffi)
 # python-base is not enough, we need the _ssl module
 Requires:       python
 Requires:       python-bcrypt
-# assuming all python*-cffi packages have the same version
-Requires:       python-cffi = %(rpm -q --whatprovides python3-cffi --qf "%%{version}")
+Requires:       python-cffi = %(rpm -q --whatprovides python-cffi --qf "%%{version}")
 %if %{with test}
 BuildRequires:  %{python_module bcrypt}
 BuildRequires:  %{python_module certifi}
@@ -80,11 +79,6 @@ BuildRequires:  %{python_module pytz}
 %python_subpackages
 
 %description
-cryptography is a package designed to expose cryptographic
-recipes and primitives to Python developers.  Our goal is
-for it to be your "cryptographic standard library". It
-supports Python 2.7, Python 3.4+, and PyPy-5.3+.
-
 cryptography includes both high level recipes, and low
 level interfaces to common cryptographic algorithms such as
 symmetric ciphers, message digests and key derivation

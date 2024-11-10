@@ -93,8 +93,8 @@ BuildRequires:  cmake(Qt6WebChannel)
 BuildRequires:  cmake(Qt6WebSockets)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6Xml)
-Requires:       python-PyQt6-sip >= %(rpm -q --whatprovides python3-PyQt6-sip --qf "%%{version}")
-Requires:       python-dbus-python >= %(rpm -q --whatprovides python3-dbus-python --qf "%%{version}")
+Requires:       python-PyQt6-sip >= %(rpm -q --whatprovides python-PyQt6-sip --qf "%%{version}")
+Requires:       python-dbus-python >= %(rpm -q --whatprovides python-dbus-python --qf "%%{version}")
 Provides:       python-qt6 = %{version}-%{release}
 %python_subpackages
 

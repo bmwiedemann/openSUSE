@@ -24,4 +24,13 @@ Version obsolete has been solved with a new upstream release, as long as this SR
     <comment></comment>
     <requestid>1221343</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>8d905f863ae44ed941d460c4ac478de3</srcmd5>
+    <version>0.5.4</version>
+    <time>1731182074</time>
+    <user>dimstar_suse</user>
+    <comment>- Set minimum python-cffi version to 1.8.
+</comment>
+    <requestid>1222873</requestid>
+  </revision>
 </revisionlist>

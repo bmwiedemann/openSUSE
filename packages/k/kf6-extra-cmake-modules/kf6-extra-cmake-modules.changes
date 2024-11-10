@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Nov  4 11:17:55 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.8.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.8.0
+- Changes since 6.7.0:
+  * FindKF6: Print custom message when required components are not found
+  * Add a directory check when appending a module dir to qmlimportscanner
+  * Add Python bindings
+  * Break enums onto multiple lines
+  * Set import paths for QML modules to all CMake search paths
+  * Remove the old/unused SIP-based Python binding generation infrastructure
+  * Update version to 6.8.0
+  * ECMGeneratePkgConfigFile: try to deduce additional include dirs
+  * Fix custom definitions for generated pkgconfig files
+  * Fix QM loader unit tests with a static Qt
+  * Don't fall back to qmlplugin dump on static Qt builds
+  * Retire Qt5 Android CI
+  * Automatically install dependent targets of QML modules in static builds
+  * Allow to specify an export set for targets installed by finalize_qml_module
+  * Don't check websites in Appstream tests
+
+-------------------------------------------------------------------
 Mon Oct  7 09:59:45 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.7.0

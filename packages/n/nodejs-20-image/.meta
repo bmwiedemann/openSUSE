@@ -1,5 +1,0 @@
-<package name="nodejs-20-image" project="openSUSE:Factory">
-  <title>openSUSE Tumbleweed BCI Node.js 20 Container Image</title>
-  <description>Node.js 20 development environment based on the SLE Base Container Image.</description>
-  <devel project="devel:BCI:Tumbleweed" package="nodejs-20-image"/>
-</package>

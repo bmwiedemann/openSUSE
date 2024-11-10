@@ -1670,4 +1670,13 @@ SPDX format (forwarded request 126065 from babelworx)</comment>
     <comment></comment>
     <requestid>1193353</requestid>
   </revision>
+  <revision rev="138" vrev="4">
+    <srcmd5>48ac568f8152f2214c7d5981b37e7f9b</srcmd5>
+    <version>5.45</version>
+    <time>1731181961</time>
+    <user>dimstar_suse</user>
+    <comment>- file-seccomp.patch: glibc uses getrandom in malloc, rseq and prctl
+  in various other places, allow these syscalls in seccomp filter.</comment>
+    <requestid>1222654</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 --------------------------------------------------------------------
+Fri Nov 8 14:40:20 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/perl-bootloader#183
+- adjust tests
+- update test results
+- 1.19
+
+--------------------------------------------------------------------
+Fri Nov 8 14:36:36 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/perl-bootloader#182
+- Use sdbootutil to set default entry
+- User sdbootutil to install a new kernel
+- Set default entry and add a new kernel via sdbootutil
+
+--------------------------------------------------------------------
 Tue Oct 29 09:56:36 UTC 2024 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/perl-bootloader#181

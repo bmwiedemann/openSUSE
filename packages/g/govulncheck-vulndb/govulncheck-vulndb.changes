@@ -1,5 +1,14 @@
 -------------------------------------------------------------------
-Mon Nov  6 17:21:43 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+Fri Nov  8 17:25:00 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.0.20241108T172500 2024-11-08T17:25:00Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2024-3260 CVE-2024-45794 GHSA-q78v-cv36-8fxj
+  * GO-2024-3262 CVE-2024-10975 GHSA-2w5v-x29g-jw7j
+
+-------------------------------------------------------------------
+Wed Nov  6 17:21:43 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.0.20241106T172143 2024-11-06T17:21:43Z.
   Refs jsc#PED-11136

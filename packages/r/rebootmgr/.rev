@@ -272,4 +272,17 @@
   * Move tmpfiles.d/soft-reboot-cleanup.conf to aaa_base</comment>
     <requestid>1176723</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>ee400dd50095ce9cdd6159f561de2810</srcmd5>
+    <version>2.6+git20241108.fc0c103</version>
+    <time>1731181971</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.6+git20241108.fc0c103:
+  * Fix installation of .so man pages
+  * Rework manpage generation
+  * Switch from configure.ac to meson
+  * Document that timezones are not supported
+  * Release version 2.5</comment>
+    <requestid>1222710</requestid>
+  </revision>
 </revisionlist>

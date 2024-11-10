@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Nov  4 11:18:09 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.8.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.8.0
+- Changes since 6.7.0:
+  * Update dependency version to 6.8.0
+  * TGA: Fixed GrayA image loading error
+  * exr: Fix read/write with openexr 3.3 (kde#494571)
+  * JXL improvements
+  * Update version to 6.8.0
+  * JXR: Fixed image reading on sequential devices
+  * Simplified read/verify header process
+
+-------------------------------------------------------------------
 Mon Oct  7 10:00:03 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.7.0

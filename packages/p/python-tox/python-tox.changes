@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Wed Nov  6 18:21:14 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.23.2
+  - Support external tox.pytest usage via "test" extra in #3422
+- Changes from 4.23.1
+  - Docs: adjusting EOL Python version testing remarks in #3417
+  - Fix example docs in #3421
+- Changes from 4.23.0
+  - replace tool.pyproject and tool.tox.pyproject with tool.tox in config… in #3411
+  - Add NETRC to the default_pass_env list in #3410
+- Changes from 4.22.0
+  - Fix the fix environment definition in #3407
+  - Expose type checking dependencies into an extra in #3404
+  - Add dependency-groups support (PEP-735) in #3409
+- Changes from 4.21.2
+  - Update sdist rules to include tox.toml (#3389) in #3390
+- Changes from 4.21.1
+  - Fix TOML configuration errors in #3388
+- Changes from 4.21.0
+  - Update Loader docs in #3352
+  - True TOML config support in #3353
+- Changes from 4.20.0
+  - Separate list dependencies to a separate installer class in #3347
+- Changes from 4.19.0
+  - Add pypy-major.minor environment name support in #3346
+- Changes from 4.18.1
+  - Fixup the spec string for sys.executable in #3327
+  - Fix issue link in changelog in #3332
+  - Properly document the tox_env_teardown hook in #3333
+  - Add 3.13 to CI and bump deps in #3339
+- Changes from 4.18.0
+  - Fix #3278 - Boost temporary directories cleanup in tests in #3323
+  - Fix absolute base python paths conflicting in #3325
+  - Fix #3318 - Suppress spinner in parallel runs in CI in #3321
+- Changes from 4.17.1
+  - Fix user guide system overview so nodes don't overlap. in #3307
+  - Table with list of default env vars per OS in #3291
+  - Add GraalPy and test both GraalPy and Jython env identifiers in #3312
+  - Add on platform constat to core in #3315
+- Changes from 4.17.0
+  - Fix user guide system overview so nodes don't overlap. in #3307
+  - Table with list of default env vars per OS in #3291
+  - Add GraalPy and test both GraalPy and Jython env identifiers in #3312
+  - Add on platform constat to core in #3315
+- Changes from 4.16.0
+  - Fix two small documentation issues in #3297
+  - Fix tests after new setuptools in #3299
+  - Add windir to the default list of pass_env variables on Windows in #3303
+- Changes from 4.15.1
+  - fix skip with package = wheel in #3269
+  - Fixed typo in user guide.  in #3277
+  - Fix broad build privileges @ GHA release workflow in #3281
+  - Allow ConfigSet.add_config to receive parameterized generics for of_type. in #3288
+  - Fix section substitution with setenv in #3289
+- Changes from 4.15.0
+  - Remove duplicated and misleading configuration section in #3251
+  - Fix dropped leading characters c from constraints' packages in #3250
+  - Fix type-checking in #3260
+  - Update installation.rst in #3257
+  - Allow appending to deps with the command line in #3259
+  - Support multiple override appends in #3261
+  - Add bang to invert exit code in #3271
+  - fix(parser): Fix --discover parsed incorrectly from env in #3274
+
+-------------------------------------------------------------------
 Tue Oct  8 19:20:42 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Skip test_skip_develop_mode (gh#tox-dev/tox#3399)

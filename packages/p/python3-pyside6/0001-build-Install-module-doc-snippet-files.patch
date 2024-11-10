@@ -18,11 +18,11 @@ Reviewed-by: Qt Cherry-pick Bot <cherrypick_bot@qt-project.org>
  sources/pyside6/cmake/Macros/PySideModules.cmake | 9 +++++++++
  4 files changed, 19 insertions(+), 8 deletions(-)
 
-diff --git a/build_scripts/platforms/unix.py b/build_scripts/platforms/unix.py
-index 2de089f32..4f57467cb 100644
---- a/build_scripts/platforms/unix.py
-+++ b/build_scripts/platforms/unix.py
-@@ -199,10 +199,10 @@ def prepare_packages_posix(pyside_build, _vars, cross_build=False):
+Index: pyside-setup-everywhere-src-6.8.0/build_scripts/platforms/unix.py
+===================================================================
+--- pyside-setup-everywhere-src-6.8.0.orig/build_scripts/platforms/unix.py
++++ pyside-setup-everywhere-src-6.8.0/build_scripts/platforms/unix.py
+@@ -199,10 +199,10 @@ def prepare_packages_posix(pyside_build,
  
              # <install>/share/{st_package_name}/glue/* ->
              #   <setup>/{st_package_name}/glue
@@ -37,11 +37,11 @@ index 2de089f32..4f57467cb 100644
  
          if not is_android:
              # <source>/pyside6/{st_package_name}/support/* ->
-diff --git a/build_scripts/platforms/windows_desktop.py b/build_scripts/platforms/windows_desktop.py
-index 2d2ff7db0..401930203 100644
---- a/build_scripts/platforms/windows_desktop.py
-+++ b/build_scripts/platforms/windows_desktop.py
-@@ -153,10 +153,9 @@ def prepare_packages_win32(pyside_build, _vars):
+Index: pyside-setup-everywhere-src-6.8.0/build_scripts/platforms/windows_desktop.py
+===================================================================
+--- pyside-setup-everywhere-src-6.8.0.orig/build_scripts/platforms/windows_desktop.py
++++ pyside-setup-everywhere-src-6.8.0/build_scripts/platforms/windows_desktop.py
+@@ -153,10 +153,9 @@ def prepare_packages_win32(pyside_build,
  
          # <install>/share/{st_package_name}/glue/* ->
          #   <setup>/{st_package_name}/glue
@@ -55,10 +55,10 @@ index 2d2ff7db0..401930203 100644
  
          # <source>/pyside6/{st_package_name}/support/* ->
          #   <setup>/{st_package_name}/support/*
-diff --git a/build_scripts/wheel_files.py b/build_scripts/wheel_files.py
-index 66e1f4182..9584949da 100644
---- a/build_scripts/wheel_files.py
-+++ b/build_scripts/wheel_files.py
+Index: pyside-setup-everywhere-src-6.8.0/build_scripts/wheel_files.py
+===================================================================
+--- pyside-setup-everywhere-src-6.8.0.orig/build_scripts/wheel_files.py
++++ pyside-setup-everywhere-src-6.8.0/build_scripts/wheel_files.py
 @@ -59,6 +59,7 @@ class ModuleData:
      typesystems: list[str] = field(default_factory=list)
      include: list[str] = field(default_factory=list)
@@ -83,10 +83,10 @@ index 66e1f4182..9584949da 100644
  
      def macos_pyside_wrappers_lib(self, s):
          if s.startswith("Qt"):
-diff --git a/sources/pyside6/cmake/Macros/PySideModules.cmake b/sources/pyside6/cmake/Macros/PySideModules.cmake
-index 6e03323dd..57ff5582f 100644
---- a/sources/pyside6/cmake/Macros/PySideModules.cmake
-+++ b/sources/pyside6/cmake/Macros/PySideModules.cmake
+Index: pyside-setup-everywhere-src-6.8.0/sources/pyside6/cmake/Macros/PySideModules.cmake
+===================================================================
+--- pyside-setup-everywhere-src-6.8.0.orig/sources/pyside6/cmake/Macros/PySideModules.cmake
++++ pyside-setup-everywhere-src-6.8.0/sources/pyside6/cmake/Macros/PySideModules.cmake
 @@ -176,6 +176,14 @@ macro(create_pyside_module)
          set(${module_NAME}_glue_dependency ${${module_NAME}_glue})
      endif()
@@ -110,6 +110,3 @@ index 6e03323dd..57ff5582f 100644
                          WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
                          COMMENT "Running generator for ${module_NAME}...")
  
--- 
-2.47.0
-

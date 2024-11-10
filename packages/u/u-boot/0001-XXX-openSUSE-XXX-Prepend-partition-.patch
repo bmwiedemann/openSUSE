@@ -12,7 +12,7 @@ Subject: [PATCH] XXX openSUSE XXX: Prepend partition 3 (and 4 for chromebook
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/include/config_distro_bootcmd.h b/include/config_distro_bootcmd.h
-index 2a136b96a6d..f2d2c761616 100644
+index 2a136b96a6..f2d2c76161 100644
 --- a/include/config_distro_bootcmd.h
 +++ b/include/config_distro_bootcmd.h
 @@ -166,7 +166,7 @@

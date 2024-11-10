@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Nov  8 08:23:35 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.0.2
+  * Bugfix: Type of "send" is partially unknown with pyright
+  * Bugfix: Fix asyncio deadlock trying to reconnect after error
+  * Change: Switched from Poetry to build/hatch/twine for packaging.
+- Skip test_live and test_tls tests when running testsuite
+- Switch package to modern Python Stack on SLE-15
+  * Use Python 3.11 on SLE-15 by default
+  * Drop support for older Python versions
+- Switch build system from setuptools to pyproject.toml
+  * Add python-pip and python-wheel to BuildRequires
+  * Replace %python_build with %pyproject_wheel
+  * Replace %python_install with %pyproject_install
+- Limit Python files matched in %files section
+
+-------------------------------------------------------------------
 Tue Nov 14 15:41:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.1:

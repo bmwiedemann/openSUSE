@@ -2235,4 +2235,41 @@
   * The minimum required version of PyArrow is now v7.0.0. [#16785] (forwarded request 1197897 from bnavigator)</comment>
     <requestid>1197898</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>adc0071e7d9e53f05cf0c40cd88bffb7</srcmd5>
+    <version>6.1.5</version>
+    <time>1731182278</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.1.5
+  ## Bug Fixes
+  ### astropy.coordinates
+  * Ensure that coordinates can be transformed to other coordinate
+    frames also if they have size zero (i.e., hold empty data
+    arrays). [#17013]
+  * Longitude and Latitude can no longer be initialized with
+    strings ending in “N” or “S”, and “E” or “W”, respectively,
+    since those suggest the other type. [#17132]
+  * np.nanvar(angle) now produces a Quantity with the correct unit,
+    rather than raising an exception. [#17239]
+  * Fix a crash when instantiating Angle (or Latitude, or
+    Longitude) from a non-numpy array (for instance pyarrow
+    arrays). [#17263]
+  ### astropy.io.fits
+  *  Fix access to VLA columns after slicing .data. [#16996]
+  ### astropy.io.votable
+  * Updated xml writer for VOTable Resource elements to include
+    groups. [#17344]
+  ### astropy.nddata
+  * Add support for positional only and keyword only arguments when
+    using the support_nddata decorator. [#17281]
+  ### astropy.stats
+  * Fixed a bug where float32 inputs to sigma_clip and SigmaClip
+    were changed to float. [#17086]
+  ### astropy.table
+  * Fix a crash when calling Column.pprint on a scalar column.
+    [#15749]
+  * Ensure that setting an existing column to a scalar always
+    properly fills it (rather than breaking the table if there was</comment>
+    <requestid>1222846</requestid>
+  </revision>
 </revisionlist>

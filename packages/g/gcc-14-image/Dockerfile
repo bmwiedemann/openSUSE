@@ -43,5 +43,6 @@ LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"
 # endlabelprefix
 LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/gcc-14-image/README.md"
+LABEL io.artifacthub.package.logo-url="https://gcc.gnu.org/img/gccegg-65.png"
 ENV GCC_VERSION="%%gcc_minor_version%%"
 

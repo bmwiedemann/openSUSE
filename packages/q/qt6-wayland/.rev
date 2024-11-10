@@ -318,4 +318,13 @@
     <comment>Qt 6.8.0 (forwarded request 1206590 from krop)</comment>
     <requestid>1207638</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>efaf9d887f3fdc1f09a74dcab0d94b66</srcmd5>
+    <version>6.8.0</version>
+    <time>1731182046</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-fix-crash-issue.patch
+  fix crash when attach differ shellsurface to the same shellsurfaceitem (boo#1233141)</comment>
+    <requestid>1222864</requestid>
+  </revision>
 </revisionlist>

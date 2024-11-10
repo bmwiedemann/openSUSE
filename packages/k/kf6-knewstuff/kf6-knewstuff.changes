@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov  4 11:18:12 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.8.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.8.0
+- Changes since 6.7.0:
+  * Update dependency version to 6.8.0
+  * make sure the action's dialog closes (kde#492998)
+  * put qnetworkreplys in a self-aborting unique_ptr
+  * parent the xml loader's httpjob
+  * filecopyworker: try to gracefully quit the thread. then terminate it
+  * Update version to 6.8.0
+
+-------------------------------------------------------------------
 Mon Oct  7 10:00:08 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.7.0

@@ -5,12 +5,20 @@ patches:
   skip_test.patch: -p1
 #preamble: |-
 # BuildRequires:  gcc-c++
-#post_prep: |-
-# hunspell=`pkg-config --libs hunspell | sed -e 's,-l,,; s,  *,,g'`
-# sed -i -e "s,hunspell-X,$hunspell," t/00-prereq.t Makefile.PL 
+post_prep: |-
+ mv %{buildroot}%{_bindir}/spfd %{buildroot}%{_bindir}/spfd_perl
+ sed -i s/spfd/spfd_perl/ Makefile.PL
 #post_install: |-
-# sed on %{name}.files
+# mv %{buildroot}%{_bindir}/spfd %{buildroot}%{_bindir}/spfd_perl
 #license: SUSE-NonFree
 #skip_noarch: 1
 #custom_build: -
 #./Build build flags=%{?_smp_mflags} --myflag
+#custom_test: |-
+#startserver && make test
+#ignore_requires: Bizarre::Module
+#skip_doc: regexp_to_skip_for_doc.*
+#add_doc: files to add to docs
+#misc: |-
+# %exclude %{_bindir}/spfd
+# %{_bindir}/spfd_perl

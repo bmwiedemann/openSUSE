@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov  7 16:32:16 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to versino 2.5.4
+  * Fixed ZeroDivisionError in async_alert() when
+    shutil.get_terminal_size().columns is 0.
+- Update to version 2.5.3
+  * Changed CommandSet._cmd to a read-only property which never
+    returns None because it is meant to be called after the
+    CommandSet is registered. This addresses type checker errors
+    that occurred if CommandSet._cmd wasn't cast or checked if
+    None before use.
+
+-------------------------------------------------------------------
 Sun Nov  3 19:58:40 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.5.2

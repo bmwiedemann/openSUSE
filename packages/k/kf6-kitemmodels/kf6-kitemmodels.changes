@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Nov  4 11:18:11 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.8.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.8.0
+- Changes since 6.7.0:
+  * Update dependency version to 6.8.0
+  * Install QML module correctly when building statically
+  * Fix QML unit tests when building against a static Qt
+  * Make unit tests independent of QtWidgets
+  * Don't hardcode library type
+  * Update version to 6.8.0
+  * kbihash: adapt to source incompatible change in Qt
+
+-------------------------------------------------------------------
 Mon Oct  7 10:00:05 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.7.0

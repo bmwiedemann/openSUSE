@@ -79,7 +79,7 @@ BuildRequires:  %{python_module pyqt-builder >= 1.14.1}
 BuildRequires:  %{python_module qt5-sip >= 12.13}
 BuildRequires:  %{python_module sip-devel >= 6.7.12}
 Requires:       python-qt5-sip >= 12.13
-Requires:       python-dbus-python >= %(rpm -q --whatprovides python3-dbus-python --qf "%%{version}")
+Requires:       python-dbus-python >= %(rpm -q --whatprovides python-dbus-python --qf "%%{version}")
 Provides:       python-PyQt5 = %{version}-%{release}
 Suggests:       python-%{mname}-quick3d
 

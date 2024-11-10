@@ -146,4 +146,12 @@
     <comment>- switch to modern python on sle15</comment>
     <requestid>1193890</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e2307f6108841430b4012fda59b476db</srcmd5>
+    <version>2.3.1</version>
+    <time>1731182283</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1222858</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov  8 10:08:46 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Fix requires_eq replacement for distributions which do not have
+  python3-cffi installed (such as SLE15 python module pythons)
+  * gh#openSUSE/python-rpm-macros#185
+- Remove outdated section in description
+
+-------------------------------------------------------------------
 Tue Nov  5 08:03:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Avoid using requires_eq, which after the last modifications

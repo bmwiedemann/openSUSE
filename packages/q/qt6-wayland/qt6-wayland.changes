@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov  8 14:10:37 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add 0001-fix-crash-issue.patch
+  fix crash when attach differ shellsurface to the same shellsurfaceitem (boo#1233141)
+
+-------------------------------------------------------------------
 Tue Oct  8 09:29:56 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.8.0:

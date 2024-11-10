@@ -143,4 +143,12 @@
   * Fix SMTPNotSupported error with UTF8 sender/recipient names</comment>
     <requestid>1126230</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>95a2fc55e05d4536861c81fc4bfb7042</srcmd5>
+    <version>3.0.2</version>
+    <time>1731182275</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1222850</requestid>
+  </revision>
 </revisionlist>

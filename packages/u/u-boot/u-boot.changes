@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov  8 07:13:26 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2024.10
+* Patches added:
+  0019-scripts-dtc-pylibfdt-libfdt.i_shipp.patch
+
+-------------------------------------------------------------------
 Tue Oct 22 09:33:57 UTC 2024 - Jianfeng Liu <liujianfeng1994@gmail.com>
 
 - Add support for orangepi-3b-rk3566

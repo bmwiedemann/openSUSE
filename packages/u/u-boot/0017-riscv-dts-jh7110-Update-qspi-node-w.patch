@@ -14,7 +14,7 @@ Signed-off-by: Matthias Brugger <mbrugger@suse.com>
  3 files changed, 37 insertions(+), 13 deletions(-)
 
 diff --git a/arch/riscv/dts/jh7110-starfive-visionfive-2-u-boot.dtsi b/arch/riscv/dts/jh7110-starfive-visionfive-2-u-boot.dtsi
-index 3012466b305..a69d8fcb391 100644
+index 3012466b30..a69d8fcb39 100644
 --- a/arch/riscv/dts/jh7110-starfive-visionfive-2-u-boot.dtsi
 +++ b/arch/riscv/dts/jh7110-starfive-visionfive-2-u-boot.dtsi
 @@ -40,7 +40,7 @@
@@ -27,7 +27,7 @@ index 3012466b305..a69d8fcb391 100644
  	};
  };
 diff --git a/arch/riscv/dts/jh7110-starfive-visionfive-2.dtsi b/arch/riscv/dts/jh7110-starfive-visionfive-2.dtsi
-index e11babc1cde..375449b73a8 100644
+index e11babc1cd..375449b73a 100644
 --- a/arch/riscv/dts/jh7110-starfive-visionfive-2.dtsi
 +++ b/arch/riscv/dts/jh7110-starfive-visionfive-2.dtsi
 @@ -305,17 +305,38 @@
@@ -74,7 +74,7 @@ index e11babc1cde..375449b73a8 100644
  };
  
 diff --git a/arch/riscv/dts/jh7110.dtsi b/arch/riscv/dts/jh7110.dtsi
-index 2cdc683d49b..2b331e58497 100644
+index 2cdc683d49..2b331e5849 100644
 --- a/arch/riscv/dts/jh7110.dtsi
 +++ b/arch/riscv/dts/jh7110.dtsi
 @@ -480,19 +480,22 @@

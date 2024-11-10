@@ -212,4 +212,12 @@ in order to avoid conflicts like boo#1192300</comment>
     <comment></comment>
     <requestid>1221363</requestid>
   </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>326920d1a7feea604cf8f00352d37ffb</srcmd5>
+    <version>6.8.0~dev2410061818</version>
+    <time>1731181970</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix requires_eq replacement gh#openSUSE/python-rpm-macros#185</comment>
+    <requestid>1222700</requestid>
+  </revision>
 </revisionlist>

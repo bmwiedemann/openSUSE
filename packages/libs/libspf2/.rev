@@ -82,4 +82,15 @@ is true, which is the case when using GCC5.</comment>
     <comment></comment>
     <requestid>1153875</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>f00307127faf0bf6d21acff430d13f4b</srcmd5>
+    <version>unknown</version>
+    <time>1731182055</time>
+    <user>dimstar_suse</user>
+    <comment>- fix https://github.com/shevek/libspf2/issues/54
+- added patches
+  + libspf2-gcc14.patch
+</comment>
+    <requestid>1222451</requestid>
+  </revision>
 </revisionlist>

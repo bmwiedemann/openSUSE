@@ -1,7 +1,7 @@
 #
 # spec file for package libspf2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,10 +26,12 @@ License:        BSD-2-Clause OR LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.libspf2.org/
 Source0:        %{fname}.tar.xz
-# SPF_debugf macro should always have at least two parameters
+# PATCH-FIX-UPSTREAM SPF_debugf macro should always have at least two parameters
 Patch0:         libspf2-1.2.10-format.patch
 # PATCH-FIX-OPENSUSE Drop usage of libreplace
 Patch1:         libspf2-1.2.10-libreplace.patch
+# PATCH-FIX-UPSTREAM https://github.com/shevek/libspf2/issues/54
+Patch2:         libspf2-gcc14.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # For API docs
 BuildRequires:  automake

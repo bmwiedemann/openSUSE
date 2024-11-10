@@ -1,68 +1,74 @@
----
- tests/test_basic.py       |    2 +-
- tests/test_indentation.py |    2 +-
- tests/test_line_length.py |    2 +-
- tests/test_literal.py     |    2 +-
- tests/test_patma.py       |    2 +-
- tests/test_precedence.py  |    2 +-
- tests/test_py3_syntax.py  |    2 +-
- 7 files changed, 7 insertions(+), 7 deletions(-)
-
---- a/tests/test_basic.py
-+++ b/tests/test_basic.py
+diff -Nru ast_decompiler-0.8.0.orig/tests/test_basic.py ast_decompiler-0.8.0/tests/test_basic.py
+--- ast_decompiler-0.8.0.orig/tests/test_basic.py	2024-05-17 11:24:40.473753700 +0000
++++ ast_decompiler-0.8.0/tests/test_basic.py	2024-11-08 10:13:46.230356472 +0000
 @@ -1,6 +1,6 @@
  import ast
  from ast_decompiler import decompile
--from .tests import assert_decompiles, check, only_on_version
-+from tests import assert_decompiles, check, only_on_version
+-from .tests import assert_decompiles, check
++from tests import assert_decompiles, check
  
  
  def test_non_module() -> None:
---- a/tests/test_indentation.py
-+++ b/tests/test_indentation.py
+diff -Nru ast_decompiler-0.8.0.orig/tests/test_indentation.py ast_decompiler-0.8.0/tests/test_indentation.py
+--- ast_decompiler-0.8.0.orig/tests/test_indentation.py	2024-05-17 11:24:40.473753700 +0000
++++ ast_decompiler-0.8.0/tests/test_indentation.py	2024-11-08 10:13:46.230356472 +0000
 @@ -1,4 +1,4 @@
 -from .tests import assert_decompiles
 +from tests import assert_decompiles
  
  
  def test_indentation() -> None:
---- a/tests/test_line_length.py
-+++ b/tests/test_line_length.py
+diff -Nru ast_decompiler-0.8.0.orig/tests/test_line_length.py ast_decompiler-0.8.0/tests/test_line_length.py
+--- ast_decompiler-0.8.0.orig/tests/test_line_length.py	2024-05-17 11:24:40.473753700 +0000
++++ ast_decompiler-0.8.0/tests/test_line_length.py	2024-11-08 10:13:46.234356491 +0000
 @@ -1,4 +1,4 @@
 -from .tests import assert_decompiles
 +from tests import assert_decompiles
  
  
  def check_split(original: str, multiline: str, length_reduction: int = 2) -> None:
---- a/tests/test_literal.py
-+++ b/tests/test_literal.py
+diff -Nru ast_decompiler-0.8.0.orig/tests/test_literal.py ast_decompiler-0.8.0/tests/test_literal.py
+--- ast_decompiler-0.8.0.orig/tests/test_literal.py	2024-05-17 11:24:40.473753700 +0000
++++ ast_decompiler-0.8.0/tests/test_literal.py	2024-11-08 10:13:46.234356491 +0000
 @@ -1,4 +1,4 @@
--from .tests import assert_decompiles, only_on_version
-+from tests import assert_decompiles, only_on_version
+-from .tests import assert_decompiles
++from tests import assert_decompiles
  
  
  def test_With() -> None:
---- a/tests/test_patma.py
-+++ b/tests/test_patma.py
+diff -Nru ast_decompiler-0.8.0.orig/tests/test_patma.py ast_decompiler-0.8.0/tests/test_patma.py
+--- ast_decompiler-0.8.0.orig/tests/test_patma.py	2024-05-17 11:24:40.473753700 +0000
++++ ast_decompiler-0.8.0/tests/test_patma.py	2024-11-08 10:13:46.234356491 +0000
 @@ -1,4 +1,4 @@
 -from .tests import check, skip_before
 +from tests import check, skip_before
  
  
  @skip_before((3, 10))
---- a/tests/test_precedence.py
-+++ b/tests/test_precedence.py
+diff -Nru ast_decompiler-0.8.0.orig/tests/test_pep695.py ast_decompiler-0.8.0/tests/test_pep695.py
+--- ast_decompiler-0.8.0.orig/tests/test_pep695.py	2024-05-17 11:24:40.477753600 +0000
++++ ast_decompiler-0.8.0/tests/test_pep695.py	2024-11-08 10:13:46.234356491 +0000
 @@ -1,4 +1,4 @@
--from .tests import check, only_on_version
-+from tests import check, only_on_version
+-from .tests import check, skip_before
++from tests import check, skip_before
+ 
+ 
+ @skip_before((3, 12))
+diff -Nru ast_decompiler-0.8.0.orig/tests/test_precedence.py ast_decompiler-0.8.0/tests/test_precedence.py
+--- ast_decompiler-0.8.0.orig/tests/test_precedence.py	2024-05-17 11:24:40.477753600 +0000
++++ ast_decompiler-0.8.0/tests/test_precedence.py	2024-11-08 10:13:46.238356510 +0000
+@@ -1,4 +1,4 @@
+-from .tests import check
++from tests import check
  
  
  def test_Yield() -> None:
---- a/tests/test_py3_syntax.py
-+++ b/tests/test_py3_syntax.py
+diff -Nru ast_decompiler-0.8.0.orig/tests/test_py3_syntax.py ast_decompiler-0.8.0/tests/test_py3_syntax.py
+--- ast_decompiler-0.8.0.orig/tests/test_py3_syntax.py	2024-05-17 11:24:40.477753600 +0000
++++ ast_decompiler-0.8.0/tests/test_py3_syntax.py	2024-11-08 10:13:46.238356510 +0000
 @@ -1,4 +1,4 @@
--from .tests import check, skip_before, skip_after
-+from tests import check, skip_before, skip_after
+-from .tests import check
++from tests import check
  
  
- @skip_before((3, 5))
+ def test_MatMult() -> None:

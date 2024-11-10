@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Nov  8 13:27:39 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+
+- Upstream update to 1.5.31
+  * Enhance CI for generic
+  * Enhance CI for Wayland
+  * Enhance compose keys
+  * Update compose keys with latest Xorg and GTK
+  * Use localectl to get current XKB in Wayland instead of setxkbmap
+  * Update XKB engines
+  * Update Unicode category
+  * Change IBus unique name for security issue
+  * Ignore Super modifier for compose keys for GNOME Wayland
+  * Fix X11 application and game issues
+  * Fix Emoji issues
+  * Fix Flatpak issues
+  * Fix preedit issues with m17n:sa:itrans
+  * Code maintenance
+
+-------------------------------------------------------------------
 Sun Jul  7 09:23:53 UTC 2024 - Fuminobu Takeyama <ftake@geeko.jp> - 1.5.30
 
 - Upstream update to 1.5.30

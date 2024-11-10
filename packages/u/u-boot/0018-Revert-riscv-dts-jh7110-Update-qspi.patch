@@ -12,7 +12,7 @@ This reverts commit a28b57b475d5c20e00d80b1ee0d085f1bf635afb.
  3 files changed, 13 insertions(+), 37 deletions(-)
 
 diff --git a/arch/riscv/dts/jh7110-starfive-visionfive-2-u-boot.dtsi b/arch/riscv/dts/jh7110-starfive-visionfive-2-u-boot.dtsi
-index a69d8fcb391..3012466b305 100644
+index a69d8fcb39..3012466b30 100644
 --- a/arch/riscv/dts/jh7110-starfive-visionfive-2-u-boot.dtsi
 +++ b/arch/riscv/dts/jh7110-starfive-visionfive-2-u-boot.dtsi
 @@ -40,7 +40,7 @@
@@ -25,7 +25,7 @@ index a69d8fcb391..3012466b305 100644
  	};
  };
 diff --git a/arch/riscv/dts/jh7110-starfive-visionfive-2.dtsi b/arch/riscv/dts/jh7110-starfive-visionfive-2.dtsi
-index 375449b73a8..e11babc1cde 100644
+index 375449b73a..e11babc1cd 100644
 --- a/arch/riscv/dts/jh7110-starfive-visionfive-2.dtsi
 +++ b/arch/riscv/dts/jh7110-starfive-visionfive-2.dtsi
 @@ -305,38 +305,17 @@
@@ -72,7 +72,7 @@ index 375449b73a8..e11babc1cde 100644
  };
  
 diff --git a/arch/riscv/dts/jh7110.dtsi b/arch/riscv/dts/jh7110.dtsi
-index 2b331e58497..2cdc683d49b 100644
+index 2b331e5849..2cdc683d49 100644
 --- a/arch/riscv/dts/jh7110.dtsi
 +++ b/arch/riscv/dts/jh7110.dtsi
 @@ -480,22 +480,19 @@

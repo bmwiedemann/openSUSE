@@ -24,13 +24,13 @@
 %if 0%{?suse_version} > 1500
 %define with_exr 1
 %endif
-# Full KF6 version (e.g. 6.7.0)
+# Full KF6 version (e.g. 6.8.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 # Last major and minor KF6 version (e.g. 6.0)
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kimageformats
-Version:        6.7.0
+Version:        6.8.0
 Release:        0
 Summary:        Image format plugins for Qt
 License:        LGPL-2.1-or-later
@@ -55,9 +55,8 @@ BuildRequires:  pkgconfig(libjxl) >= 0.7.0
 BuildRequires:  pkgconfig(libjxl_threads) >= 0.7.0
 BuildRequires:  pkgconfig(libraw) >= 0.20.2
 BuildRequires:  pkgconfig(libraw_r) >= 0.20.2
-%requires_eq    libQt6Gui6
-%requires_eq    libQt6PrintSupport6
-Recommends:     qt6-qtimageformats >= %{qt6_version}
+# Also install the Qt image plugins
+Requires:       qt6-imageformats >= %{qt6_version}
 
 %description
 This framework provides additional image format plugins for QtGui.  As

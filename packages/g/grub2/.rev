@@ -2893,4 +2893,19 @@ pretty much the same. The main user visible changes are
     <comment></comment>
     <requestid>1221631</requestid>
   </revision>
+  <revision rev="340" vrev="29">
+    <srcmd5>a0c0846a254c2d02ccd85dae112dc50a</srcmd5>
+    <version>2.12</version>
+    <time>1731182044</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix previous change as the variable has to be set earlier 
+  * 0001-10_linux-Do-not-enable-BLSCFG-on-s390-emu.patch
+
+- Do not enable blscfg on s390-emu 
+  * 0001-10_linux-Do-not-enable-BLSCFG-on-s390-emu.patch
+
+- Fix xen package contains debug_info files with the .module suffix by moving
+  them to a separate xen-debug subpackage (bsc#1232573)</comment>
+    <requestid>1222848</requestid>
+  </revision>
 </revisionlist>

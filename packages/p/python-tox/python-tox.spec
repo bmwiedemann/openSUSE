@@ -23,7 +23,7 @@
 %bcond_with devpi_process
 %endif
 Name:           python-tox
-Version:        4.14.2
+Version:        4.23.2
 Release:        0
 Summary:        Virtualenv-based automation of test activities
 License:        MIT
@@ -77,7 +77,7 @@ Requires:       python-virtualenv >= 20.24.3
 Requires:       (python-importlib-metadata >= 0.12 if python-base < 3.8)
 Requires:       (python-tomli >= 2.0.1 if python-base < 3.11)
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 # last detox version is 0.19
 Obsoletes:      python-detox <= 0.19
 Provides:       python-detox > 0.19
@@ -151,6 +151,8 @@ donttest+=" or test_python_generate_hash_seed"
 donttest+=" or test_bad_env_var"
 # this test doesn't work on Leap
 donttest+=" or test_package_cmd_builder"
+# this test doesn't work on Tumbleweed
+donttest+=" or test_package_pyproject or test_package_only"
 # gh#tox-dev/tox#3399
 donttest+=" or test_skip_develop_mode"
 

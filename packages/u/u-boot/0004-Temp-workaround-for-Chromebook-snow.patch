@@ -9,7 +9,7 @@ Subject: [PATCH] Temp workaround for Chromebook snow to avoid the 'unable to
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/mmc/dw_mmc.c b/drivers/mmc/dw_mmc.c
-index f4ecd7422ce..3f4718f5552 100644
+index f4ecd7422c..3f4718f555 100644
 --- a/drivers/mmc/dw_mmc.c
 +++ b/drivers/mmc/dw_mmc.c
 @@ -610,7 +610,8 @@ void dwmci_setup_cfg(struct mmc_config *cfg, struct dwmci_host *host,

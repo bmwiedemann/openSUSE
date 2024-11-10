@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Nov  8 17:34:51 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to version 1.31.3
+  * Improvements:
+    - Library updates : vkQuake is now using mpg123 by default instead
+      of mad for mp3 support
+  * Fixes:
+    - #740: Fix broken saves in Mjolnir
+    - #718: Fix MD5 models to support multi-meshes. Quake Remaster models
+      were fine because mono-mesh, but other addons exist bringing multi-mesh
+      MD5 models
+    - Some smaller fixes here and there.
+
+-------------------------------------------------------------------
 Wed Oct  2 20:54:07 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to version 1.31.2

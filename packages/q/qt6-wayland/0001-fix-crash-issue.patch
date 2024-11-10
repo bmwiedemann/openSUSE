@@ -1,0 +1,25 @@
+From 6f87a84b8e72c3676ee9cf7190b8ae1f82387353 Mon Sep 17 00:00:00 2001
+From: Heng Liu <liuhenga@uniontech.com>
+Date: Fri, 25 Oct 2024 10:17:45 +0800
+Subject: [PATCH] fix crash when attach differ shellsurface to the same shellsurfaceitem
+
+Change shellSurface from a raw pointer to a QPointer to prevent
+crash caused by accessing the wild pointer when shellSurface is destroyed
+
+Pick-to: 6.8
+Change-Id: Iabf25ce9e3fab416b5b927bf768e94398516a710
+---
+
+diff --git a/src/compositor/extensions/qwaylandquickshellsurfaceitem_p.h b/src/compositor/extensions/qwaylandquickshellsurfaceitem_p.h
+index 46e5f65..10b10a0 100644
+--- a/src/compositor/extensions/qwaylandquickshellsurfaceitem_p.h
++++ b/src/compositor/extensions/qwaylandquickshellsurfaceitem_p.h
+@@ -41,7 +41,7 @@
+     void lower() override;
+ 
+     QWaylandQuickShellIntegration *m_shellIntegration = nullptr;
+-    QWaylandShellSurface *m_shellSurface = nullptr;
++    QPointer<QWaylandShellSurface> m_shellSurface = nullptr;
+     QQuickItem *m_moveItem = nullptr;
+     bool m_autoCreatePopupItems = true;
+     bool staysOnTop = false;

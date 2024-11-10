@@ -1,12 +1,13 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="scm">git</param>
     <param name="url">https://github.com/open-iscsi/open-isns.git</param>
-    <param name="subdir"></param>
+    <param name="scm">git</param>
     <param name="filename">open-isns</param>
-    <param name="versionformat">0.102</param>
-    <param name="revision">v0.102</param>
+    <param name="version">HEAD</param>
+    <param name="versionformat">0.103+@TAG_OFFSET@.%h</param>
+    <param name="revision">HEAD</param>
     <param name="changesgenerate">enable</param>
+    <param name="exclude">.git</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">open-isns*.tar</param>

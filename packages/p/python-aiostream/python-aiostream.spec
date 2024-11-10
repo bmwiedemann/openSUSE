@@ -19,7 +19,7 @@
 %global modname aiostream
 %{?sle15_python_module_pythons}
 Name:           python-aiostream
-Version:        0.5.2
+Version:        0.6.4
 Release:        0
 Summary:        Generator-based operators for asynchronous iteration
 License:        Apache-2.0
@@ -37,6 +37,7 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module typing-extensions}
 # /SECTION
 %python_subpackages
@@ -47,9 +48,6 @@ combined to create asynchronous pipelines of operations.
 
 %prep
 %autosetup -p1 -n %{modname}-%{version}
-
-# Remove coverage parameters for pytest
-sed -i -e '/addopts/s/=.*$/= tests --strict-markers/' setup.cfg
 
 %build
 %pyproject_wheel

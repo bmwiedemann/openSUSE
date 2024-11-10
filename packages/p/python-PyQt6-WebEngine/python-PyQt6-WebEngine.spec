@@ -27,9 +27,7 @@ Summary:        Python bindings for the Qt WebEngine framework
 License:        GPL-3.0-only
 Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/pyqt3d
-# boo#1222514
-# Source:         https://files.pythonhosted.org/packages/source/P/PyQt6-%%{qtlib}/PyQt6_%%{qtlib}-%%{version}.tar.gz
-Source:         https://riverbankcomputing.com/pypi/packages/PyQt6-%{qtlib}/PyQt6_%{qtlib}-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/P/PyQt6-%{qtlib}/PyQt6_%{qtlib}-%{version}.tar.gz
 BuildRequires:  %{python_module PyQt6-devel >= 6.2}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pyqt-builder >= 1.11 with %python-pyqt-builder < 2}
@@ -42,8 +40,8 @@ BuildRequires:  qt6-gui-private-devel
 BuildRequires:  cmake(Qt6WebEngineCore)
 BuildRequires:  cmake(Qt6WebEngineQuick)
 BuildRequires:  cmake(Qt6WebEngineWidgets)
-Requires:       python-PyQt6 >= %(rpm -q --whatprovides python3-PyQt6 --qf "%%{version}")
-Requires:       python-PyQt6-sip >= %(rpm -q --whatprovides python3-PyQt6-sip --qf "%%{version}")
+Requires:       python-PyQt6 >= %(rpm -q --whatprovides python-PyQt6 --qf "%%{version}")
+Requires:       python-PyQt6-sip >= %(rpm -q --whatprovides python-PyQt6-sip --qf "%%{version}")
 Provides:       python-qtwebengine-qt6 = %{version}-%{release}
 # Mirror with qt6-webengine
 ExclusiveArch:  aarch64 x86_64 riscv64

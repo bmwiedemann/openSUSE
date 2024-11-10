@@ -32,7 +32,7 @@
 # ----
 %global __requires_exclude ^typelib\\(GtkosxApplication\\)|typelib\\(GdkGLExt\\)|typelib\\(GtkGLExt\\).*$
 Name:           xpra
-Version:        6.3.0+git20241028.fb72d902
+Version:        6.3.0+git20241102.0dfe55ed
 Release:        0
 Summary:        Remote display server for applications and desktops
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-3.0-or-later AND MIT
@@ -96,7 +96,7 @@ BuildRequires:  pkgconfig(xkbfile)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xres)
 BuildRequires:  pkgconfig(xtst)
-Requires:       dbus-1-x11
+Requires:       /usr/bin/dbus-launch
 Requires:       gstreamer-plugins-base
 Requires:       gstreamer-plugins-good
 Requires:       gstreamer-utils

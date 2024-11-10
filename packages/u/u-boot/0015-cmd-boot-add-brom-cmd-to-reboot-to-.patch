@@ -12,7 +12,7 @@ Signed-off-by: Michal Suchanek <msuchanek@suse.de>
  2 files changed, 21 insertions(+)
 
 diff --git a/arch/arm/include/asm/arch-rockchip/boot_mode.h b/arch/arm/include/asm/arch-rockchip/boot_mode.h
-index 6b2a610cf4c..bcdf4420cfc 100644
+index 6b2a610cf4..bcdf4420cf 100644
 --- a/arch/arm/include/asm/arch-rockchip/boot_mode.h
 +++ b/arch/arm/include/asm/arch-rockchip/boot_mode.h
 @@ -19,6 +19,7 @@
@@ -24,7 +24,7 @@ index 6b2a610cf4c..bcdf4420cfc 100644
  #endif
  
 diff --git a/cmd/boot.c b/cmd/boot.c
-index 23496cafdf5..9de90aca6c7 100644
+index 23496cafdf..9de90aca6c 100644
 --- a/cmd/boot.c
 +++ b/cmd/boot.c
 @@ -44,16 +44,36 @@ static int do_go(struct cmd_tbl *cmdtp, int flag, int argc, char *const argv[])

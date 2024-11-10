@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov  8 08:57:02 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Fix requires_eq replacement gh#openSUSE/python-rpm-macros#185
+
+-------------------------------------------------------------------
 Tue Nov  5 08:20:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Avoid using requires_eq, which after the last modifications

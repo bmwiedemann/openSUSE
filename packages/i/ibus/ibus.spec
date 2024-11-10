@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package ibus
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -35,7 +35,7 @@
 
 %define _name   ibus
 Name:           %{_name}%{?nsuffix}
-Version:        1.5.30
+Version:        1.5.31
 Release:        0
 Summary:        The "Intelligent Input Bus" input method
 License:        LGPL-2.1-or-later
@@ -440,7 +440,6 @@ fi
 %{_mandir}/man7/ibus-emoji.7%{ext_man}
 %endif
 %{python3_sitearch}/gi/overrides/IBus.py
-%{python3_sitearch}/gi/overrides/__pycache__/IBus.cpython-*.opt-1.pyc
 %{python3_sitearch}/gi/overrides/__pycache__/IBus.cpython-*.pyc
 
 %files lang -f ibus10.lang

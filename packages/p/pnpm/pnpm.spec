@@ -23,7 +23,7 @@
 %global __nodejs_provides %{nil}
 %global __nodejs_requires %{nil}
 Name:           pnpm
-Version:        9.12.1
+Version:        9.12.3
 Release:        0
 Summary:        Fast, disk space efficient package manager
 License:        MIT

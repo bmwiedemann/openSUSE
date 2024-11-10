@@ -19,13 +19,13 @@
 %define qt6_version 6.7.0
 
 %define rname ki18n
-# Full KF6 version (e.g. 6.7.0)
+# Full KF6 version (e.g. 6.8.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 # Last major and minor KF6 version (e.g. 6.0)
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-ki18n
-Version:        6.7.0
+Version:        6.8.0
 Release:        0
 Summary:        KDE Gettext-based UI text internationalization
 License:        LGPL-2.1-or-later
@@ -42,8 +42,8 @@ BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_bugfix_version}
 BuildRequires:  python3
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
-BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 
 %description
 KI18n provides functionality for internationalizing user interface text
@@ -54,8 +54,10 @@ and translators can use the familiar Gettext tools and workflows.
 %package -n libKF6I18n6
 Summary:        KDE Gettext-based UI text internationalization
 Requires:       iso-codes
-# The lang package is not optional
+%if 0%{?suse_version} == 1500
+# iso-codes and iso-codes-lang were merged, the lang package is only required on Leap 15
 Requires:       iso-codes-lang
+%endif
 Requires:       kf6-ki18n >= %{version}
 
 %description -n libKF6I18n6
@@ -77,7 +79,7 @@ Requires:       gettext-tools
 Requires:       kf6-extra-cmake-modules
 Requires:       libKF6I18n6 = %{version}
 Requires:       python3
-%requires_eq    cmake(Qt6Widgets)
+Requires:       cmake(Qt6Widgets) >= %{qt6_version}
 
 %description devel
 KI18n provides functionality for internationalizing user interface text
@@ -123,6 +125,7 @@ done
 %doc README.md
 %{_kf6_libdir}/libKF6I18n.so.*
 %{_kf6_libdir}/libKF6I18nLocaleData.so.*
+%{_kf6_libdir}/libKF6I18nQml.so.*
 
 %files imports
 %{_kf6_qmldir}/org/kde/i18n/
@@ -134,6 +137,7 @@ done
 %{_kf6_cmakedir}/KF6I18n/
 %{_kf6_libdir}/libKF6I18n.so
 %{_kf6_libdir}/libKF6I18nLocaleData.so
+%{_kf6_libdir}/libKF6I18nQml.so
 
 %files -n libKF6I18n6-lang -f ki18n6.lang
 

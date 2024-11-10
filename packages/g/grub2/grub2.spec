@@ -420,6 +420,7 @@ Patch233:       0001-kern-ieee1275-init-Add-IEEE-1275-Radix-support-for-K.patch
 Patch234:       0001-cli_lock-Add-build-option-to-block-command-line-inte.patch
 Patch235:       0002-Requiring-authentication-after-tpm-unlock-for-CLI-ac.patch
 Patch236:       0001-kern-main-Fix-cmdpath-in-root-directory.patch
+Patch237:       0001-10_linux-Do-not-enable-BLSCFG-on-s390-emu.patch
 
 %if 0%{?suse_version} > 1600
 # Always requires a default cpu-platform package
@@ -638,6 +639,18 @@ Provides:       %{name}-%{grubxenarch}:%{_datadir}/%{name}/%{grubxenarch}/zfsinf
 
 %description %{grubxenarch}-extras
 Unsupported modules for %{name}-%{grubxenarch}
+
+%package %{grubxenarch}-debug
+Summary:        Debug symbols for %{grubxenarch}
+Group:          System/Boot
+BuildArch:      noarch
+Requires:       %{name}-%{grubxenarch} = %{version}
+
+%description %{grubxenarch}-debug
+Debug symbols for %{name}-%{grubxenarch}
+
+Information on how to debug grub can be found online:
+https://www.cnblogs.com/coryxie/archive/2013/03/12/2956807.html
 
 %endif
 
@@ -1221,9 +1234,9 @@ perl -ni -e '
 # EXTRA_PATTERN='pattern1|pattern2|pattern3|...'
 EXTRA_PATTERN="zfs"
 %ifarch %{ix86} x86_64
-find %{buildroot}/%{_datadir}/%{name}/%{grubxenarch}/ -type f | sed 's,%{buildroot},,' > %{grubxenarch}-all.lst
-grep -v -E ${EXTRA_PATTERN} %{grubxenarch}-all.lst > %{grubxenarch}.lst
-grep -E ${EXTRA_PATTERN} %{grubxenarch}-all.lst > %{grubxenarch}-extras.lst
+find %{buildroot}/%{_datadir}/%{name}/%{grubxenarch}/ -name '*.mod' | sed 's,%{buildroot},,' > %{grubxenarch}-mod-all.lst
+grep -v -E ${EXTRA_PATTERN} %{grubxenarch}-mod-all.lst > %{grubxenarch}-mod.lst
+grep -E ${EXTRA_PATTERN} %{grubxenarch}-mod-all.lst > %{grubxenarch}-mod-extras.lst
 %endif
 
 %ifarch %{efi}
@@ -1536,16 +1549,27 @@ grep -E ${EXTRA_PATTERN} %{grubarch}-mod-all.lst > %{grubarch}-mod-extras.lst
 %{_libdir}/snapper/plugins/grub
 
 %ifarch %{ix86} x86_64
-%files %{grubxenarch} -f %{grubxenarch}.lst
+%files %{grubxenarch} -f %{grubxenarch}-mod.lst
 %defattr(-,root,root,-)
 %dir %{_datadir}/%{name}/%{grubxenarch}
 # provide compatibility sym-link for VM definitions pointing to old location
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/%{grubxenarch}
+%{_datadir}/%{name}/%{grubxenarch}/grub.xen
+%{_datadir}/%{name}/%{grubxenarch}/*.img
+%{_datadir}/%{name}/%{grubxenarch}/*.lst
+%{_datadir}/%{name}/%{grubxenarch}/kernel.exec
+%{_datadir}/%{name}/%{grubxenarch}/modinfo.sh
 
-%files %{grubxenarch}-extras -f %{grubxenarch}-extras.lst
+%files %{grubxenarch}-extras -f %{grubxenarch}-mod-extras.lst
 %defattr(-,root,root,-)
 %dir %{_datadir}/%{name}/%{grubxenarch}
+
+%files %{grubxenarch}-debug
+%defattr(-,root,root,-)
+%{_datadir}/%{name}/%{grubxenarch}/gdb_grub
+%{_datadir}/%{name}/%{grubxenarch}/gdb_helper.py
+%{_datadir}/%{name}/%{grubxenarch}/*.module
 %endif
 
 %if 0%{?has_systemd:1}

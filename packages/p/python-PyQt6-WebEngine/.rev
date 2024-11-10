@@ -114,4 +114,13 @@
     <comment></comment>
     <requestid>1221362</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>100a647b4dc82f910c07dfd2696c3ff0</srcmd5>
+    <version>6.7.0</version>
+    <time>1731182069</time>
+    <user>dimstar_suse</user>
+    <comment>- Back to PyPI source
+- Fix requires_eq replacement gh#openSUSE/python-rpm-macros#185</comment>
+    <requestid>1222705</requestid>
+  </revision>
 </revisionlist>

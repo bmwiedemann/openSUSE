@@ -16,25 +16,16 @@
 #
 
 
-%if ! %{defined _distconfdir}
-  %define _distconfdir %{_sysconfdir}
-  %define with_config 1
-%else
-  %define with_config 0
-%endif
-
 Name:           rebootmgr
-Version:        2.4+git20240524.30e5383
+Version:        2.6+git20241108.fc0c103
 Release:        0
 Summary:        Automatic controlled reboot during a maintenance window
 License:        GPL-2.0-only AND LGPL-2.1-or-later
 Group:          System/Base
 URL:            https://github.com/SUSE/rebootmgr
 Source:         %{name}-%{version}.tar.xz
-BuildRequires:  autoconf
-BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
-BuildRequires:  fdupes
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(libeconf)
@@ -45,24 +36,20 @@ RebootManager is a dbus service to execute a controlled reboot after updates in 
 If you updated a system with e.g. transactional updates or a kernel update was applied, you can tell rebootmgrd with rebootmgrctl, that the machine should be reboot at the next possible time. This can either be immediately or during a defined maintenance window.
 
 %prep
-%setup -q
+%autosetup
 
 %build
-./autogen.sh
-%configure
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-%make_install
-if [ ! -d %{buildroot}%{_distconfdir} ]; then
-    mkdir -p %{buildroot}%{_distconfdir}
-    mv %{buildroot}%{_sysconfdir}/rebootmgr.conf %{buildroot}%{_distconfdir}
-fi
-%fdupes %{buildroot}%{_mandir}
+%meson_install
+
+#%check
+#meson_test
 
 %pre
 %service_add_pre rebootmgr.service
-test -f /etc/rebootmgr.conf.rpmsave && mv -v /etc/rebootmgr.conf.rpmsave /etc/rebootmgr.conf.rpmsave.old ||:
 
 %post
 %service_add_post rebootmgr.service
@@ -73,19 +60,13 @@ test -f /etc/rebootmgr.conf.rpmsave && mv -v /etc/rebootmgr.conf.rpmsave /etc/re
 %postun
 %service_del_postun rebootmgr.service
 
-%posttrans
-test -f /etc/rebootmgr.conf.rpmsave && mv -v /etc/rebootmgr.conf.rpmsave /etc/rebootmgr.conf ||:
-
 %files
 %license COPYING COPYING.LIB
 %doc NEWS
-%if %{with_config}
-%config %{_sysconfdir}/rebootmgr.conf
-%else
-%{_distconfdir}/rebootmgr.conf
-%endif
+%dir %{_datadir}/rebootmgr
+%{_datadir}/rebootmgr/rebootmgr.conf
 %{_unitdir}/rebootmgr.service
-%{_sbindir}/rebootmgrctl
+%{_bindir}/rebootmgrctl
 %{_sbindir}/rebootmgrd
 %{_datadir}/dbus-1/interfaces/org.opensuse.RebootMgr.xml
 %{_datadir}/dbus-1/system.d/org.opensuse.RebootMgr.conf

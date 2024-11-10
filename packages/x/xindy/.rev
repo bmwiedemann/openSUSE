@@ -117,4 +117,13 @@
     <comment></comment>
     <requestid>733329</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>01de8180794843f193a5df92b50ce216</srcmd5>
+    <version>2.5.1</version>
+    <time>1731182280</time>
+    <user>dimstar_suse</user>
+    <comment>- Hard-require matching clisp version / force rebuilds [boo#1230287]
+- Merge xindy-doc back into xindy</comment>
+    <requestid>1222871</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov  7 10:10:01 UTC 2024 - Knut Anderssen <kanderssen@suse.com>
+
+- Try to assign default global routes to an specific connection 
+  when  possible (bsc#1232531).
+- 5.0.4
+
+-------------------------------------------------------------------
 Wed Mar 13 14:20:25 UTC 2024 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Guard secret attributes against leaking to the log (bsc#1221194)

@@ -40,6 +40,10 @@ Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{r
 Source99:       qt6-wayland-rpmlintrc
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-update-wayland_xml-to-version-1_23_0.patch
+# PATCH-FIX-UPSTREAM
+# fix crash when attach differ shellsurface to the same shellsurfaceitem
+# https://codereview.qt-project.org/c/qt/qtwayland/+/599732
+Patch1:         0001-fix-crash-issue.patch
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-gui-private-devel

@@ -17,7 +17,7 @@
 
 
 Name:           python-ast-decompiler
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        Python module to decompile AST to Python code
 License:        Apache-2.0

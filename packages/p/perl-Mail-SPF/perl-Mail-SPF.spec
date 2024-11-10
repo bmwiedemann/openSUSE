@@ -126,6 +126,10 @@ a reference for other developers of SPF implementations.
 %autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
+# MANUAL BEGIN
+mv bin/spfd bin/spfd_perl
+sed -i s/spfd/spfd_perl/ Makefile.PL
+# MANUAL END
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Nov  4 11:18:10 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.8.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.8.0
+- Changes since 6.7.0:
+  * Update dependency version to 6.8.0
+  * TitleSubtitle: Don't explicit set renderType
+  * Upper mound for overlaysheet width
+  * SelectableLabel: fix a11y properties
+  * Fix Kirigami Application (Qt6) template (kde#494478)
+  * SelectableLabel: Use onPressedChanged
+  * Reformat code with clang-format
+  * Icon: Always respect the animated property (kde#466357)
+  * Adjust tst_qicon for desktop theme
+  * Fix loading desktop theme (kde#491294)
+  * Fix presumable typos confusing background and foreground colors
+  * Always print Theme file loading errors
+  * SelectableLabel: override default padding values more completely (kde#495256)
+  * Fix icon for positive state of InlineMessage
+  * SelectableLabel: fix binding loop warning on cursorShape
+  * ScrollablePage: Add properties to set if the scrollbars are interactive
+  * SelectableLabel: use property alias instead of direct binding, expose more through aliases
+  * Dialog: fix multiple binding loops (again)
+  * Update version to 6.8.0
+  * make the close button actually close
+  * layout: Reverse the stacking order of items inserted into ToolBarLayout
+  * Modify SelectableLabel to use TextEdit instead
+  * Cleanup and fix static QML module installation
+  * Disable PageRow gesture on android
+  * Make OverlaySheet look exactly like Dialog (kde#489357)
+  * Top align icon in multiline InlineMessage
+
+-------------------------------------------------------------------
 Mon Oct  7 10:00:04 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.7.0

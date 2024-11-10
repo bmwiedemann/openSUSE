@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov  8 08:52:09 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Back to PyPI source
+- Fix requires_eq replacement gh#openSUSE/python-rpm-macros#185
+
+-------------------------------------------------------------------
 Tue Nov  5 08:16:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Avoid using requires_eq, which after the last modifications

@@ -15,12 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-aiosmtplib
-Version:        3.0.1
+Version:        3.0.2
 Release:        0
 Summary:        Python asyncio SMTP client
 License:        MIT
@@ -28,8 +25,11 @@ Group:          Development/Languages/Python
 URL:            https://github.com/cole/aiosmtplib
 Source:         https://files.pythonhosted.org/packages/source/a/aiosmtplib/aiosmtplib-%{version}.tar.gz
 BuildRequires:  %{python_module exceptiongroup}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module trustme}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Suggests:       python-aiosmtpd
@@ -48,18 +48,19 @@ Python asyncio SMTP client.
 %autosetup -p1 -n aiosmtplib-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -rs
+%pytest -rs -k "not test_live and not test_tls"
 
 %files %{python_files}
 %doc README.rst docs/*.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/aiosmtplib
+%{python_sitelib}/aiosmtplib-%{version}.dist-info
 
 %changelog

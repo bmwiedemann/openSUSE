@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov  4 11:18:10 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.8.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.8.0
+- Too many changes since 6.7.0, only listing bugfixes:
+  * http worker: handle dav[s] protocol (kde#365356)
+  * KNewFileMenu: Prevent using home directory as template directory (kde#494679)
+  * Preview: better clean after standard thumbnailer (kde#493274)
+  * openurljob.cpp: Avoid opening files in endless loop if mimetype is set to open with xdg-open (kde#494335)
+  * [KFilePlacesView] Improve automatic resize heuristic (kde#449544)
+  * Clean up Properties dialog to follow HIG, improve UX, remove frames and fix padding regression (kde#484789)
+
+-------------------------------------------------------------------
 Mon Oct  7 10:00:03 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.7.0

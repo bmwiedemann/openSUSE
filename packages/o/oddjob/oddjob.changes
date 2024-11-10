@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov  8 15:55:14 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not (Build)Require dbus-1-x11: the dependency seems unused, as
+  it's abstracted throughpython-dbus. dbus-1-x11 is scheduled for
+  removal after the switch to dbus-broker.
+
+-------------------------------------------------------------------
 Mon Jul 24 14:53:28 UTC 2023 - Ludwig Nussel <lnussel@suse.com>
 
 - Use %_pam_moduledir (boo#1191040)

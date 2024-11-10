@@ -1,7 +1,7 @@
 #
 # spec file for package wardstone
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ License:        ISC
 #               Select a group from this link:
 #               https://en.opensuse.org/openSUSE:Package_group_guidelines
 Group:          Productivity/Security
-URL:            https://github.com/tshakalekholoane/wardstone
+URL:            https://github.com/openSUSE/wardstone
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Source2:        cargo_config

@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Nov  4 11:18:18 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.8.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.8.0
+- Changes since 6.7.0:
+  * Vi mode: Don't infinite loop in searcher
+  * Update dependency version to 6.8.0
+  * remove unused var
+  * fix ignores
+  * less deprecated stuff used
+  * Don't temporarily clear document URL during openUrl()
+  * Only discard completion if the cursor was at the end of line
+  * Update git blame ignore file
+  * Reformat code with clang-format
+  * Fix implicit conversion of Qt::Key in Qt 6.9
+  * Try to avoid unwanted completions
+  * fix session restore of file type (kde#492201)
+  * Make ViewPrivate::displayRangeChanged public
+  * Set DocumentPrivate::m_reloading to false only if loading
+  * Give a more proper name to the test
+  * Fix multiblock range handling when unwrapping line (kde#494826)
+  * Fix line removal not handled properly in KateTemplateHandler (kde#434093)
+  * Update version to 6.8.0
+  * Inline blocksize into buffer
+  * Improve MovingRangeTest::benchCheckValidity
+  * Improve TextRange::checkValidity performance
+  * do all testing in clean temp dirs
+  * Add a swap file test
+  * add benchmarks for moving stuff
+  * Use std::vector for cursor storage
+  * Allow disabling editorconfig (kde#471008)
+
+-------------------------------------------------------------------
 Mon Oct  7 10:00:18 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.7.0

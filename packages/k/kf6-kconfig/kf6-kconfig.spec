@@ -19,13 +19,13 @@
 %define qt6_version 6.7.0
 
 %define rname kconfig
-# Full KF6 version (e.g. 6.7.0)
+# Full KF6 version (e.g. 6.8.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 # Last major and minor KF6 version (e.g. 6.0)
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kconfig
-Version:        6.7.0
+Version:        6.8.0
 Release:        0
 Summary:        Advanced configuration system
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -67,8 +67,7 @@ KConfigQml provides QtQuick bindings to KConfig, allowing it to be used with QML
 
 %package imports
 Summary:        QML imports for kconfig
-%requires_eq    libQt6Quick6
-Supplements:    (libKF6ConfigCore6 and libQt6Quick6)
+Supplements:    (libKF6ConfigCore6 and libQt6Qml6)
 
 %description imports
 QML imports for kconfig.

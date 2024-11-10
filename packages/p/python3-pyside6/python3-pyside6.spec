@@ -17,7 +17,7 @@
 
 
 %define tar_name pyside-setup-everywhere-src
-%define short_version 6.8
+%define short_version 6.8.0
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%flavor" == ""
@@ -43,7 +43,7 @@ ExclusiveArch:  donotbuild
 %endif
 
 Name:           %{mypython}-%{pyside_flavor}
-Version:        6.8.0
+Version:        6.8.0.2
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later) AND GPL-2.0-only AND GPL-3.0-only WITH Qt-GPL-exception-1.0
@@ -53,13 +53,11 @@ Source:         https://download.qt.io/official_releases/QtForPython/pyside6/PyS
 Patch0:         0001-Always-link-to-python-libraries.patch
 # PATCH-FIX-UPSTREAM https://codereview.qt-project.org/c/pyside/pyside-setup/+/567559
 Patch1:         fix-pytest-qt.patch
-# PATCH-FIX-UPSTREAM https://bugreports.qt.io/browse/PYSIDE-2888
-Patch2:         0001-Lazy-Init-Support-Lazy-Subtypes-amended.patch
 # PATCH-FIX-UPSTREAM
-Patch3:         0001-signature-Fix-pointers-to-signature-bytes-with-the-h.patch
+Patch2:         0001-signature-Fix-pointers-to-signature-bytes-with-the-h.patch
 # PATCH-FIX-UPSTREAM
-Patch4:         0001-PySide6-Documentation-Name-the-.rst-doc-files-accord.patch
-Patch5:         0001-build-Install-module-doc-snippet-files.patch
+Patch3:         0001-PySide6-Documentation-Name-the-.rst-doc-files-accord.patch
+Patch4:         0001-build-Install-module-doc-snippet-files.patch
 # SECTION common_dependencies
 BuildRequires:  clang-devel
 BuildRequires:  %{mypython}-Sphinx

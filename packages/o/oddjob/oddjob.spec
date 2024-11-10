@@ -1,7 +1,7 @@
 #
 # spec file for package oddjob
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2020 Stasiek Michalski <stasiek@michalski.cc>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,7 +30,6 @@ Source0:        https://releases.pagure.org/oddjob/oddjob-%{version}.tar.gz
 
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  dbus-1-devel >= 0.22
-BuildRequires:  dbus-1-x11
 BuildRequires:  docbook
 BuildRequires:  gcc
 BuildRequires:  libselinux-devel

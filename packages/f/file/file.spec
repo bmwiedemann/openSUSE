@@ -65,6 +65,7 @@ Patch37:        file-secure_getenv.patch
 Patch39:        file-5.28-btrfs-image.dif
 # PATCH-FIX-UPSTREAM: Support max time_t on 32bit
 Patch42:        file-5.45-type_t.dif
+Patch43:        file-seccomp.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %global         _sysconfdir /etc
 %global         magicdir    %{_datadir}/file
@@ -129,6 +130,7 @@ to develop applications that require the magic "file" interface.
 %patch -P 37 -p1 -b .getenv
 %patch -P 39 -p1 -b .btrfs
 %patch -P 0 -b .0
+%patch -P 43 -p1 -b .seccomp
 test -s src/magic.h.in || cp -p src/magic.h src/magic.h.in
 rm -fv src/magic.h
 
@@ -162,6 +164,8 @@ install -s dcore %{buildroot}%{_bindir}
 rm -f %{buildroot}%{_libdir}/*.la
 
 %check
+# Test if prctl is still allowed by the seccomp filter.
+export GLIBC_TUNABLES=glibc.mem.decorate_maps=1
 # Standard checks
 make check
 # Check out that the binary does not bail out:
@@ -174,6 +178,7 @@ for dir in %{_bindir} /%{_lib} %{_libdir} ; do
 	xargs %{buildroot}%{_bindir}/file -m %{buildroot}%{_miscdir}/magic
 done
 unset LD_LIBRARY_PATH
+unset GLIBC_TUNABLES
 
 %post -n %libname -p /sbin/ldconfig
 

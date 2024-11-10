@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Nov  4 11:18:02 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.8.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.8.0
+- Changes since 6.7.0:
+  * Update dependency version to 6.8.0
+  * Make KJob::elapsedTime const
+  * Fix absolute path generation into (not installed) header
+  * KPluginMetaData: reduce string allocation
+  * Update git blame ignore file
+  * Reformat code with clang-format
+  * Kjob: add elapsedTime() returns the ms the job ran
+  * Add CI for static builds on Linux
+  * Install QML module correctly when building statically
+  * exportUrlsToPortal: use QScopeGuard::dismiss for the success code path
+  * Update version to 6.8.0
+
+-------------------------------------------------------------------
 Mon Oct  7 09:59:55 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.7.0
