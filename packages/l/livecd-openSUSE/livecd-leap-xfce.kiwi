@@ -394,7 +394,6 @@
     <package name="xf86-video-ark"/>
     <package name="xf86-video-ati"/>
     <package name="xf86-video-chips" arch="i686,x86_64"/>
-    <package name="xf86-video-fbdev"/>
     <package name="xf86-video-i128"/>
     <package name="xf86-video-mga"/>
     <package name="xf86-video-neomagic"/>

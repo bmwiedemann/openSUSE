@@ -2068,4 +2068,11 @@
 - list-x11: Ignore xdg-utils-screensaver only (forwarded request 1206554 from favogt)</comment>
     <requestid>1206556</requestid>
   </revision>
+  <revision rev="261" vrev="261">
+    <srcmd5>a20b87106611d14e8cdf6e67af783d31</srcmd5>
+    <version>unknown</version>
+    <time>1731215144</time>
+    <user>dimstar_suse</user>
+    <comment>- list-common: drop xf86-video-fbdev: driver has neen dropped.t</comment>
+  </revision>
 </revisionlist>
