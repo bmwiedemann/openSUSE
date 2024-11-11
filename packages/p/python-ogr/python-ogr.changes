@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Nov  8 14:23:32 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 0.50.2:
+  * There is a new method for getting a single commit comment, 
+    supporting also retrieval and adding reactions in GitHub. (#865)
+- Update to 0.50.1:
+  * We have fixed an issue that caused inconsistencies with the expected 
+    behavior stated by the documentation when adding duplicate reactions 
+    to GitLab comments. (#861)
+- Update to 0.50.0:
+  * A new get_commits method was implemented for GitHub and Gitlab projects. (#857)
+  * An issue with silently ignoring error (#760) was fixed. (#855)
+- Update to 0.49.2:
+  * GitLabProject.get_file_content can now correctly handle file paths 
+    starting with ./. (#844)
+- Update to 0.49.1:
+  * Interface for labels was unified and labels property for PullRequest and 
+    Issue now return list of PRLabel and IssueLabel respectively. (#839)
+- Update to 0.49.0:
+  * For Pagure there are 2 new methods available: one for getting users with 
+    specified access rights and one for getting members of a group. (#834)
+- Update to 0.48.1:
+  * For Pagure there are 2 new methods available: one for getting users with 
+    specified access rights and one for getting members of a group. (#834)
+- Update to 0.48.0:
+  * There is a new get_pr_files_diff method supported for Pagure. (#826)
+  * We have fixed a bug that GithubRelease.url returned an API URL. (#824)
+- Update to 0.47.1:
+  * Fixed an issue where getting a list of GitLab merge requests using .list() 
+    would return only 20 items. (#819)
+- Update to 0.47.0:
+  * Added support for removing users/groups from a project and possibility 
+    to check for groups with permissions to modify a PR. (#815)
+- Update to 0.46.2:
+  * Added missing README to package metadata.
+- Update to 0.46.1:
+  * Migrated from setup.py + setup.cfg to pyproject.toml with hatchling 
+    as a build backend and to pyproject macros in the spec file. (#808)
+- Update to 0.46.0:
+  * We have fixed a bug in get_fork method for Pagure about checking the 
+    usernames for a match when going through existing forks. (#800)
+
+-------------------------------------------------------------------
 Wed Jul 19 02:12:48 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.45.0:

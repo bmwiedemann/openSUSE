@@ -1,7 +1,7 @@
 #
 # spec file for package python-ogr
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,15 @@
 
 
 Name:           python-ogr
-Version:        0.45.0
+Version:        0.50.2
 Release:        0
 Summary:        One API for multiple git forges
 License:        MIT
 URL:            https://github.com/packit-service/ogr
 Source:         https://files.pythonhosted.org/packages/source/o/ogr/ogr-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Deprecated
@@ -37,6 +35,7 @@ Requires:       python-PyYAML
 Requires:       python-cryptography
 Requires:       python-python-gitlab
 Requires:       python-requests
+Requires:       python-urllib3
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Deprecated}
@@ -55,7 +54,7 @@ BuildRequires:  %{python_module requre}
 One API for multiple git forges.
 
 %prep
-%setup -q -n ogr-%{version}
+%autosetup -p1 -n ogr-%{version}
 
 %build
 %pyproject_wheel

@@ -73,4 +73,12 @@
 - Drop BuildRequires on setuptools_scm_git_archive.</comment>
     <requestid>1099353</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e6471a49bbd4328504be0de7fde08766</srcmd5>
+    <version>0.50.2</version>
+    <time>1731329213</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1223309</requestid>
+  </revision>
 </revisionlist>
