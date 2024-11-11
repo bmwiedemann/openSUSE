@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Nov 11 02:07:52 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 0.4.42:
+  Fixes
+  * Chapter list folding.
+- Updates from version 0.4.41:
+  Added
+  * Added preliminary support for Rust 2024 edition.
+  * Added a full example of the remove-emphasis preprocessor.
+  Changed
+  * Adjusted styling of clipboard/play icons.
+  * Attr and section rules now have specific code highlighting.
+  * The sidebar is now loaded from a common file, significantly
+    reducing the book size when there are many chapters.
+Fixed
+  * Improved theme support when JavaScript is disabled.
+  * Fixed broken themes when localStorage has an invalid theme id.
+  * Adjusted the line-height of superscripts (and footnotes) to
+    avoid adding extra space between lines.
+
+-------------------------------------------------------------------
 Thu Jun  6 00:51:35 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update to version 0.4.40:
