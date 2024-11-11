@@ -17,10 +17,10 @@
 
 
 Name:           markdown-oxide
-Version:        0.24.2
+Version:        0.24.3
 Release:        0
 Summary:        A markdown language server with Obsidian syntax support
-License:        CC0-1.0
+License:        Apache-2.0
 URL:            https://github.com/Feel-ix-343/markdown-oxide
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
