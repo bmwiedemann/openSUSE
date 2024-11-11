@@ -48,15 +48,27 @@ Typst is a new markup-based typesetting system that is designed to be as powerfu
 Summary:        Bash Completion for %{name}
 Group:          System/Shells
 Supplements:    (%{name} and bash-completion)
+Requires:       %{name} = %{version}
 BuildArch:      noarch
 
 %description    bash-completion
 Bash command-line completion support for %{name}.
 
+%package        zsh-completion
+Summary:        Zsh Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and zsh)
+Requires:       %{name} = %{version}
+BuildArch:      noarch
+
+%description    zsh-completion
+Zsh command-line completion support for %{name}.
+
 %package        fish-completion
 Summary:        Fish Completion for %{name}
 Group:          System/Shells
 Supplements:    (%{name} and fish)
+Requires:       %{name} = %{version}
 BuildArch:      noarch
 
 %description    fish-completion
@@ -116,6 +128,7 @@ install -m 0755 %{hayagriva_vendor_dir}/target/release/hayagriva %{buildroot}%{_
 
 # Shell completions
 install -Dm644 -T %{_builddir}/%{name}-%{version}/artifacts/%{name}.bash %{buildroot}%{_datadir}/bash-completion/completions/%{name}
+install -Dm644 -T %{_builddir}/%{name}-%{version}/artifacts/_%{name}     %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
 install -Dm644 -T %{_builddir}/%{name}-%{version}/artifacts/%{name}.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/%{name}.fish
 
 # copy man-pages
@@ -130,6 +143,10 @@ cp -L  %{_builddir}/%{name}-%{version}/artifacts/*.1 %{buildroot}%{_mandir}/man1
 
 %files bash-completion
 %{_datadir}/bash-completion/*
+
+%files zsh-completion
+%dir %{_datadir}/zsh
+%{_datadir}/zsh/*
 
 %files fish-completion
 %dir %{_datadir}/fish

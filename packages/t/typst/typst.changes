@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 11 02:50:42 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Added ZSH completions
+- Add main package to completion Requires
+
+-------------------------------------------------------------------
 Fri Oct 18 23:05:17 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 0.12.0 
