@@ -18,13 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Flask-SocketIO
-Version:        5.3.6
+Version:        5.4.1
 Release:        0
 Summary:        SocketIO integration for Flask applications
 License:        MIT
 URL:            https://github.com/miguelgrinberg/Flask-SocketIO/
-Source:         https://files.pythonhosted.org/packages/source/F/Flask-SocketIO/Flask-SocketIO-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/miguelgrinberg/Flask-SocketIO/v%{version}/test_socketio.py
+Source:         https://files.pythonhosted.org/packages/source/f/flask-socketio/flask_socketio-%{version}.tar.gz
 BuildRequires:  %{python_module Flask >= 0.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python-socketio >= 5.0.2}
@@ -41,8 +40,7 @@ BuildArch:      noarch
 Socket.IO integration for Flask applications.
 
 %prep
-%setup -q -n Flask-SocketIO-%{version}
-cp %{SOURCE1} .
+%autosetup -n flask_socketio-%{version}
 
 %build
 %pyproject_wheel
