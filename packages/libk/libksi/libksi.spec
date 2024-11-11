@@ -1,7 +1,7 @@
 #
 # spec file for package libksi
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define sover 1
+%define sover 13
 Name:           libksi
-Version:        3.4.0.5
+Version:        3.21.3087
 Release:        0
 Summary:        GuardTime KSI API
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
-Url:            http://www.rsyslog.com/
-# https://github.com/rsyslog/libksi
-# extracted from http://rpms.adiscon.com/v8-stable/epel-7/x86_64/RPMS/libksi1-3.4.0.5-2.el7.src.rpm
-Source0:        %{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE bsc#1042656 -- Fix errors building with openssl-1.1.0
-Patch0:         libksi-build-with-openssl-1.1.0.patch
+URL:            https://github.com/guardtime/libksi/archive/refs/tags/v%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  curl-devel
+BuildRequires:  libtool
 BuildRequires:  openssl-devel
 BuildRequires:  pkg-config
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -56,6 +55,7 @@ needed to develop applications using libksi.
 
 %prep
 %autosetup -p1
+autoreconf -ifv
 
 %build
 %configure \
@@ -80,8 +80,7 @@ rm -v %{buildroot}/%{_datadir}/doc/%{name}/changelog
 %files -n %{name}%{sover}
 %defattr(-,root,root)
 %doc license.txt changelog
-%{_libdir}/libksi.so.%{sover}
-%{_libdir}/libksi.so.%{sover}.*
+%{_libdir}/libksi.so.*
 
 %files devel
 %defattr(-,root,root)

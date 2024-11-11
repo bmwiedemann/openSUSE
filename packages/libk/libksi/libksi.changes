@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov  5 14:49:55 UTC 2024 - Thomas Blume <Thomas.Blume@suse.com>
+
+- update to libksi 3.21.3087
+- switched from unmaintained old source repo to current:
+  https://github.com/guardtime/libksi
+- removed patches: libksi-build-with-openssl-1.1.0.patch
+- see /usr/share/doc/packages/libksi13/changelog for details
+
+-------------------------------------------------------------------
 Thu Feb 29 17:04:41 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
