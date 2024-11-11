@@ -53,4 +53,12 @@
   * Support `redirect` in SPF</comment>
     <requestid>1206745</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9cd358e7636bb661bbadb25e779cc2e5</srcmd5>
+    <version>5.7.8</version>
+    <time>1731333499</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1223345</requestid>
+  </revision>
 </revisionlist>

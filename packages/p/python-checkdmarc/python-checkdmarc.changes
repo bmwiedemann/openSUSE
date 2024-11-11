@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Sun Nov 10 10:27:03 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.7.8
+  * Move SVG validation errors from ["bimi"]["warnings"] to
+    ["bimi"]["image"]["validation_errors"] (#150)
+- Update to version 5.7.7
+  * Fix VMC validation errors not appearing.
+- Update to version 5.7.6
+  * Fix crash when trying to output to CSV format
+- Update to version 5.7.5
+  * Fix BIMI lookup for subdomains that do not have a BIMI record.
+- Update to version 5.7.4
+  * Add additional checks for tiny-ps SVG requirements
+- Update to version 5.7.3
+  * BIMI images and mark certificates
+    + Better error handling
+    + Simplified warning messages
+    + sha256_hash output fields renamed to sha256
+- Update to version 5.7.2
+  * Account for float SVG sizes
+- Update to version 5.7.1
+  * Properly parse a certificate SAN
+  * Certificate warnings fire properly
+  * Make the expires timestamp more readable
+- Update to version 5.7.0
+  * checkdmarc will now validate Verified Mark Certificates (VMCs)
+    and Common Mark Certificates (CMC), snd will verify that
+    SHA256 hash of the logo embedded in the certificate matches
+    the SHA256 hash logo at the URL at the BIMI l tag.
+    Additionally, SVG and certificate metadata is now included in
+    the checkdmarc.bimi.parse_bimi_record() API and JSON CLI
+    output.
+- Update to version 5.6.2
+  * Add a warning when BIMI records do not provide a mark
+    certificate.
+  * Use the correct dependency (xmltodict, not xml2dict).
+- Update to version 5.6.1
+  * Fix SVG base profile detection
+- Update to version 5.6.0
+  * Automatically check for a BIMI DNS record at the default
+    selector when using the CLI
+  * Fix parsing of BIMI record tags when they are separated by
+    a ";" without a space.
+  * Validate the file at the URL in the BIMI l tag value
+    + Must be an SVG file
+    + The SVG version must be 1.2
+    + The SVG base profile must be tiny-ps
+    + The SVG dimensions must be square
+    + The file size must not exceed 32 KB
+- Update to version 5.5.1
+  * SPF record validation fixes (PR #147)
+    + Accept mechanisms with domains that start with all.
+    + Ignore multiple trailing mechanisms and random text with
+      spaces.
+- Rebase skip-network-tests.patch
+- Remove tests.py
+  * included in the now used source tarball from github
+
+-------------------------------------------------------------------
 Thu Oct 10 15:49:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.5.0:

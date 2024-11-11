@@ -2,7 +2,7 @@
 # spec file for package python-checkdmarc
 #
 # Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2021, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2021-2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,12 @@
 
 
 Name:           python-checkdmarc
-Version:        5.5.0
+Version:        5.7.8
 Release:        0
 Summary:        A Python module and command line parser for SPF and DMARC records
 License:        Apache-2.0
 URL:            https://domainaware.github.io/checkdmarc
-Source:         https://files.pythonhosted.org/packages/source/c/checkdmarc/checkdmarc-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/domainaware/checkdmarc/master/tests.py
+Source:         https://github.com/domainaware/checkdmarc/archive/refs/tags/%{version}.tar.gz#/checkdmarc-%{version}.tar.gz
 Patch0:         skip-network-tests.patch
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
@@ -34,20 +33,26 @@ BuildRequires:  python-rpm-macros
 Requires:       python-cryptography
 Requires:       python-dnspython >= 2.0.0
 Requires:       python-expiringdict >= 1.1.4
+Requires:       python-pem >= 23.1.0
 Requires:       python-publicsuffixlist
+Requires:       python-pyOpenSSL >= 24.2.1
 Requires:       python-pyleri >= 1.3.2
 Requires:       python-requests >= 2.25.0
 Requires:       python-timeout-decorator >= 0.4.1
+Requires:       python-xmltodict
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module dnspython >= 2.0.0}
 BuildRequires:  %{python_module expiringdict >= 1.1.4}
+BuildRequires:  %{python_module pem >= 23.1.0}
 BuildRequires:  %{python_module publicsuffixlist}
+BuildRequires:  %{python_module pyOpenSSL >= 24.2.1}
 BuildRequires:  %{python_module pyleri >= 1.3.2}
 BuildRequires:  %{python_module requests >= 2.25.0}
 BuildRequires:  %{python_module timeout-decorator >= 0.4.1}
+BuildRequires:  %{python_module xmltodict}
 # /SECTION
 %python_subpackages
 
@@ -56,8 +61,7 @@ A Python module and command line parser for SPF and DMARC records.
 
 %prep
 %setup -q -n checkdmarc-%{version}
-cp %{SOURCE1} .
-%patch -P 0 -p0
+%autopatch -p1
 
 %build
 %pyproject_wheel
@@ -81,6 +85,6 @@ cp %{SOURCE1} .
 %doc README.md
 %python_alternative %{_bindir}/checkdmarc
 %{python_sitelib}/checkdmarc
-%{python_sitelib}/checkdmarc-%{version}.dist-info
+%{python_sitelib}/checkdmarc-*.dist-info
 
 %changelog

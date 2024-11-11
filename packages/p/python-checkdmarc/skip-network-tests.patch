@@ -1,5 +1,7 @@
---- tests.py~	2024-02-29 12:22:56.007309853 +1100
-+++ tests.py	2024-02-29 12:25:49.618057933 +1100
+diff --git a/tests.py b/tests.py
+index 8e58708..65605d4 100755
+--- a/tests.py
++++ b/tests.py
 @@ -3,6 +3,7 @@
  
  """Automated tests"""
@@ -8,7 +10,7 @@
  import unittest
  from collections import OrderedDict
  
-@@ -94,6 +95,7 @@
+@@ -99,6 +100,7 @@ class Test(unittest.TestCase):
  
          self.assertEqual(len(results["warnings"]), 0)
  
@@ -16,43 +18,51 @@
      def testSplitSPFRecord(self):
          """Split SPF records are parsed properly"""
  
-@@ -129,6 +131,7 @@
-         self.assertRaises(checkdmarc.spf.SPFRecordNotFound,
-                           checkdmarc.spf.parse_spf_record, spf_record, domain)
+@@ -140,6 +142,7 @@ class Test(unittest.TestCase):
+             domain,
+         )
  
 +    @unittest.skipUnless(os.path.exists("/etc/resolv.conf"), "no network")
      def testTooManySPFDNSLookups(self):
          """SPF records with > 10 SPF mechanisms that cause DNS lookups raise
          SPFTooManyDNSLookups"""
-@@ -144,6 +147,7 @@
-         self.assertRaises(checkdmarc.spf.SPFTooManyDNSLookups,
-                           checkdmarc.spf.parse_spf_record, spf_record, domain)
+@@ -161,6 +164,7 @@ class Test(unittest.TestCase):
+             domain,
+         )
  
 +    @unittest.skipUnless(os.path.exists("/etc/resolv.conf"), "no network")
      def testTooManySPFVoidDNSLookups(self):
          """SPF records with > 2 void DNS lookups"""
  
-@@ -216,6 +220,7 @@
-         self.assertRaises(checkdmarc.spf.SPFIncludeLoop,
-                           checkdmarc.spf.parse_spf_record, spf_record, domain)
+@@ -274,6 +278,7 @@ class Test(unittest.TestCase):
+             domain,
+         )
  
 +    @unittest.skipUnless(os.path.exists("/etc/resolv.conf"), "no network")
      def testSPFMissingMXRecord(self):
          """A warning is issued if an SPF record contains a mx mechanism
          pointing to a domain that has no MX records"""
-@@ -226,6 +231,7 @@
-         self.assertIn("{0} does not have any MX records".format(domain),
-                       results["warnings"])
+@@ -285,6 +290,7 @@ class Test(unittest.TestCase):
+             "{0} does not have any MX records".format(domain), results["warnings"]
+         )
  
 +    @unittest.skipUnless(os.path.exists("/etc/resolv.conf"), "no network")
      def testSPFMissingARecord(self):
          """A warning is issued if an SPF record contains a mx mechanism
          pointing to a domain that has no A records"""
-@@ -236,6 +242,7 @@
-         self.assertIn("cardinalhealth.net does not have any A/AAAA records",
-                       results["warnings"])
+@@ -296,6 +302,7 @@ class Test(unittest.TestCase):
+             "cardinalhealth.net does not have any A/AAAA records", results["warnings"]
+         )
  
 +    @unittest.skipUnless(os.path.exists("/etc/resolv.conf"), "no network")
      def testDMARCPctLessThan100Warning(self):
          """A warning is issued if the DMARC pvt value is less than 100"""
  
+@@ -347,6 +354,7 @@ class Test(unittest.TestCase):
+             domain,
+         )
+ 
++    @unittest.skipUnless(os.path.exists("/etc/resolv.conf"), "no network")
+     def testBIMI(self):
+         """Test BIMI checks"""
+         domain = "chase.com"
