@@ -17,7 +17,7 @@
 
 
 Name:           qps
-Version:        2.9.0
+Version:        2.10.0
 Release:        0
 Summary:        Visual Process Manager
 License:        GPL-2.0-or-later
@@ -35,7 +35,7 @@ BuildRequires:  cmake(KF6WindowSystem)
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(lxqt2-build-tools)
-BuildRequires:  pkgconfig(lxqt) >= 2.0.0
+BuildRequires:  pkgconfig(lxqt) >= 2.1.0
 
 %description
 Qps is a visual process manager, an X11 version of "top" or "ps" that
