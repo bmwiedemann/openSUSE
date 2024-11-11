@@ -46,7 +46,7 @@ Summary:        OpenCL ICD Bindings
 Suggests:       pocl
 Conflicts:      nvidia-compute-G04
 Conflicts:      nvidia-compute-G05
-Conflicts:      nvidia-compute-G06 < 570.0.0
+Conflicts:      nvidia-compute-G06 < 550.120
 
 %description -n libOpenCL1
 OpenCL is a royalty-free standard for cross-platform, parallel programming

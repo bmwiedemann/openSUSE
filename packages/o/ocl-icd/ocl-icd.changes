@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 11 11:52:00 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- nvidia-compute-G06: fixed conflicts to nvidia-compute-G06;
+  the requires to libOpenCL1 is already in since 550.120; so do
+  the conflicts for anything < 550.120 (boo#1233169)
+
+-------------------------------------------------------------------
 Fri Nov  8 13:04:42 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - get rid of update-alternatives; it's no longer needed because with
