@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Nov 11 06:26:33 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20241111.a27e5ec8:
+  * Fix: log: The report DEBUG log message is not displayed in the log file
+
+-------------------------------------------------------------------
+Fri Nov 08 06:14:40 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20241108.a052c25d:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: report.utils: For a sequence of archived log files, check the modify time
+  * Fix: report.utils: Fix the performance issue (bsc#1232821)
+  * Dev: report.utils: Add debug info for the log file types
+  * Fix: report.collect: Make sure the log is not None before using it (bsc#1232821)
+
+-------------------------------------------------------------------
+Wed Nov 06 15:36:48 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20241106.ec9b843c:
+  * Dev: github-actions: rebuild the test container image weekly
+
+-------------------------------------------------------------------
+Mon Nov 04 14:46:41 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20241104.3da03cd4:
+  * Fix: pylint: fix string literal problems
+  * Dev: add pylint to check ill-formated string literals
+  * Dev: test_container: end knet 1.29 staging
+  * Dev: github: add a workflow to build test container image
+
+-------------------------------------------------------------------
+Mon Nov 04 05:07:50 UTC 2024 - nicholas.yang@suse.com
+
+- Update to version 5.0.0+20241104.4972fadc:
+  * Fix: Python 3.12: SyntaxWarning: invalid escape sequence
+
+-------------------------------------------------------------------
 Tue Oct 29 06:09:09 UTC 2024 - XLiang@suse.com
 
 - Update to version 5.0.0+20241029.917b0d91:
