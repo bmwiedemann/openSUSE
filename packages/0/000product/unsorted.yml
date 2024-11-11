@@ -10389,6 +10389,7 @@ unsorted:
   - kmix-lang 
   - kmouth 
   - kmouth-lang 
+  - kmozillahelper 
   - kmscon 
   - kmscube 
   - kmymoney 
@@ -10823,6 +10824,7 @@ unsorted:
   - labplot-kf5-lang 
   - labwc 
   - labwc-lang 
+  - labwc-theme-vent 
   - ladish 
   - ladspa 
   - ladspa-32bit 
@@ -13231,7 +13233,7 @@ unsorted:
   - libfm-qt5-14 
   - libfm-qt5-devel 
   - libfm-qt5-lang 
-  - libfm-qt6-14 
+  - libfm-qt6-15 
   - libfm-qt6-data 
   - libfm-qt6-devel 
   - libfm-qt6-lang 
@@ -14318,7 +14320,7 @@ unsorted:
   - libkscreen2-plugin 
   - libkscreen6-devel 
   - libksi-devel 
-  - libksi1 
+  - libksi13 
   - libksieve-devel 
   - libksysguard6-devel 
   - libktoblzcheck1 
@@ -18167,6 +18169,7 @@ unsorted:
   - lxqt-config 
   - lxqt-config-lang 
   - lxqt-globalkeys 
+  - lxqt-globalkeys-branding-upstream 
   - lxqt-globalkeys-devel 
   - lxqt-globalkeys-lang 
   - lxqt-menu-data 
@@ -18176,6 +18179,7 @@ unsorted:
   - lxqt-openssh-askpass 
   - lxqt-openssh-askpass-lang 
   - lxqt-panel 
+  - lxqt-panel-branding-upstream 
   - lxqt-panel-devel 
   - lxqt-panel-lang 
   - lxqt-policykit 
@@ -18187,6 +18191,7 @@ unsorted:
   - lxqt-runner 
   - lxqt-runner-lang 
   - lxqt-session 
+  - lxqt-session-branding-upstream 
   - lxqt-session-lang 
   - lxqt-sudo 
   - lxqt-sudo-lang 
@@ -18197,6 +18202,7 @@ unsorted:
   - lxqt-wallet 
   - lxqt-wallet-devel 
   - lxqt-wallet-lang 
+  - lxqt-wayland-session 
   - lxqt2-build-tools-devel 
   - lxrandr 
   - lxrandr-lang 
@@ -21222,6 +21228,7 @@ unsorted:
   - pcmanfm-devel 
   - pcmanfm-lang 
   - pcmanfm-qt 
+  - pcmanfm-qt-branding-upstream 
   - pcmanfm-qt-lang 
   - pcmanx-gtk2 
   - pcollections 
@@ -24145,7 +24152,6 @@ unsorted:
   - python3-pylibiio 
   - python3-pymod2pkg 
   - python3-pynest2d 
-  - python3-pynitrokey 
   - python3-pyprompter 
   - python3-pysearpc 
   - python3-pyside2 
@@ -24331,7 +24337,6 @@ unsorted:
   - python310-PyBindGen 
   - python310-PyBrowserID 
   - python310-PyCBC 
-  - python310-PyChart 
   - python310-PyCondor 
   - python310-PyDispatcher 
   - python310-PyECLib 
@@ -25473,7 +25478,6 @@ unsorted:
   - python310-editables 
   - python310-editdistance 
   - python310-editdistance-devel 
-  - python310-edk2toolext 
   - python310-edk2toollib 
   - python310-efl 
   - python310-elastic-transport 
@@ -25527,7 +25531,6 @@ unsorted:
   - python310-extras 
   - python310-extratools 
   - python310-eyed3 
-  - python310-ez_setup 
   - python310-ezdxf 
   - python310-fabio 
   - python310-factory_boy 
@@ -26333,6 +26336,7 @@ unsorted:
   - python310-nibabel 
   - python310-nilearn 
   - python310-nine 
+  - python310-nitrokey 
   - python310-nkdfu 
   - python310-nlopt 
   - python310-nltk 
@@ -26824,6 +26828,7 @@ unsorted:
   - python310-pynamodb 
   - python310-pynetbox 
   - python310-pyngus 
+  - python310-pynitrokey 
   - python310-pynput 
   - python310-pynxos 
   - python310-pyo 
@@ -27380,7 +27385,6 @@ unsorted:
   - python310-snuggs 
   - python310-social-auth-app-django 
   - python310-social-auth-core 
-  - python310-socketpool 
   - python310-softlayer 
   - python310-softlayer-zeep 
   - python310-solv 
@@ -28002,7 +28006,6 @@ unsorted:
   - python311-PyBindGen 
   - python311-PyBrowserID 
   - python311-PyCBC 
-  - python311-PyChart 
   - python311-PyChromecast 
   - python311-PyCondor 
   - python311-PyDispatcher 
@@ -29164,7 +29167,6 @@ unsorted:
   - python311-extract-msg 
   - python311-extratools 
   - python311-eyed3 
-  - python311-ez_setup 
   - python311-ezdxf 
   - python311-fabio 
   - python311-factory_boy 
@@ -29934,6 +29936,7 @@ unsorted:
   - python311-nibabel 
   - python311-nilearn 
   - python311-nine 
+  - python311-nitrokey 
   - python311-nkdfu 
   - python311-nlopt 
   - python311-nltk 
@@ -30401,6 +30404,7 @@ unsorted:
   - python311-pynamodb 
   - python311-pynetbox 
   - python311-pyngus 
+  - python311-pynitrokey 
   - python311-pynput 
   - python311-pynxos 
   - python311-pyo 
@@ -30940,7 +30944,6 @@ unsorted:
   - python311-snuggs 
   - python311-social-auth-app-django 
   - python311-social-auth-core 
-  - python311-socketpool 
   - python311-softlayer 
   - python311-softlayer-zeep 
   - python311-solv 
@@ -31561,7 +31564,6 @@ unsorted:
   - python312-PyBindGen 
   - python312-PyBrowserID 
   - python312-PyCBC 
-  - python312-PyChart 
   - python312-PyChromecast 
   - python312-PyCondor 
   - python312-PyDispatcher 
@@ -32758,7 +32760,6 @@ unsorted:
   - python312-extras 
   - python312-extratools 
   - python312-eyed3 
-  - python312-ez_setup 
   - python312-ezdxf 
   - python312-fabio 
   - python312-factory_boy 
@@ -33562,6 +33563,7 @@ unsorted:
   - python312-nibabel 
   - python312-nilearn 
   - python312-nine 
+  - python312-nitrokey 
   - python312-nkdfu 
   - python312-nlopt 
   - python312-nltk 
@@ -34053,6 +34055,7 @@ unsorted:
   - python312-pynamodb 
   - python312-pynetbox 
   - python312-pyngus 
+  - python312-pynitrokey 
   - python312-pynput 
   - python312-pynxos 
   - python312-pyo 
@@ -34608,7 +34611,6 @@ unsorted:
   - python312-snuggs 
   - python312-social-auth-app-django 
   - python312-social-auth-core 
-  - python312-socketpool 
   - python312-softlayer 
   - python312-softlayer-zeep 
   - python312-solv 
@@ -47759,6 +47761,7 @@ unsorted:
   - typst 
   - typst-bash-completion 
   - typst-fish-completion 
+  - typst-zsh-completion 
   - u-boot-tools 
   - u3-tool 
   - uacme 
