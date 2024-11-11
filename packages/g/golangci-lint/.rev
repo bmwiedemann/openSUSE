@@ -427,4 +427,41 @@
   * docs: update GitHub Action assets (#4944) (forwarded request 1222521 from jfkw)</comment>
     <requestid>1222524</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>15175aa72097353c689e7dc8b457359f</srcmd5>
+    <version>1.62.0</version>
+    <time>1731329195</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.62.0:
+  * build(deps): bump go-simpler.org/musttag from 0.12.2 to 0.13.0 (#5121)
+  * build(deps): bump github.com/lasiar/canonicalheader from 1.1.1 to 1.1.2 (#5119)
+  * build(deps): bump golang.org/x/tools from 0.26.0 to 0.27.0 (#5120)
+  * build(deps): bump golang.org/x/sys from 0.26.0 to 0.27.0 (#5118)
+  * docs: improve forbidigo pattern examples for built-in functions (#5116)
+  * fix: Go version propagation (#5109)
+  * feat: deprecation step 2 of execinquery and gomnd (#5110)
+  * build(deps): bump github.com/mgechev/revive from 1.4.0 to 1.5.0 (#5113)
+  * build(deps): bump github.com/nunnatsa/ginkgolinter from 0.17.0 to 0.18.0 (#5114)
+  * fix: improve Go detection (#5112)
+  * dev: use secure links (#5106)
+  * docs: replace staticcheck.io with staticcheck.dev (#5107)
+  * docs: fix iface linter name (#5104)
+  * dev: extends usage of new Stopwatch methods (#5102)
+  * dev: improve readability and maintenance of `internal/cache` (#5101)
+  * dev: isolates the code borrowed from Go (#5100)
+  * dev: updates internal code borrowed from Go (#5098)
+  * build(deps): bump the all group across 3 directories with 5 updates (#5099)
+  * build(deps): bump github.com/timonwong/loggercheck from 0.9.4 to 0.10.1 (#5094)
+  * build(deps): bump github.com/nunnatsa/ginkgolinter from 0.16.2 to 0.17.0 (#5093)
+  * build(deps): bump github.com/sivchari/tenv from 1.10.0 to 1.12.1 (#5090)
+  * build(deps): bump github.com/fatih/color from 1.17.0 to 1.18.0 (#5088)
+  * Revert &quot;Add filen linter (#5081)&quot; (#5087)
+  * code-climate: add check_name field (#5086)
+  * dev: remove unused function SetAnalyzerGoVersion (#5085)
+  * Add filen linter (#5081)
+  * docs: update demo animation (#5083)
+  * Add iface linter (#4871)
+  * build(deps): bump github.com/golangci/go-printf-func-name from 7558a9eaa5af to v0.1.0 (#5079) (forwarded request 1223269 from jfkw)</comment>
+    <requestid>1223280</requestid>
+  </revision>
 </revisionlist>
