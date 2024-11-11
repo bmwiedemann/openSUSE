@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Mon Nov 11 02:12:08 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update vendored dependencies with patch ./zeromq-update.patch
+  * this fixes build where zeromq is not compatible with the new 'static
+    types from futures-util
+
+-------------------------------------------------------------------
+Sun Nov 10 12:46:52 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Fix aarch64 builds with ./deno-v8-arm.patch
+
+-------------------------------------------------------------------
+Sun Nov 10 12:18:13 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Replace ./rusty_v8-0.106.0.tar.gz with ./rusty_v8-0.106.0.tar.zst
+- Fix ./compiler-rt-adjust-paths.patch
+  * Update ./compiler-rt-adjust-paths.patch for clang19 pathing.
+- Add back registry.tar.zst.
+
+-------------------------------------------------------------------
+Sun Nov 10 09:23:10 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Do not depend on rusty_v8 from openSUSE:Factory.
+  * deno has changed how they ship the v8 crate.
+  * will request a deletion to v8 from openSUSE:Factory.
+  * removing it from BuildRequires
+- Apply patch directly to vendored v8 with ./compiler-rt-adjust-paths.patch.
+
+-------------------------------------------------------------------
+Sun Nov 10 06:13:41 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 2.0.6:
+  * Revert "perf(upgrade): cache downloaded binaries in DENO_DIR"
+  * perf(upgrade): cache downloaded binaries in DENO_DIR
+  * fix: performance.timeOrigin
+  * fix(install): cache jsr deps from all workspace config files
+  * feat(ext/http): abort event when request is cancelled
+  * fix(ext/cache): don't panic when creating cache
+  * chore: make commandWithCwdIsAsync test less flaky
+  * feat(ext/http): abort signal when request is cancelled
+  * chore: serve node headers from a test server to fix flaky `node-gyp` test
+  * refactor: use concrete error type for remaining ops
+  * refactor(ext/net): Use hickory dns instead of unmaintained trust-dns
+  * fix(node:zlib): gzip & gzipSync should accept ArrayBuffer
+  * fix(ext/node): better inspector support
+  * fix(fmt): don't use self-closing tags in HTML
+  * feat(lsp): auto-import completions from byonm dependencies
+- Replace registry.tar.zst to vendor.tar.zst
+
+-------------------------------------------------------------------
+Sun Nov 10 01:29:34 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Revert passing --locked flag.
+- Revert regenerating lockfile.
+
+-------------------------------------------------------------------
+Sun Nov 10 01:22:25 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Pass --locked in cargo build.
+- Regenerate lockfile on prep.
+
+-------------------------------------------------------------------
+Sun Nov 10 01:14:01 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Limit to Rust tier 1 arches.
+  * I don't believe that we should eagerly take account
+    architectures that no one will use at home or during
+    development.
+
+-------------------------------------------------------------------
 Thu Nov  7 11:32:30 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 2.0.5:

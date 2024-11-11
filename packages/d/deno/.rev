@@ -2931,4 +2931,42 @@
 </comment>
     <requestid>1222601</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>f203ae240fa05276d957f1ed2a9afd5b</srcmd5>
+    <version>2.0.6</version>
+    <time>1731329190</time>
+    <user>dimstar_suse</user>
+    <comment>- Update vendored dependencies with patch ./zeromq-update.patch
+  * this fixes build where zeromq is not compatible with the new 'static
+    types from futures-util
+- Fix aarch64 builds with ./deno-v8-arm.patch
+- Replace ./rusty_v8-0.106.0.tar.gz with ./rusty_v8-0.106.0.tar.zst
+- Fix ./compiler-rt-adjust-paths.patch
+  * Update ./compiler-rt-adjust-paths.patch for clang19 pathing.
+- Add back registry.tar.zst.
+- Do not depend on rusty_v8 from openSUSE:Factory.
+  * deno has changed how they ship the v8 crate.
+  * will request a deletion to v8 from openSUSE:Factory.
+  * removing it from BuildRequires
+- Apply patch directly to vendored v8 with ./compiler-rt-adjust-paths.patch.
+- Update to version 2.0.6:
+  * Revert &quot;perf(upgrade): cache downloaded binaries in DENO_DIR&quot;
+  * perf(upgrade): cache downloaded binaries in DENO_DIR
+  * fix: performance.timeOrigin
+  * fix(install): cache jsr deps from all workspace config files
+  * feat(ext/http): abort event when request is cancelled
+  * fix(ext/cache): don't panic when creating cache
+  * chore: make commandWithCwdIsAsync test less flaky
+  * feat(ext/http): abort signal when request is cancelled
+  * chore: serve node headers from a test server to fix flaky `node-gyp` test
+  * refactor: use concrete error type for remaining ops
+  * refactor(ext/net): Use hickory dns instead of unmaintained trust-dns
+  * fix(node:zlib): gzip &amp; gzipSync should accept ArrayBuffer
+  * fix(ext/node): better inspector support
+  * fix(fmt): don't use self-closing tags in HTML
+  * feat(lsp): auto-import completions from byonm dependencies
+
+</comment>
+    <requestid>1223264</requestid>
+  </revision>
 </revisionlist>

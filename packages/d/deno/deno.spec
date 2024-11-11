@@ -19,8 +19,9 @@
 
 
 %global _lto_cflags %nil
+%global _v8_version 0.106.0
 Name:           deno
-Version:        2.0.5
+Version:        2.0.6
 Release:        0
 Summary:        A secure JavaScript and TypeScript runtime
 License:        MIT
@@ -28,6 +29,10 @@ Group:          Productivity/Other
 URL:            https://github.com/denoland/deno
 Source0:        %{name}-%{version}.tar.zst
 Source1:        registry.tar.zst
+Source2:        rusty_v8-%{_v8_version}.tar.zst
+Patch1:         compiler-rt-adjust-paths.patch
+Patch2:         deno-v8-arm.patch
+Patch3:         zeromq-update.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  clang
 # needed by `libz-ng-sys` after 1.36.1
@@ -41,15 +46,13 @@ BuildRequires:  llvm-gold
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
-BuildRequires:  rusty_v8
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(protobuf)
-# deno does not build on 32-bit archs
-ExclusiveArch:  x86_64 aarch64 ppc64 ppc64le s390x
+ExclusiveArch:  %{rust_tier1_arches}
 # PATCH-FIX-OPENSUSE - Disable LTO (to reduce req memory)
 Patch10:        deno-disable-lto.patch
 
@@ -97,16 +100,25 @@ Remote code is fetched and cached on first execution, and only
 updated with the --reload flag.
 
 %prep
-%autosetup -a1 -p1 -n %{name}
+%autosetup -a2 -p1 -n %{name}
 
-# From archlinux. We are using a patched v8 from our build
-unlink $PWD/rusty_v8 || true
-ln -sf %{_libdir}/crates/rusty_v8 $PWD/rusty_v8
+# Extract vendor source
+tar xf %{SOURCE1}
+# Now we patch V8 or %%{SOURCE2}
 echo -e "\n[patch.crates-io]\nv8 = { path = './rusty_v8' }" >> Cargo.toml
-export CARGO_HOME=$PWD/.cargo
+pushd rusty_v8
+# Keeping this ifarch in case someone tries to build 32 bit
+# which is not our problem
+%ifarch x86_64 || x86_64_v3 || aarch64
+# lib to lib64
+sed -i 's|lib/clang|lib64/clang|g' build/config/clang/BUILD.gn
+%endif
+popd
+# Seems this causes builds to break?
+rm .cargo/config.toml
 
 %build
-export CARGO_HOME=$PWD/.cargo
+export CARGO_HOME="$PWD/.cargo"
 # Ensure that the clang version matches. This command came from Archlinux. Thanks.
 export CLANG_VERSION=$(clang --version | grep -m1 version | sed 's/.* \([0-9]\+\).*/\1/')
 export V8_FROM_SOURCE=1
