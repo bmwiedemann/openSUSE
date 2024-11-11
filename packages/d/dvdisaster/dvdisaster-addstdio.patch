@@ -1,0 +1,16 @@
+Author:           davejplater@gmail.com
+Date:             Mon 11 Nov 2024 10:41:55 SAST
+Reason:
+The test compile code snippet needs to include stdio.h since
+an update.Index: b/scripts/bash-based-configure
+===================================================================
+--- a/scripts/bash-based-configure	2021-09-24 11:13:23.000000000 +0200
++++ b/scripts/bash-based-configure	2024-11-11 06:44:58.439061539 +0200
+@@ -1364,6 +1364,7 @@ EOF
+ 
+    cat >conftest.c <<EOF
+ #include <glib.h>
++#include <stdio.h>
+ int main(int argc, char *argv[])
+ { g_malloc(1024); 
+ 

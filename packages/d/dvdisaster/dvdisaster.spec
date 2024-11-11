@@ -1,7 +1,7 @@
 #
 # spec file for package dvdisaster
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Source0:        https://dvdisaster.jcea.es/downloads/%{name}-%{version}.tar.bz2
 Source1:        https://dvdisaster.jcea.es/downloads/%{name}-%{version}.tar.bz2.gpg
 # PATCH-FIX-OPENSUSE correct desktop catagories.
 Patch0:         dvdisaster-desktop-cat.patch
+Patch1:         dvdisaster-addstdio.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gettext
@@ -103,7 +104,7 @@ rm -f %{buildroot}%{_bindir}/dvdisaster-uninstall.sh
 %{_bindir}/%{name}
 # NOTE: adding COPYING to the doc directory as well as license
 #is not a mistake it's for the license display in the help menu
-%doc README CHANGELOG CREDITS.de CREDITS.en TODO COPYING
+%doc README CHANGELOG CREDITS.de CREDITS.en TODO
 %license COPYING
 %{_mandir}/de/man1/%{name}.1%{ext_man}
 %{_mandir}/man1/%{name}.1%{ext_man}
