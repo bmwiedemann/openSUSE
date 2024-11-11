@@ -1,7 +1,7 @@
 #
 # spec file for package libnice
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libnice
-Version:        0.1.21
+Version:        0.1.22
 Release:        0
 Summary:        Interactive Connectivity Establishment implementation
 License:        LGPL-2.1-only OR MPL-1.1
@@ -27,8 +27,6 @@ Source:         https://nice.freedesktop.org/releases/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 # PATCH-FIX-UPSTREAM libnice-port-gupnp-igd-bump.patch -- Port to new gupnp-igd
 Patch1:         libnice-port-gupnp-igd-bump.patch
-# PATCH-FIX-UPSTREAM 4b63250c.patch -- agent/meson: Replace filename with basename
-Patch2:         https://gitlab.freedesktop.org/libnice/libnice/-/commit/4b63250c.patch
 
 BuildRequires:  meson
 BuildRequires:  pkgconfig

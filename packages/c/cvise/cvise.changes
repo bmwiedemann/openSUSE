@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Nov 10 10:01:10 UTC 2024 - martin.liska@hey.com
+
+- Update to version 2.11.0+git.20241110.d89a535:
+  * Bump to 2.11.0
+  * CI: make default LLVM version 19
+  * Remove unneeded LLVM layout workaround
+  * Add -Wno-error=deprecated-declarations (#151)
+  * Fix CI for LLVM nightly
+  * Add note that the project is seeking for maintainers
+  * Use Process::kill instead of terminate function.
+  * Port to LLVM 20 (#149)
+
+-------------------------------------------------------------------
 Wed Aug 14 08:26:17 UTC 2024 - martin.liska@hey.com
 
 - Update to version 2.10.0+git.20240814.7d0ebf0:

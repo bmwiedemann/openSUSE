@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov  6 21:18:28 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 4.1.0:
+  * Pre-release changes (#309)
+  * Prerelease changes (#308)
+  * Fix compilation with Qt ≥ 6.8 (#307)
+  * Added `plasma-applications.menu` to fallback menu files (#304)
+  * Pre-release changes (#301)
+  * Fixed a test file after recent changes in Qt6 (#303)
+  * qtxdg-iconfinder: Fix an FTBFS (#300)
+  * xdgdesktopfile: Consider XDG_CURRENT_DESKTOP env as ':' separated list (#299)
+  * Started Qt6 port (#272)
+  * Pre-release changes (#296)
+
+-------------------------------------------------------------------
 Tue Oct 15 09:00:02 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.0.1:

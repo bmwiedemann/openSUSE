@@ -91,4 +91,14 @@
   * Update all dependencies eagerly.</comment>
     <requestid>1137121</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2fe5886ddada9f47dda99d6ca4a0e85f</srcmd5>
+    <version>8.1.0</version>
+    <time>1731329126</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 8.1.0:
+  * Add support for Python 3.12. (GL#35)
+  * Switch to hatch, replacing pdm and tox</comment>
+    <requestid>1223207</requestid>
+  </revision>
 </revisionlist>

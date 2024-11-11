@@ -263,4 +263,18 @@
     <comment></comment>
     <requestid>1175103</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>5db9a127084ffda183ba785c3d6b6599</srcmd5>
+    <version>2.1.0</version>
+    <time>1731329163</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.0:
+  * Pre-release changes
+  * Weblate commits (#99)
+  * Pre-release changes
+  * Fixed input focus with Qt6
+  * Pre-release changes
+  * Weblate commits (#94) (forwarded request 1221994 from AndnoVember)</comment>
+    <requestid>1223234</requestid>
+  </revision>
 </revisionlist>

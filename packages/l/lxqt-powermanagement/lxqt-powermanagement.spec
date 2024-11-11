@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-powermanagement
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        Power Management and Auto-suspend
 License:        LGPL-2.1-or-later
@@ -41,7 +41,7 @@ BuildRequires:  cmake(Qt6Svg)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(lxqt2-build-tools)
 BuildRequires:  pkgconfig(lxqt)
-BuildRequires:  pkgconfig(lxqt-globalkeys-ui) >= 2.0.0
+BuildRequires:  pkgconfig(lxqt-globalkeys-ui) >= 2.1.0
 BuildRequires:  pkgconfig(xcb-dpms)
 BuildRequires:  pkgconfig(xcb-screensaver)
 Requires:       upower

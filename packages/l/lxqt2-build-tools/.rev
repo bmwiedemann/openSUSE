@@ -7,4 +7,21 @@
     <comment>New package allows Qt6 builds alongside Qt5</comment>
     <requestid>1174576</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3a201d1c76ab69062ed381bb66eac8a1</srcmd5>
+    <version>2.1.0</version>
+    <time>1731329151</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.0:
+  * Pre-release changes (#100)
+  * Pre-release changes (#98)
+  * FindInstallConfigPath: Change when printing info about ETC_XDG_DIR setting (#97)
+  * Update minimum versions (#94)
+  * Qt6TranslationLoader.cpp.in: use QLibraryInfo::path() (#93)
+  * Initial port to Qt6 (#77)
+  * Pre-release changes (#85)
+  * Bump the minimum compatibility level to C++17.
+  * Pre-release changes (#82) (forwarded request 1222005 from AndnoVember)</comment>
+    <requestid>1223227</requestid>
+  </revision>
 </revisionlist>

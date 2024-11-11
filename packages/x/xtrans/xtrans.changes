@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov  9 18:12:52 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 1.5.2
+  * This release fixes two small regressions introduced in the 1.5.1
+    release - one breaks builds when HAVE_STRCASECMP is not defined
+    (which mainly happens on Windows platforms) and the other breaks
+    builds when IPv6 support is disabled.
+
+-------------------------------------------------------------------
 Sun Oct 13 19:15:17 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to 1.5.1

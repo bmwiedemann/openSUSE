@@ -390,4 +390,12 @@
     <comment>- Update to release 2024.10.22</comment>
     <requestid>1217265</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>bfc97235658227ae8d81c791e9e5455a</srcmd5>
+    <version>2024.11.04</version>
+    <time>1731329136</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2024.11.04</comment>
+    <requestid>1223214</requestid>
+  </revision>
 </revisionlist>

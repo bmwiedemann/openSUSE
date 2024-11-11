@@ -83,4 +83,14 @@
     <comment>- tag for python 3.11 to have a matching module for python311-requests</comment>
     <requestid>1101049</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>19a7e11057777452371d41edea22e509</srcmd5>
+    <version>0.15.0</version>
+    <time>1731329132</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.15.0:
+  * Make Channel Binding data per-host
+  * Added support for explicit passwords using the password kwarg</comment>
+    <requestid>1223211</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           pavucontrol-qt
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        A Pulseaudio mixer in Qt
 License:        GPL-2.0-only

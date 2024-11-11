@@ -634,4 +634,22 @@
     <comment></comment>
     <requestid>1174623</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>65423eec1381b836c932201dbc961f49</srcmd5>
+    <version>2.1.0</version>
+    <time>1731329138</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.0:
+  * Pre-release changes (#1964)
+  * Weblate commits (#1966)
+  * Updated *.ts files (#1965)
+  * Weblate commits (#1962)
+  * Weblate commits (#1954)
+  * Add remaining icons to &quot;Go&quot; menu (#1960)
+  * Silenced a warning about `GList` (#1959)
+  * Silenced two old compilation warnings (#1958)
+  * Simplified the code for folder settings (#1952)
+  * Weblate commits (#1948) (forwarded request 1222917 from AndnoVember)</comment>
+    <requestid>1223216</requestid>
+  </revision>
 </revisionlist>

@@ -33,4 +33,18 @@
     <comment></comment>
     <requestid>1203347</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>238c8d952d6bb4369341af2b152d368f</srcmd5>
+    <version>1.0.0~alpha3</version>
+    <time>1731329074</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.0~alpha3:
+  * fix control + space support
+  * Add Github Dark color scheme
+  * fix: dead keys support
+  * About: add hyphen between &quot;Git&quot; and &quot;version&quot;
+  * Update dependencies
+  * Update translations</comment>
+    <requestid>1223152</requestid>
+  </revision>
 </revisionlist>

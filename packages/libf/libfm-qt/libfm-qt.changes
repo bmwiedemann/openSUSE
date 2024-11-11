@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov  6 21:15:56 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 2.1.0:
+  * Pre-release changes (#1022)
+  * Updated *.ts files (#1023)
+  * weblate commits (#1021)
+  * Allow relative paths for folder icons (#1020)
+  * weblate commits (#1018)
+  * Silenced a compilation warning about `GDestroyNotify` (#1016)
+  * Fixed the scaled pixmap of `Fm::IconEngine` (#1015)
+  * Enhanced the detection of changes in folder config (#1014)
+  * weblate commits (#1008)
+  * Detect remote and read-only file systems (#1007)
+
+-------------------------------------------------------------------
 Tue Jun  4 14:28:21 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
 
 - Added:

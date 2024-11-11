@@ -17,28 +17,25 @@
 
 
 Name:           lxqt-globalkeys
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        Global keyboard shortcuts registration
 License:        LGPL-2.1-or-later
-URL:            https://www.lxqt.org
-Source:         https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
-Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
+URL:            https://github.com/lxqt/lxqt-globalkeys
+Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-BuildRequires:  cmake >= 3.5.0
+BuildRequires:  cmake >= 3.18.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF6WindowSystem) >= 6.0.0
+BuildRequires:  cmake(Qt6DBus)
 BuildRequires:  cmake(Qt6LinguistTools) >= 6.6
-BuildRequires:  cmake(Qt6UiTools) >= 6.6
+BuildRequires:  cmake(Qt6Widgets) >= 6.6
 BuildRequires:  cmake(lxqt) >= %{version}
-BuildRequires:  cmake(lxqt2-build-tools) >= 2.0.0
-BuildRequires:  pkgconfig(glib-2.0)
-Requires(post): desktop-file-utils
-Requires(pre):  desktop-file-utils
-Obsoletes:      lxqt-globalkeys-qt5 < %{version}
-Provides:       lxqt-globalkeys-qt5 = %{version}
+BuildRequires:  cmake(lxqt2-build-tools) >= 2.1.0
+Requires:       %{name}-branding = %{version}-%{release}
 
 %description
 Daemon and library for global keyboard shortcuts registration
@@ -73,6 +70,18 @@ Conflicts:      liblxqt-globalkeys-ui1
 %description -n liblxqt-globalkeys-ui2
 UI system libraries for lxqt-globalkeys
 
+%package branding-upstream
+Summary:        Upstream branding of %{name}
+Group:          System/GUI/LXQt
+Requires:       %{name} = %{version}
+Supplements:    (%{name} and branding-upstream)
+Conflicts:      %{name}-branding
+Provides:       %{name}-branding = %{version}
+BuildArch:      noarch
+
+%description branding-upstream
+This package provides the upstream look and feel for %{name}.
+
 %prep
 %autosetup -p1
 # Changing LXQt into X-LXQt in desktop files to be freedesktop compliant and shut rpmlint warnings
@@ -84,8 +93,8 @@ UI system libraries for lxqt-globalkeys
 
 %install
 %{qt6_install}
-
 %fdupes -s %{buildroot}
+install -Dm 0644 %{buildroot}%{_datadir}/lxqt/globalkeyshortcuts.conf -t %{buildroot}%{_sysconfdir}/xdg/lxqt/
 
 %find_lang lxqt-config-globalkeyshortcuts --with-qt
 
@@ -117,6 +126,10 @@ UI system libraries for lxqt-globalkeys
 
 %files -n liblxqt-globalkeys-ui2
 %{_qt6_libdir}/liblxqt-globalkeys-ui.so.2*
+
+%files branding-upstream
+%dir %{_sysconfdir}/xdg/lxqt/
+%config %{_sysconfdir}/xdg/lxqt/globalkeyshortcuts.conf
 
 %files lang -f lxqt-config-globalkeyshortcuts.lang
 %dir %{_datadir}/lxqt

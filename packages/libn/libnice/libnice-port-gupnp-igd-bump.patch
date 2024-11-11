@@ -1,8 +1,8 @@
-Index: libnice-0.1.21/meson.build
+Index: libnice-0.1.22/meson.build
 ===================================================================
---- libnice-0.1.21.orig/meson.build
-+++ libnice-0.1.21/meson.build
-@@ -278,7 +278,7 @@ gst_dep = dependency('gstreamer-base-1.0
+--- libnice-0.1.22.orig/meson.build
++++ libnice-0.1.22/meson.build
+@@ -276,7 +276,7 @@ gst_dep = dependency('gstreamer-base-1.0
  cdata.set('HAVE_GSTREAMER', gst_dep.found(), description: 'Build GStreamer plugin')
  
  # GUPnP IGD

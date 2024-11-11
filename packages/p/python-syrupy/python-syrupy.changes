@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Nov  9 15:51:25 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.7.2:
+  * allow snapshot dir to be different
+  * pytest-rerunfailures compatibility
+  * Added a new CLI flag: --snapshot-patch-pycharm-diff
+  * relax python version constraint, remove upperbound
+  * ignore unused snapshots for skipped test
+  * update classifiers, metadata
+
+-------------------------------------------------------------------
 Thu Mar 28 20:32:07 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

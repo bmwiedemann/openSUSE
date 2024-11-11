@@ -221,4 +221,12 @@
 fix the test flavor build on Leap 15</comment>
     <requestid>1169282</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>0b8ee4d9cba1b6a015063dff173a4da1</srcmd5>
+    <version>2.4.2</version>
+    <time>1731329122</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1223204</requestid>
+  </revision>
 </revisionlist>

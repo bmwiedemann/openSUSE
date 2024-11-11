@@ -31,4 +31,16 @@
     <comment></comment>
     <requestid>1203349</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1223025ac875ed0e8cecde823bbf8815</srcmd5>
+    <version>1.0.0~alpha3</version>
+    <time>1731329067</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.0~alpha3:
+  * Fix clicking directories in nav bar in condensed mode
+  * fix(l18n): Ensure COSMIC is properly cased
+  * update dependencies 
+  * update translations</comment>
+    <requestid>1223150</requestid>
+  </revision>
 </revisionlist>

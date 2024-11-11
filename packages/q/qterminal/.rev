@@ -268,4 +268,22 @@
     <comment></comment>
     <requestid>1183718</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b628c5af763fea6b5c78173f812dcda6</srcmd5>
+    <version>2.1.0</version>
+    <time>1731329147</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.0:
+  * Pre-release changes (#1177)
+  * Weblate commits (#1180)
+  * Updated *.ts files (#1179)
+  * Weblate commits (#1173)
+  * Fixed new tab from preset and context menu's collapse action (#1176)
+  * Weblate commits (#1170)
+  * Weblate commits (#1168)
+  * Weblate commits (#1166)
+  * Weblate commits (#1165)
+  * Weblate commits (#1164) (forwarded request 1222009 from AndnoVember)</comment>
+    <requestid>1223225</requestid>
+  </revision>
 </revisionlist>

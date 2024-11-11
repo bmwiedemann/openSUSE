@@ -18,7 +18,7 @@
 
 %define         appname com.system76.CosmicStore
 Name:           cosmic-store
-Version:        1.0.0~alpha2
+Version:        1.0.0~alpha3
 Release:        0
 Summary:        COSMIC app store
 License:        GPL-3.0-only
@@ -29,7 +29,7 @@ BuildRequires:  cargo-packaging
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  just
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
+BuildRequires:  rust >= 1.80
 BuildRequires:  pkgconfig(flatpak)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(openssl)
@@ -46,7 +46,6 @@ just build-release
 
 %install
 just rootdir=%{buildroot} prefix=%{_prefix} install
-%suse_update_desktop_file %{appname}
 
 %check
 %{cargo_test}

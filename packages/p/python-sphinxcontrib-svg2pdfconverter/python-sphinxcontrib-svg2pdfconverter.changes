@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Nov 10 21:45:29 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.3:
+  * provide support for RSVG converter's ``--format`` argument. In
+    more recent RSVG builds, the ``pdf1.5`` format will generate
+    the fewest warnings with LaTeX backends. By default, this is
+    ``pdf``.
+
+-------------------------------------------------------------------
 Thu May  4 20:14:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.2:
@@ -16,13 +25,13 @@ Mon Nov 29 11:50:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.0:
   * Match inkscape version number only
-  * Fix CairSVGConverter::convert for usage on Windows 
+  * Fix CairSVGConverter::convert for usage on Windows
 
 -------------------------------------------------------------------
 Sat Jul 17 13:34:17 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.1:
-  * Use errno symbols from standard library 
+  * Use errno symbols from standard library
 
 -------------------------------------------------------------------
 Tue Jul 28 09:12:16 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>

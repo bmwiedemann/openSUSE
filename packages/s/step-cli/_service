@@ -1,24 +1,6 @@
 <services>
-  <service name="obs_scm" mode="manual">
-    <param name="url">https://github.com/smallstep/cli</param>
-    <param name="scm">git</param>
-    <param name="exclude">.git</param>
-    <param name="revision">v0.27.4</param>
-    <param name="versionformat">@PARENT_TAG@</param>
-    <param name="changesgenerate">enable</param>
-    <param name="versionrewrite-pattern">v(.*)</param>
-  </service>
-  <service name="set_version" mode="manual">
-    <param name="basename">cli</param>
-  </service>
   <service name="go_modules" mode="manual">
-    <param name="archive">cli-0.27.4.obscpio</param>
-  </service>
-  <!-- services below are running at buildtime -->
-  <service name="tar" mode="buildtime">
-  </service>
-  <service name="recompress" mode="buildtime">
-    <param name="file">*.tar</param>
-    <param name="compression">gz</param>
+    <param name="archive">cli-*.tar.gz</param>
+    <param name="compression">xz</param>
   </service>
 </services>

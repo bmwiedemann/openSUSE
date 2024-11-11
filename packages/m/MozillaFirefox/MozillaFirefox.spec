@@ -28,9 +28,9 @@
 # orig_suffix b3
 # major 69
 # mainver %%major.99
-%define major          131
-%define mainver        %major.0.3
-%define orig_version   131.0.3
+%define major          132
+%define mainver        %major.0.1
+%define orig_version   132.0.1
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -114,7 +114,7 @@ BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.35
-BuildRequires:  mozilla-nss-devel >= 3.104
+BuildRequires:  mozilla-nss-devel >= 3.105
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 12.22.12
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -177,10 +177,6 @@ Provides:       firefox = %{version}-%{release}
 Provides:       web_browser
 Provides:       appdata()
 Provides:       appdata(firefox.appdata.xml)
-# this is needed to match this package with the kde4 helper package without the main package
-# having a hard requirement on the kde4 package
-%define kde_helper_version 6
-Provides:       mozilla-kde4-version = %{kde_helper_version}
 Summary:        Mozilla %{appname} Web Browser
 License:        MPL-2.0
 Group:          Productivity/Networking/Web/Browsers
@@ -212,7 +208,6 @@ Source20:       https://ftp.mozilla.org/pub/%{srcname}/releases/%{version}%{orig
 Source21:       https://ftp.mozilla.org/pub/%{srcname}/releases/%{version}%{orig_suffix}/KEY#/mozilla.keyring
 # Gecko/Toolkit
 Patch1:         mozilla-nongnome-proxies.patch
-Patch2:         mozilla-kde.patch
 Patch3:         mozilla-ntlm-full-path.patch
 Patch4:         mozilla-aarch64-startup-crash.patch
 Patch6:         mozilla-s390-context.patch
@@ -228,13 +223,13 @@ Patch20:        one_swizzle_to_rule_them_all.patch
 Patch21:        svg-rendering.patch
 Patch24:        mozilla-bmo1746799.patch
 # Firefox/browser
-Patch101:       firefox-kde.patch
 Patch102:       firefox-branded-icons.patch
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires(post): coreutils shared-mime-info desktop-file-utils
 Requires(postun): shared-mime-info desktop-file-utils
 Requires:       %{name}-branding >= 68
+Requires:       xdg-desktop-portal
 %requires_ge    mozilla-nspr
 %requires_ge    mozilla-nss
 %requires_ge    libfreetype6
@@ -347,17 +342,10 @@ find . -regex ".*\.c\|.*\.cpp\|.*\.h" -exec sed -i "s/__DATE__/${DATE}/g;s/__TIM
 
 # SLE-12 provides python39, but that package does not provide a python3 binary
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
-#sed -i "s/python3/python3.9/g" configure.in
 sed -i "s|/usr/bin/env python3|/usr/bin/env python3.9|" mach
 sed -i "s|potential_python_binary = f\"python3.{i}\"|potential_python_binary = f\"python3.9.{i}\"|" mach
 export PYTHON3=/usr/bin/python3.9
 %endif
-
-kdehelperversion=$(cat toolkit/xre/nsKDEUtils.cpp | grep '#define KMOZILLAHELPER_VERSION' | cut -d ' ' -f 3)
-if test "$kdehelperversion" != %{kde_helper_version}; then
-  echo fix kde helper version in the .spec file
-  exit 1
-fi
 
 # When doing only_print_mozconfig, this file isn't necessarily available, so skip it
 cp %{SOURCE4} .obsenv.sh

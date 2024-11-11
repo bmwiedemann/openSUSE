@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           kind
-Version:        0.24.0
+Version:        0.25.0
 Release:        0
 Summary:        Kubernetes IN Docker - local clusters for testing Kubernetes
 License:        Apache-2.0

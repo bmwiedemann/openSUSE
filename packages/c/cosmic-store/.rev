@@ -31,4 +31,27 @@
     <comment></comment>
     <requestid>1203348</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ddee620e03628ea6389f4ec82f84c947</srcmd5>
+    <version>1.0.0~alpha3</version>
+    <time>1731329070</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.0~alpha3:
+  * Handle mime://
+  * Add flatpakref mime type
+  * Cleanup subcommand handling
+  * Remove unnecessary clone
+  * Re-run search after updating app info
+  * Add installation from flatpakref
+  * Correctly determine system package installed status
+  * Auto open package when loading package file
+  * Support for installing package files
+  * Fix sort order of sources
+  * Add support for system flatpaks
+  * Add &quot;Shop&quot; to .desktop file keyword list
+  * Make screenshot selectors insensitive if there is one or less screenshot
+  * update translations
+  * update dependencies</comment>
+    <requestid>1223151</requestid>
+  </revision>
 </revisionlist>

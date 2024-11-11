@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov  8 12:55:49 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+
+- Update to 1.4.34
+  * Add the “S-” prefix to msymbols for non-ASCII characters only
+    if the character “is not graph” (Resolves: #90)
+
+-------------------------------------------------------------------
 Sun Sep  8 16:39:11 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - Update to 1.4.31

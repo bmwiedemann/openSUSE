@@ -360,4 +360,22 @@
     <comment></comment>
     <requestid>1174610</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>2d17cfad761fac55d86cfde8264a3a11</srcmd5>
+    <version>2.1.0</version>
+    <time>1731329165</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.0:
+  * Pre-release changes (#403)
+  * Weblate commits (#404)
+  * Weblate commits (#401)
+  * Workaround for translucency artifacts with Qt 6.8.0 on Wayland (#402)
+  * Weblate commits (#399)
+  * Updated *.ts files (including Luganda) (#400)
+  * Weblate commits (#398)
+  * Weblate commits (#397)
+  * Fixed recent regression (#396)
+  * Updated *.ts files (#395) (forwarded request 1221993 from AndnoVember)</comment>
+    <requestid>1223235</requestid>
+  </revision>
 </revisionlist>

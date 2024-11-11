@@ -54,4 +54,14 @@
     <comment></comment>
     <requestid>1081785</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8a05d71b6cb2c94c15e4f1b41ee7fabf</srcmd5>
+    <version>1.0.2</version>
+    <time>1731329129</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.2:
+  * Change support to Python 3.10, 3.11, 3.12, and 3.13 only.
+- drop python3.9.patch (obsolete)</comment>
+    <requestid>1223209</requestid>
+  </revision>
 </revisionlist>

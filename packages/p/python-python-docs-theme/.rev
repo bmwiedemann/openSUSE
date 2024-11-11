@@ -138,4 +138,16 @@
     <comment>- Add %{?sle15_python_module_pythons}</comment>
     <requestid>1206648</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c2c5d1b2e9fb791afafdc6e08e463ba8</srcmd5>
+    <version>2024.10</version>
+    <time>1731329011</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2024.10:
+  * Add support for Python 3.13
+  * Drop support for Python 3.8
+  * Add script for handling translations
+  * Generate digital attestations for PyPI (PEP 740)</comment>
+    <requestid>1222989</requestid>
+  </revision>
 </revisionlist>

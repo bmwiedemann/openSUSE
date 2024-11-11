@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Nov 11 00:35:28 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Removed:
+  * screengrab-link.patch
+
+-------------------------------------------------------------------
+Wed Nov  6 21:46:01 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 2.9.0:
+  * Pre-release changes (#379)
+  * Updated *.ts files (#380)
+  * Weblate commits (#377)
+  * Weblate commits (#376)
+  * Weblate commits (#372)
+  * Weblate commits (#371)
+  * Weblate commits (#370)
+  * Fix pointer QList related memory leak
+  * Properly initializes and destroys shortcuts settings
+  * Weblate commits (#365)
+
+-------------------------------------------------------------------
 Thu Jul 25 03:45:20 UTC 2024 - ming li <mli@suse.com>
 
 - Update to 2.8.0:

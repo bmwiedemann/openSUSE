@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Nov 07 04:00:00 UTC 2024 - Andy Alt <arch_stanton5995@proton.me>
+
+- rmw 0.9.3:
+  + Add support for cloning(moving) files across btrfs root and subvolumes;
+    thanks to @luigir-it for suggesting this feature and testing
+  * Ensure directories respect umask settings upon creation
+  * bugfix: In some cases, 'rmw -s' crashed with message "*** buffer overflow
+    detected ***: terminated". This could happen if compiled with
+    '-D_FORTIFY_SOURCE=3' and set up with 'b_sanitize=none', and depending on
+    the filenames in the waste directories
+  * Add completion for fishshell; thanks to @ccoVeille
+  * Fix for tests failing after the Epochalypse (#439); thanks to @bmwiedemann
+    (boo#1102840)
+  + Add French translation (partial)
+- drop patches included upstream:
+  * test-restore-fix-use-Xvfb.patch
+  * tests-fail-after-epochalypse.patch
+
+-------------------------------------------------------------------
 Mon Oct 21 11:00:00 UTC 2024 - Andy Alt <arch_stanton5995@proton.me>
 
 - Replace tests-fail-after-epochalypse.patch (code introduced in original patch

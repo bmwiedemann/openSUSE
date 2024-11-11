@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 18 05:41:37 UTC 2024 - ming li <mli@suse.com>
+
+-  Update to 0.9.0:
+  * Limit length of verbatim strings
+  * Update CI with typos checks
+
+-------------------------------------------------------------------
 Sun Jul 28 18:03:26 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - sexpp 0.8.8:

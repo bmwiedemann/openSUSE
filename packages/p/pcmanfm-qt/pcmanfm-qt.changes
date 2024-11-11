@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov  6 21:41:17 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 2.1.0:
+  * Pre-release changes (#1964)
+  * Weblate commits (#1966)
+  * Updated *.ts files (#1965)
+  * Weblate commits (#1962)
+  * Weblate commits (#1954)
+  * Add remaining icons to "Go" menu (#1960)
+  * Silenced a warning about `GList` (#1959)
+  * Silenced two old compilation warnings (#1958)
+  * Simplified the code for folder settings (#1952)
+  * Weblate commits (#1948)
+
+-------------------------------------------------------------------
 Sat May 11 11:50:48 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
 
 - Update to 2.0.0:

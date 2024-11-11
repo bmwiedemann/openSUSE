@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Nov  6 21:22:40 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 2.1.0:
+  * Pre-release changes (#100)
+  * Pre-release changes (#98)
+  * FindInstallConfigPath: Change when printing info about ETC_XDG_DIR setting (#97)
+  * Update minimum versions (#94)
+  * Qt6TranslationLoader.cpp.in: use QLibraryInfo::path() (#93)
+  * Initial port to Qt6 (#77)
+  * Pre-release changes (#85)
+  * Bump the minimum compatibility level to C++17.
+  * Pre-release changes (#82)
+
+-------------------------------------------------------------------
 Wed Apr 17 21:14:01 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to 2.0.0

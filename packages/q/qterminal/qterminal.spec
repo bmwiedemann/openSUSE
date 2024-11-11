@@ -17,7 +17,7 @@
 
 
 Name:           qterminal
-Version:        2.0.1
+Version:        2.1.0
 Release:        0
 Summary:        A Qt-based terminal emulator
 License:        BSD-3-Clause AND GPL-2.0-or-later

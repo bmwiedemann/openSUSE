@@ -17,7 +17,7 @@
 
 
 Name:           pcmanfm-qt
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        File manager and desktop icon manager
 License:        GPL-2.0-or-later
@@ -39,7 +39,7 @@ BuildRequires:  cmake(Qt6DBus) >= 6.6.0
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(fm-qt6)
-BuildRequires:  cmake(lxqt2-build-tools) >= 2.0.0
+BuildRequires:  cmake(lxqt2-build-tools) >= 2.1.0
 BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(libmenu-cache) >= 1.1.0
 %requires_eq    libQt6Svg6
@@ -47,6 +47,7 @@ BuildRequires:  pkgconfig(libmenu-cache) >= 1.1.0
 Requires:       menu-cache
 #bsc#1100208 - mvetter@suse.de
 Requires:       wallpaper-branding-openSUSE
+Requires:       %{name}-branding = %{version}-%{release}
 Recommends:     %{name}-lang = %{version}-%{release}
 Recommends:     gnome-keyring-pam
 
@@ -54,6 +55,19 @@ Recommends:     gnome-keyring-pam
 PCManFM-Qt is the Qt port of the LXDE file manager PCManFM
 
 %lang_package
+
+%package branding-upstream
+Summary:        Upstream branding of %{name}
+Group:          System/GUI/LXQt
+Requires:       %{name} = %{version}
+Requires:       kf6-breeze-icons
+Supplements:    (%{name} and branding-upstream)
+Conflicts:      %{name}-branding
+Provides:       %{name}-branding = %{version}
+BuildArch:      noarch
+
+%description branding-upstream
+This package provides the upstream look and feel for %{name}.
 
 %prep
 %autosetup -p1
@@ -65,6 +79,7 @@ PCManFM-Qt is the Qt port of the LXDE file manager PCManFM
 %install
 %qt6_install
 %fdupes -s %{buildroot}%{_datadir}
+install -Dm 0644 %{buildroot}%{_datadir}/%{name}/lxqt/settings.conf -t %{buildroot}%{_sysconfdir}/xdg/%{name}/lxqt/
 
 %find_lang %{name} --with-qt
 
@@ -80,6 +95,11 @@ PCManFM-Qt is the Qt port of the LXDE file manager PCManFM
 %{_datadir}/%{name}/lxqt/settings.conf
 %{_datadir}/icons/hicolor/*/apps/%{name}.??g
 %license LICENSE
+
+%files branding-upstream
+%dir %{_sysconfdir}/xdg/%{name}
+%dir %{_sysconfdir}/xdg/%{name}/lxqt
+%config %{_sysconfdir}/xdg/%{name}/lxqt/settings.conf
 
 %files lang -f %{name}.lang
 %dir %{_datadir}/%{name}

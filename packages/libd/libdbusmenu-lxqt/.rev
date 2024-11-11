@@ -7,4 +7,20 @@
     <comment>neq package for lxqt</comment>
     <requestid>1174801</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d26e41d9b88f324fbe2a459fa9e739de</srcmd5>
+    <version>0.2.0</version>
+    <time>1731329176</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.2.0:
+  * Fixed a typo.
+  * Pre-release changes
+  * Renamed README;compiling instructions (#4)
+  * Removes dist and distcheck targets
+  * Update self include directories
+  * Update Qt6 include directories use
+  * Move compiler flag check/set
+  * Remove duplicated duplicated compiler flags (forwarded request 1221981 from AndnoVember)</comment>
+    <requestid>1223245</requestid>
+  </revision>
 </revisionlist>

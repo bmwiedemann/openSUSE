@@ -16,10 +16,10 @@
 #
 
 
-%define   _ver  14
+%define   _ver  15
 %define  _name  libfm-qt6
 Name:           libfm-qt
-Version:        2.0.2
+Version:        2.1.0
 Release:        0
 Summary:        Core library of PCManFM-Qt (Qt binding for libfm)
 License:        BSD-3-Clause AND LGPL-2.1-or-later

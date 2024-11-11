@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov  6 21:44:16 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 2.1.0:
+  * Pre-release changes (#561)
+  * Silenced old compilation warnings
+  * Weblate commits (#560)
+  * Weblate commits (#556)
+  * Pre-release changes (#555)
+  * Fixed conversion to `std::wstring` (#554)
+  * Use lxqt-build-tools package (#551)
+  * Weblate commits (#553)
+  * Pre-release changes (#550)
+  * Fixed comparison of pointer addition with NULL (#549)
+
+-------------------------------------------------------------------
 Thu Jun 27 20:20:33 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to 2.0.1:

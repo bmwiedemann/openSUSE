@@ -1,7 +1,7 @@
 #
 # spec file for package python-random2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,22 +17,21 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-random2
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        A Session and Caching library with WSGI Middleware
 License:        Python-2.0
 URL:            https://pypi.python.org/pypi/random2
-Source:         https://files.pythonhosted.org/packages/source/r/random2/random2-%{version}.zip
-# PATCH-FIX-UPSTREAM -- python3.9.patch Origin: Debian
-Patch0:         python3.9.patch
+Source:         https://files.pythonhosted.org/packages/source/r/random2/random2-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
 BuildArch:      noarch
 %python_subpackages
 
@@ -52,10 +51,10 @@ adjusted. This package fixes that.
 %autosetup -p1 -n random2-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -64,7 +63,9 @@ classes='WichmannHill_TestBasicOps or MersenneTwister_TestBasicOps or TestDistri
 %pytest -k "$classes" src/tests.py
 
 %files %{python_files}
-%doc CHANGES.txt README.txt PKG-INFO
-%{python_sitelib}/*
+%doc CHANGES.rst README.rst
+%{python_sitelib}/random2.py
+%pycache_only %{python_sitelib}/__pycache__/random2*
+%{python_sitelib}/random2-%{version}.dist-info
 
 %changelog

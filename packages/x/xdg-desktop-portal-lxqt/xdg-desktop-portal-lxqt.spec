@@ -17,7 +17,7 @@
 
 
 Name:           xdg-desktop-portal-lxqt
-Version:        1.0.2
+Version:        1.1.0
 Release:        0
 Summary:        A backend implementation for xdg-desktop-portal
 License:        LGPL-2.1-or-later
@@ -58,6 +58,7 @@ functionality needed by nearly all of its components.
 %doc README.md
 %{_libexecdir}/%{name}
 %dir %{_datadir}/xdg-desktop-portal
+%{_datadir}/xdg-desktop-portal/lxqt-portals.conf
 %dir %{_datadir}/xdg-desktop-portal/portals
 %{_datadir}/xdg-desktop-portal/portals/lxqt.portal
 %{_datadir}/dbus-1/services/org.freedesktop.impl.portal.desktop.lxqt.service

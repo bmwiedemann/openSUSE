@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov  1 01:17:36 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.0~alpha3:
+  * fix control + space support
+  * Add Github Dark color scheme
+  * fix: dead keys support
+  * About: add hyphen between "Git" and "version"
+  * Update dependencies
+  * Update translations
+
+-------------------------------------------------------------------
 Wed Sep 25 08:01:01 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.0.0~alpha2:

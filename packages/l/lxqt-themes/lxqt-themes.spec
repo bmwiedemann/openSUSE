@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-themes
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        Themes, graphics and icons for LXQt
 License:        LGPL-2.1-or-later
@@ -26,13 +26,13 @@ Group:          System/GUI/LXQt
 URL:            https://github.com/lxqt/lxqt-themes
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
-Source2:        lxqt-themes.keyring
+Source2:        %{name}.keyring
 Source3:        logo.tar.xz
 BuildRequires:  cmake >= 3.18.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  cmake(lxqt2-build-tools) >= 2.0.0
+BuildRequires:  cmake(lxqt2-build-tools) >= 2.1.0
 BuildArch:      noarch
 
 %description

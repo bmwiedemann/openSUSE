@@ -1,8 +1,8 @@
 #
 # spec file for package MozillaFirefox-branding-openSUSE
 #
-# Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2008-2019 Wolfgang Rosenauer
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2008-2024 Wolfgang Rosenauer
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed

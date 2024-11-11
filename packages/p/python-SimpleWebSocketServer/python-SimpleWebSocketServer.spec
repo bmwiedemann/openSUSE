@@ -1,7 +1,7 @@
 #
 # spec file for package python-SimpleWebSocketServer
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,18 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-SimpleWebSocketServer
-Version:        0.1.1
+Version:        0.1.2
 Release:        0
 Summary:        A Websocket server written in Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/dpallot/simple-websocket-server/
-Source:         https://files.pythonhosted.org/packages/source/S/SimpleWebsocketServer/SimpleWebsocketServer-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/S/SimpleWebsocketServer/SimpleWebSocketServer-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -43,10 +45,10 @@ A Websocket Server written in Python
 %setup -q -n SimpleWebSocketServer-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}

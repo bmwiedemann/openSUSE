@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-archiver
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        LXQt File Archiver
 License:        GPL-2.0-or-later

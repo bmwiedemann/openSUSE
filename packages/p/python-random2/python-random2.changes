@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov 10 22:11:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.2:
+  * Change support to Python 3.10, 3.11, 3.12, and 3.13 only.
+- drop python3.9.patch (obsolete)
+
+-------------------------------------------------------------------
 Fri Apr 21 12:32:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

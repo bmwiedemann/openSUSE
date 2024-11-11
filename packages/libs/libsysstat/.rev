@@ -7,4 +7,17 @@
     <comment>new package for lxqt</comment>
     <requestid>1174639</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b7c65e09637a0ca01d9ae3747972eeea</srcmd5>
+    <version>1.1.0</version>
+    <time>1731329172</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.0:
+  * Pre-release changes
+  * Drop deprecated Q_ENUMS macro
+  * Don't mix const and non const iterators
+  * Pre-release changes
+  * Use QString::first and QString::sliced (forwarded request 1221985 from AndnoVember)</comment>
+    <requestid>1223241</requestid>
+  </revision>
 </revisionlist>

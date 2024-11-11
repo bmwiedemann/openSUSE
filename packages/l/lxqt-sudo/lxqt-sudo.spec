@@ -17,24 +17,24 @@
 
 
 Name:           lxqt-sudo
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        GUI frontend for sudo
 License:        LGPL-2.1-only
-URL:            http://lxqt.org
-Source:         https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
-Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
+URL:            https://github.com/lxqt/lxqt-sudo
+Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-BuildRequires:  cmake >= 3.5.0
+BuildRequires:  cmake >= 3.18.0
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF6WindowSystem) >= 6.0.0
 BuildRequires:  cmake(Qt6LinguistTools) >= 6.6
-BuildRequires:  cmake(lxqt) >= 2.0.0
-BuildRequires:  cmake(lxqt2-build-tools) >= 2.0.0
+BuildRequires:  cmake(lxqt) >= 2.1.0
+BuildRequires:  cmake(lxqt2-build-tools) >= 2.1.0
 BuildRequires:  pkgconfig(Qt6Widgets) >= 6.6
-BuildRequires:  pkgconfig(glib-2.0)
 Requires:       sudo
+Recommends:     %{name}-lang = %{version}-%{release}
 
 %description
 A graphical frontend for plain sudo (for requesting optional password in GUI
@@ -70,6 +70,6 @@ and (after submit) the password is provided to sudo.
 %files lang -f %{name}.lang
 %dir %{_datadir}/lxqt
 %dir %{_datadir}/lxqt/translations
-%{_datadir}/lxqt/translations/lxqt-sudo
+%dir %{_datadir}/lxqt/translations/%{name}
 
 %changelog

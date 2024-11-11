@@ -203,4 +203,16 @@ Novell, and NCR are no longer supported.</comment>
   * Fix string length check</comment>
     <requestid>1207659</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>07a69a08dd911e5d944cf44dba5674bd</srcmd5>
+    <version>1.5.2</version>
+    <time>1731329012</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.2
+  * This release fixes two small regressions introduced in the 1.5.1
+    release - one breaks builds when HAVE_STRCASECMP is not defined
+    (which mainly happens on Windows platforms) and the other breaks
+    builds when IPv6 support is disabled.</comment>
+    <requestid>1223003</requestid>
+  </revision>
 </revisionlist>

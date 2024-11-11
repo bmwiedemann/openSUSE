@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Nov 10 13:14:34 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- do not use XDG for mime-handler as it does not handle the default
+  browser check correctly
+
+-------------------------------------------------------------------
+Mon Nov  4 13:03:40 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- add properties to use xdg-desktop-portal (boo#1226112)
+
+-------------------------------------------------------------------
 Tue Aug  9 11:28:51 UTC 2022 - Yuchen Lin <mlin+factory@suse.de>
 
 - add sle_version 150500 check

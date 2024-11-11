@@ -522,4 +522,84 @@
     <comment></comment>
     <requestid>1090033</requestid>
   </revision>
+  <revision rev="64" vrev="5">
+    <srcmd5>86dbf1f3fdae7e3e43f443b43f6427d0</srcmd5>
+    <version>68</version>
+    <time>1731329016</time>
+    <user>dimstar_suse</user>
+    <comment>- do not use XDG for mime-handler as it does not handle the default
+  browser check correctly
+
+old: openSUSE:Factory/MozillaFirefox-branding-openSUSE
+new: mozilla:Factory/MozillaFirefox-branding-openSUSE rev None
+Index: MozillaFirefox-branding-openSUSE.changes
+===================================================================
+--- MozillaFirefox-branding-openSUSE.changes (revision 63)
++++ MozillaFirefox-branding-openSUSE.changes (revision 155)
+@@ -1,4 +1,15 @@
+ -------------------------------------------------------------------
++Sun Nov 10 13:14:34 UTC 2024 - Wolfgang Rosenauer &lt;wr@rosenauer.org&gt;
++
++- do not use XDG for mime-handler as it does not handle the default
++  browser check correctly
++
++-------------------------------------------------------------------
++Mon Nov  4 13:03:40 UTC 2024 - Wolfgang Rosenauer &lt;wr@rosenauer.org&gt;
++
++- add properties to use xdg-desktop-portal (boo#1226112)
++
++-------------------------------------------------------------------
+ Tue Aug  9 11:28:51 UTC 2022 - Yuchen Lin &lt;mlin+factory@suse.de&gt;
+ 
+ - add sle_version 150500 check
+Index: MozillaFirefox-branding-openSUSE.spec
+===================================================================
+--- MozillaFirefox-branding-openSUSE.spec (revision 63)
++++ MozillaFirefox-branding-openSUSE.spec (revision 155)
+@@ -1,8 +1,8 @@
+ #
+ # spec file for package MozillaFirefox-branding-openSUSE
+ #
+-# Copyright (c) 2023 SUSE LLC
+-# Copyright (c) 2008-2019 Wolfgang Rosenauer
++# Copyright (c) 2024 SUSE LLC
++# Copyright (c) 2008-2024 Wolfgang Rosenauer
+ #
+ # All modifications and additions to the file contributed by third parties
+ # remain the property of their copyright owners, unless otherwise agreed
+Index: all-openSUSE.js
+===================================================================
+--- all-openSUSE.js (revision 63)
++++ all-openSUSE.js (revision 155)
+@@ -1,3 +1,8 @@
+ // openSUSE overrides for default settings
+ // disabled ATM
+ //pref(&quot;layout.word_select.stop_at_punctuation&quot;, false);
++
++pref(&quot;widget.use-xdg-desktop-portal.file-picker&quot;, 1);
++// default browser check fails when this is set
++//pref(&quot;widget.use-xdg-desktop-portal.mime-handler&quot;, 1);
++
+Index: firefox-esr-branding-openSUSE.changes
+===================================================================
+--- firefox-esr-branding-openSUSE.changes (revision 63)
++++ firefox-esr-branding-openSUSE.changes (revision 155)
+@@ -1,4 +1,15 @@
+ -------------------------------------------------------------------
++Sun Nov 10 13:14:34 UTC 2024 - Wolfgang Rosenauer &lt;wr@rosenauer.org&gt;
++
++- do not use XDG for mime-handler as it does not handle the default
++  browser check correctly
++
++-------------------------------------------------------------------
++Mon Nov  4 13:03:40 UTC 2024 - Wolfgang Rosenauer &lt;wr@rosenauer.org&gt;
++
++- add properties to use xdg-desktop-portal (boo#1226112)
++
++-------------------------------------------------------------------
+ Tue Aug  9 11:28:51 UTC 2022 - Yuchen Lin &lt;mlin+factory@suse.de&gt;
+ 
+ - add sle_version 150500 check</comment>
+    <requestid>1223283</requestid>
+  </revision>
 </revisionlist>

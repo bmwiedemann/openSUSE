@@ -166,4 +166,21 @@
     <comment></comment>
     <requestid>1174218</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>db76d6f7182fe861dde1a57d8384c5a8</srcmd5>
+    <version>2.1.0</version>
+    <time>1731329150</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.0:
+  * weblate commits (#294)
+  * Updated *.ts files (#293)
+  * Pre-release changes
+  * weblate commits (#291)
+  * weblate commits (#290)
+  * weblate commits (#287)
+  * weblate commits (#286)
+  * weblate commits (#285)
+  * weblate commits (#283) (forwarded request 1222006 from AndnoVember)</comment>
+    <requestid>1223226</requestid>
+  </revision>
 </revisionlist>

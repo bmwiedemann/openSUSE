@@ -17,4 +17,22 @@
  * Fixed compilation with Qt ≥ 6.8.</comment>
     <requestid>1208071</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>04913edf93e63f2aa9d0089351a15200</srcmd5>
+    <version>4.1.0</version>
+    <time>1731329173</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.1.0:
+  * Pre-release changes (#309)
+  * Prerelease changes (#308)
+  * Fix compilation with Qt ≥ 6.8 (#307)
+  * Added `plasma-applications.menu` to fallback menu files (#304)
+  * Pre-release changes (#301)
+  * Fixed a test file after recent changes in Qt6 (#303)
+  * qtxdg-iconfinder: Fix an FTBFS (#300)
+  * xdgdesktopfile: Consider XDG_CURRENT_DESKTOP env as ':' separated list (#299)
+  * Started Qt6 port (#272)
+  * Pre-release changes (#296) (forwarded request 1221984 from AndnoVember)</comment>
+    <requestid>1223242</requestid>
+  </revision>
 </revisionlist>

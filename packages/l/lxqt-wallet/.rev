@@ -24,4 +24,13 @@
     <comment></comment>
     <requestid>1219981</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cee0ad6e1678c58f45d57c5010d0b3aa</srcmd5>
+    <version>4.0.2</version>
+    <time>1731329141</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.2:
+  * Default to use xdg paths when they are set. (forwarded request 1222519 from AndnoVember)</comment>
+    <requestid>1223220</requestid>
+  </revision>
 </revisionlist>

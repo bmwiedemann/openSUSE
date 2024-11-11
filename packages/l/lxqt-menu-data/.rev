@@ -24,4 +24,20 @@
     <comment></comment>
     <requestid>1174225</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2b5b2756aa3c1ce8db1ef1838cf3e4e1</srcmd5>
+    <version>2.1.0</version>
+    <time>1731329165</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.0:
+  * Weblate commits (#33)
+  * Pre-release changes
+  * Updated Readme (#32)
+  * Fixed menu/CMakeList.txt (#31)
+  * Remove simple menu (#24)
+  * Weblate commits (#30)
+  * Weblate commits (#28)
+  * Pre-release changes (forwarded request 1221992 from AndnoVember)</comment>
+    <requestid>1223236</requestid>
+  </revision>
 </revisionlist>

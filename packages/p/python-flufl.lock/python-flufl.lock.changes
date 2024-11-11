@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov 10 22:02:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.1.0:
+  * Add support for Python 3.12. (GL#35)
+  * Switch to hatch, replacing pdm and tox
+
+-------------------------------------------------------------------
 Fri Jan  5 17:22:14 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.0.2:

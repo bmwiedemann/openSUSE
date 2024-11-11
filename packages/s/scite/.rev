@@ -474,4 +474,12 @@
     <comment></comment>
     <requestid>1191727</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>d39cb0ce6675bfc4301c4fdb41f7a21b</srcmd5>
+    <version>5.5.3</version>
+    <time>1731329045</time>
+    <user>dimstar_suse</user>
+    <comment>Update to v5.5.3</comment>
+    <requestid>1223090</requestid>
+  </revision>
 </revisionlist>

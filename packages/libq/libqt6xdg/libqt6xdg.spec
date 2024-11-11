@@ -17,10 +17,10 @@
 
 
 %define _name libqtxdg
-%define _sover 4.0.1
+%define _sover 4.1.0
 %define sover 4
 Name:           libqt6xdg
-Version:        4.0.1
+Version:        4.1.0
 Release:        0
 Summary:        Qt implementation of freedesktop.org xdg specs
 License:        LGPL-2.1-only AND SUSE-LGPL-2.1-with-digia-exception-1.1

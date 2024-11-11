@@ -18,4 +18,22 @@ going forward in lxqt where they make sense to drop</comment>
     <comment></comment>
     <requestid>1183717</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>88fd13ccc97b19648da60525e87120ea</srcmd5>
+    <version>2.1.0</version>
+    <time>1731329145</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.0:
+  * Pre-release changes (#561)
+  * Silenced old compilation warnings
+  * Weblate commits (#560)
+  * Weblate commits (#556)
+  * Pre-release changes (#555)
+  * Fixed conversion to `std::wstring` (#554)
+  * Use lxqt-build-tools package (#551)
+  * Weblate commits (#553)
+  * Pre-release changes (#550)
+  * Fixed comparison of pointer addition with NULL (#549) (forwarded request 1222010 from AndnoVember)</comment>
+    <requestid>1223224</requestid>
+  </revision>
 </revisionlist>

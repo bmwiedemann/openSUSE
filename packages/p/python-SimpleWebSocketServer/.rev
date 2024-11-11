@@ -16,4 +16,15 @@
     <comment>- Ensure neutrality of description.</comment>
     <requestid>674358</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2168098501d67d418c5f2d90686d7faa</srcmd5>
+    <version>0.1.2</version>
+    <time>1731329131</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.1.2:
+  * Fixed incorrect spelling
+  * bind on both IPv4 and IPv6 localhost
+  * bump TLS version to keep compatibility with chrome</comment>
+    <requestid>1223210</requestid>
+  </revision>
 </revisionlist>

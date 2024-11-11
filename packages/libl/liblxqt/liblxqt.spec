@@ -17,15 +17,15 @@
 
 
 Name:           liblxqt
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        Core utility library for LXQt
 License:        LGPL-2.1-or-later
-URL:            http://www.lxqt.org
-Source:         https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
-Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
+URL:            https://github.com/lxqt/liblxqt
+Source:         %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-BuildRequires:  cmake >= 3.5.0
+BuildRequires:  cmake >= 3.18.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -33,9 +33,9 @@ BuildRequires:  cmake(KF6WindowSystem) >= 6.0.0
 BuildRequires:  cmake(PolkitQt6-1) >= 0.200.0
 BuildRequires:  cmake(Qt6DBus) >= 6.6
 BuildRequires:  cmake(Qt6LinguistTools) >= 6.6
-BuildRequires:  cmake(Qt6UiTools) >= 6.6
-BuildRequires:  cmake(lxqt2-build-tools) >= 2.0.0
-BuildRequires:  pkgconfig(Qt6Xdg) >= 4.0.0
+BuildRequires:  cmake(Qt6Widgets) >= 6.6
+BuildRequires:  cmake(lxqt2-build-tools) >= 2.1.0
+BuildRequires:  pkgconfig(Qt6Xdg) >= 4.1.0
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xscrnsaver)
 Obsoletes:      liblxqt-qt5 < %{version}
@@ -51,20 +51,20 @@ functionality needed by nearly all of its components.
 
 %lang_package
 
-%package -n liblxqt2
+%package -n %{name}2
 Summary:        LXQt core library
 Recommends:     %{name}-lang
 Requires:       %{name} >= %{version}
 
-%description -n liblxqt2
+%description -n %{name}2
 liblxqt represents the core library of LXQt providing essential
 functionality needed by nearly all of its components.
 
 %package devel
 Summary:        Devel files for liblxqt
-Requires:       liblxqt2 = %{version}
+Requires:       %{name}2 = %{version}
 Requires:       pkgconfig
-Requires:       pkgconfig(Qt6Xdg) >= 4.0.0
+Requires:       pkgconfig(Qt6Xdg) >= 4.1.0
 
 %description devel
 liblxqt represents the core library of LXQt providing essential
@@ -85,7 +85,7 @@ applications that want to make use of liblxqt.
 
 %find_lang %{name} --with-qt
 
-%ldconfig_scriptlets -n liblxqt2
+%ldconfig_scriptlets -n %{name}2
 
 %files
 %dir %{_datadir}/lxqt/
@@ -94,7 +94,7 @@ applications that want to make use of liblxqt.
 %dir %{_datadir}/polkit-1/
 %{_datadir}/polkit-1/actions/
 
-%files -n liblxqt2
+%files -n %{name}2
 %license COPYING
 %doc AUTHORS
 %{_qt6_libdir}/%{name}.so.?
@@ -108,7 +108,9 @@ applications that want to make use of liblxqt.
 
 %files lang -f %{name}.lang
 %dir %{_datadir}/lxqt/translations
-%dir %{_datadir}/lxqt/translations/liblxqt
-%{_datadir}/lxqt/translations/liblxqt/*
+%dir %{_datadir}/lxqt/translations/%{name}
+%if 0%{?sle_version}
+%{_datadir}/lxqt/translations/%{name}/%{name}_???.qm
+%endif
 
 %changelog

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov  9 16:00:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2024.10:
+  * Add support for Python 3.13
+  * Drop support for Python 3.8
+  * Add script for handling translations
+  * Generate digital attestations for PyPI (PEP 740)
+
+-------------------------------------------------------------------
 Thu Oct 10 08:13:09 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add %{?sle15_python_module_pythons}

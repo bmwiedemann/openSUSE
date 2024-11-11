@@ -1,4 +1,635 @@
 -------------------------------------------------------------------
+Thu Nov 07 05:32:02 UTC 2024 - madhankumar.chellamuthu@suse.com
+
+- Update to version 2.0.0:
+  * update SOCI snapshotter (0.8.0)
+  * update containerd-fuse-overlayfs (2.0.0)
+  * update BuildKit (0.17.0)
+  * update runc (1.2.1)
+  * update containerd (2.0.0)
+  * build(deps): bump github.com/containerd/containerd/v2
+  * build(deps): bump github.com/containerd/typeurl/v2 from 2.2.1 to 2.2.2
+  * build(deps): bump github.com/containerd/containerd/api
+  * build(deps): bump actions/checkout from 4.2.1 to 4.2.2
+  * build(deps): bump github.com/containerd/errdefs from 0.3.0 to 1.0.0
+  * add 'none' logger
+  * fix: not to be deleted a container created with --rm when detaching
+  * fix: Allow to untag images associated with running or paused containers by nerdctl rmi -f
+  * Enable network_inspect tests to run on windows
+  * Annotate non-windows compatible image tests
+  * Enable issues tests to run on Windows
+  * Enable image_remove tests to run on windows
+  * build(deps): bump github.com/compose-spec/compose-go/v2
+  * build(deps): bump github.com/containerd/typeurl/v2 from 2.2.0 to 2.2.1
+  * Enable GHA cache for image build dependencies
+  * Fix prior test-porting not aligned with description
+  * Move from AlpineImage to CommonImage to enable windows tests
+  * Add Infinity constant to enable windows testing compat
+  * Remove leftover workaround for fixed bug
+  * Reduce calls to data.Identifier()
+  * Rewrite container_stats tests
+  * build(deps): bump github.com/fsnotify/fsnotify from 1.7.0 to 1.8.0
+  * Fix convert unable to find image
+  * Rewrite container_top tests
+  * Remove fixed-bug workaround
+  * build(deps): bump github.com/compose-spec/compose-go/v2
+  * build(deps): bump github.com/Microsoft/hcsshim from 0.12.8 to 0.12.9
+  * Container create tests cleanup
+  * Update busybox image (support sleep inf)
+  * Fix test leaking tagged Alpine image
+  * Rewrite container prune test
+  * Rewrite container remove test
+  * Rewrite container diff test
+  * Align gitignore and dockerignore
+  * Rewrite container_wait tests
+  * go.mod: github.com/containerd/imgcrypt/v2 v2.0.0-rc.1
+  * build(deps): bump github.com/compose-spec/compose-go/v2
+  * build(deps): bump github.com/containerd/continuity from 0.4.3 to 0.4.4
+  * build(deps): bump github.com/compose-spec/compose-go/v2
+  * add white image
+  * update Kubo (0.31.0)
+  * update Nydus (2.3.0)
+  * update CNI plugins (1.6.0)
+  * update containerd (2.0.0-rc.6)
+  * build(deps): bump github.com/containerd/containerd/v2
+  * build(deps): bump actions/checkout from 4.2.1 to 4.2.2
+  * Add new requirements (HyperV, CgroupsAccessible)
+  * build(deps): bump github.com/fatih/color from 1.17.0 to 1.18.0
+  * update runc (1.2.0)
+  * Add container run from oci-archive
+  * Ensure rm uses -f when cleaning
+  * Remove no-op description from top-level tests
+  * Remove old build tag syntax
+  * Refactor load from archive functionality
+  * Move image load func to imgutil package
+  * CI: enable no-retry/retry testing separation and workflows cleanup
+  * fix: Allow to delete images when names of images are short digest ids of another images.
+  * Add legacy tests into the 'retry' bucket
+  * Fix ensurecontainerstarted logic and better debug
+  * Separate lint + enable on other platforms
+  * Enhance debugability for kubernetes rig
+  * Workaround and document weird docker issue
+  * Registry testing tooling cleanup
+  * Kuberneters testing tooling cleanup
+  * Rewrite commit tests
+  * Fix and enable CI unit testing for windows
+  * Rewrite build tests
+  * build(deps): bump go.uber.org/mock from 0.4.0 to 0.5.0
+  * Chores: spurious comments and syntax simplification
+  * Fix semantic of Fail to not care about exit code
+  * (Un-)marking flaky tests
+  * Fix duplicated test title
+  * Change compose lock to use DataStore()
+  * [fix] fix image filter with nonexist image
+  * Enable image completion on all platforms
+  * Remove unbuffer from test
+  * Add pseudo tty support for tests
+  * Skip TestAttach until we fix it
+  * build(deps): bump github.com/containerd/accelerated-container-image
+  * Add delay to tentatively fix flakyness with Docker
+  * "ns:" network mode to use existing network namespace
+  * Fix over-eager windows path restrictions
+  * Add image load quiet mode
+  * Quiet ancillary image pulls
+  * Minor debugging / cleanup chores
+  * RootFul/RootLess > Rootful/Rootless
+  * Lint fixes
+  * Global compose lock
+  * Consistently enforce rmi -f in tests cleanup
+  * Cleanup code to use simplified referenceutil package
+  * Cleanup referenceutil
+  * Skip TestRunWithTtyAndDetached on Windows
+  * fix: nerdctl stats on a container without a memory limit returns host memory limit
+  * Update containerd (1.7.23) in CI
+  * removing ipfs binary from nerdctl-full
+  * Add container run --security-opt systempaths=unconfined
+  * Alleviate image --filter missing digest issue
+  * Fix CNI concurrency issue
+  * build(deps): bump github.com/klauspost/compress from 1.17.10 to 1.17.11
+  * Migration aftermath
+  * Migrate image tests
+  * Migrate IPFS tests
+  * ./cmd/nerdctl/. + issues + completion touchups
+  * ./cmd/nerdctl/network touchups
+  * ./cmd/nerdctl/system touchups
+  * ./cmd/nerdctl/volume touchups
+  * Test tooling iteration
+  * Enforce global lock in oci hooks
+  * build(deps): bump github.com/cyphar/filepath-securejoin
+  * build(deps): bump github.com/compose-spec/compose-go/v2
+  * Update runc (1.1.15)
+  * build(deps): bump actions/checkout from 4.2.0 to 4.2.1
+  * Remove images from Docker Hub from tests, fix #3498
+  * Tests for net inspect
+  * Fix netwalker issues
+  * switch cosign registry from GCR to GHCR
+  * build(deps): bump the golang-x group with 5 updates
+  * Update BuildKit (0.16.0)
+  * Update to containerd 1.7.22, 1.6.36 in CI
+  * build(deps): bump golangci/golangci-lint-action from 6.1.0 to 6.1.1
+  * Fix tests broken by tooling update
+  * Fix parallelism for docker
+  * Increase delay of delayOnceReader to reduce flakyness of TestAttach
+  * Test tooling fixes
+  * Make CreateNetwork safer wrt concurrency
+  * Fix IPFS missing layer issue
+  * 3452: Filter Volumes by name if any of the names match
+  * Update to containerd 2 rc.5
+  * Fix Docker Hub push regression
+  * Fix login persistence regression against Hub
+  * build(deps): bump github.com/Microsoft/hcsshim from 0.12.6 to 0.12.7
+  * Fix broken TestImageInspectDifferentValidReferencesForTheSameImage
+  * build(deps): bump github.com/containerd/containerd/v2
+  * build(deps): bump github.com/cyphar/filepath-securejoin
+  * build(deps): bump docker/build-push-action from 6.8.0 to 6.9.0
+  * fix: Cleaning up orphaned directories and files when containers creation fails
+  * [fix] filter images panic
+  * build(deps): bump docker/build-push-action from 6.7.0 to 6.8.0
+  * build(deps): bump actions/checkout from 4.1.7 to 4.2.0
+  * Migrate completion tests to new tooling
+  * Migrate network tests to new tooling
+  * Migrate system tests to new tooling
+  * Fix tests and add regression tests for #3425
+  * EnsureAllContent on tag
+  * EnsureAllContent on save
+  * EnsureAllContent on convert
+  * EnsureAllContent on commit
+  * Add fetch and EnsureAllContent methods
+  * Fix regression from #3446
+  * build(deps): bump github.com/klauspost/compress from 1.17.9 to 1.17.10
+  * build(deps): bump github.com/go-viper/mapstructure/v2
+  * remove is shareable test
+  * Testtool initial documentation
+  * Move root and volume tests to new test tooling
+  * Adding NG test tooling
+  * increase golangci-lint timeout to 10min
+  * Prevent concurrency on commit and remove
+  * build(deps): bump github.com/go-viper/mapstructure/v2
+  * build(deps): bump the docker group with 2 updates
+  * Fix panic 'provided file is not a console'
+  * build(deps): bump the docker group with 2 updates
+  * Fix test to workaround docker credstore symlink fault
+  * build(deps): bump github.com/cyphar/filepath-securejoin
+  * build(deps): bump github.com/containerd/accelerated-container-image
+  * build(deps): bump github.com/compose-spec/compose-go/v2
+  * build(deps): bump the docker group with 2 updates
+  * Fix Windows path check in 'LogURIGenerator'
+  * build(deps): bump the golang-x group with 2 updates
+  * build(deps): bump the golang-x group with 3 updates
+  * Hostsstore resolution cleanup
+  * Dockerfile: runc: set CC and STRIP explicitly
+  * Adding document about pkg/store
+  * Move testing.md to docs/dev
+  * Fix TestRunApparmor: relax stdout matching to not fail when testing rootless
+  * Fix TestLoadStdinFromPipe: do not leak test images breaking tests using prune
+  * Enforce linting for freebsd and windows
+  * Fix freebsd lint
+  * Fix windows linter complaints
+  * Refactor: cleanup prompting
+  * Refactor filestores using store.Store
+  * Remove mock for mountutil tests
+  * Add generic filestore
+  * Auth code refactor: credstore and registry URL
+  * chore: update runc to v1.1.14
+  * Minor cleanup, post-refactoring of cmd
+  * Move cmd/system to subpackage
+  * Moving cmd compose and inspect to subpackages
+  * Move cmd/container to subpackage
+  * Move cmd/internal to subpackage
+  * cmd/AppArmor moved to subpackage
+  * Move cmd/image & cmd/builder to subpackages
+  * Move ipfs to subpackage
+  * Move a bunch of helpers
+  * Move login/logout to subpackage
+  * Move namespace code to subpackage
+  * Move network to cmd/nerdctl/network
+  * Move IsExactArgs and FindIPv6 to helpers
+  * Rename completion.ShellCompleteX methods to completion.X
+  * Move volume actions under subpackage
+  * Move UnknownSubcommandAction to helpers
+  * Move constants Categroy/Management to helpers
+  * Move completion to sub package
+  * Move away flagutil under helpers
+  * Add Confirm helper
+  * Fix TestDiff failure with docker
+  * Add a locking mechanism to prevent concurrent subpackage testing
+  * Adapt testing so that subpackages are not parallelized
+  * Do not load build output if dest is specified
+  * Fix nsenter working dir for child
+  * Move testing to container v2 rc4
+  * build(deps): bump github.com/containerd/containerd/v2
+  * Disable flaky #827 test
+  * build(deps): bump github.com/Masterminds/semver/v3 from 3.2.1 to 3.3.0
+  * build(deps): bump github.com/coreos/go-iptables from 0.7.0 to 0.8.0
+  * build(deps): bump the docker group with 2 updates
+  * Prevent presumably bogus reentrancy onPostStop when onCreateRuntime errored
+  * Namestore hardening, workaround #3351
+  * Hardening lifecycle state store
+  * Changing bufio.Scanner to bufio.Reader to support large message
+  * Add lint-imports to the default lint task
+  * Allow Canary to fail the build
+  * Add reg. test for 'stop created'
+  * Release any existing ip lease onCreateRuntime (workaround #3355)
+  * Allow containers to re-acquire their own name (fix #3354)
+  * build(deps): bump github.com/containerd/accelerated-container-image
+  * build(deps): bump github.com/vishvananda/netlink from 1.2.1 to 1.3.0
+  * build(deps): bump github.com/pelletier/go-toml/v2 from 2.2.2 to 2.2.3
+  * build(deps): bump github.com/containerd/containerd/api
+  * stop: do not error on created containers (fix #3353)
+  * Rollback rename in case of error
+  * Ignore
+  * Fix docker hub lag on golang versions breaking canary
+  * build(deps): bump github.com/vishvananda/netlink
+  * Remove Docker incompat from image prune and build tests
+  * Fix image prune filter until test rmi cleanup not running.
+  * chore: fix some function names
+  * Add regression tests for network host
+  * Fix --add-host not working with network host
+  * Rename variable for readability
+  * Use host hostname with network host
+  * Fix rename failure with network host/none
+  * Fix panic on malformed add-host argument
+  * K8s minor cleanup (rename and -f on delete)
+  * Implement windows filename restrictions
+  * fix: filter container state without option "-a"
+  * ParentMain/nsenter: do not fail if getwd errors
+  * Add builder OCI layout build context
+  * build(deps): bump github.com/Microsoft/hcsshim from 0.12.5 to 0.12.6
+  * build(deps): bump tonistiigi/xx from 1.4.0 to 1.5.0
+  * Fix import order
+  * Workaround goimports-reviser bug
+  * update RootlessKit (2.3.1)
+  * build(deps): bump github.com/rootless-containers/rootlesskit/v2
+  * update soci-snapshotter (0.7.0)
+  * update BuildKit (0.15.2)
+  * update kind (0.24.0)
+  * update Go (1.23)
+  * update Debian (12)
+  * update golangci-lint (1.60.1)
+  * Fix govet: printf: non-constant format string
+  * Fix S1009 (see https://staticcheck.dev/docs/checks#S1009)
+  * Fix SA4032 (see https://staticcheck.dev/docs/checks#SA4032)
+  * Add lint job for canary and minor shell script cleanup
+  * Add image prune --filter support
+  * Refactor imgutil filtering
+  * Include init NetworkSettings within inspect response
+  * Kube on the CI
+  * support ci arm64
+  * fix: relax identifier limits
+  * Add builder prune --all and --force flag support
+  * Ensure binfmt does install emulation for arm7 on the CI
+  * build(deps): bump docker/build-push-action from 6.6.1 to 6.7.0
+  * build(deps): bump the docker group with 2 updates
+  * fix set go env in windows
+  * build(deps): bump github.com/go-viper/mapstructure/v2
+  * Fix panics involving -ti when not on a tty
+  * Go imports tooling
+  * Import ordering consistency
+  * Move projectloader to testutil
+  * use slice.Contains
+  * Get rid of naked returns
+  * archived mitchellh/mapstructure -> go-viper/mapstructure
+  * Use http.ErrSchemeMismatch
+  * feat(compose): add mac-address parsing
+  * gofumpt lint
+  * enforce registry default host for login
+  * Uniformize import style
+  * Fix docker/errdefs -> containerd/errdefs
+  * Fix godoc to align with style
+  * build(deps): bump github.com/containerd/accelerated-container-image
+  * migrate to github.com/moby/sys/userns
+  * Make windows filelocking exclusive
+  * Containerd v2
+  * build(deps): bump golang.org/x/sys in the golang-x group
+  * feat: adding filter infrastructure + status and event filter
+  * build(deps): bump docker/build-push-action from 6.5.0 to 6.6.1
+  * build(deps): bump github.com/compose-spec/compose-go/v2
+  * build(deps): bump the golang-x group with 4 updates
+  * build(deps): bump the golang-x group with 2 updates
+  * build(deps): bump github.com/containerd/nydus-snapshotter
+  * add unpack commit images.
+  * Add SOCI handler wrapper
+  * feat: tail JSON log
+  * fix: output log after log rotation
+  * gracefully terminate containers on nerdctl compose down
+  * test: increase max-size && decrease log output
+  * Remove gjson dependency
+  * build(deps): bump golangci/golangci-lint-action from 6.0.1 to 6.1.0
+  * fix: sort images&containers by created_at
+  * build(deps): bump github.com/cyphar/filepath-securejoin
+  * build(deps): bump github.com/compose-spec/compose-go/v2
+  * build(deps): bump the docker group with 2 updates
+  * feat: add Status and ID as event attributes
+  * build(deps): bump github.com/awslabs/soci-snapshotter
+  * build(deps): bump github.com/containerd/containerd
+  * containerd/containerd/errdefs -> containerd/errdefs
+  * build(deps): bump github.com/containernetworking/cni from 1.2.2 to 1.2.3
+  * build(deps): bump the docker group with 2 updates
+  * build(deps): bump docker/login-action from 3.2.0 to 3.3.0
+  * build(deps): bump docker/build-push-action from 6.4.1 to 6.5.0
+  * build(deps): bump github.com/moby/sys/mount in the moby-sys group
+  * Reuse Makefile for CI commands
+  * build(deps): bump github.com/compose-spec/compose-go/v2
+  * build(deps): bump github.com/rootless-containers/rootlesskit/v2
+  * build(deps): bump docker/build-push-action from 6.4.0 to 6.4.1
+  * Add `shellcheck` lint to CI
+  * build(deps): bump github.com/moby/sys/signal in the moby-sys group
+  * feat: support for -a and --attach in run
+  * Account for availability delay of golang docker image
+  * Fix shellscript issues
+  * build(deps): bump github.com/Microsoft/hcsshim from 0.12.4 to 0.12.5
+  * build(deps): bump docker/build-push-action from 6.3.0 to 6.4.0
+  * Move image pull args into ImagePullTypes
+  * Enhance Makefile
+  * Remove no longer useful DOCKER_BUILDKIT=1
+  * fix: add login component username validation
+  * pkg/portutil: add ipv6 host ip test
+  * pkg/portutil: use net.SplitHostPort to parse ip address with port
+  * Update go.mod
+  * Normalize curl invocations
+  * Adding a canary CI target to test against upcoming / unreleased versions
+  * Silence apt-get and uniformize calls format
+  * Update FUSE and buildkit in dockerfile
+  * build(deps): bump github.com/cyphar/filepath-securejoin
+  * build(deps): bump github.com/containerd/typeurl/v2 from 2.1.1 to 2.2.0
+  * Test fixes
+  * CI: shrink test matrix
+  * Workaround delayed log file creation
+  * Fix test: wait for systemd to come up
+  * Move to 24.04 for docker integration testing
+  * Fix nerdctl info missing on Windows
+  * fix the created tasks cannot be deleted
+  * rootless: add `Requires=dbus.socket`
+  * Fix IPFS test flakyness
+  * Ensure we dont fail if containers disappear (#3167)
+  * Do not hard error if containers are gone
+  * build(deps): bump golang.org/x/net from 0.26.0 to 0.27.0
+  * build(deps): bump golang.org/x/crypto from 0.24.0 to 0.25.0
+  * Improve tests debugging output
+  * Volume QA: inspect, prune, create and other volume fixes
+  * test-integration-rootless: enable BuildKit for RootlessKit v2
+  * Dependabot: add groups
+  * nerdctl run -v: dismiss warning "expected an absolute path, got a relative path"
+  * Workaround flaky save
+  * Re-enable project checks for .md only changes
+  * Separate and expand information for newcomers on testing
+  * Make systemctl happy by not passing an explicit signal for kill
+  * build(deps): bump golang.org/x/term from 0.21.0 to 0.22.0
+  * Add logo
+  * Cleanup login command (remove global var and normalize to other commands
+  * build(deps): bump docker/build-push-action from 6.2.0 to 6.3.0
+  * Fix wrong assumption about container availability
+  * update containerd (1.7.19)
+  * Rewrite container remove
+  * build(deps): bump github.com/docker/docker
+  * build(deps): bump github.com/docker/cli
+  * fix missing name container stats
+  * build(deps): bump docker/build-push-action from 6.1.0 to 6.2.0
+  * build(deps): bump github.com/docker/docker
+  * build(deps): bump github.com/containerd/go-cni from 1.1.9 to 1.1.10
+  * CI: update Ubuntu (24.04)
+  * feat: support for --sig-proxy in run
+  * build(deps): bump github.com/containernetworking/cni from 1.2.1 to 1.2.2
+  * pkg/defaults: add defaults_darwin.go
+  * Fix check for empty $HOME and $XDG_RUNTIME_DIR
+  * build(deps): bump docker/build-push-action from 6.0.2 to 6.1.0
+  * build(deps): bump docker/build-push-action from 6.0.1 to 6.0.2
+  * update soci-snapshotter (0.6.1)
+  * update Nydus (2.2.5)
+  * update gotestsum (1.12.0)
+  * update Kubo (0.29.0)
+  * CI: cross: do not use Go 1.21 for nerdctl-full deps
+  * update golangci-lint (1.59.1)
+  * update BuildKit (0.14.1)
+  * update CNI plugins (1.5.1)
+  * update containerd (2.0.0-rc.3)
+  * Volume QA: remove (fixes and tests)
+  * Dockerfile: use Go 1.22 for runc
+  * Bump compose-go to v2
+  * Remove duplicate function
+  * Add HOSTNAME environment variable
+  * fix: close the hosts file
+  * Aftermath docker migration: fix racyness in tests
+  * Implement network namespacing
+  * build(deps): bump docker/build-push-action from 6.0.0 to 6.0.1
+  * Replace SetEnv invocation by base.Env to unlock parallelization
+  * Add mechanism to prevent Cmd from executing multiple times
+  * MAINTAINERS: move Ye Sijun (junnplus) from a COMMITTER to a EMERITUS
+  * build(deps): bump github.com/containernetworking/cni from 1.2.0 to 1.2.1
+  * build(deps): bump docker/build-push-action from 5.4.0 to 6.0.0
+  * build(deps): bump github.com/containernetworking/plugins
+  * Disable build and publish on PR for purely md changes
+  * Add doc note about --ip and bridge
+  * Docker v26 compatibility & test fixes
+  * Add --pull option to build command
+  * update containerd (1.7.18), runc (1.1.13)
+  * MAINTAINERS: promote Kay Yan (yankay) from a REVIEWER to a COMMITTER
+  * Restore logger output
+  * build(deps): bump github.com/spf13/cobra from 1.8.0 to 1.8.1
+  * build(deps): bump github.com/klauspost/compress from 1.17.8 to 1.17.9
+  * build(deps): bump actions/checkout from 4.1.6 to 4.1.7
+  * test-integration-docker-compatibility: install Docker v24
+  * build(deps): bump github.com/containerd/platforms from 0.2.0 to 0.2.1
+  * Safer / faster convert zstd
+  * Revamped testregistry and login tests
+  * build(deps): bump docker/build-push-action from 5.3.0 to 5.4.0
+  * build(deps): bump github.com/Microsoft/hcsshim from 0.12.3 to 0.12.4
+  * Caching and list optimizations
+  * MAINTAINERS: move Hanchin Hsieh (yuchanns) from a REVIEWER to a EMERITUS
+  * MAINTAINERS: promote Jin Dong (djdongjin) from a REVIEWER to a COMMITTER
+  * fix container list with json format
+  * build(deps): bump github.com/docker/cli
+  * build(deps): bump github.com/containerd/containerd from 1.7.17 to 1.7.18
+  * build(deps): bump github.com/docker/docker
+  * build(deps): bump golang.org/x/net from 0.25.0 to 0.26.0
+  * build(deps): bump golang.org/x/crypto from 0.23.0 to 0.24.0
+  * update imgcrypt (1.1.11)
+  * Remove spurious debugging leftover
+  * Fix wrong package import
+  * CI: .md files changes should not trigger tests
+  * Disabling test on unsupported platforms
+  * Image inspect rework
+  * State how to run a single integration test
+  * Image history enhancements
+  * build(deps): bump docker/login-action from 3.1.0 to 3.2.0
+  * build(deps): bump github.com/containerd/imgcrypt from 1.1.10 to 1.1.11
+  * update slirp4netns (1.3.1)
+  * update containerd (1.7.17)
+  * update CNI plugins (1.5.0)
+  * go.mod: github.com/containernetworking/plugins v1.5.0
+  * build(deps): bump github.com/awslabs/soci-snapshotter
+  * Do not obtain task info when it is not necessary in commit command
+  * add retry on test
+  * support image label
+  * chore: remove impossible error check
+  * Implement container inspect --size, SizeRootFs and SizeRw
+  * Implementing StartedAt for containers
+  * build(deps): bump github.com/containerd/nydus-snapshotter
+  * build(deps): bump github.com/docker/cli
+  * build(deps): bump actions/checkout from 4.1.5 to 4.1.6
+  * build(deps): bump github.com/docker/docker
+  * build(deps): bump github.com/containerd/containerd from 1.7.16 to 1.7.17
+  * Support DHCP IPAM opts and set the hostname
+  * Fix cni plugins sha after spurious 1.4.1 re-release
+  * build(deps): bump actions/checkout from 4.1.4 to 4.1.5
+  * build(deps): bump github.com/fatih/color from 1.16.0 to 1.17.0
+  * Re-acquire name in onStartContainer (see #2992)
+  * Add missing alias for container rm/remove
+  * build(deps): bump github.com/docker/cli
+  * Allow directories for --device and in-container path
+  * Fix some /etc/ file permissions (see #2684)
+  * build(deps): bump github.com/containerd/platforms from 0.1.1 to 0.2.0
+  * build(deps): bump github.com/docker/docker
+  * Fix markdown link
+  * build(deps): bump golangci/golangci-lint-action from 5.1.0 to 6.0.1
+  * build(deps): bump golang.org/x/net from 0.24.0 to 0.25.0
+  * inspect: show mounts info from CRI/ctr containers
+  * build(deps): bump github.com/docker/cli
+  * build(deps): bump github.com/docker/docker
+  * build(deps): bump github.com/pelletier/go-toml/v2 from 2.2.1 to 2.2.2
+  * build(deps): bump github.com/cyphar/filepath-securejoin
+  * CI: use Go 1.22
+  * build(deps): bump golangci/golangci-lint-action from 5.0.0 to 5.1.0
+  * build(deps): bump github.com/containerd/nydus-snapshotter
+  * build(deps): bump github.com/rootless-containers/rootlesskit/v2
+  * fix: set mountpoint RW and Propagation in internal mount label
+  * skip Kubo 0.28.0
+  * update RootlessKit (2.1.0)
+  * update slirp4netns (1.3.0)
+  * update BuildKit (0.13.2)
+  * update containerd (1.7.16)
+  * build(deps): bump golangci/golangci-lint-action from 4.0.0 to 5.0.0
+  * build(deps): bump github.com/containerd/containerd from 1.7.15 to 1.7.16
+  * fix: error check in the ensureFile func
+  * build(deps): bump actions/checkout from 4.1.3 to 4.1.4
+  * build(deps): bump github.com/docker/cli
+  * build(deps): bump github.com/docker/docker
+  * build(deps): bump github.com/Microsoft/hcsshim from 0.12.2 to 0.12.3
+  * build(deps): bump actions/checkout from 4.1.2 to 4.1.3
+  * build(deps): bump github.com/Microsoft/go-winio from 0.6.1 to 0.6.2
+  * build(deps): bump github.com/docker/cli
+  * build(deps): bump github.com/containernetworking/cni from 1.1.2 to 1.2.0
+  * build(deps): bump github.com/awslabs/soci-snapshotter
+  * build(deps): bump github.com/pelletier/go-toml/v2 from 2.2.0 to 2.2.1
+  * build(deps): bump github.com/fahedouch/go-logrotate from 0.2.0 to 0.2.1
+  * build(deps): bump github.com/docker/cli
+  * build(deps): bump github.com/docker/docker
+  * build(deps): bump github.com/containerd/accelerated-container-image
+  * fix follow tail of rotate log
+  * fix: cleanup volume dir if create volume failed
+  * build(deps): bump github.com/klauspost/compress from 1.17.7 to 1.17.8
+  * build(deps): bump github.com/rootless-containers/bypass4netns
+  * Rationalise build constraints for Go 1.19 onwards
+  * Implement autodetection of Windows buildkitd socket
+  * Enable building on Windows hosts
+  * Remove unused defaults.BuildKitHost
+  * bypass4netns: allow ignoring bind
+  * update bypass4netns (0.4.1)
+  * build(deps): bump github.com/containerd/accelerated-container-image
+  * update containerd (1.7.15)
+  * build(deps): bump github.com/containerd/containerd from 1.7.14 to 1.7.15
+  * build(deps): bump golang.org/x/sync from 0.6.0 to 0.7.0
+  * build(deps): bump golang.org/x/net from 0.23.0 to 0.24.0
+  * build(deps): bump golang.org/x/crypto from 0.21.0 to 0.22.0
+  * build(deps): bump golang.org/x/net from 0.22.0 to 0.23.0
+  * annotations: add `nerdctl/bypass4netns-ignore-subnets` (`[]string`)
+  * Implement `nerdctl run --annotation` (introduced in Docker v24)
+  * update BuildKit (0.13.1)
+  * build(deps): bump github.com/Microsoft/hcsshim from 0.12.1 to 0.12.2
+  * build(deps): bump github.com/docker/docker
+  * CI: FreeBSD: use Go 1.22
+  * build(deps): bump github.com/containerd/nydus-snapshotter
+  * build(deps): bump github.com/Microsoft/hcsshim from 0.12.0 to 0.12.1
+  * deflake TestImageConvertEStargz
+  * not check return of rmi in pushImageToIPFS
+  * pkg/api/types: remove dependencies on nerdctl
+  * build(deps): bump github.com/pelletier/go-toml/v2 from 2.1.1 to 2.2.0
+  * update cosign image to latest release
+  * build(deps): bump docker/build-push-action from 5.2.0 to 5.3.0
+  * update imgcrypt (1.1.10)
+  * build(deps): bump google.golang.org/protobuf from 1.32.0 to 1.33.0
+  * feat(compose_up): add --abort-on-container-exit flag
+  * build(deps): bump github.com/containerd/imgcrypt from 1.1.9 to 1.1.10
+  * build(deps): bump github.com/containerd/accelerated-container-image
+  * build(deps): bump docker/login-action from 3.0.0 to 3.1.0
+  * update Kubo (0.27.0)
+  * update RootlessKit (2.0.2)
+  * update CNI plugins (1.4.1)
+  * build(deps): bump github.com/containernetworking/plugins
+  * build(deps): bump actions/checkout from 4.1.1 to 4.1.2
+  * refactor: replace os.MkdirTemp with t.TempDir with cleanup
+  * update containerd (1.7.14),(1.6.30)
+  * CI: update FreeBSD to 14
+  * build(deps): bump github.com/containerd/containerd from 1.7.13 to 1.7.14
+  * feat: add extra contexts to buildctl call #2835
+  * update BuildKit (0.13.0)
+  * build(deps): bump docker/build-push-action from 5.1.0 to 5.2.0
+  * feat: create network cleanup function for kill and stop cmd
+  * build(deps): bump github.com/go-jose/go-jose/v3 from 3.0.1 to 3.0.3
+  * build(deps): bump github.com/rootless-containers/rootlesskit/v2
+  * build(deps): bump github.com/Microsoft/hcsshim from 0.11.4 to 0.12.0
+  * chore: remove useless error check
+  * Enhance default platform comparision for image shareablity #2810
+  * build(deps): bump golang.org/x/net from 0.21.0 to 0.22.0
+  * build(deps): bump golang.org/x/crypto from 0.20.0 to 0.21.0
+  * Use json marshal/unmarshal to copy
+  * fix: typos
+  * build(deps): bump github.com/containerd/accelerated-container-image
+  * build(deps): bump golang.org/x/crypto from 0.19.0 to 0.20.0
+  * fix: add onstartcontainer hook
+  * build(deps): bump github.com/containerd/nydus-snapshotter
+  * build(deps): bump github.com/klauspost/compress from 1.17.6 to 1.17.7
+  * Rootlesskit Network Design
+  * update BuildKit (0.13.0-rc1)
+  * CI: test compilation with Go 1.22
+  * build(deps): bump github.com/tidwall/gjson from 1.17.0 to 1.17.1
+  * build(deps): bump github.com/opencontainers/image-spec
+  * platform: support loongarch64
+  * doc: should use master tag for binfmt
+  * Remove the support for the old CNI isolation plugin
+  * rootless: fix `Not Authorized(uid): org.fedoraproject.FirewallD1.config`
+  * build(deps): bump github.com/opencontainers/runtime-spec
+  * Fix soci image push with multi-platforms flags
+  * build(deps): bump golangci/golangci-lint-action from 3.7.1 to 4.0.0
+  * build(deps): bump golang.org/x/net from 0.20.0 to 0.21.0
+  * build(deps): bump golangci/golangci-lint-action from 3.7.0 to 3.7.1
+  * build(deps): bump golang.org/x/crypto from 0.18.0 to 0.19.0
+  * build(deps): bump tonistiigi/xx from 1.3.0 to 1.4.0
+  * update slirp4netns (1.2.3)
+  * build(deps): bump github.com/rootless-containers/rootlesskit/v2
+  * update RootlessKit (2.0.1)
+  * build(deps): bump github.com/containerd/console from 1.0.3 to 1.0.4
+  * build(deps): bump github.com/klauspost/compress from 1.17.5 to 1.17.6
+  *  `containerd-rootless-setuptool.sh uninstall` cleanup all relevant services
+  * support build attest
+  * Add support to run systemd in containers (with --systemd flag)
+  * Support --ipc=container:<id> option
+  * build(deps): bump github.com/containerd/nydus-snapshotter
+  * update BuildKit (0.13.0-beta3)
+  * build(deps): bump docker/metadata-action from 5.5.0 to 5.5.1
+  * build(deps): bump github.com/containerd/containerd from 1.7.12 to 1.7.13
+  * update Kubo (0.26.0)
+  * update bypass4netns (0.4.0)
+  * update runc (1.1.12)
+  * update containerd (1.7.13)
+  * [Carry 2535] rootless: support detach-netns mode
+  * update RootlessKit (2.0.0)
+  * update BuildKit (0.13.0-beta2)
+  * containerd-rootless-setuptool.sh: avoid creating buildkitd.toml
+  * build(deps): bump github.com/containerd/nydus-snapshotter
+  * build(deps): bump github.com/containerd/nydus-snapshotter
+  * build(deps): bump github.com/klauspost/compress from 1.17.4 to 1.17.5
+  * containerd/containerd/platforms -> containerd/platforms
+  * Retag images when tag is already present in nerdctl build
+  * CI: use standard GHA runner for Windows too
+  * build(deps): bump github.com/opencontainers/image-spec
+  * CI: use standard GHA runners
+  * build(deps): bump actions/cache from 3 to 4
+  * update gpu image to 12.3
+  * go.mod: github.com/rootless-containers/rootlesskit/v2 v2.0.0
+  * go.mod: module github.com/containerd/nerdctl/v2
+
+-------------------------------------------------------------------
 Fri Sep 20 11:44:25 UTC 2024 - danish.prakash@suse.com
 
 - Update to version 1.7.7:

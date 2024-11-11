@@ -383,4 +383,22 @@
     <comment></comment>
     <requestid>1174600</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>ba6b557d914ab19a5e12ded42994340a</srcmd5>
+    <version>2.1.0</version>
+    <time>1731329174</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.0:
+  * Pre-release changes (#354)
+  * Support reversing the order of items in LXQt's grid layout (#353)
+  * Fixed setting of item geometries in grid layout (#351)
+  * weblate commits (#350)
+  * weblate commits (#348)
+  * Enable custom screenlockers on X11 and wayland (#346)
+  * Replaced `QLatin1String` with `QLatin1StringView` (#347)
+  * weblate commits (#345)
+  * Pre-release changes (#344)
+  * Update some minimum required versions (#343) (forwarded request 1221983 from AndnoVember)</comment>
+    <requestid>1223243</requestid>
+  </revision>
 </revisionlist>

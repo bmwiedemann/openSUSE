@@ -19,7 +19,7 @@
 %define  qt_ver 6
 %define  sover  2
 Name:           qtermwidget
-Version:        2.0.1
+Version:        2.1.0
 Release:        0
 Summary:        The terminal widget for QTerminal
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -32,8 +32,8 @@ BuildRequires:  cmake
 BuildRequires:  utempter-devel
 BuildRequires:  utf8proc-devel
 BuildRequires:  cmake(Qt6LinguistTools)
-BuildRequires:  cmake(Qt6Widgets)
-BuildRequires:  cmake(lxqt2-build-tools)
+BuildRequires:  cmake(Qt6Widgets) >= 6.6.0
+BuildRequires:  cmake(lxqt2-build-tools) >= 2.1.0
 
 %description
 QTermWidget is an open-source project originally based on the KDE4 Konsole

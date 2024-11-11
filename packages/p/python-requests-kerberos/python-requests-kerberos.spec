@@ -1,7 +1,7 @@
 #
 # spec file for package python-requests-kerberos
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-requests-kerberos
-Version:        0.14.0
+Version:        0.15.0
 Release:        0
 Summary:        A Kerberos authentication handler for python-requests
 License:        ISC
 Group:          Development/Languages/Python
 URL:            https://github.com/requests/requests-kerberos
-Source:         https://files.pythonhosted.org/packages/source/r/requests-kerberos/requests-kerberos-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/r/requests-kerberos/requests_kerberos-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 Requires:       python-pyspnego
 Requires:       python-requests >= 1.1.0
@@ -39,13 +41,13 @@ adds optional Kerberos/GSSAPI authentication support and supports mutual
 authentication. Basic GET usage:
 
 %prep
-%setup -q -n requests-kerberos-%{version}
+%setup -q -n requests_kerberos-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %files %{python_files}
 %license LICENSE

@@ -18,7 +18,7 @@
 
 %global debug_package %{nil}
 Name:           lxqt-menu-data
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        Menu files for LXQt Panel, Configuration Center and PCManFM-Qt
 License:        LGPL-2.1-or-later
@@ -53,11 +53,11 @@ maintained by the LXQt project.
 sed -i 's/\(Icon=\).*/\1applications-utilities/' ./menu/desktop-directories/lxqt-utility.directory.in
 
 %build
-%cmake_qt6
-%{qt6_build}
+%cmake
+%cmake_build
 
 %install
-%{qt6_install}
+%cmake_install
 
 %files
 %doc README.md

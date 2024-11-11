@@ -18,7 +18,7 @@
 
 %define  sover  1
 Name:           libsysstat
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Library used to query system info and statistics
 License:        LGPL-2.1-or-later
@@ -30,7 +30,7 @@ Source2:        %{name}.keyring
 BuildRequires:  cmake >= 3.18.0
 BuildRequires:  gcc-c++
 BuildRequires:  cmake(Qt6LinguistTools) >= 6.6
-BuildRequires:  cmake(lxqt2-build-tools) >= 2.0.0
+BuildRequires:  cmake(lxqt2-build-tools) >= 2.1.0
 
 %description
 libsysstat is a library to query system information like CPU and memory

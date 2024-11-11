@@ -334,4 +334,21 @@
     <comment></comment>
     <requestid>1174607</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a5174b268cf17110d1873ea179f2f791</srcmd5>
+    <version>2.1.0</version>
+    <time>1731329169</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.0:
+  * Pre-release changes
+  * Use content of pt_PT file (#284)
+  * Updated *.ts files (#283)
+  * Weblate commits (#282)
+  * Weblate commits (#281)
+  * Weblate commits (#280)
+  * Weblate commits (#279)
+  * Added estion translatorsinfo (#278)
+  * Update translators_tr.info (#277) (forwarded request 1221987 from AndnoVember)</comment>
+    <requestid>1223239</requestid>
+  </revision>
 </revisionlist>

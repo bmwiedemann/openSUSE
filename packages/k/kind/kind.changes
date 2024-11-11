@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sun Nov 10 01:36:02 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.25.0:
+  * version v0.25.0
+  * bump node image
+  * bump local-path-provisioner
+  * bump kindnetd
+  * bump base image
+  * bump to go 1.22.9
+  * Setting the default hostIP for `get kubeconfig`
+  * remove myself from OWNERS
+  * Fix site link to LoadBalancer page
+  * bump go to 1.22.8
+  * update container-log-max-size
+  * update container-log-max-files-max-size
+  * aggregate masq sync errors
+  * Update site/content/docs/user/ingress.md
+  * Improve the ingress controller guide
+  * use agnhost for the documentation manifests
+  * Bump the actions group with 2 updates
+  * Update usage.yaml
+  * bump kindnetd image
+  * kindnet: don't collide with kube-network-policies
+  * fix missing space in ip6tables error matching
+  * Bump the actions group across 1 directory with 2 updates
+  * CI: VM: switch away from Vagrant to Lima
+  * bump default node image to kubernetes 1.31.1
+  * bump kindnetd image
+  * kindnetd: kube-network-policies bump to 0.6.0 to fix dns race
+  * detect ip6tables setup failure and fallback to ipv4 only
+  * docs: Fix quick start formatting issues
+  * clarify when port-mapping is needed
+  * Bump actions/upload-artifact from 4.3.6 to 4.4.0 in the actions group
+  * Add install note to rootless docs
+  * add loadbalancer note
+  * add clarification to cri-o reference
+  * Update ingress.md
+  * Add CRI-O Kind tutorial to Kind user docs
+  * fix getting version from tarball
+  * update install docs to v0.24
+  * version v0.25.0-alpha
+
+-------------------------------------------------------------------
 Fri Aug 16 18:22:35 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.24.0:

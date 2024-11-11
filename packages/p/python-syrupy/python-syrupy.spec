@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-syrupy
-Version:        4.6.1
+Version:        4.7.2
 Release:        0
 Summary:        Pytest Snapshot Test Utility
 License:        Apache-2.0

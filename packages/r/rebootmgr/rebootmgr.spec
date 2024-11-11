@@ -44,6 +44,7 @@ If you updated a system with e.g. transactional updates or a kernel update was a
 
 %install
 %meson_install
+ln -sf ../bin/rebootmgrctl %{buildroot}%{_sbindir}/rebootmgrctl
 
 #%check
 #meson_test
@@ -67,6 +68,7 @@ If you updated a system with e.g. transactional updates or a kernel update was a
 %{_datadir}/rebootmgr/rebootmgr.conf
 %{_unitdir}/rebootmgr.service
 %{_bindir}/rebootmgrctl
+%{_sbindir}/rebootmgrctl
 %{_sbindir}/rebootmgrd
 %{_datadir}/dbus-1/interfaces/org.opensuse.RebootMgr.xml
 %{_datadir}/dbus-1/system.d/org.opensuse.RebootMgr.conf

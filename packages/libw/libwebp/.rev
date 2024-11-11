@@ -355,4 +355,13 @@ required for http://www.unvanquished.net/wiki/index.php/Compiling_the_source#ope
     <comment></comment>
     <requestid>1198638</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>699ea30e1c30a56fe8eee706c847b19d</srcmd5>
+    <version>1.4.0</version>
+    <time>1731329013</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to cmake based build as other packages now require the
+  cmake finders</comment>
+    <requestid>1223102</requestid>
+  </revision>
 </revisionlist>

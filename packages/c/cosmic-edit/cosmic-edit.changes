@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov  1 01:08:56 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.0~alpha3:
+  * Fix clicking directories in nav bar in condensed mode
+  * fix(l18n): Ensure COSMIC is properly cased
+  * update dependencies 
+  * update translations
+
+-------------------------------------------------------------------
 Wed Sep 25 07:42:48 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.0.0~alpha2:

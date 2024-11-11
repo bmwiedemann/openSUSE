@@ -20,7 +20,7 @@
 typeface family, designed for writing code, using in terminals, and\
 preparing technical documents.
 Name:           iosevka-fonts
-Version:        31.9.1
+Version:        32.0.1
 Release:        0
 Summary:        Slender typeface for source code
 License:        OFL-1.1

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov  6 21:36:20 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 2.1.0:
+  * Pre-release changes (#290)
+  * Updated *.ts files (#289)
+  * Added scope=launcher (#288)
+  * Weblate commits (#284)
+  * Fixed multi-screen setups with Wayland (#286)
+  * Added layershell runtime dependency (#283)
+  * Update README.md (#281)
+  * Weblate commits (#282)
+  * Pre-release changes (#280)
+  * Weblate commits (#279)
+
+-------------------------------------------------------------------
 Sat May 11 09:54:49 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
 
 - Update to 2.0.0:

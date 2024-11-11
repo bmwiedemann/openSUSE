@@ -106,4 +106,22 @@
     <comment></comment>
     <requestid>1174221</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ad2b1307f34fac9b6096f8fbc338caf5</srcmd5>
+    <version>1.1.0</version>
+    <time>1731329167</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.0:
+  * Pre-release changes (#407)
+  * Updated *.ts files (#408)
+  * Weblate commits (#404)
+  * Silenced a warning about `GList` (#406)
+  * Add clearButtonEnabled property to filter bar (#405)
+  * Weblate commits (#403)
+  * Weblate commits (#402)
+  * Weblate commits (#401)
+  * Weblate commits (#400)
+  * Weblate commits (#398) (forwarded request 1221989 from AndnoVember)</comment>
+    <requestid>1223238</requestid>
+  </revision>
 </revisionlist>

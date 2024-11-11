@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov  4 21:48:05 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2024.11.04
+  * Prioritize AV1
+  * Remove Python <= 3.8 support
+  * youtube: Adjust OAuth refresh token handling
+
+-------------------------------------------------------------------
 Wed Oct 23 08:32:16 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2024.10.22

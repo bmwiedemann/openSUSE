@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Nov  1 01:14:23 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.0~alpha3:
+  * Handle mime://
+  * Add flatpakref mime type
+  * Cleanup subcommand handling
+  * Remove unnecessary clone
+  * Re-run search after updating app info
+  * Add installation from flatpakref
+  * Correctly determine system package installed status
+  * Auto open package when loading package file
+  * Support for installing package files
+  * Fix sort order of sources
+  * Add support for system flatpaks
+  * Add "Shop" to .desktop file keyword list
+  * Make screenshot selectors insensitive if there is one or less screenshot
+  * update translations
+  * update dependencies
+
+-------------------------------------------------------------------
 Wed Sep 25 07:55:10 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.0.0~alpha2:

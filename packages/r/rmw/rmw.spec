@@ -18,15 +18,13 @@
 
 
 Name:           rmw
-Version:        0.9.2
+Version:        0.9.3
 Release:        0
 Summary:        Safe-remove utility for the command line
 License:        GPL-3.0-or-later
 Group:          System/Management
-URL:            https://remove-to-waste.info/
+URL:            https://theimpossibleastronaut.github.io/rmw-website
 Source:         https://github.com/theimpossibleastronaut/rmw/releases/download/v%{version}/%{name}-%{version}.tar.xz
-Patch0:         test-restore-fix-use-Xvfb.patch
-Patch1:         tests-fail-after-epochalypse.patch
 BuildRequires:  meson >= 0.59.0
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  pkgconfig(ncurses)

@@ -1,5 +1,5 @@
 # HG changeset patch
-# Parent  104c34af9ec233f7cd5e8dc955ba7ee763f47a21
+# Parent  5cc2e34f46adee952bab6c6955d5b2d5a248d06a
 
 diff --git a/gfx/skia/skia/include/codec/SkEncodedOrigin.h b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
 --- a/gfx/skia/skia/include/codec/SkEncodedOrigin.h
@@ -405,7 +405,7 @@ diff --git a/third_party/libwebrtc/api/adaptation/resource.cc b/third_party/libw
 diff --git a/third_party/libwebrtc/api/rtp_parameters.cc b/third_party/libwebrtc/api/rtp_parameters.cc
 --- a/third_party/libwebrtc/api/rtp_parameters.cc
 +++ b/third_party/libwebrtc/api/rtp_parameters.cc
-@@ -28,16 +28,17 @@ const char* DegradationPreferenceToStrin
+@@ -32,16 +32,17 @@ const char* DegradationPreferenceToStrin
      case DegradationPreference::MAINTAIN_FRAMERATE:
        return "maintain-framerate";
      case DegradationPreference::MAINTAIN_RESOLUTION:
@@ -745,7 +745,7 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/audio_processing_imp
      const StreamConfig& input_config,
      const StreamConfig& output_config) {
    AudioFormatValidity input_validity = ValidateAudioFormat(input_config);
-@@ -2420,16 +2421,17 @@ void AudioProcessingImpl::InitializeNois
+@@ -2176,16 +2177,17 @@ void AudioProcessingImpl::InitializeNois
              case NoiseSuppresionConfig::kModerate:
                return NsConfig::SuppressionLevel::k12dB;
              case NoiseSuppresionConfig::kHigh:
@@ -951,7 +951,7 @@ diff --git a/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_laye
 diff --git a/third_party/libwebrtc/modules/video_coding/h26x_packet_buffer.cc b/third_party/libwebrtc/modules/video_coding/h26x_packet_buffer.cc
 --- a/third_party/libwebrtc/modules/video_coding/h26x_packet_buffer.cc
 +++ b/third_party/libwebrtc/modules/video_coding/h26x_packet_buffer.cc
-@@ -66,16 +66,17 @@ bool BeginningOfIdr(const H26xPacketBuff
+@@ -58,16 +58,17 @@ bool BeginningOfIdr(const H26xPacketBuff
      case kH264StapA:
      case kH264SingleNalu: {
        return contains_idr_nalu;
@@ -966,7 +966,7 @@ diff --git a/third_party/libwebrtc/modules/video_coding/h26x_packet_buffer.cc b/
  bool HasSps(const H26xPacketBuffer::Packet& packet) {
    auto& h264_header =
        absl::get<RTPVideoHeaderH264>(packet.video_header.video_type_header);
-   return absl::c_any_of(GetNaluInfos(h264_header), [](const auto& nalu_info) {
+   return absl::c_any_of(h264_header.nalus, [](const auto& nalu_info) {
      return nalu_info.type == H264::NaluType::kSps;
    });
 diff --git a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc b/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
@@ -990,3 +990,45 @@ diff --git a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resourc
      flags.resize(codec.VP9().numberOfSpatialLayers);
      for (size_t i = 0; i < flags.size(); ++i) {
        flags[i] = codec.spatialLayers[i].active;
+diff --git a/third_party/libwebrtc/video/config/encoder_stream_factory.cc b/third_party/libwebrtc/video/config/encoder_stream_factory.cc
+--- a/third_party/libwebrtc/video/config/encoder_stream_factory.cc
++++ b/third_party/libwebrtc/video/config/encoder_stream_factory.cc
+@@ -104,16 +104,17 @@ int GetDefaultMaxQp(webrtc::VideoCodecTy
+     case webrtc::kVideoCodecH265:
+       return kDefaultVideoMaxQpH26x;
+     case webrtc::kVideoCodecVP8:
+     case webrtc::kVideoCodecVP9:
+     case webrtc::kVideoCodecAV1:
+     case webrtc::kVideoCodecGeneric:
+       return kDefaultVideoMaxQpVpx;
+   }
++  return kDefaultVideoMaxQpVpx; // fake return for hopefully not reached
+ }
+ 
+ // Round size to nearest simulcast-friendly size.
+ // Simulcast stream width and height must both be dividable by
+ // |2 ^ (simulcast_layers - 1)|.
+ int NormalizeSimulcastSize(const FieldTrialsView& field_trials,
+                            int size,
+                            size_t simulcast_layers) {
+diff --git a/third_party/libwebrtc/video/quality_convergence_controller.cc b/third_party/libwebrtc/video/quality_convergence_controller.cc
+--- a/third_party/libwebrtc/video/quality_convergence_controller.cc
++++ b/third_party/libwebrtc/video/quality_convergence_controller.cc
+@@ -31,16 +31,17 @@ int GetDefaultStaticQpThreshold(VideoCod
+       return kAv1DefaultStaticQpThreshold;
+     case kVideoCodecGeneric:
+     case kVideoCodecH264:
+     case kVideoCodecH265:
+       // -1 will effectively disable the static QP threshold since QP values are
+       // always >= 0.
+       return -1;
+   }
++  return -1;
+ }
+ }  // namespace
+ 
+ void QualityConvergenceController::Initialize(
+     int number_of_layers,
+     absl::optional<int> static_qp_threshold,
+     VideoCodecType codec,
+     const FieldTrialsView& trials) {

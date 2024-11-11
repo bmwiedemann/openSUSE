@@ -61,4 +61,19 @@
   * update mail address</comment>
     <requestid>1084868</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0925ada70bd485334a172ecd90e1b184</srcmd5>
+    <version>1.2.3</version>
+    <time>1731329124</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.3:
+  * provide support for RSVG converter's ``--format`` argument. In
+    more recent RSVG builds, the ``pdf1.5`` format will generate
+    the fewest warnings with LaTeX backends. By default, this is
+    ``pdf``.
+
+  * Fix CairSVGConverter::convert for usage on Windows
+  * Use errno symbols from standard library</comment>
+    <requestid>1223206</requestid>
+  </revision>
 </revisionlist>

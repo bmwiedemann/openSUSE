@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov  7 16:53:41 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to 4.0.2:
+  * Default to use xdg paths when they are set.
+
+-------------------------------------------------------------------
 Wed Oct 30 20:41:53 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
 
 - Added lxqt-wallet.keyring

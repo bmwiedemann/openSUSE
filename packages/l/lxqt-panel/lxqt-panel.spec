@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-panel
-Version:        2.0.1
+Version:        2.1.1
 Release:        0
 Summary:        LXQt desktop panel
 License:        LGPL-2.1-or-later
@@ -33,22 +33,24 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libsensors4-devel
 BuildRequires:  pkgconfig
+BuildRequires:  qt6-gui-private-devel
 BuildRequires:  cmake(KF6Solid)
 BuildRequires:  cmake(KF6WindowSystem)
 BuildRequires:  cmake(LayerShellQt) >= 6.0.0
 BuildRequires:  cmake(Qt6Concurrent)
 BuildRequires:  cmake(Qt6DBus)
 BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6WaylandClient)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6Xml)
-BuildRequires:  cmake(lxqt-menu-data) >= 2.0.0
+BuildRequires:  cmake(lxqt-menu-data) >= 2.1.0
 BuildRequires:  cmake(lxqt2-build-tools)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(dbusmenu-lxqt)
 BuildRequires:  pkgconfig(libmenu-cache)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libstatgrab)
-BuildRequires:  pkgconfig(lxqt) >= 2.0.0
+BuildRequires:  pkgconfig(lxqt) >= 2.1.0
 BuildRequires:  pkgconfig(lxqt-globalkeys-ui)
 BuildRequires:  pkgconfig(sysstat-qt6)
 BuildRequires:  pkgconfig(x11)
@@ -64,6 +66,7 @@ BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xkbcommon-x11)
 BuildRequires:  pkgconfig(xtst)
+Requires:       %{name}-branding = %{version}-%{release}
 Requires:       lxqt-menu-data
 Requires:       menu-cache
 Recommends:     %{name}-lang = %{version}-%{release}
@@ -82,6 +85,18 @@ BuildArch:      noarch
 %description devel
 LXQt panel development files and headers
 
+%package branding-upstream
+Summary:        Upstream branding of %{name}
+Group:          System/GUI/LXQt
+Requires:       %{name} = %{version}
+Supplements:    (%{name} and branding-upstream)
+Conflicts:      %{name}-branding
+Provides:       %{name}-branding = %{version}
+BuildArch:      noarch
+
+%description branding-upstream
+This package provides the upstream look and feel for %{name}.
+
 %prep
 %autosetup -p1
 
@@ -95,6 +110,7 @@ export CXXFLAGS="%{optflags} $(pkg-config --cflags xkbcommon-x11)"
 %install
 %{qt6_install}
 %fdupes -s %{buildroot}%{_datadir}
+install -Dm 0644 %{buildroot}%{_datadir}/lxqt/panel.conf -t %{buildroot}%{_sysconfdir}/xdg/lxqt/
 
 %find_lang %{name} --with-qt --all-name
 
@@ -103,6 +119,7 @@ export CXXFLAGS="%{optflags} $(pkg-config --cflags xkbcommon-x11)"
 %dir %{_datadir}/lxqt
 %{_bindir}/%{name}
 %{_libdir}/%{name}
+%{_datadir}/applications/lxqt-panel.desktop
 %{_datadir}/lxqt/%{name}
 %dir %{_datadir}/lxqt/panel
 %{_datadir}/lxqt/panel/qeyes-types/
@@ -113,6 +130,10 @@ export CXXFLAGS="%{optflags} $(pkg-config --cflags xkbcommon-x11)"
 
 %files devel
 %{_includedir}/lxqt
+
+%files branding-upstream
+%dir %{_sysconfdir}/xdg/lxqt/
+%config %{_sysconfdir}/xdg/lxqt/panel.conf
 
 %files lang -f %{name}.lang
 %dir %{_datadir}/lxqt

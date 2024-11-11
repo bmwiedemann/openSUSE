@@ -17,17 +17,16 @@
 
 
 Name:           screengrab
-Version:        2.8.0
+Version:        2.9.0
 Release:        0
 Summary:        Qt tool for creating screenshots
 License:        GPL-2.0-only
 Group:          System/X11/Utilities
 URL:            https://github.com/lxqt/screengrab
-Source:         https://github.com/lxqt/screengrab/releases/download/%{version}/%{name}-%{version}.tar.xz
-Source1:        https://github.com/lxqt/screengrab/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
+Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-Patch0:         screengrab-link.patch
-BuildRequires:  cmake >= 3.1.0
+BuildRequires:  cmake >= 3.18.0
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
@@ -40,7 +39,6 @@ BuildRequires:  pkgconfig(Qt6Gui)
 BuildRequires:  pkgconfig(Qt6Network)
 BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(Qt6Xdg) >= 4.0.0
-BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11-xcb)
 BuildRequires:  pkgconfig(xcb)
@@ -57,10 +55,13 @@ Screenshot taker with the ability to publish them via hosting services.
 %autosetup -p1
 
 %build
-%cmake
+%cmake_qt6 \
+    -DSG_EXT_EDIT="1" \
+    -DSG_DBUS_NOTIFY="1"
+%qt6_build
 
 %install
-%cmake_install
+%qt6_install
 rm -rf %{buildroot}%{_datadir}/doc
 
 %find_lang %{name} --with-qt
@@ -71,11 +72,14 @@ rm -rf %{buildroot}%{_datadir}/doc
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.??g
-%{_datadir}/screengrab/screengrab.conf
+%dir %{_datadir}/%{name}
+%{_datadir}/%{name}/%{name}.conf
 %{_datadir}/metainfo/%{name}.metainfo.xml
 
 %files lang -f %{name}.lang
-%dir %{_datadir}/%{name}
-%{_datadir}/%{name}/translations
+%dir %{_datadir}/%{name}/translations
+%if 0%{?sle_version}
+%{_datadir}/%{name}/translations/%{name}_???.qm
+%endif
 
 %changelog

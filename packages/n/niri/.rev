@@ -47,4 +47,19 @@
     <comment></comment>
     <requestid>1201182</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a499f2ad8a1ca1f715aef40d178fd208</srcmd5>
+    <version>0.1.10</version>
+    <time>1731329039</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.1.10:
+  * Add interactive window moving
+  * Add locked pointer location hint
+  * Add laptop lid and tablet mode switch bindings
+  * Add pointer hiding
+  * Add input configuration improvements
+- Change xwayland-run Recommends with xwayland-satellite
+</comment>
+    <requestid>1223056</requestid>
+  </revision>
 </revisionlist>

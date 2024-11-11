@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov  6 21:39:14 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 2.1.0:
+  * Pre-release changes (#130)
+  * Fixed missing # (#131)
+  * Fix style ColorPicker, Backlight, StatusNotifier in various themes (#126)
+  * Added palette for all themes (#125)
+  * Added tooltip styling (#124)
+  * Fix wordclock texts (#123)
+  * Style tooltips also in configuration center based on palette or theme (#122)
+  * Delete invalid empty folder (#121)
+  * Pre-release changes (#117)
+  * Dark color for input background in runner (#116)
+
+-------------------------------------------------------------------
 Tue May 21 18:11:47 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
 
 - Добавлен логотип openSUSE (logo.tar.xz)

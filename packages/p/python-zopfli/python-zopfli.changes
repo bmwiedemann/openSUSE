@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov 10 21:42:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.3.post1:
+  * Added wheels for Python 3.13. No other code changes since
+    v0.2.3.
+
+-------------------------------------------------------------------
 Thu Oct  5 09:11:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.2.3:

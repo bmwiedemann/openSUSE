@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov 10 04:41:54 UTC 2024 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v7.2.4 fixed potential SIGSEGV because of
+  buffer-overflow in ags_sfz_synth_util.c.
+- improved selection in notation, automation and wave editor.
+
+-------------------------------------------------------------------
 Sat Oct 26 08:07:45 UTC 2024 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v7.0.8 fixed missing keyboard input of AgsSyncsynth,

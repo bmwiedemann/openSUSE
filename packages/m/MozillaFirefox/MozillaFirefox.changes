@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Sun Nov 10 12:56:23 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- require xdg-desktop-portal (boo#1233166)
+
+-------------------------------------------------------------------
+Tue Nov  5 08:54:03 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 132.0.1
+  * Fixed issues causing intermittent video playback problems on
+    some sites. (bmo#1928484, bmo#1928798)
+- remove KDE integration patches
+  - mozilla-kde.patch
+  - firefox-kde.patch
+  on KDE use these settings instead
+  widget.use-xdg-desktop-portal.file-picker=1
+  widget.use-xdg-desktop-portal.mime-handler=1
+  (those are set by the latest branding package as well)
+
+-------------------------------------------------------------------
+Mon Oct 28 11:59:31 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 132.0
+  https://www.mozilla.org/en-US/firefox/132.0/releasenotes
+  MFSA 2024-55 (bsc#1231879)
+  * CVE-2024-10458 (bmo#1921733)
+    Permission leak via embed or object elements
+  * CVE-2024-10459 (bmo#1919087)
+    Use-after-free in layout with accessibility
+  * CVE-2024-10460 (bmo#1912537)
+    Confusing display of origin for external protocol handler prompt
+  * CVE-2024-10461 (bmo#1914521)
+    XSS due to Content-Disposition being ignored in
+    multipart/x-mixed-replace response
+  * CVE-2024-10462 (bmo#1920423)
+    Origin of permission prompt could be spoofed by long URL
+  * CVE-2024-10463 (bmo#1920800)
+    Cross origin video frame leak
+  * CVE-2024-10468 (bmo#1914982)
+    Race conditions in IndexedDB
+  * CVE-2024-10464 (bmo#1913000)
+    History interface could have been used to cause a Denial of
+    Service condition in the browser
+  * CVE-2024-10465 (bmo#1918853)
+    Clipboard "paste" button persisted across tabs
+  * CVE-2024-10466 (bmo#1924154)
+    DOM push subscription message could hang Firefox
+  * CVE-2024-10467 (bmo#1829029, bmo#1888538, bmo#1900394, bmo#1904059,
+    bmo#1917742, bmo#1919809, bmo#1923706)
+    Memory safety bugs fixed in Firefox 132, Thunderbird 132,
+    Firefox ESR 128.4, and Thunderbird 128.4
+- requires NSS 3.105
+- rebased patches
+
+-------------------------------------------------------------------
 Thu Oct 17 06:18:12 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 131.0.3

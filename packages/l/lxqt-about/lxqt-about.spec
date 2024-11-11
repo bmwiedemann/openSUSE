@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-about
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        LXQt About Dialog
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -31,7 +31,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF6WindowSystem)
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(lxqt2-build-tools)
-BuildRequires:  pkgconfig(lxqt) >= 2.0.0
+BuildRequires:  pkgconfig(lxqt) >= 2.1.0
 Requires(post): desktop-file-utils
 Requires(pre):  desktop-file-utils
 Recommends:     %{name}-lang = %{version}-%{release}

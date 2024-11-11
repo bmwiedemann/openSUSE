@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov  6 21:35:18 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 2.1.0:
+  * Pre-release changes (#96)
+  * Updated Readme (#95)
+  * Set toolbar icon size
+  * Added tooltip colors to palette
+  * Avoid possible detach in range-based loop
+  * Don't mix const with non const iterators
+  * Remove comment artifact
+  * Use lxqt-build-tools functionality
+
+-------------------------------------------------------------------
 Sat May 11 09:20:11 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
 
 - Update to 2.0.0:

@@ -107,4 +107,22 @@
     <comment></comment>
     <requestid>1178383</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>49e33dbf18985ff3c5685135f46bbb52</srcmd5>
+    <version>2.1.0</version>
+    <time>1731329155</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.0:
+  * Pre-release changes (#130)
+  * Fixed missing # (#131)
+  * Fix style ColorPicker, Backlight, StatusNotifier in various themes (#126)
+  * Added palette for all themes (#125)
+  * Added tooltip styling (#124)
+  * Fix wordclock texts (#123)
+  * Style tooltips also in configuration center based on palette or theme (#122)
+  * Delete invalid empty folder (#121)
+  * Pre-release changes (#117)
+  * Dark color for input background in runner (#116) (forwarded request 1222003 from AndnoVember)</comment>
+    <requestid>1223228</requestid>
+  </revision>
 </revisionlist>

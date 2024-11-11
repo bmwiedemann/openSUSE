@@ -18,7 +18,7 @@
 
 %define so_ver  16
 Name:           libupnpp
-Version:        0.26.6
+Version:        0.26.7
 Release:        0
 Summary:        Library providing a higher level API over libnpupnp or libupnp
 License:        GPL-2.0-or-later

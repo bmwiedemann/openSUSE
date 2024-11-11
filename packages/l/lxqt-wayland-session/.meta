@@ -1,0 +1,6 @@
+<package name="lxqt-wayland-session" project="openSUSE:Factory">
+  <title>Files needed for the LXQt Wayland Session.</title>
+  <description></description>
+  <devel project="X11:LXQt" package="lxqt-wayland-session"/>
+  <url>https://github.com/lxqt/lxqt-wayland-session</url>
+</package>

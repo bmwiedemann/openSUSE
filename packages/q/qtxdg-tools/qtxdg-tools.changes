@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov  6 21:45:03 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 4.1.0:
+  * Pre-release changes
+  * Do not include `file://` when opening local files
+  * Pre-release changes
+
+-------------------------------------------------------------------
 Sat May 11 16:37:17 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
 
 - Update to 4.0.0:

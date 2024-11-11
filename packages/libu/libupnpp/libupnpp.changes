@@ -1,3 +1,15 @@
+-------------------------------------------------------------------
+Sun Nov 10 11:10:53 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to version 0.26.7:
+  * Control, directory: fix handling multiple instances of a property
+    value (try to avoid duplicates)
+  * Control, directory: List albumartist first, if present, in artist list
+  * Control, directory: add property to each entry to communicate the exact
+    order of the original content directory data (allows overriding the
+    container/items separation in the libupnpp data)
+
+-------------------------------------------------------------------
 Thu Aug 22 08:54:45 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to version 0.26.6:

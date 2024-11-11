@@ -422,4 +422,22 @@
     <comment></comment>
     <requestid>1174602</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>45eb6ac90c67d3895f675234aac0a4cc</srcmd5>
+    <version>2.1.0</version>
+    <time>1731329141</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.0:
+  * Pre-release changes (#311)
+  * Weblate commits (#313)
+  * Weblate commits (#312)
+  * Updated translations (incl. Luganda) (#310)
+  * Weblate commits (#309)
+  * Weblate commits (#308)
+  * Weblate commits (#307)
+  * Weblate commits (#306)
+  * Weblate commits (#305)
+  * Add icons to dialog buttons (#298) (forwarded request 1222913 from AndnoVember)</comment>
+    <requestid>1223219</requestid>
+  </revision>
 </revisionlist>

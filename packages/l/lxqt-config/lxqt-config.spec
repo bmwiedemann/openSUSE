@@ -17,17 +17,18 @@
 
 
 Name:           lxqt-config
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        LXQt Control Center
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-URL:            http://www.lxqt.org
-Source:         https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
-Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
-Source2:        lxqt-config.keyring
-BuildRequires:  cmake >= 3.5.0
+URL:            https://github.com/lxqt/lxqt-config
+Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
+Source2:        %{name}.keyring
+BuildRequires:  cmake >= 3.18.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-gui-private-devel
 BuildRequires:  cmake(KF6Screen) >= 6.0.0
@@ -49,8 +50,7 @@ BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xorg-libinput)
 BuildRequires:  pkgconfig(zlib)
-Requires(post): desktop-file-utils
-Requires(pre):  desktop-file-utils
+Recommends:     %{name}-lang = %{version}-%{release}
 
 %description
 System Configuration and Control Center for LXQt
@@ -59,8 +59,6 @@ System Configuration and Control Center for LXQt
 
 %prep
 %autosetup -p1
-# Changing LXQt into X-LXQt in desktop files to be freedesktop compliant and shut rpmlint warnings
-#find -name '*desktop.in*' -exec sed -ri 's/(LXQt;)/X-\1/' {} +
 
 %build
 %cmake_qt6
@@ -68,43 +66,41 @@ System Configuration and Control Center for LXQt
 
 %install
 %{qt6_install}
-install -Dm 0644 man/%{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
-install -Dm 0644 lib%{name}-cursor/man/%{name}-mouse.1 %{buildroot}%{_mandir}/man1/%{name}-mouse.1
-install -Dm 0644 %{name}-appearance/man/%{name}-appearance.1 %{buildroot}%{_mandir}/man1/%{name}-appearance.1
+%fdupes -s %{buildroot}%{_datadir}
 
-%fdupes -s %{buildroot}/%{_datadir}
+%find_lang %{name} --with-qt --all-name
 
-%find_lang %{name} --with-qt
-
-mkdir -p %{buildroot}%{_sysconfdir}/ld.so.conf.d/
-cat <<EOF >%{buildroot}%{_sysconfdir}/ld.so.conf.d/lxqt-config.conf
-%{_libdir}/%{name}
-EOF
-
-%post -p /sbin/ldconfig
-
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %license LICENSE
-%doc AUTHORS
-%dir %{_qt6_libdir}/lxqt-config
+%doc AUTHORS CHANGELOG README.md
+%dir %{_qt6_libdir}/%{name}
 %dir %{_datadir}/lxqt
 %dir %{_datadir}/lxqt/icons
-%dir %{_datadir}/icons/hicolor
-%dir %{_datadir}/icons/hicolor/48x48
-%dir %{_datadir}/icons/hicolor/48x48/apps
-%config %{_sysconfdir}/ld.so.conf.d/lxqt-config.conf
-%{_bindir}/%{name}*
+%{_bindir}/%{name}
+%{_bindir}/%{name}-appearance
+%{_bindir}/%{name}-brightness
+%{_bindir}/%{name}-file-associations
+%{_bindir}/%{name}-input
+%{_bindir}/%{name}-locale
+%{_bindir}/%{name}-monitor
 %{_qt6_libdir}/%{name}/lib%{name}-cursor.so
-%{_datadir}/applications/
-%{_datadir}/icons/hicolor/48x48/apps/
-%{_datadir}/lxqt/icons/
-%{_mandir}/man?/%{name}*.?%{ext_man}
+%{_datadir}/applications/*.desktop
+%{_datadir}/icons/hicolor/*/apps/brightnesssettings.svg
+%{_datadir}/lxqt/icons/monitor.svg
+%{_mandir}/man?/%{name}*.?%{?ext_man}
 
 %files lang -f %{name}.lang
 %dir %{_datadir}/lxqt
 %dir %{_datadir}/lxqt/translations
-%{_datadir}/lxqt/translations/%{name}*
+%dir %{_datadir}/lxqt/translations/%{name}
+%dir %{_datadir}/lxqt/translations/%{name}-appearance
+%dir %{_datadir}/lxqt/translations/%{name}-brightness
+%dir %{_datadir}/lxqt/translations/%{name}-cursor
+%dir %{_datadir}/lxqt/translations/%{name}-file-associations
+%dir %{_datadir}/lxqt/translations/%{name}-input
+%dir %{_datadir}/lxqt/translations/%{name}-locale
+%dir %{_datadir}/lxqt/translations/%{name}-monitor
 
 %changelog

@@ -1,7 +1,7 @@
 #
 # spec file for package python-dragonmapper
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-dragonmapper
-Version:        0.2.6
+Version:        0.2.7
 Release:        0
 Summary:        Identification and conversion functions for Chinese text processing
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/tsroten/dragonmapper
 Source:         https://github.com/tsroten/dragonmapper/archive/v%{version}.tar.gz#/dragonmapper-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM 31-fix-erroneous-IPA-you-yong.patch gh#tsroten/dragonmapper#25 mcepl@suse.com
-# Fix incorrect IPA
-Patch0:         31-fix-erroneous-IPA-you-yong.patch
+BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -49,9 +46,6 @@ Identification and conversion functions for Chinese text processing.
 %prep
 %autosetup -p1 -n dragonmapper-%{version}
 
-mv dragonmapper/tests/test-hanzi.py dragonmapper/tests/test_hanzi.py
-mv dragonmapper/tests/test-transcriptions.py dragonmapper/tests/test_transcriptions.py
-
 %build
 %pyproject_wheel
 
@@ -62,12 +56,12 @@ mv dragonmapper/tests/test-transcriptions.py dragonmapper/tests/test_transcripti
 %check
 export LANG=en_US.UTF-8
 # skips because of gh#tsroten/dragonmapper#35
-%pytest -k 'not (test_identify or test_is_ipa or test_is_pinyin or test_is_pinyin_compatible or test_accented_to_numbered or test_numbered_to_accented)' dragonmapper/tests
+%pytest -k 'not (test_identify or test_is_ipa or test_is_pinyin or test_is_pinyin_compatible or test_accented_to_numbered or test_numbered_to_accented)'
 
 %files %{python_files}
 %doc AUTHORS.rst CHANGES.rst README.rst
 %license LICENSE.txt
 %{python_sitelib}/dragonmapper
-%{python_sitelib}/dragonmapper-%{version}*-info
+%{python_sitelib}/dragonmapper-%{version}.dist-info
 
 %changelog

@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-session
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        LXQt Session Manager
 License:        LGPL-2.1-or-later
@@ -26,15 +26,13 @@ URL:            https://github.com/lxqt/lxqt-session
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-# FIX-OPENSUSE mvetter@suse.com bsc#1099800
-Patch0:         lxqt-0.13.0-xdg-config-dir.patch
 # mvetter@suse.com bsc#1127043 - Use Openbox as default WM
 Patch1:         %{name}-default_wm.patch
 BuildRequires:  cmake >= 3.18.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  qtxdg-tools >= 4.0.0
+BuildRequires:  qtxdg-tools >= 4.1.0
 BuildRequires:  xdg-user-dirs
 BuildRequires:  cmake(KF6WindowSystem)
 BuildRequires:  cmake(LayerShellQt) >= 6.0.0
@@ -45,10 +43,11 @@ BuildRequires:  cmake(lxqt2-build-tools)
 BuildRequires:  cmake(qtxdg-tools)
 BuildRequires:  pkgconfig(libproc2) >= 4.0.0
 BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(lxqt) >= 2.0.0
+BuildRequires:  pkgconfig(lxqt) >= 2.1.0
 BuildRequires:  pkgconfig(x11)
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+Requires:       %{name}-branding = %{version}-%{release}
 Requires:       qtxdg-tools
 Recommends:     %{name}-lang = %{version}-%{release}
 
@@ -59,6 +58,18 @@ environment. Moreover, the session manager is able to remember the applications 
 use when a user logs out and to restart them the next time the user logs in.
 
 %lang_package
+
+%package branding-upstream
+Summary:        Upstream branding of %{name}
+Group:          System/GUI/LXQt
+Requires:       %{name} = %{version}
+Supplements:    (%{name} and branding-upstream)
+Conflicts:      %{name}-branding
+Provides:       %{name}-branding = %{version}
+BuildArch:      noarch
+
+%description branding-upstream
+This package provides the upstream look and feel for %{name}.
 
 %prep
 %autosetup -p1
@@ -72,6 +83,7 @@ sed -i '/^Categories/s/\(LXQt\;\)/X-\1/' lxqt-config-session/lxqt-config-session
 %install
 %{qt6_install}
 %fdupes -s %{buildroot}%{_datadir}
+install -Dm 0644 %{buildroot}%{_datadir}/lxqt/{lxqt,session,windowmanagers,waylandwindowmanagers}.conf -t %{buildroot}%{_sysconfdir}/xdg/lxqt/
 
 # for default-xsession
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
@@ -103,11 +115,20 @@ ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadi
 %{_datadir}/lxqt/lxqt.conf
 %{_datadir}/lxqt/session.conf
 %{_datadir}/lxqt/windowmanagers.conf
+%{_datadir}/lxqt/waylandwindowmanagers.conf
 
 # for default-xsession
 %ghost %{_sysconfdir}/alternatives/default-xsession.desktop
 %ghost %{_sysconfdir}/alternatives/default.desktop
 %{_datadir}/xsessions/default.desktop
+
+%files branding-upstream
+%dir %{_sysconfdir}/xdg/
+%dir %{_sysconfdir}/xdg/lxqt/
+%config %{_sysconfdir}/xdg/lxqt/lxqt.conf
+%config %{_sysconfdir}/xdg/lxqt/session.conf
+%config %{_sysconfdir}/xdg/lxqt/windowmanagers.conf
+%config %{_sysconfdir}/xdg/lxqt/waylandwindowmanagers.conf
 
 %files lang -f %{name}.lang
 %dir %{_datadir}/lxqt

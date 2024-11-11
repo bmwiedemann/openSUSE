@@ -611,4 +611,22 @@ this patch makes lxqt-config also include desktop files with the x-lxqt category
     <comment></comment>
     <requestid>1174604</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>cde1e5caa08caf69b59adffa31f7bfe3</srcmd5>
+    <version>2.1.0</version>
+    <time>1731329167</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.0:
+  * Pre-release changes (#1074)
+  * Weblate commits (#1077)
+  * Weblate commits (#1073)
+  * Weblate commits (#1072)
+  * Weblate commits (#1071)
+  * Weblate commits (#1070)
+  * Weblate commits (#1069)
+  * Weblate commits (#1066)
+  * Updated *.ts files for Luganda (#1067)
+  * Weblate commits (#1060) (forwarded request 1221990 from AndnoVember)</comment>
+    <requestid>1223237</requestid>
+  </revision>
 </revisionlist>

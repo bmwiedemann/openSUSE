@@ -17,7 +17,7 @@
 
 
 Name:           ibus-typing-booster
-Version:        2.26.8
+Version:        2.26.11
 Release:        0
 Summary:        An input completion utility
 License:        GPL-3.0-or-later
@@ -47,7 +47,6 @@ BuildRequires:  python3-pyenchant
 # To avoid requiring Python >= 3.8
 BuildRequires:  python3-typing_extensions
 BuildRequires:  update-desktop-files
-BuildRequires:  xvfb-run
 Requires:       dbus-1-python3
 # Workaround bug with python3-enchant: https://bugzilla.opensuse.org/show_bug.cgi?id=1141993
 Requires:       enchant-1-backend
@@ -153,7 +152,7 @@ mkdir -p /tmp/glib-2.0/schemas/
 cp org.freedesktop.ibus.engine.typing-booster.gschema.xml \
    /tmp/glib-2.0/schemas/org.freedesktop.ibus.engine.typing-booster.gschema.xml
 glib-compile-schemas /tmp/glib-2.0/schemas #&>/dev/null || :
-export XDG_DATA_DIRS=/tmp
+export XDG_DATA_DIRS=/tmp:%{_datadir} # /usr/share is needed to make enchant2 work!
 eval $(dbus-launch --sh-syntax)
 dconf dump /
 dconf write /org/freedesktop/ibus/engine/typing-booster/offtherecord false
@@ -191,7 +190,7 @@ dconf dump /
 #i3 -c /tmp/i3config &
 #export XDG_SESSION_TYPE=x11
 
-xvfb-run --server-args="-screen 0 1024x768x16" make check && rc=0 || rc=1
+make check && rc=0 || rc=1
 cat tests/*.log
 if [ $rc != 0 ] ; then
     exit $rc

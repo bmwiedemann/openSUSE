@@ -16,95 +16,83 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
-%define configdir /etc/step
-%define certsdir  /etc/step/certs
+%define configdir %{_sysconfdir}/step
+%define certsdir  %{_sysconfdir}/step/certs
 %define services  cert-renewer.target ssh-cert-renewer.timer ssh-cert-renewer@.timer cert-renewer@.timer ssh-cert-renewer.service ssh-cert-renewer@.service cert-renewer@.service
-%define executable_name step
 %define pkg_name cli
-
+%define pkg_version %{version}
 Name:           step-cli
-Version:        0.27.4
+Version:        0.28.0
 Release:        0
 Summary:        Zero trust swiss army knife for working with X509, OAuth, JWT, OATH OTP, etc
 License:        Apache-2.0
-Group:          Productivity/Networking/Security
-URL:            https://github.com/smallstep/cli
-Source:         cli-%{version}.tar.gz
-Source1:        vendor.tar.gz
+URL:            https://smallstep.com/cli
+# https://github.com/smallstep/cli/releases
+Source:         %{pkg_name}-%{pkg_version}.tar.gz
+Source1:        vendor.tar.xz
 Source2:        series
-Patch:          more-units.patch
+Patch0:         more-units.patch
 Patch1:         add-missing-targets.patch
-BuildRequires:  go >= 1.22
+BuildRequires:  fish
+BuildRequires:  golang(API) >= 1.19
+BuildRequires:  golang-packaging
+BuildRequires:  pkgconfig
+BuildRequires:  zsh
+BuildRequires:  pkgconfig(bash-completion)
+BuildRequires:  pkgconfig(systemd)
 Conflicts:      step
+%{?systemd_ordering}
 
 %description
-step is an easy-to-use CLI tool for building, operating, and automating Public
-Key Infrastructure (PKI) systems and workflows. It's the client counterpart to
-the step-ca online Certificate Authority (CA). You can use it for many common
-crypto and X.509 operations—either independently, or with an online CA.
+A zero trust swiss army knife for working with X509, OAuth, JWT, OATH OTP, etc.
 
-%package -n %{name}-bash-completion
+%package bash-completion
 Summary:        Bash Completion for %{name}
-Group:          System/Shells
 Requires:       %{name} = %{version}
 Requires:       bash-completion
 Supplements:    (%{name} and bash-completion)
 BuildArch:      noarch
 
-%description -n %{name}-bash-completion
-Bash command line completion support for %{name}.
+%description bash-completion
+Bash completion script for %{name}.
 
-%package -n %{name}-fish-completion
-Summary:        Fish Completion for %{name}
-Group:          System/Shells
+%package fish-completion
+Summary:        Fish completion for %{name}
 Requires:       %{name} = %{version}
+Requires:       fish
 Supplements:    (%{name} and fish)
 BuildArch:      noarch
 
-%description -n %{name}-fish-completion
-Fish command line completion support for %{name}.
+%description fish-completion
+fish shell completions for %{name}.
 
-%package -n %{name}-zsh-completion
-Summary:        Zsh Completion for %{name}
-Group:          System/Shells
+%package zsh-completion
+Summary:        ZSH completion for %{name}
 Requires:       %{name} = %{version}
+Requires:       zsh
 Supplements:    (%{name} and zsh)
 BuildArch:      noarch
 
-%description -n %{name}-zsh-completion
-zsh command line completion support for %{name}.
+%description zsh-completion
+zsh shell completions for %{name}.
 
 %prep
-%autosetup -p 1 -a 1 -n %{pkg_name}-%{version}
+%autosetup -p1 -n %{pkg_name}-%{pkg_version} -a 1
 
 %build
 DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
 BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")
-go build \
-   -mod=vendor \
-   -buildmode=pie \
-   -ldflags=" \
-   -X main.Version=%{version} \
-   -X main.BuildDate=$BUILD_DATE" \
-   -o bin/%{executable_name} github.com/smallstep/cli/cmd/step
+go build -buildmode=pie -mod=vendor -ldflags="-w -X 'main.Version=%{version}' -X 'main.BuildTime=${BUILD_DATE}'" ./cmd/...
+for shell in bash zsh fish ; do
+./step completion ${shell} > autocomplete/${shell}_autocomplete
+done
 
 %install
-# Install the binary.
-install -D -m 0755 bin/%{executable_name} %{buildroot}/%{_bindir}/%{executable_name}
-
-# create the bash completion file
-mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
-%{buildroot}/%{_bindir}/%{executable_name} completion bash > %{buildroot}%{_datarootdir}/bash-completion/completions/%{executable_name}
-
-# create the fish completion file
-mkdir -p %{buildroot}%{_datarootdir}/fish/vendor_completions.d/
-%{buildroot}/%{_bindir}/%{executable_name} completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{executable_name}.fish
-
-# create the zsh completion file
-mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d/
-%{buildroot}/%{_bindir}/%{executable_name} completion zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_%{executable_name}
+install -D -m 0755 step                           %{buildroot}%{_bindir}/step
+# shell completions
+install -D -m 0644 autocomplete/bash_autocomplete   %{buildroot}%{_datadir}/bash-completion/completions/%{name}
+install -D -m 0644 autocomplete/zsh_autocomplete    %{buildroot}%{_sysconfdir}/zsh_completion.d/%{name}
+install -D -m 0644 autocomplete/fish_autocomplete   %{buildroot}%{_datadir}/fish/vendor_completions.d/%{name}.fish
 
 for unit in %{services} ; do
 install -D -m 0644 systemd/${unit} %{buildroot}%{_unitdir}/${unit}
@@ -113,7 +101,7 @@ done
 install -D -d -m 0711 %{buildroot}%{configdir}/{certs,config}
 
 %check
-bin/%{executable_name} --version | grep %{version}
+./step --version | grep %{version}
 
 %pre
 %service_add_pre %{services}
@@ -130,7 +118,7 @@ bin/%{executable_name} --version | grep %{version}
 %files
 %doc README.md
 %license LICENSE
-%{_bindir}/%{executable_name}
+%{_bindir}/step*
 %{_unitdir}/ssh-cert-renewer.service
 %{_unitdir}/ssh-cert-renewer.timer
 %{_unitdir}/ssh-cert-renewer@.service
@@ -138,21 +126,19 @@ bin/%{executable_name} --version | grep %{version}
 %{_unitdir}/cert-renewer@.service
 %{_unitdir}/cert-renewer@.timer
 %{_unitdir}/cert-renewer.target
-%config(noreplace) %attr(-,root,root)    %{configdir}
-%config(noreplace) %attr(640,root,root) %ghost    %{configdir}/config/defaults.json
+%config(noreplace) %attr(-,root,root) %{configdir}
+%config(noreplace) %attr(640,root,root) %ghost %{configdir}/config/defaults.json
 
-%files -n %{name}-bash-completion
-%dir %{_datarootdir}/bash-completion/completions/
-%{_datarootdir}/bash-completion/completions/%{executable_name}
+%files bash-completion
+%license LICENSE
+%{_datadir}/bash-completion/completions/%{name}
 
-%files -n %{name}-fish-completion
-%dir %{_datarootdir}/fish
-%dir %{_datarootdir}/fish/vendor_completions.d
-%{_datarootdir}/fish/vendor_completions.d/%{executable_name}.fish
+%files zsh-completion
+%license LICENSE
+%config %{_sysconfdir}/zsh_completion.d/%{name}
 
-%files -n %{name}-zsh-completion
-%defattr(-,root,root)
-%dir %{_datarootdir}/zsh_completion.d/
-%{_datarootdir}/zsh_completion.d/_%{executable_name}
+%files fish-completion
+%license LICENSE
+%{_datadir}/fish/vendor_completions.d/%{name}.fish
 
 %changelog

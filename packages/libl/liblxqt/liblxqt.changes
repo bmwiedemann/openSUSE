@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov  6 21:17:10 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 2.1.0:
+  * Pre-release changes (#354)
+  * Support reversing the order of items in LXQt's grid layout (#353)
+  * Fixed setting of item geometries in grid layout (#351)
+  * weblate commits (#350)
+  * weblate commits (#348)
+  * Enable custom screenlockers on X11 and wayland (#346)
+  * Replaced `QLatin1String` with `QLatin1StringView` (#347)
+  * weblate commits (#345)
+  * Pre-release changes (#344)
+  * Update some minimum required versions (#343)
+
+-------------------------------------------------------------------
 Wed Apr 17 23:51:21 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to 2.0.0:

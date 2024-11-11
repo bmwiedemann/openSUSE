@@ -7101,4 +7101,41 @@
 - remove obsolete mozilla-rust-disable-future-incompat.patch</comment>
     <requestid>1208839</requestid>
   </revision>
+  <revision rev="441" vrev="1">
+    <srcmd5>81f6422108e9ba908b4cf44f971723e3</srcmd5>
+    <version>132.0.1</version>
+    <time>1731329017</time>
+    <user>dimstar_suse</user>
+    <comment>- require xdg-desktop-portal (boo#1233166)
+
+- Mozilla Firefox 132.0.1
+  * Fixed issues causing intermittent video playback problems on
+    some sites. (bmo#1928484, bmo#1928798)
+- remove KDE integration patches
+  - mozilla-kde.patch
+  - firefox-kde.patch
+  on KDE use these settings instead
+  widget.use-xdg-desktop-portal.file-picker=1
+  widget.use-xdg-desktop-portal.mime-handler=1
+  (those are set by the latest branding package as well)
+
+- Mozilla Firefox 132.0
+  https://www.mozilla.org/en-US/firefox/132.0/releasenotes
+  MFSA 2024-55 (bsc#1231879)
+  * CVE-2024-10458 (bmo#1921733)
+    Permission leak via embed or object elements
+  * CVE-2024-10459 (bmo#1919087)
+    Use-after-free in layout with accessibility
+  * CVE-2024-10460 (bmo#1912537)
+    Confusing display of origin for external protocol handler prompt
+  * CVE-2024-10461 (bmo#1914521)
+    XSS due to Content-Disposition being ignored in
+    multipart/x-mixed-replace response
+  * CVE-2024-10462 (bmo#1920423)
+    Origin of permission prompt could be spoofed by long URL
+  * CVE-2024-10463 (bmo#1920800)
+    Cross origin video frame leak
+  * CVE-2024-10468 (bmo#1914982)</comment>
+    <requestid>1223284</requestid>
+  </revision>
 </revisionlist>

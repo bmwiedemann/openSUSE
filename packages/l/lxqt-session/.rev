@@ -1390,4 +1390,25 @@ comply with openSUSE policy
     <comment></comment>
     <requestid>1174626</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>5d480fa45151328ca34d511c421dfa67</srcmd5>
+    <version>2.1.0</version>
+    <time>1731329177</time>
+    <user>dimstar_suse</user>
+    <comment>- Removed:
+  * lxqt-0.13.0-xdg-config-dir.patch
+
+- Update to version 2.1.0:
+  * Pre-release changes (#556)
+  * Weblate commits (#558)
+  * Updated *.ts files (#557)
+  * Weblate commits (#555)
+  * GUI for custom screenlocker on x11 (#517)
+  * Weblate commits (#553)
+  * Updated Luganda (#552)
+  * Weblate commits (#550)
+  * Added scope=dialog to leave window (#551)
+  * Weblate commits (#549)</comment>
+    <requestid>1223246</requestid>
+  </revision>
 </revisionlist>

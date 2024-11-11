@@ -1,12 +1,11 @@
-diff -urEbw pcmanfm-qt-2.0.0/config/pcmanfm-qt/lxqt/settings.conf.in pcmanfm-qt-2.0.0.new/config/pcmanfm-qt/lxqt/settings.conf.in
---- pcmanfm-qt-2.0.0/config/pcmanfm-qt/lxqt/settings.conf.in	2024-04-17 13:36:46.000000000 +0300
-+++ pcmanfm-qt-2.0.0.new/config/pcmanfm-qt/lxqt/settings.conf.in	2024-05-11 14:55:03.198535051 +0300
+--- pcmanfm-qt-2.1.0/config/pcmanfm-qt/lxqt/settings.conf.in	2024-11-05 08:17:09.000000000 +0300
++++ pcmanfm-qt-2.1.0.new/config/pcmanfm-qt/lxqt/settings.conf.in	2024-11-08 13:55:09.586974279 +0300
 @@ -15,7 +15,7 @@
  [Desktop]
  DesktopShortcuts=Home, Trash, Computer, Network
  WallpaperMode=stretch
 -Wallpaper=@LXQT_SHARE_DIR@/wallpapers/waves-logo.png
-+Wallpaper=/usr/share/wallpapers/openSUSEdefault/contents/images/5120x3200.png
++Wallpaper=/usr/share/wallpapers/openSUSEdefault/contents/images/default.png
  BgColor=#000000
  FgColor=#ffffff
  ShadowColor=#000000

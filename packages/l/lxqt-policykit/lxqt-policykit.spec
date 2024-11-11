@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-policykit
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        PolicyKit authentication agent
 License:        LGPL-2.1-or-later
@@ -34,7 +34,7 @@ BuildRequires:  cmake(PolkitQt6-1)
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(lxqt2-build-tools)
-BuildRequires:  pkgconfig(lxqt) >= 2.0.0
+BuildRequires:  pkgconfig(lxqt) >= 2.1.0
 BuildRequires:  pkgconfig(polkit-agent-1)
 Recommends:     %{name}-lang = %{version}-%{release}
 

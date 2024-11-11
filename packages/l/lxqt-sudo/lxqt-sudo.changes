@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov  6 21:38:33 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 2.1.0:
+  * Pre-release changes
+  * Weblate commits (#218)
+  * sudo: Add new env vars forwarded to child
+  * Weblate commits (#215)
+  * Pre-release changes
+  * Weblate commits (#212)
+
+-------------------------------------------------------------------
 Thu Apr 18 18:41:24 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to 2.0.0:

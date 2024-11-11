@@ -343,4 +343,22 @@
     <comment></comment>
     <requestid>1174619</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>1dc58c94c81a79b8d1a81c3df7b61ab4</srcmd5>
+    <version>2.1.0</version>
+    <time>1731329158</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.0:
+  * Pre-release changes (#290)
+  * Updated *.ts files (#289)
+  * Added scope=launcher (#288)
+  * Weblate commits (#284)
+  * Fixed multi-screen setups with Wayland (#286)
+  * Added layershell runtime dependency (#283)
+  * Update README.md (#281)
+  * Weblate commits (#282)
+  * Pre-release changes (#280)
+  * Weblate commits (#279) (forwarded request 1221999 from AndnoVember)</comment>
+    <requestid>1223230</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov  6 21:13:12 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 0.2.0:
+  * Fixed a typo.
+  * Pre-release changes
+  * Renamed README;compiling instructions (#4)
+  * Removes dist and distcheck targets
+  * Update self include directories
+  * Update Qt6 include directories use
+  * Move compiler flag check/set
+  * Remove duplicated duplicated compiler flags
+
+-------------------------------------------------------------------
 Sat May 11 09:35:29 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
 
 - initial package (version 0.1.0) for openSUSE

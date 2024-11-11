@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Nov  9 14:59:59 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 5.5.3:
+  * Fix find and replace of regular expression like ^.*$ that may
+    match empty range. Find Next previously failed on subsequent
+    searches.
+  * Fix marking each match of a regular expression like ^$ for an
+    empty line so it doesn't get stuck, time out, then stop after
+    one segment.
+- Changes from version 5.5.2:
+  * Add stretch attribute to style settings.
+  * Add load.session.always to open both previous session and
+    command line files. Bug #2440.
+
+-------------------------------------------------------------------
 Fri Aug  2 05:38:04 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.5.1:

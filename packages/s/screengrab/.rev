@@ -208,4 +208,25 @@
     <comment></comment>
     <requestid>1189493</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4b3d59eb37767befb1653dabb51c998d</srcmd5>
+    <version>2.9.0</version>
+    <time>1731329179</time>
+    <user>dimstar_suse</user>
+    <comment>- Removed:
+  * screengrab-link.patch
+
+- Update to version 2.9.0:
+  * Pre-release changes (#379)
+  * Updated *.ts files (#380)
+  * Weblate commits (#377)
+  * Weblate commits (#376)
+  * Weblate commits (#372)
+  * Weblate commits (#371)
+  * Weblate commits (#370)
+  * Fix pointer QList related memory leak
+  * Properly initializes and destroys shortcuts settings
+  * Weblate commits (#365)</comment>
+    <requestid>1223247</requestid>
+  </revision>
 </revisionlist>

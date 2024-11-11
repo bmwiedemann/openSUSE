@@ -17,7 +17,7 @@
 
 
 Name:           lximage-qt
-Version:        2.0.1
+Version:        2.1.0
 Release:        0
 Summary:        LXQt Image Viewer
 License:        GPL-2.0-or-later
@@ -30,7 +30,6 @@ BuildRequires:  cmake >= 3.18.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  lxqt2-build-tools-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt6DBus) >= 6.3.0
@@ -41,6 +40,7 @@ BuildRequires:  cmake(Qt6Svg)
 BuildRequires:  cmake(Qt6SvgWidgets)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(fm-qt6)
+BuildRequires:  cmake(lxqt2-build-tools)
 BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(libmenu-cache) >= 1.1.0
 BuildRequires:  pkgconfig(x11)

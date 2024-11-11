@@ -41,4 +41,14 @@
     3.12. No other code changes.</comment>
     <requestid>1115777</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f638957a3e046c120e99781b6f605501</srcmd5>
+    <version>0.2.3.post1</version>
+    <time>1731329123</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.3.post1:
+  * Added wheels for Python 3.13. No other code changes since
+    v0.2.3.</comment>
+    <requestid>1223205</requestid>
+  </revision>
 </revisionlist>

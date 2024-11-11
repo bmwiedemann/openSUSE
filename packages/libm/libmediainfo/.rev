@@ -1515,4 +1515,35 @@ Dropped CVE-2019-11372_CVE-2019-11373.patch (merged upstream)
 </comment>
     <requestid>1184117</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>804da5df68e194e42d4ea16a1e3a349f</srcmd5>
+    <version>24.11</version>
+    <time>1731329120</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 24.11
+  Added features:
+  * I1945, PAC subtitle format support
+  * I2130, EXR: support of time code and frame rate
+  * MXF: Support of more flavors of ISXD, IAB,
+    Dolby Vision Metadata
+  * MXF: Support of all known ULs in MediaTrace output
+  * AVC: Improved detection of AVC-Intra
+  * TTML: Add Duration_Start_Command/Duration_End_Command
+  Fixed bugs:
+  * IMF: Allow XML documents larger than 16 MB
+  * I2133, TTML: Fix timecode when timeBase is media
+  * I2110, MXF: Fix wrong Delay field with NDF timecodes
+  * I2094, MXF: Sony Real Time Metadata: fix timecode
+    drop frame flag
+  * S1194, Fix random behavior due to uninitialised value
+  * MPEG-TS: Increase probing at end for getting duration
+  * PNG: Fix buffer leak
+  * IAB: Fix bug in IAB channel code mapping
+  * HTML output: Better escape of HTML strings
+  * XML output: Fix comment in comment
+  * MXF: Avoid crash in mxf assets on unsupported audio
+  * HEVC: Add missing parsing of some multilayer SPS elements
+</comment>
+    <requestid>1223200</requestid>
+  </revision>
 </revisionlist>

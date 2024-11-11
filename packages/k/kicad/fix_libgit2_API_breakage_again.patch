@@ -1,0 +1,76 @@
+From b80334baa1c0883309328b6f4d7659cbec2f8338 Mon Sep 17 00:00:00 2001
+From: John Beard <john.j.beard@gmail.com>
+Date: Tue, 5 Nov 2024 20:55:26 +0800
+Subject: [PATCH] Libgit2: the const git_commit* saga continues
+
+The change wasn't re-reverted in 1.8.3, it was just not
+included. It was than _also_ reverted in 1.8.4, as it was for
+1.8.2 (those two tags are on different branches - main and maint/v1.8).
+
+Hopefully, this means that we're done here, and v1.8.5 will also be
+const-y, whether it is based on main or maint/v1.8.
+
+The current state of play:
+
+* 1.7.0 and older: const
+* 1.8.0, 1.8.1:    no const
+* 1.8.2:           const
+* 1.8.3:           no const
+* 1.8.4:           const
+Future:
+* 1.8.5/1.9.0:     presumably/hopefully, const
+
+This is currently breaking at least Arch and Fedora Rawhide
+
+Fixes: https://gitlab.com/kicad/code/kicad/-/issues/19062
+(cherry picked from commit 9f579f787bc6b62ca456f87f92d8e96107b24206)
+---
+ kicad/project_tree_pane.cpp | 30 +++++++++++++++++++++---------
+ 1 file changed, 21 insertions(+), 9 deletions(-)
+
+diff --git a/kicad/project_tree_pane.cpp b/kicad/project_tree_pane.cpp
+index 0cd61ddb805..9a2d9ce4966 100644
+--- a/kicad/project_tree_pane.cpp
++++ b/kicad/project_tree_pane.cpp
+@@ -2241,17 +2241,29 @@ void PROJECT_TREE_PANE::onGitCommit( wxCommandEvent& aEvent )
+ 
+         git_oid oid;
+ 
+-#if ( ( LIBGIT2_VER_MAJOR == 1                                                                     \
+-        && ( ( LIBGIT2_VER_MINOR == 8                                                              \
+-               && ( LIBGIT2_VER_REVISION < 2 || LIBGIT2_VER_REVISION >= 3 ) )                      \
+-             || ( LIBGIT2_VER_MINOR > 8 ) ) )                                                      \
+-      || LIBGIT2_VER_MAJOR > 1 )
+-        // For libgit2 versions 1.8.0, 1.8.1.
+-        // This change was reverted for 1.8.2
+-        // This change was re-reverted for 1.8.3+
++#if( LIBGIT2_VER_MAJOR == 1 && LIBGIT2_VER_MINOR == 8                                              \
++     && ( LIBGIT2_VER_REVISION < 2 || LIBGIT2_VER_REVISION == 3 ) )
++        /*
++         * For libgit2 versions 1.8.0, 1.8.1.               (cf19ddc52)
++         * This change was reverted for 1.8.2               (49d3fadfc, main branch)
++         * The revert for 1.8.2 was not included for 1.8.3  (which is on the maint/v1.8 branch, not main)
++         * This change was also reverted for 1.8.4          (94ba816f6, also maint/v1.8 branch)
++         *
++         * As of 1.8.4, the history is like this:
++         *
++         *  * 3f4182d15 (tag: v1.8.4, maint/v1.8)
++         *  * 94ba816f6 Revert "commit: fix const declaration"      [puts const back]
++         *  * 3353f78e8 (tag: v1.8.3)
++         *  | * 4ce872a0f (tag: v1.8.2-rc1, tag: v1.8.2)
++         *  | * 49d3fadfc Revert "commit: fix const declaration"    [puts const back]
++         *  |/
++         *  * 36f7e21ad (tag: v1.8.1)
++         *  * d74d49148 (tag: v1.8.0)
++         *  * cf19ddc52 commit: fix const declaration               [removes const]
++         */
+         git_commit* const parents[1] = { parent };
+ #else
+-        // For libgit2 versions older than 1.8.0, or equal to 1.8.2
++        // For libgit2 versions older than 1.8.0, or equal to 1.8.2, or 1.8.4+
+         const git_commit* parents[1] = { parent };
+ #endif
+ 
+-- 
+GitLab
+

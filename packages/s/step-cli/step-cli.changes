@@ -1,211 +1,470 @@
 -------------------------------------------------------------------
-Sat Sep 14 07:55:16 UTC 2024 - opensuse_buildservice@ojkastl.de
+Wed Oct 30 10:31:31 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to version 0.27.4:
-  * Bump smallstep/certificates to 0.27.4 (#1276)
-  * Bumping CHANGELOG to 0.27.4 (#1275)
-  * Update changelog for 0.27.3 (#1272)
-  * Allow input from stdin for 'certificate fingerprint' command
-    (#1270)
-  * Bump go.mozilla.org/pkcs7
-  * Bump golang.org/x/crypto from 0.26.0 to 0.27.0
-  * Bump go.step.sm/crypto from 0.51.1 to 0.51.2
-  * Bump software.sslmate.com/src/go-pkcs12 from 0.4.0 to 0.5.0
-  * Parse crlEntryExtensions in CRLs
-  * Bump github.com/google/go-tpm from 0.9.0 to 0.9.1
-  * Fix linter issues
-  * Run `go mod tidy`
-  * Bump github.com/slackhq/nebula from 1.8.2 to 1.9.3
-  * Fix Release URLs with new file name formats. (#1256)
-  * Guard legacy Windows vt100 setup syscall on more recent builds
-    of Windows
-  * Switch to goreleaser.yml@main.
-  * Set NFPM id and remove GORELEASER_PHASE.
-  * Adjust template.
-  * Unquote the things.
-  * Add quotes.
-  * Switch to is-prerelease.
-  * Move package import logic into package-repo-import.sh and use
-    IS_PRERELEASE.
-  * Switch back to goreleaser.yml@main.
-  * Bump golang.org/x/crypto from 0.25.0 to 0.26.0
-  * Bump golang.org/x/sys from 0.23.0 to 0.24.0
-  * Fix Debian ARMv6 and ARMv7 duplicated package names.
-  * Ignore goreleaser dist/ directory.
-  * Set enable-packages-upload: true.
-  * Add packages: write.
-  * Use goreleaser.yml@jdoss/Package_Repos for testing.
-  * Fix conditional for uploading packages
-  * Add missing variables.
-  * Update scripts/package-repo-import.sh
-  * Update scripts/package-repo-import.sh
-  * Add yaml-language-server modline to set the YAML schema to
-    Goreleaser Pro.
-  * Add support in for signing and publishing RPM and Deb packages
-    to GCP Artifact Registry.
-  * Bump golang.org/x/sys from 0.22.0 to 0.23.0
-  * Fix `x5rt#S256` for SSH public keys and tests
-  * Bump go.step.sm/crypto from 0.50.0 to 0.51.1
-  * Fix linter warning
-  * Apply suggestions from code review
-  * Remove SSH cfn support and use x5rt#S256 property
-  * [ci] remove duplicate s3 builds in favor of name_templates in
-    s3 upload step (#1244)
-  * Fix builds
-  * Fix debug
-  * Default id back in makefile
-  * Explicitly name the default build 'step'
-  * Goreleaser s3 upload not working (#1243)
-  * Remove the extra "default" build
-  * Remove redundant /
-  * Bump softprops/action-gh-release from 2.0.6 to 2.0.8
-  * Cleanups and small fixes
-  * Bump github.com/smallstep/certificates from 0.27.1 to 0.27.2
-  * Rename INSTALL_PREFIX to DESTDIR and fix BINNAME
-  * One more fix
-  * Re-add BINNAME and describe available vars
-  * Build using go by default. Add goreleaser goal and an intro at
-    the top
-  * Cleanups
-  * Use GoReleaser Pro for Makefile builds
-  * Install goreleaser-pro in make bootstrap
-  * Allow to add confirmation claims to tokens
-  * Generate fingerprints for CSRs
+- update to 0.28.0
+  https://github.com/smallstep/cli/releases/tag/v0.28.0
 
 -------------------------------------------------------------------
-Thu Jul 18 18:58:38 UTC 2024 - opensuse_buildservice@ojkastl.de
+Sat Oct 26 20:55:45 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to version 0.27.2:
-  * Update changelog for 0.27.2 (#1240)
-  * Upload freebsd binaries to s3 (#1239)
-  * Add console flag to ssh commands
-  * Bump actions/setup-go from 5.0.1 to 5.0.2
-  * Bump github.com/smallstep/certificates from 0.27.0 to 0.27.1
-  * [actions] use ref_name as name for release (#1235)
+- add back the service file for vendoring modules
 
 -------------------------------------------------------------------
-Sat Jul 13 11:11:00 UTC 2024 - opensuse_buildservice@ojkastl.de
+Thu Oct 17 09:19:58 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to version 0.27.1:
-  * neq -> ne (#1234)
-
--------------------------------------------------------------------
-Sat Jul 13 10:37:56 UTC 2024 - opensuse_buildservice@ojkastl.de
-
-- Update to version 0.27.0:
-  * Update certificate to 0.27.0 (#1233)
-  * See notes ... (#1232)
-  * Update go.step.sm/crypto
-  * Move S3 binary build-deploy to GoReleaser
-  * Bump google.golang.org/grpc from 1.64.0 to 1.64.1
-  * Makefile: install to /usr/local/bin, not /usr/bin (#1214)
-  * Bump golang.org/x/term from 0.21.0 to 0.22.0
-  * Bump go.step.sm/crypto from 0.47.1 to 0.48.1
-  * Makefile: fix usage of install command line flags on macOS
-    (#1212)
-  * Fix fish completion
-  * Fix error message on step certificate inspect
-  * Restore check for the option `bundle` in the URL certificate
-    inspection (#1215)
-  * Update goreleaser YML version (#1220)
-  * Bump go.step.sm/linkedca from 0.22.0 to 0.22.1
-  * Bump github.com/fxamacker/cbor/v2 from 2.6.0 to 2.7.0
-  * Bump softprops/action-gh-release from 2.0.5 to 2.0.6
-  * Set proper JOSE algorithm for Ed25519 keys
-  * Bump go.step.sm/crypto from 0.47.0 to 0.47.1
-  * Bump go.step.sm/linkedca from 0.21.1 to 0.22.0
-  * Bump google.golang.org/protobuf from 1.34.1 to 1.34.2
-  * [action] update to common dependabot workflow | use SHAs for
-    action versions (#1201)
+- update to 0.27.5
+  https://github.com/smallstep/cli/releases/tag/v0.27.5
 
 -------------------------------------------------------------------
-Thu Jun 13 19:45:59 UTC 2024 - opensuse_buildservice@ojkastl.de
+Fri Sep 13 17:51:23 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to version 0.26.2:
-  * 3aef425 Bump smallstep/certificates to 0.26.2 (#1200)
-  * 8268b4f Merge pull request #1195 from
-    smallstep/dependabot/go_modules/github.com/Azure/azure-sdk-for-go/sdk/azidentity-1.6.0
-  * 0baa3f4 Merge branch 'master' into
-    dependabot/go_modules/github.com/Azure/azure-sdk-for-go/sdk/azidentity-1.6.0
-  * 3f91698 Changelog update for 0.26.2 (#1198)
-  * 4fffd0f Merge pull request #1154 from jdoupe/AuthParams
-  * 615f8c8 Fix linter warnings
-  * b54fa82 Bump github.com/Azure/azure-sdk-for-go/sdk/azidentity
-  * 1b886a4 Merge branch 'master' into AuthParams
-  * cc0b543 Merge pull request #1197 from
-    smallstep/mariano/certificates
-  * 089412e Upgrade certificates to master
-  * 7be7142 Merge branch 'master' into AuthParams
-  * f0e3653 Merge pull request #1196 from
-    smallstep/mariano/linkedca
-  * d33d773 Upgrade linkedca dependencies
-  * 86aaac3 Merge pull request #1193 from
-    smallstep/dependabot/go_modules/golang.org/x/crypto-0.24.0
-  * f28438f Bump golang.org/x/crypto from 0.23.0 to 0.24.0
-  * e817600 Merge pull request #1191 from
-    smallstep/dependabot/go_modules/golang.org/x/term-0.21.0
-  * 156bb9f Merge branch 'master' into
-    dependabot/go_modules/golang.org/x/term-0.21.0
-  * e8f7eb4 Merge pull request #1192 from
-    smallstep/dependabot/go_modules/go.step.sm/crypto-0.47.0
-  * 613e5f8 Bump go.step.sm/crypto from 0.46.0 to 0.47.0
-  * 54974a0 Bump golang.org/x/term from 0.20.0 to 0.21.0
-  * dfcab02 Merge pull request #1189 from
-    smallstep/dependabot/go_modules/go.step.sm/crypto-0.46.0
-  * e621236 Bump go.step.sm/crypto from 0.45.1 to 0.46.0
-  * 73cd7f4 Merge pull request #1184 from
-    smallstep/dependabot/go_modules/go.step.sm/crypto-0.45.1
-  * a7467ed Bump go.step.sm/crypto from 0.45.0 to 0.45.1
-  * 7888a37 Merge pull request #1181 from
-    smallstep/dependabot/go_modules/go.step.sm/crypto-0.45.0
-  * 3fdf6da Bump go.step.sm/crypto from 0.44.8 to 0.45.0
-  * 9a01088 Merge pull request #1174 from
-    smallstep/carl/template-flags
-  * 3156aec Merge pull request #1175 from
-    smallstep/carl/template-flags-1
-  * af6511a Fix linter errors
-  * 9fef15b Add OCSP and CRL support to certificate verify
-  * cd22f47 Fix spacing in ssh/certificate with goimports (#1178)
-  * 32bdf40 Allow users to define certificate comment in agent
-    (#1158)
-  * aeee3d0 Add support for setting ssh key types
-  * bf70d3e Merge pull request #1177 from
-    smallstep/herman/read-certificate-once
-  * 42e275a Reduce number of times certificate file is read when
-    installing
-  * e5ab833 Add CSR common name to SANs if no other SANs are
-    defined in CSR (#1172)
-  * ae17a8a Add template flags to step ca provisioner add help text
-  * d4bd44f Add template flags to step ca provisioner update help
-    text
-  * 028915b Merge pull request #1170 from
-    smallstep/dependabot/go_modules/google.golang.org/protobuf-1.34.1
-  * 1e4bb89 Bump google.golang.org/protobuf from 1.33.0 to 1.34.1
-  * 48dac3f Merge pull request #1167 from
-    smallstep/dependabot/go_modules/golang.org/x/crypto-0.23.0
-  * 1f36d23 Allow stdin input of cert for needs-renewal (#1157)
-  * d84fb79 Bump golang.org/x/crypto from 0.22.0 to 0.23.0
-  * 8e4c5d7 Merge branch 'master' into AuthParams
-  * f0aab19 Merge pull request #1166 from
-    smallstep/dependabot/go_modules/github.com/urfave/cli-1.22.15
-  * b54d419 Merge pull request #1165 from
-    smallstep/dependabot/go_modules/github.com/smallstep/certificates-0.26.1
-  * 80f0b89 Merge pull request #1164 from
-    smallstep/dependabot/github_actions/dependabot/fetch-metadata-2.1.0
-  * 54b6212 Bump github.com/urfave/cli from 1.22.14 to 1.22.15
-  * 3537984 Bump github.com/smallstep/certificates from 0.26.0 to
-    0.26.1
-  * cddd7f2 Bump dependabot/fetch-metadata from 2.0.0 to 2.1.0
-  * a7b2b3a Merge pull request #1163 from
-    smallstep/herman/upgrade-crypto-v0.44.8
-  * e356894 Fix go.mod
-  * d82d752 Upgrade go.step.sm/crypto to v0.44.8
-  * 85e8884 add scope and authparam flags and parameters for OIDC
-  * cae069c allow auth scopes from provisioner
-  * c216086 add AuthParams to token
+- update to 0.27.4
+  https://github.com/smallstep/cli/releases/tag/v0.27.4
 
 -------------------------------------------------------------------
-Wed May 29 20:32:44 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+Thu Jul 18 21:47:19 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
-- new package step-cli: A zero trust swiss army knife for working
-  with X509, OAuth, JWT, OATH OTP, etc.
+- update to 0.27.2
+  https://github.com/smallstep/cli/releases/tag/v0.27.2
+
+-------------------------------------------------------------------
+Fri Jul 12 10:34:15 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.27.1
+  https://github.com/smallstep/cli/releases/tag/v0.27.1
+  https://github.com/smallstep/cli/releases/tag/v0.27.0
+
+-------------------------------------------------------------------
+Thu Jun 13 18:28:13 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.26.2
+  https://github.com/smallstep/cli/releases/tag/v0.26.2
+
+-------------------------------------------------------------------
+Tue Apr 23 18:26:50 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.26.1
+  https://github.com/smallstep/cli/releases/tag/v0.26.1
+
+-------------------------------------------------------------------
+Fri Mar 29 18:02:45 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.26.0
+  https://github.com/smallstep/cli/releases/tag/v0.26.0
+
+-------------------------------------------------------------------
+Fri Jan 19 23:36:18 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.25.2
+  https://github.com/smallstep/cli/releases/tag/v0.25.2
+
+-------------------------------------------------------------------
+Wed Nov 29 12:27:56 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.25.1
+  https://github.com/smallstep/cli/releases/tag/v0.25.1
+
+-------------------------------------------------------------------
+Wed Sep 27 21:16:37 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.25.0
+  https://github.com/smallstep/cli/releases/tag/v0.25.0
+
+-------------------------------------------------------------------
+Thu May 11 23:07:50 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.24.4
+  https://github.com/smallstep/cli/releases/tag/v0.24.4
+
+-------------------------------------------------------------------
+Mon Apr 17 09:47:37 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.24.3
+  https://github.com/smallstep/cli/releases/tag/v0.24.3
+
+-------------------------------------------------------------------
+Fri Apr 14 20:04:25 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.24.2
+  https://github.com/smallstep/cli/releases/tag/v0.24.2
+
+-------------------------------------------------------------------
+Fri Apr 14 11:58:43 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.24.1
+  https://github.com/smallstep/cli/releases/tag/v0.24.1
+  https://github.com/smallstep/cli/releases/tag/v0.24.0
+
+-------------------------------------------------------------------
+Thu Apr  6 10:14:59 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- bump requires for go as 1.17 is nolonger sufficient 
+
+-------------------------------------------------------------------
+Sat Mar 11 11:15:52 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.23.4
+  https://github.com/smallstep/cli/releases/tag/v0.23.4
+
+-------------------------------------------------------------------
+Wed Mar  1 22:36:44 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.23.3
+  https://github.com/smallstep/cli/releases/tag/v0.23.3
+
+-------------------------------------------------------------------
+Tue Feb 14 15:33:13 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- move salt related tools into its own package 
+
+-------------------------------------------------------------------
+Mon Feb 13 12:20:29 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Added step-ssl-merge-certs-for-salt helper script
+
+-------------------------------------------------------------------
+Tue Feb  7 00:55:09 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.23.2
+  https://github.com/smallstep/cli/releases/tag/v0.23.2
+
+-------------------------------------------------------------------
+Mon Jan 23 11:13:11 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- make our helper scripts expire certs after 14 days
+  TODO: this should be configurable
+
+-------------------------------------------------------------------
+Wed Jan 11 00:39:24 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.23.1
+  https://github.com/smallstep/cli/releases/tag/v0.23.1
+
+-------------------------------------------------------------------
+Tue Dec 13 13:35:52 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add zsh as requires to the completion package
+
+-------------------------------------------------------------------
+Wed Nov 30 16:09:16 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add 2 wrappers to help salt with deciding if certs need renewal
+
+-------------------------------------------------------------------
+Sat Nov 12 02:56:49 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.23.0
+  https://github.com/smallstep/cli/releases/tag/v0.23.0
+
+-------------------------------------------------------------------
+Fri Aug 26 22:46:01 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.22.0
+  https://github.com/smallstep/cli/releases/tag/v0.22.0
+- drop merged chunks from more-units.patch
+- added add-missing-targets.patch:
+  ssh service had no target
+
+-------------------------------------------------------------------
+Thu Jul  7 10:49:00 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.21.0
+  https://github.com/smallstep/cli/releases/tag/v0.21.0
+
+-------------------------------------------------------------------
+Fri May 27 12:42:42 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.20.0
+  https://github.com/smallstep/cli/releases/tag/v0.20.0
+
+-------------------------------------------------------------------
+Thu Apr 21 10:23:27 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.19.0
+  https://github.com/smallstep/cli/releases/tag/v0.19.0
+
+-------------------------------------------------------------------
+Thu Mar 24 19:17:43 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Adds more-units.patch:
+  - Add unit files for renewing ssh certificates
+  - Add target files for both instantiated services
+
+-------------------------------------------------------------------
+Wed Mar 23 00:26:13 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- we also need the /etc/step/config/ directory
+
+-------------------------------------------------------------------
+Thu Mar  3 00:53:31 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- also install the renewer service
+- replace packageand with the newer (pkg1 and pkg2) syntax
+
+-------------------------------------------------------------------
+Wed Mar  2 00:25:37 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.18.2
+  https://github.com/smallstep/cli/releases/tag/v0.18.2
+
+-------------------------------------------------------------------
+Fri Feb  4 01:39:05 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.18.1
+  https://github.com/smallstep/cli/releases/tag/v0.18.1
+
+-------------------------------------------------------------------
+Thu Nov 18 10:07:42 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.18.0
+  https://github.com/smallstep/cli/releases/tag/v0.18.0
+
+-------------------------------------------------------------------
+Thu Oct 21 12:39:02 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.17.7
+  https://github.com/smallstep/cli/releases/tag/v0.17.7
+
+-------------------------------------------------------------------
+Fri Oct  1 18:08:18 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.17.6
+  https://github.com/smallstep/cli/releases/tag/v0.17.6
+
+-------------------------------------------------------------------
+Wed Sep 29 10:51:44 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.17.5
+  https://github.com/smallstep/cli/releases/tag/v0.17.5
+
+-------------------------------------------------------------------
+Sat Sep 25 00:57:30 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.17.4
+  https://github.com/smallstep/cli/releases/tag/v0.17.4
+
+-------------------------------------------------------------------
+Sat Sep 25 00:54:38 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.17.3
+  https://github.com/smallstep/cli/releases/tag/v0.17.3
+
+-------------------------------------------------------------------
+Tue Aug 31 09:15:25 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.17.2
+  https://github.com/smallstep/cli/releases/tag/v0.17.2
+
+-------------------------------------------------------------------
+Fri Aug 27 08:04:12 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.17.1
+  https://github.com/smallstep/cli/releases/tag/v0.17.1
+
+-------------------------------------------------------------------
+Thu Aug 26 12:25:22 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.17.0
+  https://github.com/smallstep/cli/releases/tag/v0.17.0
+
+-------------------------------------------------------------------
+Mon Jul 12 11:06:21 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.16.1
+  https://github.com/smallstep/cli/releases/tag/v0.16.1
+
+-------------------------------------------------------------------
+Tue Jul  6 22:20:32 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.15.17
+  https://github.com/smallstep/cli/releases/tag/v0.15.17
+
+-------------------------------------------------------------------
+Fri Apr 16 06:03:42 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.15.16
+  https://github.com/smallstep/cli/releases/tag/v0.15.16
+
+-------------------------------------------------------------------
+Thu Apr 15 18:25:38 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.15.15
+  https://github.com/smallstep/cli/releases/tag/v0.15.15
+
+-------------------------------------------------------------------
+Thu Apr 15 00:02:57 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- zsh-completion should also require the base package. bash
+  completion already did.
+
+-------------------------------------------------------------------
+Sat Mar 27 01:55:14 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.15.14
+  https://github.com/smallstep/cli/releases/tag/v0.15.14
+
+-------------------------------------------------------------------
+Fri Mar 12 23:39:25 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.15.13
+  https://github.com/smallstep/cli/releases/tag/v0.15.9
+  https://github.com/smallstep/cli/releases/tag/v0.15.10
+  https://github.com/smallstep/cli/releases/tag/v0.15.11
+  https://github.com/smallstep/cli/releases/tag/v0.15.12
+  https://github.com/smallstep/cli/releases/tag/v0.15.13
+
+-------------------------------------------------------------------
+Tue Mar  9 23:57:52 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.15.8
+  https://github.com/smallstep/cli/releases/tag/v0.15.8
+
+-------------------------------------------------------------------
+Fri Feb 19 16:50:40 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.15.7
+  https://github.com/smallstep/cli/releases/tag/v0.15.3
+  https://github.com/smallstep/cli/releases/tag/v0.15.4
+  https://github.com/smallstep/cli/releases/tag/v0.15.5
+  https://github.com/smallstep/cli/releases/tag/v0.15.6
+  https://github.com/smallstep/cli/releases/tag/v0.15.7
+
+-------------------------------------------------------------------
+Sun Nov 29 01:19:58 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- switching to go 1.15
+
+-------------------------------------------------------------------
+Mon Aug 31 22:11:36 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.15.2
+  https://github.com/smallstep/cli/releases/tag/v0.15.2
+
+-------------------------------------------------------------------
+Mon Aug 31 21:28:15 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.15.1
+  https://github.com/smallstep/cli/releases/tag/v0.15.1
+
+-------------------------------------------------------------------
+Mon Aug 17 14:58:16 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.15.0
+  https://github.com/smallstep/cli/releases/tag/v0.15.0
+
+-------------------------------------------------------------------
+Thu Jul  2 21:10:23 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.14.6
+  https://github.com/smallstep/cli/releases/tag/v0.14.6
+
+-------------------------------------------------------------------
+Thu Jul  2 15:55:20 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.14.5
+  https://github.com/smallstep/cli/releases/tag/v0.14.5
+
+-------------------------------------------------------------------
+Tue May 19 09:35:23 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.14.4
+  https://github.com/smallstep/cli/releases/tag/v0.14.4
+
+-------------------------------------------------------------------
+Mon May  4 23:06:05 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.14.4~rc1
+  https://github.com/smallstep/cli/releases/tag/v0.14.4-rc.1
+
+-------------------------------------------------------------------
+Fri May  1 18:10:31 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.14.3
+  https://github.com/smallstep/cli/releases/tag/v0.14.3
+
+-------------------------------------------------------------------
+Wed Apr 22 00:33:10 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.14.3~rc1
+  https://github.com/smallstep/cli/releases/tag/v0.14.3-rc.1
+
+-------------------------------------------------------------------
+Fri Apr 10 20:19:14 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- we no longer need golang-github-golang-dep
+
+-------------------------------------------------------------------
+Fri Apr 10 10:59:19 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.14.2
+  https://github.com/smallstep/cli/releases/tag/v0.14.1
+  https://github.com/smallstep/cli/releases/tag/v0.14.2
+
+-------------------------------------------------------------------
+Thu Apr  9 17:31:35 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.14.0
+  https://github.com/smallstep/cli/releases/tag/v0.14.0
+
+-------------------------------------------------------------------
+Tue Apr  7 22:21:15 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.14.0~rc5
+  https://github.com/smallstep/cli/releases/tag/v0.14.0-rc.5
+
+-------------------------------------------------------------------
+Thu Mar 19 14:22:57 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.14.0~rc4
+  https://github.com/smallstep/cli/releases/tag/v0.14.0-rc.4
+
+-------------------------------------------------------------------
+Mon Mar  9 18:50:26 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Supplement against bash-completion, not bash
+
+-------------------------------------------------------------------
+Thu Feb 27 02:48:53 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- allow go 1.14 
+
+-------------------------------------------------------------------
+Sat Feb  8 20:29:03 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.14.0~rc3
+  https://github.com/smallstep/cli/releases/tag/v0.14.0-rc.2
+  https://github.com/smallstep/cli/releases/tag/v0.14.0-rc.3
+
+-------------------------------------------------------------------
+Sun Nov 17 09:38:29 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- no longer rename the binary but conflict on the package which
+  provides the other /usr/bin/step
+
+-------------------------------------------------------------------
+Fri Nov 15 20:31:22 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Add subpackages for bash- and zsh-completion
+- Correct license (BSD-3-Clause -> Apache-2.0)
+
+-------------------------------------------------------------------
+Fri Nov  1 00:10:30 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.14.0~rc1
+  https://github.com/smallstep/cli/releases/tag/v0.14.0-rc.1
+
+-------------------------------------------------------------------
+Mon Sep 30 23:28:26 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.13.3
+  https://github.com/smallstep/cli/releases/tag/v0.13.3
+
+-------------------------------------------------------------------
+Mon Sep 30 17:57:05 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- fix version string
+
+-------------------------------------------------------------------
+Mon Sep 30 16:29:10 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- initial package

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Nov  7 17:16:53 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 2.1.1:
+  * Pre-release changes (#2167)
+  * Weblate commit (#2165)
+  * Fixed destination dir of lxqt-panel_wayland.desktop (#2166)
+  * Made auto-hiding on overlapping work under kwin_wayland (#2164)
+
+-------------------------------------------------------------------
+Wed Nov  6 21:31:57 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 2.1.0:
+  * Pre-release changes (#2159)
+  * Updated *.ts files (#2160)
+  * Weblate commit (#2155)
+  * Silenced compilation warning about `QCheckBox::stateChanged` (#2157)
+  * mainmenu: Workaround lack of context menu with Qt 6.8.0
+  * Workaround for translucency artifacts with Qt 6.8.0 on Wayland (#2156)
+  * Added a missing version check (#2154)
+  * Prevent panel from accepting focus with some Wayland compositors (#2153)
+  * Weblate commit (#2151)
+  * Updated translations including Luganda (#2150)
+
+-------------------------------------------------------------------
 Tue May 21 18:09:05 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
 
 - Настройка Fancy Application Menu

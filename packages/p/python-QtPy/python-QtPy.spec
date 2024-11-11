@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-QtPy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,13 +40,13 @@ BuildArch:      noarch
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-QtPy%{psuffix}
-Version:        2.4.1
+Version:        2.4.2
 Release:        0
 Summary:        Abstraction layer on top of Qt bindings
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/spyder-ide/qtpy
-Source:         https://files.pythonhosted.org/packages/source/Q/QtPy/QtPy-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/Q/QtPy/qtpy-%{version}.tar.gz
 # from https://github.com/spyder-ide/qtpy/pull/466
 Patch1:         qt6.6-deprecations.patch
 BuildRequires:  %{python_module base >= 3.7}
@@ -58,7 +58,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-packaging
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 # Note: Don't add any Requires, Recommends, or Suggests for a
 # specific backend here, because we need to minimize the space
 # occupied on the Tumbleweed DVD. The application importing QtPy
@@ -68,6 +68,7 @@ Requires(postun):update-alternatives
 %if %{with test}
 BuildRequires:  %{python_module QtPy-test = %{version}}
 BuildRequires:  %{python_module pytest >= 6}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-qt}
 %if %{with pyqt5}
 BuildRequires:  %{python_module qt3d-qt5}
@@ -100,7 +101,7 @@ BuildRequires:  python3-pyside2
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150500
 BuildRequires:  %{python_module pyside6}
 %else
-BuildRequires:  python3-pyside6
+BuildRequires:  python3-pyside6 > 6.8.0
 %endif
 BuildRequires:  qt6-sql-sqlite
 %endif
@@ -129,7 +130,7 @@ This subpackage separately provides the qtpy.tests module
 in order to avoid stupid rpmlint errors.
 
 %prep
-%autosetup -p1 -n QtPy-%{version}
+%autosetup -p1 -n qtpy-%{version}
 # wrong EOL encondig
 sed -i 's/\r$//' LICENSE.txt *.md
 # qtcharts is present in our PyQt

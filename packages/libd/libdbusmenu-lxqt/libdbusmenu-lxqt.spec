@@ -1,7 +1,7 @@
 #
 # spec file for package libdbusmenu-lxqt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define  _ver   0
 Name:           libdbusmenu-lxqt
-Version:        0.1.0
+Version:        0.2.0
 Release:        0
 Summary:        A Qt implementation of the DBusMenu protocol
 License:        LGPL-2.0-or-later
@@ -30,10 +30,10 @@ Source2:        %{name}.keyring
 BuildRequires:  cmake >= 3.18.0
 #uildRequires:  libqjson-devel
 BuildRequires:  cmake(Qt6Core) >= 6.3.0
-BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  gcc-c++
 BuildRequires:  cmake(Qt6DBus)
 BuildRequires:  cmake(Qt6Test)
-BuildRequires:  gcc-c++
+BuildRequires:  cmake(Qt6Widgets)
 
 %description
 This library provides a Qt implementation of the DBusMenu protocol. The
@@ -72,7 +72,7 @@ This package contains development files for %{name}.
 %ldconfig_scriptlets -n %{name}%{_ver}
 
 %files -n %{name}%{_ver}
-%doc CHANGELOG NEWS README
+%doc CHANGELOG NEWS README.md
 %{_libdir}/%{name}.so.*
 %license COPYING
 

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov  8 13:02:01 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.1.22:
+  + API: Make nice_address_is_local() available to applications
+  + Make padding be all zeros to conform to RFC8489
+  + Fix interface listing on Android
+  + Include TURN sockets in the list from nice_agent_get_sockets()
+  + Set consent refresh timeout in line with RFC 7675
+  + Fix ifr_ifindex build with cland and OpenBSD
+- Drop 4b63250c.patch: Fixed upstream.
+- Rebase patch with quilt.
+
+-------------------------------------------------------------------
 Fri Jul  7 10:26:09 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 4b63250c.patch: agent/meson: Replace filename with basename.

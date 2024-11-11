@@ -336,4 +336,20 @@
     <comment></comment>
     <requestid>1174617</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>5897e086ac24aedad70ada826bd248e8</srcmd5>
+    <version>2.1.0</version>
+    <time>1731329159</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.0:
+  * Pre-release changes (#96)
+  * Updated Readme (#95)
+  * Set toolbar icon size
+  * Added tooltip colors to palette
+  * Avoid possible detach in range-based loop
+  * Don't mix const with non const iterators
+  * Remove comment artifact
+  * Use lxqt-build-tools functionality (forwarded request 1221998 from AndnoVember)</comment>
+    <requestid>1223231</requestid>
+  </revision>
 </revisionlist>

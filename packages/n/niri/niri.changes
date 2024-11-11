@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Nov  9 19:31:01 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.1.10:
+  * Add interactive window moving
+  * Add locked pointer location hint
+  * Add laptop lid and tablet mode switch bindings
+  * Add pointer hiding
+  * Add input configuration improvements
+- Change xwayland-run Recommends with xwayland-satellite
+
+-------------------------------------------------------------------
 Sat Sep 14 18:22:51 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.1.9:

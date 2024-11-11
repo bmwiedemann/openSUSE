@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-runner
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        LXQt application launcher
 License:        LGPL-2.1-or-later
@@ -36,7 +36,7 @@ BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6Xml)
 BuildRequires:  cmake(lxqt2-build-tools)
 BuildRequires:  pkgconfig(libmenu-cache)
-BuildRequires:  pkgconfig(lxqt) >= 2.0.0
+BuildRequires:  pkgconfig(lxqt) >= 2.1.0
 BuildRequires:  pkgconfig(lxqt-globalkeys-ui)
 BuildRequires:  pkgconfig(muparser)
 Recommends:     %{name}-lang = %{version}-%{release}

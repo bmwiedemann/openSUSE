@@ -1,7 +1,7 @@
 #
 # spec file for package scite
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012-2021 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,10 +17,9 @@
 #
 
 
-%define tar_ver 551
-
+%define tar_ver 553
 Name:           scite
-Version:        5.5.1
+Version:        5.5.3
 Release:        0
 Summary:        Source Code Editor based on Scintilla
 License:        MIT
@@ -29,8 +28,8 @@ Source0:        https://www.scintilla.org/%{name}%{tar_ver}.tgz
 # PATCH-FEATURE-OPENSUSE scite-use-system-scintilla.patch badshah400@gmail.com -- Compile against system scintilla library
 Patch0:         scite-use-system-scintilla.patch
 BuildRequires:  gcc-c++ >= 11.2
-BuildRequires:  pkgconfig
 BuildRequires:  libscintilla-devel >= 5.5.0
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gail-3.0)
 BuildRequires:  pkgconfig(gdk-3.0)

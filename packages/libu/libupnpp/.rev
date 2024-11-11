@@ -66,4 +66,12 @@ Fix compilation with GCC 14
 </comment>
     <requestid>1195275</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>19e645b32cd40f7da498f07556530ed0</srcmd5>
+    <version>0.26.7</version>
+    <time>1731329088</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.26.7</comment>
+    <requestid>1223165</requestid>
+  </revision>
 </revisionlist>

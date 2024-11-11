@@ -285,4 +285,12 @@
   * Release version 2.5</comment>
     <requestid>1222710</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>015c4f0c4521d66ff3c2fe6ccda75359</srcmd5>
+    <version>2.6+git20241108.fc0c103</version>
+    <time>1731329014</time>
+    <user>dimstar_suse</user>
+    <comment>- Add compatibility symlink for rebootmgrctl to sbin</comment>
+    <requestid>1223279</requestid>
+  </revision>
 </revisionlist>

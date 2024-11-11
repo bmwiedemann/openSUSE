@@ -1203,4 +1203,20 @@
   * Use llvm 20 as a nightly target</comment>
     <requestid>1193848</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>ef3a7665b6220d525d8be342b4bf9ac8</srcmd5>
+    <version>2.11.0+git.20241110.d89a535</version>
+    <time>1731329086</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.11.0+git.20241110.d89a535:
+  * Bump to 2.11.0
+  * CI: make default LLVM version 19
+  * Remove unneeded LLVM layout workaround
+  * Add -Wno-error=deprecated-declarations (#151)
+  * Fix CI for LLVM nightly
+  * Add note that the project is seeking for maintainers
+  * Use Process::kill instead of terminate function.
+  * Port to LLVM 20 (#149)</comment>
+    <requestid>1223158</requestid>
+  </revision>
 </revisionlist>

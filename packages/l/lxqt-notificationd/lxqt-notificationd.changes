@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov  6 21:29:55 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 2.1.0:
+  * Pre-release changes (#403)
+  * Weblate commits (#404)
+  * Weblate commits (#401)
+  * Workaround for translucency artifacts with Qt 6.8.0 on Wayland (#402)
+  * Weblate commits (#399)
+  * Updated *.ts files (including Luganda) (#400)
+  * Weblate commits (#398)
+  * Weblate commits (#397)
+  * Fixed recent regression (#396)
+  * Updated *.ts files (#395)
+
+-------------------------------------------------------------------
 Sat May 11 06:42:45 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
 
 - Update to 2.0.1:

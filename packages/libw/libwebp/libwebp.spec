@@ -29,6 +29,7 @@ Source2:        https://storage.googleapis.com/downloads.webmproject.org/release
 Source3:        %name.keyring
 Source4:        baselibs.conf
 
+BuildRequires:  cmake
 BuildRequires:  giflib-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glut)
@@ -139,13 +140,11 @@ images more efficiently.
 %autosetup -p1
 
 %build
-%configure --disable-static \
-	--enable-libwebpmux --enable-libwebpdemux \
-	--enable-libwebpdecoder --enable-libwebpextras
-%make_build
+%cmake
+%cmake_build
 
 %install
-%make_install
+%cmake_install
 find "%buildroot" -type f -name "*.la" -delete -print
 
 %post   -n libwebp7 -p /sbin/ldconfig
@@ -191,5 +190,6 @@ find "%buildroot" -type f -name "*.la" -delete -print
 %_includedir/webp/
 %_libdir/pkgconfig/libwebp*.pc
 %_libdir/pkgconfig/libsharpyuv.pc
+%_datadir/WebP/
 
 %changelog

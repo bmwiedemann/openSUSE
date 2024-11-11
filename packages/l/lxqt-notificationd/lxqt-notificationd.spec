@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-notificationd
-Version:        2.0.1
+Version:        2.1.0
 Release:        0
 Summary:        LXQt Notification daemon
 License:        LGPL-2.1-or-later
@@ -36,7 +36,7 @@ BuildRequires:  cmake(Qt6DBus)
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(lxqt2-build-tools)
-BuildRequires:  pkgconfig(lxqt) >= 2.0.0
+BuildRequires:  pkgconfig(lxqt) >= 2.1.0
 Recommends:     %{name}-lang = %{version}-%{release}
 
 %description

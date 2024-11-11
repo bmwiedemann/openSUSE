@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov  6 21:19:23 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 1.1.0:
+  * Pre-release changes
+  * Drop deprecated Q_ENUMS macro
+  * Don't mix const and non const iterators
+  * Pre-release changes
+  * Use QString::first and QString::sliced
+
+-------------------------------------------------------------------
 Sat May 11 10:27:23 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
 
 - Source upload

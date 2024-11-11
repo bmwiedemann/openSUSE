@@ -17,11 +17,11 @@
 
 
 %if 0%{?suse_version} >= 1699
-%bcond_without kf6wallet
+%bcond_without kwallet
 %endif
 %define c_lib   lib%{name}6_0_0
 Name:           lxqt-wallet
-Version:        4.0.1
+Version:        4.0.2
 Release:        0
 Summary:        Secure storage of information for LXQt
 License:        BSD-2-Clause
@@ -34,7 +34,7 @@ BuildRequires:  cmake >= 3.18
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 # Uses kwallet as backend
-%if %{with kf6wallet}
+%if %{with kwallet}
 BuildRequires:  cmake(KF6Wallet)
 %endif
 BuildRequires:  cmake(Qt6Core)
