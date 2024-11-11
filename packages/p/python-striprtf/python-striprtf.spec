@@ -1,6 +1,7 @@
 #
 # spec file for package python-striprtf
 #
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,16 +18,16 @@
 
 
 Name:           python-striprtf
-Version:        0.0.26
+Version:        0.0.27
 Release:        0
 Summary:        A simple library to convert rtf to text
 License:        BSD-3-Clause
 URL:            https://github.com/joshy/striprtf
 Source:         https://github.com/joshy/striprtf/archive/refs/tags/v%{version}.tar.gz#/striprtf-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
@@ -56,7 +57,6 @@ A simple library to convert rtf to text.
 
 %check
 %pytest
-
 
 %files %{python_files}
 %license LICENSE
