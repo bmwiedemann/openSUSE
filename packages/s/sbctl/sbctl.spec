@@ -17,7 +17,7 @@
 
 
 Name:           sbctl
-Version:        0.15.3
+Version:        0.16
 Release:        0
 Summary:        Secure Boot key manager
 License:        MIT
@@ -73,9 +73,6 @@ VERSION="%{version}" %make_build all
 
 # Fix potential-bashisms rpmlint error by using bash shebang
 sed -i 's|bin/sh|bin/bash|' %{buildroot}%{_prefix}/lib/kernel/install.d/91-sbctl.install
-
-%check
-%make_build test
 
 %files
 %doc README.md

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Oct 22 03:56:54 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Disable tests that fail due to gh/foxboron/sbctl#343
+- Update to version 0.16:
+  * Ensure sbctl reads --config even if /etc/sbctl/sbctl.conf is
+    present
+  * Fixed a bug where sbctl would abort if the TPM eventlog
+    contains the same byte multiple times
+  * Fixed a landlock bug where enroll-keys --export did not work
+  * Fixed a bug where an ESP mounted to multiple paths would not be
+    detected
+  * Exporting keys without efivars present work again
+  * sbctl sign will now use the saved output path if the signed
+    file is enrolled
+  * enroll-keys --append will now work without --force.
+- Updates from version 0.15.4:
+  * Fixed an issue where sign-all did not report a non-zero exit
+    code when something failed
+  * Fixed and issue where we couldn't write to a file with landlock
+  * Fixed an issue where --json would print the human readable
+    output and the json
+  * Fixes landlock for UKI/bundles by disabling the sandbox feature
+  * Some doc fixups that mentioned /usr/share/
+
+-------------------------------------------------------------------
 Wed Jul 31 23:55:22 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 0.15.3:
