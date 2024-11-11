@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Nov  9 10:18:54 UTC 2024 - Michal Vyskocil <michal.vyskocil@gmail.com>
+
+- Update to 3.1.0
+ * Support for task purge has been restored, and new support added for
+   automatically expiring old tasks. (#3540, #3546, #3556)
+ * task news is now better behaved, and can be completely disabled.
+ * Multiple imports of the same UUID will now generate a warning. (#3560)
+ * The sync.server.url config replaces sync.server.origin and allows a URL
+   containing a path. (#3423)
+ * The new bubblegum-256.theme has improved legibility and contrast over
+   others. (#3505)
+ * Warnings regarding .data files are only show for reports. (#3473)
+ * Inherited urgency is correctly calculated to make parents more urgent than
+   children (#2941)
+ * Task completion commands no longer trigger hooks (#3133)
+- Refreshed:
+  * task-skip-INSTALL.patch
+  * vendor.tar.zst
+
+-------------------------------------------------------------------
 Wed Apr 24 22:20:30 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Updated task-skip-INSTALL.patch to current CMakeLists.txt

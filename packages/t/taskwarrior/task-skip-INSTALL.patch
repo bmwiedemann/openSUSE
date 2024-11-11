@@ -1,10 +1,8 @@
-Index: task-2.5.1/CMakeLists.txt
-===================================================================
---- task-2.5.1.orig/CMakeLists.txt
-+++ task-2.5.1/CMakeLists.txt
-@@ -152,7 +152,7 @@ if (EXISTS performance)
+--- task-3.1.0/CMakeLists.txt.orig	2024-11-09 11:06:30.811922971 +0100
++++ task-3.1.0/CMakeLists.txt	2024-11-09 11:06:43.835867255 +0100
+@@ -153,7 +153,7 @@
    add_subdirectory (performance EXCLUDE_FROM_ALL)
- endif (EXISTS performance)
+ endif (EXISTS ${CMAKE_SOURCE_DIR}/performance)
  
 -set (doc_FILES ChangeLog README.md INSTALL AUTHORS COPYING LICENSE)
 +set (doc_FILES ChangeLog README.md AUTHORS COPYING LICENSE)

@@ -17,7 +17,7 @@
 
 
 Name:           taskwarrior
-Version:        3.0.2
+Version:        3.1.0
 Release:        0
 Summary:        Command-line todo list manager
 License:        MIT
