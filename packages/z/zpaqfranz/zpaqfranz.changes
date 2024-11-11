@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Sat Nov  9 14:36:00 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 60.8:
+  * -backupzeta 
+    This new switch, to be used in the backup command, generates checksums 
+    on the fly, without reading them at the end of the .zpaq file 
+    creation, saving a lot of time, especially on slow disk drives like HDDs. 
+    The generated checksums are quite robust ("almost" XXHASH64 and CRC-32). 
+    In the future, it will also support encrypted volumes 
+  * Set the creation date of .zpaq archives to 1/1/1980
+    so it is easy to quickly identify those that were not written completely 
+  * New hash algorithms ZETA and ZETAENC.
+    Can be selected with -zeta and -zetaenc. You can find the explanation here
+    https://github.com/fcorbelli/zpaqfranz/issues/139#issuecomment-2425010093
+  * -destination
+    With the new switch, it is possible to load a series of lines (from a text 
+    file) as if they were multiple -to options. The explanation is here
+    https://github.com/fcorbelli/zpaqfranz/issues/136#issuecomment-2422947782
+  * -nodelete
+    This switch does not mark files as deleted if they are not found during the
+    path scan. It is used for bulk manipulation of the file list. 
+    The explanation is here 
+    https://github.com/fcorbelli/zpaqfranz/issues/136#issuecomment-2422947782
+  * -salt
+    This switch forces an empty salt (i.e., 32 bytes of zeros). It is something
+    you should NOT normally use. It serves as a development mechanism 
+    (i.e., it is something that is useful for ME, not for YOU).
+  * -hdd
+    With this switch, you use the computer's memory (including virtual memory,
+    i.e., the swap file) to sequentially write the extracted data. It is useful
+    if you have a lot of RAM or an SSD system drive and want to extract to an 
+    HDD. In this case, everything will first be decompressed into RAM and then 
+    written to the HDD, without any seeks (head movement) in the output. 
+    It is not suitable for gigantic files, but for medium sizes, it can halve 
+    the extraction time.
+  * -ramdisk
+    Internal for -hdd
+  * fix on -input
+    Minor bug fixed on Windows
+  * warnings in yellows Because sometimes colours... counts...
+
+- update to 60.7:
+  * This release includes numerous new features; hopefully, not too many bugs :) 
+  * The license of one component has been changed to make it compatible with 
+    Fedora policies.
+  * It's now possible to create a file with a list of errors to reduce 
+    confusion in the logs (-errorlog).
+  * Captchas can be bypassed using -nocaptcha.
+  * By default, it now uses the number of physical CPUs (no Hyperthread); you
+    can use -ht to bypass this and return to the previous method.
+  * Error messages now appear in red by default.
+  * zpaqfranz tracks memory usage (more or less) in the very last output line.
+  * It shows more understandable error messages (!) when running out of memory
+    due to overly small fragments.
+  * Output lines have been renumbered.
+  * With the -input switch, you can load a list of files to be added.
+  * The -715 switch in the l (list) command restores an output that is nearly 
+    identical, binary-wise, to zpaq 7.15.
+  * In the sum command, the -home switch replaces -checksum.
+
+-------------------------------------------------------------------
 Sat Sep  7 15:23:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 60.6:
