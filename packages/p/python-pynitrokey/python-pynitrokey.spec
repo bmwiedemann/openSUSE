@@ -16,14 +16,9 @@
 #
 
 
-%if 0%{suse_version} < 1699
 %{?sle15_python_module_pythons}
-%else
-%define pythons python3
-%endif
-
 Name:           python-pynitrokey
-Version:        0.4.50
+Version:        0.6.0
 Release:        0
 Summary:        Python Library for Nitrokey devices
 License:        Apache-2.0 OR MIT
@@ -31,35 +26,29 @@ URL:            https://github.com/Nitrokey/pynitrokey
 Source:         https://files.pythonhosted.org/packages/source/p/pynitrokey/pynitrokey-%{version}.tar.gz
 Source1:        LICENSE-MIT
 Source2:        LICENSE-APACHE
-BuildRequires:  %{python_module click-aliases}
-BuildRequires:  %{python_module flit}
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module semver}
-# https://github.com/Nitrokey/pynitrokey/blob/master/pyproject.toml
 BuildRequires:  %{python_module certifi >= 14.5.14}
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module click >= 8.1.6}
-# "cryptography >=41.0.4,<44"
+BuildRequires:  %{python_module click-aliases}
 BuildRequires:  %{python_module cryptography >= 41.0.4 with %python-cryptography < 44}
 BuildRequires:  %{python_module ecdsa}
-# "frozendict ~= 2.3.4"
-BuildRequires:  %{python_module frozendict >= 2.3.4}
-# "fido2 >=1.1.0,<2"
 BuildRequires:  %{python_module fido2 >= 1.1.0 with %python-fido2 < 2}
+BuildRequires:  %{python_module flit}
+BuildRequires:  %{python_module frozendict >= 2.3.4}
 BuildRequires:  %{python_module nethsm >= 1.2.1 with %python-nethsm < 2}
+BuildRequires:  %{python_module nitrokey}
 BuildRequires:  %{python_module nkdfu}
-#"python-dateutil ~= 2.7.0"
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module protobuf >= 3.17.3}
+BuildRequires:  %{python_module pyserial}
 BuildRequires:  %{python_module python-dateutil >= 2.7.0}
 BuildRequires:  %{python_module pyusb}
 BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module semver}
 BuildRequires:  %{python_module spsdk >= 2.0 with %python-spsdk < 2.2}
 BuildRequires:  %{python_module tlv8}
 BuildRequires:  %{python_module tqdm}
-# "typing_extensions ~= 4.3.0"
 BuildRequires:  %{python_module typing_extensions >= 4.3.0}
-BuildRequires:  %{python_module pyserial}
-# "protobuf >=3.17.3, < 4.0.0"
-BuildRequires:  %{python_module protobuf >= 3.17.3}
 BuildRequires:  fdupes
 BuildRequires:  intelhex
 BuildRequires:  python-rpm-macros
@@ -74,6 +63,7 @@ Requires:       python-click-aliases
 Requires:       python-cryptography
 Requires:       python-ecdsa
 Requires:       python-frozendict >= 2.3.4
+Requires:       python-nitrokey
 Requires:       python-nkdfu
 Requires:       python-protobuf >= 3.17.3
 Requires:       python-pyserial
@@ -97,7 +87,8 @@ Provides:       nitropy = %{version}-%{release}
 %description
 # nitropy
 
-A command line interface for the Nitrokey FIDO2, Nitrokey Start, Nitrokey 3 and NetHSM.
+A command line interface for the Nitrokey FIDO2, Nitrokey Start, Nitrokey 3 and
+NetHSM.
 
 ## Quickstart
 
