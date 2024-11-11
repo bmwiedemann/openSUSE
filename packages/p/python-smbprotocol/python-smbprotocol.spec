@@ -17,7 +17,7 @@
 
 
 Name:           python-smbprotocol
-Version:        1.13.0
+Version:        1.14.0
 Release:        0
 Summary:        SMBv2/v3 client for Python 2 and 3
 License:        MIT
