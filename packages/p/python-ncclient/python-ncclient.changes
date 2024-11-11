@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Nov 10 19:50:09 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.6.16
+  * Add Ciena driver.
+  * Update session.py.
+  * call_home: timeout as argument.
+  * Introduce Unix Socket Transport.
+  * feat: Add support for Nokia SR OS private candidate mode.
+  * Fix support of .ssh/id_ed25519 keys.
+
+-------------------------------------------------------------------
 Fri Oct 25 22:17:02 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Add intersphinx-mapping.patch to allow working with Sphinx >=
