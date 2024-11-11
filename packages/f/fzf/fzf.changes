@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov 11 02:03:29 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 0.56.1:
+  Fixes:
+  * Fixed a race condition which would cause fzf to present stale
+    results after reload
+  * page-up and page-down actions now work correctly with
+    multi-line items
+  * {n} is allowed in SCROLL expression in --preview-window
+  * [zsh] Fixed regression in history loading with shared option
+  * [zsh] Better command extraction in zsh completion
+
+-------------------------------------------------------------------
 Wed Oct 30 23:49:05 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to 0.56.0:
