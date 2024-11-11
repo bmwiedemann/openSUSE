@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov  6 03:57:33 UTC 2024 - YI HSIN Lyu <richard.lyu@suse.com>
+
+- Update version to 0.28.0
+    - image_validation: Update documentation
+    - Minor updates to the porting readme
+    - build(deps): bump black from 24.4.2 to 24.8.0
+    - build(deps): bump mkdocs-material from 9.5.29 to 9.5.34
+    - build(deps): bump mkdocstrings-python from 1.10.8 to 1.11.1
+    - build(deps): bump setuptools from 72.1.0 to 75.1.0
+    - build(deps): bump regex from 2024.5.15 to 2024.9.11
+    - [REBASE&FF] Ruff on workspace
+    - Install mono on ubuntu-latest
+    - Python support: drop 3.10, add 3.13
+
+-------------------------------------------------------------------
 Tue Jan 26 09:23:55 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Initial import version: 0.14.0

@@ -1,7 +1,7 @@
 #
 # spec file for package python-edk2toolext
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,28 +15,32 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define skip_python2 1
 
+%define skip_python2 1
+%define skip_python310 1
+%{?sle15_python_module_pythons}
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-edk2toolext
-Version:        0.14.0
+Version:        0.28.0
 Release:        0
-Summary:	Tianocore Edk2 PyTool Extensions
+Summary:        Tianocore Edk2 PyTool Extensions
 License:        BSD-2-Clause-Patent
 URL:            https://github.com/tianocore/edk2-pytool-extensions
-Source:         https://files.pythonhosted.org/packages/source/e/edk2-pytool-extensions/edk2-pytool-extensions-%{version}.tar.gz
+Source:         edk2-pytool-extensions-%{version}.tar.gz
 Group:          Development/Tools/Other
-BuildRequires:  dos2unix
-BuildRequires:  fdupes
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module py >= 1.4}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  dos2unix
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-PyYAML >= 5.2
-Requires:       python-edk2toollib >= 0.10.13
-Requires:       python-pefile >= 2019.4.18
+Requires:       python-PyYAML
+Requires:       python-edk2toollib
+Requires:       python-pefile
 Requires:       python-pyOpenSSL
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 
 %python_subpackages
@@ -50,11 +54,10 @@ Extensions to the edk2 build system allowing for a more robust and plugin based 
 dos2unix readme.md
 
 %build
-export CFLAGS="%{optflags} -fno-strict-aliasing"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %python_clone -a %{buildroot}%{_bindir}/edk2_capsule_tool
 %python_clone -a %{buildroot}%{_bindir}/firmware_policy_tool
@@ -68,6 +71,10 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %python_clone -a %{buildroot}%{_bindir}/stuart_setup
 %python_clone -a %{buildroot}%{_bindir}/stuart_update
 %python_clone -a %{buildroot}%{_bindir}/versioninfo_tool
+%python_clone -a %{buildroot}%{_bindir}/secureboot_audit
+%python_clone -a %{buildroot}%{_bindir}/stuart_parse
+%python_clone -a %{buildroot}%{_bindir}/stuart_report
+%python_clone -a %{buildroot}%{_bindir}/validate_image_tool
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -84,6 +91,10 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %python_install_alternative stuart_setup
 %python_install_alternative stuart_update
 %python_install_alternative versioninfo_tool
+%python_install_alternative secureboot_audit
+%python_install_alternative stuart_parse
+%python_install_alternative stuart_report
+%python_install_alternative validate_image_tool
 
 %postun
 %python_uninstall_alternative edk2_capsule_tool
@@ -98,6 +109,10 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %python_uninstall_alternative stuart_setup
 %python_uninstall_alternative stuart_update
 %python_uninstall_alternative versioninfo_tool
+%python_uninstall_alternative secureboot_audit
+%python_uninstall_alternative stuart_parse
+%python_uninstall_alternative stuart_report
+%python_uninstall_alternative validate_image_tool
 
 %files %{python_files}
 %license LICENSE
@@ -115,5 +130,9 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %python_alternative %{_bindir}/stuart_setup
 %python_alternative %{_bindir}/stuart_update
 %python_alternative %{_bindir}/versioninfo_tool
+%python_alternative %{_bindir}/secureboot_audit
+%python_alternative %{_bindir}/stuart_parse
+%python_alternative %{_bindir}/stuart_report
+%python_alternative %{_bindir}/validate_image_tool
 
 %changelog
