@@ -38,7 +38,6 @@ BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
 BuildRequires:  python-rpm-macros
 Requires:       NetworkManager-openvpn
-Requires:       dbus-1-x11
 Requires:       python-Jinja2
 Requires:       python-dbus-python
 Requires:       python-distro
@@ -58,7 +57,6 @@ BuildRequires:  %{python_module proton-client >= 0.5.0}
 BuildRequires:  %{python_module pyxdg}
 BuildRequires:  %{python_module systemd}
 BuildRequires:  NetworkManager-openvpn
-BuildRequires:  dbus-1-x11
 # /SECTION
 %if %{with test}
 BuildRequires:  %{python_module pytest}

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov  8 15:52:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not (Build)Require dbus-1-x11: the dependency seems unused, as
+  it's abstracted throughpython-dbus. dbus-1-x11 is scheduled for
+  removal after the switch to dbus-broker.
+
+-------------------------------------------------------------------
 Wed Jan  3 10:09:25 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - require setuptools

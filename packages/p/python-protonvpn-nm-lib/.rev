@@ -68,4 +68,12 @@
     <comment>- require setuptools</comment>
     <requestid>1136457</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>bcbf7d1c3c5024398d6dc0f1449c3d3a</srcmd5>
+    <version>3.16.0</version>
+    <time>1731329215</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1223310</requestid>
+  </revision>
 </revisionlist>
