@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov 11 00:34:12 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.7.0:
+  * Update modules and runtime ver
+  * Upstream Support: Implement windowcontrols changes
+  * Grab Button Layout from Desktop Portal
+  * Remove Auto from Window Controls
+  * Clarify Window Controls
+  * Update POT
+- remove %suse_update_desktop_file, as it's deprecated
+
+-------------------------------------------------------------------
 Tue Oct 22 13:19:38 UTC 2024 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - add missing requirement for XdpGtk4
