@@ -357,6 +357,7 @@ unsorted:
   - WSL-DistroLauncher-debug 
   - WebKitGTK-4.0-lang 
   - WebKitGTK-6.0-lang 
+  - WindowMaker 
   - WindowMaker-devel 
   - WindowMaker-themes 
   - WoeUSB 
@@ -1159,12 +1160,7 @@ unsorted:
   - avr-libc 
   - avrdude 
   - avrdude-devel 
-  - awesome 
-  - awesome-branding-openSUSE 
   - awesome-branding-upstream 
-  - awesome-freedesktop 
-  - awesome-shifty 
-  - awesome-vicious 
   - awf-gtk2 
   - awf-gtk3 
   - awf-gtk4 
@@ -3335,6 +3331,10 @@ unsorted:
   - diffstat 
   - difftastic 
   - difftastic-doc 
+  - digger-cli 
+  - digger-cli-bash-completion 
+  - digger-cli-fish-completion 
+  - digger-cli-zsh-completion 
   - digikam 
   - digikam-devel 
   - digikam-lang 
@@ -3731,10 +3731,6 @@ unsorted:
   - eksctl-zsh-completion 
   - element-desktop 
   - element-web 
-  - elementary-icon-theme 
-  - elementary-icon-theme-gimp-palette 
-  - elementary-icon-theme-inkscape-palette 
-  - elementary-wallpapers 
   - elementary-xfce-icon-theme 
   - elftoaout 
   - elfutils-debuginfod 
@@ -6078,6 +6074,10 @@ unsorted:
   - ghc-http-media-devel 
   - ghc-http-media-doc 
   - ghc-http-media-prof 
+  - ghc-http-semantics 
+  - ghc-http-semantics-devel 
+  - ghc-http-semantics-doc 
+  - ghc-http-semantics-prof 
   - ghc-http-types 
   - ghc-http-types-devel 
   - ghc-http-types-doc 
@@ -7691,6 +7691,7 @@ unsorted:
   - golangci-lint 
   - goldendict-ng 
   - goldendict-ng-lang 
+  - goldpinger 
   - golly 
   - golly-assets 
   - golly-devel 
@@ -8281,7 +8282,6 @@ unsorted:
   - gtk2-metatheme-bluebird 
   - gtk2-metatheme-dracula 
   - gtk2-metatheme-e17gtk 
-  - gtk2-metatheme-elementary 
   - gtk2-metatheme-equinox 
   - gtk2-metatheme-gilouche 
   - gtk2-metatheme-greybird 
@@ -8325,7 +8325,6 @@ unsorted:
   - gtk3-metatheme-bluebird 
   - gtk3-metatheme-dracula 
   - gtk3-metatheme-e17gtk 
-  - gtk3-metatheme-elementary 
   - gtk3-metatheme-greybird 
   - gtk3-metatheme-matcha 
   - gtk3-metatheme-mint 
@@ -9151,6 +9150,7 @@ unsorted:
   - iredis 
   - irman-common 
   - irman-utils 
+  - ironwail 
   - irqstat 
   - irrlicht-data 
   - irrlicht-devel 
@@ -13259,7 +13259,7 @@ unsorted:
   - libfparser-4_5_2 
   - libfplist-devel 
   - libfplist1 
-  - libfplll8 
+  - libfplll9 
   - libfpm_helper-devel 
   - libfpm_helper0 
   - libfprint-2-tod1 
@@ -16526,6 +16526,7 @@ unsorted:
   - libsvm-devel 
   - libsvm-java 
   - libsvm3 
+  - libswitchboard-3-0 
   - libsword-1_8_1 
   - libswresample3_9-32bit 
   - libswresample4 
@@ -17290,8 +17291,6 @@ unsorted:
   - libxcb-xinerama0-32bit 
   - libxcb-xinput0-32bit 
   - libxcb-xkb1-32bit 
-  - libxcb-xrm0 
-  - libxcb-xtest0 
   - libxcb-xtest0-32bit 
   - libxcb-xv0-32bit 
   - libxcb-xvmc0 
@@ -17304,7 +17303,6 @@ unsorted:
   - libxcvt 
   - libxcvt-devel 
   - libxdg-basedir-devel 
-  - libxdg-basedir1 
   - libxdot4 
   - libxdp-devel 
   - libxerces-c-3_3 
@@ -17524,8 +17522,6 @@ unsorted:
   - lifelines 
   - liferea 
   - liferea-lang 
-  - light-locker 
-  - light-locker-lang 
   - lightcouch 
   - lightcouch-javadoc 
   - lightdm-deepin-greeter 
@@ -18010,7 +18006,6 @@ unsorted:
   - lua53-testmore 
   - lua53-vstruct 
   - lua53-zlib 
-  - lua54 
   - lua54-alt-getopt 
   - lua54-argparse 
   - lua54-busted 
@@ -18032,7 +18027,6 @@ unsorted:
   - lua54-fluent 
   - lua54-ldbus 
   - lua54-ldoc 
-  - lua54-lgi 
   - lua54-lgi-doc 
   - lua54-linenoise 
   - lua54-loadkit 
@@ -18749,7 +18743,6 @@ unsorted:
   - metatheme-bluebird-common 
   - metatheme-dracula-common 
   - metatheme-e17gtk-common 
-  - metatheme-elementary-common 
   - metatheme-greybird-common 
   - metatheme-matcha-common 
   - metatheme-mint-common 
@@ -21031,7 +21024,6 @@ unsorted:
   - pantheon-agent-polkit-lang 
   - pantheon-dock 
   - pantheon-dock-lang 
-  - pantheon-wallpapers-branding-upstream 
   - paper-icon-theme 
   - paperclips 
   - paperclips-javadoc 
@@ -22998,9 +22990,7 @@ unsorted:
   - plank-devel 
   - plank-docklets 
   - plank-lang 
-  - plank-metatheme-elementary 
   - plank-theme-adapta 
-  - plank-theme-elementary 
   - plank-theme-matcha 
   - plantri 
   - plantuml 
@@ -25510,7 +25500,6 @@ unsorted:
   - python310-et_xmlfile 
   - python310-etcd 
   - python310-ethtool 
-  - python310-eval-type-backport 
   - python310-evdev 
   - python310-eventlet 
   - python310-evilunit 
@@ -26889,6 +26878,7 @@ unsorted:
   - python310-pysmi 
   - python310-pysndfile 
   - python310-pysnmp 
+  - python310-pysnmp-lextudio 
   - python310-pysnmpcrypto 
   - python310-pysofaconventions 
   - python310-pysolr 
@@ -27047,6 +27037,7 @@ unsorted:
   - python310-python-lsp-server-all 
   - python310-python-lzo 
   - python310-python-magic 
+  - python310-python-markdown-math 
   - python310-python-memcached 
   - python310-python-mimeparse 
   - python310-python-mpd2 
@@ -29147,7 +29138,6 @@ unsorted:
   - python311-et_xmlfile 
   - python311-etcd 
   - python311-ethtool 
-  - python311-eval-type-backport 
   - python311-evdev 
   - python311-eventlet 
   - python311-evilunit 
@@ -30464,6 +30454,7 @@ unsorted:
   - python311-pysmi 
   - python311-pysndfile 
   - python311-pysnmp 
+  - python311-pysnmp-lextudio 
   - python311-pysnmpcrypto 
   - python311-pysofaconventions 
   - python311-pysolr 
@@ -30621,6 +30612,7 @@ unsorted:
   - python311-python-lsp-server-all 
   - python311-python-lzo 
   - python311-python-magic 
+  - python311-python-markdown-math 
   - python311-python-memcached 
   - python311-python-mimeparse 
   - python311-python-mpd2 
@@ -32739,7 +32731,6 @@ unsorted:
   - python312-et_xmlfile 
   - python312-etcd 
   - python312-ethtool 
-  - python312-eval-type-backport 
   - python312-evdev 
   - python312-eventlet 
   - python312-evilunit 
@@ -34116,6 +34107,7 @@ unsorted:
   - python312-pysmi 
   - python312-pysndfile 
   - python312-pysnmp 
+  - python312-pysnmp-lextudio 
   - python312-pysnmpcrypto 
   - python312-pysofaconventions 
   - python312-pysolr 
@@ -34274,6 +34266,7 @@ unsorted:
   - python312-python-lsp-server-all 
   - python312-python-lzo 
   - python312-python-magic 
+  - python312-python-markdown-math 
   - python312-python-memcached 
   - python312-python-mimeparse 
   - python312-python-mpd2 
@@ -37175,6 +37168,7 @@ unsorted:
   - snakeyaml 
   - snakeyaml-javadoc 
   - snallygaster 
+  - snapper-backup 
   - snapper-testsuite 
   - snappy-devel 
   - snapraid 
@@ -37612,6 +37606,39 @@ unsorted:
   - swingx-javadoc 
   - swipl 
   - switch_sles_sle-hpc 
+  - switchboard 
+  - switchboard-devel 
+  - switchboard-lang 
+  - switchboard-plug-about 
+  - switchboard-plug-about-lang 
+  - switchboard-plug-applications 
+  - switchboard-plug-applications-lang 
+  - switchboard-plug-bluetooth 
+  - switchboard-plug-bluetooth-lang 
+  - switchboard-plug-datetime 
+  - switchboard-plug-datetime-lang 
+  - switchboard-plug-display 
+  - switchboard-plug-display-lang 
+  - switchboard-plug-keyboard 
+  - switchboard-plug-keyboard-lang 
+  - switchboard-plug-mouse-touchpad 
+  - switchboard-plug-mouse-touchpad-lang 
+  - switchboard-plug-network 
+  - switchboard-plug-network-lang 
+  - switchboard-plug-notifications 
+  - switchboard-plug-notifications-lang 
+  - switchboard-plug-onlineaccounts 
+  - switchboard-plug-onlineaccounts-lang 
+  - switchboard-plug-pantheon-shell 
+  - switchboard-plug-pantheon-shell-lang 
+  - switchboard-plug-printers 
+  - switchboard-plug-printers-lang 
+  - switchboard-plug-sharing 
+  - switchboard-plug-sharing-lang 
+  - switchboard-plug-sound 
+  - switchboard-plug-sound-lang 
+  - switchboard-plug-wacom 
+  - switchboard-plug-wacom-lang 
   - switcheroo 
   - switcheroo-control-doc 
   - switcheroo-lang 

@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20241111" schemaversion="4.1">
+<image name="OBS__openSUSE___20241112" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20241111</productvar>
+      <productvar name="VERSION">20241112</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20241111,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20241112,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20241111/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20241112/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -159,6 +159,11 @@
       <repopackage name="avahi"/>
       <repopackage name="avahi-lang"/>
       <repopackage name="awesfx"/>
+      <repopackage name="awesome"/>
+      <repopackage name="awesome-branding-openSUSE"/>
+      <repopackage name="awesome-freedesktop"/>
+      <repopackage name="awesome-shifty"/>
+      <repopackage name="awesome-vicious"/>
       <repopackage name="b43-fwcutter"/>
       <repopackage name="babeltrace"/>
       <repopackage name="baloo-widgets"/>
@@ -847,7 +852,6 @@
       <repopackage name="iptables"/>
       <repopackage name="iputils"/>
       <repopackage name="ipw-firmware"/>
-      <repopackage name="irda"/>
       <repopackage name="irqbalance"/>
       <repopackage name="irqbalance-ui"/>
       <repopackage name="iso-codes"/>
@@ -2959,6 +2963,8 @@
       <repopackage name="libxcb-xinerama0"/>
       <repopackage name="libxcb-xinput0"/>
       <repopackage name="libxcb-xkb1"/>
+      <repopackage name="libxcb-xrm0"/>
+      <repopackage name="libxcb-xtest0"/>
       <repopackage name="libxcb-xv0"/>
       <repopackage name="libxcb1"/>
       <repopackage name="libXcomposite1"/>
@@ -2966,6 +2972,7 @@
       <repopackage name="libXcursor1"/>
       <repopackage name="libxcvt0"/>
       <repopackage name="libXdamage1"/>
+      <repopackage name="libxdg-basedir1"/>
       <repopackage name="libXdmcp6"/>
       <repopackage name="libxdp1"/>
       <repopackage name="libXext6"/>
@@ -3048,6 +3055,8 @@
       <repopackage name="libzypp"/>
       <repopackage name="libzypp-plugin-appdata"/>
       <repopackage name="lifecycle-data-openSUSE"/>
+      <repopackage name="light-locker"/>
+      <repopackage name="light-locker-lang"/>
       <repopackage name="lightdm"/>
       <repopackage name="lightdm-bash-completion"/>
       <repopackage name="lightdm-gtk-greeter"/>
@@ -3073,6 +3082,8 @@
       <repopackage name="lsb-release"/>
       <repopackage name="lsof"/>
       <repopackage name="lsscsi"/>
+      <repopackage name="lua54"/>
+      <repopackage name="lua54-lgi"/>
       <repopackage name="luit"/>
       <repopackage name="lunar-calendar"/>
       <repopackage name="lunar-calendar-gtk3-module"/>
@@ -4286,7 +4297,6 @@
       <repopackage name="which"/>
       <repopackage name="wicked"/>
       <repopackage name="wicked-service"/>
-      <repopackage name="WindowMaker"/>
       <repopackage name="wireless-regdb"/>
       <repopackage name="wireless-tools"/>
       <repopackage name="wireplumber"/>
