@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov 12 11:14:53 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add upstream patch fix-test-max-threads-unset.patch
+- Remove upstreamed patch numexpr-pr485-allow-numpy1.patch
+- Update to 2.10.1:
+  - The default number of 'safe' threads has been upgraded to 16
+    (instead of previous 8). That means that if your CPU has > 16
+    cores, the default is to use 16. You can always override this with
+    the "NUMEXPR_MAX_THREADS" environment variable.
+  - NumPy 1.23 is now the minimum supported.
+  - Preliminary support for Python 3.13. Thanks to Karolina Surma.
+  - Fix tests on nthreads detection (closes: #479). Thanks to
+    @avalentino.
+  - The build process has been modernized and now uses the
+    pyproject.toml file for more of the configuration options.
+
+-------------------------------------------------------------------
 Sat May 11 19:48:33 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Replace revert-to-numpy1.patch by numexpr-pr485-allow-numpy1.patch

@@ -18,25 +18,24 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-numexpr
-Version:        2.10.0
+Version:        2.10.1
 Release:        0
 Summary:        Numerical expression evaluator for NumPy
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pydata/numexpr/
 Source:         https://files.pythonhosted.org/packages/source/n/numexpr/numexpr-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM numexpr-pr485-allow-numpy1.patch gh#pydata/numexpr#485, see also comments in gh#pydata/numexpr#478
-Patch0:         numexpr-pr485-allow-numpy1.patch
 BuildRequires:  %{python_module devel >= 3.7}
-# Until numpy 2 is in Factory, keep allowing to build with numpy 1.x. See Patch0
-BuildRequires:  %{python_module numpy-devel >= 1.19.3}
+# PATCH-FIX-UPSTREAM: fix-test-max-threads-unset.patch gh#pydata/numexpr#491
+Patch0:         fix-test-max-threads-unset.patch
+BuildRequires:  %{python_module numpy-devel >= 1.23}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.19.3
+Requires:       python-numpy >= 1.23
 %python_subpackages
 
 %description
@@ -58,11 +57,17 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 
 %install
 %pyproject_install
+# Remove devel files
+%{python_expand #
+find %{buildroot}%{$python_sitearch} -name *.hpp -type f -delete
+find %{buildroot}%{$python_sitearch} -name *.cpp -type f -delete
+}
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
 mkdir tester
 pushd tester
+
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
 $python -B -c "import sys;import numexpr;sys.exit(0 if numexpr.test().wasSuccessful() else 1)"
 }
