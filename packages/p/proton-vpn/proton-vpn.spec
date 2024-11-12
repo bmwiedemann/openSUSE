@@ -22,40 +22,39 @@
 %global pythons python311
 %endif
 Name:           proton-vpn
-Version:        4.3.2
+Version:        4.7.4
 Release:        0
 Summary:        Official Proton VPN client
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Security
 URL:            https://github.com/ProtonVPN/proton-vpn-gtk-app
 Source:         https://github.com/ProtonVPN/proton-vpn-gtk-app/archive/refs/tags/v%{version}.tar.gz
-Patch1:         setup-data-files.patch
-BuildRequires:  %{pythons}-dbus-python
-BuildRequires:  %{pythons}-gobject
-BuildRequires:  %{pythons}-packaging
-BuildRequires:  %{pythons}-proton-vpn-api-core >= 0.21.0
-BuildRequires:  %{pythons}-proton-vpn-connection >= 0.14.2
-BuildRequires:  %{pythons}-proton-vpn-killswitch-network-manager
-BuildRequires:  %{pythons}-proton-vpn-logger
-BuildRequires:  %{pythons}-proton-vpn-network-manager-openvpn
-BuildRequires:  %{pythons}-pycairo
-BuildRequires:  %{pythons}-pytest
-BuildRequires:  %{pythons}-pytest-cov
-BuildRequires:  %{pythons}-setuptools
+BuildRequires:  %{python_module dbus-python}
+BuildRequires:  %{python_module distro}
+BuildRequires:  %{python_module gobject}
+BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module proton-core}
+BuildRequires:  %{python_module proton-vpn-api-core >= 0.25.0}
+BuildRequires:  %{python_module proton-vpn-network-manager}
+BuildRequires:  %{python_module pycairo}
+BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
 BuildRequires:  gtk3-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  update-desktop-files
 Requires:       %{pythons}-dbus-python
+Requires:       %{pythons}-distro
 Requires:       %{pythons}-gobject
 Requires:       %{pythons}-packaging
-Requires:       %{pythons}-proton-vpn-api-core >= 0.24.0
-Requires:       %{pythons}-proton-vpn-connection >= 0.14.2
-Requires:       %{pythons}-proton-vpn-killswitch-network-manager
-Requires:       %{pythons}-proton-vpn-logger
-Requires:       %{pythons}-proton-vpn-network-manager-openvpn
+Requires:       %{pythons}-proton-core
+Requires:       %{pythons}-proton-vpn-api-core >= 0.35.2
+Requires:       %{pythons}-proton-vpn-network-manager >= 0.9.1
 Requires:       %{pythons}-pycairo
+Requires:       %{pythons}-requests
 Requires:       gtk3
 Conflicts:      protonvpn-gui
 Provides:       protonvpn-app = %{version}
@@ -70,11 +69,11 @@ carefully designed to improve your online security.
 %autopatch -p1
 
 %build
-%python3_build
+%python_build
 
 %install
-%python3_install
-%fdupes %{buildroot}%{python3_sitelib}/
+%python_install
+%fdupes %{buildroot}%{python_sitelib}/
 
 mkdir -p %{buildroot}/%{_datadir}/icons/hicolor/scalable/apps/
 mkdir -p %{buildroot}/%{_datadir}/applications
@@ -91,8 +90,8 @@ cp rpmbuild/SOURCES/proton-vpn-logo.svg %{buildroot}/%{_datadir}/icons/hicolor/s
 %license LICENSE COPYING.md
 %{_datadir}/applications/proton-vpn.desktop
 %{_datadir}/icons/hicolor/*/apps/proton-vpn.*
-%{python3_sitelib}/proton/
-%{python3_sitelib}/proton_vpn_gtk_app-%{version}*.egg-info
+%{python_sitelib}/proton/
+%{python_sitelib}/proton_vpn_gtk_app-%{version}*.egg-info
 %{_bindir}/protonvpn-app
 
 %changelog

@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Nov 12 12:39:02 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Update package to 4.7.4:
+  * Fix bug when opening settings window, if installed via unsupported methods the early access toggle would crash.
+  * Fix bug when opening the settings window and advanced kill switch is enabled the settings would crash.
+  * Update kill switch and protocol label, clarifying that they can be switched only when disconnected from vpn
+  * Fix introduced regression as it was no longer deactivating the selection of protocol and kill switch while being connected to VPN
+  * Add start-app-minimized to settings window
+  * Remove killswitch dependencies in setup.py as packages have been deprecated
+  * Merge community MR to allow the app to start minimized based on CLI arguments
+  * Drop secret service package
+  * Drop logger package
+  * Fix regression when moving refreshers
+  * Move refreshers to core API
+  * Add back scheduler after memory leak fix
+  * When toggling IPv6 ensure that user is notified that a reconnection is necessary and prevent certificate refresh
+  * Add IPv6 toggle to settings window
+  * Switch back to old scheduler due to memory leak in new one
+  * Show VPN accelerator setting disabled to free users
+  * Don't display reconnect message when connected via WireGuard protocol and settings are switched
+  * Changes due to api-core refactor
+  * Request connection features via local agent if available.
+  * Added a MaximumSessionsReached event to the list of events that can be emitted.
+  * Update package URL used by early release settings toggle.
+  * Refresh certificate whenever the app receives an expired certificate event.
+  * Only display WireGuard protocol if already selected or if feature flag is enabled, otherwise hide it.
+  * Fix wrong imports after core api refactor.
+  * Implement and refresh feature flags.
+  * When early access is toggled, ensure that repo package can be downloaded, otherwise display error message.
+  * Add early access toggle to settings window.
+  * Move the scripts for generating the changelogs into a separate repo.
+  * Only allow kill switch settings modifications when disconnected from the VPN.
+  * Log the user out on session expired error while updating certificate.
+  * Implement exponential backoff when retrying to refresh certificate.
+  * Fix task scheduler after suspending/resuming the computer.
+  * Refactor settings to ensure the settings file isn't created when we retrieve it.
+  * Disable protocol selection if user is connected to vpn.
+- Remove setup-data-files.patch
+
+-------------------------------------------------------------------
 Wed May 22 11:09:03 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
 
 - Add setup-data-files.patch to fix erroneous files being installed
