@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Nov 12 13:17:08 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.13.1:
+  * release 1.13.1 (#11570)
+  * release 1.13.1-rc.1 (#11554)
+  * fix: panic for nil rule response when processing old object
+    (#11550) (#11553)
+  * fix: add 'immutable fields in the policy validation msg for
+    FluxCD' (#11549) (#11552)
+  * fix: match failure action case insensitively for validating old
+    object (#11486) (#11546)
+  * fix: add celPreconditions in autogen rules (#11542)
+  * fix: remove logic that uses annotation to skip image
+    verification (#11529) (#11537)
+  * fix(validate): custom match conditions errors (#11461) (#11543)
+  * set the defautl namespace for policy (#11505) (#11532)
+  * fix(chart): correct behavior for global image registry (#11482)
+    (#11517)
+  * fix: use webhook object instead of a list (#11516) (#11522)
+  * release chart 3.3.2 (#11512)
+  * feat: skip azure keychain based login for mcr registry (#11480)
+    (#11481)
+  * fix: switch configmap removal to use post-delete helm hook
+    (#11504) (#11508)
+  * fix: support VAP stable version v1 in the CLI (#11501) (#11502)
+  * release chart 3.3.1 (#11500)
+  * fix: use digest instead of tag for custom-sigstore-tuf
+    conformance test (#11492) (#11493)
+  * fix: add emitWarning field in v2beta1 (#11489) (#11494)
+
+-------------------------------------------------------------------
 Tue Oct 29 15:03:07 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.13.0 (boo#1232559):
