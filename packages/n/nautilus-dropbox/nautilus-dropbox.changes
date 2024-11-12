@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Nov 12 09:26:46 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2024.04.17:
+  + Add Fedora 41 to supported distros.
+  + Update libpango name for Noble Numbat and Debian 12.
+- Changes from version 2024.01.22:
+  + Collapse single-entry context menu submenus
+  + Add Debian Trixie and Fedora 40 to build matrix
+- Changes from version 2023.09.06:
+  + Add Ubuntu 23.10 to build matrix
+- Changes from version 2022.12.05:
+  + Update to use libnautilus-extension-4 and gtk4, supporting
+    Nautilus 43+.
+  + Fix various uses of deprecated APIs, such as the
+    "DeprecationWarning: isSet() is deprecated" warning.
+  + Fix colors of ignored files in `dropbox filestatus`.
+  + Remove the long-broken `dropbox puburl` command.
+  + Don't print a ticker to stderr if it's not a tty.
+- Drop 98.patch and 105.patch: fixed upsrtream.
+
+-------------------------------------------------------------------
 Thu Sep 19 06:09:05 UTC 2024 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add libgthread-2_0-0 to dependency as Requires to fix GUI
