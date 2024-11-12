@@ -1233,4 +1233,22 @@
 </comment>
     <requestid>1218729</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>8b479ca23c0c390dd5aa08ee51ba35ce</srcmd5>
+    <version>10.1.0</version>
+    <time>1731435847</time>
+    <user>anag+factory</user>
+    <comment>- Update to 10.1.0:
+  BACKEND
+    * Pea 1.21, introduced scrypt KDF as default option to improve resilience to password guessing attacks (increasing memory cost per instance) over PBKDF2 implemented in previous versions
+  CODE
+    * Fixed &quot;Ask before overwriting (in console)&quot; extraction option, now correctly sets the app in console mode superseding other options
+    * Fixed directory copy/move on Unix-like systems
+  FILE MANAGER
+    * GUI update
+  EXTRACTION and ARCHIVING
+    * Updated compression pre-sets
+</comment>
+    <requestid>1223659</requestid>
+  </revision>
 </revisionlist>

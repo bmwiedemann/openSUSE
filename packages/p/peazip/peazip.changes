@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov 12 12:28:03 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 10.1.0:
+  BACKEND
+    * Pea 1.21, introduced scrypt KDF as default option to improve resilience to password guessing attacks (increasing memory cost per instance) over PBKDF2 implemented in previous versions
+  CODE
+    * Fixed "Ask before overwriting (in console)" extraction option, now correctly sets the app in console mode superseding other options
+    * Fixed directory copy/move on Unix-like systems
+  FILE MANAGER
+    * GUI update
+  EXTRACTION and ARCHIVING
+    * Updated compression pre-sets
+
+-------------------------------------------------------------------
 Mon Oct 28 06:56:49 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 10.0.0:
