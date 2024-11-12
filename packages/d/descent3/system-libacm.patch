@@ -8,37 +8,37 @@ Date: 2024-09-06 00:26:03.502953453 +0200
  third_party/CMakeLists.txt |    1 -
  4 files changed, 3 insertions(+), 4 deletions(-)
 
-Index: Descent3-616f921e97b0fb4745a2d36de149c737bf720214/AudioEncode/CMakeLists.txt
+Index: descent3-ab3f28dc3b288ebeff868787861fc9099dae71fa/AudioEncode/CMakeLists.txt
 ===================================================================
---- Descent3-616f921e97b0fb4745a2d36de149c737bf720214.orig/AudioEncode/CMakeLists.txt
-+++ Descent3-616f921e97b0fb4745a2d36de149c737bf720214/AudioEncode/CMakeLists.txt
+--- descent3-ab3f28dc3b288ebeff868787861fc9099dae71fa.orig/AudioEncode/CMakeLists.txt
++++ descent3-ab3f28dc3b288ebeff868787861fc9099dae71fa/AudioEncode/CMakeLists.txt
 @@ -10,7 +10,7 @@ set(CPPS
  
  add_library(AudioEncode STATIC ${HEADERS} ${CPPS})
  target_link_libraries(AudioEncode PRIVATE
 -  libacm
 +  -lacm
-   plog::plog
+   logger
  )
  target_include_directories(AudioEncode PUBLIC
-Index: Descent3-616f921e97b0fb4745a2d36de149c737bf720214/Descent3/CMakeLists.txt
+Index: descent3-ab3f28dc3b288ebeff868787861fc9099dae71fa/Descent3/CMakeLists.txt
 ===================================================================
---- Descent3-616f921e97b0fb4745a2d36de149c737bf720214.orig/Descent3/CMakeLists.txt
-+++ Descent3-616f921e97b0fb4745a2d36de149c737bf720214/Descent3/CMakeLists.txt
-@@ -314,7 +314,7 @@ file(GLOB_RECURSE INCS "../lib/*.h")
- 
- add_executable(Descent3 WIN32 MACOSX_BUNDLE ${D3Icon} ${HEADERS} ${CPPS} ${INCS} ${MANIFEST} ${RC_FILE})
- target_link_libraries(Descent3 PRIVATE
--  2dlib AudioEncode bitmap cfile dd_video ddebug ddio libmve libacm
-+  2dlib AudioEncode bitmap cfile dd_video ddebug ddio libmve -lacm
-   fix grtext manage mem misc model module stream_audio linux SDL2::SDL2 plog::plog
-   music networking physics renderer rtperformance sndlib ui unzip vecmat md5
-   ${PLATFORM_LIBS})
-Index: Descent3-616f921e97b0fb4745a2d36de149c737bf720214/editor/CMakeLists.txt
+--- descent3-ab3f28dc3b288ebeff868787861fc9099dae71fa.orig/Descent3/CMakeLists.txt
++++ descent3-ab3f28dc3b288ebeff868787861fc9099dae71fa/Descent3/CMakeLists.txt
+@@ -322,7 +322,7 @@ target_link_libraries(Descent3 PRIVATE
+   fix
+   grtext
+   libmve
+-  libacm
++  -lacm
+   linux
+   logger
+   manage
+Index: descent3-ab3f28dc3b288ebeff868787861fc9099dae71fa/editor/CMakeLists.txt
 ===================================================================
---- Descent3-616f921e97b0fb4745a2d36de149c737bf720214.orig/editor/CMakeLists.txt
-+++ Descent3-616f921e97b0fb4745a2d36de149c737bf720214/editor/CMakeLists.txt
-@@ -591,7 +591,7 @@ target_link_libraries(Descent3Editor
+--- descent3-ab3f28dc3b288ebeff868787861fc9099dae71fa.orig/editor/CMakeLists.txt
++++ descent3-ab3f28dc3b288ebeff868787861fc9099dae71fa/editor/CMakeLists.txt
+@@ -588,7 +588,7 @@ target_link_libraries(Descent3Editor
      ddio
      ddebug
      libmve
@@ -47,10 +47,10 @@ Index: Descent3-616f921e97b0fb4745a2d36de149c737bf720214/editor/CMakeLists.txt
      fix
      grtext
      manage
-Index: Descent3-616f921e97b0fb4745a2d36de149c737bf720214/third_party/CMakeLists.txt
+Index: descent3-ab3f28dc3b288ebeff868787861fc9099dae71fa/third_party/CMakeLists.txt
 ===================================================================
---- Descent3-616f921e97b0fb4745a2d36de149c737bf720214.orig/third_party/CMakeLists.txt
-+++ Descent3-616f921e97b0fb4745a2d36de149c737bf720214/third_party/CMakeLists.txt
+--- descent3-ab3f28dc3b288ebeff868787861fc9099dae71fa.orig/third_party/CMakeLists.txt
++++ descent3-ab3f28dc3b288ebeff868787861fc9099dae71fa/third_party/CMakeLists.txt
 @@ -1,6 +1,5 @@
  set(CMAKE_FOLDER "third_party")
  

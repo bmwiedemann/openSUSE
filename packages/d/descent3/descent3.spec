@@ -17,23 +17,25 @@
 
 
 Name:           descent3
-%define commit  616f921e97b0fb4745a2d36de149c737bf720214
-Version:        1.6.0~g226.g616f921e
+%define commit  ab3f28dc3b288ebeff868787861fc9099dae71fa
+Version:        1.6.0~git397.ab3f28dc
 Release:        0
 Summary:        Tunnel–terrain-hybrid ship-based shooter fighting robots
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/3D/Shoot
 URL:            https://github.com/DescentDevelopers/Descent3
-Source:         https://github.com/DescentDevelopers/Descent3/archive/%commit.tar.gz
+Source:         https://github.com/jengelh/descent3/archive/%commit.tar.gz
+Source2:        https://github.com/SergiusTheBest/plog/archive/e21baecd4753f14da64ede979c5a19302618b752.tar.gz
 Patch1:         system-libacm.patch
 %if 0%{?suse_version} && 0%{?suse_version} < 1600
 BuildRequires:  gcc11-c++
+Provides:       bundled(plog)
 %else
 BuildRequires:  c++_compiler
+BuildRequires:  plog-devel
 %endif
 BuildRequires:  cmake
 BuildRequires:  libacm-devel
-BuildRequires:  plog-devel
 BuildRequires:  pkgconfig(glm)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(zlib)
@@ -55,7 +57,9 @@ mode where numerous players can compete against each other in
 different game types.
 
 %prep
-%autosetup -p1 -n Descent3-%commit
+%autosetup -p1 -n descent3-%commit -a2
+rm -Rf third_party/plog
+mv plog-* third_party/plog
 
 %build
 %if 0%{?suse_version} && 0%{?suse_version} < 1600
@@ -64,7 +68,10 @@ export CXX=g++-11
 %cmake -DCMAKE_INSTALL_BINDIR="%_libexecdir/%name" \
 	-DCMAKE_INSTALL_DATADIR="%_datadir/%name" \
 	-DCMAKE_INSTALL_DOCDIR:PATH="share/doc/packages/%name" \
-	-DFORCE_PORTABLE_INSTALL=OFF -DUSE_EXTERNAL_PLOG=ON \
+	-DFORCE_PORTABLE_INSTALL=OFF \
+%if 0%{?suse_version} >= 1600
+	-DUSE_EXTERNAL_PLOG:BOOL=ON \
+%endif
 	-DCMAKE_C_FLAGS_RELWITHDEBINFO="%optflags" \
 	-DCMAKE_CXX_FLAGS_RELWITHDEBINFO="%optflags"
 %cmake_build
