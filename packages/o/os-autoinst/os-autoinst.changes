@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 12 11:16:10 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1731365409.63aca04:
+  * Add sshIucvconn to fully_covered of the codecov
+  * Extend sshIucvconn console test coverage
+  * Prevent socat from logging into stderr inside test
+  * Improve used functions in consoles::sshIucvconn
+  * Handle expected output in t/29-backend-ipmi.t
+
+-------------------------------------------------------------------
 Sun Nov 10 03:32:25 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1731145997.c600099:
