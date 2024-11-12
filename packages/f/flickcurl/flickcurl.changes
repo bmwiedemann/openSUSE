@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 12 15:57:26 UTC 2024 - Frederic Crozat <fcrozat@suse.com>
+
+- Backport 0001-Fix-Wimplicit-function-declaration.patch and
+  0001-configure-Include-stdio.h-in-vsnprintf-check.patch from
+  upstream to fix build with gcc14.
+
+-------------------------------------------------------------------
 Fri Mar 29 09:08:20 UTC 2024 - Frederic Crozat <fcrozat@suse.com>
 
 - Own gtk-doc directory to please RPM.

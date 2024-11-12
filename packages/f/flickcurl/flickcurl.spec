@@ -28,6 +28,10 @@ Source:         http://download.dajobe.org/flickcurl/flickcurl-%{version}.tar.gz
 Source1:        baselibs.conf
 Source2:        flickcurl.changes
 Source99:       flickcurl-rpmlintrc
+# PATCH-FIX-UPSTREAM 0001-configure-Include-stdio.h-in-vsnprintf-check.patch fcrozat@suse.com -- add missing headers
+Patch0:         0001-configure-Include-stdio.h-in-vsnprintf-check.patch
+# PATCH-FIX-UPSTREAM 0001-Fix-Wimplicit-function-declaration.patch fcrozat@suse.com -- fix build with gcc14
+Patch1:         0001-Fix-Wimplicit-function-declaration.patch
 BuildRequires:  chrpath
 BuildRequires:  curl
 BuildRequires:  fdupes
@@ -101,7 +105,7 @@ to exercise the API and "flickrdf" to get RDF metadata descriptions out of
 photos, tags, and machine tags.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \

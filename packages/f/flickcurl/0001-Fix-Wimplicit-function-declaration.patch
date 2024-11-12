@@ -1,0 +1,339 @@
+From 96f263150cf025bdcf969fc9884cc90a466f54fb Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 6 May 2024 09:28:24 +0100
+Subject: [PATCH] Fix -Wimplicit-function-declaration
+
+GCC 14 and Clang 16 make this fatal by default.
+
+Bug: https://bugs.gentoo.org/927191
+---
+ src/activity.c           | 1 +
+ src/args.c               | 1 +
+ src/blog.c               | 1 +
+ src/category.c           | 1 +
+ src/collection.c         | 1 +
+ src/comments.c           | 1 +
+ src/contacts.c           | 1 +
+ src/context.c            | 1 +
+ src/exif.c               | 1 +
+ src/gallery.c            | 1 +
+ src/group.c              | 1 +
+ src/legacy-auth.c        | 1 +
+ src/members.c            | 1 +
+ src/method.c             | 1 +
+ src/note.c               | 1 +
+ src/oauth.c              | 1 +
+ src/perms.c              | 1 +
+ src/photo.c              | 1 +
+ src/photoset.c           | 1 +
+ src/sha1.c               | 1 +
+ src/size.c               | 1 +
+ src/stat.c               | 1 +
+ src/tags.c               | 1 +
+ src/ticket.c             | 1 +
+ src/user_upload_status.c | 1 +
+ 25 files changed, 25 insertions(+)
+
+diff --git a/src/activity.c b/src/activity.c
+index 8c4e919..27c4f5d 100644
+--- a/src/activity.c
++++ b/src/activity.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+diff --git a/src/args.c b/src/args.c
+index 18ab1ca..77a7128 100644
+--- a/src/args.c
++++ b/src/args.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+diff --git a/src/blog.c b/src/blog.c
+index db53c1a..3243734 100644
+--- a/src/blog.c
++++ b/src/blog.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+diff --git a/src/category.c b/src/category.c
+index 866955e..a5c8620 100644
+--- a/src/category.c
++++ b/src/category.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+diff --git a/src/collection.c b/src/collection.c
+index 1014d2b..1f2ffce 100644
+--- a/src/collection.c
++++ b/src/collection.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+diff --git a/src/comments.c b/src/comments.c
+index a362897..246a7ce 100644
+--- a/src/comments.c
++++ b/src/comments.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+diff --git a/src/contacts.c b/src/contacts.c
+index 61889af..1992823 100644
+--- a/src/contacts.c
++++ b/src/contacts.c
+@@ -24,6 +24,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+diff --git a/src/context.c b/src/context.c
+index 703dbee..8ec98f0 100644
+--- a/src/context.c
++++ b/src/context.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+diff --git a/src/exif.c b/src/exif.c
+index 2b71dc1..b4379e1 100644
+--- a/src/exif.c
++++ b/src/exif.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+diff --git a/src/gallery.c b/src/gallery.c
+index d7011b3..a6acb4a 100644
+--- a/src/gallery.c
++++ b/src/gallery.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+diff --git a/src/group.c b/src/group.c
+index 0cf7d82..48d4146 100644
+--- a/src/group.c
++++ b/src/group.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+diff --git a/src/legacy-auth.c b/src/legacy-auth.c
+index 9815d94..b9e196e 100644
+--- a/src/legacy-auth.c
++++ b/src/legacy-auth.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+diff --git a/src/members.c b/src/members.c
+index 7d9849c..01482d8 100644
+--- a/src/members.c
++++ b/src/members.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+diff --git a/src/method.c b/src/method.c
+index 11a1219..42de901 100644
+--- a/src/method.c
++++ b/src/method.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+diff --git a/src/note.c b/src/note.c
+index 5edaf36..fc68505 100644
+--- a/src/note.c
++++ b/src/note.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+diff --git a/src/oauth.c b/src/oauth.c
+index 95f09a2..8be4963 100644
+--- a/src/oauth.c
++++ b/src/oauth.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+diff --git a/src/perms.c b/src/perms.c
+index e82fb0e..64c31df 100644
+--- a/src/perms.c
++++ b/src/perms.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+diff --git a/src/photo.c b/src/photo.c
+index 8fa5e87..f6db2eb 100644
+--- a/src/photo.c
++++ b/src/photo.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ #include <ctype.h>
+ 
+ #ifdef HAVE_CONFIG_H
+diff --git a/src/photoset.c b/src/photoset.c
+index 2bd14a9..3831472 100644
+--- a/src/photoset.c
++++ b/src/photoset.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+diff --git a/src/sha1.c b/src/sha1.c
+index bcc281d..5712abd 100644
+--- a/src/sha1.c
++++ b/src/sha1.c
+@@ -92,6 +92,7 @@ A million repetitions of "a"
+ #include <string.h>
+ #include <stdarg.h>
+ #include <stdint.h>
++#include <stdlib.h>
+ 
+ #include <flickcurl.h>
+ #include <flickcurl_internal.h>
+diff --git a/src/size.c b/src/size.c
+index 2b6154c..50e45e3 100644
+--- a/src/size.c
++++ b/src/size.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+diff --git a/src/stat.c b/src/stat.c
+index 69c9827..19fc610 100644
+--- a/src/stat.c
++++ b/src/stat.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+diff --git a/src/tags.c b/src/tags.c
+index 240c699..440a531 100644
+--- a/src/tags.c
++++ b/src/tags.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+diff --git a/src/ticket.c b/src/ticket.c
+index 816de8c..b976b75 100644
+--- a/src/ticket.c
++++ b/src/ticket.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+diff --git a/src/user_upload_status.c b/src/user_upload_status.c
+index a7457ad..e89a2f5 100644
+--- a/src/user_upload_status.c
++++ b/src/user_upload_status.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+-- 
+2.47.0
+
