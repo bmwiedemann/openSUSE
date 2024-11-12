@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Tue Nov 12 13:37:33 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.144:
+  * no CLI-related changes in this release
+
+-------------------------------------------------------------------
+Tue Nov 12 13:37:23 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.143:
+  * no CLI-related changes in this release
+
+-------------------------------------------------------------------
+Tue Nov 12 13:37:02 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.142:
+  * no CLI-related changes in this release
+
+-------------------------------------------------------------------
+Tue Nov 12 13:36:47 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.141:
+  * no CLI-related changes in this release
+
+-------------------------------------------------------------------
+Tue Nov 12 13:36:30 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.140:
+  * no CLI-related changes in this release
+
+-------------------------------------------------------------------
+Tue Nov 12 13:04:35 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.139:
+  * General
+    - Fix redirects @Jougan-0 (#12607)
+  * Meshery CLI
+    - [mesheryctl] Add some prereq checks for system config gke
+      command @hexxdump (#12584)
+
+-------------------------------------------------------------------
+Tue Nov 12 09:53:32 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.138:
+  * General
+    - bump go sum w/signoff @Jougan-0 (#12605)
+  * Meshery CLI
+    - update rego to support heirachical parent annotation
+      w/signoff @Jougan-0 (#12604)
+
+-------------------------------------------------------------------
+Tue Nov 12 09:53:22 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.137:
+  * no CLI-related changes in this release
+
+-------------------------------------------------------------------
+Tue Nov 12 09:53:08 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.136:
+  * no CLI-related changes in this release
+
+-------------------------------------------------------------------
+Tue Nov 12 09:51:59 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.135:
+  * no CLI-related changes in this release
+
+-------------------------------------------------------------------
+Mon Nov  4 19:54:35 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.134:
+  * no CLI-related changes in this release
+
+-------------------------------------------------------------------
+Mon Nov  4 19:54:17 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.133:
+  * no CLI-related changes in this release
+
+-------------------------------------------------------------------
+Sat Nov  2 08:22:25 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.132:
+  * no CLI-related changes in this release
+
+-------------------------------------------------------------------
+Thu Oct 31 20:09:33 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.131:
+  * no CLI-related changes in this release
+
+-------------------------------------------------------------------
+Thu Oct 31 20:09:20 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.130:
+  * no CLI-related changes in this release
+
+-------------------------------------------------------------------
 Wed Oct 30 12:10:29 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.7.129:
