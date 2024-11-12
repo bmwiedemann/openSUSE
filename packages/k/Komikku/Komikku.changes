@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Nov 11 01:19:12 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.62.0:
+  * [Tracking] Improved dialog size adjustment and handling of errors when query trackers
+  * [Servers] Terco Scans (ES): Update
+  * [Servers] Flame Comics (EN): Update
+  * [Servers] Team-X (AR): Update
+  * [Servers] SushiScan (FR): Update
+  * [L10n] Updated Bulgarian translation
+
+-------------------------------------------------------------------
+Fri Nov  8 03:38:29 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.61.1:
+  * Fixed bad chapter and volume numbers
+- update to 1.61.0:
+  * [Tracking] Improved search results
+  * [Servers] Asura Scans (EN): Update
+  * [Servers] ComicExtra (EN): Update
+  * [Servers] Honey Manga (UK): Update
+  * [Servers] Kewn Scans (EN): Update
+  * [Servers] Manga-Tube (DE): Update
+  * [Servers] MangaCrab (ES): Update
+  * [Servers] Mint Manga (RU): Update
+  * [Servers] Read Manga (RU): Update
+  * [Servers] Reaper Scans (EN): Update
+  * [Servers] Self Manga (RU): Update
+  * [Servers] Tecno Scans (ES): Update
+  * [L10n] Updated translations
+
+-------------------------------------------------------------------
 Fri Oct 18 17:48:46 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.60.0:
