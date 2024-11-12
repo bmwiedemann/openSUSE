@@ -23,7 +23,7 @@
 # SOFTWARE.
 #
 Name:           flake-pilot
-Version:        3.0.13
+Version:        3.0.15
 Release:        0
 Summary:        Launcher for flake applications
 License:        MIT
@@ -120,7 +120,7 @@ Guest VM tools to help with firecracker workloads
 
 %build
 mkdir -p .cargo
-cp %{SOURCE1} .cargo/config
+cp %{SOURCE1} .cargo/config.toml
 make build
 %ifnarch ppc64le
 %if 0%{?suse_version} && 0%{?suse_version} >= 1600

@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Nov 05 14:40:52 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.0.14 → 3.0.15
+
+-------------------------------------------------------------------
+Tue Nov 05 14:40:29 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix vendoring
+
+  Use cargo-vendor-filterer crate
+
+-------------------------------------------------------------------
+Tue Nov 05 11:13:04 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.0.13 → 3.0.14
+
+-------------------------------------------------------------------
+Tue Nov 05 10:49:52 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed code still not using flakes config file
+
+-------------------------------------------------------------------
+Mon Nov 04 23:02:57 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow to mount podman storage in rootless mode
+
+  Temporary gain root permissions via sudo for mounting
+  and modifying instance storage. This allows for provisioning
+  transparent containers also for non root users but still
+  requires sudo to be configured properly.
+
+-------------------------------------------------------------------
+Mon Nov 04 11:48:06 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Make sure flake-ctl also reads /etc/flakes.yml
+
+  The system wide configuration file was not read by flake-ctl
+  only by the pilots. This commit fixes it
+
+-------------------------------------------------------------------
 Thu Jun 06 17:26:31 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Make clippy happy
