@@ -813,4 +813,12 @@
     <comment>- Specify proper version for libsoup dependency.</comment>
     <requestid>1145252</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>d20a795e3a71dae21101c5b65c3d67cc</srcmd5>
+    <version>3.4.8</version>
+    <time>1731435840</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1223650</requestid>
+  </revision>
 </revisionlist>

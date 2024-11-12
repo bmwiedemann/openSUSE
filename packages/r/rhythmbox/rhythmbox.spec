@@ -17,7 +17,7 @@
 
 
 Name:           rhythmbox
-Version:        3.4.7
+Version:        3.4.8
 Release:        0
 Summary:        GNOME Music Management Application
 License:        GPL-2.0-or-later
@@ -120,7 +120,7 @@ rm -rf %{buildroot}%{_libdir}/rhythmbox/plugins/rbzeitgeist/
 
 %files
 %license COPYING
-%doc AUTHORS ChangeLog DOCUMENTERS INTERNALS MAINTAINERS MAINTAINERS.old NEWS README THANKS
+%doc AUTHORS ChangeLog DOCUMENTERS MAINTAINERS MAINTAINERS.old NEWS README.md THANKS
 %doc %{_datadir}/help/C/rhythmbox/
 %{_bindir}/rhythmbox
 %{_bindir}/rhythmbox-client
