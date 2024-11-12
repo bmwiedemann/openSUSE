@@ -489,4 +489,12 @@
     <comment>New stable release (forwarded request 1072899 from iznogood)</comment>
     <requestid>1073198</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>c99b6dcb09bf627b156f914cb8a97254</srcmd5>
+    <version>44.1</version>
+    <time>1731435831</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1223637</requestid>
+  </revision>
 </revisionlist>

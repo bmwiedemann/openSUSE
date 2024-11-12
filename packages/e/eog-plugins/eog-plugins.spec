@@ -1,7 +1,7 @@
 #
 # spec file for package eog-plugins
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           eog-plugins
-Version:        44.0
+Version:        44.1
 Release:        0
 Summary:        A collection of plugins for Eye of GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            http://live.gnome.org/EyeOfGnome/Plugins
-Source:         https://download.gnome.org/sources/eog-plugins/44/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.zst
 Source99:       eog-plugins.SUSE
 
 BuildRequires:  fdupes
