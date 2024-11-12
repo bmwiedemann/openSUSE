@@ -1,0 +1,74 @@
+From a1fbba9b5b5cd41eb8623ede4e7f89b0f65602c8 Mon Sep 17 00:00:00 2001
+From: Su Yue <glass.su@suse.com>
+Date: Sun, 7 Jul 2024 15:22:49 +0800
+Subject: [PATCH 1/3] drbd.ocf: replace crm_master with ocf_promotion_score
+
+The crm_master command has been deprecated and replaced with a new
+crm_attribute --promotion option that defaults to --lifetime=reboot
+(example: crm_master -l reboot -v 10 becomes
+crm_attribute --promotion -v 10. The old command will still work for
+now, but the new one should be used if available. The new option is
+available as of CRM feature set 3.9.0).
+
+Also define ocf_promotion_score() as
+resource-agents/heartbeat/ocf-shellfuncs.in if it doesn't exist.
+
+Signed-off-by: Su Yue <glass.su@suse.com>
+---
+ scripts/drbd.ocf | 20 ++++++++++++++++----
+ 1 file changed, 16 insertions(+), 4 deletions(-)
+
+diff --git a/scripts/drbd.ocf b/scripts/drbd.ocf
+index 1d051baa550d..133aff737455 100755
+--- a/scripts/drbd.ocf
++++ b/scripts/drbd.ocf
+@@ -104,6 +104,18 @@ if ! command -v ocf_is_true &> /dev/null ; then
+ 	}
+ fi
+ 
++if ! command -v ocf_promotion_score &> /dev/null ; then
++	ocf_promotion_score() {
++		ocf_version_cmp "$OCF_RESKEY_crm_feature_set" "3.10.0"
++		res=$?
++		if [ $res -eq 2 ] || [ $res -eq 1 ] || ! have_binary "crm_master"; then
++			${HA_SBIN_DIR}/crm_attribute -p ${OCF_RESOURCE_INSTANCE} $@
++		else
++			${HA_SBIN_DIR}/crm_master -l reboot $@
++		fi
++	}
++fi
++
+ # Defaults
+ OCF_RESKEY_drbdconf_default="/etc/drbd.conf"
+ OCF_RESKEY_unfence_extra_args_default="--quiet --flock-required --flock-timeout 0 --unfence-only-if-owner-match"
+@@ -570,9 +582,9 @@ do_drbdadm() {
+ unset current_master_score
+ get_current_master_score()
+ {
+-	# only call crm_master once
++	# only call get crm master once
+ 	[[ ${current_master_score+set} ]] ||
+-	current_master_score=$(crm_master -q -l reboot -G 2>/dev/null)
++	current_master_score=$(ocf_promotion_score -q -G 2>/dev/null)
+ 	# return value of this function:
+ 	# true if master_score is present
+ 	# false if master_score is not present
+@@ -585,13 +597,13 @@ set_master_score() {
+ 	if [[ $1 -le 0 ]]; then
+ 		remove_master_score
+ 	else
+-		do_cmd ${HA_SBIN_DIR}/crm_master -Q -l reboot -v $1 &&
++		do_cmd ocf_promotion_score -Q -v $1 &&
+ 		current_master_score=$1
+ 	fi
+ }
+ 
+ remove_master_score() {
+-	do_cmd ${HA_SBIN_DIR}/crm_master -l reboot -D
++	do_cmd ocf_promotion_score -D
+ 	current_master_score=""
+ }
+ 
+-- 
+2.45.2
+

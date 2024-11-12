@@ -56,6 +56,9 @@ Patch1005:      move_fencing_from_disk_to_net_in_example.patch
 Patch1006:      pie-fix.patch
 Patch1007:      bsc-1219263_crm-fence-peer.9.sh-fix-parsing-in_ccm-crmd-fields-o.patch
 Patch1008:      bsc-1219263_crm-fence-peer.9.sh-use-join-of-node_state-to-judge-.patch
+Patch1009:      bsc-1233273_drbd.ocf-replace-crm_master-with-ocf_promotion_score.patch
+Patch1010:      bsc-1233273_drbd.ocf-update-regex-of-sed-for-new-output-from-crm.patch
+Patch1011:      bsc-1233273_drbd.ocf-update-for-OCF-1.1.patch
 Patch1099:      rpmlint-build-error.patch
 #############################################
 

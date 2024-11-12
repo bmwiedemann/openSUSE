@@ -1,0 +1,35 @@
+From 4efed473e70c91487f7834f8bf536970e9389f3f Mon Sep 17 00:00:00 2001
+From: Su Yue <glass.su@suse.com>
+Date: Sun, 7 Jul 2024 16:05:42 +0800
+Subject: [PATCH 2/3] drbd.ocf: update regex of sed for new output from
+ crm_resource
+
+Since Pacemaker-2.1.0
+crm_resource --resource "$OCF_RESOURCE_INSTANCE" --locate outputs
+'resource promotable-clone is running on: cluster02 Promoted'
+was
+'resource promotable-clone is running on: cluster02 Master'.
+
+So update the regular expression.
+
+Signed-off-by: Su Yue <glass.su@suse.com>
+---
+ scripts/drbd.ocf | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scripts/drbd.ocf b/scripts/drbd.ocf
+index 133aff737455..bbe25f38edda 100755
+--- a/scripts/drbd.ocf
++++ b/scripts/drbd.ocf
+@@ -999,7 +999,7 @@ crm_resource_locate_master()
+ 	called_crm_resource_locate=true
+ 	DRBD_PRIMARY_PEER_according_to_pcmk=$(
+ 		crm_resource --resource "$OCF_RESOURCE_INSTANCE" --locate 2>/dev/null |
+-		sed -ne 's/^.*is running on: \([^ ]*\) Master.*$/\1/p' |
++		sed -ne 's/^.*is running on: \([^ ]*\) \(Master\|Promoted\).*$/\1/p' |
+ 		grep -vix -m1 -e "$HOSTNAME")
+ }
+ 
+-- 
+2.45.2
+

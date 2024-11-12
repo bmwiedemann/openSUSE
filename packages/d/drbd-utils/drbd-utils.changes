@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 12 10:00:52 UTC 2024 - Glass Su <glass.su@suse.com>
+
+- drbd: Support and adaptations for OCF 1.1 standard (bsc#1233273)
+  * bsc-1233273_drbd.ocf-replace-crm_master-with-ocf_promotion_score.patch 
+  * bsc-1233273_drbd.ocf-update-regex-of-sed-for-new-output-from-crm.patch 
+  * bsc-1233273_drbd.ocf-update-for-OCF-1.1.patch
+
+-------------------------------------------------------------------
 Mon Mar 18 11:21:52 UTC 2024 - Glass Su <glass.su@suse.com>
 
 - drbd failover timeout because of "fence-peer helper broken" (bsc#1219263)

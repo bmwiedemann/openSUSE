@@ -1,0 +1,78 @@
+From 3baaf88af512492dd5315a50cf421fbcf51ef9b8 Mon Sep 17 00:00:00 2001
+From: Su Yue <glass.su@suse.com>
+Date: Sun, 7 Jul 2024 16:52:18 +0800
+Subject: [PATCH 3/3] drbd.ocf: update for OCF 1.1
+
+According to [1], the commit
+1. bumps drbd ocf version to 1.5
+2. updates the <version> element to 1.1 for declare support OCF 1.1.
+3. uses unique-group attribute but keeps deprecated unique attribute.
+4. advertises new role names 'Unpromoted' and 'Unpromoted' instead of
+    'Master' and 'Slave'.
+
+Because of change[4], the drbd ocf RA won't be able to support old
+names so we need to bump version of the RA.
+
+Links: https://projects.clusterlabs.org/w/development/update_resource_agent_for_ocf_1.1/
+Signed-off-by: Su Yue <glass.su@suse.com>
+---
+ scripts/drbd.ocf | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/scripts/drbd.ocf b/scripts/drbd.ocf
+index bbe25f38edda..5b213640ec38 100755
+--- a/scripts/drbd.ocf
++++ b/scripts/drbd.ocf
+@@ -233,13 +233,13 @@ meta_data() {
+ <?xml version="1.0"?>
+ <!DOCTYPE resource-agent SYSTEM "ra-api-1.dtd">
+ <!-- version attribute is version of this resource agent -->
+-<resource-agent name="drbd" version="LINBIT 1.4">
++<resource-agent name="drbd" version="LINBIT 1.5">
+ 
+ <!-- Version number of the standard this agent complies with -->
+-<version>1.0</version>
++<version>1.1</version>
+ 
+ <longdesc lang="en">
+-This resource agent manages a DRBD resource as a master/slave resource.
++This resource agent manages a DRBD resource as a promotable resource.
+ DRBD is a shared-nothing replicated storage device.
+ 
+ NOTE:
+@@ -253,10 +253,10 @@ See the DRBD User's Guide for more information.
+ https://docs.linbit.com/
+ </longdesc>
+ 
+-<shortdesc lang="en">Manages a DRBD device as a Master/Slave resource</shortdesc>
++<shortdesc lang="en">Manages a DRBD device as a promotable resource</shortdesc>
+ 
+ <parameters>
+-<parameter name="drbd_resource" unique="1" required="1">
++<parameter name="drbd_resource" unique="1" unique-group="name" required="1">
+ <longdesc lang="en">
+ The name of the drbd resource from the drbd.conf file.
+ </longdesc>
+@@ -483,8 +483,8 @@ to be generated after the failover of a "healthy" DRBD.
+ <action name="demote"	timeout="90" />
+ <action name="notify"	timeout="90" />
+ <action name="stop"    timeout="100" />
+-<action name="monitor"  timeout="20" interval="20" role="Slave" />
+-<action name="monitor"  timeout="20" interval="10" role="Master" />
++<action name="monitor"  timeout="20" interval="20" role="Unpromoted" />
++<action name="monitor"  timeout="20" interval="10" role="Promoted" />
+ <action name="meta-data"  timeout="5" />
+ <action name="validate-all" />
+ </actions>
+@@ -974,7 +974,7 @@ drbd_monitor() {
+ 	fi
+ 
+ 	case $status in
+-	(0) : "OCF_SUCCESS aka 'running/slave'" ;;
++	(0) : "OCF_SUCCESS aka 'running/unpromotable'" ;;
+ 	(1) : "OCF_ERR_GENERIC" ;;
+ 	(2) : "OCF_ERR_ARGS" ;;
+ 	(3) : "OCF_ERR_UNIMPLEMENTED" ;;
+-- 
+2.45.2
+
