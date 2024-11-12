@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 12 04:37:05 MST 2024 - carnold@suse.com
+
+- virt-builder ships with out-of-date openSUSE signing key
+  resulting in a GPG failure
+  builder-update-openSUSE.gpg-key.patch
+
+-------------------------------------------------------------------
 Tue Oct 29 07:51:25 MDT 2024 - carnold@suse.com
 
 - Update to version 1.53.4 (jsc#PED-8910)

@@ -167,4 +167,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1221478</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>44485825225e23ac104fcfffd9d4378c</srcmd5>
+    <version>1.53.4</version>
+    <time>1731435845</time>
+    <user>anag+factory</user>
+    <comment>virt-builder ships with out-of-date openSUSE signing key resulting in a GPG failure</comment>
+    <requestid>1223715</requestid>
+  </revision>
 </revisionlist>
