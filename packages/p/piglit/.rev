@@ -417,4 +417,41 @@
   * gl-1.0: Add a test for glPushAttrib/glPopAttrib</comment>
     <requestid>1196059</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>48ed7409b55e3b099fdf873977b62943</srcmd5>
+    <version>1~20241111</version>
+    <time>1731435833</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1~20241111:
+  * ARB_clear_texture: fix GL_CLEAR_TEXTURE query check for unsupported formats
+  * glsl-1.30: move tests requiring uint from glsl-1.20
+  * cl: print the failing value in r600 test
+  * framework: call destroy directly instead of using atexit
+  * glsl-1.20: loop unroll tests for uint induction var
+  * framework: move atexit call closer to init
+  * arb_bindless_texture: better test UBOs used as function parms
+  * arb_compute_shader: add a compiler test for function inlining
+  * cl: Don't use device_infos if num_device_infos == 0
+  * cl: extend cl_device_info with OpenCL 3.0 parameters
+  * cl: cl_mem_flags has CL_MEM_KERNEL_READ_AND_WRITE since 2.0
+  * cl: Fix missing OpenCL 3.0 definition
+  * ext_direct_state_access: Fix deprecated-non-prototype warning
+  * tests/egl_ext_surface_compression: skip if Wayland display connection fails
+  * perf: add a new test that measures shader IO throughput in GB/s
+  * perf: remove the glsl-compile-time test
+  * perf: remove the vertexrate test
+  * cl: fix piglit-util-cl missing clReleaseEvent()
+  * cl: fix piglit-util-cl memory leaks
+  * cl: install include_test.h
+  * tests/egl_ext_surface_compression: fix incorect executable name
+  * fix arb_query_buffer_object-coherency to warn on invalid GS results instead of fail
+  * tests: add tests for fixed-rate compression extensions
+  * registry: update gl.xml
+  * cl: Initialize device_config
+  * cl: Correct CL_DEVICE_DOUBLE_FP_CONFIG check for OpenCL &gt; 1.2
+  * cl: Add imperfect CL_DEVICE_OPENCL_C_VERSION check
+  * cl: Compile with OpenCL 3.0 support
+  * arb_gpu_shader5: Test bitfieldInsert with a base that is masked</comment>
+    <requestid>1223646</requestid>
+  </revision>
 </revisionlist>
