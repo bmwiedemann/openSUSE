@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Tue Nov 12 09:21:09 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.23.0 (boo#1233013):
+  * Security fixes
+    - Fixed path traversal by cloning/checking out crafted Git
+      repository containing .., .jj, .git paths.
+      (GHSA-88h5-6w7m-5w56; CVE-2024-51990)
+  * Breaking changes
+    - Revset function names can no longer start with a number.
+    - Evaluation error of revsets.short-prefixes configuration is
+      now reported.
+    - The HEAD@git symbol no longer resolves to the Git HEAD
+      revision. Use git_head() or @- revset expression instead. The
+      git_head template keyword now returns a boolean.
+    - Help command doesn't work recursively anymore, i.e. jj
+      workspace help root doesn't work anymore.
+    - The color label op_log from the [colors] config section now
+      only applies to the op log and not to the other places
+      operations are displayed. In almost all cases, if you
+      configured op_log before, you should use the new operation
+      label instead.
+    - Default operation log template now shows end times of
+      operations instead of start times.
+  * Deprecations
+    - git.auto-local-bookmark replaces git.auto-local-branch. The
+      latter remains supported for now (at lower precedence than
+      the former).
+  * New features
+    - Added diff options to ignore whitespace when comparing lines.
+      Whitespace changes are still highlighted.
+    - New command jj simplify-parents will remove redundant parent
+      edges.
+    - jj squash now supports -f/-t shorthands for --from/--[in]to.
+    - Initial support for shallow Git repositories has been
+      implemented. However, deepening the history of a shallow
+      repository is not yet supported.
+    - jj git clone now accepts a --depth <DEPTH> option, which
+      allows to clone the repository with a given depth.
+    - New command jj file annotate that annotates files line by
+      line. This is similar in functionality to git blame. Invoke
+      the command with jj file annotate <file_path>.  The output
+      can be customized via the templates.annotate_commit_summary
+      config variable.
+    - jj bookmark list gained a --remote REMOTE option to display
+      bookmarks belonging to a remote. This option can be combined
+      with --tracked or --conflicted.
+    - New command jj config unset that unsets config values. For
+      example, jj config unset --user user.name.
+    - jj help now has the flag --keyword (shorthand -k), which can
+      give help for some keywords (e.g. jj help -k revsets). To see
+      a list of the available keywords you can do jj help --help.
+    - New at_operation(op, expr) revset can be used in order to
+      query revisions based on historical state.
+    - String literals in filesets, revsets and templates now
+      support hex bytes (with \e as escape / shorthand for \x1b).
+    - New coalesce(revsets...) revset which returns commits in the
+      first revset in the revsets list that does not evaluate to
+      none().
+    - New template function raw_escape_sequence(...) preserves
+      escape sequences.
+    - Timestamp objects in templates now have after(date) ->
+      Boolean and before(date) -> Boolean methods for comparing
+      timestamps to other dates.
+    - New template functions pad_start(), pad_end(),
+      truncate_start(), and truncate_end() are added.
+    - Add a new template alias
+      bultin_log_compact_full_description().
+    - Added the config settings diff.color-words.context and
+      diff.git.context to control the default number of lines of
+      context shown.
+  * Fixed bugs
+    - Error on trunk() revset resolution is now handled gracefully.
+      #4616
+    - Updated the built-in diff editor scm-record to version 0.4.0,
+      which includes multiple fixes.
+
+-------------------------------------------------------------------
 Thu Oct  3 12:13:57 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.22.0:
@@ -86,7 +163,7 @@ Thu Oct  3 12:13:57 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 -------------------------------------------------------------------
 Tue Sep 10 04:57:58 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
-- update to 0.21.0:
+- update to 0.21.0 (boo#1230082):
   * Breaking changes
     - next/prev will no longer infer when to go into edit mode when
       moving from commit to commit. It now either follows the flags

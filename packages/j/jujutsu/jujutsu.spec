@@ -19,7 +19,7 @@
 %define binary_name jj
 
 Name:           jujutsu
-Version:        0.22.0
+Version:        0.23.0
 Release:        0
 Summary:        Git-compatible DVCS that is both simple and powerful
 License:        MIT
