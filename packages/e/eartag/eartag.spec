@@ -17,7 +17,7 @@
 
 
 Name:           eartag
-Version:        0.6.2
+Version:        0.6.3
 Release:        0
 Summary:        Edit audio file tags
 License:        MIT

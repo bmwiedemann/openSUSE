@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Nov  9 17:29:43 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.6.3:
+  * fileview: use self.get_rows_sorted().keys() instead of get_present_tags()
+    for extra tag filter
+  * window: Set icon name
+  * main: insert files to existing window if another instance tries to open
+    with file args
+  * meta: add argument passthrough to run script
+  * main: remove debug prints
+  * filelist: switch to selection mode on long press
+  * window: allow to translate title
+  * musicbrainz: fix closing cover tempfiles
+  * Initialize ngettext
+  * identify: Add release popover list into a scrolled window
+  * musicbrainz: Don't download thumbnails if cover download is disabled
+  * identify: Fix setting group for release row checkboxes
+  * musicbrainz: Set timeout for requests
+  * tagselectorbutton: add minimum/maximum height to popover
+  * tagselectorbutton: Apply fix from !130, but only on small screens
+  * tagselectorbutton: further reduce height
+  * update translations
+
+-------------------------------------------------------------------
 Fri Sep 27 07:32:02 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.6.2:
