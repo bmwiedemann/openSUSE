@@ -591,6 +591,9 @@ Prefer: -cni-plugins -cni
 # have choice for ansible-core >= 2.16.8 needed by ansible: ansible-core ansible-core-2.16
 Prefer: -ansible-core-2.16
 
+# choice for MozillaThunderbird-openpgp needed by MozillaThunderbird: MozillaThunderbird-openpgp-librnp sequoia-octopus-librnp
+Prefer: -sequoia-octopus-librnp
+
 # have choice for (gdm-xdm-integration or gdm-systemd) needed by gdm: gdm-systemd gdm-xdm-integration
 # gdm-systems is the standalong systemd service, but for now we stick to the xdm integration
 Prefer: -gdm-systemd
