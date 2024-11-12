@@ -137,4 +137,15 @@
   * GO-2024-3262 CVE-2024-10975 GHSA-2w5v-x29g-jw7j (forwarded request 1222887 from jfkw)</comment>
     <requestid>1222888</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b994aa1dc36d10bf376cb0a8409e70d6</srcmd5>
+    <version>0.0.20241112T145010</version>
+    <time>1731436005</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.0.20241112T145010 2024-11-12T14:50:10Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2024-3250 CVE-2024-51744 GHSA-29wx-vh33-7x7r (forwarded request 1223754 from jfkw)</comment>
+    <requestid>1223755</requestid>
+  </revision>
 </revisionlist>
