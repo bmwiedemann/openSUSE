@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov 12 09:49:28 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.22.34:
+  + help: Grammar fixes
+  + games: Add new game Australian Patience
+  + eight-off:
+    - Change double-click behavior to move to a reserve
+    - Shrink distance between foundations and main area
+  + cards:
+    - Bug fix for neoclassical themes
+    - New card theme Pixelangelo Compact
+    - Tweak the king of kearts
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Jun 11 13:32:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.22.33:
