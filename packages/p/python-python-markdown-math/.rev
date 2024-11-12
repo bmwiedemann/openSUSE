@@ -1,0 +1,22 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c1343fb4159d43f5b22b8d569aa10a83</srcmd5>
+    <version>0.8</version>
+    <time>1731436002</time>
+    <user>anag+factory</user>
+    <comment>- Fix the name of the package, it should be python-python-markdown-math
+- version update to 0.8
+  * GitLab-style math blocks are now supported in nested environments such
+    as lists.
+    - Thanks to Ran Shaham for the contribution.
+  * Tests now pass with Python-Markdown 3.3.
+  * This extension now requires Python ≥ 3.4 and Python-Markdown ≥ 3.0.
+  * Fixed deprecation warnings with Python-Markdown 3.x.
+  * Added support for GitLab-style delimiters.
+- %check: use %pyunittest rpm macro
+- Trim foreign markup from description.
+- Initial package.
+</comment>
+    <requestid>1223730</requestid>
+  </revision>
+</revisionlist>
