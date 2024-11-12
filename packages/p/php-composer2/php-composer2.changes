@@ -1,7 +1,32 @@
 -------------------------------------------------------------------
+Tue Nov 12 12:43:04 UTC 2024 - pgajdos@suse.com
+
+- version update to 2.7.9
+  2.7.9
+    Fixed Docker detection breaking on constrained environments (#12095)
+    Fixed upstream issue in bash completion script, it is recommended to update it using the completion command (#12015)
+  2.7.8
+    Added release-age, release-date and latest-release-date in the JSON output of outdated (#12053)
+    Fixed PHP 8.4 deprecation warnings
+    Fixed addressability of branches containing # signs (#12042)
+    Fixed bump command not handling some ~ constraints correctly (#12038)
+    Fixed COMPOSER_AUTH not taking precedence over ./auth.json (#12084)
+    Fixed relative: true sometimes not being respected in path repo symlinks (#12092)
+    Fixed copy from cache sometimes failing on VirtualBox shared folders (#12057)
+    Fixed PSR-4 autoloading order regression in some edge case (#12063)
+    Fixed duplicate lib-* packages causing issues when having pecl + core versions of the same PHP extension (#12093)
+    Fixed transport-options.ssl for local cert authorization being stored in lock file making them less portable (#12019)
+    Fixed memory issues when installing large binaries (#12032)
+    Fixed archive command crashing when a path cannot be realpath'd on windows (#11544)
+    API: Deprecated BasePackage::$stabilities in favor of BasePackage::STABILITIES (685add7)
+    Improved Docker detection (#12062)
+- modified sources
+  % composer.phar
+
+-------------------------------------------------------------------
 Tue Jun 11 07:12:44 UTC 2024 - pgajdos@suse.com
 
-- version update to 2.7.7
+- version update to 2.7.7 [bsc#1226181][bsc#1226182]
   2.7.7 2024-06-10
     Security: Fixed command injection via malicious git branch name (GHSA-47f6-5gq3-vx9c / CVE-2024-35241)
     Security: Fixed multiple command injections via malicious git/hg branch names (GHSA-v9qv-c7wm-wgmf / CVE-2024-35242)
