@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov 13 11:03:21 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.2.5
+  * Patch-release GraphQL-core v3.2.5, based on GraphQL.js v16.8.2.
+  * This patch-release supports Python 3.6 to 3.13.
+- from version 3.2.4
+  * Patch-release GraphQL-core v3.2.4, based on GraphQL.js v16.8.2.
+  * This patch-release supports Python 3.6 to 3.12 and includes these changes:
+    + Fix invalid original_error propagation in custom scalars
+    + Fix performance degradation in OverlappingFieldsCanBeMergedRule
+    + Support fourfold nested lists in introspection
+    + Avoid various deprecation warnings with newer Python versions
+- Adjust upstream source name in spec file
+
+-------------------------------------------------------------------
 Tue Jun 13 12:09:58 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
