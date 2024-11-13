@@ -1,5 +1,0 @@
-<package name="kmozillahelper" project="openSUSE:Factory">
-  <title>KMozillaHelper</title>
-  <description>Helper for KDE Firefox integration</description>
-  <devel project="mozilla:Factory" package="kmozillahelper"/>
-</package>
