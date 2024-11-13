@@ -34,8 +34,8 @@ Source2:        applications.keyring
 %endif
 # Needed for leap 15.5
 BuildRequires:  cmark
-BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  fdupes
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 # Both kquickimageeditor flavors provide the same CMake target name, use the devel package name instead
 # BuildRequires:  cmake(KQuickImageEditor)
 BuildRequires:  kquickimageeditor6-devel
@@ -55,9 +55,10 @@ BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
 BuildRequires:  cmake(KF6Purpose) >= %{kf6_version}
 BuildRequires:  cmake(KF6QQC2DesktopStyle) >= %{kf6_version}
 BuildRequires:  cmake(KF6Sonnet) >= %{kf6_version}
-BuildRequires:  cmake(KF6SyntaxHighlighting) >= %{kf6_version}
 BuildRequires:  cmake(KF6StatusNotifierItem) >= %{kf6_version}
+BuildRequires:  cmake(KF6SyntaxHighlighting) >= %{kf6_version}
 BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
+BuildRequires:  cmake(KUnifiedPush)
 BuildRequires:  cmake(QCoro6Core)
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
@@ -118,6 +119,7 @@ instant messaging.
 %{_kf6_plugindir}/kf6/purpose/neochatshareplugin.so
 %{_kf6_notificationsdir}/neochat.notifyrc
 %{_kf6_sharedir}/krunner/dbusplugins/plasma-runner-neochat.desktop
+%{_kf6_sharedir}/dbus-1/services/org.kde.neochat.service
 
 %files lang -f %{name}.lang
 
