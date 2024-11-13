@@ -992,4 +992,35 @@ Version 1.11.66
   * Allow to unpin redacted event (https://github.com/element-hq/matrix-react-sdk/pull/98). Contributed by @florianduros.</comment>
     <requestid>1219072</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>6dbc2c8833afe1ceec68601bbe7dc3dc</srcmd5>
+    <version>1.11.85</version>
+    <time>1731508166</time>
+    <user>anag+factory</user>
+    <comment>- Version 1.11.85
+  # Security
+- Fixes for https://github.com/element-hq/element-web/security/advisories/GHSA-w36j-v56h-q9pc
+- Fixes for https://github.com/element-hq/element-web/security/advisories/GHSA-5486-384g-mcx2
+- Update JS SDK with the fixes for https://github.com/matrix-org/matrix-js-sdk/security/advisories/GHSA-xvg8-m4x3-w6xr
+Version 1.11.84
+  ## ✨ Features
+  * Remove abandoned MSC3886, MSC3903, MSC3906 implementations (https://github.com/element-hq/element-web/pull/28274). Contributed by @t3chguy.
+  * Update to React 18 (https://github.com/element-hq/element-web/pull/24763). Contributed by @t3chguy.
+  * Deduplicate icons using Compound (https://github.com/element-hq/element-web/pull/28239). Contributed by @t3chguy.
+  * Replace legacy Tooltips with Compound tooltips (https://github.com/element-hq/element-web/pull/28231). Contributed by @t3chguy.
+  * Deduplicate icons using Compound Design Tokens (https://github.com/element-hq/element-web/pull/28219). Contributed by @t3chguy.
+  * Add reactions to html export (https://github.com/element-hq/element-web/pull/28210). Contributed by @langleyd.
+  * Remove feature\_dehydration (https://github.com/element-hq/element-web/pull/28173). Contributed by @florianduros.
+  ## 🐛 Bug Fixes
+  * Remove upgrade encryption in `DeviceListener` and `SetupEncryptionToast` (https://github.com/element-hq/element-web/pull/28299). Contributed by @florianduros.
+  * Fix 'remove alias' button in room settings (https://github.com/element-hq/element-web/pull/28269). Contributed by @Dev-Gurjar.
+  * Add back unencrypted path in `StopGapWidgetDriver.sendToDevice` (https://github.com/element-hq/element-web/pull/28295). Contributed by @florianduros.
+  * Fix other devices not being decorated as such (https://github.com/element-hq/element-web/pull/28279). Contributed by @t3chguy.
+  * Fix pill contrast in invitation dialog (https://github.com/element-hq/element-web/pull/28250). Contributed by @florianduros.
+  * Close right panel chat when minimising maximised voip widget (https://github.com/element-hq/element-web/pull/28241). Contributed by @t3chguy.
+  * Fix develop changelog parsing (https://github.com/element-hq/element-web/pull/28232). Contributed by @t3chguy.
+  * Fix Ctrl+F shortcut not working with minimised room summary card (https://github.com/element-hq/element-web/pull/28223). Contributed by @t3chguy.
+  * Fix network dropdown missing checkbox \&amp; aria-checked (https://github.com/element-hq/element-web/pull/28220). Contributed by @t3chguy.</comment>
+    <requestid>1223673</requestid>
+  </revision>
 </revisionlist>
