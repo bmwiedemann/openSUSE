@@ -1,4 +1,151 @@
 -------------------------------------------------------------------
+Sat Nov  9 16:26:26 UTC 2024 - Florian "spirit" <sp1rit@disroot.org>
+
+- Update to version 0.45.0:
+  + A big update, with tons of fixes, improvements and new stuff!
+  + Breaking changes
+    - no_gaps_when_only has been removed. See the wiki for equivalent
+      workspace rules.
+    - decoration:shadow_ variables have moved. See the wiki for the
+      new names.
+  + New features:
+    - feat: add a custom made treewide formatter (#7992)
+    - groups: add group_on_movetoworkspace (#8159)
+    - groups: add merge_groups_on_groupbar (#8362)
+    - hyprctl: add caps/num lock state for keyboards (#8145)
+    - hyprctl: add mirrorOf to hyprctl monitors
+    - hyprpm: Add option to notify on fail and keep original notify
+      (#8167)
+    - input: add snapping to floating windows (#8088)
+    - layout: add drag_into_group to control merging dragging windows
+      (#8004)
+    - layout: add merge_floated_into_tiled_on_groupbar (#8042)
+    - pointer: add default auto for no_hw_cursors
+    - protocols: Add support for hyprland-ctm-control-v1 (#8023)
+    - renderer: Add a missing texture asset and a user check
+    - renderer: add expand_undersized_textures
+    - shadow: add sharp and refactor options
+    - snap: add option border_overlap and other improvements (#8289)
+  + Fixes:
+    - IME: Fixup IME popup candidate windows position when scale is
+      not 1.0 (#8117)
+    - Makefile: fix legacyrendererdebug typo (#8214)
+    - Systemd fixes
+    - config: fix generateConfig loop (#8164)
+    - core: fix group members disappearing when you move the group to
+      another monitor (#8237)
+    - drm-lease: fix crashes and implementation (#8116)
+    - drm-syncobj: fix crash on missing timelines
+    - drm-timeline: Add check for conflicting acquire and release
+      points (#8083)
+    - group: fix moveWindowIntoGroup (#8297)
+    - groups: fix swallowing (#8223)
+    - hyprerror: fix height calc with bottom bar (#8043)
+    - hyprpm: Fix crashes due to misplaced fmt argument(s) (#8140)
+    - input: Fix VRR for constrained cursors (#6877)
+    - internal: cleanup CMonitor usage and fix a few ref hogs
+    - keybinds: fixup xkb_states for resolve_by_sym
+    - layersurface: fixup brace style
+    - layout: fix auto group when opening a new window in a
+      non-focused workspace using window rules (#8006)
+    - layout: window snapping cleanup + fixes
+    - misc: Fix bad links to wiki (#8240)
+    - monitors: fix vrr breaking monitor disconnect (#8314)
+    - notif-overlay: add a bit of padding for icons
+    - renderer: fix floating window damage (#8182)
+    - renderer: minor fixup to window rendering logic (#8359)
+    - screencopy: fix build with legacyrenderer
+    - screencopy: fix screencopy frames not being cleaned up (#8017)
+    - shaders: fixup jagged edges in texture rounded corners
+    - shadow: fix double premultiplication
+    - xwayland: minor cleanups and fixes (#8076)
+    - xwayland: minor fixups for stability (#8323)
+  + Other:
+    - Build with hyprland-session.service (#8251)
+    - config/example: add optional smart gaps to the default config
+    - defaultConfig: add a nofocus rule for weird X windows
+    - Improve hyprland-session.service (#8225)
+    - compositor: make sure we don't ret early on no surface
+    - config/layout: nuke no_gaps_when_only (#8072)
+    - config: give simple help for super+q not working
+    - core: move internal structures to monitor pointers (#8266)
+    - default/config: improve default animations
+    - defaultConfig: improve smart gaps
+    - defaultConfig: update default config values for shadows (#8360)
+    - dispatchers: allow leading whitespace in window parameter
+      (#8016)
+    - example: update desktop file to include DesktopNames
+    - example/hyprland-session.service: add support for xdg autostart
+      (#8230)
+    - foreign-toplevel-wlr: don't send updates to X11 OR windows
+    - foreign-toplevel: don't send updates to X11 OR windows
+    - gammactrl: guard pMonitor in setGamma
+    - groupbar: set locked color when groups are globally locked
+      (#8257)
+    - hyprctl: convert std::cout and std::cerr to std::println()
+    - hyprctl: move setprop into dispatchers (#8275)
+    - hyprctl: reload windowrules on reloadAll
+    - hyprerror: make hyprerror reserve space (#8040)
+    - hyprland-systemd.desktop improvements (#8318)
+    - hyprland-systemd.desktop: change name back to Hyprland (#8351)
+    - hyprland: convert std::cout and std::cerr to std::println()
+    - hyprpm: convert std::cout and std::cerr to std::println()
+    - hyprpm: disallow shallow on unknown branch
+    - input: Refocus window on scrolling if follows mouse (#8361)
+    - input: cleanup device naming logic
+    - input: ignore non-kb ls-es in refocusLastWindow
+    - internal: Move CMonitor to SP (#8178)
+    - internal: Remove some unused lambda captures (#8218)
+    - internal: check size limit in layouts (#8298)
+    - internal: few more marginal optimisations from profiling
+      (#8271)
+    - internal: improve version query and define HYPRLAND_VERSION
+      (#8034)
+    - internal: more profiling less calls and local copies (#8300)
+    - internal: optimize cursor move a bit (#8264)
+    - internal: use clampWindowSize to unify min/maxsize handling
+      (#8014)
+    - keyboard: update group state on change for the sym resolve
+      state
+    - layershell: check if workspace is valid in onMap
+    - layershell: minor cleanups and improvements to focus
+    - layersurface: round geom in arrangeLayerArray
+    - layout: deny auto-grouping a new floating window into a tiled
+      group (#8108)
+    - layout: don't snap to self and allow same-pid snaps
+    - layout: enable group rules for new floating windows (#8122)
+    - layout: move applyGroupRules() to onWindowCreated() (#8139)
+    - layout: remove unnecessary check after 45e8219 (#8037)
+    - layout: simplify the conditions to autogroup (#8120)
+    - layout: slight adjustments to snapping logic (#8273)
+    - misc: refactor version command (#8027)
+    - monitor: avoid crash on released buffer in surf
+    - monitor: modernize/refactor last legacy-handled events
+    - output/xdg-output: avoid sending events to released globals
+    - output: send enter events on late wl_output binds
+    - output: update state even if no owner exists (#8044)
+    - pointer: expand sw cursor damage box
+    - renderer: don't rely on datarootdir for local share
+    - renderer: improve api around new framebuffer changes
+    - renderer: reserve space for error at the bottom if that's set
+    - renderer: safeguard against non-sampleable currentFB in
+      blurMainFb
+    - seat: avoid sending pointless 'keymap' and 'repeat_info' events
+      (#8276)
+    - security-context: avoid UB in C macro (#8229)
+    - security-context: close client fds after disconnect
+    - security-context: implement protocol
+    - session-lock: reset seat grab on a new session lock (#8147)
+    - shaders: improve corner AA in borders shader
+    - swallow: check if swallow_regex doesn't exist (#8265)
+    - tablet: use inputMgr unified naming scheme
+    - window: properly break cycles in X11TransientFor
+    - windowrules: allow specifying max size in size window rule
+      (#8021)
+    - xcursor: don't crash on broken permissions in X themes
+    - xwm: avoid infinite parent lookup loop in lookupParentExists
+
+-------------------------------------------------------------------
 Wed Oct  9 15:11:23 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Update to version 0.44.1:
