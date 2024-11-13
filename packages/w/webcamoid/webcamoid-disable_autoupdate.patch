@@ -1,0 +1,1252 @@
+From 8f94f94b5dd81bbda348a7a708d4d67f8b151ce7 Mon Sep 17 00:00:00 2001
+From: Gonzalo Exequiel Pedone <hipersayan.x@gmail.com>
+Date: Mon, 7 Oct 2024 21:05:23 -0300
+Subject: [PATCH] Added NOCHECKUPDATES option for disable updates check when
+ compiling (issue #717).
+
+---
+ StandAlone/share/qml/SettingsDialog.qml |  2 ++
+ StandAlone/share/qml/UpdatesDialog.qml  |  5 ++--
+ StandAlone/share/ts/ca.ts               |  8 +++---
+ StandAlone/share/ts/de.ts               |  8 +++---
+ StandAlone/share/ts/el.ts               |  8 +++---
+ StandAlone/share/ts/es.ts               |  8 +++---
+ StandAlone/share/ts/et.ts               |  8 +++---
+ StandAlone/share/ts/fr.ts               |  8 +++---
+ StandAlone/share/ts/gl.ts               |  8 +++---
+ StandAlone/share/ts/he.ts               |  8 +++---
+ StandAlone/share/ts/hu.ts               |  8 +++---
+ StandAlone/share/ts/it.ts               |  8 +++---
+ StandAlone/share/ts/ja.ts               |  8 +++---
+ StandAlone/share/ts/kab.ts              |  8 +++---
+ StandAlone/share/ts/ko.ts               |  8 +++---
+ StandAlone/share/ts/nb_NO.ts            |  8 +++---
+ StandAlone/share/ts/nl.ts               |  8 +++---
+ StandAlone/share/ts/oc.ts               |  8 +++---
+ StandAlone/share/ts/pl.ts               |  8 +++---
+ StandAlone/share/ts/pt.ts               |  8 +++---
+ StandAlone/share/ts/pt_BR.ts            |  8 +++---
+ StandAlone/share/ts/ru.ts               |  8 +++---
+ StandAlone/share/ts/si.ts               |  8 +++---
+ StandAlone/share/ts/sv.ts               |  8 +++---
+ StandAlone/share/ts/tr.ts               |  8 +++---
+ StandAlone/share/ts/uk.ts               |  8 +++---
+ StandAlone/share/ts/vi.ts               |  8 +++---
+ StandAlone/share/ts/zh_CN.ts            |  8 +++---
+ StandAlone/share/ts/zh_TW.ts            |  8 +++---
+ StandAlone/src/CMakeLists.txt           |  4 +++
+ StandAlone/src/mediatools.cpp           |  4 +++
+ StandAlone/src/updates.cpp              | 19 +++++++++++++-
+ StandAlone/src/updates.h                |  4 +++
+ libAvKys/cmake/ProjectCommons.cmake     | 33 +++++++++++++------------
+ 34 files changed, 160 insertions(+), 127 deletions(-)
+
+diff --git a/StandAlone/share/qml/SettingsDialog.qml b/StandAlone/share/qml/SettingsDialog.qml
+index dcc64d9c2..a0b98a928 100644
+--- a/StandAlone/share/qml/SettingsDialog.qml
++++ b/StandAlone/share/qml/SettingsDialog.qml
+@@ -88,6 +88,8 @@ Dialog {
+                     }
+                     ItemDelegate {
+                         text: qsTr("Updates")
++                        height: updates.isEnabled? undefined: 0
++                        visible: updates.isEnabled
+                     }
+                     ItemDelegate {
+                         text: qsTr("Debug Log")
+diff --git a/StandAlone/share/qml/UpdatesDialog.qml b/StandAlone/share/qml/UpdatesDialog.qml
+index 76b4f9923..ca6d37f9a 100644
+--- a/StandAlone/share/qml/UpdatesDialog.qml
++++ b/StandAlone/share/qml/UpdatesDialog.qml
+@@ -38,7 +38,8 @@ Dialog {
+ 
+     function notifyUpdate()
+     {
+-        if (updates.notifyNewVersion
++        if (updates.isEnabled
++            && updates.notifyNewVersion
+             && showNextTime.checked
+             && webcamoidStatus == Updates.ComponentOutdated) {
+             open()
+@@ -54,7 +55,7 @@ Dialog {
+ 
+         function onNewVersionAvailable(component, latestVersion)
+         {
+-            if (component == "Webcamoid") {
++            if (updates.isEnabled && component == "Webcamoid") {
+                 updatesDialog.webcamoidStatus = updates.status("Webcamoid");
+                 updatesDialog.webcamoidLatestVersion = latestVersion;
+             }
+diff --git a/StandAlone/share/ts/ca.ts b/StandAlone/share/ts/ca.ts
+index f4fee577f..38d9969f9 100644
+--- a/StandAlone/share/ts/ca.ts
++++ b/StandAlone/share/ts/ca.ts
+@@ -527,7 +527,7 @@
+ <context>
+     <name>MediaTools</name>
+     <message>
+-        <location filename="../../src/mediatools.cpp" line="807"/>
++        <location filename="../../src/mediatools.cpp" line="811"/>
+         <source>%1/log %2.txt</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -854,7 +854,7 @@
+         <translation type="unfinished">Actualitzacions</translation>
+     </message>
+     <message>
+-        <location filename="../qml/SettingsDialog.qml" line="93"/>
++        <location filename="../qml/SettingsDialog.qml" line="95"/>
+         <source>Debug Log</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -996,12 +996,12 @@
+         <translation type="unfinished">Hi ha una versió nova disponible.</translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="73"/>
++        <location filename="../qml/UpdatesDialog.qml" line="74"/>
+         <source>Download %1 %2 NOW!</source>
+         <translation type="unfinished">Baixa %1 %2 ara</translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="80"/>
++        <location filename="../qml/UpdatesDialog.qml" line="81"/>
+         <source>Show this dialog next time</source>
+         <translation type="unfinished"></translation>
+     </message>
+diff --git a/StandAlone/share/ts/de.ts b/StandAlone/share/ts/de.ts
+index c381b5586..1911017df 100644
+--- a/StandAlone/share/ts/de.ts
++++ b/StandAlone/share/ts/de.ts
+@@ -527,7 +527,7 @@
+ <context>
+     <name>MediaTools</name>
+     <message>
+-        <location filename="../../src/mediatools.cpp" line="807"/>
++        <location filename="../../src/mediatools.cpp" line="811"/>
+         <source>%1/log %2.txt</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -854,7 +854,7 @@
+         <translation>Aktualisierungen</translation>
+     </message>
+     <message>
+-        <location filename="../qml/SettingsDialog.qml" line="93"/>
++        <location filename="../qml/SettingsDialog.qml" line="95"/>
+         <source>Debug Log</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -996,12 +996,12 @@
+         <translation>Neue Version verfügbar!</translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="73"/>
++        <location filename="../qml/UpdatesDialog.qml" line="74"/>
+         <source>Download %1 %2 NOW!</source>
+         <translation>%1 %2 JETZT herunterladen!</translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="80"/>
++        <location filename="../qml/UpdatesDialog.qml" line="81"/>
+         <source>Show this dialog next time</source>
+         <translation>Diesen Dialog beim nächsten Mal anzeigen</translation>
+     </message>
+diff --git a/StandAlone/share/ts/el.ts b/StandAlone/share/ts/el.ts
+index 8590df0b2..3791bc0aa 100644
+--- a/StandAlone/share/ts/el.ts
++++ b/StandAlone/share/ts/el.ts
+@@ -527,7 +527,7 @@
+ <context>
+     <name>MediaTools</name>
+     <message>
+-        <location filename="../../src/mediatools.cpp" line="807"/>
++        <location filename="../../src/mediatools.cpp" line="811"/>
+         <source>%1/log %2.txt</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -854,7 +854,7 @@
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../qml/SettingsDialog.qml" line="93"/>
++        <location filename="../qml/SettingsDialog.qml" line="95"/>
+         <source>Debug Log</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -996,12 +996,12 @@
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="73"/>
++        <location filename="../qml/UpdatesDialog.qml" line="74"/>
+         <source>Download %1 %2 NOW!</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="80"/>
++        <location filename="../qml/UpdatesDialog.qml" line="81"/>
+         <source>Show this dialog next time</source>
+         <translation type="unfinished"></translation>
+     </message>
+diff --git a/StandAlone/share/ts/es.ts b/StandAlone/share/ts/es.ts
+index 40b4d3ee0..777aeeb80 100644
+--- a/StandAlone/share/ts/es.ts
++++ b/StandAlone/share/ts/es.ts
+@@ -527,7 +527,7 @@
+ <context>
+     <name>MediaTools</name>
+     <message>
+-        <location filename="../../src/mediatools.cpp" line="807"/>
++        <location filename="../../src/mediatools.cpp" line="811"/>
+         <source>%1/log %2.txt</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -854,7 +854,7 @@
+         <translation>Actualizaciones</translation>
+     </message>
+     <message>
+-        <location filename="../qml/SettingsDialog.qml" line="93"/>
++        <location filename="../qml/SettingsDialog.qml" line="95"/>
+         <source>Debug Log</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -996,12 +996,12 @@
+         <translation>¡Hay una nueva versión disponible!</translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="73"/>
++        <location filename="../qml/UpdatesDialog.qml" line="74"/>
+         <source>Download %1 %2 NOW!</source>
+         <translation>Descargar %1 %2 AHORA!</translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="80"/>
++        <location filename="../qml/UpdatesDialog.qml" line="81"/>
+         <source>Show this dialog next time</source>
+         <translation>Mostrar este dialogo la próxima vez</translation>
+     </message>
+diff --git a/StandAlone/share/ts/et.ts b/StandAlone/share/ts/et.ts
+index 0658f7674..121b9cfeb 100644
+--- a/StandAlone/share/ts/et.ts
++++ b/StandAlone/share/ts/et.ts
+@@ -527,7 +527,7 @@
+ <context>
+     <name>MediaTools</name>
+     <message>
+-        <location filename="../../src/mediatools.cpp" line="807"/>
++        <location filename="../../src/mediatools.cpp" line="811"/>
+         <source>%1/log %2.txt</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -854,7 +854,7 @@
+         <translation>Värskendused</translation>
+     </message>
+     <message>
+-        <location filename="../qml/SettingsDialog.qml" line="93"/>
++        <location filename="../qml/SettingsDialog.qml" line="95"/>
+         <source>Debug Log</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -996,12 +996,12 @@
+         <translation>Uus versioon on saadaval!</translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="73"/>
++        <location filename="../qml/UpdatesDialog.qml" line="74"/>
+         <source>Download %1 %2 NOW!</source>
+         <translation>Laadi NÜÜD %1 %2 alla!</translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="80"/>
++        <location filename="../qml/UpdatesDialog.qml" line="81"/>
+         <source>Show this dialog next time</source>
+         <translation>Näita seda teadet ka järgmistel kordadel</translation>
+     </message>
+diff --git a/StandAlone/share/ts/fr.ts b/StandAlone/share/ts/fr.ts
+index 8478e442a..b6612fac4 100644
+--- a/StandAlone/share/ts/fr.ts
++++ b/StandAlone/share/ts/fr.ts
+@@ -527,7 +527,7 @@
+ <context>
+     <name>MediaTools</name>
+     <message>
+-        <location filename="../../src/mediatools.cpp" line="807"/>
++        <location filename="../../src/mediatools.cpp" line="811"/>
+         <source>%1/log %2.txt</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -854,7 +854,7 @@
+         <translation>Mises à jour</translation>
+     </message>
+     <message>
+-        <location filename="../qml/SettingsDialog.qml" line="93"/>
++        <location filename="../qml/SettingsDialog.qml" line="95"/>
+         <source>Debug Log</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -996,12 +996,12 @@
+         <translation>Nouvelle version disponible !</translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="73"/>
++        <location filename="../qml/UpdatesDialog.qml" line="74"/>
+         <source>Download %1 %2 NOW!</source>
+         <translation>Télécharger %1 %2 MAINTENANT !</translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="80"/>
++        <location filename="../qml/UpdatesDialog.qml" line="81"/>
+         <source>Show this dialog next time</source>
+         <translation>Montrer ce dialogue la prochaine fois</translation>
+     </message>
+diff --git a/StandAlone/share/ts/gl.ts b/StandAlone/share/ts/gl.ts
+index e83e7d861..c44057e3f 100644
+--- a/StandAlone/share/ts/gl.ts
++++ b/StandAlone/share/ts/gl.ts
+@@ -527,7 +527,7 @@
+ <context>
+     <name>MediaTools</name>
+     <message>
+-        <location filename="../../src/mediatools.cpp" line="807"/>
++        <location filename="../../src/mediatools.cpp" line="811"/>
+         <source>%1/log %2.txt</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -854,7 +854,7 @@
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../qml/SettingsDialog.qml" line="93"/>
++        <location filename="../qml/SettingsDialog.qml" line="95"/>
+         <source>Debug Log</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -996,12 +996,12 @@
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="73"/>
++        <location filename="../qml/UpdatesDialog.qml" line="74"/>
+         <source>Download %1 %2 NOW!</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="80"/>
++        <location filename="../qml/UpdatesDialog.qml" line="81"/>
+         <source>Show this dialog next time</source>
+         <translation type="unfinished"></translation>
+     </message>
+diff --git a/StandAlone/share/ts/he.ts b/StandAlone/share/ts/he.ts
+index d112ed008..0f24a7d3f 100644
+--- a/StandAlone/share/ts/he.ts
++++ b/StandAlone/share/ts/he.ts
+@@ -527,7 +527,7 @@
+ <context>
+     <name>MediaTools</name>
+     <message>
+-        <location filename="../../src/mediatools.cpp" line="807"/>
++        <location filename="../../src/mediatools.cpp" line="811"/>
+         <source>%1/log %2.txt</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -854,7 +854,7 @@
+         <translation>עדכונים</translation>
+     </message>
+     <message>
+-        <location filename="../qml/SettingsDialog.qml" line="93"/>
++        <location filename="../qml/SettingsDialog.qml" line="95"/>
+         <source>Debug Log</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -996,12 +996,12 @@
+         <translation>גרסה חדשה זמינה!</translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="73"/>
++        <location filename="../qml/UpdatesDialog.qml" line="74"/>
+         <source>Download %1 %2 NOW!</source>
+         <translation>להוריד את %1 %2 עכשיו!</translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="80"/>
++        <location filename="../qml/UpdatesDialog.qml" line="81"/>
+         <source>Show this dialog next time</source>
+         <translation>להציג את תיבת הדו־שיח הזו בפעם הבאה</translation>
+     </message>
+diff --git a/StandAlone/share/ts/hu.ts b/StandAlone/share/ts/hu.ts
+index 6724a7857..f4ff93631 100644
+--- a/StandAlone/share/ts/hu.ts
++++ b/StandAlone/share/ts/hu.ts
+@@ -527,7 +527,7 @@
+ <context>
+     <name>MediaTools</name>
+     <message>
+-        <location filename="../../src/mediatools.cpp" line="807"/>
++        <location filename="../../src/mediatools.cpp" line="811"/>
+         <source>%1/log %2.txt</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -854,7 +854,7 @@
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../qml/SettingsDialog.qml" line="93"/>
++        <location filename="../qml/SettingsDialog.qml" line="95"/>
+         <source>Debug Log</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -996,12 +996,12 @@
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="73"/>
++        <location filename="../qml/UpdatesDialog.qml" line="74"/>
+         <source>Download %1 %2 NOW!</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="80"/>
++        <location filename="../qml/UpdatesDialog.qml" line="81"/>
+         <source>Show this dialog next time</source>
+         <translation type="unfinished"></translation>
+     </message>
+diff --git a/StandAlone/share/ts/it.ts b/StandAlone/share/ts/it.ts
+index c5b142e85..2c68fe6b6 100644
+--- a/StandAlone/share/ts/it.ts
++++ b/StandAlone/share/ts/it.ts
+@@ -527,7 +527,7 @@
+ <context>
+     <name>MediaTools</name>
+     <message>
+-        <location filename="../../src/mediatools.cpp" line="807"/>
++        <location filename="../../src/mediatools.cpp" line="811"/>
+         <source>%1/log %2.txt</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -854,7 +854,7 @@
+         <translation type="unfinished">Aggiornamenti</translation>
+     </message>
+     <message>
+-        <location filename="../qml/SettingsDialog.qml" line="93"/>
++        <location filename="../qml/SettingsDialog.qml" line="95"/>
+         <source>Debug Log</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -996,12 +996,12 @@
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="73"/>
++        <location filename="../qml/UpdatesDialog.qml" line="74"/>
+         <source>Download %1 %2 NOW!</source>
+         <translation type="unfinished">Scarica %1 %2 SUBITO!</translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="80"/>
++        <location filename="../qml/UpdatesDialog.qml" line="81"/>
+         <source>Show this dialog next time</source>
+         <translation type="unfinished"></translation>
+     </message>
+diff --git a/StandAlone/share/ts/ja.ts b/StandAlone/share/ts/ja.ts
+index e50776d69..954ff4f23 100644
+--- a/StandAlone/share/ts/ja.ts
++++ b/StandAlone/share/ts/ja.ts
+@@ -527,7 +527,7 @@
+ <context>
+     <name>MediaTools</name>
+     <message>
+-        <location filename="../../src/mediatools.cpp" line="807"/>
++        <location filename="../../src/mediatools.cpp" line="811"/>
+         <source>%1/log %2.txt</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -854,7 +854,7 @@
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../qml/SettingsDialog.qml" line="93"/>
++        <location filename="../qml/SettingsDialog.qml" line="95"/>
+         <source>Debug Log</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -996,12 +996,12 @@
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="73"/>
++        <location filename="../qml/UpdatesDialog.qml" line="74"/>
+         <source>Download %1 %2 NOW!</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="80"/>
++        <location filename="../qml/UpdatesDialog.qml" line="81"/>
+         <source>Show this dialog next time</source>
+         <translation type="unfinished"></translation>
+     </message>
+diff --git a/StandAlone/share/ts/kab.ts b/StandAlone/share/ts/kab.ts
+index dc66338b9..45a5a1f74 100644
+--- a/StandAlone/share/ts/kab.ts
++++ b/StandAlone/share/ts/kab.ts
+@@ -527,7 +527,7 @@
+ <context>
+     <name>MediaTools</name>
+     <message>
+-        <location filename="../../src/mediatools.cpp" line="807"/>
++        <location filename="../../src/mediatools.cpp" line="811"/>
+         <source>%1/log %2.txt</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -854,7 +854,7 @@
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../qml/SettingsDialog.qml" line="93"/>
++        <location filename="../qml/SettingsDialog.qml" line="95"/>
+         <source>Debug Log</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -996,12 +996,12 @@
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="73"/>
++        <location filename="../qml/UpdatesDialog.qml" line="74"/>
+         <source>Download %1 %2 NOW!</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="80"/>
++        <location filename="../qml/UpdatesDialog.qml" line="81"/>
+         <source>Show this dialog next time</source>
+         <translation type="unfinished"></translation>
+     </message>
+diff --git a/StandAlone/share/ts/ko.ts b/StandAlone/share/ts/ko.ts
+index 1c3ce3ae7..8e25df1d8 100644
+--- a/StandAlone/share/ts/ko.ts
++++ b/StandAlone/share/ts/ko.ts
+@@ -527,7 +527,7 @@
+ <context>
+     <name>MediaTools</name>
+     <message>
+-        <location filename="../../src/mediatools.cpp" line="807"/>
++        <location filename="../../src/mediatools.cpp" line="811"/>
+         <source>%1/log %2.txt</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -854,7 +854,7 @@
+         <translation>업데이트</translation>
+     </message>
+     <message>
+-        <location filename="../qml/SettingsDialog.qml" line="93"/>
++        <location filename="../qml/SettingsDialog.qml" line="95"/>
+         <source>Debug Log</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -996,12 +996,12 @@
+         <translation>새 버전이 있습니다!</translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="73"/>
++        <location filename="../qml/UpdatesDialog.qml" line="74"/>
+         <source>Download %1 %2 NOW!</source>
+         <translation>%1 %2 지금 다운로드!</translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="80"/>
++        <location filename="../qml/UpdatesDialog.qml" line="81"/>
+         <source>Show this dialog next time</source>
+         <translation>다음에도 이 대화상자를 표시</translation>
+     </message>
+diff --git a/StandAlone/share/ts/nb_NO.ts b/StandAlone/share/ts/nb_NO.ts
+index e24ce6e3b..1b88efada 100644
+--- a/StandAlone/share/ts/nb_NO.ts
++++ b/StandAlone/share/ts/nb_NO.ts
+@@ -527,7 +527,7 @@
+ <context>
+     <name>MediaTools</name>
+     <message>
+-        <location filename="../../src/mediatools.cpp" line="807"/>
++        <location filename="../../src/mediatools.cpp" line="811"/>
+         <source>%1/log %2.txt</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -854,7 +854,7 @@
+         <translation type="unfinished">Oppdateringer</translation>
+     </message>
+     <message>
+-        <location filename="../qml/SettingsDialog.qml" line="93"/>
++        <location filename="../qml/SettingsDialog.qml" line="95"/>
+         <source>Debug Log</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -996,12 +996,12 @@
+         <translation type="unfinished">Ny versjon tilgjengelig!</translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="73"/>
++        <location filename="../qml/UpdatesDialog.qml" line="74"/>
+         <source>Download %1 %2 NOW!</source>
+         <translation type="unfinished">Last ned %1 %2 NÅ!</translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="80"/>
++        <location filename="../qml/UpdatesDialog.qml" line="81"/>
+         <source>Show this dialog next time</source>
+         <translation type="unfinished"></translation>
+     </message>
+diff --git a/StandAlone/share/ts/nl.ts b/StandAlone/share/ts/nl.ts
+index 3de3e5a45..a213f3c45 100644
+--- a/StandAlone/share/ts/nl.ts
++++ b/StandAlone/share/ts/nl.ts
+@@ -527,7 +527,7 @@
+ <context>
+     <name>MediaTools</name>
+     <message>
+-        <location filename="../../src/mediatools.cpp" line="807"/>
++        <location filename="../../src/mediatools.cpp" line="811"/>
+         <source>%1/log %2.txt</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -854,7 +854,7 @@
+         <translation>Updates</translation>
+     </message>
+     <message>
+-        <location filename="../qml/SettingsDialog.qml" line="93"/>
++        <location filename="../qml/SettingsDialog.qml" line="95"/>
+         <source>Debug Log</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -996,12 +996,12 @@
+         <translation>Nieuwe versie beschikbaar!</translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="73"/>
++        <location filename="../qml/UpdatesDialog.qml" line="74"/>
+         <source>Download %1 %2 NOW!</source>
+         <translation>Download %1 %2 NU!</translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="80"/>
++        <location filename="../qml/UpdatesDialog.qml" line="81"/>
+         <source>Show this dialog next time</source>
+         <translation>Toon dit venster volgende keer weer</translation>
+     </message>
+diff --git a/StandAlone/share/ts/oc.ts b/StandAlone/share/ts/oc.ts
+index 775b547d0..00fe985dd 100644
+--- a/StandAlone/share/ts/oc.ts
++++ b/StandAlone/share/ts/oc.ts
+@@ -527,7 +527,7 @@
+ <context>
+     <name>MediaTools</name>
+     <message>
+-        <location filename="../../src/mediatools.cpp" line="807"/>
++        <location filename="../../src/mediatools.cpp" line="811"/>
+         <source>%1/log %2.txt</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -854,7 +854,7 @@
+         <translation>Mesas a jorn</translation>
+     </message>
+     <message>
+-        <location filename="../qml/SettingsDialog.qml" line="93"/>
++        <location filename="../qml/SettingsDialog.qml" line="95"/>
+         <source>Debug Log</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -996,12 +996,12 @@
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="73"/>
++        <location filename="../qml/UpdatesDialog.qml" line="74"/>
+         <source>Download %1 %2 NOW!</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="80"/>
++        <location filename="../qml/UpdatesDialog.qml" line="81"/>
+         <source>Show this dialog next time</source>
+         <translation type="unfinished"></translation>
+     </message>
+diff --git a/StandAlone/share/ts/pl.ts b/StandAlone/share/ts/pl.ts
+index 0144c97a1..e00d893e1 100644
+--- a/StandAlone/share/ts/pl.ts
++++ b/StandAlone/share/ts/pl.ts
+@@ -527,7 +527,7 @@
+ <context>
+     <name>MediaTools</name>
+     <message>
+-        <location filename="../../src/mediatools.cpp" line="807"/>
++        <location filename="../../src/mediatools.cpp" line="811"/>
+         <source>%1/log %2.txt</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -854,7 +854,7 @@
+         <translation>Aktualizacje</translation>
+     </message>
+     <message>
+-        <location filename="../qml/SettingsDialog.qml" line="93"/>
++        <location filename="../qml/SettingsDialog.qml" line="95"/>
+         <source>Debug Log</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -996,12 +996,12 @@
+         <translation type="unfinished">Nowa wersja jest dostępna!</translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="73"/>
++        <location filename="../qml/UpdatesDialog.qml" line="74"/>
+         <source>Download %1 %2 NOW!</source>
+         <translation type="unfinished">Pobierz %1 %2 TERAZ!</translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="80"/>
++        <location filename="../qml/UpdatesDialog.qml" line="81"/>
+         <source>Show this dialog next time</source>
+         <translation type="unfinished"></translation>
+     </message>
+diff --git a/StandAlone/share/ts/pt.ts b/StandAlone/share/ts/pt.ts
+index 32d1540e6..983d069f7 100644
+--- a/StandAlone/share/ts/pt.ts
++++ b/StandAlone/share/ts/pt.ts
+@@ -527,7 +527,7 @@
+ <context>
+     <name>MediaTools</name>
+     <message>
+-        <location filename="../../src/mediatools.cpp" line="807"/>
++        <location filename="../../src/mediatools.cpp" line="811"/>
+         <source>%1/log %2.txt</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -854,7 +854,7 @@
+         <translation>Atualizações</translation>
+     </message>
+     <message>
+-        <location filename="../qml/SettingsDialog.qml" line="93"/>
++        <location filename="../qml/SettingsDialog.qml" line="95"/>
+         <source>Debug Log</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -996,12 +996,12 @@
+         <translation>Nova versão disponível!</translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="73"/>
++        <location filename="../qml/UpdatesDialog.qml" line="74"/>
+         <source>Download %1 %2 NOW!</source>
+         <translation>Descarregue %1 %2 AGORA!</translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="80"/>
++        <location filename="../qml/UpdatesDialog.qml" line="81"/>
+         <source>Show this dialog next time</source>
+         <translation>Mostrar esta caixa de diálogo na próxima vez</translation>
+     </message>
+diff --git a/StandAlone/share/ts/pt_BR.ts b/StandAlone/share/ts/pt_BR.ts
+index 3708cf653..a8c535e11 100644
+--- a/StandAlone/share/ts/pt_BR.ts
++++ b/StandAlone/share/ts/pt_BR.ts
+@@ -527,7 +527,7 @@
+ <context>
+     <name>MediaTools</name>
+     <message>
+-        <location filename="../../src/mediatools.cpp" line="807"/>
++        <location filename="../../src/mediatools.cpp" line="811"/>
+         <source>%1/log %2.txt</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -854,7 +854,7 @@
+         <translation>Atualizações</translation>
+     </message>
+     <message>
+-        <location filename="../qml/SettingsDialog.qml" line="93"/>
++        <location filename="../qml/SettingsDialog.qml" line="95"/>
+         <source>Debug Log</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -996,12 +996,12 @@
+         <translation>Nova versão disponível!</translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="73"/>
++        <location filename="../qml/UpdatesDialog.qml" line="74"/>
+         <source>Download %1 %2 NOW!</source>
+         <translation>Baixe %1 %2 AGORA!</translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="80"/>
++        <location filename="../qml/UpdatesDialog.qml" line="81"/>
+         <source>Show this dialog next time</source>
+         <translation>Mostrar esta caixa de diálogo na próxima vez</translation>
+     </message>
+diff --git a/StandAlone/share/ts/ru.ts b/StandAlone/share/ts/ru.ts
+index 72b457637..6cc5e25fc 100644
+--- a/StandAlone/share/ts/ru.ts
++++ b/StandAlone/share/ts/ru.ts
+@@ -527,7 +527,7 @@
+ <context>
+     <name>MediaTools</name>
+     <message>
+-        <location filename="../../src/mediatools.cpp" line="807"/>
++        <location filename="../../src/mediatools.cpp" line="811"/>
+         <source>%1/log %2.txt</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -854,7 +854,7 @@
+         <translation>Обновления</translation>
+     </message>
+     <message>
+-        <location filename="../qml/SettingsDialog.qml" line="93"/>
++        <location filename="../qml/SettingsDialog.qml" line="95"/>
+         <source>Debug Log</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -996,12 +996,12 @@
+         <translation>Доступна новая версия!</translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="73"/>
++        <location filename="../qml/UpdatesDialog.qml" line="74"/>
+         <source>Download %1 %2 NOW!</source>
+         <translation>Скачать %1 %2 СЕЙЧАС!</translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="80"/>
++        <location filename="../qml/UpdatesDialog.qml" line="81"/>
+         <source>Show this dialog next time</source>
+         <translation>Показать это окно в следующий раз</translation>
+     </message>
+diff --git a/StandAlone/share/ts/si.ts b/StandAlone/share/ts/si.ts
+index 61d09ce06..197b7f152 100644
+--- a/StandAlone/share/ts/si.ts
++++ b/StandAlone/share/ts/si.ts
+@@ -527,7 +527,7 @@
+ <context>
+     <name>MediaTools</name>
+     <message>
+-        <location filename="../../src/mediatools.cpp" line="807"/>
++        <location filename="../../src/mediatools.cpp" line="811"/>
+         <source>%1/log %2.txt</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -854,7 +854,7 @@
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../qml/SettingsDialog.qml" line="93"/>
++        <location filename="../qml/SettingsDialog.qml" line="95"/>
+         <source>Debug Log</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -996,12 +996,12 @@
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="73"/>
++        <location filename="../qml/UpdatesDialog.qml" line="74"/>
+         <source>Download %1 %2 NOW!</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="80"/>
++        <location filename="../qml/UpdatesDialog.qml" line="81"/>
+         <source>Show this dialog next time</source>
+         <translation type="unfinished"></translation>
+     </message>
+diff --git a/StandAlone/share/ts/sv.ts b/StandAlone/share/ts/sv.ts
+index 51180e0f6..91d0ce053 100644
+--- a/StandAlone/share/ts/sv.ts
++++ b/StandAlone/share/ts/sv.ts
+@@ -527,7 +527,7 @@
+ <context>
+     <name>MediaTools</name>
+     <message>
+-        <location filename="../../src/mediatools.cpp" line="807"/>
++        <location filename="../../src/mediatools.cpp" line="811"/>
+         <source>%1/log %2.txt</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -854,7 +854,7 @@
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../qml/SettingsDialog.qml" line="93"/>
++        <location filename="../qml/SettingsDialog.qml" line="95"/>
+         <source>Debug Log</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -996,12 +996,12 @@
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="73"/>
++        <location filename="../qml/UpdatesDialog.qml" line="74"/>
+         <source>Download %1 %2 NOW!</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="80"/>
++        <location filename="../qml/UpdatesDialog.qml" line="81"/>
+         <source>Show this dialog next time</source>
+         <translation type="unfinished"></translation>
+     </message>
+diff --git a/StandAlone/share/ts/tr.ts b/StandAlone/share/ts/tr.ts
+index 2a34236f6..dbf8e22d2 100644
+--- a/StandAlone/share/ts/tr.ts
++++ b/StandAlone/share/ts/tr.ts
+@@ -527,7 +527,7 @@
+ <context>
+     <name>MediaTools</name>
+     <message>
+-        <location filename="../../src/mediatools.cpp" line="807"/>
++        <location filename="../../src/mediatools.cpp" line="811"/>
+         <source>%1/log %2.txt</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -854,7 +854,7 @@
+         <translation>Güncellemeler</translation>
+     </message>
+     <message>
+-        <location filename="../qml/SettingsDialog.qml" line="93"/>
++        <location filename="../qml/SettingsDialog.qml" line="95"/>
+         <source>Debug Log</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -996,12 +996,12 @@
+         <translation>Yeni sürüm mevcut!</translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="73"/>
++        <location filename="../qml/UpdatesDialog.qml" line="74"/>
+         <source>Download %1 %2 NOW!</source>
+         <translation>%1 %2 ŞİMDİ indir!</translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="80"/>
++        <location filename="../qml/UpdatesDialog.qml" line="81"/>
+         <source>Show this dialog next time</source>
+         <translation>Bu iletiyi gelecek sefer göster</translation>
+     </message>
+diff --git a/StandAlone/share/ts/uk.ts b/StandAlone/share/ts/uk.ts
+index f8a2f8fa7..4055ed476 100644
+--- a/StandAlone/share/ts/uk.ts
++++ b/StandAlone/share/ts/uk.ts
+@@ -527,7 +527,7 @@
+ <context>
+     <name>MediaTools</name>
+     <message>
+-        <location filename="../../src/mediatools.cpp" line="807"/>
++        <location filename="../../src/mediatools.cpp" line="811"/>
+         <source>%1/log %2.txt</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -854,7 +854,7 @@
+         <translation>Оновлення</translation>
+     </message>
+     <message>
+-        <location filename="../qml/SettingsDialog.qml" line="93"/>
++        <location filename="../qml/SettingsDialog.qml" line="95"/>
+         <source>Debug Log</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -996,12 +996,12 @@
+         <translation>Доступна нова версія!</translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="73"/>
++        <location filename="../qml/UpdatesDialog.qml" line="74"/>
+         <source>Download %1 %2 NOW!</source>
+         <translation>Завантажити %1 %2 ЗАРАЗ!</translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="80"/>
++        <location filename="../qml/UpdatesDialog.qml" line="81"/>
+         <source>Show this dialog next time</source>
+         <translation>Показати це діалогове вікно наступного разу</translation>
+     </message>
+diff --git a/StandAlone/share/ts/vi.ts b/StandAlone/share/ts/vi.ts
+index 0c0a77de0..57c69abd3 100644
+--- a/StandAlone/share/ts/vi.ts
++++ b/StandAlone/share/ts/vi.ts
+@@ -527,7 +527,7 @@
+ <context>
+     <name>MediaTools</name>
+     <message>
+-        <location filename="../../src/mediatools.cpp" line="807"/>
++        <location filename="../../src/mediatools.cpp" line="811"/>
+         <source>%1/log %2.txt</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -854,7 +854,7 @@
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../qml/SettingsDialog.qml" line="93"/>
++        <location filename="../qml/SettingsDialog.qml" line="95"/>
+         <source>Debug Log</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -996,12 +996,12 @@
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="73"/>
++        <location filename="../qml/UpdatesDialog.qml" line="74"/>
+         <source>Download %1 %2 NOW!</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="80"/>
++        <location filename="../qml/UpdatesDialog.qml" line="81"/>
+         <source>Show this dialog next time</source>
+         <translation type="unfinished"></translation>
+     </message>
+diff --git a/StandAlone/share/ts/zh_CN.ts b/StandAlone/share/ts/zh_CN.ts
+index 9b3bace05..c8d3013f2 100644
+--- a/StandAlone/share/ts/zh_CN.ts
++++ b/StandAlone/share/ts/zh_CN.ts
+@@ -527,7 +527,7 @@
+ <context>
+     <name>MediaTools</name>
+     <message>
+-        <location filename="../../src/mediatools.cpp" line="807"/>
++        <location filename="../../src/mediatools.cpp" line="811"/>
+         <source>%1/log %2.txt</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -854,7 +854,7 @@
+         <translation>更新</translation>
+     </message>
+     <message>
+-        <location filename="../qml/SettingsDialog.qml" line="93"/>
++        <location filename="../qml/SettingsDialog.qml" line="95"/>
+         <source>Debug Log</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -996,12 +996,12 @@
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="73"/>
++        <location filename="../qml/UpdatesDialog.qml" line="74"/>
+         <source>Download %1 %2 NOW!</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="80"/>
++        <location filename="../qml/UpdatesDialog.qml" line="81"/>
+         <source>Show this dialog next time</source>
+         <translation type="unfinished"></translation>
+     </message>
+diff --git a/StandAlone/share/ts/zh_TW.ts b/StandAlone/share/ts/zh_TW.ts
+index 22263c46b..f5ce5fbeb 100644
+--- a/StandAlone/share/ts/zh_TW.ts
++++ b/StandAlone/share/ts/zh_TW.ts
+@@ -527,7 +527,7 @@
+ <context>
+     <name>MediaTools</name>
+     <message>
+-        <location filename="../../src/mediatools.cpp" line="807"/>
++        <location filename="../../src/mediatools.cpp" line="811"/>
+         <source>%1/log %2.txt</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -854,7 +854,7 @@
+         <translation>更新</translation>
+     </message>
+     <message>
+-        <location filename="../qml/SettingsDialog.qml" line="93"/>
++        <location filename="../qml/SettingsDialog.qml" line="95"/>
+         <source>Debug Log</source>
+         <translation type="unfinished"></translation>
+     </message>
+@@ -996,12 +996,12 @@
+         <translation>有新版本了！</translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="73"/>
++        <location filename="../qml/UpdatesDialog.qml" line="74"/>
+         <source>Download %1 %2 NOW!</source>
+         <translation>現在下載 %1 %2！</translation>
+     </message>
+     <message>
+-        <location filename="../qml/UpdatesDialog.qml" line="80"/>
++        <location filename="../qml/UpdatesDialog.qml" line="81"/>
+         <source>Show this dialog next time</source>
+         <translation>下次顯示這個對話框</translation>
+     </message>
+diff --git a/StandAlone/src/CMakeLists.txt b/StandAlone/src/CMakeLists.txt
+index 7c6f24005..0d12b395c 100644
+--- a/StandAlone/src/CMakeLists.txt
++++ b/StandAlone/src/CMakeLists.txt
+@@ -162,6 +162,10 @@ add_definitions(-DCOMMONS_TARGET="webcamoid"
+                 -DTARGET_ARCH="${TARGET_ARCH}"
+                 -DANDROID_OPENSSL_SUFFIX="${ANDROID_OPENSSL_SUFFIX}")
+ 
++if (NOCHECKUPDATES)
++    add_definitions(-DDISABLE_UPDATES_CHECK)
++endif ()
++
+ if (ANDROID)
+     if (ENABLE_ANDROID_DEBUGGING)
+         add_definitions(-DENABLE_ANDROID_DEBUGGING)
+diff --git a/StandAlone/src/mediatools.cpp b/StandAlone/src/mediatools.cpp
+index 672137cc7..95dd59ebf 100644
+--- a/StandAlone/src/mediatools.cpp
++++ b/StandAlone/src/mediatools.cpp
+@@ -523,12 +523,16 @@ bool MediaTools::init(const CliOptions &cliOptions)
+     this->d->m_updates = UpdatesPtr(new Updates(this->d->m_engine));
+     this->d->m_downloadManager =
+             DownloadManagerPtr(new DownloadManager(this->d->m_engine));
++
++#ifndef DISABLE_UPDATES_CHECK
+     this->d->m_updates->watch("Webcamoid",
+                               COMMONS_VERSION,
+                               "https://api.github.com/repos/webcamoid/webcamoid/releases/latest");
+     this->d->m_updates->watch("VirtualCamera",
+                               this->d->m_videoLayer->currentVCamVersion(),
+                               this->d->m_videoLayer->vcamUpdateUrl());
++#endif
++
+     QObject::connect(this->d->m_updates.data(),
+                      &Updates::newVersionAvailable,
+                      this,
+diff --git a/StandAlone/src/updates.cpp b/StandAlone/src/updates.cpp
+index d4dd74aa3..f0a2e410c 100644
+--- a/StandAlone/src/updates.cpp
++++ b/StandAlone/src/updates.cpp
+@@ -118,6 +118,15 @@ Updates::~Updates()
+     delete this->d;
+ }
+ 
++bool Updates::isEnabled() const
++{
++#ifdef DISABLE_UPDATES_CHECK
++    return false;
++#else
++    return true;
++#endif
++}
++
+ QStringList Updates::components() const
+ {
+     QStringList components;
+@@ -275,12 +284,16 @@ void Updates::setNotifyNewVersion(bool notifyNewVersion)
+ 
+ void Updates::setCheckInterval(int checkInterval)
+ {
++#ifdef DISABLE_UPDATES_CHECK
++    Q_UNUSED(checkInterval)
++#else
+     if (this->d->m_checkInterval == checkInterval)
+         return;
+ 
+     this->d->m_checkInterval = checkInterval;
+     emit this->checkIntervalChanged(checkInterval);
+     this->d->saveCheckInterval(checkInterval);
++#endif
+ }
+ 
+ void Updates::resetNotifyNewVersion()
+@@ -317,7 +330,7 @@ void Updates::watch(const QString &component,
+ 
+     this->d->m_mutex.unlock();
+ 
+-    qDebug() << "Added component" << component;
++    qInfo() << "Added component" << component;
+     this->d->m_mutex.lock();
+     this->d->m_componentsInfo
+             << ComponentInfo {component, currentVersion, currentVersion, url};
+@@ -511,7 +524,11 @@ void UpdatesPrivate::loadProperties()
+     config.beginGroup("Updates");
+     this->m_lastUpdate = config.value("lastUpdate").toDateTime();
+     this->m_notifyNewVersion = config.value("notify", true).toBool();
++#ifdef DISABLE_UPDATES_CHECK
+     this->m_checkInterval = config.value("checkInterval", 1).toInt();
++#else
++    this->m_checkInterval = 0;
++#endif
+     int size = config.beginReadArray("updateInfo");
+ 
+     for (int i = 0; i < size; i++) {
+diff --git a/StandAlone/src/updates.h b/StandAlone/src/updates.h
+index a10d8e1ac..928da47af 100644
+--- a/StandAlone/src/updates.h
++++ b/StandAlone/src/updates.h
+@@ -32,6 +32,9 @@ class Updates: public QObject
+ {
+     Q_OBJECT
+     Q_ENUMS(ComponentStatus)
++    Q_PROPERTY(bool isEnabled
++               READ isEnabled
++               CONSTANT)
+     Q_PROPERTY(QStringList components
+                READ components
+                NOTIFY componentsChanged)
+@@ -64,6 +67,7 @@ class Updates: public QObject
+                 QObject *parent=nullptr);
+         ~Updates();
+ 
++        Q_INVOKABLE bool isEnabled() const;
+         Q_INVOKABLE QStringList components() const;
+         Q_INVOKABLE QString latestVersion(const QString &component) const;
+         Q_INVOKABLE ComponentStatus status(const QString &component,
+diff --git a/libAvKys/cmake/ProjectCommons.cmake b/libAvKys/cmake/ProjectCommons.cmake
+index d440097c9..97ff03aa1 100644
+--- a/libAvKys/cmake/ProjectCommons.cmake
++++ b/libAvKys/cmake/ProjectCommons.cmake
+@@ -42,6 +42,7 @@ set(WITH_FLATPAK_VCAM ON CACHE BOOL "Enable support for the virtual camera in Fl
+ set(ANDROID_OPENSSL_SUFFIX "_3" CACHE STRING "Set OpenSSL libraries suffix")
+ set(ENABLE_ANDROID_DEBUGGING OFF CACHE BOOL "Enable debugging logs in Android")
+ set(ENABLE_IPO OFF CACHE BOOL "Enable interprocedural optimization")
++set(NOCHECKUPDATES OFF CACHE BOOL "Disable updates check")
+ set(NOALSA OFF CACHE BOOL "Disable ALSA support")
+ set(NODSHOW OFF CACHE BOOL "Disable DirectShow support")
+ set(NOFFMPEG OFF CACHE BOOL "Disable FFmpeg support")
+@@ -83,22 +84,6 @@ set(ANDROID_AD_UNIT_ID_ADAPTIVE_REWARDED_INTERSTITIAL "ca-app-pub-39402560999425
+ 
+ set(GOOGLE_PLAY_SERVICES_ADS_VERSION "23.3.0" CACHE STRING "com.google.android.gms:play-services-ads-lite version")
+ 
+-find_program(MVN_BIN mvn)
+-
+-if (ENABLE_ANDROID_ADS)
+-    if (MVN_BIN AND (ANDROID_TARGET_SDK_VERSION GREATER_EQUAL 31))
+-        set(ANDROID_IMPLEMENTATIONS "com.google.android.gms:play-services-ads-lite:${GOOGLE_PLAY_SERVICES_ADS_VERSION}" CACHE INTERNAL "")
+-    else ()
+-        if (NOT MVN_BIN)
+-            message("Warning: You must install maven for enabling ads.")
+-        endif ()
+-
+-        if (ANDROID_TARGET_SDK_VERSION LESS 31)
+-            message("Warning: The target API must be 31 or higher for enabling ads.")
+-        endif ()
+-    endif ()
+-endif ()
+-
+ if (APPLE)
+     set(BUILDDIR build)
+     set(EXECPREFIX Webcamoid.app/Contents)
+@@ -228,6 +213,22 @@ set(ANDROID_JAVA_VERSION 1.7 CACHE STRING "Mimimum Java version to use in Androi
+ set(ANDROID_JAR_DIRECTORY ${ANDROID_SDK_ROOT}/platforms/android-${ANDROID_TARGET_SDK_VERSION} CACHE INTERNAL "")
+ set(MAVEN_LOCAL_REPOSITORY "${CMAKE_BINARY_DIR}/maven/repository" CACHE INTERNAL "")
+ 
++find_program(MVN_BIN mvn)
++
++if (ENABLE_ANDROID_ADS)
++    if (MVN_BIN AND (ANDROID_TARGET_SDK_VERSION GREATER_EQUAL 31))
++        set(ANDROID_IMPLEMENTATIONS "com.google.android.gms:play-services-ads-lite:${GOOGLE_PLAY_SERVICES_ADS_VERSION}" CACHE INTERNAL "")
++    else ()
++        if (NOT MVN_BIN)
++            message("Warning: You must install maven for enabling ads.")
++        endif ()
++
++        if (ANDROID_TARGET_SDK_VERSION LESS 31)
++            message("Warning: The target API must be 31 or higher for enabling ads.")
++        endif ()
++    endif ()
++endif ()
++
+ # Force prefix and suffix. This fix broken MinGW builds in CI environments.
+ if (WIN32 AND NOT MSVC)
+     set(CMAKE_STATIC_LIBRARY_PREFIX "lib")

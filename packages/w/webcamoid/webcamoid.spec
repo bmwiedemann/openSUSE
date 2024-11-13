@@ -24,6 +24,8 @@ License:        GPL-3.0-or-later
 Group:          System/GUI/KDE
 URL:            https://webcamoid.github.io/
 Source:         https://github.com/hipersayanX/Webcamoid/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM webcamoid-disable_autoupdate.patch
+Patch0:         webcamoid-disable_autoupdate.patch
 BuildRequires:  bison
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -91,7 +93,8 @@ export CXX=g++
 test -x "$(type -p g++-13)" && export CXX=g++-13
 %cmake_qt6 \
  -DPLUGINSDIR=%{_qt6_pluginsdir} \
- -DOUTPUT_QT_PLUGINS_DIR=%{_qt6_pluginsdir}
+ -DOUTPUT_QT_PLUGINS_DIR=%{_qt6_pluginsdir} \
+ -DNOCHECKUPDATES=TRUE
 %qt6_build
 
 # generate help file
