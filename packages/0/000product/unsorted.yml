@@ -1271,7 +1271,6 @@ unsorted:
   - azure-cli 
   - azure-cli-core 
   - azure-cli-telemetry 
-  - azure-cli-test 
   - azure-storage-cpp-devel 
   - b3sum 
   - b4 
@@ -2639,6 +2638,7 @@ unsorted:
   - cosmic-ext-tweaks 
   - cosmic-files 
   - cosmic-icons 
+  - cosmic-idle 
   - cosmic-launcher 
   - cosmic-notifications 
   - cosmic-osd 
@@ -10389,7 +10389,6 @@ unsorted:
   - kmix-lang 
   - kmouth 
   - kmouth-lang 
-  - kmozillahelper 
   - kmscon 
   - kmscube 
   - kmymoney 
@@ -10769,6 +10768,9 @@ unsorted:
   - kumactl-bash-completion 
   - kumactl-fish-completion 
   - kumactl-zsh-completion 
+  - kunifiedpush 
+  - kunifiedpush-devel 
+  - kunifiedpush-lang 
   - kunitconversion-devel 
   - kup-backup 
   - kup-backup-lang 
@@ -11308,6 +11310,7 @@ unsorted:
   - libKSeExpr4 
   - libKTorrent6 
   - libKTorrent6-lang 
+  - libKUnifiedPush1 
   - libKWeatherCore6 
   - libKWeatherCore6-lang 
   - libKasten4 
@@ -11389,8 +11392,8 @@ unsorted:
   - libOpenImageDenoise2 
   - libOpenImageDenoise_core2_2_2 
   - libOpenImageDenoise_device_cpu2_2_2 
-  - libOpenImageIO2_5 
-  - libOpenImageIO_Util2_5 
+  - libOpenImageIO3_0 
+  - libOpenImageIO_Util3_0 
   - libOpenSceneGraph-devel 
   - libOpenSceneGraph161 
   - libOpenThreads-devel 
@@ -16142,7 +16145,7 @@ unsorted:
   - libs3-devel 
   - libs3-tools 
   - libsaml-devel 
-  - libsaml12 
+  - libsaml13 
   - libsamplerate-devel 
   - libsamplerate0-32bit 
   - libsane1-32bit 
@@ -16247,8 +16250,8 @@ unsorted:
   - libsharp-devel 
   - libsharp0 
   - libsharpyuv0-32bit 
-  - libshibsp-lite11 
-  - libshibsp11 
+  - libshibsp-lite12 
+  - libshibsp12 
   - libshine-devel 
   - libshine3 
   - libshout-devel 
@@ -17357,7 +17360,7 @@ unsorted:
   - libxml++30-devel 
   - libxml++40-devel 
   - libxml-security-c-devel 
-  - libxml-security-c20 
+  - libxml-security-c30 
   - libxml2-2-32bit 
   - libxml2-devel 
   - libxml2-devel-32bit 
@@ -17384,8 +17387,8 @@ unsorted:
   - libxmlsec1-gcrypt1 
   - libxmlsec1-gnutls1 
   - libxmltooling-devel 
-  - libxmltooling-lite10 
-  - libxmltooling10 
+  - libxmltooling-lite11 
+  - libxmltooling11 
   - libxmp-devel 
   - libxmp4 
   - libxosd2 
@@ -26376,6 +26379,7 @@ unsorted:
   - python310-ogr 
   - python310-oic 
   - python310-oiffile 
+  - python310-okta 
   - python310-oktaloginwrapper 
   - python310-olefile 
   - python310-oletools 
@@ -26938,7 +26942,6 @@ unsorted:
   - python310-pytest-httpx 
   - python310-pytest-instafail 
   - python310-pytest-isort 
-  - python310-pytest-json-report 
   - python310-pytest-jupyter 
   - python310-pytest-jupyter-client 
   - python310-pytest-jupyter-server 
@@ -26963,6 +26966,7 @@ unsorted:
   - python310-pytest-pyramid-server 
   - python310-pytest-qt 
   - python310-pytest-randomly 
+  - python310-pytest-recording 
   - python310-pytest-regressions 
   - python310-pytest-relaxed 
   - python310-pytest-remotedata 
@@ -29974,6 +29978,7 @@ unsorted:
   - python311-ogr 
   - python311-oic 
   - python311-oiffile 
+  - python311-okta 
   - python311-oktaloginwrapper 
   - python311-oletools 
   - python311-ollama 
@@ -30514,7 +30519,6 @@ unsorted:
   - python311-pytest-httpx 
   - python311-pytest-instafail 
   - python311-pytest-isort 
-  - python311-pytest-json-report 
   - python311-pytest-jupyter 
   - python311-pytest-jupyter-client 
   - python311-pytest-jupyter-server 
@@ -30539,6 +30543,7 @@ unsorted:
   - python311-pytest-pyramid-server 
   - python311-pytest-qt 
   - python311-pytest-randomly 
+  - python311-pytest-recording 
   - python311-pytest-regressions 
   - python311-pytest-relaxed 
   - python311-pytest-remotedata 
@@ -33606,6 +33611,7 @@ unsorted:
   - python312-ogr 
   - python312-oic 
   - python312-oiffile 
+  - python312-okta 
   - python312-oktaloginwrapper 
   - python312-olefile 
   - python312-oletools 
@@ -34167,7 +34173,6 @@ unsorted:
   - python312-pytest-httpx 
   - python312-pytest-instafail 
   - python312-pytest-isort 
-  - python312-pytest-json-report 
   - python312-pytest-jupyter 
   - python312-pytest-jupyter-client 
   - python312-pytest-jupyter-server 
@@ -34192,6 +34197,7 @@ unsorted:
   - python312-pytest-pyramid-server 
   - python312-pytest-qt 
   - python312-pytest-randomly 
+  - python312-pytest-recording 
   - python312-pytest-regressions 
   - python312-pytest-relaxed 
   - python312-pytest-remotedata 
