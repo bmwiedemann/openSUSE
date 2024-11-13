@@ -1,0 +1,15 @@
+<package name="python-pytest-recording" project="openSUSE:Factory">
+  <title>A pytest plugin that allows you recording of network interactions via VCRpy</title>
+  <description>A pytest plugin that records network interactions in your tests
+via VCR.py.
+
+Features
+ * Straightforward `pytest.mark.vcr`, that reflects
+   `VCR.use_cassettes` API;
+ * Combining multiple VCR cassettes
+ * Network access blocking;
+ * The `rewrite` recording mode that rewrites cassettes
+   from scratch.</description>
+  <devel project="devel:languages:python:pytest" package="python-pytest-recording"/>
+  <url>https://github.com/kiwicom/pytest-recording</url>
+</package>
