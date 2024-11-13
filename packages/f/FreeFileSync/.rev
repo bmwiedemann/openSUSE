@@ -310,4 +310,18 @@ It would be nice to have this application available in the default repos. </comm
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1199926</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>0fba4466a49bb3da7bc53040e80a45e5</srcmd5>
+    <version>13.8</version>
+    <time>1731435749</time>
+    <user>anag+factory</user>
+    <comment>- Update to 13.8:
+  * Support raw IPv6 server address for (S)FTP
+  * RealTimeSync: Fixed scrollbar when adding/removing folders
+  * Don't set sync direction for partial folder pairs
+  * Uniquely identify partial folder pairs in error message
+  * Fixed network login prompt not showing in Windows 11 24H2
+</comment>
+    <requestid>1223537</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Oct 31 14:31:28 UTC 2024 - pgajdos@suse.com
+
+- version update to 0.7.0
+  * This release is the first to drop Python 2 support. For Python 2 users, use <= 0.6.0.
+  * CI improvements from @Borda including dependabot and an expanded build matrix
+  * adding GH dependabot by @Borda in #432
+  * Bump the pip group with 2 updates by @dependabot in #491
+  * Update hypothesis requirement from <6.62.0 to <6.100.0 in /.github/scripts by @dependabot in #492
+  * #444: Removed pipes dependency by @BasedDepartment1 in #447
+  * Update termcolor requirement from <2.2.0 to <2.5.0 in /.github/scripts by @dependabot in #493
+  * Update mock requirement from <5.0.0 to <6.0.0 in /.github/scripts by @dependabot in #495
+  * Update pytest requirement from <=7.2.1 to <=8.1.1 in /.github/scripts by @dependabot in #494
+  * Update pytest-runner requirement from <6.0.0 to <7.0.0 in /.github/scripts by @dependabot in #496
+  * fix typo in dependabot group by @Borda in #497
+  * Update setuptools requirement from <=69.1.1 to <=69.2.0 in /.github/scripts by @dependabot in #500
+  * Update hypothesis requirement from <6.100.0 to <6.101.0 in /.github/scripts by @dependabot in #506
+  * Update levenshtein requirement from <=0.25.0 to <=0.25.1 in /.github/scripts by @dependabot in #510
+  * Use ast.Constant for recent Python versions by @wdhongtw in #526
+  * Remove future imports now that we've dropped support for Python 2 by @dbieber in #539
+  * remove six: Replace six.string_types and six.integer_types, etc. by @dbieber in #541
+  * Remove sys.version_info checks by @dbieber in #542
+  * Update setuptools requirement from <=69.2.0 to <=75.1.0 in /.github/scripts by @dependabot in #540
+  * Simplify requirements.txt by assuming Python 3 by @dbieber in #543
+  * Update hypothesis requirement from <6.101.0 to <6.113.0 in /.github/scripts by @dependabot in #544
+  * Remove mock in favor of unittest.mock by @dbieber in #545
+  * Update pytest requirement from <=8.1.1 to <=8.3.3 in /.github/scripts by @dependabot in #546
+  * Update label used by dependabot by @dbieber in #547
+  * Update levenshtein requirement from <=0.25.1 to <=0.26.0 in /.github/scripts by @dependabot in #548
+  * Upgrade pylint version by @dbieber in #549
+  * Run github action on pull_request by @dbieber in #550
+  * Add current system MSYS check by @bonfy in #278
+  * Remove .format in favor of f-strings by @dbieber in #551
+  * Remove six from console, eliminates six entirely by @dbieber in #552
+  * Move asyncio imports and update docs by @dbieber in #553
+  * Include Python 3.13 in github actions by @dbieber in #554
+  * Continue upgrade of codebase to Python 3 by @dbieber in #556
+  * update required Python 3.7 in setup.py by @Borda in #555
+  * Lint improvements and type safety by @dbieber in #558
+  * ci: expand build matrix for major OS by @Borda in #490
+  * Replace Python 2 type hints with real type annotations by @dbieber in #559
+- Replace upstreamed patch:
+  - python-fire-no-mock.patch
+  - support-python-311.patch
+
+-------------------------------------------------------------------
 Tue Feb  7 01:05:45 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.5.0: 

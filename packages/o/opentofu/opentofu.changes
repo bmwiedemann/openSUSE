@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 12 06:51:32 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.8.5:
+  * Prepare for the v1.8.6 release (#2137)
+  * v1.8 Backport: Fix regression of backend reinit detection when
+    backend schema has required arguments (#2135)
+  * Partially unknown provider functions arguments fixed (#2127)
+    (#2133)
+
+-------------------------------------------------------------------
 Thu Oct 24 08:28:04 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.8.4:

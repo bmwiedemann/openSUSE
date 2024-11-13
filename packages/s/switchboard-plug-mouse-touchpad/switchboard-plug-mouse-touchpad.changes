@@ -1,0 +1,140 @@
+------------------------------------------------------------------
+Wed Nov 12 03:00:00 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- Require switchboard at runtime
+
+-------------------------------------------------------------------
+Wed Aug 28 19:12:43 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.1:
+  * Improved screen reader compatibility
+  * Updated translations
+
+-------------------------------------------------------------------
+Fri Aug  9 09:48:29 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.0:
+  * Redesigned, easier to read views with more helpful descriptions
+  * Add "Cycle windows" and "Move active window to workspace" as gesture options
+  * Updated translations
+- update to 7.0.0:
+  * Updated translations
+- update to 6.1.0:
+  * New toggle for “Double-tap and move to drag”
+  * Updated translations
+- update to 6.0.0:
+  * Multitouch gesture options
+  * Add more snap points to pointer speed sliders
+  * Multitouch gesture options
+  * Redesigned touchpad settings
+  * Updated translations
+- update to 2.4.2:
+  * Updated translations
+- update to 2.4.1:
+  * Fix stretched switches when using large text
+  * Updated translations
+- update to 2.4.0:
+  * Add Dwell Click and Pointer size settings
+  * Also listen to secondary button clicks when selecting Primary Button
+  * Updated translations
+- switch url to github, as we don't want to link to a different OS
+
+-------------------------------------------------------------------
+Wed Dec 18 15:39:33 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.3.1:
+  * Clicking: Lessen scope (#116)
+  * Clicking: Fix issue with LTR primary button selection (#112)
+
+-------------------------------------------------------------------
+Mon Nov 25 20:39:57 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.3.0:
+  * POTFILES: Remove MouseSettings
+  * AppData: Add releases data (#107)
+  * Add Release to Actions
+  * Add Gettext Updates to Actions
+  * Remove in-tree packaging (#102)
+  * Clicking: Use GLib.Settings (#99)
+  * Add szl to languages
+  * Remove unused languages
+
+-------------------------------------------------------------------
+Fri Apr 19 19:52:15 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.2.0:
+  * New upstream release.
+
+-------------------------------------------------------------------
+Fri Dec 28 17:04:47 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Restore proper grammar.
+
+-------------------------------------------------------------------
+Thu Nov  8 02:29:41 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Add regex for filtering provided libraries
+
+-------------------------------------------------------------------
+Wed Oct 17 18:59:14 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.1.4:
+  * New upstream release.
+- Drop switchboard-plug-mouse-touchpad-0.1.2_gschema.patch
+
+-------------------------------------------------------------------
+Mon Jun 11 12:45:51 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.1.3:
+  * New upstream release.
+
+-------------------------------------------------------------------
+Sat Jun  9 02:31:02 UTC 2018 - avvissu@yandex.by
+
+- Switch to github
+- Switch to meson
+- Add COPYING and README files
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Tue Jun 13 14:45:32 UTC 2017 - jengelh@inai.de
+
+- Made orthographic fixes to description.
+
+-------------------------------------------------------------------
+Tue Feb  7 15:53:31 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.1.2:
+  * Implement Preferences URL Specification
+  * GeneralSection.vala: Give the switcher a large width request 
+    to set the size group size
+  * MouseSection.vala': Make sure we're expanding the scale
+  * TouchpadSection.vala: Make sure we're expanding the click 
+    method combo
+  * mouse-touchpad.vala: construct not static
+  * Horizontal and natural scrolling options insensitive when 
+    scrolling is disabled
+- Update patch:
+  * switchboard-plug-mouse-touchpad-0.1.2_gschema.patch
+
+-------------------------------------------------------------------
+Tue Nov  1 04:32:55 UTC 2016 - avvissu@yandex.by
+
+- Update to 0.1.1.2:
+  * TouchpadSection.vala:
+  * Add a click method switch
+  * Set click method to none when the switch is inactive
+  * make the combobox insensitive when switch is inactive
+- Update switchboard-plug-mouse-touchpad_gschema.patch
+  
+-------------------------------------------------------------------
+Sun Sep 18 22:26:18 UTC 2016 - avvissu@yandex.by
+
+- Update to 0.1.1.1
+- Add switchboard-plug-mouse-touchpad_gschema.patch
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Sat Sep 26 07:18:41 UTC 2015 - and.november@opensuse.org
+
+- initial package (version 0.1) for build.opensuse.org

@@ -1,0 +1,60 @@
+--- a/src/core/lib/promise/party.h.orig	2024-11-11 14:00:44.490673887 +0100
++++ a/src/core/lib/promise/party.h	2024-11-11 14:02:48.118488108 +0100
+@@ -271,6 +271,7 @@
+           Crash(
+               "unreachable: promises should not be repolled after completion");
+       }
++      return false;
+     }
+ 
+     // Outside party poll: check whether the spawning party has completed this
+@@ -283,6 +284,7 @@
+         case State::kResult:
+           return std::move(result_);
+       }
++      return Pending{};
+     }
+ 
+     void Destroy() override { this->Unref(); }
+--- a/src/core/lib/transport/call_state.h.orig	2024-11-11 07:50:17.722436657 +0100
++++ a/src/core/lib/transport/call_state.h	2024-11-11 14:42:59.094684115 +0100
+@@ -93,6 +93,7 @@
+       case ClientToServerPullState::kTerminated:
+         return "Terminated";
+     }
++    return "";
+   }
+   template <typename Sink>
+   friend void AbslStringify(Sink& out, ClientToServerPullState state) {
+@@ -123,6 +124,7 @@
+       case ClientToServerPushState::kFinished:
+         return "Finished";
+     }
++    return "";
+   }
+   template <typename Sink>
+   friend void AbslStringify(Sink& out, ClientToServerPushState state) {
+@@ -177,6 +179,7 @@
+       case ServerToClientPullState::kTerminated:
+         return "Terminated";
+     }
++    return "";
+   }
+   template <typename Sink>
+   friend void AbslStringify(Sink& out, ServerToClientPullState state) {
+@@ -214,6 +217,7 @@
+       case ServerToClientPushState::kFinished:
+         return "Finished";
+     }
++    return "";
+   }
+   template <typename Sink>
+   friend void AbslStringify(Sink& out, ServerToClientPushState state) {
+@@ -244,6 +248,7 @@
+       case ServerTrailingMetadataState::kPulledCancel:
+         return "PulledCancel";
+     }
++    return "";
+   }
+   template <typename Sink>
+   friend void AbslStringify(Sink& out, ServerTrailingMetadataState state) {

@@ -54,7 +54,7 @@ ExclusiveArch:  donotbuild
 
 Name:           python-distributed%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2024.8.2
+Version:        2024.11.1
 Release:        0
 Summary:        Library for distributed computing with Python
 License:        BSD-3-Clause

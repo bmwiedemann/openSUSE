@@ -20,7 +20,7 @@
 %define soname  libbelle-sip
 %define sover   1
 Name:           belle-sip
-Version:        5.3.37
+Version:        5.3.95
 Release:        0
 Summary:        C object-oriented SIP Stack
 License:        GPL-3.0-or-later

@@ -1,7 +1,7 @@
 #
 # spec file for package python-fire
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,26 +18,22 @@
 
 %define skip_python2 1
 Name:           python-fire
-Version:        0.5.0
+Version:        0.7.0
 Release:        0
 Summary:        A library for automatically generating command line interfaces
 License:        Apache-2.0
 URL:            https://github.com/google/python-fire
 Source:         https://files.pythonhosted.org/packages/source/f/fire/fire-%{version}.tar.gz
 # Based on https://github.com/google/python-fire/pull/265/files
-Patch0:         python-fire-no-mock.patch
-Patch1:         support-python-311.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six
 Requires:       python-termcolor
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Levenshtein}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module termcolor}
 # /SECTION
 %python_subpackages
@@ -61,6 +57,7 @@ interfaces (CLIs) from a Python object.
 
 %files %{python_files}
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/fire
+%{python_sitelib}/fire-*.egg-info
 
 %changelog

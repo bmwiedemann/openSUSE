@@ -50,7 +50,6 @@ BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xorg-libinput)
 BuildRequires:  pkgconfig(zlib)
-Recommends:     %{name}-lang = %{version}-%{release}
 
 %description
 System Configuration and Control Center for LXQt

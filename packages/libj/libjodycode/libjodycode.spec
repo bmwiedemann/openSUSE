@@ -1,7 +1,7 @@
 #
 # spec file for package libjodycode
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,8 +23,8 @@ Release:        0
 Summary:        Shared code used by several utilities written by Jody Bruchon
 License:        MIT
 Group:          Development/Libraries/C and C++
-URL:            https://github.com/jbruchon/libjodycode
-Source0:        https://github.com/jbruchon/libjodycode/archive/refs/tags/v%{version}.tar.gz
+URL:            https://codeberg.org/jbruchon/libjodycode
+Source0:        https://codeberg.org/jbruchon/libjodycode/archive/v%{version}.tar.gz
 BuildRequires:  gcc
 BuildRequires:  make
 
@@ -47,7 +47,7 @@ Group:          System/Libraries
 libjodycode is a software code library containing code shared among several of the programs written by Jody Bruchon such as imagepile, jdupes, winregfs, and zeromerge. These shared pieces of code were copied between each program as they were updated. As the number of programs increased and keeping these pieces of code synced became more annoying, the decision was made to combine all of them into a single reusable shared library.
 
 %prep
-%setup -q
+%setup -q -n %name
 
 %build
 %make_build

@@ -17,7 +17,7 @@
 
 
 Name:           sopwith
-Version:        2.5.0
+Version:        2.7.0
 Release:        0
 Summary:        SDL port of the %{name} game
 License:        GPL-2.0-or-later
@@ -27,10 +27,10 @@ Source0:        https://github.com/fragglet/sdl-sopwith/releases/download/sdl-so
 Source1:        https://github.com/fragglet/sdl-sopwith/releases/download/sdl-sopwith-%{version}/sdl-sopwith-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 Source3:        %{name}.png
-BuildRequires:  SDL2-devel
-BuildRequires:  SDL2_gfx-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  pkgconfig(SDL2_gfx)
+BuildRequires:  pkgconfig(sdl2)
 
 %description
 This is a port of the classic computer game "Sopwith" to run on modern
@@ -45,7 +45,7 @@ computers and operating systems.
 
 %install
 %make_install
-rm -rf %{buildroot}%{_datadir}/doc/sdl-%{name}
+rm -r %{buildroot}%{_datadir}/doc/sdl-%{name}
 
 cat > %{name}.desktop <<EOF
 [Desktop Entry]
@@ -75,8 +75,10 @@ cp -r maps %{buildroot}%{_datadir}/%{name}
 %{_datadir}/%{name}/
 %{_datadir}/%{name}/*
 %{_mandir}/man5/sopwith.cfg.5%{?ext_man}
+%{_mandir}/man5/sopwith-mission.5%{?ext_man}
 %{_mandir}/man6/%{name}*
 %{_datadir}/applications/*%{name}.desktop
+%{_datadir}/metainfo/io.github.fragglet.sdl_sopwith.metainfo.xml
 %{_datadir}/icons/hicolor/
 
 %changelog

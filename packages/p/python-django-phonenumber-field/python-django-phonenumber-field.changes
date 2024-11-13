@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Nov 11 15:34:55 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 8.0.0
+  Breaking Changes:
+  * formfields.PhoneNumberField with a region now display national phone
+    numbers in the national format instead of PHONENUMBER_DEFAULT_FORMAT.
+  * Add a DB converter for the model field, fixing values_list() of 
+    PhoneNumberField
+  * RegionalPhoneNumberWidget becomes the default widget for the 
+    formfields.PhoneNumberField.
+  * The formfields.PhoneNumberField no longer sets the input_type attribute 
+    of its widget to tel. That behavior did not make sense for the existing 
+    PhoneNumberPrefixWidget and was dropped.
+  * Remove PhoneNumberInternationalFallbackWidget. Use 
+    phonenumber_field.widgets.RegionalPhoneNumberWidget instead.
+  * Move validation from widgets to the form fields.
+  Some Changes:
+  * Add support for Django 5.0
+  * Drop support for Django 4.1
+  * Drop support for Python 3.7
+  * Add support for Python 3.12
+  * Restore PhoneNumberPrefixWidget number input on form errors
+  * Set PhoneNumberInternationalFallbackWidget input_type to tel
+  * Evolve PhoneNumberInternationalWidget to RegionalPhoneNumberWidget
+
+-------------------------------------------------------------------
 Tue Oct 24 12:29:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - use setuptools_scm to get proper version in metadata

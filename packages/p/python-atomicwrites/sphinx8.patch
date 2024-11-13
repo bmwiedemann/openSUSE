@@ -1,0 +1,10 @@
+Index: atomicwrites-1.4.1/docs/conf.py
+===================================================================
+--- atomicwrites-1.4.1.orig/docs/conf.py
++++ atomicwrites-1.4.1/docs/conf.py
+@@ -105,4 +105,4 @@ epub_copyright = '2015, Markus Unterwadi
+ epub_exclude_files = ['search.html']
+ 
+ # Example configuration for intersphinx: refer to the Python standard library.
+-intersphinx_mapping = {'http://docs.python.org/': None}
++intersphinx_mapping = {'python': ('http://docs.python.org/', None)}

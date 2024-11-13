@@ -1,0 +1,101 @@
+------------------------------------------------------------------
+Wed Nov 12 03:00:00 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- Require switchboard at runtime
+
+-------------------------------------------------------------------
+Wed Oct 23 20:11:49 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.1:
+  * Updated translations
+
+-------------------------------------------------------------------
+Fri Aug  9 08:16:13 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.0:
+  * Fix missing link to audio settings for some headphones
+  * Updated translations
+- update to 2.3.6:
+  * Updated translations
+- update to 2.3.5:
+  * Fix a vulnerability that would allow a device to be paired without 
+    explicit user authorization (CVE-2021-21367)
+- update to 2.3.4:
+  * Fallback to device type when name is not available
+  * Show "Discovering" indicator in an overlay bar
+  * Updated translations
+- update to 2.3.3:
+  * Fix crash on devices without Bluetooth
+  * Move "forget device" button to each device row
+  * Updated translations
+- update to 2.3.2:
+  * Updated translations
+- update to 2.3.1:
+  * Updated translations
+- switch url to github, as we don't want to link to a different OS
+
+-------------------------------------------------------------------
+Mon Nov  4 14:41:15 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.3.0:
+  * README: Update weblate badge
+  * Add Release to Actions (#91)
+  * Remove deb packaging from master (#92)
+  * Delete CODE_OF_CONDUCT.md
+  * Add Linter to CI (#85)
+  * Add linter exceptions to DBus interface
+  * Lint MainView, Agent, and Manager (#86)
+  * Test using GitHub CI (#84)
+  * build: fix install path for switchboard plug (#81)
+  * Plug: Change code name to RDNN
+  * Add pairing Agent (#50)
+  * Merge remote-tracking branch 'weblate/master'
+  * Update extra POTFILES
+
+-------------------------------------------------------------------
+Thu May  2 16:25:08 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.2.2:
+  * New upstream release.
+
+-------------------------------------------------------------------
+Mon Mar  4 03:29:52 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.2.1:
+  * New upstream release.
+
+-------------------------------------------------------------------
+Thu Nov  8 02:29:33 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Add regex for filtering provided libraries
+
+-------------------------------------------------------------------
+Wed Oct 17 18:56:54 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.1.2:
+  * New upstream release.
+
+-------------------------------------------------------------------
+Mon Jun 11 12:44:20 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.1.1:
+  * New upstream release.
+
+-------------------------------------------------------------------
+Sat Jun  9 02:31:02 UTC 2018 - avvissu@yandex.by
+
+- Switch to github
+- Switch to meson
+- Add COPYING and README files
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Sat Jun  3 16:24:31 UTC 2017 - avvissu@yandex.by
+
+- Add wingpanel-indicator-bluetooth as required dependence
+
+-------------------------------------------------------------------
+Thu Feb 23 17:37:14 UTC 2017 - avvissu@yandex.by
+
+- Initial package
+

@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-tagulous
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-django-tagulous
-Version:        1.3.3
+Version:        2.1.0
 Release:        0
 License:        BSD-3-Clause
 Summary:        Fabulous Tagging for Django
-Url:            http://radiac.net/projects/django-tagulous/
+URL:            http://radiac.net/projects/django-tagulous/
 Group:          Development/Languages/Python
-Source:         https://files.pythonhosted.org/packages/source/d/django-tagulous/django-tagulous-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+Source:         https://github.com/radiac/django-tagulous/archive/refs/tags/v%{version}.tar.gz#/django-tagulous-%{version}.tar.gz
 BuildRequires:  %{python_module Django}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-Django
 Suggests:       python-jasmine
 Suggests:       python-psycopg2
@@ -44,13 +44,12 @@ Fabulous Tagging for Django.
 
 %prep
 %setup -q -n django-tagulous-%{version}
-sed -i '/addopts/d' setup.cfg
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -58,8 +57,9 @@ export PYTHONPATH=${PWD}
 %pytest
 
 %files %{python_files}
-%doc README.rst
+%doc README.md
 %license LICENSE
-%{python_sitelib}/*tagulous*/
+%{python_sitelib}/tagulous/
+%{python_sitelib}/django_tagulous-%{version}*info/
 
 %changelog

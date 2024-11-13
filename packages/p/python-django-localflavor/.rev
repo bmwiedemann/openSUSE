@@ -56,4 +56,14 @@
     * Added support for Python 3.10 and 3.11.</comment>
     <requestid>1082316</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>fe22f6df69375585cfc9132f174a975e</srcmd5>
+    <version>4.0</version>
+    <time>1731435714</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1222737 from mcalabkova
+
+- Add upstream dj5.patch to fix tests with new Django</comment>
+    <requestid>1223457</requestid>
+  </revision>
 </revisionlist>

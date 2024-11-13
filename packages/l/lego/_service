@@ -3,11 +3,11 @@
     <param name="url">https://github.com/go-acme/lego</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v4.19.2</param>
-    <param name="versionformat">@PARENT_TAG@</param>
-    <param name="changesgenerate">enable</param>
-    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="revision">v4.20.2</param>
     <param name="match-tag">v*</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="changesgenerate">enable</param>
   </service>
   <service name="set_version" mode="manual">
   </service>

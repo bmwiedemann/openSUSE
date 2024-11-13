@@ -56,4 +56,27 @@
     <comment></comment>
     <requestid>1199616</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>27f3bf38ae1fed60b003d9e92dc4bae7</srcmd5>
+    <version>1.1.18</version>
+    <time>1731435809</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.1.18:
+  * Add support for Python 3.13
+  * Migrate Blockwise to use taskspec
+  * Migrate shuffle and merge to `P2PBarrierTask`
+  * Improve Aggregation docstring explicitly mentionning
+    SeriesGroupBy
+  * Migrate P2P shuffle and merge to TaskSpec
+  * Internal cleanup of P2P code
+  * Fix meta calculation for to_datetime
+  * Fix ``Merge`` divisions after filtering partitions
+
+- update to 1.1.15:
+  * Add concatenate flag to .compute()
+  * Import from tokenize
+
+- Update to 1.1.6:</comment>
+    <requestid>1223589</requestid>
+  </revision>
 </revisionlist>

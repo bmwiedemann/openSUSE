@@ -114,4 +114,24 @@
   * Use correct setup/teardown method names.</comment>
     <requestid>1196146</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>29c4ae9942b46f8395653a94e791f442</srcmd5>
+    <version>3.4.3</version>
+    <time>1731435725</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.4.3:
+  * Do not raise AttributeError when parsing non-string UUIDs
+  * Overridable Union meta
+  * remove pytz
+  * remove polyfill for dataclasses
+  * remove aniso8601, mock, iso8601
+  * support python 3.13
+  * remove README.rst, leave only README.md
+  * CI: format check using Ruff
+  * CI: fix tests on Python 3.13
+  * Actually run the tests in python 3.12 and 3.13 and remove snapshottest
+    dependency
+- Remove patch support-pytest-8.patch, included upstream.</comment>
+    <requestid>1223493</requestid>
+  </revision>
 </revisionlist>

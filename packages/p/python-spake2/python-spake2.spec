@@ -17,14 +17,13 @@
 
 
 Name:           python-spake2
-Version:        0.8
+Version:        0.9
 Release:        0
 Summary:        Pure-Python SPAKE2
 License:        MIT
 URL:            http://github.com/warner/python-spake2
 Source:         https://files.pythonhosted.org/packages/source/s/spake2/spake2-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#warner/python-spake2#16
-Patch0:         support-python-312.patch
+BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module hkdf}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -32,6 +31,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-cryptography
 Requires:       python-hkdf
 BuildArch:      noarch
 %python_subpackages

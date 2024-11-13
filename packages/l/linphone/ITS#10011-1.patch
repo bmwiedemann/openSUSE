@@ -1,0 +1,29 @@
+commit b260205fd58de81feea10083df16c1c058d5813d
+Author: Sam James <sam@gentoo.org>
+Date:   Thu Feb 9 23:20:51 2023 +0000
+
+    ITS#10011 servers: fix -Wstrict-prototypes
+    
+    For more information, see LWN.net [0] or LLVM's Discourse [1], the Gentoo wiki [2],
+    or the (new) c-std-porting mailing list [3].
+    
+    [0] https://lwn.net/Articles/913505/
+    [1] https://discourse.llvm.org/t/configure-script-breakage-with-the-new-werror-implicit-function-declaration/65213
+    [2] https://wiki.gentoo.org/wiki/Modern_C_porting
+    [3] hosted at lists.linux.dev.
+    
+    Signed-off-by: Sam James <sam@gentoo.org>
+
+diff --git a/servers/slapd/syslog.c b/servers/slapd/syslog.c
+index 47ea1c6d9d..50f30530f9 100644
+--- a/servers/slapd/syslog.c
++++ b/servers/slapd/syslog.c
+@@ -209,7 +209,7 @@ openlog(const char *ident, int logstat, int logfac)
+ }
+ 
+ void
+-closelog()
++closelog(void)
+ {
+ 	(void)close(LogFile);
+ 	LogFile = -1;

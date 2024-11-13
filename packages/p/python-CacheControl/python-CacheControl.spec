@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-CacheControl
-Version:        0.14.0
+Version:        0.14.1
 Release:        0
 Summary:        Caching library for Python requests
 License:        Apache-2.0

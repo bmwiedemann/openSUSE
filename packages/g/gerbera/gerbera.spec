@@ -21,7 +21,7 @@
 %endif
 
 Name:           gerbera
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        UPnP Media Server
 License:        GPL-2.0-only
@@ -72,6 +72,8 @@ compatible devices.
 
 %prep
 %autosetup -p1
+
+rm -f web/.gitignore
 
 # server test hardcodes alpha strings
 sed -i -e '/test_server/d' test/CMakeLists.txt

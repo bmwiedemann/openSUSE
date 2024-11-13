@@ -2229,4 +2229,14 @@ for 12.3</comment>
   * profiles: whitelist xfce mousepad pkexec action (bsc#1232231)</comment>
     <requestid>1221403</requestid>
   </revision>
+  <revision rev="242" vrev="1">
+    <srcmd5>9e3852bf2c8c8dca537ee27075b1ba71</srcmd5>
+    <version>1550+20241111.762abac</version>
+    <time>1731435587</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1550+20241111.762abac:
+  * profiles: whitelist additional upower charging-limit action (bsc#1232835)
+  * profiles: xfce4-power-manager (bsc#1232244) (forwarded request 1223371 from wfrisch)</comment>
+    <requestid>1223372</requestid>
+  </revision>
 </revisionlist>

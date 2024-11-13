@@ -513,4 +513,12 @@
     <comment>update libzip to 1.11.1 (forwarded request 1219621 from yannboyer_dev)</comment>
     <requestid>1219773</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>ae402b0a987c35afabb2e2fd3faa57a5</srcmd5>
+    <version>1.11.2</version>
+    <time>1731435594</time>
+    <user>anag+factory</user>
+    <comment>update libzip to 1.11.2 (forwarded request 1222538 from yannboyer_dev)</comment>
+    <requestid>1223409</requestid>
+  </revision>
 </revisionlist>

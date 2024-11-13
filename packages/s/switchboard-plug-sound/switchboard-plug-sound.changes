@@ -1,0 +1,115 @@
+------------------------------------------------------------------
+Wed Nov 12 03:00:00 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- Require switchboard at runtime
+
+-------------------------------------------------------------------
+Fri Aug  9 12:38:56 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.0:
+  * Control the volume of individual apps
+  * Include missing output items in search results
+  * Updated translations
+- update to 2.3.3:
+  * Plug: place contents in a Clamp
+  * Output: more vertical layout
+  * InputPanel: better use vertical space
+  * OutputPanel: Remove extra margin
+  * Set volume scales sensitive based on device
+  * OutputPanel: include screen reader shortcut
+  * fix crash
+  * Metainfo Improvements
+- update to 2.3.2:
+  * Use device form factor when available to assign more accurate icons
+  * Updated translations
+- update to 2.3.1:
+  * Provide a fallback device icon in case none is available
+  * More helpful placeholder text when no input devices are found
+  * Updated translations
+- update to 2.3.0:
+  * Show device icons
+  * Switch to enable the screen reader
+  * Updated translations
+- update to 2.2.7:
+  * Updated translations
+- update to 2.2.6:
+  * Smoother transition when navigating away from this view
+  * Updated translations
+- update to 2.2.5:
+  * Fix crash with PulseAudio's echo cancellation plugin
+  * Updated translations
+- update to 2.2.4:
+  * Updated translations
+- update to 2.2.3:
+  * Updated translations
+- switch url to github, as we don't want to link to a different OS
+
+-------------------------------------------------------------------
+Mon Nov 25 20:43:38 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.2.2:
+  * Add Release to Actions
+  * Add Gettext Updates to Actions
+  * Add Lint to CI (#128)
+  * fix code style issues
+  * run installation in CI (#129)
+  * Test with GitHub CI (#127)
+  * Delete FUNDING.yml
+  * Delete CODE_OF_CONDUCT.md
+  * README: Fix weblate badge
+  * Add volume scale event sound (#124)
+  * build: fix install path for switchboard plug (#121)
+  * Plug: Change code name to RDNN
+  * Merge remote-tracking branch 'weblate/master'
+  * Create FUNDING.yml
+
+-------------------------------------------------------------------
+Thu May  2 16:28:15 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.2.1:
+  * Merge branch 'origin/master' into Weblate.
+  * Release 2.2.0
+  * Change devices approach (#83)
+
+-------------------------------------------------------------------
+Mon Mar  4 03:32:05 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.1.3:
+  * Fix output layout to match old style and other panel (#102)
+  * vapi: Fix binding of PulseAudio.ExtStreamRestoreInfo (#94)
+  * Fix label casing according to HIG (#91)
+  * Rework event alerts (#92)
+  * Use correct syntax for array parameter in libpulse-ext.vapi
+  * Merge branch 'origin/master' into Weblate
+  * Travis: use juno-unstable docker (#87)
+
+-------------------------------------------------------------------
+Thu Nov  8 02:29:54 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Add regex for filtering provided libraries
+
+-------------------------------------------------------------------
+Wed Oct 17 19:03:29 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.1.2:
+  * Update profiles in vapi (#82)
+  * Added screenshot (#79)
+  * Plug search fixes (#78)
+  * balance slider has_origin = false (#76)
+  * Enable clicking on whole row to select device (#75)
+  * Dependencies update (#74)
+  * fix microphone input level is not alignment (#73)
+
+-------------------------------------------------------------------
+Mon Oct  8 12:58:34 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 0.1.1:
+  * Split out debian packaging dir to deb-packaging branch
+  * Add EditorConfig
+  * Add Event Sounds switcher to Output Panel (#64)
+
+----------------------------------------------------------------
+Sun Jan  1 14:57:17 UTC 2017 - avvissu@yandex.by
+
+- Initial release
+

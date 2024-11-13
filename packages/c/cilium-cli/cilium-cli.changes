@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Nov 12 07:42:32 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.20:
+  * Prepare for v0.16.20 release
+  * chore(deps): update softprops/action-gh-release action to
+    v2.0.9
+  * .github: support native hubble port-forwarding
+  * chore(deps): update all github action dependencies
+  * chore(deps): update docker/dockerfile docker tag to v1.11
+  * action: allow to configure image repo for CI installs
+  * chore(deps): update actions/checkout action to v4.2.2
+  * chore(deps): update actions/setup-go action to v5.1.0
+  * chore(deps): update ubuntu:24.04 docker digest to 99c3519
+  * chore(deps): update dependency cilium/cilium to v1.16.3
+  * chore(deps): update ubuntu:24.04 docker digest to d4f6f70
+  * chore(deps): update ubuntu:24.04 docker digest to ab64a83
+  * chore(deps): update ubuntu:24.04 docker digest to ee6860a
+  * chore(deps): update actions/upload-artifact action to v4.4.3
+  * chore(deps): update actions/upload-artifact action to v4.4.2
+  * chore(deps): update docker.io/library/golang docker tag to
+    v1.23.2
+  * chore(deps): update all github action dependencies
+  * chore(deps): update docker/setup-buildx-action action to v3.7.1
+  * chore(deps): update docker/setup-buildx-action action to v3.7.0
+  * chore(deps): update golangci/golangci-lint-action action to
+    v6.1.1
+  * Update stable release to v0.16.19
+  * chore(deps): update google-github-actions/auth action to v2.1.6
+  * chore(deps): update ubuntu:24.04 docker digest to b359f10
+  * chore(deps): update golang docker tag to v1.23.2
+  * multicluster: Increase hubble-event-queue-size
+
+-------------------------------------------------------------------
 Wed Oct 02 05:30:16 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.16.19:

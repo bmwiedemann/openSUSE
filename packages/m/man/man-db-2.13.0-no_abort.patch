@@ -1,0 +1,60 @@
+Avoid abort() in regain_effective_privs() if mandb is called by root
+that is always initialize saved_uid and saved_gid!
+
+--- gl/lib/idpriv-droptemp.c	2024-08-29 13:17:12.000000000 +0200
++++ gl/lib/idpriv-droptemp.c	2024-11-11 09:55:45.539212073 +0100
+@@ -31,19 +31,24 @@
+ static gid_t saved_gid = -1;
+ #endif
+ 
+-int
+-idpriv_temp_drop (void)
++void
++idpriv_initial (void)
+ {
+-#if HAVE_GETEUID && HAVE_GETEGID && (HAVE_SETRESUID || HAVE_SETREUID) && (HAVE_SETRESGID || HAVE_SETREGID)
+-  uid_t uid = getuid ();
+-  gid_t gid = getgid ();
+-
+   /* Find out about the privileged uid and gid at the first call.  */
+   if (saved_uid == -1)
+     saved_uid = geteuid ();
+   if (saved_gid == -1)
+     saved_gid = getegid ();
++}
++
++int
++idpriv_temp_drop (void)
++{
++#if HAVE_GETEUID && HAVE_GETEGID && (HAVE_SETRESUID || HAVE_SETREUID) && (HAVE_SETRESGID || HAVE_SETREGID)
++  uid_t uid = getuid ();
++  gid_t gid = getgid ();
+ 
++  idpriv_initial ();
+   /* Drop the gid privilege first, because in some cases the gid privilege
+      cannot be dropped after the uid privilege has been dropped.  */
+ 
+--- gl/lib/idpriv.h	2024-08-29 13:17:12.000000000 +0200
++++ gl/lib/idpriv.h	2024-11-11 09:50:35.047999910 +0100
+@@ -95,6 +95,9 @@
+ 
+ /* For approach 3.  */
+ 
++/* Initialize internal variable saved_uid as well as saved_gid */
++extern void idpriv_initial (void);
++
+ /* Drop the uid and gid privileges of the current process in a way that allows
+    them to be restored later.
+    Return 0 if successful, or -1 with errno set upon failure. The recommended
+--- lib/security.c	2024-11-11 09:10:13.044830286 +0100
++++ lib/security.c	2024-11-11 09:51:16.688162468 +0100
+@@ -138,7 +138,8 @@
+ 			gripe_set_euid ();
+ 		uid = ruid;
+ 		gid = rgid;
+-	}
++	} else
++		idpriv_initial ();
+ 
+ 	priv_drop_count++;
+ #endif /* MAN_OWNER */

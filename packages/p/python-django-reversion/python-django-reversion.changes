@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 11 16:25:51 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.1.0
+  * Switch call from removed is_hidden method to hidden property
+  * Remove irrelevant comment
+  * Re-introduce bulk_create on supported databases
+
+-------------------------------------------------------------------
 Thu Mar 28 05:47:33 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Add %{?sle15_python_module_pythons}

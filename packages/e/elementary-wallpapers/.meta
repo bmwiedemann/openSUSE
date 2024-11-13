@@ -1,5 +1,0 @@
-<package name="elementary-wallpapers" project="openSUSE:Factory">
-  <title>elementary OS Wallpapers</title>
-  <description>Backgrounds for Pantheon</description>
-  <devel project="X11:Pantheon" package="elementary-wallpapers"/>
-</package>

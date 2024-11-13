@@ -18,7 +18,7 @@
 
 %define sover   1
 Name:           bctoolbox
-Version:        5.3.37
+Version:        5.3.95
 Release:        0
 Summary:        Utility library for software from Belledonne Communications
 License:        GPL-3.0-or-later
@@ -37,9 +37,14 @@ BuildRequires:  decaf-devel
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 3.22
 BuildRequires:  gcc-c++
-BuildRequires:  mbedtls-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bcunit) >= 5.3.0
+%if 0%{?suse_version} > 1600
+BuildRequires:  pkgconfig(mbedtls) < 3.0.0
+BuildRequires:  pkgconfig(mbedtls) >= 2.0.0
+%else
+BuildRequires:  mbedtls-devel
+%endif
 BuildRequires:  pkgconfig(zlib)
 
 %description

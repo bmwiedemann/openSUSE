@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.2.4
+Version:        3.2.5
 Release:        0
 Summary:        A fast logging system
 License:        BSD-3-Clause

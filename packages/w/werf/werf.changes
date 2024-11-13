@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Nov 12 06:24:21 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.12.1:
+  * chore: release 2.12.1 (#6400)
+  * chore(release): 2 alpha
+  * fix(export): fix worker log output (#6399)
+  * refactor(test) refactor compose test (#6397)
+  * chore(release): 1.2 ea,stable 2 all
+
+-------------------------------------------------------------------
+Tue Nov 12 06:19:47 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.12.0:
+  * chore: release 2.12.0 (#6396)
+  * feat(export): export images concurrently(#6395)
+  * refactor(cli): refactor storage manager
+  * refactor(cli): refactor storage manager
+  * refactor(dev): werf cli deduplicate storage manager
+  * chore(release, werf-in-image): fix unexpected EOF while looking
+    for matching `"'
+  * chore(release, werf-in-image): fix invalid base image
+  * chore(release): fix build arguments (e.g., TARGETARCH ) not
+    available
+  * Revert "chore(ci): add ghcr cleanup (#6383)"
+  * revert: release werf images for linux/arm64 platform
+  * chore(release): 2 alpha
+  * chore(release): 2 alpha
+
+-------------------------------------------------------------------
 Sat Nov 02 08:32:23 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.11.0:

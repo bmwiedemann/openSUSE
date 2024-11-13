@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-atomicwrites
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/untitaker/python-atomicwrites
 Source:         https://files.pythonhosted.org/packages/source/a/atomicwrites/atomicwrites-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE sphinx8.patch -- daniel.garcia@suse.com
+Patch0:         sphinx8.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -54,7 +56,7 @@ Features that distinguish it from other similar libraries:
 - High-level API that wraps a very flexible class-based API.
 
 %prep
-%setup -q -n atomicwrites-%{version}
+%autosetup -p1 -n atomicwrites-%{version}
 rm -rf atomicwrites.egg-info
 
 %if %{with doc}

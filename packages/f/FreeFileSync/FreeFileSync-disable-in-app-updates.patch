@@ -1,7 +1,7 @@
-Index: FreeFileSync-13.6/FreeFileSync/Source/ui/gui_generated.cpp
+Index: FreeFileSync-13.8/FreeFileSync/Source/ui/gui_generated.cpp
 ===================================================================
---- FreeFileSync-13.6.orig/FreeFileSync/Source/ui/gui_generated.cpp
-+++ FreeFileSync-13.6/FreeFileSync/Source/ui/gui_generated.cpp
+--- FreeFileSync-13.8.orig/FreeFileSync/Source/ui/gui_generated.cpp
++++ FreeFileSync-13.8/FreeFileSync/Source/ui/gui_generated.cpp
 @@ -108,10 +108,10 @@ MainDialogGenerated::MainDialogGenerated
      m_menuItemHelp = new wxMenuItem( m_menuHelp, wxID_HELP, wxString( _("&View help") ) + wxT('\t') + wxT("F1"), wxEmptyString, wxITEM_NORMAL );
      m_menuHelp->Append( m_menuItemHelp );
@@ -15,11 +15,11 @@ Index: FreeFileSync-13.6/FreeFileSync/Source/ui/gui_generated.cpp
  
      m_menuHelp->AppendSeparator();
  
-Index: FreeFileSync-13.6/FreeFileSync/Source/ui/main_dlg.cpp
+Index: FreeFileSync-13.8/FreeFileSync/Source/ui/main_dlg.cpp
 ===================================================================
---- FreeFileSync-13.6.orig/FreeFileSync/Source/ui/main_dlg.cpp
-+++ FreeFileSync-13.6/FreeFileSync/Source/ui/main_dlg.cpp
-@@ -1118,7 +1118,7 @@ imgFileManagerSmall_([]
+--- FreeFileSync-13.8.orig/FreeFileSync/Source/ui/main_dlg.cpp
++++ FreeFileSync-13.8/FreeFileSync/Source/ui/main_dlg.cpp
+@@ -1092,7 +1092,7 @@ imgFileManagerSmall_([]
      updateGui();
  
      //register regular check for update on next idle event
@@ -28,10 +28,10 @@ Index: FreeFileSync-13.6/FreeFileSync/Source/ui/main_dlg.cpp
  
      //asynchronous call to wxWindow::Dimensions(): fix superfluous frame on right and bottom when FFS is started in fullscreen mode
      Bind(wxEVT_IDLE, &MainDialog::onLayoutWindowAsync, this);
-Index: FreeFileSync-13.6/FreeFileSync/Source/ui/version_check.cpp
+Index: FreeFileSync-13.8/FreeFileSync/Source/ui/version_check.cpp
 ===================================================================
---- FreeFileSync-13.6.orig/FreeFileSync/Source/ui/version_check.cpp
-+++ FreeFileSync-13.6/FreeFileSync/Source/ui/version_check.cpp
+--- FreeFileSync-13.8.orig/FreeFileSync/Source/ui/version_check.cpp
++++ FreeFileSync-13.8/FreeFileSync/Source/ui/version_check.cpp
 @@ -48,7 +48,8 @@ void openBrowserForDownload(wxWindow* pa
  bool fff::automaticUpdateCheckDue(time_t lastUpdateCheck)
  {

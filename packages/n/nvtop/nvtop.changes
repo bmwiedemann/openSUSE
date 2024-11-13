@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Oct 24 00:18:09 UTC 2024 - malcolmlewis@opensuse.org
+
+- Update to version 3.1.0+38:
+  * Add missed '&&".
+  * Revert back to the Xe driver device for the PCIe link.
+  * Get per-process memory from fdinfo for Xe.
+  * Don't require hwmon for AMDGPU.
+  * Fix potential null device access.
+  * Re-introduce non-cached devices.
+  * Hide process list option in setup window & config file.
+  * Add Intel Xe driver support.
+  * Add i915 hwmon power values.
+  * Hide process list window.
+  * Fix screenshot URLs in appstream.
+  * Fix icon in appstream.
+  * amgdpu: video code engine version extraction.
+  * Update readme's supported targets paragraph.
+  * Support for recent NVML API.
+  * Video encode/decode shared by static instance.
+  * Remove import of kcmp.
+- Remove tar.xz file from source as we use obscpio.
+
+-------------------------------------------------------------------
 Fri Apr 12 13:07:30 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 3.1.0:

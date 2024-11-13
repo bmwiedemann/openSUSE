@@ -184,4 +184,17 @@
     <comment></comment>
     <requestid>1163240</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>83c69fbd640b9b4d312748c8a1023ee2</srcmd5>
+    <version>5.1.0</version>
+    <time>1731435718</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1223403 from mcalabkova
+
+- Update to 5.1.0
+    * Switch call from removed is_hidden method to hidden property
+    * Remove irrelevant comment
+    * Re-introduce bulk_create on supported databases</comment>
+    <requestid>1223464</requestid>
+  </revision>
 </revisionlist>

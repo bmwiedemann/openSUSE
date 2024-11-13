@@ -56,4 +56,23 @@
     <comment></comment>
     <requestid>827176</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>331b591d2f754366087dc73bd0eeea10</srcmd5>
+    <version>1.9.0</version>
+    <time>1731435702</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.9.0:
+  * Revamp for a more modern Python style in the 3.12 era:
+    + start adding type annotations to code.
+    + use pyproject.toml
+    + remove illegal escape sequences
+  * `BuildTree` now builds trees iteratively rather than
+    recursively. With this we can handle larger trees which are
+    needed in the decompilers.
+  * Revise `README.rst` for the above and go over spelling and
+    grammar
+  * Internally, more git branches have been created to support
+    older Python.</comment>
+    <requestid>1223447</requestid>
+  </revision>
 </revisionlist>

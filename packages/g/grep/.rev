@@ -819,4 +819,12 @@ also requires -fno-profile-values to avoid ~3 differing bits (forwarded request 
     meant it never reported both matching text and matching binary</comment>
     <requestid>1166714</requestid>
   </revision>
+  <revision rev="92" vrev="4">
+    <srcmd5>7ac781e1145e60fd06b77b633b583c01</srcmd5>
+    <version>3.11</version>
+    <time>1731435683</time>
+    <user>anag+factory</user>
+    <comment>- removes testsuite.patch in older distributions</comment>
+    <requestid>1223315</requestid>
+  </revision>
 </revisionlist>

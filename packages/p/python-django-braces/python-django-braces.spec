@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-braces
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,13 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-django-braces
-Version:        1.15.0
+Version:        1.16.0
 Release:        0
 Summary:        Reusable, generic mixins for Django
 License:        BSD-3-Clause
 URL:            https://github.com/brack3t/django-braces/
-Source:         https://files.pythonhosted.org/packages/source/d/django-braces/django-braces-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#brack3t/django-braces#277
-Patch0:         modernize-braces.patch
+Source:         https://files.pythonhosted.org/packages/source/d/django_braces/django_braces-%{version}.tar.gz
 Patch1:         testhack.patch
 BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module factory_boy}
@@ -43,7 +39,7 @@ BuildArch:      noarch
 Reusable, generic mixins for Django.
 
 %prep
-%setup -q -n django-braces-%{version}
+%setup -q -n django_braces-%{version}
 %autopatch -p1
 # do not mess with the test setup and rely on pytest defaults
 rm conftest.py
@@ -56,14 +52,15 @@ rm conftest.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-sed -i 's/import mock/from unittest import mock/' tests/test_*_mixins.py
 export DJANGO_SETTINGS_MODULE=tests.settings
 PYTHONPATH=.
-%pytest --nomigrations
+# test_outdated_login gh#brack3t/django-braces#309
+%pytest -k "not test_outdated_login"
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/braces
+%{python_sitelib}/django_braces-%{version}*info
 
 %changelog

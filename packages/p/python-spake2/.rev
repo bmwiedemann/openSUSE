@@ -34,4 +34,20 @@
 - Switch to pyproject and autosetup macros.</comment>
     <requestid>1147681</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fcc72c6a9738555a437024dcd50aea86</srcmd5>
+    <version>0.9</version>
+    <time>1731435701</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9:
+  * This release mainly deals with packaging simplifications: two
+    dependencies (&quot;six&quot; and &quot;hkdf&quot;) are removed.
+  * The &quot;cryptography&quot; library takes the place of &quot;hkdf&quot; for key
+    derivation.
+  * There is no longer a vendored version of &quot;six&quot; (nor internal
+    use of it, thanks a-dieste).
+  * The &quot;versioneer&quot; library is updated to 0.29.
+- drop support-python-312.patch (upstream)</comment>
+    <requestid>1223446</requestid>
+  </revision>
 </revisionlist>

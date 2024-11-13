@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov  9 20:44:57 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- The openvdb headers do refer to the boost headers.
+  Update Requires accordingly.
+
+-------------------------------------------------------------------
 Wed Jan 31 15:06:35 UTC 2024 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Revert to 10.1.0: the NanoVDB API changed significantly in 11.0.0,

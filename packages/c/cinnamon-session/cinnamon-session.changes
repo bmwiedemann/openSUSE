@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov  8 15:48:34 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require /usr/bin/dbus-launch instead of dbus-1-x11: the latter is
+  supposed to be removed after the move to dbus-broker.
+
+-------------------------------------------------------------------
 Tue Aug 13 05:01:36 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 6.2.1:

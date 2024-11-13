@@ -1094,4 +1094,18 @@
   * man-propose-online.patch</comment>
     <requestid>1208877</requestid>
   </revision>
+  <revision rev="104" vrev="2">
+    <srcmd5>104f8e040b75c9308f47fe9a76b16a5a</srcmd5>
+    <version>2.13.0</version>
+    <time>1731435586</time>
+    <user>anag+factory</user>
+    <comment>- Readd patch man-db-2.7.1-zio.dif
+  * Use also in-memory decompression 
+- Add patch man-db-2.13.0-no_abort.patch
+  * Avoid abort of mandb due switching to user man if executed by root
+
+- Drop libzio integration (man-db-2.7.1-zio.dif, BuildRequires and flag)
+  to restore acceptable performance (boo#1232837):</comment>
+    <requestid>1223351</requestid>
+  </revision>
 </revisionlist>

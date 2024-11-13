@@ -264,4 +264,41 @@ The program’s features have stabilized and it receives mostly bugfixes and min
   * Add auto_hide_playlists_panel option</comment>
     <requestid>1176840</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b1da7b9e336af3cf8749d5cf41463199</srcmd5>
+    <version>2.12.0</version>
+    <time>1731435723</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.12.0
+  * Fix possible null dereference when continue_album=0
+    gh#cmus/cmus#1351
+  * Make PART / PARTNUMBER aliases for DISCNUMBER
+    gh#cmus/cmus#1316
+  * cmus-tutorial &lt;/&gt; is actually ,/.
+    gh#cmus/cmus#1355
+  * Fix potential double-close in ip/mad
+    gh#cmus/cmus#1350
+  * Fix view segv in rc config
+    gh#cmus/cmus#1326
+  * Fix pause_on_output_change not working when softvol is enabled
+    gh#cmus/cmus#1353
+  * Trim gaps from mp4 playback
+    gh#cmus/cmus#1320
+  * Show some context when editing middle of long cmdline
+    gh#cmus/cmus#1319
+  * Remember playlist position when resume=true
+    gh#cmus/cmus#1325
+  * Make trackwin heading format configurable, etc.
+    gh#cmus/cmus#1317
+  * Show recognized names in message for bad option value
+    gh#cmus/cmus#1356
+  * Draw progress bar in statusline
+    gh#cmus/cmus#1318
+  * Fix manpage indentation
+    gh#cmus/cmus#1362
+  * Fix documentation for passwd config option
+    gh#cmus/cmus#1361
+  * [FFmpeg] Add .dsf to extension list (DSD support)</comment>
+    <requestid>1223491</requestid>
+  </revision>
 </revisionlist>

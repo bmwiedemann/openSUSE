@@ -1,0 +1,60 @@
+From f5c3a2e4ecbb2ab733b19b0bf84c8334cedd8ba2 Mon Sep 17 00:00:00 2001
+From: Eugenio Paolantonio <eugenio.paolantonio@suse.com>
+Date: Wed, 30 Oct 2024 14:15:30 +0100
+Subject: [PATCH] tests: umockdev-record: t_system_single: handle missing
+ SELinux context on /dev/null
+
+/sys/fs/selinux might exist, yet the checked path might have no
+context defined.
+
+Drop the check for the selinux pseudo-fs, and check the eventual
+errno if lgetfilecon() fails.
+
+On ENODATA (context doesn't exist, or the process can't access it),
+ENOTSUP (extended attributes not supported/disabled) and ENOSYS
+(lgetxattr syscall used by lgetfilecon() not available), ensure
+__DEVCONTEXT is not there and continue.
+
+On every other error, fail the test case as before.
+
+Signed-off-by: Eugenio Paolantonio <eugenio.paolantonio@suse.com>
+---
+ tests/test-umockdev-record.vala | 24 ++++++++++++++++++------
+ 1 file changed, 18 insertions(+), 6 deletions(-)
+
+diff --git a/tests/test-umockdev-record.vala b/tests/test-umockdev-record.vala
+index 8672ee1..2c362fa 100644
+--- a/tests/test-umockdev-record.vala
++++ b/tests/test-umockdev-record.vala
+@@ -201,13 +201,25 @@ t_system_single ()
+     assert_in("P: /devices/virtual/mem/null", sout);
+     assert_in("E: DEVNAME=/dev/zero", sout);
+ #if HAVE_SELINUX
+-    // we may run on a system without SELinux
+-    if (FileUtils.test("/sys/fs/selinux", FileTest.EXISTS)) {
+-        string context;
+-        assert_cmpint (Selinux.lgetfilecon ("/dev/null", out context), CompareOperator.GT, 0);
+-        assert_in("E: __DEVCONTEXT=" + context + "\n", sout);
++    string context;
++    int res = Selinux.lgetfilecon ("/dev/null", out context);
++    if (res > 0) {
++        assert_in ("E: __DEVCONTEXT=" + context + "\n", sout);
++    } else if (res == -1 && (Posix.errno == Posix.ENODATA ||
++                             Posix.errno == Posix.ENOTSUP ||
++                             Posix.errno == Posix.ENOSYS)) {
++        // If SELinux is not available, or is available but
++        // there is no context defined for /dev/null,
++        // we should skip this check as there is
++        // no context recorded.
++        //
++        // ENODATA: context doesn't exist, or the process
++        //          can't access it
++        // ENOTSUP: extended attributes not supported/disabled
++        // ENOSYS:  lgetxattr syscall not available
++        assert (!sout.contains("E: __DEVCONTEXT"));
+     } else {
+-        assert(!sout.contains("E: __DEVCONTEXT"));
++        assert_cmpint (res, CompareOperator.GT, 0);
+     }
+ #endif
+ }

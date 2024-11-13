@@ -127,4 +127,15 @@
 </comment>
     <requestid>1218527</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>92f2bf6e2d9a101d9e429134d71e7485</srcmd5>
+    <version>0.5.0</version>
+    <time>1731435709</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1222844 from adrianSuSE
+
+- update to version 0.5.0:
+    Please see CHANGELOG.md for details</comment>
+    <requestid>1223462</requestid>
+  </revision>
 </revisionlist>

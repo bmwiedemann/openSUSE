@@ -60,4 +60,20 @@
     <comment>- python-six is not required</comment>
     <requestid>1075072</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9b11d58b5d69b1adff237e794eb59ba5</srcmd5>
+    <version>0.5.1</version>
+    <time>1731435693</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.5.1:
+  * properly require &quot;setuptools&quot; for install
+  * correctly close a mailbox which still has a nameplate
+  * remove python2 support
+  * test on python 3.8, 3.9, 3.10, 3.11 and 3.12 series
+  * drop &quot;six&quot;
+  * upgrade &quot;versioneer&quot;
+- drop python-magic-wormhole-mailbox-server-no-mock.patch
+  (upstream)</comment>
+    <requestid>1223436</requestid>
+  </revision>
 </revisionlist>

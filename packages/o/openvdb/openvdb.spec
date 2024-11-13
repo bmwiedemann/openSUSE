@@ -67,6 +67,7 @@ sparse volumetric data discretized on three-dimensional grids.
 Summary:        Development files for openvdb
 Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
+Requires:       libboost_headers-devel-impl
 
 %description devel
 This package contains the C++ header files and symbolic links to the shared

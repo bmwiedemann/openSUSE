@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-yarg
-Version:        0.1.9
+Version:        0.1.10
 Release:        0
 Summary:        A PyPI client
 License:        MIT
@@ -53,7 +53,7 @@ sed -i -e 's/assertEquals/assertEqual/' -e 's/from mock/from unittest.mock/' tes
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%python_expand rm -r %{buildroot}%{$python_sitelib}/tests
+#python_expand rm -r %{buildroot}%{$python_sitelib}/tests
 
 %check
 

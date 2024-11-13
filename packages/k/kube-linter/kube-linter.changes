@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Nov 12 09:09:27 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.7.1:
+  * chore(deps): remove replace in go.mod (#863)
+
+-------------------------------------------------------------------
+Tue Nov 12 08:45:58 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.7.0:
+  * Features
+    - Update unset-memory-requirements and unset-cpu-requirements
+      by @bgalek in #734
+  * Bug Fixes
+    - Use a real check in example by @porridge in #770
+  * Maintenance
+    - fix: remove darwin shell hack in Makefile by @janisz in #810
+  * Other changes
+    please see the full changelog
+    https://github.com/stackrox/kube-linter/releases/tag/v0.7.0
+
+-------------------------------------------------------------------
+Thu Apr 18 07:55:03 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- do not strip aka remove -s -w ldflags
+
+-------------------------------------------------------------------
 Sat Feb 24 09:13:04 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.6.8:

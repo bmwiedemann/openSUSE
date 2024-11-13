@@ -52,4 +52,22 @@
     <comment></comment>
     <requestid>971061</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6e9ba5ed0c857af0941297f2cb44ab65</srcmd5>
+    <version>1.16.0</version>
+    <time>1731435716</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1222749 from mcalabkova
+
+- Update to 1.16.0 (after 3 years!)
+    * Fixed a few typos in the docs.
+    * Removed unnecessarily explicit super() call
+    * Use unittest.mock instead of mock package
+    * Add support for Django 4.2
+    * Updated the codebase to be more modern Python/Django
+    * Cache-related headers
+  - Drop no-longer-needed modernize-braces.patch
+  - Skip test failing with Django 5.1</comment>
+    <requestid>1223460</requestid>
+  </revision>
 </revisionlist>

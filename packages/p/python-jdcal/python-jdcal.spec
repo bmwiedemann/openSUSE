@@ -1,7 +1,7 @@
 #
 # spec file for package python-jdcal
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-jdcal
 Version:        1.4.1
 Release:        0
 Summary:        Julian dates from proleptic Gregorian and Julian calendars
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
-Url:            http://github.com/phn/jdcal
+URL:            http://github.com/phn/jdcal
 Source:         https://files.pythonhosted.org/packages/source/j/jdcal/jdcal-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

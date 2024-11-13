@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 12 08:59:30 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.18.3:
+  * Drop deprecated DEFAULT_FILE_STORAGE setting usage
+
+-------------------------------------------------------------------
 Sat May  4 18:46:48 UTC 2024 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
 
 - Update to 3.18.2

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov 11 18:45:42 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.54.0:
+  - Features
+    * feat: Add --path-style=all option to managed command
+    * feat: Inform user when to use get.chezmoi.io/lb
+  - Fixes
+    * fix: Perform post-run actions on error
+  - Documentation updates
+    * docs: Add github.com/andre-kotake/nvim-chezmoi to related software
+- Add chezmoi test suite to %check section
+
+-------------------------------------------------------------------
 Tue Oct 29 19:07:18 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.53.1:

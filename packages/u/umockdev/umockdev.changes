@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 31 14:19:29 UTC 2024 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
+
+- Add 0001-t_system_single-handle-missing-selinux-context.patch:
+  * tests: umockdev-record: t_system_single: handle missing
+    SELinux context on /dev/null (Cherry-picked from commit
+    f5c3a2e4ecbb2ab733b19b0bf84c8334cedd8ba2)
+  * Fixes testsuite failure in SLFO.
+- Move to the %autosetup macro
+
+-------------------------------------------------------------------
 Mon Oct  7 21:38:00 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.18.4:

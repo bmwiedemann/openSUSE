@@ -608,4 +608,21 @@
 </comment>
     <requestid>1219164</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>69631ad3a39f6ea248f2e5c6bcff1de8</srcmd5>
+    <version>2.54.0</version>
+    <time>1731435690</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.54.0:
+  - Features
+    * feat: Add --path-style=all option to managed command
+    * feat: Inform user when to use get.chezmoi.io/lb
+  - Fixes
+    * fix: Perform post-run actions on error
+  - Documentation updates
+    * docs: Add github.com/andre-kotake/nvim-chezmoi to related software
+- Add chezmoi test suite to %check section
+</comment>
+    <requestid>1223416</requestid>
+  </revision>
 </revisionlist>

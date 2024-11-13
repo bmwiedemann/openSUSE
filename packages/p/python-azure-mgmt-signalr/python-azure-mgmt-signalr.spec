@@ -16,18 +16,17 @@
 #
 
 
-%define realversion 2.0.0b1
+%define realversion 2.0.0b2
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-signalr
-Version:        2.0.0~b1
+Version:        2.0.0~b2
 Release:        0
 Summary:        Microsoft Azure SignalR Client Library
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
 Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt-signalr/azure-mgmt-signalr-%{realversion}.tar.gz
-Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-mgmt-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
@@ -61,7 +60,6 @@ This package has been tested with Python 2.7, 3.5, 3.6 and 3.7.
 %setup -q -n azure-mgmt-signalr-%{realversion}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-mgmt-signalr-%{realversion}
 %pyproject_wheel
 
 %install
@@ -76,7 +74,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
-%license LICENSE.txt
+%license LICENSE
 %{python_sitelib}/azure/mgmt/signalr
 %{python_sitelib}/azure_mgmt_signalr-*.dist-info
 

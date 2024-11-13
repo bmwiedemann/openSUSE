@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-health-check
-Version:        3.18.2
+Version:        3.18.3
 Release:        0
 Summary:        Run checks on Django and is dependent services
 License:        MIT

@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Nov 11 13:34:06 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.7.3
+ * Preview features
+   * Formatter: Disallow single-line implicit concatenated strings 
+   * [flake8-pyi] Include all Python file types for PYI006 and PYI066 
+   * [flake8-simplify] Implement split-of-static-string (SIM905) 
+   * [refurb] Implement subclass-builtin (FURB189) 
+   * [ruff] Improve diagnostic messages and docs (RUF031, RUF032, RUF034) 
+ * Rule changes
+   * Detect items that hash to same value in duplicate sets (B033, PLC0208) 
+   * [eradicate] Better detection of IntelliJ language injection comments (ERA001) 
+   * [flake8-pyi] Add autofix for docstring-in-stub (PYI021) 
+   * [flake8-pyi] Update duplicate-literal-member (PYI062) to alawys provide an autofix 
+   * [pyflakes] Detect items that hash to same value in duplicate dictionaries (F601) 
+   * [ruff] Fix false positive for decorators (RUF028) 
+ * Bug fixes
+   * Avoid parsing joint rule codes as distinct codes in # noqa 
+   * [eradicate] ignore # language= in commented-out-code rule (ERA001) 
+   * [flake8-bugbear] - do not run mutable-argument-default on stubs (B006) 
+   * [flake8-builtins] Skip lambda expressions in builtin-argument-shadowing (A002) 
+   * [flake8-comprehension] Also remove trailing comma while fixing C409 and C419 
+   * [flake8-simplify] Allow open without context manager in return statement (SIM115) 
+   * [pylint] Respect hash-equivalent literals in iteration-over-set (PLC0208) 
+   * [pylint] Update known dunder methods for Python 3.13 (PLW3201) 
+   * [pyupgrade] - ignore kwarg unpacking for UP044 
+   * [refurb] Parse more exotic decimal strings in verbose-decimal-constructor (FURB157) 
+ * Documentation
+   * Add links to missing related options within rule documentations 
+   * Add rule short code to mkdocs tags to allow searching via rule codes  
+
+-------------------------------------------------------------------
 Fri Nov  1 20:52:26 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.7.2 

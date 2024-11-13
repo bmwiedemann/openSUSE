@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Tue Nov 12 00:14:18 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add missing setuptools BR.
+
+-------------------------------------------------------------------
+Sat Jan 21 15:14:57 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Switch to %pyproject_* macros and clean up the SPEC file.
+
+-------------------------------------------------------------------
+Sat Jan 21 10:26:28 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix build with python2, only build on Arm
+
+-------------------------------------------------------------------
+Wed May 25 14:49:35 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Initial package, version 0.7.1.

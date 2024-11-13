@@ -7,4 +7,20 @@
     <comment>Generic tagging app for Django</comment>
     <requestid>977289</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4aae4ef5292574482d44c17d4f160a92</srcmd5>
+    <version>2.1.0</version>
+    <time>1731435719</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1223406 from mcalabkova
+
+- Update to 2.1.0
+    * Support Django 4.2
+    * Add TagTreeModel.objects.as_nested_list()
+    * from now on Tagulous will only guarantee compatibility with the 
+      latest versions of Python for supported Django versions
+    * Global defaults can be set with settings.TAGULOUS_DEFAULT_TAG_OPTIONS
+  - Switch to upstream tarball because of tests</comment>
+    <requestid>1223465</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,44 @@
+--- Quake/common.c.old	2023-12-28 22:49:40.184135123 +0100
++++ Quake/common.c	2023-12-29 00:23:59.166825788 +0100
+@@ -2262,7 +2262,7 @@
+ 	pack->numfiles = numpackfiles;
+ 	pack->files = newfiles;
+ 
+-	//Sys_Printf ("Added packfile %s (%i files)\n", packfile, numpackfiles);
++	Sys_Printf ("Added packfile %s (%i files)\n", packfile, numpackfiles);
+ 	return pack;
+ }
+ 
+@@ -2291,29 +2291,9 @@
+ 	pack_t		*pak = NULL;
+ 	qboolean	modified = com_modified;
+ 
+-	if (host_parms->exedir)
+-	{
+-		q_snprintf (pakfile, sizeof(pakfile), "%s/" ENGINE_PAK, host_parms->exedir);
+-		pak = COM_LoadPackFile (pakfile);
+-	}
+-
+-	if (!pak)
+-	{
+-		q_snprintf (pakfile, sizeof(pakfile), "%s/" ENGINE_PAK, host_parms->basedir);
+-		pak = COM_LoadPackFile (pakfile);
+-	}
+-
+-	if (!pak)
+-	{
+-		for (i = 0; i < com_numbasedirs; i++)
+-		{
+-			q_snprintf (pakfile, sizeof(pakfile), "%s/" ENGINE_PAK, com_basedirs[i]);
+-			pak = COM_LoadPackFile (pakfile);
+-			if (pak)
+-				break;
+-		}
+-	}
+-
++	q_snprintf (pakfile, sizeof(pakfile), "/usr/share/games/ironwail/" ENGINE_PAK);
++	pak = COM_LoadPackFile (pakfile);
++	
+ 	if (pak)
+ 	{
+ 		searchpath_t *search = (searchpath_t *) Z_Malloc(sizeof(searchpath_t));

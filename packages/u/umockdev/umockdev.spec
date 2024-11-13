@@ -25,6 +25,8 @@ Summary:        Mock hardware devices for creating unit tests and bug reporting
 License:        LGPL-2.1-or-later
 URL:            https://github.com/martinpitt/umockdev/
 Source:         https://github.com/martinpitt/umockdev/releases/download/%{version}/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM 0001-t_system_single-handle-missing-selinux-context.patch gh#martinpitt/umockdev#256 eugenio.paolantonio@suse.com -- tests: umockdev-record: t_system_single: handle missing SELinux context on /dev/null
+Patch1:         0001-t_system_single-handle-missing-selinux-context.patch
 BuildRequires:  cmake
 BuildRequires:  gtk-doc
 BuildRequires:  meson
@@ -90,7 +92,7 @@ This package provides the GObject Introspection bindings for the library
 umockdev.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %meson

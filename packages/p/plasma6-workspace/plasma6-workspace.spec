@@ -207,8 +207,8 @@ Requires:       (sddm-greeter-qt6 if sddm)
 # For wallpaper thumbnails
 # Not to be mistaken for kio-extras5
 Requires:       kio-extras
-# Hardcode versions of plasma6-framework-components, as upstream doesn't keep backwards compability there
-%requires_ge    plasma6-framework-components
+# Hardcode versions of libplasma6-components, as upstream doesn't keep backwards compability there
+%requires_ge    libplasma6-components
 # The lockscreen has a button to open a virtual keyboard
 Recommends:     qt6-virtualkeyboard-imports >= %{qt6_version}
 # For dmenudbusmenuproxy

@@ -1,7 +1,7 @@
 #
 # spec file for package python-palettable
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,18 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without  test
+%{?sle15_python_module_pythons}
 Name:           python-palettable
-Version:        3.3.0
+Version:        3.3.3
 Release:        0
 Summary:        Color palettes for Python
 License:        MIT
 URL:            https://jiffyclub.github.io/palettable/
 Source:         https://files.pythonhosted.org/packages/source/p/palettable/palettable-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -44,11 +46,12 @@ colors for a web application.
 %setup -q -n palettable-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_expand  rm -rf %{buildroot}%{$python_sitelib}/{docs,scripts,test}
 
 %check
 %pytest
@@ -56,6 +59,7 @@ colors for a web application.
 %files %{python_files}
 %doc README.rst
 %license license.txt
-%{python_sitelib}/*
+%{python_sitelib}/palettable
+%{python_sitelib}/palettable-%{version}.dist-info
 
 %changelog

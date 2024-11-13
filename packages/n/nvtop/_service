@@ -3,7 +3,6 @@
     <param name="url">https://github.com/Syllo/nvtop.git</param>
     <param name="scm">git</param>
     <param name="submodules">enable</param>
-    <param name="revision">3.1.0</param>
     <param name="changesgenerate">enable</param>
     <param name="changesauthor">malcolmlewis@opensuse.org</param>
     <param name="filename">nvtop</param>

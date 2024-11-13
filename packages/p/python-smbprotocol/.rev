@@ -210,4 +210,19 @@
     <comment></comment>
     <requestid>1223346</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>69397171a1167aabedda4cdf837ec762</srcmd5>
+    <version>1.15.0</version>
+    <time>1731435712</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1223449 from mnhauke
+
+- Update to version 1.15.0
+    * Fix Impacket logoff session id check.
+    * Update session id logic.
+    * Add smbclient.liststreams to enumerate ADS streams.
+    * Add some type annotations, most notably to smbclient.open_file
+    * Add Python 3.13 support.</comment>
+    <requestid>1223468</requestid>
+  </revision>
 </revisionlist>

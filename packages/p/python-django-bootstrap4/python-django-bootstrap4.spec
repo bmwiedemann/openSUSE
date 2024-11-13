@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-bootstrap4
-Version:        24.3
+Version:        24.4
 Release:        0
 Summary:        Bootstrap support for Django projects
 License:        BSD-3-Clause

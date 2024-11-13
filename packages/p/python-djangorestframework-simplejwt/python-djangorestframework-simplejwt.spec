@@ -28,6 +28,7 @@ Source:         https://files.pythonhosted.org/packages/source/d/djangorestframe
 Patch0:         fix-tests.patch
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module PyJWT}
+BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module djangorestframework}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module pip}
@@ -39,6 +40,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyJWT
 Requires:       python-djangorestframework
+Recommends:     python-cryptography
 Recommends:     python-python-jose
 BuildArch:      noarch
 %python_subpackages

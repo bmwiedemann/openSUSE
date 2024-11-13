@@ -28,4 +28,14 @@
     <comment></comment>
     <requestid>895936</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8ca819bebce8211906cdef9e1d166a4a</srcmd5>
+    <version>0.3.2</version>
+    <time>1731435651</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.3.2:
+  * code modernization
+  * Fix version inconsistency</comment>
+    <requestid>1223368</requestid>
+  </revision>
 </revisionlist>

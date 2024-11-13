@@ -7,4 +7,14 @@
     <comment>some AI thing</comment>
     <requestid>1201756</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b531185eccbe53a90355fccfd61ee7ba</srcmd5>
+    <version>0.0.22</version>
+    <time>1731435783</time>
+    <user>anag+factory</user>
+    <comment>- fix buildcycle with fastapi
+
+- Initial package for v0.0.22.</comment>
+    <requestid>1223569</requestid>
+  </revision>
 </revisionlist>

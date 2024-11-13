@@ -247,4 +247,12 @@ Sorry - I missed that on the previous fixup. Now we should be good for sysusers 
     <comment></comment>
     <requestid>1191591</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>89c9df17767facccfda63c6bfdd64cea</srcmd5>
+    <version>2.3.0</version>
+    <time>1731435674</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1223431</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyRFC3339
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,19 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyRFC3339
-Version:        1.1
+Version:        2.0.1
 Release:        0
 Summary:        Generate and parse RFC 3339 timestamps
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/kurtraschke/pyRFC3339
-Source:         https://github.com/kurtraschke/pyRFC3339/archive/refs/tags/v1.1.tar.gz#/pyRFC3339-%{version}.tar.gz
-Patch0:         switch-to-pytest.patch
+Source:         https://github.com/kurtraschke/pyRFC3339/archive/refs/tags/v%{version}.tar.gz#/pyRFC3339-%{version}.tar.gz
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pytz
+BuildRequires:  timezone
+Requires:       timezone
 BuildArch:      noarch
 %python_subpackages
 
@@ -50,7 +49,7 @@ pyRFC3339 parses and generates :RFC:`3339`-compliant timestamps using Python `da
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/pyrfc3339
 
 %check
-%pytest pyrfc3339/tests/tests.py
+%pytest pyrfc3339/tests/
 
 %files %{python_files}
 %license LICENSE.txt

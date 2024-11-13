@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Tue Nov 12 06:52:59 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.1.0:
+  * feat (build): support overriding default frontend image (#4543)
+    (#4556)
+  * refactor: rename env vars to follow same syntax (#4546) (#4550)
+  * Update kustomize and helm version (#4552) (#4553)
+  * DEV-510: Fix availability of CI env var on remote executions
+    (#4545) (#4551)
+  * Revert "Removes kustomize from docker image (#4534)" (#4548)
+    (#4549)
+  * DEV-765: Allow to custom known_hosts from runner image (#4544)
+  * Deploy Execution default and flags outcome (#4536)
+  * remove validation from context store (#4533)
+  * DEV-758: Implement ssh-forwarder to contact with ssh-agent
+    running in the cluster when executing remote operations
+    (deploy, destroy, test) (#4537)
+  * fix: ui build logs (#4539)
+  * Deploy/Destroy context (#4532)
+  * update stack destroy logic to use service name label (#4530)
+  * refactor: fix lint errors (#4535)
+  * Removes kustomize from docker image (#4534)
+  * feat: retry if buildkit not available (#4529)
+  * feat(build): if buildkit is not available wait for it (#4528)
+  * refactor: update trivy commands in CircleCI config (#4524)
+  * Updated ssh key to be used on circleCI jobs to use oktetobot
+    identity (#4522)
+  * fix: gh actions release script (#4521)
+  * refactor (release): refactor the actions release script to
+    match the … (#4484)
+  * test: change trivy cmd in intergraiton test (#4518)
+  * move name inferrer inside destroyCommand.destroy (#4511)
+  * refactor: improve circleci config (#4514)
+  * Support for "priorityClassName" in dev containers (#4513)
+  * Fix `okteto build -f <folder>` (#4506)
+  * fix: versions getting last 15 from gh (#4509)
+  * Refactor error messages for Docker Compose usage (#4503)
+  * fix: build command to handle Okteto Manifest without a build
+    section (#4502)
+  * Fix okteto status: namespace load for synthing (#4500)
+  * DEV-690: Use right build context path to get the right diff and
+    sha in git operations for Smart Builds (#4494)
+  * refactor: remove context and namespace from Stackraw (#4492)
+  * Refactor getStackServicesToDeploy function to handle multiple
+    Compose… (#4487)
+  * Use "IfNotPresent" when using busybox for init volumes and
+    hybrid mode (#4495)
+  * Remove context and namespace from manifestRaw (#4488)
+  * check abs with abs (#4486)
+  * Refactor deploy.go to conditionally display recommendation for
+    enabling remote execution (#4483)
+  * revert pipeline and preview file check (#4485)
+  * Update func comment `HasDeployedSomething` (#4478)
+  * Refactor dockerfile to use private cache sharing (#4463)
+  * Add specific error for compose on cli only  (#4473)
+  * Refactor authProvider to prioritize local registry credentials
+    (#4470)
+  * remove remote deploy CTA on vanilla (#4471)
+  * feat: Add extractImageTagFromPullAccessDeniedError function
+    (#4448)
+  * Document test command to accept multiple test names as
+    arguments (#4472)
+  * PROD-218: Add a timeout flag to okteto preview destroy command
+    (#4464)
+  * Fix checking for pod sandbox creation error (#4475)
+  * Add CI env var to okteto test (#4461)
+  * build(deps): bump express from 4.19.2 to 4.20.0 in
+    /samples/node.js (#4468)
+  * Host "busybox" in the "okteto" DockerHub organization (#4467)
+  * Update CTA to install Okteto in the cluster for unsupported
+    command/f… (#4465)
+  * Add X-Okteto-CLI-Version version to requests (#4462)
+  * fix(remote): :bug: multiline preparation on dockerfile (#4452)
+  * Support okteto volume access mode, volume mode, labels and
+    annotations (#4458)
+  * revert default wait flag values (#4455)
+  * Update cobra help message to be aligned with out official docs
+    (#4453)
+  * Fix typos and remove dead code (#4454)
+
+-------------------------------------------------------------------
 Sun Oct  6 14:07:15 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - fix version output, add shell completion subpackages

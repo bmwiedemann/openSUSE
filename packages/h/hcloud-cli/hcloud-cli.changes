@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Nov 12 08:17:31 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.49.0:
+  * chore(main): release v1.49.0 (#909)
+  * chore(main): release v1.49.0-rc.0 (#908)
+  * deps: update releaser-pleaser to v0.4.2 (#907)
+  * ci: switch to releaser-pleaser (#906)
+  * chore: replace deprecated goreleaser config property (#905)
+  * ci: download go tools before running them (#904)
+  * fix: replace archived github.com/golang/mock with
+    go.uber.org/mock (#903)
+  * chore: move tools to module to prevent bloating the root module
+    (#901)
+  * feat: drop support for go 1.21 (#902)
+  * deps: update module golang.org/x/crypto to v0.29.0 (#899)
+  * deps: update module golang.org/x/term to v0.26.0 (#900)
+  * deps: update dependency go to v1.23.3
+  * deps: update module github.com/goccy/go-yaml to v1.13.6
+  * deps: update module github.com/hetznercloud/hcloud-go/v2 to
+    v2.16.0 (#896)
+  * deps: update module github.com/goccy/go-yaml to v1.13.5
+  * deps: update module github.com/goccy/go-yaml to v1.13.4
+  * deps: update module github.com/goccy/go-yaml to v1.13.3
+  * deps: update module github.com/goccy/go-yaml to v1.13.2
+  * deps: update module github.com/hetznercloud/hcloud-go/v2 to
+    v2.15.0 (#891)
+  * fix: macOS binary not notarized (#868)
+  * deps: update module github.com/goccy/go-yaml to v1.13.1
+  * deps: update module github.com/goccy/go-yaml to v1.13.0 (#888)
+  * deps: update module github.com/guptarohit/asciigraph to v0.7.3
+
+-------------------------------------------------------------------
 Fri Oct 25 16:55:05 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.48.0:

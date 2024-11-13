@@ -43,6 +43,8 @@ Source7:        man-db-create.service
 Source8:        manpath.csh
 Source9:        manpath.sh
 Patch0:         man-db-2.3.19deb4.0-groff.dif
+# PATCH-FIX-SUSE Fix a crash if mandb is directly executed by root
+Patch3:         man-db-2.13.0-no_abort.patch
 # PATCH-FEATURE-OPENSUSE man-db-2.7.1-zio.dif -- Allow using libzio for decompression
 Patch4:         man-db-2.7.1-zio.dif
 # PATCH-FEATURE-OPENSUSE man-db-2.6.3-listall.dif -- If multiple matching pages are found show a list bnc#786679
@@ -95,6 +97,7 @@ printer (using groff).
 %prep
 %setup -q -n man-db-%{version}
 %patch -P 0 -b .groff
+%patch -P3 -b .seteuid
 %patch -P4 -b .zio
 %patch -P5 -b .listall
 %patch -P6 -p1 -b .p6
@@ -360,7 +363,9 @@ then
 fi
 
 %post
+%if 0%{?suse_version} < 1500
 %{fillup_only -an cron}
+%endif
 /sbin/ldconfig
 %if %{with sdtimer}
 %service_add_post man-db-create.service

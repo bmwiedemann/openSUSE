@@ -18,7 +18,7 @@
 
 Name:           libtracecmd
 %define lname   libtracecmd1
-Version:        1.5.1
+Version:        1.5.2
 Release:        0
 Summary:        Library for creating and reading trace-cmd data files
 License:        LGPL-2.1-only

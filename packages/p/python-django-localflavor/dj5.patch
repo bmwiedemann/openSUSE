@@ -1,0 +1,27 @@
+From a0bb1b5b56be1d3f1a4ebb886621961b458ab74e Mon Sep 17 00:00:00 2001
+From: Paolo Melchiorre <paolo@melchiorre.org>
+Date: Sun, 26 Nov 2023 17:24:18 +0100
+Subject: [PATCH] Fix # 502 -- Update Python and Django versions
+
+---
+ .github/workflows/test.yml | 11 ++++++-----
+ docs/authors.rst           |  1 +
+ docs/changelog.rst         |  3 +++
+ setup.py                   |  3 ++-
+ tests/test_by/tests.py     |  2 +-
+ tox.ini                    |  7 ++++---
+ 6 files changed, 17 insertions(+), 10 deletions(-)
+
+diff --git a/tests/test_by/tests.py b/tests/test_by/tests.py
+index 0074bf34..c21c03ad 100644
+--- a/tests/test_by/tests.py
++++ b/tests/test_by/tests.py
+@@ -53,7 +53,7 @@ def test_form_fields(self):
+     def test_BYRegions_select(self):
+         """Test that BYRegionField has valid choices"""
+         choices = self.form.fields.get('region').choices
+-        self.assertEqual(tuple(choices[1:]), forms.BY_REGIONS_CHOICES)
++        self.assertEqual(tuple(choices)[1:], forms.BY_REGIONS_CHOICES)
+ 
+     def test_BYRegionSelect(self):
+         self.maxDiff = None

@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Tue Nov 12 10:04:15 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 4.20.2:
+  * Prepare release v4.20.2
+  * Detach v4.20.1
+
+-------------------------------------------------------------------
+Tue Nov 12 09:51:18 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 4.20.1:
+  * Prepare release v4.20.1
+  * Detach v4.20.0
+
+-------------------------------------------------------------------
+Tue Nov 12 09:41:39 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 4.20.0:
+  * Prepare release v4.20.0
+  * chore: update linter (#2341)
+  * chore: domain merge simplification (#2340)
+  * feat: attempt to check ARI unless explicitly disabled (#2298)
+  * docs: update least privilege instructions for Cloudflare
+    (#2339)
+  * docs: add documentation for env var only options (#2337)
+  * feat: skip the TLS verification of the ACME server (#2335)
+  * Add DNS provider for Technitium (#2332)
+  * rfc2136: add support for tsig-keygen generated file (#2330)
+  * regru: update authentication method (#2325)
+  * docs: use homogenous examples (#2328)
+  * chore: update issue templates
+  * cloudxns: provider deprecation (#2324)
+  * brandit: provider deprecation (#2116)
+  * selectelv2: fix non-ASCII domain (#2322)
+  * chore: update dependencies (#2321)
+  * Add DNS provider for Regfish (#2320)
+  * fix: parse printf verbs in log line output (#2317)
+  * chore: improve internal release command (#2315)
+  * chore: embed templates for internal commands (#2314)
+  * chore: fix readme generator (#2312)
+  * chore: update readme generator (#2311)
+  * Add DNS provider for Core-Networks (#2101)
+  * limacity: fix error message (#2310)
+  * volcengine: set API information within the default
+    configuration (#2308)
+  * chore: adds a new generator to create `dns_provider.go` (#2305)
+  * feat: improve propagation check error messages (#2306)
+  * fix: variomedia documentation (#2304)
+  * Add DNS provider for Timeweb Cloud (#2301)
+  * chore: update releaser configuration
+  * chore: update license date
+  * Add DNS provider for Volcano Engine (#2282)
+  * feat: generate User-Agent for DNS API clients (#2293)
+  * chore: remove useless tests (#2297)
+  * Detach v4.19.2
+
+-------------------------------------------------------------------
 Fri Oct 11 08:31:44 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 4.19.2:

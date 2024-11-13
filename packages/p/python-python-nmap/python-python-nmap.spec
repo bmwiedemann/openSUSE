@@ -17,14 +17,16 @@
 
 
 Name:           python-python-nmap
-Version:        0.6.1
+Version:        0.7.1
 Release:        0
 Summary:        Python class for using nmap from Python
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://xael.org/pages/python-nmap-en.html
 Source:         https://files.pythonhosted.org/packages/source/p/python-nmap/python-nmap-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # python-python-nmap depends on an installed nmap binary
@@ -33,7 +35,7 @@ BuildRequires:  python-rpm-macros
 # In case nmap is not found it raises the following error:
 # "ScannerError: 'nmap program was not found in path."
 # Users should then know how to handle this.
-#Requires:       nmap
+Recommends:     nmap
 BuildArch:      noarch
 %python_subpackages
 
@@ -45,17 +47,17 @@ This is a Python class for using nmap and accessing scan results from Python.
 sed -i "1,4{/\/usr\/bin\/env/d}" nmap/*.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # No check section since the tests use hardcoded non-local ip numbers.
 
 %files %{python_files}
-%doc CHANGELOG README.txt
+%doc CHANGELOG README.rst
 %{python_sitelib}/nmap
-%{python_sitelib}/python_nmap-%{version}*egg-info
+%{python_sitelib}/python_nmap-%{version}.dist-info
 
 %changelog

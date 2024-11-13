@@ -481,4 +481,14 @@
     <comment></comment>
     <requestid>1202860</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>9f97c77421c8512a876747a68b87e945</srcmd5>
+    <version>1.3.12</version>
+    <time>1731435707</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1222139 from mcalabkova
+
+- Minor tweaks in spec to fix build</comment>
+    <requestid>1223454</requestid>
+  </revision>
 </revisionlist>

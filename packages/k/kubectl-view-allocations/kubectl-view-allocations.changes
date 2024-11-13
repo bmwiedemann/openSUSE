@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov 12 09:30:11 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.20.1:
+  * :rocket: (cargo-release) version 0.20.1
+  * 👷 migrate to dtolnay/rust-toolchain +
+    mozilla-actions/sccache-action
+
+-------------------------------------------------------------------
+Tue Nov 12 09:07:33 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.20.0:
+  * :rocket: (cargo-release) version 0.20.0
+  * ⬆️ upgrade kube-rs to 0.96
+  * 👷 upgrade from `rtx` to `mise` (new name)
+  * feat: add labels filter support
+  * :arrow_up: Update itertools requirement from 0.12 to 0.13
+
+-------------------------------------------------------------------
 Tue Apr 23 19:17:31 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - BuildRequire cargo 1.75 aka rust 1.75 to avoid errors due to

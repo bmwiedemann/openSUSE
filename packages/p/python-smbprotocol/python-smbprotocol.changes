@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 11 22:08:22 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.15.0
+  * Fix Impacket logoff session id check.
+  * Update session id logic.
+  * Add smbclient.liststreams to enumerate ADS streams.
+  * Add some type annotations, most notably to smbclient.open_file
+  * Add Python 3.13 support.
+
+-------------------------------------------------------------------
 Sun Nov 10 19:02:11 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.14.0

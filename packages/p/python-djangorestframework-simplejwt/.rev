@@ -76,4 +76,14 @@
     <comment></comment>
     <requestid>1188599</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>c3d81e78139d2a22c5b1c7123090b75b</srcmd5>
+    <version>5.3.1</version>
+    <time>1731435720</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1223408 from mcalabkova
+
+- Add missing dependency</comment>
+    <requestid>1223466</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov 12 07:54:15 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.8.5:
+  * Bump Go to v1.22.8 version
+  * KCP: Skip validation if CoreDNS migration library supports an
+    upgrade if skip CoreDNS is set
+  * bump cert-manager to 1.16.1
+  * seedling: Remove json logging replacement in e2e test config
+  * test/framework: allow to include arbitrary types when dumping
+    resources
+  * fix: incorrect name used in kustomize path
+  * kcp: consider all machines for setting .status.version
+  * 🌱 test: add PreWaitForControlplaneToBeUpgraded to
+    ClusterUpgradeConformanceSpec (#11145)
+  * Update mailing list
+
+-------------------------------------------------------------------
 Fri Oct 11 08:01:58 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.8.4:

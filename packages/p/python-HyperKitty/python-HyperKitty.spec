@@ -102,7 +102,7 @@ BuildRequires:  %{python_module django-gravatar2 >= %{django_gravatar2_min_versi
 BuildRequires:  %{python_module isort}
 BuildRequires:  %{python_module mailmanclient >= %{mailmanclient_min_version}}
 BuildRequires:  %{python_module mistune >= %{mistune_min_version}}
-BuildRequires:  %{python_module pdm}
+BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -367,6 +367,7 @@ fi
 %{_sbindir}/hyperkitty-manage
 %{_sbindir}/rchyperkitty-qcluster
 %{_sbindir}/rchyperkitty-runjob-*
+%dir /srv/www
 %dir %{webapps_dir}
 %dir %{webapps_dir}/mailman
 %{_unitdir}/hyperkitty-qcluster.service

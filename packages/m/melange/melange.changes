@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue Nov 12 10:04:04 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.15.5:
+  * anotha one
+  * qemu: reduce logspam for qemu runner
+  * build(deps): bump google.golang.org/api from 0.204.0 to 0.205.0
+  * build(deps): bump go.opentelemetry.io/otel from 1.31.0 to
+    1.32.0
+  * build(deps): bump chainguard.dev/apko in the gomod group
+  * build(deps): bump goreleaser/goreleaser-action in the actions
+    group
+  * cleanup: remove unnecessary utils
+  * chore(pipelines/fetch): Print expected and found checksums
+
+-------------------------------------------------------------------
+Tue Nov 12 09:51:27 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.15.4:
+  * fix(qemu): use proper machine type and cpu model based on host
+    arch (#1627)
+  * Switch the copy to pick up hidden files. (#1624)
+
+-------------------------------------------------------------------
+Tue Nov 12 09:45:23 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.15.3:
+  * Add man-db for doc packages
+
+-------------------------------------------------------------------
+Tue Nov 12 09:42:56 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.15.2:
+  * check ReplacesPriority if it is an integer
+
+-------------------------------------------------------------------
+Tue Nov 12 09:39:32 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.15.1:
+  * build(deps): bump the gomod group with 2 updates
+  * build(deps): bump google.golang.org/api from 0.203.0 to 0.204.0
+  * build(deps): bump cloud.google.com/go/storage from 1.45.0 to
+    1.46.0
+
+-------------------------------------------------------------------
 Sat Nov 02 08:22:10 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.15.0:

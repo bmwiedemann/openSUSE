@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 11 13:54:56 UTC 2024 - wolfgang.frisch@suse.com
+
+- Update to version 1550+20241111.762abac:
+  * profiles: whitelist additional upower charging-limit action (bsc#1232835)
+  * profiles: xfce4-power-manager (bsc#1232244)
+
+-------------------------------------------------------------------
 Tue Nov 05 11:05:11 UTC 2024 - matthias.gerstner@suse.com
 
 - Update to version 1550+20241105.bedeeca:

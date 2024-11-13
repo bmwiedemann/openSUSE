@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-http2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        5.0.1
+Version:        5.3.4
 Release:        0
 Summary:        HTTP/2 library
 License:        BSD-3-Clause
@@ -39,8 +39,12 @@ BuildRequires:  ghc-case-insensitive-devel
 BuildRequires:  ghc-case-insensitive-prof
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-containers-prof
+BuildRequires:  ghc-http-semantics-devel
+BuildRequires:  ghc-http-semantics-prof
 BuildRequires:  ghc-http-types-devel
 BuildRequires:  ghc-http-types-prof
+BuildRequires:  ghc-iproute-devel
+BuildRequires:  ghc-iproute-prof
 BuildRequires:  ghc-network-byte-order-devel
 BuildRequires:  ghc-network-byte-order-prof
 BuildRequires:  ghc-network-control-devel
@@ -56,6 +60,8 @@ BuildRequires:  ghc-unix-time-devel
 BuildRequires:  ghc-unix-time-prof
 BuildRequires:  ghc-unliftio-devel
 BuildRequires:  ghc-unliftio-prof
+BuildRequires:  ghc-utf8-string-devel
+BuildRequires:  ghc-utf8-string-prof
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-Glob-devel

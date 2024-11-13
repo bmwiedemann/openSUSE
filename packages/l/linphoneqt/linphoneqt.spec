@@ -20,7 +20,7 @@
 
 %define _name   linphone
 Name:           linphoneqt
-Version:        5.2.4
+Version:        5.2.6
 Release:        0
 Summary:        Qt interface for Linphone
 License:        GPL-3.0-or-later

@@ -387,4 +387,12 @@ Reduce dependencies from 260MiB to 14MiB.
     <comment></comment>
     <requestid>1220113</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>8be497d3a90b668b1e5923416949222e</srcmd5>
+    <version>2.17.0</version>
+    <time>1731435722</time>
+    <user>anag+factory</user>
+    <comment>- Remove ipdb from BuildRequires, it should have been removed with 2.8.</comment>
+    <requestid>1223471</requestid>
+  </revision>
 </revisionlist>

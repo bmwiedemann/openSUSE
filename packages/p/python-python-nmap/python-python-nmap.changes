@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Nov 11 20:47:56 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.1:
+  * Fix build tools
+  * Add black and flake8 for development
+  * Drop support for python2.7
+  * Add timeout parameter and PortScannerTimeout exception
+  * Refactor Readme and changelog files for the Pypi pattern
+    and applying styles to the blocks for better visualization
+  * Change setup.py to use an explicit version of python,
+    since asynchronous tasks are not available for python 2.x
+  * Add clean method to the Makefile
+  * Update Manifest file
+  * Update version and Fix PEP8 on nmap/nmap.py
+
+-------------------------------------------------------------------
 Tue Sep 10 07:13:09 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Use noun phrase in summary.

@@ -73,6 +73,7 @@ Patch0031:  0032-drbd-open-do-not-delay-open-if-already-Primary.patch
 Patch1001:  bsc-1025089_fix-resync-finished-with-syncs-have-bits-set.patch
 Patch1002:  suse-coccinelle.patch
 Patch1003:  boo1231290_fix_drbd_build_error_against_kernel_v6.11.0.patch
+Patch1004:  boo1233222_fix_drbd_build_error_against_kernel_v6.11.6.patch
 ########################
 
 #https://github.com/openSUSE/rpmlint-checks/blob/master/KMPPolicyCheck.py

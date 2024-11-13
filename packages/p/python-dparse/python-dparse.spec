@@ -18,14 +18,13 @@
 
 %bcond_without  test
 Name:           python-dparse
-Version:        0.6.3
+Version:        0.6.4
 Release:        0
 Summary:        Python dependency file parser
 License:        MIT
 URL:            https://github.com/jayfk/dparse
 Source:         https://files.pythonhosted.org/packages/source/d/dparse/dparse-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#pyupio/dparse#a3d83e8bdfd694e873b5775881ab5aa62fdbb674
-Patch0:         fix-configparser-parsing.patch
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

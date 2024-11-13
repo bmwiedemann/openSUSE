@@ -1,16 +1,16 @@
-diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
---- a/src/CMakeLists.txt
-+++ b/src/CMakeLists.txt
-@@ -613,8 +613,6 @@
+diff -Pdpru mediastreamer2-5.3.95.orig/src/CMakeLists.txt mediastreamer2-5.3.95/src/CMakeLists.txt
+--- mediastreamer2-5.3.95.orig/src/CMakeLists.txt	2024-09-11 15:12:55.000000000 +0200
++++ mediastreamer2-5.3.95/src/CMakeLists.txt	2024-11-11 10:15:35.398527764 +0100
+@@ -614,8 +614,6 @@ if(BUILD_SHARED_LIBS)
  		if(VPX_FOUND)
- 			set_target_properties(mediastreamer2 PROPERTIES LINK_FLAGS "-Wl,--exclude-libs,libvpx.a")
+ 			target_link_options(mediastreamer2 PRIVATE "-Wl,--exclude-libs,libvpx.a")
  		endif()
 -		# Do not version shared library on Android
 -		set_target_properties(mediastreamer2 PROPERTIES SOVERSION ${MEDIASTREAMER_SO_VERSION})
  	else()
  
  
-@@ -654,7 +652,8 @@
+@@ -655,7 +653,8 @@ if(BUILD_SHARED_LIBS)
  		endif()
  
  

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Nov  7 17:39:11 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.15.1
+  * chore: Modified bug issue template to add checkbox to
+    report potential regression. by @ashishdhingra in (#671)
+  * Fix s2n cleanup by @DmitriyMusatkin in #687
+- from version 0.15.0
+  * Update CMake to 3.9 by @waahm7 in (#686)
+- from version 0.14.20
+  * Handle PKCS#8 private keys in Windows by @sfod in (#683)
+  * Add network interface name validation api by @waahm7 in (#675)
+- from version 0.14.19
+  * Clarify socket options logging by @sbSteveK in (#681)
+  * Use s2n_cleanup_thread() and path by @TingDaoK in (#682)
+
+-------------------------------------------------------------------
 Wed Aug  7 13:41:28 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.14.18

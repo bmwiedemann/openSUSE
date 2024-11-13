@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov  8 13:02:58 UTC 2024 - José Iván López González <jlopez@suse.com>
+
+- Fix failing test (bsc#1233095).
+- 5.0.21
+
+-------------------------------------------------------------------
 Tue Oct  8 12:21:38 UTC 2024 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - SpaceMaker: make it possible to generate physical volumes for

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 12 09:35:26 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0+git20241025:
+  * libbacktrace: recognize new Mach-O DWARF sections
+  * libbacktrace: remove extra characters in README.md
+  * libbacktrace: don't get confused by overlapping address ranges
+
+-------------------------------------------------------------------
 Wed Sep 18 11:37:52 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.0+git20240805:

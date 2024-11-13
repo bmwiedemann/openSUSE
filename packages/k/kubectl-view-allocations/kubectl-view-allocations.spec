@@ -19,14 +19,13 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           kubectl-view-allocations
-Version:        0.19.2
+Version:        0.20.1
 Release:        0
 Summary:        kubectl plugin to list allocations
 License:        CC0-1.0
 URL:            https://github.com/davidB/kubectl-view-allocations
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
-Source2:        cargo_config
 Recommends:     fzf
 BuildRequires:  cargo
 # kube-client v0.90.0 requires rust 1.75 or higher
@@ -49,11 +48,7 @@ Columns displayed :
 %prep
 %autosetup -a1
 
-mkdir -p .cargo
-cp %{SOURCE2} .cargo/config
-
 %build
-#RUSTFLAGS=%{rustflags} cargo build --release --no-default-features
 RUSTFLAGS=%{rustflags} cargo build --release --all-features
 
 %install

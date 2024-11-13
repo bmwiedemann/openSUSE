@@ -168,4 +168,18 @@
     <comment></comment>
     <requestid>1207590</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>7615acd19e745060fc47f09b050c5605</srcmd5>
+    <version>0.18.4</version>
+    <time>1731435593</time>
+    <user>anag+factory</user>
+    <comment>- Add 0001-t_system_single-handle-missing-selinux-context.patch:
+  * tests: umockdev-record: t_system_single: handle missing
+    SELinux context on /dev/null (Cherry-picked from commit
+    f5c3a2e4ecbb2ab733b19b0bf84c8334cedd8ba2)
+  * Fixes testsuite failure in SLFO.
+- Move to the %autosetup macro
+</comment>
+    <requestid>1223400</requestid>
+  </revision>
 </revisionlist>

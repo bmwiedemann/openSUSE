@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Nov 12 08:15:17 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.46.0:
+  * chore: Update version.go for v0.46.0
+  * govc: add vm.change -migrate-encryption and -ft-encryption-mode
+    options
+  * api: Support CnsBlockCreateSpec
+  * api: support MOID conversion in Finder methods
+  * govc: add '-I' flag to ls and find commands
+  * fix: Set DuplicateName Object to duplicate object
+  * chore: skip tests unless running docker on linux
+  * fix: CreateSATAController to return error when no bus numbers
+  * api: change ManagerKmip.IsValidKey to use QueryCryptoKeyStatus
+  * vcsim: add QueryCryptoKeyStatus
+  * govc: add kms.key commands
+  * api: add crypto.ManagerKmip.QueryCryptoKeyStatus
+  * fix: vcsim: avoid race in DestroyPropertyFilter
+  * api: Fetch crypto key in GetVirtualDiskInfoByUUID
+  * Fix error assertion in IsCertificateUntrusted
+
+-------------------------------------------------------------------
 Thu Oct 24 08:18:48 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.45.1:

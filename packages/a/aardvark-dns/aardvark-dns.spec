@@ -17,7 +17,7 @@
 
 
 Name:           aardvark-dns
-Version:        1.13.0
+Version:        1.13.1
 Release:        0
 Summary:        Authoritative dns server for A/AAAA container records
 License:        Apache-2.0

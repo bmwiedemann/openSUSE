@@ -50,4 +50,12 @@
     <comment></comment>
     <requestid>704752</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>0303ee6d682bb67a919effd9cb306cdb</srcmd5>
+    <version>1.4.1</version>
+    <time>1731435706</time>
+    <user>anag+factory</user>
+    <comment>- Enable sle15_python_module_pythons.</comment>
+    <requestid>1223453</requestid>
+  </revision>
 </revisionlist>

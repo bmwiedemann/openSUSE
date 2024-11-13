@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-pseudorandom
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
-%define         skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-python-pseudorandom
-Version:        0.2.2
+Version:        0.3.2
 Release:        0
 Summary:        A Python library for generating pseudorandom condition
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/smathot/python-pseudorandom
 Source:         https://github.com/smathot/python-pseudorandom/archive/release/%{version}.tar.gz#/python-pseudorandom-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-python-datamatrix
@@ -46,22 +47,23 @@ A package for pseudorandomization of DataMatrix objects. That is, it allows
 you to apply certain constraints to the randomization.
 
 %prep
-%setup -q -n python-pseudorandom-release-%{version}
-touch _unittest/__init__.py
+%setup -q -n pseudorandom-release-%{version}
+# touch _unittest/__init__.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pyunittest discover -v
+%pytest testcases/
 
 %files %{python_files}
 %license copyright COPYING
 %doc readme.md examples/
-%{python_sitelib}/*
+%{python_sitelib}/pseudorandom
+%{python_sitelib}/python_pseudorandom-%{version}.dist-info
 
 %changelog

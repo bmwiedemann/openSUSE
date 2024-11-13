@@ -31,7 +31,7 @@
 %bcond_without slp
 %endif
 Name:           linphone
-Version:        5.3.37
+Version:        5.3.95
 Release:        0
 Summary:        Web Phone
 License:        AGPL-3.0-or-later
@@ -39,6 +39,9 @@ Group:          Productivity/Telephony/SIP/Clients
 URL:            https://linphone.org/technical-corner/liblinphone/
 Source:         https://gitlab.linphone.org/BC/public/liblinphone/-/archive/%{version}/liblinphone-%{version}.tar.bz2
 Source3:        https://gitlab.linphone.org/BC/public/external/openldap/-/archive/bc/openldap-bc.tar.bz2
+Source11:       ITS#10011-1.patch
+Source12:       ITS#10011-2.patch
+Source13:       ITS#10011-3.patch
 # PATCH-FIX-OPENSUSE linphone-fix-pkgconfig.patch sor.alexei@meowr.ru -- Install linphone.pc.
 Patch0:         linphone-fix-pkgconfig.patch
 # PATCH-FEATURE-OPENSUSE linphone-build-readline.patch sor.alexei@meowr.ru -- Add the ability to compile with readline to the build system.
@@ -204,6 +207,9 @@ with high speed connections as well as 28k modems.
 mkdir aux
 tar fx %{SOURCE3} -C aux
 cd aux/openldap-bc
+patch -p1 <%SOURCE11
+patch -p1 <%SOURCE12
+patch -p1 <%SOURCE13
 autoreconf -vif
 LDFLAGS="-Wl,-rpath,%ldaplibdir" ./configure \
   --enable-static=yes \

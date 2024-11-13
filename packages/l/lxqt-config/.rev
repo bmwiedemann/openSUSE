@@ -629,4 +629,12 @@ this patch makes lxqt-config also include desktop files with the x-lxqt category
   * Weblate commits (#1060) (forwarded request 1221990 from AndnoVember)</comment>
     <requestid>1223237</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>388f672e462904f4bd3f816b28865acb</srcmd5>
+    <version>2.1.0</version>
+    <time>1731435672</time>
+    <user>anag+factory</user>
+    <comment>- Removed Recommends: for -lang package, not needed</comment>
+    <requestid>1223407</requestid>
+  </revision>
 </revisionlist>

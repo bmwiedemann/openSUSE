@@ -7,7 +7,7 @@ Index: bctoolbox-5.3.7/CMakeLists.txt
  cmake_minimum_required(VERSION 3.22)
  
 -project(BCToolbox VERSION 5.3.0)
-+project(BCToolbox VERSION 5.3.37)
++project(BCToolbox VERSION 5.3.95)
  
  set(BCTOOLBOX_VERSION "${PROJECT_VERSION}")
  set(BCTOOLBOX_VERSION_MAJOR ${PROJECT_VERSION_MAJOR})

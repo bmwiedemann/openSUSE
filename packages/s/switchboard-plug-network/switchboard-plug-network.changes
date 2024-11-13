@@ -1,0 +1,150 @@
+------------------------------------------------------------------
+Wed Nov 12 03:00:00 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- Require switchboard at runtime
+
+-------------------------------------------------------------------
+Thu Oct 24 02:24:49 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.1:
+  * Automatically select active network when opening
+  * Restore sidebar position
+  * Updated translations
+
+-------------------------------------------------------------------
+Fri Aug  9 10:01:16 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.0:
+  * Provide description text on the VPN page
+  * Show connected Wi-Fi network name in sidebar
+  * Updated translations
+- update to 2.5.0:
+  * WireGuard support
+  * OWE support
+  * Updated translations
+- update to 2.4.4:
+  * Updated translations
+- update to 2.4.3:
+  * Show correct info for WPA3 networks
+  * Updated translations
+- update to 2.4.2:
+  * Fix an issue with wired connections repeatedly reconnecting
+  * Updated translations
+- update to 2.4.1:
+  * Fix a crash on startup for some devices
+  * Updated translations
+- update to 2.4.0:
+  * Show message when Ethernet is unplugged
+  * Show DNS info
+  * Updated translations
+- update to 2.3.3:
+  * Better status when wireless network is disabled
+  * Updated translations
+- update to 2.3.2:
+  * Updated translations
+- update to 2.3.1:
+  * Better support for various network encryption types
+  * More accurately report encryption type
+  * Updated translations
+- update to 2.3.0:
+  * Redesigned Wireless page
+  * Updated translations
+- switch url to github, as we don't want to link to a different OS
+
+-------------------------------------------------------------------
+Mon Nov 25 20:40:35 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.2.0:
+  * WifiMenuItem: Clean up properties (#222)
+  * Add Gettext Updates to Actions
+  * Granite.Services.Settings → GLib.Settings (#207)
+  * VPNInfoDialog: DRY get_service_type (#216)
+  * Remove unused libnm.vapi (#215)
+  * Add Release to Actions
+  * Remove deb packaging from master (#214)
+  * VPN Panel Redesign (#208)
+  * run installation in CI (#205)
+  * Add Lint to CI (#202)
+  * lint src files via vala-lint (#203)
+  * README: Fix weblate badge
+  * Delete AUTHORS
+  * Test With GitHub CI (#200)
+  * Delete CODE_OF_CONDUCT.md
+  * Delete FUNDING.yml
+  * HotspotPage: handle hotspot creation in page (#176)
+  * build: fix install path for switchboard plug (#192)
+  * DeviceItem: More GObject-style (#189)
+  * Update Plug.vala
+  * Remove WidgetNMInterface (#188)
+  * DeviceItem: Get icon name from Page when possible (#190)
+  * Merge remote-tracking branch 'weblate/master'
+  * WifiMenuItem: simplify hide/show spinner (#174)
+  * Create FUNDING.yml
+
+-------------------------------------------------------------------
+Mon Mar  4 03:30:26 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.1.4:
+  * New upstream release.
+
+-------------------------------------------------------------------
+Thu Nov  8 02:29:42 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Add regex for filtering provided libraries
+
+-------------------------------------------------------------------
+Wed Oct 17 18:59:45 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.1.3:
+  * New upstream release.
+
+-------------------------------------------------------------------
+Mon Jun 11 12:46:14 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.1.2:
+  * New upstream release.
+
+-------------------------------------------------------------------
+Sat Jun  9 02:31:02 UTC 2018 - avvissu@yandex.by
+
+- Rename to switchboard-plug-network
+- Switch to github
+- Switch to meson
+- Add COPYING and README files
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Mon Nov 13 05:47:54 UTC 2017 - avvissu@yandex.by
+
+- Add NetworkManager-{openvpn,pptp,vpnc} as recommended dependency
+
+-------------------------------------------------------------------
+Mon Sep 18 20:20:57 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.1.1:
+  * Add Repology and Weblate badges to README.md (#63)
+  * Delete old files (#62)
+  * Create README.md (#61)
+  * Create CODE_OF_CONDUCT.md (#60)
+
+-------------------------------------------------------------------
+Fri Nov 25 23:25:37 UTC 2016 - avvissu@yandex.by
+
+- Update to 0.1.0.3:
+  * cmake: specify C project
+  * Updated translation template
+  * Update proxy layout
+  * Fix for not showing the current proxy configuration
+  * Remove polkit-gobject-1 references since it isn't used
+
+-------------------------------------------------------------------
+Sun Sep 18 22:32:38 UTC 2016 - avvissu@yandex.by
+
+- Update to 0.1.0.2
+- Add Requires: NetworkManager-gnome, NetworkManager-connection-editor
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Sun Feb 28 11:22:22 UTC 2016 - mailaender@opensuse.org
+
+- initial packaging (version 0.1+r215) for build.opensuse.org

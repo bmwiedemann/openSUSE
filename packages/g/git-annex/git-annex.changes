@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Oct 31 21:20:43 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update git-annex to version 10.20241031.
+  git-annex (10.20241031) upstream; urgency=medium
+
+    * Sped up proxied downloads from special remotes, by streaming.
+    * Added GETORDERED request to external special remote protocol.
+      When the external special remote responds with ORDERED, it can stream
+      through a proxy.
+    * p2phttp: Support serving unauthenticated users while requesting
+      authentication for operations that need it. Eg, --unauth-readonly
+      can be combined with --authenv.
+    * p2phttp: Allow unauthenticated users to lock content by default.
+    * p2phttp: Added --unauth-nolocking option to prevent unauthenticated
+      users from locking content.
+    * Allow enabling the servant build flag with older versions of stm,
+      allowing building with ghc 9.0.2.
+    * git-remote-annex: Fix bug that prevented using it with external special
+      remotes, leading to protocol error messages involving "GITMANIFEST".
+    * adjust: Allow any order of options when combining --hide-missing with
+      options like --unlock.
+    * Support P2P protocol version 4. This allows DATA-PRESENT to be sent
+      after PUT (and in the HTTP P2P protocol, v4/put has a data-present
+      parameter). When used with a proxy to a special remote like a S3
+      bucket, this allows a custom client to upload content to S3 itself,
+      and then use the P2P protocol to inform the proxy that the content has
+      been stored there, which will result in the same git-annex branch state
+      updates as sending DATA via the proxy.
+    * Fix hang when receiving a large file into a proxied special remote.
+
+   -- Joey Hess <id@joeyh.name>  Thu, 31 Oct 2024 17:19:56 -0400
+
+-------------------------------------------------------------------
 Mon Sep 30 23:17:41 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update git-annex to version 10.20240927.

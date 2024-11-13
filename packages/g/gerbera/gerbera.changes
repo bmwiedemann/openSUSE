@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Nov 11 13:45:55 UTC 2024 - Friedrich Haubensak <hsk17@mail.de>
+
+- update to 2.3.0:
+  NEW
+    * Higher cross site scripting security in web ui
+    * Styles for xml documents when shown in browser
+    * Configuration of additional target mimetype properties for transcoding (e.g. needed for PCM output)
+    * Configuration of DLNA profile mappings for a client
+    * Display media details in web ui
+    * Image and thumbnail profiles support PNG images
+    * Page layout of items page with splitter and resize button
+    * Orientation for images and videos in resource attributes
+    * Additional client filtering options with friendlyName, modelName, manufacturer
+    * Configuration option to block clients
+    * Upnp classes are assigned to containers in physical tree (PC Directory) depending on the majority of children (only in grb-mode)
+    * Nested iterations are now supported in Config UI
+    * UPnP Search support for integer and date comparison
+    * Failed UPnP requests return error messages
+  FIXES
+    * Warning in case import function does not return new ids.
+    * Config values <online-content fetch-buffer-size="262144" fetch-buffer-fill-size="0"> are implemented now.
+    * Renaming of files or folders in grb-mode
+    * Nested arrays can be shown in config ui.
+    * Made UDN mandatory for UPnP announcements to work
+
+-------------------------------------------------------------------
 Sat Aug  3 13:53:03 UTC 2024 - hui <sturm-fr@web.de>
 
 - update to 2.2.0:

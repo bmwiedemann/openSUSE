@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov 11 14:35:18 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- Update to version 1.67.1:
+  * Add templating and support for Python 3.13
+  * Add templating and support for Python 3.13
+  * Change warning to RuntimeError for version incompatibility.
+  * reflection returns original_request.
+- Added fix-return-values.patch for compile failures
+- Removed obsolete terminate.patch
+
+-------------------------------------------------------------------
 Wed Jul 17 10:56:55 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.65.0:

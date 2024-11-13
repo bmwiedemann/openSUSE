@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Tue Nov 12 08:26:01 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.6.55:
+  * feat/configurable initial message (#1802)
+
+-------------------------------------------------------------------
+Tue Nov 12 08:17:02 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.6.54:
+  * set appropriate terragrunt flags (#1801)
+
+-------------------------------------------------------------------
+Tue Nov 12 08:14:30 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.6.53:
+  * report errors back when cannot load digger config (#1800)
+
+-------------------------------------------------------------------
+Tue Nov 12 07:56:57 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.6.52:
+  * Fix workflow file pointer
+  * fix: more typos (#1793)
+
+-------------------------------------------------------------------
+Tue Nov 12 07:53:34 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.6.51:
+  * Revert "Revert "Use workflow file in blocks generation""
+  * Revert "Use workflow file in blocks generation"
+  * Use workflow file in blocks generation
+
+-------------------------------------------------------------------
+Tue Nov 05 10:00:12 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.6.50:
+  * Dev-Feature: Improve Unit test output and address go-lang
+    dependency cache misses on build (#1750)
+  * pulumi support in digger (#1790)
+  * Allow to use opentofu with generate_projects (#1757)
+  * Ensure workflow status failure if command fails in backendless
+    mode (#1760)
+  * Update docker/login-action digest to 0689575 (#1769)
+  * Update variables.mdx (#1774)
+  * fix malformed struct tags (#1775)
+  * removes unnecessary conditional (#1777)
+  * (Typo): Update README.md (#1778)
+  * regenerate db models for next (#1788)
+
+-------------------------------------------------------------------
+Fri Nov 01 14:32:56 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version latest:
+  * use git shell (#1791)
+  * run 'go mod tidy' in the cli directory to fix inconsistent
+    vendoring (#1789)
+
+-------------------------------------------------------------------
+Thu Oct 31 18:38:42 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package digger-cli: open source IaC orchestration tool.
+  Digger allows you to run IaC in your existing CI pipeline

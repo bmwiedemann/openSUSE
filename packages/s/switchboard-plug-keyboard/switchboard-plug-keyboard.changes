@@ -1,0 +1,140 @@
+------------------------------------------------------------------
+Wed Nov 12 03:00:00 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- Require switchboard at runtime
+
+-------------------------------------------------------------------
+Fri Aug 23 18:53:52 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.1:
+  * Use new keybindings schema
+  * Use new behavior schema
+  * Updated translations
+
+-------------------------------------------------------------------
+Fri Aug  9 09:13:40 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.0:
+  * Updated shortcut category icons
+  * Improved screen reader accessibility
+  * New shortcut settings for launching dock items
+  * Clearer actions for managing keyboard layouts
+  * Updated translations
+- update to 3.2.1:
+  * Layout: remove panel indicator settings
+  * Behavior: move onboard to the behavior
+  * Shortcuts: Allow assigning PrintScreen key
+  * InputMethod: Fix ProgressDialog is not used
+  * InstallEngineDialog: Replace stack with Deck
+  * Check if Granite.accel_to_string returns null
+  * Layout: remove leftovers from onscreen keyboard
+  * Add .editorconfig
+  * Drop Pantheon namespace
+  * Add switch-group shortcut
+  * Work around bug with duplicating input methods
+- update to 3.2.0:
+  * Add link to custom shortcuts
+  * Behavior: Remove trailing space in string
+  * Behavior: Remove spinbuttons
+  * Metainfo Improvements
+- update to 3.1.1:
+  * Gresource windows category icon
+  * ShortcutListBox: only add ShortcutRow when schema key is valid
+- update to 3.1.0:
+  * Revert shortcuts to default
+  * Easily disable a shortcut
+  * Support Rime input method for Chinese
+  * Remove custom shortcuts from their menu
+  * Updated translations
+- update to 3.0.0:
+  * Updated translations
+- update to 2.7.0:
+  * Open Multitasking View with Super
+  * Updated translations
+- update to 2.6.0:
+  * Redesigned custom shortcuts view
+  * On-screen keyboard switch in Layouts tab
+  * Updated translations
+- update to 2.5.1:
+  * Ensure IBus automatically starts on login when needed
+  * Updated translations
+- update to 2.5.0:
+  * Add Layout popover is now a dialog
+  * Guarantee we always have at least one layout
+  * Improvements to ibus and xkb layouts
+  * Updated translations
+- update to 2.4.1:
+  * Shortcut description for "Play" is now "Play/Pause"
+  * Fix an issue where some shortcuts would incorrectly show as disabled
+  * Updated translations
+- update to 2.4.0:
+  * Add a view to configure input methods
+  * Updated translations
+- update to 2.3.6:
+  * New "Workspaces" icon
+  * Exclude Space from single-key shortcuts
+  * Updated translations
+- switch url to github, as we don't want to link to a different OS
+
+-------------------------------------------------------------------
+Tue Mar 12 11:26:07 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.3.5:
+  * New upstream release.
+
+-------------------------------------------------------------------
+Thu Nov  8 02:29:38 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Add regex for filtering provided libraries
+
+-------------------------------------------------------------------
+Wed Oct 17 18:58:17 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.3.4:
+  * New upstream release.
+
+-------------------------------------------------------------------
+Mon Jun 11 12:45:24 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.3.3:
+  * New upstream release.
+
+-------------------------------------------------------------------
+Sat Jun  9 02:31:02 UTC 2018 - avvissu@yandex.by
+
+- Switch to github
+- Switch to meson
+- Drop switchboard-plug-keyboard-0.3.2-vala-0.36.patch
+- Add COPYING and README files
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Mon Jun  5 21:07:34 UTC 2017 - avvissu@yandex.by
+
+- Build with vala >= 0.36:
+  * add switchboard-plug-keyboard-0.3.2-vala-0.36.patch 
+
+-------------------------------------------------------------------
+Tue Feb  7 15:52:45 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.3.2:
+  * Launchpad automatic translations update.
+  * Allow Printscreen key as a shortcut
+  * Implement the new URL scheme specification
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Fri Dec  9 18:19:13 UTC 2016 - avvissu@yandex.by
+
+- Update to 0.3.1
+
+-------------------------------------------------------------------
+Sun Sep 18 22:18:33 UTC 2016 - avvissu@yandex.by
+
+- Update to 0.3
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Wed Sep 16 17:14:08 UTC 2015 - and.november@opensuse.org
+
+- initial package (version 0.2.1) for build.opensuse.org

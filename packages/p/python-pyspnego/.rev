@@ -212,4 +212,17 @@
     the `cryptography` library</comment>
     <requestid>1191760</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ef4e1fc93c4d54e77041d84d51491e5e</srcmd5>
+    <version>0.11.2</version>
+    <time>1731435711</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1223438 from mnhauke
+
+- Update to version 0.11.2
+    * Fix CredSSP acceptor with LibreSSL.
+    * Bump dev deps and add 3.13 support.
+    * Update integration tests for 3.13.</comment>
+    <requestid>1223467</requestid>
+  </revision>
 </revisionlist>

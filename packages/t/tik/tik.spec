@@ -17,7 +17,7 @@
 
 
 Name:           tik
-Version:        1.2.5
+Version:        1.3.0
 Release:        0
 Summary:        Transactional Installation Kit
 License:        MIT
@@ -79,6 +79,7 @@ Encryption module for tik. Encrypts btrfs rootfs using various different support
 install -D -m 755 usr/bin/tik %{buildroot}%{_bindir}/tik
 install -D -m 644 usr/lib/tik/config %{buildroot}%{_prefix}/lib/tik/config
 install -D -m 644 usr/lib/tik/lib/tik-functions %{buildroot}%{_prefix}/lib/tik/lib/tik-functions
+install -D -m 644 usr/lib/tik/lib/cenity %{buildroot}%{_prefix}/lib/tik/lib/cenity
 install -D -m 644 etc/tik/config %{buildroot}%{_sysconfdir}/tik/config
 install -d %{buildroot}%{_prefix}/lib/tik/modules/pre
 install -d %{buildroot}%{_prefix}/lib/tik/modules/post
@@ -104,6 +105,7 @@ install -D -m 644 usr/lib/tik/modules/post/15-encrypt %{buildroot}%{_prefix}/lib
 %dir %{_prefix}/lib/tik/img
 %dir %{_prefix}/lib/tik/lib
 %{_prefix}/lib/tik/lib/tik-functions
+%{_prefix}/lib/tik/lib/cenity
 %{_bindir}/tik
 
 %files config-generic

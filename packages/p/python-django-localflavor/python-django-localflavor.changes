@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov  8 12:16:21 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream dj5.patch to fix tests with new Django
+
+-------------------------------------------------------------------
 Sun Apr 23 20:13:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0:

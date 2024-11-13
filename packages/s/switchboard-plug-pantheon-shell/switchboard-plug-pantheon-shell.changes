@@ -1,0 +1,262 @@
+------------------------------------------------------------------
+Wed Nov 12 03:00:00 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- Require switchboard at runtime
+
+-------------------------------------------------------------------
+Mon Sep 23 16:13:03 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.1.0:
+  * Add setting for scroll to switch workspaces
+  * Updated translations
+
+-------------------------------------------------------------------
+Sun Sep  8 14:07:00 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- remove not used make dependency plank
+
+-------------------------------------------------------------------
+Fri Aug 23 18:56:09 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.1:
+  * Use new animations schema
+  * Use new behavior schema
+  * Set preferred color theme for mutter
+
+-------------------------------------------------------------------
+Fri Aug  9 10:44:40 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.0:
+  * Always Show Scrollbars setting
+  * Redundant labels have been cleaned up on the Appearance tab
+  * The Dim Wallpaper setting has moved to the Appearance tab
+  * The style selector now shows of a preview of your wallpaper as well as previewing the dim setting
+  * Improved screen reader accessibility
+  * Updated translations
+- update to 6.5.0:
+  * set-wallpaper: Fix delay value not shown as translated
+  * Mark "Dim with dark style:" string as translatable
+  * Wallpaper: Confirm wallpaper removal when hidden
+  * Dock: add checks for panel indicators
+  * Dock: redesign
+  * Multitasking: Remove top margin to match other pages
+  * Rely on settings-daemon to copy wallpaper to greeter
+- update to 6.4.0:
+  * Meta: use preferences-desktop for icon
+  * Add previous/next workspace to hot corners
+  * Add an option to dim wallpapers when dark style is active
+  * Dock: fix icon size images
+  * Text: use more vertical layout with headerlabels
+  * Appearance: add reduce motion option
+  * Metainfo Improvements
+- update to 6.3.1:
+  * Updated translations
+- update to 6.3.0:
+  * There is now an undo option after removing a wallpaper
+  * Wallpapers are now sorted with custom wallpapers first
+  * Wallpaper accent color follows system setting
+  * Set-wallpaper contract fails gracefully when run as sudo
+  * Wallpapers with the same name are distinguished
+  * Switching styles with the keyboard cancels dark style scheduling
+  * Style dyslexia-friendly switch properly
+  * Updated translations
+- update to 6.2.0:
+  * Set custom Terminal commands for each hotcorner
+  * Redesigned Appearance and Multitasking views
+  * Updated translations
+- update to 6.1.0:
+  * Move Text settings to their own page
+  * More granular settings for text scale
+- update to 6.0.0:
+  * Accent color and dark style options
+  * Dyslexia-friendly text preference to use the OpenDyslexia font system-wide
+  * Maximize and fullscreen workspace management options
+  * Fix a freeze after opening Power settings
+  * Improved filter for image file types when importing
+  * Visual updates
+  * Some options now appear in different tabs
+  * Updated translations
+- update to 2.8.4:
+  * Illustrate Dock icon sizes
+  * Fix system wallpapers being copied
+  * Update search results
+  * Updated translations
+- update to 2.8.3:
+  * Updated translations
+- switch url to github, as we don't want to link to a different OS
+
+-------------------------------------------------------------------
+Mon Nov 25 20:41:48 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.8.2:
+  * Update POTFILES
+  * Add Gettext Updates to Actions
+  * Split deb packaging into its own branch
+  * Add Release to Actions
+  * Granite.Services.Settings → GLib.Settings (#191)
+  * run installation in CI (#189)
+  * Add Lint to CI (#187)
+  * Fix code style errors (#188)
+  * Build with GitHub CI (#186)
+  * Delete CODE_OF_CONDUCT.md
+  * Delete FUNDING.yml
+  * Chmod 0604 copy of wallpaper for greeter (#182)
+  * build: fix install path for switchboard plug (#180)
+  * Rename desktop-plug.vala to Plug.vala (#179)
+  * Plug: Change code name to RDNN
+  * Merge remote-tracking branch 'weblate/master'
+  * Use the interfaces provided by LightDM (#177)
+  * Update for wallpaper settings deprecation (#175)
+  * Merge branch 'origin/master' into Weblate.
+  * Create FUNDING.yml
+
+-------------------------------------------------------------------
+Thu May  2 16:27:08 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.8.1:
+  * New upstream release.
+
+-------------------------------------------------------------------
+Mon Mar  4 03:31:09 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.8.0:
+  * New upstream release.
+
+-------------------------------------------------------------------
+Fri Dec 28 17:05:34 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim unrealized future goals from description.
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Thu Nov  8 02:29:45 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Add regex for filtering provided libraries
+
+-------------------------------------------------------------------
+Wed Oct 17 19:00:41 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.7.1:
+  * New upstream release.
+
+-------------------------------------------------------------------
+Fri Jun 15 16:24:45 UTC 2018 - avvissu@yandex.by
+
+- Rename branding-elementary > branding-upstream 
+
+-------------------------------------------------------------------
+Mon Jun 11 12:46:46 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.2.7:
+  * New upstream release.
+
+-------------------------------------------------------------------
+Sat Jun  9 02:31:02 UTC 2018 - avvissu@yandex.by
+
+- Switch to github
+- Switch to meson
+- Add dependencies: gala, plank, pantheon-wallpapers-branding
+- Add check default-wallpaper-link
+- Add COPYING and README files
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Tue Nov  7 13:51:37 UTC 2017 - avvissu@yandex.by
+
+- Add tumbler as recommended dependency
+
+-------------------------------------------------------------------
+Fri Jun 16 21:01:22 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.2.6:
+  * Fixed missing directory parameter (#63)
+  * Enable HiDPI on the wallpapers (#62)
+  * Fix gee_abstract_map_clear warnings; improve performance (#59)
+  * Fix get int32 warnings (#60)
+  * Fix build with cmake 3.8 (#58)
+  * set-wallpaper-contract/CMakeLists.txt: fix posix dependency
+
+-------------------------------------------------------------------
+Tue Apr 18 19:50:12 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.2.5:
+  * Update CMake macros to latest (#54)
+  * Translated using Weblate (Dutch)
+  * Currently translated at 100.0% (51 of 51 strings)
+  * Translation: Desktop/Switchboard Desktop Plug
+  * Currently translated at 80.4% (41 of 51 strings)
+  * Merge remote-tracking branch 'origin/master'
+  * Translated using Weblate (French)
+    theon-shell/fr/
+  * Translated using Weblate (Portuguese (Brazil))
+    theon-shell/pt_BR/
+  * Translated using Weblate (Russian)
+    theon-shell/ru/
+  * Translated using Weblate (Korean)
+    theon-shell/ko/
+  * Launchpad automatic translations update.
+  * WallpaperContainer.vala: add image instead of add_overlay
+  * Name Cache directory after RDNN
+  * Wallpaper.vala: Remove spacing from flowbox children
+  * SolidColorContainer.vala,
+  * WallpaperContainer.vala: Increase thumbnail width by 12 pixels
+  * Cache.vala: Handle possible GLib error
+  * Remove top margins from individual panes
+  * Double space around the view switcher
+  * Place a separator above the wallpaper flowbox to give it 
+    upper bounds
+  * Re-color flowbox with the view class
+  * Make wallpaper view a grid subclass
+  * Wallpaper.vala:
+  * Put actions in a Gtk.ActionBar
+  * Also put them in a sizegroup to keep them homogeneous
+  * WallpaperContainer.vala:
+  * Align selection check as in Photos and Files
+  * Apply card class directly to image
+  * update translation template
+  * Dock.vala:
+  * Set halign instead of column_homogeneous to properly center 
+    align
+  * Use Granite ModeButton instead of ComboBox for dock size 
+    selection
+  * Add "Small" dock size
+  * Wallpaper.vala: Get rid of Scaled and Stretched options
+  * HotCorners.vala:
+  * Adjust alignment and spacing of elements
+  * Add h4 to section header label
+  * Add icon to custom command entry
+  * Don't nest grids
+  * Restructure src directory
+  * set-wallpaper.vala:
+  * Add icon
+  * Add primary text
+  * Fix spacing and alignment
+  * Use Gtk to draw wallpaper thumbs and check style instead of 
+    Cairo
+  * Move hotcorner page code to HotCorners.vala
+  * Update copyright header
+  * Wallpaper.vala: Cleanups & GObject Style
+  * WallpaperContainer: Cleanups & GObject Style
+  * Implement preferences URL spec
+  
+-------------------------------------------------------------------
+Thu Dec 15 18:41:52 UTC 2016 - avvissu@yandex.by
+
+- Update to 0.2.4
+
+-------------------------------------------------------------------
+Sun Sep 18 22:38:03 UTC 2016 - avvissu@yandex.by
+
+- Update to 0.2.3
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Sat Feb 27 22:49:10 UTC 2016 - mailaender@opensuse.org
+
+- update to version 0.2.2
+
+-------------------------------------------------------------------
+Thu Sep  3 16:42:19 UTC 2015 - and.november@opensuse.org
+
+- initial package (version 0.2.1) for build.opensuse.org
+

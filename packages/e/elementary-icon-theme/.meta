@@ -1,5 +1,0 @@
-<package name="elementary-icon-theme" project="openSUSE:Factory">
-  <title>Simple and appealing Tango-styled icon theme</title>
-  <description>The official elementary icons are designed to be simple and appealing, these icons are the inspiration behind Ubuntu's default Humanity icon theme.</description>
-  <devel project="X11:Pantheon" package="elementary-icon-theme"/>
-</package>

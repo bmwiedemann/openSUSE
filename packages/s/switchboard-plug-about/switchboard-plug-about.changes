@@ -1,0 +1,177 @@
+------------------------------------------------------------------
+Wed Nov 12 03:00:00 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- Require switchboard at runtime
+
+-------------------------------------------------------------------
+Fri Aug  9 07:38:47 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.0:
+  * Manage Operating System updates, including automatic updates
+  * Manage additional drivers
+  * Improve operating system image for other Linux distributions
+  * Updated translations
+- update to 6.2.0:
+  * Handle Ryzen CPU and AMD GPU vendor string and break on first regex match
+  * Better memory and storage info
+  * Reboot to Firmware Setup
+  * Add meson option for overlaying logo on wallpaper
+  * Use /usr/lib/upstream-os-release instead of /etc/upstream-release/lsb-release
+- update to 6.1.0:
+  * Added support for dark style manufacturer logos
+  * Added support for offline firmware updates
+  * Updated translations
+- update to 6.0.1:
+  * Use formatted device name when available
+  * Display more information for certain GPUs, including Intel® Xe Graphics
+  * Updated translations
+- update to 6.0.0:
+  * Rename from About to System
+  * Split Hardware and Operating System info into their own tabs
+  * Redesign the Operating System tab with clearer links and buttons
+  * Add a Firmware view to manage device firmware updates
+  * Provide information for ARM CPUs
+  * Provide information for more types of Graphics
+  * Fix an issue where the view was destroyed early when navigating away
+  * Fix system memory calculation
+  * Ellipsize long hardware names
+  * Performance improvements
+  * Updated translations
+- update to 2.6.3:
+  * update translations
+- update to 2.6.2:
+  * update translations
+
+-------------------------------------------------------------------
+Mon Nov 25 20:12:32 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.6.1:
+  * Add Release to Actions
+  * Add Gettext Updates to Actions
+  * Split deb packaging into its own branch
+  * Delete CODE_OF_CONDUCT.md
+  * run installation in CI (#107)
+  * Add Lint to CI (#105)
+  * Fix linting errors
+  * Use GitHub CI (#104)
+
+-------------------------------------------------------------------
+Mon Nov  4 14:40:44 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.6.0:
+  * New upstream release.
+- Restore information about architecture type (plug-about-arch.patch)
+
+-------------------------------------------------------------------
+Tue Mar 12 11:22:53 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.5.2:
+  * New upstream release.
+- Update switchboard-plug-about-info.patch
+
+-------------------------------------------------------------------
+Thu Nov  8 02:29:30 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Add regex for filtering provided libraries
+
+-------------------------------------------------------------------
+Wed Oct 17 18:56:04 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.5.1:
+  * New upstream release.
+
+-------------------------------------------------------------------
+Mon Jun 11 12:43:39 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.2.5:
+  * New upstream release.
+
+-------------------------------------------------------------------
+Sat Jun  9 02:31:02 UTC 2018 - avvissu@yandex.by
+
+- Switch to github
+- Switch to meson
+- Update switchboard-plug-about-info.patch
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Thu Oct  5 21:06:59 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.2.4:
+  * Update call to AppCenter updates (#40)
+  * Drop custom utsname.vapi and use vala's posix binding (#39)
+  * Plug.vala: ellipsize long distro names (#37)
+- Change the sourceurl to git
+
+-------------------------------------------------------------------
+Sat Jul  1 10:13:33 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.2.3.1:
+  * Specify an icon pixel size for the OS Logo Icon (#32)
+  * Create CODE_OF_CONDUCT.md (#30)
+
+-------------------------------------------------------------------
+Fri Jun 16 20:59:57 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.2.3:
+  * Using null instead of a string with null (#29)
+  * Implement Preferences URL Specification (#28)
+- Update patch: 0.2.2_about.patch > info.patch
+
+-------------------------------------------------------------------
+Sat Apr 22 11:36:42 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.2.2:
+  * Add Travis CI (#19)
+  * Put actions in a buttonbox (#18)
+  * Show kernel version (#17)
+  * Update translations URL to Weblate (#16)
+  * Show GTK version (#13)
+  * Create README.md (#12)
+  * Rework os-release(5) parsing to be less brittle.
+  * Since /etc/os-release is effectively a set of key-value
+    pairs, we'll just read the whole thing and import it into a
+    HashMap.
+  * This allows us to reference arbitrary entries from the file
+    and set variables with that data accordingly.
+  * Launchpad automatic translations update.
+  * Rewrite settings restore dialog as its own widget
+  * Updated translation template
+  * Fix the plug not building on launchpad
+  * Do not Spawn commands when a library is available
+  * Use more modern interface
+- Update patch: 0.2.1.1_about.patch > 0.2.2_about.patch
+
+-------------------------------------------------------------------
+Wed Sep 21 17:13:13 UTC 2016 - avvissu@yandex.by
+
+- Update to 0.2.1.1:
+  * Retrieve metadata from /etc/os-release when possible instead
+    of /etc/lsb-release
+  * Launchpad automatic translations update.
+- Update patch:
+  * switchboard-plug-about-0.2.1_about.patch -> 0.2.1.1_about.patch
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Sun Sep 18 22:00:31 UTC 2016 - avvissu@yandex.by
+
+- Update to 0.2.1
+- Update switchboard-plug-about-0.2.1_about.patch
+
+ -------------------------------------------------------------------
+Mon Aug 22 05:29:38 UTC 2016 - avvissu@yandex.by
+
+- Provide accurate information:
+  * add switchboard-plug-about-0.2.1_about.patch
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Sat Feb 27 21:35:41 UTC 2016 - mailaender@opensuse.org
+
+- update to version 0.2.0.1
+
+-------------------------------------------------------------------
+Tue Sep  8 19:01:36 UTC 2015 - and.november@opensuse.org
+
+- initial package (version 0.2.0) for build.opensuse.org

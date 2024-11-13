@@ -54,8 +54,9 @@ OpenID Connect Provider implementation for Django.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# gh#juanifioren/django-oidc-provider#400
-%pytest -k 'not test_makemigrations_output'
+# test_makemigrations_output gh#juanifioren/django-oidc-provider#400
+# test_redirects_when_aud* gh#juanifioren/django-oidc-provider#416
+%pytest -k 'not (test_makemigrations_output or test_redirects_when_aud)'
 
 %files %{python_files}
 %doc README.md

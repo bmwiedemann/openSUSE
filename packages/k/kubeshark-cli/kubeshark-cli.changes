@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov 12 09:11:39 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 52.3.89:
+  * :bookmark: Bump the Helm chart version to 52.3.89
+  * if no scripting source folders, that's not an error
+  * Remove pfring leftovers from ds (#1642)
+  * Fix frontend port (#1641)
+  * Added an option to provide multiple script sources. (#1640)
+  * Remove PF_RING references  (#1638)
+  * Watch cm creation and sync scripts (#1637)
+  * Fix helm resource requests/limits templates (#1639)
+
+-------------------------------------------------------------------
 Sun Nov 03 17:24:03 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 52.3.88:

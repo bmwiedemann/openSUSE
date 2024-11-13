@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Nov 12 08:13:47 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.84.0:
+  * chore(deps): update Syft to v1.16.0 (#2237)
+  * test: update quality gate db to latest version (#2231)
+  * chore(deps): bump github.com/adrg/xdg from 0.5.2 to 0.5.3
+    (#2230)
+  * chore(deps): bump github.com/charmbracelet/lipgloss from 0.13.1
+    to 1.0.0 (#2228)
+  * fix and cleanup namespace search to account for missing info
+    (#2226)
+  * Remove gentoo integration test (#2227)
+  * Improve purl input (#2223)
+  * chore(deps): bump github.com/adrg/xdg from 0.5.1 to 0.5.2
+    (#2220)
+  * chore(deps): bump anchore/sbom-action from 0.17.5 to 0.17.6
+    (#2221)
+
+-------------------------------------------------------------------
 Tue Oct 29 14:02:25 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.83.0:

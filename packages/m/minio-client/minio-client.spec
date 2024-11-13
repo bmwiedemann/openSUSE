@@ -16,10 +16,8 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           minio-client
-Version:        20241029T153459Z
+Version:        20241105T112945Z
 Release:        0
 Summary:        Client for MinIO
 License:        AGPL-3.0-only
@@ -45,8 +43,9 @@ go build \
    -mod=vendor \
    -buildmode=pie \
    -trimpath -tags kqueue \
-   -ldflags="-X github.com/minio/mc/cmd.Version=%{version} \
-	-X github.com/minio/mc/cmd.ReleaseTag=${COMMIT_HASH}" \
+   -ldflags=" \
+   -X github.com/minio/mc/cmd.Version=%{version} \
+   -X github.com/minio/mc/cmd.ReleaseTag=${COMMIT_HASH}" \
    -o bin/%{name}
 
 %install

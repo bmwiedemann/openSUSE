@@ -1850,4 +1850,15 @@
   * Bump minimum ``cloudpickle`` to 3 @jrbourbeau</comment>
     <requestid>1199615</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>74cf97475d29d3b0a4f0a05ecf3fd55f</srcmd5>
+    <version>2024.11.1</version>
+    <time>1731435809</time>
+    <user>anag+factory</user>
+    <comment>- update to 2024.11.1:
+  * Zarr-Python 3 compatibility  (:pr:`11388`)
+  * Avoid exponentially increasing taskgraph in overlap
+  * Ensure numba tokenization does not use slow pickle path</comment>
+    <requestid>1223590</requestid>
+  </revision>
 </revisionlist>

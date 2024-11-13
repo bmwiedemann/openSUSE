@@ -1,0 +1,59 @@
+From 2963ebc172c856e737c2047465dd1573b0a64020 Mon Sep 17 00:00:00 2001
+From: Aleksa Sarai <cyphar@cyphar.com>
+Date: Fri, 18 Oct 2024 13:17:01 +1100
+Subject: [PATCH] dist: adjust script imports to be able to use /usr/libexec
+
+In order to make installation easier for distributions, make all script
+imports based on a single variable that distributions can adjust based
+on how the script is packaged for each distribution.
+
+Ideally we would actually install the script in /usr/libexec rather than
+/ in our Dockerfile, but this is a simpler fix that still lets you run
+the script from the repo directory.
+
+Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
+---
+ docker-bench-security.sh | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/docker-bench-security.sh b/docker-bench-security.sh
+index d91d995b8166..d4041a8de66a 100755
+--- a/docker-bench-security.sh
++++ b/docker-bench-security.sh
+@@ -9,9 +9,11 @@
+ 
+ version='1.6.0'
+ 
++LIBEXEC="." # Distributions can change this to /usr/libexec or similar.
++
+ # Load dependencies
+-. ./functions/functions_lib.sh
+-. ./functions/helper_lib.sh
++. $LIBEXEC/functions/functions_lib.sh
++. $LIBEXEC/functions/helper_lib.sh
+ 
+ # Setup the paths
+ this_path=$(abspath "$0")       ## Path of this file including filename
+@@ -99,7 +101,7 @@ do
+ done
+ 
+ # Load output formating
+-. ./functions/output_lib.sh
++. $LIBEXEC/functions/output_lib.sh
+ 
+ yell_info
+ 
+@@ -161,8 +163,8 @@ main () {
+     images=$(docker images -q $LABELS| grep -v "$benchcont")
+   fi
+ 
+-  for test in tests/*.sh; do
+-    . ./"$test"
++  for test in $LIBEXEC/tests/*.sh; do
++    . "$test"
+   done
+ 
+   if [ -z "$check" ] && [ ! "$checkexclude" ]; then
+-- 
+2.47.0
+

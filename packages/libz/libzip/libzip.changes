@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov  7 18:06:35 UTC 2024 - Yann BOYER <yann.boyer742@gmail.com>
+
+- version update to 1.11.2
+  * Fix performance regression in `zip_stat` introduced in 1.11. 
+
+-------------------------------------------------------------------
 Wed Oct 30 16:04:07 UTC 2024 - Yann BOYER <yann.boyer742@gmail.com>
 
 - version update to 1.11.1

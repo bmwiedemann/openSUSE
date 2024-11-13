@@ -20,7 +20,7 @@
 %define sover   11
 
 Name:           mediastreamer2
-Version:        5.3.37
+Version:        5.3.95
 Release:        0
 Summary:        Audio/Video real-time streaming
 License:        AGPL-3.0-or-later

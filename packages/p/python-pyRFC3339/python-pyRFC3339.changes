@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov 11 20:50:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.1:
+  * Migrate tests from nose to unittest and pytest
+  * Replace :mod:`pytz` dependency with
+    :attr:`datetime.timezone.utc` and :mod:`zoneinfo`
+  * Reformat codebase with black and isort
+  * Configure GitHub Actions; remove Travis CI configuration file
+- drop switch-to-pytest.patch (upstream)
+
+-------------------------------------------------------------------
 Sun Jun 11 14:31:43 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
@@ -7,7 +18,7 @@ Sun Jun 11 14:31:43 UTC 2023 - ecsos <ecsos@opensuse.org>
 Mon Sep 20 02:09:22 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add switch-to-pytest.patch
-  * Use assert and pytest rather than nose. 
+  * Use assert and pytest rather than nose.
 
 -------------------------------------------------------------------
 Thu Jun  3 11:27:14 UTC 2021 - pgajdos@suse.com
@@ -35,7 +46,7 @@ Thu Dec 17 09:33:21 UTC 2015 - jweberhofer@weberhofer.at
 -------------------------------------------------------------------
 Wed Nov 11 12:27:39 UTC 2015 - t.gruner@katodev.de
 
-- Update to version 1.0 
+- Update to version 1.0
 
 -------------------------------------------------------------------
 Thu Aug 13 14:12:10 UTC 2015 - ecsos@schirra.net

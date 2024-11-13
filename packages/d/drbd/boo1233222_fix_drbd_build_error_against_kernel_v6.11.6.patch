@@ -1,0 +1,37 @@
+From 80673af5c0cebaeedc1260248466cfd8b268aa0c Mon Sep 17 00:00:00 2001
+From: Su Yue <glass.su@suse.com>
+Date: Tue, 12 Nov 2024 10:14:17 +0800
+Subject: [PATCH] boo1233222_fix_drbd_build_error_against_kernel_v6.11.6
+
+This patch fixes build error due to kernel ABI change introduced
+in v6.11.6 by
+
+commit 56440d7ec28d60f8da3bfa09062b3368ff9b16db
+Author: Eric Dumazet <edumazet@google.com>
+Date:   Fri Oct 11 17:12:17 2024 +0000
+
+    genetlink: hold RCU in genlmsg_mcast()
+
+After the commit, genlmsg_multicast_allns is called without parameter flags.
+
+Signed-off-by: Su Yue <glass.su@suse.com>
+---
+ .../genl_magic_func-genl_register_family_with_ops_groups.h      | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drbd/drbd-headers/linux/genl_magic_func-genl_register_family_with_ops_groups.h b/drbd/drbd-headers/linux/genl_magic_func-genl_register_family_with_ops_groups.h
+index b7adc480247e..733cbc788f7f 100644
+--- a/drbd/drbd-headers/linux/genl_magic_func-genl_register_family_with_ops_groups.h
++++ b/drbd/drbd-headers/linux/genl_magic_func-genl_register_family_with_ops_groups.h
+@@ -19,7 +19,7 @@ static int CONCAT_(GENL_MAGIC_FAMILY, _genl_multicast_ ## group)(	\
+ 	unsigned int group_id =						\
+ 		CONCAT_(GENL_MAGIC_FAMILY, _group_ ## group);		\
+ 	return genlmsg_multicast_allns(&ZZZ_genl_family, skb, 0,	\
+-				 group_id, flags);			\
++				       group_id);			\
+ }
+ 
+ #include GENL_MAGIC_INCLUDE_FILE
+-- 
+2.47.0
+

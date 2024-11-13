@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 11 16:58:30 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add missing dependency
+
+-------------------------------------------------------------------
 Fri Jul 19 11:26:13 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream patch fix-tests.patch to fix tests with Django 5

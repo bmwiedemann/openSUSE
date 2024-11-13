@@ -1,0 +1,13 @@
+<package name="ironwail" project="openSUSE:Factory">
+  <title></title>
+  <description>A fork of the popular GLQuake descendant QuakeSpasm with a focus on high performance instead of maximum compatibility, with a few extra features sprinkled on top.
+
+Quake game files (id1 directory containing pak files) must be found for ironquake to start:
+
+- automatically found if the Quake Steam remaster is installed
+- id1 directory can be copied into ~/.ironwail
+- start ironwail with option -basedir &lt;install_dir&gt;, where &lt;install_dir&gt; is the directory containing the id1 folder
+</description>
+  <devel project="games" package="ironwail"/>
+  <url>https://github.com/andrei-drexler/ironwail</url>
+</package>

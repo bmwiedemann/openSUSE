@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Nov 12 06:49:54 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.86.1:
+  * fix: source block can be nil (#2977)
+  * deps: bump updatecli version to v0.86.0 (#2963)
+
+-------------------------------------------------------------------
+Mon Nov 04 19:49:04 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.86.0:
+  * feat: add GitHub action autodiscovery plugin (#1964)
+  * deps(go): bump module github.com/goccy/go-yaml (#2956)
+  * deps(go): bump module github.com/goccy/go-yaml (#2949)
+  * chore(deps): Bump anchore/sbom-action from 0.17.3 to 0.17.6
+    (#2941)
+  * feat(gitbranch): Add git url param to gitbranch plugin (#2850)
+  * fix(gittag): allow to specify the sourcebranch where to create
+    the tag (#2926)
+  * deps(go): bump module github.com/goccy/go-yaml (#2924)
+  * fix(temurin) use OS and architecture to filter responses when
+    retrieving versions (#2917)
+  * fix(temurin) fail explicitly when specifying condition or
+    target of kind 'temurin' (#2916)
+  * feat(gittag): Add git url param to gittag plugin (#2848)
+  * deps(go): bump module cuelang.org/go (#2902)
+  * feat: detect auto-debug in the CI (#2822)
+  * deps(updatecli/policies): bump all policies (#2712)
+  * feat(scm): add bitbucket cloud scm and action support (#2847)
+  * fix: show pipeline as skipped if all target are skipped (#2849)
+  * deps(go): bump module github.com/fatih/color (#2875)
+  * deps(go): bump module github.com/yuin/goldmark (#2870)
+  * deps(go): bump module
+    github.com/testcontainers/testcontainers-go (#2861)
+  * deps(go): bump module helm.sh/helm/v3 (#2859)
+  * fix: disabling temurin s390x test (#2852)
+  * feat(core/pipeline): allow dependency across
+    source/conditions/targets (#2800)
+  * fix(doc): Typos (#2824)
+  * chore(deps): Bump anchore/sbom-action from 0.17.2 to 0.17.3
+    (#2823)
+  * chore: deps(go): bump module github.com/drone/go-scm to v1.38.8
+    (#2812)
+  * Fix bug when gitea request fails (#2806)
+  * deps: bump updatecli version to v0.85.0 (#2794)
+
+-------------------------------------------------------------------
 Fri Oct 11 06:54:58 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.85.0:

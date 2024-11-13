@@ -1581,4 +1581,14 @@
   * fix(rabbitmq): add dial timeout (#3421) (forwarded request 1222952 from ph03nix)</comment>
     <requestid>1222994</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>6e2fc3539c1e250740e002931dd441c9</srcmd5>
+    <version>3.83.6</version>
+    <time>1731435656</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.83.6:
+  * chore: log false positive result as string (#3582)
+  * feat: log why false positives are skipped (#3579) (forwarded request 1223302 from ph03nix)</comment>
+    <requestid>1223380</requestid>
+  </revision>
 </revisionlist>

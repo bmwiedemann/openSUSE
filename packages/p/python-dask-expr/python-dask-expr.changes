@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Nov 12 08:47:46 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.18:
+  * Add support for Python 3.13
+  * Migrate Blockwise to use taskspec
+  * Migrate shuffle and merge to `P2PBarrierTask`
+  * Improve Aggregation docstring explicitly mentionning
+    SeriesGroupBy
+  * Migrate P2P shuffle and merge to TaskSpec
+  * Internal cleanup of P2P code
+  * Fix meta calculation for to_datetime
+  * Fix ``Merge`` divisions after filtering partitions
+
+-------------------------------------------------------------------
+Thu Oct 10 15:42:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.15:
+  * Add concatenate flag to .compute()
+  * Import from tokenize
+
+-------------------------------------------------------------------
 Sun Sep  8 14:24:41 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.1.13
@@ -53,7 +74,7 @@ Thu Aug 29 14:38:23 UTC 2024 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Mon Jul  8 04:34:30 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Update to 1.1.6: 
+- Update to 1.1.6:
   * Patch release for Dask 2024.6.2
   * Fix resample divisions propagation
   * Fix categorize if columns are dropped

@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Tue Nov 12 02:41:53 UTC 2024 - Mia Herkt <mia@0x0.st>
+
+- Update to 2.12.0
+  * Fix possible null dereference when continue_album=0
+    gh#cmus/cmus#1351
+  * Make PART / PARTNUMBER aliases for DISCNUMBER
+    gh#cmus/cmus#1316
+  * cmus-tutorial </> is actually ,/.
+    gh#cmus/cmus#1355
+  * Fix potential double-close in ip/mad
+    gh#cmus/cmus#1350
+  * Fix view segv in rc config
+    gh#cmus/cmus#1326
+  * Fix pause_on_output_change not working when softvol is enabled
+    gh#cmus/cmus#1353
+  * Trim gaps from mp4 playback
+    gh#cmus/cmus#1320
+  * Show some context when editing middle of long cmdline
+    gh#cmus/cmus#1319
+  * Remember playlist position when resume=true
+    gh#cmus/cmus#1325
+  * Make trackwin heading format configurable, etc.
+    gh#cmus/cmus#1317
+  * Show recognized names in message for bad option value
+    gh#cmus/cmus#1356
+  * Draw progress bar in statusline
+    gh#cmus/cmus#1318
+  * Fix manpage indentation
+    gh#cmus/cmus#1362
+  * Fix documentation for passwd config option
+    gh#cmus/cmus#1361
+  * [FFmpeg] Add .dsf to extension list (DSD support)
+    gh#cmus/cmus#1336
+  * Fix tree restricted search infinite wrap
+    gh#cmus/cmus#1371
+  * Fix a couple of wrong *_attr defaults
+    gh#cmus/cmus#1372
+  * Fix load command args
+    gh#cmus/cmus#1373
+  * Rename 'Priority' to 'Default Priority' in --plugins
+    gh#cmus/cmus#1365
+  * Prevent search from wrapping infinitely
+    gh#cmus/cmus#1370
+  * add play_queue total_time
+    gh#cmus/cmus#1309
+  * Fully remove libcue
+    gh#cmus/cmus#1378
+  * Fix :mark on playlist view so filter is used
+    gh#cmus/cmus#904
+  * Implement option to start searches at the current position
+    gh#cmus/cmus#1376
+  * Apply new formats from #1317 on upgrade
+    gh#cmus/cmus#1382
+
+-------------------------------------------------------------------
 Sat May 25 12:11:16 UTC 2024 - Mia Herkt <mia@0x0.st>
 
 - Update to 2.11.0

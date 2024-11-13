@@ -601,6 +601,12 @@ Prefer: -gdm-systemd
 # have choice for uv needed by python310-hatch: python310-uv python311-uv python312-uv uv, have choice for uv needed by python312-hatch: python310-uv python311-uv python312-uv uv, have choice for uv needed by python311-hatch: python310-uv python311-uv python312-uv uv
 Prefer: -python310-uv -python312-uv
 
+# have choice for python311-markdown-math needed by python311-Markups: python311-markdown-math python311-python-markdown-math
+Prefer: -python311-markdown-math
+
+# have choice for python3-pysnmp: python311-pysnmp python311-pysnmp-lextudio
+Prefer: -python311-pysnmp
+
 # have choice for python3-numpy-devel: python311-numpy-devel python311-numpy1-devel
 Prefer: -python310-numpy1-devel -python311-numpy1-devel -python312-numpy1-devel -python311-numpy1 -python310-numpy1 -python312-numpy1
 

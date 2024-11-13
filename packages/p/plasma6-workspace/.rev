@@ -159,4 +159,14 @@
     <comment>Plasma 6.2.3 (forwarded request 1221508 from Vogtinator)</comment>
     <requestid>1221571</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>3467913364bce28ceb2bd2d1e1a72a25</srcmd5>
+    <version>6.2.3</version>
+    <time>1731435592</time>
+    <user>anag+factory</user>
+    <comment>- Replace %requires_ge plasma6-framework-components with
+  %requires_ge libplasma6-components: the requires_eq macro does
+  only work on real package names, not on virtual provides.</comment>
+    <requestid>1223382</requestid>
+  </revision>
 </revisionlist>

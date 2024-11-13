@@ -15,4 +15,12 @@
     <comment>update to 0.19.2; fix boo#1223224, BuildRequire cargo 1.75 aka rust 1.75 to avoid errors due to kube-client v0.90.0</comment>
     <requestid>1169929</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ec8f2b1d9f342e874076b3c63cfcf923</srcmd5>
+    <version>0.20.1</version>
+    <time>1731435798</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1223616</requestid>
+  </revision>
 </revisionlist>

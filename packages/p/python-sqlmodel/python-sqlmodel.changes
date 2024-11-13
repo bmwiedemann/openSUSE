@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 29 08:06:12 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- fix buildcycle with fastapi
+
+-------------------------------------------------------------------
 Tue Sep 17 13:21:38 UTC 2024 - Aline Werner <aline.werner@suse.com>
 
-- Initial package for v0.0.22. 
+- Initial package for v0.0.22.

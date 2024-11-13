@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 11 13:48:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.3:
+  * Set python_requires metadata in setup.py
+  * Removed setuptools as a runtime dependency (thanks @wch in #46)
+
+-------------------------------------------------------------------
 Tue Nov 19 20:27:14 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 3.3.0

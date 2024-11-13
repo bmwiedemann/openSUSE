@@ -24,11 +24,10 @@
 #
 
 Name:           rubygem-rspec-core
-Version:        3.13.0
+Version:        3.13.2
 Release:        0
 %define mod_name rspec-core
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 1.8.7}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
@@ -39,8 +38,6 @@ Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        RSpec runner and formatters
 License:        MIT
-Group:          Development/Languages/Ruby
-PreReq:         update-alternatives
 
 %description
 BDD for Ruby. RSpec runner and example groups.

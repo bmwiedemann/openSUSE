@@ -15,12 +15,13 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %bcond_with test
 
 %define library_version 1.0.0
 %define library_soversion 0unstable
 Name:           aws-c-io
-Version:        0.14.18
+Version:        0.15.1
 Release:        0
 Summary:        I/O and TLS package AWS SDK for C
 License:        Apache-2.0
@@ -31,11 +32,11 @@ Patch0:         aci_fix-cmake-modules-path.patch
 Patch1:         aci_add-so-version.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
+BuildRequires:  ninja
 BuildRequires:  cmake(aws-c-cal)
 BuildRequires:  cmake(aws-c-common)
-BuildRequires:  pkgconfig(libssl)
 BuildRequires:  cmake(s2n)
-BuildRequires:  ninja
+BuildRequires:  pkgconfig(libssl)
 
 %description
 This is a module for the AWS SDK for C. It handles all I/O

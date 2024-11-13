@@ -1,11 +1,11 @@
 ---
- config.h.in      |    3 ++
- configure.ac     |   52 +++++++++++++++++++++++++++++++++++++++++
- src/decompress.c |   69 ++++++++++++++++++++++++++++++++++++++++++++++++++++++-
- 3 files changed, 123 insertions(+), 1 deletion(-)
+ config.h.in      |    3 +
+ configure.ac     |   52 +++++++++++++++++++++++++++++++++
+ src/decompress.c |   86 +++++++++++++++++++++++++++++++++++++++++++++++++++++--
+ 3 files changed, 138 insertions(+), 3 deletions(-)
 
 --- config.h.in
-+++ config.h.in	2024-10-18 12:05:43.927063826 +0000
++++ config.h.in	2024-11-11 10:43:01.369880933 +0000
 @@ -1148,6 +1148,9 @@
  /* Define to 1 if you have the `z' library (-lz). */
  #undef HAVE_LIBZ
@@ -17,7 +17,7 @@
  #undef HAVE_LIB_BCRYPT
  
 --- configure.ac
-+++ configure.ac	2024-10-18 12:05:43.927063826 +0000
++++ configure.ac	2024-11-11 10:43:01.369880933 +0000
 @@ -35,6 +35,18 @@ MAN_ARG_DEVICE
  MAN_ARG_DB
  MAN_ARG_CONFIG_FILE
@@ -85,7 +85,7 @@
  
  # Check for various header files and associated libraries.
 --- src/decompress.c
-+++ src/decompress.c	2024-10-18 12:11:37.516631374 +0000
++++ src/decompress.c	2024-11-11 10:44:24.036386441 +0000
 @@ -40,12 +40,17 @@
  
  #include "pipeline.h"
@@ -104,21 +104,77 @@
  #include "manconfig.h"
  
  #include "compression.h"
-@@ -189,6 +194,32 @@ static decompress *decompress_try_zlib (
+@@ -146,7 +151,11 @@ static void decompress_zlib (void *data
+ 
+ static decompress *decompress_try_zlib (const char *filename)
+ {
++#ifdef HAVE_ZIO
++	FILE *file;
++#else
+ 	gzFile zlibfile;
++#endif
+ 	/* We only ever call this from the parent process (and don't
+ 	 * currently use threads), and this lets us skip per-file memory
+ 	 * allocation.
+@@ -154,18 +163,32 @@ static decompress *decompress_try_zlib (
+ 	static char buffer[MAX_INPROCESS];
+ 	int len = 0;
+ 
++#ifdef HAVE_ZIO
++	file = fzopen(filename, "r");
++	if (!file)
++		return NULL;
++#else
+ 	zlibfile = gzopen (filename, "r");
+ 	if (!zlibfile)
+ 		return NULL;
++#endif
+ 
+ 	while (len < MAX_INPROCESS) {
+ 		/* Read one more byte than we're prepared to return, in
+ 		 * order to detect EOF at the right position.  The "len >=
+ 		 * MAX_INPROCESS" check below catches the boundary case.
+ 		 */
++#ifdef HAVE_ZIO
++		int r = fread(buffer + len, sizeof(char), MAX_INPROCESS - len, file);
++#else
+ 		int r = gzread (zlibfile, buffer + len, MAX_INPROCESS - len);
++#endif
+ 		if (r < 0) {
++#ifdef HAVE_ZIO
++			fclose(file);
++#else
+ 			gzclose (zlibfile);
++#endif
+ 			return NULL;
+ 		} else if (r == 0)
+ 			break;
+@@ -173,7 +196,11 @@ static decompress *decompress_try_zlib (
+ 			len += r;
+ 	}
+ 
++#ifdef HAVE_ZIO
++	fclose(file);
++#else
+ 	gzclose (zlibfile);
++#endif
+ 	if (len >= MAX_INPROCESS)
+ 		return NULL;
+ 	/* Copy input data so that we don't have potential data corruption
+@@ -189,33 +216,86 @@ static decompress *decompress_try_zlib (
  #  define OPEN_FLAGS_UNUSED MAYBE_UNUSED
  #endif /* HAVE_LIBZ */
  
 +#ifdef HAVE_ZIO
-+
 +static void decompress_zio (void *data)
 +{
 +	const char *what = (const char*)data;
 +	FILE *file;
-+
++ 
 +	file = fdzopen(dup (fileno (stdin)), "r", what);
 +	if (!file)
 +		return;
-+
++ 
 +	for (;;) {
 +		char buffer[4096];
 +		int r = fread(buffer, sizeof(char), sizeof(buffer), file);
@@ -127,68 +183,74 @@
 +		if (fwrite (buffer, 1, (size_t) r, stdout) < (size_t) r)
 +			break;
 +	}
-+
++ 
 +	fclose(file);
 +	return;
 +}
-+
 +#endif /* HAVE_ZIO */
 +
  decompress *decompress_open (const char *filename, int flags OPEN_FLAGS_UNUSED)
  {
  	pipecmd *cmd;
-@@ -203,6 +234,38 @@ decompress *decompress_open (const char
+ 	pipeline *p;
+ 	struct stat st;
+ #ifdef HAVE_LIBZ
++# ifdef HAVE_ZIO
++	char *ext;
++# else
+ 	size_t filename_len;
++# endif
+ #endif /* HAVE_LIBZ */
+-	char *ext;
+ 	struct compression *comp;
+ 
  	if (stat (filename, &st) < 0 || S_ISDIR (st.st_mode))
  		return NULL;
  
-+#ifdef HAVE_ZIO
+ #ifdef HAVE_LIBZ
++# ifdef HAVE_ZIO
 +	ext = strrchr (filename, '.');
-+	if (ext) {
-+		const char *opt;
++	if (ext && (
++		STREQ (ext, ".gz")      ||
++		STREQ (ext, ".z")       ||
++		STREQ (ext, ".bz2")     ||
++		STREQ (ext, ".xz")      ||
++		STREQ (ext, ".lzma")    ||
++		STREQ (ext, ".Z")
++		)) {
++# else
+ 	filename_len = strlen (filename);
+ 	if (filename_len > 3 && STREQ (filename + filename_len - 3, ".gz")) {
++# endif
+ 		if (flags & DECOMPRESS_ALLOW_INPROCESS) {
+ 			decompress *d = decompress_try_zlib (filename);
+ 			if (d)
+ 				return d;
+ 		}
+-
++# ifdef HAVE_ZIO
++		static char opt[2] = {'\0','\0'};
 +		char *name = NULL;
 +
-+		if (STREQ (ext, ".gz"))
-+			opt = "g";
-+		else if (STREQ (ext, ".z"))
-+			opt = "z";
-+		else if (STREQ (ext, ".bz2"))
-+			opt = "b";
-+		else if (STREQ (ext, ".xz"))
-+			opt = "x";
-+		else if (STREQ (ext, ".lzma"))
-+			opt = "l";
-+		else if (STREQ (ext, ".Z"))
-+			opt = "Z";
-+		else
-+			goto nozio;
++		opt[0] = ext[1];
 +
 +		/* informational only; no shell quoting concerns */
 +		name = appendstr (NULL, "libzio < ", filename, (void *) 0);
 +		cmd = pipecmd_new_function (name, &decompress_zio, NULL,
 +					    (void *)opt);
-+		pipecmd_pre_exec (cmd, sandbox_load, sandbox_free, sandbox);
-+		p = pipeline_new_commands (cmd, (void *) 0);
-+		free (name);
-+		goto got_pipeline;
-+	}
-+#endif /* HAVE_ZIO */
-+
- #ifdef HAVE_LIBZ
- 	filename_len = strlen (filename);
- 	if (filename_len > 3 && STREQ (filename + filename_len - 3, ".gz")) {
-@@ -220,7 +283,11 @@ decompress *decompress_open (const char
++# else
+ 		cmd = pipecmd_new_function ("zcat", &decompress_zlib, NULL,
+ 		                            NULL);
++# endif
+ 		pipecmd_pre_exec (cmd, sandbox_load, sandbox_free, sandbox);
+ 		p = pipeline_new_commands (cmd, nullptr);
++# ifdef HAVE_ZIO
++                free (name);
++# endif
+ 		goto got_pipeline;
  	}
  #endif /* HAVE_LIBZ */
- 
-+#ifdef HAVE_ZIO
-+nozio:
-+#else
- 	ext = strrchr (filename, '.');
-+#endif /* HAVE_LIBZ */
- 	if (ext) {
- 		++ext;
- 
-@@ -313,7 +380,7 @@ void decompress_inprocess_replace (decom
+@@ -313,7 +393,7 @@ void decompress_inprocess_replace (decom
  
  void decompress_start (decompress *d)
  {

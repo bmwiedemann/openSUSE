@@ -1,4 +1,118 @@
 -------------------------------------------------------------------
+Mon Nov 11 21:01:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.36.0:
+  * Allow FlashBuilder to work when program page size is larger
+    than sector erase size (@BrianPugh)
+  * Very basic implementation to get a "connect" LED status
+    display (@rgrr)
+  * Add Trace Funnel Coresight component (@rapgenic)
+  * Cortex-M CPU type detection improvements
+  * Debug sequences: support pname on DebugPort* sequences
+  * Add MAX32666FTHR board (@ozersa)
+  * Add STMicro STM32 H743 and H723 targets (@unsanded)
+  * nRF91 family improvements (@maxd-nordic)
+  * Add HDSC HC32F448 hc32a460xe and hc32a4a0xi. (@lennvn)
+  * Add airm2m air001 target (@kaidegit)
+  * Add airm2m air32f103 target (@HalfSweet)
+  * Add STMicro STM32H7B0 Target (@BrianPugh)
+  * Add NXP S32K344 target (@PetervdPerk-NXP)
+  * Add Realtek RTL8762C (@suphammer)
+  * Add some missing ST and NXP board IDs
+  * Fix HC32l130 32k+ flash error (@kaidegit)
+  * Fix HC32L13x size and enable double buffering (@kaidegit)
+  * Infineon PSoC6: remove unnecessary sleep during reset (@te-
+    johan)
+  * Remove part number match for NXP MIMXRTxxxx series family
+  * RTT: fix CB not found (@tdasika)
+  * CMSIS-DAP: Windows performance regression fix
+  * Debug sequences: fix assignment expressions.
+  * flash: fix some type errors, sort imports
+  * Removed extraneous space character in the default `cortex_m`
+    target warning message (@BenjaminSoelberg)
+  * Flash loader: fix missing import of RamRegion
+  * coresight: adiv5 discovery: increment invalid AP count on
+    exception
+  * cortex-m: reset_halt: just warn about invalid T-bit, don't
+    automatically fix
+  * commands: reset: fall back to reset via probe if context has
+    no selected core
+  * Only create one session to access options when there's no
+    current session, to reduce debug log message output.
+- update to 0.35.1:
+  * debug sequences: support [uU] suffix on integer literals
+  * commands: `show accessible-pins`: fix function call, print
+    GPIO pins
+  * commands: `show locked`: fix misspelled "target"
+  * coresight: dap: revert API change to add DebugPort param to
+    DPConnector constructor (in particular, this broke the NXP
+    SPSDK tool's pyOCD support)
+  * manifest: add sequences.lark
+  * code quality: do not use bare exception handler
+- update to 0.35.0:
+  * With this release, Python 3.6 is no longer supported. The
+    minimum Python version is now 3.7.0.
+  * cmsis-packs: debug sequence support; see the documentation
+    for details
+  * rtt: add RTT support to gdbserver via the addition of an
+    `rtt` command (thanks @samueldewan)
+  * rtt: add logging function to rtt sub-command (thanks
+    @zjli-2019)
+  * coresight: cortex-m: 'primary_core' option
+  * subcommands: Python tracebacks are no longer printed unless
+    debug logging is enabled (the `debug.traceback` option is
+    disabled by default)
+  * object graph nodes have names now, accessible with the
+    `.node_name` attribute
+  * board and SoC nodes have default names of "board" and "soc"
+  * CPUs will have a default (uniquified) name of the CPU type,
+    or a custom name specified in a DFP
+  * these names are visible in some of the commands such as `show
+    cores` or `show graph`, and can be used in commands such as
+    `core` (to select the core that commands apply to)
+  * memory map: memory regions can have subregions; this is used
+    for flash memory regions to explicitly support multiple
+    sector sizes and/or flash algorithms
+  * target: added generic `sw_system` and `sw_core` reset types
+    (aliased as `system` and `core`, with
+    `Target.ResetType.SW_SYSTEM` and `Target.ResetType.SW_CORE`
+    enums in the API), corresponding to the existing
+    `sysresetreq` and `vectreset` reset types
+  * target: `.supported_reset_types` property returns a list of
+    allowed reset type enums
+  * flash: add `--no-reset` option to prevent resetting of device
+    after programming (thanks @nordicjm)
+  * flash: memory regions are now created when a DFP specifies an
+    algorithm without also defining a corresponding memory
+    region, as long as that algorithm is marked as default
+  * core: `cache.enable_memory` and `cache.enable_register`
+    session options to control the memory and register cache used
+    by the gdb server
+  * commands: add `show sequences` command
+  * commands: add `reset-type` value to show and set current
+    reset type and view available reset types
+  * commands: new `sleep` command
+  * commands: add `pins` and `accessible-pins` values
+  * api: debug probe pins API
+  * dependency: bump minimum cmsis-pack-manager version to 0.5.2
+  * dependencies: bump pylink-square to minimum v1.0 (thanks
+  * probe: accept WCH-Link as DAPv1 (thanks @eugene-bright)
+  * probe: cmsis-dap: add "CMSIS_DAP" to known device strings
+  * probe: stlink: cache board IDs to improve connect time
+  * semihosting: ensure directories exist before opening a file
+    (thanks @Hoohaha)
+  * RTOS: Catch TransferErrors during kernel state checks (thanks
+    @imi415)
+  * flash: catch exceptions while fetching state (thanks @maxd-
+    nordic)
+  * coresight: discovery: continue after an AP probe failure
+    occurs
+  * core: soc_target: options to control memory and register
+    cache enablement
+  * trace: minor trace logging improvements
+  * commands: reinit: set exec context attrs to defaults
+
+-------------------------------------------------------------------
 Thu Jul 27 07:25:56 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to setuptools_scm, rather than setuptools_scm_git_archive.

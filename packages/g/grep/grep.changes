@@ -21,6 +21,7 @@ Thu May 18 12:00:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
     However, future versions of GNU grep and/or PCRE2 are
     likely to fix this and change the behavior of \w and ^H
     back to Unicode again, without breaking [\d] as 3.10 did.
+- removes testsuite.patch in older distributions
 
 -------------------------------------------------------------------
 Thu Mar 30 07:41:18 UTC 2023 - Dirk Müller <dmueller@suse.com>

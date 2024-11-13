@@ -1,0 +1,143 @@
+------------------------------------------------------------------
+Wed Nov 12 03:00:00 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- Require switchboard at runtime
+
+-------------------------------------------------------------------
+Wed Aug 21 06:26:04 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.0:
+  * Add missing deeplink handlers
+  * DisplayWidget: Gtk4 prep
+  * DisplaysOverlay: keep a list of widgets
+  * DisplaysView: Gtk4 prep
+  * Use daemon to show display labels
+  * Move drag gesture to overlay
+  * DisplaysOverlay: put overlay in a box
+  * Handle own titlebuttons
+  * Fix apply unsensitive with only a single monitor
+- update to 7.0.0:
+  * Prefer the resolution modes marked is_preferred
+  * NightLightView: Redesign and cleanup
+  * Create Filters View
+- update to 2.3.3:
+  * Updated translations
+- update to 2.3.2:
+  * Move resolutions with a different aspect ratio to a submenu
+  * Improve brightness in the dark style
+  * Show display name on all workspaces
+  * Updated translations
+- update to 2.3.1:
+  * Ensure the "Use this display" switch works in more circumstances
+  * Updated translations
+- update to 2.3.0:
+  * Support 3× scaling
+  * Reliably detect accelerometers
+  * Updated translations
+- update to 2.2.2:
+  * Updated translations
+- update to 2.2.1:
+  * Fix 1px gaps between displays
+  * Properly center rotated displays
+  * Updated translations
+- switch url to github, as we don't want to link to a different OS
+
+-------------------------------------------------------------------
+Mon Nov 25 20:38:26 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.2.0:
+  * Add Gettext Updates to Actions
+  * AppData: Add releases info (#206)
+  * README: Fix weblate badge
+  * Split Debian packaging into its own branch
+  * Add Release to Actions
+  * Add Lint to CI (#191)
+  * DisplaysOverlay: fix linting errors (#204)
+  * DisplaysOverlay: Update copyright header (#199)
+  * (5/5) Multiple Issues: Introduce magnetic edge center (#184)
+  * (4/5) Multiple Issues: Fix intersections after mouse button
+    release (#183)
+  * Fix code style in all by DisplaysOverlay (#194)
+  * run installation in CI (#193)
+  * (3/5) Multiple Issues: Close gaps after mouse button release
+    (#182)
+  * (2/5) Multiple Issues: Snap monitors after mouse button
+    release (#181)
+  * (1/5) Multiple issues: Prep (#180)
+  * fix misplaced monitor labels after detecting displays (#176)
+  * Build with GitHub CI (#190)
+
+-------------------------------------------------------------------
+Mon Nov  4 14:41:44 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.1.9:
+  * New upstream release.
+
+-------------------------------------------------------------------
+Thu May  2 16:25:51 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.1.8:
+  * New upstream release.
+
+-------------------------------------------------------------------
+Tue Mar 12 11:25:22 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.1.6:
+  * New upstream release.
+
+-------------------------------------------------------------------
+Thu Nov  8 02:29:37 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Add regex for filtering provided libraries
+
+-------------------------------------------------------------------
+Mon Oct  8 12:56:40 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.1.5:
+  * New upstream release.
+
+-------------------------------------------------------------------
+Sat Jun 23 16:46:25 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.1.4:
+  * New upstream release..
+
+-------------------------------------------------------------------
+Sat Jun  9 02:31:02 UTC 2018 - avvissu@yandex.by
+
+- Switch to github
+- Switch to meson
+- Add COPYING and README files
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Tue Jun 13 14:44:09 UTC 2017 - jengelh@inai.de
+
+- Rectify grammar problems in description.
+
+-------------------------------------------------------------------
+Wed May  3 02:45:20 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.1.3:
+  * Add Travis CI (#54)
+  * Create README.md; delete old files (#53)
+  * Implement Preferences URL Specification
+
+-------------------------------------------------------------------
+Tue Nov  1 04:32:16 UTC 2016 - avvissu@yandex.by
+
+- Update to 0.1.2.1:
+ * Launchpad automatic translations update.
+
+-------------------------------------------------------------------
+Sun Sep 18 22:15:52 UTC 2016 - avvissu@yandex.by
+
+- Update to 0.1.2
+- Use cmake macro
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Sun Feb 28 10:08:56 UTC 2016 - mailaender@opensuse.org
+
+- initial packaging of version 0.1.1.1
+

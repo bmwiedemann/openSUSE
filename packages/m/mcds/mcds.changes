@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov  9 23:30:24 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.8
+  * Adding the ability to use libsecret including
+    prompting and saving the password.
+
+-------------------------------------------------------------------
 Sun Oct 20 20:29:41 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.7

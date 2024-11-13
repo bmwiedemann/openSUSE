@@ -16,39 +16,49 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
 %{?sle15_python_module_pythons}
-Name:           python-sqlmodel
+Name:           python-sqlmodel%{psuffix}
 Version:        0.0.22
 Release:        0
 Summary:        SQL databases in Python, designed for simplicity, compatibility, and robustness
 License:        MIT
 URL:            https://github.com/fastapi/sqlmodel
 Source:         https://files.pythonhosted.org/packages/source/s/sqlmodel/sqlmodel-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module pdm-backend}
-BuildRequires:  %{python_module pydantic >= 1.10.13}
 BuildRequires:  %{python_module SQLAlchemy >= 2.0.14}
+BuildRequires:  %{python_module pdm-backend}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pydantic >= 1.10.13}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python-SQLAlchemy >= 2.0.14
+Requires:       python-pydantic >= 1.10.13
+BuildArch:      noarch
 # SECTION test requirements
+%if %{with test}
+BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module black}
 BuildRequires:  %{python_module dirty-equals}
 BuildRequires:  %{python_module fastapi}
 BuildRequires:  %{python_module httpx}
-BuildRequires:  %{python_module Jinja2}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest}
+%endif
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-pydantic >= 1.10.13
-Requires:       python-SQLAlchemy >= 2.0.14
-BuildArch:      noarch
 %python_subpackages
 
 %description
-SQLModel is a library for interacting with SQL databases from Python code, 
-with Python objects. It is designed to be intuitive, easy to use, highly 
-compatible, and robust. SQLModel is based on Python type annotations, and 
+SQLModel is a library for interacting with SQL databases from Python code,
+with Python objects. It is designed to be intuitive, easy to use, highly
+compatible, and robust. SQLModel is based on Python type annotations, and
 powered by Pydantic and SQLAlchemy.
 
 %prep
@@ -58,17 +68,23 @@ powered by Pydantic and SQLAlchemy.
 %pyproject_wheel
 
 %install
+%if !%{with test}
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
+%if %{with test}
 export PYTHONPATH=$(pwd):$PYTHONPATH
 %pytest -v tests
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %doc README.md
 %license LICENSE
 %{python_sitelib}/sqlmodel
 %{python_sitelib}/sqlmodel-%{version}.dist-info
+%endif
 
 %changelog

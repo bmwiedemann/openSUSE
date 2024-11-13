@@ -17,7 +17,7 @@
 
 
 Name:           chezmoi
-Version:        2.53.1
+Version:        2.54.0
 Release:        0
 Summary:        A multi-host manager for dotfiles
 License:        MIT
@@ -71,6 +71,14 @@ go build \
         -tags noupgrade \
         -ldflags "-X main.version=%version
                   -X main.builtBy=build.opensuse.org"
+
+%check
+# Skip TestGoToolDistList test, which builds and installs from scratch from the Git repo
+go test \
+        -mod=vendor \
+        -buildmode=pie \
+        -skip TestGoToolDistList \
+        ./...
 
 %install
 install -D -m 0755 %{name} "%{buildroot}/%{_bindir}/%{name}"

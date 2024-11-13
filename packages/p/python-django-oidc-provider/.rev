@@ -37,4 +37,14 @@
     <comment></comment>
     <requestid>1145942</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>5c01cbd645e173a6708e4db0b5c84c14</srcmd5>
+    <version>0.8.2</version>
+    <time>1731435715</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1222743 from mcalabkova
+
+- Skip more failing tests, issue is known to upstream</comment>
+    <requestid>1223458</requestid>
+  </revision>
 </revisionlist>

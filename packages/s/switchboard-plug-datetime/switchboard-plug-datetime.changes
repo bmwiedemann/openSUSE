@@ -1,0 +1,108 @@
+------------------------------------------------------------------
+Wed Nov 12 03:00:00 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- Require switchboard at runtime
+
+-------------------------------------------------------------------
+Thu Oct 10 10:22:36 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.1.0:
+  * Updated translations
+
+-------------------------------------------------------------------
+Fri Aug  9 08:24:04 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.0:
+  * Improved screen reader support
+  * Updated translations
+- update to 2.2.0:
+  * Move timezone popover contents to the main view
+  * Add options to show or hide the date, weekday, and seconds in the clock
+  * Updated translations
+- update to 2.1.9:
+  * Updated translations
+  * Fix potential freeze when changing settings from multiple panes
+  * Updated translations
+- update to 2.1.8:
+  * Updated translations
+- update to 2.1.7:
+  * Updated translations
+
+-------------------------------------------------------------------
+Thu Aug 29 00:10:00 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.1.6:
+  * New upstream release.
+
+-------------------------------------------------------------------
+Tue Mar 12 11:24:50 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.1.5:
+  * New upstream release.
+
+-------------------------------------------------------------------
+Fri Dec 28 17:03:47 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Fix grammar in description again.
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Thu Nov  8 02:29:35 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Add regex for filtering provided libraries
+
+-------------------------------------------------------------------
+Wed Oct 17 18:57:37 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.1.4:
+  * New upstream release.
+
+-------------------------------------------------------------------
+Mon Jun 11 12:44:45 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.1.3:
+  * New upstream release.
+
+-------------------------------------------------------------------
+Sat Jun  9 02:31:02 UTC 2018 - avvissu@yandex.by
+
+- Switch to github
+- Switch to meson
+- Add COPYING and README files
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Tue Jun 13 14:43:31 UTC 2017 - jengelh@inai.de
+
+- Rectify grammar issues in descriptions.
+
+-------------------------------------------------------------------
+Sat Apr 22 11:15:58 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.1.2:
+  * Add a setting to show/hide week numbers (#22)
+  * Fix widget alignment and spacing (#20)
+  * Don't try to be clever and hide options (#21)
+  * change time format combo for modebutton (#15)
+  * Move widgets to widgets folder (#16)
+  * add missing quote (#19)
+  * Change incorrect data in cmake (#18)
+  * Add Travis CI (#17)
+  * Plug.vala: minor cleanups (#14)
+  * Update and rename INSTALL to README.md (#13)
+  * Launchpad automatic translations update.
+  * Update translations template
+  * Implement Preference Opening API
+
+-------------------------------------------------------------------
+Sun Sep 18 22:12:50 UTC 2016 - avvissu@yandex.by
+
+- Update to 0.1.1.1
+- Use cmake macro
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Sat Feb 27 22:23:25 UTC 2016 - mailaender@opensuse.org
+
+- initial packaging of version 0.1.0.2
+

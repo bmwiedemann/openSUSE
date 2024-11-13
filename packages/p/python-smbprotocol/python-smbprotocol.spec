@@ -17,13 +17,12 @@
 
 
 Name:           python-smbprotocol
-Version:        1.14.0
+Version:        1.15.0
 Release:        0
 Summary:        SMBv2/v3 client for Python 2 and 3
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jborean93/smbprotocol
-#Source:         https://files.pythonhosted.org/packages/source/s/smbprotocol/smbprotocol-%%{version}.tar.gz
 Source:         https://github.com/jborean93/smbprotocol/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module cryptography >= 2.0}
 BuildRequires:  %{python_module pip}

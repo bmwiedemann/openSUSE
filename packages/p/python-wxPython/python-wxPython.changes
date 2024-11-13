@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov  7 17:09:23 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add CVE-2024-50602-no-crash-XML_ResumeParser.patch fixing a
+  crash in the vendored libexpat’s XML_ResumeParser function
+  (bsc#1232590, CVE-2024-50602).
+
+-------------------------------------------------------------------
 Fri Oct  4 11:02:43 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 4.2.2:

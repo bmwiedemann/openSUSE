@@ -80,4 +80,15 @@
   * libbacktrace: fix syntax of Windows registration functions</comment>
     <requestid>1201777</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>111cc62a3d2ab6ff2f7ad80e5997cf0c</srcmd5>
+    <version>1.0+git20241025</version>
+    <time>1731435596</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0+git20241025:
+  * libbacktrace: recognize new Mach-O DWARF sections
+  * libbacktrace: remove extra characters in README.md
+  * libbacktrace: don't get confused by overlapping address ranges</comment>
+    <requestid>1223596</requestid>
+  </revision>
 </revisionlist>

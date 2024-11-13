@@ -1,0 +1,65 @@
+-------------------------------------------------------------------
+Tue Nov 12 08:25:03 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.10.2:
+  * Up the app version
+  * Fix typo
+  * build with go 1.23
+  * update golang.org/x/image to resolve cve-2024-24792
+  * Fix datatype
+  * Update the chart version
+  * fix: move metricRelabelings to correct section
+  * improvement: support relabelings in ServiceMonitor
+  * Fix small typo i Chart description. Change troublshoot to
+    troubleshoot
+  * The appVersion should not have a v
+  * Update the publishing workflow
+  * Secure by default - set the security context and pod security
+    context
+  * Remove kubernetes version to use the default image
+  * Update to kube 1.30 for the kind cluster as well
+  * Update the versions to the latest
+  * feat: add helm chart
+
+-------------------------------------------------------------------
+Tue May 14 05:27:53 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.10.1:
+  * Update the version
+  * Upgrade golang to 1.22 and update dependencies
+  * Add default namespace `default` to ServiceAccount definition,
+    to catch case where users find-replace `default` with another
+    namespace but don't change it for the ServiceAccount
+
+-------------------------------------------------------------------
+Tue Apr 09 06:27:46 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.10.0:
+  * Increment the version
+  * use protobuf and add resourceVersion in listOption
+
+-------------------------------------------------------------------
+Thu Nov 09 06:45:57 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 3.9.0:
+  * Use full imags base name as ARG
+  * fix dockerfile
+  * Provide Windows builds and refactor CI
+
+-------------------------------------------------------------------
+Tue Oct 24 09:49:56 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 3.8.0:
+  * OOPS - accidentally left out the target on doing the update
+  * Update to golang 1.21 in the github workflow as well
+  * Update the builder image and use distroless for the final image
+  * :trollface: seriously? how was this broken
+  * Update go.sum
+  * Update all the dependencies...
+  * Remove deprecated rbac.authorization.k8s.io/v1beta1
+
+-------------------------------------------------------------------
+Tue Oct 24 09:49:29 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package goldpinger: Debugging tool for Kubernetes which tests
+  and displays connectivity between nodes in the cluster

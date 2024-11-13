@@ -1081,4 +1081,41 @@
   * Bump minimum ``cloudpickle`` to 3 @jrbourbeau</comment>
     <requestid>1199448</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>71f3ef97b8276753a9ed1d98ad61965e</srcmd5>
+    <version>2024.11.1</version>
+    <time>1731435811</time>
+    <user>anag+factory</user>
+    <comment>- update to 2024.11.1:
+  * Skip collecting coverage for CLI tests @fjetter
+- update to 2024.11.0:
+  * Remove redundant methods in P2PBarrierTask @fjetter
+  * fix skipif condition for
+    test\_tell\_workers\_when\_peers\_have\_left @fjetter
+  * Ensure ConnectionPool closes even if network stack swallows
+    cancellation @fjetter
+  * Fix flaky test\_server\_comms\_mark\_active\_handlers
+  * Make assumption in P2P's barrier mechanism explicit
+  * Adjust timeouts in jupyter cli test @fjetter
+  * Add `stimulus_id` to `SchedulerPlugin.update_graph` hook
+  * Reduce P2P transfer task overhead @hendrikmakait
+  * Disable profiler on python 3.11 @fjetter
+  * Fix test\_restarting\_does\_not\_deadlock @fjetter
+  * Adjust popen timeouts for testing @fjetter
+  * Add retry to shuffle broadcast @fjetter
+  * Fix test\_shuffle\_with\_array\_conversion @fjetter
+  * Refactor some tests @fjetter
+  * Reflect graduation of `dask-expr` from `dask-contrib` to
+    `dask` @hendrikmakait
+  * Skip test\_tell\_workers\_when\_peers\_have\_left on py3.10
+  * Internal cleanup of P2P code @hendrikmakait
+  * Use Task class instead of tuple @fjetter
+  * Increase connect timeout for
+    test\_tell\_workers\_when\_peers\_have\_left @fjetter
+  * Remove dispatching in TaskCollection @fjetter
+  * Deduplicate scheduler requests in P2P @hendrikmakait
+  * Add configurations for rootish taskgroup threshold @phofl
+- update to 2024.10.0:</comment>
+    <requestid>1223591</requestid>
+  </revision>
 </revisionlist>

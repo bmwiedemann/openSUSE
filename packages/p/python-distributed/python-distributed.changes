@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Tue Nov 12 09:00:14 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2024.11.1:
+  * Skip collecting coverage for CLI tests @fjetter
+- update to 2024.11.0:
+  * Remove redundant methods in P2PBarrierTask @fjetter
+  * fix skipif condition for
+    test\_tell\_workers\_when\_peers\_have\_left @fjetter
+  * Ensure ConnectionPool closes even if network stack swallows
+    cancellation @fjetter
+  * Fix flaky test\_server\_comms\_mark\_active\_handlers
+  * Make assumption in P2P's barrier mechanism explicit
+  * Adjust timeouts in jupyter cli test @fjetter
+  * Add `stimulus_id` to `SchedulerPlugin.update_graph` hook
+  * Reduce P2P transfer task overhead @hendrikmakait
+  * Disable profiler on python 3.11 @fjetter
+  * Fix test\_restarting\_does\_not\_deadlock @fjetter
+  * Adjust popen timeouts for testing @fjetter
+  * Add retry to shuffle broadcast @fjetter
+  * Fix test\_shuffle\_with\_array\_conversion @fjetter
+  * Refactor some tests @fjetter
+  * Reflect graduation of `dask-expr` from `dask-contrib` to
+    `dask` @hendrikmakait
+  * Skip test\_tell\_workers\_when\_peers\_have\_left on py3.10
+  * Internal cleanup of P2P code @hendrikmakait
+  * Use Task class instead of tuple @fjetter
+  * Increase connect timeout for
+    test\_tell\_workers\_when\_peers\_have\_left @fjetter
+  * Remove dispatching in TaskCollection @fjetter
+  * Deduplicate scheduler requests in P2P @hendrikmakait
+  * Add configurations for rootish taskgroup threshold @phofl
+- update to 2024.10.0:
+  * Make P2P more configurable @hendrikmakait
+  * Fit Dashboard worker table to page width @jacobtomlinson
+  * Raise helpful error when using the wrong plugin base classes
+  * Fix doc build @phofl
+  * Fix url escaping on exceptions dashboard for non-string keys
+  * Explicitly list setuptools as a build dependency in conda
+    recipe @charlesbluca
+  * Avoid spurious error log in Adaptive @hendrikmakait
+  * Add meaningful error for out of disk exception during write
+  * Bump JamesIves/github-pages-deploy-action from 4.6.4 to 4.6.8
+  * Switch from mambaforge to miniforge in CI @jrbourbeau
+- update to 2024.9.1:
+  * Don't stop Adaptive on error @hendrikmakait
+  * Update gpuCI `RAPIDS_VER` to `24.12` @github-actions
+  * Don't consider scheduler idle while executing
+    `Scheduler.update_graph` @hendrikmakait
+  * Bump jacobtomlinson/gha-anaconda-package-version from 0.1.3
+    to 0.1.4 @dependabot
+  * Support P2P rechunking datetime arrays @jrbourbeau
+- update to 2024.9.0:
+  * Homogeneously schedule P2P's unpack tasks @hendrikmakait
+  * Work/fix firewall for localhost @maldag
+  * Bump ``bokeh`` minimum version to 3.1.0 @jrbourbeau
+  * Use new ``tokenize`` module @jrbourbeau
+  * Point to user code with ``idempotent`` plugin warning
+  * Fix test nanny timeout @fjetter
+
+-------------------------------------------------------------------
 Sun Sep  8 13:01:50 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2024.8.2:

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Oct 18 00:37:32 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Update to docker-bench-security v1.6.1. See upstream changelog online at
+  <https://github.com/docker/docker-bench-security/releases/tag/v1.6.1>.
+  * Align with CIS Docker Benchmark v1.6.0.
+
+  v1.6.0 <https://github.com/docker/docker-bench-security/releases/tag/v1.6.0>
+  * Fix image sprawl miscalculation.
+  * Add an option to filter out labels to exclude from checks.
+
+  v1.5.0 <https://github.com/docker/docker-bench-security/releases/tag/v1.5.0>
+  * Align with CIS Docker Benchmark v1.5.0.
+  * Add support for .NanoCpus.
+
+  v1.3.6 <https://github.com/docker/docker-bench-security/releases/tag/v1.3.6>
+  * Add CIS Level 1 only functions.
+  * Support user namespaces in partition check.
+  * Deprecate rule 2.16 for Docker > 19.03.
+  * Add checks for capabilities that allows container escape.
+  * Implement listing of open ports.
+  * Add 4.12 check.
+
+- Rather than patching the script entirely using sed (which can make updates
+  error-prone), apply an actual patch to switch to using a LIBEXEC variable we
+  can replace during packaging. Backport of
+  <https://github.com/docker/docker-bench-security/pull/559>.
+  + 0001-dist-adjust-script-imports-to-be-able-to-use-usr-lib.patch
+
+-------------------------------------------------------------------
 Thu May  7 18:11:25 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix include patch of functions_lib.sh (boo#1164631)
@@ -63,7 +92,7 @@ Wed May 11 07:46:36 UTC 2016 - astieger@suse.com
 -------------------------------------------------------------------
 Mon Apr 18 15:11:24 UTC 2016 - astieger@suse.com
 
-- checks implementing CIS Docker 1.11.0 Benchmark 
+- checks implementing CIS Docker 1.11.0 Benchmark
   https://benchmarks.cisecurity.org/downloads/show-single/index.cfm?file=docker16.110
 - checks for docker 1.11.0
 - use stat to verify permissions

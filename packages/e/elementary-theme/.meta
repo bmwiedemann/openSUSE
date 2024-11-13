@@ -1,5 +1,0 @@
-<package name="elementary-theme" project="openSUSE:Factory">
-  <title>The elementary GTK Theme</title>
-  <description>The official elementary GTK theme designed to be smooth, attractive, fast, and usable.</description>
-  <devel project="X11:Pantheon" package="elementary-theme"/>
-</package>

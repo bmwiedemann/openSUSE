@@ -1,7 +1,7 @@
 #
 # spec file for package docker-bench-security
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,24 @@
 
 
 Name:           docker-bench-security
-Version:        1.3.5
+Version:        1.6.1
 Release:        0
 Summary:        Docker Bench for Security
 License:        Apache-2.0
 Group:          Productivity/Networking/Security
 URL:            https://dockerbench.com
 Source:         https://github.com/docker/docker-bench-security/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# FIX-UPSTREAM: Adjust the script so that we can package the helper scripts in
+#               /usr/libexec. <https://github.com/docker/docker-bench-security/pull/559>
+Patch1:         0001-dist-adjust-script-imports-to-be-able-to-use-usr-lib.patch
 Requires:       audit
+Requires:       coreutils
 Requires:       docker >= 1.13.0
 Requires:       findutils
+Requires:       gawk
+Requires:       grep
 Requires:       net-tools
+Requires:       sed
 %if 0%{?suse_version} > 1320
 Requires:       net-tools-deprecated
 %endif
@@ -42,27 +49,21 @@ best-practices around deploying Docker containers in production.
 The tests are all automated, and implement the CIS Docker Benchmark.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-sed -i \
-	-e 's|\./output_lib.sh|%{_libexecdir}/%{name}/output_lib.sh|' \
-	-e 's|\./helper_lib.sh|%{_libexecdir}/%{name}/helper_lib.sh|' \
-	-e 's|\./functions_lib.sh|%{_libexecdir}/%{name}/functions_lib.sh|' \
-	-e 's|for test in tests|for test in %{_libexecdir}/%{name}/tests|' \
-	-e 's|\./"$test"|"$test"|' \
-	docker-bench-security.sh
+# Replace LIBEXEC= added by patch1 with the actual libexec directory.
+sed -i 's|^LIBEXEC=.*$|LIBEXEC="%{_libexecdir}/%{name}"|' docker-bench-security.sh
 chmod +x docker-bench-security.sh
 
 %install
 install -D %{name}.sh %{buildroot}/%{_bindir}/docker-bench-security
 mkdir -p %{buildroot}/%{_libexecdir}/%{name}
-cp -vpr *_lib.sh tests/ %{buildroot}%{_libexecdir}/%{name}
+cp -vpr functions/ tests/ %{buildroot}%{_libexecdir}/%{name}
 
 %files
 %license LICENSE.md
 %doc README.md
-%doc distros
 %attr(0755,root,root) %{_bindir}/%{name}
 %attr(0755,root,root) %{_libexecdir}/%{name}
 

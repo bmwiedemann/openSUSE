@@ -57,4 +57,41 @@
 - Stop using greedy globs in %files.</comment>
     <requestid>1100995</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6d687a5b2a9049b194f4c7ec96f21d6e</srcmd5>
+    <version>0.36.0</version>
+    <time>1731435699</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.36.0:
+  * Allow FlashBuilder to work when program page size is larger
+    than sector erase size (@BrianPugh)
+  * Very basic implementation to get a &quot;connect&quot; LED status
+    display (@rgrr)
+  * Add Trace Funnel Coresight component (@rapgenic)
+  * Cortex-M CPU type detection improvements
+  * Debug sequences: support pname on DebugPort* sequences
+  * Add MAX32666FTHR board (@ozersa)
+  * Add STMicro STM32 H743 and H723 targets (@unsanded)
+  * nRF91 family improvements (@maxd-nordic)
+  * Add HDSC HC32F448 hc32a460xe and hc32a4a0xi. (@lennvn)
+  * Add airm2m air001 target (@kaidegit)
+  * Add airm2m air32f103 target (@HalfSweet)
+  * Add STMicro STM32H7B0 Target (@BrianPugh)
+  * Add NXP S32K344 target (@PetervdPerk-NXP)
+  * Add Realtek RTL8762C (@suphammer)
+  * Add some missing ST and NXP board IDs
+  * Fix HC32l130 32k+ flash error (@kaidegit)
+  * Fix HC32L13x size and enable double buffering (@kaidegit)
+  * Infineon PSoC6: remove unnecessary sleep during reset (@te-
+    johan)
+  * Remove part number match for NXP MIMXRTxxxx series family
+  * RTT: fix CB not found (@tdasika)
+  * CMSIS-DAP: Windows performance regression fix
+  * Debug sequences: fix assignment expressions.
+  * flash: fix some type errors, sort imports
+  * Removed extraneous space character in the default `cortex_m`
+    target warning message (@BenjaminSoelberg)
+  * Flash loader: fix missing import of RamRegion</comment>
+    <requestid>1223445</requestid>
+  </revision>
 </revisionlist>

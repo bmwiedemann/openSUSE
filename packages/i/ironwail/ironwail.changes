@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Sun Nov 10 19:23:30 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to v0.8.0
+  * Extended compatibility with Quake 2021 re-release:
+    - Steam API support (when using an auto-detected Steam installation):
+      achievements, time tracking, rich presence, screenshots
+    - support for remastered models (using code from QSS, by @Shpoike)
+  * Added -prefremaster/-remaster and -preforiginal/-original command-line
+    arguments (thanks to @KurtLoeffler)
+  * Improved controller support:
+    - gyro aim (thanks to @sndein), flick stick, rumble
+    - new Gamepad Options menu
+    - new dedicated tab in Controls menu
+  * Demo playback controls
+  * Extended console capabilities:
+    - select and copy text to clipboard
+    - clickable links to show saved screenshots/demos/savefiles/config files
+      in Explorer
+    - TAB completion hints
+  * Extended memory allocator to support huge maps such as Immortal Lock
+    without needing -heapsize on the command line
+  * CPU and GPU performance improvements
+  * Autosave enhancements:
+    - improved heuristics (e.g. for Copper's func_void)
+    - less intrusive notifications
+    - ability to resume autosave when selecting a map in the Levels menu
+  * Redesigned Options menu: live previews, more options exposed
+  * Added QuakeWorld HUD layout (thanks to @bangstk)
+  * Added speed indicator (thanks to @andrey-budko)
+  * Music is now continued when reloading a map
+  * From QS: enabled support for tracker music
+  * Mapping enhancements:
+    - added basic map checks when started from a level editing tool
+      (TrenchBroom/JACK/ne_q1spCompilingGui/q1compile); can disabled by passing
+       -nomapchecks, or enabled manually by setting map_checks cvar to 1 before
+       loading a map
+    - ❗ Note: gl_zfix and advanced transparency options are disabled when map
+      checks are active in order to avoid compatibility issues with QS.
+    - added r_showfields cvar to display field values for the entity under the crosshair
+    - extended r_showbboxes functionality to highlight entities linking to/linked
+      from the entity under the crosshair and display entity numbers and classnames
+    - added support for entity numbers in addition to classnames for r_showbboxes_filter,
+      e.g. r_showbboxes_filter #42 (thanks to @andrey-budko)
+    - added skywind_lookdir [period] [intensity] command to simplify skywind setup
+    - changed viewpos output to show player position, camera position, and corresponding sun mangle
+    - changed setpos command to accept viewpos command output directly (no need to strip parentheses)
+  * ... and more !
+
+-------------------------------------------------------------------
+Thu Jan 11 15:33:23 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- Initial package 

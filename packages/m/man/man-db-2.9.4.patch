@@ -63,7 +63,7 @@ diff --git a/lib/security.c b/lib/security.c
  #endif /* MAN_OWNER */
  
  void init_security (void)
-@@ -165,6 +170,31 @@ void regain_effective_privs (void)
+@@ -166,6 +171,31 @@ void regain_effective_privs (void)
  		uid = euid;
  		gid = egid;
  	}

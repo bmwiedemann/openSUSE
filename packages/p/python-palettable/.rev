@@ -31,4 +31,14 @@
     <comment></comment>
     <requestid>749740</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>596df9562c96237f60bca171cd4e6abf</srcmd5>
+    <version>3.3.3</version>
+    <time>1731435652</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.3.3:
+  * Set python_requires metadata in setup.py
+  * Removed setuptools as a runtime dependency (thanks @wch in #46)</comment>
+    <requestid>1223369</requestid>
+  </revision>
 </revisionlist>

@@ -105,4 +105,12 @@ package. Also, BuildRequire cargo+rust to prevent conflicts with
     <comment>Update to version 1.13.0 (forwarded request 1219230 from danishprakash)</comment>
     <requestid>1219549</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6e477dc6c34264d18ec9bd36f09d1541</srcmd5>
+    <version>1.13.1</version>
+    <time>1731435604</time>
+    <user>anag+factory</user>
+    <comment>Update to version 1.13.1 (forwarded request 1223499 from mchellamuthu)</comment>
+    <requestid>1223648</requestid>
+  </revision>
 </revisionlist>

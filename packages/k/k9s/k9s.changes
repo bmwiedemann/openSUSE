@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Tue Nov 12 08:39:34 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.32.6:
+  * Release v0.32.6 (#2955)
+  * Fix "Mark Range": reduce maximum namespaces in `favorites`, fix
+    shadowing of ctrl+space (#2927)
+  * feat: add irregular pod terminations to Faults view (#2738)
+    (#2935)
+  * chore(deps): bump k8s.io/metrics from 0.31.0 to 0.31.2 (#2941)
+  * Adding Argo Rollouts plugin version for PowerShell (#2937)
+  * Adding eks-node-viewer plugin (#2914)
+  * chore(plugins,remove-finalizers): make sure the resources api
+    group is respected (#2926)
+  * Bump helm.sh/helm/v3 from 3.14.4 to 3.16.2 (#2915)
+  * chore(deps): bump actions/setup-go from 5.0.2 to 5.1.0 (#2939)
+  * chore(deps): bump actions/checkout from 4.2.1 to 4.2.2 (#2940)
+  * fixed conflicting plugin shortcuts, and added 2 new plugins
+    (#2930)
+  * fix: add kubeconfig if k9s is launched with --kubeconfig
+    (#2932)
+  * chore: build-status tag url (#2933)
+  * feat: added StartupProbes status (S) to the PROBES column in
+    the container render (#2920)
+  * feat(2896): Add toggle keda plugin (#2897)
+  * Add argocd plugin (#2898)
+  * Include sidecar containers requests and limits (#2848)
+  * Bump actions/checkout from 4.1.6 to 4.2.1 (#2906)
+  * Bump golangci/golangci-lint-action from 6.1.0 to 6.1.1 (#2905)
+  * Update README.md (#2890)
+  * chore: fix function name (#2861)
+  * Bump k8s.io/apiextensions-apiserver from 0.30.1 to 0.31.1
+    (#2887)
+  * Bump github.com/rs/zerolog from 1.32.0 to 1.33.0 (#2868)
+  * Bump github.com/fatih/color from 1.16.0 to 1.17.0 (#2869)
+  * Bump alpine from 3.20.2 to 3.20.3 (#2876)
+  * Fix Mark-Range command: ensure that NS Favorite doesn't exceed
+    the limit (#2881)
+  * Bump k8s.io/kubectl from 0.30.1 to 0.31.0 (#2838)
+  * Bump github.com/adrg/xdg from 0.4.0 to 0.5.0 (#2839)
+  * fix internal/render/hpa.go merge issue (#2856)
+  * Bump github.com/go-errors/errors from 1.4.2 to 1.5.1 (#2840)
+  * Bump golang from 1.22-alpine3.20 to 1.23-alpine3.20 (#2837)
+  * Add color to hpa line when replicas >= maxpods (#2333)
+  * Bump required GO version for build (#2844)
+  * Add leading space to Kubernetes context suggestions (#2791)
+  * update tview to fix log escaping problem completely (#2830)
+  * container logs should be escaped when printed (#2751)
+  * Fix: ensure correct ns for helm actions (#2652)
+  * should switching ctx before ns (#2750)
+  * Loki plugin (#2755)
+  * Bump github.com/hashicorp/go-getter from 1.7.4 to 1.7.5 (#2759)
+  * enable "jump to owner" for more kinds (#2763)
+  * feat: allow plugins block in plugin files (#2770)
+  * feat: add duplik8s plugin (#2771)
+  * Update helm-purge.yaml (#2787)
+  * Update README.md plugin format (#2788)
+  * Create kubectl-get-in-shell.yaml (#2789)
+  * Bump actions/setup-go from 5.0.1 to 5.0.2 (#2796)
+  * add new plugin current-ctx-terminal (#2795)
+  * Bump k8s.io/cli-runtime from 0.30.1 to 0.31.0 (#2829)
+  * Bump k8s.io/client-go from 0.30.1 to 0.30.3 (#2806)
+  * Bump alpine from 3.20.0 to 3.20.2 (#2807)
+  * Add a spark-operator plugin (#2821)
+  * Adding HolmesGPT plugin (#2822)
+  * Bump github.com/docker/docker (#2825)
+  * fix: align build image Go version with go.mod (#2812)
+  * Bump github.com/docker/docker (#2816)
+  * Bump golangci/golangci-lint-action from 6.0.1 to 6.1.0 (#2813)
+  * Add comment about Escape keybinding (#2817)
+  * proper handle OwnerReference for manually created job (#2772)
+  * [#2773] fix freebsd build failure (#2775)
+  * install copyright file into correct location (#2780)
+  * fix status for completed pods in workload view (#2729)
+
+-------------------------------------------------------------------
 Sat Jun 15 16:59:43 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.32.5:

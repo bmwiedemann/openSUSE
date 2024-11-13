@@ -60,7 +60,6 @@ BuildRequires:  %{python_module fastapi >= 0.79.0}
 BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module greenlet}
 BuildRequires:  %{python_module hypothesis}
-BuildRequires:  %{python_module ipdb}
 BuildRequires:  %{python_module jsonschema >= 3.2.0}
 BuildRequires:  %{python_module pyramid}
 BuildRequires:  %{python_module pyrsistent >= 0.16.0}

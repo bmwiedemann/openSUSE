@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov 11 10:37:45 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Readd patch man-db-2.7.1-zio.dif
+  * Use also in-memory decompression 
+- Add patch man-db-2.13.0-no_abort.patch
+  * Avoid abort of mandb due switching to user man if executed by root
+
+-------------------------------------------------------------------
+Fri Nov  8 13:58:23 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Drop libzio integration (man-db-2.7.1-zio.dif, BuildRequires and flag)
+  to restore acceptable performance (boo#1232837):
+
+-------------------------------------------------------------------
 Fri Oct 18 13:04:09 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Update to man-db 2.13.0 (29 August 2024)

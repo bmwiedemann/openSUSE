@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Nov 12 08:40:35 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.6.4
+  * Fix "AttributeError: SafeConfigParser instance has no attribute 'values'"
+  * Support poetry.lock version >= 1.5
+  * Add pyproject parser
+  * Test pyproject parser
+  * Add to readme
+  * Remove python2-ism in the code
+  * Migrate to pyproject.toml
+  * Maybe you don't even need build-system
+  * Add and fix workflows
+  * Replace ConfigParser's 'readfp' by 'read_string'
+  * Run tests on PR events
+  * Trigger label check on fork PRs
+  * ci(.github): revamp workflows and add hatch
+  * perf(.github): prepare release workflows
+  * perf(pyproject.toml): Set the start version of the new dparse release
+  * ci(ci.yml): Set SLUG to release when the correct even is triggered
+  * docs(CHANGELOG.md): Reset CHANGELOG.md
+  * build(pyproject.toml): Fix steps for changelog generation
+  * ci(release.yml): Download artifact from another workflow
+- Add python-hatchling to BuildRequires
+- Drop fix-configparser-parsing.patch, merged upstream
+
+-------------------------------------------------------------------
 Mon Jan 15 05:33:37 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to autosetup and pyproject macros.

@@ -681,4 +681,12 @@
                 for what these numbers do (forwarded request 1222166 from pgajdos)</comment>
     <requestid>1222170</requestid>
   </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>464d407b9992f504dc4873e68d17db6f</srcmd5>
+    <version>2.6.4</version>
+    <time>1731435684</time>
+    <user>anag+factory</user>
+    <comment>- no source changes, just adding jira reference: jsc#SLE-21253</comment>
+    <requestid>1223742</requestid>
+  </revision>
 </revisionlist>

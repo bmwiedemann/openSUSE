@@ -25,4 +25,19 @@
 - Use modern RPM macros to express version dependencies (forwarded request 1164708 from glaubitz)</comment>
     <requestid>1165106</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ca64dfd20dce9aac1b192d435ae688ff</srcmd5>
+    <version>1.0.0~b2</version>
+    <time>1731435648</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 1.0.0b2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ (forwarded request 1223294 from glaubitz)</comment>
+    <requestid>1223361</requestid>
+  </revision>
 </revisionlist>

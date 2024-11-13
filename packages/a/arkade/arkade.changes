@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov 12 07:44:31 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.31:
+  * feat: add rclone, kubie & EKS-node-viewer
+  * Add DNS server override for cert-manager
+
+-------------------------------------------------------------------
+Tue Nov 12 07:42:49 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.30:
+  * feat: add openshift/rosa to tools
+  * feat: retain tag format on chart upgrade
+  * tests: add test for latest tag selection
+  * fix: mitigate effect on tags of semVer
+
+-------------------------------------------------------------------
 Sat Oct 26 08:22:51 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - fix version output and zsh completion subpackage

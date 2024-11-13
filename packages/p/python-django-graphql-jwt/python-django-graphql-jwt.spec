@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-graphql-jwt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,26 @@
 
 
 Name:           python-django-graphql-jwt
-Version:        0.3.4
+Version:        0.4.0
 Release:        0
 Summary:        JSON Web Token for Django GraphQL
 License:        MIT
 URL:            https://github.com/flavors/django-graphql-jwt
 Source:         https://github.com/flavors/django-graphql-jwt/archive/refs/tags/%{version}.tar.gz#/django-graphql-jwt-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core >= 1.0.0}
-BuildRequires:  %{python_module graphene >= 2.1}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pytest-django}
-BuildRequires:  %{python_module graphene-django >= 2.0}
-BuildRequires:  %{python_module PyJWT >= 2}
 BuildRequires:  %{python_module Django >= 2.0}
+BuildRequires:  %{python_module PyJWT >= 2}
+BuildRequires:  %{python_module cryptography}
+BuildRequires:  %{python_module graphene >= 2.1}
+BuildRequires:  %{python_module graphene-django >= 2.0}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest-django}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 2.0
+Requires:       python-PyJWT >= 2
 Requires:       python-graphene >= 2.1
 Requires:       python-graphene-django >= 2.0
-Requires:       python-PyJWT >= 2
 BuildRequires:  fdupes
 BuildArch:      noarch
 %python_subpackages
@@ -51,11 +52,11 @@ JSON Web Token for Django GraphQL
 
 %install
 %pyproject_install
-%python_expand rm %{buildroot}%{$python_sitelib}/{README.md,LICENSE}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=.:%{buildroot}%{$python_sitelib} pytest-%{$python_bin_suffix} -k 'not test_csrf_rotation'
+PYTHONPATH=.
+%pytest
 
 %files %{python_files}
 %doc README.md

@@ -46,9 +46,9 @@ BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(xapp) >= 1.2.0
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xtst)
+Requires:       /usr/bin/dbus-launch
 Requires:       cinnamon
 Requires:       cinnamon-settings-daemon
-Requires:       dbus-1-x11
 Requires:       upower >= 0.9.0
 
 %description

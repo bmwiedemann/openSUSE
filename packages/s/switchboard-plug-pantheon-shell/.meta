@@ -1,0 +1,5 @@
+<package name="switchboard-plug-pantheon-shell" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:Pantheon" package="switchboard-plug-pantheon-shell"/>
+</package>

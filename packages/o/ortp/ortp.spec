@@ -21,7 +21,7 @@
 %define sover   15
 
 Name:           ortp
-Version:        5.3.37
+Version:        5.3.95
 Release:        0
 Summary:        Real-time Transport Protocol Stack
 License:        AGPL-3.0-or-later

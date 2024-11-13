@@ -121,4 +121,12 @@
   * Support ppc64le</comment>
     <requestid>991150</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>bbd389b68cb3e92558372de900f986d9</srcmd5>
+    <version>1.4.1</version>
+    <time>1731435649</time>
+    <user>anag+factory</user>
+    <comment>- Add sphinx8.patch to support sphinx8</comment>
+    <requestid>1223367</requestid>
+  </revision>
 </revisionlist>

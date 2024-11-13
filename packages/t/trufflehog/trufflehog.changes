@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 11 08:33:20 UTC 2024 - felix.niederwanger@suse.de
+
+- Update to version 3.83.6:
+  * chore: log false positive result as string (#3582)
+  * feat: log why false positives are skipped (#3579)
+
+-------------------------------------------------------------------
 Sat Nov 09 09:47:31 UTC 2024 - felix.niederwanger@suse.com
 
 - Update to version 3.83.5:

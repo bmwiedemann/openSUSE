@@ -97,4 +97,13 @@
   * Remove support for Django 3.2 (EOL).</comment>
     <requestid>1181684</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>52827d3a43cb72bb8b0a45337dad5a40</srcmd5>
+    <version>24.4</version>
+    <time>1731435786</time>
+    <user>anag+factory</user>
+    <comment>- update to 24.4:
+  * Add support for Django 5.1 (#758).</comment>
+    <requestid>1223571</requestid>
+  </revision>
 </revisionlist>

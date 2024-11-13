@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov 11 21:05:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9:
+  * This release mainly deals with packaging simplifications: two
+    dependencies ("six" and "hkdf") are removed.
+  * The "cryptography" library takes the place of "hkdf" for key
+    derivation.
+  * There is no longer a vendored version of "six" (nor internal
+    use of it, thanks a-dieste).
+  * The "versioneer" library is updated to 0.29.
+- drop support-python-312.patch (upstream)
+
+-------------------------------------------------------------------
 Tue Feb 20 01:20:49 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-python-312.patch:

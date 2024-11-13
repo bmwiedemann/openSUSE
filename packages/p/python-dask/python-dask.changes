@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 12 08:58:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2024.11.1:
+  * Zarr-Python 3 compatibility  (:pr:`11388`)
+  * Avoid exponentially increasing taskgraph in overlap
+  * Ensure numba tokenization does not use slow pickle path
+
+-------------------------------------------------------------------
 Sun Sep  8 13:04:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2024.8.2:

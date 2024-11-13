@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Nov 12 06:24:11 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.0.9:
+  * chore(schema): update talos-extensions.yaml JSON schema (#697)
+  * chore(container): update golangci/golangci-lint docker tag to
+    v1.62.0
+  * chore(github-action)!: Update renovatebot/github-action action
+    to v41
+  * chore(schema): update talos-extensions.yaml JSON schema (#695)
+  * chore(github-action): update renovatebot/github-action action
+    to v40.3.6
+  * fix(deps): update module
+    github.com/siderolabs/talos/pkg/machinery to v1.9.0-alpha.2
+  * chore(schema): update talos-extensions.yaml JSON schema (#694)
+  * fix(deps): update module golang.org/x/mod to v0.22.0
+  * chore(schema): update talos-extensions.yaml JSON schema (#690)
+  * docs: wrong indentation
+  * fix(CI): the test-nix-build was wrongfully made all this time
+  * chore(schema): update talos-extensions.yaml JSON schema (#688)
+  * chore(container): update goreleaser/goreleaser docker tag to
+    v2.4.4
+  * chore(schema): update talos-extensions.yaml JSON schema (#686)
+  * chore(github-action): update renovatebot/github-action action
+    to v40.3.5
+  * feat: add v1.9 as supported version
+  * feat(readme): Thank you @otosky for the sponsor!
+  * chore(container): update goreleaser/goreleaser docker tag to
+    v2.4.1
+  * chore(schema): update talos-extensions.yaml JSON schema (#683)
+  * chore(schema): update talconfig.yaml JSON schema (#681)
+  * feat(config): add `isoSchematic` for `genurl iso` if defined
+  * chore(schema): update talos-extensions.yaml JSON schema (#680)
+  * fix(deps): update module github.com/budimanjojo/talhelper/v3 to
+    v3.0.8
+  * feat: update flake (#678)
+  * feat(flake): update flake.lock
+  * chore(deps): update dependency go to v1.23.2
+  * feat: update Scoop for talhelper version v3.0.8
+
+-------------------------------------------------------------------
 Wed Oct 30 09:20:39 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.0.8:

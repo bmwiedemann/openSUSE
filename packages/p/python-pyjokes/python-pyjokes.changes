@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 11 14:14:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.3:
+  * update docs
+  * add unit tests
+  * correct license specification
+
+-------------------------------------------------------------------
 Wed May 20 07:26:31 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
@@ -17,9 +25,9 @@ Tue Dec  4 12:52:20 UTC 2018 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Sun Mar  4 20:13:58 UTC 2018 - alarrosa@suse.com
 
-- Fix LICENSE url 
+- Fix LICENSE url
 
 -------------------------------------------------------------------
 Tue Sep  5 16:10:00 UTC 2017 - alarrosa@suse.com
 
-- Initial release of python-pyjokes 0.5.0 
+- Initial release of python-pyjokes 0.5.0

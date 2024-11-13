@@ -19,7 +19,7 @@
 
 %bcond_without sndio
 Name:           cmus
-Version:        2.11.0
+Version:        2.12.0
 Release:        0
 Summary:        Text-mode music player
 License:        GPL-2.0-only
@@ -193,10 +193,10 @@ Requires:       %{name}-plugin-opus = %{version}-%{release}
 Requires:       %{name}-plugin-pulse = %{version}-%{release}
 Requires:       %{name}-plugin-vorbis = %{version}-%{release}
 Requires:       %{name}-plugin-wavpack = %{version}-%{release}
+BuildArch:      noarch
 %if %{with sndio}
 Requires:       %{name}-plugin-sndio = %{version}-%{release}
 %endif
-BuildArch:      noarch
 
 %description plugins-all
 This package pulls in all the plugins for the C* Music Player.

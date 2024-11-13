@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-network-control
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,9 @@
 
 %global pkg_name network-control
 %global pkgver %{pkg_name}-%{version}
+%bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.0.2
+Version:        0.1.3
 Release:        0
 Summary:        Library to control network protocols
 License:        BSD-3-Clause
@@ -34,6 +35,16 @@ BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-unix-time-devel
 BuildRequires:  ghc-unix-time-prof
 ExcludeArch:    %{ix86}
+%if %{with tests}
+BuildRequires:  ghc-QuickCheck-devel
+BuildRequires:  ghc-QuickCheck-prof
+BuildRequires:  ghc-hspec-devel
+BuildRequires:  ghc-hspec-prof
+BuildRequires:  ghc-pretty-simple-devel
+BuildRequires:  ghc-pretty-simple-prof
+BuildRequires:  ghc-text-devel
+BuildRequires:  ghc-text-prof
+%endif
 
 %description
 Common parts to control network protocols.
@@ -73,6 +84,9 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %install
 %ghc_lib_install
+
+%check
+%cabal_test
 
 %post devel
 %ghc_pkg_recache

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 11 08:47:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Replace %requires_ge plasma6-framework-components with
+  %requires_ge libplasma6-components: the requires_eq macro does
+  only work on real package names, not on virtual provides.
+
+-------------------------------------------------------------------
 Tue Nov  5 13:30:41 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.3:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-phonenumber-field
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,29 +16,28 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
 Name:           python-django-phonenumber-field
-Version:        5.1.0
+Version:        8.0.0
 Release:        0
 Summary:        International phone number field for django models
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/stefanfoulis/django-phonenumber-field
-Source:         https://files.pythonhosted.org/packages/source/d/django-phonenumber-field/django-phonenumber-field-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/d/django_phonenumber_field/django_phonenumber_field-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Babel
-Requires:       python-Django >= 2.2
-Requires:       python-phonenumbers >= 7.0.2
+Requires:       python-Django >= 4.2
+Recommends:     python-phonenumbers >= 7.0.2
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Babel}
-BuildRequires:  %{python_module Django >= 2.2}
-BuildRequires:  %{python_module phonenumbers}
+BuildRequires:  %{python_module Django >= 4.2}
+BuildRequires:  %{python_module django-rest-framework}
+BuildRequires:  %{python_module phonenumbers >= 7.0.2}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -47,13 +46,13 @@ BuildRequires:  %{python_module pytest}
 An international phone number field for django models.
 
 %prep
-%setup -q -n django-phonenumber-field-%{version}
+%setup -q -n django_phonenumber_field-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

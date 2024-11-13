@@ -18,16 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-graphene
-Version:        3.3.0
-%define onedotversion 3.3
+Version:        3.4.3
 Release:        0
 Summary:        GraphQL Framework for Python
 License:        MIT
 URL:            https://github.com/graphql-python/graphene
 Source:         https://github.com/graphql-python/graphene/archive/v%{version}.tar.gz#/graphene-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#graphql-python/graphene#1540
-Patch0:         support-pytest-8.patch
-BuildRequires:  %{python_module aniso8601 >= 8}
 BuildRequires:  %{python_module graphql-core >= 3.1}
 BuildRequires:  %{python_module graphql-relay >= 3.1}
 BuildRequires:  %{python_module pip}
@@ -36,14 +32,17 @@ BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module python-dateutil >= 2.7}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module typing-extensions >= 4.7.1}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-aniso8601 >= 8
 Requires:       python-graphql-core >= 3.1
 Requires:       python-graphql-relay >= 3.1
+Requires:       python-python-dateutil >= 2.7
+Requires:       python-typing-extensions >= 4.7.1
 BuildArch:      noarch
 %python_subpackages
 
@@ -61,14 +60,12 @@ Graphene is a Python library for building GraphQL schemas/types.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# The example depend on snapshottest, which is a bit messy to package as of v0.5.1
-# https://github.com/syrusakbary/snapshottest/issues/92
-%pytest --ignore examples
+%pytest
 
 %files %{python_files}
-%doc README.rst
+%doc README.md
 %license LICENSE
 %{python_sitelib}/graphene
-%{python_sitelib}/graphene-%{onedotversion}.dist-info
+%{python_sitelib}/graphene-%{version}.dist-info
 
 %changelog

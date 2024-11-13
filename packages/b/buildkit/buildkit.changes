@@ -1,4 +1,126 @@
 -------------------------------------------------------------------
+Tue Nov 12 06:11:35 UTC 2024 - madhankumar.chellamuthu@suse.com
+
+- Update to version 0.17.1:
+  * Dockerfile: add a comment about runc v1.2
+  * Revert "Dockerfile: update runc binary to 1.2.1"
+  * ci: enable archutil-arm64 job
+  * dockerfile: update delve to v1.23.1
+  * dockerfile: missing updates of xx to 1.5.0
+  * update to go 1.23
+  * dockerfile: fix running onbuild rules from inherited stages
+  * hack: update protolint
+  * hack: update gopls to 0.26
+  * Add test for `IsCommitSHA` function
+  * vendor: update hcsshim to v0.12.8
+  * build(deps): bump softprops/action-gh-release from 2.0.8 to 2.0.9
+  * util/tracing: switch to semconv v0.21.0
+  * docs(dockerfile): BuildKit does not discard Volume edits
+
+-------------------------------------------------------------------
+Tue Nov 05 06:13:51 UTC 2024 - madhankumar.chellamuthu@suse.com
+
+- Update to version 0.17.0:
+  * Dockerfile: update runc binary to 1.2.1
+  * docs: fix double parens in internal link
+  * chore: regenerate dockerfile rules documentation
+  * Dockerfile: use folded block for rule description in docs front matter
+  * tests: client: set up for wcow integration tests
+  * docs: remove older warning format
+  * docs: s/parent image/base image/
+  * pb: regenerate protobuf
+  * vendor: revert containerd 1.7.23 because errdefs changes incompatible
+  * Dockerfile: update xx to v1.5.0
+  * vendor: update compress to v1.17.11
+  * vendor: update cli to v1.22.16
+  * vendor: update azidentity to v1.6.0
+  * vendor: update hcsshim to v0.12.5
+  * Dockerfile: update runc to v1.1.15
+  * vendor: update containerd to v1.7.23
+  * Dockerfile: update containerd to v1.7.23
+  * vendor: update fsutil to 397af530
+  * docs: update undefined var check reference
+  * docs: add buildkitd.toml docs new gc options
+  * ociindex: allow readonly access
+  * docs: add workarounds for JSONArgsRecommended check
+  * git: fix caching git commit through multiple refs
+  * Add labs reference for ADD --exclude
+  * Add/fix references to labs dockerfile version
+  * git: allow cloning commit shas not referenced by branch/tag
+  * filesync: reuse data buffer for diffcopy
+  * git: export gitutil helper for identifying commit shas
+  * chore: add disk stat error wrapping
+  * dockerfile: expose TARGETSTAGE as builtin argument
+  * Update ARG, ENV and LABEL reference definitions to clarify that first KV-pairs are required but additional ones are optional
+  * authprovider: add OTEL spans for loading credentials
+  * tracing: enable OTEL on authprovider requests
+  * docs: add front matter title to attestation docs
+  * update arg syntax ref
+  * vendor: golang.org/x/net v0.29.0
+  * vendor: golang.org/x/crypto v0.27.0
+  * vendor: golang.org/x/sys v0.25.0
+  * make sure that  is the latest version that is picked
+  * Dockerfile: update rootlesskit binary to 2.3.1
+  * fix: set h2 protocol identifier to comply with TLS-ALPN
+  * sets the InvalidDefinitionDescription check to be experimental
+  * fixes for dockerfile checks
+  * Revert "dockerfile: pin dockerfile frontend image"
+  * Refactor various rulecheck related code to properly handle env vars. after EnvGetter refactoring
+  * add an allow list for secret lint check and add public to said list
+  * Dockerfile: update containerd binary to v1.7.22,v1.6.36
+  * grpcclient: return proper nil reference from grpcclient
+  * fix merge conflict in generated proto
+  * llb: use buildkit user-agent for HTTP source
+  * solver: simplify edge-related functions in the solver
+  * docs: add note about check with errors
+  * remove the directive from the comments in the AST
+  * Add rule for arg / stage name comment descriptions
+  * fix: compute total cache usage on any new cache policy opt
+  * cache: rename new prune/gc control fields
+  * add capability to detect if new storage filters are supported
+  * update default and basic gc control to use free and max storage
+  * http: avoid possible digest mismatch error
+  * protobuf: add vtproto as a supplemental marshaler
+  * worker/containerd: NewWorkerOpt: remove workaround for named pipes
+  * dockerfile: set error location for ONBUILD errors
+  * dockerfile: mark commands invoked from ONBUILD with prefix
+  * dockerfile: fix command count after new commands from ONBUILD
+  * protobuf: normalize how protobuf files are generated
+  * dockerfile: add support for non-octal COPY --chmod in labs
+  * vendor: go.etcd.io/bbolt v1.3.11
+  * docs: fix incorrect information about arg scoping
+  * tests: skip TestContextChangeDirToFile on Windows
+  * llb: deterministic marshaling for protobuf and store results from multiple constraints
+  * docs: remove `from` limitation for onbuild
+  * history: remove records without attached blobs at startup
+  * fix: lint ci issue
+  * client: allow non-octal chmod config for fileop.copy
+  * vendor: github.com/docker/cli v27.3.1
+  * vendor: github.com/docker/docker v27.3.1
+  * vendor: github.com/moby/sys/sequential v0.6.0
+  * vendor: github.com/moby/sys/mount v0.3.4
+  * vendor: golang.org/x/net v0.28.0
+  * vendor: golang.org/x/crypto v0.26.0, golang.org/x/text v0.17.0
+  * vendor: golang.org/x/time v0.6.0
+  * vendor: golang.org/x/sys v0.24.0
+  * vendor: github.com/containerd/containerd v1.7.22
+  * frontend/dockerfile: BFlags.Parse: include flag with "--" prefix in errors
+  * docs: update "read more" link for dockerfile examples
+  * chore: return an error when AppArmor is unsupported and profile specifie
+  * Added way to configure SBOM scanner
+  * frontend/dockerfile: BFlags.Parse: return earlier on "--" terminator
+  * util/archutil: re-generate to fix validation for mips64
+  * llbsolver: add input validation to policy recompute
+  * dockerfile: pin dockerfile frontend image
+  * protobuf: remove gogoproto
+  * protobuf: add marshaling benchmarks for some protobuf messages
+  * Fix WCOW COPY --from failure in multistage builds on Windows
+  * chore: use a better root for computing free disk space
+  * config: allow configuring free gc policies
+  * dockerfile: add support for ONBUILD in combination to from
+  * dockerfile: update args definitions to llb.EnvList
+
+-------------------------------------------------------------------
 Wed Sep 25 09:10:41 UTC 2024 - danish.prakash@suse.com
 
 - _service:

@@ -15,14 +15,15 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-django-reversion
-Version:        5.0.12
+Version:        5.1.0
 Release:        0
 Summary:        A Django extension that provides version control for model instances
 License:        BSD-3-Clause
 URL:            https://github.com/etianen/django-reversion
-Source:         https://files.pythonhosted.org/packages/source/d/django-reversion/django-reversion-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/d/django_reversion/django_reversion-%{version}.tar.gz
 Patch0:         only-sqlite-test-db.patch
 BuildRequires:  %{python_module Django > 2.0}
 BuildRequires:  %{python_module base > 3.7}
@@ -49,7 +50,7 @@ version control for model instances.
 %prep
 # Tests need running PGSQL and MYSQL
 # https://github.com/etianen/django-reversion/issues/902
-%autosetup -p1 -n django-reversion-%{version}
+%autosetup -p1 -n django_reversion-%{version}
 sed -i 's/databases = {"default", .*"postgres"}/databases = {"default"}/' tests/test_app/tests/test_*.py
 
 %build

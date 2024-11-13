@@ -3980,4 +3980,12 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   * uhdr: fix language choice in autoconf #7663 (forwarded request 1206003 from adkorte)</comment>
     <requestid>1206072</requestid>
   </revision>
+  <revision rev="303" vrev="1">
+    <srcmd5>32b509990f453fcbc4557f82a44e511a</srcmd5>
+    <version>7.1.1.40</version>
+    <time>1731435600</time>
+    <user>anag+factory</user>
+    <comment>update to 7.1.1-40 (forwarded request 1223434 from yannboyer_dev)</comment>
+    <requestid>1223614</requestid>
+  </revision>
 </revisionlist>

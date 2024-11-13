@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aacf09214c08fdee27c4e3739cd60a4a</srcmd5>
+    <version>3.10.2</version>
+    <time>1731435806</time>
+    <user>anag+factory</user>
+    <comment>new package goldpinger: Debugging tool for Kubernetes which tests and displays connectivity between nodes in the cluster</comment>
+    <requestid>1223592</requestid>
+  </revision>
+</revisionlist>

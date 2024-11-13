@@ -1,0 +1,162 @@
+------------------------------------------------------------------
+Wed Nov 12 03:00:00 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- Require switchboard at runtime
+
+-------------------------------------------------------------------
+Tue Aug 13 01:10:54 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- enable leap by switching to datadir/icons
+
+-------------------------------------------------------------------
+Fri Aug  9 07:56:22 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.0:
+  * A new icon
+  * Redesigned layout that makes it faster to get to app permissions
+  * Portal permissions like Backgrounding, Location, Screenshots, and Wallpapers
+  * Updated translations
+- update to 7.0.1:
+  * Updated translations
+- update to 7.0.0:
+  * Suppress critical messages on startup
+  * KeyFile: Make show and active Follow the Autostart Spec
+  * Metainfo Improvements
+  * Defaults: rewrite, responsive
+  * Defaults: disallow focusing flowboxchild
+  * DefaultPlug: remove utils class, simplify
+  * Ship our own icon
+  * Startup: AppChooser is a dialog
+  * Startup: clean up, clamp, backport from Gtk4
+  * Permissions: Gtk4 prep
+  * Startup: text button for add, inline remove
+  * DefaultPlug: flowboxchild can't be selected with pointer
+  * DefaultPlug: add to scrolledwindow
+  * DefaultPlug: Set accessible name for combo boxes
+  * AppChooser: Set accessible name
+  * Permissions: Set accessible names
+  * Permissions: Disable reset button if already default
+- update to 6.0.1:
+  * Fix an issue with setting the incorrect app for certain files types
+  * Don't overwrite custom overrides when unnecessary
+  * Updated translations
+- update to 6.0.0:
+  * Manage permissions for Flatpak apps
+  * Show custom launcher files
+  * Updated translations
+- update to 2.1.7:
+  * Updated translations
+- switch url to github, so we don't link to a different OS
+
+-------------------------------------------------------------------
+Mon Nov 25 20:37:45 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.1.6:
+  * Add Release to Actions
+  * Add Gettext Updates to Actions
+  * Split deb packaging into its own branch
+  * run installation in CI (#51)
+  * Add Lint to CI (#50)
+  * Build with GitHub CI (#49)
+  * Delete CODE_OF_CONDUCT.md
+  * Delete FUNDING.yml
+  * Fix snap icons in AppChooserRow and AppRow (#43)
+  * Lint src (#44)
+  * Keyfile: Check if only_show_in is empty before searching for
+    strings inside it (#46)
+  * README: Fix weblate badge
+  * Fix missing apps (#45)
+  * build: fix install path for switchboard plug (#42)
+  * Plug: Change code name to RDNN
+  * Merge remote-tracking branch 'weblate/master'
+  * Create FUNDING.yml
+
+-------------------------------------------------------------------
+Tue Mar 12 11:23:24 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.1.5:
+  * New upstream release.
+
+-------------------------------------------------------------------
+Thu Dec 20 22:07:16 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim duplicate summary.
+
+-------------------------------------------------------------------
+Thu Nov  8 02:29:32 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Add regex for filtering provided libraries
+
+-------------------------------------------------------------------
+Wed Oct 17 18:56:31 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.1.4:
+  * New upstream release.
+
+-------------------------------------------------------------------
+Sat Jun 23 16:45:31 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.1.3.1:
+  * New upstream release.
+
+-------------------------------------------------------------------
+Mon Jun 11 12:43:57 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.1.3:
+  * New upstream release.
+
+-------------------------------------------------------------------
+Sat Jun  9 02:31:02 UTC 2018 - avvissu@yandex.by
+
+- Switch to github
+- Switch to meson
+- Add COPYING and README files
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Sun Feb 12 13:31:50 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.1.2:
+  * Implement Preferences URL spec
+  * KeyFile.vala: Remove unused method that causes build to fail 
+    with Vala >= 0.36
+  * cmake: C project, no need to check for CXX compiler
+  * Updated translation template
+  * Add more mimetypes for default text editor
+  * AppRow.vala:
+  * Build layout with Gtk, not Pango
+  * Add a tooltip to the switch
+  * Remove string create_markup
+  * Remove extra whitespace
+  * update translation template
+  * Add an alertview when the list is empty
+  * Change list-add icon to application-add
+  * Move AppChooserRow to its own file
+  * Move AppChooser from Dialogs to Widgets namespace
+  * Controller.vala: Use GObject-style construction
+  * Use GObject-style construction
+  * Don't pre-declare private variables
+  * Grid is horizontal by default
+  * Focus search entry by default
+  * AppRow is a Gtk.Grid and style items like switchboard sidebar 
+    items
+  * Allow popover to expand horizontally to fit app description
+  * Remove app list frame
+  * Use symbolic terminal icon for custom commands
+  * Fix a bug where some app icons are shown very large
+
+-------------------------------------------------------------------
+Sun Sep 18 22:06:37 UTC 2016 - avvissu@yandex.by
+
+- Update to 0.1.1
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Sat Feb 27 10:02:27 UTC 2016 - mailaender@opensuse.org
+
+- update to version 0.1.0.2
+
+-------------------------------------------------------------------
+Fri Sep 11 15:04:09 UTC 2015 - and.november@opensuse.org
+
+- initial package (version 0.1.0.1) for build.opensuse.org

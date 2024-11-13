@@ -7,4 +7,16 @@
     <comment>Initial release of 0.3.4</comment>
     <requestid>1094577</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2330b16bd18217029f35492b2680b62e</srcmd5>
+    <version>0.4.0</version>
+    <time>1731435714</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1222731 from mcalabkova
+
+- Update to 0.4.0
+    * Added german translation
+    * Added support for any root query name</comment>
+    <requestid>1223456</requestid>
+  </revision>
 </revisionlist>

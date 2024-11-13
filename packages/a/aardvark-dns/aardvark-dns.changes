@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov 12 05:32:12 UTC 2024 - madhankumar.chellamuthu@suse.com
+
+- Update to version 1.13.1:
+  * Release v1.13.1
+  * release notes for 1.13.1
+  * test: make jq query work on centos stream 9
+  * [skip-ci] Packit/TMT: idiomatic repo addition
+  * [skip-ci] Packit: Remove epel jobs
+  * tmt: install dnsmasq dependency
+  * [skip-ci] Packit: disable osh-diff-scan
+  * [skip-ci] Packit: enable c9s downstream updates
+  * [skip-ci] TMT: install builddeps downstream
+  * [skip-ci] RPM: cleanup changelog conditionals
+  * support ipv6 link local addresses in resolv.conf
+  * cirrus: update DEST_BRANCH
+
+-------------------------------------------------------------------
 Wed Oct 30 02:02:33 UTC 2024 - danish.prakash@suse.com
 
 - Update to version 1.13.0:

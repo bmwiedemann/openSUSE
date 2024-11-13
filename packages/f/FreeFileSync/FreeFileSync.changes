@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 12 07:24:35 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 13.8:
+  * Support raw IPv6 server address for (S)FTP
+  * RealTimeSync: Fixed scrollbar when adding/removing folders
+  * Don't set sync direction for partial folder pairs
+  * Uniquely identify partial folder pairs in error message
+  * Fixed network login prompt not showing in Windows 11 24H2
+
+-------------------------------------------------------------------
 Tue Sep  3 18:40:37 UTC 2024 - Christian Boltz <suse-beta@cboltz.de>
 
 - disable build for s390x - base/db_file.cpp asserts little endian

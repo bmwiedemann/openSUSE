@@ -91,4 +91,13 @@
     <comment></comment>
     <requestid>1172101</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c84771b173da26aac8a663ff8a1f3b16</srcmd5>
+    <version>3.18.3</version>
+    <time>1731435787</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.18.3:
+  * Drop deprecated DEFAULT_FILE_STORAGE setting usage</comment>
+    <requestid>1223572</requestid>
+  </revision>
 </revisionlist>

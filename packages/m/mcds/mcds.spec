@@ -18,7 +18,7 @@
 
 
 Name:           mcds
-Version:        1.7
+Version:        1.8
 Release:        0
 Summary:        Mutt Carddav search program
 License:        GPL-3.0-or-later
@@ -31,6 +31,7 @@ BuildRequires:  libgpgme-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libxml-2.0)
 
 %description

@@ -1,0 +1,135 @@
+------------------------------------------------------------------
+Wed Nov 12 03:00:00 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- Require switchboard at runtime
+
+-------------------------------------------------------------------
+Wed Sep 25 19:58:29 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.1:
+  * Fix icon in the Feedback app
+  * Updated translations
+
+-------------------------------------------------------------------
+Tue Aug 13 01:14:00 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- enable leap by using datadir/icons
+
+-------------------------------------------------------------------
+Fri Aug  9 10:26:13 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.0:
+  * Improve screen reader accessibility
+  * Updated translations
+- update to 6.5.3:
+  * ImapDialog: Fix freeze when a server sends no response
+  * ImapDialog: Store most initial setup keys
+  * Metainfo Improvements
+- update to 6.5.2:
+  * Update icons
+  * Add support for evolution-data-server 3.45+
+  * Fix use imap username for smtp
+- update to 6.5.1:
+  * Updated translations
+- update to 6.5.0:
+  * Added offline support for CalDAV accounts
+- update to 6.4.0:
+  * Choose refresh rate for IMAP
+  * Updated translations
+- update to 6.3.0:
+  * Edit saved CalDAV accounts
+  * Dim window when creating a new IMAP account
+  * Updated translations
+- update to 6.2.2:
+  * Dim window when creating a new IMAP account
+  * Updated translations
+- update to 6.2.1:
+  * Make sure the refresh interval for an IMAP account is set
+  * Fix adding, editing, and removing lists in CalDAV apps like Tasks
+  * Make sure you can always navigate next by pressing the Enter key
+  * Close dialogs when pressing the Escape key
+  * Use a more complete list of authentication methods for IMAP
+  * Updated translations
+- update to 6.2.0:
+  * Edit saved IMAP accounts
+  * Automatically detect authentication method for IMAP
+  * Updated translations
+- update to 6.1.0:
+  * Verify login credentials when saving IMAP accounts
+  * Set up Archive, Drafts, Sent, and Templates folders for IMAP
+  * Close "Add Account" popover when an item is selected
+  * Updated translations
+- update to 6.0.0:
+  * Complete redesign based on Evolution Data Server
+- switch url to github, as we don't want to link to a different OS
+
+-------------------------------------------------------------------
+Sun Nov 25 21:58:55 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.0.1:
+  * Move OnlineAccounts.vala to Plug.vala (#65)
+  * AccountView: Use GObject style (#63)
+  * ACListBox: one class per file, GObject-style (#64)
+  * Merge branch 'origin/master' into Weblate
+  * OnlineAccounts.vala: Use Granite Toast (#62)
+
+-------------------------------------------------------------------
+Thu Nov  8 02:29:44 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Add regex for filtering provided libraries
+
+-------------------------------------------------------------------
+Wed Oct 17 19:04:37 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.0:
+  * fix wrong icon for Last.FM provider
+  * Add LastFM provider (#51)
+  * Add LastFM provider
+  * Add the mail provider (#48)
+  * Remove unneded assign (#47)
+  * remove http schemes (#46)
+  * Update fsf address (#38)
+  * update po files
+- Swith to meson
+
+-------------------------------------------------------------------
+Mon Jun  4 18:11:51 UTC 2018 - avvissu@yandex.by
+
+- Remove gsignond-extension-pantheon
+
+-------------------------------------------------------------------
+Wed May  9 18:31:45 UTC 2018 - avvissu@yandex.by
+
+- Add packages with plugins: lastfm, mail
+- Remove all broken plug-in files
+- Rebase the package directories
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Mon Nov 13 21:52:11 UTC 2017 - avvissu@yandex.by
+
+- Use gsignond-extension-pantheon as recommended dependency 
+- Use gsignond-config-pantheon as suggested dependency
+
+-------------------------------------------------------------------
+Mon Jun  5 19:47:11 UTC 2017 - avvissu@yandex.by
+
+- Re-enable plugins: lastfm and mail
+
+-------------------------------------------------------------------
+Mon May 15 18:43:03 UTC 2017 - avvissu@yandex.by
+
+- Rename to switchboard-plug-onlineaccounts 
+- Drop mail (plugin not working) 
+
+-------------------------------------------------------------------
+Tue Sep 13 04:01:43 UTC 2016 - avvissu@yandex.by
+
+- Update to 0.3.0.1
+- Split plugins into separate packages
+- Block out plugins that don't work
+
+-------------------------------------------------------------------
+Wed Aug  3 22:37:20 UTC 2016 - avvissu@yandex.by
+
+- Initial packaging

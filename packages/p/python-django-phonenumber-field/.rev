@@ -31,4 +31,35 @@
     <comment>- use setuptools_scm to get proper version in metadata</comment>
     <requestid>1119980</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0fa4c8f385306c449da5efe47179c02d</srcmd5>
+    <version>8.0.0</version>
+    <time>1731435717</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1223401 from mcalabkova
+
+- Update to 8.0.0
+    Breaking Changes:
+    * formfields.PhoneNumberField with a region now display national phone
+      numbers in the national format instead of PHONENUMBER_DEFAULT_FORMAT.
+    * Add a DB converter for the model field, fixing values_list() of 
+      PhoneNumberField
+    * RegionalPhoneNumberWidget becomes the default widget for the 
+      formfields.PhoneNumberField.
+    * The formfields.PhoneNumberField no longer sets the input_type attribute 
+      of its widget to tel. That behavior did not make sense for the existing 
+      PhoneNumberPrefixWidget and was dropped.
+    * Remove PhoneNumberInternationalFallbackWidget. Use 
+      phonenumber_field.widgets.RegionalPhoneNumberWidget instead.
+    * Move validation from widgets to the form fields.
+    Some Changes:
+    * Add support for Django 5.0
+    * Drop support for Django 4.1
+    * Drop support for Python 3.7
+    * Add support for Python 3.12
+    * Restore PhoneNumberPrefixWidget number input on form errors
+    * Set PhoneNumberInternationalFallbackWidget input_type to tel
+    * Evolve PhoneNumberInternationalWidget to RegionalPhoneNumberWidget</comment>
+    <requestid>1223463</requestid>
+  </revision>
 </revisionlist>

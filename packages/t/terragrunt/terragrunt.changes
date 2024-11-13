@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Nov 12 07:17:03 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.68.10:
+  * Improved errors handling for HCL functions (#3544)
+  * Update config doc to fix terragrunt-diff typo (#3515)
+  * build(deps): bump
+    go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc
+    (#3501)
+  * build(deps): bump github.com/charmbracelet/glamour from 0.6.0
+    to 0.8.0 (#3493)
+
+-------------------------------------------------------------------
+Tue Nov 12 06:48:29 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.68.9:
+  * Feature flags parsing (#3513)
+  * docs(cli-options): add a warning message about non-functionnal
+    glob curly braces expansion for TERRAGRUNT_INCLUDE_DIR and
+    TERRAGRUNT_EXCLUDE_DIR env variables (#3516)
+  * build(deps): bump
+    go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc
+    from 1.23.0 to 1.31.0 (#3503)
+  * build(deps-dev): bump rexml from 3.3.6 to 3.3.9 in /docs
+    (#3522)
+
+-------------------------------------------------------------------
+Tue Nov 12 06:20:13 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.68.8:
+  * Implement terragrunt-dont-check-dependent-modules flag (#3534)
+  * build(deps): bump cloud.google.com/go/storage from 1.44.0 to
+    1.46.0 (#3530)
+  * build(deps): bump ruby/setup-ruby from 1.196.0 to 1.199.0
+    (#3531)
+
+-------------------------------------------------------------------
 Fri Nov 01 16:15:59 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.68.7:

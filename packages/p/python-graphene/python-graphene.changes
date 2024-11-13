@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov 12 03:29:39 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.4.3:
+  * Do not raise AttributeError when parsing non-string UUIDs
+  * Overridable Union meta
+  * remove pytz
+  * remove polyfill for dataclasses
+  * remove aniso8601, mock, iso8601
+  * support python 3.13
+  * remove README.rst, leave only README.md
+  * CI: format check using Ruff
+  * CI: fix tests on Python 3.13
+  * Actually run the tests in python 3.12 and 3.13 and remove snapshottest
+    dependency
+- Remove patch support-pytest-8.patch, included upstream.
+
+-------------------------------------------------------------------
 Tue Aug 27 04:18:34 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to autosetup and pyproject macros.

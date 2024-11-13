@@ -50,4 +50,21 @@
     <comment></comment>
     <requestid>1092367</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f0d0b96c55b5f08beaa550c0ea7bab08</srcmd5>
+    <version>2.0.1</version>
+    <time>1731435696</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0.1:
+  * Migrate tests from nose to unittest and pytest
+  * Replace :mod:`pytz` dependency with
+    :attr:`datetime.timezone.utc` and :mod:`zoneinfo`
+  * Reformat codebase with black and isort
+  * Configure GitHub Actions; remove Travis CI configuration file
+- drop switch-to-pytest.patch (upstream)
+
+  * Use assert and pytest rather than nose.
+- Update to version 1.0</comment>
+    <requestid>1223443</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,69 @@
+commit 480be3eec55a6acdc85b3b804b03d182f211bbf8
+Author: Sam James <sam@gentoo.org>
+Date:   Thu Feb 9 23:20:32 2023 +0000
+
+    ITS#10011 contrib: fix old-style K&R declarations
+    
+    Removed in C23.
+    
+    For more information, see LWN.net [0] or LLVM's Discourse [1], the Gentoo wiki [2],
+    or the (new) c-std-porting mailing list [3].
+    
+    [0] https://lwn.net/Articles/913505/
+    [1] https://discourse.llvm.org/t/configure-script-breakage-with-the-new-werror-implicit-function-declaration/65213
+    [2] https://wiki.gentoo.org/wiki/Modern_C_porting
+    [3] hosted at lists.linux.dev.
+    
+    Signed-off-by: Sam James <sam@gentoo.org>
+
+diff --git a/contrib/ldaptcl/tclAppInit.c b/contrib/ldaptcl/tclAppInit.c
+index f84e1826f2..d50a7244d8 100644
+--- a/contrib/ldaptcl/tclAppInit.c
++++ b/contrib/ldaptcl/tclAppInit.c
+@@ -45,9 +45,7 @@ EXTERN int		Tcltest_Init _ANSI_ARGS_((Tcl_Interp *interp));
+  */
+ 
+ int
+-main(argc, argv)
+-    int argc;			/* Number of command-line arguments. */
+-    char **argv;		/* Values of command-line arguments. */
++main(int argc, char **argv)
+ {
+ #ifdef USE_TCLX
+     TclX_Main(argc, argv, Tcl_AppInit);
+diff --git a/contrib/ldaptcl/tkAppInit.c b/contrib/ldaptcl/tkAppInit.c
+index 68fd956803..693452335c 100644
+--- a/contrib/ldaptcl/tkAppInit.c
++++ b/contrib/ldaptcl/tkAppInit.c
+@@ -37,16 +37,9 @@ int (*tclDummyMathPtr)() = matherr;
+  * This is the main program for the application.
+  *-----------------------------------------------------------------------------
+  */
+-#ifdef __cplusplus
+ int
+ main (int    argc,
+       char **argv)
+-#else
+-int
+-main (argc, argv)
+-    int    argc;
+-    char **argv;
+-#endif
+ {
+ #ifdef USE_TCLX
+     TkX_Main(argc, argv, Tcl_AppInit);
+@@ -68,14 +61,8 @@ main (argc, argv)
+  * interp->result if an error occurs.
+  *-----------------------------------------------------------------------------
+  */
+-#ifdef __cplusplus
+ int
+ Tcl_AppInit (Tcl_Interp *interp)
+-#else
+-int
+-Tcl_AppInit (interp)
+-    Tcl_Interp *interp;
+-#endif
+ {
+     if (Tcl_Init (interp) == TCL_ERROR) {
+         return TCL_ERROR;

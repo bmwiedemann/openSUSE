@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov 11 19:59:52 UTC 2024 - Yann BOYER <yann.boyer742@gmail.com>
+
+- version update to 7.1.1.40
+  * .cut (Dr Halo) reading when run count in header #7734
+  * Bump azure/trusted-signing-action from 0.4.0 to 0.5.0 #7725
+  * Implement Magic Kernel Sharp 2013 and 2021 #7701
+  * don't process TIFF image if there is an exception
+  * Corrected check for indexed channels in PSD files.
+  * export exception when undo resource limit exceeded
+
+-------------------------------------------------------------------
 Sun Oct  6 20:27:31 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - version update to 7.1.1.39

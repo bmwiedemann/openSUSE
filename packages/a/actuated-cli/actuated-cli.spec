@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           actuated-cli
-Version:        0.2.8
+Version:        0.2.10
 Release:        0
 Summary:        CLI for actuated
 License:        MIT

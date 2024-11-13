@@ -184,4 +184,20 @@
 - Switch to pyproject and pytest macros.</comment>
     <requestid>1215499</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>bc950e8e5f03d083e0d831443a025f69</srcmd5>
+    <version>5.3.1</version>
+    <time>1731435785</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.3.1:
+  * Fix missing jQuery UI images (#754) @Tatsh
+  * Fix swallowing exceptions when processing response in silk
+    middleware (#753) @albertyw
+  * Support python 3.13
+  * Upgrade jQuery-UI to 1.13.2 to fix XSS vulnerability
+  * Remove Django 3.2 support
+  * Drop support for python 3.8
+  * Update python dependencies</comment>
+    <requestid>1223562</requestid>
+  </revision>
 </revisionlist>

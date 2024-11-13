@@ -3,10 +3,10 @@
     <param name="url">https://github.com/updatecli/updatecli</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v0.85.0</param>
+    <param name="revision">v0.86.1</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="changesgenerate">enable</param>
   </service>
   <service name="set_version" mode="manual">
   </service>

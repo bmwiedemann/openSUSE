@@ -16,26 +16,37 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           kube-linter
-Version:        0.6.8
+Version:        0.7.1
 Release:        0
 Summary:        Static analysis tool that checks Kubernetes YAML files and Helm charts
 License:        Apache-2.0
 URL:            https://github.com/stackrox/kube-linter
 Source:         kube-linter-%{version}.tar.gz
 Source1:        vendor.tar.gz
+BuildRequires:  bash-completion
+BuildRequires:  fish
 BuildRequires:  go >= 1.19
+BuildRequires:  zsh
 
 %description
-KubeLinter analyzes Kubernetes YAML files and Helm charts, and checks them against a variety of best practices, with a focus on production readiness and security.
+KubeLinter analyzes Kubernetes YAML files and Helm charts, and checks them
+against a variety of best practices, with a focus on production readiness and
+security.
 
-KubeLinter runs sensible default checks, designed to give you useful information about your Kubernetes YAML files and Helm charts. This is to help teams check early and often for security misconfigurations and DevOps best practices. Some common examples of these include running containers as a non-root user, enforcing least privilege, and storing sensitive information only in secrets.
+KubeLinter runs sensible default checks, designed to give you useful
+information about your Kubernetes YAML files and Helm charts. This is to help
+teams check early and often for security misconfigurations and DevOps best
+practices. Some common examples of these include running containers as a
+non-root user, enforcing least privilege, and storing sensitive information
+only in secrets.
 
-KubeLinter is configurable, so you can enable and disable checks, as well as create your own custom checks, depending on the policies you want to follow within your organization.
+KubeLinter is configurable, so you can enable and disable checks, as well as
+create your own custom checks, depending on the policies you want to follow
+within your organization.
 
-When a lint check fails, KubeLinter reports recommendations for how to resolve any potential issues and returns a non-zero exit code.
+When a lint check fails, KubeLinter reports recommendations for how to resolve
+any potential issues and returns a non-zero exit code.
 
 %package -n %{name}-bash-completion
 Summary:        Bash Completion for %{name}
@@ -75,7 +86,7 @@ zsh command line completion support for %{name}.
 go build \
    -mod=vendor \
    -buildmode=pie \
-   -ldflags="-s -w -X golang.stackrox.io/kube-linter/internal/version.version=v%{version}" \
+   -ldflags="-X golang.stackrox.io/kube-linter/internal/version.version=v%{version}" \
    -o bin/kube-linter ./cmd/kube-linter
 
 %install
@@ -91,8 +102,8 @@ mkdir -p %{buildroot}%{_datarootdir}/fish/vendor_completions.d/
 %{buildroot}/%{_bindir}/%{name} completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
 
 # create the zsh completion file
-mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d/
-%{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_%{name}
+mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
+%{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{name}
 
 %files
 %doc README.md
@@ -100,17 +111,12 @@ mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d/
 %{_bindir}/%{name}
 
 %files -n %{name}-bash-completion
-%dir %{_datarootdir}/bash-completion/completions/
 %{_datarootdir}/bash-completion/completions/%{name}
 
 %files -n %{name}-fish-completion
-%dir %{_datarootdir}/fish
-%dir %{_datarootdir}/fish/vendor_completions.d
 %{_datarootdir}/fish/vendor_completions.d/%{name}.fish
 
 %files -n %{name}-zsh-completion
-%defattr(-,root,root)
-%dir %{_datarootdir}/zsh_completion.d/
-%{_datarootdir}/zsh_completion.d/_%{name}
+%{_datarootdir}/zsh/site-functions/_%{name}
 
 %changelog

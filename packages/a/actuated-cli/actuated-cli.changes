@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov 12 08:27:30 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.2.10:
+  * Show a summary of jobs
+
+-------------------------------------------------------------------
+Tue Nov 12 08:23:32 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.2.9:
+  * Update message
+  * Improve error handling for metering command
+  * Bind command to root
+  * Update vendor
+  * Add metering command
+
+-------------------------------------------------------------------
 Thu Oct 31 10:50:45 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.2.8:

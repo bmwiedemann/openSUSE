@@ -99,6 +99,9 @@ Source2:        repack
 Patch12:        use_stl_build.patch
 # PATCH-FIX-OPENSUSE
 Patch14:        0004-Fix-time_t-ETG-typedef-extend-DateTime.FromTimeT-tes.patch
+# PATCH-FIX-UPSTREAM CVE-2024-50602-no-crash-XML_ResumeParser.patch bsc#1232590 mcepl@suse.com
+# prevent crashing of vendored libexpat in XML_ResumeParser
+Patch15:        CVE-2024-50602-no-crash-XML_ResumeParser.patch
 # PATCH-FIX-OPENSUSE - Test fixes/additions:
 Patch112:       0001-Check-HSV-values-in-image-test.patch
 Patch114:       wxwidgets-3.2.5.patch

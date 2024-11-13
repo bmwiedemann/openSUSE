@@ -50,7 +50,7 @@ ExclusiveArch:  donotbuild
 %endif
 Name:           python-dask%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-dask-expr,python-distributed! <===
-Version:        2024.8.2
+Version:        2024.11.1
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause

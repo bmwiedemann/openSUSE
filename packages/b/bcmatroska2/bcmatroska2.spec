@@ -18,7 +18,7 @@
 
 %define sover   0
 Name:           bcmatroska2
-Version:        5.3.36
+Version:        5.3.95
 Release:        0
 Summary:        C Library to Deal with Matroska Files
 License:        BSD-3-Clause AND Zlib AND GPL-2.0-or-later

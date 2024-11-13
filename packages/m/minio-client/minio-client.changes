@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 12 09:15:10 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20241105T112945Z:
+  * Only warn if less than 28 days to cert expires (#5077)
+  * Bump github.com/golang-jwt/jwt/v4 from 4.5.0 to 4.5.1 (#5074)
+
+-------------------------------------------------------------------
 Thu Oct 31 10:46:30 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 20241029T153459Z:
