@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 13 03:18:29 UTC 2024 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Added rev-ares-deletion.patch
+- Added ares-missing-space.patch
+- Added ftbfs-gcc-14-1075339.patch from debian
+  Fixes building with GCC14+
+- Added opendkim-2.10.3-incompatible-pointer-types.patch from gentoo
+
+-------------------------------------------------------------------
 Mon Feb 26 12:38:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

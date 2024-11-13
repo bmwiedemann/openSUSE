@@ -92,4 +92,17 @@
 ------------------------------------------------------------------</comment>
     <requestid>1198068</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7fb3d605173aad33fca0ccec70b6b7ed</srcmd5>
+    <version>3.2.3</version>
+    <time>1731508099</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.2.3:
+  * Release binary packages including PostgreSQL 17 libpq
+  * Drop TypeDef specifications as string from public modules, as
+    they cannot be composed by users as typing objects previously
+    could (ticket #860).
+  * Release Python 3.13 binary packages.</comment>
+    <requestid>1223751</requestid>
+  </revision>
 </revisionlist>

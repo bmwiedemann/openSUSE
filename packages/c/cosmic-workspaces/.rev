@@ -35,4 +35,13 @@
 </comment>
     <requestid>1203367</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c48e405c7c7f44fa222eb4298215eb0a</srcmd5>
+    <version>1.0.0~alpha3</version>
+    <time>1731508083</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.0~alpha3:
+  * no difference to alpha2</comment>
+    <requestid>1223147</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 31 22:25:04 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.0~alpha3:
+  * lib: Don't enable_head on mirrored displays on test/apply
+  * cli: Ignore disabled/mirrored outputs in auto_correct_offsets
+
+-------------------------------------------------------------------
 Thu Aug  8 01:00:18 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - standardize packaging with also fixes for miscellaneous hardcoding

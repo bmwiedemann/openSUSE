@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-falcon
-Version:        4.0.1
+Version:        4.0.2
 Release:        0
 Summary:        A web framework for building APIs and app backends
 License:        Apache-2.0

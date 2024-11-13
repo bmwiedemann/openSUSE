@@ -639,4 +639,18 @@
     <comment></comment>
     <requestid>1206704</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>76564faf8446a9a2a3451962f958ca2b</srcmd5>
+    <version>2.66.0</version>
+    <time>1731508097</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 2.66.0
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Make testsuite failures fatal
+- Move test script from %build into %check section
+- Update Requires from setup.py</comment>
+    <requestid>1223849</requestid>
+  </revision>
 </revisionlist>

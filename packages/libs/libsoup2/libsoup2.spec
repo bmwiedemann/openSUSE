@@ -1,7 +1,7 @@
 #
 # spec file for package libsoup2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,14 @@ Patch3:         https://gitlab.gnome.org/GNOME/libsoup/-/commit/4d12c3e5.patch
 Patch4:         https://gitlab.gnome.org/GNOME/libsoup/-/commit/48b3b611.patch
 # PATCH-FIX-UPSTREAM ced3c5d8.patch -- Fix build with libxml2-2.12.0 and clang-17
 Patch5:         https://gitlab.gnome.org/GNOME/libsoup/-/commit/ced3c5d8.patch
+# PATCH-FIX-UPSTREAM 04df03bc.patch boo#1233285 mgorse@suse.com -- strictly don't allow NUL bytes in headers.
+Patch6:         https://gitlab.gnome.org/GNOME/libsoup/-/commit/04df03bc.patch
+# PATCH-FIX-UPSTREAM libsoup-CVE-2024-52532.patch boo#1233287 mgorse@suse.com -- process the frame as soon as we read data.
+Patch7:         libsoup-CVE-2024-52532.patch
+# PATCH-FIX-UPSTREAM 29b96fab.patch boo#1233287 mgorse@suse.com -- websocket-test: disconnect error copy after the test ends.
+Patch8:         https://gitlab.gnome.org/GNOME/libsoup/-/commit/29b96fab.patch
+# PATCH-FIX-UPSTREAM a35222dd.patch boo#1233292 mgorse@suse.com -- be more robust against invalid input when parsing params.
+Patch9:         https://gitlab.gnome.org/GNOME/libsoup/-/commit/a35222dd.patch
 
 BuildRequires:  glib-networking
 BuildRequires:  meson >= 0.50

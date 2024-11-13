@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 12 16:27:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.3:
+  * Release binary packages including PostgreSQL 17 libpq
+    (:ticket:`#852`).
+  * Drop !TypeDef specifications as string from public modules,
+    as they cannot be composed by users as !typing objects
+    previously could (:ticket:`#860`).
+  * Release Python 3.13 binary packages.
+
+-------------------------------------------------------------------
 Sat Aug 31 12:26:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.1:

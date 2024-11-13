@@ -18,7 +18,7 @@
 
 %define         appname com.system76.CosmicBackground
 Name:           cosmic-bg
-Version:        1.0.0~alpha2
+Version:        1.0.0~alpha3
 Release:        0
 Summary:        COSMIC service for backgrounds
 License:        MPL-2.0
@@ -32,7 +32,6 @@ BuildRequires:  mold
 BuildRequires:  nasm
 BuildRequires:  pkgconfig
 BuildRequires:  rust >= 1.80
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(xkbcommon)
 
@@ -54,7 +53,6 @@ just build-release
 
 %install
 just rootdir=%{buildroot} prefix=%{_prefix} install
-%suse_update_desktop_file %{appname}
 
 %check
 %{cargo_test}

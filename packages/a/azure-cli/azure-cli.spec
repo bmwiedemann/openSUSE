@@ -23,23 +23,17 @@
 %endif
 %global _sitelibdir %{%{pythons}_sitelib}
 
-# Define just "test" as a package in _multibuild file to distinguish test
-# instructions here
-%if "@BUILD_FLAVOR@" == ""
-%define _test 0
-%define name_ext %nil
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
 %else
-%define _test 1
-%define name_ext -test
+%define psuffix %{nil}
+%bcond_with test
 %endif
 
-%if !%{?_test}
-Name:           azure-cli
-%else
-Name:           azure-cli%{?name_ext}
-%endif
-%define         short_name azure-cli
-Version:        2.65.0
+Name:           azure-cli%{?psuffix}
+Version:        2.66.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -47,8 +41,8 @@ Group:          System/Management
 URL:            https://github.com/Azure/azure-cli
 Source:         https://files.pythonhosted.org/packages/source/a/azure-cli/azure_cli-%{version}.tar.gz
 Patch1:         ac_use-python3-by-default.patch
-%if 0%{?_test}
-BuildRequires:  %{short_name} = %{version}
+%if %{with test}
+BuildRequires:  azure-cli = %{version}
 %else
 BuildRequires:  %{pythons}-pip
 BuildRequires:  %{pythons}-wheel
@@ -65,7 +59,6 @@ Requires:       %{pythons}-azure-batch >= 14.2.0
 Requires:       %{pythons}-azure-cosmos >= 3.0.2
 Requires:       %{pythons}-azure-data-tables >= 12.4.0
 Requires:       %{pythons}-azure-datalake-store >= 0.0.53
-Requires:       %{pythons}-azure-graphrbac >= 0.60.0
 Requires:       %{pythons}-azure-keyvault-administration >= 4.4.0~b2
 Requires:       %{pythons}-azure-keyvault-certificates >= 4.7.0
 Requires:       %{pythons}-azure-keyvault-keys >= 4.9.0~b3
@@ -85,7 +78,7 @@ Requires:       %{pythons}-azure-mgmt-cognitiveservices >= 13.5.0
 Requires:       %{pythons}-azure-mgmt-compute >= 33.0.0
 Requires:       %{pythons}-azure-mgmt-containerinstance >= 10.1.0
 Requires:       %{pythons}-azure-mgmt-containerregistry >= 10.3.0
-Requires:       %{pythons}-azure-mgmt-containerservice >= 32.0.0
+Requires:       %{pythons}-azure-mgmt-containerservice >= 32.1.0
 Requires:       %{pythons}-azure-mgmt-cosmosdb >= 9.6.0
 Requires:       %{pythons}-azure-mgmt-databoxedge >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-datamigration >= 10.0.0
@@ -108,10 +101,12 @@ Requires:       %{pythons}-azure-mgmt-marketplaceordering >= 1.1.0
 Requires:       %{pythons}-azure-mgmt-media >= 9.0
 Requires:       %{pythons}-azure-mgmt-monitor >= 5.0.0
 Requires:       %{pythons}-azure-mgmt-msi >= 7.0.0
+Requires:       %{pythons}-azure-mgmt-mysqlflexibleservers >= 1.0.0~b2
 Requires:       %{pythons}-azure-mgmt-netapp >= 10.1.0
 Requires:       %{pythons}-azure-mgmt-policyinsights >= 1.1.0b4
+Requires:       %{pythons}-azure-mgmt-postgresqlflexibleservers >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-privatedns >= 1.0.0
-Requires:       %{pythons}-azure-mgmt-rdbms >= 10.2.0b16
+Requires:       %{pythons}-azure-mgmt-rdbms >= 10.2.0b17
 Requires:       %{pythons}-azure-mgmt-recoveryservices >= 3.0.0
 Requires:       %{pythons}-azure-mgmt-recoveryservicesbackup >= 9.1.0
 Requires:       %{pythons}-azure-mgmt-redhatopenshift >= 1.5.0
@@ -123,8 +118,8 @@ Requires:       %{pythons}-azure-mgmt-security >= 6.0.0
 Requires:       %{pythons}-azure-mgmt-servicebus >= 8.2.0
 Requires:       %{pythons}-azure-mgmt-servicefabric >= 2.1.0
 Requires:       %{pythons}-azure-mgmt-servicefabricmanagedclusters >= 2.0.0~b6
-Requires:       %{pythons}-azure-mgmt-servicelinker >= 1.2.0~b2
-Requires:       %{pythons}-azure-mgmt-signalr >= 2.0.0~b1
+Requires:       %{pythons}-azure-mgmt-servicelinker >= 1.2.0~b3
+Requires:       %{pythons}-azure-mgmt-signalr >= 2.0.0~b2
 Requires:       %{pythons}-azure-mgmt-sql >= 4.0.0b19
 Requires:       %{pythons}-azure-mgmt-sqlvirtualmachine >= 1.0.0b5
 Requires:       %{pythons}-azure-mgmt-storage >= 21.2.0
@@ -144,6 +139,7 @@ Requires:       %{pythons}-distro
 Requires:       %{pythons}-javaproperties >= 0.5.1
 Requires:       %{pythons}-jsondiff >= 2.0.0
 Requires:       %{pythons}-packaging >= 20.9
+Requires:       %{pythons}-paramiko >= 2.0.8
 Requires:       %{pythons}-pycomposefile >= 0.0.29
 Requires:       %{pythons}-pygments >= 2.4
 Requires:       %{pythons}-scp >= 0.13.2
@@ -268,41 +264,24 @@ Obsoletes:      azure-cli-storage < 2.4.3
 Provides:       azure-cli-vm = 2.2.23
 Obsoletes:      azure-cli-vm < 2.2.23
 Conflicts:      azure-cli < 2.0.0
+%endif
 
 BuildArch:      noarch
-%endif
 
 %description
 Microsoft Azure CLI 2.0 Command Line Utilities
 
 %prep
-%if 0%{?_test}
-# workaround to prevent post/install failing assuming this file for whatever
-# reason
-touch %{_sourcedir}/%{short_name}
-%else
 %setup -q -n azure_cli-%{version}
 %patch -P 1 -p1
-%endif
 
+%if !%{with test}
 %build
-%if 0%{?_test}
-set +x
-for i in $(az | sed -n 's/\s*\([a-z,-]*\)\s\+\:.*/\1/p') ; do
-    echo -n "Testing $i command .. "
-    if az $i --help > /dev/null 2>&1 ; then
-	echo "OK"
-    else
-	echo "FAIL"
-    fi
-done
-set -x
-%else
 %pyproject_wheel
 %endif
 
 %install
-%if 0%{?_test}
+%if %{with test}
 # disable debug packages in package test to prevent error about missing files
 %define debug_package %{nil}
 %else
@@ -311,8 +290,25 @@ install -DTm644 %{buildroot}%{_bindir}/az.completion.sh %{buildroot}%{_datadir}/
 %fdupes %{buildroot}%{_sitelibdir}
 %endif
 
+%if %{with test}
+%check
+set +x
+for i in $(az | sed -n 's/\s*\([a-z,-]*\)\s\+\:.*/\1/p') ; do
+    echo -n "Testing $i command .. "
+    failed=0
+    if az $i --help > /dev/null 2>&1 ; then
+	echo "OK"
+    else
+	echo "FAIL"
+	failed=1
+    fi
+done
+set -x
+if [ $failed -eq 1 ] ; then echo "Testsuite failed." ; exit 1 ; fi
+%endif
+
+%if !%{with test}
 %files
-%if !%{?_test}
 %defattr(-,root,root,-)
 %doc HISTORY.rst README.rst
 %license LICENSE.txt

@@ -80,6 +80,8 @@ Wed May  8 22:39:10 UTC 2024 - James Fehlig <jfehlig@suse.com>
 Thu May  2 22:48:28 UTC 2024 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 10.3.0
+  - bsc#1220714
+  - bsc#1226492
   - Many incremental improvements and bug fixes, see
     https://libvirt.org/news.html#v10-3-0-2024-05-02
 
@@ -94,6 +96,7 @@ Tue Apr  2 15:03:20 UTC 2024 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 10.2.0
   - CVE-2024-2494
+  - bsc#1221879
   - Many incremental improvements and bug fixes, see
     https://libvirt.org/news.html#v10-2-0-2024-04-02
 
@@ -109,6 +112,7 @@ Tue Mar  5 21:20:53 UTC 2024 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 10.1.0
   - CVE-2024-1441
+    bsc#1221237
   - Many incremental improvements and bug fixes, see
     https://libvirt.org/news.html#v10-1-0-2024-03-01
 
@@ -287,6 +291,8 @@ Tue May  2 17:18:02 UTC 2023 - James Fehlig <jfehlig@suse.com>
 - Update to libvirt 9.3.0
   - Many incremental improvements and bug fixes, see
     https://libvirt.org/news.html#v9-3-0-2023-05-02
+  - CVE-2023-2700
+    bsc#1211390 
   - boo#1210654
 
 -------------------------------------------------------------------
@@ -358,6 +364,7 @@ Thu Mar  2 23:11:37 UTC 2023 - James Fehlig <jfehlig@suse.com>
 Wed Mar  1 20:58:57 UTC 2023 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 9.1.0
+  - bsc#1210666
   - Many incremental improvements and bug fixes, see
     https://libvirt.org/news.html#v9-1-0-2023-03-01
   - spec: Remove obsolete Groups tag
@@ -459,6 +466,7 @@ Thu Sep  1 20:37:17 UTC 2022 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 8.7.0
   - jsc#PED-620, jsc#PED-1540
+  - bsc#1202630
   - Many incremental improvements and bug fixes, see
     https://libvirt.org/news.html#v8-7-0-2022-09-01
   - Dropped patches:
@@ -549,6 +557,7 @@ Fri Apr  1 17:30:25 UTC 2022 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 8.2.0
   - CVE-2022-0897
+    bsc#1197636
   - Many incremental improvements and bug fixes, see
     https://libvirt.org/news.html#v8-2-0-2022-04-01
   - Dropped patches:
@@ -1361,6 +1370,8 @@ Thu Mar  5 04:09:43 UTC 2020 - James Fehlig <jfehlig@suse.com>
 - Update to libvirt 6.1.0
   - Many incremental improvements and bug fixes, see
     https://libvirt.org/news.html
+  - CVE-2020-12430
+    bsc#1170765 
   - Dropped patches:
     6c1dddaf-libxl-shutdown-inhibit.patch,
     849052ec-libxl-support-credit2.patch,

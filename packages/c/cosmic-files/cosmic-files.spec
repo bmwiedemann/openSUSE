@@ -18,7 +18,7 @@
 
 %define         appname com.system76.CosmicFiles
 Name:           cosmic-files
-Version:        1.0.0~alpha2
+Version:        1.0.0~alpha3
 Release:        0
 Summary:        COSMIC file manager
 License:        GPL-3.0-only
@@ -30,7 +30,7 @@ BuildRequires:  git-core
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  just
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
+BuildRequires:  rust >= 1.80
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(xkbcommon)
 
@@ -45,7 +45,6 @@ just build-release
 
 %install
 just rootdir=%{buildroot} prefix=%{_prefix} install
-%suse_update_desktop_file %{appname}
 
 %check
 # take too long on OBS, gets killed

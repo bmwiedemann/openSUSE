@@ -1,0 +1,16 @@
+Description: Add missing space in Authentication-Results header
+Author: David Bürgin <dbuergin@gluet.ch>
+Bug: https://github.com/trusteddomainproject/OpenDKIM/pull/67
+
+--- a/opendkim/opendkim.c
++++ b/opendkim/opendkim.c
+@@ -13511,7 +13511,8 @@
+ 			/* NOTREACHED */
+ 		}
+ 
+-		snprintf(header, sizeof header, "%s; dkim=%s (%s)",
++		snprintf((char *) header, sizeof header, "%s%s; dkim=%s (%s)",
++		         cc->cctx_noleadspc ? " " : "",
+ 		         authservid, ar,
+ 		         dkimf_lookup_inttostr(dfc->mctx_status,
+ 		                               dkimf_statusstrings));

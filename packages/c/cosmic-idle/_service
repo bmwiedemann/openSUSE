@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="url">https://github.com/pop-os/cosmic-idle.git</param>
+    <param name="scm">git</param>
+    <param name="revision">refs/tags/epoch-1.0.0-alpha.3</param>
+    <param name="versionrewrite-pattern">epoch-(.*)</param>
+    <param name="versionformat">1.0.0~alpha3</param>
+    <param name="package-meta">yes</param>
+    <param name="filename">cosmic-idle</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">zstd</param>
+  </service>
+  <service name="cargo_vendor" mode="manual">
+    <param name="src">cosmic-idle</param>
+    <param name="update">false</param>
+  </service>
+  <service name="set_version" mode="manual" />
+</services>

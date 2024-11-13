@@ -40,4 +40,13 @@
 </comment>
     <requestid>1203360</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>505d3a0a578625251ca7db533cad0919</srcmd5>
+    <version>1.0.0~alpha3</version>
+    <time>1731508057</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.0~alpha3:
+  * feat: add JPEG XL support via jxl-oxide</comment>
+    <requestid>1223136</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,33 @@
+Description: Delete Authentication-Results headers in reverse (CVE-2022-48521)
+Author: David Bürgin <dbuergin@gluet.ch>
+Bug: https://github.com/trusteddomainproject/OpenDKIM/pull/189
+
+--- a/opendkim/opendkim.c
++++ b/opendkim/opendkim.c
+@@ -13651,9 +13651,16 @@
+ 			return SMFIS_TEMPFAIL;
+ 		}
+ 
+-		c = 0;
++		c = 1;
++
+ 		for (hdr = dfc->mctx_hqhead; hdr != NULL; hdr = hdr->hdr_next)
+ 		{
++			if (strcasecmp(hdr->hdr_hdr, AUTHRESULTSHDR) == 0)
++				c++;
++		}
++
++		for (hdr = dfc->mctx_hqtail; hdr != NULL; hdr = hdr->hdr_prev)
++		{
+ 			memset(ares, '\0', sizeof(struct authres));
+ 
+ 			if (strcasecmp(hdr->hdr_hdr, AUTHRESULTSHDR) == 0)
+@@ -13664,7 +13671,7 @@
+ 				char *slash;
+ 
+ 				/* remember index */
+-				c++;
++				c--;
+ 
+ 				/* parse the header */
+ 				arstat = ares_parse((u_char *) hdr->hdr_val,

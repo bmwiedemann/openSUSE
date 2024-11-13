@@ -18,7 +18,7 @@
 
 %define         appname com.system76.CosmicNotifications
 Name:           cosmic-notifications
-Version:        1.0.0~alpha1
+Version:        1.0.0~alpha3
 Release:        0
 Summary:        Layer for COSMIC Notifications
 License:        GPL-3.0-only
@@ -34,7 +34,7 @@ BuildRequires:  intltool
 BuildRequires:  just
 BuildRequires:  mold
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
+BuildRequires:  rust >= 1.80
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(xkbcommon)
 
@@ -49,7 +49,6 @@ just build-release
 
 %install
 just rootdir=%{buildroot} prefix=%{_prefix} install
-%suse_update_desktop_file %{appname}
 
 %check
 %{cargo_test}

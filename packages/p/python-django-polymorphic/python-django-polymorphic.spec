@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-polymorphic
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,21 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
 Name:           python-django-polymorphic
 Version:        3.1
+%define twodotsversion 3.1.0
 Release:        0
 Summary:        Polymorphic inheritance for Django models
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
-URL:            https://github.com/django-polymorphic/django-polymorphic
-Source:         https://github.com/django-polymorphic/django-polymorphic/archive/v%{version}.tar.gz#/django-polymorphic-%{version}.tar.gz
+URL:            https://github.com/jazzband/django-polymorphic
+Source:         https://github.com/jazzband/django-polymorphic/archive/v%{version}.tar.gz#/django-polymorphic-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#jazzband/django-polymorphic#63d291f8771847e716a37652f239e3966a3360e1
+Patch0:         support-new-django.patch
+# PATCH-FIX-OPENSUSE Skip two broken tests -- remove when upgrading to 4.0
+Patch1:         skip-two-lookup-tests.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 2.1
@@ -42,13 +45,13 @@ BuildRequires:  %{python_module dj-database-url}
 Seamless polymorphic inheritance for Django models.
 
 %prep
-%setup -q -n django-polymorphic-%{version}
+%autosetup -p1 -n django-polymorphic-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -57,6 +60,7 @@ Seamless polymorphic inheritance for Django models.
 %files %{python_files}
 %doc README.rst docs/*.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/polymorphic
+%{python_sitelib}/django_polymorphic-%{twodotsversion}.dist-info
 
 %changelog

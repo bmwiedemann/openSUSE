@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 13 05:57:37 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing BuildRequires on setuptools. 
+
+-------------------------------------------------------------------
 Fri Dec 15 10:05:12 UTC 2023 - Jacob Michalskie <hel@lcp.world>
 
 - Add python-xapian-haystack-term-too-long.patch

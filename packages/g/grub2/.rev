@@ -2908,4 +2908,12 @@ pretty much the same. The main user visible changes are
   them to a separate xen-debug subpackage (bsc#1232573)</comment>
     <requestid>1222848</requestid>
   </revision>
+  <revision rev="341" vrev="30">
+    <srcmd5>f43fa168db5b44be97a2ff0ecc8f0430</srcmd5>
+    <version>2.12</version>
+    <time>1731508040</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1223823</requestid>
+  </revision>
 </revisionlist>

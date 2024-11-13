@@ -24,4 +24,22 @@
   * Do not call now-removed numpy methods in the test suite.</comment>
     <requestid>1188921</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d673bbf6fdbf1c6e8230753571fb31a5</srcmd5>
+    <version>5.0.0</version>
+    <time>1731508129</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1223658 from mcalabkova
+
+- Update to 5.0.0
+    * This release requires Python &gt;= 3.8 and h5py &gt;= 3.0.0
+    * Removed deprecated constants: hdf5plugin.config, hdf5plugin.date, 
+      hdf5plugin.hexversion and hdf5plugin.strictversion 
+    * Fixed hdf5plugin.Bitshuffle to avoid raising ValueError when lz4=False
+    * Many filter and library updates
+  - Drop merged patches:
+    * hdf5plugin-fix-gcc14.patch
+    * support-numpy-2.patch</comment>
+    <requestid>1223787</requestid>
+  </revision>
 </revisionlist>

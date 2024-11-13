@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov  5 19:13:23 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Modernize specfile
+
+-------------------------------------------------------------------
 Tue Oct 29 06:00:12 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add 81.patch to not store the build host kernel version (boo#1232434)

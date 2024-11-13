@@ -392,14 +392,9 @@ Patch205:       0001-10_linux-Ensure-persistence-of-root-file-system-moun.patch
 Patch206:       0001-util-bash-completion-Fix-for-bash-completion-2.12.patch
 Patch207:       0001-util-enable-grub-protect-only-for-EFI-systems.patch
 Patch208:       0001-blscfg-add-blscfg-module-to-parse-Boot-Loader-Specif.patch
-Patch209:       0002-Add-BLS-support-to-grub-mkconfig.patch
-Patch210:       0003-Add-grub2-switch-to-blscfg.patch
 Patch211:       0004-blscfg-Don-t-root-device-in-emu-builds.patch
 Patch212:       0005-blscfg-check-for-mounted-boot-in-emu.patch
 Patch213:       0006-Follow-the-device-where-blscfg-is-discovered.patch
-Patch214:       0007-grub-switch-to-blscfg-adapt-to-openSUSE.patch
-Patch215:       0008-blscfg-reading-bls-fragments-if-boot-present.patch
-Patch216:       0009-10_linux-Some-refinement-for-BLS.patch
 Patch217:       0001-net-drivers-ieee1275-ofnet-Remove-200-ms-timeout-in-.patch
 Patch218:       grub2-s390x-set-hostonly.patch
 Patch219:       0001-bli-Fix-crash-in-get_part_uuid.patch
@@ -420,7 +415,6 @@ Patch233:       0001-kern-ieee1275-init-Add-IEEE-1275-Radix-support-for-K.patch
 Patch234:       0001-cli_lock-Add-build-option-to-block-command-line-inte.patch
 Patch235:       0002-Requiring-authentication-after-tpm-unlock-for-CLI-ac.patch
 Patch236:       0001-kern-main-Fix-cmdpath-in-root-directory.patch
-Patch237:       0001-10_linux-Do-not-enable-BLSCFG-on-s390-emu.patch
 
 %if 0%{?suse_version} > 1600
 # Always requires a default cpu-platform package
@@ -1375,7 +1369,6 @@ grep -E ${EXTRA_PATTERN} %{grubarch}-mod-all.lst > %{grubarch}-mod-extras.lst
 %{_sbindir}/%{name}-probe
 %{_sbindir}/%{name}-reboot
 %{_sbindir}/%{name}-set-default
-%{_sbindir}/%{name}-switch-to-blscfg
 %{_sbindir}/%{name}-check-default
 %{_bindir}/%{name}-editenv
 %{_bindir}/%{name}-file
@@ -1428,7 +1421,6 @@ grep -E ${EXTRA_PATTERN} %{grubarch}-mod-all.lst > %{grubarch}-mod-extras.lst
 %{_mandir}/man8/%{name}-probe.8.*
 %{_mandir}/man8/%{name}-reboot.8.*
 %{_mandir}/man8/%{name}-set-default.8.*
-%{_mandir}/man8/%{name}-switch-to-blscfg.8.*
 %if %{emu}
 %{_bindir}/%{name}-emu
 %{_mandir}/man1/%{name}-emu.1.*

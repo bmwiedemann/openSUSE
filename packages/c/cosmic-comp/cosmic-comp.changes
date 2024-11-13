@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Oct 31 22:10:13 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.0~alpha3:
+  * Add cosmic_atspi_v1 protocol
+  * element/window: Input offset fixes
+  * toplevel_info: Fix racy data creation
+  * kms: Don't substract for mirrored outputs
+  * DPMS with wlr-output-power-management-unstable-v1 protocol
+  * set cursor shape for resize grabs
+  * focus: Fix layer-popup locations
+  * input: Use render_input_order
+  * render: Use render_input_order
+  * focus: Introduce render_input_order
+  * Don't create initial empty workspace when there are other workspaces
+  * On adding output add set after processing other sets
+  * Fix workspace indices when workspace is moved to another output
+  * Preserve active workspace when workspaces are moved back to another
+    output
+  * When moving workspaces on output remove, don't movve empty workspace
+  * Fix spelling of prefers
+  * Use to_ne_bytes() instead of unsound Vec::from_raw_parts
+  * fix(menu): use corner radius from theme
+  * Add COSMIC_DISABLE_DIRECT_SCANOUT env var
+  * Add util function for boolean env vars
+  * cursor follows focus to center of window
+  * fix(window): center window title
+  * fix(menu): styling
+  * use Grabbing cursor instead of Grab cursor
+  * input: Treat pointer-shortcuts as potentially inhibited
+  * Set default output transform based on DRM panel orientation
+  * Update egui, smithay-egui, smithay
+
+-------------------------------------------------------------------
 Wed Sep 25 00:35:22 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.0.0~alpha2:

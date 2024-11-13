@@ -1,0 +1,31 @@
+commit ed5e478261127cafe9c3f86c4992eab1e5c7ebb1
+Author: Rohan McLure <rmclure@linux.ibm.com>
+Date:   Tue Nov 14 14:14:33 2023 +1100
+
+    ppc64: Fix SHA3_squeeze
+    
+    Fix the conditional on the 'next' parameter passed into SHA3_squeeze.
+    
+    Reported-by: David Benjamin <davidben@davidben.net>
+    Signed-off-by: Rohan McLure <rmclure@linux.ibm.com>
+    
+    Reviewed-by: Shane Lontis <shane.lontis@oracle.com>
+    Reviewed-by: Paul Dale <pauli@openssl.org>
+    Reviewed-by: Tomas Mraz <tomas@openssl.org>
+    (Merged from https://github.com/openssl/openssl/pull/22722)
+
+diff --git a/crypto/sha/asm/keccak1600-ppc64.pl b/crypto/sha/asm/keccak1600-ppc64.pl
+index 3f8ba817f8..fe7d6db20e 100755
+--- a/crypto/sha/asm/keccak1600-ppc64.pl
++++ b/crypto/sha/asm/keccak1600-ppc64.pl
+@@ -668,8 +668,8 @@ SHA3_squeeze:
+ 	subi	$out,r4,1		; prepare for stbu
+ 	mr	$len,r5
+ 	mr	$bsz,r6
+-	${UCMP}i r7,1                   ; r7 = 'next' argument
+-	blt	.Lnext_block
++	${UCMP}i r7,0                   ; r7 = 'next' argument
++	bne	.Lnext_block
+ 	b	.Loop_squeeze
+ 
+ .align	4

@@ -38,7 +38,7 @@
 %endif
 
 Name:           libheif
-Version:        1.19.2
+Version:        1.19.3
 Release:        0
 Summary:        HEIF/AVIF file format decoder and encoder
 License:        GPL-2.0-or-later

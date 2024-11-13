@@ -23,4 +23,18 @@
     <comment></comment>
     <requestid>944618</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>42901a0ac85890fb7eb6e3e0b3ae9dd4</srcmd5>
+    <version>3.1</version>
+    <time>1731508139</time>
+    <user>anag+factory</user>
+    <comment>- Update URL.
+- Switch to pyproject and autosetup macros.
+- No more greedy globs in %files.
+- Add patch support-new-django.patch:
+  * Support new Django assertion method name.
+- Add patch skip-two-lookup-tests.patch:
+  * Skip two tests that are currently broken</comment>
+    <requestid>1223824</requestid>
+  </revision>
 </revisionlist>

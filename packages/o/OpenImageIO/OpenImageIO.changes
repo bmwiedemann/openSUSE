@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Sat Nov  9 22:41:28 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Handle renamed tests in the exclude list
+  - also make it easier to maintain by refactoring the list out
+    into variables.
+
+-------------------------------------------------------------------
+Sat Nov  9 20:02:29 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.0.0.3
+  - Updated minimum toolchain: C++17/gcc9.3, Python 3.7, CMake
+    3.18.2, and raised min versions of most library dependencies.
+  - New image format support: JPEG XL, R3D.
+  - oiiotool new commands: --cryptomatte-colors, --demosaic,
+    --buildinfo, --ocionamedtransform, --popbottom, --stackreverse,
+    --stackclear, --stackextract; improved --for behavior for
+    reverse direction.
+  - Lots of long-deprecated API calls have been removed entirely.
+    Please see the detailed deprecation list.
+  - New ImageBufAlgo: perpixel_op(), demosaic(),
+    ocionamedtransform().
+  - ImageBuf now by default does not use ImageCache to mediate file
+    images, unless you explicitly ask for it.
+  - ImageCache & TextureSystem now use shared_ptr for creation, not
+    raw pointers. And they have been de-virtualized, for easier
+    future expansion flexibility without breaking ABI for any small
+    change.
+  - Improved and more consistent color space name nomenclature.
+  - Build system now is capable of auto-downloading and building
+    several of the most important dependencies if they are missing
+    at build time.
+  - Please note that the development branch in the GitHub repo is
+    now named main instead of master.
+  For all the details see:
+  https://github.com/AcademySoftwareFoundation/OpenImageIO/releases/tag/v3.0.0.3
+- Update oiio-test images 7e6d875 for the 3.0 release
+- Bump all BuildRequires to the minimum versions in the changes
+  entry
+- switch package to Qt6
+
+-------------------------------------------------------------------
+Fri Nov  1 20:32:48 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- update oiio-test images to 3e9caba to see if that fixes the
+  testsuite
+
+-------------------------------------------------------------------
+Fri Nov  1 20:17:05 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.5.17.0
+  - iinfo: fix: iinfo was not reading MIP levels correctly #4498
+  - text rendering: Windows newline shows invalid character in text
+    render #4501 (by peterhorvath111)
+  - fix: Address fmt exceptions for left justification #4510
+  - perf: Additional timing logging for performance investigations
+    #4506
+  - strutil.h: Fix typo in description of Strutil::parse_values
+    #4512
+  - build: Don't change CMAKE_XXX_OUTPUT_DIRECTORY when built as
+    subdir #4417 (by Luc Touraille)
+  - deps: Search for libbz2 only if FFmpeg or FreeType is enabled.
+    #4505 (by jreichel-nvidia)
+  - tests: Fixup after directory refactor of OpenImageIO-images
+    #4473
+  - ci: Make scrorecards workflow not fail constantly #4471
+  - ci: Retire deprecated macos12 runner, try beta macos15 #4514
+  - docs: Update to vanity URL for the docs #4494
+
+-------------------------------------------------------------------
 Wed Oct  2 09:44:53 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 2.5.16.0

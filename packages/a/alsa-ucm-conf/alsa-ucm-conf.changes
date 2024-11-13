@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 12 14:15:03 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 1.2.13:
+  * Updates for USB-audio, Mediatek, Qualcomm, ACP, SoundWire,
+    wsa884x, wcd938x, Intel AVS, SOF HDA, etc
+  For details, see:
+    https://www.alsa-project.org/wiki/Changes_v1.2.12_v1.2.13#alsa-ucm-conf
+
+-------------------------------------------------------------------
 Thu Jun 13 14:57:35 UTC 2024 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 1.2.12:

@@ -53,4 +53,15 @@
 </comment>
     <requestid>1203359</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>54b08ab23c010f1227997d216b8664ca</srcmd5>
+    <version>1.0.0~alpha3</version>
+    <time>1731508053</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.0~alpha3:
+  * feat: enable button to open Bluetooth settings page from applet
+  * fix(audio-applet): Render input volume level instead of output.
+  * update translations</comment>
+    <requestid>1223135</requestid>
+  </revision>
 </revisionlist>

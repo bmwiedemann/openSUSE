@@ -17,7 +17,7 @@
 
 
 Name:           xdg-desktop-portal-cosmic
-Version:        1.0.0~alpha2
+Version:        1.0.0~alpha3
 Release:        0
 Summary:        COSMIC xdg portal
 License:        GPL-3.0-only
@@ -31,6 +31,7 @@ BuildRequires:  git-core
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  make
 BuildRequires:  pkgconfig
+BuildRequires:  rust >= 1.80
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(glib-2.0)

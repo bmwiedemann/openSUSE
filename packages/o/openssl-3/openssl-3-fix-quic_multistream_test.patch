@@ -1,0 +1,25 @@
+From b5795e3ed3ec38ef4686a5b7ff03bfd60183cb71 Mon Sep 17 00:00:00 2001
+From: "Randall S. Becker" <randall.becker@nexbridge.ca>
+Date: Mon, 20 May 2024 22:23:04 +0000
+Subject: [PATCH] Added an explicit yield (OP_SLEEP) to QUIC testing for
+ cooperative threading.
+
+Fixes: #24442
+
+Signed-off-by: Randall S. Becker <randall.becker@nexbridge.ca>
+---
+ test/quic_multistream_test.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+Index: openssl-3.2.3/test/quic_multistream_test.c
+===================================================================
+--- openssl-3.2.3.orig/test/quic_multistream_test.c
++++ openssl-3.2.3/test/quic_multistream_test.c
+@@ -2397,6 +2397,7 @@ static const struct script_op script_13_
+ 
+     OP_C_ACCEPT_STREAM_WAIT (a)
+     OP_C_READ_EXPECT        (a, "foo", 3)
++    OP_SLEEP                (10)
+     OP_C_EXPECT_FIN         (a)
+     OP_C_FREE_STREAM        (a)
+ 

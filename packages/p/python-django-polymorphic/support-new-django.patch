@@ -1,0 +1,287 @@
+From 63d291f8771847e716a37652f239e3966a3360e1 Mon Sep 17 00:00:00 2001
+From: Aarni Koskela <akx@iki.fi>
+Date: Tue, 12 Dec 2023 13:24:14 +0200
+Subject: [PATCH] Modernize spelling for assertQuerySetEqual
+
+---
+ polymorphic/tests/__init__.py        |  6 +++++
+ polymorphic/tests/test_multidb.py    | 12 ++++-----
+ polymorphic/tests/test_orm.py        | 38 ++++++++++++++--------------
+ polymorphic/tests/test_regression.py |  6 ++---
+ polymorphic/tests/test_utils.py      |  2 +-
+ 5 files changed, 35 insertions(+), 29 deletions(-)
+
+Index: django-polymorphic-3.1/polymorphic/tests/__init__.py
+===================================================================
+--- /dev/null
++++ django-polymorphic-3.1/polymorphic/tests/__init__.py
+@@ -0,0 +1,6 @@
++import django
++
++if django.VERSION < (4, 2):  # TODO: remove when dropping support for Django < 4.2
++    from django.test.testcases import TransactionTestCase
++
++    TransactionTestCase.assertQuerySetEqual = TransactionTestCase.assertQuerysetEqual
+Index: django-polymorphic-3.1/polymorphic/tests/test_multidb.py
+===================================================================
+--- django-polymorphic-3.1.orig/polymorphic/tests/test_multidb.py
++++ django-polymorphic-3.1/polymorphic/tests/test_multidb.py
+@@ -26,13 +26,13 @@ class MultipleDatabasesTests(TestCase):
+         Model2B.objects.create(field1="B1", field2="B2")
+         Model2D(field1="D1", field2="D2", field3="D3", field4="D4").save()
+ 
+-        self.assertQuerysetEqual(
++        self.assertQuerySetEqual(
+             Model2A.objects.order_by("id"),
+             [Model2B, Model2D],
+             transform=lambda o: o.__class__,
+         )
+ 
+-        self.assertQuerysetEqual(
++        self.assertQuerySetEqual(
+             Model2A.objects.db_manager("secondary").order_by("id"),
+             [Model2A, Model2C],
+             transform=lambda o: o.__class__,
+@@ -44,26 +44,26 @@ class MultipleDatabasesTests(TestCase):
+         ModelY.objects.db_manager("secondary").create(field_b="Y", field_y="Y")
+ 
+         objects = Base.objects.db_manager("secondary").filter(instance_of=Base)
+-        self.assertQuerysetEqual(
++        self.assertQuerySetEqual(
+             objects,
+             [Base, ModelX, ModelY],
+             transform=lambda o: o.__class__,
+             ordered=False,
+         )
+ 
+-        self.assertQuerysetEqual(
++        self.assertQuerySetEqual(
+             Base.objects.db_manager("secondary").filter(instance_of=ModelX),
+             [ModelX],
+             transform=lambda o: o.__class__,
+         )
+ 
+-        self.assertQuerysetEqual(
++        self.assertQuerySetEqual(
+             Base.objects.db_manager("secondary").filter(instance_of=ModelY),
+             [ModelY],
+             transform=lambda o: o.__class__,
+         )
+ 
+-        self.assertQuerysetEqual(
++        self.assertQuerySetEqual(
+             Base.objects.db_manager("secondary").filter(
+                 Q(instance_of=ModelX) | Q(instance_of=ModelY)
+             ),
+Index: django-polymorphic-3.1/polymorphic/tests/test_orm.py
+===================================================================
+--- django-polymorphic-3.1.orig/polymorphic/tests/test_orm.py
++++ django-polymorphic-3.1/polymorphic/tests/test_orm.py
+@@ -221,7 +221,7 @@ class PolymorphicTests(TransactionTestCa
+         self.create_model2abcd()
+ 
+         objects = Model2A.objects.all()
+-        self.assertQuerysetEqual(
++        self.assertQuerySetEqual(
+             objects,
+             [Model2A, Model2B, Model2C, Model2D],
+             transform=lambda o: o.__class__,
+@@ -333,7 +333,7 @@ class PolymorphicTests(TransactionTestCa
+         self.create_model2abcd()
+ 
+         objects = list(Model2A.objects.all().non_polymorphic())
+-        self.assertQuerysetEqual(
++        self.assertQuerySetEqual(
+             objects,
+             [Model2A, Model2A, Model2A, Model2A],
+             transform=lambda o: o.__class__,
+@@ -345,7 +345,7 @@ class PolymorphicTests(TransactionTestCa
+ 
+         # from queryset
+         objects = qs.get_real_instances()
+-        self.assertQuerysetEqual(
++        self.assertQuerySetEqual(
+             objects,
+             [Model2A, Model2B, Model2C, Model2D],
+             transform=lambda o: o.__class__,
+@@ -353,7 +353,7 @@ class PolymorphicTests(TransactionTestCa
+ 
+         # from a manual list
+         objects = Model2A.objects.get_real_instances(list(qs))
+-        self.assertQuerysetEqual(
++        self.assertQuerySetEqual(
+             objects,
+             [Model2A, Model2B, Model2C, Model2D],
+             transform=lambda o: o.__class__,
+@@ -361,7 +361,7 @@ class PolymorphicTests(TransactionTestCa
+ 
+         # from empty list
+         objects = Model2A.objects.get_real_instances([])
+-        self.assertQuerysetEqual(objects, [], transform=lambda o: o.__class__)
++        self.assertQuerySetEqual(objects, [], transform=lambda o: o.__class__)
+ 
+     def test_queryset_missing_derived(self):
+         a = Model2A.objects.create(field1="A1")
+@@ -398,7 +398,7 @@ class PolymorphicTests(TransactionTestCa
+ 
+         q = Model2A.translate_polymorphic_Q_object(Q(instance_of=Model2C))
+         objects = Model2A.objects.filter(q)
+-        self.assertQuerysetEqual(
++        self.assertQuerySetEqual(
+             objects, [Model2C, Model2D], transform=lambda o: o.__class__, ordered=False
+         )
+ 
+@@ -520,7 +520,7 @@ class PolymorphicTests(TransactionTestCa
+         # no pretty printing
+         ModelShow1_plain.objects.create(field1="abc")
+         ModelShow2_plain.objects.create(field1="abc", field2="def")
+-        self.assertQuerysetEqual(
++        self.assertQuerySetEqual(
+             ModelShow1_plain.objects.all(),
+             [ModelShow1_plain, ModelShow2_plain],
+             transform=lambda o: o.__class__,
+@@ -531,7 +531,7 @@ class PolymorphicTests(TransactionTestCa
+         a, b, c, d = self.create_model2abcd()
+ 
+         objects = Model2A.objects.extra(where=[f"id IN ({b.id}, {c.id})"])
+-        self.assertQuerysetEqual(
++        self.assertQuerySetEqual(
+             objects, [Model2B, Model2C], transform=lambda o: o.__class__, ordered=False
+         )
+ 
+@@ -540,7 +540,7 @@ class PolymorphicTests(TransactionTestCa
+             where=["field1 = 'A1' OR field1 = 'B1'"],
+             order_by=["-id"],
+         )
+-        self.assertQuerysetEqual(objects, [Model2B, Model2A], transform=lambda o: o.__class__)
++        self.assertQuerySetEqual(objects, [Model2B, Model2A], transform=lambda o: o.__class__)
+ 
+         ModelExtraA.objects.create(field1="A1")
+         ModelExtraB.objects.create(field1="B1", field2="B2")
+@@ -571,7 +571,7 @@ class PolymorphicTests(TransactionTestCa
+         self.create_model2abcd()
+ 
+         objects = Model2A.objects.instance_of(Model2B)
+-        self.assertQuerysetEqual(
++        self.assertQuerySetEqual(
+             objects,
+             [Model2B, Model2C, Model2D],
+             transform=lambda o: o.__class__,
+@@ -579,7 +579,7 @@ class PolymorphicTests(TransactionTestCa
+         )
+ 
+         objects = Model2A.objects.filter(instance_of=Model2B)
+-        self.assertQuerysetEqual(
++        self.assertQuerySetEqual(
+             objects,
+             [Model2B, Model2C, Model2D],
+             transform=lambda o: o.__class__,
+@@ -587,7 +587,7 @@ class PolymorphicTests(TransactionTestCa
+         )
+ 
+         objects = Model2A.objects.filter(Q(instance_of=Model2B))
+-        self.assertQuerysetEqual(
++        self.assertQuerySetEqual(
+             objects,
+             [Model2B, Model2C, Model2D],
+             transform=lambda o: o.__class__,
+@@ -595,7 +595,7 @@ class PolymorphicTests(TransactionTestCa
+         )
+ 
+         objects = Model2A.objects.not_instance_of(Model2B)
+-        self.assertQuerysetEqual(
++        self.assertQuerySetEqual(
+             objects, [Model2A], transform=lambda o: o.__class__, ordered=False
+         )
+ 
+@@ -603,7 +603,7 @@ class PolymorphicTests(TransactionTestCa
+         self.create_model2abcd()
+ 
+         objects = Model2A.objects.filter(Q(Model2B___field2="B2") | Q(Model2C___field3="C3"))
+-        self.assertQuerysetEqual(
++        self.assertQuerySetEqual(
+             objects, [Model2B, Model2C], transform=lambda o: o.__class__, ordered=False
+         )
+ 
+@@ -614,7 +614,7 @@ class PolymorphicTests(TransactionTestCa
+         objects = Model2A.objects.filter(
+             Q(tests__Model2B___field2="B2") | Q(tests__Model2C___field3="C3")
+         )
+-        self.assertQuerysetEqual(
++        self.assertQuerySetEqual(
+             objects, [Model2B, Model2C], transform=lambda o: o.__class__, ordered=False
+         )
+ 
+@@ -660,7 +660,7 @@ class PolymorphicTests(TransactionTestCa
+ 
+         oa.delete()
+         objects = Model2A.objects.all()
+-        self.assertQuerysetEqual(
++        self.assertQuerySetEqual(
+             objects,
+             [Model2A, Model2C, Model2D],
+             transform=lambda o: o.__class__,
+@@ -764,7 +764,7 @@ class PolymorphicTests(TransactionTestCa
+ 
+         # MyManager should reverse the sorting of field1
+         objects = ModelWithMyManager.objects.all()
+-        self.assertQuerysetEqual(
++        self.assertQuerySetEqual(
+             objects,
+             [(ModelWithMyManager, "D1b", "D4b"), (ModelWithMyManager, "D1a", "D4a")],
+             transform=lambda o: (o.__class__, o.field1, o.field4),
+@@ -780,7 +780,7 @@ class PolymorphicTests(TransactionTestCa
+ 
+         # MyManager should reverse the sorting of field1
+         objects = ModelWithMyManagerNoDefault.my_objects.all()
+-        self.assertQuerysetEqual(
++        self.assertQuerySetEqual(
+             objects,
+             [
+                 (ModelWithMyManagerNoDefault, "D1b", "D4b"),
+@@ -808,7 +808,7 @@ class PolymorphicTests(TransactionTestCa
+         ModelWithMyManager2.objects.create(field1="D1b", field4="D4b")
+ 
+         objects = ModelWithMyManager2.objects.all()
+-        self.assertQuerysetEqual(
++        self.assertQuerySetEqual(
+             objects,
+             [(ModelWithMyManager2, "D1a", "D4a"), (ModelWithMyManager2, "D1b", "D4b")],
+             transform=lambda o: (o.__class__, o.field1, o.field4),
+Index: django-polymorphic-3.1/polymorphic/tests/test_regression.py
+===================================================================
+--- django-polymorphic-3.1.orig/polymorphic/tests/test_regression.py
++++ django-polymorphic-3.1/polymorphic/tests/test_regression.py
+@@ -18,16 +18,16 @@ class RegressionTests(TestCase):
+         bottom.save()
+ 
+         expected_queryset = [top, middle, bottom]
+-        self.assertQuerysetEqual(
++        self.assertQuerySetEqual(
+             Top.objects.order_by("pk"), [repr(r) for r in expected_queryset], **transform_arg
+         )
+ 
+         expected_queryset = [middle, bottom]
+-        self.assertQuerysetEqual(
++        self.assertQuerySetEqual(
+             Middle.objects.order_by("pk"), [repr(r) for r in expected_queryset], **transform_arg
+         )
+ 
+         expected_queryset = [bottom]
+-        self.assertQuerysetEqual(
++        self.assertQuerySetEqual(
+             Bottom.objects.order_by("pk"), [repr(r) for r in expected_queryset], **transform_arg
+         )
+Index: django-polymorphic-3.1/polymorphic/tests/test_utils.py
+===================================================================
+--- django-polymorphic-3.1.orig/polymorphic/tests/test_utils.py
++++ django-polymorphic-3.1/polymorphic/tests/test_utils.py
+@@ -34,7 +34,7 @@ class UtilsTests(TransactionTestCase):
+ 
+         reset_polymorphic_ctype(Model2D, Model2B, Model2D, Model2A, Model2C)
+ 
+-        self.assertQuerysetEqual(
++        self.assertQuerySetEqual(
+             Model2A.objects.order_by("pk"),
+             [Model2A, Model2D, Model2B, Model2B],
+             transform=lambda o: o.__class__,

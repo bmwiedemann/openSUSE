@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 31 22:23:07 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.0~alpha3:
+  * Update osd view layout
+  * Updated osd outline dimensions to be according to spec
+  * Adjusted to 52px-tall valued OSD container, 4px progress bar
+
+-------------------------------------------------------------------
 Thu Aug  8 01:00:08 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - standardize packaging with also fixes for miscellaneous hardcoding

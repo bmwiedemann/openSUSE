@@ -1,0 +1,53 @@
+From 4a99ac0df29689664dcfd2e4f3cf079911c7cb24 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Olivier=20De=20Canni=C3=A8re?= <olivier.decanniere@qt.io>
+Date: Mon, 11 Nov 2024 13:23:39 +0100
+Subject: [PATCH] Engine: Mark created wrapped objects after
+ GCState::MarkWeakValues
+
+Pick-to: 6.8
+Change-Id: I2fd7c8829267a2e3de1ac374859a4d21d948dd8f
+---
+ src/qml/jsruntime/qv4qobjectwrapper_p.h | 20 ++++++++++++++++++--
+ 1 file changed, 18 insertions(+), 2 deletions(-)
+
+diff --git a/src/qml/jsruntime/qv4qobjectwrapper_p.h b/src/qml/jsruntime/qv4qobjectwrapper_p.h
+index 826930cd25..fbb673c650 100644
+--- a/src/qml/jsruntime/qv4qobjectwrapper_p.h
++++ b/src/qml/jsruntime/qv4qobjectwrapper_p.h
+@@ -233,7 +233,15 @@ inline ReturnedValue QObjectWrapper::wrap(ExecutionEngine *engine, QObject *obje
+         return ddata->jsWrapper.value();
+     }
+ 
+-    return wrap_slowPath(engine, object);
++    const auto rv = wrap_slowPath(engine, object);
++    const auto gcState = engine->memoryManager->gcStateMachine->state;
++    if (gcState != GCStateMachine::Invalid && gcState >= GCState::MarkWeakValues) {
++        auto *m = StaticValue::fromReturnedValue(rv).m();
++        QV4::WriteBarrier::markCustom(engine, [m](QV4::MarkStack *ms) {
++            m->mark(ms);
++        });
++    }
++    return rv;
+ }
+ 
+ // Unfortunately we still need a non-const QObject* here because QQmlData needs to register itself in QObjectPrivate.
+@@ -242,7 +250,15 @@ inline ReturnedValue QObjectWrapper::wrapConst(ExecutionEngine *engine, QObject
+     if (Q_UNLIKELY(QQmlData::wasDeleted(object)))
+         return QV4::Encode::null();
+ 
+-    return wrapConst_slowPath(engine, object);
++    const auto rv = wrapConst_slowPath(engine, object);
++    const auto gcState = engine->memoryManager->gcStateMachine->state;
++    if (gcState != GCStateMachine::Invalid && gcState >= GCState::MarkWeakValues) {
++        auto *m = StaticValue::fromReturnedValue(rv).m();
++        QV4::WriteBarrier::markCustom(engine, [m](QV4::MarkStack *ms) {
++            m->mark(ms);
++        });
++    }
++    return rv;
+ }
+ 
+ inline bool canConvert(const QQmlPropertyCache *fromMo, const QQmlPropertyCache *toMo)
+-- 
+2.47.0
+

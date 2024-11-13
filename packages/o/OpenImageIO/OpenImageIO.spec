@@ -31,11 +31,11 @@
 %bcond_with apidocs
 %bcond_with ptex
 
-%define images_ts 20240410T102113
-%define so_ver 2_5
-%define major_minor_ver 2.5
+%define images_ts 20241104T095817
+%define so_ver 3_0
+%define major_minor_ver 3.0
 Name:           OpenImageIO
-Version:        2.5.16.0
+Version:        3.0.0.3
 Release:        0
 Summary:        Library for Reading and Writing Images
 License:        BSD-3-Clause
@@ -46,65 +46,58 @@ Source0:        https://github.com/AcademySoftwareFoundation/OpenImageIO/archive
 Source1:        oiio-images-%{images_ts}.tar.xz
 # NOTE: Please don't uncomment a build requirement unless you have submitted the package to factory and it exists
 #BuildRequires:  Field3D-devel
-BuildRequires:  cmake >= 3.12
+BuildRequires:  cmake >= 3.18.2
 BuildRequires:  dcmtk-devel
 %if %{with apidocs}
 BuildRequires:  doxygen
 %endif
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  giflib-devel
+BuildRequires:  giflib-devel >= 5.0
 BuildRequires:  hdf5-devel
-BuildRequires:  libboost_atomic-devel
-BuildRequires:  libboost_filesystem-devel
-BuildRequires:  libboost_system-devel
-BuildRequires:  libboost_thread-devel
 BuildRequires:  libjpeg-devel
-BuildRequires:  libpng-devel
-BuildRequires:  openvdb-devel
+BuildRequires:  libpng-devel >= 1.6.0
+BuildRequires:  openvdb-devel >= 9.0
 BuildRequires:  pkgconfig
 BuildRequires:  pugixml-devel
 %if %{with python_bindings}
-BuildRequires:  python3-devel
-BuildRequires:  python3-pybind11-devel
+BuildRequires:  python3-devel >= 3.7
+BuildRequires:  python3-pybind11-devel >= 2.7
 # required for testsuite
 BuildRequires:  python3-numpy
 %endif
-BuildRequires:  robin-map-devel
+BuildRequires:  robin-map-devel >= 1.2.0
 BuildRequires:  tbb-devel
 BuildRequires:  txt2man
-BuildRequires:  pkgconfig(OpenColorIO)
-BuildRequires:  pkgconfig(OpenEXR) >= 2.4
+BuildRequires:  pkgconfig(OpenColorIO) >= 2.2
+BuildRequires:  pkgconfig(OpenEXR) >= 3.1
 %if %{with ptex}
 BuildRequires:  ptex-devel-static
 %endif
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(fmt)
-BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(freetype2) >= 2.10
 BuildRequires:  pkgconfig(libavdevice)
+BuildRequires:  pkgconfig(libjxl)
 %if %{with libheif}
-BuildRequires:  pkgconfig(libheif)
+BuildRequires:  pkgconfig(libheif) >= 1.11
 %endif
 BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(libxml-2.0)
 %if %{with imageviewer}
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5OpenGL)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6OpenGLWidgets)
+BuildRequires:  cmake(Qt6Widgets)
 %endif
-BuildRequires:  pkgconfig(libraw)
-BuildRequires:  pkgconfig(libtiff-4)
-BuildRequires:  pkgconfig(libwebp)
+BuildRequires:  pkgconfig(libraw) >= 0.20
+BuildRequires:  pkgconfig(libtiff-4) > 4.0
+BuildRequires:  pkgconfig(libwebp) >= 1.1
 BuildRequires:  pkgconfig(libwebpdecoder)
 BuildRequires:  pkgconfig(libwebpdemux)
 BuildRequires:  pkgconfig(libwebpmux)
 %if %{with opencv}
-%if 0%{?suse_version} > 1500
 BuildRequires:  pkgconfig(opencv4)
-%else
-BuildRequires:  pkgconfig(opencv)
-%endif
 %endif
 BuildRequires:  pkgconfig(zlib)
 Recommends:     google-droid-fonts
@@ -245,21 +238,21 @@ export PYTHONPATH=%{buildroot}%{python3_sitearch}
 export PYTHONDONTWRITEBYTECODE=1
 # Exclude known broken tests
 # timer tests won't do reliably in OBS
+%define disabled_tests 'cmake-consumer|docs-examples-cpp|oiiotool|oiiotool-copy|oiiotool-subimage|oiiotool-text|texture-udim|texture-udim2|texture-udim.batch|texture-udim2.batch|docs-examples-python|python-texturesys|python-imagebufalgo|heif|ptex-broken|oiiotool|oiiotool-copy|oiiotool-subimage|texture-udim|texture-udim2|texture-udim.batch|texture-udim2.batch|python-texturesys'
+%define texture_tests  'texture-icwrite'
 %ifarch x86_64
-%ctest '-E' 'ptex-broken|texture-icwrite|unit_timer|unit_simd|heif|cmake-consumer|targa|tiff-misc|docs-examples-cpp'
-%ctest '-R' 'texture-icwrite' || true
+%ctest '-E' %{disabled_tests}
+%ctest '-R' %{texture_tests} || true
 #%%ctest '-j1' '-R' 'unit_timer'
 %else
 # Many test cases are failing on PPC, ARM, ix64 ... ignore for now
-%ctest '-E' 'ptex-broken|texture-icwrite|unit_timer|unit_simd|heif|cmake-consumer|targa|tiff-misc|docs-examples-cpp' || true
-%ctest '-R' 'texture-icwrite' || true
+%ctest '-E' %{disabled_tests} || true
+%ctest '-R' %{texture_tests} || true
 #%%ctest '-j1' '-R' 'unit_timer'
 %endif
 
-%post -n libOpenImageIO%{so_ver} -p /sbin/ldconfig
-%postun -n libOpenImageIO%{so_ver} -p /sbin/ldconfig
-%post -n libOpenImageIO_Util%{so_ver} -p /sbin/ldconfig
-%postun -n libOpenImageIO_Util%{so_ver} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libOpenImageIO%{so_ver}
+%ldconfig_scriptlets -n libOpenImageIO_Util%{so_ver}
 
 %files
 %doc CHANGES.md CREDITS.md README.md THIRD-PARTY.md

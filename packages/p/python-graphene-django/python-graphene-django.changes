@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov 13 05:05:17 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.2.2:
+  * Make use of http.HTTPStatus for response status code checks
+  * Not require explicitly set ordering in DjangoConnectionField
+  * fix: same type list
+  * feat!: check Django model has a default ordering when used in a
+    Relay Connection
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Sun Jan 14 17:04:25 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.0:

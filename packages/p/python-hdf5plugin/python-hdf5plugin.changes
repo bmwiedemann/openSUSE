@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov 12 10:56:52 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.0.0
+  * This release requires Python >= 3.8 and h5py >= 3.0.0
+  * Removed deprecated constants: hdf5plugin.config, hdf5plugin.date, 
+    hdf5plugin.hexversion and hdf5plugin.strictversion 
+  * Fixed hdf5plugin.Bitshuffle to avoid raising ValueError when lz4=False
+  * Many filter and library updates
+- Drop merged patches:
+  * hdf5plugin-fix-gcc14.patch
+  * support-numpy-2.patch
+
+-------------------------------------------------------------------
 Mon Jul 22 02:00:25 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-numpy-2.patch:

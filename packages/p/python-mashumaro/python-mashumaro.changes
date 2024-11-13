@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 12 14:09:47 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to v3.14
+  * Added support for re.Pattern and typing.Pattern (#105)
+  * Fixed DeprecationWarning introduced in Python 3.13 (#249)
+  * Fixed potential duplications in the Union unpacker (#250)
+  * Small changes under the hood (#244, #247)
+
+-------------------------------------------------------------------
 Tue Sep 24 13:11:16 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package python-mashumaro, required by python-flux-local

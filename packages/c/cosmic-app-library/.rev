@@ -38,4 +38,17 @@
 </comment>
     <requestid>1203358</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8c86f7926e80850ab7dd05cc50123c32</srcmd5>
+    <version>1.0.0~alpha3</version>
+    <time>1731508050</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.0~alpha3:
+  * fix icon position
+  * refractor widet order for button event handling
+  * fix: autosize wrapper for group add/delete
+  * fix: autosize wrapper for menu
+  * updated translations</comment>
+    <requestid>1223134</requestid>
+  </revision>
 </revisionlist>

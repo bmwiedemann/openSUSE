@@ -1,7 +1,7 @@
 #
 # spec file for package bomns
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,14 +20,16 @@ Name:           bomns
 Version:        0.99.3
 Release:        0
 Summary:        Best old-school Deathmatch game ever (only for two players)
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Amusements/Games/Action/Arcade
-Url:            https://github.com/keithfancher/Bomns-for-Linux
+URL:            https://github.com/keithfancher/Bomns-for-Linux
 # Downloaded from https://github.com/keithfancher/Bomns-for-Linux
 # Packed as tar.bz2
 Source:         %{name}-%{version}+git-113be27.tar.bz2
 # PATCH-FIX-UPSTREAM - bomns-bomns.desktop.patch -- Add GenericName
 Patch0:         %{name}-%{name}.desktop.patch
+# PATCH-FIX-UPSTREAM - fix-missing-header.patch -- Add missing header for isspace
+Patch1:         fix-missing-header.patch
 %if 0%{?suse_version}
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -36,9 +38,9 @@ BuildRequires:  update-desktop-files
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gtk2-devel
+BuildRequires:  pkgconfig(SDL_mixer)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(sdl)
-BuildRequires:  pkgconfig(SDL_mixer)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -61,7 +63,7 @@ Other controls:
   Quit current game         : escape
 
 %prep
-%autosetup -p0 -n Bomns-for-Linux
+%autosetup -p1 -n Bomns-for-Linux
 
 %build
 %cmake

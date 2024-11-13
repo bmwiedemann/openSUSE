@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 12 18:42:42 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 1.19.2:
+  * fixes a race condition that may lead to some image tiles not being
+    included in the output image (#1379)
+  * fix a potential crash when querying overlay image information
+
+-------------------------------------------------------------------
 Wed Nov  6 17:54:42 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 1.19.2:

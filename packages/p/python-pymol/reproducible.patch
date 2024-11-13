@@ -1,0 +1,40 @@
+From 1aa8682968dbc5df74e35fab224221a3829260f6 Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Sun, 20 Oct 2024 20:02:01 +0200
+Subject: [PATCH] Allow to override build date with SOURCE_DATE_EPOCH
+
+to make builds reproducible.
+See https://reproducible-builds.org/ for why this is good
+and https://reproducible-builds.org/specs/source-date-epoch/
+for the definition of this variable.
+---
+ create_shadertext.py | 2 +-
+ setup.py             | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/create_shadertext.py b/create_shadertext.py
+index f6857087e..ea68dc22e 100644
+--- a/create_shadertext.py
++++ b/create_shadertext.py
+@@ -127,7 +127,7 @@ def create_buildinfo(outputdir, pymoldir='.'):
+         print('''
+ #define _PyMOL_BUILD_DATE %d
+ #define _PYMOL_BUILD_GIT_SHA "%s"
+-        ''' % (time.time(), sha), file=out)
++        ''' % (int(os.environ.get('SOURCE_DATE_EPOCH', time.time())), sha), file=out)
+ 
+ if __name__ == "__main__":
+     create_shadertext(*sys.argv[1:6])
+diff --git a/setup.py b/setup.py
+index 507dd32d0..4cec85057 100644
+--- a/setup.py
++++ b/setup.py
+@@ -168,7 +168,7 @@ def create_buildinfo(outputdir, pymoldir="."):
+ #define _PyMOL_BUILD_DATE %d
+ #define _PYMOL_BUILD_GIT_SHA "%s"
+         """
+-            % (time.time(), sha),
++            % (int(os.environ.get('SOURCE_DATE_EPOCH', time.time())), sha),
+             file=out,
+         )
+ 

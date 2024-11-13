@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 13 07:43:32 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- update to v2024.09.1:
+  * Add missing links for SOF v2.11.1 signed Intel binaries for ARL
+  * fixup the intel-signed/sof-arl.ri link
+  * Update v2.2.12 topology files for Intel platforms
+  * add new 2.11.2 topology2 production binaries
+
+-------------------------------------------------------------------
 Tue Oct  1 08:04:39 UTC 2024 - Takashi Iwai <tiwai@suse.com>
 
 - update to v2024.09:

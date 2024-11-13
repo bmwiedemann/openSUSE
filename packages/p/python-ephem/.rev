@@ -112,4 +112,12 @@
   * Add support for Python 3.12.</comment>
     <requestid>1130849</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7df4068bf4018ae149a45eaad2fadf9f</srcmd5>
+    <version>4.1.6</version>
+    <time>1731508112</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1223762</requestid>
+  </revision>
 </revisionlist>

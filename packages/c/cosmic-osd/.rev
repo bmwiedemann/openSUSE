@@ -28,4 +28,15 @@
 - enable leap (thanks to vyvir)</comment>
     <requestid>1192451</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>38d299fbafe23be6a00abc8fb8151481</srcmd5>
+    <version>1.0.0~alpha3</version>
+    <time>1731508076</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.0~alpha3:
+  * Update osd view layout
+  * Updated osd outline dimensions to be according to spec
+  * Adjusted to 52px-tall valued OSD container, 4px progress bar</comment>
+    <requestid>1223143</requestid>
+  </revision>
 </revisionlist>

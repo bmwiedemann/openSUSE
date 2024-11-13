@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov 13 01:09:47 UTC 2024 - Michael Chang <mchang@suse.com>
+
+- Revert the patches related to BLS support in grub2-mkconfig, as they are not
+  relevant to the current BLS integration and cause issues in older KIWI
+  versions, which actively force it to be enabled by default (bsc#1233196)
+  * 0002-Add-BLS-support-to-grub-mkconfig.patch
+  * 0003-Add-grub2-switch-to-blscfg.patch
+  * 0007-grub-switch-to-blscfg-adapt-to-openSUSE.patch
+  * 0008-blscfg-reading-bls-fragments-if-boot-present.patch
+  * 0009-10_linux-Some-refinement-for-BLS.patch
+  * 0001-10_linux-Do-not-enable-BLSCFG-on-s390-emu.patch
+
+-------------------------------------------------------------------
 Fri Nov  8 14:42:12 UTC 2024 - Michael Chang <mchang@suse.com>
 
 - Fix previous change as the variable has to be set earlier 

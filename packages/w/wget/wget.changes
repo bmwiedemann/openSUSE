@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov 12 09:22:09 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- GNU wget 1.25.0:
+  * New testcase for pathconf truncation
+  * Fix libproxy build with --disable-debug
+  * [BREAKING CHANGE] Support continious reading from stdin pipes
+  * Properly re-implement userinfo parsing (rfc2396)
+  * init: fix -Warray-bounds in setval_internal_tilde
+  * Fix build error on MingW with `G_GETFL` and `F_SETFL` flags
+  * Fix returning uninitialized variable
+  * Fix a static analysis false positive
+  * [BREAKING CHANGE] Fix CVE-2024-10524 (drop support for shorthand URLs)
+    (bsc#1233256)
+- Remove committed patches
+  * properly-re-implement-userinfo-parsing.patch
+- Renumber patches
+
+-------------------------------------------------------------------
 Wed Sep 11 17:22:46 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Update wget.keyring: use release-team keyring

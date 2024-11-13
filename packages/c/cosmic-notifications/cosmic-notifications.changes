@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 31 22:21:27 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.0~alpha3:
+  * Add a defaulted systemd feature to include and use tracing_journald
+  * Make failure to connect to journald a warning, not a hard error
+  * update dependencies
+- require rust >= 1.80
+
+-------------------------------------------------------------------
 Thu Aug  8 01:00:05 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - standardize packaging with also fixes for miscellaneous hardcoding

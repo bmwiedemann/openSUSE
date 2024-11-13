@@ -590,4 +590,13 @@ Could not find any LGPL-2.1 &quot;only&quot; licensed files in the pacakge (forw
     <comment></comment>
     <requestid>1208112</requestid>
   </revision>
+  <revision rev="63" vrev="3">
+    <srcmd5>8e614a8c6071bb7b8206026ac572cc86</srcmd5>
+    <version>3.7</version>
+    <time>1731508006</time>
+    <user>anag+factory</user>
+    <comment>- Not conflict but obsolete libsemanage1 (bsc#1229757)
+</comment>
+    <requestid>1223300</requestid>
+  </revision>
 </revisionlist>

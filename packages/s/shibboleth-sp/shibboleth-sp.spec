@@ -16,13 +16,13 @@
 #
 
 
-%define libvers 11
-%define libvers_lite 11
+%define libvers 12
+%define libvers_lite 12
 %define runuser shibd
 %define realname shibboleth
 %define pkgdocdir %{_docdir}/%{realname}
 Name:           shibboleth-sp
-Version:        3.4.1
+Version:        3.5.0
 Release:        0
 Summary:        System for attribute-based Web Single Sign On
 License:        Apache-2.0

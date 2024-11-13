@@ -37,4 +37,15 @@
 </comment>
     <requestid>1203364</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>de0b761029b2be0888b5de2c931f6938</srcmd5>
+    <version>1.0.0~alpha3</version>
+    <time>1731508070</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.0~alpha3:
+  * improv: increase truncate limit
+  * update dependencies
+- require rust &gt;= 1.80</comment>
+    <requestid>1223141</requestid>
+  </revision>
 </revisionlist>

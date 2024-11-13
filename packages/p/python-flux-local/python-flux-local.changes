@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Nov 12 08:47:09 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.6.2:
+  * What's Changed
+    - Strip attributes in List resources by @allenporter in #802
+  * Developer updates
+    - chore(deps): update dependency pytest-cov to v6 by @renovate
+      in #800
+
+-------------------------------------------------------------------
+Tue Nov 12 08:40:26 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 6.0.1:
+  * What's Changed
+    - Set unique placeholder values for each substitution by
+      @allenporter in #801
+  * Developer updates
+    - chore(deps): update dependency pdoc to v15 by @renovate in
+      #799
+
+-------------------------------------------------------------------
 Fri Oct 11 09:32:07 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 6.0.0:

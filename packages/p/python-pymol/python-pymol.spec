@@ -29,8 +29,7 @@ Group:          Productivity/Scientific/Chemistry
 URL:            https://pymol.org/
 # Source0:        https://github.com/schrodinger/%%{modname}/archive/v%%{version}/%%{modname}-%%{version}.tar.gz
 Source0:        %{modname}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE no-build-date.patch dhall@wustl.edu -- patch eliminates build date
-Patch0:         no-build-date.patch
+Patch0:         https://github.com/schrodinger/pymol-open-source/pull/404.patch#/reproducible.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pip}

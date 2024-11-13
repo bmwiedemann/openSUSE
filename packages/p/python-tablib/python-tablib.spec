@@ -1,7 +1,7 @@
 #
 # spec file for package python-tablib
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,35 +16,32 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if 0%{?rhel}
 # I get syntax errors in the brp-python-bytecompile step...
 %define _python_bytecompile_errors_terminate_build 0
 %endif
-%define         skip_python2 1
-%define         skip_python36 1
 Name:           python-tablib
-Version:        3.3.0
+Version:        3.7.0
 Release:        0
 Summary:        Format agnostic tabular data library (XLS, JSON, YAML, CSV)
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/jazzband/tablib
 Source:         https://files.pythonhosted.org/packages/source/t/tablib/tablib-%{version}.tar.gz
-BuildRequires:  %{python_module MarkupPy}
 BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module odfpy}
 BuildRequires:  %{python_module openpyxl >= 2.6.0}
 BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tabulate}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module xlrd}
 BuildRequires:  %{python_module xlwt}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-MarkupPy
 Requires:       python-PyYAML
 Requires:       python-odfpy
 Requires:       python-openpyxl >= 2.6.0
@@ -73,14 +70,11 @@ Output formats supported:
 find src -name "*.py" | xargs sed -i '1 { /^#!/ d }'
 sed -i '/addopts/ d' pytest.ini
 
-# Remove python_requires>=3.7 as it works fine on Python 3.6
-sed -i '/python_requires/d' setup.py
-
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -90,6 +84,7 @@ sed -i '/python_requires/d' setup.py
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS README.md HISTORY.md
-%{python_sitelib}/tablib*/
+%{python_sitelib}/tablib
+%{python_sitelib}/tablib-%{version}.dist-info
 
 %changelog

@@ -48,7 +48,7 @@
 %bcond_without use_lld
 %endif
 
-%ifarch aarch64 x86_64
+%ifarch aarch64 ppc64le s390x x86_64
 %bcond_without lldb
 %if %{suse_version} > 1600
 %bcond_without lldb_python
@@ -446,7 +446,7 @@ Requires(post): update-alternatives
 Requires(postun): update-alternatives
 # llvm does not work on s390
 ExcludeArch:    s390
-%if %{with ffi}
+%if %{with ffi} || %{with openmp}
 BuildRequires:  pkgconfig(libffi)
 %endif
 %if %{with valgrind}

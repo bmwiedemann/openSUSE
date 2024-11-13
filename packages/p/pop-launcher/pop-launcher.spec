@@ -17,14 +17,13 @@
 
 
 Name:           pop-launcher
-Version:        1.2.3+git20240806.c994240
+Version:        1.2.4
 Release:        0
 Summary:        Modular IPC-based desktop launcher service
 License:        MPL-2.0
 URL:            https://github.com/pop-os/launcher
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-Patch0:         fix-justfile.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  just
 BuildRequires:  pkgconfig
@@ -53,7 +52,7 @@ export RUSTFLAGS="-C codegen-units=1"
 just build-release
 
 %install
-just rootdir=%{buildroot} prefix=%{_prefix} install
+just rootdir=%{buildroot} install
 
 %check
 %{cargo_test}

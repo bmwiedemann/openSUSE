@@ -27,4 +27,19 @@
   https://github.com/pop-os/launcher/issues/230</comment>
     <requestid>1192457</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>124da9a900d9dcf8994a4609d87baf27</srcmd5>
+    <version>1.2.4</version>
+    <time>1731508085</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.2.4:
+  * fix(justfile): Fix uninstall of launcher_dir
+  * fix(plugin): load desktop entries from user dir
+  * feat: add a history attribute to plugin config as described
+  * feat: add a toolkit crate for both client and pop-launcher-bin
+  * feat: add 'plugin_trait' feature to pop-launcher-toolkit
+  * fix(desktop_entries): respect NoDisplay precedence
+- remove fix-justfile.patch</comment>
+    <requestid>1223148</requestid>
+  </revision>
 </revisionlist>

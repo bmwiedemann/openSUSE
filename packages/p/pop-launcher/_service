@@ -3,8 +3,8 @@
   <service name="tar_scm" mode="manual">
     <param name="url">https://github.com/pop-os/launcher.git</param>
     <param name="scm">git</param>
-    <param name="revision">master</param>
-    <param name="versionformat">1.2.3+git%cd.%h</param>
+    <param name="revision">refs/tags/1.2.4</param>
+    <param name="versionformat">@PARENT_TAG@</param>
     <param name="package-meta">yes</param>
     <param name="filename">pop-launcher</param>
   </service>

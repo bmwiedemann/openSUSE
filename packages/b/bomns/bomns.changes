@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 11 20:20:09 UTC 2024 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Add fix-missing-header.patch
+
+-------------------------------------------------------------------
 Thu Feb 22 10:26:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

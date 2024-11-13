@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Oct 31 22:15:02 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.0~alpha3:
+  * removed std err pipe
+  * run AppImage files from cosmic-files
+  * fix(extract): correctly append copy suffix for existing folder names
+  * fix(extract): preserve full folder names during extraction
+  * Improve move operations
+  * Disable menu items when not available
+  * Fix build when desktop feature is disabled
+  * Preserve selections through external changes
+  * Backspace to go back
+  * Scroll to the top after changing location
+  * Correct input argument for thumbnailer
+  * Generically support external thumbnailers
+  * Add support for evince thumbnailer
+  * updated translations
+
+-------------------------------------------------------------------
 Wed Sep 25 00:59:35 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.0.0~alpha2:

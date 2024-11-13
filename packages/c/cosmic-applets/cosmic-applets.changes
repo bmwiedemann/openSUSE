@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 31 22:09:04 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.0~alpha3:
+  * feat: enable button to open Bluetooth settings page from applet
+  * fix(audio-applet): Render input volume level instead of output.
+  * update translations
+
+-------------------------------------------------------------------
 Wed Sep 25 00:25:51 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.0.0~alpha2:

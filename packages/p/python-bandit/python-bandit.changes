@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Tue Nov 12 17:04:57 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add missing BRs and establish Requires according to pyproject.toml.
+
+-------------------------------------------------------------------
+Fri Nov  8 09:21:01 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.7.10
+  * Bump docker/build-push-action from 5.4.0 to 6.0.0
+  * Suggested small refactors in assignments
+  * Performance improvement in blacklist function
+  * Add test for usage of FTP_TLS
+  * New check: B113: TrojanSource - Bidirectional control characters
+  * Bump docker/build-push-action from 6.0.0 to 6.1.0
+  * feat(plugins): add support for httpx in B113
+  * Nit: remove unused variable
+  * Add recent releases to version choice in bug report
+  * Bump docker/build-push-action from 6.1.0 to 6.2.0
+  * Bump docker/build-push-action from 6.2.0 to 6.3.0
+  * Bump docker/setup-buildx-action from 3.3.0 to 3.4.0
+  * Bump docker/setup-buildx-action from 3.4.0 to 3.5.0
+  * Bump docker/login-action from 3.2.0 to 3.3.0
+  * Bump docker/build-push-action from 6.3.0 to 6.5.0
+  * Bump docker/setup-buildx-action from 3.5.0 to 3.6.1
+  * Bump docker/build-push-action from 6.5.0 to 6.6.1
+  * Bump sigstore/cosign-installer from 3.5.0 to 3.6.0
+  * Bump docker/build-push-action from 6.6.1 to 6.7.0
+  * Use consistent file naming of docs
+  * Pytorch Load / Save Plugin
+- from version 1.7.9
+  * Bump docker/build-push-action from 5.1.0 to 5.2.0
+  * [pre-commit.ci] pre-commit autoupdate
+  * New logo for Bandit based on raccoon
+  * Start testing on Python 3.13
+  * Bump docker/build-push-action from 5.2.0 to 5.3.0
+  * Bump docker/setup-buildx-action from 3.1.0 to 3.2.0
+  * Bump docker/login-action from 3.0.0 to 3.1.0
+  * [pre-commit.ci] pre-commit autoupdate
+  * [pre-commit.ci] pre-commit autoupdate
+  * Bump docker/setup-buildx-action from 3.2.0 to 3.3.0
+  * [pre-commit.ci] pre-commit autoupdate
+  * Bump sigstore/cosign-installer from 3.4.0 to 3.5.0
+  * [pre-commit.ci] pre-commit autoupdate
+  * Updates banner logo so it renders well in dark mode
+  * [pre-commit.ci] pre-commit autoupdate
+  * Add a sponsor section to README
+  * Ensure sarif extra is included as part of doc build
+  * Bump docker/login-action from 3.1.0 to 3.2.0
+  * [pre-commit.ci] pre-commit autoupdate
+  * [pre-commit.ci] pre-commit autoupdate
+  * Guard against empty call argument list
+  * Bump docker/build-push-action from 5.3.0 to 5.4.0
+  * Support configfile in .bandit file
+- from version 1.7.8
+  * Incorrect tag naming in readme
+  * Utilize PyPI's trusted publishing
+  * Bump sigstore/cosign-installer from 3.3.0 to 3.4.0
+  * Add 1.7.7 to versions of bug template
+  * Use datetime to avoid updating copyright year
+  * filter data is safe for tarfile extractall
+  * Bump docker/setup-buildx-action from 3.0.0 to 3.1.0
+  * [B605] Add functions that are vulnerable to shell injection
+  * Add a SARIF output formatter
+- from version 1.7.7
+  * Add the new release to bandit versions of bug template
+  * Bump actions/setup-python from 4 to 5
+  * Handle variant in how policy is passed in paramiko
+  * Flag str.replace as possible sql injection
+  * defusedxml: Show correct module name
+  * Add tidelift to the sponsor funding list
+  * Create a security policy
+  * Fix up issues found running Bandit on itself
+  * Add random.randbytes to blacklist calls
+  * Prepend ./ for files specified as CLI args
+  * Rework GitPython dependency to be an extra for bandit-baseline
+  * Bump actions/dependency-review-action from 3 to 4
+  * Introduce Official Bandit Images
+  * Remove markdown formatting in reStructuredText formatted README
+  * Downsize the org:repo name by
+- Refresh remove-non-test-deps.patch
+- Use Python 3.11 on SLE-15 by default
+- Switch build system from setuptools to pyproject.toml
+  * Add python-pip and python-wheel to BuildRequires
+  * Replace %python_build with %pyproject_wheel
+  * Replace %python_install with %pyproject_install
+
+-------------------------------------------------------------------
 Thu Dec 14 09:15:32 UTC 2023 - Petr Gajdos <pgajdos@suse.com>
 
 - update to 1.7.6:

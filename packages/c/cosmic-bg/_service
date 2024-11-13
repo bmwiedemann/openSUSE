@@ -3,9 +3,9 @@
   <service name="tar_scm" mode="manual">
     <param name="url">https://github.com/pop-os/cosmic-bg.git</param>
     <param name="scm">git</param>
-    <param name="revision">refs/tags/epoch-1.0.0-alpha.2</param>
+    <param name="revision">refs/tags/epoch-1.0.0-alpha.3</param>
     <param name="versionrewrite-pattern">epoch-(.*)</param>
-    <param name="versionformat">1.0.0~alpha2</param>
+    <param name="versionformat">1.0.0~alpha3</param>
     <param name="package-meta">yes</param>
     <param name="filename">cosmic-bg</param>
   </service>

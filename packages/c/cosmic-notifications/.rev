@@ -22,4 +22,16 @@
 - enable leap (thanks to vyvir)</comment>
     <requestid>1192450</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>805556882cf08ea56aa0c1596abe55b6</srcmd5>
+    <version>1.0.0~alpha3</version>
+    <time>1731508073</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.0~alpha3:
+  * Add a defaulted systemd feature to include and use tracing_journald
+  * Make failure to connect to journald a warning, not a hard error
+  * update dependencies
+- require rust &gt;= 1.80</comment>
+    <requestid>1223142</requestid>
+  </revision>
 </revisionlist>

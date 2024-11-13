@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 31 23:07:54 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.2.4:
+  * fix(justfile): Fix uninstall of launcher_dir
+  * fix(plugin): load desktop entries from user dir
+  * feat: add a history attribute to plugin config as described
+  * feat: add a toolkit crate for both client and pop-launcher-bin
+  * feat: add 'plugin_trait' feature to pop-launcher-toolkit
+  * fix(desktop_entries): respect NoDisplay precedence
+- remove fix-justfile.patch
+
+-------------------------------------------------------------------
 Thu Aug  8 01:01:10 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - standardize packaging with also fixes for miscellaneous hardcoding

@@ -17,7 +17,7 @@
 
 
 Name:           cosmic-panel
-Version:        1.0.0~alpha2
+Version:        1.0.0~alpha3
 Release:        0
 Summary:        A panel for COSMIC DE
 License:        GPL-3.0-only
@@ -29,6 +29,7 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  just
 BuildRequires:  pkgconfig
+BuildRequires:  rust >= 1.80
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(xkbcommon)
 

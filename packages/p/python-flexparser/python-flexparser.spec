@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-flexparser
-Version:        0.3.1
+Version:        0.4
 Release:        0
 Summary:        Parsing made fun ... using typing
 License:        BSD-3-Clause

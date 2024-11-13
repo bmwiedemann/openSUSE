@@ -26,4 +26,14 @@
 - enable leap (thanks to vyvir)</comment>
     <requestid>1192453</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3873e5be20d8f279f962b228a3b726e8</srcmd5>
+    <version>1.0.0~alpha3</version>
+    <time>1731508081</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.0~alpha3:
+  * lib: Don't enable_head on mirrored displays on test/apply
+  * cli: Ignore disabled/mirrored outputs in auto_correct_offsets</comment>
+    <requestid>1223145</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov 12 23:21:48 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Add 04df03bc.patch: strictly don't allow NUL bytes in headers
+  (boo#1233285 CVE-2024-52530 glgo#GNOME/libsoup#377).
+- Add libsoup-CVE-2024-52532.patch: websocket: Process the frame as
+  soon as we read data (boo#1233287 CVE-2024-52532).
+- Add 29b96fab.patch: websocket-test: disconnect error copy after
+  the test ends (glgo#GNOME/libsoup#391).
+- Add a35222dd.patch: be more robust against invalid input when
+  parsing params (boo#1233292 CVE-2024-52531
+  glgo#GNOME/libsoup!407).
+
+-------------------------------------------------------------------
 Thu Dec 14 12:42:08 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add ced3c5d8.patch: Fix build with libxml2-2.12.0 and clang-17.

@@ -1,8 +1,7 @@
-Index: bandit-1.7.5/test-requirements.txt
-===================================================================
---- bandit-1.7.5.orig/test-requirements.txt
-+++ bandit-1.7.5/test-requirements.txt
-@@ -1,12 +1,9 @@
+diff -Nru bandit-1.7.10.orig/test-requirements.txt bandit-1.7.10/test-requirements.txt
+--- bandit-1.7.10.orig/test-requirements.txt	2024-09-23 17:33:25.000000000 +0000
++++ bandit-1.7.10/test-requirements.txt	2024-11-08 09:03:23.050061631 +0000
+@@ -1,11 +1,8 @@
  # The order of packages is significant, because pip processes them in the order
  # of appearance. Changing the order has an impact on the overall integration
  # process, which may cause wedges in the gate later.
@@ -12,6 +11,5 @@ Index: bandit-1.7.5/test-requirements.txt
  stestr>=2.5.0 # Apache-2.0
  testscenarios>=0.5.0 # Apache-2.0/BSD
  testtools>=2.3.0 # MIT
- tomli>=1.1.0;python_version<"3.11" # MIT
  beautifulsoup4>=4.8.0 # MIT
 -pylint==1.9.4 # GPLv2

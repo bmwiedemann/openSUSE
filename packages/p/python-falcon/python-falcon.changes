@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 12 10:49:26 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 4.0.2
+  * Running Mypy on code that uses parts of falcon.testing would
+    previously lead to errors like:
+     "Name "falcon.testing.TestClient" is not defined"
+    This has been fixed by explicitly exporting the names that
+    are imported into the falcon.testing namespace. (#2387)
+  * The printable PDF version of our documentation was enabled
+    on Read the Docs. (#2365)
+
+-------------------------------------------------------------------
 Sat Nov  2 06:33:44 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.0.1:

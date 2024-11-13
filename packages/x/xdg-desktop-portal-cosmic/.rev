@@ -43,4 +43,15 @@
 </comment>
     <requestid>1203368</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>645a0b88cb89133e0cf29d6d30b90467</srcmd5>
+    <version>1.0.0~alpha3</version>
+    <time>1731508087</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.0~alpha3:
+  * update dependencies
+
+- require rust &gt;= 1.80</comment>
+    <requestid>1223149</requestid>
+  </revision>
 </revisionlist>

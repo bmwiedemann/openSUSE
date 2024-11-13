@@ -57,12 +57,19 @@ Patch3:         unbound-fix.patch
 Patch4:         harden_opendkim.service.patch
 # PATCH-FIX-UPSTREAM fix-RSA_sign-call.patch -- Fix RSA sign call on big endian systems ref: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1012506
 Patch5:         fix-RSA_sign-call.patch
+# PATCH-FIX-UPSTREAM rev-ares-deletion.patch.patch -- https://github.com/trusteddomainproject/OpenDKIM/pull/189
+Patch6:         rev-ares-deletion.patch
+# PATCH-FIX-UPSTREAM ares-missing-space.patch -- https://github.com/trusteddomainproject/OpenDKIM/pull/67
+Patch7:         ares-missing-space.patch
+# PATCH-FIX-UPSTREAM ftbfs-gcc-14-1075339.patch -- ref: https://bugs.debian.org/1075339
+Patch8:         ftbfs-gcc-14-1075339.patch
+# PATCH-FIX-UPSTREAM opendkim-2.10.3-incompatible-pointer-types.patch -- ref: https://bugs.gentoo.org/919366
+Patch9:         opendkim-2.10.3-incompatible-pointer-types.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  curl-devel
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  db-devel
-#BuildRequires:  erlang
 BuildRequires:  libbsd-devel
 BuildRequires:  libevent-devel
 BuildRequires:  libtool
@@ -223,6 +230,10 @@ This package holds the development files.
 %patch -P 3 -p0
 %patch -P 4 -p1
 %patch -P 5 -p1
+%patch -P 6 -p1
+%patch -P 7 -p1
+%patch -P 8 -p1
+%patch -P 9 -p1
 
 %build
 autoreconf -iv

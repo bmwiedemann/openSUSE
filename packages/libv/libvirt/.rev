@@ -4701,4 +4701,13 @@ bsc#1216656</comment>
   boo#1232726</comment>
     <requestid>1221257</requestid>
   </revision>
+  <revision rev="407" vrev="3">
+    <srcmd5>ad949a932d0b812c86c8b1d49dc391f6</srcmd5>
+    <version>10.9.0</version>
+    <time>1731508071</time>
+    <user>anag+factory</user>
+    <comment>Add missing bug and CVE references to the changelog. This will
+make it easier to directly use the Factory package in SUSE projects.</comment>
+    <requestid>1223830</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Tue Nov 12 10:57:02 UTC 2024 - pgajdos@suse.com
+
+- version update to 1.64.0
+  1.64.0
+  * Change clang-format options by @tatsuhiro-t in #2240
+  * build(deps): bump github.com/quic-go/quic-go from 0.46.0 to 0.47.0 by @dependabot in #2243
+  * build(deps): bump golang.org/x/net from 0.28.0 to 0.29.0 by @dependabot in #2244
+  * nghttp2_map: Port ngtcp2 changes by @tatsuhiro-t in #2245
+  * h2load: Fix UDP datagram send/recv metric by @tatsuhiro-t in #2248
+  * build(deps): bump golang.org/x/net from 0.29.0 to 0.30.0 by @dependabot in #2252
+  * fix race condition on h1 connection close by @TuxInvader in #2249
+  * Gha ubuntu 24.04 by @tatsuhiro-t in #2254
+  * GHA: Run tests for i686-w64-mingw32 host by @tatsuhiro-t in #2255
+  * cmake: Fix c-ares v1.34.0 version detection failure by @tatsuhiro-t in #2256
+  * fix: -Wextra-semi errors in nghttp2_helper.h by @codebytere in #2258
+  * clang-format macros that do not need semicolon at the end by @tatsuhiro-t in #2259
+  * Remove extra semicolons by @tatsuhiro-t in #2260
+  * Bump ngtcp2 and its dependencies by @tatsuhiro-t in #2261
+  * Do not allow '@' in :authority or host field values by @tatsuhiro-t in #2262
+  * h2load: GRO buffer size should be 64KiB by @tatsuhiro-t in #2263
+  * Bump libbpf to v1.4.6 by @tatsuhiro-t in #2264
+  * Update nghttp2_check_authority doc by @tatsuhiro-t in #2265
+  1.63.0
+  * Bump libbpf to v1.4.2 by @tatsuhiro-t in #2191
+  * build(deps): bump golang.org/x/net from 0.24.0 to 0.25.0 by @dependabot in #2193
+  * nghttpx: Fix batch UDP QUIC packet dropped on GRO read by @tatsuhiro-t in #2196
+  * CMakeLists.txt: allow to compile the C only lib without CXX compiler by @ThomasDevoogdt in #2200
+  * build(deps): bump github.com/quic-go/quic-go from 0.43.1 to 0.44.0 by @dependabot in #2197
+  * Fix compiler versions in readme by @ryandesign in #2203
+  * build(deps): bump golang.org/x/net from 0.25.0 to 0.26.0 by @dependabot in #2205
+  * build(deps): bump github.com/quic-go/quic-go from 0.44.0 to 0.45.0 by @dependabot in #2206
+  * Bump ngtcp2 and its dependencies by @tatsuhiro-t in #2207
+  * build(deps): bump docker/build-push-action from 5 to 6 by @dependabot in #2208
+  * Add wolfSSL support by @tatsuhiro-t in #2209
+  * Append --shallow-submodules to git clone --recursive by @tatsuhiro-t in #2210
+  * Always append options to extra options by @tatsuhiro-t in #2211
+  * build(deps): bump github.com/quic-go/quic-go from 0.45.0 to 0.45.1 by @dependabot in #2213
+  * Disable dependency tracking by @tatsuhiro-t in #2214
+  * Fix Dockerfile.android build failure by @tatsuhiro-t in #2215
+  * Fix UDP_GRO struct cmsghdr data type by @tatsuhiro-t in #2216
+  * GHA: Suppress warnings by @tatsuhiro-t in #2217
+  * Fix levenshtein initialization by @tatsuhiro-t in #2218
+  * build(deps): bump golang.org/x/net from 0.26.0 to 0.27.0 by @dependabot in #2220
+  * Undefine NGHTTP2_NO_SSIZE_T if BUILDING_NGHTTP2 is defined by @tatsuhiro-t in #2224
+  * Bump clang format by @tatsuhiro-t in #2226
+  * Suppress old compiler error by @tatsuhiro-t in #2228
+  * build(deps): bump github.com/quic-go/quic-go from 0.45.1 to 0.45.2 by @dependabot in #2229
+  * build(deps): bump golang.org/x/net from 0.27.0 to 0.28.0 by @dependabot in #2231
+  * build(deps): bump github.com/quic-go/quic-go from 0.45.2 to 0.46.0 by @dependabot in #2232
+  * Bump ngtcp2 and its dependencies by @tatsuhiro-t in #2236
+  * Bump libbpf to v1.4.5 by @tatsuhiro-t in #2237
+  * Update go by @tatsuhiro-t in #2238
+  * levenshtein: Use size_t by @tatsuhiro-t in #2239
+
+-------------------------------------------------------------------
 Mon Jun 17 18:02:25 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.62.1:
@@ -198,7 +253,7 @@ Mon Oct 16 10:24:50 UTC 2023 - pgajdos@suse.com
 
 - version update to 1.57.0 [bsc#1216174]
   1.57.0
-  * Fixes CVE-2023-44487
+  * Fixes CVE-2023-44487 (bsc#1216123)
   * Bump ngtcp2 by @tatsuhiro-t in #1944
   * Add dependabot to update actions by @tatsuhiro-t in #1946
   * Bump golang.org/x/net to v0.15.0 by @tatsuhiro-t in #1950
@@ -229,7 +284,7 @@ Mon Oct 16 10:24:50 UTC 2023 - pgajdos@suse.com
 Sat Jul 15 15:11:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.55.1:
-  * Fix memory leak
+  * Fix memory leak (bsc#1215713)
     This commit fixes memory leak that happens when
     PUSH_PROMISE or HEADERS frame cannot be sent, and
     nghttp2_on_stream_close_callback fails with a fatal error.
@@ -405,7 +460,7 @@ Wed Jan  6 12:22:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
 Wed Jun  3 11:45:25 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.41.0
-  * Fix CVE-2020-11080
+  * Fix CVE-2020-11080 (bsc#1181358)
   * lib: Implement max settings option (Patch from James M Snell)
   * lib: Earlier check for settings flood (Patch from James M Snell)
   * lib: Fix receiving stream data stall (GH-1444)
@@ -419,7 +474,8 @@ Wed Jun  3 11:45:25 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 -------------------------------------------------------------------
 Tue Jan 14 18:01:52 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
 
-- Update to version 1.40.0
+- Update to version 1.40.0 to fix CVE-2019-18802 in envoy-proxy and
+  cilium-proxy (bsc#1166481)
   * lib: Add nghttp2_check_authority as public API
   * lib: Fix the bug that stream is closed with wrong error code
   * lib: Faster huffman encoding and decoding

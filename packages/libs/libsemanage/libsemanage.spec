@@ -71,7 +71,7 @@ Security.)
 Summary:        Configuration for the SELinux policy management library
 # before 3.1 the config file wasn't separated, so no parallel install is possible
 Group:          System/Libraries
-Conflicts:      %{name}1 <= 3.1
+Obsoletes:      %{name}1 < 3.1
 
 %description conf
 Configuration file for libsemanage. Moved to a separate package to allow

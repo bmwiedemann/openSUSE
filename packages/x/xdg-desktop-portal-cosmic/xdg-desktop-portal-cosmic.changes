@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 31 23:06:45 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.0~alpha3:
+  * update dependencies
+
+-------------------------------------------------------------------
+Tue Oct  8 09:08:34 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- require rust >= 1.80
+
+-------------------------------------------------------------------
 Wed Sep 25 00:19:46 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.0.0~alpha2:

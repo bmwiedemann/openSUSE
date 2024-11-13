@@ -18,7 +18,7 @@
 
 %define         appname com.system76.CosmicWorkspaces
 Name:           cosmic-workspaces
-Version:        1.0.0~alpha2
+Version:        1.0.0~alpha3
 Release:        0
 Summary:        COSMIC workspaces
 License:        GPL-3.0-only
@@ -29,7 +29,6 @@ BuildRequires:  cargo-packaging
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  make
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(libinput)
@@ -48,7 +47,6 @@ BuildRequires:  pkgconfig(xkbcommon)
 
 %install
 %make_install DESTDIR=%{buildroot} prefix=%{_prefix}
-%suse_update_desktop_file %{appname}
 
 %check
 %{cargo_test}

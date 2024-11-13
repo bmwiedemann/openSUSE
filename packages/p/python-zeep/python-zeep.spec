@@ -1,7 +1,7 @@
 #
 # spec file for package python-zeep
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%define skip_python2 1
 Name:           python-zeep
-Version:        4.2.1
+Version:        4.3.1
 Release:        0
 Summary:        A Python SOAP client based on lxml/requests
 License:        MIT
@@ -83,7 +82,7 @@ export LANG=en_US.UTF-8
 %pytest tests
 
 %files %{python_files}
-%doc CHANGES README.rst
+%doc CHANGES README.md
 %license LICENSE
 %{python_sitelib}/zeep
 %{python_sitelib}/zeep-%{version}.dist-info

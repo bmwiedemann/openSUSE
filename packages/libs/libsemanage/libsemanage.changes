@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 21 11:19:44 UTC 2024 - Johannes Segitz <jsegitz@suse.com>
+
+- Not conflict but obsolete libsemanage1 (bsc#1229757)
+
+-------------------------------------------------------------------
 Mon Jul  1 07:57:45 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 3.7

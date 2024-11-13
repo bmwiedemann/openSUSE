@@ -46,7 +46,7 @@
 %bcond_without use_lld
 %endif
 
-%ifarch aarch64 x86_64
+%ifarch aarch64 ppc64le s390x x86_64
 %bcond_without lldb
 %bcond_without lldb_python
 %else
@@ -93,6 +93,12 @@
 # No graphics cards on System Z; turned off for ppc because of relocation overflows.
 %global llvm_targets "host;BPF;WebAssembly"
 %global llvm_experimental_targets ""
+%endif
+
+%ifnarch ppc64le
+%global openmp_cpu %{target_cpu}
+%else
+%global openmp_cpu ppc64
 %endif
 
 %define _plv %{!?product_libs_llvm_ver:%{_sonum}}%{?product_libs_llvm_ver}
@@ -428,7 +434,7 @@ Requires(post): update-alternatives
 Requires(postun): update-alternatives
 # llvm does not work on s390
 ExcludeArch:    s390
-%if %{with ffi}
+%if %{with ffi} || %{with openmp}
 BuildRequires:  pkgconfig(libffi)
 %endif
 %if %{with valgrind}
@@ -1694,8 +1700,8 @@ fi
 %{_libdir}/libomptarget-nvptx-*.bc
 %ifarch aarch64 ppc64le x86_64
 %{_libdir}/libomptarget.devicertl.a
-%{_libdir}/libomptarget.rtl.{%{target_cpu},amdgpu,cuda}.so
-%{_libdir}/libomptarget.rtl.{%{target_cpu},amdgpu,cuda}.so.%{_soname}
+%{_libdir}/libomptarget.rtl.{%{openmp_cpu},amdgpu,cuda}.so
+%{_libdir}/libomptarget.rtl.{%{openmp_cpu},amdgpu,cuda}.so.%{_soname}
 %endif
 %endif
 %{_libdir}/cmake/openmp

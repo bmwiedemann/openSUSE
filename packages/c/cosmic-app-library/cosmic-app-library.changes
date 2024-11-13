@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 31 22:06:12 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.0~alpha3:
+  * fix icon position
+  * refractor widet order for button event handling
+  * fix: autosize wrapper for group add/delete
+  * fix: autosize wrapper for menu
+  * updated translations
+
+-------------------------------------------------------------------
 Wed Sep 25 00:23:30 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.0.0~alpha2:

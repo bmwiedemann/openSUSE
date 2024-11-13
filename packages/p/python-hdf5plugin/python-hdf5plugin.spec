@@ -18,7 +18,7 @@
 
 %bcond_without systemlibs
 Name:           python-hdf5plugin
-Version:        4.4.0
+Version:        5.0.0
 Release:        0
 Summary:        Compression filters for h5py
 License:        BSD-2-Clause AND MIT AND BSD-3-Clause AND CC-BY-3.0 AND Zlib
@@ -26,13 +26,9 @@ URL:            https://github.com/silx-kit/hdf5plugin
 Source:         https://files.pythonhosted.org/packages/source/h/hdf5plugin/hdf5plugin-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE hdf5plugin-system-libs.patch code@bnavigator.de -- debundle as much as we can, disable SSE3 and AVX512
 Patch0:         hdf5plugin-system-libs.patch
-# PATCH-FIX-UPSTREAM Fix warnings related to const for blosc_filter.c
-Patch1:         hdf5plugin-fix-gcc14.patch
-# PATCH-FIX-UPSTREAM gh#silx-kit/hdf5plugin#346343e8b63e6a7842d82130a48a16815dfe07bd
-Patch2:         support-numpy-2.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module blosc2}
-BuildRequires:  %{python_module h5py}
+BuildRequires:  %{python_module h5py >= 3.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module py-cpuinfo >= 8.0.0}
 BuildRequires:  %{python_module setuptools}
@@ -51,7 +47,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(snappy)
 BuildRequires:  pkgconfig(zlib)
-Requires:       python-h5py
+Requires:       python-h5py >= 3.0.0
 # not for 32-bit
 ExcludeArch:    %ix86 %arm
 %python_subpackages
@@ -116,7 +112,7 @@ for l in \
   bitshuffle/LICENSE \
   hdf5-blosc/LICENSES/* \
   PyTables/LICENSE.txt \
-  fcidecomp/LICENSE.txt \
+  fcidecomp/LICENSE \
   SZ/copyright-and-BSD-license.txt \
   SZ3/copyright-and-BSD-license.txt \
   H5Z-ZFP/LICENSE zfp/LICENSE \

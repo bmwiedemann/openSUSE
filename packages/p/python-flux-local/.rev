@@ -7,4 +7,12 @@
     <comment>new package python-flux-local: set of tools and libraries for managing a local flux gitops repository</comment>
     <requestid>1217098</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b6ac5335c770bce4ce0555c067b6c3b6</srcmd5>
+    <version>6.0.2</version>
+    <time>1731508106</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1223738</requestid>
+  </revision>
 </revisionlist>

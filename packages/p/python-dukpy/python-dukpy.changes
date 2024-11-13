@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 12 11:15:49 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.5.0
+  * Upgrade duktape to 50af773
+  * Testing and binary distribution for Python 3.13
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Wed Jun 26 05:12:11 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.4.0

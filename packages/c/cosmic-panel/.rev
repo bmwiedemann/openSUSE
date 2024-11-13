@@ -43,4 +43,14 @@
 </comment>
     <requestid>1203365</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c42413b036f7221091570c68946510ed</srcmd5>
+    <version>1.0.0~alpha3</version>
+    <time>1731508078</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.0~alpha3:
+  * fix launchpad
+  * Make cosmic-protocols truly optional</comment>
+    <requestid>1223144</requestid>
+  </revision>
 </revisionlist>

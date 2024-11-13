@@ -15,18 +15,19 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-mashumaro
-Version:        3.13.1
+Version:        3.14
 Release:        0
 Summary:        Fast and well tested serialization library
 License:        Apache-2.0
 URL:            https://github.com/Fatal1ty/mashumaro
 Source:         https://github.com/Fatal1ty/mashumaro/archive/refs/tags/v%{version}.tar.gz#/mashumaro-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # Add (optional) runtime dependencies as BuildRequires,
 # so this only builds if all dependencies are met
 BuildRequires:  %{python_module typing_extensions >= 4.1.0}
@@ -37,10 +38,10 @@ BuildRequires:  %{python_module tomli >= 1.1.0 if %python-base < 3.11}
 BuildRequires:  %{python_module tomli-w >= 1.0}
 # SECTION test requirements
 BuildRequires:  %{python_module pytest >= 6.2.1}
-BuildRequires:  %{python_module pytest-mock >= 3.5.1}
-BuildRequires:  %{python_module pytest-xdist >= 3.5.0}
 BuildRequires:  %{python_module ciso8601 >= 2.1.3}
 BuildRequires:  %{python_module pendulum >= 2.1.2 if %python-base < 3.13}
+BuildRequires:  %{python_module pytest-mock >= 3.5.1}
+BuildRequires:  %{python_module pytest-xdist >= 3.5.0}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-typing_extensions >= 4.1.0

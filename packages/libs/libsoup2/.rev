@@ -71,4 +71,12 @@ Forwarded request #1101518 from iznogood
     <comment>- Add ced3c5d8.patch: Fix build with libxml2-2.12.0 and clang-17. (forwarded request 1133090 from dimstar)</comment>
     <requestid>1133102</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>6c269599bb2b9ebe3100c815fa8586d7</srcmd5>
+    <version>2.74.3</version>
+    <time>1731508043</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1223847</requestid>
+  </revision>
 </revisionlist>

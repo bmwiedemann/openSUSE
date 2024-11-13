@@ -1,5 +1,6 @@
---- bomns.desktop.orig	2015-06-08 21:33:05.000000000 +0200
-+++ bomns.desktop	2015-06-09 08:38:35.592787313 +0200
+diff -Nur Bomns-for-Linux/bomns.desktop new/bomns.desktop
+--- Bomns-for-Linux/bomns.desktop	2015-06-08 21:33:05.176501667 +0200
++++ new/bomns.desktop	2024-11-11 21:26:58.320117761 +0100
 @@ -1,6 +1,6 @@
  [Desktop Entry]
 -#Encoding=UTF-8

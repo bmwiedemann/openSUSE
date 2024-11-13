@@ -16,6 +16,9 @@
 #
 
 
+%define build_from_git 0
+%define do_autoreconf 0
+
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir /var/adm/fillup-templates
@@ -32,14 +35,18 @@
 %endif
 
 Name:           alsa
-Version:        1.2.12
+Version:        1.2.13
 Release:        0
 Summary:        Advanced Linux Sound Architecture
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://www.alsa-project.org
+%if 0%{?build_from_git}
+Source:         alsa-lib-%{version}.tar.bz2
+%else
 Source:         https://www.alsa-project.org/files/pub/lib/alsa-lib-%{version}.tar.bz2
 Source1:        https://www.alsa-project.org/files/pub/lib/alsa-lib-%{version}.tar.bz2.sig
+%endif
 Source2:        baselibs.conf
 Source8:        40-alsa.rules
 Source11:       alsasound
@@ -59,7 +66,9 @@ Source35:       alsa.keyring
 # rest suse fixes
 Patch101:       alsa-lib-ignore-non-accessible-ALSA_CONFIG_PATH.patch
 BuildRequires:  doxygen
+%if 0%{?do_autoreconf} || 0%{?build_from_git}
 BuildRequires:  libtool
+%endif
 BuildRequires:  pkgconfig
 Requires:       alsa-ucm-conf
 Requires:       alsa-utils
@@ -150,7 +159,9 @@ This package contains the library for ALSA topology support.
 %define _lto_cflags %{nil}
 export AUTOMAKE_JOBS="%{?_smp_mflags}"
 # build alsa-lib
+%if 0%{?do_autoreconf} || 0%{?build_from_git}
 autoreconf -fi
+%endif
 %configure \
   --disable-static \
   --enable-symbolic-functions \

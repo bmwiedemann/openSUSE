@@ -17,7 +17,8 @@ Thu Oct 17 12:05:15 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 Fri Sep 20 05:59:19 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.82.1:
-  + Fix a potential buffer overflow in `GSocks4aProxy`
+  + Fix a potential buffer overflow in `GSocks4aProxy` (boo#1233282
+    CVE-2024-52533).
   + Bugs fixed:
     - Test /unix-mounts/get-mount-entries fails unless libmount is
       enabled

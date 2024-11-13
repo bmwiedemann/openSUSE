@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 12 11:47:54 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.4
+  * Exceptions are not longer dataclasses.
+
+-------------------------------------------------------------------
 Mon Sep 23 15:43:42 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

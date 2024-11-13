@@ -2,7 +2,7 @@
   <service name="tar_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/OpenImageIO/oiio-images</param>
-    <param name="revision">master</param>
+    <param name="revision">dev-3.0</param>
     <param name="versionformat">%ci</param>
     <param name="exclude">.git</param>
   </service>

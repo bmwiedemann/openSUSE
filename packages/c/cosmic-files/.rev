@@ -54,4 +54,26 @@
 </comment>
     <requestid>1203362</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d3832f669a3b6f6aed959ff3f1daedaa</srcmd5>
+    <version>1.0.0~alpha3</version>
+    <time>1731508062</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.0~alpha3:
+  * removed std err pipe
+  * run AppImage files from cosmic-files
+  * fix(extract): correctly append copy suffix for existing folder names
+  * fix(extract): preserve full folder names during extraction
+  * Improve move operations
+  * Disable menu items when not available
+  * Fix build when desktop feature is disabled
+  * Preserve selections through external changes
+  * Backspace to go back
+  * Scroll to the top after changing location
+  * Correct input argument for thumbnailer
+  * Generically support external thumbnailers
+  * Add support for evince thumbnailer
+  * updated translations</comment>
+    <requestid>1223138</requestid>
+  </revision>
 </revisionlist>

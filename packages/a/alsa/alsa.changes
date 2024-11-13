@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov 12 14:03:45 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- Update to alsa-lib 1.2.13:
+  * static build fixes
+  * documentation update for control remap API
+  * PCM dmix fixes
+  * pcm: implement snd_pcm_hw_params_get_sync() and obsolete snd_pcm_info_get_sync()
+  * ump: Add a function to provide the packet word length of a UMP type
+  * seq: Add snd_seq_{get|set}_ump_is_midi1() API functions
+  * seq: Add API functions to set different tempo base values
+  * seq: Add API helper functions for creating UMP Endpoint and Blocks
+  * documentation fixes for UMP and sequencer API
+  * test: Add an example programs for UMP
+  For details, see:
+    https://www.alsa-project.org/wiki/Changes_v1.2.12_v1.2.13#alsa-lib
+- Conditionally take libtool
+
+-------------------------------------------------------------------
 Thu Jun 13 14:51:29 UTC 2024 - Takashi Iwai <tiwai@suse.com>
 
 - Update to alsa-lib 1.2.12:

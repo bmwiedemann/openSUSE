@@ -1,7 +1,7 @@
 #
 # spec file for package xml-security-c
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,16 @@
 #
 
 
-%define libvers 20
+%define libvers 30
 Name:           xml-security-c
-Version:        2.0.4
+Version:        3.0.0
 Release:        0
 Summary:        Apache XML security C++ library
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
-URL:            https://santuario.apache.org/
-Source0:        http://www.apache.org/dist/santuario/c-library/%{name}-%{version}.tar.bz2
-Source1:        http://www.apache.org/dist/santuario/c-library/%{name}-%{version}.tar.bz2.asc
+URL:            https://shibboleth.net
+Source0:        https://shibboleth.net/downloads/xml-security-c/3.0.0/%{name}-%{version}.tar.bz2
+Source1:        https://shibboleth.net/downloads/xml-security-c/3.0.0/%{name}-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
 BuildRequires:  gcc-c++
 BuildRequires:  libxalan-c-devel >= 1.11
@@ -101,17 +101,14 @@ rm -rf %{buildroot}/%{_libdir}/libxml-security-c.la
 
 %files -n xml-security-c-bin
 %license LICENSE.txt
-%doc CHANGELOG.txt
 %{_bindir}/*
 
 %files -n libxml-security-c%{libvers}
 %license LICENSE.txt
-%doc CHANGELOG.txt
 %{_libdir}/*.so.*
 
 %files -n libxml-security-c-devel
 %license LICENSE.txt
-%doc CHANGELOG.txt
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/xml-security-c.pc

@@ -1,7 +1,7 @@
 #
 # spec file for package python-dpkt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,16 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15allpythons}
 Name:           python-dpkt
-Version:        1.9.7.2
+Version:        1.9.8
 Release:        0
 Summary:        Packet creation and parsing module for Python
 License:        BSD-3-Clause
 Group:          Development/Libraries/Python
 URL:            https://github.com/kbandla/dpkt
 Source:         https://github.com/kbandla/dpkt/archive/v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM skip-BE-tests.patch gh#kbandla/dpkt#505 mcepl@suse.com
-# Adjust tests to work on BE machines, gh#kbandla/dpkt#615
-Patch0:         skip-BE-tests.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

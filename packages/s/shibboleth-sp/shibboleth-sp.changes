@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov  6 21:16:56 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 3.5.0:
+  * This is a small update to address a few bugs, update a number of libraries,
+    and implement a correction to the default signing algorithm used when
+    issuing signed requests via the SAML POST binding. This was inadvertently
+    still defaulting to RSA-SHA1 and should have been using RSA-SHA256.
+    There is the unlikely possibility of this causing interoperability issues
+    with badly out of date Identity Providers, so is another reason for
+    releasing it as a minor update.
+
+-------------------------------------------------------------------
 Fri Feb  9 10:58:52 UTC 2024 - Daniel Molkentin <daniel@molkentin.de>
 
 - create correct user name runuser, not realname 

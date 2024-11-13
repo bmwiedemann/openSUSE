@@ -137,4 +137,40 @@
     <comment></comment>
     <requestid>1042864</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9f1f4df93b71f8b125d4766f5248f4b9</srcmd5>
+    <version>3.7.0</version>
+    <time>1731508137</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.7.0:
+  * Add support for Python 3.13
+  * Drop support for Python 3.8
+  * feat: xls: add styling for date/time types
+  * feat: ods: add style to datetime, date and time values
+  * Avoid normalizing input twice in import_set/book
+  * Exclude bots from generated release notes
+  * Fix ods datetime and time export and import
+  * Add optional requirement specifier &quot;html&quot; back
+  * Replace MarkupPy by ElementTree for html conversion
+  * Support import_set for html input
+  * Clean up some IDE warnings
+  * feat: transpose support dataset with no headers
+  * Fix crash when loading databook from XLS
+  * fix(ods): None values are not displayed as string
+  * Avoid skipping entire tests when pandas is not installed
+  * Allow appending rows after a dynamic column was inserted
+  * Removed OrderedDict usage
+  * Do not mutate data in place when applying formatters
+  * Allow inserting columns for dataset with headers and no values
+  * Add support for Python 3.12
+  * Drop support for EOL Python 3.7
+  * Allow importing 'ragged' .xlsx files through dataset
+  * Release: replace deprecated repository_url with repository-url
+  * Tests: Generalized calling open() on path objects directly
+  * Fix linting issues raised by flake8
+  * Add tags to html output
+  * Escape formulae on export
+  * Move more setup stuff to pyproject.toml</comment>
+    <requestid>1223822</requestid>
+  </revision>
 </revisionlist>

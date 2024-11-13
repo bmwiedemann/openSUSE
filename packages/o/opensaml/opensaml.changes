@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  6 21:08:53 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 3.3.0:
+  * No changelog provided
+- Update library version to 13
+
+-------------------------------------------------------------------
 Mon Feb 26 12:48:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

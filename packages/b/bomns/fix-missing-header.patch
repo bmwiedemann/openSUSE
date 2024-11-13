@@ -1,0 +1,11 @@
+diff -Nur Bomns-for-Linux/src/launcher/main.c new/src/launcher/main.c
+--- Bomns-for-Linux/src/launcher/main.c	2015-06-08 21:33:05.207501509 +0200
++++ new/src/launcher/main.c	2024-11-11 21:19:28.397343058 +0100
+@@ -28,6 +28,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <ctype.h>
+ 
+ #include "main.h"
+ #include "interface.h"

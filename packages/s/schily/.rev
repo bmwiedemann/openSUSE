@@ -466,4 +466,12 @@ make glibc-2.34 happy</comment>
     <comment>- Add 81.patch to not store the build host kernel version (boo#1232434)</comment>
     <requestid>1219212</requestid>
   </revision>
+  <revision rev="51" vrev="51">
+    <srcmd5>8c982b4b120f3372afc635cc3c975039</srcmd5>
+    <version>unknown</version>
+    <time>1731508037</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1223776</requestid>
+  </revision>
 </revisionlist>

@@ -16,6 +16,8 @@
 #
 
 
+%bcond_without mono
+
 %if 0%{?suse_version} < 1550
 %global gcc_version 13
 %global gcc_suffix -13
@@ -33,8 +35,10 @@ Patch1:         Intall-target.patch
 Patch2:         %{name}-java8.patch
 BuildRequires:  at-spi2-atk-devel
 BuildRequires:  dbus-1-devel
+%if %{with mono}
 BuildRequires:  gtk-sharp2
 BuildRequires:  gtk-sharp3
+%endif
 BuildRequires:  gtk2-devel
 BuildRequires:  gtk3-devel
 BuildRequires:  gtk4-devel
@@ -72,7 +76,6 @@ ln -s %{_prefix}/lib/check-a11y/troubleshoot %{buildroot}%{_bindir}/a11y-trouble
 %{_prefix}/lib/check-a11y/show_gtk2
 %{_prefix}/lib/check-a11y/show_gtk3
 %{_prefix}/lib/check-a11y/show_gtk4
-%{_prefix}/lib/check-a11y/show_gtksharp2
 %{_prefix}/lib/check-a11y/show_java.class
 %{_prefix}/lib/check-a11y/show_pygtk2
 %{_prefix}/lib/check-a11y/show_pygtk3
@@ -82,7 +85,10 @@ ln -s %{_prefix}/lib/check-a11y/troubleshoot %{buildroot}%{_bindir}/a11y-trouble
 %{_prefix}/lib/check-a11y/show_pyqt5msg
 %{_prefix}/lib/check-a11y/show_qt5
 %{_prefix}/lib/check-a11y/show_qt6
-%{_prefix}/lib/check-a11y/show_winforms
 %{_prefix}/lib/check-a11y/troubleshoot
+%if %{with mono}
+%{_prefix}/lib/check-a11y/show_gtksharp2
+%{_prefix}/lib/check-a11y/show_winforms
+%endif
 
 %changelog

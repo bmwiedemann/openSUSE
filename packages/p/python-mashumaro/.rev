@@ -7,4 +7,12 @@
     <comment>new package python-mashumaro, required by python-flux-local</comment>
     <requestid>1204918</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ef1de50f90392cdaa0d906fc434897d5</srcmd5>
+    <version>3.14</version>
+    <time>1731508110</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1223761</requestid>
+  </revision>
 </revisionlist>

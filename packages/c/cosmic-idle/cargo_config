@@ -1,0 +1,31 @@
+[source.crates-io]
+replace-with = "vendored-sources"
+
+[source."git+https://github.com/jackpot51/rust-atomicwrites"]
+git = "https://github.com/jackpot51/rust-atomicwrites"
+replace-with = "vendored-sources"
+
+[source."git+https://github.com/pop-os/cosmic-settings-daemon"]
+git = "https://github.com/pop-os/cosmic-settings-daemon"
+replace-with = "vendored-sources"
+
+[source."git+https://github.com/pop-os/dbus-settings-bindings"]
+git = "https://github.com/pop-os/dbus-settings-bindings"
+replace-with = "vendored-sources"
+
+[source."git+https://github.com/pop-os/libcosmic"]
+git = "https://github.com/pop-os/libcosmic"
+replace-with = "vendored-sources"
+
+[source."git+https://github.com/pop-os/smithay-clipboard?tag=pop-dnd-5"]
+git = "https://github.com/pop-os/smithay-clipboard"
+tag = "pop-dnd-5"
+replace-with = "vendored-sources"
+
+[source."git+https://github.com/pop-os/window_clipboard.git?tag=pop-0.13"]
+git = "https://github.com/pop-os/window_clipboard.git"
+tag = "pop-0.13"
+replace-with = "vendored-sources"
+
+[source.vendored-sources]
+directory = "vendor"

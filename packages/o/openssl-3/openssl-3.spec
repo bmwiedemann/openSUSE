@@ -135,12 +135,15 @@ Patch57:        openssl-3-add-hw-acceleration-hmac.patch
 Patch58:        openssl-3-support-CPACF-sha3-shake-perf-improvement.patch
 Patch59:        openssl-3-fix-s390x_sha3_absorb.patch
 Patch60:        openssl-3-fix-s390x_shake_squeeze.patch
-# PATCH-FIX-UPSTREAM: support MSA 10 XTS #jsc-PED-10273
+# PATCH-FIX-UPSTREAM: support MSA 10 XTS jsc#PED-10273
 Patch61:        openssl-3-hw-acceleration-aes-xts-s390x.patch
-# PATCH-FIX-UPSTREAM: support MSA 11 HMAC #jsc-PED-10274
+# PATCH-FIX-UPSTREAM: support MSA 11 HMAC jsc#PED-10274
 Patch62:        openssl-3-disable-hmac-hw-acceleration-with-engine-digest.patch
 Patch63:        openssl-3-fix-hmac-digest-detection-s390x.patch
 Patch64:        openssl-3-fix-memleak-s390x_HMAC_CTX_copy.patch
+# PATCH-FIX-UPSTREAM: Fix failing tests on ppc64 jsc#PED-10280
+Patch65:        openssl-3-fix-sha3-squeeze-ppc64.patch
+Patch66:        openssl-3-fix-quic_multistream_test.patch
 
 BuildRequires:  pkgconfig
 %if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1550
@@ -242,8 +245,6 @@ export MACHINE=armv5el
 %ifarch armv6l armv6hl
 export MACHINE=armv6l
 %endif
-
-export HASHBANGPERL=/usr/bin/perl
 
 ./Configure \
     enable-camellia \

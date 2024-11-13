@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 12 12:31:19 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 4.1.6
+  * Remove broken link to Meeus's book
+  * Fix or remove several old broken links
+  * Update github actions and add Python 3.13 (#278)
+  * Build wheels for Python 2.7 again (#263)
+
+-------------------------------------------------------------------
 Mon Dec  4 21:05:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.1.5:

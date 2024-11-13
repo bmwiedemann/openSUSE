@@ -16,6 +16,7 @@
 #
 
 
+%define build_from_git 0
 %define do_autoreconf 0
 %define _udevdir %(pkg-config --variable=udevdir udev)
 %ifarch %ix86 x86_64 %arm aarch64 ppc64le riscv64
@@ -25,14 +26,18 @@
 %endif
 
 Name:           alsa-utils
-Version:        1.2.12
+Version:        1.2.13
 Release:        0
 Summary:        Advanced Linux Sound Architecture Utilities
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
 URL:            http://www.alsa-project.org/
+%if 0%{?build_from_git}
 Source:         https://www.alsa-project.org/files/pub/utils/alsa-utils-%{version}.tar.bz2
 Source1:        https://www.alsa-project.org/files/pub/utils/alsa-utils-%{version}.tar.bz2.sig
+%else
+Source:         alsa-utils-%{version}.tar.bz2
+%endif
 Source2:        01beep.conf
 Source3:        sound-extra.service
 Source5:        load-sound-modules.sh
@@ -58,7 +63,7 @@ BuildRequires:  python3-docutils
 BuildRequires:  xmlto
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
-%if 0%{?do_autoreconf}
+%if 0%{?do_autoreconf} || 0%{?build_from_git}
 BuildRequires:  automake
 BuildRequires:  libtool
 %endif
@@ -86,7 +91,7 @@ and test audio before and after PM state changes.
 %prep
 %setup -q
 %patch -P 100 -p1
-%if 0%{?do_autoreconf}
+%if 0%{?do_autoreconf} || 0%{?build_from_git}
 %patch -P 101 -p1
 # fix stupid automake's automatic action
 sed -i -e's/EXTRA_DIST= config.rpath /EXTRA_DIST=/' Makefile.am
@@ -94,6 +99,13 @@ sed -i -e's/EXTRA_DIST= config.rpath /EXTRA_DIST=/' Makefile.am
 
 %build
 export AUTOMAKE_JOBS="%{?_smp_mflags}"
+%if 0%{?build_from_git}
+export GITCOMPILE_NO_MAKE=1
+./gitcompile --with-curses=ncursesw \
+  --with-systemdsystemunitdir=%{_unitdir} \
+  --with-udev-rules-dir=%{_udevdir}/rules.d \
+  --with-alsactl-lock-dir=/run/lock
+%else
 %if 0%{?do_autoreconf}
 gettextize -c -f --no-changelog
 autoreconf -fi
@@ -102,6 +114,7 @@ autoreconf -fi
   --with-systemdsystemunitdir=%{_unitdir} \
   --with-udev-rules-dir=%{_udevdir}/rules.d \
   --with-alsactl-lock-dir=/run/lock
+%endif
 make %{?_smp_mflags}
 
 %install

@@ -19,7 +19,7 @@
 
 %bcond_with	regression_tests
 Name:           wget
-Version:        1.24.5
+Version:        1.25.0
 Release:        0
 Summary:        A Tool for Mirroring FTP and HTTP Servers
 License:        GPL-3.0-or-later
@@ -30,13 +30,12 @@ Source1:        https://ftp.gnu.org/gnu/wget/%{name}-%{version}.tar.gz.sig
 # From https://savannah.gnu.org/project/release-gpgkeys.php?group=wget&download=1
 Source2:        %{name}.keyring
 Patch0:         wgetrc.patch
-Patch6:         wget-1.14-no-ssl-comp.patch
+Patch1:         wget-1.14-no-ssl-comp.patch
 # PATCH-FIX-OPENSUSE fix pod syntax for perl 5.18 coolo@suse.de
-Patch7:         wget-fix-pod-syntax.diff
-Patch8:         wget-errno-clobber.patch
-Patch9:         remove-env-from-shebang.patch
-Patch10:        wget-do-not-propagate-credentials.patch
-Patch11:        properly-re-implement-userinfo-parsing.patch
+Patch2:         wget-fix-pod-syntax.diff
+Patch3:         wget-errno-clobber.patch
+Patch4:         remove-env-from-shebang.patch
+Patch5:         wget-do-not-propagate-credentials.patch
 BuildRequires:  gpgme-devel >= 0.4.2
 BuildRequires:  libcares-devel
 BuildRequires:  libidn2-devel

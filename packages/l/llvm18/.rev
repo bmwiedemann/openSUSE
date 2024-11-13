@@ -183,4 +183,15 @@
 </comment>
     <requestid>1199059</requestid>
   </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>d71f6c168f0e0cce961c85dffe31ff61</srcmd5>
+    <version>18.1.8</version>
+    <time>1731508011</time>
+    <user>anag+factory</user>
+    <comment>- Require libffi when we build openmp for offloading.
+- Update llvm18.keyring from upstream.
+- Enable lldb on s390x and ppc64le (bsc#1232906).
+</comment>
+    <requestid>1223459</requestid>
+  </revision>
 </revisionlist>

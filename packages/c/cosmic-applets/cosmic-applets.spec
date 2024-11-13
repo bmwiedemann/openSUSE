@@ -36,7 +36,7 @@
 %define         workspacesbutton PanelWorkspacesButton
 %define         launcherbutton PanelLauncherButton
 Name:           cosmic-applets
-Version:        1.0.0~alpha2
+Version:        1.0.0~alpha3
 Release:        0
 Summary:        Applets for COSMIC DE
 License:        GPL-3.0-only
@@ -49,7 +49,7 @@ BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  just
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
+BuildRequires:  rust >= 1.80
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(gbm)
@@ -199,22 +199,6 @@ just build-release
 %install
 just rootdir=%{buildroot} prefix=%{_prefix} install
 %fdupes %{buildroot}
-%suse_update_desktop_file %{appname}%{applist}
-%suse_update_desktop_file %{appname}%{audio}
-%suse_update_desktop_file %{appname}%{battery}
-%suse_update_desktop_file %{appname}%{bluetooth}
-%suse_update_desktop_file %{appname}%{inputsources}
-%suse_update_desktop_file %{appname}%{minimize}
-%suse_update_desktop_file %{appname}%{network}
-%suse_update_desktop_file %{appname}%{notifications}
-%suse_update_desktop_file %{appname}%{power}
-%suse_update_desktop_file %{appname}%{status}
-%suse_update_desktop_file %{appname}%{tiling}
-%suse_update_desktop_file %{appname}%{time}
-%suse_update_desktop_file %{appname}%{workspaces}
-%suse_update_desktop_file %{appname}%{appbutton}
-%suse_update_desktop_file %{appname}%{workspacesbutton}
-%suse_update_desktop_file %{appname}%{launcherbutton}
 
 %check
 %{cargo_test}
@@ -223,6 +207,7 @@ just rootdir=%{buildroot} prefix=%{_prefix} install
 %license LICENSE
 %{_bindir}/%{name}
 %{_datadir}/cosmic
+%{_datadir}/metainfo/%{appname}Applets.metainfo.xml
 
 %files -n %{pkgname}-app-list
 %{_bindir}/cosmic-app-list

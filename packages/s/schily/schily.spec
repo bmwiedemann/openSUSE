@@ -712,32 +712,19 @@ if test "$1" = 0; then
 	"%_sbindir/update-alternatives" --remove rmt "%_bindir/srmt"
 fi
 
-%post   -n libcdrdeflt1_0 -p /sbin/ldconfig
-%postun -n libcdrdeflt1_0 -p /sbin/ldconfig
-%post   -n libdeflt1_0 -p /sbin/ldconfig
-%postun -n libdeflt1_0 -p /sbin/ldconfig
-%post   -n libedc_ecc1_0 -p /sbin/ldconfig
-%postun -n libedc_ecc1_0 -p /sbin/ldconfig
-%post   -n libedc_ecc_dec1_0 -p /sbin/ldconfig
-%postun -n libedc_ecc_dec1_0 -p /sbin/ldconfig
-%post   -n libfile1_0 -p /sbin/ldconfig
-%postun -n libfile1_0 -p /sbin/ldconfig
-%post   -n libfind4_0 -p /sbin/ldconfig
-%postun -n libfind4_0 -p /sbin/ldconfig
-%post   -n libparanoia1_0 -p /sbin/ldconfig
-%postun -n libparanoia1_0 -p /sbin/ldconfig
-%post   -n librmt1_0 -p /sbin/ldconfig
-%postun -n librmt1_0 -p /sbin/ldconfig
-%post   -n librscg1_0 -p /sbin/ldconfig
-%postun -n librscg1_0 -p /sbin/ldconfig
-%post   -n libscg1_0 -p /sbin/ldconfig
-%postun -n libscg1_0 -p /sbin/ldconfig
-%post   -n libscgcmd1_0 -p /sbin/ldconfig
-%postun -n libscgcmd1_0 -p /sbin/ldconfig
-%post   -n libschily2_0 -p /sbin/ldconfig
-%postun -n libschily2_0 -p /sbin/ldconfig
-%post   -n libxtermcap1_0 -p /sbin/ldconfig
-%postun -n libxtermcap1_0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libcdrdeflt1_0
+%ldconfig_scriptlets -n libdeflt1_0
+%ldconfig_scriptlets -n libedc_ecc1_0
+%ldconfig_scriptlets -n libedc_ecc_dec1_0
+%ldconfig_scriptlets -n libfile1_0
+%ldconfig_scriptlets -n libfind4_0
+%ldconfig_scriptlets -n libparanoia1_0
+%ldconfig_scriptlets -n librmt1_0
+%ldconfig_scriptlets -n librscg1_0
+%ldconfig_scriptlets -n libscg1_0
+%ldconfig_scriptlets -n libscgcmd1_0
+%ldconfig_scriptlets -n libschily2_0
+%ldconfig_scriptlets -n libxtermcap1_0
 
 %verifyscript -n cdrecord
 %verify_permissions -e %_bindir/cdrecord

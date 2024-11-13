@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-xapian-haystack
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2020 Stasiek Michalski <hellcp@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,6 @@
 
 %{?sle15_python_module_pythons}
 %global modname xapian-haystack
-%global modname2 xapian_haystack
 Name:           python-%{modname}
 Version:        3.1.0
 Release:        0
@@ -32,6 +31,7 @@ Patch:          python-xapian-haystack-term-too-long.patch
 BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module django-haystack >= 3.0}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 2.2
@@ -56,7 +56,7 @@ Xapian-haystack is a backend of Django-Haystack for the Xapian search engine.
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/xapian_backend.py
-%pycache_only %{python_sitelib}/__pycache__
-%{python_sitelib}/%{modname2}-%{version}*-info
+%pycache_only %{python_sitelib}/__pycache__/xapian_backend*.py*
+%{python_sitelib}/xapian_haystack-%{version}.dist-info
 
 %changelog

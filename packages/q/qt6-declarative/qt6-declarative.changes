@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 12 15:40:15 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Replace 0001-WIP-speculative-gc-fix.patch with newer ones,
+  should unbreak spectacle and some others (kde#496139):
+  * 0001-Log-state-transitions-for-the-GC.patch
+  * 0001-Engine-Mark-created-wrapped-objects-after-GCState-Ma.patch
+
+-------------------------------------------------------------------
 Wed Nov  6 19:20:07 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Add patch (pending upstream) to fix properties getting GC'd:

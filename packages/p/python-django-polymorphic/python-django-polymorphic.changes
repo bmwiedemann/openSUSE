@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov 13 02:49:56 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update URL.
+- Switch to pyproject and autosetup macros.
+- No more greedy globs in %files.
+- Add patch support-new-django.patch:
+  * Support new Django assertion method name.
+- Add patch skip-two-lookup-tests.patch:
+  * Skip two tests that are currently broken
+
+-------------------------------------------------------------------
 Fri Jan  7 03:47:57 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Skip Tumbleweed Python 3.6 incompatible with Django 4

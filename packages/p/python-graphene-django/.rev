@@ -100,4 +100,18 @@
   * Add JSONField back to graphene_django.compat module for</comment>
     <requestid>1138685</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2ff443cfd501069b31bbd242b9e4262b</srcmd5>
+    <version>3.2.2</version>
+    <time>1731508147</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.2.2:
+  * Make use of http.HTTPStatus for response status code checks
+  * Not require explicitly set ordering in DjangoConnectionField
+  * fix: same type list
+  * feat!: check Django model has a default ordering when used in a
+    Relay Connection
+- Switch to pyproject macros.</comment>
+    <requestid>1223831</requestid>
+  </revision>
 </revisionlist>

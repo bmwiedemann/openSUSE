@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>1156083</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a9e17a72bf537e3f622fd87d14ed530f</srcmd5>
+    <version>0.99.3</version>
+    <time>1731508141</time>
+    <user>anag+factory</user>
+    <comment>- Add fix-missing-header.patch
+</comment>
+    <requestid>1223825</requestid>
+  </revision>
 </revisionlist>

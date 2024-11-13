@@ -154,4 +154,16 @@
 </comment>
     <requestid>1198145</requestid>
   </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>c733f1d3e21bac7562a3443cfea632b0</srcmd5>
+    <version>17.0.6</version>
+    <time>1731508016</time>
+    <user>anag+factory</user>
+    <comment>- Require libffi when we build openmp for offloading.
+- Update llvm17.keyring from upstream.
+- Correct target name for libomptarget in file list (backport from llvm18)
+- Enable lldb on s390x and ppc64le (bsc#1232906).
+</comment>
+    <requestid>1223461</requestid>
+  </revision>
 </revisionlist>

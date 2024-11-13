@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-flux-local
-Version:        6.0.0
+Version:        6.0.2
 Release:        0
 Summary:        Set of tools for managing a flux gitops repository
 License:        Apache-2.0
@@ -30,7 +30,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module aiofiles >= 22.1.0}
 BuildRequires:  %{python_module GitPython >= 3.1.30}
-BuildRequires:  %{python_module mashumaro >= 3.12}
+BuildRequires:  %{python_module mashumaro >= 3.14}
 BuildRequires:  %{python_module nest-asyncio >= 1.5.6}
 BuildRequires:  %{python_module PyYAML >= 6.0}
 BuildRequires:  %{python_module python-slugify >= 8.0.0}
@@ -41,7 +41,7 @@ BuildRequires:  %{python_module pytest-asyncio >= 0.20.3}
 BuildRequires:  fdupes
 Requires:       python-aiofiles >= 22.1.0
 Requires:       python-GitPython >= 3.1.30
-Requires:       python-mashumaro >= 3.12
+Requires:       python-mashumaro >= 3.14
 Requires:       python-nest-asyncio >= 1.5.6
 Requires:       python-python-slugify >= 8.0.0
 Requires:       python-PyYAML >= 6.0
