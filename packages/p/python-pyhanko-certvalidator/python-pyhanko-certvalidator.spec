@@ -17,12 +17,13 @@
 
 
 Name:           python-pyhanko-certvalidator
-Version:        0.26.3
+Version:        0.26.4
 Release:        0
 Summary:        Validates X509 certificates and paths
 License:        MIT
 URL:            https://github.com/MatthiasValvekens/certvalidator
 Source:         https://github.com/MatthiasValvekens/certvalidator/archive/refs/tags/v%{version}.tar.gz#/pyhanko-certvalidator-%{version}.tar.gz
+Patch0:         https://github.com/MatthiasValvekens/certvalidator/commit/5dd5ff95b7b104667eb4f39367eb4f4c00fcedd5.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 67.4}
 BuildRequires:  %{python_module wheel}
