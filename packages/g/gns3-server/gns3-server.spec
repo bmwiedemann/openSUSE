@@ -23,7 +23,7 @@
 %define gns3_group _gns3
 %define gns3_home %{_sharedstatedir}/gns3
 Name:           gns3-server
-Version:        2.2.44.1
+Version:        2.2.51
 Release:        0
 Summary:        A graphical network simulator
 License:        GPL-3.0-or-later
@@ -110,7 +110,6 @@ rm %{buildroot}/%{python3_sitelib}/gns3server/static/.gitkeep
 rm %{buildroot}/%{python3_sitelib}/gns3server/symbols/.gitkeep
 find %{buildroot}/%{python3_sitelib}/gns3server -type f -name "*.py" -exec grep -Hl python3 {} + | xargs chmod +x
 find %{buildroot}/%{python3_sitelib}/gns3server -name "*.svg" -exec chmod -x {} +
-rm -rf %{buildroot}/%{python3_sitelib}/tests
 rm %{buildroot}/%{python3_sitelib}/gns3server/compute/docker/resources/bin/busybox
 install -D -m0644 %{SOURCE2} %{buildroot}%{_unitdir}/%{name}.service
 install -d %{buildroot}%{_sbindir}
