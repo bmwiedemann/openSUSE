@@ -1,0 +1,6 @@
+<package name="python-okta" project="openSUSE:Factory">
+  <title>Python SDK for the Okta Management API</title>
+  <description>Python SDK for the Okta Management API.</description>
+  <devel project="devel:languages:python" package="python-okta"/>
+  <url>https://github.com/okta/okta-sdk-python</url>
+</package>
