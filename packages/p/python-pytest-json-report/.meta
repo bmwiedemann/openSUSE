@@ -1,7 +1,0 @@
-<package name="python-pytest-json-report" project="openSUSE:Factory">
-  <title>Pytest json report</title>
-  <description>This pytest plugin creates test reports as JSON.
-
-It can report a summary, test details, captured output, logs, exception tracebacks and more. Additionally, you can use the available fixtures and hooks to add metadata and customize the report as you like.</description>
-  <devel project="devel:languages:python:pytest" package="python-pytest-json-report"/>
-</package>
