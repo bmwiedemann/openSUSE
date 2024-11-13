@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Wed Nov 13 09:48:03 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.100.0:
+  * like and not-like operators.
+  * Division, floor division, and mod:
+    - Division.
+    - Floor division.
+    - mod.
+  * plugin list improvements.
+  * Additions:
+    - `history import`.
+    - `catch` error record.
+    - `url split-query`.
+    - `help commands` and `scope commands`.
+    - `ps -l`.
+    - `url join` and `url build-query`.
+    - `touch --no-deref`.
+    - `help commands` and `scope commands`.
+    - `length`.
+    - `stor`.
+    - `to text --no-newline`.
+    - `open --raw`.
+    - `help`.
+    - `$env.config.table.footer_inheritance`.
+    - Function key keybindings.
+  * Breaking changes:
+    - Lone, leading pipe in closures.
+    - `url parse`.
+    - `http --max-time`.
+    - Empty rest matches.
+    - Case insensitive sorting.
+    - `ansi clear_entire_screen_plus_buffer`.
+  * Deprecations:
+    - AST evaluation engine.
+  * Removals:
+    - `std/dirs`.
+  * Bug fixes and other changes:
+    - `return`, `break`, and `continue`.
+    - External command bareword arguments.
+    - `to text`.
+    - `to nuon`.
+    - `use`.
+    - `transpose`.
+    - Constants with type signatures.
+    - Short flag type checking.
+    - Cell path pretty printing.
+    - `in $range`.
+    - `into datetime`.
+    - `ansi -l`.
+    - `join`.
+    - Table literals as arguments.
+    - `clear`.
+    - Prefer `$env.VISUAL` over `$env.EDITOR`.
+    - Fix handling of exported external aliases.
+    - Panic fixes.
+  * For a full list of changes with detailed descriptions, see:
+    - https://www.nushell.sh/blog/2024-11-12-nushell_0_100_0.html.
+
+-------------------------------------------------------------------
 Sun Oct 20 22:34:00 UTC 2024 - Andrei Dziahel <develop7@develop7.info>
 
 - Update to version 0.99.1
