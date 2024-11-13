@@ -1,14 +1,22 @@
 7-zip is not actually used during build
 
---- vendor/node_modules/builder-util/out/7za.js.orig	2024-05-15 21:11:29.747999000 +0200
-+++ vendor/node_modules/builder-util/out/7za.js	2024-05-15 23:22:09.712045854 +0200
-@@ -4,8 +4,7 @@ exports.getPath7x = exports.getPath7za =
- const _7zip_bin_1 = require("7zip-bin");
+--- vendor/node_modules/builder-util/out/7za.js.orig	2024-11-12 14:03:34.173010978 +0100
++++ vendor/node_modules/builder-util/out/7za.js	2024-11-12 14:05:06.720292070 +0100
+@@ -6,13 +6,15 @@
  const fs_extra_1 = require("fs-extra");
+ const fs = require("fs");
  async function getPath7za() {
--    await (0, fs_extra_1.chmod)(_7zip_bin_1.path7za, 0o755);
--    return _7zip_bin_1.path7za;
-+    return '/bin/false'
++    return '/bin/false';
+     if (fs.existsSync(_7zip_bin_1.path7za)) {
+         await (0, fs_extra_1.chmod)(_7zip_bin_1.path7za, 0o755);
+     }
+     return _7zip_bin_1.path7za;
  }
- exports.getPath7za = getPath7za;
  async function getPath7x() {
++    return '/bin/false';
+     await (0, fs_extra_1.chmod)(_7zip_bin_1.path7x, 0o755);
+     return _7zip_bin_1.path7x;
+ }
+-//# sourceMappingURL=7za.js.map
+\ Kein Zeilenumbruch am Dateiende.
++//# sourceMappingURL=7za.js.map

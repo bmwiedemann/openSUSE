@@ -1,9 +1,9 @@
 hak fetch tries to download devDependencies for two modules. Unfortunately it does so in a very non-deterministic manner (no shrinkwrap file)
 Remove that step since the devDependencies are not actually needed for any of these two modules.
 
---- element-desktop-1.11.65/scripts/hak/fetch.ts.orig	2024-04-23 15:14:00.000000000 +0200
-+++ element-desktop-1.11.65/scripts/hak/fetch.ts	2024-05-15 19:40:21.779432272 +0200
-@@ -35,23 +35,6 @@ export default async function fetch(hakE
+--- element-desktop-1.11.85/scripts/hak/fetch.ts	2024-11-12 13:39:42.758502395 +0100
++++ element-desktop-1.11.85/scripts/hak/fetch.ts	2024-11-12 13:41:05.048799436 +0100
+@@ -27,27 +27,6 @@
      console.log("Fetching " + moduleInfo.name + "@" + moduleInfo.version);
  
      const packumentCache = new Map();
@@ -21,7 +21,11 @@ Remove that step since the devDependencies are not actually needed for any of th
 -            shell: hakEnv.isWin(),
 -        });
 -        proc.on("exit", (code) => {
--            code ? reject(code) : resolve();
+-            if (code) {
+-                reject(code);
+-            } else {
+-                resolve();
+-            }
 -        });
 -    });
  
