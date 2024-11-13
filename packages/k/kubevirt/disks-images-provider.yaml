@@ -22,7 +22,7 @@ spec:
       serviceAccountName: kubevirt-testing
       containers:
         - name: target
-          image: quay.io/kubevirt/disks-images-provider:v1.3.1
+          image: quay.io/kubevirt/disks-images-provider:v1.4.0
           imagePullPolicy: Always
           env:
           - name: NUM_TEST_IMAGE_REPLICAS

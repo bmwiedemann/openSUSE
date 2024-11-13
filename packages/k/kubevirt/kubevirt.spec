@@ -30,7 +30,7 @@
 %endif
 
 Name:           kubevirt
-Version:        1.3.1
+Version:        1.4.0
 Release:        0
 Summary:        Container native virtualization
 License:        Apache-2.0
@@ -41,8 +41,6 @@ Source1:        kubevirt_containers_meta
 Source2:        kubevirt_containers_meta.service
 Source3:        %{url}/releases/download/v%{version}/disks-images-provider.yaml
 Source100:      %{name}-rpmlintrc
-Patch1:         0001-Consider-the-new-DV-reason-ImagePullFailed.patch
-Patch2:         0002-tests-Set-FSGroup-to-ensure-proper-permissions.patch
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig

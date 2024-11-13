@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 13 12:12:42 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 1.4.0
+  Release notes https://github.com/kubevirt/kubevirt/releases/tag/v1.4.0
+- Drop upstreamed patches
+  0001-Consider-the-new-DV-reason-ImagePullFailed.patch
+  0002-tests-Set-FSGroup-to-ensure-proper-permissions.patch
+
+-------------------------------------------------------------------
 Tue Oct 15 05:49:47 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Enable aarch64 build for SLE and mark it as techpreview (jsc#PED-10545)
