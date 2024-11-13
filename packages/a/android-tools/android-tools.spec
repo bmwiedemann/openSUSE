@@ -16,11 +16,6 @@
 #
 
 
-%if 0%{?suse_version} < 1600
-%define _pyver  311
-%else
-%define _pyver  3
-%endif
 %if 0%{?suse_version} <= 1600
 %bcond_without  bundled_libfmt
 %else
@@ -44,7 +39,6 @@ BuildRequires:  go
 BuildRequires:  llvm-gold
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
-BuildRequires:  python%{_pyver}
 BuildRequires:  pkgconfig(gtest)
 BuildRequires:  pkgconfig(libbrotlicommon)
 BuildRequires:  pkgconfig(liblz4)
@@ -59,12 +53,14 @@ Suggests:       %{name}-partition = %{version}
 Provides:       %{name}-python3 = %{version}-%{release}
 Obsoletes:      %{name}-python3 < %{version}-%{release}
 Provides:       bundled(boringssl)
-ExcludeArch:    s390x
+ExcludeArch:    ppc ppc64 ppc64le s390x
 %if 0%{?suse_version} < 1600
 BuildRequires:  clang15
 BuildRequires:  gcc11-c++
+BuildRequires:  python311
 %else
 BuildRequires:  clang
+BuildRequires:  python3
 %endif
 %if %{with bundled_libfmt}
 Provides:       bundled(fmt) = 10.2.0
@@ -145,12 +141,12 @@ ln -sf %{_datadir}/%{name}/mkbootimg/mkbootimg.py %{buildroot}%{_bindir}/mkbooti
 # fix non-executable-script
 chmod 0755 %{buildroot}%{_datadir}/%{name}/mkbootimg/gki/generate_gki_certificate.py
 
-# fix env-script-interpreter (Leap requires special handling)
+# fix env-script-interpreter (Leap < 16.0 requires special handling)
 %if 0%{?suse_version} < 1600
 %define python3_fix_shebang_path(+abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-=) \
 myargs="%{**}" \
 for f in ${myargs}; do \
-  [ -f $f ] && sed -i "1s@#\\!.*python.*@#\\!$(realpath %{expand:%{__python%{_pyver}}})@" $f \
+  [ -f $f ] && sed -i "1s@#\\!.*python.*@#\\!$(realpath %{__python311})@" $f \
 done
 %endif
 %python3_fix_shebang_path %{buildroot}%{_bindir}/*

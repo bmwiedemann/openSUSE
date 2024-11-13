@@ -14,79 +14,28 @@ diff -ruN a/CMakeLists.txt b/CMakeLists.txt
 diff -ruN a/vendor/adb/adb.bash b/vendor/adb/adb.bash
 --- a/vendor/adb/adb.bash
 +++ b/vendor/adb/adb.bash
-@@ -16,11 +16,11 @@
+@@ -15,6 +15,10 @@
+ # limitations under the License.
  #
  
++check_type() {
++    type -t "$1"
++}
++
  _adb() {
--    if ! check_type "$1" >/dev/null; then
-+    if ! type -t "$1" >/dev/null; then
+     if ! check_type "$1" >/dev/null; then
          return
-     fi
- 
--    if check_type _init_completion >/dev/null; then
-+    if type -t _init_completion >/dev/null; then
-         _init_completion || return
-     fi
- 
-@@ -455,7 +455,7 @@
-     fi
- 
-     # Since we're probably doing file completion here, don't add a space after.
--    if [[ $(check_type compopt) == "builtin" ]]; then
-+    if [[ $(type -t compopt) == "builtin" ]]; then
-         compopt -o nospace
-     fi
- 
-@@ -471,7 +471,7 @@
-     xspec=$2
- 
-     # Since we're probably doing file completion here, don't add a space after.
--    if [[ $(check_type compopt) == "builtin" ]]; then
-+    if [[ $(type -t compopt) == "builtin" ]]; then
-         compopt -o plusdirs
-         if [[ "${xspec}" == "" ]]; then
-             COMPREPLY=( ${COMPREPLY[@]:-} $(compgen -f -- "${cur}") )
-@@ -512,7 +512,7 @@
- }
- 
- 
--if [[ $(check_type compopt) == "builtin" ]]; then
-+if [[ $(type -t compopt) == "builtin" ]]; then
-     complete -F _adb adb
- else
-     complete -o nospace -F _adb adb
 diff -ruN a/vendor/core/fastboot/fastboot.bash b/vendor/core/fastboot/fastboot.bash
 --- a/vendor/core/fastboot/fastboot.bash
 +++ b/vendor/core/fastboot/fastboot.bash
-@@ -16,11 +16,11 @@
+@@ -15,6 +15,10 @@
+ # limitations under the License.
  #
  
++check_type() {
++    type -t "$1"
++}
++
  _fastboot() {
--    if ! check_type "$1" >/dev/null; then
-+    if ! type -t "$1" >/dev/null; then
+     if ! check_type "$1" >/dev/null; then
          return
-     fi
- 
--    if check_type _init_completion >/dev/null; then
-+    if type -t _init_completion >/dev/null; then
-         _init_completion || return
-     fi
- 
-@@ -135,7 +135,7 @@
-     xspec=$2
- 
-     # Since we're probably doing file completion here, don't add a space after.
--    if [[ $(check_type compopt) == "builtin" ]]; then
-+    if [[ $(type -t compopt) == "builtin" ]]; then
-         compopt -o plusdirs
-         if [[ "${xspec}" == "" ]]; then
-             COMPREPLY=( ${COMPREPLY[@]:-} $(compgen -f -- "${cur}") )
-@@ -175,7 +175,7 @@
-     fi
- }
- 
--if [[ $(check_type compopt) == "builtin" ]]; then
-+if [[ $(type -t compopt) == "builtin" ]]; then
-     complete -F _fastboot fastboot
- else
-     complete -o nospace -F _fastboot fastboot

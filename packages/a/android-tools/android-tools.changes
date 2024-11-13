@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov  5 05:16:45 UTC 2024 - munix9@googlemail.com
+
+- Exclude ppc ppc64 and ppc64le: Bundled boringssl doesn't support
+  the big endian architectures and dropped ppc64le support
+- Simplify python3 requirements
+- Simplify fix-install-completion.patch
+
+-------------------------------------------------------------------
 Sun Oct 20 11:48:59 UTC 2024 - munix9@googlemail.com
 
 - Fix build for Leap 16.0
