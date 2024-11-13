@@ -1,0 +1,164 @@
+From b7d11c21d7f15dc11ae7354a7ec97299eacd7045 Mon Sep 17 00:00:00 2001
+From: Joerg Schmidbauer <jschmidb@de.ibm.com>
+Date: Wed, 6 Nov 2024 13:12:11 +0100
+Subject: [PATCH] fips update: Dynamically update service indicator based on IV
+ usage
+
+Fix handling to differentiate if the call to AES-GCM encryption API was approved
+or not. If the IV was set externally, it's non-approved, otherwise with internal
+IV it's approved. Bind the service indicator to the service by checking the
+behavior of the GCM IV in the gcm API.
+
+Signed-off-by: Joerg Schmidbauer <jschmidb@de.ibm.com>
+---
+ src/ica_api.c      |  6 ++++++
+ src/include/fips.h | 54 +++++++++++++++++++++++++++++++++++++++++++---
+ src/s390_crypto.c  | 16 ++++++++++++++
+ 3 files changed, 73 insertions(+), 3 deletions(-)
+
+diff --git a/src/ica_api.c b/src/ica_api.c
+index d071f61..c1bb4e1 100644
+--- a/src/ica_api.c
++++ b/src/ica_api.c
+@@ -3727,6 +3727,8 @@ unsigned int ica_aes_gcm(unsigned char *plaintext,
+ #ifdef ICA_FIPS
+ 	if (fips & ICA_FIPS_MODE)
+ 		return EPERM;
++	if (!fips_approved(AES_GCM) && !fips_override(AES_GCM))
++		return EPERM;
+ #endif /* ICA_FIPS */
+ 
+ 	return ica_aes_gcm_internal(plaintext, plaintext_length, ciphertext,
+@@ -3776,6 +3778,8 @@ unsigned int ica_aes_gcm_initialize(const unsigned char *iv,
+ 	if (!ica_external_gcm_iv_in_fips_mode_allowed &&
+ 		direction == ENCRYPT && (fips & ICA_FIPS_MODE))
+ 		return EPERM;
++	if (!fips_approved(AES_GCM) && !fips_override(AES_GCM))
++		return EPERM;
+ #endif /* ICA_FIPS */
+ 
+ 	return ica_aes_gcm_initialize_internal(iv, iv_length, key, key_length,
+@@ -4025,6 +4029,8 @@ int ica_aes_gcm_kma_init(unsigned int direction,
+ 	if (!ica_external_gcm_iv_in_fips_mode_allowed &&
+ 		direction == ICA_ENCRYPT && (fips & ICA_FIPS_MODE))
+ 		return EPERM;
++	if (!fips_approved(AES_GCM_KMA) && !fips_override(AES_GCM_KMA))
++		return EPERM;
+ #endif /* ICA_FIPS */
+ 
+ 	return ica_aes_gcm_kma_init_internal(direction, iv, iv_length,
+diff --git a/src/include/fips.h b/src/include/fips.h
+index c0af6b6..0a6e0bd 100644
+--- a/src/include/fips.h
++++ b/src/include/fips.h
+@@ -68,19 +68,19 @@ unsigned int ica_aes_gcm_initialize_internal(const unsigned char *iv,
+ /*
+  * List of non-fips-approved algorithms
+  */
+-static const int FIPS_BLACKLIST[] = {DES_ECB, DES_CBC, DES_CBC_CS, DES_OFB,
++static int FIPS_BLACKLIST[] = {DES_ECB, DES_CBC, DES_CBC_CS, DES_OFB,
+     DES_CFB, DES_CTR, DES_CTRLST, DES_CBC_MAC, DES_CMAC, P_RNG, DES3_ECB,
+     DES3_CBC, DES3_CBC_CS, DES3_OFB, DES3_CFB, DES3_CTR, DES3_CTRLST,
+     DES3_CBC_MAC, DES3_CMAC, ED25519_KEYGEN, ED25519_SIGN, ED25519_VERIFY,
+     ED448_KEYGEN, ED448_SIGN, ED448_VERIFY, X25519_KEYGEN, X25519_DERIVE,
+-    X448_KEYGEN, X448_DERIVE, RSA_ME, RSA_CRT, SHA512_DRNG };
++    X448_KEYGEN, X448_DERIVE, RSA_ME, RSA_CRT, SHA512_DRNG, -1, -1 };
+ static const size_t FIPS_BLACKLIST_LEN
+ 	= sizeof(FIPS_BLACKLIST) / sizeof(FIPS_BLACKLIST[0]);
+ 
+ /*
+  * FIPS service indicator: List of tolerated but non-approved algorithms.
+  */
+-static const int FIPS_OVERRIDE_LIST[] = { RSA_ME, RSA_CRT, SHA512_DRNG };
++static int FIPS_OVERRIDE_LIST[] = { RSA_ME, RSA_CRT, SHA512_DRNG, -1, -1 };
+ static const size_t FIPS_OVERRIDE_LIST_LEN
+ 	= sizeof(FIPS_OVERRIDE_LIST) / sizeof(FIPS_OVERRIDE_LIST[0]);
+ 
+@@ -117,5 +117,53 @@ static inline int fips_override(int id)
+ 
+ 	return 0;
+ }
++
++static inline void add_to_fips_black_list(int id)
++{
++	size_t i;
++
++	for (i = 0; i < FIPS_BLACKLIST_LEN; i++) {
++		if (FIPS_BLACKLIST[i] == -1) {
++			FIPS_BLACKLIST[i] = id;
++			return;
++		}
++	}
++}
++
++static inline void add_to_fips_override_list(int id)
++{
++	size_t i;
++
++	for (i = 0; i < FIPS_OVERRIDE_LIST_LEN; i++) {
++		if (FIPS_OVERRIDE_LIST[i] == -1) {
++			FIPS_OVERRIDE_LIST[i] = id;
++			return;
++		}
++	}
++}
++
++static inline void remove_from_fips_black_list(int id)
++{
++	size_t i;
++
++	for (i = 0; i < FIPS_BLACKLIST_LEN; i++) {
++		if (FIPS_BLACKLIST[i] == id) {
++			FIPS_BLACKLIST[i] = -1;
++			return;
++		}
++	}
++}
++
++static inline void remove_from_fips_override_list(int id)
++{
++	size_t i;
++
++	for (i = 0; i < FIPS_OVERRIDE_LIST_LEN; i++) {
++		if (FIPS_OVERRIDE_LIST[i] == id) {
++			FIPS_OVERRIDE_LIST[i] = -1;
++			return;
++		}
++	}
++}
+ #endif /* FIPS_H */
+ #endif /* ICA_FIPS */
+diff --git a/src/s390_crypto.c b/src/s390_crypto.c
+index 623864b..03655e7 100644
+--- a/src/s390_crypto.c
++++ b/src/s390_crypto.c
+@@ -30,6 +30,10 @@
+ #include "init.h"
+ #include "s390_crypto.h"
+ 
++#ifdef ICA_FIPS
++extern int ica_external_gcm_iv_in_fips_mode_allowed;
++#endif
++
+ unsigned long long facility_bits[3];
+ unsigned int sha1_switch, sha256_switch, sha512_switch, sha3_switch, des_switch,
+ 	     tdes_switch, aes128_switch, aes192_switch, aes256_switch,
+@@ -810,6 +814,18 @@ int s390_get_fips_indicator(libica_fips_indicator_element *indicator_list,
+ 	if (*indicator_list_len < (sizeof(icaList) / sizeof(libica_func_list_element_int)))
+ 		return EINVAL;
+ 
++	if (ica_external_gcm_iv_in_fips_mode_allowed) {
++		add_to_fips_black_list(AES_GCM);
++		add_to_fips_override_list(AES_GCM);
++		add_to_fips_black_list(AES_GCM_KMA);
++		add_to_fips_override_list(AES_GCM_KMA);
++	} else {
++		remove_from_fips_black_list(AES_GCM);
++		remove_from_fips_override_list(AES_GCM);
++		remove_from_fips_black_list(AES_GCM_KMA);
++		remove_from_fips_override_list(AES_GCM_KMA);
++	}
++
+ 	for (i = 0; i < *indicator_list_len; i++) {
+ 		indicator_list[i].mech_mode_id = icaList[i].mech_mode_id;
+ 		indicator_list[i].fips_approved = fips_approved(icaList[i].mech_mode_id);

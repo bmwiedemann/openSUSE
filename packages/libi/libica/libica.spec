@@ -40,6 +40,8 @@ Patch99:        libica-sles15sp5-FIPS-hmac-key.patch
 ###
 Patch110:       libica-01-fips-update-remove-sigVer-from-fips-ECDSA-kat.patch
 Patch111:       libica-02-fips-update-Change-service-indicator-implementation.patch
+Patch112:       libica-03-fips-update-Dynamically-update-service-indicator-based-on-IV-usage.patch
+Patch113:       libica-04-fips-update-provide-test-for-dynamic-service-indicator.patch
 ###
 
 BuildRequires:  autoconf
