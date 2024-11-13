@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov 13 11:04:01 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.1.10.1:
+  * Fixed scrolling not working when the mouse {} or touchpad {}
+    section is omitted from the config file.
+  * Made the mouse cursor show up on scroll which makes scrolling
+    work when the cursor was hidden.
+  * Fixed a crash when holding Space in the screenshot UI.
+  * Bound touch-dragging with held Mod to interactive window move.
+
+-------------------------------------------------------------------
 Sat Nov  9 19:31:01 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.1.10:

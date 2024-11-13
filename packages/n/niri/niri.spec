@@ -18,13 +18,13 @@
 
 %bcond_without test
 Name:           niri
-Version:        0.1.10
+Version:        0.1.10.1
 Release:        0
 Summary:        Scrollable-tiling Wayland compositor
 License:        GPL-3.0-or-later
 URL:            https://github.com/YaLTeR/niri
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
-Source1:        %{url}/releases/download/v%{version}/niri-%{version}-vendored-dependencies.tar.xz
+Source1:        %{url}/releases/download/v0.1.10/niri-0.1.10-vendored-dependencies.tar.xz
 Source2:        cargo_config
 BuildRequires:  cargo-packaging
 BuildRequires:  clang
