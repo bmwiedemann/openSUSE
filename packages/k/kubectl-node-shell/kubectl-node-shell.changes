@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 13 10:10:10 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.10.2:
+  * Prepare release v1.10.2
+  * qfix readme.md (#67)
+  * add custom_image (#66)
+  * Update krew install doc (#42)
+
+-------------------------------------------------------------------
 Mon Jan 22 05:30:25 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.10.1:
