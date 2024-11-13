@@ -1,6 +1,6 @@
 <services>
 	<service name="go_modules" mode="disabled">
-		<param name="archive">4e2aa6a12e2bc3d31ec0d01d661fb3a4d65248ff.tar.gz</param>
+		<param name="archive">v5.0.0-alpha.11.tar.gz</param>
 		<param name="compression">gz</param>
 	</service>
 </services>

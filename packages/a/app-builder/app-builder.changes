@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 12 15:09:47 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Update to 5.0.0-alpha.11
+  * add flatten option to node-dep-tree (introduced in 5.0.0-alpha.3)
+  * see CHANGELOG.md for more changes
+
+-------------------------------------------------------------------
 Mon Oct 16 17:53:11 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - Use correct optflags for C code

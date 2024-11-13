@@ -15,23 +15,24 @@
 
 #macros for Fedora
 %global goipath  github.com/develar/app-builder
-%global commit   4e2aa6a12e2bc3d31ec0d01d661fb3a4d65248ff
-%global extractdir0 app-builder-%commit
+%global extractdir0 app-builder-5.0.0-alpha.11
 
 Name:           app-builder
-Version:        3.4.2^20220309g4e2aa6a1
+Version:        5.0.0~alpha.11
 Release:        0
 License:        MIT
 Summary:        Generic helper tool to build app in a distributable format
 Url:            https://github.com/develar/app-builder
-Source0:        https://github.com/develar/app-builder/archive/%{commit}.tar.gz
+Source0:        https://github.com/develar/app-builder/archive/v5.0.0-alpha.11.tar.gz
 Source1:        vendor.tar.gz
 %if 0%{?fedora}
 BuildRequires:  golang
 BuildRequires:  go-rpm-macros
 BuildRequires:  golang-ipath(golang.org/x/sys)
 BuildRequires:  golang(gopkg.in/alecthomas/kingpin.v2)
+%if 0%{fedora} < 41
 BuildRequires:  golang(github.com/alecthomas/template)
+%endif
 BuildRequires:  golang(github.com/alecthomas/units)
 BuildRequires:  golang(github.com/aws/aws-sdk-go)
 BuildRequires:  golang(github.com/disintegration/imaging)
@@ -52,6 +53,9 @@ BuildRequires:  golang(go.uber.org/zap)
 BuildRequires:  golang(go.uber.org/zap/buffer)
 BuildRequires:  golang(go.uber.org/zap/zapcore)
 BuildRequires:  golang(howett.net/plist)
+%if 0%{fedora} >= 41
+BuildRequires: compat-golang-github-imdario-mergo-devel
+%endif
 %else
 BuildRequires:  golang(API)
 BuildRequires:  golang-packaging
@@ -71,14 +75,14 @@ Used by electron-builder but applicable not only for building Electron applicati
 %endif
  
 %prep
-%autosetup -n app-builder-%commit -a1
+%autosetup  -a1 -n app-builder-5.0.0-alpha.11
 # remove bundled dependencies 
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600 || 0%{?fedora}
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700 || 0%{?fedora}
 rm -rf vendor/golang.org/x/sys
 %endif
 
 %if 0%{?fedora}
-rm -rf vendor/github.com/{alecthomas,aws,disintegration,dustin,hpcloud,jmespath,json-iterator,mattn,mitchellh,modern-go,onsi,oxtoacart,phayes,pkg,segmentio}
+rm -rf vendor/github.com/{alecthomas/kingpin,alecthomas/units,aws,disintegration,dustin,hpcloud,jmespath,json-iterator,mattn,mitchellh,modern-go,onsi,oxtoacart,phayes,pkg,samber,segmentio}
 rm -rf vendor/go.uber.org
 rm -rf vendor/golang.org
 rm -rf vendor/gopkg.in/{fsnotify.v1,tomb.v1,yaml.v2}
@@ -86,6 +90,10 @@ rm -rf vendor/howett.net
 
 %if 0%{fedora} < 39
 rm -rf vendor/github.com/minio
+%endif
+
+%if 0%{fedora} < 41
+rm -rf vendor/github.com/alecthomas
 %endif
 
 grep -FrlZ 'github.com/alecthomas/kingpin' | xargs -tr0 -P$(nproc) -- sed -i 's|github.com/alecthomas/kingpin|gopkg.in/alecthomas/kingpin.v2|g'
@@ -98,6 +106,7 @@ export CXXFLAGS="%{optflags}"
 export CGO_CFLAGS="$CFLAGS -fpie"
 export CGO_CXXFLAGS="$CXXFLAGS -fpie"
 export CGO_LDFLAGS="%{?build_ldflags}"
+
 %if 0%{?fedora}
 %goprep -k -e
 %else
@@ -108,7 +117,6 @@ export GO111MODULE=off
 
 export GOFLAGS='-ldflags=-compressdwarf=false' #fix broken debuginfo
 %gobuild
-
 
 %install
 install -pvDm755 \
@@ -123,6 +131,6 @@ install -pvDm755 \
 %files
 %{_bindir}/%{name}
 %license LICENSE
-%doc readme.md
+%doc readme.md CHANGELOG.md
 
 %changelog
