@@ -1,0 +1,14 @@
+<package name="kunifiedpush" project="openSUSE:Factory">
+  <title>UnifiedPush client components</title>
+  <description>KUnifiedPush provides push notifications for KDE applications. Push
+notifications are a mechanism to support applications that occasionally need to
+receive some kind of information from their server-side part, and where
+receiving in a timely manner matters.
+
+Three possible provider backends are provided:
+- Ntfy
+- Nextpush
+- Gotify</description>
+  <devel project="KDE:Applications" package="kunifiedpush"/>
+  <url>https://www.kde.org/</url>
+</package>
