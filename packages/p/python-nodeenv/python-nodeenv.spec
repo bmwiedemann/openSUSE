@@ -21,7 +21,7 @@ Name:           python-nodeenv
 Version:        1.9.1
 Release:        0
 Summary:        Nodejs virtual environment builder
-License:        BSD-2-Clause
+License:        BSD-3-Clause
 URL:            https://github.com/ekalinin/nodeenv
 Source:         https://github.com/ekalinin/nodeenv/archive/%{version}.tar.gz#/nodeenv-%{version}.tar.gz
 BuildRequires:  %{python_module pytest}

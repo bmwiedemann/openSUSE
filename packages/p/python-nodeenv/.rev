@@ -114,4 +114,12 @@
   * #346</comment>
     <requestid>1218879</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>54e758e408f6f9ba0fe8cc0f3f2b5bc5</srcmd5>
+    <version>1.9.1</version>
+    <time>1731508191</time>
+    <user>anag+factory</user>
+    <comment>- Fix package license to BSD-3-Clause</comment>
+    <requestid>1223960</requestid>
+  </revision>
 </revisionlist>
