@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Thu Nov 14 11:32:54 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add prepare_vendor.sh as Source99.
+
+-------------------------------------------------------------------
+Tue Nov  5 21:23:06 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Completing packaging based on the Fedora package.
+
+-------------------------------------------------------------------
+Mon Nov  4 11:00:53 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Initial packaging (v2024.8.6), needed by translate-toolkit

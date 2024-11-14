@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4191f003f2907eb7a691038a18a34632</srcmd5>
+    <version>2024.8.6</version>
+    <time>1731597002</time>
+    <user>anag+factory</user>
+    <comment>Needed by python-jaraco.stream
+
+Fix missing Source OBS error.</comment>
+    <requestid>1224170</requestid>
+  </revision>
+</revisionlist>
