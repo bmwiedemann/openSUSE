@@ -1,7 +1,7 @@
 #
 # spec file for package python-pysolr
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pysolr
-Version:        3.9.0
+Version:        3.10.0
 Release:        0
 Summary:        Lightweight python wrapper for Apache Solr
 License:        BSD-3-Clause
 URL:            https://github.com/django-haystack/pysolr/
 Source:         https://files.pythonhosted.org/packages/source/p/pysolr/pysolr-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests >= 2.9.1
@@ -44,10 +46,10 @@ Lightweight python wrapper for Apache Solr.
 %setup -q -n pysolr-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -56,6 +58,8 @@ Lightweight python wrapper for Apache Solr.
 %files %{python_files}
 %doc AUTHORS CHANGELOG.rst README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/__pycache__
+%{python_sitelib}/pysolr.py
+%{python_sitelib}/pysolr-%{version}.dist-info
 
 %changelog

@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Nov 14 09:22:38 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.10.0
+  * Fixed: Different JSON and XML behaviour
+  * Fix typo
+  * Fix SolrCoreAdmin._get_url content-type
+  * enable custom requests session
+  * add min_rf feature in add method
+  * New: Add parameter for a custom encoder
+  * Add accepts empty values
+  * Show an example of how to use cursor traversal
+  * Escape xml in delete() using ElementTree
+  * Update README.rst
+  * Update README.rst
+  * Perform adds with field updates using JSON
+  * Use six.assertRegex instead of assertRegexpMatches
+    for Python 3.11 compatibility.
+  * GitHub Action to run tox
+  * Bump certifi from 2021.10.8 to 2022.12.7
+  * Make _to_python recursive for lists and tuples
+  * Replace flake8 and isort with ruff
+  * Replace ''.join after char filtering with regex filter
+  * GitHub Actions: Add Pypy v3.10 and remove EOL CPython 3.7
+  * Upgrade github/codeql-action
+  * Configure GitHub actions to publish packages
+  * fix commitWithin for JSON updates w/o boost
+  * Declare a runtime dependency on setuptools
+  * Enhance gitignore
+  * Set wt=json in _select only if the user has not set it
+  * Avoid running tests under PyPy on GitHub Actions
+  * GitHub Actions: Add Python 3.12 to the testing
+  * Keep GitHub Actions up to date with Dependabot
+  * Fix DeprecationWarning from pkg_resources
+- Switch build system from setuptools to pyproject.toml
+  * Add python-pip and python-wheel to BuildRequires
+  * Replace %python_build with %pyproject_wheel
+  * Replace %python_install with %pyproject_install
+- Limit Python files matched in %files section
+
+-------------------------------------------------------------------
 Sun Jun 25 08:07:29 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Use sle15_python_module_pythons
