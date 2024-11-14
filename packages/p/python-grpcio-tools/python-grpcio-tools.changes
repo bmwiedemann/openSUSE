@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov 13 12:42:00 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.67.1:
+  * Minor bug fix release.
+- Changes from version 1.67.0:
+  * Add templating and support for Python 3.13
+    (gh#grpc/grpc##37643).
+  * Change warning to RuntimeError for version incompatibility
+    (gh#grpc/grpc##37466).
+  * Fix: reflection returns original_request
+    (gh#grpc/grpc##36944).
+
+-------------------------------------------------------------------
 Wed Jul 17 13:11:54 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.65.0:
