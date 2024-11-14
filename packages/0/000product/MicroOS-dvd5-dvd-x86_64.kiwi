@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20241113" schemaversion="4.1">
+<image name="OBS__MicroOS___20241114" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20241113</productvar>
+      <productvar name="VERSION">20241114</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20241113,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20241114,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20241113/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20241114/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -258,7 +258,6 @@
       <repopackage name="gnome-online-accounts"/>
       <repopackage name="gnome-session"/>
       <repopackage name="gnome-session-core"/>
-      <repopackage name="gnome-session-default-session"/>
       <repopackage name="gnome-session-wayland"/>
       <repopackage name="gnome-settings-daemon"/>
       <repopackage name="gnome-shell"/>

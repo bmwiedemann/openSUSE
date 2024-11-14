@@ -3152,6 +3152,7 @@ unsorted:
   - deadbeef-plugin-mpris2 
   - deal_II-devel 
   - deal_II-openmpi4-devel 
+  - deal_II-openmpi5-devel 
   - debhelper 
   - debootstrap 
   - debugbreak 
@@ -7465,6 +7466,7 @@ unsorted:
   - gnome-search-tool 
   - gnome-search-tool-lang 
   - gnome-settings-daemon-devel 
+  - gnome-shell-classic-xsession 
   - gnome-shell-devel 
   - gnome-shell-extension-customize-ibus 
   - gnome-shell-extension-desktop-icons 
@@ -10639,6 +10641,7 @@ unsorted:
   - kubectl-view-secret 
   - kubectl-who-can 
   - kubectx 
+  - kubecui 
   - kubefirst 
   - kubefirst-bash-completion 
   - kubefirst-fish-completion 
@@ -12826,8 +12829,9 @@ unsorted:
   - libdde-network-utils1 
   - libdde-wayland-client0 
   - libdde-wayland-server0 
-  - libdeal_II9_5_1 
-  - libdeal_II9_5_1-openmpi4 
+  - libdeal_II9_6_0 
+  - libdeal_II9_6_0-openmpi4 
+  - libdeal_II9_6_0-openmpi5 
   - libdebuginfod-devel 
   - libdebuginfod-dummy-devel 
   - libdebuginfod1-dummy 
@@ -14685,8 +14689,15 @@ unsorted:
   - libmirage-lang 
   - libmirage-vala 
   - libmirage11 
+  - libmiral7 
+  - libmircommon11 
+  - libmircore2 
   - libmirisdr-devel 
   - libmirisdr0 
+  - libmiroil5 
+  - libmirplatform29 
+  - libmirserver61 
+  - libmirwayland5 
   - libmjpegutils-2_2-0-32bit 
   - libmjpegutils-devel 
   - libmlt++-7-7 
@@ -18949,6 +18960,11 @@ unsorted:
   - minuet-devel 
   - minuet-lang 
   - mipv6d 
+  - mir-demos 
+  - mir-devel 
+  - mir-private-devel 
+  - mir-test-libs-static 
+  - mir-test-tools 
   - miredo-client 
   - miredo-common 
   - miredo-devel 
@@ -23778,6 +23794,7 @@ unsorted:
   - python-fastcluster-doc 
   - python-flake8-doc 
   - python-freezerclient-doc 
+  - python-furo-doc 
   - python-gdbm 
   - python-gevent-doc 
   - python-glanceclient-doc 
@@ -24630,8 +24647,6 @@ unsorted:
   - python310-aws-xray-sdk-pynamodb 
   - python310-aws-xray-sdk-requests 
   - python310-awx-cli 
-  - python310-axolotl 
-  - python310-axolotl-curve25519 
   - python310-azure-agrifood-farming 
   - python310-azure-agrifood-nspkg 
   - python310-azure-ai-anomalydetector 
@@ -25620,6 +25635,7 @@ unsorted:
   - python310-funcparserlib 
   - python310-funcy 
   - python310-furl 
+  - python310-furo 
   - python310-fuse 
   - python310-fusepy 
   - python310-fuzzywuzzy 
@@ -25893,6 +25909,7 @@ unsorted:
   - python310-itsdangerous 
   - python310-iwlib 
   - python310-j2gen 
+  - python310-jalali-core 
   - python310-jaraco.classes 
   - python310-jaraco.collections 
   - python310-jaraco.context 
@@ -26290,6 +26307,7 @@ unsorted:
   - python310-mysqlclient 
   - python310-myst-parser 
   - python310-nagiosplugin 
+  - python310-named 
   - python310-napalm 
   - python310-napalm-asa 
   - python310-napalm-procurve 
@@ -28288,8 +28306,6 @@ unsorted:
   - python311-aws-xray-sdk-pynamodb 
   - python311-aws-xray-sdk-requests 
   - python311-awx-cli 
-  - python311-axolotl 
-  - python311-axolotl-curve25519 
   - python311-azure-agrifood-farming 
   - python311-azure-agrifood-nspkg 
   - python311-azure-ai-anomalydetector 
@@ -29258,6 +29274,7 @@ unsorted:
   - python311-funcparserlib 
   - python311-funcy 
   - python311-furl 
+  - python311-furo 
   - python311-fuse 
   - python311-fusepy 
   - python311-fuzzywuzzy 
@@ -29515,6 +29532,7 @@ unsorted:
   - python311-itsdangerous 
   - python311-iwlib 
   - python311-j2gen 
+  - python311-jalali-core 
   - python311-jaraco.classes 
   - python311-jaraco.collections 
   - python311-jaraco.context 
@@ -29895,6 +29913,7 @@ unsorted:
   - python311-mysql-to-sqlite3 
   - python311-myst-parser 
   - python311-nagiosplugin 
+  - python311-named 
   - python311-napalm 
   - python311-napalm-asa 
   - python311-napalm-procurve 
@@ -31863,8 +31882,6 @@ unsorted:
   - python312-aws-xray-sdk-pynamodb 
   - python312-aws-xray-sdk-requests 
   - python312-awx-cli 
-  - python312-axolotl 
-  - python312-axolotl-curve25519 
   - python312-azure-agrifood-farming 
   - python312-azure-agrifood-nspkg 
   - python312-azure-ai-anomalydetector 
@@ -32853,6 +32870,7 @@ unsorted:
   - python312-funcparserlib 
   - python312-funcy 
   - python312-furl 
+  - python312-furo 
   - python312-fuse 
   - python312-fusepy 
   - python312-fuzzywuzzy 
@@ -33126,6 +33144,7 @@ unsorted:
   - python312-itsdangerous 
   - python312-iwlib 
   - python312-j2gen 
+  - python312-jalali-core 
   - python312-jaraco.classes 
   - python312-jaraco.collections 
   - python312-jaraco.context 
@@ -33521,6 +33540,7 @@ unsorted:
   - python312-mysqlclient 
   - python312-myst-parser 
   - python312-nagiosplugin 
+  - python312-named 
   - python312-napalm 
   - python312-napalm-asa 
   - python312-napalm-procurve 
@@ -36878,6 +36898,8 @@ unsorted:
   - sd-fish-completion 
   - sd-mux-ctrl 
   - sd-zsh-completion 
+  - sdbootutil-enroll 
+  - sdbootutil-jeos-firstboot-enroll 
   - sdbootutil-kernel-install 
   - sdbus-cpp-devel 
   - sdbus-cpp-devel-doc 
@@ -48536,6 +48558,8 @@ unsorted:
   - wl-screenrec-bash-completion 
   - wl-screenrec-fish-completion 
   - wl-screenrec-zsh-completion 
+  - wlcs 
+  - wlcs-devel 
   - wlgreet 
   - wlopm 
   - wlprop 
