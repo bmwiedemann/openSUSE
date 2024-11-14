@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package dealii
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define __builder ninja
-%define sover 9.5.1
+%define sover 9.6.0
 %define shlibver %(echo %{sover} | tr "." "_")
 %define srcname dealii
 
@@ -30,6 +30,10 @@
 %bcond_with doc
 %else
 %bcond_without doc
+%endif
+
+%if 0%{?suse_version} < 1650
+%define gcc_ver 9
 %endif
 
 # SECTION MPI DEFINITIONS
@@ -79,7 +83,7 @@
 %endif
 
 Name:           %{pname}
-Version:        9.5.1
+Version:        9.6.0
 Release:        0
 Summary:        A Finite Element Differential Equations Analysis Library
 License:        LGPL-2.1-or-later
@@ -89,8 +93,8 @@ Source:         https://github.com/dealii/dealii/releases/download/v%{version}/%
 BuildRequires:  arpack-ng-devel
 BuildRequires:  blas-devel
 BuildRequires:  cmake
-BuildRequires:  gcc-c++
-BuildRequires:  gcc-fortran
+BuildRequires:  gcc%{?gcc_ver}-c++
+BuildRequires:  gcc%{?gcc_ver}-fortran
 BuildRequires:  gmsh
 BuildRequires:  gmsh-devel
 BuildRequires:  hdf5%{?my_suffix}-devel
@@ -103,6 +107,7 @@ BuildRequires:  libboost_thread-devel
 BuildRequires:  libnetcdf_c++-devel
 BuildRequires:  memory-constraints
 BuildRequires:  metis-devel
+BuildRequires:  muparser-devel
 BuildRequires:  netcdf-devel
 BuildRequires:  ninja
 BuildRequires:  perl
@@ -112,7 +117,6 @@ BuildRequires:  suitesparse-devel
 BuildRequires:  tbb-devel
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(gsl)
-BuildRequires:  pkgconfig(muparser)
 BuildRequires:  pkgconfig(zlib)
 %if %{with doc}
 BuildRequires:  doxygen
@@ -168,8 +172,8 @@ source %{my_bindir}/mpivars.sh
 export CC=mpicc
 export CXX=mpicxx
 %else
-export CC=gcc
-export CXX=g++
+export CC=gcc%{?gcc_ver:-%{gcc_ver}}
+export CXX=g++%{?gcc_ver:-%{gcc_ver}}
 %endif
 
 export CFLAGS="%{optflags}"
