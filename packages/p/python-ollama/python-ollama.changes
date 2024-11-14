@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 14 08:59:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.3:
+  * stream in async client raises RuntimeError when processing
+    HTTP errors
+  * Add URL path to client URL in in Client._parse_host()
+  * IPv6 support
+- run tests
+
+-------------------------------------------------------------------
 Wed Jul 31 08:33:12 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
 - update to version 0.3.1
