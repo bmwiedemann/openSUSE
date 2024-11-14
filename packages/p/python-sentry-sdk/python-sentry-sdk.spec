@@ -19,7 +19,7 @@
 # nothing provides python2-venusian >= 1.0 needed by python2-pyramid
 %{?sle15_python_module_pythons}
 Name:           python-sentry-sdk
-Version:        2.17.0
+Version:        2.18.0
 Release:        0
 Summary:        Python SDK for Sentry.io
 License:        BSD-2-Clause
@@ -59,6 +59,7 @@ BuildRequires:  %{python_module eventlet}
 BuildRequires:  %{python_module fastapi >= 0.79.0}
 BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module greenlet}
+BuildRequires:  %{python_module h2}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module jsonschema >= 3.2.0}
 BuildRequires:  %{python_module pyramid}
@@ -69,7 +70,6 @@ BuildRequires:  %{python_module pytest-forked >= 1.4.0}
 BuildRequires:  %{python_module pytest-localserver >= 0.5.1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module responses}
-BuildRequires:  %{python_module tox >= 3.7.0}
 # /SECTION
 # SECTION test requirements - which rise up buildtime error or missing in openSUSE
 #BuildRequires:  %%{python_module pytest-watch >= 4.2.0}
@@ -114,6 +114,7 @@ Suggests:       python-pymongo >= 3.1
 Suggests:       python-rq >= 0.6
 Suggests:       python-starlette >= 0.19.1
 Suggests:       python-tornado >= 6
+Suggests:       python-h2
 # SECTION extra requirements - which rise up buildtime error or missing in openSUSE
 #Requires:       python-sanic >= 0.8
 #Requires:       python-apache-beam >= 2.12
@@ -166,6 +167,9 @@ IGNORED_CHECKS="${IGNORED_CHECKS} or test_auto_enabling_integrations_catches_imp
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_socks_proxy or test_utils"
 # https://github.com/getsentry/sentry-python/issues/3624
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_redis_disabled_when_not_installed"
+# Related to this report gh#getsentry/sentry-python#576, looks like it
+# freeze also with python 3.13
+IGNORED_CHECKS="${IGNORED_CHECKS} or eventlet or greenlet"
 %pytest -rs -k "not (${IGNORED_CHECKS})"
 
 %files %{python_files}
