@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Sun Oct 27 19:41:20 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package kubecui: kubeui makes kubectl more user friendly.
+  This is still kubectl but enhanced with fzf.
