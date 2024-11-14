@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov 13 10:28:22 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.0.3:
+  * Update Python style (black).
+  * Import order (isort).
+  * Convert test to pytest.
+  * Fix spelling errors.
+  * Add code of conduct.
+- Use pip/wheel based macros for build.
+
+-------------------------------------------------------------------
 Sun Jan 30 00:51:10 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - New package.

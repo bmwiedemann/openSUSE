@@ -1,7 +1,7 @@
 #
-# spec file for package python-mathics_pygments
+# spec file for package python-mathics-pygments
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,20 +19,21 @@
 %define modname mathics_pygments
 # Mathics-Scanner does not support python2
 %define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-mathics-pygments
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 Summary:        Mathematica/Wolfram Language Lexer for Pygments
 License:        MIT
 URL:            http://github.com/Mathics3/mathics-pygments/
 Source:         https://github.com/Mathics3/mathics-pygments/archive/refs/tags/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module Mathics-Scanner >= 1.2.0}
 BuildRequires:  %{python_module Pygments >= 2}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module wheel}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-Mathics-Scanner >= 1.2.0
@@ -48,10 +49,10 @@ pygments engine.
 %setup -q -n mathics-pygments-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -61,6 +62,6 @@ pygments engine.
 %doc CHANGES.rst README.md
 %license LICENSE
 %{python_sitelib}/%{modname}/
-%{python_sitelib}/%{modname}-%{version}-py%{python_version}.egg-info/
+%{python_sitelib}/%{modname}-%{version}*.*-info/
 
 %changelog
