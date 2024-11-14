@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov  7 09:44:05 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add CVE-2024-51744.patch: this updates jwt v4.5.1 which contains
+  the fix for CVE-2024-51744 (bsc#1232964).
+
+-------------------------------------------------------------------
 Tue Sep 24 16:26:32 UTC 2024 - mrueckert@suse.de
 
 - Update to version 1.68.1:
