@@ -1,7 +1,7 @@
 #
 # spec file for package python-jdatetime
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,25 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-jdatetime
-Version:        4.1.1
+Version:        5.0.0
 Release:        0
 Summary:        Jalali datetime binding for python
 License:        Python-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/slashmili/python-jalali
 Source:         https://github.com/slashmili/python-jalali/archive/v%{version}.tar.gz
+BuildRequires:  %{python_module jalali-core}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytzdata}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  glibc-locale
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+Requires:       python-jalali-core
 %python_subpackages
 
 %description
@@ -40,10 +44,10 @@ jdatetime is the Jalali implementation of Python's datetime module.
 %setup -q -n python-jalali-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -52,6 +56,7 @@ jdatetime is the Jalali implementation of Python's datetime module.
 %files %{python_files}
 %doc README.rst CHANGELOG.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/jdatetime
+%{python_sitelib}/jdatetime-%{version}.dist-info
 
 %changelog

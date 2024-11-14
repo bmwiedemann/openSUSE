@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 13 14:30:51 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.7.0
+  * Python 3.13 is now officially supported and tested
+  * Python 3.8 is no longer supported
+- Adjust upstream source name in spec file
+
+-------------------------------------------------------------------
 Sat Jan 20 14:05:25 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.6.0:

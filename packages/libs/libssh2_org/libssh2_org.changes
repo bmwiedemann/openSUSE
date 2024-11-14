@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Tue Oct 22 07:29:06 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.11.1:
+  * build: enable '-pedantic-errors'
+  * build: add 'LIBSSH2_NO_DEPRECATED' option
+  * build: stop requiring libssl from openssl
+  * disable DSA by default
+  * hostkey: do not advertise ssh-rsa when SHA1 is disabled
+  * kex: prevent possible double free of hostkey
+  * kex: always check for null pointers before calling _libssh2_bn_set_word
+  * kex: fix a memory leak in key exchange
+  * kex: always add extension indicators to kex_algorithms
+  * md5: allow disabling old-style encrypted private keys at build-time
+  * openssl: free allocated resources when using openssl3
+  * openssl: fix memory leaks in '_libssh2_ecdsa_curve_name_with_octal_new'
+    and '_libssh2_ecdsa_verify'
+  * openssl: fix calculating DSA public key with OpenSSL 3
+  * openssl: initialize BIGNUMs to NULL in 'gen_publickey_from_dsa' for OpenSSL 3
+  * openssl: fix cppcheck found NULL dereferences
+  * openssl: delete internal 'read_openssh_private_key_from_memory()'
+  * openssl: use OpenSSL 3 HMAC API, add 'no-deprecated' CI job
+  * openssl: make a function static, add '#ifdef' comments
+  * openssl: fix DSA code to use OpenSSL 3 API
+  * openssl: fix 'EC_KEY' reference with OpenSSL 3 'no-deprecated' build
+  * openssl: use non-deprecated APIs with OpenSSL 3.x
+  * openssl: silence '-Wunused-value' warnings
+  * openssl: add missing check for 'LIBRESSL_VERSION_NUMBER' before use
+  * packet: properly bounds check packet_authagent_open()
+  * pem: fix private keys encrypted with AES-GCM methods
+  * reuse: provide SPDX identifiers
+  * scp: fix missing cast for targets without large file support
+  * session: support server banners up to 8192 bytes
+  * session: add 'libssh2_session_callback_set2()'
+  * session: handle EINTR from send/recv/poll/select to try again as the error is not fatal
+  * sftp: increase SFTP_HANDLE_MAXLEN back to 4092
+  * sftp: implement posix-rename@openssh.com
+  * src: implement chacha20-poly1305@openssh.com
+  * src: check the return value from '_libssh2_bn_*()' functions
+  * src: support RSA-SHA2 cert-based authentication (rsa-sha2-512_cert and rsa-sha2-256_cert)
+  * src: check hash update/final success
+  * src: check hash init success
+  * src: add 'strict KEX' to fix CVE-2023-48795 "Terrapin Attack"
+  * transport: fix unstable connections over non-blocking sockets
+  * transport: check ETM on remote end when receiving
+  * transport: fix incorrect byte offset in debug message
+  * userauth: avoid oob with huge interactive kbd response
+  * userauth: add a new structure to separate memory read and file read
+  * userauth: check whether '*key_method' is a NULL pointer instead of 'key_method'
+  * Rebase libssh2-ocloexec.patch
+  * Remove patches fixed upstream:
+    - libssh2_org-CVE-2023-48795.patch
+    - libssh2_org-CVE-2023-48795-ext.patch
+    - libssh2_org-ETM-remote.patch
+
+-------------------------------------------------------------------
 Tue Apr  2 16:48:26 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Fix an issue with Encrypt-then-MAC family. [bsc#1221622]

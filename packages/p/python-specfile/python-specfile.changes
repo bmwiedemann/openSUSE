@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 14 05:42:51 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 0.32.6:
+  * New minor release for testing in CBS Koji
+  * fix: assert existence of stderr
+
+-------------------------------------------------------------------
 Tue Oct 29 10:40:28 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.32.5

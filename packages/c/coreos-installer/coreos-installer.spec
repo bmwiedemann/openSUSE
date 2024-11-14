@@ -17,7 +17,7 @@
 
 
 Name:           coreos-installer
-Version:        0.22.1
+Version:        0.23.0
 Release:        0
 Summary:        Installer for CoreOS disk images
 License:        Apache-2.0

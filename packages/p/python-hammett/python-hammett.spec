@@ -17,7 +17,7 @@
 
 
 Name:           python-hammett
-Version:        0.9.4
+Version:        0.10.0
 Release:        0
 Summary:        Fast python test runner
 License:        BSD-3-Clause

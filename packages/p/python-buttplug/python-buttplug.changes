@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 14 09:11:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.0:
+  * switch to maintained fork of the library
+
+-------------------------------------------------------------------
 Mon Jan 24 14:55:41 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop ((python3-dataclasses and python3-base < 3.7) or
@@ -20,7 +26,7 @@ Thu Jan 21 14:55:46 UTC 2021 - Markéta Machová <mmachova@suse.com>
 Sun Nov 22 08:46:29 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 0.2.0.
-  * DeviceRemoved event no longer tries to use non-existent dict 
+  * DeviceRemoved event no longer tries to use non-existent dict
     method.
   * Fixed wrong enum naming.
   * Client now actually sends client name.
@@ -28,7 +34,7 @@ Sun Nov 22 08:46:29 UTC 2020 - andy great <andythe_great@pm.me>
 -------------------------------------------------------------------
 Mon May 25 10:50:16 UTC 2020 - andy great <andythe_great@pm.me>
 
-- Fix pytest version. 
+- Fix pytest version.
 
 -------------------------------------------------------------------
 Sun May 24 16:53:39 UTC 2020 - andy great <andythe_great@pm.me>
@@ -38,4 +44,4 @@ Sun May 24 16:53:39 UTC 2020 - andy great <andythe_great@pm.me>
 -------------------------------------------------------------------
 Thu May  7 00:15:12 UTC 2020 - andy great <andythe_great@pm.me>
 
-- Initial package release. 
+- Initial package release.

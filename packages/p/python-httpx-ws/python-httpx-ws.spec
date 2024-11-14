@@ -17,7 +17,7 @@
 
 
 Name:           python-httpx-ws
-Version:        0.6.0
+Version:        0.6.2
 Release:        0
 Summary:        WebSockets support for HTTPX
 License:        MIT

@@ -15,28 +15,30 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %if 0%{?suse_version} && 0%{?suse_version} < 1550
 %global force_gcc_version 13
 %endif
 
 %{?sle15_python_module_pythons}
 Name:           python-tokenizers
-Version:        0.20.0
+Version:        0.20.3
 Release:        0
 Summary:        Provides an implementation of today's most used tokenizers
 License:        Apache-2.0
 URL:            https://github.com/huggingface/tokenizers
 Source0:        https://github.com/huggingface/tokenizers/archive/refs/tags/v%{version}.tar.gz#/tokenizers-%{version}.tar.gz
-Source1:        vendor.tar.zst
+Source1:        registry.tar.zst
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module maturin}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  cargo-packaging
-BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  fdupes
+BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  python-rpm-macros
 BuildRequires:  zstd
+ExclusiveArch:  %{rust_tier1_arches}
 Requires:       python-huggingface-hub
 %python_subpackages
 
@@ -55,9 +57,12 @@ performance and versatility.
   needs.
 
 %prep
-%autosetup -p1 -n tokenizers-%{version} -a1
+%autosetup -p1 -n tokenizers-%{version}
+rm -rfv .cargo
+tar xf %{S:1} -C $PWD
 
 %build
+export CARGO_HOME=$PWD/.cargo
 export CARGO_NET_OFFLINE=true
 export CARGO_PROFILE_RELEASE_DEBUG=full
 export CARGO_PROFILE_RELEASE_SPLIT_DEBUGINFO=off
@@ -80,6 +85,7 @@ pushd bindings/python
 %python_expand %fdupes %{buildroot}/%{$python_sitearch}/*
 
 %check
+export CARGO_HOME=$PWD/.cargo
 %if 0%{?force_gcc_version}
 export CC="gcc-%{?force_gcc_version}"
 export CXX="g++-%{?force_gcc_version}"

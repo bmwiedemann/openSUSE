@@ -92,6 +92,8 @@ Source99:       webkit2gtk3.keyring
 
 # PATCH-FEATURE-OPENSUSE reproducibility.patch -- Make build reproducible
 Patch0:         reproducibility.patch
+# PATCH-FIX-UPSTREAM 9e9ea966373d3858668f6a29d8ba91a5807c8dd8.patch -- Fix aspect ratio with gst-1.24.9
+Patch1:         https://github.com/WebKit/WebKit/commit/9e9ea966373d3858668f6a29d8ba91a5807c8dd8.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel

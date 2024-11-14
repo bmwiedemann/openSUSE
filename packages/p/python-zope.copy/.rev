@@ -33,4 +33,16 @@
     <comment></comment>
     <requestid>1092198</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e0ba4cbb80fe76c075dc76df2140cecd</srcmd5>
+    <version>5.0</version>
+    <time>1731596909</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.0:
+  * Add support for Python 3.12, 3.13.
+  * Depend on zodbpickle instead of Python's pickle, to be able
+    to support Python 3.13 properly.
+  * Drop support for Python 2.7, 3.5, 3.6, 3.7.</comment>
+    <requestid>1223953</requestid>
+  </revision>
 </revisionlist>

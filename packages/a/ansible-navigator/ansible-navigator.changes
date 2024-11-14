@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 13 14:34:53 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 24.10.0:
+  * Enhancements
+    - Add support for py313 (#1871) @abhikdps
+  * Bugfixes
+    - Allow images subcommand to display the resulting output in
+      JSON format (#1872) @shatakshiiii
+
+-------------------------------------------------------------------
 Thu Sep 12 06:27:52 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 24.9.0:

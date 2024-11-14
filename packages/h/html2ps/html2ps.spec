@@ -1,7 +1,7 @@
 #
 # spec file for package html2ps
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,34 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           html2ps
-Version:        1.0b5
+Version:        1.0b7
 Release:        0
-Url:            http://user.it.uu.se/~jan/html2ps.html
+URL:            http://user.it.uu.se/~jan/html2ps.html
 Summary:        HTML to PostScript Converter
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/HTML/Tools
 Source0:        http://user.it.uu.se/~jan/%name-%version.tar.gz
 Source1:        html2psrc
-Patch0:         %{name}-%{version}-open.diff
-Patch1:         %{name}-%{version}-opt.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Patch0:         %{name}-1.0b5-open.diff
+Patch1:         %{name}-1.0b5-opt.diff
+Patch2:         document_dsc_option.patch
+Patch3:         remove_latin1_char.patch
+Patch4:         xhtml2ps_defaults.patch
+Patch5:         default_paper_size.patch
+Patch6:         proper_variable_escaping.patch
+Patch7:         shell_tricks_removed.patch
+Patch8:         large_eps_fix.patch
+Patch9:         DSC_to_dsc.patch
+Patch10:        fix_ps.patch
+Patch11:        checker_warning.patch
+Patch12:        upstream_changelog.patch
+Patch13:        perl-deprecations.patch
+Patch14:        html2ps-1.0b7-tmpname.patch
 BuildRequires:  ImageMagick
 BuildRequires:  ghostscript-fonts-std
 BuildRequires:  ghostscript-x11
@@ -37,6 +49,7 @@ BuildRequires:  perl-libwww-perl
 BuildRequires:  texlive-latex
 Requires:       ImageMagick
 Requires:       ghostscript_any
+Requires:       gv
 Requires:       netpbm
 Requires:       perl
 Requires:       perl-libwww-perl
@@ -59,7 +72,7 @@ many of the HTML 4.0 features.	From the home page
 * Automatic hyphenation and text justification can be selected.
 
 %prep
-%autosetup -p0
+%autosetup -p1
 
 %build
 
@@ -77,7 +90,8 @@ install -m644 html2psrc.5 %{buildroot}/%{_mandir}/man5/
 
 %files
 %defattr(-, root, root)
-%doc COPYING README html2ps.html
+%license COPYING
+%doc README html2ps.html
 %config %{_sysconfdir}/html2psrc
 %doc %{_mandir}/man?/*
 %{_bindir}/html2ps

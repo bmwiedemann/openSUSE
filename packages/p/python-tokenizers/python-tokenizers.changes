@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Nov  7 11:30:50 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Select only rust tier 1 arches. 
+- Update registry.tar.zst dependencies
+- Update version to 0.20.3:
+  * fix pylist
+  * [MINOR:TYP] Fix docstrings
+- Updates from 0.20.2:
+  * Bump cookie and express in /tokenizers/examples/unstable_wasm/www
+  * Fix off-by-one error in tokenizer::normalizer::Range::len
+  * Arg name correction: auth_token -> token
+  * Unsound call of set_var
+  * Add safety comments
+  * PyO3 0.22
+- Updates from 0.20.1:
+  * Update README.md
+  * fix benchmark file link
+  * [ignore_merges] Fix offsets
+  * Bump body-parser and express in /tokenizers/examples/unstable_wasm/www
+  * Bump serve-static and express in /tokenizers/examples/unstable_wasm/www
+  * Bump send and express in /tokenizers/examples/unstable_wasm/www
+  * Bump webpack from 5.76.0 to 5.95.0 in /tokenizers/examples/unstable_wasm/www
+  * Fix documentation build
+  * style: simplify string formatting for readability
+
+-------------------------------------------------------------------
+Sun Nov  3 12:22:13 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Experiment with cargo vendor home registry. See documentation:
+  https://github.com/openSUSE-Rust/obs-service-cargo/blob/master/README.md#cargo-vendor-home-registry
+
+-------------------------------------------------------------------
 Mon Sep 23 07:19:52 UTC 2024 - Simon Lees <sflees@suse.de>
 
 - Don't use macros for Requires

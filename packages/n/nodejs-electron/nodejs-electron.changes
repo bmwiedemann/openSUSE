@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov 12 22:49:39 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 31.7.4
+  * Fixed segfault when moving WebContentsView between BrowserWindows
+  * Fix type confusion in v8 (CVE-2024-10231 bsc#1232060)
+- Fedora 40+ build with system ada url (system-ada-url.patch)
+
+-------------------------------------------------------------------
+Sun Nov 10 09:28:49 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Fix build on Fedora 41+:
+  * zip_internal-missing-uLong-Z_DEFAULT_COMPRESSION.patch
+  * swiftshader-llvm19-LLVMJIT-getHostCPUFeatures.patch
+  * swiftshader-llvm19-LLVMReactor-incomplete-Module.patch
+  * build with system minizip, yuv, simdutf, re2
+
+-------------------------------------------------------------------
 Tue Oct 29 10:01:13 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 31.7.3

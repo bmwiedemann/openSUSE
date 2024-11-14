@@ -1,7 +1,7 @@
 #
 # spec file for package python-netpbmfile
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,28 +16,27 @@
 #
 
 
-%define skip_python2 1
-%define skip_python36 1
-%define packagename netpbmfile
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-netpbmfile
-Version:        2023.8.30
+Version:        2024.5.24
 Release:        0
 Summary:        Read and write image files in the Netpbm format
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            https://www.lfd.uci.edu/~gohlke/
-Source:         https://github.com/cgohlke/netpbmfile/archive/v%{version}.tar.gz#/%{packagename}-%{version}.tar.gz
+URL:            https://github.com/cgohlke/netpbmfile/
+Source:         https://github.com/cgohlke/netpbmfile/archive/v%{version}.tar.gz#/netpbmfile-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module matplotlib >= 3.2}
-BuildRequires:  %{python_module numpy >= 1.15}
+BuildRequires:  %{python_module numpy >= 1.26.4}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-matplotlib >= 3.2
-Requires:       python-numpy >= 1.15
+Requires:       python-numpy >= 1.26.4
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -46,27 +45,27 @@ Netpbmfile is a Python library to read and write image files in the Netpbm
 format.
 
 %prep
-%setup -q -n %{packagename}-%{version}
+%setup -q -n netpbmfile-%{version}
 # Fix warning: wrong end-of-line encoding
 sed -i 's/\r//' README.rst
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-for p in %{packagename} ; do
+%pyproject_install
+for p in netpbmfile ; do
     %python_clone -a %{buildroot}%{_bindir}/$p
 done
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%prepare_alternative %{packagename}
+%prepare_alternative netpbmfile
 
 %post
-%python_install_alternative %{packagename}
+%python_install_alternative netpbmfile
 
 %postun
-%python_uninstall_alternative %{packagename}
+%python_uninstall_alternative netpbmfile
 
 %check
 # Test not provided
@@ -74,8 +73,8 @@ done
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%python_alternative %{_bindir}/%{packagename}
-%{python_sitelib}/*egg-info/
-%{python_sitelib}/%{packagename}/
+%python_alternative %{_bindir}/netpbmfile
+%{python_sitelib}/netpbmfile
+%{python_sitelib}/netpbmfile-%{version}.dist-info
 
 %changelog

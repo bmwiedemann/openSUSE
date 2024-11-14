@@ -122,4 +122,41 @@
     <comment></comment>
     <requestid>1149048</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>ee4fe0ed8419ac0b2e0110b4a4c0056e</srcmd5>
+    <version>1.0b7</version>
+    <time>1731596899</time>
+    <user>anag+factory</user>
+    <comment>- Add patch html2ps-1.0b7-tmpname.patch 
+  * Close the race between tmpnam() and sysopen
+
+- Modify patch xhtml2ps_defaults.patch as we have no &quot;see&quot;
+  ... use &quot;gv -media=a4 -scale -2&quot; 
+
+- Update ot 1.0b7
+  * Fixed a bug introduced by the previous bug fix...
+  * 1.0b6
+    &quot;Security&quot; fix. Changed behavior for SSI, to avoid having
+    arbitrary readable files disclosed on a web server that uses
+    html2ps in a web application (cgi script etc), allowing HTML
+    files to be uploaded for conversion. Setting up a service like
+    this is begging for trouble in my opinion. (Is /bin/cat also
+    a vulnerability, since one can use it in a web app, allowing
+    uploading arbitrary parameters to it?)
+- Port patches
+  html2ps-1.0b5-open.diff
+  html2ps-1.0b5-opt.diff
+- Add and port Debian patch set (boo#1214060)
+  * document_dsc_option.patch
+  * remove_latin1_char.patch
+  * xhtml2ps_defaults.patch
+  * default_paper_size.patch
+  * proper_variable_escaping.patch
+  * shell_tricks_removed.patch
+  * large_eps_fix.patch
+  * DSC_to_dsc.patch
+  * fix_ps.patch
+  * checker_warning.patch</comment>
+    <requestid>1224095</requestid>
+  </revision>
 </revisionlist>

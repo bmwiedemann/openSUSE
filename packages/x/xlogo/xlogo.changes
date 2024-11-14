@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov 14 02:17:49 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.7
+  * Print which arguments were unknown before giving usage message
+  * Add -help and -version options
+  * Mark Syntax() with noreturn attribute
+  * Clear up 17 -Wunused-parameter warnings from clang 13
+  * Fix -Wextra-semi-stmt from donestr() macro
+  * Use struct initializers
+  * Handle -Wsign-compare warning in Syntax()
+  * Add -help and -version to man page and usage output
+  * Fix up copyright & license notices in COPYING & xlogo.c
+
+-------------------------------------------------------------------
 Sun Nov 13 20:32:20 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.0.6

@@ -17,24 +17,22 @@
 
 
 Name:           python-magic-wormhole-transit-relay
-Version:        0.2.1
+Version:        0.4.0
 Release:        0
 Summary:        Transit Relay server for Magic-Wormhole
 License:        MIT
 URL:            https://github.com/warner/magic-wormhole-transit-relay
 Source:         https://files.pythonhosted.org/packages/source/m/magic-wormhole-transit-relay/magic-wormhole-transit-relay-%{version}.tar.gz
-# https://github.com/magic-wormhole/magic-wormhole/issues/439
-Patch0:         python-magic-wormhole-transit-relay-no-mock.patch
-# PATCH-FIX-UPSTREAM gh#magic-wormhole/magic-wormhole-transit-relay#36
-Patch1:         support-python312.patch
-BuildRequires:  %{python_module Twisted >= 17.5.0}
+BuildRequires:  %{python_module Twisted >= 21.2.0}
+BuildRequires:  %{python_module autobahn >= 21.3.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Twisted >= 17.5.0
+Requires:       python-Twisted >= 21.2.0
+Requires:       python-autobahn >= 21.3.1
 BuildArch:      noarch
 %python_subpackages
 
@@ -52,6 +50,8 @@ Transit Relay server for Magic-Wormhole
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# test_backpressure.py: tests here need internet connection
+rm src/wormhole_transit_relay/test/test_backpressure.py
 %pytest src/wormhole_transit_relay/test
 
 %files %{python_files}

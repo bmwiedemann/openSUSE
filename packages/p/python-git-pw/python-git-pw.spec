@@ -16,10 +16,10 @@
 #
 
 
-%define modname git-pw
+%define modname git_pw
 %define skip_python2 1
 Name:           python-git-pw
-Version:        2.6.0
+Version:        2.7.0
 Release:        0
 Summary:        A tool for integrating Git with Patchwork
 License:        MIT
@@ -43,8 +43,8 @@ Requires:       python-click >= 6.0
 Requires:       python-pyaml >= 5.1
 Requires:       python-requests > 2.0
 Requires:       python-tabulate >= 0.8
-Provides:       %{modname} = %{version}
-Obsoletes:      %{modname} < %{version}
+Provides:       git-pw = %{version}
+Obsoletes:      git-pw < %{version}
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 %python_subpackages

@@ -55,4 +55,15 @@
   * Fix ignored flags when use `force_cache`.</comment>
     <requestid>1219201</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>54186cac844a01c2bfe483ce2264db52</srcmd5>
+    <version>0.1.1</version>
+    <time>1731596933</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.1.1:
+  * FIx typig extensions nor found.
+  * Add support for Python 3.12 / drop Python 3.8.
+  * Specify usedforsecurity=False in blake2b.</comment>
+    <requestid>1223984</requestid>
+  </revision>
 </revisionlist>

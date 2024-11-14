@@ -255,7 +255,7 @@ This package contains the basic packages for a Plasma workspace.
 
 %package libs
 Summary:        The KDE Plasma Workspace Components
-%requires_ge    plasma6-framework
+Requires:       plasma6-framework >= %{_plasma6_bugfix}
 Provides:       plasma5-workspace-libs = %{version}
 Obsoletes:      plasma5-workspace-libs < %{version}
 

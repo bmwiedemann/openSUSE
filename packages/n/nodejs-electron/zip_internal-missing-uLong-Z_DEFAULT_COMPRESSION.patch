@@ -1,0 +1,12 @@
+--- src/third_party/zlib/google/zip_internal.cc.orig	2024-10-29 10:10:50.788206000 +0100
++++ src/third_party/zlib/google/zip_internal.cc	2024-11-07 22:19:00.748569000 +0100
+@@ -9,6 +9,9 @@
+ 
+ #include <algorithm>
+ 
++#include <zconf.h>
++#include <zlib.h>
++
+ #include "base/containers/fixed_flat_set.h"
+ #include "base/files/file_path.h"
+ #include "base/logging.h"

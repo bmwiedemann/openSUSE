@@ -2,14 +2,14 @@
  html2ps |    4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
---- html2ps
-+++ html2ps	2017-05-12 07:20:11.170020495 +0000
+--- a/html2ps
++++ b/html2ps	2017-05-12 07:20:11.170020495 +0000
 @@ -26,8 +26,8 @@ eval 'exec perl -S $0 "$@"'
  # Set the name of the global configuration file. See the installation notes
  # and manual page for more details on configuration files.
  
--$globrc='/opt/misc/lib/html2ps/html2psrc';
--$ug='/opt/misc/lib/html2ps/html2ps.html';
+-$globrc='/it/sw/share/www/lib/html2ps/html2psrc';
+-$ug='/it/sw/share/www/lib/html2ps/html2ps.html';
 +$globrc='/etc/html2psrc';
 +$ug='/usr/share/doc/packages/html2ps/html2ps.html';
  

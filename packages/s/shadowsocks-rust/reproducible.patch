@@ -1,0 +1,48 @@
+From 853a860dd9095b7ed2f95d5aac62f8f1dcc0d229 Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Wed, 28 Jun 2023 16:48:35 +0200
+Subject: [PATCH] Allow to override build date with SOURCE_DATE_EPOCH
+
+in order to make builds reproducible.
+See https://reproducible-builds.org/ for why this is good
+and https://reproducible-builds.org/specs/source-date-epoch/
+for the definition of this variable.
+
+This patch was done while working on reproducible builds for openSUSE.
+
+Index: shadowsocks-rust-1.20.4/Cargo.toml
+===================================================================
+--- shadowsocks-rust-1.20.4.orig/Cargo.toml
++++ shadowsocks-rust-1.20.4/Cargo.toml
+@@ -281,3 +281,6 @@ byteorder = "1.5"
+ env_logger = "0.11"
+ byte_string = "1.0"
+ tokio = { version = "1", features = ["net", "time", "macros", "io-util"] }
++
++[patch.crates-io]
++build-time = { path="vendor/build-time" }
+diff --git a/build-time/src/lib.rs b/build-time/src/lib.rs
+index c3484307..7ae9e03e 100644
+--- a/vendor/build-time/src/lib.rs
++++ b/vendor/build-time/src/lib.rs
+@@ -28,14 +28,18 @@ let local_build_time = build_time_local!("%Y-%m-%dT%H:%M:%S%.f%:z");
+ ```
+ */
+ 
+-use chrono::{DateTime, Local, Utc};
++use chrono::{DateTime, Local, TimeZone, Utc};
+ use once_cell::sync::Lazy;
+ use proc_macro::TokenStream;
+ use proc_macro2::Span;
+ use quote::quote;
++use std::env;
+ use syn::{parse_macro_input, LitStr};
+ 
+-static BUILD_TIME: Lazy<DateTime<Utc>> = Lazy::new(Utc::now);
++static BUILD_TIME: Lazy<DateTime<Utc>> = Lazy::new(|| match env::var("SOURCE_DATE_EPOCH") {
++        Ok(val) => { Utc.timestamp_opt(val.parse::<i64>().unwrap(), 0).unwrap() }
++        Err(_) => Utc::now(),
++    });
+ 
+ /// Build time in UTC.
+ ///

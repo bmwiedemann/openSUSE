@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov 12 12:42:51 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to version 0.17.0
+  * Incorporate attrs' zope-interface support
+  * Add "codespell" to correct spelling
+  * Fix bash completions
+  * run tests properly when Noise is not installed
+  * Updated to python-spake2 version 0.9
+  * Removed more Python2-isms
+  * Bump magic-wormhole-transit-relay to 0.3.1 for testing
+- Add upstream twisted.patch
+  * Fix test regression under Twisted 24.10.0
+
+-------------------------------------------------------------------
 Mon Apr 29 05:19:22 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update URL. The old URL redirects to the magic-wormhole org.

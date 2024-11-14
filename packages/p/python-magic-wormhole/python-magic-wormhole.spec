@@ -16,14 +16,16 @@
 #
 
 
-%define modname magic-wormhole
+%define modname magic_wormhole
 Name:           python-magic-wormhole
-Version:        0.14.0
+Version:        0.17.0
 Release:        0
 Summary:        Tool for transferring files through a secure channel
 License:        MIT
 URL:            https://github.com/magic-wormhole/magic-wormhole
-Source:         https://files.pythonhosted.org/packages/source/m/magic-wormhole/%{modname}-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/m/%{modname}/%{modname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/magic-wormhole/magic-wormhole/pull/554 fix test under Twisted 24.10.0
+Patch0:         twisted.patch
 BuildRequires:  %{python_module Automat}
 BuildRequires:  %{python_module PyNaCl}
 BuildRequires:  %{python_module Twisted}
@@ -34,12 +36,12 @@ BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module humanize}
 BuildRequires:  %{python_module iterable-io >= 1.0.0}
 BuildRequires:  %{python_module magic-wormhole-mailbox-server}
-BuildRequires:  %{python_module magic-wormhole-transit-relay}
+BuildRequires:  %{python_module magic-wormhole-transit-relay >= 0.3.1}
 BuildRequires:  %{python_module noiseprotocol}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module spake2 >= 0.8}
+BuildRequires:  %{python_module spake2 >= 0.9}
 BuildRequires:  %{python_module tqdm >= 4.13.0}
 BuildRequires:  %{python_module txtorcon >= 18.0.2}
 BuildRequires:  %{python_module versioneer}
@@ -61,7 +63,7 @@ Requires:       python-click
 Requires:       python-cryptography
 Requires:       python-humanize
 Requires:       python-iterable-io >= 1.0.0
-Requires:       python-spake2 >= 0.8
+Requires:       python-spake2 >= 0.9
 Requires:       python-tqdm >= 4.13.0
 Requires:       python-txtorcon >= 18.0.2
 Requires:       python-zipstream-ng >= 1.7.1
@@ -114,7 +116,7 @@ BuildArch:      noarch
 Zsh command-line completion support for %{name}.
 
 %prep
-%autosetup -n %{modname}-%{version}
+%autosetup -p1 -n %{modname}-%{version}
 
 %build
 %pyproject_wheel

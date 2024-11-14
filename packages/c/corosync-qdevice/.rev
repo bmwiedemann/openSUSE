@@ -7,4 +7,14 @@
     <comment>corosync3 update, qnetd and qdevice are now in a separate code stream.</comment>
     <requestid>1180327</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>646b7048f17314a09aa88ad1fec2a3d4</srcmd5>
+    <version>3.0.3</version>
+    <time>1731596989</time>
+    <user>anag+factory</user>
+    <comment>- Add a patch to harden services with systemd sandboxing:
+  * 0001-harden-services-with-systemd-sandboxing.patch
+</comment>
+    <requestid>1224101</requestid>
+  </revision>
 </revisionlist>

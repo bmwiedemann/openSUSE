@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov 13 12:28:07 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 24.8.0
+  * Drop typing_extensions dependency. Drop the use of the Self component 
+    from typing_extensions and use the typing library instead
+  * 24.6 contains a major internal refactoring and drops support for GMP < 22.4.
+  * Use base enum class for most enums in python-gvm
+  * Enable "security-and-quality" quereis for CodeQL
+  * Many more changes, see upstream changelog
+
+-------------------------------------------------------------------
 Tue Aug  1 08:33:40 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Update to 23.5.0

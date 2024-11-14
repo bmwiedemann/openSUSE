@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 12 13:58:39 UTC 2024 - aplanas@suse.com
+
+- Update to version 1+git20241112.ecf5f97:
+  * Move enrollment from disk-encryption-tool
+  * Use [/usr]/etc/default/fde-tools as config file
+
+-------------------------------------------------------------------
 Thu Nov 07 19:42:43 UTC 2024 - aplanas@suse.com
 
 - Update to version 1+git20241107.6f81ff3:

@@ -236,4 +236,24 @@
   * test_pkgname_with_dashes</comment>
     <requestid>1153255</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f63bb10444a2afe1e3aa9b9a558d9aa8</srcmd5>
+    <version>7.2.0</version>
+    <time>1731596913</time>
+    <user>anag+factory</user>
+    <comment>- Update to 7.2.0
+  * Support --no-docs and --only-docs for push command.
+  * Support --register-project for push command to external index.
+  * Add support for uv.conf to devpi use --set-cfg.
+  * fixed encoding issues when decoding output of subprocesses.
+  * require pkginfo &gt;= 1.10.0 which supports newer metadata versions.
+
+- update to 7.1.0
+  * Require build&gt;=0.7.0 to prevent import error with older versions.
+  * Provide proper error message if the API request for devpi use fails.
+  * Fix #1011: change HTTP status codes &gt;=400 to use self.fatal instead 
+    of raw SystemExit, protect 403 and 404 errors from SystemExit
+  * Support using various kinds of devpi tools with pyproject.toml.</comment>
+    <requestid>1223955</requestid>
+  </revision>
 </revisionlist>

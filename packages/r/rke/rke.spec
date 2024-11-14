@@ -17,14 +17,14 @@
 
 
 Name:           rke
-Version:        1.6.3
+Version:        1.6.4
 Release:        0
 Summary:        Rancher Kubernetes Engine
 License:        Apache-2.0
 URL:            https://github.com/rancher/rke
 Source:         rke-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.22
+BuildRequires:  go >= 1.22.8
 
 %description
 RKE is a fast, versatile Kubernetes installer that you can use to install
@@ -36,8 +36,7 @@ both simplified and easily automated, and it’s entirely independent of the
 operating system and platform you’re running.
 
 %prep
-%setup -q
-%setup -q -T -D -a 1
+%autosetup -p 1 -a 1
 
 %build
 go build \

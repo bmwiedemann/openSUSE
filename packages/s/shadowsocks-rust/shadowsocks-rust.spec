@@ -29,6 +29,8 @@ Source2:        %{name}.json
 Source3:        %{name}-client.service
 Source4:        %{name}-server.service
 Source5:        %{name}-manager.service
+# PATCH-FIX-UPSTREAM  https://github.com/AlephAlpha/build-time/pull/5
+Patch0:         reproducible.patch
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  systemd-rpm-macros

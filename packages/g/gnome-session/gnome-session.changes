@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 13 08:00:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Move update-alternative post/postun scriptlets from the main
+  package to the xsession sub-package (boo#1233299).
+- Drop gnome-session-default-session: this was there to also
+  support the alternative fallback-session, but that one was
+  dropped at the times of GNOME 3.8.
+
+-------------------------------------------------------------------
 Wed Oct 30 07:54:32 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Split out new sub-package gnome-session-xsession.

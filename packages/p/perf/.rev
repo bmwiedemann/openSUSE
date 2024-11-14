@@ -690,4 +690,13 @@
   on &lt; 6.12)</comment>
     <requestid>1217159</requestid>
   </revision>
+  <revision rev="80" vrev="89">
+    <srcmd5>82ba2f96f7a3ef82e8756e46c2697b2d</srcmd5>
+    <version>MACRO</version>
+    <time>1731596994</time>
+    <user>anag+factory</user>
+    <comment>- drop perf-fix-non-listed-archs.patch
+  it was merged to 6.11.7</comment>
+    <requestid>1224125</requestid>
+  </revision>
 </revisionlist>

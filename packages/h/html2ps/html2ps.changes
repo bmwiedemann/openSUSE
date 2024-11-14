@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Nov 14 08:20:51 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch html2ps-1.0b7-tmpname.patch 
+  * Close the race between tmpnam() and sysopen
+
+-------------------------------------------------------------------
+Tue Nov 12 10:25:10 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Modify patch xhtml2ps_defaults.patch as we have no "see"
+  ... use "gv -media=a4 -scale -2" 
+
+-------------------------------------------------------------------
+Tue Nov 12 08:35:20 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Update ot 1.0b7
+  * Fixed a bug introduced by the previous bug fix...
+  * 1.0b6
+    "Security" fix. Changed behavior for SSI, to avoid having
+    arbitrary readable files disclosed on a web server that uses
+    html2ps in a web application (cgi script etc), allowing HTML
+    files to be uploaded for conversion. Setting up a service like
+    this is begging for trouble in my opinion. (Is /bin/cat also
+    a vulnerability, since one can use it in a web app, allowing
+    uploading arbitrary parameters to it?)
+- Port patches
+  html2ps-1.0b5-open.diff
+  html2ps-1.0b5-opt.diff
+- Add and port Debian patch set (boo#1214060)
+  * document_dsc_option.patch
+  * remove_latin1_char.patch
+  * xhtml2ps_defaults.patch
+  * default_paper_size.patch
+  * proper_variable_escaping.patch
+  * shell_tricks_removed.patch
+  * large_eps_fix.patch
+  * DSC_to_dsc.patch
+  * fix_ps.patch
+  * checker_warning.patch
+  * upstream_changelog.patch
+  * perl-deprecations.patch
+
+-------------------------------------------------------------------
 Thu Feb 22 07:53:41 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

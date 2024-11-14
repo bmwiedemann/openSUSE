@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov 12 12:46:00 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.29.3
+  * Fix checksum install location by @sbiscigl in (#680)
+- from version 0.29.2
+  * Stop building s2n via aws_prebuild_dependency()
+    by @graebm in (#677)
+- from version 0.29.1
+  * chore: Modified bug issue template to add checkbox to
+    report potential regression. by @ashishdhingra in (#661)
+  * Fix s2n cleanup by @graebm in (#672)
+  * Use S2N-TLS v1.5.7 by @graebm in (#673)
+  * Fix crashes in GCC 4.x shared-libs builds, due to
+    recent symbol visibility changes by @graebm in (#675)
+
+-------------------------------------------------------------------
 Thu Oct 24 11:57:53 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.29.0

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-hishel
-Version:        0.0.33
+Version:        0.1.1
 Release:        0
 Summary:        Persistent cache implementation for httpx and httpcore
 License:        BSD-3-Clause

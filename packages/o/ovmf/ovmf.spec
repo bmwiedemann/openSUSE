@@ -297,7 +297,7 @@ FLAVORS_X64=("ovmf-x86_64" "ovmf-x86_64-4m" "ovmf-x86_64-smm" "ovmf-x86_64-sev")
 # Flavors will NOT enroll default kek/db keys
 FLAVORS_X64_SKIP_SB_KEY=("ovmf-x86_64-sev")
 # Flavors only support unified image (no separate *-code/-vars files)
-FLAVORS_X64_UNIFIED_ONLY=("ovmf-x86_64-sev")
+FLAVORS_X64_UNIFIED_ONLY=("")
 BUILD_OPTIONS_X64=" \
 	$OVMF_FLAGS \
 	-D BUILD_SHELL=FALSE \

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 12 16:47:56 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+ - Update to 2.14.3
+   - Security: fix TLS certificate validation bypass. CVE-2024-49369 (boo#1233310)
+   - Security: update OpenSSL shipped on Windows to v3.0.15.
+   - Windows: sign MSI packages with a certificate the OS trusts by default.
+- Revision and cleanup of the spec file to remove errors and make it clearer.
+
+-------------------------------------------------------------------
 Thu Feb 22 13:38:43 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

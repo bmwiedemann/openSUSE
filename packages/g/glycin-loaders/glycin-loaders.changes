@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 13 10:23:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update vendor tarball.
+- Add glycin-loaders-libheif-non-default.patch: change setting to
+  rebuld libheif-rs create as a workaround
+  (gh#Cykooz/libheif-rs#28).
+
+-------------------------------------------------------------------
 Wed Sep 25 07:28:00 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Temp disable update of vendors, stay with versions specified by

@@ -61,4 +61,19 @@
 - Update to 4.0.0:</comment>
     <requestid>1131725</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f1e19139773d8908fa8de2ac56d29fbe</srcmd5>
+    <version>5.0.0</version>
+    <time>1731596910</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.0.0:
+  * Add support for Python 3.12
+  * BREAKING CHANGE: Arithmetic operations on `date`/`datetime`
+    against an unknown type will now return `NotImplemented`
+    instead of raising `TypeError`
+  * Drop Python 3.7 support
+  * Move jalali.py to jalali_core dependency due to licensing
+    issues #148</comment>
+    <requestid>1219555</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           zypper
-Version:        1.14.77
+Version:        1.14.78
 Release:        0
 Source:         %{name}-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
@@ -28,7 +28,7 @@ BuildRequires:  libboost_headers-devel
 %else
 BuildRequires:  boost-devel >= 1.33.1
 %endif
-BuildRequires:  cmake >= 3.1
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++ >= 7
 BuildRequires:  gettext-devel >= 0.15
 BuildRequires:  libzypp-devel >= 17.35.10

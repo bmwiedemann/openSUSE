@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 13 11:28:01 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.21.2
+  * Fix compatibility with pytest 8.2.
+  * Addresses a Hypothesis health check that leads to failing tests.
+- Drop merged hypothesis-health-check.patch
+
+-------------------------------------------------------------------
 Tue Mar  5 09:40:16 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Copy to legacy package pytest-asyncio0.21 for test suites

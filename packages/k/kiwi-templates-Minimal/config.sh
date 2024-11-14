@@ -144,5 +144,5 @@ if rpm -q sdbootutil; then
 
 	echo "rw quiet systemd.show_status=1 console=ttyS0,115200 console=tty0" > /etc/kernel/cmdline
 
-	[ -e /var/lib/YaST2/reconfig_system ] && systemctl enable disk-encryption-tool-enroll.service
+	[ -e /var/lib/YaST2/reconfig_system ] && systemctl enable sdbootutil-enroll.service
 fi

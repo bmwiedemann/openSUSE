@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov 11 13:15:05 UTC 2024 - dimstar@opensuse.org
+
+- Update to version 2.6.1+git20241111.4884f6a:
+  * SUIDPermissionsCheck: Escape path for regular expression
+  * false positive: systemd-service-without-service_del_postun
+
+-------------------------------------------------------------------
+Thu Nov 07 15:28:46 UTC 2024 - filippo.bonazzi@suse.com
+
+- Update to version 2.6.1+git20241107.1b69a23:
+  * dbus-services: whitelist sddm-kalpa (bsc#1232647)
+  * dbus-services: replace generic comment for sddm
+  * SUIDPermissionsCheck: chkstat to permctl rename
+
+-------------------------------------------------------------------
 Thu Oct 24 11:33:51 UTC 2024 - filippo.bonazzi@suse.com
 
 - Update to version 2.6.1+git20241024.1f09e50:

@@ -169,4 +169,12 @@
   only work on real package names, not on virtual provides.</comment>
     <requestid>1223382</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>1d3a97d784a8d477e77df3d8b9bf527d</srcmd5>
+    <version>6.2.3</version>
+    <time>1731596876</time>
+    <user>anag+factory</user>
+    <comment>- Replace '%requires_ge plasma6-desktop' with 'Requires: plasma6-desktop'</comment>
+    <requestid>1224093</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           consoleet-utils
-Version:        1.7
+Version:        1.8
 Release:        0
 Summary:        Utilities for manipulating terminal fonts and colors
 License:        GPL-3.0-or-later AND MIT

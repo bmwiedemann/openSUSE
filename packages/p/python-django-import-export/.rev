@@ -84,4 +84,41 @@
     aseImportExportMixin.get_resource_kwargs`</comment>
     <requestid>1165877</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b442991a43f830a2f9f204caf2ec5e3a</srcmd5>
+    <version>4.2.1</version>
+    <time>1731596971</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.2.1:
+  * Removed dependency files in favour of pyproject.toml
+  * Documentation updates
+  * Fix crash on export of tz-aware datetime to binary formats
+  * Upgraded tablib version
+  * Document overriding formats
+  * Consistent queryset creation in ModelAdmin export mixin
+  * Improve deprecation warning for ExportViewFormMixin to report at point
+    of class definition
+  * Fix export for fields with custom declared name
+  * Hide the &quot;Resource&quot; form when it only has one option
+  * Update date, time and datetime widget render method to handle derived
+    instance
+  * Add support for Django 5.1
+  * Accept numbers using the numeric separators of the current language in
+    number widgets
+  * Added warning for declared fields excluded from fields whitelist
+  * Fix v3 regression: handle native types on export to spreadsheet
+  * Fix export button displayed on change screen when export permission not
+    assigned
+  * Fix crash for Django 5.1 when rows are skipped
+  * Allow callable in dehydrate method
+  * Fix crash when Resource fields declared incorrectly
+  * Improve Error class
+  * Fix response content assertions
+  * Admin UI: display checkboxes before labels in export form
+  * fix default Field returns empty string instead of None
+  * revert setting default value for attribute
+  * Enable skip export confirm page
+  * fix documentation to show correct method for reading form data on export</comment>
+    <requestid>1224052</requestid>
+  </revision>
 </revisionlist>

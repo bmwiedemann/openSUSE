@@ -16,9 +16,8 @@
 #
 
 
-%define skip_python39 1
 Name:           python-ipytablewidgets
-Version:        0.3.1
+Version:        0.3.2
 Release:        0
 Summary:        Widgets to help facilitate reuse of large tables across widgets
 License:        BSD-3-Clause
@@ -32,7 +31,6 @@ BuildRequires:  %{python_module pandas >= 1.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module traitlets >= 4.3.0}
-BuildRequires:  %{python_module traittypes >= 0.0.6}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-rpm-macros
@@ -42,7 +40,6 @@ Requires:       python-lz4
 Requires:       python-numpy >= 1.10.4
 Requires:       python-pandas >= 1.0.0
 Requires:       python-traitlets >= 4.3.0
-Requires:       python-traittypes >= 0.0.6
 Recommends:     jupyter-ipytablewidgets
 Recommends:     jupyter-ipytablewidgets-jupyterlab
 BuildArch:      noarch

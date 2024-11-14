@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%global skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-mongoengine
-Version:        0.28.2
+Version:        0.29.1
 Release:        0
 Summary:        Python Object-Document Mapper for working with MongoDB
 License:        MIT
@@ -27,9 +26,11 @@ Group:          Development/Languages/Python
 URL:            http://mongoengine.org/
 Source:         https://github.com/MongoEngine/mongoengine/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module blinker}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pymongo >= 3.9}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-blinker
@@ -47,10 +48,10 @@ built on top of PyMongo.
 %setup -q -n mongoengine-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -60,6 +61,7 @@ rm -v tests/test_connection.py
 %files %{python_files}
 %doc AUTHORS README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/mongoengine
+%{python_sitelib}/mongoengine-%{version}.dist-info
 
 %changelog

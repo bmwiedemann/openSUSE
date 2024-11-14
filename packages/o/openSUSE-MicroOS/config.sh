@@ -273,5 +273,5 @@ if rpm -q sdbootutil; then
 
 	echo "${cmdline[*]}" > /etc/kernel/cmdline
 
-	[ -e /var/lib/YaST2/reconfig_system ] && systemctl enable disk-encryption-tool-enroll.service
+	[ -e /var/lib/YaST2/reconfig_system ] && systemctl enable sdbootutil-enroll.service
 fi

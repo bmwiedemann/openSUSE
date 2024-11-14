@@ -82,6 +82,18 @@ menu, and provides the ability to hibernate.
 This package provides the extensions required to switch to
 gnome-shell classic.
 
+%package -n gnome-shell-classic-xsession
+Summary:        Xsession(X11) desktop session
+Requires:       gnome-shell-extensions-common
+Requires:       gnome-shell-classic
+Requires:       gnome-session-xsession
+Provides:       gnome-shell-classic:%{_datadir}/xsessions/gnome-classic-xorg.desktop
+BuildArch:      noarch
+
+%description -n gnome-shell-classic-xsession
+This package allows GNOME Shell to run the session on Xorg (X11).
+
+
 %package -n gnome-shell-extension-user-theme
 Summary:        Allow the user to change GNOME Shell Themes
 Group:          System/GUI/GNOME
@@ -157,14 +169,18 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %dir %{_datadir}/wayland-sessions
 %{_datadir}/wayland-sessions/gnome-classic-wayland.desktop
 %{_datadir}/wayland-sessions/gnome-classic.desktop
+%if 0%{?sle_version}
+%dir %{_datadir}/wayland-sessions
+%{_datadir}/wayland-sessions/default.desktop
+%ghost %{_sysconfdir}/alternatives/default-waylandsession.desktop
+%endif
+
+%files -n gnome-shell-classic-xsession
 %{_datadir}/xsessions/gnome-classic-xorg.desktop
 %{_datadir}/xsessions/gnome-classic.desktop
 %if 0%{?sle_version}
-%dir %{_datadir}/wayland-sessions
 %{_datadir}/xsessions/default.desktop
-%{_datadir}/wayland-sessions/default.desktop
 %ghost %{_sysconfdir}/alternatives/default-xsession.desktop
-%ghost %{_sysconfdir}/alternatives/default-waylandsession.desktop
 %endif
 
 %files -n gnome-shell-extension-user-theme

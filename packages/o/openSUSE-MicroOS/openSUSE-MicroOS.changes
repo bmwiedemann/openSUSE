@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 12 12:25:21 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Use the enrollment packages from sdbootutil
+
+-------------------------------------------------------------------
 Wed Oct  9 09:15:28 UTC 2024 - Stefan Schubert <schubi@suse.com>
 
 - Added package systemd-repart-dracut to kvm-and-xen-sdboot and

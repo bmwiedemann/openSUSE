@@ -50,7 +50,7 @@ Index: synapse/synapse/config/server.py
 ===================================================================
 --- synapse.orig/synapse/config/server.py
 +++ synapse/synapse/config/server.py
-@@ -799,7 +799,7 @@ class ServerConfig(Config):
+@@ -810,7 +810,7 @@ class ServerConfig(Config):
              bind_port = 8448
              unsecure_port = 8008
  

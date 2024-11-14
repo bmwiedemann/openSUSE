@@ -17,7 +17,7 @@
 
 
 Name:           permissions
-Version:        1699_20240522
+Version:        1699_20241029
 Release:        0
 Summary:        SUSE Linux Default Permissions
 # Maintained in github by the security team.
@@ -118,6 +118,7 @@ Tool to check and set file permissions.
 %{_bindir}/chkstat
 %{_bindir}/permctl
 %{_mandir}/man8/permctl.8%{ext_man}
+%{_rpmconfigdir}/macros.d/macros.*
 
 %package -n permissions-zypp-plugin
 BuildArch:      noarch

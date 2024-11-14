@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 28 21:44:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0:
+  * Add support for Python 3.12, 3.13.
+  * Depend on zodbpickle instead of Python's pickle, to be able
+    to support Python 3.13 properly.
+  * Drop support for Python 2.7, 3.5, 3.6, 3.7.
+
+-------------------------------------------------------------------
 Fri Jun  9 13:16:11 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

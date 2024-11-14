@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 12 12:33:08 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream libarchive.patch to fix tests
+
+-------------------------------------------------------------------
 Fri Mar 15 21:09:39 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.1:

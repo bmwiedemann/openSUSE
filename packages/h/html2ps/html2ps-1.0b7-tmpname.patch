@@ -1,0 +1,29 @@
+Close the race between tmpnam() and sysopen
+
+--- html2ps-1.0b7/html2ps
++++ html2ps-1.0b7/html2ps	2024-11-14 08:12:35.973246396 +0000
+@@ -355,7 +355,8 @@ EOR
+ 
+ use POSIX;
+ $posix = 1;
+-use File::Temp qw/ :POSIX /;
++use File::Temp qw/ :POSIX :mktemp /;
++use File::Basename;
+ 
+ %extend=('quote',1, 'font',1, 'colour',1, 'hyphenation',1);
+ %fal=("serif","times", "sans_serif","helvetica", "monospace","courier");
+@@ -495,11 +496,10 @@ die "Ghostscript is required to generate
+  if($opt_D && !$package{'Ghostscript'});
+ die "Ghostscript is required to generate cross references\n"
+  if($opt_R && !$package{'Ghostscript'});
+-$tmpname=$posix?tmpnam():"h2p_$$";
+-sysopen TMP, $tmpname, O_RDWR|O_CREAT|O_EXCL, 0600 or die "$!";
+-close TMP;
++($tmp, $tmpname) = mkstemp("/tmp/h2p_XXXXXXXX") or die "$!";
++close $tmp;
+ ($scr=$tmpname)=~/\w+$/;
+-$tempdir=$`;
++$tempdir=dirname($tmpname);
+ 
+ if($opt_u) {$ulanch="t"};
+ if(defined $opt_x && $opt_x!~/^[0-2]$/) {

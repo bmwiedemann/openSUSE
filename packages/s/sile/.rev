@@ -326,4 +326,13 @@
     <comment>- Update vendored deps to resolve boo#1230690</comment>
     <requestid>1201811</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ff26550e227e349c5100b44269f294f8</srcmd5>
+    <version>0.15.6</version>
+    <time>1731596970</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.15.6
+ * https://github.com/sile-typesetter/sile/releases/tag/v0.15.6</comment>
+    <requestid>1224051</requestid>
+  </revision>
 </revisionlist>

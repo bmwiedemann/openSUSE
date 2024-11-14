@@ -1,0 +1,47 @@
+From d7353cad6fe9d43620a0de33a634f395757d2e5c Mon Sep 17 00:00:00 2001
+From: meejah <meejah@meejah.ca>
+Date: Wed, 6 Nov 2024 23:17:44 -0700
+Subject: [PATCH 1/2] fix test under Twisted 24.10.0
+
+---
+ src/wormhole/test/test_transit.py | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/wormhole/test/test_transit.py b/src/wormhole/test/test_transit.py
+index 0ec391b5..6b167db4 100644
+--- a/src/wormhole/test/test_transit.py
++++ b/src/wormhole/test/test_transit.py
+@@ -490,6 +490,11 @@ def test_log_other_errors(self):
+         log.msg("=== note: the next RandomError is expected ===")
+         # Make sure the Deferred has gone out of scope, so the UnhandledError
+         # happens quickly. We must manually break the gc cycle.
++
++        # note: Twisted 24.10.0 stopped calling cleanFailure() which
++        # made this test break -- is there a better way to achieve
++        # this result?
++        p1._d.result.cleanFailure()
+         del p1._d
+         gc.collect()  # make PyPy happy
+         errors = self.flushLoggedErrors(RandomError)
+
+From 9c0e6601364720f35373536805f77ede52d6db97 Mon Sep 17 00:00:00 2001
+From: meejah <meejah@meejah.ca>
+Date: Wed, 6 Nov 2024 23:18:35 -0700
+Subject: [PATCH 2/2] news
+
+---
+ NEWS.md | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/NEWS.md b/NEWS.md
+index 87019419..553cfd47 100644
+--- a/NEWS.md
++++ b/NEWS.md
+@@ -3,6 +3,7 @@ User-visible changes in "magic-wormhole":
+ ## Upcoming Release
+ 
+ * Bump magic-wormhole-transit-relay to 0.3.1 for testing, and fix (#543)
++* Fix test regression under Twisted 24.10.0 (#553)
+ * (add release-notes here when making PRs)
+ 
+ 

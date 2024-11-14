@@ -61,4 +61,15 @@
     <comment></comment>
     <requestid>1198639</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f535f9712309e992482991ccbd962af1</srcmd5>
+    <version>1.0.2</version>
+    <time>1731596992</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.2:
+  * build wheels for Python 3.12 (#255)
+  * update minimum Python version to 3.9
+  * add numpy 2.x support</comment>
+    <requestid>1224110</requestid>
+  </revision>
 </revisionlist>

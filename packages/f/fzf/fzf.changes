@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 14 04:36:13 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 0.56.2:
+  Fixes
+  * Fixed abnormal scrolling behavior when --wrap is set
+  * [zsh] Fixed warning message when ksh_arrays is set
+
+-------------------------------------------------------------------
 Mon Nov 11 02:03:29 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to 0.56.1:

@@ -18,7 +18,7 @@
 
 %define pkg_name libssh2
 Name:           libssh2_org
-Version:        1.11.0
+Version:        1.11.1
 Release:        0
 Summary:        A library implementing the SSH2 protocol
 License:        BSD-3-Clause
@@ -29,12 +29,6 @@ Source1:        https://www.libssh2.org/download/%{pkg_name}-%{version}.tar.xz.a
 Source2:        baselibs.conf
 Source3:        libssh2_org.keyring
 Patch0:         libssh2-ocloexec.patch
-# PATCH-FIX-UPSTREAM bsc#1218127 CVE-2023-48795: Add 'strict KEX' to fix Terrapin Attack
-Patch1:         libssh2_org-CVE-2023-48795.patch
-# PATCH-FIX-SUSE bsc#1218971 Always add extension indicators to kex_algorithms
-Patch2:         libssh2_org-CVE-2023-48795-ext.patch
-# PATCH-FIX-UPSTREAM bsc#1221622 Test ETM feature in remote end's config when receiving data
-Patch3:         libssh2_org-ETM-remote.patch
 BuildRequires:  libtool
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig

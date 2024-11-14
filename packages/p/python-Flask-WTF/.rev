@@ -117,4 +117,15 @@ Required for python-puppetboard SR# 263316</comment>
     <comment></comment>
     <requestid>1129137</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>696f6358f755f116d54a0c3e28cfb343</srcmd5>
+    <version>1.2.2</version>
+    <time>1731596983</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.2.2:
+  * Move the project to the pallets-eco organization. :pr:`602`
+  * Stop support for Python 3.8. Start support for Python 3.13.
+    :pr:`603`</comment>
+    <requestid>1224102</requestid>
+  </revision>
 </revisionlist>

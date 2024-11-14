@@ -278,4 +278,30 @@
     <comment></comment>
     <requestid>1202829</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>60ce51c4a01cc33d882590a4335812e4</srcmd5>
+    <version>2.30.1</version>
+    <time>1731596937</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.30.1:
+  * Ci: add 3.13 wheels
+  * Fix: root version in docs
+  * Allow to modify slider range in interactive widget
+  * Fix: add readout_format to slider
+  * Show correct ROOT version in documentation
+  * Fix odr issue in type_caster which could result in ub when
+    -flto is enabled
+  * Remove packaging dependency
+  * Restore cython tutorial
+  * Support sum(w) &lt; 0 in binned fits
+  * Set pybind11_findpython on to use findpython cmake mode
+  * Fix version parse
+  * Improve maintainer metadata
+
+  * Iteration limit in smart sampling to fix behavior for step functions
+  * Support interval type and check compatibility with pydantic
+- renenable build for python311 (numba available)
+- Do not build for Python 3.6, due to no NumPy.</comment>
+    <requestid>1223991</requestid>
+  </revision>
 </revisionlist>

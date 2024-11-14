@@ -401,4 +401,18 @@
   * A few documentation-related fixes.</comment>
     <requestid>1222054</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>75052d18325317b6552caca6df5c0261</srcmd5>
+    <version>3.17.8</version>
+    <time>1731596880</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1223773 from mnhauke
+
+- Update to version 3.17.8
+    * Fix regression in behavior of delete_instance() when
+      traversing nullable foreign-keys. Introduced in 3.17.6.
+    * Fix bug where joins not cloned when going from
+      join-less -&gt; joined query.</comment>
+    <requestid>1223791</requestid>
+  </revision>
 </revisionlist>

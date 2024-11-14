@@ -57,4 +57,16 @@
     <comment></comment>
     <requestid>1204687</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>9838dafb7126c6f11502613521a9dea5</srcmd5>
+    <version>1.1.1</version>
+    <time>1731596896</time>
+    <user>anag+factory</user>
+    <comment>- Update vendor tarball.
+- Add glycin-loaders-libheif-non-default.patch: change setting to
+  rebuld libheif-rs create as a workaround
+  (gh#Cykooz/libheif-rs#28).
+</comment>
+    <requestid>1223957</requestid>
+  </revision>
 </revisionlist>

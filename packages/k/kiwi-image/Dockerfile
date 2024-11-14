@@ -47,3 +47,4 @@ LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/
 LABEL usage="This container requires an openSUSE/SUSE host kernel for full functionality."
 # sanity check that the version from the tag is equal to the version of python3-kiwi that we expect
 RUN set -euo pipefail; [ "$(rpm -q --qf '%{version}' python3-kiwi | cut -d '.' -f -2)" = "10.1" ]
+RUN set -euo pipefail; printf "mapper:\n  - part_mapper: kpartx\n" > /etc/kiwi.yml

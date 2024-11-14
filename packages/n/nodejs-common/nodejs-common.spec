@@ -26,6 +26,7 @@
 ###########################################################
 
 %define NODEJS_CURRENT  22
+%define NODEJS_LTS      22
 
 %if 0%{?suse_version} > 1500 || 0%{?fedora_version}
 %bcond_without libalternatives
@@ -73,8 +74,8 @@
 %endif
 
 %if 0%{?suse_version} == 1600
-# ALP variants
-%define default_node_ver 20
+# SLFO variants
+%define default_node_ver %NODEJS_LTS
 %endif
 
 # TW

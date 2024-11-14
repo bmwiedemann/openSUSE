@@ -1,0 +1,33 @@
+From 099e2154bae9a954aab0569bf048c4d9ae71049e Mon Sep 17 00:00:00 2001
+From: veeso <christian.visintin@veeso.dev>
+Date: Wed, 13 Nov 2024 15:57:49 +0100
+Subject: [PATCH] fix: unused import isolated tests
+
+---
+ src/system/keys/keyringstorage.rs | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/system/keys/keyringstorage.rs b/src/system/keys/keyringstorage.rs
+index dd131095..f26429c0 100644
+--- a/src/system/keys/keyringstorage.rs
++++ b/src/system/keys/keyringstorage.rs
+@@ -76,14 +76,14 @@ impl KeyStorage for KeyringStorage {
+ 
+ #[cfg(test)]
+ mod tests {
+-    use pretty_assertions::assert_eq;
+-    use whoami::username;
+-
+-    use super::*;
+-
+     #[test]
+     #[cfg(not(feature = "isolated-tests"))]
+     fn test_system_keys_keyringstorage() {
++        use pretty_assertions::assert_eq;
++        use whoami::username;
++
++        use super::*;
++
+         let username: String = username();
+         let storage: KeyringStorage = KeyringStorage::new(username.as_str());
+         assert!(storage.is_supported());

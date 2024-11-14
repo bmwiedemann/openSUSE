@@ -46,4 +46,21 @@
 - Switch to pyproject macros.</comment>
     <requestid>1144072</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8594cbccc0cc01c7a70ae74fc9fce6cb</srcmd5>
+    <version>0.4.0</version>
+    <time>1731596879</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1223681 from mcalabkova
+
+- Update to 0.4.0
+    * drop Python 2, Python 3.5 and 3.6 support
+    * add Python 3.9, 3.10, 3.11 and 3.12 to CI
+    * add autobahn dep, upgrade twisted
+    * better websockets suport
+  - Drop merged patches:
+    * support-python312.patch
+    * python-magic-wormhole-transit-relay-no-mock.patch</comment>
+    <requestid>1223789</requestid>
+  </revision>
 </revisionlist>

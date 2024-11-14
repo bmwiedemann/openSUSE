@@ -25,7 +25,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-json5
-Version:        0.9.25
+Version:        0.9.28
 Release:        0
 Summary:        A Python implementation of the JSON5 data format
 License:        Apache-2.0

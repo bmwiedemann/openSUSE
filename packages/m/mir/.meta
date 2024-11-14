@@ -1,0 +1,6 @@
+<package name="mir" project="openSUSE:Factory">
+  <title>mir</title>
+  <description>Next Generation display server</description>
+  <devel project="X11:Wayland" package="mir"/>
+  <url>https://mir-server.io/</url>
+</package>

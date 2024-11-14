@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Nov 13 13:56:39 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.12.2
+  - Sort by name of roles does not work properly #4789
+  - Settings menu flyout closes too fast / easy #5196
+  - CSP header is missing the script-src policy #5180
+  - Broken event overview due to IntlDateFormatter #5172
+  - Downtimes, which were started and canceled, are missing in the history #5176
+  - Usage of IcingaWeb2 api command returns 404, but is successful #5183
+  - Allow fontawesome icons as menu items #5205
+  - Error while opening a navigation root item #5177
+  - Dashlets twice in dashboard & not deletable #5203
+  - PluginOutputRenderer gets called twice #5271
+  - Graphs disappear after form controls are used #4996
+  - Make subgroups of custom variables fully collapsible #5256
+
+-------------------------------------------------------------------
 Tue Feb 13 10:53:58 CET 2024 - ro@suse.de
 
 - Provide group as required by RPM 4.19 

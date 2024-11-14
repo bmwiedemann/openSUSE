@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 14 08:56:41 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Replace plasma6-framework-components 'Requires' with
+  libplasma6-components
+
+-------------------------------------------------------------------
 Tue Nov  5 13:30:30 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.3:

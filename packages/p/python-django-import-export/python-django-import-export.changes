@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Wed Nov 13 05:11:17 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.2.1:
+  * Removed dependency files in favour of pyproject.toml
+  * Documentation updates
+  * Fix crash on export of tz-aware datetime to binary formats
+  * Upgraded tablib version
+  * Document overriding formats
+  * Consistent queryset creation in ModelAdmin export mixin
+  * Improve deprecation warning for ExportViewFormMixin to report at point
+    of class definition
+  * Fix export for fields with custom declared name
+  * Hide the "Resource" form when it only has one option
+  * Update date, time and datetime widget render method to handle derived
+    instance
+  * Add support for Django 5.1
+  * Accept numbers using the numeric separators of the current language in
+    number widgets
+  * Added warning for declared fields excluded from fields whitelist
+  * Fix v3 regression: handle native types on export to spreadsheet
+  * Fix export button displayed on change screen when export permission not
+    assigned
+  * Fix crash for Django 5.1 when rows are skipped
+  * Allow callable in dehydrate method
+  * Fix crash when Resource fields declared incorrectly
+  * Improve Error class
+  * Fix response content assertions
+  * Admin UI: display checkboxes before labels in export form
+  * fix default Field returns empty string instead of None
+  * revert setting default value for attribute
+  * Enable skip export confirm page
+  * fix documentation to show correct method for reading form data on export
+  * Admin UI: display both field name and column name on export
+  * fix export declared field with custom column name
+  * fix declared fields do not have correct Widget class set
+  * Added additional test for export field order
+  * fix crash on import when relation has custom PK
+  * fix crash on export from action when instance has custom PK
+  * Fix for invalid build due to malformed README.rst
+  * Fix admin UI display of field import order
+  * Support widgets with CSS and JS media in ImportForm
+  * Clarified documentation when importing with import_id_fields 
+  * fix export with custom column name
+  * fix clash between key_is_id and use_natural_foreign_keys
+  * remove unreachable code
+  * fix issue with widget assignment for custom ForeignKey subclasses
+  * performance: select of valid pks for export restricted to action exports
+  * fix crash on export with custom column name
+  * remove outdated datetime formatting logic
+  * fix crash on export when model has no id
+  * fix Widget crash when django Field subclass is used
+  * fix regression: allow imports when default import_id_field is not present
+  * Enable optional tablib dependencies
+  * Fix declaring existing model field(s) in ModelResource altering export
+    order
+  * Enable defining Resource model as a string
+  * Support multiple Resources for export
+  * Support export from model change form
+  * Import form defaults to read-only field if only one format defined
+  * Updated Admin UI to track deleted and skipped Imports
+  * Added customizable MediaStorage
+  * Added customization of Admin UI import error messages
+  * Improve output of error messages
+  * Added feature: selectable fields for admin export view
+  * Add form error if source file contains invalid header
+  * Remove unneeded format method overrides
+  * Support dynamic selection of Resource class based on request property
+  * dynamic widget parameters for CharField fixes 'NOT NULL constraint' error
+    in xlsx
+  * fix cooperation with adminsortable2
+  * Fix deprecated log_action method
+  * fix multiple inheritance not setting options
+  * Fix issue where declared Resource fields not defined in fields are still
+    imported
+  * Fixed handling of django FieldError during Admin export
+  * fix: YAML export does not work with SafeString
+  * fix form not being passed to get_import_resource_kwargs()
+  * Fix: Missing default widget for PositiveBigIntegerField
+  * Refactored tests to remove dependencies between tests
+  * Handle python3.12 datetime deprecations
+  * Removed support for django 3.2
+  * Added test for widgets generating by model fields
+  * Fix slow export with ForeignKey id
+  * Add additional django template block for extending import page
+- Switch back to PyPi tarball, due to setuptools_scm.
+
+-------------------------------------------------------------------
 Sat Apr  6 19:39:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.7:

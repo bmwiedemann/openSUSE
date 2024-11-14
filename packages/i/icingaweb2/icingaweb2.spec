@@ -18,7 +18,7 @@
 
 %define php_major_version 8
 Name:           icingaweb2
-Version:        2.12.1
+Version:        2.12.2
 Release:        0
 Summary:        Icinga Web
 License:        GPL-2.0-or-later

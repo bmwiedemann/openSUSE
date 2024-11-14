@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Nov  9 09:06:43 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 2.2.4:
+  * Fixed missing "join hardinfo2 group" text on some distros
+  * Fixed start crash - fread possible overread on some distros
+  * Fixed Loongarch build errors
+  * Fixed CPACK debian depends
+  * Distro support added: Gentoo, LiGurOS, ZorinOS, Artix Linux
+  * Minor fixes: optimize source file space usage, arm cpus
+
+-------------------------------------------------------------------
 Thu Oct 24 15:17:55 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 2.2.1:

@@ -65,7 +65,7 @@
 %bcond_with zypp
 
 Name:           libsolv
-Version:        0.7.30
+Version:        0.7.31
 Release:        0
 Summary:        Package dependency solver using a satisfiability algorithm
 License:        BSD-3-Clause

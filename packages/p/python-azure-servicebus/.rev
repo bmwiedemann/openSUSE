@@ -393,4 +393,15 @@
 - Rename LICENSE.txt to LICENSE in %files section (forwarded request 1202091 from glaubitz)</comment>
     <requestid>1202172</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>b50fcf513d6c3de7aa3bd0a919a41323</srcmd5>
+    <version>7.13.0</version>
+    <time>1731596908</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 7.13.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1223871 from glaubitz)</comment>
+    <requestid>1223950</requestid>
+  </revision>
 </revisionlist>

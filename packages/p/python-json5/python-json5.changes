@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov 13 15:22:09 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.28:
+  * Fix GitHub CI to install uv so ./run tests works properly.
+  * Mark Python3.13 as supported in package metadata.
+  * Update dev package dependencies
+  * Fix typo in //README.md
+  * GitHub issue #82 Add support for the strict parameter to
+    load()/loads().
+  * Significantly rework the infra and the run script to be
+    contemporary.
+
+-------------------------------------------------------------------
 Mon Apr 15 06:16:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.25:

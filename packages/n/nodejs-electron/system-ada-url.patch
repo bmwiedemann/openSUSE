@@ -1,0 +1,30 @@
+--- src/third_party/electron_node/BUILD.gn.orig	2024-11-12 22:51:23.369659000 +0100
++++ src/third_party/electron_node/BUILD.gn	2024-11-12 23:46:45.817651900 +0100
+@@ -40,6 +40,7 @@ declare_args() {
+   node_release_urlbase = ""
+ 
+   # Allows downstream packagers (eg. Linux distributions) to build Electron against system shared libraries.
++  use_system_ada = false
+   use_system_cares = false
+   use_system_nghttp2 = false
+   use_system_llhttp = false
+@@ -260,7 +261,6 @@ component("node_lib") {
+   deps = [
+     ":node_js2c_exec",
+     "deps/googletest:gtest",
+-    "deps/ada",
+     "deps/base64",
+     "deps/simdutf",
+     "deps/uvwasi",
+@@ -291,6 +291,11 @@ component("node_lib") {
+     "deps/postject"
+   ]
+   libs = []
++  if (use_system_ada) {
++    libs += [ "ada" ]
++  } else {
++    deps += [ "deps/ada" ]
++  }
+   if (use_system_llhttp) {
+     libs += [ "llhttp" ]
+   } else {

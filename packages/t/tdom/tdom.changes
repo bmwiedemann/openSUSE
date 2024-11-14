@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov 13 14:05:00 UTC 2024 - Danilo Chang <ray2501@gmail.com>
+  
+- Update to 0.9.5
+  * Added the asTypedList method to the domDoc and domNode commands.
+  * Added the createFromTypedList method to the dom command.
+  * Added the flag -keepTextStart to the expat command.
+  * Text node commands created by createNodeCmd of the json type
+    NULL, TRUE or FALSE may be called without argument.
+  * Changed the error messages of the dom, domDoc and domNode
+    commands to mostly confirm to ususal Tcl behaviour.
+  * Added the asTclValue method to the domDoc and domNode commands.
+
+-------------------------------------------------------------------
 Mon Aug 19 12:45:00 UTC 2024 - Danilo Chang <ray2501@gmail.com>
 
 - Update to 0.9.4

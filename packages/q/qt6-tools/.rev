@@ -328,4 +328,13 @@
     <comment>- Fix qdoc runtime dependency</comment>
     <requestid>1220558</requestid>
   </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>45129a344dd76662758a2df758e746e3</srcmd5>
+    <version>6.8.0</version>
+    <time>1731596866</time>
+    <user>anag+factory</user>
+    <comment>- Reintroduce proper %requires_eq on libclang, it's needed to ensure
+  that qdoc pulls in a libclang suitable for the used libclang-cpp.</comment>
+    <requestid>1223890</requestid>
+  </revision>
 </revisionlist>

@@ -225,4 +225,13 @@ Features
     (Lithuanian), `pa` (Punjabi)</comment>
     <requestid>1219190</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8f486cb18648a1afe9080ba43097eb2a</srcmd5>
+    <version>2.5.4</version>
+    <time>1731596933</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.5.4:
+  * Language added: `fr-CA` (French (Canada))</comment>
+    <requestid>1223983</requestid>
+  </revision>
 </revisionlist>

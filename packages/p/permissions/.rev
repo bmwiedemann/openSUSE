@@ -1610,4 +1610,16 @@ https://lists.opensuse.org/archives/list/packaging@lists.opensuse.org/message/5F
   * man pages: minor corrections (bsc#1224822)</comment>
     <requestid>1176713</requestid>
   </revision>
+  <revision rev="167" vrev="1">
+    <srcmd5>ca7f64190a90b423f8f5293cd7b5cc03</srcmd5>
+    <version>1699_20241029</version>
+    <time>1731596871</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1699_20241029:
+  * Add RPM macros; moved from rpm-config-SUSE
+  * package RPM macros together with permctl, to avoid having to setup an
+    extra sub-package.
+</comment>
+    <requestid>1219087</requestid>
+  </revision>
 </revisionlist>

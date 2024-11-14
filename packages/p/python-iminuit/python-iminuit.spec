@@ -32,7 +32,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-iminuit%{psuffix}
-Version:        2.28.0
+Version:        2.30.1
 Release:        0
 Summary:        Python bindings for MINUIT2
 License:        MIT

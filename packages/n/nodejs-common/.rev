@@ -200,4 +200,12 @@
 - Add corepack support</comment>
     <requestid>1177122</requestid>
   </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>6e8f85b28350b857156a1308b4ef593d</srcmd5>
+    <version>6.1</version>
+    <time>1731596868</time>
+    <user>anag+factory</user>
+    <comment>- Update SLFO to current LTS</comment>
+    <requestid>1223915</requestid>
+  </revision>
 </revisionlist>

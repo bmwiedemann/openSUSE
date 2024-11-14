@@ -7,4 +7,12 @@
     <comment>🤖: initial submission of cosign-image</comment>
     <requestid>1219689</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4fb5951032062f642da8a375ce38ee3a</srcmd5>
+    <version>unknown</version>
+    <time>1731596929</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1223987</requestid>
+  </revision>
 </revisionlist>

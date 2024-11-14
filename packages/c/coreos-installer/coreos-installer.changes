@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Nov 13 14:37:40 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.23.0:
+  * cargo: coreos-installer release 0.23.0
+  * workflows/rust: add gpg package to list of rpms to install
+  * docs/release-notes: update for release 0.23.0
+  * cargo: update dependencies
+  * build(deps): bump thiserror from 1.0.63 to 1.0.64
+  * build(deps): bump serde_json from 1.0.127 to 1.0.128
+  * build(deps): bump anyhow from 1.0.86 to 1.0.87
+  * build(deps): bump serde from 1.0.209 to 1.0.210
+  * Use blkid instead of lsblk to get disk info when udev is not
+    present
+  * build(deps): bump serde from 1.0.208 to 1.0.209
+  * build(deps): bump reqwest from 0.12.5 to 0.12.7
+  * build(deps): bump nmstate from 2.2.34 to 2.2.35
+  * build(deps): bump serde_json from 1.0.125 to 1.0.127
+  * build(deps): bump flate2 from 1.0.31 to 1.0.33
+  * packit: drop CentOS packaging
+  * build(deps): bump serde_json from 1.0.122 to 1.0.125
+  * build(deps): bump serde from 1.0.204 to 1.0.208
+  * build(deps): bump libc from 0.2.155 to 0.2.158
+  * signing-keys: drop Fedora 39 key
+  * signing-keys: add Fedora 42 key
+  * build(deps): bump tempfile from 3.11.0 to 3.12.0
+  * build(deps): bump tempfile from 3.10.1 to 3.11.0
+  * build(deps): bump regex from 1.10.5 to 1.10.6
+  * build(deps): bump flate2 from 1.0.30 to 1.0.31
+  * build(deps): bump nmstate from 2.2.33 to 2.2.34
+  * build(deps): bump serde_json from 1.0.120 to 1.0.122
+  * build(deps): bump bytes from 1.6.1 to 1.7.1
+  * build(deps): bump clap_mangen from 0.2.22 to 0.2.23
+  * build(deps): bump ignition-config from 0.3.0 to 0.4.1
+
+-------------------------------------------------------------------
 Fri Jul 26 04:41:57 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.22.1:

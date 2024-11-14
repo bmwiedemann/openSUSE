@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Wed Nov 13 10:05:53 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.1:
+  * fix: 0.16.1
+  * fix: gg rust 1.82 for introducing a nice breaking change in
+    config which was not mentioned in changelog
+  * fix: cfg unix forbidden in rust .82
+- add patches to fix build issues:
+  * 099e2154bae9a954aab0569bf048c4d9ae71049e.patch
+  * 7dba691ccc001aa720d0ecf1642dda94219a2d21.patch
+
+-------------------------------------------------------------------
+Tue Oct 15 16:26:06 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.0:
+  * fix: tiny ui issue
+  * fix: 0.16
+  * feat: Show `..` directory before all the others in the explorer
+    to navigate to the parent dir (#301)
+  * fix: issue 292 New version alert was not displayed due to a
+    semver regex issue. (#300)
+  * fix: tuirealm 2.x (#299)
+  * fix: users from lock
+  * fix: vergen (#296)
+  * fix: Use `uzers` instead of the dead package `users` which has
+    several vulnerabilities (#295)
+  * 285 feature request multi host (#293)
+  * feat: version 0.16
+
+-------------------------------------------------------------------
+Fri Oct 04 04:57:16 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.15.0:
+  * fix: include build.rs
+  * fix: readme
+  * fix: ci
+  * fix: github ci is stable and reliable (one worker broken each 2
+    weeks)
+  * fix: set date
+  * 280 feature request go to path auto completion (#287)
+  * fix: `isolated-tests` feature to run tests for releasing on
+    distributions which run in isolated environments (#286)
+  * feat: it is now possible to cancel find command; show find
+    progress (#284)
+  * 249 feature request better search results (#282)
+  * fix: popup texts
+  * fix: issue 277 Fix a bug in the configuration page, which
+    caused being stuck if the added SSH key was empty
+  * fix: don't clear screen after terminating termscp
+  * feat: Pods and container explorer for Kube protocol (#281)
+  * fix: bump vers
+  * fix: notify 6
+  * fix: keyring test not passing macos
+  * fix: bump vers
+  * feat: init 0.15
+  * fix: dbus deveL
+  * fix: tokio rt builder
+- drop patch dfe58e6147f66b4c0c74874c954e7d101b3bf026.patch
+
+-------------------------------------------------------------------
 Mon Jul 22 10:38:57 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - add patch dfe58e6147f66b4c0c74874c954e7d101b3bf026.patch to fix

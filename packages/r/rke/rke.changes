@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov 13 10:02:26 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.6.4:
+  * What's Changed
+    - Introduced 1.28.15, 1.29.10, 1.30.6
+    - bump go to v1.22.8
+  * RKE Kubernetes versions
+    - v1.27.16-rancher1-1
+    - v1.28.15-rancher1-1
+    - v1.29.10-rancher1-1
+    - v1.30.6-rancher1-1 (default)
+
+-------------------------------------------------------------------
 Tue Oct 22 07:32:44 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.6.3:

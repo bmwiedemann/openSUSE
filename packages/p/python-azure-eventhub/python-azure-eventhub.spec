@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-eventhub
-Version:        5.12.2
+Version:        5.13.0
 Release:        0
 Summary:        Azure Event Hubs client library for Python
 License:        MIT

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Nov 13 14:44:07 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 24.10.0:
+  * Enhancements
+    - Add support for py313 (#4388) @abhikdps
+  * Bugfixes
+    - Require ansible-compat>=24.10.0 (#4402)
+    - Update TaskHasTag example rule used in custom-rules.md
+      (#4401) @cavcrosby
+    - Add Fedora 41 as a platform in the metadata schema (#4392)
+      @jsf9k
+    - Fixing the issue "Unfinished sentence in docs/profiles.md
+      #4358" (#4380) @binojmn
+    - Fix quotes converting free-form syntax to yaml (#4361)
+      @cavcrosby
+    - Handle FQCN when using import_playbook (#4369) @cavcrosby
+    - Allow jinja in variable names (#4372) @ssbarnea
+    - Update rulebook schema (#4373) @ssbarnea
+    - Fix wonky writing to sarif_file (#4368) @Qalthos
+    - Fix to avoid spamming syslog with invoked messages (#4353)
+      @tanwigeetika1618
+    - Pin codecov action to v4.5.0 and update dependabot.yml to
+      ignore v4.6.0 (#4356) @tanwigeetika1618
+    - Update schema for missing tags property to builder v3 options
+      (#4346) @audgirka
+
+-------------------------------------------------------------------
 Sat Sep 21 17:46:39 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 24.9.2:

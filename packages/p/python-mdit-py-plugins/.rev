@@ -73,4 +73,14 @@
 - Cleanup requires, comments and files section</comment>
     <requestid>1184138</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b380a61f4be5b2244b332329db40bd03</srcmd5>
+    <version>0.4.2</version>
+    <time>1731596932</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.4.2:
+  * Improve parsing of nested amsmath
+  * Add `allowed` option for inline/block attributes</comment>
+    <requestid>1223981</requestid>
+  </revision>
 </revisionlist>

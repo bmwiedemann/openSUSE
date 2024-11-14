@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Nov 13 14:46:08 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.5.0:
+  For a full list of changes, please refer to the CHANGELOG!
+  https://github.com/grafana/alloy/blob/v1.5.0/CHANGELOG.md
+  * Breaking changes
+    - import.git: The default value for revision has changed from
+      HEAD to main. (@ptodev) It is no longer allowed to set
+      revision to "HEAD", "FETCH_HEAD", "ORIG_HEAD", "MERGE_HEAD",
+      or "CHERRY_PICK_HEAD".
+    - The Otel update to v0.112.0 has a few breaking changes:
+      - [otelcol.processor.deltatocumulative] Change max_streams
+        default value to 9223372036854775807 (max int).
+      - open-telemetry/opentelemetry-collector-contrib#35048
+      - [otelcol.connector.spanmetrics] Change namespace default
+        value to traces.span.metrics.
+      - open-telemetry/opentelemetry-collector-contrib#34485
+      - [otelcol.exporter.logging] Removed in favor of the
+        otelcol.exporter.debug.
+      - open-telemetry/opentelemetry-collector#11337
+  * Features
+    - Add the function path_join to the stdlib. (@wildum)
+    - Add pyroscope.receive_http component to receive and forward
+      Pyroscope profiles (@marcsanmi)
+    - Add support to loki.source.syslog for the RFC3164 format
+      ("BSD syslog"). (@sushain97)
+    - Add support to loki.source.api to be able to extract the
+      tenant from the HTTP X-Scope-OrgID header (@QuentinBisson)
+    - (Experimental) Add a loki.secretfilter component to redact
+      secrets from collected logs.
+    - (Experimental) Add a prometheus.write.queue component to add
+      an alternative to prometheus.remote_write which allowing the
+      writing of metrics to a prometheus endpoint. (@mattdurham)
+    - (Experimental) Add the arrary.combine_maps function to the
+      stdlib. (@ptodev, @wildum)
+    - Add support bundle generation via the API endpoint /-/support
+      (@dehaansa)
+
+-------------------------------------------------------------------
 Wed Oct 30 15:52:06 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.4.3:

@@ -27,14 +27,12 @@
 %bcond_with test
 %endif
 Name:           python-httpx-socks%{psuffix}
-Version:        0.9.1
+Version:        0.9.2
 Release:        0
 Summary:        Proxy (HTTP, SOCKS) transports for httpx
 License:        Apache-2.0
 URL:            https://github.com/romis2012/httpx-socks
-# gh#romis2012/httpx-socks#22
-Source:         https://github.com/romis2012/httpx-socks/archive/refs/tags/v%{version}.tar.gz#/httpx-socks-%{version}.tar.gz
-# Source:         https://files.pythonhosted.org/packages/source/h/httpx-socks/httpx-socks-%%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/h/httpx-socks/httpx_socks-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -71,7 +69,7 @@ BuildArch:      noarch
 Proxy (HTTP, SOCKS) transports for httpx
 
 %prep
-%autosetup -p1 -n httpx-socks-%{version}
+%autosetup -p1 -n httpx_socks-%{version}
 
 %build
 %if %{without test}

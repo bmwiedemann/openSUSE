@@ -24,4 +24,17 @@
   ipywidgets)</comment>
     <requestid>1155862</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b6dec9038895885d65431e6203c91eb8</srcmd5>
+    <version>0.3.2</version>
+    <time>1731596925</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.3.2:
+  * compatibility with numpy v2
+  * python3.12 enablement
+  * remove traittypes dependency
+
+- Required by python-vega 4.0</comment>
+    <requestid>1223978</requestid>
+  </revision>
 </revisionlist>

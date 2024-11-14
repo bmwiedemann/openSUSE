@@ -19,7 +19,7 @@
 %define library_version 1.0.0
 %define library_soversion 1_0_0
 Name:           aws-c-http
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 Summary:        C99 implementation of the HTTP/1.1 and HTTP/2 specifications
 License:        Apache-2.0

@@ -16,18 +16,15 @@
 #
 
 
-%define realversion 1.0.0
-
 %{?sle15_python_module_pythons}
 Name:           python-azure-ai-translation-document
-Version:        1.0.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Microsoft Azure Document Translation Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-ai-translation-document/azure-ai-translation-document-%{realversion}.zip
-Source1:        LICENSE.txt
+Source:         https://files.pythonhosted.org/packages/source/a/azure_ai_translation_document/azure_ai_translation_document-%{version}.tar.gz
 BuildRequires:  %{python_module azure-ai-nspkg >= 1.0.0}
 BuildRequires:  %{python_module azure-ai-translation-nspkg >= 1.0.0}
 BuildRequires:  %{python_module pip}
@@ -35,11 +32,11 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
 Requires:       python-azure-ai-nspkg >= 1.0.0
 Requires:       python-azure-ai-translation-nspkg >= 1.0.0
-Requires:       python-msrest >= 0.6.21
-Requires:       (python-azure-core >= 1.14.0 with python-azure-core < 2.0.0)
+Requires:       python-typing_extensions >= 4.6.0
+Requires:       (python-azure-core >= 1.30.0 with python-azure-core < 2.0.0)
+Requires:       (python-isodate >= 0.6.1 with python-isodate < 1.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
 Obsoletes:      python3-azure-ai-translation-document < 1.0.0.0
@@ -58,10 +55,9 @@ Use the client library for Document Translation to:
  * Apply a custom translation model or glossaries to tailor translation to your specific case.
 
 %prep
-%setup -q -n azure-ai-translation-document-%{realversion}
+%setup -q -n azure_ai_translation_document-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-ai-translation-document-%{realversion}
 %pyproject_wheel
 
 %install
@@ -78,7 +74,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
-%license LICENSE.txt
+%license LICENSE
 %{python_sitelib}/azure/ai/translation/document
 %{python_sitelib}/azure_ai_translation_document-*.dist-info
 

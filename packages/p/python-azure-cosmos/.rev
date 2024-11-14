@@ -147,4 +147,16 @@
     CHANGELOG.md file provided with this package (forwarded request 1174434 from glaubitz)</comment>
     <requestid>1174439</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>39feb7f7abdb227b07a98c1631b79b8f</srcmd5>
+    <version>4.8.0</version>
+    <time>1731596908</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 4.8.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file (forwarded request 1223877 from glaubitz)</comment>
+    <requestid>1223951</requestid>
+  </revision>
 </revisionlist>

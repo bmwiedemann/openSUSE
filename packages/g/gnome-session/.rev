@@ -1589,4 +1589,12 @@ Index: gnome-session.changes
     <comment></comment>
     <requestid>1221352</requestid>
   </revision>
+  <revision rev="211" vrev="3">
+    <srcmd5>46c278f100573f156a47675d50a49c04</srcmd5>
+    <version>47.0.1</version>
+    <time>1731596847</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1223856</requestid>
+  </revision>
 </revisionlist>

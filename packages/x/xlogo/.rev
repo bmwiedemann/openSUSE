@@ -73,4 +73,21 @@
   * Add configure check and --with-xkb option for use of XkbStdBell</comment>
     <requestid>1035540</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8b29ff0481c79a162e18157aba62f6cb</srcmd5>
+    <version>1.0.7</version>
+    <time>1731596972</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.7
+  * Print which arguments were unknown before giving usage message
+  * Add -help and -version options
+  * Mark Syntax() with noreturn attribute
+  * Clear up 17 -Wunused-parameter warnings from clang 13
+  * Fix -Wextra-semi-stmt from donestr() macro
+  * Use struct initializers
+  * Handle -Wsign-compare warning in Syntax()
+  * Add -help and -version to man page and usage output
+  * Fix up copyright &amp; license notices in COPYING &amp; xlogo.c</comment>
+    <requestid>1224054</requestid>
+  </revision>
 </revisionlist>

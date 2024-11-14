@@ -73,8 +73,12 @@ export LANG=en_US.UTF-8
 export LANG=en_US.UTF-8
 # find ropetest from local source dir
 export PYTHONPATH=":x"
-# https://github.com/python-rope/rope/issues/478, we have a shuffled build directory and can't work around this
-%pytest -k "not test_search_submodule"
+# gh#python-rope/rope#478, we have a shuffled build directory and can't work around this
+skip_tests="test_search_submodule "
+# gh#python/cpython#126811
+skip_tests_python313="or test_skipping_directories_not_accessible_because_of_permission_error "
+skip_tests_python313+="or test_hint_parametrized_iterable or test_hint_parametrized_iterator"
+%pytest -k "not (${skip_tests} ${skip_tests_$python})"
 
 %files %{python_files}
 %license COPYING

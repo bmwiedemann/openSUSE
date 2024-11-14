@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-gvm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2020-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,12 +17,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
-%define skip_python39 1
 Name:           python-python-gvm
-Version:        23.5.0
+Version:        24.8.0
 Release:        0
 Summary:        Library to communicate with remote servers over GMP or OSP
 License:        GPL-3.0-only
@@ -35,12 +31,10 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-defusedxml >= 0.6.0
 Requires:       python-lxml >= 4.5.0
 Requires:       python-paramiko >= 2.7.1
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module defusedxml >= 0.6.0}
 BuildRequires:  %{python_module lxml >= 4.5.0}
 BuildRequires:  %{python_module paramiko >= 2.7.1}
 BuildRequires:  %{python_module pytest}
@@ -67,6 +61,8 @@ Greenbone Management Protocol (GMP) and Open Scanner Protocol (OSP).
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# test_pretty_print needs pontos, which we don't have
+rm tests/xml/test_pretty_print.py
 %pytest
 
 %files %{python_files}

@@ -80,4 +80,14 @@
     `ArchiveEntry` class to the `ArchiveRead` class (#127).</comment>
     <requestid>1158308</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>f67198d7c7e15392535b3108ec9093fe</srcmd5>
+    <version>5.1</version>
+    <time>1731596878</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1223660 from mcalabkova
+
+- Add upstream libarchive.patch to fix tests</comment>
+    <requestid>1223788</requestid>
+  </revision>
 </revisionlist>

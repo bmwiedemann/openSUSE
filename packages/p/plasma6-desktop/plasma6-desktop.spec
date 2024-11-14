@@ -144,8 +144,8 @@ Requires:       plasma6-desktop-branding = %{version}
 Requires:       plasma6-workspace >= %{_plasma6_bugfix}
 # Required by the 'recent files' kcm
 Requires:       qt6-sql-sqlite >= %{qt6_version}
-# Hardcode versions of plasma6-framework-components, as upstream doesn't keep backwards compability there
-%requires_ge    plasma6-framework-components
+# Hardcode versions of libplasma6-components, as upstream doesn't keep backwards compability there
+%requires_ge    libplasma6-components
 # Various KCMs use it
 Requires:       kinfocenter6
 Requires:       kf6-kirigami-imports >= %{kf6_version}

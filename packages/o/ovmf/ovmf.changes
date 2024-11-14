@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Nov 13 08:26:42 UTC 2024 - Joey Lee <jlee@suse.com>
+
+- Add ovmf-x86_64-sev-code.bin and ovmf-x86_64-sev-vars.bin back
+  because -code/-vars mode still be used in some cases. (bsc#1232762)
+- Add 60-ovmf-x86_64-sev.json to descriptors.tar.xz for -code/-vars mode
+  against SEV: 
+    - Removed features tag:
+      "acpi-s4", "acpi-s3", "requires-smm", "secure-boot", "enrolled-keys"
+    - Add features tag:
+      "amd-sev", "amd-sev-es", "amd-sev-snp"
+    - The 50-ovmf-x86_64-sev.json is for ovmf-x86_64-sev.bin unified image
+      which is stateless mode.
+    - The 60-ovmf-x86_64-sev.json is for ovmf-x86_64-sev-code/vars.bin.
+      Please note that the -vars storage is non-secure because SEV does NOT
+      support SMM (requires-smm).
+
+-------------------------------------------------------------------
 Mon Oct 21 13:46:44 UTC 2024 - Joey Lee <jlee@suse.com>
 
 - Removed the following patch files because they are merged to

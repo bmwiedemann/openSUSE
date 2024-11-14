@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>300cdb7a4d249583f61b58ea85cc144b</srcmd5>
+    <version>2.18.2</version>
+    <time>1731596894</time>
+    <user>anag+factory</user>
+    <comment>New Package, Provides the mir wayland compositor
+
+Will be a requirement for forthcoming miriway submission</comment>
+    <requestid>1223818</requestid>
+  </revision>
+</revisionlist>

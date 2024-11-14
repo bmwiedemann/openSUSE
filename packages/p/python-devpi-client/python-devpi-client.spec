@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-devpi-client%{psuffix}
-Version:        7.0.2
+Version:        7.2.0
 Release:        0
 Summary:        Client for devpi
 License:        MIT
@@ -37,11 +37,11 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-build
+Requires:       python-build >= 0.7.0
 Requires:       python-check-manifest >= 0.28
 Requires:       python-devpi-common >= 4.0
 Requires:       python-iniconfig
-Requires:       python-pkginfo >= 1.4.2
+Requires:       python-pkginfo >= 1.10.0
 Requires:       python-platformdirs
 Requires:       python-pluggy >= 0.6.0
 Requires:       python-tox >= 3.1.0
@@ -103,6 +103,8 @@ donttest+=" or test_derive_devpi_token or test_derive_legacy_token or test_deriv
 donttest+=" or test_simple_install_missing_venvdir"
 # Broken tests with python3.12 because missing setuptools
 donttest+=" or test_main_example or test_specific_version or test_pkgname_with_dashes"
+# broken tests with tox
+donttest+=" or test_toxresult_forbidden"
 %pytest -k "not ($donttest)"
 %endif
 

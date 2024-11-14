@@ -98,4 +98,15 @@
   * Report some errors as transient, so that OBS can re-try</comment>
     <requestid>1219368</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4b5210765fd845b50254cdfe09fc0234</srcmd5>
+    <version>0.5.2</version>
+    <time>1731596995</time>
+    <user>anag+factory</user>
+    <comment>- 0.5.2
+  * Don't overwrite files from git, but complain instead with
+    an error. For example _scmsync.obsinfo file must not be part
+    of the git tree. boo#1230469</comment>
+    <requestid>1224107</requestid>
+  </revision>
 </revisionlist>

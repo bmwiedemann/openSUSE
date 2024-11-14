@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mdit-py-plugins
-Version:        0.4.1
+Version:        0.4.2
 Release:        0
 Summary:        Collection of plugins for markdown-it-py
 License:        MIT

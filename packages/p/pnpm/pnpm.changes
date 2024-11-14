@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 13 22:13:33 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to version 9.13.0:
+  * The self-update now accepts a version specifier to install a
+    specific version of pnpm.
+  * Fix Cannot read properties of undefined (reading 'name') that
+    is printed while trying to render the missing peer
+    dependencies warning message #8538
+
+-------------------------------------------------------------------
 Fri Nov  8 20:35:11 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
 
 - update to version 9.12.3:

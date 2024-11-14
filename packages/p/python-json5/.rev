@@ -129,4 +129,20 @@ Required by the latest version of jupyter-jupyterlab-server</comment>
     pyproject.toml.</comment>
     <requestid>1167722</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8078e2e55a3c53bbc6d225c1daea7cd9</srcmd5>
+    <version>0.9.28</version>
+    <time>1731596944</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9.28:
+  * Fix GitHub CI to install uv so ./run tests works properly.
+  * Mark Python3.13 as supported in package metadata.
+  * Update dev package dependencies
+  * Fix typo in //README.md
+  * GitHub issue #82 Add support for the strict parameter to
+    load()/loads().
+  * Significantly rework the infra and the run script to be
+    contemporary.</comment>
+    <requestid>1223992</requestid>
+  </revision>
 </revisionlist>

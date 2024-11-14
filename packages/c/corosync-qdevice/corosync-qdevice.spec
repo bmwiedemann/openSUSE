@@ -8,16 +8,13 @@
 # upon. The license for this file, and modifications and additions to the
 # file, is the same license as for the pristine package itself (unless the
 # license for the pristine package is not an Open Source License, in which
-# case the license is the MIT license). An "Open Source License" is a
+# case the license is the MIT License). An "Open Source License" is a
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# Conditionals
-# Invoke "rpmbuild --without <feature>" or "rpmbuild --with <feature>"
-# to disable or enable specific features
 
 %bcond_without runautogen
 %bcond_without systemd
@@ -26,22 +23,23 @@
 %global gittarver %{?numcomm:.%{numcomm}}%{?alphatag:-%{alphatag}}%{?dirty:-%{dirty}}
 %define _unpackaged_files_terminate_build 0
 
-Name:    corosync-qdevice
-Summary: The Corosync Cluster Engine Qdevice
-Version: 3.0.3
-Release: 0%{?gitver}%{?dist}
-License: BSD-3-Clause
-URL:     https://github.com/corosync/corosync-qdevice
-Source0: https://github.com/corosync/corosync-qdevice/releases/download/v%{version}%{?gittarver}/%{name}-%{version}%{?gittarver}.tar.gz
+Name:           corosync-qdevice
+Summary:        The Corosync Cluster Engine Qdevice
+Version:        3.0.3
+Release:        0%{?gitver}%{?dist}
+License:        BSD-3-Clause
+URL:            https://github.com/corosync/corosync-qdevice
+Source0:        https://github.com/corosync/corosync-qdevice/releases/download/v%{version}%{?gittarver}/%{name}-%{version}%{?gittarver}.tar.gz
+Patch0:         0001-harden-services-with-systemd-sandboxing.patch
 
 # Runtime bits
-Requires: corosync > 2.4.6
-Requires: corosync-libs > 2.4.6
-Requires: mozilla-nss-tools
+Requires:       corosync > 2.4.6
+Requires:       corosync-libs > 2.4.6
+Requires:       mozilla-nss-tools
 
 %if %{with systemd}
-BuildRequires: pkgconfig(systemd)
 BuildRequires:  systemd-devel
+BuildRequires:  pkgconfig(systemd)
 Requires(post): systemd
 Requires(preun): systemd
 Requires(postun): systemd
@@ -51,29 +49,31 @@ Requires(preun): /sbin/chkconfig
 %endif
 
 # Build bits
-BuildRequires: gcc
-BuildRequires: corosync-devel > 2.4.6
-BuildRequires: libqb-devel
-BuildRequires: sed
+BuildRequires:  gcc
+BuildRequires:  corosync-devel > 2.4.6
+BuildRequires:  libqb-devel
+BuildRequires:  sed
 
 %if 0%{?suse_version}
-BuildRequires: groff-full
+BuildRequires:  groff-full
 %else
-BuildRequires: groff
+BuildRequires:  groff
 %endif
 
 %if 0%{?suse_version}
-BuildRequires: mozilla-nss-devel
+BuildRequires:  mozilla-nss-devel
 %else
-BuildRequires: nss-devel
+BuildRequires:  nss-devel
 %endif
 
 %if %{with runautogen}
-BuildRequires: autoconf automake libtool
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  libtool
 %endif
 
 %prep
-%setup -q -n %{name}-%{version}%{?gittarver}
+%autosetup -p1 -n %{name}-%{version}%{?gittarver}
 
 echo %{version} > .tarball-version
 echo %{version} > .version
@@ -172,10 +172,10 @@ fi
 %{_mandir}/man8/corosync-qdevice.8*
 
 %package -n corosync-qnetd
-Summary: The Corosync Cluster Engine Qdevice Network Daemon
+Summary:        The Corosync Cluster Engine Qdevice Network Daemon
 Group:          System/Base
-Requires: mozilla-nss-tools
-Requires(pre): shadow
+Requires:       mozilla-nss-tools
+Requires(pre):  shadow
 Requires(pre):  /usr/sbin/useradd
 Provides:       group(coroqnetd)
 Provides:       user(coroqnetd)

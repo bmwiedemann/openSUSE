@@ -15,10 +15,10 @@
 # https://trac.nginx.org/nginx/attachment/ticket/2276/fix-nginx-syntax.patch
 #
 
-Index: icinga2-2.13.3/tools/syntax/vim/syntax/icinga2.vim
+Index: icinga2-2.14.3/tools/syntax/vim/syntax/icinga2.vim
 ===================================================================
---- icinga2-2.13.3.orig/tools/syntax/vim/syntax/icinga2.vim
-+++ icinga2-2.13.3/tools/syntax/vim/syntax/icinga2.vim
+--- icinga2-2.14.3.orig/tools/syntax/vim/syntax/icinga2.vim
++++ icinga2-2.14.3/tools/syntax/vim/syntax/icinga2.vim
 @@ -16,6 +16,10 @@ if !exists("main_syntax")
  	let main_syntax = 'icinga2'
  endif
@@ -30,7 +30,7 @@ Index: icinga2-2.13.3/tools/syntax/vim/syntax/icinga2.vim
  " case off
  syntax case ignore
  
-@@ -358,3 +362,7 @@ hi link icinga2Namespace			Statement
+@@ -359,3 +363,7 @@ hi link icinga2Namespace			Statement
  hi link valueNumber				Number
  hi link valueBoolean				Boolean
  hi link valueNull				Special

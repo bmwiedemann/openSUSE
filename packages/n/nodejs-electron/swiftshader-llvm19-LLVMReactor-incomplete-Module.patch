@@ -1,0 +1,10 @@
+--- src/third_party/swiftshader/src/Reactor/LLVMReactor.cpp.orig	2024-10-29 10:12:16.688190300 +0100
++++ src/third_party/swiftshader/src/Reactor/LLVMReactor.cpp	2024-11-06 19:06:12.194548700 +0100
+@@ -25,6 +25,7 @@
+ 
+ #include "llvm/IR/Intrinsics.h"
+ #include "llvm/IR/IntrinsicsX86.h"
++#include "llvm/IR/Module.h"
+ #include "llvm/Support/Alignment.h"
+ #include "llvm/Support/Error.h"
+ #include "llvm/Support/ManagedStatic.h"

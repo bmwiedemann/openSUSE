@@ -1056,4 +1056,16 @@ mostly-working synapse than nothing at all) and the package has been update to
   https://patch-diff.githubusercontent.com/raw/element-hq/synapse/pull/17886.patch</comment>
     <requestid>1219715</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>502496042dd8dc0aa6d43d7365a2d616</srcmd5>
+    <version>1.119.0</version>
+    <time>1731596954</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1224011 from darix
+
+- drop 17886.patch
+- refresh matrix-synapse-1.4.1-paths.patch to apply cleanly again
+- Update to 1.119.0</comment>
+    <requestid>1224013</requestid>
+  </revision>
 </revisionlist>

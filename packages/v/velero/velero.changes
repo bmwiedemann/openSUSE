@@ -1,4 +1,97 @@
 -------------------------------------------------------------------
+Tue Nov 12 06:24:04 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.15.0:
+  Changelog: https://velero.io/docs/v1.15/
+  Upgrading: https://velero.io/docs/v1.15/upgrade-to-1.15/
+  * Data mover micro service
+    Data transfer activities for CSI Snapshot Data Movement are
+    moved from node-agent pods to dedicate backupPods or
+    restorePods. This brings many benefits such as:
+    - This avoids to access volume data through host path, while
+      host path access is privileged and may involve security
+      escalations, which are concerned by users.
+    - This enables users to to control resource (i.e., cpu, memory)
+      allocations in a granular manner, e.g., control them per
+      backup/restore of a volume.
+    - This enhances the resilience, crash of one data movement
+      activity won't affect others.
+    - This prevents unnecessary full backup because of host path
+      changes after workload pods restart.
+    - For more information, check the design
+      https://github.com/vmware-tanzu/velero/blob/main/design/Implemented/vgdp-micro-service/vgdp-micro-service.md.
+  * Item Block concepts and ItemBlockAction (IBA) plugin
+    Item Block concepts are introduced for resource backups to help
+    to achieve multiple thread backups. Specifically, correlated
+    resources are categorized in the same item block and item
+    blocks could be processed concurrently in multiple threads.
+    ItemBlockAction plugin is introduced to help Velero to
+    categorize resources into item blocks. At present, Velero
+    provides built-in IBAs for pods and PVCs and Velero also
+    supports customized IBAs for any resources.
+    In v1.15, Velero doesn't support multiple thread process of
+    item blocks though item block concepts and IBA plugins are
+    fully supported. The multiple thread support will be delivered
+    in future releases.
+    For more information, check the design
+    https://github.com/vmware-tanzu/velero/blob/main/design/backup-performance-improvements.md.
+  * Node selection for repository maintenance job
+    Repository maintenance are resource consuming tasks, Velero now
+    allows you to configure the nodes to run repository maintenance
+    jobs, so that you can run repository maintenance jobs in idle
+    nodes or avoid them to run in nodes hosting critical workloads.
+    To support the configuration, a new repository maintenance
+    configuration configMap is introduced.
+    For more information, check the document
+    https://velero.io/docs/v1.15/repository-maintenance/.
+  * Backup PVC read-only configuration
+    In 1.15, Velero allows you to configure the data mover
+    backupPods to read-only mount the backupPVCs. In this way, the
+    data mover expose process could be significantly accelerated
+    for some storages (i.e., ceph).
+    To support the configuration, a new backup PVC configuration
+    configMap is introduced.
+    For more information, check the document
+    https://velero.io/docs/v1.15/data-movement-backup-pvc-configuration/.
+  * Backup PVC storage class configuration
+    In 1.15, Velero allows you to configure the storageclass used
+    by the data mover backupPods. In this way, the provision of
+    backupPVCs don't need to adhere to the same pattern as workload
+    PVCs, e.g., for a backupPVC, it only needs one replica,
+    whereas, the a workload PVC may have multiple replicas.
+    To support the configuration, the same backup PVC configuration
+    configMap is used.
+    For more information, check the document
+    https://velero.io/docs/v1.15/data-movement-backup-pvc-configuration/.
+ * Backup repository data cache configuration
+    The backup repository may need to cache data on the client side
+    during various repository operations, i.e., read, write,
+    maintenance, etc. The cache consumes the root file system space
+    of the pod where the repository access happens.
+    In 1.15, Velero allows you to configure the total size of the
+    cache per repository. In this way, if your pod doesn't have
+    enough space in its root file system, the pod won't be evicted
+    due to running out of ephemeral storage.
+    To support the configuration, a new backup repository
+    configuration configMap is introduced.
+    For more information, check the document
+    https://velero.io/docs/v1.15/backup-repository-configuration/.
+  * Performance improvements
+    In 1.15, several performance related issues/enhancements are
+    included, which makes significant performance improvements in
+    specific scenarios:
+    - There was a memory leak of Velero server after plugin calls,
+      now it is fixed, see issue #7925
+    - The client-burst/client-qps parameters are automatically
+      inherited to plugins, so that you can use the same velero
+      server parameters to accelerate the plugin executions when
+      large number of API server calls happen, see issue #7806
+    - Maintenance of Kopia repository takes huge memory in
+      scenarios that huge number of files have been backed up,
+      Velero 1.15 has included the Kopia upstream enhancement to
+      fix the problem, see issue #7510
+
+-------------------------------------------------------------------
 Fri Sep 13 18:24:59 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.14.1:

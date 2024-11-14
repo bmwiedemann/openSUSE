@@ -18,7 +18,7 @@
 
 %bcond_without  tests
 Name:           sile
-Version:        0.15.5
+Version:        0.15.6
 Release:        0
 Summary:        Simon’s Improved Layout Engine
 License:        MIT
@@ -26,7 +26,6 @@ URL:            https://sile-typesetter.org/
 Source0:        sile-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Source2:        sile-rpmlintrc
-Source3:        LICENSE
 
 # Lua modules
 BuildRequires:  luajit
@@ -167,7 +166,6 @@ Zsh command-line completion support for %{name}.
 
 %prep
 %autosetup -p1 -a1
-cp %{SOURCE3} .
 
 %build
 # The macros uses this but we have to respect what upstream config.toml
@@ -222,7 +220,8 @@ make check
 %{_mandir}/man1/sile-lua.1%{?ext_man}
 
 %files -n libtexpdf0
-%license LICENSE
+%license %{_datadir}/licenses/libtexpdf/LICENSE
+%dir %{_datadir}/licenses/libtexpdf
 %{_libdir}/libtexpdf.so.0*
 
 %files -n libtexpdf-devel

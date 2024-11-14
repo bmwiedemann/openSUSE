@@ -297,4 +297,20 @@
     <comment></comment>
     <requestid>1201365</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>4b9e1b2f4e191018df8bade2cf977839</srcmd5>
+    <version>20241031</version>
+    <time>1731596874</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20241031:
+  * Merge in changes that already happened in the package
+
+- Update to version 20241031:
+  * Drop {set,verify}_permissions macros
+  * Strip the explicit /bin/bash dependency for ksym macros
+  * locale.prov: handle glibc-locale-base (boo#1221250)
+  * lang_package: Add 'basename' option
+  * %requires_eq|ge(): Report error if package version cannot be determined</comment>
+    <requestid>1219797</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Wed Nov 13 20:17:08 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Updated URL: and Source: to be correct
+
+-------------------------------------------------------------------
+Thu Oct 31 23:38:14 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Removed BuildRequires:
+  * libasan8
+  * libubsan1
+  * libtsan2
+- Minor specfile cleanup
+
+-------------------------------------------------------------------
+Thu Oct 31 08:49:10 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update descriptions
+
+-------------------------------------------------------------------
+Fri Oct 27 00:10:45 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Initial package for build.opensuse.org (version 1.7.0)

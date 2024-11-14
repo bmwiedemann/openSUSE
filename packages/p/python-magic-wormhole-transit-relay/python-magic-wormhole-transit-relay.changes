@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 12 12:50:49 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.4.0
+  * drop Python 2, Python 3.5 and 3.6 support
+  * add Python 3.9, 3.10, 3.11 and 3.12 to CI
+  * add autobahn dep, upgrade twisted
+  * better websockets suport
+- Drop merged patches:
+  * support-python312.patch
+  * python-magic-wormhole-transit-relay-no-mock.patch
+
+-------------------------------------------------------------------
 Mon Feb  5 01:22:01 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-python312.patch:

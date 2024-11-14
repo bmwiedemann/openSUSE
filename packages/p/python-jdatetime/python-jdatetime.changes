@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 30 12:34:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.0:
+  * Add support for Python 3.12
+  * BREAKING CHANGE: Arithmetic operations on `date`/`datetime`
+    against an unknown type will now return `NotImplemented`
+    instead of raising `TypeError`
+  * Drop Python 3.7 support
+  * Move jalali.py to jalali_core dependency due to licensing
+    issues #148
+
+-------------------------------------------------------------------
 Thu Dec  7 22:26:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.1.1:

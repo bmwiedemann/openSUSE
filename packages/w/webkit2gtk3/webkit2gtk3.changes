@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 12 17:24:48 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 9e9ea966373d3858668f6a29d8ba91a5807c8dd8.patch: Fix aspect
+  ratio in videos with gststreamer-1.24.9.
+
+-------------------------------------------------------------------
 Mon Nov  4 16:08:38 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.46.3 (boo#1232747):

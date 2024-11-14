@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 13 14:20:12 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.10.0
+  * New programmatic option for not insert cwd
+    into sys.path when running
+  * Test names have the same syntax as pytest
+
+-------------------------------------------------------------------
 Fri Feb 16 17:55:11 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.9.4

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 13 14:31:54 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 24.10.0:
+  * Enhancements
+    - Add support for py313 (#416) @ssbarnea
+  * Bugfixes
+    - Re-init plugin loader after collections installation (#411) (#412) @irozet12
+
+-------------------------------------------------------------------
 Sat Sep 21 17:39:31 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 24.9.1:

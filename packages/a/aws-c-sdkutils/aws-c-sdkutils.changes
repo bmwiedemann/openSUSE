@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 12 12:50:34 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.2.1
+  * chore: Modified bug issue template to add checkbox to
+    report potential regression. by @ashishdhingra in (#45)
+  * Add cxx support by @subdiox in (#48)
+
+-------------------------------------------------------------------
 Thu Oct 24 12:39:30 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.2.0

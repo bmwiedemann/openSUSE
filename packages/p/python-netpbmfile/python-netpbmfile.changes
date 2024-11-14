@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 14 08:53:15 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2024.5.24:
+  * fix docstring examples not correctly rendered on GitHub.
+  * support NumPy 2.
+  * Fix linting issues.
+  * Add py.typed marker.
+
+-------------------------------------------------------------------
 Tue Dec 12 13:46:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2023.8.30:

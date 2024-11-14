@@ -137,4 +137,18 @@
 </comment>
     <requestid>1222899</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7fab8acac38658d43a09966c64a38b13</srcmd5>
+    <version>9.13.0</version>
+    <time>1731596968</time>
+    <user>anag+factory</user>
+    <comment>- update to version 9.13.0:
+  * The self-update now accepts a version specifier to install a
+    specific version of pnpm.
+  * Fix Cannot read properties of undefined (reading 'name') that
+    is printed while trying to render the missing peer
+    dependencies warning message #8538
+</comment>
+    <requestid>1224045</requestid>
+  </revision>
 </revisionlist>

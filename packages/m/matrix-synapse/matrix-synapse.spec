@@ -23,13 +23,12 @@
 %global Twisted_version               24.7.0
 %global Jinja2_version                3.1.4
 %global Pillow_version                10.4.0
-# TODO: 6.0.2
-%global PyYAML_version                6.0.1
+%global PyYAML_version                6.0.2
 %global attrs_version                 23.2.0
 %global bcrypt_version                4.2.0
 %global bleach_version                6.1.0
 %global canonicaljson_version         2.0.0
-%global cryptography_version          43.0.0
+%global cryptography_version          43.0.3
 %global immutabledict_version         4.2.0
 %global idna_version                  3.8
 %global ijson_version                 3.3.0
@@ -39,8 +38,8 @@
 %global msgpack_version               1.1.0
 # TODO 1.3.0
 %global netaddr_version               1.2.1
-# TODO 8.13.46
-%global phonenumbers_version          8.13.44
+# TODO 8.13.49
+%global phonenumbers_version          8.13.48
 %global prometheus_client_version     0.20.0
 %global psutil_version                2.0.0
 %global pyOpenSSL_version             24.2.1
@@ -59,10 +58,8 @@
 %global packaging_version             24.0
 %global psycopg2_version              2.9.9
 %global pysaml2_version               7.3.1
-# TODO: 1.3.2
-%global Authlib_version               1.3.1
-# TODO 5.3.0
-%global lxml_version                  5.2.2
+%global Authlib_version               1.3.2
+%global lxml_version                  5.3.0
 %global sentry_sdk_version            2.13.0
 %global PyJWT_version                 2.6.0
 %global jaeger_client_version         4.8.0
@@ -78,7 +75,7 @@
 # some version locks based on poetry.lock
 %global Jinja2_version                3.0
 %global Pillow_version                10.0.1
-%global PyYAML_version                3.13
+%global PyYAML_version                5.3
 %global Twisted_version               18.9.0
 %global attrs_version                 21.1.1
 %global bcrypt_version                3.1.7
@@ -157,7 +154,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.118.0
+Version:        1.119.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        AGPL-3.0-or-later
@@ -176,8 +173,6 @@ Source51:       matrix-synapse-generate-config.sh
 Source99:       series
 Patch0:         matrix-synapse-1.4.1-paths.patch
 Patch1:         bump-dependencies.patch
-# from https://patch-diff.githubusercontent.com/raw/element-hq/synapse/pull/17886.patch
-Patch2:         17886.patch
 # https://github.com/matrix-org/synapse/pull/10719
 # disable by marking as source until we get a decision upstream
 Source100:      10719-Fix-instert-of-duplicate-key-into-event_json.patch
@@ -196,7 +191,7 @@ BuildRequires:  unzip
 %{?systemd_ordering}
 %{sysusers_requires}
 %requires_peq   %{use_python}-base
-BuildRequires:  (%{use_python}-setuptools-rust >= 1.3 with %{use_python}-setuptools-rust =< 1.9.0)
+BuildRequires:  (%{use_python}-setuptools-rust >= 1.3 with %{use_python}-setuptools-rust =< 1.9.1)
 # NOTE: Keep this is in the same order as pyproject.toml.
 # some version locks based on poetry.lock
 BuildRequires:  %{use_python}-Jinja2 >= %{Jinja2_version}

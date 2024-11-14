@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Nov 12 13:04:18 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.19.4:
+  * Bump github.com/k0sproject/dig from 0.2.0 to 0.3.1 (#791)
+  * Bump github.com/adrg/xdg from 0.5.1 to 0.5.3 (#788)
+  * Bump k8s.io/client-go from 0.31.1 to 0.31.2 (#786)
+  * Bump github.com/k0sproject/rig from 0.18.8 to 0.19.0 (#789)
+
+-------------------------------------------------------------------
+Tue Nov 12 08:16:33 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.19.3:
+  * Restore k0s spec.api.sans updating that was removed in #772
+    (#783)
+  * Fix installflags change detection (#784)
+  * Default apiserver address to privateAddress if
+    onlyBindToAddress (#777)
+  * Fix KubeAPIURL for CPLB (#781)
+
+-------------------------------------------------------------------
 Fri Oct 25 12:22:54 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.19.2:

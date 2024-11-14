@@ -36,7 +36,6 @@ Group:          Development/Tools/Debuggers
 URL:            https://perf.wiki.kernel.org/
 # remove this one when 6.12 hits factory:
 Patch6111:      perf_tools_Build_x86_32-bit_syscall_table_from_arch_x86_entry_syscalls_syscall_32.tbl.patch
-Patch10000:     perf-fix-non-listed-archs.patch
 BuildRequires:  OpenCSD-devel
 BuildRequires:  audit-devel
 %ifnarch %{arm}

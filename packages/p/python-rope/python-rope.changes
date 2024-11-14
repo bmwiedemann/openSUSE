@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 13 22:27:03 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Skip failing tests with Python 3.13 (gh#python/cpython#126811)
+
+-------------------------------------------------------------------
 Sun Jan 21 11:09:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.12.0:

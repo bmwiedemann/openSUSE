@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-openTSNE
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        Extensible, parallel implementations of t-SNE
 License:        BSD-3-Clause

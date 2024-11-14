@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 13 16:56:50 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.8
+  * palcomp: add "eval" command
+  * palcomp: retire "litadd", "litmul", "litset", "satadd",
+    "satmul", "satset", "hueadd", "hueset"
+
+-------------------------------------------------------------------
 Tue Oct  1 12:17:12 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.7

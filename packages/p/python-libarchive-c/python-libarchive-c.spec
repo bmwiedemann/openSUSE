@@ -18,7 +18,6 @@
 
 %define requires_file() %( readlink -f '%*' | LC_ALL=C xargs -r rpm -q --qf 'Requires: %%{name} >= %%{epoch}:%%{version}\\n' -f | sed -e 's/ (none):/ /' -e 's/ 0:/ /' | grep -v "is not")
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-libarchive-c
 Version:        5.1
 Release:        0
@@ -27,6 +26,8 @@ License:        CC0-1.0
 Group:          Development/Languages/Python
 URL:            https://github.com/Changaco/python-libarchive-c
 Source:         https://files.pythonhosted.org/packages/source/l/libarchive-c/libarchive-c-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/Changaco/python-libarchive-c/pull/131 Handle new libarchive versions
+Patch0:         libarchive.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -63,6 +64,7 @@ export LANG="en_US.UTF-8"
 %files %{python_files}
 %doc README.rst
 %license LICENSE.md
-%{python_sitelib}/*
+%{python_sitelib}/libarchive
+%{python_sitelib}/libarchive_c-%{version}*info
 
 %changelog

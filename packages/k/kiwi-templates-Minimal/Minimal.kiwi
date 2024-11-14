@@ -404,6 +404,7 @@
         <!-- kernel-default-base lacks dm-crypt -->
         <package name="kernel-default-base"/>
         <package name="sdbootutil-snapper"/>
+        <package name="sdbootutil-jeos-firstboot-enroll"/>
         <package name="efibootmgr"/>
         <package name="uefi_mbr" arch="x86_64"/>
         <package name="systemd-experimental"/> <!-- XXX: pulls in python but needed for tpm files -->

@@ -732,6 +732,7 @@
         <package name="jeos-firstboot"/>
         <package name="growpart-generator"/>
         <package name="sdbootutil-snapper"/>
+        <package name="sdbootutil-jeos-firstboot-enroll"/>
         <package name="disk-encryption-tool"/>
         <package name="systemd-repart-dracut"/>
         <package name="dracut-pcr-signature"/>

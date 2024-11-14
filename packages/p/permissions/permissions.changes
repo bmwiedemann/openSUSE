@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 29 15:11:37 UTC 2024 - matthias.gerstner@suse.com
+
+- Update to version 1699_20241029:
+  * Add RPM macros; moved from rpm-config-SUSE
+  * package RPM macros together with permctl, to avoid having to setup an
+    extra sub-package.
+
+-------------------------------------------------------------------
 Fri May 24 10:37:10 UTC 2024 - matthias.gerstner@suse.com
 
 - Update to version 1699_20240522:

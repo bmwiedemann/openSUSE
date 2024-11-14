@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov 13 14:38:02 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 9.6.0:
+  * INSIGHTS-475 Add 3 new checks to polaris (#1082)
+  * Bump k8s.io/client-go from 0.31.1 to 0.31.2 (#1078)
+  * Bump sigs.k8s.io/controller-runtime from 0.19.0 to 0.19.1
+    (#1079)
+  * Bump github.com/fatih/color from 1.17.0 to 1.18.0 (#1081)
+  * Bump k8s.io/api from 0.31.1 to 0.31.2 (#1077)
+
+-------------------------------------------------------------------
 Wed Oct 23 09:06:43 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - add subpackages for shell completions

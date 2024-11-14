@@ -1,0 +1,16 @@
+--- src/third_party/swiftshader/src/Reactor/LLVMJIT.cpp.orig	2024-10-29 10:12:16.688190300 +0100
++++ src/third_party/swiftshader/src/Reactor/LLVMJIT.cpp	2024-11-06 19:02:57.381872200 +0100
+@@ -221,8 +221,13 @@ JITGlobals *JITGlobals::get()
+ 
+ 		// Retrieve host CPU name and sub-target features and add them to builder.
+ 		// Relocation model, code model and codegen opt level are kept to default values.
++#if LLVM_VERSION_MAJOR >= 19
++		llvm::StringMap<bool> cpuFeatures= llvm::sys::getHostCPUFeatures();
++		bool ok = true;
++#else
+ 		llvm::StringMap<bool> cpuFeatures;
+ 		bool ok = llvm::sys::getHostCPUFeatures(cpuFeatures);
++#endif
+ 
+ #if defined(__i386__) || defined(__x86_64__) || \
+     (defined(__linux__) && (defined(__arm__) || defined(__aarch64__)))

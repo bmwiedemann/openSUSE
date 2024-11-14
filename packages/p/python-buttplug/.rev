@@ -39,4 +39,17 @@
     <comment></comment>
     <requestid>948504</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c5689dd8bd80ecd1af07ed885e8179b5</srcmd5>
+    <version>0.3.0</version>
+    <time>1731596998</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.3.0:
+  * switch to maintained fork of the library
+
+  * DeviceRemoved event no longer tries to use non-existent dict
+- Fix pytest version.
+- Initial package release.</comment>
+    <requestid>1224113</requestid>
+  </revision>
 </revisionlist>

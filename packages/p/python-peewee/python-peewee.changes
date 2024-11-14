@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 12 19:46:20 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.17.8
+  * Fix regression in behavior of delete_instance() when
+    traversing nullable foreign-keys. Introduced in 3.17.6.
+  * Fix bug where joins not cloned when going from
+    join-less -> joined query.
+
+-------------------------------------------------------------------
 Thu Nov  7 09:08:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.17.7:

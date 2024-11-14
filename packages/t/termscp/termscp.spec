@@ -1,7 +1,7 @@
 #
 # spec file for package termscp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,26 @@
 
 
 Name:           termscp
-Version:        0.14.0
+Version:        0.16.1
 Release:        0
-Summary:	Feature rich terminal UI file transfer and explorer
+Summary:        Feature rich terminal UI file transfer and explorer
 License:        MIT
 URL:            https://github.com/veeso/termscp
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-# PATCH-FIX-UPSTREAM dfe58e6147f66b4c0c74874c954e7d101b3bf026.patch
-# https://github.com/veeso/termscp/issues/271
-Patch1:         dfe58e6147f66b4c0c74874c954e7d101b3bf026.patch
+# PATCH-FIX-UPSTREAM https://github.com/veeso/termscp/issues/313
+Patch1:         https://github.com/veeso/termscp/commit/7dba691ccc001aa720d0ecf1642dda94219a2d21.patch
+# PATCH-FIX-UPSTREAM https://github.com/veeso/termscp/issues/312
+Patch2:         https://github.com/veeso/termscp/commit/099e2154bae9a954aab0569bf048c4d9ae71049e.patch
+BuildRequires:  cargo >= 1.77
 BuildRequires:  cargo-packaging
 BuildRequires:  zstd
-BuildRequires:  cargo >= 1.77
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(smbclient)
 
 # error[E0063]: missing fields `bavail`, `bfree`, `blocks` and 3 other fields in initializer of `types::stat::SmbStatVfs`
 #
-ExcludeArch: i586 ppc64le s390x
+ExcludeArch:    i586 ppc64le s390x
 
 %description
 Termscp is a feature rich terminal file transfer and explorer, with support for
@@ -53,6 +54,9 @@ compatible.
 %install
 install -D -d -m 0755 %{buildroot}%{_bindir}
 install -m 0755 %{_builddir}/%{name}-%{version}/target/release/%{name} %{buildroot}%{_bindir}/%{name}
+
+%check
+%{cargo_test} --features isolated-tests
 
 %files
 %{_bindir}/%{name}

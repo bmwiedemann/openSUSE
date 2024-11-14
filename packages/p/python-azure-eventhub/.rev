@@ -288,4 +288,15 @@
 - Update Requires from setup.py (forwarded request 1206061 from glaubitz)</comment>
     <requestid>1206074</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>9ec9f818b28519e27a907ac875b54a33</srcmd5>
+    <version>5.13.0</version>
+    <time>1731596907</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 5.12.3
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1223870 from glaubitz)</comment>
+    <requestid>1223949</requestid>
+  </revision>
 </revisionlist>

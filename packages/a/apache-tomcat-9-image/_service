@@ -6,4 +6,9 @@
     <param name="regex">%%tomcat_version%%</param>
     <param name="package">tomcat</param>
   </service>
+  <service name="replace_using_package_version" mode="buildtime">
+    <param name="file">Dockerfile.openjdk21</param>
+    <param name="regex">%%tomcat_version%%</param>
+    <param name="package">tomcat</param>
+  </service>
 </services>

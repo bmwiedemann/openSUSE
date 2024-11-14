@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 14 08:43:28 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- 0.5.2
+  * Don't overwrite files from git, but complain instead with
+    an error. For example _scmsync.obsinfo file must not be part
+    of the git tree. boo#1230469
+
+-------------------------------------------------------------------
 Wed Oct 30 09:10:41 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
 - 0.5.1

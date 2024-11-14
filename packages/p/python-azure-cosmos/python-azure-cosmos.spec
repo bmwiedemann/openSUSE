@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-cosmos
-Version:        4.7.0
+Version:        4.8.0
 Release:        0
 Summary:        Microsoft Azure Cosmos client library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-cosmos/azure-cosmos-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/a/azure_cosmos/azure_cosmos-%{version}.tar.gz
 BuildRequires:  %{python_module azure-mgmt-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -33,7 +33,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-typing_extensions >= 4.6.0
-Requires:       (python-azure-core >= 1.25.1 with python-azure-core < 2.0.0)
+Requires:       (python-azure-core >= 1.30.0 with python-azure-core < 2.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
 Obsoletes:      python3-azure-cosmos < 4.5.1
@@ -49,7 +49,7 @@ with name [azure-cosmos](https://pypi.python.org/pypi/azure-cosmos/). For docume
 see the Microsoft Azure [link](https://docs.microsoft.com/en-us/azure/cosmos-db/sql-api-sdk-python).
 
 %prep
-%setup -q -n azure-cosmos-%{version}
+%setup -q -n azure_cosmos-%{version}
 
 %build
 %pyproject_wheel

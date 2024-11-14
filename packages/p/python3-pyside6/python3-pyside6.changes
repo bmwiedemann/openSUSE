@@ -2,6 +2,10 @@
 Fri Nov  8 09:58:04 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 6.8.0.2
+  - Support lazy nested types.
+  - Provide __all__ only on demand.
+  - Handle correctly callback dynamic slots that fail.
+  - Small fixes.
 - Drop patch, merged upstream:
   * 0001-Lazy-Init-Support-Lazy-Subtypes-amended.patch
 

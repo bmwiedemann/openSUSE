@@ -17,7 +17,7 @@
 
 
 Name:           velero
-Version:        1.14.1
+Version:        1.15.0
 Release:        0
 Summary:        Backup program with deduplication and encryption
 License:        Apache-2.0
@@ -25,8 +25,10 @@ Group:          Productivity/Archiving/Backup
 URL:            https://velero.io
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang-packaging
-BuildRequires:  golang(API) = 1.22
+BuildRequires:  bash-completion
+BuildRequires:  fish
+BuildRequires:  go >= 1.22
+BuildRequires:  zsh
 
 %description
 velero is a backup program. It supports verification, encryption,
@@ -93,8 +95,8 @@ mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions
 %{buildroot}/%{_bindir}/%{name} completion bash > %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
 
 # create the zsh completion file
-mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d
-%{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_%{name}
+mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions
+%{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{name}
 
 # create the fish completion file
 mkdir -p %{buildroot}%{_datadir}/fish/vendor_completions.d
@@ -106,19 +108,12 @@ mkdir -p %{buildroot}%{_datadir}/fish/vendor_completions.d
 %{_bindir}/%{name}
 
 %files bash-completion
-%defattr(-,root,root)
-%dir %{_datarootdir}/bash-completion/completions/
 %{_datarootdir}/bash-completion/completions/%{name}
 
 %files zsh-completion
-%defattr(-,root,root)
-%dir %{_datarootdir}/zsh_completion.d/
-%{_datarootdir}/zsh_completion.d/_%{name}
+%{_datarootdir}/zsh/site-functions/_%{name}
 
 %files fish-completion
-%defattr(-,root,root)
-%dir %{_datarootdir}/fish
-%dir %{_datarootdir}/fish/vendor_completions.d
 %{_datarootdir}/fish/vendor_completions.d/%{name}.fish
 
 %changelog

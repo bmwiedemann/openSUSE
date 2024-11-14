@@ -5026,4 +5026,16 @@ oddjob-gpupdate isn't blocked)</comment>
 </comment>
     <requestid>1218023</requestid>
   </revision>
+  <revision rev="489" vrev="1">
+    <srcmd5>ce1ce73874173ff506d25fe336915d1a</srcmd5>
+    <version>2.6.1+git20241111.4884f6a</version>
+    <time>1731596874</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.6.1+git20241111.4884f6a:
+  * SUIDPermissionsCheck: Escape path for regular expression
+  * false positive: systemd-service-without-service_del_postun
+
+The version curretnly submitted to Factory breaks build of e.g coreutils (forwarded request 1223363 from dimstar)</comment>
+    <requestid>1223376</requestid>
+  </revision>
 </revisionlist>

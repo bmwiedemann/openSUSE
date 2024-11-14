@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Oct 31 09:33:24 UTC 2024 - dmueller@suse.com
+
+- Update to version 20241031:
+  * Merge in changes that already happened in the package
+
+-------------------------------------------------------------------
+Thu Oct 31 09:28:52 UTC 2024 - dmueller@suse.com
+
+- Update to version 20241031:
+  * Drop {set,verify}_permissions macros
+  * Strip the explicit /bin/bash dependency for ksym macros
+  * locale.prov: handle glibc-locale-base (boo#1221250)
+  * lang_package: Add 'basename' option
+  * %requires_eq|ge(): Report error if package version cannot be determined
+
+-------------------------------------------------------------------
 Thu Aug  8 04:09:24 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Use a deterministic binarychangelogtrim

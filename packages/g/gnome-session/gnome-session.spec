@@ -57,26 +57,14 @@ BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xtrans)
 Requires:       %{name}-core = %{version}
-Requires:       %{name}-default-session = %{version}
-# gnome-session-wayland not recommended by default yet: causes various issues:
-# qemu's default video mode is 'cirrus', which stays black with GNOME Wayland
-# YaST cannot be started without additional tricks
-# All together this blocks us from passing openQA
-# Recommends:     %%{name}-wayland
+# gnome-session-default-session merged into gnome-session; the alternative - fallback-session - disappeared
+# with GNOME 3.8
+Provides:       %{name}-default-session = %{version}
+Obsoletes:      %{name}-default-session <= %{version}
 
 %description
 This package provides the basic session tools, like session management
 functionality, for the GNOME Desktop.
-
-%package default-session
-Summary:        Default session support for the GNOME Session Manager
-Group:          System/GUI/GNOME
-Requires:       %{name} = %{version}
-Requires:       gnome-settings-daemon
-Requires:       gnome-shell
-
-%description default-session
-This package contains the definition of the default GNOME session.
 
 %package wayland
 Summary:        Wayland support for the GNOME Session Manager
@@ -149,26 +137,24 @@ touch %{buildroot}%{_sysconfdir}/alternatives/default-waylandsession.desktop
 ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_datadir}/wayland-sessions/default.desktop
 %endif
 
-%post
+%post xsession
 %{_sbindir}/update-alternatives --install %{_datadir}/xsessions/default.desktop \
   default-xsession.desktop %{_datadir}/xsessions/gnome.desktop 25
 
-%postun
+%postun xsession
 [ -f %{_datadir}/xsessions/gnome.desktop ] || %{_sbindir}/update-alternatives \
   --remove default-xsession.desktop %{_datadir}/xsessions/gnome.desktop
 
 %files
 %{_bindir}/gnome
+%{_datadir}/gnome-session/sessions/gnome.session
+%{_datadir}/gnome-session/sessions/gnome-dummy.session
 
 %files xsession
 %{_datadir}/xsessions/default.desktop
 %{_datadir}/xsessions/gnome.desktop
 %{_datadir}/xsessions/gnome-xorg.desktop
 %ghost %{_sysconfdir}/alternatives/default-xsession.desktop
-
-%files default-session
-%{_datadir}/gnome-session/sessions/gnome.session
-%{_datadir}/gnome-session/sessions/gnome-dummy.session
 
 %ifnarch s390 s390x
 %post wayland
