@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov 14 08:21:05 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.9.3
+  * pragma_include now accepts a new jail argument,
+    a boolean.  By default jail is false.  If jail is
+    true, the paths to included files must be in or under
+    the path from include_paths.
+  * pragma_include now permits pathlib.Path
+    objects in its include_paths parameter.
+    It still supports str objects too, of course.
+
+-------------------------------------------------------------------
 Sun Jan  7 20:10:29 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.2:

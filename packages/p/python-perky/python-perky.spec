@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-perky
-Version:        0.9.2
+Version:        0.9.3
 Release:        0
 Summary:        A parser for the perky text file format
 License:        MIT
