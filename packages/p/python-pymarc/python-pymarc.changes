@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Nov 14 08:56:21 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 5.3.3
+  * A small bugfix release to ensure logging uses a namespace
+    rather than the root logger !213. This should allow pymarc
+    log messages to be more legible in applications that use it.
+  * On the development side, the setup.py was replaced with
+    pyproject.toml, and the CI build was switched to use uv
+    to manage the virtual environment.
+- Switch build system from setuptools to pyproject.toml
+  * Add python-pip and python-wheel to BuildRequires
+  * Replace %python_build with %pyproject_wheel
+  * Replace %python_install with %pyproject_install
+- Limit Python files matched in %files section
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Sun Aug 18 16:53:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.2.2:

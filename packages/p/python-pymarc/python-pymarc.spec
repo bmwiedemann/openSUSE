@@ -16,14 +16,18 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-pymarc
-Version:        5.2.2
+Version:        5.2.3
 Release:        0
 Summary:        MARC bibliographic data manipulation module
 License:        BSD-2-Clause
 URL:            https://gitlab.com/pymarc/pymarc
 Source:         https://files.pythonhosted.org/packages/source/p/pymarc/pymarc-%{version}.tar.gz
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pytest
@@ -44,10 +48,10 @@ saner representation.
 %setup -q -n pymarc-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -56,6 +60,7 @@ saner representation.
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pymarc
+%{python_sitelib}/pymarc-%{version}.dist-info
 
 %changelog

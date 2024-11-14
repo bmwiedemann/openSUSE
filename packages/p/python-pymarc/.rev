@@ -118,4 +118,12 @@
   * Fixed issue with iterating over fields and subfields</comment>
     <requestid>1194571</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>84809843a9976d7607547dd9fe8fb2cd</srcmd5>
+    <version>5.2.3</version>
+    <time>1731597004</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1224130</requestid>
+  </revision>
 </revisionlist>
