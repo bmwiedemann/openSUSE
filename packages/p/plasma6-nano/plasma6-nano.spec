@@ -52,8 +52,8 @@ BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
 Requires:       plasma6-workspace >= %{_plasma6_bugfix}
-# hardcode versions of plasma6-framework-components, as upstream doesn't keep backwards compability there
-%requires_ge    plasma6-framework-components
+# Hardcode versions of libplasma6-components, as upstream doesn't keep backwards compability there
+%requires_ge    libplasma6-components
 # Part of the default applet selection
 # TODO remove? there's no such package
 # Recommends:     plasma-mycroft

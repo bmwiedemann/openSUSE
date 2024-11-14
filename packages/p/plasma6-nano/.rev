@@ -119,4 +119,12 @@
     <comment>Plasma 6.2.3 (forwarded request 1221508 from Vogtinator)</comment>
     <requestid>1221561</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>bb2003b56dacd481fb49594c12f88da4</srcmd5>
+    <version>6.2.3</version>
+    <time>1731597000</time>
+    <user>anag+factory</user>
+    <comment>- Replace plasma6-framework-components requirement with libplasma6-components</comment>
+    <requestid>1224126</requestid>
+  </revision>
 </revisionlist>
