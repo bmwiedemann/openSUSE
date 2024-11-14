@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 14 10:13:58 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.15.7:
+  * build(deps): bump golang.org/x/text from 0.19.0 to 0.20.0
+
+-------------------------------------------------------------------
 Wed Nov 13 10:02:12 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.15.6:
