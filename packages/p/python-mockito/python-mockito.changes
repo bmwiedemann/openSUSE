@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 14 14:19:46 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.3:
+  * Remove now unsupported "asyncio_mode" configuration
+  * Avoid partial when constructing answers
+  * Update numpy dev dependency
+  * Add Python 3.13 to the test matrix
+
+-------------------------------------------------------------------
 Sat Mar 16 08:57:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.0:

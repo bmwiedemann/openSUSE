@@ -16,19 +16,21 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-mockito
-Version:        1.5.0
+Version:        1.5.3
 Release:        0
 Summary:        Spying framework
 License:        MIT
 URL:            https://github.com/kaste/mockito-python
 # https://github.com/kaste/mockito-python/issues/36
 Source:         https://github.com/kaste/mockito-python/archive/%{version}.tar.gz
-BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module hatch_vcs}
+BuildRequires:  %{python_module numpy >= 2}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -41,13 +43,13 @@ Requires:       python2-funcsigs
 Mockito is a spying framework originally based on the Java library with the same name.
 
 %prep
-%setup -q -n mockito-python-%{version}
+%autosetup -p1 -n mockito-python-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -56,6 +58,7 @@ Mockito is a spying framework originally based on the Java library with the same
 %files %{python_files}
 %doc AUTHORS CHANGES.txt README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/mockito
+%{python_sitelib}/mockito-%{version}.dist-info
 
 %changelog

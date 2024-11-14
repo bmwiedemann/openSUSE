@@ -131,4 +131,16 @@
 - Remove python-mockito.rpmlintrc; problem of execution bits have</comment>
     <requestid>1158396</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9900662eb66fe94ba7226df52cb165d4</srcmd5>
+    <version>1.5.3</version>
+    <time>1731597030</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.5.3:
+  * Remove now unsupported &quot;asyncio_mode&quot; configuration
+  * Avoid partial when constructing answers
+  * Update numpy dev dependency
+  * Add Python 3.13 to the test matrix</comment>
+    <requestid>1224223</requestid>
+  </revision>
 </revisionlist>
