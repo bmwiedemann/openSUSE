@@ -755,4 +755,17 @@ See changelog in:
     <comment></comment>
     <requestid>1208062</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>c42f2e27b880de82d0b3bc43730d8269</srcmd5>
+    <version>3.16.3</version>
+    <time>1731597028</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.16.3:
+  * fix: fix label name
+  * Fix typo in pkg/lint/rules/chartfile_test.go
+  * Increasing the size of the runner used for releases.
+  * fix(hooks): correct hooks delete order
+  * Bump github.com/containerd/containerd from 1.7.12 to 1.7.23</comment>
+    <requestid>1224201</requestid>
+  </revision>
 </revisionlist>

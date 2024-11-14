@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 14 13:05:38 UTC 2024 - dmueller@suse.com
+
+- Update to version 3.16.3:
+  * fix: fix label name
+  * Fix typo in pkg/lint/rules/chartfile_test.go
+  * Increasing the size of the runner used for releases.
+  * fix(hooks): correct hooks delete order
+  * Bump github.com/containerd/containerd from 1.7.12 to 1.7.23
+
+-------------------------------------------------------------------
 Fri Oct 11 08:24:54 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.16.2:
