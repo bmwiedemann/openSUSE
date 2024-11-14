@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-merge3
-Version:        0.0.14
+Version:        0.0.15
 Release:        0
 Summary:        Python implementation of 3-way merge
 License:        GPL-2.0-or-later
 URL:            https://github.com/breezy-team/merge3
-Source:         https://files.pythonhosted.org/packages/source/m/merge3/merge3-%{version}.tar.gz
+Source:         %{url}/archive/v%{version}.tar.gz#/merge3-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
