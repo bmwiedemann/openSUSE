@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr  2 14:27:13 UTC 2024 - pgajdos@suse.com
+
+- version update to 1.2.0
+  ### Bug Fixes
+  * **arch:** python-configshell-fb dependency problem
+  * **arch:** update packages yamls
+  ### Code Refactoring
+  * **kitchen:** rename arch pillar file
+  ### Continuous Integration
+  * **kitchen+travis:** use latest pre-salted images
+  ### Features
+  * **semantic-release:** standardise for this formula
+
+-------------------------------------------------------------------
 Tue Jan 19 16:35:49 UTC 2021 - Xabier Arbulu <xarbulu@suse.com>
 
 - Change salt-formulas-configuration requirement in SLE12 codestream

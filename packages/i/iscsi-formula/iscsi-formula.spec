@@ -1,7 +1,7 @@
 #
 # spec file for package iscsi-formula
 #
-# Copyright (c) 2018 SUSE LLC, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 
 Name:           iscsi-formula
-Version:        1.1.1
+Version:        1.2.0
 Group:          System/Packages
 Release:        0
 Summary:        Configure iSCSI targets and initiator on GNU/Linux and FreeBSD
 
 License:        Apache-2.0
-Url:            https://github.com/saltstack-formulas/%{name}
-Source0:        %{name}-%{version}.tar.gz
+URL:            https://github.com/saltstack-formulas/%{name}
+Source0:        https://github.com/saltstack-formulas/iscsi-formula/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 %if 0%{?suse_version} < 1500
@@ -55,7 +55,6 @@ module, which can be added running the `SUSEConnect -p sle-module-adv-systems-ma
 mkdir -p %{buildroot}%{fdir}/states/%{fname}
 mkdir -p %{buildroot}%{fdir}/metadata/%{fname}
 cp -R %{fname} %{buildroot}%{fdir}/states
-
 
 %files
 %defattr(-,root,root,-)
