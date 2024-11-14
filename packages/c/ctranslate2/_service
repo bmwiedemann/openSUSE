@@ -2,8 +2,8 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/OpenNMT/CTranslate2</param>
     <param name="scm">git</param>
-    <param name="revision">v4.4.0</param>
-    <param name="version">4.4.0</param>
+    <param name="revision">v4.5.0</param>
+    <param name="version">4.5.0</param>
   </service>
   <service name="set_version" mode="manual" />
 

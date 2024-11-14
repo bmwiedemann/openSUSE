@@ -17,7 +17,7 @@
 
 
 Name:           ctranslate2
-Version:        4.4.0
+Version:        4.5.0
 %define lname libctranslate2-4
 Release:        0
 Summary:        Library for efficient inference with Transformer models

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-ctranslate2
-Version:        4.4.0
+Version:        4.5.0
 Release:        0
 Summary:        Library for efficient inference with Transformer models
 License:        MIT

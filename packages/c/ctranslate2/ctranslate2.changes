@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Nov  7 12:31:46 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- update to version 4.5.0
+  
+  New features
+  * Support Phi3
+  * Support Mistral Nemo
+  * Support Wav2Vec2Bert ASR
+
+  Fixes and improvements
+  * Upgrade to CUDNN9
+  * Fix logits vocab
+  * Update doc AWQ
+
+-------------------------------------------------------------------
 Wed Sep 25 00:57:01 UTC 2024 - Guang Yee <gyee@suse.com>
 
 - Enable sle15_python_module_pythons.
