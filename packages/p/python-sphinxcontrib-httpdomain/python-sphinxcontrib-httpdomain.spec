@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-httpdomain
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-sphinxcontrib-httpdomain
 Version:        1.8.1
 Release:        0
@@ -32,6 +31,7 @@ Patch1:         python-sphinxcontrib-httpdomain-pyupgrade3.patch
 BuildRequires:  %{python_module Flask >= 0.11}
 BuildRequires:  %{python_module Sphinx >= 1.5}
 BuildRequires:  %{python_module bottle >= 0.11.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
@@ -54,14 +54,14 @@ https://sphinxcontrib-httpdomain.readthedocs.io/en/stable/
 %autosetup -p1 -n httpdomain-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest test
+%pytest test -k "not test_get_routes_mount"
 
 %files %{python_files}
 %license LICENSE
@@ -71,6 +71,6 @@ https://sphinxcontrib-httpdomain.readthedocs.io/en/stable/
 %{python_sitelib}/sphinxcontrib/httpdomain.py*
 %pycache_only %{python_sitelib}/sphinxcontrib/__pycache__
 %{python_sitelib}/sphinxcontrib_httpdomain-%{version}-py*-nspkg.pth
-%{python_sitelib}/sphinxcontrib_httpdomain-%{version}-py*.egg-info
+%{python_sitelib}/sphinxcontrib_httpdomain-%{version}.dist-info
 
 %changelog

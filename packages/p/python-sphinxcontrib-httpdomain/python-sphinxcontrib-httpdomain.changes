@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 14 10:27:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- skip test failure with updated bottle
+
+-------------------------------------------------------------------
 Thu Apr  6 09:11:28 UTC 2023 - pgajdos@suse.com
 
 - version update to 1.8.1
@@ -37,8 +42,8 @@ Sat Oct 16 19:25:22 UTC 2021 - Dirk Müller <dmueller@suse.com>
     starting with sphinx 4.0 [:pull:`49` by Florian Masy]
   - Be explicit about what versions of Python are supports (2.7, and 3.5+). This will
     be the last version to support Python 2.7 and 3.5, version 2.0 will require 3.6+.
-- remove 49-remove_force_decode.patch (upstream) 
-  
+- remove 49-remove_force_decode.patch (upstream)
+
 -------------------------------------------------------------------
 Mon Jul 19 13:56:40 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
@@ -60,7 +65,7 @@ Mon Mar  1 20:57:30 UTC 2021 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Tue Feb  9 07:55:02 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Bump {Build,}Require to tornado5. 
+- Bump {Build,}Require to tornado5.
 
 -------------------------------------------------------------------
 Thu Feb 20 06:34:35 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
@@ -86,11 +91,11 @@ Wed Jul  3 09:18:17 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 Tue Apr 23 14:52:51 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 1.7.0 (bsc#1139695)
-  * Implemented :autoquickref: option that use available 
+  * Implemented :autoquickref: option that use available
     informations to build a quickref.
-  * Remove references to the sphinx.util.compat module which was 
+  * Remove references to the sphinx.util.compat module which was
     deprecated in Sphinx 1.6 and removed in 1.7.
-  * Made :mod:`sphinxcontrib.autohttp.tornado` compatible with 
+  * Made :mod:`sphinxcontrib.autohttp.tornado` compatible with
     Tornado 4.5 and newer.
   * Minimum compatible version of Sphinx became changed to 1.5.
   * Use HTTPS for :rfc: generated links.

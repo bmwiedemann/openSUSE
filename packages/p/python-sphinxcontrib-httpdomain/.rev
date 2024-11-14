@@ -242,4 +242,18 @@
     <comment></comment>
     <requestid>1077837</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>789492e506ebdb161ccaf44fdb96763a</srcmd5>
+    <version>1.8.1</version>
+    <time>1731597016</time>
+    <user>anag+factory</user>
+    <comment>- skip test failure with updated bottle
+
+- remove 49-remove_force_decode.patch (upstream)
+- Bump {Build,}Require to tornado5.
+  * Implemented :autoquickref: option that use available
+  * Remove references to the sphinx.util.compat module which was
+  * Made :mod:`sphinxcontrib.autohttp.tornado` compatible with</comment>
+    <requestid>1224153</requestid>
+  </revision>
 </revisionlist>
