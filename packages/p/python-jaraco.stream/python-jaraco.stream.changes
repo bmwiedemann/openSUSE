@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 14 09:22:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.4:
+  * Moved more_itertools into the dependencies.
+
+-------------------------------------------------------------------
 Fri May 12 13:07:37 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Replace removed sphinx_build setuptools hook with build-sphinx

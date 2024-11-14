@@ -57,4 +57,13 @@
     <comment></comment>
     <requestid>1087129</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c4f67738229afe96a46a4f2f5cbc793f</srcmd5>
+    <version>3.0.4</version>
+    <time>1731597001</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.4:
+  * Moved more_itertools into the dependencies.</comment>
+    <requestid>1224123</requestid>
+  </revision>
 </revisionlist>

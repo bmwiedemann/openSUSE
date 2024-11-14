@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.stream
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define _name   jaraco.stream
 Name:           python-jaraco.stream
-Version:        3.0.3
+Version:        3.0.4
 Release:        0
 Summary:        Routines for dealing with data streams
 License:        MIT
 URL:            https://github.com/jaraco/jaraco.stream
-Source:         https://files.pythonhosted.org/packages/source/j/%{_name}/%{_name}-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/j/%{_name}/jaraco_stream-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 56}
@@ -37,13 +37,6 @@ BuildArch:      noarch
 BuildRequires:  %{python_module more-itertools}
 BuildRequires:  %{python_module pytest}
 # /SECTION
-# SECTION documentation requirements
-BuildRequires:  python3-Sphinx
-# Require offline feature introduced in  gh#jaraco/jaraco.packaging#11
-BuildRequires:  python3-jaraco.packaging >= 9.2
-BuildRequires:  python3-pylons-sphinx-themes
-BuildRequires:  python3-rst.linker >= 1.9
-# /SECTION
 %python_subpackages
 
 %description
@@ -52,13 +45,17 @@ for loading gzip data on the fly.
 
 %package     -n %{name}-doc
 Summary:        Documentation files for %{name}
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-furo
+BuildRequires:  python3-jaraco.packaging >= 9.2
+BuildRequires:  python3-rst.linker >= 1.9
 Provides:       %{python_module jaraco.stream-doc = %{version}}
 
 %description -n %{name}-doc
 This package contains documentation files for %{name}.
 
 %prep
-%setup -q -n %{_name}-%{version}
+%setup -q -n jaraco_stream-%{version}
 rm -rf jaraco.stream.egg-info
 
 %build
@@ -76,7 +73,7 @@ rm -r build/sphinx/html/{.buildinfo,.doctrees}
 
 %files %{python_files}
 %license LICENSE
-%doc CHANGES.rst README.rst
+%doc NEWS.rst README.rst
 %dir %{python_sitelib}/jaraco
 %{python_sitelib}/jaraco/stream/
 %{python_sitelib}/jaraco.stream-%{version}*-info
