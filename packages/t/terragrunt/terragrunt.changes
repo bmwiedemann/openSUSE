@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 14 09:49:48 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.68.13:
+  * feat: Adding units-reading (#3550)
+  * feat: Adding Discord Markdown badge (#3539)
+  * docs: Adding documentation for release process (#3487)
+  * fix: Refactoring out helpers (#3465)
+  * fix: Re-introducing `--terragrunt-hclfmt-file` docs (#3552)
+
+-------------------------------------------------------------------
 Wed Nov 13 10:03:38 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.68.12 (0.68.11 does not exist):
