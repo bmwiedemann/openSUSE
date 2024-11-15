@@ -24,7 +24,7 @@ Summary:        Scrollable-tiling Wayland compositor
 License:        GPL-3.0-or-later
 URL:            https://github.com/YaLTeR/niri
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
-Source1:        %{url}/releases/download/v0.1.10/niri-0.1.10-vendored-dependencies.tar.xz
+Source1:        %{url}/releases/download/v%{version}/%{name}-%{version}-vendored-dependencies.tar.xz
 Source2:        cargo_config
 BuildRequires:  cargo-packaging
 BuildRequires:  clang
@@ -33,8 +33,8 @@ BuildRequires:  pipewire-devel
 BuildRequires:  pkgconfig
 BuildRequires:  rust >= 1.77.0
 BuildRequires:  wayland-devel
-BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(cairo-gobject)
+BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(libdisplay-info)
 BuildRequires:  pkgconfig(libinput)
@@ -44,9 +44,9 @@ BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(xkbcommon)
 # Portal implementations used by niri
 Recommends:     xdg-desktop-portal-gtk
-Recommends:     xdg-desktop-portal-gnome
 Recommends:     gnome-keyring
 Recommends:     polkit-gnome
+Recommends:     xdg-desktop-portal-gnome
 # Recommended utilities, bound in the default config
 Recommends:     alacritty
 Recommends:     fuzzel
@@ -71,7 +71,7 @@ cp %{SOURCE2} .cargo/config
 %{cargo_build}
 
 %install
-install -Dm755 -t %{buildroot}%{_bindir} target/release/%{name} 
+install -Dm755 -t %{buildroot}%{_bindir} target/release/%{name}
 install -Dm755 -t %{buildroot}%{_bindir} resources/niri-session
 install -Dm644 -t %{buildroot}%{_datadir}/wayland-sessions resources/niri.desktop
 install -Dm644 -t %{buildroot}%{_datadir}/xdg-desktop-portal resources/niri-portals.conf
