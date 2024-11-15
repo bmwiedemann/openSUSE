@@ -49,4 +49,12 @@
 - drop ndindex-pr159-py312.patch (upstream)</comment>
     <requestid>1161095</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d68ba9754d9b215cfe8c229865b5b78a</srcmd5>
+    <version>1.9.2</version>
+    <time>1731681852</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1224432</requestid>
+  </revision>
 </revisionlist>

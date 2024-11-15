@@ -17,7 +17,7 @@
 
 
 Name:           python-ndindex
-Version:        1.8
+Version:        1.9.2
 Release:        0
 Summary:        A Python library for manipulating indices of ndarrays
 License:        MIT
@@ -26,7 +26,7 @@ Source:         https://files.pythonhosted.org/packages/source/n/ndindex/ndindex
 # PATCH-FIX-OPENSUSE custom-pytest.patch gh#Quansight-Labs/ndindex#150
 Patch2:         custom-pytest.patch
 BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base > 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -37,6 +37,7 @@ Recommends:     python-numpy
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module sympy}
 # /SECTION
 %python_subpackages
 
@@ -59,7 +60,10 @@ export CFLAGS="%{optflags}"
 # flaky on 32bit
 donttest=("-k" "not test_as_subindex_hypothesis")
 %endif
-%pytest_arch --hypothesis-profile=obs "${donttest[@]}"
+# Remove from import path
+mv ndindex noimport-ndindex
+%pytest_arch --hypothesis-profile=obs --pyargs ndindex.tests "${donttest[@]}"
+mv noimport-ndindex ndindex
 
 %files %{python_files}
 %doc README.md
