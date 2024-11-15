@@ -146,4 +146,16 @@
 </comment>
     <requestid>1173358</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2608ae903e7e29c2a99ecf48071782ed</srcmd5>
+    <version>2024.10.24</version>
+    <time>1731681815</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2024.10.24.
+  * Synchronize with OpenCL v3.0.17 specification release.
+  * Support for the `cl_khr_external_semaphore_dx_fence` and
+    `cl_khr_external_memory_dx` extensions was removed.
+</comment>
+    <requestid>1224323</requestid>
+  </revision>
 </revisionlist>
