@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Nov 15 07:06:24 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.20.0:
+  * Pass errors up the stack in CalculateWorld and InstallPackages
+    (#1404)
+  * build(deps): bump github/codeql-action from 3.27.2 to 3.27.4
+    (#1403)
+  * build(deps): bump go.step.sm/crypto from 0.54.0 to 0.54.2
+    (#1402)
+  * build(deps): bump golang.org/x/time from 0.7.0 to 0.8.0 (#1389)
+  * build(deps): bump golang.org/x/sys from 0.26.0 to 0.27.0
+    (#1390)
+  * build(deps): bump github/codeql-action from 3.27.1 to 3.27.2
+    (#1400)
+  * build(deps): bump github/codeql-action from 3.27.0 to 3.27.1
+    (#1395)
+  * build(deps): bump go.opentelemetry.io/otel from 1.31.0 to
+    1.32.0 (#1396)
+  * build(deps): bump google.golang.org/api from 0.204.0 to 0.205.0
+    (#1388)
+  * build(deps): bump golang.org/x/sync from 0.8.0 to 0.9.0 (#1391)
+  * Add support for extras in `build-cpio` (#1394)
+  * build(deps): bump goreleaser/goreleaser-action from 6.0.0 to
+    6.1.0 (#1392)
+  * Record the `apko.json` file used to produce this image. (#1353)
+  * docs(apk): document apkindex methods (#1393)
+
+-------------------------------------------------------------------
 Tue Nov 12 07:33:59 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.19.9:
