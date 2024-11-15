@@ -17,7 +17,7 @@
 
 
 Name:           ccls
-Version:        0.20240505
+Version:        0.20241108
 Release:        0
 Summary:        C/C++/ObjC language server
 # main package is Apache 2.0
@@ -26,13 +26,11 @@ License:        Apache-2.0 AND CC0-1.0 AND BSL-1.0
 Group:          Development/Tools/IDE
 URL:            https://github.com/MaskRay/ccls
 Source0:        %{URL}/archive/%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  clang-devel >= 7.0
+BuildRequires:  clang-devel >= 10
 BuildRequires:  cmake >= 3.8
-BuildRequires:  llvm-devel >= 7.0
+BuildRequires:  llvm-devel >= 10
 BuildRequires:  rapidjson-devel
 BuildRequires:  zlib-devel
-Requires:       clang >= 5.0
-Requires:       llvm >= 7.0
 Provides:       bundled(macro_map)
 Provides:       bundled(siphash)
 # ccls hardcodes the paths to clang's resource dir and we thus must ensure that
@@ -71,12 +69,7 @@ ccls, which originates from cquery, is a C/C++/Objective-C language server.
 rm -rf third_party/rapidjson
 
 %build
-%cmake -DUSE_SYSTEM_RAPIDJSON=ON \
-%if %{pkg_vcmp clang-devel >= 9.0.0}
-    -DCLANG_LINK_CLANG_DYLIB=ON
-%else
-    -DCLANG_LINK_CLANG_DYLIB=OFF
-%endif
+%cmake -DUSE_SYSTEM_RAPIDJSON=ON -DCLANG_LINK_CLANG_DYLIB=ON
 %cmake_build
 
 %install

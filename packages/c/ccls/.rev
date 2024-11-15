@@ -180,4 +180,22 @@
 </comment>
     <requestid>1205331</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>90d4706751dfb96bce379879f8c519c5</srcmd5>
+    <version>0.20241108</version>
+    <time>1731681814</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.20241108.
+  * Sort index requests. When you open A/B/foo.cc, files under
+    &quot;A/B/&quot; and &quot;A/&quot; will be prioritized during the initial indexing
+      process, leading to a quicker response time.
+  * Support for LLVM versions &lt;= 9 has been dropped.
+  * LSP semantic tokens are now supported. See usage guide
+    https://maskray.me/blog/2024-10-20-ccls-and-lsp-semantic-tokens
+    usage (including rainbow semantic highlighting).
+  * LSP extension textDocument/switchSourceHeader is now supported.
+- Drop unnecessary runtime dependency to llvm/clang metapackages.
+</comment>
+    <requestid>1224331</requestid>
+  </revision>
 </revisionlist>
