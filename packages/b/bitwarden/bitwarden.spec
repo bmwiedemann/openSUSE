@@ -22,7 +22,7 @@
 
 
 Name:       bitwarden
-Version:    2024.10.0
+Version:    2024.11.0
 Release:    0
 Summary:    A secure and free password manager for all of your devices
 Group:      Productivity/Security
@@ -214,7 +214,7 @@ cp -plvr '../../../node_modules/@phc' -t node_modules/
 %install
 cd %{_builddir}/bitwarden-%{version}/apps/desktop
 mkdir -pv %{buildroot}%{_libdir}
-cp -plr build %{buildroot}%{_libdir}/%{name}
+cp -ar build %{buildroot}%{_libdir}/%{name}
 for i in 16 32 64 128 256 512 1024
 do
 install -pvDm644 resources/icons/${i}x${i}.png "%{buildroot}%{_datadir}/icons/hicolor/${i}x${i}/apps/%{name}.png"

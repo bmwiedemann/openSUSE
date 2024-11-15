@@ -12,9 +12,9 @@ This patch will be removed once some _actual_ JS functionality gets migrated to 
    },
    "devFlags": {}
  }
---- bitwarden-2024.10.0/apps/desktop/src/app/services/services.module.ts.orig	2024-10-17 21:45:41.000000000 +0200
-+++ bitwarden-2024.10.0/apps/desktop/src/app/services/services.module.ts	2024-10-25 18:50:26.084318326 +0200
-@@ -61,7 +61,6 @@ import { Message, MessageListener, Messa
+--- clients-desktop-v2024.11.0/apps/desktop/src/app/services/services.module.ts.orig	2024-11-14 21:24:33.955145852 +0100
++++ clients-desktop-v2024.11.0/apps/desktop/src/app/services/services.module.ts	2024-11-14 21:39:37.686804726 +0100
+@@ -72,7 +72,6 @@ import { Message, MessageListener, Messa
  import { SubjectMessageSender } from "@bitwarden/common/platform/messaging/internal";
  import { TaskSchedulerService } from "@bitwarden/common/platform/scheduling";
  import { MemoryStorageService } from "@bitwarden/common/platform/services/memory-storage.service";
@@ -22,7 +22,7 @@ This patch will be removed once some _actual_ JS functionality gets migrated to 
  import { NoopSdkClientFactory } from "@bitwarden/common/platform/services/sdk/noop-sdk-client-factory";
  import { SystemService } from "@bitwarden/common/platform/services/system.service";
  import { GlobalStateProvider, StateProvider } from "@bitwarden/common/platform/state";
-@@ -308,7 +307,7 @@ const safeProviders: SafeProvider[] = [
+@@ -344,7 +343,7 @@ const safeProviders: SafeProvider[] = [
    }),
    safeProvider({
      provide: SdkClientFactory,
@@ -30,20 +30,34 @@ This patch will be removed once some _actual_ JS functionality gets migrated to 
 +    useClass: NoopSdkClientFactory,
      deps: [],
    }),
- ];
---- bitwarden-2024.10.0/libs/common/src/platform/abstractions/sdk/sdk.service.ts.orig	2024-10-17 21:45:41.000000000 +0200
-+++ bitwarden-2024.10.0/libs/common/src/platform/abstractions/sdk/sdk.service.ts	2024-10-25 21:29:50.614089204 +0200
-@@ -1,9 +1,8 @@
+   safeProvider({
+--- clients-desktop-v2024.11.0/libs/common/src/platform/abstractions/sdk/sdk.service.ts.orig	2024-11-14 21:24:34.402035860 +0100
++++ clients-desktop-v2024.11.0/libs/common/src/platform/abstractions/sdk/sdk.service.ts	2024-11-14 21:40:54.838696107 +0100
+@@ -1,6 +1,5 @@
  import { Observable } from "rxjs";
  
 -import { BitwardenClient } from "@bitwarden/sdk-internal";
  
- export abstract class SdkService {
--  client$: Observable<BitwardenClient>;
-+  client$: Observable<any>;
-   supported$: Observable<boolean>;
+ import { UserId } from "../../../types/guid";
  
-   abstract failedToInitialize(): Promise<void>;
+@@ -14,7 +13,7 @@ export abstract class SdkService {
+    * Retrieve a client initialized without a user.
+    * This client can only be used for operations that don't require a user context.
+    */
+-  client$: Observable<BitwardenClient | undefined>;
++  client$: Observable<any>;
+ 
+   /**
+    * Retrieve a client initialized for a specific user.
+@@ -27,7 +26,7 @@ export abstract class SdkService {
+    *
+    * @param userId
+    */
+-  abstract userClient$(userId: UserId): Observable<BitwardenClient>;
++  abstract userClient$(userId: UserId): Observable<any>;
+ 
+   abstract failedToInitialize(category: string, error?: Error): Promise<void>;
+ }
 --- bitwarden-2024.10.0/libs/common/src/platform/abstractions/sdk/sdk-client-factory.ts.orig	2024-10-17 21:45:41.000000000 +0200
 +++ bitwarden-2024.10.0/libs/common/src/platform/abstractions/sdk/sdk-client-factory.ts	2024-10-25 21:32:14.591461794 +0200
 @@ -1,10 +1,9 @@
@@ -77,26 +91,85 @@ This patch will be removed once some _actual_ JS functionality gets migrated to 
      return Promise.reject(new Error("SDK not available"));
    }
  }
---- bitwarden-2024.10.0/libs/common/src/platform/services/sdk/default-sdk.service.ts.orig	2024-10-17 21:45:41.000000000 +0200
-+++ bitwarden-2024.10.0/libs/common/src/platform/services/sdk/default-sdk.service.ts	2024-10-25 22:08:02.781934761 +0200
-@@ -1,6 +1,5 @@
- import { concatMap, firstValueFrom, shareReplay } from "rxjs";
+--- clients-desktop-v2024.11.0/libs/common/src/platform/services/sdk/default-sdk.service.ts.orig	2024-11-14 21:24:34.418710861 +0100
++++ clients-desktop-v2024.11.0/libs/common/src/platform/services/sdk/default-sdk.service.ts	2024-11-14 21:43:13.174498626 +0100
+@@ -11,12 +11,6 @@ import {
+ } from "rxjs";
  
--import { LogLevel, DeviceType as SdkDeviceType } from "@bitwarden/sdk-internal";
+ import { KeyService } from "@bitwarden/key-management";
+-import {
+-  BitwardenClient,
+-  ClientSettings,
+-  LogLevel,
+-  DeviceType as SdkDeviceType,
+-} from "@bitwarden/sdk-internal";
  
  import { ApiService } from "../../../abstractions/api.service";
- import { DeviceType } from "../../../enums/device-type.enum";
-@@ -19,7 +18,7 @@ export class DefaultSdkService implement
-         userAgent: this.userAgent ?? navigator.userAgent,
-       };
+ import { EncryptedOrganizationKeyData } from "../../../admin-console/models/data/encrypted-organization-key.data";
+@@ -35,12 +29,12 @@ import { compareValues } from "../../mis
+ import { EncryptedString } from "../../models/domain/enc-string";
  
+ export class DefaultSdkService implements SdkService {
+-  private sdkClientCache = new Map<UserId, Observable<BitwardenClient>>();
++  private sdkClientCache = new Map<UserId, Observable<any>>();
+ 
+   client$ = this.environmentService.environment$.pipe(
+     concatMap(async (env) => {
+       const settings = this.toSettings(env);
 -      return await this.sdkClientFactory.createSdkClient(settings, LogLevel.Info);
 +      return await this.sdkClientFactory.createSdkClient(settings, 'unused');
      }),
      shareReplay({ refCount: true, bufferSize: 1 }),
    );
-@@ -52,7 +51,7 @@ export class DefaultSdkService implement
+@@ -62,7 +56,7 @@ export class DefaultSdkService implement
+     private userAgent: string = null,
+   ) {}
+ 
+-  userClient$(userId: UserId): Observable<BitwardenClient | undefined> {
++  userClient$(userId: UserId): Observable<any> {
+     // TODO: Figure out what happens when the user logs out
+     if (this.sdkClientCache.has(userId)) {
+       return this.sdkClientCache.get(userId);
+@@ -92,8 +86,8 @@ export class DefaultSdkService implement
+       // switchMap is required to allow the clean-up logic to be executed when `combineLatest` emits a new value.
+       switchMap(([env, account, kdfParams, privateKey, userKey, orgKeys]) => {
+         // Create our own observable to be able to implement clean-up logic
+-        return new Observable<BitwardenClient>((subscriber) => {
+-          let client: BitwardenClient;
++        return new Observable<any>((subscriber) => {
++          let client: any;
+ 
+           const createAndInitializeClient = async () => {
+             if (privateKey == null || userKey == null) {
+@@ -101,7 +95,7 @@ export class DefaultSdkService implement
+             }
+ 
+             const settings = this.toSettings(env);
+-            client = await this.sdkClientFactory.createSdkClient(settings, LogLevel.Info);
++            client = await this.sdkClientFactory.createSdkClient(settings, 'unused');
+ 
+             await this.initializeClient(client, account, kdfParams, privateKey, userKey, orgKeys);
+ 
+@@ -156,7 +150,7 @@ export class DefaultSdkService implement
+   }
+ 
+   private async initializeClient(
+-    client: BitwardenClient,
++    client: any,
+     account: AccountInfo,
+     kdfParams: KdfConfig,
+     privateKey: EncryptedString,
+@@ -192,7 +186,7 @@ export class DefaultSdkService implement
      });
+   }
+ 
+-  private toSettings(env: Environment): ClientSettings {
++  private toSettings(env: Environment): any {
+     return {
+       apiUrl: env.getApiUrl(),
+       identityUrl: env.getIdentityUrl(),
+@@ -201,7 +195,7 @@ export class DefaultSdkService implement
+     };
    }
  
 -  private toDevice(device: DeviceType): SdkDeviceType {
