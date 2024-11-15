@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-rpyc%{psuffix}
-Version:        6.0.0
+Version:        6.0.1
 Release:        0
 Summary:        Remote Python Call (RPyC), a RPC library
 License:        MIT

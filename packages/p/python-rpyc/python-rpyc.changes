@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 14 11:29:43 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 6.0.1
+  * Minor fixes to class module id packs and related unittest assertions
+  * #559 closes #558 which reported issues with proxy cache referrant
+    race conditions, get_method errors, and stream issues
+  * #557 fix pytest issues reported in #544
+
+-------------------------------------------------------------------
 Wed Mar 13 13:13:19 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 6.0.0 (bsc#1221331, CVE-2024-27758):
