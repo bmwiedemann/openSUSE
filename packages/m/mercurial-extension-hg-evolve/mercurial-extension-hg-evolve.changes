@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov  7 14:22:51 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 11.1.5.
+  * compatibility with Mercurial 6.9
+  * evolve: check that the evolved revisions are indeed in the repo during
+    abort, fixes an issue when trying to access them during cleanup step
+  * docs: update installation instructions due to PEP 668
+  * docs: minor edits and fixes in evolve and topic tutorials
+  * tests: more tests related to Python packaging
+  topic (1.1.5)
+  * compatibility with Mercurial 6.9
+- Temporarily disable test "test-evolve-templates.t".
+
+-------------------------------------------------------------------
 Thu Sep 12 18:05:51 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
 
 - Use existing python RPM macros instead of defining custom ones.

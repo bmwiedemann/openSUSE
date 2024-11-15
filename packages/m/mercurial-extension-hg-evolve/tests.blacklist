@@ -3,3 +3,4 @@ test-check-compat-strings.t
 test-version-install.t
 
 test-cmdserver.t
+test-evolve-templates.t
