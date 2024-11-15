@@ -2935,7 +2935,6 @@ unsorted:
   - cross-spu-binutils 
   - cross-x86_64-linux-glibc-devel 
   - cross-xtensa-binutils 
-  - crossguid-devel 
   - crossplane-cli 
   - crosstool-ng 
   - crow-translate 
@@ -11395,8 +11394,8 @@ unsorted:
   - libOpenImageDenoise2 
   - libOpenImageDenoise_core2_2_2 
   - libOpenImageDenoise_device_cpu2_2_2 
-  - libOpenImageIO3_0 
-  - libOpenImageIO_Util3_0 
+  - libOpenImageIO2_5 
+  - libOpenImageIO_Util2_5 
   - libOpenSceneGraph-devel 
   - libOpenSceneGraph161 
   - libOpenThreads-devel 
@@ -12698,7 +12697,6 @@ unsorted:
   - libcriu2 
   - libcroco 
   - libcroco-devel 
-  - libcrossguid0 
   - libcryptmount-devel 
   - libcrypto55 
   - libcryptopp-devel 
@@ -15201,10 +15199,10 @@ unsorted:
   - libosinfo-devel 
   - libosip2-15 
   - libosip2-devel 
-  - liboslcomp1_12 
-  - liboslexec1_12 
-  - liboslnoise1_12 
-  - liboslquery1_12 
+  - liboslcomp1_13 
+  - liboslexec1_13 
+  - liboslnoise1_13 
+  - liboslquery1_13 
   - libosmcomp5 
   - libosmgpsmap-1_0-1 
   - libosmgpsmap-devel 
@@ -16622,7 +16620,7 @@ unsorted:
   - libtermkey1 
   - libtesseract5 
   - libtesseract5-x86-64-v3 
-  - libtestshade1_12 
+  - libtestshade1_13 
   - libtestsweeper1 
   - libtevent-devel 
   - libtexlua53-5 
@@ -16653,6 +16651,7 @@ unsorted:
   - libtidyp-devel 
   - libtiff-devel 
   - libtiff-devel-32bit 
+  - libtiff-devel-docs 
   - libtiff6-32bit 
   - libtimelineDecoder33 
   - libtimelineDecoder33-opencl 
@@ -36520,6 +36519,7 @@ unsorted:
   - ruby3.3-rubygem-rack-proxy 
   - ruby3.3-rubygem-rack-test 
   - ruby3.3-rubygem-rack-test-0_6 
+  - ruby3.3-rubygem-rackup 
   - ruby3.3-rubygem-rails-7.0 
   - ruby3.3-rubygem-rails-dom-testing 
   - ruby3.3-rubygem-rails-html-sanitizer 
@@ -36567,6 +36567,7 @@ unsorted:
   - ruby3.3-rubygem-slim 
   - ruby3.3-rubygem-slop 
   - ruby3.3-rubygem-snaky_hash 
+  - ruby3.3-rubygem-sorbet-runtime 
   - ruby3.3-rubygem-spring 
   - ruby3.3-rubygem-sprockets 
   - ruby3.3-rubygem-sprockets-3.7 
@@ -47207,6 +47208,7 @@ unsorted:
   - tidy-doc 
   - tidyp 
   - tiff 
+  - tiff-docs 
   - tig 
   - tig-bash-completion 
   - tig-zsh-completion 
