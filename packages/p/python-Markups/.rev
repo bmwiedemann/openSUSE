@@ -61,4 +61,41 @@
     <comment></comment>
     <requestid>895734</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0b243d913561aeff24c3ff0300cd6ea8</srcmd5>
+    <version>4.0.0</version>
+    <time>1731681837</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.0.0:
+  Incompatible changes:
+  - Python versions older than 3.9 are no longer supported.
+  - Python-Markdown versions older than 3.0 are no longer supported.
+  - Setuptools 61.2 or higher is required to build the project.
+  - ``setup.py`` has been removed. Use ``pip``, ``build`` or other :PEP:`517`
+    compatible tool.
+  Other changes:
+  - Added AsciiDocMarkup (contributed by Dave Kuhlman in #17).
+  - Made the tests pass with Pygments ≥ 2.11.
+  - Made the tests pass when PyYAML is not installed (#18).
+  - Reformatted code in accordance with :PEP:`8` standard.
+  - Fixed mypy errors and added a :PEP:`561` ``py.typed`` file.
+- Update to 3.1.3:
+  - Fixed logic to load extensions file when PyYAML module is not available
+    (issue #16, thanks foxB612 for the bug report).
+  - Made the tests pass with docutils 0.18.
+- Update to 3.1.2:
+  - Incompatible change: Python 3.6 is no longer supported.
+  - Fixed replacing Markdown extensions in document.
+  - Fixed crash when using TOC backrefs in reStructuredText (issue #14,
+    thanks Hrissimir for the patch).
+- Update to 3.1.1:
+  - The reStructuredText markup now includes line numbers information in
+    ``data-posmap`` attributes.
+  - The reStructuredText markup now uses only ``minimal.css`` stylesheet
+    (not ``plain.css`` anymore).
+  - Added support for the upcoming docutils 0.17 release to the tests.
+- Update to 3.1.0:
+  Incompatible changes:</comment>
+    <requestid>1224417</requestid>
+  </revision>
 </revisionlist>
