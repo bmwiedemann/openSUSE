@@ -29,6 +29,7 @@ BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  psmisc
 BuildRequires:  python-rpm-macros
+Requires:       python-cattrs
 Requires:       python-itsdangerous
 Requires:       python-requests >= 2.0.0
 Requires:       python-url-normalize >= 1.4
