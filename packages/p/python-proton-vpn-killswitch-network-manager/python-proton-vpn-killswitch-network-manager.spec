@@ -29,7 +29,6 @@ BuildRequires:  %{python_module gobject}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module proton-vpn-api-core}
-BuildRequires:  %{python_module proton-vpn-logger}
 BuildRequires:  %{python_module pycairo}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
@@ -42,8 +41,6 @@ Requires:       NetworkManager
 Requires:       python-gobject
 Requires:       python-packaging
 Requires:       python-proton-vpn-api-core
-Requires:       python-proton-vpn-logger
-Requires:       python-proton-vpn-logger
 Requires:       python-pycairo
 BuildArch:      noarch
 %python_subpackages
