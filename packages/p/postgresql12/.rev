@@ -457,4 +457,27 @@ Upgrade to version 12.6:
   * https://www.postgresql.org/docs/release/12.20/</comment>
     <requestid>1201983</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>9fc96f50abe661ff89c2989048d13b4a</srcmd5>
+    <version>12.21</version>
+    <time>1731681802</time>
+    <user>anag+factory</user>
+    <comment>- Upgrade to 12.21:
+  * CVE-2024-10976, bsc#1233323: Ensure cached plans are marked as
+    dependent on the calling role when RLS applies to a
+    non-top-level table reference.
+  * CVE-2024-10977, bsc#1233325: Make libpq discard error messages
+    received during SSL or GSS protocol negotiation.
+  * CVE-2024-10978, bsc#1233326: Fix unintended interactions
+    between SET SESSION AUTHORIZATION and SET ROLE
+  * CVE-2024-10979, bsc#1233327: Prevent trusted PL/Perl code from
+    changing environment variables.
+  * https://www.postgresql.org/about/news/p-2955/
+  * https://www.postgresql.org/docs/release/12.21/
+
+- Sync spec file from postgresql17.
+
+  * https://www.postgresql.org/about/news/p-2910/</comment>
+    <requestid>1224296</requestid>
+  </revision>
 </revisionlist>

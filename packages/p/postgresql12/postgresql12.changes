@@ -1,10 +1,31 @@
 -------------------------------------------------------------------
+Wed Nov 13 12:11:46 UTC 2024 - Reinhard Max <max@suse.com>
+
+- Upgrade to 12.21:
+  * CVE-2024-10976, bsc#1233323: Ensure cached plans are marked as
+    dependent on the calling role when RLS applies to a
+    non-top-level table reference.
+  * CVE-2024-10977, bsc#1233325: Make libpq discard error messages
+    received during SSL or GSS protocol negotiation.
+  * CVE-2024-10978, bsc#1233326: Fix unintended interactions
+    between SET SESSION AUTHORIZATION and SET ROLE
+  * CVE-2024-10979, bsc#1233327: Prevent trusted PL/Perl code from
+    changing environment variables.
+  * https://www.postgresql.org/about/news/p-2955/
+  * https://www.postgresql.org/docs/release/12.21/
+
+-------------------------------------------------------------------
+Tue Nov  5 14:02:55 UTC 2024 - Reinhard Max <max@suse.com>
+
+- Sync spec file from postgresql17.
+
+-------------------------------------------------------------------
 Sat Aug 10 14:14:40 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Upgrade to 12.20 (bsc#1229013):
   * bsc#1229013, CVE-2024-7348 PostgreSQL relation replacement
     during pg_dump executes arbitrary SQL
-  * https://www.postgresql.org/about/news/postgresql-164-158-1413-1316-1220-and-17-beta-3-released-2910/
+  * https://www.postgresql.org/about/news/p-2910/
   * https://www.postgresql.org/docs/release/12.20/
 
 -------------------------------------------------------------------
