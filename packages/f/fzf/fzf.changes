@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 15 02:36:37 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 0.56.3:
+  Fixes
+  * fix(zsh): handle backtick trigger edge case
+  * revert(zsh): remove 'fc -RI' call in the history widget
+
+-------------------------------------------------------------------
 Thu Nov 14 04:36:13 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to 0.56.2:
