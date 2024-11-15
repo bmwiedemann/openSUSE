@@ -19,4 +19,12 @@
 </comment>
     <requestid>1223730</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c69bc93cec40aa324033e088033e347a</srcmd5>
+    <version>0.8</version>
+    <time>1731681836</time>
+    <user>anag+factory</user>
+    <comment>- Add proper Provides/Obsoletes</comment>
+    <requestid>1224236</requestid>
+  </revision>
 </revisionlist>

@@ -2,6 +2,7 @@
 Tue Nov 12 15:08:49 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Fix the name of the package, it should be python-python-markdown-math
+- Add proper Provides/Obsoletes
 
 -------------------------------------------------------------------
 Mon May 31 10:40:07 UTC 2021 - pgajdos@suse.com

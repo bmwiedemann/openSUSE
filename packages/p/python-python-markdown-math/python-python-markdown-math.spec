@@ -35,6 +35,8 @@ BuildArch:      noarch
 # SECTION Required for tests in %%check
 BuildRequires:  %{python_module Markdown}
 # /SECTION
+Provides:       python-markdown-math = %version
+Obsoletes:      python-markdown-math < %version
 %python_subpackages
 
 %description
