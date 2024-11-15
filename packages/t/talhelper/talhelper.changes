@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Nov 15 07:39:04 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.0.10:
+  * chore(schema): update talconfig.yaml JSON schema (#709)
+  * chore(container): update goreleaser/goreleaser docker tag to
+    v2.4.5
+  * feat(genconfig): support templating node labels and annotations
+  * docs: update CLI reference documentation (#706)
+  * chore(deps): update dependency siderolabs/talos to v1.8.3
+  * chore(container): update ghcr.io/siderolabs/talosctl docker tag
+    to v1.8.3
+  * chore(schema): update talos-extensions.yaml JSON schema (#705)
+  * fix(deps): update module github.com/budimanjojo/talhelper/v3 to
+    v3.0.9
+  * chore(schema): update talos-extensions.yaml JSON schema (#702)
+  * chore(container): update alpine:3.20.3 docker digest to 1e42bbe
+  * feat: update Scoop for talhelper version v3.0.9
+  * feat: update flake
+
+-------------------------------------------------------------------
 Tue Nov 12 06:24:11 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.0.9:
