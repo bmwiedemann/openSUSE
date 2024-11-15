@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 14 19:15:19 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Skip tests affected by too new pyasn1 for now
+
+-------------------------------------------------------------------
 Thu Jun 13 15:33:12 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.3:
