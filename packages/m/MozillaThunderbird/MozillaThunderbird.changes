@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Nov  9 16:26:41 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 128.4.3
+  Fixes:
+  * Folder corruption could cause Thunderbird to freeze and become unusable
+  * Message corruption could be propagated when reading mbox
+  * Folder compaction was not abandoned on shutdown
+  * Folder compaction did not clean up on failure
+  * Collapsed NNTP thread incorrectly indicated there were unread messages
+  * Navigating to next unread message did not wait for all messages
+    to be loaded
+  * Applying column view to folder and children could break if folder
+    error occurred
+  * Remote content notifications were broken with encrypted messages
+  * Updating criteria of a saved search resulted in poor search performance
+  * Drop-downs may not work in some places
+  MFSA 2024-61
+  * CVE-2024-11159 (bmo#1925929)
+    Potential disclosure of plaintext in OpenPGP encrypted message
+- remove kmozillahelper support (boo#1226112)
+  * removed mozilla-kde.patch
+  * requires xdg-desktop-portal instead
+
+-------------------------------------------------------------------
 Wed Nov  6 19:54:16 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Thunderbird 128.4.2

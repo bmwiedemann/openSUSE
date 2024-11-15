@@ -57,6 +57,7 @@ Requires:       python-requests >= 2.20
 Requires:       python-requests-toolbelt >= 0.8.0
 Requires:       python-rfc3986 >= 1.4.0
 Requires:       python-rich >= 12.0.0
+Requires:       python-urllib3 >= 1.26
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
@@ -85,7 +86,8 @@ sed -i '1s/^#!.*//' twine/__main__.py
 # do not run integration tests
 rm tests/test_integration.py
 # test_check_status_code_for_wrong_repo_url is online test
-%pytest -k 'not test_check_status_code_for_wrong_repo_url'
+# test_package_from_egg broken by importlib_metadata 8.5+
+%pytest -k 'not (test_check_status_code_for_wrong_repo_url or test_package_from_egg)'
 
 %post
 %python_install_alternative twine
@@ -98,6 +100,6 @@ rm tests/test_integration.py
 %license LICENSE
 %python_alternative %{_bindir}/twine
 %{python_sitelib}/twine
-%{python_sitelib}/twine-%{version}*-info
+%{python_sitelib}/twine-%{version}.dist-info
 
 %changelog

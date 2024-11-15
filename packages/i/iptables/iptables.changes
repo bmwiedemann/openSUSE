@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov  8 16:14:22 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.8.11
+  * New arptables-translate tool
+  * ebtables-nft: support --replace and --list-rules commands
+  * iptables-translate: support socket match and TPROXY target
+
+-------------------------------------------------------------------
 Fri May 24 15:07:24 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Edit iptables-batch-lock.patch, cure use of implicit function,

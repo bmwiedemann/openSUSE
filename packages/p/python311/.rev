@@ -1455,4 +1455,12 @@ C API
   (bsc#1232241, CVE-2024-9287)</comment>
     <requestid>1220125</requestid>
   </revision>
+  <revision rev="43" vrev="4">
+    <srcmd5>862d125fe8d8bfd7fa9838130052e1a5</srcmd5>
+    <version>3.11.10</version>
+    <time>1731681460</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1224080</requestid>
+  </revision>
 </revisionlist>

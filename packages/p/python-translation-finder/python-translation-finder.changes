@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov 14 12:50:55 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- update to 2.18
+  * Added support for Format.JS files.
+  * Offer bilingual configuration for CSV.
+  * Fixed crash on corrupted Transifex configuration.
+  * Improved app store metadata detection.
+  * Improved template detection for text files.
+  * Improved detection of iOS translation files.
+  * Added type annotations.
+
+-------------------------------------------------------------------
 Fri Dec 29 10:10:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.16:

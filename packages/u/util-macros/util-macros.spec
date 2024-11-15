@@ -17,7 +17,7 @@
 
 
 Name:           util-macros
-Version:        1.20.1
+Version:        1.20.2
 Release:        0
 Summary:        The X Protocol
 #Source URL:    http://xorg.freedesktop.org/releases/individual/util/

@@ -2656,4 +2656,12 @@ Without this fix, VBox always shows &quot;VirtualBox is not currently allowed to
     <comment>- Update to release 7.1.4</comment>
     <requestid>1208522</requestid>
   </revision>
+  <revision rev="282" vrev="2">
+    <srcmd5>f515374cc4012c4c9773126f9830d121</srcmd5>
+    <version>7.1.4</version>
+    <time>1731681465</time>
+    <user>anag+factory</user>
+    <comment>- Use distro-default INSTALL_MOD_DIR for both kmp and for local-built files. Add host-source.patch [boo#1231346].</comment>
+    <requestid>1224270</requestid>
+  </revision>
 </revisionlist>

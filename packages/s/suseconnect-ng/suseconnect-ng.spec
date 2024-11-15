@@ -19,7 +19,7 @@
 %global project github.com/SUSE/connect-ng
 
 Name:           suseconnect-ng
-Version:        1.12.0
+Version:        1.13.0
 Release:        0
 URL:            https://github.com/SUSE/connect-ng
 License:        LGPL-2.1-or-later
@@ -108,6 +108,7 @@ echo %{version} > internal/connect/version.txt
 go build -v -ldflags "-s -w" -mod=vendor -buildmode=pie -o bin/suseconnect %{project}/cmd/suseconnect
 go build -v -ldflags "-s -w" -mod=vendor -buildmode=pie -o bin/zypper-migration %{project}/cmd/zypper-migration
 go build -v -ldflags "-s -w" -mod=vendor -buildmode=pie -o bin/zypper-search-packages %{project}/cmd/zypper-search-packages
+go build -v -ldflags "-s -w" -mod=vendor -buildmode=pie -o bin/suse-uptime-tracker %{project}/cmd/suse-uptime-tracker
 
 # the library
 mkdir -p %_builddir/go/lib
@@ -116,6 +117,7 @@ go build -v -ldflags "-s -w" -mod=vendor -buildmode=c-shared -o lib/libsuseconne
 %install
 # Install binary + symlinks
 install -D -m 0755 bin/suseconnect %{buildroot}/%{_bindir}/suseconnect
+install -D -m 0755 bin/suse-uptime-tracker %{buildroot}/%{_bindir}/suse-uptime-tracker
 ln -s %{_bindir}/suseconnect %{buildroot}/%{_bindir}/SUSEConnect
 
 install -d -m 0755 %{buildroot}/%{_sbindir}
@@ -140,13 +142,16 @@ install -D -m 644 SUSEConnect.example %{buildroot}%{_sysconfdir}/SUSEConnect.exa
 # Install the SUSEConnect --keepalive timer and service.
 install -D -m 644 build/packaging/suseconnect-keepalive.timer %{buildroot}/%{_unitdir}/suseconnect-keepalive.timer
 install -D -m 644 build/packaging/suseconnect-keepalive.service %{buildroot}/%{_unitdir}/suseconnect-keepalive.service
+install -D -m 644 build/packaging/suse-uptime-tracker.timer %{buildroot}/%{_unitdir}/suse-uptime-tracker.timer
+install -D -m 644 build/packaging/suse-uptime-tracker.service %{buildroot}/%{_unitdir}/suse-uptime-tracker.service
 ln -sf service %{buildroot}/%{_sbindir}/rcsuseconnect-keepalive
+ln -sf service %{buildroot}/%{_sbindir}/rcsuse-uptime-tracker
 
 # we currently do not ship the source for any go module
 rm -rf %{buildroot}/usr/share/go
 
 %pre
-%service_add_pre suseconnect-keepalive.service suseconnect-keepalive.timer
+%service_add_pre suseconnect-keepalive.service suseconnect-keepalive.timer suse-uptime-tracker.service suse-uptime-tracker.timer
 
 # in pre blocks the old version is still installed. This way we can detect
 # if --keepalive was already present before
@@ -198,13 +203,13 @@ fi
     sed -i '/RandomizedDelaySec*/d' %{_unitdir}/suseconnect-keepalive.timer
     sed -i "s/OnCalendar=daily/OnCalendar=*-*-* $TIMER_HOUR:$TIMER_MINUTE:00/" %{_unitdir}/suseconnect-keepalive.timer
 %endif
-%service_add_post suseconnect-keepalive.service suseconnect-keepalive.timer
+%service_add_post suseconnect-keepalive.service suseconnect-keepalive.timer suse-uptime-tracker.service suse-uptime-tracker.timer
 
 %preun
-%service_del_preun suseconnect-keepalive.service suseconnect-keepalive.timer
+%service_del_preun suseconnect-keepalive.service suseconnect-keepalive.timer suse-uptime-tracker.service suse-uptime-tracker.timer
 
 %postun
-%service_del_postun suseconnect-keepalive.service suseconnect-keepalive.timer
+%service_del_postun suseconnect-keepalive.service suseconnect-keepalive.timer suse-uptime-tracker.service suse-uptime-tracker.timer
 
 %posttrans
 if [ -e /run/suseconnect-keepalive.timer.is-enabled ]; then
@@ -220,15 +225,19 @@ fi
 %license LICENSE LICENSE.LGPL
 %doc README.md
 %{_bindir}/suseconnect
+%{_bindir}/suse-uptime-tracker
 %{_bindir}/SUSEConnect
 %{_sbindir}/SUSEConnect
 %{_sbindir}/rcsuseconnect-keepalive
+%{_sbindir}/rcsuse-uptime-tracker
 /usr/lib/zypper/commands
 %{_mandir}/man8/*
 %{_mandir}/man5/*
 %{_unitdir}/suseconnect-keepalive.service
 %{_unitdir}/suseconnect-keepalive.timer
 %config %{_sysconfdir}/SUSEConnect.example
+%{_unitdir}/suse-uptime-tracker.service
+%{_unitdir}/suse-uptime-tracker.timer
 
 %files -n libsuseconnect
 %license LICENSE LICENSE.LGPL

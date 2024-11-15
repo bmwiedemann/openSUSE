@@ -23,7 +23,7 @@
 %define oiio_major_minor_ver %(rpm -q --queryformat='%%{version}' OpenImageIO-devel | cut -d . -f 1-2)
 
 Name:           OpenShadingLanguage
-Version:        1.12.14.0
+Version:        1.13.11.0
 Release:        0
 Summary:        A language for programmable shading
 License:        BSD-3-Clause
@@ -31,9 +31,10 @@ Group:          Productivity/Graphics/Other
 URL:            https://github.com/AcademySoftwareFoundation/OpenShadingLanguage
 Source0:        https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://creativecommons.org/licenses/by/3.0/legalcode.txt#/CC-BY-3.0.txt
-BuildRequires:  OpenEXR-devel >= 2.3
-BuildRequires:  OpenImageIO >= 2.2
+Patch0:         fix-install-paths.patch
+BuildRequires:  OpenEXR-devel >= 2.4
 BuildRequires:  bison
+BuildRequires:  (OpenImageIO >= 2.4 with OpenImageIO < 3)
 BuildRequires:  cmake(Qt6)
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6Gui)
@@ -47,7 +48,7 @@ BuildRequires:  llvm15-devel
 BuildRequires:  clang-devel > 9
 BuildRequires:  llvm-devel > 9
 %endif
-BuildRequires:  cmake >= 3.12
+BuildRequires:  cmake >= 3.15
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_filesystem-devel
@@ -216,21 +217,13 @@ find %{buildroot} -name LICENSE.md -print -delete
 cp -p *.md %{buildroot}%{_docdir}/%{name}/
 # TODO: package python module
 find %{buildroot}%{python3_sitearch} -name oslquery.so -print -delete
+rm %{buildroot}%{_datadir}/build-scripts/serialize-bc.py
 
-%post -n liboslcomp%{sufx} -p /sbin/ldconfig
-%postun -n liboslcomp%{sufx} -p /sbin/ldconfig
-
-%post -n liboslexec%{sufx} -p /sbin/ldconfig
-%postun -n liboslexec%{sufx} -p /sbin/ldconfig
-
-%post -n liboslnoise%{sufx} -p /sbin/ldconfig
-%postun -n liboslnoise%{sufx} -p /sbin/ldconfig
-
-%post -n liboslquery%{sufx} -p /sbin/ldconfig
-%postun -n liboslquery%{sufx} -p /sbin/ldconfig
-
-%post -n libtestshade%{sufx} -p /sbin/ldconfig
-%postun -n libtestshade%{sufx} -p /sbin/ldconfig
+%ldconfig_scriptlets -n liboslcomp%{sufx}
+%ldconfig_scriptlets -n liboslexec%{sufx}
+%ldconfig_scriptlets -n liboslnoise%{sufx}
+%ldconfig_scriptlets -n liboslquery%{sufx}
+%ldconfig_scriptlets -n libtestshade%{sufx}
 
 %files
 %license LICENSE.md

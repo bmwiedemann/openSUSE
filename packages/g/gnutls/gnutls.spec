@@ -42,14 +42,14 @@
 %endif
 %bcond_with tpm
 Name:           gnutls
-Version:        3.8.7
+Version:        3.8.8
 Release:        0
 Summary:        The GNU Transport Layer Security Library
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Networking/Security
 URL:            https://www.gnutls.org/
-Source0:        https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/%{name}-%{version}.1.tar.xz
-Source1:        https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/%{name}-%{version}.1.tar.xz.sig
+Source0:        https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/%{name}-%{version}.tar.xz
+Source1:        https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/%{name}-%{version}.tar.xz.sig
 # https://gnutls.org/gnutls-release-keyring.gpg
 Source2:        https://gnutls.org/gnutls-release-keyring.gpg#/gnutls.keyring
 Source3:        baselibs.conf

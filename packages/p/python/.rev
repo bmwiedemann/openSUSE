@@ -4146,4 +4146,12 @@ However, upstream development now focuses on 3.x series.
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1189042</requestid>
   </revision>
+  <revision rev="199" vrev="50">
+    <srcmd5>ed903015d1f008c0e53d1747375b0ff7</srcmd5>
+    <version>2.7.18</version>
+    <time>1731681465</time>
+    <user>anag+factory</user>
+    <comment>- Remove -IVendor/ from python-config boo#1231795</comment>
+    <requestid>1224271</requestid>
+  </revision>
 </revisionlist>

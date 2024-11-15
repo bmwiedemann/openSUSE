@@ -16,10 +16,8 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           teleport
-Version:        16.4.6
+Version:        16.4.7
 Release:        0
 Summary:        Identity-aware, multi-protocol access proxy
 License:        AGPL-3.0-only
@@ -36,15 +34,18 @@ Source6:        vendor.tar.zst
 BuildRequires:  cargo >= 1.69
 BuildRequires:  cargo-packaging
 BuildRequires:  git-core
-BuildRequires:  go1.22 >= 1.22.6
+BuildRequires:  go1.22 >= 1.22.9
 BuildRequires:  pam-devel
 BuildRequires:  systemd-rpm-macros
 Requires:       teleport-tctl
 
 %description
-Teleport is the easiest, most secure way to access all your infrastructure. Teleport is an identity-aware, multi-protocol access proxy which understands SSH, HTTPS, RDP, Kubernetes API, MySQL, MongoDB and PostgreSQL wire protocols.
+Teleport is the easiest, most secure way to access all your infrastructure.
+Teleport is an identity-aware, multi-protocol access proxy which understands
+SSH, HTTPS, RDP, Kubernetes API, MySQL, MongoDB and PostgreSQL wire protocols.
 
-On the server-side, Teleport is a single binary which enables convenient secure access to behind-NAT resources such as:
+On the server-side, Teleport is a single binary which enables convenient secure
+access to behind-NAT resources such as:
 * SSH nodes - SSH works in browsers too!
 * Kubernetes clusters
 * PostgreSQL, MongoDB, CockroachDB and MySQL databases
@@ -71,7 +72,10 @@ Summary:        CLI tool for Machine ID
 License:        Apache-2.0
 
 %description -n teleport-tbot
-Machine ID is a service that programmatically issues and renews short-lived certificates to any service account (e.g., a CI/CD server) by retrieving credentials from the Teleport Auth Service. This enables fine-grained role-based access controls and audit.
+Machine ID is a service that programmatically issues and renews short-lived
+certificates to any service account (e.g., a CI/CD server) by retrieving
+credentials from the Teleport Auth Service. This enables fine-grained
+role-based access controls and audit.
 tbot is the executable belonging to the Machine ID service.
 
 %package -n teleport-fdpass-teleport
@@ -79,7 +83,9 @@ Summary:        Significantly reduce resource consumption by large numbers of SS
 License:        Apache-2.0
 
 %description -n teleport-fdpass-teleport
-fdpass-teleport can be optionally used by Machine ID to significantly reduce resource consumption in use-cases that create large numbers of SSH connections (e.g. Ansible).
+fdpass-teleport can be optionally used by Machine ID to significantly reduce
+resource consumption in use-cases that create large numbers of SSH connections
+(e.g. Ansible).
 
 %prep
 %setup -q

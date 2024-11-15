@@ -769,6 +769,9 @@ install -m 755 -D Tools/gdb/libpython.py %{buildroot}%{_datadir}/gdb/auto-load/%
 # install devel files to /config
 #cp Makefile Makefile.pre.in Makefile.pre $RPM_BUILD_ROOT%{sitedir}/config-%{python_abi}/
 
+# Remove -IVendor/ from python-config boo#1231795
+sed -i 's/-IVendor\///' %{buildroot}%{_bindir}/python%{python_abi}-config
+
 # RPM macros
 %if %{primary_interpreter}
 mkdir -p %{buildroot}%{_rpmconfigdir}/macros.d/

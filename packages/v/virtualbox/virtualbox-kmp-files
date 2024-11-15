@@ -1,9 +1,0 @@
-%defattr (-,root,root)
-%dir %{kernel_module_directory}/%2-%1/
-%dir %{kernel_module_directory}/%2-%1/extra
-%{kernel_module_directory}/%2-%1/extra/vboxdrv.ko
-%{kernel_module_directory}/%2-%1/extra/vboxnetadp.ko
-%{kernel_module_directory}/%2-%1/extra/vboxnetflt.ko
-%{kernel_module_directory}/%2-%1/extra/vboxguest.ko
-%{kernel_module_directory}/%2-%1/extra/vboxsf.ko
-%{kernel_module_directory}/%2-%1/extra/vboxvideo.ko

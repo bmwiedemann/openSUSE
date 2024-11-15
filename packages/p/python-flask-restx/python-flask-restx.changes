@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 14 13:38:54 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
+
+- Add Replace-pytz-with-zoneinfo-datetime-timezone.patch
+  * from: https://github.com/python-restx/flask-restx/pull/622
+  * Fixes testfailure
+
+-------------------------------------------------------------------
 Wed Feb 14 23:42:09 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.3.0:

@@ -1,28 +1,29 @@
-From 5d505396f2a4e1a9f5fd3ea57113fa58c968518e Mon Sep 17 00:00:00 2001
+From 0c77e3c8a690decb726f92d363a8aadae6a1a0a2 Mon Sep 17 00:00:00 2001
 From: Jan Fajerski <jfajerski@suse.com>
 Date: Fri, 8 Feb 2019 09:28:12 +0100
 Subject: [PATCH] Default settings
 
 Signed-off-by: Jan Fajerski <jfajerski@suse.com>
+Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
 Signed-off-by: Johannes Kastl <git@johannes-kastl.de>
 ---
  cmd/prometheus/main.go | 8 ++++----
  1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/cmd/prometheus/main.go b/cmd/prometheus/main.go
-index 1d844ddba..5580dfa57 100644
+index b3bcb78b7..9a5a77a4d 100644
 --- a/cmd/prometheus/main.go
 +++ b/cmd/prometheus/main.go
-@@ -288,7 +288,7 @@ func main() {
+@@ -300,7 +300,7 @@ func main() {
  	a.HelpFlag.Short('h')
  
  	a.Flag("config.file", "Prometheus configuration file path.").
 -		Default("prometheus.yml").StringVar(&cfg.configFile)
 +		Default("/etc/prometheus/prometheus.yml").StringVar(&cfg.configFile)
  
- 	a.Flag("web.listen-address", "Address to listen on for UI, API, and telemetry.").
- 		Default("0.0.0.0:9090").StringVar(&cfg.web.ListenAddress)
-@@ -335,10 +335,10 @@ func main() {
+ 	a.Flag("web.listen-address", "Address to listen on for UI, API, and telemetry. Can be repeated.").
+ 		Default("0.0.0.0:9090").StringsVar(&cfg.web.ListenAddresses)
+@@ -347,10 +347,10 @@ func main() {
  		Default(supportedRemoteWriteProtoMsgs.Strings()...).SetValue(rwProtoMsgFlagValue(&cfg.web.AcceptRemoteWriteProtoMsgs))
  
  	a.Flag("web.console.templates", "Path to the console template directory, available at /consoles.").
@@ -35,7 +36,7 @@ index 1d844ddba..5580dfa57 100644
  
  	a.Flag("web.page-title", "Document title of Prometheus instance.").
  		Default("Prometheus Time Series Collection and Processing Server").StringVar(&cfg.web.PageTitle)
-@@ -347,7 +347,7 @@ func main() {
+@@ -359,7 +359,7 @@ func main() {
  		Default(".*").StringVar(&cfg.corsRegexString)
  
  	serverOnlyFlag(a, "storage.tsdb.path", "Base path for metrics storage.").

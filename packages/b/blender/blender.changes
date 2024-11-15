@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 14 18:54:56 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- ensure we do not accidently pull openvdb/OpenImageIO versions,
+  which are not supported yet.
+
+-------------------------------------------------------------------
 Fri Oct 25 21:18:53 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 4.2.3

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Nov 13 11:26:00 UTC 2024 - Reinhard Max <max@suse.com>
+
+- Upgrade to 17.1:
+  * CVE-2024-10976, bsc#1233323: Ensure cached plans are marked as
+    dependent on the calling role when RLS applies to a
+    non-top-level table reference.
+  * CVE-2024-10977, bsc#1233325: Make libpq discard error messages
+    received during SSL or GSS protocol negotiation.
+  * CVE-2024-10978, bsc#1233326: Fix unintended interactions
+    between SET SESSION AUTHORIZATION and SET ROLE
+  * CVE-2024-10979, bsc#1233327: Prevent trusted PL/Perl code from
+    changing environment variables.
+  * obsoletes postgresql17-jsonb_jsonpath.patch
+  * https://www.postgresql.org/about/news/p-2955/
+  * https://www.postgresql.org/docs/release/17.1/
+
+-------------------------------------------------------------------
 Mon Nov  4 13:38:28 UTC 2024 - Reinhard Max <max@suse.com>
 
 - Add postgresql17-jsonb_jsonpath.patch as a temporary build fix.
@@ -12,7 +29,7 @@ Mon Oct  7 08:50:46 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 -------------------------------------------------------------------
 Thu Sep 26 13:20:36 UTC 2024 - Reinhard Max <max@suse.com>
 
-- Upgrade to 17.0.0:
+- Upgrade to 17.0:
   * New memory management system for VACUUM, which reduces memory
     consumption and can improve overall vacuuming performance.
   * New SQL/JSON capabilities, including constructors, identity
@@ -49,7 +66,7 @@ Sat Aug 10 14:03:10 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 - Upgrade to 17beta3 (bsc#1229013):
   * bsc#1229013, CVE-2024-7348 PostgreSQL relation replacement
     during pg_dump executes arbitrary SQL
-  * https://www.postgresql.org/about/news/postgresql-164-158-1413-1316-1220-and-17-beta-3-released-2910/
+  * https://www.postgresql.org/about/news/p-2910/
 
 -------------------------------------------------------------------
 Wed Jun 26 15:15:46 UTC 2024 - Reinhard Max <max@suse.com>

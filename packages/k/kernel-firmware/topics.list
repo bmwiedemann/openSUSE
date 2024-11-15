@@ -224,4 +224,5 @@ panthor:	platform
 isp:		amdgpu		amdgpu
 qaic:		qcom
 ish:		intel		intel-ish-ipc
+qdu100:		qcom
 ast:		platform

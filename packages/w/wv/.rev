@@ -172,4 +172,12 @@
     <comment>Prepare for RPM 4.20 (forwarded request 1148147 from dimstar)</comment>
     <requestid>1148199</requestid>
   </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>1b410a07d32a6c1f47e3bf99538c13ee</srcmd5>
+    <version>1.2.9</version>
+    <time>1731681762</time>
+    <user>anag+factory</user>
+    <comment>fix build failure; leverage Debian patchset</comment>
+    <requestid>1224252</requestid>
+  </revision>
 </revisionlist>

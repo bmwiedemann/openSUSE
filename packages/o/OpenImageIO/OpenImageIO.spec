@@ -32,10 +32,10 @@
 %bcond_with ptex
 
 %define images_ts 20241104T095817
-%define so_ver 3_0
-%define major_minor_ver 3.0
+%define so_ver 2_5
+%define major_minor_ver 2.5
 Name:           OpenImageIO
-Version:        3.0.0.3
+Version:        2.5.17.0
 Release:        0
 Summary:        Library for Reading and Writing Images
 License:        BSD-3-Clause
@@ -55,6 +55,12 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  giflib-devel >= 5.0
 BuildRequires:  hdf5-devel
+# can be dropped when upgrading to 3.x again
+BuildRequires:  libboost_atomic-devel
+BuildRequires:  libboost_filesystem-devel
+BuildRequires:  libboost_system-devel
+BuildRequires:  libboost_thread-devel
+#/ can be dropped when upgrading to 3.x again
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel >= 1.6.0
 BuildRequires:  openvdb-devel >= 9.0

@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Wed Nov 13 16:52:39 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#744
+- Drop dbus-1-x11 build dependency
+- 17.144
+
+--------------------------------------------------------------------
 Tue Nov 5 10:20:56 UTC 2024 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#739

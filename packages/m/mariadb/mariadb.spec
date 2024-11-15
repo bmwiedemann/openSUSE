@@ -52,14 +52,14 @@
 # Build with cracklib plugin when cracklib-dict-full >= 2.9.0 is available
 %define with_cracklib_plugin 0
 Name:           mariadb
-Version:        11.5.2
+Version:        11.6.1
 Release:        0
 Summary:        Server part of MariaDB
 License:        SUSE-GPL-2.0-with-FLOSS-exception
 Group:          Productivity/Databases/Servers
 URL:            https://www.mariadb.org
-Source:         https://downloads.mariadb.com/MariaDB/%{name}-%{version}/source/%{name}-%{version}.tar.gz
-Source1:        https://downloads.mariadb.com/MariaDB/%{name}-%{version}/source/%{name}-%{version}.tar.gz.asc
+Source:         https://archive.mariadb.org/%{name}-%{version}/source/%{name}-%{version}.tar.gz
+Source1:        https://archive.mariadb.org/%{name}-%{version}/source/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 Source4:        README.debug
 Source5:        suse-test-run

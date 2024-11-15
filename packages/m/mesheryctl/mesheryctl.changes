@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Fri Nov 15 07:40:12 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.151:
+  * Meshery CLI
+    - Generate cmd @Jougan-0 (#12146)
+  * Documentation
+    - Generate cmd @Jougan-0 (#12146)
+    - fix formatting on meshery models contributing guide @Touriist (#12660)
+
+-------------------------------------------------------------------
+Thu Nov 14 17:29:16 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.150:
+  * Meshery CLI
+    - update templates for model generation w/signoff @Jougan-0
+      (#12659)
+
+-------------------------------------------------------------------
+Thu Nov 14 17:28:59 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.148:
+  * no CLI-related changes in this release
+- update to 0.7.149:
+  * no CLI-related changes in this release
+
+-------------------------------------------------------------------
+Thu Nov 14 12:36:16 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.147:
+  * General
+    - add new trim params for catalog api @amitamrutiya (#12642)
+    - [Local Provider] Bundle catalog data with meshery docker
+      image @Yashsharma1911 (#12632)
+    - fix network rel w/signoff @Jougan-0 (#12641)
+  * Meshery CLI
+    - replace meshery.layer5.io with cloud.layer5.io @aabidsofi19
+      (#12638)
+
+-------------------------------------------------------------------
+Wed Nov 13 10:20:22 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.146:
+  * no CLI-related changes in this release
+
+-------------------------------------------------------------------
+Wed Nov 13 10:20:01 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.145:
+  * no CLI-related changes in this release
+
+-------------------------------------------------------------------
 Tue Nov 12 13:37:33 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.7.144:

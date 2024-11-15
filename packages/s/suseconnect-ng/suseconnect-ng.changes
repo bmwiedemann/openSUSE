@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov 14 11:01:05 UTC 2024 - Miquel Sabaté Solà <msabate@suse.com>
+
+- Update version to 1.13:
+  - Integrating uptime-tracker
+  - Honor auto-import-gpg-keys flag on migration (bsc#1231328)
+  - Only send labels if targetting SCC
+  - Skip the docker auth generation on RMT (bsc#1231185)
+  - Add --set-labels to register command to set labels at registration time on SCC
+  - Add a new function to display suse-uptime-tracker version
+  - Integrate with uptime-tracker ( https://github.com/SUSE/uptime-tracker/ )
+  - Add a command to show the info being gathered
+
+-------------------------------------------------------------------
 Fri Sep 13 14:11:22 UTC 2024 - Miquel Sabate Sola <msabate@suse.com>
 
 - Update version to 1.12:

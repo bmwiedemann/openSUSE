@@ -72,7 +72,6 @@ Source1100:     qcom-post
 Source1101:     uncompressed-post
 # workarounds
 Patch1:         copy-file-ignore-README.patch
-Patch2:         copy-file-skip-check.patch
 # for compatibility with SLE15-SP4 kernel (bsc#1209681)
 Patch200:       iwlwifi-WHENCE-fix.patch
 BuildRequires:  suse-module-tools
@@ -140,7 +139,6 @@ all files that have been provided by kernel-firmware package.
 %prep
 %setup -q -n kernel-firmware-%{version}
 %patch -P 1 -p1
-%patch -P 2 -p1
 # additional firmwares
 cat %{SOURCE1} >> WHENCE
 cp %{SOURCE2} %{SOURCE8} %{SOURCE9} %{SOURCE10} .

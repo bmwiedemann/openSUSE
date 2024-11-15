@@ -23,7 +23,7 @@
 %endif
 
 Name:           iptables
-Version:        1.8.10
+Version:        1.8.11
 Release:        0
 Summary:        IP packet filter administration utilities
 License:        Artistic-2.0 AND GPL-2.0-only
@@ -47,7 +47,7 @@ BuildRequires:  xz
 BuildRequires:  pkgconfig(libmnl) >= 1.0
 BuildRequires:  pkgconfig(libnetfilter_conntrack) >= 1.0.4
 BuildRequires:  pkgconfig(libnfnetlink) >= 1.0.0
-BuildRequires:  pkgconfig(libnftnl) >= 1.1.6
+BuildRequires:  pkgconfig(libnftnl) >= 1.2.6
 Requires:       netcfg >= 11.6
 Requires:       xtables-plugins = %version-%release
 %if %{with libalternatives}
@@ -319,6 +319,7 @@ fi
 %files
 %license COPYING
 %_bindir/iptables-xml
+%_sbindir/arptables-*translate*
 %_sbindir/iptables-apply
 %_sbindir/iptables-legacy*
 %_sbindir/iptables-nft*

@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Wed Nov 13 13:54:49 UTC 2024 - tiwai@suse.com
+
+- Update to version 20241113 (git commit 1727aceef4d2):
+  * qcom: venus-5.4: add venus firmware file for qcs615
+  * qcom: update venus firmware file for SC7280
+  * QCA: Add 22 bluetooth firmware nvm files for QCA2066
+
+-------------------------------------------------------------------
+Tue Nov 12 14:33:39 UTC 2024 - tiwai@suse.com
+
+- Update to version 20241112 (git commit c57a0a42468b):
+  * mediatek MT7922: update bluetooth firmware to 20241106163512
+  * mediatek MT7921: update bluetooth firmware to 20241106151414
+  * linux-firmware: update firmware for MT7922 WiFi device
+  * linux-firmware: update firmware for MT7921 WiFi device
+  * qcom: Add QDU100 firmware image files.
+  * qcom: Update aic100 firmware files
+  * dedup-firmware.sh: fix infinite loop for --verbose
+  * rtl_bt: Update RTL8852BT/RTL8852BE-VT BT USB FW to 0x04D7_63F7
+  * cnm: update chips&media wave521c firmware.
+  * mediatek MT7920: update bluetooth firmware to 20241104091246
+  * linux-firmware: update firmware for MT7920 WiFi device
+  * copy-firmware.sh: Run check_whence.py only if in a git repo
+  * cirrus: cs35l56: Add firmware for Cirrus CS35L56 for various Dell laptops
+  * amdgpu: update DMCUB to v9.0.10.0 for DCN351
+  * rtw89: 8852a: update fw to v0.13.36.2
+  * rtw88: Add firmware v52.14.0 for RTL8812AU
+  * i915: Update Xe2LPD DMC to v2.23
+  * linux-firmware: update firmware for mediatek bluetooth chip (MT7925)
+  * linux-firmware: update firmware for MT7925 WiFi device
+  * WHENCE: Add sof-tolg for mt8195
+  *  linux-firmware: Update firmware file for Intel BlazarI core
+  * qcom: Add link for QCS6490 GPU firmware
+  * qcom: update gpu firmwares for qcs615 chipset
+  * cirrus: cs35l56: Update firmware for Cirrus Amps for some HP laptops
+  * mediatek: Add sof-tolg for mt8195
+- Drop obsoleted workaround patch: copy-file-skip-check.patch
+
+-------------------------------------------------------------------
+Thu Oct 31 15:59:29 UTC 2024 - tiwai@suse.com
+
+- Update to version 20241029 (git commit 048795eef350):
+  * ath11k: move WCN6750 firmware to the device-specific subdir
+  * xe: Update LNL GSC to v104.0.0.1263
+  * i915: Update MTL/ARL GSC to v102.1.15.1926
+
+-------------------------------------------------------------------
+Mon Oct 28 14:42:18 UTC 2024 - tiwai@suse.com
+
+- Update to version 20241028 (git commit 987607d681cb):
+  * amdgpu: DMCUB updates for various AMDGPU ASICs
+  * i915: Add Xe3LPD DMC
+  * cnm: update chips&media wave521c firmware.
+  * linux-firmware: Add firmware for Cirrus CS35L41
+  * linux-firmware: Update firmware file for Intel BlazarU core
+  * Makefile: error out of 'install' if COPYOPTS is set
+
+-------------------------------------------------------------------
 Mon Oct 21 07:35:59 UTC 2024 - tiwai@suse.com
 
 - Update to version 20241018 (git commit 2f0464118f40):

@@ -1834,4 +1834,28 @@ Changes:
   - always put the base container last in the dependencies</comment>
     <requestid>1200773</requestid>
   </revision>
+  <revision rev="166" vrev="1">
+    <srcmd5>db380f050721dca222cc63c2d8722548</srcmd5>
+    <version>20241114</version>
+    <time>1731681493</time>
+    <user>anag+factory</user>
+    <comment>- container related:
+  * Implement support for the new &lt;containers&gt; element in kiwi recipes
+  * Fixes for SBOM and dependencies of multi stage container builds
+  * obs-docker-support: enable dnf and yum substitutions
+- Arch Linux:
+  * fix file path for Arch repo
+  * exclude unsupported arch
+  * Use root as download user
+- build-vm-qemu: force sv48 satp mode on riscv64
+- mkosi:
+  * Create .sha256 files after mkosi builds
+  * Always pass --image-version to mkosi
+- General improvements and bugfixes (mkosi, pbuild, appimage/livebuild,
+                                     obs work detection, documention, SBOM)
+- Support slsa v1 in unpack_slsa_provenance
+- generate_sbom: do not clobber spdx supplier
+- Harden export_debian_orig_from_git (boo#1230469)</comment>
+    <requestid>1224114</requestid>
+  </revision>
 </revisionlist>

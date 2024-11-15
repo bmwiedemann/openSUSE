@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 15 08:22:49 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.45.0
+  * Refactored the ``convert`` command to not need setuptools to be installed
+  * Don't configure setuptools logging unless running ``bdist_wheel``
+  * Added a redirection from ``wheel.bdist_wheel.bdist_wheel`` to
+    ``setuptools.command.bdist_wheel.bdist_wheel`` to improve compatibility with
+    ``setuptools``' latest fixes.
+
+-------------------------------------------------------------------
 Sun Sep  8 13:41:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.44.0:

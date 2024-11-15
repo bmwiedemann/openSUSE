@@ -22,7 +22,7 @@
 %global has_openmp 1
 %endif
 
-%ifarch aarch64 x86_64
+%ifarch aarch64 ppc64le s390x x86_64
 %define has_lldb 1
 %if %{suse_version} > 1600
 %define has_lldb_python 1

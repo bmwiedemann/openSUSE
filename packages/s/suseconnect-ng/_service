@@ -2,8 +2,8 @@
   <service name="tar_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/SUSE/connect-ng.git</param>
-    <param name="revision">v1.12.0</param>
-    <param name="version">1.12.0</param>
+    <param name="revision">v1.13.0</param>
+    <param name="version">1.13.0</param>
     <param name="filename">suseconnect-ng</param>
     <param name="package-meta">no</param>
     <param name="changesgenerate">disable</param>

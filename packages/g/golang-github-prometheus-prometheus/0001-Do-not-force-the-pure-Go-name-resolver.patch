@@ -1,4 +1,4 @@
-From abe26292de2c69a14aa223d2ba866779e63d79cd Mon Sep 17 00:00:00 2001
+From 1c355d58cf9c1d9d6aba110a61cea4a56c9c03a2 Mon Sep 17 00:00:00 2001
 From: Jan Fajerski <jfajerski@suse.com>
 Date: Fri, 8 Feb 2019 09:17:06 +0100
 Subject: [PATCH] Do not force the pure Go name resolver
@@ -16,7 +16,7 @@ Signed-off-by: Johannes Kastl <git@johannes-kastl.de>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/.promu.yml b/.promu.yml
-index 0aa51d6d3..06c9c579d 100644
+index 699a7fa58..bbf32c87a 100644
 --- a/.promu.yml
 +++ b/.promu.yml
 @@ -12,12 +12,12 @@ build:

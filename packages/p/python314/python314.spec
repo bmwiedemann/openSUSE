@@ -261,8 +261,8 @@ BuildRequires:  python3-python-docs-theme >= 2022.1
 
 %if %{with experimental_jit}
 # needed for experimental_jit
-BuildRequires:  clang => 18
-BuildRequires:  llvm => 18
+BuildRequires:  clang18
+BuildRequires:  llvm18
 %endif
 
 %if %{without GIL}
@@ -838,6 +838,9 @@ install -m 755 -D Tools/gdb/libpython.py %{buildroot}%{_datadir}/gdb/auto-load/%
 
 # install devel files to /config
 #cp Makefile Makefile.pre.in Makefile.pre $RPM_BUILD_ROOT%%{sitedir}/config-%%{python_abi}/
+
+# Remove -IVendor/ from python-config boo#1231795
+sed -i 's/-IVendor\///' %{buildroot}%{_bindir}/python%{python_abi}-config
 
 # RPM macros
 %if %{primary_interpreter}

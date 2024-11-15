@@ -1117,4 +1117,13 @@
     <comment></comment>
     <requestid>1191007</requestid>
   </revision>
+  <revision rev="129" vrev="2">
+    <srcmd5>ec05b03adcc17df096a057bb0f659c05</srcmd5>
+    <version>2.12.9</version>
+    <time>1731681507</time>
+    <user>anag+factory</user>
+    <comment>- add %{?sle15allpythons} macro [jsc#PED-68]
+- use %python_build and %python_install for 15</comment>
+    <requestid>1223912</requestid>
+  </revision>
 </revisionlist>

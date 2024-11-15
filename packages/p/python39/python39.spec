@@ -197,7 +197,9 @@ Patch51:        sphinx-802.patch
 # PATCH-FIX-UPSTREAM CVE-2024-9287-venv_path_unquoted.patch gh#python/cpython#124651 mcepl@suse.com
 # venv should properly quote path names provided when creating a venv
 Patch52:        CVE-2024-9287-venv_path_unquoted.patch
-
+# PATCH-FIX-UPSTREAM CVE-2024-11168-validation-IPv6-addrs.patch bsc#1233307 mcepl@suse.com
+# improve validation of IPv6 and IPvFuture addresses in urlparse and urlsplit
+Patch53:        CVE-2024-11168-validation-IPv6-addrs.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -471,6 +473,7 @@ other applications.
 %patch -P 50 -p1
 %patch -P 51 -p1
 %patch -P 52 -p1
+%patch -P 53 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
@@ -776,6 +779,9 @@ install -m 755 -D Tools/gdb/libpython.py %{buildroot}%{_datadir}/gdb/auto-load/%
 
 # install devel files to /config
 #cp Makefile Makefile.pre.in Makefile.pre $RPM_BUILD_ROOT%{sitedir}/config-%{python_abi}/
+
+# Remove -IVendor/ from python-config boo#1231795
+sed -i 's/-IVendor\///' %{buildroot}%{_bindir}/python%{python_abi}-config
 
 # RPM macros
 %if %{primary_interpreter}

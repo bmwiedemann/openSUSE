@@ -3,14 +3,14 @@
     <param name="url">https://github.com/ChrisTitusTech/linutil</param>
     <param name="versionformat">@PARENT_TAG@~@TAG_OFFSET@</param>
     <param name="scm">git</param>
-    <param name="revision">2024.09.28</param>
+    <param name="revision">2024.10.31</param>
     <param name="match-tag">*</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
     <param name="changesauthor">solomoncyj@gmail.com</param>
   </service>
-  <service mode="disabled" name="tar" />
-  <service mode="disabled" name="recompress">
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
     <param name="file">*.tar</param>
     <param name="compression">zst</param>
   </service>

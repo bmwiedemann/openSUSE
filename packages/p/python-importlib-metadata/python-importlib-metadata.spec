@@ -24,15 +24,14 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-importlib-metadata%{psuffix}
-Version:        7.1.0
+Version:        8.5.0
 Release:        0
 Summary:        Read metadata from Python packages
 License:        Apache-2.0
-URL:            http://importlib-metadata.readthedocs.io/
+URL:            https://importlib-metadata.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/i/importlib_metadata/importlib_metadata-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
@@ -44,11 +43,9 @@ BuildRequires:  %{python_module zipp >= 0.5}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-zipp >= 0.5
-%if %{python_version_nodots} < 38
-Requires:       python-typing_extensions >= 3.6.4
-%endif
 Provides:       python-importlib_metadata = %{version}
 BuildArch:      noarch
+Requires:       (python-typing_extensions >= 3.6.4 if python-base < 3.8)
 %if %{with test}
 BuildRequires:  %{python_module importlib_resources >= 1.3 if %python-base < 3.9}
 BuildRequires:  %{python_module jaraco.test}
@@ -78,8 +75,15 @@ importlib.metadata including improvements added to subsequent Python versions.
 
 %check
 %if %{with test}
-# no pytest_perf available
-%pytest --ignore exercises.py
+# no pytest_perf available (gh#python/importlib_metadata#490)
+# skipping tests because of gh#python/importlib_metadata#509
+skip_tests="test_packages_distributions_example or test_packages_distributions_example2"
+skip_tests+=" or test_case_insensitive or test_files or test_missing_metadata"
+skip_tests+=" or test_one_distribution or test_zip_entry_points or test_zip_version"
+skip_tests+=" or test_case_insensitive or test_files or test_missing_metadata"
+skip_tests+=" or test_normalized_name or test_one_distribution or test_zip_entry_points"
+skip_tests+=" or test_zip_version"
+%pytest --ignore exercises.py -k "not (${skip_tests})"
 %endif
 
 %if !%{with test}

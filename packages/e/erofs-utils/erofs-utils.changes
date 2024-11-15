@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 14 00:35:14 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.8.2
+  * mkfs: Correctly skip unidentified xattrs
+  * fsck: Support exporting xattrs optionally
+  * mkfs: Correctly sort shared xattrs
+  * mkfs: Allow pax headers with empty names
+  * mkfs: Add `--sort=none` option for tarball
+
+-------------------------------------------------------------------
 Fri Sep 13 20:27:29 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.8.1

@@ -42,4 +42,16 @@ make use of %ldconfig_scriptlets</comment>
     <comment>- corrected license tag (GPL-2.0-or-later -&gt; GPL-2.0-only)</comment>
     <requestid>1218072</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b462e5d3e9b24e2a835eef19b004a860</srcmd5>
+    <version>565.57.01</version>
+    <time>1731681496</time>
+    <user>anag+factory</user>
+    <comment>- fixed URL in specfile and made 'osc service runall download_files'
+  happy
+
+- update to release 565.57.01
+  --&gt; https://github.com/NVIDIA/nvidia-settings/commit/394e8a71c8330331da340c12be7267e85830bfe7</comment>
+    <requestid>1224150</requestid>
+  </revision>
 </revisionlist>

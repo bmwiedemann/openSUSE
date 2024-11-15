@@ -1,7 +1,7 @@
 #
 # spec file for package wv
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,12 +25,20 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/Word
 URL:            http://wvware.sourceforge.net/
 Source0:        https://www.abisource.com/downloads/%{name}/%{version}/%{name}-%{version}.tar.gz
-Patch0:         wv-1.2.2-automake.patch
-Patch5:         wv-1.0.3-wvText.patch
-Patch9:         wv-1.2.2-fiximplicit.patch
-Patch10:        wv-strcasecmp.patch
-Patch11:        wv-gsf.patch
-Patch12:        wv-noansi.patch
+Patch1:         detect-imagick.patch
+Patch2:         man-refs.patch
+Patch3:         man-wvrtf-name.patch
+Patch4:         man-wvware-options.patch
+Patch5:         non-latin-latex.patch
+Patch6:         wvdvi-output-ext.patch
+Patch7:         wvmime.patch
+Patch8:         wvtext-no-graphics.patch
+Patch9:         wvware-no-placeholder.patch
+Patch10:        man-wvware-typo.patch
+Patch11:        hardening-format.patch
+Patch12:        man-remove-PU.patch
+Patch13:        cross.patch
+Patch14:        0014-Add-missing-include.patch
 BuildRequires:  libexpat-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
@@ -66,17 +74,10 @@ Requires:       libwmf-devel
 Header files for wv.
 
 %prep
-%setup -q
-%patch -P 0
-%patch -P 5
-%patch -P 9 -p1
-%patch -P 10 -p1
-%if 0%{?suse_version} > 1230
-%patch -P 11 -p1
-%endif
-%patch -P 12 -p1
+%autosetup -p1
 
 %build
+perl -i -lpe 's{AM_INIT_AUTOMAKE.*}{AM_INIT_AUTOMAKE([foreign subdir-objects])}g' configure.ac
 autoreconf -f -i --verbose
 %define warn_flags -Wall -Wstrict-prototypes -Wpointer-arith -Wformat -Wformat-security
 CFLAGS="%{optflags} %{warn_flags} -fno-strict-aliasing -fstack-protector" \
@@ -95,8 +96,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %check
 %make_build check
 
-%post -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lname}
 
 %files
 %license COPYING

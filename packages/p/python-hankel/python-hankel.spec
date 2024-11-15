@@ -1,7 +1,7 @@
 #
 # spec file for package python-hankel
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        Hankel Transformations using method of Ogata 2005
 License:        MIT
 URL:            https://github.com/steven-murray/hankel
 Source:         https://files.pythonhosted.org/packages/source/h/%{modname}/%{modname}-%{version}.tar.gz
+# https://github.com/steven-murray/hankel/commit/3307d7527325dc80ac441d845982f93fd84d5311
+Patch0:         fix-get_h-test.patch
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

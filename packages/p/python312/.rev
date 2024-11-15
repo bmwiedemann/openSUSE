@@ -1262,4 +1262,13 @@
 </comment>
     <requestid>1220158</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>842e074761d7fdb02ed3aaac258e1047</srcmd5>
+    <version>3.12.7</version>
+    <time>1731681461</time>
+    <user>anag+factory</user>
+    <comment>- Remove -IVendor/ from python-config boo#1231795
+</comment>
+    <requestid>1224261</requestid>
+  </revision>
 </revisionlist>

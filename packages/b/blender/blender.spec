@@ -109,8 +109,8 @@ BuildRequires:  %{py3pkg}-numpy-devel
 BuildRequires:  %{py3pkg}-requests
 BuildRequires:  OpenColorIO-devel >= 2.0
 BuildRequires:  OpenEXR-devel
-BuildRequires:  OpenImageIO
-BuildRequires:  OpenImageIO-devel
+BuildRequires:  OpenImageIO < 3
+BuildRequires:  OpenImageIO-devel < 3
 BuildRequires:  SDL2-devel
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
@@ -244,7 +244,7 @@ BuildRequires:  openpgl-devel
 BuildRequires:  OpenSubdiv-devel
 %endif
 %if %{with openvdb}
-BuildRequires:  openvdb-devel
+BuildRequires:  openvdb-devel < 12
 BuildRequires:  tbb-devel
 BuildRequires:  pkgconfig(blosc)
 %endif

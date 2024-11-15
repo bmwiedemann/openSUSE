@@ -38,7 +38,7 @@
 %endif
 
 Name:           ansible
-Version:        10.5.0
+Version:        10.6.0
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0+
@@ -54,7 +54,7 @@ BuildRequires:  fdupes
 BuildRequires:  dos2unix
 
 # SECTION test requirements
-BuildRequires:  ansible-core >= 2.17.5
+BuildRequires:  ansible-core >= 2.17.6
 # /SECTION
 
 Requires:       %{ansible_python}-base >= 3.10

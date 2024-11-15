@@ -1917,4 +1917,12 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
     <comment></comment>
     <requestid>1221730</requestid>
   </revision>
+  <revision rev="205" vrev="2">
+    <srcmd5>5bf41796b79fa12bd539597e0a58296b</srcmd5>
+    <version>8.11.0</version>
+    <time>1731681520</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1224026</requestid>
+  </revision>
 </revisionlist>

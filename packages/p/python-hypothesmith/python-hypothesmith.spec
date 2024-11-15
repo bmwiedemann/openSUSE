@@ -16,7 +16,6 @@
 #
 
 
-%{?sle15_python_module_pythons}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -25,6 +24,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%{?sle15_python_module_pythons}
 Name:           python-hypothesmith%{psuffix}
 Version:        0.3.3
 Release:        0
@@ -33,7 +33,9 @@ License:        MPL-2.0
 URL:            https://github.com/Zac-HD/hypothesmith
 Source:         https://files.pythonhosted.org/packages/source/h/hypothesmith/hypothesmith-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-base >= 3.7
@@ -41,7 +43,6 @@ Requires:       python-hypothesis >= 6.93.0
 Requires:       python-lark >= 0.10.1
 Requires:       python-libcst >= 0.4.0
 %if %{with test}
-BuildRequires:  %{python_module black}
 BuildRequires:  %{python_module exceptiongroup}
 BuildRequires:  %{python_module hypothesis >= 6.93.0}
 BuildRequires:  %{python_module lark >= 0.10.1}
@@ -63,12 +64,12 @@ rm tox.ini
 
 %build
 %if !%{with test}
-%python_build
+%pyproject_wheel
 %endif
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -76,7 +77,9 @@ rm tox.ini
 %if %{with test}
 # multibuild: test the source dir, nothing is installed
 export PYTHONPATH=$(pwd)/src
-%pytest -n auto
+# depend on black
+rm -v tests/test_cst.py tests/test_syntactic.py
+%pytest -n %{?jobs}
 %endif
 
 %if !%{with test}
@@ -84,7 +87,7 @@ export PYTHONPATH=$(pwd)/src
 %doc README.md CHANGELOG.md
 %license LICENSE
 %{python_sitelib}/hypothesmith
-%{python_sitelib}/hypothesmith-%{version}-py*.egg-info
+%{python_sitelib}/hypothesmith-%{version}.dist-info
 %endif
 
 %changelog

@@ -384,4 +384,16 @@
     <comment></comment>
     <requestid>1219081</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>94912ecbb0e0f14b0b0a43824e5cc938</srcmd5>
+    <version>4.0+git6</version>
+    <time>1731681500</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.0+git6:
+  * test: Check for AVC denials in the journal
+  * test: More reliable output of combustion-validate
+  * test: Remove workaround for boo#1230912
+  * Label /sys before selinux-autorelabel units run (bsc#1232709)</comment>
+    <requestid>1224227</requestid>
+  </revision>
 </revisionlist>

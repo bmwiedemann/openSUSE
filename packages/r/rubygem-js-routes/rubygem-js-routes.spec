@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-js-routes
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-js-routes
-Version:        2.2.8
+Version:        2.2.10
 Release:        0
 %define mod_name js-routes
 %define mod_full_name %{mod_name}-%{version}
@@ -38,8 +38,7 @@ Summary:        Brings Rails named routes to javascript
 License:        MIT
 
 %description
-Generates javascript file that defines all Rails named routes as javascript
-helpers.
+Exposes all Rails Routes URL helpers as javascript module.
 
 %prep
 

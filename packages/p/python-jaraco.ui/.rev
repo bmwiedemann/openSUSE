@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>1136645</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>143ad6958fa80f8a86bd657e5643ac97</srcmd5>
+    <version>2.4.0</version>
+    <time>1731681474</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.4.0:
+  * Add main module.</comment>
+    <requestid>1224124</requestid>
+  </revision>
 </revisionlist>

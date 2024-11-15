@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov 14 19:27:34 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.6
+  * Fixed type hint for with_default_category decorator which
+    caused type checkers to mistype a subclass of CommandSet as a
+    plain CommandSet.
+- Update to version 2.5.5
+  * Fixed type hints for passing a class method to with_argparser
+    and as_subcommand_to.
+  * Fixed issue where set command was not always printing a
+    settable's current value.
+
+-------------------------------------------------------------------
 Thu Nov  7 16:32:16 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to versino 2.5.4

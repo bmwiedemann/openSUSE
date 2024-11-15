@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 13 09:47:49 UTC 2024 - pgajdos@suse.com
+
+- add %{?sle15allpythons} macro [jsc#PED-68]
+- use %python_build and %python_install for 15
+
+-------------------------------------------------------------------
 Thu Jul 25 13:05:52 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.12.9:

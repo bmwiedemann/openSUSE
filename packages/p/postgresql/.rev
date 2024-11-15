@@ -610,4 +610,15 @@
     <comment>- Bump major and default to 17 for Factory and TW.</comment>
     <requestid>1201994</requestid>
   </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>07d0d8f10f280d6821b5471d35061c0c</srcmd5>
+    <version>17</version>
+    <time>1731681499</time>
+    <user>anag+factory</user>
+    <comment>- Bump major to 17 for SLE.
+
+- bsc#1219340: The last fix was not correct. Improve it by removing
+  the dependency again and call fillup only if it is installed.</comment>
+    <requestid>1224220</requestid>
+  </revision>
 </revisionlist>

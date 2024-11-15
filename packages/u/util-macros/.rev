@@ -79,4 +79,24 @@
   * Remove unnecessary escape</comment>
     <requestid>1168560</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fb9b2beda4e930b7e0204630debc095e</srcmd5>
+    <version>1.20.2</version>
+    <time>1731681459</time>
+    <user>anag+factory</user>
+    <comment>- update to release 1.20.2
+  * This release changes the XORG_CHECK_MALLOC_ZERO macro to stop testing if
+    malloc(0) returns NULL and instead assumes it might, so that software still
+    works properly if it is running with a different malloc implementation than
+    the configure script found to test at build time. The configure option
+    --disable-malloc0returnsnull is still available for use with configure scripts
+    that call this macro, for use by builders who are sure about the malloc(0)
+    handling in all available malloc implementations in their runtime environment.
+  * This release also removes -Wdeclaration-after-statement from the default
+    warning set used in X.Org, treating it as a code style issue to be
+    considered at code review time instead of a portability issue that
+    everyone building the code needs to be made aware of, now that all
+    supported compilers support this standard feature of C99 and later versions.</comment>
+    <requestid>1224053</requestid>
+  </revision>
 </revisionlist>

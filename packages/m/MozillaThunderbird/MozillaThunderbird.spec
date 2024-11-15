@@ -29,8 +29,8 @@
 # major 69
 # mainver %%major.99
 %define major          128
-%define mainver        %major.4.2
-%define orig_version   128.4.2
+%define mainver        %major.4.3
+%define orig_version   128.4.3
 %define orig_suffix    esr
 %define update_channel esr
 %define source_prefix  thunderbird-%{orig_version}
@@ -43,7 +43,6 @@
 
 %bcond_with only_print_mozconfig
 
-%bcond_without mozilla_tb_kde4
 %bcond_with    mozilla_tb_valgrind
 %bcond_without mozilla_tb_optimize_for_size
 
@@ -174,12 +173,6 @@ Provides:       thunderbird = %{version}
 Obsoletes:      MozillaThunderbird-devel < %{version}
 Provides:       appdata()
 Provides:       appdata(thunderbird.appdata.xml)
-%if %{with mozilla_tb_kde4}
-# this is needed to match this package with the kde4 helper package without the main package
-# having a hard requirement on the kde4 package
-%define kde_helper_version 6
-Provides:       mozilla-kde4-version = %{kde_helper_version}
-%endif
 Summary:        An integrated email, news feeds, chat, and newsgroups client
 License:        MPL-2.0
 Group:          Productivity/Networking/Email/Clients
@@ -201,9 +194,6 @@ Source20:       https://ftp.mozilla.org/pub/%{srcname}/releases/%{version}%{orig
 Source21:       https://ftp.mozilla.org/pub/%{srcname}/releases/%{version}%{orig_suffix}/KEY#/mozilla.keyring
 # Gecko/Toolkit
 Patch1:         mozilla-nongnome-proxies.patch
-%if %{with mozilla_tb_kde4}
-Patch2:         mozilla-kde.patch
-%endif
 Patch3:         mozilla-ntlm-full-path.patch
 Patch4:         mozilla-aarch64-startup-crash.patch
 Patch5:         mozilla-bmo531915.patch
@@ -238,6 +228,7 @@ Recommends:     libpulse0
 Recommends:     libfido2-udev
 %endif
 Requires:       %{name}-openpgp
+Requires:       xdg-desktop-portal
 Suggests:       %{name}-openpgp-librnp
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
@@ -311,14 +302,6 @@ modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{pkgname}.changes")
 DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
 TIME="\"$(date -d "${modified}" "+%%R")\""
 find . -regex ".*\.c\|.*\.cpp\|.*\.h" -exec sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g" {} +
-
-%if %{with mozilla_tb_kde4}
-kdehelperversion=$(cat toolkit/xre/nsKDEUtils.cpp | grep '#define KMOZILLAHELPER_VERSION' | cut -d ' ' -f 3)
-if test "$kdehelperversion" != %{kde_helper_version}; then
-  echo fix kde helper version in the .spec file
-  exit 1
-fi
-%endif
 
 # When doing only_print_mozconfig, this file isn't necessarily available, so skip it
 cp %{SOURCE4} .obsenv.sh

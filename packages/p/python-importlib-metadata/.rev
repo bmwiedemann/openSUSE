@@ -341,4 +341,12 @@ It does NOT conflict with python38 standard library (see upstream description)</
     classmethod.</comment>
     <requestid>1160940</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>c37b94ef60fa46715609a03f53d20c34</srcmd5>
+    <version>8.5.0</version>
+    <time>1731681484</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1222646</requestid>
+  </revision>
 </revisionlist>

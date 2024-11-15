@@ -197,4 +197,12 @@
     <comment></comment>
     <requestid>1207164</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>4d03d46bcf3c071ee71d2bd223cd994f</srcmd5>
+    <version>5.1.1</version>
+    <time>1731681485</time>
+    <user>anag+factory</user>
+    <comment>- Skip a test broken by importlib_metadata 8.5+.</comment>
+    <requestid>1224057</requestid>
+  </revision>
 </revisionlist>

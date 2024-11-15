@@ -259,4 +259,27 @@ Also for older PostgreSQL versions to keep the packaging consistent.</comment>
   * https://www.postgresql.org/docs/release/14.13/</comment>
     <requestid>1201985</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>bc009e99c7d56f5cee663bf8c6806b9a</srcmd5>
+    <version>14.14</version>
+    <time>1731681799</time>
+    <user>anag+factory</user>
+    <comment>- Upgrade to 14.14:
+  * CVE-2024-10976, bsc#1233323: Ensure cached plans are marked as
+    dependent on the calling role when RLS applies to a
+    non-top-level table reference.
+  * CVE-2024-10977, bsc#1233325: Make libpq discard error messages
+    received during SSL or GSS protocol negotiation.
+  * CVE-2024-10978, bsc#1233326: Fix unintended interactions
+    between SET SESSION AUTHORIZATION and SET ROLE
+  * CVE-2024-10979, bsc#1233327: Prevent trusted PL/Perl code from
+    changing environment variables.
+  * https://www.postgresql.org/about/news/p-2955/
+  * https://www.postgresql.org/docs/release/14.14/
+
+- Sync spec file from postgresql17.
+
+  * https://www.postgresql.org/about/news/p-2910/</comment>
+    <requestid>1224294</requestid>
+  </revision>
 </revisionlist>

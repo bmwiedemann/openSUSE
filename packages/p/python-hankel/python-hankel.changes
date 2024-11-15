@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 14 13:59:17 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
+
+- Add fix-get_h-test.patch to fix numpy ValueError in tests
+  * from: https://github.com/steven-murray/hankel/commit/3307d7527325dc80ac441d845982f93fd84d5311
+
+-------------------------------------------------------------------
 Thu Sep 14 14:11:02 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.2.2

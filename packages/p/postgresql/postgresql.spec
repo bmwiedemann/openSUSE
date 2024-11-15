@@ -131,7 +131,6 @@ BuildRequires:  pkgconfig(systemd)
 %{?systemd_ordering}
 %else
 Requires(postun): %insserv_prereq
-Requires(pre):    %fillup_prereq
 %endif
 
 
@@ -413,7 +412,9 @@ fi
 %endif
 
 %post server
-%fillup_only -n postgresql
+if [ -x /bin/fillup ]; then
+    %fillup_only -n postgresql
+fi
 %if %{with systemd}
 if test -x /usr/bin/systemctl; then
 PROFILE="/var/lib/pgsql/.bash_profile"

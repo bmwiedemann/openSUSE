@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Nov 13 13:56:14 UTC 2024 - Reinhard Max <max@suse.com>
+
+- Upgrade to 16.5:
+  * CVE-2024-10976, bsc#1233323: Ensure cached plans are marked as
+    dependent on the calling role when RLS applies to a
+    non-top-level table reference.
+  * CVE-2024-10977, bsc#1233325: Make libpq discard error messages
+    received during SSL or GSS protocol negotiation.
+  * CVE-2024-10978, bsc#1233326: Fix unintended interactions
+    between SET SESSION AUTHORIZATION and SET ROLE
+  * CVE-2024-10979, bsc#1233327: Prevent trusted PL/Perl code from
+    changing environment variables.
+  * obsoletes postgresql-testsuite-timezone-fix.patch
+  * https://www.postgresql.org/about/news/p-2955/
+  * https://www.postgresql.org/docs/release/16.5/
+
+-------------------------------------------------------------------
+Tue Nov  5 11:56:16 UTC 2024 - Reinhard Max <max@suse.com>
+
+- Sync spec file from postgresql17.
+
+-------------------------------------------------------------------
 Fri Sep 20 22:16:10 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Pull upstream patch to fix tests with timezone 2024b
@@ -16,7 +38,7 @@ Sat Aug 10 14:08:50 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 - Upgrade to 16.4 (bsc#1229013):
   * bsc#1229013, CVE-2024-7348 PostgreSQL relation replacement
     during pg_dump executes arbitrary SQL
-  * https://www.postgresql.org/about/news/postgresql-164-158-1413-1316-1220-and-17-beta-3-released-2910/
+  * https://www.postgresql.org/about/news/p-2910/
   * https://www.postgresql.org/docs/release/16.4/
 
 -------------------------------------------------------------------

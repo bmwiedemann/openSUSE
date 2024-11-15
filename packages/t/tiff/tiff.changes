@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Nov 12 14:40:24 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- make doc packages noarch. no need to have those per arch
+- ensure that the src rpms are named per build flavor:
+  You might now ask why. Good question:
+
+  1. the spec file during the build get patched. `@BUILD_FLAVOR@`
+     gets replaced with the value. which means the src rpm between
+     build flavor builds is not identical. Also the last built
+     src.rpm will be published. with different content and runtime
+     requires (aka our BuildRequires).
+
+  2. for historical reasons the internal dependency tracking goes
+     via the src.rpm package. So without having differently named
+     src.rpms the build cycle we were trying to solve was not
+     actually solved. So we append a suffix to the Name attribute
+     in the preamble now.
+
+-------------------------------------------------------------------
+Mon Nov 11 17:34:34 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- In the previous change to enable the cmake based build
+  we also needed python3-Sphinx to build the man pages, as unlike
+  the autotools based build, the cmake based build does not fall
+  back to the pre-built man pages.
+
+  This causes build cycle. Split out the documentation building to
+  break the cycle. The Tumbleweed release managers preferred this
+  solution over a mini package.
+
+-------------------------------------------------------------------
+Sat Nov  9 22:56:55 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- switch build to cmake for the webp build - we need the cmake
+  finder code
+
+-------------------------------------------------------------------
 Wed Sep 18 08:02:11 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.7.0:

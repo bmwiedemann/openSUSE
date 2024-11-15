@@ -151,4 +151,15 @@
 </comment>
     <requestid>1224045</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f1ef4246b28f6677e120d6e1ab523a16</srcmd5>
+    <version>9.13.1</version>
+    <time>1731681796</time>
+    <user>anag+factory</user>
+    <comment>- update to version 9.13.1:
+  * Fixed some edge cases where resolving circular peer
+    dependencies caused a dead lock #8720
+</comment>
+    <requestid>1224298</requestid>
+  </revision>
 </revisionlist>

@@ -57,7 +57,7 @@ mysql_install_db --defaults-file=$TEST_RUN_DIR/my.cnf \
 \
 echo '>>> Invoking mysqld' \
 /usr/sbin/mysqld --defaults-file=$TEST_RUN_DIR/my.cnf& \
-sleep 2 \
+sleep 10 \
 \
 echo ">>> Creating \'$TEST_DB\' database, (credentials: $TEST_USER, $TEST_PASS)" \
 mysqladmin       --defaults-file=$TEST_RUN_DIR/my.cnf --user=abuild password abuildpw \

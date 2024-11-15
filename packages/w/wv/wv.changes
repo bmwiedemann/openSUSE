@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov 14 16:19:42 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Delete wv-1.0.3-wvText.patch, wv-1.2.2-automake.patch,
+  wv-1.2.2-fiximplicit.patch, wv-gsf.patch, wv-noansi.patch,
+  wv-strcasecmp.patch
+- Add patches from Debian: 0014-Add-missing-include.patch,
+  cross.patch, detect-imagick.patch, hardening-format.patch,
+  man-refs.patch, man-remove-PU.patch, man-wvrtf-name.patch,
+  man-wvware-options.patch, man-wvware-typo.patch,
+  non-latin-latex.patch, wvdvi-output-ext.patch, wvmime.patch,
+  wvtext-no-graphics.patch, wvware-no-placeholder.patch
+
+-------------------------------------------------------------------
 Tue Feb 20 15:12:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

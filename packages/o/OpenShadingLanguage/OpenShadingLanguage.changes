@@ -1,4 +1,229 @@
 -------------------------------------------------------------------
+Thu Nov 14 19:46:27 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Added fix-install-paths.patch:
+  implement suggestions from
+  https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/issues/1771
+- use ldconfig scriptlets macros
+
+-------------------------------------------------------------------
+Thu Nov 14 19:01:53 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.13.11.0:
+  - fix/batched: Assume BatchedRendererServices texture derivatives
+    are in st space. #1828 (by sfriedmapixar) (1.13.10.0)
+  - fix: Make backfacing shadeop indicate backfacing shader-global
+    is needed #1827 (by sfriedmapixar) (1.13.10.0)
+  - deps: Handle various OpenImageIO deprecations and changes in
+    the run-up to OIIO 3.0 #1834 #1806 #1838 #1842 #1850
+    (1.13.10.0)
+  - deps: Adjust to OIIO change to IC/TS API #1848 (1.13.10.0)
+  - deps: Llvm 18 compat issue - include libclangAPINotes #1812
+    (1.13.10.0)
+  - deps: Make finding bison work better on Apple Silicon Macs +
+    homebrew #1822 (1.13.10.0)
+  - ci: Mods to CI to deal with OIIO master raising dependency mins
+    #1833 (1.13.10.0)
+  - ci: Deal with CentOS 7 EOL and disappearance of yum mirrors
+    #1839 (1.13.10.0)
+  - ci: Fix GHA CI after they upgraded nodejs #1837 (1.13.10.0)
+  - admin: Change release notice icon to use the icon vs the normal
+    logo so it shows up better #1777 (by John Mertic) (1.13.10.0)
+
+- changes from 1.13.10.0
+  - testrender: Implement new Oren-Nayar model from OpenPBR #1817
+    (by Christopher Kulla)
+  - docs: Fix outdated or wrong repo URLs #1811
+- changes from 1.13.9.0
+  - deps: Support for LLVM-18 #1773 (by مهدي شينون (Mehdi Chinoune)
+    #1803 (by Larry Gritz)
+  - fix: Make isconnected() work with downstream renderer
+    "connections." #1782 (by sfriedmapixar)
+  - cleanup: Change OSL_CONSTEXPR14 to constexpr #1805
+  - internals build: Fix ifdef typo #1804
+  - build: Propagate cpp version #1797
+  - build: Print commit hash of locally built dependencies #1798
+  - ci: Lock down to OIIO 2.5 for icc tests #1799
+  - ci: Suppress leak sanitizer warnings about internals of
+    robin_hash #1807
+  - docs: More detail about supported platforms in INSTALL.md #1796
+- changes from 1.13.8.0
+  - fix(batched): Codegen bug for compref with varying index for
+    batched shading #1776 (by Alex Wells)
+  - fix: Calculatenormal needs fliphandedness #1783 (by
+    sfriedmapixar)
+  - fix: Print closure missing error message at compile time
+    instead of run time. #1781 (by sfriedmapixar)
+  - int: Change long-deprecated OIIO macro to new one #1788
+  - ci: Fix broken Macos-13 CI #1780
+- changes from 1.13.7.0
+  - fix: Mute partio error prints #1774 (by olegul)
+  - ci: Test with Mac ARM runner #1770
+  - docs: Fix links to RTD docs from github landing page #1768
+  - admin: Switch release announcement workflow to jmertic's
+    awesome action #1766
+- changes from 1.13.6.1
+  - New minimum dependencies and compatibility changes:
+    - For GPU/OptiX mode, OptiX 6.0 support has been removed. For
+      GPU rendering with OptiX, a minimum of OptiX 7.0 is required,
+      and the Cuda minimum has been raised to 9.0 #1737
+    - The minimum version OpenImageIO has been raised from 2.2 to
+      2.4. #1591 #1722
+    - The minimum CMake dependency has been raised from 3.12 to
+      3.15 #1724 (1.13.5.0)
+    - The minimum Imath/OpenEXR has been raised from 2.3 to 2.4.
+      (Note: OSL 1.13 is probably the last major release family
+      that will support Imath/OpenEXR 2.x.)
+  - OSL Language and oslc compiler:
+    - There have been no substantive changes to the OSL language in
+      this release.
+  - ⛰️ API changes, new options, new ShadingSystem features (for
+    renderer writers):
+    - A new shadingStateUniform pointer field was added to
+      ShaderGlobals for planned future expansion and improved GPU
+      support. #1585 (1.13.1.0)
+    - Adding relaxed type-equivalency to ReParameter() #1639 (by
+      cmstein) (1.13.2.1)
+    - Expose llvm groupdata size as a shadergroup attribute #1642
+      (by Chris Hellmuth) (1.13.4.0)
+    - RendererServices API for letting get_texture_handle consider
+      colorspace #1641 (1.13.4.0)
+    - Make "compile_report" attribute an int instead of just 0/1.
+      Passing 1 makes a brief report, values >1 are more verbose.
+      (Zero still prints no report.) #1654 (1.13.4.0)
+    - Switch lockgeom to interpolated and interactive. The
+      lockgeom=0 was confusing. Now we use interpolated=1 to mean
+      "don't optimize it away because it might be interpolated
+      across the geometry and thus won't have the same value at all
+      points being shaded," and the subtly different interactive=1
+      to mean "don't optimize it away because although it will
+      always take on the same value at all points at the same time,
+      the user might want to interactively adjust the value and we
+      don't want to have to recompile the shader group if that
+      happens." #1662 (1.13.4.0)
+    - Add type information for needed attributes. #1650 (by Curtis
+      Black) (1.13.4.0)
+    - Add API for building attribute getter free functions. #1704
+      (by Curtis Black) (1.13.5.0)
+    - Rs fmt specification - Journaling Algorithm for error,
+      warning, fprintf #1702 (by Steena Monteiro) #1711 #1715
+      (1.13.5.0)
+  - 🚀 SIMD batched shading mode
+    - Fix some array overruns (asymptomatic, but still potentially
+      buggy) in common_ancestor_between. #1577 (1.13.0.2)
+    - Fix issue with closure keyword parameters. #1620
+      (1.13.2.0/1.12.8.0)
+    - Fix crash when adding a default initialized closure. #1624
+      (1.13.2.0/1.12.8.0)
+    - Fix support for closures with array types. #1630
+      (1.13.2.0/1.12.8.0)
+    - Fix bug with masked wide llvm_gen_closure() #1637 (by
+      danieldresser-ie) (1.13.2.1)
+    - Fix Force LLVM Boolean #1717 (by Alex Wells)
+    - Batched pointcloud if "index" is not passed #1753 (by Alex
+      Wells)
+  - 🚀 OptiX GPU rendering
+    - OptiX 6.0 support has been removed. For GPU rendering with
+      OptiX, a minimum of OptiX 7.0 is required.
+    - Big overhaul/simplification of how strings are represented on
+      the GPU: the extra level of indirection to global variables
+      is removed, and strings are simply represented in ordinary
+      variables as the hash of their characters. #1531 (1.13.0.0)
+      #1553 (1.13.0.1)
+    - Better PTX cache hit rate by eliminating several sources of
+      not being strictly deterministic in the PTX text we were
+      generating. #1566 #1570 (1.13.0.1)
+    - Fix PTX symbol visibility issues. #1609 (1.13.2.0)
+    - Hide more code that is only used for OptiX mode, when OptiX
+      is disabled. #1608 (1.13.2.0)
+    - Remove dependency on OptiX SDK for building core OSL with
+      OptiX support. You can now build OSL with OptiX support
+      enabled even if you don't have the OptiX SDK headers present
+      at build time. But you will still need them to build your
+      OptiX-based application that uses OSL for GPU rendering.
+      #1627 (1.13.2.0/1.12.8.0)
+    - GPU/OptiX support of ReParameter #1686 (1.13.4.0)
+    - Fix userdata derivatives for interpolated params on GPU #1685
+      (by Pascal Lecocq) (1.13.4.0)
+    - Enable userdata derivatives for interpolated params on GPU
+      #1657 (by Chris Hellmuth) (1.13.4.0)
+    - Move qualifying GroupData params onto stack for higher
+      performance. #1710 (by Chris Hellmuth) (1.13.5.0)
+    - Handle mixed string casting that plagues optix codegen #1718
+      (1.13.5.0)
+    - Add missing members to ShaderGlobals in rend_lib.h #1721 (by
+      Tim Grant) (1.13.5.0)
+    - OptiX direct callable API that owns groupdata buffer #1683
+      (by Chris Hellmuth) (1.13.5.0)
+    - OptiX PTX pipeline overhaul #1680 (by Tim Grant) (1.13.5.0)
+    - Perf: Don't insert redundant run layer calls inside a basic
+      block #1665 #1669 #1672 (by Chris Hellmuth) (1.13.4.0)
+    - Fix NVPTX TargetMachine leak, etc. #1763 (by Tim Grant)
+  - 🐛/🔧 Internals: fixes, improvements, and developer concerns
+    - Fix memory leak in oslc ASTvariable_declaration. #1576
+      (1.13.0.2)
+    - Fix memory leaks in LPE code in error conditions. #1593 #1594
+      (1.13.0.3)
+    - Fix mismatched strides when calling OCIO for transformc with
+      derivs #1646 (1.13.4.0)
+    - Set up ray types for testrender #1648 (1.13.4.0)
+    - Fix userdata binding corner case #1673 (by Alejandro Conty)
+      (1.13.4.0)
+    - Fix constant float values being converted to ints #1674 (by
+      Declan Russell) (1.13.4.0)
+    - Don't try to ReParameter symbols not in the group #1693 (by
+      Alejandro Conty) (1.13.5.0)
+    - Have ReParameter only copy data when it changes #1698
+      (1.13.5.0)
+    - Avoid deprecated OSLQuery ctr in test example #1699
+      (1.13.5.0)
+    - Zero derivs for interactive params when needed #1700 (by
+      Alejandro Conty) (1.13.5.0)
+    - oslc bug fix: shader params whose default values involve
+      "init ops" could be incorrectly initialized if their values
+      came from instance parameters set to zero. #1578 (1.13.0.2)
+    - oslc: Add missing fmod() variants #1643 (1.13.4.0)
+    - Simple constant folding of binary expressions now happen on
+      the oslc side #1653 (1.13.4.0)
+    - platform.h:
+      - New OSL_ALLOCA macro to allocate on the stack. #1589
+        (1.13.0.3)
+      - Define OSL::bitcast utility. #1610 (1.13.2.0)
+    - Make sure that std::hash is defined for ustring and
+      ustringhash. #1599 (1.13.1.1)
+    - Deprecate LLVMUtil::internalize_module_functions. #1606
+      (1.13.1.0)
+    - Work toward always representing strings in shaders as
+      ustringhash rather than ustring: phase 1 #1603 phase2 #1612
+      (1.13.2.0) #1726 (1.13.5.0)
+    - Remove unnecessary setting of locale::global #1636 (by
+      danieldresser-ie) (1.13.2.1)
+    - Fully define bitcast template #1635 (1.13.2.1)
+    - Fix for ReParameter corner case #1670 (by cmstein) (1.13.4.0)
+    - Switch deprecated oiio simd names to modern #1679 (1.13.4.0)
+    - Give ShadingSystemImpl a handy use_optix() method #1682
+      (1.13.4.0)
+    - Fix default fmt logic changing in latest openimageio release
+      #1725 (1.13.5.0)
+    - The recently added SS::find_symloc can have const args #1723
+      (1.13.5.0)
+    - SymOverrideInfo bitfields should be the same type #1745
+    - Fix wrong offset of MxSheen param #1751 (by Rasmus Bonnedal)
+    - Make get_texture_info robust to empty shaderglobals param
+      #1731
+  - Documentation
+    - First stab at ReadTheDocs -- new Experimental OSL
+      Documentation on ReadTheDocs is still a little rough, but
+      eventually will be our primary documentation. #1736
+    - doc/RELEASING.md documents our release process and versioning
+      policies. #1572 (1.13.0.2)
+    - Improve documentation of trace function #1671 (by AidanWelch)
+      (1.13.4.0)
+    - Update CONTRIBUTING #1689 (1.13.5.0)
+    - Update logos #1705, Move logos and add an icon-only logo
+      #1707 (1.13.5.0)
+
+-------------------------------------------------------------------
 Tue Jan 16 19:38:15 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Add missing Qt6 BuildRequires to enable osltoy 

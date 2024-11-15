@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 14 14:50:30 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 4.0+git6:
+  * test: Check for AVC denials in the journal
+  * test: More reliable output of combustion-validate
+  * test: Remove workaround for boo#1230912
+  * Label /sys before selinux-autorelabel units run (bsc#1232709)
+
+-------------------------------------------------------------------
 Tue Oct 29 15:55:08 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 4.0+git2:

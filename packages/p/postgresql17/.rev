@@ -54,4 +54,27 @@
     <comment>- Add postgresql17-jsonb_jsonpath.patch as a temporary build fix.</comment>
     <requestid>1220587</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c19976342042f02aef8858435249814f</srcmd5>
+    <version>17.1</version>
+    <time>1731681501</time>
+    <user>anag+factory</user>
+    <comment>- Upgrade to 17.1:
+  * CVE-2024-10976, bsc#1233323: Ensure cached plans are marked as
+    dependent on the calling role when RLS applies to a
+    non-top-level table reference.
+  * CVE-2024-10977, bsc#1233325: Make libpq discard error messages
+    received during SSL or GSS protocol negotiation.
+  * CVE-2024-10978, bsc#1233326: Fix unintended interactions
+    between SET SESSION AUTHORIZATION and SET ROLE
+  * CVE-2024-10979, bsc#1233327: Prevent trusted PL/Perl code from
+    changing environment variables.
+  * obsoletes postgresql17-jsonb_jsonpath.patch
+  * https://www.postgresql.org/about/news/p-2955/
+  * https://www.postgresql.org/docs/release/17.1/
+
+- Upgrade to 17.0:
+  * https://www.postgresql.org/about/news/p-2910/</comment>
+    <requestid>1224229</requestid>
+  </revision>
 </revisionlist>

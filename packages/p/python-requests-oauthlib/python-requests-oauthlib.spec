@@ -1,7 +1,7 @@
 #
 # spec file for package python-requests-oauthlib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,22 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-requests-oauthlib
-Version:        1.3.1
+Version:        2.0.0
 Release:        0
 Summary:        OAuthlib authentication support for Requests
 License:        ISC
 URL:            https://github.com/requests/requests-oauthlib
 Source:         https://files.pythonhosted.org/packages/source/r/requests-oauthlib/requests-oauthlib-%{version}.tar.gz
 BuildRequires:  %{python_module oauthlib >= 3.0.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.0.0}
 BuildRequires:  %{python_module requests-mock}
+BuildRequires:  %{python_module selenium}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-oauthlib >= 3.0.0
@@ -44,21 +46,22 @@ This project provides first-class OAuth library support for Requests.
 %setup -q -n requests-oauthlib-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 #hardlink duplicated files
 %fdupes %{buildroot}
 
 %check
 # Three tests initiate network traffic to httpbin.org
-%pytest -k 'not (testCanPostBinaryData or test_content_type_override or test_url_is_native_str)'
+%pytest -k 'not (testCanPostBinaryData or test_content_type_override or test_url_is_native_str or test_login)'
 
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS.rst README.rst
-%{python_sitelib}/*
+%{python_sitelib}/requests_oauthlib
+%{python_sitelib}/requests_oauthlib-%{version}.dist-info
 
 %changelog

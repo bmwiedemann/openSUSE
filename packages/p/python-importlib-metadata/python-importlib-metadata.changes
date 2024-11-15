@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Nov  1 06:09:04 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Skip failing tests (gh#python/importlib_metadata#509).
+
+-------------------------------------------------------------------
+Wed Oct 23 20:30:27 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.5.0:
+  * Deferred import of zipfile.Path
+  * Deferred import of json
+  * Rely on zipp overlay for zipfile.Path.
+  * Deferred import of inspect for import performance.
+  * Disallow passing of 'dist' to EntryPoints.select.
+  * Add SimplePath to importlib_metadata.__all__.
+  * Prioritize valid dists to invalid dists when retrieving by
+    name.
+  * Message.__getitem__ now raises a KeyError on missing keys.
+  * Removed deprecated support for Distribution subclasses not
+    implementing abstract methods.
+  * When reading installed files from an egg, use
+    relative_to(walk_up=True) to honor files installed outside of
+    the installation root.
+  * Deferred select imports in for speedup
+    (python/cpython#109829).
+  * Updated fixtures for python/cpython#120801.
+
+-------------------------------------------------------------------
 Fri Mar 22 20:45:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.1.0:

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov 14 10:04:42 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- fixed URL in specfile and made 'osc service runall download_files'
+  happy
+
+-------------------------------------------------------------------
+Wed Nov  6 15:25:47 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to release 565.57.01
+  --> https://github.com/NVIDIA/nvidia-settings/commit/394e8a71c8330331da340c12be7267e85830bfe7 
+
+-------------------------------------------------------------------
 Thu Oct 24 13:48:08 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - corrected license tag (GPL-2.0-or-later -> GPL-2.0-only)

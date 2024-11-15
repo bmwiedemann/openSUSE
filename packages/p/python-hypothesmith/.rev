@@ -100,4 +100,12 @@
   * Can now be imported on Python 3.13</comment>
     <requestid>1159225</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>9fa374051c420da1517d8fdb9d044adb</srcmd5>
+    <version>0.3.3</version>
+    <time>1731681476</time>
+    <user>anag+factory</user>
+    <comment>- drop black dependency from tests</comment>
+    <requestid>1224141</requestid>
+  </revision>
 </revisionlist>

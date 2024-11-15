@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Sep 27 01:22:37 UTC 2024 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 24.8.0 
+  Stable style
+  * Fix crash when # fmt: off is used before a closing parenthesis
+    or bracket. (#4363)
+  Parser
+  * Fix regression where Black failed to parse a multiline f-string
+    containing another multiline string (#4339)
+  * Fix regression where Black failed to parse an escaped single
+    quote inside an f-string (#4401)
+  * Fix bug with Black incorrectly parsing empty lines with
+    a backslash (#4343)
+  * Fix bugs with Black's tokenizer not handling \{
+    inside f-strings very well (#4422)
+  * Fix incorrect line numbers in the tokenizer for certain
+    tokens within f-strings (#4423)
+  Performance
+  * Improve performance when a large directory is listed
+    in .gitignore (#4415)
+  Blackd
+  * Fix blackd (and all extras installs) for docker container (#4357)
+
+-------------------------------------------------------------------
 Sun Jul 21 16:03:44 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 24.4.2

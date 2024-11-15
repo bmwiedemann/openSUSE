@@ -17,7 +17,7 @@
 
 
 Name:           xprop
-Version:        1.2.7
+Version:        1.2.8
 Release:        0
 Summary:        Property displayer for X
 License:        MIT

@@ -1,7 +1,7 @@
 #
 # spec file for package python-translation-finder
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019-2021 Matthias Fehring <buschmann23@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,17 +17,16 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname translation-finder
-%define skip_python2 1
 Name:           python-translation-finder
-Version:        2.16
+Version:        2.18
 Release:        0
 Summary:        Translation Files Finder
 License:        GPL-3.0-or-later
 URL:            https://github.com/WeblateOrg/translation-finder
 # test_data/linked has to be symlink, hance using github tar ball
 Source:         https://github.com/WeblateOrg/translation-finder/archive/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+BuildRequires:  %{python_module charset-normalizer}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module ruamel.yaml}
 BuildRequires:  %{python_module setuptools}
@@ -35,11 +34,11 @@ BuildRequires:  %{python_module twine}
 BuildRequires:  %{python_module weblate-language-data >= 2021.2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-charset-normalizer
 Requires:       python-ruamel.yaml
-Requires:       python-setuptools
 Requires:       python-weblate-language-data >= 2021.2
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -73,6 +72,7 @@ sed -i -e '/pytest-runner/d' setup.py
 %doc CHANGES.rst README.rst
 %license LICENSE
 %python_alternative %{_bindir}/weblate-discover
-%{python_sitelib}/*
+%{python_sitelib}/translation_finder
+%{python_sitelib}/translation_finder-%{version}*info
 
 %changelog

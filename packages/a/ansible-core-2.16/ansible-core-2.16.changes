@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Nov 14 16:31:19 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.16.13:
+  https://github.com/ansible/ansible/blob/v2.16.13/changelogs/CHANGELOG-v2.16.rst
+  * Minor Changes
+    - ansible-test - Improve container runtime probe error
+      handling. When unexpected probe output is encountered, an
+      error with more useful debugging information is provided.
+  * Security Fixes
+    - include_vars action - Ensure that result masking is correctly
+      requested when vault-encrypted files are read.
+      (CVE-2024-8775)
+    - task result processing - Ensure that action-sourced result
+      masking (_ansible_no_log=True) is preserved. (CVE-2024-8775)
+    - user action won't allow ssh-keygen, chown and chmod to run on
+      existing ssh public key file, avoiding traversal on existing
+      symlinks (CVE-2024-9902).
+  * Bugfixes
+    - Improve performance on large inventories by reducing the
+      number of implicit meta tasks.
+    - ansible-test - Enable the sys.unraisablehook work-around for
+      the pylint sanity test on Python 3.11. Previously the
+      work-around was only enabled for Python 3.12 and later.
+      However, the same issue has been discovered on Python 3.11.
+
+-------------------------------------------------------------------
 Fri Oct 11 05:02:58 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.16.12:

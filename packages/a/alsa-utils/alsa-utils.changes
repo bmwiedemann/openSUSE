@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 14 09:02:51 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- Fix alsactl restore error (bsc#1233353):
+  0001-alsactl-90-alsa-restore.rules-fix-alsa_restore_go-st.patch
+
+-------------------------------------------------------------------
 Tue Nov 12 14:09:44 UTC 2024 - Takashi Iwai <tiwai@suse.com>
 
 - Update to alsa-utils 1.2.13:

@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Tue Sep 10 12:25:09 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
-- update to 1.34.0:
+- update to 1.34.0 (boo#1227017 boo#1227049 boo#1227005):
   For a more detailed changelog, including changes occurring in
   pre-release versions, see CHANGELOG.md.
   https://github.com/kubernetes/minikube/blob/master/CHANGELOG.md

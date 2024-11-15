@@ -1952,4 +1952,12 @@ See http://lists.opensuse.org/opensuse-factory/2013-01/msg00544.html for more co
     <comment></comment>
     <requestid>1202654</requestid>
   </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>594507d7a7baf0d27c57c594d3545cb4</srcmd5>
+    <version>11.6.1</version>
+    <time>1731681522</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1224344</requestid>
+  </revision>
 </revisionlist>

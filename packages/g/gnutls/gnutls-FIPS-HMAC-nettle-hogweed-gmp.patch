@@ -1,117 +1,120 @@
-Index: gnutls-3.8.7/lib/fips.c
+Index: gnutls-3.8.8/lib/fips.c
 ===================================================================
---- gnutls-3.8.7.orig/lib/fips.c
-+++ gnutls-3.8.7/lib/fips.c
-@@ -177,20 +177,32 @@ struct hmac_entry {
- struct hmac_file {
- 	int version;
- 	struct hmac_entry gnutls;
-+#if 0
-+       /* Disable nettle, hogweed and gmp HMAC verification as
-+        * they are calculated during build of the respective
-+        * packages and can differ from the ones listed here.
-+        */
- 	struct hmac_entry nettle;
- 	struct hmac_entry hogweed;
- #ifdef GMP_LIBRARY_SONAME
- 	struct hmac_entry gmp;
- #endif
-+#endif
- };
- 
- struct lib_paths {
- 	char gnutls[GNUTLS_PATH_MAX];
-+#if 0
-+       /* Disable nettle, hogweed and gmp HMAC verification as
-+        * they are calculated during build of the respective
-+        * packages and can differ from the ones listed here.
-+        */
- 	char nettle[GNUTLS_PATH_MAX];
- 	char hogweed[GNUTLS_PATH_MAX];
- #ifdef GMP_LIBRARY_SONAME
- 	char gmp[GNUTLS_PATH_MAX];
- #endif
-+#endif
- };
+--- gnutls-3.8.8.orig/lib/fips.c
++++ gnutls-3.8.8/lib/fips.c
+@@ -349,11 +349,90 @@ static int load_hmac_file(struct hmac_fi
+ }
  
  /*
-@@ -250,6 +262,11 @@ static int handler(void *user, const cha
- 		}
- 	} else if (!strcmp(section, GNUTLS_LIBRARY_SONAME)) {
- 		return lib_handler(&p->gnutls, section, name, value);
-+#if 0
-+        /* Disable nettle, hogweed and gmp HMAC verification as
-+         * they are calculated during build of the respective
-+         * packages and can differ from the ones listed here.
-+         */
- 	} else if (!strcmp(section, NETTLE_LIBRARY_SONAME)) {
- 		return lib_handler(&p->nettle, section, name, value);
- 	} else if (!strcmp(section, HOGWEED_LIBRARY_SONAME)) {
-@@ -258,6 +275,7 @@ static int handler(void *user, const cha
- 	} else if (!strcmp(section, GMP_LIBRARY_SONAME)) {
- 		return lib_handler(&p->gmp, section, name, value);
- #endif
-+#endif
- 	} else {
- 		return 0;
- 	}
-@@ -403,6 +422,11 @@ static int callback(struct dl_phdr_info
- 
- 	if (!strcmp(soname, GNUTLS_LIBRARY_SONAME))
- 		_gnutls_str_cpy(paths->gnutls, GNUTLS_PATH_MAX, path);
-+#if 0
-+       /* Disable nettle, hogweed and gmp HMAC verification as
-+        * they are calculated during build of the respective
-+        * packages and can differ from the ones listed here.
-+        */
- 	else if (!strcmp(soname, NETTLE_LIBRARY_SONAME))
- 		_gnutls_str_cpy(paths->nettle, GNUTLS_PATH_MAX, path);
- 	else if (!strcmp(soname, HOGWEED_LIBRARY_SONAME))
-@@ -411,6 +435,7 @@ static int callback(struct dl_phdr_info
- 	else if (!strcmp(soname, GMP_LIBRARY_SONAME))
- 		_gnutls_str_cpy(paths->gmp, GNUTLS_PATH_MAX, path);
- #endif
-+#endif
- 	return 0;
- }
- 
-@@ -423,6 +448,11 @@ static int load_lib_paths(struct lib_pat
- 		_gnutls_debug_log("Gnutls library path was not found\n");
- 		return gnutls_assert_val(GNUTLS_E_FILE_ERROR);
- 	}
-+#if 0
-+	/* Disable nettle, hogweed and gmp HMAC verification as
-+	 * they are calculated during build of the respective
-+	 * packages and can differ from the ones listed here.
-+	 */
- 	if (paths->nettle[0] == '\0') {
- 		_gnutls_debug_log("Nettle library path was not found\n");
- 		return gnutls_assert_val(GNUTLS_E_FILE_ERROR);
-@@ -437,6 +467,7 @@ static int load_lib_paths(struct lib_pat
- 		return gnutls_assert_val(GNUTLS_E_FILE_ERROR);
- 	}
- #endif
-+#endif
- 
- 	return GNUTLS_E_SUCCESS;
- }
-@@ -483,6 +514,11 @@ static int check_binary_integrity(void)
- 	ret = check_lib_hmac(&hmac.gnutls, paths.gnutls);
++ * check_dep_lib_hmac:
++ * @path: path to the library which hmac should be compared
++ *
++ * Verify that HMAC of a given library matches the hmac in the file
++ * provided by the library, named: .<libname>.so.<soname>.hmac.
++ *
++ * Returns: 0 on successful HMAC verification, a negative error code otherwise
++ */
++static int check_dep_lib_hmac(const char *path)
++{
++	int ret;
++	unsigned prev;
++	uint8_t hmac[HMAC_SIZE];
++	gnutls_datum_t data;
++	char hmac_path[GNUTLS_PATH_MAX];
++	uint8_t lib_hmac[HMAC_SIZE];
++	size_t lib_hmac_size;
++
++	_gnutls_debug_log("Loading: %s\n", path);
++	ret = gnutls_load_file(path, &data);
++	if (ret < 0) {
++		_gnutls_debug_log("Could not load %s: %s\n", path,
++				  gnutls_strerror(ret));
++		return gnutls_assert_val(ret);
++	}
++
++	prev = _gnutls_get_lib_state();
++	_gnutls_switch_lib_state(LIB_STATE_OPERATIONAL);
++	ret = gnutls_hmac_fast(HMAC_ALGO, FIPS_KEY, sizeof(FIPS_KEY) - 1,
++			       data.data, data.size, hmac);
++	_gnutls_switch_lib_state(prev);
++
++	gnutls_free(data.data);
++	if (ret < 0) {
++		_gnutls_debug_log("Could not calculate HMAC for %s: %s\n", path,
++				  gnutls_strerror(ret));
++		return gnutls_assert_val(ret);
++	}
++
++	/* Check now the integrity of the hmac provided by the library */
++	ret = get_hmac_path(hmac_path, sizeof(hmac_path), path);
++	if (ret < 0) {
++		_gnutls_debug_log("Could not get hmac file path: %s\n",
++							gnutls_strerror(ret));
++		return ret;
++	}
++	_gnutls_debug_log("Loading: %s\n", hmac_path);
++	ret = gnutls_load_file(hmac_path, &data);
++	if (ret < 0) {
++		_gnutls_debug_log("Could not load %s: %s\n", hmac_path,
++							gnutls_strerror(ret));
++		return gnutls_assert_val(ret);
++	}
++	lib_hmac_size = hex_data_size(data.size);
++	/* trim eventual newlines from the end of the data read from file */
++	while ((data.size > 0) && (data.data[data.size - 1] == '\n')) {
++		data.data[data.size - 1] = 0;
++		data.size--;
++	}
++	ret = gnutls_hex_decode(&data, lib_hmac, &lib_hmac_size);
++	gnutls_free(data.data);
++	if (ret < 0) {
++		_gnutls_debug_log("Could not hex decode hmac\n");
++		return gnutls_assert_val(GNUTLS_E_PARSING_ERROR);
++	}
++	ret = gnutls_memcmp(lib_hmac, hmac, HMAC_SIZE);
++	if (ret){
++		_gnutls_debug_log("Calculated MAC for %s does not match\n",
++							path);
++		gnutls_memset(hmac, 0, HMAC_SIZE);
++		gnutls_memset(lib_hmac, 0, HMAC_SIZE);
++		return gnutls_assert_val(GNUTLS_E_PARSING_ERROR);
++	}
++	_gnutls_debug_log("Successfully verified MAC for %s\n", path);
++	gnutls_memset(hmac, 0, HMAC_SIZE);
++	return 0;
++}
++
++/*
+  * check_lib_hmac:
+  * @entry: hmac file entry
+  * @path: path to the library which hmac should be compared
+  *
+- * Verify that HMAC from hmac file entry matches HMAC of given library.
++ * Verify that HMAC from hmac file entry matches HMAC of gnutls library.
+  *
+  * Returns: 0 on successful HMAC verification, a negative error code otherwise
+  */
+@@ -496,17 +575,20 @@ static int check_binary_integrity(void)
  	if (ret < 0)
  		return ret;
-+# if 0
-+	/* Disable nettle, hogweed and gmp HMAC verification as
-+	 * they are calculated during build of the respective
-+	 * packages and can differ from the ones listed here.
-+	 */
- 	ret = check_lib_hmac(&hmac.nettle, paths.nettle);
- 	if (ret < 0)
- 		return ret;
-@@ -494,6 +530,7 @@ static int check_binary_integrity(void)
+ #ifdef NETTLE_LIBRARY_SONAME
+-	ret = check_lib_hmac(&hmac.nettle, paths.nettle);
++	//ret = check_lib_hmac(&hmac.nettle, paths.nettle);
++	ret = check_dep_lib_hmac(paths.nettle);
  	if (ret < 0)
  		return ret;
  #endif
-+#endif
- 
- 	return 0;
- }
+ #ifdef HOGWEED_LIBRARY_SONAME
+-	ret = check_lib_hmac(&hmac.hogweed, paths.hogweed);
++	//ret = check_lib_hmac(&hmac.hogweed, paths.hogweed);
++	ret = check_dep_lib_hmac(paths.hogweed);
+ 	if (ret < 0)
+ 		return ret;
+ #endif
+ #ifdef GMP_LIBRARY_SONAME
+-	ret = check_lib_hmac(&hmac.gmp, paths.gmp);
++	//ret = check_lib_hmac(&hmac.gmp, paths.gmp);
++	ret = check_dep_lib_hmac(paths.gmp);
+ 	if (ret < 0)
+ 		return ret;
+ #endif

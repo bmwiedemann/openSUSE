@@ -32,4 +32,14 @@
 - Update VCS URL.</comment>
     <requestid>1218911</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>3b059453c0f22c39910f0431bd60fc93</srcmd5>
+    <version>5.0.0</version>
+    <time>1731681784</time>
+    <user>anag+factory</user>
+    <comment>- Add xsd-date.patch to fix test failure
+- Stop providing/obsoleting python-zeep, as the latter exists in OBS
+  and is more up-to-date on a lower version</comment>
+    <requestid>1224301</requestid>
+  </revision>
 </revisionlist>

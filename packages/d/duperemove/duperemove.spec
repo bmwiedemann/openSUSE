@@ -1,7 +1,7 @@
 #
 # spec file for package duperemove
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,8 @@
 %define samename btrfs-extent-same
 %if 0%{?suse_version} <= 1500
 %define req_gcc_ver 12
-BuildRequires:  gcc%{req_gcc_ver}
+%else
+%define req_gcc_ver %nil
 %endif
 Name:           duperemove
 Version:        0.14.1
@@ -29,7 +30,8 @@ License:        GPL-2.0-only
 Group:          System/Filesystems
 URL:            https://github.com/markfasheh/duperemove
 Source:         https://github.com/markfasheh/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{req_gcc_ver}
+BuildRequires:  gcc%{req_gcc_ver}-c++
 BuildRequires:  libuuid-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0)
@@ -51,7 +53,7 @@ Debug/Test tool to exercise a btrfs ioctl for deduplicating file regions.
 %setup -q
 
 %build
-%if 0%{?suse_version} <= 1500
+%if 0%{req_gcc_ver} > 0
 CC="CC=%{_bindir}/gcc-%{req_gcc_ver}"
 %endif
 %make_build $CC CFLAGS="%{optflags} -fcommon"

@@ -58,15 +58,3 @@ Index: mariadb-10.11.3/storage/rocksdb/rocksdb/util/string_util.h
  
  #include "rocksdb/rocksdb_namespace.h"
  
-Index: mariadb-10.11.3/tpool/aio_linux.cc
-===================================================================
---- mariadb-10.11.3.orig/tpool/aio_linux.cc
-+++ mariadb-10.11.3/tpool/aio_linux.cc
-@@ -21,6 +21,7 @@ Foundation, Inc., 51 Franklin Street, Fi
- # include <cstdio>
- # include <libaio.h>
- # include <sys/syscall.h>
-+# include <cstdio>
- 
- /**
-   Invoke the io_getevents() system call, without timeout parameter.

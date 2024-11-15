@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Nov 14 11:58:58 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 4.67.0
+  * contrib.discord: replace disco-py with requests (#1536)
+- from version 4.66.6
+  * cli: zip-safe --manpath, --comppath (#1627)
+  * misc framework updates (#1627)
+    + fix pytest DeprecationWarning
+    + fix snapcraft build
+    + fix nbval DeprecationWarning
+    + update & tidy workflows
+    + bump pre-commit
+    + docs: update URLs
+- from version 4.66.5
+  * support ncols auto-detection on FreeBSD (#1602 <- casperdcl/git-fame#98)
+  * fix Python 3.13 CLI (#1594 <- #1585)
+  * fix Python 3.13 tests (#1595 <- python/cpython#117536 (comment))
+  * misc framework updates (#1602)
+    + add official Python 3.12 support
+    + bump deps (NiklasRosenstein/pydoc-markdown#329, tikitu/jsmin#44)
+- Drop fix-issues-with-python3.13.patch, merged upstream
+
+-------------------------------------------------------------------
 Fri Aug  2 09:05:03 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Cherry-pick upstream patch to fix multiple issues with Python 3.13+

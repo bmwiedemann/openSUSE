@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 12 06:34:28 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Remove DOCKER_NETWORK_OPTS from docker.service. This was removed from
+  sysconfig a long time ago, and apparently this causes issues with systemd in
+  some cases.
+
+-------------------------------------------------------------------
 Wed Oct 16 22:24:52 UTC 2024 - Aleksa Sarai <asarai@suse.com>
 
 - Further merge docker and docker-stable specfiles to minimise the differences.
@@ -17,6 +24,7 @@ Tue Oct 15 04:58:46 UTC 2024 - Aleksa Sarai <asarai@suse.com>
 
 - Allow users to disable SUSE secrets support by setting
   DOCKER_SUSE_SECRETS_ENABLE=0 in /etc/sysconfig/docker. bsc#1231348
+  bsc#1232999
 
 -------------------------------------------------------------------
 Wed Sep 18 13:47:45 UTC 2024 - Ana Guerrero <ana.guerrero@suse.com>
@@ -64,8 +72,8 @@ Wed Jul 31 04:58:15 UTC 2024 - Aleksa Sarai <asarai@suse.com>
   <https://docs.docker.com/engine/release-notes/25.0/#2506>
 - This update includes fixes for:
   * CVE-2024-41110. bsc#1228324
-  * CVE-2023-47108. bsc#1217070
-  * CVE-2023-45142. bsc#1228553
+  * CVE-2023-47108. bsc#1217070 bsc#1229806
+  * CVE-2023-45142. bsc#1228553 bsc#1229806
 - Rebase patches:
   * 0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
   * 0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch

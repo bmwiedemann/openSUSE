@@ -1,0 +1,53 @@
+From 6d977c3f286a39b7e35c46ad3642a34617bdd833 Mon Sep 17 00:00:00 2001
+From: nicholasyang <nicholas.yang@suse.com>
+Date: Wed, 13 Nov 2024 14:28:53 +0800
+Subject: [PATCH] harden services with systemd sandboxing
+
+---
+ init/corosync-notifyd.service.in | 10 ++++++++++
+ init/corosync.service.in         | 10 ++++++++++
+ 2 files changed, 20 insertions(+)
+
+diff --git a/init/corosync-notifyd.service.in b/init/corosync-notifyd.service.in
+index 410a6837..604a2a47 100644
+--- a/init/corosync-notifyd.service.in
++++ b/init/corosync-notifyd.service.in
+@@ -10,5 +10,15 @@ ExecStart=@SBINDIR@/corosync-notifyd -f $OPTIONS
+ Type=notify
+ Restart=on-failure
+ 
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++
+ [Install]
+ WantedBy=multi-user.target
+diff --git a/init/corosync.service.in b/init/corosync.service.in
+index bd2a48a9..63381f47 100644
+--- a/init/corosync.service.in
++++ b/init/corosync.service.in
+@@ -30,5 +30,15 @@ StandardError=null
+ #  rewrite according to environment.
+ #ExecStartPre=/sbin/modprobe softdog
+ 
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++
+ [Install]
+ WantedBy=multi-user.target
+-- 
+2.47.0
+

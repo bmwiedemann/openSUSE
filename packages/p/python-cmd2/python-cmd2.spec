@@ -17,7 +17,7 @@
 
 
 Name:           python-cmd2
-Version:        2.5.4
+Version:        2.5.6
 Release:        0
 Summary:        Extra features for standard library's cmd module
 License:        MIT

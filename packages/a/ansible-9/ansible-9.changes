@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 14 16:32:18 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.12.0:
+  Ansible 9.12.0 includes ansible-core 2.16.13 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 9
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/ansible-build-data/blob/main/9/CHANGELOG-v9.rst
+
+-------------------------------------------------------------------
 Thu Oct 10 13:14:00 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.11.0:

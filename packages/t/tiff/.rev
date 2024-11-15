@@ -995,4 +995,12 @@ D    tiff-4.0.3-test-jpeg-turbo.patch</comment>
     + LERC codec: deal with issues with multi-band PlanarConfig=Contig and NaN values</comment>
     <requestid>1201738</requestid>
   </revision>
+  <revision rev="98" vrev="2">
+    <srcmd5>90d52d9193400fb7dbea6268bdb31e86</srcmd5>
+    <version>4.7.0</version>
+    <time>1731681505</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1223727</requestid>
+  </revision>
 </revisionlist>

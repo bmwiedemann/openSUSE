@@ -1171,4 +1171,14 @@ v2.3.5
     <comment>Fixed build against new dependencies libknet-devel and libnozzle-devel</comment>
     <requestid>1181313</requestid>
   </revision>
+  <revision rev="79" vrev="4">
+    <srcmd5>3556f63c006eadfa5ea7d66b530b25b4</srcmd5>
+    <version>3.1.8</version>
+    <time>1731681491</time>
+    <user>anag+factory</user>
+    <comment>- Add a patch to harden services with systemd sandboxing:
+  * 0001-harden-services-with-systemd-sandboxing.patch
+</comment>
+    <requestid>1224100</requestid>
+  </revision>
 </revisionlist>

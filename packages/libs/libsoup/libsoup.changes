@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 13 19:48:22 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Add 4c9e75c6.patch: fix an intermittent test failure
+  (glgo#GNOME/libsoup#399).
+
+-------------------------------------------------------------------
 Tue Nov 12 23:07:16 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Add 6adc0e3e.patch: websocket: Process the frame as soon as we

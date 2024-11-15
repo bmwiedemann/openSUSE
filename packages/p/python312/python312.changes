@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 14 07:06:20 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Remove -IVendor/ from python-config boo#1231795
+
+-------------------------------------------------------------------
 Thu Oct 24 16:09:00 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Add CVE-2024-9287-venv_path_unquoted.patch to properly quote

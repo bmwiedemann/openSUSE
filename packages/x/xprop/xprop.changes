@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov 14 02:21:38 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.2.8
+  * This release contains the following change to the way icons are displayed
+    in the terminal when COLORTERM=truecolor in the environment variables:
+    The vast majority of monospaced fonts are roughly half as wide as they
+    are tall; to account for this when displaying icons, `xprop` draws each
+    pixel twice in the horizontal, which nicely evens out the proportions.
+    This patch utilizes the Lower Half Block character (▄) to obtain the
+    same result in a quarter of the space. By setting both a background and
+    a foreground color, we can draw two pixels per character cell, thereby
+    halving the apparent height of an icon rather than doubling its width.
+
+-------------------------------------------------------------------
 Sun Feb  4 21:12:31 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.2.7

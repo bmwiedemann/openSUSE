@@ -207,4 +207,27 @@
   * https://www.postgresql.org/docs/release/15.8/</comment>
     <requestid>1201986</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>25307006ef5373c11913d60866720346</srcmd5>
+    <version>15.9</version>
+    <time>1731681798</time>
+    <user>anag+factory</user>
+    <comment>- Upgrade to 15.9:
+  * CVE-2024-10976, bsc#1233323: Ensure cached plans are marked as
+    dependent on the calling role when RLS applies to a
+    non-top-level table reference.
+  * CVE-2024-10977, bsc#1233325: Make libpq discard error messages
+    received during SSL or GSS protocol negotiation.
+  * CVE-2024-10978, bsc#1233326: Fix unintended interactions
+    between SET SESSION AUTHORIZATION and SET ROLE
+  * CVE-2024-10979, bsc#1233327: Prevent trusted PL/Perl code from
+    changing environment variables.
+  * https://www.postgresql.org/about/news/p-2955/
+  * https://www.postgresql.org/docs/release/15.9/
+
+- Sync spec file from postgresql17.
+
+  * https://www.postgresql.org/about/news/p-2910/</comment>
+    <requestid>1224293</requestid>
+  </revision>
 </revisionlist>

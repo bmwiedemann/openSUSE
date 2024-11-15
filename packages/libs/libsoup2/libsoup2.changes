@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 13 19:51:03 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Add 4c9e75c6.patch: fix an intermittent test failure
+  (glgo#GNOME/libsoup#399).
+
+-------------------------------------------------------------------
 Tue Nov 12 23:21:48 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Add 04df03bc.patch: strictly don't allow NUL bytes in headers

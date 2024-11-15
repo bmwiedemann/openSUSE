@@ -44,6 +44,7 @@ Source5:        load-sound-modules.sh
 # from https://www.alsa-project.org/files/pub/gpg-release-key-v1.txt
 Source6:        alsa-utils.keyring
 # upstream fixes
+Patch1:         0001-alsactl-90-alsa-restore.rules-fix-alsa_restore_go-st.patch
 # downstream fixes
 Patch100:       alsa-info-no-update-for-distro-script.patch
 Patch101:       alsa-utils-configure-version-revert.patch
@@ -90,6 +91,7 @@ and test audio before and after PM state changes.
 
 %prep
 %setup -q
+%patch -P 1 -p1
 %patch -P 100 -p1
 %if 0%{?do_autoreconf} || 0%{?build_from_git}
 %patch -P 101 -p1

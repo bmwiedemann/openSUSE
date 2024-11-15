@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 14 03:51:14 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Skip a test broken by importlib_metadata 8.5+. 
+
+-------------------------------------------------------------------
 Fri Oct 11 11:50:51 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 5.1.1

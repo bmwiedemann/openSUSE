@@ -23,6 +23,8 @@ Summary:        Framework for fast, easy and documented API development with Fla
 License:        BSD-3-Clause
 URL:            https://github.com/python-restx/flask-restx
 Source:         https://github.com/python-restx/flask-restx/archive/%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/python-restx/flask-restx/pull/622
+Patch0:         Replace-pytz-with-zoneinfo-datetime-timezone.patch
 BuildRequires:  %{python_module Faker}
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module Werkzeug}
@@ -36,7 +38,6 @@ BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest-flask}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module q}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tzlocal}
@@ -48,7 +49,6 @@ Requires:       python-Werkzeug
 Requires:       python-aniso8601
 Requires:       python-importlib_resources
 Requires:       python-jsonschema
-Requires:       python-pytz
 BuildArch:      noarch
 %python_subpackages
 

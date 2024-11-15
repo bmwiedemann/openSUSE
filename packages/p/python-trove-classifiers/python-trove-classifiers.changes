@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov 12 01:30:35 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2024.10.21.16:
+  * Chore: update calver to include hour (#191)
+  * Add Django trove classifiers for 5 and upcoming 5.2 release. (#193)
+  * Chore: update github actions (#192)
+  * Update CMU to include SPDX in parentheses (#190)
+  * Add classifier for MIT-CMU licence (#189)
+  * Add Odoo 18 trove classifier (#187)
+  * Add CUDA 12.3-12.5 classifiers (#182)
+  * Add Blue Oak Model License (#181)
+  * Add Trove classifier for Django 5.1 (#179)
+  * Add Trove classifier for Python 3.14 (#178)
+
+-------------------------------------------------------------------
 Sat Apr 20 07:52:12 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2024.4.10:

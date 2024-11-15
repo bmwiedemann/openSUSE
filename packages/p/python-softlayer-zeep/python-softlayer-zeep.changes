@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 14 12:18:00 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add xsd-date.patch to fix test failure
+- Stop providing/obsoleting python-zeep, as the latter exists in OBS
+  and is more up-to-date on a lower version
+
+-------------------------------------------------------------------
 Tue Oct 29 05:34:42 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add {Build,}Requires on legacy-cgi to support Python 3.13. 

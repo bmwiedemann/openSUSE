@@ -10,10 +10,10 @@ Date: 2017-06-26T10:53:24+0000
  iptables/xshared.c        |    8 +++++++-
  2 files changed, 28 insertions(+), 1 deletion(-)
 
-Index: iptables-1.8.10/iptables/iptables-batch.c
+Index: iptables-1.8.11/iptables/iptables-batch.c
 ===================================================================
---- iptables-1.8.10.orig/iptables/iptables-batch.c
-+++ iptables-1.8.10/iptables/iptables-batch.c
+--- iptables-1.8.11.orig/iptables/iptables-batch.c
++++ iptables-1.8.11/iptables/iptables-batch.c
 @@ -44,6 +44,7 @@
  #include <iptables.h>
  #endif
@@ -49,10 +49,10 @@ Index: iptables-1.8.10/iptables/iptables-batch.c
  
  	while((r = getline(&iline, &llen, fp)) != -1)
  	{
-Index: iptables-1.8.10/iptables/xshared.c
+Index: iptables-1.8.11/iptables/xshared.c
 ===================================================================
---- iptables-1.8.10.orig/iptables/xshared.c
-+++ iptables-1.8.10/iptables/xshared.c
+--- iptables-1.8.11.orig/iptables/xshared.c
++++ iptables-1.8.11/iptables/xshared.c
 @@ -255,10 +255,14 @@ static void alarm_ignore(int i) {
  
  static int xtables_lock(int wait)
@@ -72,8 +72,8 @@ Index: iptables-1.8.10/iptables/xshared.c
  		alarm(wait);
  	}
  
--	if (flock(fd, LOCK_EX) == 0)
-+	if (flock(fd, LOCK_EX) == 0) {
+-	if (flock(fd, LOCK_EX | (wait ? 0 : LOCK_NB)) == 0)
++	if (flock(fd, LOCK_EX | (wait ? 0 : LOCK_NB)) == 0) {
 +		already_locked = true;
  		return fd;
 +	}

@@ -38,7 +38,7 @@
 %endif
 
 Name:           ansible-9
-Version:        9.11.0
+Version:        9.12.0
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0-or-later
@@ -54,11 +54,11 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  dos2unix
 
 # SECTION test requirements
-BuildRequires:  (ansible-core >= 2.16.12 with ansible-core < 2.17)
+BuildRequires:  (ansible-core >= 2.16.13 with ansible-core < 2.17)
 # /SECTION
 
 Requires:       %{ansible_python}-base >= 3.10
-Requires:       (ansible-core >= 2.16.12 with ansible-core < 2.17)
+Requires:       (ansible-core >= 2.16.13 with ansible-core < 2.17)
 
 # Conflicts with ansible 10.x or higher
 Conflicts:      ansible >= 10

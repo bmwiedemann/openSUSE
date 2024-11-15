@@ -1,0 +1,48 @@
+From: Jan Engelhardt <ej@inai.de>
+Date: 2024-11-14 15:11:28.216506193 +0100
+References: https://bugzilla.suse.com/1231346
+
+Stop overriding INSTALL_MOD_DIR, stop using a non-standard path.
+[MODULE_DIR is a 2.4ism and irrelevant here;
+but INSTALL_MOD_DIR affects the 2.6+ install alike.]
+
+---
+ src/VBox/Installer/linux/Makefile-footer.gmk |    2 +-
+ src/VBox/Installer/linux/Makefile-header.gmk |    4 +---
+ 2 files changed, 2 insertions(+), 4 deletions(-)
+
+Index: VirtualBox-7.1.4/src/VBox/Installer/linux/Makefile-footer.gmk
+===================================================================
+--- VirtualBox-7.1.4.orig/src/VBox/Installer/linux/Makefile-footer.gmk
++++ VirtualBox-7.1.4/src/VBox/Installer/linux/Makefile-footer.gmk
+@@ -145,7 +145,7 @@ $(VBOXMOD_0_TARGET):
+ 	$(MAKE) V=$(VBOX_LNX_VERBOSE) $(VBOX_DISABLE_SIGN) -C $(KERN_DIR) $(VBOX_SUBDIR_VAR)=$(CURDIR) SRCROOT=$(CURDIR) $(if $(JOBS),-j$(JOBS),) modules
+ 
+ install: $(VBOXMOD_0_TARGET)
+-	$(MAKE) V=$(VBOX_LNX_VERBOSE) $(VBOX_DISABLE_SIGN) -C $(KERN_DIR) $(VBOX_SUBDIR_VAR)=$(CURDIR) SRCROOT=$(CURDIR) INSTALL_MOD_PATH=$(INSTALL_MOD_PATH) INSTALL_MOD_DIR=$(INSTALL_MOD_DIR) modules_install
++	$(MAKE) V=$(VBOX_LNX_VERBOSE) $(VBOX_DISABLE_SIGN) -C $(KERN_DIR) $(VBOX_SUBDIR_VAR)=$(CURDIR) SRCROOT=$(CURDIR) INSTALL_MOD_PATH=$(INSTALL_MOD_PATH) modules_install
+ 
+ modules_install: install
+ 
+Index: VirtualBox-7.1.4/src/VBox/Installer/linux/Makefile-header.gmk
+===================================================================
+--- VirtualBox-7.1.4.orig/src/VBox/Installer/linux/Makefile-header.gmk
++++ VirtualBox-7.1.4/src/VBox/Installer/linux/Makefile-header.gmk
+@@ -261,8 +261,7 @@ endif
+ # Kernel include folder
+ KERN_INCL := $(KERN_DIR)/include
+ # module install folder
+-INSTALL_MOD_DIR ?= misc
+-MODULE_DIR := $(INSTALL_MOD_PATH)/lib/modules/$(KERN_VER)/$(INSTALL_MOD_DIR)
++MODULE_DIR := $(INSTALL_MOD_PATH)/lib/modules/$(KERN_VER)/updates
+ 
+ # For VBOX_GCC_CHECK_CC
+ VBOX_CLOSEPAR := )
+@@ -298,7 +297,6 @@ endif
+ ifdef DEBUG
+  ifndef VBOX_KERN_QUIET
+ $(warning dbg: INSTALL_MOD_PATH = $(INSTALL_MOD_PATH))
+-$(warning dbg: INSTALL_MOD_DIR  = $(INSTALL_MOD_DIR))
+ $(warning dbg: KERN_DIR         = $(KERN_DIR))
+ $(warning dbg: KERN_INCL        = $(KERN_INCL))
+ $(warning dbg: KERN_VERSION     = $(KERN_VERSION))

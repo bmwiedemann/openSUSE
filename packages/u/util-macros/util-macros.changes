@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Nov 14 02:13:02 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to release 1.20.2
+  * This release changes the XORG_CHECK_MALLOC_ZERO macro to stop testing if
+    malloc(0) returns NULL and instead assumes it might, so that software still
+    works properly if it is running with a different malloc implementation than
+    the configure script found to test at build time. The configure option
+    --disable-malloc0returnsnull is still available for use with configure scripts
+    that call this macro, for use by builders who are sure about the malloc(0)
+    handling in all available malloc implementations in their runtime environment.
+  * This release also removes -Wdeclaration-after-statement from the default
+    warning set used in X.Org, treating it as a code style issue to be
+    considered at code review time instead of a portability issue that
+    everyone building the code needs to be made aware of, now that all
+    supported compilers support this standard feature of C99 and later versions.
+
+-------------------------------------------------------------------
 Wed Apr 17 13:16:53 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to release 1.20.1

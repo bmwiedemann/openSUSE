@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 14 09:13:29 UTC 2024 - Knut Anderssen <kanderssen@suse.com>
+
+- Fix typo introduced by previous change (bsc#1231385, bsc#1233351)
+- 5.0.5
+
+-------------------------------------------------------------------
 Thu Oct 31 11:46:26 UTC 2024 - Knut Anderssen <kanderssen@suse.com>
 
 - Fixes for bsc#1231385

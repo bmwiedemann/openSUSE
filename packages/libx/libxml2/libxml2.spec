@@ -24,6 +24,7 @@
 %define buildpython 1
 %endif
 
+%{?sle15allpythons}
 Name:           libxml2%{?dash}%{flavor}
 Version:        2.12.9
 Release:        0
@@ -183,8 +184,12 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %else
 %configure --with-python=%{__python3}
 pushd python
+%if 0%{suse_version} > 1500
 export PYTHONPATH="."
 %pyproject_wheel
+%else
+%python_build
+%endif
 popd
 %endif
 
@@ -200,7 +205,11 @@ rm -fr %{buildroot}%{_docdir}/%{base_name}/Copyright
 %fdupes %{buildroot}%{_datadir}
 %else
 pushd python
+%if 0%{suse_version} > 1500
 %pyproject_install
+%else
+%python_install
+%endif
 popd
 chmod a-x python/tests/*.py
 %python_expand %fdupes %{buildroot}%{$python_sitearch}

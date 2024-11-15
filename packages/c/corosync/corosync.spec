@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -52,9 +52,10 @@ Summary:        The Corosync Cluster Engine and Application Programming Interfac
 License:        BSD-3-Clause
 Group:          Productivity/Clustering/HA
 Version:        3.1.8
-Release:        3
-Url:            http://corosync.github.io/corosync/
+Release:        0
+URL:            http://corosync.github.io/corosync/
 Source0:        https://build.clusterlabs.org/corosync/releases/%{name}-%{version}%{?gittarver}.tar.gz
+Patch0:         0001-harden-services-with-systemd-sandboxing.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # provide openais on purpose, the package has been deleted.
@@ -64,16 +65,16 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       %{name}-libs = %{version}-%{release}
 
 # Support crypto reload
-Requires: libknet1 >= 1.28
+Requires:       libknet1 >= 1.28
 # NSS crypto plugin should be always installed
-Requires: libknet1-crypto-nss-plugin >= 1.28
+Requires:       libknet1-crypto-nss-plugin >= 1.28
 
 # Build bits
 BuildRequires:  gcc
 
 BuildRequires:  groff-full
-BuildRequires:  libqb-devel
 BuildRequires:  libknet-devel >= 1.28
+BuildRequires:  libqb-devel
 BuildRequires:  zlib-devel
 %if %{with runautogen}
 BuildRequires:  autoconf
@@ -90,11 +91,11 @@ BuildRequires:  net-snmp-devel
 BuildRequires:  dbus-1-devel
 %endif
 %if %{with nozzle}
-BuildRequires: libnozzle-devel
+BuildRequires:  libnozzle-devel
 %endif
 %if %{with systemd}
+BuildRequires:  systemd-devel
 BuildRequires:  pkgconfig(systemd)
-BuildRequires:	systemd-devel
 Requires(post): systemd
 Requires(preun): systemd
 Requires(postun): systemd
@@ -103,21 +104,21 @@ Requires(postun): systemd
 Requires:       libxslt
 %endif
 %if %{with vqsim}
-BuildRequires: readline-devel
+BuildRequires:  readline-devel
 %endif
-Obsoletes: libcfg6
-Obsoletes: libcmap4
-Obsoletes: libcorosync_common4
-Obsoletes: libcpg4
-Obsoletes: libquorum5
-Obsoletes: libsam4
-Obsoletes: libtotem_pg5
-Obsoletes: libvotequorum8
+Obsoletes:      libcfg6
+Obsoletes:      libcmap4
+Obsoletes:      libcorosync_common4
+Obsoletes:      libcpg4
+Obsoletes:      libquorum5
+Obsoletes:      libsam4
+Obsoletes:      libtotem_pg5
+Obsoletes:      libvotequorum8
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %prep
-%setup -q -n %{name}-%{version}
+%autosetup -p1 -n %{name}-%{version}
 
 rm -f .git*
 echo %{version} > .tarball-version
@@ -282,7 +283,7 @@ fi
 #library
 #
 %package libs
-Summary: The corosync Cluster Engine Libraries
+Summary:        The corosync Cluster Engine Libraries
 
 %description libs
 This package contains corosync libraries.
@@ -340,9 +341,9 @@ The Corosync Cluster Engine APIs.
 
 %if %{with vqsim}
 %package vqsim
-Summary: The Corosync Cluster Engine - Votequorum Simulator
-Requires: %{name}-libs = %{version}-%{release}
-Requires: pkgconfig
+Summary:        The Corosync Cluster Engine - Votequorum Simulator
+Requires:       %{name}-libs = %{version}-%{release}
+Requires:       pkgconfig
 
 %description vqsim
 A command-line simulator for the corosync votequorum subsystem.

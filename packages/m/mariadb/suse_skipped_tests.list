@@ -48,4 +48,5 @@ binlog.max_binlog_total_size                     : since 11.4.2 - all
 
 main.mysqld--help-aria                           : since 11.5.2 - all
 plugins.feedback_plugin_load                     : since 11.5.2 - all
+plugins.parsec                                   : since 11.6.1 - all
 

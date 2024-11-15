@@ -18,16 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-inflect
-Version:        7.3.1
+Version:        7.4.0
 Release:        0
 Summary:        Methods for working on numbers and nouns
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jaraco/inflect
 Source0:        https://files.pythonhosted.org/packages/source/i/inflect/inflect-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM typing_extensions-version.patch bsc#[0-9]+ mcepl@suse.com
-# Correct handling of the potential missing Annotated type
-Patch0:         typing_extensions-version.patch
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module more-itertools >= 8.5.0}
 BuildRequires:  %{python_module pip}

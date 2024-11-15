@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 13 12:21:51 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Add patch to fix libcurl when netrc parsing is enabled.
+  curl_easy_duphandle did not init netrc which broke applications such
+  as for example git. gh#curl/curl#15496
+  * 0001-duphandle-also-init-netrc.patch
+
+-------------------------------------------------------------------
 Wed Nov  6 08:43:16 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 8.11.0:

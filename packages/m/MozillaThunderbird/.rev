@@ -5566,4 +5566,31 @@ I cannot test locally unfortunately.
     <comment></comment>
     <requestid>1222591</requestid>
   </revision>
+  <revision rev="347" vrev="1">
+    <srcmd5>4d121cc294224a42cf6fce591781fb1e</srcmd5>
+    <version>128.4.3</version>
+    <time>1731681762</time>
+    <user>anag+factory</user>
+    <comment>- Mozilla Thunderbird 128.4.3
+  Fixes:
+  * Folder corruption could cause Thunderbird to freeze and become unusable
+  * Message corruption could be propagated when reading mbox
+  * Folder compaction was not abandoned on shutdown
+  * Folder compaction did not clean up on failure
+  * Collapsed NNTP thread incorrectly indicated there were unread messages
+  * Navigating to next unread message did not wait for all messages
+    to be loaded
+  * Applying column view to folder and children could break if folder
+    error occurred
+  * Remote content notifications were broken with encrypted messages
+  * Updating criteria of a saved search resulted in poor search performance
+  * Drop-downs may not work in some places
+  MFSA 2024-61
+  * CVE-2024-11159 (bmo#1925929)
+    Potential disclosure of plaintext in OpenPGP encrypted message
+- remove kmozillahelper support (boo#1226112)
+  * removed mozilla-kde.patch
+  * requires xdg-desktop-portal instead</comment>
+    <requestid>1224250</requestid>
+  </revision>
 </revisionlist>

@@ -161,7 +161,7 @@ ln -sf libwrap.so.0.%{version} %{buildroot}/%{_libdir}/libwrap.so.0
 ln -sf libwrap.so.0.%{version} %{buildroot}/%{_libdir}/libwrap.so
 mkdir -p %{buildroot}%{_sysconfdir}
 for i in hosts.allow hosts.deny; do
-  install $RPM_SOURCE_DIR/$i %{buildroot}/%{_sysconfdir}
+  install -m 644 $RPM_SOURCE_DIR/$i %{buildroot}/%{_sysconfdir}
 done
 
 %post -n %{lname} -p /sbin/ldconfig

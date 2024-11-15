@@ -1,0 +1,19 @@
+From: Helmut Grohne <helmut@subdivi.de>
+Subject: consider ac_tool_prefix when searching for pkg-config
+
+PKG_CHECK_MODULES will require PKG_PROG_PKG_CONFIG which sets PKG_CONFIG
+correctly.
+
+Index: wv-1.2.9/configure.ac
+===================================================================
+--- wv-1.2.9.orig/configure.ac
++++ wv-1.2.9/configure.ac
+@@ -74,8 +74,6 @@
+ 
+ AC_PROG_LIBTOOL
+ 
+-AC_PATH_PROG(PKG_CONFIG, pkg-config, no)
+-
+ # libgsf depends on glib and libxml2, so we should be fine
+ libgsf_req='libgsf-1 >= 1.13.0'
+ DEPS_PKGS="$libgsf_req"

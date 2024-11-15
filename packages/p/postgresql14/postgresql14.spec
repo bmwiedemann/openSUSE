@@ -16,11 +16,13 @@
 #
 
 
-%define pgversion 14.13
+%define pgversion 14.14
 %define pgmajor 14
 %define buildlibs 0
 %define tarversion %{pgversion}
-%define latest_supported_llvm_ver 18
+%define oldest_supported_llvm_ver 10
+# To be able to use cmake(LLVM) < ...
+%define latest_supported_llvm_ver_plus_one 19
 
 ### CUT HERE ###
 %define pgname postgresql%pgmajor
@@ -73,6 +75,12 @@ Name:           %pgname
 %bcond_without libzstd
 %endif
 
+%if %{without derived}
+BuildRequires:  bison
+BuildRequires:  docbook-xsl-stylesheets
+BuildRequires:  flex
+BuildRequires:  perl
+%endif
 %if %mini
 %bcond_with  selinux
 %if %pgmajor >= 16
@@ -93,12 +101,6 @@ BuildRequires:  timezone
 BuildRequires:  zlib-devel
 %if %{with liblz4}
 BuildRequires:  pkgconfig(liblz4)
-%endif
-%if %{without derived}
-BuildRequires:  bison
-BuildRequires:  docbook-xsl-stylesheets
-BuildRequires:  flex
-BuildRequires:  perl
 %endif
 
 %if %{with libzstd}
@@ -144,13 +146,8 @@ BuildRequires:  libselinux-devel
 %endif
 %if %{with llvm}
 BuildRequires:  gcc-c++
-%if 0%{?product_libs_llvm_ver} > %{latest_supported_llvm_ver}
-BuildRequires:  clang%{latest_supported_llvm_ver}
-BuildRequires:  llvm%{latest_supported_llvm_ver}-devel
-%else
-BuildRequires:  clang
-BuildRequires:  llvm-devel
-%endif
+BuildRequires:  (cmake(Clang) >= %{oldest_supported_llvm_ver} with cmake(Clang) < %{latest_supported_llvm_ver_plus_one})
+BuildRequires:  (cmake(LLVM)  >= %{oldest_supported_llvm_ver} with cmake(LLVM)  < %{latest_supported_llvm_ver_plus_one})
 %endif
 BuildRequires:  libxslt-devel
 BuildRequires:  openldap2-devel
@@ -610,6 +607,7 @@ VLANG=%pgmajor
 make DESTDIR=%buildroot PACKAGE_TARNAME=%pgname -C src/include install
 make DESTDIR=%buildroot PACKAGE_TARNAME=%pgname -C src/interfaces install
 rm -rf %buildroot%pgincludedir/server
+rm -rf %buildroot%pgdatadir
 %else
 make DESTDIR=%buildroot PACKAGE_TARNAME=%pgname install install-docs
 %if 0
@@ -772,8 +770,6 @@ done
 %endif
 popd
 
-mkdir -p %buildroot%pgmandir/man1
-cp -a doc/src/sgml/man1/ecpg.1 %buildroot%pgmandir/man1/ecpg.1pg%pgmajor
 %find_lang ecpg-$VLANG devel.files
 # The devel subpackage is exclusive across versions
 # and not handled by update-alternatives.
@@ -791,8 +787,10 @@ cat server-devel.files >> devel.files
 # Build up the file lists for the libpq and libecpg packages
 cat > libpq.files <<EOF
 %defattr(-,root,root)
+%if !%mini
 %dir %pgdatadir
 %pgdatadir/pg_service.conf.sample
+%endif
 EOF
 find %buildroot -name 'libpq*.so.*' -printf '/%%P\n' >> libpq.files
 %find_lang libpq5-$VLANG libpq.files
@@ -978,12 +976,13 @@ fi
 %_libdir/pkgconfig/*
 %_libdir/lib*.so
 %pgincludedir
+
 %if %{with server_devel}
 %exclude %pgincludedir/server
 %endif
-%doc %pgmandir/man1/ecpg.1*
 
 %if !%mini
+%doc %pgmandir/man1/ecpg.1*
 %if %{with server_devel}
 %files server-devel -f server-devel.files
 %endif

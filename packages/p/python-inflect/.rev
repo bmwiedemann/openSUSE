@@ -129,4 +129,14 @@
   * Now handle 'pair of x' in pl_sb_uninflected_complete (#188)</comment>
     <requestid>1199303</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>deb04a13e45eed7fb28c338d5b872755</srcmd5>
+    <version>7.4.0</version>
+    <time>1731681499</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.4.0:
+  * Handle a single apostrophe more gracefully.
+- drop typing_extensions-version.patch (upstream)</comment>
+    <requestid>1224221</requestid>
+  </revision>
 </revisionlist>

@@ -27,12 +27,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-trove-classifiers%{?psuffix}
-Version:        2024.4.10
+Version:        2024.10.21.16
 Release:        0
 Summary:        Canonical source for classifiers on PyPI
 License:        Apache-2.0
 URL:            https://github.com/pypa/trove-classifiers
-Source:         https://files.pythonhosted.org/packages/source/t/trove-classifiers/trove-classifiers-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/t/trove-classifiers/trove_classifiers-%{version}.tar.gz
 BuildRequires:  %{python_module calver}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -49,7 +49,7 @@ BuildArch:      noarch
 Classifiers categorize projects per PEP 301. Use this package to validate classifiers in packages for PyPI upload or download.
 
 %prep
-%setup -q -n trove-classifiers-%{version}
+%setup -q -n trove_classifiers-%{version}
 
 %if !%{with test}
 %build
@@ -70,7 +70,7 @@ Classifiers categorize projects per PEP 301. Use this package to validate classi
 %doc README.md
 %license LICENSE
 %{python_sitelib}/trove_classifiers
-%{python_sitelib}/trove_classifiers-%{version}*-info
+%{python_sitelib}/trove_classifiers-%{version}.dist-info
 %endif
 
 %changelog

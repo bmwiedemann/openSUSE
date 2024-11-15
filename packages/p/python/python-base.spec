@@ -502,6 +502,9 @@ ln -s python%{python_version}.1.gz %{buildroot}%{_mandir}/man1/python.1.gz
 # install Makefile.pre.in and Makefile.pre
 cp Makefile Makefile.pre.in Makefile.pre %{buildroot}%{_libdir}/python%{python_version}/config/
 
+# Remove -IVendor/ from python-config boo#1231795
+sed -i 's/-IVendor\///' %{buildroot}%{_bindir}/python%{python_version}-config
+
 %clean
 
 %post -n libpython2_7-1_0 -p %{run_ldconfig}

@@ -1,4 +1,3 @@
 Requires: kernel-%1
-Provides: virtualbox-kmp = %version
+Enhances: kernel-%1
 Supplements: (virtualbox-guest-tools and kernel-%1)
-

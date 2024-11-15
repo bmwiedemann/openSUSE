@@ -28,14 +28,12 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-tqdm%{pkg_suffix}
-Version:        4.66.4
+Version:        4.67.0
 Release:        0
 Summary:        An extensible progress meter
 License:        MIT AND MPL-2.0
 URL:            https://github.com/tqdm/tqdm
 Source:         https://files.pythonhosted.org/packages/source/t/tqdm/tqdm-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#qdm/tqdm#1595 - Fix multiple issues with Python 3.13+
-Patch1:         https://github.com/tqdm/tqdm/pull/1595.patch#/fix-issues-with-python3.13.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}

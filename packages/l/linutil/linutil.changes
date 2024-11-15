@@ -1,4 +1,118 @@
 -------------------------------------------------------------------
+Thu Nov 14 18:40:09 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- adapt _service file to not store sources twice
+
+-------------------------------------------------------------------
+Thu Nov 14 15:31:56 UTC 2024 - solomoncyj@gmail.com
+
+- Update to version 2024.10.31~0:
+  * fix: cargo.lock fixes (#891)
+  * ci: Remove unnecessary auto commit (#791)
+  * ci: Seperate preview from Linutil Release (#792)
+  * fix the repo (#889)
+  * feat(arch-setup): enable colors and the easter egg in `pacman` (#890)
+  * Fix btrfs issue (#728)
+  * fix(browsers): vivaldi setup (#718)
+  * feat(docker-setup): fedora support (#707)
+  * chore: Add spacing before and after for tui titles (#706)
+  * Fix common script paths (#717)
+  * fix(nala): remove autoclean from `system-cleanup.sh` (#697)
+  * feat(fedora): release upgrade script (#886)
+  * fix fedora timeshift (#774)
+  * do not exit linutil in confirmation prompt when q is pressed (#758)
+  * dont allow the user to bring up the command desc if there is none (#753)
+  * clear the search bar if the user changes categories (#752)
+  * use bin for faster installation (#748)
+  * fix issues with set brightness (#747)
+  * fix bug in ssh commands (#733)
+  * dont allow scrolling when last line is visible (#729)
+  * allow scrolling past last entry / first entry (#727)
+  * sort entries alphabetically (#726)
+  * return user to their previous position if they exit a subdir (#725)
+  * fix color bleeding (#723)
+  * organize shortcut list into a grid-like-pattern (#721)
+  * Replace BUILD_DATE with CARGO_PKG_VERSION (#878, boo#1047218)
+  * Update rust.yml (#866)
+  * Update roadmap.md (#875)
+  * fix(waydroid-setup): not installing `dkms` on arch (#881)
+  * fix: github release notes not working (#884)
+  * ⚖️ docs: fix the security policy (#883)
+  * make command_exists interpret multiple values (#762)
+  * Fix bash deps (#763)
+  * added waterfox browser (#700)
+  * feat: Drastically increase the operating system support for USB creation script (#828)
+  * refact(ci): ShellCheck (#887)
+  * refact(release): better categories (#876)
+  * fix+refact(system-cleanup) (#856)
+  * feat: desktop entry & manpage installation through `linutil-installer.sh` (#802)
+  * 📖 fix(docs): newlines (#796)
+  * 📖 add auto docs generation instructions to the Contributing Guidelines (#788)
+  * 🔍️ exiting search with `Ctrl-C` + better shortcut tips (#768)
+  * 📃 fix(monitor setup): a bug with utility-functions; newlines & colors in the scripts (#713)
+  * 📔 hotfix(ci): `docs/` in the xtasks CI (#785)
+  * 📃 fix(zsh-setup): check if `/etc/zsh/zshenv` exists (#771)
+  * docs update
+  * 📔 docs: add a manpage (#783)
+  * 📔 docs: auto generation (#784)
+  * 📃 fix(grub-theme): theme backup (#740)
+  * Bump clap from 4.5.18 to 4.5.19 (#781)
+  * Bump tree-sitter-highlight from 0.23.0 to 0.24.2 (#780)
+  * ✅ ci: add a spellcheck typos CI (#776)
+  * ✏️ fix: ALL typos (#775)
+  * 🖥️ refact(linutil.desktop): executable paths (#782)
+  * fix grammar
+  * Apply suggestions from code review
+  * Update core/tabs/system-setup/remove-snaps.sh
+  * Add command_exists for snap
+  * Refact temp-dir (#749)
+  * expand tabs with spaces
+  * make shellcheck emit all errors found and check for tab indentation
+  * Remove install fonts
+  * suggestions by @nnyyxxxx
+  * set resolution fix
+  * Add vhs github action
+  * missclick :(
+  * fix: pacman orphan package removal
+  * vt100 patches (#743)
+  * i don't think we need this anymore (#737)
+  * docs: automated dynamic gif previews using `vhs` (#736)
+  * fix(ci): `bashisms.yml`. again. will work all the time this time i swear. (#715)
+  * Update linutil cargo version (#716)
+  * add an `*` packager exception (#710)
+  * New Feature : Setting Default TTY Fonts to Terminus Fonts (#698)
+  * Fix uuid retrieve bug (#696)
+  * Add description to the System Setup section (#694)
+  * bump crates to `24.9.28` (#693)
+  * Fixed nala update error (#692)
+  * Feat: confirmation prompts (#687)
+  * Bump unicode-width from 0.1.13 to 0.2.0 (#661)
+  * Bump clap from 4.5.17 to 4.5.18 (#660)
+  * Separate the office suites and pdf suites (#650)
+  * use --needed so reinstalls dont happen (#647)
+  * remove extra space (#645)
+  * refactor meld (#644)
+  * feat: Add scroll (#643)
+  * Use the neovim app image for debian 12 (#642)
+  * fix: fixing setup flatpak script path in slack and zoom script (#641)
+  * Fix selected-cmd bug (#638)
+  * Restore behaviour of closing the pop-up with "q" (#634)
+  * Fix gaming setup deps
+  * Remove quotes for packages
+  * update release
+  * add git as a dep (#649)
+  * Separate browser scripts (#648)
+  * Update power-profile.sh (#655)
+  * implement dynamic shortcut list sizing (#668)
+  * fix: do not hard depend on sudo being installed (#671)
+  * Add descriptions to the Applications Setup section and Auto Mount Drive (#680)
+  * updating Gaming For Fedora 41 (#681)
+  * Fix AutoLogin `printf` and `>` issues (#662)
+  * Fixed vscode on Arch (#663)
+  * Non-interactive `sh.rustup.rs`, DNF & `*` fixes (#669)
+  * Made popup title generic. Preview title is now the command name
+
+-------------------------------------------------------------------
 Fri Oct 11 03:11:01 UTC 2024 - solomoncyj@gmail.com
 
 - Features:

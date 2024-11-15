@@ -71,7 +71,6 @@ Source0:        VirtualBox-%{version}-patched.tpxz
 Source1:        UserManual.pdf
 Source3:        virtualbox-60-vboxguest.rules
 Source4:        virtualbox-default.virtualbox
-Source5:        virtualbox-kmp-files
 Source7:        virtualbox-kmp-preamble
 Source8:        update-extpack.sh
 Source9:        virtualbox-wrapper.sh
@@ -114,6 +113,7 @@ Patch9:         vbox-usb-warning.diff
 # Patch for 15.5
 Patch10:        fix_for_leap15.5.patch
 Patch11:        cxx17.patch
+Patch12:        host-source.patch
 #
 # Common BuildRequires for both virtualbox and virtualbox-kmp
 BuildRequires:  %{kernel_module_package_buildreqs}
@@ -127,8 +127,8 @@ BuildRequires:  dwarves
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 %else
-BuildRequires:  gcc11
-BuildRequires:  gcc11-c++
+BuildRequires:  gcc12
+BuildRequires:  gcc12-c++
 %endif
 BuildRequires:  kbuild >= 0.1.9998+svn3613
 BuildRequires:  libcap-devel
@@ -240,8 +240,8 @@ BuildRequires:  boost-devel
 BuildRequires:  gcc-32bit
 BuildRequires:  gcc-c++-32bit
 %else
-BuildRequires:  gcc11-32bit
-BuildRequires:  gcc11-c++-32bit
+BuildRequires:  gcc12-32bit
+BuildRequires:  gcc12-c++-32bit
 %endif
 BuildRequires:  xorg-x11-libX11-devel-32bit
 BuildRequires:  xorg-x11-libXext-devel-32bit
@@ -261,7 +261,7 @@ BuildRequires:  libpulse-devel
 BuildRequires:  libxml2-devel
 Requires:       ca-certificates
 Requires:       openSUSE-signkey-cert
-%kernel_module_package -p %{SOURCE7} -n virtualbox -f %{SOURCE5} -x kdump um xen pae xenpae pv
+%kernel_module_package -p %{SOURCE7} -n virtualbox -x kdump um xen pae xenpae pv
 # end of kmp_package
 %endif
 ### Description and subpackages of virtualbox main package ###
@@ -434,11 +434,11 @@ sed -i 's:include/drm:%{_prefix}/src/linux/include/drm:' src/VBox/Additions/linu
 %if %{main_package}
 %build
 %if 0%{?suse_version} && 0%{?suse_version} < 1600
-# kmk is annoying, does not respond to CXX=g++-11 ...
+# kmk is annoying, does not respond to CXX=g++-12 ...
 mkdir tc
 export PATH="$PWD/tc:$PATH"
-ln -s /usr/bin/gcc-11 tc/gcc
-ln -s /usr/bin/g++-11 tc/g++
+ln -s /usr/bin/gcc-12 tc/gcc
+ln -s /usr/bin/g++-12 tc/g++
 %endif
 # Disable LTO - Link Time Optimization
 	%define _lto_cflags %{nil}
@@ -1081,7 +1081,6 @@ done
 
 %install
 export INSTALL_MOD_PATH=%{buildroot}
-export INSTALL_MOD_DIR=extra
 #to install modules we use here similar steps like in build phase, go through all the modules :
 for module_name in vbox{drv,netflt,netadp,guest,sf,video}
 do

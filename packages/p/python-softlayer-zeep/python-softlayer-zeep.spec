@@ -28,6 +28,8 @@ Source:         https://files.pythonhosted.org/packages/source/s/softlayer-zeep/
 # PATCH-FIX-UPSTREAM skip-networked-test.patch gh#mvantellingen/python-zeep#1402 mcepl@suse.com
 # skip tests requiring network connection
 Patch0:         skip-networked-test.patch
+# PATCH-FIX-UPSTREAM gh#mvantellingen/python-zeep#d1b0257 Fix regression in parsing xsd:Date with negative timezone
+Patch1:         xsd-date.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -40,8 +42,7 @@ Requires:       python-pytz
 Requires:       python-requests >= 2.7.0
 Requires:       python-requests-file >= 1.5.1
 Requires:       python-requests-toolbelt >= 0.7.1
-Provides:       python-zeep = %{version}
-Obsoletes:      python-zeep < %{version}
+Conflicts:      python-zeep
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module attrs >= 17.2.0}

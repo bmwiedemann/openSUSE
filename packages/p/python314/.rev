@@ -7,4 +7,15 @@
     <comment>new version of the Python interpreter</comment>
     <requestid>1218446</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>09e38785efe0a633b6bd630755275e1d</srcmd5>
+    <version>3.14.0~a1</version>
+    <time>1731681753</time>
+    <user>anag+factory</user>
+    <comment>- Remove -IVendor/ from python-config boo#1231795
+- Require exact clang18 and llvm18, because apparently CPython is
+  not ready for 19 yet (gh#python/cpython!125499).
+</comment>
+    <requestid>1224239</requestid>
+  </revision>
 </revisionlist>

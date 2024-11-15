@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Nov 14 16:20:02 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.17.6:
+  * Update module default groups documentation (#1893) (#2073)
+  * fix: correct typos (#2062) (#2070)
+  * nox pip-compile: temporarily pin pip version (#2085) (#2087)
+  * Add details of interactions between notifications and loops
+    (#597) (#2066)
+  * Remove ansible-test sanity from local module development
+    (#2034) (#2060)
+  * add example of extending ansible_facts (#2040) (#2054)
+  * Add rules on moving content to collections outside of Ansible
+    (#1971) (#2051)
+  * make survey more prominent (#2037) (#2045)
+  * Bump wntrblm/nox from 2024.04.15 to 2024.10.09 (#2006) (#2042)
+  * fix network_best_practices_2.5.rst (#2036) (#2038)
+  * docs typo, missing a space (#2004) (#2030)
+  * use standard indentation (#2005) (#2027)
+  * Tagging nuance (#1900) (#2020)
+  * keep lockfiles in sync for stable-2.17 (#2023)
+  * Update docs build to support the new antsibull-docs 2.15.0
+    features (#2001) (#2017)
+  * Add ecosystem_project_resources.rst document (#2007) (#2010)
+  * [stable-2.17] support pip-compile check mode and remove
+    pip-compile workflows from stable branch (#1947)
+  * Upgrade antsibull-docs to 2.15.0 and antsibull-core to 3.3.0.
+    (#1994) (#2002)
+  * [PR #1996/d6984678 backport][stable-2.17] update docs team info
+    page (#1998)
+  * Add porting guide for Ansible 10.5.0. (#1987) (#1991)
+  * Add porting guide for Ansible 9.11.0. (#1988) (#1990)
+  * Update playbooks_error_handling.rst (#1982) (#1985)
+
+-------------------------------------------------------------------
 Fri Oct 11 05:35:42 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.17.5:

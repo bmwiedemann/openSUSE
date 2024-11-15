@@ -26,6 +26,9 @@ Source:         %{url}/files/pub/lib/alsa-ucm-conf-%{version}.tar.bz2
 Source1:        %{url}/files/pub/lib/alsa-ucm-conf-%{version}.tar.bz2.sig
 # from https://www.alsa-project.org/files/pub/gpg-release-key-v1.txt
 Source2:        alsa-ucm-conf.keyring
+# upstream fixes
+Patch1:         0001-UCM2-Intel-sof-hda-dsp-Fix-handling-of-empty-sys_ven.patch
+Patch2:         0002-sof-hda-dsp-Fix-the-case-where-sysfs-dmi-product_nam.patch
 BuildRequires:  fdupes
 BuildArch:      noarch
 Requires:       libasound2 >= 1.2.6.1

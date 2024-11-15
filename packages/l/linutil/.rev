@@ -7,4 +7,227 @@
     <comment>Chris Titus Tech's Linux Toolbox - Linutil is a distro-agnostic toolbox designed to simplify everyday Linux</comment>
     <requestid>1208888</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cd003934f4bc2458845037d35eac5b9f</srcmd5>
+    <version>2024.10.31~0</version>
+    <time>1731681782</time>
+    <user>anag+factory</user>
+    <comment>- adapt _service file to not store sources twice
+- Update to version 2024.10.31~0:
+  * fix: cargo.lock fixes (#891)
+  * ci: Remove unnecessary auto commit (#791)
+  * ci: Seperate preview from Linutil Release (#792)
+  * fix the repo (#889)
+  * feat(arch-setup): enable colors and the easter egg in `pacman` (#890)
+  * Fix btrfs issue (#728)
+  * fix(browsers): vivaldi setup (#718)
+  * feat(docker-setup): fedora support (#707)
+  * chore: Add spacing before and after for tui titles (#706)
+  * Fix common script paths (#717)
+  * fix(nala): remove autoclean from `system-cleanup.sh` (#697)
+  * feat(fedora): release upgrade script (#886)
+  * fix fedora timeshift (#774)
+  * do not exit linutil in confirmation prompt when q is pressed (#758)
+  * dont allow the user to bring up the command desc if there is none (#753)
+  * clear the search bar if the user changes categories (#752)
+  * use bin for faster installation (#748)
+  * fix issues with set brightness (#747)
+  * fix bug in ssh commands (#733)
+  * dont allow scrolling when last line is visible (#729)
+  * allow scrolling past last entry / first entry (#727)
+  * sort entries alphabetically (#726)
+  * return user to their previous position if they exit a subdir (#725)
+  * fix color bleeding (#723)
+  * organize shortcut list into a grid-like-pattern (#721)
+  * Replace BUILD_DATE with CARGO_PKG_VERSION (#878, boo#1047218)
+  * Update rust.yml (#866)
+  * Update roadmap.md (#875)
+  * fix(waydroid-setup): not installing `dkms` on arch (#881)
+  * fix: github release notes not working (#884)
+  * ⚖️ docs: fix the security policy (#883)
+  * make command_exists interpret multiple values (#762)
+  * Fix bash deps (#763)
+  * added waterfox browser (#700)
+  * feat: Drastically increase the operating system support for USB creation script (#828)
+  * refact(ci): ShellCheck (#887)
+  * refact(release): better categories (#876)
+  * fix+refact(system-cleanup) (#856)
+  * feat: desktop entry &amp; manpage installation through `linutil-installer.sh` (#802)
+  * 📖 fix(docs): newlines (#796)
+  * 📖 add auto docs generation instructions to the Contributing Guidelines (#788)
+  * 🔍️ exiting search with `Ctrl-C` + better shortcut tips (#768)
+  * 📃 fix(monitor setup): a bug with utility-functions; newlines &amp; colors in the scripts (#713)
+  * 📔 hotfix(ci): `docs/` in the xtasks CI (#785)
+  * 📃 fix(zsh-setup): check if `/etc/zsh/zshenv` exists (#771)
+  * docs update
+  * 📔 docs: add a manpage (#783)
+  * 📔 docs: auto generation (#784)
+  * 📃 fix(grub-theme): theme backup (#740)
+  * Bump clap from 4.5.18 to 4.5.19 (#781)
+  * Bump tree-sitter-highlight from 0.23.0 to 0.24.2 (#780)
+  * ✅ ci: add a spellcheck typos CI (#776)
+  * ✏️ fix: ALL typos (#775)
+  * 🖥️ refact(linutil.desktop): executable paths (#782)
+  * fix grammar
+  * Apply suggestions from code review
+  * Update core/tabs/system-setup/remove-snaps.sh
+  * Add command_exists for snap
+  * Refact temp-dir (#749)
+  * expand tabs with spaces
+  * make shellcheck emit all errors found and check for tab indentation
+  * Remove install fonts
+  * suggestions by @nnyyxxxx
+  * set resolution fix
+  * Add vhs github action
+  * missclick :(
+  * fix: pacman orphan package removal
+  * vt100 patches (#743)
+  * i don't think we need this anymore (#737)
+  * docs: automated dynamic gif previews using `vhs` (#736)
+  * fix(ci): `bashisms.yml`. again. will work all the time this time i swear. (#715)
+  * Update linutil cargo version (#716)
+  * add an `*` packager exception (#710)
+  * New Feature : Setting Default TTY Fonts to Terminus Fonts (#698)
+  * Fix uuid retrieve bug (#696)
+  * Add description to the System Setup section (#694)
+  * bump crates to `24.9.28` (#693)
+  * Fixed nala update error (#692)
+  * Feat: confirmation prompts (#687)
+  * Bump unicode-width from 0.1.13 to 0.2.0 (#661)
+  * Bump clap from 4.5.17 to 4.5.18 (#660)
+  * Separate the office suites and pdf suites (#650)
+  * use --needed so reinstalls dont happen (#647)
+  * remove extra space (#645)
+  * refactor meld (#644)
+  * feat: Add scroll (#643)
+  * Use the neovim app image for debian 12 (#642)
+  * fix: fixing setup flatpak script path in slack and zoom script (#641)
+  * Fix selected-cmd bug (#638)
+  * Restore behaviour of closing the pop-up with &quot;q&quot; (#634)
+  * Fix gaming setup deps
+  * Remove quotes for packages
+  * update release
+  * add git as a dep (#649)
+  * Separate browser scripts (#648)
+  * Update power-profile.sh (#655)
+  * implement dynamic shortcut list sizing (#668)
+  * fix: do not hard depend on sudo being installed (#671)
+  * Add descriptions to the Applications Setup section and Auto Mount Drive (#680)
+  * updating Gaming For Fedora 41 (#681)
+  * Fix AutoLogin `printf` and `&gt;` issues (#662)
+  * Fixed vscode on Arch (#663)
+  * Non-interactive `sh.rustup.rs`, DNF &amp; `*` fixes (#669)
+  * Made popup title generic. Preview title is now the command name
+- Features:
+    * feat(task list): task names shortcuts 
+    * added communication apps to application setup + small fix in dev tools 
+    * added adb setup + uad setup 
+    * Add colors to d2r-loot-filters 
+    * Add waydroid 
+    * feat: implement syntax highlighting for preview text 
+    * Developer essentials 
+    * Use more colors in common-script 
+    * Refactor tips 
+    * Moved showing tips to a feature 
+    * added tips to help users learn new commands every time :) 
+    * added office suite setup script 
+    * Always use printf with %b\n unless a different var is needed 
+    * Restructure the crates 
+    * Refactor various components of Rust code 
+    * feat: Multi selection and installation 
+    * Adding Thorium and Librewolf to the browser script 
+    * Add aarch64 again 
+    * fix: Description and preview hints 
+    * added auto mount script 
+    * added grub themes script 
+    * added bottles install script 
+    * added ssh command automation 
+    * added browser setup script 
+    * Initial support for flathub management 
+    * enhancement: Rate mirrors heads up message 
+    * refactor: Tab key 
+    * Reduce the size of the linutil binary by removing unused features from core/Cargo.toml 
+    * feat(fedora/nvidia-*.sh): nvidia proprietary driver setup (continued from PR #319) 
+    * fix: Add wrapper around script 
+    * feat: Add User Manager 
+    * Added Virtualization Setup for Fedora 
+    * crypting files and directory script 
+    * Added DNF configuration and Multimedia Support for fedora and other Redhat Distros 
+    * Update preview 
+    * System Cleanup 
+    * enhancement: Update bashisms.yml 
+    * feat: Command Description 
+    * Packages metadata update [AUR] 
+- Bug Fixes:
+    * Fix: multi-selection 
+    * fix toml 
+    * add missing task lists 
+    * Move scripts around &amp; refactor existing ones 
+    * replace subshell usage with alternative 
+    * use packager instead of dpkg 
+    * remove unnecessary packagers 
+    * Enable RPMFusion repos as well on rpmfusion script 
+    * refact: Hints title 
+    * fix: Min-term panic 
+    * fix: Respect shebangs in scripts 
+    * fix: Correctly enter up directories 
+    * feat: short disclaimer-like script descriptions 
+    * Fix issues with fedora 
+    * fix capped letter 
+    * Add nvim version check berfore installing 
+    * fix every issue related to printf 
+    * Fix archtitus issues 
+    * Fix general inconsistencies and unnecessary updating 
+    * fix problems with debian 12 
+    * Fixed some Rust code structure and modified the workflow to fail if clippy returns warnings 
+    * fix dwm titus 
+    * fix: Add missing nala 
+    * Fixed alphabetical command sorting 
+    * Browser setup fix few potential issues. 
+    * small refactor 
+    * Adding \valids user\ argument in share section 
+    * Fixed the bashisms CI to only check files that exist 
+    * Fix account manager 
+    * Fix local vars bashisms that are not defined in posix 
+    * Fix read problems 
+    * Rename system-setup scripts 
+    * Disable multi select for system setup 
+    * Folders on top(as they should be) 
+    * Added unzip installation to dwm-titus 
+    * Revert \Rust formatting stuff 2 - removed an unused variable\ 
+    * Rust formatting stuff 2 - removed an unused variable 
+    * refactor: Seperate style and title variables 
+    * Fixed apt-get in some scripts and added nala 
+    * Fixed up some Rust code formatting stuff 
+    * Sorted Entries Alphabetically 
+    * D2r posix update 
+    * Fixed browser Setup 
+    * Alacritty missing file 
+    * Remove redundant functionality 
+    * Flatpak description 
+    * Fix incorrectly placed quote 
+    * Fix bashisms 
+    * Modify the bashisms workflow to only check modified files 
+    * fix: Fixup preview rendering and logic of preview key binding being shown in shortcut list 
+    * refactor: command_exists 
+    * Replace echos with printf (gaming and security) 
+    * Replace echos with printf (system-setup) 
+    * Replace echos with printf (common-script) 
+    * Replace echos with printf (monitor-control) 
+    * Replace echos with printf (applications-setup) 
+    * Use sh shebang and source common-script 
+    * Replace echos with printf (utils) 
+    * Remove bashisms in create bootable usb 
+    * Quote the remaining variables 
+- Documentation:
+    * Doc: Update README.md 
+    * doc: Move sub folders to h3 
+    * Add package installation instructions to the docs and README 
+    * Docs update (forgot about fedora) 
+    * update docs 
+    * Added crates.io badge to the README 
+    * Move security.md to .github folder 
+</comment>
+    <requestid>1224332</requestid>
+  </revision>
 </revisionlist>

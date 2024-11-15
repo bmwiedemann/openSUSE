@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov 14 21:10:35 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 11.6.1:
+    https://mariadb.com/kb/en/mariadb-11-6-1-releasqe-notes/
+    https://mariadb.com/kb/en/mariadb-11-6-1-changelog/
+- Update list of skipped tests
+- Refresh gcc13-fix.patch
+
+-------------------------------------------------------------------
+Mon Nov 11 10:36:05 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Reduce race in %mysql_testserver_start
+
+-------------------------------------------------------------------
 Sun Sep 22 22:31:04 UTC 2024 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
 
 - Read defaults during mysql_upgrade to respect client configuration

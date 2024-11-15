@@ -123,4 +123,22 @@
   * added more trove classifiers</comment>
     <requestid>1169320</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>de3f3714ea4e93c23ac466be8f4f7374</srcmd5>
+    <version>2024.10.21.16</version>
+    <time>1731681469</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2024.10.21.16:
+  * Chore: update calver to include hour (#191)
+  * Add Django trove classifiers for 5 and upcoming 5.2 release. (#193)
+  * Chore: update github actions (#192)
+  * Update CMU to include SPDX in parentheses (#190)
+  * Add classifier for MIT-CMU licence (#189)
+  * Add Odoo 18 trove classifier (#187)
+  * Add CUDA 12.3-12.5 classifiers (#182)
+  * Add Blue Oak Model License (#181)
+  * Add Trove classifier for Django 5.1 (#179)
+  * Add Trove classifier for Python 3.14 (#178)</comment>
+    <requestid>1223469</requestid>
+  </revision>
 </revisionlist>

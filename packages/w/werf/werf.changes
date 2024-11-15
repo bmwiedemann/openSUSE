@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Nov 14 16:04:15 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.13.0:
+  * chore: release 2.13.0 (#6404)
+  * Revert "chore(ci): replace action converge with werf command
+    (#6410)" (#6417)
+  * chore(ci): replace action converge with werf command (#6410)
+  * refacor(test): add repo option to compose test (#6411)
+  * refactor(test): set predefined host port for registry container
+    (#6408)
+  * refactor(docs): actualise cr cli param help message (#6405)
+  * test(e2e, export): test basic and multiplatform scenarios
+    (#6387)
+  * test: fix registry:2 image not found error (#6407)
+  * feat(build, docker): use buildkit by default (#6401)
+
+-------------------------------------------------------------------
 Tue Nov 12 06:24:21 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.12.1:
