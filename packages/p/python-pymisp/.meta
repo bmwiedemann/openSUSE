@@ -1,5 +1,5 @@
 <package name="python-pymisp" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <devel project="devel:languages:python" package="python-pymisp"/>
+  <devel project="security:csirt-tooling" package="python-pymisp"/>
 </package>

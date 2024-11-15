@@ -1,4 +1,563 @@
 -------------------------------------------------------------------
+Fri Nov 15 06:37:54 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 2.5.1:
+ - New
+   - Onion-address type. [Raphaël Vinot]
+ - Changes
+   - Bump changelog. [Raphaël Vinot]
+   - Bump objects. [Raphaël Vinot]
+   - Bump version. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+ - Fix
+   - Skip trying to install doc in python 3.9. [Raphaël Vinot]
+- update to version 2.5.0:
+ - Changes
+   - Bump changelog. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - [tests] misp_instance_version_master now uses the 2.5 branch.
+     [iglocska]
+ - Fix
+   - Make mypy happy. [Raphaël Vinot]
+- update to version 2.4.198:
+ - Changes
+   - Re-Bump changelog. [Raphaël Vinot]
+   - Bump changelog. [Raphaël Vinot]
+   - Bump deps, version. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - Only include the changelog in the sdist package. [Raphaël Vinot]
+     Related #1295
+   - [data] describeTypes.json updated. [Alexandre Dulaunoy]
+ - Other
+   - Openioc.py is not a script, but had exec bit. [Sebastian Wagner]
+     the file openioc can only be used as module and as part of a package,
+     has no instructions for direct execution and is therefor not a script
+     for direct execution
+     this removes the executable bit from the file
+
+-------------------------------------------------------------------
+Wed Sep  4 06:36:07 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
+
+- remove the date from python-publicsuffixlist's version. the package python-publicsuffixlist in openSUSE uses the suffix list from the package publicsuffixlist, not the list packaged by python-publicsuffixlist
+
+-------------------------------------------------------------------
+Wed Sep  4 05:48:37 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
+
+- Add python-pymisp-doc-rpmlintrc as source
+
+-------------------------------------------------------------------
+Tue Sep  3 15:47:36 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 2.4.197:
+ - Changes
+   - Bump deps, version, templates. [Raphaël Vinot]
+   - [misp-objects] updated to the latest version. [Alexandre Dulaunoy]
+ - Fix
+   - Avoid printing huge log when a request fails. [Raphaël Vinot]
+     fix #1286
+- update to version 2.4.196:
+ - Changes
+   - Bump version. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+ - Fix
+   - Remove broken config. [Raphaël Vinot]
+- update to version 2.4.195:
+ - New
+   - Add delete role, test suite for roles. [Raphaël Vinot]
+   - Test publish & search. [Raphaël Vinot]
+   - Add delete role, test suite for roles. [Raphaël Vinot]
+   - Test publish & search. [Raphaël Vinot]
+ - Changes
+   - Bump Changelog. [Raphaël Vinot]
+   - Bump objects. [Raphaël Vinot]
+   - Bump Changelog (issue with template) [Raphaël Vinot]
+   - Bump changelog. [Raphaël Vinot]
+   - Bump version. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - [publish tests] further debugging. [iglocska]
+   - [publish test] check if the publishing actually worked as intended.
+     [iglocska]
+   - [tests] speculative fix for the published search. [iglocska]
+     - locally it seems to work as intended, curious what is going on here
+   - Bump deps. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - [publish tests] further debugging. [iglocska]
+   - [publish test] check if the publishing actually worked as intended.
+     [iglocska]
+   - [tests] speculative fix for the published search. [iglocska]
+     - locally it seems to work as intended, curious what is going on here
+   - Bump deps. [Raphaël Vinot]
+ - Fix
+   - Bump objects (invalid template) [Raphaël Vinot]
+   - Do not let a user pass a full dict as tagname. [Raphaël Vinot]
+   - [publish tests] fixed invalid setting name for disabling background
+     processing. [iglocska]
+   - [publish test] invalid path for the publishing outcome in the
+     response. [iglocska]
+   - [publish test] fixed. [iglocska]
+     - was incorrect as it triggered a background processed publishing, which can take time
+   - Do not let a user pass a full dict as tagname. [Raphaël Vinot]
+   - Do not let a user pass a full dict as tagname. [Raphaël Vinot]
+   - [publish tests] fixed invalid setting name for disabling background
+     processing. [iglocska]
+   - [publish test] invalid path for the publishing outcome in the
+     response. [iglocska]
+   - [publish test] fixed. [iglocska]
+     - was incorrect as it triggered a background processed publishing, which can take time
+ - Other
+   - Re-naming variables to make tests happy. [Tobias Mainka]
+   - Added support to add or update a MISP role. [Tobias Mainka]
+   - Update tests. [Raphaël Vinot]
+   - Build(deps): bump certifi from 2024.6.2 to 2024.7.4. [dependabot[bot]]
+     Bumps [certifi](https://github.com/certifi/python-certifi) from 2024.6.2 to 2024.7.4.
+     - [Commits](https://github.com/certifi/python-certifi/compare/2024.06.02...2024.07.04)
+     ---
+     updated-dependencies:
+     - dependency-name: certifi
+       dependency-type: indirect
+     ...
+   - MANIFEST.in does not seem to have an effect any longer. [Ulrik Haugen]
+   - Include docs, examples and tests in sdist. [Ulrik Haugen]
+   - Re-naming variables to make tests happy. [Tobias Mainka]
+   - Added support to add or update a MISP role. [Tobias Mainka]
+   - Update tests. [Raphaël Vinot]
+   - Build(deps): bump certifi from 2024.6.2 to 2024.7.4. [dependabot[bot]]
+     Bumps [certifi](https://github.com/certifi/python-certifi) from 2024.6.2 to 2024.7.4.
+     - [Commits](https://github.com/certifi/python-certifi/compare/2024.06.02...2024.07.04)
+     ---
+     updated-dependencies:
+     - dependency-name: certifi
+       dependency-type: indirect
+     ...
+   - Feat: Adds methods to get attribute by id/uuid. [Sura De Silva]
+- update to version 2.4.194:
+ - Changes
+   - Bump changelog. [Raphaël Vinot]
+   - Bump version. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+ - Fix
+   - Make a response in the tests a MISPUser obj. [Raphaël Vinot]
+   - Tests failing du to missing error. [Raphaël Vinot]
+- update to version 2.4.193:
+ - New
+   - [analyst-data] Added initial support of analyst data concept and
+     functions - WiP. [Sami Mokaddem]
+ - Changes
+   - Bump deps. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - A bit more refactoring. [Raphaël Vinot]
+   - Use from_dict in the mixin to initialize the objects. [Raphaël Vinot]
+   - [analyst-data] Added improvements, API endpoints and tests. [Sami
+     Mokaddem]
+   - [analyst-data] Make sure to include note_type_name. [Sami Mokaddem]
+   - Make mypy happy, change inheritance. [Raphaël Vinot]
+   - Allow orgc context for search_galaxy_clusters. [Jeroen Pinoy]
+   - Bump deps. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - [analyst-data] Continued implementation of analyst-data support. [Sami
+     Mokaddem]
+   - Allow orgc context for search_galaxy_clusters. [Jeroen Pinoy]
+   - Bump deps. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - Bump changelog. [Raphaël Vinot]
+ - Fix
+   - Get the tests to pass. [Raphaël Vinot]
+   - Properly load AnalystData from dict. [Raphaël Vinot]
+   - More changes to get the tests to pass. [Raphaël Vinot]
+   - [event-report] Make sure to generate an UUID. [Sami Mokaddem]
+   - Pass kwargs to abstract. [Raphaël Vinot]
+ - Other
+   - Chg; Bump changelog. [Raphaël Vinot]
+   - Chg; Bump version. [Raphaël Vinot]
+   - Add test case. [Vincenzo]
+   - Add attach galaxy cluster method. [Vincenzo]
+- update to version 2.4.190:
+ - Changes
+   - Bump object templates. [Raphaël Vinot]
+   - Bump changelog. [Raphaël Vinot]
+   - Bump version, deps. [Raphaël Vinot]
+   - Bump deps, require python 3.9+ for doc. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - [data] describeTypes file updated. [Alexandre Dulaunoy]
+   - Bump deps. [Raphaël Vinot]
+ - Fix
+   - [internal] Correct way to convert bytes to string if orjson exists.
+     [Jakub Onderka]
+- update to version 2.4.188:
+ - New
+   - Support X-MISP-AUTH Header. [Raphaël Vinot]
+     Also, improve HTTP headers init
+     Fix #1179
+ - Changes
+   - Bump changelog. [Raphaël Vinot]
+   - Bump changelog. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - Bump changelog. [Raphaël Vinot]
+   - Bump version, templates. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+ - Fix
+   - Strip API key before setting it. [Raphaël Vinot]
+   - Python 3.8 support & typing. [Raphaël Vinot]
+   - Typing for Python < 3.10. [Raphaël Vinot]
+   - Avoid issue when payload ist a list. [Raphaël Vinot]
+- update to version 2.4.187:
+ - Changes
+   - Bump changelog. [Raphaël Vinot]
+   - Bump templates, version. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - Bump extract-msg. [Raphaël Vinot]
+- update to version 2.4.186:
+ - Changes
+   - Bump changelog. [Raphaël Vinot]
+   - Bump changelog. [Raphaël Vinot]
+   - Bump version. [Raphaël Vinot]
+   - Bump objects. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+ - Fix
+   - Correct FileObject import. [Johannes Bader]
+     The FileObject import has been moved outside the try-except-block
+     related to lief, as the import is needed regardless whether lief
+     is available or not.
+   - Disable WL when calling the disable method, not toggle. [Raphaël
+     Vinot]
+     Fix #1159
+ - Other
+   - Build(deps): bump urllib3 from 2.2.0 to 2.2.1. [dependabot[bot]]
+     Bumps [urllib3](https://github.com/urllib3/urllib3) from 2.2.0 to 2.2.1.
+     - [Release notes](https://github.com/urllib3/urllib3/releases)
+     - [Changelog](https://github.com/urllib3/urllib3/blob/main/CHANGES.rst)
+     - [Commits](https://github.com/urllib3/urllib3/compare/2.2.0...2.2.1)
+     ---
+     updated-dependencies:
+     - dependency-name: urllib3
+       dependency-type: direct:production
+       update-type: version-update:semver-patch
+     ...
+- update to version 2.4.185:
+ - Changes
+   - Bump changelog. [Raphaël Vinot]
+   - Bump deps, version. [Raphaël Vinot]
+- update to version 2.4.184.3:
+ - Changes
+   - Bump changelog. [Raphaël Vinot]
+   - Bump version. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+ - Fix
+   - Properly get body from message, without headers. [Raphaël Vinot]
+   - Remove from __all__ entries that shouldn't be there. [Raphaël Vinot]
+ - Other
+   - Build(deps-dev): bump jupyter-lsp from 2.2.1 to 2.2.2.
+     [dependabot[bot]]
+     Bumps [jupyter-lsp](https://github.com/jupyter-lsp/jupyterlab-lsp) from 2.2.1 to 2.2.2.
+     - [Release notes](https://github.com/jupyter-lsp/jupyterlab-lsp/releases)
+     - [Changelog](https://github.com/jupyter-lsp/jupyterlab-lsp/blob/main/CHANGELOG.md)
+     - [Commits](https://github.com/jupyter-lsp/jupyterlab-lsp/commits)
+     ---
+     updated-dependencies:
+     - dependency-name: jupyter-lsp
+       dependency-type: indirect
+     ...
+- update to version 2.4.184.2:
+ - Changes
+   - Add changelog. [Raphaël Vinot]
+   - Bump changelog. [Raphaël Vinot]
+   - Re-add ExpandedPyMISP, with a warning. [Raphaël Vinot]
+ - Fix
+   - Do not throw a warning every time one import pymisp... [Raphaël Vinot]
+ - Other
+   - Build(deps): bump codecov/codecov-action from 3 to 4.
+     [dependabot[bot]]
+     Bumps [codecov/codecov-action](https://github.com/codecov/codecov-action) from 3 to 4.
+     - [Release notes](https://github.com/codecov/codecov-action/releases)
+     - [Changelog](https://github.com/codecov/codecov-action/blob/main/CHANGELOG.md)
+     - [Commits](https://github.com/codecov/codecov-action/compare/v3...v4)
+     ---
+     updated-dependencies:
+     - dependency-name: codecov/codecov-action
+       dependency-type: direct:production
+       update-type: version-update:semver-major
+     ...
+- update to version 2.4.184.1:
+ - Changes
+   - Bump changelog. [Raphaël Vinot]
+   - Re-add ExpandedPyMISP, with a warning. [Raphaël Vinot]
+- update to version 2.4.184:
+ - New
+   - Enable support for python 3.12. [Raphaël Vinot]
+   - Relationship_type in tag. [Raphaël Vinot]
+     Fix https://github.com/MISP/MISP/issues/9483
+   - [internal] Add support for orjson. [Jakub Onderka]
+     orjson is much faster library for decoding and encoding JSON formats
+ - Changes
+   - Bump changelog. [Raphaël Vinot]
+   - Bump deps, version, objects. [Raphaël Vinot]
+   - Remove IntEnum. [Raphaël Vinot]
+   - Add even more debug for gha. [Raphaël Vinot]
+   - Add some debug for gha. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - Add more strict typing, not done yet. [Raphaël Vinot]
+   - Add a bunch more typing. [Raphaël Vinot]
+   - Use typing info of lief. [Raphaël Vinot]
+   - First batch of changes for strict typing. [Raphaël Vinot]
+   - Update typing to please lief. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - [internal] Simplify code. [Jakub Onderka]
+   - [internal] User faster method to convert bytes to str. [Jakub Onderka]
+   - New annotations in tests. [Raphaël Vinot]
+   - Initial changes to use new annotations. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - Bump deps, try to install with python 3.12. [Raphaël Vinot]
+   - Make the publish_timestamp a string, as per specs. [Raphaël Vinot]
+   - [internal] Update poetry.lock. [Jakub Onderka]
+ - Fix
+   - Revert typing changes. [Raphaël Vinot]
+   - More responses athat are lists. [Raphaël Vinot]
+   - Another call that cn be a list or a dict. [Raphaël Vinot]
+   - Do not cast enum. [Raphaël Vinot]
+   - More fixes to support responses from MISP. [Raphaël Vinot]
+   - Handle list responses properly. [Raphaël Vinot]
+   - Import FileObject as needed. [Raphaël Vinot]
+   - Also skip docs from mypy. [Raphaël Vinot]
+   - Run mypy on what I want. [Raphaël Vinot]
+   - Compatibility with python 3.8. [Raphaël Vinot]
+   - Python < 3.10 support on typing, for good. [Raphaël Vinot]
+   - Python < 3.10 support on typing. [Raphaël Vinot]
+   - Rollback tests on python 3.12 as lief is not supported yet. [Raphaël
+     Vinot]
+   - Add missing wheel. [Raphaël Vinot]
+   - Make publish_timestamp a string in tests. [Raphaël Vinot]
+   - [internal] README typos. [Jakub Onderka]
+ - Other
+   - Revert "fix: More responses athat are lists" [Raphaël Vinot]
+     This reverts commit 709a10c64c0513b515f25c3ecfb9eb577b55084b.
+   - Build(deps): bump jinja2 from 3.1.2 to 3.1.3. [dependabot[bot]]
+     Bumps [jinja2](https://github.com/pallets/jinja) from 3.1.2 to 3.1.3.
+     - [Release notes](https://github.com/pallets/jinja/releases)
+     - [Changelog](https://github.com/pallets/jinja/blob/main/CHANGES.rst)
+     - [Commits](https://github.com/pallets/jinja/compare/3.1.2...3.1.3)
+     ---
+     updated-dependencies:
+     - dependency-name: jinja2
+       dependency-type: indirect
+     ...
+- update to version 2.4.183:
+ - New
+   - Documentation to install PyMISP on offline machine. [Raphaël Vinot]
+ - Changes
+   - Bump changelog. [Raphaël Vinot]
+   - Bump objects. [Raphaël Vinot]
+   - Bump version. [Raphaël Vinot]
+   - Remove jsonschema from dependencies. [Raphaël Vinot]
+   - Encrypt malicious js. [Raphaël Vinot]
+ - Other
+   - Fix api ssl verify typing. [Steven]
+   - Add HTTPS Adapter. [Steven]
+     Add the ability to provide a custom HTTPS adapter to the PyMISP class. With M2Crypto and m2requests, this can enable mutual TLS with hardware tokens.
+- update to version 2.4.182:
+ - Changes
+   - Bump changelog. [Raphaël Vinot]
+   - Bump version. [Raphaël Vinot]
+   - Bump objects. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+ - Fix
+   - Avoid exception when the malware file name contains a "|" [Raphaël
+     Vinot]
+ - Other
+   - Build(deps): bump github/codeql-action from 2 to 3. [dependabot[bot]]
+     Bumps [github/codeql-action](https://github.com/github/codeql-action) from 2 to 3.
+     - [Release notes](https://github.com/github/codeql-action/releases)
+     - [Changelog](https://github.com/github/codeql-action/blob/main/CHANGELOG.md)
+     - [Commits](https://github.com/github/codeql-action/compare/v2...v3)
+     ---
+     updated-dependencies:
+     - dependency-name: github/codeql-action
+       dependency-type: direct:production
+       update-type: version-update:semver-major
+     ...
+   - Build(deps): bump actions/setup-python from 4 to 5. [dependabot[bot]]
+     Bumps [actions/setup-python](https://github.com/actions/setup-python) from 4 to 5.
+     - [Release notes](https://github.com/actions/setup-python/releases)
+     - [Commits](https://github.com/actions/setup-python/compare/v4...v5)
+     ---
+     updated-dependencies:
+     - dependency-name: actions/setup-python
+       dependency-type: direct:production
+       update-type: version-update:semver-major
+     ...
+- update to version 2.4.179:
+ - Changes
+   - Bump version, changelog. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - [misp-objects] Bumped latest version. [Christian Studer]
+ - Fix
+   - Eml and msg are in sync again. [Raphaël Vinot]
+   - Update calls to getStringStream to the public method. [Raphaël Vinot]
+   - Avoid confusing error when an auth key is limited to an IP. [Raphaël
+     Vinot]
+     Fix #1099
+- update to version 2.4.178:
+ - New
+   - Run tests on python 3.12 too. [Raphaël Vinot]
+ - Changes
+   - Bump changelog. [Raphaël Vinot]
+   - Bump version, make __version__ dynamic. [Raphaël Vinot]
+   - Bump deps, allow older jsonschema for compatibility. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - Make mypy happy. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - Disable search logs tests for now. [Raphaël Vinot]
+   - Disable fastmode, reenable fetching files. [Raphaël Vinot]
+   - Try to speedup tests by not importing galaxies, taxos, ... [Raphaël
+     Vinot]
+   - Do not clone repo from test. [Raphaël Vinot]
+ - Fix
+   - Make other fieldnames in CSV also valid... [Raphaël Vinot]
+   - Make fieldnames actually valid. [Raphaël Vinot]
+   - Remove CI for python 3.12, waiting for pydeep wheels. [Raphaël Vinot]
+   - Allow object-relation names with uppercase characters defined in the
+     templates. [Raphaël Vinot]
+   - Check if path exists in tests. [Raphaël Vinot]
+ - Other
+   - Ch: Bump deps. [Raphaël Vinot]
+- update to version 2.4.176:
+ - Changes
+   - Bump changelog. [Raphaël Vinot]
+   - Bump version, deps. [Raphaël Vinot]
+   - Bump objects. [Raphaël Vinot]
+   - Bump deps, objects. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+ - Fix
+   - Avoid exception when data is an empty iterator. [Raphaël Vinot]
+     Fix #1053
+ - Other
+   - Revert "build(deps): bump codecov/codecov-action from 3 to 4" [Raphaël
+     Vinot]
+     This reverts commit b7bb6b74317b70613ed42ea234eaafb00da6e5c6.
+   - Build(deps): bump codecov/codecov-action from 3 to 4.
+     [dependabot[bot]]
+     Bumps [codecov/codecov-action](https://github.com/codecov/codecov-action) from 3 to 4.
+     - [Release notes](https://github.com/codecov/codecov-action/releases)
+     - [Changelog](https://github.com/codecov/codecov-action/blob/main/CHANGELOG.md)
+     - [Commits](https://github.com/codecov/codecov-action/compare/v3...v4)
+     ---
+     updated-dependencies:
+     - dependency-name: codecov/codecov-action
+       dependency-type: direct:production
+       update-type: version-update:semver-major
+     ...
+   - Build(deps): bump actions/checkout from 3 to 4. [dependabot[bot]]
+     Bumps [actions/checkout](https://github.com/actions/checkout) from 3 to 4.
+     - [Release notes](https://github.com/actions/checkout/releases)
+     - [Changelog](https://github.com/actions/checkout/blob/main/CHANGELOG.md)
+     - [Commits](https://github.com/actions/checkout/compare/v3...v4)
+     ---
+     updated-dependencies:
+     - dependency-name: actions/checkout
+       dependency-type: direct:production
+       update-type: version-update:semver-major
+     ...
+- update to version 2.4.175:
+ - Changes
+   - Bump objects, missed that. [Raphaël Vinot]
+   - Bump changelog. [Raphaël Vinot]
+   - Bump version. [Raphaël Vinot]
+   - Bump deps, readthedocs config. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+ - Fix
+   - Update Sharing group info from full object. [Raphaël Vinot]
+     Fix #1049
+   - Changes in msg-extract strip a character. [Raphaël Vinot]
+- update to version 2.4.174:
+ - Changes
+   - Bump changelog. [Raphaël Vinot]
+   - Bump version, templates. [Raphaël Vinot]
+   - Bump deps, fix code accordingly. [Raphaël Vinot]
+ - Fix
+   - Push code changes related to deps upgrade... [Raphaël Vinot]
+ - Other
+   - Git: Bump deps. [Raphaël Vinot]
+- update to version 2.4.173:
+ - Changes
+   - Bump changelog. [Raphaël Vinot]
+   - Bump version. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - Bump objects. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - Bump objects. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+ - Fix
+   - Maybe fixing a CakePHP issue. [Raphaël Vinot]
+     Maybe fixing #1014
+   - Use proper endpoint to unpublish event. [Raphaël Vinot]
+     Fix #1012
+ - Other
+   - Feat: introduce setter for galaxies. [Sura De Silva]
+- update to version 2.4.172:
+ - Changes
+   - Bump changelog. [Raphaël Vinot]
+   - Bump version. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - [misp-objects] Bumped latest version with updated templates.
+     [Christian Studer]
+   - Bump deps. [Raphaël Vinot]
+ - Fix
+   - Proper changelog bump. [Raphaël Vinot]
+   - Properly bump version. [Raphaël Vinot]
+ - Other
+   - Build(deps-dev): bump jupyterlab from 3.6.3 to 4.0.0.
+     [dependabot[bot]]
+     Bumps [jupyterlab](https://github.com/jupyterlab/jupyterlab) from 3.6.3 to 4.0.0.
+     - [Release notes](https://github.com/jupyterlab/jupyterlab/releases)
+     - [Changelog](https://github.com/jupyterlab/jupyterlab/blob/master/CHANGELOG.md)
+     - [Commits](https://github.com/jupyterlab/jupyterlab/compare/@jupyterlab/vdom@3.6.3...@jupyterlab/lsp@4.0.0)
+     ---
+     updated-dependencies:
+     - dependency-name: jupyterlab
+       dependency-type: direct:development
+       update-type: version-update:semver-major
+     ...
+   - Update settings.default.py - tags not tag. [Alexandre Dulaunoy]
+     tags is now an array
+- update to version 2.4.171:
+ - Changes
+   - Bump changelog. [Raphaël Vinot]
+   - Bump deps, object templates. [Raphaël Vinot]
+   - Bump changelog. [Raphaël Vinot]
+   - Bump changelog. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - Bump changelog. [Raphaël Vinot]
+   - Bump version. [Raphaël Vinot]
+   - Remove old setup files, bump deps. [Raphaël Vinot]
+ - Fix
+   - Extra print breaking the CI on MISP side. [Raphaël Vinot]
+   - Properly use lief on a file. [Raphaël Vinot]
+ - Other
+   - Allow search by 'event_tags' and improve the handling of galaxy
+     clusters. [Stefano Ortolani]
+     Changes:
+     - Add 'event_tags' parameter when searching for events
+     - Add new method to search for galaxies by value
+     - Add new parameter to fetch cluster information when retrieving clusters
+     - Add new parameter to hard-delete object references
+   - Using underscore name 'description_file' in setup.cfg. [Erhan]
+     Usage of dash-separated 'description-file' will not be supported in future versions. Please use the underscore name 'description_file' instead. By 2023-Sep-26, you need to update your project and remove deprecated calls or your builds will no longer be supported.
+     See https://setuptools.pypa.io/en/latest/userguide/declarative_config.html for details.
+
+-------------------------------------------------------------------
 Sat Aug 12 06:07:07 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 2.4.170.2:
@@ -125,7 +684,7 @@ Sat Dec  3 20:08:45 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
    - Issue with EMailObject.
 
 -------------------------------------------------------------------
-Mon Sep 26 06:13:17 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Mon Sep 26 06:13:17 UTC 2022 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 2.4.162:
  - New
@@ -140,7 +699,7 @@ Mon Sep 26 06:13:17 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
    - Make keepalive configuration linux only
 
 -------------------------------------------------------------------
-Tue Aug  9 07:22:35 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Tue Aug  9 07:22:35 UTC 2022 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 2.4.160:
  - New
@@ -192,7 +751,7 @@ Tue Aug  9 07:22:35 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
    - Massive bump deps for python 3.7.
 
 -------------------------------------------------------------------
-Fri Mar 25 21:24:09 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Fri Mar 25 21:24:09 UTC 2022 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 2.4.157:
  - Changes
@@ -214,7 +773,7 @@ Fri Mar 25 21:24:09 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
    - Incorrect call when requesting a new API key.
 
 -------------------------------------------------------------------
-Fri Mar  4 18:57:18 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Fri Mar  4 18:57:18 UTC 2022 - Sebastian Wagner <sebix@sebix.at>
 
 - - update to version 2.4.155.1:
  - Changes
@@ -281,7 +840,7 @@ Fri Mar  4 18:57:18 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
    - [feed-generator] fix missing except type. [Christophe Vandeplas]
 
 -------------------------------------------------------------------
-Wed Dec 22 11:25:46 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Wed Dec 22 11:25:46 UTC 2021 - Sebastian Wagner <sebix@sebix.at>
 
 - - update to version 2.4.152:
  - Changes
@@ -363,7 +922,7 @@ Tue Dec 14 08:45:10 UTC 2021 - pgajdos@suse.com
 - pytest-runner is not required for build
 
 -------------------------------------------------------------------
-Sat Nov 20 15:29:17 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sat Nov 20 15:29:17 UTC 2021 - Sebastian Wagner <sebix@sebix.at>
 
 - - update to version 2.4.151:
  - New
@@ -420,7 +979,7 @@ Sat Nov 20 15:29:17 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
    - Update README.md.
 
 -------------------------------------------------------------------
-Sat Oct  2 07:00:28 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sat Oct  2 07:00:28 UTC 2021 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 2.4.148.1:
  - New
@@ -465,12 +1024,12 @@ Sat Oct  2 07:00:28 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
      Not using travis anymore.
 
 -------------------------------------------------------------------
-Wed Sep  1 21:09:28 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Wed Sep  1 21:09:28 UTC 2021 - Sebastian Wagner <sebix@sebix.at>
 
 - remove executable permissions on example files.
 
 -------------------------------------------------------------------
-Sun Aug  8 18:16:00 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sun Aug  8 18:16:00 UTC 2021 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 2.4.148:
  - New
@@ -557,7 +1116,7 @@ Sun Aug  8 18:16:00 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
      - breaks misp-stix converter, reverting it for now, let's find a way to deprecate this without outright removing it
 
 -------------------------------------------------------------------
-Sat Jul  3 14:01:11 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sat Jul  3 14:01:11 UTC 2021 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 2.4.144:
  - Changes
@@ -570,7 +1129,7 @@ Sat Jul  3 14:01:11 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
    - Fix misp API response content parsing. [Silvian I]
 
 -------------------------------------------------------------------
-Fri May 14 16:12:56 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Fri May 14 16:12:56 UTC 2021 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 2.4.143:
  - New
@@ -585,7 +1144,7 @@ Fri May 14 16:12:56 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
    - Remove search_all example, use search instead.
 
 -------------------------------------------------------------------
-Thu Apr 29 19:10:39 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Thu Apr 29 19:10:39 UTC 2021 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 2.4.142:
  - New
@@ -613,7 +1172,7 @@ Thu Apr 29 19:10:39 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
    - Update README.md.
 
 -------------------------------------------------------------------
-Tue Apr  6 20:54:42 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Tue Apr  6 20:54:42 UTC 2021 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 2.4.141.1:
  - Changes
@@ -739,7 +1298,7 @@ Tue Apr  6 20:54:42 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
      Without the added check, the script will error out on line 29 since the key doesn't exist in the dict.  This at least gives a reason.
 
 -------------------------------------------------------------------
-Sat Feb 20 14:20:55 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sat Feb 20 14:20:55 UTC 2021 - Sebastian Wagner <sebix@sebix.at>
 
 - Add a rpmlintrc file to ignore warning about an empty file in the examples of the documentation
 - update to version 2.4.138:
@@ -969,7 +1528,7 @@ Sat Feb 20 14:20:55 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
    - Make mail-parser an optional dependency.
 
 -------------------------------------------------------------------
-Wed Nov 25 20:55:45 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Wed Nov 25 20:55:45 UTC 2020 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 2.4.135.3:
  - Changes
@@ -1050,7 +1609,7 @@ Wed Nov 25 20:55:45 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
      Dewailly]
 
 -------------------------------------------------------------------
-Mon Nov  2 19:30:59 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Mon Nov  2 19:30:59 UTC 2020 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 2.4.134:
  - Changes
@@ -1077,7 +1636,7 @@ Mon Nov  2 19:30:59 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
    - Drop `encoding=` in Python 3.9. [Friedrich Lindenberg]
 
 -------------------------------------------------------------------
-Sun Nov  1 18:06:38 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sun Nov  1 18:06:38 UTC 2020 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 2.4.133:
  - New
@@ -1239,7 +1798,7 @@ Sun Nov  1 18:06:38 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
      fix: #599
 
 -------------------------------------------------------------------
-Sat Jul  4 12:20:23 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sat Jul  4 12:20:23 UTC 2020 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 2.4.128:
  - Changes
@@ -1307,7 +1866,7 @@ Sat Jul  4 12:20:23 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
      Wagner]
 
 -------------------------------------------------------------------
-Thu May 21 13:45:02 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Thu May 21 13:45:02 UTC 2020 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 2.4.126:
  - New
@@ -1354,7 +1913,7 @@ Thu May 21 13:45:02 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
       * Add hint that other certs (which are not in the default CAs, but also are not self signed in a strict sense) can also use the CA_BUNDLE function of the ssl parameter.
 
 -------------------------------------------------------------------
-Sun May  3 13:18:26 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sun May  3 13:18:26 UTC 2020 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 2.4.125:
  - New
@@ -1382,7 +1941,7 @@ Mon Apr 20 10:32:49 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
   on python3
 
 -------------------------------------------------------------------
-Fri Apr  3 08:24:04 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Fri Apr  3 08:24:04 UTC 2020 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 2.4.124:
  - Changes
@@ -1409,12 +1968,12 @@ Fri Apr  3 08:24:04 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
    - VMRay Automation with ExpandedPyMISP. [Koen Van Impe]
 
 -------------------------------------------------------------------
-Tue Mar 17 14:49:18 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Tue Mar 17 14:49:18 UTC 2020 - Sebastian Wagner <sebix@sebix.at>
 
 - set UTF-8 encoding for test, fixes Leap 15.1 buildc
 
 -------------------------------------------------------------------
-Sun Mar 15 10:11:15 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sun Mar 15 10:11:15 UTC 2020 - Sebastian Wagner <sebix@sebix.at>
 
 - change source URL to github, as the pypi archive misses some files.
 - add misp-objects source as github archive misses it.
@@ -1469,7 +2028,7 @@ Sun Mar 15 10:11:15 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
      fix #538
 
 -------------------------------------------------------------------
-Sat Feb  8 16:21:30 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sat Feb  8 16:21:30 UTC 2020 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 2.4.121.1:
  - Fix
@@ -1478,7 +2037,7 @@ Sat Feb  8 16:21:30 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 - remove fix-tests-template-version.patch, merged upstream
 
 -------------------------------------------------------------------
-Thu Feb  6 19:45:45 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Thu Feb  6 19:45:45 UTC 2020 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 2.4.121:
  - New
@@ -1527,7 +2086,7 @@ Thu Feb  6 19:45:45 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
    - Fix typos on FullOverview.ipynb. [Bernhard E. Reiter]
 
 -------------------------------------------------------------------
-Sat Jan 18 09:59:31 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sat Jan 18 09:59:31 UTC 2020 - Sebastian Wagner <sebix@sebix.at>
 
 - drop python2, not supported anymore upstream
 - add fix-tests-template-version.patch from upstream commit to fix tests
@@ -1580,7 +2139,7 @@ Sat Jan 18 09:59:31 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
    - Update README.md.
 
 -------------------------------------------------------------------
-Wed Jan  1 16:16:49 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Wed Jan  1 16:16:49 UTC 2020 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 2.4.119.1:
 - New
@@ -1605,7 +2164,7 @@ Wed Jan  1 16:16:49 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
  - Make sure the publish timestamp is bumped on update.
 
 -------------------------------------------------------------------
-Sun Dec 15 22:07:31 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sun Dec 15 22:07:31 UTC 2019 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 2.4.119:
  - Changes
@@ -1619,7 +2178,7 @@ Sun Dec 15 22:07:31 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
     
 
 -------------------------------------------------------------------
-Tue Nov 26 13:09:09 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Tue Nov 26 13:09:09 UTC 2019 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 2.4.117.3:
 - New
@@ -1841,7 +2400,7 @@ Tue Nov 26 13:09:09 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
     also crashed on clean MISP instances due to empty responses.
 
 -------------------------------------------------------------------
-Sat Aug  3 07:46:24 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sat Aug  3 07:46:24 UTC 2019 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 2.4.112:
 - New
@@ -1877,12 +2436,12 @@ Sat Aug  3 07:46:24 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
  - Fix tag help text Minor pycodestyle. [kovacsbalu]
 
 -------------------------------------------------------------------
-Thu Jul 25 19:29:09 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Thu Jul 25 19:29:09 UTC 2019 - Sebastian Wagner <sebix@sebix.at>
 
 - add missing dependency python-Deprecated
 
 -------------------------------------------------------------------
-Thu Jul 25 19:21:30 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Thu Jul 25 19:21:30 UTC 2019 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 2.4.111.2:
 - New
@@ -2010,7 +2569,7 @@ Thu Jul 25 19:21:30 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
     Just updated the script to look it.
 
 -------------------------------------------------------------------
-Fri May  3 18:18:03 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Fri May  3 18:18:03 UTC 2019 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 2.4.106:
  - New
@@ -2075,12 +2634,12 @@ Fri May  3 18:18:03 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
     to be able to enable/disable correlation on attributes.
 
 -------------------------------------------------------------------
-Sat Mar 23 14:38:41 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sat Mar 23 14:38:41 UTC 2019 - Sebastian Wagner <sebix@sebix.at>
 
 - New requirement python3-sphinx-autodoc-typehints for docs.
 
 -------------------------------------------------------------------
-Sat Mar 16 11:10:48 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sat Mar 16 11:10:48 UTC 2019 - Sebastian Wagner <sebix@sebix.at>
 
 - run spec-cleaner
 - update to version 2.4.103:
@@ -2144,7 +2703,7 @@ Sat Mar 16 11:10:48 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
   - Search function fix to comply new version of MISP.
 
 -------------------------------------------------------------------
-Sun Feb  3 21:56:57 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sun Feb  3 21:56:57 UTC 2019 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 2.4.102:
  - New
@@ -2205,7 +2764,7 @@ Sun Feb  3 21:56:57 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
     This is needed for the compatibility with the gen_misp_types_categories.py script. Data was sorted using the order_dict function of the gen_misp_types_categories script.
 
 -------------------------------------------------------------------
-Sun Jan 27 18:54:29 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sun Jan 27 18:54:29 UTC 2019 - Sebastian Wagner <sebix@sebix.at>
 
 - Update to version 2.4.99:
  - New
@@ -2256,7 +2815,7 @@ Tue Dec  4 12:52:28 UTC 2018 - Matej Cepl <mcepl@suse.com>
 - Remove superfluous devel dependency for noarch package
 
 -------------------------------------------------------------------
-Sun Oct 14 13:32:09 UTC 2018 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sun Oct 14 13:32:09 UTC 2018 - Sebastian Wagner <sebix@sebix.at>
 
 - Remove fix-274.patch and fix-274-1.patch.
 - update to version 2.4.96:
@@ -2286,7 +2845,7 @@ Sun Oct 14 13:32:09 UTC 2018 - Sebastian Wagner <sebix+novell.com@sebix.at>
     Allow to discard duplicate tags.
 
 -------------------------------------------------------------------
-Mon Sep 17 19:51:59 UTC 2018 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Mon Sep 17 19:51:59 UTC 2018 - Sebastian Wagner <sebix@sebix.at>
 
 - Add fix-274.patch and fix-274-1.patch to fix missing enum library (#274).
 - update to version v2.4.95 (2018-09-06):
@@ -2340,7 +2899,7 @@ Mon Sep 17 19:51:59 UTC 2018 - Sebastian Wagner <sebix+novell.com@sebix.at>
  -  Decoding issue.
 
 -------------------------------------------------------------------
-Thu May 10 09:49:15 UTC 2018 - sebix+novell.com@sebix.at
+Thu May 10 09:49:15 UTC 2018 - sebix@sebix.at
 
 - update to version 2.4.90.1:
  * New
@@ -2353,7 +2912,7 @@ Thu May 10 09:49:15 UTC 2018 - sebix+novell.com@sebix.at
   - Properly handle attachments.
 
 -------------------------------------------------------------------
-Sun Apr 29 18:52:32 UTC 2018 - sebix+novell.com@sebix.at
+Sun Apr 29 18:52:32 UTC 2018 - sebix@sebix.at
 
 - update to version 2.4.90:
  * New
@@ -2394,7 +2953,7 @@ Sun Apr 29 18:52:32 UTC 2018 - sebix+novell.com@sebix.at
     attribute.
 
 -------------------------------------------------------------------
-Fri Mar 23 13:21:47 UTC 2018 - sebix+novell.com@sebix.at
+Fri Mar 23 13:21:47 UTC 2018 - sebix@sebix.at
 
 - update to 2.4.89:
  - Add email object generator.
@@ -2407,7 +2966,7 @@ Fri Mar 23 13:21:47 UTC 2018 - sebix+novell.com@sebix.at
  - Add attributes within objects as well, for tagging via value/id/uuid.
 
 -------------------------------------------------------------------
-Tue Feb 13 10:59:26 UTC 2018 - sebix+novell.com@sebix.at
+Tue Feb 13 10:59:26 UTC 2018 - sebix@sebix.at
 
 - update to version 2.4.87.1:
  - APIs to manage sharing groups. (#185)
@@ -2418,7 +2977,7 @@ Tue Feb 13 10:59:26 UTC 2018 - sebix+novell.com@sebix.at
 - remove patch fix-Encode_string_in__encode_file_to_upload.patch, included upstream
 
 -------------------------------------------------------------------
-Tue Jan 30 12:37:13 UTC 2018 - sebix+novell.com@sebix.at
+Tue Jan 30 12:37:13 UTC 2018 - sebix@sebix.at
 
 - update to version 2.4.87:
  - Add bindings for Galaxies and Taxonimies.
@@ -2432,7 +2991,7 @@ Tue Jan 30 12:37:13 UTC 2018 - sebix+novell.com@sebix.at
 - Add fix-Encode_string_in__encode_file_to_upload.patch to fix encoding problem (#183)
 
 -------------------------------------------------------------------
-Fri Dec 22 17:03:04 UTC 2017 - sebix+novell.com@sebix.at
+Fri Dec 22 17:03:04 UTC 2017 - sebix@sebix.at
 
 - update to version 2.4.85:
  - Add last field to get_csv.
@@ -2447,7 +3006,7 @@ Fri Dec 22 17:03:04 UTC 2017 - sebix+novell.com@sebix.at
  - Include documentation and examples in source dist.
 
 -------------------------------------------------------------------
-Wed Dec 13 17:55:38 UTC 2017 - sebix+novell.com@sebix.at
+Wed Dec 13 17:55:38 UTC 2017 - sebix@sebix.at
 
 - update to version 2.4.84
  - Add methods to get taxonomy(ies)
@@ -2458,7 +3017,7 @@ Wed Dec 13 17:55:38 UTC 2017 - sebix+novell.com@sebix.at
    returns the modified events based on timestamp.
 
 -------------------------------------------------------------------
-Thu Dec  7 11:28:27 UTC 2017 - sebix+novell.com@sebix.at
+Thu Dec  7 11:28:27 UTC 2017 - sebix@sebix.at
 
 - update to version 2.4.83
  - Add get CSV method.
@@ -2473,7 +3032,7 @@ Thu Dec  7 11:28:27 UTC 2017 - sebix+novell.com@sebix.at
  - Add fast publish method. Fix #86
 
 -------------------------------------------------------------------
-Fri Nov 10 08:16:45 UTC 2017 - sebix+novell.com@sebix.at
+Fri Nov 10 08:16:45 UTC 2017 - sebix@sebix.at
 
 - update to version 2.4.82
  - Proper debug system.
@@ -2488,7 +3047,7 @@ Fri Nov 10 08:16:45 UTC 2017 - sebix+novell.com@sebix.at
 - shorten existing changelogs
 
 -------------------------------------------------------------------
-Thu Oct 26 09:56:58 UTC 2017 - sebix+novell.com@sebix.at
+Thu Oct 26 09:56:58 UTC 2017 - sebix@sebix.at
 
 - update to version 2.4.81.2
 - update to version 2.4.81.1:
@@ -2499,12 +3058,12 @@ Thu Oct 26 09:56:58 UTC 2017 - sebix+novell.com@sebix.at
 - add fix-offline-test.patch to fix tests
 
 -------------------------------------------------------------------
-Mon Oct  9 17:44:18 UTC 2017 - sebix+novell.com@sebix.at
+Mon Oct  9 17:44:18 UTC 2017 - sebix@sebix.at
 
 - update to version 2.4.81
 
 -------------------------------------------------------------------
-Wed Oct  4 16:16:57 UTC 2017 - sebix+novell.com@sebix.at
+Wed Oct  4 16:16:57 UTC 2017 - sebix@sebix.at
 
 - update to version 2.4.80.1
  - Fix
@@ -2516,7 +3075,7 @@ Wed Oct  4 16:16:57 UTC 2017 - sebix+novell.com@sebix.at
 - removed fix-tests-pr-111.patch, merged upstream
 
 -------------------------------------------------------------------
-Wed Sep 20 09:37:12 UTC 2017 - sebix+novell.com@sebix.at
+Wed Sep 20 09:37:12 UTC 2017 - sebix@sebix.at
 
 - update to version 2.4.80
  - Allow to get the list of known types out of MISPEvent again.
@@ -2529,13 +3088,13 @@ Wed Sep 20 09:37:12 UTC 2017 - sebix+novell.com@sebix.at
 - add fix-tests-pr-111.patch to skip an optional test depending on third party data
 
 -------------------------------------------------------------------
-Thu Sep  7 20:05:10 UTC 2017 - sebix+novell.com@sebix.at
+Thu Sep  7 20:05:10 UTC 2017 - sebix@sebix.at
 
 - update to version 2.4.79
 - updated shebang fixes
 
 -------------------------------------------------------------------
-Wed Aug 10 14:15:10 UTC 2016 - sebix+novell.com@sebix.at
+Wed Aug 10 14:15:10 UTC 2016 - sebix@sebix.at
 
 - inital package
 

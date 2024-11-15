@@ -1,1 +1,1 @@
-addFilter("python-pymisp-doc.noarch: W: zero-length /usr/share/doc/packages/python-pymisp-doc/examples/feed-generator/output/empty")
+addFilter("python-pymisp-doc.noarch: E: zero-length /usr/share/doc/packages/python-pymisp-doc/examples/feed-generator/output/empty")
