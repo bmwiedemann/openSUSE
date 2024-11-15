@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov 15 09:45:33 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- Update to 1.8.2
+  * fix(playlists): handle missing regex group in trackCount
+  * create_playlist: raise error when invalid characters are pa…
+  * upload_song: add error when file exceeds limit of 300MB
+  * refactor: use pathlib
+  * search: fix missing artists when filtering songs/videos
+  * search: fix missing playlistId for album results while authenticated
+  * attempt to find runs in subtitle if not in title
+
+-------------------------------------------------------------------
 Wed Aug 28 07:14:54 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.8.1
