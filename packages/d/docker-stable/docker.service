@@ -16,7 +16,7 @@ EnvironmentFile=/etc/sysconfig/docker
 # enabled by default because enabling socket activation means that on boot your
 # containers won't start until someone tries to administer the Docker daemon.
 Type=notify
-ExecStart=/usr/bin/dockerd --add-runtime oci=/usr/sbin/docker-runc $DOCKER_NETWORK_OPTIONS $DOCKER_OPTS
+ExecStart=/usr/bin/dockerd --add-runtime oci=/usr/sbin/runc $DOCKER_OPTS
 ExecReload=/bin/kill -s HUP $MAINPID
 
 # Having non-zero Limit*s causes performance problems due to accounting overhead

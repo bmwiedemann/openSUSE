@@ -16,11 +16,12 @@
 #
 # nodebuginfo
 
+
+%bcond_without  apparmor
+
 # The flavour is defined with a macro to try to keep docker and docker-stable
 # as similar as possible, to make maintenance a little easier.
 %define flavour -stable
-
-%bcond_without  apparmor
 
 # Where important update information will be stored, such that an administrator
 # is guaranteed to see the relevant warning.
@@ -112,18 +113,18 @@ BuildRequires:  fdupes
 %if %{with apparmor}
 BuildRequires:  libapparmor-devel
 %endif
+BuildRequires:  fish
+BuildRequires:  go-go-md2man
 BuildRequires:  libbtrfs-devel >= 3.8
 BuildRequires:  libseccomp-devel >= 2.2
 BuildRequires:  libtool
 BuildRequires:  linux-glibc-devel
 BuildRequires:  procps
 BuildRequires:  sqlite3-devel
-BuildRequires:  zsh
-BuildRequires:  fish
-BuildRequires:  go-go-md2man
-BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  sysuser-tools
+BuildRequires:  zsh
 BuildRequires:  golang(API) = 1.21
+BuildRequires:  pkgconfig(libsystemd)
 %if %{with apparmor}
 %if 0%{?sle_version} >= 150000
 # This conditional only works on rpm>=4.13, which SLE 12 doesn't have. But we
@@ -179,8 +180,8 @@ Requires(post): shadow
 # configured to use lvm and the user doesn't explicitly provide a
 # different storage-driver than devicemapper
 Recommends:     lvm2 >= 2.2.89
-Recommends:     git-core >= 1.7
 Recommends:     %{name}-rootless-extras
+Recommends:     git-core >= 1.7
 ExcludeArch:    s390 ppc
 
 %description
@@ -225,9 +226,9 @@ Key features:
 Summary:        Rootless support for Docker
 Group:          System/Management
 Requires:       %{name} = %{docker_version}
-Requires:       slirp4netns >= 0.4
 Requires:       fuse-overlayfs >= 0.7
 Requires:       rootlesskit
+Requires:       slirp4netns >= 0.4
 BuildArch:      noarch
 # docker-stable cannot be used alongside docker.
 %if "%{name}" == "docker-stable"
