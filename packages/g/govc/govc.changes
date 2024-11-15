@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 15 07:09:14 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.46.1:
+  * chore: Update version.go for v0.46.1
+  * fix: vcsim: avoid possible panic when applying PropertyFilter
+  * cns: Support encryption/re-encryption of volumes
+
+-------------------------------------------------------------------
 Tue Nov 12 08:15:17 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.46.0:
