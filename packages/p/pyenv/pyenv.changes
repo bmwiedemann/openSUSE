@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Nov 15 06:15:34 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.4.17
+
+- Update 2.4.17
+  * Add miniconda3-24.9.2-0 by @binbjz in #3096
+  * Add Anaconda3-2024.10-1 by @binbjz in #3097
+
+-------------------------------------------------------------------
+Fri Nov 15 06:15:01 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.4.16
+
+- Update 2.4.16
+  * Add GraalPy 24.1.1 by @msimacek in #3092
+  * Add CPython 3.14.0a1 by @edgarrmondragon in #3093
+
+-------------------------------------------------------------------
+Fri Nov 15 06:14:15 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.4.15
+
+- Update 2.4.15
+  * CI: replace set-output with GITHUB_OUTPUT by @tuzi3040 in #3079
+  * Make uninstall yes/no prompt consistent with others by @dpoznik in #3080
+  * Add CPython 3.13.0 by @edgarrmondragon in #3081
+  * Avoid shadowing of virtualenvs with the name starting with "python-" by @aarbouin in #3086
+  * Support free-threaded CPython flavor in prefix resolution by @native-api in #3090
+
+-------------------------------------------------------------------
 Wed Oct  2 13:48:57 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.4.14
 
 - Update 2.4.14
