@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 15 07:06:41 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.15.8:
+  * Create sub-package directories in WorkDir before building
+    subpackage
+
+-------------------------------------------------------------------
 Thu Nov 14 10:13:58 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.15.7:
