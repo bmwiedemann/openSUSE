@@ -273,4 +273,26 @@
 </comment>
     <requestid>1161157</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e165fd0c81ae8b34be1b6e4cabc8dd07</srcmd5>
+    <version>0.23</version>
+    <time>1731681816</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.23, update LLVM/Clang to version 19.
+  * Treat types from overridden method signatures as provided by
+    base.
+  * Analyze associated headers more closely with their source file.
+  * Many improvements for template analysis.
+  * Accept -xc++-header.
+  * Improve reporting of binary operators in macros.
+  * Improve heuristics for reporting overloaded functions.
+  * Consider variable definitions uses of extern declarations.
+  * Update public standard library header list for C++23.
+  * Improve mappings for standard C library.
+  * Add new 'clang-warning' formatter.
+  * Default to system core count if -j is omitted.
+- Rebase iwyu_include_picker.patch and update to GCC 14.
+</comment>
+    <requestid>1224340</requestid>
+  </revision>
 </revisionlist>

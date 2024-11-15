@@ -17,10 +17,10 @@
 #
 
 
-%define _llvm_version 18
+%define _llvm_version 19
 
 Name:           include-what-you-use
-Version:        0.22
+Version:        0.23
 Release:        0
 Summary:        A tool to analyze #includes in C and C++ source files
 License:        NCSA
@@ -85,10 +85,7 @@ rm iwyu.gcc.imp
 %cmake_install
 
 %check
-# We don't support MS style inline assembly, because we removed the dependency
-# on the X86 target of LLVM. The driver test produces a different error, and an
-# additional error on 32-bit architectures.
-%global exclude_tests cxx.test_ms_inline_asm|driver.test_offload_openmp
+%global exclude_tests no-test-should-match-this
 
 %ifarch %arm
 %global exclude_tests %exclude_tests|cxx.test_badinc
