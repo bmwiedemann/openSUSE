@@ -1,7 +1,7 @@
 #
 # spec file for package lasso
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019 Red Hat, Inc., Raleigh, North Carolina, United States of America.
 # Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
 #
@@ -35,7 +35,12 @@ License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://lasso.entrouvert.org/
 Source:         https://dev.entrouvert.org/lasso/lasso-%{version}.tar.gz
-# Backports from upstream (from Fedora)
+# PATCH-FIX-OPENSUSE lasso-automake-1.17-support.patch -- Fix builds with automake 1.17
+Patch1:         lasso-automake-1.17-support.patch
+# PATCH-FIX-UPSTREAM lasso-fix-implicit-declarations.patch -- Fix implicit declarations
+Patch2:         lasso-fix-implicit-declarations.patch
+# PATCH-FIX-UPSTREAM lasso-libxml2-2.12-support.patch -- Fix builds with libxml2 2.12
+Patch3:         lasso-libxml2-2.12-support.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  check-devel

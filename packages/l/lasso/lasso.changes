@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 15 03:09:23 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Fix build issues
+  * lasso-automake-1.17-support.patch
+  * lasso-fix-implicit-declarations.patch
+  * lasso-libxml2-2.12-support.patch
+
+-------------------------------------------------------------------
 Thu Mar 16 12:52:32 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to 2.8.2:
