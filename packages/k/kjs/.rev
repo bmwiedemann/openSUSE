@@ -992,4 +992,12 @@
     <comment>KDE Frameworks 5.116 (forwarded request 1173590 from krop)</comment>
     <requestid>1175153</requestid>
   </revision>
+  <revision rev="125" vrev="2">
+    <srcmd5>438088672ed4a6b53063cdbe1a380d7f</srcmd5>
+    <version>5.116.0</version>
+    <time>1731858131</time>
+    <user>anag+factory</user>
+    <comment>- Replace %requires_eq usage with 'Requires'</comment>
+    <requestid>1224598</requestid>
+  </revision>
 </revisionlist>

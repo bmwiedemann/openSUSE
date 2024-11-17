@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 16 23:15:18 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Replace %requires_eq usage with 'Requires'
+
+-------------------------------------------------------------------
 Mon May  6 11:32:57 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.116.0

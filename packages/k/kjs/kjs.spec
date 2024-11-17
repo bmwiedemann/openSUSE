@@ -57,7 +57,7 @@ Microsoft's JScript.
 
 %package -n libKF5JSApi%{sonum}
 Summary:        KDE Javascript engine
-%requires_ge    libKF5JS5
+Requires:       libKF5JS%{sonum} = %{version}
 %requires_ge    libQt5Core5
 
 %description -n libKF5JSApi%{sonum}
@@ -83,6 +83,7 @@ Microsoft's JScript. Development files.
 
 %build
 %cmake_kf5 -d build
+
 %cmake_build
 
 %install
