@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Nov 15 15:43:42 UTC 2024 - mrueckert@suse.de
+
+- Update to version 1.68.2:
+  * Version v1.68.2
+  * s3: fix multitenant multipart uploads with CEPH
+  * local: fix permission and ownership on symlinks with --links and --metadata
+  * bisync: fix output capture restoring the wrong output for logrus
+  * build: fix comments after golangci-lint upgrade
+  * build(deps): bump github.com/golang-jwt/jwt/v4 from 4.5.0 to 4.5.1
+  * pikpak: fix fatal crash on startup with token that can't be refreshed
+  * serve s3: fix excess locking which was making serve s3 single threaded
+  * onedrive: fix Retry-After handling to look at 503 errors also
+  * s3: Storj provider: fix server-side copy of files bigger than 5GB
+  * docs: mention that inline comments are not supported in a filter-file
+  * docs: fix forward refs in step 9 of using your own client id
+  * docs: fix Scaleway Glacier website URL
+  * dlna: fix loggingResponseWriter disregarding log level
+  * s3: fix crash when using --s3-download-url after migration to SDKv2
+  * docs: update overview to show pcloud can set modtime
+  * Add RcloneView as a sponsor
+  * accounting: fix wrong message on SIGUSR2 to enable/disable bwlimit
+  * pikpak: fix cid/gcid calculations for fs.OverrideRemote
+  * local: fix --copy-links on macOS when cloning
+  * Start v1.68.2-DEV development
+- drop CVE-2024-51744.patch
+
+-------------------------------------------------------------------
 Thu Nov  7 09:44:05 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Add CVE-2024-51744.patch: this updates jwt v4.5.1 which contains
