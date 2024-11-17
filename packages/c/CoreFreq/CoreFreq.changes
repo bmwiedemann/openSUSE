@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Nov 16 14:22:18 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 1.98.6
+  * [AMD]
+    - [V2000 Series] Adding the Ryzen Embedded V2A46
+    - [Family 1Ah][All Families] Refactoring topology for CCD cluster
+    Confirmed 7950X, 3950X
+  * [Intel]
+    - ODCM is confirmed working on Raptor Lake architecture
+    Confirmed i9-14900K
+  * [UI]
+    - Increased max ratio in HWP condition to avoid a zero frequency
+    Confirmed i9-14900K
+  * [Build]
+    - Print other variables from Makefile recipe info
+    CORE_COUNT
+    TASK_ORDER
+    MAX_FREQ_HZ
+    HWM_CHIPSET
+  * [CI]
+    - [AArch64] Commenting out the debian-testing and alpine-latest
+  * [Doc]
+    - Mention the AMD family 1Ah support in README
+
+-------------------------------------------------------------------
 Fri Nov  8 09:56:48 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to 1.98.5
