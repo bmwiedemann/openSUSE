@@ -285,4 +285,12 @@
     <comment>Qt 5.15.15 (forwarded request 1199183 from favogt)</comment>
     <requestid>1199189</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>7abd91e232fdc463550ff607dca492cf</srcmd5>
+    <version>5.15.15+kde0</version>
+    <time>1731858133</time>
+    <user>anag+factory</user>
+    <comment>- Update libqt5-qtdatavis3d-imports requirements</comment>
+    <requestid>1224600</requestid>
+  </revision>
 </revisionlist>

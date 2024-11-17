@@ -36,10 +36,9 @@ Source:         %{tar_version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  libqt5-qtdeclarative-devel >= %{real_version}
 %if %{qt5_snapshot}
-#to create the forwarding headers
+# To create the forwarding headers
 BuildRequires:  perl
 %endif
-BuildRequires:  xz
 %requires_ge    libQtQuick5
 
 %description
@@ -94,8 +93,6 @@ This package provides examples for Qt 5 Data Visualization module.
 %package imports
 Summary:        QML imports for the Qt5 Data Visualization module
 Group:          Development/Libraries/X11
-%requires_ge    libDataVisualization5
-Supplements:    (%{libname} and libDataVisualization5)
 
 %description imports
 This package contains QML import files for Qt5 Data Visualization module.
