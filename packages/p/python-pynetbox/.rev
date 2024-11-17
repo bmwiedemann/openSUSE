@@ -319,4 +319,16 @@
   * Fix linter errors</comment>
     <requestid>1194589</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>f7ca1a9eca497bdaa5699a3272f68b11</srcmd5>
+    <version>7.4.1</version>
+    <time>1731858116</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1224460 from glaubitz
+
+- Update to 7.4.1
+    * Updated requests and urllib3 python libraries due to
+      security vulnerabilities</comment>
+    <requestid>1224559</requestid>
+  </revision>
 </revisionlist>
