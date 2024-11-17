@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Nov 15 11:03:35 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to version 12.5:
+  * Bug fixes
+    - Fix assertion failure when running with some window managers (e.g. qtile) and no window is focused (#1384)
+- Update to version 12.4:
+  * Improvements
+    - Better workaround for a NVIDIA quirk, fix high CPU usage when
+      screen is off (#1265)
+    - Avoid using xrender convolution in all cases, should improve
+      shadow performance for most users (#1349)
+  * Bug fixes
+    - Fix leak of saved window images
+  * Build fixes
+    - Fix build on arm32 (#1355)
+
+-------------------------------------------------------------------
 Tue Oct 15 07:42:35 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
 - removed picom-11.2-rtkit.patch now upstreamed
