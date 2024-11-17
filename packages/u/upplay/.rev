@@ -60,4 +60,12 @@ upplay is a Qt5 UPnP / OpenHome audio  Control Point from the same developer tha
     <comment>Update to 1.7.3</comment>
     <requestid>1174875</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>958bc044ef13f097c5f4b7a7545fa49b</srcmd5>
+    <version>1.7.8</version>
+    <time>1731858119</time>
+    <user>anag+factory</user>
+    <comment>Update to 1.7.8</comment>
+    <requestid>1224565</requestid>
+  </revision>
 </revisionlist>

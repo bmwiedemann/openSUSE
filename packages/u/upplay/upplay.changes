@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Nov 16 09:22:15 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 1.7.8:
+  * Fix sticky playlist append mode (could not switch back to not append)
+  * Other small fixes in playlist insertions
+- Update to 1.7.7:
+  * Add options to save the playlist as Json or CSV
+  * Other small fixes.
+- Update to 1.7.6:
+  * Browser: add an album entry at the top when browsing an album or playlist
+    container. Suppress the repeated listing of the album title for each track
+    in this case
+  * Browser: span cells to the right when no data follows
+  * Browser: add "show metadata" popup entry
+  * Browser: fix issues with middle-click with recent qwebenginepage versions
+  * Browser: big improvement for loading big lists (multi-thousand) with webengine
+
+-------------------------------------------------------------------
+Thu Aug 22 09:30:09 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 1.7.5:
+  * Automatically conform to system light/dark style when possible.
+  * Directory browser: better preserve the media server ordering (don't
+    separate containers/items as, e.g. Minimserver uses containers for
+    subtitles etc.)
+  * Expand some common aliases for MIME types when checking compatibility
+    with the renderer (e.g. audio/flac audio/x-flac application/flac).
+  * Limit auto-traversal of single-entry containers to the top levels (with
+    adjustable preference)
+  *  UPnP/AV: fix first track add on empty player failing
+- Update to 1.7.4:
+  * Add option to switch light/dark mode according to desktop setting
+
+-------------------------------------------------------------------
 Fri May 17 13:50:38 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
 - update to 1.7.3
