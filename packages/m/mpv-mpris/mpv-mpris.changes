@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov 16 16:46:08 UTC 2024 - Mia Herkt <mia@0x0.st>
+
+- Fix package build failure due to mpv scripts directory not being
+  owned by a package
+
+-------------------------------------------------------------------
 Sun Sep 17 01:36:42 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to 1.1

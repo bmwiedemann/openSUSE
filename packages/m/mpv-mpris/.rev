@@ -71,4 +71,13 @@
     <comment></comment>
     <requestid>1111981</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>366874804b6d570c1f6d681c5617c840</srcmd5>
+    <version>1.1</version>
+    <time>1731858126</time>
+    <user>anag+factory</user>
+    <comment>- Fix package build failure due to mpv scripts directory not being
+  owned by a package</comment>
+    <requestid>1224582</requestid>
+  </revision>
 </revisionlist>
