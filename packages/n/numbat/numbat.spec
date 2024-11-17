@@ -17,7 +17,7 @@
 
 
 Name:           numbat
-Version:        1.12.0
+Version:        1.14.0
 Release:        0
 URL:            https://github.com/sharkdp/numbat
 Summary:        Statically typed programming language for scientific computations
@@ -46,7 +46,9 @@ pushd numbat-cli
 popd
 
 %check
+pushd numbat-cli
 %{cargo_test} --all-features
+popd
 
 %files
 %license LICENSE-MIT LICENSE-APACHE

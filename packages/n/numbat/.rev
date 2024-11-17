@@ -15,4 +15,435 @@
     <comment></comment>
     <requestid>1181283</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e24f79126942fbbe74476d5003909dee</srcmd5>
+    <version>1.14.0</version>
+    <time>1731858121</time>
+    <user>anag+factory</user>
+    <comment>- Fix tests in specfile
+- Update vendored dependencies
+- Update to version 1.14.0:
+  * Fix unit_of-related crashes
+  * Allow units with rational exponents
+  * Add support for highlighting of @example
+  * Use '%' in tutorial
+  * Add percentage-calculation functions
+  * Merge pull request #608 from sharkdp/add-cdot-operator
+  * Add '\cdot' as additional multiplication operator
+  * Merge pull request #425 from ValentinLeTallec/master
+  * Merge remote-tracking branch 'origin/master' into ValentinLeTallec/master
+  * Merge pull request #568 from Goju-Ryu/mixed-units-conversion
+  * Replace 'foldl(_add, 0)' by 'sum'
+  * Use ′ and ″ as default short names for arcminute/arcsecond
+  * Add @example for unit_list
+  * Add explicit use statement for non-prelude functions to examples
+  * Fixed some clippy warnings
+  * Improved error message when encountering a trailing equals sign, adding heuristic to check whether user might have been trying to define a function
+  * Removed needless `Product[Into]Iter` types
+  * Switched to a for loop (simpler)
+  * Added consuming `DType::into_factors`, removing need for mutable access to factors Changed `from_factors` to take an owned `Vec`
+  * Removed some code duplication
+  * Cleaned up some todos and clippy warnings
+  * Merge pull request #566 from Bzero/example_decorator
+  * Merge branch 'master' into example_decorator
+  * More compact examples
+  * Make tests use different values on the right side instead of the left of asserts
+  * Shrunk `TokenKind` from 16 bytes to 2 by replacing `IntegerWithBase(usize)` with `IntegerWithBase(u8)` (max base is 16, no way do we exceed 255) Removed Box from base-n digit predicate function by switching to function pointers
+  * Improved completion performance Removed non-matching candidates from consideration earlier, obviating need to filter them out Removed clones of candidates that didn't match (before: clone then check; after: check then clone)
+  * Comment
+  * Replaced many `String`s in `typed_ast::Expression` with `&amp;'a str` (generally anywhere we could borrow from the input)
+  * Borrowed name in `typed_ast::Statement::DefineDimension`
+  * Borrowed type parameter names in `typed_ast::Statement::DefineFunction`
+  * DefineVariable name `String` -&gt; `&amp;'a str`
+  * Removed allocations in `typed_ast::Statement::Define*` variants (`String` -&gt; `&amp;'a str`)
+  * Corrected swapped epsilon/varepsilon unicode input shortcuts
+  * Update documentation
+  * Add explicit file encoding to `open` calls
+  * Code cleanup reducing clones (in theory)
+  * Minor code cleanup
+  * Formatting
+  * Deduped some code
+  * Remove allocations in `Markup` by switching to `Cow&lt;'static, str&gt;` Now strings are only allocated if non-static (The vast majority of markup strings are `&amp;'static`)
+  * Plumbed spans through alias definitions, allowing for more precise error messages
+  * Add 'tau' alias for 'τ', closes #581
+  * Update mixed-unit tests
+  * Add comparison with other calculators/languages
+  * fix floating point precision problem
+  * Replace string based mixed unit functions
+  * Add tests and documentation
+  * Fix formatting and simplify
+  * Potential fix of 0.0 float bug
+  * Add `unit_list` function
+  * Use variable in funtion to simplify
+  * Use variable in funtion to simplify
+  * Merge branch 'pr/425_human_format'
+  * Reduce clutter in human time
+  * Apply example suggestions from code review
+  * Fixed two clippy warnings
+  * Simplified type
+  * More `String`s replaced with `&amp;str`s (#579)
+  * Add lowercase alias for EUR
+  * Hopefully fixed wasm build error
+  * Clone example context instead of re-interpreting
+  * Apply suggested example formatting
+  * Remove example for the time function
+  * Move details closing tag inside conditional
+  * Expand documentation by adding examples
+  * Automatically add examples to the documentation
+  * Add @examples decorator
+  * Replaced `ByteIndex::start()` with `ByteIndex(0)` --- now that it's just an index, `0` is clearer than `start` (which made sense when there was other data beyond just the current byte)
+  * Renamed `SourceCodePositition` [sic] to `ByteIndex` to make its semantics clearer (it really is just a byte index into a string, nothing more nothing less)
+  * Removed `line` and `position` from `SourceCodePositition` [sic] Made it a tuple struct instead; now it is just a wrapper over a byte index This was... surprisingly simple? turns out `line` and `position` weren't used anywhere but tests; they're never surfaced to the user
+  * Add lowercase aliases for currency units
+  * Dimensionful abs function
+  * Update plotly to 0.10
+  * Replaced `CommandKind::new` with `impl FromStr for CommandKind` (isomorphic but more self-descriptive)
+  * Removed `ls` as alias for command `list` in web version for consistency with CLI Updated web docs
+  * Updated cli docs
+  * Restored accidentatlly removed alias `?` for `help`
+  * Moved `writeln!` arg into format string
+  * Replaced boolean `errored` with isomorphic but clearer `Result&lt;(), ()&gt;` and renamed some items accordingly
+  * Boxed `NumbatError`
+  * Factored out common components of `evaluate_const_expr`
+  * boxed the errors to reduce size of `Result&lt;T, BigError&gt;`
+  * Moved pushing to session history out of `parse_and_evaluate` and into `run_repl` Therefore changed `parse_and_evalute` to return a struct of `control_flow, errored` to let session history know whether the command in question errored Added tests to `session_history.rs` Code seems overall not terrible now
+  * Renamed session history file to history.nbt
+  * Simplified history implementation, at the cost of one allocation when reading prelude
+  * Moved `session_history` storage from `Cli::repl` into `Cli::repl_loop`
+  * Initial, simple implementation of saving per-session history
+  * Update to official repo
+  * Enable tests to run without internet access
+  * Fix WASM tests
+  * Consolidated duplicated code in `TypeChecker::elaborate_define_variable` and the `ast::Statement::DefineDerivedUnit` branch of `TypeChecker::elaborate_statement`
+  * Removed clone of `ctx.dimension_registry()` (requires an additional `self.context.lock()` as the lock must be dropped to allow `self` to be borrowed in the interm)
+  * Fixed inadvertently removed trailing whitespaces whose removal broke tests
+  * Fixed a handful of clippy &quot;needless `&amp;` on `&amp;str`&quot; warnings
+  * Removed pointless `.into()` on `&amp;'static str` into itself
+  * Renamed arg for clarity
+  * Fixed semantically incorrect use of `char::len_utf8` (although it was used on a newline and would've had no effect, it is semantically correct to keep the original `+= 1`)
+  * Removed `// todo` comment (we did the todo)
+  * Replaced the `String` in `Token` with `&amp;'a str` Unfortunately due to borrow checker limitations, this required moving `input` fields out of both `Parser` and `Tokenizer`, as with the immutable borrow in place, there is no way to tell Rust that a mutable borrow won't touch the input So, the input is now an (immutable ref) argument to all the methods that used to refer to `&amp;self.input` And there were a lot... But now `Token` doesn't carry an owned `String` Also shrunk `Tokenizer` by doing all math in terms of byte offsets into its input (using existing `SourceCodePosition` fields) instead of storing a separate `Vec&lt;char&gt;` with char indices
+  * Replaced `String` with `&amp;'static str` in `ForeignFunction`
+  * Removed unused `CommandParser::set_code_source_id`
+  * Removed alias &quot;ls&quot; for &quot;list&quot; command
+  * Replaced trailing space characters in two tests with `\x20` to prevent them from being removed when removing trailing whitespace on save
+  * Changed `InvalidCommand` to take a `String` instead of `&amp;'static str` Replaced `ensure_zero_args!` macro with function, now that this is possible (since we can use `format!` instead of `concat!)
+  * Enum-ified command kind, making it strongly typed (no need for `unreachable!`) Made &quot;list&quot; report incorrect number of args before reporting invalid arg, in the event that both errors were present
+  * Fixed bug where `resolver.add_code_source` was run twice per non-command input How: split `CommandParser` into a second struct, `SourcelessCommandParser`, that contains just the input, no `code_source_id` `SourcelessCommandParser` has a fallible initializer that only returns `Some(Self)` if the line is indeed a command (ie starts with a command word) Then we simply check if this initializer succeeded; if so then make a new `code_source_id` and construct the full `CommandParser`, then parse the command
+  * Made struct `CommandParser` and reimplemented command parsing in terms of it (much cleaner)
+  * Passed `code_source_id` to `parse_command` instead of a `Resolver` Note that there is a bug where non-command inputs run `add_course_source` twice, which leads to incorrect line numbers
+  * Fixed clippy warnings
+  * Fixed typo: TrivialResultion -&gt; TrivialResolution
+  * Added .DS_Store to gitignore
+  * Add 3D printing example
+  * Reduced some copy-pasted code
+  * Continued REPL if `save dst` errored instead of just exiting
+  * Tests for Command
+  * Added Info command Added some helper functions for commands
+  * Implemented commands like `list`, `help`, `save` (new) with more flexible parsing (eg tolerant of arbitrary whitespace) Commands report `ParseError`s if the syntax is invalid (eg too many or not enough args) This required making `Resolver::add_code_source` public and adding `Context::resolver_mut` to track source code positions of commands
+  * Added .DS_Store to gitignore
+  * Add travel cost example
+  * Use noembed feature of plotly.rs
+  * Fix typo
+  * Update documentation in extra::algorithms
+  * Add documentation
+  * Add first version of color format conversions
+  * Move back to deploy.sh (CI)
+  * Move rustc version check from deploy.sh to build.sh
+  * Add regression test for #534
+  * Add regression test for angle example in #505
+  * Remove FullSimplify instruction
+  * remove useless simplify call
+  * fix warning
+  * add a floor_in and round_in function
+  * Fix most of the simplify calls
+  * reduce the number of calls to simplify
+  * Fix typo
+  * Add lines-of-code as a unit
+  * Type-inference Gauss elimination example
+  * Fix pretty printing for some generic types
+  * Remove size of typed_ast::Expression from 416 byte to 224 byte
+  * Safe versions of round/ceil/floor/trunc
+  * Use a MapStack for the environment and namespaces in the typechecker
+  * Add a MapStack datastructure for the typechecker
+  * Fix warning
+  * refactor(numbat): move interpreter.rs and assert_eq_3.rs to interpreter module directory
+  * feat(ffi/procedures): assert_eq_3: in error message, print with precision of epsilon
+  * tests(interpreter): integration tests for assert_eq/3 failure
+  * fix(procedures): assert_eq/3: fail check iff difference is greater than epsilon
+  * feat(Quantity): add abs method
+  * feat(ffi/procedures): assert_eq/3: better error message using consistent units for comparands
+  * fix: formatting in `numbat/src/typechecker/`
+  * style: simplify string formatting for readability
+  * Add XKCD comics to documentation
+  * Use mean earth radius, update XKCD/What-if examples
+  * New example: Geographical distance
+  * Add fixed-point iteration
+  * Fix duplicated word
+  * Enable commented out test
+  * Minor stylistic change
+  * Bump Bytes from yanked version
+  * Add '@description' to vscode extension
+  * Major documentation update
+  * Auto-format JS/CSS files
+  * Change syntax to … where … and …, solve remaining tasks
+  * Use 'where' clause in existing Numbat code
+  * Add new 'where' keyword to Numbat syntaxes
+  * fix the parser for most case
+  * remove insert_at
+  * add an example of local variables
+  * add a typechecking test
+  * add parser test
+  * Make the local definition of variables works in function
+  * make the parser support multi-line where
+  * update the DefineFunction type to include a local variables array
+  * split the statement parsing into multiple function to make it more manageable
+  * implement insert_at
+  * Move examples, do not execute them during testing
+  * Fix tests
+  * Fix WASM build
+  * Add support for bar charts
+  * Rename function
+  * Rename module
+  * Allow empty lines after postfix apply
+  * Change postfix apply to |&gt;
+  * Use reverse function application for optional arguments
+  * Allow empty lines after postfix apply
+  * Change postfix apply to |&gt;
+  * Use larger number of points
+  * Fix list handling
+  * reverse the arguments of cons_end so it fit better with the revers call operator
+  * add tests
+  * Make the reverse function call operator more powerful
+  * Fix doc build
+  * Move cons_end test
+  * Fix typo
+  * simplify slightly the .iter method
+  * uses Arc::ptr_eq where possibel
+  * Better documentation phrasing
+  * rename the advance_view function to tail
+  * re-implements head to avoid unecessary Value::clone
+  * adds a little bit of module documentation
+  * fix bug
+  * add more test on lists
+  * move the list to another module and improve the cons and cons_end
+  * provide an efficient way to push at the end of the list with cons_end
+  * make list slightly less embarrassingly slow
+  * Calendar arithmetic for DateTimes
+  * Fix bug in constraint checker
+  * Use TimeZone::to_offset instead of strftime(&quot;%Z&quot;)
+  * Add volume mount for /usr/share/zoneinfo
+  * Better formatting of date times, including time zones
+  * Improve parse_datetime, add tests
+  * Better error handling
+  * Update to jiff 0.1.3, fix WASM version
+  * Update to jiff 1.2.1, bring back float. seconds
+  * Use link to latest jiff docs
+  * Remove TODO comment
+  * Display clock times (CET, CEST, ..) instead of only offsets
+  * Port from chrono to jiff
+  * Merge remote-tracking branch 'origin/master' into plotting
+  * use skip_empty_lines instead of redefining it
+  * allow newlines between parameters when defining functions
+  * allow closing parens and newlines in function call
+  * Fix typo
+  * Adapt description, remove short versions for now
+  * Add description of therm unit in prelude
+  * update tests for therm and thermie
+  * change unit values
+  * run build.py for CI check
+  * remove heat energy units in documentation
+  * 2 new heat energy units 'therm' and 'thermie' added
+  * Add julian_date conversions
+  * Add support for Unicode subscript-number input
+  * Add mixed-unit conversion functions
+  * Add special symbols for arcmin, arcsec
+  * Add trunc(…) function
+  * Add ord(…) function
+  * Document string functions
+  * Improved documentation
+  * Improved documentation
+  * Minor reorganization
+  * Remove core page
+  * Split list of functions by module
+  * Initial work towards autogenerating the list of functions
+  * info: Print readable function signatures
+  * Update article to latest Numbat version
+  * Impact test with new format
+  * Change human format to &quot;1156 days + 14 hours + ... (approx. 3 years + 2 months)&quot;)
+  * Manage negative times
+  * Fix error on modules_are_self_consistent
+  * Add years and months to human date formatter
+  * Add TODO
+  * Readable types for partially annotated functions
+  * Test more cases
+  * Fix recovery after runtime errors
+  * Initial work on readable function types
+  * Bring back readable types
+  * Remove stale autogenerated file
+  * Fix mdbook warning
+  * Remove workhours example generation
+  * Add 'run' button to all examples in documentation
+  * Auto-generate a 'run' link for numbat examples
+  * Port 'book/build.sh' to python
+  * Add source spans for assertion error messages
+  * Restructure Numbat integration tests
+  * Fix insta warnings
+  * Use assert_eq instead of assert(… == …)
+  * Implement 'gcd' and 'lcm'
+  * Update dependencies
+  * Use push_front/pop_front
+  * Add short -N flag for --no-prelude
+  * Reimplement plot-functionality using plotly
+  * Patch https://github.com/rustwasm/wasm-pack/issues/1389
+  * Fix and extend paper_size example
+  * Allow for newlines after then/else
+  * Support string escape sequences
+  * Minor adaptations
+  * Remove unnecessary cloning in VM
+  * Implement sort_by_key
+  * Remove trailing character after new line test
+  * Allow newlines before closing ] in list expression
+  * Add lists with newline parser tests
+  * Fix clippy suggestions
+  * Split out remaining functions
+  * Split out strings, datetime functions
+  * Split out list functions
+  * Split out math functions
+  * Remove assertions
+  * Use a macro for FFI functions
+  * Split ffi module into multiple files
+  * Move ffi to separate module
+  * root_newton: Add max. iterations to prevent infinite loop
+  * Better error message for empty string interpolations
+  * Fix formatting
+  * Fix spans for list expressions
+  * Fix spans for return type annotations
+  * Fix docs number notation
+  * Add documentation for element_at
+  * Add median
+  * Add standard deviation and variance
+  * Add simple (and inefficient) merge sort
+  * Add take and drop
+  * Add str_find, split, join
+  * tail: throw user error if list is empty
+  * Fix boiling point of tungsten
+  * Add relevant matches to typed hole diagnostics
+  * Add return type
+  * Very basic plotting support
+  * Make local timezone support optional
+  * Add new HasField constraint to fix field access for yet-unknown types
+  * Save full struct type information inside the AccessField AST element
+  * Add coloring config argument
+  * Add linspace
+  * Add typed holes
+  * Add Voyager 1 example
+  * refactor: have 1 source of truth for height
+  * fix: `p.links` shifting
+  * fix: layout shifting after terminal loads
+  * Add simple numerical methods for root finding and differentiation
+  * Change quadratic_equation to return a list of solutions
+  * Update lock file
+  * Better pretty printing for variable definitions
+  * Better pretty printing for unit definitions
+  * Update examples
+  * Bring back readable-type functionality
+  * Bring back printing of function signature in 'info'
+  * Remove logging, resolve some TODOs
+  * Slightly better error messages for constraint solver / substitution errors
+  * Reset deploy script
+  * Disable superfluous tests
+  * Re-enable interpreter tests
+  * Re-implement mean,maximum,minimum using lists
+  * Re-introduce error function in strings.nbt
+  * Change formulation of diff
+  * Active non-dtype list tests
+  * Bring back remaining tests
+  * Fix bug
+  * More inference tests
+  * Tests for more operators
+  * Add tests for exponentiation
+  * Instantiation tests
+  * Fix non-dtype lists
+  * Add list-type inference tests
+  * First batch of type-inference tests
+  * Proper error for fn f(x,y) = x^y
+  * Fix checking of return type
+  * Simplify code
+  * Better arity errors for callables
+  * Enable one more test
+  * Enforce dtype constraint for binary operators
+  * Remove irrelevant test
+  * Add bounds for fn types
+  * Add type parameters to the type 'AST', check missing Dim constraints
+  * Add parsing of type parameter bounds
+  * Minor improvement in error messages
+  * Fix soundness bug for lists
+  * Fix equality, improve errors for lists
+  * Enable even more tests
+  * Proper return-type error reporting, enable more tests
+  * Minor
+  * Re-enable struct tests
+  * Re-enable datetime/human
+  * Restore datetime tests
+  * Improve error reporting for simple expressions
+  * Use polymorphic zero in algebra.nbt
+  * Wasm version
+  * Change deploy script
+  * Remove logging
+  * Make NaN and inf polymorphic, too
+  * Fix printing type of []
+  * Show quantifiers in type schemes
+  * Fix warnings
+  * Better pretty-printing for types
+  * Even more list stuff
+  * assert_eq for all types, add more list functions
+  * Turn exponents into integers
+  * Remove leftover
+  * Bring back most example programs
+  * Add call-generic-function-from-generic-function test
+  * user error tests
+  * Comment out failing tests
+  * Fix exponentiation tests
+  * Fix assert/assert_eq
+  * Add new dtype helper
+  * Fix callable calls
+  * Generic diff function
+  * Uncomment statistics functions
+  * We have proper lists!
+  * Minor
+  * Fix unit definitions
+  * Initial work on exponentiation
+  * Initial work on generic functions
+  * Proper generalization and instantiation for identifiers
+  * Use TypeSchemes inside the typed AST
+  * Prepare TypeScheme
+  * Refactoring
+  * Apply substitutions to the environment
+  * Use log crate
+  * Move identifiers to Environment
+  * Move function signature
+  * Division
+  * Hacky new DType implementation
+  * Initial work on function definitions
+  * Remove variadic functions
+  * Some changes w.r.t lists
+  * Re-enable some tests
+  * First set of constraints, disable failing tests
+  * Remove Never, initial constraints
+  * Add environment, name generator, qualified types, type schemes
+  * Basic error handling
+  * Move over code from type inference experiments
+  * Move function
+  * Reduce public interface of typechecker
+  * Clean up includes
+  * Split typechecker into multiple modules
+  * Add some initial examples
+  * Preliminary support for generic lists
+  * Add proper type checking for lists
+  * Initial support for creating lists
+  * Show quotes for pretty-printed strings
+</comment>
+    <requestid>1224563</requestid>
+  </revision>
 </revisionlist>
