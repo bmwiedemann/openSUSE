@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov 17 00:03:18 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add patch for Xerces 3.3 compatibility (upstream with changes):
+  * freecad-xerces_3_3_compat.patch
+
+-------------------------------------------------------------------
 Wed Sep 18 09:35:46 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Add patch for Boost 1.86 compatibility (upstream with changes):

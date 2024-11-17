@@ -60,6 +60,8 @@ Patch13:        https://github.com/FreeCAD/FreeCAD/commit/91457bbdee2422c7f03726
 Patch14:        freecad-opengl.patch
 # PATCH-FIX-UPSTREAM - patch from master, modified for 0.21.1 - https://github.com/FreeCAD/FreeCAD/commit/98888241920ad04fa3c2f56bdf196debf8cfb39c.patch
 Patch15:        boost_1_86_fixes.patch
+# PATCH-FIX-UPSTREAM - patch from master, modified for 0.21.2 - https://github.com/FreeCAD/FreeCAD/commit/7a6a82e2ca858c24d97e1f34c77777b25a9e0859.patch
+Patch16:        freecad-xerces_3_3_compat.patch
 
 # Test suite fails on 32bit and I don't want to debug that anymore
 ExcludeArch:    %ix86 %arm ppc s390 s390x
