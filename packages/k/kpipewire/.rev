@@ -151,4 +151,12 @@
     <comment>Plasma 5.27.11</comment>
     <requestid>1157379</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>50f31aebf16961e89c3c08923f9d3329</srcmd5>
+    <version>5.27.11</version>
+    <time>1731858131</time>
+    <user>anag+factory</user>
+    <comment>- Fix %requires_eq usage</comment>
+    <requestid>1224599</requestid>
+  </revision>
 </revisionlist>

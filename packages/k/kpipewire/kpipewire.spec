@@ -60,7 +60,7 @@ KPipeWire provides PipeWire integration for the Plasma desktop and mobile shells
 
 %package -n libKPipeWire%{_sover}
 Summary:        PipeWire integration for KDE Plasma - main library
-%requires_eq    libQt5Gui
+%requires_eq    libQt5Gui5
 
 %description -n libKPipeWire%{_sover}
 KPipeWire provides PipeWire integration for the Plasma desktop and mobile shells.
@@ -68,7 +68,7 @@ This package contains the main KPipeWire library.
 
 %package -n libKPipeWireRecord%{_sover}
 Summary:        PipeWire integration for KDE Plasma - recording support
-%requires_eq    libQt5Gui
+%requires_eq    libQt5Gui5
 
 %description -n libKPipeWireRecord%{_sover}
 KPipeWire provides PipeWire integration for the Plasma desktop and mobile shells.
@@ -76,7 +76,7 @@ This package contains the library needed for video and audio capture.
 
 %package -n libKPipeWireDmaBuf%{_sover}
 Summary:        PipeWire integration for KDE Plasma - DMA-BUF support
-%requires_eq    libQt5Gui
+%requires_eq    libQt5Gui5
 
 %description -n libKPipeWireDmaBuf%{_sover}
 KPipeWire provides PipeWire integration for the Plasma desktop and mobile shells.
