@@ -18,7 +18,7 @@
 
 Name:           pappl
 %define lname   libpappl1
-Version:        1.4.7
+Version:        1.4.8
 Release:        0
 Summary:        A printer application framework
 License:        Apache-2.0
@@ -90,8 +90,7 @@ perl -i -lpe 's{^\.SILENT:.*}{}g' Makedefs.in
 %make_install RPM_BUILD_ROOT=""
 rm -f "%buildroot/%_libdir"/*.a
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files
 %_bindir/pappl-*
