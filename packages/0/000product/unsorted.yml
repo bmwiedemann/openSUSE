@@ -9456,6 +9456,8 @@ unsorted:
   - jboss-websocket-1.0-api 
   - jboss-websocket-1.0-api-javadoc 
   - jc 
+  - jcache 
+  - jcache-javadoc 
   - jcasgen-maven-plugin 
   - jcat-tool 
   - jchardet 
@@ -13550,7 +13552,7 @@ unsorted:
   - libgmodule-2_0-0-32bit 
   - libgmpxx4 
   - libgmpxx4-32bit 
-  - libgmsh4_12 
+  - libgmsh4_13 
   - libgmxapi0 
   - libgmxapi_mpi0 
   - libgnome-bluetooth13 
@@ -15162,7 +15164,7 @@ unsorted:
   - libopenvas_wincmd1 
   - libopenvas_wmiclient-devel 
   - libopenvas_wmiclient1 
-  - libopenvdb10_1 
+  - libopenvdb11_0 
   - libopenvino2440 
   - libopenvino_c2440 
   - libopenvino_ir_frontend2440 
@@ -17156,7 +17158,6 @@ unsorted:
   - libwtdbomysql4_10_4 
   - libwtdbopostgres4_10_4 
   - libwv-1_2-4 
-  - libwv2-4 
   - libwx_base-suse-devel 
   - libwx_base-suse-nostl-devel 
   - libwx_baseu-suse-nostl12_0_0 
@@ -26186,7 +26187,6 @@ unsorted:
   - python310-mapserver 
   - python310-marathon 
   - python310-markdown-it-py 
-  - python310-markdown-math 
   - python310-markdown2 
   - python310-marshmallow 
   - python310-mashumaro 
@@ -26284,6 +26284,7 @@ unsorted:
   - python310-mulpyplexer 
   - python310-multi_key_dict 
   - python310-multidict 
+  - python310-multipart 
   - python310-multipledispatch 
   - python310-multivolumefile 
   - python310-munch 
@@ -26439,7 +26440,6 @@ unsorted:
   - python310-opentelemetry-util-http 
   - python310-openwrt-luci-rpc 
   - python310-opt-einsum 
-  - python310-orange-canvas-core 
   - python310-ordered-namespace 
   - python310-ordered-set 
   - python310-orderedmultidict 
@@ -29795,7 +29795,6 @@ unsorted:
   - python311-manuel-doc 
   - python311-mapserver 
   - python311-marathon 
-  - python311-markdown-math 
   - python311-markdown2 
   - python311-marshmallow 
   - python311-mashumaro 
@@ -29891,6 +29890,7 @@ unsorted:
   - python311-mulpyplexer 
   - python311-multi_key_dict 
   - python311-multidict 
+  - python311-multipart 
   - python311-multipledispatch 
   - python311-multivolumefile 
   - python311-munch 
@@ -30038,7 +30038,6 @@ unsorted:
   - python311-opentelemetry-util-http 
   - python311-openwrt-luci-rpc 
   - python311-opt-einsum 
-  - python311-orange-canvas-core 
   - python311-ordered-namespace 
   - python311-ordered-set 
   - python311-orderedmultidict 
@@ -33420,7 +33419,6 @@ unsorted:
   - python312-mapserver 
   - python312-marathon 
   - python312-markdown-it-py 
-  - python312-markdown-math 
   - python312-markdown2 
   - python312-marshmallow 
   - python312-mashumaro 
@@ -33518,6 +33516,7 @@ unsorted:
   - python312-mulpyplexer 
   - python312-multi_key_dict 
   - python312-multidict 
+  - python312-multipart 
   - python312-multipledispatch 
   - python312-multivolumefile 
   - python312-munch 
@@ -33673,7 +33672,6 @@ unsorted:
   - python312-opentelemetry-util-http 
   - python312-openwrt-luci-rpc 
   - python312-opt-einsum 
-  - python312-orange-canvas-core 
   - python312-ordered-namespace 
   - python312-ordered-set 
   - python312-orderedmultidict 
@@ -37902,10 +37900,18 @@ unsorted:
   - telepathy-rakia-devel 
   - telepathy-sipe 
   - teleport 
+  - teleport-bash-completion 
   - teleport-fdpass-teleport 
   - teleport-tbot 
+  - teleport-tbot-bash-completion 
+  - teleport-tbot-zsh-completion 
   - teleport-tctl 
+  - teleport-tctl-bash-completion 
+  - teleport-tctl-zsh-completion 
   - teleport-tsh 
+  - teleport-tsh-bash-completion 
+  - teleport-tsh-zsh-completion 
+  - teleport-zsh-completion 
   - tellico 
   - tellico-lang 
   - telly-skout 
@@ -47177,7 +47183,6 @@ unsorted:
   - tftpboot-installation-openSUSE-Tumbleweed-x86_64 
   - tgt 
   - the_silver_searcher 
-  - thefuck 
   - thermal-monitor 
   - thermald 
   - thessalonica-oldstandard-ttf-fonts 
@@ -48623,7 +48628,6 @@ unsorted:
   - wumpus 
   - wv 
   - wv-devel 
-  - wv2-devel 
   - wxEDID 
   - wxEphe 
   - wxGTK3-3_2-devel 
