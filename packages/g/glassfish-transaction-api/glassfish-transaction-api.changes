@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 16 00:10:04 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Add compatibility alias to javax.transaction:transaction-api
+
+-------------------------------------------------------------------
 Thu Oct 26 04:25:05 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Build with source and target levels 8

@@ -39,4 +39,12 @@
     <comment>source/target 8 == build with jdk 21</comment>
     <requestid>1120413</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>c31fe78f3b407aae2c7fb2937c696581</srcmd5>
+    <version>1.3</version>
+    <time>1731858099</time>
+    <user>anag+factory</user>
+    <comment>Add a compatibility alias</comment>
+    <requestid>1224528</requestid>
+  </revision>
 </revisionlist>

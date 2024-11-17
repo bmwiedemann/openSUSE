@@ -1,7 +1,7 @@
 #
 # spec file for package glassfish-transaction-api
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,6 +55,8 @@ This package contains javadoc for %{name}.
 %pom_xpath_set "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:configuration/pom:target" "1.8"
 
 %{mvn_file} : %{name}
+
+%{mvn_alias} :javax.transaction-api :transaction-api
 
 %build
 
