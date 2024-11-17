@@ -18,7 +18,7 @@
 
 %define         appname io.github.Foldex.AdwSteamGtk
 Name:           AdwSteamGtk
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 Summary:        A Gtk wrapper for Adwaita-for-Steam
 License:        GPL-3.0-only

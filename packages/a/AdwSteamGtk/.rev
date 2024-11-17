@@ -32,4 +32,15 @@ fix #bsc1231577</comment>
 - remove %suse_update_desktop_file, as it's deprecated</comment>
     <requestid>1223253</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e895d8446d432ec1b33c19a5e7b728e5</srcmd5>
+    <version>0.7.1</version>
+    <time>1731858111</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.7.1:
+  * Fix Color Theme Selection
+  * Remove auto from win_controls options
+  * update portuguese translation (forwarded request 1224534 from rrahl0)</comment>
+    <requestid>1224535</requestid>
+  </revision>
 </revisionlist>
