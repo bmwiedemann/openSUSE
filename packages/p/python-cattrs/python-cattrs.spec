@@ -24,7 +24,10 @@ Summary:        Composable complex class support for attrs and dataclasses
 License:        MIT
 URL:            https://github.com/python-attrs/cattrs
 Source:         https://files.pythonhosted.org/packages/source/c/cattrs/cattrs-%{version}.tar.gz
-Requires:       python-exceptiongroup
+# PATCH-FIX-UPSTREAM fix-test-no-nans.patch gh#96ed9a1 gh#31eff82
+Patch1:         fix-test-no-nans.patch
+# PATCH-FIX-UPSTREAM support-python-3.13.patch gh#ae80674
+Patch2:         support-python-3.13.patch
 BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
@@ -48,8 +51,11 @@ BuildRequires:  %{python_module ujson}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-attrs >= 20
-Requires:       python-cbor2
+%if %python_version_nodots < 311
+Requires:       python-exceptiongroup
+%endif
 Requires:       python-typing_extensions
+Suggests:       python-cbor2
 Suggests:       python-ujson
 Suggests:       python-orjson
 Suggests:       python-msgpack

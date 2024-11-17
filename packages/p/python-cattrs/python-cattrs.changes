@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 15 14:19:05 UTC 2024 - Yunus Acar <yunus.acar@suse.com>
+
+- add fix-test-no-nans.patch to get the tests to work with the
+  latest attrs
+- add support-python-3.13.patch to add python-3.13 support
+
+-------------------------------------------------------------------
 Mon Oct 28 22:38:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 24.1.2:
