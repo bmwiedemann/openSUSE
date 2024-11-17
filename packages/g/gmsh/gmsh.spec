@@ -1,7 +1,7 @@
 #
 # spec file for package gmsh
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,13 @@
 #
 
 
-%define libver 4_12
+%define libver 4_13
 %bcond_with static_lib
 %bcond_with pdf_doc
 # julia dropped from oS:Factory [2022-06-10 13:57:27]
 %bcond_with julia
 Name:           gmsh
-Version:        4.12.0
+Version:        4.13.1
 Release:        0
 Summary:        A three-dimensional finite element mesh generator
 License:        Apache-2.0 AND GPL-2.0-or-later AND (GPL-2.0-or-later OR LGPL-3.0-or-later) AND LGPL-2.1-or-later AND MPL-2.0 AND BSD-2-Clause AND BSD-3-Clause AND BSL-1.0 AND CC0-1.0 AND X11

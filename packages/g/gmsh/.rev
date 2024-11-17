@@ -142,4 +142,12 @@
     <user>dimstar_suse</user>
     <comment>Emergency fix: do not install python3-gmsh on all python3 based systems</comment>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>1d65f3d34da56d8804cdbd30d2d0c803</srcmd5>
+    <version>4.13.1</version>
+    <time>1731858136</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1224608</requestid>
+  </revision>
 </revisionlist>

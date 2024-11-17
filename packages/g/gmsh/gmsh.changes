@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Nov 16 21:24:15 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 4.13.1
+  * fix regression introduced in 4.13.0 when reading binary .msh
+    files with post-processing data
+  * new read-only Mesh.MinQuality updated after meshing pipeline
+  * occ/addSurfaceFilling new defaults to degree=2 for consistency
+    with .geo files
+  * small bug fixes
+- Update to 4.13.0
+  * added support for importing and exporting XAO files
+  * new options for OCC boolean operations (OCCBooleanCheckInverted,
+    OCCBooleanGlue, OCCBooleanNonDestructive, OCCBooleanSimplify)
+  * new OCC operations (2D fillets and chamfers,
+    distance, defeature)
+  * new quasi-transfinite 2d meshes (with fans)
+  * small API additions
+  * revert Crack plugin logic to version 4.10.1
+  * bug fixes
+
+-------------------------------------------------------------------
 Thu Jan  4 09:42:59 UTC 2024 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Fix supplements: add parentheses in order to properly have this
