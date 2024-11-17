@@ -32,6 +32,7 @@ BuildRequires:  libuuid-devel
 %else
 BuildRequires:  pkgconfig(uuid)
 %endif
+BuildRequires:  pkgconfig(openssl)
 
 %description
 Iperf is a tool for active measurements of the maximum achievable bandwidth

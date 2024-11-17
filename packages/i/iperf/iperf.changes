@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 15 14:49:57 UTC 2024 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Build with OpenSSL for key based authentication support
+
+-------------------------------------------------------------------
 Wed May 15 10:53:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.17.1 (bsc#1224262, CVE-2024-26306):

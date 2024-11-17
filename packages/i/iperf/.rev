@@ -383,4 +383,12 @@ from the original iperf. These include, for example, a zero-copy mode and</comme
     (IS#1662 / PR#1666).</comment>
     <requestid>1174204</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>10a19d4c2f6d771bde3c0710eba54928</srcmd5>
+    <version>3.17.1</version>
+    <time>1731858134</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1224601</requestid>
+  </revision>
 </revisionlist>
