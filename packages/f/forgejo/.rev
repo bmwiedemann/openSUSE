@@ -301,4 +301,41 @@
 - forgejo is since 9.0.0 GPL-3.0-or-later (forwarded request 1218912 from rrahl0)</comment>
     <requestid>1218913</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>1b987748012fc6d2a83e367fb413e6a5</srcmd5>
+    <version>9.0.2</version>
+    <time>1731858100</time>
+    <user>anag+factory</user>
+    <comment>- update to 9.0.2:
+  * it was possible to use a token sent via email for secondary email validation
+    to reset the password instead. In other words, a token sent for a given
+    action (registration, password reset or secondary email validation) could
+    be used to perform a different action.
+  * a fork of a public repository would show in the list of forks, even if its
+    owner was not a public user or organization.
+  * the members of an organization team with read access to a repository (e.g.
+    to read issues) but no read access to the code could read the RSS or atom
+    feeds which include the commit activity. Reading the RSS or atom feeds is
+    now denied unless the team has read permissions on the code.
+  * the tokens used when replying by email to issues or pull requests were
+    weaker than the rfc2104 recommendations.
+  * a registered user could modify the update frequency of any push mirror.
+  * it was possible to use basic authorization (i.e. user:password) for requests
+    to the API even when security keys were enrolled for a user.
+  * some markup sanitation rules were not as strong as they could be.
+  * when Forgejo is configured to enable instance wide search (e.g. with bleve),
+    results found in the repositories of private or limited users were displayed
+    to anonymous visitors.
+  * fix: handle renamed dependency for cargo registry.
+  * support www.github.com for migrations.
+  * move forgot_password-link to fix login tab order.
+  * code owners will not be mentioned when a pull request comes from a forked
+    repository.
+  * labels are missing in the pull request payload removing a label.
+  * in a Forgejo Actions workflow, the unlabeled event type for pull requests
+    was incorrectly mapped to the labeled event type.
+  * when a Forgejo Actions issue or pull request workflow is triggered by an
+    labeled or unlabeled event type, it misses information about the label added (forwarded request 1224536 from rrahl0)</comment>
+    <requestid>1224537</requestid>
+  </revision>
 </revisionlist>
