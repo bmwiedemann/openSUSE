@@ -17,7 +17,7 @@
 
 
 Name:           forgejo-runner
-Version:        4.0.1
+Version:        5.0.0
 Release:        0
 Summary:        Daemon that connects to a Forgejo instance and runs CI jobs
 License:        MIT

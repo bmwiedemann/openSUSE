@@ -35,4 +35,30 @@
     in an expression is incorect. (forwarded request 1220103 from rrahl0)</comment>
     <requestid>1220104</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7ed518e1a3926833bb7f790adc0d3ce7</srcmd5>
+    <version>5.0.0</version>
+    <time>1731858135</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 5.0.0:
+  * fix: Update forgejo/forgejo-build-publish action to v5
+  * fix: make container.docker_host default to - (part two)
+  * Update golang packages to v1.23
+  * tests: it make take time for Forgejo to come up
+  * Update code.forgejo.org/oci/alpine Docker tag to v3.20
+  * ci: use `go-version-file`
+  * Update actions/setup-go action to v5
+  * ci: don't run on renovate branches
+  * ci: Include version number in windows runner build
+  * fix: dockerfile casing typo
+  * Update module golang.org/x/time to v0.8.0
+  * Update module golang.org/x/term to v0.26.0
+  * Add support for windows build on GitHub (#312)
+  * Update dependency go to v1.23.3
+  * Version bump and add release notes
+  * Cherry-pick gitea act_runner #543
+  * Add simple test
+  * Add configurable logging level for jobs (forwarded request 1224605 from rrahl0)</comment>
+    <requestid>1224606</requestid>
+  </revision>
 </revisionlist>
