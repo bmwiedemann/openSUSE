@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Nov 16 13:13:13 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 0.5.3:
+  * new deps: hyprutils
+  * core: properly handle unscoped keywords
+  * core: don't populate linesContainingVar on dynamic requests
+  * core: Move to hyprutils for util functions
+  * core: handle scoped keywords if flags are not allowed
+  * config.cpp: fix parsing invalid hex
+  * Return an error on invalid hex values.
+  * CMake: Use library aliases instead of library names
+
+-------------------------------------------------------------------
 Mon Jun 17 13:03:16 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - Update to version 0.5.2
