@@ -162,4 +162,18 @@
 </comment>
     <requestid>1224298</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c85eeefea7e08ac6e33c5859532de7ca</srcmd5>
+    <version>9.13.2</version>
+    <time>1731858128</time>
+    <user>anag+factory</user>
+    <comment>- update to version 9.13.2:
+  * Detection of circular peer dependencies should not crash with
+    aliased dependencies #8759. Fixes a regression introduced in
+    the previous version.
+  * Fix race condition of symlink creations caused by multiple
+    parallel dlx processes.
+</comment>
+    <requestid>1224585</requestid>
+  </revision>
 </revisionlist>

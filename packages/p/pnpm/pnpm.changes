@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Nov 16 19:08:45 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to version 9.13.2:
+  * Detection of circular peer dependencies should not crash with
+    aliased dependencies #8759. Fixes a regression introduced in
+    the previous version.
+  * Fix race condition of symlink creations caused by multiple
+    parallel dlx processes.
+
+-------------------------------------------------------------------
 Thu Nov 14 19:00:27 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
 
 - update to version 9.13.1:
