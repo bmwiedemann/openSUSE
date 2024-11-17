@@ -17,7 +17,7 @@
 
 
 Name:           ccx
-Version:        2.21
+Version:        2.22
 Release:        0
 Summary:        An open source finite element package
 License:        BSD-3-Clause AND GPL-2.0-only AND SUSE-Public-Domain

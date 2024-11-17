@@ -30,4 +30,4 @@ index 97ce9d1..c785f62 100755
 +       -larpack -llapack -lblas \
         -lpthread -lm -lc
  
- ccx_2.21: $(OCCXMAIN) ccx_2.21.a  $(LIBS)
+ ccx_2.22: $(OCCXMAIN) ccx_2.22.a  $(LIBS)
