@@ -22,7 +22,7 @@
 FROM opensuse/tumbleweed:latest
 
 RUN set -euo pipefail; \
-    zypper -n install --no-recommends osc expect obs-service-format_spec_file obs-service-source_validator typescript git openSUSE-release openSUSE-release-appliance-docker; \
+    zypper -n install --no-recommends osc expect obs-service-format_spec_file obs-service-source_validator typescript git-core openSUSE-release openSUSE-release-appliance-docker; \
     zypper -n clean; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
 

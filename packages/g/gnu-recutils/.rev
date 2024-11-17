@@ -7,4 +7,13 @@
     <comment>GNU package, should be in TW</comment>
     <requestid>1173516</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f7d604865fd79d17ce35b630e39e8a3e</srcmd5>
+    <version>1.9</version>
+    <time>1731858074</time>
+    <user>anag+factory</user>
+    <comment>- Fix Factory build
+</comment>
+    <requestid>1224503</requestid>
+  </revision>
 </revisionlist>

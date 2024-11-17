@@ -222,4 +222,12 @@
     <comment>- Ignore ResourceWarning during pytest to avoid a Python 3.13 failure.</comment>
     <requestid>1219235</requestid>
   </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>67a633013b7e400943fb4d447f4c0503</srcmd5>
+    <version>3.1.1</version>
+    <time>1731857985</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1224457</requestid>
+  </revision>
 </revisionlist>

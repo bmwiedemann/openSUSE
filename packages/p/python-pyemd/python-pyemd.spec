@@ -25,7 +25,8 @@ URL:            https://github.com/wmayner/pyemd
 Source:         https://files.pythonhosted.org/packages/source/p/pyemd/pyemd-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module numpy-devel >= 1.9.0}
+# produces wrong results with numpy 2.1+: gh#wmayner/pyemd#68
+BuildRequires:  %{python_module numpy-devel >= 1.9.0 with %python-numpy-devel < 2.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
@@ -33,7 +34,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.9.0
+Requires:       (python-numpy >= 1.9.0 with python-numpy < 2.1)
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION
@@ -45,6 +46,8 @@ of the Earth Mover's Distance that allows it to be used with NumPy.
 
 %prep
 %autosetup -p1 -n pyemd-%{version}
+sed -i '1{/env python/d}' src/pyemd/emd.pyx src/pyemd/__init__.py
+echo "global-exclude *.cpp *.hpp" >> MANIFEST.in
 
 %build
 export CFLAGS="%{optflags}"
@@ -53,7 +56,6 @@ export CFLAGS="%{optflags}"
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
-%python_expand rm -r %{buildroot}%{$python_sitearch}/pyemd/{lib,emd.cpp}
 
 %check
 pushd test

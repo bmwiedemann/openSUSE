@@ -112,4 +112,13 @@
 </comment>
     <requestid>1143998</requestid>
   </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>67687f6b80ee6d6b2f90bf930e182517</srcmd5>
+    <version>2.0.7</version>
+    <time>1731857982</time>
+    <user>anag+factory</user>
+    <comment>- Add patch support-python313.patch:
+  * Support time.time_ns changes in Python 3.13+.</comment>
+    <requestid>1224339</requestid>
+  </revision>
 </revisionlist>

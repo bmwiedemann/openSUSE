@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov  5 14:48:37 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.90.6:
+  * Fractional battery percentage.
+  * CI enhancement.
+  * Tweak the default battery charging threshold to 75-80.
+  * Fix g_object_weak_ref: assertion 'g_atomic_int_get
+    (&object->ref_count) >= 1' failed.
+- Changes from version 1.90.5:
+  * Suspend and Ignore as the CriticalPowerActions.
+  * Support for battery charging threshold.
+  * Tweak the device priority to make sure the device kind joystick
+    can be correctly shown.
+- Add pkgconfig(polkit-gobject-1) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
 Tue Oct 15 12:00:43 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop rcFOO symlinks (PED-266).

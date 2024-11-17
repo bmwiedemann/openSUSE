@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov 15 13:38:40 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.0.1
+  * Breaking change: its seems no longer possible to use the
+    html parser with a xml file so its no longer tested
+  * Drop support for python 3.7
+- Refresh make_webtest_optional.patch
+
+-------------------------------------------------------------------
 Mon Apr 24 16:44:07 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update make_webtest_optional.patch to make the import optional in

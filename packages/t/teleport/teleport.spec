@@ -31,12 +31,14 @@ Source4:        teleport.yaml
 Source5:        tbot.yaml
 # Rust vendoring
 Source6:        vendor.tar.zst
+BuildRequires:  bash-completion
 BuildRequires:  cargo >= 1.69
 BuildRequires:  cargo-packaging
 BuildRequires:  git-core
 BuildRequires:  go1.22 >= 1.22.9
 BuildRequires:  pam-devel
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  zsh
 Requires:       teleport-tctl
 
 %description
@@ -53,19 +55,82 @@ access to behind-NAT resources such as:
 * Windows Hosts
 * Networked servers
 
-%package -n teleport-tctl
+%package -n %{name}-bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
+
+%description -n %{name}-bash-completion
+Bash command line completion support for %{name}.
+
+%package -n %{name}-zsh-completion
+Summary:        Zsh Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Supplements:    (%{name} and zsh)
+BuildArch:      noarch
+
+%description -n %{name}-zsh-completion
+zsh command line completion support for %{name}.
+
+%package -n %{name}-tctl
 Summary:        CLI tool for managing a teleport server
 License:        Apache-2.0
 
-%description -n teleport-tctl
+%package -n %{name}-tctl-bash-completion
+Summary:        Bash Completion for %{name}-tctl
+Group:          System/Shells
+Requires:       %{name}-tctl = %{version}
+Requires:       bash-completion
+Supplements:    (%{name}-tctl and bash-completion)
+BuildArch:      noarch
+
+%description -n %{name}-tctl-bash-completion
+Bash command line completion support for %{name}-tctl.
+
+%package -n %{name}-tctl-zsh-completion
+Summary:        Zsh Completion for %{name}-tctl
+Group:          System/Shells
+Requires:       %{name}-tctl = %{version}
+Supplements:    (%{name}-tctl and zsh)
+BuildArch:      noarch
+
+%description -n %{name}-tctl-zsh-completion
+zsh command line completion support for %{name}-tctl.
+
+%description -n %{name}-tctl
 An administrative tool that can configure Teleport Auth Service.
 
-%package -n teleport-tsh
+%package -n %{name}-tsh
 Summary:        CLI tool for logging into nodes via Teleport SSH
 License:        Apache-2.0
 
-%description -n teleport-tsh
+%description -n %{name}-tsh
 A tool that lets end users interact with Teleport nodes. This replaces ssh.
+
+%package -n %{name}-tsh-bash-completion
+Summary:        Bash Completion for %{name}-tsh
+Group:          System/Shells
+Requires:       %{name}-tsh = %{version}
+Requires:       bash-completion
+Supplements:    (%{name}-tsh and bash-completion)
+BuildArch:      noarch
+
+%description -n %{name}-tsh-bash-completion
+Bash command line completion support for %{name}-tsh.
+
+%package -n %{name}-tsh-zsh-completion
+Summary:        Zsh Completion for %{name}-tsh
+Group:          System/Shells
+Requires:       %{name}-tsh = %{version}
+Supplements:    (%{name}-tsh and zsh)
+BuildArch:      noarch
+
+%description -n %{name}-tsh-zsh-completion
+zsh command line completion support for %{name}-tsh.
 
 %package -n teleport-tbot
 Summary:        CLI tool for Machine ID
@@ -77,6 +142,27 @@ certificates to any service account (e.g., a CI/CD server) by retrieving
 credentials from the Teleport Auth Service. This enables fine-grained
 role-based access controls and audit.
 tbot is the executable belonging to the Machine ID service.
+
+%package -n %{name}-tbot-bash-completion
+Summary:        Bash Completion for %{name}-tbot
+Group:          System/Shells
+Requires:       %{name}-tbot = %{version}
+Requires:       bash-completion
+Supplements:    (%{name}-tbot and bash-completion)
+BuildArch:      noarch
+
+%description -n %{name}-tbot-bash-completion
+Bash command line completion support for %{name}-tbot.
+
+%package -n %{name}-tbot-zsh-completion
+Summary:        Zsh Completion for %{name}-tbot
+Group:          System/Shells
+Requires:       %{name}-tbot = %{version}
+Supplements:    (%{name}-tbot and zsh)
+BuildArch:      noarch
+
+%description -n %{name}-tbot-zsh-completion
+zsh command line completion support for %{name}-tbot.
 
 %package -n teleport-fdpass-teleport
 Summary:        Significantly reduce resource consumption by large numbers of SSH connections
@@ -138,6 +224,46 @@ install -D -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/teleport.yaml
 install -D -m 644 examples/systemd/machine-id/machine-id.service %{buildroot}%{_unitdir}/
 install -D -m 644 %{SOURCE5} %{buildroot}%{_sysconfdir}/tbot.yaml
 
+# teleport completions
+
+# create the bash completion file
+mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
+%{buildroot}/%{_sbindir}/teleport --completion-script-bash > %{buildroot}%{_datarootdir}/bash-completion/completions/teleport
+
+# create the zsh completion file
+mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
+%{buildroot}/%{_sbindir}/teleport --completion-script-zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_teleport
+
+# tctl completions
+
+# create the bash completion file
+mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
+%{buildroot}/%{_bindir}/tctl --completion-script-bash > %{buildroot}%{_datarootdir}/bash-completion/completions/tctl
+
+# create the zsh completion file
+mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
+%{buildroot}/%{_bindir}/tctl --completion-script-zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_tctl
+
+# tsh completions
+
+# create the bash completion file
+mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
+%{buildroot}/%{_bindir}/tsh --completion-script-bash > %{buildroot}%{_datarootdir}/bash-completion/completions/tsh
+
+# create the zsh completion file
+mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
+%{buildroot}/%{_bindir}/tsh --completion-script-zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_tsh
+
+# tbot completions
+
+# create the bash completion file
+mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
+%{buildroot}/%{_bindir}/tbot --completion-script-bash > %{buildroot}%{_datarootdir}/bash-completion/completions/tbot
+
+# create the zsh completion file
+mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
+%{buildroot}/%{_bindir}/tbot --completion-script-zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_tbot
+
 # teleport service
 
 %pre -n teleport
@@ -173,15 +299,33 @@ install -D -m 644 %{SOURCE5} %{buildroot}%{_sysconfdir}/tbot.yaml
 %{_unitdir}/teleport.service
 %config(noreplace) %{_sysconfdir}/teleport.yaml
 
+%files -n %{name}-bash-completion
+%{_datarootdir}/bash-completion/completions/teleport
+
+%files -n %{name}-zsh-completion
+%{_datarootdir}/zsh/site-functions/_teleport
+
 %files -n teleport-tsh
 %doc README.md
 %license LICENSE
 %{_bindir}/tsh
 
+%files -n %{name}-tsh-bash-completion
+%{_datarootdir}/bash-completion/completions/tsh
+
+%files -n %{name}-tsh-zsh-completion
+%{_datarootdir}/zsh/site-functions/_tsh
+
 %files -n teleport-tctl
 %doc README.md
 %license LICENSE
 %{_bindir}/tctl
+
+%files -n %{name}-tctl-bash-completion
+%{_datarootdir}/bash-completion/completions/tctl
+
+%files -n %{name}-tctl-zsh-completion
+%{_datarootdir}/zsh/site-functions/_tctl
 
 %files -n teleport-tbot
 %doc README.md
@@ -189,6 +333,12 @@ install -D -m 644 %{SOURCE5} %{buildroot}%{_sysconfdir}/tbot.yaml
 %{_bindir}/tbot
 %{_unitdir}/machine-id.service
 %config(noreplace) %{_sysconfdir}/tbot.yaml
+
+%files -n %{name}-tbot-bash-completion
+%{_datarootdir}/bash-completion/completions/tbot
+
+%files -n %{name}-tbot-zsh-completion
+%{_datarootdir}/zsh/site-functions/_tbot
 
 %files -n teleport-fdpass-teleport
 %doc README.md

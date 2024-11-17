@@ -165,4 +165,13 @@
     <comment></comment>
     <requestid>1188819</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>c67c89d641425bc03de33abd5574fe38</srcmd5>
+    <version>3.0.3</version>
+    <time>1731858070</time>
+    <user>anag+factory</user>
+    <comment>- Add unyt-pr512-np2.1.patch for compatibility with numpy 2.1
+  gh#yt-project/unyt#512</comment>
+    <requestid>1224493</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov  8 17:14:49 UTC 2024 - Jiri Bohac <jbohac@suse.com>
+
+- upgrade to version 2.0.11
+ * fadump mkinitrd: propagate --debug to the inner dracut call
+ * mkdumprd: look for kernel image under /boot as well
+
+-------------------------------------------------------------------
 Wed Oct 23 16:19:31 UTC 2024 - Jiri Bohac <jbohac@suse.com>
 
 - upgrade to version 2.0.10

@@ -41,4 +41,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1186727</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>42bdd60c94ca4124a3fe6d78b8e3ce61</srcmd5>
+    <version>1.0.0</version>
+    <time>1731858073</time>
+    <user>anag+factory</user>
+    <comment>- Pin numpy &lt; 2.1: Produces wrong results -- gh#wmayner/pyemd#68
+- Excludes sources befor build: Make dist-info consistent</comment>
+    <requestid>1224506</requestid>
+  </revision>
 </revisionlist>

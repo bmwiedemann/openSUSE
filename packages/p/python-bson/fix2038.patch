@@ -1,0 +1,35 @@
+Index: bson-0.5.8/bson/objectid.py
+===================================================================
+--- bson-0.5.8.orig/bson/objectid.py
++++ bson-0.5.8/bson/objectid.py
+@@ -158,7 +158,7 @@ class ObjectId(object):
+             generation_time = generation_time - generation_time.utcoffset()
+         timestamp = calendar.timegm(generation_time.timetuple())
+         oid = struct.pack(
+-            ">i", int(timestamp)) + b"\x00\x00\x00\x00\x00\x00\x00\x00"
++            ">L", int(timestamp) & 0xFFFFFFFF) + b"\x00\x00\x00\x00\x00\x00\x00\x00"
+         return cls(oid)
+ 
+     @classmethod
+@@ -184,7 +184,7 @@ class ObjectId(object):
+         """
+ 
+         # 4 bytes current time
+-        oid = struct.pack(">i", int(time.time()))
++        oid = struct.pack(">L", int(time.time()) & 0xFFFFFFFF)
+ 
+         # 3 bytes machine
+         oid += ObjectId._machine_bytes
+Index: bson-0.5.8/bson/tests/test_objectid.py
+===================================================================
+--- bson-0.5.8.orig/bson/tests/test_objectid.py
++++ bson-0.5.8/bson/tests/test_objectid.py
+@@ -522,7 +522,7 @@ class TestObjectId(unittest.TestCase):
+         if 'PyPy 1.8.0' in sys.version:
+             # See https://bugs.pypy.org/issue1092
+             raise SkipTest("datetime.timedelta is broken in pypy 1.8.0")
+-        d = datetime.datetime.utcnow()
++        d = datetime.datetime.utcfromtimestamp(2000000000)
+         d = d - datetime.timedelta(microseconds=d.microsecond)
+         oid = ObjectId.from_datetime(d)
+         self.assertEqual(d, oid.generation_time.replace(tzinfo=None))

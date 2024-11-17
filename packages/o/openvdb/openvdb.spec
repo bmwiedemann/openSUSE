@@ -18,15 +18,21 @@
 
 
 %bcond_without nanovdb
+# whines about LLVM apis
+%bcond_with    openvdb_ax
+# requires nanobind
+%bcond_with    pyopenvdb
+#
+%bcond_without openvdb_tool
 
-%define libname libopenvdb10_1
+%define libname libopenvdb11_0
 %if 0%{suse_version} <= 1500
 # force a recent gcc version on 15.X, default would be gcc7 which is too old
 %define gcc_major 10
 %endif
 
 Name:           openvdb
-Version:        10.1.0
+Version:        11.0.0
 Release:        0
 Summary:        Sparse volume data structure and tools
 License:        Apache-2.0
@@ -34,18 +40,35 @@ Group:          Development/Libraries/C and C++
 URL:            https://www.openvdb.org
 Source:         https://github.com/AcademySoftwareFoundation/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         openvdb-boost-static-assert-include.patch
+Patch1:         fix-tool-building.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  gcc%{?gcc_major}-c++ >= 9.3.1
 BuildRequires:  libboost_iostreams-devel-impl >= 1.70
 BuildRequires:  libboost_system-devel-impl >= 1.70
 BuildRequires:  memory-constraints
+%if %{with openvdb_ax}
+BuildRequires:  cmake(LLVM) < 16
+%endif
+%if %{with pyopenvdb}
+BuildRequires:  python3-devel
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  tbb-devel >= 2020.3
+BuildRequires:  pkgconfig(Imath)
+BuildRequires:  pkgconfig(OpenEXR) >= 3
 BuildRequires:  pkgconfig(blosc)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glfw3)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(jemalloc)
+BuildRequires:  pkgconfig(libpng16)
+BuildRequires:  pkgconfig(log4cpp)
+%if %{with openvdb_tool}
+BuildRequires:  cmake(Alembic)
+BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(pdal)
+BuildRequires:  pkgconfig(tinfo)
+%endif
 # 32-bit: linker errors
 ExcludeArch:    %ix86 %arm32
 
@@ -101,11 +124,29 @@ library: vdb_lod, vdb_print, vdb_render, vdb_view
 %if %{with nanovdb}
     -DUSE_NANOVDB=ON \
 %endif
+    -DUSE_EXR=ON \
+    -DUSE_PNG=ON \
+%if %{with openvdb_ax}
+    -DOPENVDB_BUILD_AX=ON \
+    -DOPENVDB_BUILD_VDB_AX=ON \
+%endif
     -DOPENVDB_BUILD_VDB_PRINT=ON \
     -DOPENVDB_BUILD_VDB_LOD=ON \
     -DOPENVDB_BUILD_VDB_VIEW=ON \
     -DOPENVDB_BUILD_VDB_RENDER=ON \
+%if %{with openvdb_tool}
+    -DOPENVDB_BUILD_VDB_TOOL=ON \
+    -DOPENVDB_TOOL_USE_ABC:BOOL=ON \
+    -DOPENVDB_TOOL_USE_JPG:BOOL=ON \
+    -DOPENVDB_TOOL_USE_NANO:BOOL=OFF \
+    -DOPENVDB_TOOL_USE_PDAL:BOOL=ON \
+    -DOPENVDB_TOOL_USE_PNG:BOOL=ON \
+%endif
+%if %{with pyopenvdb}
+    -DOPENVDB_BUILD_PYTHON_MODULE=ON \
+%else
     -DOPENVDB_BUILD_PYTHON_MODULE=OFF \
+%endif
     -DOPENVDB_ENABLE_RPATH=OFF
 
 %cmake_build
@@ -136,6 +177,7 @@ library: vdb_lod, vdb_print, vdb_render, vdb_view
 %{_bindir}/vdb_print
 %{_bindir}/vdb_view
 %{_bindir}/vdb_render
+%{_bindir}/vdb_tool
 %if %{with nanovdb}
 %{_bindir}/nanovdb_print
 %{_bindir}/nanovdb_validate

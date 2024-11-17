@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Fri Nov 15 20:23:05 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 1.1.1
+  * Support for Java versions up to 11
+
+-------------------------------------------------------------------
+Wed Jun  5 15:47:39 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Add build-dependency on cdi-api
+
+-------------------------------------------------------------------
+Mon May  1 06:10:46 UTC 2023 - Stefan Bluhm <stefan.bluhm@clacee.eu>
+
+- Adapted to build on Enterprise Linux 9.
+
+-------------------------------------------------------------------
+Tue May  3 01:28:58 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Initial packaging with v1.1.0 (jsc#SLE-23217)

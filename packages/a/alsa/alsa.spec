@@ -63,6 +63,7 @@ Source34:       alsa-init.sh
 # from https://www.alsa-project.org/files/pub/gpg-release-key-v1.txt
 Source35:       alsa.keyring
 # upstream fixes
+Patch1:         0001-src-Versions.in.in-Update-_tempo_base-name.patch
 # rest suse fixes
 Patch101:       alsa-lib-ignore-non-accessible-ALSA_CONFIG_PATH.patch
 BuildRequires:  doxygen

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov 15 08:28:45 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.4.3
+  * Fix incorrect validation error for substitution group with
+    abstract head (issue #417)
+  * Refactor XSD identities processing using also typed XPath
+    2.0+ for getting values (issue #418)
+  * Clean tag retrieval during encode for some converter types
+    (Abdera, BadgerFish and GData)
+
+-------------------------------------------------------------------
 Wed Sep 18 05:56:39 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 3.4.2

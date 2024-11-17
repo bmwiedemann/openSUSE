@@ -104,16 +104,21 @@ chmod -x skimage/measure/{__init__,_find_contours}.py
 
 %if %{with test}
 %check
-# fails randomly https://github.com/scikit-image/scikit-image/issues/3237
+# fails randomly gh#scikit-image/scikit-image#3237
 donttest+="test_wrap_around"
 # fails randomly on all platforms
 donttest+=" or test_structural_similarity_dtype"
-# https://github.com/scikit-image/scikit-image/issues/7051
+# gh#scikit-image/scikit-image#7051 -- works locally but not on obs
 donttest+=" or test_ellipse_parameter_stability"
+# gh#scikit-image/scikit-image#7491, gh#scikit-image/scikit-image#7509
+donttest+=" or test_thresholds_dask_compatibility"
 # Another floating point flaky test (works for now, but let's keep it commented just in case)
 #donttest+=" or test_clear_border_non_binary_out"
+# test collection with xdist not in deterministic order gh#pytest-dev/pytest-xdist#432
+notparallel="test_all_numeric_types"
 export PYTEST_DEBUG_TEMPROOT=$(mktemp -d -p ./)
-%pytest_arch -v --pyargs skimage -n auto -k "not ($donttest)"
+%pytest_arch -v --pyargs skimage -n auto -k "not ($donttest or $notparallel)"
+%pytest_arch -v --pyargs skimage -k "not ($donttest) and ($notparallel)"
 %endif
 
 %if !%{with test}

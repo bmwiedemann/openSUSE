@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 14 20:23:54 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add fix2038.patch to fix an issue with year 2038
+
+-------------------------------------------------------------------
 Fri Dec 29 13:44:20 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Use %{?sle15_python_module_pythons}

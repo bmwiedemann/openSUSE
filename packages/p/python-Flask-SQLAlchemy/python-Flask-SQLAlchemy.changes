@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 15 13:23:23 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
+
+- temporarily disable tests that are broken with SLQAlchemy 2.0.36
+  * https://github.com/pallets-eco/flask-sqlalchemy/issues/1378
+
+-------------------------------------------------------------------
 Wed Oct 30 02:33:57 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Ignore ResourceWarning during pytest to avoid a Python 3.13 failure. 

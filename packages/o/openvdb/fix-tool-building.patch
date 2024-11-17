@@ -1,0 +1,18 @@
+Index: openvdb-11.0.0/openvdb_cmd/vdb_tool/CMakeLists.txt
+===================================================================
+--- openvdb-11.0.0.orig/openvdb_cmd/vdb_tool/CMakeLists.txt
++++ openvdb-11.0.0/openvdb_cmd/vdb_tool/CMakeLists.txt
+@@ -77,10 +77,12 @@ if(OPENVDB_TOOL_USE_PNG)
+   target_compile_definitions(vdb_tool_common INTERFACE "VDB_TOOL_USE_PNG")
+   if(WIN32)
+     find_package(libpng CONFIG REQUIRED)
++    target_link_libraries(vdb_tool_common INTERFACE png)
+   else()
+     find_package(PNG REQUIRED)
++    target_include_directories(vdb_tool_common INTERFACE ${PNG_INCLUDE_DIR})
++    target_link_libraries(vdb_tool_common INTERFACE ${PNG_LIBRARIES})
+   endif()
+-  target_link_libraries(vdb_tool_common INTERFACE png)
+ endif()
+ 
+ if(OPENVDB_TOOL_USE_JPG)

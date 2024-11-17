@@ -1,7 +1,7 @@
 #
 # spec file for package gnu-recutils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -104,6 +104,7 @@ databases.
 %setup -q -n recutils-%{version}
 
 %build
+export CFLAGS="%{optflags} -Wno-implicit-function-declaration -Wno-incompatible-pointer-types"
 %configure --disable-static
 %make_build
 

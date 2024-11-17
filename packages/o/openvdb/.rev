@@ -225,4 +225,25 @@ as well.</comment>
     <comment></comment>
     <requestid>1223603</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>d0f428c4610d989d2e0170ce040d688e</srcmd5>
+    <version>11.0.0</version>
+    <time>1731857988</time>
+    <user>anag+factory</user>
+    <comment>- Update to 11.0.0 again as blender 4.2.x now supports this
+  version. See Changes entry below for the details of the version
+  update.
+- walk through the cmake options to see if we could enable more
+  features:
+    - openvdb_ax: even with LLVM15 it was still complaining about
+      mismatching types. Skipping this for now
+    - vdb_tool:  works except for nanovdb support
+      - Added fix-tool-building.patch so that libpng16-devel files
+        are actually used properly
+    - python support requires a nanobind package
+    - testing log4cpp support
+- track quilt series file for easier patching without rpm-build
+</comment>
+    <requestid>1224469</requestid>
+  </revision>
 </revisionlist>

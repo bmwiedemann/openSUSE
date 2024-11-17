@@ -1,47 +1,6 @@
----
- tests/test_pyquery.py |   11 ++++++++---
- 1 file changed, 8 insertions(+), 3 deletions(-)
-
-Index: pyquery-2.0.0/tests/test_pyquery.py
-===================================================================
---- pyquery-2.0.0.orig/tests/test_pyquery.py
-+++ pyquery-2.0.0/tests/test_pyquery.py
-@@ -7,9 +7,12 @@ import time
- from lxml import etree
- from pyquery.pyquery import PyQuery as pq, no_default
- from pyquery.openers import HAS_REQUEST
--from webtest import http
--from webtest.debugapp import debug_app
--from unittest import TestCase
-+from unittest import TestCase, skipIf
-+try:
-+    from webtest import http
-+    from webtest.debugapp import debug_app
-+except (ImportError, ModuleNotFoundError):
-+    http = None
- 
- sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
- 
-@@ -894,6 +897,7 @@ class TestXMLNamespace(TestCase):
-         self.assertEqual(repr(val), repr('b'))
- 
- 
-+@skipIf(http is None, "Cannot test without WebTest")
- class TestWebScrapping(TestCase):
- 
-     def setUp(self):
-@@ -938,6 +942,7 @@ class TestWebScrappingEncoding(TestCase)
-         self.assertEqual(d('#pt-login').text(), u'Войти')
- 
- 
-+@skipIf(http is None, "Cannot test without WebTest")
- class TestWebScrappingTimeouts(TestCase):
- 
-     def setUp(self):
-Index: pyquery-2.0.0/conftest.py
-===================================================================
---- pyquery-2.0.0.orig/conftest.py
-+++ pyquery-2.0.0/conftest.py
+diff -Nru pyquery-2.0.1.orig/conftest.py pyquery-2.0.1/conftest.py
+--- pyquery-2.0.1.orig/conftest.py	2024-08-30 10:12:19.000000000 +0200
++++ pyquery-2.0.1/conftest.py	2024-11-15 14:36:47.617602776 +0100
 @@ -1,7 +1,12 @@
  import os
  import pytest
@@ -57,3 +16,38 @@ Index: pyquery-2.0.0/conftest.py
  from urllib.request import urlopen
  
  
+diff -Nru pyquery-2.0.1.orig/tests/test_pyquery.py pyquery-2.0.1/tests/test_pyquery.py
+--- pyquery-2.0.1.orig/tests/test_pyquery.py	2024-08-30 10:12:19.000000000 +0200
++++ pyquery-2.0.1/tests/test_pyquery.py	2024-11-15 14:36:47.607602471 +0100
+@@ -7,9 +7,12 @@
+ from lxml import etree
+ from pyquery.pyquery import PyQuery as pq, no_default
+ from pyquery.openers import HAS_REQUEST
+-from webtest import http
+-from webtest.debugapp import debug_app
+-from unittest import TestCase
++from unittest import TestCase, skipIf
++try:
++    from webtest import http
++    from webtest.debugapp import debug_app
++except (ImportError, ModuleNotFoundError):
++    http = None
+ 
+ sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
+ 
+@@ -888,6 +891,7 @@
+         self.assertEqual(repr(val), repr('b'))
+ 
+ 
++@skipIf(http is None, "Cannot test without WebTest")
+ class TestWebScrapping(TestCase):
+ 
+     def setUp(self):
+@@ -932,6 +936,7 @@
+         self.assertEqual(d('#pt-login').text(), 'Войти')
+ 
+ 
++@skipIf(http is None, "Cannot test without WebTest")
+ class TestWebScrappingTimeouts(TestCase):
+ 
+     def setUp(self):

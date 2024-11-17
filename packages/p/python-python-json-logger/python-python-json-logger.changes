@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 15 01:44:06 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python313.patch:
+  * Support time.time_ns changes in Python 3.13+.
+
+-------------------------------------------------------------------
 Thu Feb  1 01:18:35 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-python312.patch:

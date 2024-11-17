@@ -28,6 +28,7 @@ Source:         https://github.com/py-bson/bson/archive/%{version}.tar.gz#/bson-
 Patch0:         drop-python2-support.patch
 # PATCH-FIX-OPENSUSE Use assertEqual to support Python 3.12
 Patch1:         support-python312.patch
+Patch2:         fix2038.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

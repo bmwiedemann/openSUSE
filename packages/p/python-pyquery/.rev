@@ -219,4 +219,18 @@ Can't create the python3 package in dlp, so whoever pulls this would have to do 
     <comment></comment>
     <requestid>1082798</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>a185819b5435607349dfd73a93c3af73</srcmd5>
+    <version>2.0.1</version>
+    <time>1731857975</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1224459 from glaubitz
+
+- Update to 2.0.1
+    * Breaking change: its seems no longer possible to use the
+      html parser with a xml file so its no longer tested
+    * Drop support for python 3.7
+  - Refresh make_webtest_optional.patch</comment>
+    <requestid>1224558</requestid>
+  </revision>
 </revisionlist>

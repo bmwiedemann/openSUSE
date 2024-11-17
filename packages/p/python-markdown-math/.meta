@@ -1,8 +1,0 @@
-<package name="python-markdown-math" project="openSUSE:Factory">
-  <title>Math extension for Python-Markdown</title>
-  <description>This extension adds math formulas support to [Python-Markdown].
-
-</description>
-  <devel project="devel:languages:python" package="python-markdown-math"/>
-  <url>https://github.com/mitya57/python-markdown-math</url>
-</package>

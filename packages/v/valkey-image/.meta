@@ -1,0 +1,5 @@
+<package name="valkey-image" project="openSUSE:Factory">
+  <title>openSUSE Tumbleweed Persistent key-value database</title>
+  <description>Valkey is an open-source high-performance key/value data store designed for a variety of workloads such as caching, message queuing and primary database use</description>
+  <devel project="devel:BCI:Tumbleweed" package="valkey-image"/>
+</package>

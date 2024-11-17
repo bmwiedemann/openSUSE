@@ -1,0 +1,6 @@
+<package name="jcache" project="openSUSE:Factory">
+  <title>JSR107 Cache Specification</title>
+  <description>JCache is the Java caching API. It was defined by JSR107. It defines a standard Java Caching API for use by developers and a standard SPI (“Service Provider Interface”) for use by implementers.</description>
+  <devel project="Java:packages" package="jcache"/>
+  <url>https://github.com/jsr107/jsr107spec</url>
+</package>

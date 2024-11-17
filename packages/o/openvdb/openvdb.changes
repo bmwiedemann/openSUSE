@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Nov 14 18:57:04 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 11.0.0 again as blender 4.2.x now supports this
+  version. See Changes entry below for the details of the version
+  update.
+
+-------------------------------------------------------------------
+Thu Nov 14 01:01:40 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- walk through the cmake options to see if we could enable more
+  features:
+    - openvdb_ax: even with LLVM15 it was still complaining about
+      mismatching types. Skipping this for now
+    - vdb_tool:  works except for nanovdb support
+      - Added fix-tool-building.patch so that libpng16-devel files
+        are actually used properly
+    - python support requires a nanobind package
+    - testing log4cpp support
+- track quilt series file for easier patching without rpm-build
+
+-------------------------------------------------------------------
 Sat Nov  9 20:44:57 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - The openvdb headers do refer to the boost headers.

@@ -22,7 +22,7 @@
 %define libplist2 0
 %endif
 Name:           upower
-Version:        1.90.4
+Version:        1.90.6
 Release:        0
 Summary:        Power Device Enumeration Framework
 License:        GPL-2.0-or-later
@@ -46,6 +46,7 @@ BuildRequires:  pkgconfig(gobject-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(gudev-1.0) >= 235
 BuildRequires:  pkgconfig(libimobiledevice-1.0) >= 0.9.7
 BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.0
+BuildRequires:  pkgconfig(polkit-gobject-1)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
 %{?systemd_requires}
@@ -154,6 +155,7 @@ system) are restricted using PolicyKit.
 %{_mandir}/man7/UPower.7%{?ext_man}
 %{_mandir}/man8/upowerd.8%{?ext_man}
 %dir %{_localstatedir}/lib/upower
+%{_datadir}/polkit-1/actions/org.freedesktop.upower.policy
 
 %files -n libupower-glib3
 %{_libdir}/libupower-glib.so.*

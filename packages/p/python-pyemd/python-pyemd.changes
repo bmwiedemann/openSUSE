@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 15 18:52:34 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Pin numpy < 2.1: Produces wrong results -- gh#wmayner/pyemd#68
+- Excludes sources befor build: Make dist-info consistent
+
+-------------------------------------------------------------------
 Thu Jul  4 02:17:34 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.0.0:

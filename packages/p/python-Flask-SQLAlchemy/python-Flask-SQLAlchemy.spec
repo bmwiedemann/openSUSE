@@ -57,7 +57,10 @@ Adds SQLAlchemy support to your Flask application.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -W "ignore::ResourceWarning"
+# skip tests that are broken with SQLAlchemy 2.0.36
+# https://github.com/pallets-eco/flask-sqlalchemy/issues/1378
+donttest=("-k" "not test_model_bind")
+%pytest -W "ignore::ResourceWarning" "${donttest[@]}"
 
 %files %{python_files}
 %license LICENSE.rst

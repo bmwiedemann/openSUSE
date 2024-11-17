@@ -16,7 +16,15 @@
 #
 
 
-Name:           python-python-dbusmock
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+Name:           python-python-dbusmock%{psuffix}
 Version:        0.32.1
 Release:        0
 Summary:        Python library for creating mock D-Bus objects
@@ -26,14 +34,20 @@ Source:         https://files.pythonhosted.org/packages/source/p/python-dbusmock
 BuildRequires:  %{python_module dbus-python}
 BuildRequires:  %{python_module gobject}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  dbus-1-daemon
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  upower
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
+# SECTION test requirements
+%if %{with test}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module python-dbusmock = %{version}}
+BuildRequires:  dbus-1-daemon
+BuildRequires:  upower
+%endif
+#/ SECTION
 Requires:       /usr/bin/dbus-daemon
 Requires:       python-dbus-python
 Requires:       python-gobject
@@ -58,16 +72,22 @@ to what one may expect in tests.
 %pyproject_wheel
 
 %install
+%if !%{with test}
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
+%if %{with test}
 %pytest
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %license COPYING
 %doc NEWS README.md
 %{python_sitelib}/dbusmock
 %{python_sitelib}/python_dbusmock-%{version}*-info
+%endif
 
 %changelog

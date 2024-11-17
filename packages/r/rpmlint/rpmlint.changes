@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Nov 15 14:27:47 UTC 2024 - filippo.bonazzi@suse.com
+
+- Update to version 2.6.1+git20241115.da2ed92:
+  * polkit-rules-whitelist: adjust package name for sssd (bsc#1230051)
+  * SpecCheck: Update suse-update-desktop-file-deprecated message
+  * FilesCheck: Do not error about non-readable %ghost
+  * test: Mocking TagsCheck binaries
+  * CI: exclude test/files from pyupgrade
+  * test: exclude test files from ruff check
+  * test: Fix flake8 issues
+  * flake8: Skip test files from flake8
+  * test: Move doc pacakges to mock
+  * test: Normalize mock_zypp_syntax
+  * test: Normalize mock_xinetd
+  * test: Normalize mock_tmp_files
+  * test: Normalize mock_sysvinitonsystemd
+  * test: Normalize mock_shlib_policy
+  * test: Normalize mock_pkgconfig
+  * test: Normalize mock_pam_modules
+  * test: Normalize mock_mixed_ownership
+  * test: Normalize mock_menuxdg
+  * test: Normalize mock_LSB
+  * test: Remove not needed mock_lib_dependency.py
+  * test: Normalize mock_icon_sizes
+  * test: Normalize mock_i18n
+  * test: Normalize mock_files
+  * test: Normalize mock_FHS
+  * test: Normalize mock_erlang.py
+  * test: Normalize mock_dbus_policy.py
+  * test: Replace logrotate rpm with mock
+  * test: Normalize mock_config_files
+  * test: Normalize mock_build_root
+  * test: Normalize mock_build_date
+  * test: Normalize mock_bashisms
+  * test: Normalize mock_appdata
+  * test: Use skipif instead of early return in test_extract_fail
+  * Remove fPing binary not needed anymore
+
+-------------------------------------------------------------------
 Mon Nov 11 13:15:05 UTC 2024 - dimstar@opensuse.org
 
 - Update to version 2.6.1+git20241111.4884f6a:

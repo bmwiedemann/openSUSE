@@ -24,6 +24,8 @@ Summary:        A package for handling numpy arrays with units
 License:        BSD-3-Clause
 URL:            https://github.com/yt-project/unyt
 Source:         https://files.pythonhosted.org/packages/source/u/unyt/unyt-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM unyt-pr512-np2.1.patch gh#yt-project/unyt#512
+Patch0:         https://github.com/yt-project/unyt/pull/512.patch#/unyt-pr512-np2.1.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
@@ -53,7 +55,7 @@ way to easily tell what the units of the data are without somehow knowing *a
 priori*.
 
 %prep
-%setup -q -n unyt-%{version}
+%autosetup -p1 -n unyt-%{version}
 sed -i 's/--color=yes//' pyproject.toml
 
 %build
@@ -64,7 +66,6 @@ sed -i 's/--color=yes//' pyproject.toml
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Two old registry tests requires fixture data not provided in tarball
 %pytest
 
 %files %{python_files}

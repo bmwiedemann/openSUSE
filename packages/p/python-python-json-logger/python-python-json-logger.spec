@@ -26,6 +26,8 @@ URL:            https://github.com/madzak/python-json-logger
 Source:         https://files.pythonhosted.org/packages/source/p/python-json-logger/python-json-logger-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM gh#madzak/python-json-logger#183
 Patch0:         support-python312.patch
+# PATCH-FIX-UPSTREAM gh#madzak/python-json-logger#192
+Patch1:         support-python313.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

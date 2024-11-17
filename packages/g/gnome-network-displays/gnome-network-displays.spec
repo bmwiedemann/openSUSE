@@ -17,7 +17,7 @@
 
 
 Name:           gnome-network-displays
-Version:        0.93.0
+Version:        0.94.0
 Release:        0
 Summary:        Miracast implementation for GNOME
 License:        GPL-3.0-or-later

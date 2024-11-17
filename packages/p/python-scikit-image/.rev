@@ -205,4 +205,16 @@
     <comment></comment>
     <requestid>1188213</requestid>
   </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>cc14e00a3f85ca21076013a320fc0142</srcmd5>
+    <version>0.24.0</version>
+    <time>1731858071</time>
+    <user>anag+factory</user>
+    <comment>- Fix tests
+  * Avoid random test collection order for np types
+    gh#pytest-dev/pytest-xdist#432
+  * Disable dask test gh#scikit-image/scikit-image#7491
+</comment>
+    <requestid>1224507</requestid>
+  </revision>
 </revisionlist>
