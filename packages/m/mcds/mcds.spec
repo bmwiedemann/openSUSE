@@ -18,7 +18,7 @@
 
 
 Name:           mcds
-Version:        1.8
+Version:        1.9
 Release:        0
 Summary:        Mutt Carddav search program
 License:        GPL-3.0-or-later
