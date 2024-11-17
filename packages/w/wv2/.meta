@@ -1,6 +1,0 @@
-<package name="wv2" project="openSUSE:Factory">
-  <title>Library for Importing  Microsoft Word (tm) Documents</title>
-  <description>The wv2 library is used to import Microsoft Word documents in koffice
-for example.</description>
-  <devel project="devel:libraries:c_c++" package="wv2"/>
-</package>
