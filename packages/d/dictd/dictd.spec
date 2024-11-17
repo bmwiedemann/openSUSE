@@ -17,7 +17,7 @@
 
 
 Name:           dictd
-Version:        1.13.1
+Version:        1.13.2
 Release:        0
 Summary:        DICT protocol (RFC 2229) server and command-line client
 License:        BSD-3-Clause AND GPL-1.0-or-later AND GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-or-later AND MIT AND SUSE-Public-Domain
@@ -28,11 +28,16 @@ Source1:        colorit.conf
 Source2:        dictd.service
 Source99:       dictd-rpmlintrc
 Patch0:         dictd-1.12.1-unused-return.patch
+# PATCH-FIX-UPSTREAM index-buf-ovrflw.patch mcepl@suse.com
+# A buffer overflow
+Patch1:         index-buf-ovrflw.patch
+# BuildRequires:  mk-configure
 BuildRequires:  autoconf
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gawk
 BuildRequires:  gcc
+BuildRequires:  judy-devel
 BuildRequires:  libdbi-devel
 BuildRequires:  libmaa-devel
 BuildRequires:  libtool
@@ -52,12 +57,6 @@ set up a custom dictionary. To look up, for example, the word "grunt",
 execute `dict grunt` at a command line. See the man pages of dict and
 dictd for details.
 
-%prep
-%setup -q
-%autopatch -p1
-
-autoreconf -fv
-
 %package devel
 Summary:        Development files for dictd
 Group:          Development/Languages/C and C++
@@ -73,14 +72,30 @@ dictd for details.
 
 This package contains development files for the dictd package.
 
+%prep
+%autosetup -p1
+
+autoreconf --force --install --verbose
+
 %build
 export LDFLAGS="%{?__global_ldflags}" CPPFLAGS="%{optflags} -fPIC"
+# export USE_PLUGIN=1
+# export PREFIX="%%{_prefix}"
+# export MANDIR="%%{_mandir}"
+# export SYSCONFDIR="%%{_sysconfdir}"
+# export CC="%%{__cc}"
+# export DESTDIR="%%{buildroot}"
+# export COPTS="%%{optflags} -fPIC"
+# mkc_compiler_settings
+# mkcmake all
+export LEXLIB="-fl"
 %configure --enable-dictorg --with-plugin-dbi
 # --disable-plugin
 %make_build
 
 %install
 %make_install
+# mkcmake install
 install -D -m 0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/colorit.conf
 cat <<EOF >%{buildroot}/%{_sysconfdir}/dictd.conf
 global {
@@ -109,6 +124,9 @@ if [ "x%{_libdir}" != "x%{_libexecdir}" ] ; then
     rm -rv %{buildroot}%{_libexecdir}
 fi
 rm -fv %{buildroot}%{_libdir}/*.{la,a}
+
+%check
+%make_build test
 
 %pre
 %service_add_pre dictd.service

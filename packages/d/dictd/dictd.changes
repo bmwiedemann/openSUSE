@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Nov 15 12:58:53 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 1.13.2:
+  - Remove config.{sub,guess}
+  - Update version to 1.13.2
+  - Rename configure.in to configure.ac
+  - dictP.h: remove #include <sys/time.h>
+  - configure.in: fix obsolete code
+  - Fix compilation issues with gcc-14
+  - Update configure script and the like (autoconf-2.72)
+- Remove upstreamed patches:
+  - gcc-14.patch
+- Add index-buf-ovrflw.patch to fix a buffer overflow in index.c
+  (courtesy of the upstream author).
+
+-------------------------------------------------------------------
+Sat Nov 02 21:08:57 UTC 2024 - mcepl@cepl.eu
+
+- Update to version 1.13.1+git.1730572217.cccab00:
+  * dictd: listen to ipv6 and ipv4 by default
+  * remove use of deprecated inet_aton and inet_ntoa
+  * dictd: install dictd*.conf files to ${DATADIR}/examples/dictd by default
+  * Fix problems with DICT_CONFIG_PATH and other defined came from Makefile
+  * dict/Makefile: do not copy man page to ${BINDIR} :-)
+  * dict/Makefile: formatting
+  * dict: install samples dict.conf and dict2.conf to ${EGDIR}
+  * Move examples/dict1.conf to dict/
+
+-------------------------------------------------------------------
 Thu Mar  7 18:18:01 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Fix License: tag (thank you, Fedora

@@ -62,4 +62,26 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1158075</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>451657f6cb13d3371f3fa82a9d7e7da9</srcmd5>
+    <version>1.13.2</version>
+    <time>1731858115</time>
+    <user>anag+factory</user>
+    <comment>Update dictd to 1.13.2
+
+Update to 1.13.2:
+
+* Remove config.{sub,guess}
+* Update version to 1.13.2
+* Rename configure.in to configure.ac
+* dictP.h: remove #include &lt;sys/time.h&gt;
+* configure.in: fix obsolete code
+* Fix compilation issues with gcc-14
+* Update configure script and the like (autoconf-2.72)
+
+Remove upstreamed patch gcc-14.patch.
+
+(🤖: Submission of dictd via https://src.opensuse.org/pool/dictd/pulls/1 by mcepl)</comment>
+    <requestid>1224569</requestid>
+  </revision>
 </revisionlist>
