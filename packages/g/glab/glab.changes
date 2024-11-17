@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Nov 15 07:19:50 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.49.0:
+  * chore: Restore markdownlint testing, disable rule MD029 for
+    ol-prefix
+  * fix(stacked-diffs): remove merged or closed MRs in sync
+  * feat(test): Integration test for create issue with recover
+    option
+  * docs: Spacing, capitalization, and punctuation
+  * fix(commands/cluster/agent/get_token): agentID is always 64 bit
+  * feat(release): "release create --tag-message" flag
+  * refactor: Remove package-level vars
+  * fix(diff): return most recent diff version only
+  * chore(deps): update module golang.org/x/oauth2 to v0.24.0
+  * chore(deps): update module golang.org/x/crypto to v0.29.0
+  * feat: list personal, project or group access tokens
+  * chore(deps): update module github.com/xanzy/go-gitlab to
+    v0.113.0
+  * test: Adding checking of post body to http mocks
+  * chore(license): Update LICENSE
+  * docs: add flux bootstrap path note to agent bootstrap cmd
+  * docs: ignore generated documentation when running
+    markdownlint-cli2
+  * fix: add more info to gitlab agent reconcile error
+  * chore(deps): update module github.com/zalando/go-keyring to
+    v0.2.6
+  * chore(deps): update module k8s.io/client-go to v0.31.2
+  * chore(deps): update module k8s.io/apimachinery to v0.31.2
+  * feat: add environment format for variable export
+  * feat(auth login): allow more non-interactive login options
+  * feat(issues): add filter by iteration option to issue list
+  * feat: rotate personal, project or group access tokens
+  * fix: utilize api_host in config to avoid git subdomain issues
+  * chore(deps): update module go.uber.org/mock to v0.5.0
+  * feat(agent bootstrap): support specifying Agent Helm Chart
+    values
+
+-------------------------------------------------------------------
 Thu Oct 17 14:31:12 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.48.0:
