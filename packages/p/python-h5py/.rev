@@ -330,4 +330,41 @@
     <comment>- Fix Cython upper bound to match upstream.</comment>
     <requestid>1186088</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>9ab30e9d570a31ff350891d279ebb042</srcmd5>
+    <version>3.12.1</version>
+    <time>1731858094</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.12.1
+  ## Breaking changes
+  * Support for Python 3.8 was dropped (PR 2471). Python 3.9 or
+    newer is required to build or install h5py 3.12.
+  * The minimum supported version of HDF5 was increased to 1.10.6
+    (PR 2486). If you need h5py on HDF5 1.10.4 or .5, please use
+    h5py 3.11.
+  * The fill time for chunked storage was previously set to
+    h5d.FILL_TIME_ALLOC. Now this the default comes from HDF5,
+    which uses h5d.FILL_TIME_IFSET (equivalent to
+    fill_time='ifset') (PR 2463). Please use fill_time='alloc' if
+    the change is a problem for you.
+  ## Exposing HDF5 functions
+  * Expose fill time option in dataset creation property list via
+    the fill_time parameter in create_dataset() (PR 2463).
+  ## Bug fixes
+  * Fix an error where native float16 support is not available (PR
+    2422).
+  * Fixed values of H5F_close_degree_t enum (PR 2433).
+  * External links are now accessed with libhdf5’s default access
+    properties (PR 2433).
+  * Fix the iteration order for the root group in a file with
+    creation order tracked (PR 2410).
+  * Fixed some deprecation warnings from NumPy (PR 2416).
+ ## Building h5py
+  * Require a newer version of mpi4py for Python 3.12 (PR 2418).
+  * The test suite is now configured to fail on unexpected warnings
+    (PR 2428).
+  * The generated Cython wrapper code (defs.* &amp; _hdf5.pxd) is now
+    specific to the version of HDF5 it’s building for. If the</comment>
+    <requestid>1224515</requestid>
+  </revision>
 </revisionlist>
