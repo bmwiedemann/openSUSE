@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 18 15:55:50 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix usage of %requires_eq: invalid syntax previosly resulted in
+  ignored lines and now properly returns an error.
+
+-------------------------------------------------------------------
 Wed Nov 13 13:56:39 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.12.2

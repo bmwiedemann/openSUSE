@@ -69,7 +69,7 @@ Summary:        PHP FPM configuration for %{name}
 Group:          Productivity/Networking/Web/Utilities
 BuildRequires:  php%{php_major_version}-fpm
 Requires:       %{name} = %{version}
-%requires_eq	%{php_major_version}-fpm >= %{php_version}
+%requires_eq    php%{php_major_version}-fpm
 
 %description php-fpm
 This package contains the PHP FPM configuration file to run %{name} with php-fpm.
