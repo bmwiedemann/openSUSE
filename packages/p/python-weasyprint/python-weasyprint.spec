@@ -48,12 +48,13 @@ Requires:       libgobject-2_0-0
 Requires:       pango
 Requires:       python-Pillow >= %{Pillow_min_version}
 Requires:       python-Pyphen >= %{Pyphen_min_version}
-Requires:       python-base >= 3.7
+Requires:       python-base >= 3.9
 Requires:       python-cffi >= %{cffi_min_version}
 Requires:       python-cssselect2 >= %{cssselect2_min_version}
 Requires:       python-html5lib >= %{html5lib_min_version}
 Requires:       python-pydyf >= %{pypdf_min_version}
 Requires:       python-tinycss2 >= %{tinycss2_min_version}
+Requires:       python-tinyhtml5 >= %{tinyhtml5_min_version}
 # SECTION fonttools[woff]
 Requires:       python-FontTools >= %{fonttools_min_version}
 Requires:       python-Brotli >= %{brotli_min_version}
@@ -67,10 +68,10 @@ BuildRequires:  %{python_module Pillow >= %{Pillow_min_version}}
 BuildRequires:  %{python_module Pyphen >= %{Pyphen_min_version}}
 BuildRequires:  %{python_module cffi   >= %{cffi_min_version}}
 BuildRequires:  %{python_module cssselect2 >= %{cssselect2_min_version}}
-BuildRequires:  %{python_module tinyhtml5 >= %{tinyhtml5_min_version}}
 BuildRequires:  %{python_module pydyf >= %{pypdf_min_version}}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tinycss2 >= %{tinycss2_min_version}}
+BuildRequires:  %{python_module tinyhtml5 >= %{tinyhtml5_min_version}}
 BuildRequires:  %{python_module zopfli >= %{zopfli_min_version}}
 BuildRequires:  dejavu-fonts
 BuildRequires:  gs
