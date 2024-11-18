@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Nov 18 11:00:27 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 5.0.2
+  Bug fixes:
+  * Remove trackers from previous category when moved to new one
+  * Fix `.torrent` file could not be deleted when torrent is
+    canceled
+  * Reset tracker entries when pausing the session
+  * Check real palette darkness to detect "dark theme"
+  * Correctly handle "torrent finished" events
+  * Preserve initial torrent progress while checking resume data
+  * Avoid reapplying Mark-of-the-Web when it already exists
+  * Don't apply Mark-of-the-Web on existing files
+  Web UI:
+  * Add color scheme switcher
+  Search:
+  * Correctly delete the moved search tab
+
+-------------------------------------------------------------------
 Sat Nov  2 16:42:08 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 5.0.1 (fixes boo#1232731 CVE-2024-51774)
