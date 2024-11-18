@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-fits
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,8 +23,10 @@ Release:        0
 Summary:        Octave functions for reading and writing FITS files
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-Url:            http://octave.sourceforge.net
+URL:            http://octave.sourceforge.net
 Source0:        http://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fits-wrong-const-fortran_vec.patch badshah400@gmail.com -- Object calling `fortran_vec()` must not be a const
+Patch0:         fits-wrong-const.patch
 BuildRequires:  cfitsio-devel
 BuildRequires:  gcc-c++
 BuildRequires:  hdf5-devel
@@ -33,11 +35,11 @@ BuildRequires:  pkg-config
 Requires:       octave-cli >= 3.0.0
 
 %description
-Functions for reading and writing FITS (Flexible Image Transport System) files. 
+Functions for reading and writing FITS (Flexible Image Transport System) files.
 This is part of Octave-Forge project.
 
 %prep
-%setup -q -c %{name}-%{version}
+%autosetup -p1 -c %{name}-%{version}
 sed -i -s -e 's/D_NINT/octave::math::x_nint/g' %{octpkg}-%{version}/src/*.cc
 %octave_pkg_src
 

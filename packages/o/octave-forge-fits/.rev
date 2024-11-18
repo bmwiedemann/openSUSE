@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>682622</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>bbb6e757789f55d013b1fea881e04397</srcmd5>
+    <version>1.0.7</version>
+    <time>1731956530</time>
+    <user>anag+factory</user>
+    <comment>Add fits-wrong-const.patch -- Object calling `fortran_vec()`  must not be a const; fixes builds.
+</comment>
+    <requestid>1224825</requestid>
+  </revision>
 </revisionlist>

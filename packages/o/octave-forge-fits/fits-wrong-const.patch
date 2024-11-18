@@ -1,0 +1,32 @@
+
+---
+ fits-1.0.7/src/save_fits_image.cc           |    2 +-
+ fits-1.0.7/src/save_fits_image_multi_ext.cc |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+Index: octave-forge-fits-1.0.7/fits-1.0.7/src/save_fits_image.cc
+===================================================================
+--- octave-forge-fits-1.0.7.orig/fits-1.0.7/src/save_fits_image.cc
++++ octave-forge-fits-1.0.7/fits-1.0.7/src/save_fits_image.cc
+@@ -44,7 +44,7 @@ DEFUN_DLD( save_fits_image, args, nargou
+   std::string outfile = args(0).string_value ();
+ 
+ 
+-  const NDArray image = args(1).array_value();
++  NDArray image = args(1).array_value();
+   dim_vector dims = image.dims();
+   int num_axis = dims.length();
+   OCTAVE_LOCAL_BUFFER ( long int, sz_axes, num_axis );
+Index: octave-forge-fits-1.0.7/fits-1.0.7/src/save_fits_image_multi_ext.cc
+===================================================================
+--- octave-forge-fits-1.0.7.orig/fits-1.0.7/src/save_fits_image_multi_ext.cc
++++ octave-forge-fits-1.0.7/fits-1.0.7/src/save_fits_image_multi_ext.cc
+@@ -44,7 +44,7 @@ DEFUN_DLD( save_fits_image_multi_ext, ar
+   std::string outfile = args(0).string_value ();
+ 
+   int num_axis = 2;
+-  const NDArray image = args(1).array_value();
++  NDArray image = args(1).array_value();
+   long int sz_axes[2]; 
+   sz_axes[0] = image.dim1();
+   sz_axes[1] = image.dim2();
