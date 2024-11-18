@@ -5,7 +5,7 @@
     <param name="revision">main</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">os-update</param>
-    <param name="versionformat">1.18+git.%cd</param>
+    <param name="versionformat">1.19+git.%cd</param>
   </service>
   <service mode="manual" name="recompress">
     <param name="file">*.tar</param>

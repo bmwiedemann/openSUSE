@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 11 10:51:57 UTC 2024 - kukuk@suse.com
+
+- Update to version 1.19+git.20241111:
+  * Release version 1.19
+  * Only provide application defaults as comments
+  * Don't try to restart dbus-broker, use soft-reboot
+  * Don't hardcode path of rebootmgrctl
+
+-------------------------------------------------------------------
 Wed Nov 06 10:24:35 UTC 2024 - kukuk@suse.com
 
 - Update to version 1.18+git.20241106:

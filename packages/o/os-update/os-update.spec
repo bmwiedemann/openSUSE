@@ -21,7 +21,7 @@
 %endif
 
 Name:           os-update
-Version:        1.18+git.20241106
+Version:        1.19+git.20241111
 Release:        0
 Summary:        Updates the system regularly to stay current and safe
 License:        GPL-2.0-or-later
