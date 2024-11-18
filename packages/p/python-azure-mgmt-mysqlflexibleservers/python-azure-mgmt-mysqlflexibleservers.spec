@@ -15,11 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define realversion 1.0.0b2
+
+%define realversion 1.0.0b3
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-mysqlflexibleservers
-Version:        1.0.0~b2
+Version:        1.0.0~b3
 Release:        0
 Summary:        Microsoft Azure Mysqlflexibleservers Management Client Library for Python
 License:        MIT
@@ -35,10 +36,10 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-azure-mgmt-nspkg >= 3.0.0
 Requires:       python-azure-nspkg >= 3.0.0
+Requires:       python-typing_extensions >= 4.6.0
 Requires:       (python-azure-common >= 1.1 with python-azure-common < 2.0.0)
 Requires:       (python-azure-mgmt-core >= 1.3.2 with python-azure-mgmt-core < 2.0.0)
 Requires:       (python-isodate >= 0.6.1 if python-isodate < 1.0.0)
-Requires:       python-typing_extensions >= 4.6.0
 Conflicts:      python-azure-sdk <= 2.0.0
 BuildArch:      noarch
 

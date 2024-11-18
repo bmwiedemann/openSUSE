@@ -19,4 +19,15 @@
 - Adjust upstream source name in spec file (forwarded request 1203868 from glaubitz)</comment>
     <requestid>1203890</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f1782050f2e5dba3b1e07e9d2284d38d</srcmd5>
+    <version>1.0.0~b3</version>
+    <time>1731956552</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 1.0.0b3
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1224791 from glaubitz)</comment>
+    <requestid>1224864</requestid>
+  </revision>
 </revisionlist>
