@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Nov 15 18:58:36 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 2.62.0
+  * CVE-2024-52308: remote code execution (RCE) when users connect
+    to a malicious Codespace SSH server and use the gh codespace
+    ssh or gh codespace logs commands
+    (boo#1233387, GHSA-p2h2-3vg9-4p87)
+  * Check extension for latest version when executed
+  * Shorten extension release checking from 3s to 1s
+- includes changes from 2.61.0:
+  * Enhance gh repo edit command to inform users about
+    consequences of changing visibility and ensure users are
+    intentional before making irreversible changes
+
+-------------------------------------------------------------------
 Sun Oct 27 16:48:34 UTC 2024 - pdostal@suse.com
 
 - Update to version 2.60.1:
