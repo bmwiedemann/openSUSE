@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Nov 18 14:17:15 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.10.12
+  * Allow users to explicitly configure universe domain
+  * Add google-auth as a direct dependency
+  * Require google-api-core>=1.34.1
+  * Support mounting NFS and GCS volumes in Cloud Run Jobs and Services
+  * add Job ExecutionReference.completion_status to show status of the 
+    most recent execution
+  * add Builds API
+  * Add support for Python 3.13
+  * support advanced configurations options for cloud storage volumes 
+    by setting mount_options in the GCSVolumeSource configuration
+  * add EncryptionKeyRevocationAction and shutdown duration 
+    configuration to Services
+
+-------------------------------------------------------------------
 Sun Dec 17 20:42:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - run tests
