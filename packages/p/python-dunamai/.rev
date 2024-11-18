@@ -68,4 +68,14 @@
     <comment></comment>
     <requestid>1191994</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>130d95244931f6aacf8bb5c21b81e699</srcmd5>
+    <version>1.23.0</version>
+    <time>1731956545</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.23.0:
+  * Add major/minor/patch format placeholders
+  * Clean up some formatting (forwarded request 1224848 from rrahl0)</comment>
+    <requestid>1224852</requestid>
+  </revision>
 </revisionlist>
