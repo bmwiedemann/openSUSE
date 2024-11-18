@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>930189</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>fbd32018ef195ce28f9e4ecd4da99929</srcmd5>
+    <version>10</version>
+    <time>1731956568</time>
+    <user>anag+factory</user>
+    <comment>- Add gcc14,patch:Fix build using stricter gcc 14. (forwarded request 1224883 from dimstar)</comment>
+    <requestid>1224898</requestid>
+  </revision>
 </revisionlist>

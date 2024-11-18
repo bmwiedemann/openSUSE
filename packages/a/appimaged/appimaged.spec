@@ -1,7 +1,7 @@
 #
 # spec file for package appimaged
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        MIT
 Group:          System/Daemons
 Source0:        AppImageKit-%version.tar.xz
 Source1:        appimaged.service
+Patch0:         gcc14,patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cairo-devel
@@ -48,7 +49,7 @@ The package comes also with appimage.validate CLI tool to verify signature
 of AppImage files.
 
 %prep
-%setup -q -n AppImageKit-%version
+%autosetup -p1 -n AppImageKit-%version
 sed -i -e s,^version=.*,version=%version, build.sh
 
 %build

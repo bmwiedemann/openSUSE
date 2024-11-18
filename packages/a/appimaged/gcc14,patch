@@ -1,0 +1,12 @@
+Index: AppImageKit/squashfuse/ll.c
+===================================================================
+--- AppImageKit.orig/squashfuse/ll.c
++++ AppImageKit/squashfuse/ll.c
+@@ -33,6 +33,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <unistd.h>
+ 
+ static const double SQFS_TIMEOUT = DBL_MAX;
+ 

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 18 13:48:22 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add gcc14,patch:Fix build using stricter gcc 14.
+
+-------------------------------------------------------------------
 Sun Feb 28 09:56:55 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - use current repo as source
