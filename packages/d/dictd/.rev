@@ -84,4 +84,17 @@ Remove upstreamed patch gcc-14.patch.
 (🤖: Submission of dictd via https://src.opensuse.org/pool/dictd/pulls/1 by mcepl)</comment>
     <requestid>1224569</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d26de473101b7c83c0bbe35db7356366</srcmd5>
+    <version>1.13.3</version>
+    <time>1731956553</time>
+    <user>anag+factory</user>
+    <comment>Update 1.13.3
+
+- Update to 1.13.3:
+  - dictd: fix buffer overflow in first/last search strategies.
+
+(🤖: Submission of dictd via https://src.opensuse.org/pool/dictd/pulls/2 by mcepl)</comment>
+    <requestid>1224878</requestid>
+  </revision>
 </revisionlist>

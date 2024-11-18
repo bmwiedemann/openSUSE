@@ -17,22 +17,19 @@
 
 
 Name:           dictd
-Version:        1.13.2
+Version:        1.13.3
 Release:        0
 Summary:        DICT protocol (RFC 2229) server and command-line client
 License:        BSD-3-Clause AND GPL-1.0-or-later AND GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-or-later AND MIT AND SUSE-Public-Domain
 Group:          Productivity/Office/Dictionary
 URL:            https://github.com/cheusov/dictd
-Source0:        https://github.com/cheusov/dictd/archive/%{version}.tar.gz#/dictd-%{version}.tar.gz
+# Source0:        https://github.com/cheusov/dictd/archive/%%{version}.tar.gz#/dictd-%%{version}.tar.gz
+Source0:        https://sourceforge.net/projects/dict/files/dictd/dictd-%{version}/dictd-%{version}.tar.gz
 Source1:        colorit.conf
 Source2:        dictd.service
 Source99:       dictd-rpmlintrc
 Patch0:         dictd-1.12.1-unused-return.patch
-# PATCH-FIX-UPSTREAM index-buf-ovrflw.patch mcepl@suse.com
-# A buffer overflow
-Patch1:         index-buf-ovrflw.patch
 # BuildRequires:  mk-configure
-BuildRequires:  autoconf
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gawk
@@ -74,8 +71,6 @@ This package contains development files for the dictd package.
 
 %prep
 %autosetup -p1
-
-autoreconf --force --install --verbose
 
 %build
 export LDFLAGS="%{?__global_ldflags}" CPPFLAGS="%{optflags} -fPIC"

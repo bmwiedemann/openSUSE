@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 18 11:00:22 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 1.13.3:
+  - dictd: fix buffer overflow in first/last search strategies.
+- Remove upstreamed index-buf-ovrflw.patch.
+
+-------------------------------------------------------------------
 Fri Nov 15 12:58:53 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 1.13.2:
