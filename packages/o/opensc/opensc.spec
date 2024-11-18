@@ -16,10 +16,10 @@
 #
 
 
-%define sover 11
+%define sover 12
 %define completionsdir %(pkg-config --variable completionsdir bash-completion)
 Name:           opensc
-Version:        0.25.1
+Version:        0.26.0
 Release:        0
 Summary:        Smart Card Utilities
 License:        LGPL-2.1-or-later
@@ -33,19 +33,6 @@ Source2:        %{name}-rpmlintrc
 Source3:        opensc.module
 Patch0:         opensc-gcc11.patch
 Patch1:         opensc-docbook-xsl-fix.patch
-Patch2:         opensc-CVE-2024-8443.patch
-# PATCH-FIX-UPSTREAM: bsc#1230071 CVE-2024-45615: opensc: pkcs15init: Usage of uninitialized values in libopensc and pkcs15init
-Patch3:         opensc-CVE-2024-45615.patch
-# PATCH-FIX-UPSTREAM: bsc#1230072 CVE-2024-45616: opensc: Uninitialized values after incorrect check or usage of APDU response values in libopensc
-Patch4:         opensc-CVE-2024-45616.patch
-# PATCH-FIX-UPSTREAM: bsc#1230073 CVE-2024-45617: opensc: Uninitialized values after incorrect or missing checking return values of functions in libopensc
-Patch5:         opensc-CVE-2024-45617.patch
-# PATCH-FIX-UPSTREAM: bsc#1230074 CVE-2024-45618: opensc: Uninitialized values after incorrect or missing checking return values of functions in pkcs15init
-Patch6:         opensc-CVE-2024-45618.patch
-# PATCH-FIX-UPSTREAM: bsc#1230075 CVE-2024-45619: opensc: Incorrect handling length of buffers or files in libopensc
-Patch7:         opensc-CVE-2024-45619.patch
-# PATCH-FIX-UPSTREAM: bsc#1230076 CVE-2024-45620: opensc: Incorrect handling of the length of buffers or files in pkcs15init
-Patch8:         opensc-CVE-2024-45620.patch
 BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  libxslt
