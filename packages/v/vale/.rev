@@ -735,4 +735,27 @@
   * chore: disable cross compile for now (forwarded request 1216854 from jfkw)</comment>
     <requestid>1216855</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>2c7af9f4d26ace534ab4c84598d2e205</srcmd5>
+    <version>3.9.1</version>
+    <time>1731956549</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.9.1:
+  * fix: support overriding `MinAlertLevel`
+  * feat: add command for mocking the config pipeline
+  * test: more `repetition` cases
+  * fix: improve `Vale.Repetition`
+  * fix: check if we need to load a rule before trying
+
+- Update to version 3.9.0:
+  * test: update comment cases
+  * feat: add comment syntax for ignoring individual matches (#844)
+  * chore: formatting
+  * feat: add comment syntax for switching styles (#772)
+  * test: add sections
+  * docs: update logos
+  * test: add MDX case
+  * chore: bump Go version (forwarded request 1224859 from jfkw)</comment>
+    <requestid>1224861</requestid>
+  </revision>
 </revisionlist>

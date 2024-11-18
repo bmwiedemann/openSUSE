@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Nov 18 12:30:48 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.9.1:
+  * fix: support overriding `MinAlertLevel`
+  * feat: add command for mocking the config pipeline
+  * test: more `repetition` cases
+  * fix: improve `Vale.Repetition`
+  * fix: check if we need to load a rule before trying
+
+-------------------------------------------------------------------
+Fri Nov 08 02:45:20 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.9.0:
+  * test: update comment cases
+  * feat: add comment syntax for ignoring individual matches (#844)
+  * chore: formatting
+  * feat: add comment syntax for switching styles (#772)
+  * test: add sections
+  * docs: update logos
+  * test: add MDX case
+  * chore: bump Go version
+
+-------------------------------------------------------------------
 Tue Oct 15 18:39:26 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 3.8.0:
