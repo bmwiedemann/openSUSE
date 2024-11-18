@@ -519,4 +519,12 @@
 - supersedes kernel-6.10.patch</comment>
     <requestid>1217357</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>cf114df1baa5518d4e7380a064ef507c</srcmd5>
+    <version>550.127.05</version>
+    <time>1731956532</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1224830</requestid>
+  </revision>
 </revisionlist>

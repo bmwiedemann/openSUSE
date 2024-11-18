@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 11 10:32:20 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- kmp-trigger.sh:
+  * avoid to return with exit code != 0 if no modules are loaded
+
+-------------------------------------------------------------------
 Wed Oct 23 02:50:30 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to 550.127.05 (boo#1232057)
