@@ -575,4 +575,12 @@ Proposed for 12.3, as having a patch addressing the same fix as was done in anot
     <comment>GNOME 46 (forwarded request 1160561 from dimstar)</comment>
     <requestid>1160590</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>acb9ee965f3a3868d558880121780029</srcmd5>
+    <version>46.1</version>
+    <time>1731956542</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1224842</requestid>
+  </revision>
 </revisionlist>

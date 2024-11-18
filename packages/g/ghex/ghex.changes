@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 15 07:20:46 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 46.1:
+  + main: fix GdkDisplay access before init.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Mar 22 08:15:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 46.0:
