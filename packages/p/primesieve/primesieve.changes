@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov 17 14:30:00 UTC 2024 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primesieve-12.6
+- Add AVX512 and ARM SVE pre-sieving
+
+-------------------------------------------------------------------
 Sat Oct 26 07:15:00 UTC 2024 - Kim Walisch <kim.walisch@gmail.com>
 
 - Update to primesieve-12.5
