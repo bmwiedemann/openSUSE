@@ -3086,13 +3086,6 @@ BuildFlags: onlybuild:rubygem-ronn-ng
 BuildFlags: onlybuild:rust
 BuildFlags: onlybuild:rust-bindgen
 BuildFlags: onlybuild:rust-cbindgen
-BuildFlags: onlybuild:rust1.74
-BuildFlags: onlybuild:rust1.75
-BuildFlags: onlybuild:rust1.76
-BuildFlags: onlybuild:rust1.77
-BuildFlags: onlybuild:rust1.78
-BuildFlags: onlybuild:rust1.79
-BuildFlags: onlybuild:rust1.80
 BuildFlags: onlybuild:rust1.81
 BuildFlags: onlybuild:rust1.82
 BuildFlags: onlybuild:samba
