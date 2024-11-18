@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Nov 18 11:47:48 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add qt6-qt5-imports to Requires (boo#1233005).
+
+-------------------------------------------------------------------
+Mon Nov  4 20:38:53 UTC 2024 - RN <R_Nik_C@proton.me>
+
+- Update to version 3.14.3:
+  * create a permanent log of delete actions 
+    (gh#nextcloud/desktop#7381)
+  * detect the terms of service app is requiring the user to sign 
+    them (gh#nextcloud/desktop#7386)
+  * content access denied error during discovery: verify server 
+    access (gh#nextcloud/desktop#7392)
+  * properly detect need to sign terms of service state 
+    (gh#nextcloud/desktop#7396)
+  * improve again state tracking with terms of service app 
+    (gh#nextcloud/desktop#7406)
+  * Change defaults of promptDeleteFiles to false 
+    (gh#nextcloud/desktop#7411)
+  * Update share link for AppImage tool (gh#nextcloud/desktop#7440)
+  * Bugfix update channels (gh#nextcloud/desktop#7443)
+  * Only display server name in multiple override servers dropdown 
+    (gh#nextcloud/desktop#7424)
+
+-------------------------------------------------------------------
 Tue Oct 22 15:08:57 UTC 2024 - RN <R_Nik_C@proton.me>
 
 - Some qt5 libraries replaced to qt6

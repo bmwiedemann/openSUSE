@@ -25,7 +25,7 @@
 %define gcc_ver 9
 %endif
 Name:           nextcloud-desktop
-Version:        3.14.2
+Version:        3.14.3
 Release:        0
 Summary:        Nextcloud desktop synchronisation client
 License:        GPL-2.0-or-later AND LGPL-3.0-or-later
@@ -78,6 +78,7 @@ BuildRequires:  rpm_macro(_qt6_pluginsdir)
 Recommends:     cloudproviders-extension-nextcloud = %{version}
 Requires:       %{soname}%{sover} = %{version}
 Requires:       nextcloud-cli = %{version}
+Requires:       qt6-qt5compat-imports
 Provides:       nextcloud-client = %{version}
 Obsoletes:      nextcloud-client < %{version}
 Provides:       nextcloud-client-lang = %{version}
