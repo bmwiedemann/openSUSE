@@ -17,22 +17,32 @@
 
 
 Name:           clazy
-Version:        1.12git.20240630T203330~f3fb82c
+Version:        1.13git.20240928T115050~ef4fa16
 Release:        0
 Summary:        Qt oriented code checker based on the Clang framework
 License:        LGPL-2.0-or-later
-Group:          Development/Tools/Other
-URL:            https://www.kdab.com/clazy-video/
+URL:            https://apps.kde.org/clazy/
 Source0:        %{name}-%{version}.tar.xz
+%if 0%{?suse_version} > 1500
+# Fails to build upstream with llvm 19
+BuildRequires:  clang18
+BuildRequires:  clang18-devel
+%else
 BuildRequires:  clang
 BuildRequires:  clang-devel >= 11.0
+%endif
 BuildRequires:  cmake >= 3.8
 %if 0%{?suse_version} == 1500
 BuildRequires:  gcc13-PIE
 BuildRequires:  gcc13-c++
 %endif
 BuildRequires:  libstdc++-devel
-%requires_eq    clang%{_llvm_sonum}
+%if 0%{?suse_version} > 1500
+%requires_eq    libLLVM18
+%else
+%requires_eq    libLLVM%{_libclang_sonum}
+%endif
+%requires_eq    libclang-cpp%{_llvm_sonum}
 
 %description
 clazy is a compiler plugin which allows Clang to understand Qt semantics.

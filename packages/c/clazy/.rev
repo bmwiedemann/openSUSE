@@ -222,4 +222,29 @@
     <comment>Update to 1.12</comment>
     <requestid>1185343</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>91d69bf0d34f9a23623ee007c1366604</srcmd5>
+    <version>1.13git.20240928T115050~ef4fa16</version>
+    <time>1731956530</time>
+    <user>anag+factory</user>
+    <comment>- Update runtime requirements
+- Keep using LLVM 18 on Tumbleweed until upstream fixes
+  compatibility with LLVM 19
+
+- Update to version 1.13git.20240928T115050~ef4fa16:
+  * Fix clang deprecations by porting to FileEntryRef
+  * Use clazy helper to avoid startsWith-&gt;starts_with deprecation
+  * [cmake] Adjust for non-installed LLVM
+  * rule-of-three: Fix destructor not being found and thus causing false positive
+  * Add test for qca clazy false positive
+  * Fail if no Qt installation was found at all
+  * Add Qt6 BSD CI
+  * Only look for Qt5/Qt6 installs if respective CI job is running
+  * Verbose ctest
+  * Make tests work when clang library is different from system default
+  * Move used-qunused to manuallevel for now
+  * Add used-qunused check for identifying unneeded/wrong Q_UNUSED/void casts
+  * Bump master to 1.13</comment>
+    <requestid>1224829</requestid>
+  </revision>
 </revisionlist>

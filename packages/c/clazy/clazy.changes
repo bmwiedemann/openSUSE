@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Nov 14 09:42:22 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update runtime requirements
+- Keep using LLVM 18 on Tumbleweed until upstream fixes
+  compatibility with LLVM 19
+
+-------------------------------------------------------------------
+Fri Nov 08 09:14:23 UTC 2024 - christophe@krop.fr
+
+- Update to version 1.13git.20240928T115050~ef4fa16:
+  * Fix clang deprecations by porting to FileEntryRef
+  * Use clazy helper to avoid startsWith->starts_with deprecation
+  * [cmake] Adjust for non-installed LLVM
+  * rule-of-three: Fix destructor not being found and thus causing false positive
+  * Add test for qca clazy false positive
+  * Fail if no Qt installation was found at all
+  * Add Qt6 BSD CI
+  * Only look for Qt5/Qt6 installs if respective CI job is running
+  * Verbose ctest
+  * Make tests work when clang library is different from system default
+  * Move used-qunused to manuallevel for now
+  * Add used-qunused check for identifying unneeded/wrong Q_UNUSED/void casts
+  * Bump master to 1.13
+
+-------------------------------------------------------------------
 Thu Jul 04 07:45:31 UTC 2024 - christophe@krop.fr
 
 - Update to version 1.12git.20240630T203330~f3fb82c:
