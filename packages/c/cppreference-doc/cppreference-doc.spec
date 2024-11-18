@@ -17,7 +17,7 @@
 
 
 Name:           cppreference-doc
-Version:        20240610
+Version:        20241110
 Release:        0
 Summary:        Cppreference documentation for offline reading
 License:        CC-BY-SA-3.0
