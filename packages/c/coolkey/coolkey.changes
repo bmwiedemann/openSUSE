@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov  9 15:18:07 UTC 2024 - Angel Yankov <angel.yankov@suse.com>
+
+- Fix build with gcc14 by ignoring some new errors
+  * Added coolkey-1.1.0-fix-build-gcc14.patch 
+
+-------------------------------------------------------------------
 Mon Feb 26 10:48:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

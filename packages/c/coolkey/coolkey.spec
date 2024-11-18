@@ -1,7 +1,7 @@
 #
 # spec file for package coolkey
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,6 +55,8 @@ Patch24:        coolkey-1.1.0-more-keys.patch
 Patch25:        coolkey-1.1.0-fail-on-bad-mechanisms.patch
 Patch26:        coolkey-1.1.0-max-cpu-bug.patch
 Patch27:        coolkey-1.1.0-rhel7-alt-cac.patch
+Patch28:        coolkey-1.1.0-fix-build-gcc14.patch
+
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  mozilla-nss-devel
@@ -63,7 +65,7 @@ BuildRequires:  mozilla-nss-tools
 BuildRequires:  pcsc-lite-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
-#Requires:       pcsc-lite
+Requires:       pcsc-lite
 # Requires: ifd-egate
 Requires:       pcsc-ccid
 # 390 does not have libusb or smartCards
@@ -123,10 +125,11 @@ CoolKeys are based on JavaCard 1.2.
 %patch -P 25
 %patch -P 26
 %patch -P 27
+%patch -P 28 -p1
 
 %build
 autoreconf -f -i
-export CFLAGS="%{optflags} -fno-strict-aliasing"
+export CFLAGS="%{optflags} -fno-strict-aliasing "
 export CXXFLAGS="%{optflags} -fno-strict-aliasing"
 %configure\
 	--with-debug\

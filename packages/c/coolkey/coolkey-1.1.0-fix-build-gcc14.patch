@@ -1,0 +1,19 @@
+Index: coolkey-1.1.0/src/install/pk11install.c
+===================================================================
+--- coolkey-1.1.0.orig/src/install/pk11install.c
++++ coolkey-1.1.0/src/install/pk11install.c
+@@ -200,9 +200,14 @@ installPKCS11(char *dirPath, char *dbTyp
+ 
+     /* don't call this if you have NSS initialized!!, use SECMOD_AddModule
+      * or SECMOD_AddUserModule instead */
++
++    /* Ignore this missing in the header for gcc14 */
++#pragma GCC diagnostic push
++#pragma GCC diagnostic ignored "-Wimplicit-function-declaration"
+     rc = (char **) NSC_ModuleDBFunc(type == Install ? 
+ 			SECMOD_MODULE_DB_FUNCTION_ADD :
+ 			SECMOD_MODULE_DB_FUNCTION_DEL, paramString, module); 
++#pragma GCC diagnostic pop
+     if (verbose) {
+ 	fprintf(stderr, "Install \"%s\" in %s : %s\n", module, dirPath, 
+ 							rc ? *rc : "Fail" );
