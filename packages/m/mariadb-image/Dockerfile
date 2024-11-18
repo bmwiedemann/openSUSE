@@ -17,7 +17,7 @@
 
 #!BuildTag: opensuse/mariadb:%%mariadb_version%%-%RELEASE%
 #!BuildTag: opensuse/mariadb:%%mariadb_version%%
-#!BuildTag: opensuse/mariadb:11.5
+#!BuildTag: opensuse/mariadb:11.6
 #!BuildTag: opensuse/mariadb:latest
 
 FROM opensuse/tumbleweed:latest
@@ -47,7 +47,7 @@ ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["mariadbd"]
 EXPOSE 3306/tcp
 # sanity check that the version from the tag is equal to the version of mariadb-client that we expect
-RUN set -euo pipefail; [ "$(rpm -q --qf '%{version}' mariadb-client | cut -d '.' -f -2)" = "11.5" ]
+RUN set -euo pipefail; [ "$(rpm -q --qf '%{version}' mariadb-client | cut -d '.' -f -2)" = "11.6" ]
 
 RUN set -euo pipefail; mkdir /docker-entrypoint-initdb.d
 
