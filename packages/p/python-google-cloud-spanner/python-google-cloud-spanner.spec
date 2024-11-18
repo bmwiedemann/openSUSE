@@ -27,39 +27,34 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-spanner%{psuffix}
-Version:        3.40.1
+Version:        3.50.1
 Release:        0
 Summary:        Google Cloud Spanner API client library
 License:        Apache-2.0
 URL:            https://github.com/googleapis/python-spanner
-Source:         https://files.pythonhosted.org/packages/source/g/google-cloud-spanner/google-cloud-spanner-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/g/google_cloud_spanner/google_cloud_spanner-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 %if %{with test}
-BuildRequires:  %{python_module google-api-core >= 1.34.0}
-BuildRequires:  %{python_module google-cloud-core >= 1.4.1}
 BuildRequires:  %{python_module google-cloud-spanner = %{version}}
-BuildRequires:  %{python_module grpc-google-iam-v1 >= 0.12.4}
-BuildRequires:  %{python_module proto-plus >= 1.22.0}
-BuildRequires:  %{python_module protobuf >= 3.19.5}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module sqlparse >= 0.4.4}
 %endif
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-google-api-core >= 1.34.0
-Requires:       python-google-cloud-core >= 1.4.1
+Requires:       python-google-cloud-core >= 1.4.4
 Requires:       python-grpc-google-iam-v1 >= 0.12.4
+Requires:       python-grpc-interceptor >= 0.15.4
 Requires:       python-proto-plus >= 1.22.0
-Requires:       python-protobuf >= 3.19.5
+Requires:       python-protobuf >= 3.20.2
 Requires:       python-sqlparse >= 0.4.4
 Suggests:       python-libcst >= 0.2.5
-Suggests:       python-opentelemetry-api >= 1.1.0
-Suggests:       python-opentelemetry-sdk >= 1.1.0
+Suggests:       python-opentelemetry-api >= 1.22.0
+Suggests:       python-opentelemetry-sdk >= 1.22.0
 Suggests:       python-opentelemetry-instrumentation >= 0.20b0
 BuildArch:      noarch
 %python_subpackages
@@ -68,7 +63,7 @@ BuildArch:      noarch
 Google Cloud Spanner API client library
 
 %prep
-%autosetup -p1 -n google-cloud-spanner-%{version}
+%autosetup -p1 -n google_cloud_spanner-%{version}
 
 # don't use python-mock
 for i in $(find tests -name "*.py")
@@ -105,7 +100,6 @@ export GOOGLE_CLOUD_PROJECT="PROJECT"
 %doc README.rst
 %license LICENSE
 %pycache_only %{python_sitelib}/google/cloud/__pycache__
-%{python_sitelib}/google_cloud_spanner-%{version}-*-nspkg.pth
 %dir %{python_sitelib}/google
 %dir %{python_sitelib}/google/cloud
 %{python_sitelib}/google/cloud/spanner*

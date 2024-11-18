@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Nov 18 13:07:49 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.50.1
+  * Add BatchWrite API
+  * spanner: Add autoscaling config to the instance proto
+  * spanner: Add directed_read_option in spanner.proto
+  * Add max_commit_delay API
+  * Exposing Spanner client in dbapi connection
+  * Add support of float32 type
+  * Add support for PG.OID in parameterized queries
+  * spanner: Adding EXPECTED_FULFILLMENT_PERIOD to the indicate instance creation times
+  * Add support for Cloud Spanner Scheduled Backups
+  * spanner: Add support for Cloud Spanner Default Backup Schedules
+  * many more changes, see upstream CHANGELOG.md
+
+-------------------------------------------------------------------
 Wed Jan 10 10:05:24 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Run tests using multibuild
