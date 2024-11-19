@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-cosmosdb
-Version:        9.6.0
+Version:        9.7.0
 Release:        0
 Summary:        Microsoft Azure Cosmos DB Management Client Library
 License:        MIT

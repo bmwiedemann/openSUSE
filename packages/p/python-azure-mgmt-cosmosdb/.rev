@@ -336,4 +336,15 @@
 - Update Requires from setup.py (forwarded request 1201974 from glaubitz)</comment>
     <requestid>1201990</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>fc969466decda67f2a9fb889949dc32e</srcmd5>
+    <version>9.7.0</version>
+    <time>1732051467</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 9.7.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1225111 from glaubitz)</comment>
+    <requestid>1225152</requestid>
+  </revision>
 </revisionlist>
