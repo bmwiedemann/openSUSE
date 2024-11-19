@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 19 12:51:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.1:
+  * Community wanted: Reintroduce 7 as DayOfWeek in deviation
+    from standard cron (#90). [kiorky]
+  * Remove DayOfWeek alias 7 to DayOfWeek 0 to stick to standard
+    cron (#90). [kiorky]
+  * Fix DOW ranges calculations when lastday is a Sunday.
+    [kiorky]
+
+-------------------------------------------------------------------
 Mon Oct 28 11:35:00 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.4:

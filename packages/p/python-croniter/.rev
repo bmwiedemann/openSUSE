@@ -350,4 +350,18 @@
     for all the inputs. [kiorky, akx]</comment>
     <requestid>1218792</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>c1520f87dccaa5dbc40dceb68af6a4a0</srcmd5>
+    <version>5.0.1</version>
+    <time>1732051426</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.0.1:
+  * Community wanted: Reintroduce 7 as DayOfWeek in deviation
+    from standard cron (#90). [kiorky]
+  * Remove DayOfWeek alias 7 to DayOfWeek 0 to stick to standard
+    cron (#90). [kiorky]
+  * Fix DOW ranges calculations when lastday is a Sunday.
+    [kiorky]</comment>
+    <requestid>1225104</requestid>
+  </revision>
 </revisionlist>
