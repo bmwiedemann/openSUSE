@@ -1,7 +1,7 @@
 <services>
   <service mode="manual" name="download_files"/>
   <service name="cargo_vendor" mode="manual">
-     <param name="src">primp-0.6.3</param>
+     <param name="src">primp-0.7.0</param>
      <param name="compression">xz</param>
      <param name="update">true</param>
   </service>

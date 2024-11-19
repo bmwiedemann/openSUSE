@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-primp
-Version:        0.6.3
+Version:        0.7.0
 Release:        0
 Summary:        HTTP client that can impersonate web browsers
 License:        MIT

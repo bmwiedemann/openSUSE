@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov 19 12:11:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.0:
+  * Using the `pythonize` crate to handle data and json
+    parameters, and return the responce as json
+  * Bump rquest to v0.27, cargo update
+- update to 0.6.5:
+  * Bump rquest to v0.26
+  * Readme: impersonate parameter - add "chrome_130"
+- update to 0.6.4:
+  * ca_cert_file: updated the code to match the changes in the
+    upstream package
+  * Bump html2text to v0.13
+
+-------------------------------------------------------------------
 Sat Sep 28 19:40:28 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.6.3:

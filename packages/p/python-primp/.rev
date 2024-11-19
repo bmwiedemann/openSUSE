@@ -19,4 +19,22 @@
   * README: impersonate param - add chrome_128</comment>
     <requestid>1204395</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>41118845c6acb5493c613c71e0879040</srcmd5>
+    <version>0.7.0</version>
+    <time>1732051431</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.7.0:
+  * Using the `pythonize` crate to handle data and json
+    parameters, and return the responce as json
+  * Bump rquest to v0.27, cargo update
+- update to 0.6.5:
+  * Bump rquest to v0.26
+  * Readme: impersonate parameter - add &quot;chrome_130&quot;
+- update to 0.6.4:
+  * ca_cert_file: updated the code to match the changes in the
+    upstream package
+  * Bump html2text to v0.13</comment>
+    <requestid>1225081</requestid>
+  </revision>
 </revisionlist>
