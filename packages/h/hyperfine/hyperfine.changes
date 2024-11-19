@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Nov 14 04:38:38 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Simplify specfile and switch from deprecated setup to autosetup
+- Add hyperfine to requires for the completions
+- Update to 1.19.0:
+  Features
+  * Add a new --reference <cmd> option to specify a reference
+    command for the relative speed comparison
+  * Add --conclude argument (analog to --prepare)
+  * Allow --output=… to appear once for each command, enabling use
+    cases like hyperfine --output=null my-cmd --output=./file.log
+    my-cmd
+  * The environment variable $HYPERFINE_ITERATION will now contain
+    the current iteration number for each benchmarked command
+  * Add iteration information to failure error message
+  * legend modification parameters and output DPI
+  * Nicer whiskers plot
+  Fixes
+  * ETA not clearly visible on terminals with a block cursor
+  * Fix zsh completions
+
+-------------------------------------------------------------------
 Mon Nov 20 01:47:34 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - cleanup spec and enable tests

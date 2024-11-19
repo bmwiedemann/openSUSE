@@ -1,7 +1,7 @@
 #
 # spec file for package hyperfine
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           hyperfine
-Version:        1.18.0
+Version:        1.19.0
 Release:        0
 Summary:        Command-line benchmarking tool
 License:        Apache-2.0 OR MIT
@@ -43,6 +43,7 @@ It includes:
 
 %package bash-completion
 Summary:        Bash Completion for %{name}
+Requires:       %{name} = %{version}
 Requires:       bash-completion
 Supplements:    (%{name} and bash-completion)
 BuildArch:      noarch
@@ -52,6 +53,7 @@ The official bash completion script for %{name}.
 
 %package fish-completion
 Summary:        Fish Completion for %{name}
+Requires:       %{name} = %{version}
 Supplements:    (%{name} and fish)
 BuildArch:      noarch
 
@@ -60,6 +62,7 @@ The official fish completion script for %{name}.
 
 %package zsh-completion
 Summary:        ZSH Completion for %{name}
+Requires:       %{name} = %{version}
 Supplements:    (%{name} and zsh)
 BuildArch:      noarch
 
@@ -67,23 +70,16 @@ BuildArch:      noarch
 The official zsh completion script for %{name}.
 
 %prep
-%setup -qa1
+%autosetup -a1
 
 %build
 %{cargo_build}
-mkdir -p completions
-cp -v target/release/build/%{name}-*/out/%{name}.bash completions/
-cp -v target/release/build/%{name}-*/out/%{name}.fish completions/
-cp -v target/release/build/%{name}-*/out/_%{name}     completions/
 
 %install
+mkdir -p  %{buildroot}%{_datadir}/bash-completion/completions \
+          %{buildroot}%{_datadir}/fish/vendor_completions.d \
+          %{buildroot}%{_datadir}/zsh/site-functions
 %{cargo_install}
-mkdir -p %{buildroot}%{_datadir}/bash-completion/completions
-mkdir -p %{buildroot}%{_datadir}/fish/vendor_completions.d
-mkdir -p %{buildroot}%{_datadir}/zsh/site-functions
-install -Dm644 completions/%{name}.bash %{buildroot}%{_datadir}/bash-completion/completions/%{name}
-install -Dm644 completions/%{name}.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/%{name}.fish
-install -Dm644 completions/_%{name}     %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
 install -Dm644 doc/%{name}.1                                   %{buildroot}%{_mandir}/man1/%{name}.1
 
 #%%if %{with check}

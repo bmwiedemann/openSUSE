@@ -414,4 +414,12 @@
  * Proper argument quoting on Windows CMD (forwarded request 1127593 from mimi_vx)</comment>
     <requestid>1127594</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b0d366918e6190fe53f99f00889ce0e0</srcmd5>
+    <version>1.19.0</version>
+    <time>1732051442</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1225121</requestid>
+  </revision>
 </revisionlist>
