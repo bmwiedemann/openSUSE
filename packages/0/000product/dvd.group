@@ -55,6 +55,7 @@
     <package name="PackageKit-gtk3-module" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="PackageKit-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="WebKitGTK-4.1-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="WindowMaker" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-imaging -->
     <package name="aaa_base" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="aaa_base-extras" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="accounts-qml-module" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -156,11 +157,6 @@
     <package name="avahi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="avahi-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="awesfx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="awesome" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-imaging -->
-    <package name="awesome-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-imaging -->
-    <package name="awesome-freedesktop" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-imaging -->
-    <package name="awesome-shifty" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-imaging -->
-    <package name="awesome-vicious" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-imaging -->
     <package name="b43-fwcutter" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="babeltrace" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="baloo-widgets" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -254,7 +250,6 @@
     <package name="cifs-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="clamav" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="clang-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="clang18" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="clang19" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="clazy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="clicfs" supportstatus="unsupported"/> <!-- reason: dvd:clicfs -->
@@ -364,6 +359,7 @@
     <package name="dos2unix" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="dosfstools" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="dracut" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="dracut-pcr-signature" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="dracut-transactional-update" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
     <package name="drkonqi5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="drkonqi5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
@@ -859,7 +855,7 @@
     <package name="javapackages-tools" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="jfsutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="jmdict" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="jq" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="jq" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="json-glib-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="kImageAnnotator-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kaccounts-integration" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1666,7 +1662,7 @@
     <package name="libXpresent1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libXrandr2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libXrender1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libXss1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-imaging -->
+    <package name="libXss1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libXt6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libXtst6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libXv1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -1844,7 +1840,6 @@
     <package name="libclang-cpp18" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libclang-cpp19" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libclang13" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libclang_rt18" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libclang_rt19" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libclastfm0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libcloudproviders0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2281,7 +2276,7 @@
     <package name="libjitterentropy3-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libjpeg8" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libjpeg8-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libjq1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="libjq1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libjson-c5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libjson-glib-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libjte2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2500,7 +2495,7 @@
     <package name="libofa0" supportstatus="unsupported"/> <!-- reason: dvd:amarok -->
     <package name="libogg0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="liboggkate1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libonig5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="libonig5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libopenal1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libopenblas_openmp0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libopenblas_pthreads0" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
@@ -2839,9 +2834,13 @@
     <package name="libts0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libtsan2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libtss2-esys0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="libtss2-fapi-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libtss2-fapi1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libtss2-mu0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libtss2-rc0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libtss2-sys1" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="libtss2-tcti-device0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libtss2-tcti-tabrmd0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libtss2-tctildr0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtukit4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
     <package name="libtumbler-1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -2983,13 +2982,10 @@
     <package name="libxcb-xinerama0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libxcb-xinput0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libxcb-xkb1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libxcb-xrm0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-imaging -->
-    <package name="libxcb-xtest0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-imaging -->
     <package name="libxcb-xv0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libxcb1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libxcrypt-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libxcvt0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libxdg-basedir1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-imaging -->
     <package name="libxdp1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libxfce4kbd-private-3-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libxfce4panel-2_0-4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -3049,8 +3045,6 @@
     <package name="libzypp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libzypp-plugin-appdata" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="lifecycle-data-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:lifecycle-data-openSUSE -->
-    <package name="light-locker" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-imaging -->
-    <package name="light-locker-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-imaging -->
     <package name="lightdm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-imaging -->
     <package name="lightdm-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="lightdm-gtk-greeter" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-imaging -->
@@ -3063,7 +3057,6 @@
     <package name="lightsoff-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="linux-glibc-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="lklug-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="llvm18-gold" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="llvm19-gold" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="localsearch" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="localsearch-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3076,8 +3069,6 @@
     <package name="lsb-release" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="lsof" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="lsscsi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="lua54" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-imaging -->
-    <package name="lua54-lgi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-imaging -->
     <package name="luit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="lunar-calendar" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="lunar-calendar-gtk3-module" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3364,6 +3355,7 @@
     <package name="pavucontrol-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="pciutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="pcmciautils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="pcr-oracle" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="pcsc-acr38" supportstatus="unsupported"/> <!-- reason: dvd:pcsc-acr38 -->
     <package name="pcsc-asedriveiiie-usb" supportstatus="unsupported"/> <!-- reason: dvd:pcsc-asedriveiiie-usb -->
     <package name="pcsc-asekey" supportstatus="unsupported"/> <!-- reason: dvd:pcsc-asekey -->
@@ -3786,6 +3778,7 @@
     <package name="qqc2-breeze-style6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="qqc2-desktop-style" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="qqc2-desktop-style-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="qrencode" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="qt6-declarative-imports" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="qt6-imageformats" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="qt6-multimedia" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -3876,6 +3869,9 @@
     <package name="sbc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="sbl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="screen" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="sdbootutil" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="sdbootutil-snapper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="sdbootutil-tukit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="sddm-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="sddm-greeter-qt5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="sddm-greeter-qt6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -4007,17 +4003,19 @@
     <package name="system-user-root" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="system-user-srvGeoClue" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="system-user-tftp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="system-user-tss" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
+    <package name="system-user-tss" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="system-user-upsd" supportstatus="unsupported"/> <!-- reason: dvd:system-user-upsd -->
     <package name="system-user-uucp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="system-user-vscan" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="system-user-wwwrun" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
     <package name="systemd" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="systemd-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="systemd-boot" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="systemd-container" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="systemd-default-settings" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="systemd-default-settings-branding-SLE" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="systemd-default-settings-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="systemd-experimental" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="systemd-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="systemd-presets-branding-Aeon" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="systemd-presets-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4074,6 +4072,10 @@
     <package name="totem-pl-parser-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="totem-plugins" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="totem-video-thumbnailer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="tpm2-0-tss" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="tpm2.0-abrmd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="tpm2.0-abrmd-selinux" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="tpm2.0-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="traceroute" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="transactional-update" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
     <package name="transactional-update-zypp-config" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
@@ -4275,7 +4277,7 @@
     <package name="xdg-desktop-portal-kde6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="xdg-desktop-portal-kde6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="xdg-desktop-portal-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="xdg-menu" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="xdg-menu" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-imaging -->
     <package name="xdg-user-dirs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xdg-user-dirs-gtk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xdg-user-dirs-gtk-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->

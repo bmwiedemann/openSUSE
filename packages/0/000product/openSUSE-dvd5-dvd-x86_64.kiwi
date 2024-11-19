@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20241117" schemaversion="4.1">
+<image name="OBS__openSUSE___20241118" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20241117</productvar>
+      <productvar name="VERSION">20241118</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20241117,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20241118,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20241117/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20241118/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -159,11 +159,6 @@
       <repopackage name="avahi"/>
       <repopackage name="avahi-lang"/>
       <repopackage name="awesfx"/>
-      <repopackage name="awesome"/>
-      <repopackage name="awesome-branding-openSUSE"/>
-      <repopackage name="awesome-freedesktop"/>
-      <repopackage name="awesome-shifty"/>
-      <repopackage name="awesome-vicious"/>
       <repopackage name="b43-fwcutter"/>
       <repopackage name="babeltrace"/>
       <repopackage name="baloo-widgets"/>
@@ -257,7 +252,6 @@
       <repopackage name="cifs-utils"/>
       <repopackage name="clamav"/>
       <repopackage name="clang-tools"/>
-      <repopackage name="clang18"/>
       <repopackage name="clang19"/>
       <repopackage name="clazy"/>
       <repopackage name="clicfs"/>
@@ -367,6 +361,7 @@
       <repopackage name="dos2unix"/>
       <repopackage name="dosfstools"/>
       <repopackage name="dracut"/>
+      <repopackage name="dracut-pcr-signature"/>
       <repopackage name="dracut-transactional-update"/>
       <repopackage name="drkonqi5"/>
       <repopackage name="drkonqi5-lang"/>
@@ -1397,7 +1392,6 @@
       <repopackage name="libclang-cpp18"/>
       <repopackage name="libclang-cpp19"/>
       <repopackage name="libclang13"/>
-      <repopackage name="libclang_rt18"/>
       <repopackage name="libclang_rt19"/>
       <repopackage name="libclastfm0"/>
       <repopackage name="libcloudproviders0"/>
@@ -2812,9 +2806,13 @@
       <repopackage name="libts0"/>
       <repopackage name="libtsan2"/>
       <repopackage name="libtss2-esys0"/>
+      <repopackage name="libtss2-fapi-common"/>
+      <repopackage name="libtss2-fapi1"/>
       <repopackage name="libtss2-mu0"/>
       <repopackage name="libtss2-rc0"/>
       <repopackage name="libtss2-sys1"/>
+      <repopackage name="libtss2-tcti-device0"/>
+      <repopackage name="libtss2-tcti-tabrmd0"/>
       <repopackage name="libtss2-tctildr0"/>
       <repopackage name="libtukit4"/>
       <repopackage name="libtumbler-1-0"/>
@@ -2962,8 +2960,6 @@
       <repopackage name="libxcb-xinerama0"/>
       <repopackage name="libxcb-xinput0"/>
       <repopackage name="libxcb-xkb1"/>
-      <repopackage name="libxcb-xrm0"/>
-      <repopackage name="libxcb-xtest0"/>
       <repopackage name="libxcb-xv0"/>
       <repopackage name="libxcb1"/>
       <repopackage name="libXcomposite1"/>
@@ -2971,7 +2967,6 @@
       <repopackage name="libXcursor1"/>
       <repopackage name="libxcvt0"/>
       <repopackage name="libXdamage1"/>
-      <repopackage name="libxdg-basedir1"/>
       <repopackage name="libXdmcp6"/>
       <repopackage name="libxdp1"/>
       <repopackage name="libXext6"/>
@@ -3054,8 +3049,6 @@
       <repopackage name="libzypp"/>
       <repopackage name="libzypp-plugin-appdata"/>
       <repopackage name="lifecycle-data-openSUSE"/>
-      <repopackage name="light-locker"/>
-      <repopackage name="light-locker-lang"/>
       <repopackage name="lightdm"/>
       <repopackage name="lightdm-bash-completion"/>
       <repopackage name="lightdm-gtk-greeter"/>
@@ -3068,7 +3061,6 @@
       <repopackage name="lightsoff-lang"/>
       <repopackage name="linux-glibc-devel"/>
       <repopackage name="lklug-fonts"/>
-      <repopackage name="llvm18-gold"/>
       <repopackage name="llvm19-gold"/>
       <repopackage name="localsearch"/>
       <repopackage name="localsearch-lang"/>
@@ -3081,8 +3073,6 @@
       <repopackage name="lsb-release"/>
       <repopackage name="lsof"/>
       <repopackage name="lsscsi"/>
-      <repopackage name="lua54"/>
-      <repopackage name="lua54-lgi"/>
       <repopackage name="luit"/>
       <repopackage name="lunar-calendar"/>
       <repopackage name="lunar-calendar-gtk3-module"/>
@@ -3415,6 +3405,7 @@
       <repopackage name="pavucontrol-lang"/>
       <repopackage name="pciutils"/>
       <repopackage name="pcmciautils"/>
+      <repopackage name="pcr-oracle"/>
       <repopackage name="pcsc-acr38"/>
       <repopackage name="pcsc-asedriveiiie-usb"/>
       <repopackage name="pcsc-asekey"/>
@@ -3837,6 +3828,7 @@
       <repopackage name="qqc2-breeze-style6"/>
       <repopackage name="qqc2-desktop-style"/>
       <repopackage name="qqc2-desktop-style-lang"/>
+      <repopackage name="qrencode"/>
       <repopackage name="qt6-declarative-imports"/>
       <repopackage name="qt6-imageformats"/>
       <repopackage name="qt6-multimedia"/>
@@ -3927,6 +3919,9 @@
       <repopackage name="sbc"/>
       <repopackage name="sbl"/>
       <repopackage name="screen"/>
+      <repopackage name="sdbootutil"/>
+      <repopackage name="sdbootutil-snapper"/>
+      <repopackage name="sdbootutil-tukit"/>
       <repopackage name="sddm-branding-openSUSE"/>
       <repopackage name="sddm-greeter-qt5"/>
       <repopackage name="sddm-greeter-qt6"/>
@@ -4065,10 +4060,12 @@
       <repopackage name="system-user-wwwrun"/>
       <repopackage name="systemd"/>
       <repopackage name="systemd-32bit"/>
+      <repopackage name="systemd-boot"/>
       <repopackage name="systemd-container"/>
       <repopackage name="systemd-default-settings"/>
       <repopackage name="systemd-default-settings-branding-openSUSE"/>
       <repopackage name="systemd-default-settings-branding-SLE"/>
+      <repopackage name="systemd-experimental"/>
       <repopackage name="systemd-lang"/>
       <repopackage name="systemd-presets-branding-Aeon"/>
       <repopackage name="systemd-presets-branding-openSUSE"/>
@@ -4125,6 +4122,10 @@
       <repopackage name="totem-pl-parser-lang"/>
       <repopackage name="totem-plugins"/>
       <repopackage name="totem-video-thumbnailer"/>
+      <repopackage name="tpm2-0-tss"/>
+      <repopackage name="tpm2.0-abrmd"/>
+      <repopackage name="tpm2.0-abrmd-selinux"/>
+      <repopackage name="tpm2.0-tools"/>
       <repopackage name="traceroute"/>
       <repopackage name="transactional-update"/>
       <repopackage name="transactional-update-zypp-config"/>
@@ -4296,6 +4297,7 @@
       <repopackage name="which"/>
       <repopackage name="wicked"/>
       <repopackage name="wicked-service"/>
+      <repopackage name="WindowMaker"/>
       <repopackage name="wireless-regdb"/>
       <repopackage name="wireless-tools"/>
       <repopackage name="wireplumber"/>
