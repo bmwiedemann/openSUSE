@@ -1,0 +1,369 @@
+-------------------------------------------------------------------
+Thu Oct 31 17:27:30 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- add patch support-libmutter15.patch
+- actually fix CFLAGS
+
+-------------------------------------------------------------------
+Tue Oct  8 09:12:15 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- leap16 needs libmutter-13 not libmutter-14
+
+-------------------------------------------------------------------
+Wed Sep 18 19:35:02 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.1:
+  * Fix a potential crash when moving windows between workspaces
+  * Fix notification animation when entering multitasking view
+  * Updated translations
+- remove patch fix-mutter45.patch as upstreamed applied the patch
+
+-------------------------------------------------------------------
+Fri Aug 23 12:00:35 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- Add patch fix-mutter45.patch for fixing build issues on Leap
+
+-------------------------------------------------------------------
+Wed Aug 21 06:35:05 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.0:
+  * IconGroup: remove close button
+  * Remove workspace-switcher-background key
+  * Remove expose-windows shortcut
+  * Remember window position
+  * Add "Switch windows" gesture
+  * Animate nudge with clones
+  * Improve debug messages in notifications stack and add more checks
+  * BackgroundManager: Inline namespace
+  * BackgroundManager: Don't position background actors
+  * Round corners of workspaces in multitasking view
+  * Revert "BackgroundManager: Don't position background actors"
+  * Show notifications on the left in RTL languages
+  * Add an option to disable hotcorners in fullscreen
+  * Add support for Mutter 46
+  * Remove content.set_rounded_clip_bounds
+  * Use event time instead of META_CURRENT_TIME
+  * switch_to_next_workspace: require timestamp
+  * Add window spread for an app
+  * Rework close button
+  * Fix documentation
+  * Daemon: Implement monitor labels
+  * MonitorLabel: clean up styles, gtk4 prep
+- update to 7.1.3:
+  * Changing the wallpaper or going to sleep respects the "Reduce Motion" option
+  * Use appropriate drag-and-drop pointers when moving windows
+  * Fix the issue when gestures in the multitasking view might stop working
+  * Improve dynamic workspaces behaviour with multiple monitors
+  * Updated translations
+- update to 7.1.2:
+  * Improve handling of move-to-workspace shortcut
+  * Fix moving maximized and fullscreen windows to new workspace on launch
+  * Add shadow to wallpaper clones while switching workspace
+  * Update gala.metainfo.xml.in
+  * WindowManager: A small cleanup
+  * Use dark wallpaper
+  * Fix warnings
+  * Use Meta.Window.is_on_primary_monitor ()
+  * Kill workspace switch when opening multitasking view
+- update to 7.1.1:
+  * PiP: Check workspace before hiding the window 
+  * Keep track of dimmed windows
+  * Revert "WindowManager: Remove Meta.Later"
+  * WindowSwitcher: Remove dark style css_provider if theme changes
+- update to 7.1.0:
+  * Colorblind correction filters
+  * ShadowEffect: Only use Gtk widgetry at the pain stage
+  * Hardcode accent colors
+  * Deduplicate ShadowEffect class
+  * WindowClone: Use Gtk later
+  * Tooltip: Use Gtk later
+  * WindowSwitcher: Use Gtk later
+  * WindowManager: Remove Meta.Later
+  * Update Gala Systemd services
+  * Metainfo Improvements
+- update to 7.0.3:
+  * WM: Add laters via compositor
+  * maskcorners: Scale corner masks per-monitor
+  * Utils: Remove bell
+  * Enable Alt + ~ to switch between windows of the same application
+  * DwellClickTimer: Support non-integer, monitor specific scales
+  * ScreenshotManager: Support non-integer scaling factors
+  * WM: Init things that depend on GTK later
+  * KeyboardManager: Set keyboard layout on startup
+  * HotCorners: Support floating point scale factors
+  * WM: Drop Meta.ShadowFactory
+  * IconGroup: Support floating scale factors
+  * WorkspaceInsertThumb: Support floating point scale factors
+  * Support floating point scale for resize button
+  * NotificationStack: Support floating point scale factors
+  * WindowSwitcher: Support floating point scale factors
+  * InternalUtils: Remove pixel_align method, and just round
+  * PiP PopupWindow: Support floating point scale factor
+  * WorkspaceClone: Handle floating point scaling factors
+  * WindowSwitcher: Fix rounded corners
+  * WindowIconActor: Support setting floating point scale on placement
+  * MultitaskingView: Ensure MonitorClones are visible on other monitors
+  * WindowSwitcher: Merge icon and indicator
+  * WindowSwitcher: Respect animations key
+  * MultitaskingView: Support floating point scale factors
+  * BackgroundManager: dark dim effect
+  * Avoid to use Gdk constants when Clutter should be used
+  * Window Dim: Use get_transient_for
+  * WindowSwitcher: Improve keyboard navigation
+- update to 7.0.2:
+  * Use ClickAction for FramedBackground and close buttons
+  * Remove texture.png
+  * WindowOverview and WindowCloneContainer: Cleanup
+  * WindowOverview: Use button_release_event
+  * Avoid connecting multiple times to window_created
+  * WindowClone: optimize ActiveShape
+  * PointerLocator: Support floating, monitor specific scale
+  * DnD: Don't disable reactivity
+  * Don't manually map notifications while nudge animation is playing
+  * PiP: Use constraints
+- update to 7.0.1:
+  * Allow KeyBindingAction.NONE in Multitasking View
+  * Dialogs: Remove DBus Timeout From AccessDialog Call
+  * WindowClone: Cleanup
+  * Extend list of allowed keybindings in multitasking view
+  * Allow zoom keybindings in multitasking view
+  * PIP: Fix log spam
+  * WindowClone: Add click action only in overview mode
+  * WindowClone: Fix warnings in window overview
+  * PiP: Respect animations key
+  * Fix window maximize and unmaximize animations
+  * IconGroup: Make close button respect animations key
+- update to 7.0.0:
+  * Reload animated wallpapers when timezone changes
+  * Work around crash when receiving notifications
+  * ShadowEffect: let Clutter know the shadow's size
+  * Fix crash when monitor is turned off
+  * Improve multitasking view animation performance
+  * Fix workspace switching animation in multitasking view
+- update to 6.3.3:
+  * Updated translations
+- update to 6.3.2
+  * Use access portal for force quit
+  * Updated translations
+- update to 6.3.1:
+  * Properly update accent color in the window switcher
+  * Fix selecting windows underneath the window switcher
+  * Prevent potential crashes
+  * Resize workspaces when displays change
+  * Handle windows with no title
+  * Use access portal for display settings confirmation and force quit
+  * Allow closing multitasking view with Super
+  * Updated translations
+- update to 6.3.0:
+  * Fix shadow clipping on server-side decorated windows
+  * Support for high-resolution scroll events
+  * Redesigned Alt + Tab switcher
+  * Dim the parents of modal dialogs
+  * Dialogs fall down on parents instead of shooting out
+  * Updated translations
+- update to 6.2.1:
+  * Fix a potential crash when taking screenshots
+- update to 6.2.0:
+  * Stash the picture-in-picture window by pushing it off screen
+  * Fix a potential crash while changing wallpapers
+- update to 6.0.1:
+  * Include window decorations in screenshots for server-side decorated windows
+- update to 6.0.0:
+  * Add multitouch gestures
+  * Show window titles in multitasking view
+  * Close the Alt + Tab switcher by pressing Esc without releasing Alt
+  * Increase maximum zoom level and provide feedback when unable to zoom
+  * Show a context menu when secondary clicking the background
+  * New Dwell Click and Locate Pointer animations
+  * Add Take Screenshot to window context menu
+  * Always play shutter sound when taking screenshots
+  * Minor visual improvements
+  * HiDPI fixes
+  * Performance improvements
+- update to 3.3.2:
+  * Fix “Always on Visible Workspace” windows disappearing when changing workspaces
+  * Fix windows on non-primary displays disappearing when changing workspaces
+  * Updated translations
+- update to 3.3.1:
+  * Fix crash when changing workspaces while a transient window is opening
+  * Updated translations
+- update to 3.3.0:
+  * Don't show Gala Background Services in the dock
+  * Fixes for media key handling
+  * Show keyboard shortcuts in HeaderBar menus
+  * Updated translations
+- update to 3.2.0:
+  * Improve window shadows for legacy apps
+  * Fix potential crash when taking screenshots
+  * Fix notification position after changing DPI
+  * Fix animations for moving and maximizing tiled windows
+- switch url to github, as we don't want to link to a different OS
+- remove patch 0001-port-to-mutter330.patch, as unneeded
+
+-------------------------------------------------------------------
+Thu Jul 04 18:14:45 UTC 2019 - avvissu@yandex.by
+
+- Update to version 0.3.1+git228.5f1dbf1:
+  * Add scale factor to screenshot file (#489)
+  * Prevent double BackgroundManager destroy (#562)
+  * Add Silesian and update translation template
+  * Only use cached buttons when height matches, fixing dpi switch issue (#480)
+  * Fix minimize animation in HiDPI monitor (#164) (#541)
+
+-------------------------------------------------------------------
+Thu May 30 21:05:47 UTC 2019 - avvissu@yandex.by
+
+- Update to version 0.3.1+git223.3ae100d:
+  * Fix app notification schema not being found (#524)
+  * More usage of Utils.get_ui_scaling_factor() (#477)
+  * Hide selection while dragging window clone in workspace-view (#526)
+  * Allow <Enter> to leave workspace-view without selecting window (#525)
+  * Do not try to move window to workspace which it is already on (#527)
+  * Fix window menu sync (#532)
+  * Constructors of abstract classes should not be public
+  * Fix app switcher left and right padding (#479)
+
+-------------------------------------------------------------------
+Mon Mar 04 03:59:01 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Update to version 0.3.1+git215.395670e:
+  * Fixed saving screenshot to clipboard (#481)
+  * windowswitcher: Update scale factor when updating dock (#471)
+  * po: Update translations
+  * pip: Change popup location to bottom right (#438)
+  * Tile switching fix for position only changes (#387)
+  * Allow to cancel screenshot when pressing ESC (#463)
+  * Do not block stage drawing when saving the screenshots (#460)
+  * screenshotmanager: Only create non-existing "Screenshots" subfolder in PICTURES (#462)
+  * Save screenshots to (self created) screenshots folder (#459)
+  * ScreenshotManager: implement flash_area and handle flash parameter (#147)
+
+-------------------------------------------------------------------
+Thu Nov 29 19:09:01 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Build with libmutter <= 3.28.3
+
+-------------------------------------------------------------------
+Thu Nov  8 02:29:22 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Add regex for filtering provided libraries
+
+-------------------------------------------------------------------
+Tue Oct 30 00:40:25 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Add 0001-port-to-mutter330.patch
+
+-------------------------------------------------------------------
+Fri Jun  8 23:08:29 UTC 2018 - avvissu@yandex.by
+
+- Add _service file
+- Add a new package with plugins
+- Add SECTION: Fix desktopfile-without-binary rpmlint warning
+- Fix: Icon will not found when changing the locale settings
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Mon Mar 19 06:14:53 UTC 2018 - hillwood@opensuse.org
+
+- Update version to 0.3.1
+  * Use meson build system instead of autotools.
+  * Add support for mutter 3.27.92
+  * Make window-switcher compatible with HiDPI
+  * screenshotmanager: Add support to handle include_cursor
+  * gsettings: make window close duration shorter
+  * vapi: Add libcanberra-gtk3 which is "actually not available"
+  * meson: Add support for valadoc
+  * meson: Fix build with libmutter-2 
+  * meson: Ensure RPATH is set after install
+  * windowsmanager: Insert new workspace for fullscreen windows next to current one
+  * windowmanager: Show a tile preview when tiling a window
+
+-------------------------------------------------------------------
+Mon Nov 13 14:19:01 UTC 2017 - hillwood@opensuse.org
+
+- Update to gita82bb34.
+  * Support mutter 3.26
+  * notify: Make notifications to be HiDPI compatible
+  * build: Don't squash VALAFLAGS from the environment
+  * maskcorners: Fix size of radius in HiDPI
+  * workspacethumb: Fix offset of inserted window-icons
+  * notify: Fix stroke width and border radius on HiDPI
+  * multitaskingview: Ignore key/scroll-events while closing
+  * readme: Add libxml2-utils as dependency 
+  * Update autogen command
+  * screenshotmanager: Implement ScreenshotArea
+- Fix "values extending the format should start with "X-"" rpmlint warning
+- Fix desktopfile-without-binary rpmlint warning
+
+-------------------------------------------------------------------
+Tue Aug 22 21:08:55 UTC 2017 - avvissu@yandex.by
+
+- Switch mode to buildtime
+
+-------------------------------------------------------------------
+Sun Aug 20 09:10:43 UTC 2017 - mailaender@opensuse.org
+
+- Switch from tar_scm to obs_scm
+- Switch from bzr to git repository
+- Follow stable/loki branch instead of master/trunk
+
+-------------------------------------------------------------------
+Sun Jun  4 19:18:04 UTC 2017 - avvissu@yandex.by
+
+- Use _pattern instead of plank as required dependency
+
+-------------------------------------------------------------------
+Tue May 16 02:07:08 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.3.0+bzr.568
+- Use mutter-devel instead of pkconfig(style)
+- Add sover macro
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Fri Nov 18 05:12:35 UTC 2016 - avvissu@yandex.by
+
+- Update to 0.3.0+bzr.547:
+  * Drop stray clutter-gtk-1.0 reference
+  * Add support for mutter 3.22
+  * Upate mutter bindings to 3.22.2
+  * Update translations 
+
+-------------------------------------------------------------------
+Tue Sep 20 16:44:34 UTC 2016 - avvissu@yandex.by
+
+- Add Recommends: gala-lang
+
+-------------------------------------------------------------------
+Sun Sep 18 14:32:58 UTC 2016 - avvissu@yandex.by
+
+- Update to 0.3.0+bzr.539
+- Spec file cleanup
+- Remove required dependencies: mutter and libgala
+- Use fdupes
+
+-------------------------------------------------------------------
+Fri May  6 14:14:27 UTC 2016 - mailaender@opensuse.org
+
+- update to version 0.3.0.bzr.518
+
+-------------------------------------------------------------------
+Sat Feb 27 11:41:53 UTC 2016 - mailaender@opensuse.org
+
+- update to version 0.2.0+freya.bzr.481
+- disable GSettings schema compilation
+
+-------------------------------------------------------------------
+Sat Jan 30 08:21:57 UTC 2016 - mailaender@opensuse.org
+
+- require GNOME wallpapers to avoid a crash at first startup
+
+-------------------------------------------------------------------
+Sun May 10 06:38:45 UTC 2015 - mailaender@opensuse.org
+
+- update to the freya branch
+
+-------------------------------------------------------------------
+Sat May  9 16:49:14 UTC 2014 - jengelh@inai.de
+
+- initial packaging of the trunk series

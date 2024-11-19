@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov 17 08:04:39 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 31.7.5
+  * Fixed an issue where WebContentsViews were being improperly removed.
+  * Fixed an issue where the windows control overlay was unexpectedly visible in fullscreen.
+  * Fix use after free in Serial (CVE-2024-10827 bsc#1232843)
+
+-------------------------------------------------------------------
 Tue Nov 12 22:49:39 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 31.7.4

@@ -1935,4 +1935,12 @@ General : Update internal Libraw to snapshot 202110
 - Add libjxl build dependency, required for DNG.</comment>
     <requestid>1191570</requestid>
   </revision>
+  <revision rev="224" vrev="1">
+    <srcmd5>0b1c748f2a8ea840b821da30d2effc40</srcmd5>
+    <version>8.5.0</version>
+    <time>1731956456</time>
+    <user>anag+factory</user>
+    <comment>Update to 8.5.0</comment>
+    <requestid>1224670</requestid>
+  </revision>
 </revisionlist>

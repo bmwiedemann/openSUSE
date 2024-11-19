@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Nov 14 12:32:52 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.1
+  * chore: Modified bug issue template to add checkbox to report
+    potential regression. by @ashishdhingra in (#452)
+  * Use proper public event loop group API by @bretambrose in (#460)
+- from version 0.7.0
+  * Support header checksum by @TingDaoK in (#454)
+  * Update CMake to 3.9 by @waahm7 in (#458)
+- from version 0.6.9
+  * Retry RequestTimeout error by S3. by @waahm7 in (#457)
+- from version 0.6.8
+  * Validate Invalid Network Interface Names at Client Initialization
+    by @waahm7 in (#456)
+- from version 0.6.7
+  * Supports copy object for same directory bucket by @TingDaoK in (#455)
+
+-------------------------------------------------------------------
 Mon Sep 23 09:55:40 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.6.6

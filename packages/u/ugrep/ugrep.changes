@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov 17 17:55:42 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 7.0.4:
+  * TUI fixes for other platforms
+- remove Windows binaries from src rpm; switch to source service
+
+-------------------------------------------------------------------
 Tue Nov 12 21:10:44 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 7.0.3:

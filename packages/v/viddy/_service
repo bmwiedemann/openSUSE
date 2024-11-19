@@ -1,9 +1,9 @@
 <services>
-  <service mode="manual" name="obs_scm">
+  <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/sachaos/viddy</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">v0.4.0</param>
+    <param name="revision">v1.2.1</param>
     <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
     <param name="changesgenerate">enable</param>
   </service>
@@ -12,8 +12,10 @@
     <param name="file">*.tar</param>
     <param name="compression">gz</param>
   </service>
-  <service mode="manual" name="go_modules"/>
-  <service mode="manual" name="set_version">
+  <service name="set_version" mode="manual">
     <param name="basename">viddy</param>
+  </service>
+  <service name="cargo_vendor" mode="manual">
+    <param name="srcdir">viddy</param>
   </service>
 </services>

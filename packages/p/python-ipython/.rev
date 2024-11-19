@@ -1588,4 +1588,27 @@
   * PR #14451 Convert matplotlib gui name in enable_gui</comment>
     <requestid>1197786</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>60404b9e003ff612f94e14697ae937ea</srcmd5>
+    <version>8.29.0</version>
+    <time>1731956230</time>
+    <user>anag+factory</user>
+    <comment>- Update to 8.29
+  * Misc Python 3.13 compatibility #14536, #14559
+  * Add a uv line magic #14537
+  * Add support for WEBP to IPython.display.Image. #14526
+  * And many more bugfixes and quality of life improvements.
+- IPython 8.28
+  * #14480 AssertionError: assert _xterm_term_title_saved in WSL
+    It is unclear why the terminal title is not saved in WSL, if
+    you've WSL experience we'd love your feedback and help to not
+    just ignore an error
+  * #14510 Fix use of pyside6 &gt;= 6.7.0
+  * #14518 Make values public (_tb_highlight &amp; _tb_highlight_style)
+  * #14515 Use environment variable to identify conda / mamba
+- Remove deprecated %suse_update_desktop_file
+  * https://en.opensuse.org/openSUSE:Update-desktop-files_deprecation
+  * nothing relevant to upstream</comment>
+    <requestid>1224684</requestid>
+  </revision>
 </revisionlist>

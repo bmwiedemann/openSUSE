@@ -1,0 +1,5 @@
+<package name="xdg-desktop-portal-pantheon" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:Pantheon" package="xdg-desktop-portal-pantheon"/>
+</package>

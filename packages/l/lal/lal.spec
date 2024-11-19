@@ -43,6 +43,10 @@ License:        GPL-2.0-only
 Group:          Productivity/Scientific/Physics
 URL:            https://wiki.ligo.org/Computing/LALSuite
 Source:         https://software.igwn.org/sources/source/lalsuite/lal-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         https://git.ligo.org/lscsoft/lalsuite/-/commit/9dba245ab3692ecf691247a442704f13c075ed34.patch#/lalsuite_fix_swig_4_3_0_compat.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         https://git.ligo.org/lscsoft/lalsuite/-/commit/e12d57e893882c1603778018139ed9060579c8a7.patch#/lalsuite_fix_swig_4_3_0_compat_2.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module numpy}
@@ -128,7 +132,9 @@ This package provides the header files and sources need for building software ag
 %package -n octave-lal
 Summary:        Octave module for lal
 Group:          Productivity/Scientific/Physics
+%if %{with octave}
 %requires_eq    octave-cli
+%endif
 
 %description -n octave-lal
 The LSC Algorithm Library Suite (LALSuite) is comprised of various
@@ -138,7 +144,7 @@ gravitational wave data analysis routines written in C following the ISO/IEC
 This package provides the octave module for lal.
 
 %prep
-%autosetup -p1 -n lal-%{version}
+%autosetup -p2 -n lal-%{version}
 
 %build
 %{python_expand # Necessary to run configure with all python flavors

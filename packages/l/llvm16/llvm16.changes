@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Nov 16 22:38:02 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Apply clang-shlib-symbol-versioning.patch to add symbol versions
+  to libclang-cpp.so similar to libLLVM.so. This is required when
+  multiple versions of the library are loaded into the same
+  process. (boo#1219405, boo#1221183, boo#1233220)
+
+-------------------------------------------------------------------
+Mon Nov 11 22:53:32 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Require libffi when we build openmp for offloading.
+- Correct target name for libomptarget in file list.
+- Update llvm16.keyring from upstream.
+
+-------------------------------------------------------------------
 Tue Aug 20 21:20:37 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Add minor version to Python shebangs. (boo#1212476)

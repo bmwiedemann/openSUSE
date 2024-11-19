@@ -138,4 +138,64 @@
     Please see CHANGELOG.md for details</comment>
     <requestid>1223462</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>15a7fafbf762edc198ebfff01341b614</srcmd5>
+    <version>0.5.2</version>
+    <time>1731956464</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.5.2:
+  * Hide `--no-system` from `uv pip tree` CLI
+  * Allow configuration of Python and PyPy install mirrors in `uv.toml`
+  * Allow passing Python download mirrors to `uv python install`
+  * Add support for specifying conflicting extras and dependency groups
+  * Consistent colon usage in build failure errors
+  * Show full derivation chain when encountering build failures
+  * Show link we failed on parsing index pages
+  * Remove duplicate log when searching for interpreters
+  * Update uv development status classifier to &quot;Stable&quot; on PyPI
+  * Use rich diagnostic formatting for early build failures
+  * Use rich diagnostic formatting for install failures
+  * Avoid retraversing filesystem when testing exact glob matches
+  * Allow `--no-build` to validate lock
+  * Allow default indexes to be marked as explicit
+  * Avoid creating `.venv` in `uv add --frozen` and `uv add --no-sync`
+  * Avoid duplicating first-entry comments in `uv add`
+  * Defer reporting of build failures in resolver
+  * Fix references to `--resolution-strategy` in error message output
+  * Ignore virtual environments in parent directories when choosing Python version for new projects
+  * Forward SIGTERM to child processes in `uv run`
+  * Prefer Python executable names that match the request over default names
+  * Prefer compatible to incompatible distributions when packages exist on multiple indexes
+  * Publish: Ignore non-matching files
+  * Revert `uv.lock` changes when `uv add` fails
+  * Show file extensions on available commands when not `.exe`
+  * Sort by name, then specifiers in `uv add`
+  * Split after specifiers in `--with` requirements
+  * Support multiple extras in universal pip compile output
+  * Build backend: Add tests for source tree -&gt; source dist -&gt; wheel conversions
+  * Build backend: Switch to custom `glob-walkdir` implementation
+  * Build backend: Add minimal wheel settings
+  * Add wget instructions for systems without curl
+  * Fix `.env` file example in docs
+  * Fix reference to `--resolution` in docs
+  * Fix typo in GitLab integration docs
+  * Update format of environment variable reference
+  * Use Python syntax for `value_type` consistently
+  * Use `[[index]]` API in configuration example
+  * Mention how to use extras
+  * Add some words about specifying conflicting extras/groups
+  * Allow installation of manylinux wheels on `riscv64`
+  * Build source distributions at top-level of cache
+  * Allow non-registry dependencies in `uv pip list --outdated`
+  * Compute superset of existing and required hashes when healing cache
+  * Enable uv to replace and delete itself on Windows
+  * Remove source distribution filename from cache
+  * Respect `--index-url` in `uv pip list`
+  * Respect comma-separated extras in `--with`
+  * Add uninstall note for previous versions
+  * Remove some missed references to `~/.cargo/bin`
+  * Split README's install code block into 3
+</comment>
+    <requestid>1224685</requestid>
+  </revision>
 </revisionlist>

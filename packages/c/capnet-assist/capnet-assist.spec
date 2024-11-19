@@ -23,13 +23,12 @@ Release:        0
 Summary:        Captive Portal Assistant
 License:        GPL-3.0-or-later
 URL:            https://github.com/elementary/capnet-assist
-Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson >= 0.57
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  vala >= 0.28.0
 BuildRequires:  pkgconfig(gcr-4)
 BuildRequires:  pkgconfig(gio-2.0)
@@ -37,7 +36,7 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(granite-7) >= 7.0.0
 BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.0.0
 BuildRequires:  pkgconfig(webkitgtk-6.0)
 Requires:       NetworkManager
 Provides:       elementary-capnet-assist = %{version}
@@ -61,7 +60,6 @@ in Vala and using WebkitGtk+.
 
 %install
 %meson_install
-%suse_update_desktop_file %{appid}
 %find_lang %{appid}
 %fdupes %{buildroot}%{_datadir}/icons
 
@@ -71,9 +69,9 @@ in Vala and using WebkitGtk+.
 %{_bindir}/%{appid}
 %{_datadir}/applications/%{appid}.desktop
 %{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
-%{_iconsdir}/hicolor/*/apps/%{appid}.svg
+%{_datadir}/icons/hicolor/*/apps/%{appid}.svg
 %{_datadir}/metainfo/%{appid}.metainfo.xml
-%dir %{_iconsdir}/hicolor/{128x128@2,128x128@2/apps,16x16@2,16x16@2/apps,24x24@2,24x24@2/apps,32x32@2,32x32@2/apps,64x64@2,64x64@2/apps}
+%dir %{_datadir}/icons/hicolor/{128x128@2,128x128@2/apps,16x16@2,16x16@2/apps,24x24@2,24x24@2/apps,32x32@2,32x32@2/apps,64x64@2,64x64@2/apps}
 
 %files lang -f %{appid}.lang
 

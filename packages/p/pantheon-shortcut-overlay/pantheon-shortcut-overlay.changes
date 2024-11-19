@@ -1,0 +1,67 @@
+-------------------------------------------------------------------
+Fri Nov  1 21:39:27 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- rename to pantheon-shortcut-overlay
+- remove %suse_update_desktop_file, as it's deprecated
+
+-------------------------------------------------------------------
+Sat Aug 10 00:08:28 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.0:
+  * Show screen reader shortcut
+  * Updated translations
+- update to 2.0.1:
+  * Show in the applications menu
+  * Replace keyboard settings button with a labeled link button
+  * Show on-screen keyboard shortcut
+  * Close with the shortcut Ctrl + Q
+  * Updated translations
+- update to 2.0.0:
+  * Updated translations
+  * updated to gtk4
+- update to 1.2.1:
+  * Fix the app not launching if a shortcut key is set to blank
+  * Updated translations
+- update to 1.2.0:
+  * Add screenshot shortcuts
+  * Fix issues with multiple windows
+  * Updated translations
+- update to 1.1.2:
+  * Updated translations
+- update to 1.1.1:
+  * Updated translations
+- update url to github, as we don't want to link to a different OS
+
+-------------------------------------------------------------------
+Mon Nov 25 20:06:16 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.1.0:
+  * Add Gettext Updates to Actions
+  * Update .travis.yml (#75)
+  * Add Release to Actions
+  * Add AppData (#74)
+  * Add Lint to CI (#73)
+  * MainWindow: make style context unowned
+  * README: Update weblate badge
+  * Fix conflicts with weblate
+  * Fix merge conflicts with Weblate
+  * Remove unused po files and update LINGUAS
+  * Parse accel strings and skip empty strings (#66)
+  * ShortcutsView: Display switch layout shortcut (#63)
+  * Remove shortcut entry class (#64)
+  * More whitespace (#62)
+  * Make shortcut label do less (#61)
+
+-------------------------------------------------------------------
+Mon Oct  8 12:43:05 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.0.1:
+  * Merge branch 'origin/master' into Weblate
+  * Delay destroying window to avoid triggering a re-open (#49)
+  * Merge remote-tracking branch 'origin/master'
+
+-------------------------------------------------------------------
+Tue Nov  7 20:54:18 UTC 2017 - avvissu@yandex.by
+
+- Initial package
+

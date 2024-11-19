@@ -17,44 +17,32 @@
 
 
 Name:           widelands
-Version:        1.2
+Version:        1.2.1
 Release:        0
 Summary:        Realtime strategy game involving map control
 License:        GPL-2.0-or-later
 URL:            https://www.widelands.org
 Source0:        https://github.com/%{name}/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  SDL2_gfx-devel
-BuildRequires:  SDL2_image-devel
-BuildRequires:  SDL2_mixer-devel
-BuildRequires:  SDL2_ttf-devel
-BuildRequires:  asio-devel
 BuildRequires:  cmake
-BuildRequires:  curl-devel
-BuildRequires:  distribution-release
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gettext
-BuildRequires:  graphviz-gnome
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libboost_headers-devel
-BuildRequires:  libboost_regex-devel
-BuildRequires:  libboost_system-devel
-BuildRequires:  libboost_test-devel
-BuildRequires:  libjpeg-devel
-BuildRequires:  libpng-devel
 BuildRequires:  ninja
-BuildRequires:  optipng
 BuildRequires:  pkgconfig
-BuildRequires:  python3-base
+BuildRequires:  python3-base >= 1.5.2
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(SDL2_image)
+BuildRequires:  pkgconfig(SDL2_mixer)
+BuildRequires:  pkgconfig(SDL2_ttf)
+BuildRequires:  pkgconfig(asio)
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(icu-io)
 BuildRequires:  pkgconfig(icu-uc)
-BuildRequires:  pkgconfig(libtiff-4)
-BuildRequires:  pkgconfig(lua)
-BuildRequires:  pkgconfig(lua5.1)
+BuildRequires:  pkgconfig(libpng) >= 1.6
+BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(zlib)
 Requires:       %{name}-data = %{version}
 
@@ -93,13 +81,12 @@ find . -type f -name "*.py" -exec sed -i -E 's/env python[3]?/python3/' {} \;
 %build
 mkdir -p build/locale
 %define __builder ninja
+
 %cmake \
-  -DWL_INSTALL_PREFIX=%{_prefix} \
-  -DWL_INSTALL_BINDIR=bin \
+  -DWL_INSTALL_BINDIR=%{_bindir} \
   -DWL_INSTALL_DATADIR=%{_datadir}/%{name} \
-  -DWL_INSTALL_LOCALEDIR=%{_datadir}/%{name}/locale \
-  -DCMAKE_BUILD_TYPE="Release" \
-  -DBoost_USE_STATIC_LIBS=OFF
+  -DCMAKE_BUILD_TYPE=Release \
+  %{?nil}
 
 %cmake_build
 

@@ -1,0 +1,361 @@
+-------------------------------------------------------------------
+Fri Nov  1 21:11:18 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- rename to pantheon-photos
+- fix CFLAGS
+
+-------------------------------------------------------------------
+Wed Sep 18 19:38:13 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.1:
+  * Expand image viewer permissions to include the entire home folder
+  * Fix loading slideshow plugins
+  * Translation updates
+
+-------------------------------------------------------------------
+Tue Aug 13 00:47:17 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- enable leap by using datadir/icons
+
+-------------------------------------------------------------------
+Sun Aug 11 05:28:22 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.0:
+  * Remove dead publishing plugins
+  * Use wallpaper portal
+  * Updated translations
+- update to 2.8.0:
+  * New actions to copy image or metadata to clipboard
+  * Redesigned Photo Viewer icon
+  * Translation updates
+- update to 2.7.5:
+  * Redesigned app icon
+  * Translation updates
+- update to 2.7.4:
+  * Photos taken on the same day show under the same event
+  * Replace all instances of "Shotwell" with "Photos"
+  * Avoid a crash when importing videos
+  * Translation updates
+- update to 2.7.3:
+  * Focus photos on startup when previewing to fix navigating with left and right arrow keys
+  * Fix a possible crash with invalid date and time info
+  * Move Toggle Sidebar and Toggle Photo Info actions to the main menubutton
+  * Translation updates
+- update to 2.7.2:
+  * Draw selection rectangle when dragging to select
+  * Show image titles in preview mode
+  * Translation updates
+- update to 2.7.1:
+  * Fix keyboard activation in tool windows
+  * Show saved state correctly in the context-menu
+  * Translation updates
+- update to 2.7.0:
+  * Add Open In menu to the photo viewer
+  * Translation updates
+- switch url to github, as we don't want to link to a different OS
+
+-------------------------------------------------------------------
+Mon Nov 25 20:05:08 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.6.5:
+  * Travis: Downgrade to 10
+  * Delete AUTHORS
+  * Add Release to Actions
+  * Add Gettext Updates
+  * Improve export dialog UI (#520)
+  * Show proper external apps (#526)
+  * lint views
+  * Delete FUNDING.yml
+  * Delete CODE_OF_CONDUCT.md
+  * Fix pasing in comment box (#533)
+  * Application: Reduce method scope, remove unused (#530)
+  * Application: Use Photos namespace (#531)
+  * Fix double spaces (#523)
+  * Use ngettext instead of checking if a number is 1 or not
+    (#524)
+  * Dialogs: multiple_object_error_dialog as
+    Granite.MessageDialog (#503)
+  * Dialogs: revert_editable_dialog as Granite.MessageDialog
+    (#502)
+  * Checkerboard cards (#514)
+
+-------------------------------------------------------------------
+Thu May 30 20:55:17 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.6.4:
+  * Dialogs: copy_files_dialog as Granite.MessageDialog (#504)
+  * PhotoMetadata: fix issue introduced with PR #498 (#505)
+
+-------------------------------------------------------------------
+Thu May  2 16:20:13 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.6.3:
+  * Merge branch 'origin/master' into Weblate.
+  * Fix building against latest gexiv2 ][
+  * README: update repology badge (#499)
+  * Constructors of abstract classes should not be public
+  * Fix building against latest gexiv2 (#498)
+  * Dialogs: Use Granite.MessageDialog for Import (#495)
+  * ImportPage: Use Granite.MessageDialog for erros (#497)
+  * Main: Redo database error as Granite.MessageDialog (#496)
+  * Dialogs: Switch RAW developer dialogs as
+    Granite.MessageDialog (#491)
+  * Dialogs: save_import_results to FileChooserNative (#494)
+  * LibraryWindow: Use FileChooserNative (#490)
+  * Use FileChooserNative (#489)
+
+-------------------------------------------------------------------
+Mon Mar  4 03:22:56 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.6.2:
+  * Remove .desktop suffix from appdata id
+  * Merge branch 'origin/master' into Weblate
+  * Add meson post install script (#482)
+  * Make AbstractSearchRow a Gtk.Grid subclass (#448)
+
+-------------------------------------------------------------------
+Thu Nov  8 02:29:21 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Add regex for filtering provided libraries
+
+-------------------------------------------------------------------
+Fri Nov  2 17:46:06 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.6.1:
+  * appdata: replace _li tags with plain li (#465)
+  * fix scrolledwindow not expanding (#461)
+  * Add missing languages to LINGUAS files (#457)
+
+-------------------------------------------------------------------
+Wed Oct 17 18:49:39 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.6.0:
+  * CustomPrintTab: Use GObject-style construction (#452)
+  * CropTool: Cleanups, use Revealer, GObject-style (#454)
+  * ContractMenuItem: use GObject-style (#451)
+  * Merge branch 'origin/master' into Weblate
+  * Move all Pages to Views folder (#440)
+  * Add adjustment dialog screenshot (#447)
+  * Split up SearchDialog classes into separate files (#446)
+  * LibraryWindow: Fix searchbard placement (#445)
+  * Dialogs.vala: Remove unused dialogs (#441)
+  * Dialogs: rewrite offline-remove as Granite.MessageDialog 
+    (#442)
+  * SavedSearchDialog: Use construct block (#444)
+  * LibraryWindow: Move lots of widget instantiation to construct 
+    (#439)
+- Swith to meson
+
+-------------------------------------------------------------------
+Sat Jun 23 16:36:20 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.2.5:
+  * Merge remote-tracking branch 'origin/master'
+  * RDNN settings schemas (#304)
+  * Spelling: Big versal following colon, URI (#329)
+  * Fixing: Import buttons aligned incorrectly (#328)
+  * ImportPage: Change several get methods to properties (#327)
+  * Replace ... with … (#326)
+  * Import Dialog: fix delete string (#325)
+
+-------------------------------------------------------------------
+Sat Jun  9 00:33:52 UTC 2018 - avvissu@yandex.by
+
+- Rename to elementary-photos
+- Switch to git from bzr
+- Update strings to search icon files
+- Add a new package with plugins
+- Remove obsolete macros
+- Spec file cleanup
+
+
+-------------------------------------------------------------------
+Sat Jul 29 12:24:22 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.2.4:
+  * remove about dialog (#158)
+  * AppWindow.vala: code style (#159)
+  * Update appdata URLs and summary (#157)
+  * Create .gitignore (#156)
+  * Create CODE_OF_CONDUCT.md (#155)
+
+-------------------------------------------------------------------
+Tue Jul 11 12:21:33 UTC 2017 - bwiedemann@suse.com
+
+- Sort file lists to always install the same .svg size
+  to fix build-compare (boo#1041090)
+
+-------------------------------------------------------------------
+Wed May  3 02:42:03 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.2.3:
+  * Update URLs (#145)
+  * correct undo button position in header bar (#140)
+  * Add Travis CI (#144)
+  * Update README.md; remove old files (#139)
+  * Switch to new comparators
+
+-------------------------------------------------------------------
+Tue Mar 21 02:03:33 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.2.2:
+  * appdata: add x-appcenter-color-primary
+  * Resources.vala: Remove unused code
+  * ExportDialog.vala:
+  * Better variable names
+  * GObject-style construction
+  * Code style
+  * Don't nest boxes
+  * Fix Dialog margins
+  * Spacing and alignment
+  * Properties, not impure functions
+  * Remove unused MultiTextEntryDialog.vala
+  * Dialogs.vala: Remove unused class MultiTextEntryDialogMediator
+  * Remove top.ui
+  * LibraryWindow.vala: Remove reference to top.ui
+  * Split Dialogs.vala into one file per class in a new Dialogs 
+    folder
+  * Deleted UI files leftovers
+  * Remove executable bit from files
+  * Move all the context menus to Vala
+  * Do not use UI file for the trash toolbar. Empty the trash is 
+    now a view action.
+  * Remove unused desktop background slideshow dialog
+  * appdata: initialize entries for future release
+  * Preserve metadata when opening photo directly from the 
+    filesystem
+  * see if a file is writeable when closing and offer save as if 
+    the file is read only
+  * Removed leftover from previous merges
+  * Fix deprecation warnings
+  * Remove unused constants from config.vala
+  * Replace Cairo drawing in CheckBoardLayout with Gtk.CSS
+  * Simplified the GtkAction creation
+  * Install the AppData into the right folder
+  * Use the right libexec directory for the thumbnailer
+
+-------------------------------------------------------------------
+Thu Jan 26 21:43:51 UTC 2017 - jengelh@inai.de
+
+- Rewrite description
+
+-------------------------------------------------------------------
+Wed Jan 25 12:32:48 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.2.1.1:
+  * Fix appdata versions
+  * Launchpad automatic translations update.
+  * Database code cleanup
+
+-------------------------------------------------------------------
+Tue Jan 17 18:18:27 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.2.1:
+  * Set window icon name
+  * Replace the drag nub png with an svg                                                                                                                                           
+  * Make Ctrl + S work in the photo viewer                                                                                                                                         
+  * update translation template                                                                                                                                                    
+  * Fix deprecation warnings with Soup Status                                                                                                                                      
+  * Update license headers to pass licensecheck                                                                                                                                    
+  * Add non-standard icons to a gresource                                                                                                                                          
+  * Add noninterpretable video bg and drag nub to the resource
+  * Remove unused code from CustomComponents.vala
+  * Don't install icons to filesystem since they're compiled into 
+    the gresource
+  * Updated appdata.xml to reflect the last MRs of Kirill (r3100 
+    and r3101.
+  * Left bracket key rotates counterclockwise (lp#1653662)
+  * Grab focus so arrow key navigation works (lp#1631607)
+  * Add Gif support
+  * Remove the "sprocket" from video thumbnails and replace the 
+    thumbnail image
+  * Properties.vala: Subclass Gtk.Label into PropertiesLabel and 
+    PropertiesHeader
+  * BasicProperties.vala: Use Propertiesheader and PropertiesLabel
+  * Fix build of r3072
+  * Fix segmentation fault in RawsPage.vala (triggered by 
+    clicking Raw Photos in the sidebar) and CollectionPage.vala
+  * Update COPYING with Photos name and rewrite INSTALL
+  * Remove unused libunique VAPI
+  * Resources.vala: Remove unused constants
+  * Properties.vala: Remove unused get_header_title
+  * Fix deprecation warnings about Gdk.Cursor
+  * Fix for segmentation fault on right clicking a video file in 
+    the Photos Library
+  * Remove use of Gtk.Stock
+  * Update README
+  * BasicProperties.vala:
+  * Title can't be null so don't check for it
+  * Use attach for items instead of add_line
+  * Code style
+  * Metadata Sidebar: Get a human-readable location from gps data
+  * Fix URLs in Resources.vala
+  * EditableTitle: Stop editing on focus out
+  * BasicProperties.vala: Create duration label without mystery 
+    meat method
+  * update transation template
+  * BasicProperties.vala: Add Exposure Bias and Flash to the 
+    flowbox
+  * ExtendedProperties.vala: Remove Exposure Bias and Flash
+  * BasicProperties.vala: Show date and time in a single line
+  * LibraryProperties.vala:
+  * Use row spacing, not empty grids
+  * Pack widgets directly
+  * Put textview in a frame
+  * No CSS weirdness
+  * MetadataSidebar.vala: Remove the expanders
+  * BasicProperties.vala: Add camera make and model as a single 
+    line above other camera-related info
+  * ExtendedProperties.vala: Remove camera make and model
+  * BasicProperties.vala: Add filesize and combine it with 
+    dimensions a la Files
+  * ExtendedProperties.vala: Remove filesize
+  * ExtendedProperties.vala: Remove superfluous properties
+  * EditableTitle.vala: Give the label h3
+  * BasicProperties.vala: Add the title entry to the top of this 
+    box
+  * LibraryProperties.vala: Remove the title entry from this box
+  * MetadataSidebar.vala: Move basic properties to the top
+  * Remove Flag action from the sidebar
+  * LibraryProperties: Change title entry for an EditableTitle
+  * BasicProperties.vala: Create a flowbox with exif data and 
+    nice little icons
+  * Use -symbolic variant of media-playback-start
+  * Properties.vala: Remove unused bool multi_line
+  * Fix syntax errors to make it compilable with valac 0.35+
+  * Properties.vala:
+  * Vala-style properties
+  * Update license header
+  * de-duplicate conditionals
+  * Brackets
+  * Don't try to mess with the stylesheet
+  * MetadataSidebar.vala:
+  * Don't create widgets in declaration
+  * Only set the scrollbar policy we intend to
+  * Organize properties
+  * Use brackets
+  * Stack instead of notebook
+  * Whitespace
+  * sidebar/Tree.vala:
+  * Don't declare a constant you only use once
+  * let Gtk handle scaling so we don't double scale
+  * Add releases info to appdata.xml
+  * Split editing tools into separate files
+  * Kill the search revealer in favor of Search entry
+  * Remove rating system
+  * Set AppID to org.pantheon.photos
+  
+-------------------------------------------------------------------
+Sat Sep 10 19:05:41 UTC 2016 - mailaender@opensuse.org
+
+- update to version 0.2
+
+-------------------------------------------------------------------
+Mon Dec 14 20:39:43 UTC 2015 - and.november@opensuse.org
+
+- update to version 0.1.1
+
+-------------------------------------------------------------------
+Mon Sep  7 14:30:20 UTC 2015 - and.november@opensuse.org
+
+- initial package

@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Sun Nov 17 07:46:47 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.1:
+  * Update dependencies
+
+-------------------------------------------------------------------
+Sat Nov 09 16:55:29 UTC 2024 - mardnh@gmx.de
+
+- Update to version 1.2.0:
+  * Update to v1.2.0
+  * Support configuring pager keybindings.
+  * Update README
+  * Update to v1.1.6
+  * Fix panic on executing command directly.
+  * Update to v1.1.5 to fix version conflict
+
+-------------------------------------------------------------------
+Sun Sep 29 08:29:56 UTC 2024 - mardnh@gmx.de
+
+- Update to version 1.1.4:
+  * Update to v1.1.4
+  * chore: fix version to match with the release.
+  * fix: drop append -c in app.rs as it's already added in
+    prepare_command.
+  * Revert "fix: ensure prepare_command only appends one
+    -c arguemnt to shell"
+  * fix: ensure prepare_command only appends one -c arguemnt
+    to shell.
+  * Update to v1.1.2
+  * Bump gix-path from 0.10.9 to 0.10.10
+  * Update version to v1.1.1
+  * Support pagedown and pageup
+  * Update Cargo.lock
+  * Update README.md
+  * Update to 1.1.0
+  * Minimum interval validation
+  * Support scrolling by mouse
+  * Add license at Cargo.toml
+  * Update README.md
+  * Update version to v1.0.2
+  * feat: Remove lazy_static dependency and use LazyLock instead.
+
+-------------------------------------------------------------------
+Sat Aug 24 19:39:05 UTC 2024 - mardnh@gmx.de
+
+- Update to version 1.0.1:
+  * fix: many typos
+  * Update demo
+  * Update README.md
+  * Change version to v1.0.0
+  * Remove unnecessary debug message
+  * Add help about move right and left
+  * Remove intersperse
+  * Update demo image
+  * Update RC version
+  * Skip strip arm musl binary
+  * Remove gnu binary and update README
+  * Build musl binaries
+  * Support ansicode and char width for tab
+  * normalize_stdout: reset alignment on new lines
+  * Update README
+  * Handle reset code
+  * normalize_stdout: maintain the elasticity of tabs
+  * Support arrow key in pager
+  * Support tab
+  * Add rc.2 install guide for linux
+  * Update README about lookback feature
+  * Implement save & lookback feature
+  * Move MemoryStore to memory.rs
+  * Add Store trait
+  * Rename to MemoryStoreData
+  * Fix shell option message for Windows
+  * Enable to set some styles
+  * Update README
+  * Add tag target
+  * Remove go description
+  * Remove go files and add rust files
+  * README: Document the option for skipping empty diffs
+  * check if using powershell in windows
+  * Minor README.md improvements
+
+-------------------------------------------------------------------
 Sun Apr  7 01:49:49 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Enable tests

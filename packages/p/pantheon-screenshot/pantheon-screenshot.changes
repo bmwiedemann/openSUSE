@@ -1,0 +1,208 @@
+-------------------------------------------------------------------
+Mon Sep  9 08:00:11 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- rename to upstream name
+
+-------------------------------------------------------------------
+Tue Aug 13 00:47:24 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- enable leap by using datadir/icons
+
+-------------------------------------------------------------------
+Sun Aug 11 06:33:24 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.0:
+  * The window is no longer always on top or stuck on every desktop
+  * Updated translations
+- update to 6.0.4:
+  * Metainfo Improvements
+  * update screenshots
+- update to 6.0.3:
+  * Updated translations
+- update to 6.0.2:
+  * Updated translations
+- update to 6.0.1:
+  * Add aarch64 architecture support
+- update to 6.0.0:
+  * Support the dark style
+  * Drag and Drop the preview image from the save dialog
+  * Drag to move the window from anywhere
+  * Show details for errors if they occur
+  * Translation updates
+- update to 1.7.1:
+  * Fix minor visual issues with selection items
+  * Translation updates
+- switch url to github, as we don't want to link to a different OS
+
+-------------------------------------------------------------------
+Mon Nov 25 20:05:40 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.7.0:
+  * Add Gettext Updates to Actions
+  * Travis: Downgrade node to 10
+  * Add Release Action (#146)
+  * Add Lint to CI (#142)
+  * lint src files with vala-lint (#143)
+  * Delete CODE_OF_CONDUCT.md
+  * Delete FUNDING.yml
+  * Merge branch 'origin/master' into Weblate.
+  * Merge remote-tracking branch 'weblate/master'
+  * Merge remote-tracking branch 'weblate-extra/master'
+  * Create FUNDING.yml
+  * Application window closes with Escape key (#134)
+
+-------------------------------------------------------------------
+Mon Mar  4 03:23:39 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.6.2:
+  * First of all: put the original font back (#122)
+  * Readme: Update Granite dep
+  * Require granite 5.0
+  * Release 1.6.1
+  * Merge branch 'origin/master' into Weblate
+  * Fix update the delay variable at startup (#119)
+  * ScreenshotWindow: Increase minimum timeout to 300 (#117)
+  * Update .travis.yml (#118)
+
+-------------------------------------------------------------------
+Wed Oct 17 18:50:22 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.6.0:
+  * Use settings bindings instead of signal handlers (#101)
+  * Meson: Use GLib preset for l10n
+  * AppData: ID without .desktop (#109)
+  * Allow to close the app window (#108)
+  * Merge branch 'origin/master' into Weblate
+  * Use get_position to get window position (#105)
+  * Refine capture area icons (#102)
+  * Transfer all error dialogs to Granite.MessageDialog (#100)
+  * Use icons to represent capture area (#98)
+  * Better screenshot preview screenshot (#96)
+  * Test with Houston CI (#78)
+  * Update screenshots (#94)
+  * Use a Window instead of a dialog without a parent (#91)
+  * Remove deprecated has_resize_grip (#92)
+  * Fix deprecation add_accelerator (#90)
+  * Use light style (#89)
+  * Restore last capture mode (#88)
+
+-------------------------------------------------------------------
+Mon Jun 11 12:24:43 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.1.5:
+  * "%c".printf(GLib.Path.DIR_SEPARATOR) + 
+    ScreenshotApp.SAVE_FOLDER;
+  * "%c".printf(GLib.Path.DIR_SEPARATOR) + 
+    ScreenshotApp.SAVE_FOLDER;
+
+-------------------------------------------------------------------
+Sat Jun  9 01:19:03 UTC 2018 - avvissu@yandex.by
+
+- Rename to elementary-screenshot-tool
+- Switch to git from bzr
+- Switch to meson
+- Fix: script-without-shebang
+- Fix: Icon will not found when changing the lang settings
+- Remove obsolete macros
+- Spec file cleanup 
+
+-------------------------------------------------------------------
+Sat Jul 29 12:26:04 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.1.4:
+  * Update license headers (#45)
+  * Get preview image at scale (#43)
+  * New default folder to save screenshots (#46)
+  * Remove about dialog and use Gtk.App (#44)
+  * Update URLs in AppData (#42)
+  * Create .gitignore (#40)
+  * Create CODE_OF_CONDUCT.md (#39)
+  * Remember main window position for reappearing window (#32)
+
+-------------------------------------------------------------------
+Tue Jul 11 12:39:55 UTC 2017 - bwiedemann@suse.com
+
+- Sort file lists to always install the same .svg size
+  to fix build-compare (boo#1041090)
+
+-------------------------------------------------------------------
+Mon May  1 15:40:07 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.1.3.1
+
+-------------------------------------------------------------------
+Sat Apr 22 11:33:41 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.1.3:
+  * Update and rename INSTALL to README.md (#18)
+  * Also adds missing libcanberra dep
+  * Launchpad automatic translations update.
+  * Fix bug #1670010
+  * Ensure screenshots are saved to correct directory when 
+    launched from Slingshot.
+  * Implement non-interactive mode (fix bug 1665708)
+  * AppData: remove spurious Unicode characters and fix 
+    indentation
+  * Hide main window behind save dialog when app is launched from 
+    command
+  * Show main window after window not found error
+  * Replace colons with dots in screenshot's filename (lp#1663734)
+  * Play shutter sound when screenshot is taken 
+
+-------------------------------------------------------------------
+Sat Feb 11 11:47:31 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.1.2:
+  * Add "accessories-screenshot" icons and install to hicolor
+  * Add releases data
+  * SaveDialog.vala:
+  * Use GObject-style construction
+  * Update copyright header
+  * Don't declare widgets outside of construct
+  * Use Vala-style properties
+  * Organize, Don't nest boxes
+  * Don't crop window screenshots on HiDPI
+  * ScreenshotWindow.vala:
+  * Add elementary to copyright
+  * Use GLib.Settings.bind
+  * Remove unnecessary comments
+  * Group all grid attach methods
+  * Don't declare GNOME interface settings twice
+  * Radiobuttons aren't used outside construct, so don't declare 
+    them outside of it
+  * Code style
+  * Fix the dimensions and placement of the mouse cursor for 
+    HiDPI displays
+  * Account for the scaling factor when taking a screenshot of 
+    the whole screen (lp#1616530)
+  * Quit on Ctrl + Q
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Fri Nov 25 23:22:44 UTC 2016 - avvissu@yandex.by
+
+- Update to 0.1.1:
+  * Listen to structure events
+  * update translation template
+  * Add Copy to Clipboard save option
+  * Don't overwrite files
+  * Keep above & follow
+
+-------------------------------------------------------------------
+Sun Sep 18 19:01:50 UTC 2016 - avvissu@yandex.by
+
+- Update to 0.1.0.2
+- Fix: icon file not installed
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Sat Sep 10 14:00:01 UTC 2016 - mailaender@opensuse.org
+
+- update to version 0.1.0.1
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Sat Sep 26 06:19:10 UTC 2015 - and.november@opensuse.org
+
+- initial package for openSUSE
+

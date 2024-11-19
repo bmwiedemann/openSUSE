@@ -441,4 +441,12 @@
     <comment>- pam-extra needs to be present for upgraders, as pam_limits.so
   moved from pam to pam-extra. Ensure it's added to the DVD.</comment>
   </revision>
+  <revision rev="53" vrev="53">
+    <srcmd5>def8bf71b8d72a72ca6ccde2a713e087</srcmd5>
+    <version>20170319</version>
+    <time>1731956220</time>
+    <user>anag+factory</user>
+    <comment>- Add required packages for FDE+TPM</comment>
+    <requestid>1224839</requestid>
+  </revision>
 </revisionlist>

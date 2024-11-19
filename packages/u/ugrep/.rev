@@ -618,4 +618,12 @@
     <comment></comment>
     <requestid>1223820</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>2d53c4473531fa18a436ac3402128d4e</srcmd5>
+    <version>7.0.4</version>
+    <time>1731956498</time>
+    <user>anag+factory</user>
+    <comment>ugrep 7.0.4 (forwarded request 1224701 from AndreasStieger)</comment>
+    <requestid>1224738</requestid>
+  </revision>
 </revisionlist>

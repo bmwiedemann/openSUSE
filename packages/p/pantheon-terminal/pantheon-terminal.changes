@@ -1,0 +1,316 @@
+-------------------------------------------------------------------
+Mon Nov  4 18:52:02 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- rename to pantheon-terminal
+
+-------------------------------------------------------------------
+Sun Aug 11 05:52:29 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 6.2.0:
+  * Allow switching event alerts on and off in the app menu
+  * Save tabs and zooms to the saved state settings when they change
+  * Document missing options in the man page
+  * Suppress unwanted default tab when opening a new window
+  * Translation updates
+- update to 6.1.2:
+  * MainWindow: Update context menu on menu key press
+  * Rework Application Class
+  * Application: Properly Unexport the DBus Interface on Exit
+  * Translation updates
+- update to 6.1.1:
+  * Updated translations
+- update to 6.1.0:
+  * Option to follow system dark style preference
+  * Create a custom color palette
+  * Default styles are fully opaque and updated to the latest upstream
+    values from Solarized for improved legibility
+  * Translation updates
+  * Performance improvements
+- update to 6.0.2:
+  * Switch tabs with Alt + 1-9
+  * Quit with Ctrl + Shift + Q
+  * Translation updates
+- update to 6.0.1:
+  * Properly restore zoom levels for all locales
+  * Use XTerm title for window title if available
+  * Change "Reload Tab" shortcut to Shift + F5 to avoid clash with some foreground processes 
+  * Change preferred shortcut for "Reload Tab" to Shift + Control + R
+  * Translation updates
+- update to 6.0.0:
+  * Move tabs with the shortcut Ctrl + Alt + ←/→
+  * Switch tabs with the shortcuts Ctrl + Tab and Ctrl + Shift + Tab
+  * Zoom levels are now remembered per-tab
+  * Also warn about multi-line pastes
+  * Show text details in unsafe paste dialogs
+  * Open Link option when secondary clicking
+  * Reload tabs in the context menu or with the shortcut Ctrl + Shift + R
+  * Notifications indicate if a process exited with errors or not
+  * Show keyboard shortcuts in tab context menus
+  * Fix an issue with keyboard shortcuts not activating the first time they're pressed
+  * Avoid losing focus when closing background tabs
+  * Validate custom palette
+  * Translation updates
+- update to 5.5.2:
+  * Add commandline option for New Tab (-t)
+  * Fix URL selection
+  * Translation updates
+- update to 5.5.1:
+  * Add commandline option for New Window (-n)
+  * Prevent duplicate tab on startup
+  * Prevent unnecessary Home tab on startup
+  * Translation updates
+- update to 5.5.0:
+  * Turn Natural Copy/Paste on or off in the Settings menu
+  * Zoom with Ctrl + Scroll
+  * Include sudo password prompt when copying last output
+  * Apply font changes without restarting
+  * Translation updates
+- switch url to github, as we don't want to link to a different OS
+
+-------------------------------------------------------------------
+Mon Nov 25 20:07:28 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 5.4.0:
+  * Travis: downgrade Node to 10
+  * Add Release to Actions
+  * Add Gettext Updates to Actions
+  * Ignore hyperlink clicks just after focus in event. (#404)
+  * Darker dark colors (#412)
+  * Add horizontal padding (#411)
+  * Use palette colors for default bg/fg (#390)
+  * Add Lint to CI (#409)
+  * Fix code style issues
+  * Delete AUTHORS
+  * README: Fix weblate badge
+  * Add duplicate tab shortcut. (#385)
+  * Delete CODE_OF_CONDUCT.md
+  * Delete FUNDING.yml
+  * Remove unnecessary handling of middle-click. (#401)
+  * MainWindow: Reduce method scope and remove unused methods
+    (#394)
+  * Change PantheonTerminal.TerminalApp to Terminal.Application
+    (#384)
+  * MainWindow: Add accels to menuitem labels (#387)
+  * Honor privacy setting (#349)
+  * Merge remote-tracking branch 'weblate-extra/master'
+
+-------------------------------------------------------------------
+Tue Jul 16 15:33:51 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 5.3.6:
+  * MainWindow: Add a separator to right click menu (#389)
+  * Use GSettings for Saved State (#375)
+  * Pressing the menu keyboard button opens right-click menu
+    (#382)
+
+-------------------------------------------------------------------
+Thu Jul  4 18:03:43 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 5.3.5:
+  * Create FUNDING.yml
+  * Zoom with Ctrl+Equal (#369)
+  * Fix response code being wrong in another place (#370)
+  * Merge branch 'origin/master' into Weblate.
+
+-------------------------------------------------------------------
+Thu May  2 16:21:30 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 5.3.4:
+  * Merge branch 'origin/master' into Weblate.
+  * ForegroundProcessDialog: Use add_button instead of deprecated
+    get_action_area (#364)
+  * Enable pointer_autohide property (#357)
+  * Buttons lose focus when finished (#259)
+  * Merge branch 'origin/master' into Weblate
+  * meson: add missing 'gee-0.8' dependency (#343)
+
+-------------------------------------------------------------------
+Mon Mar  4 03:24:43 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 5.3.3:
+  * Rename PantheonTerminalWindow to MainWindow (#338)
+  * Set bell to false by default, add description (#340)
+  * UnsafePasteDialog: Use GraniteMessageDialog (#337)
+  * Fix search jumping behaviour (#332)
+  * PantheonTerminalWindow: Fix invalid action names (#336)
+  * PantheonTerminalWindow: Make search action a boolean (#328)
+  * ForegroundProcessDialog: Rewrite as a Granite.MessageDialog 
+    (#323)
+  * Scroll to last command (#264)
+  * gschema: Make system bell default to true (#324)
+  * UnsafePasteDialog: Reverse checkbox phrasing (#299)
+  * Copy last output action (#262)
+  * Merge branch 'origin/master' into Weblate
+  * Adds accels to tooltip markup (#318)
+
+-------------------------------------------------------------------
+Fri Nov  2 17:47:32 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 5.3.2:
+  * Make search actions conditional to workaround emacs ctrl+g
+  * Fix zsh process completion notification integration (#305)
+  * Update README.md (#304)
+
+-------------------------------------------------------------------
+Wed Oct 17 18:51:13 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 5.3.1:
+  * AppData: Remove .desktop from app ID
+  * Remove Constants.vala (#301)
+  * Merge branch 'origin/master' into Weblate
+  * Meson: Use GLib preset for l10n
+  * Use RadioButtons for style switcher (#300)
+  * Add and refresh screenshots (#296)
+  * Update Houston Travis
+
+-------------------------------------------------------------------
+Mon Oct  8 12:43:40 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 0.5.3:
+  * Merge branch 'origin/master' into Weblate
+  * Adapt to type change of Gdk.Key constants to fix build with 
+    valac 0.42
+  * Release 0.5.2
+  * Add compile condition to workaround Ubuntu 18.04 patched vte 
+    2.91 API situation
+  * Reduce headerbar height by disabling subtitle (#291)
+  * Remove present () calls from new windows (#286)
+- Drop pantheon-terminal-0.5.1-vte.patch
+
+-------------------------------------------------------------------
+Fri Aug 17 14:47:08 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.5.1:
+  * Test using Houston CI (#273)
+  * Fix API break with Vte.feed_child (#275)
+  * AppData: Add OARS data (#276)
+- Drop pantheon-terminal-0.4.3-vala-0.39.patch
+  pantheon-terminal-0.4.3-vte-0.52.patch
+- Add pantheon-terminal-0.5.1-vte.patch
+
+-------------------------------------------------------------------
+Sat Jun 23 16:37:24 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.5:
+  * Merge remote-tracking branch 'origin/master'
+  * Rename PantheonTerminalApp to TerminalApp (#260)
+  * Window: Remove centering witchcraft (#261)
+  * Simplify zoom (#258)
+  * Add search next and previous to actions (#255)
+  * Fixed typo in Accelerators, causing Shift+A to be interpreted 
+    as Select All, Also fixed Missing Bracket on Paste. (#257)
+  * Update FISH integration for the new D-bus API and enable it 
+    by default (#243)
+  * Add editorconfig file
+
+-------------------------------------------------------------------
+Sat Jun  9 00:53:21 UTC 2018 - avvissu@yandex.by
+
+- Rename to elementary-terminal
+- Drop pantheon-terminal-0.4.3-vala-0.39.patch (fixed)
+- Build with dependences: AppStream, libxml2-tools
+- Switch to git from bzr
+- Switch to meson
+- Add a new package with fish configuration
+- Add README.md
+- Remove obsolete macros
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Wed May  9 21:28:44 UTC 2018 - avvissu@yandex.by
+
+- Fix build with vala >= 0.39 and vte >= 0.52:
+  * add pantheon-terminal-0.4.3-vte-0.52.patch
+  * add pantheon-terminal-0.4.3-vala-0.39.patch
+
+-------------------------------------------------------------------
+Sat Jul 29 12:25:09 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.4.3:
+  * Disable handling F10 key by Gtk itself (#123)
+  * Clean up appdata (#122)
+  * Pick a larger window size for first run. (#119)
+  * Create .gitignore (#120)
+  * Remove About dialog (#116)
+  * Add transate URL to appdata (#115)
+  * Change Open in Files to Show in File Browser (#110)
+  * Link screenshot in appdata (#108)
+  * Update README.md (#107)
+  * Create CODE_OF_CONDUCT.md (#106)
+  * Duplicate tab names (#87)
+  * Added open in files option to context menu (#101)
+
+-------------------------------------------------------------------
+Mon May 15 20:31:05 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.4.2:
+  * Allow tab to close after typing 'exit' at the commandline. 
+  * Nullify 'program' variable after program exits so next 
+    "child-exited" signal from terminal closes the tab.
+  * Fix Project Licensing (#90)
+  * Allow button release event to propagate after click opens link
+  * Translated using Weblate (Turkish)
+
+-------------------------------------------------------------------
+Sun May  7 13:17:18 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.4.1:
+  * Replace deprecated `Vte.Terminal.match_check()` with  
+    `Vte.Terminal.match_check_event()` (#85)
+  * Update URLs (#84)
+  * Do not close the terminal window when a child process exits 
+    normally. (#82)
+  * The output of process may be studied after the process ends.
+  * Add Travis CI (#83)
+  * Update README; remove old files (#81)
+  * Fix links not being selectable for copying.
+  * Launchpad automatic translations update.
+
+-------------------------------------------------------------------
+Tue Mar 21 02:04:28 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.4.0.4:
+  * Remove executable bit from files
+  * Only apply transparency CSS to the main Terminal window, not 
+    dialogs
+  * css: set background element to transparent
+- Change in 0.4.0.3:
+  * Remove unecessary CMake flag
+  * Launchpad automatic translations update.
+
+-------------------------------------------------------------------
+Tue Nov  1 04:28:35 UTC 2016 - avvissu@yandex.by
+
+- Update to 0.4.0.2
+
+-------------------------------------------------------------------
+Sat Sep 10 19:25:32 UTC 2016 - mailaender@opensuse.org
+
+- Update to version 0.4
+- Drop pantheon-terminal-fix-cflags.patch
+
+-------------------------------------------------------------------
+Mon Jul 11 12:36:31 UTC 2016 - sor.alexei@meowr.ru
+
+- Add pantheon-terminal-fix-cflags.patch: fix CFLAGS.
+
+-------------------------------------------------------------------
+Tue Dec 15 08:37:58 UTC 2015 - and.november@opensuse.org
+
+- update to version 0.3.2
+
+-------------------------------------------------------------------
+Sat May 16 15:42:13 UTC 2015 - mailaender@opensuse.org
+
+- update to 0.3.1.1
+
+-------------------------------------------------------------------
+Sun Jun 15 13:29:03 UTC 2014 - mailaender@opensuse.org
+
+- update to version 0.3.0.1
+
+-------------------------------------------------------------------
+Sun May  4 17:44:46 UTC 2014 - mailaender@opensuse.org
+
+- initial packaging
+

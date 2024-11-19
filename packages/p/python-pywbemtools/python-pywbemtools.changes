@@ -1,4 +1,115 @@
 -------------------------------------------------------------------
+Fri Nov 15 17:41:27 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.3.0
+  ## Incompatible changes:
+  * Dropped support for Python 3.5 (issue #1308)
+  * Installation of this package using “setup.py” is no longer supported. Use “pip” instead.
+  * Update to pywbemtools version 1.3.0 requires pywbem version >=
+    1.7.2 which allows urllib3 version >= 2.0. This may result in
+    issues with SSL because urllib3 may require support of TLS
+    protocol version >= 1.2 possibly resulting in exceptions such
+    as the following:
+        SSLError(1, ‘[SSL: UNSUPPORTED_PROTOCOL] unsupported protocol …) or
+        NotOpenSSLWarning: urllib3 v2.0 only supports OpenSSL 1.1.1+
+  * See pywbem troubleshooting documentation. for help resolving such issues.
+  ## Bug fixes:
+  * Increased pywbem to 1.7.2 to pick up fixes. (issue #1304)
+  * Addressed safety issues up to 2024-03-25.
+  * Fixed coveralls issues with KeyError and HTTP 422 Unprocessable
+    Entity.
+  * Disallow the use of the click_repl version 3.0 because it
+    cannot process general options and causes a significant number
+    of CLI tests to fail. (issue #1312)
+  * Circumvented the removal of Python 2.7 from the Github Actions
+    plugin setup-python, by using the Docker container
+    python:2.7.18-buster instead.
+  * Fixed issue with PyYAML 5.4 installation on Python>=3.10 that
+    fails since the recent release of Cython 3.
+  * Correct issue in tab completion for –name argument and option
+    where nvalid co:nnection file could cause exception. Changes
+    messages issued for error to warning. This eliminates most
+    tests of pywbemlistener but only with Python 2.7 and that
+    version of Python is deprecated (see issue #1316)
+  * Test: Circumvented a pip-check-reqs issue by excluding its
+    version 2.5.0.
+  * Test: cicumvented a test failure with pywbmlistener and python
+    2.7 by disabling a significant number of pywbemlistener tests
+    for python 2.7 and modifying the packages to use subprocess32
+    in place of subprocess with python 2.7 in case any tests fail.
+    (see issue #1327)
+  * Development: Fixed dependency issue with safety 3.0.0 by
+    pinning it.
+  * Test: Upgraded GitHub Actions plugins to use node.js 20.
+  * Test: Fixed issues resulting from removal of support for
+    pytest.warns(None) in pytest version 8.
+  * Test: Fixed invocation of pipdeptree in test workflow to use
+    python -m.
+  * Fixed pywbemtools install tests to perform the import test in a
+    directory where it does not import from the repo main
+    directory. Removed the temporary disablement of the install
+    tests that was put in place during development of pywbem 1.2.0.
+  ## Enhancements:
+  * Added support for Python 3.12.
+  * Extend tab completion to include connection show, connection
+    delete, connection save. (see issue # 1315)
+  * Changed version of OpenPegasus-wbemserver container for end2end
+    tests from version 0.1.2 to 0.1.3. This version corrects
+    OpenPegasus issues in requesting test indications from the wbem
+    server and uses OpenPegasus 2.14.4 or greater. This change will
+    allow end2end indication testing.
+  * Fix issue where localhost was always assigned as the
+    pywbemlistener bind address. This limited the listener to only
+    receiving indications from the same system as the listener
+    itself and only on the local network interface. This change was
+    part of extending the options to allow the user to define the
+    bind address as part of the start and run commands. (see issue
+    #1296)
+  * Add pywbemlistener run/start command option –bind-addr to allow
+    the user to define a bind address to a listener. This replaces
+    the use of the ixed bind-address of localhost. This also
+    changes the default bind address to allow receiving indications
+    on any local system network interrface and not testing for the
+    indication destination IP address. (see issue #1296)
+  * Add an option to pywbemlistener to allow testing with a
+    listener on a different address/system than the system where
+    pywbemlistener test is being executed. This will allow testing
+    across multiple systems.
+  * Split safety run out of “check” make target ino a separate
+    “safety” make target and moved its run to the end of the test
+    workflow.
+  * Split safety runs into an ‘install’ and an ‘all’ run. The
+    install run uses a new minimum-constraints-install.txt file
+    that contains just the direct and indirect install dependencies
+    and must suceed. The ‘all’ run uses the minimum-constraints.txt
+    file which includes the minimum-constraints-install.txt file
+    and that run may fail. This reduces the burden of fixing safety
+    issues that affect only development packages.
+  * Dev: Improved release procedure by generalizing the stable
+    branch name in the test workflow which allowed removing the
+    step to update it.
+  * Added support for running ‘ruff’, a new lint tool.
+  * Indroduces a troubleshooting section to the pywbemtools
+    documentation.
+  * Dev: Pinned coverage to <7.0 to speed up installation of
+    development environment. coveralls 3.3 also pins coverage to
+    <7.0, so that is not a unique restriction of pywbem.
+  ## Cleanup:
+  * Change to used safety-policy-file .safety-policy-yml to keep
+    the safety issue ignore list in place of the list in the
+    Makefile.
+  * Add several new safety ignore entries into .safety-policy.yml
+    from the new issues that were added to list May 2023.
+  * Clean up several documentation syntax issues in the pywbemcli
+    documentation.
+  * New safety issue(GitPython) Sept 2023, check-reqs issue
+    ruamel-yaml.
+  * Changed the format of the README and README_PYPI files from RST
+    to Markdown, to address formatting issues with badges on the
+    Github site (issue #1376).
+- Redo requirements 
+
+-------------------------------------------------------------------
 Wed Oct 25 09:45:24 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.2.0

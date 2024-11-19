@@ -1,0 +1,99 @@
+From e12d57e893882c1603778018139ed9060579c8a7 Mon Sep 17 00:00:00 2001
+From: Karl Wette <karl.wette@ligo.org>
+Date: Thu, 24 Oct 2024 21:37:48 +1100
+Subject: [PATCH] lal/swig/SWIGCommon.i: refactor SWIGLAL_MAYBE_RETURN_INT
+ typemap
+
+- New behaviour of SWIG_Python_AppendOutput() makes it more difficult
+  to not add XLAL error code at start of output argument list
+- Instead, always add XLAL error code at start of output argument list,
+  them remove it later in "newfree" typemap
+---
+ lal/swig/SWIGCommon.i | 23 +++++------------------
+ lal/swig/SWIGOctave.i |  6 ++++--
+ lal/swig/SWIGPython.i | 16 +++++++++++++---
+ 3 files changed, 22 insertions(+), 23 deletions(-)
+
+diff --git a/lal/swig/SWIGCommon.i b/lal/swig/SWIGCommon.i
+index bb6dc62e6e..3ce595e232 100644
+--- a/lal/swig/SWIGCommon.i
++++ b/lal/swig/SWIGCommon.i
+@@ -1650,24 +1650,11 @@ if (strides[I-1] == 0) {
+ /// ignored in the wrappings. Functions which fit this criteria but do return a useful <tt>int</tt> can
+ /// use <b>SWIGLAL(RETURN_VALUE(int, ...))</b> to disable this behaviour.
+ ///
+-/// For functions, since <tt>%feature("new")</tt> is set, the <tt>out</tt> typemap will have <tt>$owner=1</tt>,
+-/// and the <tt>newfree</tt> typemap is also applied. The <tt>out</tt> typemap ignores the <tt>int</tt> return value
+-/// by setting the output argument list to <tt>VOID_Object</tt>; the wrapping function them proceeds to
+-/// add other output arguments to the list, if any. After this, the <tt>newfree</tt> typemap is triggered,
+-/// which appends the <tt>int</tt> return if the output argument list is empty, using the
+-/// scripting-language-specific macro \b swiglal_append_output_if_empty(). For structs,
+-/// <tt>$owner=0</tt>, so the int return is set straight away, and the <tt>newfree</tt> typemap is never
+-/// applied.
+-///
+-%typemap(out, noblock=1, fragment=SWIG_From_frag(int)) int SWIGLAL_MAYBE_RETURN_INT {
+-%#if $owner
+-  %set_output(VOID_Object);
+-%#else
+-  %set_output(SWIG_From(int)($1));
+-%#endif
+-}
+-%typemap(newfree, noblock=1, fragment=SWIG_From_frag(int)) int SWIGLAL_MAYBE_RETURN_INT {
+-  swiglal_append_output_if_empty(SWIG_From(int)($1));
++/// For functions, the <tt>newfree</tt> typemap is applied, which calls the scripting-language-specific macro
++/// \b swiglal_maybe_return_int(). For structs, the <tt>newfree</tt> typemap is never applied.
++///
++%typemap(newfree, noblock=1) int SWIGLAL_MAYBE_RETURN_INT {
++  swiglal_maybe_return_int();
+ }
+ 
+ ///
+diff --git a/lal/swig/SWIGOctave.i b/lal/swig/SWIGOctave.i
+index d2ef3cbdbc..8c0ea50da4 100644
+--- a/lal/swig/SWIGOctave.i
++++ b/lal/swig/SWIGOctave.i
+@@ -65,9 +65,11 @@ extern "C++" {
+ #define swiglal_get_reference(v) (v)
+ %}
+ 
+-// Append an argument to the output argument list of an Octave SWIG-wrapped function, if the list is empty.
++// Remove the first argument (i.e. the XLAL error code) from the output argument list of an
++// Octave SWIG-wrapped function, if the list has more than one output argument.
+ %header %{
+-#define swiglal_append_output_if_empty(v) if (_outp->length() == 0) _outp = SWIG_Octave_AppendOutput(_outp, v)
++#define swiglal_maybe_return_int() \
++  if (_out.length() > 1) _out = _out.slice(1, _out.length() - 1)
+ %}
+ 
+ // Evaluates true if an octave_value represents a null pointer, false otherwise.
+diff --git a/lal/swig/SWIGPython.i b/lal/swig/SWIGPython.i
+index 2482a8580f..8f332822d1 100644
+--- a/lal/swig/SWIGPython.i
++++ b/lal/swig/SWIGPython.i
+@@ -86,10 +86,20 @@ import_array();
+ SWIGINTERNINLINE PyObject* swiglal_get_reference(PyObject* v) { Py_XINCREF(v); return v; }
+ %}
+ 
+-// Append an argument to the output argument list of an Python SWIG-wrapped function, if the list is
+-// empty.
++// Remove the first argument (i.e. the XLAL error code) from the output argument list of a
++// Python SWIG-wrapped function, if the list has more than one output argument.
+ %header %{
+-#define swiglal_append_output_if_empty(v) if (resultobj == Py_None) resultobj = SWIG_Python_AppendOutput(resultobj, v)
++SWIGINTERN PyObject* swiglal_py_remove_first_output(PyObject *result) {
++  PySequence_DelItem(result, 0);
++  if (PySequence_Size(result) == 1) {
++    PyObject *obj = result;
++    result = PySequence_GetItem(obj, 0);
++    Py_DECREF(obj);
++  }
++  return result;
++}
++#define swiglal_maybe_return_int() \
++  if (PySequence_Check(resultobj) && PySequence_Size(resultobj) > 1) resultobj = swiglal_py_remove_first_output(resultobj)
+ %}
+ 
+ // Evaluates true if a PyObject represents a null pointer, false otherwise.
+-- 
+GitLab
+

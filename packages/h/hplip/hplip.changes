@@ -17,6 +17,8 @@ Fri Jun 21 21:30:55 UTC 2024 - Martin Wilck <martin.wilck@suse.com>
   * HP OfficeJet Pro 8130 All-in-One series
   * HP OfficeJet Pro 9720 Series
   * HP OfficeJet Pro 9730 Series
+- Bug fixes:
+  * hpmud: sanitize printer serial number (bsc#1209401, lp#2012262)
  
 -------------------------------------------------------------------
 Thu Feb 22 07:51:33 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>

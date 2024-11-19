@@ -16,7 +16,7 @@
 #
 
 
-%define mversion 2023.0
+%define mversion 2024.0
 %bcond_with hsi
 %bcond_without system_flann
 %bcond_without lapack
@@ -31,8 +31,6 @@ Group:          Productivity/Graphics/Other
 URL:            http://hugin.sourceforge.net/
 Source:         https://downloads.sourceforge.net/project/%{name}/%{name}/%{name}-%{mversion}/%{name}-%{version}.tar.bz2
 Patch0:         hugin.appdata.patch
-# 8684:4d081490b48a
-Patch1:         hugin-deprecated-copy_option.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  OpenEXR-devel
 BuildRequires:  cmake >= 3.1.0
@@ -84,7 +82,7 @@ chromatic abberation, create HDR images, provide automatic feature
 detection and extraction of key points.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-%{mversion}.0
 
 chmod -x AUTHORS authors.txt Changes.txt README COPYING.txt
 

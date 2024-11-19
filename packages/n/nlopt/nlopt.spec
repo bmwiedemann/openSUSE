@@ -28,10 +28,10 @@
 %define pname nlopt
 
 Name:           nlopt%{?psuffix}
-Version:        2.8.0
+Version:        2.9.0
 Release:        0
 Summary:        A library for nonlinear optimization
-License:        LGPL-2.0-only
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://nlopt.readthedocs.io/en/latest/
 Source0:        https://github.com/stevengj/nlopt/archive/v%{version}.tar.gz#/%{pname}-%{version}.tar.gz
@@ -73,6 +73,7 @@ Requires:       lib%{pname}0 = %{version}
 The %{pname}-devel package contains libraries and header files for
 developing applications that use NLopt.
 
+%if %{with bindings}
 %package     -n octave-nlopt_optimize
 Summary:        Octave interface to nonlinear optimization libray
 Group:          Productivity/Scientific/Math
@@ -85,6 +86,7 @@ optimization routines available online as well as original
 implementations of various other algorithms.
 
 This package contains the Octave interface for NLopt.
+%endif
 
 %prep
 %autosetup -p1 -n %{pname}-%{version}
@@ -177,6 +179,7 @@ pushd ../${PYTHON}_build
 %if %{with bindings}
 %files %{python_files}
 %license COPYING
+%{python_sitearch}/nlopt-%{version}*.*-info/
 %{python_sitearch}/nlopt.py
 %{python_sitearch}/*.so
 

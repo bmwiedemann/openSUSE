@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Mon Nov  4 18:50:55 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- rename to pantheon-tasks
+
+-------------------------------------------------------------------
+Wed Aug 14 00:53:00 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 6.3.3:
+  * Updated translations
+- update to 6.3.2:
+  * Fix a small color issue
+  * Preparations for Gtk4
+  * Application: use startup
+  * Fixed Duplicated tasks in Scheduled
+- update to 6.3.1:
+  * New app icon
+  * Updated translations
+- update to 6.3.0:
+  * Add offline support for newly created task lists in case its
+    configured for the account
+  * Automatically synchronize a task list whenever it is selected
+    or the network becomes available again
+- switch url to github, as we don't want to link to a different OS
+
+-------------------------------------------------------------------
+Sun Feb 20 15:41:31 UTC 2022 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 6.2.0:
+  * Send a notification when a task is due
+
+-------------------------------------------------------------------
+Fri Jan 21 15:33:51 UTC 2022 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 6.1.0:
+  * Drag and drop tasks between lists
+  * Follow email and web links in the task description with
+    Control + Click
+  * Improved time zone handling
+  * Performance improvements
+  * Updated translations
+
+-------------------------------------------------------------------
+Thu Oct  7 19:40:54 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 6.0.4:
+- Fixes:
+  * Prevent account name headers from being displayed multiple
+    times in the sidebar
+  * Long descriptions are truncated at the end instead of the
+    beginning
+  * Removing descriptions is now saved
+  * Placing the cursor in descriptions works consistently
+- Improvements:
+  * Replace the Delete shortcut key with Ctrl + Backspace
+  * Add a confirmation dialog when deleting a task list
+  * Improve performance in lists with lots of completed tasks
+  * Updated translations
+
+-------------------------------------------------------------------
+Wed Sep  8 01:40:55 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Initial package

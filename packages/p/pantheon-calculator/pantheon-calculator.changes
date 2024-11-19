@@ -1,0 +1,173 @@
+-------------------------------------------------------------------
+Fri Nov  1 20:50:48 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- rename to pantheon-calculator
+- remove %suse_update_desktop_file, as it's deprecated
+
+-------------------------------------------------------------------
+Tue Aug 13 00:45:43 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- enable leap by using datadir/icons
+
+-------------------------------------------------------------------
+Sun Aug 11 01:26:20 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.0:
+  * Updated translations
+- update to 2.0.3:
+  * Branding color changed to Mint 500
+  * Updated translations
+- update to 2.0.2:
+  * copy entry content on Ctrl+C
+  * paste into entry on Ctrl+V
+  * fix meson warnings
+  * Metainfo improvements
+- update to 2.0.1:
+  * Redesigned app icon
+  * Flat titlebar
+  * Updated translations
+- update to 2.0.0:
+  * Update to gtk4
+  * Updated translations
+- update to 1.7.2:
+  * Updated translations
+- update to 1.7.1:
+  * Show advanced controls only affects the focused window
+  * Focus the main text entry on startup
+  * Show the correct window title in Multitask view
+  * Updated translations
+  * Added 'New Window' Desktop Action
+- update to 1.7.0:
+  * Add a "Clear History" button to the history dialog
+  * Updated translations
+- update to 1.6.2:
+  * Updated translations
+- update to 1.6.1:
+  * Fixed an issue with multiple windows
+  * More informative copy in history dialog
+  * Updated translations
+- update to 1.6.0:
+  * Add log and inverse trigonometric functions
+  * Fix an issue with negative decimals without leading digits
+  * More efficient state saving
+  * Use slim titlebar
+  * Updated translations
+- update to 1.5.5:
+  * Fix inserting multi-byte characters
+  * Updated translations
+- switch url to github, as we don't want to link to a different OS
+
+-------------------------------------------------------------------
+Mon Nov 25 19:56:49 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.5.4:
+  * Release 1.5.3 (#117)
+  * Travis: Downgrade node to 10
+  * AppData: Add 1.5.3 release data
+  * Add Release to Actions
+  * Add Gettext Updates to Actions
+  * Add Lint to CI (#113)
+  * Evaluation: Fix variable naming convention
+  * Lint src and test (#111)
+  * Delete CODE_OF_CONDUCT.md
+  * Delete FUNDING.yml (#112)
+  * MainWindow: Use GLib.Action for clear (#104)
+  * MainWindow: Animate infobar hide/show (#106)
+  * Fix for selection and replace (#102)
+  * Added flatpak manifest (#101)
+  * Use Granite style constants (#105)
+  * MainWindow: Get rid of single-use methods (#103)
+  * Add keywords to desktop file (continued) (#89)
+  * Fix #88 and #92 by changing decimal key behavior (#94)
+  * Create FUNDING.yml
+  * Remove unused po files and update LINGUAS
+  * Merge branch 'origin/master' into Weblate.
+
+-------------------------------------------------------------------
+Tue Mar 12 11:15:10 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.5.2:
+  * Travis.yml: Update Houston CI (#87)
+  * Add missing languages to LINGUAS files (#86)
+  * Added pt_BR to LINGUAS in extra folder (#85)
+
+-------------------------------------------------------------------
+Wed Oct 17 18:39:17 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.5.1:
+  * Merge branch 'origin/master' into Weblate
+  * Add pt and pt_BR to LINGUAS (#84)
+  * Use Gtk.Application (#83)
+  * Test with Houston CI (#63)
+  * AppData: Remove .desktop from app ID (#78)
+
+-------------------------------------------------------------------
+Mon Oct  8 12:41:33 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 0.1.5:
+  * Merge branch 'origin/master' into Weblate
+  * Simplify Calculator Core (#72)
+  * Add missing LINGUAS
+  * Merge remote-tracking branch 'origin/master'
+  * Changed the type of Gtk.MessageType for the infobar to 
+    WARNING instead of ERROR (#70)
+
+-------------------------------------------------------------------
+Sat Jun  9 23:57:45 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.1.4:
+  * Fix separator bugs (#56)
+  * Add editorconfig file (#67)
+  * Fix deprecated warning with action accel (#66)
+  * Add OARS data (#64)
+  * Set same height for all rows (#62)
+  * fix next minus number / operator bug, add tests (#60)
+  * Copyright header & code style (#58)
+  * Use GLib.Queue instead of own Stack class (#54)
+  * Code style (#51)
+  * Add tests for calculator core (#50)
+  * Merge remote-tracking branch 'origin/master'
+
+-------------------------------------------------------------------
+Fri Jun  8 23:55:38 UTC 2018 - avvissu@yandex.by
+
+- Rename to elementary-calculator
+- Switch to git from bzr
+- Switch to meson
+- Build with dependences: AppStream
+- Remove obsolete macros
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Mon Aug 14 18:11:36 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.1.3:
+  * Set has_subtitle to false (#28)
+  * RDNN most of the things (#29)
+  * Fixes occasional result of -0 (#26)
+  * Update issues URL (#27)
+  * Screenshot (#25)
+  * remove about dialog (#24)
+  * Create CODE_OF_CONDUCT.md (#19)
+- Change the sourceurl to git
+
+-------------------------------------------------------------------
+Fri Jan 20 20:24:22 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.1.2:
+  * Launchpad automatic translations update.
+  * Fix multiple calculators being always displaying the same 
+    content as others 
+  * Ctrl+Q for quitting, remember window position.
+  * Set basic grid alignment to FILL
+  * Vertically center and expand the entry
+
+-------------------------------------------------------------------
+Sat Sep 10 17:10:18 UTC 2016 - mailaender@opensuse.org
+
+- update to version 0.1.1
+
+-------------------------------------------------------------------
+Tue Sep  1 14:07:36 UTC 2015 - and.november@opensuse.org
+
+- initial package (version 0.1.0) for build.opensuse.org

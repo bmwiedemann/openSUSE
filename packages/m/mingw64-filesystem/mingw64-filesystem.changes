@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 18 09:42:14 UTC 2024 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update version to 20241118
+- Speed up the collection of source files for the creation of debug
+  packages by using multiple concurrent processes (boo1202431)
+
+-------------------------------------------------------------------
 Sat Aug  3 06:38:13 UTC 2024 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Update version to 20240803

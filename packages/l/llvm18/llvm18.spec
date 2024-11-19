@@ -429,6 +429,8 @@ Patch28:        llvm-fix-cov-test-i586.patch
 Patch29:        clang-fix-modules-test-riscv.patch
 # PATCH-FIX-UPSTREAM: Test using avx512f requires x86 target.
 Patch30:        clang-fix-openmp-test-non-x86.patch
+# PATCH-FIX-UPSTREAM: Use symbol versioning also for libclang-cpp.so.
+Patch31:        clang-shlib-symbol-versioning.patch
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake >= 3.13.4
 BuildRequires:  fdupes
@@ -887,6 +889,7 @@ pushd clang-%{_version}.src
 %patch -P 27 -p2
 %patch -P 29 -p2
 %patch -P 30 -p2
+%patch -P 31 -p2
 
 # We hardcode openSUSE
 rm unittests/Driver/DistroTest.cpp

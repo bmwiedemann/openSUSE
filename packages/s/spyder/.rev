@@ -768,4 +768,41 @@ rename the package from spyder3 to spyder.
   * Fix errors related to unmaximazing panes and layout changes. (forwarded request 1203788 from bnavigator)</comment>
     <requestid>1203789</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>4b81bb8e8291b8c864bd223f168f9179</srcmd5>
+    <version>6.0.2</version>
+    <time>1731956473</time>
+    <user>anag+factory</user>
+    <comment>- Update to 6.0.2
+  ## Important fixes
+  * Fix plots not being generated with the Matplotlib inline
+    backend.
+  * Restore missing debugger buttons to the main toolbar.
+  * Several fixes and improvements to the update detection
+    mechanism.
+  * Fix SSH tunneling info handling for remote kernels connection
+    and add remote client tests.
+  * Handle kernel fault file not being available.
+  * Update QtConsole constraint to 5.6.1 to support ANSI codes that
+    move the cursor.
+  ## API changes
+  * The sig_is_rendered signal was added to SpyderToolbar.
+  * The add_toolbar kwarg of the create_run_button and
+    create_run_in_executor_button methods of the Run plugin can now
+    accept a dictionary.
+  ## Issues Closed
+  * Issue 22732 - return in finally swallows exceptions (PR 22745
+    by @ccordoba12)
+  * Issue 22685 - Check update process for 6.0.2 with a rc
+    (6.0.2rc1)
+  * Issue 22593 - Banner not shown when there are many files open
+    in the Editor at startup (PR 22594 by @ccordoba12)
+  * Issue 22584 - RuntimeError when setting a layout and the
+    IPython console is undocked (PR 22595 by @ccordoba12)
+  * Issue 22574 - SpyderCodeRunner._debugger_exec error when
+    starting the debugger from Spyder 6.0.1 (PR 22633 by
+    @ccordoba12)
+  * Issue 22572 - Spyder encounters an internal problem after</comment>
+    <requestid>1224697</requestid>
+  </revision>
 </revisionlist>

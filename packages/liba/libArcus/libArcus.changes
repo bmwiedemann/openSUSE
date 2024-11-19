@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov 17 02:34:12 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add support for protobuf v3.26.x/v26.x, add
+  0001-Fix-compatibility-for-protobuf-v26.x-and-later.patch
+
+-------------------------------------------------------------------
 Wed Oct 11 07:18:50 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add Conflict between libArcus3 and libArcus1: (libArcus.so.1.1.0

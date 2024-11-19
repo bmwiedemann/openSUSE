@@ -1,0 +1,33 @@
+---
+ financial-0.5.3/inst/bolling.m |    2 +-
+ financial-0.5.3/inst/candle.m  |    4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+Index: octave-forge-financial-0.5.3/financial-0.5.3/inst/bolling.m
+===================================================================
+--- octave-forge-financial-0.5.3.orig/financial-0.5.3/inst/bolling.m
++++ octave-forge-financial-0.5.3/financial-0.5.3/inst/bolling.m
+@@ -61,7 +61,7 @@ function [varargout] = bolling (asset, s
+     varargout{1} = avg;
+   else
+     x = 1:length (avg);
+-    h = plot (x, asset, x, avg, x, avg .+ [-s, s], "-r");
++    h = plot (x, asset, x, avg, x, avg + [-s, s], "-r");
+     cls = get (gca, "colororder");
+     set (h(4), "color", cls(3,:));
+   endif
+Index: octave-forge-financial-0.5.3/financial-0.5.3/inst/candle.m
+===================================================================
+--- octave-forge-financial-0.5.3.orig/financial-0.5.3/inst/candle.m
++++ octave-forge-financial-0.5.3/financial-0.5.3/inst/candle.m
+@@ -124,8 +124,8 @@ function candle (varargin)
+   endif                                            # end of nargin >= 5 && ischar (color) && size (color, 1) == 1 if statement
+ 
+   x = 1 : num_points;
+-  wicks = HighPrices .- LowPrices;
+-  body = ClosePrices .- OpenPrices;
++  wicks = HighPrices - LowPrices;
++  body = ClosePrices - OpenPrices;
+   up_down = sign (body);
+   scaling = 10 / num_points;
+   body_width = max(20 * scaling, 1);

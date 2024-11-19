@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov 17 14:24:42 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Add sigil-gt6.8-qchar-778.patch to fix build error under
+  Tumbleweed with Qt 6.8.
+
+-------------------------------------------------------------------
 Sat Sep  7 14:43:25 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.3.1

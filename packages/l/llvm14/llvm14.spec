@@ -385,6 +385,8 @@ Patch37:        llvm-preserve-symbols-used.patch
 Patch38:        lldb-swig-4.1.0-build-fix.patch
 # Cherry pick from rust llvm project (https://reviews.llvm.org/D146938) - boo#1212264
 Patch39:        llvm14-fix-segfault-on-aarch64.patch
+# PATCH-FIX-UPSTREAM: Use symbol versioning also for libclang-cpp.so.
+Patch40:        clang-shlib-symbol-versioning.patch
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake >= 3.13.4
 BuildRequires:  fdupes
@@ -831,6 +833,7 @@ pushd clang-%{_version}.src
 %patch -P 9 -p2
 %patch -P 34 -p2
 %patch -P 36 -p2
+%patch -P 40 -p2
 
 # We hardcode openSUSE
 rm unittests/Driver/DistroTest.cpp

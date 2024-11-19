@@ -1,0 +1,13 @@
+diff --git a/src/compiler/CMakeLists.txt b/src/compiler/CMakeLists.txt
+index 96eb97f..faa7c50 100644
+--- a/src/compiler/CMakeLists.txt
++++ b/src/compiler/CMakeLists.txt
+@@ -75,7 +75,7 @@ else()
+   set(REFLECTION_BUILTINS "")
+ endif()
+
+-add_library(acpp-clang SHARED
++add_library(acpp-clang MODULE
+   AdaptiveCppClangPlugin.cpp
+   GlobalsPruningPass.cpp
+   ${SSCP_COMPILER}

@@ -24,7 +24,8 @@
 %global django_max_version 5.1
 %global mailmanclient_min_version 3.3.3
 
-%global webapps_dir /srv/www/webapps
+%global srv_www_dir /srv/www
+%global webapps_dir %{srv_www_dir}/webapps
 
 %global postorius_pkgname   postorius
 
@@ -68,7 +69,7 @@ Source20:       README.SUSE.md
 Patch0:         postorius-settings.patch
 #
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pdm}
+BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  acl
@@ -266,21 +267,21 @@ fi
 %dir %{webapps_dir}
 %dir %{webapps_dir}/mailman
 
-%defattr(-,root,postorius)
-%dir %{postorius_basedir}
-%{postorius_basedir}/__init__.py
-%{postorius_basedir}/manage.py
-%{postorius_basedir}/settings.py
-%{postorius_basedir}/settings_local.py
-%{postorius_basedir}/test_settings.py
-%{postorius_basedir}/urls.py
-%{postorius_basedir}/wsgi.py
+%dir %{srv_www_dir}
+%attr(-,root,postorius) %dir %{postorius_basedir}
+%attr(-,root,postorius) %{postorius_basedir}/__init__.py
+%attr(-,root,postorius) %{postorius_basedir}/manage.py
+%attr(-,root,postorius) %{postorius_basedir}/settings.py
+%attr(-,root,postorius) %{postorius_basedir}/settings_local.py
+%attr(-,root,postorius) %{postorius_basedir}/test_settings.py
+%attr(-,root,postorius) %{postorius_basedir}/urls.py
+%attr(-,root,postorius) %{postorius_basedir}/wsgi.py
 
-%dir %{postorius_basedir}/static
-%{postorius_basedir}/static/admin
-%{postorius_basedir}/static/django-mailman3
-%{postorius_basedir}/static/postorius
-%{postorius_basedir}/static/debug_toolbar
+%attr(-,root,postorius) %dir %{postorius_basedir}/static
+%attr(-,root,postorius) %{postorius_basedir}/static/admin
+%attr(-,root,postorius) %{postorius_basedir}/static/django-mailman3
+%attr(-,root,postorius) %{postorius_basedir}/static/postorius
+%attr(-,root,postorius) %{postorius_basedir}/static/debug_toolbar
 
 %attr(750,root,postorius) %dir %{postorius_etcdir}
 %attr(640,root,postorius) %config(noreplace) %{postorius_etcdir}/settings_local.py

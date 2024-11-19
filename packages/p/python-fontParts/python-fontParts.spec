@@ -26,14 +26,12 @@
 %endif
 
 Name:           python-fontParts%{psuffix}
-Version:        0.12.1
+Version:        0.12.3
 Release:        0
 Summary:        API for interacting with the parts of fonts
 License:        MIT
 URL:            https://github.com/robotools/fontParts
-Source:         https://files.pythonhosted.org/packages/source/f/fontParts/fontParts-%{version}.zip
-# PATCH-FIX-UPSTREAM fontParts-pr720-py312tests.patch gh#robotools/fontParts#720
-Patch0:         https://github.com/robotools/fontParts/pull/720.patch#/fontParts-pr720-py312tests.patch
+Source:         https://files.pythonhosted.org/packages/source/f/fontParts/fontparts-%{version}.zip
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
@@ -70,7 +68,7 @@ BuildRequires:  %{python_module unicodedata2 if %python-base < 3.9}
 An API for interacting with the parts of fonts during the font development process.
 
 %prep
-%autosetup -p1 -n fontParts-%{version}
+%autosetup -p1 -n fontparts-%{version}
 
 %build
 export LANG=C.UTF-8

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #mingw64-find-debuginfo.sh - automagically generate debug info and file list
 #for inclusion in an rpm spec file for mingw64-* packages.
 #
@@ -6,6 +6,28 @@
 
 target="mingw64"
 host="x86_64-w64-mingw32"
+
+# create for single package as child process
+if [[ -v RUN_SINGLE ]]; then
+	f=$1
+	case $("$host-objdump" -h "$f" 2>/dev/null | egrep -o '(debug[\.a-z_]*|gnu.version)') in
+		*debuglink*) exit 0;;
+		*debug*) ;;
+		*gnu.version*)
+			echo "WARNING: "`echo $f | sed -e "s,^$RPM_BUILD_ROOT/*,/,"`" is already stripped!"
+			exit 0
+		;;
+		*) exit 0 ;;
+	esac
+	echo extracting debug info from $f
+	# grep all listed source files belonging to this package into temporary source file list.
+	"$host-objdump" -Wi "$f" | "$host-objdump-srcfiles" | grep $srcdir >>"$SOURCEFILE.tmp"
+	"$host-objcopy" --only-keep-debug "$f" "$f.debug" || :
+	pushd `dirname $f`
+	"$host-objcopy" --add-gnu-debuglink=`basename "$f.debug"` --strip-unneeded `basename "$f"` || :
+	popd
+	exit 0
+fi
 
 # speed up running objdump, see bug https://bugzilla.opensuse.org/show_bug.cgi?id=1202431
 export MALLOC_CHECK_=0
@@ -29,36 +51,17 @@ SOURCEFILE="$BUILDDIR/$target-debugsources.list"
 
 srcdir=`realpath $PWD`
 
+if [ ! -e "$BUILDDIR" ]; then
+	mkdir -p "$BUILDDIR"
+fi
+
+find $RPM_BUILD_ROOT -type f -name "*.exe" -or -name "*.dll" | sort | \
+	srcdir=$srcdir SOURCEFILE=$SOURCEFILE BUILDDIR=$BUILDDIR RPM_BUILD_ROOT=$RPM_BUILD_ROOT RUN_SINGLE=1 xargs --max-args=1 --max-procs=0 bash -x $0
+
 ROOT_DIR="/usr/$host/sys-root/mingw"
 SOURCE_DIR="${ROOT_DIR}/src"
 DEBUGSOURCE_DIR="${SOURCE_DIR}/debug"
 
-for f in `find $RPM_BUILD_ROOT -type f -name "*.exe" -or -name "*.dll" | sort`
-do
-	case $("$host-objdump" -h "$f" 2>/dev/null | egrep -o '(debug[\.a-z_]*|gnu.version)') in
-	    *debuglink*) continue ;;
-	    *debug*) ;;
-	    *gnu.version*)
-		echo "WARNING: "`echo $f | sed -e "s,^$RPM_BUILD_ROOT/*,/,"`" is already stripped!"
-		continue
-		;;
-	    *) continue ;;
-	esac
-
-	echo extracting debug info from $f
-
-	# grep all listed source files belonging to this package into temporary source file list.
-	"$host-objdump" -Wi "$f" | "$host-objdump-srcfiles" | grep $srcdir >>"$SOURCEFILE.tmp"
-
-	"$host-objcopy" --only-keep-debug "$f" "$f.debug" || :
-	pushd `dirname $f`
-	"$host-objcopy" --add-gnu-debuglink=`basename "$f.debug"` --strip-unneeded `basename "$f"` || :
-	popd
-done
-
-if [ ! -e "$BUILDDIR" ]; then
-	mkdir -p "$BUILDDIR"
-fi
 find $RPM_BUILD_ROOT -type f \
 		-name "*.exe.debug" \
 	-or -name "*.dll.debug" \

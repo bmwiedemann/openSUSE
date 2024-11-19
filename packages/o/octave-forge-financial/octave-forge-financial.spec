@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-financial
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,8 +23,10 @@ Release:        0
 Summary:        Financial instruments for Octave
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-Url:            http://octave.sourceforge.net
+URL:            http://octave.sourceforge.net
 Source0:        http://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM financial-elem-by-elem-arithmetic.patch badshah400@gmail.com -- Arithmetic operations like `+` and `-` are now elem-by-elem by default and the corresponding `.+` and `.-` ops no longer exist.
+Patch0:         financial-elem-by-elem-arithmetic.patch
 BuildArch:      noarch
 BuildRequires:  octave-devel
 Requires:       octave-cli >= 4.0.0
@@ -35,7 +37,7 @@ Financial manipulation, plotting functions and additional date manipulation tool
 This is part of Octave-Forge project.
 
 %prep
-%setup -q -c %{name}-%{version}
+%autosetup -p1 -c %{name}-%{version}
 %octave_pkg_src
 
 %build

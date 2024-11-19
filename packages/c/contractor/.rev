@@ -40,4 +40,12 @@
     <comment>- change url to github, as we don't want to link to a different OS</comment>
     <requestid>1192935</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>88724269b6e762d65ea35881fcdafe84</srcmd5>
+    <version>0.3.5</version>
+    <time>1731956245</time>
+    <user>anag+factory</user>
+    <comment>- remove elementary from description (forwarded request 1223010 from rrahl0)</comment>
+    <requestid>1223011</requestid>
+  </revision>
 </revisionlist>

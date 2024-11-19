@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov  1 20:47:45 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- remove %suse_update_desktop_file, as it's deprecated
+- support leap = 1500
+
+-------------------------------------------------------------------
 Fri Aug  9 01:31:44 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 8.0.0:

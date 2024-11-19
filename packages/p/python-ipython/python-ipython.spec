@@ -33,7 +33,7 @@
 %bcond_with localtest
 %{?sle15_python_module_pythons}
 Name:           python-ipython%{psuffix}
-Version:        8.27.0
+Version:        8.29.0
 Release:        0
 Summary:        Rich architecture for interactive computing with Python
 License:        BSD-3-Clause
@@ -100,7 +100,6 @@ BuildRequires:  %{python_module nbformat}
 %if !%{with test}
 BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  update-desktop-files
 %if %{with libalternatives}
 BuildRequires:  alts
 Requires:       alts
@@ -184,10 +183,17 @@ for x in 16 24 32 48 256 ; do
 done
 %endif
 
-# Modify and install .desktop file
-%{python_expand cp examples/IPython\ Kernel/ipython.desktop ipython-%{$python_bin_suffix}.desktop
-desktop-file-edit --set-comment="Enhanced interactive Python %{$python_bin_suffix} shell" --set-name="ipython %{$python_bin_suffix}" --set-generic-name="IPython %{$python_bin_suffix}" --set-key="Exec" --set-value="ipython-%{$python_bin_suffix}" --set-icon="IPython-%{$python_bin_suffix}" ipython-%{$python_bin_suffix}.desktop
-%suse_update_desktop_file -i -r ipython-%{$python_bin_suffix} "System;TerminalEmulator;"
+%{python_expand # Modify and install .desktop file
+f=ipython-%{$python_bin_suffix}.desktop
+cp examples/IPython\ Kernel/ipython.desktop $f
+desktop-file-edit \
+  --set-comment="Enhanced interactive Python %{$python_bin_suffix} shell" \
+  --set-name="ipython %{$python_bin_suffix}" \
+  --set-generic-name="IPython %{$python_bin_suffix}" \
+  --set-key="Exec" --set-value="ipython-%{$python_bin_suffix}" \
+  --set-icon="IPython-%{$python_bin_suffix}" \
+  $f
+desktop-file-install $f
 }
 
 %{python_expand # These can be run stand-alone, so make them executable rather than removing shebang

@@ -1473,4 +1473,12 @@
     <comment></comment>
     <requestid>1187617</requestid>
   </revision>
+  <revision rev="156" vrev="3">
+    <srcmd5>b46a769fdbef1c1947a94be01f5a66ad</srcmd5>
+    <version>3.24.4</version>
+    <time>1731956498</time>
+    <user>anag+factory</user>
+    <comment>add a bug ref</comment>
+    <requestid>1224910</requestid>
+  </revision>
 </revisionlist>

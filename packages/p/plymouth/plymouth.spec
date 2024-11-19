@@ -1,7 +1,7 @@
 #
 # spec file for package plymouth
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,9 +21,10 @@
 %bcond_with x11_renderer
 
 %global soversion 5
+%global plymouth_services plymouth-halt.service plymouth-switch-root-initramfs.service plymouth-start.service plymouth-switch-root.service plymouth-kexec.service plymouth-switch-root-initramfs.service plymouth-quit-wait.service plymouth-quit.service plymouth-halt.service plymouth-kexec.service plymouth-poweroff.service plymouth-quit-wait.service plymouth-quit.service plymouth-read-write.service plymouth-reboot.service plymouth-start.service plymouth-switch-root-initramfs.service plymouth-switch-root.service plymouth-poweroff.service plymouth-switch-root-initramfs.service plymouth-reboot.service plymouth-switch-root-initramfs.service plymouth-read-write.service plymouth-start.service systemd-ask-password-plymouth.path systemd-ask-password-plymouth.service
 
 Name:           plymouth
-Version:        22.02.122+94.4bd41a3
+Version:        22.02.122+180.b1d5aa9
 Release:        0
 Summary:        Graphical Boot Animation and Logger
 License:        GPL-2.0-or-later
@@ -34,27 +35,24 @@ Source0:        %{name}-%{version}.tar.xz
 Patch0:         plymouth-dracut-path.patch
 # PATCH-FIX-OPENSUSE plymouth-some-greenish-openSUSE-colors.patch bnc#886148 fcrozat@suse.com -- To use suse colors in tribar.
 Patch1:         plymouth-some-greenish-openSUSE-colors.patch
-# PATCH-FIX-UPSTREAM plymouth-manpages.patch bnc#871419 idoenmez@suse.de -- Fix man page installation
-Patch2:         plymouth-manpages.patch
 # PATCH-FIX-OPENSUSE plymouth-disable-fedora-logo.patch qzhao@suse.com -- Disable the fedora logo reference which is not in openSUSE.
-Patch3:         plymouth-disable-fedora-logo.patch
-# PATCH-FIX-OPENSUSE plymouth-only_use_fb_for_cirrus_bochs.patch bnc#888590 boo#1172028 bsc#1181913 fvogt@suse.com -- Force fb for cirrus and bochs, force drm otherwise. replace removal of framebuffer driver and plymouth-ignore-cirrusdrm.patch with single patch.
-Patch4:         plymouth-only_use_fb_for_cirrus_bochs.patch
+Patch2:         plymouth-disable-fedora-logo.patch
 # PATCH-FIX-OPENSUSE plymouth-keep-KillMode-none.patch bsc#1177082 bsc#1184087 boo#1182145 qzhao@suse.com -- Keep the plymouth-start.service KillMode=none.
-Patch5:         plymouth-keep-KillMode-none.patch
+Patch3:         plymouth-keep-KillMode-none.patch
 # PATCH-FIX-OPENSUSE plymouth-install-label-library-and-font-file-to-initrd.patch boo#1183425 boo#1184309 qzhao@suse.com -- Pack label plugin and font into initram to ensure notice info could successfully show when partition encrypted.
-Patch6:         plymouth-install-label-library-and-font-file-to-initrd.patch
+Patch4:         plymouth-install-label-library-and-font-file-to-initrd.patch
 # PATCH-FIX-OPENSUSE plymouth-quiet-dracut-build-info.patch bsc#1189613 qzhao@suse.com -- Hide unuseful output when re-generate initrd.
-Patch7:         plymouth-quiet-dracut-build-info.patch
+Patch5:         plymouth-quiet-dracut-build-info.patch
 # PATCH-FIX-OPENSUSE plymouth-watermark-config.patch bsc#1189613 qzhao@suse.com -- Add two-step water mark config support.
-Patch8:         plymouth-watermark-config.patch
+Patch6:         plymouth-watermark-config.patch
 # PATCH-FIX-OPENSUSE plymouth-log-on-default.patch bsc#1193736 qzhao@suse.com -- Enable plymouth log by default, help to resolve random appear problems.
-Patch9:         plymouth-log-on-default.patch
+Patch7:         plymouth-log-on-default.patch
 # PATCH-FIX-OPENSUSE plymouth-screen-twice-scale-on-160DPI-higher.patch boo#1183425 boo#1184309 qzhao@suse.com -- When DPI > 160, screen will scale output twice.
-Patch10:        plymouth-screen-twice-scale-on-160DPI-higher.patch
+Patch8:         plymouth-screen-twice-scale-on-160DPI-higher.patch
 # PATCH-FIX-OPENSUSE plymouth-crash-avoid-on-keyboard-remove-input-handler.patch bsc#1193736 qzhao@suse.com -- Confirm keyboard handler list not NULL before release memory to avoid crash.
-Patch11:        plymouth-crash-avoid-on-keyboard-remove-input-handler.patch
-BuildRequires:  automake
+Patch9:         plymouth-crash-avoid-on-keyboard-remove-input-handler.patch
+# PATCH-FIX-OPENSUSE plymouth-adapts-xkbommon.patch qzhao@suse.com -- openSUSE specify xkbommon header files position, plymouth adapt with that to build successfully.
+Patch10:        plymouth-adapts-xkbommon.patch
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gcc
 BuildRequires:  libtool
@@ -80,12 +78,17 @@ BuildRequires:  pkgconfig(systemd) >= 186
 %if %{with x11_renderer}
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0
 %endif
+BuildRequires:  cmake
+BuildRequires:  git
+BuildRequires:  meson
+BuildRequires:  pkgconfig(libevdev)
+BuildRequires:  pkgconfig(xkbcommon)
 Recommends:     %{name}-lang
 Requires:       %{name}-branding
 Requires:       systemd >= 186
 Requires(post): coreutils
 Requires(post): plymouth-scripts = %{version}
-Requires(postun):coreutils
+Requires(postun): coreutils
 Suggests:       plymouth-plugin-label
 Provides:       bootsplash = 3.5
 Obsoletes:      bootsplash < 3.5
@@ -362,41 +365,45 @@ Plymouth.
 %prep
 %setup -q
 %autopatch -p1
-autoreconf -ivf
 
 %build
-%configure \
-           --enable-systemd-integration                          \
-           --enable-tracing                                      \
-           --disable-silent-rules                                \
-           --disable-static                                      \
-           --disable-upstart-monitoring                          \
-           --disable-tests                                       \
+%meson \
+    -D systemd-integration=true \
+    -D tracing=true \
+    -D upstart-monitoring=false \
 %if %{without x11_renderer}
-           --disable-gtk                                         \
+    -D gtk=disabled \
 %endif
-           --with-release-file=%{_sysconfdir}/os-release         \
-           --with-shutdown-tty=/dev/tty7                         \
-           --with-background-start-color-stop=0x1A3D1F           \
-           --with-background-end-color-stop=0x4EA65C             \
-           --with-background-color=0x3391cd                      \
-           --runstatedir=/run                                    \
-           --without-rhgb-compat-link                            \
-           --without-system-root-install
-
-make %{?_smp_mflags}
+%if 0%{?is_opensuse}
+    -D logo=/usr/share/pixmaps/distribution-logos/light-inline.png \
+%endif
+    -D release-file=/etc/os-release \
+    -D runstatedir=/run \
+    -D boot-tty=/dev/tty1 \
+    -D shutdown-tty=/dev/tty7 \
+    -D background-start-color-stop=0x1A3D1F \
+    -D background-end-color-stop=0x4EA65C \
+    -D background-color=0x3391cd \
+    -D debug=true \
+    -D warning_level=0 \
+    -D docs=true \
+    -D drm=true \
+    -D freetype=enabled \
+%{nil}
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 # *.la are files generated during compilation, useless for final user.
 find %{buildroot} -type f -name "*.la" -delete
 
 # Glow isn't quite ready for primetime
-rm -rf %{buildroot}%{_datadir}/plymouth/themes/glow/
+rm -rf %{buildroot}%{_datadir}/%{name}/themes/glow/
 
-# We will nolonger ship plymouthd.conf, Plymouthd will read /usr/share/plymouth/plymouthd.defaults if /etc/plymouth/plymouthd.conf doesn't exist(jsc#SLE-11637).
-rm -f %{buildroot}%{_sysconfdir}/plymouth/plymouthd.conf
+# We will nolonger install /etc/plymouthd.conf. The plymouthd will read /usr/share/plymouth/plymouthd.defaults to get default settings
+# unless user create the config file explicitly(jsc#SLE-11637).
+rm -f %{buildroot}%{_sysconfdir}/%{name}/plymouthd.conf
 
 # Move logrotate files from user specific directory /etc/logrotate.d to vendor specific directory /usr/etc/logrotate.d.
 %if 0%{?suse_version} > 1500
@@ -407,10 +414,18 @@ mv %{buildroot}%{_sysconfdir}/logrotate.d/bootlog %{buildroot}%{_distconfdir}/lo
 # Split lang to seperate package.
 %find_lang %{name}
 
+%pre
+%service_add_pre %{plymouth_services}
+
 %post
+%service_add_post %{plymouth_services}
 %{?regenerate_initrd_post}
 
+%preun
+%service_del_preun %{plymouth_services}
+
 %postun
+%service_del_postun %{plymouth_services}
 %{?regenerate_initrd_post}
 %if 0%{?suse_version} > 1500
 %service_del_postun_without_restart plymouth-halt.service plymouth-kexec.service plymouth-poweroff.service plymouth-quit-wait.service plymouth-quit.service plymouth-read-write.service plymouth-reboot.service plymouth-start.service
@@ -522,6 +537,9 @@ fi
 %else
 %{_sysconfdir}/logrotate.d/bootlog
 %endif
+%if !0%{?is_opensuse}
+%{_datadir}/plymouth/bizcom.png
+%endif
 %{_bindir}/plymouth
 %{_sbindir}/plymouthd
 %{_libdir}/plymouth/details.so
@@ -530,7 +548,6 @@ fi
 %{_libdir}/plymouth/renderers/frame-buffer*
 %{_datadir}/plymouth/themes/details/details.plymouth
 %{_datadir}/plymouth/themes/text/text.plymouth
-%{_datadir}/plymouth/bizcom.png
 %ghost /run/plymouth
 %{_localstatedir}/spool/plymouth
 %{_mandir}/man?/*
@@ -538,7 +555,7 @@ fi
 %{_unitdir}/*
 %ghost %{_localstatedir}/log/boot.log
 %{_libexecdir}/plymouth/plymouthd-fd-escrow
-%doc AUTHORS NEWS README.md ply_header.svg
+%doc AUTHORS README.md ply_header.svg
 %license COPYING
 
 %files lang -f %{name}.lang

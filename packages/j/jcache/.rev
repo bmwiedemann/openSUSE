@@ -7,4 +7,12 @@
     <comment>New package</comment>
     <requestid>1224516</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a0be56b624a017001e2308988aa6e867</srcmd5>
+    <version>1.1.1</version>
+    <time>1731956501</time>
+    <user>anag+factory</user>
+    <comment>Generate OSGi manifest</comment>
+    <requestid>1224740</requestid>
+  </revision>
 </revisionlist>

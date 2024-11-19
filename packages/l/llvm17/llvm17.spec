@@ -418,6 +418,8 @@ Patch24:        opt-viewer-Find-style-css-in-usr-share.patch
 Patch25:        check-no-llvm-exegesis.patch
 # PATCH-FIX-OPENSUSE lld-default-sha1.patch
 Patch26:        lld-default-sha1.patch
+# PATCH-FIX-UPSTREAM: Use symbol versioning also for libclang-cpp.so.
+Patch27:        clang-shlib-symbol-versioning.patch
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake >= 3.13.4
 BuildRequires:  fdupes
@@ -859,6 +861,7 @@ pushd clang-%{_version}.src
 %patch -P 6 -p1
 %patch -P 7 -p2
 %patch -P 9 -p2
+%patch -P 27 -p2
 
 # We hardcode openSUSE
 rm unittests/Driver/DistroTest.cpp

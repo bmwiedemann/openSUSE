@@ -94,6 +94,12 @@
 %global llvm_experimental_targets ""
 %endif
 
+%ifnarch ppc64le
+%global openmp_cpu %{target_cpu}
+%else
+%global openmp_cpu ppc64
+%endif
+
 %define _plv %{!?product_libs_llvm_ver:%{_sonum}}%{?product_libs_llvm_ver}
 
 # Expands to -n if we're providing the distribution default for the given package.
@@ -405,6 +411,8 @@ Patch24:        opt-viewer-Find-style-css-in-usr-share.patch
 Patch25:        check-no-llvm-exegesis.patch
 # PATCH-FIX-OPENSUSE lld-default-sha1.patch
 Patch26:        lld-default-sha1.patch
+# PATCH-FIX-UPSTREAM: Use symbol versioning also for libclang-cpp.so.
+Patch27:        clang-shlib-symbol-versioning.patch
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake >= 3.13.4
 BuildRequires:  fdupes
@@ -421,7 +429,7 @@ Requires(post): update-alternatives
 Requires(postun): update-alternatives
 # llvm does not work on s390
 ExcludeArch:    s390
-%if %{with ffi}
+%if %{with ffi} || %{with openmp}
 BuildRequires:  pkgconfig(libffi)
 %endif
 %if %{with valgrind}
@@ -846,6 +854,7 @@ pushd clang-%{_version}.src
 %patch -P 6 -p1
 %patch -P 9 -p2
 %patch -P 18 -p2
+%patch -P 27 -p2
 
 # We hardcode openSUSE
 rm unittests/Driver/DistroTest.cpp
@@ -1679,8 +1688,8 @@ fi
 %{_libdir}/libomptarget-amdgpu-*.bc
 %{_libdir}/libomptarget-nvptx-*.bc
 %ifarch aarch64 ppc64le x86_64
-%{_libdir}/libomptarget.rtl.{%{target_cpu},amdgpu,cuda}{,.nextgen}.so
-%{_libdir}/libomptarget.rtl.{%{target_cpu},amdgpu,cuda}{,.nextgen}.so.%{_sonum}
+%{_libdir}/libomptarget.rtl.{%{openmp_cpu},amdgpu,cuda}{,.nextgen}.so
+%{_libdir}/libomptarget.rtl.{%{openmp_cpu},amdgpu,cuda}{,.nextgen}.so.%{_sonum}
 %endif
 %endif
 %{_libdir}/cmake/openmp

@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-ycp-ui-bindings
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define yui_so		16
 
 Name:           yast2-ycp-ui-bindings
-Version:        5.0.0
+Version:        5.0.1
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

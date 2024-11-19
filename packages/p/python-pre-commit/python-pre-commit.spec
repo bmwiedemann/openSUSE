@@ -24,7 +24,7 @@ Summary:        Multi-language pre-commit hooks
 License:        MIT
 URL:            https://github.com/pre-commit/pre-commit
 Source:         https://github.com/pre-commit/pre-commit/archive/v%{version}.tar.gz#/pre-commit-%{version}.tar.gz
-%if 0%{?sle_version} <= 150600
+%if 0%{?sle_version} <= 150700
 Group:          Development/Tools/Other
 %endif
 BuildRequires:  %{python_module base >= 3.9}
@@ -109,7 +109,7 @@ EXCLUDED_TESTS="$EXCLUDED_TESTS or test_lua_additional_dependencies"
 EXCLUDED_TESTS="$EXCLUDED_TESTS or (golang_test and test_during_commit_all)"
 # requires swift
 EXCLUDED_TESTS="$EXCLUDED_TESTS or test_swift_language"
-%if 0%{?sle_version} <= 150600
+%if 0%{?sle_version} <= 150700
 # requires network on Leap or SUSE Linux Enterprise
 EXCLUDED_TESTS="$EXCLUDED_TESTS or test_perl_install"
 %endif

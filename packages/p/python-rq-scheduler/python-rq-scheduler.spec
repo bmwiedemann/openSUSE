@@ -1,7 +1,7 @@
 #
 # spec file for package python-rq-scheduler
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,14 @@
 #
 
 
+%define long_version 0.14.0
 Name:           python-rq-scheduler
-Version:        0.13.1
+Version:        0.14
 Release:        0
 Summary:        Provides job scheduling capabilities to RQ (Redis Queue)
 License:        MIT
 URL:            https://github.com/rq/rq-scheduler
 Source:         https://github.com/rq/rq-scheduler/archive/refs/tags/v%{version}.tar.gz#/rq-scheduler-%{version}-gh.tar.gz
-Patch1:         rq-compat-removal.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -42,7 +42,7 @@ Requires:       python-freezegun
 Requires:       python-python-dateutil
 Requires:       python-rq >= 0.13
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -51,6 +51,8 @@ Provides job scheduling capabilities to RQ (Redis Queue)
 
 %prep
 %autosetup -p1 -n rq-scheduler-%{version}
+sed -E -i "1{s|^#\!\s*/usr/bin/env python$|#\!%{_bindir}/python3|}" rq_scheduler/scripts/rqscheduler.py
+sed -E -i "1{s|^#\!\s*/usr/bin/env python$|#\!%{_bindir}/python3|}" run_tests.py
 
 %build
 %pyproject_wheel
@@ -77,6 +79,6 @@ trap "kill $spid || true" EXIT
 %license LICENSE.txt
 %python_alternative %{_bindir}/rqscheduler
 %{python_sitelib}/rq_scheduler
-%{python_sitelib}/rq_scheduler-%{version}.dist-info
+%{python_sitelib}/rq_scheduler-%{long_version}.dist-info
 
 %changelog

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 15 12:01:36 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- fuzzy-logic-toolkit-elem-by-elem-arithmetic.patch -- Element by
+  element `+` and `-` operations no longer use `.` operations.
+
+-------------------------------------------------------------------
 Sat Mar 13 13:38:20 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.4.6

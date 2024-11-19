@@ -298,4 +298,12 @@ Qt5 alternative.</comment>
     end-to-end-encryption is enabled (#662)</comment>
     <requestid>1219151</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>c871106949aec9d915c1a653821b1198</srcmd5>
+    <version>1.9.0</version>
+    <time>1731956457</time>
+    <user>anag+factory</user>
+    <comment>Update to 1.9.0</comment>
+    <requestid>1224668</requestid>
+  </revision>
 </revisionlist>

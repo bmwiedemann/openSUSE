@@ -19,7 +19,7 @@
 # flaky for obs, only test locally
 %bcond_with dasktest
 Name:           python-spyder-kernels
-Version:        3.0.0
+Version:        3.0.1
 Release:        0
 Summary:        Jupyter kernels for Spyder's console
 License:        MIT
@@ -27,10 +27,10 @@ Group:          Development/Languages/Python
 URL:            https://github.com/spyder-ide/spyder-kernels
 # PyPI tarballs do not include the tests: https://github.com/spyder-ide/spyder-kernels/issues/66
 Source0:        https://github.com/spyder-ide/spyder-kernels/archive/v%{version}.tar.gz#/spyder-kernels-%{version}-gh.tar.gz
-# for Patch0
-Source1:        https://github.com/spyder-ide/spyder-kernels/raw/v%{version}/spyder_kernels/utils/tests/data.dcm
 BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
@@ -85,13 +85,12 @@ all inside the IDE.
 
 %prep
 %autosetup -p1 -n spyder-kernels-%{version}
-cp %{SOURCE1} spyder_kernels/utils/tests/data.dcm
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -104,6 +103,6 @@ donttest=("-k" "not test_dask_multiprocessing")
 %doc CHANGELOG.md README.md
 %license LICENSE.txt
 %{python_sitelib}/spyder_kernels
-%{python_sitelib}/spyder_kernels-%{version}*-info
+%{python_sitelib}/spyder_kernels-%{version}.dist-info
 
 %changelog

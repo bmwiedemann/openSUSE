@@ -1,7 +1,7 @@
 #
 # spec file for package python-pywbemtools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 
 Name:           python-pywbemtools
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Python client tools to work with WBEM Servers using the PyWBEM API
 License:        Apache-2.0
@@ -36,41 +36,25 @@ URL:            https://github.com/pywbem/pywbemtools
 Source:         https://github.com/pywbem/pywbemtools/archive/%{version}.tar.gz#/pywbemtools-%{version}-gh.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-asciitree >= 0.3.3
-%if 0%{?python_version_nodots} <= 35
-Requires:       python-click < 8
-Requires:       python-click >= 7.1.1
-Requires:       python-click-repl >= 0.1.6
-Requires:       python-packaging >= 17.0
-%else
 Requires:       python-PyYAML >= 5.3.1
+Requires:       python-asciitree >= 0.3.3
 Requires:       python-click >= 8.0.2
 Requires:       python-click-repl >= 0.2
-Requires:       python-packaging >= 21.0
-%endif
-Requires:       python-click-spinner >= 0.1.8
 Requires:       python-nocasedict >= 1.0.1
 Requires:       python-nocaselist >= 1.0.3
-Requires:       python-prompt_toolkit
+Requires:       python-packaging >= 21.0
+Requires:       python-prompt_toolkit >= 3.0.13
 Requires:       python-pyparsing >= 2.3.1
-Requires:       python-pywbem >= 1.6.0
-%if 0%{?python_version_nodots} <= 39
-Requires:       python-psutil >= 5.5.0
-Requires:       python-six >= 1.14.0
-Requires:       python-tabulate >= 0.8.2
-%else
-Requires:       python-psutil >= 5.8.0
-Requires:       python-six >= 1.16.0
-Requires:       python-tabulate >= 0.8.8
-%endif
-%if 0%{?python_version_nodots} <= 37
-Requires:       (python-toposort >= 1.6 with python-toposort < 1.8)
-%else
+Requires:       python-pywbem >= 1.7.2
 Requires:       python-toposort >= 1.6
-%endif
+Requires:       python-urllib3 >= 1.26.18
 Requires:       python-yamlloader >= 0.5.5
+Requires:       (python-click-spinner >= 0.1.8 if python-base < 3.12 else python-click-spinner >= 0.1.10)
+Requires:       (python-psutil >= 5.5.0 if python-base < 3.10 else python-psutil >= 5.8.0)
+Requires:       (python-six >= 1.14.0 if python-base < 3.10 else python-six >= 1.16.0)
+Requires:       (python-tabulate >= 0.8.2 if python-base < 3.10 else python-tabulate >= 0.8.8)
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %if !%{with test}
 BuildRequires:  %{python_module pip}

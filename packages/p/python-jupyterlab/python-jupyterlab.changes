@@ -1,4 +1,269 @@
 -------------------------------------------------------------------
+Sun Nov 17 14:12:53 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Downgrade to 4.2.6 
+  * Maintain autosave timers while disconnected #16903 (@holzman)
+  * Use class instead of id in the log console test #16723
+    (@krassowski)
+- Downgrade reason: Notebook is not ready for jupyterlab 4.3 yet
+
+-------------------------------------------------------------------
+Mon Nov  4 19:46:28 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.3.0
+  ## New features added
+  * Notebook minimap in the virtual scrollbar #16432 (@krassowski)
+  ## Enhancements made
+  * Change "File Size" column name to "Size" at small widths #16849
+    (@JasonWeill)
+  * Adds command to toggle cell outputs #16833 (@JasonWeill)
+  * Improve notebook output stream processing #16814
+    (@davidbrochart)
+  * Update Show Virtual Scrollbar -> Show Minimap #16776 (@jtpio)
+  * Clean up SVG icons from @jupyterlab/ui-components and update
+    SVGO #16678 (@joaopalmeiro)
+  * Convert @jupyterlab/completer type colors to theme CSS
+    variables #16656 (@joaopalmeiro)
+  * Adopt a theme CSS variable for the "expand a collapsed cell"
+    button shadow #16653 (@joaopalmeiro)
+  * Implement resizing for the file browser #16646 (@krassowski)
+  * Add kernel selection to Galata notebook creation #16639
+    (@pauldruce)
+  * Option to disable cell toolbar #16637 (@JasonWeill)
+  * Update pending input message for clarification #16632 (@RRosio)
+  * Standardize dialogs to shut down all kernels #16629
+    (@joaopalmeiro)
+  * Standardize the button role and label for single, dismissal
+    buttons in dialogs #16622 (@joaopalmeiro)
+  * Copy and style edits for upgrade news notification #16615
+    (@JasonWeill)
+  * Suppress the inline/tab completer if the other is already
+    active #16613 (@krassowski)
+  * Standardize the "go-to-line" input field using theme CSS
+    variables #16604 (@joaopalmeiro)
+  * Add setting to enable single-click navigation in file browser
+    #16598 (@RRosio)
+  * Standardize Contextual Help placeholder according to TOC #16572
+    (@joaopalmeiro)
+  * Adopt the --jp-border-radius CSS variable in missing input
+    fields #16568 (@joaopalmeiro)
+  * Add Tab as an alternative shortcut for accepting inline
+    completion #16565 (@andrewfulton9)
+  * Set the background color for the hover state of the New
+    Launcher button #16551 (@joaopalmeiro)
+  * Adopt theme CSS variables for generic input fields #16548
+    (@joaopalmeiro)
+  * Update the CSS variable used for notebook cell shadows #16546
+    (@joaopalmeiro)
+  * Scope CSS rules to a new .jp-ThemedContainer class #16519
+    (@fcollonval)
+  * Improve stream output handling #16498 (@davidbrochart)
+  * [GSoC 2024] Use toolkit tree view for all tree view: table of
+    content, debugger variables and running tabs #16488
+    (@Mehak261124)
+  * Update notebook kernel selector #16475 (@afshin)
+  * Filebrowser filter below breadcrumbs #16446 (@JasonWeill)
+  * Define ICodeCellModel.executionState, deprecate setPrompt()
+    #16431 (@krassowski)
+  * Implement viewport tracking and reactive rendering in scrollbar
+    #16392 (@krassowski)
+  * Use lazy loading for HTML/PDF files, and help tabs #16387
+    (@hnben)
+  * Shut down unused kernels #16341 (@NexVeridian)
+  * Add the command to toggle the virtual scrollbar to the palette
+    #16322 (@jtpio)
+  * Add a signal to proxy all Completer.selected signals #16312
+    (@ajbozarth)
+  * Add fullscreen mode menu entry and shortcut #16308 (@dhysdrn)
+  * Advertise the color scheme based on the theme #16301
+    (@krassowski)
+  * Add option to dismiss "Server Connection Error" dialog for the
+    duration of the session #16269 (@RRosio)
+  * Add checkbox to skip showing the kernel restart dialog #16265
+    (@NexVeridian)
+  * Allow to select the path in debugger source component #16246
+    (@krassowski)
+  * Show kernel ID for notebooks and consoles in list view #16228
+    (@gderocher)
+  * Add error field and animation in inline completion #15344
+    (@Wzixiao)
+  * Add functionality to upload folder by dragging to file browser
+    #10596 (@Nazeeh21)
+  ## Bugs fixed
+  * Fix the handling of the file browser configuration #16870
+    (@jtpio)
+  * Fix bracket highlighting for Python string literal
+    concatenation #16866 (@Nagidrop)
+  * Fix alignment of headers in file browser #16839 (@krassowski)
+  * Fix incorrect access to uninitialised serverRequests #16834
+    (@kaushalaaditya99)
+  * Conditional rendering of 'Add' and 'or' buttons during shortcut
+    editing #16831 (@Darshan808)
+  * Improve performance of concatenating stream strings #16815
+    (@krassowski)
+  * Prevent text cursor on clickable items in settings #16811
+    (@Darshan808)
+  * Correct file size sorting in file browser #16780 (@JasonWeill)
+  * Fix shutdown kernel button in running panel #16775
+    (@fcollonval)
+  * Use inline-grid for browser column positioning #16765
+    (@krassowski)
+  * Fix compatibility with server-side execution extensions #16764
+    (@krassowski)
+  * Fix compatibility with jupyterlab-unfold #16763 (@krassowski)
+  * Adjust the alignment and cursor of the running session icons in
+    the status bar #16748 (@joaopalmeiro)
+  * Use class instead of id in the log console test #16723
+    (@krassowski)
+  * Fix overwriting shortcuts #16721 (@krassowski)
+  * Use locale name instead of display/native name to toggle
+    language #16710 (@maitreya2954)
+  * Add null checks for "input" variable #16705 (@JasonWeill)
+  * Null checks to guard against cell toolbar errors on startup
+    #16704 (@JasonWeill)
+  * Update contents model on file change due to save from RTC
+    #16695 (@krassowski)
+  * Add a guard on uninitialized nodes when resizing, remove log
+    #16693 (@krassowski)
+  * Fix output streaming in RTC #16692 (@davidbrochart)
+  * Prevent replacing code with find and replace in read-only cells
+    #16682 (@itsmevichu)
+  * Avoid changing type of read-only cells #16679 (@cmarmo)
+  * Store/retrieve execution state from the shared model #16651
+    (@krassowski)
+  * Do not block shift-click mouse up handler on active cell #16647
+    (@EdsterG)
+  * Update the copyright year in About JupyterLab and LICENSE
+    #16643 (@joaopalmeiro)
+  * Fix Error Rendering .ipynb with Array in 'text/plain' Output
+    #16628 (@itsmevichu)
+  * Removes title from the entire File Browser #16618 (@JasonWeill)
+  * Fix the identifier to download licenses in JSON format #16584
+    (@joaopalmeiro)
+  * Fix lack of color contrast for the project version and license
+    selected on the Licenses page #16582 (@joaopalmeiro)
+  * Update JupyterLab wordmark color #16567 (@joaopalmeiro)
+  * Standardize Property Inspector placeholder according to TOC
+    #16566 (@joaopalmeiro)
+  * Fix license table CSS selector to apply the selected row styles
+    #16547 (@joaopalmeiro)
+  * Fix settings editor missing plugins with transform step or
+    registered late #16523 (@krassowski)
+  * Fix inline completer configure calls not being propagated
+    correctly #16508 (@krassowski)
+  * Add customisation options to prevent inline completer resizing
+    aggressively #16507 (@krassowski)
+  * Improve focus styling #16496 (@fcollonval)
+  * Fix the lines placeholder taking up too much space #16493
+    (@krassowski)
+  * Fix check link CI failure in README (time zone converter site)
+    #16482 (@afshin)
+  * Use correct hub restart URL #16471 (@mahendrapaipuri)
+  * Trigger the toolbar button action on click instead of on
+    mousedown #16470 (@brichet)
+  * Fix async function display #16443 (@sanskriti2005)
+  * Fix code comments in tilde (~) fences incorrectly shown as
+    headings in TOC #16437 (@itsmevichu)
+  * Fix typos in jupyter-collaboration-missing error message #16436
+    (@krishanbhasin-px)
+  * Fix comments in nested markdown code blocks incorrectly being
+    identified as TOC headings #16420 (@itsmevichu)
+  * Reactive toolbar computation, again... #16409 (@brichet)
+  * Align token usage for events #16397 (@fcollonval)
+  * Add the toolbar again when updating the title of
+    PanelWithToolbar #16390 (@brichet)
+  * Fix width and margins of the notebook footer. #16383
+    (@HaudinFlorence)
+  * Fix runtime console error in debugger extension #16368
+    (@afshin)
+  * Fix execution in console in terminal interaction mode #16348
+    (@krassowski)
+  * Fix workspace context menu incorrectly showing up in other
+    sidebar sections #16346 (@krassowski)
+  * Fix Shift + Tab contextual help inspector tooltip regression
+    #16343 (@krassowski)
+  * Reactive toolbar: avoid simultaneous calls to _onResize()
+    #16335 (@brichet)
+  * Upgrade CodeMirror dependencies #16306 (@krassowski)
+  * Resetting a shortcut does not restore and enable the default if
+    it was modified #16304 (@itsmevichu)
+  * Allow to invoke inline completer anywhere (not only at the end
+    of line) #16298 (@ajbozarth)
+  * Search and replace with substring in markdown and raw cells
+    #16293 (@JasonWeill)
+  * Wait for the cell toolbar items to be rendered the first time
+    before looking for overlap #16291 (@brichet)
+  * coreutils: add required TS intl libraries #16288 (@Renegade334)
+  * Add lowercase proxy vars and make priority consistent with
+    other tools #16287 (@jgoodson)
+  * Settings Editor: remove pluginslist grey background #14375
+    (@andrii-i)
+  ## Maintenance and upkeep improvements
+  * Update to @jupyter/ydoc final #16898 (@jtpio)
+  * Ignore https://code.visualstudio.com in check-links #16878
+    (@jtpio)
+  * Fix job updating snapshots when triggered by comment on
+    first-time contributor PR #16872 (@krassowski)
+  * Bump markdown-to-jsx from 7.3.2 to 7.5.0 #16868 (@dependabot)
+  * Update to Playwright 1.48.0 #16854 (@jtpio)
+  * Ignore pypi.org links for now #16843 (@jtpio)
+  * Fix UI test snapshot #16838 (@jtpio)
+  * Fix docs snapshot #16836 (@jtpio)
+  * Bump the pip group with 3 updates #16823 (@dependabot)
+  * Bump tj-actions/changed-files from 45.0.0 to 45.0.2 in the
+    actions group #16822 (@dependabot)
+  * Support || in the update:dependency script #16821 (@krassowski)
+  * Bump jupyter-ydoc to 3.0.0a8 #16817 (@krassowski)
+  * Update examples UI tests snapshots #16816 (@jtpio)
+  * Allow running the browser_check in headed mode #16810 (@jtpio)
+  * Update to the latest Lumino #16804 (@jtpio)
+  * Bump dompurify from 3.0.5 to 3.1.6 #16786 (@dependabot)
+  * Bump semver from 7.6.0 to 7.6.1 #16784 (@dependabot)
+  * Require newer handlebars version (^4.7.7) to silence false
+    positive CVE notifications #16740 (@mjpsyapse)
+  * Bump the pip group with 5 updates #16737 (@dependabot)
+  * Bump tj-actions/changed-files from 44.5.7 to 45.0.0 in the
+    actions group #16736 (@dependabot)
+  * Bump webpack from 5.76.1 to 5.94.0 #16733 (@dependabot)
+  * Bump axios from 1.6.1 to 1.7.4 #16691 (@dependabot)
+  * Update to Playwright 1.46.1 #16684 (@jtpio)
+  * Bump the pip group with 4 updates #16635 (@dependabot)
+  * Bump tj-actions/changed-files from 44.5.5 to 44.5.7 in the
+    actions group #16634 (@dependabot)
+  * Add untitled files to .gitignore #16595 (@joaopalmeiro)
+  * Fix galata update action #16560 (@krassowski)
+  * Restore previous benchmark run conditions #16559 (@krassowski)
+  * Bump the pip group with 2 updates #16540 (@dependabot)
+  * Bump the actions group with 2 updates #16539 (@dependabot)
+  * Update to Playwright 1.45.0 #16530 (@jtpio)
+  * Bump ws from 8.12.0 to 8.17.1 #16495 (@dependabot)
+  * Bump braces from 3.0.2 to 3.0.3 #16486 (@dependabot)
+  * Ignore empty stdout data when logging in verdaccio #16459
+    (@fcollonval)
+  * Do not install cairo/pango on Mac in CI #16434 (@krassowski)
+  * Fix some flaky ui tests #16430 (@brichet)
+  * Fix usage check job on CI (add setuptools dependency) #16423
+    (@jtpio)
+  * Bump the pip group with 5 updates #16412 (@dependabot)
+  * Bump tj-actions/changed-files from 44.3.0 to 44.5.2 in the
+    actions group #16411 (@dependabot)
+  * Fix failing link check (point to JAWS on Wikipedia) #16365
+    (@krassowski)
+  * Do not check links to Jupyter blog on Medium #16351
+    (@krassowski)
+  * Update .git-blame-ignore-revs #16333 (@fcollonval)
+  * Run Python tests on MacOS with Python 12, replace canvas with
+    jest-canvas-mock #16314 (@krassowski)
+  * Allow RegExp in galata helper when looking for a tab #16302
+    (@brichet)
+  * Update to Playwright 1.44.0 #16300 (@jtpio)
+  * Wait for the cell toolbar items to be rendered the first time
+    before looking for overlap #16291 (@brichet)
+  * Bump the pip group with 7 updates #16270 (@dependabot)
+  * Adopt open source security foundation best practices #16012
+    (@fcollonval)
+
+-------------------------------------------------------------------
 Wed Aug 28 15:27:40 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.2.5

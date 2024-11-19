@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Wed Nov  6 08:19:48 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- remove %suse_update_desktop_file, as it's deprecated
+
+-------------------------------------------------------------------
+Thu Aug 22 21:34:37 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- initial packaging

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov 18 09:15:08 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1731677347.4f829f47:
+  * Bump ace-builds from 1.36.4 to 1.36.5
+  * Bump @eslint/plugin-kit from 0.2.2 to 0.2.3
+  * Add tests for `git_auto_update_method = strict`
+  * Unblock openQA jobs only on network-related Git update failures
+  * Fix typos in `openqa.ini`
+  * Avoid blocking openQA jobs on Git updates
+  * Improve code for handling finished Gru tasks
+
+-------------------------------------------------------------------
 Thu Nov 14 05:51:04 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1731563454.940aba6d:

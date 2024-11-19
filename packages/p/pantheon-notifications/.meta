@@ -1,0 +1,5 @@
+<package name="pantheon-notifications" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:Pantheon" package="pantheon-notifications"/>
+</package>

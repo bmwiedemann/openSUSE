@@ -394,6 +394,8 @@ Patch35:        libcxxabi-fix-armv7-test.patch
 Patch36:        clang-test-xfail-gnuless-triple.patch
 # Fix lowering of "icmp uge <4 x i32> zeroinitializer, ..." on armv7. (https://reviews.llvm.org/D136447?id=469567, boo#1204267, gh#llvm/llvm-project#58514)
 Patch37:        llvm-armv7-fix-vector-compare-with-zero-lowering.patch
+# PATCH-FIX-UPSTREAM: Use symbol versioning also for libclang-cpp.so.
+Patch38:        clang-shlib-symbol-versioning.patch
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake >= 3.13.4
 BuildRequires:  fdupes
@@ -840,6 +842,7 @@ pushd clang-%{_version}.src
 %patch -P 9 -p2
 %patch -P 18 -p2
 %patch -P 36 -p2
+%patch -P 38 -p2
 
 # We hardcode openSUSE
 rm unittests/Driver/DistroTest.cpp

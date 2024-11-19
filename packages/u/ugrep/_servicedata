@@ -1,0 +1,6 @@
+<servicedata>
+  <service name="tar_scm">
+      <param name="url">https://github.com/Genivia/ugrep.git</param>
+      <param name="changesrevision">ffd990fcd9e1280bb747c19545ca36a0313d2f16</param>
+  </service>
+</servicedata>

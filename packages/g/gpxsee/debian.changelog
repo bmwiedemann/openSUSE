@@ -1,3 +1,15 @@
+gpxsee (13.29) stable; urgency=low
+
+  * Fixed broken Mapsforge theme in Qt5 builds.
+
+ -- Martin Tuma <tumic@cbox.cz>  Mon, 18 Nov 2024 11:15:07 +0100
+
+gpxsee (13.28) stable; urgency=low
+
+  * New Mapsforge (OpenAndroMaps) render theme.
+
+ -- Martin Tuma <tumic@cbox.cz>  Mon, 18 Nov 2024 01:41:37 +0100
+
 gpxsee (13.27) stable; urgency=low
 
   * Multiple vector maps rendering improvements/fixes.

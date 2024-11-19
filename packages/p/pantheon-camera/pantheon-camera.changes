@@ -1,0 +1,155 @@
+-------------------------------------------------------------------
+Fri Nov  1 20:54:27 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- rename to pantheon-camera
+- remove %suse_update_desktop_file, as it's deprecated
+
+-------------------------------------------------------------------
+Tue Aug 13 00:46:15 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- enable leap by using datadir/icons
+
+-------------------------------------------------------------------
+Fri Aug  9 23:16:26 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.0:
+  * Update to runtime 8
+  * Updated translations
+- update to 6.2.2:
+  * Replace Gtk.Menu with GLib.Menu
+  * Metainfo improvements
+- update to 6.2.1:
+  * Updated translations
+- update to 6.2.0:
+  * Support MJPEG cameras
+  * Show error in case no camera device is available
+  * Updated translations
+- update to 6.1.0:
+  * Take a photo or video on secondary-click
+  * Ensure brightness, contrast, and mirror continue working after taking a photo
+  * Wider hardware compatibility (e.g. StarBook Mk V)
+  * Ensure photos saved properly
+  * Improved performance and reliability
+  * Updated translations
+- update to 6.0.3:
+  * Updated translations
+- update to 6.0.2:
+  * Resolve issues with cameras being unavailable when multiple cameras are connected
+  * Default to a working camera if multiple cameras are connected and one is unavailable
+  * Updated translations
+- update to 6.0.1:
+  * Take full-resolution pictures
+  * Fix restoring window size
+  * Updated translations
+- update to 6.0.0:
+  * Switch between multiple cameras
+  * Send a notification when recording is finished
+  * Add option to mirror the camera
+  * Add brightness and contrast adjustment
+  * Support the dark style
+  * Prevent multiple countdown timers from running at the same time
+  * Improved support for camera hardware
+  * Updated translations
+- update to 1.0.6:
+  * Updated translations
+- switch url to github, as we don't want to link to a different OS
+
+-------------------------------------------------------------------
+Mon Nov  4 14:25:10 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.0.5:
+  * Delete CODE_OF_CONDUCT.md
+  * Create FUNDING.yml
+  * Remove unused po files and clean up LINGUAS
+  * Use GLib.Action for taking photo and video (#98)
+  * HeaderBar: refactor start timeout and timerbutton sensitivity
+    (#97)
+  * MainWindow: Use GLib.Action for fullscreen (#96)
+  * Merge branch 'origin/master' into Weblate.
+  * Dumb cap to 640x480 (#95)
+
+-------------------------------------------------------------------
+Thu May  2 16:14:09 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.0.4:
+  * Merge branch 'origin/master' into Weblate.
+
+-------------------------------------------------------------------
+Mon Mar  4 03:15:16 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.0.3:
+  * Update appstream id (#88)
+  * Update to latest Houston to pass CI
+  * Merge branch 'origin/master' into Weblate
+
+-------------------------------------------------------------------
+Wed Oct 17 18:41:54 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.0.2:
+  * Use ModeSwitch from Granite (#81)
+
+-------------------------------------------------------------------
+Fri Aug 17 14:45:24 UTC 2018 - avvissu@yandex.by
+
+- Update to 1.0.1:
+  * This release includes enhanced translations.
+
+-------------------------------------------------------------------
+Mon Jun 11 12:37:22 UTC 2018 - avvissu@yandex.by
+
+- Update to 1.0:
+  * Use GLib.Settings for mode (#71)
+  * Delay settings (#70)
+  * Add screenshot and OARS (#68)
+  * Use mode switch to change photo/video (#64)
+
+-------------------------------------------------------------------
+Sat Jun  9 01:38:37 UTC 2018 - avvissu@yandex.by
+
+- Rename to elementary-camera
+- Switch to git from bzr
+- Switch to meson
+- Rebase dependencies
+- Update strings to search icon files
+- Remove obsolete macros
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Tue Jul 11 12:31:31 UTC 2017 - bwiedemann@suse.com
+
+- Sort file lists to always install the same .svg size
+  to fix build-compare (boo#1041090)
+
+-------------------------------------------------------------------
+Mon May  1 15:40:31 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.3.0.1:
+  * Fix data files names.
+  * Update Translation template.
+
+-------------------------------------------------------------------
+Sun Jan 29 23:55:24 UTC 2017 - jengelh@inai.de
+
+- Make description neutral
+
+-------------------------------------------------------------------
+Sat Sep 10 19:51:07 UTC 2016 - mailaender@opensuse.org
+
+- update to version 0.3
+
+-------------------------------------------------------------------
+Mon Aug 22 06:03:23 UTC 2016 - avvissu@yandex.by
+
+- Fix: icon file not installed
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Fri May  6 15:52:46 UTC 2016 - mailaender@opensuse.org
+
+- update to version 0.2.0.1
+
+-------------------------------------------------------------------
+Thu Sep  3 14:13:53 UTC 2015 - and.november@opensuse.org
+
+- initial package (version 0.2) for build.opensuse.org
+

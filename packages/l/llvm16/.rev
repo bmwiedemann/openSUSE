@@ -202,4 +202,19 @@
 </comment>
     <requestid>1195707</requestid>
   </revision>
+  <revision rev="16" vrev="10">
+    <srcmd5>969a94394687178f432f4458b9e25e96</srcmd5>
+    <version>16.0.6</version>
+    <time>1731956475</time>
+    <user>anag+factory</user>
+    <comment>- Apply clang-shlib-symbol-versioning.patch to add symbol versions
+  to libclang-cpp.so similar to libLLVM.so. This is required when
+  multiple versions of the library are loaded into the same
+  process. (boo#1219405, boo#1221183, boo#1233220)
+- Require libffi when we build openmp for offloading.
+- Correct target name for libomptarget in file list.
+- Update llvm16.keyring from upstream.
+</comment>
+    <requestid>1224727</requestid>
+  </revision>
 </revisionlist>

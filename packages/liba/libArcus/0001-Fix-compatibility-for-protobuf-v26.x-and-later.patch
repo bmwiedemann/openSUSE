@@ -1,0 +1,28 @@
+From b6874fbd816dddfd00bf60dd56a2d78657fa3eb6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Sun, 17 Nov 2024 03:12:39 +0100
+Subject: [PATCH] Fix compatibility for protobuf v26.x and later
+
+---
+ src/MessageTypeStore.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/MessageTypeStore.cpp b/src/MessageTypeStore.cpp
+index 382a138..866d680 100644
+--- a/src/MessageTypeStore.cpp
++++ b/src/MessageTypeStore.cpp
+@@ -52,7 +52,11 @@ class ErrorCollector : public google::protobuf::compiler::MultiFileErrorCollecto
+ public:
+     ErrorCollector() : _error_count(0) { }
+
++#if PROTOBUF_VERSION >= 5026000
++    void RecordError(absl::string_view filename, int line, int column, absl::string_view message) override
++#else
+     void AddError(const std::string& filename, int line, int column, const std::string& message) override
++#endif
+     {
+         _stream << "[" << filename << " (" << line << "," << column << ")] " << message << std::endl;
+         _error_count++;
+-- 
+2.47.0
+

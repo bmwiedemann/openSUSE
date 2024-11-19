@@ -1,0 +1,45 @@
+---
+ fuzzy-logic-toolkit/inst/algebraic_sum.m      |    2 +-
+ fuzzy-logic-toolkit/inst/bounded_difference.m |    2 +-
+ fuzzy-logic-toolkit/inst/bounded_sum.m        |    2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+Index: octave-forge-fuzzy-logic-toolkit-0.4.6/fuzzy-logic-toolkit/inst/algebraic_sum.m
+===================================================================
+--- octave-forge-fuzzy-logic-toolkit-0.4.6.orig/fuzzy-logic-toolkit/inst/algebraic_sum.m
++++ octave-forge-fuzzy-logic-toolkit-0.4.6/fuzzy-logic-toolkit/inst/algebraic_sum.m
+@@ -46,7 +46,7 @@ function retval = algebraic_sum (x, y =
+   elseif (nargin == 2 && ...
+           (isscalar (x) || isscalar (y) || ...
+            isequal (size (x), size (y))))
+-    retval = x .+ y .- x .* y;
++    retval = x + y - x .* y;
+   elseif (nargin == 1 && isvector (x))
+     retval = algebraic_sum_of_vector (x);
+   elseif (nargin == 1 && ndims (x) == 2)
+Index: octave-forge-fuzzy-logic-toolkit-0.4.6/fuzzy-logic-toolkit/inst/bounded_difference.m
+===================================================================
+--- octave-forge-fuzzy-logic-toolkit-0.4.6.orig/fuzzy-logic-toolkit/inst/bounded_difference.m
++++ octave-forge-fuzzy-logic-toolkit-0.4.6/fuzzy-logic-toolkit/inst/bounded_difference.m
+@@ -49,7 +49,7 @@ function retval = bounded_difference (x,
+   elseif (nargin == 2 && ...
+           (isscalar (x) || isscalar (y) || ...
+            isequal (size (x), size (y))))
+-    retval = max (0, (x .+ y - 1));
++    retval = max (0, (x + y - 1));
+   elseif (nargin == 1 && isvector (x))
+     retval = bounded_difference_of_vector (x);
+   elseif (nargin == 1 && ndims (x) == 2)
+Index: octave-forge-fuzzy-logic-toolkit-0.4.6/fuzzy-logic-toolkit/inst/bounded_sum.m
+===================================================================
+--- octave-forge-fuzzy-logic-toolkit-0.4.6.orig/fuzzy-logic-toolkit/inst/bounded_sum.m
++++ octave-forge-fuzzy-logic-toolkit-0.4.6/fuzzy-logic-toolkit/inst/bounded_sum.m
+@@ -46,7 +46,7 @@ function retval = bounded_sum (x, y = 0)
+   elseif (nargin == 2 && ...
+           (isscalar (x) || isscalar (y) || ...
+            isequal (size (x), size (y))))
+-    retval = min (1, (x .+ y));
++    retval = min (1, (x + y));
+   elseif (nargin == 1 && isvector (x))
+     retval = bounded_sum_of_vector (x);
+   elseif (nargin == 1 && ndims (x) == 2)

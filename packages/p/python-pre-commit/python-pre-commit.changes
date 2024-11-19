@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 15 10:58:24 UTC 2024 - Marina Latini <marina.latini@suse.com>
+
+- spec file changes:
+  * Specify a Group tag for recent Leap and SUSE Linux Enterprise
+  * Disable Perl install test as that requires network for
+    CPAN initialisation also on SUSE Linux Enterprise 15 SP7
+
+-------------------------------------------------------------------
 Thu Oct 24 19:23:34 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.1:

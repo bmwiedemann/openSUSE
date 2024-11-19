@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Nov 15 19:33:39 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- Fix build for Tumbleweed
+
+-------------------------------------------------------------------
+Thu Nov 14 15:18:09 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- cleanup
+
+-------------------------------------------------------------------
+Wed Nov 13 14:47:35 UTC 2024 - pgajdos@suse.com
+
+- build for 15:
+  * openjpeg only for 16+
+  * require correct gcc version
+
+-------------------------------------------------------------------
 Tue Nov 12 18:42:42 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 1.19.2:
@@ -86,7 +103,7 @@ Sat Jul 27 19:29:36 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.18.1:
   * Fix libbrotlidec pkg-config requires
-  * tiff: Fix wrong type for "seekTIFF" function. 
+  * tiff: Fix wrong type for "seekTIFF" function.
   * fix 32bit compiler warnings in box.cc
   * fix memory leaks in Brotli decoder
 

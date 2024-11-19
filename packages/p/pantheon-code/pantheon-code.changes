@@ -1,0 +1,341 @@
+-------------------------------------------------------------------
+Fri Nov  1 20:58:15 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 7.0.4:
+  * Add symbol filter to Outline pane
+  * Updated translations
+- rename to pantheon-code
+- remove %suse_update_desktop_file, as it's deprecated
+
+-------------------------------------------------------------------
+Tue Aug 13 00:46:28 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- enable leap by using datadir/icons
+
+-------------------------------------------------------------------
+Sun Aug 11 03:22:07 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 7.3.0:
+  * The Terminal pane now has a settable default directory
+  * New Tab Bar with improved animations and Drag-n-Drop
+  * Updated translations
+- update to 7.2.0:
+  * When opening a file in Code from the commandline or another app,
+    a line/char position or selection range may be specified
+  * Add a fuzzy-find plugin which finds files in all open projects
+  * Save and restore the state of the terminal pane
+  * "Find in Folder" now works for all folders and text files, not only ".vala" files
+  * "Follow System Style" is now fully respected
+  * The "--new-tab" commandline option now works
+  * The symbol pane width is now synchronised and saved
+  * Project folders are automatically closed if they are externally renamed, moved or deleted
+  * Fixed temporary backup files persisting under some circumstances
+  * The Show-Replace action has been improved
+  * Updated translations
+- update to 7.1.0:
+  * Ensure active project at startup (include non-git folders)
+  * Handle saving to unwritable location better to avoid data loss
+  * Make symbol outline aware of follow-system-style setting
+  * Show running branch if not master
+  * Fix styling when no documents
+  * Ensure Replace button (and other search widget) states are mutually consistent
+  * Delay asking for save location if cannot determine write access
+  * Additional Search options in menu
+  * Implement option to show files with unknown characters as new document
+  * Do not change document search results unexpectedly on focus in
+  * Add ctrl + pageUp and pageDown for switching tabs
+  * Persist search settings
+  * Set search entry icon and styleclass according to results
+  * Ask save location with dialog
+  * Metainfo: set brand color to Latte 500
+  * Ensure folder items in sidebar always expandable
+  * Fix creating duplicates of unwritable files
+  * Install man page with meson
+  * Reduce terminal noise
+  * Remove plugin set option
+  * FormatBar: Show column number not buffer offset
+  * Handle only relevant settings key changes
+  * Use dialog for external changes
+  * Sync tab settings
+  * Fix searchterm reverts
+  * Ensure correct sidebar item is focused, or none, when tab removed
+  * Fix logic for clearing search entry
+  * Fix spurious external change warnings
+- update to 7.0.0:
+  * Fix compile warnings
+  * Add follow system style switch
+  * Add custom elementary syntax styles
+  * Hide non-active documents when project manually chosen
+  * Redesign app icon
+  * HeaderBar: put find actions in menu
+  * Move Terminal to core
+  * FormatBar: use menubuttons instead of ToggleButtons
+  * Do not add duplicate project
+  * Headerbar: code style, small fixes
+  * Fix startup warnings
+- update to 6.2.0:
+  * The current document filename is now shown as the window title in multitasking view
+  * Hidden folders are now shown in the project sidebar
+  * The currently selected result and the number of results is displayed while searching
+  * The search bar now has a regular expression mode
+  * It is now possible to change Git branch with untracked files present in a project
+  * Crashes are prevented while searching in large projects
+  * The correct document is now focused after opening Code from an external program
+  * Line duplication is now actioned correctly if there is no selection present
+  * Code no longer crashes when asked to open an unknown URI format
+  * Updated translations
+- update to 6.1.0:
+  * Projects with the same name now include their parent folder name as well
+  * When scrolling to search results, overshoot slightly for better visibility
+  * Use the FileChooser portal instead of the one from GTK
+  * Center the global search dialog over the main Code window
+  * Fix visibility of Terminal button on Welcome page
+  * Fix some keyboard shortcuts affecting unfocused Document instead of focused Terminal
+  * Close Terminal if shell exited and create new Terminal if re-opened with no shell
+  * "Visible whitespace" combobox is now a switch
+  * Updated translations
+- update to 6.0.1:
+  * Fix crash when creating new window from tab drop
+  * Ensure files created from the sidebar are automatically opened
+  * Hide project chooser button when hiding sidebar
+  * Ensure all copy is translatable
+  * Updated translations
+- update to 6.0.0:
+  * New Markdown plugin for WYSIWYG-like editing.
+  * Switch Git branches or create new ones in project folder context menus
+  * Show Git diff status in source view gutters
+  * Full text search within project folder.
+  * Save and restore cursor position between sessions
+  * Close files from a project when that project is closed
+  * Show full file path in tab tooltips
+  * Clear lines with Ctrl + K
+  * Allow Spell Checker extension in Markdown files
+  * Improve multi-line duplication
+  * Remember whether the sidebar is open
+  * Set window title to the focused file
+  * Add keyboard shortcuts for next and previous documents
+  * Show full document path in tab tooltip
+  * Update Pastebin plugin
+  * Corrently indent last line when using the preserve whitespace plugin
+  * Keep syntax highlighting when duplicating a file
+  * Expand a collapsed folder if you attempt to open it twice
+  * Fix an issue where searches are lost when Code loses focus
+  * Start Vim plugin in command mode
+  * Fix and add new Vim commands
+  * Show project folders with a hidden root folder
+  * Allow launching with pkexec and disallow launching with sudo
+  * Remove split view
+  * Remove browser preview
+  * Updated translations
+- update to 3.4.1:
+  * Fix empty sidebar layout, ensuring folders can always be added
+  * Scroll past the end of a file
+  * More efficiently save and restore window position
+  * Updated translations
+- update to 3.4.0:
+  * Include Git status in file tooltips
+  * Option for explicit case-sensitive Find
+  * Correctly show Toggle Comment menu item when no text is selected
+  * Fixed font switch alignment
+  * Updated translations
+- update to 3.3.0:
+  * New "Close Other Folders" menu item to help clean up your sidebar
+  * Save and restore cyclic search setting
+  * Add keyboard shortcuts to menu items
+  * Make sidebar folder items not selectable
+  * Center new windows
+  * Updated translations
+- update to 3.2.0:
+  * Visually deprioritize .gitignored files in project sidebar
+  * Smart cut/copy lines with no active selection
+  * Add a confirmation dialog to the "Restore" action
+  * Add "Open In" menu to the top-level folder in the folder manager
+  * Don't show temporary files in the folder manager
+  * Add brackets completion and auto-indent by default
+  * Zoom terminal plugin with keyboard
+  * Honor global privacy setting when saving and restoring
+  * Simplify "Draw spaces" preference
+  * Fix the keyboard shortcut for going backwards in search results
+  * Fix opening files from relative paths in Terminal
+  * Fix null file dialog when opening a new window via the dock
+  * Add "=" as a zoom key
+  * Change search entry icon when results aren't found
+  * Enter name of new file before creating it
+  * Updated translations
+- switch url to github, as we don't want to link to a different OS
+
+-------------------------------------------------------------------
+Thu May  2 16:15:12 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 3.1.1:
+  * Fixing current view removal (#655)
+  * Include non-text files in sidebar  (#651)
+  * Application: Rewrite error dialog as Granite.MessageDialog
+    (#644)
+  * Document: Rewrite unsaved changes warning as
+    Granite.MessageDialog (#646)
+  * Spell Plugin: Use Granite.MessageDialog (#645)
+  * Release 3.1.0
+  * Utils: Remove filechooser util (#643)
+  * MainWindow: Use FileChooserNative to open folders (#638)
+  * Merge branch 'origin/master' into Weblate
+  * Fix crash on startup under some circumstances by starting the
+    plugins after widget realize signal (#620)
+  * ProjectFolderItem: Rewrite change branch submenu as an object
+    (#628)
+  * Implement change branch context menu item. (#625)
+  * Fix finding editorconfig (#626)
+  * Expected number of buffers open when rapidly opening buffers
+    (#623)
+
+-------------------------------------------------------------------
+Mon Mar  4 03:16:03 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 3.0.2:
+  * Don't add temporary files to tab restore (#609)
+  * Current view fix (#529)
+  * Saving improvements (#527)
+  * Merge branch 'origin/master' into Weblate
+  * Add "text" to desktop file keywords (#602)
+  * Outline: Modernize the C backend and make it more efficient 
+    (#591)
+  * Fix empty files creation for previous opened files (#582)
+  * Restore line wrap preference (#587)
+  * Outline: use the right way to get the Vala version
+  * Check file exists before trying to parse editorconfig (#586)
+  * check if text_buffer is null before searching (#532)
+  * Fix type-argument mismatch for newer valac
+  * Add Granite accel tooltips (#552)
+  * Update the description of vim-emulation.plugin (#560)
+  * Travis.yml: Update to latest Houston CI (#553)
+
+-------------------------------------------------------------------
+Thu Nov  8 02:29:17 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Add regex for filtering provided libraries
+
+-------------------------------------------------------------------
+Wed Oct 17 18:43:17 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 3.0:
+  * Add pt, pt_BR and it to LINGUAS (#530)
+  * Bump granite dep (#526)
+  * Use RadioButtons for style switcher (#520)
+  * remove unused Gtk.Notebook (#523)
+  * remove unused and deprecated GLib.Parameter (#522)
+  * Merge branch 'origin/master' into Weblate
+  * Update screenshots (#507)
+  * Use elipsis instead of three dots (#505)
+
+-------------------------------------------------------------------
+Sat Jun  9 01:13:04 UTC 2018 - avvissu@yandex.by
+
+- Rename to elementary-code
+- Switch to git from bzr
+- Switch to meson
+- Drop patches (fixed):
+  * scratch-2.4.1-vala-0.36.patch
+  * scratch-2.4.1-gtk.patch
+- Build with dependences: AppStream, libeditorconfig-devel libvala-devel
+- Add a new package with plugins
+- Add dirlist HiDPI icons
+- Update strings to search icon files
+- Remove obsolete macros
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Sat Jun  2 22:59:30 UTC 2018 - bjorn.lie@gmail.com
+
+- Drop pkgconfig(gconf-2.0) BuildRequires: No longer needed, nor
+  used.
+- Run spec-cleaner, modernize spec.
+- Add conditional for update-desktop-files BuildRequires and
+  glib2_gsettings_schema_requires as well as post(un) handling of
+  glib2_gsettings_schema_post(un) and desktop_database_post(un),
+  andsuse_update_desktop_file macro, no longer needed on modern
+  releases of openSUSE.
+
+-------------------------------------------------------------------
+Wed Jan 24 06:36:56 UTC 2018 - avvissu@yandex.by
+
+- Fix build with granite >= 0.5 (scratch-2.4.1-gtk.patch)
+- Add contractor and zeitgeist dependencies
+
+-------------------------------------------------------------------
+Thu May  4 15:12:19 UTC 2017 - sor.alexei@meowr.ru
+
+- Synchronise scratch-2.4.1-vala-0.36.patch with
+  https://bazaar.launchpad.net/~elementary-apps/scratch/master/revision/1828
+  to restore Vala 0.35 or older compatibility.
+
+-------------------------------------------------------------------
+Sat Apr  1 00:05:50 UTC 2017 - avvissu@yandex.by
+
+- Fix build with vala >= 0.36 (scratch-2.4.1-vala-0.36.patch) 
+
+-------------------------------------------------------------------
+Mon Feb 20 16:50:09 UTC 2017 - avvissu@yandex.by
+
+- Update to 2.4.1:
+  * Launchpad automatic translations update.
+  * Make bracket autocompletion skip over closing brackets
+  * SplitView.vala: Restore old code that focuses the correct view
+  * Fix newly opened files being marked as unsaved
+
+-------------------------------------------------------------------
+Fri Feb 10 12:11:40 UTC 2017 - avvissu@yandex.by
+
+- Update to 2.4:
+  * Launchpad automatic translations update.
+  * Replace the granite appmenu widget with Gtk.Menu. This fixes 
+    window dragging
+  * MainWindow.vala: Add width request to set minimum sizes for 
+    panes
+  * Save and restore opened documents per view
+  * Prevent New Docs from not saving
+  * Fix word completion bug #1354251 preventing keyboard 
+    navigation when proposed word is typed
+  * Swap the position of the second view in the pane when we 
+    delete the first one.
+  * SplitView now return the focused child correctly.
+  * Fix problem with multiple signal connections on plugin toggle.
+  * Use Pantheon Terminal font settings
+  * Scratch Text Editor "org.pantheon.scratch":
+  * Fixed filenames to the AppID name.
+  * Fixed code to have it point to a new AppID.
+  * Use webkit2gtk4 instead of webkitgtk3
+  * Fixed Vala version not being retreived.
+  * Fix CMake warnings in the plugins
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Thu Nov 24 23:27:30 UTC 2016 - jengelh@inai.de
+
+- Trim empty words from description
+
+-------------------------------------------------------------------
+Sat Sep 10 19:01:24 UTC 2016 - mailaender@opensuse.org
+
+- update to version 2.3
+
+-------------------------------------------------------------------
+Thu Mar 10 17:37:48 UTC 2016 - and.november@opensuse.org
+
+- fix suse_version tests
+  openSUSE Leap 42.1	 %if 0%{?suse_version} == 1315
+
+-------------------------------------------------------------------
+Sun Oct 18 08:41:04 UTC 2015 - and.november@opensuse.org
+
+- update to version 2.2.1
+
+-------------------------------------------------------------------
+Sun May 10 08:15:14 UTC 2015 - mailaender@opensuse.org
+
+- update to version 2.1.0
+
+-------------------------------------------------------------------
+Sun May  4 17:25:29 UTC 2014 - mailaender@opensuse.org
+
+- initial packaging
+

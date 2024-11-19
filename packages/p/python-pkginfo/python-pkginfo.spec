@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pkginfo
-Version:        1.11.1
+Version:        1.11.2
 Release:        0
 Summary:        Python package for querying metadatdata from sdists/bdists/installed packages
 License:        MIT

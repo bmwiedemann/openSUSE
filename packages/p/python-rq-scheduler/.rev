@@ -16,4 +16,15 @@
   to enable tests</comment>
     <requestid>1131505</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b966e766cc204b19ba776983c7589697</srcmd5>
+    <version>0.14</version>
+    <time>1731956449</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.14
+  * Support for RQ 2.0. Thanks @selwin!
+- Drop rq-compat-removal.patch (rq-compat not in upstream anymore)
+</comment>
+    <requestid>1224652</requestid>
+  </revision>
 </revisionlist>

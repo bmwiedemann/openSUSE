@@ -132,4 +132,12 @@ See also https://build.opensuse.org/request/show/841582</comment>
     <comment>go (forwarded request 1120286 from bnavigator)</comment>
     <requestid>1120287</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6c77fb98d515a8ae1d2fecc83deeb425</srcmd5>
+    <version>1.3.0</version>
+    <time>1731956459</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1224667</requestid>
+  </revision>
 </revisionlist>

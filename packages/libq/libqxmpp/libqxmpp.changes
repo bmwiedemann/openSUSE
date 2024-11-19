@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Nov 17 13:43:36 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.9.0
+  * Implement XEP-0461: Message Replies parsing
+  * Prevent unencrypted fallback markers are applied to
+    encrypted body
+  * Implement XEP-0283: Moved
+  * AccountMigration: Implement restoring of joined MIX channels
+
+-------------------------------------------------------------------
 Tue Oct 29 16:57:44 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.8.3:

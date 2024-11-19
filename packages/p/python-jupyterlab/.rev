@@ -820,4 +820,41 @@
     (@EdsterG)</comment>
     <requestid>1197023</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>189d916d647ac079060d3dc02e6b9b29</srcmd5>
+    <version>4.2.6</version>
+    <time>1731956467</time>
+    <user>anag+factory</user>
+    <comment>- Downgrade to 4.2.6 
+  * Maintain autosave timers while disconnected #16903 (@holzman)
+  * Use class instead of id in the log console test #16723
+    (@krassowski)
+- Downgrade reason: Notebook is not ready for jupyterlab 4.3 yet
+
+- Update to 4.3.0
+  ## New features added
+  * Notebook minimap in the virtual scrollbar #16432 (@krassowski)
+  ## Enhancements made
+  * Change &quot;File Size&quot; column name to &quot;Size&quot; at small widths #16849
+    (@JasonWeill)
+  * Adds command to toggle cell outputs #16833 (@JasonWeill)
+  * Improve notebook output stream processing #16814
+    (@davidbrochart)
+  * Update Show Virtual Scrollbar -&gt; Show Minimap #16776 (@jtpio)
+  * Clean up SVG icons from @jupyterlab/ui-components and update
+    SVGO #16678 (@joaopalmeiro)
+  * Convert @jupyterlab/completer type colors to theme CSS
+    variables #16656 (@joaopalmeiro)
+  * Adopt a theme CSS variable for the &quot;expand a collapsed cell&quot;
+    button shadow #16653 (@joaopalmeiro)
+  * Implement resizing for the file browser #16646 (@krassowski)
+  * Add kernel selection to Galata notebook creation #16639
+    (@pauldruce)
+  * Option to disable cell toolbar #16637 (@JasonWeill)
+  * Update pending input message for clarification #16632 (@RRosio)
+  * Standardize dialogs to shut down all kernels #16629
+    (@joaopalmeiro)
+  * Standardize the button role and label for single, dismissal</comment>
+    <requestid>1224673</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov 15 11:25:06 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Allow building with default LLVM version 19: just replace the
+  hard-coded LLVM_version in the scripts.
+
+-------------------------------------------------------------------
+Thu Nov 14 07:06:20 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Remove -IVendor/ from python-config boo#1231795
+- Require exact clang18 and llvm18, because apparently CPython is
+  not ready for 19 yet (gh#python/cpython!125499).
+
+-------------------------------------------------------------------
 Thu Oct 24 16:09:00 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Add CVE-2024-9287-venv_path_unquoted.patch to properly quote

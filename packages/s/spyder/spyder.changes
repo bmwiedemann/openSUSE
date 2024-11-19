@@ -1,4 +1,116 @@
 -------------------------------------------------------------------
+Sun Nov 17 16:50:01 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.0.2
+  ## Important fixes
+  * Fix plots not being generated with the Matplotlib inline
+    backend.
+  * Restore missing debugger buttons to the main toolbar.
+  * Several fixes and improvements to the update detection
+    mechanism.
+  * Fix SSH tunneling info handling for remote kernels connection
+    and add remote client tests.
+  * Handle kernel fault file not being available.
+  * Update QtConsole constraint to 5.6.1 to support ANSI codes that
+    move the cursor.
+  ## API changes
+  * The sig_is_rendered signal was added to SpyderToolbar.
+  * The add_toolbar kwarg of the create_run_button and
+    create_run_in_executor_button methods of the Run plugin can now
+    accept a dictionary.
+  ## Issues Closed
+  * Issue 22732 - return in finally swallows exceptions (PR 22745
+    by @ccordoba12)
+  * Issue 22685 - Check update process for 6.0.2 with a rc
+    (6.0.2rc1)
+  * Issue 22593 - Banner not shown when there are many files open
+    in the Editor at startup (PR 22594 by @ccordoba12)
+  * Issue 22584 - RuntimeError when setting a layout and the
+    IPython console is undocked (PR 22595 by @ccordoba12)
+  * Issue 22574 - SpyderCodeRunner._debugger_exec error when
+    starting the debugger from Spyder 6.0.1 (PR 22633 by
+    @ccordoba12)
+  * Issue 22572 - Spyder encounters an internal problem after
+    declining update to 6.0.1 (PR 22598 by @mrclary)
+  * Issue 22566 - Standalone installer shows 404 error on
+    spyder-conda-lock.zip (PR 22598 by @mrclary)
+  * Issue 22555 - Remote spyder kernel not connecting (PR 22691 by
+    @hlouzada)
+  * Issue 22551 - Error message "the system cannot find the path
+    specified" upon trying to start the kernel (PR 22575 by
+    @ccordoba12)
+  * Issue 22546 - UnicodeDecodeError when changing files with an
+    open project (PR 22656 by @ccordoba12)
+  * Issue 22448 - TypeError on connecting to spyder-notebook kernel
+    (PR 22628 by @dalthviz)
+  * Issue 22434 - Spyder 6: Debugging buttons missing from the main
+    toolbar (PR 22702 by @ccordoba12)
+  * Issue 22420 - Plots not showing in Spyder 6 using external
+    Python interpreter (PR 22664 by @ccordoba12)
+  * Issue 22407 - Update mechanism not working for Spyder 6.0
+    installed from Fedora distro package (PR 22631 by @mrclary)
+  * Issue 6172 - TQDM progress bar is not displayed correctly in
+    the console (PR 22718 by @dalthviz)
+  ## Pull Requests Merged
+  * PR 22785: Improve version update instructions on RELEASE.md, by
+    @dalthviz
+  * PR 22771: Update dev version from alpha to rc, by @dalthviz
+  * PR 22760: Update core dependencies for 6.0.2, by @dalthviz
+  * PR 22759: Update spyder-kernels to 3.0.1, by @dalthviz
+  * PR 22757: Mention that we need to publish release candidates
+    for bugfix versions in release instructions, by @ccordoba12
+  * PR 22753: Update translations from Crowdin, by @spyder-bot
+  * PR 22752: Update translations for 6.0.2, by @dalthviz
+  * PR 22745: Remove unnecessary return in a try/finally statement
+    (Files), by @ccordoba12 (22732)
+  * PR 22718: Update QtConsole subrepo to take into account changes
+    to support cursor move actions, by @dalthviz (6172)
+  * PR 22709: Update installing developer repos to accommodate
+    dist-info, by @mrclary
+  * PR 22702: Restore buttons that control the debugger to the main
+    toolbar, by @ccordoba12 (22434)
+  * PR 22699: Add Help Spyder entry to the Help menu (Application),
+    by @ccordoba12
+  * PR 22692: Configure spyder-remote-services as an external
+    dependency for the remote client tests, by @hlouzada
+  * PR 22691: Provide username, host and port from hostname info in
+    ssh tunnels, by @hlouzada (22555)
+  * PR 22668: Don't use hard-coded path to Python in script shebang
+    used to launch Spyder, by @Flamefire
+  * PR 22664: Manually register the Matplotlib inline backend in
+    case it hasn't, by @ccordoba12 (22420)
+  * PR 22656: Always use utf-8 when handling QByteArray data in
+    ProcessWorker (Utils), by @ccordoba12 (22546)
+  * PR 22654: Some small fixes to the Maintenance instructions, by
+    @ccordoba12
+  * PR 22636: Simplify min/max required versions of spyder-kernels
+    in the stable branch (IPython console), by @ccordoba12
+  * PR 22633: Fix debug file and cell buttons in Debugger toolbar,
+    by @ccordoba12 (22574)
+  * PR 22631: Do not check for updates if Spyder is in a system or
+    managed environment, by @mrclary (22407)
+  * PR 22628: Handle case when kernel fault file doesn't exist and
+    show error with info explaining that no connection was possible
+    (IPython Console), by @dalthviz (22448)
+  * PR 22621: Fix setting of working directory in Profiler plugin,
+    by @rear1019
+  * PR 22618: Fix test_copy_paste_autoindent forcing text over the
+    clipboard to work (Editor), by @dalthviz
+  * PR 22598: Check for asset availability when checking for
+    updates, by @mrclary (22572, 22566)
+  * PR 22597: Minor updates to the installer, by @mrclary
+  * PR 22595: Dock all undocked plugins before applying a layout,
+    by @ccordoba12 (22584)
+  * PR 22594: Set shell banner attribute to be the one computed by
+    us (IPython console), by @ccordoba12 (22593)
+  * PR 22577: Pin micromamba to the last version before 2.0 to
+    prevent hangs (CI), by @ccordoba12
+  * PR 22575: Add harmless OpenCL warning to bening errors (IPython
+    console), by @ccordoba12 (22551)
+  * PR 22527: Add initial tests for the Remote client plugin, by
+    @hlouzada
+
+-------------------------------------------------------------------
 Thu Sep 26 09:43:27 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.0.1

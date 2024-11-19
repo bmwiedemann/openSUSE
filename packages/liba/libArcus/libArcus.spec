@@ -1,7 +1,7 @@
 #
 # spec file for package libArcus
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ Source:         https://github.com/Ultimaker/libArcus/archive/%{sversion}.tar.gz
 Patch0:         libArcus-3.5.1-PyQt5.sip.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         0001-Use-single-parameter-SetTotalBytesLimit-fix-protobuf.patch
+# PATCH-FIX-OPENSUSE
+Patch2:         0001-Fix-compatibility-for-protobuf-v26.x-and-later.patch
 BuildRequires:  cmake >= 3.6
 BuildRequires:  gcc-c++
 BuildRequires:  protobuf-devel >= 3.0.0

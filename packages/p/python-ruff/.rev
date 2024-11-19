@@ -1400,4 +1400,41 @@
    * Add rule short code to mkdocs tags to allow searching via rule codes</comment>
     <requestid>1223378</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>f009a2a242ad163ecff971aa1c448dc7</srcmd5>
+    <version>0.7.4</version>
+    <time>1731956226</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.7.4
+ * Preview features
+   * [flake8-datetimez] Detect usages of datetime.max/datetime.min (DTZ901) 
+   * [flake8-logging] Implement root-logger-calls (LOG015) 
+   * [flake8-no-pep420] Detect empty implicit namespace packages (INP001) 
+   * [flake8-pyi] Add &quot;replace with Self&quot; fix (PYI019) 
+   * [perflint] Implement quick-fix for manual-list-comprehension (PERF401) 
+   * [pylint] Implement shallow-copy-environ (W1507) 
+   * [ruff] Implement none-not-at-end-of-union (RUF036) 
+   * [ruff] Implementation unsafe-markup-call from flake8-markupsafe plugin (RUF035) 
+   * [ruff] Report problems for attrs dataclasses (RUF008, RUF009) 
+ * Rule changes
+   * [flake8-boolean-trap] Exclude dunder methods that define operators (FBT001) 
+   * [flake8-pyi] Add &quot;replace with Self&quot; fix (PYI034) 
+   * [flake8-pyi] Always autofix duplicate-union-members (PYI016) 
+   * [flake8-pyi] Improve autofix for nested and mixed type unions for unnecessary-type-union (PYI055) 
+   * [flake8-pyi] Mark fix as unsafe when type annotation contains comments for duplicate-literal-member (PYI062) 
+ * Server
+   * Use the current working directory to resolve settings from ruff.configuration 
+ * Bug fixes
+   * Avoid conflicts between PLC014 (useless-import-alias) and I002 (missing-required-import) by considering lint.isort.required-imports for PLC014 
+   * [flake8-type-checking] Skip quoting annotation if it becomes invalid syntax (TCH001)
+   * [flake8-pyi] Avoid using typing.Self in stub files pre-Python 3.11 (PYI034) 
+   * [flake8-pytest-style] Flag pytest.raises call with keyword argument expected_exception (PT011) 
+   * [flake8-simplify] Infer &quot;unknown&quot; truthiness for literal iterables whose items are all unpacks (SIM222) 
+   * [flake8-type-checking] Fix false positives for typing.Annotated (TCH001) 
+   * [pylint] Allow await at the top-level scope of a notebook (PLE1142) 
+   * [pylint] Fix miscellaneous issues in await-outside-async detection (PLE1142)
+   * [pyupgrade Avoid applying PEP 646 rewrites in invalid contexts ()UP044) 
+   * [pyupgrade] Detect permutations in redundant open modes (UP015)</comment>
+    <requestid>1224610</requestid>
+  </revision>
 </revisionlist>

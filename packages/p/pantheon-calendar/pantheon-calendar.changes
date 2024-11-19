@@ -1,0 +1,278 @@
+-------------------------------------------------------------------
+Fri Nov  1 20:53:11 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- rename to pantheon-calendar
+- remove %suse_update_desktop_file, as it's deprecated
+
+-------------------------------------------------------------------
+Tue Aug 13 00:46:00 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- enable leap by using datadir/icons
+
+-------------------------------------------------------------------
+Sun Aug 11 02:16:30 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.0:
+  * New flatter design
+  * Updated translations
+- update to 7.0.0:
+  * Add support for Evolution Data Server 3.46
+  * Fix meson warnings
+  * Require newer meson and fix deprecations
+  * Metainfo Improvements
+  * Application: Force use of portals
+- update to 6.1.2:
+  * Updated translations
+- update to 6.1.1:
+  * Updated app icon
+  * Updated translations
+- update to 6.1.0:
+  * Ask for confirmation before deleting events
+  * Follow email and web links in the event description with Control + Click
+  * Disabled checkbox "Mark as default calendar" in calendar settings, if the calendar is read-only
+  * Removed no longer needed sandbox permission for accounts service
+  * Fixed potential memory leak
+- update to 6.0.3:
+  * Ensure Calendar runs in the background on startup
+  * Fix memory leak when getting timezone information
+  * Reliably read Windows-style timezones
+  * Updated translations
+- update to 6.0.2:
+  * Fix notification icons in the notification indicator
+  * Fix an issue where event timezones were overwritten
+  * Ensure Calendar is launched when notifications are clicked
+  * Updated translations
+- update to 6.0.1:
+  * Fix broken calendar color with some online providers
+  * Fix an issue with some all-day events
+  * Updated translations
+- update to 6.0.0:
+  * Import ICS files from the gear menu
+  * Support the dark style
+  * Properly show events on the last day of the month
+  * Fix end times for all-day events
+  * Notify for all alarms on an event
+  * Improved offline support
+  * New colorful avatar fallbacks
+  * Include "film" as an event icon keyword
+  * Add Mint and Bubblegum to calendar color chooser
+  * Link to Online Accounts settings in the gear menu
+  * Performance improvements
+  * Updated translations
+- update to 5.1.1:
+  * Fix an issue where new events could appear twice in Calendar
+  * "Mark as default calendar" box is now correctly checked when editing a calendar
+  * Updated translations
+- update to 5.1.0:
+  * Allow modification of recurring events
+  * Improve handling of week start day
+  * Fix timezone errors with all-day events
+  * Don't resize the sidebar when resizing the window
+  * Updated translations
+- update to 5.0.6:
+  * Fix issues with time zones not being recognized
+  * Updated translations
+- update to 5.0.5:
+  * Fix several issues with adding and removing monthly recurring events
+  * Updated translations
+- update to 5.0.4:
+  * Correctly save event reminders
+  * Ellipsize event participant details if necessary
+  * Fix unwanted rescheduling when editing event title
+  * Updated translations
+- switch url to github, as we don't want to link to a different OS
+
+-------------------------------------------------------------------
+Wed Dec 18 15:26:50 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 5.0.3:
+  * Utils: fix several crashes with event processing (#461)
+  * Add Lint to CI (#434)
+  * Set color as fg_color for cell class (#458)
+  * Reset AgendaView items when parameters change (#456)
+  * Travis: downgrade node to 10
+  * Add Release to Actions (#450)
+  * AppData: Update release information (#448)
+  * Add specific CSS files per class (#443)
+  * Utils: Remove unused is_day_in_range (#442)
+  * Use GLib.DateWeekday (#441)
+  * Use the next whole hour for the default time (#209)
+  * Lint source files (#435)
+  * Delete CODE_OF_CONDUCT.md
+  * Delete FUNDING.yml
+  * Add compatibility with libecal-1.2 and libical-glib (#431)
+  * Fix libical.vapi
+  * More alignments with libical-glib and libecal-2.0
+  * Construct new event dialog at idle (#425)
+  * Improve the compatibility with libecal-2.0 and libical-glib
+    (#430)
+  * Bring more compatibility with libecal-2.0 and libical-glib
+    (#429)
+  * Use EDS to compute recursive events (#426)
+  * Merge branch 'origin/master' into Weblate.
+  * libical: rename ICal.DurationType into ICal.Duration
+
+-------------------------------------------------------------------
+Mon Mar  4 03:13:37 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 5.0:
+  * ContractorButtonWithMenu: Use FileChooserNative (#379)
+  * Merge branch 'origin/master' into Weblate
+  * Daemon: Use calendar icon in notifications (#378)
+  * Move languages format from core to src (#374)
+  * README: Add libgeoclue dep (#377)
+  * Daemon: fix indentation and whitespace (#376)
+  * README: remove notify dep
+  * Fix daemon to use GLib.Notification (#353)
+  * Application: present import window when opening ICS files 
+    (#369)
+  * Remove unused SourceManager (#373)
+
+-------------------------------------------------------------------
+Thu Nov  8 02:29:16 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Add regex for filtering provided libraries
+
+-------------------------------------------------------------------
+Wed Oct 17 18:39:54 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 4.2.3:
+  * Use Gtk.Application (#278)
+  * Remove cairo draws (#276)
+  * Merge branch 'origin/master' into Weblate
+  * Fix Location Panel Initialization (#271)
+  * Draw week label border with CSS (#273)
+  * Add padding to weeknumber labels (#270)
+  * travis: update to latest Houston (#272)
+
+-------------------------------------------------------------------
+Mon Oct  8 14:14:45 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 4.2.2:
+  * Merge branch 'origin/master' into Weblate
+  * Use elipsis instead of three dots (#265)
+  * Install daemon to libexec (#264)
+  * Eliminate Gtk warning about :focused (#259)
+- Switch to meson
+
+-------------------------------------------------------------------
+Mon Oct  8 14:05:04 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Drop maya-calendar-drop-obsolete-gconf2.patch
+
+-------------------------------------------------------------------
+Sat Jul  7 19:20:15 UTC 2018 - bjorn.lie@gmail.com
+
+- Add maya-calendar-drop-obsolete-gconf2.patch: Drop obsolete
+  gconf-2.0 dependency, patch sent upstream.
+- Following the above drop pkgconfig(gconf-2.0) BuildRequires: No
+  longer needed, nor used.
+
+-------------------------------------------------------------------
+Sat Jun 23 16:34:06 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.4.2.1:
+  * Merge remote-tracking branch 'origin/master'
+  * Utils: Update location of datetime indicator setting (#243)
+
+-------------------------------------------------------------------
+Sat Jun  9 23:56:42 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.4.2:
+  * Rename files to follow RDNN naming convention (#226)
+  * Rename pc.cmake to pc.in
+  * Use build variables in appdata
+  * Clean up whitespace
+  * Remove unused dist and distcheck
+  * Don't append nonexistent module path
+  * Remove unused build variables
+  * Add EXEC_NAME build variable
+  * Rename config.vala.cmake to config.vala.in
+
+-------------------------------------------------------------------
+Fri Jun  8 23:32:04 UTC 2018 - avvissu@yandex.by
+
+- Rename to elementary-calendar
+- Drop maya-calendar-0.4.1-vapi.patch (fixed)
+- Add a new package with plugins
+- Update strings to search icon files
+- Fix: Icon will not found when changing the lang settings
+- Remove obsolete macros
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Mon Apr 23 21:45:08 UTC 2018 - avvissu@yandex.by
+
+- Fix build with vala >= 0.40.4 (add maya-calendar-0.4.1-vapi.patch) 
+
+-------------------------------------------------------------------
+Sat Dec  2 14:47:51 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.4.1:
+  * Require Granite >= 0.5
+  * Style calendar colours using css (#200)
+  * Correct dekstop names for make pot (#203)
+  * Store local calendar edits (#202)
+  * Fallback to char wrapping if word is too long to wrap (#199)
+  * Update version information (#197)
+  * Add debug option to app_options (#190)
+  * Use relative date format for same day notifications (#193)
+  * Remove fields for deprecated about dialog (#192)
+  * Correctly generate date ranges for repeat events (#183)
+  * Add missing releases to appdata (#188)
+  * Handle null dtends correctly (#184)
+  * Correctly import ics files (#185)
+  * Grab focus on event title when creating event (#146)
+  * Correct selecting days in other months (#175)
+  * Show event repeats in agenda correctly (#182)
+  * Allow right clicking EventButtons (#178)
+  * Allow right clicking week labels (#173)
+  * Load non-standard ports when editing (#176)
+  * Remove email notifications (#179)
+  * Rewrite MayaToolbar as HeaderBar (#163)
+  * Update EventButtons directly (#174)
+  * Sort events on Grid (#171)
+  * Follow week setting in System Settings (#172)
+  * Implement control q accel with simpleaction (#158)
+- Update homepage
+- Switch from bzr to git
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Tue Jul 11 12:28:20 UTC 2017 - bwiedemann@suse.com
+
+- Sort file lists to always install the same .svg size
+  to fix build-compare (boo#1041090)
+
+-------------------------------------------------------------------
+Sat Sep 10 16:17:55 UTC 2016 - mailaender@opensuse.org
+
+- Update to version 0.4.0.2
+- Drop maya-0.3.1.1-eds-3.16.patch
+
+-------------------------------------------------------------------
+Mon Aug 22 06:00:58 UTC 2016 - avvissu@yandex.by
+
+- Fix: icon file not installed
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Sat Feb 27 11:53:54 UTC 2016 - mailaender@opensuse.org
+
+- add maya-0.3.1.1-eds-3.16.patch
+
+-------------------------------------------------------------------
+Sat Jun 20 06:13:37 UTC 2015 - mailaender@opensuse.org
+
+- update to version 0.3.1.1
+
+-------------------------------------------------------------------
+Sun May 10 07:57:02 UTC 2015 - mailaender@opensuse.org
+
+- update to version 0.3.1
+  * requires vala 0.26 (lp#1455536)
+
+-------------------------------------------------------------------
+Sun Jun 15 13:24:16 UTC 2014 - mailaender@opensuse.org
+
+- initial packaging (version 0.3) for build.opensuse.org

@@ -665,4 +665,17 @@
     <comment>- fixed build with new boost [bsc#1223377] (forwarded request 1170138 from pgajdos)</comment>
     <requestid>1170139</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>ce711be15bdd27284dd26ab8be243321</srcmd5>
+    <version>2024.0.0</version>
+    <time>1731956503</time>
+    <user>anag+factory</user>
+    <comment>- Remove hugin-deprecated-copy_option.patch -- Fixed upstream
+- Update to version 2024.0.0:
+  * Added browser for project files to Hugin. It can show
+    thumbnails or project details of all project files in a
+    directory.
+  * Create GPano tags also for cylindrical output projection. (forwarded request 1224538 from smolsheep)</comment>
+    <requestid>1224777</requestid>
+  </revision>
 </revisionlist>

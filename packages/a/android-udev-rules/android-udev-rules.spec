@@ -17,7 +17,7 @@
 
 
 Name:           android-udev-rules
-Version:        20241019
+Version:        20241109
 Release:        0
 Summary:        Udev rules for Android Debug Bridge
 License:        GPL-3.0-or-later

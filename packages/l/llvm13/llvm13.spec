@@ -168,6 +168,8 @@ Patch33:        CMake-Look-up-target-subcomponents-in-LLVM_AVAILABLE_LIBS.patch
 Patch35:        llvm-update-extract-section-script.patch
 # Fix build with Swig 4.1.0: backport of upstream commits 81fc5f7909a4, f0a25fe0b746. (gh#llvm/llvm-project#58018)
 Patch38:        lldb-swig-4.1.0-build-fix.patch
+# PATCH-FIX-UPSTREAM: Use symbol versioning also for libclang-cpp.so.
+Patch39:        clang-shlib-symbol-versioning.patch
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake >= 3.13.4
 BuildRequires:  fdupes
@@ -613,6 +615,7 @@ pushd clang-%{_version}.src
 %patch -P 4 -p1
 %patch -P 6 -p1
 %patch -P 9 -p2
+%patch -P 39 -p2
 
 # We hardcode openSUSE
 rm unittests/Driver/DistroTest.cpp

@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Nov 17 13:15:23 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 1.2.1:
+  * This point release fixes several bugs and crashes found in
+    Widelands 1.2, and offers full compatibility between these
+    two releases for multiplayer games and replays.
+  * Skip invalid map files in editor Load/Save map window
+  * Fix memory leaks in main menu Watch Last Replay
+  * Game setup: Unselect incompatible starting conditions when
+    changing win condition
+  * Add thread identifier to crash reports
+  * Check for invalid combination before calling
+    'DefaultAI::expedition_management()'
+  * Territorial Lua error fix
+  * Remove AV1 decoder dependency in mingw-64
+  * Patches to support netbsd-pkgsrc
+  * Keep vcpkg_ref in a repository variable instead of a file
+  * Fix RelWithDebInfo build type
+  * Fix out-of-bounds memory access when using '--editor'
+    without filename
+  * macos and other CI improvements
+  * Re-add gettext ubuntu package
+  * Update translations for v1.2.1
+  * Replace MD5 checksumming code with 'libmd'
+  * Fix LaunchMPG map seafaring check for naval warfare
+  * Fix anchored ship trying to swim towards buffer-underflow
+  * Fix desync in Discovery/New World starting conditions
+- Drop BuildRequires: boost, curl, libtiff, lua, SDL2_gfx,
+  because they are no longer needed.
+- Use more pkgconfig based BuildRequires
+
+-------------------------------------------------------------------
 Sun Mar 31 06:31:48 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 1.2:

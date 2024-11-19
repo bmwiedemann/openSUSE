@@ -21,7 +21,7 @@
 # You MUST checkout the app in your live system and play with it before submitting an update.
 %bcond_with     test
 Name:           spyder
-Version:        6.0.1
+Version:        6.0.2
 Release:        0
 Summary:        The Scientific Python Development Environment
 License:        MIT
@@ -35,7 +35,6 @@ BuildRequires:  python3-base >= 3.7
 BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools >= 49.6.0
 BuildRequires:  python3-wheel
-BuildRequires:  update-desktop-files
 Requires:       %{name}-lang
 Requires:       python3-PyQt5 >= 5.15
 Requires:       python3-PyQtWebEngine >= 5.15
@@ -80,8 +79,8 @@ Requires:       (python3-jedi >= 0.17.2 with python3-jedi < 0.20)
 Requires:       (python3-pylint >= 3.1 with python3-pylint < 4)
 Requires:       (python3-python-lsp-black >= 2.0.0 with python3-python-lsp-black < 3)
 Requires:       (python3-python-lsp-server-all >= 1.12.0 with python3-python-lsp-server-all < 1.13)
-Requires:       (python3-qtconsole >= 5.6 with python3-qtconsole < 5.7)
-Requires:       (python3-spyder-kernels >= 3 with python3-spyder-kernels < 3.1)
+Requires:       (python3-qtconsole >= 5.6.1 with python3-qtconsole < 5.7)
+Requires:       (python3-spyder-kernels >= 3.0.1 with python3-spyder-kernels < 3.1)
 Requires:       (python3-superqt >= 0.6.2 with python3-superqt < 1)
 Recommends:     git-core
 Recommends:     python3-Cython
@@ -181,8 +180,8 @@ BuildRequires:  (python3-jedi >= 0.17.2 with python3-jedi < 0.20)
 BuildRequires:  (python3-pylint >= 3.1 with python3-pylint < 4)
 BuildRequires:  (python3-python-lsp-black >= 2.0.0 with python3-python-lsp-black < 3)
 BuildRequires:  (python3-python-lsp-server-all >= 1.12.0 with python3-python-lsp-server-all < 1.13)
-BuildRequires:  (python3-qtconsole >= 5.6 with python3-qtconsole < 5.7)
-BuildRequires:  (python3-spyder-kernels >= 3 with python3-spyder-kernels < 3.1)
+BuildRequires:  (python3-qtconsole >= 5.6.1 with python3-qtconsole < 5.7)
+BuildRequires:  (python3-spyder-kernels >= 3.0.1 with python3-spyder-kernels < 3.1)
 BuildRequires:  (python3-superqt >= 0.6.2 with python3-superqt < 1)
 # /SECTION
 
@@ -231,6 +230,8 @@ rm spyder/utils/check-git.sh
 rm -r external-deps/*
 
 sed -i "s/installer = 'pip'/installer = 'openSUSE RPM'/" spyder/__init__.py
+# avoid mtime destroying dedup
+echo "# Unique config __init__.pyc" >> spyder/config/__init__.py
 
 %build
 %python3_pyproject_wheel
@@ -253,8 +254,6 @@ popd
 # remove source language files
 find %{buildroot}%{python3_sitelib}/spyder/locale -name '*.po' -delete
 find %{buildroot}%{python3_sitelib}/spyder/locale -name '*.pot' -delete
-
-%suse_update_desktop_file -r spyder Development Science IDE NumericalAnalysis
 %fdupes %{buildroot}%{python3_sitelib}
 
 %if %{with test}

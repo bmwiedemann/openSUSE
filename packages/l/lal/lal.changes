@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Nov 17 02:58:29 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix building without octave. The requires_eq macro must expand
+  correctly, even when its result is discarded.
+- Add compatibility with SWIG 4.3.0, add
+  * lalsuite_fix_swig_4_3_0_compat.patch
+  * lalsuite_fix_swig_4_3_0_compat_2.patch
+
+-------------------------------------------------------------------
 Sun Sep  8 20:22:02 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 7.6.0:

@@ -255,4 +255,16 @@ disable the corresponding tests.
 </comment>
     <requestid>1195709</requestid>
   </revision>
+  <revision rev="21" vrev="16">
+    <srcmd5>9e86cb62e18bbce0580a5c373b8e5b1c</srcmd5>
+    <version>14.0.6</version>
+    <time>1731956481</time>
+    <user>anag+factory</user>
+    <comment>- Apply clang-shlib-symbol-versioning.patch to add symbol versions
+  to libclang-cpp.so similar to libLLVM.so. This is required when
+  multiple versions of the library are loaded into the same
+  process. (boo#1219405, boo#1221183, boo#1233220)
+</comment>
+    <requestid>1224729</requestid>
+  </revision>
 </revisionlist>

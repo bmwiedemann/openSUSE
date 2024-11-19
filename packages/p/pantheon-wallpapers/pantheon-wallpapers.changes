@@ -1,0 +1,95 @@
+-------------------------------------------------------------------
+Mon Nov  4 18:55:47 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- rename to pantheon-wallpapers
+
+-------------------------------------------------------------------
+Fri Aug  9 04:34:14 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.0:
+  * Add “A Large Body of Water Surrounded By Mountains” by Peter Thomas and make it the new default
+  * Add “A Trail of Footprints In The Sand” by David Emrich
+  * Remove “Orange Tulip” by Leigh Kendell
+  * Remove “Bird Flying by The Mountain” by Julia Craice
+  * Build a special wallpaper for Early Access
+- update to 7.0.0:
+  * Add Photo of Valley
+  * Remove Jonas Nilsson Lee
+  * Set default to Photo of Valley
+  * Reduce contrails in Photo of Valley.jpg
+- update to 6.1.0:
+  * Make Odin Dark the default
+- update to 6.0.0:
+  * Add day and night custom Odin wallpapers
+  * Add Snow-capped Mountain, Martin Adams, Tj Holowaychuk, and Vikor Forgacs
+  * Remove Carmine de Fazio, Luca Bravo, Pablo Garcia Saldana, Rob Bye, and Ryan Schroeder
+- switch url to github, as we don't want to link to a different OS
+- remove wallpapers which we can't ship (license)
+
+-------------------------------------------------------------------
+Wed Dec 18 15:36:21 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 5.5.0:
+  * Add Release to Actions
+  * Run test script with GitHub Actions (#86)
+  * Add AppData (#85)
+  * Add symlink back to master
+  * Split deb packaging into its own branch
+  * Use Meson build system (#84)
+  * Delete CODE_OF_CONDUCT.md
+  * Redo 5.1 symlink (#81)
+
+-------------------------------------------------------------------
+Mon Nov  4 14:38:26 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 5.4:
+  * Fix white pixel in Ashim DSilva
+  * Add Nattu Adnan wallpaper
+  * Add Canazei Granite Ridges wallpaper
+  * Add Julia Craice wallpaper
+
+-------------------------------------------------------------------
+Mon Oct  8 12:50:48 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 5.3:
+  * New upstream release.
+
+-------------------------------------------------------------------
+Sat Jun 23 16:40:07 UTC 2018 - avvissu@yandex.by
+
+- Update to 5.2:
+  * New upstream release.
+
+-------------------------------------------------------------------
+Fri Jun 15 16:12:14 UTC 2018 - avvissu@yandex.by
+
+- Rename the package: branding-elementary -> branding-upstream 
+
+-------------------------------------------------------------------
+Sat Jun  9 23:54:55 UTC 2018 - avvissu@yandex.by
+
+- Update to 5.1:
+  * New upstream release
+
+-------------------------------------------------------------------
+Fri Jun  8 23:00:11 UTC 2018 - avvissu@yandex.by
+
+- Switch to git
+- Add pantheon-wallpapers-branding-elementary
+- Build with fdupes
+- Update install section
+- Add SECTION check: brp-25-symlink will break the links with spaces
+- Add COPYING file
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Sun Sep 18 14:11:19 UTC 2016 - avvissu@yandex.by
+
+- Update to 0.1.4
+- Add conflict with luna-wallpapers
+- Read value of a symbolic link to default wallpaper
+
+-------------------------------------------------------------------
+Sun Feb 28 15:36:05 UTC 2016 - mailaender@opensuse.org
+
+- initial package (version 0.1+r46) for build.opensuse.org

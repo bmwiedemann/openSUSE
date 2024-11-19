@@ -3988,4 +3988,14 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
     <comment>update to 7.1.1-40 (forwarded request 1223434 from yannboyer_dev)</comment>
     <requestid>1223614</requestid>
   </revision>
+  <revision rev="304" vrev="1">
+    <srcmd5>92f0a2dce2af49e1029e9f554b92a334</srcmd5>
+    <version>7.1.1.41</version>
+    <time>1731956200</time>
+    <user>anag+factory</user>
+    <comment>- version update to 7.1.1.41
+  * Fix compiler identification with Clang on Darwin in #7773
+  * revert map changes breaking ABI in #7768 (forwarded request 1224644 from adkorte)</comment>
+    <requestid>1224778</requestid>
+  </revision>
 </revisionlist>

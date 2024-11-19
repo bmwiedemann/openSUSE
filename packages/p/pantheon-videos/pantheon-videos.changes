@@ -1,0 +1,291 @@
+-------------------------------------------------------------------
+Mon Nov  4 18:53:32 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- rename to pantheon-videos
+
+-------------------------------------------------------------------
+Mon Sep  9 07:18:12 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.1:
+  * fixes an annoying issue causing videos to play in a second window.
+
+-------------------------------------------------------------------
+Tue Aug 13 00:47:35 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- enable leap by using datadir/icons
+
+-------------------------------------------------------------------
+Sun Aug 11 06:17:00 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.0:
+  * Respect dark style preference
+  * Support repeat one and repeat all
+  * Performance improvements
+  * Drop support for optical media
+  * Translation updates
+- update to 3.0.0:
+  * Use playbin with the gst gtk widget for playback
+  * Preparation for gtk4
+  * Improve positioning
+- update to 2.9.1:
+  * Application: store repeat state in an Action
+  * Create PlaybackManager
+  * Move playback and pipeline to PlaybackManager
+- update to 2.9.0:
+  * Control playback from the sound indicator
+  * Make playback duration more accurate
+  * Translation updates
+- update to 2.8.4:
+  * Updated for dependencies
+- update to 2.8.3:
+  * Updated translations
+- update to 2.8.1:
+  * Fix an issue with removing videos from library
+- update to 2.8.0:
+  * Two-finger swipe to go back
+  * Translation updates
+- update to 2.7.3:
+  * Fix an issue with accessing library view
+  * Fix an issue with returning to the welcome page while playing multiple videos
+  * Prevent sleep while playing a video
+  * Translation updates
+- update to 2.7.2:
+  * Start up faster with large libraries
+  * Fix cases where subtitles refused to load
+  * Handle if library folder is deleted or moved
+  * Translation updates
+- update to 2.7.1:
+  * Reliably update the replay button description and file
+  * More consistently remember the last playing video and its play position
+  * Fix missing icon in episode view
+  * Translation updates
+- switch url to github, as we don't want to link to a different OS
+
+-------------------------------------------------------------------
+Mon Nov 25 20:08:54 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.7.0:
+  * Fix merge conflicts with Weblate
+  * Update io.elementary.videos.appdata.xml.in
+  * Show title in tooltip for playlist item (#159)
+  * Cleanup: PlayerPage.vala (#156)
+  * Cleanup: Window.vala (#157)
+  * Add Release to Actions
+  * Travis: Downgrade node to 10
+  * Update POTFILES
+  * Add Gettext Updates to Actions
+  * Auto-queue videos from library (#151)
+  * Convert Playlist to ListBox (#147)
+  * Add option to clear playlist (#146)
+  * Throw error dialog in case of unsupported file (#150)
+  * Add video to playlist if played from resume button or library
+    (#148)
+  * Hide Preview popover on ALT+Tab (#144)
+  * Better Popover height allocation (#142)
+  * Switch to GLib.Settings (#145)
+  * Make playlist focusable and browsable with keyboard (#143)
+  * Fix disappearing cursor on headerbar (#141)
+  * Add Lint to CI (#133)
+  * WelcomePage: Fix extra whitespace
+  * Fix code style issues (#134)
+  * Update WelcomePage.vala
+  * Added copyright header to files #135. (#136)
+  * Delete AUTHORS
+  * Delete CODE_OF_CONDUCT.md
+  * Merge remote-tracking branch 'weblate-extra/master'
+
+-------------------------------------------------------------------
+Mon Mar  4 03:26:31 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.6.3:
+  * Merge branch 'origin/master' into Weblate
+  * meson: add missing 'gee-0.8' dependency (#113)
+  * Update .travis.yml (#111)
+  * Fix type-argument mismatch in Playlist.get_all_items()
+
+-------------------------------------------------------------------
+Wed Oct 17 18:11:37 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Drop videos-0.2.5-vala-0.42.patch
+
+-------------------------------------------------------------------
+Wed Oct 17 17:55:46 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Fix build with valac 0.42 (videos-0.2.5-vala-0.42.patch)
+
+-------------------------------------------------------------------
+Mon Oct  8 12:44:56 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.6.2:
+  * Merge branch 'origin/master' into Weblate
+  * Adapt to type change of Gdk.Key constants to fix build with 
+    valac 0.42
+
+-------------------------------------------------------------------
+Fri Aug 17 14:48:06 UTC 2018 - avvissu@yandex.by
+
+- Update to 2.6.1:
+  * Merge branch 'origin/master' into Weblate
+  * i18n: do not install extra
+  * Move Audience.vala to Application.vala (#91)
+  * Use Granite.Application
+  * i18n: use glib preset and add all languages to extra
+
+-------------------------------------------------------------------
+Sat Jun 23 16:38:24 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.2.6:
+  * Merge remote-tracking branch 'origin/master'
+  * Fix detecting bottom bar hover state (#87)
+  * Update deprecated methods (#78)
+  * Improve popover size for different video ratios (#77)
+  * Cleanup code for seeking video with arrow keys (#79)
+  * Add editorconfig file
+  * Audience.vala: Remove extra constants (#72)
+  * Fix warnings about ioerror by using GLib.Error (#75)
+  * Remove redundant metadata tests (#73)
+  * Meson build (#66)
+  * CI with Houston (#68)
+  * Add screenshot and OARS (#71)
+  * LibraryItem: reduce variable scope (#70)
+  * Settings popover bugfixes (#46)
+  * Fix search entry valign (#67)
+  * Navigation button bug (#54)
+  * Fix 'Back' button label not show at first (#64)
+  * Install appdata.xml to metainfo (#62)
+  * Finish RDNN migration (#59)
+  * Use Granite SeekBar (#52)
+  * Misc deprecation fixes (#55)
+
+-------------------------------------------------------------------
+Fri Jun  8 22:02:23 UTC 2018 - avvissu@yandex.by
+
+- Rename to elementary-videos
+- Switch to git from bzr
+- Switch to meson
+- Update strings to search icon files
+- Remove obsolete macros
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Fri Jan 12 15:21:37 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.2.5:
+  * Rename audience.pot to io.elementary.videos.pot
+  * Remove unused make dist (#50)
+  * Remove deprecated app_icon field (#49)
+  * GLib.Application.set_default is useless when there is only 
+    one instance (#47)
+  * Don't allow space key to process further in player page. (#38)
+  * Do not terminate the program when some method fails (#37)
+  * remove about dialog (#34)
+  * Update appdata URLs and display name (#33)
+- Drop audience-0.2.4-glib.patch (fixed)
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Sat Nov  4 23:30:58 UTC 2017 - avvissu@yandex.by
+
+- Fix build error (audience-0.2.4-glib.patch)
+- Drop audience-0.2.2-dbus.patch (fixed)
+
+-------------------------------------------------------------------
+Mon Aug 14 18:06:20 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.2.4:
+  * BottomBar.vala: Code cleanups (#41)
+  * RDNN most of the things (#40)
+  * Disallow setting playback before start (#39)
+  * Don't allow space key to process further in player page. (#38)
+
+-------------------------------------------------------------------
+Wed Aug  2 19:31:31 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.2.3:	
+  * Do not terminate the program when some method fails (#37)
+  * remove about dialog (#34)
+  * Update appdata URLs and display name (#33)
+  * Create CODE_OF_CONDUCT.md (#29)
+- Change the sourceurl to git
+
+-------------------------------------------------------------------
+Tue Jul 11 12:36:23 UTC 2017 - bwiedemann@suse.com
+
+- Sort file lists to always install the same .svg size
+  to fix build-compare (boo#1041090)
+
+-------------------------------------------------------------------
+Fri Jun 16 21:21:07 UTC 2017 - avvissu@yandex.by
+
+- Fix mmkeys D-Bus (add audience-0.2.2-dbus.patch) 
+
+-------------------------------------------------------------------
+Fri Apr 14 14:11:44 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.2.2:
+  * Make use of x-appcenter-color-primary
+  * fixed preview popover not always pointing to correct location
+  * Launchpad automatic translations update.
+  * Fix build with vala 0.35.6
+  * Fix printf being used before translating the string
+- Drop audience-0.2.1.2-vala-0.36.patch
+
+-------------------------------------------------------------------
+Fri Mar 31 23:56:28 UTC 2017 - avvissu@yandex.by
+
+- Fix build with vala >= 0.36 (audience-0.2.1.2-vala-0.36.patch)
+
+-------------------------------------------------------------------
+Fri Jan 20 20:20:31 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.2.1.2:
+  * Launchpad automatic translations update.
+  * Use translated strings for the navigation label (lp#1653541)
+  * Updated translation template
+  * Fixed wrong printf arguments
+  * Re-order widget files
+
+-------------------------------------------------------------------
+Tue Nov  1 04:21:19 UTC 2016 - avvissu@yandex.by
+
+- Update to 0.2.1.1:
+  * Adjust for changed clutter-1.0 bindings with valac 0.34 and 
+    later
+  * Launchpad automatic translations update.
+  * BottomBar.vala:
+  * Update license header
+  * Change get/set_repeat methods to a get/set repeat property
+  * PlayerPage.vala:
+  * Update to use property instead of method
+  * Widgets/WelcomePage.vala: Remove unused variable disk_button
+  * update translation template
+  * Add an episode view to the Library
+  * Improved auto clear function
+  * Fixed regression with VideoPlayer not requesting it's size
+  * update translation template
+  * Add right click menu to set artwork and move library items to 
+    trash
+  * update translation template
+  * appstream: add releases info
+  * update translation template
+  * Add library search support and fix keyboard navigation
+  * Return to library when playback ends
+  * Fix a crash when playback ends
+  * update translation template
+  * Create a library view
+  
+-------------------------------------------------------------------
+Sat Sep 10 16:06:06 UTC 2016 - mailaender@opensuse.org
+
+- Update to version 0.2.0.1
+
+-------------------------------------------------------------------
+Mon Aug 22 05:59:47 UTC 2016 - avvissu@yandex.by
+
+- Fix: icon file not installed
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Tue Sep  1 16:31:57 UTC 2015 - and.november@opensuse.org
+
+- initial package (version 0.1.0.2) for build.opensuse.org

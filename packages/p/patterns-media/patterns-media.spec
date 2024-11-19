@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-media
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -102,6 +102,8 @@ Recommends:     iw
 # filesystem(jfs)
 Recommends:     jfsutils
 Recommends:     libatm1
+# TPM+FDE
+Recommends:     libtss2-tcti-device0
 Recommends:     lomoco
 Recommends:     lsb-release
 #lvm2 support (#301382)
@@ -131,6 +133,8 @@ Recommends:     quota
 Recommends:     rsync
 # LiveCD accessible? (bnc#391327)
 Recommends:     sbl
+# Required for systemd-boot/grub2-bls
+Recommends:     sdbootutil
 Recommends:     smartmontools
 # DELL laptop support
 Recommends:     smbios-utils-python
@@ -139,7 +143,12 @@ Recommends:     smpppd
 Recommends:     sssd
 Recommends:     susehelp_en
 Recommends:     suspend
+# Required by YaST for FDE+TPM
+Recommends:     systemd-boot
 Recommends:     systemd-logger
+# Required for FDE+TPM
+Recommends:     tpm2.0-tools
+Recommends:     tpm2-0-tss
 Recommends:     unzip
 # filesystem(minix)
 Recommends:     util-linux

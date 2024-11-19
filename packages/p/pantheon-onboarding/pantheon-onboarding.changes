@@ -1,0 +1,82 @@
+-------------------------------------------------------------------
+Fri Nov  1 21:08:33 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- rename to pantheon-onboarding
+- remove %suse_update_desktop_file, as it's deprecated
+- mv xdg/autostart to /usr/etc
+
+-------------------------------------------------------------------
+Tue Aug 13 00:47:08 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- enable leap by using datadir/icons
+
+-------------------------------------------------------------------
+Fri Aug  9 23:45:43 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.0:
+  * Meson: remove deprecations
+  * Application: use Granite.init
+  * Improve screenreader support
+  * UpdatesView: add OS updates
+  * Housekeeping: use elementary settings daemon
+  * OnlineAccountsView: use icon shipped with System Settings
+  * Replace Carousel with NavigationView
+- update to 7.2.0:
+  * WelcomeView: Update description
+  * Add screenshot files cleanup option to Housekeeping
+  * StyleView: use actual background when available
+  * Meson: use gnome.post_install to compile schemas
+- update to 7.1.0:
+  * Use Gtk.LinkButton for AppCenter button
+  * MainWindow: warn about daily builds
+  * AppCenterView: make sideload more obvious and rework copy
+  * EarlyAccessView: use applications-development for icon
+  * Adjust layouts, spacing, and typography
+  * WelcomeView: adjust button spacing, shorten title
+  * WelcomeView: combine with what's new view
+  * MainWindow: Only show What's New if there's something other than Early Access
+  * Add GuestView
+  * Redesign app icon
+- update to 7.0.1:
+  * Updated translations
+- update to 7.0.0:
+  * Add Automatic Updates view
+  * Add Sunset to Sunrise to Style View
+  * Updated translations
+  * Updated to gtk4
+- update to 6.1.0:
+  * Redesign Housekeeping and add Downloads option
+  * Updated translations
+- update to 6.0.0:
+  * Add style view
+  * Add Online Accounts view
+  * Remove location services view
+  * Mention Sideload and Flathub
+  * Updated translations
+- update to 1.2.1:
+  * Fix blurry icon in AppCenter
+  * Updated translations
+- update to 1.2.0:
+  * New app icon
+  * Updated translations
+- update to 1.1.0:
+  * Navigate with (multi-)touch gestures
+  * Use new blog URL
+  * Fix errors when pressing the Skip button
+  * Updated translations
+- switch url to actually github, obs is not the upstream url
+
+-------------------------------------------------------------------
+Thu Aug 29 00:05:05 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.0.1:
+  * Clarify Location Services copy (#57)
+  * No need for a null AppCenter view (#55)
+  * Check for GeoClue key before creating Location Services view
+    (#54)
+
+-------------------------------------------------------------------
+Wed May  1 15:01:03 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Initial package
+

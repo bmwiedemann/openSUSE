@@ -203,4 +203,16 @@ without RUNPATH on libc++.so.
 </comment>
     <requestid>1195708</requestid>
   </revision>
+  <revision rev="16" vrev="10">
+    <srcmd5>8b5996f769dd3ae0948b97f23cc5f47a</srcmd5>
+    <version>15.0.7</version>
+    <time>1731956479</time>
+    <user>anag+factory</user>
+    <comment>- Apply clang-shlib-symbol-versioning.patch to add symbol versions
+  to libclang-cpp.so similar to libLLVM.so. This is required when
+  multiple versions of the library are loaded into the same
+  process. (boo#1219405, boo#1221183, boo#1233220)
+</comment>
+    <requestid>1224728</requestid>
+  </revision>
 </revisionlist>

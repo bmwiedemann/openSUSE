@@ -1,0 +1,5 @@
+<package name="gala" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:Pantheon" package="gala"/>
+</package>

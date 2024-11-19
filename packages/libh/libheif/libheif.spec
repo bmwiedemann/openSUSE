@@ -29,12 +29,18 @@
 %bcond_with x265
 %bcond_with kvazaar
 %bcond_with openh264
+%bcond_with openjpeg
 %bcond_with openjph
 %bcond_with svtenc
 %if 0%{?suse_version} > 1500
 %ifarch aarch64 riscv64 x86_64
 %bcond_without svtenc
 %endif
+%bcond_without openjpeg
+%endif
+
+%if 0%{?suse_version} && 0%{?suse_version} < 1600
+%global force_gcc_version 13
 %endif
 
 Name:           libheif
@@ -49,14 +55,16 @@ Source99:       baselibs.conf
 BuildRequires:  chrpath
 BuildRequires:  cmake
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++ >= 8
+BuildRequires:  gcc%{?force_gcc_version}-c++ >= 9
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(aom)
 BuildRequires:  pkgconfig(dav1d)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libjpeg)
+%if %{with openjpeg}
 BuildRequires:  pkgconfig(libopenjp2)
+%endif
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libwebp)
 %if %{with kvazaar}
@@ -153,6 +161,7 @@ This plugin provides the kvazaar encoder for HEIC to libheif. Packaged separatel
 so that the libraries it requires are not pulled in by default by libheif.
 %endif
 
+%if %{with openjpeg}
 %package openjpeg
 Summary:        Plugin OpenJPEG J2K encoder and decoder for JPEG-2000 in HEIF
 Group:          System/Libraries
@@ -162,6 +171,7 @@ Requires:       libheif1 = %{version}-%{release}
 %description openjpeg
 This plugin provides the OpenJPEG J2K encoder and decoder for JPEG to libheif. Packaged separately
 so that the libraries it requires are not pulled in by default by libheif.
+%endif
 
 %if %{with openh264}
 %package openh264
@@ -269,6 +279,9 @@ Allows to show thumbnail previews of HEIF and AVIF images using %{name}.
 # https://github.com/strukturag/libheif/issues/1281
 sed -i '/add_libheif_test(encode)/d' tests/CMakeLists.txt
 %cmake \
+%if 0%{?force_gcc_version}
+       -DCMAKE_CXX_COMPILER="/usr/bin/g++-%{force_gcc_version}" \
+%endif
 %if %{with test}
         --preset=testing \
 %else
@@ -403,9 +416,11 @@ rm -f %{buildroot}%{_datadir}/thumbnailers/heif.thumbnailer
 %{_libexecdir}/libheif/libheif-kvazaar.so
 %endif
 
+%if %{with openjpeg}
 %files openjpeg
 %{_libexecdir}/libheif/libheif-j2kdec.so
 %{_libexecdir}/libheif/libheif-j2kenc.so
+%endif
 
 %if %{with openh264}
 %files openh264

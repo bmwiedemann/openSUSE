@@ -17,9 +17,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-redfish
-Version:        3.2.5
+Version:        3.2.6
 Release:        0
 Summary:        Redfish Python Library
 License:        BSD-3-Clause

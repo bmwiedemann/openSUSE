@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 15 16:40:01 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.11.2
+  * Swap order of zip/tarball checks to work around archives which fool
+    'zipfile.is_zipfile'.  LP #2084140.
+
+-------------------------------------------------------------------
 Thu Jun 20 13:21:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.11.1:

@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sun Nov 17 14:23:22 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 4.3.3:
+  * fix: let cargo just put where the vendor directory is by default which is the curdir
+
+-------------------------------------------------------------------
+Sun Nov 17 13:42:00 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 4.3.2:
+  * fix: updating specific crates was not properly implemented. now resolved.
+
+-------------------------------------------------------------------
+Sun Nov 17 07:51:53 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 4.3.1:
+  * fix: correctly use setup_workdir and custom_root
+  * fix: resolve location for the vendor directory
+  * remove: it's not our bug. using `--target` for multiple triples now removed
+  * fix: do not canonicalize in first_manifest
+  * fix: remove the wrongly used else-clause
+  * improvements: ensure that the additional manifest paths ends with `Cargo.toml`
+  * docs: update docs to include the new feature with feature additions
+  * improvements: parent path of Cargo.toml files are now set as current directory when invoking commands
+
+-------------------------------------------------------------------
+Sat Nov 16 02:29:14 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 4.2.2:
+  * fix: add more info
+  * fix: add warning
+  * fix: ignore error when crate dependency does not exist for manifest path
+  * update description
+  * feat: update can now specify recursive or precise
+  * fix: can now determine a member that uses a glob pattern
+  * feat: add all target triples as no opt for cargo-fetch
+  * docs(fix): if set to true
+  * fix: correct error message for lockfiles
+  * docs: replace underscore with dash
+
+-------------------------------------------------------------------
 Fri Nov  8 05:30:59 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 4.1.1:

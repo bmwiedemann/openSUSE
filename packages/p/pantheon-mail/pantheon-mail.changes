@@ -1,0 +1,221 @@
+-------------------------------------------------------------------
+Fri Nov  1 21:04:13 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- remove %suse_update_desktop_file, as it's deprecated
+- fix CFLAGS
+
+-------------------------------------------------------------------
+Wed Aug 14 00:18:08 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.0:
+  * Use the actual recipients of a message as sender when replying or forwarding
+  * Updated translations
+- update to 7.2.0:
+  * WebView: Update height after images were loaded
+  * MainWindow: Updates for gtk4
+  * Always start InboxMonitor
+  * Unify trash/archive
+  * Handle network availability
+  * Fix an issue that causes mail to never connect to the network
+  * Application: hard code Gtk theme settings
+  * Improve performance when moving messages
+  * Application: force use of Portals
+  * Move menu to FoldersListView
+  * Use flatpak portal for background and autostart
+  * Add support for inline images in the composer
+  * Sort special folders to top
+  * Move the composer editor toolbar into its own class
+  * Include attachments when forwarding
+  * Improve move menu and make it searchable
+  * CellRendererBadge: Remove reference of non-existent image
+  * Allow renaming of folders
+  * MessageList: use mail-move icon
+  * Gresource mail-move icon
+  * Show an InfoBar if attachments include an ICS file
+  * Fix grouped archive folder
+  * Add support for signatures
+  * Update metainfo
+  * Swipe to archive and trash
+- update to 7.1.0:
+  * Make SourceList internal
+  * AttachmentBar: Update style classes, include dialog
+  * Dialogs use present and response connect
+  * MessageListBox: set action enabled directly
+  * Prep for GTK4 MessageListItem cleanup
+  * Prep GTK4: Include AttachmentBar in MessageListItem
+  * MainWindow: don't allow pane to shrink past contents
+  * MessageList: code style and cleanup
+  * Handle account adding live
+  * Derive MessageListBox from Gtk.Box in preparation for GTK4
+  * ConversationListItem: Small updates for gtk4
+  * AttachmentButton: Updates for gtk4
+  * Composer: Remove unused can_change_sender
+  * WelcomeView: Updates for gtk4
+  * MessageListItem: Make Gravatar work again
+- update to 7.0.1:
+  * MainWindow: Spelling: ellipsis
+  * build: support webkit2gtk-4.1
+  * fix app crashes if you try to mark an email as read
+- update to 7.0.0:
+  * Fixed an error which caused mail accounts to be loaded multiple times
+  * Fixed a bug which caused Mail to crash occasionally
+  * Display recipient in Sent folder instead of sender
+  * Updated app icon
+  * New design
+  * Updated translations
+- switch url to github, as we don't want to link to a different OS
+
+-------------------------------------------------------------------
+Sun Feb 20 15:39:34 UTC 2022 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 6.4.0:
+  * Use message subject for composer window title
+  * Added support for Unified Inbox for Microsoft 365 accounts
+  * Fixed an error which caused the inbox monitoring in the
+    background to crash
+  * Removed duplicate sender addresses when composing a message
+  * Fix a freeze when archiving the last message in a folder
+  * Renamed Office 365 to Microsoft 365 to follow suite on
+    Microsoft's rebranding
+  * Updated translations
+
+-------------------------------------------------------------------
+Fri Jan 21 15:32:41 UTC 2022 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 6.3.1:
+  * Fix a potential crash while loading messages
+  * Updated translations
+
+-------------------------------------------------------------------
+Fri Nov  5 06:39:08 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 6.3.0:
+- New features:
+  * Secondary-click menu on the conversations list
+- Fixes:
+  * Ensure conversations are re-sorted by date when new messages
+    appear
+  * Fixed sender combobox after opening a mailto link
+  * Mark sent messages as read
+  * Fix a hang when deleting the last message in a mailbox
+  * Fix an issue where some mail fails to be deleted
+- Improvements:
+  * Use accent color for unread message titles
+  * Autoselect the next message after archiving
+  * Use local time in message headers
+  * Updated translations
+
+-------------------------------------------------------------------
+Thu Oct  7 19:38:55 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 6.2.0:
+  * MainWindow: Add an actionbar to conversationlist (#703)
+  * Add aarch64 architecture support to flatpak builds (#706)
+  * Temporarily disable the filter function while batch removals
+    are made (#701)
+  * Manual Refresh (#680)
+  * Update screenshot
+  * Automatically select next message after delete. (#660)
+  * Avoid storing to "Sent" twice for outlook.com (#702)
+  * Filter conversations for "Unread" and/or "Starred" (#678)
+
+-------------------------------------------------------------------
+Mon Sep  6 04:31:27 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 6.1.1+git20210904.49bc582a:	
+  * Update io.elementary.mail.appdata.xml.in
+  * Cache timestamp to avoid compare_func from crashing (#664)
+  * Set the correct from address on reply (#634)
+  * AppData: Use Banana 300 for brand banner (#648)
+  * Fix #619: Don't save draft if no changes were made (#630)
+  * Moved undo toast to message view (#629)
+
+-------------------------------------------------------------------
+Thu Nov  8 02:29:19 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Add regex for filtering provided libraries
+
+-------------------------------------------------------------------
+Wed Oct 17 18:54:01 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.0.8:
+  * Fix DBus error warnings (#247)
+  * Fix new Vala warnings with DBus
+  * Use newest timestamp in thread for thread timestamp (#237)
+  * Implement get_oauth2_access_token_sync (#228)
+  * update some deprecations (#221)
+  * Move messages to trash (#204)
+  * Stop WebView from leaking and deadlocking the app (#203)
+  * MessageListItem: Correct encoding, display plain text emails 
+    (#202)
+  * Minor display fixes (#201)
+- Rename to elementary-mail
+- Swith to meson
+- Rebase the list of dependencies
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Sun Jun 10 00:10:37 UTC 2018 - avvissu@yandex.by
+
+- Update to 1.0.7:
+  * Merge remote-tracking branch 'origin/master'
+
+-------------------------------------------------------------------
+Sat Jun  9 00:27:30 UTC 2018 - avvissu@yandex.by
+
+- Update strings to search icon files
+- Remove obsolete macros
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Tue Sep 12 16:57:03 UTC 2017 - avvissu@yandex.by
+
+- Update to 1.0.6:
+  * Prevent ScrolledWindow scrolling to the top when webview is 
+    focused (#88)
+- Drop pantheon-mail-1.0.5-vala-0.36.patch (fixed in upstream)
+- Change the sourceurl to git
+- Update of the list of packages
+
+-------------------------------------------------------------------
+Mon Jun  5 20:44:49 UTC 2017 - avvissu@yandex.by
+
+- Fix build with vala >= 0.36 (pantheon-mail-1.0.5-vala-0.36.patch)
+
+-------------------------------------------------------------------
+Sun Feb 12 13:20:06 UTC 2017 - avvissu@yandex.by
+
+- Update to 1.0.5:
+  * Launchpad automatic translations update.
+  * Fix Ctrl C to copy
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Fri Nov 25 23:18:39 UTC 2016 - avvissu@yandex.by
+
+- Update to 1.0.4:
+  * Fix type-mismatches and invalid private constructor accesses
+  * Launchpad automatic translations update.
+  * Fix warnings at startup with unset variables
+
+-------------------------------------------------------------------
+Fri Oct 14 03:48:21 UTC 2016 - avvissu@yandex.by
+
+- Update to 1.0.3:
+  * Don't set webview as transparent
+  * appstream: add releases info
+  * Launchpad automatic translations update.
+
+-------------------------------------------------------------------
+Sun Sep 18 21:19:06 UTC 2016 - avvissu@yandex.by
+
+- Update to 1.0.2
+- Fix: icon file not installed (drop internet-mail.png)
+- Use appdata instead of metainfo
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Sat Feb 27 13:22:49 UTC 2016 - mailaender@opensuse.org
+
+- initial packaging (version 0.10.0+r1988) for build.opensuse.org
+- ship a redundant icon due to bnc#561846

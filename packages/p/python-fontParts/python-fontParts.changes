@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Nov 10 21:49:50 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.12.3:
+  * Update setup.py
+  * Update fonttools to 4.54.1
+  * Update base.reference doc
+  * Fix copyData based on #758
+- update to 0.12.2:
+  * Replace remaining usage of assertEquals with assertEqual. See
+  * Fixes/tweaks to documentation
+  * Get guidelines from the mathInfo object directly. See #738
+- drop fontParts-pr720-py312tests.patch: upstream
+
+-------------------------------------------------------------------
 Sun Mar  3 18:07:37 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Build PEP517 wheel

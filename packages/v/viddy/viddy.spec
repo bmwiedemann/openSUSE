@@ -1,7 +1,8 @@
 #
 # spec file for package viddy
 #
-# Copyright (c) 2023, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2023-2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,20 +16,18 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%global import_path github.com/sachaos/viddy/
 
 Name:           viddy
-Version:        0.4.0
+Version:        1.2.1
 Release:        0
 Summary:        A modern watch command
 License:        MIT
 Group:          System/Monitoring
 URL:            https://github.com/sachaos/viddy
 Source:         %{name}-%{version}.tar.gz
-Source1:        vendor.tar.gz
-BuildRequires:  go
-BuildRequires:  golang-packaging
-%{go_provides}
+Source1:        vendor.tar.zst
+BuildRequires:  cargo-packaging
+ExclusiveArch:  %{rust_tier1_arches}
 
 %description
 Modern watch command.
@@ -53,14 +52,13 @@ Features:
 %autosetup -a 1
 
 %build
-%{goprep} %import_path
-%{gobuild} -mod=vendor .
+%{cargo_build}
 
 %install
-%{goinstall}
+%{cargo_install}
 
 %check
-%{gotest} %import_path
+%{cargo_test}
 
 %files
 %license LICENSE

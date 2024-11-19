@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Nov 17 17:51:14 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Fix %requires_eq usage for "pkgconfig(octave)".
+
+-------------------------------------------------------------------
+Thu Nov 14 20:52:38 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.9.0:
+  * New NLOPT_LUKSAN cmake option to build without Luksan LGPL
+    code (gh#stevengj/nlopt#568).
+  * Dropped unused LD_LBFGS_NOCEDAL enum value.
+  * Python 3.13 support (gh#stevengj/nlopt#565).
+  * Fixed COBYLA not returning the optimum (gh#stevengj/nlopt#57)
+  * Fixed SLSQP returning infeasible optimum
+    (gh#stevengj/nlopt#368)
+  * Fixed STOGO not registering new optimum
+    (gh#stevengj/nlopt#504)
+  * Various minor bugfixes (gh#stevengj/nlopt#570,
+    gh#stevengj/nlopt#563, gh#stevengj/nlopt#379,
+    gh#stevengj/nlopt#511)
+- Update License to LGPL-2.1-or-later in keeping with upstream.
+
+-------------------------------------------------------------------
 Sat Aug 10 03:42:50 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.8.0:

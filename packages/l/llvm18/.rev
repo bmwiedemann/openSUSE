@@ -194,4 +194,16 @@
 </comment>
     <requestid>1223459</requestid>
   </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>cf066a835713ccdcebf1efeb5aa67422</srcmd5>
+    <version>18.1.8</version>
+    <time>1731956235</time>
+    <user>anag+factory</user>
+    <comment>- Apply clang-shlib-symbol-versioning.patch to add symbol versions
+  to libclang-cpp.so similar to libLLVM.so. This is required when
+  multiple versions of the library are loaded into the same
+  process. (boo#1219405, boo#1221183, boo#1233220)
+</comment>
+    <requestid>1224681</requestid>
+  </revision>
 </revisionlist>

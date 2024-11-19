@@ -1,0 +1,201 @@
+-------------------------------------------------------------------
+Fri Nov  1 21:05:33 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- remove %suse_update_desktop_file
+- fix CFLAGS
+
+-------------------------------------------------------------------
+Tue Aug 13 00:46:59 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- enable leap by using datadir/icons
+
+-------------------------------------------------------------------
+Fri Aug  9 23:29:12 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.0:
+  * Toolbar shows a shadow when the view is scrolled
+  * Open audio files from within Music
+  * Updated translations
+- update to 7.1.0:
+  * PlaybackManager: use GLib.Once
+  * Handle dropped folder
+  * metainfo: Add translation field
+  * Allow to open directories directly
+- update to 7.0.1:
+  * Use file basename instead of uri for the default audio object title
+  * Skip invalid files instead of stopping playback
+  * Enable the NEXT button if repeat mode is set to ALL or ONE
+  * Application: hard code gtk styles
+  * Metainfo: Use branding tag and screenshot caption
+- update to 7.0.0:
+  * complete rewrite
+- update to 5.1.1:
+  * Drop support for Last.FM
+- update to 5.1.0:
+  * Fix an issue with saving smart playlists
+  * Drop support for CD-ROM
+  * Dark style support
+  * Minor visual improvements
+  * Updated translations
+- update to 5.0.5:
+  * Fix removing items from the queue
+  * Fix equalizer sliders not properly disabled sometimes
+  * Performance improvements
+- switch url to github, as we don't want to link to a different OS
+
+-------------------------------------------------------------------
+Thu May  2 16:18:08 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 5.0.4:
+  * Merge branch 'origin/master' into Weblate.
+  * Move window show location to consider headerbar size in
+    set_default_size (#501)
+  * Constructors of abstract classes should not be public
+  * PlaylistsUtils: Use FileChooserNative (#479)
+  * LibraryWindow: Use GraniteMessageDialog for showing alerts
+    (#487)
+  * Remove gsignond vapi (#488)
+
+-------------------------------------------------------------------
+Mon Mar  4 03:20:54 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 5.0.3:
+  * MediaKeyListener: Update to new DBus location (#486)
+  * Fix music folder choosing (#485)
+  * SetMusicFolderConfirmation: Rewrite as Granite.MessageDialog 
+    (#481)
+  * FileNotFoundDialog: Use FileChooserNative (#478)
+  * SetMusicFolderConfirmation: use FileChooserNative (#480)
+  * MusicViewWrapper: Use FileChooserNative (#482)
+  * AlbumListGrid: Use FileChooserNative (#483)
+  * LibraryWindow: Use FileChooserNative (#484)
+  * Fix: Blurred album images at high resolutions (#476)
+  * Remove old libaccounts-glib VAPI (#411)
+  * Merge branch 'origin/master' into Weblate
+  * meson: Use a stable glib-2.0 dep version since it is used for 
+    --target-glib
+  * fileutils: out-parameters in async methods must be placed at 
+    the end
+  * Persists selected music library folder when changed through 
+    the GUI (#469)
+  * Fix loading last playing playlist before search saved state 
+    (#463)
+  * .desktop: associate with audio/x-s3m mimetype
+  * Fix queue problems (#460)
+  * Update MEDIA_CONTENT_TYPES list. (#461)
+  * AlbumView: double-click to play album (#459)
+
+-------------------------------------------------------------------
+Thu Nov  8 02:29:20 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Add regex for filtering provided libraries
+
+-------------------------------------------------------------------
+Wed Oct 17 18:47:01 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 5.0:
+  * AppData: ID without .desktop (#435)
+  * Use libsignon-glib (replacing libgsignon-glib) (#432)
+  * Merge branch 'origin/master' into Weblate
+  * MediaEditor: Entries activate default and cleanups (#427)
+  * Fix error where a LocalMedia constructor fail generate null 
+    object and a lot of critical warnings (#430)
+  * Fix warning: Can't set a parent on widget which has a parent 
+    (#431)
+  * Update screenshot (#426)
+  * PlaybackManager: revert queue mechanism (#418)
+  * LibraryWindow: remove single-use build_main_widgets (#422)
+  * FileNotFoundDialog: Rewrite as a Granite.MessageDialog (#423)
+  * Move some keys from settings to saved state (#339)
+  * README.md: specify correct plugin identifier (#419)
+
+-------------------------------------------------------------------
+Fri Jun  8 23:42:41 UTC 2018 - avvissu@yandex.by
+
+- Rename to elementary-music
+- Switch to github
+- Switch to meson
+- Build with dependences: AppStream, libxml2-tools
+- Add a new package with plugins
+- Use metainfo instead of appdata
+- Add dirlist HiDPI icons
+- Fix: Icon will not found when changing the lang settings
+- Remove obsolete macros
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Sat Mar 24 02:38:11 UTC 2018 - avvissu@yandex.by
+
+- Read the embedded cover art (noise-0.4.2-gst.patch) 
+
+-------------------------------------------------------------------
+Tue Nov 28 16:08:50 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.4.2:
+  * Remove libpeas gtk 1.0.vapi (#93)
+  * Remove unused make dist (#87)
+  * Remove unused local variable rating_search (#85)
+  * Update fsf address (#84)
+  * Change the queue mechanism to make it less confusing (#65)
+  * clean up preferences window (#80)
+  * Rewrite prefs dialog in GObject-style (#76)
+  * EQ: Add margin between widgets and expand combo (#75)
+  * Detect library changes at startup (#69)
+  * URI Filter : Search and SmartPlaylist (#66)
+  * Rewrite SyncWarningDialog as a subclass of Gtk.Dialog (#64)
+  * Clean up some whitespace
+  * LibraryWindow.vala: Code Style fixes (#56)
+  * valign searchbar and fix flat eq toggle (#55)
+
+-------------------------------------------------------------------
+Sat Jul 29 12:22:37 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.4.1:
+  * remove about dialog (#46)
+  * Update AppData URLs (#45)
+  * Update .gitignore (#43)
+  * Create CODE_OF_CONDUCT.md (#40)
+
+-------------------------------------------------------------------
+Sat Apr 22 11:28:29 UTC 2017 - avvissu@yandex.by
+
+- Update to 0.4.0.3:
+  * Create README.md and remove old files (#32)
+  * Add the release information to the AppData.xml to provide 
+    appcenter support
+  * Launchpad automatic translations update.
+  * Fix build with vala 0.35.6
+  * Fix lp#1623663
+  * Update Header to correct LGPL-2+
+  * For further information or changes, please contact me.
+  * Use the correct printf arguments 
+- Drop noise-0.4.0.2-vala-0.36.patch (fixed)
+
+-------------------------------------------------------------------
+Sat Apr  1 11:20:11 UTC 2017 - sor.alexei@meowr.ru
+
+- Add noise-0.4.0.2-vala-0.36.patch: Fix build with vala >= 0.36.
+
+-------------------------------------------------------------------
+Fri Dec  2 01:50:02 UTC 2016 - avvissu@yandex.by
+
+- Update to 0.4.0.2:
+  * Fix type mismatches of arguments/variables
+  * Fix "static const ..." valac warnings
+  * Use new class "rounded" to set rounded bottom window corners
+  * Launchpad automatic translations update.
+
+-------------------------------------------------------------------
+Thu Nov 24 22:46:09 UTC 2016 - jengelh@inai.de
+
+- Update descriptions
+
+-------------------------------------------------------------------
+Sat Sep 10 18:41:42 UTC 2016 - mailaender@opensuse.org
+
+- update to version 0.4
+
+-------------------------------------------------------------------
+Sun Sep  6 16:29:48 UTC 2015 - and.november@opensuse.org
+
+- initial package for openSUSE

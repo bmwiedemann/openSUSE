@@ -17,12 +17,12 @@
 
 
 Name:           ldas-tools-al-swig
-Version:        2.6.7
+Version:        2.6.10
 Release:        0
 Summary:        LDAS (LIGO Data Analysis System) tools abstraction toolkit language bindings
 License:        GPL-2.0-or-later
 URL:            https://wiki.ligo.org/Computing/LDASTools
-Source:         http://software.ligo.org/lscsoft/source/ldas-tools-al-swig-2.6.7.tar.gz
+Source:         http://software.ligo.org/lscsoft/source/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module distutils-extra}
 BuildRequires:  cmake
@@ -65,8 +65,8 @@ popd
 %{_includedir}/ldastoolsal/*.i
 
 %files %{python_files}
-%doc ChangeLog README
+%doc ChangeLog.md README
 %license COPYING
-%{python_sitearch}/*
+%{python_sitearch}/LDAStools/
 
 %changelog

@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Mon Nov  4 18:48:24 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- rename to pantheon-sideload
+- fix CFLAGS
+
+-------------------------------------------------------------------
+Tue Aug 27 13:34:34 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 6.2.2:
+  * Updated translations
+- update to 6.2.1:
+  * Make Open button default widget
+  * Fix glitches
+- update to 6.2.0:
+  * MainView: update copy
+- update to 6.1.0:
+  * Use flatpak branding
+  * Bade notifications with the sideloaded apps icon
+  * Updated translations
+- switch url to github, as we don't want to link to a different OS
+
+-------------------------------------------------------------------
+Fri Sep 24 15:57:34 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 6.0.2:
+  * Fix blurry app icon in multitasking view
+  * Updated translations
+
+-------------------------------------------------------------------
+Wed Sep 22 21:53:35 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Add Supplements dependencies
+
+-------------------------------------------------------------------
+Fri Sep 10 02:10:56 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Initial package

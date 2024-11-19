@@ -1,0 +1,55 @@
+-------------------------------------------------------------------
+Tue Nov  5 02:24:37 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- fix CFLAGS (accidently removed all optflags)
+
+-------------------------------------------------------------------
+Sat Aug 10 01:07:27 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 7.2.0:
+  * Updated translations
+- update to 7.1.1:
+  * Updated translations
+- update to 7.1.0:
+  * Add build support for older Vala versions
+  * Background portal implementation
+  * NotificationRequest: use typographical quotes
+  * Background: use commandline to try to get fallback app_id
+  * Background: Make Asynchronous
+  * Background: Make send_notification async and let it throw errors
+- update to 7.0.0:
+  * AppChooser: Make primary text translatable
+  * Update Meson Files
+  * Updated to gtk4
+  * Metainfo improvements
+- update to 1.2.0:
+  * Support dialog parenting on wayland
+  * Updated translations
+- update sourceurl to newer upstream url, switch url to github
+
+-------------------------------------------------------------------
+Sun Feb 20 15:46:45 UTC 2022 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.1.0:
+  * Add a destructive action option for access portals
+  * Fix a crash when opening apps in the AppChooser portal
+  * Fix window focus and position for Access portals with no
+    parent window
+  * Set AppChooser portal as a modal dialog for proper animations
+
+-------------------------------------------------------------------
+Fri Nov  5 04:06:18 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.0.1:
+  * Update appdata.xml for #34 (#35)
+  * Watch for xdg-desktop-portal starting before binding style
+    scheme (#34)
+  * Release 1.0.0 (#32)
+  *  build: add systemduserunitdir option (#3)
+  * Create COPYING
+  * Create README.md
+
+-------------------------------------------------------------------
+Fri Aug 16 04:54:41 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Initial package

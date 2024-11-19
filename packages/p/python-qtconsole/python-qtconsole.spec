@@ -22,7 +22,7 @@
 %bcond_with libalternatives
 %endif
 Name:           python-qtconsole
-Version:        5.6.0
+Version:        5.6.1
 Release:        0
 Summary:        Jupyter Qt console
 License:        BSD-3-Clause
@@ -40,7 +40,6 @@ BuildRequires:  gdb
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-BuildRequires:  update-desktop-files
 # QtPy does note require or depend on one of the frameworks itself
 Requires:       (python-qt5 or python-pyside2 or python-PyQt6 or python-pyside6)
 Requires:       python-Pygments
@@ -105,11 +104,13 @@ mkdir -p %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/
 # Modify and install .desktop file
 pushd examples
 %{python_expand # clone desktop file for flavors
-cp jupyter-qtconsole.desktop jupyter-qtconsole-%{$python_bin_suffix}.desktop
+f=jupyter-qtconsole-%{$python_bin_suffix}.desktop
+cp jupyter-qtconsole.desktop $f
 desktop-file-edit \
   --set-icon="JupyterQtConsole-%{$python_bin_suffix}" \
-  --set-key=Exec --set-value="jupyter-qtconsole-%{$python_bin_suffix}" jupyter-qtconsole-%{$python_bin_suffix}.desktop
-%suse_update_desktop_file -i -r jupyter-qtconsole-%{$python_bin_suffix} "System;TerminalEmulator;"
+  --set-key=Exec --set-value="jupyter-qtconsole-%{$python_bin_suffix}" \
+  $f
+desktop-file-install $f
 }
 popd
 

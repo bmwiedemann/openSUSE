@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Tue Nov 12 00:09:24 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Added patch 02-cmake-modules.patch to make some shared libraries
+  modules and to avoid error while linking with --no-undefined.
+
+- Added patch 01-env-to-interpreter.patch to convert
+  /usr/bin/env python3 to /usr/bin/python3 in the shebang of the
+  python scripts.
+
+- Packaged version 24.06.0

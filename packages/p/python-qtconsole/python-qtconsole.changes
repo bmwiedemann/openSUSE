@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Nov 17 14:25:22 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.6.1
+  * Handle ANSI escape sequences that move the cursor.
+- Remove deprecated %suse_update_desktop_file
+  * https://en.opensuse.org/openSUSE:Update-desktop-files_deprecation
+  * nothing relevant to upstream
+
+-------------------------------------------------------------------
 Sun Sep  8 11:32:42 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.6.0

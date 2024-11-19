@@ -1,0 +1,570 @@
+-------------------------------------------------------------------
+Thu Oct 24 02:38:42 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.1.0
+  * add symbolic icons
+  * Updated translations
+- rename to upstream name
+
+-------------------------------------------------------------------
+Tue Aug 13 00:46:49 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- enable leap by using datadir/icons
+
+-------------------------------------------------------------------
+Fri Aug  9 03:19:48 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.0:
+  * Categories: Use bell for notification settings
+  * Actions: New document-save icon
+  * Actions: Grid-align some symbolic icons
+  * Add media-eject-symbolic 24px
+  * Actions: Horizontally center media-playback-start
+  * Actions: Add 32px document-import/export
+  * Devices: clean up 128 drive-harddisk
+  * Categories: redesign preferences-system
+  * Status: halign checkmark on 32px process-completed
+  * Filetypes: link application-x-java-archive to package-x-generic
+  * Status: remove bluetooth indicator icons
+  * Categories: remove unused bug
+  * Categories: remove non-fd.o parental controls
+  * Actions: update system action symbolics
+  * Round window control icons
+  * Usb receiver
+  * Add accessories-screenshot-tool
+  * Fix bad link
+  * Preferences desktop wallpaper
+  * Use meson symlink and fix warnings
+  * Cursors: Redesign dnd badges
+  * Cursors: rename to fit spec
+  * Actions: Differentiate Symbolic Full Screen from Maximize
+  * Cursors: new base cursor design
+  * Categories/preds-desktop-locale: fix border radius
+  * Cursors: re-add symlinks for legacy names
+  * Cursors: redraw resize, fix positions
+  * Cursors: redraw cell and crosshair
+  * Cursors: Fix grabbing position, shadow, color
+  * Cursors: blend wait cursors and speed up
+  * Actions: Use brighter colors for Find icon
+  * Cursors: add legacy symlinks for wait and progress
+- update to 7.3.1:
+  * Rename media-memory-sembolic.svg to media-memory-symbolic.svg
+  * Status: remove non-fdo microphone icons
+  * Status: re-add muted mic symbolics
+  * Remove Night Light icons
+  * Status: remove 16px nightlight icons
+  * Actions: update insert-image-symbolic
+  * Actions: Make media-record more consistent
+  * Devices: Improve borders for optical media
+  * Actions: Update open-menu and system-run borders
+  * Actions: Use rounded arrow for browser-download
+  * Actions: Use rounded arrow for document-send
+  * Status: remove bluetooth indicator icons
+  * Actions: Use rounded arrow for view-refresh
+  * Actions: Use rounded arrow on some 24px icons
+  * Actions: Use rounded arrow for object-rotate
+  * Actions: update 24/mail-move
+  * Actions: Add some semi-transparent borders
+  * Metainfo: add 7.3.1 release notes
+  * Metainfo improvements
+  * Actions: remove non-fdo mail-move
+  * Remove non-fdo mail-archive
+  * Update applications-multimedia
+- update to 7.3.0:
+  * Remove network-vpn icons
+  * Drop exec bit from SVG files
+  * Network removals
+  * Devices: Remove unused symlinks
+  * Switch to GHCR containers
+  * Add Adw icons
+  * Update preferences-desktop-display
+  * Actions: increase radius of edit-clear
+  * Actions: add adw-external-link
+  * Actions: update document-*-symbolic radius
+  * Process completed newcheck
+  * Categories: add location prefs
+  * Extension → application-x-addon
+- update to 7.2.0:
+  * Update white tile icons
+  * Redesign system-file-manager
+  * Redesign accessories-calculator
+  * FileTypes: symlink extension to application-x-xpinstall by @danirabbit in #1156
+  * Update categories/applications-development
+  * Remove internet-web-browser
+  * Remove system-os-install
+  * Update border radius of preferences-system-sharing
+  * Appdata: Add Icon
+  * Update border radius of preferences-desktop-applications
+  * Update border radius of notification-disabled
+  * Update border radius of application-x-firmware
+  * Normalize width of key in input-keyboard icon
+  * Update border radius of preferences-system-parental-controls
+  * Status: update 48px do-not-disturb
+  * FileTypes: Use fd.o text-x-generic for text by
+  * Categories: remove unused and non-fd.o names
+  * FileTypes: Add 16px video-x-generic
+  * Add latte palette
+  * Unify view mode symbolics
+- update to 7.1.0:
+  * "computer-fail"
+  * "preferences-desktop-theme"
+  * "application-x-sharedlib"
+  * "process-paused"
+  * "office-address-book"
+  * Flash file types
+  * Clean up "preferences-desktop-workspaces"
+  * Update "preferences-desktop" to new tile shape
+  * Update "image-missing" to new tile shape
+  * Update "preferences-desktop-keyboard" to new tile shape
+  * Update "document-import" and "document-export" to new tile shape
+  * Update many file types with new arrow shape
+  * "application-default-icon" is now brightly colored
+  * "media-stop" is now a square
+  * Round symbolic location status icons
+  * Use an outlined shape for symbolic tag icons
+  * Use a rounded star for symbolic bookmark icons
+  * Redesign Night Light
+  * Use latest Flatpak branding
+  * Symbolic volume icons use a rounded shape and a slash when muted
+  * Fix broken link for SVG file types
+  * Fix missing links for PGP file types
+  * Scale some icons to more sizes
+- update to 7.0.0:
+  * caps-lock-symbolic
+  * eye-not-looking-symbolic
+  * eye-open-negative-filled-symbolic
+  * num-lock-symbolic
+  * Redesign media-playlist-repeat
+  * Update media-playlist-shuffle and media-playlist-consecutive
+  * Rounder square icons
+  * Rounded arrow corners on Downloads folder
+  * Deb and Flatpak Bundle files use a package metaphor
+  * Updates arrow points up
+  * Redesigned package with new colors
+  * notification-*
+  * Non-FDO network-*
+  * Non-FDO app icons
+- update to 6.1.0:
+  * preferences-desktop-font*
+  * Additional sizes for playlist-queue
+  * Redesign PDF file type
+  * Additional sizes for emblem-downloads
+  * Remove arrows from Copy and Paste actions
+  * removal multimedia-video-player
+- update to 6.0.0:
+  * Improved consistency between arrow shapes
+  * Improved appearance of color icons against dark backgrounds
+  * More gender-nuetral people icons
+  * Rounded media controls
+  * Rounded lightening bolt shape
+  * More colorful battery icons
+  * align-*
+  * color-picker
+  * distribute-*
+  * draw-calligraphic
+  * office-database-new
+  * tools-spray
+  * application-content-*
+  * thunderbolt devices
+  * video-display-tv
+  * symbolic headphones
+  * application-certificate
+  * application-json
+  * office-task-symbolic
+  * status emblems
+  * emblem-git-*
+  - Removals:
+    * accessories-camera
+    * accessories-screenshot
+    * audio-speaker-testing
+    * edit-undo-archive
+    * internet-mail
+    * internet-news-reader
+    * multimedia-audio-player
+    * notification bell animations
+    * nm-*
+    * ubiquity
+- update to 5.3.1:
+  * Update emoji names for emoji picker in elementary OS 6 and latest GTK
+  * Replace Inkscape with rsvg for building cursors
+- update to 5.3.0:
+  * Add Bubblegum and Mint to official palette
+  * Updated all eraser icons to use Bubblegum palette
+  * Updated "path" icons to use Mint palette
+  * Updated all pencil icons to use Banana palette
+  * Add "software-update-urgent"
+  * Add "sync-synchronizing"
+  * Add 24px "window-close-symbolic"
+  * Add 48px preferences icons
+- update to 5.2.0:
+  * Provide large cursors
+  * Fix alignment of several cursors
+  * Use palette colors in copy cursors
+  * Fix direction of the ban symbol cursor and use red
+  * Add "All Scroll", "No Drop", "Vertical Text", and "Zoom" cursors
+- switch url to github, as we don't want to link to another OS
+- remove elementary-icon-theme-chmod.patch as upstream fixed the issue
+
+-------------------------------------------------------------------
+Thu Feb 22 11:40:55 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  %patchN
+
+-------------------------------------------------------------------
+Mon Nov  4 14:28:19 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 5.1.0:
+  * view-reader fix (#830)
+  * Add Release to Actions
+  * Delete AUTHORS
+  * Add 24px user status icons (#824)
+  * Add 32px wireless signal icons (#826)
+  * view-reader (#820)
+  * Use a more scalable metaphor for system updates (#819)
+  * Give browser-download its own unique icon (#818)
+  * Add symbolic variant for updates icon (#817)
+  * Delete FUNDING.yml
+  * Delete CODE_OF_CONDUCT.md
+  * touchups to 32px prefs-desktop-workspaces
+  * Make new icons for Workspace preferences (#676)
+  * Make symbol on 32px places home larger (#814)
+  * Add 64px prefs locale (#811)
+
+-------------------------------------------------------------------
+Tue Jul 16 15:32:29 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 5.0.4:
+  * Change shape of system-software-update (#804)
+  * computer-laptop-symbolic (#801)
+  * Add 48px mail-send (#799)
+  * Create FUNDING.yml
+  * Simplify image-missing (#796)
+  * Add 64px nightlight icon (#795)
+  * Make housekeeping its own icon (#794)
+  * Scale process-completed and find-location to 64px
+  * add application-x-firmware-symbolic (#791)
+  * add media-memory-symbolic (#790)
+  * Add 48px crop action (#786)
+  * Add mail-forwarded (#779)
+  * Add location status icons (#784)
+  * Redesign wired networking icons (#732)
+
+-------------------------------------------------------------------
+Mon Mar  4 03:19:35 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 5.0.3:
+  * Add missing application-x-generic (#778)
+  * Add microphone muted animation (#777)
+  * Add 24px path actions (#776)
+  * Add 32px input-touchpad (#775)
+  * Redesign object group and scale (#768)
+  *  Add path operation actions (#767)
+  * Redesign symbolic align actions (#761)
+  * 16px and 24px distribute actions (#764)
+  *  Proportion scaling for 16px align actions (#760)
+  * Update 16px alignment icons (#758)
+  * Add numlock icon (#754)
+  * Refined align actions (#757)
+  * Made new icons for marking/not marking mail as junk (#677)
+  * Add 16px night-light icons (#752)
+  * New SSD iconset (#689)
+  * Add a symlink for user-desktop-open (#747)
+  * edit-flag: new palette colors (#744)
+  * Add computer-convertible symlinks (#739)
+  * Add audio-headphones.svg and audio-headsets.svg files (#735)
+  * Add RTL icons (#736)
+  * Redesign Phone icons (#731)
+  * Add symbolic capslock icon (#728)
+  * Add internet-chat-symbolic (#723)
+  * Make symbolic apps/multimedia match color and scale (#722)
+  * Make disabled icons more consistent (#718)
+  * Make appointment icon family consistent (#706)
+  * Add symbolic icons for playlist and playlist-queue (#704)
+
+-------------------------------------------------------------------
+Wed Oct 17 18:45:47 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 5.0:
+  * Mimes/16: Fix bittorrent canvas size. Fixes #699
+  * symlink view-list-video-symbolic to camera-video-symbolic 
+    (#698)
+  * partial download icon fixes
+  * application-x-partial-download (#697)
+  * Add appointment-soon and appointment-missed (#696)
+  * Add symlinks for appointment for all sizes (#695)
+  * Redesign starred icons (#693)
+  * Made a colored call-stop & call-end icon (#685)
+  * Update go-jump and add missing sizes (#686)
+  * Make new colored icons for print preview (#687)
+  * Add symbolic timer (#690)
+  * Add brighter stops to AppCenter roof (#680)
+  * README: add links to the color palette (#673)
+  * Add 64px bluetooth icon (#674)
+  * Create specialized VPN icons (#671)
+  * Remove duplicate symbolic network icon (#669)
+  * More contrasty folder glyphs (#666)
+  * Add network ethernet disconnected notification (#662)
+  * Non-symbolic view-refresh (#659)
+  * Add some 24px and 48px credit cards (#657)
+  * Make edit-trash in line style (#656)
+  * Add some 32px payment cards (#655)
+  * Add flatpak mime (#653)
+  * Remove unused cellular type symbolic icons (#644)
+  * edit-clear: fix some colors and add 32px (#654)
+  * Prefs power palette (#652)
+  * Add fingerprint device icons (#650)
+  * Make 48px circle shadows match (#651)
+  * Make bluetooth icon base more accurate (#648)
+
+-------------------------------------------------------------------
+Wed Jun 13 18:24:53 UTC 2018 - avvissu@yandex.by
+
+- Add packages with palettes
+
+-------------------------------------------------------------------
+Fri Jun  8 22:49:07 UTC 2018 - avvissu@yandex.by
+
+- Switch to git from bzr
+- Switch to meson
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Wed Apr 18 11:44:09 UTC 2018 - sor.alexei@meowr.ru
+
+- Fix the package (boo#1082179).
+
+-------------------------------------------------------------------
+Fri Oct 27 02:46:37 UTC 2017 - avvissu@yandex.by
+
+- Update to 4.3.1:
+  * fixed alignment for the panel cellular icons (#360)
+  * Scale mail archive icon to 48px (#353)
+  * Add printer test page mime (#359)
+
+-------------------------------------------------------------------
+Thu Oct 12 22:08:15 UTC 2017 - jengelh@inai.de
+
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Thu Oct  5 21:01:59 UTC 2017 - avvissu@yandex.by
+
+- Update to 4.3.0:
+  * Add 24px emblems (#352)
+  * Redo prefs desktop a11y with new palette (#350)
+  * 24 process stop symbolic (#343)
+  * Redo dialog-error with new palette (#345)
+  * Add network-cellular to devices (#347)
+  * Update blue circle icons (#348)
+  * Fix incorrectly sized 48px process-stop (#349)
+  * Redo color process-stop icons (#344)
+  * Add secure cellular icons (#342)
+  * Add cellular icons (#341)
+  * Move emblem-default to process-completed and symlink back 
+    (#339)
+  * Add fd.o emblem-default (#338)
+  * system-os-install to system-os-installer (#337)
+  * improved insert icons (#326)
+  * put me back in contributors but at #1 ;) (#330)
+  * added 48 symbolic battery-caution (#329)
+  * updated import export action icons (#312)
+  * updated few categories 48 symbolic icon (#306)
+  * updated muted blocking to use warning class (#328)
+  * Add mail-important status icon (#324)
+  * updated symbolic 48 mic and volume icons (#309)
+  * updated bluetooth brightness & battery 48 symbolic icon (#308)
+  * updated volume (#319)
+  * fix radii on some icons (#322)
+  * update paste-related icons (#323)
+  * Symbolic updates 24 media (#314)
+  * updated wired icons (#317)
+  * updated wifi icons (#318)
+  * updated few devices 48 symbolic icon (#307)
+  * updated few symbolic devices apps and categories icons (#310)
+
+-------------------------------------------------------------------
+Fri Jul 21 20:52:33 UTC 2017 - avvissu@yandex.by
+
+- Update to 4.2.0:
+  * update symbolic playlist icons (#268)
+  * move document-properties to open-menu and symlink back (#257)
+  * match symbol from color markup mime and add symlinks (#241)
+  * updated Torrent mime (#256)
+  * Color play, pause, seek, skip, stop (#255)
+  * text-css for all sizes, colors to new palette (#253)
+  * Change grey mimes to Silver 700 (#252)
+  * added colour palette (#254)
+  * move apport to categories/bug and symlink (#232)
+  * simplified scanner icon (#251)
+  * Create Contributing.md (#250)
+  * Create CODE_OF_CONDUCT.md (#249)
+  * Add 64px version of keyboard (#248)
+  * make audio-x-generic more generic (#242)
+  * drop aptdaemon icons (#247)
+  * Speaker cleanups (#245)
+  * Add symlinks for symbolic help icons (#240)
+  * new microphone icons (#243)
+  * make 48px system-shutdown consistent with other sizes (#239)
+  * make 16px and 48px contact-new match other sizes (#237)
+  * Make symbolic address book icons look like color icons (#236)
+  * new speaker icons (#233)
+  * system-help is in the spec, so add it (#235)
+  * Add system-reboot (#234)
+  * symlinks for mail-sent (#227)
+  * add 24px mail-send (#228)
+  * Text copying (#231)
+  * make changelog mime flat, symlink patch (#230)
+  * Makefile mime (#217)
+  * added text-markdown (#224)
+- Change the sourceurl to git
+
+-------------------------------------------------------------------
+Wed May 17 15:41:54 UTC 2017 - avvissu@yandex.by
+
+- Update to 4.1.0:
+  * name 24px display brightness icon correctly (#219)
+  * name 24px display brightness icon correctly
+  * and 16px
+  * Improve Terminal glyph (#218)
+  * 64px and 128px
+  * finish up
+  * Symlink meson mime to make file mime (#216)
+  * Symlink meson mime to make file mime
+  * revert unintentional changes
+  * Add 24px brightness-display-symbolic (#213)
+  * Add 24px brightness-display-symbolic
+  * redraw larger
+  * Update notification-disabled shape (#212)
+  * make notification icons rounder, real big bubble (#206)
+  * Match 48px color batteries with symbolic (#211)
+  * remove lightning from fully charged state (#209)
+  * All slashies now go NW/SE (#208)
+  * Symbolic battery: Vertical lightning, 16px (#207)
+  * vertical lightning and update 16px battery icons
+  * remove sneaky sneaks
+  * moved batteries 1px right; updated large symbolic icon (#205)
+  * redesign 24px symbolic battery icons (#204)
+  * redesign 24px symbolic battery icons
+  * delete some icons that snuck in
+  * slashies to the right
+  * remove random shit
+  * Make 48px lock screen icon match 32px (#203)
+  * add 24px variants of icons used for privacy indicator (#202)
+  * Make the bubble on notification-new-symbolic larger (#201)
+  * Add 48px preferences-desktop-display (#200)
+  * add symlinks for text-csv (#197)
+  * Add 32, 48, 64, 128 insert-link
+  * Add 24 32 64 and symbolic drive-removable-media-usb
+
+-------------------------------------------------------------------
+Tue Mar 21 02:06:27 UTC 2017 - avvissu@yandex.by
+
+- Update to version 4.0.3:
+  * Make AppCenter icon fill the canvas at 48px (#193)
+  * Make AppCenter icon fill the canvas at 48px
+  * less gloss on window
+  * Update AppCenter icon purple (#192)
+  * adjust purple for other sizes
+  * New "less generic" software center icon (#83)
+  * new software center icon
+  * update symbolic icon
+  * add symbolic translation icons (#187)
+  * add bug icon (#186)
+  * add missing network icon (#185)
+  * add missing network icon
+  * add other missing 24px icons
+  * add 32px find-location (#183)
+  * Redesign document-open-recent (#182)
+  * 32px document-open-recent
+  * 16 and 24px versions
+  * right angle arrow at 16px
+  * add 32px lock screen icon (#173)
+  * add 32px lock screen icon
+  * switch out metal for slate
+  * firewall icon
+  * added flame centre
+  * add 24px secure network icons (#180)
+  * add find-location in 48px (#179)
+  * add slashes to things (#176)
+  * clean up 24px symbolic mic and resize to 16 (#175)
+  * add background to empty symbolic battery icons for more 
+    presence (#172)
+
+-------------------------------------------------------------------
+Fri Jan 20 22:57:52 UTC 2017 - avvissu@yandex.by
+
+- Update to version 4.0.2:
+  * add 16px and 24px installer (#168)
+  * adds a pager icon (#166)
+  * drop gpm-* and gsm-* icon names (#164)
+  * added audio-testing icons (#163)
+  * added audio-testing icons
+  * adjusted sound wave width
+  * fixed front-right
+  * update app default icon to use gear shape from mimes (#143)
+  * update app default icon to use gear shape from mimes
+  * make 64px gear larger
+  * redo full-charged (#160)
+  * add horizontal symbolic view more (#161)
+  * 24 mic symbolic (#157)
+  * 24px micrphone icon
+  * fit to grid
+  * make 128 avatar consistent (#156)
+  * add 32px phone (#155)
+  * added rtl mimetype icons (#154)
+  * added rtl mimetype icons
+  * added missing office-document-rtl icons
+  * removed script rtl icons
+  * added missing link
+  * added 64 text-rtl et al
+  * added missing -rtl variants (#153)
+  * fix border for 32px mouse icon (#149)
+  * add a 48px battery charged icon (#150)
+  * Network icons (#151)                                                                                                                                                           
+  * add secure cellular network icons                                                                                                                                              
+  * add secured wired network icon                                                                                                                                                 
+  * update the 128px help-contents icon (#146)
+
+-------------------------------------------------------------------
+Fri Dec  2 02:43:51 UTC 2016 - avvissu@yandex.by
+
+- Update to version 4.0.1.1:
+  * Fingerprint (#135)
+  * improved process-completed-symbolic (#121)
+  * improved fingerprint symbolic (#136)
+  * add system-os-install and symlink ubiquity (#138)
+  * redesigned edit-copy-symbolic (#141)
+  * make the arrow less bulky and gross (#142)
+  * update the 128px help-contents icon (#146)
+  * Network icons (#151)
+  * add a 48px battery charged icon (#150)
+  * fix border for 32px mouse icon (#149)
+
+-------------------------------------------------------------------
+Sat Sep 10 14:24:44 UTC 2016 - mailaender@opensuse.org
+
+- Update to version 4.0.1:
+  * No changelog available.
+- Add elementary-icon-theme-chmod.patch from
+  https://github.com/elementary/icons/pull/130
+
+-------------------------------------------------------------------
+Thu Aug 20 17:47:01 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 3.2.2.
+
+-------------------------------------------------------------------
+Sat May 16 05:49:21 UTC 2015 - mailaender@opensuse.org
+
+- update to 3.2.1
+
+-------------------------------------------------------------------
+Tue Dec  3 14:28:33 UTC 2013 - sor.alexei@meowr.ru
+
+- Update to 3.1.
+
+-------------------------------------------------------------------
+Mon May 20 00:00:00 UTC 2013 - damianatorrpm@gmail.com
+
+- Rebuild.

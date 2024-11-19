@@ -1,7 +1,7 @@
 #
 # spec file for package python-wadllib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,18 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-wadllib
-Version:        1.3.6
+Version:        2.0.0
 Release:        0
 Summary:        Navigate HTTP resources using WADL files as guides
 License:        LGPL-3.0-or-later
-Group:          Development/Languages/Python
 URL:            https://launchpad.net/wadllib
 Source:         https://files.pythonhosted.org/packages/source/w/wadllib/wadllib-%{version}.tar.gz
-BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module lazr.uri}
+BuildRequires:  %{python_module multipart}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-lazr.uri
@@ -42,10 +42,12 @@ file.
 %setup -q -n wadllib-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
+# Do not ship docs
+%python_expand rm -r %{buildroot}%{$python_sitelib}/wadllib/docs
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -54,7 +56,8 @@ cd src
 
 %files %{python_files}
 %license COPYING.txt
-%doc README.rst NEWS.rst HACKING.rst
-%{python_sitelib}/*
+%doc README.rst NEWS.rst
+%{python_sitelib}/wadllib
+%{python_sitelib}/wadllib-%{version}.dist-info
 
 %changelog

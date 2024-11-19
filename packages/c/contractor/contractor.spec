@@ -23,7 +23,7 @@ Release:        0
 Summary:        A desktop-wide extension service
 License:        GPL-3.0-or-later
 URL:            https://github.com/elementary/contractor
-Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  meson >= 0.44.4
 BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.28.0
@@ -35,8 +35,6 @@ BuildRequires:  pkgconfig(glib-2.0)
 An extension service that allows apps to use the exposed functionality of
 registered apps. This way, applications do not have to have the functions
 hard coded into them.
-
-Designed for Elementary OS.
 
 %prep
 %autosetup

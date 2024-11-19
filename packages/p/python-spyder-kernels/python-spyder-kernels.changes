@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Nov 17 16:32:34 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.0.1
+  * PR 517: Manually register the Matplotlib inline backend in case
+    it hasn't, by @ccordoba12
+  * PR 514: Fix development version for the stable branch, by
+    @ccordoba12
+  * PR 510: Replace Quansight logo by CZI one in Readme, by
+    @ccordoba12
+  * PR 508: Update workflows to run in the 3.x branch (CI), by
+    @ccordoba12
+  * PR 506: Make glob and loc kwargs of debug_exec, by @impact27
+  * PR 504: Update workflow actions (CI), by @mrclary
+  * PR 503: Update load_dicom to accommodate Pydicom 3.0, by
+    @mrclary
+
+-------------------------------------------------------------------
 Sun Sep  8 11:28:55 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.0.0

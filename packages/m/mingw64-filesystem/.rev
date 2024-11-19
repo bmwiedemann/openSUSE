@@ -218,4 +218,15 @@
     <comment></comment>
     <requestid>1191501</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>304d6bef3b83a6c609e129f1fea403b0</srcmd5>
+    <version>20241118</version>
+    <time>1731956522</time>
+    <user>anag+factory</user>
+    <comment>- Update version to 20241118
+- Speed up the collection of source files for the creation of debug
+  packages by using multiple concurrent processes (boo1202431)
+</comment>
+    <requestid>1224813</requestid>
+  </revision>
 </revisionlist>

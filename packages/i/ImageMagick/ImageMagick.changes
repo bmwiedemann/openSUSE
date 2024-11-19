@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov 17 10:27:30 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- version update to 7.1.1.41
+  * Fix compiler identification with Clang on Darwin in #7773
+  * revert map changes breaking ABI in #7768
+
+-------------------------------------------------------------------
 Mon Nov 11 19:59:52 UTC 2024 - Yann BOYER <yann.boyer742@gmail.com>
 
 - version update to 7.1.1.40

@@ -309,4 +309,16 @@ This needs to go into openSUSE:Factory:Staging:adi:49 with the other jupyter sub
     codes. (forwarded request 1199486 from bnavigator)</comment>
     <requestid>1199487</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>23d27d22564f38959a5998d04396f65a</srcmd5>
+    <version>5.6.1</version>
+    <time>1731956471</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.6.1
+  * Handle ANSI escape sequences that move the cursor.
+- Remove deprecated %suse_update_desktop_file
+  * https://en.opensuse.org/openSUSE:Update-desktop-files_deprecation
+  * nothing relevant to upstream</comment>
+    <requestid>1224679</requestid>
+  </revision>
 </revisionlist>

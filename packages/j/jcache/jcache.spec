@@ -27,6 +27,7 @@ Source0:        %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.t
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(javax.enterprise:cdi-api)
+BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
 BuildArch:      noarch
 
@@ -44,11 +45,9 @@ API documentation for %{name}.
 
 %prep
 %setup -q -n jsr107spec-%{version}
-%pom_xpath_remove pom:packaging
-%pom_xpath_remove 'pom:plugin[pom:artifactId/text()="maven-compiler-plugin"]/pom:configuration'
-%pom_remove_plugin org.apache.felix:maven-bundle-plugin
+%pom_xpath_set 'pom:plugin[pom:artifactId/text()="maven-compiler-plugin"]/pom:configuration/pom:source' '1.8'
+%pom_xpath_set 'pom:plugin[pom:artifactId/text()="maven-compiler-plugin"]/pom:configuration/pom:target' '1.8'
 %pom_remove_plugin :maven-source-plugin
-%pom_remove_plugin :maven-jar-plugin
 %pom_remove_plugin :maven-javadoc-plugin
 
 %{mvn_file} : %{name}

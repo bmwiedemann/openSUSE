@@ -30,11 +30,13 @@ Source1:        https://github.com/Sigil-Ebook/sigil-user-guide/releases/downloa
 Source2:        %{name}.desktop
 # PATCH-FIX-OPENSUSE Disabled __DATE__ and __TIME__ which is replaced later in pre section
 Patch0:         %{name}-gt-0.9.0-Dialogs-About.cpp.patch
+# PATCH-FIX-UPSTREAM  Remove implicit QChar conversions #778
+Patch1:         sigil-gt6.8-qchar-778.patch
 BuildRequires:  boost-devel
 BuildRequires:  cmake >= 3.0
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
-%if 0%{?suse_version} <= 1600
+%if 0%{?suse_version} < 1600
 BuildRequires:  gcc12
 BuildRequires:  gcc12-c++
 %else

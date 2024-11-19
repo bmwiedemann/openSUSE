@@ -257,8 +257,8 @@ BuildRequires:  python3-python-docs-theme >= 2022.1
 
 %if %{with experimental_jit}
 # needed for experimental_jit
-BuildRequires:  clang => 18
-BuildRequires:  llvm => 18
+BuildRequires:  clang >= 18
+BuildRequires:  llvm >= 18
 %endif
 
 %if %{without GIL}
@@ -503,6 +503,8 @@ echo "master_doc = 'contents'" >> Doc/conf.py
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
+
+sed -i "s/_LLVM_VERSION = .*/_LLVM_VERSION = $(realpath /usr/bin/clang | awk -F- '{print $2}')/g" ./Tools/jit/_llvm.py
 
 %if %{primary_interpreter}
 # fix shebangs - convert /usr/local/bin/python and /usr/bin/env/python to /usr/bin/python3
@@ -835,6 +837,9 @@ install -m 755 -D Tools/gdb/libpython.py %{buildroot}%{_datadir}/gdb/auto-load/%
 
 # install devel files to /config
 #cp Makefile Makefile.pre.in Makefile.pre $RPM_BUILD_ROOT%{sitedir}/config-%{python_abi}/
+
+# Remove -IVendor/ from python-config boo#1231795
+sed -i 's/-IVendor\///' %{buildroot}%{_bindir}/python%{python_abi}-config
 
 # RPM macros
 %if %{primary_interpreter}

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Nov 14 12:25:30 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.10.3
+  * Switch c compiler check to different cmake variable
+    by @DmitriyMusatkin in (#1169)
+- from version 0.10.2
+  * Disable visibility hidden on old gcc by @DmitriyMusatkin in (#1167)
+- from version 0.10.1
+  * chore: Modified bug issue template to add checkbox to report
+    potential regression. by @ashishdhingra in (#1151)
+  * Check if numa available or not before loading numa functions
+    by @TingDaoK in (#1163)
+  * Unlink shutdown callback from ref count by @bretambrose in (#1166)
+  * Fix empty xml node handling by @DmitriyMusatkin in (#1168)
+
+-------------------------------------------------------------------
 Thu Oct 24 11:48:38 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.10.0

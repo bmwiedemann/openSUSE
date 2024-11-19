@@ -1,0 +1,92 @@
+-------------------------------------------------------------------
+Wed Nov  6 07:49:19 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- remove %suse_update_deskop_file, as it's deprecated
+
+-------------------------------------------------------------------
+Wed Oct  2 12:44:50 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- fix leap 16 by including fix-leap.patch in build
+
+-------------------------------------------------------------------
+Mon Sep 23 16:43:34 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- adjust %patch to the newer %patch -P format
+
+-------------------------------------------------------------------
+Thu Aug 29 16:36:44 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.0:
+  * Updated translations
+- update to 7.0.1:
+  * Block GSD "Automatic Suspend" notifications
+  * Updated translations
+- update to 7.0.0:
+  * Increase sound and brightness notifications width to match other
+    notifications
+  * Updated translations
+- update to 6.0.3:
+  * Updated translations
+- update to 6.0.2:
+  * Fix missing icon when set from icon name
+  * Updated translations
+- switch url to github, as we don't want to link to a different OS
+- rename to official naming
+
+-------------------------------------------------------------------
+Wed Apr 20 06:01:06 UTC 2022 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 6.0.1:
+  * Remove old issue templates (#136)
+  * Application: use startup and dbus_register instead of
+    activate (#168)
+  * Improve style in places (#164)
+  * Move dark theme handling to the Application class (#166)
+  * Replace ButtonBox with Box (#161)
+  * Replace add with attach for Grid (#159)
+
+-------------------------------------------------------------------
+Mon Sep  6 12:35:14 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 6.0.0+git20210906.8a44793:	
+  * Release 6.0.0 (#144)
+  * Update release.yml
+  * Add support for image-data (#123)
+  * AbstractButton: Don't propagate events after close button 
+    click (#143)
+  * Move Image/Icon logic to Notification class (#140)
+  * Play different sound when notification is urgent (#85)
+  * Add a badge with set_icon (#133)
+  * Notification: get app_name fallback from appinfo (#130)
+  * Bubble: wrap between characters if needed (#132)
+  * Bubble: don't pack action area for default action (#129)
+  * Support Actions (#15)
+  * Bubble: use FileIcon instead of pixbuf (#121)
+  * Fix #117: Show icons for daemons (#118)
+  * Handle URIs used for application icons (#119) (#120)
+  * AbstractBubble: Don't accept focus (#114)
+  * LINGUAS: Sort and remove en
+  * Confirmation: Add flat class to Progressbar (#102)
+  * Notification: sanitize markup (#101)
+  * Allow entries to activate send (#100)
+  * Demo: misc cleanup (#97)
+  * Add a demo (#96)
+  * Update README.md
+  * Swipe gesture to close notifications (#89)
+  * Move actions to Notification (#93)
+  * Create notification object (#88)
+  * Create feature_request.md
+  * Create bug_report.md
+  * Update config.yml
+  * Update and rename .github/ISSUE_TEMPLATES/config.yml to 
+    .github/ISSUE_TEMPLATE/config.yml
+  * Create config.yml
+  * Bubble: use alternate syntax for multiple properties (#80)
+  * Remove lots of CSS (#79)
+  * Fix label width
+
+-------------------------------------------------------------------
+Tue Jun 11 20:30:41 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Initial package
+

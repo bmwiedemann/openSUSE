@@ -1,0 +1,61 @@
+From 08ed327cf220eca9c814ea2a65adace24a4cf3d9 Mon Sep 17 00:00:00 2001
+From: Echo J <tcg96nougat@gmail.com>
+Date: Sat, 19 Oct 2024 19:43:17 +0300
+Subject: [PATCH] Parsers: Make QChar conversions explicit
+
+This is required without the QT_IMPLICIT_QCHAR_CONSTRUCTION macro
+---
+ src/Parsers/qCSSParser.cpp | 2 +-
+ src/Parsers/qCSSUtils.cpp  | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+Index: Sigil-2.3.1/src/Parsers/qCSSParser.cpp
+===================================================================
+--- Sigil-2.3.1.orig/src/Parsers/qCSSParser.cpp
++++ Sigil-2.3.1/src/Parsers/qCSSParser.cpp
+@@ -250,7 +250,7 @@ QString CSSParser::unicode(QString& istr
+         (CSSUtils::hexdec(add) > 96 && CSSUtils::hexdec(add) < 123))
+     {
+         QString msg = "Replaced unicode notation: Changed \\" + CSSUtils::rtrim(add) + " to ";
+-        add = static_cast<int>(CSSUtils::hexdec(add));
++        add = QChar(static_cast<int>(CSSUtils::hexdec(add)));
+         msg += add;
+         log(msg,Information);
+         replaced = true;
+Index: Sigil-2.3.1/src/Parsers/qCSSUtils.cpp
+===================================================================
+--- Sigil-2.3.1.orig/src/Parsers/qCSSUtils.cpp
++++ Sigil-2.3.1/src/Parsers/qCSSUtils.cpp
+@@ -98,7 +98,7 @@ QChar CSSUtils::s_at(const QString &istr
+ {
+     if(pos > (istring.length()-1) || pos < 0)
+     {
+-        return 0;
++        return QChar(0);
+     } 
+     else 
+     {
+@@ -168,7 +168,7 @@ QString CSSUtils::build_value(const QVec
+ 
+ bool CSSUtils::ctype_space(const QChar c)
+ {
+-    return (c == ' ' || c == '\t' || c == '\r' || c == '\n' || c == 11);
++    return (c == ' ' || c == '\t' || c == '\r' || c == '\n' || c == QChar(11));
+ }
+ 
+ 
+Index: Sigil-2.3.1/src/qt6sigil.cmake
+===================================================================
+--- Sigil-2.3.1.orig/src/qt6sigil.cmake
++++ Sigil-2.3.1/src/qt6sigil.cmake
+@@ -2,10 +2,6 @@
+ #     Build Sigil against Qt6 - requires cmake 3.16+ and a C++17 compiler
+ #############################################################################
+ 
+-# quiet Qt 6 deprecat4ed warnings
+-# add_definitions(-DQT_NO_DEPRECATED_WARNINGS)
+-add_definitions(-DQT_IMPLICIT_QCHAR_CONSTRUCTION)
+-
+ if (CMAKE_VERSION VERSION_GREATER "3.27.9")
+     cmake_policy(SET CMP0153 OLD)
+ endif()

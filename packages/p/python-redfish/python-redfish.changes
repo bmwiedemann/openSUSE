@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 15 20:17:45 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.2.6
+  * Added workaround for services incorrectly responding with 401
+    when accessing the service root.
+
+-------------------------------------------------------------------
 Sat Sep 14 07:03:12 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.2.5

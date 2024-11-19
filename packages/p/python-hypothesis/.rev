@@ -874,4 +874,96 @@ This version fixes the license naming issue.</comment>
     * This patch tweaks the paths in ``@example(...)`` patches, so that</comment>
     <requestid>1217398</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>4d5693eedc4886809c2ed60639611d7c</srcmd5>
+    <version>6.119.1</version>
+    <time>1731956228</time>
+    <user>anag+factory</user>
+    <comment>- Update to 6.119.1
+  - This patch migrates some more internals (around generating
+    novel inputs) to the IR layer (issue #3921).
+- Update to 6.119.0
+  - This release improves Hypothesis’ handling of ExceptionGroup
+    - it’s now able to detect marker detections if they’re inside
+    a group and attempts to resolve them. Note that this handling
+    is still a work in progress and might not handle edge cases
+    optimally. Please open issues if you encounter any problems
+    or unexpected behavior with it.
+- Update to 6.118.9
+  - Internal refactorings in preparation for upcoming changes.
+- Update to 6.118.8
+  - Internal renamings.
+- Update to 6.118.7
+  - This patch removes some # type: ignore comments following a
+    mypy update.
+- Update to 6.118.6
+  - When Hypothesis replays examples from its test database that
+    it knows were previously fully shrunk it will no longer try
+    to shrink them again.
+  - This should significantly speed up development workflows for
+    slow tests, as the shrinking could contribute a significant
+    delay when rerunning the tests.
+  - In some rare cases this may cause minor reductions in example
+    quality. This was considered an acceptable tradeoff for the
+    improved test runtime.
+- Update to 6.118.5
+  - This patch avoids computing some string representations we
+    won’t need, giving a small speedup (part of issue #4139).
+- Update to 6.118.4
+  - This patch migrates the optimisation algorithm for
+    targeted property-based testing to our IR layer (issue
+    #3921). This should result in moderately different (and
+    hopefully improved) exploration behavior in tests which use
+    hypothesis.target().
+- Update to 6.118.3
+  - This patch adds more type hints to internal Hypothesis code.
+- Update to 6.118.2
+  - This patch migrates the explain phase to our IR layer (issue
+    #3921). This should improve both its speed and precision.
+- Update to 6.118.1
+  - This patch updates some internals around how we determine an
+    input is too large to finish generating.
+- Update to 6.118.0
+  - The urls() strategy no longer generates URLs where the port
+    number is 0.
+  - This change is motivated by the idea that the generated URLs
+    should, at least in theory, be possible to fetch. The port
+    number 0 is special; if a server binds to port 0, the kernel
+    will allocate an unused, and non-zero, port instead. That
+    means that it’s not possible for a server to actually be
+    listening on port 0. This motivation is briefly described in
+    the documentation for urls().
+  - Fixes issue #4157.
+  - Thanks to @gmacon for this contribution!
+- Update to 6.117.0
+  - This changes the behaviour of settings profiles so that
+    if you reregister the currently loaded profile it will
+    automatically reload it. Previously you would have had to
+    load it again.
+  - In particular this means that if you register a “ci” profile,
+    it will automatically be used when Hypothesis detects you are
+    running on CI.
+- Update to 6.116.0
+  - Hypothesis now detects if it is running on a CI server and
+    provides better default settings for running on CI in this
+    case.
+- Update to 6.115.6
+  - This patch changes the priority order of pretty printing
+    logic so that a user provided pretty printing method will
+    always be used in preference to e.g. printing it like a
+    dataclass.
+- Update to 6.115.5
+  - This patch restores diversity to the outputs of
+    from_type(type) (issue #4144).
+- Update to 6.115.4
+  - This release improves pretty printing of nested classes to
+    include the outer class name in their printed representation.
+- Update to 6.115.3
+  - This patch fixes a regression from version 6.115.2 where
+    generating values from integers() with certain values for
+    min_value and max_value would error.
+- Require numpy &gt;= 2.
+</comment>
+    <requestid>1224614</requestid>
+  </revision>
 </revisionlist>

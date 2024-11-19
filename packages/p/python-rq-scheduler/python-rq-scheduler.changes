@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 15 15:04:44 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 1.14
+  * Support for RQ 2.0. Thanks @selwin!
+- Drop rq-compat-removal.patch (rq-compat not in upstream anymore)
+
+-------------------------------------------------------------------
 Wed Dec  6 22:44:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add rq-compat-removal.patch and switch to github tarball

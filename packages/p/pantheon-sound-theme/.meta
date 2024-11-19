@@ -1,0 +1,5 @@
+<package name="pantheon-sound-theme" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:Pantheon" package="pantheon-sound-theme"/>
+</package>

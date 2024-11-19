@@ -67,4 +67,12 @@
 - change url to github, as we don't want to link to their own OS</comment>
     <requestid>1192934</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>2da2abf95127a9101af7f70162c063eb</srcmd5>
+    <version>8.0.0</version>
+    <time>1731956244</time>
+    <user>anag+factory</user>
+    <comment>- support leap = 1500 (forwarded request 1223007 from rrahl0)</comment>
+    <requestid>1223008</requestid>
+  </revision>
 </revisionlist>

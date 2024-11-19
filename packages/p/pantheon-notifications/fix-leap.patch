@@ -1,0 +1,13 @@
+--- ./src/FdoActionGroup.vala.orig	2024-07-24 21:18:12.000000000 +0300
++++ ./src/FdoActionGroup.vala	2024-09-12 12:43:29.660365751 +0300
+@@ -62,8 +62,8 @@ public sealed class Notifications.Fdo.Ac
+     public override bool query_action (
+         string action_name,
+         out bool enabled,
+-        out unowned VariantType parameter_type,
+-        out unowned VariantType state_type,
++        out VariantType parameter_type,
++        out VariantType state_type,
+         out Variant state_hint,
+         out Variant state
+     ) {

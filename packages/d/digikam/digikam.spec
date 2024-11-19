@@ -16,80 +16,78 @@
 #
 
 
-%define soversion 8_4_0
+%define kf6_version 6.0.0
+%define qt6_version 6.4.0
+
+%define soversion 8_5_0
 %bcond_without released
 %bcond_with    apidocs
 Name:           digikam
-Version:        8.4.0
+Version:        8.5.0
 Release:        0
 Summary:        A KDE Photo Manager
 License:        GPL-2.0-or-later
 URL:            https://www.digikam.org/
-Source0:        https://download.kde.org/stable/%{name}/%{version}/digiKam-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/digikam/%{version}/digiKam-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/%{name}/%{version}/digiKam-%{version}.tar.xz.sig
-Source2:        %{name}.keyring
+Source1:        https://download.kde.org/stable/digikam/%{version}/digiKam-%{version}.tar.xz.sig
+Source2:        digikam.keyring
 %endif
-# PATCH-FIX-OPENSUSE
-Patch0:         0001-Look-for-each-akonadi-component-separately.patch
-# QtWebEngine is not available on ppc and zSystems
-ExclusiveArch:  %{arm} aarch64 %{ix86} x86_64 %{riscv}
 BuildRequires:  bison
-BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  lensfun
 BuildRequires:  libboost_graph-devel
 BuildRequires:  libeigen3-devel
 BuildRequires:  libexiv2-devel >= 0.27.1
-BuildRequires:  liblqr-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  opencv-devel
 BuildRequires:  pkgconfig
+BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
 BuildRequires:  update-desktop-files
-%if %{with apidocs}
-BuildRequires:  doxygen
-BuildRequires:  graphviz-devel
-BuildRequires:  cmake(KF5DocTools)
-%endif
-BuildRequires:  cmake(KF5CalendarCore)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5Contacts)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5FileMetaData)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(KF5NotifyConfig)
-BuildRequires:  cmake(KF5Sane)
-BuildRequires:  cmake(KF5Service)
-BuildRequires:  cmake(KF5Solid)
-BuildRequires:  cmake(KF5Sonnet)
-BuildRequires:  cmake(KF5ThreadWeaver)
-BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Marble)
-BuildRequires:  cmake(Qt5Concurrent)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Multimedia)
-BuildRequires:  cmake(Qt5Network)
-BuildRequires:  cmake(Qt5NetworkAuth)
-BuildRequires:  cmake(Qt5OpenGL)
-BuildRequires:  cmake(Qt5PrintSupport)
-BuildRequires:  cmake(Qt5Sql)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5WebEngineWidgets)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5X11Extras)
-BuildRequires:  cmake(Qt5Xml)
-BuildRequires:  cmake(Qt5XmlPatterns)
+BuildRequires:  cmake(KF6CalendarCore) >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6Contacts) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6FileMetaData) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
+BuildRequires:  cmake(KF6NotifyConfig) >= %{kf6_version}
+BuildRequires:  cmake(KF6Service) >= %{kf6_version}
+BuildRequires:  cmake(KF6Solid) >= %{kf6_version}
+BuildRequires:  cmake(KF6Sonnet) >= %{kf6_version}
+BuildRequires:  cmake(KF6ThreadWeaver) >= %{kf6_version}
+BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(KPim6Akonadi)
+BuildRequires:  cmake(KPim6AkonadiContactCore)
+BuildRequires:  cmake(KSaneWidgets6)
+BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Multimedia) >= %{qt6_version}
+BuildRequires:  cmake(Qt6MultimediaWidgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
+BuildRequires:  cmake(Qt6NetworkAuth) >= %{qt6_version}
+BuildRequires:  cmake(Qt6OpenGL) >= %{qt6_version}
+BuildRequires:  cmake(Qt6OpenGLWidgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Sql) >= %{qt6_version}
+BuildRequires:  cmake(Qt6StateMachine) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
+BuildRequires:  cmake(Qt6SvgWidgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6WebEngineWidgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
 BuildRequires:  cmake(libheif)
 BuildRequires:  pkgconfig(Magick++)
 BuildRequires:  pkgconfig(expat)
+BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(jasper)
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(lensfun)
@@ -102,30 +100,38 @@ BuildRequires:  pkgconfig(libgphoto2) >= 2.4.0
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libjxl)
 BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(libswresample)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libxslt)
-BuildRequires:  pkgconfig(zlib)
-Requires:       %{name}-plugins
-Requires:       libQt5Sql5-sqlite
+BuildRequires:  pkgconfig(vdpau)
+%if %{with apidocs}
+BuildRequires:  doxygen
+BuildRequires:  graphviz-devel
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+%endif
+Requires:       digikam-plugins
+Requires:       qt6-sql-sqlite >= %{qt6_version}
 Recommends:     marble
 Recommends:     showfoto
 # Got merged into libimageeditor in 5.2.0
-Provides:       %{name}-plugin-color = %{version}
-Obsoletes:      %{name}-plugin-color < %{version}
-Provides:       %{name}-plugin-decorate = %{version}
-Obsoletes:      %{name}-plugin-decorate < %{version}
-Provides:       %{name}-plugin-enhance = %{version}
-Obsoletes:      %{name}-plugin-enhance < %{version}
-Provides:       %{name}-plugin-fxfilters = %{version}
-Obsoletes:      %{name}-plugin-fxfilters < %{version}
-Provides:       %{name}-plugin-transform = %{version}
-Obsoletes:      %{name}-plugin-transform < %{version}
+Provides:       digikam-plugin-color = %{version}
+Obsoletes:      digikam-plugin-color < %{version}
+Provides:       digikam-plugin-decorate = %{version}
+Obsoletes:      digikam-plugin-decorate < %{version}
+Provides:       digikam-plugin-enhance = %{version}
+Obsoletes:      digikam-plugin-enhance < %{version}
+Provides:       digikam-plugin-fxfilters = %{version}
+Obsoletes:      digikam-plugin-fxfilters < %{version}
+Provides:       digikam-plugin-transform = %{version}
+Obsoletes:      digikam-plugin-transform < %{version}
 Obsoletes:      digikam-libs < %{version}
 # Docs no longer included in 6.0.0
-Provides:       %{name}-doc = %{version}
-Obsoletes:      %{name}-doc < %{version}
+Provides:       digikam-doc = %{version}
+Obsoletes:      digikam-doc < %{version}
+# QtWebEngine is not available on ppc and zSystems
+ExclusiveArch:  aarch64 x86_64 %{x86_64} riscv64
 
 %description
 digiKam is a simple digital photo management application for KDE, which
@@ -152,14 +158,14 @@ Development headers and libraries for digiKam.
 
 %package -n showfoto
 Summary:        DigiKam: Showfoto
-Supplements:    %{name}
+Supplements:    digikam
 
 %description -n showfoto
 Additional program to browse and view photos
 
 %package -n libdigikamcore%{soversion}
 Summary:        The main digikam libraries
-Recommends:     %{name}-plugins
+Recommends:     digikam-plugins
 
 %description -n libdigikamcore%{soversion}
 The main digikam libraries that are being shared between showfoto and digikam
@@ -167,24 +173,33 @@ The main digikam libraries that are being shared between showfoto and digikam
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n digikam-%{version}
 
 %build
-%{cmake_kf5 -d build -- \
-  -DENABLE_APPSTYLES=ON \
-  -DENABLE_MEDIAPLAYER=ON \
-  -DENABLE_KFILEMETADATASUPPORT=ON \
-  -DENABLE_AKONADICONTACTSUPPORT=OFF
-}
+%cmake_kf6 \
+  -DBUILD_WITH_QT6:BOOL=TRUE \
+  -DENABLE_AKONADICONTACTSUPPORT:BOOL=TRUE \
+  -DENABLE_APPSTYLES:BOOL=TRUE \
+  -DENABLE_KFILEMETADATASUPPORT:BOOL=TRUE \
+  -DENABLE_MEDIAPLAYER:BOOL=TRUE \
+  -DSSE3_FOUND:BOOL=FALSE \
+  -DSSE4_1_FOUND:BOOL=FALSE \
+  -DSSE4_2_FOUND:BOOL=FALSE \
+  -DSSSE3_FOUND:BOOL=FALSE \
+%ifarch x86_64 %{?x86_64}
+  -DSSE2_FOUND:BOOL=TRUE
+%else
+  -DSSE2_FOUND:BOOL=FALSE
+%endif
 
-%cmake_build
+%kf6_build
 
 %if %{with apidocs}
-%cmake_build doc
+%kf6_build doc
 %endif
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
 %suse_update_desktop_file -r org.kde.digikam Qt KDE Graphics Photography
 %suse_update_desktop_file -r org.kde.showfoto Qt KDE Graphics Photography
@@ -197,52 +212,51 @@ The main digikam libraries that are being shared between showfoto and digikam
 
 %files
 %doc AUTHORS NEWS README.md
-%dir %{_kf5_sharedir}/solid
-%dir %{_kf5_sharedir}/solid/actions
-%doc %{_kf5_mandir}/man1/cleanup_digikamdb.1%{ext_man}
-%doc %{_kf5_mandir}/man1/digitaglinktree.1%{ext_man}
-%{_kf5_applicationsdir}/org.kde.digikam.desktop
-%{_kf5_appstreamdir}/org.kde.digikam.appdata.xml
-%{_kf5_bindir}/cleanup_digikamdb
-%{_kf5_bindir}/digikam
-%{_kf5_bindir}/digitaglinktree
-%{_kf5_iconsdir}/hicolor/*/actions/
-%{_kf5_iconsdir}/hicolor/*/apps/avplayer.*
-%{_kf5_iconsdir}/hicolor/*/apps/digikam.*
-%{_kf5_kxmlguidir}/digikam/
-%{_kf5_notifydir}/digikam.notifyrc
-%{_kf5_sharedir}/digikam/
-%{_kf5_sharedir}/solid/actions/digikam-opencamera.desktop
+%doc %{_kf6_mandir}/man1/cleanup_digikamdb.1%{ext_man}
+%doc %{_kf6_mandir}/man1/digitaglinktree.1%{ext_man}
+%{_kf6_applicationsdir}/org.kde.digikam.desktop
+%{_kf6_appstreamdir}/org.kde.digikam.appdata.xml
+%{_kf6_bindir}/cleanup_digikamdb
+%{_kf6_bindir}/digikam
+%{_kf6_bindir}/digitaglinktree
+%{_kf6_iconsdir}/hicolor/*/actions/
+%{_kf6_iconsdir}/hicolor/*/apps/digikam.*
+%{_kf6_kxmlguidir}/digikam/
+%{_kf6_notificationsdir}/digikam.notifyrc
+%{_kf6_sharedir}/digikam/
+%dir %{_kf6_sharedir}/solid
+%dir %{_kf6_sharedir}/solid/actions
+%{_kf6_sharedir}/solid/actions/digikam-opencamera.desktop
 
 %files plugins
-%{_kf5_iconsdir}/hicolor/*/apps/dk-*
-%{_kf5_iconsdir}/hicolor/*/apps/expoblending.*
-%{_kf5_iconsdir}/hicolor/*/apps/panorama.*
-%{_kf5_plugindir}/digikam/
+%{_kf6_iconsdir}/hicolor/*/apps/dk-*
+%{_kf6_iconsdir}/hicolor/*/apps/expoblending.*
+%{_kf6_iconsdir}/hicolor/*/apps/panorama.*
+%{_kf6_plugindir}/digikam/
 
 %files devel
 %{_includedir}/digikam/
-%{_kf5_cmakedir}/DigikamCore/
-%{_kf5_cmakedir}/DigikamDatabase/
-%{_kf5_cmakedir}/DigikamGui/
-%{_kf5_cmakedir}/DigikamPlugin/
-%{_kf5_libdir}/libdigikamcore.so
-%{_kf5_libdir}/libdigikamdatabase.so
-%{_kf5_libdir}/libdigikamgui.so
+%{_kf6_cmakedir}/DigikamCore/
+%{_kf6_cmakedir}/DigikamDatabase/
+%{_kf6_cmakedir}/DigikamGui/
+%{_kf6_cmakedir}/DigikamPlugin/
+%{_kf6_libdir}/libdigikamcore.so
+%{_kf6_libdir}/libdigikamdatabase.so
+%{_kf6_libdir}/libdigikamgui.so
 
 %files -n showfoto
-%{_kf5_applicationsdir}/org.kde.showfoto.desktop
-%{_kf5_appstreamdir}/org.kde.showfoto.appdata.xml
-%{_kf5_bindir}/showfoto
-%{_kf5_iconsdir}/hicolor/*/apps/showfoto.*
-%{_kf5_kxmlguidir}/showfoto/
-%{_kf5_sharedir}/showfoto/
+%{_kf6_applicationsdir}/org.kde.showfoto.desktop
+%{_kf6_appstreamdir}/org.kde.showfoto.appdata.xml
+%{_kf6_bindir}/showfoto
+%{_kf6_iconsdir}/hicolor/*/apps/showfoto.*
+%{_kf6_kxmlguidir}/showfoto/
+%{_kf6_sharedir}/showfoto/
 
 %files -n libdigikamcore%{soversion}
 %license LICENSES/*
-%{_kf5_libdir}/libdigikamcore.so.%{version}
-%{_kf5_libdir}/libdigikamdatabase.so.%{version}
-%{_kf5_libdir}/libdigikamgui.so.%{version}
+%{_kf6_libdir}/libdigikamcore.so.*
+%{_kf6_libdir}/libdigikamdatabase.so.*
+%{_kf6_libdir}/libdigikamgui.so.*
 
 %files lang -f %{name}.lang
 

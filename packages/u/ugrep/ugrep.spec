@@ -23,13 +23,13 @@
 %bcond_without fish
 %endif
 Name:           ugrep
-Version:        7.0.3
+Version:        7.0.4
 Release:        0
 Summary:        Universal grep: a feature-rich grep implementation with focus on speed
 License:        BSD-3-Clause
 Group:          Productivity/File utilities
 URL:            https://github.com/Genivia/ugrep
-Source:         https://github.com/Genivia/ugrep/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
