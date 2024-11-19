@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 19 20:46:10 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.27
+  * Support for Linux 6.12
+  * xt_DNETMAP: cure crash on netns shutdown
+
+-------------------------------------------------------------------
 Fri Mar 22 17:19:51 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.26
