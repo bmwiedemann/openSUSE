@@ -1,7 +1,7 @@
 #
 # spec file for package rzip
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            https://rzip.samba.org
 Source:         https://rzip.samba.org/ftp/rzip/%{name}-%{version}.tar.gz
 Patch0:         fill-buffer.patch
 BuildRequires:  libbz2-devel
+BuildRequires:  libtool
 
 %description
 rzip is a compression program, similar in functionality to gzip or
@@ -37,6 +38,7 @@ ratios than other programs.
 %autosetup -p1
 
 %build
+autoreconf -fiv
 %configure
 make %{?_smp_mflags} CFLAGS="%{optflags}"
 

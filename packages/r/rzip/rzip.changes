@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 18 16:00:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add libtool BuildRequire and Re-bootstrap the really old tarball:
+  the configure script was originally created with autoconf 2.13,
+  which produced chechs that fail with recent compilers.
+
+-------------------------------------------------------------------
 Fri Feb 23 11:53:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
