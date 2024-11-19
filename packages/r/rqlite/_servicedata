@@ -1,0 +1,6 @@
+<servicedata>
+  <service name="tar_scm">
+    <param name="url">https://github.com/rqlite/rqlite.git</param>
+    <param name="changesrevision">8cea072605b6accbfc1607553011d33ef7bb6f87</param>
+  </service>
+</servicedata>

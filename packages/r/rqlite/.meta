@@ -1,0 +1,9 @@
+<package name="rqlite" project="openSUSE:Factory">
+  <title>Distributed relational database built on SQLite</title>
+  <description>rqlite is a relational database which combines SQLite's simplicity with the
+power of a robust, fault-tolerant, distributed system. It's designed for easy
+deployment and lightweight operation, offering a developer-friendly and
+operator-centric solution for multiple platforms.</description>
+  <devel project="server:database" package="rqlite"/>
+  <url>https://rqlite.io/</url>
+</package>
