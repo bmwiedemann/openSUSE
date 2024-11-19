@@ -34,11 +34,9 @@ BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module numpy}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       gcc-c++
-Requires:       python-numpy
+Requires:       python-numpy >= 1.10.0
 %python_subpackages
 
 %description
@@ -66,6 +64,7 @@ donttest="test_space_main"
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitearch}/*
+%{python_sitearch}/hnswlib.*.so
+%{python_sitearch}/chroma_hnswlib-%{version}.dist-info
 
 %changelog
