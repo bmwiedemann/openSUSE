@@ -1,0 +1,10 @@
+<package name="oomstaller" project="openSUSE:Factory">
+  <title>A tool for suppressing swap thrashing at build time</title>
+  <description>Oomstaller is a tool for suppressing swap thrashing at build time. It is
+intended for use in build processes of large processes, using parallelism to
+make use of available CPUs. It works by monitoring memory usage of each process
+when performing a build, and suspends processes as necessary to prevent
+swapping from occurring.</description>
+  <devel project="devel:tools" package="oomstaller"/>
+  <url>https://github.com/shibatch/oomstaller</url>
+</package>
