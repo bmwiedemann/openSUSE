@@ -27,7 +27,7 @@
 %define         short_name immutabledict
 %{?sle15_python_module_pythons}
 Name:           python-%{short_name}%{psuffix}
-Version:        4.2.0
+Version:        4.2.1
 Release:        0
 Summary:        Immutable wrapper around dictionaries (a fork of frozendict)
 License:        MIT

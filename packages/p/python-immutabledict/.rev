@@ -75,4 +75,15 @@
 - Use pytest to run the testsuite.</comment>
     <requestid>1158388</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>86e249d400ae9da76691c4f99ca09fda</srcmd5>
+    <version>4.2.1</version>
+    <time>1732051458</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.2.1:
+  * Published with attestation
+  * Update classifiers, Github Actions... for Python 3.13 (no
+    code changes)</comment>
+    <requestid>1225136</requestid>
+  </revision>
 </revisionlist>
