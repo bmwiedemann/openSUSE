@@ -4,6 +4,7 @@
      <param name="srctar">xplr-*.tar.gz</param>
      <param name="compression">zst</param>
      <param name="update">false</param>
+     <param name="respect-lockfile">true</param>
   </service>
   <service name="source_validator" mode="manual" />
 </services>

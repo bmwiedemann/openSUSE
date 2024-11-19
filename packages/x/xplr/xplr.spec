@@ -31,6 +31,7 @@ BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  zstd
+ExclusiveArch:  %{rust_tier1_arches}
 
 %description
 xplr is a terminal UI based file explorer for command-line utilities
