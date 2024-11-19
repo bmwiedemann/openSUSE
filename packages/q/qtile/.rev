@@ -412,4 +412,26 @@
 </comment>
     <requestid>1201444</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>0cde24f4dbb7493e5706cf032672ccda</srcmd5>
+    <version>0.29.0</version>
+    <time>1732051466</time>
+    <user>anag+factory</user>
+    <comment>- Skip tests:
+  * test_net_wm_icon_change 
+- Update to version 0.29.0:
+  * features
+    - A Nix flake has been added which can be used by Nix(OS) users to update to the latest version easily
+    - Add `group_window_remove` hook when window is removed from group
+    - Switched to ruff for formatting
+  * bugfixes
+    - Add returns to lazy.function and qtile.core.function
+    - Fix a bug with newer versions of cairo breaking the bar
+    - Fix a few TreeTab rendering bugs
+    - Fix a TaskList crash
+    - Fix a scratchpad window size bug
+- Remove ./workaround-new-cairocffi-api.patch. Merged in 0.29.x
+</comment>
+    <requestid>1225148</requestid>
+  </revision>
 </revisionlist>

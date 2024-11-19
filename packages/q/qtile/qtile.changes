@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Nov 19 14:41:08 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Skip tests:
+  * test_net_wm_icon_change 
+
+-------------------------------------------------------------------
+Sun Nov 17 14:49:50 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 0.29.0:
+  * features
+    - A Nix flake has been added which can be used by Nix(OS) users to update to the latest version easily
+    - Add `group_window_remove` hook when window is removed from group
+    - Switched to ruff for formatting
+  * bugfixes
+    - Add returns to lazy.function and qtile.core.function
+    - Fix a bug with newer versions of cairo breaking the bar
+    - Fix a few TreeTab rendering bugs
+    - Fix a TaskList crash
+    - Fix a scratchpad window size bug
+- Remove ./workaround-new-cairocffi-api.patch. Merged in 0.29.x
+
+-------------------------------------------------------------------
 Mon Sep 16 13:30:59 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - Add ./workaround-new-cairocffi-api.patch from https://github.com/qtile/qtile/pull/4991

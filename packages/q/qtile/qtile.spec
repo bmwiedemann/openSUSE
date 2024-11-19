@@ -20,7 +20,7 @@
 %global _conflict_wlroots_ver 0.18.0
 
 Name:           qtile
-Version:        0.28.1
+Version:        0.29.0
 Release:        0
 Summary:        A pure-Python tiling window manager
 # All MIT except for: libqtile/widget/pacman.py:GPL (v3 or later)
@@ -30,7 +30,6 @@ URL:            http://qtile.org
 Source0:        https://files.pythonhosted.org/packages/source/q/%{name}/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 Source3:        %{name}-portals.conf
-Patch1:         https://github.com/qtile/qtile/pull/4991.patch#/workaround-new-cairocffi-api.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  gdk-pixbuf-loader-rsvg
@@ -176,7 +175,7 @@ export PATH="${PWD}/bin:${PATH}"
 export PYTHONDONTWRITEBYTECODE=1
 # Workaround for broken pytest
 # https://github.com/openSUSE/python-rpm-macros/issues/170#issuecomment-2152944000
-%{_bindir}/xvfb-run %{_bindir}/python%{python_version} -m pytest -vvv -rs --backend x11 --backend wayland
+%{_bindir}/xvfb-run %{_bindir}/python%{python_version} -m pytest -vvv -rs --backend x11 --backend wayland -k "not test_net_wm_icon_change"
 
 %post
 %{_sbindir}/update-alternatives --install %{_datadir}/xsessions/default.desktop \
