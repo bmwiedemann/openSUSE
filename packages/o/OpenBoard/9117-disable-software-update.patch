@@ -1,25 +1,23 @@
-From 7d50e97af79d7393d7b893bf640b6bccbcf22dd6 Mon Sep 17 00:00:00 2001
+From cc89f09bbc7f464ad79eaa82a74d490d507e4756 Mon Sep 17 00:00:00 2001
 From: letsfindaway <me@letsfindaway.de>
 Date: Wed, 16 Nov 2022 08:31:29 +0100
-Subject: [PATCH] feat: disable software and document update check
+Subject: [PATCH] feat: disable software update check
 
 - for packages maintained by a Linux distribution,
   a software update check is not relevant
-- also the import of ancient OpenSankore documents is not necessary
-- disable the checks in the settings
-- hide the associated checkboxes in the preferences
+- disable the check in the settings
+- hide the associated checkbox in the preferences
 ---
- resources/etc/OpenBoard.config       | 7 +++----
- src/core/UBPreferencesController.cpp | 2 ++
- 2 files changed, 5 insertions(+), 4 deletions(-)
+ resources/etc/OpenBoard.config       | 5 ++---
+ src/core/UBPreferencesController.cpp | 1 +
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/resources/etc/OpenBoard.config b/resources/etc/OpenBoard.config
-index e7f2e075b..67f21a58e 100644
+index ce77e232e..a3c8bf04e 100644
 --- a/resources/etc/OpenBoard.config
 +++ b/resources/etc/OpenBoard.config
-@@ -1,15 +1,14 @@
+@@ -1,8 +1,7 @@
  [App]
- AngleTolerance=4
 -HideCheckForSoftwareUpdate=false
 +HideCheckForSoftwareUpdate=true
  HideSwapDisplayScreens=true
@@ -29,23 +27,15 @@ index e7f2e075b..67f21a58e 100644
  EnableStartupHints=true
  FavoriteToolURIs=openboardtool://openboard/mask, openboardtool://ruler, openboardtool://compass, openboardtool://protractor, openboardtool://triangle, openboardtool://magnifier, openboardtool://cache
  IsInSoftwareUpdateProcess=false
- LastSessionDocumentUUID=
- LastSessionPageIndex=0
--LookForOpenSankoreInstall=true
-+LookForOpenSankoreInstall=false
- PageCacheSize=20
- PreferredLanguage=fr_CH
- ProductWebAddress=http://www.openboard.ch
 diff --git a/src/core/UBPreferencesController.cpp b/src/core/UBPreferencesController.cpp
-index 9c7802be9..f4e85c3a6 100644
+index ed0e393d8..b67c415c3 100644
 --- a/src/core/UBPreferencesController.cpp
 +++ b/src/core/UBPreferencesController.cpp
-@@ -90,6 +90,8 @@ UBPreferencesController::UBPreferencesController(QWidget *parent)
+@@ -85,6 +85,7 @@ UBPreferencesController::UBPreferencesController(QWidget *parent)
      mPreferencesWindow = new UBPreferencesDialog(this,parent, Qt::Dialog);
      mPreferencesUI = new Ui::preferencesDialog();  // deleted in destructor
      mPreferencesUI->setupUi(mPreferencesWindow);
 +    mPreferencesUI->softwareUpdateGroupBox->hide();     // disable check for software update
-+    mPreferencesUI->sankoreImporterGroupBox->hide();    // disable check for OpenSankore documents
      adjustScreensPreferences();
  
      connect(UBApplication::displayManager, &UBDisplayManager::availableScreenCountChanged, this, &UBPreferencesController::adjustScreensPreferences);

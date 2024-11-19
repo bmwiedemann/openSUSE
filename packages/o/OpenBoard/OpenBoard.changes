@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Nov 18 14:08:50 UTC 2024 - Martin Winter <me@letsfindaway.de>
+
+- update to release version 1.7.2
+- remove upstreamed patches
+  * remove 0569-scale-mirror-pixmap.patch
+  * remove 0961-use-cpp20.patch
+  * remove 0962-fix-cpp20-compatibility.patch
+  * remove 1010-fix-qapp-cast.patch
+  * remove 1017-ffmpeg7.patch
+- adjust patches to new version
+  * adjust 0955-shortcut-configuration.patch
+  * adjust 9117-disable-software-update.patch
+- add patch to circumvent some problems on wayland
+  * add 1165-fix-some-wayland-problems.patch
+- switch from Qt5 to Qt6
+
+-------------------------------------------------------------------
 Tue Aug 13 14:27:48 UTC 2024 - Martin Winter <me@letsfindaway.de>
 
 - compatibility with ffmpeg-7
