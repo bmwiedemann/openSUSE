@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-django-perf-rec
-Version:        4.26.0
+Version:        4.27.0
 Release:        0
 Summary:        Keep detailed records of the performance of your Django code
 License:        MIT

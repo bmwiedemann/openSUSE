@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 19 12:45:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.27.0:
+  * Drop Django 3.2 to 4.1 support.
+  * Drop Python 3.8 support.
+  * Support Python 3.13.
+  * Allow comments in ROLLBACK TO SAVEPOINT statements. Thanks to
+    Corentin Smith in PR #537.
+
+-------------------------------------------------------------------
 Mon Jul  8 09:00:43 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.26.0:

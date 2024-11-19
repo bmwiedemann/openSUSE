@@ -51,4 +51,17 @@
   * Optimize sql_fingerprint() a bit, yielding ~2% savings.</comment>
     <requestid>1186116</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b55410740535803ffb2a60dc5dc1eada</srcmd5>
+    <version>4.27.0</version>
+    <time>1732051424</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.27.0:
+  * Drop Django 3.2 to 4.1 support.
+  * Drop Python 3.8 support.
+  * Support Python 3.13.
+  * Allow comments in ROLLBACK TO SAVEPOINT statements. Thanks to
+    Corentin Smith in PR #537.</comment>
+    <requestid>1225100</requestid>
+  </revision>
 </revisionlist>
