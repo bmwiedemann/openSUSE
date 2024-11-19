@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 15 13:50:25 UTC 2024 - andrea.manzini@suse.com
+
+- Update to version 1.11.4:
+  * forward plugin: new option next, to try alternate upstreams when receiving
+    specified response codes upstreams on (functions like the external plugin 
+    alternate)
+  * dnssec plugin: new option to load keys from AWS Secrets Manager
+  * rewrite plugin: new option to revert EDNS0 option rewrites in responses
+
+-------------------------------------------------------------------
 Thu Nov 07 15:40:44 UTC 2024 - andrea.manzini@suse.com
 
 - Update to version 1.11.3+git129.387f34d:
