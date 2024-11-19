@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 19 09:54:04 UTC 2024 - aburlakov@suse.com
+
+- Update to version 2.6.5+git.1731582159.c5ff4329:
+  * Fix: prepend all executable with /usr/sbin (bsc#1232760)
+
+-------------------------------------------------------------------
 Mon Oct 14 11:32:16 UTC 2024 - Aleksei Burlakov <aburlakov@suse.com>
 
 - Do not assume a specific ruby version to build against

@@ -120,4 +120,12 @@
   * instead use the default ruby of the distribution.</comment>
     <requestid>1207962</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>03ac765d94adb4a6db8dc9d0d731f74d</srcmd5>
+    <version>2.6.5+git.1731582159.c5ff4329</version>
+    <time>1732051460</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1225132</requestid>
+  </revision>
 </revisionlist>
