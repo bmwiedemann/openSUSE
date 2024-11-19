@@ -7,4 +7,21 @@
     <comment>some AI thing</comment>
     <requestid>1201963</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2dc249dd61a7ef43fa29d4678671fa75</srcmd5>
+    <version>0.6.1</version>
+    <time>1732051424</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.6.1:
+  * fix: regression in include with namespace no overwrite
+- update to 0.6.0:
+  * feat: add support for Python 3.13
+  * refactor!: expose HelpInfo as a namedtuple
+  * feat: add items iterator
+
+- Included Source1 to enable test
+- Fixed Description and enable test
+- Initial Package</comment>
+    <requestid>1225102</requestid>
+  </revision>
 </revisionlist>

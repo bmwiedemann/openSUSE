@@ -15,24 +15,25 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-envier
-Version:        0.5.2
+Version:        0.6.1
 Release:        0
 Summary:        Python application configuration via the environment
-License:        BSD-3-Clause 
-URL:            None
+License:        BSD-3-Clause
+URL:            https://github.com/DataDog/envier
 Source:         https://files.pythonhosted.org/packages/source/e/envier/envier-%{version}.tar.gz
 Source1:        https://github.com/DataDog/envier/archive/refs/tags/v%{version}.tar.gz#/envier-%{version}-source1.tar.gz
 Patch0:         envier-test_types_assert.patch
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module hatchling}
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module mypy}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       mypy
 Suggests:       python-mypy
 BuildArch:      noarch
