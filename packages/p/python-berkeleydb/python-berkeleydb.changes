@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov 19 12:52:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 18.1.11:
+  * WARNING - BREAKING CHANGE: Drop support for Python 3.8. This
+    breaking change should usually require a major and/or minor
+    number update. Since berkeleydb traditional numbering is
+    related to the higher Oracle Berkeley DB supported, I would
+    usually wait until Oracle releases a new version to upgrade
+    my own version and deprecate old Python support at the same
+    time. Given that Oracle has not released a new Oracle
+    Berkeley DB in almost five years, I must break this practice
+    for now. I am sorry if this update breaks your Python 3.8
+    environment. In that case, please pin your berkeleydb
+    installation to
+
+-------------------------------------------------------------------
 Wed Oct  9 06:33:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 18.1.10:

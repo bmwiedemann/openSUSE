@@ -44,4 +44,23 @@
     was introduced in release 18.1.9, we consider this breaking</comment>
     <requestid>1206439</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fc44e5ef4bba71ed58a6353c25a6ef07</srcmd5>
+    <version>18.1.11</version>
+    <time>1732051434</time>
+    <user>anag+factory</user>
+    <comment>- update to 18.1.11:
+  * WARNING - BREAKING CHANGE: Drop support for Python 3.8. This
+    breaking change should usually require a major and/or minor
+    number update. Since berkeleydb traditional numbering is
+    related to the higher Oracle Berkeley DB supported, I would
+    usually wait until Oracle releases a new version to upgrade
+    my own version and deprecate old Python support at the same
+    time. Given that Oracle has not released a new Oracle
+    Berkeley DB in almost five years, I must break this practice
+    for now. I am sorry if this update breaks your Python 3.8
+    environment. In that case, please pin your berkeleydb
+    installation to</comment>
+    <requestid>1225105</requestid>
+  </revision>
 </revisionlist>
