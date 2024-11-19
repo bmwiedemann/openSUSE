@@ -15,4 +15,41 @@
     <comment>- final adjustment for Obsoletes (forwarded request 1178456 from rrahl0)</comment>
     <requestid>1178457</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9232dfd8df5ed994767081a680c98fe6</srcmd5>
+    <version>0.99.30</version>
+    <time>1732051471</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.99.30:
+  * WSD: sca:ScannerDescription requested in sca:GetScannerElementsRequest
+  * WSD: Ricoh Aficio MP 201: fixed detection of &quot;ADF empty&quot; state
+  * HTTP: logged &quot;end of input&quot; event 
+  * test-decode: more informative usage when invoked without args 
+  * test-devcaps: stub implementation 
+  * test-devcaps: works for WSD 
+  * WSD: fixed ADF duplex on Epson Workforce WF-3520
+  * test-devcaps: works for eSCL too
+  * Device model name propagated from zeroconf to proto handlers, for quirks
+  * WSD: fix for ADF scan on RICOH Aficio MP 201
+  * WSD: more information requested in sca:GetScannerElementsRequest
+  * Some devices don't behave if sca:ImagesToTransfer isn't set as expected.
+  * README: fixed OKI supported table entries
+  * OKI-MB471/OKI-MC332dn/OKI-MC362dn marked as not supporting eSCL
+  * Dell E514dw added to the list
+  * Kyocera TASKalfa 3051ci added to the list
+  * doc: add Epson ET-2650 series
+  * Add EPSON WF-2760 Series
+  * WSD: Add content type selection
+  * eSCL: Add scan intent selection
+  * Fixed logging of supported/chosen scan intent
+  * eSCL: fixed parsing of the supported scan intents in the device capabilities
+  * ID_SCANINTENT better documented
+  * Tweaked a textual description of the scan-intent option
+  * SANE name for ID_SCANINTENT_DOCUMENT now &quot;Document&quot; (was &quot;Text&quot;)
+  * Added ID_SCANINTENT_UNSET value for the 'sane-intent'
+  * Setting &quot;scan-intent&quot; now requires a precise match.
+  * eSCL: delay between subsequent loads made Brother-specific
+  * WSD: cosmetic (forwarded request 1225158 from rrahl0)</comment>
+    <requestid>1225159</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           sane-airscan
-Version:        0.99.29
+Version:        0.99.30
 Release:        0
 Summary:        Universal driver for Apple AirScan (eSCL) and WSD
 License:        SUSE-GPL-2.0+-with-sane-exception
@@ -35,9 +35,9 @@ BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(sane-backends)
 Provides:       lib%{name}1 = %{version}
-Obsoletes:      lib%{name}1 <= %{version}
+Obsoletes:      lib%{name}1 < %{version}
 Provides:       %{name}-devel = %{version}
-Obsoletes:      %{name}-devel <= %{version}
+Obsoletes:      %{name}-devel < %{version}
 
 %description
 This package contains a SANE backend for MFP and document scanners that
@@ -62,7 +62,7 @@ rm %{buildroot}%{_libdir}/sane/libsane-airscan.so
 %config %{_sysconfdir}/sane.d/airscan.conf
 %config %{_sysconfdir}/sane.d/dll.d/airscan
 %{_libdir}/sane/libsane-airscan.so.1
-%{_mandir}/man?/{sane-airscan,airscan-discover}.?.gz
+%{_mandir}/man?/{sane-airscan,airscan-discover}.?%{?ext_man}
 %if 0%{?suse_version} == 1500
 %dir %{_sysconfdir}/sane.d/dll.d
 %endif

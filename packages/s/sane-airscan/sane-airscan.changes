@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Nov 19 19:30:44 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.99.30:
+  * WSD: sca:ScannerDescription requested in sca:GetScannerElementsRequest
+  * WSD: Ricoh Aficio MP 201: fixed detection of "ADF empty" state
+  * HTTP: logged "end of input" event 
+  * test-decode: more informative usage when invoked without args 
+  * test-devcaps: stub implementation 
+  * test-devcaps: works for WSD 
+  * WSD: fixed ADF duplex on Epson Workforce WF-3520
+  * test-devcaps: works for eSCL too
+  * Device model name propagated from zeroconf to proto handlers, for quirks
+  * WSD: fix for ADF scan on RICOH Aficio MP 201
+  * WSD: more information requested in sca:GetScannerElementsRequest
+  * Some devices don't behave if sca:ImagesToTransfer isn't set as expected.
+  * README: fixed OKI supported table entries
+  * OKI-MB471/OKI-MC332dn/OKI-MC362dn marked as not supporting eSCL
+  * Dell E514dw added to the list
+  * Kyocera TASKalfa 3051ci added to the list
+  * doc: add Epson ET-2650 series
+  * Add EPSON WF-2760 Series
+  * WSD: Add content type selection
+  * eSCL: Add scan intent selection
+  * Fixed logging of supported/chosen scan intent
+  * eSCL: fixed parsing of the supported scan intents in the device capabilities
+  * ID_SCANINTENT better documented
+  * Tweaked a textual description of the scan-intent option
+  * SANE name for ID_SCANINTENT_DOCUMENT now "Document" (was "Text")
+  * Added ID_SCANINTENT_UNSET value for the 'sane-intent'
+  * Setting "scan-intent" now requires a precise match.
+  * eSCL: delay between subsequent loads made Brother-specific
+  * WSD: cosmetic
+  * WSD: workaround for ADF Duplex on Brother MFC-9370CDW
+  * The "sane-intent" option cannot be SANE_CAP_INACTIVE
+- fix obsoleting itself
+
+-------------------------------------------------------------------
 Tue Jun  4 07:45:35 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
 
 - final adjustment for Obsoletes
