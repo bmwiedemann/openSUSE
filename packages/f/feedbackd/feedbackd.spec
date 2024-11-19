@@ -19,7 +19,7 @@
 %define soname libfeedback-0_0-0
 
 Name:           feedbackd
-Version:        0.4.1
+Version:        0.5.0
 Release:        0
 Summary:        Feedback library for GNOME
 License:        GPL-3.0-only AND LGPL-2.1-only
@@ -80,7 +80,7 @@ developing applications that use %{name}.
 %autosetup -p1
 
 %build
-%meson \
+%meson -Dsystemd_user_unit_dir=%{_userunitdir} \
 	%{nil}
 %meson_build
 
@@ -100,12 +100,14 @@ exit 0
 %{_bindir}/fbcli
 %{_bindir}/fbd-theme-validate
 %{_libexecdir}/feedbackd
+%{_libexecdir}/fbd-alert-slider
 %{_libexecdir}/fbd-ledctrl
 %{_datadir}/dbus-1/interfaces/org.sigxcpu.Feedback.xml
 %{_datadir}/dbus-1/services/org.sigxcpu.Feedback.service
 %{_datadir}/feedbackd
 %{_datadir}/glib-2.0/schemas/org.sigxcpu.feedbackd.gschema.xml
 %{_udevrulesdir}/*
+%{_userunitdir}/fbd-alert-slider.service
 
 %files -n typelib-1_0-Lfb-0_0
 %{_libdir}/girepository-1.0/Lfb-0.0.typelib
