@@ -1,0 +1,4 @@
+addFilter(".*hidden-file-or-dir.*/.nosearch.*")
+addFilter(".*files-duplicate.*/.nosearch.*")
+addFilter(".*no-%check-section.*")
+addFilter(".*source-not-compressed.*")

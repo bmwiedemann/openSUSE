@@ -575,4 +575,40 @@
 - Refresh auctex-13.3-auto-TL-2024.tar.xz with that above</comment>
     <requestid>1174575</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>5335cb8e505d35aae3488d6303bb29e3</srcmd5>
+    <version>14.0.7</version>
+    <time>1732051450</time>
+    <user>anag+factory</user>
+    <comment>- Update to AUCTeX ELPA version 14.0.7 (2024-10-05)
+  ** Added
+  - Respect the value of ~TeX-output-dir~ when processing files with
+    latexmk.  This means that the default value of ~TeX-command-list~ is
+    changed.
+  - Add new support files =style/authblk.el=, =style/langscibook.cls=,
+    =style/lstautogobble.el=, =style/lstlinebgrd.el=,
+    =style/ninecolors.el=, =style/supertabular.el=, =style/tabularray.el=
+    and =style/xtab.el=.
+  ** Fixed
+  - Fold argument of verbatim macros more accurately.
+  ** Removed
+  - Remove the possibility to disable the side-wide installation with:
+    #+begin_src emacs-lisp
+      (unload-feature 'tex-site)
+    #+end_src
+    Using this form when installed from [[ELPA:auctex.html][ELPA]] will
+    throw an error.
+
+- Update to AUCTeX ELPA version 14.0.6
+  * This work only with GNU Emacs 27.1 and above
+- Remove patches upstream now
+  * dinbrief.patch
+  * initial-reset.patch
+  * auctex-13.1-expand.patch
+- Port patch dvips.patch
+- Port spec file to ELPA installation with the
+  help of triggerin scriptlets
+- REcommend texlive-preview as this also from AUCTeX</comment>
+    <requestid>1225125</requestid>
+  </revision>
 </revisionlist>
