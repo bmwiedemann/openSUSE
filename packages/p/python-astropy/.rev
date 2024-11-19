@@ -2272,4 +2272,15 @@
     properly fills it (rather than breaking the table if there was</comment>
     <requestid>1222846</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>6023c648df7e64c7c6cc88d1b6bdba73</srcmd5>
+    <version>6.1.6</version>
+    <time>1732051428</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.1.6:
+  * Fixed instantiating Angle from a pandas Series object.
+  * Fixed calling np.nanvar and np.nanstd with Quantity out
+    argument.</comment>
+    <requestid>1225103</requestid>
+  </revision>
 </revisionlist>

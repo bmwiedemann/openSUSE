@@ -49,7 +49,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-astropy%{psuffix}
-Version:        6.1.5
+Version:        6.1.6
 Release:        0
 Summary:        Community-developed python astronomy tools
 License:        BSD-3-Clause
