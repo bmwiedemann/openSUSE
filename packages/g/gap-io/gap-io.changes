@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 19 13:21:10 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.9.1
+  * Switch tests to use a different HTTP provider
+
+-------------------------------------------------------------------
 Thu Sep  5 13:46:56 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.9
