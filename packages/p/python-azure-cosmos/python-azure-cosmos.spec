@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-cosmos
-Version:        4.8.0
+Version:        4.9.0
 Release:        0
 Summary:        Microsoft Azure Cosmos client library for Python
 License:        MIT
