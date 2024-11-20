@@ -18,14 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-eventgrid
-Version:        4.20.0
+Version:        4.21.0
 Release:        0
 Summary:        Microsoft Azure Event Grid Client Library
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-eventgrid/azure-eventgrid-%{version}.tar.gz
-Source1:        LICENSE.txt
+Source:         https://files.pythonhosted.org/packages/source/a/azure_eventgrid/azure_eventgrid-%{version}.tar.gz
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -49,10 +48,9 @@ This is the Microsoft Azure Event Grid Client Library.
 This package has been tested with Python 2.7, 3.4, 3.5, 3.6 and 3.7.
 
 %prep
-%setup -q -n azure-eventgrid-%{version}
+%setup -q -n azure_eventgrid-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-eventgrid-%{version}
 %pyproject_wheel
 
 %install
@@ -65,7 +63,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
-%license LICENSE.txt
+%license LICENSE
 %{python_sitelib}/azure/eventgrid
 %{python_sitelib}/azure_eventgrid-*.dist-info
 

@@ -300,4 +300,18 @@
 - Update Requires from setup.py (forwarded request 1180343 from glaubitz)</comment>
     <requestid>1180746</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>370d5a2fe90ca604404839041a8aa6a9</srcmd5>
+    <version>4.21.0</version>
+    <time>1732118606</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 4.21.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Rename LICENSE.txt to LICENSE in %files section</comment>
+    <requestid>1225281</requestid>
+  </revision>
 </revisionlist>
