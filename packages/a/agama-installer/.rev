@@ -49,4 +49,12 @@
   we use SUSE Linux... string instead</comment>
     <requestid>1202591</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>8aabc5f62b7c30277ebaba0d0fc5a7b9</srcmd5>
+    <version>10.0.0</version>
+    <time>1732118618</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1225294</requestid>
+  </revision>
 </revisionlist>
