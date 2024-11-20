@@ -104,4 +104,13 @@
     <comment></comment>
     <requestid>1218454</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>7211c55dd65c8f2aafec2175bc2198e9</srcmd5>
+    <version>1.14</version>
+    <time>1732121288</time>
+    <user>anag+factory</user>
+    <comment>- add remove-py313-upper-bound.patch: fix build with python 3.13
+- cleanup url/source links</comment>
+    <requestid>1225326</requestid>
+  </revision>
 </revisionlist>

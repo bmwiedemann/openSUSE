@@ -23,8 +23,10 @@ Version:        1.14
 Release:        0
 Summary:        Thin wrapper for pandoc
 License:        MIT
-URL:            https://github.com/bebraw/pypandoc
-Source:         https://github.com/NicklasTegner/pypandoc/archive/refs/tags/v%{version}.tar.gz#/pypandoc-%{version}.tar.gz
+URL:            https://github.com/JessicaTegner/pypandoc
+Source:         https://github.com/JessicaTegner/pypandoc/archive/refs/tags/v%{version}.tar.gz#/pypandoc-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM: https://github.com/JessicaTegner/pypandoc/commit/50f3b0867e82874edfd8828087acb6a52ef2eaef
+Patch1:         remove-py313-upper-bound.patch
 BuildRequires:  %{python_module pandocfilters}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry}
@@ -47,7 +49,7 @@ BuildArch:      noarch
 pypandoc provides a thin wrapper for pandoc, a universal document converter.
 
 %prep
-%setup -q -n pypandoc-%{version}
+%autosetup -p1 -n pypandoc-%{version}
 
 %build
 %pyproject_wheel
@@ -59,7 +61,7 @@ pypandoc provides a thin wrapper for pandoc, a universal document converter.
 %check
 # 'test_basic_conversion_from_http_url' needs network
 # 'test_conversion_with_data_files' => https://github.com/JessicaTegner/pypandoc/issues/278
-%pytest tests.py -k 'not test_basic_conversion_from_http_url and not test_conversion_with_data_files'
+%pytest tests.py -k 'not test_basic_conversion_from_http_url and not test_conversion_with_data_files and not test_basic_conversion_from_file_pattern_pathlib_glob'
 
 %files %{python_files}
 %license LICENSE

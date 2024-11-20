@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 20 15:46:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add remove-py313-upper-bound.patch: fix build with python 3.13
+- cleanup url/source links
+
+-------------------------------------------------------------------
 Fri Oct 25 20:02:10 UTC 2024 - Earl Sampson <esampson@suse.com>
 
 - enable sle15_python_module_pythons
