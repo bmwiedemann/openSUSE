@@ -305,4 +305,21 @@
   * Do not mix frozen and non-frozen dataclasses.</comment>
     <requestid>1220380</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>223e583658a11d3864dccb39048a3ab7</srcmd5>
+    <version>0.24.4</version>
+    <time>1732121086</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.24.4:
+  * add error for prefixed non multi units (#1998)
+  * build: typing_extensions version
+  * build: switch from appdirs to platformdirs
+  * fix GenericPlainRegistry getattr type (#2045)
+  * Replace references to the deprecated
+    `UnitRegistry.default_format` (#2058)
+  * fix: upgrade to flexparser&gt;=0.4, exceptions are no longer
+    dataclasses.
+- drop support-python-313.patch (upstream)</comment>
+    <requestid>1225327</requestid>
+  </revision>
 </revisionlist>

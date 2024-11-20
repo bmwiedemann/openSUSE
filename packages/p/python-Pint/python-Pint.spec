@@ -18,14 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Pint
-Version:        0.24.3
+Version:        0.24.4
 Release:        0
 Summary:        Physical quantities module
 License:        BSD-3-Clause
 URL:            https://github.com/hgrecco/pint
 Source:         https://files.pythonhosted.org/packages/source/p/pint/pint-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Based on gh#hgrecco/pint#2037
-Patch0:         support-python-313.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
@@ -33,9 +31,9 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-appdirs
 Requires:       python-flexcache
-Requires:       python-flexparser
+Requires:       python-flexparser >= 0.4
+Requires:       python-platformdirs
 Requires:       python-typing_extensions
 Requires:       python-uncertainties >= 3.0
 Requires(post): update-alternatives
@@ -43,11 +41,11 @@ Requires(postun): update-alternatives
 Recommends:     python-numpy >= 1.21
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module numpy >= 1.21}
-BuildRequires:  %{python_module appdirs}
 BuildRequires:  %{python_module flexcache}
-BuildRequires:  %{python_module flexparser}
+BuildRequires:  %{python_module flexparser >= 0.4}
+BuildRequires:  %{python_module numpy >= 1.21}
 BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module platformdirs}
 BuildRequires:  %{python_module pytest >= 4.0}
 BuildRequires:  %{python_module pytest-subtests}
 BuildRequires:  %{python_module typing_extensions}
