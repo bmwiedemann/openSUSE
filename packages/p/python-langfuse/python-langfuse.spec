@@ -18,11 +18,11 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-langfuse
-Version:        2.44.0
+Version:        2.54.1
 Release:        0
 Summary:        A client library for accessing langfuse
 License:        MIT
-URL:            https://github.com/langfuse/langfuse
+URL:            https://github.com/langfuse/langfuse-python
 Source:         https://files.pythonhosted.org/packages/source/l/langfuse/langfuse-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core >= 1.0.0}

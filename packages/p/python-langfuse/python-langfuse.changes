@@ -1,4 +1,107 @@
 -------------------------------------------------------------------
+Wed Nov 20 15:19:09 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.54.1:
+  * fix(media): allow setting IO media via decorator update
+- update to 2.54.0:
+  * feat(core): add multimodal support
+  * fix(openai): pass parsed_n only if greater 1
+- update to 2.53.9:
+  * perf: move serialization to background threads
+- update to 2.53.8:
+  * fix(datasets): encoding
+- update to 2.53.7:
+  * fix(openai): revert default stream option setting
+- update to 2.53.6:
+  * fix(serializer): reduce log level to debug on failed
+    serialization
+- update to 2.53.5:
+  * fix(serializer): pydantic compat v1 v2
+- update to 2.53.4:
+  * feat(openai): parse usage if stream_options has include_usage
+- update to 2.53.3:
+  * fix(datasets): url encode dataset name and run name
+  * refactor(llama-index): send generation updates directly from
+    event handler
+- update to 2.53.2:
+  * fix(llama-index): CompletionResponse Serialization by
+    @hassiebp
+- update to 2.53.1:
+  * fix: 'NoneType' object has no attribute '__dict__'
+- update to 2.53.0:
+  * feat(client): allow masking event input and output by
+    @shawnzhu and @hassiebp in
+    https://github.com/langfuse/langfuse-python/pull/977
+  * fix(decorator): improve stack access safety
+- update to 2.52.2:
+  * fix(openai): handle NoneType responses gracefully
+  * docs(llama-index): deprecate CallbackHandler and promote
+    Instrumentor
+  * fix(langchain): DeepInfra model parsing
+- update to 2.52.1:
+  * fix(decorators): stack trace on failed auth_check
+  * fix(api): list models parsing errors
+  * fix(langchain): parse tool calls in input
+- update to 2.52.0:
+  * feat(llama-index): add LlamaIndexInstrumentor for use with
+    instrumentation module instead of LlamaIndexSpanHandler
+- update to 2.51.5:
+  * fix(openai): structured output parsing with openai >= 1.50
+  * chore(deps): bump django from 5.0.8 to 5.0.9 in
+    /examples/django_example
+- update to 2.51.4:
+  * fix(serializer): Fix None serialization without langchain
+    installed
+  * fix(langchain): invalid user_id / session_id in TraceBody
+  * chore(deps-dev): bump pytest from 8.2.0 to 8.3.3
+  * chore: automerge dependabot patch PRs
+  * chore(deps): bump pydantic from 2.7.4 to 2.9.2
+  * chore: fix dependabot automerge
+  * chore: fix auto merging
+  * chore: fix auto merging
+- update to 2.51.3:
+  * fix(langchain): time to first token
+- update to 2.51.2:
+  * fix(prompts): remove traceback from fetch error logs
+  * fix(langchain): parse model name for ChatOCIGenAIAgent
+- update to 2.51.0:
+  * feat(langchain): time to first token on streamed generations
+  * feat(langchain): allow passing trace attributes on chain
+    invocation
+  * fix(langchain): python langchain retriever - parent run not
+    found
+  * fix handle_span_events exception
+- update to 2.50.3:
+  * fix(serializer): support numpy scalars
+- update to 2.50.2:
+  * feat(prompts): allow passing kwargs to precompile langchain
+    prompt
+- update to 2.50.1:
+  * fix(langchain): link prompts to nested generations as well
+- update to 2.50.0:
+  * feat(decorator): allow setting parent trace or observation id
+- update to 2.49.0:
+  * feat(langchain): link langfuse prompts to langchain
+    executions
+- update to 2.48.1:
+  * fix(openai): multiple streamed tool calls
+  * fix(openai): time to first token
+- update to 2.48.0:
+  * feat(decorator): Enhance `observe` decorator to support usage
+    without parentheses
+  * fix(llama-index): initialize OpenAI model serializers
+  * fix(langchain): ollama usage parsing
+  * fix(langchain/AzureChatOpenai): unnecessary logs
+  * fix(langchain): batch run to update trace outputs
+- update to 2.47.1:
+  * feat: improve error messages
+- update to 2.47.0:
+  * feat(prompts): optionally disable prompt caching when cache
+    ttl is 0
+  * Docs: https://langfuse.com/docs/prompts/get-started#disable-
+    caching
+
+-------------------------------------------------------------------
 Thu Oct 31 19:10:21 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Add missing Requires.
@@ -6,7 +109,7 @@ Thu Oct 31 19:10:21 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 -------------------------------------------------------------------
 Fri Sep 27 01:36:18 UTC 2024 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- version update to 2.44.0 
+- version update to 2.44.0
   changes since v2.43.1
   - fix: rename careers file to match hackernews post (#2115)
   - fix: link of help link of eval log
@@ -31,9 +134,9 @@ Fri Sep 27 01:36:18 UTC 2024 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 -------------------------------------------------------------------
 Wed Aug 21 20:09:26 UTC 2024 - Aline Werner <aline.werner@suse.com>
 
-- Fix executable file conflict for Tumbleweed build, change description and add missing URL. 
+- Fix executable file conflict for Tumbleweed build, change description and add missing URL.
 
 -------------------------------------------------------------------
 Fri Aug  9 17:59:18 UTC 2024 - Aline Werner <aline.werner@suse.com>
 
-- Initial package creation for python-langfuse version 2.43.1 
+- Initial package creation for python-langfuse version 2.43.1

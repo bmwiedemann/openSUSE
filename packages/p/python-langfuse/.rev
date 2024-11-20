@@ -37,4 +37,41 @@
 </comment>
     <requestid>1219953</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>189a2c09599ac8cbbf7980914749e351</srcmd5>
+    <version>2.54.1</version>
+    <time>1732121083</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.54.1:
+  * fix(media): allow setting IO media via decorator update
+- update to 2.54.0:
+  * feat(core): add multimodal support
+  * fix(openai): pass parsed_n only if greater 1
+- update to 2.53.9:
+  * perf: move serialization to background threads
+- update to 2.53.8:
+  * fix(datasets): encoding
+- update to 2.53.7:
+  * fix(openai): revert default stream option setting
+- update to 2.53.6:
+  * fix(serializer): reduce log level to debug on failed
+    serialization
+- update to 2.53.5:
+  * fix(serializer): pydantic compat v1 v2
+- update to 2.53.4:
+  * feat(openai): parse usage if stream_options has include_usage
+- update to 2.53.3:
+  * fix(datasets): url encode dataset name and run name
+  * refactor(llama-index): send generation updates directly from
+    event handler
+- update to 2.53.2:
+  * fix(llama-index): CompletionResponse Serialization by
+    @hassiebp
+- update to 2.53.1:
+  * fix: 'NoneType' object has no attribute '__dict__'
+- update to 2.53.0:
+  * feat(client): allow masking event input and output by
+    @shawnzhu and @hassiebp in</comment>
+    <requestid>1225319</requestid>
+  </revision>
 </revisionlist>
