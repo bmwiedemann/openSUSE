@@ -16,16 +16,15 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 Name:           rancher-cli
-Version:        2.9.2
+Version:        2.10.0
 Release:        0
 Summary:        Rancher CLI
 License:        Apache-2.0
 URL:            https://github.com/rancher/cli
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) = 1.22
+BuildRequires:  go >= 1.23.1
 
 %description
 The Rancher Command Line Interface (CLI) is a unified tool for interacting with
@@ -43,7 +42,7 @@ go build \
 
 %install
 # Install the binary.
-install -D -m 0755 cli "%{buildroot}/%{_bindir}/%{name}"
+install -D -m 0755 cli %{buildroot}/%{_bindir}/%{name}
 
 %files
 %doc README.md

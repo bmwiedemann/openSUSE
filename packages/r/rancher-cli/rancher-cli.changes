@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov 20 07:52:16 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.0:
+  * [v2.10] Bump rancher to v2.10.0 and remove deprecated globaldns
+    subcommand (#402)
+  * Bump Go to 1.23.1 (#396)
+  * revert error message (#390)
+  * Ensure that localProvider is always the 0th provider listed in
+    the provider selection prompt. (#389)
+  * Update README.md for Linux binary build command (#385)
+  * Fix panic on `context switch` (#386)
+
+-------------------------------------------------------------------
 Sat Sep 21 13:28:27 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.9.2 (no release 2.9.1):
