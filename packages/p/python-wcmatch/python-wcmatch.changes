@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Nov 20 14:08:52 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 10.0:
+  * NEW: Added GLOBSTARLONG which adds support for the Zsh style
+    *** which acts like ** with GLOBSTAR but but traverses
+    symlinks.
+  * NEW: pathlib.match will respect symlink rules (when the
+    REALPATH flag is given). Hidden file rules will be respected at
+    all times. Enable DOTALL to match hidden files.
+  * NEW: Symlinks should not be traversed when GLOBSTAR is enabled
+    unless FOLLOW is also enabled, but they should still be
+    matched. Prior to this change, symlinks were not traversed and
+    they were ignored from matching which contradicts how Bash
+    works and could be confusing to users.
+  * FIX: Fix some inconsistencies with globmatch and symlink
+    handling when REALPATH is enabled.
+- update to 9.0:
+  * NEW: Remove deprecated function glob.raw_escape.
+  * NEW: Officially support Python 3.13.
+
+-------------------------------------------------------------------
 Mon Jun 10 08:27:22 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.5.2:

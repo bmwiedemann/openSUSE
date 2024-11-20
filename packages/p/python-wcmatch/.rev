@@ -56,4 +56,12 @@
   * Fix `EXTMATCH` case with `!(...)` patterns.</comment>
     <requestid>1179650</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>de1c90970244a85b3e0e6d3b79f62fec</srcmd5>
+    <version>10.0</version>
+    <time>1732121056</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1225306</requestid>
+  </revision>
 </revisionlist>
