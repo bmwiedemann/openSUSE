@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 13 11:07:08 UTC 2024 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Disable changelog autogeneration.
+
+-------------------------------------------------------------------
 Thu Nov  7 14:10:36 UTC 2024 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Use #!/usr/bin/bash shebang for package dependency generator to

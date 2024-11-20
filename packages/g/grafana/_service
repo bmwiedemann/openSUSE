@@ -6,7 +6,6 @@
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="revision">v11.3.0</param>
-    <param name="changesgenerate">enable</param>
   </service>
   <service name="recompress" mode="manual">
     <param name="compression">gz</param>
