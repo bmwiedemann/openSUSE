@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Wed Nov 20 09:35:08 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.5.3:
+  * Feature Requests | Enhancements
+    - Enhancement: Ensure application notifies user of curl
+      versions that contain HTTP/2 bugs that impact the operation
+      of this client (#2913, #2922, #2926)
+    - Enhancement: Update Dockerfile-debian to fix that libcurl4
+      does not get applied despite being pulled in. Explicitly
+      install it from Debian 12 Backports
+    - Enhancement: Add passive database checkpoints (#2944)
+    - Enhancement: Add OpenSSL version warning (#2961)
+    - Update safeBackup to use a new filename format for easier
+      identification:
+      filename-hostname-safeBackup-number.file_extension (#2966)
+  * Bug Fixes
+    - Fix Bug: Fix application crash when session upload files
+      contain zero data or are corrupt (#2893)
+    - Fix Bug: Fix that when creating a new folder online the
+      application generates an exception if it is in a Shared
+      Online Folder (#2895)
+    - Fix Bug: Fix that a 'sync_list' entry of '/' will cause a
+      index [0] is out of bounds (#2897)
+    - Fix Bug: Fix regression for Docker 'sync_dir' use (#2901)
+    - Fix Bug: Fix that curl generates a SIGPIPE that causes
+      application to exit due to upstream device killing idle TCP
+      connection (#2906)
+    - Fix Bug: Fix that skip_file in config does not override
+      defaults (#2917)
+    - Fix Bug: Fix that skip_dir is not flagging directories
+      correctly causing deletion if parental path structure needs
+      to be created for sync_list handling (#2918)
+    - Fix Bug: Fix application crash caused by unable to drop table
+      (#2919)
+    - Fix Bug: Setup a specific SIGPIPE Signal handler for
+      curl/openssl generated signals (#2929)
+    - Fix Bug: Handle DB upgrades from v2.4.x without causing
+      application crash (#2932)
+    - Fix Bug: Fix a database statement execution error occurred:
+      NOT NULL constraint failed: item.type due to Microsoft
+      OneNote items (#2939)
+    - Fix Bug: Allow no-sync operations to complete online account
+      checks (#2943)
+    - Fix Bug: Update Dockerfile-alpine - revert to Alpine 3.19 as
+      application fails to run on Alpine 3.20 (#2956)
+    - Fix Bug: Fix Operation not permitted FileException Error when
+      attempting to use setTimes() function (#2958)
+    - Fix Bug: Fix that files with no mime type cause sync to crash
+      (#2963)
+    - Fix Bug: Ensure bypass_data_preservation operates as intended
+      (#2967)
+  * Other Changes | Fixes
+    - Implement Docker ENV variable for --cleanup-local-files
+      (#2868)
+    - Improve performance with reduced execution time and lower
+      CPU/system resource usage (#2880)
+    - Specifically use a 'mutex' to perform the lock on DB actions
+      (#2882)
+    - Add Ubuntu 24.10 OpenSuSE Build Service details (#2942)
+    - Add Check Spelling GitHub Action (#2945)
+    - Updated documentation
+
+-------------------------------------------------------------------
 Sun Sep 29 07:50:13 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.5.2:

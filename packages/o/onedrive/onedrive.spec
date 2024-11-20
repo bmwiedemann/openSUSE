@@ -28,7 +28,7 @@
 %endif
 
 Name:           onedrive
-Version:        2.5.2
+Version:        2.5.3
 Release:        0
 Summary:        Client for One Drive Service for Linux
 License:        GPL-3.0-only
