@@ -22,6 +22,10 @@
 # Required for the plugin directory name, see https://github.com/OpenImageIO/oiio/issues/2583
 %define oiio_major_minor_ver %(rpm -q --queryformat='%%{version}' OpenImageIO-devel | cut -d . -f 1-2)
 
+# we could have a minimum of 9 here. but to more easily switch to C++17 we set the minium to 16
+%global min_llvm_version 16
+%global max_llvm_version 18.9
+
 Name:           OpenShadingLanguage
 Version:        1.13.11.0
 Release:        0
@@ -34,26 +38,20 @@ Source1:        https://creativecommons.org/licenses/by/3.0/legalcode.txt#/CC-BY
 Patch0:         fix-install-paths.patch
 BuildRequires:  OpenEXR-devel >= 2.4
 BuildRequires:  bison
-BuildRequires:  (OpenImageIO >= 2.4 with OpenImageIO < 3)
-BuildRequires:  cmake(Qt6)
-BuildRequires:  cmake(Qt6Core)
-BuildRequires:  cmake(Qt6Gui)
-BuildRequires:  cmake(Qt6OpenGLWidgets)
-BuildRequires:  cmake(Qt6Widgets)
-%if 0%{?suse_version} > 1500
-#!BuildIgnore:  clang-tools
-BuildRequires:  clang15-devel
-BuildRequires:  llvm15-devel
-%else
-BuildRequires:  clang-devel > 9
-BuildRequires:  llvm-devel > 9
-%endif
 BuildRequires:  cmake >= 3.15
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
+BuildRequires:  (OpenImageIO >= 2.4 with OpenImageIO < 3)
+BuildRequires:  (cmake(Clang) >= %{min_llvm_version} with cmake(Clang) =< %{max_llvm_version})
+BuildRequires:  (cmake(LLVM)  >= %{min_llvm_version} with cmake(LLVM)  =< %{max_llvm_version})
+BuildRequires:  cmake(Qt6)
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6OpenGLWidgets)
+BuildRequires:  cmake(Qt6Widgets)
 %ifnarch %{arm}
 # Build fails with partio on armv7/armv6
 BuildRequires:  partio-devel
@@ -204,7 +202,7 @@ find . -iname CMakeLists.txt -exec sed "-i" "-e s/COMMAND python/COMMAND python3
       -DCMAKE_SKIP_RPATH:BOOL=TRUE \
       -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name} \
       -DOSL_SHADER_INSTALL_DIR:PATH=%{_datadir}/%{name}/shaders/ \
-      -DCMAKE_CXX_STANDARD:STRING=14
+      -DCMAKE_CXX_STANDARD:STRING=17
 %cmake_build
 
 %install

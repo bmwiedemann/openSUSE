@@ -24,7 +24,7 @@
 %bcond_with vulkan
 %endif
 Name:           warzone2100
-Version:        4.5.4
+Version:        4.5.5
 Release:        0
 Summary:        Innovative 3D real-time strategy
 License:        BSD-3-Clause AND CC-BY-SA-3.0 AND GPL-3.0-or-later AND CC0-1.0 AND LGPL-2.1-only

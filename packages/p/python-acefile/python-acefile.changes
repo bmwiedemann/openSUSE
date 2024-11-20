@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 19 12:04:15 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.13:
+  * Rephrase setup failure notices for clarity.
+  * Improve seekable conformance of internal file-like
+    wrappers.
+  * Minor maintainability and test improvements.
+
+-------------------------------------------------------------------
 Wed May 27 09:35:56 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

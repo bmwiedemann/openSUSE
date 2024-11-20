@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/lxde/lxsession.git</param>
+    <param name="revision">c72db4f8c06c2d6be6dcb13fad838f619f51f8a7</param>
+    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
+    <param name="versionrewrite-pattern">(.*)\+0</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="manual" />
+</services>

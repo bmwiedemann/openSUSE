@@ -60,11 +60,11 @@
 # GCC version
 %define gcc_version 13
 %if 0%{?suse_version} <= 1699
-%bcond_with system_re2
 %bcond_with system_webp
+%bcond_with system_re2
 %else
-%bcond_without system_re2
 %bcond_without system_webp
+%bcond_without system_re2
 %endif
 %bcond_with is_beta # CHANNEL SWITCH
 %bcond_with system_avif
@@ -98,7 +98,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           chromium%{n_suffix}
-Version:        130.0.6723.116
+Version:        131.0.6778.69
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -142,7 +142,6 @@ Patch248:       chromium-119-assert.patch
 Patch256:       chromium-120-make_unique-struct.patch
 Patch261:       chromium-121-rust-clang_lib.patch
 Patch311:       chromium-125-disable-FFmpegAllowLists.patch
-Patch322:       chromium-125-lp155-typename.patch
 Patch336:       chromium-124-system-libxml.patch
 Patch337:       chromium-123-missing-QtGui.patch
 Patch359:       chromium-126-quiche-interator.patch
@@ -151,8 +150,9 @@ Patch361:       chromium-127-rust-clanglib.patch
 Patch362:       chromium-127-clang17-traitors.patch
 Patch363:       chromium-127-constexpr.patch
 Patch364:       chromium-129-revert-AVFMT_FLAG_NOH264PARSE.patch
-Patch365:       chromium-130-missing-includes.patch
 Patch366:       chromium-130-no-hardware_destructive_interference_size.patch
+Patch367:       chromium-131-unbundle-enable-freetype.patch
+Patch368:       chromium-131-clang-stack-protector.patch
 BuildRequires:  SDL-devel
 BuildRequires:  bison
 BuildRequires:  cups-devel
@@ -555,7 +555,6 @@ keeplibs=(
     third_party/devtools-frontend/src/front_end/third_party/i18n
     third_party/devtools-frontend/src/front_end/third_party/intl-messageformat
     third_party/devtools-frontend/src/front_end/third_party/lighthouse
-    third_party/devtools-frontend/src/front_end/third_party/lodash-isequal
     third_party/devtools-frontend/src/front_end/third_party/marked
     third_party/devtools-frontend/src/front_end/third_party/puppeteer
     third_party/devtools-frontend/src/front_end/third_party/puppeteer/package/lib/esm/third_party/mitt
@@ -583,6 +582,7 @@ keeplibs=(
     third_party/highway
     third_party/hunspell
     third_party/iccjpeg
+    third_party/ink
     third_party/inspector_protocol
     third_party/ipcz
     third_party/jinja2
@@ -682,8 +682,7 @@ keeplibs=(
     third_party/tflite/src/third_party/eigen3
     third_party/tflite/src/third_party/fft2d
     third_party/tflite/src/third_party/xla/third_party/tsl
-    third_party/tflite/src/third_party/xla/xla/tsl/util
-    third_party/tflite/src/third_party/xla/xla/tsl/framework
+    third_party/tflite/src/third_party/xla/xla/tsl
     third_party/ukey2
     third_party/utf
     third_party/vulkan
@@ -1055,6 +1054,8 @@ mkdir -p %{buildroot}%{_datadir}/chromium/extensions
 mkdir -p %{buildroot}%{_sysconfdir}/chromium/native-messaging-hosts
 # SVG
 install -Dm 0644 %{SOURCE104} %{buildroot}%{_datadir}/icons/hicolor/symbolic/apps/chromium-browser.svg
+# link for the manpage
+ln -sf chromium-browser.1%{?ext_man} %{buildroot}%{_mandir}/man1/chromium.1%{?ext_man}
 
 %fdupes -s %{buildroot}
 
@@ -1075,6 +1076,7 @@ install -Dm 0644 %{SOURCE104} %{buildroot}%{_datadir}/icons/hicolor/symbolic/app
 %exclude %{_libdir}/chromium/chromedriver
 %{_bindir}/chromium-browser
 %{_bindir}/chromium
+%{_mandir}/man1/chromium.1%{?ext_man}
 %{_mandir}/man1/chromium-browser.1%{?ext_man}
 
 %files -n %{chromedriver_name}

@@ -18,7 +18,7 @@
 
 %{!?license: %global license %doc}
 Name:           jp2a
-Version:        1.3.0
+Version:        1.3.2
 Release:        0
 Summary:        Converts JPEG images to ASCII
 License:        GPL-2.0-only

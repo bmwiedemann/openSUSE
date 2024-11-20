@@ -290,4 +290,39 @@
 - python3 package added</comment>
     <requestid>1143967</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>9cb0758c5e45d11fb5913f990d9c97a8</srcmd5>
+    <version>2.3.1</version>
+    <time>1732051398</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.3.1:
+  * skip e501 fixed method for f-string line without aggressive
+    option
+  * Fix argument parser errors are printed without a trailing
+    newline
+- update to 2.3.0:
+  * add handling for E204 whitespace after decorator
+  * require to pycodestyle v2.12.0+
+- update to 2.2.0:
+  * experimental option is deprecated
+  * fix specific case of e271 and w504
+  * skip e501 fixed method for f-string line(s)
+- update to 2.1.2:
+  * Fix e501 experimental fstring case in Python3.12+
+- update to 2.1.1:
+  * force reload pycodestyle module
+- update to 2.1.0:
+  * migrate to pyproject.toml
+  * run with pypy3.10
+  * ISSUE_TEMPLATE: use &quot;console&quot; instead of non-existing &quot;shell&quot;
+    syntax
+  * add 3.12, drop 3.7
+  * tox: add python3.12 to test environments
+  * async def function formatting
+  * pyproject: support py3.12 via new version of pycodestyle
+  * add: unit test for e501 with async def
+  * Update python versions
+- drop python312-skip-tests.patch (upstream)</comment>
+    <requestid>1225057</requestid>
+  </revision>
 </revisionlist>

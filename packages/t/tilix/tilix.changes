@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 14 22:02:31 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add "--allinst" to DFLAGS env variable to avoid linking errors
+  (gh#gnunn1/tilix#2210).
+- Add pkgconfig(librsvg-2.0) to BuildRequires to avoid build
+  failures on leap 15.x.
+- Add tilix-metainfo-add-developer-id.patch: Add a developer id to
+  metainfo to fix failing test; upstream commit.
+
+-------------------------------------------------------------------
 Thu Nov  9 10:14:33 UTC 2023 - Emiliano Langella <emiliano.langella@suse.com>
 
 - Update to version 1.9.6

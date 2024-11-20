@@ -1,7 +1,7 @@
 #
 # spec file for package slick-greeter-branding-openSUSE
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -45,8 +45,8 @@ Requires:       cantarell-fonts
 Requires:       gtk3-metatheme-adwaita
 Requires:       lightdm-slick-greeter = %{lightdm_slick_greeter_version}
 Requires:       wallpaper-branding-openSUSE
-Supplements:    packageand(lightdm-slick-greeter:branding-openSUSE)
-Conflicts:      otherproviders(lightdm-slick-greeter-branding)
+Supplements:    (lightdm-slick-greeter and branding-openSUSE)
+Conflicts:      lightdm-slick-greeter-branding
 Provides:       lightdm-slick-greeter-branding = %{lightdm_slick_greeter_version}
 %glib2_gsettings_schema_requires
 
@@ -61,9 +61,7 @@ cp -f %{SOURCE1} slick-greeter-branding.gschema.override.in
 %build
 cp %{_defaultlicensedir}/lightdm-slick-greeter/COPYING .
 
-[ -r %{_datadir}/wallpapers/openSUSE-default.xml ]
-bg="$(sed -rn '/<file>/,/<\/file>/s/^.*?<.+?>(.*)<\/.+?>$/\1/p' \
-      %{_datadir}/wallpapers/openSUSE-default.xml | head -n1)"
+bg="%{_datadir}/wallpapers/openSUSEdefault/contents/images/default.png"
 sed -e "s|@@WALLPAPER_URI@@|$bg|" \
   slick-greeter-branding.gschema.override.in > \
   slick-greeter-branding.gschema.override
@@ -79,6 +77,8 @@ install -Dpm 0644 slick-greeter-branding.gschema.override \
 %postun -n lightdm-slick-greeter-branding-openSUSE
 %glib2_gsettings_schema_postun
 %endif
+
+%check
 
 %files -n lightdm-slick-greeter-branding-openSUSE
 %license COPYING

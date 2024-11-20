@@ -23,4 +23,16 @@
     <comment></comment>
     <requestid>809602</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>33abe8aea4cdd32d128777bb9ee80ed1</srcmd5>
+    <version>0.6.13</version>
+    <time>1732051410</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.6.13:
+  * Rephrase setup failure notices for clarity.
+  * Improve seekable conformance of internal file-like
+    wrappers.
+  * Minor maintainability and test improvements.</comment>
+    <requestid>1225078</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 18 13:11:39 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Own /srv/www which is no longer owned by the filesystem package.
+
+-------------------------------------------------------------------
 Mon Jul 15 16:26:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.98 (bsc#1227423, CVE-2024-39929):

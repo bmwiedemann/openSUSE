@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 15 09:28:18 UTC 2024 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Remove BuildRequires on gamin, it's being removed. 
+
+-------------------------------------------------------------------
 Thu Feb 29 14:51:34 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

@@ -29,6 +29,7 @@ Source:         https://files.pythonhosted.org/packages/source/s/slimit/slimit-%
 Patch0:         python-slimit-add-licence.patch
 # https://github.com/rspivak/slimit/commit/40956e7fc6e954b3e6d7b629faeb3303f5efb7ea
 Patch1:         python-slimit-fix-python3.patch
+Patch2:         py313-makesuite.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module ply >= 3.4}
 BuildRequires:  %{python_module setuptools}

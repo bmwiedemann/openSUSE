@@ -1,7 +1,7 @@
 #
 # spec file for package python-acefile
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-acefile
-Version:        0.6.12
+Version:        0.6.13
 Release:        0
 Summary:        ACE 1.0 and 2.0 archive reader/extractor in pure Python
 License:        BSD-2-Clause

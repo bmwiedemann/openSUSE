@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 19 10:22:00 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream py313.patch to fix tests on Python 3.13
+
+-------------------------------------------------------------------
 Tue Sep  3 14:25:26 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 4.2.16 (bsc#1229823, bsc#1229824)

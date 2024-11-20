@@ -17,7 +17,7 @@
 
 
 Name:           python-cdflib
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        A python CDF reader toolkit
 License:        MIT

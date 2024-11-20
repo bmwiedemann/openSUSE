@@ -1,3 +1,11 @@
+-------------------------------------------------------------------
+Mon Nov 18 20:28:31 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.1:
+  * Fix crash when connecting bluetooth audio players
+  * Update translations
+- fix CFLAGS
+
 ------------------------------------------------------------------
 Wed Nov 12 03:00:00 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 

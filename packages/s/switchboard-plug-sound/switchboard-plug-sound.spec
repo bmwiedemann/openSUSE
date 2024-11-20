@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.settings.sound
 Name:           switchboard-plug-sound
-Version:        8.0.0
+Version:        8.0.1
 Release:        0
 Summary:        Sound plug for Switchboard
 License:        GPL-3.0-or-later
@@ -46,7 +46,7 @@ sound-related settings.
 %autosetup
 
 %build
-export CFLAGS="-Wincompatible-pointer-types"
+export CFLAGS="%{optflags} -Wno-error=return-type"
 %meson
 %meson_build
 

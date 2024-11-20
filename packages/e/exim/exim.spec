@@ -533,6 +533,7 @@ exit 0
 %{_bindir}/eximon.bin
 
 %files -n eximstats-html
+%dir /srv/www
 %attr(0750,root,www) /srv/www/eximstats
 %dir %{_sysconfdir}/apache2
 %dir %{_sysconfdir}/apache2/conf.d

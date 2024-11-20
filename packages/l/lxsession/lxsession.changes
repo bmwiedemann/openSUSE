@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Nov 18 21:28:30 UTC 2024 - bjorn.lie@gmail.com
+
+- Update to version 0.5.5+56:
+  * Remove trailing whitespace in man pages
+  * Fix spelling and update man page
+  * Increase the required versions of GLib and GTK+
+  * Update autogen.sh
+  * Remove the obsolete debian directory
+  * Remove the m4 directory
+  * Remove the comment about the order of checked screen lockers
+  * Fix description of the --enable-debug option
+  * Reduce the vala compiler version check to major and minor version
+  * Fix: support gcc14 -Werror=incompatible-pointer-types
+- Switch to gitcheckout via source service.
+- Pass NOCONFIGURE=1 ./autogen.sh, bootstrap build.
+
+-------------------------------------------------------------------
 Mon Sep 28 13:59:26 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)

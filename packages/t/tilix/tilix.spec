@@ -1,7 +1,7 @@
 #
 # spec file for package tilix
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,8 @@ Patch0:         gnome-ssh-agent.patch
 # PATCH-FIX-OPENSUSE 0001-Don-t-generate-appstream-meta-data-on-older-versions.patch -- Provide appdata.xml instead of generating one since we have to old version of appstream in Leap releases
 Patch1:         0001-Don-t-generate-appstream-meta-data-on-older-versions.patch
 %endif
+# PATCH-FIX-UPSTREAM tilix-metainfo-add-developer-id.patch badshah400@gmail.com -- Add a developer id to metainfo to fix failing test; upstream commit
+Patch2:         https://github.com/gnunn1/tilix/commit/69fe457b58b58eb6f679bc50ef040d08b40fb65d.patch#/tilix-metainfo-add-developer-id.patch
 BuildRequires:  AppStream
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
@@ -58,6 +60,7 @@ BuildRequires:  pkgconfig(gsettings-desktop-schemas)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtkd-3) >= 3.8.5
+BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libunwind)
 BuildRequires:  pkgconfig(vte-2.91)
@@ -85,6 +88,7 @@ arbitrary folders.
 %autosetup -p 1
 
 %build
+export DFLAGS+=" --allinst"
 %meson
 %meson_build
 

@@ -373,4 +373,13 @@
   * Included upstream.</comment>
     <requestid>1205031</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>e08896fe68e341c31cca3f145c5eb548</srcmd5>
+    <version>0.41.2</version>
+    <time>1732051389</time>
+    <user>anag+factory</user>
+    <comment>- skip one more test for python 313
+  (https://github.com/kvesteri/sqlalchemy-utils/issues/764)</comment>
+    <requestid>1225046</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov 12 09:33:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.5.0:
+  * Allow asdf.util.load_yaml to handle recursive objects
+  * added issue links to changelog entries
+  * Change asdf standard changelog entries to notes to ease
+    transition to towncrier
+  * fix changelog checker to remove brackets
+  * Deprecate ignore_version_mismatch. This option has done
+    nothing since asdf 3.0.0 and will be removed in an upcoming
+    asdf version
+
+-------------------------------------------------------------------
 Thu Aug 29 14:09:01 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.4.0

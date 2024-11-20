@@ -362,4 +362,41 @@ devel:languages:go/telegraf r7 (forwarded request 758639 from jfkw)</comment>
     <comment>- Update to version 1.32.2: (forwarded request 1218883 from darix)</comment>
     <requestid>1218903</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>1137bfb9cc931662c5df414f8b11e358</srcmd5>
+    <version>1.32.3</version>
+    <time>1732051004</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.32.3:
+  * Telegraf v1.32.3
+  * Update changelog for v1.32.3
+  * Update build_version.txt for v1.32.3
+  * chore: Make docs
+  * fix(inputs.snmp_trap): Remove timeout deprecation (#16145)
+  * fix(inputs.netflow): Cast TCP ports to uint16 (#16197)
+  * fix(common.socket): Use read buffer size config setting as a datagram reader buffer size (#16156)
+  * chore: Update go to v1.23.3 (#16180)
+  * chore: Fix linter findings for `revive:exported` in `plugins/inputs/m*` (#16191)
+  * chore: Enable `revive:enforce-repeated-arg-type-style` rule (#16182)
+  * chore(deps): Bump github.com/rclone/rclone from 1.67.0 to 1.68.1 (#16178)
+  * chore: Enable `testifylint:go-require` checker (#16158)
+  * chore: Enable `revive:enforce-slice-style` rule (#16173)
+  * fix(agent): Restore setup order of stateful plugins to Init() then SetState() (#16123)
+  * chore(deps): Bump golangci-lint from v1.61.0 to v1.62.0 (#16172)
+  * chore(deps): Bump github.com/tidwall/gjson from 1.17.1 to 1.18.0 (#16174)
+  * chore(deps): Bump golang.org/x/text from 0.19.0 to 0.20.0 (#16177)
+  * chore(deps): Bump github.com/aws/aws-sdk-go-v2/credentials from 1.17.37 to 1.17.44 (#16175)
+  * chore(deps): Bump github.com/sijms/go-ora/v2 from 2.8.19 to 2.8.22 (#16176)
+  * chore: Fix linter findings for `revive:exported` in `plugins/inputs/l*` (#16167)
+  * chore(parsers.prometheus): Do not warn about unknown format without headers (#16166)
+  * fix(inputs.gnmi): Register connection statistics before creating client (#16171)
+  * chore: Fix linter findings for `revive:enforce-slice-style` in `plugins/inputs/[a-d]*` and `plugins/common` (#16161)
+  * chore(processors.regex): Change logging severity to debug (#16151)
+  * fix(inputs.snmp): Fix crash when trying to format fields from unknown OIDs (#16155)
+  * chore(outputs.influxdb_v2): Cleanup code and tests (#16147)
+  * docs(specs): Add specification for partial-write errors (#16034)
+  * chore(deps): Bump github.com/vmware/govmomi from 0.39.0 to 0.45.1 (#16135)
+  * chore(deps): Bump github.com/golang-jwt/jwt/v4 from 4.5.0 to 4.5.1 (#16136) (forwarded request 1224958 from jfkw)</comment>
+    <requestid>1224959</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 19 10:14:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.36.0:
+  * Use bytes instead of to_bytes in pyav metadata call
+  * Remove support for Python 3.8
+
+-------------------------------------------------------------------
 Thu Aug 29 09:49:42 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.35.1:

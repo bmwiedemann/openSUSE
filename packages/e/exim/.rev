@@ -920,4 +920,12 @@ argument by removing the curly brackets (shell syntax).</comment>
   * Add SMTP WELLKNOWN extension.</comment>
     <requestid>1187596</requestid>
   </revision>
+  <revision rev="82" vrev="2">
+    <srcmd5>1ddf98922bc7c0902b9ced2974f07690</srcmd5>
+    <version>4.98</version>
+    <time>1732051405</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1225066</requestid>
+  </revision>
 </revisionlist>

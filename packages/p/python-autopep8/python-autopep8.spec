@@ -19,23 +19,22 @@
 %{?sle15_python_module_pythons}
 
 Name:           python-autopep8
-Version:        2.0.4
+Version:        2.3.1
 Release:        0
 Summary:        Automatic generated to pep8 checked code
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/hhatto/autopep8
 Source:         https://files.pythonhosted.org/packages/source/a/autopep8/autopep8-%{version}.tar.gz
-Patch1:         https://github.com/hhatto/autopep8/commit/6ebcb3cfadd9b8764405e1cab24f4412f05b36bb.patch#/python312-skip-tests.patch
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pycodestyle >= 2.8}
+BuildRequires:  %{python_module pycodestyle >= 2.12}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tomli if %python-base < 3.11}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
-Requires:       python-pycodestyle >= 2.10.0
+Requires:       python-pycodestyle >= 2.12.0
 %if %{python_version_nodots} < 311
 Requires:       python-tomli
 %endif

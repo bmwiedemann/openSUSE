@@ -364,4 +364,12 @@
     <comment></comment>
     <requestid>1199483</requestid>
   </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>4d24971ebf5157bf8cd96af5dd2f3818</srcmd5>
+    <version>1.12.0</version>
+    <time>1732051399</time>
+    <user>anag+factory</user>
+    <comment>- add unpin-autopep8.patch</comment>
+    <requestid>1225060</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 12 09:07:47 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 1.3.2:
+ - Fix Docker image missing libexif library. Thanks to PowerMeep
+   (https://github.com/PowerMeep)
+- update to version 1.3.1:
+ - Fix segmentation fault that can occur when trying to parse a file of an
+   unsupported file type. Thanks to Balló György (https://github.com/City-busz)
+
+-------------------------------------------------------------------
 Mon Sep 23 06:19:46 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
 
 - Update to version 1.3.0:

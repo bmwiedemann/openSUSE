@@ -242,4 +242,12 @@ depends on 1159012</comment>
     <comment>Update to version 0.45.0</comment>
     <requestid>1223885</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>a5242632c174dfdab43750fe13e93ed1</srcmd5>
+    <version>0.45.1</version>
+    <time>1732051201</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1224968</requestid>
+  </revision>
 </revisionlist>

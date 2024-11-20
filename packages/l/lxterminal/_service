@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/lxde/lxterminal.git</param>
+    <param name="revision">da62ee20d3707f5851331004fe2689fe69d46e45</param>
+    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
+    <param name="versionrewrite-pattern">(.*)\+0</param>
+    <param name="versionrewrite-replacement">\1</param>
+<!--    <param name="changesgenerate">enable</param> -->
+  </service>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="manual" />
+</services>

@@ -1,4 +1,134 @@
 -------------------------------------------------------------------
+Mon Nov 18 13:47:38 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.24.8
+  * Allow MinimumWidth on all nested elements.
+  * fix: improve edge cases for JSON diagram (manage null and
+    empty Array/Object).
+  * use latex to get string bounder.
+  * tikz: make all fonts with the same baseline.
+  * tikz: avoid latex manager crash for special characters.
+  * tikz: use the same protectText when calc dimension and render.
+  * tikz: optimize latex render.
+  * optimize tikz render.
+  * upd: uniformisation of dirpath.
+  * feat: reintroduction of filedate and filenamenoextension
+    builtin function.
+  * feat: Allow Unicode ASCII Art for class, component.
+  * fix: error in namespace management.
+  * Style: Improve map and json style in order to manage header
+    style.
+  * Gantt with monthly scale doesn't show named regions.
+  * fixing proprietary licenses in PlantUML software package of
+    Replicant project.
+  * Allow stereotype for arrow, on sequence diagram.
+  * Allow LineStyle for arrow, on sequence diagram.
+  * feat: Allow stereotype for Clock on Timing diagram.
+  * Allow stereotype on Timing diagram.
+  * Style: Allow stereotype on note for all diagram type.
+  * State machine invalid generation for SVG.
+  * Update C4-PlantUML to v2.11.0.
+  * Style: Allow all style for Cardinality, Generic, Qualified
+    associations on Class diagram.
+  * nwdiag: Allow line border for group.
+  * Style: Allow all style for regex diagram.
+  * Style: Allow theme and style for files list diagram.
+  * feat: allow all JSON Values on JSON.
+  * Compact clocks in timing diagrams not rendered correctly.
+- Update to version 1.24.7
+  * [Class][Deployment] Some issues about arrow between nested
+    elements.
+  * Crash happened on plantuml 1.2024.7beta5, related to "headless"
+  * hide does not work inside package.
+  * After v1.2023.10, Remove command does not remove nested shapes.
+  * When adding specific note at specific position, activity
+    diagram not work.
+  * Custom Theme loading.
+  * [Creole] Fix color.
+  * repeat starting point is in wrong swimlane.
+  * Generate a svg:title tag when generating Svg.
+  * fix: make native release as snapshot release.
+  * feat: add builtin function %boolval.
+  * feat: add builtin function %mod (modulo operator).
+  * Added background color to arrows and draw background for circles.
+  * remove duplicate items in help message.
+  * [Sprite][SVG] Manage more SVG functionalities for text.
+  * pdf support broken with other gradle build file changes.
+  * Allow style for backward element on repeat loop, on Activity
+    diagram.
+  * Allow >> and > on the same arrow.
+  * Pause a task up to end of another task.
+  * Rendering issue when nesting different elements.
+  * Allow multiple style stereotypes for Mindmap, WBS.
+  * Gantt: Weekscale with weeknumbers.
+  * The utilization of resources does not color red correctly when
+    week partly closed.
+  * Remove and restore not working as expected.
+- Update to version 1.24.6
+  * Improve Eclipse Layout Kernel support.
+  * groups (e.g. alt) with else cannot be rendered in parallel.
+  * alt/else block shown in parallel using teoz leads to wrong
+    formatting.
+  * Teoz: Shape of note changes only when "over" is used.
+  * multiple activation of lifelines does not render properly in
+    sequence diagrams.
+  * 2024.5 breaks https includeurl.
+  * Incorrect object reference in Gantt Chart.
+  * Activity: Allow to style SDL on Repeat While loop.
+  * inconsistent computation of group/alt/opt box size given left
+    or right arrows.
+  * !foreach $key from %get_json_keys() is not found by
+    %json_key_exists(), but works for element access.
+  * Allow scale max on JSON and YAML diagram.
+  * [ELK][Smetana] Allow Fontcolor style on arrows.
+  * [Style][WBS] Change (arrow) line color of a specific branch.
+  * Elk: Allow full style on arrows (except fontcolor).
+  * feat: math: add newline command for formatting.
+  * feat: add support for [one-line] title to JSON diagram.
+  * Performance issue with JRE21.
+  * Fix parallel group active levels.
+  * Extend @@@format to support more formats.
+  * [teoz] [bug] [sequence] Group becomes too wide when containing
+    activations.
+  * [Theme] sunlust theme does not work for JSON or YAML
+    diagram/data.
+- Update to version 1.24.5
+  * BUG: Activation is offset (Sequence diagram, Teoz).
+  * teoz: activation breaks parallell lines.
+  * sequence lifeline height badly depends on message height.
+  * Sequence diagram: Wrong start/end of activation boxes in
+    activation boxes while using teoz.
+  * The display of text, line, and arrow on the left side of the
+    Lifeline is incorrect.
+  * the location of the Comment is INCORRECT.
+  * teoz arrow alignment.
+  * activate/deactivate issues.
+  * Inline multicast activate only activates the first target.
+  * Activation is offset (Using Teoz).
+  * Small rendering difference between default and Teoz.
+  * Side effect of variable management when using %json_add.
+  * timing diagram initial concise state.
+  * Java OutOfMemoryError with some Sequence diagrams.
+  * Smetana is not supporting colors in UML.
+  * Timing: Set background color of concise.
+  * (timing diagram) message labels ignore default style.
+  * "off by one errors" in text output.
+  * hyperlinkUnderline causes NumberFormatException.
+  * Wrong component is highlighted on hover for
+    svginteractive.
+  * [Theme] sunlust theme does not work for JSON or YAML
+    diagram/data.
+  * Stereotype won't be hidden with "hide stereotype".
+  * [Chen ERD] Allow horizontal layout or left to right direction.
+  * add %splitstrregex builtin function.
+  * ASCIIMathTeXImg.java with a lot of corrections/enhancements.
+  * add new JSON builtin functions (%str2json, %json_add and
+    %json_remove).
+  * add new JSON builtin function (%json_set).
+  * add new JSON builtin function (%json_merge).
+  * Fix on osa2 and Classy.
+
+-------------------------------------------------------------------
 Thu Oct  3 13:06:15 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Clean the spec file a bit and generate the launcher script from

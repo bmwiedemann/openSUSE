@@ -1,0 +1,59 @@
+From 3426a5c33c36266af42128ee9eca4921e68ea876 Mon Sep 17 00:00:00 2001
+From: Mariusz Felisiak <felisiak.mariusz@gmail.com>
+Date: Tue, 20 Feb 2024 20:59:26 +0100
+Subject: [PATCH] Refs #34900 -- Fixed
+ CommandTypes.test_help_default_options_with_custom_arguments test on Python
+ 3.13+.
+
+https://github.com/python/cpython/commit/c4a2e8a2c5188c3288d57b80852e92c83f46f6f3
+---
+ django/utils/version.py      |  1 +
+ tests/admin_scripts/tests.py | 15 +++++++++++----
+ 2 files changed, 12 insertions(+), 4 deletions(-)
+
+Index: Django-4.2.16/django/utils/version.py
+===================================================================
+--- Django-4.2.16.orig/django/utils/version.py
++++ Django-4.2.16/django/utils/version.py
+@@ -17,6 +17,7 @@ PY39 = sys.version_info >= (3, 9)
+ PY310 = sys.version_info >= (3, 10)
+ PY311 = sys.version_info >= (3, 11)
+ PY312 = sys.version_info >= (3, 12)
++PY313 = sys.version_info >= (3, 13)
+ 
+ 
+ def get_version(version=None):
+Index: Django-4.2.16/tests/admin_scripts/tests.py
+===================================================================
+--- Django-4.2.16.orig/tests/admin_scripts/tests.py
++++ Django-4.2.16/tests/admin_scripts/tests.py
+@@ -32,7 +32,7 @@ from django.db.migrations.recorder impor
+ from django.test import LiveServerTestCase, SimpleTestCase, TestCase, override_settings
+ from django.test.utils import captured_stderr, captured_stdout
+ from django.urls import path
+-from django.utils.version import PY39
++from django.utils.version import PY39, PY313
+ from django.views.static import serve
+ 
+ from . import urls
+@@ -1900,10 +1900,16 @@ class CommandTypes(AdminScriptTestCase):
+         ]
+         for option in expected_options:
+             self.assertOutput(out, f"[{option}]")
+-        self.assertOutput(out, "--option_a OPTION_A, -a OPTION_A")
+-        self.assertOutput(out, "--option_b OPTION_B, -b OPTION_B")
+-        self.assertOutput(out, "--option_c OPTION_C, -c OPTION_C")
+-        self.assertOutput(out, "-v {0,1,2,3}, --verbosity {0,1,2,3}")
++        if PY313:
++            self.assertOutput(out, "--option_a, -a OPTION_A")
++            self.assertOutput(out, "--option_b, -b OPTION_B")
++            self.assertOutput(out, "--option_c, -c OPTION_C")
++            self.assertOutput(out, "-v, --verbosity {0,1,2,3}")
++        else:
++            self.assertOutput(out, "--option_a OPTION_A, -a OPTION_A")
++            self.assertOutput(out, "--option_b OPTION_B, -b OPTION_B")
++            self.assertOutput(out, "--option_c OPTION_C, -c OPTION_C")
++            self.assertOutput(out, "-v {0,1,2,3}, --verbosity {0,1,2,3}")
+ 
+     def test_color_style(self):
+         style = color.no_style()

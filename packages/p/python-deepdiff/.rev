@@ -196,4 +196,13 @@
     ignoring the difference based on significant digits.</comment>
     <requestid>1218894</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>9e375c4dde5ea0b6a5b1b0d6a3a8eaaf</srcmd5>
+    <version>8.0.1</version>
+    <time>1732051403</time>
+    <user>anag+factory</user>
+    <comment>- Skip test failing on Python 3.13
+</comment>
+    <requestid>1225064</requestid>
+  </revision>
 </revisionlist>

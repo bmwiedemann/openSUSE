@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-cors-headers
-Version:        4.5.0
+Version:        4.6.0
 Release:        0
 Summary:        A Django App that adds CORS headers to responses
 License:        MIT

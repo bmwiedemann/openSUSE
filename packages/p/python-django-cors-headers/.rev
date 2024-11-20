@@ -149,4 +149,13 @@
   * Support Python 3.13.</comment>
     <requestid>1218790</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0a921a4af2696e1cc01b5fc87b4a004d</srcmd5>
+    <version>4.6.0</version>
+    <time>1732051418</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.6.0:
+  * Drop Django 3.2 to 4.1 support.</comment>
+    <requestid>1225082</requestid>
+  </revision>
 </revisionlist>

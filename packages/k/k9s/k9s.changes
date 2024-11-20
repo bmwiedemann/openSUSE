@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 19 08:16:16 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.32.7:
+  * Rel v0.32.7 (#2971)
+  * Put log levels in order in cmd help (#2960)
+  * Update go version to 1.23.X in README (#2968)
+  * feat(dao,used-by-cmd): check imagePullSecrets as well (#2964)
+  * Feature: add pod last restart column to pod section (#2946)
+
+-------------------------------------------------------------------
 Tue Nov 12 08:39:34 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.32.6:

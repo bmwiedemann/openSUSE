@@ -23,4 +23,16 @@
     <comment></comment>
     <requestid>1003068</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>f04269ad1d774df8d8a6b573778db15e</srcmd5>
+    <version>1.0</version>
+    <time>1732051407</time>
+    <user>anag+factory</user>
+    <comment>- fix deprecated Supplements: and Conflicts: statements
+- add %check section
+- change missing path /usr/share/wallpapers/openSUSE-default.xml
+  to
+  /usr/share/wallpapers/openSUSEdefault/contents/images/default.png</comment>
+    <requestid>1225077</requestid>
+  </revision>
 </revisionlist>

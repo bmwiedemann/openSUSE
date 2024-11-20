@@ -75,6 +75,8 @@ sed -i '1{/env python/d}' deepdiff/deephash.py deepdiff/diff.py deepdiff/search.
 %check
 # we don't have the (optional) requirement CleverCSV for csv diffing
 donttest="(TestCommands and (csv or group_by)) or (test_load_path_content and csv) or (test_polars)"
+# failure on Python 3.13 https://github.com/seperman/deepdiff/issues/474
+donttest+=" or (TestCommands and test_diff_command and t1_corrupt)"
 %pytest -k "not ($donttest)"
 
 %post

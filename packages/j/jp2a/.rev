@@ -69,4 +69,12 @@
  - support for Zsh completion</comment>
     <requestid>1202536</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>05763cb4ce7a245389250f560eb9ddc1</srcmd5>
+    <version>1.3.2</version>
+    <time>1732051234</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1225036</requestid>
+  </revision>
 </revisionlist>

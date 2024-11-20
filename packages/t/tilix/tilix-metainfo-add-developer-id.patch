@@ -1,0 +1,22 @@
+From 69fe457b58b58eb6f679bc50ef040d08b40fb65d Mon Sep 17 00:00:00 2001
+From: Matthias Klumpp <matthias@tenstral.net>
+Date: Tue, 19 Mar 2024 19:20:43 +0100
+Subject: [PATCH] metainfo: Add a developer-id
+
+---
+ data/metainfo/com.gexperts.Tilix.appdata.xml.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/data/metainfo/com.gexperts.Tilix.appdata.xml.in b/data/metainfo/com.gexperts.Tilix.appdata.xml.in
+index 703cc134..e83bb588 100644
+--- a/data/metainfo/com.gexperts.Tilix.appdata.xml.in
++++ b/data/metainfo/com.gexperts.Tilix.appdata.xml.in
+@@ -58,7 +58,7 @@
+   <launchable type="desktop-id">com.gexperts.Tilix.desktop</launchable>
+ 
+   <content_rating type="oars-1.1"/>
+-  <developer>
++  <developer id="com.gexperts">
+     <name translate="no">Gerald Nunn</name>
+   </developer>
+ 

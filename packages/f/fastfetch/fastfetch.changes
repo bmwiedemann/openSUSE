@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Tue Nov 19 03:10:39 UTC 2024 - RN <R_Nik_C@proton.me>
+
+- update to 2.30.1
+   * A hotfix release that fixes a build failure when running cmake 
+     outside of build directory.
+- update to 2.30.0
+  Changes: 
+   * Percent: bar type must be enabled in `percent.type` before 
+     using percent bar in custom format
+  Features:
+   * Port to MidnightBSD; add mport package manager support
+   * Support bluetooth battery detection for macOS and Windows 
+     (Bluetooth, macOS / Windows)
+   * Support M4 model detection (Host, macOS)
+   * Support CPU temperature detection on OpenBSD (CPU, OpenBSD)
+   * Display Android icon in Android devices (OS, Android)
+   * Support qi package manager detection (Packages, Linux)
+   * Detect WM / DE by enumerating running processes (WM / DE, 
+     NetBSD)
+   * Generate manual pages from help.json (Doc)
+   * Detect marketing name of vivo smartphone (Host, Android)
+   * Add txDrops detection if supported (NetIO, *BSD)
+   * Support tilix version detection (Terminal, Linux)
+   * Support percent type config in module level. 
+  Bugfixes:
+   * Don't display `()` in key if display name is not available 
+     (Display)
+   * Fix & normalize bluetooth mac address detection (Bluetooth, 
+     macOS / Windows)
+   * Don't print index in multi-battery devices (Battery)
+   * Fix segfault in macOS (gh#fastfetch-cli/fastfetch#1388, macOS)
+   * Fix `CFStringGetCString() failed` errors 
+     (gh#fastfetch-cli/fastfetch#1394, Media, macOS)
+   * Fix CPU frequency detection on Apple M4 
+     (gh#fastfetch-cli/fastfetch#1394, CPU, macOS)
+   * Fix exe path detection on macOS (Shell / Terminal, macOS)
+   * Fix logo fails to load from symlinked files on macOS 
+     (gh#fastfetch-cli/fastfetch#1395, Logo, macOS)
+   * Fix 32-bit truncation (NetIO, macOS)
+  Logos:
+   * Fix Lilidog
+   * Add MidnightBSD
+   * Add Unifi
+   * Add Cosmic DE
+   * Update openSUSE Tumbleweed
+
+-------------------------------------------------------------------
 Mon Nov  4 20:12:34 UTC 2024 - RN <R_Nik_C@proton.me>
 
 - update to 2.29.0

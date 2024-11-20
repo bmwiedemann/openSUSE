@@ -1,0 +1,19 @@
+--- chromium-131.0.6778.69/base/compiler_specific.h	2024/11/18 15:29:10	1.1
++++ chromium-131.0.6778.69/base/compiler_specific.h	2024/11/18 16:16:01
+@@ -424,10 +424,12 @@
+ //     // Stack canary checks will not be performed in this body.
+ //   }
+ // ```
+-#if __has_cpp_attribute(gnu::no_stack_protector)
+-#define NO_STACK_PROTECTOR [[gnu::no_stack_protector]]
+-#elif __has_cpp_attribute(gnu::optimize)
+-#define NO_STACK_PROTECTOR [[gnu::optimize("-fno-stack-protector")]]
++#if defined(COMPILER_GCC) || defined(__clang__)
++#if HAS_ATTRIBUTE(__no_stack_protector__)
++#define NO_STACK_PROTECTOR __attribute__((__no_stack_protector__))
++#else
++#define NO_STACK_PROTECTOR __attribute__((__optimize__("-fno-stack-protector")))
++#endif
+ #else
+ #define NO_STACK_PROTECTOR
+ #endif

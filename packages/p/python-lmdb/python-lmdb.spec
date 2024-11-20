@@ -24,6 +24,7 @@ License:        OLDAP-2.8
 Group:          Development/Languages/Python
 URL:            https://github.com/dw/py-lmdb/
 Source:         https://files.pythonhosted.org/packages/source/l/lmdb/lmdb-%{version}.tar.gz
+Patch1:         https://github.com/jnwatson/py-lmdb/pull/368/commits/206a3754466397baeb418e70be9d35b12cc4079f.patch#/py313-support.patch
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
@@ -52,7 +53,7 @@ LMDB is a tiny database with the following properties:
     LMDB uses the operating system’s buffer cache.
 
 %prep
-%setup -q -n lmdb-%{version}
+%autosetup -p1 -n lmdb-%{version}
 
 %build
 export LMDB_FORCE_SYSTEM=1

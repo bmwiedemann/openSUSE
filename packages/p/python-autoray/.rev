@@ -137,4 +137,20 @@
     <comment></comment>
     <requestid>1198017</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3e7e2b42846a111f47d35fae8e669ade</srcmd5>
+    <version>0.7.0</version>
+    <time>1732051421</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.7.0:
+  * prefer using `tensorflow.experimental.numpy` api over custom
+    translations
+  * add many more unit tests
+  * move to `pyproject.toml` file
+  * move to uv for CI setup
+  * set python min version to 3.9
+
+- Restrict numpy to &lt; 2.</comment>
+    <requestid>1225090</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,22 @@
+Index: python_lsp_server-1.12.0/pyproject.toml
+===================================================================
+--- python_lsp_server-1.12.0.orig/pyproject.toml
++++ python_lsp_server-1.12.0/pyproject.toml
+@@ -27,7 +27,7 @@ Homepage = "https://github.com/python-ls
+ 
+ [project.optional-dependencies]
+ all = [
+-    "autopep8>=2.0.4,<2.1.0",
++    "autopep8>=2.0.4",
+     "flake8>=7.1,<8",
+     "mccabe>=0.7.0,<0.8.0",
+     "pycodestyle>=2.12.0,<2.13.0",
+@@ -38,7 +38,7 @@ all = [
+     "yapf>=0.33.0",
+     "whatthepatch>=1.0.2,<2.0.0"
+ ]
+-autopep8 = ["autopep8>=2.0.4,<2.1.0"]
++autopep8 = ["autopep8>=2.0.4"]
+ flake8 = ["flake8>=7.1,<8"]
+ mccabe = ["mccabe>=0.7.0,<0.8.0"]
+ pycodestyle = ["pycodestyle>=2.12.0,<2.13.0"]

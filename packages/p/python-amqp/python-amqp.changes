@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov 19 12:16:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.3.1:
+  * Fixed readthedocs (#443)
+  * Prepare for release: 5.3.1 (#444)
+  * Hard-code requests version because of the bug in docker-py
+    (#432)
+  * fix AbstractTransport repr socket error (#361) (#431)
+  * blacksmith.sh: Migrate workflows to Blacksmith (#436)
+  * Added Python 3.13 to CI (#440)
+  * Prepare for release: 5.3.0 (#441)
+
+-------------------------------------------------------------------
 Tue Nov 14 12:43:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.2.0:

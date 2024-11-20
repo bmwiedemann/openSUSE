@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 19 11:10:52 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Skip test failing on Python 3.13
+
+-------------------------------------------------------------------
 Mon Oct 28 23:03:15 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.0.1:

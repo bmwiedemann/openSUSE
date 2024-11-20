@@ -25,6 +25,7 @@ Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
 URL:            https://github.com/python-lsp/python-lsp-server
 Source:         https://files.pythonhosted.org/packages/source/p/python-lsp-server/python_lsp_server-%{version}.tar.gz
+Patch1:         unpin-autopep8.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61.2}
@@ -34,7 +35,7 @@ BuildRequires:  python-rpm-macros >= 20210628
 # SECTION test requirements
 BuildRequires:  %{python_module docstring-to-markdown}
 BuildRequires:  %{python_module PyQt5}
-BuildRequires:  %{python_module autopep8 >= 2.0.4 with %python-autopep8 < 2.1.0}
+BuildRequires:  %{python_module autopep8 >= 2.0.4}
 BuildRequires:  %{python_module flake8 >= 7.1 with %python-flake8 < 8}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module importlib_metadata > 4.8.3 if %python-base < 3.10}
@@ -87,8 +88,8 @@ will be enabled:
 Summary:        The python-lsp-server[all] extra
 # Note: check flake8 pins as well
 Requires:       python-rope >= 1.2.0
+Requires:       python-autopep8 >= 2.0.4
 Requires:       python-yapf >= 0.33
-Requires:       (python-autopep8 >= 2.0.4 with python-autopep8 < 2.1.0)
 Requires:       (python-flake8 >= 7.1 with python-flake8 < 8)
 Requires:       (python-mccabe >= 0.7.0 with python-mccabe < 0.8.0)
 Requires:       (python-pycodestyle >= 2.12.0 with python-pycodestyle < 2.13.0)

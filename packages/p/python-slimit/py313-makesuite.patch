@@ -1,0 +1,13 @@
+Index: slimit-0.8.1/src/slimit/tests/test_lexer.py
+===================================================================
+--- slimit-0.8.1.orig/src/slimit/tests/test_lexer.py
++++ slimit-0.8.1/src/slimit/tests/test_lexer.py
+@@ -286,7 +286,7 @@ for index, (input, expected) in enumerat
+ 
+ def test_suite():
+     return unittest.TestSuite((
+-        unittest.makeSuite(LexerTestCase),
++        unittest.defaultTestLoader.loadTestsFromTestCase(LexerTestCase),
+         doctest.DocFileSuite(
+             '../lexer.py',
+             optionflags=doctest.NORMALIZE_WHITESPACE|doctest.ELLIPSIS

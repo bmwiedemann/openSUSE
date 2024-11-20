@@ -1,14 +1,7 @@
-diff -uNr old-lxterminal-0.1.8//data/lxterminal.conf lxterminal-0.1.8/data/lxterminal.conf
---- old-lxterminal-0.1.8//data/lxterminal.conf	2010-07-19 19:32:10.000000000 +0200
-+++ lxterminal-0.1.8/data/lxterminal.conf	2010-07-20 00:41:51.096835608 +0200
-@@ -2,3 +2,4 @@
- fontname=Monospace 10
- selchars=-A-Za-z0-9,./?%&#:_
- scrollback=1000
-+disablef10=true
-diff -uNr old-lxterminal-0.1.8//data/lxterminal.conf.in lxterminal-0.1.8/data/lxterminal.conf.in
---- old-lxterminal-0.1.8//data/lxterminal.conf.in	2010-06-22 22:28:48.000000000 +0200
-+++ lxterminal-0.1.8/data/lxterminal.conf.in	2010-07-20 00:41:42.824860472 +0200
+Index: lxterminal-0.4.0+9/data/lxterminal.conf.in
+===================================================================
+--- lxterminal-0.4.0+9.orig/data/lxterminal.conf.in
++++ lxterminal-0.4.0+9/data/lxterminal.conf.in
 @@ -2,3 +2,4 @@
  fontname=Monospace 10
  selchars=-A-Za-z0-9,./?%&#:_

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 19 10:25:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- skip one more test for python 313
+  (https://github.com/kvesteri/sqlalchemy-utils/issues/764)
+
+-------------------------------------------------------------------
 Wed Oct  2 04:49:35 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.41.2:

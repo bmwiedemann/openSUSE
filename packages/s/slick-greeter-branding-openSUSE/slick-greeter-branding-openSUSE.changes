@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov  2 16:40:21 UTC 2024 - Andreas Prittwitz <m4ng4n@gmx.de>
+
+- fix deprecated Supplements: and Conflicts: statements
+- add %check section
+- change missing path /usr/share/wallpapers/openSUSE-default.xml
+  to
+  /usr/share/wallpapers/openSUSEdefault/contents/images/default.png
+
+-------------------------------------------------------------------
 Tue Sep  6 15:54:42 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Install gschema override with distribution default priority of

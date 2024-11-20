@@ -19,11 +19,11 @@
 %bcond_with test_extras
 %{?sle15_python_module_pythons}
 Name:           python-imageio
-Version:        2.35.1
+Version:        2.36.0
 Release:        0
 Summary:        Python library for reading and writing image, video, and related formats
 License:        BSD-2-Clause
-URL:            https://imageio.github.io/
+URL:            https://github.com/imageio/imageio
 Source0:        https://files.pythonhosted.org/packages/source/i/imageio/imageio-%{version}.tar.gz
 BuildRequires:  %{python_module Pillow >= 8.3.2}
 BuildRequires:  %{python_module base >= 3.7}
@@ -95,6 +95,8 @@ export IMAGEIO_NO_INTERNET=1
 donttest="test_ffmpeg or test_bayer_write"
 # unmarked online tests
 donttest="$donttest or test_freeimage"
+# fails with python 313
+donttest+=" or test_gif"
 %pytest -ra -k "not ($donttest)" -m "not needs_internet"
 
 %post

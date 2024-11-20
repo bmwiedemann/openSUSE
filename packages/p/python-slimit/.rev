@@ -117,4 +117,12 @@
 - No more greedy globs in %files.</comment>
     <requestid>1154510</requestid>
   </revision>
+  <revision rev="16" vrev="12">
+    <srcmd5>49ce296e6d6a59101a698378d86989c4</srcmd5>
+    <version>0.8.1</version>
+    <time>1732051395</time>
+    <user>anag+factory</user>
+    <comment>- add py313-makesuite.patch to fix unittest.makeSuite removal</comment>
+    <requestid>1225051</requestid>
+  </revision>
 </revisionlist>

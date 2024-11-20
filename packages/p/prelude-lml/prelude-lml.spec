@@ -1,7 +1,7 @@
 #
 # spec file for package prelude-lml
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,6 @@ Patch0:         %{name}-conf_rsyslog.patch
 Patch1:         %{name}-fix_check.patch
 # Fix etc files permissions
 Patch2:         %{name}-fix_etc_perms.patch
-BuildRequires:  gamin-devel
 BuildRequires:  libprelude-devel >= 5.2.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gnutls) >= 1.0.17

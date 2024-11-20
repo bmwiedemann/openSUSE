@@ -337,4 +337,12 @@
   * Allow converters to provide types as strings that can resolve (forwarded request 1197472 from bnavigator)</comment>
     <requestid>1197473</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>aea2f870c552f226777d26f9b142d907</srcmd5>
+    <version>3.5.0</version>
+    <time>1732051230</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1225035</requestid>
+  </revision>
 </revisionlist>

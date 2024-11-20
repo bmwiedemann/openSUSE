@@ -18,18 +18,18 @@
 
 
 Name:           gede
-Version:        2.19.3
+Version:        2.20.1
 Release:        0
 Summary:        Qt-based GUI to GDB
 License:        BSD-2-Clause
 Group:          Development/Tools/Debuggers
 URL:            https://gede.dexar.se
-Source0:        https://gede.dexar.se/uploads/source/gede-%{version}.tar.xz
+Source0:        https://github.com/jhn98032/gede/archive/refs/tags/v%{version}.tar.gz
 Source1:        gede.desktop
 BuildRequires:  libQt5SerialPort-devel
 BuildRequires:  libQt5Widgets-devel
 BuildRequires:  libqt5-qtbase-common-devel
-Requires:       ctags
+Requires:       /usr/bin/ctags
 Recommends:     gdb
 
 %description
@@ -50,10 +50,23 @@ sed -i 's/ -fPIC / /g' Makefile
 install -pvDm755 %{_builddir}/%{name}-%{version}/src/gede -t %{buildroot}%{_bindir}
 install -pvDm644 %{_sourcedir}/gede.desktop -t %{buildroot}%{_datadir}/applications
 
+%check
+
+#The other programs in tests/ are samples/debug tools for the embedded highlighter library, not test suites.
+cd tests/ini
+%qmake5
+sed -i 's/ -fPIC / /g' Makefile
+%make_jobs
+./test_ini
+
+
+
+
+
 %files
 %{_bindir}/gede
 %{_datadir}/applications/gede.desktop
 %license LICENSE
-%doc README
+%doc README.rst
 
 %changelog

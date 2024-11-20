@@ -1,7 +1,7 @@
 #
 # spec file for package lxsession
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           lxsession
-Version:        0.5.5
+Version:        0.5.5+56
 Release:        0
 Summary:        LXDE Session Manager, required for running the desktop environment
 License:        GPL-2.0-only
 Group:          System/GUI/LXDE
 URL:            http://www.lxde.org/
-Source0:        https://sourceforge.net/projects/lxde/files/LXSession%20%28session%20manager%29/LXSession%200.5.x/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  docbook-utils
 BuildRequires:  docbook-xsl-stylesheets
@@ -51,6 +51,7 @@ use when a user logs out and to restart them the next time the user logs in.
 %setup -q
 
 %build
+NOCONFIGURE=1 ./autogen.sh
 %configure \
 	--enable-man
 %make_build

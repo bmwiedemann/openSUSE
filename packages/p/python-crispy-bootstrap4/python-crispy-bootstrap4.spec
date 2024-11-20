@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-crispy-bootstrap4
-Version:        2024.1
+Version:        2024.10
 Release:        0
 Summary:        Bootstrap4 template pack for django-crispy-forms
 License:        MIT
@@ -30,13 +30,13 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module Django >= 4.2}
-BuildRequires:  %{python_module django-crispy-forms >= 2.0}
+BuildRequires:  %{python_module django-crispy-forms >= 2.3}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-Django >= 4.2
-Requires:       python-django-crispy-forms >= 2.0
+Requires:       python-django-crispy-forms >= 2.3
 BuildArch:      noarch
 %python_subpackages
 

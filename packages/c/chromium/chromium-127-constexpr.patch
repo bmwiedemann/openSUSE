@@ -41,8 +41,8 @@ author: Andres Salomon <dilinger@debian.org>
  // std::string constexpr first.
 -constexpr inline std::string kLegacyHierarchyCountryCodeString{"XX"};
 -constexpr AddressCountryCode kLegacyHierarchyCountryCode =
-+const inline std::string kLegacyHierarchyCountryCodeString{"XX"};
-+const AddressCountryCode kLegacyHierarchyCountryCode =
++[[clang::no_destroy]] const inline std::string kLegacyHierarchyCountryCodeString{"XX"};
++[[clang::no_destroy]] const AddressCountryCode kLegacyHierarchyCountryCode =
      AddressCountryCode(kLegacyHierarchyCountryCodeString);
  
  // Creates an instance of the address hierarchy model corresponding to the
@@ -81,13 +81,12 @@ author: Andres Salomon <dilinger@debian.org>
  class TestPrefetchWatcherImpl;
 --- a/components/history_embeddings/ml_answerer.cc
 +++ b/components/history_embeddings/ml_answerer.cc
-@@ -24,7 +24,7 @@
+@@ -24,7 +24,7 @@ using optimization_guide::proto::Passage
  
  namespace {
  
 -static constexpr std::string kPassageIdToken = "ID";
 +static const std::string kPassageIdToken = "ID";
- 
- std::string GetPassageIdStr(size_t id) {
-   return base::StringPrintf("%04d", static_cast<int>(id));
-
+ // Estimated token count of the preamble text in prompt.
+ static constexpr size_t kPreambleTokenBufferSize = 100u;
+ // Estimated token count of overhead text per passage.

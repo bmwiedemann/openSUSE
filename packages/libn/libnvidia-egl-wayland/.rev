@@ -150,4 +150,12 @@
   * apply latest fixes from git</comment>
     <requestid>1221803</requestid>
   </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>a87a4a279b7e2c25c0f986a80ed1f4f4</srcmd5>
+    <version>1.1.16</version>
+    <time>1732051412</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1225034</requestid>
+  </revision>
 </revisionlist>

@@ -283,4 +283,12 @@
     <comment>fix launcher with javapackage-tools &gt;= 6.3</comment>
     <requestid>1205523</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>dcc7b55995f876470bfffe3d2224ed35</srcmd5>
+    <version>1.2024.8</version>
+    <time>1732051002</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1224962</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,46 @@
+From 206a3754466397baeb418e70be9d35b12cc4079f Mon Sep 17 00:00:00 2001
+From: Adam Williamson <awilliam@redhat.com>
+Date: Wed, 4 Sep 2024 19:09:04 +0200
+Subject: [PATCH] Fix build with Python 3.13+
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Avoid using PyObject_AsReadBuffer, do what PyObject_AsReadBuffer does.
+
+Note that this is not safe, and it has never been safe,
+but the code does *exactly* what it used to do (at least on Python 3.8+).
+
+Fixes https://github.com/jnwatson/py-lmdb/issues/362
+
+Co-Authored-By: Miro Hrončok <miro@hroncok.cz>
+---
+ lmdb/cpython.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/lmdb/cpython.c b/lmdb/cpython.c
+index 3030883..81fdb06 100644
+--- a/lmdb/cpython.c
++++ b/lmdb/cpython.c
+@@ -545,9 +545,21 @@ val_from_buffer(MDB_val *val, PyObject *buf)
+         type_error("Won't implicitly convert Unicode to bytes; use .encode()");
+         return -1;
+     }
++#if PY_VERSION_HEX < 0x030d0000
+     return PyObject_AsReadBuffer(buf,
+         (const void **) &val->mv_data,
+         (Py_ssize_t *) &val->mv_size);
++#else
++    Py_buffer view;
++    int ret;
++    ret = PyObject_GetBuffer(buf, &view, PyBUF_SIMPLE);
++    if(ret == 0) {
++        val->mv_data = view.buf;
++        val->mv_size = view.len;
++        PyBuffer_Release(&view);
++    }
++    return ret;
++#endif
+ }
+ 
+ /* ------------------- */

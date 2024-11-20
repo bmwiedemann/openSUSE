@@ -199,4 +199,14 @@
   * Remove pinned numpy regression</comment>
     <requestid>1197392</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a515b0cb2b702b3cfa614dfdf3a4d071</srcmd5>
+    <version>2.36.0</version>
+    <time>1732051236</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.36.0:
+  * Use bytes instead of to_bytes in pyav metadata call
+  * Remove support for Python 3.8</comment>
+    <requestid>1225038</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Nov 19 08:39:56 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.0.3:
+  * This release does not ship with the UI enabled. The UI will be
+    available in the future. #129
+  * OpenBao does not provide support for Vault Enterprise features.
+    If there is an enterprise feature you would like to see added
+    to the project, please open a feature request.
+  * OpenBao is fully API compatible with Vault 1.14.9, and seal
+    compatible with the plugins the project supports. Plugin
+    support for OpenBao can be found
+    [here](https://github.com/orgs/openbao/discussions/64).
+  * Add v2.0.3 to CHANGELOG.md (#728)
+  * Bump golang.org/x/net (#692) (#726)
+  * Bump github.com/go-jose/go-jose/v3 to v3.0.3 (#693) (#727)
+  * Bump go version to 1.22.9 for v2.0.3 release (#725)
+  * Fix goreleaser prerelease status (#713) (#721)
+  * Replace github.com/mholt/archiver/v3 with stdlib (#611) (#714)
+  * Update to UBI 9.5 (#701) (#719)
+  * Fix root namespace permission elevation (#695) (#718)
+  * Bump github.com/golang-jwt/jwt/v4 (#691) (#717)
+  * Compute raft peer bootstrap challenge via HKDF (#690) (#716)
+  * Exclude changelog directory from release archive (#641) (#715)
+  * Update goreleaser config version to 2 (#709) (#720)
+
+-------------------------------------------------------------------
 Sun Oct 06 08:14:21 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.0.2:

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-boltons
-Version:        24.0.0
+Version:        24.1.0
 Release:        0
 Summary:        The "Boltons" utility package for Python
 License:        BSD-3-Clause

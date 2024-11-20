@@ -144,7 +144,7 @@
  esac
  done
 --- configure
-+++ configure	2024-08-19 07:44:49.114816404 +0000
++++ configure	2024-11-11 11:34:06.922367709 +0000
 @@ -6784,7 +6784,7 @@ echo $ECHO_N "checking for an rpath opti
  		fi
  		;;
@@ -174,7 +174,7 @@
  	do
  
  if test "$PKG_CONFIG" != none && "$PKG_CONFIG" --exists "$cf_with_pcre2"; then
-@@ -15625,12 +15625,12 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15628,12 +15628,12 @@ cat >>$cf_edit_man <<CF_EOF
  		echo "? missing rename for \$cf_source"
  		cf_target="\$cf_source"
  	fi
@@ -189,7 +189,7 @@
  	sed	-f "$cf_man_alias" \\
  CF_EOF
  
-@@ -15640,7 +15640,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15643,7 +15643,7 @@ cat >>$cf_edit_man <<CF_EOF
  CF_EOF
  else
  cat >>$cf_edit_man <<CF_EOF
@@ -198,7 +198,7 @@
  CF_EOF
  fi
  
-@@ -15680,7 +15680,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15683,7 +15683,7 @@ cat >>$cf_edit_man <<CF_EOF
  		mv \$TMP.$cf_manpage_so_strip \$TMP
  	fi
  	fi
@@ -207,7 +207,7 @@
  CF_EOF
  fi
  
-@@ -15689,31 +15689,31 @@ case "$MANPAGE_FORMAT" in
+@@ -15692,31 +15692,31 @@ case "$MANPAGE_FORMAT" in
  cat >>$cf_edit_man <<CF_EOF
  	if test "\$form" = format ; then
  		# BSDI installs only .0 suffixes in the cat directories
@@ -246,7 +246,7 @@
  				for cf_alias in \$aliases
  				do
  					if test "\$section" = 1 ; then
-@@ -15723,7 +15723,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15726,7 +15726,7 @@ cat >>$cf_edit_man <<CF_EOF
  
  					if test "$MANPAGE_SYMLINKS" = yes ; then
  						if test -f "\$cf_alias\${suffix}" ; then
@@ -255,7 +255,7 @@
  							then
  								continue
  							fi
-@@ -15733,18 +15733,18 @@ CF_EOF
+@@ -15736,18 +15736,18 @@ CF_EOF
  case "x$LN_S" in
  (*-f)
  cat >>$cf_edit_man <<CF_EOF
@@ -277,7 +277,7 @@
  						echo ".so \$cf_source" >\$TMP
  CF_EOF
  if test -n "$cf_manpage_compress" ; then
-@@ -15764,9 +15764,9 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15767,9 +15767,9 @@ cat >>$cf_edit_man <<CF_EOF
  			)
  		)
  	elif test "\$verb" = removing ; then
@@ -290,7 +290,7 @@
  		)
  		test -d "\$cf_subdir\${section}" &&
  		test -n "\$aliases" && (
-@@ -15787,6 +15787,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15790,6 +15790,7 @@ cat >>$cf_edit_man <<CF_EOF
  #		echo ".hy 0"
  		cat \$TMP
  	fi

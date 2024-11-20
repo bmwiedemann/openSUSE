@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Nov  3 09:24:52 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.4.0+36:
+  + Increase the required version of GLib
+  + Check for pcre2.h when configuring with vte version 0.46.0 or
+    later
+  + Fix: support gcc14 -Werror=incompatible-pointer-types
+  + Various fixes.
+  + Updated translations.
+- Switch to gitcheckout via source service.
+- Rebase lxterminal-0.1.8-disable-f10.patch with quilt.
+- Add libtool BuildRequires and bootstrap the build.
+
+-------------------------------------------------------------------
 Fri Mar  1 11:29:55 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

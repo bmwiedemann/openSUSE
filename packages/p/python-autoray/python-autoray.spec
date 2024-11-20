@@ -17,7 +17,7 @@
 
 
 Name:           python-autoray
-Version:        0.6.12
+Version:        0.7.0
 Release:        0
 Summary:        A lightweight python automatic-array library
 License:        Apache-2.0

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 19 12:32:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.0:
+  * prefer using `tensorflow.experimental.numpy` api over custom
+    translations
+  * add many more unit tests
+  * move to `pyproject.toml` file
+  * move to uv for CI setup
+  * set python min version to 3.9
+
+-------------------------------------------------------------------
 Fri Aug 30 12:46:56 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Unpin numpy 2
@@ -7,7 +18,7 @@ Fri Aug 30 12:46:56 UTC 2024 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Tue Jul  9 05:22:46 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Restrict numpy to < 2. 
+- Restrict numpy to < 2.
 
 -------------------------------------------------------------------
 Thu Jun  6 08:45:43 UTC 2024 - Dirk Müller <dmueller@suse.com>

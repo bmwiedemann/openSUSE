@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Nov 18 21:31:16 UTC 2024 - Florian "spirit" <sp1rit@disroot.org>
+
+- Update to version 0.45.1:
+  + A minor update with a few fixes backported from main.
+  + Fixes:
+    - defaultConfig: fixup smart gaps rules
+    - hyprpm: fix format crash
+    - workspace: fix missing name via focusworkspaceoncurrentmonitor
+	  (#8484)
+    - constraints: don't warp pointer position on release (#8491)
+    - core: guard pmonitor in focuswindow
+    - protocols: mark primarySelection as not privileged
+    - renderer: don't render unmapped popups
+    - renderer: scaled surfaces could have zero area (#8423)
+    - shell: don't use fgrep, prefer grep -F
+    - windows/xdg: minor cleanup of min/max size calculations
+    - workspacerules: Do not check 'on-created-empty' if using a
+	  workspace windowrule (#8486)
+    - xcursors: store themes in a std:set to order it (#8474)
+
+-------------------------------------------------------------------
 Sat Nov  9 16:26:26 UTC 2024 - Florian "spirit" <sp1rit@disroot.org>
 
 - Update to version 0.45.0:

@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-asdf%{psuffix}
-Version:        3.4.0
+Version:        3.5.0
 Release:        0
 Summary:        Python tools to handle ASDF files
 License:        BSD-2-Clause AND BSD-3-Clause

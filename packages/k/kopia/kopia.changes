@@ -1,0 +1,103 @@
+-------------------------------------------------------------------
+Tue Nov 19 08:28:57 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.18.1:
+  * fix(cli): fixed v0.18.0 failures using v0.17.0-generated config
+    (#4255)
+
+-------------------------------------------------------------------
+Tue Nov 19 08:19:35 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.18.0:
+  There are over 240 changes in this release.
+  Full list of changes can be found in:
+  https://github.com/kopia/kopia/compare/v0.17.0...v0.18.0
+  * Notifications
+    You can now define notification profiles to be notified
+    whenever errors occur.
+    - support for defining notification profiles and templates via
+      CLI (#4034) by Jarek Kowalski
+    - send error notifications and snapshot reports (#4233) by
+      Jarek Kowalski
+    - improved snapshot reports (#4244) by Jarek Kowalski
+    - added API to manipulate notification profiles in the UI - not
+      used yet (#4171) by Jarek Kowalski
+  * Maintenance
+    Maintenance and manifest management improvements should make
+    working with larger repositories somewhat easier.
+    - run epoch maintenance for quick maintenance (#4185) by Julio
+      López
+    - allow running quick maintenance with epoch manager (#4198) by
+      Julio López
+    - do not run auto-maintenance after a command fails (#4168) by
+      Julio López
+    - Reduce memory usage for epoch index compaction (#4139) by
+      lyndon-li
+    - Reduce memory allocations during manifest compaction (#4084)
+      by ashmrtn
+    - remove ability to enable compaction on index load (#3834) by
+      Julio López
+    - Allow extending blob retentions (#4151) by Mike McKay-Dirden
+  * Snapshot/Restore
+    Improvements for snapshot/restore progress reporting.
+    - introduce adaptive estimation mechanism (#4218) by Eugene
+      Sumin
+    - Increase restore progress granularity (#3655) by Eugene Sumin
+  * Policies
+    - add policy import/export commands to im-/export policies
+      from/to json ([#4020]) by blenderfreaky
+    - added support for per-directory splitter overrides (#3887) by
+      Jarek Kowalski
+    - Metadata compression config support for directory and
+      indirect content (#4080) by Prasad Ghangal
+  * Server
+    - BREAKING CHANGE remove support for HTTP-based repository API
+      (#3745) by Jarek Kowalski
+    - add server user set-password-hash command (#3974) by Julio
+      López
+    - user add set user-password-hashing-algorithm cli option
+      (#3815) by Sirish Bathina
+    - Fix client IPv6 URI generation for gRPC connections (#3830)
+      by Nick
+  * Providers
+    - GCS immutability (#4134) by Mike McKay-Dirden
+    - info about the B2 S3-compatible endpoint (#3860) by Wyatt
+      Childers
+    - upgraded rclone to 1.68.2, fixed Google Drive rclone
+      compatibility (#4249) by Jarek Kowalski
+  * Other Notable Changes
+    - cache hard limits flags (#3846) by Wyatt Childers
+    - avoid memory bloat in benchmark encryption command (#4213) by
+      Julio López
+    - include clock skew in error message (#4186) by Julio López
+    - avoid using empty master keys (#3835) by Mark Severson
+    - key derivation algorithm for cache encryption (#3799) by
+      Sirish Bathina
+    - allow setting key derivation algorithm for format blob
+      (#3779) by Sirish Bathina
+    - include parameters in pbkdf2 instantiation (#3811) by Julio
+      López
+    - change default number of iterations for PBKDF2 (#3810) by
+      Julio López
+
+-------------------------------------------------------------------
+Mon Jul 15 08:08:35 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.17.0:
+  * build(deps): bump github.com/klauspost/compress from 1.17.7 to 1.17.8 (#3802)
+  * build(deps): bump github/codeql-action in the github-actions group (#3803)
+  * build(deps): bump the common-golang-dependencies group with 2 updates (#3801)
+  * refactor(repository): refactored internal index read API to reduce memory allocations (#3754)
+  * refactor(general): avoid wrapping known-to-be-nil error (#3797)
+  * feat(general): User_profile_add_set cli changes (#3770)
+  * fix(server): fixed deadlock between server and scheduler during shutdown (#3782)
+  * build(deps-dev): bump tar from 6.2.0 to 6.2.1 in /app (#3794)
+  * build(deps): bump codecov/codecov-action from 4.1.1 to 4.2.0 (#3792)
+  * build(deps): bump docker/setup-buildx-action in the docker group (#3791)
+
+-------------------------------------------------------------------
+Mon Jul 15 08:06:29 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package kopia: Cross-platform backup tool for Windows, macOS
+  & Linux with fast, incremental backups, client-side end-to-end
+  encryption, compression and data deduplication

@@ -1,7 +1,7 @@
 #
 # spec file for package lxterminal
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,22 @@
 
 
 Name:           lxterminal
-Version:        0.4.0
+Version:        0.4.0+36
 Release:        0
 Summary:        Lightweight LXDE Terminal
 License:        GPL-2.0-only
 Group:          System/GUI/LXDE
 URL:            https://www.lxde.org/
-Source0:        https://sourceforge.net/projects/lxde/files/LXTerminal%20%28terminal%20emulator%29/LXTerminal%200.4.x/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 # PATCH-FEATURE-OPENSUSE lxterminal-0.1.8-disable-f10.patch andrea@opensuse.org
 # disable f10 shortcut because yast use it
 Patch0:         %{name}-0.1.8-disable-f10.patch
+
 BuildRequires:  docbook-utils
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  intltool
+BuildRequires:  libtool
 BuildRequires:  libxslt-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -51,6 +53,7 @@ of the LXDE project.
 %autosetup -p1
 
 %build
+NOCONFIGURE=1 ./autogen.sh
 %configure \
 	--enable-man \
 	--enable-gtk3=yes

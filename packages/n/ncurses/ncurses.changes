@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov 11 11:32:17 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20241109
+  + work around musl header ifdef's (report by Urs Jansen, cf: Gentoo
+    #920266).
+  + improve error-reporting in write_entry.c (report by Changqing Li).
+  + remove unused #include from DJGPP configuration (report by Stas
+    Sergeev).
+  + workaround/fix issues from clang-analyze
+
+-------------------------------------------------------------------
 Mon Nov  4 08:12:21 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20241102

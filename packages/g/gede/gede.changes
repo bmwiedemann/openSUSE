@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 18 17:37:45 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 2.20.1
+  * Added support for entering gdb commands manually
+- Do not force a ctags vendor on users
+- Run the only unit test in %check
+
+-------------------------------------------------------------------
 Fri Jan  5 09:56:33 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 2.19.3

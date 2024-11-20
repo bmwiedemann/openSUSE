@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 19 12:44:10 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2024.10:
+  * Fixed ignoring of `css_class` attribute in `accordion.html`,
+    `accordion-group.html` and `tab.html` templates.
+  * Bumped the minimum supported version of django-crispy-forms
+    to 2.3.
+  * Confirmed support for Django 5.1.
+
+-------------------------------------------------------------------
 Wed Jul 17 14:55:31 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2024.1

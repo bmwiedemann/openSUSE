@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 19 12:13:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.6.0:
+  * Drop Django 3.2 to 4.1 support.
+
+-------------------------------------------------------------------
 Mon Oct 28 11:34:25 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.5.0:

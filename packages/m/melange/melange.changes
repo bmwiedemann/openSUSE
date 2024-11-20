@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Nov 19 08:38:41 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.15.11:
+  * build(deps): bump cloud.google.com/go/storage from 1.46.0 to
+    1.47.0
+
+-------------------------------------------------------------------
+Tue Nov 19 08:35:58 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.15.10:
+  * release: check for both tag and release
+
+-------------------------------------------------------------------
+Tue Nov 19 08:31:33 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.15.9:
+  * change release frequency to weekly
+  * review feedback
+  * docs(release): update release.md based on new workflow design
+  * fix(releases): more reliable releases
+  * Bump apko to v0.20.0
+  * Clean up workspace dir from inside runner to avoid permission
+    errors. (#1648)
+
+-------------------------------------------------------------------
 Fri Nov 15 07:06:41 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.15.8:

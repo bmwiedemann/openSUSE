@@ -453,4 +453,20 @@
 - replace set_socket_TCP_KEEPALIVE_and_TCP_USER_TIMEOUT.patch</comment>
     <requestid>1125876</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>03729e1152d51277e92e2cec0c083842</srcmd5>
+    <version>5.3.1</version>
+    <time>1732051416</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.3.1:
+  * Fixed readthedocs (#443)
+  * Prepare for release: 5.3.1 (#444)
+  * Hard-code requests version because of the bug in docker-py
+    (#432)
+  * fix AbstractTransport repr socket error (#361) (#431)
+  * blacksmith.sh: Migrate workflows to Blacksmith (#436)
+  * Added Python 3.13 to CI (#440)
+  * Prepare for release: 5.3.0 (#441)</comment>
+    <requestid>1225084</requestid>
+  </revision>
 </revisionlist>

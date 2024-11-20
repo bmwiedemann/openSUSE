@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 19 10:20:27 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add py313-support.patch to fix build with py313
+
+-------------------------------------------------------------------
 Mon Jul  1 16:53:38 UTC 2024 - Mia Herkt <mia@0x0.st>
 
 - Update to 1.5.1 (no changes for openSUSE)
@@ -12,7 +17,7 @@ Thu Apr  6 16:05:15 UTC 2023 - Mia Herkt <mia@0x0.st>
 -------------------------------------------------------------------
 Tue Dec 13 15:43:15 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to v1.4.0 
+- Update to v1.4.0
   * Update manifest and a copyright
 
 -------------------------------------------------------------------

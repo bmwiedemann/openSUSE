@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Nov  7 00:32:31 CET 2024 - ro@suse.de
+
+- Chromium 131.0.6778.69 
+  (stable released 2024-11-12) (boo#1233311)
+  * CVE-2024-11110: Inappropriate implementation in Blink.
+  * CVE-2024-11111: Inappropriate implementation in Autofill.
+  * CVE-2024-11112: Use after free in Media.
+    (n/a for linux)
+  * CVE-2024-11113: Use after free in Accessibility.
+  * CVE-2024-11114: Inappropriate implementation in Views.
+    (n/a for linux)
+  * CVE-2024-11115: Insufficient policy enforcement in Navigation.
+    (n/a for linux)
+  * CVE-2024-11116: Inappropriate implementation in Paint.
+  * CVE-2024-11117: Inappropriate implementation in FileSystem.
+
+- dropped patches:
+  * chromium-130-missing-includes.patch (upstream)
+  * chromium-125-lp155-typename.patch (not required with llvm)
+- modified patches:
+  * chromium-127-bindgen.patch (drop all allowlist changes)
+  * chromium-127-constexpr.patch (update from debian patch)
+- added patches:
+  * chromium-131-unbundle-enable-freetype.patch
+    from git, missing in 131 release
+  * chromium-131-clang-stack-protector.patch
+    (partial revert of upstream commit
+     c3dadb02f611a360fb40fd8844ed3c1ef1e7834e)
+
+- drop from keeplibs: (deleted upstream)
+  third_party/devtools-frontend/src/front_end/third_party/lodash-isequal
+- add to keeplibs:
+  third_party/tflite/src/third_party/xla/xla/tsl (drop subdirs)
+  third_party/ink
+
+-------------------------------------------------------------------
 Wed Nov  6 00:52:13 CET 2024 - ro@suse.de
 
 - Chromium 130.0.6723.116 (boo#1232843)
