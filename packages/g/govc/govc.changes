@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 20 08:12:22 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.46.2:
+  * chore: Update version.go for v0.46.2
+  * fix: vcsim: output signed byte in ByteSlice.MarshalXML
+
+-------------------------------------------------------------------
 Fri Nov 15 07:09:14 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.46.1:
