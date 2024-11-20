@@ -7,4 +7,13 @@
     <comment>New package which will be required by Solaar to support Logitech HID devices.</comment>
     <requestid>1034268</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>dbd1fb53cd20f81c2feee783a67b64cf</srcmd5>
+    <version>0.0.3</version>
+    <time>1732118583</time>
+    <user>anag+factory</user>
+    <comment>- add pytest-catch-warnings.patch to fix build with newer
+  pytest/python 3.13</comment>
+    <requestid>1225264</requestid>
+  </revision>
 </revisionlist>

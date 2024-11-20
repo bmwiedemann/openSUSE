@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 20 10:23:16 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add pytest-catch-warnings.patch to fix build with newer
+  pytest/python 3.13
+
+-------------------------------------------------------------------
 Mon Nov  7 15:12:36 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Conflict with solaar < 1.1.7: solaar wrongly integrated this

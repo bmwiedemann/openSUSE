@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-hid-parser
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,15 @@
 
 
 %define pkg_name hid-parser
-
+%{?sle15_python_module_pythons}
 Name:           python-%{pkg_name}
 Version:        0.0.3
 Release:        0
 Summary:        Parse HID report descriptors
 License:        MIT
 URL:            https://github.com/FFY00/python-hid-parser
-Source0:        https://files.pythonhosted.org/packages/48/af/6266119b18570fee7dc838c3389e37db3586a4e2003de709cf4ac24e395a/hid-parser-0.0.3.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/h/hid-parser/hid-parser-%{version}.tar.gz
+Patch1:         pytest-catch-warnings.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -42,7 +43,7 @@ Conflicts:      solaar < 1.1.7
 Typed pure Python library to parse HID report descriptors
 
 %prep
-%setup -q -n %{pkg_name}-%{version}
+%autosetup -p1 -n %{pkg_name}-%{version}
 
 %build
 %pyproject_wheel
