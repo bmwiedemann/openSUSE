@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Nov 20 07:56:22 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.38.0:
+  * Release v1.38.0 (#6866)
+  * move v1.21 from netlify to gh like in toml file (#6865)
+  * removing kube-rbac-proxy from website docs (#6864)
+  * adding changelog and migrations for k8s 1.30 and kubebuilderv4
+    work (#6862)
+  * updating ansible plugin to 1.36.1 (#6861)
+  * rebasing from main (#6837)
+  * updating to k8s 1.30 dependencies and kubebuilder v4 (#6848)
+  * Update actions to latest (#6852)
+  * move away from latest tag for olm installs (#6849)
+  * fixing doc links so ci passes (#6850)
+  * Bump docker/build-push-action from 3 to 6 (#6774)
+  * fix: consider version when getting CRDs for validating
+    descriptors (#6784)
+  * fix: make `run bundle` use proper YAML library to split
+    documents (#6829)
+  * fix test data scaffolding (#6845)
+  * Update code snippets (#6796) (#6839)
+  * docs: Update go tutorial (#6832)
+
+-------------------------------------------------------------------
 Sat Sep 21 13:46:24 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.37.0:
