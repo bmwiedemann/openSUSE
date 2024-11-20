@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov 19 23:50:22 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to 24.4.1:
+  What's Changed
+  + Update Russian translation by @antohami in #1038
+  + Fix hardcoded version in Cauer LC filter by @ra3xdh in #1039
+  + Improve graph rendering performance by @wawuwo in #1042
+  + refactor: replace non-empty QString constructors with
+    QStringLiteral() by @Integral-Tech in #1043
+  + Update Qt to v6.8.0 LTS by @dsm in #1048
+  + Add MetaInfo by @NN708 in #1056
+  + Fix #1001 by @ivandi69 in #1057
+  + Fix build for contrib directory by @NN708 in #1058
+  + Fix pulsed current source issues by @ra3xdh in #1059
+  + Update NEWS, VERSION, and MetaInfo by @ra3xdh in #1061
+
+------------------------------------------------------------------
 Sat Nov  2 00:16:36 UTC 2024 - Mikhail Paulyshka <me@mixaill.net>
 
 - Added QtCharts dependency

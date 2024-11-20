@@ -23,7 +23,7 @@
 %endif
 
 Name:           qucs-s
-Version:        24.4.0
+Version:        24.4.1
 Release:        0
 Summary:        Qucs with SPICE
 License:        GPL-2.0-or-later
@@ -83,5 +83,6 @@ Qucs-S is a spin-off of the Qucs cross-platform circuit simulator. "S" letter in
 %{_mandir}/man1/%{name}.1.gz
 %{_mandir}/man1/qucsator_rf.1.gz
 %{_mandir}/man1/qucsconv_rf.1.gz
+%{_datadir}/metainfo/io.github.ra3xdh.qucs_s.metainfo.xml
 
 %changelog
