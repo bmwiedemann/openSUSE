@@ -1,7 +1,7 @@
 #
 # spec file for package python-jsonpointer
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jsonpointer
-Version:        2.4
+Version:        3.0.0
 Release:        0
 Summary:        Module to identify specific nodes in a JSON document
 License:        BSD-3-Clause
@@ -39,7 +39,7 @@ Requires:       alts
 BuildRequires:  alts
 %else
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 %endif
 BuildArch:      noarch
 %python_subpackages

@@ -17,8 +17,8 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-%define ver 2.1.2
-%define _ver 2_1_2
+%define ver 2.1.3
+%define _ver 2_1_3
 %define pname python-numpy
 %define plainpython python
 %define hpc_upcase_trans_hyph() %(echo %{**} | tr [a-z] [A-Z] | tr '-' '_')

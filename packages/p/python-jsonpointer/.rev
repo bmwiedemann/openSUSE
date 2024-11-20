@@ -174,4 +174,15 @@
   * no changes</comment>
     <requestid>1129227</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>46fbfdfd481ee0a35d445ccdcb2200d6</srcmd5>
+    <version>3.0.0</version>
+    <time>1732118335</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.0:
+  * Add support for python 3.12
+  * drop python 2.7 support
+  * CI fixes</comment>
+    <requestid>1225137</requestid>
+  </revision>
 </revisionlist>

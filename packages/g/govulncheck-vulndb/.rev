@@ -148,4 +148,24 @@
   * GO-2024-3250 CVE-2024-51744 GHSA-29wx-vh33-7x7r (forwarded request 1223754 from jfkw)</comment>
     <requestid>1223755</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>70003624017be217e036e9add2245043</srcmd5>
+    <version>0.0.20241119T173509</version>
+    <time>1732118411</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.0.20241119T173509 2024-11-19T17:35:09Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2022-0646 CVE-2020-8911 CVE-2020-8912 GHSA-7f33-f4f5-xwgw GHSA-f5pg-7wfw-84q9
+  * GO-2024-3267 CVE-2024-52010 GHSA-7hpf-g48v-hw3j
+  * GO-2024-3269 CVE-2024-52308 GHSA-p2h2-3vg9-4p87
+  * GO-2024-3271 CVE-2024-52522
+  * GO-2024-3272 CVE-2024-24425
+  * GO-2024-3273 CVE-2024-24426
+  * GO-2024-3274 CVE-2023-0109 GHSA-5r2g-59px-3q9w
+  * GO-2024-3275 CVE-2024-44625 GHSA-phm4-wf3h-pc3r
+  * GO-2024-3277 CVE-2024-0793 GHSA-h7wq-jj8r-qm7p
+  * GO-2024-3278 CVE-2024-9526 (forwarded request 1225190 from jfkw)</comment>
+    <requestid>1225191</requestid>
+  </revision>
 </revisionlist>

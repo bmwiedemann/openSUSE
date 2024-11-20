@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-blinker
-Version:        1.8.2
+Version:        1.9.0
 Release:        0
 Summary:        Object-to-object and broadcast signaling in Python
 License:        MIT

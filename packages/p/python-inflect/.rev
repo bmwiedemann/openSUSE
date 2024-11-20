@@ -139,4 +139,12 @@
 - drop typing_extensions-version.patch (upstream)</comment>
     <requestid>1224221</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>78f22f173db0490984b6a7ccdc3ce4c4</srcmd5>
+    <version>7.4.0</version>
+    <time>1732118374</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1225124</requestid>
+  </revision>
 </revisionlist>

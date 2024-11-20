@@ -19,7 +19,7 @@
 %global pkg_name tls-session-manager
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.0.6
+Version:        0.0.7
 Release:        0
 Summary:        In-memory TLS session DB and session ticket
 License:        BSD-3-Clause

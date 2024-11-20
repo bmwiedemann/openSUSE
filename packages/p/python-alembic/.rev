@@ -1771,4 +1771,18 @@
 - update to 1.13.2:</comment>
     <requestid>1204393</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>4786161821be3fa81bcea9631967452b</srcmd5>
+    <version>1.14.0</version>
+    <time>1732118358</time>
+    <user>anag+factory</user>
+    <comment>- update to el_1_14_0:
+  * **[usecase] [runtime]** Added a new hook to the
+    `DefaultImpl` `DefaultImpl.version_table_impl()`.  This allows
+    third party dialects to define the exact structure of the
+    alembic_version table, to include use cases where the table
+    requires special directives and/or additional columns so that
+    it may function correctly on a particular backend.</comment>
+    <requestid>1225089</requestid>
+  </revision>
 </revisionlist>

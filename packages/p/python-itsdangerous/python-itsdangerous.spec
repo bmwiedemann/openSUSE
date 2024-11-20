@@ -1,7 +1,7 @@
 #
 # spec file for package python-itsdangerous
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-itsdangerous
-Version:        2.1.2
+Version:        2.2.0
 Release:        0
 Summary:        Various helpers to pass trusted data to untrusted environments and back
 License:        BSD-3-Clause
 URL:            https://itsdangerous.palletsprojects.com
 Source:         https://files.pythonhosted.org/packages/source/i/itsdangerous/itsdangerous-%{version}.tar.gz
+BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -61,8 +61,8 @@ Also I plan to add some extra things.  Work in progress.
 %pytest tests
 
 %files %{python_files}
-%license LICENSE.rst
-%doc CHANGES.rst README.rst
+%license LICENSE.txt
+%doc CHANGES.rst README.md
 %{python_sitelib}/itsdangerous
 %{python_sitelib}/itsdangerous-%{version}.dist-info
 

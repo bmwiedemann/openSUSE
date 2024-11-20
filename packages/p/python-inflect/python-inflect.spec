@@ -35,8 +35,8 @@ BuildRequires:  %{python_module typing_extensions if %python-base < 3.9}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       %{python_module typeguard}
 Requires:       python-more-itertools >= 8.5.0
+Requires:       python-typeguard
 BuildArch:      noarch
 %python_subpackages
 

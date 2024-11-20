@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 30 03:33:55 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update crypto-token to version 0.1.2.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Wed Feb  7 01:28:45 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Add crypto-token at version 0.1.1.

@@ -1,0 +1,280 @@
+-------------------------------------------------------------------
+Tue Sep 10 01:45:26 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.3.0:
+  * Bump github.com/sigstore/sigstore from 1.8.8 to 1.8.9 in the all group
+  * Bump actions/upload-artifact from 4.3.6 to 4.4.0 in the all group
+  * Bump sigstore/cosign-installer from 3.5.0 to 3.6.0 in the all group
+  * Bump github.com/sigstore/cosign/v2 from 2.3.0 to 2.4.0
+  * Bump the all group with 2 updates
+  * Bump actions/upload-artifact from 4.3.5 to 4.3.6 in the all group
+  * Bump actions/upload-artifact from 4.3.4 to 4.3.5 in the all group
+  * test: add a leading slash to repository_url
+  * Update pkg/ctl/implementation.go
+  * Fix OCI repository URL resolution
+  * Bump golangci/golangci-lint-action from 6.0.1 to 6.1.0 in the all group
+  * Bump github.com/docker/docker in the go_modules group
+  * Bump sigs.k8s.io/release-utils from 0.8.3 to 0.8.4 in the all group
+  * Bump github.com/sigstore/cosign/v2 from 2.2.4 to 2.3.0
+  * Bump softprops/action-gh-release from 2.0.7 to 2.0.8 in the all group
+  * update go.mod to 1.22.5
+  * update golanci-lint
+  * Bump github.com/google/go-containerregistry in the all group
+  * Bump softprops/action-gh-release from 2.0.6 to 2.0.7 in the all group
+  * Bump github.com/sigstore/sigstore from 1.8.6 to 1.8.7 in the all group
+  * Improve the generated template README
+  * Add support to vulnerability aliases
+  * Fix Copyright in Boilerplates
+  * Bump actions/setup-go from 5.0.1 to 5.0.2 in the all group
+  * Bump google.golang.org/grpc in the go_modules group
+  * Bump github.com/google/go-containerregistry from 0.19.2 to 0.20.0
+  * Bump sigs.k8s.io/release-utils from 0.8.2 to 0.8.3 in the all group
+  * Prevent from specifying subcomponents when multiple products are defined
+  * fix(create): support multiple --product flags
+  * Bump go to 1.22.4
+  * Bump github.com/sigstore/sigstore in the all group across 1 directory
+  * Bump actions/upload-artifact from 4.3.3 to 4.3.4 in the all group
+  * Bump github.com/hashicorp/go-retryablehttp in the go_modules group
+  * Bump softprops/action-gh-release from 2.0.5 to 2.0.6 in the all group
+  * Bump ko-build/setup-ko from 0.6 to 0.7 in the all group
+  * Bump the all group with 2 updates
+  * Bump actions/checkout from 4.1.6 to 4.1.7 in the all group
+  * Bump goreleaser/goreleaser-action from 5.1.0 to 6.0.0
+  * update installation methods with homebrew
+  * Bump github.com/sigstore/sigstore from 1.8.3 to 1.8.4 in the all group
+  * Bump github.com/package-url/packageurl-go in the all group
+  * Bump actions/checkout from 4.1.5 to 4.1.6 in the all group
+  * Bump goreleaser/goreleaser-action from 5.0.0 to 5.1.0 in the all group
+  * Bump golangci/golangci-lint-action from 6.0.0 to 6.0.1 in the all group
+  * Bump sigs.k8s.io/release-utils from 0.8.1 to 0.8.2 in the all group
+  * Bump golangci/golangci-lint-action from 5.3.0 to 6.0.0
+  * Bump softprops/action-gh-release from 2.0.4 to 2.0.5 in the all group
+  * Bump the all group with 2 updates
+  * Bump actions/setup-go from 5.0.0 to 5.0.1 in the all group
+  * Bump kubernetes-sigs/release-actions in the all group
+  * Bump golangci/golangci-lint-action from 5.0.0 to 5.1.0 in the all group
+  * Bump golangci/golangci-lint-action from 4.0.0 to 5.0.0
+  * Bump actions/checkout from 4.1.3 to 4.1.4 in the all group
+  * Bump actions/upload-artifact from 4.3.2 to 4.3.3 in the all group
+  * Bump actions/checkout from 4.1.2 to 4.1.3 in the all group
+  * Bump golang.org/x/net from 0.22.0 to 0.23.0 in the go_modules group
+  * Bump actions/upload-artifact from 4.3.1 to 4.3.2 in the all group
+  * Bump sigstore/cosign-installer from 3.4.0 to 3.5.0 in the all group
+  * Bump github.com/sigstore/cosign/v2 from 2.2.3 to 2.2.4
+  * Bump sigs.k8s.io/release-utils from 0.8.0 to 0.8.1 in the all group
+  * Add support for Golang GO-* vulnerability identifier
+  * Bump sigs.k8s.io/release-utils from 0.7.7 to 0.8.0
+  * Bump the all group with 1 update
+  * run attest in prs to test the entire release flow
+  * Bump the all group with 1 update
+  * Bump the all group with 1 update
+  * fix lints
+  * group dependabot updates
+  * upgrade to go1.22
+  * Bump google.golang.org/protobuf from 1.32.0 to 1.33.0
+  * Bump github.com/go-jose/go-jose/v3 from 3.0.2 to 3.0.3
+  * Bump gopkg.in/go-jose/go-jose.v2 from 2.6.1 to 2.6.3
+  * Bump github.com/docker/docker
+  * Bump kubernetes-sigs/release-actions from 0.1.3 to 0.1.4
+  * Bump github.com/google/go-containerregistry from 0.19.0 to 0.19.1
+  * Update release.yaml
+  * Bump softprops/action-gh-release from 2.0.3 to 2.0.4
+  * Bump actions/checkout from 4.1.1 to 4.1.2
+  * Bump softprops/action-gh-release from 1 to 2
+  * Bump github.com/stretchr/testify from 1.8.4 to 1.9.0
+  * Bump golangci/golangci-lint-action from 3.7.0 to 4.0.0
+  * Bump github.com/sigstore/sigstore from 1.8.1 to 1.8.2
+  * Bump github.com/sigstore/rekor from 1.3.4 to 1.3.5
+  * Bump github.com/sigstore/cosign/v2 from 2.2.2 to 2.2.3
+  * Bump sigstore/cosign-installer from 3.3.0 to 3.4.0
+  * Bump github.com/google/go-containerregistry from 0.18.0 to 0.19.0
+  * Bump github.com/sigstore/sigstore from 1.8.0 to 1.8.1
+  * Bump github.com/google/go-containerregistry from 0.17.0 to 0.18.0
+  * Bump kubernetes-sigs/release-actions from 0.1.2 to 0.1.3
+  * Bump github.com/sigstore/sigstore from 1.7.6 to 1.8.0
+  * Fix linter errors
+
+-------------------------------------------------------------------
+Fri Dec 15 11:21:35 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.2.6:
+  * Add generate test fixtures
+  * Add generate subcommand
+  * Add generate --init test
+  * Add generate --init flag
+  * Only read openvex files as templates
+  * vexctl generate
+  * Add Generate method
+  * Add ReadTemplateData() function
+  * Bump sigstore/cosign-installer from 3.2.0 to 3.3.0
+  * Bump actions/setup-go from 4.1.0 to 5.0.0
+  * go mod tidy
+  * Attach: Add OCI annotations for keyless verification
+  * Sign: Upload to tlog and capture sig data
+  * Bump github.com/sigstore/cosign/v2 from 2.2.1 to 2.2.2
+  * Update examples to v0.2.0
+  * add: Split out of cmd validation logic
+  * addOptions validation test
+  * vexctl add: Fix bug when writing docs in-place
+  * Bump github.com/sigstore/sigstore from 1.7.5 to 1.7.6
+  * Move release actions to kubernetes-sigs
+  * Bump github.com/google/go-containerregistry from 0.16.1 to 0.17.0
+  * add boilerplate headers
+  * add snapshot job
+  * cleanup
+  * add sboms and revamp the provanance with k8s-release actions tools
+  * bump golangci-lint to v1.55.x
+
+-------------------------------------------------------------------
+Wed Nov 15 01:17:40 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.2.5:
+  * Bump sigs.k8s.io/release-utils from 0.7.6 to 0.7.7
+  * Bump github.com/sigstore/cosign/v2 from 2.2.0 to 2.2.1
+  * Bump sigstore/cosign-installer from 3.1.2 to 3.2.0
+  * Bump github.com/spf13/cobra from 1.7.0 to 1.8.0
+  * Bump sigs.k8s.io/release-utils from 0.7.5 to 0.7.6
+  * Bump github.com/sigstore/sigstore from 1.7.4 to 1.7.5
+  * update version comments
+  * Bump actions/checkout from 4.1.0 to 4.1.1
+  * Bump github.com/sigstore/sigstore from 1.7.3 to 1.7.4
+  * Attest: Add refs flag, improve help and command
+  * Split intoto subj normlzatn into image and other
+  * Reuse hashes from existing VEX products
+  * Reuse purl hashes in product
+  * Bump sigs.k8s.io/release-utils from 0.7.4 to 0.7.5
+  * Update README examples to v0.2.0
+  * Bump github.com/package-url/packageurl-go from 0.1.1 to 0.1.2
+  * Bump actions/checkout from 4.0.0 to 4.1.0
+  * Factor out document write logic
+  * Add add subcommand
+  * Bump goreleaser/goreleaser-action from 4.6.0 to 5.0.0
+  * fix lints
+  * upgrade to go1.21
+  * Bump goreleaser/goreleaser-action from 4.4.0 to 4.6.0
+  * Add options validation tests
+  * Make out file option reusable
+  * Create vex statements from st options
+  * Refactor commands and options
+  * Bump actions/checkout from 3.6.0 to 4.0.0
+  * Bump sigstore/cosign-installer from 3.1.1 to 3.1.2
+  * Bump github.com/sigstore/sigstore from 1.7.2 to 1.7.3
+  * Bump github.com/sigstore/cosign/v2 from 2.1.1 to 2.2.0
+  * Update show to list
+  * show subcommand creation for review
+  * go.mod: Pull go-vex@v0.2.5
+  * Revamp tests for v0.2.2 add more fixtures
+  * Update vexctl implementation to v0.2.0
+  * Update vexctl create to v0.2.0
+  * Rename test fixtures to versioned filenames
+  * Drop depguard from golangci lint
+  * Bump actions/checkout from 3.5.3 to 3.6.0
+  * Bump slsa-framework/slsa-github-generator from 1.8.0 to 1.9.0
+  * Update SARIF filtering examples
+  * Update verify.yaml
+  * Bump golangci/golangci-lint-action from 3.6.0 to 3.7.0
+  * Bump goreleaser/goreleaser-action from 4.3.0 to 4.4.0
+  * Bump github.com/sigstore/sigstore from 1.7.1 to 1.7.2
+  * Bump actions/setup-go from 4.0.1 to 4.1.0
+  * Bump slsa-framework/slsa-github-generator from 1.7.0 to 1.8.0
+  * Bump github.com/google/go-containerregistry from 0.15.2 to 0.16.1
+
+-------------------------------------------------------------------
+Fri Jul 21 18:35:07 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.2.3:
+  * Rename artifacts to vexctl
+  * refactor release job
+  * fix deprecated flag
+  * Add ko installer to release workflow
+  * Add missing ldflags script
+  * go.mod: Pull go-vex v0.2.1
+  * Drop deprecated vex.StatementFromID
+  * Bump github.com/secure-systems-lab/go-securesystemslib
+  * Fix --subcomponents flag
+  * Add support for PRISMA- identifiers
+  * Bump github.com/sigstore/cosign/v2 from 2.1.0 to 2.1.1
+  * Bump sigstore/cosign-installer from 3.1.0 to 3.1.1
+  * Bump sigstore/cosign-installer from 3.0.5 to 3.1.0
+  * Bump github.com/sigstore/cosign/v2
+  * Bump github.com/sigstore/sigstore from 1.7.0 to 1.7.1
+  * Pull go-vex @ HEAD
+  * Use vex.Open instead of vex.Load to support multi format vex
+  * Add initial CSAF example files
+  * Add OpenVEX examples
+  * vexctl create: add --impaact-statement
+  * filter: Drop debug messages, improve output
+  * Add RUSTSEC, GHSA, RHSA to known identifiers
+  * Bump github.com/package-url/packageurl-go from 0.1.0 to 0.1.1
+  * Bump github.com/sigstore/sigstore from 1.6.5 to 1.7.0
+  * Bump goreleaser/goreleaser-action from 4.2.0 to 4.3.0
+  * Bump golangci/golangci-lint-action from 3.5.0 to 3.6.0
+  * Bump actions/checkout from 3.5.2 to 3.5.3
+  * Bump slsa-framework/slsa-github-generator from 1.6.0 to 1.7.0
+  * Bump github.com/sirupsen/logrus from 1.9.2 to 1.9.3
+  * Bump golangci/golangci-lint-action from 3.4.0 to 3.5.0
+  * Bump github.com/sigstore/sigstore from 1.6.4 to 1.6.5
+  * Bump github.com/stretchr/testify from 1.8.3 to 1.8.4
+  * Bump github.com/stretchr/testify from 1.8.2 to 1.8.3
+  * Bump sigstore/cosign-installer from 3.0.4 to 3.0.5
+  * Bump github.com/google/go-containerregistry from 0.15.1 to 0.15.2
+  * Bump github.com/sirupsen/logrus from 1.9.0 to 1.9.2
+  * Bump sigstore/cosign-installer from 3.0.3 to 3.0.4
+  * Bump sigs.k8s.io/release-utils from 0.7.3 to 0.7.4
+  * Bump actions/setup-go from 4.0.0 to 4.0.1
+  * fix lints
+  * bump to go 1.20 and update some dependencies
+  * Bump slsa-framework/slsa-github-generator from 1.5.0 to 1.6.0
+  * Bump github.com/sigstore/sigstore from 1.6.3 to 1.6.4
+  * Bump github.com/in-toto/in-toto-golang from 0.8.0 to 0.9.0
+  * Bump github.com/sigstore/cosign/v2 from 2.0.1 to 2.0.2
+  * Bump github.com/in-toto/in-toto-golang from 0.7.1 to 0.8.0
+  * Bump github.com/sigstore/sigstore from 1.6.2 to 1.6.3
+  * Bump sigstore/cosign-installer from 3.0.2 to 3.0.3
+  * Bump actions/checkout from 3.5.1 to 3.5.2
+  * Bump actions/checkout from 3.5.0 to 3.5.1
+  * Bump github.com/sigstore/sigstore from 1.6.1 to 1.6.2
+  * Bump sigstore/cosign-installer from 3.0.1 to 3.0.2
+  * Bump github.com/sigstore/cosign/v2
+  * Bump github.com/sigstore/sigstore from 1.6.0 to 1.6.1
+  * Bump github.com/in-toto/in-toto-golang from 0.7.0 to 0.7.1
+  * Bump github.com/spf13/cobra from 1.6.1 to 1.7.0
+  * Bump actions/checkout from 3.4.0 to 3.5.0
+  * Bump actions/setup-go from 3.5.0 to 4.0.0
+  * Bump github.com/google/go-containerregistry
+  * Bump actions/checkout from 3.3.0 to 3.4.0
+  * set cosign yes env var
+  * Bump sigstore/cosign-installer from 2.8.1 to 3.0.1
+  * update dependencies and cosign to v2
+  * Bump github.com/stretchr/testify from 1.8.1 to 1.8.2
+  * Bump slsa-framework/slsa-github-generator from 1.4.0 to 1.5.0
+  * Bump github.com/sigstore/sigstore from 1.5.1 to 1.5.2
+  * Bump github.com/in-toto/in-toto-golang
+  * Bump github.com/openvex/go-vex
+  * Fix broken parameters
+  * Fix examples based on actual command output
+  * Update maintainers to match community
+  * Add boilerplate to newfile
+  * Add unit test to references verifier
+  * Ensure attested refs are in doc
+  * --attach implies --sign
+  * Update attest subcm help
+  * Drop attestation targets from CLI
+  * Add test for ListDocumentProducts
+  * Rework attestation code
+  * go mod: pull purl module
+  * Add images test document
+  * Add test for NormalizeImageRefs
+  * Bump goreleaser/goreleaser-action from 4.1.0 to 4.2.0
+  * Fix exmple and testdata
+  * Bump github.com/google/go-containerregistry from 0.12.1 to 0.13.0
+  * Bump golangci/golangci-lint-action from 3.3.1 to 3.4.0
+  * fix: missing metadata on document merge
+  * small fixes
+  * add provenance and refactor release job
+  * build vexctl image using ko
+  * Add initial MAINTAINERS.md
+  * update license headers
+  * More improvements to README
+  * Update README
+  * Bump github.com/sigstore/sigstore from 1.5.0 to 1.5.1

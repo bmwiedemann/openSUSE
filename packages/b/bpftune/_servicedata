@@ -1,0 +1,6 @@
+<servicedata>
+  <service name="tar_scm">
+    <param name="url">https://github.com/oracle/bpftune.git</param>
+    <param name="changesrevision">6a50f5ff619caeea6f04d889e3a60de6c12feb76</param>
+  </service>
+</servicedata>

@@ -125,4 +125,12 @@
     <comment>update to 3.0.11</comment>
     <requestid>1216668</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>666f9dc52524b77f46908629d8bbb2b9</srcmd5>
+    <version>2.0.28</version>
+    <time>1732118416</time>
+    <user>anag+factory</user>
+    <comment>revert to 2.0.28</comment>
+    <requestid>1225207</requestid>
+  </revision>
 </revisionlist>

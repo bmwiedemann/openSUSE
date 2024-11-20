@@ -24,8 +24,8 @@ Index: icu/source/data/Makefile.in
 ===================================================================
 --- icu.orig/source/data/Makefile.in
 +++ icu/source/data/Makefile.in
-@@ -178,16 +178,16 @@ endif
- install-local: $(PKGDATA_LIST) ./icupkg.inc packagedata $(OS390INSTALL)
+@@ -169,16 +169,16 @@ endif
+ install-local: $(PKGDATA_LIST) ./icupkg.inc packagedata
  	$(MKINSTALLDIRS) $(TMPDATADIR) $(DESTDIR)$(ICUPKGDATA_DIR)
  ifeq ($(PKGDATA_MODE),files)
 -	$(MKINSTALLDIRS) $(ICUPKGDATA_DIR)/$(ICUDATA_NAME)

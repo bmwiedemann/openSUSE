@@ -16,9 +16,14 @@
 #
 
 
-%define lname	libicu75
-%define amajor   75
-%define aversion 75
+# what icu thinks the package is
+%define amajor 76
+%define aversion 76.1
+# for the rare case that SUSE needs to workaround ABI breaks:
+%define sonum %amajor
+# like sonum, but with underscore
+%define lname libicu%amajor
+
 %ifarch %armb hppa mips mips64 ppc ppc64 %sparc s390 s390x m68k
 %define be_platform 1
 %else
@@ -26,16 +31,16 @@
 %endif
 # icu-versioning.diff needs update for new Version too
 Name:           icu
-Version:        75.1
+Version:        76.1
 Release:        0
 Summary:        International Components for Unicode
 License:        ICU
 Group:          Development/Libraries/C and C++
 URL:            https://icu.unicode.org/
-Source:         https://github.com/unicode-org/icu/releases/download/release-75-1/icu4c-75_1-src.tgz
-Source2:        https://github.com/unicode-org/icu/releases/download/release-75-1/icu4c-75_1-src.tgz.asc
-Source3:        https://github.com/unicode-org/icu/releases/download/release-75-1/icu4c-75_1-docs.zip
-Source4:        https://github.com/unicode-org/icu/releases/download/release-75-1/icu4c-75_1-docs.zip.asc
+Source:         https://github.com/unicode-org/icu/releases/download/release-76-1/icu4c-76_1-src.tgz
+Source2:        https://github.com/unicode-org/icu/releases/download/release-76-1/icu4c-76_1-src.tgz.asc
+Source3:        https://github.com/unicode-org/icu/releases/download/release-76-1/icu4c-76_1-docs.zip
+Source4:        https://github.com/unicode-org/icu/releases/download/release-76-1/icu4c-76_1-docs.zip.asc
 Source5:        %name.keyring
 Source100:      baselibs.conf
 Patch4:         icu-fix-install-mode-files.diff
@@ -48,7 +53,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
 BuildRequires:  unzip
-Provides:       bundled(timezone) = 2024a
+Provides:       bundled(timezone) = 2024b
 
 %description
 ICU is a set of C and C++ libraries that provide extensive Unicode and locale
@@ -66,9 +71,9 @@ Group:          System/Libraries
 Requires:       timezone
 Provides:       libicu = %version
 %if %be_platform
-Requires:       libicu%aversion-bedata = %version
+Requires:       libicu%sonum-bedata = %version
 %else
-Requires:       libicu%aversion-ledata = %version
+Requires:       libicu%sonum-ledata = %version
 %endif
 
 %description -n %lname
@@ -76,12 +81,12 @@ ICU is a set of C and C++ libraries that provide extensive Unicode
 and locale support.
 This package contains the runtime libraries for ICU.
 
-%package -n libicu%aversion-bedata
+%package -n libicu%sonum-bedata
 Summary:        Rule databases and tables for ICU
 Group:          System/Libraries
 BuildArch:      noarch
 
-%description -n libicu%aversion-bedata
+%description -n libicu%sonum-bedata
 ICU is a set of C and C++ libraries that provide extensive Unicode
 and locale support.
 
@@ -91,12 +96,12 @@ rules, break iterator rules and dictionaries.
 
 This subpackage contains these data tables, in big-endian format.
 
-%package -n libicu%aversion-ledata
+%package -n libicu%sonum-ledata
 Summary:        Rule databases and tables for ICU
 Group:          System/Libraries
 BuildArch:      noarch
 
-%description -n libicu%aversion-ledata
+%description -n libicu%sonum-ledata
 ICU is a set of C and C++ libraries that provide extensive Unicode
 and locale support.
 
@@ -157,58 +162,41 @@ LD_LIBRARY_PATH="../lib:../stubdata:../tools/ctestfw:$LD_LIBRARY_PATH" \
 popd
 
 %install
-mkdir -p "%buildroot/%_docdir/%name"
-cp -a html "%buildroot/%_docdir/%name/"
-cp -a license.html readme.html "%buildroot/%_docdir/%name/"
+b="%buildroot"
+mkdir -p "$b/%_docdir/%name"
+cp -a html "$b/%_docdir/%name/"
+cp -a license.html readme.html "$b/%_docdir/%name/"
 
 find . -name CVS -type d -exec rm -Rf "{}" "+"
 cd source
 
 %make_install
-cp data/out/icudt*.dat "%buildroot/%_datadir/icu/%version/"
-
-#
-# ICU's "pkgdata" utility is really fragile, so icu-versioning.diff
-# does as few actions as possible, but that means we need some additional
-# cleanup in the spec file now.
-#
-pushd "%buildroot/%_libdir/"
-for i in *.so.[0-9]*; do
-	echo "Looking at $i"
-	if [ "${i##*.so.}" != "%version" ]; then
-		rm -fv "$i"
-		continue
-	fi
-	# Because U_ICU_VERSION_SHORT is "51_2" and not "51.2",
-	# create some symlinks.
-	ln -s "$i" "${i%%%version}%aversion"
-done
-popd
+cp data/out/icudt*.dat "$b/%_datadir/icu/%aversion/"
 
 # /usr/lib/rpm/elfdeps requires +x bit and not all files had it at one point.
 # - OpenBSD for example is known to have patched their libtool program
 # to kill the x bit on install :(
-chmod a+rx "%buildroot/%_libdir"/lib*.so.*
+chmod a+rx "$b/%_libdir"/lib*.so.*
 
 # install uncompiled source data:
-mkdir -p "%buildroot/%_datadir/icu/%version/unidata"
-install -m 644 data/unidata/*.txt "%buildroot/%_datadir/icu/%version/unidata"
-ln -s unidata/UnicodeData.txt "%buildroot/%_datadir/icu/%version/"
+mkdir -p "$b/%_datadir/icu/%aversion/unidata"
+install -m 644 data/unidata/*.txt "$b/%_datadir/icu/%aversion/unidata"
+ln -s unidata/UnicodeData.txt "$b/%_datadir/icu/%aversion/"
 
-rm "%buildroot/%_datadir/icu/%version/install-sh"
+rm "$b/%_datadir/icu/%aversion/install-sh"
 # Seems unused
-rm -Rf "%buildroot/%_datadir/icu/%version/unidata/" \
-	"%buildroot/%_datadir/icu/%version/UnicodeData.txt" \
-	"%buildroot/%_libdir/icu/current" \
-	"%buildroot/%_libdir/icu/Makefile.inc" \
-	"%buildroot/%_libdir/icu/pkgdata.inc"
+rm -Rf "$b/%_datadir/icu/%aversion/unidata/" \
+	"$b/%_datadir/icu/%aversion/UnicodeData.txt" \
+	"$b/%_libdir/icu/current" \
+	"$b/%_libdir/icu/Makefile.inc" \
+	"$b/%_libdir/icu/pkgdata.inc"
 
 %fdupes %buildroot/%_prefix
 
 %check
 # s390x see: https://ssl.icu-project.org/trac/ticket/13095
 cd source
-if ! ICU_DATA="%buildroot/%_datadir/icu/%version" %make_build check VERBOSE=1; then
+if ! ICU_DATA="%buildroot/%_datadir/icu/%aversion" %make_build check VERBOSE=1; then
 	# oddly fails since 74
 	# did they mess up --with-data-packaging=archive
 	:
@@ -227,8 +215,8 @@ fi
 %_sbindir/*
 %_mandir/man*/*
 %dir %_datadir/icu
-%dir %_datadir/icu/%version
-%_datadir/icu/%version/LICENSE
+%dir %_datadir/icu/%aversion
+%_datadir/icu/%aversion/LICENSE
 %dir %_docdir/%name/
 %_docdir/%name/license.html
 %_docdir/%name/readme.html
@@ -236,29 +224,29 @@ fi
 %files -n %lname
 %_libdir/libicu*.so.*
 
-%files -n libicu%aversion-bedata
+%files -n libicu%sonum-bedata
 %dir %_datadir/icu
-%dir %_datadir/icu/%version
-%_datadir/icu/%version/icudt%{amajor}b.dat
+%dir %_datadir/icu/%aversion
+%_datadir/icu/%aversion/icudt%{amajor}b.dat
 
-%files -n libicu%aversion-ledata
+%files -n libicu%sonum-ledata
 %dir %_datadir/icu
-%dir %_datadir/icu/%version
-%_datadir/icu/%version/icudt%{amajor}l.dat
+%dir %_datadir/icu/%aversion
+%_datadir/icu/%aversion/icudt%{amajor}l.dat
 
 %files -n libicu-devel
 %_libdir/libicu*.so
 %_includedir/unicode/
 %dir %_libdir/icu/
-%dir %_libdir/icu/%version/
-%_libdir/icu/%version/Makefile.inc
-%_libdir/icu/%version/pkgdata.inc
+%dir %_libdir/icu/%aversion/
+%_libdir/icu/%aversion/Makefile.inc
+%_libdir/icu/%aversion/pkgdata.inc
 %_libdir/pkgconfig/icu-*.pc
 %_bindir/icu-config
 %dir %_datadir/icu/
-%dir %_datadir/icu/%version/
-%_datadir/icu/%version/mkinstalldirs
-%_datadir/icu/%version/config/
+%dir %_datadir/icu/%aversion/
+%_datadir/icu/%aversion/mkinstalldirs
+%_datadir/icu/%aversion/config/
 
 %files -n libicu-doc
 %dir %_docdir/%name/

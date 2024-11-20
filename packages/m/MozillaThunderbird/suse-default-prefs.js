@@ -20,5 +20,5 @@ pref("extensions.shownSelectionUI", true);
 pref("spellchecker.dictionary_path", "/usr/share/myspell");
 
 // (KDE) desktop support
-pref("widget.use-xdg-desktop-portal.file-picker", 1);
+//pref("widget.use-xdg-desktop-portal.file-picker", 1);
 

@@ -58,4 +58,28 @@
     <comment></comment>
     <requestid>1124438</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>46fc2d7f37b0cc9b421b46098b0b79d6</srcmd5>
+    <version>1.20.0</version>
+    <time>1732118415</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.20.0:
+  * Added
+    + Adds support to Python 3.13
+    + Add Django 5.1 support
+    + Add Django 5.0 support
+  * Changed
+    + Make sure db_default is being considered
+    + Allow None value for generic foreign keys within iterators
+    + Make TextField generator respect max_length
+    + Handle bulk creation when using reverse related name
+    + Allow combination of GFK and _fill_optional
+    + Fix make_recipe to work with _quantity
+    + Replace expensive count() with cheap exists()
+    + Allow baking without contenttypes framework
+  * Removed
+    + Drop Django 3.2 and 4.1 support (reached end of life)
+</comment>
+    <requestid>1225204</requestid>
+  </revision>
 </revisionlist>

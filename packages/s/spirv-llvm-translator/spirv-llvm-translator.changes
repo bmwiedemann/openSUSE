@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov 14 21:23:30 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 19.1.1.
+  * Fix for duplicate -spirv-ext registration.
+  * Add reverse translation for OpDecorateString and
+    OpMemberDecorateString.
+  * Ignore UserSemantic decorations on BuiltIn variables.
+  * Introduce CodeSectionINTEL storage class.
+  * Fix SPIRVCopyMemory::validate().
+  * Allow short16 for ushort16 intel_sub_group_block_read/write.
+  * SPIRVReader: Add OpCopyMemory support.
+
+-------------------------------------------------------------------
 Sat Sep 21 21:25:02 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 19.1.0.

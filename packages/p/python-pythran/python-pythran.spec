@@ -47,7 +47,7 @@ ExclusiveArch:  x86_64
 %endif
 
 Name:           python-pythran%{psuffix}
-Version:        0.16.1
+Version:        0.17.0
 Release:        0
 Summary:        Ahead of Time compiler for numeric kernels
 License:        BSD-3-Clause
@@ -55,10 +55,6 @@ URL:            https://github.com/serge-sans-paille/pythran
 # Tests are only availble from the github archive
 Source0:        https://github.com/serge-sans-paille/pythran/archive/refs/tags/%{version}.tar.gz#/pythran-%{version}-gh.tar.gz
 Source99:       python-pythran-rpmlintrc
-# PATCH-FIX-UPSTREAM gh#serge-sans-paille/pythran#840a0e706ec39963aec6bcd1f118bf33177c20b4
-Patch0:         support-gast-0.6.patch
-Patch1:         https://github.com/serge-sans-paille/pythran/pull/2231/commits/9261d30aa9618cb2a5a698d39752263b076f2d4b.patch#/numpy-2.1-support.patch
-Patch2:         https://github.com/serge-sans-paille/pythran/commit/6b61e8a6b3dddab13b88e51309cbdf2f28247960.patch#/numpy-2.1-interval.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

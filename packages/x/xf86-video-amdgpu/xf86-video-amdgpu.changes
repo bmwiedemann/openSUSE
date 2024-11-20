@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 15 15:49:37 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- U_Fix-segfault-on-dock-suspend-unplug-resume.patch,
+  U_Free-output_ids.patch
+  * Fix random segfaults when for example suspending.
+    glfo#xorg/driver/xf86-video-amdgpu#70 glfo#drm/amd#2375
+
+-------------------------------------------------------------------
 Mon Feb 26 12:10:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

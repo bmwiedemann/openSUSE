@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Oct 26 22:43:42 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 76.1
+  * Unicode 16 support:
+  * Adds five modern-use scripts: Garay, Gurung Khema, Kirat Rai, Ol Onal, Sunuwar
+  * Adds two historic scripts & almost 4000 additional Egyptian Hieroglyphs
+  * Over 700 symbols from legacy computing environments
+  * ICU 76 adds support for the new UCD properties Modifier_Combining_Mark
+    and Indic_Conjunct_Break
+  * CLDR 46 support:
+  * Locales which are now at modern coverage level: Nigerian
+    Pidgin, Tigrinya
+  * Locales which are now at moderate coverage level: Akan,
+    Baluchi (Latin), Kangri, Tajik, Tatar, Wolof
+  * Collation: Significant changes to the CLDR root collation
+
+-------------------------------------------------------------------
 Thu Apr 25 13:52:08 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 75.1

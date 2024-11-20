@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Nov 18 17:23:11 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Revert the switch to openblas, should skip test instead
+  * see discussion at gh#scipy/scipy#21475
+
+-------------------------------------------------------------------
+Tue Nov  5 01:59:21 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 2.1.3:
+  * #27512: MAINT: prepare 2.1.x for further development
+  * #27537: MAINT: Bump actions/cache from 4.0.2 to 4.1.1
+  * #27538: MAINT: Bump pypa/cibuildwheel from 2.21.2 to 2.21.3
+  * #27539: MAINT: MSVC does not support #warning directive
+  * #27543: BUG: Fix user dtype can-cast with python scalar during promotion
+  * #27561: DEV: bump python to 3.12 in environment.yml
+  * #27562: BLD: update vendored Meson to 1.5.2
+  * #27563: BUG: weighted quantile for some zero weights (#27549)
+  * #27565: MAINT: Use miniforge for macos conda test.
+  * #27566: BUILD: satisfy gcc-13 pendantic errors
+  * #27569: BUG: handle possible error for PyTraceMallocTrack
+  * #27570: BLD: start building Windows free-threaded wheels [wheel build]
+  * #27571: BUILD: vendor tempita from Cython
+  * #27574: BUG: Fix warning "differs in levels of indirection" in npy_atomic.h...
+  * #27592: MAINT: Update Highway to latest
+  * #27593: BUG: Adjust numpy.i for SWIG 4.3 compatibility
+  * #27616: BUG: Fix Linux QEMU CI workflow
+  * #27668: BLD: Do not set __STDC_VERSION__ to zero during build
+  * #27669: ENH: fix wasm32 runtime type error in numpy._core
+  * #27672: BUG: Fix a reference count leak in npy_find_descr_for_scalar.
+  * #27673: BUG: fixes for StringDType/unicode promoters
+
+-------------------------------------------------------------------
+Wed Oct 30 07:43:06 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Use openblas instead of blas+lapack due to precision problems
+  with scipy on aarch64 - https://github.com/scipy/scipy/issues/21475#issuecomment-2446077407
+
+-------------------------------------------------------------------
 Thu Oct 24 12:21:00 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Build with latest gcc for Leap 16.0

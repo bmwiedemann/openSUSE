@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 19 12:19:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.0:
+  * Drop support for Python 3.8. :pr:`175`
+  * Remove previously deprecated __version__, receiver_connected,
+    Signal.temporarily_connected_to and WeakNamespace. :pr:`172`
+  * Skip weakref signal cleanup if the interpreter is shutting
+    down. :issue:`173`
+
+-------------------------------------------------------------------
 Sun Nov  3 15:05:58 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Add missing build require pallets_sphinx_themes

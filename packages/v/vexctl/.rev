@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8be39ec989898fffab89bc635f5b67d0</srcmd5>
+    <version>0.3.0</version>
+    <time>1732118413</time>
+    <user>anag+factory</user>
+    <comment>New package vexctl version 0.3.0 is a CLI tool to create, apply, and attest VEX (Vulnerability Exploitability eXchange) data. Its purpose is to help with the creation and management of VEX documents that allow &quot;turning off&quot; security scanner alerts of vulnerabilities known not to affect a product.
+
+VEX can be thought of as a &quot;negative security advisory&quot;. Using VEX, software authors can communicate to their users that an otherwise vulnerable component has no security implications for their product.</comment>
+    <requestid>1225194</requestid>
+  </revision>
+</revisionlist>

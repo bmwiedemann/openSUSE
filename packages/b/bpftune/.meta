@@ -1,0 +1,7 @@
+<package name="bpftune" project="openSUSE:Factory">
+  <title>BPF/tracing tools for auto-tuning Linux</title>
+  <description>Service consisting of daemon (bpftune) and plugins which support auto-tuning of
+Linux via BPF observability.</description>
+  <devel project="Base:System" package="bpftune"/>
+  <url>https://github.com/oracle/bpftune/</url>
+</package>

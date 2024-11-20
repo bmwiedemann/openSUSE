@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 18 09:46:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Workaround build failure using ICU 76.1: fix up CMakeLists.txt to
+  link icu-uc instead of icu-i18n
+  (glgo#GNOME/evolution-data-server#574).
+
+-------------------------------------------------------------------
 Fri Oct 18 07:12:04 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.54.1:

@@ -5989,4 +5989,14 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   &quot;llvmpipe requires LLVM and is enabled, but LLVM is disabled&quot;.</comment>
     <requestid>1221967</requestid>
   </revision>
+  <revision rev="521" vrev="393">
+    <srcmd5>d69656a3a9d253c9270c4343349efe02</srcmd5>
+    <version>unknown</version>
+    <time>1732118331</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 24.2.7
+  --&gt; https://docs.mesa3d.org/relnotes/24.2.7
+- supersedes 0001-dril-Fixup-order-of-pixel-formats-in-drilConfigs.patch</comment>
+    <requestid>1225106</requestid>
+  </revision>
 </revisionlist>

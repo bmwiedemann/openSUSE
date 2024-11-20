@@ -5081,4 +5081,14 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
 </comment>
     <requestid>1224466</requestid>
   </revision>
+  <revision rev="491" vrev="1">
+    <srcmd5>9427d69ec34ae96dae43bd9bf175e1c2</srcmd5>
+    <version>2.6.1+git20241119.2e09c30</version>
+    <time>1732118323</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.6.1+git20241119.2e09c30:
+  * dbus-services: whitelist supergfxctl (bsc#1232776)
+</comment>
+    <requestid>1225050</requestid>
+  </revision>
 </revisionlist>

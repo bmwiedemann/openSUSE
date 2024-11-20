@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Nov 18 18:01:06 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.17.0
+	* Support parsing annotated statement
+	* Document and test Meson integration
+	* Update / improve Blas detection, including scipy-openblas
+	* Fix usage of Blas library
+	* Improve error reporting
+	* Support array module
+	* Reduce dependency on setuptools
+	* Faster forward substitution
+	* Enforce default optimization level to `-O2`
+- Drop upstreamed numpy-2.1-interval.patch
+- Drop upstreamed numpy-2.1-support.patch
+- Drop upstreamed support-gast-0.6.patch
+
+-------------------------------------------------------------------
 Sun Sep  1 13:28:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - Add patch numpy-2.1-support.patch, numpy-2.1-interval.patch:

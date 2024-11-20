@@ -1,0 +1,8 @@
+<package name="vexctl" project="openSUSE:Factory">
+  <title>vexctl</title>
+  <description>vexctl is a CLI tool to create, apply, and attest VEX (Vulnerability Exploitability eXchange) data. Its purpose is to help with the creation and management of VEX documents that allow &quot;turning off&quot; security scanner alerts of vulnerabilities known not to affect a product.
+
+  VEX can be thought of as a &quot;negative security advisory&quot;. Using VEX, software authors can communicate to their users that an otherwise vulnerable component has no security implications for their product.</description>
+  <devel project="devel:languages:go" package="vexctl"/>
+  <url>https://github.com/openvex/vexctl</url>
+</package>

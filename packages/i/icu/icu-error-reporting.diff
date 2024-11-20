@@ -29,14 +29,14 @@ Index: icu/source/tools/toolutil/package.cpp
      }
  
 @@ -1169,7 +1170,7 @@ Package::extractItem(const char *filesPa
-     makeFullFilenameAndDirs(filesPath, outName, filename, (int32_t)sizeof(filename));
+     makeFullFilenameAndDirs(filesPath, outName, filename, static_cast<int32_t>(sizeof(filename)));
      file=fopen(filename, "wb");
      if(file==nullptr) {
 -        fprintf(stderr, "icupkg: unable to create file \"%s\"\n", filename);
 +        fprintf(stderr, "icupkg: unable to create file \"%s\": %s\n", filename, strerror(errno));
          exit(U_FILE_ACCESS_ERROR);
      }
-     fileLength=(int32_t)fwrite(pItem->data, 1, pItem->length, file);
+     fileLength = static_cast<int32_t>(fwrite(pItem->data, 1, pItem->length, file));
 Index: icu/source/tools/toolutil/writesrc.cpp
 ===================================================================
 --- icu.orig/source/tools/toolutil/writesrc.cpp

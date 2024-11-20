@@ -93,4 +93,14 @@
    (Louis Pilfold)</comment>
     <requestid>1203926</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5af73b16379d61e0aad80a51761e0849</srcmd5>
+    <version>1.6.1</version>
+    <time>1732118407</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.6.1:
+ * fix update use_manifest logic (Jason Sipula)
+ * 1.6.0 Changelog: https://gleam.run/news/context-aware-compilation/</comment>
+    <requestid>1225184</requestid>
+  </revision>
 </revisionlist>

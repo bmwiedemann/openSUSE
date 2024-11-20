@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 20 02:17:46 UTC 2024 - Gerald Chen <gerald_chen@foxmail.com>
+
+- Revert to 2.0.28
+  * Fix boo#1232619
+- Remove fix-return.patch (not needed with this version)
+- Remove pr404.patch (not needed with this version)
+
+-------------------------------------------------------------------
 Mon Oct 21 08:54:10 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.0.11:

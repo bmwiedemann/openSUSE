@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov 18 12:02:26 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- Update to 22.11.0:
+  * This release marks the transition of Node.js 22.x into
+    Long Term Support (LTS) with the codename 'Jod'.
+    Other than updating metadata, such as the process.release object,
+    to reflect that the release is LTS, no further changes from
+    Node.js 22.10.0 are included.
+
+- icu76.1.patch: fix linking to ICU 76.1 (bsc#1232061)
+
+-------------------------------------------------------------------
 Mon Oct 28 11:43:07 UTC 2024 - Adam Majer <adam.majer@suse.de>
 
 - Update to 22.10.0:

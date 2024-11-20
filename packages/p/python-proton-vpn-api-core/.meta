@@ -1,6 +1,6 @@
 <package name="python-proton-vpn-api-core" project="openSUSE:Factory">
   <title>python-proton-vpn-api-core</title>
   <description>Proton VPN API library</description>
-  <devel project="devel:languages:python" package="python-proton-vpn-api-core"/>
+  <devel project="network:vpn" package="python-proton-vpn-api-core"/>
   <url>https://github.com/ProtonVPN/python-proton-vpn-api-core</url>
 </package>

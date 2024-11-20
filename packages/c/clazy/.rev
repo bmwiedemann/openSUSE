@@ -247,4 +247,27 @@
   * Bump master to 1.13</comment>
     <requestid>1224829</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>a433779b51a96b062008534050b3fe92</srcmd5>
+    <version>1.13git.20241119T221149~560bdc1</version>
+    <time>1732118399</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.13git.20241119T221149~560bdc1:
+  * Make string-allocations logic for handling two different cases more clear and efficient
+  * Fix string-allocations check looking not deep enough in hierarchy to find StringLiteral for fixit
+  * Fix string-allocations test not recognizing operator macro magic of Qt 6.8
+  * Add ifdefs for compatibility with LLVM 19
+  * Adjust additional argument in InclusionDirective
+  * Fix typo in todo
+  * Revert overeager cleanups to usageg OptionalFileEntryRef, GET_LEXER
+  * remove the llvm/clang version sepecific macros
+  * Remove guards for no longer necessary CLAZY_DISABLE_AST_MATCHERS
+  * Update LLVM/Clang support to 14.0+, add LLVM 19 handling
+  * Fix note on which qstring-arg checks are run by default and which need to be enabled
+  * Remove unneeded FWD
+
+- Harden runtime dependencies and tweak CLANGXX to point to the
+  clang executable matching libraries used to build clazy.</comment>
+    <requestid>1225180</requestid>
+  </revision>
 </revisionlist>

@@ -1322,4 +1322,41 @@ bsc#1130564: Apply update from the openSUSE package
     <comment></comment>
     <requestid>1199463</requestid>
   </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>3282d1fbdfb443e8fc6189b109e52842</srcmd5>
+    <version>1.14.1</version>
+    <time>1732118339</time>
+    <user>anag+factory</user>
+    <comment>- relax pythran requirement
+
+  * BUG: stats.zipf: incorrect pmf values
+  * Several scipy.sparse array API improvements, including sparse.sparray,
+    a new public base class distinct from the older sparse.spmatrix class,
+    proper 64-bit index support, and numerous deprecations paving the way
+  * scipy.stats added tools for survival analysis, multiple hypothesis
+  * A new function was added for quasi-Monte Carlo integration, and linear
+  * An axes argument was added broadly to ndimage functions, facilitating
+- Test in parallel (pytest-xdist)
+    python -Wd and check for `DeprecationWarning`s).
+    All convolution-based filters also now accept complex-valued inputs
+    * `scipy.spatial.SphericalVoronoi` now supports n-dimensional input,
+      * `scipy.fft` is a new submodule that supersedes the `scipy.fftpack` submodule.
+        or the most part, this is a drop-in replacement for ``numpy.fft`` and
+      * uses NumPy's conventions for real transforms (``rfft``). This means the
+        his is different from the output of ``fftpack`` which returned a real array
+      * the inverse real to real transforms (``idct`` and ``idst``) are normalized
+        or ``norm=None`` in thesame way as ``ifft``. This means the identity
+      * This submodule is based on the ``pypocketfft`` library, developed by the
+      * Note that `scipy.fftpack` has not been deprecated and will continue to be
+        aintained but is now considered legacy. New code is recommended to use
+      * `scipy.integrate.solve_ivp` can now return a ``y_events`` attribute
+        unge-Kutta method originally implemented in Fortran. Now we provide a pure
+      * `scipy.integrate.quad` provides better user feedback when break points are
+      * New boolean keyword argument ``check_finite`` for `scipy.linalg.norm`; whether
+        o check that the input matrix contains only finite numbers. Disabling may
+      * It is now possible to use linear and non-linear constraints with
+      * `scipy.optimize.linear_sum_assignment` has been re-written in C++ to improve
+      * The implementation of ``choose_conv_method`` has been updated to reflect the</comment>
+    <requestid>1225155</requestid>
+  </revision>
 </revisionlist>

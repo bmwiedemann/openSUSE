@@ -17,7 +17,7 @@
 
 
 Name:           symbols-only-nerd-fonts
-Version:        3.2.1
+Version:        3.3.0
 Release:        0
 Summary:        A glyphs-only version of Nerd Fonts
 License:        Apache-2.0 AND CC-BY-4.0 AND MIT AND OFL-1.1-no-RFN AND SUSE-Freeware

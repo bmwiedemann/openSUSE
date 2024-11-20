@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 19 12:31:07 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to el_1_14_0:
+  * **[usecase] [runtime]** Added a new hook to the
+    `DefaultImpl` `DefaultImpl.version_table_impl()`.  This allows
+    third party dialects to define the exact structure of the
+    alembic_version table, to include use cases where the table
+    requires special directives and/or additional columns so that
+    it may function correctly on a particular backend.
+
+-------------------------------------------------------------------
 Sat Sep 28 19:16:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.13.3:

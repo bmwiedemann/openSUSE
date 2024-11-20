@@ -111,7 +111,7 @@ BuildRequires:  %{python_module meson-python >= 0.15.0 with %python-meson-python
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pybind11-devel >= 2.13.1 with %python-pybind11-devel < 2.14}
 # Upstream's pre-emptive pin to < 0.16 is not necessary
-BuildRequires:  %{python_module pythran >= 0.14 with %python-pythran < 0.17}
+BuildRequires:  %{python_module pythran >= 0.14 with %python-pythran < 0.18}
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.62.2
 BuildRequires:  pkg-config
@@ -319,7 +319,7 @@ if [ $(getconf LONG_BIT) -eq 32 ]; then
     donttest+=" or test_extreme_entropy"
 fi
 mv scipy scipy.dont-import-me
-%pytest_arch --pyargs scipy -n auto -m "not (slow or xslow $mark32bit)" -k "not ($donttest)"
+%pytest_arch --pyargs scipy %{?jobs:-n %jobs} -m "not (slow or xslow $mark32bit)" -k "not ($donttest)"
 # prevent failing debuginfo extraction because we did not create anything for testing
 touch debugsourcefiles.list
 %endif

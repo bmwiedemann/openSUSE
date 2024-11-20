@@ -542,4 +542,12 @@
   + NMA subpackage: Main package and gnome-control-center (forwarded request 1163473 from JonathanKang)</comment>
     <requestid>1163508</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>2938fddc694a2df05dc7d94fb1612494</srcmd5>
+    <version>1.4.0</version>
+    <time>1732118351</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1224843</requestid>
+  </revision>
 </revisionlist>

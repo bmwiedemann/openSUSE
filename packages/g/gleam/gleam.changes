@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 20 02:15:36 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update to 1.6.1:
+ * fix update use_manifest logic (Jason Sipula)
+ * 1.6.0 Changelog: https://gleam.run/news/context-aware-compilation/
+
+-------------------------------------------------------------------
 Thu Sep 26 15:10:03 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - Update to 1.5.1:

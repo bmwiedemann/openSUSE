@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Oct 17 01:27:40 UTC 2024 - Simon Lees <sflees@suse.de>
+- Update to 1.21.7
+  * Too many changes in the 8 version bumps to list here
+- Drop
+  * conky.timestamp.patch - included upstream
+  * reproducible.patch - included upstream
+  * html docs
+
+-------------------------------------------------------------------
+Thu Sep 26 12:07:51 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Enable libXNVCtrl only on ix86, x86_64 and aarch64: these are the
+  only architectures where NVidia drivers exist.
+
+-------------------------------------------------------------------
 Thu Oct 12 06:53:54 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch for deterministic output of toluapp (boo#1047218)

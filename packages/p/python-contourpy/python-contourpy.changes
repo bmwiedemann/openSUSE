@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Nov 19 12:42:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.1:
+  * Drop support for Python 3.9
+  * Update to bokeh 3.6.0
+  * Update minimum pybind11 to 2.13.2
+  * Read meson-python version in recommended way
+  * Use itertools.pairwise instead of zip where possible
+  * Typing changes from ruff UP035 and UP038
+  * Tidy up python 3.13 CI
+  * Build Python 3.13t wheels on Windows
+  * multi_lines and multi_filled: ContourGenerator.multi_lines
+    and multi_filled (:pr:`338`, :pr:`340`, :pr:`342`, :pr:`343`)
+    Renderer.multi_lines and multi_filled (:pr:`341`)
+    convert_multi_lines and convert_multi_filled (:pr:`348`)
+    dechunk_multi_lines and dechunk_multi_filled (:pr:`345`)
+  * ContourGenerator.multi_lines and multi_filled
+  * Renderer.multi_lines and multi_filled
+  * convert_multi_lines and convert_multi_filled
+  * dechunk_multi_lines and dechunk_multi_filled
+  * Prevent use of np.nan as lower or upper level in filled
+  * Support CPython 3.13 including free-threaded
+  * Support PyPy 3.10
+  * Support improved typing in NumPy 2.1.0
+  * Simpler sphinx cross-references
+  * Add more doc cross-references to explain returned data
+    formats
+  * Remove download numbers for conda packages
+  * Documentation for multi_lines and multi_filled
+  * Document possibility of duplicate contour points
+  * Add pytest option to log image differences to CSV file
+  * Label flaky test
+  * MSVC linking and std::mutex compiler flag
+  * Add minimal test script
+  * Bump minimum supported NumPy to 1.23
+  * Build and publish nightly wheels
+  * Bump default python version in CI to 3.12
+
+-------------------------------------------------------------------
 Sun Apr 28 16:53:01 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.2.1:

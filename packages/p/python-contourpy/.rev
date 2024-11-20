@@ -67,4 +67,41 @@
 - New BuildRequires: python-meson-python.</comment>
     <requestid>1171113</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e6fc7bb5a2a853004cc6c9406bd17177</srcmd5>
+    <version>1.3.1</version>
+    <time>1732118360</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.3.1:
+  * Drop support for Python 3.9
+  * Update to bokeh 3.6.0
+  * Update minimum pybind11 to 2.13.2
+  * Read meson-python version in recommended way
+  * Use itertools.pairwise instead of zip where possible
+  * Typing changes from ruff UP035 and UP038
+  * Tidy up python 3.13 CI
+  * Build Python 3.13t wheels on Windows
+  * multi_lines and multi_filled: ContourGenerator.multi_lines
+    and multi_filled (:pr:`338`, :pr:`340`, :pr:`342`, :pr:`343`)
+    Renderer.multi_lines and multi_filled (:pr:`341`)
+    convert_multi_lines and convert_multi_filled (:pr:`348`)
+    dechunk_multi_lines and dechunk_multi_filled (:pr:`345`)
+  * ContourGenerator.multi_lines and multi_filled
+  * Renderer.multi_lines and multi_filled
+  * convert_multi_lines and convert_multi_filled
+  * dechunk_multi_lines and dechunk_multi_filled
+  * Prevent use of np.nan as lower or upper level in filled
+  * Support CPython 3.13 including free-threaded
+  * Support PyPy 3.10
+  * Support improved typing in NumPy 2.1.0
+  * Simpler sphinx cross-references
+  * Add more doc cross-references to explain returned data
+    formats
+  * Remove download numbers for conda packages
+  * Documentation for multi_lines and multi_filled
+  * Document possibility of duplicate contour points
+  * Add pytest option to log image differences to CSV file
+  * Label flaky test</comment>
+    <requestid>1225096</requestid>
+  </revision>
 </revisionlist>

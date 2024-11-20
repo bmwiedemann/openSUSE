@@ -152,4 +152,32 @@
   * update copyright-date</comment>
     <requestid>1078238</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d9112de1293d76bb598a28cf49d0dcc9</srcmd5>
+    <version>1.3.1</version>
+    <time>1732118328</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.3.1
+  * README.md: update &amp; correct links to O'Reilly X Toolkit books
+  * unifdef ultrix
+  * unifdef sgi
+  * unifdef hpux
+  * unifdef __osf__
+  * unifdef AIXV3
+  * unifdef MOTOROLA
+  * unifdef USG
+  * unifdef VMS
+  * unifdef __EMX__
+  * unifdef AIXSHLIB &amp; SUNSHLIB
+  * Improve linking with widget libraries on macOS
+  * issue #17: avoid _Static_assert from c++
+  * issue #18: cross-build issue in util
+  * issue #19: include &lt;process.h&gt; on Windows for getpid()
+  * issue #20: c23 boolean conflict
+  * remove substitution for EXEEXT_FOR_BUILD, not defined in automake
+  * Add continue_to_dispatch parameter to _XtResourceConfigurationEH()
+  * eliminate an unnecessary cast
+  * quiet a couple of unused-parameter warnings</comment>
+    <requestid>1225101</requestid>
+  </revision>
 </revisionlist>

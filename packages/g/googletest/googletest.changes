@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 18 14:31:10 UTC 2024 - Earl Sampson <esampson@suse.com>
+
+- change logic from suse_version > 1500 to suse_version < 1600
+
+-------------------------------------------------------------------
+Fri Sep 27 04:55:15 UTC 2024 - Guang Yee <gyee@suse.com>
+
+- Update C++ complier version so it builds on Leap 15.6.
+
+-------------------------------------------------------------------
 Tue Sep  3 12:52:16 UTC 2024 - pgajdos@suse.com
 
 - version update to 1.15.2

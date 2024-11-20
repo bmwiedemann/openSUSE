@@ -1023,4 +1023,25 @@ Version 1.11.84
   * Fix network dropdown missing checkbox \&amp; aria-checked (https://github.com/element-hq/element-web/pull/28220). Contributed by @t3chguy.</comment>
     <requestid>1223673</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>87f1e92c87e1ad36f3583af2259cb5a1</srcmd5>
+    <version>1.11.86</version>
+    <time>1732118404</time>
+    <user>anag+factory</user>
+    <comment>- Version 1.11.86
+  ## ✨ Features
+  * Deduplicate icons using Compound Design Tokens (https://github.com/element-hq/element-web/pull/28419). Contributed by @t3chguy.
+  * Let widget driver send error details (https://github.com/element-hq/element-web/pull/28357). Contributed by @AndrewFerr.
+  * Deduplicate icons using Compound Design Tokens (https://github.com/element-hq/element-web/pull/28381). Contributed by @t3chguy.
+  * Auto approvoce `io.element.call.reaction` capability for element call widgets (https://github.com/element-hq/element-web/pull/28401). Contributed by @toger5.
+  * Show message type prefix in thread root \&amp; reply previews (https://github.com/element-hq/element-web/pull/28361). Contributed by @t3chguy.
+  * Support sending encrypted to device messages from widgets (https://github.com/element-hq/element-web/pull/28315). Contributed by @hughns.
+  ## 🐛 Bug Fixes
+  * Feed events to widgets as they are decrypted (even if out of order) (https://github.com/element-hq/element-web/pull/28376). Contributed by @robintown.
+  * Handle authenticated media when downloading from ImageView (https://github.com/element-hq/element-web/pull/28379). Contributed by @t3chguy.
+  * Ignore `m.3pid_changes` for Identity service 3PID changes (https://github.com/element-hq/element-web/pull/28375). Contributed by @t3chguy.
+  * Fix markdown escaping wrongly passing html through (https://github.com/element-hq/element-web/pull/28363). Contributed by @t3chguy.
+  * Remove &quot;Upgrade your encryption&quot; flow in `CreateSecretStorageDialog` (https://github.com/element-hq/element-web/pull/28290). Contributed by @florianduros.</comment>
+    <requestid>1225169</requestid>
+  </revision>
 </revisionlist>

@@ -31,7 +31,7 @@
 %endif
 
 Name:           nodejs22
-Version:        22.10.0
+Version:        22.11.0
 Release:        0
 
 # Double DWZ memory limits
@@ -172,6 +172,7 @@ Patch200:       versioned.patch
 Patch305:       qemu_timeouts_arches.patch
 Patch307:       v8-i586.patch
 Patch309:       gcc13.patch
+Patch311:       icu76.1.patch
 
 BuildRequires:  pkg-config
 BuildRequires:  fdupes
@@ -701,6 +702,8 @@ popd
 %patch -P 305 -p1
 %patch -P 307 -p1
 %patch -P 309 -p1
+%patch -P 311 -p1
+
 
 %if %{node_version_number} == 12
 # minimist security update - patch50

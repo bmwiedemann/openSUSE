@@ -1,0 +1,37 @@
+From ae22d12d420efbd8847f9b64b37e7a4cadde2600 Mon Sep 17 00:00:00 2001
+From: Chris Bainbridge <chris.bainbridge@gmail.com>
+Date: Wed, 12 Jul 2023 21:15:35 +0100
+Subject: [PATCH] Free output_ids
+
+---
+ src/drmmode_display.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/src/drmmode_display.c b/src/drmmode_display.c
+index 32e7f21..00247ac 100644
+--- a/src/drmmode_display.c
++++ b/src/drmmode_display.c
+@@ -1264,8 +1264,10 @@ drmmode_set_mode(xf86CrtcPtr crtc, struct drmmode_fb *fb, DisplayModePtr mode,
+ 		if (output->crtc != crtc)
+ 			continue;
+ 
+-		if (!drmmode_output->mode_output)
+-			return FALSE;
++		if (!drmmode_output->mode_output) {
++			ret = FALSE;
++			goto out;
++		}
+ 
+ 		output_ids[output_count] = drmmode_output->mode_output->connector_id;
+ 		output_count++;
+@@ -1285,6 +1287,7 @@ drmmode_set_mode(xf86CrtcPtr crtc, struct drmmode_fb *fb, DisplayModePtr mode,
+ 			   "failed to set mode: %s\n", strerror(errno));
+ 	}
+ 
++out:
+ 	free(output_ids);
+ 	return ret;
+ }
+-- 
+2.43.0
+

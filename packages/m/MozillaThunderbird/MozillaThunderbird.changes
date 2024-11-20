@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov 20 07:36:02 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 128.4.4
+  * QR codes were not scannable by Android app when using most
+    high-contrast themes
+  * Primary password prompt cancellation during mobile export was
+    confusing
+- revert using xdg-desktop-portal as some desktops have limited
+  support
+
+-------------------------------------------------------------------
 Sat Nov  9 16:26:41 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 128.4.3

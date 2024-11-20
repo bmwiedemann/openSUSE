@@ -2,7 +2,7 @@
 Thu Nov 14 16:03:49 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Use distro-default INSTALL_MOD_DIR for both kmp
-  and for local-built files. Add host-source.patch [boo#1231346].
+  and for local-built files. Add host-source.patch [boo#1233251].
 
 -------------------------------------------------------------------
 Wed Oct 16 23:37:43 UTC 2024 - Jan Engelhardt <jengelh@inai.de>

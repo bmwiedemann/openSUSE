@@ -209,4 +209,12 @@ now with fixed empty debuginfo extraction</comment>
 - prepare for python 3.13</comment>
     <requestid>1198174</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>6559135ac1803a9b0c2048cb8afbe30e</srcmd5>
+    <version>0.17.0</version>
+    <time>1732118325</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1224949</requestid>
+  </revision>
 </revisionlist>

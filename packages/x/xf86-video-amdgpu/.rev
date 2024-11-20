@@ -390,4 +390,15 @@
     <comment></comment>
     <requestid>1151669</requestid>
   </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>fb16797b2ee114d4ed02ce01cad92898</srcmd5>
+    <version>23.0.0</version>
+    <time>1732118334</time>
+    <user>anag+factory</user>
+    <comment>- U_Fix-segfault-on-dock-suspend-unplug-resume.patch,
+  U_Free-output_ids.patch
+  * Fix random segfaults when for example suspending.
+    glfo#xorg/driver/xf86-video-amdgpu#70 glfo#drm/amd#2375</comment>
+    <requestid>1225115</requestid>
+  </revision>
 </revisionlist>

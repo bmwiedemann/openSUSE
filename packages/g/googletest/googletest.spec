@@ -33,7 +33,12 @@ URL:            https://github.com/google/googletest
 Source0:        https://github.com/google/googletest/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        googletest-rpmlintrc
 BuildRequires:  cmake >= 3.10.0
-BuildRequires:  gcc-c++ >= 7.3.1
+%if 0%{?suse_version} < 1600
+BuildRequires:  gcc11
+BuildRequires:  gcc11-c++
+%else
+BuildRequires:  gcc-c++
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  pkgconfig(pthread-stubs)
@@ -84,7 +89,13 @@ with googlemock.
 
 %build
 %global optflags %(echo "%{optflags} -Wno-infinite-recursion -Wno-deprecated-declarations")
-
+%if 0%{?suse_version} < 1600
+export CC=gcc-11
+export CXX=g++-11
+%else
+export CC=gcc-%gcc_version
+export CXX=g++-%gcc_version
+%endif
 %cmake \
   %{?with_tests:-Dgtest_build_tests=ON} \
   %{?with_tests:-Dgmock_build_tests=ON} \

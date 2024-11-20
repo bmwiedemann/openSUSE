@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-video-amdgpu
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,11 @@ Source:         https://xorg.freedesktop.org/releases/individual/driver/%{name}-
 Source1:        https://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
 Source3:        amdgpu.ids
+# PATCH-FIX-OPENSUSE Workaround to fix crashes when an external monitor is connected bsc#1169222
 Patch1:         N_amdgpu-present-Check-tiling-for-newer-versions-too.patch
+# PATCH-FIX-UPSTREAM Fix segfaults when e.g. suspending glfo/xorg/driver/xf86-video-amdgpu#70
+Patch2:         U_Fix-segfault-on-dock-suspend-unplug-resume.patch
+Patch3:         U_Free-output_ids.patch
 BuildRequires:  autoconf >= 2.6.0
 BuildRequires:  automake
 BuildRequires:  libtool

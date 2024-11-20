@@ -17,31 +17,23 @@
 
 
 Name:           clazy
-Version:        1.13git.20240928T115050~ef4fa16
+Version:        1.13git.20241119T221149~560bdc1
 Release:        0
 Summary:        Qt oriented code checker based on the Clang framework
 License:        LGPL-2.0-or-later
 URL:            https://apps.kde.org/clazy/
 Source0:        %{name}-%{version}.tar.xz
-%if 0%{?suse_version} > 1500
-# Fails to build upstream with llvm 19
-BuildRequires:  clang18
-BuildRequires:  clang18-devel
-%else
 BuildRequires:  clang
 BuildRequires:  clang-devel >= 11.0
-%endif
 BuildRequires:  cmake >= 3.8
 %if 0%{?suse_version} == 1500
 BuildRequires:  gcc13-PIE
 BuildRequires:  gcc13-c++
 %endif
 BuildRequires:  libstdc++-devel
-%if 0%{?suse_version} > 1500
-%requires_eq    libLLVM18
-%else
-%requires_eq    libLLVM%{_libclang_sonum}
-%endif
+Requires:       clang
+%requires_eq    libclang%{_libclang_sonum}
+%requires_eq    libLLVM%{_llvm_sonum}
 %requires_eq    libclang-cpp%{_llvm_sonum}
 
 %description
@@ -51,6 +43,10 @@ allocations to misusage of API, including fix-its for automatic refactoring.
 
 %prep
 %autosetup -p1
+
+# When exporting CXX=clazy, the executable matching libraries used to build clazy must be used
+# NOTE: 'readlink -f' can't be used, or the result won't be 'clang++-xx' but 'clang-xx', which will cause linker errors
+sed -i "s#CLANGXX:-clang++#CLANGXX:-clang++-%{_llvm_sonum}#" clazy.cmake
 
 %build
 %define _lto_cflags %{nil}

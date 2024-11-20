@@ -94,6 +94,8 @@ Source99:       webkit2gtk3.keyring
 Patch0:         reproducibility.patch
 # PATCH-FIX-UPSTREAM 9e9ea966373d3858668f6a29d8ba91a5807c8dd8.patch -- Fix aspect ratio with gst-1.24.9
 Patch1:         https://github.com/WebKit/WebKit/commit/9e9ea966373d3858668f6a29d8ba91a5807c8dd8.patch
+# PATCH-FIX-UPSTREAM 63f7badbada070ebaadd318b2801818ecf7e7ea0.patch -- Support ICU 76.1 build
+Patch2:         https://github.com/WebKit/WebKit/commit/63f7badbada070ebaadd318b2801818ecf7e7ea0.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel

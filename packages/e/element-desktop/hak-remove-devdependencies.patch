@@ -1,9 +1,9 @@
 hak fetch tries to download devDependencies for two modules. Unfortunately it does so in a very non-deterministic manner (no shrinkwrap file)
 Remove that step since the devDependencies are not actually needed for any of these two modules.
 
---- element-desktop-1.11.85/scripts/hak/fetch.ts	2024-11-12 13:39:42.758502395 +0100
-+++ element-desktop-1.11.85/scripts/hak/fetch.ts	2024-11-12 13:41:05.048799436 +0100
-@@ -27,27 +27,6 @@
+--- element-desktop-1.11.86/scripts/hak/fetch.ts	2024-11-19 22:43:48.895355949 +0100
++++ element-desktop-1.11.86/scripts/hak/fetch.ts	2024-11-19 22:44:02.245421312 +0100
+@@ -26,14 +26,6 @@
      console.log("Fetching " + moduleInfo.name + "@" + moduleInfo.version);
  
      const packumentCache = new Map();
@@ -12,21 +12,8 @@ Remove that step since the devDependencies are not actually needed for any of th
 -    });
 -
 -    console.log("Running yarn install in " + moduleInfo.moduleBuildDir);
--    await new Promise<void>((resolve, reject) => {
--        const proc = childProcess.spawn(hakEnv.isWin() ? "yarn.cmd" : "yarn", ["install", "--ignore-scripts"], {
--            stdio: "inherit",
--            cwd: moduleInfo.moduleBuildDir,
--            // We need shell mode on Windows to be able to launch `.cmd` executables
--            // See https://nodejs.org/en/blog/vulnerability/april-2024-security-releases-2
--            shell: hakEnv.isWin(),
--        });
--        proc.on("exit", (code) => {
--            if (code) {
--                reject(code);
--            } else {
--                resolve();
--            }
--        });
+-    await hakEnv.spawn("yarn", ["install", "--ignore-scripts"], {
+-        cwd: moduleInfo.moduleBuildDir,
 -    });
  
      // also extract another copy to the output directory at this point

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 19 15:09:13 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not (ever) use %python_modules on runtime requires: it pulls
+  in all python flavors. Change to Requires: python-typeguard which
+  will be rewritten by the python singlespec machinery.
+
+-------------------------------------------------------------------
 Thu Nov 14 14:14:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.4.0:

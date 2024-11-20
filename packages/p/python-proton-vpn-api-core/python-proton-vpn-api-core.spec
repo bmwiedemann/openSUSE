@@ -34,7 +34,10 @@ BuildRequires:  %{python_module proton-core}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
+# sentry-sdk is not mandatory and only available in TW
+%if 0%{?suse_version} > 1600
 BuildRequires:  %{python_module sentry-sdk}
+%endif
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
@@ -44,7 +47,10 @@ Requires:       python-PyNaCl
 Requires:       python-cryptography
 Requires:       python-distro
 Requires:       python-proton-core
+# sentry-sdk is not mandatory and only available in TW
+%if 0%{?suse_version} > 1600
 Requires:       python-sentry-sdk
+%endif
 Conflicts:      python-proton-vpn-connection
 Conflicts:      python-proton-vpn-killswitch
 Conflicts:      python-proton-vpn-logger
@@ -65,8 +71,14 @@ This package contains a facade to the other Proton VPN components, exposing a un
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+%if 0%{?suse_version} > 1600
+# Failing tests, needs to be investigated
 # See https://github.com/ProtonVPN/python-proton-vpn-api-core/issues/4
-%pytest tests --deselect="tests/connection/test_vpnconfiguration.py"
+%pytest tests --ignore=tests/connection/test_vpnconfiguration.py
+%else
+# sentry-sdk is not mandatory and only available in TW
+%pytest tests --ignore=tests/connection/test_vpnconfiguration.py --ignore=tests/core/test_usage.py
+%endif
 
 %files %{python_files}
 %license LICENSE

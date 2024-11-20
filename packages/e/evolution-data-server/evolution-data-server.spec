@@ -330,6 +330,11 @@ This package contains developer documentation.
 
 %prep
 %autosetup -p1
+%if %{pkg_vcmp libicu-devel >= 76.1}
+%dnl Adapt build system to ICU 76.1 - we now need to link icu-uc, no longer icu-i18n
+%dnl https://gitlab.gnome.org/GNOME/evolution-data-server/-/issues/574
+sed -i 's/icu-i18n/icu-uc &/' CMakeLists.txt
+%endif
 
 %build
 %if %{with_docs}

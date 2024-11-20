@@ -252,4 +252,17 @@
     <comment></comment>
     <requestid>1221240</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>25a1b87bf3d49cde31c57666919a4eb0</srcmd5>
+    <version>1.9.0</version>
+    <time>1732118355</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.9.0:
+  * Drop support for Python 3.8. :pr:`175`
+  * Remove previously deprecated __version__, receiver_connected,
+    Signal.temporarily_connected_to and WeakNamespace. :pr:`172`
+  * Skip weakref signal cleanup if the interpreter is shutting
+    down. :issue:`173`</comment>
+    <requestid>1225085</requestid>
+  </revision>
 </revisionlist>

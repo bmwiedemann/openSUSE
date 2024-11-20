@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov 18 16:05:42 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop autoconf213 BuildRequires: the source embeds autoconf.sh
+  directly.
+
+-------------------------------------------------------------------
+Mon Nov 18 09:08:31 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build against icu 76.1: link the correct libraries (icu-uc
+  instead of icu-i18n).
+
+-------------------------------------------------------------------
 Mon Nov  4 10:37:43 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 128.4.0:

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Nov 20 07:48:33 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.13.1:
+  * chore: release 2.13.1 (#6423)
+  * fix(bundle): allow
+    application/vnd.cncf.helm.chart.content.v1.tar+gzip media type
+    (#6424)
+  * chore(deps): update docs/Gemfile & docs/Gemfile.lock to reduce
+    vulnerabilities (#6426)
+  * fix(build, buildah): support custom docker config path (#6421)
+  * refactor(test): use "Expect" instead of "Ω"
+  * chore(site): change basic auth to dex (#6416)
+  * chore(release): 1.2 alpha
+  * docs(deploy): fix excess repo option in example
+  * docs(build): note about build backends in overview
+  * docs(build): fix example with multi-stage build
+  * docs(kubectl): generate docs for log flags
+  * refactor(ci): replace action converge with werf command
+  * chore(release): 1.2 stable/rock-solid 2 all
+  * fix(kubectl): add klog arbitrary flags
+
+-------------------------------------------------------------------
 Thu Nov 14 16:04:15 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.13.0:

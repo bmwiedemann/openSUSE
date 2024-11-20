@@ -1,7 +1,7 @@
 #
 # spec file for package libXt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libXt
 %define lname	libXt6
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        X Toolkit Intrinsics library
 License:        MIT

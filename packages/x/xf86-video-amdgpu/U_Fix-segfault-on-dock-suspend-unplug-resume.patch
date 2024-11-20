@@ -1,0 +1,44 @@
+From 2897e1769c5d14a74bccbacb483667933807ead8 Mon Sep 17 00:00:00 2001
+From: Chris Bainbridge <chris.bainbridge@gmail.com>
+Date: Tue, 4 Jul 2023 22:34:27 +0100
+Subject: [PATCH] Fix segfault on dock suspend, unplug, resume
+
+`drmmode_set_mode` can segfault if a USB-C dock with external monitors
+is disconnected during suspend. It appears that some data structures are
+not updated, but the associated `drmModeConnectorPtr` associated with
+those structures is NULL. Dereferencing that pointer results in Xorg
+crashing.
+
+Backtrace:
+
+    (crtc=crtc@entry=0x55a0c7610390, fb=fb@entry=0x55a0c86d7410, mode=mode@entry=0x55a0c76103a8, x=x@entry=0, y=y@entry=0) at drmmode_display.c:1267
+    (crtc=0x55a0c7610390, mode=0x55a0c76103a8, rotation=<optimized out>, x=<optimized out>, y=<optimized out>) at drmmode_display.c:1371
+    (main=main@entry=0x55a0c63f4b40, argc=argc@entry=10, argv=argv@entry=0x7fffb7cefbf8)
+    at ../sysdeps/nptl/libc_start_call_main.h:58
+    (main=0x55a0c63f4b40, argc=10, argv=0x7fffb7cefbf8, init=<optimized out>, fini=<optimized out>, rtld_fini=<optimized out>, stack_end=0x7fffb7cefbe8) at ../csu/libc-start.c:381
+
+Fix this by checking the pointer before dereferencing it.
+
+Fixes: https://gitlab.freedesktop.org/drm/amd/-/issues/2375
+Signed-off-by: Chris Bainbridge <chris.bainbridge@gmail.com>
+---
+ src/drmmode_display.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/drmmode_display.c b/src/drmmode_display.c
+index 5b73fce..32e7f21 100644
+--- a/src/drmmode_display.c
++++ b/src/drmmode_display.c
+@@ -1264,6 +1264,9 @@ drmmode_set_mode(xf86CrtcPtr crtc, struct drmmode_fb *fb, DisplayModePtr mode,
+ 		if (output->crtc != crtc)
+ 			continue;
+ 
++		if (!drmmode_output->mode_output)
++			return FALSE;
++
+ 		output_ids[output_count] = drmmode_output->mode_output->connector_id;
+ 		output_count++;
+ 	}
+-- 
+2.43.0
+

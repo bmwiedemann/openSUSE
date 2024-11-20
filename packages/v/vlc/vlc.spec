@@ -236,7 +236,7 @@ BuildRequires:  libxvidcore-devel
 BuildRequires:  pkgconfig(x264) >= 0.8.6
 BuildRequires:  pkgconfig(x265)
 %if %{with faad}
-BuildRequires:  libfaad-devel
+BuildRequires:  pkgconfig(faad2)
 %endif
 %endif
 

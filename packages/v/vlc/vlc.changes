@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 11 11:11:11 UTC 2024 - olaf@aepfle.de
+
+- Convert BuildRequires from libfaad-devel to pkgconfig(faad2)
+
+-------------------------------------------------------------------
 Sat Nov  2 10:48:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop the requres_ge libbluray1 statement, which was added as a
