@@ -1,7 +1,7 @@
 #
 # spec file for package ispc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2020-2023 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,8 @@
 #
 
 
-%define llvm_ver 14
+%global min_llvm_version 16
+%global max_llvm_version 19.9
 %define libname libispcrt1
 
 # LLVM is build with OpenMP support only on 64bit archs and x86
@@ -28,7 +29,7 @@
 %endif
 
 Name:           ispc
-Version:        1.23.0
+Version:        1.25.3
 Release:        0
 Summary:        C-based SPMD programming language compiler
 License:        BSD-3-Clause
@@ -37,16 +38,20 @@ URL:            https://ispc.github.io/
 Source:         https://github.com/%{name}/%{name}/archive/v%{version}/v-%{version}.tar.gz#/%{name}-%{version}.tar.gz
 #!BuildIgnore:  clang15
 BuildRequires:  bison
-BuildRequires:  clang%llvm_ver-devel
 BuildRequires:  cmake >= 3.13
 BuildRequires:  flex
+%if %{suse_version} < 1550
+# Leap/SLE 15 does not understand boolean requires
+BuildRequires:  cmake(Clang) >= 19
+#!BuildConflicts: cmake(Clang) >= 20
+%endif
+BuildRequires:  (cmake(Clang) >= %{min_llvm_version} with cmake(Clang) =< %{max_llvm_version})
+BuildRequires:  (cmake(LLVM)  >= %{min_llvm_version} with cmake(LLVM)  =< %{max_llvm_version})
 %if %{with openmp_task_model}
-BuildRequires:  libomp%llvm_ver-devel
+BuildRequires:  (libomp-devel-provider >= %{min_llvm_version} with libomp-devel-provider  =< %{max_llvm_version})
 %else
 BuildRequires:  tbb-devel
 %endif
-BuildRequires:  llvm%llvm_ver-devel
-BuildRequires:  llvm%llvm_ver-gold
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig(python3)
 %ifarch x86_64
@@ -95,7 +100,6 @@ sed -i -e '/build_ispcrt(STATIC/ s@.*@#\0@' ispcrt/CMakeLists.txt
 %build
 %define _lto_cflags "-flto=thin"
 echo "optflags: %{optflags}"
-# our llvm is built without assertions, which is required for DUMPS to be operational
 %cmake \
         -DCMAKE_INSTALL_PREFIX=%{_prefix} \
         -DCMAKE_C_FLAGS:STRING="$CFLAGS %{optflags} -fPIE" \
@@ -106,17 +110,15 @@ echo "optflags: %{optflags}"
         -DISPC_INCLUDE_EXAMPLES=OFF \
         -DISPC_INCLUDE_TESTS=ON \
         -DISPCRT_BUILD_STATIC=OFF \
-        -DISPC_NO_DUMPS=ON
-
+        %{nil}
 %cmake_build
 
 %install
 %cmake_install
 
 %check
-PATH=./build/bin/:$PATH python3 ./run_tests.py --non-interactive --verbose
-# There is also "make check-all", but that partially fails due to
-# https://github.com/ispc/ispc/issues/2386
+pushd %__builddir
+%cmake_build check-all
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig

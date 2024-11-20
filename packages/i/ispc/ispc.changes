@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 19 21:30:31 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 1.25.3
+  https://github.com/ispc/ispc/releases/tag/v1.25.3
+  https://github.com/ispc/ispc/releases/tag/v1.25.2
+  https://github.com/ispc/ispc/releases/tag/v1.25.1
+  https://github.com/ispc/ispc/releases/tag/v1.25.0
+  https://github.com/ispc/ispc/releases/tag/v1.24.0
+- Use LLVM 19
+- Clean up spec file
+
+-------------------------------------------------------------------
 Mon Apr 29 23:17:45 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.23.0 

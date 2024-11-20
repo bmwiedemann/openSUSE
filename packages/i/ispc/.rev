@@ -115,4 +115,12 @@ Now as full llvm build using thin lto, thanks to Ismail.
     <comment></comment>
     <requestid>1171371</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2e04c2b7eea46db9b97e51c98b4bcd5b</srcmd5>
+    <version>1.25.3</version>
+    <time>1732118584</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1225266</requestid>
+  </revision>
 </revisionlist>
