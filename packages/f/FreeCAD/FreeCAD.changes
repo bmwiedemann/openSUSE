@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Nov 19 17:58:13 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 1.0.0
+  For details, see https://wiki.freecad.org/Release_notes_1.0
+  The most notable improvements over the 0.21 release series are:
+  * inclusion of the topological naming problem mitigation code
+  * an integrated assembly workbench
+  * a new materials system
+  * and many UI/UX improvements
+- Drop obsolete/upstream patches:
+  * freecad-copy_options.patch
+  * freecad-copy_options-2.patch
+  * freecad-boost185.patch
+  * boost_1_86_fixes.patch
+  * fix_vtk_9_3_compat.patch
+  * freecad-xerces_3_3_compat.patch
+- Add
+  * 0001-Mod-CAM-Add-missing-OpenGL-includes.patch
+  * ondselsolver_fix_gcc_75_filesystem.patch
+
+-------------------------------------------------------------------
 Sun Nov 17 00:03:18 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Add patch for Xerces 3.3 compatibility (upstream with changes):

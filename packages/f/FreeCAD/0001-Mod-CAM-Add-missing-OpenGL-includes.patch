@@ -1,0 +1,26 @@
+From 86151d77b7182f47fee5a576388dafbfefef3487 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Tue, 19 Nov 2024 19:07:28 +0100
+Subject: [PATCH] Mod/CAM Add missing OpenGL includes
+
+The headers are required on e.g. ARM platforms where Qt is build with GLES
+instead of Desktop GL, and does not implicitly include the headers.
+---
+ src/Mod/CAM/PathSimulator/AppGL/DlgCAMSimulator.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/Mod/CAM/PathSimulator/AppGL/DlgCAMSimulator.cpp b/src/Mod/CAM/PathSimulator/AppGL/DlgCAMSimulator.cpp
+index 74a5af01e..a59cbafe1 100644
+--- a/src/Mod/CAM/PathSimulator/AppGL/DlgCAMSimulator.cpp
++++ b/src/Mod/CAM/PathSimulator/AppGL/DlgCAMSimulator.cpp
+@@ -25,6 +25,7 @@
+ #include "DlgCAMSimulator.h"
+ #include "MillSimulation.h"
+ #include "Gui/View3DInventorViewer.h"
++#include <GL/gl.h>
+ #include <Mod/Part/App/BRepMesh.h>
+ #include <QDateTime>
+ #include <QSurfaceFormat>
+-- 
+2.47.0
+

@@ -24,44 +24,39 @@
 %bcond_without fc_addonmanager
 # zipios not yet in TW
 %bcond_with    zipios
+%bcond_with    ondselsolver
 %else
 %bcond_with    boost_signals2
 %bcond_with    fc_addonmanager
 %bcond_with    zipios
+%bcond_with    ondselsolver
 %endif
 %bcond_with    smesh_external
 %bcond_without smesh
+%bcond_with    cmake_trace
 
 Name:           FreeCAD
-Version:        0.21.2
+Version:        1.0.0
 Release:        0
 Summary:        General Purpose 3D CAD Modeler
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          Productivity/Graphics/CAD
-URL:            https://www.freecadweb.org/
-Source0:        https://github.com/FreeCAD/FreeCAD/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://www.freecad.org/
+Source0:        https://github.com/FreeCAD/FreeCAD/releases/download/%{version}/freecad_source.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Gui-Quarter-Add-missing-OpenGL-includes.patch
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Avoid-catching-SIGSEGV-defer-to-system-services.patch
 # PATCH-FIX-OPENSUSE
 Patch2:         0001-Implement-math.comb-fallback-for-Python-3.6.patch
+# PATCH-FIX-OPENSUSE
+Patch3:         0001-Mod-CAM-Add-missing-OpenGL-includes.patch
 # PATCH-FIX-UPSTREAM
 Patch9:         0001-Fix-variable-name-for-OpenGL-library.patch
-# PATCH-FIX-UPSTREAM
-Patch10:        https://github.com/FreeCAD/FreeCAD/commit/d0fb2b8b29fe0428d9dd8aa790b0d6e45c8a9516.patch#/fix_vtk_9_3_compat.patch
-# PATCH-FIX-UPSTREAM
-Patch11:        https://github.com/FreeCAD/FreeCAD/commit/f555a25f9e67e628e8075fc8599d7c11807eaddd.patch#/freecad-boost185.patch
-# PATCH-FIX-UPSTREAM
-Patch12:        https://github.com/FreeCAD/FreeCAD/commit/aa54ba73df4d42878130c99688be35acf10725a0.patch#/freecad-copy_options.patch
-# PATCH-FIX-UPSTREAM
-Patch13:        https://github.com/FreeCAD/FreeCAD/commit/91457bbdee2422c7f0372688cf72d021cf222073.patch#/freecad-copy_options-2.patch
 # PATCH-FIX-OPENSUSE
 Patch14:        freecad-opengl.patch
-# PATCH-FIX-UPSTREAM - patch from master, modified for 0.21.1 - https://github.com/FreeCAD/FreeCAD/commit/98888241920ad04fa3c2f56bdf196debf8cfb39c.patch
-Patch15:        boost_1_86_fixes.patch
-# PATCH-FIX-UPSTREAM - patch from master, modified for 0.21.2 - https://github.com/FreeCAD/FreeCAD/commit/7a6a82e2ca858c24d97e1f34c77777b25a9e0859.patch
-Patch16:        freecad-xerces_3_3_compat.patch
+# PATCH-FIX-UPSTREAM
+Patch50:        https://github.com/Ondsel-Development/OndselSolver/commit/2e3659c4bce3e6885269e0cb3d640261b2a91108.patch#/ondselsolver_fix_gcc_75_filesystem.patch
 
 # Test suite fails on 32bit and I don't want to debug that anymore
 ExcludeArch:    %ix86 %arm ppc s390 s390x
@@ -92,6 +87,11 @@ BuildRequires:  smesh-devel
 BuildRequires:  libXerces-c-devel
 BuildRequires:  libXi-devel
 BuildRequires:  libmed-devel
+%if 0%{?suse_version} > 1550
+%ifarch x86_64 %{x86_64}
+BuildRequires:  libquadmath-devel
+%endif
+%endif
 BuildRequires:  libspnav-devel
 BuildRequires:  make
 BuildRequires:  netgen-devel
@@ -115,6 +115,10 @@ BuildRequires:  cmake(GTest)
 BuildRequires:  cmake(ZipIos)
 %endif
 BuildRequires:  cmake(coin)
+BuildRequires:  cmake(yaml-cpp)
+%if %{with ondselsolver}
+BuildRequires:  pkgconfig(OndselSolver)
+%endif
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5OpenGL)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
@@ -137,7 +141,6 @@ Requires:       python3-ply
 Requires:       python3-six
 
 BuildRequires:  swig
-BuildRequires:  update-desktop-files
 BuildRequires:  vtk-devel
 BuildRequires:  zlib-devel
 
@@ -160,21 +163,19 @@ Requires:       %{name} = %{version}
 This package contains the files needed for development with FreeCAD.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -c -N
+%autopatch -p1 -M 49
+# Run manually, have to inject the 3rdParty path
+cat %{P:50} | patch --verbose -d src/3rdParty/OndselSolver -p1
 
 # Use system gtest - https://github.com/FreeCAD/FreeCAD/issues/10126
 sed -i -e 's/add_subdirectory(lib)/find_package(GTest)/' \
        -e 's/ gtest_main/ GTest::gtest_main/' \
        -e 's/ gmock_main/ GTest::gmock_main/' \
-  tests/CMakeLists.txt
+  tests/CMakeLists.txt \
+  tests/src/Mod/*/CMakeLists.txt
 # Lower Python minimum version for Leap
 sed -i -e 's/3.8/3.6/' cMake/FreeCAD_Helpers/SetupPython.cmake
-# Use boost::filesystem - https://github.com/FreeCAD/FreeCAD/issues/10127
-sed -i -e 's/std::filesystem/boost::filesystem/' \
-       -e '/include/ s@<filesystem>@<boost/filesystem.hpp>@' \
-       -e '/std::.fstream/ s@_tempFile@_tempFile.string()@' \
-  tests/src/Base/Reader.cpp
 
 # fix env-script-interpreter
 sed -i '1 s@#!.*@#!%{__python3}@' \
@@ -199,9 +200,10 @@ sed -i 's/\r$//' src/Mod/Robot/MovieTool.py
 sed -i 's/\r$//' src/Mod/Robot/KukaExporter.py
 sed -i 's/\r$//' src/Mod/Test/unittestgui.py
 
-# Remove 3rd party libs
-rm src/3rdparty/Pivy -fr
-rm src/3rdparty/Pivy-0.5 -fr
+# Make sure system version is used
+%if %{with ondselsolver}
+rm src/3rdParty/OndselSolver -fr
+%endif
 
 # Remove bundled gtest
 rm tests/lib -fr
@@ -211,17 +213,16 @@ rm tests/lib -fr
 %build
 %cmake \
   -DCMAKE_INSTALL_PREFIX=%{x_prefix} \
-  -DCMAKE_INSTALL_LIBDIR=%{x_prefix}/lib \
-  -DCMAKE_INSTALL_BINDIR=%{x_prefix}/bin \
-  -DCMAKE_INSTALL_DATAROOTDIR=%{_datadir} \
-  -DCMAKE_INSTALL_DATADIR=%{_datadir}/%{name} \
+  -DCMAKE_INSTALL_LIBDIR=lib \
+  -DCMAKE_INSTALL_BINDIR=bin \
+  -DCMAKE_INSTALL_DATAROOTDIR="../../share/" \
+  -DCMAKE_INSTALL_DATADIR="../../share/%{name}" \
   -DCMAKE_INSTALL_DOCDIR=%{_docdir}/%{name} \
   -DCMAKE_INSTALL_INCLUDEDIR=%{_includedir}/%{name} \
   -DCMAKE_SKIP_RPATH:BOOL=OFF \
   -DCMAKE_SKIP_INSTALL_RPATH:BOOL=OFF \
   -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=ON \
   -DOCC_INCLUDE_DIR=%{_includedir}/opencascade \
-  -DRESOURCEDIR=%{_datadir}/%{name} \
   -DPYTHON_EXECUTABLE=/usr/bin/python3 \
   -DPYTHON_INCLUDE_DIR=%{python3_sysconfig_path include} \
   -DSHIBOKEN_INCLUDE_DIR=/usr/include/shiboken2/ \
@@ -237,6 +238,7 @@ rm tests/lib -fr
   -DBUILD_FLAT_MESH:BOOL=ON \
   -DFREECAD_USE_EXTERNAL_SMESH=%{?with_smesh_external:ON}%{!?with_smesh_external:OFF} \
   -DFREECAD_USE_EXTERNAL_ZIPIOS=%{?with_zipios:ON}%{!?with_zipios:OFF} \
+  -DFREECAD_USE_EXTERNAL_ONDSELSOLVER=%{?with_ondselsolver:ON}%{!?with_ondselsolver:OFF} \
   -DBUILD_SMESH:BOOL=ON \
   -DBUILD_MESH_PART:BOOL=ON \
   -DBUILD_FEM:BOOL=%{?with_smesh:ON}%{!?with_smesh:OFF} \
@@ -266,12 +268,14 @@ chmod 755 %{buildroot}%{_libdir}/FreeCAD/Mod/Robot/KukaExporter.py \
           %{buildroot}%{_libdir}/FreeCAD/Mod/Part/parttests/TopoShapeListTest.py \
           %{buildroot}%{_libdir}/FreeCAD/Mod/Test/unittestgui.py
 
-%suse_update_desktop_file -r org.freecadweb.FreeCAD Education Engineering
-
 # Remove unneeded files
 find %{buildroot} -type f -name "*.la" -delete -print
 rm -Rf %{buildroot}%{_datadir}/pixmaps
 rm %{buildroot}%{x_prefix}/include/E57Format/E57Export.h
+rm -Rf %{buildroot}%{_includedir}/%{name}/OndselSolver
+rm %{buildroot}%{_datadir}/pkgconfig/OndselSolver.pc
+rmdir %{buildroot}%{_datadir}/pkgconfig
+rmdir %{buildroot}%{x_prefix}/include/E57Format
 # Broken
 rm -Rf %{buildroot}%{_datadir}/thumbnailers
 
@@ -284,9 +288,8 @@ ln -s -t %{buildroot}/usr/bin %{x_prefix}/bin/FreeCADCmd
 %fdupes %{buildroot}/%{_datadir}
 
 %check
-%ctest --test-dir tests/src/Qt
-./build/tests/Tests_run
-./build/tests/Sketcher_tests_run
+export QT_QPA_PLATFORM=offscreen
+%ctest --test-dir tests
 
 %post -p /sbin/ldconfig
 
@@ -298,6 +301,11 @@ ln -s -t %{buildroot}/usr/bin %{x_prefix}/bin/FreeCADCmd
 %{_bindir}/FreeCAD{,Cmd}
 %doc %{_docdir}/%{name}/
 %{_libdir}/%{name}
+%if %{python3_version_nodots} < 310
+%{python_sitearch}/freecad
+%else
+%{python_sitelib}/freecad
+%endif
 %{_datadir}/%{name}/
 %{_datadir}/applications/*.desktop
 %{_datadir}/icons/hicolor/*/*/*.{png,svg}

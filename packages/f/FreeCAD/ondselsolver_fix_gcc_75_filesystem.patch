@@ -1,0 +1,51 @@
+From 2e3659c4bce3e6885269e0cb3d640261b2a91108 Mon Sep 17 00:00:00 2001
+From: huguesdpdn <huguesdpdn.aerospace@gmail.com>
+Date: Mon, 4 Nov 2024 16:00:12 +0100
+Subject: [PATCH] Fix compilation under gcc7.5 (#81)
+
+* Correct typo in individual license file name
+
+* Fix compilation under GCC 7.5 for Ubuntu
+---
+ OndselSolver/ASMTAssembly.cpp     | 5 +++++
+ OndselSolverMain/OndselSolver.cpp | 1 -
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/OndselSolver/ASMTAssembly.cpp b/OndselSolver/ASMTAssembly.cpp
+index 9daf755..0f3dd1d 100644
+--- a/OndselSolver/ASMTAssembly.cpp
++++ b/OndselSolver/ASMTAssembly.cpp
+@@ -62,7 +62,9 @@
+ #include "ASMTRotationLimit.h"
+ #include "ASMTTranslationLimit.h"
+ #include "ExternalSystem.h"
++#if __GNUC__ >= 8
+ #include <filesystem>
++#endif
+ 
+ using namespace MbD;
+ 
+@@ -359,8 +361,11 @@ void MbD::ASMTAssembly::runSinglePendulum()
+ 
+ std::shared_ptr<ASMTAssembly> MbD::ASMTAssembly::assemblyFromFile(const std::string& fileName)
+ {
++    // https://stackoverflow.com/a/45867491
++    #if __GNUC__ >= 8
+     std::filesystem::path currentPath = std::filesystem::current_path();
+     std::cout << "Current directory: " << currentPath << std::endl;
++    #endif
+ 
+     std::ifstream stream(fileName);
+     if (stream.fail()) {
+diff --git a/OndselSolverMain/OndselSolver.cpp b/OndselSolverMain/OndselSolver.cpp
+index d4b82d9..97ab5b9 100644
+--- a/OndselSolverMain/OndselSolver.cpp
++++ b/OndselSolverMain/OndselSolver.cpp
+@@ -12,7 +12,6 @@
+   * @brief Program to assemble a piston crank system.
+   *********************************************************************/
+ 
+-#include <filesystem>
+ #include "../OndselSolver/CADSystem.h"
+ #include "../OndselSolver/CREATE.h"
+ #include "../OndselSolver/GESpMatParPvPrecise.h"
