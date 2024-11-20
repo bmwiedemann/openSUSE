@@ -158,7 +158,7 @@
 %endif
 
 Name:           cobbler
-Version:        3.3.6
+Version:        3.3.7
 Release:        0%{?dist}
 Summary:        Boot server configurator
 URL:            https://cobbler.github.io/
@@ -226,7 +226,11 @@ Requires(postun): systemd
 Requires:       %{apache_pkg}
 Requires:       %{tftpsrv_pkg}
 Requires:       %{createrepo_pkg}
+%if 0%{?rhel} && 0%{?rhel} >= 9
+Requires:       fence-agents-all
+%else
 Requires:       fence-agents
+%endif
 Requires:       rsync
 Requires:       xorriso
 Requires:       dosfstools

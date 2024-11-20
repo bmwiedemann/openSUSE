@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Nov 20 09:11:51 UTC 2024 - Pablo Suárez Hernández <psuarezhernandez@suse.com>
+
+- Update to 3.3.7
+  * Security: Fix issue that allowed anyone to connect to the API
+    as admin (CVE-2024-47533, bsc#1231332)
+  * bind - Fix bug that prevents cname entries from being
+    generated successfully
+  * Fix build on RHEL9 based distributions (fence-agents-all split)
+  * Fix for Windows systems
+  * Docs: Add missing dependencies for source installation
+  * Fix issue that prevented systems from being synced when the
+    profile was edited
+
+-------------------------------------------------------------------
 Tue Jul 16 10:39:57 UTC 2024 - Enno Gotthold <egotthold@suse.com>
 
 - Update to 3.3.6

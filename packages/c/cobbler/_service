@@ -6,6 +6,7 @@
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="revision">openSUSE/factory</param>
     <param name="extract">cobbler.spec</param>
+    <param name="package-meta">yes</param>
   </service>
   <service name="set_version" mode="manual"/>
   <service name="tar" mode="buildtime"/>

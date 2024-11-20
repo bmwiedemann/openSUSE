@@ -1271,4 +1271,12 @@ D fixes-a-template-rendering-error.patch
     <comment>Update to the current upstream version (3.3.6)</comment>
     <requestid>1187875</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>ea1f170b926cd0082ad95cde959ddac3</srcmd5>
+    <version>3.3.7</version>
+    <time>1732118468</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1225259</requestid>
+  </revision>
 </revisionlist>
