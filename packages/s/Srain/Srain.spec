@@ -1,7 +1,7 @@
 #
 # spec file for package Srain
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           Srain
-Version:        1.5.1
+Version:        1.7.0
 Release:        0
 Summary:        An IRC client
 License:        GPL-3.0-or-later AND ISC
@@ -29,11 +29,12 @@ BuildRequires:  meson >= 0.47.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Sphinx
 BuildRequires:  pkgconfig(appstream)
+BuildRequires:  pkgconfig(ayatana-appindicator3-0.1)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.39.3
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.15
 BuildRequires:  pkgconfig(libconfig) >= 1.5
 BuildRequires:  pkgconfig(libsecret-1)
-BuildRequires:  pkgconfig(libsoup-2.4)
+BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(openssl)
 
 %description
@@ -45,7 +46,10 @@ IRC client written in GTK3+.
 %autosetup -p1 -n srain-%{version}
 
 %build
-%meson -Ddoc_builders=man
+%meson \
+	-Ddoc_builders=man \
+	-Dapp_indicator=true \
+	%{nil}
 %meson_build
 
 %install
