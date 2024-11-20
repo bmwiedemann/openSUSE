@@ -1,0 +1,10 @@
+Index: gfloat-0.4/pyproject.toml
+===================================================================
+--- gfloat-0.4.orig/pyproject.toml
++++ gfloat-0.4/pyproject.toml
+@@ -40,5 +40,4 @@ module = "mx.*"
+ ignore_missing_imports = true
+ 
+ [tool.pytest.ini_options]
+-addopts = "--nbval"
+ testpaths = ["docs", "test"]
