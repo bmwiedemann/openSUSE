@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Nov 20 08:05:20 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.69.0:
+  * chore: Pin tflint to `v0.50.3` (#3569)
+
+-------------------------------------------------------------------
+Wed Nov 20 07:53:31 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.68.17:
+  * feat: support discovery of symlinked modules (#3562)
+  * feat: Improving the quick start experience (#3568)
+  * fix: Adjusting docs for `feature` and `exclude` (#3581)
+
+-------------------------------------------------------------------
+Wed Nov 20 07:48:54 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.68.16:
+  * Add handling of empty feature blocks (#3580)
+  * fix: Fix spelling of `RenderJSONithMetadata` as
+    `RenderJSONWithMetadata` (#3579)
+  * Exclude block (#3551)
+
+-------------------------------------------------------------------
 Tue Nov 19 08:52:41 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.68.15:
