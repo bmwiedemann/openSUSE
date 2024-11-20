@@ -249,6 +249,7 @@
     <package name="chrony-pool-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cifs-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="clamav" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="clang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="clang-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="clang19" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="clazy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -1512,7 +1513,7 @@
     <package name="libKWaylandClient6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKirigamiAddonsStatefulApp6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKirigamiPlatform6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libLLVM18" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libLLVM18" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
     <package name="libLLVM19" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libLayerShellQtInterface6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libMagickCore-7_Q16HDRI10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1837,7 +1838,6 @@
     <package name="libcjson1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libclamav12" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="libclammspack0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="libclang-cpp18" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libclang-cpp19" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libclang13" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libclang_rt19" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -2232,8 +2232,8 @@
     <package name="libibverbs1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libical-glib3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libical3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libicu75" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libicu75-ledata" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libicu76" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libicu76-ledata" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libid3tag0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libidn12" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libidn2-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->

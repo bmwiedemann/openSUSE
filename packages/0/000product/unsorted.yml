@@ -1609,6 +1609,8 @@ unsorted:
   - bpftool-bash-completion 
   - bpftrace 
   - bpftrace-tools 
+  - bpftune 
+  - bpftune-devel 
   - bpm-tools 
   - branding-upstream 
   - brasero 
@@ -1882,6 +1884,10 @@ unsorted:
   - caddy-zsh-completion 
   - cadsondemak-fonts 
   - cadvisor 
+  - caffeine 
+  - caffeine-guava 
+  - caffeine-javadoc 
+  - caffeine-jcache 
   - cage 
   - cagebreak 
   - cairo-devel 
@@ -1983,14 +1989,6 @@ unsorted:
   - cargo-c 
   - cargo-packaging 
   - cargo-vendor-filterer 
-  - cargo1.70 
-  - cargo1.71 
-  - cargo1.72 
-  - cargo1.73 
-  - cargo1.74 
-  - cargo1.75 
-  - cargo1.76 
-  - cargo1.77 
   - cargo1.78 
   - cargo1.79 
   - cargo1.80 
@@ -2224,7 +2222,6 @@ unsorted:
   - clamav-milter 
   - clamtk 
   - clamtk-lang 
-  - clang 
   - clang-devel 
   - clang-doc 
   - clang-extract 
@@ -12398,6 +12395,7 @@ unsorted:
   - libbpf-devel 
   - libbpf-devel-static 
   - libbpf1-32bit 
+  - libbpftune0_1_3 
   - libbraiding-devel 
   - libbraiding0 
   - libbraille 
@@ -12601,6 +12599,7 @@ unsorted:
   - libclang-cpp16 
   - libclang-cpp17 
   - libclang-cpp17-32bit 
+  - libclang-cpp18 
   - libclang-cpp18-32bit 
   - libclang-cpp19-32bit 
   - libclang_rt18 
@@ -14041,8 +14040,8 @@ unsorted:
   - libicu-devel 
   - libicu-devel-32bit 
   - libicu-doc 
-  - libicu75-32bit 
-  - libicu75-bedata 
+  - libicu76-32bit 
+  - libicu76-bedata 
   - libid3-3_8-3 
   - libid3tag-devel 
   - libidl-devel 
@@ -25735,6 +25734,7 @@ unsorted:
   - python310-gevent 
   - python310-gevent-websocket 
   - python310-geventhttpclient 
+  - python310-gfloat 
   - python310-ghostscript 
   - python310-ghp-import 
   - python310-girder-client 
@@ -26319,6 +26319,7 @@ unsorted:
   - python310-mkdocs-get-deps 
   - python310-mkdocs-material 
   - python310-mkdocs-material-extensions 
+  - python310-ml-dtypes 
   - python310-mmh3 
   - python310-moban 
   - python310-moban-ansible 
@@ -26453,8 +26454,8 @@ unsorted:
   - python310-numpy1-devel 
   - python310-numpy_1_26_4-gnu-hpc 
   - python310-numpy_1_26_4-gnu-hpc-devel 
-  - python310-numpy_2_1_2-gnu-hpc 
-  - python310-numpy_2_1_2-gnu-hpc-devel 
+  - python310-numpy_2_1_3-gnu-hpc 
+  - python310-numpy_2_1_3-gnu-hpc-devel 
   - python310-numpydoc 
   - python310-nvim-remote 
   - python310-nwdiag 
@@ -29373,6 +29374,7 @@ unsorted:
   - python311-getmac 
   - python311-gevent-websocket 
   - python311-geventhttpclient 
+  - python311-gfloat 
   - python311-ghostscript 
   - python311-ghp-import 
   - python311-girder-client 
@@ -29927,6 +29929,7 @@ unsorted:
   - python311-mkdocs-get-deps 
   - python311-mkdocs-material 
   - python311-mkdocs-material-extensions 
+  - python311-ml-dtypes 
   - python311-mmh3 
   - python311-moban 
   - python311-moban-ansible 
@@ -30054,8 +30057,8 @@ unsorted:
   - python311-numpy1-devel 
   - python311-numpy_1_26_4-gnu-hpc 
   - python311-numpy_1_26_4-gnu-hpc-devel 
-  - python311-numpy_2_1_2-gnu-hpc 
-  - python311-numpy_2_1_2-gnu-hpc-devel 
+  - python311-numpy_2_1_3-gnu-hpc 
+  - python311-numpy_2_1_3-gnu-hpc-devel 
   - python311-numpydoc 
   - python311-nvim-remote 
   - python311-nwdiag 
@@ -32970,6 +32973,7 @@ unsorted:
   - python312-gevent 
   - python312-gevent-websocket 
   - python312-geventhttpclient 
+  - python312-gfloat 
   - python312-ghostscript 
   - python312-ghp-import 
   - python312-girder-client 
@@ -33553,6 +33557,7 @@ unsorted:
   - python312-mkdocs-get-deps 
   - python312-mkdocs-material 
   - python312-mkdocs-material-extensions 
+  - python312-ml-dtypes 
   - python312-mmh3 
   - python312-moban 
   - python312-moban-ansible 
@@ -33687,8 +33692,8 @@ unsorted:
   - python312-numpy1-devel 
   - python312-numpy_1_26_4-gnu-hpc 
   - python312-numpy_1_26_4-gnu-hpc-devel 
-  - python312-numpy_2_1_2-gnu-hpc 
-  - python312-numpy_2_1_2-gnu-hpc-devel 
+  - python312-numpy_2_1_3-gnu-hpc 
+  - python312-numpy_2_1_3-gnu-hpc-devel 
   - python312-numpydoc 
   - python312-nvim-remote 
   - python312-nwdiag 
@@ -35278,6 +35283,7 @@ unsorted:
   - python313-GridDataFormats 
   - python313-HTTPolice 
   - python313-HeapDict 
+  - python313-HepMC 
   - python313-IMAPClient 
   - python313-Jinja2 
   - python313-JsonWeb 
@@ -35315,6 +35321,7 @@ unsorted:
   - python313-Pebble 
   - python313-Pillow 
   - python313-Pillow-tk 
+  - python313-Pint 
   - python313-Protego 
   - python313-PubChemPy 
   - python313-PyAudio 
@@ -35380,6 +35387,7 @@ unsorted:
   - python313-Pyphen 
   - python313-Pyro5 
   - python313-QDarkStyle 
+  - python313-QR-Code-generator 
   - python313-QtAwesome 
   - python313-QtPy 
   - python313-QtPy-test 
@@ -36147,6 +36155,7 @@ unsorted:
   - python313-control 
   - python313-conu 
   - python313-convertdate 
+  - python313-cookiecutter 
   - python313-cookies 
   - python313-cooldict 
   - python313-copr 
@@ -36315,6 +36324,7 @@ unsorted:
   - python313-django-mathfilters 
   - python313-django-minio-storage 
   - python313-django-model-utils 
+  - python313-django-mptt 
   - python313-django-nine 
   - python313-django-oauth-toolkit 
   - python313-django-oidc-provider 
@@ -36356,6 +36366,7 @@ unsorted:
   - python313-djangorestframework-simplejwt 
   - python313-djet 
   - python313-dkimpy 
+  - python313-dlib 
   - python313-dm-tree 
   - python313-dmidecode 
   - python313-dns-lexicon 
@@ -36395,6 +36406,7 @@ unsorted:
   - python313-dulwich 
   - python313-dunamai 
   - python313-dynaconf 
+  - python313-e-antic 
   - python313-easy-thumbnails 
   - python313-easygui 
   - python313-easypysmb 
@@ -36455,6 +36467,7 @@ unsorted:
   - python313-extension-helpers 
   - python313-extras 
   - python313-extratools 
+  - python313-eyed3 
   - python313-ezdxf 
   - python313-fabio 
   - python313-factory_boy 
@@ -36495,9 +36508,11 @@ unsorted:
   - python313-flake8-bugbear 
   - python313-flake8-builtins 
   - python313-flake8-class-newline 
+  - python313-flake8-comprehensions 
   - python313-flake8-debugger 
   - python313-flake8-deprecated 
   - python313-flake8-docstrings 
+  - python313-flake8-import-order 
   - python313-flake8-isort 
   - python313-flake8-pep3101 
   - python313-flake8-polyfill 
@@ -36534,6 +36549,7 @@ unsorted:
   - python313-forbiddenfruit 
   - python313-formats 
   - python313-fqdn 
+  - python313-framel 
   - python313-freeipa 
   - python313-freetype-py 
   - python313-freezegun 
@@ -36574,6 +36590,7 @@ unsorted:
   - python313-gevent 
   - python313-gevent-websocket 
   - python313-geventhttpclient 
+  - python313-gfloat 
   - python313-ghostscript 
   - python313-ghp-import 
   - python313-girder-client 
@@ -36586,6 +36603,7 @@ unsorted:
   - python313-glean-parser 
   - python313-glfw 
   - python313-glob2 
+  - python313-glucat 
   - python313-gmpy2 
   - python313-gns3fy 
   - python313-gobject 
@@ -36647,6 +36665,7 @@ unsorted:
   - python313-gwcs 
   - python313-gwosc 
   - python313-gwyfile 
+  - python313-gyp 
   - python313-h11 
   - python313-h2 
   - python313-h5netcdf 
@@ -36676,6 +36695,7 @@ unsorted:
   - python313-hepunits 
   - python313-hetzner 
   - python313-hexdump 
+  - python313-hid-parser 
   - python313-hijri-converter 
   - python313-hiredis 
   - python313-hishel 
@@ -36713,6 +36733,7 @@ unsorted:
   - python313-husl 
   - python313-hvac 
   - python313-hvplot 
+  - python313-hyfetch 
   - python313-hypercorn 
   - python313-hyperframe 
   - python313-hyperlink 
@@ -36802,6 +36823,7 @@ unsorted:
   - python313-jaraco.ui 
   - python313-jaraco.vcs 
   - python313-jaraco.versioning 
+  - python313-javapackages 
   - python313-javaproperties 
   - python313-jdcal 
   - python313-jedi 
@@ -36866,6 +36888,7 @@ unsorted:
   - python313-kasa 
   - python313-kazoo 
   - python313-kerberos 
+  - python313-keylime 
   - python313-keyring 
   - python313-keyring-keyutils 
   - python313-keyring-pass 
@@ -36907,6 +36930,7 @@ unsorted:
   - python313-ldapdomaindump 
   - python313-ldappool 
   - python313-ldaptor 
+  - python313-ldas-tools-al-swig 
   - python313-leather 
   - python313-legacy-cgi 
   - python313-leglight 
@@ -36922,8 +36946,14 @@ unsorted:
   - python313-libcreg 
   - python313-libcst 
   - python313-libeconf 
+  - python313-libesedb 
   - python313-libevdev 
+  - python313-libevt 
+  - python313-libevtx 
   - python313-libewf 
+  - python313-libexe 
+  - python313-libfcrypto 
+  - python313-libfmos 
   - python313-libfsapfs 
   - python313-libfsext 
   - python313-libfsfat 
@@ -36932,17 +36962,26 @@ unsorted:
   - python313-libfsxfs 
   - python313-libfvde 
   - python313-libfwnt 
+  - python313-libfwps 
+  - python313-libfwsi 
   - python313-libgravatar 
   - python313-liblarch 
   - python313-liblarch-gtk 
+  - python313-liblnk 
   - python313-libluksde 
   - python313-libmodi 
+  - python313-libmsiecf 
+  - python313-libmsym 
   - python313-libnacl 
+  - python313-libolecf 
+  - python313-libpff 
+  - python313-libpfm 
   - python313-libphdi 
   - python313-libqcow 
   - python313-libregf 
   - python313-librouteros 
   - python313-libsass 
+  - python313-libscca 
   - python313-libsigscan 
   - python313-libsmdev 
   - python313-libsmraw 
@@ -36956,14 +36995,18 @@ unsorted:
   - python313-libvsgpt 
   - python313-libvshadow 
   - python313-libvslvm 
+  - python313-libvsmbr 
+  - python313-libwrc 
   - python313-libxml2 
   - python313-license-expression 
   - python313-ligo-lw 
   - python313-ligotimegps 
   - python313-linetable 
   - python313-linkify-it-py 
+  - python313-linode-cli 
   - python313-linstor 
   - python313-linux-procfs 
+  - python313-lit 
   - python313-littleutils 
   - python313-livereload 
   - python313-llfuse 
@@ -36979,6 +37022,7 @@ unsorted:
   - python313-loguru 
   - python313-logutils 
   - python313-looseversion 
+  - python313-lscsoft-glue 
   - python313-lsprotocol 
   - python313-lupa 
   - python313-lxml 
@@ -36998,6 +37042,7 @@ unsorted:
   - python313-mando 
   - python313-manuel 
   - python313-manuel-doc 
+  - python313-mapserver 
   - python313-marathon 
   - python313-markdown-it-py 
   - python313-markdown2 
@@ -37042,6 +37087,7 @@ unsorted:
   - python313-mimesis 
   - python313-minidb 
   - python313-minio 
+  - python313-miniupnpc 
   - python313-misaka 
   - python313-mistletoe 
   - python313-mistune 
@@ -37055,6 +37101,7 @@ unsorted:
   - python313-mkdocs-get-deps 
   - python313-mkdocs-material 
   - python313-mkdocs-material-extensions 
+  - python313-ml-dtypes 
   - python313-mmh3 
   - python313-moban 
   - python313-moban-ansible 
@@ -37062,6 +37109,7 @@ unsorted:
   - python313-mock-open 
   - python313-mocket 
   - python313-mockito 
+  - python313-model-bakery 
   - python313-modern-colorthief 
   - python313-mohawk 
   - python313-mongoengine 
@@ -37121,6 +37169,7 @@ unsorted:
   - python313-ndjson 
   - python313-ndtiff 
   - python313-nest-asyncio 
+  - python313-net-snmp 
   - python313-netCDF4 
   - python313-netaddr 
   - python313-nethsm 
@@ -37128,10 +37177,12 @@ unsorted:
   - python313-netmiko 
   - python313-netpbmfile 
   - python313-networkx 
+  - python313-nftables 
   - python313-nh3 
   - python313-nine 
   - python313-nitrokey 
   - python313-nkdfu 
+  - python313-nlopt 
   - python313-nltk 
   - python313-nntplib 
   - python313-nocasedict 
@@ -37166,8 +37217,8 @@ unsorted:
   - python313-numpy-gnu-hpc-devel 
   - python313-numpy_1_26_4-gnu-hpc 
   - python313-numpy_1_26_4-gnu-hpc-devel 
-  - python313-numpy_2_1_2-gnu-hpc 
-  - python313-numpy_2_1_2-gnu-hpc-devel 
+  - python313-numpy_2_1_3-gnu-hpc 
+  - python313-numpy_2_1_3-gnu-hpc-devel 
   - python313-numpydoc 
   - python313-nwdiag 
   - python313-oauthlib 
@@ -37476,8 +37527,10 @@ unsorted:
   - python313-pybind11 
   - python313-pybind11-devel 
   - python313-pybind11-stubgen 
+  - python313-pybind11_abseil 
   - python313-pybluez 
   - python313-pybtex 
+  - python313-pybugz 
   - python313-pycairo 
   - python313-pycairo-devel 
   - python313-pycares 
@@ -37554,6 +37607,7 @@ unsorted:
   - python313-pykickstart 
   - python313-pykka 
   - python313-pykwalify 
+  - python313-pylama 
   - python313-pylast 
   - python313-pyleri 
   - python313-pylev 
@@ -37595,6 +37649,7 @@ unsorted:
   - python313-pyosf 
   - python313-pyotp 
   - python313-pyowm 
+  - python313-pypandoc 
   - python313-pyparallel 
   - python313-pyparsing 
   - python313-pypdf 
@@ -37723,6 +37778,7 @@ unsorted:
   - python313-pytest-pylint 
   - python313-pytest-pyramid-server 
   - python313-pytest-qt 
+  - python313-pytest-randomly 
   - python313-pytest-recording 
   - python313-pytest-regressions 
   - python313-pytest-relaxed 
@@ -38002,6 +38058,7 @@ unsorted:
   - python313-rq 
   - python313-rq-scheduler 
   - python313-rsa 
+  - python313-rss2email 
   - python313-rst.linker 
   - python313-rstcheck 
   - python313-rstcheck-core 
@@ -38051,6 +38108,7 @@ unsorted:
   - python313-segno 
   - python313-selection 
   - python313-selenium 
+  - python313-selinux 
   - python313-semanage 
   - python313-semantic_version 
   - python313-semver 
@@ -38059,6 +38117,7 @@ unsorted:
   - python313-serpent 
   - python313-serverfiles 
   - python313-service_identity 
+  - python313-setools 
   - python313-setproctitle 
   - python313-setuptools 
   - python313-setuptools-declarative-requirements 
@@ -38245,8 +38304,10 @@ unsorted:
   - python313-tablib 
   - python313-tabulate 
   - python313-tap.py 
+  - python313-targetcli-fb 
   - python313-tasklib 
   - python313-taskw 
+  - python313-tbb 
   - python313-tblib 
   - python313-tcolorpy 
   - python313-technicolor 
@@ -38277,6 +38338,7 @@ unsorted:
   - python313-thespian 
   - python313-threadpoolctl 
   - python313-three-merge 
+  - python313-thrift 
   - python313-thriftpy2 
   - python313-tifffile 
   - python313-time-machine 
@@ -38342,12 +38404,14 @@ unsorted:
   - python313-tsk 
   - python313-ttp 
   - python313-ttp-templates 
+  - python313-tvm 
   - python313-twine 
   - python313-twitter 
   - python313-twython 
   - python313-txWS 
   - python313-txZMQ 
   - python313-txaio 
+  - python313-txt2tags 
   - python313-txtorcon 
   - python313-typedload 
   - python313-typeguard 
@@ -38410,6 +38474,7 @@ unsorted:
   - python313-uv-zsh-completion 
   - python313-uvicorn 
   - python313-uvloop 
+  - python313-uwsgi-python3 
   - python313-validate-pyproject 
   - python313-validate_email 
   - python313-validators 
@@ -38443,7 +38508,9 @@ unsorted:
   - python313-voluptuous 
   - python313-voluptuous-serialize 
   - python313-vulkan 
+  - python313-vulture 
   - python313-wadllib 
+  - python313-wafw00f 
   - python313-waitress 
   - python313-waitress-doc 
   - python313-wakeonlan 
@@ -38468,6 +38535,7 @@ unsorted:
   - python313-websocket-client 
   - python313-websockets 
   - python313-websockify 
+  - python313-wfuzz 
   - python313-whatever 
   - python313-whatthepatch 
   - python313-wheel 
@@ -38489,6 +38557,7 @@ unsorted:
   - python313-wxPython 
   - python313-wyoming 
   - python313-x86-64-v3 
+  - python313-xapian 
   - python313-xapian-haystack 
   - python313-xapp 
   - python313-xarray 
@@ -38515,6 +38584,7 @@ unsorted:
   - python313-xmlsec 
   - python313-xmltodict 
   - python313-xpybutil 
+  - python313-xrootd 
   - python313-xsge_gui 
   - python313-xsge_lighting 
   - python313-xsge_particle 
@@ -38580,6 +38650,7 @@ unsorted:
   - python313-zstandard 
   - python313-zstd 
   - python313-zxcvbn 
+  - python313-zypp-plugin 
   - python314 
   - python314-base 
   - python314-base-x86-64-v3 
@@ -40048,14 +40119,6 @@ unsorted:
   - rust 
   - rust-bindgen 
   - rust-cbindgen 
-  - rust1.70 
-  - rust1.71 
-  - rust1.72 
-  - rust1.73 
-  - rust1.74 
-  - rust1.75 
-  - rust1.76 
-  - rust1.77 
   - rust1.78 
   - rust1.78-src 
   - rust1.79 
@@ -51597,6 +51660,7 @@ unsorted:
   - verilator-examples 
   - veusz 
   - veusz-common 
+  - vexctl 
   - veyon 
   - vgrabbj 
   - vgrep 
@@ -52383,7 +52447,6 @@ unsorted:
   - xom 
   - xom-demo 
   - xom-javadoc 
-  - xone-kmp-default 
   - xonotic 
   - xonotic-data 
   - xonotic-server 
