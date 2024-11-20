@@ -10462,6 +10462,7 @@ unsorted:
   - kopeninghours-devel 
   - kopeninghours-imports 
   - kopeninghours-lang 
+  - kopia 
   - kor 
   - kor-bash-completion 
   - kor-fish-completion 
@@ -15084,8 +15085,6 @@ unsorted:
   - liboop4 
   - libopae-c2 
   - libopagent1 
-  - libopal-devel 
-  - libopal3_18_8 
   - libopamgt-devel 
   - libopamgt0 
   - libopasadb1_0_0 
@@ -15581,9 +15580,6 @@ unsorted:
   - libpst4 
   - libpsx2 
   - libpsx2-32bit 
-  - libpt2_18_8 
-  - libpt2_18_8-plugins-avc 
-  - libpt2_18_8-plugins-pulse 
   - libptexenc1 
   - libptl2 
   - libptscotch-gnu-mpich-hpc 
@@ -20485,6 +20481,7 @@ unsorted:
   - oo7 
   - ooRexx 
   - ooRexx-devel 
+  - oomstaller 
   - opa-address-resolution 
   - opa-address-resolution-devel 
   - opa-basic-tools 
@@ -23730,7 +23727,6 @@ unsorted:
   - pt2-clone 
   - pthread-stubs-devel 
   - ptl-devel 
-  - ptlib-devel 
   - ptpd 
   - ptscotch-gnu-mpich-hpc 
   - ptscotch-gnu-mpich-hpc-devel 
@@ -24264,7 +24260,6 @@ unsorted:
   - python3-sphinxbase5 
   - python3-splinter 
   - python3-spyder-notebook 
-  - python3-spyder-terminal 
   - python3-sss-murmur 
   - python3-sss_nss_idmap 
   - python3-sssd-config 
@@ -35240,6 +35235,7 @@ unsorted:
   - python313-Delorean 
   - python313-Deprecated 
   - python313-Django 
+  - python313-Django4 
   - python313-Dumper 
   - python313-Durus 
   - python313-EasyProcess 
@@ -35248,6 +35244,8 @@ unsorted:
   - python313-Fabric 
   - python313-Faker 
   - python313-Flask 
+  - python313-Flask-Admin 
+  - python313-Flask-Assets 
   - python313-Flask-Babel 
   - python313-Flask-Bootstrap 
   - python313-Flask-Caching 
@@ -35274,6 +35272,7 @@ unsorted:
   - python313-GitPython 
   - python313-Glances 
   - python313-Gloo 
+  - python313-Glymur 
   - python313-GooCalendar 
   - python313-GooseMPL 
   - python313-GridDataFormats 
@@ -35391,6 +35390,7 @@ unsorted:
   - python313-Rtree 
   - python313-SPARQLWrapper 
   - python313-SQLAlchemy 
+  - python313-SQLAlchemy-Utils 
   - python313-SQLAlchemy1 
   - python313-SecretStorage 
   - python313-Send2Trash 
@@ -35515,6 +35515,7 @@ unsorted:
   - python313-apacheconfig 
   - python313-apeye 
   - python313-apeye-core 
+  - python313-apfel 
   - python313-apipkg 
   - python313-apiron 
   - python313-apns2 
@@ -35524,6 +35525,7 @@ unsorted:
   - python313-apprise 
   - python313-apsw 
   - python313-arabic-reshaper 
+  - python313-archmage 
   - python313-arf 
   - python313-argcomplete 
   - python313-argh 
@@ -35580,9 +35582,11 @@ unsorted:
   - python313-autodocsumm 
   - python313-autoflake 
   - python313-autopage 
+  - python313-autopep8 
   - python313-autoray 
   - python313-autoupgrade-ng 
   - python313-av 
+  - python313-avahi 
   - python313-avro 
   - python313-awkward 
   - python313-awkward-cpp 
@@ -35993,9 +35997,11 @@ unsorted:
   - python313-bloscpack 
   - python313-blue 
   - python313-blurb 
+  - python313-bmap-tools 
   - python313-bokcolmaps 
   - python313-bokeh 
   - python313-bokeh_sampledata 
+  - python313-boltons 
   - python313-boolean.py 
   - python313-booleanOperations 
   - python313-boost-histogram 
@@ -36223,6 +36229,7 @@ unsorted:
   - python313-deap 
   - python313-debugpy 
   - python313-decorator 
+  - python313-deepdiff 
   - python313-deepmerge 
   - python313-defcon 
   - python313-defusedxml 
@@ -36316,8 +36323,10 @@ unsorted:
   - python313-django-pglocks 
   - python313-django-phonenumber-field 
   - python313-django-picklefield 
+  - python313-django-pipeline 
   - python313-django-polymorphic 
   - python313-django-push-notifications 
+  - python313-django-q 
   - python313-django-qsessions 
   - python313-django-redis 
   - python313-django-registration 
@@ -36330,6 +36339,7 @@ unsorted:
   - python313-django-rosetta 
   - python313-django-sekizai 
   - python313-django-settings-toml 
+  - python313-django-silk 
   - python313-django-storages 
   - python313-django-tables2 
   - python313-django-taggit 
@@ -36381,6 +36391,7 @@ unsorted:
   - python313-duckduckgo-search 
   - python313-duckduckgo2 
   - python313-duet 
+  - python313-dukpy 
   - python313-dulwich 
   - python313-dunamai 
   - python313-dynaconf 
@@ -36719,6 +36730,7 @@ unsorted:
   - python313-igwn-auth-utils 
   - python313-ijson 
   - python313-imagecodecs 
+  - python313-imageio 
   - python313-imageio-ffmpeg 
   - python313-imagesize 
   - python313-imbox 
@@ -36956,6 +36968,7 @@ unsorted:
   - python313-livereload 
   - python313-llfuse 
   - python313-llvmlite 
+  - python313-lmdb 
   - python313-lmfit 
   - python313-lml 
   - python313-localzone 
@@ -37309,6 +37322,7 @@ unsorted:
   - python313-pgmagick 
   - python313-phabricator 
   - python313-phonenumbers 
+  - python313-photutils 
   - python313-phply 
   - python313-phue 
   - python313-pick 
@@ -37552,6 +37566,8 @@ unsorted:
   - python313-pylint-venv 
   - python313-pylons-sphinx-themes 
   - python313-pylru 
+  - python313-pyls-spyder 
+  - python313-pylsp-rope 
   - python313-pylsqpack 
   - python313-pylzma 
   - python313-pymacaroons 
@@ -37773,7 +37789,10 @@ unsorted:
   - python313-python-jsonschema-objects 
   - python313-python-keycloak 
   - python313-python-louvain 
+  - python313-python-lsp-black 
   - python313-python-lsp-jsonrpc 
+  - python313-python-lsp-server 
+  - python313-python-lsp-server-all 
   - python313-python-lzo 
   - python313-python-magic 
   - python313-python-markdown-math 
@@ -38084,6 +38103,7 @@ unsorted:
   - python313-six 
   - python313-sklearn-pandas 
   - python313-skyfield 
+  - python313-slimit 
   - python313-slixmpp 
   - python313-sly 
   - python313-slycot 
@@ -38098,6 +38118,7 @@ unsorted:
   - python313-social-auth-core 
   - python313-softlayer 
   - python313-softlayer-zeep 
+  - python313-solv 
   - python313-sortedcollections 
   - python313-sortedcontainers 
   - python313-soundcloud-v2 
@@ -38171,6 +38192,7 @@ unsorted:
   - python313-sqlite-anyio 
   - python313-sqlite-fts4 
   - python313-sqlite-utils 
+  - python313-sqlite3-to-mysql 
   - python313-sqlitedict 
   - python313-sqlmodel 
   - python313-sqlparse 
@@ -38251,6 +38273,7 @@ unsorted:
   - python313-textfsm 
   - python313-textile 
   - python313-texttable 
+  - python313-thLib 
   - python313-thespian 
   - python313-threadpoolctl 
   - python313-three-merge 
@@ -38413,6 +38436,7 @@ unsorted:
   - python313-visitor 
   - python313-vispy 
   - python313-vistir 
+  - python313-visvis 
   - python313-vncdotool 
   - python313-vobject 
   - python313-volatile 
@@ -38434,6 +38458,7 @@ unsorted:
   - python313-wcwidth 
   - python313-weasyprint 
   - python313-web_cache 
+  - python313-webassets 
   - python313-webauthn 
   - python313-webcolors 
   - python313-webencodings 
@@ -38515,6 +38540,7 @@ unsorted:
   - python313-yg.lockfile 
   - python313-yq 
   - python313-yt 
+  - python313-yt-dlp 
   - python313-ytmusicapi 
   - python313-zc.buildout 
   - python313-zc.customdoctests 
@@ -38523,6 +38549,7 @@ unsorted:
   - python313-zeep 
   - python313-zeroconf 
   - python313-zhon 
+  - python313-zict 
   - python313-zignal 
   - python313-zipp 
   - python313-zipstream 
@@ -39610,6 +39637,7 @@ unsorted:
   - rpmlint-test 
   - rpmorphan 
   - rpmrebuild 
+  - rqlite 
   - rr 
   - rrdtool 
   - rrdtool-cached 
