@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 20 12:55:49 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 52.3.90:
+  * Bump the Helm chart version to 52.3.90
+  * updated `pcapdump` command's help starting deprecated the
+    `export` command
+  * Brought back `.gitignore`` after having been deleted due to a
+    bad commit.
+  * removed two binary files uploaded due to a bad earlier commit.
+  * Fixed a bug in the Makefile
+
+-------------------------------------------------------------------
 Tue Nov 12 09:11:39 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 52.3.89:
