@@ -1,7 +1,7 @@
 #
 # spec file for package gp2c
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gp2c
-Version:        0.0.13
+Version:        0.0.14
 Release:        0
 Summary:        GP script to PARI C program compiler
 License:        GPL-2.0-only

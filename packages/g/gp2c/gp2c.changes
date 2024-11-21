@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 21 19:14:04 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.14
+  * By default, support PARI 2.17 now.
+  * Support for ``_*`` (primorial) operator from pari 2.16.1
+  * Support for ``#_~`` from 2.16.1
+
+-------------------------------------------------------------------
 Fri Nov 18 17:48:20 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.13
