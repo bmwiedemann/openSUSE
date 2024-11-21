@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov 21 08:47:01 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.4.19
+
+- Update 2.4.19
+  * Add CPython 3.14.0a2 by @nedbat in #3110
+  * Add quick start section and gif demo to accompany it. by @madhu-GG in #3044
+
+-------------------------------------------------------------------
+Thu Nov 21 08:45:54 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.4.18
+
+- Update 2.4.18
+  * Add miniforge3-24.9.2-0 by @goerz in #3106
+
+-------------------------------------------------------------------
 Fri Nov 15 06:15:34 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.4.17
 
 - Update 2.4.17
