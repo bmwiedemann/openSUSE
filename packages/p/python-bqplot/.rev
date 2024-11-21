@@ -164,4 +164,13 @@
   * fix: domain should not be reset when min/max are set #1638 (forwarded request 1187178 from bnavigator)</comment>
     <requestid>1187179</requestid>
   </revision>
+  <revision rev="15" vrev="9">
+    <srcmd5>89c01ccb495ddda38845feb9d623bc43</srcmd5>
+    <version>unknown</version>
+    <time>1732223172</time>
+    <user>dimstar_suse</user>
+    <comment>- Also skip python313 gh#bqplot/bqplot#1639
+</comment>
+    <requestid>1225643</requestid>
+  </revision>
 </revisionlist>

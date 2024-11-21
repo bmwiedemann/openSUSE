@@ -18,6 +18,7 @@
 
 # https://github.com/bqplot/bqplot/issues/1639
 %define skip_python312 1
+%define skip_python313 1
 %define         pyver 0.12.43
 %define         jupver 0.5.44
 Name:           python-bqplot
