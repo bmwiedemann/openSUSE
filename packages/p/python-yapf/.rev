@@ -182,4 +182,30 @@
     <comment>- Add missing {Build,}Requires on tomli and importlib-metadata.</comment>
     <requestid>1156824</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>08915c2cc09eb27cc4e2ec939151a74a</srcmd5>
+    <version>0.43.0</version>
+    <time>1732198404</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.43.0:
+  * New `DISABLE_SPLIT_LIST_WITH_COMMENT` flag.
+   `DISABLE_SPLIT_LIST_WITH_COMMENT` is a new knob that changes the
+    behavior of splitting a list when a comment is present inside
+    the list.
+    Note the behavioral change above; if you set
+    `DISABLE_ENDING_COMMA_HEURISTIC=true` and want to keep the old
+    behavior, you now also need to set
+    `DISABLE_SPLIT_LIST_WITH_COMMENT=true`.
+  * Remove dependency on importlib-metadata
+  * Remove dependency on tomli when using &gt;= py311
+  * Format '.pyi' type sub files.
+  * Fix SPLIT_ARGUMENTS_WHEN_COMMA_TERMINATED for one-item named
+    argument lists by taking precedence over SPLIT_BEFORE_NAMED_ASSIGNS.
+  * Fix SPLIT_ALL_COMMA_SEPARATED_VALUES and
+    SPLIT_ALL_TOP_LEVEL_COMMA_SEPARATED_VALUES
+    being too agressive for lambdas and unpacking.
+
+- Add missing {Build,}Requires on tomli and importlib-metadata.</comment>
+    <requestid>1225352</requestid>
+  </revision>
 </revisionlist>

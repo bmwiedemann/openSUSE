@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed Nov 20 17:20:10 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.0:
+  * Declare supported Python version support ">= 3.7" in dist
+    meta  #129
+  * Improve exception chaining when ResolutionImpossible raises
+    during backjumping  #133
+  * Switch from pyi files to modern annotations based type
+    hinting  #135
+  * In tests the commentjson test dependency with re.sub  #141
+  * Deduplicate failure causes to save memory and reduce
+    backtracking overhead  #143
+  * New narrow_requirement_selection provider method giving
+    option for providers to reduce the number of times sort key
+    get_preference is called in long running backtrack  #145
+  * Run tests against Python 3.12, 3.13, and use latest version
+    of CI dependencies  #153
+  * Update py2ndex script to use metadata files, skip 404, and
+    support PEP 723  #156
+  * Replace setuptools.cfg and mypy.ini with pyproject.toml  #157
+  * Add tests type "unvisited" to functional Python tests to
+    ensure backjumping is correctly skipping candidates  #158
+  * Switch from flake8 to ruff for linting  #160
+  * Enable automatic TYPE_CHECK guarding for imports only used
+    for type hinting via ruff rules TCH and FA  #166
+  * Fix example reporter_demo get_preference method which
+    requires arg backtrack_causes #136
+  * Clarify the docstrings for providers.py #138
+  * Pin Black version for linting to prevent CI failures  #150
+  * In unexpected situation where broken_state.mapping is empty,
+    stop backtracking, and continue resolution (rather than
+    throwing ResolutionImpossible)  #152
+  * During backtracking check if the current broken state is an
+    incompatible dependency, if not stop backtracking and
+    continue resolution.  #155
+  * Separate AbstractResolver and Resolver into different modules
+    #162
+  * Separate resolvers into different modules  #163
+  * Export criterion in resolvers to keep compatibility  #164
+  * Enable isorting via ruff  #165
+
+-------------------------------------------------------------------
 Fri Aug 23 10:09:20 UTC 2024 - pgajdos@suse.com
 
 - drop optional test dependency on python-commentjson

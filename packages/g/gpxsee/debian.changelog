@@ -1,3 +1,10 @@
+gpxsee (13.30) stable; urgency=low
+
+  * Improved Mapsforge map render theme.
+  * Improved Mapsforge map render engine.
+
+ -- Martin Tuma <tumic@cbox.cz>  Wed, 20 Nov 2024 20:58:11 +0100
+
 gpxsee (13.29) stable; urgency=low
 
   * Fixed broken Mapsforge theme in Qt5 builds.

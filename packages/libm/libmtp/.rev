@@ -723,4 +723,14 @@
   - several new devices added, some device renaming for consistency.</comment>
     <requestid>1082464</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>3d3fa285ba96adfceaa45a2e0ee802d4</srcmd5>
+    <version>1.1.22</version>
+    <time>1732198391</time>
+    <user>anag+factory</user>
+    <comment>- updated to 1.1.21 release
+  - bugfixes
+  - lots of new ids (forwarded request 1225299 from msmeissn)</comment>
+    <requestid>1225300</requestid>
+  </revision>
 </revisionlist>

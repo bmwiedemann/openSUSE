@@ -1,0 +1,14 @@
+<package name="kdocker" project="openSUSE:Factory">
+  <title>KDocker will help you dock any application into the system tray</title>
+  <description>KDocker will help you dock any application in the system tray. This means you
+can dock openoffice, firefox, thunderbolt, eclipse, anything!
+Just point and click. Works for both Plasma and GNOME (In fact it should work
+for most modern window managers that support NET WM Specification.
+I believe it works for XFCE, for instance)
+
+All you need to do is start KDocker and select an application using the mouse
+and the application gets docked into the system tray.
+The application can also be made to dissappear from the task bar.</description>
+  <devel project="KDE:Extra" package="kdocker"/>
+  <url>https://github.com/user-none/KDocker</url>
+</package>

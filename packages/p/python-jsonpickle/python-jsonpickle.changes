@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Nov 20 16:10:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.0:
+  * Breaking Change: Python 3.7 is no longer supported.
+  * Breaking Change: Support for pre-0.7.0 repr-serialized
+    objects is no longer enabled by default. The safe option to
+    decode() was changed from False to True. Users can still pass
+    safe=False to decode() in order to enable this feature for
+    the purposes of loading older files, but beware that this
+    feature relies on unsafe behavior through its use of eval().
+    Users are encouraged to re-pickle old data in order to
+    migrate away from the the unsafe loading feature. (+514)
+  * The pickler no longer produces py/repr tags when pickling
+    modules. py/mod is used instead, as it is clearer and uses
+    one less byte. (+514)
+  * The test suite no longer uses the deprecated
+    datetime.datetime.utcnow() function. (+539)
+  * The breaking changes from v4 were inadvertedly included in
+    v3.4.1, which has been yanked. This release remedies this by
+    reverting the v4 changes.
+  * Support decoding pandas dataframes encoded with versions
+    3.3.0 and older. (+536)
+  * Officially support Python 3.12 in the GitHub Actions testing
+    matrix, and update GHA package versions used. (+524)
+  * Improve reproducibility of benchmarking commands on Linux by
+    using taskset and adding a "HOWTO" run benchmarks section in
+    benchmarking/README.md. (+526)
+  * The setup.cfg packaging configuration has been replaced by
+    pyproject.toml. (+527)
+  * yaml is now supported as a jsonpickle backend. (+528)
+  * OSSFuzz scripts are now available in the fuzzing/ directory.
+    (+525)
+  * Pure-python dtypes are now preserved across encode()/decode()
+    roundtrips for the pandas extension.
+  * Pandas dataframe columns with an object dtype that contain
+    multiple different types within (e.g. a column of type
+    list[Union[str, int]]) now preserve the types upon being
+    roundtripped. (#457)
+  * Fix warnings in the test suite regarding numpy.compat usage.
+  * The unpickler was updated to avoid using eval, which helps
+    improve its security. Users can still pass safe=False to
+    decode to use the old behavior, though this is not
+    recommended. (+513)
+  * Objects can now exclude specific attributes from pickling by
+    providing a _jsonpickle_exclude class or instance attribute.
+    This attribute should contain the list of attribute names to
+    exclude when pickling the object.
+
+-------------------------------------------------------------------
 Sun Jun 30 20:34:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.2:

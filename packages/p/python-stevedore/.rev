@@ -513,4 +513,16 @@
   * reno: Update master for unmaintained/victoria</comment>
     <requestid>1199452</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>c4ab22446514c2668233ed1d9bae754c</srcmd5>
+    <version>5.4.0</version>
+    <time>1732198470</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.4.0:
+  * Add note about requirements lower bounds
+  * Remove Python 3.8 support
+  * Run pyupgrade to clean up Python 2 syntaxes
+  * Declare Python 3.12 support</comment>
+    <requestid>1225387</requestid>
+  </revision>
 </revisionlist>

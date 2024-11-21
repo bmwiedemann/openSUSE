@@ -673,4 +673,20 @@ prerequisite for new python submission</comment>
   * Add %FLAVOR_pytest and %FLAVOR_pyunittest variants</comment>
     <requestid>1183805</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>569f8d3c362438072f00696b26a810b8</srcmd5>
+    <version>20241120.6ae645f</version>
+    <time>1732198376</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20241120.6ae645f:
+  * Do sed in place
+
+- Update to version 20241119.7609911:
+  * Do not fix shebang on links to non-writeable files
+
+- Update to version 20241111.a34b5d8:
+  * Follow symlinks when replacing shebang with sed
+  * Only sed the shebang in executable files</comment>
+    <requestid>1225282</requestid>
+  </revision>
 </revisionlist>

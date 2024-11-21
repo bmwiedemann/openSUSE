@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 20 15:11:44 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.0:
+  * Completely modernized portalocker build system and added
+    fully strict pyright and mypy compliance with ruff formatting
+    and checking. Dropped support for deprecated Python versions,
+    only 3.9 and up are supported now.
+
+-------------------------------------------------------------------
 Mon Aug  5 12:28:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.10.1:

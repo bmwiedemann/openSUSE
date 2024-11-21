@@ -168,4 +168,17 @@
   * GO-2024-3278 CVE-2024-9526 (forwarded request 1225190 from jfkw)</comment>
     <requestid>1225191</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7b7a96169362c21cde5b34314cbdac41</srcmd5>
+    <version>0.0.20241120T172248</version>
+    <time>1732198637</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.0.20241120T172248 2024-11-20T17:22:48Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2024-3140 CVE-2024-8986 GHSA-xxxw-3j6h-q7h6
+  * GO-2024-3259 GHSA-p7mv-53f2-4cwj
+  * GO-2024-3265 CVE-2024-52009 GHSA-gppm-hq3p-h4rp (forwarded request 1225421 from jfkw)</comment>
+    <requestid>1225422</requestid>
+  </revision>
 </revisionlist>

@@ -34,6 +34,8 @@ Patch4:         0001-Fixed-unchecked-typecasts-of-DcmItem-search-results.patch
 Patch5:         0002-Fixed-unchecked-typecasts-and-fixed-LUT-handling.patch
 Patch6:         0003-Fixed-wrong-error-handling-previous-commit.patch
 Patch7:         0001-Fixed-DcmDecimalString-unit-tests.patch
+Patch8:         0001-Fixed-link-instructions-for-libtiff.patch
+Patch9:         0001-Fix-find_package-library-variables-for-libtiff.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes

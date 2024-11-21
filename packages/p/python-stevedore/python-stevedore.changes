@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 20 18:00:14 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.4.0:
+  * Add note about requirements lower bounds
+  * Remove Python 3.8 support
+  * Run pyupgrade to clean up Python 2 syntaxes
+  * Declare Python 3.12 support
+
+-------------------------------------------------------------------
 Sun Sep  8 13:10:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.3.0:

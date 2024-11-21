@@ -192,4 +192,14 @@
 - Actually remove nose BuildRequires, replacing it with pytest.</comment>
     <requestid>1143989</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>2014b7057a5eeb0bb7d9643da3948256</srcmd5>
+    <version>2.10.0</version>
+    <time>1732198634</time>
+    <user>anag+factory</user>
+    <comment>- Clean up the SPEC file.
+- Add sle15_python_module_pythons macro
+</comment>
+    <requestid>1225417</requestid>
+  </revision>
 </revisionlist>

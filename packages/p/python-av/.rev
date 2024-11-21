@@ -191,4 +191,12 @@
       - Avoid infinite timeout in :func:`av.open` (:issue:`589`).</comment>
     <requestid>1131183</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d412b3e77427c3040bb9045a3cd49996</srcmd5>
+    <version>13.1.0</version>
+    <time>1732198631</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1225414</requestid>
+  </revision>
 </revisionlist>

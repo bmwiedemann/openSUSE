@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Nov 20 16:31:07 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.11.1:
+  * Please note the breaking changes in 24.11.
+- update to 24.11:
+  * With this release we fix an issue with the numbering of the
+    open drain outputs of the USB-SD-Mux FAST (see #83).
+  * With this release the numbering of the open drain output
+    changes.
+  * Testing: Allow running tests locally and make README-test
+    more verbose
+  * README: fixes, tweaks and re-organisation
+  * CI: streamline and add build and codespell targets
+  * QA: Use ruff instead of black + flake8 for formatting and
+    linting
+  * pyproject.toml: switch over from setup.py
+  * CI: add automatic publication to pypi.org and test.pypi.org
+  * usbsdmux: remove the deprecated service/client code paths
+  * usbsdmux: add ruff "UP" rules to config and fix issues
+    automatically
+  * pyproject.toml: fix fallout from the migration
+  * usb-sd-mux/FAST: Fix GPIO number-to-pin definition
+
+-------------------------------------------------------------------
 Thu Jun 13 07:52:14 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Switch from 'plugdev' group to 'disk' group for udev rule
@@ -45,7 +69,7 @@ Thu Mar 17 08:56:58 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 0.2.1. Main changes:
   * cli: Handle well-known Exceptions
-  * usb2642i2c: Do not create if device node does not exist 
+  * usb2642i2c: Do not create if device node does not exist
   * commandline: 'get' must respect hardware signal priority
 - Main changes in 0.2.0:
   * Remove the service/client split and access /dev/sg* directly

@@ -1,7 +1,7 @@
 #
 # spec file for package python-term-background
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,17 +20,18 @@
 %define tarname term-background
 %define modname %( echo %{tarname} | tr '-' '_' )
 Name:           python-term-background
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        Determine if shell has a light or dark background
 License:        GPL-2.0-or-later
 URL:            http://github.com/rocky/shell-term-background
-Source0:        https://github.com/rocky/shell-term-background/releases/download/%{version}/%{tarname}-%{version}.tar.gz 
+Source0:        https://github.com/rocky/shell-term-background/releases/download/%{version}/%{tarname}-%{version}.tar.gz
 # Missed in source tarball
 Source1:        https://raw.githubusercontent.com/rocky/shell-term-background/%{version}/__pkginfo__.py
-Source2:        https://raw.githubusercontent.com/rocky/shell-term-background/%{version}/COPYING
-BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION For tests
 BuildRequires:  %{python_module pytest}
 # /SECTION
@@ -43,13 +44,13 @@ A python module to determine if a shell has a light or dark background.
 
 %prep
 %setup -q -n %{tarname}-%{version}
-cp %{SOURCE1} %{SOURCE2} ./
+cp %{SOURCE1} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -57,7 +58,7 @@ cp %{SOURCE1} %{SOURCE2} ./
 
 %files %{python_files}
 %license COPYING
-%{python_sitelib}/%{modname}/
-%{python_sitelib}/%{modname}-%{version}-py%{python_version}.egg-info/
+%{python_sitelib}/%{modname}
+%{python_sitelib}/%{modname}-%{version}.dist-info
 
 %changelog

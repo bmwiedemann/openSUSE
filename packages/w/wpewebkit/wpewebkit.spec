@@ -33,6 +33,8 @@ License:        BSD-3-Clause AND LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 URL:            https://wpewebkit.org/
 Source:         %{url}/releases/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM fix-icu-build.patch -- Support ICU 76.1 build
+Patch:          fix-icu-build.patch
 
 BuildRequires:  bubblewrap
 BuildRequires:  cmake

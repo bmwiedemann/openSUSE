@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-traits
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
 # cycle with pyface
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
@@ -38,10 +36,7 @@ Summary:        Explicitly typed attributes for Python
 License:        BSD-3-Clause AND EPL-1.0 AND LGPL-2.1-only
 URL:            https://github.com/enthought/traits
 Source:         https://github.com/enthought/traits/archive/%{version}.tar.gz#/traits-%{version}.tar.gz
-# Import of pyface.toolkit mysteriously fails. But it is needed by only one test, which needs traitsui,
-# but we cannot have traitsui, because the tests invocation segfaults with traitsui installed (why?!).
-# So the test would be skipped anyway, so let us just skip the import as if pyface was not there.
-Patch0:         fix-test.patch
+Patch1:         https://github.com/enthought/traits/commit/a20f2154b2c79eb8550ea9228d1a4415ff51b72a.patch#/py313-ctraits.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -75,9 +70,8 @@ traits also have several additional characteristics:
 Part of the Enthought Tool Suite (ETS).
 
 %prep
-%setup -q -n traits-%{version}
+%autosetup -p1 -n traits-%{version}
 %fdupes examples/
-# %%patch0 -p1
 
 %build
 %if %{without test}

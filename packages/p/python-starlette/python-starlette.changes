@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Nov 20 17:28:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.41.3:
+  * Exclude the query parameters from the `scope[raw_path]` on
+    the `TestClient` #2716.
+  * Replace `dict` by `Mapping` on `HTTPException.headers` #2749.
+  * Correct middleware argument passing and improve factory
+    pattern #2752.
+- update to 0.41.2:
+  * Revert bump on `python-multipart`
+- update to 0.41.1:
+  * Bump minimum `python-multipart` version to 0.0.13
+
+-------------------------------------------------------------------
 Thu Nov  7 09:20:47 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
 
 - disable PendingDeprecationWarning

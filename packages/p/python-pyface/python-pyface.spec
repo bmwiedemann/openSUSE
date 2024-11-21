@@ -35,6 +35,7 @@ Patch1:         skip-qt4-tests.patch
 #!BuildIgnore:  python310-Pillow
 #!BuildIgnore:  python311-Pillow
 #!BuildIgnore:  python312-Pillow
+#!BuildIgnore:  python313-Pillow
 BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module importlib-resources >= 1.1.0}

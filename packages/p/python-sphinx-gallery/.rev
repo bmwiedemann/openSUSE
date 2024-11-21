@@ -52,4 +52,17 @@
     <comment></comment>
     <requestid>1203332</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ab04cb3bd0bd6a6a1227d5ba97b6e41d</srcmd5>
+    <version>0.18.0</version>
+    <time>1732198438</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.18.0:
+  * Allow to disable writing computation times #1385
+  * [ENH] Add option to render multiple images from same cell as
+    single-img #1384
+  * Fix indexst variable does not exist when own index gallery is
+    first #1383</comment>
+    <requestid>1225341</requestid>
+  </revision>
 </revisionlist>

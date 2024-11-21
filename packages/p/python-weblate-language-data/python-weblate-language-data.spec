@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %define modname weblate_language_data
 Name:           python-weblate-language-data
-Version:        2024.13
+Version:        2024.14
 Release:        0
 Summary:        Language Data for Weblate
 License:        MIT

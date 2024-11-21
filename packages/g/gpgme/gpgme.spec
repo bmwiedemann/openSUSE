@@ -16,6 +16,7 @@
 #
 
 
+%define psuffix %{nil}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == ""
 %define psuffix %{nil}
@@ -41,7 +42,7 @@
 %endif
 
 Name:           gpgme%{psuffix}
-Version:        1.23.2
+Version:        1.24.0
 Release:        0
 Summary:        Programmatic library interface to GnuPG
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -54,17 +55,15 @@ Source2:        baselibs.conf
 Source3:        https://gnupg.org/signature_key.asc#/gpgme.keyring
 # used to have a fixed timestamp
 Source99:       gpgme.changes
-# PATCH-FIX-UPSTREAM obsolete distutlils  -- https://dev.gnupg.org/D545
-Patch1:         gpgme-D545-obsolete-distutils.patch
 # PATCH-FIX-OPENSUSE gpgme-suse-nobetasuffix.patch code@bnavigator.de -- remove "-unknown" betasuffix boo#1205197
 Patch2:         gpgme-suse-nobetasuffix.patch
 Patch3:         python313.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
-BuildRequires:  gpg2 >= 2.0.10
+BuildRequires:  gpg2 >= 2.4.1
 BuildRequires:  libassuan-devel >= 2.4.2
-BuildRequires:  libgpg-error-devel >= 1.36
+BuildRequires:  libgpg-error-devel >= 1.47
 BuildRequires:  pkgconfig
 BuildRequires:  swig
 %if %{with python3}
@@ -258,7 +257,7 @@ This package contains the bindings to use the library in Qt 6 C++ applications.
 %prep
 %autosetup -N -n gpgme-%{version}
 %if %{with replace_distutils}
-%patch -p1 -P1 -P2 -P3
+%patch -p1 -P2 -P3
 %endif
 %if 0%{suse_version} > 1500
 # Note: rpm in 15.x does not know about the autopatch -m flag.
@@ -313,8 +312,17 @@ rm -r %{buildroot}%{_infodir}/gpgme*
 rm -r %{buildroot}%{_libdir}/cmake/Gpgmepp
 rm -r %{buildroot}%{_libdir}/libgpgme*
 rm -r %{buildroot}%{_libdir}/pkgconfig/gpgme*
+rm -r %{buildroot}%{_mandir}/man1/gpgme-json.*
 %endif
 popd
+
+%if %{with python3}
+# Move the gpg directory out of the newly added egg upstream directory
+%if 0%{?suse_version} > 1500
+%python_expand mv %{buildroot}%{$python_sitearch}/gpg-%{version}*.egg/gpg %{buildroot}%{$python_sitearch}/gpg
+%python_expand rm -rf %{buildroot}%{$python_sitearch}/gpg-%{version}*.egg
+%endif
+%endif
 
 %check
 GPGME_DEBUG=2:mygpgme.log %make_build check skip=%{?qt_skip:%{qt_skip}} || cat $(find -name mygpgme.log -type f)
@@ -341,6 +349,7 @@ GPGME_DEBUG=2:mygpgme.log %make_build check skip=%{?qt_skip:%{qt_skip}} || cat $
 %{_datadir}/common-lisp
 %{_datadir}/common-lisp/source
 %{_infodir}/gpgme*
+%{_mandir}/man1/gpgme-json.*
 
 %files -n libgpgme11
 %license COPYING COPYING.LESSER LICENSES
@@ -366,13 +375,16 @@ GPGME_DEBUG=2:mygpgme.log %make_build check skip=%{?qt_skip:%{qt_skip}} || cat $
 %dir %{_libdir}/cmake
 %dir %{_libdir}/cmake/Gpgmepp
 %{_libdir}/cmake/Gpgmepp/GpgmeppConfig*.cmake
+%{_libdir}/pkgconfig/gpgmepp.pc
 %endif
 
 %if %{with python3}
 %files %{python_files gpg}
 %license COPYING COPYING.LESSER LICENSES
 %{python_sitearch}/gpg
-%{python_sitearch}/gpg-%{version}*-info
+%if 0%{?suse_version} <= 1500
+%{python_sitearch}/gpg-%{version}*.egg-info
+%endif
 %endif
 
 %if %{with qt}
@@ -382,8 +394,7 @@ GPGME_DEBUG=2:mygpgme.log %make_build check skip=%{?qt_skip:%{qt_skip}} || cat $
 
 %files -n libqgpgme-devel
 %license COPYING COPYING.LESSER LICENSES
-%{_includedir}/qgpgme/
-%{_includedir}/QGpgME/
+%{_includedir}/qgpgme-qt5/
 %dir %{_libdir}/cmake
 %dir %{_libdir}/cmake/QGpgme
 %{_libdir}/cmake/QGpgme/*.cmake
@@ -397,8 +408,7 @@ GPGME_DEBUG=2:mygpgme.log %make_build check skip=%{?qt_skip:%{qt_skip}} || cat $
 
 %files -n libqgpgmeqt6-devel
 %license COPYING COPYING.LESSER LICENSES
-%{_includedir}/qgpgme/
-%{_includedir}/QGpgME/
+%{_includedir}/qgpgme-qt6/
 %dir %{_libdir}/cmake
 %dir %{_libdir}/cmake/QGpgmeQt6
 %{_libdir}/cmake/QGpgmeQt6/*.cmake

@@ -84,4 +84,13 @@
     <comment></comment>
     <requestid>1221617</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a2fbaf32d1381887f1543c7b42ea5ebc</srcmd5>
+    <version>2024.14</version>
+    <time>1732198444</time>
+    <user>anag+factory</user>
+    <comment>- update to 2024.14:
+  * Translations update from Hosted Weblate</comment>
+    <requestid>1225345</requestid>
+  </revision>
 </revisionlist>

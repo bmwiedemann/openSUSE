@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Nov 21 07:51:46 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.13.1:
+  * Bump version to 2.13.1 (#20865)
+  * fix: Fix repeated 403 due to app namespace being undefined
+    (#20699) (#20819) (#20860)
+  * feat: option to disable writing k8s events(#18205) (#18441)
+    (#20788)
+  * fix: disable automaxprocs logging (#20069) - cherry-pick 2.13
+    (#20718)
+  * chore: Don't degrade PDB on InsufficientPods (#20171) (#20665)
+    (#20694)
+  * fix(pkce): 20202 Backport PKCE auth flow fix for basehref and
+    reauth (#20675)
+  * fix: check for source position when --show-params is set
+    (#20682) (#20689)
+
+-------------------------------------------------------------------
 Mon Nov 04 20:02:35 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.13.0:

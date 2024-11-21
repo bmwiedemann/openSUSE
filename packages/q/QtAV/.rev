@@ -58,4 +58,12 @@
   * 0001-Fix-build-with-Qt-5.15.patch</comment>
     <requestid>790973</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>ede3fb0f29b216ae37e367f9e980d5b9</srcmd5>
+    <version>1.13.0</version>
+    <time>1732198445</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1225353</requestid>
+  </revision>
 </revisionlist>

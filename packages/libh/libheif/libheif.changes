@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Nov 20 06:01:59 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 1.19.5:
+  * fix heif_image_handle_is_premultiplied_alpha() #1394
+
+- update to 1.19.4:
+  * fix crash when encoding tiled unci images
+  * fix crash in heif_context_encode_grid()
+  * fix querying the preferred colorspace for monochroma AVIF files
+  * error when using a chroma format or bit depth that is not supported
+    by the Kvazaar plugin
+  * output proper error message when memory allocation failed and use
+    adapted security limits
+  * heif-dec: do not show progress with option --quiet it given
+
+-------------------------------------------------------------------
 Fri Nov 15 19:33:39 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - Fix build for Tumbleweed
@@ -18,7 +34,7 @@ Wed Nov 13 14:47:35 UTC 2024 - pgajdos@suse.com
 -------------------------------------------------------------------
 Tue Nov 12 18:42:42 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
-- update to 1.19.2:
+- update to 1.19.3:
   * fixes a race condition that may lead to some image tiles not being
     included in the output image (#1379)
   * fix a potential crash when querying overlay image information

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-whitenoise
-Version:        6.8.1
+Version:        6.8.2
 Release:        0
 Summary:        Static file serving for WSGI applications
 License:        MIT

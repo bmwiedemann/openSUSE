@@ -262,4 +262,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1219952</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>cc5c7b4f3f19294340c47dd13cff0996</srcmd5>
+    <version>2.2.6</version>
+    <time>1732198398</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.2.6:
+  * MariaDB Connector/C 3.4 and MairaDB 11.4 enabled SSL and CA
+    verification by default.</comment>
+    <requestid>1225331</requestid>
+  </revision>
 </revisionlist>

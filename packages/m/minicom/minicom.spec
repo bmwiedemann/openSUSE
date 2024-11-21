@@ -1,7 +1,7 @@
 #
 # spec file for package minicom
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,6 @@ Source0:        https://salsa.debian.org/minicom-team/minicom/-/archive/%{versio
 Patch0:         openSUSE-defaults.patch
 # PATCH-FIX-OPENSUSE openSUSE-no-root-setup.patch
 Patch1:         openSUSE-no-root-setup.patch
-Patch2:         03norzsz.diff
 # PATCH-FIX-UPSTREAM minicom-2.8-replace-sigrelse.patch -- Replace deprecated sigrelse https://salsa.debian.org/minicom-team/minicom/-/commit/c43a18c25b09f6968219f3ecbaec7215e804838d
 Patch3:         minicom-2.8-replace-sigrelse.patch
 # PATCH-FIX-UPSTREAM fix-undefined-reference.patch -- Fix undefined reference to external COLS and LINES

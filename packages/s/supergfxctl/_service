@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="filename">supergfxctl</param>
+    <param name="url">https://gitlab.com/asus-linux/supergfxctl.git</param>
+    <param name="scm">git</param>
+    <param name="version">git-master</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="revision">5.2.4</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <!-- <param name="changesgenerate">enable</param> -->
+    <!-- <param name="changesauthor">R_Nik_C@proton.me</param> -->
+  </service>
+  <service name="set_version" mode="manual"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="compression">gz</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service name="cargo_vendor" mode="manual">
+    <param name="srcdir">supergfxctl</param>
+  </service>
+  <!-- <service name="cargo_audit" mode="manual"> -->
+  <!--   <param name="srcdir">supergfxctl</param> -->
+  <!-- </service> -->
+</services>

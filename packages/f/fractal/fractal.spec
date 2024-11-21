@@ -16,6 +16,8 @@
 #
 
 
+%define _lto_cflags %{nil}
+
 %define         appname org.gnome.Fractal
 %define         glib_version       2.72
 %define         gstreamer_version  1.20
@@ -23,12 +25,12 @@
 %{?is_beta:%bcond_without beta_build}%{!?is_beta:%bcond_with beta_build}
 
 Name:           fractal
-Version:        8
+Version:        9
 Release:        0
 Summary:        Matrix group messaging app
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Instant Messenger
-URL:            https://wiki.gnome.org/Apps/Fractal
+URL:            https://gitlab.gnome.org/World/fractal/-/tags
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 
@@ -39,9 +41,9 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  llvm-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gio-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(glib-2.0) >= %{glib_version}
+#BuildRequires:  pkgconfig(glycin-gtk4-1)
 BuildRequires:  pkgconfig(gstreamer-1.0) >= %{gstreamer_version}
 BuildRequires:  pkgconfig(gstreamer-base-1.0) >= %{gstreamer_version}
 BuildRequires:  pkgconfig(gstreamer-pbutils-1.0) >= %{gstreamer_version}
@@ -51,12 +53,14 @@ BuildRequires:  pkgconfig(gtk4) >= 4.10.0
 BuildRequires:  pkgconfig(gtksourceview-5) >= 5.0.0
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.5.0
 BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.0
+BuildRequires:  pkgconfig(libseccomp)
+BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(openssl) >= 1.0.1
 BuildRequires:  pkgconfig(shumate-1.0) >= 1.0.0
 BuildRequires:  pkgconfig(sqlite3) >= 3.24.0
 BuildRequires:  pkgconfig(xdg-desktop-portal) >= 1.14.1
-# Build only for x86_64 for now, the other targets fails to much.
-ExclusiveArch:  x86_64
+Requires:       glycin-loaders
+ExclusiveArch:  %{rust_tier1_arches}
 
 %description
 Fractal is a Matrix messaging app for GNOME written in Rust. Its
@@ -79,7 +83,6 @@ export RUSTFLAGS="%{build_rustflags}"
 export RUSTFLAGS="%{build_rustflags}"
 %meson_install
 %find_lang %{name} %{?no_lang_C}
-%suse_update_desktop_file %{appname}
 
 %files
 %license LICENSE

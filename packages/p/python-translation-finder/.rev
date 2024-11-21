@@ -144,4 +144,13 @@
     <comment></comment>
     <requestid>1224218</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7f1dd5fd615e202cf0cfb3bc236734fb</srcmd5>
+    <version>2.19</version>
+    <time>1732198468</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.19:
+  * Fixed crasn on corrupt YAML files.</comment>
+    <requestid>1225384</requestid>
+  </revision>
 </revisionlist>

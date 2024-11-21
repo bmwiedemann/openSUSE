@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 20 17:27:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.16.1:
+  * Added AsIs for inserting un-escaped strings as attribute values.
+  * Added format_attr_value() to format attribute values
+  * improving typing annotations
+
+-------------------------------------------------------------------
 Fri Dec 29 09:55:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.15.2:

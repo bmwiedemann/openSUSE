@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 20 14:57:38 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.1:
+  * Update internal tables for Unicode 16.0.
+  * Remove `test_suite` from setup.py file. Contributed by
+    `adrien-n` (PR #38).
+  * Add Python 3.14-dev to CI build environment.
+  * Update copyright year (2024).
+
+-------------------------------------------------------------------
 Fri Apr 19 11:23:20 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Add %{?sle15_python_module_pythons}

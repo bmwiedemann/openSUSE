@@ -186,8 +186,6 @@ rm -rf  %{buildroot}%{_datadir}/doc
 %postun -n  lib%{Qt_name}%{sover} -p /sbin/ldconfig
 %post -n lib%{Qt_name}Widgets%{sover} -p /sbin/ldconfig
 %postun -n lib%{Qt_name}Widgets%{sover} -p /sbin/ldconfig
-%post -n %{Qt_name}-players %desktop_database_post
-%postun -n %{Qt_name}-players %desktop_database_postun
 
 %files
 %license gpl-3.0* lgpl-2.1*

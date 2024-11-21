@@ -34,4 +34,33 @@
     <comment></comment>
     <requestid>1180342</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>959fc38f6825e297d8b93b64261b0449</srcmd5>
+    <version>24.11.1</version>
+    <time>1732198437</time>
+    <user>anag+factory</user>
+    <comment>- update to 24.11.1:
+  * Please note the breaking changes in 24.11.
+- update to 24.11:
+  * With this release we fix an issue with the numbering of the
+    open drain outputs of the USB-SD-Mux FAST (see #83).
+  * With this release the numbering of the open drain output
+    changes.
+  * Testing: Allow running tests locally and make README-test
+    more verbose
+  * README: fixes, tweaks and re-organisation
+  * CI: streamline and add build and codespell targets
+  * QA: Use ruff instead of black + flake8 for formatting and
+    linting
+  * pyproject.toml: switch over from setup.py
+  * CI: add automatic publication to pypi.org and test.pypi.org
+  * usbsdmux: remove the deprecated service/client code paths
+  * usbsdmux: add ruff &quot;UP&quot; rules to config and fix issues
+    automatically
+  * pyproject.toml: fix fallout from the migration
+  * usb-sd-mux/FAST: Fix GPIO number-to-pin definition
+
+  * usb2642i2c: Do not create if device node does not exist</comment>
+    <requestid>1225340</requestid>
+  </revision>
 </revisionlist>

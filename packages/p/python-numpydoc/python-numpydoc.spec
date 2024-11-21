@@ -17,7 +17,7 @@
 
 
 Name:           python-numpydoc
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        Sphinx extension to support docstrings in Numpy format
 License:        BSD-3-Clause
@@ -70,22 +70,22 @@ sed -i "\|https://docs.python.org/3| s|None|'%{SOURCE1}'|" numpydoc/tests/tinybu
 
 %install
 %pyproject_install
-%python_clone -a %{buildroot}%{_bindir}/validate-docstrings
+%python_clone -a %{buildroot}%{_bindir}/numpydoc
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
 %post
-%python_install_alternative validate-docstrings
+%python_install_alternative numpydoc
 
 %postun
-%python_uninstall_alternative validate-docstrings
+%python_uninstall_alternative numpydoc
 
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
-%python_alternative %{_bindir}/validate-docstrings
+%python_alternative %{_bindir}/numpydoc
 %{python_sitelib}/numpydoc/
 %{python_sitelib}/numpydoc-%{version}.dist-info
 

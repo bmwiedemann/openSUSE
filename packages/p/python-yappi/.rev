@@ -163,4 +163,15 @@
 </comment>
     <requestid>1166625</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>82f34b09d104cc81daab5b35f6a0362c</srcmd5>
+    <version>1.6.10</version>
+    <time>1732198432</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.6.10:
+  * Add support for python 3.13
+  * fix: Silently ignore exceptions for `PyObject_GetAttrString`
+    calls</comment>
+    <requestid>1225324</requestid>
+  </revision>
 </revisionlist>

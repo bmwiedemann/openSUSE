@@ -192,4 +192,41 @@ See Request#518161</comment>
     several places. Fixes issue 648. [maurits]</comment>
     <requestid>1199496</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>19ba02ef2d1ea5e85f42a8b0ccf1a1eb</srcmd5>
+    <version>3.3</version>
+    <time>1732198483</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.3:
+  * Allow the -I option in the Python interpreter wrapper
+    installed by buildout when using the zc.recipe.egg recipe's
+    interpreter = directive. This solves the issue when VSCode
+    calls the designated Python interpreter for a workspace with
+    this option to determine the Python version etc. (#627)
+  * Allow the -I option in the Python interpreter wrapper
+    installed by buildout when using the zc.recipe.egg recipe's
+    interpreter = directive. This solves the issue when VSCode
+    calls the designated Python interpreter for a workspace with
+    this option to determine the Python version etc.
+  * Add config option: optional-extends. This is the same as the
+    extends option, but then for optional files. The names must
+    be file paths, not URLs.  If the path does not exist,  it is
+    silently ignored. This is useful for optionally loading a
+    local.cfg or custom.cfg with options specific for the
+    developer or the server. [maurits]
+  * Fix: a variable defined with initial += was undefined and
+    would lead to a corrupted .installed.cfg. Fixes issue 641.
+    [distributist]
+  * Fix: extends with increments could result in missing values.
+    Buildout processes them in the correct order now and combines
+    them correctly. Fixes issue 176 and issue 629. [distributist]
+  * Fix: Multiple += or /-= in one file would lose assignment in
+    a previous file. Fixes issue 656. [distributist]
+
+  * Patch pkg_resources.Distribution to make install of unpinned versions quicker. Most obvious with setuptools.
+- Update to version 2.13.8
+- update to version 2.13.7:
+ - Fix confusion when using multiple Python versions and</comment>
+    <requestid>1225395</requestid>
+  </revision>
 </revisionlist>

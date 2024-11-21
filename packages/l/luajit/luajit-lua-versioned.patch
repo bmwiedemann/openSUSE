@@ -23,7 +23,7 @@
  VERSION= $(MMVERSION).$(RELVER)
  
  ##############################################################################
-@@ -51,7 +52,7 @@ INSTALL_MAN= $(INSTALL_SHARE)/man/man1
+@@ -52,7 +53,7 @@ INSTALL_MAN= $(INSTALL_SHARE)/man/man1
  INSTALL_PKGCONFIG= $(INSTALL_LIB)/pkgconfig
  
  INSTALL_TNAME= luajit-$(VERSION)
@@ -32,7 +32,7 @@
  INSTALL_ANAME= libluajit-$(ABIVER).a
  INSTALL_SOSHORT1= libluajit-$(ABIVER).so
  INSTALL_SOSHORT2= libluajit-$(ABIVER).so.$(MAJVER)
-@@ -89,7 +90,7 @@ ifneq ($(INSTALL_DEFINC),$(INSTALL_INC))
+@@ -90,7 +91,7 @@ ifneq ($(INSTALL_DEFINC),$(INSTALL_INC))
    SED_PC+= -e "s|^includedir=.*|includedir=$(INSTALL_INC)|"
  endif
  
@@ -41,7 +41,7 @@
  FILE_A= libluajit.a
  FILE_SO= libluajit.so
  FILE_MAN= luajit.1
-@@ -137,7 +138,7 @@ install: $(INSTALL_DEP)
+@@ -138,7 +139,7 @@ install: $(INSTALL_DEP)
  	  ( $(LDCONFIG) $(INSTALL_LIB) || : ) && \
  	  $(SYMLINK) $(INSTALL_SONAME) $(INSTALL_SHORT1) && \
  	  $(SYMLINK) $(INSTALL_SONAME) $(INSTALL_SHORT2) || :

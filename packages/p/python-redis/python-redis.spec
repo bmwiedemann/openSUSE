@@ -20,7 +20,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-redis
-Version:        5.1.1
+Version:        5.2.0
 Release:        0
 Summary:        Python client for Redis key-value store
 License:        MIT

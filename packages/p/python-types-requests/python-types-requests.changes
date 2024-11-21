@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 20 17:11:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.32.0.20241016:
+  * remove unneeded Iterable base class from CookieJar
+
+-------------------------------------------------------------------
 Mon Sep 23 08:46:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.32.0.20240914:

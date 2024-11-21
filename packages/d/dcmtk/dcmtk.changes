@@ -1,10 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov 20 16:59:26 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add patches:
+  * 0001-Fixed-link-instructions-for-libtiff.patch
+  * 0001-Fix-find_package-library-variables-for-libtiff.patch
+
+-------------------------------------------------------------------
 Wed Apr 24 07:45:23 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream changes:
   * 0001-Fixed-buffer-overflow-in-decompression-codecs.patch
   * 0001-Fixed-possible-overflows-when-allocating-memory.patch
+    (boo#1227235, CVE-2024-27628)
   * 0001-Fixed-two-segmentation-faults.patch
+    (boo#1223949, CVE-2024-34509, boo#1223925, CVE-2024-34508)
   * 0001-Fixed-unchecked-typecasts-of-DcmItem-search-results.patch
   * 0002-Fixed-unchecked-typecasts-and-fixed-LUT-handling.patch
     (boo#1223324, CVE-2024-28130)

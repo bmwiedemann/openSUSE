@@ -1,0 +1,70 @@
+From a20f2154b2c79eb8550ea9228d1a4415ff51b72a Mon Sep 17 00:00:00 2001
+From: Mark Dickinson <mdickinson@enthought.com>
+Date: Mon, 4 Mar 2024 13:47:57 +0000
+Subject: [PATCH] Fix Traits build error on Python 3.13 (#1767)
+
+This PR updates the core test workflow to run tests on the
+in-development 3.13 version of Python, and fixes use of the now-removed
+`Py_TRASHCAN_SAFE_BEGIN/END` macros.
+
+Fixes #1765.
+---
+ .github/workflows/run-core-traits-tests.yml |  2 +-
+ traits/ctraits.c                            | 16 ++++++++++++++++
+ 2 files changed, 17 insertions(+), 1 deletion(-)
+
+diff --git a/.github/workflows/run-core-traits-tests.yml b/.github/workflows/run-core-traits-tests.yml
+index 5693f85b3..3728d3881 100644
+--- a/.github/workflows/run-core-traits-tests.yml
++++ b/.github/workflows/run-core-traits-tests.yml
+@@ -11,7 +11,7 @@ jobs:
+     strategy:
+       matrix:
+         os: [ubuntu-latest, windows-latest]
+-        python-version: ['3.7', '3.8', '3.9', '3.10', '3.11', '3.12']
++        python-version: ['3.7', '3.8', '3.9', '3.10', '3.11', '3.12', '3.13']
+ 
+     runs-on: ${{ matrix.os }}
+ 
+diff --git a/traits/ctraits.c b/traits/ctraits.c
+index 6fda77071..f4821a282 100644
+--- a/traits/ctraits.c
++++ b/traits/ctraits.c
+@@ -808,10 +808,18 @@ static void
+ has_traits_dealloc(has_traits_object *obj)
+ {
+     PyObject_GC_UnTrack(obj);
++#if PY_VERSION_HEX < 0x03080000
+     Py_TRASHCAN_SAFE_BEGIN(obj);
++#else
++    Py_TRASHCAN_BEGIN(obj, has_traits_dealloc);
++#endif
+     has_traits_clear(obj);
+     Py_TYPE(obj)->tp_free((PyObject *)obj);
++#if PY_VERSION_HEX < 0x03080000
+     Py_TRASHCAN_SAFE_END(obj);
++#else
++    Py_TRASHCAN_END
++#endif
+ }
+ 
+ /*-----------------------------------------------------------------------------
+@@ -3006,10 +3014,18 @@ static void
+ trait_dealloc(trait_object *trait)
+ {
+     PyObject_GC_UnTrack(trait);
++#if PY_VERSION_HEX < 0x03080000
+     Py_TRASHCAN_SAFE_BEGIN(trait);
++#else
++    Py_TRASHCAN_BEGIN(trait, trait_dealloc);
++#endif
+     trait_clear(trait);
+     Py_TYPE(trait)->tp_free((PyObject *)trait);
++#if PY_VERSION_HEX < 0x03080000
+     Py_TRASHCAN_SAFE_END(trait);
++#else
++    Py_TRASHCAN_END
++#endif
+ }
+ 
+ /*-----------------------------------------------------------------------------

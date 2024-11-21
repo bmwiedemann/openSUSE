@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 20 16:42:25 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.8.2:
+  * Fix compression speed gains for the thread pool when running
+    Django’s collectstatic. The thread pool had no effect due to
+    use of a generator for the results, a refactoring introduced
+    when reviewing the initial PR. Thanks to Petr Přikryl for the
+    investigation and fix in PR #616.
+
+-------------------------------------------------------------------
 Wed Oct 30 19:55:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.8.1:

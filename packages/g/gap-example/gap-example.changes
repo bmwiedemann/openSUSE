@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 20 18:30:38 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.4.0
+  * Add `Extensions` field which was introduced in GAP 4.13.
+  * Mark `Status`, `CommunicatedBy`, `AcceptDate` as obsolete
+    starting with GAP 4.13.0.
+  * Mark `AvailabilityTest` as optional since GAP 4.14.
+
+-------------------------------------------------------------------
 Sat Feb 25 18:53:27 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.3.4

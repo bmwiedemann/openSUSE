@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Nov 20 16:23:16 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.0:
+  * 2366_, [Windows]: drastically speedup `process_iter()`_. We
+    now determine process unique identity by using process "fast"
+    create time method. This will considerably speedup those apps
+    which use `process_iter()`_ only once, e.g. to look for a
+    process with a certain name.
+  * 2446_: use pytest instead of unittest.
+  * 2448_: add make install-sysdeps target to install the
+    necessary system dependencies (python-dev, gcc, etc.) on all
+    supported UNIX flavors.
+  * 2449_: add make install-pydeps-test and make install-pydeps-
+    dev targets. They can be used to install dependencies meant
+    for running tests and for local development. They can also be
+    installed via pip install .[test] and pip install .[dev].
+  * 2456_: allow to run tests via python3 -m psutil.tests even if
+    pytest module is not installed. This is useful for production
+    environments that don't have pytest installed, but still want
+    to be able to test psutil installation.
+  * 2427_: psutil (segfault) on import in the free-threaded (no
+    GIL) version of Python 3.13.  (patch by Sam Gross)
+  * 2455_, [Linux]: IndexError may occur when reading
+    /proc/pid/stat and field 40 (blkio_ticks) is missing.
+  * 2457_, [AIX]: significantly improve the speed of
+    `Process.open_files()`_ for some edge cases.
+  * 2460_, [OpenBSD]: `Process.num_fds()`_ and
+    `Process.open_files()`_ may fail with `NoSuchProcess`_ for
+    PID 0. Instead, we now return "null" values (0 and []
+    respectively).
+- drop skip_failing_tests.patch: obsolete
+
+-------------------------------------------------------------------
 Wed Jul 17 12:33:03 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 6.0.0

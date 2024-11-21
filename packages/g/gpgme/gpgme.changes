@@ -1,4 +1,131 @@
 -------------------------------------------------------------------
+Wed Nov 20 12:14:56 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Move the gpg python bindings out of the egg directory.
+
+-------------------------------------------------------------------
+Mon Nov 18 10:17:30 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Fix file list on Leap 15
+
+-------------------------------------------------------------------
+Wed Nov 13 12:05:35 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.24.0:
+  * Extended gpgme_op_decrypt* and gpgme_op_verify* to allow writing the
+    output directly to a file. [T6550]
+  * Extended gpgme_op_encrypt*, gpgme_op_encrypt_sign*, and gpgme_op_sign*
+    to allow reading the input data directly from a file. [T6550]
+  * Add information about designated revocation keys. [T7118]
+  * New context flag "import-options". [T7152]
+  * New context flag "proc-all-sigs". [T7261]
+  * New context flag "known-notations". [T4060]
+  * New info flags "beta_compliance". [rM1a7bc88ee7]
+  * New function gpgme_op_setownertrust to make changing the owner trust
+    easier and to allow enabling/disabling of keys (requires GnuPG 2.4.6). [T7239]
+  * New flag to re-encrypt OpenPGP data (requires GnuPG 2.5.1). [T1825]
+  * cpp: Provide information about designated revocation keys for a Key. [T7118]
+  * cpp: Add safer member function returning text describing an error. [T5960]
+  * cpp: Add support for setting the owner trust of keys and for enabling
+    and disabling keys. [T7239]
+  * qt: Build QGpgME for Qt 5 and Qt 6 simultaneously. [T7205]
+  * qt: Install headers for Qt 5 and Qt 6 in separate folders. [T7161]
+  * qt: Allow reading the data to decrypt/encrypt/sign/verify directly from
+    files. [T6550]
+  * qt: Allow writing the decrypted/encrypted/signed/verified data directly
+    to files. [T6550]
+  * qt: Allow specifying import options when importing keys. [T7152]
+  * qt: Allow appending a detached signature to an existing file. [T6867]
+  * qt: Add support for enabling and disabling keys. [T7239]
+  * qt: Add support for new context flag "proc-all-sigs" to the jobs that
+    verify data signatures.
+  * Interface changes relative to the 1.23.2 release:
+    - GPGME_ENCRYPT_FILE                      NEW.
+    - GPGME_SIG_MODE_FILE                     NEW.
+    - GPGME_ENCRYPT_ADD_RECP                  NEW.
+    - GPGME_ENCRYPT_CHG_RECP                  NEW.
+    - gpgme_key_t                             EXT: New field 'revkeys'.
+    - gpgme_revocation_key_t                  NEW.
+    - gpgme_set_ctx_flag                      EXT: New flag 'import-options'.
+    - gpgme_set_ctx_flag                      EXT: New flag 'proc-all-sigs'.
+    - gpgme_set_ctx_flag                      EXT: New flag 'known-notation'.
+    - gpgme_op_setownertrust_start            NEW.
+    - gpgme_op_setownertrust                  NEW.
+    - gpgme_subkey_t                          EXT: New field 'beta_compliance'.
+    - gpgme_signature_t                       EXT: New field 'beta_compliance'.
+    - gpgme_decrypt_result_t                  EXT: New field 'beta_compliance'.
+    - cpp: Context::EncryptFile               NEW.
+    - cpp: Context::setOwnerTrust             NEW.
+    - cpp: Context::startSetOwnerTrust        NEW.
+    - cpp: Context::setKeyEnabled             NEW.
+    - cpp: Context::startSetKeyEnabled        NEW.
+    - cpp: SignatureMode::SignFile            NEW.
+    - cpp: RevocationKey                      NEW.
+    - cpp: Key::revocationKey                 NEW.
+    - cpp: Key::numRevocationKeys             NEW.
+    - cpp: Key::revocationKeys                NEW.
+    - cpp: Key::isBetaCompliance              NEW.
+    - cpp: Subkey::isBetaCompliance           NEW.
+    - cpp: Error::asStdString                 NEW.
+    - cpp: Error::asString                    DEPRECATED.
+    - cpp: DecryptionResult::isBetaCompliance NEW.
+    - cpp: Signature::isBetaCompliance        NEW.
+    - qt: DecryptVerifyArchiveJob::setProcessAllSignatures NEW.
+    - qt: DecryptVerifyArchiveJob::processAllSignatures    NEW.
+    - qt: DecryptVerifyJob::setInputFile      NEW.
+    - qt: DecryptVerifyJob::inputFile         NEW.
+    - qt: DecryptVerifyJob::setOutputFile     NEW.
+    - qt: DecryptVerifyJob::outputFile        NEW.
+    - qt: DecryptVerifyJob::setProcessAllSignatures NEW.
+    - qt: DecryptVerifyJob::processAllSignatures    NEW.
+    - qt: EncryptJob::setRecipients           NEW.
+    - qt: EncryptJob::recipients              NEW.
+    - qt: EncryptJob::setInputFile            NEW.
+    - qt: EncryptJob::inputFile               NEW.
+    - qt: EncryptJob::setOutputFile           NEW.
+    - qt: EncryptJob::outputFile              NEW.
+    - qt: EncryptJob::setEncryptionFlags      NEW.
+    - qt: EncryptJob::encryptionFlags         NEW.
+    - qt: SignEncryptJob::setSigners          NEW.
+    - qt: SignEncryptJob::signers             NEW.
+    - qt: SignEncryptJob::setRecipients       NEW.
+    - qt: SignEncryptJob::recipients          NEW.
+    - qt: SignEncryptJob::setInputFile        NEW.
+    - qt: SignEncryptJob::inputFile           NEW.
+    - qt: SignEncryptJob::setOutputFile       NEW.
+    - qt: SignEncryptJob::outputFile          NEW.
+    - qt: SignEncryptJob::setEncryptionFlags  NEW.
+    - qt: SignEncryptJob::encryptionFlags     NEW.
+    - qt: SignJob::setSigners                 NEW.
+    - qt: SignJob::signers                    NEW.
+    - qt: SignJob::setInputFile               NEW.
+    - qt: SignJob::inputFile                  NEW.
+    - qt: SignJob::setOutputFile              NEW.
+    - qt: SignJob::outputFile                 NEW.
+    - qt: SignJob::setSigningFlags            NEW.
+    - qt: SignJob::signingFlags               NEW.
+    - qt: SignJob::setAppendSignature         NEW.
+    - qt: SignJob::appendSignatureEnabled     NEW.
+    - qt: VerifyDetachedJob::setSignatureFile NEW.
+    - qt: VerifyDetachedJob::signatureFile    NEW.
+    - qt: VerifyDetachedJob::setSignedFile    NEW.
+    - qt: VerifyDetachedJob::signedFile       NEW.
+    - qt: VerifyDetachedJob::setProcessAllSignatures NEW.
+    - qt: VerifyDetachedJob::processAllSignatures    NEW.
+    - qt: VerifyOpaqueJob::setInputFile       NEW.
+    - qt: VerifyOpaqueJob::inputFile          NEW.
+    - qt: VerifyOpaqueJob::setOutputFile      NEW.
+    - qt: VerifyOpaqueJob::outputFile         NEW.
+    - qt: VerifyOpaqueJob::setProcessAllSignatures NEW.
+    - qt: VerifyOpaqueJob::processAllSignatures    NEW.
+    - qt: ImportJob::setImportOptions         NEW.
+    - qt: ImportJob::importOptions            NEW.
+    - qt: QuickJob::startSetKeyEnabled        NEW.
+  * Release-info: https://dev.gnupg.org/T7376
+  * Rebase gpgme-suse-nobetasuffix.patch python313.patch
+  * Remove patch upstream: gpgme-D545-obsolete-distutils.patch
+
+-------------------------------------------------------------------
 Sun Sep  1 18:26:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add python313.patch to enable python 3.13 building

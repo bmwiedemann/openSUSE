@@ -143,4 +143,16 @@
   * fixed typo thanks to @harmstyler</comment>
     <requestid>1191713</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b0e875b7b4191d831fa7131e9e6c12db</srcmd5>
+    <version>3.0.0</version>
+    <time>1732198430</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.0:
+  * Completely modernized portalocker build system and added
+    fully strict pyright and mypy compliance with ruff formatting
+    and checking. Dropped support for deprecated Python versions,
+    only 3.9 and up are supported now.</comment>
+    <requestid>1225315</requestid>
+  </revision>
 </revisionlist>

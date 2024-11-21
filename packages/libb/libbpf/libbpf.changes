@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed Oct 30 15:59:44 UTC 2024 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- update to 1.5.0:
+  * libbpf can now open (but not load!) BPF objects of non-native endianness,
+    enabling cross-architecture support for BPF skeleton generation and BPF
+    object introspection
+  * BPF skeleton will now auto-attach SEC(".struct_ops") maps as part of
+    <skeleton>__attach() call
+  * BPF kprobe session programs support (SEC("kprobe.session"))
+  * allow specifying kernel module name for fentry/fexit BPF programs
+    (SEC(fentry/module:function)
+  * libbpf recognizes LIBBPF_LOG_LEVEL environment variable, which can be used
+    to set default log verboseness
+  * BPF ringbuf APIs that limit maximum number of consumed records at a time
+    (ring_buffer__consume_n(), ring__consume_n())
+  * distilled BTF support (btf__distill_base(), btf__relocate())
+  * BPF link-based attachment of BPF_PROG_TYPE_SOCKMAP programs
+    (bpf_program__attach_sockmap())
+  * bpf_object__token_fd() API to fetch BPF token FD of a BPF object, if any
+  * fixes for fetching syscall arguments on arm64, s390x, risc-v architectures
+  * better GCC-BPF source code compatibility
+  * __bpf_fastcall support for a few BPF helpers
+  * __uptr annotation definition added to bpf/bpf_helpers.h API header
+  * fixes and improvements around handling missing and nulled out struct_ops
+    programs
+  * fixed mmap()-ing logic for global data, fixing interop between generic
+    bpf_object__open() APIs and BPF subskeletons
+  * BPF skeleton backwards compatibility handling fixes
+  * handle LTO-produced *.llvm.<hash> symbols better
+  * feature detection fixes in the presence of BPF token inside user namespace
+  * older kernels have broken PID filtering logic for multi-uprobes, libbpf now
+    detects this and avoids the use of multi-uprobes for USDTs
+  * fix accidental drop of FD_CLOEXEC flag during BPF map reuse
+  * few BTF dumper formatting fixes
+  * a few more small fixes all around.
+
+-------------------------------------------------------------------
+Wed Oct 30 15:29:42 UTC 2024 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- update to 1.4.7:
+  * fix interop issues between generic bpf_object__open() APIs and BPF
+    subskeleton w.r.t. global data handling
+  * speed up BTF sanity checks by skipping already validated base BTF
+  * fix legacy treatment of non-SEC()-annotated subprogram as entry BPF program
+    in some cases
+
+-------------------------------------------------------------------
 Wed Sep  4 08:44:47 UTC 2024 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
 
 - update to 1.4.6:

@@ -2,6 +2,7 @@
 # spec file for package ppsspp
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +19,10 @@
 
 %define _lto_cflags %{nil}
 Name:           ppsspp
-Version:        1.17.1
+Version:        1.18.1
 Release:        0
 Summary:        PlayStation Portable Emulator
 License:        Apache-2.0 AND BSD-1-Clause AND BSL-1.0 AND GPL-2.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND BSD-2-Clause AND BSD-3-Clause AND (BSD-2-Clause OR GPL-2.0-or-later) AND (BSD-3-Clause OR GPL-2.0-only) AND CC0-1.0 AND GPL-2.0-or-later WITH Autoconf-exception-3.0 AND GPL-3.0-or-later WITH Bison-exception-2.2 AND Libpng AND ISC AND IJG AND Zlib AND MIT AND CC-BY-4.0 AND FTL
-
 Group:          System/Emulators/Other
 URL:            https://www.ppsspp.org
 Source:         https://github.com/hrydgard/ppsspp/releases/download/v%{version}/%{name}-%{version}.tar.xz
@@ -32,20 +32,12 @@ BuildRequires:  cmake >= 3.6
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  glslang-devel
-BuildRequires:  pkgconfig
-BuildRequires:  snappy-devel
-BuildRequires:  unzip
 # Does not build with FFmpeg 5.0 yet
 # https://github.com/hrydgard/ppsspp/issues/15308
 BuildRequires:  libavcodec-devel < 5
-BuildRequires:  pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libavdevice)
-BuildRequires:  pkgconfig(libavfilter)
-BuildRequires:  pkgconfig(libavformat)
-BuildRequires:  pkgconfig(libavutil)
-BuildRequires:  pkgconfig(libpostproc)
-BuildRequires:  pkgconfig(libswresample)
-BuildRequires:  pkgconfig(libswscale)
+BuildRequires:  pkgconfig
+BuildRequires:  snappy-devel
+BuildRequires:  unzip
 #Desktop icon deps
 BuildRequires:  update-desktop-files
 BuildRequires:  wayland-devel
@@ -55,7 +47,15 @@ BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5OpenGL)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glew)
+BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libavdevice)
+BuildRequires:  pkgconfig(libavfilter)
+BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libpostproc)
+BuildRequires:  pkgconfig(libswresample)
+BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libzip)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(sdl2)
@@ -63,7 +63,7 @@ BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(zlib)
 Requires:       %{name}-common
 Requires(post): hicolor-icon-theme
-Requires(postun):hicolor-icon-theme
+Requires(postun): hicolor-icon-theme
 # never built for PowerPC/Arm on 20200721
 ExcludeArch:    aarch64 %{arm} ppc ppc64 ppc64le s390x
 

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov 20 17:15:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.13.3:
+  * Handle matrices of zero columns correctly in the Matrix
+    constructor.
+  * NumPy numbers can be used with clebsch_gordan
+  * An inconsistency in Float/Rational comparisons was fixed.
+  * Fixed a bug that caused LambertW to hang on specific inputs
+  * A regression introduced in SymPy 1.13 in the heurisch
+    integration routine was fixed
+  * see also https://github.com/sympy/sympy/wiki/release-notes-for-1.13.0
+
+-------------------------------------------------------------------
 Sat Jun 29 05:41:22 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.12.1:

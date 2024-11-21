@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-types-requests
-Version:        2.32.0.20240914
+Version:        2.32.0.20241016
 Release:        0
 Summary:        Typing stubs for requests
 License:        Apache-2.0

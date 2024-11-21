@@ -33,4 +33,16 @@
   * Update typing_extensions imports in third-party stubs</comment>
     <requestid>1158506</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bc40148c0a9d457b9eae0b810d86b6b0</srcmd5>
+    <version>2.9.0.20241003</version>
+    <time>1732198457</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.9.0.20241003:
+  * dateutil: Enable failing test
+  * [python-dateutil] Add
+    `dateutil.parser.UnknownTimezoneWarning`.
+  * Fix types for python-dateutil's relativedelta</comment>
+    <requestid>1225359</requestid>
+  </revision>
 </revisionlist>

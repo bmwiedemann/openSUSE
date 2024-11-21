@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 20 14:59:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.0:
+  * Fix incorrect validation for scripts with callable
+
+-------------------------------------------------------------------
 Sun Jun 30 19:45:26 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.2:

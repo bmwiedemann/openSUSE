@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 20 16:47:26 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Fix build against icu 76.1: link the correct libraries (icu-uc
+  instead of icu-i18n).
+
+-------------------------------------------------------------------
 Mon Oct 21 05:40:36 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 115.15.0:

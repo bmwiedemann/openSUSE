@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-swapper
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        The unofficial Django swappable models API
 License:        MIT

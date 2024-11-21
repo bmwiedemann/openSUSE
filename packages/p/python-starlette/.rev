@@ -378,4 +378,21 @@ https://build.opensuse.org/request/show/1126958
 </comment>
     <requestid>1222062</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>8f0f920cdbdda0690fcf5968e3f3fe23</srcmd5>
+    <version>0.41.3</version>
+    <time>1732198406</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.41.3:
+  * Exclude the query parameters from the `scope[raw_path]` on
+    the `TestClient` #2716.
+  * Replace `dict` by `Mapping` on `HTTPException.headers` #2749.
+  * Correct middleware argument passing and improve factory
+    pattern #2752.
+- update to 0.41.2:
+  * Revert bump on `python-multipart`
+- update to 0.41.1:
+  * Bump minimum `python-multipart` version to 0.0.13</comment>
+    <requestid>1225373</requestid>
+  </revision>
 </revisionlist>

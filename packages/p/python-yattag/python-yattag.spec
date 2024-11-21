@@ -1,7 +1,7 @@
 #
 # spec file for package python-yattag
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-yattag
-Version:        1.15.2
+Version:        1.16.1
 Release:        0
 Summary:        Generate HTML or XML in a pythonic way
 License:        LGPL-2.1-only

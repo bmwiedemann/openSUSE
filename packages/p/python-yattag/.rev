@@ -16,4 +16,15 @@
   * Add exports to _all__</comment>
     <requestid>1135622</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>55190348e06b344e6941d5376194d0af</srcmd5>
+    <version>1.16.1</version>
+    <time>1732198464</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.16.1:
+  * Added AsIs for inserting un-escaped strings as attribute values.
+  * Added format_attr_value() to format attribute values
+  * improving typing annotations</comment>
+    <requestid>1225372</requestid>
+  </revision>
 </revisionlist>

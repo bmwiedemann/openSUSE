@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Nov 16 09:57:55 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 7.20
+  - Add support for Loongson LA64 arch
+  - Add support for latest Intel CPUs (ARL/MTL)
+  - Add support for latest AMD CPUs (Zen5)
+  - Preliminary support for NUMA
+  - Bug fixes & optimizations
+
+-------------------------------------------------------------------
 Mon Mar  4 14:56:40 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - add source 20_memtest86

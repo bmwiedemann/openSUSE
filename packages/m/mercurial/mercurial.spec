@@ -19,16 +19,19 @@
 %if 0%{?suse_version} > 1600
 # Tumbleweed
 %define pythons python3
+%global pprefix python3
 %else
 %if 0%{?sle_version} >= 150600
 %{?sle15_python_module_pythons}
+%global pprefix python311
 %else
 %define pythons python3
+%global pprefix python3
 %endif
 %endif
 
 Name:           mercurial
-Version:        6.8.2
+Version:        6.9
 Release:        0
 Summary:        Scalable Distributed SCM
 License:        GPL-2.0-or-later
@@ -44,8 +47,8 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module xml}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
-Requires:       %{python_module curses}
-Requires:       %{python_module xml}
+Requires:       %{pprefix}-curses
+Requires:       %{pprefix}-xml
 Provides:       hg = %{version}
 %if 0%{?suse_version} < 1210
 BuildRequires:  docutils
@@ -145,6 +148,7 @@ cp -a tests/. %{buildroot}%{_datadir}/mercurial/tests
 %{_datadir}/emacs
 %{_datadir}/xemacs
 %{_mandir}/man1/hg.1%{?ext_man}
+%{_mandir}/man1/hg-*.1%{?ext_man}
 %{_mandir}/man1/chg.1%{?ext_man}
 %{_mandir}/man5/hgignore.5%{?ext_man}
 %{_mandir}/man5/hgrc.5%{?ext_man}

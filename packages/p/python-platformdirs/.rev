@@ -161,4 +161,30 @@
   * Fix android detection when python4android is present</comment>
     <requestid>1178614</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5dd05d8b15aaad065ca04e4b90cf1dd7</srcmd5>
+    <version>4.3.6</version>
+    <time>1732198399</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.3.6:
+  * Fix readme download target
+- update to 4.3.5:
+  * Split build and publish for release
+- update to 4.3.4:
+  * Use upstream setup-uv with uv python
+- update to 4.3.3:
+  * Update check.yml
+  * don't include outdated changelog in docs
+- update to 4.3.2:
+  * Use uv as installer
+  * Fix multi-path returned from `_path` methods on MacOS
+- update to 4.3.0:
+  * Speed up Hatch installation
+  * Test with Python 3.13
+  * Test with latest PyPy
+  * Use `include-hidden-files: true` to upload coverage artifacts
+  * Ensure PlatformDirs is valid superclass type for mypy AND not
+    an abstract class for other checkers</comment>
+    <requestid>1225334</requestid>
+  </revision>
 </revisionlist>

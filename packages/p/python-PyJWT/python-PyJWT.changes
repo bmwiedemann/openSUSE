@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Nov 20 07:59:12 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- Update to version 2.10.0
+  * chore: use sequence for typing rather than list
+  * Add support for Python 3.13
+  * [pre-commit.ci] pre-commit autoupdate
+  * Add an RTD config file to resolve RTD build failures
+  * docs: Update iat exception docs
+  * Remove algorithm requirement for JWT API
+  * [pre-commit.ci] pre-commit autoupdate
+  * Create SECURITY.md
+  * docs fix: decode_complete scope and algorithms
+  * fix doctest for docs/usage.rst
+  * fix test_utils.py not to xfail
+  * Correct jwt.decode audience param doc expression
+  * Add PS256 encoding and decoding usage
+  * Add API docs for PyJWK
+  * Refactor project configuration files from setup.cfg to pyproject.toml PEP-518
+  * Add JWK support to JWT encode
+  * Update pre-commit hooks to lint pyproject.toml
+  * Add EdDSA algorithm encoding/decoding usage
+  * Ruff linter and formatter changes
+  * Validate sub and jti claims for the token
+  * Add ES256 usage
+  * Encode EC keys with a fixed bit length
+  * [pre-commit.ci] pre-commit autoupdate
+  * Drop support for Python 3.8
+  * Prepare 2.10.0 release
+  * Bump codecov/codecov-action from 4 to 5
+  * [pre-commit.ci] pre-commit autoupdate
+
+-------------------------------------------------------------------
 Mon Oct  7 13:53:47 UTC 2024 - Benjamin Greiner <code@bnavigator.de>
 
 - Fix requirements

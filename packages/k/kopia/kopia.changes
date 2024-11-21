@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Nov 21 07:54:44 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.18.2:
+  * feat(general): JSON marshaler helper for `time.Duration`
+    (#4194)
+  * feat(ui): upgraded htmlui to the latest version (#4268)
+  * feat(snapshots): Fix for #2037 Add symlink support for
+    .kopiaignore (#4190)
+  * build(deps): bump github.com/hanwen/go-fuse/v2 from 2.6.3 to
+    2.6.4 (#4265)
+  * build(deps): bump github.com/mocktools/go-smtp-mock/v2 (#4264)
+  * build(deps): bump the common-golang-dependencies group with 4
+    updates (#4263)
+  * fix(server): handle unset password hash version in user profile
+    (#4259)
+  * fix(notifications): fixed headers for email notifications
+    (#4258)
+
+-------------------------------------------------------------------
 Tue Nov 19 08:28:57 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.18.1:

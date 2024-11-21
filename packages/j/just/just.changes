@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Nov 20 22:16:34 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.37.0:
+  * Add style() function
+  * Terminal escape sequence constants
+  * Add && and || operators
+  * Make recipe doc attribute override comment
+  * Don't export constants
+  * Allow duplicate imports
+  * Publish single SHA256SUM file with releases
+  * Mark recipes with private attribute as private in JSON dump
+  * Forbid invalid attributes on assignments
+  * Add -g to rust-just install instructions
+  * Change doc backtick color to cyan
+  * Note that set shell is not used for [script] recipes
+  * Replace derivative with derive-where
+  * Highlight backticks in docs when listing recipes
+  * Update setup-just version in README
+  * Fix shell function example in readme
+  * Update softprops/action-gh-release
+  * Use justfile instead of mf on invalid examples in readme
+  * Add advice on printing complex strings
+  * Document using functions in variable assignments
+  * Use prettier string comparison in tests
+  * Note shell(…) as an alternative to backticks
+  * Add Recipe::subsequents
+  * Add subsequents to grammar
+  * Document checking releases hashes
+  * Show how to access positional arguments with powershell
+  * Use -CommandWithArgs instead of -cwa
+  * Document -cwa flag for PowerShell positional arguments
+  * Use unwrap_or when creating relative path in loader
+
+-------------------------------------------------------------------
 Tue Oct  1 06:39:57 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.36.0:

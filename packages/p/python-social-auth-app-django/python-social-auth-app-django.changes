@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 20 17:20:39 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.4.2:
+  * Fixed `UserSocialAuth` creation by allowing `JSONField` to be
+    blank
+  * Fixed the assumption that UID can only be an integer
+
+-------------------------------------------------------------------
 Mon Jun 10 09:09:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.4.1 (bsc#1223373, CVE-2024-32879):

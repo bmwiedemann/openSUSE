@@ -1,10 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 20 17:49:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.2:
+  * Fix conversion of floats
+
+-------------------------------------------------------------------
 Mon Mar  7 10:41:03 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.6.1
   * Fixes the deletion of images by the normalizer (#88)
   * Does not write empty keys (#89) in layerinfo.plist (or an empty
-    layerinfo.plist) 
+    layerinfo.plist)
 
 -------------------------------------------------------------------
 Thu Aug 26 09:50:54 UTC 2021 - pgajdos@suse.com
@@ -23,7 +29,7 @@ Sun Apr 25 20:06:03 UTC 2021 - Ben Greiner <code@bnavigator.de>
   * Cleans up extra, un-need artifacts.
   * Converted ufoNormalizer to package instead of a module
   * Drops Python 2.x and 3.5.
-  * Fixes plistlib issues with Python 3.9  
+  * Fixes plistlib issues with Python 3.9
   *  Fix whitespace handling in glyph notes (#71), thanks
      @colinmford!
 

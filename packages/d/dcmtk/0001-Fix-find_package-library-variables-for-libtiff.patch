@@ -1,0 +1,37 @@
+From a92b79c7134eca0588d84817a6a1670e46016f4d Mon Sep 17 00:00:00 2001
+From: Michael Onken <onken@open-connections.de>
+Date: Tue, 13 Feb 2024 16:48:05 +0100
+Subject: [PATCH] Fix find_package() library variables for libtiff.
+
+The detection of libtiff and its related JPEG support now uses the
+correct CMake variables set by the corresponding find_package() scripts.
+
+Old and obsolete values were: TIFF_LIBRARY and JPEG_LIBRARY.
+New values are: TIFF_LIBRARIES and JPEG_LIBRARIES.
+
+Thanks to "sameeul" (Sameeul Bashir Samee) for the report and patch.
+---
+ CMake/3rdparty.cmake | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMake/3rdparty.cmake b/CMake/3rdparty.cmake
+index 5f8f07e5f..fbd804a93 100644
+--- a/CMake/3rdparty.cmake
++++ b/CMake/3rdparty.cmake
+@@ -38,11 +38,11 @@ if(DCMTK_USE_FIND_PACKAGE)
+       if(NOT JPEG_FOUND)
+         message(STATUS "Info: DCMTK TIFF support will be enabled (but without JPEG)")
+         include_directories(${TIFF_INCLUDE_DIR})
+-        set(LIBTIFF_LIBS ${TIFF_LIBRARY} ${TIFF_EXTRA_LIBS_STATIC})
++        set(LIBTIFF_LIBS ${TIFF_LIBRARIES} ${TIFF_EXTRA_LIBS_STATIC})
+       else()
+         message(STATUS "Info: DCMTK TIFF support will be enabled")
+         include_directories(${TIFF_INCLUDE_DIR} ${JPEG_INCLUDE_DIR})
+-        set(LIBTIFF_LIBS ${TIFF_LIBRARY} ${TIFF_EXTRA_LIBS_STATIC} ${JPEG_LIBRARY})
++        set(LIBTIFF_LIBS ${TIFF_LIBRARIES} ${TIFF_EXTRA_LIBS_STATIC} ${JPEG_LIBRARIES})
+       endif()
+     endif()
+   endif()
+-- 
+2.47.0
+

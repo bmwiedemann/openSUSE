@@ -9,4 +9,16 @@ A python module to determine if a shell has a light or dark background.
 </comment>
     <requestid>952768</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>89befdaee8b713e5bcead6a45fc992c5</srcmd5>
+    <version>1.0.2</version>
+    <time>1732198456</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.2:
+  * Split out Python code into git branches to support older
+    Python.
+  * Master now can use newer Python idioms like f-strings, and
+    newer packaging uses `pyproject.toml`.</comment>
+    <requestid>1225357</requestid>
+  </revision>
 </revisionlist>

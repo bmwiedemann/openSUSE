@@ -30,4 +30,13 @@
 - Initial package</comment>
     <requestid>1202563</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8df9a2247daf03cc4207b99945aec036</srcmd5>
+    <version>2.32.0.20241016</version>
+    <time>1732198461</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.32.0.20241016:
+  * remove unneeded Iterable base class from CookieJar</comment>
+    <requestid>1225360</requestid>
+  </revision>
 </revisionlist>

@@ -21,7 +21,7 @@
 %define so_version 2
 %define upname LuaJIT
 Name:           luajit
-Version:        5.1.2.1.0+git.1727870382.97813fb
+Version:        5.1.2.1.0+git.1731601260.fe71d0f
 Release:        0
 Summary:        JIT compiler for Lua language
 License:        MIT

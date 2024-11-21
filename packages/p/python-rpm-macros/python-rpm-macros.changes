@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Nov 20 12:20:26 UTC 2024 - mcepl@cepl.eu
+
+- Update to version 20241120.6ae645f:
+  * Do sed in place
+
+-------------------------------------------------------------------
+Tue Nov 19 11:10:01 UTC 2024 - mcepl@cepl.eu
+
+- Update to version 20241119.7609911:
+  * Do not fix shebang on links to non-writeable files
+
+-------------------------------------------------------------------
+Tue Nov 12 06:16:35 UTC 2024 - mcepl@cepl.eu
+
+- Update to version 20241111.a34b5d8:
+  * Follow symlinks when replacing shebang with sed
+  * Only sed the shebang in executable files
+
+-------------------------------------------------------------------
 Fri Jun 28 08:16:12 UTC 2024 - mcepl@cepl.eu
 
 - Update to version 20240618.c146b29:

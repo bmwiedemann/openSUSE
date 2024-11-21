@@ -55,4 +55,16 @@
     <comment></comment>
     <requestid>1207162</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>26e1c378c9d4fe332ce3cf4f1066f89f</srcmd5>
+    <version>2.1.0</version>
+    <time>1732198403</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.1.0:
+  * Instantiating `TOMLDecodeError` with free-form arguments.
+  * `msg`, `doc` and `pos` arguments should be given.
+  * Added `msg`, `doc`, `pos`, `lineno` and `colno` attributes to
+    `TOMLDecodeError`</comment>
+    <requestid>1225346</requestid>
+  </revision>
 </revisionlist>

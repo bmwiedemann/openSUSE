@@ -17,7 +17,7 @@
 
 
 Name:           python-stevedore
-Version:        5.3.0
+Version:        5.4.0
 Release:        0
 Summary:        Manage dynamic plugins for Python applications
 License:        Apache-2.0

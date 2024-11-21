@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Nov 15 20:19:42 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- ppsspp 1.18.1:
+  * IR Interpreter: work on correctness and optimizations
+  * Interpreted Vertex Decoder optimizations
+  * SDL fixes
+  * Improve performance of CHD loading
+  * Many crash, hang and performance fixes around the UI
+    New post proc filter "Sharp bilinear"
+  * 3 new themes
+  * Install save games from ZIP file
+  * More input-mappable actions like Reset, allow mapping Alt key
+  * Fix regression of the AxisSwap feature
+  * Many emulation fixes
+  * Multiple rendering fixes
+  * VR: New immersive mode
+
+-------------------------------------------------------------------
 Mon Feb  5 05:24:19 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - ppsspp 1.17.1:

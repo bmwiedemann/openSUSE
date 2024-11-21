@@ -118,4 +118,15 @@
     MySQL/MariaDB (CVE-2024-32879)</comment>
     <requestid>1179662</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c260ad0c7a5cedc42674bad6d082ad45</srcmd5>
+    <version>5.4.2</version>
+    <time>1732198472</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.4.2:
+  * Fixed `UserSocialAuth` creation by allowing `JSONField` to be
+    blank
+  * Fixed the assumption that UID can only be an integer</comment>
+    <requestid>1225367</requestid>
+  </revision>
 </revisionlist>

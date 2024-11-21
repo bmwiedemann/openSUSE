@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 20 15:25:28 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add missing requires on dateutil
+
+-------------------------------------------------------------------
+Thu Nov 14 12:05:48 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 5.7.0
+  * Add a tzinfos mapping and parse method for
+    easy datetime parsing with timezone support.
+
+-------------------------------------------------------------------
 Tue Jul  2 15:18:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.6.0:
@@ -69,7 +81,7 @@ Wed Jan  4 18:47:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Mon Dec  5 13:41:37 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 5.1.0 
+- Update to version 5.1.0
   * Introduced infer_datetime and added some type hints.
 
 -------------------------------------------------------------------

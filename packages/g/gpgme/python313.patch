@@ -1,20 +1,20 @@
-Index: gpgme-1.23.2/configure.ac
+Index: gpgme-1.24.0/configure.ac
 ===================================================================
---- gpgme-1.23.2.orig/configure.ac
-+++ gpgme-1.23.2/configure.ac
-@@ -591,7 +591,7 @@ if test "$found_py" = "1"; then
+--- gpgme-1.24.0.orig/configure.ac
++++ gpgme-1.24.0/configure.ac
+@@ -614,7 +614,7 @@ if test "$found_py" = "1"; then
+ 	if test "$found_py" = "1" -o "$found_py3" = "1"; then
  	  # Reset everything, so that we can look for another Python.
            m4_foreach([mym4pythonver],
-                      [[2.7],[3.4],[3.5],[3.6],[3.7],[3.8],[3.9],[3.10],
--                      [3.11],[3.12],[all]],
-+                      [3.11],[3.12],[3.13],[all]],
+-                     [[2.7],[3.6],[3.8],[3.9],[3.10],[3.11],[3.12],[all]],
++                     [[2.7],[3.6],[3.8],[3.9],[3.10],[3.11],[3.12],[3.13],[all]],
             [unset PYTHON
  	    unset PYTHON_VERSION
  	    unset PYTHON_CPPFLAGS
-Index: gpgme-1.23.2/lang/python/setup.py.in
+Index: gpgme-1.24.0/lang/python/setup.py.in
 ===================================================================
---- gpgme-1.23.2.orig/lang/python/setup.py.in
-+++ gpgme-1.23.2/lang/python/setup.py.in
+--- gpgme-1.24.0.orig/lang/python/setup.py.in
++++ gpgme-1.24.0/lang/python/setup.py.in
 @@ -291,6 +291,7 @@ GPGME and these bindings is available he
          'Programming Language :: Python :: 3.10',
          'Programming Language :: Python :: 3.11',
@@ -23,10 +23,10 @@ Index: gpgme-1.23.2/lang/python/setup.py.in
          'Operating System :: POSIX',
          'Operating System :: Microsoft :: Windows',
          'Topic :: Communications :: Email',
-Index: gpgme-1.23.2/m4/python.m4
+Index: gpgme-1.24.0/m4/python.m4
 ===================================================================
---- gpgme-1.23.2.orig/m4/python.m4
-+++ gpgme-1.23.2/m4/python.m4
+--- gpgme-1.24.0.orig/m4/python.m4
++++ gpgme-1.24.0/m4/python.m4
 @@ -41,7 +41,7 @@ AC_DEFUN([AM_PATH_PYTHON],
    m4_define_default([_AM_PYTHON_INTERPRETER_LIST],
  [python2 python2.7 dnl

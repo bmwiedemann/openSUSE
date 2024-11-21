@@ -1,4 +1,124 @@
 -------------------------------------------------------------------
+Wed Nov 20 15:03:51 UTC 2024 - Andrei Dziahel <develop7@develop7.info>
+
+- Mercurial 6.9
+  + Backwards Compatibility Changes
+    * This release drops support for Python 3.6 and 3.7.
+    * Starting with this release and hopefully for the forseeable future, 
+      we are now building wheels for most architectures.
+      /!\ Note that for Rust users installing via `pip` or `pipx`, you will 
+      need to specify `--no-binary` to continue using Rust since we do not yet 
+      package the Rust compilation in our wheels. We plan on fixing 
+      this for 7.0.
+    * Python 3.13 changed how it handles docstrings (namely removing uniform 
+      leading whitespace for every line), which forced us to align the 
+      representation of our help text with this new behavior across 
+      all versions. Due to this and a lack of time and expertise from 
+      contributors, a lot of existing translations could be missing. The 
+      effort of i18n in general has died down many years ago, but if this 
+      matters to you, feel free to send your contributions.
+
+
+  + New Features
+    * exchange: improve computation of relevant markers for large repos
+    * Add a Rust fast-path to speed up update (also for `clone`) from null 
+      (up to 4x faster)
+    * Introduced a new rev-branch-cache version (v2) that is mmap-resistant
+    * The branchmap's performance was improved
+    * Improved the performance of the fix for issue6528
+    * clonebundles: allow manifest to specify sha256 digest of bundles
+    * merge: improve working-copy mtime race handling
+    * profiling: add a py-spy profiling backend
+    * revlog: use an explicit config option to enable mmap usage for index
+    * revlog: use mmap by default is pre-population is available
+    * mmap: populate the mapping by default
+    * mmap: populate mapping in a background thread
+  + Experimental features 
+    * merge: add a config to allow conflict-free merge of changes 
+      on adjacent lines
+  + Bug Fixes 
+    * `config.server.validate` now also works on narrowed repositories
+    * convert: fix various leaked file descriptors
+    * stream: prefer keeping an open file handle to volatile file 
+      instead of copy
+    * dummysmtpd: fix EOF handling on newer versions of OpenSSL
+    * cext: correct the argument handling of `b85encode()`
+    * branchmap-v3: make sure we write the cache after detecting pure-topo mode
+    * rust: apply clippy lints
+    * copies: make sure deleted copy info do not overwriting unrelated ones
+    * rebase: don't call rewriteutil.precheck() with to-be-skipped commits
+    * phabricator: correct the default value of `phabhunk.corpus`
+    * linelog: correct the default value of `annotateresult.lines`
+    * largefiles: avoid a potentially undefined variable in exception case
+    * httppeer: move a variable to avoid a bad reference before 
+      assignment warning
+    * httppeer: avoid another bad reference before assignment warning
+    * tests: use packaging from setuptools instead of deprecated distutils
+    * manifest: type and fix unhexlify
+    * manifest: align some vfs option access on the fact we might 
+      not have options
+    * scmutils: read the requires file before writing to avoid 
+      unnecessary rewrite
+    * debugsparse: stop taking the store lock
+    * sparse: reliably avoid writing to store without a lock
+    * largefiles: sync up `largefilesdirstate` methods with `dirstate` 
+      base class
+    * shelve: raise an error when loading a corrupt state file in 
+      an impossible case
+    * monotone: replace %s interpolation with appropriate numeric specifiers
+    * shelve: consistently convert exception to bytes 
+      via `stringutil.forcebytestr`
+    * remotefilelog: honor the `--format` arg of the `debugindex` command
+    * remotefilelog: adapt the `debugindex` command to past API changes
+    * run-tests: add color to the progress output
+    * archive: defer opening the output until a file is matched
+    * help: add :config-doc:`section.key` shorthand to insert documentation
+    * censor: document the censor.policy option (issue6909)
+    * rust-revlog: don't try to open the data file if the index is empty
+    * bundlerepo: fix mismatches with repository and revlog classes
+    * revlog: make `clearcaches()` signature consistent with ManifestRevlog
+    * unionrepo: fix mismatches with revlog classes
+    * keepalive: fix a signature mismatch for 
+      a http.client.HTTPResponse subclass
+    * lfs: fix various signature mismatches for vfs subclasses
+    * store: fix a signature mismatch for a vfs subclass
+    * util: avoid a leaked file descriptor in `util.makelock()` 
+      exceptional case
+    * statichttprepo: fix `httprangereader.read()` for py3
+    * util: make `mmapread()` work on Windows again
+    * mdiff: tweak calls into `bdiff.fixws` to match its type hints
+    * base85: avoid a spurious use-before-initialized warning in `pure` module
+    * install: static data moved from setup.py to pyproject.toml
+    * upgrade: disable using the parallel workers optimization on macOS
+    * doc: generate separate commands/topics/extension pages
+    * extdiff: don't run gui programs when in a cli-only environment
+    * clonebundles: stop shell quoting `HGCB_BUNDLE_BASENAME` 
+      environment variable
+    * streamclone: disable the volatile file open handle optimization 
+      on Windows
+    * pytype: add relative timestamp to the output if `ts` is available
+    * hgweb: skip logging ConnectionAbortedError
+  + Internal API Changes
+    * manifest: deprecated readdelta and readfast
+  + Miscellaneous
+    * http: reuse Python's implementation of read/readline/readinto
+    * http: use urllib's cookie handler
+    * rev-branch-cache: schedule a write of the "v2" format if we 
+      read from "v1"
+    * rev-branch-cache: have debugupdatecache warm rbc too
+    * rev-branch-cache: reenable memory mapping of the revision data
+    * debugwireproto: redo logging to also work for https
+    * rust: use `.cargo/config.toml` instead of `.cargo/config`
+    * A whole bunch of typing improvements, which in turn found many bugs
+    * Test suite improvements
+    * Various packaging improvements
+
+-------------------------------------------------------------------
+Tue Nov 19 15:19:32 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- fix runtime requires
+
+-------------------------------------------------------------------
 Tue Oct 29 11:19:25 UTC 2024 - Andrei Dziahel <develop7@develop7.info>
 
 - Mercurial 6.8.2
@@ -8,14 +128,14 @@ Tue Oct 29 11:19:25 UTC 2024 - Andrei Dziahel <develop7@develop7.info>
   * Compatibility for Python 3.12 and 3.13
   * evolution: stop wrongly flagging unrelated part of a split as divergent
   * histedit: create state and acquire locks earlier
-  * copytracing: fix a bug in an edge 
+  * copytracing: fix a bug in an edge
     case in metadata.compute_all_files_changes
   * rhg: ignore readonly FS error when saving dirstate
   * merge: sort filemap only if requested by the caller
   * windows: implement `util.cachestat` to fix numerous dirstate problems
   * subrepo: propagate non-default path on outgoing
   * import: fix erroneous comparison of str with bytes
-  * largefiles: fix check that ensures that --all-largefiles is only 
+  * largefiles: fix check that ensures that --all-largefiles is only
     used locally
   * profiling: improve 3.12 error message for calling lsprof twice
   * profiling: use "stat" profiler to profile individual request
@@ -37,7 +157,7 @@ Tue Aug  6 12:47:13 UTC 2024 - Andrei Dziahel <develop7@develop7.info>
 - Mercurial 6.8.1
 
   * Python 3.12: fix an issue between `threading` and `demandimport`
-  * rhg: expand user and environment variable in paths to ignore in config 
+  * rhg: expand user and environment variable in paths to ignore in config
     and includes
   * `win32mbcs` extension: fix an encoding issue
 
@@ -56,7 +176,7 @@ Tue Jul  9 07:54:07 UTC 2024 - Andrei Dziahel <develop7@develop7.info>
       * phases: stop using `repo.set` in `remotephasessummary`
       * phases: move RemotePhasesSummary to revision number
       * phases: use revision number in `_pushdiscoveryphase`
-      * phases: introduce a performant efficient way to access 
+      * phases: introduce a performant efficient way to access
         revision in a set
       * phases: rework the logic of _pushdiscoveryphase to bound complexity
     * The Rust working copy code is being used by more places now:
@@ -78,9 +198,9 @@ Tue Jul  9 07:54:07 UTC 2024 - Andrei Dziahel <develop7@develop7.info>
 
   + New Experimental Features
     * Introduce a new experimental branch cache "v3":
-      * branchcache: add more test for the logic around 
+      * branchcache: add more test for the logic around
         obsolescence and branch heads
-      * branchcache: skip entries that are topological 
+      * branchcache: skip entries that are topological
         heads in the on disk file
       * branchcache: add a "pure topological head" fast path
       * branchcache: allow to detect "pure topological case" for branchmap
@@ -90,7 +210,7 @@ Tue Jul  9 07:54:07 UTC 2024 - Andrei Dziahel <develop7@develop7.info>
     * perf-stream-locked-section: actually use v1 generation when requested
     * perf-stream-locked-section: fix the call to the v3 generator
     * perf-stream-locked-section: advertise the right version key in the help
-    * stream: in v3, skip the "size" fast path if the entries have some 
+    * stream: in v3, skip the "size" fast path if the entries have some
       unknown size
     * stream-clone: stop getting the file size of all file in v3
     * streamclone: stop listing files for entries that have no volatile files
@@ -122,9 +242,9 @@ Wed Jun 12 13:44:52 UTC 2024 - Andrei Dziahel <develop7@develop7.info>
   Exceptional release following a critical regression causing possible data loss
   in certain conditions:
 
-    * inline-changelog: fix a critical bug in write_pending that delete data 
+    * inline-changelog: fix a critical bug in write_pending that delete data
       (3cf9e52f5e27)
-    * inline-changelog: fix pending transaction visibility when splitting 
+    * inline-changelog: fix pending transaction visibility when splitting
       (1721d983dd6d)
 
   Other changes in this release:
@@ -165,14 +285,14 @@ Thu Apr  4 12:12:21 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
   * phases: avoid a potentially costly dictionary interation in some case
   * phases: update the phase set as we go during retract boundary
-  * bundle2: make the "hgtagsfnodes" part advisory 
+  * bundle2: make the "hgtagsfnodes" part advisory
 
 -------------------------------------------------------------------
 Thu Mar 21 11:29:37 UTC 2024 - Andrei Dziahel <develop7@develop7.info>
 
 - Mercurial 6.7.1
 
-  Exceptional release following a crash found in delta code that 
+  Exceptional release following a crash found in delta code that
   can be triggered with complex repository shapes.
 
   * delta-search: fix crash caused by unbound variable
@@ -207,11 +327,11 @@ Fri Mar 15 14:29:16 UTC 2024 - Andrei Dziahel <develop7@develop7.info>
     * Large improvements of some of the phases code (23950e39281f)
     * rust-filepatterns: export glob_to_re function
 
-  + New Experimental Features 
+  + New Experimental Features
 
     * Introduce `hg admin::chainsaw-update` for automation and *advanced* users
 
-  + Bug Fixes 
+  + Bug Fixes
 
     * templatekw: fix inconsistency of diffstat with diff.merge
     * The endless stream of Python 3 cleanups continues
@@ -220,12 +340,12 @@ Fri Mar 15 14:29:16 UTC 2024 - Andrei Dziahel <develop7@develop7.info>
     * add: don't attempt to add back removed files unless explicitly listed
     * statprof: handle `lineno == None` in more cases
     * rust: fix cargo doc for hg-cpython
-    * rust-python-index: don't panic on a corrupted index when calling 
+    * rust-python-index: don't panic on a corrupted index when calling
       from Python
     * debugindexstats: handle the lack of Rust support better
     * matchers: use correct method for finding index in vector
     * narrow: strip trailing `/` from manifest dir before matching it
-    * cext: fix potential memory leaks of list items appended 
+    * cext: fix potential memory leaks of list items appended
       with `PyList_Append`
     * doc: document that labels must have a dot in them to have an effect
     * debugformat: fix formatting for compression level
@@ -238,44 +358,44 @@ Fri Mar 15 14:29:16 UTC 2024 - Andrei Dziahel <develop7@develop7.info>
 
     Users of the Rust extensions and/or `rhg` should be aware that the new Rust
     index can result in a performance degradation for push/pull on repositories
-    *not* using `persistent-nodemap` 
+    *not* using `persistent-nodemap`
     (see `hg help config.format.use-persistent-nodemap`).
 
-    If this is something that matters to you, please reach out to us as this 
-    is not an insurmountable obstacle. This is a choice base on the assumption 
-    that there are few people in this situation and our time should be spent 
+    If this is something that matters to you, please reach out to us as this
+    is not an insurmountable obstacle. This is a choice base on the assumption
+    that there are few people in this situation and our time should be spent
     on more pressing matters.
 
   + Internal API Changes
 
-    * 62913:498017baa34b "cleanup: remove some code scheduled to be removed 
+    * 62913:498017baa34b "cleanup: remove some code scheduled to be removed
       after 5.9"
-    * 62914:88ef80210d67 "cleanup: drop `dirstate.is_changing_parent` 
+    * 62914:88ef80210d67 "cleanup: drop `dirstate.is_changing_parent`
       deprecated since 6.5"
     * 62915:591845f89ada "cleanup: drop `path.pushloc` deprecated since 6.5"
-    * 62916:d8f65fc72e7b "cleanup: drop deprecated config attribute 
+    * 62916:d8f65fc72e7b "cleanup: drop deprecated config attribute
       on the revlog class"
-    * 62917:5c9c41273367 "cleanup: turn `pathsuboption` deprecation warning 
+    * 62917:5c9c41273367 "cleanup: turn `pathsuboption` deprecation warning
       into an error"
-    * 62918:7b837fabc990 "cleanup: turn `wrappedfunction` deprecation warning 
+    * 62918:7b837fabc990 "cleanup: turn `wrappedfunction` deprecation warning
       into an error"
-    * 62919:eda075d7b2ac "cleanup: turn `wrapfunction` deprecation warning 
+    * 62919:eda075d7b2ac "cleanup: turn `wrapfunction` deprecation warning
       into an error"
-    * 62920:c845479fc64d "cleanup: drop the `bytes` compatibility 
+    * 62920:c845479fc64d "cleanup: drop the `bytes` compatibility
       for attribute related function"
     * 63464:dcaa2df1f688 "changelog: never inline changelog"
-    * 63465:a93e52f0b6ff "changelog: disallow delayed write on inline 
+    * 63465:a93e52f0b6ff "changelog: disallow delayed write on inline
       changesets"
-    * 63825:79cd29d598af "dirstate: make the `transaction` argument 
+    * 63825:79cd29d598af "dirstate: make the `transaction` argument
       of `setbranch` mandatory"
 
-  + Miscellaneous 
+  + Miscellaneous
 
     * perf: support --template on perf::phases
     * perf: add a --as-push option to perf::unbundle
-    * debug: add a debug::unbundle command that simulate the unbundle 
+    * debug: add a debug::unbundle command that simulate the unbundle
       from a push
-    * Lots of refactorings to prepare for performance improvements and remove 
+    * Lots of refactorings to prepare for performance improvements and remove
       tech debt
 
 -------------------------------------------------------------------
@@ -350,7 +470,7 @@ Tue Nov 21 18:02:41 UTC 2023 - Andrei Dziahel <develop7@develop7.info>
   Regularly scheduled major release
   As usual, a *lot* of patches don't make it to this list.
 
-  + New Features 
+  + New Features
     * rust-config: add support for default config items
     * rhg: add config defaults to configitems.toml
     * rhg: support "status FILE"
@@ -358,18 +478,18 @@ Tue Nov 21 18:02:41 UTC 2023 - Andrei Dziahel <develop7@develop7.info>
     * commands: add admin namespace
     * admin-command: add verify command
     * debug-delta-chain: add options to control what we compute
-    * Added some caching for uncompressed revlog chunks that speed up 
+    * Added some caching for uncompressed revlog chunks that speed up
       some operations
 
-  + Bug Fixes 
+  + Bug Fixes
     * Improve OpenVMS support
     * byteify-strings: passe sysstr to attr function and wrapper
     * journal: track bookmark deletion
-    * transaction: actually delete file created during the transaction 
+    * transaction: actually delete file created during the transaction
       on rollback
     * pull: avoid referencing a variable before it is initialized
     * rust-filepatterns: also normalize RelPath
-    * narrow: hoist a variable to a higher level to avoid use-before-init 
+    * narrow: hoist a variable to a higher level to avoid use-before-init
       warning
     * convert: stabilize subversion date sorter
     * run-tests: detect HGWITHRUSTEXT value
@@ -378,12 +498,12 @@ Tue Nov 21 18:02:41 UTC 2023 - Andrei Dziahel <develop7@develop7.info>
     * unstable: do not consider internal phases when computing unstable
     * Still a whole bunch of Python 2 -> 3 migration leftovers
 
-  + Backwards Compatibility Changes 
+  + Backwards Compatibility Changes
     * perf: display all timing by default
     * infinitepush: drop the extension
     * debug-delta-chain: print less data by default
 
-  + Internal API Changes 
+  + Internal API Changes
     * The revlog interface has been significantly cleaned up.
     * configitems: add `documentation` field
     * configitems: declare items in a TOML file
@@ -402,8 +522,8 @@ Tue Nov 21 18:02:41 UTC 2023 - Andrei Dziahel <develop7@develop7.info>
 -------------------------------------------------------------------
 Tue Nov  7 10:33:30 UTC 2023 - Andrei Dziahel <develop7@develop7.info>
 
-- Mercurial 6.5.3 
-  
+- Mercurial 6.5.3
+
   * hgweb: pass strings in WSGI environment correctly from wsgicgi
   * perf: introduce more cache invalidation option in perf::tags
   * perf: add a `--clear-fnode-cache-rev` argument to perf::tags
@@ -429,7 +549,7 @@ Wed Sep  6 17:00:37 UTC 2023 - Andrei Dziahel <develop7@develop7.info>
   * setup: make the error "Unable to find a working hg binary" more informative
   * tests: avoid test environment affecting setup.py
   * run-tests: detect HGWITHRUSTEXT value
- 
+
 -------------------------------------------------------------------
 Thu Aug 10 11:09:11 UTC 2023 - Andrei Dziahel <develop7@develop7.info>
 
@@ -445,7 +565,7 @@ Thu Aug 10 11:09:11 UTC 2023 - Andrei Dziahel <develop7@develop7.info>
 -------------------------------------------------------------------
 Fri Jul 28 12:20:30 UTC 2023 - Andrei Dziahel <develop7@develop7.info>
 
-- Mercurial 6.5 
+- Mercurial 6.5
 
 Regularly scheduled major release
 
@@ -461,7 +581,7 @@ As usual, a lot of patches don't make it to this list since they're more interna
     * clone-bundles: add a basic first version of automatic bundle generation
     * clone-bundles: garbage collect older bundle when generating new ones
     * clone-bundles: only regenerate the clone bundle when cached ration is low
-    * clone-bundles: also control automation based on absolute number 
+    * clone-bundles: also control automation based on absolute number
       of revisions
     * clone-bundles: add a configuration to control auto-generation on changes
     * clone-bundles: introduce a command to refresh bundle
@@ -469,14 +589,14 @@ As usual, a lot of patches don't make it to this list since they're more interna
     * clone-bundles: add an option to generate bundles in the background
     * clonebundles: add support for inline (streaming) clonebundles
     * clonebundles: adds a auto-generate.serve-inline option
-    * match: add `filepath:` pattern to match an exact filepath relative to 
+    * match: add `filepath:` pattern to match an exact filepath relative to
       the root
     * hgweb: add "children" into the JSON template for a changeset
     * hgweb: add support to explicitly access hidden changesets
     * pull: add --remote-hidden option and pass it through peer creation
     * hidden: add support for --remote-hidden to HTTP peer
     * hidden: support passing --hidden with `serve --stdio`
-    * hidden: add support to explicitly access hidden changesets with 
+    * hidden: add support to explicitly access hidden changesets with
       SSH peers
     * perf: introduce a `perf::stream-locked-section` command
     * perf: add a function to find a stream version generator
@@ -505,7 +625,7 @@ As usual, a lot of patches don't make it to this list since they're more interna
     * strip: do not include internal changeset in the strip backup
     * bundle: abort if the user request bundling of internal changesets
     * bundle: prevent implicit bundling of internal changeset
-    * encoding: avoid quadratic time complexity when json-encoding 
+    * encoding: avoid quadratic time complexity when json-encoding
       non-UTF8 strings
     * sha1dc: Make sure SHA1DC_BIGENDIAN is set on Darwin/PowerPC
     * zstd: hack include order to ensure that our zstd.h is found
@@ -523,18 +643,18 @@ As usual, a lot of patches don't make it to this list since they're more interna
 
   - Backwards Compatibility Changes
     * infinitepush: aggressively deprecated infinite push
-    * narrow: indicated the default of 'Yes' when confirming 
+    * narrow: indicated the default of 'Yes' when confirming
       auto-remove-includes
 
-  - Internal API Changes 
+  - Internal API Changes
     * Store walk was reworked to fix small race conditions in stream-clone and
       greatly improve its API robustness and flexibility.
 
-  - Miscellaneous 
+  - Miscellaneous
     * Typechecking support was improved in a lot of places
     * Removed more useless compat code for now unsupported Python versions
     * Sped up zstd usage in Rust contexts
-    * revlog: add an exception hint when processing LFS flags without 
+    * revlog: add an exception hint when processing LFS flags without
       the extension
     * ui: keep the progress bar around when writing if stdout is not a tty
     * transaction: use a ".bck" extension for all backup file
@@ -552,7 +672,7 @@ Thu Jun  8 22:16:56 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
   * delta-find: fix pulled-delta-reuse-policy=forced behavior
   * dirstate: fall back to v1 if reading v2 failed
   * revlog: avoid possible collision between directory and
-    temporary index 
+    temporary index
 
 -------------------------------------------------------------------
 Mon May  8 13:08:42 UTC 2023 - Andrei Dziahel <develop7@develop7.info>
@@ -582,14 +702,14 @@ Fri Apr 21 08:42:28 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
 Fri Mar 24 09:27:12 UTC 2023 - Andrei Dziahel <develop7@develop7.info>
 
 - Mercurial 6.4
-  
+
   Regularly scheduled (very late, though) major release
 
   + New features
-    * There is a new internal merge tool called `internal:union-other-first`. 
+    * There is a new internal merge tool called `internal:union-other-first`.
       It works like `internal:union` but add other side on top of local.
     * Pullbundles are enabled by default
-    * delta-find: add a way to control the number of bases tested 
+    * delta-find: add a way to control the number of bases tested
       at the same time
     * changelog-v2: add a configuration to disable rank computation
     * debug: add an option to display statistic about a bundling operation
@@ -607,9 +727,9 @@ Fri Mar 24 09:27:12 UTC 2023 - Andrei Dziahel <develop7@develop7.info>
     * rust-narrow: enable narrow support for plain `rhg files`
 
   + Bug fixes
-    
-    Aside from the following (unordered) commits which made it through a manual 
-    filter, there are a bunch of typing improvements and fixes, removal 
+
+    Aside from the following (unordered) commits which made it through a manual
+    filter, there are a bunch of typing improvements and fixes, removal
     of deprecated code and general code cleanup.
 
     * lfs: improve an exception message for blob corruption detected on transfer
@@ -715,16 +835,16 @@ Fri Mar 24 09:27:12 UTC 2023 - Andrei Dziahel <develop7@develop7.info>
 
   + Internal API Changes
 
-    * Many APIs around the dirstate have been made much stricter with regards 
+    * Many APIs around the dirstate have been made much stricter with regards
       to locking and transaction handling
     * Some dirstate APIs have been renamed/removed
-    * In both cases, you should get loud complaints in your tests if you do 
+    * In both cases, you should get loud complaints in your tests if you do
       something wrong.
 
   + Miscellaneous
 
-    * pullbundle support no longer requires setting a server-side option, 
-      providing a `.hg/pullbundles.manifest` according to the syntax specified 
+    * pullbundle support no longer requires setting a server-side option,
+      providing a `.hg/pullbundles.manifest` according to the syntax specified
       in `hg help -e clonebundles` is enough.
     * debug-delta-find: add a --source option
     * delta-find: add debug information about reuse of cached data
@@ -732,14 +852,14 @@ Fri Mar 24 09:27:12 UTC 2023 - Andrei Dziahel <develop7@develop7.info>
     * attr: vendor 22.1.0
     * configitems: add a default value for "merge-tools.xxx.regappend"
     * debugrevlog: display total stored information
-    * emitrevision: if we need to compute a delta on the fly, 
+    * emitrevision: if we need to compute a delta on the fly,
       try p1 or p2 first
     * emitrevision: consider ancestors revision to emit as available base
     * find-delta: pass the cache-delta usage policy alongside the cache-delta
     * delta-find: use a smarter object for snapshot caching
     * delta-find: use sets instead of list in the snapshot cache
     * delta-find: make sure we only use newer full snapshot as candidate
-    * delta-find: use a single snapshot cache when applying 
+    * delta-find: use a single snapshot cache when applying
       a group to an object
     * bundleoperation: optionnaly record the `remote` that produced the bundle
     * bundle: when forcing acceptance of incoming delta also accept snapshot
@@ -763,7 +883,7 @@ Thu Mar  2 15:08:20 UTC 2023 - Andrei Dziahel <develop7@develop7.info>
 - Update to Mercurial 6.3.3
   * tests: filter out PEP 657 error locations in tracebacks (issue6780)
   * tests: optional PEP 657 error location in test-extension.t (issue6781)
-  * tests: optional PEP 657 error location 
+  * tests: optional PEP 657 error location
     in test-lfs-serve-access.t (issue6782)
   * histedit: byteify the help for the multifold action
   * sparse: fix a py2 based usage of `map()`
@@ -781,7 +901,7 @@ Thu Mar  2 15:08:20 UTC 2023 - Andrei Dziahel <develop7@develop7.info>
   * hghave: make different has_pyoxidizer functions have different names
   * hghave: refactor checks for pygments versions using checkvers()
   * rust-narrow: fix loop that never loops
-  * scmutil: make checknewlabel() allow "_" in otherwise 
+  * scmutil: make checknewlabel() allow "_" in otherwise
     numeric names (issue6737)
   * bundlerepo: enforce the requirements declared by the underlying repository
   * setup: make the version computation process more resistant
@@ -796,7 +916,7 @@ Thu Mar  2 15:08:20 UTC 2023 - Andrei Dziahel <develop7@develop7.info>
   * dirstate-v2: don't mmap the data file when on NFS
   * run-tests: make it possible to nest conditionals
   * dirstate: add some debug output when writing the dirstate
-  * testing: introduce util function to synchronize concurrent 
+  * testing: introduce util function to synchronize concurrent
     commands on files
   * dirstate: add a way to test races happening during status
   * dirstate: use more than a bool to control append behavior
@@ -814,23 +934,23 @@ Thu Mar  2 15:08:20 UTC 2023 - Andrei Dziahel <develop7@develop7.info>
 Wed Jan  4 16:21:20 UTC 2023 - Andrei Dziahel <develop7@develop7.info>
 
 - Update to Mercurial 6.3.2
-  * [ecfc84b956a8] tests: expect the message from 1baf0fffd82f 
+  * [ecfc84b956a8] tests: expect the message from 1baf0fffd82f
     in test-hghave.t (issue6762)
   * [5c095119bff4] tests: add the missing space to test-hghave.t (issue6762)
-  * [2c346c1c75ec] tests: use an all too familiar executable 
+  * [2c346c1c75ec] tests: use an all too familiar executable
     in test-run-tests.t (issue6661)
-  * [13c0e3b4fd35] tests: use `test -f` instead of `ls` to see if a file 
+  * [13c0e3b4fd35] tests: use `test -f` instead of `ls` to see if a file
     is present (issue6662)
-  * [8ced4ca30ea1] bisect: correct message about aborting an in-progress 
+  * [8ced4ca30ea1] bisect: correct message about aborting an in-progress
     bisect (issue6527)
   * filemerge: fix crash when using filesets in [partial-merge-tools]
   * help: fix a py3 error interpolating Set into b'%s'
   * match: make the FLAG_RE pattern a raw string
   * python-compat: adapt to Python 3.11 BC breakage with `random.sample`
   * rust-status: fix thread count ceiling
-  * hg: show the correct message when cloning an LFS repo 
+  * hg: show the correct message when cloning an LFS repo
     with extension disabled
-  * extensions: process disabled external paths when `hgext` package 
+  * extensions: process disabled external paths when `hgext` package
     is in-memory
   * emitrevision: consider ancestors revision to emit as available base
   * make: add a target for building pyoxidizer tests on macOS
@@ -876,7 +996,7 @@ Mon Nov 14 16:06:44 UTC 2022 - Andrei Dziahel <develop7@develop7.info>
     * revset: handle wdir() in `sort(..., -topo)`
     * rhg: support tweakdefaults
     * rhg: parallellize computation of [unsure_is_modified]
-  
+
   + Bug Fixes
     * shelve: demonstrate that the state is different across platforms (issue6735)
     * shelve: in test for trailing whitespace, strip commit (issue6735)
@@ -900,14 +1020,14 @@ Mon Nov 14 16:06:44 UTC 2022 - Andrei Dziahel <develop7@develop7.info>
     * tags-fnode-cache: do not repeatedly open the filelog in a loop
     * tags-fnode-cache: skip building a changectx in getfnode
     * rust: create wrapper struct to reduce `regex` contention issues
-  
-  + Backwards Compatibility Changes 
+
+  + Backwards Compatibility Changes
     * chg worker processes will now correctly load per-repository configuration
      when given a both a relative `--repository` path and an alternate working
      directory via `--cwd`. A side-effect of this change is that these workers
      will now return an error if hg cannot find the current working directory,
      even when a different directory is specified via `--cwd`.
-    * phase: rename the requirement for internal-phase from `internal-phase` 
+    * phase: rename the requirement for internal-phase from `internal-phase`
       to `use-internal-phase` (see 74fb1842f8b962cf03d7cd5b841dbcf2ae065587)
 
   + Miscellaneous
@@ -938,7 +1058,7 @@ Mon Oct 10 07:59:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.2.3:
   * mergetools: don't let meld open all changed files on startup
-  * heptapod-ci: use shell script in pytype step 
+  * heptapod-ci: use shell script in pytype step
   * rhg: fix bugs around [use-dirstate-tracked-hint] and repo auto-upgrade
   * status: let `--no-copies` override `ui.statuscopies`
 
@@ -954,7 +1074,7 @@ Mon Sep 12 13:13:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * automation: improve Windows packaging tooling
   * contrib: update Mercurial install in bootstrap environment
   * Remove flakiness in some tests
-  * Improve portability of certain tar uses in tests 
+  * Improve portability of certain tar uses in tests
 
 -------------------------------------------------------------------
 Fri Jul 29 13:36:34 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
@@ -981,20 +1101,20 @@ Fri Jul 29 13:36:34 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
 Tue Jul 19 10:12:34 UTC 2022 - Andrei Dziahel <develop7@develop7.info>
 
 - Mercurial 6.2
-  Regularly scheduled major release. This is the first Python 3 only version. 
+  Regularly scheduled major release. This is the first Python 3 only version.
   + New Features
-    * Introduce a way to auto-upgrade a repo for certain requirements 
+    * Introduce a way to auto-upgrade a repo for certain requirements
       (see `hg help config.format`)
     * filemerge: add support for partial conflict resolution by external tool
-    * contrib: add a partial-merge tool for sorted lists 
+    * contrib: add a partial-merge tool for sorted lists
       (such as Python imports)
-    * revlog: reorder p1 and p2 when p1 is null and p2 is not while 
+    * revlog: reorder p1 and p2 when p1 is null and p2 is not while
       respecting issue6528
     * rhg: add support for ignoring all extensions
     * completion: install completers to conventional locations
     * revert: ask user to confirm before tracking new file when interactive
     * Rust implementation now uses the new dirstate API
-    * sslutil: be less strict about which ciphers are allowed 
+    * sslutil: be less strict about which ciphers are allowed
       when using --insecure
     * sslutil: support TLSV1_ALERT_PROTOCOL_VERSION reason code
     * absorb: make `--edit-lines` imply `--apply-changes`
@@ -1012,7 +1132,7 @@ Tue Jul 19 10:12:34 UTC 2022 - Andrei Dziahel <develop7@develop7.info>
     * Windows bugfixes
     * templates: make `firstline` filter not keep '\v', '\f' and similar
     * rhg: sort unsupported extensions in error message
-    * Improve performance of all functions that extract the first 
+    * Improve performance of all functions that extract the first
       line of a text
     * crecord: avoid duplicating lines when reverting noeol->eol change
     * Some config.path options are now discoverable via config
@@ -1021,7 +1141,7 @@ Tue Jul 19 10:12:34 UTC 2022 - Andrei Dziahel <develop7@develop7.info>
     * bundlespec: do not check for `-` in the params portion of the bundlespec
     * bundlespec: handle the presence of obsmarker part
     * sparse: start moving away from the global variable for detection of usage
-    * rust-changelog: don't skip empty lines when iterating 
+    * rust-changelog: don't skip empty lines when iterating
       over changeset lines
     * narrow: support debugupgraderepo
     * bundle: quick fix to ludicrous performance penalty
@@ -1034,7 +1154,7 @@ Tue Jul 19 10:12:34 UTC 2022 - Andrei Dziahel <develop7@develop7.info>
     * worker: avoid potential partial write of pickled data
 
   + Backwards Compatibility Changes
-    * Removed Python 2 support: this includes a lot of cleanup in our codebase, 
+    * Removed Python 2 support: this includes a lot of cleanup in our codebase,
       automation, testing, etc.
     * debugindex: rename to debugindex debug-revlog-index
 
@@ -1047,7 +1167,7 @@ Tue Jul 19 10:12:34 UTC 2022 - Andrei Dziahel <develop7@develop7.info>
     * Audit the number of queries done in discovery
     * Improved .hgignore of the mercurial-devel repository itself
     * Improve test coverage of dirstate-v2
-    * rust-requirements: allow loading repos with `bookmarksinstore` 
+    * rust-requirements: allow loading repos with `bookmarksinstore`
       requirement
     * Various Rust refactorings to help with revlog management
     * Improve debugability of Rust structs
@@ -1070,23 +1190,23 @@ Fri Jun 17 10:39:16 UTC 2022 - Andrei Dziahel <develop7@develop7.info>
   * rust: relax im-rc dependency to allow minor updates
   * Improve PyPy support
   * Improve py3 error handling
-  * Documentation fixes 
+  * Documentation fixes
 
 - Mercurial 6.1.3:
 
   * security:
-    + narrow_widen_acl: enforce narrowacl in narrow_widen (SEC) 6b10151b9621 
+    + narrow_widen_acl: enforce narrowacl in narrow_widen (SEC) 6b10151b9621
   * other:
     + censor: fix [hg update] away from a revision with censored files
     + amend: stop losing copies when amending
     + rhg: strengthen dirstate v2 writing in broken filesystems
     + work around some broken DLL imports in Windows
-    + worker: adapt _blockingreader to work around a python3.8.[0-1] 
+    + worker: adapt _blockingreader to work around a python3.8.[0-1]
       bug (issue6444)
-    + rhg: correctly handle the case where diffs are encoded relative 
+    + rhg: correctly handle the case where diffs are encoded relative
       to nullrev
     + fix bugs and race-conditions in the Mercurial test runner
-    + chg: ignore already closed fds when cleaning up 
+    + chg: ignore already closed fds when cleaning up
 
 -------------------------------------------------------------------
 Sat May  7 14:50:39 UTC 2022 - Andrei Dziahel <develop7@develop7.info>
@@ -1138,8 +1258,8 @@ Wed Mar  2 16:19:25 UTC 2022 - Andrei Dziahel <develop7@develop7.info>
 - Mercurial 6.1
   Regularly scheduled feature release.
 
-  This is the last release to support Python 2. Mercurial is Python 3 only 
-  starting with 6.2 
+  This is the last release to support Python 2. Mercurial is Python 3 only
+  starting with 6.2
 
   + New Features
     * Added a way of specifying required extensions that prevent Mercurial from starting if they are not found. See `hg help config.extensions`.
@@ -1147,93 +1267,93 @@ Wed Mar  2 16:19:25 UTC 2022 - Andrei Dziahel <develop7@develop7.info>
     * Improve detailed error codes
     * Added a hint about mangled whitespace on bad patch
     * Explain which order the commits are presented in `chistedit`
-    * Introduce a `dirstate-tracked-hint` feature to help automation keep 
-      track of changes to tracked files. See 
+    * Introduce a `dirstate-tracked-hint` feature to help automation keep
+      track of changes to tracked files. See
       `hg help config.use-dirstate-tracked-hint`.
-    * Shared repositories can be upgraded if the upgrade is specific to 
-      the share. For now, this only applies to `dirstate-v2` and 
+    * Shared repositories can be upgraded if the upgrade is specific to
+      the share. For now, this only applies to `dirstate-v2` and
       `dirstate-tracked-hint`.
-    * When using the `narrow` extension, non-conflicting changes to files 
+    * When using the `narrow` extension, non-conflicting changes to files
       outside of the narrow specification can now be merged.
-    * When cloning a repository using stream-clone, the client can now control 
-      the repository format variants to use as long as the stream content does 
+    * When cloning a repository using stream-clone, the client can now control
+      the repository format variants to use as long as the stream content does
       not restrict that variant.
   + Default Format Change
-    These changes affect newly created repositories (or new clones) done with 
+    These changes affect newly created repositories (or new clones) done with
     Mercurial 6.1.
-      * The share-safe format variant is now enabled by default. It makes 
-        configuration and requirements more consistent across repository 
-        and their shares. This introduces a behavior change as shares from 
-        a repository using the new format will also use their main 
-        repository's configuration. See `hg help config.format.use-share-safe` 
-        for details about the feature and the available options for 
-        auto-upgrading existing shares. 
+      * The share-safe format variant is now enabled by default. It makes
+        configuration and requirements more consistent across repository
+        and their shares. This introduces a behavior change as shares from
+        a repository using the new format will also use their main
+        repository's configuration. See `hg help config.format.use-share-safe`
+        for details about the feature and the available options for
+        auto-upgrading existing shares.
   + New Experimental Features
-    * The pure Rust version of Mercurial called `rhg` added support for most 
-      common invocations of `hg status`. See `hg help rust.rhg` for details on 
+    * The pure Rust version of Mercurial called `rhg` added support for most
+      common invocations of `hg status`. See `hg help rust.rhg` for details on
       how to try it out.
-    * `rhg` supports narrow clones and sparse checkouts. 
+    * `rhg` supports narrow clones and sparse checkouts.
 
   + Bug Fixes
-    * **Obsolete revisions are skipped while computing heads. In conjunction 
-      with the evolve extension >= 10.5.0, this leads to massive exchange 
-      (push/pull) speedups in repositories with a lot of heads 
+    * **Obsolete revisions are skipped while computing heads. In conjunction
+      with the evolve extension >= 10.5.0, this leads to massive exchange
+      (push/pull) speedups in repositories with a lot of heads
       and/or obsolete revisions.**
-    * Stream-clones now properly advertise all requirements needed. This can 
-      result in the stream-clone feature being disabled for some clients 
-      using < 6.0.2. A small bugfix patch for these older client is available 
+    * Stream-clones now properly advertise all requirements needed. This can
+      result in the stream-clone feature being disabled for some clients
+      using < 6.0.2. A small bugfix patch for these older client is available
       if necessary.
-    * The `--no-check` and `--no-merge` flags now properly overwrite the 
+    * The `--no-check` and `--no-merge` flags now properly overwrite the
       behavior from `commands.update.check`
-    * `rhg`'s fallback detection is more robust in general in the presence 
+    * `rhg`'s fallback detection is more robust in general in the presence
       of more advanced configs
-    * `rhg`'s `blackbox` now supports milliseconds by default and uses 
+    * `rhg`'s `blackbox` now supports milliseconds by default and uses
       the same ISO 8601 format as the Python implementation
     * Fix rhg crash on non-generaldelta revlogs
-    * The `lfs`, `largefiles` and `sparse` extensions now correctly take 
+    * The `lfs`, `largefiles` and `sparse` extensions now correctly take
       the appropriate lock before writing requirements
-    * The notify extension does not produce errors anymore if a revision 
+    * The notify extension does not produce errors anymore if a revision
       is not found
     * Remove unnecessary and overly strict check for divergence in `hg fix`
     * Windows compatibility improvements
     * Miscellaneous Python 3 and typing improvements
-    * Many other small or internal fixes 
+    * Many other small or internal fixes
 
   + Backwards Compatibility Changes
-    * The use of `share-safe`, means shares (of new repositories) will also 
-      use their main repository's configuration see the `Default Format Change` 
+    * The use of `share-safe`, means shares (of new repositories) will also
+      use their main repository's configuration see the `Default Format Change`
       section for details.
-    * The fix to stream-clone requirements advertising means some requirements 
-      previously (wronly) omitted are now sent. This can confuse client using 
-      a Mercurial version < 6.0.2. The client would consider these 
-      requirements unsupported even if it actually know them. If you encounter 
+    * The fix to stream-clone requirements advertising means some requirements
+      previously (wronly) omitted are now sent. This can confuse client using
+      a Mercurial version < 6.0.2. The client would consider these
+      requirements unsupported even if it actually know them. If you encounter
       this, either upgrade your client or apply the necessary patch.
-    * The labels passed to merge tools have changed slightly. Merge tools can 
-      get labels passed to them if you include `$labellocal`, `$labelbase`, 
-      and/or `$labelother` in the `merge-tool.<tool name>.args` configuration. 
-      These labels used to have some space-padding, and truncation to fit 
+    * The labels passed to merge tools have changed slightly. Merge tools can
+      get labels passed to them if you include `$labellocal`, `$labelbase`,
+      and/or `$labelother` in the `merge-tool.<tool name>.args` configuration.
+      These labels used to have some space-padding, and truncation to fit
       within 72 columns. Both the padding and the truncation has been removed.
-    * Some of the text in labels passed to merge tools has changed. For 
-      example, in conflicts while running `hg histedit`, the labels used to be 
-      "local", "base", and "histedit". They are now "already edited", "parent 
+    * Some of the text in labels passed to merge tools has changed. For
+      example, in conflicts while running `hg histedit`, the labels used to be
+      "local", "base", and "histedit". They are now "already edited", "parent
       of current change", and "current change", respectively.
-    * The computation of namedbranch heads now ignores obsolete revisions. 
-      User of the Changeset Evolution feature may see a change in location and 
+    * The computation of namedbranch heads now ignores obsolete revisions.
+      User of the Changeset Evolution feature may see a change in location and
       numbers of heads of each named branches (and topic).
-    * The `remotefilelog` extension now requires an appropriate excludepattern 
+    * The `remotefilelog` extension now requires an appropriate excludepattern
       for subrepositories.
-    * `debugsparse`'s interface has been reworked to be more flexible. Since 
-      it's a debug command it is not actually a breaking change, but it is 
+    * `debugsparse`'s interface has been reworked to be more flexible. Since
+      it's a debug command it is not actually a breaking change, but it is
       worth noting here.
-    * Temporary files for merges are now all inside a `hgmerge` directory 
-      instead of at the root of `TMPDIR`. The corresponding experimental 
-      `mergetempdirprefix` config option has been removed. 
+    * Temporary files for merges are now all inside a `hgmerge` directory
+      instead of at the root of `TMPDIR`. The corresponding experimental
+      `mergetempdirprefix` config option has been removed.
 
   + Internal API Changes
-    * The dirstate API received minor modifications. 
+    * The dirstate API received minor modifications.
   + Miscellaneous
-    * Removed `exchange-v2`. It was a prototype that had never been in 
-      a working state and had been left untouched since 2017. 
+    * Removed `exchange-v2`. It was a prototype that had never been in
+      a working state and had been left untouched since 2017.
 
 -------------------------------------------------------------------
 Sat Dec  4 16:36:26 UTC 2021 - Andrei Dziahel <develop7@develop7.info>
@@ -1241,43 +1361,43 @@ Sat Dec  4 16:36:26 UTC 2021 - Andrei Dziahel <develop7@develop7.info>
 - Mercurial 6.0
   Regularly scheduled feature release.
 
-  This is the last release to support Python 2. Python 2 support will be 
+  This is the last release to support Python 2. Python 2 support will be
   dropped for all platforms in Mercurial 6.1.
 
   + New Features
     * `debugrebuildfncache` now has an option to rebuild only the index files
-    * a new `bookmarks.mode` path option have been introduced to control the 
-      bookmark update strategy during exchange with a peer. See `hg help paths` 
-      for details. 
-    * a new `bookmarks.mirror` option has been introduced. See 
-      `hg help bookmarks` for details. 
-    * more commands support detailed exit codes when config 
-      `ui.detailed-exit-codes` is enabled 
+    * a new `bookmarks.mode` path option have been introduced to control the
+      bookmark update strategy during exchange with a peer. See `hg help paths`
+      for details.
+    * a new `bookmarks.mirror` option has been introduced. See
+      `hg help bookmarks` for details.
+    * more commands support detailed exit codes when config
+      `ui.detailed-exit-codes` is enabled
   + New Experimental Features
-    * __Major feature__: version 2 of the dirstate is available (the first 
-      version is as old as Mercurial itself). It allows for much faster working 
-      copy inspection (status, diff, commit, update, etc.) and richer 
-      information (symlink and exec info on Windows, etc.). The format has been 
-      frozen with room for some future evolution and the current implementations 
-      (Python, Python + C, Python + Rust or pure Rust) should be compatible with 
-      any future change or optimization that the format allows. You can get more 
+    * __Major feature__: version 2 of the dirstate is available (the first
+      version is as old as Mercurial itself). It allows for much faster working
+      copy inspection (status, diff, commit, update, etc.) and richer
+      information (symlink and exec info on Windows, etc.). The format has been
+      frozen with room for some future evolution and the current implementations
+      (Python, Python + C, Python + Rust or pure Rust) should be compatible with
+      any future change or optimization that the format allows. You can get more
       information in the internal documentation
     * Added a new `web.full-garbage-collection-rate` to control performance. See
-      `de2e04fe4897a554b9ef433167f11ea4feb2e09c` for more information 
-    * Added a new `histedit.later-commits-first` option to affect the 
-      ordering of commits in `chistedit` to match the order in `hg log -G`. 
-      It will affect the text-based version before graduating 
-      from experimental. 
+      `de2e04fe4897a554b9ef433167f11ea4feb2e09c` for more information
+    * Added a new `histedit.later-commits-first` option to affect the
+      ordering of commits in `chistedit` to match the order in `hg log -G`.
+      It will affect the text-based version before graduating
+      from experimental.
   - Bug Fixes
-    * `hg fix --working-dir` now correctly works when in an uncommitted 
+    * `hg fix --working-dir` now correctly works when in an uncommitted
       merge state
-    * Unintentional duplicated calls to `hg fix`'s internals were removed, 
+    * Unintentional duplicated calls to `hg fix`'s internals were removed,
       making it potentially much faster
     * `rhg cat` can be called without a revision
     * `rhg cat` can be called with the `.` revision
-    * `rhg cat` is more robust than before with regards to edge cases. 
-      Some still remain like a tag or bookmark that is ambiguous with 
-      a `nodeid` prefix, only nodeids (prefixed or not) are supported 
+    * `rhg cat` is more robust than before with regards to edge cases.
+      Some still remain like a tag or bookmark that is ambiguous with
+      a `nodeid` prefix, only nodeids (prefixed or not) are supported
       as of now.
     * `rhg cat` is even faster
     * `rhg` (Rust fast-path for `hg`) now supports the full config list syntax
@@ -1285,9 +1405,9 @@ Sat Dec  4 16:36:26 UTC 2021 - Andrei Dziahel <develop7@develop7.info>
     * Fixed an `fsmonitor` on Python 3 during exception handling
     * Lots of Windows fixes
     * Lots of miscellaneous other fixes
-    * Removed a CPython-specific compatibility hack to improve support 
+    * Removed a CPython-specific compatibility hack to improve support
       for alternative Python implementations
-    * Added a compatibility fix for Python 3.11 
+    * Added a compatibility fix for Python 3.11
 
 -------------------------------------------------------------------
 Sat Nov  6 07:59:14 UTC 2021 - Andrei Dziahel <develop7@develop7.info>
@@ -1299,7 +1419,7 @@ Sat Nov  6 07:59:14 UTC 2021 - Andrei Dziahel <develop7@develop7.info>
     * Fixed regression on outgoing email when not specifying revisions
     * Fixed a regression causing bookmarks to disappear when using Rust persistent nodemap
 
-  See https://www.mercurial-scm.org/repo/hg/log?rev=5.9.2..5.9.3 
+  See https://www.mercurial-scm.org/repo/hg/log?rev=5.9.2..5.9.3
   for complete changelog
 
 - Mercurial 5.9.2
@@ -1341,98 +1461,98 @@ Mon Sep 20 19:27:59 UTC 2021 - Lukas Müller <expeehaa@outlook.com>
 Thu Sep  2 08:47:47 UTC 2021 - Andrei Dziahel <develop7@develop7.info>
 
 - Mercurial 5.9.1
-  
+
   No upstream release notes, see
   https://www.mercurial-scm.org/repo/hg/log?rev=5.9..5.9.1 for changelog
-  
+
 - Mercurial 5.9
-  
+
   + New Features
 
-    * `hg config` now has a `--source` option to show where each configuration 
-      value comes from. 
+    * `hg config` now has a `--source` option to show where each configuration
+      value comes from.
 
 -------------------------------------------------------------------
 Wed Jul 14 09:41:40 UTC 2021 - Andrei Dziahel <develop7@develop7.info>
 
 - Mercurial 5.8.1
 
-  No upstream release notes, see 
+  No upstream release notes, see
   https://www.mercurial-scm.org/repo/hg/log?rev=5.8..5.8.1 for changes
 
 -------------------------------------------------------------------
 Tue May  9 13:42:36 UTC 2021 - Andrei Dziahel <develop7@develop7.info>
 
 - Mercurial 5.8
-  
+
   + New Features
     * `hg purge` is now a core command using `--confirm` by default.
-    * The `rev-branch-cache` is now updated incrementally whenever changesets 
+    * The `rev-branch-cache` is now updated incrementally whenever changesets
       are added.
-    * The new options `experimental.bundlecompthreads` and 
-      `experimental.bundlecompthreads.<engine>` can be used to instruct the 
-      compression engines for bundle operations to use multiple threads for 
-      compression. The default is single threaded operation. Currently only 
+    * The new options `experimental.bundlecompthreads` and
+      `experimental.bundlecompthreads.<engine>` can be used to instruct the
+      compression engines for bundle operations to use multiple threads for
+      compression. The default is single threaded operation. Currently only
       supported for zstd.
 
   + Default Format Change
-    These changes affects newly created repositories (or new clone) done with 
-    Mercurial 5.8. 
-    
-    * The `ZSTD` compression will now be used by default for new repositories 
-      when available. This compression format was introduced in Mercurial 5.0, 
-      released in May 2019. See `hg help config.format.revlog-compression` for 
+    These changes affects newly created repositories (or new clone) done with
+    Mercurial 5.8.
+
+    * The `ZSTD` compression will now be used by default for new repositories
+      when available. This compression format was introduced in Mercurial 5.0,
+      released in May 2019. See `hg help config.format.revlog-compression` for
       details.
-    * Mercurial installation built with the Rust parts will now use the 
-      "persistent nodemap" feature by default. This feature was introduced in 
-      Mercurial 5.4 (May 2020). However Mercurial instalation built without 
-      the fast Rust implementation will refuse to interract with them 
-      by default. This restriction can be lifted through configuration. 
+    * Mercurial installation built with the Rust parts will now use the
+      "persistent nodemap" feature by default. This feature was introduced in
+      Mercurial 5.4 (May 2020). However Mercurial instalation built without
+      the fast Rust implementation will refuse to interract with them
+      by default. This restriction can be lifted through configuration.
       See `hg help config.format.use-persistent-nodemap` for details
 
-  + New Experimental Features 
+  + New Experimental Features
 
-    * There's a new `diff.merge` config option to show the changes relative to 
-      an automerge for merge changesets. This makes it easier to detect and 
-      review manual changes performed in merge changesets. It is supported 
-      by `hg diff --change`, `hg log -p` `hg incoming -p`, 
+    * There's a new `diff.merge` config option to show the changes relative to
+      an automerge for merge changesets. This makes it easier to detect and
+      review manual changes performed in merge changesets. It is supported
+      by `hg diff --change`, `hg log -p` `hg incoming -p`,
       and `hg outgoing -p` so far.
 
-  + Bug Fixes 
+  + Bug Fixes
 
     * gracefully recover from inconsistent persistent-nodemap data from disk.
 
   + Backwards Compatibility Changes
-    
-    * In normal repositories, the first parent of a changeset is not null, 
-      unless both parents are null (like the first changeset). Some legacy 
-      repositories violate this condition. The revlog code will now silentely 
-      swap the parents if this condition is tested. This can change the output 
-      of `hg log` when explicitly asking for first or second parent. The 
+
+    * In normal repositories, the first parent of a changeset is not null,
+      unless both parents are null (like the first changeset). Some legacy
+      repositories violate this condition. The revlog code will now silentely
+      swap the parents if this condition is tested. This can change the output
+      of `hg log` when explicitly asking for first or second parent. The
       changesets "nodeid" are not affected.
-  
+
   + Internal API Changes
-    * `changelog.branchinfo` is deprecated and will be removed after 5.8. 
+    * `changelog.branchinfo` is deprecated and will be removed after 5.8.
       It is superseded by `changelogrevision.branchinfo`.
-    * Callbacks for revlog.addgroup and the changelog._nodeduplicatecallback 
+    * Callbacks for revlog.addgroup and the changelog._nodeduplicatecallback
       hook now get a revision number as argument instead of a node.
     * revlog.addrevision returns the revision number instead of the node.
-    * `nodes.nullid` and related constants are being phased out as part of 
-      the deprecation of SHA1. Repository instances and related classes 
+    * `nodes.nullid` and related constants are being phased out as part of
+      the deprecation of SHA1. Repository instances and related classes
       provide access via `nodeconstants` and in some cases `nullid` attributes.
 - updated mercurial-locale-path-fix.patch
 
 -------------------------------------------------------------------
 Thu Apr 29 17:39:02 UTC 2021 - Andrei Dziahel <develop7@develop7.info>
 
-- enable building `chg` (thanks @expehaa) 
+- enable building `chg` (thanks @expehaa)
 
 -------------------------------------------------------------------
 Mon Apr  5 17:37:10 UTC 2021 - Andrei Dziahel <develop7@develop7.info>
 
 - Mercurial 5.7.1
-  
-  * No upstream release notes, see 
+
+  * No upstream release notes, see
     https://www.mercurial-scm.org/repo/hg/log?rev=tag%28%225.7%22%29%3A%3Atag%28%225.7.1%22%29
 
 -------------------------------------------------------------------
@@ -1452,14 +1572,14 @@ Mon Feb  8 21:53:59 UTC 2021 - Andrei Dziahel <develop7@develop7.info>
       `ui.pre-merge-tool-output-template` to
       `command-templates.pre-merge-tool-output`.
     * There is a new set of config options for the template used for the
-      one-line commit summary displayed by various commands, such as 
+      one-line commit summary displayed by various commands, such as
       `hg rebase`. The main one is `command-templates.oneline-summary`. That
       can be overridden per command with
       `command-templates.oneline-summary.<command>`, where `<command>`
       can be e.g. `rebase`. As part of this effort, the default format
       from `hg rebase` was reorganized a bit.
     * `hg purge` is now a core command using `--confirm` by default.
-    * `hg strip`, from the strip extension, is now a core command, 
+    * `hg strip`, from the strip extension, is now a core command,
       `hg debugstrip`. The extension remains for compatibility.
     * `hg diff` and `hg extdiff` now support `--from <rev>` and `--to <rev>`
       arguments as clearer alternatives to `-r <revs>`. `-r <revs>` has been
@@ -1509,26 +1629,26 @@ Fri Nov 13 14:08:40 UTC 2020 - Andrei Dziahel <develop7@develop7.info>
   This is a regularly-scheduled quarterly feature release.
 
   * New Features
-    + `hg mv -A` can now be used with `--at-rev`. It behaves just like 
-      `hg cp -A --at-rev`, i.e. it marks the destination as a copy of the 
-      source whether or not the source still exists but the source must exist 
+    + `hg mv -A` can now be used with `--at-rev`. It behaves just like
+      `hg cp -A --at-rev`, i.e. it marks the destination as a copy of the
+      source whether or not the source still exists but the source must exist
       in the parent revision).
-    + New revset predicate `diffcontains(pattern)` for filtering revisions the 
+    + New revset predicate `diffcontains(pattern)` for filtering revisions the
       same way as `hg grep --diff pattern`.
-    + The memory footprint per changeset and per file during pull/unbundle 
+    + The memory footprint per changeset and per file during pull/unbundle
       operations has been significantly reduced.
   * Internal API Changes
-    + `merge.update()` is now private (renamed to `_update()`). Hopefully the 
+    + `merge.update()` is now private (renamed to `_update()`). Hopefully the
       higher-level functions available in the same module cover your use cases.
-    + `phases.registernew` now takes a set of revisions instead of a list 
-      of nodes. `phases.advanceboundary` takes an optional set of revisions in 
-      addition to the list of nodes. The corresponding members of the 
+    + `phases.registernew` now takes a set of revisions instead of a list
+      of nodes. `phases.advanceboundary` takes an optional set of revisions in
+      addition to the list of nodes. The corresponding members of the
       `phasecache` class follow this change.
-    + The `addgroup` member of `revlog` classes no longer keeps a list of all 
-      found nodes. It now returns `True` if a node was found in the group. 
-      An optional callback for duplicated nodes can be used by callers to keep 
+    + The `addgroup` member of `revlog` classes no longer keeps a list of all
+      found nodes. It now returns `True` if a node was found in the group.
+      An optional callback for duplicated nodes can be used by callers to keep
       track of all nodes themselve.
-    + The `_chaininfocache` of `revlog` classes has been changed from a dict 
+    + The `_chaininfocache` of `revlog` classes has been changed from a dict
       to a LRU cache.
 
 -------------------------------------------------------------------
@@ -1537,14 +1657,14 @@ Sat Oct  3 07:10:44 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 - Mercurial 5.5.2:
   * fix a crash in the log command
   * bug fixes in hgdemandimport
-  * stip: with --keep, consider all revs "removed" from the wcp 
+  * stip: with --keep, consider all revs "removed" from the wcp
 
 -------------------------------------------------------------------
 Thu Sep  3 12:24:59 UTC 2020 - Andrei Dziahel <develop7@develop7.info>
 
 - Mercurial 5.5.1:
   Regularly scheduled bug fix release.
-  
+
   * bug fixes
     + keepalive: Do not append _rbuf if _raw_readinto exists (issue6356)
 
@@ -1556,51 +1676,51 @@ Tue Aug  4 11:05:43 UTC 2020 - Andrei Dziahel <develop7@develop7.info>
 
   * New Features
     + clonebundles can be annotated with the expected memory requirements
-      using the `REQUIREDRAM` option. This allows clients to skip bundles 
-      created with large zstd windows and fallback to larger, but less 
+      using the `REQUIREDRAM` option. This allows clients to skip bundles
+      created with large zstd windows and fallback to larger, but less
       demanding bundles.
-    + The `phabricator` extension now provides more functionality of the 
+    + The `phabricator` extension now provides more functionality of the
       arcanist CLI like changing the status of a differential.
-    + Phases processing is much faster, especially for repositories with old 
+    + Phases processing is much faster, especially for repositories with old
       non-public changesets.
-  
+
   * New Experimental Features
-    + The core of some hg operations have been (and are being) implemented in 
-      rust, for speed. `hg status` on a repository with 300k tracked files 
-      goes from 1.8s to 0.6s for instance. This has currently been tested only 
-      on linux, and does not build on windows. See rust/README.rst in the 
+    + The core of some hg operations have been (and are being) implemented in
+      rust, for speed. `hg status` on a repository with 300k tracked files
+      goes from 1.8s to 0.6s for instance. This has currently been tested only
+      on linux, and does not build on windows. See rust/README.rst in the
       mercurial repository for instructions to opt into this.
-    + An experimental config `rewrite.empty-successor` was introduced 
-      to control what happens when rewrite operations result 
+    + An experimental config `rewrite.empty-successor` was introduced
+      to control what happens when rewrite operations result
       in empty changesets.
-  
+
   * Bug Fixes
-    + For the case when connected to a TTY, stdout was fixed 
-      to be line-buffered on Python 3 (where it was block-buffered before, 
-      causing the process to seem hanging) and Windows on Python 2 (where it 
+    + For the case when connected to a TTY, stdout was fixed
+      to be line-buffered on Python 3 (where it was block-buffered before,
+      causing the process to seem hanging) and Windows on Python 2 (where it
       was unbuffered before).
-    + Subversion sources of the convert extension were fixed to work 
+    + Subversion sources of the convert extension were fixed to work
       on Python 3.
-    + Subversion sources of the convert extension now interpret the encoding 
-      of URLs like Subversion. Previously, there were situations where 
-      the convert extension recognized a repository as present but Subversion 
+    + Subversion sources of the convert extension now interpret the encoding
+      of URLs like Subversion. Previously, there were situations where
+      the convert extension recognized a repository as present but Subversion
       did not, and vice versa.
-    + The empty changeset check of in-memory rebases was fixed to match that 
+    + The empty changeset check of in-memory rebases was fixed to match that
       of normal rebases (and that of the commit command).
-    + The push command now checks the correct set of outgoing changesets for 
-      obsolete and unstable changesets. Previously, it could happen that the 
+    + The push command now checks the correct set of outgoing changesets for
+      obsolete and unstable changesets. Previously, it could happen that the
       check prevented pushing changesets which were already on the server.
-  
+
   * Backwards Compatibility Changes
-    + Mercurial now requires at least Python 2.7.9 or a Python version that 
-      backported modern SSL/TLS features (as defined in PEP 466), and that 
-      Python was compiled against a OpenSSL version supporting TLS 1.1 or 
+    + Mercurial now requires at least Python 2.7.9 or a Python version that
+      backported modern SSL/TLS features (as defined in PEP 466), and that
+      Python was compiled against a OpenSSL version supporting TLS 1.1 or
       TLS 1.2 (likely this requires the OpenSSL version to be at least 1.0.1).
-    + The `hg perfwrite` command from contrib/perf.py was made more flexible 
-      and changed its default behavior. To get the previous behavior, run 
+    + The `hg perfwrite` command from contrib/perf.py was made more flexible
+      and changed its default behavior. To get the previous behavior, run
       `hg perfwrite --nlines=100000 --nitems=1 --item='Testing write performance' --batch-line`.
-    + The absorb extension now preserves changesets with no file changes that 
-      can be created by the commit command (those which change the branch name 
+    + The absorb extension now preserves changesets with no file changes that
+      can be created by the commit command (those which change the branch name
       compared to the parent and those closing a branch head).
 
 -------------------------------------------------------------------
@@ -1616,7 +1736,7 @@ Sat Jun  6 08:41:19 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 - Mercurial 5.4.1:
   * graft-state: save --base in graft's state, fixing bug with
     graft --continue
-  * graft: fix --base value to be saved in state file 
+  * graft: fix --base value to be saved in state file
   * dirstate: make sure the dirstate is loaded before the changelog
   * bash_completion: do not use aliased hg if it sources a script
   * demandimport: fix compatibility with meta path finders w/o
@@ -1700,23 +1820,23 @@ Sun Nov 17 12:14:15 UTC 2019 - Andrei Dziahel <develop7@develop7.info>
     * The amend extension supports the `--currentuser` argument.
     * The amend extension supports the `--close-branch` argument.
     * The amend extension supports the `--secret` argument.
-    * The uncommit extension supports the `rewrite.update-timestamp` config 
+    * The uncommit extension supports the `rewrite.update-timestamp` config
       option.
   + Backwards Compatibility Changes
-    * A shell that supports `$(command)` syntax for command substitution is 
-      now required for running the test suite. The test runner normally 
-      uses `sh`, so if that is a shell that doesn't support `$(command)` 
-      syntax, you can override it by setting `$HGTEST_SHELL` or by passing it 
+    * A shell that supports `$(command)` syntax for command substitution is
+      now required for running the test suite. The test runner normally
+      uses `sh`, so if that is a shell that doesn't support `$(command)`
+      syntax, you can override it by setting `$HGTEST_SHELL` or by passing it
       to `run-tests.py --shell <shell>`.
-    * The (experimental) narrow extension's wire protocol changed. If you're 
-      using it, you'll need to make sure to upgrade server and client at the 
+    * The (experimental) narrow extension's wire protocol changed. If you're
+      using it, you'll need to make sure to upgrade server and client at the
       same time.
-- refreshed mercurial.keyring 
+- refreshed mercurial.keyring
 
 -------------------------------------------------------------------
 Wed Oct  9 11:00:48 UTC 2019 - Andrei Dziahel <develop7@develop7.info>
 
-- Mercurial 5.1.2 
+- Mercurial 5.1.2
   Regularly scheduled bug fix release.
 
   * extensions
@@ -1727,7 +1847,7 @@ Wed Oct  9 11:00:48 UTC 2019 - Andrei Dziahel <develop7@develop7.info>
 -------------------------------------------------------------------
 Sun Sep 15 16:49:18 UTC 2019 - Andrei Dziahel <develop7@develop7.info>
 
-- Mercurial 5.1.1 
+- Mercurial 5.1.1
   Regularly scheduled bug fix release.
   * commands
     + bookmarks: actual fix for race condition deleting bookmark
@@ -1745,66 +1865,66 @@ Fri Aug  2 10:30:23 UTC 2019 - Andrei Dziahel <develop7@develop7.info>
 - Mercurial 5.1
   This is a regularly-scheduled quarterly feature release.
   * New Features
-    + New config `commands.commit.post-status` shows status after successful 
+    + New config `commands.commit.post-status` shows status after successful
       commit.
-    + `hg root` now has templating support, including support for showing 
+    + `hg root` now has templating support, including support for showing
       where a repo share's source is. See `hg help -v root` for details.
-    + New `--force-close-branch` flag for `hg commit` to forcibly close branch 
+    + New `--force-close-branch` flag for `hg commit` to forcibly close branch
       from a non-head changeset.
-    + The curses-based interface for commands like `hg commit -i` now supports 
-      a range-select mechanism. Select the first line using space like before, 
-      navigate to the last line, and press X (capital x) to set all items in 
-      the range at once. Lowercase x has been added as a synonym for space to 
-      help reinforce the mechanism, and pressing enter/return continues to be a 
-      synonym for "toggle the current line and move down to the next item in 
+    + The curses-based interface for commands like `hg commit -i` now supports
+      a range-select mechanism. Select the first line using space like before,
+      navigate to the last line, and press X (capital x) to set all items in
+      the range at once. Lowercase x has been added as a synonym for space to
+      help reinforce the mechanism, and pressing enter/return continues to be a
+      synonym for "toggle the current line and move down to the next item in
       this section."
   * New Experimental Features
-    + New config `experimental.log.topo` makes `hg log -G` use topological 
-      sorting. This is especially useful for aliases since it lets the alias 
-      accept an `-r` option while still using topological sorting with or 
+    + New config `experimental.log.topo` makes `hg log -G` use topological
+      sorting. This is especially useful for aliases since it lets the alias
+      accept an `-r` option while still using topological sorting with or
       without the -r (unlike if you use the `sort(..., topo)` revset).
   * Bug Fixes
-    + issue4292: "hg log and {files} {file_adds} {file_mods} {file_dels} in 
-      template show wrong files on merged revision". See details in "Backwards 
+    + issue4292: "hg log and {files} {file_adds} {file_mods} {file_dels} in
+      template show wrong files on merged revision". See details in "Backwards
       Compatibility Changes".
   * Backwards Compatibility Changes
-    + Removed (experimental) support for log graph lines mixing 
-      parent/grandparent styles. Setting e.g. 
-      `experimental.graphstyle.parent = !` and 
-      `experimental.graphstyle.grandparent = 3.` would use `!` for the first 
+    + Removed (experimental) support for log graph lines mixing
+      parent/grandparent styles. Setting e.g.
+      `experimental.graphstyle.parent = !` and
+      `experimental.graphstyle.grandparent = 3.` would use `!` for the first
       three lines of the graph and then `..`. This is no longer supported.
-    + If ui.origbackuppath had been (incorrectly) configured to point to a 
-      file, we will now replace that file by a directory and put backups in 
-      that directory. This is similar to how we would previously replace files 
+    + If ui.origbackuppath had been (incorrectly) configured to point to a
+      file, we will now replace that file by a directory and put backups in
+      that directory. This is similar to how we would previously replace files
       *in* the configured directory by subdirectories.
-    + Template keyword `{file_mods}`, `{file_adds}`, and `{file_dels}` have 
-      changed behavior on merge commits. They used to be relative to the first 
-      parent, but they now consider both parents. `{file_adds}` shows files 
-      that exists in the commit but did not exist in either parent. 
-      `{file_dels}` shows files that do not exist in the commit but existed in 
-      either parent. `{file_mods}` show the remaining files from `{files}` 
+    + Template keyword `{file_mods}`, `{file_adds}`, and `{file_dels}` have
+      changed behavior on merge commits. They used to be relative to the first
+      parent, but they now consider both parents. `{file_adds}` shows files
+      that exists in the commit but did not exist in either parent.
+      `{file_dels}` shows files that do not exist in the commit but existed in
+      either parent. `{file_mods}` show the remaining files from `{files}`
       that were not in the other two sets.
   * Internal API Changes
     + Matchers are no longer iterable. Use `match.files()` instead.
-    + `match.visitdir()` and `match.visitchildrenset()` now expect the empty 
+    + `match.visitdir()` and `match.visitchildrenset()` now expect the empty
       string instead of `'.'` to indicate the root directory.
-    + `util.dirs()` and `util.finddirs()` now include an entry for the root 
+    + `util.dirs()` and `util.finddirs()` now include an entry for the root
       directory (empty string).
     + `shelve` is no longer an extension now. It will be turned on by default.
     + New API to manage unfinished operations: Earlier there were distinct APIs
       which dealt with unfinished states and separate lists maintaining them
-      that are `cmdutil.afterresolvestates`, `cmdutil.unfinishedstates` 
-      and `cmdutil.STATES`. Now these have been unified to a single API which 
-      handles the various states and their utilities. This API has been added 
-      to `state.py`. Now instead of adding to these 3 lists independently a 
-      state for a new operation can be registered using `addunfinished()` 
+      that are `cmdutil.afterresolvestates`, `cmdutil.unfinishedstates`
+      and `cmdutil.STATES`. Now these have been unified to a single API which
+      handles the various states and their utilities. This API has been added
+      to `state.py`. Now instead of adding to these 3 lists independently a
+      state for a new operation can be registered using `addunfinished()`
       in `state` module.
     + `cmdutil.checkunfinished()` now includes detection for merge too.
-    + merge abort has been disallowed in case an operation of higher 
+    + merge abort has been disallowed in case an operation of higher
       precedence is in progress to avoid cases of partial abort of operations.
     + We used to automatically attempt to make extensions compatible with
-      Python 3 (by translating their source code while loading it). 
-      We no longer do that.  
+      Python 3 (by translating their source code while loading it).
+      We no longer do that.
 
 -------------------------------------------------------------------
 Tue Jul  9 15:48:28 UTC 2019 - Andrei Dziahel <develop7@develop7.info>
@@ -1815,15 +1935,15 @@ Tue Jul  9 15:48:28 UTC 2019 - Andrei Dziahel <develop7@develop7.info>
     * Help fixes on hg mv and hg cp
   + unsorted
     * debugrevlog: fix average size computation for empty data (issue6167)
-    * Fix an obscure data corruption bug with musl libc 
-      (and presumably others). 
-      See https://www.mercurial-scm.org/repo/hg-committed/rev/97ada9b8d51b 
+    * Fix an obscure data corruption bug with musl libc
+      (and presumably others).
+      See https://www.mercurial-scm.org/repo/hg-committed/rev/97ada9b8d51b
       for more details.
-      
+
 -------------------------------------------------------------------
 Wed Jun 19 19:47:39 UTC 2019 - Andrei Dziahel <develop7@develop7.info>
 
-- Mercurial 5.0.1 
+- Mercurial 5.0.1
   A regularly scheduled bugfix release.
 
   + commands
@@ -1841,21 +1961,21 @@ Wed May 15 13:32:38 UTC 2019 - Andrei Dziahel <develop7@develop7.info>
 
   + New Features
     * Python 3 Support (Beta)
-    * `ui.relative-paths` option for getting relative path output from most 
+    * `ui.relative-paths` option for getting relative path output from most
       commands. This is enabled when `ui.tweakdefaults` is enabled.
-    * `expectsize()` revset errors out if revset has unexpected number 
+    * `expectsize()` revset errors out if revset has unexpected number
       of elements.
     * `config()` template function for getting a config value.
-    * `{negrev}` template keyword shows the negative revision number. This is 
-      convenient because it is usually shorter than the positive number, but 
+    * `{negrev}` template keyword shows the negative revision number. This is
+      convenient because it is usually shorter than the positive number, but
       note that it is less stable.
     * `hg uncommit` now has an `--allow-dirty-working-copy` option.
-    * `hg shelve` now has `--keep` option, which shelves but also leaves the 
+    * `hg shelve` now has `--keep` option, which shelves but also leaves the
       working directory unchanged.
     * `hg diff` will now include specified files in subrepos.
     * `hg recover` now has a `--no-verify` option
   + Other Improvements
-    * Improved color scheme for histedit's curses interface, making it more 
+    * Improved color scheme for histedit's curses interface, making it more
       consistent with the curses hunk selector.
   + Bug Fixes
     * Histedit's curse interface has improved support for non ascii characters.
@@ -1961,17 +2081,17 @@ Tue Jan  8 21:40:31 UTC 2019 - Andrei Dziahel <develop7@develop7.info>
 -------------------------------------------------------------------
 Wed Dec  5 05:33:08 UTC 2018 - Andrei Dziahel <develop7@develop7.info>
 
-- Mercurial 4.8.1 
-  A regularly scheduled bugfix release. Some security fixes are included, but 
+- Mercurial 4.8.1
+  A regularly scheduled bugfix release. Some security fixes are included, but
   all are expected to be low-risk.
 
   * commands
     - commandserver: get around ETIMEDOUT raised by selectors2
-    - graft: do not try to skip rev derived from ancestor more than 
+    - graft: do not try to skip rev derived from ancestor more than
       once (issue6024)
     - verify: provide unit to ui.makeprogress()
   * core
-    - revlog: fix out-of-bounds access by negative parents read from 
+    - revlog: fix out-of-bounds access by negative parents read from
       revlog (SEC)
   * extensions
     - rebase: abort in-mem rebase if there's a dirty merge state
@@ -1990,34 +2110,34 @@ Tue Nov  6 18:48:37 UTC 2018 - Andrei Dziahel <develop7@develop7.info>
 -------------------------------------------------------------------
 Sat Nov  3 06:56:57 UTC 2018 - Andrei Dziahel <develop7@develop7.info>
 
-- Mercurial 4.8 
+- Mercurial 4.8
   This is a regularly-scheduled quarterly feature release.
 
-  See release overview at https://www.mercurial-scm.org/wiki/Release4.8 and 
-  complete changelog at 
+  See release overview at https://www.mercurial-scm.org/wiki/Release4.8 and
+  complete changelog at
   https://www.mercurial-scm.org/wiki/WhatsNew#Mercurial_4.8_.282018-11-02.29
 
 -------------------------------------------------------------------
 Tue Oct  2 10:44:12 UTC 2018 - Andrei Dziahel <develop7@develop7.info>
 
-- Mercurial 4.7.2 
+- Mercurial 4.7.2
   This is a regularly-scheduled bugfix release containing following fixes:
 
   *  security
     + Fix a potential out-of-bounds read in manifest parsing C code.
   * core
-    + various minor correctness fixes in revsets for commonancestors() and 
+    + various minor correctness fixes in revsets for commonancestors() and
       similar
   * unsorted
-    + chgserver: do not send system() back to client if stdio 
+    + chgserver: do not send system() back to client if stdio
       redirected (issue5992)
-    + procutil: compare fd number to see if stdio protection 
+    + procutil: compare fd number to see if stdio protection
       is needed (issue5992)
 
 -------------------------------------------------------------------
 Wed Sep  5 10:41:44 UTC 2018 - Andrei Dziahel <develop7@develop7.info>
 
-- Mercurial 4.7.1 
+- Mercurial 4.7.1
   This is a regularly-scheduled bugfix release containing following fixes:
 
   * commands
@@ -2036,9 +2156,9 @@ Wed Sep  5 10:41:44 UTC 2018 - Andrei Dziahel <develop7@develop7.info>
 Sun Aug 12 13:38:23 UTC 2018 - develop7@develop7.info
 
 - Mercurial 4.7
-  
-  This is a regularly-scheduled quarterly feature release and has it's own 
-  release notes page which can be found here: 
+
+  This is a regularly-scheduled quarterly feature release and has it's own
+  release notes page which can be found here:
   [Full release notes](https://www.mercurial-scm.org/wiki/Release4.7)
 
 -------------------------------------------------------------------
@@ -2047,7 +2167,7 @@ Tue Jul  3 17:22:02 UTC 2018 - develop7@develop7.info
 - Mercurial 4.6.2
   This is a regularly-scheduled bugfix release containing following fixes:
 
-  * merge: do not fill manifest of committed revision with pseudo node 
+  * merge: do not fill manifest of committed revision with pseudo node
     (issue5526)
   * crecord: fix line number in hunk header (issue5917)
   * lazymanifest: don't crash when out of memory (issue5916)
@@ -2057,7 +2177,7 @@ Tue Jul  3 17:22:02 UTC 2018 - develop7@develop7.info
 Fri Jun  8 07:32:56 UTC 2018 - develop7@develop7.info
 
 - Mercurial 4.6.1
-  This is a regularly-scheduled bugfix release that also contains security 
+  This is a regularly-scheduled bugfix release that also contains security
   fixes.
 
   * Security Fixes
@@ -2073,7 +2193,7 @@ Fri Jun  8 07:32:56 UTC 2018 - develop7@develop7.info
       mpatch: fix UB integer overflows in discard() (SEC)
       mpatch: avoid integer overflow in mpatch_decode (SEC)
       mpatch: avoid integer overflow in combine() (SEC)
-    No exploits are known at the time, however, it is highly recommended that 
+    No exploits are known at the time, however, it is highly recommended that
     all users upgrade.
 
   * Bug Fixes
@@ -2100,9 +2220,9 @@ Wed Apr  4 15:00:16 UTC 2018 - develop7@develop7.info
 
 - Mercurial 4.5.3
   This is a regularly-scheduled bugfix release.
-  
+
   * Bug Fixes
-    + rebase: on abort, don't strip commits that didn't need to be rebased 
+    + rebase: on abort, don't strip commits that didn't need to be rebased
       (issue5822)
     + hgweb: garbage collect on every request
     + amend: abort if unresolved merge conflicts found (issue5805)
@@ -2118,24 +2238,24 @@ Wed Mar  7 08:10:06 UTC 2018 - develop7@develop7.info
 - Mercurial 4.5.2
 
   (4.5.2 was released immediately after 4.5.1 to fix a release oversight.)
-  
+
   1. Security Fixes (CVE-2018-1000132,bsc#1085211)
-    All versions of Mercurial prior to 4.5.2 have vulnerabilities in the HTTP 
+    All versions of Mercurial prior to 4.5.2 have vulnerabilities in the HTTP
     server that allow permissions bypass to:
     * Perform writes on repositories that should be read-only
     * Perform reads on repositories that shouldn't allow read access
-  
+
   2. Backwards Compatibility Changes
-    The "batch" wire protocol command now enforces permissions of each invoked 
-    sub-command. Wire protocol commands must define their operation type or the 
-    "batch" command will assume they can write data and will prevent their 
-    execution on HTTP servers unless the HTTP request method is POST, the 
-    server is configured to allow pushes, and the (possibly authenticated) HTTP 
+    The "batch" wire protocol command now enforces permissions of each invoked
+    sub-command. Wire protocol commands must define their operation type or the
+    "batch" command will assume they can write data and will prevent their
+    execution on HTTP servers unless the HTTP request method is POST, the
+    server is configured to allow pushes, and the (possibly authenticated) HTTP
     user is authorized to perform a push.
-    Wire protocol commands not defining their operation type in 
-    "wireproto.PERMISSIONS" are now assumed to be used for "push" operations 
+    Wire protocol commands not defining their operation type in
+    "wireproto.PERMISSIONS" are now assumed to be used for "push" operations
     and access control to run those commands is now enforced accordingly.
-    
+
   3. Bug Fixes
     fileset: don't abort when running copied() on a revision with a removed file
     date: fix parsing months
@@ -2146,27 +2266,27 @@ Wed Mar  7 08:10:06 UTC 2018 - develop7@develop7.info
     changegroup: do not delta lfs revisions
     revlog: do not use delta for lfs revisions
     revlog: resolve lfs rawtext to vanilla rawtext before applying delta
-  
-  See full cnahgelog on 
+
+  See full cnahgelog on
   https://www.mercurial-scm.org/wiki/WhatsNew#Mercurial_4.5.1_.2F_4.5.2_.282018-03-06.29
 -------------------------------------------------------------------
 Sun Feb  4 19:11:49 UTC 2018 - develop7@develop7.info
 
 - Mercurial 4.5
-  
-  See full changelog on 
+
+  See full changelog on
   https://www.mercurial-scm.org/wiki/WhatsNew#Mercurial_4.5-rc_.282018-01-22.29
-  
+
   1. New Features
     1.1. revert --interactive
-      The revert command now accepts the flag --interactive to allow reverting 
+      The revert command now accepts the flag --interactive to allow reverting
       only some of the changes to the specified files.
     1.2. Accessing hidden changesets
-      Set config option `experimental.directaccess = True` to access hidden 
+      Set config option `experimental.directaccess = True` to access hidden
       changesets from read only commands.
     1.3. githelp extension
-      The githelp extension provides the `hg githelp` command. This command 
-      attempts to convert a git command to its Mercurial equivalent. The 
+      The githelp extension provides the `hg githelp` command. This command
+      attempts to convert a git command to its Mercurial equivalent. The
       extension can be useful to Git users new to Mercurial.
     1.4. Largefiles changes
       largefiles: add a 'debuglfput' command to put largefile into the store
@@ -2176,58 +2296,58 @@ Sun Feb  4 19:11:49 UTC 2018 - develop7@develop7.info
       largefiles: explicitly set the source and sink types to 'hg' for lfconvert
       largefiles: modernize how capabilities are added to the wire protocol
   2. hgweb changes
-    hgweb now shows more information about commits: phase (if it's not public), 
-    obsolescence status (with a short explanation and links to the successors) 
+    hgweb now shows more information about commits: phase (if it's not public),
+    obsolescence status (with a short explanation and links to the successors)
     and instabilities (e.g. orphan, phase-divergent or content-divergent).
-    Client-side graph code has been simplified by delegating more work to the 
-    backend, so /graph page is now more in sync with /log page, visually and 
-    feature-wise. Unfortunately, this code change means that 3rd-party themes 
-    for 4.5+ are required to have graphentry.tmpl template available (copy it 
-    from the base theme if you don't use %include and then reference it in map 
-    file) and render entries in graph.tmpl -- look at one of the core themes to 
-    see what it needs to look like. JS functions that create graph vertices and 
-    edges are now available in Graph.prototype, making it possible to call the 
+    Client-side graph code has been simplified by delegating more work to the
+    backend, so /graph page is now more in sync with /log page, visually and
+    feature-wise. Unfortunately, this code change means that 3rd-party themes
+    for 4.5+ are required to have graphentry.tmpl template available (copy it
+    from the base theme if you don't use %include and then reference it in map
+    file) and render entries in graph.tmpl -- look at one of the core themes to
+    see what it needs to look like. JS functions that create graph vertices and
+    edges are now available in Graph.prototype, making it possible to call the
     original functions from custom theme-specific functions if needed.
-    Graph now shows different symbols for normal, branch-closing, obsolete and 
-    unstable commits, and marks currently checked out commit with a circle 
+    Graph now shows different symbols for normal, branch-closing, obsolete and
+    unstable commits, and marks currently checked out commit with a circle
     around its graph node.
-    There's also now json-graph API endpoint that can be used for rendering 
+    There's also now json-graph API endpoint that can be used for rendering
     commit graph in 3rd-party applications.
   2.1. Other Changes
-    When interactive revert is run against a revision other than the working 
-    directory parent, the diff shown is the diff to _apply_ to the working 
-    directory, rather than the diff to _discard_ from the working copy. This is 
-    in line with related user experiences with 'git' and appears to be less 
+    When interactive revert is run against a revision other than the working
+    directory parent, the diff shown is the diff to _apply_ to the working
+    directory, rather than the diff to _discard_ from the working copy. This is
+    in line with related user experiences with 'git' and appears to be less
     confusing with 'ui.interface=curses'.
-    Let 'hg rebase' avoid content-divergence by skipping obsolete changesets 
-    (and their descendants) when they are present in the rebase set along with 
+    Let 'hg rebase' avoid content-divergence by skipping obsolete changesets
+    (and their descendants) when they are present in the rebase set along with
     one of their successors but none of their successors is in destination.
-    A new experimental config flag, `rebase.experimental.inmemory`, makes 
-    rebase perform an in-memory merge instead of doing it on-disk in the 
+    A new experimental config flag, `rebase.experimental.inmemory`, makes
+    rebase perform an in-memory merge instead of doing it on-disk in the
     working copy.
-    The `HGPLAINEXCEPT` environment variable can now include color to allow 
+    The `HGPLAINEXCEPT` environment variable can now include color to allow
     automatic output colorization in otherwise automated environments.
-    A new `unamend` command in `uncommit` extension which undoes the effect of 
-    the amend command by creating a new changeset which was there before amend 
+    A new `unamend` command in `uncommit` extension which undoes the effect of
+    the amend command by creating a new changeset which was there before amend
     and moving the changes that were amended to the working directory.
     A '--abort' flag to merge command to abort the ongoing merge.
-    An experimental flag '--rev' to 'hg branch' which can be used to change 
+    An experimental flag '--rev' to 'hg branch' which can be used to change
     branch of changesets.
     bundle2 read I/O significantly improved
     bundle2 memory use significantly reduced during read
-    clonebundle: it is now possible to serve the clonebundle using a git-lfs 
+    clonebundle: it is now possible to serve the clonebundle using a git-lfs
     compatible server.
-    templatefilters: add slashpath() to convert path separator to slash 
+    templatefilters: add slashpath() to convert path separator to slash
     (issue5572)
-    A new experimental config flag, 'inline-color-diff', adds within-line color 
+    A new experimental config flag, 'inline-color-diff', adds within-line color
     diff capacity
-    histedit: add support to output nodechanges using formatter to help with 
+    histedit: add support to output nodechanges using formatter to help with
     editor integrations
   3. Backwards Compatibility Changes
-    `log --follow-first -rREV`, which is deprecated, now follows the first 
-    parent of merge revisions from the specified REV just like 
+    `log --follow-first -rREV`, which is deprecated, now follows the first
+    parent of merge revisions from the specified REV just like
     `log --follow -rREV`.
-    `log --follow -rREV FILE..` now follows file history across copies and 
+    `log --follow -rREV FILE..` now follows file history across copies and
     renames.
     transaction: register summary callbacks only at start of transaction
     hgweb's graph view no longer supports browsers that lack <canvas> support
@@ -2241,87 +2361,87 @@ Sat Nov 11 15:44:35 UTC 2017 - develop7@develop7.info
 - Mercurial 4.4.1
 
   1. Notable changes
-    * Git and Subversion subrepos have been disabled by default to mitigate a 
-      potential security risk if files overlapping with a subrepo managed to be 
+    * Git and Subversion subrepos have been disabled by default to mitigate a
+      potential security risk if files overlapping with a subrepo managed to be
       committed to a repository.
       bsc#1071715 CVE-2017-17458
     * Subrepos are now more paranoid about symlink traversal.
     * The share extension handles drive letters on Windows better.
-  
-  It is possible that a specially malformed repository can cause Git 
-  subrepositories to run arbitrary code in the form of a .git/hooks/post-update 
-  script checked in to the repository in Mercurial 4.4 and earlier. Typical use 
-  of Mercurial prevents construction of such repositories, but they can be 
+
+  It is possible that a specially malformed repository can cause Git
+  subrepositories to run arbitrary code in the form of a .git/hooks/post-update
+  script checked in to the repository in Mercurial 4.4 and earlier. Typical use
+  of Mercurial prevents construction of such repositories, but they can be
   created programmatically.
 
 -------------------------------------------------------------------
 Sun Nov  5 10:56:38 UTC 2017 - develop7@develop7.info
 
 - Mercurial 4.4
-  
+
   Notable changes
     Control whitespace settings for annotation on hgweb
-    
-    * /annotate URLs on hgweb now accept query string arguments to influence how 
+
+    * /annotate URLs on hgweb now accept query string arguments to influence how
       whitespace changes impact results.
-    * The arguments "ignorews," "ignorewsamount," "ignorewseol," and 
-      "ignoreblanklines" now have the same meaning as their [annotate] config 
+    * The arguments "ignorews," "ignorewsamount," "ignorewseol," and
+      "ignoreblanklines" now have the same meaning as their [annotate] config
       section counterparts. Any provided setting overrides the server default.
-    * HTML checkboxes have been added to the paper and gitweb themes to expose 
+    * HTML checkboxes have been added to the paper and gitweb themes to expose
       current whitespace settings and to easily modify the current view.
     Fast, heuristic copy-tracing
-      A new fast heuristic algorithm for copytracing which assumes that the 
+      A new fast heuristic algorithm for copytracing which assumes that the
       files moves are either:
         1. renames in the same directory
         2. moves in other directories with same names
-      You can use this algorithm by setting 'experimental.copytrace=heuristics'. 
-      This setting performs full copytracing if both source and destination 
+      You can use this algorithm by setting 'experimental.copytrace=heuristics'.
+      This setting performs full copytracing if both source and destination
       branches contains non-public changesets only.
     Other changes
       * Estimated time is more accurate with non-linear progress
-      * "hg status -v" can now show unfinished state. For example, when in an 
+      * "hg status -v" can now show unfinished state. For example, when in an
         unfinished rebase state, "hg status -v" might show:
             # The repository is in an unfinished *rebase* state.
             # No unresolved merge conflicts.
             # To continue:                hg rebase --continue
             # To abort:                   hg rebase --abort
-      * Added '--ignore-space-at-eol' diff option to ignore whitespace 
+      * Added '--ignore-space-at-eol' diff option to ignore whitespace
         differences at line endings.
       * show: use consistent node length in views
       * show: decrease minimum displayed hash length from 5 to 4
-      * A new uncommit extension which provides 'hg uncommit' using which one 
-        can uncommit part or all of the changeset. This command undoes the 
-        effect of a local commit, returning the affected files to their 
+      * A new uncommit extension which provides 'hg uncommit' using which one
+        can uncommit part or all of the changeset. This command undoes the
+        effect of a local commit, returning the affected files to their
         uncommitted state.
       * 'hg clone --uncompressed' uses clone bundles when possible
       * 'hg annotate --skip' now prints a '*' on lines with skipped revisions
-      * New 'commands.update.check' feature to adjust constraints on when 
+      * New 'commands.update.check' feature to adjust constraints on when
         'hg update' will allow updates with a dirty working copy.
-      * Add an experimental -L/--line-range FILE,FROMLINE:TOLINE option to 
-        'hg log' command to follow the history of files by line range. In 
-        combination with -p/--patch option, only diff hunks within specified 
-        line range will be displayed. Feedback, especially on UX aspects, is 
+      * Add an experimental -L/--line-range FILE,FROMLINE:TOLINE option to
+        'hg log' command to follow the history of files by line range. In
+        combination with -p/--patch option, only diff hunks within specified
+        line range will be displayed. Feedback, especially on UX aspects, is
         welcome.
       * Print warning when fsmonitor isn't being used on a large repository
-  
-  Read rest of the changelog at 
+
+  Read rest of the changelog at
   https://www.mercurial-scm.org/wiki/WhatsNew#Mercurial_4.4_.282017-11-01.29
 
 - Mercurial 4.3.3
 
   * Prevent crashes when clearing progress bar. (issue5684)
   * rebase: move bookmarks with --keep (issue5682)
-  
+
 - Mercurial 4.3.2
 
-  * restore compatibility with older versions of Python 2.7 by not using a 
+  * restore compatibility with older versions of Python 2.7 by not using a
     bytearray with struct.unpack_from()
   * restore mingw compatibility for setup.py
   * hgwebdir: read 'web.template' untrusted (plugs potential security issue)
   * repair: preserve phase when not using generaldelta (issue5678)
   * ssh: fix flakey ssh errors on BSD systems
-  * restore error handling behavior around certain I/O errors; the regressed 
-    behavior could result in transactions not being properly rolled back if 
+  * restore error handling behavior around certain I/O errors; the regressed
+    behavior could result in transactions not being properly rolled back if
     stdio handles encountered errors (issue5658)
   * templatekw: choose {latesttag} by len(changes), not date (issue5659)
   * record: fix revert -i for lines without newline (issue5651)
@@ -2349,12 +2469,12 @@ Tue Aug 15 14:26:18 CEST 2017 - tiwai@suse.de
     displays more info
   * hg show stack is a new view for the current, in-progress
     changeset and others around it
-  * Mitigation for two security vulnerabilities 
+  * Mitigation for two security vulnerabilities
 
 -------------------------------------------------------------------
 Thu Aug 10 22:58:59 CEST 2017 - tiwai@suse.de
 
-- mercurial 4.2.3: security fix updates for 
+- mercurial 4.2.3: security fix updates for
   CVE-2017-1000115 and CVE-2017-1000116:
   * Mercurial's symlink auditing was incomplete prior to 4.3, and
     could be abused to write to files outside the repository
@@ -2368,7 +2488,7 @@ Wed Jul  5 19:37:07 UTC 2017 - develop7@develop7.info
 
 - Mercurial 4.2.2
   This is a regularly-scheduled bugfix release.
-  
+
   * largefiles: avoid a crash when archiving a subrepo with largefiles disabled
   * rebase: also test abort from pretxnclose error
   * rebase: backed out changes 2519994d25ca and cf8ad0e6c0e4 (issue5610)
@@ -2377,11 +2497,11 @@ Wed Jul  5 19:37:07 UTC 2017 - develop7@develop7.info
 - Mercurial 4.2.1
   This is a regularly-scheduled bugfix release.
 
-  * `hg graft` now works when grafting across merges that were problematic 
+  * `hg graft` now works when grafting across merges that were problematic
     before (b4e1e30528c7).
   * A race condition in `hg status` was partially fixed (issue5584).
-  * The message about deprecated SHA-1 hashes in the [hostfingerprints] config 
-    section now references the correct syntax for replacing them with SHA-256 
+  * The message about deprecated SHA-1 hashes in the [hostfingerprints] config
+    section now references the correct syntax for replacing them with SHA-256
     hashes (issue5559).
 
 -------------------------------------------------------------------
@@ -2391,17 +2511,17 @@ Sun May  7 09:12:06 UTC 2017 - develop7@develop7.info
   This is a regularly-scheduled quarterly feature release.
 
   * Notable changes
-    + Pager support has been moved into core and is now enabled by default. 
+    + Pager support has been moved into core and is now enabled by default.
       This is now controlled with the ui.paginate setting.
-      Note that in 4.2-rc, the ui.paginate option was named pager.enable. The 
-      old name has been dropped in the final release. If you had turned 
+      Note that in 4.2-rc, the ui.paginate option was named pager.enable. The
+      old name has been dropped in the final release. If you had turned
       pagination off using pager.enable=False, please update your config.
-    + Color support has also been moved into core and is now enabled by default 
+    + Color support has also been moved into core and is now enabled by default
       (the ui.color setting now defaults to 'auto').
-    + The new experimental 'show' extension provides a way to view various 
-      information about your repository in an ergonomic way. It is deliberately 
-      designed for human consumption and not for scripting, so it doesn't carry 
-      the same backward compatibility guarantees as other commands. See 
+    + The new experimental 'show' extension provides a way to view various
+      information about your repository in an ergonomic way. It is deliberately
+      designed for human consumption and not for scripting, so it doesn't carry
+      the same backward compatibility guarantees as other commands. See
       'hg help -e show' for more information.
     + Mercurial now requires `setuptools` on Windows
 
@@ -2421,7 +2541,7 @@ Tue Apr  4 17:29:18 UTC 2017 - develop7@develop7.info
 
   + Several incorrect mailing list addresses have been corrected.
   + Various error cases have been corrected during push and pull.
-  + Minor issues that happened when Mercurial spawned worker processes have 
+  + Minor issues that happened when Mercurial spawned worker processes have
     been fixed.
 
 -------------------------------------------------------------------
@@ -2429,42 +2549,42 @@ Wed Feb  1 20:59:31 UTC 2017 - develop7@develop7.info
 
 - Mercurial 4.1
   This is a regularly-scheduled quarterly feature release.
-  
+
   + Features
-    * A new extensible "compression engines" API has been implemented. Support 
+    * A new extensible "compression engines" API has been implemented. Support
       for a new compression format can now be implemented in extensions.
-    * New compression formats are fully supported in bundles and the wire 
-      protocol. There is experimental support for different compression in 
+    * New compression formats are fully supported in bundles and the wire
+      protocol. There is experimental support for different compression in
       revlogs.
-    * zstd - a new and exciting compression engine - is now distributed with 
+    * zstd - a new and exciting compression engine - is now distributed with
       Mercurial and built by default
-    * HTTP payloads for many commands will now use zstd by default (as opposed 
-      to zlib) when both client and server support it. This can reduce 
-      server-side CPU usage to ~60% of original for operations like serving 
+    * HTTP payloads for many commands will now use zstd by default (as opposed
+      to zlib) when both client and server support it. This can reduce
+      server-side CPU usage to ~60% of original for operations like serving
       bundles.
-    * zstd compressed bundles can be produced by specifying the `zstd` bundle 
+    * zstd compressed bundles can be produced by specifying the `zstd` bundle
       type. e.g. `hg bundle -a -t zstd-v2 zstd-bundle.hg`.
-    * A new statistical profiler has been added and made the default profiler 
-      for `--profile`. This profiler gives more accurate results than Python's 
-      built-in cProfile (the previous default) because the profiler overhead is 
-      much smaller. The output from `--profile` now displays the code hot path 
-      by default. This allows Mercurial developers to more accurately identify 
+    * A new statistical profiler has been added and made the default profiler
+      for `--profile`. This profiler gives more accurate results than Python's
+      built-in cProfile (the previous default) because the profiler overhead is
+      much smaller. The output from `--profile` now displays the code hot path
+      by default. This allows Mercurial developers to more accurately identify
       performance problems.
-    * New `followlines(file, from:to, startrev=.)` revset predicate to track a 
+    * New `followlines(file, from:to, startrev=.)` revset predicate to track a
       part of changes.
     * Experimental support for additional git-diff features.
     * Troubled changes (from ChangesetEvolution) are noted more prominently in a few places.
-    * An experimental hg debugupgraderepo command allows in-place upgrading of 
+    * An experimental hg debugupgraderepo command allows in-place upgrading of
       repositories to the latest storage format.
   + Improvements
-    * Performance of reading individual revlog entries has been greatly 
-      improved. This will be noticeable when performing changelog scans on 
+    * Performance of reading individual revlog entries has been greatly
+      improved. This will be noticeable when performing changelog scans on
       large repositories (such as when executing certain revsets).
-    * The low-level content diffing algorithm is now ~2x faster. Operations 
-      that write data to the repository (like commit) can be noticeably faster 
+    * The low-level content diffing algorithm is now ~2x faster. Operations
+      that write data to the repository (like commit) can be noticeably faster
       as a result.
-  
-  See complete changelog at 
+
+  See complete changelog at
   https://www.mercurial-scm.org/wiki/WhatsNew#Mercurial_4.1_.282017-2-1.29
 - refreshed mercurial-locale-path-fix.patch and mercurial-hgk-path-fix.diff
 - refresh package keyring
@@ -2484,27 +2604,27 @@ Fri Jan  6 08:26:50 UTC 2017 - mpluskal@suse.com
 Wed Nov  2 05:21:09 UTC 2016 - develop7@develop7.info
 
 - Mercurial 4.0
-  This is a regularly-scheduled quarterly feature release. Unlike other 
-  4.0 software releases, this is simply 3.9 + .1, so it should be the usual 
+  This is a regularly-scheduled quarterly feature release. Unlike other
+  4.0 software releases, this is simply 3.9 + .1, so it should be the usual
   pain-free upgrade.
-  
+
   + Features
-    * The following commands now also have experimental formatter support: 
+    * The following commands now also have experimental formatter support:
       'hg version', 'hg grep' and 'hg config'
-    * New template keywords and functions: `termwidth`, `mod(a, b)`, 
+    * New template keywords and functions: `termwidth`, `mod(a, b)`,
       `relpath(path)`
     * Basic arithmetic operations in template such as `termwidth - 10`
     * `follow()` revset takes new `startrev` parameter
-    * Bash completion now allows skipping potentially expensive status call 
-      for completing 'hg status' arguments, using $HGCOMPLETE_NOSTATUS 
+    * Bash completion now allows skipping potentially expensive status call
+      for completing 'hg status' arguments, using $HGCOMPLETE_NOSTATUS
       environment variable
   + Improvements
-    * A number of changes were made to move and copy tracking, to make sure 
+    * A number of changes were made to move and copy tracking, to make sure
       move and copy information is not lost during commands like 'hg graft'
     * Compound revset expression is now properly ordered
-    * Python 3 support has received a lot of improvements (but will take a 
+    * Python 3 support has received a lot of improvements (but will take a
       lot of additional work)
-    * zlib performance in hgweb is improved, and it's possible to control zlib 
+    * zlib performance in hgweb is improved, and it's possible to control zlib
       compression level using server.zliblevel option
 - Refreshed mercurial-hgk-path-fix.diff and mercurial-locale-path-fix.patch
 
@@ -2535,45 +2655,45 @@ Mon Aug  1 18:01:50 UTC 2016 - develop7@develop7.info
     * separate() template function added
     * ui.rollback can be set to false to disable the hg rollback command
     * fail-<command> hooks now run when a command fails
-    * experimental.graphstyle.* config options to control styling of graphs in 
+    * experimental.graphstyle.* config options to control styling of graphs in
       console
-    * experimental.histedit.autoverb allows histedit lines beginning with 
+    * experimental.histedit.autoverb allows histedit lines beginning with
       "verb!" to be interpreted as histedit actions
-    * [hostsecurity] config section for defining advanced per-host security 
+    * [hostsecurity] config section for defining advanced per-host security
       settings
-    * ability to define the SHA-256 and SHA-512 hashes of pinned server 
+    * ability to define the SHA-256 and SHA-512 hashes of pinned server
       certificates
     * ability to define CA certificates on a per-host basis
-    * ability to define the minimum TLS protocol version on a global or 
+    * ability to define the minimum TLS protocol version on a global or
       per-host basis
     * sort() revset can now perform topological sorts using the topo option
-    * hgweb can now render JSON for filelog, filerevision, summary, and search 
+    * hgweb can now render JSON for filelog, filerevision, summary, and search
       web commands
-    * [paths] entries can now define a pushrev sub-option to control which 
+    * [paths] entries can now define a pushrev sub-option to control which
       revisions to push by default
-    * The experimental 'journal' extension was added, allowing users to view 
+    * The experimental 'journal' extension was added, allowing users to view
       the previous positions of bookmarks and the working copy
   + Improvements
     This release includes many improvements, including (but not limited to):
     * performance of `hg diff` has been improved
-    * chg now detects more changes to the configuration and execution 
+    * chg now detects more changes to the configuration and execution
       environment
-    * SSL/TLS code has been significantly refactored and now is consistent 
+    * SSL/TLS code has been significantly refactored and now is consistent
       across all consumers (HTTPS, SMTPS)
-    * performance improvements to server communication (particularly for the 
+    * performance improvements to server communication (particularly for the
       largefiles and remotefilelog extensions)
-    * connections to servers whose certificate authority (CA) is unknown are 
+    * connections to servers whose certificate authority (CA) is unknown are
       now refused even if no CA certificates are available (see SecureConnections for details)
-    * fingerprints of server certificates are now printed using SHA-256 
+    * fingerprints of server certificates are now printed using SHA-256
       instead of SHA-1
-    * reads and writes to certain files is now robust and avoids more race 
+    * reads and writes to certain files is now robust and avoids more race
       conditions and edge cases (see ExactCacheValidationPlan)
     * performance improvements to certain revsets
-    * cloning will no longer prompt for a password multiple times when cloning 
+    * cloning will no longer prompt for a password multiple times when cloning
       from a server that requires a password
-    * annotate view in hgweb now groups lines into blocks depending on their 
+    * annotate view in hgweb now groups lines into blocks depending on their
       revision and highlights lines for the current revision
-    * hgweb now displays extra information and also navigation links in popups 
+    * hgweb now displays extra information and also navigation links in popups
       for each line in annotate view
 
 -------------------------------------------------------------------
@@ -2589,7 +2709,7 @@ Sun Jun 12 17:53:35 UTC 2016 - astieger@suse.com
 Tue May 17 07:05:53 UTC 2016 - develop7@develop7.info
 
 - Mercurial v3.8.2
-  This is an unscheduled bugfix release. 3.8.1 contained a noisy deprecation 
+  This is an unscheduled bugfix release. 3.8.1 contained a noisy deprecation
   warning that was only intended for Mercurial developers, sorry.
 
   * bookmarks: properly invalidate volatile sets when writing bookmarks
@@ -2616,34 +2736,34 @@ Mon May  2 19:13:38 UTC 2016 - develop7@develop7.info
   (3.8.1 was released immediately after 3.8 to fix a release oversight.)
   Regularly scheduled feature release. This release contains a low-priority security fix for:
     * CVE-2016-3105 Mercurial: arbitrary code execution when converting Git repos
-  
+
   Features
-  * `hg update` and other commands that can perform update (such as hg pull -u) 
+  * `hg update` and other commands that can perform update (such as hg pull -u)
     now warn about other topological heads
   * cHg has been added
-  * `hg update` now updates to the tip-most changeset on the same topological 
-    branch. Before, it would update to the tip-most changeset, possibly on a 
+  * `hg update` now updates to the tip-most changeset on the same topological
+    branch. Before, it would update to the tip-most changeset, possibly on a
     different topological head
-  * Hints on how to continue interrupted commands are now printed 
-    (e.g. `hg resolve -m` will now tell you to run `hg rebase --continue` or 
+  * Hints on how to continue interrupted commands are now printed
+    (e.g. `hg resolve -m` will now tell you to run `hg rebase --continue` or
     `hg histedit --continue`)
-  * The experimental automv extension has been added. This extension attempts 
+  * The experimental automv extension has been added. This extension attempts
     to detect file copes and renames automatically.
-  * The 3rd party hgwatchman extension has been imported as the fsmonitor 
-    extension. This extension uses filesystem watching to make commands like 
+  * The 3rd party hgwatchman extension has been imported as the fsmonitor
+    extension. This extension uses filesystem watching to make commands like
     `hg status` significantly faster on large repositories.
   * `hg rebase` now chooses its default destination the same way `hg merge` does
   * `hg pull -u` now activates a bookmark if the has a bookmark
-  * `hg pull -u` now deactivates a bookmark if the destination doesn't match 
+  * `hg pull -u` now deactivates a bookmark if the destination doesn't match
     the existing bookmark
   * Improved edge styles in graph log.
-  * User template keywords and functions can be defined in `[templatealias]` 
+  * User template keywords and functions can be defined in `[templatealias]`
     section.
   * It's now possible to push the active bookmark using `hg push -B .`.
-  
+
   Improvements
   This release includes many improvements, including (but not limited to):
-  * performance of copy detection during rebases has been improved, potentially 
+  * performance of copy detection during rebases has been improved, potentially
     leading to faster rebase execution
   * performance of `hg log -f <file>` has been improved
   * syntax errors in loaded extensions are now handled better
@@ -2652,7 +2772,7 @@ Mon May  2 19:13:38 UTC 2016 - develop7@develop7.info
   * Performance of the - revset operator has been improved
   * The blackbox extension now logs more data
   * "hgext" is now a Python namespace package
-  * revsets accessing changelog data (commit messages, authors, dates) are now 
+  * revsets accessing changelog data (commit messages, authors, dates) are now
     10-15% faster
   * hg.exe built in MinGW will now link against the proper Python DLL
 
@@ -2662,15 +2782,15 @@ Wed Mar 30 13:18:23 UTC 2016 - develop7@develop7.info
 - update to v3.7.3
   This is an out of cycle release to address three security issues:
   * CVE-2016-3630 Mercurial: remote code execution in binary delta decoding
-    Mercurial prior to 3.7.3 contained two bounds-checking errors in its binary 
+    Mercurial prior to 3.7.3 contained two bounds-checking errors in its binary
     delta decoder that may be exploitable via clone, push, or pull.
   * CVE-2016-3068 Mercurial: arbitrary code execution with Git subrepos
-    Mercurial prior to 3.7.3 allowed URLs for Git subrepos that could result in 
-    arbitrary code execution on clone. This is a further side-effect of Git 
+    Mercurial prior to 3.7.3 allowed URLs for Git subrepos that could result in
+    arbitrary code execution on clone. This is a further side-effect of Git
     CVE-2015-7545. Reported by Blake Burkhart.
   * CVE-2016-3069 Mercurial: arbitrary code execution when converting Git repos
-    Mercurial prior to 3.7.3 allowed arbitrary code execution when converting 
-    Git repos with hostile names. This could affect automated conversion 
+    Mercurial prior to 3.7.3 allowed arbitrary code execution when converting
+    Git repos with hostile names. This could affect automated conversion
     services. Reported by Blake Burkhart.
 
   + bdiff: (pure) support array.array arrays (issue5130)
@@ -3033,7 +3153,7 @@ Sat Oct  4 16:09:22 UTC 2014 - develop7@develop7.info
 -------------------------------------------------------------------
 Mon Sep 15 10:31:08 UTC 2014 - develop7@develop7.info
 
-- update to v3.1.1  
+- update to v3.1.1
   Changes in v3.1:
   * backout: accept '--edit' like other commands creating new changeset
   * bash_completion: add -l|--list support for shelve
@@ -3108,7 +3228,7 @@ Mon Sep 15 10:31:08 UTC 2014 - develop7@develop7.info
   * version: show enabled extensions (issue4209)
   * version: don't traceback if no extensions to list (issue4312)
   * vim: use try catch in vim plugin to avoid conflicts
-  
+
   Changes in v3.1.1:
   * changectx: ancestor should only prefer merge.preferancestor if it is a revision
   * color: pass on key error for win32 (issue4298)
@@ -3465,7 +3585,7 @@ Wed Sep  4 19:08:50 UTC 2013 - wr@rosenauer.org
   rebase: don't clobber wd on --abort when we've updated away (issue4009)
   revert: make backup when unforgetting a file (issue3423)
   revlog: handle hidden revs in _partialmatch (issue3979)
-  rollback: mark as deprecated 
+  rollback: mark as deprecated
   splicemap: improve error handling when parsing (issue2084)
   splicemap: support paths with spaces in splicemap (issue3844)
   sslutil: force SSLv3 on Python 2.6 and later (issue3905)
@@ -3475,7 +3595,7 @@ Wed Sep  4 19:08:50 UTC 2013 - wr@rosenauer.org
   tip: deprecate the tip command
   update: add tracking of interrupted updates (issue3113)
   worker: check problem state correctly (issue3982)
-  worker: properly report errors from worker processes (issue3982) 
+  worker: properly report errors from worker processes (issue3982)
 
 -------------------------------------------------------------------
 Thu Aug 29 14:41:19 UTC 2013 - wr@rosenauer.org
@@ -3723,7 +3843,7 @@ Mon Feb 11 15:24:20 UTC 2013 - p.drouand@gmail.com
     pathencode: implement both basic and hashed encoding in C
     subrepo: append subrepo path to subrepo error messages
     validate: check for spurious incoming filelog entries
-    hgweb: allow hgweb's archive to recurse into subrepos 
+    hgweb: allow hgweb's archive to recurse into subrepos
   * Changeset Evolution
     hidden changesets are now properly ignored by all commands
     a global --hidden flag is added to give access to hidden changesets
@@ -3734,7 +3854,7 @@ Mon Feb 11 15:24:20 UTC 2013 - p.drouand@gmail.com
     a troubled() revset have been added
     branchmap for of *visible* and *served* changeset are now cached on disk.
     This is a major performance improvements
-    performance improvements of most evolution related algorithm 
+    performance improvements of most evolution related algorithm
   * Extension features
     color: add template label function
     convert: add config option to use the local time zone
@@ -3750,7 +3870,7 @@ Mon Feb 11 15:24:20 UTC 2013 - p.drouand@gmail.com
     rebase: rebase set with multiple roots are now handled by the --rev option
     record: use patch.diffopts to account for user diffopts
     share: always set default path to work with subrepos (issue3518)
-    zsh_completion: add completion of branch names 
+    zsh_completion: add completion of branch names
   * Fixes
     commands: 'hg bookmark NAME' should work even with ui.strict=True
     copies: do not track backward copies, only renames (issue3739)
@@ -3777,12 +3897,12 @@ Mon Feb 11 15:24:20 UTC 2013 - p.drouand@gmail.com
     hgwebdir: use web.prefix when creating url breadcrumbs (issue3790)
     subrepo: allow skipping courtesy phase sync (issue3781)
     merge: .hgsubstate is special as merge destination, not as merge source
-    merge: improved handling of symlinks 
+    merge: improved handling of symlinks
 
 -------------------------------------------------------------------
 Fri Jan 25 03:14:16 UTC 2013 - douglarek@outlook.com
 
-- update to version 2.4.2 
+- update to version 2.4.2
   (bugfix release)
     amend: invalidate dirstate in case of failure (issue3670)
     amend: prevent loss of bookmark on failed amend
@@ -3799,7 +3919,7 @@ Fri Jan 25 03:14:16 UTC 2013 - douglarek@outlook.com
     largefiles: don't walk through all ignored files
     paper: sanity-check page feed links
     scmutil: don't try to match modes on filesystems without modes (issue3740)
-    zeroconf: use port from server instead of picking port from config (issue3746) 
+    zeroconf: use port from server instead of picking port from config (issue3746)
 
 -------------------------------------------------------------------
 Thu Dec 27 21:28:56 UTC 2012 - wr@rosenauer.org
@@ -3862,7 +3982,7 @@ Sat Nov 10 21:14:48 UTC 2012 - wr@rosenauer.org
     notify: support revset selection for subscriptions
     rebase: support for ChangesetEvolution if enabled
     record: checks for valid username before starting recording process (issue3456)
-    record: fix display of non-ASCII names in chunk selection 
+    record: fix display of non-ASCII names in chunk selection
   * Bugfixes
 
 -------------------------------------------------------------------
@@ -4014,7 +4134,7 @@ Tue Aug 30 11:54:23 UTC 2011 - suse@ammler.ch
   * util: rename the util.localpath that uses url to urllocalpath (issue2875)
   * verify: filter messages about missing null manifests (issue2900)
   * web: output a correct date in short format (issue2902)
-- optional tests 
+- optional tests
 
 -------------------------------------------------------------------
 Mon Jul 11 08:16:23 UTC 2011 - saschpe@suse.de
@@ -4202,7 +4322,7 @@ Sat Apr 16 19:47:36 UTC 2011 - ammler@openttdcoop.org
   * push/outgoing: print remote target path even if there's an error (issue2561)
   * subrepo: recognize scp-style paths as git URLs
   * templates: widen the graph canvas (issue2683)
-- mercurial provides hg 
+- mercurial provides hg
 
 -------------------------------------------------------------------
 Fri Mar 25 12:37:39 UTC 2011 - chris@computersalat.de
@@ -4223,7 +4343,7 @@ Fri Mar 25 12:37:39 UTC 2011 - chris@computersalat.de
   * subrepo: backout 67fbe566eff1, --force requires svn >= 1.5
   * subrepo: don't crash when git repo is missing
   * subrepo: handle svn tracked/unknown directory collisions
-  * wix: drop bin/ folder from MSI installers (issue2673) 
+  * wix: drop bin/ folder from MSI installers (issue2673)
 
 -------------------------------------------------------------------
 Wed Mar  9 11:54:26 UTC 2011 - wr@rosenauer.org
@@ -4253,14 +4373,14 @@ Tue Mar  1 11:57:27 UTC 2011 - wr@rosenauer.org
 Wed Feb  2 22:06:58 UTC 2011 - ammler@openttdcoop.org
 
 - Update to version 1.7.5
-  This is a quick bugfix release to include some fixes accidentally 
+  This is a quick bugfix release to include some fixes accidentally
   dropped from 1.7.4.
   * subrepo: fix update -C with svn subrepos when cwd != repo.root
   * subrepo: make update -C clean the working directory for svn subrepos
-  * url: add --insecure option to bypass verification of ssl certificates 
+  * url: add --insecure option to bypass verification of ssl certificates
 
 - Update to version 1.7.4
-  This is a scheduled bugfix release that smooths out some of the 
+  This is a scheduled bugfix release that smooths out some of the
   rough edged introduced with 1.7.3's HTTPS certificate verification.
   * bookmarks: always write undo file
   * bookmarks: respect rollbacks dryrun parameter
@@ -4268,7 +4388,7 @@ Wed Feb  2 22:06:58 UTC 2011 - ammler@openttdcoop.org
   * opener: force copy on 'a'ppend if nlinks() returns 0 (issue1922)
   * subrepo: compare svn subrepo state to last committed revision
   * subrepo: do not report known files inside repositories as unknown
-  * url: 'ssh known host'-like checking of fingerprints of HTTPS 
+  * url: 'ssh known host'-like checking of fingerprints of HTTPS
     certificates (see CACertificates)
   * url: check subjectAltName when verifying ssl certificate
   * url: expand path for web.cacerts
@@ -4542,7 +4662,7 @@ Wed Aug  4 09:09:51 UTC 2010 - pascal.bleser@opensuse.org
   * revset: fix ancestor subset handling (issue2298)
   * runrst: try to be more helpful if docutils is not installed
   * tag: do not allow tag names to consist solely of whitespace (issue2307)
-  * transplant: crash if repo.commit() finds nothing to commit 
+  * transplant: crash if repo.commit() finds nothing to commit
 
 -------------------------------------------------------------------
 Thu Jul 29 23:00:35 CEST 2010 - wr@rosenauer.org
@@ -4555,64 +4675,64 @@ Mon Jul 19 05:36:23 UTC 2010 - wr@rosenauer.org
 - updated to version 1.6
   This release makes a couple small behavior changes:
   Upgrade Notes
-    * hgweb.cgi and hgwebdir.cgi  combined (though old installs of 
+    * hgweb.cgi and hgwebdir.cgi  combined (though old installs of
       either will continue to work)
-    * hgweb and command line templates now require escaping of 
-      open braces ('\{') that aren't part of template expressions 
-    * hgweb now delivers output of external changeset hooks to 
+    * hgweb and command line templates now require escaping of
+      open braces ('\{') that aren't part of template expressions
+    * hgweb now delivers output of external changeset hooks to
       clients
-    * the churn extension lost the --progress flag (uses the 
-      ProgressExtension  instead) 
+    * the churn extension lost the --progress flag (uses the
+      ProgressExtension  instead)
   Core
-    * addremove: optimize addremove -s100 by matching files by 
+    * addremove: optimize addremove -s100 by matching files by
       their SHA1 hashes
     * archive: auto-detect archive type by extension (issue2058)
-    * commit: more friendly handling of new and closed named 
+    * commit: more friendly handling of new and closed named
       branches
-    * hooks: provide pre- and post- hooks with parsed command line 
+    * hooks: provide pre- and post- hooks with parsed command line
       arguments
     * log: add --branch for filtering on named branch
     * log: add --stat for diffstat output
-    * push: add --new-branch option to allow initial push of new 
+    * push: add --new-branch option to allow initial push of new
       branches
-    * push: break infinite http recursion bug with Python 2.6.5 
+    * push: break infinite http recursion bug with Python 2.6.5
       (issue2179)
-    * rollback: add -n/--dry-run flag, report what's being rolled 
+    * rollback: add -n/--dry-run flag, report what's being rolled
       back
     * subrepo: various fixes
     * summary: report copies and renames and add subrepo status
     * tag: add -e/--edit option for modifying the commit message
-    * revsets: introduce a powerful query language for specifying 
-      revisions, see the manpage or hg help revsets 
+    * revsets: introduce a powerful query language for specifying
+      revisions, see the manpage or hg help revsets
   Hgweb
     * unify and simplify hgweb.cgi and hgwebdir.cgi scripts
     * fix race in refreshing repo list (issue2188)
     * simplify hgweb.cgi, add help pointer
     * deliver shell hook output to client
-    * allow --port=0 to specify "choose free port number 
+    * allow --port=0 to specify "choose free port number
       automatically"
-    * improved templater performance 
+    * improved templater performance
   Help
     * add new hgweb, glossary, and revsets topics
-    * numerous improvements to help text 
+    * numerous improvements to help text
   Extensions
-    * acl: support for access control base on branches and 
+    * acl: support for access control base on branches and
       user-defined or OS-level groups
-    * acl: added support for pretxncommit, so that one can call 
+    * acl: added support for pretxncommit, so that one can call
       the ACL hook at (?)
     * bookmarks: add support for pushing and pulling bookmarks
     * churn: add possibility to include/exclude paths
     * color: add support for Windows consoles
-    * color: colorize based on output labels instead of parsing 
+    * color: colorize based on output labels instead of parsing
       output
     * extdiff: add labels, read diff arguments from [merge-tools]
     * keyword: offer svn-like default keywordmaps
     * keyword: support (q)record
     * mq: add a line to hg summary
-    * mq: qpush --move, reorder patch series and apply only the 
+    * mq: qpush --move, reorder patch series and apply only the
       patch
     * progress: progress support for many more commands
-    * rebase: add option to not commit after a collapsing 
+    * rebase: add option to not commit after a collapsing
 
 -------------------------------------------------------------------
 Thu Jun  3 19:41:31 CEST 2010 - wr@rosenauer.org
@@ -4623,15 +4743,15 @@ Thu Jun  3 19:41:31 CEST 2010 - wr@rosenauer.org
   * status: avoid performance regression when no .hgsub is present
   * clone: fix performance issue with hardlinks and Windows shares
   * hgweb: fix race in refreshing repo list (issue2188)
-  * hgrc: clarify that hgrc keys can be overridden and sections 
+  * hgrc: clarify that hgrc keys can be overridden and sections
     can be split
-  * eol: new extension for managing file newlines based on a 
+  * eol: new extension for managing file newlines based on a
     version controlled configuration file
   * pager: fork and exec pager as parent process with /bin/sh -c
   * rebase: stress that only local changesets should be rebased
   * convert/svn: close gettags() log stream (issue2196)
-  * record: check that we are not committing a merge before patch 
-    selection 
+  * record: check that we are not committing a merge before patch
+    selection
 
 -------------------------------------------------------------------
 Wed May 26 06:52:34 CEST 2010 - wr@rosenauer.org
@@ -4660,11 +4780,11 @@ Sun Apr 11 10:15:08 CEST 2010 - wr@rosenauer.org
     * warn about attempts to use hg branch to switch branches
     * push: fix bug in prepush logic and its tests
     * hgweb: fix broken URLs of RSS/Atom feeds
-    * subrepo: several bug fixes 
+    * subrepo: several bug fixes
   Extensions
     * acl: added support for '*' (everyone) in user list
     * progress: use stderr instead of stdout
-    * schemes: add Kiln On Demand to default schemes  
+    * schemes: add Kiln On Demand to default schemes
 
 -------------------------------------------------------------------
 Tue Mar  9 11:11:16 CET 2010 - wr@rosenauer.org
@@ -4672,47 +4792,47 @@ Tue Mar  9 11:11:16 CET 2010 - wr@rosenauer.org
 - updated to version 1.5:
 
   Behavior changes:
-  * hg heads now shows all branch heads, use --topo for old 
+  * hg heads now shows all branch heads, use --topo for old
     behavior
-  * hg annotate now follows copies and renames by default, 
+  * hg annotate now follows copies and renames by default,
     use --no-follow for old behavior
-  * the repo#name URL syntax now refers to all branch heads if 
+  * the repo#name URL syntax now refers to all branch heads if
     name is a branch
-  * servers now allow clone --uncompressed by default, set 
+  * servers now allow clone --uncompressed by default, set
     server.uncompressed=false for old behavior
-  * the {file_copies} template now displays copies unconditionally, 
+  * the {file_copies} template now displays copies unconditionally,
     use {file_copies_switch} for old behavior
   * the templates/ directory has moved inside mercurial/
-  * mq patches are automatically upgraded to git patches, 
-    use mq.git=keep for old behavior 
+  * mq patches are automatically upgraded to git patches,
+    use mq.git=keep for old behavior
 
   Core
   * improved behavior for named branches with heads command
   * new XML output template for logs
-  * import extract multiple patches from emails, mboxes, files, 
+  * import extract multiple patches from emails, mboxes, files,
     and URLs
-  * new patch.eol=auto option to ignore patch line-endings while 
+  * new patch.eol=auto option to ignore patch line-endings while
     preserving target file endings.
-  * new -b/--branch option for clone, bundle, incoming, outgoing, 
+  * new -b/--branch option for clone, bundle, incoming, outgoing,
     pull, and push
-  * new server.validate option to validate completeness of pushed 
+  * new server.validate option to validate completeness of pushed
     changesets
   * subrepos now has basic Subversion support
   * support for SSL server certificates and improved IPv6 support
-  * the HGPLAIN environment variable makes output more stable for 
-    scripts 
+  * the HGPLAIN environment variable makes output more stable for
+    scripts
   Extensions
   * new progress bar extension
-  * mq: new --mq option to make regular commands operate on 
+  * mq: new --mq option to make regular commands operate on
     queue repository
-  * mq: automatically upgrade conventional patches to git format 
+  * mq: automatically upgrade conventional patches to git format
     where needed
-  * color: add support for bookmarks, resolve -l, and churn 
+  * color: add support for bookmarks, resolve -l, and churn
     --diffstat
   * convert: two CVS history editing hooks
   * win32mbcs: add configuration to specify path encoding
   * zeroconf: many bug fixes
-  * rebase: new --detach option for rebase 
+  * rebase: new --detach option for rebase
   Web Interface
   * improve navigation on log and graph pages
   * support for pluggable authorization
@@ -4720,18 +4840,18 @@ Tue Mar  9 11:11:16 CET 2010 - wr@rosenauer.org
   Help and Documentation
   * greatly improve error messages and command documentation
   * support extended documentation with --verbose
-  * provide help for disabled extensions and commands  
+  * provide help for disabled extensions and commands
 
 -------------------------------------------------------------------
 Mon Feb  8 09:40:00 CET 2010 - wr@rosenauer.org
 
 - updated to version 1.4.3:
-  * Mercurial license has changed from GPLv2 to GPLv2+ 
-  * speed up copy detection in merge, status, and diff 
+  * Mercurial license has changed from GPLv2 to GPLv2+
+  * speed up copy detection in merge, status, and diff
   * templates: fix relative path expansion on style setting
-  * merge: fix merging of already-merged subrepos 
+  * merge: fix merging of already-merged subrepos
   * summary: fix i18n issue reporting clean working directories
-  * hgweb: improve IIS PATH_INFO handling 
+  * hgweb: improve IIS PATH_INFO handling
 
 -------------------------------------------------------------------
 Fri Jan  8 08:48:28 CET 2010 - wr@rosenauer.org
@@ -4743,7 +4863,7 @@ Fri Jan  8 08:48:28 CET 2010 - wr@rosenauer.org
     * auth: allow specifying auth sections in .hg/hgrc
     * patch: fix handling of chunk offsets
     * subrepo: add default path to new clones
-    * docs: Fix rst2html detection 
+    * docs: Fix rst2html detection
   extensions:
     * convert/svn: better handling of hg recursive call failure
     * convert/svn: make sink recover gracefully from empty changeset
@@ -4752,10 +4872,10 @@ Fri Jan  8 08:48:28 CET 2010 - wr@rosenauer.org
     * mq: qnew -f rejects merge working directories
     * mq: qpop: remove added files before re-adding removed files
     * patchbomb: handle repository#rev URLs correctly
-    * share: use defaultdest to compute unspecified destination 
+    * share: use defaultdest to compute unspecified destination
   regression fixes:
     * fix to prepush logic when it creates new heads
-    * fix qseries truncation 
+    * fix qseries truncation
   other:
     * doc fixes: formatting, missing options
     * tests fixes (now less dependent on environment variables)
@@ -4764,51 +4884,51 @@ Fri Jan  8 08:48:28 CET 2010 - wr@rosenauer.org
     * share: fix a bad interaction with clone
     * show non-default branch names with summary -q
     * new schemes extension
-    * i18n updates  
+    * i18n updates
 
 -------------------------------------------------------------------
 Wed Nov 25 10:42:58 CET 2009 - wr@rosenauer.org
 
 - updated to version 1.4:
   core:
-    * summary: new command summarizes current working state 
-    * tags: new tag cache greatly speeds up tag operations 
-    * diff: new --stat option to show diffstat 
-    * diff: add --reverse option to diff 
-    * subrepo: fix a bunch of issues with the experimental subrepo 
-      extension 
-    * status: fixes for behavior when working with clock skew 
-    * clone: new -u/--updaterev option 
+    * summary: new command summarizes current working state
+    * tags: new tag cache greatly speeds up tag operations
+    * diff: new --stat option to show diffstat
+    * diff: add --reverse option to diff
+    * subrepo: fix a bunch of issues with the experimental subrepo
+      extension
+    * status: fixes for behavior when working with clock skew
+    * clone: new -u/--updaterev option
     * templater: new latesttag and latesttagdistance keywords
-    * push/pull: handle some broken pipe errors during large 
+    * push/pull: handle some broken pipe errors during large
       transfers
-    * config: environment variables and ~user constructs are 
+    * config: environment variables and ~user constructs are
       expanded in pathnames
   hgweb:
-    * fix for showing header lines in raw changeset diffs 
-    * try to send better error messages to the client 
-    * use config-supplied ordering by default in hgwebdir index 
+    * fix for showing header lines in raw changeset diffs
+    * try to send better error messages to the client
+    * use config-supplied ordering by default in hgwebdir index
       pages
-    * add web.descend option to disable showing all nested 
-      repositories in hgwebdir 
+    * add web.descend option to disable showing all nested
+      repositories in hgwebdir
   extensions:
-    * mq: add -1 options to qapplied/qunapplied 
-    * patchbomb: add a --flag option to set a flag value in the 
+    * mq: add -1 options to qapplied/qunapplied
+    * patchbomb: add a --flag option to set a flag value in the
       Subject header
-    * patchbomb: correctly handle Unicode domains (using the IDNA 
+    * patchbomb: correctly handle Unicode domains (using the IDNA
       encoding scheme)
     * color: improve colorization of the qseries command
     * inotify: cleaner code, fixed pattern handling
     * zeroconf: show repository descriptions
     * rebase: some performance and correctness fixes
     * extdiff: add 3-way diff for merge changesets
-    * convert: handle directory renaming in Darcs, fixed file 
+    * convert: handle directory renaming in Darcs, fixed file
       renaming
-    * relink: new extension which helps people re-hardlink their 
-      clones 
+    * relink: new extension which helps people re-hardlink their
+      clones
   other:
-    * contrib/shrink-revlog.py script that can significantly 
-      shrink some internal hg files 
+    * contrib/shrink-revlog.py script that can significantly
+      shrink some internal hg files
 - add hgweb.cgi and hgwebdir.cgi to docdir
 
 -------------------------------------------------------------------
@@ -4822,11 +4942,11 @@ Mon Jul 27 14:16:50 CEST 2009 - tiwai@suse.de
   * fixed transaction handling exception
   * fixed incoming with graphlog extension
   * fixed slow commit in fetch extension
-  * fixed loading of win32mbcs extension 
+  * fixed loading of win32mbcs extension
   * fixed http username handling in acl extension
   * fixed subrepo path joining on Windows
   * allow update --check to cross branches
-  * miscellaneous small doc and bug fixes 
+  * miscellaneous small doc and bug fixes
 - fixed builds on SLE10
 
 -------------------------------------------------------------------
@@ -4851,7 +4971,7 @@ Mon Apr 27 14:26:03 CEST 2009 - tiwai@suse.de
   * fix diff against bundles
   * improve fetch logic for inactive branches
   * fix diffstat with notify
-  * fix 'synthetic file adds' in CVS conversion 
+  * fix 'synthetic file adds' in CVS conversion
 
 -------------------------------------------------------------------
 Thu Mar  5 16:00:22 CET 2009 - tiwai@suse.de
@@ -4864,16 +4984,16 @@ Thu Mar  5 16:00:22 CET 2009 - tiwai@suse.de
   * added optional pure-Python versions of C modules
   * pending changesets can now be accessed safely from hooks
   * diff: added -c option to show single changeset
-  * many improvements to the documentation and online help topics 
+  * many improvements to the documentation and online help topics
   * convert:
           o new support for perforce sources
           o improvements to handling cvs sources
           o improvements to handling gnu arch source
-          o improvements to handling darcs sources 
+          o improvements to handling darcs sources
   * bookmarks:
           o set current to new when current is renamed
           o bookmarks: Add track.current option
-          o bookmarks: add bookmarks to tags 
+          o bookmarks: add bookmarks to tags
   * mq: allow qpop when it won't invalidate any dirstate parents
   * patchbomb: respect diff settings
   * rebase: pull --rebase updates if there is nothing to rebase
@@ -4881,12 +5001,12 @@ Thu Mar  5 16:00:22 CET 2009 - tiwai@suse.de
   * zeroconf: added more documentation
   * hgk: add several color settings
   * the imerge extension has been removed (obsoleted by the resolve
-    command) 
+    command)
 
 -------------------------------------------------------------------
 Thu Mar  5 15:57:00 CET 2009 - ro@suse.de
 
-- ignore return value from subshells to fix build 
+- ignore return value from subshells to fix build
 
 -------------------------------------------------------------------
 Thu Jan 29 14:24:21 CET 2009 - tiwai@suse.de
@@ -4909,13 +5029,13 @@ Thu Jan  8 08:17:10 CET 2009 - tiwai@suse.de
     * fix removing symlinks with git diffs
     * fix directory creation bug in patch
     * rebase: allow keeping branch names
-    * fix a copy bug in the SVN converter 
+    * fix a copy bug in the SVN converter
 - updated to version 1.1.2:
   This is a minor release including one security fix and two
   minor bug fixes
     * improve path auditing (issue 1450)
     * fix date-related test failures in test suite
-    * add graph controls to monoblue theme 
+    * add graph controls to monoblue theme
 
 -------------------------------------------------------------------
 Thu Dec  4 16:46:34 CET 2008 - tiwai@suse.de

@@ -48,4 +48,14 @@
   * Updates documentation about combining diacritic marks (#29)</comment>
     <requestid>1115781</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7a2ffbd39105b26518f4fc5aad19fdac</srcmd5>
+    <version>2.1.1</version>
+    <time>1732198465</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.1.1:
+  * Bump version in docs
+  * Removes Python 3.8 support</comment>
+    <requestid>1225380</requestid>
+  </revision>
 </revisionlist>

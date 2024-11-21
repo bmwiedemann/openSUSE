@@ -425,4 +425,17 @@
 </comment>
     <requestid>1221954</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>93c89d8cd6627f2b21e8c79288692089</srcmd5>
+    <version>5.1.2.1.0+git.1731601260.fe71d0f</version>
+    <time>1732198384</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 5.1.2.1.0+git.1731601260.fe71d0f:
+  * Windows: Allow amalgamated static builds with msvcbuild.bat.
+  * Always close profiler output file.
+  * Fix override of INSTALL_LJLIBD in the presence of DESTDIR.
+  * Fix bit op coercion for shifts in DUALNUM builds.
+</comment>
+    <requestid>1225213</requestid>
+  </revision>
 </revisionlist>

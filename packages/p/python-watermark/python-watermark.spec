@@ -16,9 +16,8 @@
 #
 
 
-%define skip_python39 1
 Name:           python-watermark
-Version:        2.4.3
+Version:        2.5.0
 Release:        0
 Summary:        IPython magic function to psystem information
 License:        BSD-3-Clause
@@ -66,7 +65,7 @@ and hardware information.
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/watermark-%{version}*-info
+%{python_sitelib}/watermark-%{version}.dist-info
 %{python_sitelib}/watermark
 
 %changelog

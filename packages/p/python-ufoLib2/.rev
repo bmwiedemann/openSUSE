@@ -88,4 +88,14 @@
     <comment></comment>
     <requestid>1136818</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6425dd1cbeff86ff234fbe1b4bf3aac8</srcmd5>
+    <version>0.16.1</version>
+    <time>1732198485</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.16.1:
+  * Drop support Python 3.7
+  * Update testing dependencies and cattrs minimum version</comment>
+    <requestid>1225396</requestid>
+  </revision>
 </revisionlist>

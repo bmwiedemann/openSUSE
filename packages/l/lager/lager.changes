@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 24 07:21:38 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.1.1:
+  * Fix license in nix build file
+
+-------------------------------------------------------------------
 Fri Jul 28 11:59:42 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Init lager

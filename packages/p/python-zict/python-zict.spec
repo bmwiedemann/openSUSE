@@ -33,7 +33,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module lmdb}
+#BuildRequires:  %%{python_module lmdb}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-timeout}

@@ -158,4 +158,17 @@
     Anthony Ricaud in PR #484.</comment>
     <requestid>1219727</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>27082f9bd0fbd257ed21b46582edd304</srcmd5>
+    <version>6.8.2</version>
+    <time>1732198439</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.8.2:
+  * Fix compression speed gains for the thread pool when running
+    Django’s collectstatic. The thread pool had no effect due to
+    use of a generator for the results, a refactoring introduced
+    when reviewing the initial PR. Thanks to Petr Přikryl for the
+    investigation and fix in PR #616.</comment>
+    <requestid>1225343</requestid>
+  </revision>
 </revisionlist>

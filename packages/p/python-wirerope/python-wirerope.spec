@@ -1,7 +1,7 @@
 #
 # spec file for package python-wirerope
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%bcond_without python2
 Name:           python-wirerope
-Version:        0.4.7
+Version:        0.4.8
 Release:        0
 Summary:        The Way to Handle Bound Methods
 License:        BSD-2-Clause
@@ -31,14 +30,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six >= 1.11.0
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python-inspect2 >= 0.1.0
-BuildRequires:  python-singledispatch >= 3.4.0.3
-%endif
-%ifpython2
-Requires:       python-inspect2 >= 0.1.0
-Requires:       python-singledispatch >= 3.4.0.3
-%endif
 %python_subpackages
 
 %description

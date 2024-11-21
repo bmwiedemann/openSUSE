@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 20 17:05:10 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.2:
+  * Split out Python code into git branches to support older
+    Python.
+  * Master now can use newer Python idioms like f-strings, and
+    newer packaging uses `pyproject.toml`.
+
+-------------------------------------------------------------------
 Sat Feb  5 17:43:21 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - New package.

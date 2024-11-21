@@ -315,4 +315,20 @@ Note: resubmit with fixed license</comment>
     CoordSystem.coord_tuple_transform_to are deprecated. Class</comment>
     <requestid>1183920</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>a7cf85293e795a8fd95c1fce61078b92</srcmd5>
+    <version>1.13.3</version>
+    <time>1732198475</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.13.3:
+  * Handle matrices of zero columns correctly in the Matrix
+    constructor.
+  * NumPy numbers can be used with clebsch_gordan
+  * An inconsistency in Float/Rational comparisons was fixed.
+  * Fixed a bug that caused LambertW to hang on specific inputs
+  * A regression introduced in SymPy 1.13 in the heurisch
+    integration routine was fixed
+  * see also https://github.com/sympy/sympy/wiki/release-notes-for-1.13.0</comment>
+    <requestid>1225363</requestid>
+  </revision>
 </revisionlist>

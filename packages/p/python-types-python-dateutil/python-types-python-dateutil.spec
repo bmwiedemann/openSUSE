@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-types-python-dateutil
-Version:        2.9.0.20240316
+Version:        2.9.0.20241003
 Release:        0
 Summary:        Typing stubs for python-dateutil
 License:        Apache-2.0

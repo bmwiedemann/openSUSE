@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 27 12:21:01 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use %cmake_build instead of %make_jobs
+
+-------------------------------------------------------------------
 Thu Jan 23 06:17:53 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Add keyring and signature verification

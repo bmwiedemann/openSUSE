@@ -332,11 +332,11 @@ Requires:       gcc
 
 # CMake and Ninja required to drive the bundled llvm build.
 # Cmake is also needed in tests.
-%if 0%{?sle_version} >= 120000 && 0%{?sle_version} <= 150200
+%if 0%{?sle_version} >= 120000 && 0%{?sle_version} <= 150300
 # In these distros cmake is 2.x, or 3.X < 3.13, so we need cmake3 for building llvm.
-BuildRequires:  cmake3 > 3.13.4
+BuildRequires:  cmake3 >= 3.20.0
 %else
-BuildRequires:  cmake > 3.13.4
+BuildRequires:  cmake >= 3.20.0
 %endif
 
 # To build rust-lld

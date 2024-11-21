@@ -69,4 +69,13 @@
   * Show the error details in ValidationError.</comment>
     <requestid>1184131</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>241579724cd808656d8710ec89a2ed19</srcmd5>
+    <version>2.1.0</version>
+    <time>1732198427</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.1.0:
+  * Fix incorrect validation for scripts with callable</comment>
+    <requestid>1225313</requestid>
+  </revision>
 </revisionlist>

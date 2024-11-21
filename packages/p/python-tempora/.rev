@@ -207,4 +207,18 @@
   * In utc.now(), bind late to allow for monkeypatching.</comment>
     <requestid>1184902</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ad40c85d7f26c8779ccfccaf4b787c6c</srcmd5>
+    <version>5.7.0</version>
+    <time>1732198396</time>
+    <user>anag+factory</user>
+    <comment>- add missing requires on dateutil
+
+- Update to 5.7.0
+  * Add a tzinfos mapping and parse method for
+    easy datetime parsing with timezone support.
+
+- Update to version 5.1.0</comment>
+    <requestid>1225320</requestid>
+  </revision>
 </revisionlist>

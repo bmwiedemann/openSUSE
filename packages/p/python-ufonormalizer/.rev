@@ -31,4 +31,16 @@
     <comment></comment>
     <requestid>959855</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>22705fd3b368e00653f1cb2fe5547386</srcmd5>
+    <version>0.6.2</version>
+    <time>1732198469</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.6.2:
+  * Fix conversion of floats
+
+    layerinfo.plist)
+  * Fixes plistlib issues with Python 3.9</comment>
+    <requestid>1225385</requestid>
+  </revision>
 </revisionlist>

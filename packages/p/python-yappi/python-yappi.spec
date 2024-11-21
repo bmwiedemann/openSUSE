@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-yappi
-Version:        1.6.0
+Version:        1.6.10
 Release:        0
 Summary:        Yet Another Python Profiler
 License:        MIT

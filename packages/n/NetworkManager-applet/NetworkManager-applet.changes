@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 20 17:22:15 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Make pkgconfig(ayatana-appindicator3-0.1) BuildRequires
+  conditional for ppc64le, as it is not available there.
+
+-------------------------------------------------------------------
 Fri May 17 10:49:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Swicth to ayatana-appindicator: Replace

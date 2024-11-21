@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov 20 00:54:23 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 1.10.2:
+  * Fix deprecation warning from use of wheel.bdist_wheel.
+  * Fix regression in 1.10.0 where editable builds would be built in release mode
+  * Support Python 3.13
+  * Add SETUPTOOLS_RUST_PEP517_USE_BASE_PYTHON environment variable to use
+    the base interpreter path when running inside a virtual environment to
+    avoid recompilation when switching between virtual environments.
+  * Delay import of dependencies until use to avoid import errors during
+    a partially complete install when multiple packages are installing at
+    once.
+  * Deprecate --build-temp argument to build_rust command (it does nothing).
+
+-------------------------------------------------------------------
 Thu Feb 29 09:23:45 UTC 2024 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 1.9.0

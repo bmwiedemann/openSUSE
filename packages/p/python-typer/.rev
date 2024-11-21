@@ -184,4 +184,29 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1219467</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>61739b413a7c0a5c9498d224911c25e1</srcmd5>
+    <version>0.13.1</version>
+    <time>1732198405</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.13.1:
+  * Remove Rich tags when showing completion text.
+  * Render Rich markup as HTML in Markdown docs.
+  * Support cp850 encoding for auto-completion in PowerShell.
+  * Allow gettext translation of help message.
+  * Fix printing HTML from Rich output. PR #1055 by @tiangolo.
+  * Update markdown includes to use the new simpler format. PR
+- update to 0.13.0:
+  * Handle `KeyboardInterrupt` separately from other
+    exceptions.
+  * Update `launch` to not print anything when opening urls.
+  * Show help items in order of definition.
+  * Fix equality check for custom classes.
+  * Allow colon in zsh autocomplete values and descriptions.
+  * Deprecate support for `is_flag` and `flag_value`
+    parameters.
+  * Remove unused functionality from `_typing.py` file.
+  * Fix typo in function name `_make_rich_text`.</comment>
+    <requestid>1225371</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 21 11:57:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- buildignore also python313-Pillow
+
+-------------------------------------------------------------------
 Fri Feb  9 12:00:01 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Add missing setuptools build requirement
@@ -120,7 +125,7 @@ Sat Apr 17 12:25:23 UTC 2021 - Ben Greiner <code@bnavigator.de>
 Tue Feb 23 19:25:36 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 7.3.0
-  * Replace use of Traits on_trait_change with observe. 
+  * Replace use of Traits on_trait_change with observe.
 - Release 7.2.0
   * New <pyface.undo> subpackage that has been copied over from
     apptools (soon to be deprecated in apptools)
@@ -132,10 +137,10 @@ Tue Feb 23 19:25:36 UTC 2021 - Ben Greiner <code@bnavigator.de>
     Additional examples are also added to the source
     distribution. Please note that as of this release the
     API is provisional.
-  * A new pyface.color.Color class and a corresponding 
+  * A new pyface.color.Color class and a corresponding
     pyface.ui_traits.PyfaceColor trait type have been
-    introduced to support representing colors via a toolkit 
-    independent API. See Trait Types section of the user manual 
+    introduced to support representing colors via a toolkit
+    independent API. See Trait Types section of the user manual
     for further details.
 - Add explicit skip_python2
 - Don't test numpy in python36 (NEP 29, not available in TW)
@@ -265,7 +270,7 @@ Tue Apr 12 19:20:23 UTC 2016 - toddrme2178@gmail.com
 -------------------------------------------------------------------
 Fri Sep  4 11:00:08 UTC 2015 - toddrme2178@gmail.com
 
-- Release 4.5.2 
+- Release 4.5.2
   - Enhancements
     * Added many tests, increasing test coverage by about 10% (PR#147)
     * Add continuous integration support for Windows and Qt via Appveyor (PR #154)

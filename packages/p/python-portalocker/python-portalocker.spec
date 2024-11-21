@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-portalocker
-Version:        2.10.1
+Version:        3.0.0
 Release:        0
 Summary:        Locking library for Python
 License:        Python-2.0

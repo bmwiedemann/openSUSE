@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Nov 21 08:39:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.13.1:
+  * Remove Rich tags when showing completion text.
+  * Render Rich markup as HTML in Markdown docs.
+  * Support cp850 encoding for auto-completion in PowerShell.
+  * Allow gettext translation of help message.
+  * Fix printing HTML from Rich output.
+- update to 0.13.0:
+  * Handle `KeyboardInterrupt` separately from other
+    exceptions.
+  * Update `launch` to not print anything when opening urls.
+  * Fix equality check for custom classes. PR #979 by @AryazE.
+  * Allow colon in zsh autocomplete values and descriptions. PR
+  * Deprecate support for `is_flag` and `flag_value`
+    parameters.
+  * Remove unused functionality from `_typing.py` file.
+  * Fix typo in function name `_make_rich_text`.
+  * Only run completion installation tests when the env var
+    `_TYPER_RUN_INSTALL_COMPLETION_TESTS` is set.
+
+-------------------------------------------------------------------
 Fri Sep 27 15:23:23 UTC 2024 - Matthias Bach <marix@marix.org> - 0.12.5
 
 - Switch PDM dependency from python3-pdm to python3-pdm-backend to

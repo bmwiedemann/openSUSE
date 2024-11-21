@@ -1,0 +1,33 @@
+diff --git a/data/org.supergfxctl.Daemon.conf b/data/org.supergfxctl.Daemon.conf
+index 77fa627..9bc654f 100644
+--- a/data/org.supergfxctl.Daemon.conf
++++ b/data/org.supergfxctl.Daemon.conf
+@@ -2,24 +2,16 @@
+           "-//freedesktop//DTD D-BUS Bus Configuration 1.0//EN"
+           "http://www.freedesktop.org/standards/dbus/1.0/busconfig.dtd">
+ <busconfig>
+-    <policy group="adm">
+-        <allow send_destination="org.supergfxctl.Daemon"/>
+-        <allow receive_sender="org.supergfxctl.Daemon"/>
+-    </policy>
+-    <policy group="sudo">
+-        <allow send_destination="org.supergfxctl.Daemon"/>
+-        <allow receive_sender="org.supergfxctl.Daemon"/>
+-    </policy>
+-    <policy group="users">
++    <policy user="root">
++        <allow own="org.supergfxctl.Daemon"/>
+         <allow send_destination="org.supergfxctl.Daemon"/>
+         <allow receive_sender="org.supergfxctl.Daemon"/>
+     </policy>
+-    <policy group="wheel">
++    <policy group="video">
+         <allow send_destination="org.supergfxctl.Daemon"/>
+         <allow receive_sender="org.supergfxctl.Daemon"/>
+     </policy>
+-    <policy user="root">
+-        <allow own="org.supergfxctl.Daemon"/>
++    <policy group="supergfxctl">
+         <allow send_destination="org.supergfxctl.Daemon"/>
+         <allow receive_sender="org.supergfxctl.Daemon"/>
+     </policy>

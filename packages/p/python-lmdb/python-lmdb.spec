@@ -27,8 +27,10 @@ Source:         https://files.pythonhosted.org/packages/source/l/lmdb/lmdb-%{ver
 Patch1:         https://github.com/jnwatson/py-lmdb/pull/368/commits/206a3754466397baeb418e70be9d35b12cc4079f.patch#/py313-support.patch
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  lmdb-devel
 BuildRequires:  python-rpm-macros
@@ -57,21 +59,19 @@ LMDB is a tiny database with the following properties:
 
 %build
 export LMDB_FORCE_SYSTEM=1
-%python_build
-
-%check
-%python_exec setup.py develop --user
-%python_exec -c 'import lmdb.cpython'
-%pytest tests
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+
+%check
+%pytest_arch
 
 %files %{python_files}
 %license LICENSE
 %doc README.md ChangeLog
 %{python_sitearch}/lmdb
-%{python_sitearch}/lmdb-%{version}*-info
+%{python_sitearch}/lmdb-%{version}.dist-info
 
 %changelog

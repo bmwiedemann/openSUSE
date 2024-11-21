@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov 17 13:31:39 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Disable python3 (=3.6) flavor for 15.X
+  * Upstream only supports Python 3.7+
+  * Requires sip 6.8 which only supports Python 3.8+
+
+-------------------------------------------------------------------
 Thu Nov  7 17:09:23 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Add CVE-2024-50602-no-crash-XML_ResumeParser.patch fixing a

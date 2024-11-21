@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-kazoo
 Version:        2.10.0
 Release:        0
@@ -28,13 +28,13 @@ Source:         https://files.pythonhosted.org/packages/source/k/kazoo/kazoo-%{v
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-six
+Suggests:       python-pure-sasl
+BuildArch:      noarch
 %ifpython2
 Requires:       python-eventlet >= 0.17.1
 Requires:       python-gevent >= 1.2
 %endif
-Requires:       python-six
-Suggests:       python-pure-sasl
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -56,6 +56,7 @@ Implements a higher level API to Apache Zookeeper for Python clients.
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/kazoo
+%{python_sitelib}/kazoo-%{version}*-info
 
 %changelog

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 20 16:32:27 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.18.0:
+  * Allow to disable writing computation times #1385
+  * [ENH] Add option to render multiple images from same cell as
+    single-img #1384
+  * Fix indexst variable does not exist when own index gallery is
+    first #1383
+
+-------------------------------------------------------------------
 Wed Sep 25 05:17:17 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

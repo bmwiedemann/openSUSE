@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov 20 16:21:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.0:
+  * Unify CLIs (#537).
+  * Move "Attributes" and "Methods" below "Parameters" (#571).
+  * FIX: coroutines can have a return statement (#542).
+  * Unwrap decorated objects for YD01 validation check (#541).
+  * Fix bug with validation encoding (#550).
+  * Add note about TOML regex; fix typo (#552).
+  * DOC: Clarify recommendations regarding use of backticks
+    (#525).
+
+-------------------------------------------------------------------
 Wed Apr  3 07:51:01 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.0:

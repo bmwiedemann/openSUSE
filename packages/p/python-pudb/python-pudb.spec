@@ -21,13 +21,14 @@
 %define py_maj_ver %(c=%{python})
 %{?sle15_python_module_pythons}
 Name:           python-pudb
-Version:        2024.1.2
+Version:        2024.1.3
 Release:        0
 Summary:        A full-screen, console-based Python debugger
 License:        MIT
 Group:          Development/Tools/Debuggers
 URL:            https://github.com/inducer/pudb
 Source0:        https://files.pythonhosted.org/packages/source/p/%{upstream_name}/%{upstream_name}-%{version}.tar.gz
+BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module urwid >= 2.4}
@@ -51,8 +52,8 @@ of Turbo Pascal.
 
 %prep
 %autosetup -p1 -n %{upstream_name}-%{version}
-
 sed -i '1{\@^#! %{_bindir}/env python@d}' pudb/debugger.py
+rm -v LICENSE~
 
 %build
 %pyproject_wheel

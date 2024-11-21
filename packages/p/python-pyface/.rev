@@ -174,4 +174,18 @@
     <comment></comment>
     <requestid>1145414</requestid>
   </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>05b8e931088f25755b86e1712d5640dd</srcmd5>
+    <version>8.0.0</version>
+    <time>1732198423</time>
+    <user>anag+factory</user>
+    <comment>- buildignore also python313-Pillow
+
+  * Replace use of Traits on_trait_change with observe.
+  * A new pyface.color.Color class and a corresponding
+    introduced to support representing colors via a toolkit
+    independent API. See Trait Types section of the user manual
+- Release 4.5.2</comment>
+    <requestid>1225582</requestid>
+  </revision>
 </revisionlist>

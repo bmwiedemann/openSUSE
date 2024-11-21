@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>1221774</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>331c4af9889d8b42d3e0c491c0444553</srcmd5>
+    <version>0.19.9</version>
+    <time>1732198405</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.19.9:
+  * Fix missing PROVIDE_AUTOMATIC_OPTIONS config for
+    compatibility with Flask 3.1.</comment>
+    <requestid>1225364</requestid>
+  </revision>
 </revisionlist>

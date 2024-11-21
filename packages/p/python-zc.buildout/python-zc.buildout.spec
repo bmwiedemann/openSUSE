@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-zc.buildout
-Version:        3.1.0
+Version:        3.3
 Release:        0
 Summary:        System for managing development buildouts
 License:        ZPL-2.1

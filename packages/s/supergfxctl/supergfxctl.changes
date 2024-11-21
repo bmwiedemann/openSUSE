@@ -1,0 +1,196 @@
+-------------------------------------------------------------------
+Mon Nov 18 16:44:53 UTC 2024 - RN <R_Nik_C@proton.me>
+
+- Added upstream GPU detection patch
+
+-------------------------------------------------------------------
+Mon Nov 18 11:07:05 UTC 2024 - RN <R_Nik_C@proton.me>
+
+- Added patch for user groups 
+- Removed `users`, `sudo`, `adm` and `wheel` groups
+- Added `video` group and separated `supergfxctl`
+
+-------------------------------------------------------------------
+Thu Oct 03 16:16:22 UTC 2024 - RN <R_Nik_C@proton.me>
+
+- Update to version 5.2.4 release:
+  * Update CHANGELOG.md
+  * Fix dGPU detection for FA401WV
+
+-------------------------------------------------------------------
+Sun Sep 22 06:50:15 UTC 2024 - RN <R_Nik_C@proton.me>
+
+- Update to version 5.2.4:
+  * Bump version and deps
+  * fix: check alternate path for egpu_enable flag
+  * Bump deps and version
+  * Bump deps
+  * Remove the nvidia/false config stuff as too problematic
+  * Further tweaks to asus dgpu safety check
+  * asus egpu fixes
+  * Update deps
+  * Update changelog
+
+-------------------------------------------------------------------
+Wed Jun 12 17:39:23 UTC 2024 - RN <R_Nik_c@proton.me>
+
+- Fixing update process bug
+
+-------------------------------------------------------------------
+Thu Mar 28 19:59:05 UTC 2024 - RN <R_Nik_c@proton.me>
+
+- Update to 5.2.1 
+- Better sanity check for booting without egpu after it was previously set
+- Added Vulkan ICD profile switching 
+
+-------------------------------------------------------------------
+Thu Dec 28 16:37:31 UTC 2023 - RN <R_Nik_C@proton.me>
+
+- Switched to _service usage, because cargo_config is part of the vendor.tar now 
+- Cleaned up .spec
+
+-------------------------------------------------------------------
+Wed Dec 27 22:56:20 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid bashisms in build recipe
+
+-------------------------------------------------------------------
+Tue Nov 14 05:46:34 UTC 2023 - RN <R_Nik_C@proton.me>
+
+- Update to version 5.1.2:
+  * Bump deps
+  * Add missing entry in changelog
+  * Adjust makefile to use vender-filter
+  * Ensure supergfx tries to fallback if change fails
+  * Small fixes for egpu
+  * Bump version
+  * Update deps
+  * Update deps
+  * Fix: Don't continue with action list if the error is a logout timeout
+  * Fix pipeline
+
+-------------------------------------------------------------------
+Fri Nov 18 07:57:22 UTC 2022 - luke@ljones.dev
+
+- Update to version 5.0.1:
+  * Add dgpu status notification on dbus
+  * Fix: Check for GA401I, remove compute mode, set log level info
+  * Release 5.0.0
+  * Prep tag RC15
+  * RC15, final
+  * RC13 with various corrections
+  * Update dependencies
+  * Enable hotplug use, fixes to dgpu_disable, fixes to integrated
+  * Do pci rescan even if no missing device
+  * Update changelog
+  * Switch to async with tokio. Use asus switches if avilable. Bugfixes.
+  * Ignore possible i/o error as invalid
+  * Bump zbus version
+  * Add 99-nvidia-ac.rules udev rule
+  * fix: correction in changelog
+  * fix: make sure to use asus_use_dgpu_disable
+  * Add pipeline, cleanup with clippy
+  * 5.0.0-rc1
+  * Update dbus API docs (introspectable)
+  * Add more debug logging, default service to debug for now
+  * Switch to async runtime
+  * Slap Arc<Mutex<>> around gpu device
+  * Switch to udev. Add ASUS methods. Optimise.
+  * Remove dedicated mode
+  * Added pipe to sh command to install Rust Taken from the official Rust website -- https://www.rust-lang.org/tools/install
+  * fix AMD detection for pci-ids version 2020.03.20
+
+-------------------------------------------------------------------
+Tue Jul 05 08:23:07 UTC 2022 - luke@ljones.dev
+
+- Update to version 4.0.5:
+  * Prep new release
+  * Fix interaction with newer lspci version
+  * add "Quadro" to the lspci parsing for NVIDIA cards
+
+-------------------------------------------------------------------
+Wed May 11 16:17:34 UTC 2022 - Enrico Belleri <idesmi@protonmail.com>
+
+- Use obs services for source and vendor
+
+-------------------------------------------------------------------
+Fri Feb  4 22:35:35 UTC 2022 - Luke Jones <luke@ljones.dev>
+
+- Version 4.0.4
+- Adjust the kernel cmdline arg code path
+
+-------------------------------------------------------------------
+Thu Feb  3 21:37:52 UTC 2022 - Luke Jones <luke@ljones.dev>
+
+- Version 4.0.3
+- Add config option `no_logind`: Don't use logind to see if all sessions are
+  logged out and therefore safe to change mode. This will be useful for people not
+  using a login manager, however it is not guaranteed to work unless all graphical
+  sessions are ended and nothing is hooking the drivers. Ignored if `always_reboot`
+  is set.
+- Add config option `logout_timeout_s`: The timeout in seconds to wait for all user
+  graphical sessions to end. Default is 3 minutes, 0 = infinite. Ignored if
+  `no_logind` or `always_reboot` is set.
+- Add new dbus method: `PendingMode`, to check if a mode change is required
+- Add new dbus method: `PendingUserAction`, to check if the user is required to perform an action
+- Add new dbus method: `Config`, to get the current base config
+- Add new dbus method: `SetConfig`, to set the base config
+- Add `-p, --pend-action` CLI arg to get the pending user action if any
+- Add `-P, --pend-mode` CLI arg to get the pending mode change if any`
+- Add ability to read `supergfxd.mode=` from kernel cmdline on startup and set the mode appropriately
+- CLI option `--force` was unused, it is now removed.
+
+-------------------------------------------------------------------
+Sat Jan 22 09:35:11 UTC 2022 - Luke Jones <luke@ljones.dev>
+
+- Version 4.0.2
+
+-------------------------------------------------------------------
+Wed Jan 19 23:12:03 UTC 2022 - Luke Jones <luke@ljones.dev>
+
+- Version 4.0.1
+- Fix version upgrade of config
+- Recreate the config if parsing fails
+- Only write the (reboot) mode change to config file, don't update live config
+- AMD dedicated + hybrid config for xorg
+- "AllowExternalGpus" added to xorg for Nvidia Egpu mode
+
+-------------------------------------------------------------------
+Tue Jan 18 07:17:49 UTC 2022 - Luke Jones <luke@ljones.dev>
+
+- Version 4.0.0
+- Added
+	- Add new dbus method: `Version` to get supergfxd version
+	- Add new dbus method: `Vendor` to get dGPU vendor name
+	- Add new dbus method: `Supported` to get list of supported modes
+	- Add `-v, --version` CLI arg to get supergfxd version
+	- Add `-V, --vendor` CLI arg to get dGPU vendor name
+	- Add `-s, --supported` CLI arg to get list of supported modes
+	- Add new config option: `vfio_save` to reload VFIO on boot
+	- Add new config option: `compute_save` to reload compute on boot
+	- Add new config option: `always_reboot` reboot to change modes
+- Changed
+	- Adjust startup to check for ASUS eGPU and dGPU enablement if no modes supported
+	- If nvidia-drm.modeset=1 is set then save mode and require a reboot by default\
+	- Add extra check for Nvidia dGPU (fixes Flow 13")
+	- Properly check the correct device for power status
+- Breaking
+	- Rename Vendor, GetVendor to Mode, GetMode to better reflect their results
+
+-------------------------------------------------------------------
+Mon Jan 10 00:37:46 UTC 2022 - Luke Jones <luke@ljones.dev>
+
+- Version 3.0.0
+
+Sun Dec 19 07:43:11 UTC 2021 - Luke Jones <luke@ljones.dev>
+
+- Version 2.0.5
+-------------------------------------------------------------------
+Tue Nov  2 20:23:58 UTC 2021 - Luke Jones <luke@ljones.dev>
+
+- Version 2.0.4
+
+-------------------------------------------------------------------
+Tue Nov  2 03:56:07 UTC 2021 - Luke Jones <luke@ljones.dev>
+
+- Version 2.0.3

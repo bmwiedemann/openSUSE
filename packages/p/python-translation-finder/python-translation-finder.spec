@@ -19,7 +19,7 @@
 
 %define modname translation-finder
 Name:           python-translation-finder
-Version:        2.18
+Version:        2.19
 Release:        0
 Summary:        Translation Files Finder
 License:        GPL-3.0-or-later

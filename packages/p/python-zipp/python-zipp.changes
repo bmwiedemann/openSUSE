@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Nov 20 17:30:00 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.21.0:
+  * Improve performances of :meth:`zipfile.Path.open` for non-
+    reading modes. (1a1928d)
+  * Rely on cached_property to cache values on the instance.
+  * Rely on save_method_args to save method args.
+  * Make zipp.compat.overlay.zipfile hashable.
+  * Replaced SanitizedNames with a more surgical fix for infinite
+    loops, restoring support for names with special characters in
+    the archive. (python/cpython#123270)
+  * Made the zipfile compatibility overlay available as
+    zipp.compat.overlay.
+  * Also match directories in Path.glob.
+
+-------------------------------------------------------------------
 Mon Jun 10 11:06:50 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.19.2 (CVE-2024-5569, bsc#1227547):

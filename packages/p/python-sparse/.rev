@@ -145,4 +145,12 @@
     <comment></comment>
     <requestid>1202832</requestid>
   </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>02399dfb1b00455229b1c3b21c519485</srcmd5>
+    <version>0.15.4</version>
+    <time>1732198442</time>
+    <user>anag+factory</user>
+    <comment>- Skip python313: No numba 0.61 yet (forwarded request 1225338 from bnavigator)</comment>
+    <requestid>1225339</requestid>
+  </revision>
 </revisionlist>

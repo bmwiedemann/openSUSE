@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 20 07:23:12 UTC 2024 - mcepl@cepl.eu
+
+- Update to version 5.1.2.1.0+git.1731601260.fe71d0f:
+  * Windows: Allow amalgamated static builds with msvcbuild.bat.
+  * Always close profiler output file.
+  * Fix override of INSTALL_LJLIBD in the presence of DESTDIR.
+  * Fix bit op coercion for shifts in DUALNUM builds.
+
+-------------------------------------------------------------------
 Wed Nov 06 16:31:22 UTC 2024 - mcepl@cepl.eu
 
 - Update to version 5.1.2.1.0+git.1727870382.97813fb:

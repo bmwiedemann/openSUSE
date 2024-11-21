@@ -52,4 +52,14 @@
     <comment></comment>
     <requestid>1203334</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>dade0ab35952eb36d549ed63a5a091d8</srcmd5>
+    <version>2024.10.3</version>
+    <time>1732198483</time>
+    <user>anag+factory</user>
+    <comment>- update to 2024.10.13:
+  * Improve error handling for failures in pre-build commands.
+  * Show the changed paths that triggered the rebuild.</comment>
+    <requestid>1225393</requestid>
+  </revision>
 </revisionlist>

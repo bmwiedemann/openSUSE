@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Nov 13 09:11:51 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 9:
+  * We switched to the glycin library (the same one used by GNOME
+    Image Viewer) to load images, allowing us to fix several
+    issues, like supporting more animated formats and SVGs and
+    respecting EXIF orientation.
+  * The annoying bug where some rooms would stay as unread even
+    after opening them is now a distant memory.
+  * The media cache uses its own database that you can delete if
+    you want to free some space on your system. It will also soon
+    be able to clean up unused media files to prevent it from
+    growing indefinitely.
+  * Sometimes the day separators would show up with the wrong date,
+    not anymore!
+  * We migrated to the new GTK 4.16 and libadwaita 1.6 APIs,
+    including CSS variables, AdwButtonRow and AdwSpinner.
+  * We used to only rely on the secrets provider to tell us which
+    Matrix accounts are logged-in, which caused issues for people
+    sharing their secrets between devices. Now we also make sure
+    that there is a data folder for a given session before trying
+    to restore it.
+  * Our notifications are categorized as coming from an instant
+    messenger, so graphical shells that support it, such as Phosh,
+    can play a sound for them.
+  * Some room settings are hidden for direct chats, because it does
+    not make sense to change them in this type of room.
+  * The size of the headerbar would change depending on whether the
+    room has a topic or not. This will not happen anymore.
+- Update URL and source service url to new home.
+- Add pkgconfig(libseccomp) and pkgconfig(libwebp) BuildRequires:
+  New dependencies.
+- Add explicit glycin-loaders Requires: New runtime dependency.
+- Drop obsolete and unneeded update-desktop-files BuildRequires and
+  macro.
+- Disable LTO via _lto_cflags %{nil} define, FTBFS without.
+- Build for %{rust_tier1_arches} instead of only x86_64.
+
+-------------------------------------------------------------------
 Thu Aug  1 16:28:28 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 8:

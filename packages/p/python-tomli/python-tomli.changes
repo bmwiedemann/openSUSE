@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 20 16:49:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.0:
+  * Instantiating `TOMLDecodeError` with free-form arguments.
+  * `msg`, `doc` and `pos` arguments should be given.
+  * Added `msg`, `doc`, `pos`, `lineno` and `colno` attributes to
+    `TOMLDecodeError`
+
+-------------------------------------------------------------------
 Fri Oct 11 11:11:23 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.0.2

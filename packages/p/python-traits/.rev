@@ -149,4 +149,15 @@
     that implements __complex__ will be accepted.</comment>
     <requestid>1138237</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>a282f44f2421750e92198028a6bc1a02</srcmd5>
+    <version>6.4.3</version>
+    <time>1732198421</time>
+    <user>anag+factory</user>
+    <comment>- add py313-ctraits.patch to fix build with python 313
+
+- Drop patch fix-test.patch, it wasn't even applied.
+- Switch to autosetup macro.</comment>
+    <requestid>1225076</requestid>
+  </revision>
 </revisionlist>

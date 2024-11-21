@@ -61,4 +61,15 @@
   * Add configurable logging level for jobs (forwarded request 1224605 from rrahl0)</comment>
     <requestid>1224606</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>96364bc10ae8ffc3ec33ac1922d42224</srcmd5>
+    <version>5.0.1</version>
+    <time>1732198488</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 5.0.1:
+  * the /opt/hostedtoolcache directory is now unique to each job instead of
+    being shared to avoid a risk of corruption
+- move to golang(API) = 1.23 (forwarded request 1225403 from rrahl0)</comment>
+    <requestid>1225404</requestid>
+  </revision>
 </revisionlist>

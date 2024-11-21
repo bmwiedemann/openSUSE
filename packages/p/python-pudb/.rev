@@ -155,4 +155,14 @@
   * Catch IndexError on empty Variables state</comment>
     <requestid>1194575</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>fb991b3d7913b74dca81c4451ec3183a</srcmd5>
+    <version>2024.1.3</version>
+    <time>1732198436</time>
+    <user>anag+factory</user>
+    <comment>- update to 2024.1.3:
+  * Fix startup when no write permissions
+  * Fix compatibility with Python 3.13</comment>
+    <requestid>1225335</requestid>
+  </revision>
 </revisionlist>

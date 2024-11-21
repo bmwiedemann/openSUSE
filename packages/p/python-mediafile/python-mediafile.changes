@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 20 16:06:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.13.0:
+  * Add a mapping compatible with Plex and ffmpeg for the "original date"
+    fields.
+  * Remove an unnecessary dependency on `six`.
+  * Replace `imghdr` with `filetype` to support Python 3.13.
+- drop python-mediafile-remove-six.patch (upstream)
+
+-------------------------------------------------------------------
 Sat Dec 16 20:48:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.12.0:

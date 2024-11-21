@@ -23,4 +23,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1067911</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>30f88f7aee6a1bf320e5f644a323bf85</srcmd5>
+    <version>0.4.8</version>
+    <time>1732198463</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.4.8:
+  * Support for python 3.12+
+
+- Update to version 0.4.6</comment>
+    <requestid>1225369</requestid>
+  </revision>
 </revisionlist>

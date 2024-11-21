@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 20 18:26:43 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2024.10.13:
+  * Improve error handling for failures in pre-build commands.
+  * Show the changed paths that triggered the rebuild.
+
+-------------------------------------------------------------------
 Wed Sep 25 05:21:38 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

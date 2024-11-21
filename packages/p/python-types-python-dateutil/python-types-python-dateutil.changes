@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 20 17:08:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.0.20241003:
+  * dateutil: Enable failing test
+  * [python-dateutil] Add
+    `dateutil.parser.UnknownTimezoneWarning`.
+  * Fix types for python-dateutil's relativedelta
+
+-------------------------------------------------------------------
 Sat Mar 16 14:40:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.9.0.20240316:

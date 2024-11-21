@@ -1,4 +1,4 @@
-From db9c993d2ffcf09b3995b8949bb8f5026e610857 Mon Sep 17 00:00:00 2001
+From dee73f516f0da49e930dcfa1dd61720dcb69b7dd Mon Sep 17 00:00:00 2001
 From: Ilya Leoshkevich <iii@linux.ibm.com>
 Date: Thu, 31 Aug 2023 11:18:32 +0200
 Subject: [PATCH 1/2] Add s390x architecture support to DynASM
@@ -11,7 +11,8 @@ missing pieces in the ecosystem support is LuaJIT.
 The s390x support for LuaJIT was initially developed by @ketank-new,
 @mundaym and @niravthakkar. It found its way into moonjit and luajit2
 forks, as well as Fedora distro (as a patch). There were also smaller
-contributions by @preetikhorjuvenkar, @Bisht13, @velemas and @iii-i.
+contributions by @preetikhorjuvenkar, @Bisht13, @velemas,
+@AlekseiNikiforovIBM, and @iii-i.
 
 This is a cumulative patch of the DynASM changes from this work. It
 contains all the contributions squashed together, plus minor stylistic

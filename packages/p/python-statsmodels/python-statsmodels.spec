@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-statsmodels%{psuffix}
-Version:        0.14.3
+Version:        0.14.4
 Release:        0
 Summary:        A Python module that allows users to explore data
 License:        BSD-3-Clause

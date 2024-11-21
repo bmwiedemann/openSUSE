@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Nov 18 15:58:54 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Update to strace 6.12
+  * Implemented decoding of EPIOCGPARAMS and EPIOCSPARAMS ioctl commands.
+  * Implemented decoding of NS_GET_MNTNS_ID, NS_GET_PID_FROM_PIDNS,
+    NS_GET_TGID_FROM_PIDNS, NS_GET_PID_IN_PIDNS, NS_GET_TGID_IN_PIDNS,
+    NS_MNT_GET_INFO, NS_MNT_GET_NEXT, and NS_MNT_GET_PREV ioctl commands.
+  * Implemented decoding of FRA_DSCP netlink attribute.
+  * Implemented decoding of IORING_REGISTER_CLOCK and
+    IORING_REGISTER_CLONE_BUFFERS opcodes of io_uring_register syscall.
+  * Updated decoding of struct landlock_ruleset_attr.
+  * Updated lists of AUDIT_*, ETHTOOL_*, F_*, IORING_*, LSM_*, MAP_*, MSG_*,
+    NT_*, SCHED_*, SCM_*, SO_*, and V4L2_* constants.
+  * Updated lists of ioctl commands from Linux 6.12.
+  * Fix the syscall name printed by strace when PTRACE_GET_SYSCALL_INFO
+    is in use and a syscall is restarted by a just attached tracee using
+    restart_syscall mechanism.
+
+-------------------------------------------------------------------
 Sun Sep 15 17:56:26 UTC 2024 - Andreas Schwab <schwab@linux-m68k.org>
 
 - Update to strace 6.11

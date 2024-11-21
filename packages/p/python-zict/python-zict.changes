@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 20 15:56:31 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Remove lmdb test requirement: the tests have been disabled anyway
+
+-------------------------------------------------------------------
 Wed Aug 14 14:55:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - switch to modern python for sle15

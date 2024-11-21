@@ -5230,4 +5230,14 @@ boo#1224178</comment>
   third_party/ink</comment>
     <requestid>1224961</requestid>
   </revision>
+  <revision rev="439" vrev="1">
+    <srcmd5>efb6aaac0cf30e97a0f7daca19d39fe3</srcmd5>
+    <version>131.0.6778.85</version>
+    <time>1732198493</time>
+    <user>anag+factory</user>
+    <comment>- Chromium 131.0.6778.85
+  (stable released 2024-11-19) (boo#1233534)
+  * CVE-2024-11395: Type Confusion in V8</comment>
+    <requestid>1225411</requestid>
+  </revision>
 </revisionlist>

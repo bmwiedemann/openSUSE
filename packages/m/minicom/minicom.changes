@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov  4 07:51:14 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
+
+- drop bogus 03norzsz.diff.
+  * it calls wprintf() instead of proper mc_wprintf() (good that it
+    fails to build with gcc14 now)
+  * it was fixed upstream already by:
+    d632dbc35f2c Also handle script exec failure
+
+-------------------------------------------------------------------
 Sat Oct 21 07:02:34 UTC 2023 - Simon Lees <sflees@suse.de>
 
 - Update to 2.9

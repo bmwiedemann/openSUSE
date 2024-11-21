@@ -172,4 +172,41 @@
     <comment></comment>
     <requestid>1197744</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a0588a28618538ea235ad4af93df905b</srcmd5>
+    <version>1.1.0</version>
+    <time>1732198462</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.1.0:
+  * Declare supported Python version support &quot;&gt;= 3.7&quot; in dist
+    meta  #129
+  * Improve exception chaining when ResolutionImpossible raises
+    during backjumping  #133
+  * Switch from pyi files to modern annotations based type
+    hinting  #135
+  * In tests the commentjson test dependency with re.sub  #141
+  * Deduplicate failure causes to save memory and reduce
+    backtracking overhead  #143
+  * New narrow_requirement_selection provider method giving
+    option for providers to reduce the number of times sort key
+    get_preference is called in long running backtrack  #145
+  * Run tests against Python 3.12, 3.13, and use latest version
+    of CI dependencies  #153
+  * Update py2ndex script to use metadata files, skip 404, and
+    support PEP 723  #156
+  * Replace setuptools.cfg and mypy.ini with pyproject.toml  #157
+  * Add tests type &quot;unvisited&quot; to functional Python tests to
+    ensure backjumping is correctly skipping candidates  #158
+  * Switch from flake8 to ruff for linting  #160
+  * Enable automatic TYPE_CHECK guarding for imports only used
+    for type hinting via ruff rules TCH and FA  #166
+  * Fix example reporter_demo get_preference method which
+    requires arg backtrack_causes #136
+  * Clarify the docstrings for providers.py #138
+  * Pin Black version for linting to prevent CI failures  #150
+  * In unexpected situation where broken_state.mapping is empty,
+    stop backtracking, and continue resolution (rather than
+    throwing ResolutionImpossible)  #152</comment>
+    <requestid>1225365</requestid>
+  </revision>
 </revisionlist>

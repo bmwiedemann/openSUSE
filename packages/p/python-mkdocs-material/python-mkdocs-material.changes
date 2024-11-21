@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 20 09:27:43 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.5.45:
+  * Reduced size of Docker image through multi-stage build
+  * Fixed #7708: Blog plugin crashing on YAML dates with timezones
+
+-------------------------------------------------------------------
 Tue Nov 12 09:40:17 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.5.44:

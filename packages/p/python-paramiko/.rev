@@ -780,4 +780,21 @@
     <comment></comment>
     <requestid>1197924</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>6422f8db3f78323bc4780ad868f67696</srcmd5>
+    <version>3.5.0</version>
+    <time>1732198393</time>
+    <user>anag+factory</user>
+    <comment>- reenable python 313 build
+
+- Update to 3.5.0:
+  * [Feature] #982: (via #2444, which was a rebase of #2157)
+    Add support for AES-GCM encryption ciphers (128 and 256 bit variants).
+    Thanks to Alex Gaynor for the report (&amp; for cryptography review),
+    Shen Cheng for the original PR, and Chris Mason for the updated PR;
+    plus as usual to everyone who tested the patches and reported their results!
+    This functionality has been tested in client mode against OpenSSH 9.0, 9.2,
+    and 9.6, as well as against a number of proprietary appliance SSH servers.</comment>
+    <requestid>1225317</requestid>
+  </revision>
 </revisionlist>

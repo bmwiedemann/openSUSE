@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov  8 20:30:04 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 0.17.3
+  - Fix #4971: Fix unusable mount on macOS Sonoma
+  - Fix #5003: Fix metadata errors during backup of removable disks
+    on Windows
+  - Fix #5101: Do not retry load/list operation if SFTP connection
+    is broken
+  - Fix #5107: Fix metadata error on Windows for backups using VSS
+  - Enh #5096: Allow prune --dry-run without lock
+
+-------------------------------------------------------------------
 Sun Oct 27 18:32:52 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 0.17.2

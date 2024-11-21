@@ -240,11 +240,18 @@ BuildRequires:  gcc-c++
 # Python dependencies
 %if %node_version_number >= 14
 
-%if 0%{?suse_version} && 0%{?suse_version} < 1500
+%if 0%{?suse_version}
+%if 0%{?suse_version} < 1500
 BuildRequires:  python36
 %define forced_python_version 3.6m
-%else
+%endif
+%if %{?suse_version} == 1500
+BuildRequires:  python311
+%define forced_python_version 3.11
+%endif
+%if %{?suse_version} > 1500
 BuildRequires:  python3
+%endif
 %endif
 
 %else
@@ -945,6 +952,7 @@ rm test/parallel/test-strace-openat-openssl.js
 %if 0%{?forced_python_version:1}
 sed -i -e "s,'python3','python%{forced_python_version}'," test/parallel/test-child-process-set-blocking.js
 test -e tools/pseudo-tty.py && sed -i -e "s,^#!/usr/bin/env python3$,#!/usr/bin/python%{forced_python_version}," tools/pseudo-tty.py ||:
+export PYTHON="/usr/bin/python%{forced_python_version}"
 %endif
 
 ln addon-rpm.gypi deps/npm/node_modules/node-gyp/addon-rpm.gypi

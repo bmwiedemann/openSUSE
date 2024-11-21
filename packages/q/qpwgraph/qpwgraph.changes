@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Nov 17 15:12:30 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.8.0:
+  * A new Patchbay/Manage… feature dialogue is introduced,
+    targeting the currently loaded patchbay, allowing the removal
+    and cleanup of connection rules that are no longer used,
+    obsolete or simply not applicable anymore.
+  * Force an actual complete graph refresh on main View/Refresh…
+  * Introducing the new Graph/Options… dialogue, to where the most
+    general option settings have been (re)moved from the main Help
+    menu.
+  * Introducing Graph/Options…/Filter to hide nodes by node name
+    pattern (blacklist).
+  * Fix default PipeWire node nickname if given empty.
+
+-------------------------------------------------------------------
+Sat Nov  2 19:34:10 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.7.9:
+  * Thumb-view: Fixed flicker when dragging widget from top to
+    bottom corners (and vice-versa); inner thumb-viewport is
+    drag+moved only if the Ctrl keyboard modifier is pressed.
+  * Node reference positioning changed to the top-left corner,
+    improving the base snapping-to-grid perception.
+  * Prepping up next development cycle (Qt >= 6.8)
+
+-------------------------------------------------------------------
 Thu Sep 19 22:51:18 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 0.7.8:

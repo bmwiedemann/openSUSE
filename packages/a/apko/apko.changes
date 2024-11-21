@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov 21 07:50:29 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.20.1:
+  * fix: Allow accounts to belong to GID 0 (#1407)
+  * build(deps): bump github/codeql-action from 3.27.4 to 3.27.5
+    (#1410)
+  * build(deps): bump google.golang.org/api from 0.206.0 to 0.207.0
+    (#1409)
+  * build(deps): bump step-security/harden-runner from 2.10.1 to
+    2.10.2 (#1408)
+  * build(deps): bump google.golang.org/api from 0.205.0 to 0.206.0
+    (#1405)
+
+-------------------------------------------------------------------
 Fri Nov 15 07:06:24 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.20.0:

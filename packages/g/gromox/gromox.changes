@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Nov 20 10:58:49 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.37
+  * exmdb: fix garbage being returned to clients when reading v1z
+    files from cid/
+  * exmdb: stop an SQL error from appearing when `gromox-mbop
+    recalc-sizes` is used on an empty store
+  * oxcical: evaluate all, instead of just two, STANDARD/DAYLIGHT
+    tzprops for determining the relevant DST timezone
+  * ews: fix time elements, e.g. in OOF settings, always having
+    value 1970-01-01
+  * email_lib: on vCard ingestion, treat ORG lines as the
+    structured field that they are specified as, rather than as
+    one text value
+  * exmdb_local: autovivify new named properties on delivery,
+    fixing log message ``D-1220`` when ingesting a vCard message
+    into an empty store via SMTP/LMTP
+  * dbop_sqlite: avoid use of the ``UNIXEPOCH`` function since it
+    is not available in AlmaLinux 9
+  * lib: add missing chown call on newly-created logfiles to
+    account for subsequent privilege separation
+  * dscli: evaluate not just one AutoDiscover URL but multiple as
+    the specifation asks for
+  * mbop: stop printing the help text multiple times when the
+    "for-all-users" subcommand was used but options were rejected
+  * gromox-mbsize: new debug utility for mailbox size analysis
+  * gromox-tnef2mt: add support for importing standalone TNEF files
+
+-------------------------------------------------------------------
 Wed Nov  6 15:51:31 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.36

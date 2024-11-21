@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 20 13:55:57 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Update to version 0.45.2:
+  + Another minor release with 2 patches backported on top of 0.45.1.
+  + Fixes backported
+    - internal: fix changeWindowZOrder reordering incorrectly (#8494)
+    - xdg-shell: don't report invalid min/max sizes on unset
+
+-------------------------------------------------------------------
 Mon Nov 18 21:31:16 UTC 2024 - Florian "spirit" <sp1rit@disroot.org>
 
 - Update to version 0.45.1:

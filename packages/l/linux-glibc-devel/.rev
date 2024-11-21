@@ -772,4 +772,12 @@
     <comment>- Update to kernel headers 6.11 (forwarded request 1201297 from Andreas_Schwab)</comment>
     <requestid>1201298</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>7fcd07762db69c4d97fefdb424b01b37</srcmd5>
+    <version>6.12</version>
+    <time>1732198418</time>
+    <user>anag+factory</user>
+    <comment>- Update to kernel headers 6.12 (forwarded request 1224911 from Andreas_Schwab)</comment>
+    <requestid>1224912</requestid>
+  </revision>
 </revisionlist>

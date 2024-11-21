@@ -1,0 +1,6 @@
+<package name="supergfxctl" project="openSUSE:Factory">
+  <title></title>
+  <description>supergfxctl - a super graphics mode controller for laptops with hybrid nvidia.</description>
+  <devel project="hardware" package="supergfxctl"/>
+  <url>https://gitlab.com/asus-linux/supergfxctl</url>
+</package>

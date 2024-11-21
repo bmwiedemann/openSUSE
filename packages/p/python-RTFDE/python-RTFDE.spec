@@ -21,7 +21,7 @@
 Name:           python-RTFDE
 Version:        0.1.1
 Release:        0
-Summary:        A library for extracting HTML content from RTF encapsulated HTML as commonly found in the exchange MSG email format
+Summary:        A library for extracting HTML content from RTF encapsulated HTML
 License:        LGPL-3.0-or-later
 URL:            https://github.com/seamustuohy/RTFDE
 Source:         https://files.pythonhosted.org/packages/source/R/RTFDE/RTFDE-%{version}.tar.gz

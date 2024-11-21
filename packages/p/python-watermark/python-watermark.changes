@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 20 18:07:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.0:
+  * add manifest for conda-forge
+  * Make py3nvml optional
+  * fixed imports and docstring
+  * Display module of functions/classes imported
+
+-------------------------------------------------------------------
 Tue Mar  5 18:37:42 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip python39: no longer supported since ipython 8.19

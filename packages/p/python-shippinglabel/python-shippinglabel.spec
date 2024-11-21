@@ -25,7 +25,7 @@
 %bcond_with test
 %endif
 Name:           python-shippinglabel%{psuffix}
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        Utilities for handling packages
 License:        MIT

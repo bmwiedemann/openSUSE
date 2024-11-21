@@ -1,10 +1,9 @@
 import sys
 
-author = "Rocky Bernstein"
-author_email = "rb@dustyfeet.com"
-
 import os.path as osp
 
+author = "Rocky Bernstein"
+author_email = "rb@dustyfeet.com"
 
 py_modules = None
 short_desc = "Determine if shell has a light or dark background"

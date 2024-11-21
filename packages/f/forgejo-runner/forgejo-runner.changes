@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 20 21:40:40 UTC 2024 - rrahl0@opensuse.org
+
+- Update to version 5.0.1:
+  * the /opt/hostedtoolcache directory is now unique to each job instead of
+    being shared to avoid a risk of corruption
+- move to golang(API) = 1.23
+
+-------------------------------------------------------------------
 Sun Nov 17 00:20:51 UTC 2024 - rrahl0@opensuse.org
 
 - Update to version 5.0.0:

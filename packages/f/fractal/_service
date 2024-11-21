@@ -2,8 +2,8 @@
 <services>
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
-    <param name="url">https://gitlab.gnome.org/GNOME/fractal.git</param>
-    <param name="revision">refs/tags/8</param>
+    <param name="url">https://gitlab.gnome.org/World/fractal.git</param>
+    <param name="revision">refs/tags/9</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <!--
     <param name="changesgenerate">enable</param>

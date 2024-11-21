@@ -1,4 +1,115 @@
 -------------------------------------------------------------------
+Tue Nov 19 15:35:30 UTC 2024 - Mia Herkt <mia@0x0.st>
+
+- Disable tests because most of them have to be skipped due to
+  network access or are broken on crippled FFmpeg
+- Update to 13.1.0:
+Features:
+  * Allow passing Python objects around using `Frame.opaque` and
+    `Packet.opaque`
+  * Allow extradata to be set by encoders
+  * Add getting ffmpeg version info string
+
+Fixes:
+  * Remove the `deprecation` module in anticipation of PEP 702.
+  * Add type stubs to previously unannotated API sections.
+  * Improve type stubs for both `mypy` and `mypy --strict`.
+  * Permit only setting `time_base` with a Fraction, as mypy is
+    unable to respect different types in getters vs setters.
+  * Declare `write_packet` function as const
+
+- Changes in 13.0.0:
+Major:
+  * Drop FFmpeg 5, Support FFmpeg 7.
+  * Drop Python 3.8, Support Python 3.13.
+  * Disallow initializing an AudioLayout object with an int.
+  * Disallow accessing gop_size, timebase as a decoder
+    (Raised deprecation warning before).
+  * Remove `ticks_per_frame` property because it was deprecated
+    in FFmpeg.
+
+Features:
+  * Add AttachmentStream class.
+  * Add `best()` method to StreamContainer.
+  * Add `set_audio_frame_size()` method to Graph object.
+  * Add `nb_channels` property to AudioLayout object.
+  * Add `from_bytes()` method to VideoFrame object.
+
+Fixes:
+  * Fix VideoCC's repl breaking when `self._format` is None.
+  * Fix getting `pix_fmt` property when VideoCC's `self._format`
+    is None.
+
+- Changes in 12.3.0:
+Features:
+  * Support libav's `av_log_set_level`
+  * Add Graph.link_nodes
+  * Add default codec properties
+  * Add supported_codecs property to OutputContainer
+  * Add text and dialogue property to AssSubtitle,
+    remove TextSubtitle
+
+Fixes:
+  * Fix segfault when calling subtitle_stream.decode()
+  * flushing subtitle decoder requires a new uninitialized packet
+  * Set default color range for VideoReformatter.format()
+  * Resampler: format, layout accepts `str` `int` too
+
+- Changes in 12.2.0:
+Features:
+  * Add a `make_writable` method to `Frame` instances
+    gh#PyAV-Org/PyAV#1414.
+  * Use `av_guess_sample_aspect_ratio` to report sample and
+    display aspect ratios.
+
+Fixes:
+  * Fix a crash when assigning an `AudioLayout` to
+    `AudioCodecContext.layout`
+    gh#PyAV-Org/PyAV#1434.
+  * Remove a circular reference which caused `AudioSampler` to
+    occupy memory until garbage collected
+    gh#PyAV-Org/PyAV#1429.
+  * Fix more type stubs, remove incorrect `__init__.pyi`.
+
+- Changes in 12.1.0:
+Features:
+  * Allow disabling logs, disable logs by default.
+  * Add bitstream filters
+  * Expose CodecContext flush_buffers
+
+Fixes:
+  * Fix type stubs, add missing type stubs.
+  * Add S12M_TIMECODE
+  * Subtitle.text now returns bytes
+  * Allow packet.duration to be writable
+  * Remove deprecated `VideoStream.frame_rate`
+
+- Changes in 12.0.0:
+Major:
+  * Add type hints.
+  * Deprecate VideoCodecContext.gop_size for decoders
+  * Deprecate frame.index
+
+Features:
+  * Allow using pathlib.Path for av.open
+  * Add `max_b_frames` property to CodecContext
+  * Add `encode_lazy` method to CodecContext
+  * Add `color_range` to CodecContext/Frame
+  * Set `time_base` for AudioResampler
+  * Add support for ffmpeg's AVCodecContext::delay
+  * Add `color_primaries`, `color_trc`, `colorspace` to VideoStream
+  * Add `bits_per_coded_sample` to VideoCodecContext
+  * AssSubtitle.ass now returns as bytes
+  * Expose DISPLAYMATRIX side data
+
+Fixes:
+  * Convert deprecated Cython extension class properties to
+    decorator syntax
+  * Check None packet when setting time_base after decode
+  * Remove deprecated `Buffer.to_bytes`
+  * Remove deprecated `Packet.decode_one`
+
+-------------------------------------------------------------------
 Tue Dec  5 17:34:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 11.0.0:

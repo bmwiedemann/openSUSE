@@ -20,7 +20,7 @@
 %bcond_with ringdisabled
 %{?sle15_python_module_pythons}
 Name:           python-fastapi
-Version:        0.115.2
+Version:        0.115.5
 Release:        0
 Summary:        FastAPI framework
 License:        MIT
@@ -28,18 +28,16 @@ URL:            https://github.com/tiangolo/fastapi
 Source:         https://files.pythonhosted.org/packages/source/f/fastapi/fastapi-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE Remove two unknown classifiers
 Patch0:         remove-classifiers.patch
-# PATCH-FIX-OPENSUSE Allow new starlette
-Patch1:         allow-new-starlette.patch
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pydantic-settings >= 2.0.0}
-BuildRequires:  %{python_module starlette >= 0.37.2 with %python-starlette < 0.41.1}
+BuildRequires:  %{python_module starlette >= 0.40.0 with %python-starlette < 0.42.0}
 BuildRequires:  %{python_module typing_extensions >= 4.8.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pydantic >= 1.8.2
 Requires:       python-typing_extensions >= 4.8.0
-Requires:       (python-starlette >= 0.37.2 with python-starlette < 0.41.1)
+Requires:       (python-starlette >= 0.40.0 with python-starlette < 0.42.0)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch

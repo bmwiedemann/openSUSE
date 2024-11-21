@@ -262,4 +262,23 @@
 (CVE-2024-5569, bsc#1227547)</comment>
     <requestid>1186491</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>56993841d014aae3a0f13c34c9715f2f</srcmd5>
+    <version>3.21.0</version>
+    <time>1732198409</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.21.0:
+  * Improve performances of :meth:`zipfile.Path.open` for non-
+    reading modes. (1a1928d)
+  * Rely on cached_property to cache values on the instance.
+  * Rely on save_method_args to save method args.
+  * Make zipp.compat.overlay.zipfile hashable.
+  * Replaced SanitizedNames with a more surgical fix for infinite
+    loops, restoring support for names with special characters in
+    the archive. (python/cpython#123270)
+  * Made the zipfile compatibility overlay available as
+    zipp.compat.overlay.
+  * Also match directories in Path.glob.</comment>
+    <requestid>1225379</requestid>
+  </revision>
 </revisionlist>

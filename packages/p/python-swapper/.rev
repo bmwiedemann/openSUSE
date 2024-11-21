@@ -42,4 +42,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1142083</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b0a9a0cd4fa22e6b58b70fd76108951e</srcmd5>
+    <version>1.4.0</version>
+    <time>1732198473</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.4.0:
+  * Added support for Django 4.2 and 5.0.
+  * Dropped support for Django Django 4.0a1.
+  * Added support for Python 3.10 and 3.11.
+  * Dropped support for Python 3.7.</comment>
+    <requestid>1225382</requestid>
+  </revision>
 </revisionlist>

@@ -68,4 +68,29 @@ I tested the upgrade path and this will not break anybody relying on the package
   account for changes in that package's structure.</comment>
     <requestid>1219172</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e235fd4f5656584260cfe21a6f3eb7ad</srcmd5>
+    <version>0.13.1</version>
+    <time>1732198414</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.13.1:
+  * Remove Rich tags when showing completion text.
+  * Render Rich markup as HTML in Markdown docs.
+  * Support cp850 encoding for auto-completion in PowerShell.
+  * Allow gettext translation of help message.
+  * Fix printing HTML from Rich output.
+- update to 0.13.0:
+  * Handle `KeyboardInterrupt` separately from other
+    exceptions.
+  * Update `launch` to not print anything when opening urls.
+  * Fix equality check for custom classes. PR #979 by @AryazE.
+  * Allow colon in zsh autocomplete values and descriptions. PR
+  * Deprecate support for `is_flag` and `flag_value`
+    parameters.
+  * Remove unused functionality from `_typing.py` file.
+  * Fix typo in function name `_make_rich_text`.
+  * Only run completion installation tests when the env var
+    `_TYPER_RUN_INSTALL_COMPLETION_TESTS` is set.</comment>
+    <requestid>1225477</requestid>
+  </revision>
 </revisionlist>

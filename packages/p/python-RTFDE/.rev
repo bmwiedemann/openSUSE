@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>1203327</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>babd0d786a90ee5a17de04db7cecc020</srcmd5>
+    <version>0.1.1</version>
+    <time>1732198433</time>
+    <user>anag+factory</user>
+    <comment>- shorten summary
+
+- Enable sle15_python_module_pythons.</comment>
+    <requestid>1225325</requestid>
+  </revision>
 </revisionlist>

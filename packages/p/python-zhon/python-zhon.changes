@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 20 17:43:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.1:
+  * Bump version in docs
+  * Removes Python 3.8 support
+
+-------------------------------------------------------------------
 Thu Oct  5 09:22:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.2:

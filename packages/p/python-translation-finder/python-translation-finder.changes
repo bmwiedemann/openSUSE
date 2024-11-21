@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 20 17:49:09 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.19:
+  * Fixed crasn on corrupt YAML files.
+
+-------------------------------------------------------------------
 Thu Nov 14 12:50:55 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - update to 2.18

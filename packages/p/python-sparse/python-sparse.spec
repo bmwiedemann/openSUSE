@@ -28,6 +28,9 @@ BuildArch:      noarch
 ExcludeArch:    %{ix86} %{arm} ppc
 %endif
 
+# no numba for python313 yet
+%define skip_python313 1
+
 %{?sle15_python_module_pythons}
 Name:           python-sparse%{psuffix}
 Version:        0.15.4

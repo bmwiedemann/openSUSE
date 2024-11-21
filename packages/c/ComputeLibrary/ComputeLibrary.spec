@@ -16,11 +16,11 @@
 #
 
 
-%define so_ver 42
+%define so_ver 43
 # Disable validation tests by default due to opencl needing to be set up
 %bcond_with computelibrary_tests
 Name:           ComputeLibrary
-Version:        24.09
+Version:        24.11
 Release:        0
 Summary:        ARM Compute Library
 License:        MIT
@@ -147,11 +147,11 @@ LD_LIBRARY_PATH="build/" build/tests/arm_compute_validation
 %{_bindir}/*
 
 %files -n libarm_compute%{so_ver}
-%license LICENSE
+%license LICENSES/MIT.txt
 %{_libdir}/libarm_compute.so.%{so_ver}*
 
 %files -n libarm_compute_graph%{so_ver}
-%license LICENSE
+%license LICENSES/MIT.txt
 %{_libdir}/libarm_compute_graph.so.%{so_ver}*
 
 %files devel

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jsonpickle
-Version:        3.2.2
+Version:        4.0.0
 Release:        0
 Summary:        Python library for serializing any arbitrary object graph into JSON
 License:        BSD-3-Clause
@@ -76,6 +76,7 @@ sed -i 's/ --cov//' pytest.ini
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+rm -rv fuzzing
 # test_multindex_dataframe_roundtrip is flaky on i586
 donttest="test_multindex_dataframe_roundtrip"
 # https://github.com/jsonpickle/jsonpickle/issues/460

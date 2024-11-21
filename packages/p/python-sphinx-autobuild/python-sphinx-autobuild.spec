@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sphinx-autobuild
-Version:        2024.9.19
+Version:        2024.10.3
 Release:        0
 Summary:        Rebuild Sphinx documentation on changes, with live-reload in the browser
 License:        MIT

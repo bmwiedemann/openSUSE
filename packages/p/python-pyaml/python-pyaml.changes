@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 20 15:17:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.9.0:
+  * vspacing.oneline_split: fix splitting list items starting with
+  "-key
+
+-------------------------------------------------------------------
 Sat Aug 31 12:24:46 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 24.7.0:

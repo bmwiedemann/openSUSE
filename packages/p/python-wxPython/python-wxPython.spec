@@ -19,9 +19,8 @@
 %define         X_display ":98"
 %bcond_without  test
 %bcond_without  syswx
-# We rebuild the ETG and SIP files for two reasons:
+# We rebuild the ETG and SIP files for:
 # - Fixing a bug in the ETG time_t typedef (see patch)
-# - Compatibility with SIP 6.5.x, for Leap 15.x
 %bcond_without  rebuild_sip
 
 %if %{with syswx}
@@ -59,16 +58,10 @@ ExclusiveArch:  donotbuild
 %endif
 %else
 # SLE/Leap
-%if "%flavor" == "python3"
-# python3 is the old 3.6
-%define pythons python3
-%define python3_provides %{nil}
-%else
 %{?sle15_python_module_pythons}
 %if "%flavor" != "%pythons"
 # sle15_python_module_pythons defines the flavor, otherwise don't build
 %define pythons %{nil}
-%endif
 %endif
 %endif
 %if "%{shrink:%pythons}" == ""
@@ -106,7 +99,7 @@ Patch15:        CVE-2024-50602-no-crash-XML_ResumeParser.patch
 Patch112:       0001-Check-HSV-values-in-image-test.patch
 Patch114:       wxwidgets-3.2.5.patch
 # TODO: Replace deprecated setup.py calls in build.py with PEP517 without building wxWidgets into the wheel
-BuildRequires:  %{python_module base}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  c++_compiler
@@ -114,7 +107,7 @@ BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 %if %{with syswx}
-BuildRequires:  %{python_module sip6-devel >= 6.5.1}
+BuildRequires:  %{python_module sip6-devel >= 6.8.3}
 BuildRequires:  waf
 BuildRequires:  wxGTK3-devel >= 3.2.0
 BuildRequires:  wxWidgets-3_2-doc-xml >= 3.2.0

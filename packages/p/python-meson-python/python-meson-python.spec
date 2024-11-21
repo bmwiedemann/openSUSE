@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-meson-python
-Version:        0.16.0
+Version:        0.17.1
 Release:        0
 Summary:        Meson Python build backend (PEP 517)
 License:        MIT

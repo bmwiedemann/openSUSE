@@ -270,4 +270,12 @@
     <comment>Cumulative fixes including boo#1223324 / CVE-2024-28130</comment>
     <requestid>1169995</requestid>
   </revision>
+  <revision rev="31" vrev="5">
+    <srcmd5>b706d3d647ab0b868ccb5d9835add91b</srcmd5>
+    <version>3.6.8</version>
+    <time>1732198454</time>
+    <user>anag+factory</user>
+    <comment>Fix build after the tiff packaging changes</comment>
+    <requestid>1225358</requestid>
+  </revision>
 </revisionlist>

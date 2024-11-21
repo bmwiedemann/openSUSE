@@ -261,4 +261,12 @@
 - remove cargo_audit, as it's included in cargo_vendor (forwarded request 1204882 from rrahl0)</comment>
     <requestid>1204883</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>3d9896e956d0619f586fa9e9d419fffe</srcmd5>
+    <version>1.37.0</version>
+    <time>1732198626</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1225420</requestid>
+  </revision>
 </revisionlist>

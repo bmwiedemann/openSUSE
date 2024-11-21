@@ -49,4 +49,17 @@
 - Update to version 0.10.0</comment>
     <requestid>1133651</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e655b9f4cb5c2ce7b794221034b02784</srcmd5>
+    <version>0.13.0</version>
+    <time>1732198434</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.13.0:
+  * Add a mapping compatible with Plex and ffmpeg for the &quot;original date&quot;
+    fields.
+  * Remove an unnecessary dependency on `six`.
+  * Replace `imghdr` with `filetype` to support Python 3.13.
+- drop python-mediafile-remove-six.patch (upstream)</comment>
+    <requestid>1225332</requestid>
+  </revision>
 </revisionlist>

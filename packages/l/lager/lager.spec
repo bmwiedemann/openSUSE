@@ -17,7 +17,7 @@
 
 
 Name:           lager
-Version:        0.1.0
+Version:        0.1.1
 Release:        0
 Summary:        C++ library to assist value-oriented design
 License:        MIT
@@ -28,13 +28,14 @@ BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_system-devel
 # For tests
-BuildRequires:  cmake(cereal)
+BuildRequires:  cmake(Catch2) < 3.0
 BuildRequires:  cmake(Immer)
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  cmake(Zug)
+BuildRequires:  cmake(cereal)
 
 %description
 lager is a C++ library to assist value-oriented design by implementing the

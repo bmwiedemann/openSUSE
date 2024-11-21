@@ -22,7 +22,7 @@
 %define shortname hypr
 
 Name:           hyprland
-Version:        0.45.1
+Version:        0.45.2
 Release:        0
 Summary:        Dynamic tiling Wayland compositor
 License:        BSD-3-Clause

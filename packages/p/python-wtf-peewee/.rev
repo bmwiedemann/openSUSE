@@ -19,4 +19,13 @@
   - Indicate python3 compatible in setup.py</comment>
     <requestid>1135637</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d60097772ac0051ebf406f5001f6f0f4</srcmd5>
+    <version>3.0.6</version>
+    <time>1732198467</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.6:
+  * Updates to support latest wtforms</comment>
+    <requestid>1225383</requestid>
+  </revision>
 </revisionlist>

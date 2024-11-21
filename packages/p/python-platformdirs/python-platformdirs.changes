@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Nov 20 16:12:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.6:
+  * Fix readme download target
+- update to 4.3.5:
+  * Split build and publish for release
+- update to 4.3.4:
+  * Use upstream setup-uv with uv python
+- update to 4.3.3:
+  * Update check.yml
+  * don't include outdated changelog in docs
+- update to 4.3.2:
+  * Use uv as installer
+  * Fix multi-path returned from `_path` methods on MacOS
+- update to 4.3.0:
+  * Speed up Hatch installation
+  * Test with Python 3.13
+  * Test with latest PyPy
+  * Use `include-hidden-files: true` to upload coverage artifacts
+  * Ensure PlatformDirs is valid superclass type for mypy AND not
+    an abstract class for other checkers
+
+-------------------------------------------------------------------
 Tue Jun  4 20:37:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.2.2:

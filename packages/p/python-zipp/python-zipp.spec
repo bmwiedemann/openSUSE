@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-zipp%{psuffix}
-Version:        3.19.2
+Version:        3.21.0
 Release:        0
 Summary:        Pathlib-compatible object wrapper for zip files
 License:        MIT

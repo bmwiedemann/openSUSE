@@ -18,7 +18,7 @@
 
 
 Name:           memtest86+
-Version:        7.00
+Version:        7.20
 Release:        0
 Summary:        Memory Testing Image for x86 Architecture
 License:        GPL-2.0-only

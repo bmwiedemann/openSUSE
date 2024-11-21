@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Oct 30 15:56:21 UTC 2024 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- Update to version 7.5.0
+  * Add support for attaching and detaching tcx programs with bpftool net,
+    along with relevant documentation and bash completion.
+  * When dumping BTF information, support dumping kfunc prototypes. Users
+    willing to use kfunc no longer have to define the prototypes themselves,
+    then can use the generated header file. This is also convenient to check
+    what kfuncs are available in the running kernel.
+  * Sort the output from the dump, in C format, of BTF objects. Sorting the
+    output helps applying diff tools on the generated header files, and helps
+    generate a more natural ordering in the header.
+  * Print richer information when dumping sockmap links.
+  * In BPF skeletons, auto-attach struct_ops BPF maps as part of
+    <skeleton>__attach(), define BPF_SKEL_SUPPORTS_MAP_AUTO_ATTACH accordingly.
+  * Improvements in libbpf bring the ability to open and work with object files
+    in either endianness for some operations like object linking or light BPF
+    skeleton creation.
+  * Bpftool automatically mounts the BPF virtual file system (bpffs) when
+    necessary, for example to pin programs. This bpffs was mounted on the
+    parent directory for the provided path under certain circumstances. Now
+    bpftool mounts the bpffs on the provided path instead, as expected.
+  * When loading programs and trying to pin the maps, attempt to mount the
+    bpffs when the provided path for the maps is not under an existing bpffs
+    already, as bpftool usually does for other similar commands.
+  * Use __typeof__() rather than typeof() in BPF skeleton, to improve
+    compatibility with C++.
+  * Fix cgroup-related queries to avoid trying to dump (inaccessible)
+    Netkit-related information.
+  * Fix backward compatibility issue related to struct_ops maps handling for
+    BPF skeletons used with older versions of libbpf.
+  * Many trivial improvements to bpftool's documentation and bash completion,
+    such as formatting fixes, typo fixes, or minor clarifications.
+  * Fix typos in error message and usage help message.
+
+-------------------------------------------------------------------
 Wed May 22 09:43:32 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Update LLVM version selection logic to align with bcc and bpftrace

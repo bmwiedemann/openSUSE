@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Nov 20 22:44:41 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to version 9.14.2:
+    pnpm publish --json should work #8788
+- includes 9.14.1:
+  * Added support for pnpm pack --json to print packed tarball
+    and contents in JSON format #8765
+  * pnpm exec should print a meaningful error message when no
+    command is provided #8752
+  * pnpm setup should remove the CLI from the target location
+    before moving the new binary #8173
+  * Fix ERR_PNPM_TARBALL_EXTRACT error while installing a
+    dependency from GitHub having a slash in branch name #7697
+  * Don't crash if the use-node-version setting is used and the
+    system has no Node.js installed #8769
+  * Convert settings in local .npmrc files to their correct types.
+    For instance, child-concurrency should be a number, not a string #5075
+  * pnpm should fail if a project requires a different package
+    manager even if manage-package-manager-versions is set to true
+  * pnpm init should respect the --dir option #8768
+- includes 9.14.0:
+  * chore: use verify-deps-before-run
+  * fix(init): --dir option should be respected (#8768)
+  * feat: support json format output in pnpm pack (#8765)
+  * fix: pnpm exec should specify command (#8774)
+  * fix: proper types of settings in local .npmrc files (#8775)
+  * fix: ERR_PNPM_TARBALL_EXTRACT when the URL's hash contains a slash
+  * fix: the CLI should fail if a different package manager is
+    required by the project
+  * fix: ETXTBSY error on running setup (#8780)
+  * feat: add linux-riscv64 build (#8779)
+  * fix: remove link to X from update notifier (#8773)
+  * docs: update sponsors
+  * fix: upgrade cross-sapwn (#8782)
+  * fix: don't crash when use-node-version is set and there is no node.js
+  * docs: update changesets
+
+-------------------------------------------------------------------
 Sat Nov 16 19:08:45 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
 
 - update to version 9.13.2:

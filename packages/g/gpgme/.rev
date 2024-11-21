@@ -878,4 +878,12 @@ See the HACKING file in the doc directory (forwarded request 176432 from babelwo
 - fixed -fPIC and lib64 Problems</comment>
     <requestid>1218117</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>29dd5f353f29aafe2f9bd47f96b44c19</srcmd5>
+    <version>1.24.0</version>
+    <time>1732198386</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1225280</requestid>
+  </revision>
 </revisionlist>

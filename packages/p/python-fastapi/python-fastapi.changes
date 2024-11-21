@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov 21 08:52:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.115.5:
+  * Update internal checks to support Pydantic 2.10.
+  * Fix error in `docs/en/docs/tutorial/middleware.md`.
+- update to 0.115.4:
+  * Update logic to import and check `python-multipart` for
+    compatibility with newer version.
+- update to 0.115.3:
+  * Upgrade Starlette to `>=0.40.0,<0.42.0`.
+  * Fix broken link in docs.
+- drop allow-new-starlette.patch (obsolete)
+
+-------------------------------------------------------------------
 Thu Nov  7 09:16:23 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
 
 - disable PendingDeprecatingWarning

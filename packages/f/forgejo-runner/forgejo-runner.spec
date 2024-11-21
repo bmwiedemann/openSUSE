@@ -17,7 +17,7 @@
 
 
 Name:           forgejo-runner
-Version:        5.0.0
+Version:        5.0.1
 Release:        0
 Summary:        Daemon that connects to a Forgejo instance and runs CI jobs
 License:        MIT
@@ -28,7 +28,7 @@ Source2:        %{name}.service
 BuildRequires:  bash-completion
 BuildRequires:  fish
 BuildRequires:  zsh
-BuildRequires:  golang(API) >= 1.22
+BuildRequires:  golang(API) >= 1.23
 Requires:       (podman or docker)
 
 %description

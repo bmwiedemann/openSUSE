@@ -19,13 +19,13 @@
 %global skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-setuptools-rust
-Version:        1.9.0
+Version:        1.10.2
 Release:        0
 Summary:        Setuptools plugin for Rust extensions
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/PyO3/setuptools-rust
-Source:         https://files.pythonhosted.org/packages/source/s/setuptools-rust/setuptools-rust-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/s/setuptools_rust/setuptools_rust-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module semantic_version >= 2.8.2}
@@ -56,7 +56,7 @@ Compile and distribute Python extensions written in Rust as easily as if they
 were written in C.
 
 %prep
-%setup -q -n setuptools-rust-%{version}
+%setup -q -n setuptools_rust-%{version}
 
 %build
 %pyproject_wheel

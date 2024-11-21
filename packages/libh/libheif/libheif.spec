@@ -44,7 +44,7 @@
 %endif
 
 Name:           libheif
-Version:        1.19.3
+Version:        1.19.5
 Release:        0
 Summary:        HEIF/AVIF file format decoder and encoder
 License:        GPL-2.0-or-later
@@ -53,7 +53,7 @@ URL:            https://github.com/strukturag/libheif
 Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
 BuildRequires:  chrpath
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.25
 BuildRequires:  fdupes
 BuildRequires:  gcc%{?force_gcc_version}-c++ >= 9
 BuildRequires:  pkgconfig
@@ -280,11 +280,12 @@ Allows to show thumbnail previews of HEIF and AVIF images using %{name}.
 sed -i '/add_libheif_test(encode)/d' tests/CMakeLists.txt
 %cmake \
 %if 0%{?force_gcc_version}
-       -DCMAKE_CXX_COMPILER="/usr/bin/g++-%{force_gcc_version}" \
+	-DCMAKE_CXX_COMPILER="/usr/bin/g++-%{force_gcc_version}" \
 %endif
 %if %{with test}
-        --preset=testing \
+	--preset=testing \
 %else
+	--preset=release \
 	-DWITH_AOM_DECODER=ON \
 	-DWITH_AOM_DECODER_PLUGIN=ON \
 	-DWITH_AOM_ENCODER=ON \

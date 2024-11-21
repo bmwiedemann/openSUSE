@@ -94,4 +94,14 @@
     unless oneline_split is specified</comment>
     <requestid>1198067</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>988ba169d1136cf0f9f61881a1650071</srcmd5>
+    <version>24.9.0</version>
+    <time>1732198431</time>
+    <user>anag+factory</user>
+    <comment>- update to 24.9.0:
+  * vspacing.oneline_split: fix splitting list items starting with
+  &quot;-key</comment>
+    <requestid>1225316</requestid>
+  </revision>
 </revisionlist>

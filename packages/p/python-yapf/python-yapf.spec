@@ -18,24 +18,24 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-yapf
-Version:        0.40.2
+Version:        0.43.0
 Release:        0
 Summary:        A formatter for Python code
 License:        Apache-2.0
 URL:            https://github.com/google/yapf
 Source:         https://files.pythonhosted.org/packages/source/y/yapf/yapf-%{version}.tar.gz
 BuildRequires:  %{python_module devel >= 3.7}
-BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module platformdirs}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module tomli}
+BuildRequires:  %{python_module tomli if %python-base < 3.11}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-importlib-metadata
 Requires:       python-platformdirs
+%if 0%{?python_version_nodots} < 311
 Requires:       python-tomli
+%endif
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch

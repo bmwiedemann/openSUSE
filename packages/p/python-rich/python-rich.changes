@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Wed Nov 20 17:44:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 13.9.4:
+  * Optimizations to cell_len which may speed up Rich / Textual
+    output https://github.com/Textualize/rich/pull/3546
+- update to 13.9.3:
+  * Fix a broken regex that resulted in the slow path being
+    chosen for some operations. This fix should result in notable
+    speedups for some operations, such as wrapping text.
+  * Fixed broken regex that may have resulted in poor
+    performance. https://github.com/Textualize/rich/pull/3535
+- update to 13.9.2:
+  * A hotfix for highlighting in the table, and a fix for
+    `Segment.split_cells`
+  * Fixed `Table` columns not highlighting when added by
+    `add_row` https://github.com/Textualize/rich/issues/3517
+  * Fixed an issue with Segment.split_cells reported in Textual
+    https://github.com/Textualize/textual/issues/5090
+- update to 13.9.1:
+  * Fixed typing_extensions dependency
+- update to 13.9.0:
+  * Dropped support for Python3.7
+  * Rich will display tracebacks with finely grained error
+    locations on python 3.11+
+  * Fixed issue with Segment._split_cells
+  * Fix auto detection of terminal size on Windows
+  * `Text.style` now respected in Panel title/subtitle
+- update to 13.8.1:
+  * Added support for Python 3.13
+  * Fixed infinite loop when appending Text to same instance
+- update to 13.8.0:
+  * Fixed `Table` rendering of box elements so "footer" elements
+    truly appear at bottom of table, "mid" elements in main table
+    body.
+  * Fixed styles in Panel when Text objects are used for title
+  * Fix pretty repr for `collections.deque`
+  * Thread used in progress.track will exit if an exception
+    occurs in a generator
+  * Progress track thread is now a daemon thread
+  * Fixed cached hash preservation upon clearing meta and links
+  * Fixed overriding the `background_color` of `Syntax` not
+    including padding
+  * Fixed pretty printing of dataclasses with a default repr in
+    Python 3.13
+  * Fixed selective enabling of highlighting when disabled in the
+    `Console`
+  * Fixed BrokenPipeError writing an error message
+  * Fixed superfluous space above Markdown tables
+  * Fixed issue with record and capture interaction
+  * Fixed control codes breaking in `append_tokens`
+  * Fixed exception pretty printing a dataclass with missing
+  * `RichHandler` errors and warnings will now use different
+    colors (red and yellow)
+  * Removed the empty line printed in jupyter while using
+    `Progress`
+  * Running tests in environment with `FORCE_COLOR` or `NO_COLOR`
+    environment variables
+  * ansi decoder will now strip problematic private escape
+    sequences
+  * Tree's ASCII_GUIDES and TREE_GUIDES constants promoted to
+    class attributes
+  * Adds a `case_sensitive` parameter to `prompt.Prompt`. This
+    determines if the response is treated as case-sensitive.
+  * Added `Console.on_broken_pipe`
+
+-------------------------------------------------------------------
 Sat Mar 16 09:47:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 13.7.1:

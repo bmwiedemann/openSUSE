@@ -16,17 +16,19 @@
 #
 
 
-%define         skip_python2 1
 %define         orig_name usbsdmux
 Name:           python-usbsdmux
-Version:        24.01.1
+Version:        24.11.1
 Release:        0
 Summary:        Tool to control an usb-sd-mux from the command line
 License:        LGPL-2.1-or-later
-URL:            https://shop.linux-automation.com/index.php?route=product/product&product_id=50
-Source0:        https://github.com/linux-automation/usbsdmux/archive/%{version}.tar.gz#/%{orig_name}-%{version}.tar.gz
+URL:            https://github.com/linux-automation/usbsdmux
+Source0:        https://files.pythonhosted.org/packages/source/u/usbsdmux/usbsdmux-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -48,13 +50,13 @@ Summary:        Udev rules for usbsdmux
 Udev rules for usbsdmux
 
 %prep
-%setup -q -n %{orig_name}-%{version}
+%autosetup -p1 -n %{orig_name}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 # Fix interpreter
 %{python_expand # Fix all supported python version
 for i in %{buildroot}%{$python_sitelib}/usbsdmux/*.py; do
@@ -64,7 +66,6 @@ done
 }
 %python_clone -a %{buildroot}%{_bindir}/usbsdmux
 %python_clone -a %{buildroot}%{_bindir}/usbsdmux-configure
-%python_clone -a %{buildroot}%{_bindir}/usbsdmux-service
 # Install udev rules (and switch from 'plugdev' group to 'disk' group)
 sed -i 's/plugdev/disk/' contrib/udev/99-usbsdmux.rules
 mkdir -p %{buildroot}%{_udevrulesdir}
@@ -75,12 +76,10 @@ cp contrib/udev/99-usbsdmux.rules %{buildroot}%{_udevrulesdir}
 %post
 %python_install_alternative usbsdmux
 %python_install_alternative usbsdmux-configure
-%python_install_alternative usbsdmux-service
 
 %postun
 %python_uninstall_alternative usbsdmux
 %python_uninstall_alternative usbsdmux-configure
-%python_uninstall_alternative usbsdmux-service
 
 %post -n %{orig_name}-udev
 %udev_rules_update
@@ -93,10 +92,8 @@ cp contrib/udev/99-usbsdmux.rules %{buildroot}%{_udevrulesdir}
 %license COPYING
 %python_alternative %{_bindir}/usbsdmux
 %python_alternative %{_bindir}/usbsdmux-configure
-%python_alternative %{_bindir}/usbsdmux-service
-%dir %{python_sitelib}/usbsdmux
-%{python_sitelib}/usbsdmux/*
-%{python_sitelib}/*.egg-info*
+%{python_sitelib}/usbsdmux
+%{python_sitelib}/usbsdmux-%{version}.dist-info
 
 %files -n %{orig_name}-udev
 %{_udevrulesdir}/*.rules

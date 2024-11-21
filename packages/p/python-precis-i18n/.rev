@@ -94,4 +94,17 @@
     <comment></comment>
     <requestid>1169158</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>dd269dd2a42754ef3d9b46104deee9b6</srcmd5>
+    <version>1.1.1</version>
+    <time>1732198427</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.1.1:
+  * Update internal tables for Unicode 16.0.
+  * Remove `test_suite` from setup.py file. Contributed by
+    `adrien-n` (PR #38).
+  * Add Python 3.14-dev to CI build environment.
+  * Update copyright year (2024).</comment>
+    <requestid>1225311</requestid>
+  </revision>
 </revisionlist>

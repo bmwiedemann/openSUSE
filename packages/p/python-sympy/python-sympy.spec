@@ -20,7 +20,7 @@
 # Tests run 7h53m47s in OBS ... so we are switching them off right now
 %bcond_with  test
 Name:           python-sympy
-Version:        1.12.1
+Version:        1.13.3
 Release:        0
 Summary:        Computer algebra system (CAS) in Python
 License:        BSD-3-Clause

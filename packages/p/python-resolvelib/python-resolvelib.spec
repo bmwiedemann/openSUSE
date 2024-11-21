@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 Name:           python-resolvelib
 # ansible-core 2.14.x is currently requiring < 0.9.0
-Version:        1.0.1
+Version:        1.1.0
 Release:        0
 Summary:        Module to resolve abstract dependencies into concrete ones
 License:        ISC

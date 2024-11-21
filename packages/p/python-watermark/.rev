@@ -133,4 +133,16 @@
     <comment>- Skip python39: no longer supported since ipython 8.19</comment>
     <requestid>1155329</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>313ab1ba8896f4320dce7b0314ce84e2</srcmd5>
+    <version>2.5.0</version>
+    <time>1732198479</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.5.0:
+  * add manifest for conda-forge
+  * Make py3nvml optional
+  * fixed imports and docstring
+  * Display module of functions/classes imported</comment>
+    <requestid>1225390</requestid>
+  </revision>
 </revisionlist>

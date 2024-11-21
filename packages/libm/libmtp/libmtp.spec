@@ -1,7 +1,7 @@
 #
 # spec file for package libmtp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %{!?_udevrulesdir: %global _udevrulesdir %(pkg-config --variable=udevdir udev)/rules.d }
 %{!?_udevdir: %global _udevdir %(pkg-config --variable=udevdir udev) }
 Name:           libmtp
-Version:        1.1.21
+Version:        1.1.22
 Release:        0
 Summary:        Commandline utilities for access to MTP Players
 License:        LGPL-2.1-or-later
@@ -97,6 +97,11 @@ make %{?_smp_mflags}
 %make_install
 #install -d $RPM_BUILD_ROOT/usr/share/hal/fdi/information/20thirdparty/
 #install -c -m 644 libmtp.fdi $RPM_BUILD_ROOT/usr/share/hal/fdi/information/20thirdparty/10-usb-music-players-libmtp.fdi
+if [ "%_lib" != "lib" ];
+then
+	mkdir -p %{buildroot}/%{_udevrulesdir}
+	mv %{buildroot}/usr/%_lib/udev %{buildroot}/%{_udevrulesdir}
+fi
 rm -rf %{buildroot}%{_datadir}/doc/libmtp*
 find %{buildroot} -type f -name "*.la" -delete -print
 

@@ -66,4 +66,14 @@
 - icu76.1.patch: fix linking to ICU 76.1 (bsc#1232061)</comment>
     <requestid>1225033</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a652a8662d457b112694e5f617834613</srcmd5>
+    <version>22.11.0</version>
+    <time>1732198401</time>
+    <user>anag+factory</user>
+    <comment>Fixes build for SLE15
+
+- BuildRequire python311 for SLE15</comment>
+    <requestid>1225344</requestid>
+  </revision>
 </revisionlist>
