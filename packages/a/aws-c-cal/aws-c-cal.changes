@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 21 10:41:52 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.1
+  * chore: Modified bug issue template to add checkbox to
+    report potential regression. by @ashishdhingra in (#199)
+  * RSA PKCS1.5 SHA1 signing by @DmitriyMusatkin in (#201)
+
+-------------------------------------------------------------------
 Thu Oct 24 12:54:03 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.8.0
