@@ -161,6 +161,10 @@ pushd ../..
 %patch -P 24 -p1
 %patch -P 25 -p1
 
+%if %{pkg_vcmp libicu-devel >= 76.1}
+sed -i 's/icu-i18n/icu-uc &/' js/moz.configure
+%endif
+
 # Copy out the LICENSE file
 cp LICENSE js/src/
 popd
