@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 21 09:32:42 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Remove temporary version override
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Mon Jun  3 11:38:15 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Initial build
