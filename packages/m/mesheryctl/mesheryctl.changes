@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 20 13:58:36 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.157:
+  * Meshery CLI
+    - [Chore} fix minor typo @Alero-Awani (#12692)
+    - update mesheryctl registry generate multiwritier log
+      @Jougan-0 (#12694)
+
+-------------------------------------------------------------------
 Wed Nov 20 09:32:40 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.7.156:
