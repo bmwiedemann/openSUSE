@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 21 10:19:21 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Remove temporary version override
+
+-------------------------------------------------------------------
 Tue Aug 27 11:08:44 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Initial build
