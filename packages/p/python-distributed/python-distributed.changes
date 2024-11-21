@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 21 15:52:11 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Skip python313 -- gh#dask/dask#11457
+
+-------------------------------------------------------------------
+Tue Nov 19 12:37:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2024.11.2:
+  * Remove alias resolving to fix queuing
+
+-------------------------------------------------------------------
 Tue Nov 12 09:00:14 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2024.11.1:

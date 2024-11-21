@@ -1118,4 +1118,15 @@
 - update to 2024.10.0:</comment>
     <requestid>1223591</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>5e3a470dd18b50eee1214518ab998f86</srcmd5>
+    <version>2024.11.2</version>
+    <time>1732222734</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip python313 -- gh#dask/dask#11457
+- update to 2024.11.2:
+  * Remove alias resolving to fix queuing
+</comment>
+    <requestid>1225613</requestid>
+  </revision>
 </revisionlist>

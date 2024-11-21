@@ -16,6 +16,9 @@
 #
 
 
+# dask/distributed are not compatible yet (e.g. gh#dask/dask#11457)
+%define skip_python313 1
+
 %global flavor @BUILD_FLAVOR@%{nil}
 %{?sle15_python_module_pythons}
 %if "%{flavor}" == ""
@@ -54,7 +57,7 @@ ExclusiveArch:  donotbuild
 
 Name:           python-distributed%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2024.11.1
+Version:        2024.11.2
 Release:        0
 Summary:        Library for distributed computing with Python
 License:        BSD-3-Clause
