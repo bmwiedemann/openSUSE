@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 21 10:18:49 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.2
+  * serv.c: validate loading/saving/entry of port ranges
+  * limit interface name lengths to IFNAMSIZ [CVE-2024-52949]
+
+-------------------------------------------------------------------
 Wed Nov 11 10:52:12 UTC 2020 - Martin Wilck <mwilck@suse.com>
 
 - Fix build error on SLE12 (%make_build not defined) 
