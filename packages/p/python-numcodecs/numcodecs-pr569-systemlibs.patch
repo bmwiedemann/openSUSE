@@ -1,39 +1,57 @@
-From c724de7fa120b5196dad6bf07e729f3399f9d902 Mon Sep 17 00:00:00 2001
-From: gorloffslava <gorloff.slava@gmail.com>
-Date: Mon, 29 Jul 2024 21:14:14 +0500
-Subject: [PATCH 1/3] + Added NUMCODECS_USE_SYSTEM_LIBS capability to build
- numcodecs against system libraries
-
----
- pyproject.toml |   1 +
- setup.py       | 156 +++++++++++++++++++++++++++++++++++++++++++++++--
- 2 files changed, 151 insertions(+), 6 deletions(-)
-
+diff --git a/README.rst b/README.rst
+index 1367cf3c..f1a71349 100644
+--- a/README.rst
++++ b/README.rst
+@@ -18,3 +18,12 @@ codecs for use in data storage and communication applications.
+ 
+ .. image:: https://codecov.io/gh/zarr-developers/numcodecs/branch/main/graph/badge.svg
+     :target: https://codecov.io/gh/zarr-developers/numcodecs
++
++---
++If you already have native Blosc, Zstd, and LZ4 installed on your system and want to use these system libraries instead of the vendored sources, you
++should set the `NUMCODECS_USE_SYSTEM_LIBS=1` environment variable when building the wheel, like this:
++
++    $ NUMCODECS_USE_SYSTEM_LIBS=1 pip install numcodecs --no-binary numcodecs
++
++Blosc, Zstd, and LZ4 are found via the `pkg-config` utility. Moreover, you must build all 3 `blosc`, `libzstd`, and `liblz4`
++components. C-Blosc comes with full sources for LZ4, LZ4HC, Snappy, Zlib and Zstd and in general, you should not worry about not having (or CMake not finding) the libraries in your system because by default the included sources will be automatically compiled and included in the C-Blosc library. This effectively means that you can be confident in having a complete support for all the codecs in all the Blosc deployments (unless you are explicitly excluding support for some of them). To compile blosc, see these [instructions](https://github.com/Blosc/c-blosc?tab=readme-ov-file#compiling-the-blosc-library).
+\ No newline at end of file
 diff --git a/pyproject.toml b/pyproject.toml
-index af8f040a..910ca0d0 100644
+index 5a1701f1..19ea80e0 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
 @@ -5,6 +5,7 @@ requires = [
      "Cython",
      "py-cpuinfo",
-     "numpy",
+     "numpy>2",
 +    "pkgconfig"
  ]
  build-backend = "setuptools.build_meta"
  
 diff --git a/setup.py b/setup.py
-index e594a203..7e7bf409 100644
+index b6db0797..58abd563 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -8,6 +8,7 @@
+@@ -1,14 +1,15 @@
+ import os
+ import sys
+-from distutils import ccompiler
+-from distutils.command.clean import clean
+-from distutils.sysconfig import customize_compiler
+ from glob import glob
+ 
+ import cpuinfo
+ from Cython.Distutils.build_ext import new_build_ext as build_ext
+ from setuptools import Extension, setup
  from setuptools.errors import CCompilerError, ExecError, PlatformError
- from distutils import ccompiler
- from distutils.command.clean import clean
++from distutils import ccompiler
++from distutils.command.clean import clean
++from distutils.sysconfig import customize_compiler
 +import pkgconfig
  
  # determine CPU support for SSE2 and AVX2
  cpu_info = cpuinfo.get_cpu_info()
-@@ -16,6 +17,7 @@
+@@ -17,6 +18,7 @@
  have_avx2 = 'avx2' in flags
  disable_sse2 = 'DISABLE_NUMCODECS_SSE2' in os.environ
  disable_avx2 = 'DISABLE_NUMCODECS_AVX2' in os.environ
@@ -41,7 +59,7 @@ index e594a203..7e7bf409 100644
  
  # setup common compile arguments
  have_cflags = 'CFLAGS' in os.environ
-@@ -48,8 +50,8 @@ def error(*msg):
+@@ -49,8 +51,8 @@ def error(*msg):
      print('[numcodecs]', *msg, **kwargs)
  
  
@@ -52,7 +70,7 @@ index e594a203..7e7bf409 100644
  
      extra_compile_args = base_compile_args.copy()
      define_macros = []
-@@ -124,8 +126,73 @@ def blosc_extension():
+@@ -125,8 +127,68 @@ def blosc_extension():
      return extensions
  
  
@@ -72,12 +90,7 @@ index e594a203..7e7bf409 100644
 +
 +    # remove minizip because Python.h 3.8 tries to include crypt.h
 +    include_dirs = [d for d in include_dirs if 'minizip' not in d]
-+    define_macros += [
-+        ('HAVE_LZ4', 1),
-+        # ('HAVE_SNAPPY', 1),
-+        ('HAVE_ZLIB', 1),
-+        ('HAVE_ZSTD', 1),
-+    ]
++
 +    # define_macros += [('CYTHON_TRACE', '1')]
 +
 +    # SSE2
@@ -128,7 +141,7 @@ index e594a203..7e7bf409 100644
  
      zstd_sources = []
      extra_compile_args = base_compile_args.copy()
-@@ -166,8 +233,46 @@ def zstd_extension():
+@@ -167,8 +229,46 @@ def zstd_extension():
      return extensions
  
  
@@ -177,7 +190,7 @@ index e594a203..7e7bf409 100644
  
      extra_compile_args = base_compile_args.copy()
      define_macros = []
-@@ -194,6 +299,45 @@ def lz4_extension():
+@@ -195,6 +295,45 @@ def lz4_extension():
      return extensions
  
  
@@ -223,59 +236,32 @@ index e594a203..7e7bf409 100644
  def vlen_extension():
      info('setting up vlen extension')
      import numpy
-
-From f925fdb3b79faa9bf0e9ca087b84785ef6568aa4 Mon Sep 17 00:00:00 2001
-From: Benjamin Leff <benjamin.w.leff@gmail.com>
-Date: Tue, 6 Aug 2024 12:53:48 -0400
-Subject: [PATCH 2/3] docs(deps): added readme system libs instructions
-
----
- README.rst | 9 +++++++++
- 1 file changed, 9 insertions(+)
-
-diff --git a/README.rst b/README.rst
-index c9e58f52..89244ad1 100644
---- a/README.rst
-+++ b/README.rst
-@@ -18,3 +18,12 @@ codecs for use in data storage and communication applications.
+@@ -333,14 +472,14 @@ def run(self):
+             build_ext.run(self)
+         except PlatformError as e:
+             error(e)
+-            raise BuildFailed from e
++            raise BuildFailed()
  
- .. image:: https://codecov.io/gh/zarr-developers/numcodecs/branch/main/graph/badge.svg
-     :target: https://codecov.io/gh/zarr-developers/numcodecs
-+
-+---
-+If you already have native Blosc, Zstd, and LZ4 installed on your system and want to use these system libraries instead of the vendored sources, you
-+should set the `NUMCODECS_USE_SYSTEM_LIBS=1` environment variable when building the wheel, like this:
-+
-+    $ NUMCODECS_USE_SYSTEM_LIBS=1 pip install numcodecs --no-binary numcodecs
-+
-+Blosc, Zstd, and LZ4 are found via the `pkg-config` utility. Moreover, you must build all 3 `blosc`, `libzstd`, and `liblz4`
-+components. C-Blosc comes with full sources for LZ4, LZ4HC, Snappy, Zlib and Zstd and in general, you should not worry about not having (or CMake not finding) the libraries in your system because by default the included sources will be automatically compiled and included in the C-Blosc library. This effectively means that you can be confident in having a complete support for all the codecs in all the Blosc deployments (unless you are explicitly excluding support for some of them). To compile blosc, see these [instructions](https://github.com/Blosc/c-blosc?tab=readme-ov-file#compiling-the-blosc-library).
-\ No newline at end of file
-
-From 45fdddb1b818a4e796b4e83bafc8e2d92f54360b Mon Sep 17 00:00:00 2001
-From: Benjamin Leff <benjamin.w.leff@gmail.com>
-Date: Fri, 23 Aug 2024 13:05:49 -0400
-Subject: [PATCH 3/3] Cleaned define_macros from blosc system
-
----
- setup.py | 7 +------
- 1 file changed, 1 insertion(+), 6 deletions(-)
-
-diff --git a/setup.py b/setup.py
-index 7e7bf409..e5a0b985 100644
---- a/setup.py
-+++ b/setup.py
-@@ -140,12 +140,7 @@ def _blosc_extension_with_system_libs():
+     def build_extension(self, ext):
+         try:
+             build_ext.build_extension(self, ext)
+         except ext_errors as e:
+             error(e)
+-            raise BuildFailed from e
++            raise BuildFailed()
  
-     # remove minizip because Python.h 3.8 tries to include crypt.h
-     include_dirs = [d for d in include_dirs if 'minizip' not in d]
--    define_macros += [
--        ('HAVE_LZ4', 1),
--        # ('HAVE_SNAPPY', 1),
--        ('HAVE_ZLIB', 1),
--        ('HAVE_ZSTD', 1),
--    ]
-+
-     # define_macros += [('CYTHON_TRACE', '1')]
  
-     # SSE2
+ class Sclean(clean):
+@@ -368,7 +507,10 @@ def run_setup(with_extensions):
+             + jenkins_extension()
+         )
+ 
+-        cmdclass = dict(build_ext=ve_build_ext, clean=Sclean)
++        if use_system_libraries:
++            cmdclass = dict(build_ext=build_ext, clean=clean)
++        else:
++            cmdclass = dict(build_ext=ve_build_ext, clean=Sclean)
+     else:
+         ext_modules = []
+         cmdclass = {}

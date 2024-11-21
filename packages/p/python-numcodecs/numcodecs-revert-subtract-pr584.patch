@@ -1,0 +1,18 @@
+diff -ur numcodecs-0.14.0.orig/numcodecs/delta.py numcodecs-0.14.0/numcodecs/delta.py
+--- numcodecs-0.14.0.orig/numcodecs/delta.py	2024-11-21 10:41:34.729932450 +0100
++++ numcodecs-0.14.0/numcodecs/delta.py	2024-11-21 10:42:28.974956397 +0100
+@@ -62,12 +62,8 @@
+         # set first element
+         enc[0] = arr[0]
+ 
+-        # compute differences
+-        # using np.subtract for in-place operations
+-        if arr.dtype == bool:
+-            np.not_equal(arr[1:], arr[:-1], out=enc[1:])
+-        else:
+-            np.subtract(arr[1:], arr[:-1], out=enc[1:])
++        # revert of gh-584 due to gh-653
++        enc[1:] = np.diff(arr)
+ 
+         return enc
+ 

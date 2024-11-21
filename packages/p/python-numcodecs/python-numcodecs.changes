@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Wed Nov 20 15:02:09 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.14.0
+  ## Enhancements
+  * Add Crc32c checksum codec. By Norman Rzepka, #613.
+  * Add codec wrappers for Zarr 3. By Norman Rzepka, #524
+  * Added mypy type checking to continuous integration. By David
+    Stansby, #460.
+  # Fixes
+  * Fix in-place mutation of input array in BitRound. By Sam
+    Levang, #608
+  * Fix an issue where importing numcodecs would lock the state of
+    multiprocessing and prevent user code to call
+    multiprocessing.set_start_method(“spawn”) subsequently. By
+    Clément Robert #522
+  ## Maintenance
+  * The minimum supported Python version is now Python 3.11. By
+    David Stansby, #622
+  * The minimum supported numpy version is now 1.24. By David
+    Stansby, #622
+- Release 0.13.1
+  ## Breaking changes
+  *  Zstd.default_level, Zstd.min_level, and Zstd.max_level are now
+     class methods instead of properties. This means they must now
+     be called like Zstd.default_level() instead of
+     Zstd.default_level. This breaking change has been made because
+     Python 3.13 removes support for class properties. By David
+     Stansby, #576.
+  # Enhancements
+  *  Update bundled c-blosc to v1.26.1. This updates Zlib to v1.3.1
+     and Zstd to v1.5.6. By David Stansby, #560.
+  * Added support for Python 3.13 David Stansby, #576.
+  * Cleaned up the table of contents in the documentation to list
+    codecs by category David Stansby, #458.
+  ## Maintenance
+  * Change format() and old string formatting to f-strings. By
+    Dimitri Papadopoulos Orfanos, #439.
+  * Remove pin on Sphinx By Elliott Sales de Andrade, #552.
+- Refresh numcodecs-pr569-systemlibs.patch
+- Keep python310 working (will stop working with zarr 3)
+- Add numcodecs-revert-subtract-pr584.patch
+  * reverts gh#zarr-developers/numcodecs#584
+  * See gh#zarr-developers/numcodecs#653
+
+-------------------------------------------------------------------
 Wed Sep 25 09:24:56 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.13.0
