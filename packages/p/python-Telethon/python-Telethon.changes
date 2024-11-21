@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Nov 21 09:29:35 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.38.0:
+  * Formatting entities misbehaved with albums.
+  * Sending a Message object with a file did not use the new file.
+- update to 1.37.0:
+  * Support for CDN downloads should be back. Telethon still
+    prefers no CDN by default.
+  * FloodWaitPremium should now be handled like any other floodwaits.
+  * Fixed edge-case when using get_messages(..., reverse=True).
+  * ConnectionError when using proxies should be raised properly.
+- update to 1.36.0:
+  * Certain updates, such as :tl:`UpdateBotStopped`, should now be
+    processed reliably.
+- update to 1.35.0:
+  * "Custom secret support" should work with TcpMTProxy.
+  * Some type hints should now be more accurate.
+  * Session path couldn't be a pathlib.Path or None.
+  * Python versions older than 3.9 should now be supported again.
+  * Readthedocs should hopefully build the v1 documentation again.
+- update to 1.34.0:
+  * reply_to_chat and reply_to_sender are now in Message.
+  * parse_mode with a custom instance containing both parse and
+    unparse should now work.
+  * Parsing and unparsing message entities should now behave better
+    in certain corner-cases.
+- update to 1.33.0:
+  * webbrowser is now imported conditionally, to support niche environments.
+Library should now retry on the suddenly-common TimedOutError.
+- update to 1.32.0:
+  * new and changed raw API methods
+- update to 1.31.0:
+  * dropped imghdr support to prepare for python 3.12
+
+-------------------------------------------------------------------
 Wed Sep 20 02:49:49 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Update to version 1.30.3
@@ -9,7 +44,7 @@ Wed Sep 20 02:49:49 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 -------------------------------------------------------------------
 Mon Dec  5 19:32:14 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 1.26.0 
+- Update to version 1.26.0
   * Bump to v1.26 and update layer to 149
     Sort updates preemptively
     Closes #3936.
@@ -23,7 +58,7 @@ Mon Dec  5 19:32:14 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 -------------------------------------------------------------------
 Thu Oct 27 21:22:55 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 1.25.4 
+- Update to 1.25.4
   * Revert accidental NO_UPDATES_TIMEOUT
 
 -------------------------------------------------------------------
@@ -69,12 +104,12 @@ Thu Sep 22 21:31:48 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
   * Prevent double-logging of 'timeout for updates'
   * Support sending 4GB files (#3891)
   * Add ENTITY_BOUNDS_INVALID and POSTPONED_TIMEOUT to known errors (#3887)
-  * Fix HTML/MD parser producing empty MessageEntity (#3885)  
+  * Fix HTML/MD parser producing empty MessageEntity (#3885)
 
 -------------------------------------------------------------------
 Mon Aug 29 03:58:55 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 1.24.0 
+- Update to 1.24.0
   * No changelog
 
 -------------------------------------------------------------------
@@ -126,7 +161,7 @@ Mon Jun 14 13:51:37 UTC 2021 - Matej Cepl <mcepl@suse.com>
     have.
   - If you want the old behaviour of no messages being logged,
     you can configure logging to CRITICAL severity:
-        
+
         import logging
         logging.basicConfig(level=logging.CRITICAL)
 
@@ -285,7 +320,7 @@ Wed Oct 21 03:32:46 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
     + Manually using client.sign_up <telethon.client.auth.AuthMethods.sign_up> should now work correctly, instead of claiming "code invalid".
     + Special mention to some of the other changes in the 1.16.x series:
     + The thumb for download_media now supports both str and :tl:`VideoSize`.
-    + Thumbnails are sorted, so -1 is always the largest. 
+    + Thumbnails are sorted, so -1 is always the largest.
 
 -------------------------------------------------------------------
 Fri Sep 11 02:24:22 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
@@ -314,4 +349,4 @@ Fri Feb 28 14:15:21 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 -------------------------------------------------------------------
 Thu Feb 27 13:15:34 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
 
-- Initial package 
+- Initial package

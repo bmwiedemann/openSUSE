@@ -315,4 +315,41 @@
     <comment></comment>
     <requestid>1112508</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>453125533cc3fdd2fd35f4e3beef33fd</srcmd5>
+    <version>1.38.0</version>
+    <time>1732198750</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.38.0:
+  * Formatting entities misbehaved with albums.
+  * Sending a Message object with a file did not use the new file.
+- update to 1.37.0:
+  * Support for CDN downloads should be back. Telethon still
+    prefers no CDN by default.
+  * FloodWaitPremium should now be handled like any other floodwaits.
+  * Fixed edge-case when using get_messages(..., reverse=True).
+  * ConnectionError when using proxies should be raised properly.
+- update to 1.36.0:
+  * Certain updates, such as :tl:`UpdateBotStopped`, should now be
+    processed reliably.
+- update to 1.35.0:
+  * &quot;Custom secret support&quot; should work with TcpMTProxy.
+  * Some type hints should now be more accurate.
+  * Session path couldn't be a pathlib.Path or None.
+  * Python versions older than 3.9 should now be supported again.
+  * Readthedocs should hopefully build the v1 documentation again.
+- update to 1.34.0:
+  * reply_to_chat and reply_to_sender are now in Message.
+  * parse_mode with a custom instance containing both parse and
+    unparse should now work.
+  * Parsing and unparsing message entities should now behave better
+    in certain corner-cases.
+- update to 1.33.0:
+  * webbrowser is now imported conditionally, to support niche environments.
+Library should now retry on the suddenly-common TimedOutError.
+- update to 1.32.0:
+  * new and changed raw API methods
+- update to 1.31.0:</comment>
+    <requestid>1225500</requestid>
+  </revision>
 </revisionlist>

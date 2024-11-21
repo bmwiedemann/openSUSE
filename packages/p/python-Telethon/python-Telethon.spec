@@ -1,7 +1,7 @@
 #
 # spec file for package python-Telethon
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,16 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# Python2 is not supported
-%define skip_python2 1
 %define modname Telethon
+%{?sle15_python_module_pythons}
 Name:           python-Telethon
-Version:        1.30.3
+Version:        1.38.0
 Release:        0
 Summary:        Full-featured Telegram client library for Python 3
 License:        MIT
 URL:            https://github.com/LonamiWebs/Telethon
 Source:         https://github.com/LonamiWebs/%{modname}/archive/refs/tags/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyaes}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-tornasync}
@@ -34,6 +33,7 @@ BuildRequires:  %{python_module pytest-trio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module rsa}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pyaes
@@ -42,17 +42,18 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-Telethon is an asyncio Python 3 MTProto library to interact with Telegram's API as a user or through a bot account (bot API alternative).
+Telethon is an asyncio Python 3 MTProto library to interact with Telegram's API
+as a user or through a bot account (bot API alternative).
 
 %prep
 %setup -q -n Telethon-%{version}
-chmod 644 *.rst LICENSE
+chmod -x *.rst LICENSE
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -63,6 +64,6 @@ chmod 644 *.rst LICENSE
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/telethon
-%{python_sitelib}/Telethon-%{version}-py*.egg-info
+%{python_sitelib}/Telethon-%{version}.dist-info
 
 %changelog
