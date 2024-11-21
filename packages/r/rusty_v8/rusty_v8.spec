@@ -19,7 +19,7 @@
 %global __requires_exclude_from ^%{_libdir}/crates/rusty_v8/.*$
 
 Name:           rusty_v8
-Version:        0.106.0
+Version:        130.0.1
 Release:        0
 Summary:        Build tooling for Deno (do not install or use!)
 License:        MIT
@@ -33,11 +33,11 @@ Patch0:         deno-v8-arm.patch
 Patch1:         compiler-rt-adjust-paths.patch
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
-BuildRequires:  clang
+BuildRequires:  clang19
 BuildRequires:  fdupes
 BuildRequires:  gn
-BuildRequires:  lld
-BuildRequires:  llvm
+BuildRequires:  lld19
+BuildRequires:  llvm19
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
@@ -96,6 +96,8 @@ cp target/release/*.rlib %{buildroot}%{_libdir}
 # we don't need those
 pushd %{buildroot}%{_libdir}/crates/rusty_v8
 rm -rf .github
+rm .prettierrc.json
+rm .rustfmt.toml
 rm -rf vendor
 rm -rf target
 %fdupes $PWD
@@ -111,7 +113,6 @@ popd
 %{_libdir}/crates/rusty_v8/*
 %{_libdir}/crates/rusty_v8/.cargo/config.toml
 %{_libdir}/crates/rusty_v8/.clang-format
-%{_libdir}/crates/rusty_v8/.gitmodules
 %{_libdir}/crates/rusty_v8/.gn
 
 %changelog

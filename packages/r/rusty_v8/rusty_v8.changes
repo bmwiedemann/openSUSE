@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu Nov 21 11:54:19 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 130.0.1:
+  * fix: glibc version
+  * feat: add binding for `ResourceConstraints::ConfigureDefaults`
+  * Track V8 13.1
+  * Rolling to V8 13.0.245.12
+  * Update bindgen to fix builds with LLVM 19.1
+  * Stabilize: Release version 129.0.0 of Rusty V8
+  * feat: add TransferSharedArrayBuffer
+  * Track V8 13.0
+  * Rolling to V8 12.9.202.18
+  * Rolling to V8 12.9.202.17
+  * fix cppgc docs
+  * Rolling to V8 12.9.202.16
+  * Rolling to V8 12.9.202.15
+  * Rolling to V8 12.9.202.14
+
+-------------------------------------------------------------------
+Fri Nov 15 11:15:08 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Remove unnecessary files
+- Set clang to clang19, lld to lld19 and llvm to llvm19
+
+-------------------------------------------------------------------
+Tue Nov 12 14:53:20 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update rusty_v8.spec file list.
+  * Recomprizz/Roast ignores git metadata by default.
+
+-------------------------------------------------------------------
+Tue Nov 12 08:15:15 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update vendored dependencies.
+
+-------------------------------------------------------------------
+Tue Nov 12 03:07:48 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Revert previous change. Go back to git sources. Published sources in crates.io
+  does not contain the necessary directories.
+
+-------------------------------------------------------------------
+Sun Nov 10 09:09:25 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Change sources from git to crates.io
+  * there has been a recent change on how deno publishes the v8 crate.
+    investigated the vendored dep shows that it has a slightly different set
+    of directories.
+
+-------------------------------------------------------------------
 Sat Oct 12 23:19:35 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - tar_scm is deprecated. Replace with obs_scm in _service file.
