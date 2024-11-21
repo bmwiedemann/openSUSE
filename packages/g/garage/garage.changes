@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 21 10:27:16 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add _constraints to avoid OOM failures
+
+-------------------------------------------------------------------
 Fri Sep 27 21:10:47 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.0.1:

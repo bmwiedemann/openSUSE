@@ -28,9 +28,9 @@ Source2:        %{name}.service
 Source21:       system-user-%{name}.conf
 BuildRequires:  cargo >= 1.77
 BuildRequires:  cargo-packaging
-BuildRequires:  zstd
 BuildRequires:  libseccomp-devel
 BuildRequires:  sysuser-tools
+BuildRequires:  zstd
 
 ExcludeArch:    %{ix86}
 
