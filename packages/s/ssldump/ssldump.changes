@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Nov  3 10:41:19 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.9
+  Enhancements
+  * Original PCAP Timestamps: Added support for original PCAP
+    timestamps, replacing timeofday-generated timestamps for
+    improved accuracy.
+  * TLS 1.3 Handling: Introduced handling for TLS version 1.3.
+  * RAW IP Capture Support: Implemented support for "raw IP"
+    captures, allowing capture of packets without Layer 2 headers.
+  * Connection Tracker Enhancements: Improved connection tracking
+    with live list and purge functionality.
+  Bug Fixes
+  * Documentation Updates: Updated README layout and fixed command
+    documentation.
+
+-------------------------------------------------------------------
 Fri Oct 13 15:11:26 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.8:
