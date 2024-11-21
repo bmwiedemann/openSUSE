@@ -1,7 +1,7 @@
 #
 # spec file for package python-web.py
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,10 +26,14 @@ Summary:        web.py: makes web apps
 License:        BSD-3-Clause AND SUSE-Public-Domain
 URL:            https://webpy.org/
 Source:         https://files.pythonhosted.org/packages/source/w/web.py/web.py-%{version}.tar.gz
+BuildRequires:  %{python_module legacy-cgi if %python-base >= 3.13}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cheroot
+%if %{python_version_nodots} >= 313
+Requires:       python-legacy-cgi
+%endif
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module cheroot}

@@ -1,7 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 21 15:54:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add legacy-cgi for python 3.13 support
+
+-------------------------------------------------------------------
 Tue Jan 11 21:13:27 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- add python-rpm-macros 
+- add python-rpm-macros
 
 -------------------------------------------------------------------
 Wed Jun 30 10:44:53 UTC 2021 - Matej Cepl <mcepl@suse.com>
@@ -155,7 +160,7 @@ Fri Jun 29 08:23:50 UTC 2012 - cfarrell@suse.com
 * Added exception for "415 Unsupported Media" (tx JirkaChadima) -- #145
 * Added GroupedDropdown to support `<optgroup>` tag (tx jzellman) -- #152
 * Fixed failure in embedded interpreter - #87
-* Optimized web.cookies (tx benhoyt) - #148 
+* Optimized web.cookies (tx benhoyt) - #148
 
 -------------------------------------------------------------------
 Tue Mar 20 10:26:47 UTC 2012 - cfarrell@suse.com

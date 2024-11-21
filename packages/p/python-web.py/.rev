@@ -165,4 +165,15 @@
     <comment>- add python-rpm-macros</comment>
     <requestid>945684</requestid>
   </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>7447c905e9d7731e0a90b701e4654d97</srcmd5>
+    <version>0.62</version>
+    <time>1732222912</time>
+    <user>dimstar_suse</user>
+    <comment>- add legacy-cgi for python 3.13 support
+
+- add python-rpm-macros
+* Optimized web.cookies (tx benhoyt) - #148</comment>
+    <requestid>1225614</requestid>
+  </revision>
 </revisionlist>
