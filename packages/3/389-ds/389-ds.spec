@@ -48,6 +48,7 @@ Source5:        70yast.ldif
 Source9:        %{name}-rpmlintrc
 Source10:       %{user_group}-user.conf
 Source11:       krbkdcbefore.conf
+Patch0:         389-ds-link-icu-uc.patch
 # 389-ds does not support i686
 ExcludeArch:    %ix86
 BuildRequires:  autoconf
@@ -226,6 +227,8 @@ uses the facilities provided by NSS.
 %setup -q -n %{name}-base-%{version} -D -T -a 3
 # Setup support utils
 %setup -q -n %{name}-base-%{version} -D -T -a 4
+
+%autopatch -p1
 
 # Debugging for if anything goes south.
 lscpu

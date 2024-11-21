@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 21 09:26:16 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 389-ds-link-icu-uc.patch: properly link to icu-uc as well,
+  which is no longer transparently added when linking icu-i18n
+  (boo#1233578).
+
+-------------------------------------------------------------------
 Wed Sep 04 01:43:42 UTC 2024 - william.brown@suse.com
 
 - bsc#1229948 - CVE-2024-43806 - rustix::fs::Dir iterator with the linux_raw backend can cause memory explosion

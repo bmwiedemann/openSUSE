@@ -738,4 +738,14 @@
     <comment></comment>
     <requestid>1198620</requestid>
   </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>6413eaf9423f8b37ce019b46eb98c9e0</srcmd5>
+    <version>3.1.1~git13.a9c7ff9</version>
+    <time>1732198752</time>
+    <user>anag+factory</user>
+    <comment>- Add 389-ds-link-icu-uc.patch: properly link to icu-uc as well,
+  which is no longer transparently added when linking icu-i18n
+  (boo#1233578). (forwarded request 1225499 from dimstar)</comment>
+    <requestid>1225504</requestid>
+  </revision>
 </revisionlist>
