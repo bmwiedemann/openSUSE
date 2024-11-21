@@ -194,4 +194,18 @@
   * Fix installation code blocks in readme #274 (@Phoenix616)</comment>
     <requestid>1201269</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>3ac8232b4420517f4356b3eb5776ddb4</srcmd5>
+    <version>0.30.2</version>
+    <time>1732223169</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip two tests on python313: different output
+  gh#Calysto/metakernel#279 
+
+- build for modern python on sle15
+
+  * remove local bash kernel and point to calysto_bash
+  * Clean up configurability handling and docs</comment>
+    <requestid>1225639</requestid>
+  </revision>
 </revisionlist>

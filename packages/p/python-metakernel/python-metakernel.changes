@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 21 18:31:47 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Skip two tests on python313: different output
+  gh#Calysto/metakernel#279 
+
+-------------------------------------------------------------------
+Thu Oct 31 10:22:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- build for modern python on sle15
+
+-------------------------------------------------------------------
 Sun Sep 15 16:15:23 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.30.2
@@ -203,13 +214,13 @@ Wed Jun 12 20:03:20 UTC 2019 - Todd R <toddrme2178@gmail.com>
 - Update to 0.24.0
   * finish transition to pytest
   * Finish updates to stream_handler
-  * remove local bash kernel and point to calysto_bash  
+  * remove local bash kernel and point to calysto_bash
 
 -------------------------------------------------------------------
 Wed May 29 20:10:40 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to 0.23.0
-  * Clean up configurability handling and docs 
+  * Clean up configurability handling and docs
   * fix handling of kernel class
   * export the metakernel app
   * Add settings handling

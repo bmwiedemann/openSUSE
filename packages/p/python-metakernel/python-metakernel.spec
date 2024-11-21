@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-metakernel
 Version:        0.30.2
 Release:        0
@@ -59,7 +60,6 @@ distributed processing, downloads, and much more).
 %prep
 %setup -q -n metakernel-%{version}
 touch ~/.bashrc
-sed -i s'/--color=yes//' pyproject.toml
 chmod -x metakernel/tests/test_process_metakernel.py
 sed -i '1{/env python/d}' metakernel/tests/test_expect.py
 
@@ -71,12 +71,14 @@ sed -i '1{/env python/d}' metakernel/tests/test_expect.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest metakernel/tests
+# gh#Calysto/metakernel#279
+python313_skip=(-k "not(test_get_help or (REPLWrapTestCase and test_python))")
+%pytest metakernel/tests "${$python_skip[@]}"
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
 %{python_sitelib}/metakernel
-%{python_sitelib}/metakernel-%{version}*-info
+%{python_sitelib}/metakernel-%{version}.dist-info
 
 %changelog
