@@ -76,4 +76,12 @@
     issues #148</comment>
     <requestid>1219555</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>4f773a9284da0ded867f284ffefbb8b2</srcmd5>
+    <version>5.0.0</version>
+    <time>1732198774</time>
+    <user>anag+factory</user>
+    <comment>- add py313-support.patch to fix tests with python 3.13</comment>
+    <requestid>1225505</requestid>
+  </revision>
 </revisionlist>

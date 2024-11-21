@@ -25,6 +25,7 @@ License:        Python-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/slashmili/python-jalali
 Source:         https://github.com/slashmili/python-jalali/archive/v%{version}.tar.gz
+Patch1:         https://github.com/slashmili/python-jalali/commit/ac6c2052e41462714431946cf13cee28967082b4.patch#/py313-support.patch
 BuildRequires:  %{python_module jalali-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytzdata}
@@ -41,7 +42,7 @@ Requires:       python-jalali-core
 jdatetime is the Jalali implementation of Python's datetime module.
 
 %prep
-%setup -q -n python-jalali-%{version}
+%autosetup -p1 -n python-jalali-%{version}
 
 %build
 %pyproject_wheel

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 21 09:48:56 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add py313-support.patch to fix tests with python 3.13
+
+-------------------------------------------------------------------
 Wed Oct 30 12:34:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.0.0:
