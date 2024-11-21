@@ -1,4 +1,306 @@
 -------------------------------------------------------------------
+Mon Nov 04 07:40:40 UTC 2024 - felix.niederwanger@suse.de
+
+- Update to version 0.39.0:
+  * Release 0.39.0.
+  * Loosen reqwest dependency.
+  * Loosen subplot dependency.
+  * Upgrade terminal_size.
+  * Upgrade sequoia-policy-config.
+  * Update Cargo.lock.
+  * Fix various typo in the NEWS file.
+  * Add support for importing bare revocation certificates.
+  * Rework signature verification output.
+  * Don't let bad signatures override good signatures.
+  * When reading from stdin, emit a warning if we don't get any input.
+  * Improve sq encrypt's examples to better reflect best practices.
+  * Improve the error message shown when sq encrypt gets no recipients.
+  * Make sq key userid revoke's positional arguments named arguments.
+  * Make sq key subkey revoke's positional arguments named arguments.
+  * Make sq key revoke's positional arguments named arguments.
+  * Dry out --expiration.
+  * Move the Expiration type to its own module.
+  * Make sq key expire's expiration argument a named argument.
+  * Make sq key subkey expire's expiration argument a named argument.
+  * Improve error messages.
+  * Improve message.
+  * Fix how user IDs are displayed.
+  * When displaying a gossip path, show the path's trust amount.
+  * Fix self signature check.
+  * Fix how paths for self signatures are displayed.
+  * Rework gossip.
+  * Upgrade sequoia-wot.
+  * Remove sq pki path's --gossip argument.
+  * tests: Dry out certificate handling.
+  * Use cert designators for the certifier in `sq pki vouch authorize`.
+  * Use cert designators for the certifier in `sq pki vouch certify`.
+  * Remove the pEp store integration.
+  * Add `--output` and `--binary` arguments to `sq key subkey export`.
+  * Add `--output` and `--binary` arguments to `sq key export`.
+  * Add an `--output` argument to `sq cert export`.
+  * Use cert designators for `sq toolbox packet dump`.
+  * Use cert designators for `sq toolbox strip-userid`.
+  * Add `sq network keyserver publish --domain`.
+  * Use cert designators for `sq key approvals update`.
+  * Use cert designators for `sq key approvals list`.
+  * Use cert designators for `sq key subkey bind`.
+  * Use cert designators for `sq key subkey revoke`.
+  * Use cert designators for `sq key subkey expire`.
+  * Use cert designators for `sq key subkey password`.
+  * Use cert designators for `sq key subkey delete`.
+  * Improve wrapping of examples.
+  * Use cert designators for `sq key subkey add`.
+  * Use cert designators for `sq key userid revoke`.
+  * Use cert designators for `sq key userid add`.
+  * Use cert designators for `sq key revoke`.
+  * Avoid heap allocation if we don't change the help text.
+  * Use cert designators for `sq key expire`.
+  * Use cert designators for `sq key password`.
+  * Cleanup.
+  * Move the CLI parser for `sq key password` to its own module.
+  * Improve wrapping of examples.
+  * Use cert designators for `sq cert lint`.
+  * Consolidate import stat printing more.
+  * Fix and add hints for when no certs matched.
+  * Fix updating import statistics.
+  * Make `sq key delete --file` require `--output`.
+  * Use cert designators for `sq key delete`.
+  * Move the command line parser for `sq key delete` to its own module.
+  * Use cert designators for `sq key export`.
+  * Introduce a symbolic name for the default empty options.
+  * Move the command line parser for `sq key export` to its own module.
+  * Use cert designators for `sq key list`.
+  * Move the command line parser for `sq key list` to its own module.
+  * Use cert designators for `sq inspect`.
+  * Use cert designators for `sq verify`.
+  * Use cert designators for `sq decrypt`.
+  * Change --cert to only look up by primary key fingerprint.
+  * Raise limit of stdout and stderr shown in tests.
+  * Add filters to `sq pki link list`.
+  * Adapt fingerprint, user ID pairs display in link listings.
+  * Tweak edge annotations.
+  * Rework how fingerprint, user ID pairs are displayed.
+  * Merge `sq autocrypt import` into `sq cert import`, remove others.
+  * Implement AddAssign for ImportStats.
+  * Parse certificates from a Dup reader.
+  * Remove the Autocrypt gossip CA framework.
+  * Print error chains at the top level.
+  * Improve formatting of error chains.
+  * Remove obsolete TODOs.
+  * Make `sq inspect` handle non-OpenPGP data.
+  * Fix hint formatting.
+  * Enable the use of state in the subplot tests.
+  * Set a SEQUOIA_HOME directory for the subplot tests.
+  * Remove the DWIM interface from `sq cert export`.
+  * Fix mutability of recipient in accessors.
+  * Only export certificates with authenticated bindings.
+  * Remove obsolete todos.
+  * Hide certification and key creation times for shadow CAs.
+  * Remove redundant trust amount information.
+  * Use non-breaking hyphens to format dates.
+  * Filter out self-signatures when `--gossip` is given.
+  * Remove now unused non-concise human readable output format.
+  * Make the path output a little less dense.
+  * Merge the path printing into the concise human readable output.
+  * Align the output of `sq cert list` with `sq key list`.
+  * Align timestamp formatting.
+  * Align hint formatting.
+  * Split `sq network wkd publish --rsync` into two to avoid ambiguity.
+  * Fix documentation.
+  * Rename `sq verify --signer-cert` to `--signer`.
+  * Simplify crate::load_keys.
+  * Simplify crate::load_certs.
+  * Add `--all` flag to `sq network wkd publish` and `dane generate`.
+  * Use imperative mood to describe the cert and user ID designators.
+  * Make `sq --home=default` work.
+  * Remove `sq network dane generate --skip`.
+  * Move sq pki list to sq cert list.
+  * Rename test files.
+  * Add a test.
+  * Don't try to certify invalid user IDs.
+  * Make it easier to debug failing examples.
+  * Move sq pki {certify,authorize} under sq pki vouch.
+  * Split authorization functionality out of sq pki link add.
+  * Generalize helper function.
+  * Reorder sq pki link add's options.
+  * Dedup user IDs.
+  * Identify common user errors when verifying detached signatures.
+  * Fix example description.
+  * Make `inspect` return the kind of data it thinks it is looking at.
+  * Port sq pki link retract to the user ID designator framework.
+  * Don't require --add-userid if that option isn't enabled.
+  * Improve output when retracting a link.
+  * Fix sq pki link retract when retracting all certifications.
+  * Check all user IDs, not just self-signed user IDs.
+  * Align sq pki link add's user ID specification with sq pki certify.
+  * Remove sq pki link retract's positional argument for specifying a user ID.
+  * Remove sq pki link add's positional argument for specifying a user ID.
+  * Change sq pki link retract to use a named argument for the certificate.
+  * Change sq pki link add to use a named argument for the certificate.
+  * Add `sq cert export --local` to export non-exportable sigs.
+  * Show more information about downloaded certificates.
+  * Support indentation parameters in qprintln.
+  * Fix hint.
+  * Check that we don't certify our own certificate.
+  * Refactor user ID resolution.
+  * Add a user ID designator abstraction.
+  * Extend sq pki authorize to constrain by domain.
+  * Move the domain to regex conversion functionality to common.
+  * Don't specify value_name twice for a single argument.
+  * Add new subcommand sq pki authorize.
+  * Generalize Sq::pki_certify to certify multiple user IDs at once.
+  * Reorder sq pki certify's options.
+  * Change sq pki certify to use a named argument for the certificate.
+  * Extend the cert designator framework to support required arguments.
+  * Change sq pki certify to use a named argument for the user ID.
+  * Refactor sq pki certify, sq pki link add and sq pki link retract.
+  * Add a None variant to the TrustAmount enum.
+  * Simplify the active_certification utility function.
+  * Emit a hint if `sq cert import`ing a key.
+  * Drop the free-form command hint interface.
+  * Make all command hints use the structured hint framework.
+  * On debug builds, parse the emitted hints and panic if that fails.
+  * Add a structured command hint framework.
+  * Emit hint on how to extract a particular certificate.
+  * Move function.
+  * Always list found certificates, and reword the message.
+  * Rename `sq network fetch` to `search`, likewise hkp, WKD, and DANE.
+  * Merge certificates fetched from the network earlier.
+  * Move type ImportStatus.
+  * Unify key and cert import stats, be explicit about what is imported.
+  * Add a test to execute some sanity checks against the CLI.
+  * Make `--rev-cert` argument mandatory if `--output` has been given.
+  * Improve some integration tests to use more of the test framework.
+  * Remove `sq network keyserver publish --require-all`.
+  * Always print the error message in addition to propagating it.
+  * Emit a hint that the Mailvelope key server rejects some certs.
+  * Augment usage messages with examples.
+  * Slightly indent the pointer to the global arguments.
+  * Provide helpful guidance if there are no secret keys.
+  * Make `sq key generate --rev-cert` behave like other outputs.
+  * Move CLI definition of `sq key generate` to its own module.
+  * Display the signers cert fingerprint when inspecting artifacts.
+  * Fix formatting.
+  * Return the selected certificate from Sq::best_userid_for.
+  * Make Sq::best_userid_for work with use_wot=false.
+  * Improve best user ID computation.
+  * Improve certificate lookups when computing best user ID.
+  * Use cheaper predicate to see if an iterator is empty.
+  * Make `sq toolbox keyring filter --handle` robust.
+  * Apply the cert filter only once.
+  * Add tests for `sq toolbox keyring filter`.
+  * Run tests in a separate working directory.
+  * Deduplicate function to locate test artifacts.
+  * Change sq pki certify to reject expired and revoked certs.
+  * Don't word-wrap commands in hints.
+  * Fix hints emitted when fetching certs from the network.
+  * Improve hint formatting.
+  * Add an explicit output parameter for `sq toolbox packet split`.
+  * Align the value-name for --home.
+  * Add an ENVIRONMENT section to the top-level man page.
+  * Rename environment variables to override cert and key store.
+  * Use a custom CLI parser for state directories.
+  * Improve documentation for sq key expire and sq key subkey expire.
+  * Don't extend the expiration of subkeys that are hard revoke.
+  * Add a unit test for sq key subkey expire for soft revocations.
+  * Add a unit test for sq key subkey expire for unbound subkeys.
+  * Normalize naming.
+  * Fix setting a certificate's expiration time.
+  * Fix setting a certificate's expiration time.
+  * Fix documentation.
+  * Fix capitalization of example section in help texts.
+  * Port cert lint examples to the example framework.
+  * Port keyring examples to the example framework.
+  * Implement examples containing pipelines.
+  * Add missing example data file bob.pgp.
+  * Port dearmor examples to the example framework.
+  * Port armor examples to the example framework.
+  * Port extract-cert examples to the example framework.
+  * Port link examples to the example framework.
+  * Fix line wrapping when printing examples.
+  * Update futures-util (and related packages).
+  * Don't call exit, just return an error.
+  * Fix example.
+  * Use cert designators for `sq network keyserver publish`.
+  * Use cert designators for `sq network wkd publish`.
+  * Use cert designators for `sq network dane generate`.
+  * Prevent cert designators from over-eagerly grabbing other options.
+  * Fix composing cert designators.
+  * Make the domain argument a long argument like in wkd publish.
+  * Improve listing of secret keys.
+  * Fix argument name computation.
+  * Rename `sq encrypt --recipient` to sq encrypt --for`.
+  * Rename `--recipient-cert` to `--recipient`.
+  * Rename `--signer-key` to `--signer`.
+  * Rename the global `--force` flag to `--overwrite`.
+  * New flag `sq pki link add --recreate` instead of `--force`.
+  * New flag `sq key userid revoke --add-userid` instead of `--force`.
+  * Make the file creation utilities take a reference to Sq.
+  * Move some file support code so that it can use Sq.
+  * Rename `sq verify --detached` to `sq verify --signature-file`.
+  * Fix changing the expiration time on keys without direct key sig.
+  * Add missing NEWS entry.
+  * Rename sq key subkey adopt to bind, improve documentation.
+  * Move sq key adopt to sq key subkey adopt.
+  * Improve warning message.
+  * Port the examples of sq toolbox packet to the examples framework.
+  * Improve and fix the documentation of sq toolbox packet split.
+  * Fix splitting and joining packets with bodies, such as literals.
+  * Improve the file names when splitting packet streams.
+  * Emit a hint when trying to sq key import a certificate.
+  * Deduplicate subkey arguments when revoking subkeys.
+  * Introduce a switch to select the type of DNS resource records.
+  * Fix adopting subkeys backed by the softkeys backend into softkeys.
+  * Allow source certs to be ambiguous when adopting a key.
+  * Avoid file descriptor exhaustion when fetching certificates.
+  * Disregard bad information in the signers user ID subpacket.
+  * Use the cert fingerprint in messages, not the signing subkeys keyID.
+  * Fix hints.
+  * Bump MSRV to 1.75.
+  * Remove redundant long_about.
+  * Fix hint.
+  * Fix long about strings so that they line wrap.
+  * Escape newlines in help text to enable automatic line wrapping.
+  * Fix spelling.
+  * Don't dump bad signatures by default, add CLI switch for that.
+  * Dump bad signatures.
+  * Rework indentation in the inspect module.
+  * Refactor signature dumping.
+  * Refactor key dumping.
+  * When adopting a key, if the creation time is unset, set it.
+  * Add the --creation-time argument to sq key adopt.
+  * When adopting a key, error out if the key's key flags is empty.
+  * Allow modifying the key flags when adopting a key.
+  * Don't require a key being adopted to have a binding signature.
+  * Make the test helper function Sq::key_adopt more consistent.
+  * Simplify how tests call sq key adopt.
+  * Allow tests to pass addition arguments to sq key adopt.
+  * Tighten the sq encrypt tests.
+  * Switch sq encrypt to the certificate designator abstraction.
+  * Switch sq cert export to the certificate designator abstraction.
+  * Fix sq cert export test vector.
+  * Add a certificate designator abstraction.
+  * Add a test for sq encrypt for revoked subkeys.
+  * Add a test for sq encrypt for expired subkeys.
+  * Add a test for sq encrypt for non-encryption-capable certifications.
+  * Add a test for sq encrypt's certificate designators.
+  * Port sq_encrypt.rs to the common test framework.
+  * Move implementation, add NEWS entry.
+  * Move sq key userid strip to sq toolbox strip-userid.
+  * Make sq key expire more robust.
+  * Improve debugging output.
+  * Add a convenience function to preserve a test's state.
+  * Improve comments of revocation certificates.
+  * Wrap comment lines in revocation certificates.
+  * Align sq key subkey expire and sq key subkey revoke.
+  * Move the `sq key subkey` CLI parser to its own module.
+  * Move the `sq key revoke` CLI parser to its own module.
+  * Avoid using the system-wide crypto policy in tests.
+  * Implement sq --quiet.
+  * Remove debugging remnant.
+  * ci: remove pre-common-ci vestiges
+
+-------------------------------------------------------------------
 Thu Oct 17 07:52:05 UTC 2024 - felix.niederwanger@suse.de
 
 - Update to version 0.38.0:

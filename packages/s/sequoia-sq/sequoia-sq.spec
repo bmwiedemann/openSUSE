@@ -17,7 +17,7 @@
 
 
 Name:           sequoia-sq
-Version:        0.38.0
+Version:        0.39.0
 Release:        0
 Summary:        Command-line frontend for Sequoia
 Group:          Productivity/Security
