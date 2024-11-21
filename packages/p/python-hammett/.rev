@@ -31,4 +31,15 @@
     <comment></comment>
     <requestid>1223972</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>ef4f32ecbc6b766689283ff8b1fc61cf</srcmd5>
+    <version>0.10.0</version>
+    <time>1732198763</time>
+    <user>anag+factory</user>
+    <comment>- drop optional astunparse dependency for python 3.13
+
+  * Implemented support for filtering tests based on markers. Also
+    supports the marker[argument] syntax that goes beyond what pytest</comment>
+    <requestid>1225561</requestid>
+  </revision>
 </revisionlist>

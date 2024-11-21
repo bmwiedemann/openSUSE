@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 21 10:06:42 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- drop optional astunparse dependency for python 3.13
+
+-------------------------------------------------------------------
 Wed Nov 13 14:20:12 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.10.0
@@ -82,8 +87,8 @@ Fri Feb 16 17:55:11 UTC 2024 - Ben Greiner <code@bnavigator.de>
 Wed Apr  8 14:39:57 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 0.5.0
-  * Implemented support for filtering tests based on markers. Also 
-    supports the marker[argument] syntax that goes beyond what pytest 
+  * Implemented support for filtering tests based on markers. Also
+    supports the marker[argument] syntax that goes beyond what pytest
     can do
   * Nicer output on failed tests
 
