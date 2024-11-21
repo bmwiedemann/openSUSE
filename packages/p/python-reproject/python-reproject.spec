@@ -25,7 +25,7 @@
 %bcond_with test
 %endif
 Name:           python-reproject%{psuffix}
-Version:        0.14.0
+Version:        0.14.1
 Release:        0
 Summary:        Reproject astronomical images
 License:        BSD-3-Clause

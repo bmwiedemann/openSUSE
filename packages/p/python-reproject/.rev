@@ -52,4 +52,19 @@
   * Fixes for mosaic output pixels not covered by inputs by @svank (forwarded request 1198371 from bnavigator)</comment>
     <requestid>1198372</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bc4b5f15bdea43f63a6b3b076e074c06</srcmd5>
+    <version>0.14.1</version>
+    <time>1732222736</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.14.1:
+  * Enforce readonly mode for memmap when reading input array
+  * Fix Continuous Integration folllowing changes in Sunpy 6.0.0
+    and 6.0.1
+  * MNT: Use hash for Action workflow versions and update if
+    needed
+
+- Required by sunpy testing (optional runtime requirement)</comment>
+    <requestid>1225368</requestid>
+  </revision>
 </revisionlist>
