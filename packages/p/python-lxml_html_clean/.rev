@@ -8,4 +8,12 @@
 Need since python-lxml &gt;= 5.2.0 among others for calibre.</comment>
     <requestid>1183861</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5bf4b96cf6e7826f645ef6ccbb7a05a6</srcmd5>
+    <version>0.4.1</version>
+    <time>1732222916</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1225616</requestid>
+  </revision>
 </revisionlist>

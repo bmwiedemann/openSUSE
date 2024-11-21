@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Nov 21 05:12:50 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.4.1
+  * Bugs fixed
+    - Removed superfluous debug prints.
+- Changes from 0.4.0
+  * Bugs fixed
+    - The Cleaner() now scans for hidden JavaScript code embedded
+      within CSS comments. In certain contexts, such as within
+      <svg> or <math> tags, <style> tags may lose their intended
+      function, allowing comments like /* foo */ to potentially be
+      executed by the browser. If a suspicious content is detected,
+      only the comment is removed.
+- Changes from 0.3.1
+  * Features added
+    - Do not parse URL addresses when it is not necessary.
+- Changes from 0.3.0
+  * Features added
+    - Parsing of URL addresses has been enhanced and Cleaner
+      removes ambiguous URLs.
+- Changes from 0.2.2
+  * Bugs fixed
+    - sdist now includes all test files and changelog.
+- Changes from 0.2.1
+  * Bugs fixed
+    - Memory efficiency is now much better for HTML pages where
+      cleaner removes a lot of elements. (#14)
+- Changes from 0.2.0
+  * Features added
+    - ASCII control characters (except HT, VT, CR and LF) are now
+      removed from string inputs before they're parsed by lxml/libxml2.
+- Fix boo#1233541
+
+-------------------------------------------------------------------
 Sun Jun 23 09:27:25 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Initial version 0.1.1
