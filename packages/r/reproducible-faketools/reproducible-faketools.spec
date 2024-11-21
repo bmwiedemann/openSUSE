@@ -17,7 +17,7 @@
 
 
 Name:           reproducible-faketools
-Version:        0.5.4+0
+Version:        0.5.5+0
 Release:        0
 Summary:        Fake system tools for reproducible builds
 License:        MIT
@@ -239,6 +239,12 @@ Requires:       util-linux
 %description j1
 a script to facilitate the debugging of reproducibility issues
 by running rpmbuild with taskset 1 to reduce parallelism
+
+%post j1
+for f in /sys/devices/system/cpu/cpu*/online ; do
+   echo 0 > $f ||:
+done
+
 %files j1
 %defattr(-, root, root, 0755)
 /usr/local/lib/reproducible-faketools/rpmbuild.d/60-j1.sh

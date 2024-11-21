@@ -20,4 +20,15 @@ Now without mandatory dettrace</comment>
   * add tests</comment>
     <requestid>1187533</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0288296cfef2fe697c95225fe873a02c</srcmd5>
+    <version>0.5.5+0</version>
+    <time>1732222920</time>
+    <user>dimstar_suse</user>
+    <comment>update to version 0.5.5
+  * j1 now disables extra CPU cores
+
+this helped with emacs reproducibility in my ring1 PoC fork</comment>
+    <requestid>1225622</requestid>
+  </revision>
 </revisionlist>
