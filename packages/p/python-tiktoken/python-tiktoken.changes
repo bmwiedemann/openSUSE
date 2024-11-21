@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov 21 09:21:10 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 0.8.0:
+  * Alas, emulation
+  * Attempt to fix emulated builds
+  * Partial sync of codebase
+  * Add possessive quantifiers to avoid catastrophic backtracking (#258)
+  * update README to mention gpt-4o
+  * Sync codebase
+  * Simplify byte_pair_merge (#255)
+  * Inline custom mapping function in _byte_pair_merge
+  * Avoid calling byte_pair_encode for existing tokens
+
+-------------------------------------------------------------------
 Fri Sep 20 06:53:00 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Fix Requires
@@ -9,4 +23,4 @@ Thu Aug 22 17:25:09 UTC 2024 - Guang Yee <gyee@suse.com>
 
 - Release v0.7.0
   * Support for gpt-4o
-  * Performance improvements 
+  * Performance improvements

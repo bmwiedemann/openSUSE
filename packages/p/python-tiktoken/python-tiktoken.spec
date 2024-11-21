@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-tiktoken
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        Fast BPE tokeniser for use with OpenAI's models
 License:        MIT

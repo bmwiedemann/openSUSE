@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/openai/tiktoken.git</param>
+              <param name="changesrevision">63527649963def8c759b0f91f2eb69a40934e468</param></service></servicedata>

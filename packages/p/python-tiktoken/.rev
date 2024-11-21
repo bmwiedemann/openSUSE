@@ -7,4 +7,23 @@
     <comment>New package of the python tiktoken module.</comment>
     <requestid>1202128</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f27cbf905fe322a45422507e0135e195</srcmd5>
+    <version>0.8.0</version>
+    <time>1732198744</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.8.0:
+  * Alas, emulation
+  * Attempt to fix emulated builds
+  * Partial sync of codebase
+  * Add possessive quantifiers to avoid catastrophic backtracking (#258)
+  * update README to mention gpt-4o
+  * Sync codebase
+  * Simplify byte_pair_merge (#255)
+  * Inline custom mapping function in _byte_pair_merge
+  * Avoid calling byte_pair_encode for existing tokens
+
+  * Performance improvements</comment>
+    <requestid>1225495</requestid>
+  </revision>
 </revisionlist>
