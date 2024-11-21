@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 11 11:33:27 UTC 2024 - Michal Suchanek <msuchanek@suse.de>
+
+- Use clang for build in Factory.
+
+-------------------------------------------------------------------
 Fri Nov  1 14:56:49 UTC 2024 - Petr Vorel <pvorel@suse.cz>
 
 - Backport fix for tools/bashreadline.bt needed for openQA testing

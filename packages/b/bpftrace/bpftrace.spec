@@ -23,9 +23,9 @@
  %else
  %define llvm_major_version %{nil}
  %endif
- %define gcc_package gcc-c++
- %define gcc_binary gcc
- %define gxx_binary g++
+ %define cc_package clang%{llvm_major_version}
+ %define cc_binary clang
+ %define xx_binary clang++
 %else
  # Hard-code latest LLVM for SLES, the default version is too old
  %if 0%{?sle_version} == 150600
@@ -39,9 +39,9 @@
  %endif
  %endif
  %endif
- %define gcc_package gcc13-c++
- %define gcc_binary gcc-13
- %define gxx_binary g++-13
+ %define cc_package gcc13-c++
+ %define cc_binary gcc-13
+ %define xx_binary g++-13
 %endif
 
 Name:           bpftrace
@@ -54,7 +54,7 @@ URL:            https://github.com/iovisor/bpftrace
 Source:         https://github.com/iovisor/bpftrace/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM 0001-tools-bashreadline-fix-probe-for-dynamically-linked-.patch bsc#1232536
 Patch0:         0001-tools-bashreadline-fix-probe-for-dynamically-linked-.patch
-BuildRequires:  %gcc_package
+BuildRequires:  %cc_package
 BuildRequires:  binutils
 BuildRequires:  binutils-devel
 BuildRequires:  bison
@@ -103,8 +103,8 @@ find tools -name '*.bt' -type f \
 %build
 # We need to build with clang, enable LTO via CMake instead.
 %define _lto_cflags %{nil}
-export CC="%gcc_binary"
-export CXX="%gxx_binary"
+export CC="%cc_binary"
+export CXX="%xx_binary"
 %cmake \
 	-DCMAKE_INTERPROCEDURAL_OPTIMIZATION:BOOL=TRUE \
 	-DLLVM_REQUESTED_VERSION="${LLVM_VERSION}" \
