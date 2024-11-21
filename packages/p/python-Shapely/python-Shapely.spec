@@ -45,8 +45,7 @@ BuildRequires:  geos-devel >= 3.5
 BuildRequires:  python-rpm-macros
 # Shapely calls the GEOS libs libgeos and libgeos_c via ctypes in python scripts, undetected by rpm ld analyzer.
 # (libgeos_c1 is detected due to some Cython optimized lib, but libgeos3 is not)
-# use requires_eq in order to be detectable by the python_subpackages rewriter
-%requires_eq    %(rpm -q --requires geos-devel | grep libgeos)
+Requires:       %(rpm -q --requires geos-devel | sed -rne 's/^(libgeos3.* = .*)-.*/\1/p')
 Requires:       (python-numpy >= 1.14 with python-numpy < 3)
 Provides:       python-shapely = %{version}-%{release}
 Obsoletes:      python-shapely < %{version}-%{release}

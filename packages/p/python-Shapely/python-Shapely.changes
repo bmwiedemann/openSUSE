@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 21 09:13:30 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- avoid stale "requires:" requirement on shapely packages
+
+-------------------------------------------------------------------
 Sat Aug 31 11:24:25 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.0.6
@@ -9,7 +14,7 @@ Sat Aug 31 11:24:25 UTC 2024 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Tue Jul  9 03:00:45 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Remove upper bound on Cython, Cython 3 is supported. 
+- Remove upper bound on Cython, Cython 3 is supported.
 
 -------------------------------------------------------------------
 Wed May 29 13:21:52 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
@@ -42,7 +47,7 @@ Sun Dec 17 16:47:49 UTC 2023 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Mon Nov 20 14:09:13 UTC 2023 - Ana Guerrero <ana.guerrero@suse.com>
 
-- Update to 2.0.2 
+- Update to 2.0.2
   ## Bug fixes:
   * Fix regression in the (in)equality comparison (geom1 == geom2)
     using __eq__ to not ignore the z-coordinates (#1732).
@@ -156,7 +161,7 @@ Mon Jan 10 22:17:06 UTC 2022 - Ben Greiner <code@bnavigator.de>
     - setting custom attributes on geometry objects
     - BaseGeometry.almost_exact
     - Deprecation warnings will be emitted in 1.8.0 when any of
-      these features are used. 
+      these features are used.
   * The deprecated to_wkb and to_wkt methods of BaseGeometry have
     been removed.
   * The STRtree nearest* methods now take an optional argument that
@@ -239,9 +244,9 @@ Wed Mar 11 12:51:39 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  * Removed vendorized `functools`
  * Disallow sequences of MultiPolygons as arguments to the MultiPolygon constructor
  * Added a new `EmptyGeometry` class to support GeoPandas
- * Added new `shapely.ops.substring` function 
- * Added new `shapely.ops.clip_by_rect` function 
- * shapely.wkb.dumps` now accepts an `srid` integer keyword argument 
+ * Added new `shapely.ops.substring` function
+ * Added new `shapely.ops.clip_by_rect` function
+ * shapely.wkb.dumps` now accepts an `srid` integer keyword argument
 
 -------------------------------------------------------------------
 Tue Mar 10 15:08:19 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
@@ -370,7 +375,7 @@ Tue Jul 11 19:43:32 UTC 2017 - toddrme2178@gmail.com
     erroneously reported to have been made in 1.5.14, but was not.
 - Update to 1.5.14
   * Bug fix: use ``type()`` instead of ``isinstance()`` when evaluating geometry
-    equality, preventing instances of base and derived classes from 
+    equality, preventing instances of base and derived classes from
     being mistaken for equals (#317).
   * Bug fix: ensure that empty geometries are created when constructors have no
     args (#332, #333).
@@ -395,7 +400,7 @@ Tue Jul 11 19:43:32 UTC 2017 - toddrme2178@gmail.com
   * Fix for Sphinx warnings (#309).
   * Addition of .cache, .idea, .pyd, .pdb to .gitignore (#310).
 - Update to 1.5.11
-  * Remove packaging module requirement added in 1.5.10 (#305). Distutils can't 
+  * Remove packaging module requirement added in 1.5.10 (#305). Distutils can't
     parse versions using 'rc', but if we stick to 'a' and 'b' we will be fine.
 - Update to 1.5.10
   * Monkey patch affinity module by absolute reference (#299).
@@ -405,13 +410,13 @@ Tue Jul 11 19:43:32 UTC 2017 - toddrme2178@gmail.com
 Mon Jun 15 17:38:21 UTC 2015 - bruno@ioda-net.ch
 
 - Update to 1.5.9
-  * Fix for 64 bit speedups compatibility (#274). 
+  * Fix for 64 bit speedups compatibility (#274).
 
 -------------------------------------------------------------------
 Sun May 24 12:42:42 UTC 2015 - bruno@ioda-net.ch
 
 - Packaging
-  * Added Provides lowercase 
+  * Added Provides lowercase
   * Added BuildRequire geos-devel Require geos
   * Added python-Cytools to build c extension
 
@@ -478,7 +483,7 @@ Sun May 24 12:12:12 UTC 2015 - bruno@ioda-net.ch
     Use GEOS version instead of GEOS C API version to determine library capabilities (#65).
   1.2.19 (2013-12-30)
     Add buffering style options (#55).
- 
+
 -------------------------------------------------------------------
 Thu Oct 24 11:14:25 UTC 2013 - speilicke@suse.com
 
@@ -539,7 +544,7 @@ Thu Dec 15 12:11:59 UTC 2011 - saschpe@suse.de
   * Ran spec-cleaner
   * Use original tarball
   * Don't use --record-rpm (only SUSE)
-  sc 
+  sc
 
 -------------------------------------------------------------------
 Thu Dec 15 00:00:00 UTC 2011 - j.verdoold@gmail.com
