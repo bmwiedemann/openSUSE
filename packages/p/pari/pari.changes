@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 21 18:40:50 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.17
+  * Fixed rare SEGV in sumnumrat function
+  * Fixed `gp -p N` not checking for N < 2^32
+
+-------------------------------------------------------------------
 Sun Apr  7 06:28:29 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.15.5

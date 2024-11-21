@@ -19,10 +19,10 @@
 # See
 # http://pari.math.u-bordeaux.fr/archives/pari-dev-1211/msg00006.html
 # for details on the SO versioning.
-%global sover 8
+%global sover 9
 %global lname   libpari-gmp-tls%sover
 Name:           pari
-Version:        2.15.5
+Version:        2.17.0
 Release:        0
 Summary:        Computer Algebra System for computations in Number Theory
 License:        GPL-2.0-only
