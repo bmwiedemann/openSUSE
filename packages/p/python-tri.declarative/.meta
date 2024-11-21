@@ -1,5 +1,0 @@
-<package name="python-tri.declarative" project="openSUSE:Factory">
-  <title>python-tri.declarative</title>
-  <description>Python class decorators in the style of Django model classes</description>
-  <devel project="devel:languages:python" package="python-tri.declarative"/>
-</package>
