@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 21 11:06:51 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.2.2
+  * Fix predefines for bswap for old compilers by @DmitriyMusatkin in (#99)
+- from version 0.2.1
+  * chore: Modified bug issue template to add checkbox to
+    report potential regression. by @ashishdhingra in (#95)
+  * CRC big endian support by @DmitriyMusatkin in (#97)
+
+-------------------------------------------------------------------
 Thu Oct 24 12:11:32 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.2.0
