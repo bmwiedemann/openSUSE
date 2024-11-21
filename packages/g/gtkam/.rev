@@ -172,4 +172,12 @@
     <comment>- gtkam-fix-build.patch: fix build with gcc14 (forwarded request 1222471 from msmeissn)</comment>
     <requestid>1222486</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>cd71dacaafccc536038b42fcc3c261c5</srcmd5>
+    <version>1.1</version>
+    <time>1732198727</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1225464</requestid>
+  </revision>
 </revisionlist>

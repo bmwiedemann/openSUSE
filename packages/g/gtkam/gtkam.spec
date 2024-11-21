@@ -17,22 +17,21 @@
 
 
 Name:           gtkam
-Version:        1.0
+Version:        1.1
 Release:        0
 Summary:        A GTK Digital Camera Tool
 License:        GPL-2.0-or-later
 Group:          Hardware/Camera
 URL:            http://gphoto.org
-Source:         https://sourceforge.net/projects/gphoto/files/gtkam/1.0/%{name}-%{version}.tar.bz2
-Source1:        https://sourceforge.net/projects/gphoto/files/gtkam/1.0/%{name}-%{version}.tar.bz2.asc
+Source:         https://github.com/gphoto/gtkam/releases/download/v%{version}/gtkam-%{version}.tar.bz2
+Source1:        https://github.com/gphoto/gtkam/releases/download/v%{version}/gtkam-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
-Patch0:         gtkam-fix-build.patch
 BuildRequires:  fdupes
 BuildRequires:  gimp-devel
 BuildRequires:  intltool
 BuildRequires:  libexif-gtk-devel
-BuildRequires:  libgphoto2-devel
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(libgphoto2)
 Requires:       %{name}-lang = %{version}
 
 %description

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 18 15:48:44 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- gtkam 1.1 release
+  * various bugfixes, buildfixes with gcc14
+  * translation updates: added hebrew and romanian, updated icelandic and spanish
+- gtkam-fix-build.patch: upstream
+
+-------------------------------------------------------------------
 Thu Nov  7 10:51:37 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - gtkam-fix-build.patch: fix build with gcc14
