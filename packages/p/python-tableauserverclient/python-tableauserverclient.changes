@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Thu Nov 21 09:25:27 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.34:
+  * Draft: Make urllib3 dependency more flexible
+  * fix: queryset support for flowruns
+  * docs: add docstrings to auth objects and endpoints
+  * Set FILESIZE_LIMIT_MB via environment variables
+  * added PulseMetricDefine cap
+  * Adding project permissions handling for databases, tables and
+    virtual connections
+  * refactor request_options, add language param
+  * ci: build on python 3.13
+  * fix: handle 0 item response in querysets
+- update to 0.33:
+  * Add support for all types of monthly repeating schedules
+  * Add workbook and datasource name attributes to JobItem Model
+  * feat: group bulk edit
+  * feat: add support for groupsets
+  * feat: custom views dl pub
+  * docs: add docstrings detailing the filter options
+  * feat: tag everything
+  * feat: get page and chunk size from env vars
+  * feat: linked tasks
+  * fix: Pager typing
+- update to 0.32:
+  * Bump urllib3 from 2.0.7 to 2.2.2 #1400
+  * Allow setting page_size in .all and .filter #1417
+  * Switch to absolute imports for favorites #1415
+  * Switch to absolute imports for datasource #1416
+  * Fix pop from empty list #1404
+  * Ignore known internal warnings on tests #1407
+  * Add support for changing project owner #1419
+  * Add type hints to auth models #1403
+  * Add typing to Pager #1390
+  * Remove blocks of code and arguments that have been deprecated
+  * Add usage to views.get_by_id #1383
+  * Type hint QuerySet and QuerySetEndpoint #1399
+  * No implicit reexport #1394
+  * Allow combining PermissionRules #1381
+  * Add size to datasource item #1397
+  * Remove outdated dependencies #1398
+  * Don't lowercase OData server addresses #1396
+- update to 0.31:
+  * Remove deprecated cgi package and switch to
+    `email.message.Message` #1346
+  * Allow viz height and width parameters #1348
+  * Add support for System schedule type #1350
+  * Add support for daily (24 hour) intervals for tasks #1355
+  * Update Actions to include Python 3.12 and reduce duplicate
+    test runs #1356
+  * Add Data Acceleration and Data Freshness Policy support #1343
+  * Add create cloud flow task support #1371
+  * Pass parameters in request options #1372
+  * Improve robustness of Pager results #1370
+
+-------------------------------------------------------------------
 Fri Mar 22 03:41:14 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.30:
@@ -23,8 +79,8 @@ Fri Mar 22 03:41:14 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
   * Add updated_at to JobItem class
   * fix revision references where xml returned does not match docs
   * Do not create empty connections list
-  * Add custom session injection, Fix bug for http_options 
-  * fix filter for python 3, remove support for python 3.6 
+  * Add custom session injection, Fix bug for http_options
+  * fix filter for python 3, remove support for python 3.6
   * Add new samples and delete redundant ones
   * Clean up hidden_views by making it an attribute of WorkbookItem
   * Add type hints for workbook and data source revisions, data alerts,
@@ -54,7 +110,7 @@ Fri Mar 22 03:41:14 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 Wed Apr 20 07:01:35 UTC 2022 - pgajdos@suse.com
 
 - version update to 0.18.0
-  ## 0.18.0 (6 April 2022)    
+  ## 0.18.0 (6 April 2022)
   * Switched to using defused_xml for xml attack protection
   * added linting and type hints
   * improve experience with self-signed certificates/invalid ssl
@@ -64,7 +120,7 @@ Wed Apr 20 07:01:35 UTC 2022 - pgajdos@suse.com
   * fixes: delete extracts
   ## 0.17.0 (20 October 2021)
   * Added support for accepting parameters for post request of the metadata api (#850)
-  * Fixed jobs.get_by_id(job_id) example & reference docs (#867, #868) 
+  * Fixed jobs.get_by_id(job_id) example & reference docs (#867, #868)
   * Fixed handling for workbooks in personal spaces which do not have projectID or Name  (#875)
   * Updated links to Data Source Methods page in REST API docs (#879)
   * Unified arguments of sample scripts (#889)

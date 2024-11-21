@@ -60,4 +60,41 @@
   * add get_by_id method and test for schedules</comment>
     <requestid>1160511</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2bf5c4dcaf0aa170f5baa9be9e417e7f</srcmd5>
+    <version>0.34</version>
+    <time>1732198747</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.34:
+  * Draft: Make urllib3 dependency more flexible
+  * fix: queryset support for flowruns
+  * docs: add docstrings to auth objects and endpoints
+  * Set FILESIZE_LIMIT_MB via environment variables
+  * added PulseMetricDefine cap
+  * Adding project permissions handling for databases, tables and
+    virtual connections
+  * refactor request_options, add language param
+  * ci: build on python 3.13
+  * fix: handle 0 item response in querysets
+- update to 0.33:
+  * Add support for all types of monthly repeating schedules
+  * Add workbook and datasource name attributes to JobItem Model
+  * feat: group bulk edit
+  * feat: add support for groupsets
+  * feat: custom views dl pub
+  * docs: add docstrings detailing the filter options
+  * feat: tag everything
+  * feat: get page and chunk size from env vars
+  * feat: linked tasks
+  * fix: Pager typing
+- update to 0.32:
+  * Bump urllib3 from 2.0.7 to 2.2.2 #1400
+  * Allow setting page_size in .all and .filter #1417
+  * Switch to absolute imports for favorites #1415
+  * Switch to absolute imports for datasource #1416
+  * Fix pop from empty list #1404
+  * Ignore known internal warnings on tests #1407
+  * Add support for changing project owner #1419</comment>
+    <requestid>1225497</requestid>
+  </revision>
 </revisionlist>
