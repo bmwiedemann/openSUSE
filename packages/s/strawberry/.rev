@@ -1501,4 +1501,35 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>1202427</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>0c857c375132d695c9f35c06c57fb393</srcmd5>
+    <version>1.2.1</version>
+    <time>1732222921</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.1
+  + Bugfixes:
+   + Fixed playback of CUE continuing to play from the same file after the song has finished playing (#1568).
+   + Fixed updating collection song sort text when disc is changed.
+   + Fixed current playing file left open when the next track errored (#1582).
+   + Fixed filter search not finding song containing uppercase &quot;A&quot; (#1599).
+   + Fixed crash when removing album from playlist when using shuffle albums (#1588).
+   + Fixed IDv3 MBID's tags with multiple entries being ignored.
+   + Fixed crash when enabling Tidal, Spotify, Qobuz or Subsonic services.
+   + Fixed passing filenames to strawberry on command line not resolving to absolute paths.
+  + Enhancements:
+   + Resolve symbolic links when dragging files to the playlist to match collection song.
+   + Replaced Spotify username/password with access token.
+   + Require Qt 6.4 or higher and drop support for Qt 5.
+   + Require TagLib 1.12 or higher.
+   + Use Qt stringliterals.
+   + Move gstfastspectrum to src.
+   + Use standard user temp location for current album cover.
+   + Removed old MacFSListener.
+   + Removed external tagreader and protobuf dependency.
+   + Removed VLC support.
+   + Ported to Qt translation (.ts) files and removed gettext dependency.
+   + Removed deprecated Gnome/Mate SettingsDaemon global shortcuts.
+</comment>
+    <requestid>1225634</requestid>
+  </revision>
 </revisionlist>

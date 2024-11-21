@@ -17,7 +17,7 @@
 
 
 Name:           strawberry
-Version:        1.1.3
+Version:        1.2.1
 Release:        0
 Summary:        A music player and music collection organizer
 License:        GPL-3.0-or-later
@@ -35,7 +35,6 @@ BuildRequires:  gcc13-c++
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 %endif
-BuildRequires:  gettext
 BuildRequires:  git
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libboost_headers-devel
@@ -74,9 +73,8 @@ BuildRequires:  pkgconfig(libmtp)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libudf)
-BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(sqlite3) >= 3.9
-BuildRequires:  pkgconfig(taglib) >= 1.11.1
+BuildRequires:  pkgconfig(taglib) >= 1.12
 %if 0%{?suse_version} > 1600
 BuildRequires:  cmake(KDSingleApplication-qt6)
 %endif
@@ -116,8 +114,7 @@ export CXX="g++-13"
 %endif
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 export CXXFLAGS="$CFLAGS"
-%cmake -DBUILD_WERROR=OFF \
-       -DQT_MAJOR_VERSION=6
+%cmake -DBUILD_WERROR=OFF
 %cmake_build
 
 %install
@@ -137,6 +134,5 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/org.straw
 %{_datadir}/icons/hicolor/*/apps/strawberry.*
 %{_datadir}/metainfo/*.appdata.xml
 %{_mandir}/man1/%{name}.1%{?ext_man}
-%{_mandir}/man1/%{name}-tagreader.1%{?ext_man}
 
 %changelog
