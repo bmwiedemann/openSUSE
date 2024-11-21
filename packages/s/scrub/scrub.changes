@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 15 08:48:57 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- scrub-fix-build.patch: fix build with gcc14.
+
+-------------------------------------------------------------------
 Mon Mar 23 00:40:14 UTC 2015 - p.drouand@gmail.com
 
 - Update to version 2.6.1
