@@ -20,7 +20,7 @@
 %define library_soversion 1
 
 Name:           aws-crt-cpp
-Version:        0.29.3
+Version:        0.29.5
 Release:        0
 Summary:        AWS C++ wrapper for AWS SDK C libraries
 License:        Apache-2.0
