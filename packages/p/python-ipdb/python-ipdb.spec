@@ -17,7 +17,8 @@
 
 
 %{?sle15_python_module_pythons}
-%define skip_python39 1
+# gh#gotcha/ipdb#279
+%define skip_python313 1
 Name:           python-ipdb
 Version:        0.13.13
 Release:        0

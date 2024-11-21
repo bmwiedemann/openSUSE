@@ -127,4 +127,12 @@
 </comment>
     <requestid>1155853</requestid>
   </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>ab02263156b3f8897d6a9bbba068675d</srcmd5>
+    <version>0.13.13</version>
+    <time>1732223170</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip python313: not supported  gh#gotcha/ipdb#279</comment>
+    <requestid>1225640</requestid>
+  </revision>
 </revisionlist>
