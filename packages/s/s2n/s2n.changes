@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Nov 21 11:11:40 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.5.9
+  * feat: Reworking cleanup behavior (#4871)
+  * chore: broaden use of flaky mark (#4865)
+  * chore: configure dependabot (#4861)
+- from version 1.5.8
+  * fix: fix open AF_INET sockets in s2n_self_talk_ktls_test.c (#4852)
+  * chore: update github PR template (#4885)
+  * feat: add new security policy `20241106` (#4874)
+  * chore: remove unused benchmarks (#4869)
+  * ci: Clean dup source tree for CRT (#4882)
+  * ci: remove www.mozilla.com from well-known to unblock CI (#4880)
+  * fix: move prelude inclusion as PRIVATE (#4876)
+  * build: add s2n_prelude.h to consolidate defines (#4465)
+  * chore: bindings release 0.3.6 (#4867)
+  * doc: fix incorrect README references (#4863)
+  * fix: typo in comment of s2n_self_talk_tls13_test (#4864)
+
+-------------------------------------------------------------------
 Mon Nov  4 14:02:24 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.5.7
