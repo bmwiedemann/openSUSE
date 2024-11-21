@@ -25,8 +25,10 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+# no numba, no dask
+%define skip_python313 1
 Name:           python-dask-expr%{psuffix}
-Version:        1.1.18
+Version:        1.1.19
 Release:        0
 Summary:        High Level Expressions for Dask
 License:        BSD-3-Clause
@@ -39,7 +41,7 @@ BuildRequires:  %{python_module versioneer-toml}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-dask = 2024.11.1
+Requires:       python-dask = 2024.11.2
 Requires:       python-pandas >= 2
 Requires:       python-pyarrow >= 14.0.1
 Provides:       python-dask_expr = %{version}-%{release}
