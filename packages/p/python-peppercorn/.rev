@@ -61,4 +61,16 @@
     <comment></comment>
     <requestid>1086629</requestid>
   </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>d3487c6b314e422e030afb3e036cd8b7</srcmd5>
+    <version>0.6</version>
+    <time>1732198757</time>
+    <user>anag+factory</user>
+    <comment>- require legacy-cgi for python 3.13 support
+
+- Remove nose and use unittest instead
+- Build doc with python3 only
+- Migrate to singlespec with spec-cleanup</comment>
+    <requestid>1225507</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-peppercorn
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2017 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,6 +25,7 @@ License:        BSD-4-Clause AND ZPL-2.1 AND MIT
 URL:            https://docs.pylonsproject.org/projects/peppercorn/en/latest/
 # SourceRepostory: https://github.com/Pylons/peppercorn
 Source:         https://files.pythonhosted.org/packages/source/p/peppercorn/peppercorn-%{version}.tar.gz
+BuildRequires:  %{python_module legacy-cgi if %python-base >= 3.13}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pylons-sphinx-themes}
 BuildRequires:  %{python_module setuptools}
@@ -33,6 +34,9 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # Documentation requirement
 BuildRequires:  python3-Sphinx
+%if %{python_version_nodots} >= 313
+Requires:       python-legacy-cgi
+%endif
 BuildArch:      noarch
 %python_subpackages
 
