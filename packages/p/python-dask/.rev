@@ -1861,4 +1861,14 @@
   * Ensure numba tokenization does not use slow pickle path</comment>
     <requestid>1223590</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>341907c0d1e47cc7d34f28a91131fb4a</srcmd5>
+    <version>2024.11.2</version>
+    <time>1732222732</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2024.11.2:
+  * fix critical performance regression in 2024.11.1
+- skip dask on 313 as numba is not yet ready for it</comment>
+    <requestid>1225144</requestid>
+  </revision>
 </revisionlist>

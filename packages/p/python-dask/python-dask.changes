@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 19 12:36:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2024.11.2:
+  * fix critical performance regression in 2024.11.1
+- skip dask on 313 as numba is not yet ready for it
+
+-------------------------------------------------------------------
 Tue Nov 12 08:58:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2024.11.1:

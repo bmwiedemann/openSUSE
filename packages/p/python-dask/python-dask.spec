@@ -48,9 +48,12 @@
 ExclusiveArch:  donotbuild
 %define python_module() %flavor-not-enabled-in-buildset-for-suse-%{?suse_version}
 %endif
+
+# can't build for 313 because numba 0.60 does not support it
+%global skip_python313 1
 Name:           python-dask%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-dask-expr,python-distributed! <===
-Version:        2024.11.1
+Version:        2024.11.2
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
