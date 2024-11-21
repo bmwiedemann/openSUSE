@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 21 10:42:00 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Amended the .spec file (jsc#PED-10291, jsc#PED-10290)
+- Improved handling of user/group. use existing user/group if they
+  exist. create user/group if not (bsc#1225876)
+- Applied additional patch
+  * ocki-3.24-remove-group-from-tests.patch
+
+-------------------------------------------------------------------
 Fri Oct  4 08:11:35 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Amended the .spec file (jsc#PED-10241) 

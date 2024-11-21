@@ -40,6 +40,7 @@ Source3:        openCryptoki-rpmlintrc
 # Patch 0 is needed because group pkcs11 doesn't exist in the build environment
 # and because we don't want(?) various file and directory permissions to be 0700.
 Patch000:       ocki-3.24-remove-make-install-chgrp.patch
+Patch001:       ocki-3.24-remove-group-from-tests.patch
 #
 #
 BuildRequires:  bison
@@ -191,7 +192,7 @@ rm -f %{buildroot}%{_libdir}/opencryptoki/methods
 # openCryptoki    pkcs11:x:64:
 # openCryptoki    pkcsslotd:x:64:
 getent group %{pkcs_group} 2>/dev/null || %{_sbindir}/groupadd -g %{pkcs11_group_id} -r %{pkcs_group} 2>/dev/null || true
-getent passwd pkcsslotd 2>/dev/null || %{_sbindir}/useradd -g %{pkcs11_group_id} -r pkcsslotd -s /sbin/nologin -d /run/opencryptoki 2>/dev/null || true
+getent passwd pkcsslotd 2>/dev/null || %{_sbindir}/useradd -g %{pkcs_group} -r pkcsslotd -s /sbin/nologin -d /run/opencryptoki 2>/dev/null || true
 %{_sbindir}/usermod -a -G %{pkcs_group} root
 
 %preun
@@ -260,10 +261,11 @@ ln -sf %{_libdir}/opencryptoki/libopencryptoki.so %{_prefix}/lib/pkcs11/PKCS11_A
   # configuration directory
 %dir %{_sysconfdir}/opencryptoki
 %config %{_sysconfdir}/opencryptoki/opencryptoki.conf
+%config %{_sysconfdir}/opencryptoki/strength.conf
+%config %{_sysconfdir}/opencryptoki/p11sak_defined_attrs.conf
 %ifarch s390 s390x
 %config %{_sysconfdir}/opencryptoki/ep11cpfilter.conf
 %config %{_sysconfdir}/opencryptoki/ep11tok.conf
-%{_sbindir}/pkcsep11_migrate
 %endif
 %{_sbindir}/p11sak
 %{_unitdir}/pkcsslotd.service
@@ -271,11 +273,14 @@ ln -sf %{_libdir}/opencryptoki/libopencryptoki.so %{_prefix}/lib/pkcs11/PKCS11_A
 %{_sbindir}/rcpkcsslotd
   # utilities
 %ifarch s390 s390x
+%{_sbindir}/pkcsep11_migrate
 %{_sbindir}/pkcsep11_session
 %endif
 %ifnarch i586
 %config %{_sysconfdir}/opencryptoki/ccatok.conf
 %{_sbindir}/pkcscca
+%dir %attr(770,root,%{pkcs_group}) %{_localstatedir}/lib/opencryptoki/ccatok
+%dir %attr(770,root,%{pkcs_group}) %{_localstatedir}/lib/opencryptoki/ccatok/TOK_OBJ
 %endif
 %{_sbindir}/pkcsslotd
 %{_sbindir}/pkcsconf
@@ -287,10 +292,6 @@ ln -sf %{_libdir}/opencryptoki/libopencryptoki.so %{_prefix}/lib/pkcs11/PKCS11_A
 %dir %{_libdir}/opencryptoki/stdll
   # State and lock directories
 %dir %attr(755,root,%{pkcs_group}) %{_localstatedir}/lib/opencryptoki
-%ifarch s390 s390x
-%dir %attr(770,root,%{pkcs_group}) %{_localstatedir}/lib/opencryptoki/ccatok
-%dir %attr(770,root,%{pkcs_group}) %{_localstatedir}/lib/opencryptoki/ccatok/TOK_OBJ
-%endif
 %dir %attr(770,root,%{pkcs_group}) %{_localstatedir}/lib/opencryptoki/swtok
 %dir %attr(770,root,%{pkcs_group}) %{_localstatedir}/lib/opencryptoki/swtok/TOK_OBJ
 %dir %attr(770,root,%{pkcs_group}) %{_localstatedir}/lib/opencryptoki/tpm
@@ -309,7 +310,6 @@ ln -sf %{_libdir}/opencryptoki/libopencryptoki.so %{_prefix}/lib/pkcs11/PKCS11_A
 %dir %{_libdir}/opencryptoki/stdll
 %{_includedir}/opencryptoki
 %{_libdir}/pkgconfig/opencryptoki.pc
-###
 %{_sbindir}/pkcshsm_mk_change
 
 %ifarch %{openCryptoki_32bit_arch}

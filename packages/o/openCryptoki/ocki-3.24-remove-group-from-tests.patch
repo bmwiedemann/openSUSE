@@ -1,0 +1,20 @@
+--- a/Makefile.am	2024-09-11 08:46:18.000000000 +0200
++++ b/Makefile.am	2024-11-21 10:54:29.857466931 +0100
+@@ -117,7 +117,7 @@
+ endif
+ if ENABLE_P11SAK
+ 	test -f $(DESTDIR)$(sysconfdir)/opencryptoki || $(MKDIR_P) $(DESTDIR)$(sysconfdir)/opencryptoki || true
+-	test -f $(DESTDIR)$(sysconfdir)/opencryptoki/p11sak_defined_attrs.conf || $(INSTALL) -g $(pkcs_group) -m 0640 $(srcdir)/usr/sbin/p11sak/p11sak_defined_attrs.conf $(DESTDIR)$(sysconfdir)/opencryptoki/p11sak_defined_attrs.conf || true
++	test -f $(DESTDIR)$(sysconfdir)/opencryptoki/p11sak_defined_attrs.conf || $(INSTALL) -m 0640 $(srcdir)/usr/sbin/p11sak/p11sak_defined_attrs.conf $(DESTDIR)$(sysconfdir)/opencryptoki/p11sak_defined_attrs.conf || true
+ endif
+ if ENABLE_ICATOK
+ 	cd $(DESTDIR)$(libdir)/opencryptoki/stdll && \
+@@ -168,7 +168,7 @@
+ if ENABLE_DAEMON
+ 	test -f $(DESTDIR)$(sysconfdir)/opencryptoki || $(MKDIR_P) $(DESTDIR)$(sysconfdir)/opencryptoki || true
+ 	test -f $(DESTDIR)$(sysconfdir)/opencryptoki/opencryptoki.conf || $(INSTALL) -m 644 $(srcdir)/usr/sbin/pkcsslotd/opencryptoki.conf $(DESTDIR)$(sysconfdir)/opencryptoki/opencryptoki.conf || true
+-	test -f $(DESTDIR)$(sysconfdir)/opencryptoki/strength.conf || $(INSTALL) -m 640 -o root -g $(pkcs_group) -T $(srcdir)/doc/strength-example.conf $(DESTDIR)$(sysconfdir)/opencryptoki/strength.conf || true
++	test -f $(DESTDIR)$(sysconfdir)/opencryptoki/strength.conf || $(INSTALL) -m 640 -o root -T $(srcdir)/doc/strength-example.conf $(DESTDIR)$(sysconfdir)/opencryptoki/strength.conf || true
+ endif
+ if !AIX
+ 	$(MKDIR_P) $(DESTDIR)/etc/ld.so.conf.d
