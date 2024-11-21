@@ -36340,6 +36340,7 @@ unsorted:
   - python313-django-qsessions 
   - python313-django-redis 
   - python313-django-registration 
+  - python313-django-request 
   - python313-django-requests-debug-toolbar 
   - python313-django-rest-framework-client 
   - python313-django-rest-framework-social-oauth2 
@@ -37005,6 +37006,7 @@ unsorted:
   - python313-linkify-it-py 
   - python313-linode-cli 
   - python313-linstor 
+  - python313-linstor-client 
   - python313-linux-procfs 
   - python313-lit 
   - python313-littleutils 
@@ -38284,6 +38286,7 @@ unsorted:
   - python313-subst 
   - python313-suds 
   - python313-suntime 
+  - python313-superqt 
   - python313-sure 
   - python313-surer 
   - python313-svglib 
