@@ -32,4 +32,12 @@
 - Fixed typo in the SLES product name (bsc#1231663)</comment>
     <requestid>1220519</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>d341c4a38db78e6e41ee82db0af314e8</srcmd5>
+    <version>0</version>
+    <time>1732222731</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1225633</requestid>
+  </revision>
 </revisionlist>
