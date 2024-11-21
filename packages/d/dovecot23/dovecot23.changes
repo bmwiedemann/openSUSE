@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 21 08:29:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add dovecot-link-icu76.patch: configure: Explicitly check for icu-uc
+  Ensure we link against libicu-uc when it's split in v76
+  (boo#1233582).
+- Call autoreconf in build section, as above patch touches the
+  build system.
+
+-------------------------------------------------------------------
 Wed Aug 14 19:09:12 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 2.3.21.1 and pigeonhole 0.5.21.1

@@ -1,7 +1,7 @@
 #
 # spec file for package dovecot23
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -164,6 +164,8 @@ Patch1:         dovecot-2.3.0-better_ssl_defaults.patch
 Patch2:         fix-build-with-openssl-3.patch
 # PATCH-FIX-UPSTREAM - https://github.com/dovecot/core/commit/f0c1cf42ea78d22e2674b03fe65f0ee6545c5b99
 Patch3:         fix-strict-aliasing.patch
+# PATCH-FIX-UPSTREAM - https://github.com/dovecot/core/commit/1ccd5b54.patch
+Patch4:         dovecot-link-icu76.patch
 Summary:        IMAP and POP3 Server Written Primarily with Security in Mind
 License:        BSD-3-Clause AND LGPL-2.1-or-later AND MIT
 Group:          Productivity/Networking/Email/Servers
@@ -347,6 +349,7 @@ gzip -9v ChangeLog
 sed -i 's|#mail_plugin_dir = /usr/lib/dovecot|mail_plugin_dir = %{_libdir}/dovecot/modules|' doc/example-config/conf.d/10-mail.conf
 
 %build
+autoreconf -fiv
 export CFLAGS="%{optflags}"
 %if %{with clucene}
 export CFLAGS="$CFLAGS -I%{_libdir}"

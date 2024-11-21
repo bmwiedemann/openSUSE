@@ -706,4 +706,18 @@
     <comment></comment>
     <requestid>1194886</requestid>
   </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>d190ad423b0c603b0b608d7c596e2f27</srcmd5>
+    <version>2.3.21.1</version>
+    <time>1732198754</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1225471 from dimstar
+
+- Add dovecot-link-icu76.patch: configure: Explicitly check for icu-uc
+  Ensure we link against libicu-uc when it's split in v76
+  (boo#1233582).
+- Call autoreconf in build section, as above patch touches the
+  build system.</comment>
+    <requestid>1225498</requestid>
+  </revision>
 </revisionlist>
