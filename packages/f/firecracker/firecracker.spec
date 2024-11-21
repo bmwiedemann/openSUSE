@@ -17,17 +17,18 @@
 
 
 Name:           firecracker
-Version:        1.9.0
+Version:        1.10.0
 Release:        0
 Summary:        Virtual Machine Monitor for creating microVMs
 License:        Apache-2.0
 URL:            https://firecracker-microvm.github.io/
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
-BuildRequires:  cargo
+BuildRequires:  cargo-packaging
+BuildRequires:  cargo1.82
 BuildRequires:  clang
 BuildRequires:  cmake
-BuildRequires:  rust >= 1.66.0
+BuildRequires:  rust1.82
 ExclusiveArch:  x86_64 aarch64
 
 %description
@@ -38,27 +39,13 @@ multi-tenant container and function-based services.
 %autosetup -p 1 -a 1
 
 %build
-
-# Copying the file elsewhere is required, because rpm build for aarch64
-# tries to change all the config.guess files found in BUILD with
-# some arch specific stuff.
-rm -rf $HOME/rust/%{name}
-mkdir -pv $HOME/rust/%{name}
-
-cargo build --offline --all --release \
-  --target-dir $HOME/rust/%{name} \
-  --target %{_arch}-unknown-linux-gnu
+%{cargo_build} --all
 
 %install
-cd $HOME/rust/%{name}
-# This should eventually migrate to distro policy
-# Enable optimization, debuginfo, and link hardening.
-
 install -D -d -m 0755 %{buildroot}%{_bindir}
-
-install -m 0755 ./%{_arch}-unknown-linux-gnu/release/firecracker %{buildroot}%{_bindir}/firecracker
-install -m 0755 ./%{_arch}-unknown-linux-gnu/release/jailer %{buildroot}%{_bindir}/jailer
-install -m 0755 ./%{_arch}-unknown-linux-gnu/release/seccompiler-bin %{buildroot}%{_bindir}/seccompiler-bin
+install -m 0755 %{_builddir}/%{name}-%{version}/target/release/%{name} %{buildroot}%{_bindir}/%{name}
+install -m 0755 %{_builddir}/%{name}-%{version}/target/release/jailer %{buildroot}%{_bindir}/jailer
+install -m 0755 %{_builddir}/%{name}-%{version}/target/release/seccompiler-bin %{buildroot}%{_bindir}/seccompiler-bin
 
 %files
 %doc README.md

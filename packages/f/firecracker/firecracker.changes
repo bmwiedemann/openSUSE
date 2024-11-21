@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon Nov 11 18:15:54 UTC 2024 - kskarthik@disroot.org
+
+- Update to version 1.10.0:
+  * Added
+    - #4834: Add VIRTIO_NET_F_RX_MRGBUF support to the virtio-net
+      device. When this feature is negotiated, guest virtio-net
+      driver can perform more efficient memory management which in
+      turn improves RX and TX performance.
+    - #4460: Add a call to KVM_KVMCLOCK_CTRL after pausing vCPUs on
+      x86_64 architectures. This ioctl sets a flag in the KVM state
+      of the vCPU indicating that it has been paused by the host
+      userspace. In guests that use kvmclock, the soft lockup
+      watchdog checks this flag. If it is set, it won't trigger the
+      lockup condition. Calling the ioctl for guests that don't use
+      kvmclock will fail. These failures are not fatal. We log the
+      failure and increase the vcpu.kvmclock_ctrl_fails metric.
+    - #4869: Added support for Aarch64 systems which feature CPU
+      caches with a number of sets higher than u16::MAX.
+    - #4797, #4854: Added GDB debugging support for a microVM guest
+      kernel.  Please see our GDB debugging documentation for more
+      information.
+  * Changed
+    - #4844: Upgrade virtio-net device to use readv syscall to
+      avoid unnecessary memory copies on RX path, increasing the RX
+      performance.
+  * Removed
+    - #4804: Drop Support for guest kernel 4.14. Linux 4.14 reached
+      end-of-life in January 2024 The minimum supported guest
+      kernel now is 5.10
+  * Fixed
+    - #4796: Fixed Vsock not notifying guest about
+      TRANSPORT_RESET_EVENT event after snapshot restore. This
+      resulted in guest waiting indefinitely on a connection which
+      was reset during snapshot creation.
+    - #4790: v1.9.0 was missing most of the debugging information
+      in the debuginfo file, due to a change in the Cargo defaults.
+      This has been corrected.
+    - #4826: Add missing configuration of tap offload features when
+      restoring from a snapshot. Setting the features was
+      previously moved from net device creation to device
+      activation time, but it was not reflected in the restore
+      path.  This was leading to inability to connect to the
+      restored VM if the offload features were used.
+
+-------------------------------------------------------------------
 Thu Sep 26 13:18:02 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.9.0:
