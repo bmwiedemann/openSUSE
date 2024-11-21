@@ -16,32 +16,25 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# tri.declarative is Python 3 only
-%define skip_python2 1
-# hammett requires python 3.7 or later
-%define skip_python36 1
-# pony not available for 3.12
-%global skip_python312 1
+%{?sle15_python_module_pythons}
 Name:           python-mutmut
-Version:        2.0.0
+Version:        3.2.2
 Release:        0
 Summary:        Python mutation testing
 License:        BSD-3-Clause
 URL:            https://github.com/boxed/mutmut
 Source:         https://github.com/boxed/mutmut/archive/%{version}.tar.gz
-Patch1:         pr_134.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click
-Requires:       python-glob2
 Requires:       python-hammett
 Requires:       python-junit-xml >= 1.8
 Requires:       python-parso
-Requires:       python-pony
-Requires:       python-setuptools
-Requires:       python-tri.declarative >= 3.0.0
+Requires:       python-rich
+Requires:       python-setproctitle
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     python-coverage
@@ -51,14 +44,13 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module coverage}
-BuildRequires:  %{python_module glob2}
 BuildRequires:  %{python_module hammett}
 BuildRequires:  %{python_module junit-xml >= 1.8}
 BuildRequires:  %{python_module parso}
-BuildRequires:  %{python_module pony}
 BuildRequires:  %{python_module pytest >= 2.8.7}
 BuildRequires:  %{python_module pytest-cov}
-BuildRequires:  %{python_module tri.declarative >= 3.0.0}
+BuildRequires:  %{python_module rich}
+BuildRequires:  %{python_module setproctitle}
 BuildRequires:  %{python_module whatthepatch >= 0.0.5}
 BuildRequires:  ed
 BuildRequires:  patch
@@ -77,10 +69,10 @@ sed -Ei 's/,?<=?.*$//' test_requirements.txt
 sed -i '1{/^#!/d}' mutmut/__main__.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/mutmut
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -97,6 +89,7 @@ sed -i '1{/^#!/d}' mutmut/__main__.py
 %doc README.rst
 %license LICENSE
 %python_alternative %{_bindir}/mutmut
-%{python_sitelib}/*
+%{python_sitelib}/mutmut
+%{python_sitelib}/mutmut-%{version}.dist-info
 
 %changelog
