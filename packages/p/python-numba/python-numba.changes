@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 22 09:42:21 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream py313.patch to support Python 3.13
+
+-------------------------------------------------------------------
 Tue Oct 29 20:01:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - skip python313

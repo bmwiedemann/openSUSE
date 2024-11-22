@@ -56,7 +56,6 @@ ExclusiveArch:  donotbuild
 ExcludeArch:    s390x ppc64 %ix86 %arm
 %endif
 %endif
-
 Name:           python-numba%{?psuffix}
 Version:        0.60.0
 Release:        0
@@ -69,6 +68,8 @@ Source:         https://files.pythonhosted.org/packages/source/n/numba/numba-%{v
 Patch3:         skip-failing-tests.patch
 # PATCH-FIX-UPSTREAM https://github.com/numba/numba/pull/9741 Add Support for NumPy 2.1
 Patch4:         numpy21.patch
+# PATCH-FIX-UPSTREAM https://github.com/numba/numba/pull/9682 Python 3.13 support
+Patch5:         py313.patch
 BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module numpy-devel >= %{min_numpy_ver} with %python-numpy-devel < %{max_numpy_ver}}
 BuildRequires:  %{python_module pip}
