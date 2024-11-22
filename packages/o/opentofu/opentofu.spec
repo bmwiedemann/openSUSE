@@ -19,7 +19,7 @@
 %define executable_name tofu
 
 Name:           opentofu
-Version:        1.8.5
+Version:        1.8.6
 Release:        0
 Summary:        Declaratively manage your cloud infrastructure
 License:        MPL-2.0
@@ -30,20 +30,34 @@ Source1:        vendor.tar.gz
 Source99:       opentofu-rpmlintrc
 BuildRequires:  bash-completion
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.21
+BuildRequires:  golang(API) >= 1.22.8
 # See: https://github.com/hashicorp/opentofu/issues/22807
 ExcludeArch:    %{ix86} %{arm}
 
 %description
 Fork of Terraform
 
-OpenTofu is an OSS tool for building, changing, and versioning infrastructure safely and efficiently. OpenTofu can manage existing and popular service providers as well as custom in-house solutions.
+OpenTofu is an OSS tool for building, changing, and versioning infrastructure
+safely and efficiently. OpenTofu can manage existing and popular service
+providers as well as custom in-house solutions.
 
 The key features of OpenTofu are:
-- Infrastructure as Code: Infrastructure is described using a high-level configuration syntax. This allows a blueprint of your datacenter to be versioned and treated as you would any other code. Additionally, infrastructure can be shared and re-used.
-- Execution Plans: OpenTofu has a "planning" step where it generates an execution plan. The execution plan shows what OpenTofu will do when you call apply. This lets you avoid any surprises when OpenTofu manipulates infrastructure.
-- Resource Graph: OpenTofu builds a graph of all your resources, and parallelizes the creation and modification of any non-dependent resources. Because of this, OpenTofu builds infrastructure as efficiently as possible, and operators get insight into dependencies in their infrastructure.
-- Change Automation: Complex changesets can be applied to your infrastructure with minimal human interaction. With the previously mentioned execution plan and resource graph, you know exactly what OpenTofu will change and in what order, avoiding many possible human errors.
+- Infrastructure as Code: Infrastructure is described using a high-level
+  configuration syntax. This allows a blueprint of your datacenter to be
+  versioned and treated as you would any other code. Additionally, infrastructure
+  can be shared and re-used.
+- Execution Plans: OpenTofu has a "planning" step where it generates an
+  execution plan. The execution plan shows what OpenTofu will do when you call
+  apply. This lets you avoid any surprises when OpenTofu manipulates
+  infrastructure.
+- Resource Graph: OpenTofu builds a graph of all your resources, and
+  parallelizes the creation and modification of any non-dependent resources.
+  Because of this, OpenTofu builds infrastructure as efficiently as possible, and
+  operators get insight into dependencies in their infrastructure.
+- Change Automation: Complex changesets can be applied to your infrastructure
+  with minimal human interaction. With the previously mentioned execution plan
+  and resource graph, you know exactly what OpenTofu will change and in what
+  order, avoiding many possible human errors.
 
 %prep
 %autosetup -p 1 -a 1

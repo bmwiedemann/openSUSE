@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Nov 22 19:26:51 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.8.6:
+  * update 1.8 versions (#2211)
+  * fix changelog for 1.8.6 (#2207)
+  * [BACKPORT] add missing changelog entry for http backend logging
+    (#2206) (#2209)
+  * Bump golang version to 1.22.8 (address CVE-2024-34156) (#2050)
+    (#2182)
+  * [BACKPORT] fix mock type conversion in tofu test (#2144)
+    (#2197)
+  * [BACKPORT] fix mock provider validation (#2140) (#2196)
+  * [BACKPORT] Add DEBUG-level logging to the "http" state storage
+    backend (#2120) (#2192)
+  * [BACKPORT] pin node version for docusaurus build (#2177)
+    (#2194)
+
+-------------------------------------------------------------------
 Tue Nov 12 06:51:32 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.8.5:
