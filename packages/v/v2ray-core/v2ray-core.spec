@@ -25,7 +25,7 @@
 %define   import_path     github.com/v2fly/v2ray-core/v5
 
 Name:           v2ray-core
-Version:        5.18.0
+Version:        5.22.0
 Release:        0
 Summary:        Network tools for building a computer network
 License:        MIT

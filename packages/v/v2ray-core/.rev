@@ -409,4 +409,17 @@
  - Update version to 5.15.1 (forwarded request 1200822 from hillwood)</comment>
     <requestid>1200823</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>8b13940511e87cc798daeaa0daf7ee2b</srcmd5>
+    <version>5.22.0</version>
+    <time>1732315995</time>
+    <user>anag+factory</user>
+    <comment>- Update version to 5.22.0
+  * Add packetEncoding for Hysteria
+  * Add ECH Client Support
+  * Add support for parsing some shadowsocks links
+  * Add Mekya Transport
+  * Fix bugs (forwarded request 1225824 from hillwood)</comment>
+    <requestid>1225825</requestid>
+  </revision>
 </revisionlist>

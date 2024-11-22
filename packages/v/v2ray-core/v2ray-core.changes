@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 22 12:44:43 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.22.0
+  * Add packetEncoding for Hysteria
+  * Add ECH Client Support
+  * Add support for parsing some shadowsocks links
+  * Add Mekya Transport
+  * Fix bugs
+
+-------------------------------------------------------------------
 Fri Sep 13 12:02:49 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.18.0
