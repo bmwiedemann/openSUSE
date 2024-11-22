@@ -24,18 +24,15 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%define modname proto-plus
+%define modname proto_plus
 %{?sle15_python_module_pythons}
 Name:           python-proto-plus%{psuffix}
-Version:        1.24.0
+Version:        1.25.0
 Release:        0
 Summary:        Pythonic Protocol Buffers
 License:        Apache-2.0
 URL:            https://github.com/googleapis/proto-plus-python
 Source0:        https://files.pythonhosted.org/packages/source/p/%{modname}/%{modname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM pytest-staticmethod.patch gh#pytest-dev/pytest#9637 mcepl@suse.com
-# workaround for the problem with pytest 7.0
-Patch0:         pytest-staticmethod.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module protobuf >= 3.19.0}
 BuildRequires:  %{python_module setuptools}

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov 22 13:28:52 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.25.0
+  * Add support for Python 3.13
+  * Construct messages with nested struct
+  * Fix 'Couldn't build proto file' when using Python 3.13
+  * Fix conda compatibility issue
+  * Fix issue with equality comparison of repeated field with None
+  * Remove check for Protobuf version
+- Drop merged pytest-staticmethod.patch
+
+-------------------------------------------------------------------
 Wed Oct  2 06:05:52 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Explicitly BuildRequires on pytz, the testsuite uses it. 
