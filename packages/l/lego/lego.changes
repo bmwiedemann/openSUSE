@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Nov 22 09:43:29 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 4.20.4:
+  * Prepare release v4.20.4
+  * chore: publish snap to the stable channel
+  * Detach v4.20.3
+
+-------------------------------------------------------------------
+Fri Nov 22 09:38:43 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 4.20.3:
+  * Prepare release v4.20.3
+  * technitium: fix status code handling (#2357)
+  * chore: publish aur lego-bin (#2356)
+  * chore: check DNSProvider interface (#2352)
+  * directadmin: fix timeout configuration (#2351)
+  * chore: fix snap name (#2349)
+  * chore: restore snap packaging (#2348)
+  * docs: fix typos
+  * docs: improve changelog style (#2346)
+  * fix: HTTP server IPv6 matching (#2345)
+  * Detach v4.20.2
+
+-------------------------------------------------------------------
 Tue Nov 12 10:04:15 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 4.20.2:

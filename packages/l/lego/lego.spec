@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           lego
-Version:        4.20.2
+Version:        4.20.4
 Release:        0
 Summary:        Let's Encrypt/ACME client and library written in Go
 License:        MIT
