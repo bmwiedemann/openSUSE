@@ -15,22 +15,28 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define KUBERNETES_STABLE_VERSION v1.28.6
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
+# https://github.com/kubermatic/kubeone/blob/main/Makefile#L40
+# curl -SsL https://dl.k8s.io/release/stable-1.31.txt
+%define KUBERNETES_STABLE_VERSION v1.31.3
 
 Name:           kubeone
-Version:        1.8.3
+Version:        1.9.0
 Release:        0
 Summary:        CLI for the kubeone cluster automation
 License:        Apache-2.0
 URL:            https://github.com/kubermatic/kubeone
 Source:         kubeone-%{version}.tar.gz
 Source1:        vendor.tar.gz
+BuildRequires:  bash-completion
+BuildRequires:  fish
 BuildRequires:  go >= 1.22
+BuildRequires:  zsh
 
 %description
-Kubermatic KubeOne automates cluster operations on all your cloud, on-prem, edge, and IoT environments. KubeOne can install high-available (HA) master clusters as well single master clusters.
+Kubermatic KubeOne automates cluster operations on all your cloud, on-prem,
+edge, and IoT environments. KubeOne can install high-available (HA) master
+clusters as well single master clusters.
 
 %package -n %{name}-bash-completion
 Summary:        Bash Completion for %{name}
@@ -57,29 +63,32 @@ zsh command line completion support for %{name}.
 %autosetup -p 1 -a 1
 
 %build
+COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/%{name}.obsinfo)"
+
 DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
 BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")
+
 go build \
    -mod=vendor \
    -buildmode=pie \
    -ldflags=" \
    -X k8c.io/kubeone/pkg/cmd.defaultKubeVersion=%{KUBERNETES_STABLE_VERSION} \
-   -X k8c.io/kubeone/pkg/cmd.version=%{version} \
-   -X k8c.io/kubeone/pkg/cmd.commit=v%{version} \
-   -X k8c.io/kubeone/pkg/cmd.date=$BUILD_DATE" \
+   -X k8c.io/kubeone/pkg/cmd.version=v%{version} \
+   -X k8c.io/kubeone/pkg/cmd.commit=${COMMIT_HASH} \
+   -X k8c.io/kubeone/pkg/cmd.date=${BUILD_DATE}" \
    -o bin/kubeone
 
 %install
 # Install the binary.
-install -D -m 0755 bin/%{name} "%{buildroot}/%{_bindir}/%{name}"
+install -D -m 0755 bin/%{name} %{buildroot}/%{_bindir}/%{name}
 
 # create the bash completion file
 mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
 %{buildroot}/%{_bindir}/%{name} completion bash > %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
 
 # create the zsh completion file
-mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d/
-%{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_%{name}
+mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
+%{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{name}
 
 %files
 %doc README.md
@@ -87,12 +96,9 @@ mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d/
 %{_bindir}/%{name}
 
 %files -n %{name}-bash-completion
-%dir %{_datarootdir}/bash-completion/completions/
 %{_datarootdir}/bash-completion/completions/%{name}
 
 %files -n %{name}-zsh-completion
-%defattr(-,root,root)
-%dir %{_datarootdir}/zsh_completion.d/
-%{_datarootdir}/zsh_completion.d/_%{name}
+%{_datarootdir}/zsh/site-functions/_%{name}
 
 %changelog

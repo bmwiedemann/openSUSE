@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Fri Nov 22 15:09:14 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.9.0:
+  * Urgent Upgrade Notes
+    https://docs.kubermatic.com/kubeone/v1.9/tutorials/upgrading/upgrading-from-1.8-to-1.9/
+    (No, really, you MUST read this before you upgrade)
+    - Add support for Ubuntu 24.04. Example Terraform configs for
+      all providers are now using Ubuntu 24.04 by default. If
+      you're using the latest Terraform configs with an existing
+      cluster, make sure to bind the operating system/image to the
+      image that you're currently using, otherwise your
+      instances/cluster might get recreated by Terraform. On some
+      providers, machine-controller will use Ubuntu 24.04 if the
+      image is not explicitly specified. (#3302, @SimonTheLeg)
+    - Example Terraform configs for Hetzner are now using cx22
+      instead of cx21 instance type by default. If you use the
+      latest Terraform configs with an existing cluster, make sure
+      to override the instance type as needed, otherwise your
+      instances/cluster might get recreated by Terraform. (#3370,
+      @kron4eg)
+    - KubeOne is now validating that IP addresses and hostnames
+      provided for control plane nodes and static worker nodes are
+      different. In other words, it's not possible to use the same
+      machine both as a control plane node and a static worker
+      node. This behavior has never been supported by KubeOne; if
+      you want a control plane node that can schedule any pod, you
+      can provision it as a control plane node and remove the
+      control plane taint
+      (node-role.kubernetes.io/control-plane:NoSchedule). (#3334,
+      @kron4eg)
+    - Update Cilium to v1.16.3. This change might affect users that
+      have nodes that are low on capacity (pods or resources wise).
+      The Cilium architecture has been changed so that the Envoy
+      Proxy is not integrated into Cilium, but is a dedicated
+      component/DaemonSet. If you have nodes that are low on
+      capacity, you might encounter issues when trying to start
+      Envoy Proxy pods on those nodes. In this case, you'll need to
+      override the Cilium addon to use the old architecture with
+      Envoy Proxy integrated into Cilium. (#3415, @xmudrii) kubeone
+      install and kubeone upgrade subcommands are removed. We have
+      deprecated these commands in KubeOne 1.4, and made them
+      hidden in KubeOne 1.5. With this change, we're permanently
+      removing these two commands. kubeone apply should be used
+      instead. (#3349, @mohamed-rafraf)
+
+-------------------------------------------------------------------
 Sat Sep 21 16:20:41 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.8.3:
