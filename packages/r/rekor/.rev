@@ -421,4 +421,12 @@
     <comment>refactor spec, change to obs_scm (no longer hardcoding the commit hash) and update to 1.3.6 (forwarded request 1189772 from ojkastl_buildservice)</comment>
     <requestid>1189775</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>eef5629e7ff3cf5840ddba8bf260a0cd</srcmd5>
+    <version>1.3.7</version>
+    <time>1732315966</time>
+    <user>anag+factory</user>
+    <comment>update to 1.3.7 (forwarded request 1225783 from ojkastl_buildservice)</comment>
+    <requestid>1225792</requestid>
+  </revision>
 </revisionlist>
