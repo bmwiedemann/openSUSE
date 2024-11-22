@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 22 10:03:01 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- fix CFLAGS, as with the earlier try, there was a typo with optflags
+
+-------------------------------------------------------------------
 Sun Aug 25 22:02:45 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - fix gcc14 by using "-Wno-error -Wno-unused-variable -Wno-unused-parameter

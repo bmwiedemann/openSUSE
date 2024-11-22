@@ -33,4 +33,12 @@
   -Wno-incompatible-pointer-types -Wno-return-mismatch -Wno-int-conversion&quot; (forwarded request 1195962 from rrahl0)</comment>
     <requestid>1195963</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>0bec9242fdf66a6d46bed92ef29b7359</srcmd5>
+    <version>0.5.1</version>
+    <time>1732315963</time>
+    <user>anag+factory</user>
+    <comment>- fix CFLAGS, as with the earlier try, there was a typo with optflags (forwarded request 1225785 from rrahl0)</comment>
+    <requestid>1225786</requestid>
+  </revision>
 </revisionlist>
