@@ -181,4 +181,19 @@
   * GO-2024-3265 CVE-2024-52009 GHSA-gppm-hq3p-h4rp (forwarded request 1225421 from jfkw)</comment>
     <requestid>1225422</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>fd87276298a6d2b3936297b0857c616b</srcmd5>
+    <version>0.0.20241121T195252</version>
+    <time>1732316028</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.0.20241121T195252 2024-11-21T19:52:52Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2024-3279 GHSA-7225-m954-23v7
+  * GO-2024-3280 CVE-2024-52282 GHSA-9c5p-35gj-jqp4
+  * GO-2024-3281 CVE-2024-52280 GHSA-j5hq-5jcr-xwx7
+  * GO-2024-3282 GHSA-r4pg-vg54-wxx4
+  * GO-2024-3283 CVE-2024-52309 (forwarded request 1225889 from jfkw)</comment>
+    <requestid>1225890</requestid>
+  </revision>
 </revisionlist>
