@@ -79,4 +79,15 @@
     <comment></comment>
     <requestid>1224081</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a06654647a59c592dc4c1c07fcb3f04f</srcmd5>
+    <version>1.21.2</version>
+    <time>1732315997</time>
+    <user>anag+factory</user>
+    <comment>- Update version to 1.21.2
+  * supports generic I/O socket type
+  * Support OpenBSD Packet-Filter (pf)
+  * Fix bugs (forwarded request 1225827 from hillwood)</comment>
+    <requestid>1225828</requestid>
+  </revision>
 </revisionlist>

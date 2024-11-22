@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 22 13:00:48 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.21.2
+  * supports generic I/O socket type
+  * Support OpenBSD Packet-Filter (pf)
+  * Fix bugs
+
+-------------------------------------------------------------------
 Wed Nov 13 06:18:54 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to override build date (boo#1047218)
