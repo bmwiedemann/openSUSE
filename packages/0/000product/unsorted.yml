@@ -10044,6 +10044,7 @@ unsorted:
   - kdiskmark 
   - kdnssd-framework-devel 
   - kdnssd-lang 
+  - kdocker 
   - kdoctools-devel 
   - kdsingleapplication-devel 
   - kdsingleapplication-qt6-devel 
@@ -11990,8 +11991,8 @@ unsorted:
   - libargtable2-0 
   - libargtable2-devel 
   - libaria2-0 
-  - libarm_compute42 
-  - libarm_compute_graph42 
+  - libarm_compute43 
+  - libarm_compute_graph43 
   - libarmadillo14 
   - libarmnn33 
   - libarmnn33-opencl 
@@ -15332,7 +15333,7 @@ unsorted:
   - libpappl1 
   - libparanoia1_0 
   - libparaview5_12 
-  - libpari-gmp-tls8 
+  - libpari-gmp-tls9 
   - libparlatype-devel 
   - libparlatype7 
   - libparpack2-openmpi4 
@@ -24339,7 +24340,6 @@ unsorted:
   - python310-Flask-Compress 
   - python310-Flask-Cors 
   - python310-Flask-Gravatar 
-  - python310-Flask-HTMLmin 
   - python310-Flask-HTTPAuth 
   - python310-Flask-Login 
   - python310-Flask-Mail 
@@ -25869,7 +25869,6 @@ unsorted:
   - python310-html2text 
   - python310-html5-parser 
   - python310-html5lib 
-  - python310-htmlmin 
   - python310-httmock 
   - python310-http-ece 
   - python310-http-parser 
@@ -26041,7 +26040,6 @@ unsorted:
   - python310-jsonschema-format 
   - python310-jsonschema-format-nongpl 
   - python310-jsonschema-path 
-  - python310-jsonschema-spec 
   - python310-jsonschema-specifications 
   - python310-jsonslicer 
   - python310-jsonxs 
@@ -27388,7 +27386,6 @@ unsorted:
   - python310-screenplain 
   - python310-scripttest 
   - python310-scrypt 
-  - python310-scspell3k 
   - python310-sdjson 
   - python310-sdnotify 
   - python310-seaborn 
@@ -27702,7 +27699,6 @@ unsorted:
   - python310-translationstring 
   - python310-translitcodec 
   - python310-treq 
-  - python310-tri.declarative 
   - python310-tri.struct 
   - python310-trio 
   - python310-trio-typing 
@@ -28019,7 +28015,6 @@ unsorted:
   - python311-Flask-Compress 
   - python311-Flask-Cors 
   - python311-Flask-Gravatar 
-  - python311-Flask-HTMLmin 
   - python311-Flask-HTTPAuth 
   - python311-Flask-Login 
   - python311-Flask-Mail 
@@ -29501,7 +29496,6 @@ unsorted:
   - python311-html2text 
   - python311-html5-parser 
   - python311-html5lib 
-  - python311-htmlmin 
   - python311-httmock 
   - python311-http-ece 
   - python311-http-parser 
@@ -29662,7 +29656,6 @@ unsorted:
   - python311-jsonschema-format 
   - python311-jsonschema-format-nongpl 
   - python311-jsonschema-path 
-  - python311-jsonschema-spec 
   - python311-jsonslicer 
   - python311-jsonxs 
   - python311-junit-xml 
@@ -30958,7 +30951,6 @@ unsorted:
   - python311-screeninfo 
   - python311-screenplain 
   - python311-scripttest 
-  - python311-scspell3k 
   - python311-sdjson 
   - python311-sdnotify 
   - python311-seaborn 
@@ -31264,7 +31256,6 @@ unsorted:
   - python311-translationstring 
   - python311-translitcodec 
   - python311-treq 
-  - python311-tri.declarative 
   - python311-tri.struct 
   - python311-trio 
   - python311-trio-typing 
@@ -31578,7 +31569,6 @@ unsorted:
   - python312-Flask-Compress 
   - python312-Flask-Cors 
   - python312-Flask-Gravatar 
-  - python312-Flask-HTMLmin 
   - python312-Flask-HTTPAuth 
   - python312-Flask-Login 
   - python312-Flask-Mail 
@@ -33108,7 +33098,6 @@ unsorted:
   - python312-html2text 
   - python312-html5-parser 
   - python312-html5lib 
-  - python312-htmlmin 
   - python312-httmock 
   - python312-http-ece 
   - python312-http-parser 
@@ -33605,6 +33594,7 @@ unsorted:
   - python312-mutagen 
   - python312-mutatorMath 
   - python312-mutf8 
+  - python312-mutmut 
   - python312-mutt-ics 
   - python312-mwclient 
   - python312-mycli 
@@ -34625,7 +34615,6 @@ unsorted:
   - python312-screenplain 
   - python312-scripttest 
   - python312-scrypt 
-  - python312-scspell3k 
   - python312-sdjson 
   - python312-sdnotify 
   - python312-seaborn 
@@ -34938,7 +34927,6 @@ unsorted:
   - python312-translationstring 
   - python312-translitcodec 
   - python312-treq 
-  - python312-tri.declarative 
   - python312-tri.struct 
   - python312-trio 
   - python312-trio-typing 
@@ -35392,6 +35380,7 @@ unsorted:
   - python313-QtPy 
   - python313-QtPy-test 
   - python313-Quart 
+  - python313-RTFDE 
   - python313-RangeHTTPServer 
   - python313-RegexOrder 
   - python313-Routes 
@@ -35410,6 +35399,7 @@ unsorted:
   - python313-Sphinx-latex 
   - python313-StrEnum 
   - python313-TagStats 
+  - python313-Telethon 
   - python313-Tempita 
   - python313-TermRecord 
   - python313-Transplant 
@@ -35531,6 +35521,7 @@ unsorted:
   - python313-application 
   - python313-applicationinsights 
   - python313-apprise 
+  - python313-apptools 
   - python313-apsw 
   - python313-arabic-reshaper 
   - python313-archmage 
@@ -36209,14 +36200,6 @@ unsorted:
   - python313-dash-html-components 
   - python313-dash-renderer 
   - python313-dash-table 
-  - python313-dask 
-  - python313-dask-array 
-  - python313-dask-complete 
-  - python313-dask-dataframe 
-  - python313-dask-diagnostics 
-  - python313-dask-distributed 
-  - python313-dask-expr 
-  - python313-dask-test 
   - python313-databases 
   - python313-dataclasses-json 
   - python313-datadiff 
@@ -36274,7 +36257,6 @@ unsorted:
   - python313-dist-meta 
   - python313-distlib 
   - python313-distorm3 
-  - python313-distributed 
   - python313-distro 
   - python313-distroinfo 
   - python313-distutils-extra 
@@ -36440,6 +36422,7 @@ unsorted:
   - python313-entrypoints 
   - python313-envier 
   - python313-environmental-override 
+  - python313-envisage 
   - python313-envs 
   - python313-enzyme 
   - python313-ephem 
@@ -36466,6 +36449,7 @@ unsorted:
   - python313-expiringdict 
   - python313-exrex 
   - python313-extension-helpers 
+  - python313-extract-msg 
   - python313-extras 
   - python313-extratools 
   - python313-eyed3 
@@ -36672,6 +36656,7 @@ unsorted:
   - python313-h5netcdf 
   - python313-h5py 
   - python313-habanero 
+  - python313-hammett 
   - python313-handy-archives 
   - python313-hankel 
   - python313-hanzidentifier 
@@ -36756,6 +36741,7 @@ unsorted:
   - python313-imageio-ffmpeg 
   - python313-imagesize 
   - python313-imbox 
+  - python313-img2pdf 
   - python313-iminuit 
   - python313-immutabledict 
   - python313-immutables 
@@ -36826,6 +36812,7 @@ unsorted:
   - python313-jaraco.versioning 
   - python313-javapackages 
   - python313-javaproperties 
+  - python313-jdatetime 
   - python313-jdcal 
   - python313-jedi 
   - python313-jeepney 
@@ -37003,6 +36990,7 @@ unsorted:
   - python313-ligo-lw 
   - python313-ligotimegps 
   - python313-linetable 
+  - python313-link-traits 
   - python313-linkify-it-py 
   - python313-linode-cli 
   - python313-linstor 
@@ -37078,12 +37066,15 @@ unsorted:
   - python313-mdit-py-plugins 
   - python313-mdurl 
   - python313-mechanize 
+  - python313-mediafile 
   - python313-memory_profiler 
   - python313-mercantile 
   - python313-merge3 
   - python313-mergedeep 
   - python313-meson-python 
   - python313-metaextract 
+  - python313-metakernel 
+  - python313-methodtools 
   - python313-micropipenv 
   - python313-microsoft-security-utilities-secret-masker 
   - python313-mimesis 
@@ -37145,6 +37136,7 @@ unsorted:
   - python313-mutagen 
   - python313-mutatorMath 
   - python313-mutf8 
+  - python313-mutmut 
   - python313-mutt-ics 
   - python313-mwclient 
   - python313-mycli 
@@ -37211,6 +37203,7 @@ unsorted:
   - python313-ntfy 
   - python313-ntplib 
   - python313-num2words 
+  - python313-numcodecs 
   - python313-numericalunits 
   - python313-numexpr 
   - python313-numpy 
@@ -37226,6 +37219,7 @@ unsorted:
   - python313-oauthlib 
   - python313-objgraph 
   - python313-oci-sdk 
+  - python313-octave-kernel 
   - python313-odfpy 
   - python313-odorik 
   - python313-ogr 
@@ -37365,6 +37359,7 @@ unsorted:
   - python313-pendulum 
   - python313-pep440 
   - python313-pep8-naming 
+  - python313-peppercorn 
   - python313-percy 
   - python313-perf 
   - python313-perky 
@@ -37384,6 +37379,7 @@ unsorted:
   - python313-pifpaf 
   - python313-pika 
   - python313-pika-pool 
+  - python313-pikepdf 
   - python313-pilkit 
   - python313-pillow-heif 
   - python313-pingparsing 
@@ -37573,6 +37569,7 @@ unsorted:
   - python313-pyelftools 
   - python313-pyenchant 
   - python313-pyerfa 
+  - python313-pyface 
   - python313-pyfakefs 
   - python313-pyfeyn 
   - python313-pyfiglet 
@@ -38189,7 +38186,6 @@ unsorted:
   - python313-soxr 
   - python313-spake2 
   - python313-spark_parser 
-  - python313-sparse 
   - python313-speaklater 
   - python313-specfile 
   - python313-sphinx-argparse 
@@ -38302,6 +38298,7 @@ unsorted:
   - python313-system-hotkey310 
   - python313-system_hotkey 
   - python313-systemd 
+  - python313-tableauserverclient 
   - python313-tableprint 
   - python313-tables 
   - python313-tablib 
@@ -38344,6 +38341,7 @@ unsorted:
   - python313-thrift 
   - python313-thriftpy2 
   - python313-tifffile 
+  - python313-tiktoken 
   - python313-time-machine 
   - python313-time-travel 
   - python313-timeout-decorator 
@@ -38388,6 +38386,8 @@ unsorted:
   - python313-tpfd 
   - python313-tqdm 
   - python313-traitlets 
+  - python313-traits 
+  - python313-traitsui 
   - python313-traittypes 
   - python313-transaction 
   - python313-transip 
@@ -38527,6 +38527,7 @@ unsorted:
   - python313-wcmatch 
   - python313-wcwidth 
   - python313-weasyprint 
+  - python313-web.py 
   - python313-web_cache 
   - python313-webassets 
   - python313-webauthn 
@@ -38547,6 +38548,7 @@ unsorted:
   - python313-whichcraft 
   - python313-whitenoise 
   - python313-wikipedia 
+  - python313-wirerope 
   - python313-wmctrl 
   - python313-wolframalpha 
   - python313-wptools 
@@ -38604,6 +38606,7 @@ unsorted:
   - python313-yamllint 
   - python313-yamlloader 
   - python313-yapf 
+  - python313-yappi 
   - python313-yara 
   - python313-yarg 
   - python313-yarl 
@@ -38615,6 +38618,7 @@ unsorted:
   - python313-yt 
   - python313-yt-dlp 
   - python313-ytmusicapi 
+  - python313-zarr 
   - python313-zc.buildout 
   - python313-zc.customdoctests 
   - python313-zc.lockfile 
@@ -41055,6 +41059,7 @@ unsorted:
   - supercollider-gedit 
   - supercollider-sc3-plugins 
   - supercollider-vim 
+  - supergfxctl 
   - superlu-devel 
   - superlu-doc 
   - superlu-examples 
