@@ -1,7 +1,7 @@
 <services>
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
-    <param name="revision">v0.160.7</param>
+    <param name="revision">v0.162.5</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
@@ -18,7 +18,7 @@
   <service name="set_version" mode="manual"/>
   <service name="cargo_vendor" mode="manual">
     <param name="srcdir">zed</param>
-    <param name="update">false</param>
+    <param name="update">true</param>
     <param name="compression">zst</param>
   </service>
 </services>
