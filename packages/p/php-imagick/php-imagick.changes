@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 22 10:28:40 UTC 2024 - Manu Maier <mmanu84@outlook.de>
+
+- Fix removed "php_strtolower" for PHP 8.4
+  + imagick-php_strtolower-php84.patch
+
+-------------------------------------------------------------------
 Sun Jan 21 20:38:00 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - Expect test to fail as the values ImageMagick will accept are limited

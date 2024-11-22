@@ -1,0 +1,42 @@
+diff -upr imagick-3.7.0.orig/imagick.c imagick-3.7.0/imagick.c
+--- imagick-3.7.0.orig/imagick.c	2022-01-11 16:23:47.000000000 +0100
++++ imagick-3.7.0/imagick.c	2024-11-22 11:14:01.187974046 +0100
+@@ -603,7 +603,11 @@ static zval *php_imagick_read_property(z
+ 					if (format) {
+ 						retval = rv;
+ 						ZVAL_STRING(retval, format);
+-						php_strtolower(Z_STRVAL_P(retval), Z_STRLEN_P(retval));
++						#if PHP_VERSION_ID < 80400
++							php_strtolower(Z_STRVAL_P(retval), Z_STRLEN_P(retval));
++						#else
++							zend_str_tolower(Z_STRVAL_P(retval), Z_STRLEN_P(retval));
++						#endif
+ 						IMAGICK_FREE_MAGICK_MEMORY(format);
+ 					} else {
+ 						retval = rv;
+@@ -676,7 +680,11 @@ static zval *php_imagick_read_property(z
+ 					if (format) {
+ 						retval = rv;
+ 						ZVAL_STRING(retval, format);
+-						php_strtolower(Z_STRVAL_P(retval), Z_STRLEN_P(retval));
++						#if PHP_VERSION_ID < 80400
++							php_strtolower(Z_STRVAL_P(retval), Z_STRLEN_P(retval));
++						#else
++							zend_str_tolower(Z_STRVAL_P(retval), Z_STRLEN_P(retval));
++						#endif
+ 						IMAGICK_FREE_MAGICK_MEMORY(format);
+ 					} else {
+ 						retval = rv;
+@@ -759,7 +767,11 @@ static zval *php_imagick_read_property(z
+ 
+ 					if (format) {
+ 						ZVAL_STRING(retval, format, 1);
+-						php_strtolower(Z_STRVAL_P(retval), Z_STRLEN_P(retval));
++						#if PHP_VERSION_ID < 80400
++							php_strtolower(Z_STRVAL_P(retval), Z_STRLEN_P(retval));
++						#else
++							zend_str_tolower(Z_STRVAL_P(retval), Z_STRLEN_P(retval));
++						#endif
+ 						IMAGICK_FREE_MAGICK_MEMORY(format);
+ 					} else {
+ 						ZVAL_STRING(retval, "", 1);

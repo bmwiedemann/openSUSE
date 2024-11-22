@@ -45,6 +45,7 @@ Patch0:         imagick-reproducible.patch
 Patch10:        imagick-xfail-test014.patch
 # PATCH-FIX-OPENSUSE - calculation of kurtosis and skewness was fixed in Imagick-7.1.1.24
 Patch11:        imagick-fix-test316.patch
+Patch12:        imagick-php_strtolower-php84.patch
 BuildRequires:  %{php_name}-devel >= 7.0.1
 BuildRequires:  ImageMagick-devel >= 6.5.3.10
 BuildRequires:  ghostscript-fonts-std
