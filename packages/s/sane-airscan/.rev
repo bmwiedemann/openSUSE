@@ -52,4 +52,12 @@
   * WSD: cosmetic (forwarded request 1225158 from rrahl0)</comment>
     <requestid>1225159</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>13e1c328c91625dde3a4634ed5539ed3</srcmd5>
+    <version>0.99.30</version>
+    <time>1732315970</time>
+    <user>anag+factory</user>
+    <comment>- do not replace config (as configured scanners are saved to that file) (forwarded request 1225793 from rrahl0)</comment>
+    <requestid>1225794</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 22 10:26:33 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- do not replace config (as configured scanners are saved to that file)
+
+-------------------------------------------------------------------
 Tue Nov 19 19:30:44 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.99.30:

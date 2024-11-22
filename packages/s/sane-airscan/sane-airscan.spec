@@ -59,7 +59,7 @@ rm %{buildroot}%{_libdir}/sane/libsane-airscan.so
 %license LICENSE COPYING
 %doc README.md
 %{_bindir}/airscan-discover
-%config %{_sysconfdir}/sane.d/airscan.conf
+%config(noreplace) %{_sysconfdir}/sane.d/airscan.conf
 %config %{_sysconfdir}/sane.d/dll.d/airscan
 %{_libdir}/sane/libsane-airscan.so.1
 %{_mandir}/man?/{sane-airscan,airscan-discover}.?%{?ext_man}
