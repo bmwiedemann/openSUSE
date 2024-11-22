@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov 21 22:18:50 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.5:
+  + Bump the FD soft limit to the max allowed, now that there are
+    more FDs open for Vulkan shader caches.
+  + Fix monitoring of podman for changes which fixes auto-discovery
+    of quadlets in systemd --user services.
+  + Fix disposal of tabs without a foreground process upon closing
+    a Ptyxis window.
+  + Robustness fixes in icon discover for tabs with containers
+  + Robustness fixes in checking for active container
+  + Fix scrolling within close-tabs dialog
+
+-------------------------------------------------------------------
 Tue Oct 29 20:39:21 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.4:

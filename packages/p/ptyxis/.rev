@@ -23,4 +23,21 @@
     <comment></comment>
     <requestid>1219335</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5c389e46b64fbea95e386e1ea9ae34fb</srcmd5>
+    <version>47.5</version>
+    <time>1732315985</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 47.5:
+  + Bump the FD soft limit to the max allowed, now that there are
+    more FDs open for Vulkan shader caches.
+  + Fix monitoring of podman for changes which fixes auto-discovery
+    of quadlets in systemd --user services.
+  + Fix disposal of tabs without a foreground process upon closing
+    a Ptyxis window.
+  + Robustness fixes in icon discover for tabs with containers
+  + Robustness fixes in checking for active container
+  + Fix scrolling within close-tabs dialog (forwarded request 1225670 from iznogood)</comment>
+    <requestid>1225811</requestid>
+  </revision>
 </revisionlist>
