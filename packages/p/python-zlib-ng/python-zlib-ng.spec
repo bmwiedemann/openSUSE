@@ -25,21 +25,20 @@
 %bcond_with test
 %endif
 
+%{?sle15_python_module_pythons}
 Name:           python-zlib-ng%{psuffix}
-Version:        0.4.1
+Version:        0.5.1
 Release:        0
 License:        Python-2.0
 Summary:        Faster zlib and gzip compatible compression and decompression
 Group:          Development/Languages/Python
 URL:            https://github.com/pycompression/python-zlib-ng
-Source0:        https://files.pythonhosted.org/packages/source/z/zlib-ng/zlib-ng-%{version}.tar.gz
-Source1:        https://github.com/pycompression/python-zlib-ng/raw/v%{version}/tests/data/concatenated.fastq.gz
-Source2:        https://github.com/pycompression/python-zlib-ng/raw/v%{version}/tests/data/seeds.txt
-Source3:        https://github.com/pycompression/python-zlib-ng/raw/v%{version}/tests/data/test.fastq.bgzip.gz
-Source4:        https://github.com/pycompression/python-zlib-ng/raw/v%{version}/tests/data/test.fastq.gz
+Source0:        https://files.pythonhosted.org/packages/source/z/zlib-ng/zlib_ng-%{version}.tar.gz
+Source1:        https://github.com/pycompression/python-zlib-ng/archive/refs/tags/v%{version}.tar.gz#/zlib-ng-%{version}-gh.tar.gz
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module versioningit}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -58,9 +57,7 @@ Faster zlib and gzip compatible compression and decompression by providing Pytho
 This package provides Python bindings for the zlib-ng library.
 
 %prep
-%setup -q -n zlib-ng-%{version}
-mkdir tests/data
-cp %{SOURCE1} %{SOURCE2} %{SOURCE3}  %{SOURCE4} tests/data/
+%setup -q -a1 -n zlib_ng-%{version}
 
 %build
 %if !%{with test}

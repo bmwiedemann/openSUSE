@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Nov 22 17:33:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5.1:
+  * Fix a bug where flushing in threaded mode did not write the
+    data to the output file.
+  * Threaded reading and writing do no longer block exiting
+    when an exception occurs in the main thread.
+- update to 0.5.0:
+  * Fix a bug where READ and WRITE in zlib_ng.gzip_ng were
+    inconsistent with the values in gzip on Python 3.13
+  * Small simplifications to the ``gzip_ng.compress`` and
+    ``gzip_ng.decompress`` functions, which should lead to less
+    overhead.
+- update to 0.4.3:
+  * Fix a bug where files larger than 4GB could not be
+    decompressed.
+- update to 0.4.2:
+  * Fix a reference counting error that happened on module
+    initialization and triggered an error in the CPython debug
+    build.
+  * Fix a setup.py error that was triggered on MacOS ARM64.
+
+-------------------------------------------------------------------
+Tue Nov 19 11:53:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- build against modern python on sle15
+
+-------------------------------------------------------------------
 Sat Mar 16 14:42:27 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.4.1:
