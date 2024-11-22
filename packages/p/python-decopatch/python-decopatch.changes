@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Thu Nov 21 16:35:21 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package python-decopatch, required for tests in
+  python-click-extra
