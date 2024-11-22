@@ -7,4 +7,12 @@
     <comment>A BLAS library for use with OpenCL</comment>
     <requestid>1131192</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9cc476b0f370a462560d14dffb423e30</srcmd5>
+    <version>2.12+git.20170323.cf91139</version>
+    <time>1732315975</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1225799</requestid>
+  </revision>
 </revisionlist>

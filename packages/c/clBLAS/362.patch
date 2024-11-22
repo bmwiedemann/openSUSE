@@ -1,0 +1,230 @@
+From 75f02cabef918074988aca9b85523b577de7c36b Mon Sep 17 00:00:00 2001
+From: Gianfranco Costamagna <costamagnagianfranco@yahoo.it>
+Date: Fri, 2 Aug 2024 15:40:39 +0200
+Subject: [PATCH 1/2] Update examples to fix build failures with gcc-14 related
+ to implicit declaration of abs function
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+with gcc-14 this warning becomes a failure
+
+ 90s /tmp/autopkgtest.g0L4Ek/autopkgtest_tmp/example_csscal.c: In function ‘main’:
+ 90s /tmp/autopkgtest.g0L4Ek/autopkgtest_tmp/example_csscal.c:67:26: error: implicit declaration of function ‘abs’ [-Wimplicit-function-declaration]
+ 90s    67 |     int lenX = 1 + (N-1)*abs(incx);
+ 90s       |                          ^~~
+ 90s /tmp/autopkgtest.g0L4Ek/autopkgtest_tmp/example_csscal.c:26:1: note: include ‘<stdlib.h>’ or provide a declaration of ‘abs’
+ 90s    25 | #include <clBLAS.h>
+ 90s   +++ |+#include <stdlib.h>
+ 90s    26 |
+ 90s /tmp/autopkgtest.g0L4Ek/autopkgtest_tmp/example_csscal.c:89:5: warning: ‘clCreateCommandQueue’ is deprecated [-Wdeprecated-declarations]
+ 90s    89 |     queue = clCreateCommandQueue(ctx, device, 0, &err);
+ 90s       |     ^~~~~
+---
+ src/samples/example_cher.c   | 1 +
+ src/samples/example_csscal.c | 2 ++
+ src/samples/example_isamax.c | 1 +
+ src/samples/example_sasum.c  | 1 +
+ src/samples/example_saxpy.c  | 1 +
+ src/samples/example_scopy.c  | 1 +
+ src/samples/example_sdot.c   | 1 +
+ src/samples/example_sger.c   | 1 +
+ src/samples/example_snrm2.c  | 1 +
+ src/samples/example_srot.c   | 1 +
+ src/samples/example_srotm.c  | 1 +
+ src/samples/example_sscal.c  | 1 +
+ src/samples/example_sswap.c  | 1 +
+ 13 files changed, 14 insertions(+)
+
+diff --git a/src/samples/example_cher.c b/src/samples/example_cher.c
+index 13a0d80b..f1dad905 100644
+--- a/src/samples/example_cher.c
++++ b/src/samples/example_cher.c
+@@ -16,6 +16,7 @@
+ 
+ #include <sys/types.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <string.h>
+ 
+ /* Include CLBLAS header. It automatically includes needed OpenCL header,
+diff --git a/src/samples/example_csscal.c b/src/samples/example_csscal.c
+index c78bc550..7a810799 100644
+--- a/src/samples/example_csscal.c
++++ b/src/samples/example_csscal.c
+@@ -16,6 +16,8 @@
+ 
+ #include <sys/types.h>
+ #include <stdio.h>
++#include <stdlib.h>
++#include <stdint.h>
+ #include <string.h>
+ #include <math.h>
+ 
+diff --git a/src/samples/example_isamax.c b/src/samples/example_isamax.c
+index 0e637c38..04619e79 100644
+--- a/src/samples/example_isamax.c
++++ b/src/samples/example_isamax.c
+@@ -16,6 +16,7 @@
+ 
+ #include <sys/types.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <string.h>
+ #include <math.h>
+ 
+diff --git a/src/samples/example_sasum.c b/src/samples/example_sasum.c
+index 713bbcb1..17cdabb1 100644
+--- a/src/samples/example_sasum.c
++++ b/src/samples/example_sasum.c
+@@ -16,6 +16,7 @@
+ 
+ #include <sys/types.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <string.h>
+ #include <math.h>
+ 
+diff --git a/src/samples/example_saxpy.c b/src/samples/example_saxpy.c
+index 43ea6ead..5d3d7eb7 100644
+--- a/src/samples/example_saxpy.c
++++ b/src/samples/example_saxpy.c
+@@ -16,6 +16,7 @@
+ 
+ #include <sys/types.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <string.h>
+ #include <math.h>
+ 
+diff --git a/src/samples/example_scopy.c b/src/samples/example_scopy.c
+index 16244684..f4adc1d3 100644
+--- a/src/samples/example_scopy.c
++++ b/src/samples/example_scopy.c
+@@ -16,6 +16,7 @@
+ 
+ #include <sys/types.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <string.h>
+ #include <math.h>
+ 
+diff --git a/src/samples/example_sdot.c b/src/samples/example_sdot.c
+index 83e7b00f..f51bfd19 100644
+--- a/src/samples/example_sdot.c
++++ b/src/samples/example_sdot.c
+@@ -16,6 +16,7 @@
+ 
+ #include <sys/types.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <string.h>
+ #include <math.h>
+ 
+diff --git a/src/samples/example_sger.c b/src/samples/example_sger.c
+index 1098a1a5..c9b54d6f 100644
+--- a/src/samples/example_sger.c
++++ b/src/samples/example_sger.c
+@@ -16,6 +16,7 @@
+ 
+ #include <sys/types.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <string.h>
+ #include <math.h>
+ 
+diff --git a/src/samples/example_snrm2.c b/src/samples/example_snrm2.c
+index ce7f48ec..b36e9a3b 100644
+--- a/src/samples/example_snrm2.c
++++ b/src/samples/example_snrm2.c
+@@ -16,6 +16,7 @@
+ 
+ #include <sys/types.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <string.h>
+ #include <math.h>
+ 
+diff --git a/src/samples/example_srot.c b/src/samples/example_srot.c
+index 62bc95de..6ed8eb64 100644
+--- a/src/samples/example_srot.c
++++ b/src/samples/example_srot.c
+@@ -16,6 +16,7 @@
+ 
+ #include <sys/types.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <string.h>
+ #include <math.h>
+ 
+diff --git a/src/samples/example_srotm.c b/src/samples/example_srotm.c
+index 8b608587..9578d3db 100644
+--- a/src/samples/example_srotm.c
++++ b/src/samples/example_srotm.c
+@@ -16,6 +16,7 @@
+ 
+ #include <sys/types.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <string.h>
+ #include <math.h>
+ 
+diff --git a/src/samples/example_sscal.c b/src/samples/example_sscal.c
+index 44de9695..348db852 100644
+--- a/src/samples/example_sscal.c
++++ b/src/samples/example_sscal.c
+@@ -16,6 +16,7 @@
+ 
+ #include <sys/types.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <string.h>
+ #include <math.h>
+ 
+diff --git a/src/samples/example_sswap.c b/src/samples/example_sswap.c
+index 5f62575f..80bbe833 100644
+--- a/src/samples/example_sswap.c
++++ b/src/samples/example_sswap.c
+@@ -16,6 +16,7 @@
+ 
+ #include <sys/types.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <string.h>
+ #include <math.h>
+ 
+
+From 2d21bf4de3aedd5eb637fcb534d2a1dfaf88beba Mon Sep 17 00:00:00 2001
+From: Steve Langasek <steve.langasek@canonical.com>
+Date: Thu, 5 Sep 2024 11:25:17 +0200
+Subject: [PATCH 2/2] gemv.c, symv.c: Add missing stdlib.h includes
+
+---
+ src/library/blas/gens/gemv.c | 1 +
+ src/library/blas/gens/symv.c | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/src/library/blas/gens/gemv.c b/src/library/blas/gens/gemv.c
+index 9835482f..97e7be51 100644
+--- a/src/library/blas/gens/gemv.c
++++ b/src/library/blas/gens/gemv.c
+@@ -21,6 +21,7 @@
+ 
+ #include <string.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <assert.h>
+ #include <math.h>
+ #include <clblas_stddef.h>
+diff --git a/src/library/blas/gens/symv.c b/src/library/blas/gens/symv.c
+index 47c8f1d2..7afe6477 100644
+--- a/src/library/blas/gens/symv.c
++++ b/src/library/blas/gens/symv.c
+@@ -21,6 +21,7 @@
+ 
+ #include <string.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <assert.h>
+ #include <math.h>
+ #include <clblas_stddef.h>

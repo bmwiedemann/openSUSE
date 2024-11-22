@@ -1,7 +1,7 @@
 #
 # spec file for package clBLAS
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ Summary:        BLAS functions written in OpenCL
 License:        Apache-2.0
 URL:            https://github.com/clMathLibraries/clBLAS
 Source:         %{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM - https://github.com/clMathLibraries/clBLAS/pull/362
+Patch1:         https://github.com/clMathLibraries/clBLAS/pull/362.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
@@ -68,7 +70,7 @@ This package provides the headers and sources needed for developing software
 against clBLAS.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 pushd src

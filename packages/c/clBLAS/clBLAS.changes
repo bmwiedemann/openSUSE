@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 21 10:17:28 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on aarch64 with upstream patch:
+  * 362.patch
+
+-------------------------------------------------------------------
 Wed Nov 29 08:49:08 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Initial package.
