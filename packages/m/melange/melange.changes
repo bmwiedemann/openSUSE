@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 22 19:27:01 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.15.13:
+  * Consider symlinks as potential provides for so:
+  * drop ntia e2e test
+
+-------------------------------------------------------------------
 Wed Nov 20 09:22:47 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.15.12:
