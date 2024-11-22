@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 22 12:13:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add py313-support.patch to fix build with python 3.13
+
+-------------------------------------------------------------------
 Thu Oct 10 15:36:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.84:

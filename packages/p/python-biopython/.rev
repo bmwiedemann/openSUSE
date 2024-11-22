@@ -186,4 +186,12 @@
     be used to e.g. print the alignment in a different format.</comment>
     <requestid>1206739</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>c0ddc08eec8a8e4b7efb4e853da4c159</srcmd5>
+    <version>1.84</version>
+    <time>1732315993</time>
+    <user>anag+factory</user>
+    <comment>- add py313-support.patch to fix build with python 3.13</comment>
+    <requestid>1225807</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,26 @@
+From 22ebf951e736bd44f04e3552a4a39723ccb3c219 Mon Sep 17 00:00:00 2001
+From: Sandro <devel@penguinpee.nl>
+Date: Fri, 19 Apr 2024 14:41:38 +0200
+Subject: [PATCH] Python 3.13: Replace deprecated PyEval_CallObject()
+
+The function has been deprecated since Python 3.9 and will be removed
+from Python 3.13.
+
+See: https://docs.python.org/3.13/whatsnew/3.13.html#id9
+---
+ Bio/cpairwise2module.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Bio/cpairwise2module.c b/Bio/cpairwise2module.c
+index af7843ed4bc..ada6663ccd5 100644
+--- a/Bio/cpairwise2module.c
++++ b/Bio/cpairwise2module.c
+@@ -57,7 +57,7 @@ static double _get_match_score(PyObject *py_sequenceA, PyObject *py_sequenceB,
+     if(!(py_arglist = Py_BuildValue("(OO)", py_A, py_B)))
+         goto _get_match_score_cleanup;
+ 
+-    if(!(py_result = PyEval_CallObject(py_match_fn, py_arglist)))
++    if(!(py_result = PyObject_CallObject(py_match_fn, py_arglist)))
+         goto _get_match_score_cleanup;
+     score = PyFloat_AsDouble(py_result);
+ 

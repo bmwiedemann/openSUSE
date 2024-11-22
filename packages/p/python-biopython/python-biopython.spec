@@ -16,11 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # Tests require a network connection
 %bcond_with test
-%define skip_python2 1
-%define skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-biopython
 Version:        1.84
 Release:        0
@@ -29,6 +27,7 @@ License:        BSD-3-Clause AND MIT
 URL:            https://biopython.org/
 Source0:        https://files.pythonhosted.org/packages/source/b/biopython/biopython-%{version}.tar.gz
 Source100:      python-biopython-rpmlintrc
+Patch1:         https://github.com/biopython/biopython/commit/22ebf951e736bd44f04e3552a4a39723ccb3c219.patch#/py313-support.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module setuptools}
@@ -53,7 +52,7 @@ The Biopython Project is an international association of developers of freely
 available Python tools for computational molecular biology.
 
 %prep
-%setup -q -n biopython-%{version}
+%autosetup -p1 -n biopython-%{version}
 find -type f -name "*.py" -exec sed -i '/^#![ ]*\/usr\/bin\/.*$/ d' {} 2>/dev/null ';'
 # Example scripts cannot be in a subdirectory
 mv -v Doc/examples examples
