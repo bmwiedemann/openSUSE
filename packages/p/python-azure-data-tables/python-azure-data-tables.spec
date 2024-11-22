@@ -18,14 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-data-tables
-Version:        12.5.0
+Version:        12.6.0
 Release:        0
 Summary:        Microsoft Azure Azure Data Tables Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/table/azure-table
-Source:         https://files.pythonhosted.org/packages/source/a/azure-data-tables/azure-data-tables-%{version}.tar.gz
-Source1:        LICENSE.txt
+Source:         https://files.pythonhosted.org/packages/source/a/azure_data_tables/azure_data_tables-%{version}.tar.gz
 BuildRequires:  %{python_module azure-data-nspkg >= 1.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
@@ -52,10 +51,9 @@ amount of data inserted, and allow for the storing of data with non-complex acce
 The Azure Data Tables client can be used to access Azure Storage or Cosmos accounts.
 
 %prep
-%setup -q -n azure-data-tables-%{version}
+%setup -q -n azure_data_tables-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-data-tables-%{version}
 %pyproject_wheel
 
 %install

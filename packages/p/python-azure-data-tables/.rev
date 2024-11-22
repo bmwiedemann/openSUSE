@@ -194,4 +194,17 @@
 - Use modern RPM macros to express version dependencies (forwarded request 1164681 from glaubitz)</comment>
     <requestid>1165078</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b5fe78b8dfa561390464878135a8a460</srcmd5>
+    <version>12.6.0</version>
+    <time>1732315991</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 12.6.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own (forwarded request 1225742 from glaubitz)</comment>
+    <requestid>1225817</requestid>
+  </revision>
 </revisionlist>
