@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Nov 21 15:19:14 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- golang-jwt has been updated to version 4.5.1 to fix CVE-2024-51744 and boo#1232940
+
+- Version 3.2.1 changes
+  - acme
+    * Update go-acme/lego to v4.20.2 (gh#traefik/traefik#11263 by ldez)
+  - logs
+    * Change level of peeking first byte error log to DEBUG for Postgres 
+      (gh#traefik/traefik#11270 by rtribotte)
+  - k8s/ingress,k8s
+    * Fix HostRegexp config for rule syntax v2 (gh#traefik/traefik#11288 by kevinpollet)
+  - logs Change level of peeking first byte error log to DEBUG for Postgres
+    (gh#traefik/traefik#11270 by rtribotte, gh#traefik/traefik#11254 by rtribotte)
+  - service
+    * Fix internal handlers ServiceBuilder composition (gh#traefik/traefik#11281 by juliens)
+  - service,fastproxy Fix case problem for websocket upgrade
+    (gh#traefik/traefik#11246 by juliens)
+  - server
+    * Change level of peeking first byte error log to DEBUG (gh#traefik/traefik#11254 by rtribotte)
+    * Apply keepalive config to h2c entrypoints (gh#traefik/traefik#11276 by davefu113)
+  - middleware,server
+    * Drop untrusted X-Forwarded-Prefix header (gh#traefik/traefik#11253 by rtribotte)
+
+-------------------------------------------------------------------
 Thu Oct 31 01:26:24 UTC 2024 - Eric Torres <eric.torres@its-et.me>
 
 - Update from 3.1.6 to 3.2.0
