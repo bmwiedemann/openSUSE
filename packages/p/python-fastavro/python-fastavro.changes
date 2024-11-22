@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Fri Nov 22 11:26:56 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Clean up the SPEC file.
+- Doesn’t work on 32bit architectures (gh#fastavro/fastavro#526).
+
+-------------------------------------------------------------------
+Fri Nov  1 19:21:31 UTC 2024 - Fergal Mc Carthy <fmccarthy@suse.com>
+
+- Initial version based upon fastavro 1.9.7
