@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>1140830</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c06662bba96e4381ce276d5908a98481</srcmd5>
+    <version>1.0.0</version>
+    <time>1732315988</time>
+    <user>anag+factory</user>
+    <comment>- add pytest8.patch</comment>
+    <requestid>1225816</requestid>
+  </revision>
 </revisionlist>

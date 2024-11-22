@@ -1,0 +1,12 @@
+--- a/data_store/tests/test_utils.py
++++ b/data_store/tests/test_utils.py
+@@ -10,7 +10,7 @@
+ 
+ class TestDataStore:
+     """Test the interface for the data sources"""
+-    def setup(self):
++    def setup_method(self):
+         self.data_path = Path(__file__).resolve().parent.parent / "data"
+         self.fname = "693_UNCI.dcm"
+ 
+Nur in b/pydicom-data-1.0.0: .pytest_cache.

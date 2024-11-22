@@ -24,6 +24,7 @@ Summary:        Test files for pydicom
 License:        MIT
 URL:            https://github.com/pydicom/pydicom-data/
 Source:         https://files.pythonhosted.org/packages/source/p/pydicom-data/pydicom-data-%{version}.tar.gz
+Patch1:         pytest8.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -37,7 +38,7 @@ BuildArch:      noarch
 Test files used by pydicom and other packages by the same organisation.
 
 %prep
-%setup -q -n pydicom-data-%{version}
+%autosetup -p1 -n pydicom-data-%{version}
 
 %build
 %pyproject_wheel
@@ -47,7 +48,7 @@ Test files used by pydicom and other packages by the same organisation.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -rs
+%pytest
 
 %files %{python_files}
 %{python_sitelib}/data_store

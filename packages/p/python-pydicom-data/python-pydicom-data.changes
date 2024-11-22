@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 22 12:21:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add pytest8.patch
+
+-------------------------------------------------------------------
 Tue Jan 16 10:04:00 UTC 2024 - Axel Braun <axel.braun@gmx.de>
 
 - enable %{?sle15allpythons}
