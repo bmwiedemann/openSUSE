@@ -22,7 +22,7 @@
 %bcond_without    build_docs
 
 Name:           git-lfs
-Version:        3.5.1
+Version:        3.6.0
 Release:        0
 Summary:        Git extension for versioning large files
 License:        MIT
