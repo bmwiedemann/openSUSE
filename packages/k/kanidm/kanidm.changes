@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Nov 22 07:08:34 UTC 2024 - william.brown@suse.com
+
+- Update to version 1.4.3~git1.078625c:
+  * Update to latest fido-mds-tool (#3230)
+
+-------------------------------------------------------------------
+Fri Nov 22 06:52:53 UTC 2024 - william.brown@suse.com
+
+- Update to version 1.4.3~git0.fb00176:
+  * Release 1.4.3
+  * Warn when v2 options are used in v1 unixd config (#3228)
+  * Resolve UI Auth Loop with OAuth2 (#3226)
+  * Harden transport in pam unixd (#3227)
+  * Improve warning around invalid JWT deserialisation (#3224)
+  * Update and fix server config files in examples. (#3225)
+  * Change CLI oauth2 command from set-display-name to set-displayname for consistency. (#3212)
+  * Add docs on customising Kanidm. (#3209)
+  * Correct spelling of occurred (#3222)
+  * UI/Feature polish (#3191)
+  * Prevent Invalid MFA Reg States (#3194)
+  * Change CSS for applications so SVG scales nicely in Firefox. (#3200)
+  * 20241109 3185 max age (#3196)
+  * Hoist max_age to prevent incorrect deserialisation (#3190)
+  * Release 1.4.2
+  * Re-migrate all acps to force updating (#3184)
+  * security - low - fault in migrations (#3182)
+
+-------------------------------------------------------------------
 Tue Nov 05 05:13:11 UTC 2024 - william.brown@suse.com
 
 - Update to version 1.4.1~git0.ad93202:

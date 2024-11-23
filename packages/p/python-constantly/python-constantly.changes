@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 22 11:57:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.10.4:
+  * switch to PEP517 build
+  * Python 3.12 support
+
+-------------------------------------------------------------------
 Mon Sep 25 13:30:48 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Clean up the SPEC file
@@ -6,7 +13,7 @@ Mon Sep 25 13:30:48 UTC 2023 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Mon Sep 25 06:55:37 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- use unbundled versioneer to build package 
+- use unbundled versioneer to build package
 
 -------------------------------------------------------------------
 Fri Apr 21 12:23:35 UTC 2023 - Dirk Müller <dmueller@suse.com>

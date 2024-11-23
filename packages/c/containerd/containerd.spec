@@ -44,10 +44,8 @@ Patch1:         0001-BUILD-SLE12-revert-btrfs-depend-on-kernel-UAPI-inste.patch
 BuildRequires:  fdupes
 BuildRequires:  glibc-devel-static
 BuildRequires:  go >= 1.22
-%if 0%{?suse_version} >= 1500
 BuildRequires:  go-go-md2man
 BuildRequires:  golang-packaging
-%endif
 BuildRequires:  libbtrfs-devel >= 3.8
 BuildRequires:  libseccomp-devel >= 2.2
 BuildRequires:  pkg-config
@@ -107,25 +105,19 @@ reference the following Go import paths: github.com/containerd/containerd
 %endif
 
 %build
-%if 0%{?suse_version} >= 1500
 %goprep %{import_path}
-%endif
 BUILDTAGS="apparmor selinux seccomp"
 make \
         BUILDTAGS="$BUILDTAGS" \
         VERSION="v%{version}" \
         REVISION="%{git_version}"
 
-%if 0%{?suse_version} >= 1500
 make man
-%endif
 
 cp -r "$PROJECT/bin" bin
 
 %install
-%if 0%{?suse_version} >= 1500
 %gosrc
-%endif
 # Install binaries.
 pushd bin/
 for bin in containerd{,-shim*}
@@ -143,7 +135,6 @@ echo "# See containerd-config.toml(5) for documentation." >%{buildroot}/%{_sysco
 # Install system service
 install -Dp -m644 %{SOURCE2} %{buildroot}%{_unitdir}/%{name}.service
 
-%if 0%{?suse_version} >= 1500
 # Man pages.
 for file in man/*
 do
@@ -151,7 +142,6 @@ do
         install -D -m644 "$file" "%{buildroot}/%{_mandir}/man$section/$(basename "$file")"
 done
 mv %{buildroot}/%{_mandir}/man8/{ctr.8,%{name}-ctr.8}
-%endif
 
 %fdupes %{buildroot}
 
@@ -176,23 +166,17 @@ mv %{buildroot}/%{_mandir}/man8/{ctr.8,%{name}-ctr.8}
 %{_sbindir}/containerd
 %{_sbindir}/containerd-shim*
 %{_unitdir}/%{name}.service
-%if 0%{?suse_version} >= 1500
 %{_mandir}/man*/%{name}*
 %exclude %{_mandir}/man8/*ctr.8*
-%endif
 
 %files ctr
 %{_sbindir}/%{name}-ctr
-%if 0%{?suse_version} >= 1500
 %{_mandir}/man8/%{name}-ctr.8*
-%endif
 
-%if 0%{?suse_version} >= 1500
 %files devel
 %license LICENSE
 %dir %{go_contribsrcdir}/github.com
 %dir %{go_contribsrcdir}/github.com/containerd
 %{go_contribsrcdir}/%{import_path}
-%endif
 
 %changelog

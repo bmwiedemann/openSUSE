@@ -932,4 +932,12 @@ Most of the source code files give a choice of either GPL-2.0 or GPL-3.0 (not GP
   * CVE-2023-49441, bsc#1226091: integer overflow via forward_query</comment>
     <requestid>1179330</requestid>
   </revision>
+  <revision rev="98" vrev="3">
+    <srcmd5>7fc53612cdd0cd680676cb61ecf64068</srcmd5>
+    <version>2.90</version>
+    <time>1732315842</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1225486</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Nov 22 09:34:28 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.85.0:
+  * dependencies: latest syft and stereoscope (#2275)
+  * chore(deps): bump github/codeql-action from 3.27.4 to 3.27.5
+    (#2272)
+  * chore(deps): bump github.com/charmbracelet/bubbletea from 1.2.2
+    to 1.2.3 (#2273)
+  * chore(deps): bump github.com/gabriel-vasile/mimetype from 1.4.6
+    to 1.4.7 (#2274)
+  * chore(deps): update tools to latest versions (#2269)
+  * fix: bump clio to fix logging when no tty present (#2268)
+  * chore(deps): bump github/codeql-action from 3.27.3 to 3.27.4
+    (#2260)
+  * fix failing tests (#2261)
+  * Add v6 DB curator (#2151)
+  * Add affected CPE store (#2258)
+  * chore(deps): bump github.com/charmbracelet/bubbletea from 1.1.2
+    to 1.2.2 (#2256)
+  * Add AffectedPackage store (#2245)
+  * Add v6 vulnerability & blob stores (#2243)
+  * chore(deps): bump anchore/sbom-action from 0.17.6 to 0.17.7
+    (#2238)
+  * chore(deps): bump github.com/anchore/stereoscope (#2246)
+  * chore(deps): bump github/codeql-action from 3.27.0 to 3.27.3
+    (#2257)
+  * Add v6 distribution client (#2150)
+  * restore log on ui teardown (#2248)
+  * Merge indirect matches with direct matches (#2241)
+  * doc: Add official Grype logo license information (#2244)
+  * add v6 provider store (#2232)
+
+-------------------------------------------------------------------
 Tue Nov 12 08:13:47 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.84.0:

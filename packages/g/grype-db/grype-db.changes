@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Fri Nov 22 09:35:20 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.27.1:
+  * Update Grype to v0.85.0 (#435)
+  * remove push event for code gen
+  * Remove support for v1 & v2 schemas (#434)
+  * add os codename fetcher/helper method (#433)
+  * Migrate common processor code to internal (#432)
+  * chore(deps): Bump golang.org/x/text from 0.19.0 to 0.20.0
+    (#426)
+  * chore(deps-dev): Bump werkzeug from 3.0.3 to 3.0.6 (#427)
+  * Update grype-db bootstrap tools to latest versions. (#428)
+  * chore(deps): Bump github.com/anchore/grype from 0.83.0 to
+    0.84.0 (#424)
+
+-------------------------------------------------------------------
+Tue Oct 29 14:06:02 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.27.0:
+  * chore(deps): Bump github.com/anchore/grype from 0.82.2 to
+    0.83.0 (#420)
+  * chore(deps): Bump actions/checkout from 4.2.1 to 4.2.2 (#416)
+  * chore(deps): Bump actions/setup-go from 5.0.2 to 5.1.0 (#417)
+
+-------------------------------------------------------------------
+Thu Oct 24 13:31:04 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package grype-db: create a Grype vulnerability database from
+  upstream vulnerability data sources

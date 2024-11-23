@@ -1,0 +1,44 @@
+From 20b405c0fea29675e1fb54b894eb1c18459f9d50 Mon Sep 17 00:00:00 2001
+From: Stanislav Brabec <sbrabec@suse.cz>
+Date: Sun, 21 Jul 2024 15:01:42 +0200
+Subject: [PATCH] agetty: Prevent cursor escape
+
+Starting with 5de97519, it is possible to escape the login dialog on the
+screen by arrow characters or using escape sequences.
+
+Since full processing of escape sequences and ignore them would be
+complicated, use a work around: instead of sending ESC to output, send a
+printable character.
+
+It could cause a rendering regression in a very obscure condition: compiled
+without IUTF8, encoding is ISO-11548-1 and BRAILLE PATTERN DOTS-1245 is
+part of login name. I believe that it is out of supported combinations.
+
+Signed-off-by: Stanislav Brabec <sbrabec@suse.cz>
+---
+ term-utils/agetty.c | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/term-utils/agetty.c b/term-utils/agetty.c
+index b28b197ff..500e0992f 100644
+--- a/term-utils/agetty.c
++++ b/term-utils/agetty.c
+@@ -2289,7 +2289,14 @@ static char *get_logname(struct issue *ie, struct options *op, struct termios *t
+ 				if ((size_t)(bp - logname) >= sizeof(logname) - 1)
+ 					log_err(_("%s: input overrun"), op->tty);
+ 				if ((tp->c_lflag & ECHO) == 0)
+-					write_all(1, &c, 1);	/* echo the character */
++					/* Visualize escape sequence instead of its execution */
++					if (ascval == CTL('['))
++						/* Ideally it should be "\xe2\x90\x9b"
++						 * if (op->flags & (F_UTF8)),
++						 * but only some fonts contain it */
++						write_all(1, "^[", 2);
++					else
++						write_all(1, &c, 1);	/* echo the character */
+ 				*bp++ = ascval;			/* and store it */
+ 				break;
+ 			}
+-- 
+2.45.2
+

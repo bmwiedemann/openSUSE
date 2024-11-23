@@ -132,4 +132,28 @@
   * https://www.postgresql.org/about/news/p-2910/</comment>
     <requestid>1224292</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ce88ef3b8171d938d716847f82c053b2</srcmd5>
+    <version>16.6</version>
+    <time>1732315910</time>
+    <user>anag+factory</user>
+    <comment>- Upgrade to 16.6:
+  * Repair ABI break for extensions that work with struct
+    ResultRelInfo.
+  * Restore functionality of ALTER {ROLE|DATABASE} SET role.
+  * Fix cases where a logical replication slot's restart_lsn could
+    go backwards.
+  * Avoid deleting still-needed WAL files during pg_rewind.
+  * Fix race conditions associated with dropping shared statistics
+    entries.
+  * Count index scans in contrib/bloom indexes in the statistics
+    views, such as the pg_stat_user_indexes.idx_scan counter.
+  * Fix crash when checking to see if an index's opclass options
+    have changed.
+  * Avoid assertion failure caused by disconnected NFA sub-graphs
+    in regular expression parsing.
+  * https://www.postgresql.org/about/news/p-2965/
+  * https://www.postgresql.org/docs/release/16.6/</comment>
+    <requestid>1225749</requestid>
+  </revision>
 </revisionlist>

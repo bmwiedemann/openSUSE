@@ -22,7 +22,7 @@
 %bcond_without  apparmor
 
 Name:           podman
-Version:        5.2.5
+Version:        5.3.0
 Release:        0
 Summary:        Daemon-less container engine for managing containers, pods and images
 License:        Apache-2.0
@@ -49,7 +49,7 @@ BuildRequires:  libgpgme-devel
 BuildRequires:  libostree-devel
 BuildRequires:  libseccomp-devel
 # at least go 1.18 is needed from go.mod
-BuildRequires:  golang(API) >= 1.21
+BuildRequires:  golang(API) >= 1.22
 BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
@@ -193,6 +193,7 @@ install -m 0644 -t %{buildroot}%{_prefix}/lib/modules-load.d/ %{SOURCE1}
 %{_mandir}/man1/podman*.1*
 %{_mandir}/man5/podman*.5*
 %{_mandir}/man5/quadlet*.5*
+%{_mandir}/man7/podman*.7*
 %exclude %{_mandir}/man1/podman-remote*.1*
 # Configs
 %dir %{_prefix}/lib/modules-load.d
@@ -222,6 +223,7 @@ install -m 0644 -t %{buildroot}%{_prefix}/lib/modules-load.d/ %{SOURCE1}
 %{_userunitdir}/podman-restart.service
 %{_userunitdir}/podman-auto-update.timer
 %{_userunitdir}/podman-clean-transient.service
+%{_userunitdir}/podman-user-wait-network-online.service
 %{_systemdusergeneratordir}/podman-user-generator
 %{_systemdgeneratordir}/podman-system-generator
 %ghost /run/podman
@@ -254,19 +256,19 @@ install -m 0644 -t %{buildroot}%{_prefix}/lib/modules-load.d/ %{SOURCE1}
 %tmpfiles_create %{_tmpfilesdir}/podman-docker.conf
 
 %pre
-%service_add_pre podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer podman-clean-transient.service
+%service_add_pre podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer podman-clean-transient.service podman-user-wait-network-online.service
 
 %post
-%service_add_post podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer podman-clean-transient.service
+%service_add_post podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer podman-clean-transient.service podman-user-wait-network-online.service
 %tmpfiles_create %{_tmpfilesdir}/podman.conf
 %systemd_user_post podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer
 
 %preun
-%service_del_preun podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer podman-clean-transient.service
-%systemd_user_preun podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer podman-clean-transient.service
+%service_del_preun podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer podman-clean-transient.service podman-user-wait-network-online.service
+%systemd_user_preun podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer podman-clean-transient.service podman-user-wait-network-online.service
 
 %postun
-%service_del_postun podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer podman-clean-transient.service
-%systemd_user_postun podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer podman-clean-transient.service
+%service_del_postun podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer podman-clean-transient.service podman-user-wait-network-online.service
+%systemd_user_postun podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer podman-clean-transient.service podman-user-wait-network-online.service
 
 %changelog

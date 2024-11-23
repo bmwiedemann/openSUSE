@@ -27,6 +27,7 @@
 
 # Tests don't work and cause a dependency loop with python-SPARQLWrapper
 %bcond_with tests
+%{?sle15_python_module_pythons}
 Name:           python-rdflib%{psuffix}
 Version:        7.1.1
 Release:        0

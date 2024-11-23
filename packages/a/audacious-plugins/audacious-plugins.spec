@@ -96,7 +96,7 @@ Requires:       libaudcore%{?_isa} <= %{aud_ver_max}
 Requires:       libaudcore%{?_isa} >= %{aud_ver_min}
 Recommends:     %{name}-extra
 %if %{with faad}
-BuildRequires:  libfaad-devel
+BuildRequires:  pkgconfig(faad2)
 %endif
 
 %description

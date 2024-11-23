@@ -2021,4 +2021,23 @@ by an upstream reviewed commit. (forwarded request 1109432 from mwilck)</comment
   * Update fix for bsc#1232063 to upstream-accepted solution (forwarded request 1221365 from mwilck)</comment>
     <requestid>1221366</requestid>
   </revision>
+  <revision rev="168" vrev="1">
+    <srcmd5>a8df315d1b2e47832d729b1c7e89365a</srcmd5>
+    <version>0.11.0~1+118+suse.4a51b1a</version>
+    <time>1732315844</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.11.0~1+118+suse.4a51b1a
+  See NEWS.md for details about upstream changes in 0.11.0.
+  * Pre-release of upstream 0.11.0
+  * Rework of the path checking algorithm to reduce wait time and improve
+  performance
+  * Modified the systemd unit `multipathd.service` such that multipathd will now
+  restart after a failure or crash (gh#opensvc/multipath-tools#100)
+  * multipathd: move systemd watchdog handling into daemon (bsc#1232227)
+  * libmultipath: dm_get_maps(): don't bail out for single-map failures
+  (bsc#1233588, gh#opensvc/multipath-tools#102)
+  * libmultipath: don't set dev_loss_tmo to 0 for NO_PATH_RETRY_FAIL
+  * multipathd: fix deferred_failback_tick for reload removes (forwarded request 1225652 from mwilck)</comment>
+    <requestid>1225653</requestid>
+  </revision>
 </revisionlist>

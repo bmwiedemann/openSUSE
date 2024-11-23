@@ -230,4 +230,28 @@
   * https://www.postgresql.org/about/news/p-2910/</comment>
     <requestid>1224293</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>76e720be1d40570607096d0cfac47bb5</srcmd5>
+    <version>15.10</version>
+    <time>1732315912</time>
+    <user>anag+factory</user>
+    <comment>- Upgrade to 15.10
+  * Repair ABI break for extensions that work with struct
+    ResultRelInfo.
+  * Restore functionality of ALTER {ROLE|DATABASE} SET role.
+  * Fix cases where a logical replication slot's restart_lsn could
+    go backwards.
+  * Avoid deleting still-needed WAL files during pg_rewind.
+  * Fix race conditions associated with dropping shared statistics
+    entries.
+  * Count index scans in contrib/bloom indexes in the statistics
+    views, such as the pg_stat_user_indexes.idx_scan counter.
+  * Fix crash when checking to see if an index's opclass options
+    have changed.
+  * Avoid assertion failure caused by disconnected NFA sub-graphs
+    in regular expression parsing.
+  * https://www.postgresql.org/about/news/p-2965/
+  * https://www.postgresql.org/docs/release/15.10/</comment>
+    <requestid>1225750</requestid>
+  </revision>
 </revisionlist>

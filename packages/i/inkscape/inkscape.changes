@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov 17 18:19:26 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop obsolete and unused pkgconfig(gdl-3.0) BuildRequires.
+- Add explicit pkgconfig(glibmm-2.4), pkgconfig(gdkmm-3.0),
+  pkgconfig(gdkmm-3.0), pkgconfig(gtk+-3.0) and pkgconfig(gdk-3.0)
+  BuildRequires: Align with what cmake checks for.
+
+-------------------------------------------------------------------
 Mon Oct 14 19:26:24 UTC 2024 - thod_@gmx.de
 
 - Update to version 1.4:

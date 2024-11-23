@@ -1,0 +1,45 @@
+---
+ pyproject.toml |   22 ----------------------
+ 1 file changed, 22 deletions(-)
+
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -40,9 +40,7 @@ ruff = "0.3.2"
+ mypy = "1.9.0"
+ 
+ [tool.poetry.group.test.dependencies]
+-coverage = "7.4.4"
+ pytest = "8.1.1"
+-pytest-cov = "4.1.0"
+ 
+ [tool.poetry.group.docs]
+ optional = true
+@@ -65,28 +63,8 @@ changelogging = "1.4.1"
+ line-length = 100
+ 
+ [tool.pytest.ini_options]
+-addopts = "--cov named"
+ testpaths = ["tests"]
+ 
+-[tool.coverage.run]
+-source = ["named"]
+-
+-[tool.coverage.report]
+-ignore_errors = true
+-exclude_lines = [
+-    "pragma: never",
+-    "pragma: no cover",
+-    "if TYPE_CHECKING",
+-    "@overload",
+-    "@required",
+-    "raise NotImplementedError",
+-    "raise AssertionError",
+-    "def __repr__",
+-]
+-
+-[tool.coverage.html]
+-directory = "coverage"
+-
+ [tool.mypy]
+ strict = true
+ 

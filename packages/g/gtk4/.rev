@@ -973,4 +973,12 @@ New upstream release</comment>
     <comment></comment>
     <requestid>1220274</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>e6a4701bebfc9294f1be409f485b597c</srcmd5>
+    <version>4.16.6</version>
+    <time>1732315829</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1225479</requestid>
+  </revision>
 </revisionlist>

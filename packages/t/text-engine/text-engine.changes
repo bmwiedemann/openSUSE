@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 22 09:13:26 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- fix CFLAGS in the correct manner with -Wno-incompatible-pointer-types
+
+-------------------------------------------------------------------
 Thu Aug 29 01:22:11 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - fix build by using -Wno-unused-parameter -Wno-unused-variable

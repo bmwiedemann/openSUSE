@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Nov 21 08:10:24 UTC 2024 - Michal Suchanek <msuchanek@suse.de>
+
+- Update to version 1.3.13 (jsc#PED-9917)
+  * multipath - drmgr support (jsc#PED-9914)
+- Remove upstreamed patches
+  * ppc64_cpu-Clean-up-sysfs-smt-control-error-handling.patch
+  * ppc64_cpu-Support-partial-SMT-level-through-SYS-FS-s.patch
+  * 0005-ofpathname-skip-devices-with-no-devspec-when-coorela.patch
+  * 0002-lparstat-Fix-Idle-and-busy-PURR-SPURR.patch
+  * 0003-lparstat-app-Use-pic-value-at-boot-for-accurate-boot.patch
+  * 0004-lparstat-Use-CLOCK_BOOTTIME-for-get_time-interface-a.patch
+  * 0001-drmgr-Return-from-get_node_by_name-if-matched-DRC-in.patch
+  * 0006-drmgr-Free-nodes-returned-from-configure_connector.patch
+  * 0001-drmgr-pci-Enable-in-kernel-functionality-to-update-d.patch
+  * 0002-drmgr-SLOT-Add-kernel-interface-support-for-device-t.patch
+  * 0004-drmgr-phb-Add-kernel-interface-support-for-device-tr.patch
+  * 0003-drmgr-pci-Add-kernel-interface-support-for-device-tr.patch
+
+-------------------------------------------------------------------
 Fri Sep 20 06:15:46 UTC 2024 - Michal Suchanek <msuchanek@suse.de>
 
 - dlpar: move key portions of I/O hotplug into kernel (jsc#PED-10566, jsc#PED-9919).
@@ -56,7 +75,7 @@ Thu Feb  8 09:43:47 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
 Mon Feb  5 15:30:16 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
 
 - Use separate hcn-init service for wicked and NM (bsc#1200731 ltc#198485)
- * hcn-init-Split-services-per-connection-manager.patch
+  * hcn-init-Split-services-per-connection-manager.patch
 
 -------------------------------------------------------------------
 Thu Feb  1 09:17:33 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
@@ -779,12 +798,12 @@ Tue Jun  7 12:23:15 UTC 2016 - jloeser@suse.com
 -------------------------------------------------------------------
 Tue May 24 23:17:02 UTC 2016 - dvaleev@suse.com
 
-- Adjust dependant libvirt service name (libvirt-service-dep.patch) 
+- Adjust dependant libvirt service name (libvirt-service-dep.patch)
 
 -------------------------------------------------------------------
 Tue May 24 23:01:49 UTC 2016 - dvaleev@suse.com
 
-- package smt-off.service (systemd-dir.patch) 
+- package smt-off.service (systemd-dir.patch)
 
 -------------------------------------------------------------------
 Thu Apr 14 11:38:50 UTC 2016 - jloeser@suse.com
@@ -878,7 +897,7 @@ Mon Jun  8 20:36:48 UTC 2015 - dvlaeev@suse.com
 
 - ofpathname_powernv.patch (boo#933651)
   If ofpathname is not supported on a platform, exit with 0.
-  This will pevent grub2-install fail on PowerNV platform 
+  This will pevent grub2-install fail on PowerNV platform
 
 -------------------------------------------------------------------
 Mon Jun  8 20:28:51 UTC 2015 - dvlaeev@suse.com
@@ -887,26 +906,26 @@ Mon Jun  8 20:28:51 UTC 2015 - dvlaeev@suse.com
     ofpathname: Convert logical path to OF device path for virtio-scsi devices
     Add support to convert logical device path to Open firmware device path
     for virtio-scsi devices.
- 
+
     lsslot/drmgr: little endian support for memory
     This patch adds some support for memory slot listing
     and memory hotplugging on little endian systems.
- 
+
     drmgr: Correct -s option handling
     The usage statement for drmgr claims that we can add/remove memory and cpus
     by drc name or drc index. The current code though assumes that any
     use of the -s flag to specify this defaults to drc name.
-    
+
     This patch updates the option checking for memory and cpu operations to
     allow users to specify a drc index with the -s option. This will be
     handled the same way the -s option for pci devices is handled, assume it
     is a drc name unless it starts with '0x', indicating the string is
     really a hex value, and switching it to a drc index.
-    
+
     drmgr: Correct null pointer usage
     We can't de-reference NULL pointers, it's not a nice thing to do.
     I found these during some debugging, correcting to avoid future bugs.
-    
+
 
     ofpathname: Fix checking for hbtl
     Fix checking for hbtl in of2l_scsi ().
@@ -916,60 +935,60 @@ Mon Jun  8 20:28:51 UTC 2015 - dvlaeev@suse.com
     a warning about reviewing this archive to detect included passwords,
     which might allow remote attackers to obtain sensitive information by
     leveraging access to a technical-support data stream.
-    
+
     Solution:
     print a warning that confidential data may be collected via snap
-   
+
     lparstat: using get_smt_mode when showing SMT info
     get_smt_state is used in the system_data structure to display both the
     shared_processor_mode and the smt_state members. After reviewing code and
     documentation, it seems that the information in smt_state is meant to be
     acquired from ppc64_cpu instead of lparcfg. With this change, the SMT listin
     will be determined by the output of ppc64_cpu --smt.
-    
+
 
     ppc64_cpu: Allow builds without librtas
     Currently, --without-librtas disables ppc64_cpu.
-    
+
     However, we only need librtas for the run-mode determination; other
     functions will work fine without it.
-    
+
     This change allows ppc64_cpu to be built without librtas, by
     conditionally enabling run-mode, and restoring ppc64_cpu to be built
     when --without-librtas is given.
-    
+
     We need to re-work src/Makefile.am a little here - we use the +=
     operator to include rtas-specific functionality, which means the
     with-librtas cases need to be listed before the without ones.
-    
+
     We also need to #include stdint.h, as ppc64_cpu.c uses inttypes from
     here.
- 
+
     drmgr: Correct the -s option handling correction
     In response to my earlier patch that attempted to correct the -s option hand
     for drmgr I introduced a bug in which the usr_drc_name could be NULL causing
     a segfault when attempting to use it.
-    
+
     This patch adds a check to make sure it is not NULL.
-    
+
     lparstat: using get_smt_mode when showing SMT info
     get_smt_state is used in the system_data structure to display both the
     shared_processor_mode and the smt_state members. After reviewing code and
     documentation, it seems that the information in smt_state is meant to be
     acquired from ppc64_cpu instead of lparcfg. With this change, the SMT listin
     will be determined by the output of ppc64_cpu --smt.
-   
+
     drmgr: Correct the -s option handling correction
     In response to my earlier patch that attempted to correct the -s option hand
     for drmgr I introduced a bug in which the usr_drc_name could be NULL causing
     a segfault when attempting to use it.
-    
+
     This patch adds a check to make sure it is not NULL.
 
     lparstat: remove "On" from possible smt output
     The SMT row will only display the number of enabled SMT threads if
     SMT is enabled.
-    
+
     ppc64_cpu: output only the number of SMT threads when smt is on
     This patch removes "SMT is on" as a possible output when the smt option
     is used. Instead, only the number of SMT threads will be displayed.
@@ -998,7 +1017,7 @@ Tue Oct 28 10:42:23 UTC 2014 - jloeser@suse.com
 - add a warning that confidential data may be collected via snap
   (bnc#883174, CVE-2014-4040)
 - added patches:
-  * powerpc-utils.snap-confidential_config_files_warning.patch  
+  * powerpc-utils.snap-confidential_config_files_warning.patch
 
 -------------------------------------------------------------------
 Fri Sep 19 09:55:35 UTC 2014 - stefan.fent@suse.com
@@ -1006,7 +1025,7 @@ Fri Sep 19 09:55:35 UTC 2014 - stefan.fent@suse.com
 - Fix OF Patchnames with vscsi (bnc #886123)
 - added patches:
    powerpc-utils-bug-886123_01-l2of_scsi.patch
-   powerpc-utils-bug-886123_02-of2l_scsi.patch 
+   powerpc-utils-bug-886123_02-of2l_scsi.patch
 
 -------------------------------------------------------------------
 Thu Sep  4 13:06:31 UTC 2014 - jloeser@suse.com
@@ -1026,8 +1045,8 @@ Wed Jul 16 13:58:42 UTC 2014 - jloeser@suse.com
 
 - fix for nvram --unzip option to handle endianness (BNC#887275)
 - added patch:
-  * powerpc-utils.endianness_for_unzip_option.patch 
-    
+  * powerpc-utils.endianness_for_unzip_option.patch
+
 
 -------------------------------------------------------------------
 Thu Jul  3 13:35:14 CEST 2014 - pth@suse.de
@@ -1065,18 +1084,18 @@ Thu Jul  3 13:35:14 CEST 2014 - pth@suse.de
 Tue Mar 25 12:23:19 UTC 2014 - jloeser@suse.com
 
 - version update to 1.2.20 (BNC#869852)
-  see changelog for changes 
+  see changelog for changes
 
 -------------------------------------------------------------------
 Tue Mar  4 12:28:16 UTC 2014 - jloeser@suse.com
 
-- version update to 1.2.19 (BNC#866675) 
+- version update to 1.2.19 (BNC#866675)
   see changelog for changes
 
 -------------------------------------------------------------------
 Tue Feb 11 15:14:39 UTC 2014 - dvlaeev@suse.com
 
-- Change license to CPL-1.0 
+- Change license to CPL-1.0
 
 -------------------------------------------------------------------
 Fri Jan 10 16:58:09 UTC 2014 - jloeser@suse.com
@@ -1087,40 +1106,40 @@ Fri Jan 10 16:58:09 UTC 2014 - jloeser@suse.com
 -------------------------------------------------------------------
 Mon Dec  9 15:04:48 UTC 2013 - dvaleev@suse.com
 
-- add ppc64le 
+- add ppc64le
 
 -------------------------------------------------------------------
 Fri Jul 12 14:48:28 UTC 2013 - dvaleev@suse.com
 
 - update to 1.2.17
-  See changelog for changes 
+  See changelog for changes
 
 -------------------------------------------------------------------
 Mon Jul  1 13:41:54 UTC 2013 - dvaleev@suse.com
 
-- Recommend powerpc-utils-python instead of Requireing it. The 
+- Recommend powerpc-utils-python instead of Requireing it. The
   pacakge is not mandatory
 
 -------------------------------------------------------------------
 Sun Feb 24 16:37:47 UTC 2013 - dvaleev@suse.com
 
 - Update to 1.2.16
- * The drmgr command does not currently allow users to specify the 
-    drc index of the resource they wish to add/remove. This patch 
-    updates the drmgr command so that users can specify either a 
+  * The drmgr command does not currently allow users to specify the
+    drc index of the resource they wish to add/remove. This patch
+    updates the drmgr command so that users can specify either a
     drc name or a drc index with the -s option.
-    
- * This functionality is needed for the upcoming userspace handling 
-    of PRRN RTAS events. The rtas_errd will already have the drc 
-    index for the resources it needs, adding the capability to 
-    parse drc names from the device tree is not supported in 
+
+  * This functionality is needed for the upcoming userspace handling
+    of PRRN RTAS events. The rtas_errd will already have the drc
+    index for the resources it needs, adding the capability to
+    parse drc names from the device tree is not supported in
     rtas_errd though.
 
- * Update the man page for update_flash which had an out of date link
+  * Update the man page for update_flash which had an out of date link
     to instructions for resetting a managed system to a non-partitioned
     configuration.
 
- * The upstream kernel has a feature in the pseries PCI code called DDW
+  * The upstream kernel has a feature in the pseries PCI code called DDW
     that inserts TCEs transparently to device drivers. The upstream kernel
     was recently sent a fix for DLPAR that ensured those TCEs would get
     cleared upon DLPAR remove (http://patchwork.ozlabs.org/patch/213735/),
@@ -1129,55 +1148,55 @@ Sun Feb 24 16:37:47 UTC 2013 - dvaleev@suse.com
     into the slot isolate code. Without such a change, there is no way to
     ensure the DDW TCEs are cleared, and the DLPAR will always fail.
 
- * Add and use dt_swap_int() to byte swap on little endian.
-    
- * Also declare buf as unsigned char, so that we don't sign extend when
+  * Add and use dt_swap_int() to byte swap on little endian.
+
+  * Also declare buf as unsigned char, so that we don't sign extend when
     printing values from it.
- 
+
 -------------------------------------------------------------------
 Thu Dec 20 09:59:34 UTC 2012 - dvaleev@suse.com
 
 - Update to 1.2.15
-  * The frequency determination for a system can fail if we can not 
-    open enough files to make the determination. This patch 
-    pre-emptively updates the rlimit to ensure we can open all the 
+  * The frequency determination for a system can fail if we can not
+    open enough files to make the determination. This patch
+    pre-emptively updates the rlimit to ensure we can open all the
     files necessary.
 
-  * The latest firmware levels allow for setting different power 
-    savings modes. This updates the ppc64_cpu command to display 
-    the power savings mode that is currently set for the partition, 
-    or for the partition and the system if they are different, 
+  * The latest firmware levels allow for setting different power
+    savings modes. This updates the ppc64_cpu command to display
+    the power savings mode that is currently set for the partition,
+    or for the partition and the system if they are different,
     when displaying the results for the --frequency option.
 
-  * Add support to convert device-mapper multipath device names to 
+  * Add support to convert device-mapper multipath device names to
     OFW device path.
-    As multipath devices are seen by the OFW as multiple 
-    (equivalent) devices, only one of them is printed so we don't 
-    break user scripts expecting one line output. We can add an 
+    As multipath devices are seen by the OFW as multiple
+    (equivalent) devices, only one of them is printed so we don't
+    break user scripts expecting one line output. We can add an
     option later to print all the paths to the multipath device.
-  
+
   * We have introduced full fledged Light Path Diagnostics support
     on PowerLinux. To bring all Light Path Diagnostics related
     code into common tree and re-use common functionalities across
-    tools, we have re-implemented usysident/usysattn commands. 
-    Light Path Diagnostics including new implentation of 
-    usysident/usysattn will be hosted in PowerLinux diagnostic 
+    tools, we have re-implemented usysident/usysattn commands.
+    Light Path Diagnostics including new implentation of
+    usysident/usysattn will be hosted in PowerLinux diagnostic
     package (ppc64-diag).
-    
+
     ppc64-diag source:
       http://sourceforge.net/projects/linux-diag/files/ppc64-diag
-    
+
     This will introduce package conflict between ppc64-diag and
     powerpc-utils. To avoid the conflict we need to deprecate the
     usysident/usysattn commands from powerpc-utils.
-    
+
     This patch deprecates usysident/usysattn commands.
 
   * Update the values reported in the ppc64_cpu --frequency output to
     be displayed to three digits of precision instead of two.
-    
-    This update to help with test teams that are making this update 
-    to their code base already so as to get this precision in 
+
+    This update to help with test teams that are making this update
+    to their code base already so as to get this precision in
     the reporting.
 
 - Comment Obsoletes/Provides for now, there is no such packages for
@@ -1195,7 +1214,7 @@ Tue Dec 18 18:02:04 UTC 2012 - dvaleev@suse.com
    by using the ptrace peekuser capabilites in the kernel and simply doing a
    ptrace attach and peek from the ppc64_cpu command. Note: this does not actua
    stop the process we are attaching to while under ptrace control.
-    
+
    The patch does a little more than just adding this functionality since the
    --dscr commad now takes an optional -p <pid> option. This required an
    updated to the command parsing code to allow this.
@@ -1209,17 +1228,17 @@ Tue Dec 18 18:02:04 UTC 2012 - dvaleev@suse.com
 
 - There are two parameters on lparstat, count and interval, that were
    undocumented on the man page. This patch adds these parameters to the
-   option section in the lparstat manpage. 
+   option section in the lparstat manpage.
 
 - snap uses temporary directory to gather system data (files and command
    output), and finally creates compressed output file in tar or tar.gz
    format. We do not need to keep the temporary directory.
-    
+
   snap now deletes the temprory directory it used.
 
 - Currently by default snap output is stored in snap.tar.gz file. This
    makes difficult to identify when the snap output was collected.
-   
+
   This patch introduces new option -t which adds hostname adds and
    system time to output filename. With -t output filename will be
    snap-<hostname>-<systemtime>.tar.gz. This patch also creates
@@ -1236,7 +1255,7 @@ Tue Dec 18 18:02:04 UTC 2012 - dvaleev@suse.com
 -------------------------------------------------------------------
 Fri Aug 10 22:30:28 UTC 2012 - dvaleev@suse.com
 
-- add wrapper for nvsetenv which just wraps nvram 
+- add wrapper for nvsetenv which just wraps nvram
 
 -------------------------------------------------------------------
 Sun Jun 10 12:28:53 UTC 2012 - dvaleev@suse.com
@@ -1253,16 +1272,16 @@ Wed Nov  2 16:31:36 UTC 2011 - dvaleev@suse.com
    Drop powerpc-utils.insserv-ibmvscsis.patch as script
     no longer shipped with tarball
 
-- Adds support to the bootlist script to be able to supply a 
-   multipath device     as a parameter. The script will now 
-   properly handle setting up the bootlist for all paths to 
+- Adds support to the bootlist script to be able to supply a
+   multipath device     as a parameter. The script will now
+   properly handle setting up the bootlist for all paths to
    a multipath device.
 
-- Fixes ofpathname OF to logical conversion for LUN zero 
+- Fixes ofpathname OF to logical conversion for LUN zero
    for VFC devices.
 
-- Add --unzip and --ascii options to nvram command, for 
-   examination of oops/panic reports captured in lnx,oops-log 
+- Add --unzip and --ascii options to nvram command, for
+   examination of oops/panic reports captured in lnx,oops-log
    or ibm,rtas-log.
 
 - On newer kernels the dscr value is a per-process value and a new
@@ -1280,7 +1299,7 @@ Thu Aug  4 13:31:54 UTC 2011 - dvaleev@novell.com
 
 - Adds support to ofpathname for HFI network devices. Since the current driver
     does not attach to any bus and there is no way to correlate between the devi
-    ce tree and the hf device in sysfs, we have to make some assumptions in how 
+    ce tree and the hf device in sysfs, we have to make some assumptions in how
     the two are related.
 
 - Adds support for some new ipr SAS adapters which have a new device path
@@ -1293,16 +1312,16 @@ Thu Aug  4 13:31:54 UTC 2011 - dvaleev@novell.com
     active because LMBs that are not marked 'is_removable' could still be
     removed if the balloon driver owns that memory.  Therefore the check
     comparing the user-specified quanity of LMBs to add/remove is invalid.
-    
+
     If AMS ballooning is active, skip the check for how many LMBs are
     removable and try the operation.
- 
+
 - The snap man page indicates that the file /var/log/platform
     is collected.  This is not always true and can cause some confusion
     since the file does not exist on newer systems.  To avoid confusing
     users who might think the file should be collected, remove it
     from the man page listing of files.
-    
+
     The /var/log/platform file is where the rtas_errd daemon used to write
     its data before the advent of servicelog.  On older systems that may
     still be running an older rtas_errd daemon (diagela package) this
@@ -1314,15 +1333,15 @@ Thu Aug  4 13:31:54 UTC 2011 - dvaleev@novell.com
     code.  Without this patch the comparison only considers the characters
     up to the length of the input location which can cause a false match.
     For example, the following to would match.
-    
+
     Input location: U5877.001.00H4031-P1
     False match:    U5877.001.00H4031-P10
                                        ^ Comparison stops here
-    
+
     The length of the input is 23 characters and the first 23 characters
     are compared, this leaves off the last '0' on the string to compare and
     erroneously returns the wrong bus.
-    
+
     In the case of a PHB remove operation, this can cause the incorrect slot
     (and associated devices) to be powered off.
 
@@ -1335,7 +1354,7 @@ Changes in 1.2.6 version:
 
 - Introduce the lsdevinfo utility.  This command is used to provide the HMC
     or IVM with name information for virtual devices so they can be
-    matched against the VIOS names. 
+    matched against the VIOS names.
 
 - The OpenFirmware binding for Fibre Channel devices permits any leading
    zeros in the LUN field to be stripped, but does not require it. Fix
@@ -1375,7 +1394,7 @@ Changes in 1.2.6 version:
    be treated as such.  this fixes a bug where the sysfs_dev_path is
    treated as a char * and returning invalid info when the buffer is
    actually empty.
-  
+
 - Cpu add failures need to return 1 instead of -1.  A return code of -1
    causes the IVM to think there has been a really bad error and the IVM
    will wait 15 minutes prior to re-trying the operation.
@@ -1388,7 +1407,7 @@ Changes in 1.2.6 version:
 
 - The logic in get_node_by_name() currently does not return when it finds a
    child with the name being search for.  This would mean that a command
-   such as `drmgr -Q -c port -s "Port 1" -w 0 -d 3` would always return: 
+   such as `drmgr -Q -c port -s "Port 1" -w 0 -d 3` would always return:
    drmgr: Port 1 not owned by partition
 
 - DR commands shouldn't take long to complete, but having both an entry and
@@ -1398,12 +1417,12 @@ Changes in 1.2.6 version:
 -------------------------------------------------------------------
 Mon Jan  3 12:05:22 UTC 2011 - dvaleev@novell.com
 
-- move %post to %install 
+- move %post to %install
 
 -------------------------------------------------------------------
 Wed Dec 29 18:18:59 UTC 2010 - dvaleev@novell.com
 
-- as-needed fix 
+- as-needed fix
 
 -------------------------------------------------------------------
 Thu Dec 23 17:12:21 UTC 2010 - dvaleev@novell.com
@@ -1412,7 +1431,7 @@ Thu Dec 23 17:12:21 UTC 2010 - dvaleev@novell.com
 
 - drop unneeded patches
 
-- papr sources merged to main tree upstream  
+- papr sources merged to main tree upstream
 
 -------------------------------------------------------------------
 Tue Dec 16 09:19:22 CET 2008 - olh@suse.de
@@ -1452,8 +1471,8 @@ Mon Oct  6 08:59:00 CEST 2008 - sassmann@suse.de
 
 - update powerpc-utils-papr to 1.1.3 (bnc#430790)
   * Corrected string length calculation in of_to_full_path()
-  * Removed call to release_lmb() during recovery of memory add. 
-    In certain cases this can leead to an oops becasue we try to 
+  * Removed call to release_lmb() during recovery of memory add.
+    In certain cases this can leead to an oops becasue we try to
     remove non-existant lmbs.
 - remove patch powerpc-utils-papr.lsslot.patch (upstream)
 
@@ -1482,7 +1501,7 @@ Thu Aug 28 11:37:03 CEST 2008 - olh@suse.de
 -------------------------------------------------------------------
 Thu Aug  7 01:14:05 CEST 2008 - ro@suse.de
 
-- add exclusivearch to specfile 
+- add exclusivearch to specfile
 
 -------------------------------------------------------------------
 Thu Jun 26 10:14:17 CEST 2008 - olh@suse.de
@@ -1496,7 +1515,7 @@ Thu Jun 26 10:14:17 CEST 2008 - olh@suse.de
 Fri May  9 17:04:45 CEST 2008 - olh@suse.de
 
 - sysfs layout changed once again
-  look for directories when searching for kernel device names to 
+  look for directories when searching for kernel device names to
   avoid multiple matches
 
 -------------------------------------------------------------------
@@ -1544,7 +1563,7 @@ Fri Jan  4 14:36:33 CET 2008 - sassmann@suse.de
 - add sixaxis joypad support to petitboot
 - enable joystick support in kernel config
 - split petitboot patches into small components
-- patch libtwin to latest b9b2acf28d1ebad52de372a181dadf73455ad4de 
+- patch libtwin to latest b9b2acf28d1ebad52de372a181dadf73455ad4de
   snapshot from git://anongit.freedesktop.org/git/twin
 
 -------------------------------------------------------------------
@@ -1594,7 +1613,7 @@ Thu Aug 23 14:41:53 CEST 2007 - sassmann@suse.de
 -------------------------------------------------------------------
 Wed Aug 22 16:07:38 CEST 2007 - sassmann@suse.de
 
-- changed ps3fb size from 18 to 9MB to save RAM in ps3config 
+- changed ps3fb size from 18 to 9MB to save RAM in ps3config
 
 -------------------------------------------------------------------
 Mon Aug 20 10:37:56 CEST 2007 - sassmann@suse.de
@@ -1697,7 +1716,7 @@ Fri May 11 11:11:47 CEST 2007 - sassmann@suse.de
 -------------------------------------------------------------------
 Mon May  7 16:35:35 CEST 2007 - sassmann@suse.de
 
-- generate otheros.bld from kernel source 2.6.16 
+- generate otheros.bld from kernel source 2.6.16
   added libtwin
   added petitboot
   added ps3pf-utils

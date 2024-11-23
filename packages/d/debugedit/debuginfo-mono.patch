@@ -1,7 +1,7 @@
 Index: scripts/find-debuginfo.in
 ===================================================================
---- scripts/find-debuginfo.in.orig
-+++ scripts/find-debuginfo.in
+--- a/scripts/find-debuginfo.in
++++ b/scripts/find-debuginfo.in
 @@ -434,6 +434,16 @@ while read nlinks inum f; do
        ;;
      *) continue ;;

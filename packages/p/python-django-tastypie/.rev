@@ -217,4 +217,17 @@
     <comment></comment>
     <requestid>1189267</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>fd4548d79baddd25c071947404bda588</srcmd5>
+    <version>0.15.0</version>
+    <time>1732315893</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.15.0:
+  * Pin Sphinx to last known working version for now
+  * Fix race condition between POST / PATCH resources by using update_fields
+  * Use non-deprecated assertion methods
+  * Django 5.1 support
+- Drop patch correct-assertion-methods.patch, included upstream.</comment>
+    <requestid>1225688</requestid>
+  </revision>
 </revisionlist>

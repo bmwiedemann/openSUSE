@@ -24,4 +24,12 @@
   -Wno-deprecated-declarations -Wno-incompatible-pointer-types (forwarded request 1197221 from rrahl0)</comment>
     <requestid>1197222</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>b81e3f40b61afa9c9b0df945800e2850</srcmd5>
+    <version>0.1.1</version>
+    <time>1732315930</time>
+    <user>anag+factory</user>
+    <comment>- fix CFLAGS in the correct manner with -Wno-incompatible-pointer-types (forwarded request 1225760 from rrahl0)</comment>
+    <requestid>1225761</requestid>
+  </revision>
 </revisionlist>

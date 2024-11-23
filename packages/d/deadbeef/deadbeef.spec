@@ -35,6 +35,8 @@ Patch0:         0003-Fix-operator-precedence-and-uninitialized-value-warn.patch
 Patch1:         %{name}-drop-documents-installation.patch
 # PATCH-FIX-OPENSUSE deadbeef-fix-desktop-file.patch -- fix bogus "Play Pause" action
 Patch2:         %{name}-fix-desktop-file.patch
+# PATCH-FIX-OPENSUSE 70ae99463889e191c3d5d0af6ba28e893d73a63f.patch -- see patch
+Patch3:         70ae99463889e191c3d5d0af6ba28e893d73a63f.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  clang
@@ -78,7 +80,7 @@ BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(zlib)
 ExcludeArch:    %{ix86}
 %if %{with restricted}
-BuildRequires:  libfaad-devel
+BuildRequires:  pkgconfig(faad2)
 Requires:       %{name}-plugins-extra = %{version}-%{release}
 %else
 Recommends:     %{name}-plugins-extra = %{version}

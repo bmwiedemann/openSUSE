@@ -1,4 +1,112 @@
 -------------------------------------------------------------------
+Thu Nov 21 07:15:54 UTC 2024 - pgajdos@suse.com
+
+- version update to 8.3.14
+    CLI:
+        Fixed bug GH-16373 (Shebang is not skipped for router script in cli-server started through shebang).
+        Fixed bug GHSA-4w77-75f9-2c8w (Heap-Use-After-Free in sapi_read_post_data Processing in CLI SAPI Interface).
+    COM:
+        Fixed out of bound writes to SafeArray data.
+    Core:
+        Fixed bug GH-16168 (php 8.1 and earlier crash immediately when compiled with Xcode 16 clang on macOS 15).
+        Fixed bug GH-16371 (Assertion failure in Zend/zend_weakrefs.c:646).
+        Fixed bug GH-16515 (Incorrect propagation of ZEND_ACC_RETURN_REFERENCE for call trampoline).
+        Fixed bug GH-16509 (Incorrect line number in function redeclaration error).
+        Fixed bug GH-16508 (Incorrect line number in inheritance errors of delayed early bound classes).
+        Fixed bug GH-16648 (Use-after-free during array sorting).
+    Curl:
+        Fixed bug GH-16302 (CurlMultiHandle holds a reference to CurlHandle if curl_multi_add_handle fails).
+    Date:
+        Fixed bug GH-16454 (Unhandled INF in date_sunset() with tiny $utcOffset).
+        Fixed bug GH-14732 (date_sun_info() fails for non-finite values).
+    DBA:
+        Fixed bug GH-16390 (dba_open() can segfault for "pathless" streams).
+    DOM:
+        Fixed bug GH-16316 (DOMXPath breaks when not initialized properly).
+        Add missing hierarchy checks to replaceChild.
+        Fixed bug GH-16336 (Attribute intern document mismanagement).
+        Fixed bug GH-16338 (Null-dereference in ext/dom/node.c).
+        Fixed bug GH-16473 (dom_import_simplexml stub is wrong).
+        Fixed bug GH-16533 (Segfault when adding attribute to parent that is not an element).
+        Fixed bug GH-16535 (UAF when using document as a child).
+        Fixed bug GH-16593 (Assertion failure in DOM->replaceChild).
+        Fixed bug GH-16595 (Another UAF in DOM -> cloneNode).
+    EXIF:
+        Fixed bug GH-16409 (Segfault in exif_thumbnail when not dealing with a real file).
+    FFI:
+        Fixed bug GH-16397 (Segmentation fault when comparing FFI object).
+    Filter:
+        Fixed bug GH-16523 (FILTER_FLAG_HOSTNAME accepts ending hyphen).
+    FPM:
+        Fixed bug GH-16628 (FPM logs are getting corrupted with this log statement).
+    GD:
+        Fixed bug GH-16334 (imageaffine overflow on matrix elements).
+        Fixed bug GH-16427 (Unchecked libavif return values).
+        Fixed bug GH-16559 (UBSan abort in ext/gd/libgd/gd_interpolation.c:1007).
+    GMP:
+        Fixed floating point exception bug with gmp_pow when using large exposant values. (David Carlier).
+        Fixed bug GH-16411 (gmp_export() can cause overflow).
+        Fixed bug GH-16501 (gmp_random_bits() can cause overflow).
+        Fixed gmp_pow() overflow bug with large base/exponents.
+        Fixed segfaults and other issues related to operator overloading with GMP objects.
+    LDAP:
+        Fixed bug GHSA-g665-fm4p-vhff (OOB access in ldap_escape). (CVE-2024-8932)
+    MBstring:
+        Fixed bug GH-16361 (mb_substr overflow on start/length arguments).
+    MySQLnd:
+        Fixed bug GHSA-h35g-vwh6-m678 (Leak partial content of the heap through heap buffer over-read). (CVE-2024-8929)
+    Opcache:
+        Fixed bug GH-16408 (Array to string conversion warning emitted in optimizer).
+    OpenSSL:
+        Fixed bug GH-16357 (openssl may modify member types of certificate arrays).
+        Fixed bug GH-16433 (Large values for openssl_csr_sign() $days overflow).
+        Fix various memory leaks on error conditions in openssl_x509_parse().
+    PDO DBLIB:
+        Fixed bug GHSA-5hqh-c84r-qjcv (Integer overflow in the dblib quoter causing OOB writes). (CVE-2024-11236)
+    PDO Firebird:
+        Fixed bug GHSA-5hqh-c84r-qjcv (Integer overflow in the firebird quoter causing OOB writes). (CVE-2024-11236)
+    PDO ODBC:
+        Fixed bug GH-16450 (PDO_ODBC can inject garbage into field values).
+    Phar:
+        Fixed bug GH-16406 (Assertion failure in ext/phar/phar.c:2808).
+    PHPDBG:
+        Fixed bug GH-16174 (Empty string is an invalid expression for ev).
+    Reflection:
+        Fixed bug GH-16601 (Memory leak in Reflection constructors).
+    Session:
+        Fixed bug GH-16385 (Unexpected null returned by session_set_cookie_params).
+        Fixed bug GH-16290 (overflow on cookie_lifetime ini value).
+    SOAP:
+        Fixed bug GH-16318 (Recursive array segfaults soap encoding).
+        Fixed bug GH-16429 (Segmentation fault access null pointer in SoapClient).
+    Sockets:
+        Fixed bug with overflow socket_recvfrom $length argument.
+    SPL:
+        Fixed bug GH-16337 (Use-after-free in SplHeap).
+        Fixed bug GH-16464 (Use-after-free in SplDoublyLinkedList::offsetSet()).
+        Fixed bug GH-16479 (Use-after-free in SplObjectStorage::setInfo()).
+        Fixed bug GH-16478 (Use-after-free in SplFixedArray::unset()).
+        Fixed bug GH-16588 (UAF in Observer->serialize).
+        Fix GH-16477 (Segmentation fault when calling __debugInfo() after failed SplFileObject::__constructor).
+        Fixed bug GH-16589 (UAF in SplDoublyLinked->serialize()).
+        Fixed bug GH-14687 (segfault on SplObjectIterator instance).
+        Fixed bug GH-16604 (Memory leaks in SPL constructors).
+        Fixed bug GH-16646 (UAF in ArrayObject::unset() and ArrayObject::exchangeArray()).
+    Standard:
+        Fixed bug GH-16293 (Failed assertion when throwing in assert() callback with bail enabled).
+    Streams:
+        Fixed bug GHSA-c5f2-jwm7-mmq2 (Configuring a proxy in a stream context might allow for CRLF injection in URIs). (CVE-2024-11234)
+        Fixed bug GHSA-r977-prxv-hc43 (Single byte overread with convert.quoted-printable-decode filter). (CVE-2024-11233)
+    SysVMsg:
+        Fixed bug GH-16592 (msg_send() crashes when a type does not properly serialized).
+    SysVShm:
+        Fixed bug GH-16591 (Assertion error in shm_put_var).
+    XMLReader:
+        Fixed bug GH-16292 (Segmentation fault in ext/xmlreader/php_xmlreader.c).
+    Zlib:
+        Fixed bug GH-16326 (Memory management is broken for bad dictionaries.) (cmb)
+
+-------------------------------------------------------------------
 Thu Oct 24 18:44:22 UTC 2024 - pgajdos@suse.com
 
 - version update to 8.3.13

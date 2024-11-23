@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Oct 31 17:06:26 UTC 2024 - llyyr <llyyr@yukari.in>
+
+- Update to 0.9.1
+  * Fix libseat not servicing seat enable/disable events if they were
+    received immediately after a response, leading to the session
+    deadlocking in a deactivated state.
+  * Fix some protocol strings lacking validation of the NULL
+    termination requirement.
+- Update to 0.9.0
+  * Improve session state tracking in the libseat logind backend, which
+    could previously fail to notify the libseat client that the session
+    had been deactivated.
+  * Do not trigger a VT switch when starting a logind session, allowing
+    sessions to be started in the background.
+  * Improve error handling in some edgecases in the libseat seatd backend.
+  * Apply more aggressive security policies to the included systemd unit.
+
+
+-------------------------------------------------------------------
 Wed Jul 19 09:37:07 UTC 2023 - llyyr <llyyr.public@gmail.com>
 
 - Update to 0.8.0

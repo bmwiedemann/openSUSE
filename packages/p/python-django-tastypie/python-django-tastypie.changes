@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 22 00:11:33 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.15.0:
+  * Pin Sphinx to last known working version for now
+  * Fix race condition between POST / PATCH resources by using update_fields
+  * Use non-deprecated assertion methods
+  * Django 5.1 support
+- Drop patch correct-assertion-methods.patch, included upstream.
+
+-------------------------------------------------------------------
 Tue Jul 23 13:39:34 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Add missing pytz dependency

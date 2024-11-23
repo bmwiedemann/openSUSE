@@ -1,7 +1,7 @@
 Index: scripts/find-debuginfo.in
 ===================================================================
---- scripts/find-debuginfo.in.orig
-+++ scripts/find-debuginfo.in
+--- a/scripts/find-debuginfo.in
++++ b/scripts/find-debuginfo.in
 @@ -407,7 +407,7 @@ debug_link()
  get_debugfn()
  {

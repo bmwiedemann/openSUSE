@@ -22,7 +22,7 @@
 %define icingadirector_user icingadirector
 
 Name:           icingaweb2-module-director
-Version:        1.11.1
+Version:        1.11.2
 Release:        0
 Summary:        Config module for Icinga Web 2
 License:        GPL-2.0-or-later

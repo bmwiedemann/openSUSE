@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 19 14:11:39 UTC 2024 - Reinhard Max <max@suse.com>
+
+- Upgrade to 12.22:
+  * Restore functionality of ALTER {ROLE|DATABASE} SET role
+  * https://www.postgresql.org/about/news/p-2965/
+  * https://www.postgresql.org/docs/release/12.22/
+
+-------------------------------------------------------------------
 Wed Nov 13 12:11:46 UTC 2024 - Reinhard Max <max@suse.com>
 
 - Upgrade to 12.21:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-constantly
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-constantly
-Version:        15.1.0
+Version:        23.10.4
 Release:        0
 Summary:        Symbolic constants in Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/twisted/constantly
 Source:         https://files.pythonhosted.org/packages/source/c/constantly/constantly-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module versioneer}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -38,20 +40,19 @@ It includes collections and constants with text, numeric, and bit flag values.
 Originally ``twisted.python.constants`` from the `Twisted <https://twistedmatrix.com/>`_ project.
 
 %prep
-%setup -q -n constantly-%{version}
-rm -rf versioneer.py
+%autosetup -p1 -n constantly-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/constantly
-%{python_sitelib}/constantly-%{version}*-info
+%{python_sitelib}/constantly-%{version}.dist-info
 
 %changelog

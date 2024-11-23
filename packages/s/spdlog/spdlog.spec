@@ -17,9 +17,9 @@
 
 
 Name:           spdlog
-%define lname	libspdlog1_14
-%define sover	1.14
-Version:        1.14.1
+%define lname	libspdlog1_15
+%define sover	1.15
+Version:        1.15.0
 Release:        0
 Summary:        C++ logging library
 License:        MIT

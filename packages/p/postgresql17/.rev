@@ -77,4 +77,28 @@
   * https://www.postgresql.org/about/news/p-2910/</comment>
     <requestid>1224229</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>484131d80cb9e8270c9534bc86f09c50</srcmd5>
+    <version>17.2</version>
+    <time>1732315850</time>
+    <user>anag+factory</user>
+    <comment>- Upgrade to 17.2:
+  * Repair ABI break for extensions that work with struct
+    ResultRelInfo.
+  * Restore functionality of ALTER {ROLE|DATABASE} SET role.
+  * Fix cases where a logical replication slot's restart_lsn could
+    go backwards.
+  * Avoid deleting still-needed WAL files during pg_rewind.
+  * Fix race conditions associated with dropping shared statistics
+    entries.
+  * Count index scans in contrib/bloom indexes in the statistics
+    views, such as the pg_stat_user_indexes.idx_scan counter.
+  * Fix crash when checking to see if an index's opclass options
+    have changed.
+  * Avoid assertion failure caused by disconnected NFA sub-graphs
+    in regular expression parsing.
+  * https://www.postgresql.org/about/news/p-2965/
+  * https://www.postgresql.org/docs/release/17.2/</comment>
+    <requestid>1225748</requestid>
+  </revision>
 </revisionlist>

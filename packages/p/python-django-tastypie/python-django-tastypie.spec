@@ -18,16 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-tastypie
-Version:        0.14.7
+Version:        0.15.0
 Release:        0
 Summary:        A webservice API framework layer for Django
 License:        BSD-3-Clause
 URL:            https://github.com/django-tastypie/django-tastypie
 Source:         https://github.com/django-tastypie/django-tastypie/archive/v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#django-tastypie/django-tastypie#1667
-Patch0:         correct-assertion-methods.patch
-BuildRequires:  %{python_module Django >= 1.11.0}
+BuildRequires:  %{python_module Django >= 4.0}
 BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module biplist}
 BuildRequires:  %{python_module defusedxml}
 BuildRequires:  %{python_module lxml}
@@ -39,7 +38,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 1.11.0
+Requires:       python-Django >= 4.0
 Requires:       python-python-dateutil >= 2.1
 Requires:       python-python-mimeparse >= 0.1.4
 Recommends:     python-PyYAML

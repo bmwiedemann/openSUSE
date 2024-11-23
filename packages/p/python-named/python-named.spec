@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-named
 Version:        1.4.2
 Release:        0
@@ -23,9 +24,11 @@ Summary:        Named types
 License:        MIT
 URL:            https://github.com/nekitdev/named
 Source:         https://github.com/nekitdev/named/archive/refs/tags/v%{version}.tar.gz#/named-%{version}-gh.tar.gz
+# PATCH-FEATURE-OPENSUSE no-coverage.patch mcepl@suse.com
+# Don't calculate test coverage
+Patch0:         no-coverage.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core >= 1.9.0}
-BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module typing-extensions}
 BuildRequires:  fdupes

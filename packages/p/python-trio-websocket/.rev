@@ -27,4 +27,12 @@
     <comment>- Skip some broken tests with trio &gt;= 0.25</comment>
     <requestid>1163162</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>08f401d34675d1b4c410d2d9fcecdf0f</srcmd5>
+    <version>0.11.1</version>
+    <time>1732315857</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1225769</requestid>
+  </revision>
 </revisionlist>

@@ -39,6 +39,7 @@ BuildRequires:  pkgconfig(libplist-2.0) >= 2.3.0
 BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(libusbmuxd-2.0) >= 2.0.2
 BuildRequires:  pkgconfig(python3)
+BuildRequires:  python3-setuptools
 
 %description
 libimobiledevice is a software library that talks the protocols to support

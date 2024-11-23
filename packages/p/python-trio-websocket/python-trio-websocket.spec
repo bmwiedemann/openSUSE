@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-trio-websocket
 Version:        0.11.1
 Release:        0

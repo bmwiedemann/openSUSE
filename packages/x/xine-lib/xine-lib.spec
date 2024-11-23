@@ -26,51 +26,50 @@ Name:           xine-lib
 # default for buildservice is no patented codecs
 %bcond_without distributable
 %bcond_with onlynondistributable
-%if 0%{?suse_version} > 1320
-BuildRequires:  gcc
-BuildRequires:  pkgconfig(libmpeg2)
-%else
-BuildRequires:  gcc8
-%endif
 %bcond_without sdl
 %bcond_without jack
 #
-BuildRequires:  ImageMagick-devel
-BuildRequires:  alsa-devel
-BuildRequires:  flac-devel
 BuildRequires:  giflib-devel
-BuildRequires:  glib2-devel
-BuildRequires:  gnutls-devel
-BuildRequires:  gtk2-devel
-BuildRequires:  imlib2-devel
-BuildRequires:  krb5-devel
-BuildRequires:  libcdio-devel
-BuildRequires:  libdrm-devel
-BuildRequires:  libmng-devel
 BuildRequires:  libmpcdec-devel
-BuildRequires:  libtheora-devel
 BuildRequires:  libtool
-BuildRequires:  libv4l-devel >= 0.8.4
-BuildRequires:  libvorbis-devel
-BuildRequires:  lirc-devel
 BuildRequires:  perl
-BuildRequires:  readline-devel
-BuildRequires:  speex-devel
-BuildRequires:  update-desktop-files
-BuildRequires:  vcdimager-devel
+BuildRequires:  pkgconfig(ImageMagick)
+BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(dvdnav)
 BuildRequires:  pkgconfig(egl)
+BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gnutls)
+BuildRequires:  pkgconfig(gtk+-2.0)
+BuildRequires:  pkgconfig(imlib2)
+BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(liba52)
-#Prevent building against ffmpeg 3
 BuildRequires:  pkgconfig(libavcodec) >= 58
 BuildRequires:  pkgconfig(libavformat) >= 58
 BuildRequires:  pkgconfig(libavutil) >= 56
 BuildRequires:  pkgconfig(libbluray)
+BuildRequires:  pkgconfig(libcdio)
+BuildRequires:  pkgconfig(libdrm)
+BuildRequires:  pkgconfig(libmng)
+BuildRequires:  pkgconfig(libmodplug)
+BuildRequires:  pkgconfig(libmpeg2)
 BuildRequires:  pkgconfig(libpostproc) >= 55
+BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(libv4l2)
+BuildRequires:  pkgconfig(libvcdinfo)
+BuildRequires:  pkgconfig(lirc)
 BuildRequires:  pkgconfig(mad)
+%if 0%{?suse_version} < 1600
+BuildRequires:  readline-devel
+%else
+BuildRequires:  pkgconfig(readline)
+%endif
+BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(smbclient)
+BuildRequires:  pkgconfig(theora)
+BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(vpx)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb-shape)
@@ -81,21 +80,19 @@ BuildRequires:  pkgconfig(xv)
 BuildRequires:  pkgconfig(xvmc)
 BuildRequires:  pkgconfig(zlib)
 %if %{without distributable}
-BuildRequires:  libfaad-devel
+BuildRequires:  pkgconfig(faad2)
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(libdts)
 BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(libva-glx)
 BuildRequires:  pkgconfig(vdpau)
 %endif
-BuildRequires:  libpulse-devel
 %if %{with sdl}
 BuildRequires:  pkgconfig(sdl)
 %endif
 %if %{with jack}
-BuildRequires:  libjack-devel
+BuildRequires:  pkgconfig(jack)
 %endif
-BuildRequires:  libmodplug-devel
 Version:        1.2.13
 Release:        0
 %define abiversion 2.11
@@ -182,11 +179,11 @@ Autoren:
 Summary:        Development environment for xine-based media players
 License:        GPL-2.0-or-later AND SUSE-Public-Domain
 Group:          Development/Libraries/C and C++
-Requires:       freetype2-devel
 Requires:       glibc-devel
-Requires:       libv4l-devel
 Requires:       libxine2 = %{version}
-Requires:       zlib-devel
+Requires:       pkgconfig(freetype2)
+Requires:       pkgconfig(libv4l2)
+Requires:       pkgconfig(zlib)
 Obsoletes:      libxine2-devel < %{version}-%{release}
 Provides:       libxine2-devel = %{version}-%{release}
 Obsoletes:      xine-lib2-devel < %{version}-%{release}

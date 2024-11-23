@@ -318,4 +318,12 @@
   * Display an &quot;beam&quot; cursor in Emacs (insert) mode.</comment>
     <requestid>1208844</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>6409e34550e26ab700c98622b4b83418</srcmd5>
+    <version>3.0.48</version>
+    <time>1732315868</time>
+    <user>anag+factory</user>
+    <comment>- add compat provides on the safe name</comment>
+    <requestid>1225843</requestid>
+  </revision>
 </revisionlist>

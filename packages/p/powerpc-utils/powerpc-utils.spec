@@ -17,7 +17,7 @@
 
 
 Name:           powerpc-utils
-Version:        1.3.12
+Version:        1.3.13
 Release:        0
 Summary:        Utilities for PowerPC Hardware
 License:        GPL-2.0-or-later
@@ -29,18 +29,6 @@ Patch1:         powerpc-utils-lsprop.patch
 Patch2:         ofpathname_powernv.patch
 Patch3:         fix_kexec_service_name_for_suse.patch
 Patch4:         libvirt-service-dep.patch
-Patch5:         0001-drmgr-Return-from-get_node_by_name-if-matched-DRC-in.patch
-Patch6:         0006-drmgr-Free-nodes-returned-from-configure_connector.patch
-Patch7:         0005-ofpathname-skip-devices-with-no-devspec-when-coorela.patch
-Patch8:         ppc64_cpu-Support-partial-SMT-level-through-SYS-FS-s.patch
-Patch9:         ppc64_cpu-Clean-up-sysfs-smt-control-error-handling.patch
-Patch10:        0002-lparstat-Fix-Idle-and-busy-PURR-SPURR.patch
-Patch11:        0003-lparstat-app-Use-pic-value-at-boot-for-accurate-boot.patch
-Patch12:        0004-lparstat-Use-CLOCK_BOOTTIME-for-get_time-interface-a.patch
-Patch13:        0001-drmgr-pci-Enable-in-kernel-functionality-to-update-d.patch
-Patch14:        0002-drmgr-SLOT-Add-kernel-interface-support-for-device-t.patch
-Patch15:        0003-drmgr-pci-Add-kernel-interface-support-for-device-tr.patch
-Patch16:        0004-drmgr-phb-Add-kernel-interface-support-for-device-tr.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libnuma-devel

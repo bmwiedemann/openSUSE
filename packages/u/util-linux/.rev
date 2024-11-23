@@ -2638,4 +2638,18 @@ Factory yet. (forwarded request 448848 from rudi_m)</comment>
     <comment></comment>
     <requestid>1216844</requestid>
   </revision>
+  <revision rev="290" vrev="2">
+    <srcmd5>ffce38cd9d6523881a883d1a18dd6e23</srcmd5>
+    <version>2.40.2</version>
+    <time>1732315812</time>
+    <user>anag+factory</user>
+    <comment>- Skip aarch64 decode path for rest of the architectures
+  (bsc#1229476, util-linux-lscpu-skip-aarch64-decode.patch).
+- agetty: Prevent login cursor escape (bsc#1194818,
+  util-linux-agetty-prevent-cursor-escape.patch).
+- Document unexpected side effects of lazy destruction
+  (bsc#1159034, util-linux-umount-losetup-lazy-destruction.patch,
+  util-linux-umount-losetup-lazy-destruction-generated.patch).</comment>
+    <requestid>1225398</requestid>
+  </revision>
 </revisionlist>

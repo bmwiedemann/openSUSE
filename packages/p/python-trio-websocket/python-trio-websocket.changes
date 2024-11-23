@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 22 08:59:09 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu Mar 28 00:18:44 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Skip some broken tests with trio >= 0.25 

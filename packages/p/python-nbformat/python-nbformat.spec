@@ -18,7 +18,6 @@
 
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
-%global skip_python313 1
 Name:           python-nbformat
 Version:        5.10.4
 Release:        0
@@ -85,7 +84,8 @@ sed -i -e 's/"--color=yes", //' -e 's/\@\@\@/%{version}/' pyproject.toml
 %fdupes %{buildroot}%{_docdir}/jupyter-nbformat/
 
 %check
-%pytest
+# gh#jupyter/nbformat#405
+%pytest  -p no:unraisableexception
 
 %pre
 # If libalternatives is used: Removing old update-alternatives entries.

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 22 08:37:32 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu Oct 17 10:31:13 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - Enable build on riscv64

@@ -93,4 +93,12 @@
   * Support pytest &gt;= 8.</comment>
     <requestid>1172337</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>646358bb5ce85566ad4701fa71fe4f76</srcmd5>
+    <version>2.20.0</version>
+    <time>1732315846</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1225676</requestid>
+  </revision>
 </revisionlist>

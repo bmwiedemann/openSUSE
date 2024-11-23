@@ -654,4 +654,12 @@ Reason 1.1.x will not be supported to EOL of openSUSE 12.2, see also Bugzilla Bu
     <comment></comment>
     <requestid>1193666</requestid>
   </revision>
+  <revision rev="90" vrev="6">
+    <srcmd5>33f0690ff40cea11f0d55f9032143c15</srcmd5>
+    <version>1.2.13</version>
+    <time>1732315899</time>
+    <user>anag+factory</user>
+    <comment>fix 15.6 build</comment>
+    <requestid>1225704</requestid>
+  </revision>
 </revisionlist>

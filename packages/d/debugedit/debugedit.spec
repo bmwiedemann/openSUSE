@@ -1,7 +1,7 @@
 #
 # spec file for package debugedit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           debugedit
-Version:        5.0
+Version:        5.1
 Release:        0
 Summary:        Debuginfo extraction
 License:        GPL-3.0-or-later
@@ -32,12 +32,13 @@ Patch1:         finddebuginfo-absolute-links.patch
 Patch2:         debugsubpkg.patch
 Patch3:         debuglink.patch
 Patch4:         debuginfo-mono.patch
-Patch5:         remove-bad-shift.patch
+Patch5:         workaround-missing-linked-file.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  help2man
 BuildRequires:  pkgconfig(libdw)
 BuildRequires:  pkgconfig(libelf)
+BuildRequires:  pkgconfig(libxxhash)
 # /usr/bin/gdb-add-index is optional
 Suggests:       gdb
 Requires:       binutils
@@ -55,7 +56,7 @@ debugedit provides programs and scripts for creating debuginfo and source file d
 collect build-ids and rewrite source paths in DWARF data for debugging, tracing and profiling.
 
 %prep
-%autosetup -p0
+%autosetup -p1
 
 %build
 autoreconf -fiv

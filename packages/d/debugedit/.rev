@@ -39,4 +39,12 @@
     <comment>- don't hard require gdb (boo#1205344) (forwarded request 1036224 from lnussel)</comment>
     <requestid>1036229</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ef96c0d050f5310a68fd863d411ce4d2</srcmd5>
+    <version>5.1</version>
+    <time>1732315874</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1225465</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Nov 21 19:49:23 UTC 2024 - Bernd Ritter <comrad@opensuse.org>
+
+- Updated spdlog to 1.15.0
+
+- Release notes 1.15.0:
+  * Update bundled fmt to 11.0.2 by @gabime in #3236
+  * Add wide character formatting and output support to console in wincolor_sink. by @DominikGrabiec in #3092
+  * Allow customization of syslog_sink by @Silex in #3124
+  * make example compatible with fmt 11 by @ziyao233 in #3130
+  * Fix building with FMT_ENFORCE_COMPILE_STRING by @AJIOB in #3137
+  * fix: set /Zc:__cplusplus and /MP to MSVC only by @zjyhjqs in #3139
+  * V1.x : fixed "suggest override" errors for gcc 8.5 and gcc 9.1 by @esmirno in #3158
+  * Add info about max_files in the docstrings of hourly/daily file sinks by @themightyoarfish in #3170
+  * use std::lock_guard instead of std::unique_lock by @wsehjk in #3179
+  * fix/issue-3101: fix the issue where mdc ignores SPDLOG_NO_TLS by @Allen-20180115 in #3184
+  * Update mdc.h error message by @gabime in #3185
+  * [docs] Update conan install command in README by @uilianries in #3172
+  * Update CMakeLists.txt, Fix spelling errors by @zgzhengSEU in #3193
+  * Fix warning - extra ';' for -Wextra-semi by @hydai in #3198
+  * Improve Cross-Platform Build Instructions in Documentation by @Mq-b in #3229
+  * Exchange promise for condition_variable when flushing (fixes #3221) by @Oipo in #3228
+  * Ensure flush callback gets called in move-assign operator by @Oipo in #3232
+  * Make flush async again in async logger to prevent crashes and hangs by @gabime in #3235
+  * Update README.md by @gabime in #3240
+  * utf8_to_wstrbuf now handles invalid utf8 sequences by @captainurist in #3244 and #3245
+  * Added tsan option to CMake and CI by @gabime in #3237 and #3247 /pull/3244
+
+-------------------------------------------------------------------
 Sat Jul 13 18:36:24 UTC 2024 - Bernd Ritter <comrad@opensuse.org>
 
 - added rpm group

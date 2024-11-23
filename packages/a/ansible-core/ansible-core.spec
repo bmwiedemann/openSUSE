@@ -21,11 +21,13 @@
 # Leap15, SLES15
 %if %pythons == "python310"
 %define ansible_python python310
+%define ansible_python_version 3.10
 %define ansible_python_executable python3.10
 %define ansible_python_sitelib %python310_sitelib
 %endif
 %if %pythons == "python311"
 %define ansible_python python311
+%define ansible_python_version 3.11
 %define ansible_python_executable python3.11
 %define ansible_python_sitelib %python311_sitelib
 %endif
@@ -33,6 +35,7 @@
 # Tumbleweed
 %define pythons python3
 %define ansible_python python3
+%define ansible_python_version %python3_version
 %define ansible_python_executable python3
 %define ansible_python_sitelib %python3_sitelib
 %endif
@@ -45,6 +48,8 @@ License:        GPL-3.0-or-later
 URL:            https://ansible.com/
 Source0:        https://files.pythonhosted.org/packages/source/a/ansible-core/ansible_core-%{version}.tar.gz#/ansible_core-%{version}.tar.gz
 Source1:        ansible_core-%{version}.tar.gz.sha256
+# PATCH-FIX-UPSTREAM fix resolvelib dependency
+Patch1:         https://github.com/ansible/ansible/commit/771f7ad29ca4d259761eaa88673c2e32f6412bbe.patch
 BuildArch:      noarch
 
 # cannot be installed with ansible < 3 or ansible-base
@@ -61,12 +66,17 @@ BuildRequires:  %{ansible_python}-cryptography
 BuildRequires:  %{ansible_python}-packaging
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  (%{ansible_python}-resolvelib >= 0.5.3 with %{ansible_python}-resolvelib < 1.1.0)
+BuildRequires:  (%{ansible_python}-resolvelib >= 0.5.3 with %{ansible_python}-resolvelib < 2.0.0)
 # SECTION test requirements
-###BuildRequires:  %{ansible_python}-botocore
-###BuildRequires:  %{ansible_python}-curses
-###BuildRequires:  %{ansible_python}-pytest
-###BuildRequires:  %{ansible_python}-pytz
+BuildRequires:  %{ansible_python}-botocore
+BuildRequires:  %{ansible_python}-curses
+BuildRequires:  %{ansible_python}-passlib
+BuildRequires:  %{ansible_python}-pytest
+BuildRequires:  %{ansible_python}-pytest-mock
+BuildRequires:  %{ansible_python}-pytest-xdist
+BuildRequires:  %{ansible_python}-pytz
+BuildRequires:  git-core
+BuildRequires:  openssh
 # /SECTION
 # SECTION docs
 BuildRequires:  %{ansible_python}-docutils
@@ -75,7 +85,7 @@ Requires:       %{ansible_python}-Jinja2 >= 3.0.0
 Requires:       %{ansible_python}-PyYAML >= 5.1
 Requires:       %{ansible_python}-cryptography
 Requires:       %{ansible_python}-packaging
-Requires:       (%{ansible_python}-resolvelib >= 0.5.3 with %{ansible_python}-resolvelib < 1.1.0)
+Requires:       (%{ansible_python}-resolvelib >= 0.5.3 with %{ansible_python}-resolvelib < 2.0.0)
 
 # ansible-documentation is a separate package since 2.15.3
 Recommends:     ansible-documentation
@@ -104,7 +114,7 @@ modules can be written in any language and are transferred to managed machines
 automatically.
 
 %prep
-%setup -q -n ansible_core-%{version}
+%autosetup -p 1 -n ansible_core-%{version}
 
 for file in .git_keep .travis.yml ; do
   find . -name "$file" -delete
@@ -182,7 +192,7 @@ cp -v ./man1/*.1 %{buildroot}/%{_mandir}/man1/
 
 %check
 # NEVER ship untested pure python packages. Enable this before the final submit.
-#python3 bin/ansible-test units -v --python %%{python3_version}
+%{ansible_python_executable} bin/ansible-test units -v --python %{ansible_python_version}
 
 %files
 %doc changelogs/CHANGELOG-v2.17.rst changelogs/changelog.yaml

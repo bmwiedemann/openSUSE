@@ -18,14 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-fastjsonschema
-Version:        2.19.1
+Version:        2.20.0
 Release:        0
 Summary:        Fastest Python implementation of JSON schema
 License:        BSD-3-Clause
 URL:            https://github.com/horejsek/python-fastjsonschema
 Source:         https://files.pythonhosted.org/packages/source/f/fastjsonschema/fastjsonschema-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#horejsek/python-fastjsonschema#180
-Patch0:         support-pytest-8.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-benchmark}

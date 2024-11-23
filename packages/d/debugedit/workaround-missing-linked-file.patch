@@ -1,0 +1,20 @@
+Previously this error was ignored but now return value of parallel jobs is
+propagated, and missing this file fails package build.
+
+It is not clear if this is the correct fix (ie the file accumulates link data,
+and initially is missing because no data is accumulated yet) or if this should
+have been created elsewhere.
+
+Index: debugedit-5.1/scripts/find-debuginfo.in
+===================================================================
+--- debugedit-5.1.orig/scripts/find-debuginfo.in
++++ debugedit-5.1/scripts/find-debuginfo.in
+@@ -578,7 +578,7 @@ do_file()
+   # If this file has multiple links, make the corresponding .debug files
+   # all links to one file too.
+   if [ $nlinks -gt 1 ]; then
+-    grep "^$inum " "$temp/linked" | while read inum linked; do
++    { grep -s "^$inum " "$temp/linked" ||: ; } | while read inum linked; do
+       link=$debugfn
+       get_debugfn "$linked"
+       $verbose && echo "hard linked $link to $debugfn"

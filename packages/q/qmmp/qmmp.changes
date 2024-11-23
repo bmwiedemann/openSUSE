@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 11 11:11:11 UTC 2024 - olaf@aepfle.de
+
+- Convert BuildRequires from libfaad-devel to pkgconfig(faad2)
+
+-------------------------------------------------------------------
 Fri Oct 18 02:12:45 UTC 2024 - ming li <mli@suse.com>
 
 - Update to version 2.1.9

@@ -187,7 +187,7 @@ Requires:       util-linux
 Requires:       which
 Requires:       xz
 # needed for debuginfo generation
-Requires:       debugedit = 5.0
+Requires:       debugedit >= 5.0
 # drop candidates
 Requires:       cpio
 Requires:       file

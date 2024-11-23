@@ -1,0 +1,9 @@
+<package name="nginx-module-lua" project="openSUSE:Factory">
+  <title>lua-nginx-module</title>
+  <description>
+This module embeds LuaJIT 2.1 into Nginx. It is a core component of OpenResty.
+Used to handle requests to upstream services such as MySQL, Redis and other services.
+  </description>
+  <devel project="server:http" package="nginx-module-lua"/>
+  <url>https://github.com/openresty/lua-nginx-module</url>
+</package>

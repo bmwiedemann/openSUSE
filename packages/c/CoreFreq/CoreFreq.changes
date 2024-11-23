@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov 22 09:42:29 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 1.98.7
+  * [AMD]
+    - [Family 1Ah][Granite Ridge]
+      - P-State programming fix
+      - Merge PCI identifier lists
+    - Reserve the BTC-NOBR aggregation to Zen2 architecture
+  * [AArch64]
+    - Query and JSON export Hypervisor Configuration Register HCR_EL2
+      - Experimental mode required
+
+-------------------------------------------------------------------
 Sat Nov 16 14:22:18 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to 1.98.6

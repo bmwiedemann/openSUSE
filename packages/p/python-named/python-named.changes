@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 22 09:51:46 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add no-coverage.patch eliminating coverage measurement.
+
+-------------------------------------------------------------------
+Fri Nov 22 09:12:07 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu Nov 14 09:15:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - Initial package (1.4.2)

@@ -7,8 +7,8 @@ behavior to reflect that policy.
 
 Signed-off-by: Jan Blunck <jblunck@suse.de>
 
---- ./scripts/find-debuginfo.in.orig	2017-12-01 15:26:21.939199791 +0000
-+++ ./scripts/find-debuginfo.in	2017-12-01 15:27:03.153081225 +0000
+--- a/scripts/find-debuginfo.in	2017-12-01 15:26:21.939199791 +0000
++++ b/scripts/find-debuginfo.in	2017-12-01 15:27:03.153081225 +0000
 @@ -305,7 +305,17 @@ debug_link()
    local l="/usr/lib/debug$2"
    local t="$1"

@@ -10,8 +10,8 @@
    su root root
    sharedscripts
    postrotate
-       /usr/bin/systemctl try-restart snmpd.service >/dev/null
-       /usr/bin/systemctl try-restart snmptrapd.service >/dev/null 	
+       /usr/bin/systemctl try-reload-or-restart snmpd.service >/dev/null
+       /usr/bin/systemctl try-reload-or-restart snmptrapd.service >/dev/null 	
    endscript
 
 }

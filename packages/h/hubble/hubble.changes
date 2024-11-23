@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov 22 09:35:35 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.16.4:
+  * Prepare for v1.16.4 release
+  * chore(deps): update docker.io/library/alpine:3.20.3 docker
+    digest to 1e42bbe
+  * chore(deps): update golang
+  * chore(deps): update dependency helm/helm to v3.16.3
+  * chore(deps): update dependency kubernetes-sigs/kind to v0.25.0
+  * chore(deps): update golang to v1.23.3
+  * Update stable release to 1.16.3
+
+-------------------------------------------------------------------
 Tue Oct 29 14:04:58 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.16.3:

@@ -41,6 +41,7 @@ BuildRequires:  libidn2-devel
 BuildRequires:  libnettle-devel
 BuildRequires:  lua-devel
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libnftables)
 BuildRequires:  pkgconfig(libnetfilter_conntrack)
 BuildRequires:  pkgconfig(systemd)
 Provides:       dns_daemon
@@ -121,7 +122,7 @@ export CFLAGS="%{optflags} -std=gnu99 -fPIC -DPIC -fpie"
 export LDFLAGS="-Wl,-z,relro,-z,now -pie"
 # the dnsmasq make system hashes the configuration flags, so we have to supply the
 # same flags for make and make install, else everything gets recompiled
-%define _copts   "-DHAVE_DBUS -DHAVE_CONNTRACK -DHAVE_LIBIDN2 -DHAVE_DNSSEC -DHAVE_LUASCRIPT"
+%define _copts   "-DHAVE_DBUS -DHAVE_CONNTRACK -DHAVE_LIBIDN2 -DHAVE_DNSSEC -DHAVE_LUASCRIPT -DHAVE_NFTSET"
 %make_build AWK=gawk all-i18n CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" COPTS=%{_copts}
 %if %{with tftp_user_package}
 %sysusers_generate_pre %{SOURCE6} dnsmasq system-user-dnsmasq.conf

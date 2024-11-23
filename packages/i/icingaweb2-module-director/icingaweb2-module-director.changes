@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Nov 22 09:19:07 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.11.2
+  * UI
+    - FIX: No more errors when changing import source modifier priorities (#2270)
+    - FIX: Choosing HTTP proxy in import source type REST API no longer causes deprecation notice (#2889)
+    - FIX: Deleting data lists when using PostgreSQL as backend no longer yields errors (#2913)
+    - FIX: Previewing sync rules with boolean properties now functions without errors (#2905)
+    - FIX: Basket snapshots correctly display content if present (#2901)
+    - FIX: Time periods now include Add to basket functionality (#2542)
+  * API
+    - FIX: API updates for notifications return 304 instead of 200 when unchanged (#2882)
+  * Internals
+    - FIX: The apply_changes setting from sync jobs restored from a basket is applied properly (#2904)
+    - FIX: The Get host by name (DNS lookup) modifier handles failed lookups without errors (#2877)
+  * Director Branches
+    - FIX: Cloning a host retains its services and service sets (#2897)
+    - FIX: Service sets are now clonable (#2890)
+  * Integrations
+    - Show Director labels in monitoring module and Icinga DB custom vars section (#2239)
+  * Fixed issues
+    - You can find issues and feature requests related to this release on our roadmap
+
+-------------------------------------------------------------------
 Wed Feb 14 17:12:33 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Provide user/group symbol as required by RPM 4.19: user/group are

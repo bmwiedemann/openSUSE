@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 15 07:20:59 UTC 2024 - Alexander Bergmann <abergmann@suse.com>
+
+- logrotate should use reload instead of restart (bsc#1232030) 
+
+-------------------------------------------------------------------
 Fri Oct 20 09:01:42 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - net-snmp-5.9.4-systemd-no-utmp.patch: prefer systemd-logind over

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 21 21:27:14 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 20241121:
+  * Allow recording from both audio devices and application audio
+    at the same time
+  * Workaround amd driver bug that causes garbage output on some
+    gpus in some amd driver versions
+  * Improve window content sizing behavior (no more horizontal
+    scroll)
+
+-------------------------------------------------------------------
 Sat Nov 16 23:02:06 UTC 2024 - mantarimay@pm.me
 
 - Update to version 20241116:

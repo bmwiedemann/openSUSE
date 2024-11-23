@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov 21 07:40:25 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.16.6:
+  + To prevent issues when using GTK under kwin, this release makes
+    Wayland color management opt-in. To experiment with it, set
+    GDK_DEBUG=color-mgmt.
+  + GtkText: Don't select inserted Emoji
+  + GtkApplication: Set the default window icon from the app ID
+  + GtkFontChooser: Make the dialog more shrinkable
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Nov  1 20:12:23 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.16.5:

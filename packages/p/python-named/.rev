@@ -7,4 +7,14 @@
     <comment></comment>
     <requestid>1224119</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>04b1d10ce95dbb127f9c48b61f01cf99</srcmd5>
+    <version>1.4.2</version>
+    <time>1732315859</time>
+    <user>anag+factory</user>
+    <comment>- Add no-coverage.patch eliminating coverage measurement.
+
+- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1225776</requestid>
+  </revision>
 </revisionlist>

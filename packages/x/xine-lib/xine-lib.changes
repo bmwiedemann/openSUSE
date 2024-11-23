@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 11 11:11:11 UTC 2024 - olaf@aepfle.de
+
+- Convert BuildRequires from libfaad-devel to pkgconfig(faad2)
+  and everything else as well
+
+-------------------------------------------------------------------
 Thu Aug  8 05:29:06 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add ffmpeg-7 compatibility patch:

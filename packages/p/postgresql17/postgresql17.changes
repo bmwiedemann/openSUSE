@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Nov 19 14:46:02 UTC 2024 - Reinhard Max <max@suse.com>
+
+- Upgrade to 17.2:
+  * Repair ABI break for extensions that work with struct
+    ResultRelInfo.
+  * Restore functionality of ALTER {ROLE|DATABASE} SET role.
+  * Fix cases where a logical replication slot's restart_lsn could
+    go backwards.
+  * Avoid deleting still-needed WAL files during pg_rewind.
+  * Fix race conditions associated with dropping shared statistics
+    entries.
+  * Count index scans in contrib/bloom indexes in the statistics
+    views, such as the pg_stat_user_indexes.idx_scan counter.
+  * Fix crash when checking to see if an index's opclass options
+    have changed.
+  * Avoid assertion failure caused by disconnected NFA sub-graphs
+    in regular expression parsing.
+  * https://www.postgresql.org/about/news/p-2965/
+  * https://www.postgresql.org/docs/release/17.2/
+
+-------------------------------------------------------------------
 Wed Nov 13 11:26:00 UTC 2024 - Reinhard Max <max@suse.com>
 
 - Upgrade to 17.1:

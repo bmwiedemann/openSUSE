@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov 21 15:17:35 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.2:
+  + Previously, the timezone page would list duplicate entries for
+    some cities, and selecting the wrong one would crash Initial
+    Setup. In this release these problematic entries are not shown.
+  + Previous versions would crash on startup when run with GTK
+    4.17, which has made it a fatal error to use certain functions
+    before gtk_init() has been called. This crash is fixed in this
+    release.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Oct 10 09:32:38 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.1:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-littleutils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,18 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-littleutils
-Version:        0.2.2
+Version:        0.2.4
 Release:        0
 Summary:        Small personal collection of python utility functions
 License:        MIT
 URL:            https://github.com/alexmojaki/littleutils
 Source:         https://files.pythonhosted.org/packages/source/l/littleutils/littleutils-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -38,16 +40,18 @@ Small personal collection of python utility functions
 %autosetup -p1 -n littleutils-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_expand $python -mlittleutils.__init__ -v
 
 %files %{python_files}
-%{python_sitelib}/littleutils*
+%license LICENSE
+%{python_sitelib}/littleutils
+%{python_sitelib}/littleutils-%{version}.dist-info
 
 %changelog

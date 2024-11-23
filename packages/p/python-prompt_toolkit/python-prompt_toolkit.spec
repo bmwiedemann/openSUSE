@@ -34,6 +34,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-wcwidth
 Recommends:     python-Pygments
+Provides:       python-prompt-toolkit = %{version}-%{release}
 Conflicts:      python-prompt_toolkit1
 BuildArch:      noarch
 %python_subpackages

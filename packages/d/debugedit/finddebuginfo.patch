@@ -1,8 +1,8 @@
 Index: scripts/find-debuginfo.in
 ===================================================================
---- scripts/find-debuginfo.in.orig
-+++ scripts/find-debuginfo.in
-@@ -412,12 +412,18 @@ trap 'rm -rf "$temp"' EXIT
+--- a/scripts/find-debuginfo.in
++++ b/scripts/find-debuginfo.in
+@@ -434,12 +434,18 @@ trap 'rm -rf "$temp"' EXIT
  
  # Build a list of unstripped ELF files and their hardlinks
  touch "$temp/primary"
@@ -26,16 +26,16 @@ Index: scripts/find-debuginfo.in
    if [ $nlinks -gt 1 ]; then
      var=seen_$inum
      if test -n "${!var}"; then
-@@ -450,6 +456,8 @@ do_file()
+@@ -472,6 +478,8 @@ do_file()
    if [ "$no_recompute_build_id" = "true" ]; then
      no_recompute="-n"
    fi
 +  mode=$(stat -c %a "$f")
 +  chmod +w "$f"
-   id=$(${install_dir}/debugedit -b "$debug_base_name" -d "$debug_dest_name" \
+   id=$(debugedit -b "$debug_base_name" -d "$debug_dest_name" \
  			      $no_recompute -i \
  			      ${build_id_seed:+--build-id-seed="$build_id_seed"} \
-@@ -477,17 +485,30 @@ do_file()
+@@ -503,17 +511,30 @@ do_file()
    # just has its file names collected and adjusted.
    case "$dn" in
    /usr/lib/debug/*)
@@ -73,7 +73,7 @@ Index: scripts/find-debuginfo.in
  
    # strip -g implies we have full symtab, don't add mini symtab in that case.
    # It only makes sense to add a minisymtab for executables and shared
-@@ -646,12 +667,14 @@ if [ -s "$SOURCEFILE" ]; then
+@@ -689,12 +710,14 @@ if [ -s "$SOURCEFILE" ]; then
    # and non-standard modes may be inherented from original directories, fixup
    find "${RPM_BUILD_ROOT}${debug_dest_name}" -type d -print0 |
    xargs --no-run-if-empty -0 chmod 0755

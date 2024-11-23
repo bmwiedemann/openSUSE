@@ -33,4 +33,16 @@
 </comment>
     <requestid>1113464</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4846992822e645fa707ac67de8c579f8</srcmd5>
+    <version>23.10.4</version>
+    <time>1732315867</time>
+    <user>anag+factory</user>
+    <comment>- update to 23.10.4:
+  * switch to PEP517 build
+  * Python 3.12 support
+
+- use unbundled versioneer to build package</comment>
+    <requestid>1225806</requestid>
+  </revision>
 </revisionlist>

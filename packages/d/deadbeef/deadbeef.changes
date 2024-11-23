@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 11 11:11:11 UTC 2024 - olaf@aepfle.de
+
+- Convert BuildRequires from libfaad-devel to pkgconfig(faad2)
+- Support ffmpeg 7.1 with 70ae99463889e191c3d5d0af6ba28e893d73a63f.patch
+
+-------------------------------------------------------------------
 Tue Mar 19 07:54:26 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Drop hardcoded '-msse3' in ddb_dsp_libretro (fix non-x86 builds)

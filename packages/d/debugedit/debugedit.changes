@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov 11 08:23:09 UTC 2024 - Michal Suchanek <msuchanek@suse.de>
+
+- Update to version 5.1 (bsc#1233156)
+  * Architecture support for hppa and loongarch
+  * Switch to xxhash for buildid recomputation (much faster!)
+  * find-debuginfo supports -v,--verbose and -q,--quiet
+  * find-debuginfo passes -j down to dwz
+  * debugedit now handles DWARF5
+  * debugedit handles compressed DWARF debug sections
+- Refresh debugsubpkg.patch finddebuginfo.patch
+- Remove upstreamed remove-bad-shift.patch
+- Add workaround-missing-linked-file.patch (boo#1233368)
+- Use -p1 with autosetup
+
+-------------------------------------------------------------------
 Wed Nov 16 07:28:09 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
 
 - don't hard require gdb (boo#1205344)

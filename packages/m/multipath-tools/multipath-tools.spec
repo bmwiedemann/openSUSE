@@ -35,7 +35,7 @@
 %define libdmmp_version %(echo %{_libdmmp_version} | tr . _)
 
 Name:           multipath-tools
-Version:        0.10.0+108+suse.2c2e597
+Version:        0.11.0~1+118+suse.4a51b1a
 Release:        0
 Summary:        Tools to Manage Multipathed Devices with the device-mapper
 License:        GPL-2.0-only AND GPL-3.0-or-later

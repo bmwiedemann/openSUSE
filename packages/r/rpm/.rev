@@ -2538,4 +2538,12 @@ See bugzilla 1167537 for the gory details.</comment>
     <comment>- added a missing %patch NR conversion</comment>
     <requestid>1153996</requestid>
   </revision>
+  <revision rev="316" vrev="4">
+    <srcmd5>0a23856ccf728cfba9fc4ff6a11f1209</srcmd5>
+    <version>4.19.1.1</version>
+    <time>1732315871</time>
+    <user>anag+factory</user>
+    <comment>- Bump debugedit version (bsc#1233156)</comment>
+    <requestid>1223657</requestid>
+  </revision>
 </revisionlist>

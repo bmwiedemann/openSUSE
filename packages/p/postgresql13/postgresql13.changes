@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov 19 14:17:26 UTC 2024 - Reinhard Max <max@suse.com>
+
+- Upgrade to 13.18:
+  * Restore functionality of ALTER {ROLE|DATABASE} SET role.
+  * Fix cases where a logical replication slot's restart_lsn could
+    go backwards.
+  * Count index scans in contrib/bloom indexes in the statistics
+    views, such as the pg_stat_user_indexes.idx_scan counter.
+  * Fix crash when checking to see if an index's opclass options
+    have changed.
+  * https://www.postgresql.org/about/news/p-2965/
+  * https://www.postgresql.org/docs/release/13.18/
+
+-------------------------------------------------------------------
 Wed Nov 13 13:30:13 UTC 2024 - Reinhard Max <max@suse.com>
 
 - Upgrade to 13.17:

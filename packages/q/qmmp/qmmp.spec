@@ -82,7 +82,7 @@ Requires:       %{name}(%{sover})(Output)
 Requires:       %{name}(%{sover})(Ui)
 ExclusiveArch:  %ix86 x86_64
 %if %{with faad}
-BuildRequires:  libfaad-devel
+BuildRequires:  pkgconfig(faad2)
 %endif
 
 %description

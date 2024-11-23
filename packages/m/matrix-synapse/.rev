@@ -1068,4 +1068,12 @@ mostly-working synapse than nothing at all) and the package has been update to
 - Update to 1.119.0</comment>
     <requestid>1224013</requestid>
   </revision>
+  <revision rev="114" vrev="2">
+    <srcmd5>fd1beb2bece6980972cd344640425a77</srcmd5>
+    <version>1.119.0</version>
+    <time>1732315895</time>
+    <user>anag+factory</user>
+    <comment>- allow newer setuptools-rust</comment>
+    <requestid>1225695</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 11 11:11:11 UTC 2024 - olaf@aepfle.de
+
+- Convert BuildRequires from libfaad-devel to pkgconfig(faad2)
+
+-------------------------------------------------------------------
 Sat Oct 12 08:21:00 UTC 2024 - Christoph G <foss@grueninger.de>
 
 - Update to 4.4.1

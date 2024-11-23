@@ -617,4 +617,12 @@ Docker 17.07.0_ce update. This SR is in conjunction with:
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1221453</requestid>
   </revision>
+  <revision rev="73" vrev="3">
+    <srcmd5>20e02121e3faebf9c39f1168787404a9</srcmd5>
+    <version>1.7.23</version>
+    <time>1732315862</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1225791</requestid>
+  </revision>
 </revisionlist>

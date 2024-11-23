@@ -1,13 +1,14 @@
 Index: scripts/find-debuginfo.in
 ===================================================================
---- scripts/find-debuginfo.in.orig
-+++ scripts/find-debuginfo.in
-@@ -643,19 +643,25 @@ if $run_dwz \
+--- a/scripts/find-debuginfo.in
++++ b/scripts/find-debuginfo.in
+@@ -684,20 +684,26 @@ if $run_dwz \
    fi
  fi
  
 -# For each symlink whose target has a .debug file,
 -# make a .debug symlink to that file.
+-$quiet || echo "Creating .debug symlinks for symlinks to ELF files" 2>&1
 -find "$RPM_BUILD_ROOT" ! -path "${debugdir}/*" -type l -print |
 -while read f
 -do
@@ -15,7 +16,7 @@ Index: scripts/find-debuginfo.in
 -  f=${f#$RPM_BUILD_ROOT}
 -  t=${t#$RPM_BUILD_ROOT}
 -  if [ -f "$debugdir$t" ]; then
--    echo "symlinked /usr/lib/debug$t to /usr/lib/debug${f}.debug"
+-    $verbose && echo "symlinked /usr/lib/debug$t to /usr/lib/debug${f}.debug"
 -    debug_link "/usr/lib/debug$t" "${f}.debug"
 -  fi
 -done
@@ -27,6 +28,7 @@ Index: scripts/find-debuginfo.in
 +
 +## For each symlink whose target has a .debug file,
 +## make a .debug symlink to that file.
++#$quiet || echo "Creating .debug symlinks for symlinks to ELF files" 2>&1
 +#find "$RPM_BUILD_ROOT" ! -path "${debugdir}/*" -type l -print |
 +#while read f
 +#do
@@ -34,7 +36,7 @@ Index: scripts/find-debuginfo.in
 +#  f=${f#$RPM_BUILD_ROOT}
 +#  t=${t#$RPM_BUILD_ROOT}
 +#  if [ -f "$debugdir$t" ]; then
-+#    echo "symlinked /usr/lib/debug$t to /usr/lib/debug${f}.debug"
++#    $verbose && echo "symlinked /usr/lib/debug$t to /usr/lib/debug${f}.debug"
 +#    debug_link "/usr/lib/debug$t" "${f}.debug"
 +#  fi
 +#done

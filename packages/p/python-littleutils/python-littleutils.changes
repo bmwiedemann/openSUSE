@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 22 11:47:44 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.4:
+  * Fix invalid regex escape
+  * CI improvements
+
+-------------------------------------------------------------------
 Fri Apr 21 12:28:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

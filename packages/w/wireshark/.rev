@@ -1941,4 +1941,12 @@ Use capabilities for capture. bsc#957624</comment>
     <comment>wireshark 4.4.1: with references</comment>
     <requestid>1206680</requestid>
   </revision>
+  <revision rev="227" vrev="1">
+    <srcmd5>cad152b73bb85d835ff2dfb04678857a</srcmd5>
+    <version>4.4.2</version>
+    <time>1732315836</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1225481</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov 20 09:47:35 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 2.20.0:
+  - Added validations at compile time:
+      - `required` must have unique items
+      - checking if schema is not allowing `required` items (item
+        is required, but is not listed in properties)
+- Remove upstreamed patch:
+  - support-pytest-8.patch
+
+-------------------------------------------------------------------
 Tue May  7 07:15:45 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-pytest-8.patch:

@@ -1,9 +1,4 @@
 -------------------------------------------------------------------
-Tue Oct 29 13:20:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
-
-- build for SLE12 as well
-
--------------------------------------------------------------------
 Mon Oct 28 09:10:25 UTC 2024 - Aleksa Sarai <asarai@suse.com>
 
 - Update to containerd v1.7.23. Upstream release notes:

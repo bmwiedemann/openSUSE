@@ -480,4 +480,15 @@ Upgrade to version 12.6:
   * https://www.postgresql.org/about/news/p-2910/</comment>
     <requestid>1224296</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>3a9637210811ce1fef232659edfd2450</srcmd5>
+    <version>12.22</version>
+    <time>1732315920</time>
+    <user>anag+factory</user>
+    <comment>- Upgrade to 12.22:
+  * Restore functionality of ALTER {ROLE|DATABASE} SET role
+  * https://www.postgresql.org/about/news/p-2965/
+  * https://www.postgresql.org/docs/release/12.22/</comment>
+    <requestid>1225753</requestid>
+  </revision>
 </revisionlist>

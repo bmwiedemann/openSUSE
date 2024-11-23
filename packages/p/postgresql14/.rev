@@ -282,4 +282,26 @@ Also for older PostgreSQL versions to keep the packaging consistent.</comment>
   * https://www.postgresql.org/about/news/p-2910/</comment>
     <requestid>1224294</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>81b5e74fdda4606b8387d73ca1f052e8</srcmd5>
+    <version>14.15</version>
+    <time>1732315914</time>
+    <user>anag+factory</user>
+    <comment>- Upgrade to 14.15:
+  * Repair ABI break for extensions that work with struct
+    ResultRelInfo.
+  * Restore functionality of ALTER {ROLE|DATABASE} SET role
+  * Fix cases where a logical replication slot's restart_lsn could
+    go backwards.
+  * Avoid deleting still-needed WAL files during pg_rewind.
+  * Count index scans in contrib/bloom indexes in the statistics
+    views, such as the pg_stat_user_indexes.idx_scan counter.
+  * Fix crash when checking to see if an index's opclass options
+    have changed.
+  * Avoid assertion failure caused by disconnected NFA sub-graphs
+    in regular expression parsing.
+  * https://www.postgresql.org/about/news/p-2965/
+  * https://www.postgresql.org/docs/release/14.15/</comment>
+    <requestid>1225751</requestid>
+  </revision>
 </revisionlist>

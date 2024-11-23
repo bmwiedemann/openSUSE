@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Nov 17 21:06:01 UTC 2024 - Stanislav Brabec <sbrabec@suse.com>
+
+- Skip aarch64 decode path for rest of the architectures
+  (bsc#1229476, util-linux-lscpu-skip-aarch64-decode.patch).
+- agetty: Prevent login cursor escape (bsc#1194818,
+  util-linux-agetty-prevent-cursor-escape.patch).
+- Document unexpected side effects of lazy destruction
+  (bsc#1159034, util-linux-umount-losetup-lazy-destruction.patch,
+  util-linux-umount-losetup-lazy-destruction-generated.patch).
+
+-------------------------------------------------------------------
 Mon Oct 21 23:25:19 UTC 2024 - Stanislav Brabec <sbrabec@suse.com>
 
 - Disable mountfd API again.
@@ -12,6 +23,7 @@ Mon Aug  5 22:14:13 UTC 2024 - Stanislav Brabec <sbrabec@suse.com>
   * libmount: improving robustness in reading kernel messages,
     add pidfs to pseudo fs list
   * lscpu: New Arm Cortex part numbers
+    fix hang of lscpu -e (bsc#1225598)
   * lsfd: Refactor the pidfd logic, support pidfs
     (obsoletes
     0001-include-Include-unistd.h-in-pidfd-utils.h-for-syscal.patch,
@@ -111,7 +123,7 @@ Thu Apr  4 12:27:18 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
   * blockdev: add support for BLKGETZONESZ
   * cfdisk: ask y/n before wipe
   * cfdisk: properly handle out-of-order partitions during resize
-  * chcpu: document limitations of -g
+  * chcpu: document limitations of -g (bsc#1218609)
   * chsh: use libeconf to read /etc/shells
   * column: fix -l
   * column: fix memory leak
@@ -134,10 +146,12 @@ Thu Apr  4 12:27:18 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
   * lsblk: add --highlight
   * lsblk: add --list-columns
   * lsclocks: new command to show clocks
-  * lscpu: even more Arm part numbers
+  * lscpu: even more Arm part numbers (bsc#1223605)
   * mkfs.minix: handle 64bit time on 32bit system
   * mkswap: implement --file
   * mkswap: implement --offset
+  * more: clea processes not cleaned up after failed SSH session
+    using up 100% CPU (bsc#1220117)
   * mount: add --map-users and --map-groups convenience options
   * nsenter: add option `-c` to join the cgroup of target process
   * setarch: add riscv64/riscv32 support
@@ -145,6 +159,8 @@ Thu Apr  4 12:27:18 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
   * uuidd: add cont_clock persistence
   * uuidgen: add option --count
   * wall: query logind for list of users with tty (#2088)
+    properly neutralize escape sequences (bsc#1221831,
+    CVE-2024-28085)
   * write: query logind for list of users with tty (#2088)
   * libuuid: improved support for 64-bit time
 - skip-lsfd-tests-PR2888.patch: skip some lsfd tests which OBS does
@@ -264,6 +280,7 @@ Fri Jul 28 14:47:15 UTC 2023 - Goldwyn Rodrigues <rgoldwyn@suse.com>
 
 - Re-add 0001-Revert-libblkid-try-LUKS2-first-when-probing.patch
   because the patch is not in 2.39.1
+  (bsc#1224393, boo#1213227, boo#1213361)
 
 -------------------------------------------------------------------
 Wed Jul 26 01:22:20 UTC 2023 - Neil Brown <nfbrown@suse.com>
