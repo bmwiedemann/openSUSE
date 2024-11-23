@@ -8145,6 +8145,10 @@ unsorted:
   - grub2-x86_64-xen-extras 
   - grype 
   - grype-bash-completion 
+  - grype-db 
+  - grype-db-bash-completion 
+  - grype-db-fish-completion 
+  - grype-db-zsh-completion 
   - grype-fish-completion 
   - grype-zsh-completion 
   - gsasl 
@@ -16392,8 +16396,8 @@ unsorted:
   - libspatialindex6 
   - libspatialite-devel 
   - libspatialite8 
-  - libspdlog1_14 
-  - libspdlog1_14-32bit 
+  - libspdlog1_15 
+  - libspdlog1_15-32bit 
   - libspdylay7 
   - libspectre-devel 
   - libspectre1 
@@ -19934,6 +19938,7 @@ unsorted:
   - nginx-module-brotli 
   - nginx-module-echo 
   - nginx-module-geoip2 
+  - nginx-module-lua 
   - nginx-module-njs 
   - nginx-module-vts 
   - nginx-module-zstd 
@@ -25360,6 +25365,7 @@ unsorted:
   - python310-ddt 
   - python310-deap 
   - python310-debugpy 
+  - python310-decopatch 
   - python310-decorator 
   - python310-deepdiff 
   - python310-deepmerge 
@@ -25618,6 +25624,7 @@ unsorted:
   - python310-fangfrisch 
   - python310-fann2 
   - python310-fastapi 
+  - python310-fastavro 
   - python310-fastbencode 
   - python310-fastcluster 
   - python310-fasteners 
@@ -28999,6 +29006,7 @@ unsorted:
   - python311-ddt 
   - python311-deap 
   - python311-debugpy 
+  - python311-decopatch 
   - python311-deepdiff 
   - python311-deepmerge 
   - python311-defcon 
@@ -29254,6 +29262,7 @@ unsorted:
   - python311-fangfrisch 
   - python311-fann2 
   - python311-fastapi 
+  - python311-fastavro 
   - python311-fastbencode 
   - python311-fastcluster 
   - python311-fasteners 
@@ -32588,6 +32597,7 @@ unsorted:
   - python312-ddt 
   - python312-deap 
   - python312-debugpy 
+  - python312-decopatch 
   - python312-decorator 
   - python312-deepdiff 
   - python312-deepmerge 
@@ -32847,6 +32857,7 @@ unsorted:
   - python312-fangfrisch 
   - python312-fann2 
   - python312-fastapi 
+  - python312-fastavro 
   - python312-fastbencode 
   - python312-fastcluster 
   - python312-fasteners 
@@ -35312,6 +35323,7 @@ unsorted:
   - python313-Pint 
   - python313-Protego 
   - python313-PubChemPy 
+  - python313-Pweave 
   - python313-PyAudio 
   - python313-PyAutoGUI 
   - python313-PyBindGen 
@@ -35491,6 +35503,7 @@ unsorted:
   - python313-aliyun-python-sdk-governance 
   - python313-allpairspy 
   - python313-alsa 
+  - python313-altair 
   - python313-altair-widgets 
   - python313-altgraph 
   - python313-amqp 
@@ -35509,6 +35522,7 @@ unsorted:
   - python313-anyio 
   - python313-anyio3 
   - python313-anymarkup-core 
+  - python313-anywidget 
   - python313-apache-libcloud 
   - python313-apacheconfig 
   - python313-apeye 
@@ -35980,6 +35994,7 @@ unsorted:
   - python313-binaryornot 
   - python313-bincopy 
   - python313-bindep 
+  - python313-biopython 
   - python313-biplist 
   - python313-bitarray 
   - python313-bitstring 
@@ -36009,6 +36024,7 @@ unsorted:
   - python313-bottle 
   - python313-bowler 
   - python313-bracex 
+  - python313-branca 
   - python313-breathe 
   - python313-brewer2mpl 
   - python313-browsers 
@@ -36220,6 +36236,7 @@ unsorted:
   - python313-ddt 
   - python313-deap 
   - python313-debugpy 
+  - python313-decopatch 
   - python313-decorator 
   - python313-deepdiff 
   - python313-deepmerge 
@@ -36337,6 +36354,7 @@ unsorted:
   - python313-django-tables2 
   - python313-django-taggit 
   - python313-django-tagulous 
+  - python313-django-tastypie 
   - python313-django-timezone-field 
   - python313-django-treebeard 
   - python313-django-upgrade 
@@ -36462,6 +36480,7 @@ unsorted:
   - python313-fangfrisch 
   - python313-fann2 
   - python313-fastapi 
+  - python313-fastavro 
   - python313-fastbencode 
   - python313-fastcluster 
   - python313-fasteners 
@@ -36776,9 +36795,19 @@ unsorted:
   - python313-ipaddr 
   - python313-iptables 
   - python313-ipy 
+  - python313-ipyevents 
+  - python313-ipyfilechooser 
   - python313-ipykernel 
+  - python313-ipyleaflet 
+  - python313-ipympl 
+  - python313-ipyparallel 
+  - python313-ipytablewidgets 
   - python313-ipython 
   - python313-ipython_genutils 
+  - python313-ipyvue 
+  - python313-ipyvuetify 
+  - python313-ipywebrtc 
+  - python313-ipywidgets 
   - python313-irc 
   - python313-isbnlib 
   - python313-isc_dhcp_leases 
@@ -36853,21 +36882,31 @@ unsorted:
   - python313-jsonxs 
   - python313-junit-xml 
   - python313-junitxml 
+  - python313-jupyter-bokeh 
   - python313-jupyter-client 
+  - python313-jupyter-collaboration 
+  - python313-jupyter-collaboration-ui 
   - python313-jupyter-core 
+  - python313-jupyter-docprovider 
   - python313-jupyter-events 
   - python313-jupyter-kernel-test 
+  - python313-jupyter-leaflet 
+  - python313-jupyter-lsp 
   - python313-jupyter-packaging 
   - python313-jupyter-server 
+  - python313-jupyter-server-fileid 
+  - python313-jupyter-server-mathjax 
   - python313-jupyter-server-terminals 
   - python313-jupyter-server-test 
   - python313-jupyter-server-ydoc 
   - python313-jupyter-server-ydoc-test 
   - python313-jupyter-ydoc 
   - python313-jupyter_console 
+  - python313-jupyterlab 
   - python313-jupyterlab-pygments 
   - python313-jupyterlab-server 
   - python313-jupyterlab-server-test 
+  - python313-jupyterlab-templates 
   - python313-jupyterlab-widgets 
   - python313-jwcrypto 
   - python313-k5test 
@@ -36958,6 +36997,7 @@ unsorted:
   - python313-liblnk 
   - python313-libluksde 
   - python313-libmodi 
+  - python313-libmount 
   - python313-libmsiecf 
   - python313-libmsym 
   - python313-libnacl 
@@ -36990,6 +37030,7 @@ unsorted:
   - python313-ligo-lw 
   - python313-ligotimegps 
   - python313-linetable 
+  - python313-lineup-widget 
   - python313-link-traits 
   - python313-linkify-it-py 
   - python313-linode-cli 
@@ -37153,8 +37194,15 @@ unsorted:
   - python313-natsort 
   - python313-nautilus 
   - python313-nautilus-devel 
+  - python313-nbclassic 
   - python313-nbclient 
   - python313-nbconvert 
+  - python313-nbdime 
+  - python313-nbdime-git 
+  - python313-nbdime-hg 
+  - python313-nbformat 
+  - python313-nbsmoke 
+  - python313-nbsphinx 
   - python313-nbval 
   - python313-nbxmpp 
   - python313-ncclient 
@@ -37195,6 +37243,8 @@ unsorted:
   - python313-noiseprotocol 
   - python313-nornir 
   - python313-nose2 
+  - python313-notebook 
+  - python313-notebook-shim 
   - python313-notify2 
   - python313-nox 
   - python313-npTDMS 
@@ -37203,6 +37253,8 @@ unsorted:
   - python313-ntfy 
   - python313-ntplib 
   - python313-num2words 
+  - python313-numba 
+  - python313-numba-devel 
   - python313-numcodecs 
   - python313-numericalunits 
   - python313-numexpr 
@@ -37216,6 +37268,7 @@ unsorted:
   - python313-numpy_2_1_3-gnu-hpc-devel 
   - python313-numpydoc 
   - python313-nwdiag 
+  - python313-o2sclpy 
   - python313-oauthlib 
   - python313-objgraph 
   - python313-oci-sdk 
@@ -37233,6 +37286,8 @@ unsorted:
   - python313-olm 
   - python313-omemo-dr 
   - python313-onigurumacffi 
+  - python313-onnx 
+  - python313-onnxconverter-common 
   - python313-opcodes 
   - python313-openTSNE 
   - python313-openai 
@@ -37307,6 +37362,7 @@ unsorted:
   - python313-pandas-test 
   - python313-pandas-xml 
   - python313-pandocfilters 
+  - python313-panel 
   - python313-panflute 
   - python313-parallax 
   - python313-param 
@@ -37559,6 +37615,8 @@ unsorted:
   - python313-pydata-sphinx-theme 
   - python313-pydbus 
   - python313-pydenticon 
+  - python313-pydicom 
+  - python313-pydicom-data 
   - python313-pydocstyle 
   - python313-pydot 
   - python313-pydotplus 
@@ -37913,6 +37971,7 @@ unsorted:
   - python313-pyux 
   - python313-pyvdr 
   - python313-pyvips 
+  - python313-pyviz-comms 
   - python313-pyvmomi 
   - python313-pyvo 
   - python313-pywayland 
@@ -38142,6 +38201,7 @@ unsorted:
   - python313-shortuuid 
   - python313-show-in-file-manager 
   - python313-shtab 
+  - python313-sidecar 
   - python313-sievelib 
   - python313-signedjson 
   - python313-simple-websocket 
@@ -38244,6 +38304,7 @@ unsorted:
   - python313-spotipy 
   - python313-spsdk 
   - python313-spur 
+  - python313-spyder-kernels 
   - python313-sqlalchemy-migrate 
   - python313-sqlglot 
   - python313-sqlite-anyio 
@@ -38547,6 +38608,7 @@ unsorted:
   - python313-whey 
   - python313-whichcraft 
   - python313-whitenoise 
+  - python313-widgetsnbextension 
   - python313-wikipedia 
   - python313-wirerope 
   - python313-wmctrl 
