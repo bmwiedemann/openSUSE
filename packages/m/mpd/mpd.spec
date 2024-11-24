@@ -35,6 +35,7 @@ Source9:        %{name}.keyring
 Patch0:         %{name}-conf.patch
 Patch1:         %{name}-sndfile.patch
 Patch2:         %{name}-fmt11.patch
+Patch3:         %{name}-icu76.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  group(audio)

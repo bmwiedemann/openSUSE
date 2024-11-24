@@ -1,0 +1,11 @@
+diff -Pdpru mpd-0.23.15.orig/meson.build mpd-0.23.15/meson.build
+--- mpd-0.23.15.orig/meson.build	2023-12-20 18:21:57.000000000 +0300
++++ mpd-0.23.15/meson.build	2024-11-23 00:40:07.712091468 +0300
+@@ -135,6 +135,7 @@ if get_option('buildtype') != 'debug'
+   ]
+   test_ldflags += [
+     '-Wl,--gc-sections',
++    '-licuuc',
+   ]
+ endif
+ 

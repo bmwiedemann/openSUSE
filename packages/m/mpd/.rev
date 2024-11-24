@@ -773,4 +773,12 @@
     <comment>- Added mpd-fmt11.patch for (fixed build with fmt 11.2).</comment>
     <requestid>1221629</requestid>
   </revision>
+  <revision rev="53" vrev="5">
+    <srcmd5>de3c485e8d7709fbcc8f29d1dcef332d</srcmd5>
+    <version>0.23.15</version>
+    <time>1732442658</time>
+    <user>anag+factory</user>
+    <comment>- Added mpd-icu76.patch (fixed build with icu 76.1). </comment>
+    <requestid>1225906</requestid>
+  </revision>
 </revisionlist>
