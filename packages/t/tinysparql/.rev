@@ -7,4 +7,16 @@
     <comment>Scripted push of GNOME 47</comment>
     <requestid>1205501</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>405a19b4ee3886b05f3615d4ae4b22f0</srcmd5>
+    <version>3.8.1</version>
+    <time>1732442622</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.8.1:
+  + Fix leak iterating bus-based cursors
+  + Fix allowed extension for Turtle files in ontology definitions
+  + Test fixes
+  + Updated translations. (forwarded request 1225626 from iznogood)</comment>
+    <requestid>1225809</requestid>
+  </revision>
 </revisionlist>

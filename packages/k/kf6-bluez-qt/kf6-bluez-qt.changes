@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 14 08:29:49 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add a workaround for a build issue with CMake 3.31. Despite
+  being unused, CMake complains about missing QtQml private API
+  headers.
+
+-------------------------------------------------------------------
 Mon Nov  4 11:17:54 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.8.0

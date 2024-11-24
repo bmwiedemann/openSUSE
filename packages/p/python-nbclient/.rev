@@ -323,4 +323,12 @@
     <comment>- Remove upper bound on pytest.</comment>
     <requestid>1183266</requestid>
   </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>173acc9ae7ff729ec7a9ebc3b436bb0e</srcmd5>
+    <version>0.10.0</version>
+    <time>1732442645</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1225678</requestid>
+  </revision>
 </revisionlist>

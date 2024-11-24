@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 22 09:21:34 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add meson-testsuite-with-cmake-3.31.patch: Fix test suite run
+  against CMake 3.31.
+
+-------------------------------------------------------------------
 Mon Oct 21 06:52:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update ro version 1.6.0:

@@ -993,4 +993,13 @@ Smoketest in GNOME:Next passed</comment>
     <comment></comment>
     <requestid>1216643</requestid>
   </revision>
+  <revision rev="116" vrev="2">
+    <srcmd5>59b43c8fb4c208a3b180c921156d0615</srcmd5>
+    <version>1.6.0</version>
+    <time>1732442621</time>
+    <user>anag+factory</user>
+    <comment>- Add meson-testsuite-with-cmake-3.31.patch: Fix test suite run
+  against CMake 3.31.</comment>
+    <requestid>1225964</requestid>
+  </revision>
 </revisionlist>

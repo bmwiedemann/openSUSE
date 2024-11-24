@@ -145,4 +145,16 @@
     <comment>New upstream release (forwarded request 1205741 from iznogood)</comment>
     <requestid>1205806</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1b5f5871427de2df8b4619caad81d481</srcmd5>
+    <version>5.14.2</version>
+    <time>1732442626</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 5.14.2:
+  + Ignore various libxml2 deprecations
+  + Fix some incorrect GI annotations
+  + Fix extraneous dismissal of hover providers in some cases
+  + Add missing 5_14 version macros (forwarded request 1225681 from iznogood)</comment>
+    <requestid>1225812</requestid>
+  </revision>
 </revisionlist>

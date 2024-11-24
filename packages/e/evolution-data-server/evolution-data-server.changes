@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Nov 22 08:39:45 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.54.2:
+  + Bug Fixed:
+    - libedataserverui: Avoid initializing the icon_theme when
+      building introspection data
+    - Fails to build/link against icu 76.1
+    - Correct certificate key usage constants
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Nov 18 18:50:25 UTC 2024 - bjorn.lie@gmail.com
+
+- Update to version 3.54.1+4:
+  * libedataserverui: Avoid initializing the icon_theme when
+    building introspection data
+  * Updated translations.
+
+-------------------------------------------------------------------
 Mon Nov 18 09:46:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Workaround build failure using ICU 76.1: fix up CMakeLists.txt to

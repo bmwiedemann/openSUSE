@@ -1,0 +1,16 @@
+---
+ pyproject.toml |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -178,7 +178,8 @@ filterwarnings = [
+   "error",
+   "ignore:datetime.datetime.utc:DeprecationWarning",
+   "module:add_callback_from_signal is deprecated:DeprecationWarning",
+-  "ignore::jupyter_server.utils.JupyterServerAuthWarning"
++  "ignore::jupyter_server.utils.JupyterServerAuthWarning",
++  "ignore::pytest.PytestUnraisableExceptionWarning",
+ ]
+ 
+ [tool.coverage.report]

@@ -2396,4 +2396,23 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1224820</requestid>
   </revision>
+  <revision rev="261" vrev="1">
+    <srcmd5>e583de5ab457f969f4ef6c1a5f804519</srcmd5>
+    <version>3.54.2</version>
+    <time>1732442629</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.54.2:
+  + Bug Fixed:
+    - libedataserverui: Avoid initializing the icon_theme when
+      building introspection data
+    - Fails to build/link against icu 76.1
+    - Correct certificate key usage constants
+  + Updated translations.
+
+- Update to version 3.54.1+4:
+  * libedataserverui: Avoid initializing the icon_theme when
+    building introspection data
+  * Updated translations. (forwarded request 1225741 from iznogood)</comment>
+    <requestid>1225814</requestid>
+  </revision>
 </revisionlist>

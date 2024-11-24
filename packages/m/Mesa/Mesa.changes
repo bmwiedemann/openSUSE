@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Nov 22 10:35:29 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to release 24.3.0
+  --> https://docs.mesa3d.org/relnotes/24.3.0
+
+-------------------------------------------------------------------
+Thu Nov 21 05:09:35 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to release 24.3.0~rc2
+  --> https://www.phoronix.com/news/Mesa-24.3-rc2
+- Update to release 24.3.0~rc1
+  --> https://www.phoronix.com/news/Mesa-24.3-rc1-Released
+- refreshed patches:
+  * n_drirc-disable-rgb10-for-chromium-on-amd.patch
+  * python36-buildfix1.patch
+  * python36-buildfix2.patch
+  * tlsdesc_test.patch
+  * u_mesa-CVE-2023-45913.patch
+  * u_mesa-CVE-2023-45919.patch
+  * u_mesa-CVE-2023-45922.patch
+  * u_dep_xcb.patch
+- drop no longer supported options:
+  * -Ddri3=enabled
+  * -Ddri-search-path=%{_libdir}/dri
+- new files added in this update currently packaged as part of
+  Mesa-dri:
+  * %{_libdir}/gbm/dri_gbm.so
+
+-------------------------------------------------------------------
 Tue Nov 19 12:48:59 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to release 24.2.7

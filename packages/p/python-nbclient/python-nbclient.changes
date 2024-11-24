@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov 21 22:28:41 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Remove color from logs.
+
+-------------------------------------------------------------------
+Thu Nov 21 18:57:39 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Add nbclient-pr315-date-deprecation.patch
+  * Avoids DeprecationWarning when importing
+  * gh#jupyter/nbclient#315 gh#jupyter/nbclient#318 
+- Add nbclient-pr317-py313tests.patch gh#jupyter/nbclient#317
+  * make tests more lenient
+
+-------------------------------------------------------------------
 Wed Jun 26 01:36:57 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove upper bound on pytest. 

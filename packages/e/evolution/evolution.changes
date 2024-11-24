@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov 22 12:26:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.54.2:
+  + Bug Fixes:
+    - Composer: Possible crash on paste
+    - Correct certificate key usage constants
+    - ToDo bar sometimes does not display due tasks
+  + Miscellaneous: Default inbox email: Update URIs, remove link to
+    defunct mailing list.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Oct 18 07:15:01 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.54.1:

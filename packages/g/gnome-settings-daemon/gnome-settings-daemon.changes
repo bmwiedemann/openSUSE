@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Nov 22 10:36:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Only recommend xf86-input-libinput if xorg-x11-server is present:
+  wayland does not rely on the xf86 drivers.
+
+-------------------------------------------------------------------
+Thu Nov 21 22:17:00 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.2:
+  + Power:
+    - Fix possible invalid reads if backlight fails to initialize.
+    - Handle broken upower more elegantly.
+    - Test warning fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Sep 15 21:57:28 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.1:

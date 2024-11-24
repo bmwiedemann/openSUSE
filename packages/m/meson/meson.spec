@@ -51,6 +51,8 @@ Patch0:         meson-test-installed-bin.patch
 Patch1:         extend-test-timeout-on-qemu-builds.patch
 # PATCH-FIX-OPENSUSE meson-distutils.patch -- meson is ring0 and therefor setuptools is not available
 Patch2:         meson-distutils.patch
+# PATCH-FIX-UPSTREAM meson-testsuite-with-cmake-3.31.patch -- Fix test suite when using CMake 3.31
+Patch3:         meson-testsuite-with-cmake-3.31.patch
 
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  fdupes
@@ -188,6 +190,7 @@ Vim/NeoVim.
 %if !%{with setuptools}
 %patch -P 2 -p1
 %endif
+%patch -P 3 -p1
 
 %if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000
 # AddressSanitizer fails here because of ulimit.

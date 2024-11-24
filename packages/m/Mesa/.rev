@@ -5999,4 +5999,33 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
 - supersedes 0001-dril-Fixup-order-of-pixel-formats-in-drilConfigs.patch</comment>
     <requestid>1225106</requestid>
   </revision>
+  <revision rev="522" vrev="394">
+    <srcmd5>2571220039f25ae85b8c4330bef2ac9f</srcmd5>
+    <version>unknown</version>
+    <time>1732442642</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 24.3.0
+  --&gt; https://docs.mesa3d.org/relnotes/24.3.0
+
+- Update to release 24.3.0~rc2
+  --&gt; https://www.phoronix.com/news/Mesa-24.3-rc2
+- Update to release 24.3.0~rc1
+  --&gt; https://www.phoronix.com/news/Mesa-24.3-rc1-Released
+- refreshed patches:
+  * n_drirc-disable-rgb10-for-chromium-on-amd.patch
+  * python36-buildfix1.patch
+  * python36-buildfix2.patch
+  * tlsdesc_test.patch
+  * u_mesa-CVE-2023-45913.patch
+  * u_mesa-CVE-2023-45919.patch
+  * u_mesa-CVE-2023-45922.patch
+  * u_dep_xcb.patch
+- drop no longer supported options:
+  * -Ddri3=enabled
+  * -Ddri-search-path=%{_libdir}/dri
+- new files added in this update currently packaged as part of
+  Mesa-dri:
+  * %{_libdir}/gbm/dri_gbm.so</comment>
+    <requestid>1225842</requestid>
+  </revision>
 </revisionlist>

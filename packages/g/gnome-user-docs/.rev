@@ -802,4 +802,13 @@ New stable release</comment>
     <comment>SCripted push of GNOME 47</comment>
     <requestid>1205465</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>5d0fe3fc024bab5f35b2f31947e9094c</srcmd5>
+    <version>47.2</version>
+    <time>1732442627</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 47.2:
+  + Updated translations. (forwarded request 1225740 from iznogood)</comment>
+    <requestid>1225813</requestid>
+  </revision>
 </revisionlist>

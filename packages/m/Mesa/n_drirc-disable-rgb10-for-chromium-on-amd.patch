@@ -1,8 +1,8 @@
-Index: mesa-23.2.0-rc4/src/util/00-mesa-defaults.conf
+Index: mesa-24.3.0-rc1/src/util/00-mesa-defaults.conf
 ===================================================================
---- mesa-23.2.0-rc4.orig/src/util/00-mesa-defaults.conf
-+++ mesa-23.2.0-rc4/src/util/00-mesa-defaults.conf
-@@ -956,6 +956,14 @@ TODO: document the other workarounds.
+--- mesa-24.3.0-rc1.orig/src/util/00-mesa-defaults.conf
++++ mesa-24.3.0-rc1/src/util/00-mesa-defaults.conf
+@@ -1040,6 +1040,14 @@ TODO: document the other workarounds.
          <application name="Rocket League" executable="RocketLeague">
              <option name="radeonsi_zerovram" value="true" />
          </application>

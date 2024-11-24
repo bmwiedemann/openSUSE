@@ -38,6 +38,10 @@ Summary:        A client library for executing notebooks
 License:        BSD-3-Clause
 URL:            https://github.com/jupyter/nbclient
 Source:         https://files.pythonhosted.org/packages/source/n/nbclient/nbclient-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM nbclient-pr315-date-deprecation.patch gh#jupyter/nbclient#315 gh#jupyter/nbclient#318
+Patch0:         nbclient-pr315-date-deprecation.patch
+# PATCH-FIX-UPSTREAM nbclient-pr317-py313tests.patch gh#jupyter/nbclient#317
+Patch1:         nbclient-pr317-py313tests.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling >= 1.10.0}
 BuildRequires:  %{python_module pip}
@@ -76,7 +80,7 @@ ExecutePreprocessor.
 NBClient is a tool for parameterizing andexecuting Jupyter Notebooks.
 
 %prep
-%setup -q -n nbclient-%{version}
+%autosetup -p1 -n nbclient-%{version}
 sed -i 's/, "--color=yes"//' pyproject.toml
 
 %if ! %{with test}

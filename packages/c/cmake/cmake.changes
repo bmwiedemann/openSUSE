@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Nov  7 17:56:10 UTC 2024 - Christoph G <foss@grueninger.de>
+
+- update to 3.31.0
+  * cmake-presets(7) files may now include comments using the key
+    "$comment" at any level within the JSON object to provide
+    documentation.
+  * The Ninja Generators and Makefile Generators now produce a
+    "codegen" build target.
+  * The "CMAKE_LINK_LIBRARIES_STRATEGY" variable and corresponding
+    "LINK_LIBRARIES_STRATEGY" target property were added to
+    optionally specify the strategy CMake uses to generate link
+    lines.
+  * The "CMAKE_EXPORT_BUILD_DATABASE" variable, a corresponding
+    "CMAKE_EXPORT_BUILD_DATABASE" environment variable, and an
+    "EXPORT_BUILD_DATABASE" target property, were added to enable
+    exporting C++ module compile commands. This is only supported
+    with Ninja Generators.
+  * The "CMAKE_<LANG>_HOST_COMPILER_ID" and
+    "CMAKE_<LANG>_HOST_COMPILER_VERSION" variables were added,
+    where "<LANG>" is either "CUDA" or "HIP".  They are populated
+    when "CMAKE_<LANG>_COMPILER_ID" is "NVIDIA" to identify NVCC's
+    host compiler.
+  * The "file(DOWNLOAD)" and "file(UPLOAD)" commands now verify TLS
+    server certificates for connections to "https://" URLs by
+    default.
+
+-------------------------------------------------------------------
 Wed Oct 23 08:36:43 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.30.5:

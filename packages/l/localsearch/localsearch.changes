@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 21 16:50:23 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.8.1:
+  + Fix multiple leaks in metadata extractors
+  + Fix reporting of metadata extraction progress in "localsearch
+    daemon -f" and "localsearch status"
+  + Cache mounts for generating stable content identifiers
+  + Added missing includes necessary for Musl libc
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Sep 16 10:00:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.8.0:

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 20 14:17:42 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add ignore-PytestUnraisableExceptionWarning.patch to get over
+  (misleading?) ResourceWarning concerning SQLite unclosed
+  database (gh#jupyter-server/jupyter_server#1387).
+
+-------------------------------------------------------------------
 Sun Sep 15 16:05:49 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.14.2

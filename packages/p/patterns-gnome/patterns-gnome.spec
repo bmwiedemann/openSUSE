@@ -16,9 +16,8 @@
 #
 
 
-%bcond_with betatest
 Name:           patterns-gnome
-Version:        20201210
+Version:        20241112
 Release:        0
 Summary:        Patterns for Installation (Gnome)
 License:        MIT
@@ -34,61 +33,31 @@ not make sense.
 
 This particular package contains all the Gnome patterns.
 
-%if 0%{?is_opensuse}
-%package devel_gnome
-%pattern_development
-Summary:        GNOME Development
+
+
+
+################################################################################
+
+%package gnome
+%pattern_graphicalenvironments
+Summary:        GNOME Desktop Environment (Wayland)
 Group:          Metapackages
-Provides:       patterns-openSUSE-devel_gnome = %{version}
-Provides:       pattern() = devel_gnome
-Provides:       pattern-icon() = pattern-gnome-devel
-Provides:       pattern-order() = 3160
+Provides:       pattern() = gnome
+Provides:       pattern-icon() = pattern-gnome-wayland
+Provides:       pattern-order() = 1010
 Provides:       pattern-visible()
-Obsoletes:      patterns-openSUSE-devel_gnome < %{version}
-Requires:       pattern() = devel_C_C++
-Requires:       pattern() = gnome_basis
-Recommends:     cairo-devel
-Recommends:     clutter-devel
-Recommends:     clutter-gst-devel
-Recommends:     clutter-gtk-devel
-Recommends:     evolution-data-server-devel
-Recommends:     gdk-pixbuf-devel
-Recommends:     glib2-devel
-# Build tools
-Recommends:     gnome-common
-Recommends:     gnome-online-accounts-devel
-Recommends:     gobject-introspection-devel
-Recommends:     gtk-doc
-Recommends:     gtk3-devel
-Recommends:     gtksourceview-devel
-Recommends:     intltool
-Recommends:     itstool
-Recommends:     json-glib-devel
-Recommends:     libcanberra-devel
-Recommends:     libgdata-devel
-Recommends:     libgnome-desktop-3-devel
-Recommends:     libgnome-keyring-devel
-Recommends:     libgsf-devel
-Recommends:     libgtop-devel
-Recommends:     libgweather-devel
-Recommends:     libnotify-devel
-Recommends:     librsvg-devel
-Recommends:     libsoup-devel
-Recommends:     libwebkitgtk-devel
-Recommends:     libwnck-devel
-Recommends:     pango-devel
-Recommends:     tracker-devel
-Recommends:     vala
-Recommends:     vte-devel
-Recommends:     yelp-tools
+Requires:       gnome-session-wayland
+Requires:       pattern() = gnome_basic
 
-%description devel_gnome
-GNOME development packages.
+%description gnome
+The GNOME desktop environment is an intuitive and attractive desktop for users.
+This pattern installs components for GNOME to run with Wayland and X11 technologies.
 
-%files devel_gnome
+%files gnome
 %dir %{_docdir}/patterns
-%{_docdir}/patterns/devel_gnome.txt
-%endif
+%{_docdir}/patterns/gnome.txt
+
+################################################################################
 
 %package gnome_x11
 %pattern_graphicalenvironments
@@ -98,8 +67,57 @@ Provides:       pattern() = gnome_x11
 Provides:       pattern-icon() = pattern-gnome-xorg
 Provides:       pattern-order() = 1020
 Provides:       pattern-visible()
-# bsc#1065166
+Requires:       gnome-session-xsession
 Requires:       pattern() = gnome_basic
+Requires:       pattern() = x11
+
+################################################################################
+
+%description gnome_x11
+The GNOME desktop environment is an intuitive and attractive desktop for users.
+This pattern installs a full featured GNOME desktop environment, including
+Office suite, E-Mail client, Web Browser, File Manager, running with X11
+technology.
+
+%files gnome_x11
+%dir %{_docdir}/patterns
+%{_docdir}/patterns/gnome_x11.txt
+
+################################################################################
+
+%package gnome_basic
+%pattern_graphicalenvironments
+Summary:        GNOME Desktop Environment (Basic)
+Group:          Metapackages
+Provides:       pattern() = gnome_basic
+Provides:       pattern-icon() = pattern-gnome
+Provides:       pattern-order() = 1000
+Provides:       pattern-visible()
+Requires:       gsettings-backend-dconf
+Requires:       pattern() = basesystem
+Requires:       pattern() = gnome_basis
+Recommends:     evince
+# bsc#1065146
+%if 0%{?sle_version}
+Recommends:     gedit
+%else
+Recommends:     gnome-text-editor
+%endif
+Recommends:     gnome-calculator %dnl bsc#1063156
+Recommends:     gnome-software
+Recommends:     gnome-system-monitor
+Recommends:     gnome-tweaks %dnl bnc#859494 bsc#1065790
+Recommends:     nautilus-share
+Recommends:     pinentry-gnome3
+# bsc#1164858 bsc#1081584
+# - only in Leap and SLE as we don't want to install gnome-packagekit by
+#   default on TW
+%if 0%{?sle_version}
+Recommends:     gnome-packagekit
+%endif
+%if !0%{?is_opensuse}
+Obsoletes:      patterns-sles-gnome-basic
+%endif
 %if 0%{?is_opensuse}
 Recommends:     pattern() = gnome_games
 Recommends:     pattern() = gnome_internet
@@ -107,11 +125,9 @@ Recommends:     pattern() = gnome_utilities
 Recommends:     pattern() = imaging
 Recommends:     pattern() = multimedia
 %endif
-Requires:       gnome-session-xsession
 # #545263
 Requires:       seahorse
 Requires:       totem
-Requires:       xdg-user-dirs-gtk
 Recommends:     pattern() = gnome_imaging
 Recommends:     pattern() = office
 Recommends:     pattern() = x11_yast
@@ -129,32 +145,25 @@ Recommends:     evolution
 Recommends:     evolution-ews
 Recommends:     gnome-backgrounds
 Recommends:     gnome-bluetooth
-# bsc#1069699
-Recommends:     gnome-characters
+Recommends:     gnome-characters  %dnl bsc#1069699
 Recommends:     gnome-clocks
-# bsc#1069699
-Recommends:     gnome-contacts
+Recommends:     gnome-contacts %dnl bsc#1069699
 Recommends:     gnome-control-center-color
 Recommends:     gnome-control-center-goa
 Recommends:     gnome-desktop
-# #554954
-Recommends:     gnome-disk-utility
+Recommends:     gnome-disk-utility %dnl boo#554954
 Recommends:     gnome-remote-desktop
-Recommends:     gpgme
 Recommends:     nautilus-sendto
 Recommends:     noto-sans-cjk-fonts
 Recommends:     orca
 %if 0%{?sle_version} && !0%{?is_opensuse}
-# bsc#1065191
-Recommends:     pidgin
+Recommends:     pidgin %dnl bsc#1065191
 Recommends:     planner
 %endif
 Recommends:     python3-speechd
 Recommends:     speech-dispatcher
 Recommends:     systemd-icon-branding
-# #608156
-Recommends:     tracker
-Recommends:     tracker-miner-files
+Recommends:     tinysparql %dnl boo#608156
 Recommends:     zenity
 Suggests:       pattern() = documentation
 %if 0%{?is_opensuse}
@@ -173,14 +182,12 @@ Recommends:     remmina
 Recommends:     gnome-initial-setup
 %endif
 %if !0%{?is_opensuse}
-# bsc#1075136
-Recommends:     gutenprint
+Recommends:     gutenprint %dnl bsc#1075136
 %endif
 #
 # #447627
 %if !0%{?is_opensuse}
-# bsc#1087222
-Recommends:     gnome-user-share
+Recommends:     gnome-user-share %dnl bsc#1087222
 %else
 Requires:       gnome-user-share
 %endif
@@ -188,7 +195,7 @@ Requires:       gnome-user-share
 #
 # Official upstream
 #
-# #544192
+Recommends:     gnome-console
 Recommends:     baobab
 Recommends:     gcr-viewer
 Recommends:     gnome-characters
@@ -213,9 +220,7 @@ Recommends:     sushi
 # Tool for advanced configuration of printers
 Recommends:     system-config-printer
 Recommends:     totem-browser-plugin
-Recommends:     tracker-miner-evolution
-# bnc#698250
-Suggests:       gnome-color-manager
+Suggests:       gnome-color-manager %dnl bnc#698250
 %else
 Recommends:     NetworkManager-openconnect-gnome
 # bsc#1065148
@@ -225,36 +230,14 @@ Recommends:     desktop-data-SLE-extra
 %endif
 Recommends:     malcontent-control
 
-%description gnome_x11
+%description gnome_basic
 The GNOME desktop environment is an intuitive and attractive desktop for users.
-This pattern installs a full featured GNOME desktop environment, including
-Office suite, E-Mail client, Web Browser, File Manager, running with X11
-technology.
+This pattern installs GNOME desktop environment with only essential graphical
+applications installed (File Manager, Web Browser).
 
-%files gnome_x11
+%files gnome_basic
 %dir %{_docdir}/patterns
-%{_docdir}/patterns/gnome_x11.txt
-
-################################################################################
-
-%package gnome
-%pattern_graphicalenvironments
-Summary:        GNOME Desktop Environment (Wayland)
-Group:          Metapackages
-Provides:       pattern() = gnome
-Provides:       pattern-icon() = pattern-gnome-wayland
-Provides:       pattern-order() = 1010
-Provides:       pattern-visible()
-Requires:       pattern() = gnome_x11
-Recommends:     gnome-session-wayland
-
-%description gnome
-The GNOME desktop environment is an intuitive and attractive desktop for users.
-This pattern installs components for GNOME to run with Wayland and X11 technologies.
-
-%files gnome
-%dir %{_docdir}/patterns
-%{_docdir}/patterns/gnome.txt
+%{_docdir}/patterns/gnome_basic.txt
 
 ################################################################################
 
@@ -267,11 +250,9 @@ Provides:       pattern-icon() = pattern-gnome
 %if 0%{?is_opensuse}
 Provides:       patterns-openSUSE-gnome_basis = %{version}
 Obsoletes:      patterns-openSUSE-gnome_basis < %{version}
-Recommends:     pattern() = gnome_basis_opt
 %endif
 Requires:       gdm
 Requires:       gnome-session
-Requires:       pattern() = x11
 # from data/COMMON-DESKTOP
 Recommends:     desktop-data
 Recommends:     desktop-file-utils
@@ -289,10 +270,12 @@ Recommends:     gnome-keyring-pam
 #Requires:       gnome-control-center
 # Accessability is not an option, and performance issues if its missing (boo#1204564)
 Requires:       at-spi2-core
+%if 0%{?sle_version}
 # boo#1090117
 Recommends:     gnome-shell-classic
-Recommends:     gnome-console
+%endif
 Recommends:     gnome-extensions
+# gnome-terminal is currently used all around in openQA - but should be removed
 Recommends:     gnome-terminal
 # bnc#879466
 Recommends:     gnome-user-docs
@@ -350,79 +333,63 @@ Base packages for the GNOME desktop environment.
 %{_docdir}/patterns/gnome_basis.txt
 
 ################################################################################
-%package gnome_basic
-%pattern_graphicalenvironments
-Summary:        GNOME Desktop Environment (Basic)
-Group:          Metapackages
-Provides:       pattern() = gnome_basic
-Provides:       pattern-icon() = pattern-gnome
-Provides:       pattern-order() = 1000
-Provides:       pattern-visible()
-%if 0%{?is_opensuse}
-Requires:       pattern() = x11
-%else
-Requires:       pattern() = x11_enhanced
-%endif
-Requires:       gsettings-backend-dconf
-Requires:       pattern() = basesystem
-Requires:       pattern() = gnome_basis
-Recommends:     evince
-# bsc#1065146
-%if 0%{?sle_version}
-Recommends:     gedit
-%else
-Recommends:     gnome-text-editor
-%endif
-# implified by gnome-keyring-pam
-# Recommends:     gnome-keyring
-# bsc#1063156
-Recommends:     gnome-calculator
-Recommends:     gnome-software
-Recommends:     gnome-system-monitor
-# bnc#859494 bsc#1065790
-Recommends:     gnome-tweaks
-Recommends:     nautilus-share
-Recommends:     pinentry-gnome3
-# bsc#1164858 bsc#1081584
-# - only in Leap and SLE as we don't want to install gnome-packagekit by
-#   default on TW
-%if 0%{?sle_version}
-Recommends:     gnome-packagekit
-%endif
-%if !0%{?is_opensuse}
-Obsoletes:      patterns-sles-gnome-basic
-%endif
-
-%description gnome_basic
-The GNOME desktop environment is an intuitive and attractive desktop for users.
-This pattern installs GNOME desktop environment with only essential graphical
-applications installed (File Manager, Web Browser).
-
-%files gnome_basic
-%dir %{_docdir}/patterns
-%{_docdir}/patterns/gnome_basic.txt
 
 ################################################################################
 
 %if 0%{?is_opensuse}
-%package gnome_basis_opt
-%pattern_graphicalenvironments
-Summary:        GNOME Base System
+%package devel_gnome
+%pattern_development
+Summary:        GNOME Development
 Group:          Metapackages
-Provides:       patterns-openSUSE-gnome_basis_opt = %{version}
-Provides:       pattern() = gnome_basis_opt
-Provides:       pattern-extends() = gnome_basis
-Provides:       pattern-icon() = pattern-gnome
-Provides:       pattern-order() = 1420
-Obsoletes:      patterns-openSUSE-gnome_basis_opt < %{version}
-Requires:       pattern() = x11
+Provides:       patterns-openSUSE-devel_gnome = %{version}
+Provides:       pattern() = devel_gnome
+Provides:       pattern-icon() = pattern-gnome-devel
+Provides:       pattern-order() = 3160
+Provides:       pattern-visible()
+Obsoletes:      patterns-openSUSE-devel_gnome < %{version}
+Requires:       pattern() = devel_C_C++
+Requires:       pattern() = gnome_basis
+Recommends:     cairo-devel
+Recommends:     clutter-devel
+Recommends:     clutter-gst-devel
+Recommends:     clutter-gtk-devel
+Recommends:     evolution-data-server-devel
+Recommends:     gdk-pixbuf-devel
+Recommends:     glib2-devel
+# Build tools
+Recommends:     gnome-common
+Recommends:     gnome-online-accounts-devel
+Recommends:     gobject-introspection-devel
+Recommends:     gtk-doc
+Recommends:     gtk3-devel
+Recommends:     gtksourceview-devel
+Recommends:     intltool
+Recommends:     itstool
+Recommends:     json-glib-devel
+Recommends:     libcanberra-devel
+Recommends:     libgdata-devel
+Recommends:     libgnome-desktop-3-devel
+Recommends:     libgnome-keyring-devel
+Recommends:     libgsf-devel
+Recommends:     libgtop-devel
+Recommends:     libgweather-devel
+Recommends:     libnotify-devel
+Recommends:     librsvg-devel
+Recommends:     libsoup-devel
+Recommends:     libwebkitgtk-devel
+Recommends:     libwnck-devel
+Recommends:     pango-devel
+Recommends:     tinysparql-devel
+Recommends:     vala
+Recommends:     vte-devel
+Recommends:     yelp-tools
 
-%description gnome_basis_opt
-Base packages for the GNOME desktop environment.
+%description devel_gnome
+GNOME development packages.
 
-%files gnome_basis_opt
+%files devel_gnome
 %dir %{_docdir}/patterns
-%{_docdir}/patterns/gnome_basis_opt.txt
+%{_docdir}/patterns/devel_gnome.txt
 %endif
 
 ################################################################################
@@ -752,7 +719,7 @@ Provides:       pattern-icon() = pattern-generic
 Provides:       pattern-order() = 1780
 Obsoletes:      patterns-openSUSE-sw_management_gnome < %{version}
 Requires:       pattern() = sw_management
-Requires:       pattern() = x11
+# gnome-packagekit needed for openQA - and allows fainer grained updates than Software
 Recommends:     gnome-packagekit
 Recommends:     gnome-software
 Supplements:    packageand(patterns-gnome-gnome_basis:patterns-base-sw_management)
@@ -778,7 +745,7 @@ for i in gnome gnome_basis gnome_basic gnome_imaging gnome_x11 gnome_multimedia;
 done
 
 %if 0%{?is_opensuse}
-for i in devel_gnome gnome_basis_opt \
+for i in devel_gnome \
     gnome_games gnome_ide gnome_internet \
     gnome_office \
     gnome_utilities gnome_yast sw_management_gnome; do

@@ -1,6 +1,8 @@
---- mesa-23.3.3/src/freedreno/registers/gen_header.py.orig	2024-01-20 14:01:30.261999839 +0100
-+++ mesa-23.3.3/src/freedreno/registers/gen_header.py	2024-01-20 14:01:57.678558692 +0100
-@@ -781,7 +781,7 @@ def main():
+Index: mesa-24.3.0-rc1/src/freedreno/registers/gen_header.py
+===================================================================
+--- mesa-24.3.0-rc1.orig/src/freedreno/registers/gen_header.py
++++ mesa-24.3.0-rc1/src/freedreno/registers/gen_header.py
+@@ -957,7 +957,7 @@ def main():
  	parser.add_argument('--rnn', type=str, required=True)
  	parser.add_argument('--xml', type=str, required=True)
  

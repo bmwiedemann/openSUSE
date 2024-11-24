@@ -1570,4 +1570,20 @@ work. (forwarded request 640069 from iznogood)</comment>
     <comment>SCripted push of GNOME 47</comment>
     <requestid>1205456</requestid>
   </revision>
+  <revision rev="197" vrev="1">
+    <srcmd5>a4dbb0d9f906731428b9f944afc88457</srcmd5>
+    <version>47.2</version>
+    <time>1732442631</time>
+    <user>anag+factory</user>
+    <comment>- Only recommend xf86-input-libinput if xorg-x11-server is present:
+  wayland does not rely on the xf86 drivers.
+
+- Update to version 47.2:
+  + Power:
+    - Fix possible invalid reads if backlight fails to initialize.
+    - Handle broken upower more elegantly.
+    - Test warning fixes.
+  + Updated translations. (forwarded request 1225796 from dimstar)</comment>
+    <requestid>1225815</requestid>
+  </revision>
 </revisionlist>

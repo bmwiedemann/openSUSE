@@ -40,6 +40,9 @@ Group:          Development/Languages/Python
 URL:            https://jupyter-server.readthedocs.io
 # SourceRepository: https://github.com/jupyter-server/jupyter_server
 Source:         https://files.pythonhosted.org/packages/source/j/jupyter_server/jupyter_server-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM ignore-PytestUnraisableExceptionWarning.patch gh#jupyter-server/jupyter_server#1387 mcepl@suse.com
+# ignore PytestUnraisableExceptionWarning (ResourceWarning: unclosed database in <sqlite3.Connection object at >)
+Patch0:         ignore-PytestUnraisableExceptionWarning.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatch-jupyter-builder >= 0.8.1}
 BuildRequires:  %{python_module hatchling >= 1.11}
@@ -72,6 +75,7 @@ Obsoletes:      python-jupyter_server < %{version}-%{release}
 %if %{with test}
 BuildRequires:  %{python_module jupyter-server-test = %{version}}
 BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  pandoc
 %endif
 %if %{with libalternatives}
 BuildRequires:  alts
@@ -109,7 +113,7 @@ Requires:       python-requests
 Metapackage for the jupyter_server[test] requirement specifier
 
 %prep
-%setup -q -n jupyter_server-%{version}
+%autosetup -p1 -n jupyter_server-%{version}
 sed -i pyproject.toml \
   -e 's/, "--color=yes"//' \
   -e '/filterwarnings/,/]/ {/error/ a \  "ignore:Module already imported so cannot be rewritten",

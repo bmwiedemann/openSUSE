@@ -21,7 +21,7 @@
 %define RPMtinysparqlAPI 3_0
 
 Name:           tinysparql
-Version:        3.8.0
+Version:        3.8.1
 Release:        0
 Summary:        Object database, tag/metadata database, search tool and indexer
 License:        GPL-2.0-or-later

@@ -1292,4 +1292,12 @@
     <comment>New stable rel (forwarded request 1208806 from iznogood)</comment>
     <requestid>1208830</requestid>
   </revision>
+  <revision rev="147" vrev="1">
+    <srcmd5>ea46701e9f8e99e04bf2d909af60bb92</srcmd5>
+    <version>3.54.2</version>
+    <time>1732442639</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1225830</requestid>
+  </revision>
 </revisionlist>

@@ -42,7 +42,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 24.2.7
+%define _version 24.3.0
 %define with_opencl 0
 %define with_rusticl 0
 %define with_vulkan 0
@@ -145,7 +145,7 @@
 %global _paste_crate_ver 1.0.14
 
 Name:           Mesa%{psuffix}
-Version:        24.2.7
+Version:        24.3.0
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
@@ -181,9 +181,9 @@ Patch14:        python36-buildfix2.patch
 Patch17:        tlsdesc_test.patch
 # never to be upstreamed
 Patch54:        n_drirc-disable-rgb10-for-chromium-on-amd.patch
-Patch58:        u_dep_xcb.patch
 Patch100:       U_fix-mpeg1_2-decode-mesa-20.2.patch
 Patch400:       n_stop-iris-flicker.patch
+Patch500:       u_dep_xcb.patch
 Patch1222040:   u_mesa-CVE-2023-45913.patch
 Patch1222041:   u_mesa-CVE-2023-45919.patch
 Patch1222042:   u_mesa-CVE-2023-45922.patch
@@ -848,9 +848,9 @@ cp %{SOURCE6} subprojects/packagecache/
 %if 0%{?suse_version} < 1550
 %patch -P 54 -p1
 %endif
-%patch -P 58 -p1
 %patch -P 100 -p1
 %patch -P 400 -p1
+%patch -P 500 -p1
 %patch -P 1222040 -p1
 %patch -P 1222041 -p1
 %patch -P 1222042 -p1
@@ -895,13 +895,12 @@ egl_platforms=x11,wayland
             -Dvulkan-drivers= \
 %endif
             -Dxlib-lease=enabled \
-            -Dglvnd=true \
+            -Dglvnd=enabled \
             -Dgles1=enabled \
             -Dgles2=enabled \
             -Degl=enabled \
             -Dallow-kcmp=enabled \
             -Dplatforms=$egl_platforms \
-            -Ddri3=enabled \
             -Dshared-glapi=enabled \
 %if 0%{?with_nine}
             -Dgallium-nine=true \
@@ -919,7 +918,6 @@ egl_platforms=x11,wayland
             -Drust_std=2021 \
 %endif
 %endif
-            -Ddri-search-path=%{_libdir}/dri \
 %if 0%{with_llvm}
             -Dllvm=enabled \
             -Dshared-llvm=enabled \
@@ -1035,6 +1033,7 @@ rm -rf %{buildroot}/%{_datadir}/drirc.d
 
 rm -f %{buildroot}/%{_libdir}/dri/*_dri.so
 rm -f %{buildroot}%{_libdir}/libgallium-*.so
+rm -rf %{buildroot}%{_libdir}/gbm/
 
 rm -f %{buildroot}%{_libdir}/libGLES*
 # glvnd needs a default provider for indirect rendering where it cannot
@@ -1224,6 +1223,8 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %exclude %{_libdir}/dri/vc4_dri.so
 %endif
 %{_libdir}/libgallium-%{_version}.so
+%dir %{_libdir}/gbm/
+%{_libdir}/gbm/dri_gbm.so
 
 %if 0%{with_opencl}
 # only built with opencl

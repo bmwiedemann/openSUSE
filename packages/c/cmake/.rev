@@ -2335,4 +2335,12 @@ Adjust cmake-gui.spec so it uses 2.8.12.1 (forwarded request 208241 from sumski)
   * project: Only check non-cache vars when setting project vars</comment>
     <requestid>1217246</requestid>
   </revision>
+  <revision rev="260" vrev="1">
+    <srcmd5>616c7aa29effec53c1903db0117c23cb</srcmd5>
+    <version>3.31.0</version>
+    <time>1732442618</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1223606</requestid>
+  </revision>
 </revisionlist>

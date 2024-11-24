@@ -8,40 +8,24 @@
    <param name="url">https://github.com/denoland/deno</param>
    <!-- param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@</param -->
    <param name="versionformat">@PARENT_TAG@</param>
-   <param name="revision">v2.0.6</param>
+   <param name="revision">v2.1.1</param>
    <param name="versionrewrite-pattern">v(.*)</param>
    <param name="versionrewrite-replacement">\1</param>
    <param name="changesgenerate">enable</param>
  </service>
  <service mode="manual" name="set_version"/>
- <service name="obs_scm" mode="manual">
-    <param name="url">https://github.com/denoland/rusty_v8</param>
-    <param name="scm">git</param>
-    <param name="revision">v0.106.0</param>
-    <param name="version">0.106.0</param>
-    <param name="exclude">.git</param>
-    <param name="exclude">.github</param>
-    <param name="exclude">.gitignore</param>
-    <param name="exclude">.prettierrc.json</param>
-    <param name="exclude">.rustfmt.toml</param>
- </service>
  <service name="cargo_vendor" mode="manual">
-    <param name="update">true</param>
-    <param name="respect-lockfile">false</param>
+    <param name="update">false</param>
+    <param name="respect-lockfile">true</param>
     <param name="method">registry</param>
     <param name="src">deno</param>
  </service>
  <service name="roast" mode="manual">
    <param name="target">deno</param>
-   <param name="outfile">deno-2.0.6.tar.zst</param>
-   <param name="preserve-root">true</param>
-   <param name="reproducible">true</param>
- </service>
- <service name="roast" mode="manual">
-   <param name="target">rusty_v8</param>
-   <param name="outfile">rusty_v8-0.106.0.tar.zst</param>
+   <param name="outfile">deno-2.1.1.tar.zst</param>
    <param name="preserve-root">true</param>
    <param name="reproducible">true</param>
  </service>
 </services>
+
 

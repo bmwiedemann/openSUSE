@@ -19,9 +19,9 @@
 
 
 %global _lto_cflags %nil
-%global _v8_version 0.106.0
+%global _v8_version 130.0.1
 Name:           deno
-Version:        2.0.6
+Version:        2.1.1
 Release:        0
 Summary:        A secure JavaScript and TypeScript runtime
 License:        MIT
@@ -29,12 +29,15 @@ Group:          Productivity/Other
 URL:            https://github.com/denoland/deno
 Source0:        %{name}-%{version}.tar.zst
 Source1:        registry.tar.zst
-Source2:        rusty_v8-%{_v8_version}.tar.zst
-Patch1:         compiler-rt-adjust-paths.patch
-Patch2:         deno-v8-arm.patch
-Patch3:         zeromq-update.patch
 BuildRequires:  cargo-packaging
-BuildRequires:  clang
+
+%if 0%{?suse_version} > 1600
+BuildRequires:  clang19
+%else
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
+%endif
+
 # needed by `libz-ng-sys` after 1.36.1
 # see: https://build.opensuse.org/package/show/devel:languages:javascript/deno#comment-1808174
 BuildRequires:  cmake
@@ -46,6 +49,7 @@ BuildRequires:  llvm-gold
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
+BuildRequires:  rusty_v8 = %{_v8_version}
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gmodule-2.0)
@@ -100,22 +104,11 @@ Remote code is fetched and cached on first execution, and only
 updated with the --reload flag.
 
 %prep
-%autosetup -a2 -p1 -n %{name}
+%autosetup -a1 -p1 -n %{name}
 
-# Extract vendor source
-tar xf %{SOURCE1}
-# Now we patch V8 or %%{SOURCE2}
+unlink rusty_v8 || true
+ln -sf %{_libdir}/crates/rusty_v8/ $PWD/rusty_v8
 echo -e "\n[patch.crates-io]\nv8 = { path = './rusty_v8' }" >> Cargo.toml
-pushd rusty_v8
-# Keeping this ifarch in case someone tries to build 32 bit
-# which is not our problem
-%ifarch x86_64 || x86_64_v3 || aarch64
-# lib to lib64
-sed -i 's|lib/clang|lib64/clang|g' build/config/clang/BUILD.gn
-%endif
-popd
-# Seems this causes builds to break?
-rm .cargo/config.toml
 
 %build
 export CARGO_HOME="$PWD/.cargo"
@@ -123,10 +116,16 @@ export CARGO_HOME="$PWD/.cargo"
 export CLANG_VERSION=$(clang --version | grep -m1 version | sed 's/.* \([0-9]\+\).*/\1/')
 export V8_FROM_SOURCE=1
 export CLANG_BASE_PATH=%{_prefix}
+%if 0%{?suse_version} > 1600
 export CC=clang
 export CXX=clang++
 export CFLAGS="%{optflags} -Wno-unknown-warning-option"
 export CXXFLAGS="%{optflags} -Wno-unknown-warning-option"
+%else
+export CFLAGS="%{optflags}"
+export CXXFLAGS="%{optflags}"
+%endif
+
 # https://www.chromium.org/developers/gn-build-configuration
 export GN_ARGS="clang_version=${CLANG_VERSION} use_lld=true enable_nacl = false blink_symbol_level = 0 v8_symbol_level = 0"
 %{cargo_build}

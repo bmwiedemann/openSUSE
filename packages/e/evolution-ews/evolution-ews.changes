@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov 22 12:41:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.54.2:
+  + Bug Fixes: m365: Calendar color reset on calendar list refresh.
+  + Miscellaneous: m365: Fix cancel of an instance of a recurring
+    meeting.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Oct 18 07:18:09 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.54.1:

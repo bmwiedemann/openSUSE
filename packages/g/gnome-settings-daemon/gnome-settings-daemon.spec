@@ -30,7 +30,7 @@
 %define base_ver 47
 
 Name:           gnome-settings-daemon
-Version:        47.1
+Version:        47.2
 Release:        0
 Summary:        Settings daemon for the GNOME desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-only
@@ -113,7 +113,7 @@ BuildRequires:  pkgconfig(wayland-client)
 %endif
 Recommends:     iio-sensor-proxy
 # g-s-d only support configurtion of libinput based pointer drivers now.
-Recommends:     xf86-input-libinput
+Recommends:     (xf86-input-libinput if xorg-x11-server)
 
 %description
 gnome-settings-daemon provides a daemon run by all GNOME sessions to

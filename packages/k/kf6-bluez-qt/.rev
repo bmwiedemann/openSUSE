@@ -71,4 +71,14 @@
     <comment>KDE Frameworks 6.8.0 (forwarded request 1221715 from krop)</comment>
     <requestid>1222758</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>bc647f31d24dcae560ea1be828b03c0c</srcmd5>
+    <version>6.8.0</version>
+    <time>1732442620</time>
+    <user>anag+factory</user>
+    <comment>- Add a workaround for a build issue with CMake 3.31. Despite
+  being unused, CMake complains about missing QtQml private API
+  headers.</comment>
+    <requestid>1224098</requestid>
+  </revision>
 </revisionlist>

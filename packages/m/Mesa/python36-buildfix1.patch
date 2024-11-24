@@ -1,8 +1,8 @@
-Index: mesa-24.1.0/src/nouveau/headers/class_parser.py
+Index: mesa-24.3.0-rc1/src/nouveau/headers/class_parser.py
 ===================================================================
---- mesa-24.1.0.orig/src/nouveau/headers/class_parser.py
-+++ mesa-24.1.0/src/nouveau/headers/class_parser.py
-@@ -9,6 +9,16 @@ import sys
+--- mesa-24.3.0-rc1.orig/src/nouveau/headers/class_parser.py
++++ mesa-24.3.0-rc1/src/nouveau/headers/class_parser.py
+@@ -11,6 +11,16 @@ import subprocess
  
  from mako.template import Template
  
@@ -17,9 +17,9 @@ Index: mesa-24.1.0/src/nouveau/headers/class_parser.py
 +    return s
 +
  METHOD_ARRAY_SIZES = {
-     'BIND_GROUP_CONSTANT_BUFFER'                        : 16,
-     'CALL_MME_DATA'                                     : 256,
-@@ -293,7 +303,7 @@ def parse_header(nvcl, f):
+     'BIND_GROUP_CONSTANT_BUFFER'                            : 16,
+     'CALL_MME_DATA'                                         : 256,
+@@ -425,7 +435,7 @@ def parse_header(nvcl, f):
                  if ":" in list[2]:
                      state = 1
                  elif teststr in list[1]:
@@ -28,7 +28,7 @@ Index: mesa-24.1.0/src/nouveau/headers/class_parser.py
                  else:
                      state = 1
  
-@@ -303,7 +313,7 @@ def parse_header(nvcl, f):
+@@ -435,7 +445,7 @@ def parse_header(nvcl, f):
                      if ("0x" in list[2]):
                          state = 1
                      else:
@@ -37,7 +37,7 @@ Index: mesa-24.1.0/src/nouveau/headers/class_parser.py
                          bitfield = list[2].split(":")
                          curmthd.field_name_start[field] = bitfield[1]
                          curmthd.field_name_end[field] = bitfield[0]
-@@ -324,13 +334,13 @@ def parse_header(nvcl, f):
+@@ -456,13 +466,13 @@ def parse_header(nvcl, f):
                  is_array = 0
                  if (':' in list[2]):
                      continue
@@ -54,7 +54,7 @@ Index: mesa-24.1.0/src/nouveau/headers/class_parser.py
                  x = method()
                  x.name = name
                  x.addr = list[2]
-@@ -357,8 +367,8 @@ def main():
+@@ -552,8 +562,8 @@ def main():
  
      clheader = os.path.basename(args.in_h)
      nvcl = clheader

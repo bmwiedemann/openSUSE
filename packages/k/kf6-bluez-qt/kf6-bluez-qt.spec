@@ -38,6 +38,8 @@ Source2:        frameworks.keyring
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_bugfix_version}
+# Work around a build issue with CMake 3.31. Despite being unused, CMake complains about missing QtQml private API headers
+BuildRequires:  qt6-qml-private-devel >= %{qt6-version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
