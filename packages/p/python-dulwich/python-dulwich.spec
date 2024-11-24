@@ -25,15 +25,13 @@
 %{?sle15_python_module_pythons}
 %define oldpython python
 Name:           python-dulwich
-Version:        0.22.1
+Version:        0.22.6
 Release:        0
 Summary:        Pure-Python Git Library
 License:        Apache-2.0 OR GPL-2.0-or-later
 Group:          Development/Languages/Python
 URL:            https://www.dulwich.io
 Source0:        https://github.com/jelmer/dulwich/archive/dulwich-%{version}.tar.gz#/dulwich-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM geventhttpclient-compat.patch gh#jelmer/dulwich#1299, gh#jelmer/dulwich#1294
-Patch0:         geventhttpclient-compat.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 17.1}

@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sat Nov 23 17:57:27 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.22.6:
+  * ``ObjectStore.iter_prefix``: fix handling of missing
+    loose object directories. (Jelmer Vernooĳ)
+  * Reject invalid refcontainer values (not 40 characters or
+    symref).
+  * Add type hints to various functions. (Castedo Ellerman)
+  * Drop support for Python 3.8. (Jelmer Vernooĳ)
+  * Fix refspec handling in porcelain.pull. (Jelmer Vernooĳ)
+  * Drop broken refspec support in porcelain.clone.
+  * Provide ``ref_prefix`` functionality client-side
+    if the server does not support it.
+  * Consistently honor ``ref_prefix`` and ``protocol_version``
+    arguments in client. (Jelmer Vernooĳ)
+  * Strip pkt-line when negotiating protocol v2. Fixes
+    compatibility with gerrit. (Rémy Pecqueur, #1423)
+  * Don't pull in ``setuptools_rust`` when building pure
+    package. (Eli Schwartz)
+  * Return peeled refs from ``GitClient.get_refs`` if protocol-v2
+    is used. (Stefan Sperling, #1410)
+  * Drop outdated performance file. (Jelmer Vernooĳ, #1411)
+  * Fix handling of symrefs with protocol v2.
+  * Add ``ObjectStore.iter_prefix``.  (Jelmer Vernooĳ)
+  * Revert back to version 3 of ``Cargo.lock``, to allow
+    building with older Cargo versions.
+  * Use a default ref-prefix when fetching with git protocol v2
+  * Add `ObjectStore.iter_prefix`. (Jelmer Vernooĳ)
+  * Improve wheel building in CI, so we can upload wheels for the
+    next release.
+  * Ship ``Cargo.lock``. (Jelmer Vernooĳ, #1287)
+  * Ship ``tests/`` and ``testdata/`` in sdist. (Jelmer Vernooĳ,
+  * Add initial integration with OSS-Fuzz for continuous fuzz
+    testing and first fuzzing test (David Lakin, #1302)
+  * Drop Python 3.7 support. (Jelmer Vernooĳ)
+  * Improve fuzzing coverage (David Lakin)
+  * Support Python 3.13. (Edgar Ramírez-Mondragón, #1352)
+  * Initial support for smart protocol v2. (Stefan Sperling)
+- drop geventhttpclient-compat.patch (upstream)
+
+-------------------------------------------------------------------
 Tue Oct  8 09:51:33 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add patch geventhttpclient-compat.patch to make it compatible with
