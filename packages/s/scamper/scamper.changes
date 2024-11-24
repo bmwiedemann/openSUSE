@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Nov 16 17:58:30 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 20241112:
+ * scamper:
+  * check bound source address when attempting to reuse open sockets.
+  * bind to the specified source address with for all udp6 sockets used
+    with udp-sport ping method.
+  * finalize task signatures for ping, trace, udpprobe, and dealias
+    immediately before tasks begin probing to provide more ability for
+    parallel measurements to the same destinations.
+ * python module:
+  * correct bugs in documentation
+  * add to_json() to all measurement types where there's a scamper json
+    rendering
+ * libscamperfile:
+  * fix memory leaks on malformed warts input
+  * add scamper_*_tojson functions for dealias, host, ping, tbit, trace,
+    tracelb, and udpprobe
+  * move Makefile rules for libscamperfile from scamper/Makefile.am into
+    lib/libscamperfile/Makefile.am
+ * sc_speedtrap:
+  * add -R /path/to/socket to enable speedtrap to use a remote scamper
+    instance
+  * add -v to emit version of scamper release the utility came from
+  * update man page with documentation
+ * configure:
+  * add --disable-utils and --disable-libs options to configure, to control
+    how much of the scamper package is actually built.
+  * update to serial 37 of ax_python_devel.m4 and serial 8 of
+    ax_gcc_builtin.m4
+
+-------------------------------------------------------------------
 Mon Sep 23 07:17:26 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
 
 * update to version 20240920:
