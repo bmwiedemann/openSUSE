@@ -18,7 +18,7 @@
 
 %bcond_without test
 Name:           python-pulsectl
-Version:        24.8.0
+Version:        24.11.0
 Release:        0
 Summary:        Python high-level interface and ctypes-based bindings for PulseAudio (libpulse)
 License:        MIT

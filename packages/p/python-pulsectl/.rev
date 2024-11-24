@@ -99,4 +99,13 @@
   * docstring fix</comment>
     <requestid>1198042</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6397b0b31b5813295edd8c78c9db0a0b</srcmd5>
+    <version>24.11.0</version>
+    <time>1732442667</time>
+    <user>anag+factory</user>
+    <comment>- update to 24.11.0:
+  * pulsectl: check return from pa_context_new to be not NULL</comment>
+    <requestid>1225955</requestid>
+  </revision>
 </revisionlist>

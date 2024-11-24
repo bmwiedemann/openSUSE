@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov 23 08:30:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 24.11.0:
+  * pulsectl: check return from pa_context_new to be not NULL
+
+-------------------------------------------------------------------
 Sat Aug 31 11:42:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 24.8.0:
