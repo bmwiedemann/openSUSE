@@ -27,20 +27,21 @@ URL:            https://gitlab.com/asus-linux/supergfxctl
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 Source2:        %{name}-user.conf
+Source3:        prime-run.sh
 Group:          System/Daemons
 
 ## Patch for user-groups
-Patch1:		user-group.patch
+Patch1:         user-group.patch
 
 ## Upstream GPU detection patch
-Patch2:		GPUDetection.patch
+Patch2:         GPUDetection.patch
 
 BuildRequires:  cargo-packaging
 BuildRequires:  pkgconfig
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(systemd)
-BuildRequires:  sysuser-tools
 Requires:       systemd
 
 Conflicts:      bbswitch
@@ -77,6 +78,8 @@ install -D -m 0644 README.md %{buildroot}%{_datadir}/doc/%{name}/README.md
 
 install -D -m 0644 %{SOURCE2} %{buildroot}%{_sysusersdir}/%{name}-user.conf
 
+install -D -m 0755 %{SOURCE3} %{buildroot}%{_bindir}/prime-run
+
 %pre -f %{name}.pre
 %service_add_pre supergfxd.service
 
@@ -100,6 +103,7 @@ fi
 %license LICENSE
 %{_bindir}/supergfxd
 %{_bindir}/supergfxctl
+%{_bindir}/prime-run
 %{_unitdir}/supergfxd.service
 %{_presetdir}/99-supergfxd.preset
 %{_udevrulesdir}/90-supergfxd-nvidia-pm.rules

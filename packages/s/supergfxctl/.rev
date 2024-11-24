@@ -8,4 +8,12 @@
 This tool can provide dGPU disabling and it will not be available for system and will not drain the battery, after switching the mode requires only relogin.</comment>
     <requestid>1225425</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>930360db16a62f5c023ea3201d96a5d5</srcmd5>
+    <version>5.2.4</version>
+    <time>1732442662</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1225914</requestid>
+  </revision>
 </revisionlist>
