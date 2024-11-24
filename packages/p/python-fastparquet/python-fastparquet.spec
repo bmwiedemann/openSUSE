@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-fastparquet
-Version:        2024.5.0
+Version:        2024.11.0
 Release:        0
 Summary:        Python support for Parquet file format
 License:        Apache-2.0

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov 23 17:16:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2024.11.0:
+  * feat: support for writing to buffers
+  * fix(_dtypes): np.float_ was deprecated
+  * update for py3.13
+
+-------------------------------------------------------------------
 Thu Jun  6 17:44:58 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2024.5.0

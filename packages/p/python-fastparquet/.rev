@@ -307,4 +307,15 @@
     <comment></comment>
     <requestid>1179165</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>a223cb5fdac2d2b9e29db7fe346a1d08</srcmd5>
+    <version>2024.11.0</version>
+    <time>1732442688</time>
+    <user>anag+factory</user>
+    <comment>- update to 2024.11.0:
+  * feat: support for writing to buffers
+  * fix(_dtypes): np.float_ was deprecated
+  * update for py3.13</comment>
+    <requestid>1225996</requestid>
+  </revision>
 </revisionlist>
