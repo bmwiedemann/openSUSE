@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 15 20:31:53 UTC 2024 - Benoît Monin <benoit.monin@gmx.fr>
+
+- stop requiring vim at runtime just for the syntax file
+
+-------------------------------------------------------------------
 Sun Oct  6 14:18:19 UTC 2024 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 1.8.27:

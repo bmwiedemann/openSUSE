@@ -33,10 +33,8 @@ BuildRequires:  libgsasl-devel >= 2.1.0
 # for the directory
 %if 0%{?centos_version}
 BuildRequires:  vim-common
-%requires_eq    vim-common
 %else
 BuildRequires:  vim-base
-%requires_eq    vim-base
 %endif #centos_version
 %if 0%{?suse_version}
 Requires(post): %install_info_prereq
