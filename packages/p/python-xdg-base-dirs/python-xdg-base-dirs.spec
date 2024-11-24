@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %define modname xdg-base-dirs
 Name:           python-xdg-base-dirs
-Version:        6.0.1
+Version:        6.0.2
 Release:        0
 Summary:        Variables defined by the XDG Base Directory Specification
 License:        ISC

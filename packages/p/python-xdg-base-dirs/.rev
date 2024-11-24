@@ -15,4 +15,20 @@
     <comment>- Add %{?sle15_python_module_pythons}</comment>
     <requestid>1177991</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>50b09685f8c5d4e7899e61710bcbd86a</srcmd5>
+    <version>6.0.2</version>
+    <time>1732442684</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.0.2:
+  * Use GitHub's alert syntax for rename warning
+  * Test with Python 3.12 in CI
+  * Check `# type: ignore` directives include error code
+  * Add Python 3.13 to CI
+  * Bump version to 6.0.2
+
+- Update to version 5.1.1
+  * No upstream changelog</comment>
+    <requestid>1225986</requestid>
+  </revision>
 </revisionlist>
