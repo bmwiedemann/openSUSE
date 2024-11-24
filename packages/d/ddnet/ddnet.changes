@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Nov 19 16:37:14 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 18.7:
+  * [Client] Apply exponential easing to smooth camera
+  * [Client] Hook collisions preview
+  * [Client] Nameplate preview
+  * [Client] Improved skin downloading
+  * [Client] Add clear_chat command
+  * [Client] Improved ghost file validation
+  * [Client] Arrow left/right keys in server browser
+  * [Client] Disable Vulkan backend for buggy AMD drivers
+  * [Client] Use correct audio channels for map sounds
+  * [Client] Fix 0.7 server favorites and store them correctly
+  * [Client] Add Antarctica flag, update existing flags 
+  * [Client] Fix chat command preview overlap 
+  * [Client] Fix vanilla demo tuning
+  * [Client] Scroll to selected screen in settings
+  * [Client] Fix toggle argument validation
+  * [Client] Adjust console search behavior
+  * [Client] Fix color validation in some commands 
+  * [Client] Ensure file rename succeded on Windows
+  * [Editor] Fix switch overlay text order 
+  * [Editor] Show UI debug info
+  * [Editor] Fix server settings command help text overwriting
+    other tooltips
+  * [Editor] Separate tele numbers 
+  * [Editor] Popup to select envelope curve type
+  * [Server] Regional rankings for /top5team 
+  * [Server] Practrice: Add /invincible mode
+  * [Server] Practice: Add /totele(cp), /(un)livefreeze,
+    /(un)endless
+  * [Server] Practice: Add /(un)infjump
+  * [Server] Fix /help printing chat commands
+  * [Server] Allow 2048 bans
+  * [Server] No rescue delay in practice
+  * [Server] Fix demos with maps in folders
+  * [Server] Fix show_ips output
+  * [Master] Add DDPer support
+
+-------------------------------------------------------------------
 Mon Oct  7 19:37:41 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 18.6:
