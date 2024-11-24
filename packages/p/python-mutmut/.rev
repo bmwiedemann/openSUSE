@@ -86,4 +86,14 @@
   * Missed a file in distribution, so browse command was broken.</comment>
     <requestid>1225562</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>46335ac19f7b90b274981f0016017049</srcmd5>
+    <version>3.2.2</version>
+    <time>1732442664</time>
+    <user>anag+factory</user>
+    <comment>- Remove unneeded {Build,}Requires on hammett.
+- We only need rich for the testsuite.
+- We need toml for Python 3.10 only.</comment>
+    <requestid>1225919</requestid>
+  </revision>
 </revisionlist>

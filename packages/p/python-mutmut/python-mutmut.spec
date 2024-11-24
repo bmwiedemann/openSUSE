@@ -30,11 +30,12 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click
-Requires:       python-hammett
 Requires:       python-junit-xml >= 1.8
 Requires:       python-parso
-Requires:       python-rich
 Requires:       python-setproctitle
+%if 0%{?python_version_nodots} < 311
+Requires:       python-toml
+%endif
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     python-coverage
@@ -44,7 +45,6 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module coverage}
-BuildRequires:  %{python_module hammett}
 BuildRequires:  %{python_module junit-xml >= 1.8}
 BuildRequires:  %{python_module parso}
 BuildRequires:  %{python_module pytest >= 2.8.7}
