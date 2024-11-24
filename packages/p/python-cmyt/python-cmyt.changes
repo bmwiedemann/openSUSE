@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 23 16:59:28 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- skip failing test on 32bit platforms
+
+-------------------------------------------------------------------
 Mon Oct  9 06:01:30 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 2.0.0
@@ -8,4 +13,4 @@ Mon Oct  9 06:01:30 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 -------------------------------------------------------------------
 Tue Oct  3 14:27:55 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- initial package 
+- initial package
