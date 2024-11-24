@@ -97,4 +97,12 @@ It doesn't build on 15.5 because of rust being too old
   * Tolerate removal of files from Arti's cache directory.</comment>
     <requestid>1187408</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>db78abe838fa00883b6f806821b2755c</srcmd5>
+    <version>1.3.0~0</version>
+    <time>1732442673</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1225982</requestid>
+  </revision>
 </revisionlist>

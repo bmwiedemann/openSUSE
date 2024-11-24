@@ -17,7 +17,7 @@
 
 
 Name:           arti
-Version:        1.2.5~0
+Version:        1.3.0~0
 Release:        0
 Summary:        An implementation of Tor, in Rust.
 License:        Apache-2.0 OR MIT
@@ -38,7 +38,7 @@ An implementation of Tor, in Rust
 %autosetup -p1 -a1
 
 %build
-%limit_build -m 4400
+%limit_build -m 5000
 %{cargo_build}
 
 %install
