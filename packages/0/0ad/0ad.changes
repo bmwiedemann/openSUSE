@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 22 09:16:50 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 0ad-link-icu-76.patch: Fix build against ICU 76.x.
+
+-------------------------------------------------------------------
 Thu Apr 25 22:29:04 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Add fix-boost-1.85-build.patch to fix build with boost 1.85.

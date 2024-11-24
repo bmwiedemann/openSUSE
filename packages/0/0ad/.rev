@@ -103,4 +103,13 @@
 </comment>
     <requestid>1170217</requestid>
   </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>9f89e3fcee6631812abcd96a69c4b14f</srcmd5>
+    <version>0.0.26</version>
+    <time>1732442659</time>
+    <user>anag+factory</user>
+    <comment>- Add 0ad-link-icu-76.patch: Fix build against ICU 76.x.
+</comment>
+    <requestid>1225916</requestid>
+  </revision>
 </revisionlist>

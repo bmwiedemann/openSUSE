@@ -52,6 +52,8 @@ Patch4:         fix-gcc13-build.patch
 Patch5:         fix-fmt10-build.patch
 # PATCH-FIX-UPSTREAM -- Fix build with boost 1.85
 Patch6:         fix-boost-1.85-build.patch
+# PATCH-FIX-UPSTREAM -- Fix build with icu 76.x
+Patch7:         0ad-link-icu-76.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libXcursor-devel
@@ -112,6 +114,7 @@ flexible game engine.
 %if %{pkg_vcmp libboost_filesystem-devel >= 1.74}
 %patch -P 6 -p1
 %endif
+%patch -P 7 -p1
 
 %build
 export CFLAGS="%{optflags}"

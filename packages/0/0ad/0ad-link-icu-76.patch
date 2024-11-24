@@ -1,0 +1,20 @@
+Index: 0ad-0.0.26-alpha/build/premake/extern_libs5.lua
+===================================================================
+--- 0ad-0.0.26-alpha.orig/build/premake/extern_libs5.lua
++++ 0ad-0.0.26-alpha/build/premake/extern_libs5.lua
+@@ -396,6 +396,7 @@ extern_lib_defs = {
+ 				add_default_include_paths("icu")
+ 			else
+ 				pkgconfig.add_includes("icu-i18n")
++				pkgconfig.add_includes("icu-uc")
+ 			end
+ 		end,
+ 		link_settings = function()
+@@ -408,6 +409,7 @@ extern_lib_defs = {
+ 				})
+ 			else
+ 				pkgconfig.add_links("icu-i18n")
++				pkgconfig.add_links("icu-uc")
+ 			end
+ 		end,
+ 	},
