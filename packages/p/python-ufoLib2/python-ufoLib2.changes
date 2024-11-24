@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov 23 16:36:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.17.0:
+  * Added `outputImpliedClosingLine` parameter to Glyph.draw() method
+
+-------------------------------------------------------------------
 Wed Nov 20 18:30:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.16.1:

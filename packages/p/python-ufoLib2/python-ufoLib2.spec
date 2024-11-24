@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-ufoLib2
-Version:        0.16.1
+Version:        0.17.0
 Release:        0
 Summary:        UFO font processing library
 License:        Apache-2.0
