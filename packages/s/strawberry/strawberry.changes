@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov 23 18:21:20 UTC 2024 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Update to version 1.2.2
+
+  + Bugfixes:
+   + Fixed crash when creating a new smart playlist (#1609).
+   + Fixed last playlist column being added when dragging a song and switching playlists.
+
+-------------------------------------------------------------------
 Thu Nov 21 17:03:11 UTC 2024 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Update to version 1.2.1

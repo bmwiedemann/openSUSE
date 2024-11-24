@@ -1532,4 +1532,16 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>1225634</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>6774cdde78dd9415e52ecdaa2a7c6f1a</srcmd5>
+    <version>1.2.2</version>
+    <time>1732442698</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.2.2
+  + Bugfixes:
+   + Fixed crash when creating a new smart playlist (#1609).
+   + Fixed last playlist column being added when dragging a song and switching playlists.
+</comment>
+    <requestid>1226004</requestid>
+  </revision>
 </revisionlist>
