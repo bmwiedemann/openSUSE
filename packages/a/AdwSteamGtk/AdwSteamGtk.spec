@@ -18,7 +18,7 @@
 
 %define         appname io.github.Foldex.AdwSteamGtk
 Name:           AdwSteamGtk
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        A Gtk wrapper for Adwaita-for-Steam
 License:        GPL-3.0-only
@@ -62,8 +62,8 @@ A GTK wrapper that installs and updates the Adwaita for Steam skin.
 %{_datadir}/appdata/%{appname}.appdata.xml
 %{_datadir}/applications/%{appname}.desktop
 %{_datadir}/glib-2.0/schemas/%{appname}.gschema.xml
-%{_iconsdir}/hicolor/scalable/apps/%{appname}.svg
-%{_iconsdir}/hicolor/symbolic/apps/%{appname}-symbolic.svg
+%{_datadir}/icons/hicolor/scalable/apps/%{appname}.svg
+%{_datadir}/icons/hicolor/symbolic/apps/%{appname}-symbolic.svg
 
 %files lang -f adwaita-steam-gtk.lang
 

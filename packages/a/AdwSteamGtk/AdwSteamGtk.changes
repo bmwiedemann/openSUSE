@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov 23 10:29:07 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.7.2:
+  * Improved error handling when retrieving window control settings through portal
+- switch to _datadir/icons, so Leap16 builds
+
+-------------------------------------------------------------------
 Sat Nov 16 03:32:16 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.7.1:
