@@ -40,4 +40,27 @@
     <comment></comment>
     <requestid>1095391</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>724b38b2fa074b622f131303dfd8b726</srcmd5>
+    <version>0.11.2</version>
+    <time>1732442687</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.11.2:
+  * Revert &quot;Add variable expansion.&quot; feature
+  * Revert &quot;Add interpolate argument to avoid resolving proxied
+    values.&quot; feature
+  * Added support for Django 4.2
+  * Added support for secure Elasticsearch connections
+  * Added variable expansion
+  * Added capability to handle comments after #, after quoted values,
+  * Added support for ``interpolate`` parameter
+  * Use the core redis library by default if running Django &gt;= 4.0
+  * Value of dict can now contain an equal sign
+  * Added support for Python 3.11.
+  * Added ``CONN_HEALTH_CHECKS`` to database base options
+  * Added ``encoding`` parameter to ``read_env`` with default
+    value 'utf8'
+  * Added support for Django 4.1</comment>
+    <requestid>1225998</requestid>
+  </revision>
 </revisionlist>

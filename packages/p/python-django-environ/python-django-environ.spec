@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-environ
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-environ
-Version:        0.4.5
+Version:        0.11.2
 Release:        0
 Summary:        Django application configuration via environment variables
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/joke2k/django-environ
 Source:         https://files.pythonhosted.org/packages/source/d/django-environ/django-environ-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django
@@ -41,19 +43,20 @@ variables to configure Django applications.
 %setup -q -n django-environ-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 LANG=en_US.UTF-8
-%pytest environ/test.py
+%pytest
 
 %files %{python_files}
-%doc AUTHORS.rst CHANGELOG.rst README.rst README.rst.txt
+%doc CHANGELOG.rst README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/environ
+%{python_sitelib}/django_environ-%{version}.dist-info
 
 %changelog
