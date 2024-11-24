@@ -312,4 +312,12 @@ SPDX format - plus it appears as though only one license relevant binary is crea
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1168342</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>1d9867108fe10f3efcfe79d897ae7e36</srcmd5>
+    <version>2.8.1</version>
+    <time>1732442703</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1226033</requestid>
+  </revision>
 </revisionlist>

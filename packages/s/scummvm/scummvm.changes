@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 11 11:11:11 UTC 2024 - olaf@aepfle.de
+
+- Convert BuildRequires from libfaad-devel to pkgconfig(faad2)
+
+-------------------------------------------------------------------
 Tue Apr  9 12:01:45 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - Update to 2.8.1

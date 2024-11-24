@@ -54,7 +54,7 @@ BuildRequires:  pkgconfig(zlib)
 Suggests:       %{name}-extra
 Suggests:       %{name}-tools
 %if %{with faad}
-BuildRequires:  libfaad-devel
+BuildRequires:  pkgconfig(faad2)
 %endif
 %if %{with mad}
 BuildRequires:  pkgconfig(mad)
