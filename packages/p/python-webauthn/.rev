@@ -22,4 +22,16 @@
 - Initial release of python-webauthn 2.1.0</comment>
     <requestid>1183950</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1188e2a55ee926d5c3726266fc0ce760</srcmd5>
+    <version>2.3.0</version>
+    <time>1732442681</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.3.0:
+  * The minimum supported version of Python has been bumped up to
+    Python 3.9, with ongoing testing from Python 3.9 through
+    Python 3.13. Dependencies have been updated as well,
+    including upgrading to `cryptography==43.0.3`</comment>
+    <requestid>1225983</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-webauthn
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        Pythonic WebAuthn
 License:        BSD-3-Clause
@@ -31,14 +31,14 @@ BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module asn1crypto >= 1.4.0}
 BuildRequires:  %{python_module cbor2 >= 5.4.6}
-BuildRequires:  %{python_module cryptography >= 41.0.7}
+BuildRequires:  %{python_module cryptography >= 43.0.3}
 BuildRequires:  %{python_module pyOpenSSL >= 23.3.0}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-asn1crypto >= 1.4.0
 Requires:       python-cbor2 >= 5.4.6
-Requires:       python-cryptography >= 41.0.7
+Requires:       python-cryptography >= 43.0.3
 Requires:       python-pyOpenSSL >= 23.3.0
 BuildArch:      noarch
 %python_subpackages

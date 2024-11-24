@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov 23 16:39:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.0:
+  * The minimum supported version of Python has been bumped up to
+    Python 3.9, with ongoing testing from Python 3.9 through
+    Python 3.13. Dependencies have been updated as well,
+    including upgrading to `cryptography==43.0.3`
+
+-------------------------------------------------------------------
 Sat Jun 29 07:01:01 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.0:
