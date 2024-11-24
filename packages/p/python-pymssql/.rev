@@ -66,4 +66,14 @@
   * Add python 3.13 Linux wheels (closes #900).</comment>
     <requestid>1198047</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1e8014e4af4067c4577e1bb7e67dcbd5</srcmd5>
+    <version>2.3.2</version>
+    <time>1732442702</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.3.2
+  * Update FreeTDS to 1.4.23.
+  * Workaround setuptools-74.0 changes.</comment>
+    <requestid>1226014</requestid>
+  </revision>
 </revisionlist>

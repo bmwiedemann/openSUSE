@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov 23 12:40:00 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.2
+  * Update FreeTDS to 1.4.23.
+  * Workaround setuptools-74.0 changes.
+
+-------------------------------------------------------------------
 Sat Aug 31 11:42:42 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.1:
