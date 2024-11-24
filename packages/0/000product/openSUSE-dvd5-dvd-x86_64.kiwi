@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20241122" schemaversion="4.1">
+<image name="OBS__openSUSE___20241124" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20241122</productvar>
+      <productvar name="VERSION">20241124</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20241122,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20241124,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20241122/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20241124/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -219,6 +219,7 @@
       <repopackage name="busybox-grep"/>
       <repopackage name="busybox-gzip"/>
       <repopackage name="busybox-misc"/>
+      <repopackage name="busybox-procps"/>
       <repopackage name="busybox-psmisc"/>
       <repopackage name="busybox-sed"/>
       <repopackage name="busybox-sendmail"/>
@@ -617,14 +618,10 @@
       <repopackage name="gnome-session-core"/>
       <repopackage name="gnome-session-lang"/>
       <repopackage name="gnome-session-wayland"/>
-      <repopackage name="gnome-session-xsession"/>
       <repopackage name="gnome-settings-daemon"/>
       <repopackage name="gnome-settings-daemon-lang"/>
       <repopackage name="gnome-shell"/>
       <repopackage name="gnome-shell-calendar"/>
-      <repopackage name="gnome-shell-classic"/>
-      <repopackage name="gnome-shell-extensions-common"/>
-      <repopackage name="gnome-shell-extensions-common-lang"/>
       <repopackage name="gnome-shell-lang"/>
       <repopackage name="gnome-shell-search-provider-contacts"/>
       <repopackage name="gnome-shell-search-provider-gnome-calculator"/>
@@ -3163,6 +3160,7 @@
       <repopackage name="mozilla-nss-tools"/>
       <repopackage name="MozillaFirefox"/>
       <repopackage name="MozillaFirefox-branding-openSUSE"/>
+      <repopackage name="MozillaFirefox-branding-upstream"/>
       <repopackage name="MozillaFirefox-translations-common"/>
       <repopackage name="mpg123-openal"/>
       <repopackage name="mpt-firmware"/>
@@ -3358,14 +3356,12 @@
       <repopackage name="patterns-gnome-gnome"/>
       <repopackage name="patterns-gnome-gnome_basic"/>
       <repopackage name="patterns-gnome-gnome_basis"/>
-      <repopackage name="patterns-gnome-gnome_basis_opt"/>
       <repopackage name="patterns-gnome-gnome_games"/>
       <repopackage name="patterns-gnome-gnome_imaging"/>
       <repopackage name="patterns-gnome-gnome_internet"/>
       <repopackage name="patterns-gnome-gnome_multimedia"/>
       <repopackage name="patterns-gnome-gnome_office"/>
       <repopackage name="patterns-gnome-gnome_utilities"/>
-      <repopackage name="patterns-gnome-gnome_x11"/>
       <repopackage name="patterns-gnome-gnome_yast"/>
       <repopackage name="patterns-gnome-sw_management_gnome"/>
       <repopackage name="patterns-kde-kde"/>

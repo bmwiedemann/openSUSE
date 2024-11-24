@@ -152,7 +152,6 @@ unsorted:
   - ModemManager-devel 
   - Modules 
   - Modules-doc 
-  - MozillaFirefox-branding-upstream 
   - MozillaFirefox-devel 
   - MozillaFirefox-translations-other 
   - MozillaThunderbird 
@@ -1812,7 +1811,6 @@ unsorted:
   - busybox-netcat 
   - busybox-patch 
   - busybox-policycoreutils 
-  - busybox-procps 
   - busybox-selinux-tools 
   - busybox-sh 
   - busybox-sha3sum 
@@ -7471,6 +7469,7 @@ unsorted:
   - gnome-screenshot-lang 
   - gnome-search-tool 
   - gnome-search-tool-lang 
+  - gnome-session-xsession 
   - gnome-settings-daemon-devel 
   - gnome-shell-classic-xsession 
   - gnome-shell-devel 
@@ -7483,6 +7482,7 @@ unsorted:
   - gnome-shell-extension-system-monitor 
   - gnome-shell-extension-terminus 
   - gnome-shell-extension-user-theme 
+  - gnome-shell-extensions-common-lang 
   - gnome-shell-search-provider-bijiben 
   - gnome-shell-search-provider-boxes 
   - gnome-shell-search-provider-eolie 
@@ -21251,6 +21251,7 @@ unsorted:
   - patterns-enlightenment-enlightenment 
   - patterns-gnome-devel_gnome 
   - patterns-gnome-gnome_ide 
+  - patterns-gnome-gnome_x11 
   - patterns-hpc-libraries 
   - patterns-kde-devel_kde_frameworks 
   - patterns-kde-devel_kde_frameworks6 
