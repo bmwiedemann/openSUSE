@@ -1,7 +1,7 @@
 #
 # spec file for package python-et_xmlfile
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-et_xmlfile
-Version:        1.0.1
+Version:        2.0.0
 Release:        0
 Summary:        An implementation of lxml.xmlfile for the standard library
 License:        MIT
-URL:            https://bitbucket.org/openpyxl/et_xmlfile
-Source0:        https://files.pythonhosted.org/packages/source/e/et_xmlfile/et_xmlfile-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/biydnd/et_xmlfile/master/LICENCE.rst
+URL:            https://foss.heptapod.net/openpyxl/et_xmlfile
+Source0:        https://foss.heptapod.net/openpyxl/et_xmlfile/-/archive/%{version}/et_xmlfile-%{version}.tar.gz
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -46,7 +45,6 @@ the openpyxl project but is now a standalone module.
 %prep
 %setup -q -n et_xmlfile-%{version}
 rm -rf *.egg-info
-cp -a %{SOURCE1} .
 
 %build
 %pyproject_wheel

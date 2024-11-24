@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Nov 23 18:10:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.0:
+  * Add new writer method and namespace Element / parsing
+  * Readd the Element with namespaces
+  * Add el_has_namespaces to ElementTree classes
+  * Deprecate python 3.6 and 3.7 as nsetree requires a more recent XMLParser
+  * Fix docstrings of _IncrementalFileWriter
+
+-------------------------------------------------------------------
 Thu Sep 26 18:03:11 UTC 2024 - Guang Yee <gyee@suse.com>
 
 - Enable sle15_python_module_pythons.
@@ -37,7 +47,7 @@ Wed Jul 26 08:56:00 UTC 2017 - bruno@ioda-net.ch
 -------------------------------------------------------------------
 Wed Jun  7 12:56:15 UTC 2017 - bruno@ioda-net.ch
 
-- Move to singlespec 
+- Move to singlespec
 - Add missing requires python-lxml
 - Prepare everything for testing (wip)
 
@@ -56,5 +66,5 @@ Sun May  8 07:14:53 UTC 2016 - arun@gmx.de
 -------------------------------------------------------------------
 Thu Nov 19 16:53:37 UTC 2015 - bruno@ioda-net.ch
 
-- Initial Release : build python3 
+- Initial Release : build python3
 

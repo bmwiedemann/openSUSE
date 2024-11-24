@@ -44,4 +44,20 @@
     <comment></comment>
     <requestid>1218491</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4963069872df62a2a9c5fec05794ae84</srcmd5>
+    <version>2.0.0</version>
+    <time>1732442696</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0.0:
+  * Add new writer method and namespace Element / parsing
+  * Readd the Element with namespaces
+  * Add el_has_namespaces to ElementTree classes
+  * Deprecate python 3.6 and 3.7 as nsetree requires a more recent XMLParser
+  * Fix docstrings of _IncrementalFileWriter
+
+- Move to singlespec
+- Initial Release : build python3</comment>
+    <requestid>1226003</requestid>
+  </revision>
 </revisionlist>
