@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-types-humanfriendly
-Version:        10.0.1.11
+Version:        10.0.1.20241105
 Release:        0
 Summary:        Typing stubs for humanfriendly
 License:        Apache-2.0

@@ -7,4 +7,15 @@
     <comment></comment>
     <requestid>1136474</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>772de6aa1a517b3fb4b9136ef181cfa1</srcmd5>
+    <version>10.0.1.20241105</version>
+    <time>1732442683</time>
+    <user>anag+factory</user>
+    <comment>- update to 10.0.1.20241105:
+  * remove unused io-related allowlist entries
+  * fallout from https://github.com/python/typeshed/pull/12947
+  * fixes https://github.com/python/typeshed/issues/12954</comment>
+    <requestid>1225984</requestid>
+  </revision>
 </revisionlist>
