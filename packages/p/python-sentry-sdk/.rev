@@ -432,4 +432,38 @@ Reduce dependencies from 260MiB to 14MiB.
     - Disable broken RQ test in newly-released RQ 2.0 (#3708) by</comment>
     <requestid>1224204</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>28753b24c22b33f6fd31190ec7c3c6da</srcmd5>
+    <version>2.19.0</version>
+    <time>1732442679</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.19.0:
+  * New: introduce `rust_tracing` integration. See https://docs.s
+    entry.io/platforms/python/integrations/rust_tracing/ (#3717)
+  * Auto enable Litestar integration
+  * Deprecate `sentry_sdk.init` context manager
+  * feat(spotlight): Send PII to Spotlight when no DSN is set
+  * feat(spotlight): Add info logs when Sentry is enabled
+  * feat(spotlight): Inject Spotlight button on Django
+  * feat(spotlight): Auto enable cache_spans for Spotlight on
+    DEBUG
+  * fix(logging): Handle parameter `stack_info` for the
+    `LoggingIntegration`
+  * fix(pure-eval): Make sentry-sdk[pure-eval] installable with
+    pip==24.0
+  * fix(rust_tracing): include_tracing_fields arg to control
+    unvetted data in rust_tracing integration
+  * fix(aws) Fix aws lambda tests (by reducing event size)
+  * fix(arq): fix integration with Worker settings as a dict
+  * fix(httpx): Prevent Sentry baggage duplication
+  * fix(falcon): Don't exhaust request body stream
+  * fix(integrations): Check `retries_left` before capturing
+    exception
+  * fix(openai): Use name instead of description
+  * test(gcp): Only run GCP tests when they should
+
+- Remove ipdb from BuildRequires, it should have been removed with 2.8.
+  * Additional integrations will now be activated automatically if</comment>
+    <requestid>1225980</requestid>
+  </revision>
 </revisionlist>

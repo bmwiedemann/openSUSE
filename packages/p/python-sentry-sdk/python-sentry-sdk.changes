@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Nov 23 16:34:15 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.19.0:
+  * New: introduce `rust_tracing` integration. See https://docs.s
+    entry.io/platforms/python/integrations/rust_tracing/ (#3717)
+  * Auto enable Litestar integration
+  * Deprecate `sentry_sdk.init` context manager
+  * feat(spotlight): Send PII to Spotlight when no DSN is set
+  * feat(spotlight): Add info logs when Sentry is enabled
+  * feat(spotlight): Inject Spotlight button on Django
+  * feat(spotlight): Auto enable cache_spans for Spotlight on
+    DEBUG
+  * fix(logging): Handle parameter `stack_info` for the
+    `LoggingIntegration`
+  * fix(pure-eval): Make sentry-sdk[pure-eval] installable with
+    pip==24.0
+  * fix(rust_tracing): include_tracing_fields arg to control
+    unvetted data in rust_tracing integration
+  * fix(aws) Fix aws lambda tests (by reducing event size)
+  * fix(arq): fix integration with Worker settings as a dict
+  * fix(httpx): Prevent Sentry baggage duplication
+  * fix(falcon): Don't exhaust request body stream
+  * fix(integrations): Check `retries_left` before capturing
+    exception
+  * fix(openai): Use name instead of description
+  * test(gcp): Only run GCP tests when they should
+
+-------------------------------------------------------------------
 Thu Nov 14 11:54:57 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 2.18.0:
@@ -44,7 +72,7 @@ Thu Nov 14 11:54:57 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 -------------------------------------------------------------------
 Tue Nov 12 02:14:34 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Remove ipdb from BuildRequires, it should have been removed with 2.8. 
+- Remove ipdb from BuildRequires, it should have been removed with 2.8.
 
 -------------------------------------------------------------------
 Fri Nov  1 15:10:38 UTC 2024 - ecsos <ecsos@opensuse.org>
@@ -204,7 +232,7 @@ Wed Jul 17 13:51:46 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.10.0
   * refactored a big part of the foundation of the SDK
-  * Additional integrations will now be activated automatically if 
+  * Additional integrations will now be activated automatically if
     the SDK detects the respective package is installed
   * Added new API for custom instrumentation: new_scope, isolation_scope
   * Many breaking changes, see CHANGELOG.md
