@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sat Nov 16 16:07:38 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.4.2:
+  * runner.go: Propagate panics back to the user.
+  * runner.go: Increase survivability of main processing loop
+  * build: fix arm container image (#7674)
+  * add line numbers for parser errors (#7326)
+  * chore(deps): bump golang.org/x dependencies (#7655)
+  * runner.go: Don't trim whitespace from inputs
+  * runner.go: Enforce NUM_PARALLEL directly in the runner
+  * cmd: preserve exact bytes when displaying template/system layers (#7586)
+  * fix(mllama): sync backend between batches
+  * runner.go: Fix off-by-one for num predicted
+  * CI: give windows lint more time (#7635)
+  * Jetpack support for Go server (#7217)
+  * doc: capture numeric group requirement (#6941)
+  * docs: Capture docker cgroup workaround (#7519)
+  * runner.go: Make KV entry accounting more robust
+  * readme: add aichat terminal app to community integrations (#7418)
+  * api: fix typos in Go Doc comments (#7620)
+  * readme: add GoLamify to community integrations (#7521)
+  * readme: add browser extension that enables using Ollama for interacting with web pages (#5827)
+  * docs: add mentions of Llama 3.2 (#7517)
+  * api: fix typo in python ClientFromEnvironment docs (#7604)
+  * readme: add llama3.2-vision to model list (#7580)
+
+-------------------------------------------------------------------
+Mon Nov 11 13:57:46 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Add patch 01-build-verbose.patch to add the -v option
+  to go build
+
+- Update to version 0.4.1:
+  * runner.go: Check for zero length images
+  * docs: update langchainpy.md with proper model name (#7527)
+  * Set macos min version for all architectures (#7579)
+  * win: remove preview title from installer (#7529)
+  * Workaround buggy P2P ROCm copy on windows (#7466)
+  * Debug logging for nvcuda init (#7532)
+  * Align rocm compiler flags (#7467)
+  * Be explicit for gpu library link dir (#7560)
+  * docs: OLLAMA_NEW_RUNNERS no longer exists
+  * runner.go: Remove unused arguments
+  * sched: Lift parallel restriction for multimodal models except mllama
+
+-------------------------------------------------------------------
 Thu Nov 07 12:06:09 UTC 2024 - adrian@suse.de
 
 - Update to version 0.4.0:

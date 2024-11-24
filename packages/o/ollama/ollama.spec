@@ -17,7 +17,7 @@
 
 
 Name:           ollama
-Version:        0.4.0
+Version:        0.4.2
 Release:        0
 Summary:        Tool for running AI models on-premise
 License:        MIT
@@ -26,6 +26,7 @@ Source:         %{name}-%{version}.tar
 Source1:        vendor.tar.zstd
 Source2:        ollama.service
 Source3:        %{name}-user.conf
+Patch1:         01-build-verbose.patch
 BuildRequires:  cmake >= 3.24
 BuildRequires:  git
 BuildRequires:  sysuser-tools
@@ -86,7 +87,7 @@ export CC=gcc-12
 # pie doesn't work with gcc12 on leap
 export GOFLAGS="-mod=vendor"
 %endif
-go test ./...
+go test -v ./...
 
 %pre -f %{name}.pre
 %service_add_pre %{name}.service
