@@ -18,7 +18,7 @@
 
 
 Name:           gede
-Version:        2.20.1
+Version:        2.20.2
 Release:        0
 Summary:        Qt-based GUI to GDB
 License:        BSD-2-Clause
