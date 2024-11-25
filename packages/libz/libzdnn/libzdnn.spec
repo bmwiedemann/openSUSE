@@ -17,15 +17,21 @@
 
 
 Name:           libzdnn
-Version:        1.0.1
+Version:        1.1.1
 Release:        0
 Summary:        IBM Z Deep Learning Library
 License:        Apache-2.0
 Group:          Development/Libraries/Other
 URL:            https://github.com/IBM/zDNN
-Source:         zDNN-1.0.1.tar.gz
+Source:         zDNN-1.1.1.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  gcc-c++
+%if %{gcc_version} < 13
+BuildRequires:  gcc13-c++
+%else
+BuildRequires:  gcc%{gcc_version}-c++
+%endif
+
 ExclusiveArch:  s390x
 
 %description
@@ -63,6 +69,15 @@ shared library for the libzdnn (zDNN) RPM.
 %autosetup -p1 -n zDNN-%{version}
 
 %build
+
+export CC=gcc-%{gcc_version}
+export CXX=g++-%{gcc_version}
+
+%if %{gcc_version} < 13
+export CC=gcc-13
+export CXX=g++-13
+%endif
+
 autoconf
 %configure
 %make_build build

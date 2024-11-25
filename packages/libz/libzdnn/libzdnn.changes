@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Nov 25 07:38:55 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Amended the .spec file
+
+-------------------------------------------------------------------
+Fri Nov 22 16:59:23 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade libzdnn to version 1.1.1 (jsc#PED-11113, jsc#PED-10304, jsc#PED-10257) 
+  * Bump in preparation of v1.1.1 
+  * Fix Linux build issues 
+
+-------------------------------------------------------------------
+Mon Nov 18 07:15:24 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade libzdnn to version 1.1.0 (jsc#PED-11113, jsc#PED-10304, jsc#PED-10257) 
+  * Bump to v1.1.0
+  * fix: use system LDFLAGS
+
+-------------------------------------------------------------------
 Tue Feb 13 09:00:47 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Changed the Package Summary (jsc#PED-5445)
