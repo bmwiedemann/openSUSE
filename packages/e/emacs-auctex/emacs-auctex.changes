@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 21 15:26:38 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use gzip -n for deterministic gzip headers
+
+-------------------------------------------------------------------
 Tue Nov 19 14:49:44 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Update to AUCTeX ELPA version 14.0.7 (2024-10-05)

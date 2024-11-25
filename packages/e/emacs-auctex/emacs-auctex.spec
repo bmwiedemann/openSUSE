@@ -158,7 +158,7 @@ unelc ()
     popd
 
     pushd %{buildroot}%{_sitedir}/auctex-%{version}
-	find -name '*.el' -exec gzip -f9 '{}' \+
+	find -name '*.el' -exec gzip -n -f9 '{}' \+
 	unelc auctex-autoloads.elc
 	unelc auctex-pkg.elc
 	unelc auctex.elc
