@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Nov 25 14:30:18 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 2024.11.1
+  * Add cloudflared tunnel health command
+  * PPIP-2310: Update quick tunnel disclaimer
+  * TUN-8621: Prevent QUIC connection from closing before grace period
+    after unregistering
+  * TUN-8484: Print response when QuickTunnel can't be unmarshalled
+  * TUN-8592: Use metadata from the edge to determine if request body is
+    empty for QUIC transport
+  * TUN-8621: Fix cloudflared version in change notes to account for 
+    release date
+  * TUN-8638: Add datagram v3 serializers and deserializers
+  * TUN-8685: Bump coredns dependency
+  * TUN-8688: Correct UDP bind for IPv6 edge connectivity on macOS
+  * TUN-8694: Fix github release script
+  * TUN-8694: Rework release script
+  * TUN-8661: Refactor connection methods to support future different
+    datagram muxing methods
+  * TUN-8692: remove dashes from session id
+  * TUN-8708: Bump python min version to 3.10
+  * TUN-8667: Add datagram v3 session manager
+  * TUN-8553: Bump go to 1.22.5 and go-boring 1.22.5-1
+  * TUN-8700: Add datagram v3 muxer
+  * TUN-8646: Allow experimental feature support for datagram v3
+  * TUN-8641: Expose methods to simplify V3 Datagram parsing on the edge
+  * VULN-66059: remove ssh server tests
+  * TUN-8709: Add session migration for datagram v3
+  * TUN-8701: Add metrics and adjust logs for datagram v3
+  * add: new go-fuzz targets
+  * TUN-8701: Simplify flow registration logs for datagram v3
+
+-------------------------------------------------------------------
 Fri Sep 13 12:22:21 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 2024.9.1

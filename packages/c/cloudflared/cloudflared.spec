@@ -17,7 +17,7 @@
 
 
 Name:           cloudflared
-Version:        2024.9.1
+Version:        2024.11.1
 Release:        0
 Summary:        Cloudflare Tunnel client
 License:        Apache-2.0
