@@ -1043,4 +1043,12 @@ can be accepted after ecj-4.2.1 version upgrade
     <comment>Adapt the scripts to run also with javapackages-tools &gt;= 6.3</comment>
     <requestid>1205527</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>aad251553397f65ce41126d6ffbf9a18</srcmd5>
+    <version>9.0.97</version>
+    <time>1732573414</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1226304</requestid>
+  </revision>
 </revisionlist>
