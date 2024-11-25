@@ -1309,4 +1309,41 @@ Fixed macro (as commented) (forwarded request 885296 from susnux)</comment>
   + 7z: error when creating archives with volumes. (forwarded request 1175527 from dimstar)</comment>
     <requestid>1175529</requestid>
   </revision>
+  <revision rev="166" vrev="1">
+    <srcmd5>285e3bfd4b6e887baa3ed8c3c6fee2a8</srcmd5>
+    <version>44.4</version>
+    <time>1732573403</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 44.4:
+  + Features:
+    - Added bzip3 support.
+    - File selector: show volumes and allow to mount unmounted
+      volumes.
+    - New archive dialog: allow to use all the possible extensions
+      a mime type supports, and allow to specify a name without
+      extension, which will be concatenated to the selected
+      extension to get the full name.
+    - File selector: save and restore the sort order.
+    - Properties dialog: show an icon, make the headerbar flat.
+  + Bugfixes:
+    - Error opening rar archive in RAR4 format and password
+      protected.
+    - Rar: fixed file list parsing for some encrypted archives.
+    - Fixed error when renaming a file inside an encrypted archive.
+    - Disabled the native appchooser by default.
+    - 'Show destination' sometimes opens the wrong folder.
+    - 'Show destination' sometimes doesn't show anything.
+    - Use the native appchooser only for a single file.
+    - Show flat headerbar in empty state.
+    - Fixed error messages impossible to close.
+    - Fixed segfaults when opening an empty .deb file.
+    - --extract-to keeps asking to create a directory.
+    - Fixed wrong context menu item activation.
+    - Avoid the exit timeout unless file-roller was launched with
+      `--service`.
+    - Error when opening the created archive after saving as 7zip
+      multi-volume.
+  + Updated translations. (forwarded request 1226125 from iznogood)</comment>
+    <requestid>1226293</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Nov 24 20:10:06 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.4:
+  + Features:
+    - Added bzip3 support.
+    - File selector: show volumes and allow to mount unmounted
+      volumes.
+    - New archive dialog: allow to use all the possible extensions
+      a mime type supports, and allow to specify a name without
+      extension, which will be concatenated to the selected
+      extension to get the full name.
+    - File selector: save and restore the sort order.
+    - Properties dialog: show an icon, make the headerbar flat.
+  + Bugfixes:
+    - Error opening rar archive in RAR4 format and password
+      protected.
+    - Rar: fixed file list parsing for some encrypted archives.
+    - Fixed error when renaming a file inside an encrypted archive.
+    - Disabled the native appchooser by default.
+    - 'Show destination' sometimes opens the wrong folder.
+    - 'Show destination' sometimes doesn't show anything.
+    - Use the native appchooser only for a single file.
+    - Show flat headerbar in empty state.
+    - Fixed error messages impossible to close.
+    - Fixed segfaults when opening an empty .deb file.
+    - --extract-to keeps asking to create a directory.
+    - Fixed wrong context menu item activation.
+    - Avoid the exit timeout unless file-roller was launched with
+      `--service`.
+    - Error when opening the created archive after saving as 7zip
+      multi-volume.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue May 21 11:02:13 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 44.3:
