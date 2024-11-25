@@ -102,4 +102,15 @@
     <comment></comment>
     <requestid>1208555</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>395f4b877102f9ee410c10d171148d65</srcmd5>
+    <version>47.2</version>
+    <time>1732573398</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 47.2:
+  + Don't call style manager in application constructor since this
+    is too early. Do it in startup instead. Without this fix, GTK
+    4.17.0 will terminate the app on startup. (forwarded request 1225966 from iznogood)</comment>
+    <requestid>1226288</requestid>
+  </revision>
 </revisionlist>
