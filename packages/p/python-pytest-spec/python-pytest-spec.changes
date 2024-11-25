@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov 25 09:28:38 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.0:
+  * v.4.0.0
+  * Drop support for Python 2.7, 3.5, 3.6, 3.7
+  * Added support for Python 3.11, 3.12
+  * Migrate project back to pip from poetry
+  * Replace mock by version from stdlib
+- drop python-pytest-spec-nopython2.patch: upstream
+
+-------------------------------------------------------------------
 Thu Sep 14 11:59:56 UTC 2023 - pgajdos@suse.com
 
 - drop python2 support completely, python-six not required

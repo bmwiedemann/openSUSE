@@ -69,4 +69,18 @@
 </comment>
     <requestid>1111343</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>58fc225a3e54baca2a43ff95d8ab6a99</srcmd5>
+    <version>4.0.0</version>
+    <time>1732573352</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.0.0:
+  * v.4.0.0
+  * Drop support for Python 2.7, 3.5, 3.6, 3.7
+  * Added support for Python 3.11, 3.12
+  * Migrate project back to pip from poetry
+  * Replace mock by version from stdlib
+- drop python-pytest-spec-nopython2.patch: upstream</comment>
+    <requestid>1226226</requestid>
+  </revision>
 </revisionlist>
