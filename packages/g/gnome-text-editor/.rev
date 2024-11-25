@@ -338,4 +338,21 @@
     <comment></comment>
     <requestid>1216805</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0f159a1a7c808e456730b2a6dd741008</srcmd5>
+    <version>47.2</version>
+    <time>1732573395</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 47.2:
+  + Unescaping URIs for tooltips to improve legibility
+  + Fix initial-trailing-newline when settings auto-discovery is
+    disabled
+  + Fix save-as when using admin:// URIs
+  + Pin document encoding when loading a file
+  + Override extend_selection for multi-mouse-press to avoid some
+    slow corner cases in minified JSON files
+  + Markup fixes in properties dialog
+  + Updated translations. (forwarded request 1225892 from iznogood)</comment>
+    <requestid>1226283</requestid>
+  </revision>
 </revisionlist>
