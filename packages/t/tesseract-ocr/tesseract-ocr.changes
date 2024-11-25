@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Nov 25 10:47:06 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update versioned dependencies and add missing buildrequirements
+- Bump Leap version of gcc
+
+-------------------------------------------------------------------
+Mon Nov 25 06:36:09 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.5.0
+  - Fix TARGET_PDB_FILE error for static linking. in #4271
+  - Make regular usage of CMAKE_INSTALL_LIBDIR and GNUInstallDirs in #4272
+  - Ignore illegal TESSDATA_PREFIX (not existing filesystem entry, issue #4277) in #4278
+  - Fix confidence output for the PAGE XML renderer in #4283
+  - Set hOCR capabilities ocrp_dir and ocrp_lang unconditionally in #4301
+  - Reduce clock syscalls in #4303
+  - Calculate row bounding box in single-word mode per #4304 in #4305
+  - Replace access/_access by std::filesystem::exists in #4307
+  - Modernize code for list of available models in #4308
+  - Fix performance and other issues reported by Codacy in #4309
+  - Remove unnecessary assignment and assertions in #4313
+  - Update code for tprintf in #4306
+  - Add C++ stream for log messages and use it in two debug messages in #4314
+  - cmake: Correctly set the soversion based on SemVer properties in #4319
+  - Replace deprecated runner macos-12 by macos-latest in GitHub actions in #4326
+  - Modernize code for renderers and remove filename conversion for Windows in #4330
+  - Fix some typos and grammer issues in #4337
+  - Add GitHub action and Makefile target for Windows installer in #4341
+  - Support symbolic values for --oem and --psm options in #4344
+  - Replace some tprintf by tesserr stream (fixes Windows compiler warnings) in #4345
+  - Add RISC-V V support #4346
+  - Fix and improve Windows installer in #4348
+  - Remove Tensorflow support in #4350
+  - Update submodule googletest to release v1.15.2 in #4352
+
+-------------------------------------------------------------------
 Tue Jul  2 17:03:59 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to version 5.4.1:

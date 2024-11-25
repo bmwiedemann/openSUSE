@@ -18,7 +18,7 @@
 
 %define lname	libtesseract5
 Name:           tesseract-ocr
-Version:        5.4.1
+Version:        5.5.0
 Release:        0
 Summary:        Open Source OCR Engine
 License:        Apache-2.0 AND GPL-2.0-or-later
@@ -44,15 +44,16 @@ BuildRequires:  pkgconfig(icu-i18n) >= 52.1
 BuildRequires:  pkgconfig(icu-uc) >= 52.1
 BuildRequires:  pkgconfig(lept) >= 1.74
 BuildRequires:  pkgconfig(libarchive)
-BuildRequires:  pkgconfig(pango) >= 1.22.0
-BuildRequires:  pkgconfig(pangocairo) >= 1.22.0
-BuildRequires:  pkgconfig(pangoft2) >= 1.22.0
+BuildRequires:  pkgconfig(libtiff-4)
+BuildRequires:  pkgconfig(pango) >= 1.38.0
+BuildRequires:  pkgconfig(pangocairo)
+BuildRequires:  pkgconfig(pangoft2)
 Recommends:     tesseract-ocr-traineddata-english
 %{?suse_build_hwcaps_libs}
 %if 0%{?suse_version} > 1550
 BuildRequires:  gcc-c++
 %else
-BuildRequires:  gcc12-c++
+BuildRequires:  gcc13-c++
 %endif
 
 %description
@@ -83,8 +84,8 @@ open-sourced by HP and UNLV in 2005. From 2007 it is developed by Google.
 
 %build
 %if 0%{?suse_version} < 1550
-export CC=gcc-12
-export CXX=g++-12
+export CC=gcc-13
+export CXX=g++-13
 %endif
 
 autoreconf -fiv
