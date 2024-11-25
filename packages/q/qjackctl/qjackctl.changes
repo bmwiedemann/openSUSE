@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Nov 25 12:33:19 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.0.3
+  - Long missing D-Bus method slot added: "reset"
+    (dbus-send --system / org.rncbc.qjackctl.reset).
+  - Graph: Node reference positioning changed to the top-left corner,
+    improving the base snapping-to-grid perception.
+  - Prepping up next development cycle (Qt >= 6.8)
+- Changes from 1.0.2
+  - Graph: when visible the thumb-view may now be drag-moved over
+    to a different corner position anytime.
+  - Session: introducing new Save session name/directory dialog.
+  - Connections: connector line colors are now uniquely mapped on
+    a (readable/output) client name basis.
+
+-------------------------------------------------------------------
 Fri Aug  2 10:03:33 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.0.1
