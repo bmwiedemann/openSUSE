@@ -133,4 +133,12 @@
     <comment>Adapt the scripts to run also with javapackages-tools &gt;= 6.3</comment>
     <requestid>1205528</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>45ae1a6b3e29a1be8808a3a6c57608c7</srcmd5>
+    <version>10.1.33</version>
+    <time>1732573412</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1226303</requestid>
+  </revision>
 </revisionlist>
