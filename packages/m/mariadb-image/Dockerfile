@@ -20,13 +20,20 @@
 #!BuildTag: opensuse/mariadb:11.6
 #!BuildTag: opensuse/mariadb:latest
 
-FROM opensuse/tumbleweed:latest
+FROM opensuse/bci/bci-micro:latest AS target
+FROM opensuse/tumbleweed:latest AS builder
+COPY --from=target / /target
 
 RUN set -euo pipefail; \
-    zypper -n install --no-recommends mariadb mariadb-tools gawk timezone util-linux findutils zstd; \
+    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends coreutils findutils gawk mariadb mariadb-tools openssl sed timezone util-linux zstd; \
     zypper -n clean; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
-
+# sanity check that the version from the tag is equal to the version of mariadb that we expect
+RUN set -euo pipefail; \
+    [ "$(rpm --root /target -q --qf '%{version}' mariadb | \
+    cut -d '.' -f -2)" = "11.6" ]
+FROM opensuse/bci/bci-micro:latest
+COPY --from=builder /target /
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.application.mariadb
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed MariaDB Server"
@@ -46,9 +53,6 @@ LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["mariadbd"]
 EXPOSE 3306/tcp
-# sanity check that the version from the tag is equal to the version of mariadb-client that we expect
-RUN set -euo pipefail; [ "$(rpm -q --qf '%{version}' mariadb-client | cut -d '.' -f -2)" = "11.6" ]
-
 RUN set -euo pipefail; mkdir /docker-entrypoint-initdb.d
 
 # docker-entrypoint from https://github.com/MariaDB/mariadb-docker.git
