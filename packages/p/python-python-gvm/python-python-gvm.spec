@@ -25,6 +25,9 @@ License:        GPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/greenbone/python-gvm
 Source:         https://files.pythonhosted.org/packages/source/p/python_gvm/python_gvm-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE opensuse-fix-tests-1-core.patch -- bsc#1233398
+# Fix tests running with 1 core in VM
+Patch:          opensuse-fix-tests-1-core.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module setuptools}
@@ -49,7 +52,7 @@ Manager (GSM) appliance and its underlying Greenbone Vulnerability Manager
 Greenbone Management Protocol (GMP) and Open Scanner Protocol (OSP).
 
 %prep
-%setup -q -n python_gvm-%{version}
+%autosetup -p1 -n python_gvm-%{version}
 
 %build
 %pyproject_wheel

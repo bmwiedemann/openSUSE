@@ -84,4 +84,14 @@
     <comment></comment>
     <requestid>1223938</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>b9b3dad925d8e47387633ae3546a8c88</srcmd5>
+    <version>24.8.0</version>
+    <time>1732573364</time>
+    <user>anag+factory</user>
+    <comment>- Add opensuse-fix-tests-1-core.patch custom patch to fix tests
+  running in OBS with limited resources, running on 1-core-VM.
+  bsc#1233398</comment>
+    <requestid>1226247</requestid>
+  </revision>
 </revisionlist>

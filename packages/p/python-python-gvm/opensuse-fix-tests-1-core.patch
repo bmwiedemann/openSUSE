@@ -1,0 +1,18 @@
+Index: python_gvm-24.8.0/tests/connections/test_unix_socket_connection.py
+===================================================================
+--- python_gvm-24.8.0.orig/tests/connections/test_unix_socket_connection.py
++++ python_gvm-24.8.0/tests/connections/test_unix_socket_connection.py
+@@ -62,6 +62,13 @@ class UnixSocketConnectionTestCase(unitt
+         connection.disconnect()
+ 
+     def test_unix_socket_connection_connect_send_bytes_read(self):
++        # Add sleep to make sure setup theading server is up and
++        # running even with limited resources, bsc#1233398
++        import time
++        import multiprocessing
++        if multiprocessing.cpu_count() == 1:
++            time.sleep(2)
++
+         connection = UnixSocketConnection(
+             path=self.socket_name, timeout=DEFAULT_TIMEOUT
+         )

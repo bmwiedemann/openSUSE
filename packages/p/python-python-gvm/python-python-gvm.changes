@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 25 10:29:53 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add opensuse-fix-tests-1-core.patch custom patch to fix tests
+  running in OBS with limited resources, running on 1-core-VM.
+  bsc#1233398
+
+-------------------------------------------------------------------
 Wed Nov 13 12:28:07 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 24.8.0
