@@ -32,7 +32,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  wxWidgets-3_0-devel
+BuildRequires:  wxWidgets-devel
 Requires:       mp3gain
 
 %description
