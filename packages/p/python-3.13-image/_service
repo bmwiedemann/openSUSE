@@ -1,0 +1,14 @@
+<services>
+  <service mode="buildtime" name="docker_label_helper"/>
+  <service mode="buildtime" name="kiwi_metainfo_helper"/>
+  <service name="replace_using_package_version" mode="buildtime">
+    <param name="file">Dockerfile</param>
+    <param name="regex">%%py313_ver%%</param>
+    <param name="package">python313-base</param>
+  </service>
+  <service name="replace_using_package_version" mode="buildtime">
+    <param name="file">Dockerfile</param>
+    <param name="regex">%%pip_ver%%</param>
+    <param name="package">python313-pip</param>
+  </service>
+</services>
