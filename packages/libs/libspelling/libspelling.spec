@@ -20,7 +20,7 @@
 %define api_ver 1
 
 Name:           libspelling
-Version:        0.4.4
+Version:        0.4.5
 Release:        0
 Summary:        A spellcheck library for GTK 4
 License:        LGPL-2.1-or-later

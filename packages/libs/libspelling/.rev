@@ -55,4 +55,19 @@
     <comment></comment>
     <requestid>1216793</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9cbaabf872f69b7daf9d908d08e11f8f</srcmd5>
+    <version>0.4.5</version>
+    <time>1732573397</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.4.5:
+  + Various robustness fixes for weak ref tracking
+  + Various GObject Introspection fixes
+  + A new build option to install a static library
+    (libspelling-1.a)
+  + Fix a minor leak of extra_word_chars for a language dictionary
+  + Fix ICU success check
+  + Updated translations. (forwarded request 1225893 from iznogood)</comment>
+    <requestid>1226284</requestid>
+  </revision>
 </revisionlist>
