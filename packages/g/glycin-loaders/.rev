@@ -69,4 +69,27 @@
 </comment>
     <requestid>1223957</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5c8708702babd049dc276b52011a77cb</srcmd5>
+    <version>1.1.2</version>
+    <time>1732573401</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.1.2:
+  + Added: Output loader output as debug messages. The loader
+    output is captured and added to errors. But it's not accessible
+    if the loader doesn't return. In that case, this feature is useful.
+  + Fixed:
+    - Fix jpegxl-rs version to 0.10.3. Version 0.10.4 does not
+      build on arm64 and builds libjxl instead of using the system
+      library.
+  + Fix memory format mapping for RGBA 32bit float image from
+    image-rs. This fixes rendering for a lot of OpenEXR images.
+  + glycin-heif: Disable bindgen for libheif-rs since it won't
+    build with libheif 1.19 or newer otherwise.
+- Drop glycin-loaders-libheif-non-default.patch: Upstream fixed the
+  build issue.
+
+  rebuild libheif-rs create as a workaround (forwarded request 1225969 from iznogood)</comment>
+    <requestid>1226289</requestid>
+  </revision>
 </revisionlist>

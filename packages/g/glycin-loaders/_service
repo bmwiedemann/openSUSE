@@ -3,7 +3,7 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://gitlab.gnome.org/sophie-h/glycin.git</param>
     <param name="scm">git</param>
-    <param name="revision">1.1.1</param>
+    <param name="revision">1.1.2</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">v?(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>
@@ -17,7 +17,7 @@
   </service>
   <service name="cargo_vendor" mode="manual">
   <param name="srcdir">glycin</param>
-  <param name="update">false</param>
+  <param name="update">true</param>
   </service>
 </services>
 

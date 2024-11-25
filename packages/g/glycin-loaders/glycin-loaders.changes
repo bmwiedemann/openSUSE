@@ -1,9 +1,27 @@
 -------------------------------------------------------------------
+Sat Nov 23 11:17:09 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.1.2:
+  + Added: Output loader output as debug messages. The loader
+    output is captured and added to errors. But it's not accessible
+    if the loader doesn't return. In that case, this feature is useful.
+  + Fixed:
+    - Fix jpegxl-rs version to 0.10.3. Version 0.10.4 does not
+      build on arm64 and builds libjxl instead of using the system
+      library.
+  + Fix memory format mapping for RGBA 32bit float image from
+    image-rs. This fixes rendering for a lot of OpenEXR images.
+  + glycin-heif: Disable bindgen for libheif-rs since it won't
+    build with libheif 1.19 or newer otherwise.
+- Drop glycin-loaders-libheif-non-default.patch: Upstream fixed the
+  build issue.
+
+-------------------------------------------------------------------
 Wed Nov 13 10:23:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update vendor tarball.
 - Add glycin-loaders-libheif-non-default.patch: change setting to
-  rebuld libheif-rs create as a workaround
+  rebuild libheif-rs create as a workaround
   (gh#Cykooz/libheif-rs#28).
 
 -------------------------------------------------------------------

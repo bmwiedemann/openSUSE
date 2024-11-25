@@ -19,15 +19,13 @@
 %bcond_without jxl
 
 Name:           glycin-loaders
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        Sandboxed image rendering
 License:        LGPL-2.1-or-later OR MPL-2.0
 URL:            https://gitlab.gnome.org/sophie-h/glycin
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-# PATCH-FIX-OPENSUSE glycin-loaders-libheif-non-default.patch -- Fix build with new libheif while we wait for new fixed release.
-Patch0:         glycin-loaders-libheif-non-default.patch
 
 BuildRequires:  cargo-packaging
 BuildRequires:  clang
