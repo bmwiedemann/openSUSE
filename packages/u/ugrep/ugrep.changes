@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov 23 10:07:23 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 7.1.0:
+  * add TUI glob editor syntax highlighting
+  * bin/ug(|rep)+: Let the helper script work if no helper is
+    available
+
+-------------------------------------------------------------------
 Sun Nov 17 17:55:42 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 7.0.4:
