@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 25 12:49:45 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 5.0.1:
+  * faster SIMD regex search methods
+  * improved anchor and word boundary matching speed and support
+  * new std::string_view strview() matcher method
+
+-------------------------------------------------------------------
 Thu Aug 15 19:11:01 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 4.5.0:
