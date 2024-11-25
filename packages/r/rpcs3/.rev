@@ -692,4 +692,106 @@
     <comment></comment>
     <requestid>1218220</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>f099c9147a9ace4858b0d5f94a9c0b9b</srcmd5>
+    <version>0.0.34~git20241116</version>
+    <time>1732573382</time>
+    <user>anag+factory</user>
+    <comment>- BuildRequire llvm-devel &gt;= 17: this is what is documented to be
+  required according to BUILDING.md.
+- Change service definitions to 'manual' instead of 'localonly':
+  localonly keep on running the service on every local build
+  attempt.
+- Change llvm-devel requires to llvm16-devel
+- Update to version 0.0.34~git20241116:
+  * VS: ignore opencv debug build guard (fix debug build)
+  * ci: Don't fetch opencv submodule unless on windows
+  * gitignore cleanup
+  * added missing -p option
+  * fixed CI for building on windows
+  * Improve and fix sln solution
+  * More constexpr
+  * Fix warning
+  * Add opencv to cmake
+  * Move opencv submodule to subdirectoty
+  * Qt: show warning if ps move tracking is not supported
+  * Update vm_native.cpp
+  * Progress Dialog: Fix recursion and concurrency use of text updates
+  * Implement lf_array::for_each
+  * Utilities\lockless.h: Flatten recusrion in lf_array
+  * Fix compilation
+  * Add HAVE_OPENCV preprocessor flag
+  * Windows: Add and deploy opencv files
+  * cellGem: implement real ps move handler
+  * util/vm_native.cpp: Fix memory leak
+  * overlays: localize RPCS3 progress dialog
+  * overlays: get localized values in home menu settings
+  * Qt: Add std::string GetSettingOptions
+  * overlays: add more overlay hint option to home menu settings
+  * overlays: remove unnecessary text logging
+  * overlays: add input debug overlay to home menu settings
+  * overlays: translate home menu settings
+  * fix: cannot copy OpenAl32.dll with CMake
+  * Qt: Replace some instances of QMap, QPair and QList
+  * Update curl to 8.11.0
+  * SPU: Fixup code comparison
+  * Fixup std::vector to std::span
+  * LV2: Fix thread notifications regression
+  * SPU Analyzer: Fix programs code caching
+  * Fix std::basic_string warnings (#16261)
+  * Qt: Replace QMap with std::map
+  * Fix sceNpScoreGetRankingByNpId when no score is registered
+  * sys_usbd: Better Dimensions Move Handling
+  * cellSaveData: Add autosave indicator (#15720)
+  * Fixup Emulator::GetBackgroundPicturePath()
+  * High-Resolution Game Background for loading
+  * Update SDL to 2.30.9
+  * Update FAudio to 24.11
+  * Update wolfssl to 5.7.4
+  * SPU: Optimize cellSpurs reservations
+  * Another attempt to fix fs::pending_file for hardlinks
+  * Print last system error on fs::error::unknown
+  * GUI: Fix welcome_dialog dereference
+  * utils/atomic.hpp: Make atomic_op reject non-non-const lvalue
+  * utils/atomic.cpp: Fixup utils::get_unique_tsc()
+  * Fixup GCM unmap event sending
+  * rpcs3_version: Bump to 0.0.34
+  * SPULLVMRecompiler: remove unnecessary bitcast
+  * Fixup sys_event_port_send
+  * Silence sys_ss_access_control_engine
+  * RSX/GCM: Fix memory unmapping for HLE GCM
+  * rsx/vm: Exclude events from VM mutex
+  * Win32/File.cpp: Use ReplaceFile for hardlink overwrite
+  * Fixup sys_event to check EBUSY only for PPU-&gt;PPU signals
+  * Specify that you only need the qtmultimedia when using aqt
+  * Add more info about Qt in BUILDING.md
+  * sys_event: Implement EBUSY for disconnection
+  * utils/sysinfo.cpp: Yield CPU time when measuring TSC freq
+  * Filesystem/Win32: Recreate hardlinks on fs::pending_file
+  * Fix get_system_time()
+  * Replace rsx::uclock with get_system_time()
+  * sys_event_flag_set: Minor improvement
+  * fix deprecation warnings in Qt 6.8
+  * Don't log &quot;always&quot; messages in fatal_error_listener until enabled
+  * sys_event_flag_set: Break atomic operation dependencies
+  * Compilation hotfix
+  * utils/sysinfo.cpp: New TSC calibration technique
+  * RawSpu: Optimize START register/commands
+  * utils: Make get_tsc_freq() inlined and non-blocking
+  * get_system_time(): Add fast TSC-based path
+  * asm: Fix utils::rational_mul optimization
+  * Optimize get_system_time using 128 bit math
+  * Implement u64_x_u64_=_u128 optimization
+  * rsx: Fix crash when host labels option is disabled
+  * Fix build and cleanup
+  * gl: Silence compiler warnings
+  * gl: Fix check_state compilation error
+  * cmake: Update build files for GL DMA
+  * gl: Finalize host labels implementation
+  * Whitespace
+  * rsx: Move the host job management into common code to share with GL
+  * gl: Implement basic DMA layer using AMD_pinned_memory
+</comment>
+    <requestid>1226259</requestid>
+  </revision>
 </revisionlist>

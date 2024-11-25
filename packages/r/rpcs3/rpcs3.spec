@@ -17,7 +17,7 @@
 
 
 Name:           rpcs3
-Version:        0.0.33~git20241017
+Version:        0.0.34~git20241116
 Release:        0
 Summary:        PS3 emulator/debugger
 License:        GPL-2.0-only
@@ -27,7 +27,7 @@ Source1:        intel-ittapi.tar.xz
 Patch1:         fix-test-files.patch
 Patch2:         fix-toolbar-color.patch
 BuildRequires:  gcc-c++
-BuildRequires:  (llvm-devel >= 16 with llvm-devel <= 18)
+BuildRequires:  llvm-devel >= 17
 BuildRequires:  cmake(x86-64) >= 3.14.1
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libedit)
