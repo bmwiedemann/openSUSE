@@ -20,13 +20,20 @@
 #!BuildTag: opensuse/mariadb-client:11.6
 #!BuildTag: opensuse/mariadb-client:latest
 
-FROM opensuse/tumbleweed:latest
+FROM opensuse/bci/bci-micro:latest AS target
+FROM opensuse/tumbleweed:latest AS builder
+COPY --from=target / /target
 
 RUN set -euo pipefail; \
-    zypper -n install --no-recommends mariadb-client; \
+    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends mariadb-client; \
     zypper -n clean; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
-
+# sanity check that the version from the tag is equal to the version of mariadb-client that we expect
+RUN set -euo pipefail; \
+    [ "$(rpm --root /target -q --qf '%{version}' mariadb-client | \
+    cut -d '.' -f -2)" = "11.6" ]
+FROM opensuse/bci/bci-micro:latest
+COPY --from=builder /target /
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.application.mariadb-client
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed MariaDB Client"
@@ -44,5 +51,3 @@ LABEL org.opensuse.release-stage="released"
 # endlabelprefix
 LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/mariadb-client-image/README.md"
 CMD ["mariadb"]
-# sanity check that the version from the tag is equal to the version of mariadb-client that we expect
-RUN set -euo pipefail; [ "$(rpm -q --qf '%{version}' mariadb-client | cut -d '.' -f -2)" = "11.6" ]
