@@ -19,14 +19,12 @@
 %define         sover 0
 %define         appid io.elementary.desktop.wm
 Name:           gala
-Version:        8.0.1
+Version:        8.0.3
 Release:        0
 Summary:        The Pantheon window manager
 License:        GPL-3.0-or-later
 URL:            https://github.com/elementary/gala
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# https://github.com/elementary/gala/pull/2090
-Patch0:         support-libmutter15.patch
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -45,7 +43,7 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libhandy-1)
-%if 0%{?suse_version} <= 1600
+%if 0%{?suse_version} < 1600
 BuildRequires:  pkgconfig(libmutter-13)
 %else
 BuildRequires:  pkgconfig(libmutter-15)
@@ -91,9 +89,11 @@ This package contains the development files for %{name}
 %lang_package
 
 %prep
-%autosetup -N
-%if 0%{?suse_version} == 1699
-%autopatch -p1
+%autosetup
+
+%if 0%{?suse_version} < 1600
+#fix Leap, as there is no valacheck
+sed -i -e 's|pid_t|int|g' vapi/libmutter.vapi lib/App.vala src/WindowTracker.vala
 %endif
 
 %build

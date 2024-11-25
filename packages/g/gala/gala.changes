@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Nov 25 12:43:34 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- small fix for Leap 1500
+
+-------------------------------------------------------------------
+Mon Nov 25 12:27:57 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.3:
+  * DragDropAction: Fix actor_clicked emission on touch event
+  * Introduce AnimationsSettings
+  * DragDropAction: properly handle button release event
+  * Introduce a WindowPositioner
+  * Pass Meta.Display instead of Gala.WindowManager where possible
+  * Add support for Mutter47
+  * AnimationSettings: Introduce get_animation_duration
+  * HideTracker: Take windows that are only vertically maximized
+  * Add panel hide delay
+- update to 8.0.2:
+  * WindowIcon: reload icon if more info about the window becomes available
+  * ManagedClient: Inherit fds
+  * Fix autohide
+  * Fix stacking order after workspace switch
+  * ScreenshotManager: Fix cursor inclusion for non window screenshots
+  * Fix panel sometimes being behind windows
+- remove support-libmutter15.patch, as upstream integrated the patch
+
+-------------------------------------------------------------------
+Wed Nov 20 07:58:05 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- move Leap16 to libmutter-15
+
+-------------------------------------------------------------------
 Thu Oct 31 17:27:30 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - add patch support-libmutter15.patch
