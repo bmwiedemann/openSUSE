@@ -46,7 +46,9 @@ ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 CMD ["nginx", "-g", "daemon off;"]
 EXPOSE 80/tcp
 # sanity check that the version from the tag is equal to the version of nginx that we expect
-RUN set -euo pipefail; [ "$(rpm -q --qf '%{version}' nginx | cut -d '.' -f -2)" = "1.27" ]
+RUN set -euo pipefail; \
+    [ "$(rpm -q --qf '%{version}' nginx | \
+    cut -d '.' -f -2)" = "1.27" ]
 RUN set -euo pipefail; mkdir /docker-entrypoint.d
 COPY [1-3]0-*.sh /docker-entrypoint.d/
 COPY docker-entrypoint.sh /usr/local/bin
