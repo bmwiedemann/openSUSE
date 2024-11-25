@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 25 10:33:39 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Use %{optflags} macro for build flags
+- Fix build on non-x86_64 architectures
+
+-------------------------------------------------------------------
 Tue Nov 12 16:47:56 UTC 2024 - ecsos <ecsos@opensuse.org>
 
  - Update to 2.14.3

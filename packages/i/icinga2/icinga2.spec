@@ -174,25 +174,25 @@ CMAKE_OPTS="$CMAKE_OPTS -DICINGA2_WITH_PGSQL=ON"
 CMAKE_OPTS="$CMAKE_OPTS -DUSE_SYSTEMD=ON"
 
 # FIXME: you should use the %%cmake macros
-cmake $CMAKE_OPTS -DCMAKE_C_FLAGS:STRING="-O2 -g -m64 -fmessage-length=0 -D_FORTIFY_SOURCE=2 -fstack-protector -funwind-tables -fasynchronous-unwind-tables " -DCMAKE_CXX_FLAGS:STRING="-O2 -g -m64 -fmessage-length=0 -D_FORTIFY_SOURCE=2 -fstack-protector -funwind-tables -fasynchronous-unwind-tables " .
+cmake $CMAKE_OPTS -DCMAKE_C_FLAGS:STRING="%{optflags} " -DCMAKE_CXX_FLAGS:STRING="%{optflags} " .
 
 %make_build
 
 %install
 make install \
-DESTDIR="%{_topdir}/BUILDROOT/%{name}-%{version}-%{release}.x86_64"
+DESTDIR="%{_topdir}/BUILDROOT/%{name}-%{version}-%{release}.%{_arch}"
 install -D -m 0644 etc/initsystem/icinga2.service.limits.conf %{buildroot}/%{_unitdir}/%{name}.service.d/limits.conf
 
-rm -f %{_topdir}/BUILDROOT/%{name}-%{version}-%{release}.x86_64/%{_sysconfdir}/icinga2/features-enabled/*.conf
+rm -f %{_topdir}/BUILDROOT/%{name}-%{version}-%{release}.%{_arch}/%{_sysconfdir}/icinga2/features-enabled/*.conf
 
-ln -sf %{_sbindir}/service %{_topdir}/BUILDROOT/%{name}-%{version}-%{release}.x86_64/usr/sbin/rcicinga2
-mkdir -p "%{_topdir}/BUILDROOT/%{name}-%{version}-%{release}.x86_64/%{_fillupdir}"
-mv "%{_topdir}/BUILDROOT/%{name}-%{version}-%{release}.x86_64%{_sysconfdir}/sysconfig/icinga2" "%{_topdir}/BUILDROOT/%{name}-%{version}-%{release}.x86_64/%{_fillupdir}/sysconfig.icinga2"
+ln -sf %{_sbindir}/service %{_topdir}/BUILDROOT/%{name}-%{version}-%{release}.%{_arch}/usr/sbin/rcicinga2
+mkdir -p "%{_topdir}/BUILDROOT/%{name}-%{version}-%{release}.%{_arch}/%{_fillupdir}"
+mv "%{_topdir}/BUILDROOT/%{name}-%{version}-%{release}.%{_arch}%{_sysconfdir}/sysconfig/icinga2" "%{_topdir}/BUILDROOT/%{name}-%{version}-%{release}.%{_arch}/%{_fillupdir}/sysconfig.icinga2"
 
-install -D -m 0644 tools/syntax/vim/syntax/icinga2.vim %{_topdir}/BUILDROOT/%{name}-%{version}-%{release}.x86_64/usr/share/vim/site/syntax/icinga2.vim
-install -D -m 0644 tools/syntax/vim/ftdetect/icinga2.vim %{_topdir}/BUILDROOT/%{name}-%{version}-%{release}.x86_64/usr/share/vim/site/ftdetect/icinga2.vim
+install -D -m 0644 tools/syntax/vim/syntax/icinga2.vim %{_topdir}/BUILDROOT/%{name}-%{version}-%{release}.%{_arch}/usr/share/vim/site/syntax/icinga2.vim
+install -D -m 0644 tools/syntax/vim/ftdetect/icinga2.vim %{_topdir}/BUILDROOT/%{name}-%{version}-%{release}.%{_arch}/usr/share/vim/site/ftdetect/icinga2.vim
 
-install -D -m 0644 tools/syntax/nano/icinga2.nanorc %{_topdir}/BUILDROOT/%{name}-%{version}-%{release}.x86_64/usr/share/nano/icinga2.nanorc
+install -D -m 0644 tools/syntax/nano/icinga2.nanorc %{_topdir}/BUILDROOT/%{name}-%{version}-%{release}.%{_arch}/usr/share/nano/icinga2.nanorc
 
 %check
 export CTEST_OUTPUT_ON_FAILURE=1
