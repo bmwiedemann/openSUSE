@@ -65,7 +65,9 @@ RUN set -euo pipefail; mkdir -p /root/.spack \
     && rm -rf /root/*.* /run/nologin
 
 # sanity check that the version from the tag is equal to the version of spack that we expect
-RUN set -euo pipefail; [ "$(rpm -q --qf '%{version}' spack | cut -d '.' -f -3)" = "0.22.2" ]
+RUN set -euo pipefail; \
+    [ "$(rpm -q --qf '%{version}' spack | \
+    cut -d '.' -f -3)" = "0.22.2" ]
 
 WORKDIR /root
 SHELL ["docker-shell"]
