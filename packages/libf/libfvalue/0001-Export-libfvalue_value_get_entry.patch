@@ -14,14 +14,22 @@ libesedb_value_data_handle.c:175:29: error: implicit declaration of function 'li
 Hence, it needs to be exported for DLLs to work correctly. This patch
 corrects that problem.
 ---
- include/libfvalue.h.in |   33 +++++++++++++++++++++++++++++++++
- 1 file changed, 33 insertions(+)
+ include/libfvalue.h.in |   34 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 34 insertions(+)
 
 Index: libfvalue-20240415/include/libfvalue.h.in
 ===================================================================
 --- libfvalue-20240415.orig/include/libfvalue.h.in
 +++ libfvalue-20240415/include/libfvalue.h.in
-@@ -210,6 +210,14 @@ int libfvalue_data_handle_set_value_entr
+@@ -28,6 +28,7 @@
+ #include <libfvalue/extern.h>
+ #include <libfvalue/features.h>
+ #include <libfvalue/types.h>
++#include <libcerror/types.h>
+ 
+ #include <stdio.h>
+ 
+@@ -210,6 +211,14 @@ int libfvalue_data_handle_set_value_entr
       int encoding,
       libfvalue_error_t **error );
  
@@ -36,7 +44,7 @@ Index: libfvalue-20240415/include/libfvalue.h.in
  /* Appends a value entry
   * Returns if successful or -1 on error
   */
-@@ -943,6 +951,14 @@ int libfvalue_value_get_number_of_value_
+@@ -943,6 +952,14 @@ int libfvalue_value_get_number_of_value_
       int *number_of_value_entries,
       libfvalue_error_t **error );
  
@@ -51,7 +59,7 @@ Index: libfvalue-20240415/include/libfvalue.h.in
  /* Retrieves the entry data
   * Returns 1 if successful, 0 if the value has no data or -1 on error
   */
-@@ -967,6 +983,14 @@ int libfvalue_value_set_entry_data(
+@@ -967,6 +984,14 @@ int libfvalue_value_set_entry_data(
       int encoding,
       libfvalue_error_t **error );
  
@@ -66,7 +74,7 @@ Index: libfvalue-20240415/include/libfvalue.h.in
  /* Appends the entry data
   * Returns 1 if successful or -1 on error
   */
-@@ -979,6 +1003,15 @@ int libfvalue_value_append_entry_data(
+@@ -979,6 +1004,15 @@ int libfvalue_value_append_entry_data(
       int encoding,
       libfvalue_error_t **error );
  

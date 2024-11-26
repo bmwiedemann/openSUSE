@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 25 16:55:09 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update 0001-Export-libfvalue_value_get_entry.patch so libnk2
+  does not fail to build
+
+-------------------------------------------------------------------
 Sat Nov  2 16:03:42 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-Export-libfvalue_value_get_entry.patch

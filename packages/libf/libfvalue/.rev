@@ -95,4 +95,13 @@
     <comment>- Add 0001-Export-libfvalue_value_get_entry.patch</comment>
     <requestid>1220307</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>f1a7a6ce546e39b0a5a3e2af37c55fe6</srcmd5>
+    <version>20240415</version>
+    <time>1732650993</time>
+    <user>anag+factory</user>
+    <comment>- Update 0001-Export-libfvalue_value_get_entry.patch so libnk2
+  does not fail to build</comment>
+    <requestid>1226522</requestid>
+  </revision>
 </revisionlist>
