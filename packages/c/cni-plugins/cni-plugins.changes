@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 22 12:13:41 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Require iptables (bsc#1231424)
+  * Add cni-iptables.conf to load required kernel modules
+
+-------------------------------------------------------------------
 Tue Oct 22 05:29:37 UTC 2024 - madhankumar.chellamuthu@suse.com
 
 - Update to version 1.6.0:

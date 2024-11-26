@@ -26,11 +26,13 @@ License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/containernetworking/plugins
 Source:         %{name}-%{version}.tar.xz
+Source1:        %{name}.conf
 BuildRequires:  shadow
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
 BuildRequires:  golang(API) >= 1.21
 Requires:       cni
+Requires:       iptables
 Requires(post): %fillup_prereq
 %{?systemd_requires}
 
@@ -61,6 +63,9 @@ export GOFLAGS="-buildmode=pie"
 install -m 755 -d "%{buildroot}%{cni_bin_dir}"
 cp bin/* "%{buildroot}%{cni_bin_dir}/"
 
+mkdir -p %{buildroot}%{_prefix}/lib/modules-load.d
+install -m 0644 -t %{buildroot}%{_prefix}/lib/modules-load.d/ %{SOURCE1}
+
 # documentation
 install -m 755 -d "%{buildroot}%{cni_doc_dir}"
 
@@ -79,6 +84,8 @@ install -m 755 -d "%{buildroot}%{cni_doc_dir}"
 %license LICENSE
 %dir %{cni_bin_dir}
 %{cni_bin_dir}/*
+%dir %{_prefix}/lib/modules-load.d
+%{_prefix}/lib/modules-load.d/%{name}.conf
 # %%{cni_doc_dir}/plugins/*
 
 %changelog
