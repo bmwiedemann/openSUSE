@@ -180,6 +180,8 @@ Macros:
 # Likely nobody really consumes the information - but as we can provide it: why not?
 BuildFlags: sbom:spdx
 BuildFlags: sbom:cyclonedx
+# 2024-11-26 - dimstar - Actually publish sbom information
+PublishFlags: withsbom
 
 # switch to kiwi v8
 Prefer: python3-kiwi
