@@ -1196,4 +1196,25 @@
   * klog: fix the pattern errors for einj trigger table entry</comment>
     <requestid>1205115</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>d775321bc4df5f2a49c31dd20026f474</srcmd5>
+    <version>24.11.00</version>
+    <time>1732650983</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 24.11.00:
+  * lib: fwts_version.h - update to V24.11.00
+  * debian: update changelog
+  * hdaaudio: fix the the build errors under plucky amd64
+  * auto-packager: mkpackage.sh: add plucky
+  * dmicheck: add more types for version length test.
+  * dmicheck: update for supporting DMI version to 3.8.0
+  * acpi: iort: memory access flag update.
+  * src/acpi: Fix a few spelling mistakes
+  * acpi/wmi: Warn if WMI GUIDs from the Windows driver samples are found
+  * lib: fwts_acpi_object_eval: Do not return FWTS_OK if method lookup fails
+  * script: fix bash-completion-with-hashbang lintian warning
+  * dmicheck: update for supporting DMI version to 3.7.1
+  * tpmevlog: Ensure the event log matches the actual TPM PCRs</comment>
+    <requestid>1226482</requestid>
+  </revision>
 </revisionlist>

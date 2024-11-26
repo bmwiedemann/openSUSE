@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov 26 10:50:36 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 24.11.00:
+  * lib: fwts_version.h - update to V24.11.00
+  * debian: update changelog
+  * hdaaudio: fix the the build errors under plucky amd64
+  * auto-packager: mkpackage.sh: add plucky
+  * dmicheck: add more types for version length test.
+  * dmicheck: update for supporting DMI version to 3.8.0
+  * acpi: iort: memory access flag update.
+  * src/acpi: Fix a few spelling mistakes
+  * acpi/wmi: Warn if WMI GUIDs from the Windows driver samples are found
+  * lib: fwts_acpi_object_eval: Do not return FWTS_OK if method lookup fails
+  * script: fix bash-completion-with-hashbang lintian warning
+  * dmicheck: update for supporting DMI version to 3.7.1
+  * tpmevlog: Ensure the event log matches the actual TPM PCRs
+
+-------------------------------------------------------------------
 Wed Oct  2 08:40:10 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 24.09.00:
