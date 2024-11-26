@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 26 13:46:32 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.69.1:
+  * feat: Adding test for slash in source name (#3591)
+  * fix: Adjusting `run-all` docs (#3589)
+  * feat: `-detailed-exitcode` with `run-all` commands (#3585)
+
+-------------------------------------------------------------------
 Wed Nov 20 08:05:20 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.69.0:
