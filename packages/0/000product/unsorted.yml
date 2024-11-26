@@ -4171,8 +4171,6 @@ unsorted:
   - fec-devel 
   - feedbackd 
   - feedbackd-devel 
-  - feh 
-  - feh-zsh-completion 
   - felix-bundlerepository 
   - felix-bundlerepository-javadoc 
   - felix-gogo-command 
@@ -8683,6 +8681,8 @@ unsorted:
   - himalaya 
   - himeno 
   - himmelblau 
+  - himmelblau-sshd-config 
+  - himmelblau-sso 
   - hiredis 
   - hiredis-devel 
   - hitori 
@@ -14201,7 +14201,6 @@ unsorted:
   - libjodycode3 
   - libjose-devel 
   - libjose0 
-  - libjpeg-turbo 
   - libjpeg62 
   - libjpeg62-devel 
   - libjpeg8-32bit 
@@ -16650,8 +16649,6 @@ unsorted:
   - libtexluajit2 
   - libtexpdf-devel 
   - libtexpdf0 
-  - libtext-engine-0_1-0 
-  - libtext-engine-devel 
   - libtextstyle-devel 
   - libtextstyle0-32bit 
   - libtfm1 
@@ -16771,9 +16768,7 @@ unsorted:
   - libtty1 
   - libtukit-devel 
   - libtun6-0 
-  - libturbojpeg0 
   - libturbojpeg0-32bit 
-  - libturbojpeg0-x86-64-v3 
   - libturris-spectator-devel 
   - libturris-spectator0 
   - libtutf-devel 
@@ -35345,6 +35340,7 @@ unsorted:
   - python313-PyJWT 
   - python313-PyKCS11 
   - python313-PyKMIP 
+  - python313-PyLaTeX 
   - python313-PyMeeus 
   - python313-PyMeta3 
   - python313-PyMsgBox 
@@ -35592,6 +35588,7 @@ unsorted:
   - python313-aubio 
   - python313-audio-degrader 
   - python313-audiomate 
+  - python313-audioread 
   - python313-authheaders 
   - python313-authres 
   - python313-autobahn 
@@ -36089,6 +36086,7 @@ unsorted:
   - python313-cffi 
   - python313-cfgdiff 
   - python313-cfgv 
+  - python313-cfn-lint 
   - python313-cfscrape 
   - python313-cftime 
   - python313-changelog-chug 
@@ -36128,6 +36126,7 @@ unsorted:
   - python313-cloudpickle 
   - python313-cloup 
   - python313-cluster 
+  - python313-cma 
   - python313-cmapfile 
   - python313-cmarkgfm 
   - python313-cmd2 
@@ -36445,6 +36444,7 @@ unsorted:
   - python313-entrypoint2 
   - python313-entrypoints 
   - python313-envier 
+  - python313-environ-config 
   - python313-environmental-override 
   - python313-envisage 
   - python313-envs 
@@ -36891,6 +36891,7 @@ unsorted:
   - python313-jsonpointer 
   - python313-jsonref 
   - python313-jsonrpclib-pelix 
+  - python313-jsons 
   - python313-jsonschema 
   - python313-jsonschema-format 
   - python313-jsonschema-format-nongpl 
@@ -36953,6 +36954,7 @@ unsorted:
   - python313-kombu 
   - python313-korean-lunar-calendar 
   - python313-kubernetes 
+  - python313-kwant 
   - python313-labels 
   - python313-lal 
   - python313-lancet-ioam 
@@ -37101,6 +37103,7 @@ unsorted:
   - python313-marshmallow 
   - python313-mashumaro 
   - python313-material-color-utilities-python 
+  - python313-mathgl 
   - python313-mathics-pygments 
   - python313-matplotlib 
   - python313-matplotlib-cairo 
@@ -37170,6 +37173,9 @@ unsorted:
   - python313-mongoengine 
   - python313-more-itertools 
   - python313-moreorless 
+  - python313-moto 
+  - python313-moto-all 
+  - python313-moto-server 
   - python313-mpl-animators 
   - python313-mplcursors 
   - python313-mpld3 
@@ -37242,6 +37248,8 @@ unsorted:
   - python313-networkx 
   - python313-nftables 
   - python313-nh3 
+  - python313-nibabel 
+  - python313-nilearn 
   - python313-nine 
   - python313-nitrokey 
   - python313-nkdfu 
@@ -37269,6 +37277,7 @@ unsorted:
   - python313-notify2 
   - python313-nox 
   - python313-npTDMS 
+  - python313-nptyping 
   - python313-nss 
   - python313-ntc-templates 
   - python313-ntfy 
@@ -37283,6 +37292,8 @@ unsorted:
   - python313-numpy-devel 
   - python313-numpy-gnu-hpc 
   - python313-numpy-gnu-hpc-devel 
+  - python313-numpy1 
+  - python313-numpy1-devel 
   - python313-numpy_1_26_4-gnu-hpc 
   - python313-numpy_1_26_4-gnu-hpc-devel 
   - python313-numpy_2_1_3-gnu-hpc 
@@ -37385,6 +37396,7 @@ unsorted:
   - python313-pandocfilters 
   - python313-panel 
   - python313-panflute 
+  - python313-papermill 
   - python313-parallax 
   - python313-param 
   - python313-parameterized 
@@ -37589,6 +37601,7 @@ unsorted:
   - python313-pyRFC3339 
   - python313-pyRXP 
   - python313-pyVows 
+  - python313-pyacoustid 
   - python313-pyaes 
   - python313-pyahocorasick 
   - python313-pyalsaaudio 
@@ -37648,6 +37661,7 @@ unsorted:
   - python313-pyeapi 
   - python313-pyee 
   - python313-pyelftools 
+  - python313-pyemd 
   - python313-pyenchant 
   - python313-pyerfa 
   - python313-pyface 
@@ -37735,6 +37749,7 @@ unsorted:
   - python313-pypdf 
   - python313-pyperclip 
   - python313-pyperf 
+  - python313-pypet 
   - python313-pypi-search 
   - python313-pypiserver 
   - python313-pypng 
@@ -37904,6 +37919,7 @@ unsorted:
   - python313-python-crfsuite 
   - python313-python-crontab 
   - python313-python-daemon 
+  - python313-python-datamatrix 
   - python313-python-dateutil 
   - python313-python-dbusmock 
   - python313-python-debian 
@@ -37946,7 +37962,9 @@ unsorted:
   - python313-python-poppler 
   - python313-python-pptx 
   - python313-python-prctl 
+  - python313-python-pseudorandom 
   - python313-python-ptrace 
+  - python313-python-qdatamatrix 
   - python313-python-qpid-proton 
   - python313-python-qprogedit 
   - python313-python-rapidjson 
@@ -38043,6 +38061,7 @@ unsorted:
   - python313-qtnetworkauth-qt5-devel 
   - python313-qtwebengine-qt5 
   - python313-qtwebengine-qt5-devel 
+  - python313-quantities 
   - python313-quart-trio 
   - python313-queuelib 
   - python313-quicktions 
@@ -38245,6 +38264,7 @@ unsorted:
   - python313-six 
   - python313-sklearn-pandas 
   - python313-skyfield 
+  - python313-slack-sdk 
   - python313-slimit 
   - python313-slixmpp 
   - python313-sly 
@@ -38516,6 +38536,7 @@ unsorted:
   - python313-types-toml 
   - python313-typing-inspect 
   - python313-typing_extensions 
+  - python313-typish 
   - python313-typogrify 
   - python313-tzdata 
   - python313-tzlocal 
@@ -40741,7 +40762,6 @@ unsorted:
   - slurm-node 
   - slurm-openlava 
   - slurm-pam_slurm 
-  - slurm-plugin-oom-score-adj 
   - slurm-plugins 
   - slurm-rest 
   - slurm-seff 
@@ -52445,6 +52465,7 @@ unsorted:
   - xl2tpd 
   - xlatencytop 
   - xless 
+  - xli 
   - xload 
   - xlockmore 
   - xlogin 
