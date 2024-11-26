@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 26 14:13:01 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.11.0:
+  * bump version v1.11.0
+  * Replicate nsenter options to pod spec (#69)
+  * Adding ability to mount CSI volumes in privildeged shell (#64)
+  * add KUBECTL_NODE_SHELL_IMAGE_PULL_SECRET_NAME to enable
+    imagePullSecrets (#62)
+  * Add flags for netns attach (#68)
+
+-------------------------------------------------------------------
 Wed Nov 13 10:10:10 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.10.2:
