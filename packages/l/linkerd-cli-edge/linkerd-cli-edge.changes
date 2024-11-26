@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov 26 14:06:10 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 24.11.7:
+  no CLI-related changes in changelog
+
+-------------------------------------------------------------------
+Tue Nov 26 13:58:30 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 24.11.6:
+  no CLI-related changes in changelog
+
+-------------------------------------------------------------------
+Tue Nov 26 13:53:29 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 24.11.5:
+  * feat(cli): add check for link version (#13376)
+
+-------------------------------------------------------------------
 Wed Nov 20 09:18:41 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 24.11.4:
