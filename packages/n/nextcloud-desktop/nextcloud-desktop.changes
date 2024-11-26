@@ -1,4 +1,267 @@
 -------------------------------------------------------------------
+Tue Nov 26 02:05:52 UTC 2024 - RN <R_Nik_C@proton.me>
+
+- Update to version 3.15.0:
+  * Fix release kind detection (gh#nextcloud/desktop#7031)
+  * on windows use QWidget native platform style
+    (gh#nextcloud/desktop#7042)
+  * properly detect and enable Qt6 WebEngine integration
+    (gh#nextcloud/desktop#7030)
+  * Bugfix/log database errors (gh#nextcloud/desktop#7029)
+  * docs: conf file option moveToTrash is no longer Linux specific
+    (gh#nextcloud/desktop#7033)
+  * remove the frame around the sync folders settings area
+    (gh#nextcloud/desktop#7044)
+  * 🎨 Update icons to latest Hub 9 style (gh#nextcloud/desktop#7040)
+  * only add Encrypt context menu entry for top folder in settings
+    dialog (gh#nextcloud/desktop#7062)
+  * ensure detection of entry type on windows is reliable
+    (gh#nextcloud/desktop#7068)
+  * Remove QtWebEngineProcess.entitlements.
+    (gh#nextcloud/desktop#7069)
+  * Revert "Fix incorrect date parsing." (gh#nextcloud/desktop#6748)
+  * Native buttons (gh#nextcloud/desktop#6980)
+  * add missing exception handling (gh#nextcloud/desktop#7079)
+  * Fix make_universal.py not taking into account 64-bit bundle
+    dylibs (gh#nextcloud/desktop#7027)
+  * Add some extra syncing details to the tray icon tooltip
+    (gh#nextcloud/desktop#7057)
+  * do not ignore paths containing 2 "#" characters
+    (gh#nextcloud/desktop#7084)
+  * Narrow down ReadWrite folder permission to owner
+    (gh#nextcloud/desktop#6949)
+  * ci: Update workflows (gh#nextcloud/desktop#7097)
+  * Fix building of client on macOS 10.13 and 10.14
+    (gh#nextcloud/desktop#7098)
+  * Code-sign client via mac-crafter so it may pass notarisation
+    (gh#nextcloud/desktop#7103)
+  * Bugfix/delete read only remnants folders
+    (gh#nextcloud/desktop#7061)
+  * Bugfix/fix one rename issue (gh#nextcloud/desktop#7102)
+  * Feature/macos vfs locking (gh#nextcloud/desktop#6960)
+  * Make sure we do not renotify notifications when we have
+    received the same etag as during the last check
+    (gh#nextcloud/desktop#6970)
+  * gui: add some context for translators
+    (gh#nextcloud/desktop#7096)
+  * Fix native UI (gh#nextcloud/desktop#7101)
+  * Mark as single window app (gh#nextcloud/desktop#7124)
+  * Bugfix/fix vfs folder state when remote move is forbidden
+    (gh#nextcloud/desktop#6717)
+  * Bump cpp-linter/cpp-linter-action from 2.12.1 to 2.13.0
+    (gh#nextcloud/desktop#7138)
+  * Correctly kill processes spawned by mac-crafter if mac-crafter
+    quits/is killed/etc (gh#nextcloud/desktop#7164)
+  * Add packaging capability to Mac Crafter
+    (gh#nextcloud/desktop#7173)
+  * Fix issues with minimum system versions and deployment
+    targets on macOS (gh#nextcloud/desktop#7172)
+  * Revert always enable http2 (gh#nextcloud/desktop#7182)
+  * Bump cpp-linter/cpp-linter-action from 2.13.0 to 2.13.1
+    (gh#nextcloud/desktop#7195)
+  * Add ability to provide multiple hardcoded server URLs via CMake
+    define (gh#nextcloud/desktop#7160)
+  * Update README. (gh#nextcloud/desktop#7144)
+  * Update issue template config.yml (gh#nextcloud/desktop#7196)
+  * Bugfix/fix upload locked files (gh#nextcloud/desktop#7193)
+  * Bugfix/startup qml on windows (gh#nextcloud/desktop#7199)
+  * Use version of linuxdeploy-plugin-qt from PR in the project.
+    (gh#nextcloud/desktop#7167)
+  * Bugfix/missing unlock command (gh#nextcloud/desktop#7208)
+  * changing default chunk size to 100MB (gh#nextcloud/desktop#7161)
+  * remove obsolete not working docker image for windows compilation
+    (gh#nextcloud/desktop#7216)
+  * Fix alignment and size of buttons. (gh#nextcloud/desktop#7142)
+  * Validate input of APPLICATION_SERVER_URL. (gh#nextcloud/desktop#7210)
+  * disable our code for network timeout (gh#nextcloud/desktop#7200)
+  * Only check for leading/trailing space for files on Windows.
+    (gh#nextcloud/desktop#6871)
+  * use constexpr function for platform detection
+    (gh#nextcloud/desktop#7220)
+  * Add support for the new craft blueprint options relating to override
+    server urls (gh#nextcloud/desktop#7163)
+  * Fix QtWebEngineProcess crash on macOS when building with mac-crafter
+    (gh#nextcloud/desktop#7232)
+  * count the files deletion and warn if threshold is exceeded
+    (gh#nextcloud/desktop#7116)
+  * docs: Update template to match org-templates
+    (gh#nextcloud/desktop#7247)
+  * create a permanent log of delete actions (gh#nextcloud/desktop#7028)
+  * message should say many not all: would be triggered by 200 files
+    (gh#nextcloud/desktop#7251)
+  * Bugfix/fix log issues (gh#nextcloud/desktop#7259)
+  * remove too verbose logs during discovery
+    (gh#nextcloud/desktop#7263)
+  * Bugfix/use qml fusion on windows (gh#nextcloud/desktop#7270)
+  * ensure log context category is valid before reading it
+    (gh#nextcloud/desktop#7271)
+  * properly catch std::filesystem exceptions (gh#nextcloud/desktop#7282)
+  * Add README about mac-crafter. (gh#nextcloud/desktop#7252)
+  * Small READMEs fix/updates (gh#nextcloud/desktop#7284)
+  * remove extra argument from QString::arg: string has only 1
+    placeholder (gh#nextcloud/desktop#7289)
+  * Cleaning logs (gh#nextcloud/desktop#7290)
+  * try to increase timeout of github actions for macOS
+    (gh#nextcloud/desktop#7066)
+  * Properly check for webdav or dav path in provided host url for
+    cmd.cpp (gh#nextcloud/desktop#7286)
+  * Fix authentication issues for macOS File Provider Extension
+    (gh#nextcloud/desktop#7240)
+  * Fix poor translation strings for blacklisted error reason strings
+    (gh#nextcloud/desktop#7316)
+  * Make string more readable for translators.
+    (gh#nextcloud/desktop#7320)
+  * improve wordings of confirmation dialog when many files are
+    deleted (gh#nextcloud/desktop#7319)
+  * Fix crash caused due to null accountstate in
+    FileProviderSocketController (gh#nextcloud/desktop#7322)
+  * Bugfix/signature (gh#nextcloud/desktop#7333)
+  * test syncing of read-only .lnk windows shorcuts
+    (gh#nextcloud/desktop#7285)
+  * better logs to understand when a folder is locally discovered
+    (gh#nextcloud/desktop#7291)
+  * Bugfix/use file id to track renamed items
+    (gh#nextcloud/desktop#7334)
+  * Bump cpp-linter/cpp-linter-action from 2.13.1 to 2.13.2
+    (gh#nextcloud/desktop#7321)
+  * Fix Finder sidebar icon to work as a "template" image
+    (gh#nextcloud/desktop#4367)
+  * Show/Hide Menubar and Dock Icon on macOS
+    (gh#nextcloud/desktop#3014)
+  * remove ownCloud wording in logging (gh#nextcloud/desktop#7346)
+  * on receiving reply of a remote MOVE: always record it
+    (gh#nextcloud/desktop#7351)
+  * Fix issues on manpages (gh#nextcloud/desktop#6123)
+  * Check for availability of Big Sur (under 11.3) before using VFS
+    progress tracking method (gh#nextcloud/desktop#7328)
+  * Fix Swift 6-related CI errors with macOS VFS module
+    (gh#nextcloud/desktop#7323)
+  * Make sure storage headers do not collide with each other in
+    macOS VFS settings (gh#nextcloud/desktop#7360)
+  * Fix opening of locally available groupfolders in web browser
+    from tray drop-down (gh#nextcloud/desktop#6752)
+  * Make shares distinguishable if there are sharees with the same
+    display name (gh#nextcloud/desktop#7339)
+  * Pin Craft Qt version to 6.7.2 and binary cache version to 24.08
+    (gh#nextcloud/desktop#7368)
+  * detect the terms of service app is requiring the user to sign
+    them (gh#nextcloud/desktop#7385)
+  * content access denied error during discovery: verify server
+    access (gh#nextcloud/desktop#7389)
+  * properly detect need to sign terms of service state
+    (gh#nextcloud/desktop#7395)
+  * improve again state tracking with terms of service app
+    (gh#nextcloud/desktop#7404)
+  * Change defaults of promptDeleteFiles to false
+    (gh#nextcloud/desktop#7408)
+  * Only display server name in multiple override servers dropdown
+    (gh#nextcloud/desktop#7413)
+  * Bump cpp-linter/cpp-linter-action from 2.13.2 to 2.13.3
+    (gh#nextcloud/desktop#7379)
+  * Bugfix account removal (gh#nextcloud/desktop#7426)
+  * Update share link for AppImage tool. (gh#nextcloud/desktop#7439)
+  * Fix code-signing issues for vendors with special chars
+    (gh#nextcloud/desktop#7423)
+  * Bugfix update channels (gh#nextcloud/desktop#7350)
+  * Respect the user's debug and expiration settings when changing
+    temporary log dir setting (gh#nextcloud/desktop#7418)
+  * Bump platisd/clang-tidy-pr-comments from 1.5.0 to 1.5.1
+    (gh#nextcloud/desktop#7428)
+  * Fix stuttering and freezing of client while computing sync state
+    changes (macOS VFS) (gh#nextcloud/desktopin #7397)
+  * Fix materialised storage use calculation (macOS VFS)
+    (gh#nextcloud/desktop#7401)
+  * Update copyright year in macOS info.plist template
+    (gh#nextcloud/desktop#7398)
+  * Only present proxy password delete error if it is not a "does
+    not exist" error (gh#nextcloud/desktop#7468)
+  * Add section on Apple ATS to docs troubleshooting section
+    (gh#nextcloud/desktop#7491)
+  * Add option to create developer builds of client via mac crafter
+    (gh#nextcloud/desktop#7475)
+  * Fix closed account wizard being brought up when clicking tray
+    icon (gh#nextcloud/desktop#7488)
+  * Update nextcloudcmd.rst (gh#nextcloud/desktop #7478)
+  * Fix crash on setting folder permission on non-NTFS file systems on
+    Windows (gh#nextcloud/desktop#7487)
+  * Always remove folder icon when removing folder.
+    (gh#nextcloud/desktop#7238)
+  * Add documentation page on the macOS virtual files client
+    (gh#nextcloud/desktop#7494)
+  * remove assert that is being hit always when running debug builds
+    (gh#nextcloud/desktop#7506)
+  * Fix QML errors caused by illegal customisation of text field
+    backgrounds on native styles (gh#nextcloud/desktop#7374)
+  * Fix encoding used for override server url
+    (gh#nextcloud/desktop#7407)
+  * If File Provider Extension is unreachable, try to reconfigure
+    client communication interface (gh#nextcloud/desktop#7462)
+  * Update url to dowload linuxdeploy-plugin-qt tool latest
+    version. (gh#nextcloud/desktop#7509)
+  * Fix crash when setting badge for a path that results in a nil
+    URL (macOS FinderSyncExt) (gh#nextcloud/desktop#7432)
+  * Revert dark mode regressions on Windows 10
+    (gh#nextcloud/desktop#7463)
+  * Build(deps): Bump platisd/clang-tidy-pr-comments from 1.5.1 to
+    1.6.1 (gh#nextcloud/desktop#7511)
+  * Ensure paths are passed properly escaped into codesign command
+    in mac-crafter (gh#nextcloud/desktop#7519)
+  * Add missing brace in FileProviderXPC's fileProviderExtReachable
+    (gh#nextcloud/desktop#7521)
+  * Also escape codesign call with saving entitlements
+    (gh#nextcloud/desktop#7524)
+  * Fix codesign path for app bundle main binaries
+    (gh#nextcloud/desktop#7527)
+  * Escape code sign entitlement paths in mac crafter
+    (gh#nextcloud/desktop#7529)
+  * Fix sync errors when trying to delete video component of live
+    photos (gh#nextcloud/desktop#7435)
+  * Handle NeedToSignTermsOfService account state in file provider
+    components (gh#nextcloud/desktop#7523)
+  * Fix recursive codesign steps and final bundle codesign in
+    mac-crafter (gh#nextcloud/desktop#7535)
+  * Polish tray window interface (gh#nextcloud/desktop#7498)
+  * Do not treat bundles as executables in codesign check
+    (gh#nextcloud/desktop#7537)
+  * Fix file tag fetching for files in sync folders that have
+    non-root remote target (gh#nextcloud/desktop#7375)
+  * Pull up the unified search view immediately on unified search
+    field focus (gh#nextcloud/desktop#7512)
+  * Fix mac-crafter codesign executable detection
+    (gh#nextcloud/desktop#7541)
+  * Feature/no default share links (gh#nextcloud/desktop#7517)
+  * flush logs every 5 lines written (gh#nextcloud/desktop#7495)
+  * Bugfix/narrow down permissions during sync
+    (gh#nextcloud/desktop#7532)
+  * Feature/disable talk chat notifications
+    (gh#nextcloud/desktop#5433)
+  * remove this call that is probably useless and crashing tests
+    (gh#nextcloud/desktop#7540)
+  * Fix mac-crafter codesign executable check path building
+    (gh#nextcloud/desktop#7545)
+  * Only sign main executable at end (mac-crafter)
+    (gh#nextcloud/desktop#7548)
+  * Fix broken general settings UI file (gh#nextcloud/desktop#7547)
+  * Show received share information in share view
+    (gh#nextcloud/desktop#7373)
+  * Improve read only virtual files support on Windows
+    (gh#nextcloud/desktop#7477)
+  * Bundle macOS File Provider module logs into main debug archive
+    (gh#nextcloud/desktop#7464)
+  * Fix adding account and skipping folder configuration crash.
+    (gh#nextcloud/desktop#7436)
+  * Fix login regression on linux (gh#nextcloud/desktop#7455)
+  * Bugfix/virtual files more reliable
+    (gh#nextcloud/desktop#7327)
+  * Fix half-translated GUI strings on Windows
+    (gh#nextcloud/desktop#7490)
+  * [stable-3.15] fix spelling os UserStatus qml type when setting
+    user status (gh#nextcloud/desktop#7559)
+  * [stable-3.15] Bugfix/dark mode switch (gh#nextcloud/desktop#7563)
+  * [stable-3.15] no transparent background for main ApplicationWindow
+    (gh#nextcloud/desktop#7565)
+
+-------------------------------------------------------------------
 Mon Nov 18 11:47:48 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add qt6-qt5-imports to Requires (boo#1233005).
