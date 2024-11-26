@@ -1580,4 +1580,13 @@
     <comment>- Update to version 3.0.6+git0.c2c009086:</comment>
     <requestid>1222555</requestid>
   </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>34cd3c56e1c56618aec7ad245f684654</srcmd5>
+    <version>3.1.0+git0.f2b97918e</version>
+    <time>1732651042</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.1.0+git0.f2b97918e:
+  https://www.haproxy.com/blog/announcing-haproxy-3-1</comment>
+    <requestid>1226579</requestid>
+  </revision>
 </revisionlist>
