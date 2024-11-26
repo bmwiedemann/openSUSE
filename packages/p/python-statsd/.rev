@@ -59,4 +59,22 @@
     <comment></comment>
     <requestid>970852</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0a5eeb7b242679aa2a0165ba9318955f</srcmd5>
+    <version>4.0.1</version>
+    <time>1732573204</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.0.1:
+  * Updated trove classifiers, see #174
+- update to 4.0.0:
+  * Updates support to Python 3.7 through 3.11.
+  * Added `close()` method to UDP-based `StatsClient`.
+  * Drops support for Python 2.
+  * Using a timing decorator on an async function should now
+    properly measure the execution time, instead of counting
+    immediately. See #119.
+
+  * Use pytest for the testsuite, and switch to bare asserts.</comment>
+    <requestid>1226064</requestid>
+  </revision>
 </revisionlist>

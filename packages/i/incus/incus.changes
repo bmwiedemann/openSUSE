@@ -1,0 +1,119 @@
+-------------------------------------------------------------------
+Fri Nov 22 13:36:58 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Remove the incus.sysctl drop-in file. This setting file overlaps with lxd's
+  sysctl settings, and setting these sysctls on boot even if you aren't running
+  containers is suboptimal.
+
+  We could come up with a complicated scheme for loading the rules once Incus
+  starts, as suggested in bsc#1233410, but ultimately these settings are only
+  really useful for production servers with >100 containers, at which point
+  admins are expected to tune their servers anyway.
+
+  So we can just remove it.
+
+-------------------------------------------------------------------
+Fri Nov 22 13:31:58 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Backport patches to fix encrypted ZFS datasets having their keys be unloaded
+  on Incus daemon restarts. <https://github.com/lxc/incus/pull/1384>
+  + 0001-incusd-storage-zfs-Fix-deletion-of-unavailable-pools.patch
+  + 0002-zfs-load-keys-for-encrypted-datasets-during-pool-imp.patch
+
+-------------------------------------------------------------------
+Fri Nov 21 15:24:17 UTC 2024 - Charles Miller <charlesmillerspam@gmail.com>
+
+- Fix secureboot VMs by switching to passing the correct environment variable
+  (INCUS_EDK2_PATH) and updating the ovmf symlinks to point to the correct
+  blobs. There is an upstream bug here, so we will need to fix this again later
+  once <https://github.com/lxc/incus/pull/1406> is merged.
+
+-------------------------------------------------------------------
+Fri Nov 15 18:53:50 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 6.7:
+  * fix live update VM's limits.memory configuration when use a percentage value #1287
+  * fix: fix slice init length #1285
+  * incusd/instance/lxc: Remove restrictions on /run #1288
+  * Correct macvlan mode names #1284
+  * Translations update from Hosted Weblate #1290
+  * Translations update from Hosted Weblate #1295
+  * Translations update from Hosted Weblate #1304
+  * incus-simplestreams: Fix list -f json #1310
+  * Profile performance improvements #1314
+  * incus-agent: Add timeout for DNS query #1313
+  * incusd/instance/qemu: Don't fail on console retrival issue #1316
+  * Allow changing the parent value on physical networks #1317
+  * incus: Fix display of current project in projects list #1318
+  * Add --format to incus admin sql #1319
+  * incusd/internal/server/instance/drivers: support for Chimera Linux (qemu/edk2) pkg layout #1298
+  * incusd/instance/common: Cleanup volatile on device add failure #1323
+  * incusd/network/bgp: Only advertise networks with BGP configuration #1325
+  * Make revert library shared #1326
+  * Fix to the cluster resources caching mechanism #1324
+  * Fix idmap issues #1327
+  * Make ask library shared #1329
+  * doc/network/resolved: Add disabling DNSSEC and DNSOverTLS #1328
+  * Add some application container documentation #1331
+  * incusd/device/nic/bridged: Handle invalid configuration #1330
+  * Fix handling of custom volume snapshot patterns #1333
+  * Add OCI DHCP renewal #1334
+  * doc/installing: Update for Chimera Linux #1335
+  * shared/cgo: Don't use strlcpy #1337
+  * Implement incus webui #1338
+  * incusd/scriptlet: Make set_target fail with invalid members #1339
+  * Export QMP functions #1340
+  * incusd/network/ovn: Add support to ipv4.dhcp.ranges #1341
+  * internal/server: Log QMP interaction to a file #1345
+  * incusd/instance/qemu: Log QEMU command line #1346
+  * Improve cluster instance placement #1344
+  * incusd/instance_logs: Update log file list #1347
+  * Add infrastructure for OVN events #1349
+  * Fix QEMU feature checks during startup #1350
+  * incusd/instance/lxc: Fix LXCFS per-instance path #1352
+  * doc/idmap: Clarify subuid/subgid configuration #1353
+  * incusd/instance/qmp: Fix logging with no log file #1355
+  * Add a GetOIDCTokens() method #1357
+  * Add get-current to show current project #1356
+  * incus/file/create: Use SFTP client instead of file API #1354
+  * internal/instance: Allow 0 as value to limits.cpu.nodes #1358
+  * Translations update from Hosted Weblate #1361
+  * Translations update from Hosted Weblate #1362
+  * Translations update from Hosted Weblate #1368
+  * Improve agent interface listing performance #1367
+  * Make incus top output configurable through options #1370
+  * Automatic live-migration to balance load on cluster #1369
+  * gomod: Update dependencies #1372
+  * Add refresh-exclude-older flag to only transfer new snapshots during instance/volume refresh #1365
+  * incusd/instances/publish: Fix base metadata #1374
+  * Fix TPM with long instance names #1377
+  * Don't BGP advertise OVN load-balancers when all backends are offline #1376
+  * incusd/instance/qemu: Don't take over operations on console retrieval #1379
+  * Tweak to cluster internal relocation #1378
+
+-------------------------------------------------------------------
+Thu Nov 14 13:31:11 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Move some binaries to sbin to match upstream packaging recommendations.
+- Update VM-related dependencies to make VMs work properly.
+
+-------------------------------------------------------------------
+Wed Oct 23 10:11:25 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Fix %_libexecdir usage for Leap 15.x (Leap 15.x still uses /usr/lib, so we
+  need to replace the usage of /usr/libexec in our scripts with a token that we
+  can replace during build).
+
+-------------------------------------------------------------------
+Mon Oct 21 05:02:17 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Rework packaging to match recommended packaging from doc/packaging.md and
+  <https://github.com/zabbly/incus/tree/stable/systemd>.
+
+-------------------------------------------------------------------
+Fri Oct 18 11:33:24 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Package Incus 6.6, based on the LXD 5.21 package. The primary differences are
+  that we no longer need to do ELF patching to work around having a custom
+  sqlite fork (instead we can use libcowsql, which is packaged for openSUSE
+  already).

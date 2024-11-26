@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 25 07:39:47 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Update scsh to git commit 6770db2
+- Delete scsh-install-lib-1.3.0.tar.gz as not used anymore
+- Make it build even with scheme48 >= 1.9.2
+
+-------------------------------------------------------------------
 Mon Feb 26 13:21:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

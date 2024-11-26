@@ -1,0 +1,48 @@
+From 287d4f7030a9d3803503938e7e75ec6a52d906fd Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Sun, 24 Nov 2024 01:03:02 +0100
+Subject: [PATCH] Fix compile error due to apparent invalid cast
+
+IVinit expects the int(eger) initialization value as second parameter,
+not a pointer. Replace the apparent (void *) NULL with an integer 0,
+as that is likely the correct value (In 1996, both NULL and where
+typically the same 32 bit value). Though, the value is likely irrelevant
+as the allocated array is filled by IVcopy next.
+---
+ ETree/src/transform.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/ETree/src/transform.c b/ETree/src/transform.c
+index 1e36981..dbdfc70 100644
+--- a/ETree/src/transform.c
++++ b/ETree/src/transform.c
+@@ -291,7 +291,7 @@ etree2 = ETree_compress(etree, mapIV) ;
+    remap the nzeros[] vector
+    -------------------------
+ */
+-temp = IVinit(nfront, NULL) ;
++temp = IVinit(nfront, 0) ;
+ IVcopy(nfront, temp, nzeros) ;
+ IV_setSize(nzerosIV, nnew) ;
+ nzeros = IV_entries(nzerosIV) ;
+@@ -453,7 +453,7 @@ etree2 = ETree_compress(etree, mapIV) ;
+    remap the nzeros[] vector
+    -------------------------
+ */
+-temp = IVinit(nfront, NULL) ;
++temp = IVinit(nfront, 0) ;
+ IVcopy(nfront, temp, nzeros) ;
+ IV_setSize(nzerosIV, nnew) ;
+ nzeros = IV_entries(nzerosIV) ;
+@@ -614,7 +614,7 @@ etree2 = ETree_compress(etree, mapIV) ;
+    remap the nzeros[] vector
+    -------------------------
+ */
+-temp = IVinit(nfront, NULL) ;
++temp = IVinit(nfront, 0) ;
+ IVcopy(nfront, temp, nzeros) ;
+ IV_setSize(nzerosIV, nnew) ;
+ nzeros = IV_entries(nzerosIV) ;
+-- 
+2.47.0
+

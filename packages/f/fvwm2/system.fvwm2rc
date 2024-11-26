@@ -90,8 +90,6 @@ AddToFunc QuitSave
 AddToFunc StartFunction
 + I Test (Init) Module FvwmBanner
 + I Test (Init) Exec exec xterm -ls -geometry +150+85
-+ I Test (Init) Exec exec xli -onroot -fillscreen -border black /usr/share/wallpapers/openSUSEdefault/contents/images/1600x1200.jpg
-+ I Test (Restart) Exec exec xli -onroot -fillscreen -border black /usr/share/wallpapers/openSUSEdefault/contents/images/1600x1200.jpg
 + I Module FvwmButtons
 
 AddToFunc ExitFunction
@@ -365,12 +363,9 @@ Style   "AcroRead"      SmartPlacement, RandomPlacement
 # see bug n#51188
 # Style   "OpenOffice*"   NoPPosition, RandomPlacement, EWMHIgnoreStrutHints, EWMHMaximizeIgnoreWorkingArea, EWMHPlacementIgnoreWorkingArea, IgnoreGravity
 
-*FvwmBacker: Desk 0 -solid steelblue
-*FvwmBacker: Desk 1 -solid midnightblue
-*FvwmBacker: Desk 2 -solid yellow
-*FvwmBacker: Desk 3 -solid cadetblue2
-*FvwmBacker: Desk 5 -solid cadetblue3
-*FvwmBacker: Desk 6 -solid cadetblue4
+Module FvwmBacker
+Colorset 10 Pixmap /usr/share/wallpapers/openSUSEdefault/contents/images/1600x1200.png
+*FvwmBacker: Command (Desk *) Colorset 10
 
 *FvwmIdent: Back	MidnightBlue
 *FvwmIdent: Fore	Yellow

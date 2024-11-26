@@ -1,20 +1,17 @@
----
- xarray/tutorial.py |    5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
-
-Index: xarray-2024.05.0/xarray/tutorial.py
-===================================================================
---- xarray-2024.05.0.orig/xarray/tutorial.py
-+++ xarray-2024.05.0/xarray/tutorial.py
-@@ -158,7 +158,10 @@ def open_dataset(
-         url = f"{base_url}/raw/{version}/{path.name}"
+--- xarray-2024.11.0/xarray/tutorial.py	2024-11-22 21:58:55.000000000 +0100
++++ xarray-2024.11.0/xarray/tutorial.py.new	2024-11-24 14:18:51.684909924 +0100
+@@ -162,9 +162,11 @@
+     downloader = pooch.HTTPDownloader(headers=headers)
  
      # retrieve the file
--    filepath = pooch.retrieve(url=url, known_hash=None, path=cache_dir)
+-    filepath = pooch.retrieve(
+-        url=url, known_hash=None, path=cache_dir, downloader=downloader
+-    )
 +    fname = pathlib.Path(cache_dir, path).expanduser()
 +    if not fname.exists():
 +        fname = None
 +    filepath = pooch.retrieve(url=url, fname=fname, known_hash=None, path=cache_dir)
++
      ds = _open_dataset(filepath, engine=engine, **kws)
      if not cache:
          ds = ds.load()

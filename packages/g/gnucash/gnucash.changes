@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov 24 14:56:33 UTC 2024 - Johannes Engel <jcnengel@gmail.com>
+
+- Add gnucash-icu.patch: Fix build with recent ICU libraries
+- Add gnucash-swig43.patch: Fix build with SWIG 4.3
+
+-------------------------------------------------------------------
 Sun Sep 29 21:38:08 UTC 2024 - RN <R_Nik_C@proton.me>
 
 - Update to 5.9

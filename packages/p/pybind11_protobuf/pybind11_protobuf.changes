@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov 18 03:08:55 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update git snapshot to 0~git20241101.90b1a5b
+- Drop upstream patches:
+  * 0001-Make-protobuf-python_api-fully-optional.patch
+  * 0002-Add-ENABLE_PYPROTO_API-option-to-CMake-build-clean-u.patch
+  * 0003-Make-the-pybind11_-_proto_caster-libraries-STATIC.patch
+  * 0004-Fix-handling-of-external-dependencies-allow-forcing-.patch
+  * 0005-Build-and-run-the-test-cases.patch
+- Fix build with protobuf major 5.26.x (v26.x) and later
+
+-------------------------------------------------------------------
 Fri Apr 26 18:14:49 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Initial version

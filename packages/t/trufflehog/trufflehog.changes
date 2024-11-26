@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sun Nov 24 08:36:57 UTC 2024 - felix.niederwanger@suse.com
+
+- Update to version 3.84.1:
+  * fix(deps): update module github.com/stretchr/testify to v1.10.0 (#3659)
+  * [feat] - Support S3 Source Resumption (#3570)
+  * [refactor] - Rename S3 ProgressTracker (#3652)
+  * Separate org listing error from finding 0 members error cases (#3654)
+  * fix(deps): update module google.golang.org/api to v0.209.0 (#3655)
+  * fix(algolia): 403 is invalid (#3653)
+  * Recover general chunker panics (#3625)
+  * updated buildkite detectors (#3611)
+  * added godaddy detector (#3615)
+  * fix(deps): update module google.golang.org/api to v0.208.0 (#3647)
+  * fix test (#3641)
+  * fixed test failure (#3646)
+  * fix(gcp): handle quoted JSON (#2865)
+  * build: remove golang-jwt@v4 (#3644)
+  * build: remove azure sdk (#3642)
+  * feat(algolia): upgrade detector (#3613)
+  * fix(azure_storage): use DefaultMultiPartCredentialProvider (#3639)
+  * feat(hubspot): update v1 detector (#2845)
+  * fix(deps): update module github.com/azuread/microsoft-authentication-library-for-go to v1.3.2 (#3617)
+  * feat(azurecr): update detector (#3632)
+  * feat(azure): improve connstring matching (#2097)
+  * fixing databricks detector for azure workspaces (#3038)
+  * feat(detectors): create azure_entra base package (#2985)
+  * feat(azure): create openai detector (#2347)
+  * feat: cleanup AWS detector logic (#3583)
+  * added handling of forbidden state in slack webhook detector. (#3635)
+  * fix(deps): update module github.com/gabriel-vasile/mimetype to v1.4.7 (#3636)
+  * fixed github classic token analyzer expiry time (#3624)
+  * fix(deps): update module google.golang.org/api to v0.207.0 (#3630)
+  * Add log.ToLogger and log.ToSlogger helper functions (#3629)
+  * Remove unused findLevel function (#3628)
+  * chore: fix function name in comment (#3616)
+  * Update CODEOWNERS (#3627)
+  * Added pattern unit tests for detectors starting with the letters i through m (#3614)
+  * fix(deps): update module github.com/jedib0t/go-pretty/v6 to v6.6.2 (#3623)
+  * fix(deps): update module github.com/xanzy/go-gitlab to v0.114.0 (#3621)
+  * feat(mongodb): increase timeout to 5 seconds (#3620)
+  * [chore] Log non-fatal errors encountered during a scan (#3612)
+  * add comment to close reader (#3622)
+  * [fix] - Close the BufferedReadSeekr after use (#3618)
+  * Add GitLab shared exclusion flag (#3572)
+  * Feat: Added ZohoCRM detector (#3516)
+
+-------------------------------------------------------------------
 Sun Nov 17 12:32:43 UTC 2024 - felix.niederwanger@suse.com
 
 - Update to version 3.83.7:

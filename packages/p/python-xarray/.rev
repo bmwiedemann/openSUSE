@@ -1615,4 +1615,21 @@
   * &quot;source&quot; encoding for datasets opened from fsspec objects by</comment>
     <requestid>1199626</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>42670a6c2d6659961eb72cc496f3b243</srcmd5>
+    <version>2024.11.0</version>
+    <time>1732573234</time>
+    <user>anag+factory</user>
+    <comment>
+
+- skip test test_asi8 on 32bit, results in &quot;OverflowError: Python int too large to convert to C long&quot;
+- update to version .2024.11.0:
+- disable the 'parallel' subpackage because dask is unavailable 3.12, which is because numba is unavailable on 3.13
+https://build.opensuse.org/request/show/1225144
+https://github.com/numba/numba/issues/9760
+- disabled tests requiring dask
+- delete obsolete patches xarray-pr9356-dasktests.patch, xarray-pr9321-dasktests.patch and xarray-pr9403-np2.1-scalar.patch
+</comment>
+    <requestid>1226114</requestid>
+  </revision>
 </revisionlist>

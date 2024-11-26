@@ -18,15 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyproj
-Version:        3.6.1
+Version:        3.7.0
 Release:        0
 Summary:        Python interface to PROJ library
 License:        SUSE-Public-Domain AND X11
 Group:          Development/Languages/Python
 URL:            https://github.com/pyproj4/pyproj
 Source:         https://files.pythonhosted.org/packages/source/p/pyproj/pyproj-%{version}.tar.gz
-Patch0:         v3.6.1-BUG-Support-azimuthal_equidistant-coordinate-operati.patch
-Patch1:         v3.6.1-test-datum-ensemble-allowing-new-members.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module pip}
@@ -34,7 +32,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  proj
-BuildRequires:  proj-devel >= 8
+BuildRequires:  proj-devel >= 9.2
 BuildRequires:  python-rpm-macros
 Requires:       python-certifi
 Requires(post): update-alternatives
@@ -43,9 +41,10 @@ Requires(postun): update-alternatives
 BuildRequires:  %{python_module Shapely}
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module xarray if %python-base >= 3.10}
+BuildRequires:  %{python_module xarray}
 # /SECTION
 %python_subpackages
 
@@ -91,7 +90,7 @@ $python -c "import pyproj; pyproj.Proj(init='epsg:4269')"
 }
 # Reset to remove wrong flavor path from loop above
 export PYTHONPATH=""
-%pytest_arch -rs -k "not (network or test_transformer_group__get_transform_crs)"
+%pytest_arch -rs -k "not (network)"
 mv pyproj_temp pyproj
 
 %post

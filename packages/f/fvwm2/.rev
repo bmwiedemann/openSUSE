@@ -547,4 +547,12 @@
   * enable-more-mouse-buttons.patch</comment>
     <requestid>1106128</requestid>
   </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>4523c51b9b7d3c3eaeae548f68bc9461</srcmd5>
+    <version>2.7.0</version>
+    <time>1732573308</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1226197</requestid>
+  </revision>
 </revisionlist>

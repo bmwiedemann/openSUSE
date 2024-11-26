@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Nov 16 13:15:34 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 0.7.1:
+  * New build dep: hyprwayland-scanner
+  * hyprutils: required >=0.2.0
+  * ipc: use XDG_RUNTIME_DIR if available
+  * fractional: reload monitor on new fs scale notifs
+  * core: migrate to hyprwayland-scanner
+  * Fixed getconf command in build instructions
+  * Add handler "reload" to do a change of wallpaper
+  * Bitmap image support
+  * config: produce error instead fs::exists exceptions
+  * Config: use hyprutils helper
+  * Fix desc: wallpaper priority
+
+-------------------------------------------------------------------
 Thu Jun  6 10:00:17 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Simplify install to just cmake

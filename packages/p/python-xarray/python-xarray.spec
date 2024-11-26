@@ -25,11 +25,11 @@
 %define psuffix %{nil}
 %endif
 
-%define ghversion 2024.07.0
+%define ghversion 2024.11.0
 
 %{?sle15_python_module_pythons}
 Name:           python-xarray%{psuffix}
-Version:        2024.7.0
+Version:        2024.11.0
 Release:        0
 Summary:        N-D labeled arrays and datasets in Python
 License:        Apache-2.0
@@ -38,12 +38,6 @@ Source:         https://github.com/pydata/xarray/archive/refs/tags/v%{ghversion}
 # PATCH-FEATURE-UPSTREAM local_dataset.patch gh#pydata/xarray#5377 mcepl@suse.com
 # fix xr.tutorial.open_dataset to work with the preloaded cache.
 Patch0:         local_dataset.patch
-# PATCH-FIX-UPSTREAM xarray-pr9321-dasktests.patch gh#pydata/xarray#9321
-Patch1:         xarray-pr9321-dasktests.patch
-# PATCH-FIX-UPSTREAM xarray-pr9356-dasktests.patch gh#pydata/xarray#9356
-Patch2:         xarray-pr9356-dasktests.patch
-# PATCH-FIX-UPSTREAM xarray-pr9403-np2.1-scalar.patch gh#pydata/xarray#9403
-Patch3:         xarray-pr9403-np2.1-scalar.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
@@ -51,9 +45,9 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.23
+Requires:       python-numpy >= 1.24
 Requires:       python-packaging >= 23.1
-Requires:       python-pandas >= 2
+Requires:       python-pandas >= 2.1
 Obsoletes:      python-xray <= 0.7
 BuildArch:      noarch
 %if %{with test}
@@ -76,11 +70,11 @@ The dataset is an in-memory representation of a netCDF file.
 Summary:        The python xarray[accel] extra
 Requires:       python-Bottleneck
 Requires:       python-opt-einsum
-Requires:       python-scipy
+Requires:       python-scipy >= 1.11
 Requires:       python-xarray = %{version}
 # not available yet
 Recommends:     python-flox
-Recommends:     python-numbagg
+Recommends:     python-numbagg >= 0.6
 
 %description accel
 The [accel] extra for xarray, N-D labeled arrays and datasets in Python
@@ -93,7 +87,7 @@ Requires:       python-xarray = %{version}
 Requires:       python-xarray-accel = %{version}
 Requires:       python-xarray-dev = %{version}
 Requires:       python-xarray-io = %{version}
-Requires:       python-xarray-parallel = %{version}
+#Requires:       python-xarray-parallel = %%{version}
 Requires:       python-xarray-viz = %{version}
 
 %description complete
@@ -121,24 +115,30 @@ Except pre-commit, Use `pip-%{python_bin_suffix} --user install pre-commit` to i
 Summary:        The python xarray[io] extra
 Requires:       python-cftime
 Requires:       python-fsspec
-Requires:       python-h5netcdf
+Requires:       python-h5netcdf >= 1.3
 Requires:       python-netCDF4
 Requires:       python-pooch
-Requires:       python-scipy
+Requires:       python-scipy >= 1.11
 Requires:       python-xarray = %{version}
-Requires:       python-zarr
+Requires:       python-zarr >= 2.16
 
 %description io
 The [io] extra for xarray, N-D labeled arrays and datasets in Python
 
-%package parallel
-Summary:        The python xarray[parallel] extra
-Requires:       python-dask-complete
-Requires:       python-xarray = %{version}
 
-%description parallel
-The [parallel] extra for xarray, N-D labeled arrays and datasets in Python
 
+
+
+
+
+
+#%%package parallel
+#Summary:        The python xarray[parallel] extra
+#Requires:       python-dask-complete >= 2023.11
+#Requires:       python-xarray = %%{version}
+#
+#%description parallel
+#The [parallel] extra for xarray, N-D labeled arrays and datasets in Python
 %package viz
 Summary:        The python xarray[viz] extra
 Requires:       python-matplotlib
@@ -179,12 +179,14 @@ if [ $(getconf LONG_BIT) -eq 32 ]; then
   donttest="$donttest or (test_interpolate_chunk_advanced and linear)"
   # tests for 64bit types
   donttest="$donttest or TestZarrDictStore or TestZarrDirectoryStore or TestZarrWriteEmpty"
-  donttest="$donttest or test_repr_multiindex or test_array_repr_dtypes_unix"
+  donttest="$donttest or test_repr_multiindex or test_array_repr_dtypes_unix or test_asi8"
 fi
 # h5py was built without ROS3 support, can't use ros3 driver
 donttest="$donttest or TestH5NetCDFDataRos3Driver"
 # NetCDF4 fails with these unsupported drivers
 donttest="$donttest or (TestNetCDF4 and test_compression_encoding and (szip or zstd or blosc_lz or blosc_zlib))"
+# skip parallelcompat as the 'parallel' subpackage is not built (see changes file)
+donttest="$donttest or test_h5netcdf_storage_options or test_source_encoding_always_present_with_fsspec"
 
 %pytest -n auto -rsEf -k "not ($donttest)" xarray
 %endif
@@ -212,9 +214,9 @@ donttest="$donttest or (TestNetCDF4 and test_compression_encoding and (szip or z
 %doc README.md
 %license LICENSE
 
-%files %{python_files parallel}
-%doc README.md
-%license LICENSE
+#%%files %%{python_files parallel}
+#%doc README.md
+#%%license LICENSE
 
 %files %{python_files viz}
 %doc README.md

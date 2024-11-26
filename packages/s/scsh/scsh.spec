@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package scsh
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,8 @@
 %define bootstrap  0
 %define base       %nil
 %endif
-%define scshcommit 114432435e4eadd54334df6b37fcae505079b49f
-%define scshshort  1144324
+%define scshcommit 6770db21b08edd907d1c9bd962297ff55664e3fe
+%define scshshort  6770db2
 %define scshver    0.7
 %define rxcommit   dd9037f6f9ea01019390614f6b126b7dd293798d
 %define rxshort    dd9037f
@@ -41,7 +41,6 @@ Group:          System/Shells
 URL:            https://scsh.net
 Source0:        https://github.com/scheme/scsh/archive/%{scshcommit}/scsh-%{scshshort}.tar.gz
 Source1:        https://github.com/scheme/rx/archive/%{rxcommit}/rx-%{rxshort}.tar.gz
-Source2:        scsh-install-lib-1.3.0.tar.gz
 Patch0:         declaration.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -73,10 +72,12 @@ Requires:       scsh-base = %version
 BuildRequires:  scsh-base = %version
 %endif
 BuildRequires:  racket
-BuildRequires:  scheme48 = %{scheme}
-BuildRequires:  scheme48-devel = %{scheme}
-Requires:       scheme48-vm = %{scheme}
+BuildRequires:  scheme48 >= %{scheme}
+BuildRequires:  scheme48-devel >= %{scheme}
+Requires:       scheme48-vm >= %{scheme}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+
+%global buildscheme %(rpm -q scheme48-devel --qf '%{VERSION}')
 
 %define add_optflags(a:f:t:p:w:W:d:g:O:A:C:D:E:H:i:M:n:P:U:u:l:s:X:B:I:L:b:V:m:x:c:S:E:o:v:) \
 %global optflags %{optflags} %{**}
@@ -98,8 +99,8 @@ ln -sf rx-%{rxcommit} rx
 autoreconf
 %add_optflags -Wall -Wno-return-type -fPIC -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=500
 
-%configure --with-scheme48=%{_libdir}/scheme48-%{scheme}
-%make_build   SCHEME48VM=%{_libdir}/scheme48-%{scheme}/scheme48vm
+%configure --with-scheme48=%{_libdir}/scheme48-%{buildscheme}
+%make_build   SCHEME48VM=%{_libdir}/scheme48-%{buildscheme}/scheme48vm
 
 %if 0%{?bootstrap} == 0
 cp -p rx/README README.rx
@@ -117,10 +118,10 @@ popd
 PATH=%{buildroot}%{_bindir}:$PATH
 export PATH
 %if 0%{?bootstrap} > 0
-make DESTDIR=%{buildroot} SCHEME48VM=%{_libdir}/scheme48-%{scheme}/scheme48vm enough dirs install-scsh
+make DESTDIR=%{buildroot} SCHEME48VM=%{_libdir}/scheme48-%{buildscheme}/scheme48vm enough dirs install-scsh
 rm -rf %{buildroot}%{_bindir}
 %else
-make DESTDIR=%{buildroot} SCHEME48VM=%{_libdir}/scheme48-%{scheme}/scheme48vm install
+make DESTDIR=%{buildroot} SCHEME48VM=%{_libdir}/scheme48-%{buildscheme}/scheme48vm install
 %if 0%{?suse_version} < 1550
 mkdir -p %{buildroot}/bin
 ln -sf %{_bindir}/scsh %{buildroot}/bin/scsh

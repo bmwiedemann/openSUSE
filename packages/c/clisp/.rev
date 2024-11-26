@@ -428,4 +428,12 @@ you may enable build for SLE &gt;= 10 (forwarded request 96955 from rudi_m)</com
 - Add patch clisp-gcc14.patch to make it build again</comment>
     <requestid>1198416</requestid>
   </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>1498fa6ef2fc2915a4099f0f4ff26905</srcmd5>
+    <version>2.49.93</version>
+    <time>1732573347</time>
+    <user>anag+factory</user>
+    <comment>- Make it build with latest pari version</comment>
+    <requestid>1226223</requestid>
+  </revision>
 </revisionlist>

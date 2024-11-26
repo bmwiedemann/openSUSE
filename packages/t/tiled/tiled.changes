@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 13 22:46:23 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Don't harcode the g++ version
+- Add fix_compile_against_qt_6_8.patch
+
+-------------------------------------------------------------------
 Fri Jun 28 05:29:20 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.11.0:

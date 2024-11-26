@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 21 09:46:27 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop conditional wxWidgets-3_0-devel BuildRequires, no longer
+  needed.
+
+-------------------------------------------------------------------
 Wed Aug  7 05:45:43 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - build with Botan 3 on Tumbleweed

@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Sun Nov 24 11:37:13 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.5.1+244:
+  * general: Handle not found errors with empty page
+  * local: Regenerate shell-dbus-interface
+  * cleanup: Add and update license headers
+  * installed-page: Add local search
+  * manager: Unify user and system extensions list property
+  * resource: Make path dependent on app_id
+  * comment-dialog: Add license header
+  * comment-dialog: Improve network error handling
+  * upgrade-assistant: Improve network error handling
+  * detail-view: Improve network error handling
+  * browse-page: Improve network error handling
+  * workflows: Add missing libxml2 dependency
+  * drop text-engine
+  * request-handler: Handle http status code
+  * readme: Update dependencies
+  * comment: Use the new HTML viewer
+  * utils: Introduce a simple HTML viewer
+  * comment-tile: Use GtkLabel as a comment text viewer
+  * browse-page: Port load more results button to AdwButtonRow
+  * rating: Fix warnings when finalizing with remaining child widgets
+  * comment-tile: Fix warnings when finalizing with remaining child widgets
+  * upgrade-assistant: g_print -> g_info
+  * window: Stop manually setting a shortcut controller
+  * detail-view: Remove unused variables
+  * window: Stop explicitly setting toast timeout
+  * window: Drop unused version check code
+  * accessibility improvements
+  * browse-page: Focus first new row after loading more results
+  * window: Add mnemonic to toast button
+  * info-bar: Rework items into AdwActionRow
+  * rating: Add tooltip
+  * extension-row: Hide version label if unavailable
+  * extension-row: Improve accessibility
+  * upgrade-assistant: Improve accessibility
+  * detail-view: Improve accessibility
+  * screenshot: Set accessible role
+  * installed-page: Port updates info bar to AdwBanner
+  * browse-page: Remove unused header
+  * browse-page: Use search entry setter
+  * browse-page: Enable type-ahead search
+  * search-row: Remove unused import
+  * local: Add support for version-name
+  * window: Show badge number when updates are available
+  * browse-page: Increase search-delay value
+  * app: Add back help overlay
+  * icons: Remove zoom symbolics
+  * app: Fix criticals in master runtime
+  * backtrace: Fix incompatible pointer types
+  * comment-tile: Adapt to text-engine changes
+  * Update com.mattjakeman.ExtensionManager.desktop.in.in
+  * comment-tile: Add date label
+  * comment: Add date property
+  * Display info icon for Initialized/Inactive extension state
+  * Set the extension state as a tooltip for extension toggle button
+  * detail-view: Add donation row
+  * search-result: Add donation urls property
+  * Fix some warnings
+
+-------------------------------------------------------------------
 Fri Nov 22 10:03:01 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - fix CFLAGS, as with the earlier try, there was a typo with optflags

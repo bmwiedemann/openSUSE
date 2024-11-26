@@ -20,7 +20,7 @@ Name:           WindowMaker
 Summary:        A Colorful and Flexible Window Manager
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND SUSE-Public-Domain
 Group:          System/GUI/Other
-Version:        0.95.9
+Version:        0.96.0
 Release:        0
 URL:            http://windowmaker.org/
 Source:         http://windowmaker.org/pub/source/release/%{name}-%{version}.tar.gz
@@ -29,7 +29,6 @@ Source2:        theme.tar.bz2
 Source4:        README.SUSE
 Source5:        %{name}.desktop
 Source6:        windowmaker
-Source7:        %{name}-rpmlintrc
 Patch1:         %{name}-config.patch
 Patch2:         %{name}-menu.patch
 Patch3:         fix_wmgenmenu_paths.patch
@@ -146,7 +145,15 @@ find $RPM_BUILD_ROOT/usr/share/%{name}/Themes -type f -exec chmod 644 {} \;
 find $RPM_BUILD_ROOT/usr/share/%{name}/Themes -type d -exec chmod 755 {} \;
 # use default openSUSE wallpaper in SUSE theme
 pushd %{buildroot}/usr/share/%{name}/Themes/SUSE.themed/
+%if 0%{?sle_version} <= 150500 && 0%{?is_opensuse}
+ln -sf /usr/share/wallpapers/openSUSEdefault/contents/images/1600x1200.jpg default.png
+%endif
+%if 0%{?sle_version} >= 150600 && 0%{?is_opensuse}
 ln -sf /usr/share/wallpapers/openSUSEdefault/contents/images/1600x1200.png default.png
+%endif
+%if 0%{?suse_version} > 1600
+ln -sf /usr/share/wallpapers/openSUSEdefault/contents/images/1920x1200.png default.png
+%endif
 popd
 #----------------------------------------------------------------------
 # not packaged
@@ -160,6 +167,7 @@ cd ..
 %find_lang %{name}
 %find_lang WINGs %{name}.lang
 %find_lang WPrefs %{name}.lang
+%find_lang WRaster %{name}.lang
 %find_lang wmgenmenu %{name}.lang
 
 # rpmlint
@@ -184,8 +192,7 @@ cd ..
 /usr/share/WINGs
 /usr/share/%{name}
 /usr/share/xsessions/*
-#/usr/X11R6/share/%{name}
-#/usr/X11R6/GNUstep
+/usr/share/applications/*
 
 %files devel
 %defattr(-,root,root)

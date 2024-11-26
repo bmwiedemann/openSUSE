@@ -1,7 +1,7 @@
-From c49dc5b32b9cb953b4d8c59a0a57b874bcabab67 Mon Sep 17 00:00:00 2001
+From 23dbb17ee57e79d60ad46f46988f45eb798a338c Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
 Date: Thu, 16 May 2024 01:04:58 +0200
-Subject: [PATCH 6/6] Add install target for CMake builds
+Subject: [PATCH 6/7] Add install target for CMake builds
 
 ---
  CMakeLists.txt        | 53 +++++++++++++++++++++++++++++++++++++++++++
@@ -34,8 +34,8 @@ index 4514f34..100bbf8 100644
  # pybind11_proto_utils pybind11 extension module
  pybind11_add_module(
 @@ -114,6 +127,28 @@ target_sources(
-   PRIVATE pybind11_protobuf/check_unknown_fields.cc
-           pybind11_protobuf/check_unknown_fields.h)
+   pybind11_protobuf/proto_cast_util.h
+   pybind11_protobuf/proto_caster_impl.h)
  
 +add_library(pybind11_protobuf::native ALIAS pybind11_native_proto_caster)
 +
@@ -59,12 +59,12 @@ index 4514f34..100bbf8 100644
 +  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/pybind11_protobuf
 +)
 +
- if(ENABLE_PYPROTO_API)
-   target_compile_definitions(pybind11_native_proto_caster
-                              PRIVATE PYBIND11_PROTOBUF_ENABLE_PYPROTO_API)
+ target_link_libraries(
+   pybind11_native_proto_caster
+   absl::flat_hash_map
 @@ -152,6 +187,24 @@ target_sources(
-   PRIVATE pybind11_protobuf/check_unknown_fields.cc
-           pybind11_protobuf/check_unknown_fields.h)
+   pybind11_protobuf/proto_cast_util.h
+   pybind11_protobuf/proto_caster_impl.h)
  
 +add_library(pybind11_protobuf::wrapped ALIAS pybind11_wrapped_proto_caster)
 +
@@ -84,15 +84,15 @@ index 4514f34..100bbf8 100644
 +  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/pybind11_protobuf
 +)
 +
- if(ENABLE_PYPROTO_API)
-   target_compile_definitions(pybind11_wrapped_proto_caster
-                              PRIVATE PYBIND11_PROTOBUF_ENABLE_PYPROTO_API)
+ target_link_libraries(
+   pybind11_wrapped_proto_caster
+   absl::flat_hash_map
 diff --git a/cmake/Config.cmake.in b/cmake/Config.cmake.in
 new file mode 100644
 index 0000000..c59048c
 --- /dev/null
 +++ b/cmake/Config.cmake.in
-@@ -0,0 +1,11 @@
+@@ -0,0 +1,13 @@
 +@PACKAGE_INIT@
 +
 +set(_pybind11_protobuf_supported_components native wrapped)
@@ -102,6 +102,8 @@ index 0000000..c59048c
 +    set(pybind11_protobuf_FOUND False)
 +    set(pybind11_protobuf_NOT_FOUND_MESSAGE "Unsupported component: ${_comp}")
 +  endif()
++endforeach()
++foreach(_comp ${_pybind11_protobuf_supported_components})
 +  include("${CMAKE_CURRENT_LIST_DIR}/pybind11_protobuf_${_comp}-targets.cmake")
 +endforeach()
 -- 

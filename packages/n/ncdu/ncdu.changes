@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 20 14:14:05 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.21:
+  - Perform tilde expansion on paths in the config file (from 2.7)
+  - Fix JSON import of escaped UTF-16 surrogate pairs (from 2.7)
+  - Fix displaying and exporting zero values when extended info is not available (from 2.6)
+  - Fix JSON export and import of the “other filesystem” flag (from 2.5)
+
+-------------------------------------------------------------------
 Wed May  1 18:59:38 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.20:

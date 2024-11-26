@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Nov 22 20:05:09 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.9.0:
+  * Modify the bound parser to allow the minimum and maximum count
+    to be omitted, defaulting to zero and infinity, respectively.
+  * Add API variants for operating on raw byte vectors:
+    tre_regnexecb, tre_regexecb, tre_regncompb, tre_regaexecb,
+    tre_regcompb
+  * Bug fixes
+- drop unneeded patches or patches included upstream:
+  * 0001-Remove-broken-agrep-test-entry.patch
+  * CVE-2016-8859.patch
+  * tre-chicken.patch
+  * tre.diff
+- drop legacy obsoletes/provides
+
+-------------------------------------------------------------------
 Tue Oct 11 09:44:20 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Add patch to fix testsuite with bash >= 5.2:

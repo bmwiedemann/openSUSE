@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 25 08:32:57 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.9.1
+  * Update Github CI configuration
+  * Update README.md
+  * Update .gitignore
+  * Move project metadata to pyproject.toml
+  * Update pyproject.toml, bump version
+
+-------------------------------------------------------------------
 Wed Aug 21 13:18:11 UTC 2024 - Frantisek Simorda <frantisek.simorda@suse.com>
 
 - Update to 0.9.0:

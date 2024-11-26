@@ -1,7 +1,7 @@
 #
 # spec file for package bat
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,6 @@ Group:          Productivity/Text/Utilities
 URL:            https://github.com/sharkdp/bat
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
-Source2:        cargo_config
 BuildRequires:  cargo-packaging
 # weak-dep-features introduced in 1.60 and already used by libgit2-sys
 # https://github.com/rust-lang/git2-rs/commit/d8ee105a8f3ce4d5c57cd091b67943aab86b176a
@@ -65,8 +64,6 @@ Zsh command line completion support for %{name}.
 
 %prep
 %setup -qa1
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
 
 %build
 %{cargo_build}

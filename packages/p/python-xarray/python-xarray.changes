@@ -1,4 +1,220 @@
 -------------------------------------------------------------------
+Sun Nov 24 13:23:43 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
+
+- skip test test_asi8 on 32bit, results in "OverflowError: Python int too large to convert to C long"
+- delete obsolete patches xarray-pr9356-dasktests.patch, xarray-pr9321-dasktests.patch and xarray-pr9403-np2.1-scalar.patch
+- update to version .2024.11.0:
+ - This release brings better support for wrapping JAX arrays and Astropy Quantity objects, :py:meth:`DataTree.persist`, algorithmic improvements:
+ - to many methods with dask (:py:meth:`Dataset.polyfit`, :py:meth:`Dataset.ffill`, :py:meth:`Dataset.bfill`, rolling reductions), and bug fixes.:
+ - Thanks to the 22 contributors to this release:
+ - Benoit Bovy, Deepak Cherian, Dimitri Papadopoulos Orfanos, Holly Mandel, James Bourbeau, Joe Hamman, Justus Magin, Kai Mühlbauer, Lukas Trippe, Mathias Hauser, Maximilian Roos, Michael Niklas, Pascal Bourgault, Patrick Hoefler, Sam Levang, Sarah Charlotte Johnson, Scott Huberty, Stephan Hoyer, Tom Nicholas, Virgile Andreani, joseph nowak and tvo:
+ - New Features:
+  - Added :py:meth:`DataTree.persist` method (:issue:`9675`, :pull:`9682`).
+    By `Sam Levang <https://github.com/slevang>`_.
+  - Added ``write_inherited_coords`` option to :py:meth:`DataTree.to_netcdf`
+    and :py:meth:`DataTree.to_zarr` (:pull:`9677`).
+    By `Stephan Hoyer <https://github.com/shoyer>`_.
+  - Support lazy grouping by dask arrays, and allow specifying ordered groups with ``UniqueGrouper(labels=["a", "b", "c"])``
+    (:issue:`2852`, :issue:`757`).
+    By `Deepak Cherian <https://github.com/dcherian>`_.
+  - Add new ``automatic_rechunk`` kwarg to :py:meth:`DataArrayRolling.construct` and
+    :py:meth:`DatasetRolling.construct`. This is only useful on ``dask>=2024.11.0``
+    (:issue:`9550`). By `Deepak Cherian <https://github.com/dcherian>`_.
+  - Optimize ffill, bfill with dask when limit is specified
+    (:pull:`9771`).
+    By `Joseph Nowak <https://github.com/josephnowak>`_, and
+    `Patrick Hoefler <https://github.com/phofl>`_.
+  - Allow wrapping ``np.ndarray`` subclasses, e.g. ``astropy.units.Quantity`` (:issue:`9704`, :pull:`9760`).
+    By `Sam Levang <https://github.com/slevang>`_ and `Tien Vo <https://github.com/tien-vo>`_.
+  - Optimize :py:meth:`DataArray.polyfit` and :py:meth:`Dataset.polyfit` with dask, when used with
+    arrays with more than two dimensions.
+    (:issue:`5629`). By `Deepak Cherian <https://github.com/dcherian>`_.
+  - Support for directly opening remote files as string paths (for example, ``s3://bucket/data.nc``)
+    with ``fsspec`` when using the ``h5netcdf`` engine (:issue:`9723`, :pull:`9797`).
+    By `James Bourbeau <https://github.com/jrbourbeau>`_.
+  - Re-implement the :py:mod:`ufuncs` module, which now dynamically dispatches to the
+    underlying array's backend. Provides better support for certain wrapped array types
+    like ``jax.numpy.ndarray``. (:issue:`7848`, :pull:`9776`).
+    By `Sam Levang <https://github.com/slevang>`_.
+  - Speed up loading of large zarr stores using dask arrays. (:issue:`8902`)
+    By `Deepak Cherian <https://github.com/dcherian>`_.
+ - Breaking Changes:
+  - The minimum versions of some dependencies were changed
+    ===================== =========  =======
+     Package                    Old      New
+    ===================== =========  =======
+      boto3                    1.28     1.29
+      dask-core             2023.9   2023.11
+      distributed           2023.9   2023.11
+      h5netcdf                 1.2      1.3
+      numbagg                0.2.1      0.6
+      typing_extensions       4.7       4.8
+    ===================== =========  =======
+ - Deprecations:
+  - Grouping by a chunked array (e.g. dask or cubed) currently eagerly loads that variable in to
+    memory. This behaviour is deprecated. If eager loading was intended, please load such arrays
+    manually using ``.load()`` or ``.compute()``. Else pass ``eagerly_compute_group=False``, and
+    provide expected group labels using the ``labels`` kwarg to a grouper object such as
+    :py:class:`grouper.UniqueGrouper` or :py:class:`grouper.BinGrouper`.
+ - Bug fixes:
+  - Fix inadvertent deep-copying of child data in DataTree (:issue:`9683`,
+    :pull:`9684`).
+    By `Stephan Hoyer <https://github.com/shoyer>`_.
+  - Avoid including parent groups when writing DataTree subgroups to Zarr or
+    netCDF (:pull:`9682`).
+    By `Stephan Hoyer <https://github.com/shoyer>`_.
+  - Fix regression in the interoperability of :py:meth:`DataArray.polyfit` and :py:meth:`xr.polyval` for date-time coordinates. (:pull:`9691`).
+    By `Pascal Bourgault <https://github.com/aulemahal>`_.
+  - Fix CF decoding of ``grid_mapping`` to allow all possible formats, add tests (:issue:`9761`, :pull:`9765`).
+    By `Kai Mühlbauer <https://github.com/kmuehlbauer>`_.
+  - Add ``User-Agent`` to request-headers when retrieving tutorial data (:issue:`9774`, :pull:`9782`)
+    By `Kai Mühlbauer <https://github.com/kmuehlbauer>`_.
+ - Documentation:
+  - Mention attribute peculiarities in docs/docstrings (:issue:`4798`, :pull:`9700`).
+    By `Kai Mühlbauer <https://github.com/kmuehlbauer>`_.
+ - Internal Changes:
+  - ``persist`` methods now route through the :py:class:`xr.core.parallelcompat.ChunkManagerEntrypoint` (:pull:`9682`).
+    By `Sam Levang <https://github.com/slevang>`_.
+- update to version 2024.10.0:
+ - This release brings official support for ``xarray.DataTree``, and compatibility with zarr-python v3!:
+ - Aside from these two huge features, it also improves support for vectorised interpolation and fixes various bugs.:
+ - Thanks to the 31 contributors to this release:
+ - Alfonso Ladino, DWesl, Deepak Cherian, Eni, Etienne Schalk, Holly Mandel, Ilan Gold, Illviljan, Joe Hamman, Justus Magin, Kai Mühlbauer, Karl Krauth, Mark Harfouche, Martey Dodoo, Matt Savoie, Maximilian Roos, Patrick Hoefler, Peter Hill, Renat Sibgatulin, Ryan Abernathey, Spencer Clark, Stephan Hoyer, Tom Augspurger, Tom Nicholas, Vecko, Virgile Andreani, Yvonne Fröhlich, carschandler, joseph nowak, mgunyho and owenlittlejohns:
+ - New Features:
+  - ``DataTree`` related functionality is now exposed in the main ``xarray`` public
+    API. This includes: ``xarray.DataTree``, ``xarray.open_datatree``, ``xarray.open_groups``,
+    ``xarray.map_over_datasets``, ``xarray.group_subtrees``,
+    ``xarray.register_datatree_accessor`` and ``xarray.testing.assert_isomorphic``.
+    By `Owen Littlejohns <https://github.com/owenlittlejohns>`_,
+    `Eni Awowale <https://github.com/eni-awowale>`_,
+    `Matt Savoie <https://github.com/flamingbear>`_,
+    `Stephan Hoyer <https://github.com/shoyer>`_,
+    `Tom Nicholas <https://github.com/TomNicholas>`_,
+    `Justus Magin <https://github.com/keewis>`_, and
+    `Alfonso Ladino <https://github.com/aladinor>`_.
+  - A migration guide for users of the prototype `xarray-contrib/datatree repository <https://github.com/xarray-contrib/datatree>`_ has been added, and can be found in the ``DATATREE_MIGRATION_GUIDE.md`` file in the repository root.
+    By `Tom Nicholas <https://github.com/TomNicholas>`_.
+  - Support for Zarr-Python 3 (:issue:`95515`, :pull:`9552`).
+    By `Tom Augspurger <https://github.com/TomAugspurger>`_,
+    `Ryan Abernathey <https://github.com/rabernat>`_ and
+    `Joe Hamman <https://github.com/jhamman>`_.
+  - Added zarr backends for :py:func:`open_groups` (:issue:`9430`, :pull:`9469`).
+    By `Eni Awowale <https://github.com/eni-awowale>`_.
+  - Added support for vectorized interpolation using additional interpolators
+    from the ``scipy.interpolate`` module (:issue:`9049`, :pull:`9526`).
+    By `Holly Mandel <https://github.com/hollymandel>`_.
+  - Implement handling of complex numbers (netcdf4/h5netcdf) and enums (h5netcdf) (:issue:`9246`, :issue:`3297`, :pull:`9509`).
+    By `Kai Mühlbauer <https://github.com/kmuehlbauer>`_.
+  - Fix passing missing arguments to when opening hdf5 and netCDF4 datatrees
+    (:issue:`9427`, :pull:`9428`).
+    By `Alfonso Ladino <https://github.com/aladinor>`_.
+ - Bug fixes:
+  - Make illegal path-like variable names when constructing a DataTree from a Dataset
+    (:issue:`9339`, :pull:`9378`)
+    By `Etienne Schalk <https://github.com/etienneschalk>`_.
+  - Work around `upstream pandas issue
+    <https://github.com/pandas-dev/pandas/issues/56996>`_ to ensure that we can
+    decode times encoded with small integer dtype values (e.g. ``np.int32``) in
+    environments with NumPy 2.0 or greater without needing to fall back to cftime
+    (:pull:`9518`). By `Spencer Clark <https://github.com/spencerkclark>`_.
+  - Fix bug when encoding times with missing values as floats in the case when
+    the non-missing times could in theory be encoded with integers
+    (:issue:`9488`, :pull:`9497`). By `Spencer Clark
+    <https://github.com/spencerkclark>`_.
+  - Fix a few bugs affecting groupby reductions with ``flox``. (:issue:`8090`, :issue:`9398`, :issue:`9648`).
+  - Fix a few bugs affecting groupby reductions with ``flox``. (:issue:`8090`, :issue:`9398`).
+    By `Deepak Cherian <https://github.com/dcherian>`_.
+  - Fix the safe_chunks validation option on the to_zarr method
+    (:issue:`5511`, :pull:`9559`). By `Joseph Nowak
+    <https://github.com/josephnowak>`_.
+  - Fix binning by multiple variables where some bins have no observations. (:issue:`9630`).
+    By `Deepak Cherian <https://github.com/dcherian>`_.
+  - Fix issue where polyfit wouldn't handle non-dimension coordinates. (:issue:`4375`, :pull:`9369`)
+    By `Karl Krauth <https://github.com/Karl-Krauth>`_.
+ - Documentation:
+  - Migrate documentation for ``datatree`` into main ``xarray`` documentation (:pull:`9033`).
+    For information on previous ``datatree`` releases, please see:
+    `datatree's historical release notes <https://xarray-datatree.readthedocs.io/en/latest/>`_.
+    By `Owen Littlejohns <https://github.com/owenlittlejohns>`_, `Matt Savoie <https://github.com/flamingbear>`_, and
+    `Tom Nicholas <https://github.com/TomNicholas>`_.
+ - Internal Changes:
+- update to version 2024.09.0:
+ - This release drops support for Python 3.9, and adds support for grouping by :ref:`multiple arrays <groupby.multiple>`, while providing numerous performance improvements and bug fixes.:
+ - Thanks to the 33 contributors to this release:
+ - Alfonso Ladino, Andrew Scherer, Anurag Nayak, David Hoese, Deepak Cherian, Diogo Teles Sant'Anna, Dom, Elliott Sales de Andrade, Eni, Holly Mandel, Illviljan, Jack Kelly, Julius Busecke, Justus Magin, Kai Mühlbauer, Manish Kumar Gupta, Matt Savoie, Maximilian Roos, Michele Claus, Miguel Jimenez, Niclas Rieger, Pascal Bourgault, Philip Chmielowiec, Spencer Clark, Stephan Hoyer, Tao Xin, Tiago Sanona, TimothyCera-NOAA, Tom Nicholas, Tom White, Virgile Andreani, oliverhiggs and tiago:
+ - New Features:
+  - Add :py:attr:`~core.accessor_dt.DatetimeAccessor.days_in_year` and
+    :py:attr:`~core.accessor_dt.DatetimeAccessor.decimal_year` to the
+    ``DatetimeAccessor`` on ``xr.DataArray``. (:pull:`9105`).
+    By `Pascal Bourgault <https://github.com/aulemahal>`_.
+ - Performance:
+  - Make chunk manager an option in ``set_options`` (:pull:`9362`).
+    By `Tom White <https://github.com/tomwhite>`_.
+  - Support for :ref:`grouping by multiple variables <groupby.multiple>`.
+    This is quite new, so please check your results and report bugs.
+    Binary operations after grouping by multiple arrays are not supported yet.
+    (:issue:`1056`, :issue:`9332`, :issue:`324`, :pull:`9372`).
+    By `Deepak Cherian <https://github.com/dcherian>`_.
+  - Allow data variable specific ``constant_values`` in the dataset ``pad`` function (:pull:`9353`).
+    By `Tiago Sanona <https://github.com/tsanona>`_.
+  - Speed up grouping by avoiding deep-copy of non-dimension coordinates (:issue:`9426`, :pull:`9393`)
+    By `Deepak Cherian <https://github.com/dcherian>`_.
+ - Breaking changes:
+  - Support for ``python 3.9`` has been dropped (:pull:`8937`)
+  - The minimum versions of some dependencies were changed
+    ===================== =========  =======
+     Package                    Old      New
+    ===================== =========  =======
+      boto3                   1.26      1.28
+      cartopy                 0.21      0.22
+      dask-core             2023.4    2023.9
+      distributed           2023.4    2023.9
+      h5netcdf                1.1        1.2
+      iris                    3.4        3.7
+      numba                   0.56      0.57
+      numpy                   1.23      1.24
+      pandas                  2.0        2.1
+      scipy                   1.10      1.11
+      typing_extensions       4.5        4.7
+      zarr                    2.14      2.16
+    ===================== =========  =======
+ - Bug fixes:
+  - Fix bug with rechunking to a frequency when some periods contain no data (:issue:`9360`).
+    By `Deepak Cherian <https://github.com/dcherian>`_.
+  - Fix bug causing ``DataTree.from_dict`` to be sensitive to insertion order (:issue:`9276`, :pull:`9292`).
+    By `Tom Nicholas <https://github.com/TomNicholas>`_.
+  - Fix resampling error with monthly, quarterly, or yearly frequencies with
+    cftime when the time bins straddle the date "0001-01-01". For example, this
+    can happen in certain circumstances when the time coordinate contains the
+    date "0001-01-01". (:issue:`9108`, :pull:`9116`) By `Spencer Clark
+    <https://github.com/spencerkclark>`_ and `Deepak Cherian
+    <https://github.com/dcherian>`_.
+  - Fix issue with passing parameters to ZarrStore.open_store when opening
+    datatree in zarr format (:issue:`9376`, :pull:`9377`).
+    By `Alfonso Ladino <https://github.com/aladinor>`_
+  - Fix deprecation warning that was raised when calling ``np.array`` on an ``xr.DataArray``
+    in NumPy 2.0 (:issue:`9312`, :pull:`9393`)
+    By `Andrew Scherer <https://github.com/andrew-s28>`_.
+  - Fix passing missing arguments to when opening hdf5 and netCDF4 datatrees
+    (:issue:`9427`, :pull:`9428`).
+    By `Alfonso Ladino <https://github.com/aladinor>`_.
+  - Fix support for using ``pandas.DateOffset``, ``pandas.Timedelta``, and
+    ``datetime.timedelta`` objects as ``resample`` frequencies
+    (:issue:`9408`, :pull:`9413`).
+    By `Oliver Higgs <https://github.com/oliverhiggs>`_.
+ - Internal Changes:
+  - Re-enable testing ``pydap`` backend with ``numpy>=2`` (:pull:`9391`).
+    By `Miguel Jimenez <https://github.com/Mikejmnez>`_ .
+
+-------------------------------------------------------------------
+Sun Nov 24 13:08:38 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
+
+- disable the 'parallel' subpackage because dask is unavailable 3.12, which is because numba is unavailable on 3.13
+  https://build.opensuse.org/request/show/1225144
+  https://github.com/numba/numba/issues/9760
+- disabled tests requiring dask
+
+-------------------------------------------------------------------
 Wed Sep  4 09:11:37 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2024.7.0
@@ -1177,7 +1393,7 @@ Sun Aug  7 03:12:48 UTC 2022 - Arun Persaud <arun@gmx.de>
       details. (PR5692). By Benoît Bovy.
 
 -------------------------------------------------------------------
-Fri Mar  4 18:00:26 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Fri Mar  4 18:00:26 UTC 2022 - Sebastian Wagner <sebix@sebix.at>
 
 - - update to version 2022.03.0:
  - This release brings a number of small improvements, as well as a move to `calendar versioning <https://calver.org/>`_ (:issue:`6176`).:
@@ -1217,7 +1433,7 @@ Fri Mar  4 18:00:26 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
     By `Sebastian Weigand <https://github.com/s-weigand>`_ and `Joe Hamman <https://github.com/jhamman>`_.
 
 -------------------------------------------------------------------
-Wed Feb  2 19:56:06 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Wed Feb  2 19:56:06 UTC 2022 - Sebastian Wagner <sebix@sebix.at>
 
 - - update to version 0.21.1:
  - This is a bugfix release to resolve (:issue:`6216`, :pull:`6207`).:
@@ -1226,7 +1442,7 @@ Wed Feb  2 19:56:06 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
     By `Sebastian Weigand <https://github.com/s-weigand>`_ and `Joe Hamman <https://github.com/jhamman>`_.
 
 -------------------------------------------------------------------
-Sat Jan 29 09:23:51 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sat Jan 29 09:23:51 UTC 2022 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.21.0:
  - Many thanks to the 20 contributors to the v0.21.0 release!:
@@ -1283,7 +1499,7 @@ Mon Jan 24 16:28:40 UTC 2022 - Ben Greiner <code@bnavigator.de>
   yet
 
 -------------------------------------------------------------------
-Fri Dec 10 08:01:01 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Fri Dec 10 08:01:01 UTC 2021 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.20.2:
  - This is a bugfix release to resolve (:issue:`3391`, :issue:`5715`). It also:
@@ -1318,7 +1534,7 @@ Fri Dec 10 08:01:01 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
     By `Kai Mühlbauer <https://github.com/kmuehlbauer>`_.
 
 -------------------------------------------------------------------
-Mon Nov 15 14:46:40 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Mon Nov 15 14:46:40 UTC 2021 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.20.1:
  - This is a bugfix release to fix :issue:`5930`.:
@@ -1329,7 +1545,7 @@ Mon Nov 15 14:46:40 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
   - Significant improvements to  :ref:`api`. By `Deepak Cherian <https://github.com/dcherian>`_.
 
 -------------------------------------------------------------------
-Tue Nov  2 19:44:34 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Tue Nov  2 19:44:34 UTC 2021 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.20.0:
  - This release brings improved support for pint arrays, methods for weighted standard deviation, variance,:
@@ -1459,7 +1675,7 @@ Tue Sep 21 10:38:39 UTC 2021 - Ben Greiner <code@bnavigator.de>
 - Tests require dask[diagnostics] extra now (for Jinja2)
 
 -------------------------------------------------------------------
-Tue Jul 27 11:01:52 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Tue Jul 27 11:01:52 UTC 2021 - Sebastian Wagner <sebix@sebix.at>
 
 - remove xarray-pr5449-dask-meta.patch, merged upstream.
 - remove test_resample_loffset.patch, merged upstream.
@@ -1578,20 +1794,20 @@ Tue May 25 17:25:46 UTC 2021 - Matej Cepl <mcepl@suse.com>
   test (gh#pydata/xarray#5364).
 
 -------------------------------------------------------------------
-Thu May 20 11:58:50 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Thu May 20 11:58:50 UTC 2021 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.18.2:
  - This release reverts a regression in xarray's unstacking of dask-backed arrays.:
 - remove fix_test_resample_loffset.patch, doesn't work
 
 -------------------------------------------------------------------
-Wed May 19 13:53:54 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Wed May 19 13:53:54 UTC 2021 - Sebastian Wagner <sebix@sebix.at>
 
 - add fix_test_resample_loffset.patch to fix test fail on i586
   https://github.com/pydata/xarray/issues/5341
 
 -------------------------------------------------------------------
-Wed May 19 07:26:03 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Wed May 19 07:26:03 UTC 2021 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.18.1:
  - This release is intended as a small patch release to be compatible with the new:
@@ -1637,7 +1853,7 @@ Wed May 19 07:26:03 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
     By `Tom Nicholas <https://github.com/TomNicholas>`_.
 
 -------------------------------------------------------------------
-Sun May  9 09:46:42 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sun May  9 09:46:42 UTC 2021 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.18.0:
  - This release brings a few important performance improvements, a wide range of:
@@ -1842,7 +2058,7 @@ Sun May  9 09:46:42 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
     By `Maximilian Roos <https://github.com/max-sixty>`_.
 
 -------------------------------------------------------------------
-Sat Feb 27 14:38:41 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sat Feb 27 14:38:41 UTC 2021 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.17.0:
  - This release brings a few important performance improvements, a wide range of:
@@ -2058,7 +2274,7 @@ Mon Feb 15 12:30:53 UTC 2021 - Ben Greiner <code@bnavigator.de>
 - Recommend/Suggest the extras
 
 -------------------------------------------------------------------
-Sun Dec 20 16:09:14 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sun Dec 20 16:09:14 UTC 2020 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.16.2:
  - This release brings the ability to write to limited regions of ``zarr`` files, open zarr files with :py:func:`open_dataset` and :py:func:`open_mfdataset`, increased support for propagating ``attrs`` using the ``keep_attrs`` flag, as well as numerous bugfixes and documentation improvements.:
@@ -2171,7 +2387,7 @@ Sun Dec 20 16:09:14 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
     <https://github.com/mathause>`_.
 
 -------------------------------------------------------------------
-Wed Sep 23 06:23:20 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Wed Sep 23 06:23:20 UTC 2020 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.16.1:
  - This patch release fixes an incompatability with a recent pandas change, which:
@@ -2412,7 +2628,7 @@ Sat Mar 28 16:43:47 UTC 2020 - Arun Persaud <arun@gmx.de>
   tested instead of skipping the tests.
 
 -------------------------------------------------------------------
-Sat Feb  1 15:02:10 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sat Feb  1 15:02:10 UTC 2020 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.15.0:
  - This release brings many improvements to xarray's documentation: our examples are now binderized notebooks (`click here <https://mybinder.org/v2/gh/pydata/xarray/master?urlpath=lab/tree/doc/examples/weather-data.ipynb>`_):
@@ -2860,7 +3076,7 @@ Mon Jul 29 21:32:02 UTC 2019 - Todd R <toddrme2178@gmail.com>
 - Disable non-functional dask tests
 
 -------------------------------------------------------------------
-Mon Jul 15 19:31:13 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Mon Jul 15 19:31:13 UTC 2019 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.12.3:
  - New functions/methods:
@@ -2885,7 +3101,7 @@ Mon Jul 15 19:31:13 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
     once (:issue:`2954`).
 
 -------------------------------------------------------------------
-Sun Jun 30 09:29:36 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sun Jun 30 09:29:36 UTC 2019 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.12.2:
  - New functions/methods:
@@ -3032,7 +3248,7 @@ Tue Apr 23 09:44:22 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 - Just use %pytest macro
 
 -------------------------------------------------------------------
-Sun Apr  7 11:37:34 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sun Apr  7 11:37:34 UTC 2019 - Sebastian Wagner <sebix@sebix.at>
 
 - Update to version 0.12.1:
  - Enhancements
@@ -3148,7 +3364,7 @@ Wed Feb 13 18:04:03 UTC 2019 - Todd R <toddrme2178@gmail.com>
     to ``open_mfdataset``
 
 -------------------------------------------------------------------
-Thu Jan  3 17:40:46 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Thu Jan  3 17:40:46 UTC 2019 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.11.2:
  - Removes inadvertently introduced setup dependency on pytest-runner (:issue:`2641`). Otherwise, this release is exactly equivalent to 0.11.1.
@@ -3353,7 +3569,7 @@ Wed Jul 18 17:32:13 UTC 2018 - arun@gmx.de
       Hamman.
 
 -------------------------------------------------------------------
-Sun Jun 10 20:04:48 UTC 2018 - sebix+novell.com@sebix.at
+Sun Jun 10 20:04:48 UTC 2018 - sebix@sebix.at
 
 - update to version 0.10.7:
  * Enhancements:
@@ -3473,7 +3689,7 @@ Mon May 21 04:03:17 UTC 2018 - arun@gmx.de
       Root.
 
 -------------------------------------------------------------------
-Sat Apr 14 12:41:49 UTC 2018 - sebix+novell.com@sebix.at
+Sat Apr 14 12:41:49 UTC 2018 - sebix@sebix.at
 
 - temporarily deactivated tests because of minor issues with netCDF library
   see https://github.com/pydata/xarray/issues/2050
@@ -3573,7 +3789,7 @@ Sun Mar  4 09:34:18 UTC 2018 - jengelh@inai.de
 - Replace future goals and aims by present capabilities.
 
 -------------------------------------------------------------------
-Thu Mar  1 11:44:58 UTC 2018 - sebix+novell.com@sebix.at
+Thu Mar  1 11:44:58 UTC 2018 - sebix@sebix.at
 
 - update to version 0.10.1:
  * please see upstream changelog at: https://github.com/pydata/xarray/blob/v0.10.1/doc/whats-new.rst

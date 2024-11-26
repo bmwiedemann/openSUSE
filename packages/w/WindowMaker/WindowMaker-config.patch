@@ -276,7 +276,7 @@ Index: util/wmaker.inst.in
 ===================================================================
 --- util/wmaker.inst.in.orig
 +++ util/wmaker.inst.in
-@@ -276,41 +276,41 @@ echo "    $GSDIR/Library/WindowMaker/$in
+@@ -256,19 +256,19 @@ echo "    $GSDIR/Library/WindowMaker/$in
  }
  
  wmaker_found=0
@@ -309,43 +309,3 @@ Index: util/wmaker.inst.in
  
  
  trap "show_end_message;exit" 2
- 
--echo
--echo "Now the .xinitrc, .Xclients or .xsession script must be updated so that"
--echo "it calls wmaker when you start an X session."
--echo "Type the name of the file that must be changed (normally .xinitrc)."
--echo "If the file already exists, it will be backed up with a .old.$DATE "
--echo "extension"
--echo "If you want to edit it by hand, hit <Control>-C now."
--read file
--
--if test "x$file" = "x"; then
--	echo "Using .xinitrc as a default value"
--	file=.xinitrc
--fi
--
--if [ -f "$USERDIR/$file" ]; then
--	mv "$USERDIR/$file" "$USERDIR/$file.old.$DATE"
--fi
-+#echo
-+#echo "Now the .xinitrc, .Xclients or .xsession script must be updated so that"
-+#echo "it calls wmaker when you start an X session."
-+#echo "Type the name of the file that must be changed (normally .xinitrc)."
-+#echo "If the file already exists, it will be backed up with a .old.$DATE "
-+#echo "extension"
-+#echo "If you want to edit it by hand, hit <Control>-C now."
-+#read file
-+
-+#if test "x$file" = "x"; then
-+#	echo "Using .xinitrc as a default value"
-+#	file=.xinitrc
-+#fi
-+
-+#if [ -f "$USERDIR/$file" ]; then
-+#	mv "$USERDIR/$file" "$USERDIR/$file.old.$DATE"
-+#fi
- 
--make_script "$USERDIR/$file"
-+#make_script "$USERDIR/$file"
- 
- show_end_message

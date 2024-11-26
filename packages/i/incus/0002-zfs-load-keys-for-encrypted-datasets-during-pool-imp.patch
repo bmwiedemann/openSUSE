@@ -1,0 +1,69 @@
+From 5181f26b1cb959d031e971f639f4b18be575b112 Mon Sep 17 00:00:00 2001
+From: Aleksa Sarai <cyphar@cyphar.com>
+Date: Sat, 16 Nov 2024 23:58:36 +1100
+Subject: [PATCH 2/2] zfs: load keys for encrypted datasets during pool import
+
+If a user has set up their own zpools and given them to us to manage,
+it's possible they've configured ZFS-native encryption. For the most
+part, this works completely transparently to us. However, because we
+manually do zpool-import and zpool-export during startup and shutdown of
+Incus, ZFS datasets with keys will have their keys unloaded during
+shutdown and then the keys are not automatically loaded on startup. This
+results in containers being unable to start on startup because all IOs
+are blocked indefinitely until the dataset keys are loaded manually by
+the admin -- even if the admin has configured automatic key loading on
+their system!
+
+The simplest solution would be to pass -l to zfs-import (which causes
+ZFS to auto-import all keys for all datasets in the pool). However, it
+is slightly nicer to do a separate zfs-load-key so that we can unmount
+the pool if the key import fails (zfs-import will leave the pool
+imported but without keys loaded).
+
+If the user has configured keylocation=prompt (or otherwise
+misconfigured the encryption settings for their pool), the command will
+fail and the pool import will fail loudly (rather than silently failing
+in the form of an imported pool that is not usable as a filesystem).
+
+Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
+---
+ internal/server/storage/drivers/driver_zfs.go | 21 ++++++++++++++++---
+ 1 file changed, 18 insertions(+), 3 deletions(-)
+
+diff --git a/internal/server/storage/drivers/driver_zfs.go b/internal/server/storage/drivers/driver_zfs.go
+index 54cceb6aa27b..8c5253d18f5d 100644
+--- a/internal/server/storage/drivers/driver_zfs.go
++++ b/internal/server/storage/drivers/driver_zfs.go
+@@ -566,11 +566,26 @@ func (d *zfs) importPool() (bool, error) {
+ 		return false, err
+ 	}
+ 
+-	if exists {
+-		return true, nil
++	if !exists {
++		return false, fmt.Errorf("ZFS zpool exists but dataset is missing")
+ 	}
+ 
+-	return false, fmt.Errorf("ZFS zpool exists but dataset is missing")
++	// We need to explicitly import the keys here so containers can start. This
++	// is always needed because even if the admin has set up auto-import of
++	// keys on the system, because incus manually imports and exports the pools
++	// the keys can get unloaded.
++	//
++	// We could do "zpool import -l" to request the keys during import, but by
++	// doing it separately we know that the key loading specifically failed and
++	// not some other operation. If a user has keylocation=prompt configured,
++	// this command will fail and the pool will fail to load.
++	_, err = subprocess.RunCommand("zfs", "load-key", "-r", d.config["zfs.pool_name"])
++	if err != nil {
++		_, _ = d.Unmount()
++		return false, fmt.Errorf("Failed to load keys for ZFS dataset %q: %w", d.config["zfs.pool_name"], err)
++	}
++
++	return true, nil
+ }
+ 
+ // Mount mounts the storage pool.
+-- 
+2.47.0
+

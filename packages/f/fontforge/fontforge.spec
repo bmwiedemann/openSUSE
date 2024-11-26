@@ -30,6 +30,8 @@ Patch1:         add-bitmap-transform-support.patch
 # PATCH-FIX-UPSTREAM fontforge-CVE-2024-25081-CVE-2024-25082.patch CVE-2024-25081 CVE-2024-25082 bsc#1220404 bsc#1220405 qzhao@suse.com -- Fix Splinefont shell invocation.
 Patch2:         fontforge-CVE-2024-25081-CVE-2024-25082.patch
 Patch3:         https://github.com/fontforge/fontforge/commit/642d8a3db6d4bc0e70b429622fdf01ecb09c4c10.patch
+# PATCH-FIX-UPSTREAM: taken from https://github.com/fontforge/fontforge/commit/8c75293e924602ed09a9481b0eeb67ba6c623a81
+Patch4:         use-sysconfig-not-distutils.patch
 BuildRequires:  cairo-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes

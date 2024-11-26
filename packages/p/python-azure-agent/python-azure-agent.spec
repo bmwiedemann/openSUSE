@@ -17,11 +17,11 @@
 
 
 Name:           python-azure-agent
+Version:        2.9.1.1
+Release:        0
 Summary:        Microsoft Azure Linux Agent
 License:        Apache-2.0
 Group:          System/Daemons
-Version:        2.9.1.1
-Release:        0
 URL:            https://github.com/Azure/WALinuxAgent
 Source0:        WALinuxAgent-%{version}.tar.gz
 Patch1:         agent-no-auto-update.patch
@@ -87,7 +87,7 @@ Microsoft Azure Stack framework.
 %package test
 Summary:        Unit tests
 Group:          Development/Languages/Python
-Requires:       %{name} == %{version}
+Requires:       %{name} = %{version}
 Requires:       openssl
 %if 0%{?suse_version} > 1315
 Requires:       python3-pytest
@@ -102,9 +102,9 @@ Unit tests for python-azure-agent.
 %package config-default
 Summary:        Default upstream configuration
 Group:          Development/Languages/Python
-Requires:       %{name} == %{version}
-Provides:       waagent-config
+Requires:       %{name} = %{version}
 Conflicts:      waagent-config
+Provides:       waagent-config
 
 %description config-default
 The default configuration for the agent as supplied by upstream for SUSE
@@ -112,9 +112,9 @@ The default configuration for the agent as supplied by upstream for SUSE
 %package config-server
 Summary:        SUSE specific configuration for server products
 Group:          Development/Languages/Python
-Requires:       %{name} == %{version}
-Provides:       waagent-config
+Requires:       %{name} = %{version}
 Conflicts:      waagent-config
+Provides:       waagent-config
 
 %description config-server
 Modified waagent.conf file to meet SUSE policies and SUSE image build
@@ -123,9 +123,9 @@ setup
 %package config-hpc
 Summary:        SUSE specific configuration for HPC
 Group:          Development/Languages/Python
-Requires:       %{name} == %{version}
-Provides:       waagent-config
+Requires:       %{name} = %{version}
 Conflicts:      waagent-config
+Provides:       waagent-config
 
 %description config-hpc
 Modified waagent.conf file to meet SUSE policies and SUSE image build
@@ -134,16 +134,16 @@ setup
 %package config-micro
 Summary:        SUSE specific configuration for Micro
 Group:          Development/Languages/Python
-Requires:       %{name} == %{version}
-Provides:       waagent-config
+Requires:       %{name} = %{version}
 Conflicts:      waagent-config
+Provides:       waagent-config
 
 %description config-micro
 Modified waagent.conf file to meet SUSE policies and SUSE image build
 setup
 
 %prep
-%setup -qn WALinuxAgent-%{version}
+%setup -q -n WALinuxAgent-%{version}
 %patch -P 1
 %if 0%{?suse_version} > 1315
 %patch -P 6
@@ -164,7 +164,8 @@ python setup.py build
 %install
 %if 0%{?suse_version} > 1315
 python3 setup.py install --prefix=%{_prefix} --lnx-distro='suse' --root=%{buildroot}
-rm %{buildroot}/usr/sbin/waagent2.0
+rm %{buildroot}%{_sbindir}/waagent2.0
+%python3_fix_shebang
 %else
 python setup.py install --prefix=%{_prefix} --lnx-distro='suse' --root=%{buildroot}
 %endif
@@ -213,8 +214,8 @@ fi
 mkdir -p %{buildroot}/lib/udev/rules.d
 mv %{buildroot}%{_sysconfdir}/udev/rules.d/* %{buildroot}/lib/udev/rules.d/
 %else
-mkdir -p %{buildroot}/usr/lib/udev/rules.d
-mv %{buildroot}%{_sysconfdir}/udev/rules.d/* %{buildroot}/usr/lib/udev/rules.d/
+mkdir -p %{buildroot}%{_prefix}/lib/udev/rules.d
+mv %{buildroot}%{_sysconfdir}/udev/rules.d/* %{buildroot}%{_prefix}/lib/udev/rules.d/
 %endif
 ### log file ghost
 mkdir -p  %{buildroot}/%{_localstatedir}/log
@@ -239,8 +240,8 @@ cp -r tests %{buildroot}/%{python_sitelib}/azurelinuxagent
 # Handle the case when the -config-* package is not installed, we want to
 # preserver the previousl config file that was flavor customized during
 # image build
-if [ -e /etc/waagent.conf ]; then
-    cp -Z /etc/waagent.conf /etc/waagent.conf.bak
+if [ -e %{_sysconfdir}/waagent.conf ]; then
+    cp -Z %{_sysconfdir}/waagent.conf %{_sysconfdir}/waagent.conf.bak
 fi
 
 %if 0%{?suse_version} > 1500
@@ -253,16 +254,16 @@ done
 %posttrans
 # Do not clobber the config if it was installed from a config package, but
 # put the oldfile back if we do not have another config file
-if [ ! -e /etc/waagent.conf ]; then
-    if [ -e /etc/waagent.conf.bak ]; then
-        mv -Z /etc/waagent.conf.bak /etc/waagent.conf
+if [ ! -e %{_sysconfdir}/waagent.conf ]; then
+    if [ -e %{_sysconfdir}/waagent.conf.bak ]; then
+        mv -Z %{_sysconfdir}/waagent.conf.bak %{_sysconfdir}/waagent.conf
         #restart the waagent.service again the restert in post failed due
         # to missing config
         systemctl try-restart waagent.service
     # Making the assumption that the rpmsave file was generated because of
     # of the previously broken package upgrade.
-    elif [ -e /etc/waagent.conf.rpmsave ]; then
-        cp -Z /etc/waagent.conf.rpmsave /etc/waagent.conf
+    elif [ -e %{_sysconfdir}/waagent.conf.rpmsave ]; then
+        cp -Z %{_sysconfdir}/waagent.conf.rpmsave %{_sysconfdir}/waagent.conf
         #restart the waagent.service again the restert in post failed due
         # to missing config
         systemctl try-restart waagent.service
@@ -319,8 +320,8 @@ ln -s %{_sysconfdir}/waagent.conf.micro %{_sysconfdir}/waagent.conf
 /lib/udev/rules.d/66-azure-storage.rules
 /lib/udev/rules.d/99-azure-product-uuid.rules
 %else
-/usr/lib/udev/rules.d/66-azure-storage.rules
-/usr/lib/udev/rules.d/99-azure-product-uuid.rules
+%{_prefix}/lib/udev/rules.d/66-azure-storage.rules
+%{_prefix}/lib/udev/rules.d/99-azure-product-uuid.rules
 %endif
 %if 0%{?suse_version} > 1315
 %dir %{python3_sitelib}/azurelinuxagent

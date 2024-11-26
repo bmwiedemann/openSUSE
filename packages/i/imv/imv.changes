@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 22 08:28:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- imv-link-icu-uc.patch: specify icu-uc as dependency instead of
+  icu-io: IMV does not use the Stream & I/O parts of ICU, the
+  common library is sufficient (and required).
+
+-------------------------------------------------------------------
 Wed Feb 21 06:30:43 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.5.0:

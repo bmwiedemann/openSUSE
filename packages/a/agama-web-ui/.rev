@@ -74,4 +74,12 @@
   (gh#openSUSE/agama#1604).</comment>
     <requestid>1202590</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>08c1f0a77874085da93ce8f01c566856</srcmd5>
+    <version>0</version>
+    <time>1732573283</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1226180</requestid>
+  </revision>
 </revisionlist>

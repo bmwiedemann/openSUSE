@@ -1,7 +1,7 @@
 #
 # spec file for package fvwm2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,8 @@ Patch1:         fvwm-2.5.26-sv_SE.patch
 Patch2:         fvwm-no-date-time.patch
 Patch3:         fvwm-FvwmAuto-overflow.patch
 Patch4:         threadlocking.patch
+# https://github.com/fvwmorg/fvwm/pull/100
+Patch5:         fvwm2-gcc14.patch
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libpng-devel
@@ -62,9 +64,8 @@ Requires:       desktop-data
 Requires:       mktemp
 Requires:       wallpaper-branding
 Requires:       xdg-menu
-Requires:       xli
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Provides:       fvwm
 Provides:       fvwmicns
 Provides:       windowmanager

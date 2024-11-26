@@ -383,3 +383,7 @@ d0c82322 fix(dracut): do not add all lib subdirs to `LD_LIBRARY_PATH` with `--sy
 41332702 fix(nvmf): require NVMeoF modules
 3748ed4d fix(nvmf): install (only) required nvmf modules
 d2ade8a6 fix(dm): remove 59-persistent-storage-dm.rules
+3e1d0bc1 fix(dracut-install): copy xattr when use clone ioctl
+a1c51af1 fix(dracut): don't apply aggressive strip to kernel modules
+ad36b61e fix(dracut.sh): omit compressed kernel modules from find searching exec files
+bfa00c2a fix(pcsc): add libpcsclite_real.so.*

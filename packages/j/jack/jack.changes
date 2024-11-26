@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Nov 23 16:43:32 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add python313-waflib.patch to fix build with python 3.13
+
+-------------------------------------------------------------------
+Thu Apr 11 18:06:26 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Make jack explicitly require libjack{,net,server}%{sonum} so
+  that the official libraries are installed and zypper doesn't
+  just use the pipewire-libjack-0_3 replacement libraries
+  (related to boo#1222253)
+
+-------------------------------------------------------------------
 Thu Apr 11 09:20:55 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using
@@ -38,7 +51,7 @@ Wed Apr 20 20:05:25 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Fix potential memory corruption in midi_latency_test tool
   * Fix JackWeakAPI on Windows
   * Use predefined variables in pkg-config file (required for mingw)
- 
+
 -------------------------------------------------------------------
 Tue Mar  1 17:17:07 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
@@ -366,7 +379,7 @@ Fri May  2 09:10:30 CEST 2014 - ohering@suse.de
 -------------------------------------------------------------------
 Tue Jun 11 22:52:31 UTC 2013 - dmueller@suse.com
 
-- add aarch64.patch 
+- add aarch64.patch
 
 -------------------------------------------------------------------
 Thu Jun  6 09:29:16 UTC 2013 - cdenicolo@suse.com
@@ -438,7 +451,7 @@ Wed Jun 27 15:23:00 UTC 2012 - dvaleev@suse.com
 -------------------------------------------------------------------
 Tue Apr 10 16:05:10 UTC 2012 - klaussfreire@gmail.com
 
-- Disable parallel build to limit resource usage and prevent hung 
+- Disable parallel build to limit resource usage and prevent hung
   build hosts.
 
 -------------------------------------------------------------------

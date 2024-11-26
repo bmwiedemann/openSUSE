@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 25 09:24:25 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Make it build with latest pari version 
+
+-------------------------------------------------------------------
 Tue Sep  3 07:10:42 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Choose lto settings depending on architecture as otherwise

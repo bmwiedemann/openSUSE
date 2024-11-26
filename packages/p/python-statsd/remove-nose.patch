@@ -1,25 +1,17 @@
-Index: statsd-3.3.0/statsd/tests.py
+Index: statsd-4.0.1/statsd/tests.py
 ===================================================================
---- statsd-3.3.0.orig/statsd/tests.py
-+++ statsd-3.3.0/statsd/tests.py
-@@ -7,7 +7,6 @@ from datetime import timedelta
- from unittest import SkipTest
- 
- import mock
--from nose.tools import eq_
- 
- from statsd import StatsClient
- from statsd import TCPStatsClient
-@@ -66,7 +65,7 @@ def _unix_socket_client(prefix=None, soc
+--- statsd-4.0.1.orig/statsd/tests.py
++++ statsd-4.0.1/statsd/tests.py
+@@ -67,7 +67,7 @@ def _unix_socket_client(prefix=None, soc
  
  def _timer_check(sock, count, proto, start, end):
      send = send_method[proto](sock)
 -    eq_(send.call_count, count)
 +    assert send.call_count == count
      value = send.call_args[0][0].decode('ascii')
-     exp = re.compile('^%s:\d+|%s$' % (start, end))
+     exp = re.compile(r'^%s:\d+|%s$' % (start, end))
      assert exp.match(value)
-@@ -74,14 +73,11 @@ def _timer_check(sock, count, proto, sta
+@@ -75,14 +75,11 @@ def _timer_check(sock, count, proto, sta
  
  def _sock_check(sock, count, proto, val=None, addr=None):
      send = send_method[proto](sock)
@@ -36,7 +28,7 @@ Index: statsd-3.3.0/statsd/tests.py
  
  
  class assert_raises(object):
-@@ -443,7 +439,7 @@ def _test_prepare(cl, proto):
+@@ -444,7 +441,7 @@ def _test_prepare(cl, proto):
  
      def _check(o, s, v, r):
          with mock.patch.object(random, 'random', lambda: -1):
@@ -45,7 +37,7 @@ Index: statsd-3.3.0/statsd/tests.py
  
      for o, (s, v, r) in tests:
          _check(o, s, v, r)
-@@ -519,31 +515,33 @@ def _test_timer_decorator(cl, proto):
+@@ -520,31 +517,33 @@ def _test_timer_decorator(cl, proto):
  
      # make sure it works with more than one decorator, called multiple
      # times, and that parameters are handled correctly
@@ -83,7 +75,7 @@ Index: statsd-3.3.0/statsd/tests.py
      assert isinstance(result.ms, float)
  
  
-@@ -587,7 +585,7 @@ def test_timer_decorator_partial_functio
+@@ -588,7 +587,7 @@ def test_timer_decorator_partial_functio
      foo = functools.partial(lambda x: x * x, 2)
      func = cl.timer('foo')(foo)
  
@@ -92,7 +84,7 @@ Index: statsd-3.3.0/statsd/tests.py
  
      _timer_check(cl._sock, 1, 'tcp', 'foo', 'ms|@0.1')
  
-@@ -601,16 +599,17 @@ def _test_timer_decorator_rate(cl, proto
+@@ -602,16 +601,17 @@ def _test_timer_decorator_rate(cl, proto
      def bar(a, b=2, c=3):
          return [c, b, a]
  
@@ -112,7 +104,7 @@ Index: statsd-3.3.0/statsd/tests.py
      cl = _udp_client()
      _test_timer_decorator_rate(cl, 'udp')
  
-@@ -618,6 +617,7 @@ def test_timer_decorator_rate_udp():
+@@ -619,6 +619,7 @@ def test_timer_decorator_rate_udp():
  @mock.patch.object(random, 'random', lambda: -1)
  def test_timer_decorator_rate_tcp():
      """TCPStatsClient.timer can be used as decorator with rate."""
@@ -120,7 +112,7 @@ Index: statsd-3.3.0/statsd/tests.py
      cl = _tcp_client()
      _test_timer_decorator_rate(cl, 'tcp')
  
-@@ -906,8 +906,8 @@ def test_pipeline_timer_object_tcp():
+@@ -931,8 +932,8 @@ def test_pipeline_timer_object_tcp():
  def _test_pipeline_empty(cl):
      with cl.pipeline() as pipe:
          pipe.incr('foo')
@@ -131,7 +123,7 @@ Index: statsd-3.3.0/statsd/tests.py
  
  
  def test_pipeline_empty_udp():
-@@ -1006,7 +1006,7 @@ def test_pipeline_packet_size():
+@@ -1031,7 +1032,7 @@ def test_pipeline_packet_size():
          # 32 * 16 = 512, so this will need 2 packets.
          pipe.incr('sixteen_char_str')
      pipe.send()
@@ -140,7 +132,7 @@ Index: statsd-3.3.0/statsd/tests.py
      assert len(sc._sock.sendto.call_args_list[0][0][0]) <= 512
      assert len(sc._sock.sendto.call_args_list[1][0][0]) <= 512
  
-@@ -1017,7 +1017,7 @@ def test_tcp_raises_exception_to_user(mo
+@@ -1042,7 +1043,7 @@ def test_tcp_raises_exception_to_user(mo
      addr = ('127.0.0.1', 1234)
      cl = _tcp_client(addr=addr[0], port=addr[1])
      cl.incr('foo')

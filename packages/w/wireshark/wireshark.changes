@@ -2,8 +2,8 @@
 Thu Nov 21 08:27:09 UTC 2024 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 4.4.2
-  * FiveCo RAP dissector infinite loop.
-  * ECMP dissector crash.
+  * CVE-2024-11595: FiveCo RAP dissector infinite loop (boo#1233594).
+  * CVE-2024-11596: ECMP dissector crash (boo#1233593).
 - Many more features, bug fixes and updated protocol support as listed in:
   https://www.wireshark.org/docs/relnotes/wireshark-4.4.2.html
 

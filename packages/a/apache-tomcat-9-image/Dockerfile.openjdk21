@@ -18,6 +18,7 @@
 #!BuildTag: opensuse/apache-tomcat:%%tomcat_version%%-openjdk21-%RELEASE%
 #!BuildTag: opensuse/apache-tomcat:%%tomcat_version%%-openjdk21
 #!BuildTag: opensuse/apache-tomcat:9-openjdk21
+#!BcntSyncTag: apache-tomcat-9-image
 
 FROM opensuse/bci/bci-micro:latest AS target
 FROM opensuse/tumbleweed:latest AS builder

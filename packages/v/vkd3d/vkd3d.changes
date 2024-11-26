@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Nov 23 20:34:19 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 1.14:
+  - libvkd3d
+    Depth bounds can be changed dynamically using the
+    OMSetDepthBounds() method of the ID3D12GraphicsCommandList1
+    interface.
+    The new VKD3D_CAPS_OVERRIDE environment variable can be used
+    to override the value of capabilities like the maximum feature
+    level and resource binding tier reported to applications.
+  - libvkd3d-shader
+    Too long for changelog, for full changes, visit:
+   https://gitlab.winehq.org/wine/vkd3d/-/blob/master/ChangeLog.md
+  - libvkd3d-utils
+    The GetDesc() method of the ID3D12ShaderReflection interface
+    returned by D3DReflect() returns shader version information.
+    New interfaces:
+        D3DCompile2VKD3D() is a variant of D3DCompile2() that
+        allows targeting the behaviour of a specific d3dcompiler
+        version.
+  - vkd3d-compiler
+    The ‘--alias-double-as-float’ option specifies that the
+    ‘double’ type behaves as an alias for the ‘float’ type in HLSL
+    sources with shader model 1-3 target profiles.
+    The ‘fx’ source type specifies binary Direct3D effects.
+    The ‘msl’ target type specifies Metal Shading Language
+    shaders.
+
+-------------------------------------------------------------------
 Thu Oct 31 00:48:49 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - generate demo and docs, seperating them out into their own packages

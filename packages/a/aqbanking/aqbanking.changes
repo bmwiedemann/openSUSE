@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Nov 24 12:38:43 UTC 2024 - Nico Kruber <nico.kruber@gmail.com>
+
+- Update to 6.5.9 (beta)
+- Changelog for 6.5.6 (beta)
+  + fixed bugs with "Decoupled TAN"
+  + first server tests successful (thanks to Anselm!)
+- Changelog for 6.5.6 (beta)
+  + first version with support for HKTAN#7 and first implementation
+    of "Decoupled TAN" for app-based TAN entry
+
+-------------------------------------------------------------------
 Mon Apr 17 20:37:20 UTC 2023 - Nico Kruber <nico.kruber@gmail.com>
 
 - Update to 6.5.4

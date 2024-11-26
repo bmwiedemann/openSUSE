@@ -21,14 +21,13 @@
 %bcond_with     test_jdbc
 %{?sle15_python_module_pythons}
 Name:           python-JPype1
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        Python to Java bridge
 License:        Apache-2.0
 URL:            https://github.com/jpype-project/jpype
-Source:         https://files.pythonhosted.org/packages/source/J/JPype1/JPype1-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/j/jpype1/jpype1-%{version}.tar.gz
 Patch0:         JPype1-java8compat.patch
-Patch1:         JPype1-numpy2compat.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -63,7 +62,7 @@ BuildRequires:  sqlite-jdbc
 A Python to Java bridge.
 
 %prep
-%autosetup -p1 -n JPype1-%{version}
+%autosetup -p1 -n jpype1-%{version}
 # Avoid build dependency on PyInstaller
 rm jpype/_pyinstaller/test_jpype_pyinstaller.py
 
@@ -102,6 +101,6 @@ export CLASSPATH=${PWD}/test/classes:%{_libdir}/java/sqlite-jdbc.jar:%{_localsta
 %{python_sitearch}/jpype
 %{python_sitearch}/org.jpype.jar
 %{python_sitearch}/_jpype*.so
-%{python_sitearch}/JPype1-%{version}.dist-info
+%{python_sitearch}/jpype1-%{version}.dist-info
 
 %changelog

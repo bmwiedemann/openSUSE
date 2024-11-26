@@ -42,7 +42,7 @@ secure.enabled = true
 #####################################################################
 [discover]
 
-# propogate archives from pmlogger(1) into Redis querying
+# propagate archives from pmlogger(1) into Redis querying
 enabled = true
 
 # comma-separated metrics name (globs) to skip during discovery
@@ -63,7 +63,7 @@ enabled = true
 count = 10
 
 #####################################################################
-## settings for fast, scalable time series quering via Redis
+## settings for fast, scalable time series querying via Redis
 [pmseries]
 #####################################################################
 

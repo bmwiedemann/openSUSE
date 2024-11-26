@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Nov 23 20:28:31 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to 2.5.1:
+  * Fixed a major regression where anisotropic filtering would not work correctly in D3D9 games
+  * Fixed some build issues with dxvk-native
+  * Fixed some build issues with recent versions of clang
+  * GTA Trilogy Definitive Edition: Work around a crash when HDR is enabled
+  * Note: Since these games use Unreal Engine 4, HDR is unsupported in D3D11 mode
+
+-------------------------------------------------------------------
 Fri Sep 27 00:12:25 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to 2.4.1:

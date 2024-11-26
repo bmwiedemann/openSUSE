@@ -1,2 +1,3 @@
-# libfm is NOT a lib, and it's a needed dependecy
-addFilter ("W: explicit-lib-dependency")
+# libfm is NOT a lib, and it's a needed dependency
+# 20241116 - it's pulled in as Recommended
+#addFilter ("W: explicit-lib-dependency")

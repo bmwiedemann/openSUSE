@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Fri Nov 22 10:44:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.0:
+  * Add schematrion->schematron
+  * Add explicit Python 3.12 support
+  * Add miscellaneous typos
+  * Add more labour* variants
+  * Return exit status in __main__.py
+  * Fix ruff alerts (currently) not caught by pre-commit
+  * Added new word
+  * Add Gelma's typos that start with "a"
+  * Add Gelma's typos from "b" to "cl"
+  * Add Gelma's typos from "co" to "cy"
+  * Add Gelma's typos that start with "d"
+  * Add Gelma's typos that start with "e"
+  * Add Gelma's typos from "f" to "h"
+  * Add entries to rare dictionary
+  * Add Gelma's typos that start with "i"
+  * diagional -> diagonal
+  * Add Gelma's typos from "j" to "m"
+  * Add Gelma's typos from "n" to "o"
+  * Add corrections for vulnerbailit(y|ies)->vulnerabilit(y|ies).
+  * Add Gelma's typos that start with "p"
+  * Add Gelma's typos from "q" to "r"
+  * openign->opening
+  * Add Gelma's typos that start with "s"
+  * Add Gelma's typos from "t" to "z"
+  * Improve existing suggestions
+  * Add a timeout to jobs that may benefit from it
+  * don't show stacktrace from KeyboardInterrupt #3217
+  * Adding 'hareware' to spelling corrections.
+  * Add typos for knownledge->knowledge, analyzis->analysis and
+    compialtion->compilation
+  * Add --stdin-single-line option
+  * Add spelling corrections for parameters
+  * Ignore line endings in exclude-file
+  * Add typo offsers
+  * add velcoity -> velocity
+  * ot is a typo also for it, which i is close to o
+  * test: remove warning when aspell is not installed
+  * Add carrets->carets
+  * Add support for ANSI colors on Windows
+  * Add prettier to pre-commit
+  * Apply Repo-Review suggestions
+  * dictionary: pathes can be patches
+  * fix: typos in comments
+  * doc: Specify .codespellrc is INI formatted
+  * Add sanetize->sanitize
+  * sampe->sample
+  * Assorted mispellings
+  * Add corrections for all *in->*ing words starting with "A"
+  * Add corrections for all *in->*ing words starting with "B"
+  * Add corrections for all *in->*ing words starting with "C"
+  * Add corrections for all *in->*ing words starting with "D"
+  * Add corrections for all *in->*ing words starting with "E"
+  * Add corrections for all *in->*ing words starting with "F"
+  * Add correction for spoofing and spoofed.
+  * Add reliabe->reliable
+  * Add corrections for all *in->*ing words starting with "G"
+  * Add corrections for all *in->*ing words starting with "H"
+  * Add corrections for all *in->*ing words starting with "I"
+  * Add corrections for all *in->*ing words starting with "J"
+  * Add corrections for all *in->*ing words starting with "K"
+  * Add corrections for all *in->*ing words starting with "L"
+  * Add corrections for all *in->*ing words starting with "M"
+  * Add corrections for all *in->*ing words starting with "N"
+  * Add corrections for all *in->*ing words starting with "O"
+  * Add corrections for all *in->*ing words starting with "R"
+  * Add corrections for all *in->*ing words starting with "S"
+  * Add corrections for all *in->*ing words starting with "P"
+  * Add corrections for all *in->*ing words starting with "Q"
+  * Add corrections for all *in->*ing words starting with "T"
+  * Add corrections for all *in->*ing words starting with "U"
+  * Add corrections for all *in->*ing words starting with "V"
+  * Add corrections for all *in->*ing words starting with "W"
+  * Add corrections for all *in->*ing words starting with "Y"
+  * Add corrections for all *in->*ing words starting with "Z"
+  * Add 'quotted->quoted'
+- drop patch_version.patch: obsolete, use pypi tarball instead
+
+-------------------------------------------------------------------
 Mon Feb 26 11:00:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

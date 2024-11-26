@@ -24,6 +24,7 @@ License:        GPL-2.0-or-later AND MIT
 Group:          Productivity/Graphics/Viewers
 URL:            https://git.sr.ht/~exec64/imv
 Source:         https://git.sr.ht/~exec64/imv/archive/v%{version}.tar.gz
+Patch0:         imv-link-icu-uc.patch
 BuildRequires:  asciidoc
 BuildRequires:  freeimage-devel
 BuildRequires:  libicu-devel

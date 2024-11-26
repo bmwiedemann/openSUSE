@@ -24,10 +24,10 @@ Index: util/wmgenmenu.c
 +	char *tmp, *theme_paths, *style_paths, *icon_paths, *bg_paths;
  
  	tmp = wstrconcat("-noext ", PKGDATADIR);
- 	theme_paths = wstrconcat(tmp, "/Themes $HOME/GNUstep/Library/WindowMaker/Themes WITH setstyle");
- 	style_paths = wstrconcat(tmp, "/Styles $HOME/GNUstep/Library/WindowMaker/Styles WITH setstyle");
- 	icon_paths = wstrconcat(tmp, "/IconSets $HOME/GNUstep/Library/WindowMaker/IconSets WITH seticons");
-+	bg_paths = wstrconcat(tmp, "/Backgrounds $HOME/GNUstep/Library/WindowMaker/Backgrounds WITH wmsetbg -u -t");
+ 	theme_paths = wstrconcat(tmp, "/Themes $HOME/" GSUSER_SUBDIR "/" USERDATA_SUBDIR "/" PACKAGE_TARNAME "/Themes WITH setstyle");
+ 	style_paths = wstrconcat(tmp, "/Styles $HOME/" GSUSER_SUBDIR "/" USERDATA_SUBDIR "/" PACKAGE_TARNAME "/Styles WITH setstyle");
+ 	icon_paths = wstrconcat(tmp, "/IconSets $HOME/" GSUSER_SUBDIR "/" USERDATA_SUBDIR "/" PACKAGE_TARNAME "/IconSets WITH seticons");
++  bg_paths = wstrconcat(tmp, "/Backgrounds $HOME/" GSUSER_SUBDIR "/" USERDATA_SUBDIR "/" PACKAGE_TARNAME "/Backgrounds WITH wmsetbg -u -t");
  
  	struct option longopts[] = {
  		{ "version",		no_argument,	NULL,	'v' },
@@ -35,7 +35,7 @@ Index: util/wmgenmenu.c
  	L3Menu = WMCreatePLArray(
  		WMCreatePLString(_("Images")),
  		WMCreatePLString("OPEN_MENU"),
--		WMCreatePLString("-noext $HOME/GNUstep/Library/WindowMaker/Backgrounds WITH wmsetbg -u -t"),
+-		WMCreatePLString("-noext $HOME/" GSUSER_SUBDIR "/" USERDATA_SUBDIR "/" PACKAGE_TARNAME "/Backgrounds WITH wmsetbg -u -t"),
 +		WMCreatePLString(bg_paths),
  		NULL
  	);

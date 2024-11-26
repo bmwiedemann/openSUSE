@@ -1,0 +1,13 @@
+Index: imv-v4.5.0/meson.build
+===================================================================
+--- imv-v4.5.0.orig/meson.build
++++ imv-v4.5.0/meson.build
+@@ -42,7 +42,7 @@ endif
+ 
+ _unicode = get_option('unicode')
+ if _unicode == 'icu'
+-  unicode_lib = dependency('icu-io')
++  unicode_lib = dependency('icu-uc')
+   add_project_arguments('-DIMV_USE_ICU', language: 'c')
+ elif _unicode == 'grapheme'
+   unicode_lib = cc.find_library('grapheme')

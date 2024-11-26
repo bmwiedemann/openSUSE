@@ -1,0 +1,10 @@
+## Path           : System/Management
+## Description    : Extra cli switches for incus-user
+## Type           : string
+## Default        : ""
+## ServiceRestart : incus-user
+#
+# Common options include:
+#  --group GROUPNAME    # Group of users that can control incus-user
+#
+INCUS_USER_OPTS=""

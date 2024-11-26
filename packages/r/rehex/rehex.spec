@@ -42,11 +42,7 @@ BuildRequires:  pkgconfig(botan-3)
 %else
 BuildRequires:  pkgconfig(botan-2)
 %endif
-%if 0%{?suse_version} > 1500
-BuildRequires:  wxWidgets-3_0-devel
-%else
 BuildRequires:  wxWidgets-devel
-%endif
 
 %description
 A hex heditor with a number of features for analysing and annotating

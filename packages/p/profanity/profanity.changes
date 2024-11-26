@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov  5 13:13:22 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Eliminate usage of update-alternatives:
+  + Mark the -mini and -standard packages as conflicting
+  + Use RemovePathPostfixes to strip .mini, resp .standard from the
+    file names in the buildroot, allowing to still produce both
+    flavors in one build.
+  + Suggest profanity-standard from the main-package: in case of a
+    user installing profanity, and not closer specifying the
+    flavor, profanity-standard will be picked by the solver.
+
+-------------------------------------------------------------------
 Wed Feb 21 07:34:42 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

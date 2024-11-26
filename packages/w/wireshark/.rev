@@ -1949,4 +1949,12 @@ Use capabilities for capture. bsc#957624</comment>
     <comment></comment>
     <requestid>1225481</requestid>
   </revision>
+  <revision rev="228" vrev="2">
+    <srcmd5>2e9d6d4d8202155479f45fc1fd61a8ee</srcmd5>
+    <version>4.4.2</version>
+    <time>1732573275</time>
+    <user>anag+factory</user>
+    <comment>add references for last release</comment>
+    <requestid>1226231</requestid>
+  </revision>
 </revisionlist>

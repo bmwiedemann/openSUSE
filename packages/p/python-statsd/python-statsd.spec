@@ -1,7 +1,7 @@
 #
 # spec file for package python-statsd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-statsd
-Version:        3.3.0
+Version:        4.0.1
 Release:        0
 Summary:        A simple statsd client
 License:        MIT
@@ -26,8 +26,10 @@ Group:          Development/Languages/Python
 URL:            https://github.com/jsocol/pystatsd
 Source:         https://files.pythonhosted.org/packages/source/s/statsd/statsd-%{version}.tar.gz
 Patch0:         remove-nose.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -38,14 +40,13 @@ statsd is a front-end to Graphite. This is a Python client
 for the statsd daemon.
 
 %prep
-%setup -q -n statsd-%{version}
-%autopatch -p1
+%autosetup -p1 -n statsd-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -55,7 +56,8 @@ sed -i 's:import mock:from unittest import mock:' statsd/tests.py
 
 %files %{python_files}
 %license LICENSE
-%doc AUTHORS CHANGES README.rst docs/_build/html
-%{python_sitelib}/*
+%doc AUTHORS README.rst
+%{python_sitelib}/statsd
+%{python_sitelib}/statsd-%{version}.dist-info
 
 %changelog

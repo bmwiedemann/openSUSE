@@ -1,0 +1,21 @@
+# This is an example system-wide configuration file for the lxc client. Any
+# configuration entries added here will be merged with a user's configuration
+# when they run "incus". This is primarily useful for defining system-wide
+# remotes, whose certificates are stored in /etc/incus/servercerts.
+
+# An example configuration (from </usr/share/doc/packages/incus/doc/remotes.md>)
+# looks like the following:
+#
+# remotes:
+#   foo:
+#     addr: https://10.0.2.4:8443
+#     auth_type: tls
+#     project: default
+#     protocol: incus
+#     public: false
+#   bar:
+#     addr: https://10.0.2.5:8443
+#     auth_type: tls
+#     project: default
+#     protocol: incus
+#     public: false

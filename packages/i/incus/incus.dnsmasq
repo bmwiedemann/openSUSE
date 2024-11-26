@@ -1,0 +1,8 @@
+# WARNING: DO NOT MODIFY THIS FILE.
+# Changes to this file will be lost when the incus package is updated or
+# removed. Instead, add changes to /etc/dnsmasq.d/.
+
+# Tell any system-wide dnsmasq instance to make sure to bind to interfaces
+# instead of listening on 0.0.0.0.
+bind-interfaces
+except-interface=incusbr0

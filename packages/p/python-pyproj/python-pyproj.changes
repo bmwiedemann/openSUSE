@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Nov 23 09:18:51 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.7.0
+  ## Dependencies:
+  * DEP: Minimum PROJ version 9.2 by @snowman2 in #1394
+  ## Enhancements:
+  * PERF: drop GIL during long-running proj database calls by
+    @tpwrules in #1354
+  * PERF: thread local context by @snowman2 in #1419
+  * ENH: Add is_deprecated and get_non_deprecated() to CRS by
+    @jjimenezshaw in #1383
+  * ENH: Add runtime & compiled PROJ versions by @snowman2 in #1427
+  ## Bug fixes:
+  * BUG: Handle changes to HotineObliqueMercatorBConversion by
+    @snowman2 in #1430
+  * BUG: Support azimuthal_equidistant coordinate operation to CF
+    by @snowman2 in #1380
+- Drop v3.6.1-BUG-Support-azimuthal_equidistant-coordinate-operati.patch
+- Drop v3.6.1-test-datum-ensemble-allowing-new-members.patch
+
+-------------------------------------------------------------------
 Sat Jul 20 12:36:38 UTC 2024 - Libor Pechacek <lpechacek@gmx.com>
 
 - Fix test/crs/test_crs.py::test_datum__from_epsg failure

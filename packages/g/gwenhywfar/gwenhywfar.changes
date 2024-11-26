@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov 24 12:48:48 UTC 2024 - Nico Kruber <nico.kruber@gmail.com>
+
+- Update to 5.11.2 (beta)
+- Changelog for 5.11.0 (beta)
+  + first version with support for HKTAN#7 and first implementation
+    of "Decoupled TAN" for app-based TAN input
+
+-------------------------------------------------------------------
 Tue Oct 18 02:39:09 UTC 2022 - Jason Sikes <jsikes@suse.com>
 
 - Update to 5.10.0

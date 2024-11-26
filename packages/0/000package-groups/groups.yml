@@ -80,6 +80,7 @@ dvd:
   - patterns-gnome-gnome_multimedia: [required]
   - patterns-gnome-gnome_office: [required]
   - patterns-gnome-gnome_utilities: [required]
+  - patterns-gnome-gnome_x11: [required]
   - patterns-gnome-gnome_yast: [required]
   - patterns-desktop-imaging: [required]
   - patterns-kde-kde: [aarch64,ppc64le,x86_64]

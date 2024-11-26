@@ -16,14 +16,14 @@
 #
 
 
-%define         appname com.mattjakeman.ExtensionManager
+%define         appid com.mattjakeman.ExtensionManager
 Name:           extension-manager
-Version:        0.5.1
+Version:        0.5.1+244
 Release:        0
 Summary:        A utility for browsing and installing GNOME Shell Extensions
 License:        GPL-3.0-only
 URL:            https://github.com/mjakeman/extension-manager
-Source:         %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
 BuildRequires:  libbacktrace-devel
@@ -34,7 +34,7 @@ BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libsoup-3.0)
-BuildRequires:  pkgconfig(text-engine-0.1)
+BuildRequires:  pkgconfig(libxml-2.0)
 
 %description
 A native tool for browsing, installing, and managing GNOME Shell Extensions.
@@ -45,7 +45,7 @@ A native tool for browsing, installing, and managing GNOME Shell Extensions.
 %autosetup
 
 %build
-export CFLAGS="%{optflags} -Wno-error=return-type -Wno-return-mismatch -Wno-int-conversion -Wno-incompatible-pointer-types"
+export CFLAGS="%{optflags} -Wno-error=return-type"
 %meson
 %meson_build
 
@@ -58,11 +58,11 @@ export CFLAGS="%{optflags} -Wno-error=return-type -Wno-return-mismatch -Wno-int-
 %license COPYING
 %doc README.md
 %{_bindir}/%{name}
-%{_datadir}/applications/%{appname}.desktop
-%{_datadir}/glib-2.0/schemas/%{appname}.gschema.xml
-%{_iconsdir}/hicolor/scalable/apps/%{appname}.svg
-%{_iconsdir}/hicolor/symbolic/apps/%{appname}-symbolic.svg
-%{_datadir}/metainfo/%{appname}.metainfo.xml
+%{_datadir}/applications/%{appid}.desktop
+%{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
+%{_datadir}/icons/hicolor/scalable/apps/%{appid}.svg
+%{_datadir}/icons/hicolor/symbolic/apps/%{appid}-symbolic.svg
+%{_datadir}/metainfo/%{appid}.metainfo.xml
 
 %files lang -f %{name}.lang
 

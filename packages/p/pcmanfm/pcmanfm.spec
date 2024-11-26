@@ -1,7 +1,7 @@
 #
 # spec file for package pcmanfm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,28 +17,26 @@
 
 
 Name:           pcmanfm
-Version:        1.3.2
+Version:        1.3.2+git20241103.1312f60
 Release:        0
 Summary:        The LXDE file manager
 License:        GPL-2.0-or-later
 Group:          Productivity/File utilities
 URL:            https://www.lxde.org/
-Source0:        http://downloads.sourceforge.net/pcmanfm/pcmanfm-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 Source1:        %{name}-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(gtk+-2.0)
-BuildRequires:  pkgconfig(libfm) >= 1.0
-BuildRequires:  pkgconfig(libfm-gtk) >= 1.0.1
+BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(libfm)
+BuildRequires:  pkgconfig(libfm-gtk)
 BuildRequires:  pkgconfig(libmenu-cache)
 BuildRequires:  pkgconfig(x11)
 # needed for trash
 Requires:       gvfs
 Requires:       gvfs-backends
-Requires:       libfm
 # needed to mount devices
 Requires:       menu-cache
 Requires:       polkit-gnome
@@ -55,18 +53,21 @@ LXDE default file manager.
 Summary:        Development files for PCManFM
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
-Requires:       gtk2-devel
-Requires:       libfm-gtk4 >= %{version}
-Requires:       libfm4 >= %{version}
+Requires:       gtk3-devel
+Requires:       libfm-gtk4
+Requires:       libfm4
 Requires:       pkgconfig
+BuildArch:      noarch
 
 %description devel
 Development files for PCManFM.
 
 %prep
 %setup -q
+find . -name COPYING -exec chmod -c 644 {} \;
 
 %build
+./autogen.sh
 %configure
 %make_build
 
@@ -74,16 +75,8 @@ Development files for PCManFM.
 %make_install
 # no user-desktop in hicolor icon theme
 sed -i "3d" %{buildroot}%{_datadir}/applications/pcmanfm-desktop-pref.desktop
-%suse_update_desktop_file %{name} Application System Utility GTK FileManager
-%suse_update_desktop_file pcmanfm-desktop-pref
 %fdupes %{buildroot}
 %find_lang %{name}
-
-%post
-%desktop_database_post
-
-%postun
-%desktop_database_postun
 
 %files
 %license COPYING

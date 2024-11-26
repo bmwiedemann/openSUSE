@@ -1,0 +1,35 @@
+# Custom systemd.unit based on docker.service, our old openSUSE-specific
+# lxd.service, and <https://github.com/zabbly/incus/tree/stable/systemd>.
+
+[Unit]
+Description=Incus Container Hypervisor
+After=network-online.target lxcfs.service incus.socket
+Requires=network-online.target lxcfs.service incus.socket
+Documentation=man:incus(1)
+
+[Service]
+EnvironmentFile=-/etc/sysconfig/incus
+ExecStart=/usr/sbin/incusd --group=incus-admin $INCUS_OPTS --logfile=/var/log/incus/incusd.log
+ExecStartPost=/usr/sbin/incusd waitready --timeout=600
+TimeoutStartSec=600s
+TimeoutStopSec=30s
+Restart=on-failure
+
+# Having non-zero Limit*s causes performance problems due to accounting overhead
+# in the kernel. We recommend using cgroups to do container-local accounting.
+LimitNOFILE=1048576
+LimitNPROC=infinity
+LimitCORE=infinity
+
+# No need to add a task limit.
+TasksMax=infinity
+
+# Set delegate yes so that systemd does not mess with Incus cgroups.
+Delegate=yes
+
+# Kill only the Incus process, not all processes in the cgroup.
+KillMode=process
+
+[Install]
+Also=incus-startup.service incus.socket
+WantedBy=multi-user.target

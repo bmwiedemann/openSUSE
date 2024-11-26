@@ -1,0 +1,14 @@
+## Path           : System/Management
+## Description    : Extra cli switches for incusd
+## Type           : string
+## Default        : ""
+## ServiceRestart : incus
+#
+# Common options include:
+#  --group GROUPNAME    # Group of users that can control Incus
+#  --debug              # Debug mode (noisy)
+#  --verbose            # Verbose mode
+#  --syslog             # Log to syslog
+#  --trace              # Trace mode (very noisy)
+#
+INCUS_OPTS=""

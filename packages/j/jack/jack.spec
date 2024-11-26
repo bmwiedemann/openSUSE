@@ -31,6 +31,7 @@ Group:          System/Sound Daemons
 URL:            https://jackaudio.org/
 Source0:        https://github.com/jackaudio/jack2/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
+Patch1:         python313-waflib.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -52,6 +53,9 @@ BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(samplerate)
 BuildRequires:  pkgconfig(sndfile)
 Requires:       jack-dbus
+Requires:       libjack%{sonum}
+Requires:       libjacknet%{sonum}
+Requires:       libjackserver%{sonum}
 Conflicts:      jack-daemon
 Provides:       jack-audio-connection-kit
 Provides:       jack-daemon
@@ -132,8 +136,7 @@ This package contains the files needed to compile programs that
 communicate with jack clients/servers.
 
 %prep
-%setup -q -n %{name}2-%{version}
-%autopatch -p1
+%autosetup -p1 -n %{name}2-%{version}
 
 %build
 %define _lto_cflags %{nil}

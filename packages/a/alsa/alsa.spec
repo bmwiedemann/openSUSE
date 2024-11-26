@@ -17,7 +17,7 @@
 
 
 %define build_from_git 0
-%define do_autoreconf 0
+%define do_autoreconf 1
 
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
@@ -64,6 +64,8 @@ Source34:       alsa-init.sh
 Source35:       alsa.keyring
 # upstream fixes
 Patch1:         0001-src-Versions.in.in-Update-_tempo_base-name.patch
+Patch2:         0002-configure-Make-sequencer-dependent-on-rawmidi.patch
+Patch3:         0003-seq-include-UMP-headers.patch
 # rest suse fixes
 Patch101:       alsa-lib-ignore-non-accessible-ALSA_CONFIG_PATH.patch
 BuildRequires:  doxygen

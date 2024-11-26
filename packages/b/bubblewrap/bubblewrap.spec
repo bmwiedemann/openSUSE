@@ -61,6 +61,7 @@ sed -i '1s/env //' demos/userns-block-fd.py
 %else
 sed -i '1s/env //' demos/bubblewrap-shell.sh demos/userns-block-fd.py
 %endif
+sed -i '1s/env //' demos/flatpak-run.sh
 
 %build
 %meson

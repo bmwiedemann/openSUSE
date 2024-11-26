@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package spooles
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,6 +56,7 @@ Source0:        https://www.netlib.org/linalg/spooles/spooles.2.2.tgz
 Patch0:         patch-spooles-shared
 Patch1:         patch-spooles-shared-mpi
 Patch2:         patch-spooles-I2Ohash-from-debian
+Patch3:         0001-Fix-compile-error-due-to-apparent-invalid-cast.patch
 %if %{with mpi}
 # By pulling openmpi-macros-devel,
 # we always get the current "default" implementation

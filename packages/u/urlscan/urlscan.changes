@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 25 07:43:42 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Update to urlscan 1.0.6
+  * Bugfix in GitHub Action
+  * Github action update to release to pypi and github on tag push
+    and release to testpypi on commit.
+  * Keybindings for page up/down
+
+-------------------------------------------------------------------
 Wed Aug 28 15:04:31 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 1.0.3:

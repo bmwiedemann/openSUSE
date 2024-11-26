@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 31 09:50:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- fix a few typos in the spec file and use proper macros where
+  applicable
+- remove python3 requires
+
+-------------------------------------------------------------------
 Mon Aug 19 11:14:11 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
 
 - Restart the agent (bsc#1227600)
@@ -49,7 +56,7 @@ Wed Apr 10 22:53:47 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
     would be removed. SInce we do not know which flavor of our images the
     package is being upgraded on, preserve the previously existing config
     file. This will orphan the file if non of the -config-* packages gets
-    installed. 
+    installed.
 
 -------------------------------------------------------------------
 Tue Feb 20 20:07:51 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
@@ -141,7 +148,7 @@ Thu Sep 29 20:40:07 UTC 2022 - Robert Schweikert <rjschwei@suse.com>
 Thu Sep 29 15:35:37 UTC 2022 - Robert Schweikert <rjschwei@suse.com>
 
 - Update to version 2.8.0.11 (bsc#1203164)
-  + Enabled support for Fast Track (faster processing of extensions) 
+  + Enabled support for Fast Track (faster processing of extensions)
   + Add telemetry for VM Size
   + Add telemetry for environment variables passed to extensions
   + Enforce CPU quota on the Agent on Red Hat and CentOS 7.4+
@@ -161,13 +168,13 @@ Thu Sep 29 15:35:37 UTC 2022 - Robert Schweikert <rjschwei@suse.com>
   + Add CentOS 7.9 to end-to-end-tests
   + Add Mariner to end-to-end-tests
 
-- 2.8.0.11 followed 2.7.3.0, no intermediate releases 
+- 2.8.0.11 followed 2.7.3.0, no intermediate releases
 
 -------------------------------------------------------------------
 Thu Sep  1 08:03:21 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - Migration to /usr/etc: Saving user changed configuration files
-  in /etc and restoring them while an RPM update. 
+  in /etc and restoring them while an RPM update.
 
 -------------------------------------------------------------------
 Thu Aug 11 16:55:04 UTC 2022 - Robert Schweikert <rjschwei@suse.com>
@@ -257,7 +264,7 @@ Thu Aug 11 16:55:04 UTC 2022 - Robert Schweikert <rjschwei@suse.com>
   + Improved logging for Multi config (#2246)
 - From 2.3.1.1
   + revert for reducing the time window where we restart the network
-    interfaces of the VM 
+    interfaces of the VM
 - From 2.3.0.2
   + Enforce CPUQuota on agent #2222, #2226
   + Add support for RequiredFeatures and GoalStateAggregateStatus APIs

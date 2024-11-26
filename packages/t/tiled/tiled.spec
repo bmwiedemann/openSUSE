@@ -23,6 +23,8 @@ Summary:        A tilemap editor
 License:        GPL-2.0-or-later
 URL:            https://www.mapeditor.org
 Source:         https://github.com/mapeditor/tiled/archive/refs/tags/v%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh/mapeditor/tiled#4077
+Patch1:         fix_compile_against_qt_6_8.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -60,13 +62,13 @@ This package contains tmxviewer, a simple application to view Tiled maps
 and tmxrasterizer which is also a command line tool.
 
 %prep
-%setup -q
+%autosetup -p1
 # Remove copy of zlib
 rm -rf src/zlib
 
 %build
 # see gh/mapeditor/tiled#3613 why no --detect
-qbs setup-toolchains --type gcc %{_bindir}/g++-13 gcc
+qbs setup-toolchains --type gcc %{_bindir}/g++ gcc
 qbs setup-qt %{_bindir}/qmake6 defprof
 qbs config defaultProfile defprof
 qbs qbs.installPrefix:"%{_prefix}" projects.Tiled.useRPaths:false projects.Tiled.libDir:%{_lib}

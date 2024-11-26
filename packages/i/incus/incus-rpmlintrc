@@ -1,0 +1,3 @@
+# We need incus-agent and incus-p2c to be statically linked.
+addFilter ("^incus.*: [EW]: statically-linked-binary /usr/bin/incus-(agent|p2c)")
+addFilter ("^incus.*: [EW]: position-independent-executable-suggested /usr/bin/incus-(agent|p2c)")

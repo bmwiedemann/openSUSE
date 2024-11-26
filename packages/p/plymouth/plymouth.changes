@@ -16,7 +16,7 @@ Fri Nov 15 11:28:41 UTC 2024 - Thomas Zimmermann <tzimmermann@suse.com>
   /dev/tty1 and /dev/tty7 also restores graphics output. (bsc#1224150)
 
 -------------------------------------------------------------------
-Fri Mar 08 17:21:11 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+Fri Nov  8 13:17:39 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 
 - Update to 22.02.122+94.4bd41a3:
   * Port build system to Meson;
@@ -43,7 +43,17 @@ Fri Mar 08 17:21:11 UTC 2024 - Cliff Zhao <qzhao@suse.com>
   Make plymouth use Tumbleweed/Leap's logo instead of upstream's.
 - Drop plymouth-manpages.patch:
   openSUSE fix the problem in other side, "man 1 plymouth" and
-  "man 8 plymouth" all works withouth this patch (bnc#871419).
+  "man 8 plymouth" all works withouth this patch (bsc#871419).
+- Drop plymouth-support-multi-monitor-hotplugin.patch:
+  This patch already included in this update. (bsc#1231214)
+
+-------------------------------------------------------------------
+Fri Nov  1 13:17:39 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+
+- Add plymouth-support-multi-monitor-hotplugin.patch:
+  To support the 2nd monitor hotplugin to the system in random
+  order. Display the same content is fine.
+  (bsc#1231214)
 
 -------------------------------------------------------------------
 Fri Mar 08 14:01:51 UTC 2024 - Cliff Zhao <qzhao@suse.com>

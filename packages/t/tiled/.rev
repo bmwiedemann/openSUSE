@@ -899,4 +899,12 @@
   * tmxrasterizer: Added --frames and --frame-duration arguments to export animated maps as multiple images (#3868)</comment>
     <requestid>1183721</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>694ba5ee165f506d3ab4d2fb27b5c184</srcmd5>
+    <version>1.11.0</version>
+    <time>1732573316</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1226201</requestid>
+  </revision>
 </revisionlist>

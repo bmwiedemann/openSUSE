@@ -1,0 +1,15 @@
+[Unit]
+Description=Incus Container Hypervisor (Auto-Startup Check)
+After=incus.socket incus.service
+Requires=incus.socket
+
+[Service]
+Type=oneshot
+ExecStart=@SUSE_LIBEXEC@/incus/incus-startup start
+ExecStop=@SUSE_LIBEXEC@/incus/incus-startup stop
+TimeoutStartSec=600s
+TimeoutStopSec=600s
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

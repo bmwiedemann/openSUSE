@@ -42,7 +42,7 @@ In all examples, `podman` can be replaced directly with `docker`.
 - `SMTP_PORT=587`	The relayhost port.
 - `SMTP_USERNAME`	Username to authenticate with on the relayserver.
 - `SMTP_PASSWORD`	Password of the SMTP user, alternative `SMTP_PASSWORD_FILE` could be used to point to a file with the password
-- `SMTP_NETWORKS`   	Comma seperated subnets who are allowed to use the relay. E.g. `SMTP_NETWORKS='xxx.xxx.xxx.xxx/xx, xxx.xxx.xxx.xxx/xx'`. 10.0.0.0/8, 172.16.0.0/12 and 192.168.0.0/16 are preset.
+- `SMTP_NETWORKS`   	Comma separated subnets who are allowed to use the relay. E.g. `SMTP_NETWORKS='xxx.xxx.xxx.xxx/xx, xxx.xxx.xxx.xxx/xx'`. 10.0.0.0/8, 172.16.0.0/12 and 192.168.0.0/16 are preset.
 - `INET_PROTOCOLS`	The network interface protocols used for connections. Valid values are "all", "ipv4", "ipv6" or "ipv4,ipv6". The default value is "ipv4".
 - `MASQUERADE_DOMAINS`	Comma separated list of domains that must have their subdomain structure stripped off.
 - `MYDESTINATION`	List of domains for which mails are delivered locally instead of forwarding to another machine.
@@ -62,8 +62,8 @@ In all examples, `podman` can be replaced directly with `docker`.
 ### Virtual mailbox related variables
 - `VIRTUAL_MBOX=[0|1]`	Create virtual mail boxes in /var/spool/vmail owned by user vmail.
 - `VMAIL_UID=5000`	User ID and group ID of the vmail user for virtual domains and mailboxes.
-- `VIRTUAL_DOMAINS=`	Whitespace seperated list of virtual domains, will be written to `/etc/postfix/vhosts`.
-- `VIRTUAL_USERS=`	Whitespace seperated list of virtual users email addresses.
+- `VIRTUAL_DOMAINS=`	Whitespace separated list of virtual domains, will be written to `/etc/postfix/vhosts`.
+- `VIRTUAL_USERS=`	Whitespace separated list of virtual users email addresses.
 
 ### LDAP related variables
 - `USE_LDAP=[0|1]`	Use LDAP for virtual mail box user accounts.
@@ -97,13 +97,13 @@ environment variables, files or LDAP.
 
 ### Environment Variables
 
-Beside the already mentioned environment variables, two futher variables
+Beside the already mentioned environment variables, two further variables
 define the virtual domains and the virtual users.
 `VIRTUAL_DOMAINS="example.com example2.com example3.com"` is a whitespace
-seperated list which can contain one or more virtual domains. For every
+separated list which can contain one or more virtual domains. For every
 domain, an own directory below `/var/spool/vmail` will be created.
 `VIRTUAL_USERS="user1@example.com user@example3.com user2@example.com"`
-Whitespace seperated list of virtual users email addresses.
+Whitespace separated list of virtual users email addresses.
 
 The example call:
 ```sh
@@ -140,7 +140,7 @@ password `XXX`.
 Instead of maintaining a long list of environment variables, the configuration
 files could also be provided and mapped into /etc/postfix of the container.
 
-`/etc/postfix/vhosts` contains the list of virtual domains seperated by
+`/etc/postfix/vhosts` contains the list of virtual domains separated by
 newlines:
 
 ```

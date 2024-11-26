@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Nov 24 19:46:05 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 5.7.2
+  * New features:
+    + Checks for Never-Initialized Variables
+    + Path Rewriting for Relative Paths
+    + Support for --target es2024 and --lib es2024
+    + Searching Ancestor Configuration Files for Project Ownership
+    + Faster Project Ownership Checks in Editors for Composite Projects
+    + Validated JSON Imports in --module nodenext
+    + Support for V8 Compile Caching in Node.js
+  * Notable Behavioral Changes:
+    + lib.d.ts Types generated for the DOM may have an impact on type-checking 
+      your codebase.
+    + TypedArrays Are Now Generic Over ArrayBufferLike
+    + Creating Index Signatures from Non-Literal Method Names in Classes
+    + More Implicit any Errors on Functions Returning null and undefined
+
+For the full changelog see https://devblogs.microsoft.com/typescript/announcing-typescript-5-7/
+
+-------------------------------------------------------------------
 Thu Oct 10 12:07:50 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 5.6.3

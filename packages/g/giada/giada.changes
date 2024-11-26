@@ -1,4 +1,144 @@
 -------------------------------------------------------------------
+Sat Nov  9 21:16:40 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- update "exlude from all" patch
+- add more BuildRequires for Wayland support
+- rename 003-cmake-exclude-juce-from-all.patch to 003-cmake-exclude-juce_and_fltk-from-all.patch
+
+-------------------------------------------------------------------
+Thu Oct 31 08:42:55 UTC 2024 - edogawa@aon.at
+
+- Update to version 1.1.0:
+  * Show 'Add track' menu when right-cliking on empty area on main Keyboard
+  * Refactor method name
+  * Add input-only MIDI activity widget to Group channels
+  * Update vst3sdk submodule
+  * Update FLTK to latest master (#701)
+  * Undef 'small' macro on Windows to avoid compilation error with JUCE 8.0.1
+  * [CI] Don't install extra Windows dependency for Visual Studio
+  * [CI] Update Windows runner to 2022
+  * [CI] Fix deprecation warnings (#685)
+  * Update JUCE to 8.0.1
+  * Add MidiDispatcher::processTrack() method with other adjustments
+  * Refactor: MidiDispatcher::processChannel() method
+  * Add new model::Tracks::getChannels() method
+  * Add new 'Setup MIDI input' menu element to Channel Group
+  * UI: prevent Channel Group from being dragged around
+  * Avoid useless operation when removing a Track
+  * Rebuild Tracks indexes after removal
+  * DRY
+  * Remove useless Channel& return type when cloning a Channel
+  * Remove unused function parameter
+  * Better encapsulation for Channel removal from Track
+  * Tidy: apply clang-format globally
+  * Fix inability to remove a track, even if empty
+  * Add missing 'typename' in template function
+  * Refactor: rename all 'column' references to 'track'
+  * Add support for old patches with new Track-based architecture
+  * Fix PATCH_KEY_TRACKS constant
+  * Fix assertion raised by test
+  * Fix broken test
+  * Fix assertion
+  * Add support for muting groups
+  * Add support for solo-ing groups
+  * Pass keyPress/keyRelease/keyKill event from groups to children
+  * Refactor: Column -> Track in glue layer
+  * Set track width with new API
+  * Remove useless v::Model methods
+  * Move Channels via new Track model
+  * No longer update v::Model when adding/removing/cloning channels
+  * Remove Track via new Track model
+  * Add Track via new Track model
+  * Refactor: rename Column -> Track in v::Model
+  * Display Channels by tracks in main UI
+  * Create new geGroupChannel from geColumn
+  * New geGroupChannel widget
+  * Remove model::Channels object from model::Document
+  * Enable Tracks debugging in model::Document
+  * Track de-serialization
+  * Tracks serialization
+  * Add model::Channels::getAllIDs() utility method
+  * Refactor: change Patch::Column to Patch::Track
+  * Clean up Tracks in Model::reset()
+  * Track-based IO operations
+  * Track-based ChannelManager operations
+  * Track-based Action recording
+  * Track-based MIDI dispatchment
+  * Track-based PluginsApi
+  * Track-based rendering
+  * Make Reactor work with Tracks
+  * Add Channels to Tracks
+  * Prepare internal tracks with internal channels and render them
+  * Add new ChannelManager::addTrack() method
+  * Remove unused method from ChannelsApi and ChannelManager
+  * Add channelsApi::getTracks() method
+  * Add m::model::Tracks object to Document
+  * Add new m::model::Track and m::model::Tracks classes
+  * Add m::model::Channels::add() method, to add a Channel at a certain position
+  * Add m::model::Channels::getIndex() method
+  * Add m::model::Channels::find() method
+  * Add group capability to u::string::toString
+  * Add new ChannelType::GROUP enum value
+  * Mark m::Channel's comparison operator as const
+  * Add new utils vector findIfSafe function, based on ID
+  * Add also header files to CMakeLists.txt SOURCES list
+  * Fix CMakeLists.txt indentation
+  * Clang-format: fix Lambda body indentation
+  * Optimization: add channels to Model by moving instead of copying them
+  * [CI] Increase the number of CMake jobs for Windows and Linux
+  * [CI] Upgrade macOS runner to macOS 12.7.5
+  * Bump version to 1.1.0
+  * Refactor: DRY parameter
+  * Add 'index' property to v::Model::Column
+  * Fix formatting
+  * Add v::Model::Columns::addDefaultColumn() method
+  * Use proper class for v::Model::Columns
+  * Refactor Model::addColumn() to take a 'Column' parameter
+  * Fix formatting
+  * Refactor: use temporary local variable
+  * Revert "Refactor: change parameter type in Renderer::advanceChannels() method"
+  * Fix formatting
+  * Refactor: change parameter type in Renderer::advanceChannels() method
+  * Refactor: move plug-in rendering functions to separate files
+  * Update AudioBuffer dep
+  * Make WeakAtomic moveable
+  * Remove old Queue object, use ConcurrentQueue everywhere
+  * Rename model::Model's method name, add comments
+  * Use model::Document::store/load methods in Model class
+  * Add model::Document::store/load methods for Conf (still unused)
+  * Use model::Document::store/load methods in Model class
+  * Add model::Document::store/load methods for Patch (still unused)
+  * Late model::Shared lock when storing data
+  * Use model::Shared::store() in model::Model
+  * Use model::Shared::load() in model::Model
+  * Add model::Shared::store() and model::Shared::load() (still unused)
+  * Add m_ prefix to all private members in model::Shared
+  * Add model::Shared::findChannel() method
+  * Add 'id' property to ChannelShared data structure
+  * Move model/LoadState to separate file
+  * Split Channel and Shared deserialization
+  * Const-correctness
+  * Refactor: rename model's DataLock -> SharedLock
+  * Use model/Shared class in model/Model
+  * Add model/Shared class (still unused)
+  * Move model/DataLock to separate file
+  * Update atomic-swapper dependency
+  * Move Model's type definitions to separate file
+  * Move model/Document to separate file
+  * Simplify includes in model/KernelMidi
+  * Refactor: rename model::LayoutLock -> model::DocumentLock
+  * Refactor: change model::Layout -> model::Document
+  * Refactor: pass MidiEvent around by reference when sent to channel, forward declare it where possible
+  * Refactor: remove Model dependency from c::channel, forward declare and include what's necessary
+  * Refactor: add some private methods to Renderer, using explicit rendering:: namespace qualifier
+  * Refactor: remove forward declaration of struct Action, import it instead
+  * Remove unused method from geChannel
+  * Remove duplicated c::channel::Data object in geMidiChannel
+  * Optimize imports in core/channels/channel.{h,cpp}
+  * Optimize imports in glue/channels.cpp
+  * Add new DeepPtr class
+
+-------------------------------------------------------------------
 Sun Feb 25 10:30:19 UTC 2024 - edogawa@aon.at
 
 - Update to version 1.0.0:

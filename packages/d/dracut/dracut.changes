@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Nov 22 16:11:28 UTC 2024 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.665.gd2af7028:
+  * feat(systemd-coredump): save coredumps to journal
+  * fix(suse-initrd): shellcheck SC1007
+  * fix(pcsc): add libpcsclite_real.so.*
+  * fix(dracut-systemd): use expected PS1 in the emergency shell
+  * fix(dracut-systemd): unquote systemd conf strings
+  * feat: add header comment to generators
+  * refactor: change TimeoutSec=0 to TimeoutSec=infinity
+  * fix(dracut.sh): do not add cmdline for force_drivers if --kernel-only
+  * fix(btrfs): write cmdline in install()
+  * fix(dracut.sh): omit compressed kernel modules from find searching exec files
+  * fix(dracut): don't apply aggressive strip to kernel modules
+  * fix(dracut-install): copy xattr when use clone ioctl
+
+-------------------------------------------------------------------
 Mon Nov 04 12:15:05 UTC 2024 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.651.gc186c6a8:

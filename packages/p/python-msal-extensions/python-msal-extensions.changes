@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 22 10:54:07 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add patch to relax python-portalocker version dependency in setup.py
+  + me_relax-portalocker.patch
+- Relax python-portalocker version dependency in BuildRequires and Requires
+
+-------------------------------------------------------------------
 Tue Jul  9 07:08:18 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.2.0

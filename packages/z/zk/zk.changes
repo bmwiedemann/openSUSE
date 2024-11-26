@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Nov 24 19:36:45 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- added fix_test.patch to fix build fail due to test TestFormatDateHelperElapsedYear
+
+-------------------------------------------------------------------
 Mon May 27 06:20:12 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 0.14.1

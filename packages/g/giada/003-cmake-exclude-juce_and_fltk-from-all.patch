@@ -1,0 +1,22 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0e4a0bbc..2629f621 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -550,7 +550,7 @@ list(APPEND INCLUDE_DIRS ${LIBRARY_RTMIDI_INCLUDE_DIR})
+ include (FetchContent)
+ FetchContent_Declare(
+ 	FLTK
+-	SOURCE_DIR ${CMAKE_SOURCE_DIR}/src/deps/fltk)
++	SOURCE_DIR ${CMAKE_SOURCE_DIR}/src/deps/fltk EXCLUDE_FROM_ALL)
+ 
+ set(FLTK_BUILD_GL ON CACHE BOOL "FLTK: enable OpenGL support")
+ set(FLTK_BUILD_TEST OFF CACHE BOOL "FLTK: don't build tests")
+@@ -749,7 +749,7 @@ endif()
+ # Extra parameters for audio plug-ins support.
+ # ------------------------------------------------------------------------------
+ 
+-add_subdirectory(${CMAKE_SOURCE_DIR}/src/deps/juce)
++add_subdirectory(${CMAKE_SOURCE_DIR}/src/deps/juce EXCLUDE_FROM_ALL)
+ 
+ list(APPEND LIBRARIES 
+ 	juce::juce_audio_utils

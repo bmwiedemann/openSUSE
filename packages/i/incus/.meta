@@ -1,0 +1,7 @@
+<package name="incus" project="openSUSE:Factory">
+  <title>Incus</title>
+  <description>Incus is a modern, secure and powerful system container and virtual machine manager.
+
+It provides a unified experience for running and managing full Linux systems inside containers or virtual machines. Incus supports images for a large number of Linux distributions and is built around a very powerful, yet pretty simple, REST API. Incus scales from one instance on a single machine to a cluster in a full data center rack, making it suitable for running workloads both for development and in production.</description>
+  <devel project="Virtualization:containers" package="incus"/>
+</package>

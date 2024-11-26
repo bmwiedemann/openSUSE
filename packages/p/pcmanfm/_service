@@ -1,0 +1,15 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/lxde/pcmanfm</param>
+    <param name="scm">git</param>
+    <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="compression">zst</param>
+    <param name="file">*.tar</param>
+  </service>
+</services>

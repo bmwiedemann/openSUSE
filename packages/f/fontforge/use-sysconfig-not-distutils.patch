@@ -1,0 +1,54 @@
+From 8c75293e924602ed09a9481b0eeb67ba6c623a81 Mon Sep 17 00:00:00 2001
+From: Maxim Iorsh <iorsh@users.sourceforge.net>
+Date: Mon, 7 Oct 2024 11:44:00 +0300
+Subject: [PATCH] Use sysconfig for Python module locations (#5423)
+
+* Use sysconfig for Python module locations
+
+* [TEMP] Use iorsh/fontforgebuilds repo
+
+* [TEMP] Use iorsh/fontforgebuilds repo in Appveyor
+
+* Update
+
+* Revert "[TEMP] Use iorsh/fontforgebuilds repo in Appveyor"
+
+This reverts commit 6fa80455b8b1e7cf43419c73e4de714f7925d9f8.
+
+* test
+
+* Cleanup
+
+* test
+
+* Removed debug prints
+
+---------
+
+Co-authored-by: Jeremy Tan <jtanx@outlook.com>
+---
+ .github/workflows/main.yml                    | 24 +++++++++----------
+ .github/workflows/scripts/ffosxbuild.sh       |  7 ++++--
+ .github/workflows/scripts/setup_linux_deps.sh |  2 +-
+ CMakeLists.txt                                |  6 -----
+ osx/CMakeLists.txt                            |  2 +-
+ pyhook/CMakeLists.txt                         |  5 +++-
+ 6 files changed, 23 insertions(+), 23 deletions(-)
+
+diff --git a/pyhook/CMakeLists.txt b/pyhook/CMakeLists.txt
+index dd48054aa7..53708f1099 100644
+--- a/pyhook/CMakeLists.txt
++++ b/pyhook/CMakeLists.txt
+@@ -20,8 +20,11 @@ target_link_libraries(psMat_pyhook PRIVATE Python3::Module)
+ # FindPython3 provides Python3_SITEARCH, but this is an absolute path
+ # So do it ourselves, getting the prefix-relative path instead
+ if(NOT DEFINED PYHOOK_INSTALL_DIR)
++  if(APPLE)
++    set(_PYHOOK_SYSCONFIG_PREFIX " 'posix_prefix',")
++  endif()
+   execute_process(
+-    COMMAND "${Python3_EXECUTABLE}" -c "import distutils.sysconfig as sc; print(sc.get_python_lib(prefix='', plat_specific=True,standard_lib=False))"
++    COMMAND "${Python3_EXECUTABLE}" -c "import sysconfig as sc; print(sc.get_path('platlib',${_PYHOOK_SYSCONFIG_PREFIX} vars={'platbase': '.'}))"
+     RESULT_VARIABLE _pyhook_install_dir_result
+     OUTPUT_VARIABLE PYHOOK_INSTALL_DIR
+     OUTPUT_STRIP_TRAILING_WHITESPACE)

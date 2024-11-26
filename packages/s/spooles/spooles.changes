@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov 24 00:29:29 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build failure due to stricter GCC checks, add
+  0001-Fix-compile-error-due-to-apparent-invalid-cast.patch
+
+-------------------------------------------------------------------
 Tue Oct 24 08:19:51 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Tune build to only build against the default openmpi version,

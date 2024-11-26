@@ -2,7 +2,6 @@
  WINGs/Examples/colorpick.c      |    4 ++++
  WINGs/Examples/fontl.c          |    4 ++++
  WINGs/Examples/puzzle.c         |    4 ++++
- WINGs/Extras/test.c             |    4 ++++
  WINGs/Extras/wtabledelegates.c  |    4 ++++
  WINGs/Extras/wtableview.c       |    4 ++++
  WINGs/Tests/mywidget.c          |    4 ++++
@@ -208,19 +207,6 @@ Index: WINGs/Examples/puzzle.c
  #include <stdlib.h>
  #include <stdio.h>
  #include <WINGs/WINGs.h>
-Index: WINGs/Extras/test.c
-===================================================================
---- WINGs/Extras/test.c.orig
-+++ WINGs/Extras/test.c
-@@ -1,4 +1,8 @@
- 
-+#ifdef HAVE_CONFIG_H
-+#include "config.h"
-+#endif
-+
- #include <WINGs/WINGs.h>
- #include <stdio.h>
- #include <stdint.h>
 Index: WINGs/Extras/wtabledelegates.c
 ===================================================================
 --- WINGs/Extras/wtabledelegates.c.orig
@@ -835,7 +821,7 @@ Index: WINGs/wlist.c
 +
  #include "WINGsP.h"
  
- char *WMListDidScrollNotification = "WMListDidScrollNotification";
+ const char *WMListDidScrollNotification = "WMListDidScrollNotification";
 Index: WINGs/wmenuitem.c
 ===================================================================
 --- WINGs/wmenuitem.c.orig
@@ -1040,7 +1026,7 @@ Index: WINGs/wutil.c
 +
  #include "WINGsP.h"
  
- void WHandleEvents()
+ void WHandleEvents(void)
 Index: WINGs/wview.c
 ===================================================================
 --- WINGs/wview.c.orig
@@ -1101,7 +1087,7 @@ Index: WPrefs.app/Expert.c
 ===================================================================
 --- WPrefs.app/Expert.c.orig
 +++ WPrefs.app/Expert.c
-@@ -20,6 +20,10 @@
+@@ -21,6 +21,10 @@
   *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
   */
  
@@ -1551,7 +1537,7 @@ Index: src/dock.c
 ===================================================================
 --- src/dock.c.orig
 +++ src/dock.c
-@@ -20,6 +20,10 @@
+@@ -21,6 +21,10 @@
   *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
   */
  
@@ -1744,8 +1730,7 @@ Index: src/osdep_darwin.c
 ===================================================================
 --- src/osdep_darwin.c.orig
 +++ src/osdep_darwin.c
-@@ -1,4 +1,8 @@
- 
+@@ -1,3 +1,7 @@
 +#ifdef HAVE_CONFIG_H
 +#include "config.h"
 +#endif
@@ -2038,7 +2023,7 @@ Index: src/window.c
 ===================================================================
 --- src/window.c.orig
 +++ src/window.c
-@@ -19,6 +19,10 @@
+@@ -20,6 +20,10 @@
   *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
   */
  
@@ -2471,17 +2456,17 @@ Index: wrlib/alpha_combine.c
 ===================================================================
 --- wrlib/alpha_combine.c.orig
 +++ wrlib/alpha_combine.c
-@@ -18,6 +18,10 @@
-  *  MA 02110-1301, USA.
-  */
+@@ -20,6 +20,10 @@
+ 
+ #include "config.h"
  
 +#ifdef HAVE_CONFIG_H
 +#include "config.h"
 +#endif
 +
  #include "wraster.h"
+ #include "wr_i18n.h"
  
- void RCombineAlpha(unsigned char *d, unsigned char *s, int s_has_alpha,
 Index: wrlib/tests/testdraw.c
 ===================================================================
 --- wrlib/tests/testdraw.c.orig

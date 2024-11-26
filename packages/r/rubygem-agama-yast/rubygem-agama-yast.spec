@@ -24,31 +24,24 @@
 #
 
 Name:           rubygem-agama-yast
-Version:        10
+Version:        10.devel489
 Release:        0
 %define mod_name agama-yast
 %define mod_full_name %{mod_name}-%{version}
 # MANUAL
 %global rb_build_versions %{rb_default_ruby}
 BuildRequires:  dbus-1-common
-# "msgfmt" tool
-BuildRequires:  gettext-runtime
 Requires:       dbus-1-common
 # /MANUAL
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{ruby >= 2.5.0}
 BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
 URL:            https://github.com/openSUSE/agama
 Source:         %{mod_full_name}.gem
-Source1:        po.tar.bz2
-Source2:        install_translations.sh
-Source3:        gem2rpm.yml
+Source1:        gem2rpm.yml
 Summary:        YaST integration service for Agama
 License:        GPL-2.0-only
-Group:          Development/Languages/Ruby
-PreReq:         update-alternatives
 
 %description
 D-Bus service exposing some YaST features that are useful for Agama.
@@ -61,29 +54,6 @@ D-Bus service exposing some YaST features that are useful for Agama.
 %gem_install \
   --symlink-binaries \
   -f
-# MANUAL
-install -D -m 0644 %{buildroot}%{gem_base}/gems/%{mod_full_name}/share/dbus.conf %{buildroot}%{_datadir}/dbus-1/agama.conf
-install --directory %{buildroot}%{_datadir}/dbus-1/agama-services
-install -m 0644 --target-directory=%{buildroot}%{_datadir}/dbus-1/agama-services %{buildroot}%{gem_base}/gems/%{mod_full_name}/share/org.opensuse.Agama*.service
-install -D -m 0644 %{buildroot}%{gem_base}/gems/%{mod_full_name}/share/agama.service %{buildroot}%{_unitdir}/agama.service
-install -D -m 0644 %{buildroot}%{gem_base}/gems/%{mod_full_name}/share/agama-proxy-setup.service %{buildroot}%{_unitdir}/agama-proxy-setup.service
-install --directory %{buildroot}/usr/share/agama/conf.d
-install -D -m 0644 %{buildroot}%{gem_base}/gems/%{mod_full_name}/conf.d/*.yaml %{buildroot}/usr/share/agama/conf.d/
-# run a script for installing the translations
-sh "%{SOURCE2}" "%{SOURCE1}"
-# /MANUAL
-
-%pre
-%service_add_pre agama.service
-
-%post
-%service_add_post agama.service
-
-%preun
-%service_del_preun agama.service
-
-%postun
-%service_del_postun_with_restart agama.service
 
 %gem_packages
 

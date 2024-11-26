@@ -25,6 +25,8 @@ Group:          System/Shells
 URL:            https://github.com/zk-org/zk
 Source0:        https://github.com/zk-org/zk/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
+# PATCH-FIX-UPSTREAM fix_test.patch -- based on commit e3c5784fb84a792491724fe4cc1f26e2c9d01b60
+Patch0:         fix_test.patch
 BuildRequires:  c_compiler
 BuildRequires:  zstd
 BuildRequires:  golang(API)
@@ -38,6 +40,7 @@ It is a command-line tool helping you to maintain a plain text Zettelkasten or p
 
 %prep
 %setup -qa1
+%autopatch -p1
 
 %build
 %ifarch ppc64
@@ -46,7 +49,7 @@ BUILDMOD=""
 BUILDMOD="-buildmode=pie"
 %endif
 export RPM_OPT_FLAGS="%{optflags}"
-go build -v -x -mod=vendor $BUILDMOD -a -ldflags "-s -X main.Version=%{version} -X main.Build=b71a74e" --tags "icu json1 fts5 secure_delete"
+go build -v -x -mod=vendor $BUILDMOD -a -ldflags "-s -X main.Version=%{version} -X main.Build=578894f" --tags "icu json1 fts5 secure_delete"
 
 %install
 install -Dm755 zk %{buildroot}%{_bindir}/zk

@@ -2,6 +2,7 @@
 # spec file for package tre
 #
 # Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,75 +17,51 @@
 #
 
 
+%define sover 5
 Name:           tre
-Version:        0.8.0_git201402282055
+Version:        0.9.0
 Release:        0
-Summary:        POSIX compatible regexp library with approximate matching
+Summary:        POSIX-compatible regexp library with approximate matching
 License:        BSD-3-Clause
-Group:          System/Libraries
+Group:          Development/Libraries/C and C++
 URL:            https://laurikari.net/tre/
-# This source comes from https://github.com/laurikari/tre/, revision
-# c2f5d130c91b1696385a6ae0b5bcfd5214bcc9ca. The previously released
-# version 0.8.0 is old (2009) and no new released have been made by
-# the author, so I'm terming this 0.8.0_git201402282055.
-Source0:        tre-%{version}.tar.bz2
-Patch0:         %{name}.diff
-# Update the python build to fix wrong include and lib paths.
-# See https://github.com/laurikari/tre/pull/19.
-Patch1:         %{name}-chicken.patch
-Patch2:         CVE-2016-8859.patch
-# https://github.com/laurikari/tre/pull/87
-Patch3:         0001-Remove-broken-agrep-test-entry.patch
-BuildRequires:  gettext-devel
+Source0:        https://github.com/laurikari/tre/releases/download/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  glibc-locale
-BuildRequires:  libtool
+%lang_package -n libtre%{sover}
 
 %description
-TRE is a lightweight, robust, and efficient POSIX compatible regexp
-matching library with some exciting features such as approximate
-matching.
+TRE is a POSIX-compatible regexp matching library with approximate
+(fuzzy) matching.
 
-%package -n libtre5
-Summary:        POSIX compatible regexp library with approximate matching
+%package -n libtre%{sover}
+Summary:        POSIX-compatible regexp library with approximate matching
 Group:          System/Libraries
-Requires:       %{name} = %{version}
-Recommends:     %{name}-lang = %{version}
-Obsoletes:      libtre
-Provides:       libtre
 
-%description -n libtre5
-TRE is a lightweight, robust, and efficient POSIX compatible regexp
-matching library with some exciting features such as approximate
-matching.
-
-%post -n libtre5 -p /sbin/ldconfig
-%postun -n libtre5 -p /sbin/ldconfig
+%description -n libtre%{sover}
+TRE is a POSIX-compatible regexp matching library with approximate
+(fuzzy) matching. TRE's algorithm has linear worst-case time in the
+length of the text being searched, and quadratic worst-case time in
+the length of the used regular expression.
 
 %package devel
-Summary:        POSIX compatible regexp library with approximate matching
+Summary:        Header files for the TRE regex library
 Group:          Development/Libraries/C and C++
-Requires:       libtre5 = %{version}
-Obsoletes:      libtre-devel
-Provides:       libtre-devel
+Requires:       libtre%{sover} = %{version}
 
 %description devel
-TRE is a lightweight, robust, and efficient POSIX compatible regexp
-matching library with some exciting features such as approximate
-matching.
+TRE is a POSIX-compatible regexp matching library with approximate
+This package contains the headers.
 
 %package -n agrep
-Summary:        Another powerful grep with interesting features
+Summary:        Another grep with approximate matching and block search
 Group:          Productivity/Text/Utilities
 
 %description -n agrep
-agrep is another powerful grep which has the  ability to search for
+agrep is a grep utility which has the ability to search for
 approximate patterns as well as block oriented search.
-
-%lang_package
 
 %prep
 %autosetup -p1
-./utils/autogen.sh
 
 %build
 %configure --disable-static --enable-shared
@@ -93,28 +70,30 @@ approximate patterns as well as block oriented search.
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
-%find_lang %{name} || echo -n >> %{name}.lang
+%find_lang %{name}
 
 %check
 %make_build check
 
-%files
-%license LICENSE
-%doc ABOUT-NLS AUTHORS NEWS README THANKS TODO
+%ldconfig_scriptlets -n libtre%{sover}
 
-%files -n libtre5
+%files -n libtre%{sover}
+%license LICENSE
 %{_libdir}/libtre.so.*
 
 %files devel
+%license LICENSE
 %doc doc/default.css doc/tre-api.html doc/tre-syntax.html
 %{_includedir}/*
 %{_libdir}/libtre.so
 %{_libdir}/pkgconfig/*
 
 %files -n agrep
+%license LICENSE
 %{_bindir}/agrep
 %{_mandir}/man1/agrep.1%{?ext_man}
 
-%files lang -f %{name}.lang
+%files -n libtre%{sover}-lang -f %{name}.lang
+%license LICENSE
 
 %changelog

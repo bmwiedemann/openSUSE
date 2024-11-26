@@ -3,7 +3,7 @@
     <param name="url">https://github.com/pybind/pybind11_protobuf.git</param>
     <param name="scm">git</param>
     <param name="filename">pybind11_protobuf</param>
-    <param name="revision">3b11990a99de</param>
+    <param name="revision">90b1a5b9de76</param>
     <param name="versionformat">0~git%cd.%h</param>
   </service>
   <service name="recompress" mode="manual">

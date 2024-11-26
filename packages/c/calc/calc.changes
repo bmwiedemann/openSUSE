@@ -1,4 +1,120 @@
 -------------------------------------------------------------------
+Mon Nov 18 13:06:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Workaorund %attr(644…) setting this attribute also on the doc
+  directory if this is the first statement to copy docs over. The
+  intention was clearly to set the files non-executable. Simply
+  letting RPM copy the correct doc files first, using default
+  attributes, results in the doc-dir having proper access modes.
+
+-------------------------------------------------------------------
+Fri Jul 12 07:02:27 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.15.1.0:
+  * Converted all ASCII tabs to ASCII spaces using a 8 character
+    tab stop, for all files, except for all Makefiles (plus rpm.mk).
+    The command `git diff -w` reports no changes.  There is no
+    functionality change in calc: only ASCII tabs to ASCII spaces.
+  * Fixed trailblank.  It was pruning . in its find search.
+  * Added check for ASCII tabs is non-Makefiles.
+  * This version will form the basis for the calc v2 to calc v3 fork.
+
+-------------------------------------------------------------------
+Wed May 29 05:04:00 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.15.0.7:
+  Fix bug regarding log2(x) #148
+
+-------------------------------------------------------------------
+Tue Feb 13 06:50:46 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.15.0.6:
+  * A long standing memory leak in zrandom.c has been fixed.
+
+-------------------------------------------------------------------
+Fri Feb  2 11:42:57 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.15.0.5:
+  * make clobber now removes the legacy files: have_fpos.h, help/man,
+    and help/usage.  The latter 2 are now managed as help aliases
+    in help.c.
+  * make install now removes the legacy files: ${HELPDIR}/man
+    and ${HELPDIR}/usage.
+  * Fixed a problem where, when calc was linked with and uses GNU
+    readline then for any multi-line copy-and-paste, only the first
+    line is executed.  Thanks to GitHub user @malfisya for reporting
+    this problem, and thanks to GitHub user @gromit1811 for doing
+    the research needed to overcome deficiencies in the GNU readline
+    documentation, and for supplying the work-a-round to allow
+    multi-line copy-and-paste to work as expected!
+
+-------------------------------------------------------------------
+Fri Dec 22 06:53:37 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.15.0.4:
+  * Fixed bug that caused calc to fail to compile filepos2z() in file.c
+   on little endian machines for the Debian apcalc package.
+  * Removed unused macros from zmath.h:
+    + SWAP_B32_IN_HASH(dest, src)
+    + SWAP_B16_IN_HASH(dest, src)
+    + SWAP_B8_IN_HASH(dest, src)
+    + SWAP_B32_IN_FLAG(dest, src)
+    + SWAP_B16_IN_FLAG(dest, src)
+    + SWAP_B8_IN_FLAG(dest, src)
+  * When SWAP_HALF_IN_B32(dest, src), SWAP_B32_IN_FULL(dest, src),
+    SWAP_B16_IN_HALF(dest, src), SWAP_B32_IN_bool(dest, src),
+    or SWAP_B32_IN_LEN(dest, src), SWAP_HALF_IN_FILEPOS(dest, src)
+    is an assignment such as:
+    (*(dest) = *(src))
+    We now case the dest and src pointers to the proper type before
+    referencing and performing the assignment.
+  * Documented unexpected behavior when calc is running in
+    "shell script mode" and the prompt builtin function is used
+    without the -p flag.  Updated help/prompt, help/unexpected
+    and the calc man page accordingly.
+  * Unless calc is given the -p command line option, calc will reopen
+    stdin as /dev/null instead of just closing stdin.  This prevents
+    subsequent opens grabbing the 1st file descriptor.
+  * Disable regress tests 4709, 4710, and 7763 because they print
+    multi-byte sequences, which are just fine for calc, the awk
+    used to evaluate the regression suite output in some legacy
+    systems report a "multibyte conversion failure".
+  * Added a number of missing Makefile variables to the "make env" rule.
+  * The man command is used to format the calc.1 man page into calc.usage.
+  * The "help calc" command now prints the formatted calc man page (calc.usage).
+  * The "help man" command now prints the formatted calc man page (calc.usage).
+  * The "help usage" command now prints the formatted calc man page (calc.usage).
+  * The file, calc.cat1, is formed by gzipping the calc.usage
+    formatted man page.  The calc.cat1 is installed as the calc
+    cat section 1 man page.
+  * Avoiding use of modern [[ and ]] in Makefile for those legacy systems
+    whose shell do not support them.  Be sure to use ||'s between []'s
+    to avoid problems with legacy shell such as the Bourne shell. *sigh*
+  * Fixed the order of "help full" to match the order of topics listed
+    buy the "help help" command.
+  * Sorted the halias[] help topics table in help.c using sort -d -u.
+
+-------------------------------------------------------------------
+Sun Dec 10 14:15:52 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.15.0.2:
+  * Added ${FSANITIZE} make variable to Makefile.config to hold
+    common Address Sanitizer (ASAN) optins to modern Linux and macOS.
+    The Address Sanitizer is NOT enabled not compiled in by default.
+    Improved comments in Makefile.local for RHEL9.2 (Linux) and for
+    macOS 14.0 that, when uncommented and calc is recompiled (i.e.,
+    make clobber all) will enable the Address Sanitizer (ASAN) for calc.
+  * Fixed memory leaks in the logn, aversin, acoversin, avercos,
+    acovercos, ahaversin, ahavercos, ahacovercos, aexsec,
+    aexcsc, and acrd.
+  * Fixed a compile error in zmath.h that impacted legacy 32-bit Big
+    Endian machines.
+  * Fixed the check for <sys/mount.h> when forming have_sys_mount.h.
+  * Added "STATIC bool blum_initialized = false" to zrandom.c to improve
+    how the code detects if the Blum-Blum-Shub pseudo-random number
+    generator is seeded or not, and how to free the state correctly.
+
+-------------------------------------------------------------------
 Thu Oct  5 12:38:15 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.15.0.1:

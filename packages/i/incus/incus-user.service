@@ -1,0 +1,12 @@
+[Unit]
+Description=Incus Container Hypervisor (User Daemon)
+After=incus-user.socket incus.service
+Requires=incus-user.socket
+
+[Service]
+EnvironmentFile=-/etc/sysconfig/incus-user
+ExecStart=/usr/sbin/incus-user --group incus $INCUS_USER_OPTS
+Restart=on-failure
+
+[Install]
+Also=incus-user.socket

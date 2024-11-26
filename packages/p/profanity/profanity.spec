@@ -47,6 +47,7 @@ BuildRequires:  readline-devel
 BuildRequires:  sqlite3-devel >= 3.22.0
 Requires:       libstrophe0 >= 0.12.3
 Requires:       profanity-binary = %{version}
+Suggests:       profanity-standard
 
 %description
 Profanity is a console-based XMPP client written in C using ncurses,
@@ -56,9 +57,9 @@ and inspired by Irssi.
 Summary:        Console-based XMPP client
 Group:          Productivity/Networking/Instant Messenger
 Requires:       profanity = %{version}
-Requires(post): update-alternatives
-Requires(preun): update-alternatives
 Provides:       profanity-binary = %{version}-%{release}
+Conflicts:      profanity-binary
+Removepathpostfixes: .mini
 
 %description mini
 Profanity is a console-based XMPP client written in C using ncurses,
@@ -71,9 +72,9 @@ servers.
 Summary:        Console-based XMPP client
 Group:          Productivity/Networking/Instant Messenger
 Requires:       profanity = %{version}
-Requires(post): update-alternatives
-Requires(preun): update-alternatives
 Provides:       profanity-binary = %{version}-%{release}
+Conflicts:      profanity-binary
+Removepathpostfixes: .standard
 
 %description standard
 Profanity is a-console based XMPP client written in C using ncurses,
@@ -107,7 +108,7 @@ export CFLAGS="%{optflags} -fcommon"
 %make_install
 rm %{buildroot}%{_libdir}/libprofanity.la
 
-mv %{buildroot}%{_bindir}/profanity %{buildroot}%{_bindir}/profanity-standard
+mv %{buildroot}%{_bindir}/profanity %{buildroot}%{_bindir}/profanity.standard
 
 make clean
 
@@ -127,11 +128,7 @@ make %{?_smp_mflags}
 %make_install
 rm %{buildroot}%{_libdir}/libprofanity.la
 
-mv %{buildroot}%{_bindir}/profanity %{buildroot}%{_bindir}/profanity-mini
-
-# u-a handling
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives/
-ln -s -f %{_sysconfdir}/alternatives/profanity %{buildroot}%{_bindir}/profanity
+mv %{buildroot}%{_bindir}/profanity %{buildroot}%{_bindir}/profanity.mini
 
 %files
 %{_mandir}/man1/profanity.1%{?ext_man}
@@ -147,34 +144,12 @@ ln -s -f %{_sysconfdir}/alternatives/profanity %{buildroot}%{_bindir}/profanity
 %{_includedir}/profapi.h
 
 %files mini
-%ghost %{_sysconfdir}/alternatives/profanity
-%{_bindir}/profanity
-%{_bindir}/profanity-mini
+%{_bindir}/profanity.mini
 
 %files standard
-%ghost %{_sysconfdir}/alternatives/profanity
-%{_bindir}/profanity
-%{_bindir}/profanity-standard
+%{_bindir}/profanity.standard
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
-
-%post mini
-%{_sbindir}/update-alternatives --install \
-    %{_bindir}/profanity profanity %{_bindir}/profanity-mini 10
-
-%postun mini
-if [ ! -f %{_bindir}/profanity-mini ] ; then
-  %{_sbindir}/update-alternatives --remove profanity %{_bindir}/profanity-mini
-fi
-
-%post standard
-%{_sbindir}/update-alternatives --install \
-    %{_bindir}/profanity profanity %{_bindir}/profanity-standard 20
-
-%postun standard
-if [ ! -f %{_bindir}/profanity-standard ] ; then
-  %{_sbindir}/update-alternatives --remove profanity %{_bindir}/profanity-standard
-fi
 
 %changelog

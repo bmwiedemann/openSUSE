@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Nov 17 13:53:07 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
+
+- fix shebang in demos/flatpak-run.sh
+
+-------------------------------------------------------------------
 Fri Nov  1 18:56:54 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.11.0:

@@ -271,6 +271,8 @@ sed -ri 's/(\$\{wl\})-rpath (\$\{wl\})/\1-rpath-link \2/g' src/build-aux/config.
 sed -ri "s/CC='\\$\{CC\}'/CC='\\$\{CC\} -Wl,--as-needed'/g" src/makemake.in
 #Default browser
 sed -ri 's/;; (\(setq \*browser\* .*\))/\1/' src/cfgunix.lisp
+#The pari lib doesn ot know anymore about diffptrE
+sed -ri 's/(\(def-c-var diffptr)/;; \1/p' modules/pari/pari.lisp
 
 #
 # The modules i18n, syscalls, regexp

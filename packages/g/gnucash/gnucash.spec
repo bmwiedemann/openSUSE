@@ -48,6 +48,8 @@ Patch0:         gnucash-cpan-warning.patch
 # PATCH-FIX-UPSTREAM gnucash-libm.patch gh#gnucash/gnucash#632 dimstar@opensuse.org -- Link libm: gnucash uses e.g. log10 without explicitly requesting libm
 Patch1:         gnucash-libm.patch
 Patch2:         gnucash-4.1-fix-gtest-path.patch
+Patch3:         gnucash-icu.patch
+Patch4:         gnucash-swig43.patch
 
 BuildRequires:  cmake >= 3.14
 BuildRequires:  doxygen

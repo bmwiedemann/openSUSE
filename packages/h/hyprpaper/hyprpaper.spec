@@ -19,7 +19,7 @@
 %global __builder ninja
 Name:           hyprpaper
 Summary:        Wayland wallpaper utility with IPC controls
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 License:        BSD-3-Clause
 URL:            https://github.com/hyprwm/hyprpaper
@@ -31,6 +31,8 @@ BuildRequires:  ninja
 BuildRequires:  pkgconfig(gtk-layer-shell-0)
 BuildRequires:  pkgconfig(hyprland-protocols)
 BuildRequires:  pkgconfig(hyprlang) >= 0.2.0
+BuildRequires:  pkgconfig(hyprutils) >= 0.2.0
+BuildRequires:  pkgconfig(hyprwayland-scanner)
 BuildRequires:  pkgconfig(libglvnd)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libmagic)

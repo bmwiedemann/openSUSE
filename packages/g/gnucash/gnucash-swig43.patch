@@ -1,0 +1,13 @@
+--- gnucash-5.9/bindings/python/time64.i.orig	2024-11-24 15:50:32.091682300 +0100
++++ gnucash-5.9/bindings/python/time64.i	2024-11-24 15:50:49.204226200 +0100
+@@ -149,8 +149,8 @@
+                                                  t.tm_mday, t.tm_hour, t.tm_min,
+                                                  t.tm_sec, 0);
+ 
+-      $result = SWIG_Python_AppendOutput($result, tp);
+-  } else $result = SWIG_Python_AppendOutput($result, Py_None);
++      $result = SWIG_AppendOutput($result, tp);
++  } else $result = SWIG_AppendOutput($result, Py_None);
+ }
+ 
+ %apply time64 *date { time64 *last_date };

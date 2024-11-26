@@ -1,4 +1,103 @@
 -------------------------------------------------------------------
+Thu Nov 14 15:34:17 UTC 2024 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Storage: fixed bug when existing partitions were searched at the
+  config but not deleted or resized (gh#agama-project/agama#1767).
+
+-------------------------------------------------------------------
+Thu Nov 14 13:26:23 UTC 2024 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Storage: honor the candidate devices from DiskAnalyzer when
+  matching drives (gh#agama-project/agama#1765).
+
+-------------------------------------------------------------------
+Wed Nov 13 12:14:06 UTC 2024 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Do not crash when trying to change the language of the storage
+  service before the "config" phase (gh#agama-project/agama#1746).
+
+-------------------------------------------------------------------
+Tue Nov  5 16:11:35 UTC 2024 - Martin Vidner <mvidner@suse.com>
+
+- packaging: split out files independent of Ruby version
+  from rubygem-agama-yast (gh#agama-project/agama#1677).
+
+-------------------------------------------------------------------
+Wed Oct 30 11:33:54 UTC 2024 - José Iván López González <jlopez@suse.com>
+
+- Storage: do not generate config json with search wildcard
+  (gh#agama-project/agama#1713).
+- Storage: fix issue when setting config
+  (gh#agama-project/agama#1706).
+
+-------------------------------------------------------------------
+Thu Oct 24 14:44:35 UTC 2024 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Storage: do not report issues when intentionally skipping entries
+  at the storage config (gh#agama-project/agama#1696).
+
+-------------------------------------------------------------------
+Thu Oct 24 13:07:50 UTC 2024 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Storage: support to match several devices with every 'search'
+  section (gh#agama-project/agama#1691).
+
+-------------------------------------------------------------------
+Tue Oct 22 09:48:57 UTC 2024 - José Iván López González <jlopez@suse.com>
+
+- Storage: extend schema to allow selecting TPM FDE as encryption
+  method (gh#agama-project/agama#1681).
+
+-------------------------------------------------------------------
+Wed Oct 16 15:09:31 UTC 2024 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Add support for running user-defined scripts after the
+  installation (gh#agama-project/agama#1673).
+
+-------------------------------------------------------------------
+Wed Oct 16 14:35:47 UTC 2024 - José Iván López González <jlopez@suse.com>
+
+- Storage: add config conversion to JSON
+  (gh#agama-project/agama#1670).
+
+-------------------------------------------------------------------
+Mon Oct 14 14:52:26 UTC 2024 - Ladislav Slezák <lslezak@suse.com>
+
+- Fixed shell injection vulnerability in the internal API
+  (gh#agama-project/agama#1668)
+
+-------------------------------------------------------------------
+Tue Oct  8 12:25:08 UTC 2024 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Storage: added support for automatic creation of physical volumes
+  (gh#agama-project/agama#1655).
+
+-------------------------------------------------------------------
+Mon Oct  7 06:58:48 UTC 2024 - José Iván López González <jlopez@suse.com>
+
+- Storage: add support to the storage config for automatically
+  creating physical volumes (gh#agama-project/agama#1652).
+
+-------------------------------------------------------------------
+Fri Sep 27 14:15:16 UTC 2024 - José Iván López González <jlopez@suse.com>
+
+- Storage: add support for automatically generating 'default' and
+  'mandatory' partitions or logical volumes in the storage config
+  (gh#openSUSE/agama#1634).
+
+-------------------------------------------------------------------
+Fri Sep 27 09:23:40 UTC 2024 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Handle UI language change in users and storage
+  (gh#agama-project/agama#1642).
+
+-------------------------------------------------------------------
+Mon Sep 23 14:55:53 UTC 2024 - José Iván López González <jlopez@suse.com>
+
+- Storage: add support for resizing partitions using its current
+  size as min or max limit (gh#openSUSE/agama#1617).
+
+-------------------------------------------------------------------
 Fri Sep 20 13:09:47 UTC 2024 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Storage: preliminary support for resizing partitions based on

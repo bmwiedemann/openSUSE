@@ -1092,4 +1092,14 @@
     <comment></comment>
     <requestid>1205727</requestid>
   </revision>
+  <revision rev="109" vrev="2">
+    <srcmd5>c418a2aac0ee95bfcd662aaae53f0868</srcmd5>
+    <version>5.9</version>
+    <time>1732573229</time>
+    <user>anag+factory</user>
+    <comment>- Add gnucash-icu.patch: Fix build with recent ICU libraries
+- Add gnucash-swig43.patch: Fix build with SWIG 4.3
+</comment>
+    <requestid>1226115</requestid>
+  </revision>
 </revisionlist>

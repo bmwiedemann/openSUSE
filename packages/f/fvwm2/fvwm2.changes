@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov 19 10:20:03 UTC 2024 - pgajdos@suse.com
+
+- build with gcc14
+- use existing openSUSE wallpaper image file
+- use FvwmBacker module for background instead of external program
+- do not depend on xli anymore
+- modified sources
+  % system.fvwm2rc
+- added patches
+  fix https://github.com/fvwmorg/fvwm/pull/100
+  + fvwm2-gcc14.patch
+
+-------------------------------------------------------------------
 Sun Aug 27 09:06:34 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.7.0:

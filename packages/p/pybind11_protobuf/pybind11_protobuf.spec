@@ -18,30 +18,20 @@
 
 %global _lto_cflags %{nil}
 Name:           pybind11_protobuf
-Version:        0~git20240103.3b11990
+Version:        0~git20241101.90b1a5b
 Release:        0
 Summary:        Pybind11 bindings for Protocol Buffers
 License:        BSD-3-Clause
 URL:            https://github.com/pybind/pybind11_protobuf
 Source:         pybind11_protobuf-%{version}.tar.gz
-# See https://github.com/pybind/pybind11_protobuf/issues/127
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Make-protobuf-python_api-fully-optional.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0002-Add-ENABLE_PYPROTO_API-option-to-CMake-build-clean-u.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0003-Make-the-pybind11_-_proto_caster-libraries-STATIC.patch
-# PATCH-FIX-UPSTREAM
-Patch3:         0004-Fix-handling-of-external-dependencies-allow-forcing-.patch
-# PATCH-FIX-UPSTREAM
-Patch4:         0005-Build-and-run-the-test-cases.patch
 # PATCH-FIX-OPENSUSE
 Patch5:         0006-Add-install-target-for-CMake-builds.patch
 # PATCH-FIX-OPENSUSE
 Patch6:         0007-CMake-Use-Python-Module.patch
 BuildRequires:  cmake >= 3.24
 BuildRequires:  fdupes
-BuildRequires:  protobuf-devel
+BuildRequires:  gcc-c++
+BuildRequires:  protobuf-devel >= 26.0
 %if 0%{?sle_version} >= 150500
 BuildRequires:  python311-pybind11-devel >= 2.11.1
 %else
@@ -61,15 +51,16 @@ BuildRequires:  python3-protobuf
 %description
 These adapters make Protocol Buffer message types work with Pybind11 bindings.
 
-%prep
-%autosetup -p1
-
 %package devel
-Summary:       Development files for %name
-Requires:      %{name}
+Summary:        Development files for %name
+Requires:       %{name}
 
 %description devel
 Headers and other development files for %name
+
+%prep
+%autosetup -p1
+sed -i -e '/protobuf_package_args/ s/4.23.3/5.26.0/g' CMakeLists.txt
 
 %build
 %cmake \

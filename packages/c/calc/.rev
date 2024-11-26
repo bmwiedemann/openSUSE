@@ -580,4 +580,12 @@
   * The libcalc shared library is now linked with libcustcalc.</comment>
     <requestid>1115823</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>6615f68218393f6a78c057fa78c72b5c</srcmd5>
+    <version>2.15.1.0</version>
+    <time>1732573310</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1226199</requestid>
+  </revision>
 </revisionlist>

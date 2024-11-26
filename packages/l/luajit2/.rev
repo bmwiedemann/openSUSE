@@ -43,4 +43,13 @@
   * ARM64: Used ldr literal to load FP constants.</comment>
     <requestid>1222025</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8adca70a0147a287730225dfa5573923</srcmd5>
+    <version>2.1.20241113</version>
+    <time>1732573201</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 2.1.20241113 (2.1.1731486438).
+  * Upstream doesn't provide a ChangeLog.</comment>
+    <requestid>1225972</requestid>
+  </revision>
 </revisionlist>

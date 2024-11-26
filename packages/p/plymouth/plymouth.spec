@@ -88,7 +88,7 @@ Requires:       %{name}-branding
 Requires:       systemd >= 186
 Requires(post): coreutils
 Requires(post): plymouth-scripts = %{version}
-Requires(postun): coreutils
+Requires(postun):coreutils
 Suggests:       plymouth-plugin-label
 Provides:       bootsplash = 3.5
 Obsoletes:      bootsplash < 3.5

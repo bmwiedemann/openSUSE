@@ -1,7 +1,7 @@
 #
 # spec file for package aqbanking
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,14 +29,14 @@
 %define          releasever  400
 %define          ascreleasever 399
 Name:           aqbanking
-Version:        6.5.4
+Version:        6.5.9beta
 Release:        0
 Summary:        Library for Online Banking Functions and Financial Data Import and Export
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Productivity/Office/Finance
 URL:            https://www.aquamaniac.de/aqbanking/
-Source:         https://www.aquamaniac.de/rdm/attachments/download/499/aqbanking-%{version}.tar.gz
-Source1:        https://www.aquamaniac.de/rdm/attachments/download/498/aqbanking-%{version}.tar.gz.asc
+Source:         https://www.aquamaniac.de/rdm/attachments/download/520/aqbanking-%{version}.tar.gz
+Source1:        https://www.aquamaniac.de/rdm/attachments/download/519/aqbanking-%{version}.tar.gz.asc
 Source2:        aqbanking6-handbook-20190221.pdf
 Source3:        aqbanking.keyring
 BuildRequires:  cmake
@@ -44,8 +44,8 @@ BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
-BuildRequires:  gwenhywfar-devel >= 5.8.2.1
-BuildRequires:  gwenhywfar-tools >= 5.8.2.1
+BuildRequires:  gwenhywfar-devel >= 5.11.0
+BuildRequires:  gwenhywfar-tools >= 5.11.0
 BuildRequires:  ktoblzcheck-devel >= 1.10
 BuildRequires:  libltdl-devel
 BuildRequires:  pkgconfig
@@ -67,7 +67,7 @@ Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       cmake
 Requires:       glibc-devel
-Requires:       gwenhywfar-devel >= 5.2.0.1
+Requires:       gwenhywfar-devel >= 5.11.0
 Requires:       ktoblzcheck-devel
 Requires:       libltdl-devel
 Requires:       xmlsec1-gnutls-devel

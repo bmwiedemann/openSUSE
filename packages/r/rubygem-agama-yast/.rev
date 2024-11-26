@@ -87,4 +87,12 @@
   volumes (gh#openSUSE/agama#1581).</comment>
     <requestid>1202592</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8671f68cf56fbb7cd85f358d0ec75cc9</srcmd5>
+    <version>10.devel489</version>
+    <time>1732573289</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1226181</requestid>
+  </revision>
 </revisionlist>

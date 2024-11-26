@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Fri Nov 15 08:26:29 UTC 2024 - David Diaz <dgonzalez@suse.com>
+
+- Stick product selection form actions to bottom
+  (gh#agama-project/agama#1769).
+
+-------------------------------------------------------------------
+Thu Nov 14 14:42:46 UTC 2024 - Knut Anderssen <kanderssen@suse.com>
+
+- Fix wireless authentication initialization and
+  invalidate the cached query in case of connected
+  (gh#agama-project/agama#1753).
+
+-------------------------------------------------------------------
+Wed Nov 13 12:06:41 UTC 2024 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Several translation fixes (gh#agama-project/agama#1746):
+  - Use the correct capitalization for RFC 5646 language tags
+    (e.g., "pt-BR" instead of "pt-BR" instead of "pt-br") (bsc#1233160).
+  - Translate the products descriptions when the user changes
+    the language (gh#agama-project/agama#1724).
+  - Fallback to a similar language if the given one is not supported
+    (e.g., "es" for "es-AR") (gh#agama-project/agama#860).
+
+-------------------------------------------------------------------
+Wed Nov  6 06:06:51 UTC 2024 - Michal Filka <mfilka@suse.com>
+
+- URL for downloading Agama logs adapted to use new HTTP API
+- https://github.com/agama-project/agama/pull/1720
+
+-------------------------------------------------------------------
+Tue Nov  5 11:33:12 UTC 2024 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix a crash when editing a network connection containing an
+  additional IP address (gh#agama-project/agama#1728).
+
+-------------------------------------------------------------------
+Mon Nov  4 20:32:29 UTC 2024 - David Diaz <dgonzalez@suse.com>
+
+- Add missing subscription to avoid Agama getting stuck at the installation
+  progress when the installation finishes
+  (gh#agama-project/agama#1726, gh#agama-project/agama#1727).
+
+-------------------------------------------------------------------
+Wed Oct 30 22:26:29 UTC 2024 - David Diaz <dgonzalez@suse.com>
+
+- Render Install button only where it makes sense and prevent the
+  user starting the installation by mistake
+  (gh#agama-project/agama#1717).
+
+-------------------------------------------------------------------
+Mon Oct 28 19:26:29 UTC 2024 - David Diaz <dgonzalez@suse.com>
+
+- Make some general actions more accessible
+  (gh#agama-project/agama#1690).
+
+-------------------------------------------------------------------
+Wed Oct 23 16:26:29 UTC 2024 - David Diaz <dgonzalez@suse.com>
+
+- Fix the link to download the logs (gh#agama-project/agama#1694).
+
+-------------------------------------------------------------------
+Wed Oct 23 15:26:29 UTC 2024 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Adapt the URL to fetch the logs (gh#agama-project/agama#1693).
+
+-------------------------------------------------------------------
+Fri Oct 11 09:46:02 UTC 2024 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Workaround the "not found" problem in the products selection page
+  (gh#agama-project/agama#1666).
+
+-------------------------------------------------------------------
+Thu Oct 10 17:55:34 UTC 2024 - Victorhck <victorhck@mailbox.org>
+
+- Update URL in About section (gh#agama-project/agama#1663).
+
+-------------------------------------------------------------------
+Thu Oct  3 10:20:34 UTC 2024 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Drop the old HTTPClient (gh#agama-project/agama#1639).
+
+-------------------------------------------------------------------
+Mon Sep 30 08:52:36 UTC 2024 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix timezones UTC offset calculation (gh#agama-project/agama#1335).
+
+-------------------------------------------------------------------
+Fri Sep 27 14:54:46 UTC 2024 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Translate overview page headers and a missing text in the
+  networking page (gh#agama-project/agama#1629).
+
+-------------------------------------------------------------------
+Fri Sep 27 13:00:05 UTC 2024 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Properly translate the storage interface when switching
+  the language of the UI (gh#agama-project/agama#1629).
+
+-------------------------------------------------------------------
+Mon Sep 23 09:04:56 UTC 2024 - Knut Anderssen <kanderssen@suse.com>
+
+- Added confirmation dialog when formatting DASD devices as it is
+  considered a dangerous action (gh#openSUSE/agama#1618).
+
+-------------------------------------------------------------------
 Fri Sep 20 11:42:25 UTC 2024 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Version 10

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov 24 08:56:17 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- Fix header inclusions for implicit dependnecies (bsc#1233682)
+  0002-configure-Make-sequencer-dependent-on-rawmidi.patch
+  0003-seq-include-UMP-headers.patch
+
+-------------------------------------------------------------------
 Fri Nov 15 16:42:00 UTC 2024 - Takashi Iwai <tiwai@suse.com>
 
 - Fix incorrect versioned symbol for snd_seq_has_queue_tempo_base:

@@ -1,0 +1,21 @@
+--- gnucash-5.9/libgnucash/engine/CMakeLists.txt.orig	2024-11-24 16:03:34.430747300 +0100
++++ gnucash-5.9/libgnucash/engine/CMakeLists.txt	2024-11-24 16:08:45.978821800 +0100
+@@ -136,6 +136,8 @@ add_custom_command (
+     )
+ add_custom_target(iso-4217-c DEPENDS ${ISO_4217_C})
+ 
++find_package(ICU REQUIRED COMPONENTS uc i18n)
++
+ set (engine_SOURCES
+   Account.cpp
+   Recurrence.cpp
+@@ -237,7 +239,8 @@ target_link_libraries(gnc-engine
+     gnc-core-utils
+     ${Boost_DATE_TIME_LIBRARY}
+     ${Boost_REGEX_LIBRARY}
+-    ${ICU4C_I18N_LDFLAGS}
++    ICU::uc
++    ICU::i18n
+     ${REGEX_LDFLAGS}
+     ${GMODULE_LDFLAGS}
+     PkgConfig::GLIB2

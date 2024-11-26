@@ -69,4 +69,14 @@
     <comment>Prepare for RPM 4.20 (forwarded request 1151530 from dimstar)</comment>
     <requestid>1151696</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>559fcc3a91a95217911b8934d13b1edd</srcmd5>
+    <version>0.7+git6770db21b08edd907d1c9bd962297ff55664e3fe</version>
+    <time>1732573293</time>
+    <user>anag+factory</user>
+    <comment>- Update scsh to git commit 6770db2
+- Delete scsh-install-lib-1.3.0.tar.gz as not used anymore
+- Make it build even with scheme48 &gt;= 1.9.2</comment>
+    <requestid>1226188</requestid>
+  </revision>
 </revisionlist>

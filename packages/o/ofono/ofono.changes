@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov 24 14:24:47 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.13
+  * Add support for handling QMI PIN and Lock methods.
+  * Add support for handling QMI WWAN interfaces.
+  * Add support for handling RMNet interfaces.
+
+-------------------------------------------------------------------
 Sat Nov  9 18:20:08 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.12

@@ -91,7 +91,7 @@ Index: WindowMaker/menu.ca
 -                "Llista de Processos" EXEC xterm -e top
 -                "Manual d'instruccions" EXEC xman
          "Informació" END
-         "XTerm" EXEC xterm -sb 
+         "XTerm" EXEC xterm -sb
 -        "Rxvt" EXEC rxvt -bg black -fg white -fn fixed
          "Escriptoris" WORKSPACE_MENU
 -        "Aplicacions" MENU
@@ -104,7 +104,7 @@ Index: WindowMaker/menu.ca
 -                "X File Manager" EXEC xfm
 -                "OffiX Files" EXEC files
 -                "LyX" EXEC lyx
--                "Netscape" EXEC netscape 
+-                "Netscape" EXEC netscape
 -                "Ghostview" EXEC ghostview %a(Enter file to view)
 -                "Acrobat" EXEC /usr/local/Acrobat3/bin/acroread %a(Enter PDF to view)
 -                "TkDesk" EXEC tkdesk
@@ -112,7 +112,7 @@ Index: WindowMaker/menu.ca
 -        "Editors" MENU
 -                "XFte" EXEC xfte
 -                "XEmacs" SHEXEC xemacs || emacs
--                "XJed" EXEC xjed 
+-                "XJed" EXEC xjed
 -                "NEdit" EXEC nedit
 -                "Xedit" EXEC xedit
 -                "VI" EXEC xterm -e vi
@@ -143,7 +143,7 @@ Index: WindowMaker/menu.ca
          "Escriptori" MENU
                  "Amagar Altres" HIDE_OTHERS
                  "Ensenyar Totes" SHOW_ALL
-@@ -203,13 +152,13 @@
+@@ -203,15 +152,12 @@
                  "Fons de pantalla" END
                  "Guardar Tema" SHEXEC getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/"%a(Theme name)"
                  "Guardar Joc d'Icones" SHEXEC geticonset $HOME/GNUstep/Library/WindowMaker/IconSets/"%a(IconSet name)"
@@ -159,7 +159,9 @@ Index: WindowMaker/menu.ca
 -                "Matar la Sessió..." SHUTDOWN
          "Sortir" END
  "Aplicacions" END
- 
+-
+-
+-
 Index: WindowMaker/menu.cs
 ===================================================================
 --- /dev/null
@@ -264,8 +266,8 @@ Index: WindowMaker/menu.da
 -                "Manualer" EXEC xman
          "Info" END
  	"Kør..." SHEXEC "%a(Kør,Indtast kommando der skal udføres:)"
-         "XTerm" EXEC xterm -sb 
--        "Rxvt" EXEC rxvt -bg black -fg white 
+         "XTerm" EXEC xterm -sb
+-        "Rxvt" EXEC rxvt -bg black -fg white
          "Arbejdsborde" WORKSPACE_MENU
 -        "Applikationer" MENU
 -                "Grafik" MENU
@@ -277,7 +279,7 @@ Index: WindowMaker/menu.da
 -                "X Filhåndtering" EXEC xfm
 -                "OffiX Files" EXEC files
 -                "LyX" EXEC lyx
--                "Netscape" EXEC netscape 
+-                "Netscape" EXEC netscape
 -                "Ghostview" EXEC ghostview %a(GhostView,Indtast filnavn)
 -                "Acrobat" EXEC /usr/local/Acrobat3/bin/acroread %a(Acrobat,Indtast PDF-filnavn)
 -                "TkDesk" EXEC tkdesk
@@ -285,7 +287,7 @@ Index: WindowMaker/menu.da
 -        "Tekstbehandling" MENU
 -                "XFte" EXEC xfte
 -                "Emacs" SHEXEC xemacs || emacs
--                "XJed" EXEC xjed 
+-                "XJed" EXEC xjed
 -                "NEdit" EXEC nedit
 -                "Xedit" EXEC xedit
 -                "VI" EXEC xterm -e vi
@@ -428,7 +430,7 @@ Index: WindowMaker/menu.el
 -		"Βοήθεια" EXEC xman
  	"Πληροφορίες" END
  	"Εκτέλεση..." SHEXEC %a(Εκτέλεση,Γράψε την εντολή προς εκτέλεση:)
- 	"XTerm" EXEC xterm -sb 
+ 	"XTerm" EXEC xterm -sb
 -	"Rxvt" EXEC rxvt -bg black -fg white -fn grfixed
  	"Επιφάνειες" WORKSPACE_MENU
 -	"Προγράμματα" MENU
@@ -441,7 +443,7 @@ Index: WindowMaker/menu.el
 -		"X File Manager" EXEC xfm
 -		"OffiX Files" EXEC files
 -		"LyX" EXEC lyx
--		"Netscape" EXEC netscape 
+-		"Netscape" EXEC netscape
 -  		"Ghostview" EXEC ghostview %a(Αρχείο προς ανάγνωση)
 -		"Acrobat" EXEC /usr/local/Acrobat3/bin/acroread %a(Acrobar,Γράψε το PDF προς προβολή)
 -  		"TkDesk" EXEC tkdesk
@@ -449,7 +451,7 @@ Index: WindowMaker/menu.el
 -	"Κειμενογράφοι" MENU
 -		"XFte" EXEC xfte
 -		"XEmacs" SHEXEC xemacs || emacs
--		"XJed" EXEC xjed 
+-		"XJed" EXEC xjed
 -		"NEdit" EXEC nedit
 -		"Xedit" EXEC xedit
 -		"VI" EXEC xterm -e vi
@@ -498,100 +500,6 @@ Index: WindowMaker/menu.el
  		 "Έξοδος..."  EXIT
  	"Έξοδος" END
  "Μενού" END
-Index: WindowMaker/menu.es
-===================================================================
---- WindowMaker/menu.es.orig
-+++ WindowMaker/menu.es
-@@ -43,62 +43,9 @@
- 	"Informacion ..." MENU
- 		"Copyright..." SHEXEC xmessage -center -font variable -title \
- 	'WindowMaker 'WM_VERSION -file ~/GNUstep/Library/WindowMaker/Copyright
--		"Carga del sistema" SHEXEC xosview || xload
--		"Lista de tarifas (top)" EXEC rxvt -ls -fg white -bg black -fn vga -e top
--		"Manual" EXEC xman
- 	"Informacion ..." END
- 
--        "Emuladores ..." MENU
--	        "Terminal X" EXEC xterm
--                "Emulador de Terminal" EXEC rxvt -ls -fg white -bg black -fn vga
--        "Emuladores ..." END
--
--	"Aplicaciones ..." MENU
--	
--		"Graficos ..." MENU
--			"Gimp" EXEC gimp
--			"XV" EXEC xv
--			"XPaint" EXEC xpaint
--			"XFig" EXEC xfig
--		"Graficos ..." END
--     
--                "Editores ..." MENU
--	                "XEmacs" SHEXEC xemacs || emacs
--			"XJed" EXEC xjed
--			"NEdit" EXEC nedit
--			"Xedit" EXEC xedit
--			"VI" EXEC xterm -e vi
--	        "Editores ..." END
--		
--		"Multimedia ..." MENU
--	                "Xmcd" SHEXEC xmcd 2> /dev/null
--			"Xplaycd" EXEC xplaycd
--			"Xmixer" EXEC xmixer
--		"Multimedia ..." END
--		
--		"Utilidades ..." MENU
--	                "Calculadora" EXEC xcalc
--			"Selector de fuente" EXEC xfontsel
--			"Lupa" EXEC xmag
--			"Mapa de colores" EXEC xcmap
--			"XKill" EXEC xkill
--			"ASClock" EXEC asclock -shape
--			"Portapapeles" EXEC xclipboard
--		"Utilidades ..." END
--		
--		"X File Manager" EXEC xfm
--		"OffiX Files" EXEC files
--		"LyX" EXEC lyx
--		"Ghostview" EXEC ghostview
--		"Acrobat" EXEC /usr/local/Acrobat3/bin/acroread
--		"TkDesk" EXEC tkdesk
--	"Aplicaciones ..." END
--
--	"Internet ..." MENU
--		"Correo" EXEC xterm -name mail -T "Pine" -e pine %s
--		"Navegar" EXEC netscape %s
--		"Buscar en el manual" EXEC xterm -name manualBrowser -e man %s
--	"Internet ..." END
-+	"Terminal X" EXEC xterm
- 
- 	"Configurar Area de Trabajo ..." MENU
- 		"Fondo ..." MENU
-@@ -119,21 +66,14 @@
- 		"Alinear iconos" ARRANGE_ICONS
- 		"Refrescar" REFRESH
- 		"Salvapantallas" EXEC xlock -allowroot -usefirst
--		"Grabar Area de trabajo" EXEC SAVE_WORKSPACE
-+		"Grabar Area de trabajo" SAVE_SESSION
- 	"Configurar Area de Trabajo ..." END
--
-         "Areas de Trabajo ..." WORKSPACE_MENU
--	
--#if (UID==0)	// Só o ve root ou usuarios con UID=0
--	"Sistema" MENU
--		// Panel de control
--		"Panel de control de RH" EXEC control-panel
--	"Sistema" END
--#endif
-+        "WPrefs" EXEC /usr/lib/GNUstep/Applications/WPrefs.app/WPrefs
-+        "WindowMaker" OPEN_MENU /etc/X11/WindowMaker/SuSE_wmapps
-+        "SuSE" OPEN_MENU "| xdg_menu --format WindowMaker --charset UTF-8"
- 	"Salir ..."	MENU
- 		"Reinicializar" RESTART
--		"Iniciar AfterStep" RESTART afterstep
- 		"Salir"  EXIT
--		"Salir de la sesion" SHUTDOWN
- 	"Salir ..." END
- "Menu Principal" END
 Index: WindowMaker/menu.fi.in
 ===================================================================
 --- WindowMaker/menu.fi.in.orig
@@ -606,7 +514,7 @@ Index: WindowMaker/menu.fi.in
 -		"Ohjeselain" EXEC xman
  	"Tietoja" END
  	"Käynnistä..." SHEXEC %a(Käynnistä,Kirjoita suoritettava komento:)
- 	"XTerm" EXEC xterm -sb 
+ 	"XTerm" EXEC xterm -sb
 -	"Rxvt" EXEC rxvt -bg black -fg white -fn fixed
  	"Työtilat" WORKSPACE_MENU
 -	"Sovellukset" MENU
@@ -619,7 +527,7 @@ Index: WindowMaker/menu.fi.in
 -		"X Tiedostonhallinta" EXEC xfm
 -		"OffiX Tiedostot" EXEC files
 -		"LyX" EXEC lyx
--		"Netscape" EXEC netscape 
+-		"Netscape" EXEC netscape
 -  		"Ghostview" EXEC ghostview %a(GhostView,Kirjoita näytettävän tiedoston nimi:)
 -		"Acrobat" EXEC /usr/local/Acrobat3/bin/acroread %a(Acrobat,Kirjoita näytettävän PDF-tiedoston nimi)
 -  		"TkDesk" EXEC tkdesk
@@ -627,7 +535,7 @@ Index: WindowMaker/menu.fi.in
 -	"Editorit" MENU
 -		"XFte" EXEC xfte
 -		"XEmacs" SHEXEC xemacs || emacs
--		"XJed" EXEC xjed 
+-		"XJed" EXEC xjed
 -		"NEdit" EXEC nedit
 -		"Xedit" EXEC xedit
 -		"VI" EXEC xterm -e vi
@@ -658,7 +566,7 @@ Index: WindowMaker/menu.fi.in
  	"Työtila" MENU
  		"Piilota muut" HIDE_OTHERS
  		"Näytä kaikki ikkunat" SHOW_ALL
-@@ -204,12 +153,10 @@
+@@ -204,14 +153,10 @@
  		"Tallenna kuvakkeet" SHEXEC geticonset $HOME/GNUstep/Library/WindowMaker/IconSets/"%a(Kuvakesetin nimi,Kirjoita tiedostonnimi:)"
  		"Asetukset" EXEC #wprefs#
  	"Ulkonäkö" END
@@ -673,6 +581,8 @@ Index: WindowMaker/menu.fi.in
  		"Lopeta"  EXIT
  	"Lopeta" END
  "Sovellukset" END
+-
+-
 Index: WindowMaker/menu.fr
 ===================================================================
 --- WindowMaker/menu.fr.orig
@@ -728,14 +638,14 @@ Index: WindowMaker/menu.fr
 -		"XKill" EXEC xkill
 -		"Sélections" EXEC xclipboard
 -	"Utilitaires" END
--	
+-
 -	"Sélection" MENU
 -		"Copier" SHEXEC echo '%s' | wxcopy
 -		"Envoyer à" EXEC xterm -name mail -T "Pine" -e pine %s
 -		"Naviguer" EXEC netscape %s
 -		"Rechercher dans le manuel" SHEXEC MANUAL_SEARCH(%s)
 -	"Sélection" END
--	
+-
  	"Bureau" MENU
  		"Cacher les autres fenêtres" HIDE_OTHERS
  		"Montrer toutes les fenêtres" SHOW_ALL
@@ -755,86 +665,6 @@ Index: WindowMaker/menu.fr
 -		"Tuer la session..." SHUTDOWN
  	"Quitter" END
  "Applications" END
-Index: WindowMaker/menu.gl
-===================================================================
---- WindowMaker/menu.gl.orig
-+++ WindowMaker/menu.gl
-@@ -45,56 +45,9 @@
- 	"Información" MENU
- 		"Info Panel..." INFO_PANEL
- 		"Legal" LEGAL_PANEL
--		"Carga do sistema" SHEXEC xosview || xload
--		"Lista de tarefas" EXEC rxvt -ls -fg white -bg black -fn vga -e top
--		"Manual" EXEC xman
- 	"Información" END
--	"Emulador Terminal" EXEC rxvt -ls -fg white -bg black -fn vga
--	"XJed"	EXEC xjed 
-+	"X Terminal" EXEC xterm -sb
- 	"Areas de Traballo" WORKSPACE_MENU
--	"Aplicacións" MENU
--		"Gráficos" MENU
--			"Gimp" EXEC gimp
--			"XV" EXEC xv
--			"XPaint" EXEC xpaint
--			"XFig" EXEC xfig
--		"Gráficos" END
--		"X File Manager" EXEC xfm
--		"OffiX Files" EXEC files
--		"LyX" EXEC lyx
--		"Netscape" EXEC netscape 
--  		"Ghostview" EXEC ghostview
--		"Acrobat" EXEC /usr/local/Acrobat3/bin/acroread
--  		"TkDesk" EXEC tkdesk
--	"Aplicacións" END
--	"Editores" MENU
--		"XEmacs" SHEXEC xemacs || emacs
--		"XJed" EXEC xjed
--		"NEdit" EXEC nedit
--		"Xedit" EXEC xedit
--		"VI" EXEC xterm -e vi
--	"Editores" END
--	"Variedade" MENU
--		"Xmcd" SHEXEC xmcd 2> /dev/null
--		"Xplaycd" EXEC xplaycd
--		"Xmixer" EXEC xmixer
--	"Variedade" END
--	"Utiles" MENU
--		"Calculadora" EXEC xcalc
--		"Selector de fonte" EXEC xfontsel
--		"Lupa" EXEC xmag
--		"Mapa de cor" EXEC xcmap
--		"XKill" EXEC xkill
--		"ASClock" EXEC asclock -shape
--		"Portapapeis" EXEC xclipboard
--	"Utiles" END
--
--	"Selección" MENU
--		"Correo" EXEC xterm -name mail -T "Pine" -e pine %s
--		"Navegar" EXEC netscape %s
--		"Buscar no manual" EXEC xterm -name manualBrowser -e man %s
--	"Selección" END
--
- 	"Area Traballo" MENU
- 		"Fondo" MENU
- 			"Ningún" EXEC CLEARROOT
-@@ -114,13 +67,13 @@
- 		"Aliñar iconos" ARRANGE_ICONS
- 		"Refrescar" REFRESH
- 		"Fechar" EXEC xlock -allowroot -usefirst
--		"Grabar Area de traballo" EXEC SAVE_WORKSPACE
-+		"Grabar Area de traballo" SAVE_SESSION
- 	"Area Traballo" END
--	
-+	"WindowMaker" OPEN_MENU /etc/X11/WindowMaker/SuSE_wmapps
-+        "WPrefs" EXEC /usr/lib/GNUstep/Applications/WPrefs.app/WPrefs
-+        "SuSE" OPEN_MENU "| xdg_menu --format WindowMaker --charset UTF-8"
- 	"Sair"	MENU
- 		"Reinicializar" RESTART
--		"Iniciar AfterStep" RESTART afterstep
- 		"Sair..."  EXIT
--		"Sair da sesión..." SHUTDOWN
- 	"Sair" END
- "Aplicacións" END
 Index: WindowMaker/menu.he
 ===================================================================
 --- WindowMaker/menu.he.orig
@@ -847,7 +677,7 @@ Index: WindowMaker/menu.he
 -		"Process List" EXEC xterm -e top
 -		"Manual Browser" EXEC xman
  	"עדימ" END
- 	"XTerm" EXEC xterm -sb 
+ 	"XTerm" EXEC xterm -sb
 -	"Rxvt" EXEC rxvt -bg black -fg white -fn fixed
  	"הדובע יבחרמ" WORKSPACE_MENU
 -	"םימושי" MENU
@@ -860,7 +690,7 @@ Index: WindowMaker/menu.he
 -		"X File Manager" EXEC xfm
 -		"OffiX Files" EXEC files
 -		"LyX" EXEC lyx
--		"פייקסטנ" EXEC netscape 
+-		"פייקסטנ" EXEC netscape
 -  		"Ghostview" EXEC ghostview %a(Enter file to view)
 -		"Acrobat" EXEC /usr/local/Acrobat3/bin/acroread %a(Enter PDF to view)
 -  		"TkDesk" EXEC tkdesk
@@ -868,7 +698,7 @@ Index: WindowMaker/menu.he
 -	"םיכרוע" MENU
 -		"XFte" EXEC xfte
 -		"XEmacs" SHEXEC xemacs || emacs
--		"XJed" EXEC xjed 
+-		"XJed" EXEC xjed
 -		"NEdit" EXEC nedit
 -		"Xedit" EXEC xedit
 -		"VI" EXEC xterm -e vi
@@ -900,7 +730,7 @@ Index: WindowMaker/menu.he
  	"הדובע בחרמ" MENU
  		"םירחא אבחה" HIDE_OTHERS
  		"םלוכ הארה" SHOW_ALL
-@@ -184,13 +133,13 @@
+@@ -184,14 +133,12 @@
  		"עקר" END
  		"Save Theme" SHEXEC getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/"%a(Theme name)"
  		"Save IconSet" SHEXEC geticonset $HOME/GNUstep/Library/WindowMaker/IconSets/"%a(IconSet name)"
@@ -916,12 +746,13 @@ Index: WindowMaker/menu.he
 -		"...לוכה רוגסו אצ" SHUTDOWN
  	"האיצי" END
  "םימושי" END
- 
+-
+-
 Index: WindowMaker/menu.hr
 ===================================================================
 --- WindowMaker/menu.hr.orig
 +++ WindowMaker/menu.hr
-@@ -97,62 +97,9 @@
+@@ -97,62 +97,10 @@
  	"Informacije" MENU
                  "Info Panel..." INFO_PANEL
                  "Legal..." LEGAL_PANEL
@@ -930,9 +761,9 @@ Index: WindowMaker/menu.hr
 -                "Lista procesa" EXEC xterm -e top
 -                "Pretraživač manuala" EXEC xman
  	"Informacije" END
- 	"XTerm u boji" EXEC nxterm -sb 
+ 	"XTerm u boji" EXEC nxterm -sb
 -	"Rxvt" EXEC rxvt -bg black -fg white -fn fixed
--	"Xisp" EXEX xisp
+ 	"Xisp" EXEX xisp
  	"Radni prostori" WORKSPACE_MENU
 -	"Programi" MENU
 -		"Grafika" MENU
@@ -944,7 +775,7 @@ Index: WindowMaker/menu.hr
 -		"X File Manager" EXEC xfm
 -		"OffiX Files" EXEC files
 -		"LyX" EXEC lyx
--		"Netscape" EXEC netscape 
+-		"Netscape" EXEC netscape
 -  		"Ghostview" EXEC ghostview %a(Enter file to view)
 -		"Acrobat" EXEC /usr/local/Acrobat3/bin/acroread %a(Enter PDF to view)
 -  		"TkDesk" EXEC tkdesk
@@ -952,7 +783,7 @@ Index: WindowMaker/menu.hr
 -	"Editori" MENU
 -		"XFte" EXEC xfte
 -		"XEmacs" SHEXEC xemacs || emacs
--		"XJed" EXEC xjed 
+-		"XJed" EXEC xjed
 -		"NEdit" EXEC nedit
 -		"Xedit" EXEC xedit
 -		"VI" EXEC xterm -e vi
@@ -984,7 +815,7 @@ Index: WindowMaker/menu.hr
  	"Radni prostor" MENU
  		"Sakrij ostale" HIDE_OTHERS
  		"Pokaži sve" SHOW_ALL
-@@ -186,12 +133,12 @@
+@@ -186,12 +134,12 @@
  		"Pozadina" END
  		"Snimi temu" SHEXEC getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/"%a(Theme name)"
  		"Snimi set ikona" SHEXEC geticonset $HOME/GNUstep/Library/WindowMaker/IconSets/"%a(IconSet name)"
@@ -1015,7 +846,7 @@ Index: WindowMaker/menu.hu.in
 -		"Kézikönyv böngésző" EXEC xman
  	"Infó" END
  	"Futtatás..." SHEXEC %a(Futtatás,Írd be a futtatni kívánt programot:)
- 	"X Terminál" EXEC xterm -sb 
+ 	"X Terminál" EXEC xterm -sb
 -	"Rxvt" EXEC rxvt -bg black -fg white -fn fixed
 -	"Gnome terminál" EXEC gnome-terminal --background black --foreground white --font -misc-fixed-medium-r-normal--20-200-75-75-c-100-iso8859-1
  	"Munkafelületek" WORKSPACE_MENU
@@ -1029,7 +860,7 @@ Index: WindowMaker/menu.hu.in
 -		"X File Manager" EXEC xfm
 -		"OffiX Files" EXEC files
 -		"LyX" EXEC lyx
--		"Netscape" EXEC netscape 
+-		"Netscape" EXEC netscape
 -  		"Ghostview" EXEC ghostview %a(GhostView,Kérem a fájl nevét)
 -		"Acrobat" EXEC /usr/local/Acrobat3/bin/acroread %a(Acrobat,Kérem a PDF fájl nevét)
 -  		"TkDesk" EXEC tkdesk
@@ -1037,7 +868,7 @@ Index: WindowMaker/menu.hu.in
 -	"Szerkesztők" MENU
 -		"XFte" EXEC xfte
 -		"XEmacs" SHEXEC xemacs || emacs
--		"XJed" EXEC xjed 
+-		"XJed" EXEC xjed
 -		"NEdit" EXEC nedit
 -		"Xedit" EXEC xedit
 -		"VI" EXEC xterm -e vi
@@ -1068,7 +899,7 @@ Index: WindowMaker/menu.hu.in
  	"Munkafelület" MENU
  		"Elrejtés" HIDE_OTHERS
  		"Mindent mutat" SHOW_ALL
-@@ -206,12 +154,10 @@
+@@ -206,14 +154,10 @@
  		"Ikonbeállítások mentése" SHEXEC geticonset $HOME/GNUstep/Library/WindowMaker/IconSets/"%a(Ikonbeállítások mentése,Add meg a fájl nevét:)"
  		"Konfiguráló program" EXEC #wprefs#
  	"Megjelenés" END
@@ -1083,86 +914,8 @@ Index: WindowMaker/menu.hu.in
  		"Kilépés..."  EXIT
  	"Kilépés" END
  "Alkalmazások" END
-Index: WindowMaker/menu.it
-===================================================================
---- WindowMaker/menu.it.orig
-+++ WindowMaker/menu.it
-@@ -45,58 +45,9 @@
- 	"Informazioni" MENU
- 		"Info Panel..." INFO_PANEL
- 		"Legal" LEGAL_PANEL
--		"Carico del Sistema" SHEXEC xosview || xload
--		"Lista dei Processi" EXEC xterm -e top
--		"Ricerca Manuali" EXEC xman
- 	"Informazioni" END
- 	"XTerm" SHEXEC xterm -sb || color-xterm -sb || xterm -sb
--	"XJed"	EXEC xjed 
- 	"Area di lavoro" WORKSPACE_MENU
--	"Applicazioni" MENU
--		"Grafica" MENU
--			"Gimp" EXEC gimp
--			"XV" EXEC xv
--			"XPaint" EXEC xpaint
--			"XFig" EXEC xfig
--		"Grafica" END
--		"X File Manager" EXEC xfm
--		"OffiX Files" EXEC files
--		"LyX" EXEC lyx
--		"Netscape" EXEC netscape 
--  		"Ghostview" EXEC ghostview %a(Ghostview)
--                "XDvi" EXEC xdvi %a(XDvi)
--		"Acrobat" EXEC /usr/local/Acrobat3/bin/acroread %a(Acrobat)
--  		"TkDesk" EXEC tkdesk
--	"Applicazioni" END
--	"Editori" MENU
--		"XEmacs" SHEXEC xemacs || emacs
--		"XJed" EXEC xjed
--		"NEdit" EXEC nedit
--		"Xedit" EXEC xedit
--		"VI" EXEC xterm -e vi
--	"Editori" END
--	"Varie" MENU
--		"Xmcd" SHEXEC xmcd 2> /dev/null
--		"Xplaycd" EXEC xplaycd
--		"Xmixer" EXEC xmixer
--	"Varie" END
--	"Utilita'" MENU
--		"Calcolatore" EXEC xcalc
--		"Selezione Font" EXEC xfontsel
--		"Lente" EXEC xmag
--		"Mappa Colori" EXEC xcmap
--		"Assassinio X" EXEC xkill
--		"ASClock" EXEC asclock -shape
--		"Clipboard" EXEC xclipboard
--	"Utilita'" END
 -
--	"Selezione" MENU
--		"Invio posta a.." EXEC xterm -name mail -T "Pine" -e pine %s
--	        "Navigare" SHEXEC netscape -noraise -remote \
--			'openURL(%s,new-window)' || netscape %s
--		"Ricerca nei Manuali" SHEXEC MANUAL_SEARCH(%s)
--	"Selezione" END
 -
- 	"Area di lavoro" MENU
- 		"Nascondi Altri" HIDE_OTHERS
- 		"Mostra Tutti" SHOW_ALL
-@@ -117,13 +68,13 @@
- // E' necessario rieiniziare dopo avere selezionato il gradiente.
- #include <gradients.menu>
- #endif
--		"Salva area di lavoro" EXEC SAVE_WORKSPACE
-+		"Salva area di lavoro" SAVE_SESSION
- 	"Area di lavoro" END
-+        "WindowMaker" OPEN_MENU /etc/X11/WindowMaker/SuSE_wmapps
-+        "SuSE" OPEN_MENU "| xdg_menu --format WindowMaker --charset UTF-8"
- 	
- 	"Uscire"	MENU
- 		"Restart" RESTART
--		"Avviare AfterStep" RESTART afterstep
- 		"Uscire..."  EXIT
--		"Uscire dalla sessione..." SHUTDOWN
- 	"Uscire" END
- "Applicazioni" END
 Index: WindowMaker/menu.ja
 ===================================================================
 --- WindowMaker/menu.ja.orig
@@ -1175,7 +928,7 @@ Index: WindowMaker/menu.ja
 -		"プロセス一覧" EXEC xterm -e top
 -		"マニュアルブラウザ" EXEC xman
  	"情報" END
--	"KTerm" EXEC kterm -sb 
+-	"KTerm" EXEC kterm -sb
 -	"Rxvt" EXEC rxvt -bg black -fg white
  	"ワークスペース" WORKSPACE_MENU
 -	"アプリケーション" MENU
@@ -1188,7 +941,7 @@ Index: WindowMaker/menu.ja
 -		"X File Manager" EXEC xfm
 -		"OffiX Files" EXEC files
 -		"LyX" EXEC lyx
--		"Netscape" EXEC netscape 
+-		"Netscape" EXEC netscape
 -  		"Ghostview" EXEC ghostview %a(Enter file to view)
 -		"Acrobat" EXEC /usr/local/Acrobat3/bin/acroread %a(Enter PDF to view)
 -  		"TkDesk" EXEC tkdesk
@@ -1197,7 +950,7 @@ Index: WindowMaker/menu.ja
 -		"Mule" EXEC mule
 -		"XFte" EXEC xfte
 -		"XEmacs" SHEXEC xemacs || emacs
--		"XJed" EXEC xjed 
+-		"XJed" EXEC xjed
 -		"NEdit" EXEC nedit
 -		"Xedit" EXEC xedit
 -		"VI" EXEC kterm -e vi
@@ -1229,7 +982,7 @@ Index: WindowMaker/menu.ja
  	"ワークスペース" MENU
  		"他をハイド" HIDE_OTHERS
  		"全て表示" SHOW_ALL
-@@ -191,13 +138,13 @@
+@@ -191,13 +138,12 @@
  		"背景" END
  		"現在の設定をテーマとしてセーブ" SHEXEC getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/"%a(Theme name)"
  		"現在のアイコン集をセーブ" SHEXEC geticonset $HOME/GNUstep/Library/WindowMaker/IconSets/"%a(IconSet name)"
@@ -1245,7 +998,7 @@ Index: WindowMaker/menu.ja
 -		"セッションを終了..." SHUTDOWN
  	"終了" END
  "アプリケーション" END
- 
+-
 Index: WindowMaker/menu.ko.in
 ===================================================================
 --- WindowMaker/menu.ko.in.orig
@@ -1276,7 +1029,7 @@ Index: WindowMaker/menu.ko.in
 -			"하 이 텔" EXEC hanterm -T 하이텔 -n 하이텔 -e ztelnet home.hitel.net
 -			"천 리 안" EXEC hanterm -T 천리안 -n 천리안 -e ztelnet chonllian.net
 -			"가    우" SHEXEC gau || gaui
--		"네트워크" END 
+-		"네트워크" END
 -		"편 집 기" MENU
 -			"VIM" EXEC hanterm -T VIM -n VIM -e vim
 -			"이맥스" EXEC emacs
@@ -1340,85 +1093,6 @@ Index: WindowMaker/menu.ko.in
 -		"세션종료" SHUTDOWN
  	"종    료" END
  "윈도우메이커" END
-Index: WindowMaker/menu.no
-===================================================================
---- WindowMaker/menu.no.orig
-+++ WindowMaker/menu.no
-@@ -100,58 +100,9 @@
- 	"Info" MENU
- 		"Lisens..." INFO_PANEL
- 		"Legal" LEGAL_PANEL
--		"System Belastning" SHEXEC xosview || xload
--		"Prosess Liste" EXEC xterm -e top
--		"Manual leser" EXEC stepman
- 	"Info" END
- 	"XTerm" EXEC xterm -sb 
--	"Rxvt" EXEC rxvt -bg black -fg white -fn fixed
- 	"Arbeids-Områder" WORKSPACE_MENU
--	"Applikasjoner" MENU
--		"Grafikk" MENU
--			"Gimp" SHEXEC gimp >/dev/null
--			"XV" EXEC xv
--			"XPaint" EXEC xpaint
--			"XFig" EXEC xfig
--		"Grafikk" END
--		"X Fil Behandler" EXEC xfm
--		"OffiX Files" EXEC files
--		"LyX" EXEC lyx
--		"Netscape" EXEC netscape 
--  		"Ghostview" EXEC ghostview %a(Navnet på fila du vil se)
--		"Acrobat" EXEC /usr/local/Acrobat3/bin/acroread %a(Skriv inn PDF\'en du ønsker)
--  		"TkDesk" EXEC tkdesk
--	"Applikasjoner" END
--	"Tekst Redigering" MENU
--		"XFte" EXEC xfte
--		"XEmacs" SHEXEC xemacs || emacs
--		"XJed" EXEC xjed 
--		"NEdit" EXEC nedit
--		"Xedit" EXEC xedit
--		"VI" EXEC xterm -e vi
--	"Tekst Redigering" END
--	"Diverse" MENU
--		"Xmcd" SHEXEC xmcd 2> /dev/null
--		"Xplaycd" EXEC xplaycd
--		"Xmixer" EXEC xmixer
--	"Diverse" END
--	"Verktøy" MENU
--		"Kalkulator" EXEC xcalc
--		"Font Velger" EXEC xfontsel
--		"Forstørrelsesglass" EXEC xmag
--		"Fargekart" EXEC xcmap
--		"XKill" EXEC xkill
--		"ASClock" EXEC asclock -shape
--		"Clipboard" EXEC xclipboard
--	"Verktøy" END
--
--	"Utvalg" MENU
--		"Kopier" SHEXEC echo '%s' | wxcopy
--		"Send e-mail" EXEC xterm -name mail -T "Pine" -e pine %s
--		"Gå til (www)" EXEC netscape %s
--		"Søke i manualer" SHEXEC MANUAL_SEARCH(%s)
--	"UtValg" END
--
- 	"Arbeidsområder" MENU
- 		"Skjule andre" HIDE_OTHERS
- 		"Vise alle" SHOW_ALL
-@@ -183,12 +134,12 @@
- 		"Bakgrunn" END
- 		"Lagre Tema" SHEXEC getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/"%a(Theme name)"
- 		"Lagre Ikonsett" SHEXEC geticonset $HOME/GNUstep/Library/WindowMaker/IconSets/"%a(IconSet name)"
-+                "WPrefs" EXEC /usr/lib/GNUstep/Applications/WPrefs.app/WPrefs
- 	"Utseende" END
--
-+        "WindowMaker" OPEN_MENU /etc/X11/WindowMaker/SuSE_wmapps
-+        "SuSE" OPEN_MENU "| xdg_menu --format WindowMaker --charset UTF-8"
- 	"Avslutt"	MENU
- 		"Restart" RESTART
--		"Start Afterstep" RESTART afterstep
- 		"Avslutt WindowMaker..."  EXIT 
--		"Avslutt X11..." SHUTDOWN
- 	"Avslutt" END
- "Applikasjoner" END
 Index: WindowMaker/menu.pl
 ===================================================================
 --- WindowMaker/menu.pl.orig
@@ -1432,19 +1106,19 @@ Index: WindowMaker/menu.pl
 -		"Lista Procesów"         EXEC ULUB_TERM -T "Lista Procesów" -e top
 -		"Przeglądarka Manuali"   EXEC xman
  	"Informacja" END
- 	
--	"Konfiguracja" MENU	
+ 
+-	"Konfiguracja" MENU
 -		"Edycja menu"       EXEC ULUB_TERM -T "Edycja menu" -e ULUB_EDYTOR $HOME/GNUstep/Library/WindowMaker/menu
 -		"Ustawienie fontów" EXEC ULUB_TERM -T "Ustawienie fontów" -e ULUB_EDYTOR $HOME/GNUstep/Defaults/WMGLOBAL
 -		"Konfiguracja"      EXEC ULUB_TERM -T "Konfiguracja" -e ULUB_EDYTOR $HOME/GNUstep/Defaults/WindowMaker
 -	"Konfiguracja" END
--	
+-
 -	"Uruchom..." EXEC %a(Uruchom,Wpisz komende do uruchomienia:)
- 	"Terminal"   EXEC ULUB_TERM -T "Mój ulubiony terminal" -sb 
+ 	"Terminal"   EXEC ULUB_TERM -T "Mój ulubiony terminal" -sb
 -	"Edytor"     EXEC ULUB_TERM -T "Moj ulubiony edytor" -e ULUB_EDYTOR %a(Edytor,Podaj plik do edycji:)
 +//	"Edytor"     EXEC ULUB_TERM -T "Moj ulubiony edytor" -e ULUB_EDYTOR %a(Edytor,Podaj plik do edycji:)
  	"Pulpity"    WORKSPACE_MENU
- 	
+ 
 -	"Aplikacje" MENU
 -		"Grafika" MENU
 -			"Gimp"        EXEC gimp >/dev/null
@@ -1469,15 +1143,15 @@ Index: WindowMaker/menu.pl
 -		"X Gnu debbuger"     EXEC xxgdb
 -		"Xwpe"               EXEC xwpe
 -	"Aplikacje" END
--	
+-
 -	"Internet" MENU
 -		"Przeglądarki" MENU
--			"Netscape" EXEC netscape 
+-			"Netscape" EXEC netscape
 -			"Arena"    EXEC arena
 -			"Lynx"     EXEC ULUB_TERM -e lynx %a(Lynx,Podaj URL:)
 -		"Przeglądarki" END
 -		"Programy pocztowe" MENU
--			"Pine" EXEC ULUB_TERM -T "Program pocztowy Pine" -e pine 
+-			"Pine" EXEC ULUB_TERM -T "Program pocztowy Pine" -e pine
 -			"Elm"  EXEC ULUB_TERM -T "Program pocztowy Elm" -e elm
 -			"Xmh"  EXEC xmh
 -		"Programy pocztowe" END
@@ -1496,20 +1170,20 @@ Index: WindowMaker/menu.pl
 -	"Editory" MENU
 -		"XFte"    EXEC xfte
 -		"XEmacs"  EXEC xemacs || emacs
--		"XJed"    EXEC xjed 
+-		"XJed"    EXEC xjed
 -		"NEdit"   EXEC nedit
 -		"Xedit"   EXEC xedit
 -		"Editres" EXEC editres
 -		"VI"      EXEC ULUB_TERM -e vi
 -	"Editory" END
--	
+-
 -	"Dźwięk" MENU
 -		"CDPlay"  EXEC workbone
 -		"Xmcd"    EXEC xmcd 2> /dev/null
 -		"Xplaycd" EXEC xplaycd
 -		"Xmixer"  EXEC xmixer
 -	"Dźwięk" END
--	
+-
 -    "Gry" MENU
 -    	"Maze"      EXEC maze
 -    	"Karty "    EXEC spider
@@ -1526,7 +1200,7 @@ Index: WindowMaker/menu.pl
 -    	"xboing"    EXEC xboing -sound
 -    	"XBill"     EXEC xbill
 -    "Gry" END
--	
+-
 -	"Użytki" MENU
 -		"Kalkulator"          EXEC xcalc
 -		"Zegarek"             EXEC xclock
@@ -1581,7 +1255,7 @@ Index: WindowMaker/menu.pt
 -		"Lista de Processos" EXEC xterm -e top
 -		"Leitor de Manual" EXEC xman
  	"Informações" END
- 	"XTerm" EXEC xterm -sb 
+ 	"XTerm" EXEC xterm -sb
 -	"Rxvt" EXEC rxvt -bg black -fg white -fn fixed
  	"Áreas de Trabalho" WORKSPACE_MENU
 -	"Aplicações" MENU
@@ -1594,7 +1268,7 @@ Index: WindowMaker/menu.pt
 -		"X File Manager" EXEC xfm
 -		"OffiX Files" EXEC files
 -		"LyX" EXEC lyx
--		"Netscape" EXEC netscape 
+-		"Netscape" EXEC netscape
 -  		"Ghostview" EXEC ghostview %a(Enter file to view)
 -		"Acrobat" EXEC /usr/local/Acrobat3/bin/acroread %a(Enter PDF to view)
 -  		"TkDesk" EXEC tkdesk
@@ -1602,7 +1276,7 @@ Index: WindowMaker/menu.pt
 -	"Editores" MENU
 -		"XFte" EXEC xfte
 -		"XEmacs" SHEXEC xemacs || emacs
--		"XJed" EXEC xjed 
+-		"XJed" EXEC xjed
 -		"NEdit" EXEC nedit
 -		"Xedit" EXEC xedit
 -		"VI" EXEC xterm -e vi
@@ -1634,7 +1308,7 @@ Index: WindowMaker/menu.pt
  	"Área de Trabalho" MENU
  		"Hide Outros" HIDE_OTHERS
  		"Mostrar Todos" SHOW_ALL
-@@ -194,13 +142,14 @@
+@@ -194,14 +142,13 @@
  		"Papéis de Parede" END
  		"Salvar Tema" SHEXEC getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/"%a(Nome do Tema)"
  		"Salvar Configuração de Ícones" SHEXEC geticonset $HOME/GNUstep/Library/WindowMaker/IconSets/"%a(Nome do Conjunto de Ícones)"
@@ -1650,7 +1324,8 @@ Index: WindowMaker/menu.pt
 -		"Terminar Sessão..." SHUTDOWN
  	"Sair" END
  "Aplicações" END
- 
+-
+-
 Index: WindowMaker/menu.ro.in
 ===================================================================
 --- WindowMaker/menu.ro.in.orig
@@ -1665,7 +1340,7 @@ Index: WindowMaker/menu.ro.in
 -		"Navigator de Pagini Man" EXEC xman
  	"Informaţii" END
  	"Execută..." SHEXEC %a(Execută,Introduceţi o comandă:)
- 	"XTerm" EXEC xterm -sb 
+ 	"XTerm" EXEC xterm -sb
 -	"Rxvt" EXEC rxvt -bg black -fg white -fn -misc-fixed-medium-*-*--*-*-*-*-*-*-iso8859-2 -fb -misc-fixed-medium-*-*--*-*-*-*-*-*-iso8859-2
  	"Spaţii de Lucru" WORKSPACE_MENU
 -	"Aplicaţii" MENU
@@ -1678,7 +1353,7 @@ Index: WindowMaker/menu.ro.in
 -		"Manager de Fişiere" EXEC xfm
 -		"Fisiere OffiX" EXEC files
 -		"LyX" EXEC lyx
--		"Netscape" EXEC netscape 
+-		"Netscape" EXEC netscape
 -  		"Ghostview" EXEC ghostview %a(GhostView,Enter file to view)
 -		"Acrobat" EXEC /usr/local/Acrobat3/bin/acroread %a(Acrobar,Enter PDF to view)
 -  		"TkDesk" EXEC tkdesk
@@ -1686,7 +1361,7 @@ Index: WindowMaker/menu.ro.in
 -	"Editoare" MENU
 -		"XFte" EXEC xfte
 -		"XEmacs" SHEXEC xemacs || emacs
--		"XJed" EXEC xjed 
+-		"XJed" EXEC xjed
 -		"NEdit" EXEC nedit
 -		"Xedit" EXEC xedit
 -		"VI" EXEC xterm -e vi
@@ -1717,7 +1392,7 @@ Index: WindowMaker/menu.ro.in
  	"Spaţiu de Lucru" MENU
  		"Ascunde Celelalte" HIDE_OTHERS
  		"Arată Tot" SHOW_ALL
-@@ -204,12 +153,10 @@
+@@ -204,14 +153,10 @@
  		"Salvează Setul de Iconiţe" SHEXEC geticonset $HOME/GNUstep/Library/WindowMaker/IconSets/"%a(IconSet name,Enter file name:)"
  		"Utilitar de Configurare" EXEC #wprefs#
  	"Configurare" END
@@ -1732,98 +1407,8 @@ Index: WindowMaker/menu.ro.in
  		"Ieşi"  EXIT
  	"Ieşire" END
  "Aplicaţii" END
-Index: WindowMaker/menu.ru
-===================================================================
---- WindowMaker/menu.ru.orig
-+++ WindowMaker/menu.ru
-@@ -57,70 +57,19 @@
- 	"Информация" MENU
- 		"Info Panel..." INFO_PANEL
- 		"Legal" LEGAL_PANEL
--		"Нагрузка Системы" SHEXEC xosview || xload
--		"Список Процессов" EXEC xterm -e top
--		"Просмотр Руководств" EXEC xman
- 	"Информация" END
- 	"XTerm" EXEC xterm -sb 
--	"Rxvt" EXEC rxvt -bg black -fg white -fn fixed
--	"XJed"	EXEC xjed 
- 	"Рабочие места" WORKSPACE_MENU
--	"Приложения" MENU
--		"Графические" MENU
--			"Gimp" SHEXEC gimp >/dev/null
--			"XV" EXEC xv
--			"XPaint" EXEC xpaint
--			"XFig" EXEC xfig
--		"Графические" END
--		"Менеджер файлов X" EXEC xfm
--		"OffiX Files" EXEC files
--		"LyX" EXEC lyx
--		"Netscape" EXEC netscape 
--  		"Ghostview" EXEC ghostview %a(Enter file to view)
--		"Acrobat" EXEC /usr/local/Acrobat3/bin/acroread %a(Enter PDF to view)
--  		"TkDesk" EXEC tkdesk
--	"Приложения" END
--	"Редакторы" MENU
--		"XEmacs" SHEXEC xemacs || emacs
--		"XJed" EXEC xjed 
--		"NEdit" EXEC nedit
--		"Xedit" EXEC xedit
--		"VI" EXEC xterm -e vi
--	"Редакторы" END
--	"Разное" MENU
--		"Xmcd" SHEXEC xmcd 2> /dev/null
--		"Xplaycd" EXEC xplaycd
--		"Xmixer" EXEC xmixer
--	"Разное" END
--	"Утилиты" MENU
--		"Калькулятор" EXEC xcalc
--		"Выбрать шрифт" EXEC xfontsel
--		"Увеличитель" EXEC xmag
--		"Карта цветов" EXEC xcmap
--		"XKill" EXEC xkill
--		"Часы" EXEC asclock -shape
--		"Буфер обмена" EXEC xclipboard
--	"Утилиты" END
 -
--	"Выделение" MENU
--		"Копировать" SHEXEC echo '%s' | wxcopy
--		"Отправить" EXEC xterm -name mail -T "Pine" -e pine %s
--		"Искать в Интернет" EXEC netscape %s
--		"Искать в Руководствах" SHEXEC MANUAL_SEARCH(%s)
--	"Выделение" END
 -
- 	"Рабочее место" MENU
- 		"Убрать остальные" HIDE_OTHERS
- 		"Показать все" SHOW_ALL
- 		"Упорядочить значки" ARRANGE_ICONS
- 		"Обновить" REFRESH
- 		"Запереть" EXEC xlock -allowroot -usefirst
--		"Сохранить Рабочее место" EXEC SAVE_WORKSPACE
-+		"Сохранить Рабочее место" SAVE_SESSION
- 	"Рабочее место" END
- 
- 	"Внешний вид" MENU
--/*		"Темы" OPEN_MENU themes.menu 
--*/
- 		"Фон" MENU
- 			"Однотонный" MENU
-                         	"Черный" WS_BACK '(solid, black)'
-@@ -136,12 +85,13 @@
- 			"Градиент" END
- 		"Фон" END
- 		"Стили" OPEN_MENU styles.menu
-+                "WPrefs" EXEC /usr/lib/GNUstep/Applications/WPrefs.app/WPrefs
- 	"Внешний вид" END
-+        "WindowMaker" OPEN_MENU /etc/X11/WindowMaker/SuSE_wmapps
-+        "SuSE" OPEN_MENU "| xdg_menu --format WindowMaker --charset UTF-8"
- 
- 	"Выход"	MENU
- 		"Перезапустить" RESTART
--		"Запустить Afterstep" RESTART afterstep
- 		"Завершить работу..."  EXIT 
--		"Завершить сессию..." SHUTDOWN
- 	"Выход" END
- "Приложения" END
 Index: WindowMaker/menu.sk.in
 ===================================================================
 --- WindowMaker/menu.sk.in.orig
@@ -1838,7 +1423,7 @@ Index: WindowMaker/menu.sk.in
 -		"Prehliadač manuálov" EXEC xman
  	"Informácie" END
  	"Spustiť..." SHEXEC %a(Spustiť,Zadajte príkaz:)
- 	"XTerm" EXEC xterm -sb 
+ 	"XTerm" EXEC xterm -sb
 -	"Rxvt" EXEC rxvt -bg black -fg white -fn fixed
  	"Pracovné plochy" WORKSPACE_MENU
 -	"Aplikácie" MENU
@@ -1851,7 +1436,7 @@ Index: WindowMaker/menu.sk.in
 -		"Správca súborov Xfm" EXEC xfm
 -		"Správca súborov OffiX" EXEC files
 -		"LyX" EXEC lyx
--		"Netscape" EXEC netscape 
+-		"Netscape" EXEC netscape
 -  		"Ghostview" EXEC ghostview %a(GhostView,Zadajte meno súboru)
 -		"Acrobat" EXEC /usr/local/Acrobat3/bin/acroread %a(Acrobar,Zadajte meno PDF súboru)
 -  		"TkDesk" EXEC tkdesk
@@ -1859,7 +1444,7 @@ Index: WindowMaker/menu.sk.in
 -	"Editory" MENU
 -		"XFte" EXEC xfte
 -		"XEmacs" SHEXEC xemacs || emacs
--		"XJed" EXEC xjed 
+-		"XJed" EXEC xjed
 -		"NEdit" EXEC nedit
 -		"Xedit" EXEC xedit
 -		"VIM" EXEC xterm -e vim
@@ -1890,7 +1475,7 @@ Index: WindowMaker/menu.sk.in
  	"Pracovná plocha" MENU
  		"Skryť ostatné" HIDE_OTHERS
  		"Zobraziť všetky" SHOW_ALL
-@@ -218,12 +167,10 @@
+@@ -218,13 +167,10 @@
  		"Uložiť sadu ikon" SHEXEC geticonset $HOME/GNUstep/Library/WindowMaker/IconSets/"%a(Meno sady ikon,Zadajte názov súboru:)"
  		"Konfiguračný nástroj" EXEC #wprefs#
  	"Vzhľad" END
@@ -1905,6 +1490,7 @@ Index: WindowMaker/menu.sk.in
  		"Koniec"  EXIT
  	"Koniec" END
  "Aplikácie" END
+-
 Index: WindowMaker/menu.sl
 ===================================================================
 --- WindowMaker/menu.sl.orig
@@ -1918,7 +1504,7 @@ Index: WindowMaker/menu.sl
 -		"Seznam procesov" EXEC xterm -e top
 -		"Pomoč (Iskalec man strani)" EXEC xman
  	"Informacije" END
- 	"XTerm" EXEC xterm -sb 
+ 	"XTerm" EXEC xterm -sb
 -	"Rxvt" EXEC rxvt -bg black -fg white -fn fixed
  	"Delovni prostori" WORKSPACE_MENU
 -	"Aplikacije" MENU
@@ -1931,7 +1517,7 @@ Index: WindowMaker/menu.sl
 -		"X File Manager" EXEC xfm
 -		"OffiX Files" EXEC files
 -		"LyX" EXEC lyx
--		"Netscape" EXEC netscape 
+-		"Netscape" EXEC netscape
 -  		"Ghostview" EXEC ghostview %a(Enter file to view)
 -		"Acrobat" EXEC /usr/local/Acrobat3/bin/acroread %a(Enter PDF to view)
 -  		"TkDesk" EXEC tkdesk
@@ -1939,7 +1525,7 @@ Index: WindowMaker/menu.sl
 -	"Urejevalniki besedil" MENU
 -		"XFte" EXEC xfte
 -		"XEmacs" SHEXEC xemacs || emacs
--		"XJed" EXEC xjed 
+-		"XJed" EXEC xjed
 -		"NEdit" EXEC nedit
 -		"Xedit" EXEC xedit
 -		"VI" EXEC xterm -e vi
@@ -2000,7 +1586,7 @@ Index: WindowMaker/menu.tr
 -		"Süreç Dökümü" EXEC xterm -e top
 -		"Kılavuz Tarayıcısı" EXEC xman
  	"Bilgi" END
- 	"XTerm" EXEC xterm -sb 
+ 	"XTerm" EXEC xterm -sb
 -	"Rxvt" EXEC rxvt -bg black -fg white -fn fixed
  	"Çalışma Alanları" WORKSPACE_MENU
 -	"Uygulamalar" MENU
@@ -2013,7 +1599,7 @@ Index: WindowMaker/menu.tr
 -		"X File Manager" EXEC xfm
 -		"OffiX Files" EXEC files
 -		"LyX" EXEC lyx
--		"Netscape" EXEC netscape 
+-		"Netscape" EXEC netscape
 -  		"Ghostview" EXEC ghostview %a(PS dosyasını girin)
 -		"Acrobat" EXEC /usr/local/Acrobat3/bin/acroread %a(PDF dosyasını girin)
 -  		"TkDesk" EXEC tkdesk
@@ -2021,7 +1607,7 @@ Index: WindowMaker/menu.tr
 -	"Düzenleyiciler" MENU
 -		"XFte" EXEC xfte
 -		"XEmacs" SHEXEC xemacs || emacs
--		"XJed" EXEC xjed 
+-		"XJed" EXEC xjed
 -		"NEdit" EXEC nedit
 -		"Xedit" EXEC xedit
 -		"VI" EXEC xterm -e vi
@@ -2053,7 +1639,7 @@ Index: WindowMaker/menu.tr
  	"Çalışma Alanı" MENU
  		"Diğerlerini Sakla" HIDE_OTHERS
  		"Hepsini Göster" SHOW_ALL
-@@ -179,13 +127,15 @@
+@@ -179,14 +127,14 @@
  		"Arkaplan" END
  		"Tema Sakla" SHEXEC getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/"%a(Theme name)"
  		"Simge Kümesi Sakla" SHEXEC geticonset $HOME/GNUstep/Library/WindowMaker/IconSets/"%a(IconSet name)"
@@ -2070,7 +1656,8 @@ Index: WindowMaker/menu.tr
 -		"Oturumu Kapat..." SHUTDOWN
  	"Çıkış" END
  "Ana Menü" END
- 
+-
+-
 Index: WindowMaker/plmenu.bg.in
 ===================================================================
 --- WindowMaker/plmenu.bg.in.orig
@@ -2648,12 +2235,11 @@ Index: WindowMaker/plmenu.de
      ),
 -   ("Bilder", OPEN_MENU, "-noext /usr/local/share/WindowMaker/Backgrounds $(HOME)/GNUstep/Library/WindowMaker/Backgrounds WITH wmsetbg -u -t")
 +   ("Bilder", OPEN_MENU, "-noext /usr/share/WindowMaker/Backgrounds $(HOME)/GNUstep/Library/WindowMaker/Backgrounds WITH wmsetbg -u -t")
-    ),   
+    ),
    ("Thema speichern", SHEXEC, "getstyle -t $(HOME)/GNUstep/Library/WindowMaker/Themes/\"%a(Themenname)\""),
    ("Iconsatz speichern", SHEXEC, "geticonset $(HOME)/GNUstep/Library/WindowMaker/IconSets/\"%a(Iconsatz-Name)\"")
--  ), 
 +  ("WPrefs", EXEC, "/usr/lib/GNUstep/Applications/WPrefs.app/WPrefs")
-+  ),
+   ),
 + ("WindowMaker", OPEN_MENU, "/etc/X11/WindowMaker/SuSE_wmapps"),
 + ("SuSE", OPEN_MENU, "| xdg_menu --format WindowMaker --charset UTF-8"),
   ("Beenden",
@@ -2750,11 +2336,11 @@ Index: WindowMaker/plmenu.es.in
      ),
 -   ("Imagenes", OPEN_MENU, "-noext /usr/local/share/WindowMaker/Backgrounds $HOME/GNUstep/Library/WindowMaker/Backgrounds WITH wmsetbg -u -t")
 +   ("Imagenes", OPEN_MENU, "-noext #wmdatadir#/Backgrounds $HOME/GNUstep/Library/WindowMaker/Backgrounds WITH wmsetbg -u -t")
-    ),   
+    ),
    ("Guardar tema", SHEXEC, "getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/\"%a(Theme name)\""),
    ("Guardar iconos", SHEXEC, "geticonset $HOME/GNUstep/Library/WindowMaker/IconSets/\"%a(IconSet name)\""),
    ("Preferencias", EXEC, "#wprefs#")
-   ), 
+   ),
 + ("WindowMaker", OPEN_MENU, "/etc/X11/WindowMaker/SuSE_wmapps"),
 + ("SuSE", OPEN_MENU, "| xdg_menu --format WindowMaker --charset UTF-8"),
   ("Salir",
@@ -3123,7 +2709,7 @@ Index: WindowMaker/plmenu.fr
 +     ("Images", OPEN_MENU, "-noext /usr/share/WindowMaker/Backgrounds $HOME/GNUstep/Library/WindowMaker/Backgrounds WITH wmsetbg -u -t")
        ),
     ("Sauver le thème", SHEXEC, "getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes /\"%a(Nom du thème,Entrez un nom de fichier:)\""),
--   ("Sauver le jeu d'icônes", SHEXEC, "geticonset $HOME/GNUstep/Library/WindowMaker/IconSets /\"%a(Nom du jeu d'icônes,Entrez un nom de fichier:)\"")  
+-   ("Sauver le jeu d'icônes", SHEXEC, "geticonset $HOME/GNUstep/Library/WindowMaker/IconSets /\"%a(Nom du jeu d'icônes,Entrez un nom de fichier:)\"")
 +   ("Sauver le jeu d'icônes", SHEXEC, "geticonset $HOME/GNUstep/Library/WindowMaker/IconSets /\"%a(Nom du jeu d'icônes,Entrez un nom de fichier:)\""),
 +   ("WPrefs", EXEC, "/usr/lib/GNUstep/Applications/WPrefs.app/WPrefs")
    ),
@@ -3132,9 +2718,8 @@ Index: WindowMaker/plmenu.fr
   ("Quitter",
     ("Redémarrer", RESTART),
 -   ("Démarrer AfterStep", RESTART, afterstep),
--   ("Quitter...", EXIT),
+    ("Quitter...", EXIT),
 -   ("Tuer la session...", SHUTDOWN)
-+   ("Quitter...", EXIT)
    )
  )
 Index: WindowMaker/plmenu.hr
@@ -3367,13 +2952,12 @@ Index: WindowMaker/plmenu.it
      ),
 -   ("Immagini", OPEN_MENU, "-noext /usr/share/WindowMaker/Backgrounds ~/GNUstep/Library/WindowMaker/Backgrounds WITH wmsetbg -u -t")
 +   ("Immagini", OPEN_MENU, "-noext #wmdatadir#/Backgrounds ~/GNUstep/Library/WindowMaker/Backgrounds WITH wmsetbg -u -t")
-    ),   
+    ),
    ("Salva il tema", EXEC, "getstyle -t ~/GNUstep/Library/WindowMaker/Themes/\"%a(Nome Tema)\""),
 -  ("Salva il set icone", EXEC, "geticonset ~/GNUstep/Library/WindowMaker/IconSets/\"%a(Nome IconSet)\"")
--  ), 
 +  ("Salva il set icone", EXEC, "geticonset ~/GNUstep/Library/WindowMaker/IconSets/\"%a(Nome IconSet)\""),
 +  ("WPrefs", EXEC, "/usr/lib/GNUstep/Applications/WPrefs.app/WPrefs")
-+  ),
+   ),
 + ("WindowMaker", OPEN_MENU, "/etc/X11/WindowMaker/SuSE_wmapps"),
 + ("SuSE", OPEN_MENU, "| xdg_menu --format WindowMaker --charset UTF-8"),
   ("Esci",
@@ -3451,7 +3035,7 @@ Index: WindowMaker/plmenu.ja.in
 @@ -96,11 +56,10 @@
    ("現在のアイコンセットをセーブ", SHEXEC, "geticonset $HOME/GNUstep/Library/WindowMaker/IconSets/\"%a(IconSet name)\""),
    ("設定ユーティリティ", EXEC, "#wprefs#")
-   ), 
+   ),
 + ("WindowMaker", OPEN_MENU, "/etc/X11/WindowMaker/SuSE_wmapps"),
 + ("SuSE", OPEN_MENU, "| xdg_menu --format WindowMaker --charset UTF-8"),
   ("終了",
@@ -3578,30 +3162,28 @@ Index: WindowMaker/plmenu.pl.in
 ===================================================================
 --- WindowMaker/plmenu.pl.in.orig
 +++ WindowMaker/plmenu.pl.in
-@@ -1,125 +1,12 @@
- ("WindowMaker",
+@@ -2,124 +2,12 @@
  	("Informacja",
  		("Informacja o WMaker...", INFO_PANEL),
--		("Legalność...",           LEGAL_PANEL),
+ 		("Legalność...",           LEGAL_PANEL),
 -		("Konsola Systemu",        EXEC, "xconsole"),
 -		("Obciążenie Systemu",     EXEC, "xosview || xload"),
 -		("Lista Procesów",         EXEC, "xterm -T 'Lista Procesów' -e top"),
 -		("Przeglądarka Manuali",   EXEC, "xman")
-+		("Legalność...",           LEGAL_PANEL)
  	),
- 	
--	("Konfiguracja",	
+ 
+-	("Konfiguracja",
 -		("Edycja menu",       EXEC, "xterm -T 'Edycja menu' -e vi $HOME/GNUstep/Library/WindowMaker/menu"),
 -		("Ustawienie fontów", EXEC, "xterm -T 'Ustawienie fontów' -e vi $HOME/GNUstep/Defaults/WMGLOBAL"),
 -		("Konfiguracja",      EXEC, "xterm -T 'Konfiguracja' -e vi $HOME/GNUstep/Defaults/WindowMaker")
 -	),
--	
+-
 -	("Uruchom...", EXEC, "%a(Uruchom,Wpisz komende do uruchomienia:)"),
-+	("Uruchom...", SHEXEC, "%a(Uruchom,Wpisz komende do uruchomienia:)"),
++	("Uruchom...", SEXEC, "%a(Uruchom,Wpisz komende do uruchomienia:)"),
  	("Terminal",   EXEC, "xterm -T 'Mój ulubiony terminal' -sb"),
 -	("Edytor",     EXEC, "xterm -T 'Moj ulubiony edytor' -e vi %a(Edytor,Podaj plik do edycji:)"),
  	("Pulpity",    WORKSPACE_MENU),
--	
+ 
 -	("Aplikacje",
 -		("Grafika",
 -			("Gimp",        EXEC, "gimp > /dev/null"),
@@ -3626,10 +3208,10 @@ Index: WindowMaker/plmenu.pl.in
 -		("X Gnu debbuger",     EXEC, "xxgdb"),
 -		("Xwpe",               EXEC, "xwpe")
 -	),
--	
+-
 -	("Internet",
 -		("Przeglądarki",
--			("Netscape", EXEC, "netscape"), 
+-			("Netscape", EXEC, "netscape"),
 -			("Arena",    EXEC, "arena"),
 -			("Lynx",     EXEC, "xterm -e lynx %a(Lynx,Podaj URL:)")
 -		),
@@ -3659,13 +3241,13 @@ Index: WindowMaker/plmenu.pl.in
 -		("Editres", EXEC, "editres"),
 -		("VI",      EXEC, "xterm -e vi")
 -	),
--	
+-
 -	("Dźwięk",
 -		("Xmcd",    EXEC, "xmcd 2> /dev/null"),
 -		("Xplaycd", EXEC, "xplaycd"),
 -		("Xmixer",  EXEC, "xmixer")
 -	),
--	
+-
 -    ("Gry",
 -    	("Maze",      EXEC, "maze"),
 -    	("Karty",     EXEC, "spider"),
@@ -3682,7 +3264,7 @@ Index: WindowMaker/plmenu.pl.in
 -    	("xboing",    EXEC, "xboing -sound"),
 -    	("XBill",     EXEC, "xbill")
 -    ),
--	
+-
 -	("Użytki",
 -		("Kalkulator",          EXEC, "xcalc"),
 -		("Zegarek",             EXEC, "xclock"),
@@ -3706,7 +3288,7 @@ Index: WindowMaker/plmenu.pl.in
  	("Ekran",
  		("Ukryj Pozostałe",         HIDE_OTHERS),
  		("Pokaż wszystko",          SHOW_ALL),
-@@ -158,15 +45,13 @@
+@@ -158,15 +46,13 @@
  			("Obrazki", OPEN_MENU, "-noext #wmdatadir#/Backgrounds $HOME/GNUstep/Library/WindowMaker/Backgrounds WITH wmsetbg -u -t)")
  		),
  		("Zaoamiętanie Tematu",        EXEC, "getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/'%a(Nazwa tematu,Wpisz nazwe pliku:)'"),
@@ -3797,7 +3379,7 @@ Index: WindowMaker/plmenu.ro.in
 @@ -96,11 +46,10 @@
    ("Salvează Setul de Iconiţe", SHEXEC, "geticonset $HOME/GNUstep/Library/WindowMaker/IconSets/\"%a(IconSet name)\""),
    ("Utilitar de Configurare", EXEC, "#wprefs#")
-   ), 
+   ),
 + ("WindowMaker", OPEN_MENU, "/etc/X11/WindowMaker/SuSE_wmapps"),
 + ("SuSE", OPEN_MENU, "| xdg_menu --format WindowMaker --charset UTF-8"),
   ("Ieşire",
@@ -3878,7 +3460,7 @@ Index: WindowMaker/plmenu.sk.in
 @@ -96,11 +46,10 @@
    ("Uložiť sadu ikon", SHEXEC, "geticonset $HOME/GNUstep/Library/WindowMaker/IconSets/\"%a(IconSet name)\""),
    ("Konfiguračný nástroj", EXEC, "#wprefs#")
-   ), 
+   ),
 + ("WindowMaker", OPEN_MENU, "/etc/X11/WindowMaker/SuSE_wmapps"),
 + ("SuSE", OPEN_MENU, "| xdg_menu --format WindowMaker --charset UTF-8"),
   ("Koniec",
@@ -3960,15 +3542,14 @@ Index: WindowMaker/plmenu.zh_CN.in
    ("显示所有", SHOW_ALL),
 @@ -95,13 +43,13 @@
     ("图像", OPEN_MENU, "-noext #wmdatadir#/Backgrounds $HOME/GNUstep/Library/WindowMaker/Backgrounds WITH wmsetbg -u -t")
-    ),   
+    ),
    ("保存主题", SHEXEC, "getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/\"%a(主题名)\""),
 -  ("保存图标集", SHEXEC, "geticonset $HOME/GNUstep/Library/WindowMaker/IconSets/\"%a(图标集名)\"")
--  ), 
 +  ("保存图标集", SHEXEC, "geticonset $HOME/GNUstep/Library/WindowMaker/IconSets/\"%a(图标集名)\""),
 +  ("WPrefs", EXEC, "/usr/lib/GNUstep/Applications/WPrefs.app/WPrefs")
-+  ),
-+  ("WindowMaker", OPEN_MENU, "/etc/X11/WindowMaker/SuSE_wmapps"),
-+  ("SuSE", OPEN_MENU, "| xdg_menu --format WindowMaker --charset UTF-8"),
+   ),
++ ("WindowMaker", OPEN_MENU, "/etc/X11/WindowMaker/SuSE_wmapps"),
++ ("SuSE", OPEN_MENU, "| xdg_menu --format WindowMaker --charset UTF-8"),
   ("退出",
    ("重新启动", RESTART),
 -  ("启动 BlackBox", RESTART, blackbox),
@@ -4061,7 +3642,7 @@ Index: WindowMaker/menu.nl.in
 ===================================================================
 --- WindowMaker/menu.nl.in.orig
 +++ WindowMaker/menu.nl.in
-@@ -116,65 +116,9 @@
+@@ -116,66 +116,9 @@
  	"Info" MENU
  		"Infopaneel" INFO_PANEL
  		"Juridische info" LEGAL_PANEL
@@ -4071,7 +3652,7 @@ Index: WindowMaker/menu.nl.in
 -		"Handleidingbrowser" EXEC xman
  	"Info" END
 -	"Uitvoeren..." SHEXEC %a(Uitvoeren,Typ uit te voeren commando:)
- 	"XTerm" EXEC xterm -sb 
+ 	"XTerm" EXEC xterm -sb
 -	"Mozilla Firefox" EXEC firefox
  	"Werkruimten" WORKSPACE_MENU
 -	"Programma's" MENU
@@ -4086,12 +3667,12 @@ Index: WindowMaker/menu.nl.in
 -			"Rekenblad" EXEC oocalc
 -			"Draw" EXEC oodraw
 -			"Impress" EXEC ooimpress
--		"OpenOffice.org" END 
+-		"OpenOffice.org" END
 -
 -		"Tekstbewerkers" MENU
 -			"XEmacs" EXEC xemacs
 -			"Emacs" EXEC emacs
--			"XJed" EXEC xjed 
+-			"XJed" EXEC xjed
 -			"VI" EXEC xterm -e vi
 -			"GVIM" EXEC gvim
 -			"NEdit" EXEC nedit
@@ -4124,10 +3705,11 @@ Index: WindowMaker/menu.nl.in
 -		"Navigeren" EXEC netscape %s
 -		"Zoeken in handleiding" SHEXEC MANUAL_SEARCH(%s)
 -	"Selectie" END
- 
+-
  	"Commando's" MENU
  		"Andere verbergen" HIDE_OTHERS
-@@ -186,6 +130,8 @@
+ 		"Alles tonen" SHOW_ALL
+@@ -186,14 +129,12 @@
  
  	"Uiterlijk" OPEN_MENU "appearance.menu.nl"
  
@@ -4136,20 +3718,29 @@ Index: WindowMaker/menu.nl.in
  	"Sessie" MENU
  		"Sessie opslaan" SAVE_SESSION
  		"Sessie wissen" CLEAR_SESSION
+ 		"Window Maker herstarten" RESTART
+-		"BlackBox starten" RESTART blackbox
+-		"IceWM starten" RESTART icewm
+ 		"Afsluiten"  EXIT
+ 	"Sessie" END
+ "Programma's" END
+-
+-
 Index: WindowMaker/menu.zh_TW.in
 ===================================================================
 --- WindowMaker/menu.zh_TW.in.orig
 +++ WindowMaker/menu.zh_TW.in
-@@ -107,58 +107,10 @@
+@@ -106,60 +106,10 @@
+ 	"資訊" MENU
  		"資訊面板..." INFO_PANEL
  		"法律..." LEGAL_PANEL
- 		"系統主控台" EXEC xconsole
+-		"系統主控台" EXEC xconsole
 -		"系統負載" SHEXEC xosview || xload
 -		"行程清單" EXEC xterm -e top
--		"手冊瀏覽器" EXEC xman
+ 		"手冊瀏覽器" EXEC xman
  	"資訊" END
  	"執行..." EXEC %a (執行，輸入執行的命令：)
- 	"終端機" EXEC crxvt -thin -ls -T 終端機 -n 終端機
+-	"終端機" EXEC crxvt -thin -ls -T 終端機 -n 終端機
  	"工作區" WORKSPACE_MENU
 -	"應用程式" MENU
 -		"影像處理" MENU
@@ -4161,7 +3752,7 @@ Index: WindowMaker/menu.zh_TW.in
 -		"X 檔案管理員" EXEC xfm
 -		"OffiX Files" EXEC files
 -		"LyX" EXEC lyx
--		"Netscape" EXEC netscape 
+-		"Netscape" EXEC netscape
 -  		"Ghostview" EXEC ghostview %a(GhostView,輸入要檢視的檔案)
 -		"Acrobat" EXEC /usr/local/Acrobat3/bin/acroread %a(輸入要檢視的 PDF)
 -  		"TkDesk" EXEC tkdesk
@@ -4169,7 +3760,7 @@ Index: WindowMaker/menu.zh_TW.in
 -	"編輯器" MENU
 -		"XFte" EXEC xfte
 -		"XEmacs" SHEXEC xemacs || emacs
--		"XJed" EXEC xjed 
+-		"XJed" EXEC xjed
 -		"NEdit" EXEC nedit
 -		"Xedit" EXEC xedit
 -		"VI" EXEC xterm -e vi
@@ -4196,10 +3787,11 @@ Index: WindowMaker/menu.zh_TW.in
 -		"Navigate" EXEC netscape %s
 -		"在手冊中搜尋" SHEXEC MANUAL_SEARCH(%s)
 -	"選取" END
- 
+-
  	"工作區" MENU
  		"隱藏其他" HIDE_OTHERS
-@@ -201,12 +153,10 @@
+ 		"全部顯示" SHOW_ALL
+@@ -201,13 +151,10 @@
  		"儲存圖示集" SHEXEC geticonset $HOME/GNUstep/Library/WindowMaker/IconSets/"%a(圖示集名稱)"
  		"偏好設定公用程式" EXEC #wprefs#
  	"外觀" END
@@ -4214,3 +3806,429 @@ Index: WindowMaker/menu.zh_TW.in
  		"離開..."  EXIT
  	"離開" END
  "應用程式" END
+-
+Index: WindowMaker/menu.es
+===================================================================
+--- WindowMaker/menu.es.orig
++++ WindowMaker/menu.es
+@@ -43,62 +43,9 @@
+ 	"Informacion ..." MENU
+ 		"Copyright..." SHEXEC xmessage -center -font variable -title \
+ 	'WindowMaker 'WM_VERSION -file ~/GNUstep/Library/WindowMaker/Copyright
+-		"Carga del sistema" SHEXEC xosview || xload
+-		"Lista de tarifas (top)" EXEC rxvt -ls -fg white -bg black -fn vga -e top
+-		"Manual" EXEC xman
+ 	"Informacion ..." END
+ 
+-        "Emuladores ..." MENU
+-	        "Terminal X" EXEC xterm
+-                "Emulador de Terminal" EXEC rxvt -ls -fg white -bg black -fn vga
+-        "Emuladores ..." END
+-
+-	"Aplicaciones ..." MENU
+-
+-		"Graficos ..." MENU
+-			"Gimp" EXEC gimp
+-			"XV" EXEC xv
+-			"XPaint" EXEC xpaint
+-			"XFig" EXEC xfig
+-		"Graficos ..." END
+-
+-                "Editores ..." MENU
+-	                "XEmacs" SHEXEC xemacs || emacs
+-			"XJed" EXEC xjed
+-			"NEdit" EXEC nedit
+-			"Xedit" EXEC xedit
+-			"VI" EXEC xterm -e vi
+-	        "Editores ..." END
+-
+-		"Multimedia ..." MENU
+-	                "Xmcd" SHEXEC xmcd 2> /dev/null
+-			"Xplaycd" EXEC xplaycd
+-			"Xmixer" EXEC xmixer
+-		"Multimedia ..." END
+-
+-		"Utilidades ..." MENU
+-	                "Calculadora" EXEC xcalc
+-			"Selector de fuente" EXEC xfontsel
+-			"Lupa" EXEC xmag
+-			"Mapa de colores" EXEC xcmap
+-			"XKill" EXEC xkill
+-			"ASClock" EXEC asclock -shape
+-			"Portapapeles" EXEC xclipboard
+-		"Utilidades ..." END
+-
+-		"X File Manager" EXEC xfm
+-		"OffiX Files" EXEC files
+-		"LyX" EXEC lyx
+-		"Ghostview" EXEC ghostview
+-		"Acrobat" EXEC /usr/local/Acrobat3/bin/acroread
+-		"TkDesk" EXEC tkdesk
+-	"Aplicaciones ..." END
+-
+-	"Internet ..." MENU
+-		"Correo" EXEC xterm -name mail -T "Pine" -e pine %s
+-		"Navegar" EXEC netscape %s
+-		"Buscar en el manual" EXEC xterm -name manualBrowser -e man %s
+-	"Internet ..." END
++	"Terminal X" EXEC xterm
+ 
+ 	"Configurar Area de Trabajo ..." MENU
+ 		"Fondo ..." MENU
+@@ -119,21 +66,14 @@
+ 		"Alinear iconos" ARRANGE_ICONS
+ 		"Refrescar" REFRESH
+ 		"Salvapantallas" EXEC xlock -allowroot -usefirst
+-		"Grabar Area de trabajo" EXEC SAVE_WORKSPACE
++		"Grabar Area de trabajo" SAVE_SESSION
+ 	"Configurar Area de Trabajo ..." END
+-
+         "Areas de Trabajo ..." WORKSPACE_MENU
+-
+-#if (UID==0)	// Só o ve root ou usuarios con UID=0
+-	"Sistema" MENU
+-		// Panel de control
+-		"Panel de control de RH" EXEC control-panel
+-	"Sistema" END
+-#endif
++        "WPrefs" EXEC /usr/lib/GNUstep/Applications/WPrefs.app/WPrefs
++        "WindowMaker" OPEN_MENU /etc/X11/WindowMaker/SuSE_wmapps
++        "SuSE" OPEN_MENU "| xdg_menu --format WindowMaker --charset UTF-8"
+ 	"Salir ..."	MENU
+ 		"Reinicializar" RESTART
+-		"Iniciar AfterStep" RESTART afterstep
+ 		"Salir"  EXIT
+-		"Salir de la sesion" SHUTDOWN
+ 	"Salir ..." END
+ "Menu Principal" END
+Index: WindowMaker/menu.gl
+===================================================================
+--- WindowMaker/menu.gl.orig
++++ WindowMaker/menu.gl
+@@ -45,56 +45,9 @@
+ 	"Información" MENU
+ 		"Info Panel..." INFO_PANEL
+ 		"Legal" LEGAL_PANEL
+-		"Carga do sistema" SHEXEC xosview || xload
+-		"Lista de tarefas" EXEC rxvt -ls -fg white -bg black -fn vga -e top
+-		"Manual" EXEC xman
+ 	"Información" END
+-	"Emulador Terminal" EXEC rxvt -ls -fg white -bg black -fn vga
+-	"XJed"	EXEC xjed
++	"X Terminal" EXEC xterm -sb
+ 	"Areas de Traballo" WORKSPACE_MENU
+-	"Aplicacións" MENU
+-		"Gráficos" MENU
+-			"Gimp" EXEC gimp
+-			"XV" EXEC xv
+-			"XPaint" EXEC xpaint
+-			"XFig" EXEC xfig
+-		"Gráficos" END
+-		"X File Manager" EXEC xfm
+-		"OffiX Files" EXEC files
+-		"LyX" EXEC lyx
+-		"Netscape" EXEC netscape
+-  		"Ghostview" EXEC ghostview
+-		"Acrobat" EXEC /usr/local/Acrobat3/bin/acroread
+-  		"TkDesk" EXEC tkdesk
+-	"Aplicacións" END
+-	"Editores" MENU
+-		"XEmacs" SHEXEC xemacs || emacs
+-		"XJed" EXEC xjed
+-		"NEdit" EXEC nedit
+-		"Xedit" EXEC xedit
+-		"VI" EXEC xterm -e vi
+-	"Editores" END
+-	"Variedade" MENU
+-		"Xmcd" SHEXEC xmcd 2> /dev/null
+-		"Xplaycd" EXEC xplaycd
+-		"Xmixer" EXEC xmixer
+-	"Variedade" END
+-	"Utiles" MENU
+-		"Calculadora" EXEC xcalc
+-		"Selector de fonte" EXEC xfontsel
+-		"Lupa" EXEC xmag
+-		"Mapa de cor" EXEC xcmap
+-		"XKill" EXEC xkill
+-		"ASClock" EXEC asclock -shape
+-		"Portapapeis" EXEC xclipboard
+-	"Utiles" END
+-
+-	"Selección" MENU
+-		"Correo" EXEC xterm -name mail -T "Pine" -e pine %s
+-		"Navegar" EXEC netscape %s
+-		"Buscar no manual" EXEC xterm -name manualBrowser -e man %s
+-	"Selección" END
+-
+ 	"Area Traballo" MENU
+ 		"Fondo" MENU
+ 			"Ningún" EXEC CLEARROOT
+@@ -114,13 +67,13 @@
+ 		"Aliñar iconos" ARRANGE_ICONS
+ 		"Refrescar" REFRESH
+ 		"Fechar" EXEC xlock -allowroot -usefirst
+-		"Grabar Area de traballo" EXEC SAVE_WORKSPACE
++		"Grabar Area de traballo" SAVE_SESSION
+ 	"Area Traballo" END
+-
++ "WindowMaker" OPEN_MENU /etc/X11/WindowMaker/SuSE_wmapps
++        "WPrefs" EXEC /usr/lib/GNUstep/Applications/WPrefs.app/WPrefs
++        "SuSE" OPEN_MENU "| xdg_menu --format WindowMaker --charset UTF-8"
+ 	"Sair"	MENU
+ 		"Reinicializar" RESTART
+-		"Iniciar AfterStep" RESTART afterstep
+ 		"Sair..."  EXIT
+-		"Sair da sesión..." SHUTDOWN
+ 	"Sair" END
+ "Aplicacións" END
+Index: WindowMaker/menu.it
+===================================================================
+--- WindowMaker/menu.it.orig
++++ WindowMaker/menu.it
+@@ -45,58 +45,9 @@
+ 	"Informazioni" MENU
+ 		"Info Panel..." INFO_PANEL
+ 		"Legal" LEGAL_PANEL
+-		"Carico del Sistema" SHEXEC xosview || xload
+-		"Lista dei Processi" EXEC xterm -e top
+-		"Ricerca Manuali" EXEC xman
+ 	"Informazioni" END
+ 	"XTerm" SHEXEC xterm -sb || color-xterm -sb || xterm -sb
+-	"XJed"	EXEC xjed
+ 	"Area di lavoro" WORKSPACE_MENU
+-	"Applicazioni" MENU
+-		"Grafica" MENU
+-			"Gimp" EXEC gimp
+-			"XV" EXEC xv
+-			"XPaint" EXEC xpaint
+-			"XFig" EXEC xfig
+-		"Grafica" END
+-		"X File Manager" EXEC xfm
+-		"OffiX Files" EXEC files
+-		"LyX" EXEC lyx
+-		"Netscape" EXEC netscape
+-  		"Ghostview" EXEC ghostview %a(Ghostview)
+-                "XDvi" EXEC xdvi %a(XDvi)
+-		"Acrobat" EXEC /usr/local/Acrobat3/bin/acroread %a(Acrobat)
+-  		"TkDesk" EXEC tkdesk
+-	"Applicazioni" END
+-	"Editori" MENU
+-		"XEmacs" SHEXEC xemacs || emacs
+-		"XJed" EXEC xjed
+-		"NEdit" EXEC nedit
+-		"Xedit" EXEC xedit
+-		"VI" EXEC xterm -e vi
+-	"Editori" END
+-	"Varie" MENU
+-		"Xmcd" SHEXEC xmcd 2> /dev/null
+-		"Xplaycd" EXEC xplaycd
+-		"Xmixer" EXEC xmixer
+-	"Varie" END
+-	"Utilita'" MENU
+-		"Calcolatore" EXEC xcalc
+-		"Selezione Font" EXEC xfontsel
+-		"Lente" EXEC xmag
+-		"Mappa Colori" EXEC xcmap
+-		"Assassinio X" EXEC xkill
+-		"ASClock" EXEC asclock -shape
+-		"Clipboard" EXEC xclipboard
+-	"Utilita'" END
+-
+-	"Selezione" MENU
+-		"Invio posta a.." EXEC xterm -name mail -T "Pine" -e pine %s
+-	        "Navigare" SHEXEC netscape -noraise -remote \
+-			'openURL(%s,new-window)' || netscape %s
+-		"Ricerca nei Manuali" SHEXEC MANUAL_SEARCH(%s)
+-	"Selezione" END
+-
+ 	"Area di lavoro" MENU
+ 		"Nascondi Altri" HIDE_OTHERS
+ 		"Mostra Tutti" SHOW_ALL
+@@ -117,13 +68,13 @@
+ // E' necessario rieiniziare dopo avere selezionato il gradiente.
+ #include <gradients.menu>
+ #endif
+-		"Salva area di lavoro" EXEC SAVE_WORKSPACE
++		"Salva area di lavoro" SAVE_SESSION
+ 	"Area di lavoro" END
++				"WindowMaker" OPEN_MENU /etc/X11/WindowMaker/SuSE_wmapps
++				"SuSE" OPEN_MENU "| xdg_menu --format WindowMaker --charset UTF-8"
+ 
+ 	"Uscire"	MENU
+ 		"Restart" RESTART
+-		"Avviare AfterStep" RESTART afterstep
+ 		"Uscire..."  EXIT
+-		"Uscire dalla sessione..." SHUTDOWN
+ 	"Uscire" END
+ "Applicazioni" END
+Index: WindowMaker/menu.no
+===================================================================
+--- WindowMaker/menu.no.orig
++++ WindowMaker/menu.no
+@@ -100,58 +100,9 @@
+ 	"Info" MENU
+ 		"Lisens..." INFO_PANEL
+ 		"Legal" LEGAL_PANEL
+-		"System Belastning" SHEXEC xosview || xload
+-		"Prosess Liste" EXEC xterm -e top
+-		"Manual leser" EXEC stepman
+ 	"Info" END
+ 	"XTerm" EXEC xterm -sb
+-	"Rxvt" EXEC rxvt -bg black -fg white -fn fixed
+ 	"Arbeids-Områder" WORKSPACE_MENU
+-	"Applikasjoner" MENU
+-		"Grafikk" MENU
+-			"Gimp" SHEXEC gimp >/dev/null
+-			"XV" EXEC xv
+-			"XPaint" EXEC xpaint
+-			"XFig" EXEC xfig
+-		"Grafikk" END
+-		"X Fil Behandler" EXEC xfm
+-		"OffiX Files" EXEC files
+-		"LyX" EXEC lyx
+-		"Netscape" EXEC netscape
+-  		"Ghostview" EXEC ghostview %a(Navnet på fila du vil se)
+-		"Acrobat" EXEC /usr/local/Acrobat3/bin/acroread %a(Skriv inn PDF\'en du ønsker)
+-  		"TkDesk" EXEC tkdesk
+-	"Applikasjoner" END
+-	"Tekst Redigering" MENU
+-		"XFte" EXEC xfte
+-		"XEmacs" SHEXEC xemacs || emacs
+-		"XJed" EXEC xjed
+-		"NEdit" EXEC nedit
+-		"Xedit" EXEC xedit
+-		"VI" EXEC xterm -e vi
+-	"Tekst Redigering" END
+-	"Diverse" MENU
+-		"Xmcd" SHEXEC xmcd 2> /dev/null
+-		"Xplaycd" EXEC xplaycd
+-		"Xmixer" EXEC xmixer
+-	"Diverse" END
+-	"Verktøy" MENU
+-		"Kalkulator" EXEC xcalc
+-		"Font Velger" EXEC xfontsel
+-		"Forstørrelsesglass" EXEC xmag
+-		"Fargekart" EXEC xcmap
+-		"XKill" EXEC xkill
+-		"ASClock" EXEC asclock -shape
+-		"Clipboard" EXEC xclipboard
+-	"Verktøy" END
+-
+-	"Utvalg" MENU
+-		"Kopier" SHEXEC echo '%s' | wxcopy
+-		"Send e-mail" EXEC xterm -name mail -T "Pine" -e pine %s
+-		"Gå til (www)" EXEC netscape %s
+-		"Søke i manualer" SHEXEC MANUAL_SEARCH(%s)
+-	"UtValg" END
+-
+ 	"Arbeidsområder" MENU
+ 		"Skjule andre" HIDE_OTHERS
+ 		"Vise alle" SHOW_ALL
+@@ -183,12 +134,12 @@
+ 		"Bakgrunn" END
+ 		"Lagre Tema" SHEXEC getstyle -t $HOME/GNUstep/Library/WindowMaker/Themes/"%a(Theme name)"
+ 		"Lagre Ikonsett" SHEXEC geticonset $HOME/GNUstep/Library/WindowMaker/IconSets/"%a(IconSet name)"
++        "WPrefs" EXEC /usr/lib/GNUstep/Applications/WPrefs.app/WPrefs
+ 	"Utseende" END
+-
++        "WindowMaker" OPEN_MENU /etc/X11/WindowMaker/SuSE_wmapps
++        "SuSE" OPEN_MENU "| xdg_menu --format WindowMaker --charset UTF-8"
+ 	"Avslutt"	MENU
+ 		"Restart" RESTART
+-		"Start Afterstep" RESTART afterstep
+ 		"Avslutt WindowMaker..."  EXIT
+-		"Avslutt X11..." SHUTDOWN
+ 	"Avslutt" END
+ "Applikasjoner" END
+Index: WindowMaker/menu.ru
+===================================================================
+--- WindowMaker/menu.ru.orig
++++ WindowMaker/menu.ru
+@@ -57,70 +57,19 @@
+ 	"Информация" MENU
+ 		"Info Panel..." INFO_PANEL
+ 		"Legal" LEGAL_PANEL
+-		"Нагрузка Системы" SHEXEC xosview || xload
+-		"Список Процессов" EXEC xterm -e top
+-		"Просмотр Руководств" EXEC xman
+ 	"Информация" END
+ 	"XTerm" EXEC xterm -sb
+-	"Rxvt" EXEC rxvt -bg black -fg white -fn fixed
+-	"XJed"	EXEC xjed
+ 	"Рабочие места" WORKSPACE_MENU
+-	"Приложения" MENU
+-		"Графические" MENU
+-			"Gimp" SHEXEC gimp >/dev/null
+-			"XV" EXEC xv
+-			"XPaint" EXEC xpaint
+-			"XFig" EXEC xfig
+-		"Графические" END
+-		"Менеджер файлов X" EXEC xfm
+-		"OffiX Files" EXEC files
+-		"LyX" EXEC lyx
+-		"Netscape" EXEC netscape
+-  		"Ghostview" EXEC ghostview %a(Enter file to view)
+-		"Acrobat" EXEC /usr/local/Acrobat3/bin/acroread %a(Enter PDF to view)
+-  		"TkDesk" EXEC tkdesk
+-	"Приложения" END
+-	"Редакторы" MENU
+-		"XEmacs" SHEXEC xemacs || emacs
+-		"XJed" EXEC xjed
+-		"NEdit" EXEC nedit
+-		"Xedit" EXEC xedit
+-		"VI" EXEC xterm -e vi
+-	"Редакторы" END
+-	"Разное" MENU
+-		"Xmcd" SHEXEC xmcd 2> /dev/null
+-		"Xplaycd" EXEC xplaycd
+-		"Xmixer" EXEC xmixer
+-	"Разное" END
+-	"Утилиты" MENU
+-		"Калькулятор" EXEC xcalc
+-		"Выбрать шрифт" EXEC xfontsel
+-		"Увеличитель" EXEC xmag
+-		"Карта цветов" EXEC xcmap
+-		"XKill" EXEC xkill
+-		"Часы" EXEC asclock -shape
+-		"Буфер обмена" EXEC xclipboard
+-	"Утилиты" END
+-
+-	"Выделение" MENU
+-		"Копировать" SHEXEC echo '%s' | wxcopy
+-		"Отправить" EXEC xterm -name mail -T "Pine" -e pine %s
+-		"Искать в Интернет" EXEC netscape %s
+-		"Искать в Руководствах" SHEXEC MANUAL_SEARCH(%s)
+-	"Выделение" END
+-
+ 	"Рабочее место" MENU
+ 		"Убрать остальные" HIDE_OTHERS
+ 		"Показать все" SHOW_ALL
+ 		"Упорядочить значки" ARRANGE_ICONS
+ 		"Обновить" REFRESH
+ 		"Запереть" EXEC xlock -allowroot -usefirst
+-		"Сохранить Рабочее место" EXEC SAVE_WORKSPACE
++		"Сохранить Рабочее место" SAVE_SESSION
+ 	"Рабочее место" END
+ 
+ 	"Внешний вид" MENU
+-/*		"Темы" OPEN_MENU themes.menu
+-*/
+ 		"Фон" MENU
+ 			"Однотонный" MENU
+                         	"Черный" WS_BACK '(solid, black)'
+@@ -136,12 +85,13 @@
+ 			"Градиент" END
+ 		"Фон" END
+ 		"Стили" OPEN_MENU styles.menu
++                "WPrefs" EXEC /usr/lib/GNUstep/Applications/WPrefs.app/WPrefs
+ 	"Внешний вид" END
++        "WindowMaker" OPEN_MENU /etc/X11/WindowMaker/SuSE_wmapps
++        "SuSE" OPEN_MENU "| xdg_menu --format WindowMaker --charset UTF-8"
+ 
+ 	"Выход"	MENU
+ 		"Перезапустить" RESTART
+-		"Запустить Afterstep" RESTART afterstep
+ 		"Завершить работу..."  EXIT
+-		"Завершить сессию..." SHUTDOWN
+ 	"Выход" END
+ "Приложения" END

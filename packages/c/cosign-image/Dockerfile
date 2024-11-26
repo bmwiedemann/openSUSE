@@ -18,6 +18,7 @@
 #!BuildTag: opensuse/cosign:%%cosign_version%%-%RELEASE%
 #!BuildTag: opensuse/cosign:%%cosign_version%%
 #!BuildTag: opensuse/cosign:2.4
+#!BuildTag: opensuse/cosign:2
 #!BuildTag: opensuse/cosign:latest
 
 FROM opensuse/bci/bci-micro:latest AS target

@@ -211,4 +211,16 @@
     <comment></comment>
     <requestid>1200141</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c018c77946d7fa52ef1349fc70e1b96a</srcmd5>
+    <version>1.0.6</version>
+    <time>1732573295</time>
+    <user>anag+factory</user>
+    <comment>- Update to urlscan 1.0.6
+  * Bugfix in GitHub Action
+  * Github action update to release to pypi and github on tag push
+    and release to testpypi on commit.
+  * Keybindings for page up/down</comment>
+    <requestid>1226189</requestid>
+  </revision>
 </revisionlist>

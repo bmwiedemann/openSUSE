@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 19 22:43:42 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update vendored dependencies to fix build failures on newer rust versions
+- Remove cargo_config since it is now included in vendor.tar.xz by the obs service
+
+-------------------------------------------------------------------
 Fri Nov  3 09:32:56 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Update to 0.24.0:

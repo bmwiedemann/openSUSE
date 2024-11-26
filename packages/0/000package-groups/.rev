@@ -2072,4 +2072,14 @@ to ease detection of our immutable OS</comment>
     <user>dimstar_suse</user>
     <comment>Adjust i686 includes for LegacyX86 - mozjs102 is gone, mozjs128 is new</comment>
   </revision>
+  <revision rev="291" vrev="289">
+    <srcmd5>375da7957b4028214edf8592d6e6b12f</srcmd5>
+    <version>unknown</version>
+    <time>1732573191</time>
+    <user>anag+factory</user>
+    <comment>for now at least, we want to be sure to have pattern gnome_11 on the DVD
+
+Fixes https://openqa.opensuse.org/tests/4663488#step/select_patterns/142</comment>
+    <requestid>1226212</requestid>
+  </revision>
 </revisionlist>

@@ -17,8 +17,8 @@
 
 
 %define srcversion 6.6
-%define patchversion 6.6.62
-%define git_commit 040e170b4dcc7b9eabee496bcc723aee687b34e9
+%define patchversion 6.6.63
+%define git_commit bd5007503ad0cafa35fce68e964e185cedc40984
 %define variant -longterm%{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -31,9 +31,9 @@
 %endif
 
 Name:           kernel-source-longterm
-Version:        6.6.62
+Version:        6.6.63
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g040e170
+Release:        <RELEASE>.gbd50075
 %else
 Release:        0
 %endif

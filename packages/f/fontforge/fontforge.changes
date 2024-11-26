@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 21 20:31:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add use-sysconfig-not-distutils.patch: fix build with python 3.13
+
+-------------------------------------------------------------------
 Tue Mar  5 12:17:37 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 642d8a3db6d4bc0e70b429622fdf01ecb09c4c10.patch: Fix build
@@ -93,7 +98,7 @@ Sun Mar 20 21:20:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 20220308:
   * Overhauled resource/appearance management
-  * Merge/Simplify improvements 
+  * Merge/Simplify improvements
   * Updated Unicode support to Unicode 14.0.0
   * Add Points Of Inflection / Balance / Harmonize
   * Language system tag list/script range/feature list updates
@@ -102,7 +107,7 @@ Sun Mar 20 21:20:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * UFO include path is altered, please update your fonts if needed
   * FontForge is now compiled with -Wall by default
   * Cidmaps are now bundled
-- drop fix-return-statement.patch. obsolete 
+- drop fix-return-statement.patch. obsolete
 
 -------------------------------------------------------------------
 Sat Feb 20 10:46:42 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -250,12 +255,12 @@ Thu Nov  9 19:06:46 UTC 2017 - jmatejek@suse.com
 -------------------------------------------------------------------
 Fri Dec  9 14:15:44 UTC 2016 - pgajdos@suse.com
 
-- updated to 20161005 [bsc#1014793]: 
-  * This release introduces a new icon set, new functionality for 
-    custom icon selection graphics, support for GlyphOrderAndAliasDB 
+- updated to 20161005 [bsc#1014793]:
+  * This release introduces a new icon set, new functionality for
+    custom icon selection graphics, support for GlyphOrderAndAliasDB
     files, and support for Unicode 9.0.
   * It also fixes a number of small bugs relating to certain bitmap
-    typefaces, stroke expansion, handling of CID ranges, and the 
+    typefaces, stroke expansion, handling of CID ranges, and the
     user interface.
 - removed upstreamed patches:
   - propagate-creation-and-modification-times-to-ttf.patch
@@ -270,14 +275,14 @@ Tue Jan 26 08:10:44 UTC 2016 - pgajdos@suse.com
 -------------------------------------------------------------------
 Wed Dec 16 14:03:36 UTC 2015 - pgajdos@suse.com
 
-- updated to 20150824: This fixes a few bugs, including some in 
-  U. F. O. kerning classes and FreeType rasterization, and adds 
+- updated to 20150824: This fixes a few bugs, including some in
+  U. F. O. kerning classes and FreeType rasterization, and adds
   a Korean translation.
 
 -------------------------------------------------------------------
 Mon May 11 08:36:20 UTC 2015 - pgajdos@suse.com
 
-- updated to 20150430: this release includes a few bug fixes, 
+- updated to 20150430: this release includes a few bug fixes,
   performance enhancements, and refreshed icons.
 - download uthash when get-source.sh
 - fontforge --version now returns fontforge release version
@@ -286,7 +291,7 @@ Mon May 11 08:36:20 UTC 2015 - pgajdos@suse.com
 -------------------------------------------------------------------
 Fri May  1 13:17:09 UTC 2015 - coolo@suse.com
 
-- also repackage the broken gnulib links to fix build with 
+- also repackage the broken gnulib links to fix build with
   newer libtool
 
 -------------------------------------------------------------------
@@ -298,12 +303,12 @@ Mon Apr 20 07:10:42 UTC 2015 - pgajdos@suse.com
 Tue Mar 31 09:55:24 UTC 2015 - pgajdos@suse.com
 
 - updated to 20150330:
-  * fixes a few crashes, enhances round-tripping of information in 
+  * fixes a few crashes, enhances round-tripping of information in
     certain file formats, and fixes some bad logic
   * adds support for fine point adjustment
   * etc. see https://github.com/fontforge/fontforge/releases
     for details
-- remove %requires_ge libpng16-16 as it seems fontforge is not so 
+- remove %requires_ge libpng16-16 as it seems fontforge is not so
   picky anymore
 - doc is generated
 - remove pfaedit compat
@@ -368,7 +373,7 @@ Tue Apr 16 12:17:30 UTC 2013 - pgajdos@suse.com
 -------------------------------------------------------------------
 Tue Apr 16 12:05:41 UTC 2013 - pgajdos@suse.com
 
-- %requires_ge libpng16-16 to avoid 
+- %requires_ge libpng16-16 to avoid
   'Application built with libpng-1.5.14 but running with 1.6.1'
   warning when running fontforge
 
@@ -383,8 +388,8 @@ Sun Dec 30 06:44:35 UTC 2012 - dmitry_r@opensuse.org
 - Update to 20120731b
   * see included changelog.html for details
   * removed obsolete fontforge.py27.diff
-  * removed obsolete fontforge-missing-closedir.diff 
-  * removed obsolete libpng14.diff 
+  * removed obsolete fontforge-missing-closedir.diff
+  * removed obsolete libpng14.diff
 
 -------------------------------------------------------------------
 Tue Dec 20 20:25:40 UTC 2011 - coolo@suse.com
@@ -407,14 +412,14 @@ Mon May 16 14:38:39 CEST 2011 - pgajdos@suse.cz
 
 - updated to 20110222:
   * Did a lot of work to improve the accuracy in remove overlap.
-  * Fix various error messages. 
-  * Remove some obsolete documentation. 
-  * Technical fixes to stroking code. 
+  * Fix various error messages.
+  * Remove some obsolete documentation.
+  * Technical fixes to stroking code.
   * Add a miterlimit to stroking code.
-  * FontForge was using the wrong MIME type for svg files. 
-    W3C has changed it and it's now "image/svg+xml" not 
+  * FontForge was using the wrong MIME type for svg files.
+    W3C has changed it and it's now "image/svg+xml" not
     "image/svg-xml" or "image/svg".
-  * etc. on 
+  * etc. on
     http://fontforge.sourceforge.net/changelog.html
   * libpng14.diff and fontforge.py27.diff kept but not needed yet
 
@@ -443,7 +448,7 @@ Mon Apr  5 12:00:54 UTC 2010 - toms@suse.de
 Sat Oct  3 12:16:21 UTC 2009 - crrodriguez@opensuse.org
 
 - fontforge-20090622-1.6: missing call to closedir  [bnc#543458]
-- fix -devel package dependencies 
+- fix -devel package dependencies
 
 -------------------------------------------------------------------
 Mon Jul 27 16:57:52 CEST 2009 - tiwai@suse.de
@@ -490,7 +495,7 @@ Thu Aug 02 16:33:43 CEST 2007 - mfabian@suse.de
 -------------------------------------------------------------------
 Tue Jul 24 12:49:54 CEST 2007 - coolo@suse.de
 
-- remove BuildPreRequires 
+- remove BuildPreRequires
 
 -------------------------------------------------------------------
 Tue Feb 06 17:06:16 CET 2007 - mfabian@suse.de
@@ -523,7 +528,7 @@ Fri Nov 17 19:54:59 CET 2006 - mfabian@suse.de
 Mon Nov  6 00:28:15 CET 2006 - ro@suse.de
 
 - fix permissions on icon file
-- fix gcc warning for strncat 
+- fix gcc warning for strncat
 
 -------------------------------------------------------------------
 Tue Oct 17 14:25:48 CEST 2006 - mfabian@suse.de
@@ -598,7 +603,7 @@ Wed May 11 12:31:06 CEST 2005 - mfabian@suse.de
 -------------------------------------------------------------------
 Tue Dec 14 21:27:40 CET 2004 - hvogel@suse.de
 
-- install icon 
+- install icon
 
 -------------------------------------------------------------------
 Thu Nov 11 12:48:59 CET 2004 - ro@suse.de
