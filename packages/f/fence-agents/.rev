@@ -1144,4 +1144,12 @@
 - Drop support for amt as amtterm is not available on SLES16</comment>
     <requestid>1202129</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>5b545f5aa76e7f3d801ce6a3236378ac</srcmd5>
+    <version>4.15.0+git.1731052905.05fd299e</version>
+    <time>1732650986</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1226483</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 19 10:48:42 UTC 2024 - varkoly@suse.com
+
+- Update to version 4.15.0+git.1731052905.05fd299e:
+  * fence_nutanix_ahv: Add fence agent support for Nutanix AHV Cluster (#600)
+  * fencing: fix "?" typo in required field for the login parameter
+  * fence_ibm_powervs: add private endpoint and token file support (#597)
+  * fence_mpath: fix 0x-format patch causing unfencing issue, and use re.MULTILINE to avoid duplicating device dev/key lines in /run/cluster/mpath.devices
+  * fence_bladecenter/fence_raritan_px3: use r"" on regex string to avoid SyntaxWarning
+  * fence_scsi: preempt clears all devices on the mpath device, so only run it for the first device
+
+-------------------------------------------------------------------
 Wed Sep 18 11:55:00 UTC 2024 - varkoly@suse.com
 
 - Update to version 4.15.0+git.1724675137.ca9ae93a:

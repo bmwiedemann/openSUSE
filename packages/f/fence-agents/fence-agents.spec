@@ -19,7 +19,7 @@
 %define agent_list aliyun alom apc apc_snmp aws azure_arm bladecenter brocade cisco_mds cisco_ucs compute docker drac5 dummy eaton_snmp eaton_ssh emerson eps evacuate gce hds_cb hpblade ibmblade ibmz ibm_powervs ibm_vpc ifmib ilo ilo_moonshot ilo_mp ilo_ssh intelmodular ipdu ipmilan ironic kdump ldom lpar mpath netio openstack powerman pve raritan rcd_serial redfish rhevm rsa rsb sanbox2 sbd scsi vbox virsh vmware vmware_rest wti xenapi zvm
 Name:           fence-agents
 Summary:        Set of unified programs capable of host isolation ("fencing")
-Version:        4.15.0+git.1724675137.ca9ae93a
+Version:        4.15.0+git.1731052905.05fd299e
 Release:        0
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          Productivity/Clustering/HA
