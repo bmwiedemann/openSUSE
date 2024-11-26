@@ -1,7 +1,7 @@
 #
 # spec file for package imagej
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define SrcVersion 153t
+%define SrcVersion 153u
 Name:           imagej
-Version:        1.53t
+Version:        1.53u
 Release:        0
 Summary:        A Java image processing program
 License:        SUSE-Public-Domain
