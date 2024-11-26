@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov 26 11:36:25 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.3.2
+  * Many fixes for RocketChat 7.0
+  * Fix administrator refresh user list
+  * Fix menu when we select video conference message
+  * Fix RocketChat 7.0 server support
+  * Fix create video message
+  * Fix update cache when we change video/attachment description
+  * Fix export message job
+  * Fix show userOffline when we have a group
+  * Fix enable/disable ok button when search room in team dialog
+  * Fix crash when we remove room in team dialog
+  * Fix update channel selection when we reconnect server
+
+-------------------------------------------------------------------
 Wed Nov  6 09:46:32 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 2.3.1
