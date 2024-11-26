@@ -173,4 +173,12 @@
     <comment>update to 5.2.0 (forwarded request 1191218 from ojkastl_buildservice)</comment>
     <requestid>1191231</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a46c900f236adee2aca090e16c875b50</srcmd5>
+    <version>5.3.0</version>
+    <time>1732651027</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1226538</requestid>
+  </revision>
 </revisionlist>

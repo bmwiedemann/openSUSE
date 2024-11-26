@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Tue Nov 26 13:55:44 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 5.3.0:
+  * [skip-ci] Packit: downstream_package_name for each package key
+    by @lsm5 in #416
+  * Make "images.push" method support "format" parameter by
+    @milanbalazs in #415
+  * Add test of container create with DNS option by @Honny1 in #417
+  * Fix podman search flake + update CI VM images by @cevich in
+    #418
+  * Update dependency containers/automation_images to v20240529 by
+    @renovate in #389
+  * Remove wait condition in run() by @inknos in #428
+  * Update dependency containers/automation_images to v20240821 by
+    @renovate in #423
+  * domain/networks_manager.py: use specified driver in IPAMConfig
+    by @jtluka in #429
+  * Fix/Disable Pylint R0917 by @inknos in #432
+  * Extend the parameters of 'images.load' and 'login' methods by
+    @milanbalazs in #434
+  * Don't use root as default user for exec_run by @aparcar in #431
+  * Renovate: Update default assignment by @cevich in #437
+  * Packit: enable c9s downstream update by @lsm5 in #440
+  * Audit and Update OWNERS file by @baude in #441
+  * Update dependency ubuntu to v24 by @renovate in #436
+  * Remove the container in case of detach mode by @milanbalazs in
+    #435
+  * Update CI VM images by @inknos in #430
+  * Fix cyclic-import by @Honny1 in #450
+  * Packit: constrain koji and bodhi jobs to fedora package by
+    @lsm5 in #442
+  * Fix default stderr value of container.logs() to match
+    documentation. by @MattBelle in #452
+  * [skip-ci] RPM: remove conditionals from changelog by @lsm5 in
+    #453
+  * Added stream support to Container.exec_run(). by @MattBelle in
+    #454
+  * Accept integer ports in containers_create.create by @krrhodes
+    in #447
+  * Container.labels now returns an empty dict instead of None. by
+    @MattBelle in #462
+  * Fix typos by @kianmeng in #464
+  * fix[docs]: Unindented example code on the index page by
+    @Mr-Sunglasses in #467
+  * Added support for mounting directories through the volume
+    keyword. by @MattBelle in #460
+  * docs: Add Installation and docs in README.md by @Mr-Sunglasses
+    in #471
+  * fix: name filter in images.list() by @Mr-Sunglasses in #468
+  * Bump release to 5.3.0 and drop python<3.8 by @inknos in #469
+
+-------------------------------------------------------------------
 Fri Aug  2 14:04:13 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 5.2.0:
