@@ -494,6 +494,7 @@ unsorted:
   - agama-products-opensuse 
   - agama-products-sle 
   - agama-web-ui 
+  - agama-yast 
   - age 
   - agenda 
   - agenda-lang 
@@ -7469,7 +7470,6 @@ unsorted:
   - gnome-screenshot-lang 
   - gnome-search-tool 
   - gnome-search-tool-lang 
-  - gnome-session-xsession 
   - gnome-settings-daemon-devel 
   - gnome-shell-classic-xsession 
   - gnome-shell-devel 
@@ -8485,7 +8485,6 @@ unsorted:
   - h5utils 
   - haas-proxy 
   - habootstrap-formula 
-  - hackbench 
   - hackrf 
   - hackrf-devel 
   - hackrf-firmware 
@@ -9017,6 +9016,11 @@ unsorted:
   - incidenceeditor-devel 
   - include-what-you-use 
   - include-what-you-use-tools 
+  - incus 
+  - incus-bash-completion 
+  - incus-fish-completion 
+  - incus-tools 
+  - incus-zsh-completion 
   - indent 
   - indent-lang 
   - indi 
@@ -12457,7 +12461,7 @@ unsorted:
   - libcairo2-32bit 
   - libcaja-extension1 
   - libcal3d12 
-  - libcalc2_15_0_1 
+  - libcalc2_15_1_0 
   - libcallaudio0_1-0 
   - libcallback1 
   - libcamd-doc 
@@ -16730,6 +16734,7 @@ unsorted:
   - libtranscript-devel 
   - libtranscript1 
   - libtre5 
+  - libtre5-lang 
   - libtree 
   - libtrng4-27 
   - libts0-32bit 
@@ -21251,7 +21256,6 @@ unsorted:
   - patterns-enlightenment-enlightenment 
   - patterns-gnome-devel_gnome 
   - patterns-gnome-gnome_ide 
-  - patterns-gnome-gnome_x11 
   - patterns-hpc-libraries 
   - patterns-kde-devel_kde_frameworks 
   - patterns-kde-devel_kde_frameworks6 
@@ -26144,6 +26148,7 @@ unsorted:
   - python310-ldas-tools-al-swig 
   - python310-leather 
   - python310-legacy-cgi 
+  - python310-legacycrypt 
   - python310-leglight 
   - python310-lesscpy 
   - python310-lexicon 
@@ -27764,7 +27769,6 @@ unsorted:
   - python310-uniseg 
   - python310-unittest-mixins 
   - python310-unittest-xml-reporting 
-  - python310-unittest2pytest 
   - python310-unpaddedbase64 
   - python310-unsync 
   - python310-untokenize 
@@ -27888,7 +27892,6 @@ unsorted:
   - python310-xarray-dev 
   - python310-xarray-einstats 
   - python310-xarray-io 
-  - python310-xarray-parallel 
   - python310-xarray-viz 
   - python310-xattr 
   - python310-xcffib 
@@ -29758,6 +29761,7 @@ unsorted:
   - python311-ldas-tools-al-swig 
   - python311-leather 
   - python311-legacy-cgi 
+  - python311-legacycrypt 
   - python311-leglight 
   - python311-lesscpy 
   - python311-lexicon 
@@ -31321,7 +31325,6 @@ unsorted:
   - python311-uniseg 
   - python311-unittest-mixins 
   - python311-unittest-xml-reporting 
-  - python311-unittest2pytest 
   - python311-unpaddedbase64 
   - python311-unsync 
   - python311-untokenize 
@@ -31444,7 +31447,6 @@ unsorted:
   - python311-xarray-dev 
   - python311-xarray-einstats 
   - python311-xarray-io 
-  - python311-xarray-parallel 
   - python311-xarray-viz 
   - python311-xattr 
   - python311-xcffib 
@@ -33377,6 +33379,7 @@ unsorted:
   - python312-ldas-tools-al-swig 
   - python312-leather 
   - python312-legacy-cgi 
+  - python312-legacycrypt 
   - python312-leglight 
   - python312-lesscpy 
   - python312-lexicon 
@@ -34996,7 +34999,6 @@ unsorted:
   - python312-uniseg 
   - python312-unittest-mixins 
   - python312-unittest-xml-reporting 
-  - python312-unittest2pytest 
   - python312-unpaddedbase64 
   - python312-unsync 
   - python312-untokenize 
@@ -35121,7 +35123,6 @@ unsorted:
   - python312-xarray-dev 
   - python312-xarray-einstats 
   - python312-xarray-io 
-  - python312-xarray-parallel 
   - python312-xarray-viz 
   - python312-xattr 
   - python312-xcffib 
@@ -35248,6 +35249,7 @@ unsorted:
   - python313-ExifRead 
   - python313-Fabric 
   - python313-Faker 
+  - python313-Fiona 
   - python313-Flask 
   - python313-Flask-Admin 
   - python313-Flask-Assets 
@@ -35285,6 +35287,7 @@ unsorted:
   - python313-HeapDict 
   - python313-HepMC 
   - python313-IMAPClient 
+  - python313-JPype1 
   - python313-Jinja2 
   - python313-JsonWeb 
   - python313-Kajiki 
@@ -36059,6 +36062,7 @@ unsorted:
   - python313-casttube 
   - python313-catkin-pkg 
   - python313-cattrs 
+  - python313-cauldron-notebook 
   - python313-cbor 
   - python313-cbor2 
   - python313-cchardet 
@@ -36213,6 +36217,7 @@ unsorted:
   - python313-daemonize 
   - python313-daiquiri 
   - python313-dasbus 
+  - python313-dash 
   - python313-dash-core-components 
   - python313-dash-html-components 
   - python313-dash-renderer 
@@ -36553,6 +36558,7 @@ unsorted:
   - python313-fontPens 
   - python313-forbiddenfruit 
   - python313-formats 
+  - python313-fpdf2 
   - python313-fqdn 
   - python313-framel 
   - python313-freeipa 
@@ -36587,6 +36593,7 @@ unsorted:
   - python313-geojson 
   - python313-geolib 
   - python313-geolinks 
+  - python313-geomdl 
   - python313-geomet 
   - python313-geopandas 
   - python313-geopy 
@@ -36883,6 +36890,7 @@ unsorted:
   - python313-jsonxs 
   - python313-junit-xml 
   - python313-junitxml 
+  - python313-jupyter 
   - python313-jupyter-bokeh 
   - python313-jupyter-client 
   - python313-jupyter-collaboration 
@@ -36961,6 +36969,7 @@ unsorted:
   - python313-ldas-tools-al-swig 
   - python313-leather 
   - python313-legacy-cgi 
+  - python313-legacycrypt 
   - python313-leglight 
   - python313-lesscpy 
   - python313-lexicon 
@@ -37457,6 +37466,8 @@ unsorted:
   - python313-platformdirs 
   - python313-platformio 
   - python313-plette 
+  - python313-plotly 
+  - python313-plotly-jupyter 
   - python313-pluggy 
   - python313-pluginbase 
   - python313-plumbum 
@@ -37719,6 +37730,7 @@ unsorted:
   - python313-pyppmd 
   - python313-pyprel 
   - python313-pyprimes 
+  - python313-pyproj 
   - python313-pyproject-api 
   - python313-pyproject-examples 
   - python313-pyproject-hooks 
@@ -38364,6 +38376,7 @@ unsorted:
   - python313-tableprint 
   - python313-tables 
   - python313-tablib 
+  - python313-tabula-py 
   - python313-tabulate 
   - python313-tap.py 
   - python313-targetcli-fb 
@@ -38548,6 +38561,7 @@ unsorted:
   - python313-vcrpy 
   - python313-vcver 
   - python313-vcversioner 
+  - python313-vega 
   - python313-vega_datasets 
   - python313-venusian 
   - python313-venusian-doc 
@@ -38634,7 +38648,6 @@ unsorted:
   - python313-xarray-dev 
   - python313-xarray-einstats 
   - python313-xarray-io 
-  - python313-xarray-parallel 
   - python313-xarray-viz 
   - python313-xattr 
   - python313-xcffib 
@@ -50965,9 +50978,7 @@ unsorted:
   - transmission-qt 
   - transmission-qt-lang 
   - transset 
-  - tre 
   - tre-devel 
-  - tre-lang 
   - tree-sitter 
   - tree-sitter-bash 
   - tree-sitter-c 

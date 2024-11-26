@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20241124" schemaversion="4.1">
+<image name="OBS__openSUSE___20241125" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20241124</productvar>
+      <productvar name="VERSION">20241125</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20241124,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20241125,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20241124/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20241125/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -618,6 +618,7 @@
       <repopackage name="gnome-session-core"/>
       <repopackage name="gnome-session-lang"/>
       <repopackage name="gnome-session-wayland"/>
+      <repopackage name="gnome-session-xsession"/>
       <repopackage name="gnome-settings-daemon"/>
       <repopackage name="gnome-settings-daemon-lang"/>
       <repopackage name="gnome-shell"/>
@@ -3362,6 +3363,7 @@
       <repopackage name="patterns-gnome-gnome_multimedia"/>
       <repopackage name="patterns-gnome-gnome_office"/>
       <repopackage name="patterns-gnome-gnome_utilities"/>
+      <repopackage name="patterns-gnome-gnome_x11"/>
       <repopackage name="patterns-gnome-gnome_yast"/>
       <repopackage name="patterns-gnome-sw_management_gnome"/>
       <repopackage name="patterns-kde-kde"/>
