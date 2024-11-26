@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 26 14:02:59 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.14.2:
+  * docs: add release note for v2.14.2
+  * chore(deps): bump the gomod group across 1 directory with 6
+    updates
+  * chore(deps): bump the gha group across 1 directory with 2
+    updates
+  * Update go to 1.22.7 for fixing High vulnerability
+  * Update go to 1.22.7 for fixing High vulnerability
+
+-------------------------------------------------------------------
 Tue Aug 20 11:47:40 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.14.1:
