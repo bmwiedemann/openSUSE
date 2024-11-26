@@ -1,4 +1,134 @@
 -------------------------------------------------------------------
+Tue Nov 26 13:53:42 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 17.0.2:
+  * Fixed missing user participants in session recordings listing
+    for non-interactive Kubernetes recordings. #49343
+  * Support delegated joining for Bitbucket Pipelines in Machine
+    ID. #49335
+  * Fix a bug in the Teleport Operator chart that causes the
+    operator to not be able to watch secrets during secret
+    injection. #49327
+  * You can now search text within SSH sessions in the Web UI and
+    Teleport Connect. #49269
+  * Teleport Connect now refreshes the resources view after
+    dropping an access request. #49264
+  * Fixed an issue where teleport park processes could be leaked
+    causing runaway resource usage. #49260
+  * Fixed VNet not being able to connect to the daemon. #49199
+  * The tsh puttyconfig command now disables GSSAPI auth settings
+    to avoid a "Not Responding" condition in PuTTY. #49189
+  * Allow Azure VMs to join from a different subscription than
+    their managed identity. #49156
+  * Fix an issue loading the license file when Teleport is started
+    without a configuration file. #49150
+  * Added support for directly configuring JWKS for GitHub joining
+    for circumstances where the GHES is not reachable by the
+    Teleport Auth Service. #49049
+  * Fixed a bug where Access Lists imported from Microsoft Entra ID
+    fail to be created if their display names include special
+    characters. #5551
+
+-------------------------------------------------------------------
+Wed Nov 20 09:50:15 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 17.0.1 (17.0.0 was not released):
+  * Teleport 17 brings the following new features and improvements:
+    - Refreshed web UI
+    - Modern signature algorithms
+    - (Preview) AWS IAM Identity Center integration
+    - Hardware key support for Teleport Connect
+    - Nested access lists
+    - Access lists UI/UX improvements
+    - Signed and notarized macOS assets
+    - Datadog Incident Management plugin for access requests
+    - Hosted Microsoft Teams plugin for access requests
+    - Dynamic registration for Windows desktops
+    - Support for images in web SSH sessions
+    - tbot CLI updates
+  * Refreshed Web UI
+    We have updated and improved designs and added a new navigation
+    menu to Teleport 17’s web UI to enhance its usability and
+    scalability.
+  * Modern signature algorithms
+    Teleport 17 admins have the option to use elliptic curve
+    cryptography for the majority of user, host, and certificate
+    authority key material.  This includes Ed25519 SSH keys and
+    ECDSA TLS keys, replacing the RSA keys used today.  New
+    clusters will leverage modern signature algorithms by default.
+    Existing Teleport clusters will continue to use RSA2048 until a
+    CA rotation is performed.
+  * (Preview) AWS IAM Identity Center integration
+    Teleport 17 integrates with AWS IAM Identity Center to allow
+    users to sync and manage AWS IC group members via Access Lists.
+    See documentation guide.
+  * Hardware key support for Teleport Connect
+    We have extended Teleport 17’s support for hardware-backed
+    private keys to Teleport Connect.
+  * Nested access lists
+    Teleport 17 admins and access list owners can add access lists
+    as members in other access lists.  See details in the
+    documentation.
+  * Access lists UI/UX improvements
+    Teleport 17 web UI has an updated access lists page that will
+    include the new table view, improved search and filtering
+    capabilities.
+  * Datadog Incident Management plugin for access requests
+    Teleport 17 supports PagerDuty-like integration with Datadog's
+    on-call and incident management APIs for access request
+    notifications.  See the configuration guide.
+  * Hosted Microsoft Teams plugin for access requests
+    Teleport 17 adds support for Microsoft Teams integration for
+    access request notifications using Teleport web UI without
+    needing to self-host the plugin.
+  * Dynamic registration for Windows desktops
+    Dynamic registration allows Teleport administrators to register
+    new Windows desktops without having to update the static
+    configuration files read by Teleport Windows Desktop Service
+    instances.
+  * Support for images in web SSH sessions
+    The SSH console in Teleport’s web UI includes support for
+    rendering images via both the SIXEL and iTerm Inline Image
+    Protocol (IIP).
+  * tbot CLI updates
+    The tbot client now supports starting most outputs and services
+    directly from the command line with no need for a configuration
+    file using the new tbot start <mode> family of commands. If
+    desired, a given command can be converted to a YAML
+    configuration file with tbot configure <mode>.  Additionally,
+    tctl now supports inspection and management of bot instances
+    using the tctl bots instances family of commands. This allows
+    onboarding of new instances for existing bots with tctl bots
+    instances add, and inspection of existing instances with tctl
+    bots instances list.
+  * Breaking changes and deprecations
+    - Enforced stricter requirements for SSH hostnames
+      Hostnames are only allowed if they are less than 257
+      characters and consist of only alphanumeric characters and
+      the symbols . and -.  Any hostname that violates the new
+      restrictions will be changed, the original hostname will be
+      moved to the teleport.internal/invalid-hostname label for
+      discoverability.  Any Teleport agents with an invalid
+      hostname will be replaced with the host UUID.  Any Agentless
+      OpenSSH Servers with an invalid hostname will be replaced
+      with the host of the address, if it is valid, or a randomly
+      generated identifier.  Any hosts with invalid hostnames
+      should be updated to comply with the new requirements to
+      avoid Teleport renaming them.
+    - TELEPORT_ALLOW_NO_SECOND_FACTOR removed
+      As of Teleport 16, multi-factor authentication is required
+      for local users. To assist with upgrades, Teleport 16
+      included a temporary opt-out mechanism via the
+      TELEPORT_ALLOW_NO_SECOND_FACTOR environment variable. This
+      opt-out mechanism has been removed.
+    - TOTP for per-session MFA
+      Teleport 17 is the last release where tsh will allow for
+      using TOTP with per-session MFA. Starting with Teleport 18,
+      tsh will require a strong webauthn credential for per-session
+      MFA.  TOTP will continue to be accepted for the initial
+      login.
+
+-------------------------------------------------------------------
 Fri Nov 15 08:43:06 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - add completions for teleport, tsh, tctl and tbot
