@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Nov 26 14:07:33 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.87.0:
+  * deps: use go-scm upstream project (#3146)
+  * chore: deps(go): bump module github.com/drone/go-scm to v1.39.0
+    (#3137)
+  * deps(go): bump module cuelang.org/go (#3131)
+  * deps(go): bump module helm.sh/helm/v3 (#3126)
+  * deps(go): bump module github.com/stretchr/testify (#3119)
+  * deps(go): bump module github.com/goccy/go-yaml (#3111)
+  * deps(go): bump module github.com/Masterminds/semver/v3 (#3101)
+  * chore: deps(go): bump module github.com/drone/go-scm to v1.38.9
+    (#3091)
+  * feat(autodiscovery/helm): allow to set target.SkipPackaging for
+    helmchart (#3062)
+  * fix: message for golang update in go.mod (#3068)
+  * feat(temurin): introduces condition to check for Adoptium
+    releases existence (#3063)
+  * deps(go): bump module github.com/hashicorp/hcl/v2 (#3055)
+  * deps(go): bump module github.com/goccy/go-yaml (#3044)
+  * deps: Bump Golang version to 1.23.3 (#3031)
+  * deps(go): bump module golang.org/x/text (#3027)
+  * deps(go): bump module golang.org/x/oauth2 (#3011)
+  * deps(go): bump module golang.org/x/mod (#3012)
+  * fix: print Updatecli log to stdout instead of sterr (#2997)
+  * deps(go): bump module github.com/goccy/go-yaml (#2989)
+  * deps: bump updatecli version to v0.86.1 (#2979)
+
+-------------------------------------------------------------------
 Tue Nov 12 06:49:54 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.86.1:
