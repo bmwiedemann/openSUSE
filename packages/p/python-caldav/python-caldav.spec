@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-caldav
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -20,7 +20,7 @@
 
 %global modname caldav
 Name:           python-%{modname}
-Version:        1.3.9
+Version:        1.4.0
 Release:        0
 Summary:        CalDAV (RFC4791) client library for Python
 License:        Apache-2.0 AND GPL-3.0-or-later
@@ -28,9 +28,11 @@ Group:          Development/Languages/Python
 URL:            https://pypi.python.org/pypi/%{modname}
 Source:         https://files.pythonhosted.org/packages/source/c/caldav/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module vobject}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-icalendar
@@ -56,19 +58,19 @@ events, modify events and properties).
 find caldav -name "*.py" | xargs sed -i '1 {/^#!/d}'
 
 %build
-%python_build
+%pyproject_wheel
 
 %check
 # almost all tests are online, would require
 # caldav server to run
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %license COPYING.APACHE COPYING.GPL
-%{python_sitelib}/%{modname}-%{version}-py*.egg-info
+%{python_sitelib}/%{modname}-*.dist-info
 %{python_sitelib}/%{modname}/
 
 %changelog
