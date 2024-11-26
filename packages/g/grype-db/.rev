@@ -7,4 +7,12 @@
     <comment>new package grype-db: create a Grype vulnerability database from upstream vulnerability data sources</comment>
     <requestid>1225780</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e2a71042423ecb6b74d4cc2faf0783e7</srcmd5>
+    <version>0.27.2</version>
+    <time>1732651002</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1226550</requestid>
+  </revision>
 </revisionlist>
