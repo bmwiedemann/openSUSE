@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 26 12:30:44 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 3.15.3.
+  Changelog: https://github.com/GrandOrgue/grandorgue/releases/tag/3.15.3-1
+  - Fixed crash of reference pipes with the "--justgui" option https://github.com/GrandOrgue/grandorgue/issues/2019
+  - Fixed crash on attempt of loading an organ if it's files did not exist https://github.com/GrandOrgue/grandorgue/issues/1990
+  - Fixed the sequencer "Save file" button not lightening after inserting or deleting a combination https://github.com/GrandOrgue/grandorgue/issues/2024
+  - Fixed appearence, sizing and the scrollbar issues with the Stops window https://github.com/GrandOrgue/grandorgue/issues/1961
+
+-------------------------------------------------------------------
 Sat Oct 26 01:26:02 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 3.15.2.
