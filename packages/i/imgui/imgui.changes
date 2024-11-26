@@ -1,4 +1,125 @@
 -------------------------------------------------------------------
+Tue Nov 26 05:31:00 UTC 2024 - ming li <mli@suse.com>
+
+- update to 1.91.0:
+ Breaking Changes:
+  * IO, IME: renamed platform IME hook and added explicit context for
+    consistency and future-proofness.
+      old: io.SetPlatformImeDataFn(ImGuiViewport* viewport, 
+      ImGuiPlatformImeData* data);
+      new: io.PlatformSetImeDataFn(ImGuiContext* ctx, ImGuiViewport*
+      viewport, ImGuiPlatformImeData* data);
+      It is expected that for a vast majority of users this is 
+      automatically set by core library and/or platform backend so 
+      it won't have any effect.
+  * Obsoleted GetContentRegionMax(), GetWindowContentRegionMin() and
+    GetWindowContentRegionMax(). (information thread: #7838)
+    You should never need those functions! You can do everything in 
+    less a confusing manner by only using GetCursorScreenPos() and
+    GetContentRegionAvail(). Also always consider that if you are
+    using GetWindowPos() and GetCursorPos() you may also be making
+    things unnecessarily complicated.
+    I repeat: You can do everything with GetCursorScreenPos()
+    and GetContentRegionAvail()!
+      GetWindowContentRegionMax().x - GetCursorPos().x --> 
+      GetContentRegionAvail().x
+      GetWindowContentRegionMax().x + GetWindowPos().x --> 
+      GetCursorScreenPos().x + GetContentRegionAvail().x 
+      // when called from left edge of window
+      GetContentRegionMax() --> GetContentRegionAvail() + GetCursorScreenPos()
+      - GetWindowPos() // right edge in local coordinates
+      GetWindowContentRegionMax().x - GetWindowContentRegionMin().x -->
+      GetContentRegionAvail() // when called from left edge of window
+  * Item flag changes:
+      Obsoleted PushButtonRepeat()/PopButtonRepeat() in favor of using
+      new PushItemFlag()/PopItemFlag() with ImGuiItemFlags_ButtonRepeat.
+      Kept inline redirecting functions (will obsolete).
+      Obsoleted PushTabStop()/PopTabStop() in favor of using new 
+      PushItemFlag()/PopItemFlag() with ImGuiItemFlags_NoTabStop.
+      Kept inline redirecting functions (will obsolete).
+      Renamed ImGuiSelectableFlags_DontClosePopups to 
+      ImGuiSelectableFlags_NoAutoClosePopups for consistency. Kept inline
+      redirecting functions (will obsolete). + Internals: 
+      changed/inverted ImGuiItemFlags_SelectableDontClosePopup (default==false) to
+      ImGuiItemFlags_AutoClosePopups (default==true), same logic, 
+      only inverted behavior. (#1379, #1468, #2200, #4936, #5216, #7302, #7573)
+  * Commented out obsolete ImGuiModFlags (renamed to ImGuiKeyChord in 1.89).
+    (#4921, #456)
+  * Commented out obsolete ImGuiModFlags_XXX values 
+    (renamed to ImGuiMod_XXX in 1.89). (#4921, #456)
+      ImGuiModFlags_Ctrl -> ImGuiMod_Ctrl, ImGuiModFlags_Shift -> 
+      ImGuiMod_Shift etc.
+  * Backends: GLFW+Emscripten: Renamed 
+    ImGui_ImplGlfw_InstallEmscriptenCanvasResizeCallback()
+    to ImGui_ImplGlfw_InstallEmscriptenCallbacks(), with an
+    additional GLFWWindow* parameter. (#7647) [@ypujante]
+  
+ Other Changes
+  * Added TextLink(), TextLinkOpenURL() hyperlink widgets. (#7660)
+  * IO: added io.PlatformOpenInShellFn() handler to open a 
+    link/folder/file in OS shell. (#7660)
+    Added IMGUI_DISABLE_DEFAULT_SHELL_FUNCTIONS to disable
+    default Windows/Linux/Mac implementation.
+  * IO: added io.ConfigNavSwapGamepadButtons to swap Activate/Cancel
+    (A<>B) buttons, to match the typical "Nintendo/Japanese consoles"
+    button layout when using Gamepad navigation. (#787, #5723)
+  * Added PushItemFlag()/PopItemFlags(), ImGuiItemFlags to modify shared
+    item flags:
+      Added ImGuiItemFlags_NoTabStop to disable tabbing through items.
+      Added ImGuiItemFlags_NoNav to disable any navigation and focus
+      of items. (#787)
+      Added ImGuiItemFlags_NoNavDefaultFocus to disable item being 
+      default focus. (#787)
+      Added ImGuiItemFlags_ButtonRepeat to enable repeat on any 
+      button-like behavior.
+      Added ImGuiItemFlags_AutoClosePopups to disable menu 
+      items/selection auto closing parent popups.
+      Disabling this was previously possible for Selectable() via a direct
+      flag but not for MenuItem(). (#1379, #1468, #2200, #4936, #5216, #7302, #7573)
+      This was mostly all previously in imgui_internal.h.
+  * Multi-Select: added multi-select API and demos. (#1861, #6518)
+      This system implements standard multi-selection idioms (CTRL+mouse 
+      click, CTRL+keyboard moves, SHIFT+mouse click, SHIFT+keyboard moves,
+      etc.) with support for clipper (not submitting non-visible items), 
+      box-selection with scrolling, and many other details.
+      In the spirit of Dear ImGui design, your code owns both items and actual
+      selection data. This is designed to allow all kinds of selection storage
+      you may use in your application (e.g. set/map/hash, intrusive selection,
+      interval trees, up to you).
+      The supported widgets are Selectable(), Checkbox(). TreeNode() is also 
+      technically supported but... using this correctly is more complicated.
+      You need some sort of linear/random access to your tree, which is suited
+      to advanced trees setups already implementing filters and clipper. 
+      We will work toward simplifying our existing demo for trees.
+      A helper ImGuiSelectionBasicStorage is provided to facilitate getting 
+      started in a typical app (likely to suit a majority of users).
+      Documentation:
+        Wiki page https://github.com/ocornut/imgui/wiki/Multi-Select for 
+        API overview.
+        Demo code + headers are well commented.
+      Added BeginMultiSelect(), EndMultiSelect(), SetNextItemSelectionUserData().
+      Added IsItemToggledSelection() for use if you need latest selection
+      update during current iteration.
+      Added ImGuiMultiSelectIO and ImGuiSelectionRequest structures:
+        BeginMultiSelect() and EndMultiSelect() return a ImGuiMultiSelectIO
+        structure, which is mostly an array of ImGuiSelectionRequest actions
+        (clear, select all, set range, etc.)
+        Other fields are helpful when using a clipper, or wanting to handle
+        deletion nicely.
+      Added ImGuiSelectionBasicStorage helper to store and maintain a 
+      selection (optional):
+        This is similar to if you used e.g. a std::set to store a selection,
+        with all the right glue to honor ImGuiMultiSelectIO requests. 
+        Most applications can use that.
+      Added ImGuiSelectionExternalStorage helper to maintain an externally
+      stored selection (optional):
+        Helpful to easily bind multi-selection to e.g. an array of checkboxes.
+      Added ImGuiMultiSelectFlags options:
+        ImGuiMultiSelectFlags_SingleSelect: Disable selecting more than one item.
+        This is available to allow single-selection code to share same code/logic
+        if desired. It essential...
+
+-------------------------------------------------------------------
 Fri Jul 26 06:22:12 UTC 2024 - Frantisek Simorda <frantisek.simorda@suse.com>
 
 - - Update to 1.90.9
