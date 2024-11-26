@@ -29,7 +29,7 @@
 %global bleach_version                6.1.0
 %global canonicaljson_version         2.0.0
 %global cryptography_version          43.0.3
-%global immutabledict_version         4.2.0
+%global immutabledict_version         4.2.1
 %global idna_version                  3.8
 %global ijson_version                 3.3.0
 %global jsonschema_version            4.20.0
@@ -38,8 +38,8 @@
 %global msgpack_version               1.1.0
 # TODO 1.3.0
 %global netaddr_version               1.2.1
-# TODO 8.13.49
-%global phonenumbers_version          8.13.48
+# TODO 8.13.50
+%global phonenumbers_version          8.13.49
 %global prometheus_client_version     0.20.0
 %global psutil_version                2.0.0
 %global pyOpenSSL_version             24.2.1
@@ -154,7 +154,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.119.0
+Version:        1.120.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        AGPL-3.0-or-later
