@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 26 09:34:36 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.5.46:
+  * Added support for removing preload hints in privacy plugin
+  * Fixed #7734: Code blocks in h5 headlines are uppercased
+  * Fixed #7725: Blog plugin crashing on missing timezone (9.5.45
+    regression)
+
+-------------------------------------------------------------------
 Wed Nov 20 09:27:43 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.5.45:
