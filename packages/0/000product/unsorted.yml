@@ -36622,20 +36622,30 @@ unsorted:
   - python313-gobject-Gdk 
   - python313-gobject-cairo 
   - python313-gobject-devel 
+  - python313-google-ai-generativelanguage 
   - python313-google-api-core 
   - python313-google-api-python-client 
   - python313-google-auth 
   - python313-google-auth-httplib2 
   - python313-google-auth-oauthlib 
   - python313-google-cloud-appengine-logging 
+  - python313-google-cloud-artifact-registry 
   - python313-google-cloud-audit-log 
+  - python313-google-cloud-build 
+  - python313-google-cloud-compute 
   - python313-google-cloud-core 
   - python313-google-cloud-dns 
+  - python313-google-cloud-domains 
   - python313-google-cloud-firestore 
+  - python313-google-cloud-iam 
+  - python313-google-cloud-kms 
+  - python313-google-cloud-kms-inventory 
   - python313-google-cloud-logging 
+  - python313-google-cloud-run 
   - python313-google-cloud-secret-manager 
   - python313-google-cloud-service-directory 
   - python313-google-cloud-spanner 
+  - python313-google-cloud-speech 
   - python313-google-cloud-storage 
   - python313-google-cloud-translate 
   - python313-google-cloud-vpc-access 
@@ -36909,6 +36919,7 @@ unsorted:
   - python313-jupyter-server-test 
   - python313-jupyter-server-ydoc 
   - python313-jupyter-server-ydoc-test 
+  - python313-jupyter-sphinx 
   - python313-jupyter-ydoc 
   - python313-jupyter_console 
   - python313-jupyterlab 
