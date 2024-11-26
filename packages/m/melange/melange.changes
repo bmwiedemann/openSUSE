@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 26 13:50:47 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.15.14:
+  * fix(pipeline): validate expected commit before passing to
+    git-checkout pipeline (#1667)
+  * Add git version to Summarize output
+  * RELEASE.md update, add statement that tags and releases will
+    update
+
+-------------------------------------------------------------------
 Fri Nov 22 19:27:01 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.15.13:

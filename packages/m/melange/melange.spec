@@ -17,7 +17,7 @@
 
 
 Name:           melange
-Version:        0.15.13
+Version:        0.15.14
 Release:        0
 Summary:        Build APKs from source code
 License:        Apache-2.0
