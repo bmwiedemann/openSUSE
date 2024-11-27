@@ -34,7 +34,6 @@ BuildRequires:  gcc13-PIE
 # Both Qt 5 and Qt 6 flavors use the same cmake config name, use the -devel package name
 # BuildRequires:  cmake(KQuickImageEditor)
 BuildRequires:  kquickimageeditor-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5CoreAddons) >= 5.67.0
 BuildRequires:  cmake(KF5KIO) >= 5.67.0
 BuildRequires:  cmake(KF5Kirigami2) >= 5.67.0
@@ -83,21 +82,20 @@ export CXX=g++-13
 
 %install
 %kf5_makeinstall -C build
-%suse_update_desktop_file im.kaidan.kaidan
 
 %find_lang %{name} --with-qt
 
 %files
 %license LICENSE
 %doc README.md NEWS
-%dir %{_kf5_sharedir}/%{name}
+%dir %{_kf5_sharedir}/kaidan
 %{_kf5_applicationsdir}/im.kaidan.kaidan.desktop
 %{_kf5_appstreamdir}/im.kaidan.kaidan.appdata.xml
-%{_kf5_bindir}/%{name}
-%{_kf5_iconsdir}/hicolor/*/apps/%{name}.*
+%{_kf5_bindir}/kaidan
+%{_kf5_iconsdir}/hicolor/*/apps/kaidan.*
 %{_kf5_notifydir}/kaidan.notifyrc
-%{_kf5_sharedir}/%{name}/images
-%{_kf5_sharedir}/%{name}/providers.json
+%{_kf5_sharedir}/kaidan/images
+%{_kf5_sharedir}/kaidan/providers.json
 
 %files lang -f %{name}.lang
 
