@@ -131,4 +131,12 @@
     <comment>Add gcc14 compat change</comment>
     <requestid>1194856</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>7fe12c05f16290a240d1623b40efba52</srcmd5>
+    <version>1.5.0</version>
+    <time>1732742105</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1226903</requestid>
+  </revision>
 </revisionlist>

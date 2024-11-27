@@ -41,7 +41,6 @@ BuildRequires:  libboost_system-devel
 BuildRequires:  libdwarf-devel
 BuildRequires:  libunwind-devel
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  zlib-devel
 BuildRequires:  cmake(KChart) >= 2.6.0
 BuildRequires:  cmake(KF5ConfigWidgets)
@@ -96,9 +95,6 @@ extra_opts="-DLIB_SUFFIX=64"
 %kf5_makeinstall -C build
 
 %find_lang %{name} --all-name
-
-# Fixup desktop file
-%suse_update_desktop_file org.kde.heaptrack Development Profiling
 
 %files
 %license LICENSES/*
