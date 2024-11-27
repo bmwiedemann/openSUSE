@@ -472,4 +472,12 @@
     + Fix command pdm config to not show site configuration file path if it</comment>
     <requestid>1204012</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>55317a43c4ee8aa54787626a65fe10b7</srcmd5>
+    <version>2.21.0</version>
+    <time>1732742146</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1226943</requestid>
+  </revision>
 </revisionlist>

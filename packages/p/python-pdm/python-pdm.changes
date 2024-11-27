@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Nov 27 12:46:38 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.21.0
+  * Support dependency groups as standardized by PEP 735. By default, dev 
+    dependencies will be written to [dependency-groups] table.
+  * Fix a bug that strategy.inherit_metadata config is not honored when using 
+    --lockfile option. 
+  * Update resolvelib to 1.1.0.
+  * Add a fixer to remove the deprecated cross_platform strategy from lock file.
+  * Pass original working directory as env variable to pdm scripts.
+  * Output similar commands or script command when the input command is not 
+    correct.
+  * Print task name by default when using pdm run
+  * Make OrderedSet.__contains__ run in O(1)
+  * Drop support of Python 3.8
+
+-------------------------------------------------------------------
 Fri Sep 27 04:52:45 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.19.1: 
