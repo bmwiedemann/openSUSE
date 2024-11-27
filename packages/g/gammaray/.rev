@@ -224,4 +224,12 @@
     <comment>- Add a _constraints file to fix oom issues when building gammaray</comment>
     <requestid>1218736</requestid>
   </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>0126c31dbff33f00d243d91904b565f9</srcmd5>
+    <version>3.1.0</version>
+    <time>1732742105</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1226902</requestid>
+  </revision>
 </revisionlist>

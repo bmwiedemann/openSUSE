@@ -46,7 +46,6 @@ BuildRequires:  graphviz-gnome
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libdw-devel
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt%{qt_suffix}3DAnimation) >= %{qt_min_version}
 BuildRequires:  cmake(Qt%{qt_suffix}3DExtras) >= %{qt_min_version}
 BuildRequires:  cmake(Qt%{qt_suffix}3DInput) >= %{qt_min_version}
@@ -197,8 +196,6 @@ frameworks in Qt. Development files.
 
 # Already packaged with %%doc and %%license tags
 rm -r %{buildroot}%{_datadir}/doc
-
-%suse_update_desktop_file GammaRay Development Debugger
 
 %fdupes %{buildroot}
 
