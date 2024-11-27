@@ -21,13 +21,11 @@ Version:        3.3.0
 Release:        0
 Summary:        Project Management Application
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          Productivity/Office/Suite
 URL:            https://www.calligra.org/
 Source0:        https://download.kde.org/stable/calligra/%{version}/calligraplan-%{version}.tar.xz
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  perl-base
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KChart) >= 2.8.0
 BuildRequires:  cmake(KF5Activities)
 BuildRequires:  cmake(KF5Archive)
@@ -85,14 +83,10 @@ Plan is the project management application of the Calligra Suite.
 %kf5_find_lang %{name}
 %kf5_find_htmldocs
 
-%suse_update_desktop_file -r org.kde.calligraplan       Qt KDE Office ProjectManagement
-%suse_update_desktop_file -r org.kde.calligraplanwork   Qt KDE Office ProjectManagement
-
 # not needed
 rm %{buildroot}/%{_kf5_libdir}/libplan*.so
 
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %license COPYING*
