@@ -34,7 +34,6 @@ Source2:        kdiff3.keyring
 BuildRequires:  boost-devel >= 1.71
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  fdupes
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
@@ -71,8 +70,6 @@ KDiff3 is a program that:
 
 %install
 %kf6_install
-
-%suse_update_desktop_file -r org.kde.kdiff3 Qt KDE Utility TextEditor X-KDE-Utilities-File
 
 %find_lang %{name} --all-name --with-man --with-html
 
