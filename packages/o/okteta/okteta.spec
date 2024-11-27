@@ -34,7 +34,6 @@ Source99:       okteta-rpmlintrc
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules >= 5.48.0
 BuildRequires:  kf5-filesystem
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Bookmarks)
 BuildRequires:  cmake(KF5Codecs)
 BuildRequires:  cmake(KF5Completion)
@@ -135,8 +134,6 @@ Contains the development files for the Okteta Hex Editor.
 %find_lang libkasten libkasten.lang
 %find_lang liboktetakasten libkasten.lang
 %{kf5_find_htmldocs}
-
-%suse_update_desktop_file org.kde.okteta Utility Editor
 
 %ldconfig_scriptlets -n libKasten%{Kasten_sover}
 %ldconfig_scriptlets -n libOkteta%{Okteta_sover}

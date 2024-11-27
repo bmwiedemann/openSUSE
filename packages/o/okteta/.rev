@@ -700,4 +700,12 @@ Remove ancient Obsoletes/provides (forwarded request 232571 from sumski)</commen
     <comment>Update to 0.26.18</comment>
     <requestid>1207012</requestid>
   </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>da7324bc22f233527975c3a985d19646</srcmd5>
+    <version>0.26.18</version>
+    <time>1732742141</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1226938</requestid>
+  </revision>
 </revisionlist>
