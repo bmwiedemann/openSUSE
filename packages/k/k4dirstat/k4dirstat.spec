@@ -24,7 +24,6 @@ License:        GPL-2.0-only AND LGPL-2.0-only
 URL:            https://github.com/jeromerobert/k4dirstat
 Source0:        https://github.com/jeromerobert/k4dirstat/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  extra-cmake-modules
-BuildRequires:  update-desktop-files
 BuildRequires:  zlib-devel
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5DocTools)
@@ -55,8 +54,6 @@ graphically.
 
 %install
 %kf5_makeinstall -C build
-
-%suse_update_desktop_file -r k4dirstat Qt KDE Utility Filesystem
 
 %find_lang k4dirstat %{name}.lang
 

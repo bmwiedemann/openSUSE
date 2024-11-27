@@ -112,4 +112,12 @@
     <comment>- Require extra-cmake-modules at build time</comment>
     <requestid>1135503</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>a3a63e475a0b4c1324c72dd796d5f44e</srcmd5>
+    <version>3.4.3</version>
+    <time>1732742161</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1226965</requestid>
+  </revision>
 </revisionlist>

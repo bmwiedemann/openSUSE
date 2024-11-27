@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 20 18:04:49 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Stop using the %suse_update_desktop_file macro
+
+-------------------------------------------------------------------
 Fri Dec 15 22:02:56 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Require extra-cmake-modules at build time
