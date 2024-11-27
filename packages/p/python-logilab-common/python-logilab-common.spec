@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-logilab-common
-Version:        1.11.0
+Version:        2.0.0
 Release:        0
 Summary:        Python lowlevel functionality shared by logilab projects
 License:        LGPL-2.1-or-later

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 20 15:02:10 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.0:
+  * drop python 2.x support
+
+-------------------------------------------------------------------
 Sat Jan 20 19:35:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update 1.11.0:

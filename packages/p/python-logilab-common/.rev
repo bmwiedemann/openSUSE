@@ -125,4 +125,12 @@
 - remove noarch for now</comment>
     <requestid>1140204</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>505f82cf07b5329ab4ef1c6c7d1c2a6b</srcmd5>
+    <version>2.0.0</version>
+    <time>1732742136</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1226928</requestid>
+  </revision>
 </revisionlist>
