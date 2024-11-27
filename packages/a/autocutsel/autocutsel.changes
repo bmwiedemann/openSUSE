@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 27 16:08:11 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- do not compress the manual page manually; it's done by a brp
+  script during build automatically giving us more flexibility
+
+-------------------------------------------------------------------
+Tue Nov 26 21:52:59 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- add man pages from Debian
+- changed LICENSE file from %doc to %license 
+
+-------------------------------------------------------------------
 Thu Jun  3 16:26:16 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.10.1

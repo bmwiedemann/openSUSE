@@ -1,7 +1,7 @@
 #
 # spec file for package autocutsel
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ Summary:        Clipboard / Cutbuffer management helper
 License:        GPL-2.0-or-later
 Group:          System/X11/Utilities
 Source:         https://github.com/sigmike/autocutsel/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source100:      autocutsel.1
+Source101:      cutsel.1
 
 %description
 X servers use two schemes to copy text between applications. The first one
@@ -59,11 +61,13 @@ three "clipboards" are always kept synchronized.
 
 %install
 %make_install
+install -m 644 -D -t %{buildroot}%{_mandir}/man1 %{SOURCE100} %{SOURCE101}
 
 %files
-%doc COPYING
+%license COPYING
 %{_bindir}/cutsel
 %{_bindir}/autocutsel
+%{_mandir}/man1/*
 %doc README
 
 %changelog

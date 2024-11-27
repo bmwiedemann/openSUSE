@@ -98,4 +98,16 @@
     <comment></comment>
     <requestid>897260</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>a3960492e91a5b1eb7ba0b73b65d110e</srcmd5>
+    <version>0.10.1</version>
+    <time>1732742143</time>
+    <user>anag+factory</user>
+    <comment>- do not compress the manual page manually; it's done by a brp
+  script during build automatically giving us more flexibility
+
+- add man pages from Debian
+- changed LICENSE file from %doc to %license</comment>
+    <requestid>1226941</requestid>
+  </revision>
 </revisionlist>
