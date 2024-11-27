@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 20 16:01:10 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Stop using the %suse_update_desktop_file macro
+- Spec cleanup
+
+-------------------------------------------------------------------
 Thu Jan 17 11:14:47 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim bias from description.

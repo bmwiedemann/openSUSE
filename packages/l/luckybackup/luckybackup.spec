@@ -1,7 +1,7 @@
 #
 # spec file for package luckybackup
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,9 +21,8 @@ Version:        0.5.0
 Release:        0
 Summary:        A backup and sync tool
 License:        GPL-3.0-or-later
-Group:          Productivity/Archiving/Backup
-URL:            http://luckybackup.sourceforge.net/
-Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+URL:            https://luckybackup.sourceforge.net/
+Source0:        https://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
@@ -31,9 +30,6 @@ BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Widgets)
 Requires:       polkit
 Requires:       rsync
-%if 0%{?suse_version}
-BuildRequires:  update-desktop-files
-%endif
 
 %description
 luckyBackup is an application that backs-up and/or synchronizes any directories
@@ -44,25 +40,21 @@ manipulation, and, by way of rsync, transfers only changes and not
 all data.
 
 %prep
-%setup -q
+%autosetup -p1
+
 # Fix permissions (fixes rpmlint errors "spurious-executable-perm" and "executable-docs")
 chmod 644 manual/index.html
 
 %build
 %qmake5 QMAKE_CXXFLAGS+="%{optflags}" -config release luckybackup.pro
-make %{?_smp_mflags}
+
+%make_build
 
 %install
-make INSTALL_ROOT=%{buildroot} install
+%qmake5_install
 
 # Remove unneeded files
-rm -rf %{buildroot}%{_datadir}/doc/luckybackup/
-rm -rf %{buildroot}%{_datadir}/menu/
-
-%if 0%{?suse_version}
-%suse_update_desktop_file -r %{name} Qt Utility Archiving
-%suse_update_desktop_file -r %{name}-su Qt Utility Archiving
-%endif
+rm -r %{buildroot}%{_datadir}/doc/luckybackup/
 
 %files
 %doc license/ manual/ readme/*
