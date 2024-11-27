@@ -16,7 +16,7 @@
 #
 
 
-%define data_version 1.18
+%define data_version 1.19
 %define sover   25
 %define libname lib%{name}%{sover}
 Name:           proj
@@ -30,7 +30,7 @@ Source0:        https://github.com/OSGeo/PROJ/releases/download/%{version}/%{nam
 Source1:        https://github.com/OSGeo/PROJ-data/releases/download/%{data_version}.0/%{name}-data-%{data_version}.tar.gz
 BuildRequires:  cmake >= 3.16
 %if 0%{?suse_version} < 1600
-BuildRequires:  gcc11-c++
+BuildRequires:  gcc13-c++
 %else
 BuildRequires:  gcc-c++
 %endif
@@ -121,8 +121,8 @@ License:        MIT
 
 %build
 %if 0%{?suse_version} < 1600
-export CC=gcc-11
-export CXX=g++-11
+export CC=gcc-13
+export CXX=g++-13
 %endif
 # c++14 needed to build tests using gtest >= 1.14
 %cmake \

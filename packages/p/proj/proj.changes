@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 27 14:24:13 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update data to version 1.19
+- Bump gcc version used for Leap building to 13
+
+-------------------------------------------------------------------
 Thu Oct 31 21:50:45 UTC 2024 - Libor Pechacek <lpechacek@gmx.com>
 
 - update to 9.5.0:

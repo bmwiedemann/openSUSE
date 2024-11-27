@@ -447,4 +447,13 @@ This package is included in Debian.
     <comment></comment>
     <requestid>1220032</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>324c28ffcba1a72e8c0ff0faa67ec4d1</srcmd5>
+    <version>9.5.0</version>
+    <time>1732742118</time>
+    <user>anag+factory</user>
+    <comment>- Update data to version 1.19
+- Bump gcc version used for Leap building to 13</comment>
+    <requestid>1226921</requestid>
+  </revision>
 </revisionlist>
