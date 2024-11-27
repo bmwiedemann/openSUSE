@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 26 12:50:14 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1732625402.19572aa2:
+  * Bump prettier from 3.3.3 to 3.4.0
+  * Avoid calling hook script multiple times
+  * Avoid warning for undefined cgroup slice
+  * Update RegEx to detect hyphenated test names
+
+-------------------------------------------------------------------
 Wed Nov 20 17:14:36 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1732121872.463728ed:
