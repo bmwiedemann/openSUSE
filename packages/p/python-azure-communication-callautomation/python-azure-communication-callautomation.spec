@@ -18,14 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-communication-callautomation
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Microsoft Azure Communication Call Automation Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-communication-callautomation/azure-communication-callautomation-%{version}.tar.gz
-Source1:        LICENSE.txt
+Source:         https://files.pythonhosted.org/packages/source/a/azure_communication_callautomation/azure_communication_callautomation-%{version}.tar.gz
 BuildRequires:  %{python_module azure-communication-nspkg >= 0.0.0b1}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
@@ -35,8 +34,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-azure-communication-nspkg >= 0.0.0b1
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       (python-azure-core >= 1.29.2 with python-azure-core < 2.0.0)
-Requires:       (python-isodate >= 0.6.1 with python-isodate < 1.0.0)
+Requires:       python-msrest >= 0.7.1
+Requires:       (python-azure-core >= 1.29.5 with python-azure-core < 2.0.0)
 Requires:       (python-typing_extensions >= 4.3.0 if python-base < 3.8)
 %if 0%{?sle_version} >= 150400
 Obsoletes:      python3-azure-communication-callautomation < 1.1.0
@@ -50,10 +49,9 @@ Call Automation provides developers the ability to build server-based,
 intelligent call workflows, and call recording for voice and PSTN channels.
 
 %prep
-%setup -q -n azure-communication-callautomation-%{version}
+%setup -q -n azure_communication_callautomation-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-communication-callautomation-%{version}
 %pyproject_wheel
 
 %install
@@ -68,7 +66,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
-%license LICENSE.txt
+%license LICENSE
 %{python_sitelib}/azure/communication/callautomation
 %{python_sitelib}/azure_communication_callautomation-*.dist-info
 

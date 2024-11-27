@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 27 09:12:12 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.3.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Rename LICENSE.txt to LICENSE in %files section
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Mon May  6 11:05:19 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
