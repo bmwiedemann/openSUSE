@@ -4,8 +4,8 @@
     <param name="url">https://gitlab.gnome.org/GNOME/vte.git</param>
     <param name="scm">git</param>
     <param name="versionformat">@PARENT_TAG@</param>
-<!--    <param name="changesgenerate">enable</param>  -->
-    <param name="revision">0.78.1</param>
+    <param name="changesgenerate">disable</param>
+    <param name="revision">0.78.2</param>
     <param name="exclude">doc/vttest.*</param>
   </service>
   <service name="tar" mode="buildtime" />

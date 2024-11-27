@@ -61,7 +61,7 @@
 
 Name:           openafs
 
-Version:        1.8.12.g20240711
+Version:        1.8.13.g20241112
 Release:        0
 Summary:        OpenAFS Distributed File System
 License:        IPL-1.0
@@ -102,16 +102,6 @@ Source57:       openafs.ThisCell
 Source58:       openafs.cacheinfo
 Source98:       kmp_only.files
 Source99:       openafs.changes
-
-# PATCH-UPSTREAM required for kernel 6.10
-Patch1:         03b280649f5e22ed74c217d7c98c3416a2fa9052
-Patch2:         0f6a3a402f4a66114da9231032bd68cdc4dee7bc
-Patch3:         658942f2791fad5e33ec7542158c16dfc66eed39
-Patch4:         d8b56f21994ce66d8daebb7d69e792f34c1a19ed
-Patch5:         7097eec17bc01bcfc12c4d299136b2d3b94ec3d7
-# PATCH-HANDLE-BACKPORTS
-# some kernel-features from 6.5 are apparently in 6.4
-Patch99:        handle_backports.diff
 
 #	GENERAL BuildRequires and Requires
 #
@@ -323,14 +313,6 @@ for src_file in %{S:0}  %{S:1}; do
 done
 
 %setup -q -n openafs-%{upstream_version} -T -b 0 -b 1
-%patch -P 1 -p1
-%patch -P 2 -p1
-%patch -P 3 -p1
-%patch -P 4 -p1
-%patch -P 5 -p1
-%if 0%{?sle_version} == 150600
-%patch -P 99 -p1
-%endif
 
 ./regen.sh
 

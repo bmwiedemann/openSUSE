@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 19 09:45:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.2:
+  * Configure filterwarnings=error for pytest
+  * Fix pandas internals changes
+  * Run doctests again
+
+-------------------------------------------------------------------
 Sun Apr 21 11:22:05 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

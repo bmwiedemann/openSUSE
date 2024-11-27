@@ -519,4 +519,16 @@
     <comment>SCripted push of GNOME 47</comment>
     <requestid>1205466</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>d5df22414f4ad3382158a49b9018adc7</srcmd5>
+    <version>47.2</version>
+    <time>1732650915</time>
+    <user>anag+factory</user>
+    <comment>- Adjust _service definition: upstream has changed their tag format
+  to be a simple VERSION tag.
+
+- Update to version 47.2:
+  + Fix a compiling issue for non-gnu C toolchain. (forwarded request 1226278 from dimstar)</comment>
+    <requestid>1226299</requestid>
+  </revision>
 </revisionlist>

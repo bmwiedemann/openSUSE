@@ -17,11 +17,10 @@
 
 
 Name:           lxqt-panel
-Version:        2.1.1
+Version:        2.1.2
 Release:        0
 Summary:        LXQt desktop panel
 License:        LGPL-2.1-or-later
-Group:          System/GUI/LXQt
 URL:            https://github.com/lxqt/lxqt-panel
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
@@ -114,6 +113,9 @@ install -Dm 0644 %{buildroot}%{_datadir}/lxqt/panel.conf -t %{buildroot}%{_sysco
 
 %find_lang %{name} --with-qt --all-name
 
+%check
+%ctest
+
 %files
 %doc AUTHORS CHANGELOG README.md
 %dir %{_datadir}/lxqt
@@ -125,7 +127,7 @@ install -Dm 0644 %{buildroot}%{_datadir}/lxqt/panel.conf -t %{buildroot}%{_sysco
 %{_datadir}/lxqt/panel/qeyes-types/
 %{_datadir}/lxqt/panel.conf
 %{_mandir}/man1/%{name}.1%{?ext_man}
-%{_sysconfdir}/xdg/autostart/%{name}.desktop
+%config %{_sysconfdir}/xdg/autostart/%{name}.desktop
 %license LICENSE
 
 %files devel

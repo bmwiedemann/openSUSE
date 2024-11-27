@@ -28,6 +28,7 @@ License:        LGPL-2.1-or-later
 URL:            https://github.com/linux-nvme/libnvme/
 Source0:        libnvme-%{version}.tar.gz
 Patch01:        0001-linux-fix-derive_psk_digest-OpenSSL-1.1-version.patch
+Patch02:        0002-test-mock-pass-thru-unknown-ioctls.patch
 BuildRequires:  dbus-1-devel
 BuildRequires:  gcc
 BuildRequires:  gcc-c++

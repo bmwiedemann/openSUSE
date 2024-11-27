@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.camera
 Name:           pantheon-camera
-Version:        8.0.0
+Version:        8.0.1
 Release:        0
 Summary:        A camera application
 License:        GPL-3.0-or-later
@@ -56,7 +56,7 @@ Camera application designed for the Pantheon desktop
 %install
 %meson_install
 %find_lang %{appid}
-%fdupes %{buildroot}%{_datadir}
+%fdupes %{buildroot}
 
 %files
 %license COPYING

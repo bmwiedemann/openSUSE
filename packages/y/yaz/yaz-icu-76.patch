@@ -1,0 +1,27 @@
+Index: yaz-5.34.2/m4/ac_check_icu.m4
+===================================================================
+--- yaz-5.34.2.orig/m4/ac_check_icu.m4
++++ yaz-5.34.2/m4/ac_check_icu.m4
+@@ -25,8 +25,8 @@ AC_DEFUN([AC_CHECK_ICU],
+ 			  AC_MSG_RESULT([found])
+ 			  ICU_VERSION=`$pkgconfigpath --modversion icu-i18n`
+ 			  ICU_CPPFLAGS=""
+-			  ICU_CFLAGS=`$pkgconfigpath --cflags icu-i18n`
+-			  ICU_LIBS=`$pkgconfigpath --libs icu-i18n`
++			  ICU_CFLAGS=`$pkgconfigpath --cflags icu-i18n icu-uc`
++			  ICU_LIBS=`$pkgconfigpath --libs icu-i18n icu-uc`
+ 		      else
+ 			  AC_MSG_RESULT([not found])
+ 		      fi
+Index: yaz-5.34.2/yaz-icu.pc.in
+===================================================================
+--- yaz-5.34.2.orig/yaz-icu.pc.in
++++ yaz-5.34.2/yaz-icu.pc.in
+@@ -6,6 +6,6 @@ includedir=@includedir@
+ Name: YAZ ICU
+ Version: @VERSION@
+ Description: YAZ ICU library for building Z39.50 applications
+-Requires: yaz libexslt icu-i18n
++Requires: yaz libexslt icu-i18n icu-uc
+ Libs: -L${libdir} -lyaz_icu @PTHREAD_LIBS@
+ Cflags: @ICU_CPPFLAGS@

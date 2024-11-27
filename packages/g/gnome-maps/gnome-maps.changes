@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov 23 10:47:14 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.2:
+  + Fix a bug where the zoom level was reset to 0 when opening a
+    geo: URI not specifying an explicit zoom level.
+  + Updated translatations.
+
+-------------------------------------------------------------------
 Fri Oct 11 09:55:36 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.1:

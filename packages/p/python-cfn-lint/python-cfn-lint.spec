@@ -18,16 +18,18 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-cfn-lint
-Version:        0.87.9
+Version:        1.20.0
 Release:        0
 Summary:        Tool to checks cloudformation for practices and behaviour
 License:        MIT
 URL:            https://github.com/aws-cloudformation/cfn-python-lint
 Source:         https://github.com/aws-cloudformation/cfn-python-lint/archive/v%{version}.tar.gz#/cfn-lint-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module regex}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sympy}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       git-core
@@ -40,7 +42,7 @@ Requires:       python-networkx >= 2.4
 Requires:       python-regex
 Requires:       python-sarif-om >= 1.0.4
 Requires:       python-sympy >= 1.0.0
-Requires:       (python-jsonschema > 3.0 with python-jsonschema < 5)
+Requires:       python-typing-extensions
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     python-pydot
@@ -50,9 +52,9 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML >= 5.4}
 BuildRequires:  %{python_module aws-sam-translator >= 1.89.0}
+BuildRequires:  %{python_module defusedxml}
 BuildRequires:  %{python_module jschema-to-python >= 1.2.3}
 BuildRequires:  %{python_module jsonpatch}
-BuildRequires:  %{python_module jsonschema > 3.0 with %python-jsonschema < 5}
 BuildRequires:  %{python_module junit-xml >= 1.9}
 BuildRequires:  %{python_module networkx >= 2.4}
 BuildRequires:  %{python_module pydot}
@@ -70,14 +72,12 @@ resource properties and best practices.
 
 %prep
 %setup -q -n cfn-lint-%{version}
-# do not hardcode versions
-sed -i -e 's:~=:>=:g' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/cfn-lint
 
@@ -95,6 +95,7 @@ donttest="$donttest or test_bad_config"
 donttest="$donttest or test_override_parameters"
 donttest="$donttest or test_positional_template_parameters"
 donttest="$donttest or test_template_config"
+donttest="$donttest or test_build_graph"
 %pytest -s test -v -k "not ($donttest)"
 
 %post
@@ -108,6 +109,6 @@ donttest="$donttest or test_template_config"
 %license LICENSE
 %python_alternative %{_bindir}/cfn-lint
 %{python_sitelib}/cfnlint
-%{python_sitelib}/cfn_lint-%{version}*-info
+%{python_sitelib}/cfn_lint-%{version}.dist-info
 
 %changelog

@@ -1,7 +1,7 @@
 #
 # spec file for package maven-shade-plugin
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           maven-shade-plugin
-Version:        3.4.1
+Version:        3.6.0
 Release:        0
 Summary:        Capability to package the artifact in an uber-jar
 License:        Apache-2.0
@@ -63,6 +63,9 @@ Group:          Documentation/HTML
 %prep
 %setup -q
 rm src/test/jars/plexus-utils-1.4.1.jar
+
+%pom_change_dep :plexus-utils ::4.0.2
+%pom_add_dep org.codehaus.plexus:plexus-xml:3.0.1
 
 %build
 %{mvn_build} -f \

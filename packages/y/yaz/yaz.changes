@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Nov 22 08:53:43 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 5.34.2:
+  + Remove outdated distros: Debian Stretch and Ubuntu Trusty
+  + LICENSE: Update to match Index Data's online Revised BSD license
+  + Vscode XML editor settings
+  + YAZ 5.34.1 breaks search with OCLC's "Sisis InfoGuide" origin
+- Add yaz-icu-76.patch: Fix build against ICU 76: most sources
+  found in the wild wrongly define the need on icu-i18n, when most
+  actually would need icu-uc.
+- Add libtool BuildRequires and call autoreconf in build section,
+  as above patch touches the build system.
+
+-------------------------------------------------------------------
 Wed Jun 19 20:58:22 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.34.1:

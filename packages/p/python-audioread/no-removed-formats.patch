@@ -1,0 +1,27 @@
+Index: audioread-3.0.1/audioread/__init__.py
+===================================================================
+--- audioread-3.0.1.orig/audioread/__init__.py
++++ audioread-3.0.1/audioread/__init__.py
+@@ -13,6 +13,7 @@
+ # included in all copies or substantial portions of the Software.
+ 
+ """Multi-library, cross-platform audio decoding."""
++import sys
+ 
+ from . import ffdec
+ from .exceptions import DecodeError, NoBackendError
+@@ -76,9 +77,11 @@ def available_backends(flush_cache=False
+     if BACKENDS and not flush_cache:
+         return BACKENDS
+ 
+-    # Standard-library WAV and AIFF readers.
+-    from . import rawread
+-    result = [rawread.RawAudioFile]
++    result = []
++    if sys.version_info[:2] < (3, 13):
++        # Standard-library WAV and AIFF readers.
++        from . import rawread
++        result.append(rawread.RawAudioFile)
+ 
+     # Core Audio.
+     if _ca_available():

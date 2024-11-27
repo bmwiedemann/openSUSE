@@ -597,4 +597,18 @@
     desktop, open files as new tabs in it and unminimize it.</comment>
     <requestid>1170835</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>e0da49f75677d0b8efad30c6ce4f88c5</srcmd5>
+    <version>1.5.2</version>
+    <time>1732650964</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.5.2:
+ * The printing thread is fixed (previously, it caused a warning message about QBasicTimer).
+ * An old issue is fixed in replacement highlighting of multiple tabs.
+ * Fixed the localization of date and time with Qt6.
+ * Demand attention under Wayland when a window needs activation (although
+   some Wayland compositors may ignore it).
+ * Small fixes and enhancements.</comment>
+    <requestid>1226435</requestid>
+  </revision>
 </revisionlist>

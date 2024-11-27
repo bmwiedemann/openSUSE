@@ -64,7 +64,7 @@ Requires:       logrotate
 Requires:       sessreg
 Requires:       xconsole
 Requires:       xinit
-Requires:       xli
+Recommends:     feh
 Requires:       xmessage
 Requires:       xrdb
 Requires:       xset
@@ -125,7 +125,7 @@ pushd %{buildroot}
 # SuSE default XDM configuration
 tar xf %{SOURCE1}
 %if 0%{?UsrEtcMove}
-patch -p0 < %{PATCH2}
+patch -p1 < %{PATCH2}
 mkdir -p usr%{_sysconfdir}/X11/xdm
 mv etc/X11/xdm/* usr%{_sysconfdir}/X11/xdm
 # Edited by SUSEConfig.xdm, package a copy

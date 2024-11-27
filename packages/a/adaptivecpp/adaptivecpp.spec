@@ -23,8 +23,9 @@ Summary:        Open implementation of SYCL for CPUs and GPUs
 License:        BSD-2-Clause
 URL:            https://adaptivecpp.github.io
 Source:         %{name}-%{version}.tar.gz
-Patch1:         01-env-to-interpreter.patch
-Patch2:         02-cmake-modules.patch
+Patch1:         0001-Use-bin-env-python3-instead-of-python3-in-scripts.patch
+Patch2:         0002-CMake-acpp-clang-to-MODULE.patch
+Patch3:         0003-Remove-realpath-in-acpp.patch
 BuildRequires:  boost-devel
 BuildRequires:  clang18
 BuildRequires:  clang18-devel
@@ -37,6 +38,7 @@ BuildRequires:  libboost_fiber-devel
 BuildRequires:  libboost_test-devel
 BuildRequires:  libedit-devel
 BuildRequires:  libomp18-devel
+# todo: remove version specifier on next v.
 BuildRequires:  llvm18
 BuildRequires:  llvm18-devel
 BuildRequires:  make

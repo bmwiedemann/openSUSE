@@ -1,0 +1,48 @@
+--- jetty.project-jetty-9.4.56.v20240826/jetty-server/src/main/java/org/eclipse/jetty/server/handler/ContextHandler.java	2024-11-11 17:39:19.269641330 +0100
++++ jetty.project-jetty-9.4.56.v20240826/jetty-server/src/main/java/org/eclipse/jetty/server/handler/ContextHandler.java	2024-11-11 17:46:58.312710664 +0100
+@@ -2971,6 +2971,45 @@
+         {
+             return null;
+         }
++
++        public void setResponseCharacterEncoding(String charset)
++        {
++            LOG.warn(UNIMPLEMENTED_USE_SERVLET_CONTEXT_HANDLER, "setResponseCharacterEncoding(String...)");
++        }
++
++        public String getResponseCharacterEncoding()
++        {
++            LOG.warn(UNIMPLEMENTED_USE_SERVLET_CONTEXT_HANDLER, "getResponseCharacterEncoding()");
++            return null;
++        }
++
++        public void setRequestCharacterEncoding(String charset)
++        {
++            LOG.warn(UNIMPLEMENTED_USE_SERVLET_CONTEXT_HANDLER, "setRequestCharacterEncoding(String...)");
++        }
++
++        public String getRequestCharacterEncoding()
++        {
++            LOG.warn(UNIMPLEMENTED_USE_SERVLET_CONTEXT_HANDLER, "getRequestCharacterEncoding()");
++            return null;
++        }
++
++        public void setSessionTimeout(int sessionTimeout)
++        {
++            LOG.warn(UNIMPLEMENTED_USE_SERVLET_CONTEXT_HANDLER, "setSessionTimeout(int...)");
++        }
++
++        public int getSessionTimeout()
++        {
++            LOG.warn(UNIMPLEMENTED_USE_SERVLET_CONTEXT_HANDLER, "getSessionTimeout()");
++            return 0;
++        }
++
++        public ServletRegistration.Dynamic addJspFile(String servletName, String jspFile)
++        {
++            LOG.warn(UNIMPLEMENTED_USE_SERVLET_CONTEXT_HANDLER, "addJspFile(String..., String...)");
++            return null;
++        }
+     }
+ 
+     /**

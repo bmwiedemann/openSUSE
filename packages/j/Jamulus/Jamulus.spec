@@ -1,7 +1,7 @@
 #
 # spec file for package Jamulus
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2014 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,7 +24,7 @@
 %define tarball_version 3_10_0
 
 Name:           Jamulus
-Version:        3.10.0
+Version:        3.11.0
 Release:        0
 Summary:        Low-latency internet connection tool for real-time jam sessions
 License:        GPL-2.0-or-later
@@ -50,11 +50,11 @@ BuildRequires:  pkgconfig
 BuildRequires:  pwdutils
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5Multimedia)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  pkgconfig(Qt6Concurrent) >= 6.6.3
+BuildRequires:  pkgconfig(Qt6Multimedia)
+BuildRequires:  pkgconfig(Qt6Network)
+BuildRequires:  pkgconfig(Qt6Widgets)
+BuildRequires:  pkgconfig(Qt6Xml)
 BuildRequires:  pkgconfig(opus)
 Requires:       jack >= 1.9.21
 Requires(pre):  shadow
@@ -78,7 +78,7 @@ install %{SOURCE1} .
 install -m644 %{SOURCE90} .
 
 %build
-%qmake5 CONFIG+=opus_shared_lib CONFIG+=disable_version_check
+%qmake6 CONFIG+=opus_shared_lib CONFIG+=disable_version_check
 %make_jobs
 
 %install

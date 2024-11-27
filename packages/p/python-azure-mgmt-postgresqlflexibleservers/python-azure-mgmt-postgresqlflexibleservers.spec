@@ -16,15 +16,17 @@
 #
 
 
+%define realversion 1.1.0b1
+
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-postgresqlflexibleservers
-Version:        1.0.0
+Version:        1.1.0~b1
 Release:        0
 Summary:        Microsoft Azure Postgresqlflexibleservers Management Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure_mgmt_postgresqlflexibleservers/azure_mgmt_postgresqlflexibleservers-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/a/azure_mgmt_postgresqlflexibleservers/azure_mgmt_postgresqlflexibleservers-%{realversion}.tar.gz
 BuildRequires:  %{python_module azure-mgmt-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
@@ -49,7 +51,7 @@ This is the Microsoft Azure Postgresqlflexibleservers Management Client Library.
 This package has been tested with Python 3.8+.
 
 %prep
-%setup -q -n azure_mgmt_postgresqlflexibleservers-%{version}
+%setup -q -n azure_mgmt_postgresqlflexibleservers-%{realversion}
 
 %build
 %pyproject_wheel

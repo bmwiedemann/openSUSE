@@ -233,4 +233,12 @@
     <comment>- Update to release 1.1.0</comment>
     <requestid>1203989</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>bd7384014b2aca94ea431467636dfce2</srcmd5>
+    <version>1.1.0</version>
+    <time>1732650924</time>
+    <user>anag+factory</user>
+    <comment>- Specfile modernization</comment>
+    <requestid>1226318</requestid>
+  </revision>
 </revisionlist>

@@ -787,4 +787,15 @@
     <comment></comment>
     <requestid>1207250</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>40e0127d2b187972e4b81fc4dd024e1f</srcmd5>
+    <version>47.2</version>
+    <time>1732650893</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 47.2:
+  + Fix a bug where the zoom level was reset to 0 when opening a
+    geo: URI not specifying an explicit zoom level.
+  + Updated translatations. (forwarded request 1225965 from iznogood)</comment>
+    <requestid>1226287</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov 23 19:56:23 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.52.2:
+  + Bugs fixed:
+    - goadavclient.c: add WebDAV default candidate to test
+    - goafedoraprovider: fix use-after-free
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Oct 20 11:49:31 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.52.1:

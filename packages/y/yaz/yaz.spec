@@ -18,16 +18,18 @@
 
 %define         libname libyaz5
 Name:           yaz
-Version:        5.34.1
+Version:        5.34.2
 Release:        0
 Summary:        Z39.50 protocol server and client
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://www.indexdata.com/resources/software/yaz/
 Source:         http://ftp.indexdata.dk/pub/yaz/yaz-%{version}.tar.gz
+Patch0:         yaz-icu-76.patch
 BuildRequires:  gnutls-devel
 BuildRequires:  libicu-devel
 BuildRequires:  libpcap-devel
+BuildRequires:  libtool
 BuildRequires:  libxslt-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
@@ -76,9 +78,10 @@ YAZ is a C library for developing client and server applications
 using the ANSI/NISO Z39.50 protocol for Information Retrieval.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
+autoreconf -fiv
 #  --with-dsssl=/usr/share/sgml/docbook/dsssl-stylesheets \
 #  --with-dtd=/usr/share/sgml/db41xml
 %configure --enable-shared \
@@ -97,6 +100,7 @@ rm -fr %{buildroot}%{_datadir}/doc
 rm -fr html
 mkdir html
 cp -a doc/*.html html
+chmod 644 html/*.html
 # cp doc/*pdf .
 ln -sf introduction.html html/index.html
 # yaz.pdf

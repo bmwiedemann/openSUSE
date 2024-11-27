@@ -104,4 +104,13 @@
     <comment></comment>
     <requestid>1206573</requestid>
   </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>9e0f3b2ee51032e0da0a9247d0e7bc39</srcmd5>
+    <version>3.0.1</version>
+    <time>1732650957</time>
+    <user>anag+factory</user>
+    <comment>- Add patch no-removed-formats.patch:
+  * Only use the rawread backend for Python 3.12 and below.</comment>
+    <requestid>1226391</requestid>
+  </revision>
 </revisionlist>

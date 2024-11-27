@@ -1410,4 +1410,25 @@
     <comment></comment>
     <requestid>1218392</requestid>
   </revision>
+  <revision rev="178" vrev="1">
+    <srcmd5>a7296b9eeb386fd06f6ef4fcb51d01a2</srcmd5>
+    <version>47.2</version>
+    <time>1732650888</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 47.2:
+  + Web:
+    - Report &quot;required&quot; and &quot;invalid&quot; state on password input.
+    - Present ARIA alerts as UI; not a text container.
+    - Fix regression in presentation of table cell content during
+      word nav.
+  + LibreOffice: Ensure we announce Calc sheet changes.
+  + General:
+    - Multiple &quot;chattiness&quot; fixes.
+    - Treat GTK4 groupings as panels.
+    - Fix performance issue determining posinset and setsize in
+      giant sets.
+    - Try to filter out redundant description-change events.
+  + Updated translations. (forwarded request 1225871 from iznogood)</comment>
+    <requestid>1226282</requestid>
+  </revision>
 </revisionlist>

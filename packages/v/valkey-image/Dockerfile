@@ -17,6 +17,8 @@
 
 #!BuildTag: opensuse/valkey:%%valkey_version%%-%RELEASE%
 #!BuildTag: opensuse/valkey:%%valkey_version%%
+#!BuildTag: opensuse/valkey:8.0
+#!BuildTag: opensuse/valkey:8
 #!BuildTag: opensuse/valkey:latest
 
 FROM opensuse/bci/bci-micro:latest AS target
@@ -24,9 +26,13 @@ FROM opensuse/tumbleweed:latest AS builder
 COPY --from=target / /target
 
 RUN set -euo pipefail; \
-    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends valkey valkey-compat-redis; \
+    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends valkey; \
     zypper -n clean; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
+# sanity check that the version from the tag is equal to the version of valkey that we expect
+RUN set -euo pipefail; \
+    [ "$(rpm --root /target -q --qf '%{version}' valkey | \
+    cut -d '.' -f -2)" = "8.0" ]
 FROM opensuse/bci/bci-micro:latest
 COPY --from=builder /target /
 # Define labels according to https://en.opensuse.org/Building_derived_containers

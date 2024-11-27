@@ -70,14 +70,13 @@ used by conntrack-tools among many other applications.
 %build
 # includedir intentional, cf. bugzilla.opensuse.org/795968
 %configure --disable-static --includedir="%_includedir/%name"
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 rm -f "%buildroot/%_libdir"/*.la
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %_libdir/libnetfilter_conntrack.so.3*

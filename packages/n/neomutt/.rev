@@ -283,4 +283,12 @@ so there is no usability hurdle for existing mutt users.
   error when sending mail via SMTP (forwarded request 1172915 from dsterba)</comment>
     <requestid>1172917</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>46d420162b3cbe05d355f614f2beca87</srcmd5>
+    <version>20241114</version>
+    <time>1732650936</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1226319</requestid>
+  </revision>
 </revisionlist>

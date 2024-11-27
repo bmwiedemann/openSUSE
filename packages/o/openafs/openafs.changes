@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov 25 10:54:35 UTC 2024 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
+
+- update to latest git branch stable-1_8_x, includes security update 1.8.13
+- change version to openafs-1.8.13.g... since the new stable release is 1.8.13 
+- remove patch handle_backports.diff, it is now included upstream 
+- remove intermediate patches:
+  * 03b280649f5e22ed74c217d7c98c3416a2fa9052: Linux-6.10: remove includes for asm/ia32_unistd.h
+  * 0f6a3a402f4a66114da9231032bd68cdc4dee7bc: Linux-6.10: Use filemap_alloc_folio when avail
+  * 658942f2791fad5e33ec7542158c16dfc66eed39: Linux-6.10: define a wrapper for vmalloc
+  * d8b56f21994ce66d8daebb7d69e792f34c1a19ed: afs: avoid empty-body warning
+  * 7097eec17bc01bcfc12c4d299136b2d3b94ec3d7: Linux 6.10: Move 'inline' before func return type
+
+-------------------------------------------------------------------
 Wed Aug 14 06:46:15 UTC 2024 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
 
 - update to latest git branch stable-1_8_x

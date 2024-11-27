@@ -77,4 +77,18 @@
     projects. :pr:`120`</comment>
     <requestid>1217037</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>72e7cf957cc0acb1bbcad49cbd19433a</srcmd5>
+    <version>2.3.0</version>
+    <time>1732650919</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.3.0:
+  * When getting the canonical URL on Read the Docs, replace the
+    path with /en/stable/ instead of /page/. This can be
+    configured with rtd_canonical_path. :pr:`122`
+  * The version banner can be disabled by setting version_banner
+    = False. On Read the Docs, it is disabled when building the
+    stable version or PRs. :pr:`123`</comment>
+    <requestid>1225954</requestid>
+  </revision>
 </revisionlist>

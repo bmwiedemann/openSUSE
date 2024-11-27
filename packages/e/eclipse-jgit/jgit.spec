@@ -38,6 +38,7 @@ Patch4:         jgit-apache-sshd.patch
 Patch5:         jgit-jsch.patch
 Patch6:         jgit-CVE-2023-4759.patch
 Patch7:         jgit-bc-179.patch
+Patch8:         javax-servlet-api-4.patch
 # For main build
 BuildRequires:  ant
 BuildRequires:  fdupes
@@ -108,6 +109,7 @@ Group:          Documentation/HTML
 %patch -P 5 -p1
 %patch -P 6 -p1
 %patch -P 7 -p1
+%patch -P 8 -p1
 
 # Disable multithreaded build
 rm .mvn/maven.config

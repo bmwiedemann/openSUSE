@@ -30,7 +30,8 @@ Source1:        https://raw.githubusercontent.com/javaee/javaee-jsp-api/%{artifa
 Source2:        http://www.apache.org/licenses/LICENSE-2.0
 Patch0:         %{name}-build-eclipse-compilers.patch
 Patch1:         %{name}-port-to-servlet-3.1.patch
-Patch2:         Tag.patch
+Patch2:         %{name}-port-to-servlet-4.0.patch
+Patch3:         Tag.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
@@ -67,10 +68,7 @@ Group:          Documentation/HTML
 %{summary}.
 
 %prep
-%setup -q -n %{artifactId}-%{version}
-%patch -P 0 -p1
-%patch -P 1 -p1
-%patch -P 2 -p1
+%autosetup -n %{artifactId}-%{version} -p1
 
 %pom_add_dep org.eclipse.jdt:core::provided
 %pom_add_dep org.apache.ant:ant::provided

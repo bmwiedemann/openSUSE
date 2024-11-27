@@ -81,6 +81,9 @@ Source:         https://files.pythonhosted.org/packages/source/n/numpy/numpy-%{v
 Source99:       python-numpy-rpmlintrc
 # PATCH-FIX-OPENSUSE numpy-buildfix.patch -- openSUSE-specific build fixes
 Patch0:         numpy-buildfix.patch
+# PATCH-FIX-UPSTREAM update-meson-1_5_2.patch gh#numpy/numpy#27531 mcepl@suse.com
+# update vendored meson
+Patch1:         update-meson-1_5_2.patch
 BuildRequires:  %{python_module Cython >= 3.0}
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module devel}
@@ -352,6 +355,8 @@ test_failok+=" or (test_umath and test_fp_noncontiguous)"
 %endif
 # The meson command is always on the primary python and wants to import numpy from there
 test_failok+=" or test_limited_api"
+# gh#numpy/numpy#27531
+test_failok+=" or test_api_importable"
 
 echo "
 import sys

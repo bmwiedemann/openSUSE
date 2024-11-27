@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 25 22:56:41 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update to 1.6.2:
+ * Fixed a bug where patterns in use expressions would not be checked
+   to ensure that they were exhaustive. (Surya Rose)
+
+-------------------------------------------------------------------
 Wed Nov 20 02:15:36 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - Update to 1.6.1:

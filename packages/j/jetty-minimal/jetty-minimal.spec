@@ -28,6 +28,7 @@ License:        Apache-2.0 OR EPL-1.0
 Group:          Productivity/Networking/Web/Servers
 URL:            https://www.eclipse.org/jetty/
 Source0:        https://github.com/eclipse/%{base_name}.project/archive/%{base_name}-%{version}%{addver}.tar.gz#/%{src_name}.tar.gz
+Patch0:         jetty-port-to-servlet-4.0.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
@@ -278,6 +279,7 @@ Group:          Productivity/Networking/Web/Servers
 
 %prep
 %setup -q -n %{src_name}
+%patch -P 0 -p1
 
 find . -name "*.?ar" -exec rm {} \;
 find . -name "*.class" -exec rm {} \;

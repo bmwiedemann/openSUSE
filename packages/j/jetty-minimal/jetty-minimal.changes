@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 11 16:51:57 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * jetty-port-to-servlet-4.0.patch
+    + Fix build against the javax.servlet-api 4.x
+
+-------------------------------------------------------------------
 Thu Oct 17 12:27:25 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Package the infrastructure pom artifacts too

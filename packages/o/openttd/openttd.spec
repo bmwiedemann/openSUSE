@@ -27,6 +27,7 @@ Group:          Amusements/Games/Strategy/Other
 URL:            https://openttd.org/
 Source:         https://cdn.openttd.org/openttd-releases/%{version}/%{name}-%{version}-source.tar.xz
 # PATCH-FEATURE-UPSTREAM https://bugs.openttd.org/task/6490
+Patch1:         0001-icu-build-fix.patch
 Source2:        openttd.appdata.xml
 BuildRequires:  SDL2-devel
 BuildRequires:  cmake
@@ -107,7 +108,7 @@ Recommends:     openttd-opengfx >= 0.5.2
 This package provides the data files needed by %{name} or %{name}-dedicated.
 
 %prep
-%setup -q
+%autosetup
 
 # Remove build time references so build-compare can do its work
 sed -i "s/__DATE__.*__TIME__/\"${SOURCE_DATE_EPOCH}\"/" src/rev.cpp.in

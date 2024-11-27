@@ -18,22 +18,14 @@
 
 %define api_version 3.0
 Name:           libsoup
-Version:        3.6.0
+Version:        3.6.1
 Release:        0
 Summary:        HTTP client/server library for GNOME
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
-URL:            https://wiki.gnome.org/Projects/libsoup
+URL:            https://wiki.gnome.org/Projects/libsoupS
 Source0:        https://download.gnome.org/sources/libsoup/3.6/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM 6adc0e3e.patch boo#1233287 mgorse@suse.com -- process the frame as soon as we read data.
-Patch0:         https://gitlab.gnome.org/GNOME/libsoup/-/commit/6adc0e3e.patch
-# PATCH-FIX-UPSTREAM 29b96fab.patch boo#1233287 mgorse@suse.com -- websocket-test: disconnect error copy after the test ends.
-Patch1:         https://gitlab.gnome.org/GNOME/libsoup/-/commit/29b96fab.patch
-# PATCH-FIX-UPSTREAM a35222dd.patch boo#1233292 mgorse@suse.com -- be more robust against invalid input when parsing params.
-Patch2:         https://gitlab.gnome.org/GNOME/libsoup/-/commit/a35222dd.patch
-# PATCH-FIX-UPSTREAM 4c9e75c6.patch boo#1233287 mgorse@suse.com -- fix an intermittent test failure.
-Patch3:         https://gitlab.gnome.org/GNOME/libsoup/-/commit/4c9e75c6.patch
 
 BuildRequires:  glib-networking
 BuildRequires:  meson >= 0.53

@@ -47,4 +47,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148572</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>db45573314c88aef343570a6057be4aa</srcmd5>
+    <version>2.3.4</version>
+    <time>1732650978</time>
+    <user>anag+factory</user>
+    <comment>Allow building against servlet api 4</comment>
+    <requestid>1226463</requestid>
+  </revision>
 </revisionlist>

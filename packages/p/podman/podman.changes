@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Nov 26 05:59:43 UTC 2024 - madhankumar.chellamuthu@suse.com
+
+- Update to version 5.3.1:
+  * Bump to v5.3.1
+  * Update release notes for v5.3.1
+  * Update windows installer tests
+  * Windows: don't install WSL/HyperV on update
+  * Switch to non-installing WSL by default
+  * docs: add 5.3 as Reference version
+  * only read ssh_config for non machine connections
+  * ssh_config: allow IdentityFile file with tilde
+  * ssh_config: do not overwrite values from config file
+  * connection: ignore errors when parsing ssh_config
+  * spec: clamp rlimits in a userns
+  * cirrus: set proper DEST_BRANCH for 5.3
+  * libpod: addHosts() prevent nil deref
+  * Bump bundled krunkit to 0.1.4
+  * fix podman machine init --ignition-path
+  * Bump to v5.3.1-dev
+
+-------------------------------------------------------------------
 Mon Nov 18 05:55:40 UTC 2024 - madhankumar.chellamuthu@suse.com
 
 - Update to version 5.3.0:

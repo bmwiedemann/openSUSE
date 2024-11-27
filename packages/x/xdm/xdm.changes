@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 20 13:11:22 UTC 2024 - pgajdos@suse.com
+
+- tweak the login screen:
+  * use sans serif font
+  * use branding wallpaper and colors
+  * do not require xli, recommend feh
+
+-------------------------------------------------------------------
 Fri Aug  9 09:40:13 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - sysconfig/windowmanager is deprecated since 7 years, don't 

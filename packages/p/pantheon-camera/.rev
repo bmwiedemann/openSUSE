@@ -7,4 +7,16 @@
     <comment></comment>
     <requestid>1223028</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0536d65952c72bfbf271e7d071036884</srcmd5>
+    <version>8.0.1</version>
+    <time>1732650946</time>
+    <user>anag+factory</user>
+    <comment>- update to 8.0.1:
+  * Workflows/Merge: install rust extension for gettext
+  * MainWindow: Make headerbar buttons insensitive by default
+  * Always use decimal point
+  * Updated translations (forwarded request 1226346 from rrahl0)</comment>
+    <requestid>1226347</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,612 @@
+diff -uNr numpy-2.1.3.orig/vendored-meson/meson/ci/ciimage/.gitignore numpy-2.1.3/vendored-meson/meson/ci/ciimage/.gitignore
+--- numpy-2.1.3.orig/vendored-meson/meson/ci/ciimage/.gitignore	1970-01-01 01:00:00.000000000 +0100
++++ numpy-2.1.3/vendored-meson/meson/ci/ciimage/.gitignore	2024-11-22 23:52:31.819240220 +0100
+@@ -0,0 +1,3 @@
++/build_*
++/test_*
++/user.sh
+diff -uNr numpy-2.1.3.orig/vendored-meson/meson/.git numpy-2.1.3/vendored-meson/meson/.git
+--- numpy-2.1.3.orig/vendored-meson/meson/.git	1970-01-01 01:00:00.000000000 +0100
++++ numpy-2.1.3/vendored-meson/meson/.git	2024-11-22 23:52:31.599238818 +0100
+@@ -0,0 +1 @@
++gitdir: ../../.git/modules/vendored-meson/meson
+diff -uNr numpy-2.1.3.orig/vendored-meson/meson/.gitattributes numpy-2.1.3/vendored-meson/meson/.gitattributes
+--- numpy-2.1.3.orig/vendored-meson/meson/.gitattributes	1970-01-01 01:00:00.000000000 +0100
++++ numpy-2.1.3/vendored-meson/meson/.gitattributes	2024-11-22 23:52:31.815906865 +0100
+@@ -0,0 +1,7 @@
++.gitignore export-ignore
++.gitattributes export-ignore
++* text eol=lf
++*.png binary
++*.icns binary
++data/shell-completions/bash/meson linguist-language=Shell
++data/shell-completions/zsh/_meson linguist-language=Shell
+diff -uNr numpy-2.1.3.orig/vendored-meson/meson/.gitignore numpy-2.1.3/vendored-meson/meson/.gitignore
+--- numpy-2.1.3.orig/vendored-meson/meson/.gitignore	1970-01-01 01:00:00.000000000 +0100
++++ numpy-2.1.3/vendored-meson/meson/.gitignore	2024-11-22 23:52:31.815906865 +0100
+@@ -0,0 +1,34 @@
++.mypy_cache/
++.pytest_cache/
++/.project
++/.pydevproject
++/.settings
++/.cproject
++/.idea
++/.vscode
++
++__pycache__
++/.coverage/
++/.coveragerc
++/install dir
++/work area
++
++/meson-test-run.txt
++/meson-test-run.xml
++/meson-cross-test-run.txt
++/meson-cross-test-run.xml
++
++.DS_Store
++*~
++*.swp
++packagecache
++/MANIFEST
++/build
++/dist
++/meson.egg-info
++
++/docs/built_docs
++/docs/hotdoc-private*
++
++*.pyc
++/*venv*
+diff -uNr "numpy-2.1.3.orig/vendored-meson/meson/test cases/common/153 wrap file should not failed/subprojects/.gitignore" "numpy-2.1.3/vendored-meson/meson/test cases/common/153 wrap file should not failed/subprojects/.gitignore"
+--- "numpy-2.1.3.orig/vendored-meson/meson/test cases/common/153 wrap file should not failed/subprojects/.gitignore"	1970-01-01 01:00:00.000000000 +0100
++++ "numpy-2.1.3/vendored-meson/meson/test cases/common/153 wrap file should not failed/subprojects/.gitignore"	2024-11-22 23:52:31.892574021 +0100
+@@ -0,0 +1,3 @@
++/foo-1.0
++/bar-1.0
++/foo-1.0-patchdir
+diff -uNr "numpy-2.1.3.orig/vendored-meson/meson/test cases/common/234 get_file_contents/.gitattributes" "numpy-2.1.3/vendored-meson/meson/test cases/common/234 get_file_contents/.gitattributes"
+--- "numpy-2.1.3.orig/vendored-meson/meson/test cases/common/234 get_file_contents/.gitattributes"	1970-01-01 01:00:00.000000000 +0100
++++ "numpy-2.1.3/vendored-meson/meson/test cases/common/234 get_file_contents/.gitattributes"	2024-11-22 23:52:31.905907439 +0100
+@@ -0,0 +1 @@
++utf-16-text binary
+diff -uNr "numpy-2.1.3.orig/vendored-meson/meson/test cases/d/11 dub/.gitignore" "numpy-2.1.3/vendored-meson/meson/test cases/d/11 dub/.gitignore"
+--- "numpy-2.1.3.orig/vendored-meson/meson/test cases/d/11 dub/.gitignore"	1970-01-01 01:00:00.000000000 +0100
++++ "numpy-2.1.3/vendored-meson/meson/test cases/d/11 dub/.gitignore"	2024-11-22 23:52:31.819240220 +0100
+@@ -0,0 +1 @@
++dub.json
+diff -uNr "numpy-2.1.3.orig/vendored-meson/meson/test cases/features/1 baseline/init_features/checks/cpu_asimd.c" "numpy-2.1.3/vendored-meson/meson/test cases/features/1 baseline/init_features/checks/cpu_asimd.c"
+--- "numpy-2.1.3.orig/vendored-meson/meson/test cases/features/1 baseline/init_features/checks/cpu_asimd.c"	1970-01-01 01:00:00.000000000 +0100
++++ "numpy-2.1.3/vendored-meson/meson/test cases/features/1 baseline/init_features/checks/cpu_asimd.c"	2024-11-22 23:52:31.835906993 +0100
+@@ -0,0 +1,27 @@
++#ifdef _MSC_VER
++    #include <Intrin.h>
++#endif
++#include <arm_neon.h>
++
++int main(int argc, char **argv)
++{
++    float *src = (float*)argv[argc-1];
++    float32x4_t v1 = vdupq_n_f32(src[0]), v2 = vdupq_n_f32(src[1]);
++    /* MAXMIN */
++    int ret  = (int)vgetq_lane_f32(vmaxnmq_f32(v1, v2), 0);
++        ret += (int)vgetq_lane_f32(vminnmq_f32(v1, v2), 0);
++    /* ROUNDING */
++    ret += (int)vgetq_lane_f32(vrndq_f32(v1), 0);
++#ifdef __aarch64__
++    {
++        double *src2 = (double*)argv[argc-1];
++        float64x2_t vd1 = vdupq_n_f64(src2[0]), vd2 = vdupq_n_f64(src2[1]);
++        /* MAXMIN */
++        ret += (int)vgetq_lane_f64(vmaxnmq_f64(vd1, vd2), 0);
++        ret += (int)vgetq_lane_f64(vminnmq_f64(vd1, vd2), 0);
++        /* ROUNDING */
++        ret += (int)vgetq_lane_f64(vrndq_f64(vd1), 0);
++    }
++#endif
++    return ret;
++}
+diff -uNr "numpy-2.1.3.orig/vendored-meson/meson/test cases/features/1 baseline/init_features/checks/cpu_neon.c" "numpy-2.1.3/vendored-meson/meson/test cases/features/1 baseline/init_features/checks/cpu_neon.c"
+--- "numpy-2.1.3.orig/vendored-meson/meson/test cases/features/1 baseline/init_features/checks/cpu_neon.c"	1970-01-01 01:00:00.000000000 +0100
++++ "numpy-2.1.3/vendored-meson/meson/test cases/features/1 baseline/init_features/checks/cpu_neon.c"	2024-11-22 23:52:31.835906993 +0100
+@@ -0,0 +1,19 @@
++#ifdef _MSC_VER
++    #include <Intrin.h>
++#endif
++#include <arm_neon.h>
++
++int main(int argc, char **argv)
++{
++    // passing from untraced pointers to avoid optimizing out any constants
++    // so we can test against the linker.
++    float *src = (float*)argv[argc-1];
++    float32x4_t v1 = vdupq_n_f32(src[0]), v2 = vdupq_n_f32(src[1]);
++    int ret = (int)vgetq_lane_f32(vmulq_f32(v1, v2), 0);
++#ifdef __aarch64__
++    double *src2 = (double*)argv[argc-2];
++    float64x2_t vd1 = vdupq_n_f64(src2[0]), vd2 = vdupq_n_f64(src2[1]);
++    ret += (int)vgetq_lane_f64(vmulq_f64(vd1, vd2), 0);
++#endif
++    return ret;
++}
+diff -uNr "numpy-2.1.3.orig/vendored-meson/meson/test cases/features/1 baseline/init_features/checks/cpu_neon_fp16.c" "numpy-2.1.3/vendored-meson/meson/test cases/features/1 baseline/init_features/checks/cpu_neon_fp16.c"
+--- "numpy-2.1.3.orig/vendored-meson/meson/test cases/features/1 baseline/init_features/checks/cpu_neon_fp16.c"	1970-01-01 01:00:00.000000000 +0100
++++ "numpy-2.1.3/vendored-meson/meson/test cases/features/1 baseline/init_features/checks/cpu_neon_fp16.c"	2024-11-22 23:52:31.835906993 +0100
+@@ -0,0 +1,11 @@
++#ifdef _MSC_VER
++    #include <Intrin.h>
++#endif
++#include <arm_neon.h>
++
++int main(int argc, char **argv)
++{
++    short *src = (short*)argv[argc-1];
++    float32x4_t v_z4 = vcvt_f32_f16((float16x4_t)vld1_s16(src));
++    return (int)vgetq_lane_f32(v_z4, 0);
++}
+diff -uNr "numpy-2.1.3.orig/vendored-meson/meson/test cases/features/1 baseline/init_features/checks/cpu_neon_vfpv4.c" "numpy-2.1.3/vendored-meson/meson/test cases/features/1 baseline/init_features/checks/cpu_neon_vfpv4.c"
+--- "numpy-2.1.3.orig/vendored-meson/meson/test cases/features/1 baseline/init_features/checks/cpu_neon_vfpv4.c"	1970-01-01 01:00:00.000000000 +0100
++++ "numpy-2.1.3/vendored-meson/meson/test cases/features/1 baseline/init_features/checks/cpu_neon_vfpv4.c"	2024-11-22 23:52:31.835906993 +0100
+@@ -0,0 +1,21 @@
++#ifdef _MSC_VER
++    #include <Intrin.h>
++#endif
++#include <arm_neon.h>
++
++int main(int argc, char **argv)
++{
++    float *src = (float*)argv[argc-1];
++    float32x4_t v1 = vdupq_n_f32(src[0]);
++    float32x4_t v2 = vdupq_n_f32(src[1]);
++    float32x4_t v3 = vdupq_n_f32(src[2]);
++    int ret = (int)vgetq_lane_f32(vfmaq_f32(v1, v2, v3), 0);
++#ifdef __aarch64__
++    double *src2 = (double*)argv[argc-2];
++    float64x2_t vd1 = vdupq_n_f64(src2[0]);
++    float64x2_t vd2 = vdupq_n_f64(src2[1]);
++    float64x2_t vd3 = vdupq_n_f64(src2[2]);
++    ret += (int)vgetq_lane_f64(vfmaq_f64(vd1, vd2, vd3), 0);
++#endif
++    return ret;
++}
+diff -uNr "numpy-2.1.3.orig/vendored-meson/meson/test cases/features/1 baseline/init_features/checks/cpu_sse.c" "numpy-2.1.3/vendored-meson/meson/test cases/features/1 baseline/init_features/checks/cpu_sse.c"
+--- "numpy-2.1.3.orig/vendored-meson/meson/test cases/features/1 baseline/init_features/checks/cpu_sse.c"	1970-01-01 01:00:00.000000000 +0100
++++ "numpy-2.1.3/vendored-meson/meson/test cases/features/1 baseline/init_features/checks/cpu_sse.c"	2024-11-22 23:52:31.835906993 +0100
+@@ -0,0 +1,7 @@
++#include <xmmintrin.h>
++
++int main(void)
++{
++    __m128 a = _mm_add_ps(_mm_setzero_ps(), _mm_setzero_ps());
++    return (int)_mm_cvtss_f32(a);
++}
+diff -uNr "numpy-2.1.3.orig/vendored-meson/meson/test cases/features/1 baseline/init_features/checks/cpu_sse2.c" "numpy-2.1.3/vendored-meson/meson/test cases/features/1 baseline/init_features/checks/cpu_sse2.c"
+--- "numpy-2.1.3.orig/vendored-meson/meson/test cases/features/1 baseline/init_features/checks/cpu_sse2.c"	1970-01-01 01:00:00.000000000 +0100
++++ "numpy-2.1.3/vendored-meson/meson/test cases/features/1 baseline/init_features/checks/cpu_sse2.c"	2024-11-22 23:52:31.835906993 +0100
+@@ -0,0 +1,7 @@
++#include <emmintrin.h>
++
++int main(void)
++{
++    __m128i a = _mm_add_epi16(_mm_setzero_si128(), _mm_setzero_si128());
++    return _mm_cvtsi128_si32(a);
++}
+diff -uNr "numpy-2.1.3.orig/vendored-meson/meson/test cases/features/1 baseline/init_features/checks/cpu_sse3.c" "numpy-2.1.3/vendored-meson/meson/test cases/features/1 baseline/init_features/checks/cpu_sse3.c"
+--- "numpy-2.1.3.orig/vendored-meson/meson/test cases/features/1 baseline/init_features/checks/cpu_sse3.c"	1970-01-01 01:00:00.000000000 +0100
++++ "numpy-2.1.3/vendored-meson/meson/test cases/features/1 baseline/init_features/checks/cpu_sse3.c"	2024-11-22 23:52:31.835906993 +0100
+@@ -0,0 +1,7 @@
++#include <pmmintrin.h>
++
++int main(void)
++{
++    __m128 a = _mm_hadd_ps(_mm_setzero_ps(), _mm_setzero_ps());
++    return (int)_mm_cvtss_f32(a);
++}
+diff -uNr "numpy-2.1.3.orig/vendored-meson/meson/test cases/features/1 baseline/init_features/checks/cpu_sse41.c" "numpy-2.1.3/vendored-meson/meson/test cases/features/1 baseline/init_features/checks/cpu_sse41.c"
+--- "numpy-2.1.3.orig/vendored-meson/meson/test cases/features/1 baseline/init_features/checks/cpu_sse41.c"	1970-01-01 01:00:00.000000000 +0100
++++ "numpy-2.1.3/vendored-meson/meson/test cases/features/1 baseline/init_features/checks/cpu_sse41.c"	2024-11-22 23:52:31.835906993 +0100
+@@ -0,0 +1,7 @@
++#include <smmintrin.h>
++
++int main(void)
++{
++    __m128 a = _mm_floor_ps(_mm_setzero_ps());
++    return (int)_mm_cvtss_f32(a);
++}
+diff -uNr "numpy-2.1.3.orig/vendored-meson/meson/test cases/features/1 baseline/init_features/checks/cpu_ssse3.c" "numpy-2.1.3/vendored-meson/meson/test cases/features/1 baseline/init_features/checks/cpu_ssse3.c"
+--- "numpy-2.1.3.orig/vendored-meson/meson/test cases/features/1 baseline/init_features/checks/cpu_ssse3.c"	1970-01-01 01:00:00.000000000 +0100
++++ "numpy-2.1.3/vendored-meson/meson/test cases/features/1 baseline/init_features/checks/cpu_ssse3.c"	2024-11-22 23:52:31.835906993 +0100
+@@ -0,0 +1,7 @@
++#include <tmmintrin.h>
++
++int main(void)
++{
++    __m128i a = _mm_hadd_epi16(_mm_setzero_si128(), _mm_setzero_si128());
++    return (int)_mm_cvtsi128_si32(a);
++}
+diff -uNr "numpy-2.1.3.orig/vendored-meson/meson/test cases/features/1 baseline/init_features/meson.build" "numpy-2.1.3/vendored-meson/meson/test cases/features/1 baseline/init_features/meson.build"
+--- "numpy-2.1.3.orig/vendored-meson/meson/test cases/features/1 baseline/init_features/meson.build"	1970-01-01 01:00:00.000000000 +0100
++++ "numpy-2.1.3/vendored-meson/meson/test cases/features/1 baseline/init_features/meson.build"	2024-11-22 23:52:31.835906993 +0100
+@@ -0,0 +1,98 @@
++#project('test-features', 'c')
++mod_features = import('features')
++cpu_family = host_machine.cpu_family()
++compiler_id = meson.get_compiler('c').get_id()
++source_root = meson.project_source_root() + '/../init_features/'
++# Basic X86 Features
++# ------------------
++SSE = mod_features.new(
++  'SSE', 1,  args: '-msse',
++  test_code: files(source_root + 'checks/cpu_sse.c')[0]
++)
++SSE2 = mod_features.new(
++  'SSE2', 2, implies: SSE,
++  args: '-msse2',
++  test_code: files(source_root + 'checks/cpu_sse2.c')[0]
++)
++# enabling SSE without SSE2 is useless also
++# it's non-optional for x86_64
++SSE.update(implies: SSE2)
++SSE3 = mod_features.new(
++  'SSE3', 3, implies: SSE2,
++  args: '-msse3',
++  test_code: files(source_root + 'checks/cpu_sse3.c')[0]
++)
++SSSE3 = mod_features.new(
++  'SSSE3', 4, implies: SSE3,
++  args: '-mssse3',
++  test_code: files(source_root + 'checks/cpu_ssse3.c')[0]
++)
++SSE41 = mod_features.new(
++  'SSE41', 5, implies: SSSE3,
++  args: '-msse4.1',
++  test_code: files(source_root + 'checks/cpu_sse41.c')[0]
++)
++if cpu_family not in ['x86', 'x86_64']
++  # should disable any prevalent features
++  SSE.update(disable: 'not supported by the current platform')
++endif
++# Specializations for non unix-like compilers
++if compiler_id == 'intel-cl'
++  foreach fet : [SSE, SSE2, SSE3, SSSE3]
++    fet.update(args: {'val': '/arch:' + fet.get('name'), 'match': '/arch:.*'})
++  endforeach
++  SSE41.update(args: {'val': '/arch:SSE4.1', 'match': '/arch:.*'})
++elif compiler_id == 'msvc'
++  # only available on 32-bit. Its enabled by default on 64-bit mode
++  foreach fet : [SSE, SSE2]
++    if cpu_family == 'x86'
++      fet.update(args: {'val': '/arch:' + fet.get('name'), 'match': clear_arch})
++    else
++      fet.update(args: '')
++    endif
++  endforeach
++  # The following features don't own private FLAGS still
++  # the compiler provides ISA capability for them.
++  foreach fet : [SSE3, SSSE3, SSE41]
++    fet.update(args: '')
++  endforeach
++endif
++
++# Basic ARM Features
++# ------------------
++NEON = mod_features.new(
++  'NEON', 200,
++  test_code: files(source_root + 'checks/cpu_neon.c')[0]
++)
++NEON_FP16 = mod_features.new(
++  'NEON_FP16', 201, implies: NEON,
++  test_code: files(source_root + 'checks/cpu_neon_fp16.c')[0]
++)
++# FMA
++NEON_VFPV4 = mod_features.new(
++  'NEON_VFPV4', 202, implies: NEON_FP16,
++  test_code: files(source_root + 'checks/cpu_neon_vfpv4.c')[0]
++)
++# Advanced SIMD
++ASIMD = mod_features.new(
++  'ASIMD', 203, implies: NEON_VFPV4, detect: {'val': 'ASIMD', 'match': 'NEON.*'},
++  test_code: files(source_root + 'checks/cpu_asimd.c')[0]
++)
++if cpu_family == 'aarch64'
++  # hardware baseline, they can't be enabled independently
++  NEON.update(implies: [NEON_FP16, NEON_VFPV4, ASIMD])
++  NEON_FP16.update(implies: [NEON, NEON_VFPV4, ASIMD])
++  NEON_VFPV4.update(implies: [NEON, NEON_FP16, ASIMD])
++elif cpu_family == 'arm'
++  NEON.update(args: '-mfpu=neon')
++  NEON_FP16.update(args: ['-mfp16-format=ieee', {'val': '-mfpu=neon-fp16', 'match': '-mfpu=.*'}])
++  NEON_VFPV4.update(args: {'val': '-mfpu=neon-vfpv4', 'match': '-mfpu=.*'})
++  ASIMD.update(args: [
++    {'val': '-mfpu=neon-fp-armv8', 'match': '-mfpu=.*'},
++    '-march=armv8-a+simd'
++  ])
++else
++  # should disable any prevalent features
++  NEON.update(disable: 'not supported by the current platform')
++endif
++
+diff -uNr "numpy-2.1.3.orig/vendored-meson/meson/test cases/features/2 multi_targets/init_features/checks/cpu_asimd.c" "numpy-2.1.3/vendored-meson/meson/test cases/features/2 multi_targets/init_features/checks/cpu_asimd.c"
+--- "numpy-2.1.3.orig/vendored-meson/meson/test cases/features/2 multi_targets/init_features/checks/cpu_asimd.c"	1970-01-01 01:00:00.000000000 +0100
++++ "numpy-2.1.3/vendored-meson/meson/test cases/features/2 multi_targets/init_features/checks/cpu_asimd.c"	2024-11-22 23:52:31.835906993 +0100
+@@ -0,0 +1,27 @@
++#ifdef _MSC_VER
++    #include <Intrin.h>
++#endif
++#include <arm_neon.h>
++
++int main(int argc, char **argv)
++{
++    float *src = (float*)argv[argc-1];
++    float32x4_t v1 = vdupq_n_f32(src[0]), v2 = vdupq_n_f32(src[1]);
++    /* MAXMIN */
++    int ret  = (int)vgetq_lane_f32(vmaxnmq_f32(v1, v2), 0);
++        ret += (int)vgetq_lane_f32(vminnmq_f32(v1, v2), 0);
++    /* ROUNDING */
++    ret += (int)vgetq_lane_f32(vrndq_f32(v1), 0);
++#ifdef __aarch64__
++    {
++        double *src2 = (double*)argv[argc-1];
++        float64x2_t vd1 = vdupq_n_f64(src2[0]), vd2 = vdupq_n_f64(src2[1]);
++        /* MAXMIN */
++        ret += (int)vgetq_lane_f64(vmaxnmq_f64(vd1, vd2), 0);
++        ret += (int)vgetq_lane_f64(vminnmq_f64(vd1, vd2), 0);
++        /* ROUNDING */
++        ret += (int)vgetq_lane_f64(vrndq_f64(vd1), 0);
++    }
++#endif
++    return ret;
++}
+diff -uNr "numpy-2.1.3.orig/vendored-meson/meson/test cases/features/2 multi_targets/init_features/checks/cpu_neon.c" "numpy-2.1.3/vendored-meson/meson/test cases/features/2 multi_targets/init_features/checks/cpu_neon.c"
+--- "numpy-2.1.3.orig/vendored-meson/meson/test cases/features/2 multi_targets/init_features/checks/cpu_neon.c"	1970-01-01 01:00:00.000000000 +0100
++++ "numpy-2.1.3/vendored-meson/meson/test cases/features/2 multi_targets/init_features/checks/cpu_neon.c"	2024-11-22 23:52:31.835906993 +0100
+@@ -0,0 +1,19 @@
++#ifdef _MSC_VER
++    #include <Intrin.h>
++#endif
++#include <arm_neon.h>
++
++int main(int argc, char **argv)
++{
++    // passing from untraced pointers to avoid optimizing out any constants
++    // so we can test against the linker.
++    float *src = (float*)argv[argc-1];
++    float32x4_t v1 = vdupq_n_f32(src[0]), v2 = vdupq_n_f32(src[1]);
++    int ret = (int)vgetq_lane_f32(vmulq_f32(v1, v2), 0);
++#ifdef __aarch64__
++    double *src2 = (double*)argv[argc-2];
++    float64x2_t vd1 = vdupq_n_f64(src2[0]), vd2 = vdupq_n_f64(src2[1]);
++    ret += (int)vgetq_lane_f64(vmulq_f64(vd1, vd2), 0);
++#endif
++    return ret;
++}
+diff -uNr "numpy-2.1.3.orig/vendored-meson/meson/test cases/features/2 multi_targets/init_features/checks/cpu_neon_fp16.c" "numpy-2.1.3/vendored-meson/meson/test cases/features/2 multi_targets/init_features/checks/cpu_neon_fp16.c"
+--- "numpy-2.1.3.orig/vendored-meson/meson/test cases/features/2 multi_targets/init_features/checks/cpu_neon_fp16.c"	1970-01-01 01:00:00.000000000 +0100
++++ "numpy-2.1.3/vendored-meson/meson/test cases/features/2 multi_targets/init_features/checks/cpu_neon_fp16.c"	2024-11-22 23:52:31.835906993 +0100
+@@ -0,0 +1,11 @@
++#ifdef _MSC_VER
++    #include <Intrin.h>
++#endif
++#include <arm_neon.h>
++
++int main(int argc, char **argv)
++{
++    short *src = (short*)argv[argc-1];
++    float32x4_t v_z4 = vcvt_f32_f16((float16x4_t)vld1_s16(src));
++    return (int)vgetq_lane_f32(v_z4, 0);
++}
+diff -uNr "numpy-2.1.3.orig/vendored-meson/meson/test cases/features/2 multi_targets/init_features/checks/cpu_neon_vfpv4.c" "numpy-2.1.3/vendored-meson/meson/test cases/features/2 multi_targets/init_features/checks/cpu_neon_vfpv4.c"
+--- "numpy-2.1.3.orig/vendored-meson/meson/test cases/features/2 multi_targets/init_features/checks/cpu_neon_vfpv4.c"	1970-01-01 01:00:00.000000000 +0100
++++ "numpy-2.1.3/vendored-meson/meson/test cases/features/2 multi_targets/init_features/checks/cpu_neon_vfpv4.c"	2024-11-22 23:52:31.835906993 +0100
+@@ -0,0 +1,21 @@
++#ifdef _MSC_VER
++    #include <Intrin.h>
++#endif
++#include <arm_neon.h>
++
++int main(int argc, char **argv)
++{
++    float *src = (float*)argv[argc-1];
++    float32x4_t v1 = vdupq_n_f32(src[0]);
++    float32x4_t v2 = vdupq_n_f32(src[1]);
++    float32x4_t v3 = vdupq_n_f32(src[2]);
++    int ret = (int)vgetq_lane_f32(vfmaq_f32(v1, v2, v3), 0);
++#ifdef __aarch64__
++    double *src2 = (double*)argv[argc-2];
++    float64x2_t vd1 = vdupq_n_f64(src2[0]);
++    float64x2_t vd2 = vdupq_n_f64(src2[1]);
++    float64x2_t vd3 = vdupq_n_f64(src2[2]);
++    ret += (int)vgetq_lane_f64(vfmaq_f64(vd1, vd2, vd3), 0);
++#endif
++    return ret;
++}
+diff -uNr "numpy-2.1.3.orig/vendored-meson/meson/test cases/features/2 multi_targets/init_features/checks/cpu_sse.c" "numpy-2.1.3/vendored-meson/meson/test cases/features/2 multi_targets/init_features/checks/cpu_sse.c"
+--- "numpy-2.1.3.orig/vendored-meson/meson/test cases/features/2 multi_targets/init_features/checks/cpu_sse.c"	1970-01-01 01:00:00.000000000 +0100
++++ "numpy-2.1.3/vendored-meson/meson/test cases/features/2 multi_targets/init_features/checks/cpu_sse.c"	2024-11-22 23:52:31.835906993 +0100
+@@ -0,0 +1,7 @@
++#include <xmmintrin.h>
++
++int main(void)
++{
++    __m128 a = _mm_add_ps(_mm_setzero_ps(), _mm_setzero_ps());
++    return (int)_mm_cvtss_f32(a);
++}
+diff -uNr "numpy-2.1.3.orig/vendored-meson/meson/test cases/features/2 multi_targets/init_features/checks/cpu_sse2.c" "numpy-2.1.3/vendored-meson/meson/test cases/features/2 multi_targets/init_features/checks/cpu_sse2.c"
+--- "numpy-2.1.3.orig/vendored-meson/meson/test cases/features/2 multi_targets/init_features/checks/cpu_sse2.c"	1970-01-01 01:00:00.000000000 +0100
++++ "numpy-2.1.3/vendored-meson/meson/test cases/features/2 multi_targets/init_features/checks/cpu_sse2.c"	2024-11-22 23:52:31.835906993 +0100
+@@ -0,0 +1,7 @@
++#include <emmintrin.h>
++
++int main(void)
++{
++    __m128i a = _mm_add_epi16(_mm_setzero_si128(), _mm_setzero_si128());
++    return _mm_cvtsi128_si32(a);
++}
+diff -uNr "numpy-2.1.3.orig/vendored-meson/meson/test cases/features/2 multi_targets/init_features/checks/cpu_sse3.c" "numpy-2.1.3/vendored-meson/meson/test cases/features/2 multi_targets/init_features/checks/cpu_sse3.c"
+--- "numpy-2.1.3.orig/vendored-meson/meson/test cases/features/2 multi_targets/init_features/checks/cpu_sse3.c"	1970-01-01 01:00:00.000000000 +0100
++++ "numpy-2.1.3/vendored-meson/meson/test cases/features/2 multi_targets/init_features/checks/cpu_sse3.c"	2024-11-22 23:52:31.835906993 +0100
+@@ -0,0 +1,7 @@
++#include <pmmintrin.h>
++
++int main(void)
++{
++    __m128 a = _mm_hadd_ps(_mm_setzero_ps(), _mm_setzero_ps());
++    return (int)_mm_cvtss_f32(a);
++}
+diff -uNr "numpy-2.1.3.orig/vendored-meson/meson/test cases/features/2 multi_targets/init_features/checks/cpu_sse41.c" "numpy-2.1.3/vendored-meson/meson/test cases/features/2 multi_targets/init_features/checks/cpu_sse41.c"
+--- "numpy-2.1.3.orig/vendored-meson/meson/test cases/features/2 multi_targets/init_features/checks/cpu_sse41.c"	1970-01-01 01:00:00.000000000 +0100
++++ "numpy-2.1.3/vendored-meson/meson/test cases/features/2 multi_targets/init_features/checks/cpu_sse41.c"	2024-11-22 23:52:31.835906993 +0100
+@@ -0,0 +1,7 @@
++#include <smmintrin.h>
++
++int main(void)
++{
++    __m128 a = _mm_floor_ps(_mm_setzero_ps());
++    return (int)_mm_cvtss_f32(a);
++}
+diff -uNr "numpy-2.1.3.orig/vendored-meson/meson/test cases/features/2 multi_targets/init_features/checks/cpu_ssse3.c" "numpy-2.1.3/vendored-meson/meson/test cases/features/2 multi_targets/init_features/checks/cpu_ssse3.c"
+--- "numpy-2.1.3.orig/vendored-meson/meson/test cases/features/2 multi_targets/init_features/checks/cpu_ssse3.c"	1970-01-01 01:00:00.000000000 +0100
++++ "numpy-2.1.3/vendored-meson/meson/test cases/features/2 multi_targets/init_features/checks/cpu_ssse3.c"	2024-11-22 23:52:31.835906993 +0100
+@@ -0,0 +1,7 @@
++#include <tmmintrin.h>
++
++int main(void)
++{
++    __m128i a = _mm_hadd_epi16(_mm_setzero_si128(), _mm_setzero_si128());
++    return (int)_mm_cvtsi128_si32(a);
++}
+diff -uNr "numpy-2.1.3.orig/vendored-meson/meson/test cases/features/2 multi_targets/init_features/meson.build" "numpy-2.1.3/vendored-meson/meson/test cases/features/2 multi_targets/init_features/meson.build"
+--- "numpy-2.1.3.orig/vendored-meson/meson/test cases/features/2 multi_targets/init_features/meson.build"	1970-01-01 01:00:00.000000000 +0100
++++ "numpy-2.1.3/vendored-meson/meson/test cases/features/2 multi_targets/init_features/meson.build"	2024-11-22 23:52:31.835906993 +0100
+@@ -0,0 +1,98 @@
++#project('test-features', 'c')
++mod_features = import('features')
++cpu_family = host_machine.cpu_family()
++compiler_id = meson.get_compiler('c').get_id()
++source_root = meson.project_source_root() + '/../init_features/'
++# Basic X86 Features
++# ------------------
++SSE = mod_features.new(
++  'SSE', 1,  args: '-msse',
++  test_code: files(source_root + 'checks/cpu_sse.c')[0]
++)
++SSE2 = mod_features.new(
++  'SSE2', 2, implies: SSE,
++  args: '-msse2',
++  test_code: files(source_root + 'checks/cpu_sse2.c')[0]
++)
++# enabling SSE without SSE2 is useless also
++# it's non-optional for x86_64
++SSE.update(implies: SSE2)
++SSE3 = mod_features.new(
++  'SSE3', 3, implies: SSE2,
++  args: '-msse3',
++  test_code: files(source_root + 'checks/cpu_sse3.c')[0]
++)
++SSSE3 = mod_features.new(
++  'SSSE3', 4, implies: SSE3,
++  args: '-mssse3',
++  test_code: files(source_root + 'checks/cpu_ssse3.c')[0]
++)
++SSE41 = mod_features.new(
++  'SSE41', 5, implies: SSSE3,
++  args: '-msse4.1',
++  test_code: files(source_root + 'checks/cpu_sse41.c')[0]
++)
++if cpu_family not in ['x86', 'x86_64']
++  # should disable any prevalent features
++  SSE.update(disable: 'not supported by the current platform')
++endif
++# Specializations for non unix-like compilers
++if compiler_id == 'intel-cl'
++  foreach fet : [SSE, SSE2, SSE3, SSSE3]
++    fet.update(args: {'val': '/arch:' + fet.get('name'), 'match': '/arch:.*'})
++  endforeach
++  SSE41.update(args: {'val': '/arch:SSE4.1', 'match': '/arch:.*'})
++elif compiler_id == 'msvc'
++  # only available on 32-bit. Its enabled by default on 64-bit mode
++  foreach fet : [SSE, SSE2]
++    if cpu_family == 'x86'
++      fet.update(args: {'val': '/arch:' + fet.get('name'), 'match': clear_arch})
++    else
++      fet.update(args: '')
++    endif
++  endforeach
++  # The following features don't own private FLAGS still
++  # the compiler provides ISA capability for them.
++  foreach fet : [SSE3, SSSE3, SSE41]
++    fet.update(args: '')
++  endforeach
++endif
++
++# Basic ARM Features
++# ------------------
++NEON = mod_features.new(
++  'NEON', 200,
++  test_code: files(source_root + 'checks/cpu_neon.c')[0]
++)
++NEON_FP16 = mod_features.new(
++  'NEON_FP16', 201, implies: NEON,
++  test_code: files(source_root + 'checks/cpu_neon_fp16.c')[0]
++)
++# FMA
++NEON_VFPV4 = mod_features.new(
++  'NEON_VFPV4', 202, implies: NEON_FP16,
++  test_code: files(source_root + 'checks/cpu_neon_vfpv4.c')[0]
++)
++# Advanced SIMD
++ASIMD = mod_features.new(
++  'ASIMD', 203, implies: NEON_VFPV4, detect: {'val': 'ASIMD', 'match': 'NEON.*'},
++  test_code: files(source_root + 'checks/cpu_asimd.c')[0]
++)
++if cpu_family == 'aarch64'
++  # hardware baseline, they can't be enabled independently
++  NEON.update(implies: [NEON_FP16, NEON_VFPV4, ASIMD])
++  NEON_FP16.update(implies: [NEON, NEON_VFPV4, ASIMD])
++  NEON_VFPV4.update(implies: [NEON, NEON_FP16, ASIMD])
++elif cpu_family == 'arm'
++  NEON.update(args: '-mfpu=neon')
++  NEON_FP16.update(args: ['-mfp16-format=ieee', {'val': '-mfpu=neon-fp16', 'match': '-mfpu=.*'}])
++  NEON_VFPV4.update(args: {'val': '-mfpu=neon-vfpv4', 'match': '-mfpu=.*'})
++  ASIMD.update(args: [
++    {'val': '-mfpu=neon-fp-armv8', 'match': '-mfpu=.*'},
++    '-march=armv8-a+simd'
++  ])
++else
++  # should disable any prevalent features
++  NEON.update(disable: 'not supported by the current platform')
++endif
++
+diff -uNr "numpy-2.1.3.orig/vendored-meson/meson/test cases/frameworks/35 boost symlinks/boost/include/boost/version.hpp" "numpy-2.1.3/vendored-meson/meson/test cases/frameworks/35 boost symlinks/boost/include/boost/version.hpp"
+--- "numpy-2.1.3.orig/vendored-meson/meson/test cases/frameworks/35 boost symlinks/boost/include/boost/version.hpp"	1970-01-01 01:00:00.000000000 +0100
++++ "numpy-2.1.3/vendored-meson/meson/test cases/frameworks/35 boost symlinks/boost/include/boost/version.hpp"	2024-11-22 23:52:31.849240411 +0100
+@@ -0,0 +1,3 @@
++#define BOOST_VERSION 300
++
++#error This is not a real version of boost
+diff -uNr "numpy-2.1.3.orig/vendored-meson/meson/test cases/unit/78 user options for subproject/.gitignore" "numpy-2.1.3/vendored-meson/meson/test cases/unit/78 user options for subproject/.gitignore"
+--- "numpy-2.1.3.orig/vendored-meson/meson/test cases/unit/78 user options for subproject/.gitignore"	1970-01-01 01:00:00.000000000 +0100
++++ "numpy-2.1.3/vendored-meson/meson/test cases/unit/78 user options for subproject/.gitignore"	2024-11-22 23:52:31.889240666 +0100
+@@ -0,0 +1 @@
++/subprojects
+diff -uNr "numpy-2.1.3.orig/vendored-meson/meson/test cases/unit/78 user options for subproject/75 user options for subproject/.gitignore" "numpy-2.1.3/vendored-meson/meson/test cases/unit/78 user options for subproject/75 user options for subproject/.gitignore"
+--- "numpy-2.1.3.orig/vendored-meson/meson/test cases/unit/78 user options for subproject/75 user options for subproject/.gitignore"	1970-01-01 01:00:00.000000000 +0100
++++ "numpy-2.1.3/vendored-meson/meson/test cases/unit/78 user options for subproject/75 user options for subproject/.gitignore"	2024-11-22 23:52:31.889240666 +0100
+@@ -0,0 +1 @@
++subprojects/*
+diff -uNr "numpy-2.1.3.orig/vendored-meson/meson/test cases/unit/98 link full name/.gitignore" "numpy-2.1.3/vendored-meson/meson/test cases/unit/98 link full name/.gitignore"
+--- "numpy-2.1.3.orig/vendored-meson/meson/test cases/unit/98 link full name/.gitignore"	1970-01-01 01:00:00.000000000 +0100
++++ "numpy-2.1.3/vendored-meson/meson/test cases/unit/98 link full name/.gitignore"	2024-11-22 23:52:31.892574021 +0100
+@@ -0,0 +1,5 @@
++*.a
++*.o
++a.out
++libtestprovider.a
++build
+diff -uNr "numpy-2.1.3.orig/vendored-meson/meson/test cases/windows/22 msvc library argument order/lib/.gitignore" "numpy-2.1.3/vendored-meson/meson/test cases/windows/22 msvc library argument order/lib/.gitignore"
+--- "numpy-2.1.3.orig/vendored-meson/meson/test cases/windows/22 msvc library argument order/lib/.gitignore"	1970-01-01 01:00:00.000000000 +0100
++++ "numpy-2.1.3/vendored-meson/meson/test cases/windows/22 msvc library argument order/lib/.gitignore"	2024-11-22 23:52:31.902574084 +0100
+@@ -0,0 +1,2 @@
++*.obj
++*.lib

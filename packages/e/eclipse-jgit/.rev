@@ -167,4 +167,12 @@
     <comment>fix build with newer bouncycastle</comment>
     <requestid>1221259</requestid>
   </revision>
+  <revision rev="22" vrev="17">
+    <srcmd5>6d18981c68e48cb4431554946ee23744</srcmd5>
+    <version>5.11.0</version>
+    <time>1732650979</time>
+    <user>anag+factory</user>
+    <comment>Allow building against servlet api 4</comment>
+    <requestid>1226464</requestid>
+  </revision>
 </revisionlist>

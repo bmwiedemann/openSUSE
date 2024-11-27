@@ -314,4 +314,41 @@
     <comment></comment>
     <requestid>1186476</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>096889dd78091213d3c1f427bf34217c</srcmd5>
+    <version>1.20.0</version>
+    <time>1732650956</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.20.0, summary of the changes:
+  ###### Features
+  * Switch from `awsType` to `cfnLint` @kddejong
+  * Add `dependentExcluded` keyword to json schema validation
+  * Add `requiredXor` keyword to json schema validation
+  * Allow for integration the configuration of additional registry schemas
+  * Add in `enum` values from botocore
+  * Add many JSON schemas to provide additional validation
+  * Add json schema for CW Alarm period when in the AWS namespace
+  * Include launch template security group schema
+  ##### Fixes
+  * Enhanced monitoring can be configured on aurora clusters
+  * Update `Fn::FindInMap` resolver to handle `Ref` to psedueparams
+  * Create a new jsonschema keyword `enumCaseInsensitive`
+  * Add `additionalProperties` false to IAM conditions
+  * Expand boto auto detection to include sub properties
+  * Add logic for `AWS::EC2::Subnet.Id` format
+  * Update language extensions `Fn::ForEach` for empty lists
+  * Support Python 3.13
+  * Make an exception for DocDB Cluster Port return type
+  * Dynamically determine Account ID during transform
+  * Move `requireXor` to `SpotFleetRequestConfigData`
+  * Bring back stateful resources json
+  * Add `MinActiveInstancesPercent` to `AutoScalingRollingUpdate`
+  * Update `requiredXor` for Vpc and Subnets
+  * Exception for lambda authorizer uri
+  * Allow for secretsmanager dynamic refs in `Parameter` defaults
+  * Move KMS validation for `SSESpecification` on Tables
+  * Return Symbol instead of None on Fn::Equals logic
+  * Remove handlers and tagging/permissions from specs</comment>
+    <requestid>1226387</requestid>
+  </revision>
 </revisionlist>

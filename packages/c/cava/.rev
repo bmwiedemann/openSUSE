@@ -282,4 +282,16 @@
   * exit with error if pipewire loop creation fails #561</comment>
     <requestid>1174078</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>81b3606336d6944be3bacaf0691932dc</srcmd5>
+    <version>0.10.3</version>
+    <time>1732650963</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.10.3:
+  * added horizontal split view #575
+  * Fix crash when using pulseaudio #569
+  * Synchronized Sync (Mode 2026) #576
+  * add android source code #552</comment>
+    <requestid>1226426</requestid>
+  </revision>
 </revisionlist>

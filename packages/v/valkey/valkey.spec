@@ -82,6 +82,7 @@ Requires:       valkey = %{version}-%{release}
 Conflicts:      redis
 Obsoletes:      redis <= 7.2.5
 Provides:       redis = %{version}-%{release}
+Requires(post): /usr/bin/find
 BuildArch:      noarch
 
 %description    compat-redis

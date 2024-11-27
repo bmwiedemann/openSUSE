@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 26 07:46:40 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.19.8:
+  * Stop shipping /etc/zsh/zlogout to avoid clearing terminal screen
+  * debian/preinst: drop deprecated dpkg-divert
+  * debian: update Vcs-Git and Vcs-Browser
+
+-------------------------------------------------------------------
 Wed Feb 21 10:17:26 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.19.7:

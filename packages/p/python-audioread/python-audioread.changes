@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 26 04:12:39 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch no-removed-formats.patch:
+  * Only use the rawread backend for Python 3.12 and below.
+
+-------------------------------------------------------------------
 Wed Oct  9 15:29:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use the distro default ffmpeg version:

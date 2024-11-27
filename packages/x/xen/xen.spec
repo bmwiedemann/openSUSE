@@ -124,7 +124,7 @@ BuildRequires:  pesign-obs-integration
 BuildRequires:  python-rpm-macros
 Provides:       installhint(reboot-needed)
 
-Version:        4.19.0_04
+Version:        4.19.0_06
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
@@ -171,6 +171,16 @@ Patch9:         66e44ae2-x86-ucode-AMD-buffer-underrun.patch
 Patch10:        66f2af41-x86-vLAPIC-undue-recursion-of-vlapic_error.patch
 Patch11:        66f2fd92-x86-ucode-Intel-stricter-sanity-check.patch
 # EMBARGOED security fixes
+Patch101:       xsa463-01.patch
+Patch102:       xsa463-02.patch
+Patch103:       xsa463-03.patch
+Patch104:       xsa463-04.patch
+Patch105:       xsa463-05.patch
+Patch106:       xsa463-06.patch
+Patch107:       xsa463-07.patch
+Patch108:       xsa463-08.patch
+Patch109:       xsa463-09.patch
+Patch110:       xsa464.patch
 # libxc
 Patch301:       libxc-bitmap-long.patch
 Patch302:       libxc-sr-xl-migration-debug.patch
@@ -220,10 +230,9 @@ Patch422:       gcc14-fixes.patch
 Patch450:       xen.sysconfig-fillup.patch
 Patch451:       xenconsole-no-multiple-connections.patch
 Patch452:       hibernate.patch
-Patch453:       stdvga-cache.patch
-Patch454:       xl-save-pc.patch
-Patch455:       pygrub-boot-legacy-sles.patch
-Patch456:       pygrub-handle-one-line-menu-entries.patch
+Patch453:       xl-save-pc.patch
+Patch454:       pygrub-boot-legacy-sles.patch
+Patch455:       pygrub-handle-one-line-menu-entries.patch
 Patch461:       libxl.max_event_channels.patch
 Patch463:       libxl.add-option-to-disable-disk-cache-flushes-in-qdisk.patch
 Patch464:       xen.libxl.dmmd.patch

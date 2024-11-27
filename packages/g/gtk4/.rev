@@ -981,4 +981,16 @@ New upstream release</comment>
     <comment></comment>
     <requestid>1225479</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>6d8dbdd4e0cb9a0d80ad595e8baadfc4</srcmd5>
+    <version>4.16.7</version>
+    <time>1732650897</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.16.7:
+  + Text: Reduce the size of error underlines.
+  + Accessibility:
+    - Fix a wrong return value type.
+    - Fix an invalid free call. (forwarded request 1226072 from iznogood)</comment>
+    <requestid>1226292</requestid>
+  </revision>
 </revisionlist>

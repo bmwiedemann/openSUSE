@@ -207,4 +207,12 @@
     <comment>Package the infrastructure pom artifacts too</comment>
     <requestid>1208738</requestid>
   </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>d56d3f32808fc30ac4c6d987d08940c5</srcmd5>
+    <version>9.4.56</version>
+    <time>1732650977</time>
+    <user>anag+factory</user>
+    <comment>Allow building against servlet api 4</comment>
+    <requestid>1226462</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov 23 11:03:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.45.1:
+  * Fixed pure Python wheels converted from eggs and wininst
+    files having the ABI tag in the file name
+
+-------------------------------------------------------------------
 Fri Nov 15 08:22:49 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.45.0

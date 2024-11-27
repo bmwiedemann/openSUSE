@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 25 08:35:49 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.1:
+  + Bugs fixed:
+    - Do not open multiple preferences windows using keyboard
+      shortcut.
+    - Show MPRIS albumart on delayed retrieval.
+
+-------------------------------------------------------------------
 Mon Sep 16 10:19:41 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 47.0:

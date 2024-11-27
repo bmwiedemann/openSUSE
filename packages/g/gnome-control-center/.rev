@@ -2234,4 +2234,22 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1219334</requestid>
   </revision>
+  <revision rev="256" vrev="1">
+    <srcmd5>5f94c3b5d5b06ffade21fc430b882f03</srcmd5>
+    <version>47.2</version>
+    <time>1732650906</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 47.2:
+  + Accessibility: Remove &quot;screen&quot; labels that take too much space
+  + Appearance: Fix accidental reset of accent colors config
+  + Apps: Fix some memory leaks
+  + Color: Ensure profiles are connected before operating on them
+  + Mobile Networks: Fix alignment of status pages
+  + Mouse:
+    - Fix illustration assets requiring gstreamer-plugins-bad
+    - Update illustration assets
+  + Printers: Remove wrong tooltip in the &quot;Add Printer&quot; button
+  + Updated translations. (forwarded request 1226275 from iznogood)</comment>
+    <requestid>1226298</requestid>
+  </revision>
 </revisionlist>

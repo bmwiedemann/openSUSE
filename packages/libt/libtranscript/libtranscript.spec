@@ -1,7 +1,7 @@
 #
 # spec file for package libtranscript
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libtranscript
 %define lname	libtranscript1
-Version:        0.3.3
+Version:        0.3.4
 Release:        0
 Summary:        A character set conversion library
 License:        GPL-3.0-only
@@ -28,7 +28,6 @@ URL:            https://os.ghalkes.nl/libtranscript.html
 Source:         https://os.ghalkes.nl/dist/%name-%version.tar.bz2
 Source2:        https://os.ghalkes.nl/dist/%name-%version.tar.bz2.sig
 Source3:        %name.keyring
-Patch1:         0001-build-fix-configure-failure-in-gcc-14.patch
 BuildRequires:  fdupes
 BuildRequires:  gettext-tools
 BuildRequires:  libtool
@@ -63,7 +62,10 @@ applications that want to make use of libtranscript.
 
 %build
 export CC=gcc
-%configure --docdir="%_docdir/%name"
+# not autoconf :-/
+# includedir intentional, cf. bugzilla.opensuse.org/795968
+./configure --prefix="%_prefix" --includedir="%_includedir/transcript" \
+	--libdir="%_libdir" --docdir="%_docdir/%name"
 %make_build
 
 %install

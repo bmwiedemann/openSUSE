@@ -798,4 +798,16 @@
     <comment></comment>
     <requestid>1216795</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>8597834b4c3a57ac3da5b8f99f58943a</srcmd5>
+    <version>3.52.2</version>
+    <time>1732650896</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.52.2:
+  + Bugs fixed:
+    - goadavclient.c: add WebDAV default candidate to test
+    - goafedoraprovider: fix use-after-free
+  + Updated translations. (forwarded request 1226007 from iznogood)</comment>
+    <requestid>1226291</requestid>
+  </revision>
 </revisionlist>

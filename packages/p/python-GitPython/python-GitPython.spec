@@ -1,7 +1,7 @@
 #
 # spec file for package python-GitPython
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,14 @@
 #
 
 
-%define skip_python2 1
-%define simple_ver 3.1.34
 %{?sle15_python_module_pythons}
 Name:           python-GitPython
-Version:        3.1.34.1693646983.2a2ae77
+Version:        3.1.43
 Release:        0
 Summary:        Python Git Library
 License:        BSD-3-Clause
 URL:            https://github.com/gitpython-developers/GitPython
-Source:         GitPython-%{version}.tar.xz
-Patch0:         test-skips.patch
-Patch1:         test_blocking_lock_file-extra-time.patch
-# PATCH-FIX-UPSTREAM CVE-2023-41040.patch gh#gitpython-developers/GitPython#1644
-Patch2:         CVE-2023-41040.patch
+Source:         GitPython-%{version}.tar.gz
 BuildRequires:  %{python_module ddt >= 1.1.1}
 BuildRequires:  %{python_module gitdb >= 4.0.1}
 BuildRequires:  %{python_module pip}
@@ -70,10 +64,7 @@ sed -i  -e '/addopts/d' pyproject.toml
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# While SKIP_GITHUB is fine, the two tests skipped with SKIP_LOCALHOST
-# should work as the test runner sets up a git daemon.
 export SKIP_GITHUB=true
-export SKIP_LOCALHOST=true
 export TRAVIS=true
 
 export LANG=en_US.UTF-8
@@ -90,6 +81,6 @@ git config --global user.name "Your Name"
 %license LICENSE
 %doc AUTHORS CHANGES README.md doc/source/*.rst
 %{python_sitelib}/git
-%{python_sitelib}/GitPython-%{simple_ver}.dist-info
+%{python_sitelib}/GitPython-%{version}.dist-info
 
 %changelog

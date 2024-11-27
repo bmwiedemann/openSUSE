@@ -7,4 +7,56 @@
     <comment></comment>
     <requestid>1190053</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>12ab3ca9f9b4febfe76489c99c722a06</srcmd5>
+    <version>0.0.7</version>
+    <time>1732650950</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.0.7:
+  * host-run: Convert output to string
+  * start: Refactor Config loading Config loading needs to behave in different ways than other commands like xdg-open and run. Move it inside the start package instead.
+  * run: Simplify GITDIR sourcing
+  * inception: Ignore config and profile selection
+  * build(deps): bump github.com/urfave/cli/v3
+  * build(deps): bump anchore/sbom-action from 0.17.7 to 0.17.8
+  * build(deps): bump github.com/stretchr/testify from 1.9.0 to 1.10.0
+  * build(deps): bump google.golang.org/protobuf from 1.34.2 to 1.35.2
+  * Add examples for cli commands
+  * Make profile setting optional Some commands in specific scenarios can infer the profile, decreasing the amount of parameters or flags to be used. Examples:
+  * wayland: Show experimental warning for all subcommands
+  * Add host-run subcommand
+  * Refactor inception to use gRPC
+  * build: Fix gofmt violations
+  * build: Enable dependabot
+  * build: Lock goreleaser to v2
+  * Add autocomplete subcommand
+  * Add flag -runner to enable runner override Runners can be defined at the workload level. Now those runners can be overriden by the -runner flag.
+  * deps: Print output in tabular format
+  * build: Add GH attestation for release artefacts
+  * build: Add version field to goreleaser config
+  * build: Bump goreleaser-action to v6
+  * clipboard: Add subcommand to-host
+  * build: Use urfave/cli for CLI wiring
+  * profile: Fix issue finding workloads dir For profiles started from a Git repository, the Config.RootDir was being initiated with a full path. Later in the workload run process, that full path was being joined to another full path, leading to an invalid workload dir.
+  * build: Update main.go reference on goreleaser.
+  * profiles: Preemptive pull workload images
+  * profiles: Clean up CLI messages
+  * wayland: Set additional params for xwayland-run Disable testing extensions and ensure the auth file is set.
+  * Add QS_DEBUG=true to run on debug mode
+  * wayland: Pass XDG_RUNTIME_DIR to profile container
+  * wayland: Initial support for profiles
+  * build: Fix golangci-lint warnings
+  * profiles: Remove dbus code This feature was work in progress and can be removed until it is fully implemented.
+  * build: Bump golangci-lint to v1.62.0
+  * build: Run make test and make verify on push
+  * build: Bump Go to v1.23
+  * build: Bump dependencies
+  * build: Move main.go for easier installation
+  * Add initial support for podman
+  * mime: Rename default mime handler to qubesome
+  * Add version subcommand
+  * Increase workload args max length to 250
+  * Update install steps (forwarded request 1226368 from pjbgf)</comment>
+    <requestid>1226371</requestid>
+  </revision>
 </revisionlist>

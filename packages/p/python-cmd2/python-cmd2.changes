@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov 23 11:09:05 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.7
+  * Fixed issue where argument parsers for overridden commands
+    were not being created..
+  * Fixed issue where Cmd.ppaged() was not writing to the passed
+    in destination.
+
+-------------------------------------------------------------------
 Thu Nov 14 19:27:34 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.5.6

@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Tue Nov 26 02:31:48 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.20.0, summary of the changes:
+  ###### Features
+  * Switch from `awsType` to `cfnLint` @kddejong
+  * Add `dependentExcluded` keyword to json schema validation
+  * Add `requiredXor` keyword to json schema validation
+  * Allow for integration the configuration of additional registry schemas
+  * Add in `enum` values from botocore
+  * Add many JSON schemas to provide additional validation
+  * Add json schema for CW Alarm period when in the AWS namespace
+  * Include launch template security group schema
+  ##### Fixes
+  * Enhanced monitoring can be configured on aurora clusters
+  * Update `Fn::FindInMap` resolver to handle `Ref` to psedueparams
+  * Create a new jsonschema keyword `enumCaseInsensitive`
+  * Add `additionalProperties` false to IAM conditions
+  * Expand boto auto detection to include sub properties
+  * Add logic for `AWS::EC2::Subnet.Id` format
+  * Update language extensions `Fn::ForEach` for empty lists
+  * Support Python 3.13
+  * Make an exception for DocDB Cluster Port return type
+  * Dynamically determine Account ID during transform
+  * Move `requireXor` to `SpotFleetRequestConfigData`
+  * Bring back stateful resources json
+  * Add `MinActiveInstancesPercent` to `AutoScalingRollingUpdate`
+  * Update `requiredXor` for Vpc and Subnets
+  * Exception for lambda authorizer uri
+  * Allow for secretsmanager dynamic refs in `Parameter` defaults
+  * Move KMS validation for `SSESpecification` on Tables
+  * Return Symbol instead of None on Fn::Equals logic
+  * Remove handlers and tagging/permissions from specs
+  * GetAtts to array returns a string
+  * Allow `Fn::Length` in `Fn::Select`
+  * Allow resource version to be an `integer`
+  * Generate schema artifacts on release
+  * Require at least one element in LSI `if`
+  * Continue on template decode errors
+  * Update getatt resolution for better regional support
+  * Fix sub regex resolver to always return a string
+  * Fix an issue with endless loops in Fn::Sub
+  * Add start to SSM json schemas
+  * SAM transform replace AutoPublishCodeSha256
+  * Use region when looking for a resolver being satisfied
+  * Force resolve validation to not use strict types
+  * Allow ICMP to have `FromPort` other than -1 with `ToPort` -1
+  * Switch type comparison in BaseFn to use is_types_compatible
+  * Allow `Transform` section to have the full transform def
+  * Fix JSON based tags for many types
+  * Handle `Fn::Transform`s inside Mappings
+  * Allow Ref AWS::NoValue in FindInMap parameters
+  * Update policy principal validation logic
+  * Add Fn::Cidr as Fn::Join supported function
+  * Don't issue dynamicref issues in other fns
+  * Greatly simplify `FindInMap` resolution
+  * Allow `AllowedPattern` with AWS type parameters
+  * Update IAM resource ARN patterns
+  * Better resolution of mappings in transform
+  * Add in awslogs-create-group to ECS task logging
+  * Add AWS::SSM::Parameter::Value<String> to use AllowedPattern
+  * Don't validate dynamic references inside fn
+  * Skip getatt validation with custom resources
+  * Remove AWS::EC2::LaunchTemplate requiredXor value for data
+  * Condition satisfaction checks to raise error when unknown
+  * Update CodeBuild::Project FilterGroup types
+  * Update SQS MessageRetentionPeriod minimum
+  * Allow OAI IDs in IAM policies
+  * Allow IAM principal to be str or a list
+  * Array of strings are allowed as output value types
+  * Cleanup `cfn_path` generation
+  * Fix an issue with SSM params for ForEach
+  * Enumerate FindInMap when can't be resolved
+  * Make `cfnLint` keyword dynamic
+  * Increased validation of dynamic references
+  * Add requiredXor for CloudFront distribution cache behavior
+  * Additional GetAtt support for non registry resources
+  * Redo runner logic and keep backwards compatibility of the API
+  * Move required field for lambda eventsource mappings
+  * Fix an issue where GetAtts of arrays are dropped
+  * Switch to pyproject.toml and pre-commit for lint
+  * Fix an issue when the resource type isn't available for an output
+  * Update condition logic to include resource level conditions
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Tue Jul  2 12:08:19 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.87.9

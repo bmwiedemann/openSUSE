@@ -17,9 +17,8 @@
 
 
 %{?sle15_python_module_pythons}
-%define         skip_python2 1
 Name:           python-tornado6
-Version:        6.4.1
+Version:        6.4.2
 Release:        0
 Summary:        Open source version of scalable, non-blocking web server that power FriendFeed
 License:        Apache-2.0
@@ -104,6 +103,6 @@ export TRAVIS=1
 %license LICENSE
 %doc %{_docdir}/%{python_prefix}-tornado6
 %{python_sitearch}/tornado
-%{python_sitearch}/tornado-%{version}*-info
+%{python_sitearch}/tornado-%{version}.dist-info
 
 %changelog

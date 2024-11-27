@@ -95,4 +95,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1173290</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ff8c53fa9cf0b4d5405fabf40cbd1c0c</srcmd5>
+    <version>1.1.0~b1</version>
+    <time>1732650943</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 1.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Drop extra LICENSE.txt as upstream now ships its own
+- Override upstream version with 1.1.0~b1
+- Rename LICENSE.txt to LICENSE in %files section
+- Update Requires from setup.py (forwarded request 1226333 from glaubitz)</comment>
+    <requestid>1226335</requestid>
+  </revision>
 </revisionlist>

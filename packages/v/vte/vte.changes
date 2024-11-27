@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Nov 24 20:29:34 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.78.2:
+  + build: Fix typo in pread check
+  + emulation: Use U+2426 for SUB
+  + lib: Remove an unnecessary move
+  + widget:
+    - Use correct type for out param
+    - Use correct termprop name
+
+-------------------------------------------------------------------
 Tue Oct 22 07:26:43 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.78.1:

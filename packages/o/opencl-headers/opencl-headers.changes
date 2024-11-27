@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov 25 20:55:28 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2024.10.24:
+  * Temporarily disable PPA builds (#267)
+  * Update headers regenerated from latest xml (#264)
+  * Add properties parameter to all command-buffer commands (#260)
+  * Use array for clUpdateMutableCommandsKHR (#245)
+  * Disable gcc-11 on MacOS (#262)
+  * Update generated headers and remove CL/GL types from cl_platform.h (#257)
+  * Fix CI failures (#256)
+  * Introduce extension macros (#251)
+  * Update CI matrix (#252)
+  * Updated CI, added CD (#239)
+
+-------------------------------------------------------------------
 Fri Jun  7 11:48:57 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2024.05.08:

@@ -7,4 +7,12 @@
     <comment>🤖: initial submission of valkey-image</comment>
     <requestid>1224473</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>54a719d2233dd7f51f825d1ffa5a72d0</srcmd5>
+    <version>unknown</version>
+    <time>1732650939</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1226327</requestid>
+  </revision>
 </revisionlist>

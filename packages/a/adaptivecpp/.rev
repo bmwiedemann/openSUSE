@@ -9,4 +9,12 @@
 AFAIK we do miss an open source SYCL implementation in Factory.</comment>
     <requestid>1224581</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5b83f9e41a910b442549f29b87e29de6</srcmd5>
+    <version>24.06.0~0</version>
+    <time>1732650945</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1226349</requestid>
+  </revision>
 </revisionlist>

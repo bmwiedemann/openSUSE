@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 26 07:08:42 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.10.3:
+  * added horizontal split view #575
+  * Fix crash when using pulseaudio #569
+  * Synchronized Sync (Mode 2026) #576
+  * add android source code #552
+
+-------------------------------------------------------------------
 Tue May 14 19:34:12 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.10.2:

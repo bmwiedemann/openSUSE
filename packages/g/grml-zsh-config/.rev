@@ -34,4 +34,15 @@
   * Bump Standards-Version to 4.6.2</comment>
     <requestid>1148544</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6947a0aee1d39547e77fe5d4bea34e87</srcmd5>
+    <version>0.19.8</version>
+    <time>1732650966</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.19.8:
+  * Stop shipping /etc/zsh/zlogout to avoid clearing terminal screen
+  * debian/preinst: drop deprecated dpkg-divert
+  * debian: update Vcs-Git and Vcs-Browser</comment>
+    <requestid>1226436</requestid>
+  </revision>
 </revisionlist>

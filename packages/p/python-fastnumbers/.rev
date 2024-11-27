@@ -123,4 +123,16 @@
       that is now hidden in 3.9)</comment>
     <requestid>1135700</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>c571156d9c103080dc47fbb835674641</srcmd5>
+    <version>5.1.0</version>
+    <time>1732650916</time>
+    <user>anag+factory</user>
+    <comment>For Staging:J
+
+- Add fix-compiler-errors.patch with upstream fixes for compiler
+  errors.
+- Use %pytest_arch instead of home made calling of pytest.</comment>
+    <requestid>1225877</requestid>
+  </revision>
 </revisionlist>

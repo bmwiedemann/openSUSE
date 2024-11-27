@@ -17,7 +17,7 @@
 
 
 Name:           gnome-music
-Version:        47.0
+Version:        47.1
 Release:        0
 Summary:        Music Player for GNOME
 License:        LGPL-2.1-or-later AND SUSE-GPL-2.0-with-plugin-exception

@@ -1,4 +1,121 @@
 -------------------------------------------------------------------
+Mon Nov 18 21:31:25 UTC 2024 - Anton Smorodskyi <anton.smorodskyi@suse.com>
+
+- drop of CVE-2023-41040.patch because it included in upstream version
+- drop of test-skips.patch
+- drop of test_blocking_lock_file-extra-time.patch
+- Update to version 3.1.43:
+  * Issue and test deprecation warnings by @EliahKagan in #1886
+  * Fix version_info cache invalidation, typing, parsing, and serialization by @EliahKagan in #1838
+  * Document manual refresh path treatment by @EliahKagan in #1839
+  * Improve static typing and docstrings related to git object types by @EliahKagan in #1859
+  * Fix release link in changelog by @PeterJCLaw in #1795
+  * Remove test dependency on sumtypes library by @EliahKagan in #1798
+  * Pin Sphinx plugins to compatible versions by @EliahKagan in #1803
+  * fix: treeNotSorted issue by @et-repositories in #1799
+  * Remove git.util.NullHandler by @EliahKagan in #1807
+  * Clarify why GIT_PYTHON_GIT_EXECUTABLE may be set on failure by @EliahKagan in #1810
+  * Report actual attempted Git command when Git.refresh fails by @EliahKagan in #1812
+  * Don't suppress messages when logging is not configured by @EliahKagan in #1813
+  * Pin Python 3.9.16 on Cygwin CI by @EliahKagan in #1814
+  * Have initial refresh use a logger to warn by @EliahKagan in #1815
+  * Omit warning prefix in "Bad git executable" message by @EliahKagan in #1816
+  * Test with M1 macOS CI runner by @EliahKagan in #1817
+  * Bump pre-commit/action from 3.0.0 to 3.0.1 by @dependabot in #1818
+  * Bump Vampire/setup-wsl from 2.0.2 to 3.0.0 by @dependabot in #1819
+  * Remove deprecated section in README.md by @marcm-ml in #1823
+  * Keep temp files out of project dir and improve cleanup by @EliahKagan in #1825
+  * Add __all__ in git.exc by @EliahKagan in #1719
+  * Set submodule update cadence to weekly by @EliahKagan in #1721
+  * Never modify sys.path by @EliahKagan in #1720
+  * Bump git/ext/gitdb from 8ec2390 to ec58b7e by @dependabot in #1722
+  * Revise comments, docstrings, some messages, and a bit of code by @EliahKagan in #1725
+  * Use zero-argument super() by @EliahKagan in #1726
+  * Remove obsolete note in _iter_packed_refs by @EliahKagan in #1727
+  * Reorganize test_util and make xfail marks precise by @EliahKagan in #1729
+  * Clarify license and make module top comments more consistent by @EliahKagan in #1730
+  * Deprecate compat.is_, rewriting all uses by @EliahKagan in #1732
+  * Revise and restore some module docstrings by @EliahKagan in #1735
+  * Make the rmtree callback Windows-only by @EliahKagan in #1739
+  * List all non-passing tests in test summaries by @EliahKagan in #1740
+  * Document some minor subtleties in test_util.py by @EliahKagan in #1749
+  * Always read metadata files as UTF-8 in setup.py by @EliahKagan in #1748
+  * Test native Windows on CI by @EliahKagan in #1745
+  * Test macOS on CI by @EliahKagan in #1752
+  * Let close_fds be True on all platforms by @EliahKagan in #1753
+  * Fix IndexFile.from_tree on Windows by @EliahKagan in #1751
+  * Remove unused TASKKILL fallback in AutoInterrupt by @EliahKagan in #1754
+  * Don't return with operand when conceptually void by @EliahKagan in #1755
+  * Group .gitignore entries by purpose by @EliahKagan in #1758
+  * Adding dubious ownership handling by @marioaag in #1746
+  * Avoid brittle assumptions about preexisting temporary files in tests by @EliahKagan in #1759
+  * Overhaul noqa directives by @EliahKagan in #1760
+  * Clarify some Git.execute kill_after_timeout limitations by @EliahKagan in #1761
+  * Bump actions/setup-python from 4 to 5 by @dependabot in #1763
+  * Don't install black on Cygwin by @EliahKagan in #1766
+  * Extract all "import gc" to module level by @EliahKagan in #1765
+  * Extract remaining local "import gc" to module level by @EliahKagan in #1768
+  * Replace xfail with gc.collect in TestSubmodule.test_rename by @EliahKagan in #1767
+  * Enable CodeQL by @EliahKagan in #1769
+  * Replace some uses of the deprecated mktemp function by @EliahKagan in #1770
+  * Bump github/codeql-action from 2 to 3 by @dependabot in #1773
+  * Run some Windows environment variable tests only on Windows by @EliahKagan in #1774
+  * Fix TemporaryFileSwap regression where file_path could not be Path by @EliahKagan in #1776
+  * Improve hooks tests by @EliahKagan in #1777
+  * Fix if items of Index is of type PathLike by @stegm in #1778
+  * Better document IterableObj.iter_items and improve some subclasses by @EliahKagan in #1780
+  * Revert "Don't install black on Cygwin" by @EliahKagan in #1783
+  * Add missing pip in $PATH on Cygwin CI by @EliahKagan in #1784
+  * Shorten Iterable docstrings and put IterableObj first by @EliahKagan in #1785
+  * Fix incompletely revised Iterable/IterableObj docstrings by @EliahKagan in #1786
+  * Pre-deprecate setting Git.USE_SHELL by @EliahKagan in #1782
+  * Deprecate Git.USE_SHELL by @EliahKagan in #1787
+  * In handle_process_output don't forward finalizer result by @EliahKagan in #1788
+  * Fix mypy warning "Missing return statement" by @EliahKagan in #1789
+  * Fix two remaining Windows untrusted search path cases by @EliahKagan in #1792
+  * Add missing assert keywords by @EliahKagan in #1678
+  * Make clear every test's status in every CI run by @EliahKagan in #1679
+  * Fix new link to license in readme by @EliahKagan in #1680
+  * Drop unneeded flake8 suppressions by @EliahKagan in #1681
+  * Update instructions and test helpers for git-daemon by @EliahKagan in #1684
+  * Fix Git.execute shell use and reporting bugs by @EliahKagan in #1687
+  * No longer allow CI to select a prerelease for 3.12 by @EliahKagan in #1689
+  * Clarify Git.execute and Popen arguments by @EliahKagan in #1688
+  * Ask git where its daemon is and use that by @EliahKagan in #1697
+  * Fix bugs affecting exception wrapping in rmtree callback by @EliahKagan in #1700
+  * Fix dynamically-set all variable by @DeflateAwning in #1659
+  * Fix small #1662 regression due to #1659 by @EliahKagan in #1701
+  * Drop obsolete info on yanking from security policy by @EliahKagan in #1703
+  * Have Dependabot offer submodule updates by @EliahKagan in #1702
+  * Bump git/ext/gitdb from 49c3178 to 8ec2390 by @dependabot in #1704
+  * Bump git/ext/gitdb from 8ec2390 to 6a22706 by @dependabot in #1705
+  * Update readme for milestone-less releasing by @EliahKagan in #1707
+  * Run Cygwin CI workflow commands in login shells by @EliahKagan in #1709
+  * Improve Python version and OS compatibility, fixing deprecations by @EliahKagan in #1654
+  * Better document env_case test/fixture and cwd by @EliahKagan in #1657
+  * Remove spurious executable permissions by @EliahKagan in #1658
+  * Fix up checks in Makefile and make them portable by @EliahKagan in #1661
+  * Fix URLs that were redirecting to another license by @EliahKagan in #1662
+  * Assorted small fixes/improvements to root dir docs by @EliahKagan in #1663
+  * Use venv instead of virtualenv in test_installation by @EliahKagan in #1664
+  * Omit py_modules in setup by @EliahKagan in #1665
+  * Don't track code coverage temporary files by @EliahKagan in #1666
+  * Configure tox by @EliahKagan in #1667
+  * Format tests with black and auto-exclude untracked paths by @EliahKagan in #1668
+  * Upgrade and broaden flake8, fixing style problems and bugs by @EliahKagan in #1673
+  * Fix rollback bug in SymbolicReference.set_reference by @EliahKagan in #1675
+  * Remove @NoEffect annotations by @EliahKagan in #1677
+  * Add more checks for the validity of refnames by @facutuesca in #1672
+  * Bump actions/checkout from 3 to 4 by @dependabot in #1643
+  * Fix 'Tree' object has no attribute '_name' when submodule path is normal path by @CosmosAtlas in #1645
+  * Fix CVE-2023-41040 by @facutuesca in #1644
+  * Only make config more permissive in tests that need it by @EliahKagan in #1648
+  * Added test for PR #1645 submodule path by @CosmosAtlas in #1647
+  * Fix Windows environment variable upcasing bug by @EliahKagan in #1650
+
+
+
+-------------------------------------------------------------------
 Tue Sep  5 08:30:24 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add CVE-2023-41040.patch to fix directory traversal attack

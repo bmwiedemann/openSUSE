@@ -17,11 +17,11 @@
 
 
 Name:           himmelblau
-Version:        0.6.14+git.0.bbda0b6
+Version:        0.7.5+git.0.8f421b0
 Release:        0
-Summary:        Interoperability suite for Microsoft Azure AD and Intune
+Summary:        Interoperability suite for Microsoft Azure Entra Id
 License:        GPL-3.0-or-later
-URL:            https://github.com/openSUSE/himmelblau
+URL:            https://github.com/himmelblau-idm/himmelblau
 Group:          Productivity/Networking/Security
 Source:         %{name}-%{version}.tar.bz2
 Source1:        vendor.tar.zst
@@ -30,6 +30,7 @@ BuildRequires:  binutils
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  clang-devel
+BuildRequires:  dbus-1-devel
 BuildRequires:  krb5-devel
 BuildRequires:  libcap-devel
 BuildRequires:  libclang13
@@ -43,31 +44,35 @@ BuildRequires:  patchelf
 BuildRequires:  pcre2-devel
 BuildRequires:  sqlite3-devel
 BuildRequires:  tpm2-0-tss-devel
+BuildRequires:  utf8proc-devel
 ExclusiveArch:  %{rust_tier1_arches}
 Recommends:     libnss_himmelblau2
 Recommends:     pam-himmelblau
 Provides:       aad-cli
 Provides:       aad-common
+Suggests:       himmelblau-sso
+# This is necessary to prevent users from installing Himmelblau along side
+# Microsoft's Broker, as these will conflict.
+Provides:       microsoft-identity-broker
 
 %description
-Himmelblau is an interoperability suite for Microsoft Azure AD and
-Intune, which allows users to sign into a Linux machine using Azure
-Active Directory credentials. It relies on the Microsoft
-Authentication Library to communicate with the Microsoft service.
+Himmelblau is an interoperability suite for Microsoft Azure Entra Id,
+which allows users to sign into a Linux machine using Azure
+Entra Id credentials.
 
 %package -n pam-himmelblau
-Summary:        Azure AD authentication PAM module
+Summary:        Azure Entra Id authentication PAM module
 Requires:       %{name} = %{version}
 Provides:       libpam-aad
+Suggests:       himmelblau-sshd-config
 
 %description -n pam-himmelblau
-Himmelblau is an interoperability suite for Microsoft Azure AD and
-Intune, which allows users to sign into a Linux machine using Azure
-Active Directory credentials. It relies on the Microsoft
-Authentication Library to communicate with the Microsoft service.
+Himmelblau is an interoperability suite for Microsoft Azure Entra Id,
+which allows users to sign into a Linux machine using Azure
+Entra Id credentials.
 
 %package -n libnss_himmelblau2
-Summary:        Azure AD authentication NSS module
+Summary:        Azure Entra Id authentication NSS module
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
 Requires:       %{name}
@@ -75,10 +80,33 @@ Provides:       libnss-aad
 Provides:       nss-himmelblau
 
 %description -n libnss_himmelblau2
-Himmelblau is an interoperability suite for Microsoft Azure AD and
-Intune, which allows users to sign into a Linux machine using Azure
-Active Directory credentials. It relies on the Microsoft
-Authentication Library to communicate with the Microsoft service.
+Himmelblau is an interoperability suite for Microsoft Azure Entra Id,
+which allows users to sign into a Linux machine using Azure
+Entra Id credentials.
+
+%package -n himmelblau-sshd-config
+Summary:        Azure Entra Id SSHD Configuration
+Requires:       %{name} = %{version}
+Requires:       openssh-server
+BuildRequires:  openssh-server
+BuildArch:      noarch
+
+%description -n himmelblau-sshd-config
+Himmelblau is an interoperability suite for Microsoft Azure Entra Id,
+which allows users to sign into a Linux machine using Azure
+Entra Id credentials.
+
+%package -n himmelblau-sso
+Summary:        Azure Entra Id Firefox SSO Configuration
+Requires:       %{name} = %{version}
+Requires:       MozillaFirefox
+Requires:       python3-pydbus
+Provides:       linux-entra-sso
+
+%description -n himmelblau-sso
+Himmelblau is an interoperability suite for Microsoft Azure Entra Id,
+which allows users to sign into a Linux machine using Azure
+Entra Id credentials.
 
 %post   -n libnss_himmelblau2 -p /sbin/ldconfig
 %postun -n libnss_himmelblau2 -p /sbin/ldconfig
@@ -108,11 +136,14 @@ install -m 0755 target/release/libpam_%{name}.so %{buildroot}/%{_pam_moduledir}/
 install -D -d -m 0755 %{buildroot}%{_sbindir}
 strip --strip-unneeded target/release/himmelblaud
 strip --strip-unneeded target/release/himmelblaud_tasks
+strip --strip-unneeded target/release/broker
 install -m 0755 target/release/himmelblaud %{buildroot}/%{_sbindir}
 install -m 0755 target/release/himmelblaud_tasks %{buildroot}/%{_sbindir}
+install -m 0755 target/release/broker %{buildroot}/%{_sbindir}
 pushd %{buildroot}%{_sbindir}
 ln -s himmelblaud rchimmelblaud
 ln -s himmelblaud_tasks rchimmelblaud_tasks
+ln -s broker rcbroker
 popd
 install -D -d -m 0755 %{buildroot}%{_bindir}
 strip --strip-unneeded target/release/aad-tool
@@ -120,6 +151,18 @@ install -m 0755 target/release/aad-tool %{buildroot}/%{_bindir}
 install -D -d -m 0755 %{buildroot}%{_unitdir}
 install -m 0644 %{_builddir}/%{name}-%{version}/platform/opensuse/himmelblaud.service %{buildroot}%{_unitdir}/himmelblaud.service
 install -m 0644 %{_builddir}/%{name}-%{version}/platform/opensuse/himmelblaud-tasks.service %{buildroot}%{_unitdir}/himmelblaud-tasks.service
+install -D -d -m 0755 %{buildroot}%{_datarootdir}/dbus-1/services
+install -m 0644 %{_builddir}/%{name}-%{version}/platform/opensuse/com.microsoft.identity.broker1.service %{buildroot}%{_datarootdir}/dbus-1/services/
+install -D -d -m 0755 %{buildroot}%{_sysconfdir}/ssh/sshd_config.d
+install -m 0644 %{_builddir}/%{name}-%{version}/platform/el/sshd_config %{buildroot}%{_sysconfdir}/ssh/sshd_config.d/himmelblau.conf
+
+# Firefox Single Sign On
+install -m 0755 %{_builddir}/%{name}-%{version}/src/sso/src/linux-entra-sso.py %{buildroot}/%{_bindir}/linux-entra-sso
+sed -i 's/#!\/usr\/bin\/env python3/#!\/usr\/bin\/python3/' %{buildroot}/%{_bindir}/linux-entra-sso
+install -D -d -m 0755 %{buildroot}%{_libdir}/mozilla/native-messaging-hosts
+install -m 0644 %{_builddir}/%{name}-%{version}/src/sso/src/firefox/linux_entra_sso.json %{buildroot}%{_libdir}/mozilla/native-messaging-hosts/
+install -D -d -m 0755 %{buildroot}%{_sysconfdir}/firefox/policies
+install -m 0644 %{_builddir}/%{name}-%{version}/src/sso/src/firefox/policies.json %{buildroot}%{_sysconfdir}/firefox/policies/
 
 %pre
 %service_add_pre himmelblaud.service himmelblaud-tasks.service
@@ -135,19 +178,34 @@ install -m 0644 %{_builddir}/%{name}-%{version}/platform/opensuse/himmelblaud-ta
 
 %files
 %dir %{_sysconfdir}/himmelblau
-%config %{_sysconfdir}/himmelblau/himmelblau.conf
+%config(noreplace) %{_sysconfdir}/himmelblau/himmelblau.conf
 %{_sbindir}/himmelblaud
 %{_sbindir}/rchimmelblaud
 %{_sbindir}/himmelblaud_tasks
 %{_sbindir}/rchimmelblaud_tasks
+%{_sbindir}/broker
+%{_sbindir}/rcbroker
 %{_bindir}/aad-tool
 %{_unitdir}/himmelblaud.service
 %{_unitdir}/himmelblaud-tasks.service
+%{_datarootdir}/dbus-1/services/com.microsoft.identity.broker1.service
 
 %files -n libnss_himmelblau2
 %{_libdir}/libnss_%{name}.so.*
 
 %files -n pam-himmelblau
 %{_pam_moduledir}/pam_%{name}.so
+
+%files -n himmelblau-sshd-config
+%config %{_sysconfdir}/ssh/sshd_config.d/himmelblau.conf
+
+%files -n himmelblau-sso
+%{_bindir}/linux-entra-sso
+%dir %{_libdir}/mozilla
+%dir %{_libdir}/mozilla/native-messaging-hosts
+%{_libdir}/mozilla/native-messaging-hosts/linux_entra_sso.json
+%dir %{_sysconfdir}/firefox
+%dir %{_sysconfdir}/firefox/policies
+%config %{_sysconfdir}/firefox/policies/policies.json
 
 %changelog

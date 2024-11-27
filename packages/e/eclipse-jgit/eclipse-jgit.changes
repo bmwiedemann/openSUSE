@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 11 17:23:41 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * javax-servlet-api-4.patch
+    + allow building with servlet-api 4.x
+
+-------------------------------------------------------------------
 Mon Nov  4 21:23:22 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

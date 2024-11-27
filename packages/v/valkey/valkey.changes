@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 22 09:03:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- fix requires for compat-redis package
+
+-------------------------------------------------------------------
 Fri Oct  4 12:43:51 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 8.0.1:

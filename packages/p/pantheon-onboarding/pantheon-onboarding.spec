@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.onboarding
 Name:           pantheon-onboarding
-Version:        8.0.0
+Version:        8.0.2
 Release:        0
 Summary:        Setting General Preferences
 License:        GPL-3.0-or-later

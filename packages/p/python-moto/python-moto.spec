@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-moto
-Version:        5.0.16
+Version:        5.0.20
 Release:        0
 Summary:        Library to mock out tests based on AWS
 License:        Apache-2.0

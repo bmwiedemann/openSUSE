@@ -1,1419 +1,956 @@
-commit d8eab602c3279378f344cdde2f14fe05707ac71d
+commit b151451269ec41b5723484596e7dd40f9ab8824a (HEAD -> openafs-stable-1_8_x, origin/openafs-stable-1_8_x)
+Author: Andrew Deason <adeason@sinenomine.net>
+Date:   Tue Nov 12 20:29:24 2024 -0600
+
+    ptserver: Add xdr_namelist to liboafs_prot.la.sym
+    
+    Commit 1f5e1ef9e3 (OPENAFS-SA-2024-003: Run xdr_free for retried RPCs)
+    added a couple of references to xdr_namelist, which currently causes a
+    build failure on AIX:
+    
+        /bin/sh ../../libtool --quiet --mode=link --tag=CC   xlc_r [...]  -o pts pts.o  ../../src/ptserver/liboafs_prot.la [...]
+        ld: 0711-317 ERROR: Undefined symbol: xdr_namelist
+        ld: 0711-345 Use the -bloadmap or -bnoquiet option to obtain more information.
+        make: 1254-004 The error code from the last command is 8.
+    
+    To avoid this, add xdr_namelist to liboafs_prot.la.sym.
+    
+    Reviewed-on: https://gerrit.openafs.org/15954
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    (cherry picked from commit 4f82b5bd49a3c83c990d64d06cb6389969826208)
+    
+    Change-Id: I8a7272d1b94bd02295ef63b70a4247a4cf6e70f6
+    Reviewed-on: https://gerrit.openafs.org/15955
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+
+commit c1beae2622fe6fbdda2353a7da2090fc23595617
+Author: Benjamin Kaduk <kaduk@mit.edu>
+Date:   Fri Nov 8 14:03:53 2024 -0800
+
+    Make OpenAFS 1.8.13
+    
+    Update version strings for the 1.8.13 release.
+    
+    Change-Id: Ic7f75226f3ba0f51f17c8e123c8cdbdab3ff6c7f
+    Reviewed-on: https://gerrit.openafs.org/15949
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
+
+commit 7ad61adb706bd53be287f8620ac67720434b3c24
+Author: Benjamin Kaduk <kaduk@mit.edu>
+Date:   Fri Nov 8 13:57:28 2024 -0800
+
+    Update NEWS for OpenAFS 1.8.13
+    
+    Change-Id: I8e25f6d4719f403b07a8faad733d858a8872620f
+    Reviewed-on: https://gerrit.openafs.org/15948
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
+
+commit 37e585f0841803cdf3a1f99770034890ba162d7c
+Author: Andrew Deason <adeason@sinenomine.net>
+Date:   Thu Oct 15 21:07:17 2020 -0500
+
+    OPENAFS-SA-2024-003: xdr: Initialize memory for INOUT args
+    
+    CVE-2024-10397
+    
+    Currently, there are a few callers of RPCs that specify some data for
+    an INOUT parameter, but do not initialize the memory for that data.
+    This can result in the uninitialized memory being sent to the peer
+    when the argument is processed as an IN argument. Simply clear the
+    relevant data before running the RPC to avoid this.
+    
+    The relevant RPCs and arguments are:
+    
+    - For RMTSYS_Pioctl, the 'OutData' argument.
+    
+    - For BUDB_GetVolumes, the 'volumes' argument.
+    -- via DBLookupByVolume -> bcdb_LookupVolume -> ubik_BUDB_GetVolumes
+    -- and via bc_Restorer -> bcdb_FindVolumes -> ubik_BUDB_GetVolumes
+    
+    - For KAA_Authenticate_old / KAA_Authenticate, this can happen with
+      the 'answer' argument in ka_Authenticate if KAA_AuthenticateV2 or
+      KAA_Authenticate return RXGEN_OPCODE, but the server manages to
+      populate oanswer.SeqLen with non-zero.
+    
+    For all of these, make sure the memory is blanked before running the
+    relevant RPC. For ka_Authenticate, reset oanswer.SeqLen to 0 to avoid
+    sending any data, but still blank 'answer' and 'answer_old' just to be
+    safe.
+    
+    FIXES 135043
+    
+    Reviewed-on: https://gerrit.openafs.org/15925
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit c4e28c2afe743aa323be57ef3b0faec13027e678)
+    
+    Change-Id: If44320c1efde98c53eed88099cd978ef89f4c0d8
+    Reviewed-on: https://gerrit.openafs.org/15947
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
+
+commit 4871f8ad2775e97bb85ff7efc33a4ad8d3f6d9d1
+Author: Andrew Deason <adeason@sinenomine.net>
+Date:   Fri Oct 16 10:55:15 2020 -0500
+
+    OPENAFS-SA-2024-003: sys: Don't over-copy RMTSYS_Pioctl output data
+    
+    CVE-2024-10397
+    
+    Here, 'OutData' only has OutData.rmtbulk_len bytes in it. We know that
+    OutData.rmtbulk_len is at most data->out_size, but it could be
+    smaller. So, only copy OutData.rmtbulk_len bytes, not data->out_size,
+    since data->out_size could be more than the number of bytes we have
+    allocated in OutData.
+    
+    FIXES 135043
+    
+    Reviewed-on: https://gerrit.openafs.org/15924
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit f31a79d749abc8e64a8d9ac748bb2b5457875099)
+    
+    Change-Id: Ic05751d05c7c8862770188131110cc602c9b93b7
+    Reviewed-on: https://gerrit.openafs.org/15946
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
+
+commit 25ad3931d5c03ead625a96e6b626febeb3e20453
+Author: Andrew Deason <adeason@sinenomine.net>
+Date:   Fri Oct 16 10:52:03 2020 -0500
+
+    OPENAFS-SA-2024-003: Run xdr_free for retried RPCs
+    
+    CVE-2024-10397
+    
+    A few areas of code retry the same RPC, like so:
+    
+        do {
+            code = VL_SomeRPC(rxconn, &array_out);
+        } while (some_condition);
+        xdr_free((xdrproc_t) xdr_foo, &array_out);
+    
+    Or try a different version/variant of an RPC (e.g.
+    VLDB_ListAttributesN2 -> VLDB_ListAttributes).
+    
+    If the first RPC call causes the output array to be allocated with
+    length N, then the subsequent RPC calls may fail if the server
+    responds with an array larger than N.
+    
+    Furthermore, if the subsequent call responds with an array smaller
+    than N, then when we xdr_free the array, our length will be smaller
+    than the actual number of allocated elements. That results in two
+    potential issues:
+    
+    - We'll fail to free the elements at the end of the array. This is
+      only a problem if each element in the array also uses
+      dynamically-allocated memory (e.g. each element contains a string or
+      another array). Fortunately, there are only a few such structures in
+      any of our RPC-L definitions: SysNameList and CredInfos. And neither
+      of those are used in such a retry loop, so this isn't a problem.
+    
+    - We'll give the wrong length to osi_free when freeing the array
+      itself. This only matters for KERNEL, and only on some platforms
+      (such as Solaris), since the length given to osi_free is ignored
+      everywhere else.
+    
+    To avoid these possible issues, change the relevant retry loops to
+    free our xdr-allocated arrays on every iteration of the loop, like
+    this:
+    
+        do {
+            xdr_free((xdrproc_t) xdr_foo, &array_out);
+            code = VL_SomeRPC(rxconn, &array_out);
+        } while (some_condition);
+        xdr_free((xdrproc_t) xdr_foo, &array_out);
+    
+    Or like this:
+    
+        do {
+            code = VL_SomeRPC(rxconn, &array_out);
+            xdr_free((xdrproc_t) xdr_foo, &array_out);
+        } while (some_condition);
+    
+    FIXES 135043
+    
+    Reviewed-on: https://gerrit.openafs.org/15923
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 1f5e1ef9e35f6b5e8693c91199c976d5e030c0d0)
+    
+    Change-Id: I77ce3a904d502784cbf356e113972dfab838256e
+    Reviewed-on: https://gerrit.openafs.org/15945
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
+
+commit a82212ab20f0635a40c52648a52a1e9eaccc4937
+Author: Andrew Deason <adeason@sinenomine.net>
+Date:   Thu Oct 15 20:30:14 2020 -0500
+
+    OPENAFS-SA-2024-003: xdr: Ensure correct string length in xdr_string
+    
+    CVE-2024-10397
+    
+    Currently, if a caller calls an RPC with a string output argument,
+    like so:
+    
+    {
+        char *str = NULL;
+        code = RXAFS_SomeCall(&str);
+        /* do something with 'str' */
+        xdr_free((xdrproc_t) xdr_string, &str);
+    }
+    
+    Normally, xdr_free causes xdr_string to call osi_free, specifying the
+    same size that we allocated for the string. However, since we only
+    have a char*, the amount of space allocated for the string is not
+    recorded separately, and so xdr_string calculates the size of the
+    buffer to free by using strlen().
+    
+    This works for well-formed strings, but if we fail to decode the
+    payload of the string, or if our peer gave us a string with a NUL byte
+    in the middle of it, then strlen() may be significantly less than the
+    actual allocated size. And so in this case, the size given to osi_free
+    will be wrong.
+    
+    The size given to osi_free is ignored in userspace, and for KERNEL on
+    many platforms like Linux and DARWIN. However, it is notably not
+    ignored for KERNEL on Solaris and some other less supported platforms
+    (HPUX, Irix, NetBSD). At least on Solaris, an incorrect size given to
+    osi_free can cause a system panic or possibly memory corruption.
+    
+    To avoid this, change xdr_string during XDR_DECODE to make sure that
+    strlen() of the string always reflects the allocated size. If we fail
+    to decode the string's payload, replace the payload with non-NUL bytes
+    (fill it with 'z', an arbitrary choice). And if we do successfully
+    decode the payload, check if the strlen() is wrong (that is, if the
+    payload contains NUL '\0' bytes), and fail if so, also filling the
+    payload with 'z'. This is only strictly needed in KERNEL on certain
+    platforms, but do it everywhere so our behavior is consistent.
+    
+    FIXES 135043
+    
+    Reviewed-on: https://gerrit.openafs.org/15922
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 7d0675e6c6a2f3200a3884fbe46b3ef8ef9ffd24)
+    
+    Change-Id: Ieb8827474a7458ce80176b14ce87f3402aed7a86
+    Reviewed-on: https://gerrit.openafs.org/15944
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
+
+commit 0ff2cd9e0f5656e8327c5fe47935998de3669678
+Author: Andrew Deason <adeason@sinenomine.net>
+Date:   Thu Oct 15 23:18:53 2020 -0500
+
+    OPENAFS-SA-2024-003: Check sanity on lengths of RPC returned arrays
+    
+    CVE-2024-10397
+    
+    Various RPCs return a variable-length array in an OUT argument, but
+    are only supposed to return specific sizes. A few instances of this
+    include the following (but this is not an exhaustive list):
+    
+    - AFSVolListOneVolume should only return a single volintInfo.
+    
+    - PR_NameToID should return the same number of IDs as names given.
+    
+    - VL_GetAddrsU should return the same number of addresses as the
+      'nentries' OUT argument.
+    
+    Some callers of these RPCs just assume that the server has not
+    violated these rules. If the server responds with a nonsensical array
+    size, this could cause us to read beyond the end of the array, or
+    cause a NULL dereference or other errors.
+    
+    For example, some callers of VL_GetAddrsU will iterate over 'nentries'
+    addresses, even if the 'blkaddrs' OUT argument contains fewer entries.
+    Or with AFSVolListOneVolume, some callers assume that at least 1
+    volintInfo has been returned; if 0 have been returned, we can try to
+    access a NULL array.
+    
+    To avoid all of this, add various sanity checks on the relevant
+    returned lengths of these RPCs. For most cases, if the lengths are not
+    sane, return an internal error from the appropriate subsystem (or
+    RXGEN_CC_UNMARSHAL if there isn't one). For VL_GetAddrsU, if
+    'nentries' is too long, just set it to the length of the returned
+    array.
+    
+    FIXES 135043
+    
+    Reviewed-on: https://gerrit.openafs.org/15921
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit c732715e4ee78ed1e2414c813ae5a4b3574107a0)
+    
+    Change-Id: I2cfc0723f4c3a2692238fa1e59145aceee17e0d6
+    Reviewed-on: https://gerrit.openafs.org/15943
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
+
+commit d253a52d3b59bd691eae8863ea2f06d99ad18550
+Author: Andrew Deason <adeason@sinenomine.net>
+Date:   Sun Oct 4 23:04:06 2020 -0500
+
+    OPENAFS-SA-2024-003: xdr: Prevent XDR_DECODE buffer overruns
+    
+    CVE-2024-10397
+    
+    When making an RPC call from a client, output arguments that use
+    arrays (or array-like objects like strings and opaques) can be
+    allocated by XDR, like so:
+    
+    {
+        struct idlist ids;
+    
+        ids.idlist_val = NULL;
+        ids.idlist_len = 0;
+        code = PR_NameToID(rxconn, names, &ids);
+        /* data inside ids.idlist_val[...] */
+        xdr_free((xdrproc_t) xdr_idlist, &ids);
+    }
+    
+    With this approach, during XDR_DECODE, xdr_array() reads in the number
+    of array elements from the peer, then allocates enough memory to hold
+    that many elements, and then reads in the array elements.
+    
+    Alternatively, the caller can provide preallocated memory, like so:
+    
+    {
+        struct idlist ids;
+        afs_int32 ids_buf[30];
+    
+        ids.idlist_val = ids_buf;
+        ids.idlist_len = 30;
+        code = PR_NameToID(rxconn, names, &ids);
+        /* data inside ids.idlist_val[...] */
+    }
+    
+    With this approach, during XDR_DECODE, xdr_array() reads in the number
+    of array elements from the peer, and then reads in the array elements
+    into the supplied buffer. However, in this case, xdr_array() never
+    checks that the number of array elements will actually fit into the
+    supplied buffer; the _len field provided by the caller is just ignored.
+    In this example, if the ptserver responds with 50 elements for the 'ids'
+    output argument, xdr_array() will write 50 afs_int32's into
+    'ids.idlist_val', going beyond the end of the 30 elements that are
+    actually allocated.
+    
+    It's also possible, and in fact very easy, to use xdr-allocated
+    buffers and then reuse them as a preallocated buffer, possibly
+    accidentally. For example:
+    
+    {
+        struct idlist ids;
+    
+        ids.idlist_val = NULL;
+        ids.idlist_len = 0;
+        while (some_condition) {
+            code = PR_NameToID(rxconn, names, &ids);
+        }
+    }
+    
+    In this case, the first call to PR_NameToID can cause the buffer for
+    'ids' to be allocated by XDR, which will then be reused by the
+    subsequent calls to PR_NameToId. Note that this can happen even if the
+    first PR_NameToID call fails; the call can be aborted after the output
+    array is allocated.
+    
+    Retrying an RPC in this way is effectively what all ubik_Call*
+    codepaths do (including all ubik_* wrappers, e.g. ubik_PR_NameToID).
+    Or some callers retry effectively the same RPC when falling back to
+    earlier versions (e.g. VL_ListAttributesN2 -> VL_ListAttributesN).
+    
+    To prevent this for arrays and opaques, change xdr_array (and
+    xdr_bytes) to check if the _len field for preallocated buffers is
+    large enough, and return failure if it's not.
+    
+    Also perform the same check for the ka_CBS and ka_BBS structures. These
+    are mostly the same as opaques, but they have custom serialization
+    functions in src/kauth/kaaux.c. ka_BBS also has two lengths: the actual
+    length of bytes, and a 'max' length. ka_CBS isn't used for any RPC
+    output arguments, but fix it for consistency.
+    
+    For strings, the situation is complicated by the fact that callers
+    cannot pass in how much space was allocated for the string, since
+    callers only provide a char**. So for strings, just refuse to use a
+    preallocated buffer at all, and return failure if one is provided.
+    
+    Note that for some callers using preallocated arrays or strings, the
+    described buffer overruns are not possible, since the preallocated
+    buffers are larger than the max length specified in the relevant
+    RPC-L. For example, afs_DoBulkStat() allocates AFSCBMAX entries for
+    the output args for RXAFS_InlineBulkStatus, which is the max length
+    specified in the RPC-L, so a buffer overrun is impossible. But since
+    it is so easy to allow a buffer overrun, enforce the length checks for
+    everyone.
+    
+    FIXES 135043
+    
+    Reviewed-on: https://gerrit.openafs.org/15920
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 13413eceed80d106cbed5ffb91c4dfbc8cccf55c)
+    
+    Change-Id: I1010d2fa309d4a441ebaf285168c2e7e887753b9
+    Reviewed-on: https://gerrit.openafs.org/15942
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
+
+commit c18640c6b98b10cd6f78c63195ff822689cb5348
+Author: Andrew Deason <adeason@sinenomine.net>
+Date:   Thu Jun 13 15:30:50 2024 -0500
+
+    OPENAFS-SA-2024-003: xdr: Set _len for prealloc'd opaque/array OUT args
+    
+    CVE-2024-10397
+    
+    Currently, a few RPCs with arrays or opaque OUT arguments are called
+    with preallocated memory for the arg, but also provide a _len of 0 (or
+    an uninitialized _len). This makes it impossible for the xdr routine to
+    tell whether we have allocated enough space to actually hold the
+    response from the server.
+    
+    To help this situation, either specify an appropriate _len for the
+    preallocated value (cm_IoctlGetACL, fsprobe_LWP), or don't provide a
+    preallocated buffer at all and let xdr allocate a buffer for us
+    (PGetAcl).
+    
+    Note that this commit doesn't change xdr to actually check the value of
+    the given _len; but now a future commit can do so without breaking
+    callers.
+    
+    FIXES 135043
+    
+    Reviewed-on: https://gerrit.openafs.org/15919
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit b2b1110ddd9e19670dbc6a3217dc2a74af432f82)
+    
+    Change-Id: Ibdee49b79da1476c4e606bcad5fb3d08eb259ad7
+    Reviewed-on: https://gerrit.openafs.org/15941
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
+
+commit 40440c3eb628ff1772588bdc99d7496292097bbd
+Author: Andrew Deason <adeason@sinenomine.net>
+Date:   Thu Jun 13 15:28:38 2024 -0500
+
+    OPENAFS-SA-2024-003: xdr: Avoid prealloc'd string OUT args
+    
+    CVE-2024-10397
+    
+    Currently, several callers call RPCs with string OUT arguments, and
+    provide preallocated memory for those arguments. This can easily allow a
+    response from the server to overrun the allocated buffer, stomping over
+    stack or heap memory.
+    
+    We could simply make our preallocated buffers larger than the maximum
+    size that the RPC allows, but relying on that is error prone, and
+    there's no way for XDR to check if a string buffer is large enough.
+    
+    Instead, to make sure we don't overrun a given preallocated buffer,
+    avoid giving a preallocated buffer to such RPCs, and let XDR allocate
+    the memory for us.
+    
+    Specifically, this commit changes several callers to
+    RXAFS_GetVolumeStatus(), and one caller of BOZO_GetInstanceParm(), to
+    avoid passing in a preallocated string buffer.
+    
+    All other callers of RPCs with string OUT args already let XDR allocate
+    the buffers for them.
+    
+    FIXES 135043
+    
+    Reviewed-on: https://gerrit.openafs.org/15918
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 00a1b266af51a828a022c23e7bb006a39740eaad)
+    
+    Change-Id: Ib174d008eaf1fd10d42702bcdb607e45b26acf58
+    Reviewed-on: https://gerrit.openafs.org/15940
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
+
+commit fec84e347768080e4370e5aeb05886bfe19ae54b
 Author: Michael Meffie <mmeffie@sinenomine.net>
-Date:   Thu May 30 16:56:18 2024 -0400
+Date:   Fri Mar 10 17:51:17 2023 -0500
 
-    Make OpenAFS 1.8.12pre1
+    xdr: Avoid xdr_string maxsize check when freeing
     
-    Update version strings for the first 1.8.12 prerelease.
+    The maxsize argument in xdr_string() is garbage when called by
+    xdr_free(), since xdr_free() only passes the XDR handle and the xdr
+    string to be freed. Sometimes the size check fails and xdr_string()
+    returns early, without freeing the string and without setting the object
+    pointer to NULL.
     
-    Change-Id: I0a314eb7d96183c40c995b9415aaf1c679defee5
-    Reviewed-on: https://gerrit.openafs.org/15759
+    Usually this just results in leaking the string's memory. But since
+    commit 9ae5b599c7 (bos: Let xdr allocate rpc output strings), many
+    callers in bos.c rely on xdr_free(xdr_string) to set the given string
+    to NULL; if this doesn't happen, subsequent calls to BOZO_ RPCs can
+    corrupt memory, often causing the 'bos' process to segfault.
+    
+    We only need the maxsize check when encoding or decoding, so avoid
+    accessing the maxsize agument when the op mode is XDR_FREE.
+    
+    In general, xdr_free() can only safely be used on xdr 2-argument xdr
+    functions, so must be avoided when freeing xdr opaque, byte, and union
+    types.
+    
+    This change makes it safe to use xdr_free() to free xdr strings, but in
+    the future, we should provide a typesafe and less fragile function for
+    freeing xdr strings returned from RPCs.  Currently, xdr_free(xdr_string)
+    is only called by the bos client and the tests.
+    
+    Reviewed-on: https://gerrit.openafs.org/15343
     Tested-by: BuildBot <buildbot@rampaginggeek.com>
     Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-
-commit 1ccee780e109c06917612390c54978bb13fce767
-Author: Michael Meffie <mmeffie@sinenomine.net>
-Date:   Thu May 23 20:20:11 2024 -0400
-
-    Update NEWS for OpenAFS 1.8.12pre1
+    (cherry picked from commit bbb1e8adfed6804ac6fbae0a073dc6927096e16a)
     
-    Add news items for the upcoming 1.8.12 pre-release.
-    
-    Change-Id: Iab9167e93526f7f5b83a7bc47341a76c8ad54c52
-    Reviewed-on: https://gerrit.openafs.org/15753
-    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Change-Id: I1f190d28acab5fa1621919f283571fcacb495ce4
+    Reviewed-on: https://gerrit.openafs.org/15939
     Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
 
-commit 308ee38a30549afd38ad1f83bb537fd6b43513a8
-Author: Mark Vitale <mvitale@sinenomine.net>
-Date:   Thu May 30 12:54:57 2024 -0400
-
-    afs: Correct comment typo in DNew()
-    
-    Commit aed4a0c4b91c5ce185547e83bfff443f3d3831f9 "afs: avoid panic in
-    DNew when afs_WriteDCache fails" introduced Doxygen comments for DNew().
-    However, due to a cut-and-paste error, the name of the second parameter
-    is incorrect.
-    
-    Correct the Doxygen comments.
-    
-    No functional change is incurred by this commit; it is just
-    documentation.
-    
-    Reviewed-on: https://gerrit.openafs.org/15757
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit abb15d449ca6792d9145c13c01d573ce32545916)
-    
-    Change-Id: Ie540b13a040ac47bbaa2f753a9bbd21c046d4b49
-    Reviewed-on: https://gerrit.openafs.org/15758
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-
-commit 4022359253fb6a645b01f99b820b7331c019115a
-Author: Mark Vitale <mvitale@sinenomine.net>
-Date:   Fri Jul 19 14:41:55 2019 -0400
-
-    afs: avoid panic in DNew when afs_WriteDCache fails
-    
-    afs_WriteDCache may fail for an IO error, or if interrupted (EINTR).
-    Unfortunately, DNew will panic in this case, crashing the entire
-    machine.
-    
-    In order to avoid an outage in this case, don't panic.  Instead, reflect
-    the error back to the caller of DNew.
-    
-    While here, add Doxygen comments to DNew.
-    
-    Reviewed-on: https://gerrit.openafs.org/13804
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    (cherry picked from commit aed4a0c4b91c5ce185547e83bfff443f3d3831f9)
-    
-    Change-Id: I634ce4b3c7c8b6029c5236b51f6ab8c0a5463ce9
-    Reviewed-on: https://gerrit.openafs.org/15744
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-
-commit 837e6a4ad28588f22b4e9ace9bfa4bb4f412485c
-Author: Mark Vitale <mvitale@sinenomine.net>
-Date:   Wed Feb 5 17:49:03 2020 -0500
-
-    dir: check DNew return code
-    
-    Commit 0284e65f97861e888d95576f22a93cd681813c39 'dir: Explicitly state
-    buffer locations for data' changed DNew and DRead to return a return
-    code.  However, the callers of DNew were not modified to check the new
-    return code.  (This commit applied only to the implementations dealing
-    with AFS directories, in afs/afs_buffer.c and dir/dir.c.  The ubik
-    implmentations of DNew and DRead, dealing with ubik databases, were not
-    modified.)
-    
-    Modify all (non-ubik) callers of DNew to check the return code.  In
-    addition, modify code as needed so return codes are properly propagated
-    to the callers.
-    
-    While here, add Doxygen comments for AddPage and FindBlobs.
-    
-    Reviewed-on: https://gerrit.openafs.org/13801
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit 6bd94fe29d1aa6ce61ba02e681defea79770ccdd)
-    
-    Change-Id: I8d036748fa18365b843a69f2f0710eab31aa723d
-    Reviewed-on: https://gerrit.openafs.org/15743
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-
-commit db39f77f0ec931816ba5cc265e87954173b435e2
-Author: Mark Vitale <mvitale@sinenomine.net>
-Date:   Sun Mar 3 20:20:58 2019 -0500
-
-    dir: check afs_dir_Create return code in afs_dir_MakeDir
-    
-    afs_dir_MakeDir() ignores the return code from afs_dir_Create() for the
-    '.' and '..' ("dot" and "dotdot") directories.  This has been the case
-    from the earliest implementation (MakeDir() calling Create()) in the
-    original IBM import.
-    
-    Instead, check the return codes to prevent the possibility of creating
-    malformed directories.
-    
-    Reviewed-on: https://gerrit.openafs.org/13800
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    (cherry picked from commit dcce956df4fc8d368962cb36d8b3c801be69a85a)
-    
-    Change-Id: Ib7066ab307fe6ab0e78407566d0fd32bd6827859
-    Reviewed-on: https://gerrit.openafs.org/15742
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-
-commit 3ff310182926ab783f0f07fa8667d1ebaabbc5de
+commit 21941c0ab2d28fa3a074f46e4d448d518a7c1b8a
 Author: Andrew Deason <adeason@sinenomine.net>
-Date:   Thu Apr 25 15:58:49 2024 -0500
+Date:   Tue Nov 5 23:40:24 2024 -0600
 
-    afs: Reintroduce and use DFlushDCache()
+    OPENAFS-SA-2024-002: Avoid uninitialized memory when parsing ACLs
     
-    This reverts commit 432ac5810e51bb5bb2cf1df0bfebc64d1c4d7a39 (afs:
-    Remove DFlushDCache()). This also re-adds the caller of DFlushDCache()
-    removed by commit 4045f3d5350955de91e019b09ad2ed7941f6dadb
-    (disconnected-shadow-directory-fixes-20090121), and the prototype
-    removed by commit 5ad1e6cb904b953fbb04603f3ce1466dcc38cd48 (dir:
-    Prototype and function name cleanup).
+    CVE-2024-10396
     
-    The removal of the DFlushDCache() call in commit 4045f3d535 seems like
-    a mistake. If the directory in question has dirty pages in memory, we
-    need to flush those to the cache before making a copy of the
-    directory's data, because we read the existing dir's data from the
-    cache. If we don't flush, afs_MakeShadowDir() might make a copy of the
-    dcache that is missing updates to the directory blob.
+    Several places in the tree parse ACLs using sscanf() calls that look
+    similar to this:
     
-    Reviewed-on: https://gerrit.openafs.org/15740
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+        sscanf(str, "%d dfs:%d %s", &nplus, &dfs, cell);
+        sscanf(str, "%100s %d", tname, &trights);
+    
+    Some callers check whether the scanf() returns negative or 0, but some
+    callers do not check the return code at all. If only some of the fields
+    are present in the sscanf()'d string (because, for instance, the ACL is
+    malformed), some of the arguments are left alone, and may be set to
+    garbage if the relevant variable was never initialized.
+    
+    If the parsed ACL is copied to another ACL, this can result in the
+    copied ACL containing uninitialized memory.
+    
+    To avoid this, make sure all of the variables passed to sscanf() and
+    similar calls are initialized before parsing. This commit does not
+    guarantee that the results make sense, but at least the results do not
+    contain uninitialized memory.
+    
+    Reviewed-on: https://gerrit.openafs.org/15917
     Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
-    (cherry picked from commit 799d789fbaefc8c4dbcb803b885deb35f4947d26)
+    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit ac602a0a5624b0f0ab04df86f618d09f2a4ad063)
     
-    Change-Id: I3bffab4bae4214503591ac102aba59c7072b39af
-    Reviewed-on: https://gerrit.openafs.org/15741
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Change-Id: I00245c12993683eb3b58d51cf77742f758bac120
+    Reviewed-on: https://gerrit.openafs.org/15938
     Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
 
-commit de7bc4890e4368b88f20e15a7d795fc1c54cef29
-Author: Cheyenne Wills <cwills@sinenomine.net>
-Date:   Mon Apr 15 08:22:37 2024 -0600
+commit a9ede52673b8c8abbfc2577ac6987a8a5686206f
+Author: Benjamin Kaduk <kaduk@mit.edu>
+Date:   Mon Nov 4 20:50:50 2024 -0800
 
-    Linux-6.9: file_lock mbrs moved to file_lock_core
+    OPENAFS-SA-2024-002: make VIOCGETAL consumers stay within string bounds
     
-    In the Linux 6.9 commit:
-     'filelock: split common fields into struct file_lock_core' (a69ce85ec9)
-    several fields were relocated into a new structure, file_lock_core,
-    which was added as a member the file_lock structure.  The names where
-    changed (fl_x to flc_x).
+    CVE-2024-10396
     
-    Add a configure test to determine if the new members (flc_type, flc_pid,
-    and flc_flags) are available as part of the file_lock_core structure.
+    After the preceding commits, the data returned by the VIOCGETAL
+    pioctl (a RXAFS_FetchAcl wrapper) will safely be NUL-terminated.
+    However, the callers that attempt to parse the ACL string make
+    assumptions that the returned data will be properly formatted,
+    and implement a "skip to next line" functionality (under various
+    names) that blindly increments a char* until it finds a newline
+    character, which can read past the end of even a properly
+    NUL-terminated string if there is not a newline where one is
+    expected.
     
-    Add static inline getter/setter routines to handle accessing the
-    flc_type or flc_pid members in the file_lock_core structure, or the
-    fl_type, fl_pid members in the file_lock structure as appropriate. Add
-    static inline function to clear FL_SLEEP in the flc_flag in the
-    file_lock_core structure or the fl_flag in the file_lock structure as
-    appropriate.
+    Adjust the various "skip to next line" functionality to keep
+    the current string pointer at the trailing NUL if the end of the
+    string is reached while searching for a newline.
     
-    Minor surrounding white space cleanup.
-    
-    Reviewed-on: https://gerrit.openafs.org/15708
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-on: https://gerrit.openafs.org/15916
     Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit 9937cce3f35f4e3aad0802189457bf16b84d7ab4)
+    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit a4ecb050540528a1bff840ff08d21f99e6ef3fbf)
     
-    Change-Id: I51343e1c2e360b68eabe2cc4069c25948b6c0729
-    Reviewed-on: https://gerrit.openafs.org/15739
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Change-Id: Id2d8c0164cfaa7d03a9e37b29ff58b88cf815483
+    Reviewed-on: https://gerrit.openafs.org/15937
     Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
 
-commit 95e67f9c3e6e605da07081b9521ed2eaa2add648
-Author: Cheyenne Wills <cwills@sinenomine.net>
-Date:   Fri Mar 15 16:24:05 2024 -0600
+commit a96a3160f5425125588f39f5ac612df3ef9b9a8a
+Author: Benjamin Kaduk <kaduk@mit.edu>
+Date:   Mon Nov 4 20:50:50 2024 -0800
 
-    tests: rx/perf wait for server init before client
+    OPENAFS-SA-2024-002: verify FetchACL returned only a string
     
-    The rx/perf test can occasionally fail due to the rxperf server not
-    being fully initialized before the client started. This can cause test
-    errors, even without changes to the rx code.
+    CVE-2024-10396
     
-     C_TAP_VERBOSE=1 make check TESTS="rx/perf"
-     ...
-     rx/perf
+    Supplement the previous commit by additionally verifying that
+    the returned ACL string occupies the entire XDR opaque, rejecting
+    any values returned that have an internal NUL prior to the end
+    of the opaque.
     
-     1..4
-     ok 1 - Started rxperf server
-     not ok 2 - single threaded client ran successfully
-     RPC: threads   30, times       1, write bytes  1048576, read bytes...
-     ok 3 - multi threaded client ran succesfully
-     ok 4 - Server exited succesfully
-     FAILED 2 (exit status 1)
-    
-    Add a routine that waits for the rx_perf server to become available.
-    Loop several times trying the connection via the rx_perf client, with
-    a short delay between retries.  If the connection cannot be established,
-    fail the test.
-    
-    Clean up trailing whitespace on a couple of lines.
-    
-    Note: This failure was observed in an OpenAFS buildbot worker that
-    included a make tests, and which would occasionally fail when there was
-    no rx related code changes. The intermittent failure could be duplicated
-    on a slower virtual test system, but would not fail on a faster system.
-    
-    Thanks to mmeffie@sinenomine.net for the 'wait_for_server' contribution.
-    
-    Reviewed-on: https://gerrit.openafs.org/15676
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-on: https://gerrit.openafs.org/15915
     Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    (cherry picked from commit 6ace773fdcff0486663a0cc4381d7b6ce2352c04)
+    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 7e13414e8ea995d438cde3e60988225f3ab4cbcd)
     
-    Change-Id: I75c6cd1e4e724d4803b62e2f74e5307cb8fcb14d
-    Reviewed-on: https://gerrit.openafs.org/15736
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Change-Id: I107f89e3d8a5c3c5cd67f6296742bfca7cace0e1
+    Reviewed-on: https://gerrit.openafs.org/15936
     Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
 
-commit 4fc27548be88947ef58e2a3a3654a08ec6c334d9
-Author: Michael Meffie <mmeffie@sinenomine.net>
-Date:   Tue Apr 9 10:57:26 2024 -0400
+commit 64068705b15661a8d4e0b9f9f2ad4aec34ed51a7
+Author: Benjamin Kaduk <kaduk@mit.edu>
+Date:   Mon Nov 4 20:33:16 2024 -0800
 
-    rxperf: Add -o option to rxperf client
+    OPENAFS-SA-2024-002: verify FetchACL returned a valid string
     
-    Add the -o (output) option to the rxperf client specify the output file.
+    CVE-2024-10396
     
-    If not specified, the output is written to stdout, as before.
+    Analogously to how a call to RXAFS_StoreACL() with a malformed
+    ACL string can cause a fileserver to perform invalid memory operations,
+    a malformed ACL string returned in response to a call to RXAFS_FetchACL()
+    can cause a client to perform invalid memory operations.
     
-    Reviewed-on: https://gerrit.openafs.org/15731
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Modify all the in-tree callers of the RPC to verify that the ACL
+    data, which is conveyed as an XDR 'opaque' but whose contents
+    are actually expected to be a string, is a valid C string.  If
+    a zero-length opaque or one without a trailing NUL is received,
+    treat that as an error response from the fileserver rather than
+    returning success.
+    
+    The Unix cache manager's pioctl handler already has logic to cope with a
+    zero-length reply by emitting a single NUL byte to userspace.  This
+    special-casing seems to have been in place from the original IBM import,
+    though it does so by confusingly "skipping over" a NUL byte already put
+    in place.  For historical compatibility, preserve that behavior rather
+    than treating the zero-length reply as an error as we do for the other
+    callers.  It seems likely that this location should treat a zero-length
+    reply as an error just as the other call sites do, but that can be done
+    as a later change.
+    
+    Reviewed-on: https://gerrit.openafs.org/15914
     Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit e6bc50524e1bde199f6643d9784fe331577bee90)
+    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 0b1ccb0dbc3b7673558eceff3d672971f5bb0197)
     
-    Change-Id: I94a2f43c70f9cb5236c3ab4c5d2de66906eb68b3
-    Reviewed-on: https://gerrit.openafs.org/15735
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Tested-by: Andrew Deason <adeason@sinenomine.net>
+    Change-Id: Ifbce762d76641f08b5fc5e79b4c8dad07c1a135a
+    Reviewed-on: https://gerrit.openafs.org/15935
     Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
 
-commit dfb6b53a6802e90f6bc2cd3cd39da467ce8e4488
-Author: Cheyenne Wills <cwills@sinenomine.net>
-Date:   Wed Apr 3 11:36:54 2024 -0600
-
-    Linux: Define afs_thread_wrapper() as static
-    
-    When building against a Linux 6.8 kernel, functions that are missing
-    prototypes or declarations are flagged.
-    
-    We can add the static attribute to functions that are not referenced
-    outside of the file that implements them to avoid having these functions
-    flagged by the compiler.
-    
-    These functions are flagged due to missing prototypes when building
-    against a Linux 6.8 kernel (which sets the -Wmissing-declarations and
-    -Wmissing-prototypes compiler flags as default). Linux 6.8 commit:
-     'Makefile.extrawarn: turn on missing-prototypes globally' (0fcb70851f).
-    
-    When building against a kernel with CONFIG_WERROR=y, the build fails.
-    
-    This is an openafs-1.8.x specific commit.
-    
-    The function afs_thread_wrapper() in LINUX/osi_misc.c on the master
-    branch was changed to a static function with commit:
-     'afs: Drop GLOCK for various Rx calls' (d5e1428a3b)
-    However this is a larger change than needed to fix the build problem and
-    the commit could have a significant impact for 1.8.x since it is
-    changing rx locking.  To avoid introducing such a change, just change
-    the afs_thread_wrapper() to static as a 1.8.x specific commit.
-    
-    There are no functional changes in this commit.
-    
-    Change-Id: I4edc61e6a4989c16ccf41b935e205dbf209bf2a5
-    Reviewed-on: https://gerrit.openafs.org/15727
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-
-commit d1a42401fddc51bd2f16da39dfebe0f60fc670ad
-Author: Cheyenne Wills <cwills@sinenomine.net>
-Date:   Thu Feb 29 17:58:17 2024 -0700
-
-    Linux: Remove weak attribute for key_type_keyring
-    
-    The reference to the Linux symbol key_type_keyring uses a weak
-    attribute to assist in determining if the symbol is exported.  This
-    method was introduced in commit: 'keyring-updated-20080310' (b7fb842b1c)
-    as a way to detect if the symbol was exported by the Linux kernel.  A
-    later commit: 'linux-keyring-export-check-20090701' (4ca66112c2)
-    introduced an autoconf test that eliminated the need for using the weak
-    attribute, but the commit did not remove the attribute.
-    
-    On a Debian-12 system on ARM64 the use of the weak attribute in this
-    case causes an error when loading the kernel module:
-      "ERROR: could not insert 'openafs': Exec format error".
-    The error is due to the Linux module loader not supporting the
-    relocation entry type in the openafs kernel module for the
-    key_type_keyring.  Further investigation showed that this problem could
-    occur with gcc-12 on a ARM64 system (see below for additional
-    information).
-    
-    The code in osi_groups.c uses a pointer, __key_type_keyring, to the
-    key_type_keyring.  When this symbol is exported by the Linux kernel, the
-    loader would resolve the address and __key_type_keyring would contain
-    the address.  If the key_type_keyring symbol was not exported,
-    __key_type_keyring would be set to NULL (due to the weak attribute
-    associated with key_type_keyring).
-    
-    Remove the weak attribute for key_type_keyring when the configure
-    test, introduced in the 4ca66112c2 commit, determines that the symbol
-    is exported (EXPORTED_KEY_TYPE_KEYRING is defined).  When the symbol
-    isn't exported (pre Linux 2.6.22), just set the pointer,
-    __key_type_keyring to NULL.
-    
-    NOTE:
-    
-    The load error was reported on the openafs IRC channel by "clarkb"
-    
-    The problem of loading the openafs kernel module was also observed
-    on a NixOS system as well, and is described in the NixOS ticket
-    
-      https://github.com/NixOS/nixpkgs/issues/284501
-    
-    A Debian-11 system did not have a problem loading the openafs kernel
-    module. Investigation of the differences between Debian-11 and Debian-12
-    showed that the problem is due to a series of fixes in the toolchain
-    (in particular gcc-12) to address 'Cortex-A53 erratum #843419', which
-    deals with how the ARM64 ADRP instruction is used. With gcc-12, the
-    code generated uses a R_AARCH64_ADR_GOT for this particular case (which
-    isn't supported by the Linux kernel module loader).  Gcc-11 created a
-    R_AARCH64_ABS64 relocation entry type for the symbol.
-    
-    Reviewed-on: https://gerrit.openafs.org/15668
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit 2f260825b96b76556aba82fc364c841357a23a7d)
-    
-    Change-Id: Ifce08cb01f0b642ee9c2d90480b8a1766dfc52ff
-    Reviewed-on: https://gerrit.openafs.org/15728
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-
-commit 7b4802efaf29ef76969c8b931a31e93dd4fbb000
-Author: Cheyenne Wills <cwills@sinenomine.net>
-Date:   Mon Mar 11 09:05:33 2024 -0600
-
-    Linux 6.8: Use roken's strlcpy() in kernel module
-    
-    The Linux 6.8 commit 'string: Remove strlcpy()' (d26270061a) removed the
-    the strlcpy function from the Linux kernel.  The replacement function,
-    strscpy(), cannot be used as a drop-in replacement as its currently a
-    Linux kernel specific function and there are differences in the returned
-    value.
-    
-    We can use roken's strlcpy() (provided in roken/strlcpy.c).
-    
-    Create a configure test to that defines its own strlcpy() to test
-    if the kernel doesn't provide one itself. Note, we need to use a
-    different function signature for strlcpy() from what the kernel might
-    have otherwise the test build succeeds when the kernel does provide a
-    strlcpy().
-    
-    Update the OpenAFS kernel specific roken.h to define the prototype for
-    strlcpy when it's not present in the Linux kernel.  We need to match the
-    defines used in the 'real' roken.h so the roken/strlcpy.c can build
-    properly. Add defines for ROKEN_LIB_FUNCTION, ROKEN_LIB_CALL and
-    ROKEN_LIB_VARIABLE to the kernel roken.h
-    
-    Update Linux's osi_machdep.h to include roken.h so the strlcpy protoype
-    is available.
-    
-    Update the Linux MakefileProto to include the strcpy-kernel object
-    when building the kernel module.
-    
-    Reviewed-on: https://gerrit.openafs.org/15646
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit 30b18c165752e6d0ce7b6daa6a90453f5e5e6d17)
-    
-    Change-Id: I8013623e8f735d15bb7d4ac84ed0867f12b77783
-    Reviewed-on: https://gerrit.openafs.org/15706
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-
-commit 6333fae573f8a7b7656e9c1b05d445a37b951b88
-Author: Cheyenne Wills <cwills@sinenomine.net>
-Date:   Tue Mar 5 08:37:47 2024 -0700
-
-    Linux 6.8: Remove ctl_table sentinels
-    
-    The Linux 6.8 commit 'sysctl: Remove the now superfluous sentinel
-    elements from ctl_table array' (c8a65501d3) was a clean up commit
-    that removed the sentinel entry in the ctl_table array (e.g. the
-    "null" entry at the end of the table).
-    
-    As of Linux 6.8, including the sentinel entry (.procname =) in the
-    ctl_table is unnecessary, but doesn't yet break anything.  But it is
-    likely that including the sentinel will start to cause runtime errors in
-    future Linux versions very soon, so avoid the sentinel when we can, to
-    avoid possible problems in the future.
-    
-    Define a new macro that can be used as the last entry of a ctl_table
-    that will either add a "null" entry, or nothing.
-    
-    There is not a specific build test we can use within configure, so we
-    must explicitly test the Linux version to decide if we need to use a
-    sentinel or not when defining the macro.  We are selecting 6.8 to match
-    the version where the Linux kernel is removing the sentinels from the in
-    kernel filesystems.
-    
-    Note: See the Linux merge commits 'Merge tag 'sysctl-6.8-rc1' of
-    git://git.kernel.org/pub/scm/linux/kernel/git/mcgrof/linux' (a05aea98d4)
-    for more details behind the staged removal of the sentinels in the
-    ctl_table structures and the potential future change for removing the
-    actual check for the sentinel within the Linux kernel.
-    
-    Reviewed-on: https://gerrit.openafs.org/15645
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit 35c8c1bf0b1cb48178f676ba5bcf16ad59c5a33b)
-    
-    Change-Id: I34cb7586003e10a6c7438d7205123d57af30585e
-    Reviewed-on: https://gerrit.openafs.org/15705
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-
-commit 18a2a932df9c1b6b3c7513a6c161d4259f052ca9
-Author: Cheyenne Wills <cwills@sinenomine.net>
-Date:   Mon Feb 12 12:31:30 2024 -0700
-
-    Linux 6.8: use hlist iteration for dentry children
-    
-    Linux 6.8 commit 'dentry: switch the lists of children to hlist'
-    (da549bdd15) replaces the dentry lists d_subdirs/d_child with the hlist
-    d_children/d_sib.
-    
-    Add an autoconf test for a d_children member in the dentry structure.
-    
-    Define a macro that uses the applicable Linux function for iterating
-    over a dentry's children.
-    
-    Reviewed-on: https://gerrit.openafs.org/15632
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit 8e0bbe6a07523dd2e7efb3c9d1b4ad9e19fc9bb7)
-    
-    Change-Id: Ief4c334c4ef3e54822e068dcdf654541e86b9176
-    Reviewed-on: https://gerrit.openafs.org/15704
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Tested-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-
-commit fef1fc6f740c6f7395cf51ce99ed296652579c7d
-Author: Cheyenne Wills <cwills@sinenomine.net>
-Date:   Tue Mar 5 07:40:08 2024 -0700
-
-    rxgen: Declare generated PKG_OpCodeStats()
-    
-    The function {PKG}_OpCodeStats() is generated by rxgen, however a
-    prototype for the function is not generated.
-    
-    The functions h_ProcMainBody_setup() and h_HeadofOldStyleProc_setup()
-    in rpc_parse.c emit prototypes for {PKG}_ExecuteRequest() and
-    {PKG}_TranslateOpCode(), but do not emit a prototype for
-    {PKG}_OpCodeStats().
-    
-    Update rxgen to emit a function prototype for {PKG}_OpCodeStats() in the
-    generated header file.
-    
-    Use a variable to point to "PackagePrefix[PackageIndex]" in
-    h_ProcMainBody_setup to improve readability.
-    
-    {PKG}_OpCodeStats(), specifically RXSTATS_OpCodeStats(), is flagged due
-    to a missing prototype when building against a Linux 6.8 kernel (which
-    sets the -Wmissing-declarations and -Wmissing-prototypes compiler flags
-    as default). Linux 6.8 commit:  'Makefile.extrawarn: turn on
-    missing-prototypes globally' (0fcb70851f). When building against a
-    kernel with CONFIG_WERROR=y, the build fails.
-    
-    Reviewed-on: https://gerrit.openafs.org/15631
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit 26bb4d143b31ba027cf2721ac731df67a174c43b)
-    
-    Change-Id: I9072d22d142b5b7a2f59b0cfc4026066ef1d9501
-    Reviewed-on: https://gerrit.openafs.org/15703
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-
-commit 57e0192a690942c2a0f4f1f685cfadf2106b763a
+commit bb01d76a2095baa65880bdc5d504e7a198958265
 Author: Andrew Deason <adeason@sinenomine.net>
-Date:   Tue Dec 7 15:43:35 2021 -0600
+Date:   Wed Aug 21 00:41:49 2024 -0500
 
-    rxgen: Declare generated PKG_TranslateOpCode()
+    OPENAFS-SA-2024-002: viced: Avoid unchecked ACL in StoreACL audit log
     
-    Ever since commit 5c77a6ca (rxgen: add *TranslateOpcode functions to
-    XDR code), rxgen generates a PKG_TranslateOpCode function in the
-    relevant .xdr.c source, which can translate an RPC opcode into the RPC
-    name. But we never declare this function in a header file, making it
-    impossible to use without compiler warnings (unless the caller
-    declares the function itself).
+    CVE-2024-10396
     
-    To make it possible to actually use this function, declare this
-    function in the generated header file.
+    Currently in SRXAFS_StoreACL, if CallPreamble() or check_acl() fail, we
+    will jump to Bad_StoreACL, which will pass the ACL string from the
+    client to osi_auditU. Since check_acl() hasn't yet checked if the given
+    ACL contains a NUL byte, the ACL may be an unterminated string. If
+    auditing is enabled, this can cause garbage to be logged to the audit
+    log, or cause the fileserver to crash.
     
-    Reviewed-on: https://gerrit.openafs.org/14871
-    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    To avoid this, set 'rawACL' to NULL at first, only setting it to the
+    actual ACL string after check_acl() has succeeded. This ensures that all
+    code accessing 'rawACL' is guaranteed to be using a terminated string.
+    
+    This may mean that we pass a NULL AUD_ACL to osi_auditU. Our auditing
+    code explicitly checks for and handles handles NULL strings, so this is
+    fine.
+    
+    FIXES 135445
+    
+    Reviewed-on: https://gerrit.openafs.org/15913
     Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit 9b2c27fc6d299cb0b23eca3e8cb25b7e0c41b11a)
-    
-    Change-Id: I2479ff7f6579769b3319b2939ffde60fe570c880
-    Reviewed-on: https://gerrit.openafs.org/15702
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-
-commit 4c92936aefede187e57a9a433c0c192af2fc5e84
-Author: Cheyenne Wills <cwills@sinenomine.net>
-Date:   Fri Jan 12 15:30:23 2024 -0700
-
-    rx: Add static attribute to internal functions
-    
-    When building against a Linux 6.8 kernel, functions that are missing
-    prototypes or declarations are flagged.
-    
-    We can add the static attribute to functions that are not referenced
-    outside of the file that implements them to avoid having these functions
-    flagged by the compiler.
-    
-    These functions are flagged due to missing prototypes when building
-    against a Linux 6.8 kernel (which sets the -Wmissing-declarations and
-    -Wmissing-prototypes compiler flags as default). Linux 6.8 commit:
-     'Makefile.extrawarn: turn on missing-prototypes globally' (0fcb70851f).
-    
-    When building against a kernel with CONFIG_WERROR=y, the build fails.
-    
-    There are no functional changes in this commit.
-    
-    Reviewed-on: https://gerrit.openafs.org/15626
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit 55adceba2d561ec4e89235de329782a68e603a11)
-    
-    Change-Id: I1b2a6e1c07bd4b75b7b83e177f17865eb903e488
-    Reviewed-on: https://gerrit.openafs.org/15701
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-
-commit 195f154aaf2d8aff1f6debdb47c0db8f07cb5c5e
-Author: Cheyenne Wills <cwills@sinenomine.net>
-Date:   Thu Feb 29 17:53:31 2024 -0700
-
-    afs: Add static attribute to internal functions
-    
-    When building against a Linux 6.8 kernel, functions that are missing
-    prototypes or declarations are flagged.
-    
-    We can add the static attribute to functions that are not referenced
-    outside of the file that implements them to avoid having these functions
-    flagged by the compiler.
-    
-    These functions are flagged due to missing prototypes when building
-    against a Linux 6.8 kernel (which sets the -Wmissing-declarations and
-    -Wmissing-prototypes compiler flags as default). Linux 6.8 commit:
-     'Makefile.extrawarn: turn on missing-prototypes globally' (0fcb70851f).
-    
-    When building against a kernel with CONFIG_WERROR=y, the build fails.
-    
-    There are no functional changes in this commit.
-    
-    Reviewed-on: https://gerrit.openafs.org/15625
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit efee796f28b53bf3ffc03186f81790c36c23c94c)
-    
-    Change-Id: I0d923a65731f825d6c190056b0ccc3d362236706
-    Reviewed-on: https://gerrit.openafs.org/15700
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
     Tested-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit c9eae1e8b26144063e5d1db23d47ee82c4b9ef3a)
+    
+    Change-Id: Ieda6f910d875c4b5179011e5e93e5694d3f4ce47
+    Reviewed-on: https://gerrit.openafs.org/15934
     Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-
-commit 90b8dcff36e9b03ec01550ad1a070a0ab7db8c46
-Author: Cheyenne Wills <cwills@sinenomine.net>
-Date:   Fri Feb 9 09:01:33 2024 -0700
-
-    afs: fix 'ops' variable may be used uninitialized
-    
-    When the function rxfs_storeInit() has the static attribute, gcc flags
-    the variable 'ops' as possibly uninitialized.
-    
-    In function 'afs_CacheStoreDCaches',
-        inlined from 'afs_CacheStoreVCache' at
-         .../src/afs/afs_fetchstore.c:630:14:
-         .../afs/afs_fetchstore.c:535:17: error: 'ops' may be used
-         uninitialized [-Werror=maybe-uninitialized]
-          535 |         code = (*ops->destroy)(&rock, code);
-              |                ~^~~~~~~~~~~~~~
-         ...src/afs/afs_fetchstore.c: In function 'afs_CacheStoreVCache':
-         ...src/afs/afs_fetchstore.c:567:22: note: 'ops' was declared here
-          567 |     struct storeOps *ops;
-              |                      ^~~
-         cc1: all warnings being treated as errors
-    
-    This is a false positive report by the gcc compiler.
-    
-    The function rxfs_storeInit() returns a 0 only when it has successfully
-    assigned a value to the ops variable, and afs_CacheStoreDcaches() is
-    only called if the return value from rxfs_storeInit() is 0.
-    
-    The ops variable is only used within a block that is within a for loop,
-    which could leave a stray value if the variable isn't initialized within
-    that loop.
-    
-    Assigning a NULL to ops is sufficient to avoid the compiler error, and
-    relocating the declaration of the ops variable into the block where it
-    is actually used ensures that it's always initialized before its use
-    within the loop.
-    
-    Clean up whitespace in the statement that follows the new location for
-    the ops variable.
-    
-    Note, this commit is being added before a commit that adds the static
-    attribute to the rxfs_storeInit() function which also "fixes" the
-    compiler error (see: afs: Add static attribute to internal functions).
-    
-    Reviewed-on: https://gerrit.openafs.org/15630
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit 36e4c02ff27b9d66755b9544778896b9b1e5c391)
-    
-    Change-Id: I9d8a07e576c6bf889f8f182c6fc0d34dc997c004
-    Reviewed-on: https://gerrit.openafs.org/15699
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-
-commit 09f9660fbbb4f3c20ba9f2283169818372c3f474
-Author: Cheyenne Wills <cwills@sinenomine.net>
-Date:   Wed Feb 7 19:34:29 2024 -0700
-
-    rx: Add function prototypes to rx_prototypes.h
-    
-    The prototype for rxk_NewSocketHost() is not in a header file, but is
-    defined in the referencing .c file. The ARCH/rx_knet.c files that
-    implement rxk_NewSocketHost() do not have a prototype (but when the
-    rx_kcommon.c implementation is used it does have a prototype, since
-    rx_kcommon.c is the "referencing .c file").
-    
-    Add the prototype for rxk_NewSocketHost() to rx_prototypes.h and
-    remove the prototype from rx_kcommon.c
-    
-    The prototypes for the functions rx_DebugOnOff() and rx_StatsOnOff()
-    are defined within rx_prototypes.h, but are within a preprocessor
-    conditional for AFS_NT40_ENV, however the implementation for these
-    2 functions do not have the preprocessor conditional.
-    
-    Rearrange the prototypes for rx_DebugOnOff() and rx_StatsOnOff() so they
-    are outside the AFS_NT40_ENV preprocessor conditional.
-    
-    These functions are flagged due to missing prototypes when building
-    against a Linux 6.8 kernel (which sets the -Wmissing-declarations and
-    -Wmissing-prototypes compiler flags as default). Linux 6.8 commit:
-     'Makefile.extrawarn: turn on missing-prototypes globally' (0fcb70851f).
-    
-    When building against a kernel with CONFIG_WERROR=y, the build fails.
-    
-    There are no functional changes in this commit.
-    
-    Reviewed-on: https://gerrit.openafs.org/15624
-    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
-    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
     Tested-by: Benjamin Kaduk <kaduk@mit.edu>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit 8528c36b96fe2935f42188caabf4feed0d5dbcbd)
-    
-    Change-Id: Ieae8be7f89f5c675c6580d8cfb02ea77ce4088f7
-    Reviewed-on: https://gerrit.openafs.org/15698
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
 
-commit 53752b01bc734f4bd5f5da24ac116c7fcb2ac07f
-Author: Cheyenne Wills <cwills@sinenomine.net>
-Date:   Mon Feb 12 09:43:29 2024 -0700
-
-    afs: Remove SRXAFSCB* protos from afs_prototypes.h
-    
-    The prototypes for the afscbint RPC functions (SRXAFSCB_*) implemented
-    in afs_callback.c are defined in 2 locations, afs_protypes.h and
-    afscbint.h (which is generated by rxgen).
-    
-    Remove the protoypes for the SRXAFSCB_* functions from afs_prototypes.h
-    as they are redundant and are currently out of sync (the prototypes
-    for SRXAFSCB_GetCellByNum() and SRXAFSCB_TellMeAboutYourself() are
-    not present in afs_prototypes.h).  Also remove a redundant prototype for
-    afs_RXCallBackServer() which was prototyped both before and in the
-    middle of the SRXAFSCB* prototypes.
-    
-    Since afs_callback.c only pulled in afs_prototypes.h and not afscbint.h,
-    add an include for afscbint.h to ensure that the all the prototypes for
-    the SRXAFSCB_* functions are present.
-    
-    The 2 functions listed above are flagged due to missing prototypes when
-    building against a Linux 6.8 kernel (which sets the
-    -Wmissing-declarations and -Wmissing-prototypes compiler flags as
-    default). Linux 6.8 commit:
-     'Makefile.extrawarn: turn on missing-prototypes globally' (0fcb70851f).
-    
-    When building against a kernel with CONFIG_WERROR=y, the build fails.
-    
-    Reviewed-on: https://gerrit.openafs.org/15644
-    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
-    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit fae4003b403420d0b548920c7837a2d2b6e432ae)
-    
-    Change-Id: I7d435455fc60cc10200ee91d0d76534367ab5883
-    Reviewed-on: https://gerrit.openafs.org/15697
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-
-commit 96932160fa8ef1cf4422e9e1d1ca2a449f8ffe93
-Author: Cheyenne Wills <cwills@sinenomine.net>
-Date:   Mon Feb 12 08:59:32 2024 -0700
-
-    afs: Add afs_xioctl prototyes to afs_prototypes.h
-    
-    Several .c files have external function prototypes for the afs_xioctl
-    function, while the implementing files do not have the prototype.
-    
-    Move these prototypes into afs_prototypes.h so that the prototypes are
-    available to both the caller and the implementation.
-    
-    Because the file holding the implementation does not have a prototypes,
-    afs_xioctl() is being flagged when building against a Linux 6.8 kernel
-    (which sets the -Wmissing-declarations and -Wmissing-prototypes compiler
-    flags as default). Linux 6.8 commit:
-     'Makefile.extrawarn: turn on missing-prototypes globally' (0fcb70851f).
-    
-    When building against a Linux kernel with CONFIG_WERROR=y, the build
-    fails.
-    
-    Note that the function afs_xioctl() has platform specific
-    implementations.
-    
-    Reviewed-on: https://gerrit.openafs.org/15643
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit 575d986aa6c18ac27ea42fb66ae8b8cb0e27fe6c)
-    
-    Change-Id: If746111fdcf6a00459f524711623d322d5fc7942
-    Reviewed-on: https://gerrit.openafs.org/15696
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-
-commit c04c2d07226583846c3949a4855c7db4316438da
-Author: Cheyenne Wills <cwills@sinenomine.net>
-Date:   Thu Feb 15 09:00:05 2024 -0700
-
-    afs: Move function prototypes into headers
-    
-    Several .c files contain external function prototypes, while the
-    implementing files do not have these prototypes.
-    
-    Move these prototypes into header files so that the prototypes are
-    available to both the caller and the implementation.
-    
-    Because the file holding the implementation does not have prototypes,
-    these functions are flagged when building against a Linux 6.8 kernel
-    (which sets the -Wmissing-declarations and -Wmissing-prototypes compiler
-    flags as default). Linux 6.8 commit:
-     'Makefile.extrawarn: turn on missing-prototypes globally' (0fcb70851f).
-    
-    When building against a kernel with CONFIG_WERROR=y, the build fails.
-    
-    Add the prototypes for the following to afs_prototypes.h:
-      exporter_add
-      afs_syscall (AFS_LINUX_ENV)
-      BlobScan
-    
-    Remove the prototypes from the .c files where they are referenced.
-    
-    Reviewed-on: https://gerrit.openafs.org/15642
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit 85781d7e83ae4501d8ab267bf55ef63f90f63101)
-    
-    Change-Id: I74333e99e08af88bebdcbff4767d79397acac358
-    Reviewed-on: https://gerrit.openafs.org/15695
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-
-commit 8b516820abf1edace60276152e9ed18a0b30fc13
-Author: Cheyenne Wills <cwills@sinenomine.net>
-Date:   Mon Feb 12 08:25:47 2024 -0700
-
-    afs: Add includes to pick up function prototypes
-    
-    The functions defined in LINUX/osi_crypto.c, osi_pagecopy.c,
-    osi_probe.c, and osi_syscall.c have function prototypes defined in
-    existing header files, however either due to missing includes or
-    preprocessor conditionals that skip the includes, these function
-    prototypes are not being pulled in.
-    
-    These functions are flagged due to missing prototypes when building
-    against a Linux 6.8 kernel (which sets the -Wmissing-declarations and
-    -Wmissing-prototypes compiler flags as default). Linux 6.8 commit:
-     'Makefile.extrawarn: turn on missing-prototypes globally' (0fcb70851f).
-    
-    When building against a kernel with CONFIG_WERROR=y, the build fails.
-    
-    Add the necessary includes to osi_crypto.c and osi_pagecopy.c and
-    re-arrange the includes in osi_probe.c and osi_syscall.c to ensure that
-    the function prototypes are present when building the Linux kernel
-    module.
-    
-    Reviewed-on: https://gerrit.openafs.org/15641
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit 3683f15278e34e13d7272928eaf666f0acc4e1e9)
-    
-    Change-Id: Iac704fc98d0d685358224049f383d68aa7a105f8
-    Reviewed-on: https://gerrit.openafs.org/15694
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-
-commit 25e17fe7196fd4a46e6a9408d135812ca53ddf80
-Author: Cheyenne Wills <cwills@sinenomine.net>
-Date:   Thu Feb 8 11:50:16 2024 -0700
-
-    afs: Declare init_hckernel_mutex()
-    
-    The function init_hckernel_mutex() (in rand.c) is flagged due to a
-    missing prototype when building against a Linux 6.8 kernel (which sets
-    the -Wmissing-declarations and -Wmissing-prototypes compiler flags as
-    default). Linux 6.8 commit:
-     'Makefile.extrawarn: turn on missing-prototypes globally' (0fcb70851f).
-    
-    When building against a kernel with CONFIG_WERROR=y, the build fails.
-    
-    Add a function prototype for init_hckernel_mutex() to afs_osi.h and
-    remove the prototype from afs_osi.c
-    
-    There are no functional changes with this commit.
-    
-    Reviewed-on: https://gerrit.openafs.org/15622
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit ccc2af429710104793fb4659b10697cceab182b3)
-    
-    Change-Id: Ic5eb4584a980657a01a1cb4411c0c1f03b1f3560
-    Reviewed-on: https://gerrit.openafs.org/15693
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Tested-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-
-commit b1c93f13870e24795b857cb483320871703d00e8
-Author: Cheyenne Wills <cwills@sinenomine.net>
-Date:   Wed Feb 7 15:25:10 2024 -0700
-
-    Linux 6.8: Add function prototypes for krb5
-    
-    The external files for heimdal/krb5 do not provide function prototypes
-    in a header file that is used when building files that we use from
-    heimdal/krb5 (e.g. crypto.c).
-    
-    These functions are flagged due to missing prototypes when building
-    against a Linux 6.8 kernel (which sets the -Wmissing-declarations and
-    -Wmissing-prototypes compiler flags as default). Linux 6.8 commit:
-     'Makefile.extrawarn: turn on missing-prototypes globally' (0fcb70851f).
-    
-    When building against a kernel with CONFIG_WERROR=y, the build fails.
-    
-    We cannot modify the external source files, however there is the local
-    OpenAFS include file, krb5_locl.h, that does contain OpenAFS specific
-    changes.
-    
-    Add declarations to krb5_locl.h for the functions defined in the
-    heimdal/krb5 source.
-    
-    There are no functional changes with this commit.
-    
-    Reviewed-on: https://gerrit.openafs.org/15621
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit 612927dd1dd44bbd08eda790de12b24213583156)
-    
-    Change-Id: Iaae28186a24c3c5ca4407de9563c8cfed9644921
-    Reviewed-on: https://gerrit.openafs.org/15692
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-
-commit 15357006d9e8e45ac0be9e0c7e87456ee3857d90
+commit ee020f7cba7d82bc3d4b468210b5052af53c5db5
 Author: Andrew Deason <adeason@sinenomine.net>
-Date:   Tue Jan 30 20:44:48 2024 -0600
+Date:   Wed Aug 21 00:29:34 2024 -0500
 
-    roken: Declare ct_memcmp in hcrypto kernel roken.h
+    OPENAFS-SA-2024-002: viced: Introduce 'rawACL' in StoreACL
     
-    Currently, we build roken's ct.c for our kernel module to provide
-    ct_memcmp(). We declare a prototype for ct_memcmp() in krb5_locl.h,
-    and all of our kernel callers of ct_memcmp() include krb5_locl.h, so
-    all callers get a prototype and avoid "implicit declaration" compiler
-    warnings.
+    CVE-2024-10396
     
-    However, roken's ct.c itself does not include krb5_locl.h, so it
-    doesn't get a prototype for ct_memcmp(). This is dangerous, since if
-    the prototype ever slightly differs from the implementation for any
-    reason, it could cause a variety of issues.
+    Change our StoreACL implementation to refer to the 'AccessList' argument
+    via a new local variable called 'rawACL'. This makes it clearer to
+    users that the data is a string, and makes it easier for future commits
+    to make sure we don't access the 'AccessList' argument in certain
+    situations.
     
-    This also causes warnings when building against a Linux 6.8 kernel
-    (which sets the -Wmissing-declarations and -Wmissing-prototypes
-    compiler flags as default). Linux 6.8 commit:
-     'Makefile.extrawarn: turn on missing-prototypes globally' (0fcb70851f).
+    Update almost all users in StoreACL to refer to 'rawACL' instead of
+    'AccessList'. Change the name of 'AccessList' to 'uncheckedACL' to make
+    sure we don't miss any users. Update our check_acl() call to use
+    'uncheckedACL' (and not 'rawACL'), because it must use an AFSOpaque to
+    check the ACL.
     
-    When building against a kernel with CONFIG_WERROR=y, the build fails.
+    Change RXStore_AccessList() and printableACL() to accept a plain char*
+    instead of a struct AFSOpaque.
     
-    We cannot change ct.c, since it is an external source file. To fix
-    this, instead move the prototype of ct_memcmp() to our stub
-    kernel-only roken.h header, which is included by ct.c. Make
-    krb5_locl.h also include roken.h when building kernel code, so all of
-    the ct_memcmp() callers also get the prototype.
+    This commit should not incur any noticeable behavior change. Technically
+    printableACL() is changed to run strlen() on the given string, but this
+    should not cause any noticeable change in behavior:
     
-    While we're here, add some informative comments and an include guard
-    to our previously-blank roken.h stub.
+    This change could cause printableACL() to process less of the string
+    than before, if the string contains a NUL byte before the end of the
+    AFSOpaque buffer. But this doesn't matter, since the all of our code
+    after this treats the ACL as a plain string, and so doesn't look at any
+    data beyond the first NUL. It's not possible for printableACL() to
+    process more data than before, because check_acl() has already checked
+    that the ACL string contains a NUL byte, so we must process
+    AFSOpaque_len bytes or fewer.
     
-    Written in collaboration with cwills@sinenomine.net.
+    FIXES 135445
     
-    Reviewed-on: https://gerrit.openafs.org/15620
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit be236069e9d26339ed5f9939965bca0dd3f8bf4e)
-    
-    Change-Id: I1112881938b0585263871f8f83d63b8909b12f0d
-    Reviewed-on: https://gerrit.openafs.org/15691
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-
-commit 5d2c4a0a8ada4a87d7f39dc21dbce14b3b2a978f
-Author: Cheyenne Wills <cwills@sinenomine.net>
-Date:   Fri Jan 12 15:52:57 2024 -0700
-
-    afs: Add declaration for RXAFS_ResidencyCmd()
-    
-    The function RXAFS_ResidencyCmd() is 'manually' defined within the
-    afsint.xg, so a prototype for the function is not defined.
-    
-    This function is flagged due to a missing prototype when building
-    against a Linux 6.8 kernel (which sets the -Wmissing-declarations and
-    -Wmissing-prototypes compiler flags as default). Linux 6.8 commit:
-     'Makefile.extrawarn: turn on missing-prototypes globally' (0fcb70851f).
-    
-    When building against a kernel with CONFIG_WERROR=y, the build fails.
-    
-    Add a prototype for RXAFS_ResidencyCmd
-    
-    There are no functional changes with this commit
-    
-    The function RXAFS_ResidencyCmd() was introduced with commit:
-    'rename-residency-from-mrafs-to-osd-20090427' (8655541d1e)
-    
-    Reviewed-on: https://gerrit.openafs.org/15619
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit 1d6cfbc5f627abf3808aae97afb72662301483b5)
-    
-    Change-Id: I42d0868b83e119b0c3348a3af8aaf5961c040bb2
-    Reviewed-on: https://gerrit.openafs.org/15690
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-
-commit 73844a4939a7b8198bf11d4dcbce9e28b621bd11
-Author: Cheyenne Wills <cwills@sinenomine.net>
-Date:   Thu Feb 8 16:10:57 2024 -0700
-
-    afs: Remove afs_DbgDisconFiles()
-    
-    The function afs_DbgDisconFiles() is not referenced anywhere within the
-    source tree.
-    
-    Remove the function afs_DbgDisconFiles().
-    
-    The commit: 'disconnected-rw-20080922' (433afd4779) introduced
-    afs_DbgDisconFiles(), but the function was never used.
-    
-    This function is flagged due to a missing prototype when building
-    against a Linux 6.8 kernel (which sets the -Wmissing-declarations and
-    -Wmissing-prototypes compiler flags as default). Linux 6.8 commit:
-     'Makefile.extrawarn: turn on missing-prototypes globally' (0fcb70851f).
-    
-    When building against a kernel with CONFIG_WERROR=y, the build fails.
-    
-    Reviewed-on: https://gerrit.openafs.org/15640
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit 32bb90047782f41df521bba5ab4aba8b4ed34203)
-    
-    Change-Id: I61d06515845dbb18a370f7856285596514242e99
-    Reviewed-on: https://gerrit.openafs.org/15689
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-
-commit be8001f1d64a2d9da4fdaeff59fdc40e205d4526
-Author: Cheyenne Wills <cwills@sinenomine.net>
-Date:   Thu Feb 8 12:22:13 2024 -0700
-
-    afs: Remove SRXAFSCB_FetchData/StoreData
-    
-    Commit 'client-64bit-file-size-support-20011031' (971b18bc42) introduced
-    the RPC functions SRXAFSCB_FetchData() and SRXAFSCB_StoreData with RPC
-    numbers of 65536 and 65537 respectively.
-    
-    Commit 'more-64bit-file-size-support-20011031' (c5b1a3775f) removed the
-    references from afscbint.xg, but did not remove the actual code. The
-    65536 RPC number was reassigned to SRXAFSCB_GetCE64, and the commit:
-    'This is mostly a rewrite of src/afs/afs_cell.c, and associated changes'
-    (629d08065) assigned the 65537 RPC to SRXAFSCB_GetCellByNum.
-    
-    Remove the 2 functions since there are no references other than the
-    prototype in afs_prototypes.h.
-    
-    This function is flagged due to a missing prototype when building
-    against a Linux 6.8 kernel (which sets the -Wmissing-declarations and
-    -Wmissing-prototypes compiler flags as default). Linux 6.8 commit:
-     'Makefile.extrawarn: turn on missing-prototypes globally' (0fcb70851f).
-    
-    Reviewed-on: https://gerrit.openafs.org/15639
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit 379f7fc51d411990189ec28e48c91edc87d76120)
-    
-    Change-Id: I1a3539227d22e6df89d78245634dfeb14943035a
-    Reviewed-on: https://gerrit.openafs.org/15688
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-
-commit bb7eaafb2e87d313eeb0a7bedebe2aa7a797b005
-Author: Cheyenne Wills <cwills@sinenomine.net>
-Date:   Fri Jan 12 08:56:31 2024 -0700
-
-    afs: Remove DFlushDCache()
-    
-    The function DFlushDcache() is not referenced anywhere within the
-    source tree.
-    
-    Remove the function DFlushDCache().
-    
-    The commit: 'disconnected-shadow-directory-fixes-20090121' (4045f3d535)
-    removed the code reference to DFlushDCache() and the commit:
-    "dir: Prototype and function name cleanup" (5ad1e6cb90) removed the
-    function prototype.  The function was introduced in the commit:
-    "disconnected-flush-before-shadowing-20090119" (e1cc987ea5).
-    
-    This function is flagged due to a missing prototype when building
-    against a Linux 6.8 kernel (which sets the -Wmissing-declarations and
-    -Wmissing-prototypes compiler flags as default). Linux 6.8 commit:
-     "Makefile.extrawarn: turn on missing-prototypes globally" (0fcb70851f).
-    
-    When building against a kernel with CONFIG_WERROR=y, the build fails.
-    
-    Reviewed-on: https://gerrit.openafs.org/15615
-    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit 432ac5810e51bb5bb2cf1df0bfebc64d1c4d7a39)
-    
-    Change-Id: Ib8ab79c76c633632215e02235f47fdb1d744e721
-    Reviewed-on: https://gerrit.openafs.org/15684
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-
-commit bd2828f1ab4c88b95a5d075e29a942922aa86dba
-Author: Cheyenne Wills <cwills@sinenomine.net>
-Date:   Fri Jan 12 09:28:02 2024 -0700
-
-    afs: Remove dummy_PSetAcl()
-    
-    The function dummy_PSetAcl() is not referenced anywhere within the
-    source tree.
-    
-    Remove the function dummy_PSetAcl().
-    
-    The commit: 'doxygen-comments-20081010' (4b72f8765c)
-    introduced the function, but dummy_PSetAcl() has never been referenced
-    or defined within a header file.
-    
-    This function is flagged due to a missing prototype when building
-    against a Linux 6.8 kernel (which sets the -Wmissing-declarations and
-    -Wmissing-prototypes compiler flags as default). Linux 6.8 commit:
-     'Makefile.extrawarn: turn on missing-prototypes globally' (0fcb70851f).
-    
-    When building against a kernel with CONFIG_WERROR=y, the build fails.
-    
-    Reviewed-on: https://gerrit.openafs.org/15618
+    Reviewed-on: https://gerrit.openafs.org/15912
     Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
     Tested-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit 05ca98687d882c72915e91430e29a4f2a36c502c)
+    (cherry picked from commit eb8b93a971c6293cdfbf8cd3d9a6351a8cb76f81)
     
-    Change-Id: Ie4420a365e07d2d8564530e004df75330e86bea5
-    Reviewed-on: https://gerrit.openafs.org/15687
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    [1.8: printableACL() does not exist in this branch.]
+    
+    Change-Id: I65b518acab26be0bb1854c29e46c90e5fee52d41
+    Reviewed-on: https://gerrit.openafs.org/15933
     Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-
-commit cc8053e86eef75bff308e7606f2618e9fdc4ec5d
-Author: Cheyenne Wills <cwills@sinenomine.net>
-Date:   Fri Jan 12 09:13:27 2024 -0700
-
-    afs: Remove afs_osi_UnmaskUserLoop()
-    
-    The function afs_osi_UnmaskUserLoop() is not referenced anywhere within
-    the source tree.
-    
-    Remove the function afs_osi_UnmaskUserLoop().
-    
-    The commit: 'darwin-afsdb-handler-signal-mask-20040728' (9728182c00)
-    introduced the function, but afs_osi_UnmaskUserLoop() has never been
-    referenced or defined within a header file.
-    
-    This function is flagged due to a missing prototype when building
-    against a Linux 6.8 kernel (which sets the -Wmissing-declarations and
-    -Wmissing-prototypes compiler flags as default). Linux 6.8 commit:
-     'Makefile.extrawarn: turn on missing-prototypes globally' (0fcb70851f).
-    
-    When building against a kernel with CONFIG_WERROR=y, the build fails.
-    
-    Reviewed-on: https://gerrit.openafs.org/15617
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit 587cfce29cb4e014e5b8d96e0433c5e7d2c6729a)
-    
-    Change-Id: I0fe91a41e8f00773cb1d5976a8c3e39e4415f6bc
-    Reviewed-on: https://gerrit.openafs.org/15686
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-
-commit 4881af8e3cf3f7d09670ba4b5bb9b644a329530d
-Author: Cheyenne Wills <cwills@sinenomine.net>
-Date:   Fri Jan 12 09:09:39 2024 -0700
-
-    afs: Remove afs_MemExtendEntry()
-    
-    The function afs_MemExtendEntry() is not referenced anywhere within
-    the source tree.
-    
-    Remove the function afs_MemExtendEntry().
-    
-    The commit: 'memcache: add extend-entry function' (f821c7e5c8)
-    introduced the function, but afs_MemExtendEntry() has never been
-    referenced or defined within a header file.
-    
-    This function is flagged due to a missing prototype when building
-    against a Linux 6.8 kernel (which sets the -Wmissing-declarations and
-    -Wmissing-prototypes compiler flags as default). Linux 6.8 commit:
-     'Makefile.extrawarn: turn on missing-prototypes globally' (0fcb70851f).
-    
-    When building against a kernel with CONFIG_WERROR=y, the build fails.
-    
-    Note, afsMemExtendedEntry() was a wrapper for the function
-    _afs_MemExtendedEntry(), which is still used.
-    
-    Reviewed-on: https://gerrit.openafs.org/15616
     Tested-by: Benjamin Kaduk <kaduk@mit.edu>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit eab2a4ae758876bb7547d289f936f9cfc4227cf5)
-    
-    Change-Id: I37f241a6df33ab15249c6708d5ca820353c8b413
-    Reviewed-on: https://gerrit.openafs.org/15685
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
 
-commit ef7b8c578790d84c89f09c3236f1718725770e75
-Author: Cheyenne Wills <cwills@sinenomine.net>
-Date:   Wed Feb 7 14:51:23 2024 -0700
-
-    cf: Add function prototypes for linux conftest
-    
-    The Linux 6.8 commit:
-      'Makefile.extrawarn: turn on missing-prototypes globally' (0fcb70851f)
-    
-    added the compiler flags -Wmissing-declarations and -Wmissing-prototypes
-    as defaults for all kernel modules builds.  This change causes configure
-    to fail for various Linux kernel tests.
-    
-    Update the template used to create the conftest.c file to provide a
-    function declaration for conftest().
-    
-    Use a 'static' attribute when defining functions used within tests.
-    
-    Note: 2 configure tests (LINUX_INIT_WORK_AS_DATA and
-    LINUX_IOP_CREATE_TAKES_MODE_T) defined nested functions.  Relocate the
-    nested functions to outside the body of conftest() to avoid compiler
-    errors due to nested function definitions.
-    
-    Reviewed-on: https://gerrit.openafs.org/15614
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit 1440843b80e28db908bd8c264b8adbfb2c95b4d9)
-    
-    Change-Id: I38acb7b0cb08dec8e9bca5f3792fbf981884a74c
-    Reviewed-on: https://gerrit.openafs.org/15683
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-
-commit 05ac6149f2f7998b6110c403d26757151b8e8ffe
-Author: Mark Vitale <mvitale@sinenomine.net>
-Date:   Thu Mar 11 15:36:54 2021 -0500
-
-    afs: remove dead ICL (fstrace) code
-    
-    The ICL code (afs/afs_icl.c) which supports fstrace includes a number of
-    functions that have been dead code since the original IBM code import.
-    Some of these seem to have been intended to support fine-grained event
-    tracing, but the implementation was never completed.
-    
-    Remove the dead code.  No functional change is incurred by this commit.
-    
-    Reviewed-on: https://gerrit.openafs.org/14555
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit ba58d9912cff07a6f2af7275017cf70115f1a88d)
-    
-    Change-Id: Ic0a6d5dac200e7e130fa8df66005bdaf291cf088
-    Reviewed-on: https://gerrit.openafs.org/15682
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-
-commit 9f052c137d1184a783c8ac3182c3544b275484f5
+commit d66caf8c04878724001839317637445708edef2c
 Author: Andrew Deason <adeason@sinenomine.net>
-Date:   Sat Jan 9 12:50:03 2021 -0600
+Date:   Tue Sep 19 15:55:42 2023 -0500
 
-    afs: Remove SRXAFSCB_GetDE
+    OPENAFS-SA-2024-002: acl: Error on missing newlines when parsing ACL
     
-    The GetDE RPC has been commented out from afscbint.xg effectively
-    since it was introduced, but we still define the SRXAFSCB_GetDE server
-    stub for it.
+    CVE-2024-10396
     
-    This is useless, but also potentially dangerous, since the stub
-    routine just returns success, without populating the output arguments.
-    One of the output arguments is a string, and so if this RPC is
-    actually run, the rxgen-generated server code will try to xdr_string()
-    that string. Since we never set it to anything, this will result in
-    xdr_string trying to dereference a NULL pointer.
+    In acl_Internalize_pr(), each line in an ACL granting rights (positive
+    or negative) is sscanf()'d with "%63s\t%d\n", and then we try to
+    advance 'nextc' beyond the next newline character.
     
-    None of this actually happens currently, since the GetDE RPC is
-    commented out. But to avoid the above situation if it's ever
-    uncommented, remove the useless SRXAFSCB_GetDE function.
+    However, sscanf()'ing "%63s\t%d\n" does not guarantee that there is a
+    newline in the given string. Whitespace characters in sscanf() are not
+    matched exactly, and may match any amount of whitespace (including
+    none at all). For example, a string like "foo 4" may be parsed by
+    sscanf(), but does not contain any newlines.
     
-    Reviewed-on: https://gerrit.openafs.org/14488
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    If this happens, strchr(nextc, '\n') will return NULL, and we'll
+    advance 'nextc' to 0x1, causing a segfault when we next try to
+    dereference 'nextc'.
+    
+    To avoid this, check if 'nextc' is NULL after the strchr() call, and
+    return an error if so.
+    
+    FIXES 135445
+    
+    Reviewed-on: https://gerrit.openafs.org/15911
     Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit 444a971edc47c34efbefed6e332ee6e843ae072b)
-    
-    Change-Id: I83846d79ce3143571923cb6023075620091f093d
-    Reviewed-on: https://gerrit.openafs.org/15681
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-
-commit 1e1bf8ebcd3c18b05326cd7b26a471db804aeaeb
-Author: Andrew Deason <adeason@sinenomine.net>
-Date:   Tue Jul 24 23:22:01 2018 -0500
-
-    LINUX: Minor osi_vfsop.c cleanup
-    
-    - Fix the formatting on afs_mount/afs_get_sb definitions
-    
-    - Declare a couple of functions static that are not referenced outside
-      of this file
-    
-    Reviewed-on: https://gerrit.openafs.org/13282
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit fa15fbda0aa0c3810695d9b867d3258b60e76b7c)
-    
-    Change-Id: I8a32475bf2ddb9c7206aef679947021925697c5a
-    Reviewed-on: https://gerrit.openafs.org/15680
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
     Tested-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 96ab2c6f8a614d597a523b45871c5f64a50a7040)
+    
+    Change-Id: I666dfb2c401410865c1f98d9db1b342b52c8f628
+    Reviewed-on: https://gerrit.openafs.org/15932
     Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
 
-commit fca6fd911e493a344c040a95ea4ab820e2828802
+commit 1e6e813188ecce62eb7af19385d911f63469bdb6
 Author: Andrew Deason <adeason@sinenomine.net>
-Date:   Thu Jun 28 12:50:52 2018 -0500
+Date:   Tue Sep 19 15:44:08 2023 -0500
 
-    afs: Make afs_AllocDCache static
+    OPENAFS-SA-2024-002: acl: Do not parse beyond end of ACL
     
-    Nothing using afs_AllocDCache outside of afs_dcache.c. Declare the
-    function static, to ensure that nobody else uses it, and to maybe
-    allow for more compiler optimization.
+    CVE-2024-10396
     
-    Reviewed-on: https://gerrit.openafs.org/13226
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    The early parsing code in acl_Internalize_pr() tries to advance
+    'nextc' to go beyond the first two newlines in the given ACL string.
+    But if the given ACL string has no newlines, or only 1 newline, then
+    'nextc' will point beyond the end of the ACL string, potentially
+    pointing to garbage.
+    
+    Intuitively, it may look like the ACL string must contain at least 2
+    newlines because we have sscanf()'d the string with "%d\n%\d".
+    However, whitespace characters in sscanf() are not matched exactly
+    like non-whitespace characters are; a sequence of whitespace
+    characters matches any amount of whitespace (including none). So, a
+    string like "1 2" will be parsed by "%d\n%d\n", but will not contain
+    any newline characters.
+    
+    Usually this should result in a parse error from acl_Internalize_pr(),
+    but if the garbage happens to parse successfully, this could result in
+    unrelated memory getting stored to the ACL.
+    
+    To fix this, don't advance 'nextc' if we're already at the end of the
+    ACL string.
+    
+    FIXES 135445
+    
+    Reviewed-on: https://gerrit.openafs.org/15910
     Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
-    (cherry picked from commit 4ab70de9641807bd06056f0c1ac79550453b9574)
+    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 35d218c1d17973c1412ea5dff1e23d9aae50c4c7)
     
-    Change-Id: I6fd9e31c4b2e862174402f731a77c91599893223
-    Reviewed-on: https://gerrit.openafs.org/15679
-    Tested-by: BuildBot <buildbot@rampaginggeek.com>
-    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
-    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Change-Id: I7a7d136676e548adba5fa8d0003b5f8342332a86
+    Reviewed-on: https://gerrit.openafs.org/15931
     Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
+
+commit a07e50726df09c49dfe7b953c3e49eb98f310c09
+Author: Andrew Deason <adeason@sinenomine.net>
+Date:   Mon Sep 18 16:14:07 2023 -0500
+
+    OPENAFS-SA-2024-002: viced: Free ACL on acl_Internalize_pr error
+    
+    CVE-2024-10396
+    
+    Currently, we don't free 'newACL' if acl_Internalize_pr() fails. If
+    acl_Internalize_pr() has already allocated 'newACL', then the memory
+    associated with newACL will be leaked. This can happen if parsing the
+    given ACL fails at any point after successfully parsing the first
+    couple of lines in the ACL.
+    
+    Change acl_FreeACL() to make freeing a NULL acl a no-op, to make it
+    easier to make sure the acl has been freed.
+    
+    FIXES 135445
+    
+    Reviewed-on: https://gerrit.openafs.org/15909
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit f4dfc2d7183f126bc4a45b5cabc78c3de020925f)
+    
+    Change-Id: If1554aa899542761ec6e6611394f2ee4f9379f22
+    Reviewed-on: https://gerrit.openafs.org/15930
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
+
+commit f74f960a18f559e683d6a1f5104e43c3ca93ecb8
+Author: Andrew Deason <adeason@sinenomine.net>
+Date:   Mon Sep 18 16:13:57 2023 -0500
+
+    OPENAFS-SA-2024-002: viced: Refuse ACLs without '\0' in SRXAFS_StoreACL
+    
+    CVE-2024-10396
+    
+    Currently, the fileserver treats the ACL given in RXAFS_StoreACL as a
+    string, even though it is technically an AFSOpaque and could be not
+    NUL-terminated.
+    
+    We give the ACL opaque/string to acl_Internalize_pr() to parse, which
+    will run off the end of the allocated buffer if the given ACL does not
+    contain a '\0' character. Usually this will result in a parse error
+    since we'll encounter garbage, but if the partially-garbage ACL
+    happens to parse successfully, some uninitialized data could make it
+    into the stored ACL.
+    
+    In addition, if the given ACL is an opaque of length 0, we'll still
+    give the opaque pointer to acl_Internalize_pr(). In this case, the
+    pointer will point to &memZero, which happens to contain a NUL byte,
+    and so is treated like an empty string (which is not a valid ACL). But
+    the fact that this causes no problems is somewhat a coincidence, and
+    so should also be avoided.
+    
+    To avoid both of these situations, just check if the given ACL string
+    contains a NUL byte. If it doesn't, or if it has length 0, refuse to
+    look at it and abort the call with EINVAL.
+    
+    FIXES 135445
+    
+    Reviewed-on: https://gerrit.openafs.org/15908
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit e15decb318797f1d471588dc669c3e3b26f1b8b3)
+    
+    Change-Id: I0f447310db5a988b21e19bb5158bb564d4ea3d94
+    Reviewed-on: https://gerrit.openafs.org/15929
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
+
+commit 57b655e4837d8660ebcc25d95efb09118adaff07
+Author: Andrew Deason <adeason@sinenomine.net>
+Date:   Fri Jan 10 12:40:15 2020 -0600
+
+    OPENAFS-SA-2024-001: afs: Throttle PAG creation in afs_genpag()
+    
+    CVE-2024-10394
+    
+    Currently, we only throttle PAG creation in afs_setpag(). But there
+    are several callers that call setpag() directly, not via afs_setpag;
+    notably _settok_setParentPag in afs_pioctl.c. When setpag() is called
+    with a PAG value of -1, it generates a new PAG internally without any
+    throttling. So, those callers effectively bypass the PAG throttling
+    mechanism, which allows a calling user to create PAGs without any
+    delay.
+    
+    To avoid this, move our afs_pag_wait call from afs_setpag() to
+    afs_genpag(), which all code uses to generate a new PAG value. This
+    ensures that PAG creation is always throttled for unprivileged users.
+    
+    FIXES 135062
+    
+    Reviewed-on: https://gerrit.openafs.org/15907
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 0358648dbed7656e7bda30f6f0ea6e8e01bf6527)
+    
+    Change-Id: I7f8f475a913c6f62ca2c7a6fb00239e51a8a8c62
+    Reviewed-on: https://gerrit.openafs.org/15928
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
+
+commit 20c22347b41eea2ebbdc0ab15f16c822af44df51
+Author: Andrew Deason <adeason@sinenomine.net>
+Date:   Fri Jan 10 12:01:50 2020 -0600
+
+    OPENAFS-SA-2024-001: afs: Introduce afs_genpag()
+    
+    CVE-2024-10394
+    
+    Currently, several areas in the code call genpag() to generate a new
+    PAG id, but the signature of genpag() is very limited. To allow for
+    the code in genpag() to return errors and to examine the calling
+    user's credentials, introduce a new function, afs_genpag(), that does
+    the same thing as genpag(), but accepts creds and allows errors to be
+    returned.
+    
+    Convert all existing callers to use afs_genpag() and to handle any
+    errors, though no errors are ever returned in this commit on its own.
+    
+    To ensure there are no old callers of genpag() left around, change the
+    existing genpag() to be called genpagval(), and declare it static.
+    
+    FIXES 135062
+    
+    Reviewed-on: https://gerrit.openafs.org/14090
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit f701f704c7bc93cf5fd7cffaaa043cef6a99e77f)
+    
+    Change-Id: I675d6cb111ca74638a3b856a3c989dcb2fe6d534
+    Reviewed-on: https://gerrit.openafs.org/15927
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: Benjamin Kaduk <kaduk@mit.edu>

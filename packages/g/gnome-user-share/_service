@@ -3,10 +3,10 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://gitlab.gnome.org/GNOME/gnome-user-share.git</param>
-    <param name="revision">47.0</param>
+    <param name="revision">47.2</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
-    <param name="versionrewrite-pattern">GNOME_USER_SHARE_(\d+)_(\d+)_(\d+)</param>
-    <param name="versionrewrite-replacement">\1.\2.\3</param>
+    <param name="versionrewrite-pattern">v?(.*)\+0</param>
+    <param name="versionrewrite-replacement">\1</param>
     <!--    <param name="changesgenerate">enable</param> -->
   </service>
   <service name="tar" mode="buildtime"/>

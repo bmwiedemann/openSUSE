@@ -18,7 +18,7 @@
 
 Name:           libt3key
 %define lname	libt3key1
-Version:        0.2.10
+Version:        0.2.11
 Release:        0
 Summary:        The Tilde Toolkit's terminal key sequence database library
 License:        GPL-3.0-only
@@ -28,7 +28,6 @@ URL:            https://os.ghalkes.nl/t3/libt3key.html
 Source:         https://os.ghalkes.nl/dist/%name-%version.tar.bz2
 Source2:        https://os.ghalkes.nl/dist/%name-%version.tar.bz2.sig
 Source3:        %name.keyring
-Patch1:         ncurses.patch
 BuildRequires:  fdupes
 BuildRequires:  gettext-tools
 BuildRequires:  libtool
@@ -81,7 +80,9 @@ This subpackage contains the t3learnkeys and t3keyc programs.
 
 %build
 export CC=gcc
-%configure --docdir="%_docdir/%name"
+# not autoconf :-/
+./configure --prefix="%_prefix" --includedir="%_includedir/t3/key" \
+	--libdir="%_libdir" --docdir="%_docdir/%name"
 %make_build
 
 %install

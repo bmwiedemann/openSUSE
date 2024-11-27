@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 22 22:33:50 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add update-meson-1_5_2.patch (gh#numpy/numpy#27531)
+- Skip failing test test_api_importable
+
+-------------------------------------------------------------------
 Mon Nov 18 17:23:11 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Revert the switch to openblas, should skip test instead

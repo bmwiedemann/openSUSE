@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Oct 28 17:00:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.0:
+  * Discontinued support for Python 3.6, 3.7, and 3.8. Adopted
+    new Python features from Python versions 3.7-3.9:
+    - Updated type annotations to use built-in container types
+      instead of names imported from the `typing` module
+      (e.g., `list[str]` vs `List[str]`).
+    - Reworked portions of the packrat cache to leverage
+      insertion-preserving ordering in dicts (including removal of
+      uses of `OrderedDict`).
+    - Changed `pdb.set_trace()` call in `ParserElement.set_break()`
+      to `breakpoint()`.
+    - Converted `typing.NamedTuple` to `dataclasses.dataclass`
+      in railroad diagramming code.
+    - Added `from __future__ import annotations` to clean up
+      some type annotations.
+
+-------------------------------------------------------------------
 Sat Aug 31 12:00:10 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.4:

@@ -685,4 +685,16 @@
     <comment>SCripted push of GNOME 47</comment>
     <requestid>1205451</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>f970448ae6c899f87a4b66fff36ec71e</srcmd5>
+    <version>47.1</version>
+    <time>1732650906</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 47.1:
+  + Bugs fixed:
+    - Do not open multiple preferences windows using keyboard
+      shortcut.
+    - Show MPRIS albumart on delayed retrieval. (forwarded request 1226206 from iznogood)</comment>
+    <requestid>1226297</requestid>
+  </revision>
 </revisionlist>

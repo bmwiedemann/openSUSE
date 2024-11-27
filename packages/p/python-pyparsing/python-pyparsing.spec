@@ -56,7 +56,7 @@ ExclusiveArch:  do-not-build
 %endif
 %{?sle15_python_module_pythons}
 Name:           %{pprefix}-pyparsing%{?psuffix}
-Version:        3.1.4
+Version:        3.2.0
 Release:        0
 Summary:        Grammar Parser Library for Python
 License:        GPL-2.0-or-later AND MIT AND GPL-3.0-or-later
@@ -69,6 +69,7 @@ BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module jinja2}
+BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module railroad-diagrams}
 %endif

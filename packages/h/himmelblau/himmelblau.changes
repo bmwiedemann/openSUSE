@@ -1,4 +1,105 @@
 -------------------------------------------------------------------
+Mon Nov 25 19:55:22 UTC 2024 - david.mulder@suse.com
+
+- Update to version 0.7.5+git.0.8f421b0:
+  * Version 0.7.5
+  * Remove the org.samba.himmelblau dbus service
+
+-------------------------------------------------------------------
+Mon Nov 25 17:26:11 UTC 2024 - david.mulder@suse.com
+
+- Update to version 0.7.4+git.0.d1291c6:
+  * Version 0.7.4
+  * Fix missing dependency utf8proc_NFKC_Casefold
+  * Package Siemens Linux Entra SSO for Himmelblau
+  * Add SLE15SP6 packaging
+  * Add Fedora 41 packaging
+  * Add Fedora Rawhide packaging
+  * The tasks daemon needs /etc/groups write access
+  * Version 0.7.3
+  * Increase the cache timeout to 5 minutes
+  * Always fetch and cache the graph url
+
+-------------------------------------------------------------------
+Mon Nov 25 14:45:36 UTC 2024 - david.mulder@suse.com
+
+- Update to version 0.7.2+git.0.c76ac0e:
+  * Version 0.7.2
+  * Hello support depends on openssl3
+  * Version 0.7.1
+  * Fix sshd rpm depends
+  * Resolve RPM dependencies automatically
+  * Revert "deps(rust): update notify-debouncer-full requirement from 0.3 to 0.4"
+  * Add openSUSE Tumbleweed packaging
+  * Fix RPM packaging placement of systemd files
+  * Remove the failed attempt at debian packaging
+  * Add stable-0.7.x to CI workflows
+  * deps(rust): update utoipa requirement from 4.0.0 to 4.2.0
+  * deps(rust): update hashbrown requirement from 0.14.0 to 0.15.1
+  * Remove missing feature causing warnings
+  * deps(rust): update notify-debouncer-full requirement from 0.3 to 0.4
+  * Specify scopes when making an SSO request
+  * Implement logon script for ensuring compliance
+  * Option for adding Entra Id users to local groups
+  * Configure EL sshd with ChallengeResponseAuthentication yes
+  * Add rocky 8 packaging
+  * Add RPM packaging for EL9
+  * Modify Ubuntu defaults to fix snaps
+  * Resolve Libreoffice fails to start on Ubuntu
+  * Minor formatting fix
+  * Revert RwLock -> Arc<Mutex> change in idmap
+  * Ignore broker scopes requests for now
+  * Ensure every file specifies the proper license
+  * postinst should not fail on patch or apparmor update
+  * Install pam module to additional location via make
+  * Add sshd config to the Makefile
+  * Don't use sudo in postinst/postrm scripts for deb
+  * PAM should be placed first in the stack
+  * Add the libutf8proc-dev dep for deb
+  * Match the object ID of the fake user and group
+  * Make it possible to stop the broker service
+  * Move sshd config into it's own debian package
+  * Allow the graph to start w/out network
+  * Add hello_pin_min_length conf option
+  * Don't attempt SFA fallback if AADSTSError
+  * Have libhimmelblau handle the DAG fallback
+  * Add a warning to user that SSH needs restarted
+  * Ensure local users are ignored when CN mapping
+  * Ensure DAG is rejected if lifetime expires
+  * Rework the poll logic to resolve timeout issues
+  * Add a sshd soft depends for the deb package
+  * CN name mapping in PAM and NSS
+  * Make CN an optional home directory attribute
+  * Remove the sssd build dependencies
+  * Configuration patches for himmelblau on Debian
+  * Simplify PAM get_item_string calls
+  * Bug in pam which needs defended against
+  * Fix deb build by adding Broker service file
+  * WIP: Install Ubuntu unix-chkpwd apparmor deps
+  * Ensure make install places pam_himmelblau correctly
+  * Add Ubuntu pam-config for pam_himmelblau
+  * Never return Err(PAM_SUCCESS) from get_user
+  * Never return the Pam result from get_user()
+  * Revert "Speed up nss requests w/out auth attempt"
+  * Speed up nss requests w/out auth attempt
+  * Fix some broker responses
+  * Fixes for the dbus broker
+  * Attempt to fix the cargo version in launchpad build
+  * Makefile typo fixes
+  * Version 0.7.0
+  * Add libdbus-1-dev dep
+  * Improve the README installation instructions
+  * Add `make install` command
+  * Improve Debian/Ubuntu install instructions
+  * Fix tag push permissions for tag-version workflow
+  * Add a version check script
+  * Remove the rustc dependency, breaking rustup
+  * Add a debug option to the config
+  * DBus requires that the service file match the name
+  * Add a pam option for the OpenSSH 2876 workaround
+  * Update to the latest libhimmelblau
+
+-------------------------------------------------------------------
 Tue Oct 22 16:22:21 UTC 2024 - david.mulder@suse.com
 
 - Update to version 0.6.14+git.0.bbda0b6:

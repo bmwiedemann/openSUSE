@@ -32,7 +32,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-wheel%{psuffix}
-Version:        0.45.0
+Version:        0.45.1
 Release:        0
 Summary:        A built-package format for Python
 License:        MIT

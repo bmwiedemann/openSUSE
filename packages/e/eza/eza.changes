@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Nov 26 07:17:19 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.20.9:
+  Bug Fixes:
+  * Remove newline after doc comment of regen recipe
+  Refactor:
+  * List all recipes by default
+  * Group related recipes
+
+-------------------------------------------------------------------
+Tue Nov 26 07:16:57 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.20.8:
+  Bug Fixes:
+  * Cross-compiling by updating to libz-sys to 1.1.20
+
+-------------------------------------------------------------------
+Tue Nov 26 07:16:24 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.20.7:
+  Bug Fixes:
+  * Palette v0.7.6 -> v0.7.5
+
+-------------------------------------------------------------------
+Tue Nov 26 07:16:04 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.20.6:
+  * Fix typo --get-repos-no-status to --git-repos-no-status
+
+-------------------------------------------------------------------
 Fri Oct 25 07:22:29 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.20.5:

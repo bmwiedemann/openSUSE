@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Nov 25 10:36:57 UTC 2024 - felix.niederwanger@suse.de
+
+- Update to version 1.3.1:
+  * Prepeare maintenance release
+  * Update cmd/openqa-mon/util.go
+  * Update dependencies
+  * Add SLEM6
+  * Refactor util with generics and cleanup
+  * Consider no arguments wrong usage
+  * Update module dependencies
+  * Update QE-C Maintenance template
+  * Remove unneeded code
+  * Move project to os-autoinst
+  * ci: Run workflow on pull requests as well
+  * Set version not go to 1.21  in workflows
+  * Propagate err in checkReviewed
+  * Set version to release
+
+-------------------------------------------------------------------
 Wed Aug 21 14:28:08 UTC 2024 - felix.niederwanger@suse.de
 
 - Update to version 1.3.0:

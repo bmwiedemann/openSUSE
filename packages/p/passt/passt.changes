@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Mon Nov 25 07:27:04 UTC 2024 - dcermak@suse.com
+
+- Update to version 20241121.238c69f:
+  * tcp: Acknowledge keep-alive segments, ignore them for the rest
+  * tcp: Reset ACK_TO_TAP_DUE flag whenever an ACK isn't needed anymore
+  * ndp: Don't send unsolicited RAs if NDP is disabled
+  * ndp: Don't send unsolicited router advertisement if we can't, yet
+  * selinux: Use auth_read_passwd() interface for all our getpwnam() needs
+  * ndp: Send unsolicited Router Advertisements
+  * passt: Seed libc's pseudo random number generator
+  * util: Add general low-level random bytes helper
+  * ndp: Make route lifetime a #define
+  * ndp: Use struct assignment in preference to memcpy() for IPv6 addresses
+  * ndp: Split out helpers for sending specific NDP message types
+  * ndp: Add ndp_send() helper
+  * ndp: Remove redundant update to addr_seen
+  * cppcheck: Don't check the system headers
+  * linux_dep: Fix CLOSE_RANGE_UNSHARE availability handling
+  * linux_dep: Move close_range() conditional handling to linux_dep.h
+  * log: Only check for FALLOC_FL_COLLAPSE_RANGE availability at runtime
+  * tap, tcp, util: Add some missing SOCK_CLOEXEC flags
+  * passt: Use NOLINT clang-tidy block instead of NOLINTNEXTLINE
+  * util: Define small and big thresholds for socket buffers as unsigned long long
+  * tap: Cast TAP_BUF_BYTES - ETH_MAX_MTU to ssize_t, not TAP_BUF_BYTES
+  * dhcpv6: Turn some option headers pointers to const
+  * dhcpv6: Use for loop instead of goto to avoid false positive cppcheck warning
+  * tcp: unify payload and flags l2 frames array
+  * test: Improve test for NDP assigned prefix
+  * test: Don't require 64-bit prefixes in perf tests
+  * test: Make nstool hold robust against interruptions to control clients
+  * test: Rename propagating signal handler
+  * util: Work around cppcheck bug 6936
+  * udp: Don't dereference uflow before NULL check in udp_reply_sock_handler()
+  * ndp: Use const pointer for ndp_ns packet
+  * linux_dep: Generalise tcp_info.h to handling Linux extension compatibility
+  * fwd: Squash different-signedness comparison warning
+  * util: Remove unused ffsl() function
+  * clang: Add rudimentary clangd configuration
+  * Makefile: Don't attempt to auto-detect stack size
+  * Makefile: Use -DARCH for qrap only
+  * seccomp: Simplify handling of AUDIT_ARCH
+  * Makefile: Move NETNS_RUN_DIR definition to C code
+  * netlink: RTA_PAYLOAD() returns int, not size_t
+  * flow: Correct type of flowside_at_sidx()
+  * arch: Avoid explicit access to 'environ'
+  * clang: Move clang-tidy configuration from Makefile to .clang-tidy
+  * Makefile: Simplify exclusion of qrap from static checks
+  * clang: Add .clang-format file
+  * test: Adjust misplaced sleeps in two_guests code
+  * tap: Explicitly cast TUNSETIFF to fix build warning with musl on ppc64le
+  * tcp: Fix build against musl, __sum16 comes from linux/types.h
+
+-------------------------------------------------------------------
 Mon Nov 04 10:10:37 UTC 2024 - dcermak@suse.com
 
 - Update to version 20241030.ee7d0b6:

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov 25 13:39:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Adjust _service definition: upstream has changed their tag format
+  to be a simple VERSION tag.
+
+-------------------------------------------------------------------
+Sat Nov 23 17:52:23 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.2:
+  + Fix a compiling issue for non-gnu C toolchain.
+
+-------------------------------------------------------------------
 Sun Sep 15 07:04:32 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.0:

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov 25 09:07:34 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 15.0:
+  * Drop support for Python 3.8.
+  * Drop support for pytest < 7.4.
+  * Fix compatibility with pytest 8.2.
+  * Add support for pytest 8.2, 8.3.
+  * Add --fail-on-flaky option to fail the test run with custom
+    exit code when test passed on rerun.
+
+-------------------------------------------------------------------
 Tue May  7 03:12:25 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

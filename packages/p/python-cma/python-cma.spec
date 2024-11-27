@@ -18,20 +18,20 @@
 
 
 Name:           python-cma
-Version:        3.3.0
+Version:        4.0.0
 Release:        0
 Summary:        Covariance Matrix Adaptation Evolution Strategy numerical optimizer
 License:        BSD-3-Clause
-URL:            https://cma.gforge.inria.fr/cmaes_sourcecode_page.html
+URL:            https://github.com/CMA-ES/pycma
 Source0:        https://github.com/CMA-ES/pycma/archive/r%{version}.tar.gz#/cma-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module numpy-devel < 2}
+BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy < 2
+Requires:       python-numpy
 Recommends:     python-matplotlib
 BuildArch:      noarch
 %python_subpackages

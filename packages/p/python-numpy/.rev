@@ -1338,4 +1338,14 @@ The Python versions supported in this release are 3.9-3.11.
     <comment></comment>
     <requestid>1224919</requestid>
   </revision>
+  <revision rev="135" vrev="2">
+    <srcmd5>7fe1dd0c0712ff0f3e4967762bd93926</srcmd5>
+    <version>2.1.3</version>
+    <time>1732650917</time>
+    <user>anag+factory</user>
+    <comment>- Add update-meson-1_5_2.patch (gh#numpy/numpy#27531)
+- Skip failing test test_api_importable
+</comment>
+    <requestid>1225917</requestid>
+  </revision>
 </revisionlist>

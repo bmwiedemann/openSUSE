@@ -392,4 +392,14 @@
     <comment></comment>
     <requestid>1224397</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>3398428a2f77d183452d036c74a77891</srcmd5>
+    <version>0.45.1</version>
+    <time>1732650920</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.45.1:
+  * Fixed pure Python wheels converted from eggs and wininst
+    files having the ABI tag in the file name</comment>
+    <requestid>1225987</requestid>
+  </revision>
 </revisionlist>

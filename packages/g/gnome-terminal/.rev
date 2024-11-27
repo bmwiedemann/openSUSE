@@ -2511,4 +2511,13 @@
     <comment></comment>
     <requestid>1216976</requestid>
   </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>c6bb6bca13f980a17cf9c8f8640a0d14</srcmd5>
+    <version>3.54.2</version>
+    <time>1732650904</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.54.2:
+  + Updated translations. (forwarded request 1226129 from iznogood)</comment>
+    <requestid>1226296</requestid>
+  </revision>
 </revisionlist>

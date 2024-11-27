@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 25 15:06:00 UTC 2024 - SUSE Update Bot <bci-internal@suse.de>
+
+- Add major & major + minor version tag, do not install redis compat package
+
+-------------------------------------------------------------------
 Fri Nov 15 11:29:13 UTC 2024 - SUSE Update Bot <bci-internal@suse.de>
 
 - First version of the Persistent key-value database BCI

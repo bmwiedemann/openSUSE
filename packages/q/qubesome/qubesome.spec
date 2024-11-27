@@ -1,5 +1,5 @@
 #
-# spec file for qubesome
+# spec file for package qubesome
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -17,7 +17,7 @@
 
 
 Name:           qubesome
-Version:        0.0.2
+Version:        0.0.7
 Release:        0
 Summary:        Containerize Window Managers, apps and config from a declarative state in Git
 License:        Apache-2.0
@@ -25,7 +25,7 @@ Group:          System/X11/Utilities
 URL:            https://github.com/qubesome/cli
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.22
+BuildRequires:  golang(API) >= 1.23
 
 %description
 Define your Window Manager and Workloads in Git and run them as containers. Just like dotfiles management, but better.
@@ -37,7 +37,7 @@ Define your Window Manager and Workloads in Git and run them as containers. Just
 %ifnarch ppc64
 export GOFLAGS="-buildmode=pie"
 %endif
-go build -o %{name}
+go build -o %{name} cmd/qubesome/main.go
 
 %check
 # execute the binary as a basic check

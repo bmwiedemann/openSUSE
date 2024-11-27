@@ -4,7 +4,7 @@
     <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param>
     <param name="versionrewrite-pattern">VERSION_(\d+).(\d+).(\d+)(.*)</param>
     <param name="versionrewrite-replacement">\1.\2.\3\4</param>
-    <param name="revision">VERSION_4_13_5</param>
+    <param name="revision">VERSION_4_14_0</param>
     <!--
     <param name="revision">master</param>
     -->

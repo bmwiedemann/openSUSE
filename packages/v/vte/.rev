@@ -1321,4 +1321,18 @@ New upstream release</comment>
     <comment></comment>
     <requestid>1216979</requestid>
   </revision>
+  <revision rev="164" vrev="1">
+    <srcmd5>279d72a0256b55a2c822bafdb21f3aa9</srcmd5>
+    <version>0.78.2</version>
+    <time>1732650903</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.78.2:
+  + build: Fix typo in pread check
+  + emulation: Use U+2426 for SUB
+  + lib: Remove an unnecessary move
+  + widget:
+    - Use correct type for out param
+    - Use correct termprop name (forwarded request 1226128 from iznogood)</comment>
+    <requestid>1226295</requestid>
+  </revision>
 </revisionlist>

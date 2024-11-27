@@ -362,4 +362,19 @@
     <comment>New stable release (forwarded request 1207593 from iznogood)</comment>
     <requestid>1207879</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>b903c73ac7941bf28dc696f2d8648e4f</srcmd5>
+    <version>1.6.2</version>
+    <time>1732650891</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.6.2:
+  + AdwDialog: Fix accessible role critical when using
+    window-backed dialogs.
+  + AdwHeaderBar: Fix a typo in docs.
+  + AdwMessageDialog: Fix a typo in adw_message_dialog_response()
+    deprecation message.
+  + AdwStyleManager: Fix initial color scheme value on Windows.
+  + Updated translations. (forwarded request 1225904 from iznogood)</comment>
+    <requestid>1226286</requestid>
+  </revision>
 </revisionlist>

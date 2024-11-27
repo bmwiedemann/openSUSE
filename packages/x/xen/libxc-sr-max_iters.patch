@@ -77,7 +77,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
      dss->checkpointed_stream = LIBXL_CHECKPOINTED_STREAM_NONE;
 --- a/tools/libs/light/libxl_internal.h
 +++ b/tools/libs/light/libxl_internal.h
-@@ -3653,6 +3653,7 @@ struct libxl__domain_save_state {
+@@ -3652,6 +3652,7 @@ struct libxl__domain_save_state {
      int live;
      int debug;
      int checkpointed_stream;

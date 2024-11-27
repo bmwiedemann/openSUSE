@@ -277,4 +277,26 @@
   * [gocritic]: Improve code quality.</comment>
     <requestid>1218605</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>959e7649db66cd17a79531a72075a3c6</srcmd5>
+    <version>0.12.1</version>
+    <time>1732650965</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.12.1:
+  Changed:
+  * Print error instead of quitting if a message of type error is received.
+  * Allow upload of multiple files.
+  Added:
+  * Add flag --suppress-root-warning to suppress the warning when go-sendxmpp is used by the root user.
+
+- Update to 0.12.0:
+  Added:
+  * Add possibility to look up direct TLS connection endpoint via hostmeta2 (requires xmppsrv &gt;= 0.3.3).
+  * Add flag --allow-plain to allow PLAIN authentication (requires go-xmpp &gt;= 0.2.5).
+  Changed:
+  * Disable PLAIN authentication per default.
+  * Disable PLAIN authentication after first use of a SCRAM auth mechanism (overrides --allow-plain) (requires
+    go-xmpp &gt;= 0.2.5).</comment>
+    <requestid>1226437</requestid>
+  </revision>
 </revisionlist>

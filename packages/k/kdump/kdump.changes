@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 22 17:37:47 UTC 2024 - Jiri Bohac <jbohac@suse.com>
+
+- upgrade to version 2.0.12
+ * fadump: pass additional parameters for capture kernel (jsc#PED-9889)
+
+-------------------------------------------------------------------
 Fri Nov  8 17:14:49 UTC 2024 - Jiri Bohac <jbohac@suse.com>
 
 - upgrade to version 2.0.11

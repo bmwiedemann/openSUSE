@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 25 15:30:10 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Drop meson-python upper bound
+  * https://github.com/numpy/numpy/pull/26301
+- Skip some tests failing on Python 3.13
+
+-------------------------------------------------------------------
 Tue Sep 24 19:05:58 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Fix build error for Leap 16.

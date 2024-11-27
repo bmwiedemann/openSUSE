@@ -16,18 +16,14 @@
 #
 
 
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-pytest-benchmark
-Version:        4.0.0
+Version:        5.1.0
 Release:        0
 Summary:        A py.test fixture for benchmarking code
 License:        BSD-2-Clause
 URL:            https://github.com/ionelmc/pytest-benchmark
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-benchmark/pytest-benchmark-%{version}.tar.gz
-Patch0:         fix-test-fast.patch
-# PATCH-FIX-OPENSUSE py311.patch gh#ionelmc/pytest-benchmark#232
-Patch1:         py311.patch
 # PATCH-FIX-OPENSUSE Ignore DeprecationWarning, some of our dependancies use
 # pkg_resources.
 Patch2:         ignore-deprecationwarning.patch
@@ -61,6 +57,8 @@ rounds that are calibrated to the chosen timer.
 
 %prep
 %autosetup -p1 -n pytest-benchmark-%{version}
+# skip nbmake
+rm pytest.ini
 # skip cli tests as we use update-alternatives
 rm -f tests/test_cli.py
 # Don't look for a test pass in the wrong place -- https://github.com/ionelmc/pytest-benchmark/issues/214

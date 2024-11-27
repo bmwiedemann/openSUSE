@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 26 07:41:59 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.5.2:
+ * The printing thread is fixed (previously, it caused a warning message about QBasicTimer).
+ * An old issue is fixed in replacement highlighting of multiple tabs.
+ * Fixed the localization of date and time with Qt6.
+ * Demand attention under Wayland when a window needs activation (although
+   some Wayland compositors may ignore it).
+ * Small fixes and enhancements.
+
+-------------------------------------------------------------------
 Mon Apr 29 16:09:58 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.5.1:

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Nov 26 07:44:14 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.12.1:
+  Changed:
+  * Print error instead of quitting if a message of type error is received.
+  * Allow upload of multiple files.
+  Added:
+  * Add flag --suppress-root-warning to suppress the warning when go-sendxmpp is used by the root user.
+
+-------------------------------------------------------------------
+Tue Nov 26 07:43:44 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.12.0:
+  Added:
+  * Add possibility to look up direct TLS connection endpoint via hostmeta2 (requires xmppsrv >= 0.3.3).
+  * Add flag --allow-plain to allow PLAIN authentication (requires go-xmpp >= 0.2.5).
+  Changed:
+  * Disable PLAIN authentication per default.
+  * Disable PLAIN authentication after first use of a SCRAM auth mechanism (overrides --allow-plain) (requires
+    go-xmpp >= 0.2.5).
+
+-------------------------------------------------------------------
 Sat Oct 26 17:42:16 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.11.4:

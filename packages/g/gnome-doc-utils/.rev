@@ -490,4 +490,24 @@
     <comment></comment>
     <requestid>1149587</requestid>
   </revision>
+  <revision rev="68" vrev="23">
+    <srcmd5>5941ef62280ec7a60432c7f6b13de563</srcmd5>
+    <version>0.20.10</version>
+    <time>1732650896</time>
+    <user>anag+factory</user>
+    <comment>- add python3-setuptools to fix build with python 3.13+
+
+  + Translation updates
+  + Translation updates.
+- Bugfixes for #456700.
+- split out the devel files into a -devel package
+- Updated translations
+- updated translations
+- Update to version 0.3.3 (GNOME 2.12)
+- Update to version 0.3.1
+- Update to version 0.2.0
+- Updating to version 0.1.3 (GNOME 2.10).
+- fix lib64 build (forwarded request 1225995 from dirkmueller)</comment>
+    <requestid>1226290</requestid>
+  </revision>
 </revisionlist>

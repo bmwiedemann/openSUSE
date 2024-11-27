@@ -1,5 +1,5 @@
 #
-# spec file for package python-numpy
+# spec file for package python-numpy1
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -98,7 +98,7 @@ Patch4:         fix-meson-multiple-python-versions.patch
 BuildRequires:  %{python_module Cython >= 3.0}
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module meson-python >= 0.15 with %python-meson-python < 0.17}
+BuildRequires:  %{python_module meson-python >= 0.15}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyproject-metadata >= 0.7.1}
 BuildRequires:  cmake
@@ -175,7 +175,6 @@ interfacing with general-purpose data-base applications.
 
 There are also basic facilities for discrete fourier transform,
 basic linear algebra and random number generation.
-
 
 %package devel
 Summary:        Development files for numpy applications
@@ -360,6 +359,8 @@ test_failok+=" or (test_umath and test_fpclass)"
 test_failok+=" or (test_numeric and TestBoolCmp and test_float)"
 test_failok+=" or (test_umath and test_fp_noncontiguous)"
 %endif
+# fail on Python 3.13 https://github.com/numpy/numpy/issues/27842
+test_failok+=" or (test_nditer and test_iter_refcount) or (test_utils and (test_deprecate_help_indentation or test_deprecate_preserve_whitespace))"
 
 echo "
 import sys

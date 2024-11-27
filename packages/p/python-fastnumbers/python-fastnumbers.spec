@@ -1,7 +1,7 @@
 #
 # spec file for package python-fastnumbers
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,9 @@ Summary:        Drop-in replacement for Python's int and float
 License:        MIT
 URL:            https://github.com/SethMMorton/fastnumbers
 Source:         https://files.pythonhosted.org/packages/source/f/fastnumbers/fastnumbers-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-compiler-errors.patch mcepl@suse.com
+# Code from gh#SethMMorton/fastnumbers@5522116cd03a and gh#SethMMorton/fastnumbers@8d2104e5cd93
+Patch0:         fix-compiler-errors.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module typing-extensions}
@@ -58,7 +61,7 @@ fastnumbers is a Python module with three objectives:
    an input could be converted to int or float.
 
 %prep
-%setup -q -n fastnumbers-%{version}
+%autosetup -p1 -n fastnumbers-%{version}
 
 %build
 %if 0%{?suse_version} <= 1500
@@ -73,9 +76,7 @@ export CFLAGS="%{optflags} -Wno-error=return-type"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
-pytest-%{$python_bin_suffix}
-}
+%pytest_arch
 
 %files %{python_files}
 %doc README.rst

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Oct 30 09:34:38 MDT 2024 - carnold@suse.com
+
+- bsc#1232622 - VUL-0: CVE-2024-45818: xen: Deadlock in x86 HVM
+  standard VGA handling (XSA-463)
+  xsa463-01.patch
+  xsa463-02.patch
+  xsa463-03.patch
+  xsa463-04.patch
+  xsa463-05.patch
+  xsa463-06.patch
+  xsa463-07.patch
+  xsa463-08.patch
+  xsa463-09.patch
+- bsc#1232624 - VUL-0: CVE-2024-45819: xen: libxl leaks data to PVH
+  guests via ACPI tables (XSA-464)
+  xsa464.patch
+- Drop stdvga-cache.patch
+
+-------------------------------------------------------------------
+Tue Oct 29 12:34:56 UTC 2024 - ohering@suse.de
+
+- bsc#1232542 - remove usage of net-tools-deprecated from supportconfig plugin
+
+-------------------------------------------------------------------
 Thu Sep 26 11:30:00 CEST 2024 - jbeulich@suse.com
 
 - bsc#1230366 - VUL-0: CVE-2024-45817: xen: x86: Deadlock in

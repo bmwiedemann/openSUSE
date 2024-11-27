@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 22 20:42:25 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 2024.0.1:
+  * Removed more event tables and replaced with Bind calls
+  * Fixes missing include for older wxWidgets version (3.1 series)
+
+-------------------------------------------------------------------
 Sat Nov 16 03:51:28 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Remove hugin-deprecated-copy_option.patch -- Fixed upstream

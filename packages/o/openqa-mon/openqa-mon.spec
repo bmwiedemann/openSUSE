@@ -17,11 +17,11 @@
 
 
 Name:           openqa-mon
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        CLI monitoring utility for openQA
 License:        GPL-3.0-or-later
-URL:            https://github.com/grisu48/openqa-mon/
+URL:            https://github.com/os-autoinst/openqa-mon/
 Source:         openqa-mon-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging

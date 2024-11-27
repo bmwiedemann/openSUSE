@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.sideload
 Name:           pantheon-sideload
-Version:        6.2.2
+Version:        6.3.0
 Release:        0
 Summary:        Sideload flatpaks on the Pantheon Desktop
 License:        GPL-3.0-or-later

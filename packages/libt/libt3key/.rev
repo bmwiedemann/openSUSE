@@ -62,4 +62,12 @@
     <comment>- Add ncurses.patch to fix FTBFS with gcc-14</comment>
     <requestid>1220358</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5bb365417fac92c681a24e5d0ed989e9</srcmd5>
+    <version>0.2.11</version>
+    <time>1732650935</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 0.2.11</comment>
+    <requestid>1226316</requestid>
+  </revision>
 </revisionlist>

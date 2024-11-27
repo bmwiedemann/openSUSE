@@ -18,17 +18,13 @@
 
 %define binaries nib-conform nib-convert nib-dicomfs nib-diff nib-ls nib-nifti-dx nib-roi nib-stats nib-tck2trk nib-trk2tck parrec2nii
 Name:           python-nibabel
-Version:        5.2.1
+Version:        5.3.2
 Release:        0
 Summary:        Tool to access multiple neuroimaging data formats
 License:        MIT
 URL:            https://nipy.org/nibabel
 # SourceRepository: https://github.com/nipy/nibabel
 Source:         https://files.pythonhosted.org/packages/source/n/nibabel/nibabel-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#nipy/nibabel#1325
-Patch0:         support-pytest-8.patch
-# PATCH-FIX-UPSTREAM gh#nipy/nibabel#1304
-Patch1:         support-numpy-2.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module hatchling}
@@ -37,7 +33,12 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy >= 1.20
 Requires:       python-packaging => 17
-Requires:       (python-importlib-resources >= 1.3 if python-base < 3.9)
+%if 0%{?python_version_nodots} < 312
+Requires:       python-importlib-resources >= 5.12
+%endif
+%if 0%{?python_version_nodots} < 313
+Requires:       python-typing-extensions >= 4.6
+%endif
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     python-Pillow
@@ -48,7 +49,7 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module h5py}
-BuildRequires:  %{python_module importlib-resources >= 1.3 if %python-base < 3.9}
+BuildRequires:  %{python_module importlib-resources >= 5.12 if %python-base < 3.12}
 BuildRequires:  %{python_module numpy >= 1.20}
 BuildRequires:  %{python_module packaging >= 17}
 BuildRequires:  %{python_module pydicom >= 1}
@@ -57,6 +58,7 @@ BuildRequires:  %{python_module pytest-httpserver}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
+BuildRequires:  %{python_module typing-extensions >= 4.6 if %python-base < 3.13}
 BuildRequires:  %{pythons}
 BuildRequires:  git-core
 # /SECTION
@@ -101,7 +103,6 @@ done
 %license COPYING
 %{expand:%(for b in %{binaries}; do echo "%%python_alternative %%{_bindir}/$b"; done)}
 %{python_sitelib}/nibabel
-%{python_sitelib}/nisext
 %{python_sitelib}/nibabel-%{version}.dist-info
 
 %changelog

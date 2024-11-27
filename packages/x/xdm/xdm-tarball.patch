@@ -1,6 +1,6 @@
-diff -u -r ../old/etc/X11/xdm/RunChooser ./etc/X11/xdm/RunChooser
---- ../old/etc/X11/xdm/RunChooser	2015-07-29 14:46:22.000000000 +0200
-+++ ./etc/X11/xdm/RunChooser	2024-08-09 11:27:04.390249591 +0200
+diff -upr xdm.orig/etc/X11/xdm/RunChooser xdm/etc/X11/xdm/RunChooser
+--- xdm.orig/etc/X11/xdm/RunChooser	2015-07-29 14:46:22.000000000 +0200
++++ xdm/etc/X11/xdm/RunChooser	2024-11-20 14:47:22.156525704 +0100
 @@ -9,7 +9,7 @@
  #
   LIBDIR=/usr/lib/X11
@@ -10,7 +10,7 @@ diff -u -r ../old/etc/X11/xdm/RunChooser ./etc/X11/xdm/RunChooser
   BINDIR=/usr/bin
  
  no_exit_on_failed_exec=1
-@@ -107,6 +107,8 @@
+@@ -107,6 +107,8 @@ if test -x $xmodmap -o -x $xkbcomp ; the
  	    cat $sysxkbmap | $xkbcomp - $DISPLAY
  	elif test -r $sysmodmap ; then
  	    $xmodmap $sysmodmap
@@ -19,7 +19,7 @@ diff -u -r ../old/etc/X11/xdm/RunChooser ./etc/X11/xdm/RunChooser
  	fi
      else
  	# TCP/IP connection (remote or local)
-@@ -114,6 +116,8 @@
+@@ -114,6 +116,8 @@ if test -x $xmodmap -o -x $xkbcomp ; the
  	    cat $defxkbmap | $xkbcomp - $DISPLAY
  	elif test -r $defmodmap ; then
  	    $xmodmap $defmodmap
@@ -28,146 +28,10 @@ diff -u -r ../old/etc/X11/xdm/RunChooser ./etc/X11/xdm/RunChooser
  	fi
  	if test -s $hostxkbmap -a -x $xkbcomp ; then
  	    cat $hostxkbmap | $xkbcomp - $DISPLAY
-diff -u -r ../old/etc/X11/xdm/Xreset ./etc/X11/xdm/Xreset
---- ../old/etc/X11/xdm/Xreset	2014-12-15 19:34:46.000000000 +0100
-+++ ./etc/X11/xdm/Xreset	2024-08-09 11:27:04.390249591 +0200
-@@ -10,7 +10,7 @@
- #
-   LIBDIR=/usr/lib/X11
-   ETCDIR=/etc/X11
--  XDMDIR=${ETCDIR}/xdm
-+  XDMDIR=/usr/${ETCDIR}/xdm
-   BINDIR=/usr/bin
- xmessage=${BINDIR}/xmessage
- xconsole=${BINDIR}/xconsole
-diff -u -r ../old/etc/X11/xdm/Xresources ./etc/X11/xdm/Xresources
---- ../old/etc/X11/xdm/Xresources	2015-08-04 12:13:36.000000000 +0200
-+++ ./etc/X11/xdm/Xresources	2024-08-09 11:27:04.390249591 +0200
-@@ -100,4 +100,4 @@
- !
- ! Include system wide Xresources
- !
--#include "/etc/X11/Xresources"
-+#include "/usr/etc/X11/Xresources"
-diff -u -r ../old/etc/X11/xdm/Xsession ./etc/X11/xdm/Xsession
---- ../old/etc/X11/xdm/Xsession	2021-01-04 15:20:27.548208000 +0100
-+++ ./etc/X11/xdm/Xsession	2024-08-09 11:27:04.390249591 +0200
-@@ -34,10 +34,18 @@
- # Some system defaults
- #
-     XETCDIR=/etc/X11
--     XDMDIR=$XETCDIR/xdm
--   XINITDIR=$XETCDIR/xinit
-+     XDMDIR=/usr/$XETCDIR/xdm
- :  ${TMPDIR=/tmp}
- 
-+# xinitrc moved to %{_libexecdir}/xinit in xinit package
-+if [ -r /usr/libexec/xinit/xinitrc ]; then
-+   XINITDIR=/usr/libexec/xinit
-+elif [ -r /usr/lib/xinit/xinitrc ]; then
-+   XINITDIR=/usr/lib/xinit
-+else
-+   XINITDIR=$XETCDIR/xinit
-+fi 
-+
- export OPENWINHOME TMPDIR
- test -n "$XAUTHORITY" || unset XAUTHORITY
- 
-@@ -187,7 +195,11 @@
- #
- # By default we set system defaults for the language
- #
--. /etc/profile.d/lang.sh
-+if [ -r /etc/profile.d/lang.sh ]; then
-+    . /etc/profile.d/lang.sh
-+elif [ -r /usr/etc/profile.d/lang.sh ]; then
-+    . /usr/etc/profile.d/lang.sh
-+fi
- 
- #
- # Handle arguments given by xdm/kdm/gdm.
-@@ -261,7 +273,11 @@
- # No window manager? Get system default
- #
- if test -z "$WINDOWMANAGER" ; then
--    . /etc/profile.d/profile.sh
-+    if [ -r /etc/profile.d/profile.sh ]; then
-+        . /etc/profile.d/profile.sh
-+    elif [ -r /usr/etc/profile.d/profile.sh ]; then
-+        . /usr/etc/profile.d/profile.sh
-+    fi
- fi
- 
- #
-@@ -291,7 +307,12 @@
- # Source common code shared between the
- # X session and X init scripts
- #
--. /etc/X11/xinit/xinitrc.common
-+
-+if [ -r /etc/X11/xinit/xinitrc.common ]; then
-+    . /etc/X11/xinit/xinitrc.common
-+elif [ -r /usr/etc/X11/xinit/xinitrc.common ]; then
-+    . /usr/etc/X11/xinit/xinitrc.common
-+fi
- 
- # Restore arguments but skip window manager
- set -- "${argv[@]}"
-diff -u -r ../old/etc/X11/xdm/Xsetup ./etc/X11/xdm/Xsetup
---- ../old/etc/X11/xdm/Xsetup	2020-08-26 15:35:43.014615021 +0200
-+++ ./etc/X11/xdm/Xsetup	2024-08-09 11:27:04.390249591 +0200
-@@ -9,7 +9,7 @@
- #
-  LIBDIR=/usr/lib/X11
-  ETCDIR=/etc/X11
-- XDMDIR=${ETCDIR}/xdm
-+ XDMDIR=/usr/${ETCDIR}/xdm
-  BINDIR=/usr/bin
- 
- no_exit_on_failed_exec=1
-@@ -184,7 +184,7 @@
- 	#endif
- 	EOF
- else
--    $xrdb $cpp -override -retain ${ETCDIR}/Xresources
-+    $xrdb $cpp -override -retain ${XDMDIR}/Xresources
- fi
- 
- #
-@@ -206,6 +206,8 @@
- 	    cat $sysxkbmap | $xkbcomp - $DISPLAY
- 	elif test -r $sysmodmap ; then
- 	    $xmodmap $sysmodmap
-+	elif test -r /usr/etc/X11/Xmodmap ; then
-+	    $xmodmap /usr/etc/X11/Xmodmap
- 	fi
-     else
- 	# TCP/IP connection (remote or local)
-@@ -213,6 +215,8 @@
- 	    cat $defxkbmap | $xkbcomp - $DISPLAY
- 	elif test -r $defmodmap ; then
- 	    $xmodmap $defmodmap
-+	elif test -r /usr/etc/X11/Xmodmap.remote ; then
-+	    $xmodmap /usr/etc/X11/Xmodmap.remote
- 	fi
- 	if test -s $hostxkbmap -a -x $xkbcomp ; then
- 	    cat $hostxkbmap | $xkbcomp - $DISPLAY
-diff -u -r ../old/etc/X11/xdm/Xstartup ./etc/X11/xdm/Xstartup
---- ../old/etc/X11/xdm/Xstartup	2020-08-26 15:35:26.270871116 +0200
-+++ ./etc/X11/xdm/Xstartup	2024-08-09 11:27:04.390249591 +0200
-@@ -10,7 +10,7 @@
- #
-   LIBDIR=/usr/lib/X11
-   ETCDIR=/etc/X11
--  XDMDIR=${ETCDIR}/xdm
-+  XDMDIR=/usr/${ETCDIR}/xdm
-   BINDIR=/usr/bin
- xmessage=${BINDIR}/xmessage
-  NOLOGIN=/etc/nologin
-diff -u -r ../old/etc/X11/xdm/sys.xsession ./etc/X11/xdm/sys.xsession
---- ../old/etc/X11/xdm/sys.xsession	2016-06-03 15:25:42.000000000 +0200
-+++ ./etc/X11/xdm/sys.xsession	2024-08-09 11:27:04.390249591 +0200
-@@ -38,10 +38,16 @@
+diff -upr xdm.orig/etc/X11/xdm/sys.xsession xdm/etc/X11/xdm/sys.xsession
+--- xdm.orig/etc/X11/xdm/sys.xsession	2016-06-03 15:25:42.000000000 +0200
++++ xdm/etc/X11/xdm/sys.xsession	2024-11-20 14:47:22.173192466 +0100
+@@ -38,10 +38,16 @@ checkproc ()
  argv=("$@")
  set --
  
@@ -185,7 +49,7 @@ diff -u -r ../old/etc/X11/xdm/sys.xsession ./etc/X11/xdm/sys.xsession
      case "${script##*/}" in
          .*)             continue ;;
          *.rpm*)         continue ;;
-@@ -63,7 +69,16 @@
+@@ -63,7 +69,16 @@ done
  #
  # Use system default xinitrc if the users does not have one.
  #
@@ -203,7 +67,7 @@ diff -u -r ../old/etc/X11/xdm/sys.xsession ./etc/X11/xdm/sys.xsession
  test -r "$HOME/.xinitrc" && XINITRCFILE="$HOME/.xinitrc"
  
  if test -f "$XINITRCFILE" ; then
-@@ -77,7 +92,11 @@
+@@ -77,7 +92,11 @@ else
      # Source common code shared between the
      # X session and X init scripts
      #
@@ -216,9 +80,9 @@ diff -u -r ../old/etc/X11/xdm/sys.xsession ./etc/X11/xdm/sys.xsession
      unset STARTUP WINDOW_MANAGER
  
      set -- ${1+"$@"} $WINDOWMANAGER
-diff -u -r ../old/etc/X11/xdm/xdm-config ./etc/X11/xdm/xdm-config
---- ../old/etc/X11/xdm/xdm-config	2020-08-26 15:36:22.290004407 +0200
-+++ ./etc/X11/xdm/xdm-config	2024-08-09 11:27:04.390249591 +0200
+diff -upr xdm.orig/etc/X11/xdm/xdm-config xdm/etc/X11/xdm/xdm-config
+--- xdm.orig/etc/X11/xdm/xdm-config	2020-08-26 15:36:22.290004407 +0200
++++ xdm/etc/X11/xdm/xdm-config	2024-11-20 14:47:22.173192466 +0100
 @@ -4,10 +4,10 @@
  DisplayManager.errorLogFile:	/var/log/xdm.errors
  DisplayManager.pidFile:		/run/xdm.pid
@@ -233,7 +97,7 @@ diff -u -r ../old/etc/X11/xdm/xdm-config ./etc/X11/xdm/xdm-config
  !
  ! ATTENTION: `authName' should be in general MIT-MAGIC-COOKIE-1
  ! For XDM-AUTHENTICATION-1 which is default for xterminals see
-@@ -27,16 +27,16 @@
+@@ -27,16 +27,16 @@ DisplayManager._93.authorize:	true
  ! The scripts handling the setup, the startup, the session its self,
  ! and the reset of an X session.
  !
@@ -256,9 +120,243 @@ diff -u -r ../old/etc/X11/xdm/xdm-config ./etc/X11/xdm/xdm-config
  DisplayManager.*.terminateServer:	false
  !
  ! SECURITY: do not listen for XDMCP or Chooser requests
-diff -u -r ../old/usr/lib/X11/display-manager ./usr/lib/X11/display-manager
---- ../old/usr/lib/X11/display-manager	2020-09-04 13:11:23.054517000 +0200
-+++ ./usr/lib/X11/display-manager	2024-08-09 11:36:39.578216426 +0200
+diff -upr xdm.orig/etc/X11/xdm/Xreset xdm/etc/X11/xdm/Xreset
+--- xdm.orig/etc/X11/xdm/Xreset	2014-12-15 19:34:46.000000000 +0100
++++ xdm/etc/X11/xdm/Xreset	2024-11-20 14:47:22.173192466 +0100
+@@ -10,7 +10,7 @@
+ #
+   LIBDIR=/usr/lib/X11
+   ETCDIR=/etc/X11
+-  XDMDIR=${ETCDIR}/xdm
++  XDMDIR=/usr/${ETCDIR}/xdm
+   BINDIR=/usr/bin
+ xmessage=${BINDIR}/xmessage
+ xconsole=${BINDIR}/xconsole
+diff -upr xdm.orig/etc/X11/xdm/Xresources xdm/etc/X11/xdm/Xresources
+--- xdm.orig/etc/X11/xdm/Xresources	2015-08-04 12:13:36.000000000 +0200
++++ xdm/etc/X11/xdm/Xresources	2024-11-21 09:38:25.194243785 +0100
+@@ -10,37 +10,38 @@ xlogin*login.translations: #override\
+ #undef linux
+ #undef Linux
+ #undef LINUX
+-xlogin*greeting:	Welcome at CLIENTHOST
++xlogin*greeting:	CLIENTHOST
+ xlogin*namePrompt:	\040\040\040\040\040\040\040Login:
+ xlogin*fail:		Login incorrect
+ 
+-#define FAMILY	Serif
++#define FAMILY Helvetica
+ #if    (WIDTH < 800)
+-xlogin*login.failFace:	FAMILY-16:bold
+-xlogin*login.greetFace:	 FAMILY-18:italic
+-xlogin*login.promptFace:    FAMILY-16:bold
+-xlogin*login.Font:	  FAMILY-16
++xlogin*login.failFace:		FAMILY-16:regular
++xlogin*login.greetFace:		FAMILY-18:regular
++xlogin*login.promptFace:	FAMILY-16:regular
++xlogin*login.Font:		FAMILY-16
+ #else
+-xlogin*login.failFace:	FAMILY-18:bold
+-xlogin*login.greetFace:	FAMILY-24:italic
+-xlogin*login.promptFace:    FAMILY-18:bold
+-xlogin*login.face:	  FAMILY-18
++login*login.failFace:		FAMILY-18:regular
++xlogin*login.greetFace:		FAMILY-24:bold
++xlogin*login.promptFace:	FAMILY-18:regular
++xlogin*login.face:		FAMILY-16
+ #endif
+ #undef  FAMILY
+ 
+ #ifdef COLOR
+-xlogin*useShape:		true
+-xlogin*greetColor:		CadetBlue
+-xlogin*failColor:		red
+-*Foreground:			black
+-*Background:			#c0c0c0
+-xlogin*borderWidth:		0
+-xlogin*frameWidth:		5
+-xlogin*innerFramesWidth:	2
+-xlogin*Foreground:		black
+-xlogin*Background:		#c0c0c0
+-xlogin*shdColor:		#828282
+-xlogin*hiColor:			#e0e0e0
++xlogin*foreground:		#6C6C6C
++xlogin*background:		#35968c
++xlogin.Login.foreground:	#9adcd5
++xlogin.Login.greetColor:	#9adcd5
++xlogin.Login.promptColor:	#97CC56
++xlogin.Login.failColor:		#9adcd5
++xlogin.Login.failTimeout:	2
++xlogin.Login.hiColor:		#63bbb2
++xlogin.Login.shdColor:		#63bbb2
++xlogin.Login.frameWidth:	2
++xlogin.Login.innerFramesWidth:	1
++xlogin.Login.sepWidth:		1
++xlogin.Login.echoPasswd:	true
+ #else
+ xlogin*useShape:		false
+ xlogin*borderWidth:		4
+@@ -59,6 +60,8 @@ xlogin*hiColor:			black
+ !#endif
+ !xlogin*logoPadding: 10
+ 
++XConsole*background:    black
++XConsole*foreground:    #9adcd5
+ #if   (WIDTH < 320)
+ XConsole*geometry:	125x80-0-0
+ XConsole*font:		5x7
+@@ -100,4 +103,4 @@ Chooser*Command.font:		-*-new century sc
+ !
+ ! Include system wide Xresources
+ !
+-#include "/etc/X11/Xresources"
++#include "/usr/etc/X11/Xresources"
+diff -upr xdm.orig/etc/X11/xdm/Xsession xdm/etc/X11/xdm/Xsession
+--- xdm.orig/etc/X11/xdm/Xsession	2021-01-04 15:20:27.548208000 +0100
++++ xdm/etc/X11/xdm/Xsession	2024-11-20 14:47:22.173192466 +0100
+@@ -34,10 +34,18 @@ fi
+ # Some system defaults
+ #
+     XETCDIR=/etc/X11
+-     XDMDIR=$XETCDIR/xdm
+-   XINITDIR=$XETCDIR/xinit
++     XDMDIR=/usr/$XETCDIR/xdm
+ :  ${TMPDIR=/tmp}
+ 
++# xinitrc moved to %{_libexecdir}/xinit in xinit package
++if [ -r /usr/libexec/xinit/xinitrc ]; then
++   XINITDIR=/usr/libexec/xinit
++elif [ -r /usr/lib/xinit/xinitrc ]; then
++   XINITDIR=/usr/lib/xinit
++else
++   XINITDIR=$XETCDIR/xinit
++fi 
++
+ export OPENWINHOME TMPDIR
+ test -n "$XAUTHORITY" || unset XAUTHORITY
+ 
+@@ -187,7 +195,11 @@ sessions=( $XDMDIR/sys.xsession $XINITDI
+ #
+ # By default we set system defaults for the language
+ #
+-. /etc/profile.d/lang.sh
++if [ -r /etc/profile.d/lang.sh ]; then
++    . /etc/profile.d/lang.sh
++elif [ -r /usr/etc/profile.d/lang.sh ]; then
++    . /usr/etc/profile.d/lang.sh
++fi
+ 
+ #
+ # Handle arguments given by xdm/kdm/gdm.
+@@ -261,7 +273,11 @@ readonly argv
+ # No window manager? Get system default
+ #
+ if test -z "$WINDOWMANAGER" ; then
+-    . /etc/profile.d/profile.sh
++    if [ -r /etc/profile.d/profile.sh ]; then
++        . /etc/profile.d/profile.sh
++    elif [ -r /usr/etc/profile.d/profile.sh ]; then
++        . /usr/etc/profile.d/profile.sh
++    fi
+ fi
+ 
+ #
+@@ -291,7 +307,12 @@ fi
+ # Source common code shared between the
+ # X session and X init scripts
+ #
+-. /etc/X11/xinit/xinitrc.common
++
++if [ -r /etc/X11/xinit/xinitrc.common ]; then
++    . /etc/X11/xinit/xinitrc.common
++elif [ -r /usr/etc/X11/xinit/xinitrc.common ]; then
++    . /usr/etc/X11/xinit/xinitrc.common
++fi
+ 
+ # Restore arguments but skip window manager
+ set -- "${argv[@]}"
+diff -upr xdm.orig/etc/X11/xdm/Xsetup xdm/etc/X11/xdm/Xsetup
+--- xdm.orig/etc/X11/xdm/Xsetup	2020-08-26 15:35:43.014615021 +0200
++++ xdm/etc/X11/xdm/Xsetup	2024-11-21 09:38:57.287767888 +0100
+@@ -9,7 +9,7 @@
+ #
+  LIBDIR=/usr/lib/X11
+  ETCDIR=/etc/X11
+- XDMDIR=${ETCDIR}/xdm
++ BKGDIR=/usr/share/wallpapers/openSUSEdefault/contents/images
+  BINDIR=/usr/bin
+ 
+ no_exit_on_failed_exec=1
+@@ -29,7 +29,7 @@ type cpp >/dev/null 2>&1 && cpp=
+ # Store your preferred picture in XPM format (see xv(1) or ppm(5))
+ # You can run gzip on the file BackGround.xpm to save disk space.
+ #
+- background=${XDMDIR}/BackGround.xpm
++ background=${BKGDIR}/1920x1200.png
+ 
+ #
+ # Special screensaver parameters for xset, see manual page xset(1x).
+@@ -68,6 +68,7 @@ hostxkbmap=${ETCDIR}/Xkbmap.${DISPLAY%:*
+       xrdb=${BINDIR}/xrdb
+    backprg=${BINDIR}/BackGround
+        qiv=${BINDIR}/qiv
++       feh=${BINDIR}/feh
+ #   halporp=/usr/bin/hal-find-by-property
+      xvkbd=${BINDIR}/xvkbd
+      xvkbdargs="-compact -geometry -0-0 -xdm -always-on-top -keyfile /usr/share/X11/app-defaults/xvkbd.default"
+@@ -135,6 +136,8 @@ fi
+ #
+ if test "$xdm" = "no" ; then
+     : # $xsetroot -solid '#738dc6'
++elif test -s ${background} -a -x $feh ; then
++    $feh --bg-scale ${background}
+ elif test -s ${background}.gz -a -x $xpmroot ; then
+     $xpmroot ${background}.gz
+ elif test -s ${background}    -a -x $xpmroot ; then
+@@ -184,7 +187,7 @@ if test "$xdm" = "yes" ; then
+ 	#endif
+ 	EOF
+ else
+-    $xrdb $cpp -override -retain ${ETCDIR}/Xresources
++    $xrdb $cpp -override -retain ${XDMDIR}/Xresources
+ fi
+ 
+ #
+@@ -206,6 +209,8 @@ if test -x $xmodmap -o -x $xkbcomp ; the
+ 	    cat $sysxkbmap | $xkbcomp - $DISPLAY
+ 	elif test -r $sysmodmap ; then
+ 	    $xmodmap $sysmodmap
++	elif test -r /usr/etc/X11/Xmodmap ; then
++	    $xmodmap /usr/etc/X11/Xmodmap
+ 	fi
+     else
+ 	# TCP/IP connection (remote or local)
+@@ -213,6 +218,8 @@ if test -x $xmodmap -o -x $xkbcomp ; the
+ 	    cat $defxkbmap | $xkbcomp - $DISPLAY
+ 	elif test -r $defmodmap ; then
+ 	    $xmodmap $defmodmap
++	elif test -r /usr/etc/X11/Xmodmap.remote ; then
++	    $xmodmap /usr/etc/X11/Xmodmap.remote
+ 	fi
+ 	if test -s $hostxkbmap -a -x $xkbcomp ; then
+ 	    cat $hostxkbmap | $xkbcomp - $DISPLAY
+Only in xdm/etc/X11/xdm: Xsetup.orig
+Only in xdm/etc/X11/xdm: Xsetup.rej
+diff -upr xdm.orig/etc/X11/xdm/Xstartup xdm/etc/X11/xdm/Xstartup
+--- xdm.orig/etc/X11/xdm/Xstartup	2020-08-26 15:35:26.270871116 +0200
++++ xdm/etc/X11/xdm/Xstartup	2024-11-20 14:47:22.173192466 +0100
+@@ -10,7 +10,7 @@
+ #
+   LIBDIR=/usr/lib/X11
+   ETCDIR=/etc/X11
+-  XDMDIR=${ETCDIR}/xdm
++  XDMDIR=/usr/${ETCDIR}/xdm
+   BINDIR=/usr/bin
+ xmessage=${BINDIR}/xmessage
+  NOLOGIN=/etc/nologin
+diff -upr xdm.orig/usr/lib/X11/display-manager xdm/usr/lib/X11/display-manager
+--- xdm.orig/usr/lib/X11/display-manager	2020-09-04 13:11:23.054517000 +0200
++++ xdm/usr/lib/X11/display-manager	2024-11-20 14:47:22.173192466 +0100
 @@ -13,11 +13,16 @@
  # /usr/lib/X11/display-manager
  #
@@ -279,7 +377,7 @@ diff -u -r ../old/usr/lib/X11/display-manager ./usr/lib/X11/display-manager
  
  locale_vars="     \
  LANG              \
-@@ -67,14 +72,14 @@
+@@ -67,14 +72,14 @@ fi
  unset DEFAULT_WM
  export WINDOWMANAGER
  
@@ -296,7 +394,7 @@ diff -u -r ../old/usr/lib/X11/display-manager ./usr/lib/X11/display-manager
          # Do no try to start Xserver on platforms which may ship without
          # graphics card (bsc#1039497)
          if [ "$(arch)" == "aarch64" -o "$(arch)" == "ppc64le" ]; then
-@@ -87,8 +92,8 @@
+@@ -87,8 +92,8 @@ xdm_reload_files () {
              fi
          fi
          MD5DIR="/var/adm/SuSEconfig/md5" \
@@ -307,7 +405,7 @@ diff -u -r ../old/usr/lib/X11/display-manager ./usr/lib/X11/display-manager
          /bin/logger
  	return 0
      fi
-@@ -130,6 +135,13 @@
+@@ -130,6 +135,13 @@ case "$DM" in
  	exit 0
  	;;
      *)
@@ -321,7 +419,7 @@ diff -u -r ../old/usr/lib/X11/display-manager ./usr/lib/X11/display-manager
  	for i in  /usr/lib/X11/displaymanagers/*
  	do
  	    tmp=${i%.fallback} 
-@@ -159,8 +171,8 @@
+@@ -159,8 +171,8 @@ case "$1" in
      start)
  
  	# use system keyboard as global X keyboard configuration
@@ -332,10 +430,10 @@ diff -u -r ../old/usr/lib/X11/display-manager ./usr/lib/X11/display-manager
          fi
  
  	[ -n "$STARTPROC" ] && $STARTPROC
-diff -u -r ../old/usr/lib/X11/displaymanagers/xdm ./usr/lib/X11/displaymanagers/xdm
---- ../old/usr/lib/X11/displaymanagers/xdm	2014-03-04 13:53:31.000000000 +0100
-+++ ./usr/lib/X11/displaymanagers/xdm	2024-08-09 11:27:04.390249591 +0200
-@@ -5,8 +5,8 @@
+diff -upr xdm.orig/usr/lib/X11/displaymanagers/xdm xdm/usr/lib/X11/displaymanagers/xdm
+--- xdm.orig/usr/lib/X11/displaymanagers/xdm	2014-03-04 13:53:31.000000000 +0100
++++ xdm/usr/lib/X11/displaymanagers/xdm	2024-11-20 14:47:22.173192466 +0100
+@@ -5,8 +5,8 @@ xdm_start_proc() {
  }
  
  xdm_probe_proc() {

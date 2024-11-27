@@ -307,4 +307,22 @@
   * cl_mutable_dispatch_asserts_khr definitions (#243)</comment>
     <requestid>1179193</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e9d643abdce538ff795e468d79ac5726</srcmd5>
+    <version>2024.10.24</version>
+    <time>1732650949</time>
+    <user>anag+factory</user>
+    <comment> Update to version 2024.10.24:
+  * Temporarily disable PPA builds (#267)
+  * Update headers regenerated from latest xml (#264)
+  * Add properties parameter to all command-buffer commands (#260)
+  * Use array for clUpdateMutableCommandsKHR (#245)
+  * Disable gcc-11 on MacOS (#262)
+  * Update generated headers and remove CL/GL types from cl_platform.h (#257)
+  * Fix CI failures (#256)
+  * Introduce extension macros (#251)
+  * Update CI matrix (#252)
+  * Updated CI, added CD (#239)</comment>
+    <requestid>1226363</requestid>
+  </revision>
 </revisionlist>

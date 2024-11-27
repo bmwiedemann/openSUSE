@@ -212,4 +212,22 @@
 - Use modern RPM macros to express version dependencies (forwarded request 1164751 from glaubitz)</comment>
     <requestid>1165149</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>359c50ecb101533d273ad79d207d4605</srcmd5>
+    <version>10.2.0~b1</version>
+    <time>1732650942</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 10.2.0b1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Override upstream version with 10.2.0~b1
+- Remove unzip package from BuildRequires
+- Rename LICENSE.txt to LICENSE in %files section
+- Switch source archive format to TAR.GZ
+- Update Requires from setup.py (forwarded request 1226310 from glaubitz)</comment>
+    <requestid>1226334</requestid>
+  </revision>
 </revisionlist>

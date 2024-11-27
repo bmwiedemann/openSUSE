@@ -841,4 +841,28 @@
 - Update eza-fix-test.patch</comment>
     <requestid>1218206</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>c609c532ebb130a12c9c331a2bb9a70d</srcmd5>
+    <version>0.20.9</version>
+    <time>1732650960</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.20.9:
+  Bug Fixes:
+  * Remove newline after doc comment of regen recipe
+  Refactor:
+  * List all recipes by default
+  * Group related recipes
+
+- Update to 0.20.8:
+  Bug Fixes:
+  * Cross-compiling by updating to libz-sys to 1.1.20
+
+- Update to 0.20.7:
+  Bug Fixes:
+  * Palette v0.7.6 -&gt; v0.7.5
+
+- Update to 0.20.6:
+  * Fix typo --get-repos-no-status to --git-repos-no-status</comment>
+    <requestid>1226432</requestid>
+  </revision>
 </revisionlist>

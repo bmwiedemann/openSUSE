@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov 18 14:28:00 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Convert patches to git format
+  * 01-env-to-interpreter.patch ->
+    0001-Use-bin-env-python3-instead-of-python3-in-scripts.patch
+  * 02-cmake-modules.patch ->0002-CMake-acpp-clang-to-MODULE.patch
+
+- Added patch 0003-Remove-realpath-in-acpp.patch to remove
+  warning when using acpp caused by %fdupes.
+
+-------------------------------------------------------------------
 Tue Nov 12 00:09:24 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Added patch 02-cmake-modules.patch to make some shared libraries

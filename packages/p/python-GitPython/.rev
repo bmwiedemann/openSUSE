@@ -871,4 +871,41 @@
   * fixed tabbing</comment>
     <requestid>1109413</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>f4476d72dcfd854aeaabdf7c8cb91047</srcmd5>
+    <version>3.1.43</version>
+    <time>1732650916</time>
+    <user>anag+factory</user>
+    <comment>- drop of CVE-2023-41040.patch because it included in upstream version
+- drop of test-skips.patch
+- drop of test_blocking_lock_file-extra-time.patch
+- Update to version 3.1.43:
+  * Issue and test deprecation warnings by @EliahKagan in #1886
+  * Fix version_info cache invalidation, typing, parsing, and serialization by @EliahKagan in #1838
+  * Document manual refresh path treatment by @EliahKagan in #1839
+  * Improve static typing and docstrings related to git object types by @EliahKagan in #1859
+  * Fix release link in changelog by @PeterJCLaw in #1795
+  * Remove test dependency on sumtypes library by @EliahKagan in #1798
+  * Pin Sphinx plugins to compatible versions by @EliahKagan in #1803
+  * fix: treeNotSorted issue by @et-repositories in #1799
+  * Remove git.util.NullHandler by @EliahKagan in #1807
+  * Clarify why GIT_PYTHON_GIT_EXECUTABLE may be set on failure by @EliahKagan in #1810
+  * Report actual attempted Git command when Git.refresh fails by @EliahKagan in #1812
+  * Don't suppress messages when logging is not configured by @EliahKagan in #1813
+  * Pin Python 3.9.16 on Cygwin CI by @EliahKagan in #1814
+  * Have initial refresh use a logger to warn by @EliahKagan in #1815
+  * Omit warning prefix in &quot;Bad git executable&quot; message by @EliahKagan in #1816
+  * Test with M1 macOS CI runner by @EliahKagan in #1817
+  * Bump pre-commit/action from 3.0.0 to 3.0.1 by @dependabot in #1818
+  * Bump Vampire/setup-wsl from 2.0.2 to 3.0.0 by @dependabot in #1819
+  * Remove deprecated section in README.md by @marcm-ml in #1823
+  * Keep temp files out of project dir and improve cleanup by @EliahKagan in #1825
+  * Add __all__ in git.exc by @EliahKagan in #1719
+  * Set submodule update cadence to weekly by @EliahKagan in #1721
+  * Never modify sys.path by @EliahKagan in #1720
+  * Bump git/ext/gitdb from 8ec2390 to ec58b7e by @dependabot in #1722
+  * Revise comments, docstrings, some messages, and a bit of code by @EliahKagan in #1725
+  * Use zero-argument super() by @EliahKagan in #1726</comment>
+    <requestid>1225870</requestid>
+  </revision>
 </revisionlist>

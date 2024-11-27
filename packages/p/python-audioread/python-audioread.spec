@@ -23,6 +23,8 @@ Summary:        Wrapper for audio decoding via selectable backends
 License:        MIT
 URL:            https://github.com/beetbox/audioread
 Source0:        https://github.com/beetbox/audioread/archive/v%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Do not use rawread backend on Python 3.13+
+Patch0:         no-removed-formats.patch
 BuildRequires:  %{ffmpeg_pref}
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module flit-core}
@@ -51,7 +53,7 @@ currently supports:
   uncompressed audio formats).
 
 %prep
-%setup -q -n audioread-%{version}
+%autosetup -p1 -n audioread-%{version}
 
 %build
 %pyproject_wheel

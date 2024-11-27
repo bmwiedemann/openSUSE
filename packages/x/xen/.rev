@@ -2990,4 +2990,12 @@
     <comment>Various upstream bug fixes</comment>
     <requestid>1204818</requestid>
   </revision>
+  <revision rev="352" vrev="1">
+    <srcmd5>2b68e21bd4474a6022ed6ceb56db7f73</srcmd5>
+    <version>4.19.0_06</version>
+    <time>1732650928</time>
+    <user>anag+factory</user>
+    <comment>Security and Maintenance Update. Fix for bsc#1232622 CVE-2024-45818 XSA-463 and bsc#1232624 CVE-2024-45819 XSA-464</comment>
+    <requestid>1226362</requestid>
+  </revision>
 </revisionlist>

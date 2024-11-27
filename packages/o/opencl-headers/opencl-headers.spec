@@ -17,7 +17,7 @@
 
 
 Name:           opencl-headers
-Version:        2024.05.08
+Version:        2024.10.24
 Release:        0
 Summary:        OpenCL (Open Computing Language) headers
 License:        MIT

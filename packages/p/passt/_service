@@ -4,7 +4,7 @@
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
     <param name="versionformat">%cs.%h</param>
-    <param name="revision">2024_10_30.ee7d0b6</param>
+    <param name="revision">2024_11_21.238c69f</param>
   </service>
   <service mode="manual" name="recompress">
     <param name="file">*.tar</param>

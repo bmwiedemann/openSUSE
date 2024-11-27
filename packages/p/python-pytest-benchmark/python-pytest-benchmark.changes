@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Nov 25 12:42:56 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.1.0:
+  * Fixed broken hooks handling on pytest 8.1 or later (the
+    TypeError: import_path() missing 1 required keyword-only
+    argument: 'consider_namespace_packages' issue). Unfortunately
+    this sets the minimum supported pytest version to 8.1.
+  * Fixed bad fixture check that broke down then nbmake was
+    enabled.
+  * Dropped support for now EOL Python 3.8. Also moved tests
+    suite to only test the latest pytest versions (8.3.x).
+  * Fix generate parametrize tests benchmark csv report errors
+    (issue #268). Contributed by Johnny Huang in #269.
+  * Added the --benchmark-time-unit cli option for overriding the
+    measurement unit used for display. Contributed by Tony Kuo in
+    #257.
+  * Fixes spelling in some help texts. Contributed by Eugeniy in
+    #267.
+  * Added new cprofile options: --benchmark-cprofile-loops=LOOPS
+    - previously profiling only ran the function once, this allow
+    customization. --benchmark-cprofile-top=COUNT - allows
+    showing more rows. --benchmark-cprofile-dump=[FILENAME-
+    PREFIX] - allows saving to a file (that you can load in
+    snakeviz, RunSnakeRun or other tools).
+  * --benchmark-cprofile-loops=LOOPS - previously profiling only
+    ran the function once, this allow customization.
+  * --benchmark-cprofile-top=COUNT - allows showing more rows.
+  * --benchmark-cprofile-dump=[FILENAME-PREFIX] - allows saving
+    to a file (that you can load in snakeviz, RunSnakeRun or
+    other tools).
+  * Removed hidden dependency on py.path (replaced with pathlib).
+- drop fix-test-fast.patch, py311.patch, fix-test-fast.patch: upstream
+
+-------------------------------------------------------------------
 Mon Mar  4 22:09:46 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Clean up the SPEC file

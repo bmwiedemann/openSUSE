@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 22 18:57:14 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add fix-compiler-errors.patch with upstream fixes for compiler
+  errors.
+- Use %pytest_arch instead of home made calling of pytest.
+
+-------------------------------------------------------------------
 Fri Dec 29 18:35:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.1.0:

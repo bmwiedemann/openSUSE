@@ -1,0 +1,35 @@
+--- javax.servlet.jsp-2.3.4/src/main/java/org/apache/jasper/servlet/JspCServletContext.java	2024-11-11 17:17:23.900839969 +0100
++++ javax.servlet.jsp-2.3.4/src/main/java/org/apache/jasper/servlet/JspCServletContext.java	2024-11-11 17:20:07.928605001 +0100
+@@ -888,4 +888,32 @@
+     public String getVirtualServerName() {
+         throw new UnsupportedOperationException("Not implemented yet");
+     }
++
++    public void setResponseCharacterEncoding(String charset) {
++        throw new UnsupportedOperationException("Not implemented yet");
++    }
++
++    public String getResponseCharacterEncoding() {
++        throw new UnsupportedOperationException("Not implemented yet");
++    }
++
++    public void setRequestCharacterEncoding(String charset) {
++        throw new UnsupportedOperationException("Not implemented yet");
++    }
++
++    public String getRequestCharacterEncoding() {
++        throw new UnsupportedOperationException("Not implemented yet");
++    }
++
++    public void setSessionTimeout(int sessionTimeout) {
++        throw new UnsupportedOperationException("Not implemented yet");
++    }
++
++    public int getSessionTimeout() {
++        throw new UnsupportedOperationException("Not implemented yet");
++    }
++
++    public ServletRegistration.Dynamic addJspFile(String servletName, String jspFile) {
++        throw new UnsupportedOperationException("Not implemented yet");
++    }
+ }

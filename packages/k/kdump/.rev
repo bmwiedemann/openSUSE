@@ -1375,4 +1375,14 @@ Please note that the boo#1226676 fix does not completely fix the issue on its ow
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1224499</requestid>
   </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>3b524666c5e018997e0f46e6bcfac68f</srcmd5>
+    <version>2.0.12</version>
+    <time>1732650932</time>
+    <user>anag+factory</user>
+    <comment>- upgrade to version 2.0.12
+ * fadump: pass additional parameters for capture kernel (jsc#PED-9889)
+</comment>
+    <requestid>1226461</requestid>
+  </revision>
 </revisionlist>

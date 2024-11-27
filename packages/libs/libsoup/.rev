@@ -1190,4 +1190,27 @@
     <comment></comment>
     <requestid>1224047</requestid>
   </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>21f95acd1ef18c25a5e2a41244b1ea27</srcmd5>
+    <version>3.6.1</version>
+    <time>1732650891</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.6.1:
+  + Fix `soup_uri_copy()` reading port as a long instead of an int
+  + Fix possible NULL deref in `soup_uri_decode_data_uri()`
+  + Fix possible overflow in `SoupContentSniffer`
+  + Fix assertion in `soup_uri_decode_data_uri()` on URLs with a
+    path starting with `//`
+  + headers: Be more robust against invalid input when parsing
+    params
+  + websocket: Fix possibility of being stuck in a read loop
+- Drop patches fixed upstream:
+  + 6adc0e3e.patch
+  + 29b96fab.patch
+  + a35222dd.patch
+  + 4c9e75c6.patch
+
+6adc0e3e.patch (forwarded request 1225898 from iznogood)</comment>
+    <requestid>1226285</requestid>
+  </revision>
 </revisionlist>

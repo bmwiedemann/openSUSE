@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Nov 26 05:22:53 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.3.2:
+  * New features
+    + Update NIfTI extension protocol to include .content : bytes, .text :
+      str and .json : dict properties for accessing extension contents.
+  * Enhancements
+    + Ability to read data from many multiframe DICOM files that previously
+      generated errors
+    + nib-nifti-dx now supports NIfTI-2 files with a --nifti2 flag
+    + Update nibabel.streamlines.tractogram to support ragged arrays.
+    + Improve error message for for dicomwrapper errors in shape
+      calculation
+    + Support "flat" ASCII-encoded GIFTI DataArrays
+  * Bug fixes
+    + Fix location initialization/update in OrthoSlicer3D for permuted axes
+    + Fix DICOM scaling, making frame filtering explicit
+    + Fixed multiframe DICOM issue where data could be flipped along slice
+      dimension relative to the affine
+    + Fixed multiframe DICOM issue where image_position and the translation
+      component in the affine could be incorrect
+  * Maintenance
+    + Numpy 2.0 compatibility and addressing deprecations in numpy API
+    + Python 3.13 compatibility
+    + Testing on Python 3.13 with free-threading
+    + Proactively address deprecations in coming Python versions
+    + Replace nose-era setup() and teardown() functions with pytest
+      equivalents
+  * API changes and deprecations
+    + Raise HeaderDataError from set_qform if the affine fails to
+      decompose. This would previously result in numpy.linalgLinAlgError.
+    + The nibabel.onetime.auto_attr module can be replaced by
+      functoolscached_property in all supported versions of Python. This
+      alias may be removed in future versions.
+    + Removed the deprecated nisext (setuptools extensions) package.
+- Dropped patches, included upstream:
+  * support-pytest-8.patch
+  * support-numpy-2.patch
+
+-------------------------------------------------------------------
 Thu Jul 25 02:05:50 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove numpy upper bound.

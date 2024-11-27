@@ -35,6 +35,7 @@ BuildRequires:  intltool
 BuildRequires:  python-rpm-macros
 %if %suse_version > 1500
 BuildRequires:  python3-libxml2
+BuildRequires:  python3-setuptools
 %else
 BuildRequires:  python3-libxml2-python
 %endif

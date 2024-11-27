@@ -1,4 +1,4 @@
-# The Valkey %%valkey_version%% container image
+# The Valkey 8.0 container image
 
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
@@ -18,13 +18,13 @@ To start an instance, follow these instructions:
 
 
 ```ShellSession
-podman run --rm registry.opensuse.org/opensuse/valkey:%%valkey_version%%
+podman run --rm registry.opensuse.org/opensuse/valkey:8.0
 ```
 
 In case you want start with persistent storage, run this:
 
 ```ShellSession
-podman run --rm registry.opensuse.org/opensuse/valkey:%%valkey_version%% valkey-server --save 60 1
+podman run --rm registry.opensuse.org/opensuse/valkey:8.0 valkey-server --save 60 1
 ```
 
 This one will save a snapshot of the DB every 60 seconds if at least 1

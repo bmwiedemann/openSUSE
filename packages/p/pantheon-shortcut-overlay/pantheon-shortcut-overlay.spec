@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.shortcut-overlay
 Name:           pantheon-shortcut-overlay
-Version:        8.0.0
+Version:        8.0.1
 Release:        0
 Summary:        A native OS-wide shortcut overlay to be launched by Gala
 License:        GPL-3.0-or-later

@@ -23,7 +23,7 @@
 # Cannot use EGL unless glew bug https://github.com/nigels-com/glew/issues/315 is fixed
 %bcond_with egl
 Name:           hugin
-Version:        %{mversion}.0
+Version:        %{mversion}.1
 Release:        0
 Summary:        Toolchain for Stitching of Images and Creating Panoramas
 License:        GPL-2.0-or-later
@@ -82,7 +82,7 @@ chromatic abberation, create HDR images, provide automatic feature
 detection and extraction of key points.
 
 %prep
-%autosetup -p1 -n %{name}-%{mversion}.0
+%autosetup -p1 -n %{name}-%{version}
 
 chmod -x AUTHORS authors.txt Changes.txt README COPYING.txt
 

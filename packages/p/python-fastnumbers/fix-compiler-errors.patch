@@ -1,0 +1,110 @@
+From 5522116cd03a14e72caee50e64902df7b5543028 Mon Sep 17 00:00:00 2001
+From: Seth Morton <seth.m.morton@gmail.com>
+Date: Mon, 21 Oct 2024 21:55:42 -0700
+Subject: [PATCH] Update CI configuration
+
+---
+ dev/formatting.py                        |    2 +-
+ include/fastnumbers/third_party/ipow.hpp |    6 ++++--
+ setup.py                                 |    8 ++++++++
+ src/cpp/parser.cpp                       |    3 +++
+ tox.ini                                  |   13 +++++++++++--
+ 5 files changed, 27 insertions(+), 5 deletions(-)
+
+--- a/dev/formatting.py
++++ b/dev/formatting.py
+@@ -52,6 +52,6 @@ any_cpp_formatting = any(
+ # "Roll up" what happened into a single exit code.
+ all_return_zero = all(ret.returncode == 0 for ret in [black_ret, clang_format_ret])
+ if any_cpp_formatting or not all_return_zero:
+-    sys.exit("Not all files are formatted correctly. Run 'tox -e format'.")
++    sys.exit("Not all files are formatted correctly. Run 'tox run -e format'.")
+ else:
+     sys.exit(0)
+--- a/include/fastnumbers/third_party/ipow.hpp
++++ b/include/fastnumbers/third_party/ipow.hpp
+@@ -58,8 +58,10 @@ inline T1 ipow(T1 base, T2 exp) {
+             return 1;
+         }
+         
+-        if (base == -1) {
+-            return 1 - 2 * (exp & 1);
++        if constexpr(std::is_signed_v<T1>) {
++            if (base == -1) {
++                return 1 - 2 * (exp & 1);
++            }
+         }
+         
+         return 0;
+--- a/setup.py
++++ b/setup.py
+@@ -9,6 +9,7 @@ from setuptools import Extension, find_p
+ 
+ 
+ # Compilation arguments are platform-dependent
++link_args = ["-lm"]
+ if sys.platform == "win32":
+     compile_args = [
+         "/std:c++17",
+@@ -19,6 +20,8 @@ if sys.platform == "win32":
+     if "FN_DEBUG" in os.environ or "FN_COV" in os.environ:
+         compile_args.append("/Od")
+         compile_args.append("/Z7")
++    if "FN_WARNINGS_AS_ERRORS" in os.environ:
++         compile_args.append("/WX")
+ else:
+     compile_args = [
+         "-std=c++17",
+@@ -31,6 +34,11 @@ else:
+     if "FN_DEBUG" in os.environ or "FN_COV" in os.environ:
+         compile_args.append("-Og")
+         compile_args.append("-g")
++        if "FN_COV" in os.environ:
++            compile_args.append("--coverage")
++            link_args.append("--coverage")
++    if "FN_WARNINGS_AS_ERRORS" in os.environ:
++        compile_args.append("-Werror")
+ 
+ 
+ ext = [
+--- a/src/cpp/parser.cpp
++++ b/src/cpp/parser.cpp
+@@ -460,4 +460,7 @@ NumberFlags CharacterParser::get_number_
+     case StringType::INTLIKE_FLOAT:
+         return flag_wrap(NumberType::Float | NumberType::IntLike);
+     }
++
++    /* Is not reachable, but silences compiler warnings. */
++    return NumberType::INVALID;
+ }
+--- a/tox.ini
++++ b/tox.ini
+@@ -4,10 +4,11 @@
+ # and then run "tox" from this directory.
+ 
+ [tox]
+-envlist = py37, py38, py39, py310, py311, py12
++envlist = lint, mypy, py37, py38, py39, py310, py311, py12
+ # Other valid environments are:
+ #   format
+-#   format-check
++#   lint
++#   mypy
+ #   docs
+ #   bump
+ #   clean
+@@ -50,6 +51,14 @@ deps =
+     clang-format
+ commands = {envpython} dev/formatting.py
+ 
++# Check code quality.
++[testenv:lint]
++setenv =
++    FN_WARNINGS_AS_ERRORS=1
++deps =
++    ruff
++    clang-format
++
+ # Type checking
+ [testenv:mypy]
+ deps =

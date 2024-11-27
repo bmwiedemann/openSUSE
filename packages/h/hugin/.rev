@@ -678,4 +678,14 @@
   * Create GPano tags also for cylindrical output projection. (forwarded request 1224538 from smolsheep)</comment>
     <requestid>1224777</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>a8b7a602299e933acc1ea1b518bb7ce6</srcmd5>
+    <version>2024.0.1</version>
+    <time>1732650969</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2024.0.1:
+  * Removed more event tables and replaced with Bind calls
+  * Fixes missing include for older wxWidgets version (3.1 series) (forwarded request 1225903 from smolsheep)</comment>
+    <requestid>1226439</requestid>
+  </revision>
 </revisionlist>

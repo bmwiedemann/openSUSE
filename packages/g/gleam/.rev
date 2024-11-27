@@ -103,4 +103,14 @@
  * 1.6.0 Changelog: https://gleam.run/news/context-aware-compilation/</comment>
     <requestid>1225184</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2ad650dc95fd4c33764f14a06f2f7c1f</srcmd5>
+    <version>1.6.2</version>
+    <time>1732650952</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.6.2:
+ * Fixed a bug where patterns in use expressions would not be checked
+   to ensure that they were exhaustive. (Surya Rose)</comment>
+    <requestid>1226382</requestid>
+  </revision>
 </revisionlist>

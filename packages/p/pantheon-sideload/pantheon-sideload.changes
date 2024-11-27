@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 25 20:26:21 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 6.3.0:
+  * Handle flatpak+https scheme
+  * MainWindow: fix invalid bundle cast
+
+-------------------------------------------------------------------
 Mon Nov  4 18:48:24 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - rename to pantheon-sideload

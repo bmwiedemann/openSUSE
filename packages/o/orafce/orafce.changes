@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov 26 09:18:32 UTC 2024 - emiliano.langella@suse.com
+
+- Update to version 4.14.0+git0.f0ecbd3:
+  * prepare for 4.14.0
+  * prepare for 4.13.6
+  * remove invalid alternative results of dbms_random test
+  * fix dbms_random test for pg 12
+  * fix error when orafce's triggers was executed on table with dropped columns
+  * update year in info comment
+  * fix white chars
+  * Oracle does switch of low, high when low is higher than high arg of dbms_random.value. Do this in orafce too. Some cleaning in related regress tests. Attention: this change breaks alternative expected results.
+  * regress test for new nvl function
+  * fix Makefile and return type previously added nvl function
+  * Add support to nvl(double precision, integer) and to_date(integer, text).
+
+-------------------------------------------------------------------
 Tue Oct 22 14:01:46 UTC 2024 - emiliano.langella@suse.com
 
 - Update to version 4.13.5+git0.ab95f82:

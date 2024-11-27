@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Nov 11 00:46:35 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.24.4:
+  * loader: Add language_for_configuration
+  * loader: Add error message when a tree-sitter.json file is invalid
+  * node: Support single-file executables via bun build --compile
+  * node: Update bindings when necessary
+  * Return LanguageRef in Parser::language
+  * bindings: Update CMakeLists.txt file
+  * cli: Pass all fields to tree-sitter.json in init
+  * cli: Use contains over is in warning
+  * cmake: Use current source dir for EXISTS check
+  * generate: Do not set the unit reduction symbol if it's in the extras array
+  * init: Use current path if unspecified
+  * init: Use camel name from config in missing spots
+  * lib: Simplify edge cases with zero-width tokens
+  * lib: Correctly fetch the node name in query errors
+  * loader: Don't print warnings if the file is not found
+  * loader: Improve language lookup speed
+  * bindings: Rename cmake test target
+  * Memory errors in wasm_store
+
+-------------------------------------------------------------------
 Thu Oct 10 10:32:11 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.24.3:

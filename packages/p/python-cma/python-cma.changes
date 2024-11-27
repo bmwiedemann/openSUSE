@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Nov 26 04:31:35 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.0.0:
+  * majorly improved mixed-integer handling based on a more concise lower
+    bound of variances and on so-called integer centering
+  * moved options and parameters code into a new file
+  * many small-ish fixes and improvements
+  * fix compatibility to numpy 2.0 (thanks to Sait Cakmak)
+  * improved interface to noise_handler argument which accepts True as value
+  * improved interface to ScaleCoordinates now also with lower and upper
+    value mapping to [0, 1], see issue #210
+  * changed: 'ftarget' triggers with <= instead of <
+  * assign surrogate attribute (for the record) when calling fmin_lq_surr
+  * various (minor) bug fixes
+  * various (small) improvements of the plots and their usability
+  * display iterations, evaluations and population size and termination
+    criteria in the plots
+  * subtract any recorded x from the plotted x-values by x_opt=index
+  * plots are now versus iteration number instead of evaluations by default
+  * provide legacy bbobbenchmarks without downloading
+  * new: CMADataLogger.zip allows sharing plotting data more easily by a
+    zip file
+  * new: tolxstagnation termination condition for when the incumbent
+    seems stuck
+  * new: collect restart terminations in cma.evalution_strategy.all_stoppings
+  * new: stall_sigma_change_on_divergence_iterations option to stall sigma
+    change when the median fitness is worsening
+  * new: limit active C update for integer variables
+  * new: provide a COCO single function
+- Remove upper bound on numpy.
+- Update URL.
+
+-------------------------------------------------------------------
 Fri Jul 12 07:13:44 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Restrict numpy to < 2.

@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Nov 26 06:14:13 UTC 2024 - madhankumar.chellamuthu@suse.com
+
+- Update to version 0.17.2:
+  * Use view transaction for metadata read
+  * http: fix etag cache scoping
+  * ci: test sandbox build with multiple platforms
+  * dockerfile: use lld linker for containerd build
+  * dockerd: skip content check with containerd snapshotter
+  * vendor: update containerd to v1.7.24
+  * vendor: update github.com/tonistiigi/fsutil to 31cf1f437184
+  * Remove pre-Go 1.17 build tags
+  * solver: release unreferenced cache keys after gc
+  * improve stacks of cancels from defers
+  * util/system: remove Atime implementation for containerd/continuity/fs
+  * vendor: github.com/containerd/continuity v0.4.5
+  * vendor: github.com/docker/cli v27.4.0-rc.2
+  * vendor: github.com/docker/docker v27.4.0-rc.2
+  * dockerfile: update runc binary to 1.2.2
+  * vendor: github.com/tonistiigi/go-actions-cache@v0.0.0-20241108014124-394979b8119e
+  * vendor: update grpc to v1.66.3
+  * docs: remove duplicate parser directives bullet list
+  * tests: add `testDockerfileFromHTTP` for WCOW
+  * protobuf: fix casing of json attributes with the switch from gogo
+  * history: handle gracefulstop when history is active
+  * contenthash: don't delete records when a directory is only modified
+  * build(deps): bump codecov/codecov-action from 4 to 5
+  * gateway: ensure llb digests are deterministic when sent by frontends
+  * detect: use newer semconv for resource and add unit test
+  * Dockerfile: update containerd binary to v2.0.0
+  * client: improve releasable condition in tests
+  * testutil: use containerd config version 2
+  * fix gc after delete history records
+  * Bump typeurl to 2.2.3
+  * fix leaving unreleased references behind after SBOM generation
+  * build(deps): bump softprops/action-gh-release from 2.0.9 to 2.1.0
+  * dockerfile: fix duplicate keys for same arg in history line
+  * detect: sever semconv relationship to otel sdk
+  * dockerfile: add delve to binaries-for-test
+
+-------------------------------------------------------------------
 Tue Nov 12 06:11:35 UTC 2024 - madhankumar.chellamuthu@suse.com
 
 - Update to version 0.17.1:

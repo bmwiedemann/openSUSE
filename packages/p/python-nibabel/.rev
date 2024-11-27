@@ -147,4 +147,41 @@
   * Use np.asarray() to support NumPy 2 as well.</comment>
     <requestid>1189472</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>56a9c5ba3a7bf79b423b0ea0a0c8a469</srcmd5>
+    <version>5.3.2</version>
+    <time>1732650959</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.3.2:
+  * New features
+    + Update NIfTI extension protocol to include .content : bytes, .text :
+      str and .json : dict properties for accessing extension contents.
+  * Enhancements
+    + Ability to read data from many multiframe DICOM files that previously
+      generated errors
+    + nib-nifti-dx now supports NIfTI-2 files with a --nifti2 flag
+    + Update nibabel.streamlines.tractogram to support ragged arrays.
+    + Improve error message for for dicomwrapper errors in shape
+      calculation
+    + Support &quot;flat&quot; ASCII-encoded GIFTI DataArrays
+  * Bug fixes
+    + Fix location initialization/update in OrthoSlicer3D for permuted axes
+    + Fix DICOM scaling, making frame filtering explicit
+    + Fixed multiframe DICOM issue where data could be flipped along slice
+      dimension relative to the affine
+    + Fixed multiframe DICOM issue where image_position and the translation
+      component in the affine could be incorrect
+  * Maintenance
+    + Numpy 2.0 compatibility and addressing deprecations in numpy API
+    + Python 3.13 compatibility
+    + Testing on Python 3.13 with free-threading
+    + Proactively address deprecations in coming Python versions
+    + Replace nose-era setup() and teardown() functions with pytest
+      equivalents
+  * API changes and deprecations
+    + Raise HeaderDataError from set_qform if the affine fails to
+      decompose. This would previously result in numpy.linalgLinAlgError.
+    + The nibabel.onetime.auto_attr module can be replaced by</comment>
+    <requestid>1226405</requestid>
+  </revision>
 </revisionlist>

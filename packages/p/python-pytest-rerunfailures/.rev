@@ -161,4 +161,18 @@
 - Skip some tests that have been broken by pytest 8.2.</comment>
     <requestid>1172300</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>da39a51bf3d09212c4c287992ddeb5d8</srcmd5>
+    <version>15.0</version>
+    <time>1732650922</time>
+    <user>anag+factory</user>
+    <comment>- update to 15.0:
+  * Drop support for Python 3.8.
+  * Drop support for pytest &lt; 7.4.
+  * Fix compatibility with pytest 8.2.
+  * Add support for pytest 8.2, 8.3.
+  * Add --fail-on-flaky option to fail the test run with custom
+    exit code when test passed on rerun.</comment>
+    <requestid>1226221</requestid>
+  </revision>
 </revisionlist>

@@ -16,11 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-beniget
-Version:        0.4.2
+Version:        0.4.2.post1
 Release:        0
 Summary:        Module to extract semantic information about static Python code
 License:        BSD-3-Clause

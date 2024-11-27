@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov 25 20:12:27 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.2:
+  * WelcomeView: Fix missing handler when a row activated
+  * Updated translations
+- update to 8.0.1:
+  * AbstractOnboardingView: replace skip all with back on non-welcome
+  * WelcomeView: copy links redesign from Settings
+  * Update onboarding.metainfo.xml.in
+
+-------------------------------------------------------------------
 Fri Nov  1 21:08:33 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - rename to pantheon-onboarding

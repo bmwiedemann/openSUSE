@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Nov 26 04:06:23 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.47.1.0
+  * Features
+    ~ sqlite
+      + upgrade to sqlite 3.47.1 (67d28cb)
+  * Fixes
+    ~ possible StringIndexOutOfBoundsException in ExtendedCommand
+      (2fdb1e9), closes #1141
+    ~ update module-info.java to make org.slf4j static requirement
+      (81b05ec)
+  * Build
+    ~ deps
+      + bump org.codehaus.mojo:versions-maven-plugin (da8596c)
+      + bump org.apache.maven.plugins:maven-javadoc-plugin
+        (6e4c691)
+      + bump org.jreleaser:jreleaser-maven-plugin (9f354be)
+      + bump surefire.version from 3.5.1 to 3.5.2 (aa92c59)
+  * Documentation
+    ~ add supported API level for Android (4a41998), closes #1204
+
+-------------------------------------------------------------------
 Wed Oct 23 11:05:29 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v3.47.0.0

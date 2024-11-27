@@ -286,7 +286,7 @@ the execution time of each script.
      libxl__xswait_callback *callback;
      /* remaining fields are private to xswait */
      libxl__ev_time time_ev;
-@@ -2704,6 +2706,7 @@ struct libxl__async_exec_state {
+@@ -2703,6 +2705,7 @@ struct libxl__async_exec_state {
      char **args; /* execution arguments */
      char **env; /* execution environment */
  
@@ -294,7 +294,7 @@ the execution time of each script.
      /* private */
      libxl__ev_time time;
      libxl__ev_child child;
-@@ -4893,6 +4896,9 @@ _hidden int userlookup_helper_getpwuid(l
+@@ -4892,6 +4895,9 @@ _hidden int userlookup_helper_getpwuid(l
  
  #endif
  

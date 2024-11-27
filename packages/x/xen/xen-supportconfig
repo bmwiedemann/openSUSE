@@ -60,11 +60,15 @@ conf_files $OF "$XEN_CONF_FILES"
 log_cmd $OF "xl list --long"
 log_cmd $OF "xl dmesg"
 # network-related info often useful for debugging
-if [ systemctl is-enabled NetworkManager.service 2>&1 > /dev/null ]; then
+if systemctl is-enabled NetworkManager.service &> /dev/null ; then
     log_write $OF "NOTE: NetworkManager should not be enabled on a Xen host"
 fi
-log_cmd $OF "route -n"
-log_cmd $OF "arp -v"
+for proto in '-4' '-6'
+do
+    log_cmd $OF "ip $proto neighbor show"
+    log_cmd $OF "ip $proto route show"
+    log_cmd $OF "ip $proto address show"
+done
 log_cmd $OF "ip link show type bridge"
 log_cmd $OF "bridge link show"
 # list contents of common config and image directories

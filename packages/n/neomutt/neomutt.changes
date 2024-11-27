@@ -1,4 +1,115 @@
 -------------------------------------------------------------------
+Fri Nov 15 15:53:09 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 20241114:
+  - Security
+    * Fixed: CVE-2024-49393
+    * Fixed: CVE-2024-49394
+    * Read the protected Message-ID
+  - Features
+    * Allow toggling numeric configs, e.g. :toggle pager_index_lines
+    * alias: tag/untag pattern
+    * query: tag with <space>
+  - Contrib
+    * mutt_oauth2.py: Fix reference to client_secret
+  - Bug Fixes
+    * fix duplicate save-hook
+    * expando: fix escaping
+    * browser: fix enter-quit-enter
+    * pager: fix repaint
+    * config: warn about deprecated variables
+    * Refresh alias/query dialog on alias/query format change
+    * compose: fix redraw on attachment
+    * compose: fix search with arrow_cursor
+    * autocrypt: fix copy_normalize_addr()
+    * alias: fix cli crash
+    * expando: fix relative dates
+    * expando: padding default to space
+  - Translations
+    * 100% German
+    * 100% Turkish
+    * 99% Czech
+    * 99% Slovak
+    * 82% French
+  - Docs
+    * drop refs to always-enabled features
+    * fix typo in unmacro
+    * fix broken link
+    * ncrypt: fix typo in config.c
+  - Code
+    * Create memory alloc wrappers
+    * Don't return the result of realpath() on failure
+    * Fix memory leak in hcache
+    * Lots of expando refactoring
+    * fix type of PatternFlags.tag
+    * tidy: smime_get_key_by_str()
+
+-------------------------------------------------------------------
+Fri Nov 15 15:42:41 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 20241002:
+  - Security
+    * security: kill unnecessary blank lines
+    * more security improvements
+    * improve NeoMutt bailout handling
+  - Features
+    * remove mixmaster
+    * honour umask in attach save
+  - Bug Fixes
+    * do not force username in addition to client certificate
+    * Fix '%z' and '%Z in '%{...}' expando
+    * Allow longer maildir filename suffixes
+    * Don't force mbox stats calculations on startup
+    * Fix sorting INBOX and its subfolders
+    * Let ~Y match each tag individually
+    * ignore macro events during autocrypt initialization
+    * Generate the Message-ID earlier
+    * compose: fix $compose_confirm_detach_first
+  - Changed Config
+    * set crypt_encryption_info = yes
+    * Add an informative block with details about the encryption
+    * set crypt_protected_headers_weed = no
+    * Controls wether NeoMutt will weed protected header fields
+    * set devel_security = no
+    * Devel feature: Security
+    * $mixmaster is deprecated
+    * $mix_entry_format is deprecated
+  - Translations
+    * 100% German
+    * 100% Lithuanian
+    * 100% Serbian
+    * 100% Spanish
+    * 81% French
+  - Docs
+    * Fix configure script name in INSTALL.md
+    * fix para ordering
+  - Build
+    * Update autosetup
+    * Update acutest to the latest upstream commit
+    * don't treat stddef.h specially
+    * Add -std to CFLAGS too
+    * require C11
+    * Support BerkeleyDB 18.1
+    * Assume 'struct timespec' exists
+    * fix idn2 typo
+  - Code
+    * Close the hcache handle on failure to open the store
+    * upgrade assert()
+    * mutt/list.c: Use STAILQ_FOREACH_SAFE() in stailq deallocators
+    * Use wmem*() functions with wide-character strings
+    * ncrypt/crypt.c: Fix allocation size calculation
+    * remove mutt_expand_path()
+    * fix -Wdouble-promotion warnings
+    * scanf: initialise out-vars
+    * Allow opening the header cache in non-O_CREAT mode
+    * Fix function pointer types
+    * Check mutt_date_parse_date()s return value
+    * Fix up slashes in imap_fix_path()
+    * Fix padding with an empty string
+    * tidy expando library
+- Remove --mixmaster configure flag, dropped by upstream
+
+-------------------------------------------------------------------
 Thu May  9 00:00:00 CEST 2024 - mkoutny@suse.com
 
 - Recommend at least one SASL module to prevent "No authenticators avaliable"

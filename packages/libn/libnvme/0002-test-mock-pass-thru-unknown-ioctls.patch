@@ -1,0 +1,81 @@
+From 3ea902f4c8b5a1896bb4087e95c9a90614ef2d9b Mon Sep 17 00:00:00 2001
+From: Daniel Wagner <wagi@kernel.org>
+Date: Mon, 25 Nov 2024 13:48:37 +0100
+Subject: [PATCH] test/mock: pass thru unknown ioctls
+
+On s390, tests which use the mock infrastructure fail, because all
+unhandled ioctl are considered as fail. The tests issue kvm related
+ioctls (0x7a). No need to fail or intercept them, just pass them thru to
+the real ioctl.
+
+Signed-off-by: Daniel Wagner <wagi@kernel.org>
+---
+ test/ioctl/mock.c | 21 ++++++++++++++++-----
+ 1 file changed, 16 insertions(+), 5 deletions(-)
+
+diff --git a/test/ioctl/mock.c b/test/ioctl/mock.c
+index 1fb3ec1f9b07..14f6e71bdde0 100644
+--- a/test/ioctl/mock.c
++++ b/test/ioctl/mock.c
+@@ -7,6 +7,7 @@
+ #include <stdarg.h>
+ #include <string.h>
+ #include <sys/ioctl.h>
++#include <dlfcn.h>
+ 
+ #include "../../src/nvme/ioctl.h"
+ #include "util.h"
+@@ -118,18 +119,20 @@ void end_mock_cmds(void)
+ })
+ 
+ #ifdef HAVE_GLIBC_IOCTL
++typedef int (*ioctl_func_t)(int, unsigned long, void *);
+ int ioctl(int fd, unsigned long request, ...)
+ #else
++typedef int (*ioctl_func_t)(int, int, void *);
+ int ioctl(int fd, int request, ...)
+ #endif
+ {
++	ioctl_func_t real_ioctl = NULL;
+ 	struct mock_cmds *mock_cmds;
+ 	bool result64;
+ 	const struct mock_cmd *mock_cmd;
+ 	va_list args;
+ 	void *cmd;
+ 
+-	check(fd == mock_fd, "got fd %d, expected %d", fd, mock_fd);
+ 	switch (request) {
+ 	case NVME_IOCTL_ADMIN_CMD:
+ 		mock_cmds = &mock_admin_cmds;
+@@ -148,16 +151,24 @@ int ioctl(int fd, int request, ...)
+ 		result64 = true;
+ 		break;
+ 	default:
+-		fail("unexpected %s %lu", __func__, (unsigned long) request);
++		real_ioctl = dlsym(RTLD_NEXT, "ioctl");
++		if (!real_ioctl)
++			fail("Error: dlsym failed to find original ioctl\n");
+ 	}
++
++	va_start(args, request);
++	cmd = va_arg(args, void *);
++	va_end(args);
++
++	if (real_ioctl)
++		return real_ioctl(fd, request, cmd);
++
++	check(fd == mock_fd, "got fd %d, expected %d", fd, mock_fd);
+ 	check(mock_cmds->remaining_cmds,
+ 	      "unexpected %s command", mock_cmds->name);
+ 	mock_cmd = mock_cmds->cmds++;
+ 	mock_cmds->remaining_cmds--;
+ 
+-	va_start(args, request);
+-	cmd = va_arg(args, void *);
+-	va_end(args);
+ 	if (result64) {
+ 		execute_ioctl((struct nvme_passthru_cmd64 *)cmd, mock_cmd);
+ 	} else {
+-- 
+2.47.0
+
