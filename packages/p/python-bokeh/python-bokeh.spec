@@ -30,22 +30,23 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-bokeh%{psuffix}
-Version:        3.5.2
+Version:        3.6.1
 Release:        0
 Summary:        Interactive plots and applications in the browser from Python
 License:        BSD-3-Clause
 URL:            https://bokeh.org/
 # Source-URL:    https://github.com/bokeh/bokeh/
-# for the precompiled JS files
+# PyPI sdist for the precompiled JS files
+# in order to build the JS on our own, need to resolve gh#openSUSE/obs-service-node_modules#43
 Source0:        https://files.pythonhosted.org/packages/source/b/bokeh/bokeh-%{version}.tar.gz
-# for the tests
+# Github repo for the tests
 Source1:        https://github.com/bokeh/bokeh/archive/refs/tags/%{version}.tar.gz#/bokeh-%{version}-gh.tar.gz
 # Only present in the GH tarball, not extracted during non-test builds
 Source2:        https://raw.githubusercontent.com/bokeh/bokeh/%{version}/docs/CHANGELOG
 BuildRequires:  %{python_module Jinja2 >= 2.9}
 BuildRequires:  %{python_module Pillow >= 7.1.0}
 BuildRequires:  %{python_module PyYAML >= 3.10}
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module colorama}
 BuildRequires:  %{python_module contourpy >= 1.2}
 BuildRequires:  %{python_module numpy >= 1.16}
@@ -62,7 +63,6 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2 >= 2.9
 Requires:       python-Pillow >= 7.1.0
 Requires:       python-PyYAML >= 3.10
-Requires:       python-base >= 3.8
 Requires:       python-contourpy >= 1.2
 Requires:       python-numpy >= 1.16
 Requires:       python-packaging >= 16.8

@@ -443,4 +443,41 @@
     <comment></comment>
     <requestid>1203532</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>c813be80789e9b8e17a42411308758ff</srcmd5>
+    <version>3.6.1</version>
+    <time>1732742147</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.6.1
+  ## bugfixes:
+  * #14082 [BUG] p.circle(..) can't be added as renderer to
+    PointDrawTool since 3.6
+  * #14090 [component: bokehjs] [BUG] Google Chrome 130 fails to
+    draw figure, throws `TypeError: Failed to execute 'fill' on
+    'CanvasRenderingContext2D'`
+  * #14107 [component: bokehjs] [BUG] Loss of mobile touch
+    scrolling with update to Bokeh 3.6.0
+   ## tasks:
+  * #14096 Backports for 3.6.1
+- Release 3.6.0
+  ## bugfixes:
+  * #4951 ModelExtensions - all resources from a whole module are
+    loaded
+  * #7524 GroupFilter only accepts strings
+  * #13827 [component: bokehjs] [BUG] Lack of range expansion when
+    there remains unbounded directions, even when
+    `maintain_focus=False`
+  * #13886 [component: bokehjs] [BUG] NPM package has types
+    (*.d.ts) in incorrect location
+  * #13957 [component: bokehjs] Explicit selection glyph example
+    broken
+  * #13959 [BUG] Reset Tool Error in Bokeh Gridplot with Single
+    Plot
+  * #13964 [component: bokehjs] [BUG] page won't render if CustomJS
+    args has a dict with key &quot;constructor&quot;
+  * #13965 [component: bokehjs] [BUG] CategoricalSlider shows
+    ‘undefined’ value and skip that value
+  * #13972 BOKEH_MINIFIED not working</comment>
+    <requestid>1226944</requestid>
+  </revision>
 </revisionlist>
