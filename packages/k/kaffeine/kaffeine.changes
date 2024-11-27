@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 20 12:31:08 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Stop using the %suse_update_desktop_file macro
+
+-------------------------------------------------------------------
 Thu Jun 01 07:05:39 UTC 2023 - christophe@krop.fr
 
 - Kaffeine is unmaintained upstream but still has users. Switch to

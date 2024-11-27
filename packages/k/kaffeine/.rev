@@ -594,4 +594,12 @@ not do any harm, as the one for amarok has the same entry, I will this. (forward
 - Spec cleanup</comment>
     <requestid>1090182</requestid>
   </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>f334a88eec14aaed5e2079efc3629d74</srcmd5>
+    <version>2.0.18git.20230531T022124~afc6c12</version>
+    <time>1732742107</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1226904</requestid>
+  </revision>
 </revisionlist>

@@ -28,7 +28,6 @@ Patch0:         kaffeine-fixsplitter.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5DocTools)
@@ -73,9 +72,6 @@ playing their movies: from DVD (including DVD menus, titles, chapters, etc.), VC
 %find_lang %{name}
 
 %{kf5_find_htmldocs}
-
-# place desktop entry in video and tv
-%suse_update_desktop_file -r org.kde.%{name} Qt KDE AudioVideo Video Player TV
 
 %files
 %license COPYING
