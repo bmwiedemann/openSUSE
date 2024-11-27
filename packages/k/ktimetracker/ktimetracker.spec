@@ -1,7 +1,7 @@
 #
 # spec file for package ktimetracker
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +22,9 @@ Version:        5.0.1
 Release:        0
 Summary:        Personal Time Tracker
 License:        GPL-2.0-or-later
-Group:          Productivity/Other
-URL:            https://userbase.kde.org/KTimeTracker
+URL:            https://apps.kde.org/ktimetracker
 Source0:        https://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.xz
 BuildRequires:  extra-cmake-modules
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5CalendarCore)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
@@ -51,20 +49,18 @@ KTimeTracker tracks time spent on various tasks.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
-%make_jobs
+
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
-%suse_update_desktop_file -r org.kde.ktimetracker Qt KDE Utility X-KDE-Utilities-PIM TimeUtility
 
-%if %{with lang}
 %find_lang %{name}
 %{kf5_find_htmldocs}
-%endif
 
 %files
 %license COPYING COPYING.DOC
@@ -76,9 +72,7 @@ KTimeTracker tracks time spent on various tasks.
 %{_kf5_dbusinterfacesdir}/org.kde.ktimetracker.ktimetracker.xml
 %{_kf5_iconsdir}/hicolor/*/apps/ktimetracker.png
 
-%if %{with lang}
 %files lang -f %{name}.lang
 %license COPYING COPYING.DOC
-%endif
 
 %changelog
