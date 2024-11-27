@@ -2075,4 +2075,17 @@
     <user>dimstar_suse</user>
     <comment>- list-common: drop xf86-video-fbdev: driver has neen dropped.t</comment>
   </revision>
+  <revision rev="262" vrev="262">
+    <srcmd5>bd9ae1036e2ac6eb3b22a6f71cd2ec9d</srcmd5>
+    <version>unknown</version>
+    <time>1732700099</time>
+    <user>dimstar_suse</user>
+    <comment>- Ignore feh, as recommended by xdm. None of our live images really
+  use XDM as the DM, we merely rely on the scrips/wrapper code
+  there. So not having feh to paint the background image won't harm
+  us.
+
+- list-common: drop xf86-video-fbdev: driver has neen dropped. (forwarded request 1226834 from dimstar)</comment>
+    <requestid>1226838</requestid>
+  </revision>
 </revisionlist>

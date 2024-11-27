@@ -159,6 +159,8 @@
     <ignore name="busybox-static"/>
     <!-- OBS-IgnorePackage: inxi -->
     <ignore name="inxi"/>
+    <!-- OBS-IgnorePackage: feh -->
+    <ignore name="feh"/>
     <!-- OBS-IgnorePackage: sane-backends -->
     <ignore name="sane-backends"/>
     <package name="branding-openSUSE"/>

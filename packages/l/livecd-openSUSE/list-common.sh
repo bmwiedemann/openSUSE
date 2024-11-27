@@ -49,6 +49,7 @@ buildignore netpbm
 buildignore p7zip-full
 buildignore busybox-static
 buildignore inxi
+buildignore feh
 
 # Just too big
 buildignore sane-backends
