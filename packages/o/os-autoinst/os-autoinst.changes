@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 26 09:55:46 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1732614935.3535e6c:
+  * Remove obsolete amt backend
+  * Make actually use of `%python_support_requires` for Python support
+  * snd2png: Clamping fix
+  * backend: Allow to configure IPMI options
+  * Add sshIucvconn to fully_covered of the codecov
+
+-------------------------------------------------------------------
 Thu Nov 14 19:27:32 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1731418769.97d9a7f:
