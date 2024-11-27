@@ -68,7 +68,6 @@ BuildRequires:  libtiff-devel
 BuildRequires:  openjpeg2-devel
 BuildRequires:  perl
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  zlib-devel
 BuildRequires:  cmake(Immer)
 BuildRequires:  cmake(KF5Completion)
@@ -147,8 +146,6 @@ Development headers and libraries for Krita.
 
 %install
 %kf5_makeinstall -C build
-
-%suse_update_desktop_file -r org.kde.krita Qt KDE Graphics RasterGraphics
 
 %find_lang %{name}
 
