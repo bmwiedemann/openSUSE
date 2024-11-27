@@ -35,7 +35,6 @@ BuildRequires:  extra-cmake-modules >= 5.68.0
 BuildRequires:  fdupes
 BuildRequires:  libacl-devel
 BuildRequires:  libattr-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Bookmarks)
 BuildRequires:  cmake(KF5Codecs)
@@ -95,6 +94,7 @@ This package contains the krusader documentation.
 
 %build
 %cmake_kf5 -d build
+
 %cmake_build
 
 %install
@@ -105,8 +105,6 @@ This package contains the krusader documentation.
 mkdir -p %{buildroot}%{_kf5_servicesdir}/ServiceMenus/
 cp %{SOURCE3} %{buildroot}%{_kf5_servicesdir}/ServiceMenus/
 cp %{SOURCE4} %{buildroot}%{_kf5_applicationsdir}/
-
-%suse_update_desktop_file org.kde.krusader.root-mode FileManager Utility
 
 %fdupes %{buildroot}
 
