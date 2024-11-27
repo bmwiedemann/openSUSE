@@ -1,7 +1,7 @@
 #
 # spec file for package kdesvn
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,40 +21,38 @@ Version:        2.1.0
 Release:        0
 Summary:        KDE Subversion Client
 License:        GPL-2.0-or-later
-Group:          Development/Tools/Version Control
-URL:            https://userbase.kde.org/Kdesvn
+URL:            https://apps.kde.org/kdesvn
 Source:         https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
-BuildRequires:  kbookmarks-devel
-BuildRequires:  kcodecs-devel
-BuildRequires:  kcompletion-devel
-BuildRequires:  kconfig-devel
-BuildRequires:  kconfigwidgets-devel
-BuildRequires:  kcoreaddons-devel
-BuildRequires:  kdbusaddons-devel
-BuildRequires:  kdoctools-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  kiconthemes-devel
-BuildRequires:  kio-devel
-BuildRequires:  kitemviews-devel
-BuildRequires:  kjobwidgets-devel
-BuildRequires:  knotifications-devel
-BuildRequires:  kparts-devel
-BuildRequires:  kservice-devel
-BuildRequires:  ktextwidgets-devel
-BuildRequires:  kwallet-devel
-BuildRequires:  kwidgetsaddons-devel
-BuildRequires:  kxmlgui-devel
-BuildRequires:  pkgconfig
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  subversion-devel
-BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Sql)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  cmake(KF5Bookmarks)
+BuildRequires:  cmake(KF5Codecs)
+BuildRequires:  cmake(KF5Completion)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5ItemViews)
+BuildRequires:  cmake(KF5JobWidgets)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Notifications)
+BuildRequires:  cmake(KF5Parts)
+BuildRequires:  cmake(KF5Service)
+BuildRequires:  cmake(KF5TextWidgets)
+BuildRequires:  cmake(KF5Wallet)
+BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5Sql)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5Xml)
 # needed for the database
 Requires:       libQt5Sql5-sqlite
 Provides:       kde4-kdesvn = %{version}
@@ -69,21 +67,20 @@ kdesvn is a GUI client for subversion repositories.
 
 %build
   %cmake_kf5 -d build
-  %make_jobs
+  %cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %suse_update_desktop_file -G "SVN Client" org.kde.kdesvn Development RevisionControl
-  %find_lang %{name} --all-name --with-man
-  %kf5_find_htmldocs
-  %fdupes -s %{buildroot}%{_datadir}
+%kf5_makeinstall -C build
+
+%find_lang %{name} --all-name --with-man
+
+%{kf5_find_htmldocs}
+
+%fdupes %{buildroot}%{_datadir}
 
 %files -f %{name}.lang
 %license COPYING COPYING.OpenSSL
 %doc AUTHORS ChangeLog
-%dir %{_kf5_iconsdir}/hicolor/96x96
-%dir %{_kf5_iconsdir}/hicolor/96x96/actions
-%dir %{_kf5_iconsdir}/hicolor/96x96/places
 %doc %lang(en) %{_kf5_htmldir}/en/kdesvn/
 %doc %lang(en) %{_kf5_mandir}/man1/kdesvn.1%{?ext_man}
 %doc %lang(en) %{_kf5_mandir}/man1/kdesvnaskpass.1%{?ext_man}

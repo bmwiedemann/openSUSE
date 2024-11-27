@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov 20 12:42:22 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Stop using the %suse_update_desktop_file macro
+- Spec cleanup
+
+-------------------------------------------------------------------
+Thu Aug 27 08:58:02 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Spec cleanup
+
+-------------------------------------------------------------------
 Wed Jul 17 12:10:54 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Fix the libqt5-sqlite requirement.
