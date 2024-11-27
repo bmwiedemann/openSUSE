@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 20 15:47:19 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Stop using the %suse_update_desktop_file macro
+- Spec cleanup
+
+-------------------------------------------------------------------
 Sun Jun 12 11:14:29 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 0.12.15:

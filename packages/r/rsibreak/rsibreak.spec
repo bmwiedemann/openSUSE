@@ -1,7 +1,7 @@
 #
 # spec file for package rsibreak
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,6 @@ Version:        0.12.15
 Release:        0
 Summary:        Repetetive Strain Injury recovery and prevention assistance utility
 License:        GPL-2.0-or-later
-Group:          Productivity/Other
 URL:            https://apps.kde.org/rsibreak
 Source0:        https://download.kde.org/stable/rsibreak/%{base_ver}/rsibreak-%{version}.tar.xz
 %if %{with released}
@@ -32,7 +31,6 @@ Source2:        rsibreak.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 5.79.0
 BuildRequires:  fdupes
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5Crash)
@@ -48,11 +46,8 @@ BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5DBus) >= 5.10.0
 BuildRequires:  cmake(Qt5Test) >= 5.10.0
 Requires:       hicolor-icon-theme
-Recommends:     %{name}-lang = %{version}
-Obsoletes:      %{name}-doc < %{version}
-# REMOVE AFTER Leap 42.1 is out of scope
-Provides:       kde4-rsibreak = %{version}
-Obsoletes:      kde4-rsibreak < %{version}
+Recommends:     rsibreak-lang = %{version}
+Obsoletes:      rsibreak-doc < %{version}
 
 %description
 Repetitive Strain Injury is an illness which can occur as a result of
@@ -70,16 +65,14 @@ you to take a break now and then.
 
 %install
 %kf5_makeinstall -C build
-%suse_update_desktop_file -G "RSI Prevention" org.kde.rsibreak Qt KDE TimeUtility
-%if %{with released}
-%find_lang %{name} --all-name
-%{kf5_find_htmldocs}
-%endif
-%fdupes -s %{buildroot}%{_kf5_sharedir}
 
-%if %{with released}
+%find_lang %{name} --all-name
+
+%{kf5_find_htmldocs}
+
+%fdupes %{buildroot}%{_kf5_sharedir}
+
 %files lang -f %{name}.lang
-%endif
 
 %files
 %license LICENSES/*
