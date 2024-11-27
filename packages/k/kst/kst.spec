@@ -37,7 +37,6 @@ BuildRequires:  libqt5-linguist
 BuildRequires:  netcdf-devel
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Network)
@@ -90,11 +89,12 @@ EXTRA_FLAGS="-Dkst_install_prefix=%{_prefix} \
              -Dkst_qt5=1"
 
 %cmake $EXTRA_FLAGS
+
 %cmake_build
 
 %install
 %cmake_install
-%suse_update_desktop_file -r kst2 Qt KDE Science Math
+
 %fdupes %{buildroot}
 
 %ldconfig_scriptlets
