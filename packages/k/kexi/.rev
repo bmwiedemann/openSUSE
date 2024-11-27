@@ -199,4 +199,12 @@ Similar to SR#785407 in kdb, but I decided to omit the %if completely as 15.1 is
     <comment>- Use BuildRequires/Requires: breeze5-icons-rcc for Leap 15.4</comment>
     <requestid>963906</requestid>
   </revision>
+  <revision rev="14" vrev="9">
+    <srcmd5>e302881f93033a59d954e15a042568d4</srcmd5>
+    <version>3.2.0</version>
+    <time>1732742154</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1226955</requestid>
+  </revision>
 </revisionlist>
