@@ -41,7 +41,6 @@ BuildRequires:  freetype2-devel
 BuildRequires:  libexiv2-devel
 BuildRequires:  libpodofo-devel
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Completion)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5CoreAddons)
@@ -74,11 +73,11 @@ rm src/modeltest.*
 
 %build
 %cmake_kf5 -d build
+
 %cmake_build
 
 %install
 %kf5_makeinstall -C build
-%suse_update_desktop_file -r -G "Batch File Renamer" org.kde.krename Qt KDE System FileManager
 
 %find_lang %{name}
 
