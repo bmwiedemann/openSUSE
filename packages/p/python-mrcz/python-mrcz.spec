@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mrcz
-Version:        0.5.6
+Version:        0.5.7
 Release:        0
 Summary:        MRCZ meta-compressed image file-format library
 License:        BSD-3-Clause
@@ -26,6 +26,8 @@ URL:            https://github.com/em-MRCZ/python-mrcz
 Source:         https://github.com/em-MRCZ/python-mrcz/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/em-MRCZ/python-mrcz/pull/15 Numpy 2.0 and deprecation fixes
 Patch:          numpy2.patch
+# PATCH-FIX-UPSTREAM https://github.com/em-MRCZ/python-mrcz/pull/16 Remove distutils / support python >=3.12
+Patch:          new-pythons.patch
 BuildRequires:  %{python_module blosc}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
@@ -36,14 +38,6 @@ BuildRequires:  python-rpm-macros
 Requires:       python-numpy
 Recommends:     python-blosc
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python-enum34
-BuildRequires:  python-futures
-%endif
-%ifpython2
-Requires:       python-enum34
-Requires:       python-futures
-%endif
 %python_subpackages
 
 %description

@@ -1,0 +1,67 @@
+From ce031b069262cfd1a21c76bf2d54f7bf31a178c6 Mon Sep 17 00:00:00 2001
+From: Eric Prestat <eric.prestat@gmail.com>
+Date: Sun, 13 Oct 2024 11:21:06 +0100
+Subject: [PATCH 1/2] Remove use of distutils, use packaging library instead
+
+---
+ mrcz/ioMRC.py                 | 8 ++++----
+ requirements.txt              | 1 +
+ utils/update_mrcz_to_0.5.0.py | 1 -
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/utils/update_mrcz_to_0.5.0.py b/utils/update_mrcz_to_0.5.0.py
+index ba84d2b..515bd01 100644
+--- a/utils/update_mrcz_to_0.5.0.py
++++ b/utils/update_mrcz_to_0.5.0.py
+@@ -1,7 +1,6 @@
+ import glob, sys, os, os.path as path
+ import numpy as np
+ import mrcz
+-from distutils.version import StrictVersion
+ import shutil
+ 
+ args = sys.argv
+
+From 6c196f6602a50f14545c197234e0b8fdd7711e0f Mon Sep 17 00:00:00 2001
+From: Eric Prestat <eric.prestat@gmail.com>
+Date: Sun, 13 Oct 2024 11:57:13 +0100
+Subject: [PATCH 2/2] Fix deprecated `unittest.makeSuite` and explicitly list
+ python supported version
+
+---
+ mrcz/test_mrcz.py | 4 ++--
+ setup.py          | 5 +++++
+ 2 files changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/mrcz/test_mrcz.py b/mrcz/test_mrcz.py
+index d76f5fa..fe58e38 100644
+--- a/mrcz/test_mrcz.py
++++ b/mrcz/test_mrcz.py
+@@ -573,9 +573,9 @@ def test(verbosity=2):
+     
+     theSuite = unittest.TestSuite()
+ 
+-    theSuite.addTest(unittest.makeSuite(PythonMrczTests))
++    theSuite.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(PythonMrczTests))
+     if cmrczProg is not None:
+-        theSuite.addTest(unittest.makeSuite(PythonToCMrczTests))
++        theSuite.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(PythonToCMrczTests))
+ 
+     test_result = unittest.TextTestRunner(verbosity=verbosity).run(theSuite)
+     return test_result
+diff --git a/setup.py b/setup.py
+index ebda8b3..47914a7 100644
+--- a/setup.py
++++ b/setup.py
+@@ -62,6 +62,11 @@ def exit_with_error(message):
+ Programming Language :: Python :: 3.6
+ Programming Language :: Python :: 3.7
+ Programming Language :: Python :: 3.8
++Programming Language :: Python :: 3.9
++Programming Language :: Python :: 3.10
++Programming Language :: Python :: 3.11
++Programming Language :: Python :: 3.12
++Programming Language :: Python :: 3.13
+ Topic :: Software Development :: Libraries :: Python Modules
+ Topic :: System :: Archiving :: Compression
+ Operating System :: Microsoft :: Windows

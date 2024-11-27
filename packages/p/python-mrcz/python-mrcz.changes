@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 27 11:40:39 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.5.7
+  * Renamed np.product to np.prod as the old name is deprecated in NumPy 2.0.
+- Add patch new-pythons.patch to fix build with Python 3.13
+- Python 2 can be finally gone
+
+-------------------------------------------------------------------
 Mon Sep  9 13:39:13 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Add patch numpy2.patch to fix build with the new numpy
