@@ -347,6 +347,7 @@
     <package name="discover6-backend-packagekit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="discover6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="discover6-notifier" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="displaymanager-sysconfig" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="distribution-logos-openSUSE-Aeon" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_basis -->
     <package name="distribution-logos-openSUSE-Tumbleweed" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="distribution-logos-openSUSE-icons" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->

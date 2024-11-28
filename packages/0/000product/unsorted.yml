@@ -862,6 +862,10 @@ unsorted:
   - arch-install-scripts 
   - archivemount 
   - ardour 
+  - argocd-autopilot 
+  - argocd-autopilot-bash-completion 
+  - argocd-autopilot-fish-completion 
+  - argocd-autopilot-zsh-completion 
   - argocd-cli 
   - argocd-cli-bash-completion 
   - argocd-cli-zsh-completion 
@@ -2291,6 +2295,7 @@ unsorted:
   - clipman 
   - clipped 
   - clipped-lang 
+  - clipscreen 
   - cliquer 
   - cliquer-devel 
   - clisp 
@@ -9075,6 +9080,7 @@ unsorted:
   - intel-gpu-tools-devel 
   - intel-hybrid-driver 
   - intel-ipsec-mb-devel 
+  - intel-lpmd 
   - intel-media-driver 
   - intel-one-mono-fonts 
   - intel-opencl 
@@ -15917,7 +15923,7 @@ unsorted:
   - libraw1394-devel-32bit 
   - libraw1394-tools 
   - libraw23-32bit 
-  - libraylib450 
+  - libraylib550 
   - librbd-devel 
   - librbio4 
   - librbl1 
@@ -15930,7 +15936,7 @@ unsorted:
   - librdmacm-utils 
   - librdmacm1-32bit 
   - libre2-11 
-  - libre27 
+  - libre28 
   - libreadline-java 
   - libreadline-java-javadoc 
   - libreadline5 
@@ -16244,7 +16250,7 @@ unsorted:
   - libseccomp-devel 
   - libseccomp-tools 
   - libseccomp2-32bit 
-  - libsecp256k1-2 
+  - libsecp256k1-5 
   - libsecp256k1-devel 
   - libsecprog-devel 
   - libsecprog0 
@@ -17398,22 +17404,22 @@ unsorted:
   - libxml2-doc 
   - libxmlb-devel 
   - libxmlbird1 
-  - libxmlrpc++8 
+  - libxmlrpc++9 
   - libxmlrpc3 
-  - libxmlrpc_abyss++8 
+  - libxmlrpc_abyss++9 
   - libxmlrpc_abyss3 
-  - libxmlrpc_client++8 
+  - libxmlrpc_client++9 
   - libxmlrpc_client3 
-  - libxmlrpc_cpp8 
-  - libxmlrpc_packetsocket8 
-  - libxmlrpc_server++8 
+  - libxmlrpc_cpp9 
+  - libxmlrpc_packetsocket9 
+  - libxmlrpc_server++9 
   - libxmlrpc_server3 
-  - libxmlrpc_server_abyss++8 
+  - libxmlrpc_server_abyss++9 
   - libxmlrpc_server_abyss3 
-  - libxmlrpc_server_cgi++8 
+  - libxmlrpc_server_cgi++9 
   - libxmlrpc_server_cgi3 
-  - libxmlrpc_server_pstream++8 
-  - libxmlrpc_util++8 
+  - libxmlrpc_server_pstream++9 
+  - libxmlrpc_util++9 
   - libxmlrpc_util4 
   - libxmlsec1-gcrypt1 
   - libxmlsec1-gnutls1 
@@ -19894,6 +19900,7 @@ unsorted:
   - netty-poms 
   - netty-tcnative 
   - netty-tcnative-javadoc 
+  - netty-tcnative-openssl-dynamic 
   - netty3 
   - netty3-javadoc 
   - network-autoconfig 
@@ -21421,6 +21428,7 @@ unsorted:
   - pcsc-asedriveiiie-serial 
   - pcsc-ccid 
   - pcsc-eco5000 
+  - pcsc-eco5000-devel 
   - pcsc-lite-devel 
   - pcsc-lite-devel-32bit 
   - pcsc-reflex60 
@@ -23643,6 +23651,8 @@ unsorted:
   - prometheus-sap_host_exporter 
   - prometheus-saptune_exporter 
   - prometheus-simpleclient-java 
+  - prometheus-simpleclient-java-bom 
+  - prometheus-simpleclient-java-caffeine 
   - prometheus-simpleclient-java-common 
   - prometheus-simpleclient-java-graphite_bridge 
   - prometheus-simpleclient-java-guava 
@@ -23657,6 +23667,10 @@ unsorted:
   - prometheus-simpleclient-java-parent 
   - prometheus-simpleclient-java-pushgateway 
   - prometheus-simpleclient-java-servlet 
+  - prometheus-simpleclient-java-servlet-common 
+  - prometheus-simpleclient-java-servlet-jakarta 
+  - prometheus-simpleclient-java-tracer 
+  - prometheus-simpleclient-java-tracer-common 
   - prometheus-webhook-snmp 
   - promtail 
   - pronsole 
@@ -24357,7 +24371,6 @@ unsorted:
   - python310-Flask-SQLAlchemy 
   - python310-Flask-Security-Too 
   - python310-Flask-SocketIO 
-  - python310-Flask-Testing 
   - python310-Flask-Versioned 
   - python310-Flask-WTF 
   - python310-Flask-doc 
@@ -28033,7 +28046,6 @@ unsorted:
   - python311-Flask-SQLAlchemy 
   - python311-Flask-Security-Too 
   - python311-Flask-SocketIO 
-  - python311-Flask-Testing 
   - python311-Flask-Versioned 
   - python311-Flask-WTF 
   - python311-Flask-doc 
@@ -31588,7 +31600,6 @@ unsorted:
   - python312-Flask-SQLAlchemy 
   - python312-Flask-Security-Too 
   - python312-Flask-SocketIO 
-  - python312-Flask-Testing 
   - python312-Flask-Versioned 
   - python312-Flask-WTF 
   - python312-Flask-doc 
@@ -35547,6 +35558,7 @@ unsorted:
   - python313-argparse-manpage 
   - python313-argparse_addons 
   - python313-arrow 
+  - python313-arviz 
   - python313-asciimatics 
   - python313-asciitree 
   - python313-asdf 
@@ -35586,6 +35598,7 @@ unsorted:
   - python313-attr 
   - python313-attrs 
   - python313-aubio 
+  - python313-audible 
   - python313-audio-degrader 
   - python313-audiomate 
   - python313-audioread 
@@ -36142,6 +36155,7 @@ unsorted:
   - python313-colorful 
   - python313-colorlog 
   - python313-colorlover 
+  - python313-colormap 
   - python313-colorspacious 
   - python313-colour 
   - python313-columnize 
@@ -36172,6 +36186,7 @@ unsorted:
   - python313-copr 
   - python313-copr-cli 
   - python313-cornice 
+  - python313-cotengra 
   - python313-covdefaults 
   - python313-coverage 
   - python313-coveralls-check 
@@ -36221,6 +36236,14 @@ unsorted:
   - python313-dash-html-components 
   - python313-dash-renderer 
   - python313-dash-table 
+  - python313-dask 
+  - python313-dask-array 
+  - python313-dask-complete 
+  - python313-dask-dataframe 
+  - python313-dask-diagnostics 
+  - python313-dask-distributed 
+  - python313-dask-expr 
+  - python313-dask-test 
   - python313-databases 
   - python313-dataclasses-json 
   - python313-datadiff 
@@ -36279,6 +36302,7 @@ unsorted:
   - python313-dist-meta 
   - python313-distlib 
   - python313-distorm3 
+  - python313-distributed 
   - python313-distro 
   - python313-distroinfo 
   - python313-distutils-extra 
@@ -36352,6 +36376,7 @@ unsorted:
   - python313-django-rest-knox 
   - python313-django-reversion 
   - python313-django-rosetta 
+  - python313-django-rq 
   - python313-django-sekizai 
   - python313-django-settings-toml 
   - python313-django-silk 
@@ -36414,6 +36439,7 @@ unsorted:
   - python313-dynaconf 
   - python313-e-antic 
   - python313-easy-thumbnails 
+  - python313-easydev 
   - python313-easygui 
   - python313-easypysmb 
   - python313-easywatch 
@@ -36901,6 +36927,7 @@ unsorted:
   - python313-jsonxs 
   - python313-junit-xml 
   - python313-junitxml 
+  - python313-junos-eznc 
   - python313-jupyter 
   - python313-jupyter-bokeh 
   - python313-jupyter-client 
@@ -37052,6 +37079,7 @@ unsorted:
   - python313-license-expression 
   - python313-ligo-lw 
   - python313-ligotimegps 
+  - python313-line_profiler 
   - python313-linetable 
   - python313-lineup-widget 
   - python313-link-traits 
@@ -37181,6 +37209,7 @@ unsorted:
   - python313-mpld3 
   - python313-mpmath 
   - python313-mrcfile 
+  - python313-mrcz 
   - python313-msal 
   - python313-msal-extensions 
   - python313-msgpack 
@@ -37626,6 +37655,7 @@ unsorted:
   - python313-pycares 
   - python313-pycdio 
   - python313-pycdlib 
+  - python313-pycha 
   - python313-pychm 
   - python313-pyclipper 
   - python313-pycocotools 
@@ -38290,6 +38320,7 @@ unsorted:
   - python313-soxr 
   - python313-spake2 
   - python313-spark_parser 
+  - python313-sparse 
   - python313-speaklater 
   - python313-specfile 
   - python313-sphinx-argparse 
@@ -38374,6 +38405,7 @@ unsorted:
   - python313-stomper 
   - python313-straight-plugin 
   - python313-streamdeck 
+  - python313-streamz 
   - python313-strict-rfc3339 
   - python313-strictyaml 
   - python313-stripe 
@@ -38765,6 +38797,7 @@ unsorted:
   - python313-zstandard 
   - python313-zstd 
   - python313-zxcvbn 
+  - python313-zxcvbn-rs-py 
   - python313-zypp-plugin 
   - python314 
   - python314-base 
@@ -41110,7 +41143,7 @@ unsorted:
   - stripe-mock 
   - strongswan 
   - strongswan-doc 
-  - strongswan-hmac 
+  - strongswan-fips 
   - strongswan-ipsec 
   - strongswan-libs0 
   - strongswan-mysql 
@@ -52465,7 +52498,6 @@ unsorted:
   - xl2tpd 
   - xlatencytop 
   - xless 
-  - xli 
   - xload 
   - xlockmore 
   - xlogin 

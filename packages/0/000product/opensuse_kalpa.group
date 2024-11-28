@@ -88,6 +88,7 @@
     <package name="discover6-backend-flatpak" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="discover6-backend-fwupd" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="discover6-notifier" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
+    <package name="displaymanager-sysconfig" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="distribution-logos-openSUSE-Aeon" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="distribution-logos-openSUSE-icons" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="docbook-xsl-stylesheets" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
