@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ab43160bd87ee2d186e0700470326115</srcmd5>
+    <version>0.0.24</version>
+    <time>1732830200</time>
+    <user>anag+factory</user>
+    <comment>new package argocd-diff-preview: tool for rendering manifest changes on pull requests</comment>
+    <requestid>1227156</requestid>
+  </revision>
+</revisionlist>
