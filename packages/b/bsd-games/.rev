@@ -240,4 +240,13 @@ fixed:
     <comment></comment>
     <requestid>1156080</requestid>
   </revision>
+  <revision rev="34" vrev="124">
+    <srcmd5>8e78efc1e113cda67b08f48b641a834a</srcmd5>
+    <version>2.17</version>
+    <time>1732830197</time>
+    <user>anag+factory</user>
+    <comment>- Add bsd-games-gcc14.diff to resolve FTBFS
+</comment>
+    <requestid>1227133</requestid>
+  </revision>
 </revisionlist>

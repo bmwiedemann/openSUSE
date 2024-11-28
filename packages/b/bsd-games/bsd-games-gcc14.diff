@@ -1,0 +1,64 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2024-11-02 12:47:35.175170023 +0100
+Upstream: dead
+
+---
+ dab/player.h     |    1 +
+ hunt/hunt/otto.c |   10 ++++++----
+ monop/cards.c    |    2 +-
+ 3 files changed, 8 insertions(+), 5 deletions(-)
+
+Index: bsd-games-2.17/dab/player.h
+===================================================================
+--- bsd-games-2.17.orig/dab/player.h
++++ bsd-games-2.17/dab/player.h
+@@ -49,6 +49,7 @@ class BOARD;
+ class PLAYER {
+   public:
+     PLAYER(char who);
++    virtual ~PLAYER() = default;
+     virtual void play(const BOARD& b, size_t& y, size_t& x, int& dir) = 0;
+ 
+     // Helper functions
+Index: bsd-games-2.17/hunt/hunt/otto.c
+===================================================================
+--- bsd-games-2.17.orig/hunt/hunt/otto.c
++++ bsd-games-2.17/hunt/hunt/otto.c
+@@ -166,7 +166,7 @@ otto(y, x, face)
+ 	char	face;
+ {
+ 	int		i;
+-	int		old_mask;
++	sigset_t old_mask, new_mask;
+ 
+ # ifdef	DEBUG
+ 	if (debug == NULL) {
+@@ -176,10 +176,12 @@ otto(y, x, face)
+ 	fprintf(debug, "\n%c(%d,%d)", face, y, x);
+ # endif
+ 	(void) signal(SIGALRM, nothing);
+-	old_mask = sigblock(sigmask(SIGALRM));
++	sigemptyset(&new_mask);
++	sigaddset(&new_mask, SIGALRM);
++	sigprocmask(SIG_BLOCK, &new_mask, &old_mask);
+ 	setitimer(ITIMER_REAL, &pause_time, NULL);
+-	sigpause(old_mask);
+-	sigsetmask(old_mask);
++	sigsuspend(&new_mask);
++	sigprocmask(SIG_SETMASK, &old_mask, NULL);
+ 
+ 	/* save away parameters so other functions may use/update info */
+ 	switch (face) {
+Index: bsd-games-2.17/monop/cards.c
+===================================================================
+--- bsd-games-2.17.orig/monop/cards.c
++++ bsd-games-2.17/monop/cards.c
+@@ -135,7 +135,7 @@ get_card(dp)
+ 
+ 	do {
+ 		fseek(deckf, dp->offsets[dp->last_card], SEEK_SET);
+-		dp->last_card = ++(dp->last_card) % dp->num_cards;
++		dp->last_card = (dp->last_card + 1) % dp->num_cards;
+ 		type_maj = getc(deckf);
+ 	} while (dp->gojf_used && type_maj == GOJF);
+ 	type_min = getc(deckf);

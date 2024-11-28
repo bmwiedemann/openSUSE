@@ -1,7 +1,7 @@
 #
 # spec file for package bsd-games
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Several Text-Mode Games
 License:        BSD-3-Clause
 Group:          Amusements/Games/Other
-Url:            http://www.advogato.org/proj/bsd-games/
+URL:            http://www.advogato.org/proj/bsd-games/
 Source:         ftp://metalab.unc.edu/pub/Linux/games/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 # PATCH-FIX-UPSTREAM bsd-games-2.17.diff
@@ -43,6 +43,8 @@ Patch7:         hunt-64bit.patch
 Patch8:         %{name}-%{version}-compile.patch
 # PATCH-FIX-UPSTREAM bsd-games-2.17-gcc4.3.diff
 Patch9:         %{name}-%{version}-gcc4.3.diff
+# PATCH-FIX-UPSTREAM fix building with gcc 14
+Patch10:        bsd-games-gcc14.diff
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gcc-c++
@@ -50,7 +52,6 @@ BuildRequires:  libopenssl-devel
 BuildRequires:  words
 BuildRequires:  pkgconfig(ncursesw)
 Requires(pre):  user(games) group(games)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 This package provides these games: arithmetic, atc,
@@ -70,6 +71,7 @@ teachgammon, trek, wargames, worm, worms, and wump.
 %patch -P 7
 %patch -P 8
 %patch -P 9
+%patch -P 10 -p1
 
 %build
 # easier than patching :-)
@@ -91,8 +93,7 @@ make INSTALL_PREFIX=%{buildroot} install SBINDIR="%{_bindir}"
 
 rm %{buildroot}%{_bindir}/dm
 
-rm -rf %{buildroot}%{_mandir}/man5
-rm -rf %{buildroot}%{_mandir}/man8
+rm -Rf %{buildroot}%{_mandir}/man5 %{buildroot}%{_mandir}/man8
 
 find %{buildroot}%{_localstatedir}/games/ -exec chmod g-w,o-rw {} \;
 rm %{buildroot}%{_datadir}/doc/bsd-games/trek.me
@@ -105,8 +106,8 @@ mv %{buildroot}%{_mandir}/man6/monop.6.gz %{buildroot}%{_mandir}/man6/monopoly.6
 mv %{buildroot}%{_bindir}/fish %{buildroot}%{_bindir}/fish-game
 
 %files
-%defattr(-,root,root,-)
-%doc AUTHORS BUGS COPYING NEWS README SECURITY THANKS TODO YEAR2000
+%license COPYING
+%doc AUTHORS BUGS NEWS README SECURITY THANKS TODO YEAR2000
 %{_bindir}/*
 %{_mandir}/man6/*
 %{_datadir}/misc/*
