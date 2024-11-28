@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Mon Nov 25 23:34:32 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Fix building
+- Enable tests
+- Add skip_network_tests.patch to mark network-requiring tests
+  and skip them
+
+-------------------------------------------------------------------
+Sun Nov 24 09:33:03 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 0.17.1:
+  * Update README and INSTALL docs
+  * Allow linux libdir name to be 'lib64' or 'lib'
+  * Test localised exception with non-ASCII characters
+- Updates from 0.17.0:
+  * API change: derived classes of BasicIo are omitted from Python.
+  * enableBMFF() function is deprecated.
+  * Documentation is available on
+    https://python-exiv2.readthedocs.io/
+- Updates from 0.16.2:
+  * Removed AnyError alias of Exiv2Error exception.
+  * Metadatum.print() method is no longer renamed to _print.
+  * Improved handling of enums:
+  * Enum results are returned as Python enum instead of int.
+  * Passing ints as enum parameters is deprecated.
+  * Added dict-like behaviour to "data" structs.
+  * Log handlers can be set/cleared from Python.
+  * SWIG v4.1.0 or later required to run SWIG.
+- Updates from 0.16.0:
+  * Include native language support in Windows binary wheel builds.
+  * API change: DateValue.getDate() returns Python dict.
+  * API change: TimeValue.getTime() returns Python dict.
+  * Deprecated: exiv2.Date and exiv2.Time objects.
+  * Added buffer interface to PreviewImage
+  * Set datum value from Python object directly instead of via
+    string.
+  * Moved Position enum to BasicIo class.
+  * Moved CharsetId enum to CommentValue class.
+  * Moved XmpArrayType and XmpStruct enums to XmpValue class.
+  * Added enums for LogMsg.Level
+  * More exiv2 structs are iterable for easy conversion to Python
+    dict.
+- Updates from 0.15.0:
+  * Added __version_tuple__ for easy runtime version testing.
+  * exiv2.testVersion() can be called from Python.
+  * exiv2.DataBuf can be created from Python data.
+  * Most data() methods return a Python memoryview.
+  * exiv2.DataBuf and exiv2.BasicIo have writeable Python buffer
+    interface.
+
+-------------------------------------------------------------------
 Wed Oct 11 15:14:43 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - fix files section 

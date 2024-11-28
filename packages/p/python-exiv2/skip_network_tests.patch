@@ -1,0 +1,14 @@
+---
+ tests/test_basicio.py |    1 +
+ 1 file changed, 1 insertion(+)
+
+--- a/tests/test_basicio.py
++++ b/tests/test_basicio.py
+@@ -33,6 +33,7 @@ class TestBasicIoModule(unittest.TestCas
+         cls.image_path = os.path.join(test_dir, 'image_02.jpg')
+         cls.data = b'The quick brown fox jumps over the lazy dog'
+ 
++    @unittest.skipIf('NONET' in os.environ, 'Requires network access')
+     @unittest.skipUnless(exiv2.versionInfo()['EXV_USE_CURL'],
+                          'CurlIo not included')
+     def test_CurlIo(self):
