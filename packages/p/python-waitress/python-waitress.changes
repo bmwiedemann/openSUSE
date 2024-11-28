@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 20 17:06:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.2:
+  * When using Waitress to process trusted proxy headers,
+    Waitress will now update the headers to drop any untrusted
+    values, thereby making sure that WSGI apps only get trusted
+    and validated values that Waitress itself used to update the
+    environ.
+
+-------------------------------------------------------------------
 Wed Oct 30 06:49:46 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 3.0.1 (bsc#1232554, bsc#1232556, CVE-2024-49769, CVE-2024-49768):

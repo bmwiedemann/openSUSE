@@ -31,7 +31,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-waitress%{psuffix}
-Version:        3.0.1
+Version:        3.0.2
 Release:        0
 Summary:        Waitress WSGI server
 License:        ZPL-2.1
