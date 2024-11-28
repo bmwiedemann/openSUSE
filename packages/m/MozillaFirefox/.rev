@@ -7156,4 +7156,41 @@
     occur in some circumstances. (bmo#1924882)</comment>
     <requestid>1224785</requestid>
   </revision>
+  <revision rev="443" vrev="1">
+    <srcmd5>e0d8e2ce5a3c2f3295af23afee7ac34d</srcmd5>
+    <version>133.0</version>
+    <time>1732835293</time>
+    <user>anag+factory</user>
+    <comment>- Mozilla Firefox 133.0
+  https://www.mozilla.org/en-US/firefox/133.0/releasenotes
+  MFSA 2024-63 (bsc#1233695)
+  * CVE-2024-11691 (bmo#1914707, bmo#1924184)
+    Memory corruption in Apple GPU drivers
+  * CVE-2024-11700 (bmo#1836921)
+    Potential Tapjacking Exploit for Intent Confirmation on Android
+  * CVE-2024-11692 (bmo#1909535)
+    Select list elements could be shown over another site
+  * CVE-2024-11701 (bmo#1914797)
+    Misleading Address Bar State During Navigation Interruption
+  * CVE-2024-11702 (bmo#1918884)
+    Inadequate Clipboard Protection in Private Browsing Mode on
+    Android
+  * CVE-2024-11693 (bmo#1921458)
+    Download Protections were bypassed by .library-ms files on
+    Windows
+  * CVE-2024-11694 (bmo#1924167)
+    CSP Bypass and XSS Exposure via Web Compatibility Shims
+  * CVE-2024-11695 (bmo#1925496)
+    URL Bar Spoofing via Manipulated Punycode and Whitespace Characters
+  * CVE-2024-11703 (bmo#1928779)
+    Password access without authentication via PIN bypass on Android
+  * CVE-2024-11696 (bmo#1929600)
+    Unhandled Exception in Add-on Signature Verification
+  * CVE-2024-11697 (bmo#1842187)
+    Improper Keypress Handling in Executable File Confirmation Dialog
+  * CVE-2024-11704 (bmo#1899402)
+    Potential Double-Free Vulnerability in PKCS#7 Decryption Handling
+  * CVE-2024-11698 (bmo#1916152)</comment>
+    <requestid>1226801</requestid>
+  </revision>
 </revisionlist>
