@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Nov 27 21:34:14 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.46.4:
+  + Improve memory consumption and performance of Canvas
+    getImageData.
+  + Fix preserve-3D intersection rendering.
+  + Fix video dimensions since GStreamer 1.24.9.
+  + Fix the HTTP-based remote Web Inspector not loading in
+    Chromium.
+  + Fix content filters not working on about:blank iframes.
+  + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2024-44308, CVE-2024-44309.
+- Drop patches fixed upstream:
+  + 9e9ea966373d3858668f6a29d8ba91a5807c8dd8.patch
+  + webkit2gtk3-CVE-2024-44308.patch
+  + webkit2gtk3-CVE-2024-44309.patch
+
+-------------------------------------------------------------------
 Mon Nov 25 19:25:44 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Add webkit2gtk3-CVE-2024-44308.patch: don't allocate DFG register
@@ -147,7 +165,7 @@ Sun Sep  1 16:30:22 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 -------------------------------------------------------------------
 Tue Aug 13 16:48:56 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
-- Update to version 2.44.3 (boo#1228696 boo#1228697 boo#1228698):
+- Update to version 2.44.3 (boo#1228697):
   + Fix web process cache suspend/resume when sandbox is enabled.
   + Fix accelerated images dissapearing after scrolling.
   + Fix video flickering with DMA-BUF sink.
@@ -157,8 +175,8 @@ Tue Aug 13 16:48:56 UTC 2024 - Michael Gorse <mgorse@suse.com>
     API.
   + Fix several crashes and rendering issues.
   + Security fixes: CVE-2024-40776, CVE-2024-40779, CVE-2024-40780,
-    CVE-2023-40782, CVE-2024-40785, CVE-2024-40789, CVE-2024-40794,
-    CVE-2024-4558, CVE-2024-27838, CVE-2024-27851.
+    CVE-2024-40782, CVE-2024-40789, CVE-2024-4558, CVE-2024-27838,
+  CVE-2024-27851.
 - Drop patches now upstream:
   9d5844679af8f84036f1b800307e799bd7ab73ba.patch
   webkit2gtk3-CVE-2024-40776.patch

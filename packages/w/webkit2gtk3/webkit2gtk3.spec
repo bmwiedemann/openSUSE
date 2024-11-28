@@ -79,7 +79,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           webkit2%{_gtknamesuffix}
-Version:        2.46.3
+Version:        2.46.4
 Release:        0
 Summary:        Library for rendering web content, GTK+ Port
 License:        BSD-3-Clause AND LGPL-2.0-or-later
@@ -92,14 +92,8 @@ Source99:       webkit2gtk3.keyring
 
 # PATCH-FEATURE-OPENSUSE reproducibility.patch -- Make build reproducible
 Patch0:         reproducibility.patch
-# PATCH-FIX-UPSTREAM 9e9ea966373d3858668f6a29d8ba91a5807c8dd8.patch -- Fix aspect ratio with gst-1.24.9
-Patch1:         https://github.com/WebKit/WebKit/commit/9e9ea966373d3858668f6a29d8ba91a5807c8dd8.patch
 # PATCH-FIX-UPSTREAM 63f7badbada070ebaadd318b2801818ecf7e7ea0.patch -- Support ICU 76.1 build
-Patch2:         https://github.com/WebKit/WebKit/commit/63f7badbada070ebaadd318b2801818ecf7e7ea0.patch
-# PATCH-FIX-UPSTREAM webkit2gtk3-CVE-2024-44308.patch boo#1233631 mgorse@suse.com -- don't allocate DFG register after a slow path.
-Patch3:         webkit2gtk3-CVE-2024-44308.patch
-# PATCH-FIX-UPSTREAM webkit2gtk3-CVE-2024-44309.patch boo#1233632 mgorse@suse.com -- fix a cookie management issue.
-Patch4:         webkit2gtk3-CVE-2024-44309.patch
+Patch1:         https://github.com/WebKit/WebKit/commit/63f7badbada070ebaadd318b2801818ecf7e7ea0.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel

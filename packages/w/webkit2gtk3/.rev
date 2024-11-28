@@ -1826,4 +1826,14 @@
   issue (boo#1233632 CVE-2024-44309). (forwarded request 1226373 from mgorse)</comment>
     <requestid>1226516</requestid>
   </revision>
+  <revision rev="209" vrev="1">
+    <srcmd5>43f2749a9dcbc9ec4f1eeafe180fd822</srcmd5>
+    <version>2.46.4</version>
+    <time>1732835319</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.46.4
+Also fix a typo in a CVE ref, and remove some mistakenly-added bugs/CVEs that
+don't affect Linux. (forwarded request 1226975 from mgorse)</comment>
+    <requestid>1227082</requestid>
+  </revision>
 </revisionlist>
