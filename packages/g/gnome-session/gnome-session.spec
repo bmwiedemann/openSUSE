@@ -123,19 +123,13 @@ install -d -m755 %{buildroot}%{_datadir}/xsessions
 install -m644 %{SOURCE2} %{buildroot}%{_datadir}/xsessions/gnome.desktop
 %find_lang %{name}-%{basever} %{?no_lang_C}
 %fdupes %{buildroot}/%{_prefix}
-# remove wayland files on s390/s390x
-%ifarch s390 s390x
-rm -fr %{buildroot}%{_datadir}/wayland-sessions
-%endif
 
 # Prepare for 'default.desktop' being update-alternative handled, boo#1039756
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 touch %{buildroot}%{_sysconfdir}/alternatives/default-xsession.desktop
 ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadir}/xsessions/default.desktop
-%ifnarch s390 s390x
 touch %{buildroot}%{_sysconfdir}/alternatives/default-waylandsession.desktop
 ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_datadir}/wayland-sessions/default.desktop
-%endif
 
 %post xsession
 %{_sbindir}/update-alternatives --install %{_datadir}/xsessions/default.desktop \
@@ -156,7 +150,6 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %{_datadir}/xsessions/gnome-xorg.desktop
 %ghost %{_sysconfdir}/alternatives/default-xsession.desktop
 
-%ifnarch s390 s390x
 %post wayland
 %{_sbindir}/update-alternatives --install %{_datadir}/wayland-sessions/default.desktop \
   default-waylandsession.desktop %{_datadir}/wayland-sessions/gnome.desktop 25
@@ -173,7 +166,6 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %ghost %{_sysconfdir}/alternatives/default-waylandsession.desktop
 # Disabled as wayland is now the default session again.
 #{_datadir}/wayland-sessions/gnome-wayland.desktop
-%endif
 
 %files core
 %license COPYING

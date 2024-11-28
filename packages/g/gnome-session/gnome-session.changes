@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 27 16:55:31 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Build gnome-session-wayland also on s390x: It was originally
+  excluded because xwayland did not exist. That has been solved in
+  2021 though.
+
+-------------------------------------------------------------------
 Wed Nov 13 08:00:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Move update-alternative post/postun scriptlets from the main
