@@ -28,7 +28,7 @@
 # plugin for Ansible package
 %define pythons python3
 Name:           python-ara
-Version:        1.7.1
+Version:        1.7.2
 Release:        0
 Summary:        ARA Records Ansible
 License:        GPL-3.0-or-later
@@ -88,7 +88,7 @@ tools and interfaces.
 
 %check
 %if %{with test}
-ara-manage test ara
+ara-manage test -v 2 ara
 %endif
 
 %if !%{with test}
