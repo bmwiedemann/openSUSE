@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 27 19:17:10 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Fix source definition for netavark-iptables.conf and netavark-nftables.conf
+
+-------------------------------------------------------------------
+Fri Nov  1 09:58:34 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Set default firewall driver based on the project configuration (bsc#1231424)
+  * Require correct dependencies
+  * Add netavark-iptables.conf and netavark-nftables.conf
+
+-------------------------------------------------------------------
 Wed Oct 30 02:02:34 UTC 2024 - danish.prakash@suse.com
 
 - Update to version 1.13.0:

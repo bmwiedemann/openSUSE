@@ -26,6 +26,8 @@ License:        Apache-2.0
 URL:            https://github.com/containers/%{name}
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
+Source2:        netavark-iptables.conf
+Source3:        netavark-nftables.conf
 BuildRequires:  cargo-packaging
 BuildRequires:  go-md2man
 BuildRequires:  protobuf-devel
@@ -34,6 +36,7 @@ BuildRequires:  systemd-rpm-macros
 # aardvark-dns and %%{name} are usually released in sync
 Requires:       aardvark-dns >= %{major_minor}
 # Provides: container-network-stack = 2
+Requires:       %{?default_firewall_backend}
 
 %description
 Netavark is a rust based network stack for containers. It is being
@@ -56,7 +59,7 @@ Its features include:
 %autosetup -a1
 
 %build
-cargo build --release
+NETAVARK_DEFAULT_FW=%{?default_firewall_backend} cargo build --release
 mkdir -p bin
 cp target/release/%{name} bin/
 
@@ -66,6 +69,8 @@ go-md2man -in %{name}.1.md -out %{name}.1
 %install
 %make_install DESTDIR=%{buildroot} PREFIX=%{_prefix} LIBEXECDIR=%{_libexecdir}
 
+install -D -m 0644 ${RPM_SOURCE_DIR}/netavark-%{default_firewall_backend}.conf %{buildroot}%{_prefix}/lib/modules-load.d/netavark-%{default_firewall_backend}.conf
+
 %files
 %license LICENSE
 %dir %{_libexecdir}/podman
@@ -74,6 +79,8 @@ go-md2man -in %{name}.1.md -out %{name}.1
 %{_unitdir}/%{name}-dhcp-proxy.service
 %{_unitdir}/%{name}-dhcp-proxy.socket
 %{_unitdir}/%{name}-firewalld-reload.service
+%dir %{_prefix}/lib/modules-load.d
+%{_prefix}/lib/modules-load.d/netavark-%{?default_firewall_backend}.conf
 
 %pre
 %service_add_pre %{name}-dhcp-proxy.service %{name}-dhcp-proxy.socket %{name}-firewalld-reload.service

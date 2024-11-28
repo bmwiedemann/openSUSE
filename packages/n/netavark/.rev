@@ -112,4 +112,12 @@
     <comment>Update to version 1.13.0 (forwarded request 1219231 from danishprakash)</comment>
     <requestid>1219548</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>1b99c2410b9b7676ea00b2718594336d</srcmd5>
+    <version>1.13.0</version>
+    <time>1732835324</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1227107</requestid>
+  </revision>
 </revisionlist>
