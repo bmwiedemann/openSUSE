@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov 27 23:10:50 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- trying to make buildservice happy by adding both tarballs to
+  specfile ... 
+
+-------------------------------------------------------------------
+Tue Nov 26 18:20:06 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- on s390x build Mesa 24.1.7 to fix colors with Xvnc (boo#1233167)
+- adjusted patches for Mesa 24.1.7:
+  * python36-buildfix1-s390x.patch
+  * u_dep_xcb-s390x.patch
+  * u_mesa-CVE-2023-45913-s390x.patch
+
+-------------------------------------------------------------------
 Fri Nov 22 10:35:29 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to release 24.3.0

@@ -6028,4 +6028,19 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   * %{_libdir}/gbm/dri_gbm.so</comment>
     <requestid>1225842</requestid>
   </revision>
+  <revision rev="523" vrev="395">
+    <srcmd5>f916370772fc0fe85172999c4d1e1105</srcmd5>
+    <version>unknown</version>
+    <time>1732835313</time>
+    <user>anag+factory</user>
+    <comment>- trying to make buildservice happy by adding both tarballs to
+  specfile and adjusted patches for 24.17 to changelog ... 
+
+- on s390x build Mesa 24.1.7 to fix colors with Xvnc (boo#1233167)
+- adjusted patches for Mesa 24.1.7:
+  * python36-buildfix1-s390x.patch
+  * u_dep_xcb-s390x.patch
+  * u_mesa-CVE-2023-45913-s390x.patch</comment>
+    <requestid>1226983</requestid>
+  </revision>
 </revisionlist>

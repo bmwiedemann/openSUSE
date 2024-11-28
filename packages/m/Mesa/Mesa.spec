@@ -42,7 +42,11 @@
 
 %define glamor 1
 %define _name_archive mesa
+%ifnarch s390x
 %define _version 24.3.0
+%else
+%define _version 24.1.7
+%endif
 %define with_opencl 0
 %define with_rusticl 0
 %define with_vulkan 0
@@ -145,7 +149,11 @@
 %global _paste_crate_ver 1.0.14
 
 Name:           Mesa%{psuffix}
+%ifnarch s390x
 Version:        24.3.0
+%else
+Version:        24.1.7
+%endif
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
@@ -173,18 +181,32 @@ Source9:        manual-pages.tar.bz2
 Source10:       Mesa-rpmlintrc
 Source11:       Mesa.keyring
 Source12:       README-suse-maintenance.md
+Source20:       https://archive.mesa3d.org/%{_name_archive}-24.3.0.tar.xz
+Source21:       https://archive.mesa3d.org/%{_name_archive}-24.3.0.tar.xz.sig
 Patch2:         n_add-Mesa-headers-again.patch
 Patch11:        u_0001-intel-genxml-Drop-from-__future__-import-annotations.patch
 Patch12:        u_0002-intel-genxml-Add-a-untyped-OrderedDict-fallback-for-.patch
+%ifnarch s390x
 Patch13:        python36-buildfix1.patch
+%else
+Patch13:        python36-buildfix1-s390x.patch
+%endif
 Patch14:        python36-buildfix2.patch
 Patch17:        tlsdesc_test.patch
 # never to be upstreamed
 Patch54:        n_drirc-disable-rgb10-for-chromium-on-amd.patch
 Patch100:       U_fix-mpeg1_2-decode-mesa-20.2.patch
 Patch400:       n_stop-iris-flicker.patch
+%ifnarch s390x
 Patch500:       u_dep_xcb.patch
+%else
+Patch500:       u_dep_xcb-s390x.patch
+%endif
+%ifnarch s390x
 Patch1222040:   u_mesa-CVE-2023-45913.patch
+%else
+Patch1222040:   u_mesa-CVE-2023-45913-s390x.patch
+%endif
 Patch1222041:   u_mesa-CVE-2023-45919.patch
 Patch1222042:   u_mesa-CVE-2023-45922.patch
 
@@ -949,7 +971,7 @@ egl_platforms=x11,wayland
   %ifarch ppc64 ppc64le riscv64
             -Dgallium-drivers=r300,r600,radeonsi,nouveau,softpipe,llvmpipe,virgl,iris,zink \
   %else
-            -Dgallium-drivers=softpipe,llvmpipe \
+            -Dgallium-drivers=swrast \
   %endif
   %endif
   %endif
@@ -957,7 +979,11 @@ egl_platforms=x11,wayland
             -Dllvm-orcjit=true \
 %endif
 %else
+%ifnarch s390x
             -Dgallium-drivers=softpipe \
+%else
+            -Dgallium-drivers=swrast \
+%endif
 %endif
 %ifarch aarch64 x86_64 ppc64le s390x riscv64
             -Dvalgrind=enabled \
@@ -1222,9 +1248,11 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %ifarch %{arm} aarch64
 %exclude %{_libdir}/dri/vc4_dri.so
 %endif
+%ifnarch s390x
 %{_libdir}/libgallium-%{_version}.so
 %dir %{_libdir}/gbm/
 %{_libdir}/gbm/dri_gbm.so
+%endif
 
 %if 0%{with_opencl}
 # only built with opencl
