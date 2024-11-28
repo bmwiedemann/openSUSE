@@ -586,6 +586,13 @@ Thu Oct 24 07:57:00 UTC 2024 - madhankumar.chellamuthu@suse.com
   * 0002-Use-securejoin.SecureJoin-when-forming-userns-paths.patch (merged upstream)
 
 -------------------------------------------------------------------
+Tue Oct 22 12:03:33 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Remove iptables requirements (bsc#1231424)
+  * Move requirement to cni-plugins
+  * Move iptables kernel module requirement to cni-plugins and netavark
+
+-------------------------------------------------------------------
 Mon Oct 21 06:20:05 UTC 2024 - Danish Prakash <danish.prakash@suse.com>
 
 - Add patch for CVE-2024-9676 (bsc#1231698):

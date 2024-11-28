@@ -62,7 +62,6 @@ Recommends:     gvisor-tap-vsock
 Requires:       catatonit >= 0.1.7
 Requires:       conmon >= 2.0.24
 Requires:       fuse-overlayfs
-Requires:       iptables
 Requires:       libcontainers-common >= 20230214
 %if 0%{?sle_version} && 0%{?sle_version} <= 150500
 # Build podman with CNI support for SLE-15-SP5 and lower
