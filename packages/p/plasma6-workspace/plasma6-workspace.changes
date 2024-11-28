@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Nov 26 15:47:43 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.4:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.4
+- Changes since 6.2.3:
+  * update version for new release
+  * BatteryIcon: Add headphone icon
+  * plasmashell: begin earlier to watch for panel destruction (kde#487684)
+  * plasmawindowed: Use shared contexts analogue to plasmashell
+  * applets/notifications: Be explicit about "when" binding on notificationAction
+  * devicenotifier: An optical disc can also be storage access (kde#469706)
+  * ksmserver: Fix copying of auth data (kde#491130)
+  * applets/systemtray: suppress useless tooltips (kde#494463)
+  * X11/multiscreen: Always emit outputOrderChanged when a screen is disconnected
+  * coloreditor: Hide titlebar color buttons if header is set (kde#433059)
+  * devicenotifier: Fix ejecting busy optical media
+  * panelview: Fix resized panel with NoBackground not receiving input in new space
+  * wallpapers/image: Fix wallpaper item resize for screen dimension change
+  * kcms/users: refactor cropping
+  * update version for new release
+
+-------------------------------------------------------------------
 Thu Nov 14 08:15:07 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Replace '%requires_ge plasma6-desktop' with 'Requires: plasma6-desktop'

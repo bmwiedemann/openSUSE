@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov 27 09:45:17 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.88.0:
+  * doc: add mermaid to manifest show command output (#3173)
+  * fix: flavour to flavor
+  * feat: add Pipeline graph to issue template
+  * feat: add mermaid graph flavour
+  * fix: only look at target when target has dependsonchange: true
+    (#3160)
+  * deps: bump updatecli version to v0.87.0 (#3148)
+  * doc(e2e tests) add a minimalistic documentation (#1120)
+
+-------------------------------------------------------------------
 Tue Nov 26 14:07:33 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.87.0:

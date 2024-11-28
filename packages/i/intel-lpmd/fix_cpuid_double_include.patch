@@ -1,0 +1,43 @@
+From: trenn@suse.com
+Date: 2024-11-27 10:23:38 +0000
+
+gcc7's cpuid.h is missing an include guard, and since the file does get included
+at least twice, compilation fails under Leap-15 gcc7. Work around it by removing
+some includes locally.
+
+Index: intel-lpmd-0.0.8/src/lpmd_hfi.c
+===================================================================
+--- intel-lpmd-0.0.8.orig/src/lpmd_hfi.c
++++ intel-lpmd-0.0.8/src/lpmd_hfi.c
+@@ -37,7 +37,6 @@
+ #include <sys/un.h>
+ #include <errno.h>
+ #include <getopt.h>
+-#include <cpuid.h>
+ #include <sched.h>
+ #include <dirent.h>
+ #include <ctype.h>
+Index: intel-lpmd-0.0.8/src/lpmd_irq.c
+===================================================================
+--- intel-lpmd-0.0.8.orig/src/lpmd_irq.c
++++ intel-lpmd-0.0.8/src/lpmd_irq.c
+@@ -33,7 +33,6 @@
+ #include <sys/un.h>
+ #include <errno.h>
+ #include <getopt.h>
+-#include <cpuid.h>
+ #include <sched.h>
+ #include <dirent.h>
+ #include <ctype.h>
+Index: intel-lpmd-0.0.8/src/lpmd_socket.c
+===================================================================
+--- intel-lpmd-0.0.8.orig/src/lpmd_socket.c
++++ intel-lpmd-0.0.8/src/lpmd_socket.c
+@@ -36,7 +36,6 @@
+ #include <sys/un.h>
+ #include <errno.h>
+ #include <getopt.h>
+-#include <cpuid.h>
+ #include <sched.h>
+ #include <dirent.h>
+ #include <ctype.h>

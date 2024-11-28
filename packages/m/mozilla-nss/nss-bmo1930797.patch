@@ -1,0 +1,341 @@
+# HG changeset patch
+# User Robert Relyea <rrelyea@redhat.com>
+# Date 1731716524 28800
+# Node ID 03e207e378dd37a87e172febb58012472611a78f
+# Parent  fe06bec77d445965548ee6f9d803bf8d035863c7
+Bug 1930797 pkcs12 fixes from RHEL need to be picked up.
+
+1. add ignore integrity option to pk12util
+2. update pk12util manpage
+  a. with new ignore integrity option.
+  b. with the correct current defaults for pk12util.
+3. don't include a fake iv in the param portion of the pbmac1.
+4. restore the ability to decode md5 mac'ed pkcs12 files.
+5. restore tests for bad pkcs12 encodings
+
+Differential Revision: https://phabricator.services.mozilla.com/D229394
+
+Index: nss/cmd/pk12util/pk12util.c
+===================================================================
+--- nss.orig/cmd/pk12util/pk12util.c
++++ nss/cmd/pk12util/pk12util.c
+@@ -32,12 +32,12 @@ static void
+ Usage()
+ {
+ #define FPS PR_fprintf(PR_STDERR,
+-    FPS "Usage:	 %s -i importfile [-d certdir] [-P dbprefix] [-h tokenname]\n",
++    FPS "Usage:	 %s -i importfile [-I] [-d certdir] [-P dbprefix] [-h tokenname]\n",
+ 				 progName);
+     FPS "\t\t [-k slotpwfile | -K slotpw] [-w p12filepwfile | -W p12filepw]\n");
+     FPS "\t\t [-v]\n");
+ 
+-    FPS "Usage:	 %s -l listfile [-d certdir] [-P dbprefix] [-h tokenname]\n",
++    FPS "Usage:	 %s -l listfile [-I] [-d certdir] [-P dbprefix] [-h tokenname]\n",
+ 				 progName);
+     FPS "\t\t [-k slotpwfile | -K slotpw] [-w p12filepwfile | -W p12filepw]\n");
+     FPS "\t\t [-v]\n");
+@@ -351,7 +351,8 @@ P12U_InitSlot(PK11SlotInfo *slot, secuPW
+  */
+ SEC_PKCS12DecoderContext *
+ p12U_ReadPKCS12File(SECItem *uniPwp, char *in_file, PK11SlotInfo *slot,
+-                    secuPWData *slotPw, secuPWData *p12FilePw)
++                    secuPWData *slotPw, secuPWData *p12FilePw,
++                    PRBool ignoreIntegrity)
+ {
+     SEC_PKCS12DecoderContext *p12dcx = NULL;
+     p12uContext *p12cxt = NULL;
+@@ -458,7 +459,10 @@ p12U_ReadPKCS12File(SECItem *uniPwp, cha
+     /* rv has been set at this point */
+ 
+ done:
+-    if (rv != SECSuccess) {
++    /* if we are ignoring Integrity and we failed because we couldn't
++     * verify the integrity code, go ahead and succeed */
++    if (rv != SECSuccess && !(ignoreIntegrity &&
++                              (pk12uErrno == PK12UERR_DECODEVERIFY))) {
+         if (p12dcx != NULL) {
+             SEC_PKCS12DecoderFinish(p12dcx);
+             p12dcx = NULL;
+@@ -490,7 +494,8 @@ done:
+  */
+ PRIntn
+ P12U_ImportPKCS12Object(char *in_file, PK11SlotInfo *slot,
+-                        secuPWData *slotPw, secuPWData *p12FilePw)
++                        secuPWData *slotPw, secuPWData *p12FilePw,
++                        PRBool ignoreIntegrity)
+ {
+     SEC_PKCS12DecoderContext *p12dcx = NULL;
+     SECItem uniPwitem = { 0 };
+@@ -509,7 +514,8 @@ P12U_ImportPKCS12Object(char *in_file, P
+     do {
+         trypw = PR_FALSE; /* normally we do this once */
+         rv = SECFailure;
+-        p12dcx = p12U_ReadPKCS12File(&uniPwitem, in_file, slot, slotPw, p12FilePw);
++        p12dcx = p12U_ReadPKCS12File(&uniPwitem, in_file, slot, slotPw,
++                                     p12FilePw, ignoreIntegrity);
+ 
+         if (p12dcx == NULL) {
+             goto loser;
+@@ -777,14 +783,16 @@ loser:
+ 
+ PRIntn
+ P12U_ListPKCS12File(char *in_file, PK11SlotInfo *slot,
+-                    secuPWData *slotPw, secuPWData *p12FilePw)
++                    secuPWData *slotPw, secuPWData *p12FilePw,
++                    PRBool ignoreIntegrity)
+ {
+     SEC_PKCS12DecoderContext *p12dcx = NULL;
+     SECItem uniPwitem = { 0 };
+     SECStatus rv = SECFailure;
+     const SEC_PKCS12DecoderItem *dip;
+ 
+-    p12dcx = p12U_ReadPKCS12File(&uniPwitem, in_file, slot, slotPw, p12FilePw);
++    p12dcx = p12U_ReadPKCS12File(&uniPwitem, in_file, slot, slotPw, p12FilePw,
++                                 ignoreIntegrity);
+     /* did the blob authenticate properly? */
+     if (p12dcx == NULL) {
+         SECU_PrintError(progName, "PKCS12 decode not verified");
+@@ -997,7 +1005,8 @@ enum {
+     opt_CertCipher,
+     opt_KeyLength,
+     opt_CertKeyLength,
+-    opt_Mac
++    opt_Mac,
++    opt_IgnoreIntegrity
+ };
+ 
+ static secuCommandFlag pk12util_options[] = {
+@@ -1018,7 +1027,8 @@ static secuCommandFlag pk12util_options[
+     { /* opt_CertCipher	       */ 'C', PR_TRUE, 0, PR_FALSE },
+     { /* opt_KeyLength         */ 'm', PR_TRUE, 0, PR_FALSE, "key_len" },
+     { /* opt_CertKeyLength     */ 0, PR_TRUE, 0, PR_FALSE, "cert_key_len" },
+-    { /* opt_Mac               */ 'M', PR_TRUE, 0, PR_FALSE, PR_FALSE }
++    { /* opt_Mac               */ 'M', PR_TRUE, 0, PR_FALSE },
++    { /* opt_IgnoreIntegrity   */ 'I', PR_FALSE, 0, PR_FALSE }
+ };
+ 
+ int
+@@ -1039,6 +1049,7 @@ main(int argc, char **argv)
+     int certKeyLen = 0;
+     secuCommand pk12util;
+     PRInt32 forceUnicode;
++    PRBool ignoreIntegrity = PR_FALSE;
+ 
+ #ifdef _CRTDBG_MAP_ALLOC
+     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+@@ -1113,6 +1124,9 @@ main(int argc, char **argv)
+     if (pk12util.options[opt_Raw].activated) {
+         dumpRawFile = PR_TRUE;
+     }
++    if (pk12util.options[opt_IgnoreIntegrity].activated) {
++        ignoreIntegrity = PR_TRUE;
++    }
+     if (pk12util.options[opt_KeyLength].activated) {
+         keyLen = atoi(pk12util.options[opt_KeyLength].arg);
+     }
+@@ -1183,7 +1197,8 @@ main(int argc, char **argv)
+     }
+ 
+     if (pk12util.options[opt_Import].activated) {
+-        P12U_ImportPKCS12Object(import_file, slot, &slotPw, &p12FilePw);
++        P12U_ImportPKCS12Object(import_file, slot, &slotPw, &p12FilePw,
++                                ignoreIntegrity);
+ 
+     } else if (pk12util.options[opt_Export].activated) {
+         P12U_ExportPKCS12Object(pk12util.options[opt_Nickname].arg,
+@@ -1191,7 +1206,8 @@ main(int argc, char **argv)
+                                 hash, &slotPw, &p12FilePw);
+ 
+     } else if (pk12util.options[opt_List].activated) {
+-        P12U_ListPKCS12File(import_file, slot, &slotPw, &p12FilePw);
++        P12U_ListPKCS12File(import_file, slot, &slotPw, &p12FilePw,
++                            ignoreIntegrity);
+ 
+     } else {
+         Usage();
+Index: nss/doc/pk12util.xml
+===================================================================
+--- nss.orig/doc/pk12util.xml
++++ nss/doc/pk12util.xml
+@@ -38,6 +38,7 @@
+       <arg>-P dbprefix</arg>
+       <arg>-r</arg>
+       <arg>-v</arg>
++      <arg>-I</arg>
+       <arg>--cert-key-len  certKeyLength</arg>
+       <arg>-k slotPasswordFile|-K slotPassword</arg>
+       <arg>-w p12filePasswordFile|-W p12filePassword</arg>
+@@ -147,6 +148,11 @@
+       </varlistentry>
+ 
+       <varlistentry>
++        <term>-I </term>
++        <listitem><para>Ignore integrity check results on importing and listing.</para></listitem>
++      </varlistentry>
++
++      <varlistentry>
+         <term>-w p12filePasswordFile</term>
+         <listitem><para>Specify the text file containing the pkcs #12 file password.</para></listitem>
+       </varlistentry>
+@@ -317,7 +323,7 @@ Certificate    Friendly Name: Thawte Fre
+ 
+   <refsection id="encryption">
+     <title>Password Encryption</title>
+-    <para>PKCS #12 provides for not only the protection of the private keys but also the certificate and meta-data associated with the keys. Password-based encryption is used to protect private keys on export to a PKCS #12 file and, optionally, the associated certificates. If no algorithm is specified, the tool defaults to using PKCS #12 SHA-1 and 3-key triple DES for private key encryption. When not in FIPS mode, PKCS #12 SHA-1 and 40-bit RC4 is used for certificate encryption. When in FIPS mode, there is no certificate encryption. If certificate encryption is not wanted, specify <userinput>"NONE"</userinput> as the argument of the <option>-C</option> option.</para>
++    <para>PKCS #12 provides for not only the protection of the private keys but also the certificate and meta-data associated with the keys. Password-based encryption is used to protect private keys on export to a PKCS #12 file and, optionally, the associated certificates. If no algorithm is specified, the tool defaults to using AES-256-CBC for private key encryption and AES-128-CBC for certificate encryption. If certificate encryption is not wanted, specify <userinput>"NONE"</userinput> as the argument of the <option>-C</option> option.</para>
+     <para>The private key is always protected with strong encryption by default.</para>
+     <para>Several types of ciphers are supported.</para>
+     <variablelist>
+@@ -327,6 +333,7 @@ Certificate    Friendly Name: Thawte Fre
+         <listitem>
+ 	  <itemizedlist>
+ 	    <listitem><para>PBES2 with AES-CBC-Pad as underlying encryption scheme (<userinput>"AES-128-CBC"</userinput>, <userinput>"AES-192-CBC"</userinput>, and <userinput>"AES-256-CBC"</userinput>)</para></listitem>
++	    <listitem><para>PBES2 with CAMELLIA-CBC-Pad as underlying encryption scheme (<userinput>"CAMELLIA-128-CBC"</userinput>, <userinput>"CAMELLIA-192-CBC"</userinput>, and <userinput>"CAMELLIA-256-CBC"</userinput>)</para></listitem>
+ 	  </itemizedlist>
+         </listitem>
+       </varlistentry>
+Index: nss/lib/pk11wrap/pk11mech.c
+===================================================================
+--- nss.orig/lib/pk11wrap/pk11mech.c
++++ nss/lib/pk11wrap/pk11mech.c
+@@ -1719,10 +1719,19 @@ PK11_ParamToAlgid(SECOidTag algTag, SECI
+         case CKM_JUNIPER_CBC128:
+         case CKM_JUNIPER_COUNTER:
+         case CKM_JUNIPER_SHUFFLE:
+-            newParams = SEC_ASN1EncodeItem(NULL, NULL, param,
+-                                           SEC_ASN1_GET(SEC_OctetStringTemplate));
+-            if (newParams == NULL)
+-                break;
++            if (param && param->len > 0) {
++                newParams = SEC_ASN1EncodeItem(NULL, NULL, param,
++                                               SEC_ASN1_GET(SEC_OctetStringTemplate));
++                if (newParams == NULL)
++                    break;
++            } else {
++                /* if no parameters have been supplied, then use NULL params
++                 * The SECOID_SetAlgorithmID encoder will encode that as no
++                 * params (since params are optional) or with an explicit NULL
++                 * (for some historical cases where explicit NULL is expected).
++                 */
++                newParams = NULL;
++            }
+             rv = SECSuccess;
+             break;
+     }
+Index: nss/lib/pk11wrap/pk11pbe.c
+===================================================================
+--- nss.orig/lib/pk11wrap/pk11pbe.c
++++ nss/lib/pk11wrap/pk11pbe.c
+@@ -770,9 +770,10 @@ sec_pkcs5CreateAlgorithmID(SECOidTag alg
+             algorithm = sec_pkcs5v2_get_pbe(cipherAlgorithm);
+         }
+ 
++        SECOidTag hashAlg = HASH_GetHashOidTagByHMACOidTag(cipherAlgorithm);
++
+         /* set the PKCS5v2 specific parameters */
+         if (keyLength == 0) {
+-            SECOidTag hashAlg = HASH_GetHashOidTagByHMACOidTag(cipherAlgorithm);
+             if (hashAlg != SEC_OID_UNKNOWN) {
+                 keyLength = HASH_ResultLenByOidTag(hashAlg);
+             } else {
+@@ -787,18 +788,25 @@ sec_pkcs5CreateAlgorithmID(SECOidTag alg
+             prfAlg = SEC_OID_HMAC_SHA1;
+         }
+ 
+-        /* build the PKCS5v2 cipher algorithm id */
+-        cipherParams = pk11_GenerateNewParamWithKeyLen(
+-            PK11_AlgtagToMechanism(cipherAlgorithm), keyLength);
+-        if (!cipherParams) {
+-            goto loser;
++        /* build the PKCS5v2 cipher algorithm id, if cipher
++         * is an HMAC, the cipherParams should be NULL */
++        if (hashAlg == SEC_OID_UNKNOWN) {
++            cipherParams = pk11_GenerateNewParamWithKeyLen(
++                PK11_AlgtagToMechanism(cipherAlgorithm), keyLength);
++            if (!cipherParams) {
++                goto loser;
++            }
++        } else {
++            cipherParams = NULL;
+         }
+ 
+         PORT_Memset(&pbeV2_param, 0, sizeof(pbeV2_param));
+ 
+         rv = PK11_ParamToAlgid(cipherAlgorithm, cipherParams,
+                                poolp, &pbeV2_param.cipherAlgId);
+-        SECITEM_FreeItem(cipherParams, PR_TRUE);
++        if (cipherParams) {
++            SECITEM_FreeItem(cipherParams, PR_TRUE);
++        }
+         if (rv != SECSuccess) {
+             goto loser;
+         }
+Index: nss/lib/pkcs12/p12local.c
+===================================================================
+--- nss.orig/lib/pkcs12/p12local.c
++++ nss/lib/pkcs12/p12local.c
+@@ -102,7 +102,7 @@ sec_pkcs12_integrity_key(PK11SlotInfo *s
+         *hmacMech = PK11_AlgtagToMechanism(hmacAlg);
+         /* pkcs12v2 hmac uses UTF8 rather than unicode */
+         if (!sec_pkcs12_convert_item_to_unicode(NULL, &utf8Pw, pwitem,
+-                                                PR_TRUE, PR_FALSE, PR_FALSE)) {
++                                                PR_FALSE, PR_FALSE, PR_FALSE)) {
+             return NULL;
+         }
+         symKey = PK11_PBEKeyGen(slot, prfAlgid, &utf8Pw, PR_FALSE, pwarg);
+Index: nss/lib/util/nsshash.c
+===================================================================
+--- nss.orig/lib/util/nsshash.c
++++ nss/lib/util/nsshash.c
+@@ -107,6 +107,9 @@ HASH_GetHashOidTagByHMACOidTag(SECOidTag
+     switch (hmacOid) {
+         /* no oid exists for HMAC_MD2 */
+         /* NSS does not define a oid for HMAC_MD4 */
++        case SEC_OID_HMAC_MD5:
++            hashOid = SEC_OID_MD5;
++            break;
+         case SEC_OID_HMAC_SHA1:
+             hashOid = SEC_OID_SHA1;
+             break;
+@@ -150,6 +153,9 @@ HASH_GetHMACOidTagByHashOidTag(SECOidTag
+     switch (hashOid) {
+         /* no oid exists for HMAC_MD2 */
+         /* NSS does not define a oid for HMAC_MD4 */
++        case SEC_OID_MD5:
++            hmacOid = SEC_OID_HMAC_MD5;
++            break;
+         case SEC_OID_SHA1:
+             hmacOid = SEC_OID_HMAC_SHA1;
+             break;
+Index: nss/tests/tools/tools.sh
+===================================================================
+--- nss.orig/tests/tools/tools.sh
++++ nss/tests/tools/tools.sh
+@@ -541,21 +541,21 @@ tools_p12_import_pbmac1_samples()
+   html_msg $ret 0 "Importing private key pbmac1 hmac-sha-512 from PKCS#12 file"
+   check_tmpfile
+ 
+-  echo "${BINDIR}/pk12util -l ${TOOLSDIR}/data/pbmac1-invalid-bad-iter.p12 -d ${P_R_COPYDIR} -k ${R_PWFILE} -W '1234'"
+-  ${BINDIR}/pk12util -l ${TOOLSDIR}/data/pbmac1-invalid-bad-iter.p12 -d ${P_R_COPYDIR} -k ${R_PWFILE} -W '1234' 2>&1
++  echo "${BINDIR}/pk12util -l ${TOOLSDIR}/data/pbmac1-invalid-bad-iter.p12 -d ${P_R_COPYDIR} -k ${R_PWFILE} -W '1234' -I"
++  ${BINDIR}/pk12util -l ${TOOLSDIR}/data/pbmac1-invalid-bad-iter.p12 -d ${P_R_COPYDIR} -k ${R_PWFILE} -W '1234' -I 2>&1
+   ret=$?
+   html_msg $ret 19 "Fail to list private key with bad iterator"
+   check_tmpfile
+ 
+-  echo "${BINDIR}/pk12util -l ${TOOLSDIR}/data/pbmac1-invalid-bad-salt.p12 -d ${P_R_COPYDIR} -k ${R_PWFILE} -W '1234'"
+-  ${BINDIR}/pk12util -l ${TOOLSDIR}/data/pbmac1-invalid-bad-salt.p12 -d ${P_R_COPYDIR} -k ${R_PWFILE} -W '1234' 2>&1
++  echo "${BINDIR}/pk12util -l ${TOOLSDIR}/data/pbmac1-invalid-bad-salt.p12 -d ${P_R_COPYDIR} -k ${R_PWFILE} -W '1234' -I"
++  ${BINDIR}/pk12util -l ${TOOLSDIR}/data/pbmac1-invalid-bad-salt.p12 -d ${P_R_COPYDIR} -k ${R_PWFILE} -W '1234' -I 2>&1
+   ret=$?
+   echo "Fail to list private key with bad salt val=$ret"
+   html_msg $ret 19 "Fail to import private key with bad salt"
+   check_tmpfile
+ 
+-  echo "${BINDIR}/pk12util -l ${TOOLSDIR}/data/pbmac1-invalid-no-length.p12 -d ${P_R_COPYDIR} -k ${R_PWFILE} -W '1234'"
+-  ${BINDIR}/pk12util -l ${TOOLSDIR}/data/pbmac1-invalid-no-length.p12 -d ${P_R_COPYDIR} -k ${R_PWFILE} -W '1234' 2>&1
++  echo "${BINDIR}/pk12util -l ${TOOLSDIR}/data/pbmac1-invalid-no-length.p12 -d ${P_R_COPYDIR} -k ${R_PWFILE} -W '1234' -I"
++  ${BINDIR}/pk12util -l ${TOOLSDIR}/data/pbmac1-invalid-no-length.p12 -d ${P_R_COPYDIR} -k ${R_PWFILE} -W '1234' -I 2>&1
+   ret=$?
+   echo "Fail to import private key with no length val=$ret"
+   html_msg $ret 19 "Fail to import private key with no length"

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 25 15:45:30 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.16+kde5, rebased upstream:
+  * Don't leak buttons in QQuickDialogButtonBox
+  * Fix connection leak in header proxy model
+  * Bump version to 5.15.16
+
+-------------------------------------------------------------------
 Wed Sep  4 20:08:56 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.15+kde5, rebased upstream:

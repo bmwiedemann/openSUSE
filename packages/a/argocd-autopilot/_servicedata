@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/argoproj-labs/argocd-autopilot</param>
+              <param name="changesrevision">d31992f1b38477ab3eac4ec2e713cc084162b379</param></service></servicedata>

@@ -1,7 +1,7 @@
 #
 # spec file for package raylib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           raylib
-Version:        5.0
+Version:        5.5
 Release:        0
 Summary:        C library for learning video game programming
 License:        Zlib
@@ -43,17 +43,17 @@ raylib is inspired by the Borland BGI graphics library and by the XNA framework.
 %package -n raylib-devel
 Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
-Requires:       libraylib450 = %{version}
+Requires:       libraylib550 = %{version}
 Requires:       openal-soft-devel
 
 %description -n raylib-devel
 Development files and headers for %{name}.
 
-%package -n libraylib450
+%package -n libraylib550
 Summary:        C library for learning video game programming
 Group:          System/Libraries
 
-%description -n libraylib450
+%description -n libraylib550
 A C library for learning video game programming.
 
 %prep
@@ -71,10 +71,10 @@ A C library for learning video game programming.
 %install
 %cmake_install
 
-%post -n libraylib450 -p /sbin/ldconfig
-%postun -n libraylib450 -p /sbin/ldconfig
+%post -n libraylib550 -p /sbin/ldconfig
+%postun -n libraylib550 -p /sbin/ldconfig
 
-%files -n libraylib450
+%files -n libraylib550
 %license LICENSE
 %{_libdir}/libraylib.so.*
 

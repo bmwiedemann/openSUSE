@@ -17,15 +17,15 @@
 #
 
 
-%global nss_softokn_fips_version 3.105
-%define NSPR_min_version 4.35
+%global nss_softokn_fips_version 3.106
+%define NSPR_min_version 4.36
 %define nspr_ver %(rpm -q --queryformat '%%{VERSION}' mozilla-nspr)
 %define nssdbdir %{_sysconfdir}/pki/nssdb
 %global crypto_policies_version 20210218
 Name:           mozilla-nss
-Version:        3.105
+Version:        3.106
 Release:        0
-%define underscore_version 3_105
+%define underscore_version 3_106
 Summary:        Network Security Services
 License:        MPL-2.0
 Group:          System/Libraries
@@ -50,8 +50,8 @@ Patch2:         system-nspr.patch
 Patch3:         nss-no-rpath.patch
 Patch4:         add-relro-linker-option.patch
 Patch5:         malloc.patch
-Patch6:         bmo-1400603.patch
 Patch7:         nss-sqlitename.patch
+Patch8:         nss-bmo1930797.patch
 Patch9:         nss-fips-use-getrandom.patch
 Patch10:        nss-fips-dsa-kat.patch
 Patch11:        nss-fips-pairwise-consistency-check.patch
@@ -210,8 +210,8 @@ cd nss
 %if 0%{?suse_version} > 1110
 %patch -P 5 -p1
 %endif
-%patch -P 6 -p1
 %patch -P 7 -p1
+%patch -P 8 -p1
 # FIPS patches
 %patch -P 9 -p1
 %patch -P 10 -p1

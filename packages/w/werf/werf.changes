@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Nov 27 09:37:41 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.14.0:
+  * chore: release 2.14.0 Signed-off-by: Aleksei Igrychev
+    <aleksei.igrychev@palark.com>
+  * docs(build, dockerfile, giterminism): add secrets description
+    (#6443)
+  * refactor(util): fix ExpandPath does not support "~"
+  * refactor(util): enhance path utility functions
+  * fix(cleanup): fix cleanup for Buildah images by switching to
+    tag-based logic
+  * refactor(cleanup): make it juicy
+  * feat(giterminism): add build secrets (#6436)
+  * chore(test): do not user artifacts
+  * feat(build, docker, buildah, dockerfile): add secrets support
+    (#6429)
+  * fix: unsorted Set.ToSlice usage in parallel task execution
+  * chore(release): add registry cleanup workflow (#6428)
+  * feat(release): publish werf images for linux/arm64 platform
+    (#6427)
+  * refactor(cleanup): do not override the keep reason
+  * refactor(cleanup): introduce StageDescSet and unify array
+    handling
+  * fix(cleanup): keep relatives for
+    keepImagesBuiltWithinLastNHours policy
+  * refactor(build): deduplicate selectSuitableStageDesc
+  * refactor: introduce StageDescSet and unify array handling
+  * refactor: standardize usage of StageDesc naming
+  * refactor(cli): add common components manager to deduplicate
+    code (#6414)
+  * chore(ci): fix the workflow is not valid
+  * chore(release): 1.2 beta,rock-solid 2 all
+
+-------------------------------------------------------------------
 Wed Nov 20 07:48:33 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.13.1:

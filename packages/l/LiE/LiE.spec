@@ -30,6 +30,7 @@ Source2:        %{name}-rpmlintrc
 Patch1:         LiE-2.2.2-date-time.patch
 # PATCH-FIX-UPSTREAM bmwiedemann -- initialize memory (boo#1061220)
 Patch2:         LiE-2.2.2-memory-init.patch
+Patch3:         reproducible-noaslr.patch
 BuildRequires:  bison
 BuildRequires:  gcc-c++
 BuildRequires:  ghostscript

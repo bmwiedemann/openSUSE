@@ -5607,4 +5607,41 @@ I cannot test locally unfortunately.
   support</comment>
     <requestid>1225214</requestid>
   </revision>
+  <revision rev="349" vrev="1">
+    <srcmd5>5cd8ad9b456cdad5bb82f1434ca36383</srcmd5>
+    <version>128.5.0</version>
+    <time>1732741886</time>
+    <user>anag+factory</user>
+    <comment>- Mozilla Thunderbird 128.5.0
+  * IMAP could crash when reading cached messages
+  * Enabling &quot;Show Folder Size&quot; on Maildir profile could render
+    Thunderbird unusable
+  * Messages corrupted by folder compaction were only fixed by user
+    intervention
+  * Reading a message from past the end of an mbox file did not
+    cause an error
+  * View -&gt; Folders had duplicate F access keys
+  * Add-ons adding columns to the message list could fail and cause
+    display issue
+  * &quot;Empty trash on exit&quot; and &quot;Expunge inbox on exit&quot; did not
+    always work
+  * Selecting a display option in View -&gt; Tasks did not apply in
+    the Task interface
+  MFSA 2024-68 (bsc#1233695)
+  * CVE-2024-11691 (bmo#1914707, bmo#1924184)
+    Memory corruption in Apple GPU drivers
+  * CVE-2024-11692 (bmo#1909535)
+    Select list elements could be shown over another site
+  * CVE-2024-11693 (bmo#1921458)
+    Download Protections were bypassed by .library-ms files on Windows
+  * CVE-2024-11694 (bmo#1924167)
+    CSP Bypass and XSS Exposure via Web Compatibility Shims
+  * CVE-2024-11695 (bmo#1925496)
+    URL Bar Spoofing via Manipulated Punycode and Whitespace Characters
+  * CVE-2024-11696 (bmo#1929600)
+    Unhandled Exception in Add-on Signature Verification
+  * CVE-2024-11697 (bmo#1842187)
+    Improper Keypress Handling in Executable File Confirmation Dialog</comment>
+    <requestid>1226643</requestid>
+  </revision>
 </revisionlist>

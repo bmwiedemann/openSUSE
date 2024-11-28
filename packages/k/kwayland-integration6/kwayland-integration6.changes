@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 26 15:46:23 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.4:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.4
+- Changes since 6.2.3:
+  * Initialize xdg activation
+  * Fix obtaining wl_surface from WId (kde#496365)
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Nov  5 13:30:22 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.3:

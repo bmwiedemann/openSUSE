@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov 25 13:54:52 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.2:
+  + Fix distro upgrade when certain version of PackageKit is used
+  + Fix a crash when uninstalling a Snap app
+  + Make uninstall dialog adaptive for small screens
+  + Prefer Appstream data from swcatalog instead of app-info
+    directories
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Oct 10 11:52:07 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.1:

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 27 08:56:52 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
+
+- Add get-telnetlib-from-netmiko.patch, telnetlib was removed from
+  the standardlibrary in Python 3.13
+  * https://github.com/Juniper/py-junos-eznc/issues/1324
+
+-------------------------------------------------------------------
 Mon Oct 28 05:41:18 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.7.2:

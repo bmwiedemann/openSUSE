@@ -1216,4 +1216,18 @@ New stable release</comment>
     <comment></comment>
     <requestid>1206688</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>94f81ced71e1a360709111a0f9e491b4</srcmd5>
+    <version>47.2</version>
+    <time>1732741509</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 47.2:
+  + Fix distro upgrade when certain version of PackageKit is used
+  + Fix a crash when uninstalling a Snap app
+  + Make uninstall dialog adaptive for small screens
+  + Prefer Appstream data from swcatalog instead of app-info
+    directories
+  + Updated translations. (forwarded request 1226281 from iznogood)</comment>
+    <requestid>1226511</requestid>
+  </revision>
 </revisionlist>

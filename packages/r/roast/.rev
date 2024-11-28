@@ -60,4 +60,17 @@ package called `obs-service-recomprizz`.</comment>
   * docs: removed warning. ensured reproducibility.</comment>
     <requestid>1220280</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8e4073aea8b2c74fc1dcc63538be699b</srcmd5>
+    <version>5.1.7</version>
+    <time>1732741935</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 5.1.7:
+  * feat: add zstd as another alias for zst
+  * prepare structure for roast-scm
+  * minor: improve error message here
+  * fix: added trace feature
+</comment>
+    <requestid>1226795</requestid>
+  </revision>
 </revisionlist>

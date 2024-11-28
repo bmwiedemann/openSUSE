@@ -1170,4 +1170,14 @@ plymouth-branding-openSUSE (forwarded request 114125 from gary_lin)</comment>
     <comment></comment>
     <requestid>1226037</requestid>
   </revision>
+  <revision rev="132" vrev="12">
+    <srcmd5>7d050a30709eb571aaf656098784e47c</srcmd5>
+    <version>22.02.122+94.4bd41a3</version>
+    <time>1732741845</time>
+    <user>anag+factory</user>
+    <comment>Plenty of bugs came with the latest updates. Revert to 129, which is the last know stable revision.
+https://bugzilla.suse.com/show_bug.cgi?id=1233532
+https://bugzilla.suse.com/show_bug.cgi?id=1233675</comment>
+    <requestid>1226916</requestid>
+  </revision>
 </revisionlist>

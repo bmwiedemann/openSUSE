@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Wed Nov 27 10:12:23 UTC 2024 - Thomas Renninger <trenn@suse.de>
+
+- Avoid double include of cpuid.h and fix older distro builds
+  (could be a gcc7 vs gcc14 issue).
+  Add fix_cpuid_double_include.patch.
+- Only build for x86 and, as it's an Intel tool, it's probably only
+  intended to run and work on x86 machines, add:
+  ExclusiveArch:  %ix86 x86_64
+
+-------------------------------------------------------------------
+Thu Oct 17 00:15:04 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Initial package (version 0.0.8) for build.opensuse.org

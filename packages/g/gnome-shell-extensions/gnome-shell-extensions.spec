@@ -19,7 +19,7 @@
 
 %global __requires_exclude typelib\\(Meta\\)
 Name:           gnome-shell-extensions
-Version:        47.1
+Version:        47.2
 Release:        0
 Summary:        A collection of extensions for GNOME Shell
 License:        GPL-2.0-or-later
@@ -84,15 +84,14 @@ gnome-shell classic.
 
 %package -n gnome-shell-classic-xsession
 Summary:        Xsession(X11) desktop session
-Requires:       gnome-shell-extensions-common
-Requires:       gnome-shell-classic
 Requires:       gnome-session-xsession
+Requires:       gnome-shell-classic
+Requires:       gnome-shell-extensions-common
 Provides:       gnome-shell-classic:%{_datadir}/xsessions/gnome-classic-xorg.desktop
 BuildArch:      noarch
 
 %description -n gnome-shell-classic-xsession
 This package allows GNOME Shell to run the session on Xorg (X11).
-
 
 %package -n gnome-shell-extension-user-theme
 Summary:        Allow the user to change GNOME Shell Themes

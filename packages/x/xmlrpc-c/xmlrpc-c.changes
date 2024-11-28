@@ -1,9 +1,28 @@
 -------------------------------------------------------------------
+Tue Nov 26 20:42:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.59.03:
+  * Build of client libraries: fix failure to find Curl stuff.
+  * Build: Fix link failure in several tools because they fail to
+    link the Curl library. Don't know how long this was broken.
+  * Build: Eliminate compiler warnings with GCC 6.3
+  * Build: fix bug: won't compile with --enable-libxml2,
+    introduced with Release 1.44 (December 2015).
+  * Build: update config.guess and config.sub so Configure can
+    recognize newer environments.
+  * Abyss XML-RPC server 'runConn' method: throw exception
+    instead of exiting program when unable to execute an HTTP
+    transaction.
+  * Build: fix bug: ignores LDFLAGS_FOR_BUILD, LDFLAGS_PERSONAL,
+    and LDFLAGS_PTHREAD when building the build tool Gennmtab.
+- add skip-expat.patch: add patch to skip using expat
+
+-------------------------------------------------------------------
 Sat Oct 29 12:46:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.54.06:
   * Abyss HTTP server: Fix memory corruption in processing of "authorization"
-    header field. Broken in Xmlrpc-c 1.41 
+    header field. Broken in Xmlrpc-c 1.41
 
 -------------------------------------------------------------------
 Mon Aug  8 20:47:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -23,7 +42,7 @@ Mon Aug  8 20:47:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
 Mon May 31 20:03:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.51.07:
-  * fix bug: wild memory reference when server times out waiting for request header. 
+  * fix bug: wild memory reference when server times out waiting for request header.
 
 -------------------------------------------------------------------
 Thu Aug 20 12:37:37 UTC 2020 - Dirk Mueller <dmueller@suse.com>
@@ -89,9 +108,9 @@ Wed Jul 27 10:16:05 UTC 2016 - schwab@suse.de
 Tue Nov 17 12:20:54 UTC 2015 - mpluskal@suse.com
 
 - Update to 1.33.18
-  * Fix bug: infinite recursion if you try to format a floating 
-		point value that was created from something other than a 
-		finite number. Creation of a floating point XML-RPC value from 
+  * Fix bug: infinite recursion if you try to format a floating
+		point value that was created from something other than a
+		finite number. Creation of a floating point XML-RPC value from
 		something other than a number now fails.
 
 -------------------------------------------------------------------
@@ -112,13 +131,13 @@ Sun Mar  8 10:45:39 UTC 2015 - mpluskal@suse.com
 - Cleanup spec file with spec-cleaner
 - Use url for source
 - Update to 1.33.16
-  * Packet stream socket: fix: sends corrupted packet when the 
-    packet contains an ESC character. Always broken. (packet 
+  * Packet stream socket: fix: sends corrupted packet when the
+    packet contains an ESC character. Always broken. (packet
     stream sockets were new in Xmlrpc-c 1.11 - June 2007).
-  * Build: fix 'make distclean' so it doesn't leave src/cpp/srcdir 
+  * Build: fix 'make distclean' so it doesn't leave src/cpp/srcdir
     and src/cpp/blddir.
 - Changes for 1.33.15
-  * Build: fix 'make distclean' so it doesn't leave src/cpp/srcdir 
+  * Build: fix 'make distclean' so it doesn't leave src/cpp/srcdir
     and src/cpp/blddir.
 
 -------------------------------------------------------------------

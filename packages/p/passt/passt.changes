@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Nov 27 14:19:40 UTC 2024 - dcermak@suse.com
+
+- Update to version 20241127.c0fbc7e:
+  * dhcp: Honour broadcast flag (RFC 2131, 4.1)
+  * dhcp: Introduce support for Rapid Commit (option 80, RFC 4039)
+  * dhcp: Use -1 as "missing option" length instead of 0
+  * treewide: Introduce 'local mode' for disconnected setups
+  * test: Improve logic for waiting for SLAAC & DAD to complete in NDP tests
+  * ndp: Don't send first periodic router advertisement right after guest connects
+  * test/perf: Select a single IPv6 namespace address in pasta tests
+  * conf, passt.1: Update --mac-addr default in usage() and man page
+  * passt.1: Fix "default" note about --map-guest-addr
+
+-------------------------------------------------------------------
 Mon Nov 25 07:27:04 UTC 2024 - dcermak@suse.com
 
 - Update to version 20241121.238c69f:

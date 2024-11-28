@@ -19,15 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-Deprecated
-Version:        1.2.14
+Version:        1.2.15
 Release:        0
 Summary:        Python @deprecated decorator
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/tantale/deprecated
-Source:         https://files.pythonhosted.org/packages/source/D/Deprecated/Deprecated-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM - gh#tantale/deprecated/73 - Update class method deprecation warnings for Python 3.13
-Patch1:         https://github.com/tantale/deprecated/pull/73.patch#/fix-python3.13-ftbfs.patch
+Source:         https://files.pythonhosted.org/packages/source/d/deprecated/deprecated-%{version}.tar.gz
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wrapt >= 1.10}
@@ -43,8 +41,7 @@ If you need to mark a function or a method as deprecated,
 you can use the ``@deprecated`` decorator.
 
 %prep
-%setup -q -n Deprecated-%{version}
-%patch -P 1 -p1
+%setup -q -n deprecated-%{version}
 
 %build
 %python_build

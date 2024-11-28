@@ -16,24 +16,22 @@
 #
 
 
-# missing ipython
-%global skip_python39 1
 Name:           python-line_profiler
-Version:        4.1.2
+Version:        4.1.3
 Release:        0
 Summary:        Line-by-line profiler
 License:        BSD-3-Clause
 URL:            https://github.com/pyutils/line_profiler
 Source:         https://files.pythonhosted.org/packages/source/l/line_profiler/line_profiler-%{version}.tar.gz
-# submitted upstream as https://github.com/pyutils/line_profiler/pull/252
-Patch1:         use-sys-executable-python.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module ipython}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scikit-build}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module ubelt}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -60,10 +58,10 @@ function-level profiling tools in the Python standard library.
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 # remove shebangs
 sed -i '1{/env python/d}' line_profiler/line_profiler.py kernprof.py
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/kernprof
 %python_compileall
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
@@ -76,15 +74,16 @@ sed -i '1{/env python/d}' line_profiler/line_profiler.py kernprof.py
 
 %check
 # test_cli needs ubelt, which we don't have and which is needed just for tests
-%pytest_arch -k "not test_cli" tests
+# test_assumed_noop removed upstream, stop skipping it with 4.2.0.
+%pytest_arch -k "not (test_cli or test_assumed_noop)" tests
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt LICENSE_Python.txt
 %python_alternative %{_bindir}/kernprof
 %{python_sitearch}/line_profiler
-%{python_sitearch}/line_profiler-%{version}*-info
-%{python_sitearch}/kernprof.py*
-%pycache_only %{python_sitearch}/__pycache__/kernprof*
+%{python_sitearch}/line_profiler-%{version}.dist-info
+%{python_sitearch}/kernprof.py
+%pycache_only %{python_sitearch}/__pycache__/kernprof.*.pyc
 
 %changelog

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 25 20:03:12 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.2:
+  + places-menu: Fix a11y labelling
+  + screenshot-window-sizer: Mention shortcut in description
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Oct 31 08:53:35 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Split out gnome-shell-classic-xsession sub-package.

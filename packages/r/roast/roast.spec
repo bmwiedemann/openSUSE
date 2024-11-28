@@ -17,7 +17,7 @@
 
 
 Name:           roast
-Version:        5.1.6
+Version:        5.1.7
 Release:        0
 Summary:        Simpler tar archiver and extractor
 License:        MPL-2.0
@@ -75,6 +75,9 @@ cp -v %{buildroot}%{_bindir}/recomprizz %{buildroot}%{_prefix}/lib/obs/service/r
 install -m0644 recomprizz.service %{buildroot}%{_prefix}/lib/obs/service
 cp -v %{buildroot}%{_bindir}/raw %{buildroot}%{_prefix}/lib/obs/service/raw
 install -m0644 raw.service %{buildroot}%{_prefix}/lib/obs/service
+
+# Non-functional binary. Still WIP
+rm %{buildroot}%{_bindir}/roast-scm
 
 %check
 %{cargo_test}

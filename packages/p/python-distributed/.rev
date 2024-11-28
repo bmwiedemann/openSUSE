@@ -1129,4 +1129,13 @@
 </comment>
     <requestid>1225613</requestid>
   </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>3a0882652e9f9c14620a06daaf5deacc</srcmd5>
+    <version>2024.11.2</version>
+    <time>1732741855</time>
+    <user>anag+factory</user>
+    <comment>- reenable python313 (keep tests disabled for now)
+</comment>
+    <requestid>1226505</requestid>
+  </revision>
 </revisionlist>

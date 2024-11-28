@@ -36,6 +36,7 @@ Patch1:         libdb-fix-atomic.patch
 Patch2:         0001-OPD-deadlock-RH-BZ-1349779.patch
 # PATCH-FIX-UPSTREAM bsc#1174414 CVE-2019-2708 libdb: data store execution leads to partial DoS
 Patch3:         libdb-4_8-CVE-2019-2708.patch
+Patch4:         libdb-4_8-sequence.patch
 BuildRequires:  autoconf
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -93,11 +94,7 @@ database support for applications.
 This package contains the header files and libraries.
 
 %prep
-%setup -q -n %{generic_name}-%{version}
-%patch -P 0
-%patch -P 1
-%patch -P 2 -p1
-%patch -P 3 -p1
+%autosetup -p1 -n %{generic_name}-%{version}
 
 %build
 cd dist
@@ -126,6 +123,7 @@ cd ../build_nptl
 %else
         %{_target_cpu}-suse-linux
 %endif
+
 # Make sure O_DIRECT is really disabled (build host could have old kernel)
 perl -pi -e 's/#define HAVE_O_DIRECT 1/#undef HAVE_O_DIRECT/' db_config.h
 # Remove libtool predep_objects and postdep_objects wonkiness

@@ -16,23 +16,24 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 %define cli_binary_name tetra
 %define cli_package_name tetragon-cli
 
 Name:           tetragon
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        eBPF-based Security Observability and Runtime Enforcement
 License:        Apache-2.0
 URL:            https://github.com/cilium/tetragon
 Source:         tetragon-%{version}.tar.gz
 Source1:        vendor.tar.gz
+BuildRequires:  bash-completion
 BuildRequires:  clang >= 15
+BuildRequires:  fish
 BuildRequires:  go >= 1.22
 BuildRequires:  llvm
 BuildRequires:  make
+BuildRequires:  zsh
 ExcludeArch:    i586 ppc64le s390x armv7l armv7hl
 
 %description
@@ -148,8 +149,8 @@ mkdir -p %{buildroot}%{_datarootdir}/fish/vendor_completions.d/
 %{buildroot}/%{_bindir}/%{cli_binary_name} completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{cli_binary_name}.fish
 
 # create the zsh completion file
-mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d/
-%{buildroot}/%{_bindir}/%{cli_binary_name} completion zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_%{cli_binary_name}
+mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
+%{buildroot}/%{_bindir}/%{cli_binary_name} completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{cli_binary_name}
 
 %pre
 %service_add_pre %{name}.service
@@ -184,16 +185,12 @@ mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d/
 %{_bindir}/%{cli_binary_name}
 
 %files -n %{cli_package_name}-bash-completion
-%dir %{_datarootdir}/bash-completion/completions/
 %{_datarootdir}/bash-completion/completions/%{cli_binary_name}
 
 %files -n %{cli_package_name}-fish-completion
-%dir %{_datarootdir}/fish
-%dir %{_datarootdir}/fish/vendor_completions.d
 %{_datarootdir}/fish/vendor_completions.d/%{cli_binary_name}.fish
 
 %files -n %{cli_package_name}-zsh-completion
-%dir %{_datarootdir}/zsh_completion.d/
-%{_datarootdir}/zsh_completion.d/_%{cli_binary_name}
+%{_datarootdir}/zsh/site-functions/_%{cli_binary_name}
 
 %changelog

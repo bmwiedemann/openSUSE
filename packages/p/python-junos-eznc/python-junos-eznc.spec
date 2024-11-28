@@ -29,10 +29,13 @@ Source:         https://github.com/Juniper/py-junos-eznc/archive/%{version}.tar.
 Patch0:         python-junos-eznc-remove-yamlordereddictloader.patch
 # PATCH-FIX-UPSTREAM gh#Juniper/py-junos-eznc#1307 Don't require six
 Patch1:         no-six.patch
+# PATCH-FIX-UPSTREAM gh#Juniper/py-junos-eznc#1324 telnetlib not in py313 anymore
+Patch2:         get-telnetlib-from-netmiko.patch
 BuildRequires:  %{python_module Jinja2 >= 2.7.1}
 BuildRequires:  %{python_module PyYAML >= 5.1}
 BuildRequires:  %{python_module lxml >= 3.2.4}
 BuildRequires:  %{python_module ncclient >= 0.6.15}
+BuildRequires:  %{python_module netmiko >= 4.4.0}
 BuildRequires:  %{python_module nose2}
 BuildRequires:  %{python_module ntc-templates}
 BuildRequires:  %{python_module paramiko >= 1.15.2}
@@ -50,6 +53,7 @@ Requires:       python-Jinja2 >= 2.7.1
 Requires:       python-PyYAML >= 5.1
 Requires:       python-lxml >= 3.2.4
 Requires:       python-ncclient >= 0.6.15
+Requires:       python-netmiko >= 4.4.0
 Requires:       python-paramiko >= 1.15.2
 Requires:       python-pyparsing
 Requires:       python-pyserial

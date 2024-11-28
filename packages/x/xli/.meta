@@ -1,8 +1,0 @@
-<package name="xli" project="openSUSE:Factory">
-  <title>X11 Image Loading Utility</title>
-  <description>xli is a version of xloadimage.
-
-This utility will view several types of images under X11, or load
-images onto the X11 root window.</description>
-  <devel project="X11:Utilities" package="xli"/>
-</package>

@@ -1,0 +1,50 @@
+Index: eco5000-1.2.0/ifd_handler.c
+===================================================================
+--- eco5000-1.2.0.orig/ifd_handler.c
++++ eco5000-1.2.0/ifd_handler.c
+@@ -71,7 +71,6 @@ int IFDGetATR (struct eco5000_t *ctx)
+ {
+ 
+     int response;
+-    int prot;
+ 
+     memset(ctx->ATR, 0, sizeof(ctx->ATR));              /* Clear parts of the context */
+     memset(ctx->HCC, 0, sizeof(ctx->HCC));              
+@@ -90,7 +89,6 @@ int IFDGetATR (struct eco5000_t *ctx)
+ 
+         ctx->Type = ASYNC_ICC;
+ 
+-        prot = ctx->Protocol;
+     }
+     
+     return 0;
+@@ -316,7 +314,6 @@ RESPONSECODE IFDHGetCapabilities ( DWORD
+ 
+     int rc;
+     struct eco5000_t *ctx;
+-    struct memorycard_t *pt;
+ 
+     rc = LookupLun(Lun);
+ 
+Index: eco5000-1.2.0/ecotools.c
+===================================================================
+--- eco5000-1.2.0.orig/ecotools.c
++++ eco5000-1.2.0/ecotools.c
+@@ -3,7 +3,7 @@
+  * |.**> <**.|  CardContact
+  * |*       *|  Software & System Consulting
+  * |*       *|  Minden, Germany
+- * |´**> <**´|  Copyright (c) 1999. All rights reserved
++ * |ï¿½**> <**ï¿½|  Copyright (c) 1999. All rights reserved
+  *  --------- 
+  *
+  * See file LICENSE for details on licensing
+@@ -169,7 +169,7 @@ int ecoChangeBaudrate(struct eco5000_t *
+     
+     buff = 0xFF - 14318000 / (32 * baudrate); /* 115200 = 0xFC */
+ 
+-    if ((rc = ecoCommand(ctx, SET_BAUDRATE, 1, &buff, 0, NULL)) < 0)
++    if ((rc = ecoCommand(ctx, SET_BAUDRATE, 1, (unsigned char *) &buff, 0, NULL)) < 0)
+         return rc;
+ 
+     rs232Mode(ctx->fh, baudrate, 0, -1, -1, -1);

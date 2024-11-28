@@ -72,10 +72,6 @@ URL:            https://pandas.pydata.org/
 # SourceRepository: https://github.com/pandas-dev/pandas
 # Must be created by cloning through `osc service runall`: gh#pandas-dev/pandas#54903, gh#pandas-dev/pandas#54907
 Source0:        pandas-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#pandas-dev/pandas#1044cf44
-Patch0:         tests-nomkl.patch
-# PATCH-FIX-UPSTREAM tiny part of gh#pandas-dev/pandas#4f743f98
-Patch1:         tests-wasm.patch
 %if !%{with test}
 BuildRequires:  %{python_module Cython >= 3.0.5}
 BuildRequires:  %{python_module devel >= 3.9}
@@ -524,6 +520,8 @@ SKIP_TESTS+=" or test_array_inference[data7-expected7]"
 # numpy 2.1 issues?
 SKIP_TESTS+=" or test_frame_setitem_dask_array_into_new_col"
 SKIP_TESTS+=" or test_from_obscure_array"
+# too new xarray https://github.com/pandas-dev/pandas/pull/60109
+SKIP_TESTS+=" or (TestDataFrameToXArray and test_to_xarray_index_types)"
 
 %ifarch %{ix86} %{arm32}
 # https://github.com/pandas-dev/pandas/issues/31856

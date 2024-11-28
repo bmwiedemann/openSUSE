@@ -82,4 +82,13 @@
     skipped jobs were marked as failed instead (forwarded request 1225620 from rrahl0)</comment>
     <requestid>1225621</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4c1c3084e0465eddaa0d3af417857de5</srcmd5>
+    <version>5.0.3</version>
+    <time>1732741970</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.0.3:
+  * fix: it wasn't possible to mount the docker socket in each container (forwarded request 1226862 from rrahl0)</comment>
+    <requestid>1226863</requestid>
+  </revision>
 </revisionlist>

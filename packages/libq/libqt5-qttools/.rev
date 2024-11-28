@@ -558,4 +558,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>- Fix qdoc runtime dependency</comment>
     <requestid>1220559</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>f31072c69e092fcde07e8712b48e520d</srcmd5>
+    <version>5.15.16+kde3</version>
+    <time>1732741535</time>
+    <user>anag+factory</user>
+    <comment>Qt 5.15.16, untested. Try #2. (forwarded request 1226586 from favogt)</comment>
+    <requestid>1226616</requestid>
+  </revision>
 </revisionlist>

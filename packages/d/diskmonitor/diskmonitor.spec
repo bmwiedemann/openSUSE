@@ -1,7 +1,7 @@
 #
 # spec file for package diskmonitor
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           diskmonitor
 Version:        0.3.4
 Release:        0
 Summary:        Tools to monitor SMART devices and MDRaid health status
 License:        GPL-2.0-only
-Group:          Hardware/Other
 URL:            https://github.com/papylhomme/diskmonitor
 Source0:        https://github.com/papylhomme/diskmonitor/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Install-the-application-icon-in-the-right-directory.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5I18n)
@@ -67,12 +66,11 @@ Applet:
 
 %build
 %cmake_kf5 -d build
+
 %cmake_build
 
 %install
 %kf5_makeinstall -C build
-
-%suse_update_desktop_file diskmonitor Monitor
 
 %find_lang diskmonitor diskmonitor.lang
 %find_lang plasma_applet_org.papylhomme.diskmonitor diskmonitor.lang

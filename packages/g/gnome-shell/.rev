@@ -2415,4 +2415,19 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
     <comment></comment>
     <requestid>1223652</requestid>
   </revision>
+  <revision rev="265" vrev="1">
+    <srcmd5>6999d1e291b718ca95dccb07fd142be8</srcmd5>
+    <version>47.2</version>
+    <time>1732741513</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 47.2:
+  + Fix graphical artifacts in partially-rounded buttons
+  + Fix caret tracking in magnifier
+  + Improve accessibility of keyboard backlight quick settings
+    toggle
+  + Fix resetting non-caps shift key in on-screen keyboard
+  + Misc. bug fixes and cleanups
+  + Updated translations. (forwarded request 1226345 from iznogood)</comment>
+    <requestid>1226513</requestid>
+  </revision>
 </revisionlist>

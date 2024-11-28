@@ -1,4 +1,123 @@
 -------------------------------------------------------------------
+Tue Nov 26 11:30:00 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 0.16.0
+  * Bugfixes:
+    + Don't throw NPE if .help() wasn't called
+    + Don't wrap a RuntimeException in another RuntimeException.
+    + Make pushgateway module compile on Java 11
+    + Make sure GZIPOutputStream is always closed for httpserver
+    + Specify the charset of HTTPServer response for systems not
+      using utf-8 by default
+    + Use <packaging>bundle</packaging> everywhere so that
+      client_java works with OSGI again.
+    + use the correct name for the metric type gaugehistogram in
+      OpenMetrics (previously this was wrongly named
+      gauge_histogram)
+    + Correct handling of HEAD requests.
+    + Apply ServletConfig during Servlet initialization in
+      simpleclient_servlet and simpleclient_servlet_jakarta
+    + HTTPServer: Don't send a Content-Length header when
+      Transfer-Encoding is chunked.
+    + simpleclient_log4j set the log4j dependency scope as provided
+      so that users don't accidentally pull the log4j version used
+      in client_java.
+      Note: This module is for monitoring log4j version 1,
+      in simpleclient_log4j2 the dependency is already provided.
+    + simpleclient_dropwizard set the Dropwizard dependency scope as
+      provided so that users don't accidentally pull the Dropwizard
+      version used in client_java.
+    + Fix missing Dropwizard metrics in Vertx.
+    + Fix incorrect buffer size in the Servlet exporter.
+    + Fix sample name filter for the JMX metric
+      jvm_memory_bytes_committed.
+  * Enhancements:
+    + Bump caffeine dependency to 2.7.0 to support AsyncCache.
+    + Added health check api to simpleclient_httpserver.
+    + Remove dependency on sun.misc.Unsafe, allowing building on
+      JDK11
+    + Wrap PrintWriter with BufferedWriter, making servlet
+      exposition about 2x faster
+    + Handle empty label values for the pushgateway
+    + Add Bill of Materials
+    + Count HTTP statuses returned for servlet filter
+    + Introduce TestContainers integration test, for example for
+      testing different Java versions. This means you need Docker
+      installed to run ./mvnw verify.
+    + HTTPServer: Set request/response timeouts.
+    + HTTPServer: Make HTTPMetricHandler public so that it can be
+      used in a custom HTTPServer.
+    + New JVM memory metrics: jvm_memory_pool_collection_used_bytes,
+      jvm_memory_pool_collection_committed_bytes,
+      jvm_memory_pool_collection_max_bytes,
+      jvm_memory_pool_collection_init_bytes,
+      jvm_memory_objects_pending_finalization.
+    + Version bumps (junit, jetty, maven plugins)
+    + add support for Jakarta Servlet, implemented in the new
+      simpleclient_servlet_jakarta module.
+    + provide a way for filtering metrics by name / name prefix.
+      This can be configured either in the HTTPServer, or in the
+      Servlet exporter (both javax and Jakarta). For example, if
+      some JMX metrics cause performance issues, this can be used
+      for excluding these metrics.
+    + for the Servlet filter (both javax and Jakarta): Add a
+      parameter to strip the deployment path from the path label.
+    + Add HTTP Authentication to the HTTPServer #682.
+    + Allow passing a custom registry to the logback
+      InstrumentedAppender.
+    + Lots of more integration tests and tests with different Java
+      versions.
+    + Make HTTPMetricHandler public so that users can use them in
+      their own HttpServers.
+    + Make Base64 encoding in the HTTP authentication for the
+      PushGateway work with all Java versions.
+    + The HTTPServer can now be configured to use SSL.
+    + Lots of dependency version bumps.
+    + Environment variable PROMETHEUS_DISABLE_CREATED_SERIES=true
+      for disabling _created metrics.
+    + Support for OpenTelemetry trace sampling: Only traces that are
+      sampled will be used as exemplars.
+    + Handle thread IDs <= 0. Apparently Apache Zookeeper generates
+      negative thread IDs, which causes issues in jmx_exporter.
+    + Mark opentelemetry-api as optional to make it an optional
+      dependency in OSGi.
+    + Move servlet adapters to an internal package to avoid
+      duplicating classes when building OSGi bundles.
+    + Extend the API of the HTTPServer.Builder to allow custom
+      ExecutorService instances.
+    + Reduce the number of core threads in HTTPServer from 5 to 1.
+      The HTTPServer will still start up to 5 threads on demand if
+      there are parallel requests, but it will use only 1 thread as
+      long as requests are sequential.
+    + Optimize metric name sanitization: Replace the regular
+      expression with a hard-coded optimized algorithm to improve
+      performance.
+    + Lots of dependency version bumps.
+  * Changes:
+    + Switch data model to OpenMetrics. Primarily this means that
+      _total if present is stripped from the metric name of
+      counters, and _total is now always a suffix on the sample
+      value. This means that all Counter samples now have a _total
+      suffix
+    + The io.prometheus.client.Collector.Type enum's value UNTYPED
+      renamed to UNKNOWN
+  * Features:
+    + Add Info and Enumeration metric types for direct
+      instrumentation
+    + Counter, Summary, and Histogram metrics now expose a _created
+      sample with when their child was created
+    + Add support for units
+    + Add gauge histograms, info, stateset for custom collectors
+    + Support negotiating and exposing OpenMetrics for all HTTP
+      server exposition
+    + Add ability to filter metrics in DropwizardExports
+    + Exemplars: API for adding OpenMetrics Exemplars and
+      out-of-the-box integration with OpenTelemetry tracing.
+- Added patch:
+  * remove_opentelemetry_tracer.patch
+    + remove dependency on opentelemetry
+
+-------------------------------------------------------------------
 Tue Sep 19 11:10:30 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Do not require maven-javadoc-plugin that we don't use

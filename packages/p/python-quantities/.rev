@@ -104,4 +104,18 @@
     <comment>- Restrict numpy to &lt; 2, not quite supported yet.</comment>
     <requestid>1188925</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5d0fe21cbff38a08a08646b0c85ef63a</srcmd5>
+    <version>0.16.1</version>
+    <time>1732741929</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.16.1:
+  * Fixed a couple of small bugs
+  * Added umath funcs: `maximum` &amp; `minimum`
+  * Added support for NumPy 2.0, while maintaining support for older
+    versions back to 1.22
+  * Fixed a potential security hole
+  * Dropped support for Python 3.8</comment>
+    <requestid>1226689</requestid>
+  </revision>
 </revisionlist>

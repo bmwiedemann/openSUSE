@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Wed Nov 27 11:11:43 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.1:
+  * Prepare for v1.2.1 release
+  * filters: implement parent_arguments_regex
+  * chore(deps): update go to v1.22.9
+  * chore(deps): update docker.io/library/alpine:3.20.3 docker
+    digest to 1e42bbe
+  * tetragon: probe_read usage may cause issues with newer kernels
+  * e2e tests: skip label test on ARM
+  * workflows: use GitHub arm64 runners instead of actuated
+  * Add support to exclude valid processes from dump processCache
+  * tetra: add max-recv-size to processcache dump cmd
+  * tetra: rewrite dump processcache cmd for correct error code
+  * tetra: use consistent case in dump cmd and api
+  * Add support to dump processLRU
+  * [btf] Flush kernel spec (BTF) after loading a sensor
+  * [ksyms] Do not cache ksyms to reduce memory consumption
+  * fix(deps): update module github.com/cilium/cilium to v1.15.10
+    [security]
+  * chore(deps): update docker.io/library/golang:1.22.8 docker
+    digest to 0ca97f4
+  * chore(deps): update docker.io/library/alpine docker tag to
+    v3.20.3
+  * chore(deps): update go to v1.22.8
+  * fix(deps): update module github.com/containers/common to
+    v0.60.4 [security]
+  * chore(deps): update docker.io/library/golang:1.22.6 docker
+    digest to a632201
+  * chore: update containers/common
+  * Remove const from parameters
+  * bpf: allow all operations for syscall64 type
+  * watcher: add metrics for deleted pod cache
+  * watcher: add a deleted pod cache
+  * watcher: add test for "fast" k8s API server
+  * watcher: change FindContainer function
+  * watcher: add a containerIDKey function
+  * watcher: refactor watcher
+  * Export EventCache tunables in the Helm Chart
+  * Reduce the delay in GRPC gotests
+  * Make EventCache configurable
+  * helm: Set rthooks.podSecurityContext to empty by default
+  * helm: Remove deprecated tetragon.skipCRDCreation value
+  * [bugfix] Fix clone event caching due to missing pod info
+
+-------------------------------------------------------------------
 Fri Sep 13 18:27:13 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.2.0:

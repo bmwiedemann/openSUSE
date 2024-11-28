@@ -18,8 +18,8 @@
 
 %define qt5_snapshot 1
 %define base_name libqt5
-%define real_version 5.15.15
-%define so_version 5.15.15
+%define real_version 5.15.16
+%define so_version 5.15.16
 %define tar_version qttools-everywhere-src-%{version}
 %if 0%{?suse_version} >= 1330
 %bcond_without qdoc
@@ -28,7 +28,7 @@
 %bcond_with qdoc
 %endif
 Name:           libqt5-qttools
-Version:        5.15.15+kde3
+Version:        5.15.16+kde3
 Release:        0
 Summary:        Qt 5 QtTools Module
 # Legal:

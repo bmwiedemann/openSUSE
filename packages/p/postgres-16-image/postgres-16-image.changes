@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 26 14:34:27 UTC 2024 - SUSE Update Bot <bci-internal@suse.de>
+
+- Switch latest tag from postgres 16 to postgres 17
+
+-------------------------------------------------------------------
 Thu Nov 14 17:06:30 UTC 2024 - SUSE Update Bot <bci-internal@suse.de>
 
 - switch to multistage build

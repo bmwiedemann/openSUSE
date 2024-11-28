@@ -16,9 +16,6 @@
 #
 
 
-# dask/distributed are not compatible yet (e.g. gh#dask/dask#11457)
-%define skip_python313 1
-
 %global flavor @BUILD_FLAVOR@%{nil}
 %{?sle15_python_module_pythons}
 %if "%{flavor}" == ""

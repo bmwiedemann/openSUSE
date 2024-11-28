@@ -345,4 +345,12 @@
     <comment>Qt 5.15.15 (forwarded request 1199183 from favogt)</comment>
     <requestid>1199188</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>f655e2c61bb68aa27d63dd7ecefedacc</srcmd5>
+    <version>5.15.16+kde1</version>
+    <time>1732741526</time>
+    <user>anag+factory</user>
+    <comment>Qt 5.15.16, untested. Try #2. (forwarded request 1226586 from favogt)</comment>
+    <requestid>1226595</requestid>
+  </revision>
 </revisionlist>

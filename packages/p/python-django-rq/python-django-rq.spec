@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-rq
-Version:        2.10.2
+Version:        3.0
 Release:        0
 Summary:        Simple app that provides django integration for RQ (Redis Queue)
 License:        MIT

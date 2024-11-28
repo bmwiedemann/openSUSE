@@ -22,11 +22,11 @@
 %define qt5_snapshot 1
 %define libname libQt5Positioning5
 %define base_name libqt5
-%define real_version 5.15.15
-%define so_version 5.15.15
+%define real_version 5.15.16
+%define so_version 5.15.16
 %define tar_version qtlocation-everywhere-src-%{version}
 Name:           libqt5-qtlocation
-Version:        5.15.15+kde7
+Version:        5.15.16+kde7
 Release:        0
 Summary:        Qt 5 Location Library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)

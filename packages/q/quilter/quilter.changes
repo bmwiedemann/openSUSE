@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Nov 24 09:31:59 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- fix build by passing -Wno-int-conversion -Wno-incompatible-pointer-types
+  as CFLAGS
+- update spec file for Leap 16.0:
+  * remove %suse_update_desktop_file
+  * remove recommending lang package
+  * remove mentions of elementary
+
+-------------------------------------------------------------------
 Thu Sep  9 22:42:01 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 3.3.4:

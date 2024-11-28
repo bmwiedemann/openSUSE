@@ -19,11 +19,11 @@
 %define qt5_snapshot 1
 %define libname libQt5WebChannel5
 %define base_name libqt5
-%define real_version 5.15.15
-%define so_version 5.15.15
+%define real_version 5.15.16
+%define so_version 5.15.16
 %define tar_version qtwebchannel-everywhere-src-%{version}
 Name:           libqt5-qtwebchannel
-Version:        5.15.15+kde3
+Version:        5.15.16+kde3
 Release:        0
 Summary:        Qt 5 WebChannel Addon
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)

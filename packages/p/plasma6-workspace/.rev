@@ -177,4 +177,12 @@
     <comment>- Replace '%requires_ge plasma6-desktop' with 'Requires: plasma6-desktop'</comment>
     <requestid>1224093</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b73a25f5a29178f5edf6bcf8f8fea66c</srcmd5>
+    <version>6.2.4</version>
+    <time>1732741576</time>
+    <user>anag+factory</user>
+    <comment>Plasma 6.2.4, untested (forwarded request 1226674 from Vogtinator)</comment>
+    <requestid>1226742</requestid>
+  </revision>
 </revisionlist>

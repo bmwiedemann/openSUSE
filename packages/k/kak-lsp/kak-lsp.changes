@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Sat Nov 23 23:49:49 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 18.1.0:
+  * Fix mixed-up order in tailwindcss example
+  * Fix bell in modeline not being cleared on ShowMessage notifications
+  * Fix patttern typo
+  * Add markdown-oxide language-server
+  * Add ruby-lsp language-server
+  * Fix stale quoting in lsp-do-send-sync
+  * Add log statements for raw request, handle EWOULDBLOCK/EAGAIN
+  * Use write instead of %val{selection} to send buffer contents
+  * Use a nonblocking fifo instead of pykak-style alternating fifos
+  * Address clippy lint
+  * Extend macOS workarounds to buffer synchronization
+  * Fail early again on missing language.foo.command field
+  * Also use elixir-ls on eex files
+  * Fail startup if session state files already exists
+  * Don't create session state if session is already running
+  * Escalate failure if kak-lsp daemon fails to start
+  * Don't clean up parent of session directories
+  * Do not briefly start kak-lsp on KakEnd if lsp-enable has never been called
+  * Fix typo in lsp-exit
+  * Rectify inconsistent quoting in recommended mappings
+  * Don't block when language servers are slow to exit
+  * Work around hang due to lost fifo on macOS
+  * Restyle --help output
+  * Fix test/clangd-diagnostic-gutter.sh flakiness
+  * Fix test/run not finding python on macOS
+  * Remove bad text edit assertion
+  * Braces in commented out code must match too
+  * The correct validation setting for CSS is `css.validate = true`
+  * Add CSS, HTML and JSON options, add Haskell's static-ls
+  * Workaround macOS waitid() not zeroing si_signo
+  * Fix waitid() being called unnecessarily
+  * Fix formatting spuriously moving cursor with vscode-html-language-server
+  * Fix Rust version
+  * Workaround HTML/CSS language servers not enabling formatting
+  * Workaround HTML/CSS language server crashing due to missing validProperties
+  * Fix crash interpreting text edit without trailing newline
+  * Clean up a debug log
+  * Remove dependency on Rust 1.80
+  * Fix regression causing crash when language server command fails exec()
+  * Don't send SIGTERM to language server, remove obsolete wait()
+  * Simplify sending of initialization options
+  * Fix regression causing hangs on restart
+  * Fix regression causing server configuration to be sent as initialization option
+  * Fix regression causing "kak -p" to become a zombie
+  * Remove "set-option -add" from most commented default configs
+  * Back out "lsp-start to wait until existing server has exited"
+  * Fix race conditions reading kak-lsp PID file
+  * Send SIGTERM, not SIGKILL to shut down inert language server
+  * Speed up language server shutdown
+  * lsp-exit to wait until the session directory is removed
+  * Remove shell calls from async request sending
+  * Drain fifo on exit to unblock Kakoune
+  * Remove unnecssary environment variable
+  * Refactor temporary directory cleanup logic
+  * lsp-start to wait until existing server has exited
+  * Wait for PID file creation after start
+  * Move fifo into a per-session directory
+  * Remove errant semicolon
+  * Remove shell calls for code-actions and highlight-references hooks
+  * Move hook definition out of the way
+  * Stop using temporary file also for textDocument/didChange and textDocument/didOpen
+  * typst: add default configuration
+  * Mohamad Makki Copyright Waiver
+  * Update manual installation instructions for ARM macOS
+
+-------------------------------------------------------------------
 Fri Nov  8 14:39:42 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Use only tier 1 arches. Never heard of kakoune being used in other arches.

@@ -4804,4 +4804,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1224846</requestid>
   </revision>
+  <revision rev="277" vrev="50">
+    <srcmd5>02e8e5fbe48101c030046612b93bd04f</srcmd5>
+    <version>unknown</version>
+    <time>1732741488</time>
+    <user>anag+factory</user>
+    <comment>- Add ncurses patch 20241123
+  + remove dependency on stdbool.h from configure script check for type
+    of bool when C++ binding is omitted (report by Sam James).
+  + compiler-warning fixes</comment>
+    <requestid>1226567</requestid>
+  </revision>
 </revisionlist>

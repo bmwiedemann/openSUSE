@@ -1,83 +1,359 @@
-From 0199582127111c453db70a0133db8c64baca7c40 Mon Sep 17 00:00:00 2001
+From 99df182e9171e9b9e81811447f37ace05acc9272 Mon Sep 17 00:00:00 2001
 From: Ben Greiner <code@bnavigator.de>
 Date: Sun, 2 Jun 2024 16:43:06 +0200
-Subject: [PATCH 1/3] Remove np.nan and np.inf aliases no longer present in
+Subject: [PATCH 01/14] Remove np.nan and np.inf aliases no longer present in
  numpy2
 
----
- .../tests/test_optional/test_utils/test_utils.py     | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
-
-diff --git a/packages/python/plotly/plotly/tests/test_optional/test_utils/test_utils.py b/packages/python/plotly/plotly/tests/test_optional/test_utils/test_utils.py
-index cf32e1bdf..d7d982e63 100644
---- a/packages/python/plotly/plotly/tests/test_optional/test_utils/test_utils.py
-+++ b/packages/python/plotly/plotly/tests/test_optional/test_utils/test_utils.py
-@@ -34,7 +34,7 @@ if matplotlylib:
+diff --git a/packages/python/plotly/_plotly_utils/tests/validators/test_any_validator.py b/packages/python/plotly/_plotly_utils/tests/validators/test_any_validator.py
+index 0d1083c7ee..57ff05f218 100644
+--- a/packages/python/plotly/_plotly_utils/tests/validators/test_any_validator.py
++++ b/packages/python/plotly/_plotly_utils/tests/validators/test_any_validator.py
+@@ -1,6 +1,7 @@
+ import pytest
+ from _plotly_utils.basevalidators import AnyValidator
+ import numpy as np
++from plotly.tests.test_optional.test_utils.test_utils import np_nan, np_inf
  
- ## JSON encoding
- numeric_list = [1, 2, 3]
--np_list = np.array([1, 2, 3, np.NaN, np.NAN, np.Inf, dt(2014, 1, 5)])
-+np_list = np.array([1, 2, 3, np.nan, np.inf, dt(2014, 1, 5)])
- mixed_list = [
-     1,
-     "A",
-@@ -45,7 +45,7 @@ mixed_list = [
- dt_list = [dt(2014, 1, 5), dt(2014, 1, 5, 1, 1, 1), dt(2014, 1, 5, 1, 1, 1, 1)]
  
- df = pd.DataFrame(
--    columns=["col 1"], data=[1, 2, 3, dt(2014, 1, 5), pd.NaT, np.NaN, np.Inf]
-+    columns=["col 1"], data=[1, 2, 3, dt(2014, 1, 5), pd.NaT, np.nan, np.inf]
+ # Fixtures
+@@ -18,7 +19,7 @@ def validator_aok():
+ # Tests
+ # -----
+ # ### Acceptance ###
+-@pytest.mark.parametrize("val", [set(), "Hello", 123, np.inf, np.nan, {}])
++@pytest.mark.parametrize("val", [set(), "Hello", 123, np_inf(), np_nan(), {}])
+ def test_acceptance(val, validator):
+     assert validator.validate_coerce(val) is val
+ 
+diff --git a/packages/python/plotly/_plotly_utils/tests/validators/test_boolean_validator.py b/packages/python/plotly/_plotly_utils/tests/validators/test_boolean_validator.py
+index ec4b7c3197..bc714d9f8d 100644
+--- a/packages/python/plotly/_plotly_utils/tests/validators/test_boolean_validator.py
++++ b/packages/python/plotly/_plotly_utils/tests/validators/test_boolean_validator.py
+@@ -1,7 +1,6 @@
+ import pytest
+ from _plotly_utils.basevalidators import BooleanValidator
+-import numpy as np
+-
++from plotly.tests.test_optional.test_utils.test_utils import np_nan
+ 
+ # Boolean Validator
+ # =================
+@@ -18,7 +17,7 @@ def test_acceptance(val, validator):
+ 
+ 
+ # ### Rejection ###
+-@pytest.mark.parametrize("val", [1.0, 0.0, "True", "False", [], 0, np.nan])
++@pytest.mark.parametrize("val", [1.0, 0.0, "True", "False", [], 0, np_nan()])
+ def test_rejection(val, validator):
+     with pytest.raises(ValueError) as validation_failure:
+         validator.validate_coerce(val)
+diff --git a/packages/python/plotly/_plotly_utils/tests/validators/test_enumerated_validator.py b/packages/python/plotly/_plotly_utils/tests/validators/test_enumerated_validator.py
+index f5eff75401..5090610384 100644
+--- a/packages/python/plotly/_plotly_utils/tests/validators/test_enumerated_validator.py
++++ b/packages/python/plotly/_plotly_utils/tests/validators/test_enumerated_validator.py
+@@ -2,7 +2,7 @@
+ import numpy as np
+ import pandas as pd
+ from _plotly_utils.basevalidators import EnumeratedValidator
+-
++from plotly.tests.test_optional.test_utils.test_utils import np_inf
+ 
+ # Fixtures
+ # --------
+@@ -42,7 +42,7 @@ def test_acceptance(val, validator):
+ # ### Value Rejection ###
+ @pytest.mark.parametrize(
+     "val",
+-    [True, 0, 1, 23, np.inf, set(), ["first", "second"], [True], ["third", 4], [4]],
++    [True, 0, 1, 23, np_inf(), set(), ["first", "second"], [True], ["third", 4], [4]],
  )
+ def test_rejection_by_value(val, validator):
+     with pytest.raises(ValueError) as validation_failure:
+@@ -95,7 +95,7 @@ def test_acceptance_aok(val, validator_aok):
  
- rng = pd.date_range("1/1/2011", periods=2, freq="H")
-@@ -184,7 +184,7 @@ class TestJSONEncoder(TestCase):
  
-         assert (
-             js1 == '{"type": "scatter3d", "x": [1, 2, 3], '
--            '"y": [1, 2, 3, null, null, null, "2014-01-05T00:00:00"], '
-+            '"y": [1, 2, 3, null, null, "2014-01-05T00:00:00"], '
-             '"z": [1, "A", "2014-01-05T00:00:00", '
-             '"2014-01-05T01:01:01", "2014-01-05T01:01:01.000001"]}'
-         )
-@@ -195,9 +195,9 @@ class TestJSONEncoder(TestCase):
-         _json.dumps(figure, cls=utils.PlotlyJSONEncoder, sort_keys=True)
+ # ### Rejection by value ###
+-@pytest.mark.parametrize("val", [True, 0, 1, 23, np.inf, set()])
++@pytest.mark.parametrize("val", [True, 0, 1, 23, np_inf(), set()])
+ def test_rejection_by_value_aok(val, validator_aok):
+     with pytest.raises(ValueError) as validation_failure:
+         validator_aok.validate_coerce(val)
+@@ -105,7 +105,7 @@ def test_rejection_by_value_aok(val, validator_aok):
  
-         # Test data wasn't mutated
--        np_array = np.array([1, 2, 3, np.NaN, np.NAN, np.Inf, dt(2014, 1, 5)])
-+        np_array = np.array([1, 2, 3, np.nan, np.inf, dt(2014, 1, 5)])
-         for k in range(len(np_array)):
--            if k in [3, 4]:
-+            if k == 3:
-                 # check NaN
-                 assert np.isnan(np_list[k]) and np.isnan(np_array[k])
-             else:
-@@ -237,7 +237,7 @@ class TestJSONEncoder(TestCase):
-         # Test that data wasn't mutated
-         assert_series_equal(
-             df["col 1"],
--            pd.Series([1, 2, 3, dt(2014, 1, 5), pd.NaT, np.NaN, np.Inf], name="col 1"),
-+            pd.Series([1, 2, 3, dt(2014, 1, 5), pd.NaT, np.nan, np.inf], name="col 1"),
-         )
+ # ### Reject by elements ###
+ @pytest.mark.parametrize(
+-    "val", [[True], [0], [1, 23], [np.inf, set()], ["ffirstt", "second", "third"]]
++    "val", [[True], [0], [1, 23], [np_inf(), set()], ["ffirstt", "second", "third"]]
+ )
+ def test_rejection_by_element_aok(val, validator_aok):
+     with pytest.raises(ValueError) as validation_failure:
+diff --git a/packages/python/plotly/_plotly_utils/tests/validators/test_integer_validator.py b/packages/python/plotly/_plotly_utils/tests/validators/test_integer_validator.py
+index 9a01fde7e4..446e949545 100644
+--- a/packages/python/plotly/_plotly_utils/tests/validators/test_integer_validator.py
++++ b/packages/python/plotly/_plotly_utils/tests/validators/test_integer_validator.py
+@@ -5,7 +5,7 @@
+ from _plotly_utils.basevalidators import IntegerValidator
+ import numpy as np
+ import pandas as pd
+-
++from plotly.tests.test_optional.test_utils.test_utils import np_nan, np_inf
  
-         j2 = _json.dumps(df.index, cls=utils.PlotlyJSONEncoder)
--- 
-2.45.1
-
-From f88554113e8cf55a1d756c3f0d33b92a891d0475 Mon Sep 17 00:00:00 2001
-From: Ben Greiner <code@bnavigator.de>
-Date: Sun, 2 Jun 2024 16:48:34 +0200
-Subject: [PATCH 2/3] Avoid putting 255 into int8 due to new numpy 2 type
- promotion rules
-
----
- .../plotly/plotly/tests/test_optional/test_px/test_imshow.py    | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
+ # ### Fixtures ###
+ @pytest.fixture()
+@@ -53,7 +53,7 @@ def test_acceptance(val, validator):
+ 
+ # ### Rejection by value ###
+ @pytest.mark.parametrize(
+-    "val", ["hello", (), [], [1, 2, 3], set(), "34", np.nan, np.inf, -np.inf]
++    "val", ["hello", (), [], [1, 2, 3], set(), "34", np_nan(), np_inf(), -np_inf()]
+ )
+ def test_rejection_by_value(val, validator):
+     with pytest.raises(ValueError) as validation_failure:
+diff --git a/packages/python/plotly/_plotly_utils/tests/validators/test_number_validator.py b/packages/python/plotly/_plotly_utils/tests/validators/test_number_validator.py
+index 7fd9e6657c..847f02619a 100644
+--- a/packages/python/plotly/_plotly_utils/tests/validators/test_number_validator.py
++++ b/packages/python/plotly/_plotly_utils/tests/validators/test_number_validator.py
+@@ -4,6 +4,7 @@
+ from _plotly_utils.basevalidators import NumberValidator
+ import numpy as np
+ import pandas as pd
++from plotly.tests.test_optional.test_utils.test_utils import np_nan, np_inf
+ 
+ # Fixtures
+ # --------
+@@ -36,7 +37,7 @@ def validator_aok():
+ # ------------
+ # ### Acceptance ###
+ @pytest.mark.parametrize(
+-    "val", [1.0, 0.0, 1, -1234.5678, 54321, np.pi, np.nan, np.inf, -np.inf]
++    "val", [1.0, 0.0, 1, -1234.5678, 54321, np.pi, np_nan(), np_inf(), -np_inf()]
+ )
+ def test_acceptance(val, validator):
+     assert validator.validate_coerce(val) == approx(val, nan_ok=True)
+@@ -57,7 +58,7 @@ def test_acceptance_min_max(val, validator_min_max):
+     assert validator_min_max.validate_coerce(val) == approx(val)
+ 
+ 
+-@pytest.mark.parametrize("val", [-1.01, -10, 2.1, 234, -np.inf, np.nan, np.inf])
++@pytest.mark.parametrize("val", [-1.01, -10, 2.1, 234, -np_inf(), np_nan(), np_inf()])
+ def test_rejection_min_max(val, validator_min_max):
+     with pytest.raises(ValueError) as validation_failure:
+         validator_min_max.validate_coerce(val)
+@@ -66,12 +67,12 @@ def test_rejection_min_max(val, validator_min_max):
+ 
+ 
+ # ### With min only ###
+-@pytest.mark.parametrize("val", [0, 0.0, -0.5, 99999, np.inf])
++@pytest.mark.parametrize("val", [0, 0.0, -0.5, 99999, np_inf()])
+ def test_acceptance_min(val, validator_min):
+     assert validator_min.validate_coerce(val) == approx(val)
+ 
+ 
+-@pytest.mark.parametrize("val", [-1.01, -np.inf, np.nan])
++@pytest.mark.parametrize("val", [-1.01, -np_inf(), np_nan()])
+ def test_rejection_min(val, validator_min):
+     with pytest.raises(ValueError) as validation_failure:
+         validator_min.validate_coerce(val)
+@@ -80,12 +81,12 @@ def test_rejection_min(val, validator_min):
+ 
+ 
+ # ### With max only ###
+-@pytest.mark.parametrize("val", [0, 0.0, -np.inf, -123456, np.pi / 2])
++@pytest.mark.parametrize("val", [0, 0.0, -np_inf(), -123456, np.pi / 2])
+ def test_acceptance_max(val, validator_max):
+     assert validator_max.validate_coerce(val) == approx(val)
+ 
+ 
+-@pytest.mark.parametrize("val", [2.01, np.inf, np.nan])
++@pytest.mark.parametrize("val", [2.01, np_inf(), np_nan()])
+ def test_rejection_max(val, validator_max):
+     with pytest.raises(ValueError) as validation_failure:
+         validator_max.validate_coerce(val)
+@@ -142,7 +143,13 @@ def test_rejection_aok(val, validator_aok):
+ # ### Rejection by element ###
+ @pytest.mark.parametrize(
+     "val",
+-    [[-1.6, 0.0], [1, 1.5, 2], [-0.1234, 0.41, np.nan], [0, np.inf], [0, -np.inf]],
++    [
++        [-1.6, 0.0],
++        [1, 1.5, 2],
++        [-0.1234, 0.41, np_nan()],
++        [0, np_inf()],
++        [0, -np_inf()],
++    ],
+ )
+ def test_rejection_aok_min_max(val, validator_aok):
+     with pytest.raises(ValueError) as validation_failure:
+diff --git a/packages/python/plotly/_plotly_utils/tests/validators/test_string_validator.py b/packages/python/plotly/_plotly_utils/tests/validators/test_string_validator.py
+index 380c5bccec..f9f96f4f79 100644
+--- a/packages/python/plotly/_plotly_utils/tests/validators/test_string_validator.py
++++ b/packages/python/plotly/_plotly_utils/tests/validators/test_string_validator.py
+@@ -2,6 +2,7 @@
+ 
+ from _plotly_utils.basevalidators import StringValidator
+ import numpy as np
++from plotly.tests.test_optional.test_utils.test_utils import np_nan
+ 
+ 
+ # Fixtures
+@@ -53,7 +54,7 @@ def validator_no_blanks_aok():
+ # Not strict
+ # ### Acceptance ###
+ @pytest.mark.parametrize(
+-    "val", ["bar", 234, np.nan, "HELLO!!!", "world!@#$%^&*()", "", "\u03BC"]
++    "val", ["bar", 234, np_nan(), "HELLO!!!", "world!@#$%^&*()", "", "\u03BC"]
+ )
+ def test_acceptance(val, validator):
+     expected = str(val) if not isinstance(val, str) else val
+@@ -108,7 +109,7 @@ def test_acceptance_strict(val, validator_strict):
+ 
+ 
+ # ### Rejection by value ###
+-@pytest.mark.parametrize("val", [(), [], [1, 2, 3], set(), np.nan, np.pi, 23])
++@pytest.mark.parametrize("val", [(), [], [1, 2, 3], set(), np_nan(), np.pi, 23])
+ def test_rejection_strict(val, validator_strict):
+     with pytest.raises(ValueError) as validation_failure:
+         validator_strict.validate_coerce(val)
+diff --git a/packages/python/plotly/_plotly_utils/tests/validators/test_subplotid_validator.py b/packages/python/plotly/_plotly_utils/tests/validators/test_subplotid_validator.py
+index d4f7a84974..39b3c96f04 100644
+--- a/packages/python/plotly/_plotly_utils/tests/validators/test_subplotid_validator.py
++++ b/packages/python/plotly/_plotly_utils/tests/validators/test_subplotid_validator.py
+@@ -1,6 +1,6 @@
+ import pytest
+ from _plotly_utils.basevalidators import SubplotidValidator
+-import numpy as np
++from plotly.tests.test_optional.test_utils.test_utils import np_nan, np_inf
+ 
+ 
+ # Fixtures
+@@ -19,7 +19,7 @@ def test_acceptance(val, validator):
+ 
+ 
+ # ### Rejection by type ###
+-@pytest.mark.parametrize("val", [23, [], {}, set(), np.inf, np.nan])
++@pytest.mark.parametrize("val", [23, [], {}, set(), np_inf(), np_nan()])
+ def test_rejection_type(val, validator):
+     with pytest.raises(ValueError) as validation_failure:
+         validator.validate_coerce(val)
+diff --git a/packages/python/plotly/plotly/tests/test_optional/test_figure_factory/test_figure_factory.py b/packages/python/plotly/plotly/tests/test_optional/test_figure_factory/test_figure_factory.py
+index 20a1b23f7f..52c16bf09c 100644
+--- a/packages/python/plotly/plotly/tests/test_optional/test_figure_factory/test_figure_factory.py
++++ b/packages/python/plotly/plotly/tests/test_optional/test_figure_factory/test_figure_factory.py
+@@ -6,6 +6,7 @@
+ 
+ import plotly.figure_factory as ff
+ from plotly.tests.test_optional.optional_utils import NumpyTestUtilsMixin
++from plotly.tests.test_optional.test_utils.test_utils import np_nan, np_inf
+ 
+ import numpy as np
+ from plotly.tests.utils import TestCaseNoTemplate
+@@ -975,10 +976,10 @@ def test_default_dendrogram(self):
+             ],
+             layout=go.Layout(
+                 autosize=False,
+-                height=np.inf,
++                height=np_inf(),
+                 hovermode="closest",
+                 showlegend=False,
+-                width=np.inf,
++                width=np_inf(),
+                 xaxis=go.layout.XAxis(
+                     mirror="allticks",
+                     rangemode="tozero",
+@@ -1062,10 +1063,10 @@ def test_dendrogram_random_matrix(self):
+             ],
+             layout=go.Layout(
+                 autosize=False,
+-                height=np.inf,
++                height=np_inf(),
+                 hovermode="closest",
+                 showlegend=False,
+-                width=np.inf,
++                width=np_inf(),
+                 xaxis=go.layout.XAxis(
+                     mirror="allticks",
+                     rangemode="tozero",
+@@ -1217,10 +1218,10 @@ def test_dendrogram_colorscale(self):
+             ],
+             layout=go.Layout(
+                 autosize=False,
+-                height=np.inf,
++                height=np_inf(),
+                 hovermode="closest",
+                 showlegend=False,
+-                width=np.inf,
++                width=np_inf(),
+                 xaxis=go.layout.XAxis(
+                     mirror="allticks",
+                     rangemode="tozero",
+@@ -4118,25 +4119,25 @@ def test_full_choropleth(self):
+                 -88.02432999999999,
+                 -88.04504299999999,
+                 -88.053375,
+-                np.nan,
++                np_nan(),
+                 -88.211209,
+                 -88.209999,
+                 -88.208733,
+                 -88.209559,
+                 -88.211209,
+-                np.nan,
++                np_nan(),
+                 -88.22511999999999,
+                 -88.22128099999999,
+                 -88.218694,
+                 -88.22465299999999,
+                 -88.22511999999999,
+-                np.nan,
++                np_nan(),
+                 -88.264659,
+                 -88.25782699999999,
+                 -88.25947,
+                 -88.255659,
+                 -88.264659,
+-                np.nan,
++                np_nan(),
+                 -88.327302,
+                 -88.20146799999999,
+                 -88.141143,
+@@ -4146,13 +4147,13 @@ def test_full_choropleth(self):
+                 -88.10665399999999,
+                 -88.149812,
+                 -88.327302,
+-                np.nan,
++                np_nan(),
+                 -88.346745,
+                 -88.341235,
+                 -88.33288999999999,
+                 -88.346823,
+                 -88.346745,
+-                np.nan,
++                np_nan(),
+                 -88.473227,
+                 -88.097888,
+                 -88.154617,
 diff --git a/packages/python/plotly/plotly/tests/test_optional/test_px/test_imshow.py b/packages/python/plotly/plotly/tests/test_optional/test_px/test_imshow.py
-index c2e863c84..d8f9ad98c 100644
+index c2e863c846..f06b91bca0 100644
 --- a/packages/python/plotly/plotly/tests/test_optional/test_px/test_imshow.py
 +++ b/packages/python/plotly/plotly/tests/test_optional/test_px/test_imshow.py
-@@ -341,7 +341,7 @@ def test_imshow_source_dtype_zmax(dtype, contrast_rescaling):
+@@ -7,6 +7,7 @@
+ import base64
+ import datetime
+ from plotly.express.imshow_utils import rescale_intensity
++from plotly.tests.test_optional.test_utils.test_utils import np_nan
+ 
+ img_rgb = np.array([[[255, 0, 0], [0, 255, 0], [0, 0, 255]]], dtype=np.uint8)
+ img_gray = np.arange(100, dtype=float).reshape((10, 10))
+@@ -111,7 +112,7 @@ def test_nan_inf_data(binary_string):
+     zmaxs = [1, 255]
+     for zmax, img in zip(zmaxs, imgs):
+         img[0] = 0
+-        img[10:12] = np.nan
++        img[10:12] = np_nan()
+         # the case of 2d/heatmap is handled gracefully by the JS trace but I don't know how to check it
+         fig = px.imshow(
+             np.dstack((img,) * 3),
+@@ -341,7 +342,7 @@ def test_imshow_source_dtype_zmax(dtype, contrast_rescaling):
              assert (
                  np.abs(
                      np.max(decode_image_string(fig.data[0].source))
@@ -86,6 +362,205 @@ index c2e863c84..d8f9ad98c 100644
                  )
                  < 1
              )
--- 
-2.45.1
-
+diff --git a/packages/python/plotly/plotly/tests/test_optional/test_px/test_trendline.py b/packages/python/plotly/plotly/tests/test_optional/test_px/test_trendline.py
+index 66046981ef..12e7f4b503 100644
+--- a/packages/python/plotly/plotly/tests/test_optional/test_px/test_trendline.py
++++ b/packages/python/plotly/plotly/tests/test_optional/test_px/test_trendline.py
+@@ -3,6 +3,7 @@
+ import pandas as pd
+ import pytest
+ from datetime import datetime
++from plotly.tests.test_optional.test_utils.test_utils import np_nan
+ 
+ 
+ @pytest.mark.parametrize(
+@@ -65,7 +66,7 @@ def test_trendline_enough_values(mode, options):
+     assert len(fig.data) == 2
+     assert fig.data[1].x is None
+     fig = px.scatter(
+-        x=[0, 1], y=np.array([0, np.nan]), trendline=mode, trendline_options=options
++        x=[0, 1], y=np.array([0, np_nan()]), trendline=mode, trendline_options=options
+     )
+     assert len(fig.data) == 2
+     assert fig.data[1].x is None
+@@ -75,8 +76,8 @@ def test_trendline_enough_values(mode, options):
+     assert len(fig.data) == 2
+     assert fig.data[1].x is None
+     fig = px.scatter(
+-        x=np.array([0, 1, np.nan]),
+-        y=np.array([0, np.nan, 1]),
++        x=np.array([0, 1, np_nan()]),
++        y=np.array([0, np_nan(), 1]),
+         trendline=mode,
+         trendline_options=options,
+     )
+@@ -88,8 +89,8 @@ def test_trendline_enough_values(mode, options):
+     assert len(fig.data) == 2
+     assert len(fig.data[1].x) == 2
+     fig = px.scatter(
+-        x=np.array([0, 1, np.nan, 2]),
+-        y=np.array([1, np.nan, 1, 2]),
++        x=np.array([0, 1, np_nan(), 2]),
++        y=np.array([1, np_nan(), 1, 2]),
+         trendline=mode,
+         trendline_options=options,
+     )
+@@ -112,7 +113,7 @@ def test_trendline_enough_values(mode, options):
+ def test_trendline_nan_values(mode, options):
+     df = px.data.gapminder().query("continent == 'Oceania'")
+     start_date = 1970
+-    df["pop"][df["year"] < start_date] = np.nan
++    df["pop"][df["year"] < start_date] = np_nan()
+     fig = px.scatter(
+         df,
+         x="year",
+diff --git a/packages/python/plotly/plotly/tests/test_optional/test_utils/test_utils.py b/packages/python/plotly/plotly/tests/test_optional/test_utils/test_utils.py
+index 9fa1896640..33284452b7 100644
+--- a/packages/python/plotly/plotly/tests/test_optional/test_utils/test_utils.py
++++ b/packages/python/plotly/plotly/tests/test_optional/test_utils/test_utils.py
+@@ -9,6 +9,7 @@
+ from unittest import TestCase
+ from time import time
+ import pytest
++from packaging.version import Version
+ 
+ import numpy as np
+ import pandas as pd
+@@ -31,10 +32,56 @@
+     import matplotlib.pyplot as plt
+     from plotly.matplotlylib import Exporter, PlotlyRenderer
+ 
++    @pytest.mark.matplotlib
++    def test_masked_constants_example():
++        try:
++            pd.options.plotting.backend = "matplotlib"
++        except Exception:
++            pass
++
++        # example from: https://gist.github.com/tschaume/d123d56bf586276adb98
++        data = {
++            "esN": [0, 1, 2, 3],
++            "ewe_is0": [-398.11901997, -398.11902774, -398.11897111, -398.11882215],
++            "ewe_is1": [-398.11793027, -398.11792966, -398.11786308, None],
++            "ewe_is2": [-398.11397008, -398.11396421, None, None],
++        }
++        df = pd.DataFrame.from_dict(data)
++
++        plotopts = {"x": "esN"}
++        fig, ax = plt.subplots(1, 1)
++        df.plot(ax=ax, **plotopts)
++
++        renderer = PlotlyRenderer()
++        Exporter(renderer).run(fig)
++
++        _json.dumps(renderer.plotly_fig, cls=utils.PlotlyJSONEncoder)
++
++        jy = _json.dumps(
++            renderer.plotly_fig["data"][1]["y"], cls=utils.PlotlyJSONEncoder
++        )
++        print(jy)
++        array = _json.loads(jy)
++        assert array == [-398.11793027, -398.11792966, -398.11786308, None]
++
++
++def np_nan():
++    if Version(np.__version__) < Version("2.0.0"):
++        return np.NaN
++    else:
++        return np.nan
++
++
++def np_inf():
++    if Version(np.__version__) < Version("2.0.0"):
++        return np.Inf
++    else:
++        return np.inf
++
+ 
+ ## JSON encoding
+ numeric_list = [1, 2, 3]
+-np_list = np.array([1, 2, 3, np.NaN, np.NAN, np.Inf, dt(2014, 1, 5)])
++np_list = np.array([1, 2, 3, np_nan(), np_inf(), dt(2014, 1, 5)])
+ mixed_list = [
+     1,
+     "A",
+@@ -45,7 +92,7 @@
+ dt_list = [dt(2014, 1, 5), dt(2014, 1, 5, 1, 1, 1), dt(2014, 1, 5, 1, 1, 1, 1)]
+ 
+ df = pd.DataFrame(
+-    columns=["col 1"], data=[1, 2, 3, dt(2014, 1, 5), pd.NaT, np.NaN, np.Inf]
++    columns=["col 1"], data=[1, 2, 3, dt(2014, 1, 5), pd.NaT, np_nan(), np_inf()]
+ )
+ 
+ rng = pd.date_range("1/1/2011", periods=2, freq="H")
+@@ -184,7 +231,7 @@ def test_figure_json_encoding(self):
+ 
+         assert (
+             js1 == '{"type": "scatter3d", "x": [1, 2, 3], '
+-            '"y": [1, 2, 3, null, null, null, "2014-01-05T00:00:00"], '
++            '"y": [1, 2, 3, null, null, "2014-01-05T00:00:00"], '
+             '"z": [1, "A", "2014-01-05T00:00:00", '
+             '"2014-01-05T01:01:01", "2014-01-05T01:01:01.000001"]}'
+         )
+@@ -195,9 +242,9 @@ def test_figure_json_encoding(self):
+         _json.dumps(figure, cls=utils.PlotlyJSONEncoder, sort_keys=True)
+ 
+         # Test data wasn't mutated
+-        np_array = np.array([1, 2, 3, np.NaN, np.NAN, np.Inf, dt(2014, 1, 5)])
++        np_array = np.array([1, 2, 3, np_nan(), np_inf(), dt(2014, 1, 5)])
+         for k in range(len(np_array)):
+-            if k in [3, 4]:
++            if k == 3:
+                 # check NaN
+                 assert np.isnan(np_list[k]) and np.isnan(np_array[k])
+             else:
+@@ -237,7 +284,9 @@ def test_pandas_json_encoding(self):
+         # Test that data wasn't mutated
+         assert_series_equal(
+             df["col 1"],
+-            pd.Series([1, 2, 3, dt(2014, 1, 5), pd.NaT, np.NaN, np.Inf], name="col 1"),
++            pd.Series(
++                [1, 2, 3, dt(2014, 1, 5), pd.NaT, np_nan(), np_inf()], name="col 1"
++            ),
+         )
+ 
+         j2 = _json.dumps(df.index, cls=utils.PlotlyJSONEncoder)
+@@ -414,38 +463,3 @@ def test_no_numpy_int_type(self):
+         expected_tuple = (int,)
+ 
+         self.assertEqual(int_type_tuple, expected_tuple)
+-
+-
+-if matplotlylib:
+-
+-    @pytest.mark.matplotlib
+-    def test_masked_constants_example():
+-        try:
+-            pd.options.plotting.backend = "matplotlib"
+-        except Exception:
+-            pass
+-
+-        # example from: https://gist.github.com/tschaume/d123d56bf586276adb98
+-        data = {
+-            "esN": [0, 1, 2, 3],
+-            "ewe_is0": [-398.11901997, -398.11902774, -398.11897111, -398.11882215],
+-            "ewe_is1": [-398.11793027, -398.11792966, -398.11786308, None],
+-            "ewe_is2": [-398.11397008, -398.11396421, None, None],
+-        }
+-        df = pd.DataFrame.from_dict(data)
+-
+-        plotopts = {"x": "esN"}
+-        fig, ax = plt.subplots(1, 1)
+-        df.plot(ax=ax, **plotopts)
+-
+-        renderer = PlotlyRenderer()
+-        Exporter(renderer).run(fig)
+-
+-        _json.dumps(renderer.plotly_fig, cls=utils.PlotlyJSONEncoder)
+-
+-        jy = _json.dumps(
+-            renderer.plotly_fig["data"][1]["y"], cls=utils.PlotlyJSONEncoder
+-        )
+-        print(jy)
+-        array = _json.loads(jy)
+-        assert array == [-398.11793027, -398.11792966, -398.11786308, None]

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 15 13:44:42 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 25.2
+  * Fixed display problems in help window in some situations.
+  * Workaround for a Qt bug that made window disappear on some
+    platforms when returning from fullscreen.
+- Update to version 25.1
+  * Fixed menu text rendering issues on newer versions of KDE.
+
+-------------------------------------------------------------------
 Sat Apr 27 07:39:02 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 25.0

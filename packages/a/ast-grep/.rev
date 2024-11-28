@@ -631,4 +631,28 @@
   * fix(deps): update dependency @swc/core to v1.7.36 c11fd89</comment>
     <requestid>1219358</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>f832e712d3007fb02a7d7374e70258da</srcmd5>
+    <version>0.30.1</version>
+    <time>1732741947</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.30.1:
+  * fix: fix --config=config.yml arg parse #1617
+  * fix: update python version #1614
+  * fix(deps): update dependency @swc/core to v1.9.3 63c1c8d
+  * chore: revert pyo3 2022f38
+  * feat: add rule entity inspection c569ec7
+
+- Update to 0.30.0:
+  * Breaking change: feat: semi-structured tracing output #1574
+  * fix: error=unused-suppression should change exit code #1585
+  * refactor: move stdErr into inspect mod #1575
+  * infra: switch to llvm-cov #1570
+  * Breaking change: refactor: rename --tracing to --inspect 105945e
+  * Breaking change: refactor: remove --json format for tracing ed05be4
+  * Breaking change: fix: remove builtin dart support cd25a62
+  * Breaking change: fix: report unused suppression always 893df63
+  * fix(deps): update babel monorepo b8803ce</comment>
+    <requestid>1226814</requestid>
+  </revision>
 </revisionlist>

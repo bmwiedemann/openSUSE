@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 26 10:27:28 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Re-enable python 3.13 since numba has been patched to support it
+
+-------------------------------------------------------------------
 Wed Nov 20 15:53:53 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip python313: No numba 0.61 yet

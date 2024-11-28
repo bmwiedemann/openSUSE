@@ -158,4 +158,12 @@ privileges and the file did not have any effect. (boo#1125425)</comment>
     <comment></comment>
     <requestid>1186694</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>0f2b6394a61c289d42efa0783badeed6</srcmd5>
+    <version>0.9.8</version>
+    <time>1732741523</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1226565</requestid>
+  </revision>
 </revisionlist>

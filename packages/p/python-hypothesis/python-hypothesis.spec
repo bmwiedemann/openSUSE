@@ -92,6 +92,7 @@ BuildRequires:  %{python_module pexpect}
 BuildRequires:  %{python_module pytest >= 4.6}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module python-dateutil >= 1.4}
+BuildRequires:  %{python_module rich >= 9.0.0}
 BuildRequires:  %{python_module typing_extensions}
 %if %{with complete_tests}
 BuildRequires:  %{python_module Django >= 3.2}
@@ -206,6 +207,9 @@ hypothesis.settings.register_profile(
 " >> tests/conftest.py
 %if %{without complete_tests}
 export PYTEST_ADDOPTS="--ignore=tests/pandas/ --ignore=tests/redis/test_redis_exampledatabase.py"
+# gh#HypothesisWorks/hypothesis#4185
+# pytest < 8.0 doesn't support __notes__ in pytest.raises()
+donttest+=" or test_adds_note_showing_which_strategy"
 %endif
 %pytest -c pytest.ini -k "not ($donttest)" tests; rm -rf .pytest_cache
 %endif

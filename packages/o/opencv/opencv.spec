@@ -83,6 +83,7 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 %else
 BuildRequires:  python3-base
+BuildRequires:  python3-setuptools
 %endif
 BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.2.0
 BuildRequires:  pkgconfig(Qt5Gui) >= 5.2.0

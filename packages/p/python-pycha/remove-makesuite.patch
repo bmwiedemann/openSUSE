@@ -1,0 +1,178 @@
+Index: pycha-0.8.1/tests/bar.py
+===================================================================
+--- pycha-0.8.1.orig/tests/bar.py
++++ pycha-0.8.1/tests/bar.py
+@@ -363,15 +363,3 @@ class HorizontalBarTests(unittest.TestCa
+         ch = pycha.bar.HorizontalBarChart(None)
+         shadow = ch._getShadowRectangle(10, 20, 400, 300)
+         self.assertEqual(shadow, (10, 18, 402, 304))
+-
+-
+-def test_suite():
+-    return unittest.TestSuite((
+-        unittest.makeSuite(RectTests),
+-        unittest.makeSuite(BarTests),
+-        unittest.makeSuite(VerticalBarTests),
+-        unittest.makeSuite(HorizontalBarTests),
+-    ))
+-
+-if __name__ == '__main__':
+-    unittest.main(defaultTest='test_suite')
+Index: pycha-0.8.1/tests/chart.py
+===================================================================
+--- pycha-0.8.1.orig/tests/chart.py
++++ pycha-0.8.1/tests/chart.py
+@@ -284,16 +284,3 @@ class ChartTests(unittest.TestCase):
+             tick = ch.yticks[i]
+             self.assertAlmostEqual(tick[0], pos, 2)
+             self.assertAlmostEqual(tick[1], label, 2)
+-
+-
+-def test_suite():
+-    return unittest.TestSuite((
+-        unittest.makeSuite(FunctionsTests),
+-        unittest.makeSuite(AreaTests),
+-        unittest.makeSuite(OptionTests),
+-        unittest.makeSuite(ChartTests),
+-    ))
+-
+-
+-if __name__ == '__main__':
+-    unittest.main(defaultTest='test_suite')
+Index: pycha-0.8.1/tests/color.py
+===================================================================
+--- pycha-0.8.1.orig/tests/color.py
++++ pycha-0.8.1/tests/color.py
+@@ -134,13 +134,3 @@ class ColorTests(unittest.TestCase):
+         self._assertColors(scheme[2], (1.0, 0.2, 0.2), 3)
+         self._assertColors(scheme[3], (1.0, 0.3, 0.3), 3)
+         self._assertColors(scheme[4], (1.0, 0.4, 0.4), 3)
+-
+-
+-def test_suite():
+-    return unittest.TestSuite((
+-        unittest.makeSuite(ColorTests),
+-    ))
+-
+-
+-if __name__ == '__main__':
+-    unittest.main(defaultTest='test_suite')
+Index: pycha-0.8.1/tests/line.py
+===================================================================
+--- pycha-0.8.1.orig/tests/line.py
++++ pycha-0.8.1/tests/line.py
+@@ -107,13 +107,3 @@ class LineTests(unittest.TestCase):
+             self.assertAlmostEqual(p1.xval, p2.xval, 4)
+             self.assertAlmostEqual(p1.yval, p2.yval, 4)
+             self.assertEqual(p1.name, p2.name)
+-
+-def test_suite():
+-    return unittest.TestSuite((
+-        unittest.makeSuite(PointTests),
+-        unittest.makeSuite(LineTests),
+-    ))
+-
+-if __name__ == '__main__':
+-    unittest.main(defaultTest='test_suite')
+-
+Index: pycha-0.8.1/tests/pie.py
+===================================================================
+--- pycha-0.8.1.orig/tests/pie.py
++++ pycha-0.8.1/tests/pie.py
+@@ -160,14 +160,3 @@ class PieTests(unittest.TestCase):
+             self.assertAlmostEqual(s1.endAngle, s2.endAngle, 4)
+             self.assertEqual(s1.xval, s2.xval)
+             self.assertEqual(s1.yval, s2.yval)
+-
+-
+-def test_suite():
+-    return unittest.TestSuite((
+-        unittest.makeSuite(SliceTests),
+-        unittest.makeSuite(PieTests),
+-    ))
+-
+-if __name__ == '__main__':
+-    unittest.main(defaultTest='test_suite')
+-
+Index: pycha-0.8.1/tests/runner.py
+===================================================================
+--- pycha-0.8.1.orig/tests/runner.py
++++ /dev/null
+@@ -1,40 +0,0 @@
+-# Copyright (c) 2007-2019 by Lorenzo Gil Sanchez <lorenzo.gil.sanchez@gmail.com>
+-#
+-# This file is part of PyCha.
+-#
+-# PyCha is free software: you can redistribute it and/or modify
+-# it under the terms of the GNU Lesser General Public License as published by
+-# the Free Software Foundation, either version 3 of the License, or
+-# (at your option) any later version.
+-#
+-# PyCha is distributed in the hope that it will be useful,
+-# but WITHOUT ANY WARRANTY; without even the implied warranty of
+-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-# GNU Lesser General Public License for more details.
+-#
+-# You should have received a copy of the GNU Lesser General Public License
+-# along with PyCha.  If not, see <http://www.gnu.org/licenses/>.
+-
+-import unittest
+-
+-from . import bar
+-from . import chart
+-from . import color
+-from . import line
+-from . import pie
+-from . import utils
+-
+-
+-def test_suite():
+-    return unittest.TestSuite((
+-        bar.test_suite(),
+-        chart.test_suite(),
+-        color.test_suite(),
+-        line.test_suite(),
+-        pie.test_suite(),
+-        utils.test_suite(),
+-    ))
+-
+-
+-if __name__ == '__main__':
+-    unittest.main(defaultTest='test_suite')
+Index: pycha-0.8.1/tests/stackedbar.py
+===================================================================
+--- pycha-0.8.1.orig/tests/stackedbar.py
++++ pycha-0.8.1/tests/stackedbar.py
+@@ -197,14 +197,3 @@ class StackedHorizontalBarTests(unittest
+         for i in range(len(yticks)):
+             self.assertAlmostEqual(ch.yticks[i][0], yticks[i][0], 4)
+             self.assertAlmostEqual(ch.yticks[i][1], yticks[i][1], 4)
+-
+-
+-def test_suite():
+-    return unittest.TestSuite((
+-        unittest.makeSuite(StackedBarTests),
+-        unittest.makeSuite(StackedVerticalBarTests),
+-        unittest.makeSuite(StackedHorizontalBarTests),
+-    ))
+-
+-if __name__ == '__main__':
+-    unittest.main(defaultTest='test_suite')
+Index: pycha-0.8.1/tests/utils.py
+===================================================================
+--- pycha-0.8.1.orig/tests/utils.py
++++ pycha-0.8.1/tests/utils.py
+@@ -36,13 +36,3 @@ class UtilsTests(unittest.TestCase):
+         self.assertEqual(pycha.utils.safe_unicode('ascii'), u'ascii')
+         self.assertEqual(pycha.utils.safe_unicode('non ascii ñ', 'utf-8'),
+                          u'non ascii ñ')
+-
+-
+-def test_suite():
+-    return unittest.TestSuite((
+-        unittest.makeSuite(UtilsTests),
+-    ))
+-
+-
+-if __name__ == '__main__':
+-    unittest.main(defaultTest='test_suite')

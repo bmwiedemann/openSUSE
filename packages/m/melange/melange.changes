@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov 27 09:43:18 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.0:
+  * Include locked melange config in control section
+  * build(deps): bump github.com/stretchr/testify from 1.9.0 to
+    1.10.0
+  * build(deps): bump the gomod group with 2 updates
+  * build(deps): bump step-security/harden-runner in the actions
+    group
+
+-------------------------------------------------------------------
 Tue Nov 26 13:50:47 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.15.14:

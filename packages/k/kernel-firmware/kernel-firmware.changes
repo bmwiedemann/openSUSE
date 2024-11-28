@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Nov 25 16:06:16 UTC 2024 - tiwai@suse.com
+
+- Update to version 20241125 (git commit 508d770ee6f3):
+  * ice: update ice DDP wireless_edge package to 1.3.20.0
+  * ice: update ice DDP comms package to 1.3.52.0
+  * ice: update ice DDP package to ice-1.3.41.0
+  * amdgpu: update DMCUB to v9.0.10.0 for DCN314
+  * amdgpu: update DMCUB to v9.0.10.0 for DCN351
+
+-------------------------------------------------------------------
+Fri Nov 22 09:35:25 UTC 2024 - tiwai@suse.com
+
+- Update to version 20241121 (git commit 48bb90cceb88):
+  * linux-firmware: Update AMD cpu microcode
+  * xe: Update GUC to v70.36.0 for BMG, LNL
+  * i915: Update GUC to v70.36.0 for ADL-P, DG1, DG2, MTL, TGL
+
+-------------------------------------------------------------------
+Wed Nov 20 11:30:01 UTC 2024 - tiwai@suse.com
+
+- Update to version 20241119 (git commit 60cdfe1831e8):
+  * iwlwifi: add Bz-gf FW for core91-69 release
+- Update aliases from 6.12
+
+-------------------------------------------------------------------
 Wed Nov 13 13:54:49 UTC 2024 - tiwai@suse.com
 
 - Update to version 20241113 (git commit 1727aceef4d2):

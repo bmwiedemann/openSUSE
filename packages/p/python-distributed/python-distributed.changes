@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 22 12:07:34 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- reenable python313 (keep tests disabled for now)
+
+-------------------------------------------------------------------
 Thu Nov 21 15:52:11 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip python313 -- gh#dask/dask#11457

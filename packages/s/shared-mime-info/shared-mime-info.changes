@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 25 15:07:27 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Uninstall silently if update-mime-database is not present
+  (bsc#1231463).
+
+-------------------------------------------------------------------
 Mon Feb 12 23:45:56 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Explicitly use gcc 13 on SLE.

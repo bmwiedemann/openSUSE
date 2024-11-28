@@ -764,4 +764,19 @@ require it nevertheless
   * Add support for the LoongArch 64-bit architecture</comment>
     <requestid>1029750</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>5dec6458cf3e959ce2dcf072e8dad369</srcmd5>
+    <version>4.36</version>
+    <time>1732741542</time>
+    <user>anag+factory</user>
+    <comment>- update to version 4.36
+  * remove support for OS/2
+  * remove support for Unixware, Bsdi, old AIX, old HPUX9 &amp; scoos
+  * remove support for Windows 16 bit
+  * renamed the prwin16.h header to prwin.h
+  * configure was updated from 2.69 to 2.71
+  * various build, test and automation script fixes
+  * major parts of the source code were reformatted</comment>
+    <requestid>1226641</requestid>
+  </revision>
 </revisionlist>

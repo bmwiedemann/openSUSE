@@ -211,4 +211,12 @@
 - Use nose2 to run the testsuite, like upstream.</comment>
     <requestid>1218707</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>4439503ca89de3a7a25c3041ed63f062</srcmd5>
+    <version>2.7.2</version>
+    <time>1732741969</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1226858</requestid>
+  </revision>
 </revisionlist>

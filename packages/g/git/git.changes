@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov 25 10:58:31 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.47.1:
+  * Use after free and double freeing at the end in
+    "git log -L... -p" had been identified and fixed.
+  * "git maintenance start" crashed due to an uninitialized
+    variable reference, which has been corrected.
+  * Fail gracefully instead of crashing when attempting to write
+    the contents of a corrupt in-core index as a tree object.
+  * A "git fetch" from the superproject going down to a submodule
+    used a wrong remote when the default remote names are set
+    differently between them.
+  * The "gitk" project tree has been synchronized again
+
+-------------------------------------------------------------------
 Wed Oct  9 10:34:12 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.47.0:

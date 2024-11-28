@@ -36,6 +36,7 @@ Patch2:         libdb-fix-atomic.patch
 Patch3:         reproducible.patch
 # PATCH-FIX-UPSTREAM bsc#1174414 CVE-2019-2708 libdb: data store execution leads to partial DoS
 Patch4:         libdb-4_8-CVE-2019-2708.patch
+Patch5:         libdb-4_8-sequence.patch
 BuildRequires:  autoconf
 BuildRequires:  gcc-c++
 BuildRequires:  java-sdk >= 1.8
@@ -64,14 +65,15 @@ These are the development files.
 
 %prep
 %setup -q -n %{generic_name}-%{version}
-%patch -P 0
+%patch -P 0 -p1
 %patch -P 1 -p1
-%patch -P 2
+%patch -P 2 -p1
 # the Leap build happens with an old jar version that does not know the --date option, so we need to test for that
 if jar --help|grep -q -- --date=TIMESTAMP ; then
 %patch -P 3 -p1
 fi
 %patch -P 4 -p1
+%patch -P 5 -p1
 
 %build
 cd dist

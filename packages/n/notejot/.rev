@@ -160,4 +160,25 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>957915</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0c53663930c81986d44e36ff6c2a7299</srcmd5>
+    <version>3.5.1</version>
+    <time>1732741901</time>
+    <user>anag+factory</user>
+    <comment>- fix build by adding 0001-Simplify-an-overcomplicated-Boolean-expression.patch
+- update spec file for Leap 16.0:
+  * remove %suse_update_desktop_file
+  * remove recommending lang package
+  * use autosetup
+- Update to 3.5.1:
+  * UI now follows own style that complements that of Adwaita, called Solo.
+  * The syntax follows Markdown conventions where possible.
+  * The mobile UI has been fixed, back buttons should show up without issue.
+  * Added: New Notes Grid view, access your notes in a grid.
+  * UI colors were changed, and some UI parts now look more intuitive.
+  * Fixed Unordered list formatting.
+  * Fixed Some UI bugs.
+</comment>
+    <requestid>1226654</requestid>
+  </revision>
 </revisionlist>

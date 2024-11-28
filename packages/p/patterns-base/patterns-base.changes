@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 26 13:17:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- fips: change description from 140-2 to 140-3
+- fips: require crypto-policies-scripts when openssh is used
+  (bsc#1224802)
+- fips: drop -hmac packages as they have been merged into the main
+  package (bsc#1185116)
+
+-------------------------------------------------------------------
 Tue Nov  5 16:29:38 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
 
 - Remove "Recommends: restorecond" from selinux pattern as we don't
@@ -39,7 +48,7 @@ Thu Aug 29 13:57:22 UTC 2024 - Dominique Leuenberger <dleuenberger@suse.com>
 Thu Aug 15 10:03:27 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove nfsidmap, package got dropped
-- Remove nfs-client and autofs: in most scenarios, especially 
+- Remove nfs-client and autofs: in most scenarios, especially
   desktops, no longer used, but pull in many "deprecated" packages
 
 -------------------------------------------------------------------

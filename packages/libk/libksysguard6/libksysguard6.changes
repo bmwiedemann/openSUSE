@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 26 15:46:38 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.4:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.4
+- Changes since 6.2.3:
+  * faces: Ensure the temporary dir for a preset remains until installed (kde#485164)
+  * faces/piechart: Use GraphicalEffects.Glow for rendering outline of compact text (kde#494495)
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Nov  5 13:30:24 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.3:

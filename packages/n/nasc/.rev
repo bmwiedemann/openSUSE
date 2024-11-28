@@ -55,4 +55,18 @@
     <comment></comment>
     <requestid>755076</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>2dc026852f06f240d04b8335c912db05</srcmd5>
+    <version>0.5.4</version>
+    <time>1732741883</time>
+    <user>anag+factory</user>
+    <comment>- fix build by using CFLAGS=&quot;-Wno-implicit-function-declaration&quot;
+- update spec file for Leap 16.0:
+  * remove %suse_update_desktop_file
+  * use autosetup
+  * remove packaging for Leap &lt; 1500
+  * update to newer upstream url
+</comment>
+    <requestid>1226650</requestid>
+  </revision>
 </revisionlist>

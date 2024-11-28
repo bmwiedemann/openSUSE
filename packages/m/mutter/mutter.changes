@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Nov 25 19:50:53 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.2:
+  + Fix warping pointer after releasing pointer constraints
+  + Default to high thread instead of realtime priority for KMS
+    thread
+  + Avoid CPU stalls with NVIDIA secondary GPUs with
+    directly-attached monitors
+  + Fix updating cursor immediately when starting window drag
+  + Add pipeline hooks to user program pipelines
+  + Prefer GPUs with built-in panels connected as primary GPU
+  + Fix cursor glitches when using virtual monitors
+  + Ensure frame events are sent for cursor surfaces
+  + Allow BGRX8888 format on big endian
+  + Fix touchscreen drag-and-drop on wayland
+  + Fixed crashes
+  + Misc. bug fixes and cleanups
+
+-------------------------------------------------------------------
 Tue Oct 29 14:42:32 UTC 2024 - bjorn.lie@gmail.com
 
 - Update to version 47.1+3:

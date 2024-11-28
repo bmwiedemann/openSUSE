@@ -388,6 +388,9 @@ Patch2058:      v8-strict-aliasing.patch
 %else
 Source2058:     v8-strict-aliasing.patch
 %endif
+#Fix opus audio not working (eg. Element voice messages)
+Patch2059:      disable-FFmpegAllowLists.patch
+
 
 # PATCHES that should be submitted upstream verbatim or near-verbatim
 # Fix blink nodestructor

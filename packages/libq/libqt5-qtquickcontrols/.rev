@@ -443,4 +443,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>Qt 5.15.15 (forwarded request 1199183 from favogt)</comment>
     <requestid>1199200</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>092dc50b2e7ad52522c4d7596e5e8b3d</srcmd5>
+    <version>5.15.16+kde0</version>
+    <time>1732741530</time>
+    <user>anag+factory</user>
+    <comment>Qt 5.15.16, untested. Try #2. (forwarded request 1226586 from favogt)</comment>
+    <requestid>1226606</requestid>
+  </revision>
 </revisionlist>

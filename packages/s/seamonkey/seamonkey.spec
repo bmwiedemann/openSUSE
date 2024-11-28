@@ -43,6 +43,7 @@ BuildRequires:  libproxy-devel
 #BuildRequires:  libvpx-devel # Compile errors with 1.10.0
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200 && 0%{?is_opensuse}
 BuildRequires:  libwebp-devel >= 1.0.0
+# --system-icu builds are failing on Tumbleweed; see https://bugzilla.mozilla.org/show_bug.cgi?id=193317
 #BuildRequires:  libicu-devel >= 63.1
 %endif
 BuildRequires:  makeinfo
@@ -70,10 +71,10 @@ BuildRequires:  rust-cbindgen
 BuildRequires:  git
 BuildRequires:  nasm >= 2.13
 #BuildRequires:  llvm-devel
-%if (0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000)
-BuildRequires:  clang6-devel
+%if 0%{?suse_version} > 1600
+BuildRequires:  clang18-devel
 %else
-BuildRequires:  clang-devel >= 5
+BuildRequires:  clang-devel
 %endif
 Provides:       web_browser
 Provides:       browser(npapi)
@@ -100,7 +101,6 @@ Patch4:         seamonkey-man-page.patch
 Patch5:         reproducible.patch
 Patch6:         mozilla-bmo531915.patch
 Patch7:         mozilla-bmo1896958.patch
-Patch8:         mozilla-bmo1862601.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 PreReq:         /bin/sh coreutils
 Provides:       seamonkey-mail = %{version}
@@ -238,11 +238,6 @@ cp %{SOURCE12} GNUmakefile
 %patch -P 6 -p1
 %patch -P 7 -p1
 
-# Fix --system-icu builds on Tumbleweed; see https://bugzilla.mozilla.org/show_bug.cgi?id=1862601
-%if 0%{?suse_version} > 1600
-%patch -P 8 -p1
-%endif
-
 cat << EOF > .mozconfig
 mk_add_options MOZILLA_OFFICIAL=1
 mk_add_options BUILD_OFFICIAL=1
@@ -275,9 +270,12 @@ ac_add_options --with-system-nss
 %endif
 ac_add_options --with-system-zlib
 ac_add_options --with-system-bz2
+
 %if 0%{?suse_version} > 1600 || 0%{?sle_version} >= 150200 && 0%{?is_opensuse}
 ac_add_options --with-system-webp
-ac_add_options --with-system-icu
+
+# --system-icu builds are failing on Tumbleweed; see https://bugzilla.mozilla.org/show_bug.cgi?id=193317
+#ac_add_options --with-system-icu
 %endif
 
 # Compile errors with system libvpx-1.10.0

@@ -70,4 +70,18 @@
     <comment></comment>
     <requestid>930463</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>8a65aaeef03547176de68a72632a9319</srcmd5>
+    <version>1.0.0</version>
+    <time>1732741884</time>
+    <user>anag+factory</user>
+    <comment>- fix build by using CFLAGS=&quot;-Wno-implicit-function-declaration&quot;
+- update spec file for Leap 16.0:
+  * remove %suse_update_desktop_file
+  * remove recommending lang package
+  * use autosetup
+  * remove HiDPI workaround
+</comment>
+    <requestid>1226651</requestid>
+  </revision>
 </revisionlist>

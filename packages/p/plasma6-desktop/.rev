@@ -137,4 +137,12 @@
   libplasma6-components</comment>
     <requestid>1224106</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f94a585baac409e32ab7840fcf10b3e8</srcmd5>
+    <version>6.2.4</version>
+    <time>1732741570</time>
+    <user>anag+factory</user>
+    <comment>Plasma 6.2.4, untested (forwarded request 1226674 from Vogtinator)</comment>
+    <requestid>1226727</requestid>
+  </revision>
 </revisionlist>

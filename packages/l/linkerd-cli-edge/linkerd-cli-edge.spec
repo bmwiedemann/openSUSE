@@ -19,7 +19,7 @@
 %define linkerd_executable_name linkerd
 
 Name:           linkerd-cli-edge
-Version:        24.11.7
+Version:        24.11.8
 Release:        0
 Summary:        CLI for the linkerd service mesh for Kubernetes
 License:        Apache-2.0

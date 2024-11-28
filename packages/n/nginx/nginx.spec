@@ -23,7 +23,7 @@
 %bcond_with    ngx_google_perftools
 #
 Name:           nginx
-Version:        1.27.2
+Version:        1.27.3
 Release:        0
 Summary:        A HTTP server and IMAP/POP3 proxy server
 License:        BSD-2-Clause

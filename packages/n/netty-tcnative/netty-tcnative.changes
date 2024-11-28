@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 26 13:27:19 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.0.68 Final
+  * No formal changelog present
+- Build also the dynamic openssl provider and alias it to the
+  static openssl, libressl and boringssl ones.
+
+-------------------------------------------------------------------
 Wed Oct 30 14:20:28 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 2.0.67 Final

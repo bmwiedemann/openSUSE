@@ -19,6 +19,7 @@
 #!BuildTag: opensuse/postgres:%%pg_patch_version%%
 #!BuildTag: opensuse/postgres:17
 #!BuildTag: opensuse/postgres:%%pg_minor_version%%
+#!BuildTag: opensuse/postgres:latest
 
 FROM opensuse/bci/bci-micro:latest AS target
 FROM opensuse/tumbleweed:latest AS builder

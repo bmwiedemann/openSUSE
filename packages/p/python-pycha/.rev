@@ -63,4 +63,15 @@
     <comment></comment>
     <requestid>1141473</requestid>
   </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>04618df3940e42403017d55a530df132</srcmd5>
+    <version>0.8.1</version>
+    <time>1732741930</time>
+    <user>anag+factory</user>
+    <comment>- Add patch remove-makesuite.patch:
+  * Do not use testsuite.makeSuite to construct the testsuite.
+- Switch to pyproject macros.
+- Update URL.</comment>
+    <requestid>1226752</requestid>
+  </revision>
 </revisionlist>

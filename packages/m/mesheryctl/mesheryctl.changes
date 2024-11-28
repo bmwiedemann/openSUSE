@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Nov 27 10:06:07 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.162:
+  * Meshery CLI
+    - Add comment @Jougan-0 (#12756)
+  * Maintenance
+    - fix: permission keys pull 404 pages @jerensl (#12765)
+    - Bump path-to-regexp and serve in /ui @dependabot (#12748)
+    - Bump dawidd6/action-download-artifact from 2 to 6 in
+      /.github/workflows @dependabot (#12758)
+
+-------------------------------------------------------------------
+Tue Nov 26 14:22:18 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.161:
+  * no CLI-related changes in this release
+- update to 0.7.160:
+  * no CLI-related changes in this release
+- update to 0.7.159:
+  * no CLI-related changes in this release
+- update to 0.7.158:
+  * no CLI-related changes in this release
+
+-------------------------------------------------------------------
 Wed Nov 20 13:58:36 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.7.157:

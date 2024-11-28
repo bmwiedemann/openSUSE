@@ -966,4 +966,15 @@ This version fixes the license naming issue.</comment>
 </comment>
     <requestid>1224614</requestid>
   </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>74b9a45f8be70843cb49dc07e94edd8a</srcmd5>
+    <version>6.119.1</version>
+    <time>1732741522</time>
+    <user>anag+factory</user>
+    <comment>- Skip tests matching `test_adds_note_showing_which_strategy`
+  (gh#HypothesisWorks/hypothesis#4185).
+- Add missing BR: rich.
+</comment>
+    <requestid>1226532</requestid>
+  </revision>
 </revisionlist>

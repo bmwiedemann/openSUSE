@@ -304,4 +304,18 @@
     <comment>- Update to new release (forwarded request 917844 from awissu)</comment>
     <requestid>917852</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>16c401e4c7a9305680c47f91d34b6ffb</srcmd5>
+    <version>3.3.4</version>
+    <time>1732741885</time>
+    <user>anag+factory</user>
+    <comment>- fix build by passing -Wno-int-conversion -Wno-incompatible-pointer-types
+  as CFLAGS
+- update spec file for Leap 16.0:
+  * remove %suse_update_desktop_file
+  * remove recommending lang package
+  * remove mentions of elementary
+</comment>
+    <requestid>1226652</requestid>
+  </revision>
 </revisionlist>

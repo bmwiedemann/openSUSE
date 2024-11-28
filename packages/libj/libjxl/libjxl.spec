@@ -24,7 +24,7 @@ Name:           libjxl-gtk
 Name:           libjxl
 %bcond_with gtk
 %endif
-Version:        0.11.0
+Version:        0.11.1
 Release:        0
 Summary:        JPEG XL reference implementation
 License:        BSD-3-Clause

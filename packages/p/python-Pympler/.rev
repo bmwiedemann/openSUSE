@@ -113,4 +113,13 @@
 - Use pytest to run the test suite.</comment>
     <requestid>1219551</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>e4ca54580366bc2c795e71df8121aa58</srcmd5>
+    <version>1.1</version>
+    <time>1732741584</time>
+    <user>anag+factory</user>
+    <comment>- Disable test_otracker_diff on aarch64 as it randomly makes the
+  check to fail due to worker slowness</comment>
+    <requestid>1226793</requestid>
+  </revision>
 </revisionlist>

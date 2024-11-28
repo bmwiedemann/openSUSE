@@ -543,26 +543,17 @@ This is the enhanced base runtime system with lots of convenience packages.
 
 %package fips
 %pattern_primaryfunctions
-Summary:        FIPS 140-2 specific packages
+Summary:        FIPS 140-3 specific packages
 Group:          Metapackages
 Provides:       pattern() = fips
 Provides:       pattern-icon() = pattern-basis-addon
 Provides:       pattern-order() = 3010
 Provides:       pattern-visible()
+Requires:       (crypto-policies-scripts if openssh-clients)
+Requires:       (crypto-policies-scripts if openssh-common)
+Requires:       (crypto-policies-scripts if openssh-server)
 Requires:       (dracut-fips if dracut)
-Requires:       (libcryptsetup12-hmac if libcryptsetup12)
-Requires:       (libcryptsetup12-hmac-32bit if libcryptsetup12-32bit)
-Requires:       (libfreebl3-hmac if libfreebl3)
-Requires:       (libfreebl3-hmac-32bit if libfreebl3-32bit)
-Requires:       (libgcrypt20-hmac if libgcrypt20)
-Requires:       (libgnutls30-hmac if libgnutls30)
-Requires:       (libgnutls30-hmac-32bit if libgnutls30-32bit)
 Requires:       (libopenssl-3-fips-provider if libopenssl3)
-Requires:       (libopenssl-fips-provider if libopenssl)
-Requires:       (libopenssl1_1-hmac if libopenssl1_1)
-Requires:       (libopenssl1_1-hmac-32bit if libopenssl1_1-32bit)
-Requires:       (libsoftokn3-hmac if libsoftokn3)
-Requires:       (libsoftokn3-hmac-32bit if libsoftokn3-32bit)
 Requires:       (openssh-fips if openssh-clients)
 Requires:       (openssh-fips if openssh-server)
 Requires:       (strongswan-hmac if strongswan)
@@ -574,14 +565,13 @@ Provides:       patterns-server-enterprise-fips-32bit = %{version}
 Obsoletes:      patterns-server-enterprise-fips-32bit < %{version}
 
 %description fips
-This pattern installs the FIPS 140-2 specific packages that complete the various
-cryptographic modules in use. It is required if you want to run the
-machine with "fips=1".
+This pattern installs the FIPS 140-3 specific packages that are required
+if you want to run the machine with "fips=1".
 
-Please note that this pattern only enables FIPS 140-2 compliant operation, it does
-not directly make the system FIPS 140-2 certified nor validated.
+Please note that this pattern only enables FIPS 140-3 compliant operation, it does
+not directly make the system FIPS 140-3 certified nor validated.
 
-Please refer to SUSE official statements on the state of FIPS 140-2 certification.
+Please refer to SUSE official statements on the state of FIPS 140-3 certification.
 
 %files fips
 %dir %{_docdir}/patterns

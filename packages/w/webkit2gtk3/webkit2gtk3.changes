@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 25 19:25:44 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Add webkit2gtk3-CVE-2024-44308.patch: don't allocate DFG register
+  after a slow path (boo#1233631 CVE-2024-44308).
+- Add webkit2gtk3-CVE-2024-44309.patch: fix a cookie management
+  issue (boo#1233632 CVE-2024-44309).
+
+-------------------------------------------------------------------
 Thu Nov 14 10:18:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 63f7badbada070ebaadd318b2801818ecf7e7ea0.patch: Fix build

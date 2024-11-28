@@ -2088,4 +2088,12 @@
 - list-common: drop xf86-video-fbdev: driver has neen dropped. (forwarded request 1226834 from dimstar)</comment>
     <requestid>1226838</requestid>
   </revision>
+  <revision rev="263" vrev="263">
+    <srcmd5>9f61acc7c6ef36faa8de533bd5f84c86</srcmd5>
+    <version>unknown</version>
+    <time>1732741562</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1226840</requestid>
+  </revision>
 </revisionlist>

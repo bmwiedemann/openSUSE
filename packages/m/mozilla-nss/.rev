@@ -3278,4 +3278,35 @@
   * bmo#1912828 - define CKM_NSS_ECDHE_NO_PAIRWISE_CHECK_KEY_PAIR_GEN</comment>
     <requestid>1218810</requestid>
   </revision>
+  <revision rev="224" vrev="1">
+    <srcmd5>9fdbf23ed707508476ad009d10b30e88</srcmd5>
+    <version>3.106</version>
+    <time>1732741543</time>
+    <user>anag+factory</user>
+    <comment>- Remove upstreamed bmo-1400603.patch
+- Added nss-bmo1930797.patch to fix failing tests in testsuite 
+
+- update to NSS 3.106
+  * bmo#1925975 - NSS 3.106 should be distributed with NSPR 4.36.
+  * bmo#1923767 - pk12util: improve error handling in p12U_ReadPKCS12File.
+  * bmo#1899402 - Correctly destroy bulkkey in error scenario.
+  * bmo#1919997 - PKCS7 fuzz target, r=djackson,nss-reviewers.
+  * bmo#1923002 - Extract certificates with handshake collection script.
+  * bmo#1923006 - Specify len_control for fuzz targets.
+  * bmo#1923280 - Fix memory leak in dumpCertificatePEM.
+  * bmo#1102981 - Fix UBSan errors for SECU_PrintCertificate and
+                  SECU_PrintCertificateBasicInfo.
+  * bmo#1921528 - add new error codes to mozilla::pkix for Firefox to use.
+  * bmo#1921768 - allow null phKey in NSC_DeriveKey.
+  * bmo#1921801 - Only create seed corpus zip from existing corpus.
+  * bmo#1826035 - Use explicit allowlist for for KDF PRFS.
+  * bmo#1920138 - Increase optimization level for fuzz builds.
+  * bmo#1920470 - Remove incorrect assert.
+  * bmo#1914870 - Use libFuzzer options from fuzz/options/\*.options in CI.
+  * bmo#1920945 - Polish corpus collection for automation.
+  * bmo#1917572 - Detect new and unfuzzed SSL options.
+  * bmo#1804646 - PKCS12 fuzzing target.
+- requires NSPR 4.36</comment>
+    <requestid>1226642</requestid>
+  </revision>
 </revisionlist>

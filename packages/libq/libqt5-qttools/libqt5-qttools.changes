@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 25 15:46:37 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.16+kde3, rebased upstream:
+  * Bump version to 5.15.16
+  * Qt Designer: Fix invalid QIcon entry "<normaloff>.</normaloff>"
+
+-------------------------------------------------------------------
 Mon Nov  4 12:01:45 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Fix qdoc runtime dependency

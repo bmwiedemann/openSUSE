@@ -535,4 +535,18 @@
     <comment></comment>
     <requestid>1119598</requestid>
   </revision>
+  <revision rev="67" vrev="3">
+    <srcmd5>7497b6646db6bb997a35c0b394ecdaa1</srcmd5>
+    <version>1.2.2</version>
+    <time>1732741508</time>
+    <user>anag+factory</user>
+    <comment>- Fix out-of-bounds read in function vorbis_analysis_wrote in
+  ogg_vorbis.c (CVE-2024-50612, bsc#1232438):
+  libsndfile-CVE-2024-50612.patch
+
+- Fix out-of-bounds read in function vorbis_analysis_wrote in
+  ogg_vorbis.c (CVE-2024-50612, bsc#1232438):
+  libsndfile-CVE-2024-50612.patch</comment>
+    <requestid>1226501</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,67 @@
+Index: eco5000-1.2.0/ifd_handler.c
+===================================================================
+--- eco5000-1.2.0.orig/ifd_handler.c
++++ eco5000-1.2.0/ifd_handler.c
+@@ -26,6 +26,7 @@
+ #include "pcscdefines.h"
+ #include "ifd_handler.h"
+ 
++#include "atr.h"
+ #include "defines.h"
+ #include "ctapi.h"
+ #include "sercom.h"
+Index: eco5000-1.2.0/atr.h
+===================================================================
+--- eco5000-1.2.0.orig/atr.h
++++ eco5000-1.2.0/atr.h
+@@ -3,7 +3,7 @@
+  * |.**> <**.|  CardContact
+  * |*       *|  Software & System Consulting
+  * |*       *|  Minden, Germany
+- * |´**> <**´|  Copyright (c) 1999. All rights reserved
++ * |ï¿½**> <**ï¿½|  Copyright (c) 1999. All rights reserved
+  *  --------- 
+  *
+  * See file LICENSE for details on licensing
+@@ -19,6 +19,7 @@
+ #ifndef _ATR_H_
+ #define _ATR_H_
+ 
++#include "eco5000.h"
+ 
+ int GetATR(struct eco5000_t *ctx);
+ /* GetATR - fills structure vars (HCC, ATR, ...)  */
+@@ -29,4 +30,7 @@ int ASync_GetATR(struct eco5000_t *ctx);
+ 
+ int Sync_GetATR(struct eco5000_t *ctx);
+ 
++int PerformPPS(struct eco5000_t *ctx, unsigned char PPS0,
++               unsigned char PPS1, unsigned char PPS2, unsigned char PPS3);
++
+ #endif
+Index: eco5000-1.2.0/ctbcs.h
+===================================================================
+--- eco5000-1.2.0.orig/ctbcs.h
++++ eco5000-1.2.0/ctbcs.h
+@@ -53,6 +53,8 @@ int GetStatus (struct eco5000_t *ctx,
+ 	       unsigned int *lr,
+ 	       unsigned char *rsp);
+ 
++int InstallHandler (struct eco5000_t *ctx);
++
+ #endif
+ 
+ 
+Index: eco5000-1.2.0/ctbcs.c
+===================================================================
+--- eco5000-1.2.0.orig/ctbcs.c
++++ eco5000-1.2.0/ctbcs.c
+@@ -19,6 +19,8 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <string.h>
++#include <unistd.h>
++
+ #include "eco5000.h" 
+ #include "ctbcs.h"
+ #include "ctapi.h"

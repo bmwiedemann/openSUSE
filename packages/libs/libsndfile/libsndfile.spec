@@ -1,7 +1,7 @@
 #
 # spec file for package libsndfile
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Source1:        https://github.com/libsndfile/libsndfile/releases/download/%{ver
 Source2:        libsndfile.keyring
 Source3:        baselibs.conf
 Patch1:         libsndfile-CVE-2022-33065.patch
+Patch2:         libsndfile-CVE-2024-50612.patch
 # PATCH-FIX-OPENSUSE
 Patch100:       sndfile-ocloexec.patch
 BuildRequires:  cmake

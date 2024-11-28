@@ -109,4 +109,13 @@
   * Improve notification handling (971820f)</comment>
     <requestid>1218606</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2d88c2a9d29bb7235dd541d4feb633cf</srcmd5>
+    <version>4.16.3</version>
+    <time>1732741946</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.16.3:
+  * prevent crashes due to custom notification (dde6e02)</comment>
+    <requestid>1226805</requestid>
+  </revision>
 </revisionlist>

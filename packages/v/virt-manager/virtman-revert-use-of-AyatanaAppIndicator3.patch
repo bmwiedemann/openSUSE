@@ -1,10 +1,10 @@
 While AyatanaAppIndicator3 is available on Tumbleweed,
 it is not available on SLE15.
 
-Index: virt-manager-3.3.0/virtManager/systray.py
+Index: virt-manager-4.2.0/virtManager/systray.py
 ===================================================================
---- virt-manager-3.3.0.orig/virtManager/systray.py
-+++ virt-manager-3.3.0/virtManager/systray.py
+--- virt-manager-4.2.0.orig/virtManager/systray.py
++++ virt-manager-4.2.0/virtManager/systray.py
 @@ -6,7 +6,6 @@
  
  import os
@@ -13,14 +13,11 @@ Index: virt-manager-3.3.0/virtManager/systray.py
  from gi.repository import Gio
  from gi.repository import Gtk
  
-@@ -17,25 +16,14 @@ from . import vmmenu
- from .baseclass import vmmGObject
+@@ -18,11 +17,11 @@ from .baseclass import vmmGObject
  from .connmanager import vmmConnectionManager
  
--
+ 
 -# pylint: disable=ungrouped-imports
--# Prefer AyatantaAppIndicator3 which is the modern maintained
--# appindicator library.
 -try:  # pragma: no cover
 -    # pylint: disable=no-name-in-module
 -    gi.require_version('AyatanaAppIndicator3', '0.1')
@@ -33,14 +30,3 @@ Index: virt-manager-3.3.0/virtManager/systray.py
  except Exception:  # pragma: no cover
      AppIndicator3 = None
  
--if not AppIndicator3:
--    try:  # pragma: no cover
--        # pylint: disable=no-name-in-module
--        gi.require_version('AppIndicator3', '0.1')
--        from gi.repository import AppIndicator3
--    except Exception:  # pragma: no cover
--        AppIndicator3 = None
--
- 
- def _toggle_manager(*args, **kwargs):
-     ignore = args

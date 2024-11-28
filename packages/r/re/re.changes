@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov  7 16:59:49 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.17.0
+  * types: remove old BREAKPOINT macro.
+  * dnsc: Fallback to getaddrinfo without any DNS servers.
+  * dns/client: return ENOTSUP if no server or not getaddrinfo.
+  * conf: add conf_get_float.
+  * test: add pktsize to test_h264_packet_base().
+  * tls: make tls_verify_handler() static.
+  * types: fix clang-tidy warning (gcc bit fields workaround).
+
+-------------------------------------------------------------------
 Thu Oct  3 12:47:40 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Udpate to version 3.16.0

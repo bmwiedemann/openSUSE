@@ -82,7 +82,8 @@ export PKGSYSTEM_ENABLE_FSYNC=0
 
 %filetriggerpostun -- %{_datadir}/mime
 export PKGSYSTEM_ENABLE_FSYNC=0
-[ -x %{_bindir}/update-mime-database ] && %{_bindir}/update-mime-database "%{_datadir}/mime"
+[ -x %{_bindir}/update-mime-database ] || exit 0
+%{_bindir}/update-mime-database "%{_datadir}/mime"
 
 %files
 %license COPYING

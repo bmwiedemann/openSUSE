@@ -90,4 +90,13 @@
 </comment>
     <requestid>1225307</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>404b0361985a9f9ed771df3884933b15</srcmd5>
+    <version>1.1.19</version>
+    <time>1732741858</time>
+    <user>anag+factory</user>
+    <comment>- reenable python313, numba is available
+</comment>
+    <requestid>1226506</requestid>
+  </revision>
 </revisionlist>

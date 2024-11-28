@@ -565,4 +565,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1099080</requestid>
   </revision>
+  <revision rev="68" vrev="24">
+    <srcmd5>8de4a1167d1c8e2156307a4771f4cb6b</srcmd5>
+    <version>12.2</version>
+    <time>1732741491</time>
+    <user>anag+factory</user>
+    <comment>- enable the supergfxd service for hybrid graphic systems
+</comment>
+    <requestid>1226474</requestid>
+  </revision>
 </revisionlist>

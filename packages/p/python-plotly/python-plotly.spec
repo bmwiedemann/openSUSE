@@ -17,7 +17,7 @@
 
 
 Name:           python-plotly
-Version:        5.22.0
+Version:        5.24.1
 Release:        0
 Summary:        Library for collaborative, interactive, publication-quality graphs
 License:        MIT
@@ -58,7 +58,6 @@ BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module ipywidgets}
-BuildRequires:  %{python_module jupyter}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}

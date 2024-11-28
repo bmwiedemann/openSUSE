@@ -323,7 +323,7 @@ Summary:        Info files for GNU Emacs
 Group:          Documentation/Other
 %if 0%{?suse_version} <= 1500
 Requires(post): %install_info_prereq
-Requires(preun): %install_info_prereq
+Requires(preun):%install_info_prereq
 %endif
 BuildArch:      noarch
 
@@ -351,7 +351,7 @@ group called "games".
 Summary:        Generate Tag Files for Use with Emacs
 Group:          Development/Tools/Navigators
 Requires(post): coreutils update-alternatives
-Requires(preun): coreutils update-alternatives
+Requires(preun):coreutils update-alternatives
 Provides:       ctags:/usr/bin/etags
 
 %description -n etags

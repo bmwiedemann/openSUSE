@@ -49,8 +49,6 @@ ExclusiveArch:  donotbuild
 %define python_module() %flavor-not-enabled-in-buildset-for-suse-%{?suse_version}
 %endif
 
-# can't build for 313 because numba 0.60 does not support it
-%global skip_python313 1
 Name:           python-dask%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-dask-expr,python-distributed! <===
 Version:        2024.11.2
@@ -71,6 +69,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 5.3.1
 Requires:       python-click >= 8.1
 Requires:       python-cloudpickle >= 3.0
+Requires:       (python-cloudpickle >= 3.1 if python-base >= 3.13)
 Requires:       python-fsspec >= 2021.9
 Requires:       python-packaging >= 20.0
 Requires:       python-partd >= 1.4.0
@@ -130,8 +129,6 @@ BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module mimesis}
 BuildRequires:  %{python_module multipledispatch}
 BuildRequires:  %{python_module numba}
-# https://github.com/dask/partd/issues/66, https://github.com/dask/dask/pull/10176
-BuildRequires:  %{python_module partd >= 1.4.0}
 # snappy required for using fastparquet
 BuildRequires:  %{python_module python-snappy}
 BuildRequires:  %{python_module requests}
@@ -348,7 +345,9 @@ donttest+=" or test_map_partitions_df_input"
 donttest+=" or test_pyarrow_filesystem_option_real_data"
 # different hash naming (?)
 donttest+=" or test_to_delayed_optimize_graph"
-%pytest --pyargs dask -n auto -r fE -m "not network" -k "not ($donttest)" --reruns 3 --reruns-delay 3
+# See gh#dask/dask#11456, gh#dask/dask#11457
+python313_donttest=" or test_tokenize_dataclass"
+%pytest --pyargs dask -n auto -r fE -m "not network" -k "not ($donttest ${$python_donttest})" --reruns 3 --reruns-delay 3
 %endif
 
 %post

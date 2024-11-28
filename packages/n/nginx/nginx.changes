@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov 27 04:14:02 UTC 2024 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 1.27.3
+  * https://github.com/nginx/nginx/releases/tag/release-1.27.3
+  * Added the "server" directive in the "upstream" block supports the "resolve" parameter.
+  * Added the "resolver" and "resolver_timeout" directives in the "upstream" block.
+  * Added SmarterMail specific mode support for IMAP LOGIN with
+    untagged CAPABILITY response in the mail proxy module.
+  * Changed TLSv1 and TLSv1.1 protocols are disabled by default.
+  * Changed IPv6 address in square brackets and no port can be specified in the
+    "proxy_bind", "fastcgi_bind", "grpc_bind", "memcached_bind", "scgi_bind",
+    and "uwsgi_bind" directives, and as client address in ngx_http_realip_module.
+  * Fixed ngx_http_mp4_module and "proxy_store" directive.
+
+-------------------------------------------------------------------
 Thu Oct  3 06:22:15 UTC 2024 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 1.27.2

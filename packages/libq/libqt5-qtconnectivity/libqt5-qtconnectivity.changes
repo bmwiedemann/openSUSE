@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 25 15:34:18 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.16+kde1, rebased upstream:
+  * sdpscanner: fix format strings for (u)int64_t
+  * Bump version to 5.15.16
+
+-------------------------------------------------------------------
 Wed Sep  4 20:02:05 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.15+kde3, rebased upstream:

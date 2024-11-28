@@ -1,4 +1,135 @@
 -------------------------------------------------------------------
+Tue Nov 26 14:30:04 MST 2024 - carnold@suse.com
+
+- Update to Version 5.0.0 (jsc#PED-8910)
+  * virt-clone: colne serial files (Oleg Vasilev)
+  * virt-clone: Copy disk permissions as well (Martin Kletzander)
+  * virt-install: Add properties for AMD SEV-SNP (Daniel P. Berrangé)
+  * virt-install: Add passt backend for user network interface
+  * virt-install: Add support for --sound multichannel,stream (Lin Ma)
+  * virt-install: Add support for --tpm backend.debug,backend.source (Lin Ma)
+  * virt-xml: add --edit --convert-to-q35
+  * virt-xml: add --edit --convert-to-vnc
+  * virt-xml: Add --edit --boot uefi
+  * virt-manager: Fix opening graphical console with egl-headless (Feng Jiang)
+  * virt-manager: Add support to create external snapshots
+  * virt-manager: Default to scaling=Always for consoles
+  * virt-manager: switch to not forking by default
+  * cli: Add more --disk options (Lin Ma)
+  * cli: Add --memdev target.address_base for virtio-mem and virtio-pmem (Lin Ma)
+  * cli: Add --features kvm.pv-ipi.state=on|off (Lin Ma)
+  * cli: Add --video model.blob=on|off (Lin Ma)
+  * Add missing Hyper-V features and enable most of them by default
+  * Add loongarch support (Xianglai Li)
+  * Add support for hvf domain type (Mohamed Akram)
+  * Support creating sparse volumes on ZFS pools (Iain Buclaw)
+  * UEFI improvements for riscv64 and loongarch64 VMs (Andrea Bolognani)
+  * Add graphcis to riscv64 and aarch64
+  * build: swtich from setuptools to meson
+  * diskbackend: Drop support for sheepdog (Lin Ma)
+  * cli: Deprecate --cpu host in favor of --cpu host-model (Andrea Bolognani)
+- Drop the following upstream patches contained in new tarball
+  001-cli-disk-Add-driver.metadata_cache-options.patch
+  002-tests-cli-Fix-test-output-after-previous-commit.patch
+  003-fsdetails-Fix-an-error-with-source.socket-of-virtiofs.patch
+  004-cli-Drop-unnecessary-disk-prop-aliases.patch
+  005-tests-testdriver-Add-filesystem-socket-example.patch
+  006-virtinstall-split-no_install-conditional-apart-to-track-code-coverage.patch
+  007-virtinstall-fix-regression-with-boot-and-no-install-method.patch
+  008-tests-Add-a-compat-check-for-linux2020-in-amd-sev-test-case.patch
+  009-cli-cpu-Add-maxphysaddr.mode-bits-options.patch
+  010-virt-install-help-required-options-are-wrong.patch
+  011-cloner-Sync-uuid-and-sysinfo-system-uuid.patch
+  012-virt-install-unattended-and-cloud-init-conflict.patch
+  013-virt-install-Reuse-cli.fail_conflicting.patch
+  014-cli-support-boot-loader.stateless-.patch
+  015-diskbackend-Drop-support-for-sheepdog.patch
+  016-Fix-pylint-pycodestyle-warnings-with-latest-versions.patch
+  017-tests-cpio-set-owner-to-00.patch
+  018-addhardware-Fix-backtrace-when-controller.index-is-None.patch
+  019-Clean-up-FileChooser-usage-a-bit.patch
+  020-guest-Query-availability-of-usb-redirdevs-in-domcaps.patch
+  021-guest-Query-availability-of-spicevmc-channels-in-domcaps.patch
+  022-tests-Add-domcaps-coverage-for-usb-redir-spicevmc-channel-checks.patch
+  023-tests-Update-to-latest-kvm-domcaps.patch
+  024-progress-Fix-showing-correct-final-total.patch
+  025-virtinstall-Fix-the-allocating-disk-size-printed-by-the-progress-bar.patch
+  026-virtinstall-Hide-total_size-in-the-progress-bar-if-it-doesnt-need.patch
+  027-asyncjob-Fix-backtrace-when-no-cursor-theme-installed.patch
+  029-asyncjob-Remove-unused-import.patch
+  030-Packit-initial-enablement.patch
+  031-virt-install-Recommend-boot-uefi.patch
+  032-virt-install-Document-Secure-Boot-setups.patch
+  033-cloner-clone-serial-files.patch
+  034-tests-cli-test-serial-file-clone.patch
+  035-man-virt-install-Add-a-note-about-different-behavior-of-boot-on-s390x.patch
+  036-tests-uitests-Fix-window-reposition-on-f38.patch
+  037-tests-livetests-work-around-qemu-media-change-regression.patch
+  038-tests-uitests-Fix-manager-window-repositioning-test.patch
+  039-tests-Default-uitests-to-verbosity-2.patch
+  040-uitests-Make-hotplug-test-pass-on-both-f37-and-f38.patch
+  041-uitests-More-attempts-at-making-manager-reposition-test-reliable.patch
+  042-tests-uitests-make-menu-operations-more-robust.patch
+  043-rpm-convert-license-to-SPDX-format.patch
+  044-uitests-Drop-hotplug-work-around-f38-libvirt-is-fixed-now.patch
+  045-virtinst-delay-lookup_capsinfo-until-we-really-need-it.patch
+  046-virtinst-suppress-lookup_capsinfo-exception-in-machine-type-alias-check.patch
+  047-tests-data-refresh-Fedora-tree-URLs-in-virt-install-osinfo-expected-XMLs.patch
+  048-tests-Add-unit-test-coverage-for-539.patch
+  049-fix-indentation-of-multiline-log.exception-invocations.patch
+  050-virt-clone-Copy-disk-permissions-as-well.patch
+  051-data-appstream-add-launchable-tag.patch
+  052-Fix-some-pylint.patch
+  055-connectauth-Drop-sanity-checking-for-libvirtd.patch
+  056-delete-Fix-ambiguity-that-confused-pylint.patch
+  057-Fix-filesystem-socket.source.patch
+  058-uri-Mock-domcaps-returning-NO_SUPPORT.patch
+  059-tests-cli-Adjust-hotplug-test-for-latest-libvirt.patch
+  060-Fix-some-pylint.patch
+  061-tests-ui-make-newvm-test-start-less-flakey.patch
+  062-tests-ui-make-creatnet-test-start-less-flakey.patch
+  063-Support-creating-sparse-volumes-on-ZFS-pools.patch
+  064-domain-rename-handle-firmware-ending-with-.qcow2.patch
+  065-testdriver-Add-portgroups-example-to-test-many-devices.patch
+  066-netlist-Fix-UI-error-when-virtual-network-doesnt-exist.patch
+  067-ui-details-fix-Applications-width.patch
+  068-ui-details-Increased-scrolledview6s-height-request.patch
+  069-uitests-Fix-walkUI-flakyness.patch
+  070-uitests-Handle-slow-app-launch-on-fedora-39.patch
+  071-createvm-Replace-deprecated-pkgutil.find_loader.patch
+  072-Fix-pylint-3.1.0-issues.patch
+  073-console-Move-embeddable_graphics-to-console.py.patch
+  074-domain-Add-idx-parameter-to-open_graphics_fd.patch
+  075-console-Select-the-first-embeddable-graphics-device-as-graphical-console.patch
+  076-console-Cleanup-and-improve-console-menu-handling.patch
+  077-cli-add-show-systray-option.patch
+  078-man-document-show-systray-option.patch
+  079-baseclass-Avoid-glib-Source-ID-XX-not-found-at-app-shutdown.patch
+  080-uitests-More-handling-for-slow-startup-on-f39.patch
+  081-systray-Cleanups-and-improvements-for-show-systray.patch
+  082-virtinst-add-external-snapshot-capability.patch
+  083-virtinst-snapshot-add-memory-file-attribute.patch
+  084-virtManager-domain-allow-disk-only-snapshots.patch
+  085-virtManager-add-support-to-create-external-snapshots.patch
+  086-virtManager-ignore-agen-livecycle-event-for-shutoff-VMs.patch
+  087-Allow-serial-console-resize-to-beyond-80-columns.patch
+  088-tests-Fix-host-copy-XML-with-libvirt-10.1.0.patch
+  089-hostdev-Fix-error-when-mdev-type_id-is-missing.patch
+  090-db1b2fbc-Use-GtkFileChooserNative.patch
+  091-uitests-Fix-with-GtkFileChooserNative.patch
+  092-cli-Use-regex-for-grep-and-nogrep-args.patch
+  093-cli-Fix-with-latest-libvirt.patch
+  094-uitests-handle-newer-libvirt-test-driver-UpdateDevice-support.patch
+  095-uitests-force-internal-snapshots-in-test_snapshot.py.patch
+- Drop the following downstream patches no longer required
+  virtinst-dont-create-storage-pool-for-dryrun.patch
+  virtinst-add-pvh-support.patch
+  virtinst-enable-video-virtio-for-arm.patch
+  virtinst-add-hyperv-performance-options.patch
+  virtman-dont-specify-gtksource-version.patch
+  virtman-language-fixes.patch
+
+-------------------------------------------------------------------
 Tue Nov  5 13:51:57 MST 2024 - carnold@suse.com
 
 - dbus-1-x11 is being removed from Tumbleweed so drop dependency in

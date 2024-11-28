@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 26 15:47:30 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.4:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.4
+- Changes since 6.2.3:
+  * update version for new release
+  * EditablePage: Set loadOverlay margins explicitly, set loader invisible during loading (kde#494902)
+  * BaseCellDelegate: Use correct colorSet when selected (kde#494261)
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Nov  5 13:30:37 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.3:

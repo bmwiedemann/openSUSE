@@ -16,10 +16,10 @@
 #
 
 
-%global sover   27
+%global sover   28
 %global libname lib%{name}%{sover}
 Name:           re
-Version:        3.16.0
+Version:        3.17.0
 Release:        0
 Summary:        Library for real-time communications with async I/O support
 License:        BSD-3-Clause

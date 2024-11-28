@@ -176,13 +176,14 @@
   ;;
   ;; mouse as arrow
   ;; --------------
-  (setq x-pointer-shape x-pointer-left-ptr)
-  (if (x-display-color-p)
+  (if (eq window-system 'x)
+    (setq x-pointer-shape x-pointer-left-ptr))
+  (if (display-color-p)
       (set-mouse-color "RoyalBlue")
     (set-mouse-color (cdr (assq 'mouse-color (frame-parameters)))))
   ;;
   ;;   Automatically replacing of fore- and background.
-  (if (not (x-display-color-p))
+  (if (not (display-color-p))
     (progn
       (set-face-background 'region
 	       (cdr (assq 'foreground-color (frame-parameters ))))
@@ -538,5 +539,12 @@
 ;;(setq epa-pinentry-mode 'loopback)
 ;;(pinentry-start)
 ;;
+;; New native compilation support
+;; avoid useless warning, clear old eln files
+(if (featurep 'native-compile)
+   (progn
+    (require 'comp)
+    (setq native-comp-async-report-warnings-errors 'silent)
+    (native-compile-prune-cache)))
 ;;;;;;;;;;
 ;; the end

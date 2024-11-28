@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 25 15:42:44 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.16+kde7, rebased upstream:
+  * Android: fix null array when requesting available providers
+  * WeatherInfo example: fix a potential crash
+  * Bump version to 5.15.16
+
+-------------------------------------------------------------------
 Wed Sep  4 20:07:56 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.15+kde7, rebased upstream:

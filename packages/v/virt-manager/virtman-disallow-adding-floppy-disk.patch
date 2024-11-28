@@ -4,11 +4,11 @@ in this patch anyways to correctly set up a bus if a floppy were
 added.
 
 
-Index: virt-manager-4.1.0/virtManager/addhardware.py
+Index: virt-manager-4.2.0/virtManager/addhardware.py
 ===================================================================
---- virt-manager-4.1.0.orig/virtManager/addhardware.py
-+++ virt-manager-4.1.0/virtManager/addhardware.py
-@@ -490,6 +490,9 @@ class vmmAddHardware(vmmGObjectUI):
+--- virt-manager-4.2.0.orig/virtManager/addhardware.py
++++ virt-manager-4.2.0/virtManager/addhardware.py
+@@ -489,6 +489,9 @@ class vmmAddHardware(vmmGObjectUI):
              buses = domcaps.devices.disk.get_enum("bus").get_values()
          else:
              buses = vmmAddHardware.disk_old_recommended_buses(guest)
@@ -18,7 +18,7 @@ Index: virt-manager-4.1.0/virtManager/addhardware.py
  
          bus_map = {
              "disk": ["ide", "sata", "scsi", "sd", "usb", "virtio", "xen"],
-@@ -509,6 +512,7 @@ class vmmAddHardware(vmmGObjectUI):
+@@ -508,6 +511,7 @@ class vmmAddHardware(vmmGObjectUI):
              "usb": _("USB"),
              "virtio": _("VirtIO"),
              "xen": _("Xen"),
@@ -26,7 +26,7 @@ Index: virt-manager-4.1.0/virtManager/addhardware.py
          }
          return bus_mappings.get(bus, bus)
  
-@@ -676,8 +680,9 @@ class vmmAddHardware(vmmGObjectUI):
+@@ -665,8 +669,9 @@ class vmmAddHardware(vmmGObjectUI):
                        "drive-harddisk", _("Disk device")])
          target_model.append([DeviceDisk.DEVICE_CDROM,
                        "media-optical", _("CDROM device")])

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Nov 24 09:58:43 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- fix build by using CFLAGS="-Wno-implicit-function-declaration"
+- update spec file for Leap 16.0:
+  * remove %suse_update_desktop_file
+  * remove recommending lang package
+  * use autosetup
+  * remove HiDPI workaround
+
+-------------------------------------------------------------------
 Tue Nov  9 13:45:49 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Add gstreamer-plugins as recommend dependencies

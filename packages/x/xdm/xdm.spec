@@ -57,7 +57,6 @@ BuildRequires:  pkgconfig(xorg-macros) >= 1.4
 BuildRequires:  pkgconfig(xpm)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xtrans)
-Requires:       %fillup_prereq
 Requires:       /sbin/startproc
 Requires:       cpp
 Requires:       logrotate
@@ -80,6 +79,8 @@ Requires:       %{_bindir}/pidof
 %else
 Requires:       /sbin/pidof
 %endif
+Requires:       displaymanager-sysconfig
+Requires(post): displaymanager-sysconfig
 
 %description
 Xdm manages a collection of X displays, which may be on the local host
@@ -95,6 +96,17 @@ Enhances:       xdm
 This package contains the System desktop file which will cause
 the execution of a user provided $HOME/.xsession script or pick
 the system wide DM default set in %{_sysconfdir}/sysconfig/displaymanager.
+
+%package -n displaymanager-sysconfig
+Summary:        Central configuration for Display Managers
+Requires:       %fillup_prereq
+
+%description -n displaymanager-sysconfig
+openSUSE tries to concentrate common configuration of multiple display managers
+in a central place (/etc/sysconfig/displaymanager). The most relevant setting to
+configure there is AUTOLOGIN.
+
+This package is required by the various display managers that integrate into the config hooks.
 
 %prep
 %setup -q
@@ -199,7 +211,6 @@ if [ $1 -eq 1 ] ; then
   fi
 fi
 %service_add_post display-manager.service
-%{fillup_only -n displaymanager}
 %{_sbindir}/update-alternatives --install %{_prefix}/lib/X11/displaymanagers/default-displaymanager \
   default-displaymanager %{_prefix}/lib/X11/displaymanagers/console 5
 %{_sbindir}/update-alternatives --install %{_prefix}/lib/X11/displaymanagers/default-displaymanager \
@@ -225,6 +236,9 @@ sed -i 's/DISPLAYMANAGER=.*//g' %{_sysconfdir}/sysconfig/displaymanager
 
 %preun
 %service_del_preun display-manager.service
+
+%post -n displaymanager-sysconfig
+%{fillup_only -n displaymanager}
 
 %files
 %license COPYING
@@ -263,7 +277,6 @@ sed -i 's/DISPLAYMANAGER=.*//g' %{_sysconfdir}/sysconfig/displaymanager
 %config(noreplace) %{_sysconfdir}/pam.d/xdm-np
 %endif
 %dir %{_localstatedir}/lib/xdm/
-%{_fillupdir}/sysconfig.displaymanager
 %{_localstatedir}/lib/xdm/authdir/
 %ghost %{_localstatedir}/log/xdm.errors
 %{_bindir}/chooser
@@ -281,5 +294,8 @@ sed -i 's/DISPLAYMANAGER=.*//g' %{_sysconfdir}/sysconfig/displaymanager
 
 %files xsession
 %{_datadir}/xsessions/xsession.desktop
+
+%files -n displaymanager-sysconfig
+%{_fillupdir}/sysconfig.displaymanager
 
 %changelog

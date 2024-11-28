@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 26 12:02:16 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- rename -hmac subpackage to -fips because it isn't providing
+  the hmac files, it provides the configuration drop in to
+  enforce fips mode.
+
+-------------------------------------------------------------------
 Thu Jun 20 12:10:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update description of ipsec package: no longer mention
@@ -104,7 +111,7 @@ Wed Apr  5 01:34:28 UTC 2023 - Mohd Saquib <mohd.saquib@suse.com>
   vici aka swanctl interface which is current upstream's default.
   strongswan.service which enables swanctl interface is masked to
   stop interfering with the ipsec interface (bsc#1184144)
-- Removes deprecated SysV support 
+- Removes deprecated SysV support
 
 -------------------------------------------------------------------
 Thu Mar  2 13:34:37 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
@@ -225,7 +232,7 @@ Wed Mar 16 12:57:46 UTC 2022 - Marcus Meissner <meissner@suse.com>
 -------------------------------------------------------------------
 Thu Mar  3 14:49:26 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
-- Added prf-plus-modularization.patch that outsources the IKE 
+- Added prf-plus-modularization.patch that outsources the IKE
   key derivation to openssl. (will be merged to 5.9.6)
 - package the kdf config, template and plugin
 
@@ -415,9 +422,9 @@ Tue Mar 31 16:42:23 UTC 2020 - Madhu Mohan Nelemane <mmnelemane@suse.com>
 -------------------------------------------------------------------
 Mon Feb 17 20:26:37 UTC 2020 - Johannes Kastl <kastl@b1-systems.de>
 
-- move file %{_datadir}/dbus-1/system.d/nm-strongswan-service.conf 
-  to strongswan-nm subpackage, as it is needed for the 
-  NetworkManager plugin that uses strongswan-nm, not 
+- move file %{_datadir}/dbus-1/system.d/nm-strongswan-service.conf
+  to strongswan-nm subpackage, as it is needed for the
+  NetworkManager plugin that uses strongswan-nm, not
   strongswan-ipsec
   This fixes the following error:
   ```
@@ -624,7 +631,7 @@ Tue Apr 17 13:24:38 UTC 2018 - bjorn.lie@gmail.com
 -------------------------------------------------------------------
 Fri Mar 16 08:55:10 UTC 2018 - mmnelemane@suse.com
 
-- Removed unused requires and macro calls(bsc#1083261) 
+- Removed unused requires and macro calls(bsc#1083261)
 
 -------------------------------------------------------------------
 Tue Oct 17 11:27:54 UTC 2017 - jengelh@inai.de
@@ -657,7 +664,7 @@ Tue Sep  5 17:10:11 CEST 2017 - ndas@suse.de
 
     *By default the /etc/swanctl/conf.d directory is created and *.conf files in it are included in the default
     swanctl.conf file.
-    
+
     *The curl plugin now follows HTTP redirects (configurable via strongswan.conf).
 
     *The CHILD_SA rekeying was fixed in charon-tkm and the behavior is refined a bit more since 5.5.3
@@ -786,7 +793,7 @@ Mon Jul 4 12:00:00 UTC 2016 - doug@uq.edu.au
     based random oracle has been fixed, generalized and
     standardized by employing the MGF1 mask generation function
     with SHA-512. As a consequence BLISS signatures unsing the
-    improved oracle are not compatible with the earlier 
+    improved oracle are not compatible with the earlier
     implementation.
   * Support for auto=route with right=%any for transport mode
     connections has been added (the ikev2/trap-any scenario
@@ -806,7 +813,7 @@ Mon Jul 4 12:00:00 UTC 2016 - doug@uq.edu.au
     rightauth=any, which prevented it from using this same config
     as responder).
   * The initiator flag in the IKEv2 header is compared again
-    (wasn't the case since 5.0.0) and packets that have the flag 
+    (wasn't the case since 5.0.0) and packets that have the flag
     set incorrectly are again ignored.
   * Implemented a demo Hardcopy Device IMC/IMV pair based on the
     "Hardcopy Device Health Assessment Trusted Network Connect
@@ -852,8 +859,8 @@ Mon Jul 4 12:00:00 UTC 2016 - doug@uq.edu.au
     are chosen based on the strength of the signature key, but
     specific hash algorithms may be configured in leftauth.
   * Key types and hash algorithms specified in rightauth are now
-    also checked against IKEv2 signature schemes. If such 
-    constraints are used for certificate chain validation in 
+    also checked against IKEv2 signature schemes. If such
+    constraints are used for certificate chain validation in
     existing configurations, in particular with peers that don't
     support RFC 7427, it may be necessary to disable this feature
     with the charon.signature_authentication_constraints setting,
@@ -862,7 +869,7 @@ Mon Jul 4 12:00:00 UTC 2016 - doug@uq.edu.au
   * The new connmark plugin allows a host to bind conntrack flows
     to a specific CHILD_SA by applying and restoring the SA mark
     to conntrack entries. This allows a peer to handle multiple
-    transport mode connections coming over the same NAT device for 
+    transport mode connections coming over the same NAT device for
     client-initiated flows. A common use case is to protect
     L2TP/IPsec, as supported by some systems.
   * The forecast plugin can forward broadcast and multicast
@@ -870,13 +877,13 @@ Mon Jul 4 12:00:00 UTC 2016 - doug@uq.edu.au
     using unique marks, it sets up the required Netfilter rules
     and uses a multicast/broadcast listener that forwards such
     messages to all connected clients. This plugin is designed for
-    Windows 7 IKEv2 clients, which announces its services over the 
+    Windows 7 IKEv2 clients, which announces its services over the
     tunnel if the negotiated IPsec policy allows it.
-  * For the vici plugin a Python Egg has been added to allow 
-    Python applications to control or monitor the IKE daemon using 
+  * For the vici plugin a Python Egg has been added to allow
+    Python applications to control or monitor the IKE daemon using
     the VICI interface, similar to the existing ruby gem. The
     Python library has been contributed by Björn Schuberg.
-  * EAP server methods now can fulfill public key constraints, 
+  * EAP server methods now can fulfill public key constraints,
     such as rightcert or rightca. Additionally, public key and
     signature constraints can be specified for EAP methods in the
     rightauth keyword. Currently the EAP-TLS and EAP-TTLS methods
@@ -1077,7 +1084,7 @@ Thu Jul  3 13:39:45 UTC 2014 - meissner@suse.com
 -------------------------------------------------------------------
 Fri Jun 20 17:38:07 UTC 2014 - crrodriguez@opensuse.org
 
-- Fix build in factory 
+- Fix build in factory
 * Do not include var/run directories in package
 * Move runtime data to /run and provide tmpfiles.d snippet
 * Add proper systemd macros to rpm scriptlets.
@@ -1324,7 +1331,7 @@ Thu Nov 29 19:13:40 CET 2012 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Fri Nov 16 04:02:32 UTC 2012 - crrodriguez@opensuse.org
 
-- Fix systemd unit dir 
+- Fix systemd unit dir
 
 -------------------------------------------------------------------
 Wed Oct 31 15:25:16 UTC 2012 - mt@suse.de
@@ -2007,7 +2014,7 @@ Wed Jun 10 11:04:44 CEST 2009 - mt@suse.de
 Mon Jun  8 00:21:13 CEST 2009 - ro@suse.de
 
 - rename getline to my_getline to avoid collision with function
-  from glibc 
+  from glibc
 
 -------------------------------------------------------------------
 Tue Jun  2 09:56:16 CEST 2009 - mt@suse.de
@@ -2048,7 +2055,7 @@ Tue Mar 31 11:19:03 CEST 2009 - mt@suse.de
     As a workaround such dates are set to the maximum representable
     time, i.e. Jan 19 03:14:07 UTC 2038.
   * Distinguished Names containing wildcards (*) are not sent in the
-    IDr payload anymore. 
+    IDr payload anymore.
 
 -------------------------------------------------------------------
 Mon Oct 20 09:27:06 CEST 2008 - mt@suse.de
@@ -2114,7 +2121,7 @@ Thu Aug 28 09:48:14 CEST 2008 - mt@suse.de
   several hundred tunnels concurrently.
   * Fixed the --enable-integrity-test configure option which
   computes a SHA-1 checksum over the libstrongswan library.
-  * Consistent logging of IKE and CHILD SAs at the audit (AUD) level. 
+  * Consistent logging of IKE and CHILD SAs at the audit (AUD) level.
   * Improved the performance of the SQL-based virtual IP address pool
   by introducing an additional addresses table. The leases table
   storing only history information has become optional and can be
@@ -2218,7 +2225,7 @@ Tue Feb 19 11:44:03 CET 2008 - mt@suse.de
   to the rekeyed IKE_SA so that the UDP encapsulation was lost with
   the next CHILD_SA rekeying.
   * Wrong type definition of the next_payload variable in id_payload.c
-  caused an INVALID_SYNTAX error on PowerPC platforms. 
+  caused an INVALID_SYNTAX error on PowerPC platforms.
   * Implemented IKEv2 EAP-SIM server and client test modules that use
   triplets stored in a file. For details on the configuration see
   the scenario 'ikev2/rw-eap-sim-rsa'.
@@ -2250,5 +2257,5 @@ Mon Nov 26 10:19:40 CET 2007 - mt@suse.de
 -------------------------------------------------------------------
 Thu Nov 22 10:25:56 CET 2007 - mt@suse.de
 
-- Initial, unfinished package                            
+- Initial, unfinished package
 

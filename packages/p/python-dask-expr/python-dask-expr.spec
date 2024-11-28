@@ -25,8 +25,6 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-# no numba, no dask
-%define skip_python313 1
 Name:           python-dask-expr%{psuffix}
 Version:        1.1.19
 Release:        0

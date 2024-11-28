@@ -1,7 +1,7 @@
 #
 # spec file for package nasc
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,20 @@
 #
 
 
+%define         appid com.github.parnold-x.nasc
 Name:           nasc
 Version:        0.5.4
 Release:        0
 Summary:        Do maths like a normal person
 License:        GPL-3.0-only
 Group:          Productivity/Scientific/Math
-URL:            http://parnold-x.github.io/nasc/
-Source:         https://github.com/parnold-x/nasc/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/parnoldx/nasc
+Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM nasc-fix_gcc9_build.patch
 Patch0:         nasc-fix_gcc9_build.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  vala >= 0.28.0
 BuildRequires:  pkgconfig(cln)
 BuildRequires:  pkgconfig(gee-0.8)
@@ -42,7 +42,6 @@ BuildRequires:  pkgconfig(libqalculate)
 BuildRequires:  pkgconfig(libsoup-2.4)
 Requires:       qalculate
 Requires:       %(rpm -qf $(readlink -qne %{_libdir}/libcln.so) --qf '%%{NAME} >= %%{VERSION}')
-%glib2_gsettings_schema_requires
 
 %description
 This is an application where you do calculations "like a normal
@@ -55,36 +54,21 @@ answer changes, so does the equations it is used in.
 %autosetup -p1
 
 %build
-%cmake \
-    -DGSETTINGS_COMPILE=FALSE \
-    -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -Wl,--no-undefined"
-
-make %{?_smp_mflags}
+export CFLAGS="%{optflags} -Wno-implicit-function-declaration"
+%cmake
+%cmake_build
 
 %install
-%cmake_install %{?_smp_mflags}
-
-%if 0%{?suse_version} < 1500
-%post
-%glib2_gsettings_schema_post
-%icon_theme_cache_post
-%desktop_database_post
-
-%postun
-%glib2_gsettings_schema_postun
-%icon_theme_cache_postun
-%desktop_database_postun
-%endif
+%cmake_install
 
 %files
 %license COPYING
 %doc AUTHORS README.md
-%dir %{_datadir}/metainfo
-%{_bindir}/com.github.parnold-x.nasc
-%{_datadir}/applications/com.github.parnold-x.nasc.desktop
-%{_datadir}/glib-2.0/schemas/com.github.parnold-x.nasc.gschema.xml
-%{_datadir}/icons/hicolor/*/apps/com.github.parnold-x.nasc.??g
-%{_datadir}/metainfo/com.github.parnold-x.nasc.appdata.xml
+%{_bindir}/%{appid}
+%{_datadir}/applications/%{appid}.desktop
+%{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
+%{_datadir}/icons/hicolor/*/apps/%{appid}.svg
+%{_datadir}/metainfo/%{appid}.appdata.xml
 %{_datadir}/qalculate/
 
 %changelog

@@ -1,8 +1,10 @@
 Fix use of reserved identifier __atomic_compare_exchange by renaming
 
---- dbinc/atomic.h.orig	2018-03-13 09:44:13.197929296 +0100
-+++ dbinc/atomic.h	2018-03-13 09:45:09.582831244 +0100
-@@ -144,7 +144,7 @@
+Index: db-4.8.30/dbinc/atomic.h
+===================================================================
+--- db-4.8.30.orig/dbinc/atomic.h
++++ db-4.8.30/dbinc/atomic.h
+@@ -144,7 +144,7 @@ typedef LONG volatile *interlocked_val;
  #define	atomic_inc(env, p)	__atomic_inc(p)
  #define	atomic_dec(env, p)	__atomic_dec(p)
  #define	atomic_compare_exchange(env, p, o, n)	\
@@ -11,7 +13,7 @@ Fix use of reserved identifier __atomic_compare_exchange by renaming
  static inline int __atomic_inc(db_atomic_t *p)
  {
  	int	temp;
-@@ -176,7 +176,7 @@
+@@ -176,7 +176,7 @@ static inline int __atomic_dec(db_atomic
   * http://gcc.gnu.org/onlinedocs/gcc-4.1.0/gcc/Atomic-Builtins.html
   * which configure could be changed to use.
   */

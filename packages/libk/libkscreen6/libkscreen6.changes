@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 26 15:46:36 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.4:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.4
+- Changes since 6.2.3:
+  * doctor: clarify the meaning of max. brightness zero (kde#495557)
+  * Update Plasma Wayland Protocols to 1.14
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Nov  5 13:30:24 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.3:

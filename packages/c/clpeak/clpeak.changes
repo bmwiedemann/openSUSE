@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov 26 19:00:55 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.3
+  * Add a few more parameters.
+  * Add 24-bit integer compute to RX 5500XT results.
+  * [cmake] use GNUInstallDirs to get canonical paths.
+  * Add log files for additional devices.
+  * Fix compute integer unit reported in xml files.
+  * add profiling for char & short integer types.
+  * Adding results for Tesla P40.
+  * Adding results for MTT S80.
+  * Use stricter host buffer alignment (64B) required by modern
+    CPUs.
+
+-------------------------------------------------------------------
 Wed May  3 14:21:56 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.1.2:

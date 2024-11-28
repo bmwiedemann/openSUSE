@@ -1,7 +1,7 @@
 #
 # spec file for package quilter
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,18 @@
 #
 
 
+%define         appid io.github.lainsce.Quilter
 Name:           quilter
 Version:        3.3.4
 Release:        0
 Summary:        Writing application
 License:        GPL-3.0-only
-Group:          Productivity/Office/Word Processor
 URL:            https://github.com/lainsce/quilter
 Source:         https://github.com/lainsce/quilter/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libmarkdown-devel
 BuildRequires:  meson >= 0.40.0
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  vala
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(granite) >= 5.2.3
@@ -37,16 +35,16 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtksourceview-4)
 BuildRequires:  pkgconfig(gtkspell3-3.0)
 BuildRequires:  pkgconfig(libhandy-1)
+BuildRequires:  pkgconfig(libmarkdown)
 BuildRequires:  pkgconfig(webkit2gtk-4.0)
-Recommends:     %{name}-lang
 
 %description
-A fullscreen word processor for Elementary OS.
+A fullscreen word processor for the Pantheon Desktop.
 
 %lang_package
 
 %prep
-%setup -q
+%autosetup
 
 # use default font
 sed -i '/QuiltMono.ttf/d' $(grep -rl QuiltMono.ttf)
@@ -54,26 +52,26 @@ sed -i '/QuiltVier.ttf/d' $(grep -rl QuiltVier.ttf)
 sed -i '/QuiltZwei.ttf/d' $(grep -rl QuiltZwei.ttf)
 
 %build
+export CFLAGS="%{optflags} -Wno-incompatible-pointer-types -Wno-int-conversion"
 %meson
 %meson_build
 
 %install
 %meson_install
-%suse_update_desktop_file -r io.github.lainsce.Quilter GTK Utility TimeUtility
-%find_lang io.github.lainsce.Quilter %{name}.lang
-%fdupes %{buildroot}/%{_datadir}  
+%find_lang %{appid}
+%fdupes %{buildroot}
 
 %files
 %license LICENSE
 %doc AUTHORS README.md
-%{_bindir}/io.github.lainsce.Quilter
-%{_datadir}/io.github.lainsce.Quilter/
-%{_datadir}/applications/io.github.lainsce.Quilter.desktop
-%{_datadir}/glib-2.0/schemas/io.github.lainsce.Quilter.gschema.xml
-%{_datadir}/gtksourceview-4/styles/*.xml
-%{_datadir}/icons/hicolor/*/apps/io.github.lainsce.Quilter*.??g
-%{_datadir}/metainfo/io.github.lainsce.Quilter.appdata.xml
+%{_bindir}/%{appid}
+%{_datadir}/%{appid}
+%{_datadir}/applications/%{appid}.desktop
+%{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
+%{_datadir}/gtksourceview-4/styles/%{appid}*.xml
+%{_datadir}/icons/hicolor/*/apps/%{appid}*.svg
+%{_datadir}/metainfo/%{appid}.appdata.xml
 
-%files lang -f %{name}.lang
+%files lang -f %{appid}.lang
 
 %changelog

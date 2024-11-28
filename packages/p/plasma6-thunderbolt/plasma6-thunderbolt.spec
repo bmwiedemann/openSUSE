@@ -23,7 +23,7 @@
 
 %bcond_without released
 Name:           plasma6-thunderbolt
-Version:        6.2.3
+Version:        6.2.4
 Release:        0
 Summary:        Plasma frontend for Thunderbolt 3 security levels
 License:        GPL-2.0-or-later

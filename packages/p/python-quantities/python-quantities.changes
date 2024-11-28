@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov 27 00:11:34 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.16.1:
+  * Fixed a couple of small bugs
+  * Added umath funcs: `maximum` & `minimum`
+  * Added support for NumPy 2.0, while maintaining support for older
+    versions back to 1.22
+  * Fixed a potential security hole
+  * Dropped support for Python 3.8
+
+-------------------------------------------------------------------
 Mon Jul 22 04:41:11 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Restrict numpy to < 2, not quite supported yet. 

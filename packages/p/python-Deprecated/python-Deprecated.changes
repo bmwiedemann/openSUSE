@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov 25 12:43:42 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.2.15
+  * Resolve Python 2.7 support issue introduced in v1.2.14 in ``sphinx.py``.
+  * Fix #69: Add ``extra_stacklevel`` argument for interoperating with
+    other wrapper functions (refer to #68 for a concrete use case).
+  * Fix #73: Update class method deprecation warnings for Python 3.13.
+  * Fix #75: Update GitHub workflows and fix development dependencies for Python 3.12.
+  * Fix #66: discontinue TravisCI and AppVeyor due to end of free support.
+- Adjust upstream source name in spec file
+- Drop fix-python3.13-ftbfs.patch, merged upstream
+
+-------------------------------------------------------------------
 Tue Sep 24 12:03:30 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Fix build error under Leap.

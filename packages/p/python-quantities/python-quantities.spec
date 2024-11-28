@@ -17,15 +17,15 @@
 
 
 Name:           python-quantities
-Version:        0.15.0
+Version:        0.16.1
 Release:        0
 Summary:        Package for physical quantities with units
 License:        BSD-3-Clause
 URL:            https://github.com/python-quantities/python-quantities/
 Source:         https://files.pythonhosted.org/packages/source/q/quantities/quantities-%{version}.tar.gz
 Patch0:         reproducible.patch
-BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module numpy >= 1.16 with %python-numpy < 2}
+BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module numpy >= 1.22}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
@@ -33,7 +33,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       (python-numpy >= 1.16 with python-numpy < 2)
+Requires:       python-numpy >= 1.22
 BuildArch:      noarch
 %python_subpackages
 
@@ -58,7 +58,6 @@ mv .quantities quantities
 %files %{python_files}
 %doc CHANGES.txt README.rst
 %license doc/user/license.rst
-%dir %{python_sitelib}/quantities
 %{python_sitelib}/quantities
 %{python_sitelib}/quantities-%{version}.dist-info
 

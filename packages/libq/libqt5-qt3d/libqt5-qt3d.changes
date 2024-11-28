@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 25 15:31:49 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.16+kde0, rebased upstream:
+  * Bump version to 5.15.16
+  * Doc: Add missing leading asterisk to qdoc command
+
+-------------------------------------------------------------------
 Wed Sep  4 20:01:50 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.15+kde0, rebased upstream:

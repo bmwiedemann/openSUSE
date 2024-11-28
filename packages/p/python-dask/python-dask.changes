@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov 27 08:21:12 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Skip tokenize test on python313
+  * See gh#dask/dask#11456, gh#dask/dask#11457
+
+-------------------------------------------------------------------
+Fri Nov 22 12:06:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- reenable for python 313 as numba is now available
+
+-------------------------------------------------------------------
 Tue Nov 19 12:36:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2024.11.2:

@@ -754,4 +754,12 @@ depends on sr#251413</comment>
     <comment>Qt 5.15.15 (forwarded request 1199183 from favogt)</comment>
     <requestid>1199190</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>1dd34a5f200e9a76658ae3ffed429bfa</srcmd5>
+    <version>5.15.16+kde22</version>
+    <time>1732741541</time>
+    <user>anag+factory</user>
+    <comment>Update to 5.15.16</comment>
+    <requestid>1226631</requestid>
+  </revision>
 </revisionlist>

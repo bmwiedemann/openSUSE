@@ -515,4 +515,12 @@ This is a part of the 5.4 release, but can be built and used with older Qt relea
     <comment>Qt 5.15.15 (forwarded request 1199183 from favogt)</comment>
     <requestid>1199213</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>62f4d783d631a35a5d1acccccbdd1b81</srcmd5>
+    <version>5.15.16+kde59</version>
+    <time>1732741536</time>
+    <user>anag+factory</user>
+    <comment>Qt 5.15.16, untested. Try #2. (forwarded request 1226586 from favogt)</comment>
+    <requestid>1226619</requestid>
+  </revision>
 </revisionlist>

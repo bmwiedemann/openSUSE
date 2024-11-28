@@ -1,0 +1,28 @@
+Index: xmlrpc-c-1.59.03/common.mk
+===================================================================
+--- xmlrpc-c-1.59.03.orig/common.mk
++++ xmlrpc-c-1.59.03/common.mk
+@@ -472,9 +472,11 @@ $(LIBXMLRPC_UTILPP) $(LIBXMLRPC_UTILPP_A
+ 	$(MAKE) -C $(dir $@) -f $(SRCDIR)/lib/libutil++/Makefile \
+ 	    $(notdir $@)
+ 
++ifneq ($(ENABLE_LIBXML2_BACKEND),yes)
+ $(LIBXMLRPC_XMLPARSE) $(LIBXMLRPC_XMLPARSE_A) : FORCE
+ 	$(MAKE) -C $(dir $@) -f $(SRCDIR)/lib/expat/xmlparse/Makefile \
+ 	    $(notdir $@)
++endif
+ 
+ $(LIBXMLRPC_XMLTOK) $(LIBXMLRPC_XMLTOK_A) : FORCE
+ 	$(MAKE) -C $(dir $@) -f $(SRCDIR)/lib/expat/xmltok/Makefile \
+Index: xmlrpc-c-1.59.03/test/Makefile
+===================================================================
+--- xmlrpc-c-1.59.03.orig/test/Makefile
++++ xmlrpc-c-1.59.03/test/Makefile
+@@ -70,7 +70,6 @@ test: \
+   $(TEST_OBJS) $(LIBXMLRPC_A) $(LIBXMLRPC_UTIL_A) \
+   $(LIBXMLRPC_SERVER_A) $(LIBXMLRPC_SERVER_ABYSS_DEP) $(LIBXMLRPC_XML) \
+   $(LIBXMLRPC_CLIENT_DEP) $(LIBXMLRPC_ABYSS_DEP) \
+-  $(LIBXMLRPC_XMLPARSE_A) $(LIBXMLRPC_XMLTOK_A) \
+   $(CASPRINTF)
+ 	$(CCLD) -o $@ $(LDFLAGS_ALL) \
+ 	    $(TEST_OBJS) $(LDADD_CLIENT) $(LDADD_ABYSS_SERVER) $(CASPRINTF)

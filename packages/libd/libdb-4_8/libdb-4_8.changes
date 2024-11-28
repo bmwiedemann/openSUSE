@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 26 14:15:24 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add libdb-4_8-sequence.patch: Fix code to detect/enable 64-bit
+  integral type support for sequences. The m4 macros were not
+  complying with GCC 14's strictness.
+- Rebase db-4.8.30.patch and libdb-fix-atomic.patch to also apply
+  using -p1 and use the autosetup macro.
+
+-------------------------------------------------------------------
 Wed Aug  7 09:15:21 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Security fix: [bsc#1174414, CVE-2019-2708]

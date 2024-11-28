@@ -17,12 +17,12 @@
 
 
 Name:           python-zxcvbn-rs-py
-Version:        0.1.1
+Version:        0.1.1+5
 Release:        0
 Summary:        Python bindings for zxcvbn-rs, the Rust implementation of zxcvbn
 License:        MIT
 URL:            https://github.com/fief-dev/zxcvbn-rs-py
-Source0:        https://files.pythonhosted.org/packages/source/z/zxcvbn-rs-py/zxcvbn_rs_py-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  %{python_module maturin >= 1.4.0}
 BuildRequires:  %{python_module pip}
@@ -42,7 +42,7 @@ and other common patterns like dates, repeats (aaa), sequences (abcd), keyboard
 patterns (qwertyuiop), and l33t speak.
 
 %prep
-%autosetup -a1 -p1 -n zxcvbn_rs_py-%{version}
+%autosetup -a1 -p1
 
 %build
 %pyproject_wheel
@@ -55,7 +55,7 @@ patterns (qwertyuiop), and l33t speak.
 %license LICENSE
 %doc README.md
 %{python_sitearch}/zxcvbn_rs_py
-%{python_sitearch}/zxcvbn_rs_py-%{version}.dist-info
+%{python_sitearch}/zxcvbn_rs_py-0.1.1.dist-info
 %pycache_only %{python_sitearch}/zxcvbn_rs_py/__pycache__
 
 %changelog

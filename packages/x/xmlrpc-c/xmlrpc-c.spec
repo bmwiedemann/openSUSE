@@ -1,7 +1,7 @@
 #
 # spec file for package xmlrpc-c
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,16 @@
 
 
 %define soname 3
-%define soname_cpp 8
+%define soname_cpp 9
 Name:           xmlrpc-c
-Version:        1.54.06
+Version:        1.59.03
 Release:        0
 Summary:        Library implementing XML-based Remote Procedure Calls
 License:        BSD-3-Clause AND MIT
 Group:          Development/Libraries/C and C++
 URL:            https://xmlrpc-c.sourceforge.net/
 Source:         https://sourceforge.net/projects/xmlrpc-c/files/Xmlrpc-c%{20}Super%{20}Stable/%{version}/xmlrpc-c-%{version}.tgz
+Patch1:         skip-expat.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -206,7 +207,9 @@ XML-RPC is a lightweight RPC protocol based on XML and HTTP. This
 package is used by XML-RPC clients and servers written in C and C++.
 
 %prep
-%setup -q
+%autosetup -p1
+echo "Not using the embedded libexpat copy"
+rm -rvf lib/expat
 
 %build
 export CFLAGS_PERSONAL="%{optflags}"

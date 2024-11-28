@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 27 08:04:56 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.3.7:
+  * Fix building with older Rust versions
+
+-------------------------------------------------------------------
 Wed Oct 30 08:43:57 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.3.6:

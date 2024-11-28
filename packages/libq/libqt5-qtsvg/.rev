@@ -510,4 +510,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>Qt 5.15.15 (forwarded request 1199183 from favogt)</comment>
     <requestid>1199209</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>4a130f146d1c22353b75333d196079ca</srcmd5>
+    <version>5.15.16+kde5</version>
+    <time>1732741533</time>
+    <user>anag+factory</user>
+    <comment>Qt 5.15.16, untested. Try #2. (forwarded request 1226586 from favogt)</comment>
+    <requestid>1226615</requestid>
+  </revision>
 </revisionlist>

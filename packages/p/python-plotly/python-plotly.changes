@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Wed Nov 27 12:02:14 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.24.1
+  * Updated Plotly.js from version 2.35.0 to version 3.0.0-rc.0.
+    See the plotly.js CHANGELOG for more information.
+- Release 5.24.0
+  ## Added
+  * New px functions for maps: scatter_map, line_map,
+    choropleth_map, and density_map.
+  ## Updated
+  * Updated Plotly.js from version 2.34.0 to version 2.35.0. See
+    the plotly.js CHANGELOG for more information. These changes are
+    reflected in the auto-generated plotly.graph_objects module.
+    Notable changes include:
+    - Add new traces: scattermap, choroplethmap and densitymap and
+      map subplots which use maplibre to render maps [#7015, #7060,
+      #7085, #7088, #7090, #7092, #7094, #7134]
+    - Deprecate mapbox traces and mapbox subplot [#7087]
+  * Fixed a bug in integer validation of arrays that threw an error
+    when an array contained a mix of strings and integers.
+  * Fixed a bug in JupyterLab >= 4 and Jupyter Notebook >= 7 that
+    caused latex to not render in plotly charts.
+  * Use modern native ES6 import to load plotly.js bundle instead
+    of requirejs which is no longer under active development
+- Release 5.23.0
+  ## Updated
+  *  Updated Plotly.js from version 2.32.0 to version 2.34.0. See
+     the plotly.js CHANGELOG for more information. These changes
+     are reflected in the auto-generated plotly.graph_objects
+     module. Notable changes include:
+    - Add subtitle attribute to layout.title to enable adding
+      subtitles to plots [#7012]
+    - Introduce "u" and "s" pseudo html tags to add partial
+      underline and strike-through styles to SVG text elements
+      [#7043]
+    - Add geometric mean functionality and 'geometric mean
+      ascending' + 'geometric mean descending' to category_order on
+      cartesian axes [#6223], with thanks to @acxz and @prabhathc
+      for the contribution!
+    - Add axis property ticklabelindex for drawing the label for
+      each minor tick n positions away from a major tick, with
+      thanks to @my-tien for the contribution! [#7036]
+    - Add property ticklabelstandoff and ticklabelshift to
+      cartesian axes to adjust positioning of tick labels, with
+      thanks to @my-tien for the contribution! [#7006]
+    - Add x0shift, x1shift, y0shift, y1shift to shapes to add
+      control over positioning of shape vertices on
+      (multi-)category axes, with thanks to @my-tien for the
+      contribution! [#7005]
+  * Specify Python version 3.8-3.11 for development virtual
+    environments and pin pytest at version 8.1.1 to match.
+  * Update IntegerValidator to handle extras option to allow
+    supporting additional keyword values. For example, 'bold' and
+    'normal' as well as integers as used in font weights [#4612].
+- Refresh plotly-pr4622-np2.patch gh#plotly/plotly.py#4622
+- Do not depend on jupyter metapackge for tests
+
+-------------------------------------------------------------------
 Thu Jul 18 08:19:01 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Revert restriction. I created the patch for a reason. This one

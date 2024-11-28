@@ -1,0 +1,22 @@
+commit 18754159423027378536b21e7f63db1b1c7bd36d
+Author: Bernhard M. Wiedemann <bwiedemann+git@suse.de>
+Date:   Sat Nov 23 13:57:09 2024 +0000
+
+    Disable ASLR for Lie.exe run
+    
+    because it introduces randomness into INFO.a output
+    which breaks reproducible builds.
+
+diff --git a/Makefile b/Makefile
+index c049e89..8b95f34 100644
+--- a/Makefile
++++ b/Makefile
+@@ -117,7 +117,7 @@ learnind: util/learnind.c
+ 
+ INFO.a: progs/maxsub progs/maxsub0 progs/eqrank
+ 	rm -f INFO.a
+-	./Lie.exe < progs/maxsub
++	setarch -R ./Lie.exe < progs/maxsub
+ 
+ .PHONY: clean
+ clean:

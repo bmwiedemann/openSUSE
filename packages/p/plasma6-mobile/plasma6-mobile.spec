@@ -30,7 +30,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-mobile
-Version:        6.2.3
+Version:        6.2.4
 Release:        0
 # Full Plasma 6 version (e.g. 5.9.3)
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
@@ -46,6 +46,7 @@ Source2:        plasma.keyring
 %endif
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules
+BuildRequires:  qt6-waylandclient-private-devel
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6GlobalAccel) >= %{kf6_version}
@@ -74,6 +75,7 @@ BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Sensors) >= %{qt6_version}
+BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
 BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)

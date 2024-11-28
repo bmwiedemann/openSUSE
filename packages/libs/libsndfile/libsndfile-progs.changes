@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 25 13:56:22 UTC 2024 - Takashi Iwai <tiwai@suse.com>
+
+- Fix out-of-bounds read in function vorbis_analysis_wrote in
+  ogg_vorbis.c (CVE-2024-50612, bsc#1232438):
+  libsndfile-CVE-2024-50612.patch
+
+-------------------------------------------------------------------
 Fri Oct 20 11:45:14 UTC 2023 - Takashi Iwai <tiwai@suse.com>
 
 - Update to 1.2.1:

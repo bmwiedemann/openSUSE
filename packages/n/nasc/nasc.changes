@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Nov 24 10:51:33 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- fix build by using CFLAGS="-Wno-implicit-function-declaration"
+- update spec file for Leap 16.0:
+  * remove %suse_update_desktop_file
+  * use autosetup
+  * remove packaging for Leap < 1500
+  * update to newer upstream url
+
+-------------------------------------------------------------------
 Sun Dec  8 10:55:09 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Added nasc-fix_gcc9_build.patch

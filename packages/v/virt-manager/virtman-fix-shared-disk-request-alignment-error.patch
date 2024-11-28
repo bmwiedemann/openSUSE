@@ -11,10 +11,10 @@ libvirt.libvirtError: internal error: qemu unexpectedly closed the monitor: 2023
 Cannot get 'write' permission without 'resize': Image size is not a multiple of request alignment
 
 
-Index: virt-manager-4.1.0/virtManager/createvol.py
+Index: virt-manager-4.1.1/virtManager/createvol.py
 ===================================================================
---- virt-manager-4.1.0.orig/virtManager/createvol.py
-+++ virt-manager-4.1.0/virtManager/createvol.py
+--- virt-manager-4.1.1.orig/virtManager/createvol.py
++++ virt-manager-4.1.1/virtManager/createvol.py
 @@ -248,7 +248,13 @@ class vmmCreateVolume(vmmGObjectUI):
          vol = self._make_stub_vol()
          vol.name = volname
@@ -29,11 +29,11 @@ Index: virt-manager-4.1.0/virtManager/createvol.py
          if backing:
              vol.backing_store = backing
          if fmt:
-Index: virt-manager-4.1.0/virtinst/devices/disk.py
+Index: virt-manager-4.1.1/virtinst/devices/disk.py
 ===================================================================
---- virt-manager-4.1.0.orig/virtinst/devices/disk.py
-+++ virt-manager-4.1.0/virtinst/devices/disk.py
-@@ -361,6 +361,9 @@ class DeviceDisk(Device):
+--- virt-manager-4.1.1.orig/virtinst/devices/disk.py
++++ virt-manager-4.1.1/virtinst/devices/disk.py
+@@ -389,6 +389,9 @@ class DeviceDisk(Device):
                        volname, poolobj.name())
  
          cap = (size * 1024 * 1024 * 1024)

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 26 15:47:20 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.4:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.4
+- Changes since 6.2.3:
+  * update version for new release
+  * ConnectivityMonitor: Don't manually set m_notification to null
+  * Create a random-default password for hotspots if one is not set
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Nov  5 13:30:35 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.3:

@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Mon Nov 25 15:32:55 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.16+kde130, rebased upstream:
+  * xcb: Sync XCB connection after reparenting window
+  * xcb: check validity of RandR output info before using it
+  * QDuplicateTracker: fix redundant ;
+  * qxmlstreamparser_p.h: fix -Wshadow in parse()
+  * Fix -Wdouble-promotion in FP overload of convertDoubleTo()
+  * Protect headers against min/max macros
+  * Add __attribute__((format(printf()))) to q(v)nprintf()
+  * qsavefile_p.h: fix missing qsavefile.h include
+  * qendian_p.h: fix -Wshadow warning
+  * qtextstream_p.h: fix -Wshadow in QDeviceClosedNotifier
+  * QFutureInterface: fix build with GCC14/C++20: template-id not allowed
+  * qfuturewatcher_p.h: fix missing qfuturewatcher.h include
+  * qhttpmultipart_p.h: add missing qiodevice.h include
+  * Fix crash in font distancefield computation
+  * Avoid crash in font distancefield computation
+  * Revert "Update Harfbuzz to 7.2.0"
+  * Revert "Update Harfbuzz to 7.2.0"
+  * Fix WinRT/ARM build
+  * Update Harfbuzz to version 8.2.2
+  * Upgrade Harfbuzz to version 8.2.0
+  * Update bundled libjpeg-turbo to version 3.0.1
+  * SQLite: Update SQLite to v3.43.2
+  * Add a script for updating from publicsuffix/list.git
+  * Fix undefined symbol qt_version_tag with lld(16.0) for non core lib
+  * QInputMethod: check if focusobject supports the "new" IM function before calling it
+  * Un-deprecate qSwap()
+  * Doc: state that models are not thread-safe
+  * Fix android build error
+  * xcb: replace a warning with debug info
+  * qurl-generateTLDs: filter empty and comment lines
+  * qurltlds_p.h: support easier automatic updates
+  * SQLite: Update SQLite to v3.43.1
+  * Upgrade to Freetype 2.13.2
+  * Fix crash when reading corrupt font data (CVE-2023-43114)
+  * qmake: Don't error out if QMAKE_DEFAULT_LIBDIRS is empty on macOS
+  * qxkbcommon: Keep lower case as Qt key when upper case is not in Latin1
+  * Doc: Fix documented default for QCalendarWidget maximumDate, minimumDate
+  * QDataStream: clarify QDataStream::operator>>(char *&s) API docs
+  * doc: Remove QSettings' paths for embedded linux
+  * Update bundled zlib to version 1.3
+  * tst_QDtls: use DTLS v 1.0 test data conditionally
+  * Bump version to 5.15.16
+  * Android: fix handling of tree content uri with sub-document
+  * QTextFormat: documentation fix
+  * SQLite: Update SQLite to v3.43.0
+  * tst_QSslSocket: skip tests requiring TLS v 1.0 downgrade
+  * Update to Harfbuzz 8.1.1
+  * Update version of FreeType attribution
+  * tst_QHashFunctions: use actual seed in consistent() test function
+  * Android: fix content URI handling for non-ascii file names
+  * Upgrade Harfbuzz to 7.3.0
+  * Update download location for Harfbuzz as well
+- Commits dropped by the rebase:
+  * Add missing line continuations for memory_resource opt-out on Apple systems
+  * Fix CVE-2023-43114
+
+-------------------------------------------------------------------
 Wed Sep  4 20:01:55 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.15+kde127, rebased upstream:

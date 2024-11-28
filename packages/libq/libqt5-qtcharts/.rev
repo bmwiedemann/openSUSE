@@ -239,4 +239,12 @@
     <comment>- Fix package dependencies</comment>
     <requestid>1221278</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>1075f49a0f47cdb6154517e10653602b</srcmd5>
+    <version>5.15.16+kde0</version>
+    <time>1732741525</time>
+    <user>anag+factory</user>
+    <comment>Qt 5.15.16, untested. Try #2. (forwarded request 1226586 from favogt)</comment>
+    <requestid>1226594</requestid>
+  </revision>
 </revisionlist>

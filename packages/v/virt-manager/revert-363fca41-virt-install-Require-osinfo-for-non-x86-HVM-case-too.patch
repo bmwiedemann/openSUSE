@@ -16,7 +16,7 @@ Signed-off-by: Cole Robinson <crobinso@redhat.com>
 
 --- a/man/virt-install.rst
 +++ b/man/virt-install.rst
-@@ -1055,8 +1055,8 @@ all other settings off or unset.
+@@ -1062,8 +1062,8 @@ all other settings off or unset.
  
  By default, virt-install will always attempt ``--osinfo detect=on``
  for appropriate install media. If no OS is detected, we will fail
@@ -29,7 +29,7 @@ Signed-off-by: Cole Robinson <crobinso@redhat.com>
  VIRTINSTALL_OSINFO_DISABLE_REQUIRE=1.
 --- a/tests/test_cli.py
 +++ b/tests/test_cli.py
-@@ -1182,7 +1182,6 @@ c.add_compare("--connect %(URI-KVM-ARMV7
+@@ -1246,7 +1246,6 @@ c.add_compare("--connect %(URI-KVM-ARMV7
  #################
  
  c.add_valid("--arch aarch64 --osinfo fedora19 --nodisks --pxe --connect " + utils.URIs.kvm_x86_nodomcaps, grep="Libvirt version does not support UEFI")  # attempt to default to aarch64 UEFI, but it fails, but should only print warnings

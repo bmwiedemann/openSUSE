@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 27 08:09:41 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.0:
+  * Add a musig module
+  * Add a significantly more robust method to clear secrets from the stack
+  * Remove the unused secp256k1_scratch_space functions
+
+-------------------------------------------------------------------
 Fri Aug  2 06:29:16 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.5.1:

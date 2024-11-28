@@ -1,0 +1,22 @@
+Index: audible-0.10.0/pyproject.toml
+===================================================================
+--- audible-0.10.0.orig/pyproject.toml
++++ audible-0.10.0/pyproject.toml
+@@ -22,14 +22,15 @@ classifiers = [
+     "License :: OSI Approved :: GNU Affero General Public License v3",
+     "Programming Language :: Python :: 3.10",
+     "Programming Language :: Python :: 3.11",
+-    "Programming Language :: Python :: 3.12"
++    "Programming Language :: Python :: 3.12",
++    "Programming Language :: Python :: 3.13"
+     ]
+ 
+ [tool.poetry.urls]
+ Changelog = "https://github.com/mkb79/Audible/releases"
+ 
+ [tool.poetry.dependencies]
+-python = ">=3.10,<3.13"
++python = ">=3.10"
+ Pillow = ">=9.4.0"
+ beautifulsoup4 = ">=4.11.2"
+ httpx = ">=0.23.3"

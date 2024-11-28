@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 26 15:36:11 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 3.0
+  * Added support for RQ 2.0. Thanks @selwin!
+  * Many typing improvements. Thanks @SpecLad and @terencehonles!
+  * Added management command to suspend and resume workers. Thanks @jackkinsella!
+  * Better support for Redis Sentinel. Thanks @alaouimehdi1995!
+
+-------------------------------------------------------------------
 Fri May  3 07:34:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.10.2:

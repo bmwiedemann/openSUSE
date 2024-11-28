@@ -65,4 +65,15 @@
   * The ABI is backward compatible with versions 0.5.0, 0.4.x and 0.3.x.</comment>
     <requestid>1191101</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>88ddde6abd434d345839a990f5d98eb7</srcmd5>
+    <version>0.6.0</version>
+    <time>1732741944</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.6.0:
+  * Add a musig module
+  * Add a significantly more robust method to clear secrets from the stack
+  * Remove the unused secp256k1_scratch_space functions</comment>
+    <requestid>1226811</requestid>
+  </revision>
 </revisionlist>

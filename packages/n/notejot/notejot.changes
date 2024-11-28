@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Nov 26 18:48:55 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- fix build by adding 0001-Simplify-an-overcomplicated-Boolean-expression.patch
+- update spec file for Leap 16.0:
+  * remove %suse_update_desktop_file
+  * remove recommending lang package
+  * use autosetup
+
+-------------------------------------------------------------------
+Sun Jan  1 16:31:44 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 3.5.1:
+  * UI now follows own style that complements that of Adwaita, called Solo.
+  * The syntax follows Markdown conventions where possible.
+  * The mobile UI has been fixed, back buttons should show up without issue.
+  * Added: New Notes Grid view, access your notes in a grid.
+  * UI colors were changed, and some UI parts now look more intuitive.
+  * Fixed Unordered list formatting.
+  * Fixed Some UI bugs.
+
+-------------------------------------------------------------------
 Sun Feb 20 15:59:24 UTC 2022 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 3.4.9:

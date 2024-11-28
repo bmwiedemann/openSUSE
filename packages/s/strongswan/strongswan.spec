@@ -145,13 +145,15 @@ StrongSwan is an IPsec-based VPN solution for Linux.
 
 This package provides the strongswan library and plugins.
 
-%package hmac
+%package fips
 Summary:        Config file to disable non FIPS-140-2 algos in strongSwan
 Group:          Productivity/Networking/Security
 Requires:       strongswan-ipsec = %{version}
 Requires:       strongswan-libs0 = %{version}
+Provides:       strongswan-hmac = %{version}-%{release}
+Obsoletes:      strongswan-hmac < %{version}-%{release}
 
-%description hmac
+%description fips
 The package provides a config file disabling alternative algorithm
 implementation when FIPS-140-2 compliant operation mode is enabled.
 
@@ -446,7 +448,7 @@ fi
 
 %if %{with fipscheck}
 
-%files hmac
+%files fips
 %dir %{strongswan_configs}
 %dir %{strongswan_configs}/charon
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/zzz_fips-enforce.conf

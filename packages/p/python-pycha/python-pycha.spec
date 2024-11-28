@@ -22,18 +22,20 @@ Version:        0.8.1
 Release:        0
 Summary:        A library for making charts with Python
 License:        LGPL-3.0-or-later
-Group:          Development/Languages/Python
-URL:            https://bitbucket.org/lgs/pycha/
+URL:            https://github.com/timesong/pycha
 Source:         https://files.pythonhosted.org/packages/source/p/pycha/pycha-%{version}.tar.gz
-# upstream repo (bitbucket) as defined on pypi gone
 # is safe_unicode() needed at all?
 Patch0:         python-pycha-no-six.patch
+# PATCH-FIX-OPENSUSE remove makeSuite calls
+Patch1:         remove-makesuite.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cairocffi
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module cairocffi}
@@ -52,10 +54,10 @@ web programming. Pycha was developed for the server side.
 %autosetup -p1 -n pycha-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/chavier
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -71,7 +73,8 @@ web programming. Pycha was developed for the server side.
 %files %{python_files}
 %doc README.txt CHANGES.txt AUTHORS
 %license COPYING
-%{python_sitelib}/pycha*
+%{python_sitelib}/pycha
+%{python_sitelib}/pycha-%{version}.dist-info
 %{python_sitelib}/chavier
 %python_alternative %{_bindir}/chavier
 

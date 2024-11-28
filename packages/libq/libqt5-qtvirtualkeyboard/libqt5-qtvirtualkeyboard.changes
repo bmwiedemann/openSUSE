@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 25 15:46:57 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.16+kde0, rebased upstream:
+  * Fix repeated style loading
+  * Bump version to 5.15.16
+
+-------------------------------------------------------------------
 Wed Sep  4 20:09:45 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.15+kde0, rebased upstream:

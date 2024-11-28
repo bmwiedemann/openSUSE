@@ -293,4 +293,12 @@
     <comment>- Update libqt5-qtdatavis3d-imports requirements</comment>
     <requestid>1224600</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>c4297aaba9ab4758e0c89666ee0d421b</srcmd5>
+    <version>5.15.16+kde0</version>
+    <time>1732741865</time>
+    <user>anag+factory</user>
+    <comment>Qt 5.15.16, untested. Try #2. (forwarded request 1226586 from favogt)</comment>
+    <requestid>1226596</requestid>
+  </revision>
 </revisionlist>

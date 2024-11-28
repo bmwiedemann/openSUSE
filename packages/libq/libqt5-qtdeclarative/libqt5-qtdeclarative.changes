@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov 25 15:36:59 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.16+kde22, rebased upstream:
+  * QML Debugger: Don't crash when looking up values from imported modules
+  * Avoid memory leaks in QQuickListView and tst_qqmlinstantiator
+  * QQuickItemView: avoid leaking of highlights and animators
+  * Doc: Fix unqualified access in PathView example
+  * QQmlSequence: fix compilation with GCC12/C++20
+  * Context properties: Don't trigger an assert for numeric names
+  * pixmapcache: avoid deadlock when canceling async image load
+  * Fix positioning of text decoration with some fonts
+  * Bump version to 5.15.16
+  * Doc: fix Qt Quick Test header
+
+-------------------------------------------------------------------
 Wed Sep  4 20:02:19 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.15+kde25, rebased upstream:

@@ -234,4 +234,13 @@
     refinement on the large sections.</comment>
     <requestid>1219357</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f70a942e179fa86e761dc9ab902e8a58</srcmd5>
+    <version>3.3.7</version>
+    <time>1732741949</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.3.7:
+  * Fix building with older Rust versions</comment>
+    <requestid>1226808</requestid>
+  </revision>
 </revisionlist>

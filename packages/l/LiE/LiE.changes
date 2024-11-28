@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 23 14:01:51 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible-noaslr.patch (boo#1231626)
+
+-------------------------------------------------------------------
 Wed May 15 07:45:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro: allows us to eliminate usage of deprecated

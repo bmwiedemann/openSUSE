@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 26 18:58:56 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to vaersion 1.71
+  * MOD2WAV now exports to the current "modules" path, instead of
+    the current open path (regardless of samples/modules mode) in
+    Disk Op.
+
+-------------------------------------------------------------------
 Sun Sep  1 07:23:35 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to version 1.70

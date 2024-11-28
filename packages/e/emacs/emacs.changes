@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 27 08:46:04 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Avoid trouble with unknown X pointer shapes below Wayland (boo#1233795) 
+
+-------------------------------------------------------------------
 Tue Oct  8 08:06:41 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Prefer webkit2gtk-4.1 over webkit2gtk-4.0: configure also prefers

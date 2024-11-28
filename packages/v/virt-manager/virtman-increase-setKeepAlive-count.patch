@@ -2,10 +2,10 @@ References: bnc#892003
 For very large memory VMs Xen takes a long time scrubbing memory
 which causes the libvirt connection to timeout. Upstream was not
 interested in making this a preferences option (4/11/2015)
-Index: virt-manager-4.1.0/virtManager/connection.py
+Index: virt-manager-4.2.0/virtManager/connection.py
 ===================================================================
---- virt-manager-4.1.0.orig/virtManager/connection.py
-+++ virt-manager-4.1.0/virtManager/connection.py
+--- virt-manager-4.2.0.orig/virtManager/connection.py
++++ virt-manager-4.2.0/virtManager/connection.py
 @@ -973,7 +973,7 @@ class vmmConnection(vmmGObject):
          self._add_conn_events()
  

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 25 20:20:07 UTC 2024 - Matej Cepl <mcepl@suse.com>
+
+- Skip tests matching `test_adds_note_showing_which_strategy`
+  (gh#HypothesisWorks/hypothesis#4185).
+- Add missing BR: rich.
+
+-------------------------------------------------------------------
 Sat Nov 16 16:45:50 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 6.119.1

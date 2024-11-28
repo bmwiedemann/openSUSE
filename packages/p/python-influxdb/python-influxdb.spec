@@ -16,8 +16,9 @@
 #
 
 
-# Legacy package not compatible with Python 3.12. Move your consuming library to a more modern version!
+# Legacy package not compatible with Python 3.12 and newer. Move your consuming library to a more modern version!
 %define skip_python312 1
+%define skip_python313 1
 Name:           python-influxdb
 Version:        5.3.2
 Release:        0

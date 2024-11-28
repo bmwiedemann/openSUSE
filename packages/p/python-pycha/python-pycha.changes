@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 27 02:03:50 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch remove-makesuite.patch:
+  * Do not use testsuite.makeSuite to construct the testsuite.
+- Switch to pyproject macros.
+- Update URL.
+
+-------------------------------------------------------------------
 Sun Jan 14 14:14:24 UTC 2024 - Axel Braun <axel.braun@gmx.de>
 
 - enabled %{?sle15_python_module_pythons}

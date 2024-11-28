@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov 25 19:59:34 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.2:
+  + Fix graphical artifacts in partially-rounded buttons
+  + Fix caret tracking in magnifier
+  + Improve accessibility of keyboard backlight quick settings
+    toggle
+  + Fix resetting non-caps shift key in on-screen keyboard
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Nov 08 19:28:51 UTC 2024 - bjorn.lie@gmail.com
 
 - Update to version 47.1+6:

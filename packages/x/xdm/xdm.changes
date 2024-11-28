@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 27 13:07:24 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Split out displaymanager-sycconfig package: The central
+  configuration part that is used by all display managers. This is
+  needed in order to progress towards 'xdm' not acting as wrapper
+  around DMs, but only be used as Dislplay Manager when XDM is
+  supposed to be used, or use the real systemd services of the
+  various DMs (e.g gdm.service, sddm.service).
+
+-------------------------------------------------------------------
 Wed Nov 20 13:11:22 UTC 2024 - pgajdos@suse.com
 
 - tweak the login screen:

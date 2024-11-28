@@ -1,31 +1,9 @@
-References: bsc#1196806, jsc#SLE-18834, jsc#PED-8910
-bsc#1231400 - Virt-manager is missing support for AMD sev-snp
+References: bsc#1196806, jsc#SLE-18834
 
-Add AMD SEV support to virt-manager
-There are three types: sev, sev-es, sev-snp
-
-Index: virt-manager-4.1.0/virtinst/cli.py
+Index: virt-manager-4.2.0/ui/details.ui
 ===================================================================
---- virt-manager-4.1.0.orig/virtinst/cli.py
-+++ virt-manager-4.1.0/virtinst/cli.py
-@@ -4814,7 +4814,13 @@ class ParserLaunchSecurity(VirtCLIParser
-         cls.add_arg("policy", "policy")
-         cls.add_arg("session", "session")
-         cls.add_arg("dhCert", "dhCert")
-+        cls.add_arg("guestVisibleWorkarounds", "guestVisibleWorkarounds")
-+        cls.add_arg("idBlock", "idBlock")
-+        cls.add_arg("idAuth", "idAuth")
-+        cls.add_arg("hostData", "hostData")
-         cls.add_arg("kernelHashes", "kernelHashes", is_onoff=True)
-+        cls.add_arg("authorKey", "authorKey", is_onoff=True)
-+        cls.add_arg("vcek", "vcek", is_onoff=True)
- 
- 
- ###########################
-Index: virt-manager-4.1.0/ui/details.ui
-===================================================================
---- virt-manager-4.1.0.orig/ui/details.ui
-+++ virt-manager-4.1.0/ui/details.ui
+--- virt-manager-4.2.0.orig/ui/details.ui
++++ virt-manager-4.2.0/ui/details.ui
 @@ -1927,7 +1927,20 @@
                                    </packing>
                                  </child>
@@ -48,10 +26,10 @@ Index: virt-manager-4.1.0/ui/details.ui
                                  </child>
                                </object>
                                <packing>
-Index: virt-manager-4.1.0/virtManager/details/details.py
+Index: virt-manager-4.2.0/virtManager/details/details.py
 ===================================================================
---- virt-manager-4.1.0.orig/virtManager/details/details.py
-+++ virt-manager-4.1.0/virtManager/details/details.py
+--- virt-manager-4.2.0.orig/virtManager/details/details.py
++++ virt-manager-4.2.0/virtManager/details/details.py
 @@ -49,6 +49,7 @@ from ..delete import vmmDeleteStorage
  
   EDIT_MEM,
@@ -102,11 +80,11 @@ Index: virt-manager-4.1.0/virtManager/details/details.py
          shared_mem, shared_mem_err = self.vm.has_shared_mem()
          self.widget("shared-memory").set_active(shared_mem)
          self.widget("shared-memory").set_sensitive(not bool(shared_mem_err))
-Index: virt-manager-4.1.0/virtManager/object/domain.py
+Index: virt-manager-4.2.0/virtManager/object/domain.py
 ===================================================================
---- virt-manager-4.1.0.orig/virtManager/object/domain.py
-+++ virt-manager-4.1.0/virtManager/object/domain.py
-@@ -707,15 +707,33 @@ class vmmDomain(vmmLibvirtObject):
+--- virt-manager-4.2.0.orig/virtManager/object/domain.py
++++ virt-manager-4.2.0/virtManager/object/domain.py
+@@ -675,15 +675,33 @@ class vmmDomain(vmmLibvirtObject):
              guest.memoryBacking.access_mode = access_mode
  
      def define_memory(self, memory=_SENTINEL, maxmem=_SENTINEL,
@@ -141,7 +119,7 @@ Index: virt-manager-4.1.0/virtManager/object/domain.py
  
          self._redefine_xmlobj(guest)
  
-@@ -1334,6 +1352,9 @@ class vmmDomain(vmmLibvirtObject):
+@@ -1310,6 +1328,9 @@ class vmmDomain(vmmLibvirtObject):
      def get_description(self):
          return self.get_xmlobj().description
  
@@ -151,10 +129,10 @@ Index: virt-manager-4.1.0/virtManager/object/domain.py
      def get_boot_order(self):
          legacy = not self.can_use_device_boot_order()
          return self.xmlobj.get_boot_order(legacy=legacy)
-Index: virt-manager-4.1.0/virtinst/domain/memorybacking.py
+Index: virt-manager-4.2.0/virtinst/domain/memorybacking.py
 ===================================================================
---- virt-manager-4.1.0.orig/virtinst/domain/memorybacking.py
-+++ virt-manager-4.1.0/virtinst/domain/memorybacking.py
+--- virt-manager-4.2.0.orig/virtinst/domain/memorybacking.py
++++ virt-manager-4.2.0/virtinst/domain/memorybacking.py
 @@ -27,6 +27,9 @@ class DomainMemoryBacking(XMLBuilder):
      XML_NAME = "memoryBacking"
      _XML_PROP_ORDER = ["hugepages", "nosharepages", "locked", "pages"]
@@ -165,11 +143,11 @@ Index: virt-manager-4.1.0/virtinst/domain/memorybacking.py
      hugepages = XMLProperty("./hugepages", is_bool=True)
      nosharepages = XMLProperty("./nosharepages", is_bool=True)
      locked = XMLProperty("./locked", is_bool=True)
-Index: virt-manager-4.1.0/virtinst/domcapabilities.py
+Index: virt-manager-4.2.0/virtinst/domcapabilities.py
 ===================================================================
---- virt-manager-4.1.0.orig/virtinst/domcapabilities.py
-+++ virt-manager-4.1.0/virtinst/domcapabilities.py
-@@ -93,9 +93,20 @@ def _make_capsblock(xml_root_name):
+--- virt-manager-4.2.0.orig/virtinst/domcapabilities.py
++++ virt-manager-4.2.0/virtinst/domcapabilities.py
+@@ -93,6 +93,9 @@ def _make_capsblock(xml_root_name):
  class _SEV(XMLBuilder):
      XML_NAME = "sev"
      supported = XMLProperty("./@supported", is_yesno=True)
@@ -179,26 +157,7 @@ Index: virt-manager-4.1.0/virtinst/domcapabilities.py
      maxESGuests = XMLProperty("./maxESGuests")
  
  
-+class _LAUNCHSECURITY(XMLBuilder):
-+    XML_NAME = "launchSecurity"
-+    supported = XMLProperty("./@supported", is_yesno=True)
-+    sectype = XMLProperty("./@sectype")
-+    sev = XMLProperty("./launchSecurity/sev/@state", is_onoff=True)
-+    sev_snp = XMLProperty("./launchSecurity/sev-snp/@state", is_onoff=True)
-+
-+
- #############################
- # Misc toplevel XML classes #
- #############################
-@@ -121,6 +132,7 @@ class _Features(_CapsBlock):
-     XML_NAME = "features"
-     gic = XMLChildProperty(_make_capsblock("gic"), is_single=True)
-     sev = XMLChildProperty(_SEV, is_single=True)
-+    launchSecurity = XMLChildProperty(_LAUNCHSECURITY, is_single=True)
- 
- 
- class _MemoryBacking(_CapsBlock):
-@@ -406,6 +418,9 @@ class DomainCapabilities(XMLBuilder):
+@@ -415,6 +418,9 @@ class DomainCapabilities(XMLBuilder):
                          self.features.sev.maxESGuests)
          return bool(self.features.sev.supported)
  
@@ -208,21 +167,12 @@ Index: virt-manager-4.1.0/virtinst/domcapabilities.py
      def supports_video_bochs(self):
          """
          Returns False if either libvirt or qemu do not have support to bochs
-Index: virt-manager-4.1.0/virtinst/domain/launch_security.py
+Index: virt-manager-4.2.0/virtinst/domain/launch_security.py
 ===================================================================
---- virt-manager-4.1.0.orig/virtinst/domain/launch_security.py
-+++ virt-manager-4.1.0/virtinst/domain/launch_security.py
-@@ -16,11 +16,21 @@ class DomainLaunchSecurity(XMLBuilder):
-     policy = XMLProperty("./policy")
-     session = XMLProperty("./session")
-     dhCert = XMLProperty("./dhCert")
-+    guestVisibleWorkarounds = XMLProperty("./guestVisibleWorkarounds")
-+    idBlock = XMLProperty("./idBlock")
-+    idAuth = XMLProperty("./idAuth")
-+    hostData = XMLProperty("./hostData")
-     kernelHashes = XMLProperty("./@kernelHashes", is_yesno=True)
-+    authorKey = XMLProperty("./@authorKey", is_yesno=True)
-+    vcek = XMLProperty("./@vcek", is_yesno=True)
+--- virt-manager-4.2.0.orig/virtinst/domain/launch_security.py
++++ virt-manager-4.2.0/virtinst/domain/launch_security.py
+@@ -25,8 +25,12 @@ class DomainLaunchSecurity(XMLBuilder):
+     vcek = XMLProperty("./@vcek", is_yesno=True)
  
      def _set_defaults_sev(self, guest):
 -        if not guest.os.is_q35() or not guest.is_uefi():
@@ -236,38 +186,25 @@ Index: virt-manager-4.1.0/virtinst/domain/launch_security.py
  
          # The 'policy' is a mandatory 4-byte argument for the SEV firmware.
          # If missing, we use 0x03 for the original SEV implementation and
-@@ -30,7 +40,11 @@ class DomainLaunchSecurity(XMLBuilder):
-             domcaps = guest.lookup_domcaps()
-             self.policy = "0x03"
-             if domcaps.supports_sev_launch_security(check_es=True):
--                self.policy = "0x07"
-+                if "sev-snp" in domcaps.features.launchSecurity.get_xml():
-+                    self.type = "sev-snp"
-+                    self.policy = "0x00030000"
-+                else:
-+                    self.policy = "0x07"
- 
-     def set_defaults(self, guest):
-         if self.type == "sev":
-Index: virt-manager-4.1.0/virtinst/devices/interface.py
+Index: virt-manager-4.2.0/virtinst/devices/interface.py
 ===================================================================
---- virt-manager-4.1.0.orig/virtinst/devices/interface.py
-+++ virt-manager-4.1.0/virtinst/devices/interface.py
-@@ -287,6 +287,9 @@ class DeviceInterface(Device):
-         self.type = nettype
-         self.source = source
+--- virt-manager-4.2.0.orig/virtinst/devices/interface.py
++++ virt-manager-4.2.0/virtinst/devices/interface.py
+@@ -310,6 +310,9 @@ class DeviceInterface(Device):
+ 
+     portForward = XMLChildProperty(_PortForward)
  
 +    def set_rom_bar(self, value):
 +        self.rom_bar = value
 +
  
-     ##################
-     # Default config #
-Index: virt-manager-4.1.0/virtManager/addhardware.py
+     #############
+     # Build API #
+Index: virt-manager-4.2.0/virtManager/addhardware.py
 ===================================================================
---- virt-manager-4.1.0.orig/virtManager/addhardware.py
-+++ virt-manager-4.1.0/virtManager/addhardware.py
-@@ -1444,6 +1444,9 @@ class vmmAddHardware(vmmGObjectUI):
+--- virt-manager-4.2.0.orig/virtManager/addhardware.py
++++ virt-manager-4.2.0/virtManager/addhardware.py
+@@ -1429,6 +1429,9 @@ class vmmAddHardware(vmmGObjectUI):
              mac = self.widget("create-mac-address").get_text()
  
          dev = self._netlist.build_device(mac, model)
@@ -277,17 +214,3 @@ Index: virt-manager-4.1.0/virtManager/addhardware.py
          return dev
  
      def _build_input(self):
-Index: virt-manager-4.1.0/virtinst/guest.py
-===================================================================
---- virt-manager-4.1.0.orig/virtinst/guest.py
-+++ virt-manager-4.1.0/virtinst/guest.py
-@@ -559,6 +559,9 @@ class Guest(XMLBuilder):
-         self.os.loader_ro = True
-         self.os.loader_type = "pflash"
-         self.os.loader = path
-+        domcaps = self.lookup_domcaps()
-+        if domcaps.supports_sev_launch_security() == "sev-snp":
-+            self.os.loader_type = "rom"
- 
-         # If the firmware name contains "secboot" it is probably build
-         # with SMM feature required so we need to enable that feature,

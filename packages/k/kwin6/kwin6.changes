@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Nov 26 15:46:28 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.2.4:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.2.4
+- Changes since 6.2.3:
+  * update version for new release
+  * Cancel interactive move resize only on Wayland
+  * backends/drm: reject cursor updates already in beginFrame
+  * compositor_wayland: don't commit cursor changes if the layer wasn't actually enabled (kde#495843)
+  * backends/drm: don't set the dpms mode to AboutToTurnOff if the screen is already off
+  * layers: add null check
+  * outputconfigurationstore: fix choosing the default mode
+  * plugins/screencast, screenshot: switch color transforms to relative colorimetric (kde#496185)
+  * effects/overview: Properly map the windowHeap geometry
+  * effects/overview: Don't make thumbnails fly off the screen (kde#495444)
+  * core: Set object ownership for Output
+  * backends/drm: re-allow HDR on NVidia with driver version 565.57.01+
+  * backends/drm: re-allow HDR on Intel by default
+  * Revert "scene: Ignore xwayland window shape" (kde#493934)
+  * tiling: fix some asserts from scripts
+  * utils: Use QList::removeLast() in DamageJournal::add()
+  * Ensure active window isn't focused when screen is locked (kde#495325)
+  * Cancel interactive move resize when outputs change
+  * backends/drm: fix DrmGpu::needsModeset check with leased outputs (kde#495400)
+  * effect/offscreenquickview: ensure the view that accepts touch down also gets touch up
+  * workspace: fix the dpms input event filter sometimes being wrongly deleted
+  * Close layer shell window if its preferred output has been removed
+  * activation: don't activate windows that don't accept keyboard input (kde#495537)
+  * tabbox: Do not add windows that have modal children
+  * core/colorspace: fix the max luminance of linear (kde#494930)
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Nov  5 13:29:57 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.3:

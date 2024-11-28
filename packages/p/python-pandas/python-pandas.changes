@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 27 12:26:36 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Drop tests-nomkl.patch and tests-wasm.patch, not needed anymore
+- Skip a test failing with new xarray
+
+------------------------------------------------------------------
 Fri Oct 25 05:19:49 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Skip two tests that fail with Numpy 2.1. 

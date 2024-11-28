@@ -175,4 +175,12 @@
 - Refresh all patches and skip broken test with numpy &gt;= 2</comment>
     <requestid>1200102</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>a5f4d7caf5078724d765f2695b349614</srcmd5>
+    <version>5.3.2</version>
+    <time>1732741952</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1226827</requestid>
+  </revision>
 </revisionlist>

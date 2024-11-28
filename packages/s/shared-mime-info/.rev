@@ -638,4 +638,13 @@
     <comment>- Explicitly use gcc 13 on SLE.</comment>
     <requestid>1146527</requestid>
   </revision>
+  <revision rev="74" vrev="3">
+    <srcmd5>38abc0725ee4a0afe983cb1490fa0b50</srcmd5>
+    <version>2.4</version>
+    <time>1732741512</time>
+    <user>anag+factory</user>
+    <comment>- Uninstall silently if update-mime-database is not present
+  (bsc#1231463). (forwarded request 1226311 from mgorse)</comment>
+    <requestid>1226512</requestid>
+  </revision>
 </revisionlist>

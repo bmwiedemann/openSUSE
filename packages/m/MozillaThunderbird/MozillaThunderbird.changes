@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Nov 26 10:15:25 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 128.5.0
+  * IMAP could crash when reading cached messages
+  * Enabling "Show Folder Size" on Maildir profile could render
+    Thunderbird unusable
+  * Messages corrupted by folder compaction were only fixed by user
+    intervention
+  * Reading a message from past the end of an mbox file did not
+    cause an error
+  * View -> Folders had duplicate F access keys
+  * Add-ons adding columns to the message list could fail and cause
+    display issue
+  * "Empty trash on exit" and "Expunge inbox on exit" did not
+    always work
+  * Selecting a display option in View -> Tasks did not apply in
+    the Task interface
+  MFSA 2024-68 (bsc#1233695)
+  * CVE-2024-11691 (bmo#1914707, bmo#1924184)
+    Memory corruption in Apple GPU drivers
+  * CVE-2024-11692 (bmo#1909535)
+    Select list elements could be shown over another site
+  * CVE-2024-11693 (bmo#1921458)
+    Download Protections were bypassed by .library-ms files on Windows
+  * CVE-2024-11694 (bmo#1924167)
+    CSP Bypass and XSS Exposure via Web Compatibility Shims
+  * CVE-2024-11695 (bmo#1925496)
+    URL Bar Spoofing via Manipulated Punycode and Whitespace Characters
+  * CVE-2024-11696 (bmo#1929600)
+    Unhandled Exception in Add-on Signature Verification
+  * CVE-2024-11697 (bmo#1842187)
+    Improper Keypress Handling in Executable File Confirmation Dialog
+  * CVE-2024-11698 (bmo#1916152)
+    Fullscreen Lock-Up When Modal Dialog Interrupts Transition on macOS
+  * CVE-2024-11699 (bmo#1880582, bmo#1929911)
+    Memory safety bugs fixed in Firefox 133, Thunderbird 133,
+    Firefox ESR 128.5, and Thunderbird 128.5
+- appid is thunderbird-esr currently; use the matching desktop
+  file name (boo#1233650)
+
+-------------------------------------------------------------------
 Wed Nov 20 07:36:02 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 128.4.4

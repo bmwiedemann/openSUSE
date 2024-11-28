@@ -2094,4 +2094,12 @@
     <comment>dbus-1-x11 is being removed from Tumbleweed so drop dependency in virt-manager. Add dependency on python3-dbus-python.</comment>
     <requestid>1221610</requestid>
   </revision>
+  <revision rev="265" vrev="1">
+    <srcmd5>42a1fd35b5351627ea6048f6649734ba</srcmd5>
+    <version>5.0.0</version>
+    <time>1732741582</time>
+    <user>anag+factory</user>
+    <comment>Update virt-manager to version 5.0.0</comment>
+    <requestid>1226683</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 27 06:19:57 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 5.1.7:
+  * feat: add zstd as another alias for zst
+  * prepare structure for roast-scm
+  * minor: improve error message here
+  * fix: added trace feature
+
+-------------------------------------------------------------------
 Sat Nov  2 12:38:25 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 5.1.6:

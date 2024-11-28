@@ -4084,4 +4084,62 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
 </comment>
     <requestid>1221801</requestid>
   </revision>
+  <revision rev="281" vrev="1">
+    <srcmd5>643495f0e494f4edffb19cd7294024eb</srcmd5>
+    <version>9.1.2</version>
+    <time>1732741585</time>
+    <user>anag+factory</user>
+    <comment>- Fix bsc#1233530:
+  * docs: use consistent markup for footnotes (bsc#1233530)
+  * docs: avoid footnotes consisting of just URLs (bsc#1233530)
+  * docs: fix invalid footnote syntax (bsc#1233692)
+- Fix bsc#1233530:
+  * scsi: megasas: Internal cdbs have 16-byte length (bsc#1233530)
+- Fix bsc#1221812, bsc#1232283, bsc#1230978:
+  * [openSUSE] block: Move qcow2 invalidation query-block op_blocker
+- Update to version 9.1.2:
+  Full changelog here:
+   https://lore.kernel.org/qemu-devel/21ba2773-11a6-45ad-bf98-9b5c2cdccb9b@tls.msk.ru/
+  Some of the most notable features:
+   * usb-hub: Fix handling port power control messages
+   *  hw/audio/hda: fix memory leak on audio setup
+   *  Revert &quot;hw/audio/hda: fix memory leak on audio setup&quot; (bsc#1232728)
+   *  hw/misc/mos6522: Fix bad class definition of the MOS6522 device
+   *  vfio/container: Fix container object destruction
+   *  target/i386: fix hang when using slow path for ptw_setl
+   *  tcg: Allow top bit of SIMD_DATA_BITS to be set in simd_desc()
+   *  linux-user/arm: Select vdso for be8 and be32 modes
+   *  linux-user/arm: Reduce vdso alignment to 4k
+   *  linux-user: Tolerate CONFIG_LSM_MMAP_MIN_ADDR
+   *  accel/tcg: Fix user-only probe_access_internal plugin check
+   *  target/arm: Drop user-only special case in sve_stN_r
+   *  linux-user: Fix setreuid and setregid to use direct syscalls
+   *  hw/i386/pc: Don't try to init PCI NICs if there is no PCI bus
+   *  target/i386: Fix legacy page table walk
+   *  9pfs: fix crash on 'Treaddir' request
+   *  hw/nvme: fix handling of over-committed queues
+   *  migration: Ensure vmstate_save() sets errp
+   *  target/arm: Fix SVE SDOT/UDOT/USDOT (4-way, indexed)
+   *  target/arm: Add new MMU indexes for AArch32 Secure PL1&amp;0
+   *  Revert &quot;target/arm: Fix usage of MMU indexes when EL3 is AArch32&quot;
+   *  acpi/disassemle-aml.sh: fix up after dir reorg
+   *  hw/acpi: Fix ordering of BDF in Generic Initiator PCI Device Handle.
+   *  qemu-ga: Fix a SIGSEGV in ga_run_command() helper
+   *  hw/sd/sdcard: Fix calculation of size when using eMMC boot partitions
+   *  tests/tcg: Replace -mpower8-vector with -mcpu=power8
+   *  hw/ssi/pnv_spi: Fixes Coverity CID 1558831
+   *  hw/ssi/pnv_spi: Return early in transfer()
+- Build and bug fixes:
+  * edk2: update submodule to edk2-stable202408.01
+  * Revert &quot;hw/audio/hda: fix memory leak on audio setup&quot; (bsc#1232728)
+- Fix bsc#1228079:
+  * target/i386: Expose IBPB-BRTYPE and SBPB CPUID bits to the guest (bsc#1228079)
+- Add further CPUID bits fixes:
+  * target/i386: Expose new feature bits in CPUID 8000_0021_EAX/EBX
+  * target/i386: Expose bits related to SRSO vulnerability
+  * target/i386: Add PerfMonV2 feature bit
+  * target/i386: Fix minor typo in NO_NESTED_DATA_BP feature bit
+</comment>
+    <requestid>1226796</requestid>
+  </revision>
 </revisionlist>

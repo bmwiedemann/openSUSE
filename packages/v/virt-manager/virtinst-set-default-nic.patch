@@ -1,11 +1,11 @@
 References: bsc#1172356, bsc#1177620
 Libvirt doesn't accept "Hypervisor default" as a model name
 
-Index: virt-manager-4.0.0/virtinst/devices/interface.py
+Index: virt-manager-4.2.0/virtinst/devices/interface.py
 ===================================================================
---- virt-manager-4.0.0.orig/virtinst/devices/interface.py
-+++ virt-manager-4.0.0/virtinst/devices/interface.py
-@@ -305,6 +305,9 @@ class DeviceInterface(Device):
+--- virt-manager-4.2.0.orig/virtinst/devices/interface.py
++++ virt-manager-4.2.0/virtinst/devices/interface.py
+@@ -365,6 +365,9 @@ class DeviceInterface(Device):
              return "e1000e"
          if not guest.os.is_x86():
              return None

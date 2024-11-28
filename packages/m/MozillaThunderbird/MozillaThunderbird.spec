@@ -29,9 +29,10 @@
 # major 69
 # mainver %%major.99
 %define major          128
-%define mainver        %major.4.4
-%define orig_version   128.4.4
-%define orig_suffix    esr
+%define mainver        %major.5.0
+%define orig_version   128.5.0
+%define esr_suffix     esr
+%define orig_suffix    %{nil}
 %define update_channel esr
 %define source_prefix  thunderbird-%{orig_version}
 
@@ -68,8 +69,9 @@ BuildArch:      i686
 %define srcname  thunderbird
 %define appname  Thunderbird
 %define progdir %{_prefix}/%_lib/%{progname}
-%define gnome_dir     %{_prefix}
-%define desktop_file_name %{progname}
+%define gnome_dir %{_prefix}
+#%define desktop_file_name %{progname}
+%define desktop_file_name %["%esr_suffix" == "esr" ? "%{progname}-esr" : "%{progname}"]
 %define __provides_exclude ^lib.*\\.so.*$
 %define __requires_exclude ^(libmoz.*|liblgpllibs.*|libxul.*|libgk.*|libldap.*|libldif.*|libprldap.*|librnp.*)$
 %define localize 1
@@ -178,20 +180,20 @@ License:        MPL-2.0
 Group:          Productivity/Networking/Email/Clients
 URL:            https://www.thunderbird.net/
 %if !%{with only_print_mozconfig}
-Source:         http://ftp.mozilla.org/pub/%{srcname}/releases/%{version}%{orig_suffix}/source/%{srcname}-%{orig_version}%{orig_suffix}.source.tar.xz
+Source:         http://ftp.mozilla.org/pub/%{srcname}/releases/%{version}%{orig_suffix}%{esr_suffix}/source/%{srcname}-%{orig_version}%{orig_suffix}%{esr_suffix}.source.tar.xz
 Source1:        thunderbird.desktop
 Source2:        thunderbird-rpmlintrc
 Source3:        mozilla.sh.in
 Source4:        tar_stamps
 Source6:        suse-default-prefs.js
 %if %{localize}
-Source7:        l10n-%{orig_version}%{orig_suffix}.tar.xz
+Source7:        l10n-%{orig_version}%{orig_suffix}%{esr_suffix}.tar.xz
 %endif
 Source9:        thunderbird.appdata.xml
 Source13:       spellcheck.js
 Source14:       https://github.com/openSUSE/firefox-scripts/raw/913fab1a196e2a0623b5c554598bfde3b4b49e29/create-tar.sh
-Source20:       https://ftp.mozilla.org/pub/%{srcname}/releases/%{version}%{orig_suffix}/source/%{srcname}-%{orig_version}%{orig_suffix}.source.tar.xz.asc
-Source21:       https://ftp.mozilla.org/pub/%{srcname}/releases/%{version}%{orig_suffix}/KEY#/mozilla.keyring
+Source20:       https://ftp.mozilla.org/pub/%{srcname}/releases/%{version}%{orig_suffix}%{esr_suffix}/source/%{srcname}-%{orig_version}%{orig_suffix}%{esr_suffix}.source.tar.xz.asc
+Source21:       https://ftp.mozilla.org/pub/%{srcname}/releases/%{version}%{orig_suffix}%{esr_suffix}/KEY#/mozilla.keyring
 # Gecko/Toolkit
 Patch1:         mozilla-nongnome-proxies.patch
 Patch3:         mozilla-ntlm-full-path.patch

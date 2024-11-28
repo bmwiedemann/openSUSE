@@ -63,9 +63,6 @@ software framework.
 %install
 %meson_install
 
-mkdir -p %{buildroot}/%{_sbindir}
-ln -sf %{_sbindir}/service %{buildroot}/%{_sbindir}/rcbolt
-
 # move polkit rules to doc folder: the wheel group does not have special
 # meaning on SUSE based distros
 mkdir -p %{buildroot}/%{_docdir}/bolt/
@@ -89,7 +86,6 @@ mv %{buildroot}%{_datadir}/polkit-1/rules.d/org.freedesktop.bolt.rules %{buildro
 %{_mandir}/man8/boltd.8%{?ext_man}
 %{_libexecdir}/boltd
 %{_unitdir}/bolt.service
-%{_sbindir}/rcbolt
 %{_datadir}/dbus-1/system.d/org.freedesktop.bolt.conf
 %{_datadir}/polkit-1/actions/org.freedesktop.bolt.policy
 %{_udevrulesdir}/90-bolt.rules

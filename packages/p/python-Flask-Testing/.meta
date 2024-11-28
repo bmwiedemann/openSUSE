@@ -1,5 +1,0 @@
-<package name="python-Flask-Testing" project="openSUSE:Factory">
-  <title>python-Flask-Testing</title>
-  <description>Unit testing for Flask</description>
-  <devel project="devel:languages:python:flask" package="python-Flask-Testing"/>
-</package>

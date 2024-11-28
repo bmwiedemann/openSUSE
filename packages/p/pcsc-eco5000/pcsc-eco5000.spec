@@ -1,7 +1,7 @@
 #
 # spec file for package pcsc-eco5000
 #
-# Copyright (c) 2011 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-
-# norootforbuild
 
 
 Name:           pcsc-eco5000
 %define _name eco5000
-BuildRequires:  libtool pcsc-lite-devel pkg-config
+BuildRequires:  libtool
+BuildRequires:  pcsc-lite-devel
+BuildRequires:  pkg-config
 Version:        1.2.0
-Release:        66
+Release:        0
 Group:          Productivity/Security
-License:        GPL-2.0+
-Url:            http://www.cardcontact.de/download/driverdownload.html
+License:        GPL-2.0-or-later
+URL:            http://www.cardcontact.de/download/driverdownload.html
 Summary:        PC/SC IFD Handler for the ECO 5000 Serial Smart Card Reader
 Source:         %{_name}-%{version}.tar.bz2
+Patch0:         pcsc-eco5000-fix-compile-gcc14.patch
+Patch1:         pcsc-eco5000-clean-warnings.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       pcsc-lite
 %define ifddir %(pkg-config --variable=usbdropdir libpcsclite)
@@ -52,6 +54,13 @@ This driver only works with the serial interface version of the ECO
 5000. ORGA also sells a USB version, that is incompatible with the
 serial version. This driver will not work with the USB version!
 
+%package devel
+Summary:        PC/SC IFD Handler for the ECO 5000 Serial Smart Card Reader
+Group:          Productivity/Security
+Requires:       %{name} = %{version}
+
+%description devel
+Driver for the ECO 5000 Serial Smart Card Reader.
 
 
 Authors:
@@ -61,6 +70,8 @@ Authors:
 
 %prep
 %setup -q -n %{_name}-%{version}
+%patch -P 0 -p1
+%patch -P 1 -p1
 
 %build
 autoreconf -f -i
@@ -76,12 +87,17 @@ rm $RPM_BUILD_ROOT%{ifddir}/*.la
 rm $RPM_BUILD_ROOT%{_includedir}/ctapi.h
 rmdir $RPM_BUILD_ROOT%{_includedir}
 
-%clean
-rm -rf $RPM_BUILD_ROOT
+%check
+%make_build check
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog NEWS README README.html
-%{ifddir}/*
+%doc AUTHORS  ChangeLog NEWS README README.html
+%license COPYING
+%{ifddir}/libcteco5000.so.0.0.0
+%{ifddir}/libcteco5000.so.0
+
+%files devel
+%{ifddir}/libcteco5000.so
 
 %changelog

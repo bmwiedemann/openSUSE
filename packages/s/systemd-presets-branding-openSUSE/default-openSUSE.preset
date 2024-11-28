@@ -22,3 +22,5 @@ enable virtnodedevd.socket
 enable virtnwfilterd.socket
 enable virtsecretd.socket
 enable virtstoraged.socket
+# supergfx daemon for hybrid graphics systems
+enable supergfxd.service

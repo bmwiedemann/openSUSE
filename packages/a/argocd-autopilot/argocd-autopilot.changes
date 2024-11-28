@@ -1,0 +1,60 @@
+-------------------------------------------------------------------
+Wed Nov 27 09:44:28 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.4.18:
+  * updated changelog
+  * fixed `project create` help text
+  * created new release
+  * Sec-fixes (#598)
+  * add sudo command for linux installation (#589)
+  * fix bootstrap for Azure DevOps (#594)
+  * fix clone repo from azure (#595)
+  * updated golang to 1.22 (#555)
+  * Bump github.com/ktrysmt/go-bitbucket from 0.9.73 to 0.9.75
+    (#553)
+  * Bump github.com/xanzy/go-gitlab from 0.95.2 to 0.97.0 (#552)
+  * bump argo-cd to `v2.10.0` (#554)
+  * Bump github.com/cloudflare/circl from 1.3.3 to 1.3.7 (#546)
+  * Bump code.gitea.io/sdk/gitea from 0.17.0 to 0.17.1 (#544)
+  * Bump github.com/spf13/viper from 1.18.1 to 1.18.2 (#543)
+  * Bump golang.org/x/crypto from 0.16.0 to 0.17.0 (#542)
+  * Bump github.com/ktrysmt/go-bitbucket from 0.9.72 to 0.9.73
+    (#540)
+  * Bump github.com/xanzy/go-gitlab from 0.94.0 to 0.95.2 (#541)
+  * Bump github.com/go-git/go-git/v5 from 5.10.1 to 5.11.0 (#539)
+  * Bump github.com/spf13/viper from 1.17.0 to 1.18.1 (#537)
+  * Bump code.gitea.io/sdk/gitea from 0.16.0 to 0.17.0 (#532)
+  * Bump github.com/go-git/go-git/v5 from 5.10.0 to 5.10.1 (#531)
+  * Bump github.com/go-jose/go-jose/v3 from 3.0.0 to 3.0.1 (#528)
+  * Bump github.com/xanzy/go-gitlab from 0.93.2 to 0.94.0 (#526)
+  * Bump github.com/ktrysmt/go-bitbucket from 0.9.71 to 0.9.72
+    (#527)
+  * Bump
+    go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc
+    (#525)
+  * Bump github.com/ktrysmt/go-bitbucket from 0.9.70 to 0.9.71
+    (#524)
+  * Bump github.com/spf13/cobra from 1.7.0 to 1.8.0 (#523)
+  * Bump github.com/xanzy/go-gitlab from 0.93.1 to 0.93.2 (#518)
+  * Bump github.com/go-git/go-git/v5 from 5.9.0 to 5.10.0 (#519)
+  * Release v0.4.17 (#515)
+
+-------------------------------------------------------------------
+Tue Mar 26 08:01:40 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.4.17:
+  * skip `snyk test`, only test image
+  * updated changelog and release_notes
+  * updated makefile to `v0.4.17`
+  * Bump github.com/spf13/viper from 1.16.0 to 1.17.0 (#511)
+  * Bump github.com/ktrysmt/go-bitbucket from 0.9.68 to 0.9.70 (#514)
+  * Bump github.com/xanzy/go-gitlab from 0.92.1 to 0.93.1 (#512)
+  * Update dependencies (#513)
+  * Bump github.com/xanzy/go-gitlab from 0.91.1 to 0.92.1 (#508)
+  * Bump github.com/ktrysmt/go-bitbucket from 0.9.67 to 0.9.68 (#506)
+  * Bump github.com/argoproj/argo-cd/v2 from 2.8.3 to 2.8.4 (#504)
+
+-------------------------------------------------------------------
+Tue Mar 26 08:01:28 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package argocd-autopilot: opinionated tool to install ArgoCD

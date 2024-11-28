@@ -24,6 +24,8 @@ Summary:        A(Sync) Interface for internal Audible API
 License:        AGPL-3.0-only
 URL:            https://github.com/mkb79/audible
 Source:         https://files.pythonhosted.org/packages/source/a/audible/audible-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE remove-python-restriction.patch
+Patch1:         remove-python-restriction.patch
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module httpx >= 0.20.0}

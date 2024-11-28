@@ -2152,4 +2152,26 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1219333</requestid>
   </revision>
+  <revision rev="241" vrev="1">
+    <srcmd5>0512a7f73668b4cb9b1461e3e6a26afb</srcmd5>
+    <version>47.2</version>
+    <time>1732741516</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 47.2:
+  + Fix warping pointer after releasing pointer constraints
+  + Default to high thread instead of realtime priority for KMS
+    thread
+  + Avoid CPU stalls with NVIDIA secondary GPUs with
+    directly-attached monitors
+  + Fix updating cursor immediately when starting window drag
+  + Add pipeline hooks to user program pipelines
+  + Prefer GPUs with built-in panels connected as primary GPU
+  + Fix cursor glitches when using virtual monitors
+  + Ensure frame events are sent for cursor surfaces
+  + Allow BGRX8888 format on big endian
+  + Fix touchscreen drag-and-drop on wayland
+  + Fixed crashes
+  + Misc. bug fixes and cleanups (forwarded request 1226356 from iznogood)</comment>
+    <requestid>1226515</requestid>
+  </revision>
 </revisionlist>

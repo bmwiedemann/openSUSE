@@ -413,4 +413,15 @@ packages. This library is fasted, easier to maintain and easier for a user to co
 </comment>
     <requestid>1224675</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>8d2ffbf3e748d6848f3fb43868c1cd64</srcmd5>
+    <version>4.3.5</version>
+    <time>1732741931</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.3.5:
+  * fix: finally added the alias. 🫠
+  * chore: update roast to 5.1.7. update other dependencies as well.
+</comment>
+    <requestid>1226765</requestid>
+  </revision>
 </revisionlist>

@@ -2053,4 +2053,12 @@ Now one could consider building emacs with gsettings support (both debian and fe
   API version 4.1 and uses 4.0 only as a fallback. (forwarded request 1206266 from dimstar)</comment>
     <requestid>1206276</requestid>
   </revision>
+  <revision rev="195" vrev="10">
+    <srcmd5>1bc20467cc49480ed2aeb2a784088ea9</srcmd5>
+    <version>29.4</version>
+    <time>1732741826</time>
+    <user>anag+factory</user>
+    <comment>- Avoid trouble with unknown X pointer shapes below Wayland (boo#1233795)</comment>
+    <requestid>1226819</requestid>
+  </revision>
 </revisionlist>

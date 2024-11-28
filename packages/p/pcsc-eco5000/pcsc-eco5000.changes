@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 26 09:48:30 UTC 2024 - Angel Yankov <angel.yankov@suse.com>
+
+- Fix compilationo with gcc14 and fix some warnings
+  * Added pcsc-eco5000-fix-compile-gcc14.patch
+  * Added pcsc-eco5000-clean-warnings.patch
+
+-------------------------------------------------------------------
 Sun Nov 20 06:27:40 UTC 2011 - coolo@suse.com
 
 - add libtool as buildrequire to avoid implicit dependency

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 25 13:12:58 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20241123
+  + remove dependency on stdbool.h from configure script check for type
+    of bool when C++ binding is omitted (report by Sam James).
+  + compiler-warning fixes
+
+-------------------------------------------------------------------
 Mon Nov 11 11:32:17 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20241109

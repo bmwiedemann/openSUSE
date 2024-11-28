@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 25 17:57:04 UTC 2024 - RN <R_Nik_C@proton.me>
+
+- enable the supergfxd service for hybrid graphic systems
+
+-------------------------------------------------------------------
 Wed Jun 21 21:07:11 UTC 2023 - James Fehlig <jfehlig@suse.com>
 
 - enable the various libvirt modular daemons (boo#1212195)

@@ -1871,4 +1871,15 @@
 - skip dask on 313 as numba is not yet ready for it</comment>
     <requestid>1225144</requestid>
   </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>ebfd0796ca51e7393b9be006e8bbd75f</srcmd5>
+    <version>2024.11.2</version>
+    <time>1732741859</time>
+    <user>anag+factory</user>
+    <comment>- Skip tokenize test on python313
+  * See gh#dask/dask#11456, gh#dask/dask#11457
+- reenable for python 313 as numba is now available
+</comment>
+    <requestid>1226825</requestid>
+  </revision>
 </revisionlist>

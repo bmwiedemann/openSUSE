@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 27 08:47:42 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.1.1+5:
+  * Upgrade to zxcvbn 3.1.0
+  * Upgrade to PyO3 0.23
+
+-------------------------------------------------------------------
 Mon Sep 23 17:05:23 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - initial package

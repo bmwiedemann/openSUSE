@@ -924,4 +924,14 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
   [jsc#PED-264]. (forwarded request 1181914 from dimstar)</comment>
     <requestid>1181997</requestid>
   </revision>
+  <revision rev="97" vrev="3">
+    <srcmd5>e965df8e8dbe4884bc3dab17a41d7989</srcmd5>
+    <version>5.9.14</version>
+    <time>1732741520</time>
+    <user>anag+factory</user>
+    <comment>- rename -hmac subpackage to -fips because it isn't providing
+  the hmac files, it provides the configuration drop in to
+  enforce fips mode.</comment>
+    <requestid>1226518</requestid>
+  </revision>
 </revisionlist>

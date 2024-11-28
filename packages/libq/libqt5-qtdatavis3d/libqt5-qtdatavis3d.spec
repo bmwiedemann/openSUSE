@@ -22,11 +22,11 @@
 %define qt5_snapshot 1
 %define libname libQt5DataVisualization5
 %define base_name libqt5
-%define real_version 5.15.15
-%define so_version 5.15.15
+%define real_version 5.15.16
+%define so_version 5.15.16
 %define tar_version qtdatavis3d-everywhere-src-%{version}
 Name:           libqt5-qtdatavis3d
-Version:        5.15.15+kde0
+Version:        5.15.16+kde0
 Release:        0
 Summary:        Qt5 Data Visualization 3D
 License:        GPL-3.0-or-later

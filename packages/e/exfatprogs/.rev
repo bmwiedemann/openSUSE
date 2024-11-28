@@ -213,4 +213,24 @@
     in the big-endian system.</comment>
     <requestid>1192018</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ba03b98e3dd0a7f742a791f266a7fe9b</srcmd5>
+    <version>1.2.6</version>
+    <time>1732741781</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.2.6:
+  CHANGES :
+  * exfatprogs: replace obsolete autoconf and libtool
+    macros.
+  * mkfs.exfat: prefer the physical block size over
+    the logical block size for the exFAT sector size.
+  * mkfs.exfat: add notes about the format of the volume
+    GUID to the man page.
+  * mkfs.exfat: fix an incorrect calculation of the number
+    of used clusters.
+  BUG FIXES :
+  * exfatlabel: fix an user input error when setting
+    a volume serial or label.</comment>
+    <requestid>1226806</requestid>
+  </revision>
 </revisionlist>

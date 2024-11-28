@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Nov 27 06:03:53 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20241127.3e90e46f:
+  * Fix: report: Fix a regression for irregular file collection
+
+-------------------------------------------------------------------
+Mon Nov 25 09:43:06 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20241125.ae21432f:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: bootstrap: Remove import_ssh_key function
+  * Dev: unittests: Adjust unit test for previous commits
+  * Dev: ssh_key: Split fetch_public_key_list into two functions
+  * Dev: bootstrap: Improve shell script in generate_ssh_key_pair_on_remote
+  * Dev: bootstrap: Reuse AuthorizedKeyManager to add key to authorized_keys
+  * Dev: bootstrap: Adjust the docstring of configure_ssh_key function
+  * Dev: bootstrap: Change the parameter name in swap_public_ssh_key function
+  * Dev: bootstrap: Avoid hardcoding the ssh key type as RSA
+  * Dev: ssh_key: Avoid hardcoding the ssh key type as RSA
+  * Dev: utils: Avoid hardcoding the ssh key type as RSA
+
+-------------------------------------------------------------------
+Sat Nov 23 07:22:11 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20241123.9b1d80fb:
+  * Fix: behave: systemd bpf-restrict-fs fails in opensuse tumbleweed
+
+-------------------------------------------------------------------
+Fri Nov 22 01:49:06 UTC 2024 - nicholas.yang@suse.com
+
+- Update to version 5.0.0+20241122.37cd25b6:
+  * Dev: behave: add CAP_SYS_ADMIN to container for systemd hardening
+
+-------------------------------------------------------------------
+Wed Nov 13 03:39:07 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20241113.0af43cf2:
+  * unused code removal
+  * Dev: bootstrap: more robust implementation for ssh_merge (bsc#1230530)
+
+-------------------------------------------------------------------
 Mon Nov 11 06:26:33 UTC 2024 - XLiang@suse.com
 
 - Update to version 5.0.0+20241111.a27e5ec8:

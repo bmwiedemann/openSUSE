@@ -1,7 +1,7 @@
 <services>
   <service name="obs_scm" mode="disabled">
     <param name="url">https://github.com/raysan5/raylib.git</param>
-    <param name="revision">5.0</param>
+    <param name="revision">5.5</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
     <param name="exclude">examples</param>

@@ -1815,4 +1815,15 @@
     <comment></comment>
     <requestid>1224665</requestid>
   </revision>
+  <revision rev="208" vrev="4">
+    <srcmd5>e63447095982aae7aa70806fde48a75e</srcmd5>
+    <version>2.46.3</version>
+    <time>1732741518</time>
+    <user>anag+factory</user>
+    <comment>- Add webkit2gtk3-CVE-2024-44308.patch: don't allocate DFG register
+  after a slow path (boo#1233631 CVE-2024-44308).
+- Add webkit2gtk3-CVE-2024-44309.patch: fix a cookie management
+  issue (boo#1233632 CVE-2024-44309). (forwarded request 1226373 from mgorse)</comment>
+    <requestid>1226516</requestid>
+  </revision>
 </revisionlist>

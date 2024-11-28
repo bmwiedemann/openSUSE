@@ -1161,4 +1161,22 @@
     for client SSL certificates verification.</comment>
     <requestid>1205364</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>fc06cd5611c54994d48d32a42b1bb9b5</srcmd5>
+    <version>1.27.3</version>
+    <time>1732741583</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 1.27.3
+  * https://github.com/nginx/nginx/releases/tag/release-1.27.3
+  * Added the &quot;server&quot; directive in the &quot;upstream&quot; block supports the &quot;resolve&quot; parameter.
+  * Added the &quot;resolver&quot; and &quot;resolver_timeout&quot; directives in the &quot;upstream&quot; block.
+  * Added SmarterMail specific mode support for IMAP LOGIN with
+    untagged CAPABILITY response in the mail proxy module.
+  * Changed TLSv1 and TLSv1.1 protocols are disabled by default.
+  * Changed IPv6 address in square brackets and no port can be specified in the
+    &quot;proxy_bind&quot;, &quot;fastcgi_bind&quot;, &quot;grpc_bind&quot;, &quot;memcached_bind&quot;, &quot;scgi_bind&quot;,
+    and &quot;uwsgi_bind&quot; directives, and as client address in ngx_http_realip_module.
+  * Fixed ngx_http_mp4_module and &quot;proxy_store&quot; directive.</comment>
+    <requestid>1226763</requestid>
+  </revision>
 </revisionlist>

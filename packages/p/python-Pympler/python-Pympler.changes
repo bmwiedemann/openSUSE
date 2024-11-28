@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 25 17:03:38 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable test_otracker_diff on aarch64 as it randomly makes the
+  check to fail due to worker slowness
+
+-------------------------------------------------------------------
 Thu Oct 24 10:17:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - skip tests that are going to fail with python 3.13

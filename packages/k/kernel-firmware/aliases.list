@@ -1745,6 +1745,7 @@ i915: pci:v00008086d0000A7AAsv*sd*bc03sc*i*
 i915: pci:v00008086d0000A7ABsv*sd*bc03sc*i*
 i915: pci:v00008086d0000A7ACsv*sd*bc03sc*i*
 i915: pci:v00008086d0000A7ADsv*sd*bc03sc*i*
+i915: pci:v00008086d0000B640sv*sd*bc03sc*i*
 ib_qib: fs-ipathfs
 ib_qib: pci:v00001077d00007220sv*sd*bc*sc*i*
 ib_qib: pci:v00001077d00007322sv*sd*bc*sc*i*
@@ -2952,6 +2953,8 @@ meson_vdec: of:N*T*Camlogic,gxbb-vdec
 meson_vdec: of:N*T*Camlogic,gxbb-vdecC*
 meson_vdec: of:N*T*Camlogic,gxl-vdec
 meson_vdec: of:N*T*Camlogic,gxl-vdecC*
+meson_vdec: of:N*T*Camlogic,gxlx-vdec
+meson_vdec: of:N*T*Camlogic,gxlx-vdecC*
 meson_vdec: of:N*T*Camlogic,gxm-vdec
 meson_vdec: of:N*T*Camlogic,gxm-vdecC*
 meson_vdec: of:N*T*Camlogic,sm1-vdec
@@ -3482,6 +3485,16 @@ qcom_q6v5_pas: of:N*T*Cqcom,qcs404-cdsp-pas
 qcom_q6v5_pas: of:N*T*Cqcom,qcs404-cdsp-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom,qcs404-wcss-pas
 qcom_q6v5_pas: of:N*T*Cqcom,qcs404-wcss-pasC*
+qcom_q6v5_pas: of:N*T*Cqcom,sa8775p-adsp-pas
+qcom_q6v5_pas: of:N*T*Cqcom,sa8775p-adsp-pasC*
+qcom_q6v5_pas: of:N*T*Cqcom,sa8775p-cdsp0-pas
+qcom_q6v5_pas: of:N*T*Cqcom,sa8775p-cdsp0-pasC*
+qcom_q6v5_pas: of:N*T*Cqcom,sa8775p-cdsp1-pas
+qcom_q6v5_pas: of:N*T*Cqcom,sa8775p-cdsp1-pasC*
+qcom_q6v5_pas: of:N*T*Cqcom,sa8775p-gpdsp0-pas
+qcom_q6v5_pas: of:N*T*Cqcom,sa8775p-gpdsp0-pasC*
+qcom_q6v5_pas: of:N*T*Cqcom,sa8775p-gpdsp1-pas
+qcom_q6v5_pas: of:N*T*Cqcom,sa8775p-gpdsp1-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom,sc7180-adsp-pas
 qcom_q6v5_pas: of:N*T*Cqcom,sc7180-adsp-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom,sc7180-mpss-pas
@@ -3516,6 +3529,8 @@ qcom_q6v5_pas: of:N*T*Cqcom,sdm845-slpi-pas
 qcom_q6v5_pas: of:N*T*Cqcom,sdm845-slpi-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom,sdx55-mpss-pas
 qcom_q6v5_pas: of:N*T*Cqcom,sdx55-mpss-pasC*
+qcom_q6v5_pas: of:N*T*Cqcom,sdx75-mpss-pas
+qcom_q6v5_pas: of:N*T*Cqcom,sdx75-mpss-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom,sm6115-adsp-pas
 qcom_q6v5_pas: of:N*T*Cqcom,sm6115-adsp-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom,sm6115-cdsp-pas
@@ -3688,6 +3703,7 @@ r8152: usb:v17EFp3069d*dc*dsc*dp*icFFisc*ip*in*
 r8152: usb:v17EFp3082d*dc*dsc*dp*ic*isc*ip*in*
 r8152: usb:v17EFp3082d*dc*dsc*dp*ic02isc06ip00in*
 r8152: usb:v17EFp3082d*dc*dsc*dp*icFFisc*ip*in*
+r8152: usb:v17EFp3098d*dc*dsc*dp*ic*isc*ip*in*
 r8152: usb:v17EFp7205d*dc*dsc*dp*ic*isc*ip*in*
 r8152: usb:v17EFp7205d*dc*dsc*dp*ic02isc06ip00in*
 r8152: usb:v17EFp7205d*dc*dsc*dp*icFFisc*ip*in*
@@ -5437,6 +5453,7 @@ snd_hda_scodec_tas2781_i2c: acpi*:INT8866%3A*
 snd_hda_scodec_tas2781_i2c: acpi*:TIAS2781%3A*
 snd_intel_sst_acpi: acpi*:80860F28%3A*
 snd_intel_sst_acpi: acpi*:808622A8%3A*
+snd_intel_sst_acpi: acpi*:LPE0F28%3A*
 snd_intel_sst_acpi: sst
 snd_korg1212: pci:v000010B5d0000906Dsv*sd*bc*sc*i*
 snd_maestro3: pci:v0000125Dd00001988sv*sd*bc04sc01i*

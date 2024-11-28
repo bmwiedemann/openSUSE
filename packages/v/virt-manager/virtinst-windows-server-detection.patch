@@ -4,9 +4,11 @@ so libosinfo can't really tell them apart.
 This hack after detecting a windows ISO just looks at the
 ISO filename for an extra clue.
 
---- virt-manager-3.2.0/virtinst/install/installer.py.orig	2022-01-20 15:40:27.849623677 -0700
-+++ virt-manager-3.2.0/virtinst/install/installer.py	2022-01-20 15:42:22.229628567 -0700
-@@ -541,6 +541,14 @@ class Installer(object):
+Index: virt-manager-4.2.0/virtinst/install/installer.py
+===================================================================
+--- virt-manager-4.2.0.orig/virtinst/install/installer.py
++++ virt-manager-4.2.0/virtinst/install/installer.py
+@@ -545,6 +545,14 @@ class Installer(object):
                  osguess = OSDB.guess_os_by_iso(self.cdrom)
                  if osguess:
                      ret = osguess[0]

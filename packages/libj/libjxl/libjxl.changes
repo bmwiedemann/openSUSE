@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 26 20:55:18 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.11.1
+  * Huffman lookup table size fix [CVE-2024-11403]
+  * Check height limit in modular trees [CVE-2024-11498]
+
+-------------------------------------------------------------------
 Fri Sep 13 11:48:46 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.11.0

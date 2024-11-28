@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Wed Nov 27 09:55:16 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.36.0:
+  * Emit a performance warning if containerd is enabled and we're
+    exporting to the daemon
+  * build(deps): bump the go-dependencies group across 1 directory
+    with 9 updates
+  * Cleanup after running acceptance tests
+  * Try lifecycle binary 0.20.3
+  * Bump lifecycle binary version also
+  * Fixing lifecycle validation to use fully qualified names
+  * Allow trusted builders by repo and tag
+  * Use released lifecycle
+  * build(deps): bump buildpacks/github-actions from 5.8.0 to 5.8.1
+  * build(deps): bump buildpacks/github-actions from 5.7.4 to 5.8.0
+  * build(deps): bump github.com/golang-jwt/jwt/v4 from 4.5.0 to
+    4.5.1
+  * Update actions
+  * Pin BurntSushi/toml as test failures seem related to
+    https://github.com/BurntSushi/toml/issues/417
+  * FIXME: update lifecycle (to non-released version) so that we
+    can bump docker
+  * Bump deps and run tidy
+  * Fix lint
+  * Update go and run tidy
+  * Use an existing directory instead of creating and deleting
+    directories for each '--path' flag case to ensure no temp
+    directories are left behind in case of a test failure.
+  * build(deps): bump github.com/docker/docker
+  * build(deps): bump buildpacks/github-actions from 5.5.4 to 5.7.4
+  * avoid using os.MkdirTemp() to prevent test failures on macOS
+  * rephrase the test description
+  * Make it warns only when a local path with the same string as
+    the specified image name exists
+  * Don't warn about clear-env key while parsing buildpack.toml as
+    this is actually expected.
+  * Fix deletion of ephemeral builder
+  * Improve descriptions for some test cases.
+  * Add a test case for when the 'pack build' is called with the
+    '--path' flag.
+  * Make the 'pack build' command warn that the positional argument
+    will not be treated as the source directory path.
+  * handled case sensitivity
+  * build(deps): bump anchore/scan-action from 3 to 4
+  * Update image references in internal documents and ci settings
+    to use fully qualified names.
+  * Update references to lifecycle image to use fully qualified
+    image name.
+
+-------------------------------------------------------------------
 Tue Aug 06 05:47:34 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.35.1:

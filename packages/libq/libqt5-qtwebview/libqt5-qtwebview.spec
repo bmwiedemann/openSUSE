@@ -19,11 +19,11 @@
 %define qt5_snapshot 1
 %define libname libQt5WebView5
 %define base_name libqt5
-%define real_version 5.15.15
-%define so_version 5.15.15
+%define real_version 5.15.16
+%define so_version 5.15.16
 %define tar_version qtwebview-everywhere-src-%{version}
 Name:           libqt5-qtwebview
-Version:        5.15.15+kde0
+Version:        5.15.16+kde0
 Release:        0
 Summary:        Qt 5 WebView Library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)

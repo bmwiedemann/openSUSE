@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov 25 11:09:22 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to version 4.36
+  * remove support for OS/2
+  * remove support for Unixware, Bsdi, old AIX, old HPUX9 & scoos
+  * remove support for Windows 16 bit
+  * renamed the prwin16.h header to prwin.h
+  * configure was updated from 2.69 to 2.71
+  * various build, test and automation script fixes
+  * major parts of the source code were reformatted
+
+-------------------------------------------------------------------
 Sun Oct 16 19:59:43 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to version 4.35

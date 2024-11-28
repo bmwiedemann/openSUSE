@@ -1,7 +1,7 @@
 #
 # spec file for package prometheus-simpleclient-java
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,17 +19,19 @@
 %global version_id parent
 %global upstream_name client_java
 Name:           prometheus-simpleclient-java
-Version:        0.8.0
+Version:        0.16.0
 Release:        0
 Summary:        Prometheus Java Suite
 License:        Apache-2.0 AND CC0-1.0
 URL:            https://github.com/prometheus/client_java/
 Source0:        https://github.com/prometheus/client_java/archive/%{version_id}-%{version}.tar.gz
+Patch1:         remove_opentelemetry_tracer.patch
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(ch.qos.logback:logback-classic)
+BuildRequires:  mvn(com.github.ben-manes.caffeine:caffeine) >= 2.7.0
 BuildRequires:  mvn(com.google.guava:guava)
+BuildRequires:  mvn(jakarta.servlet:jakarta.servlet-api)
 BuildRequires:  mvn(javax.servlet:javax.servlet-api)
 BuildRequires:  mvn(javax.xml.bind:jaxb-api)
 BuildRequires:  mvn(log4j:log4j)
@@ -37,7 +39,6 @@ BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apache.logging.log4j:log4j-core)
 BuildRequires:  mvn(org.eclipse.jetty:jetty-server)
 BuildRequires:  mvn(org.eclipse.jetty:jetty-servlet)
-BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
 BuildArch:      noarch
 
 %description
@@ -48,6 +49,18 @@ Summary:        Prometheus Java Suite parent pom
 
 %description parent
 The Prometheus Java Suite: Client Metrics, Exposition, and Examples.
+
+%package bom
+Summary:        Prometheus Java Simpleclient BOM
+
+%description bom
+Bill of Materials for the Simpleclient.
+
+%package caffeine
+Summary:        Prometheus Java Simpleclient Caffeine
+
+%description caffeine
+Metrics collector for caffeine based caches.
 
 %package common
 Summary:        Prometheus Java Simpleclient Common
@@ -116,10 +129,34 @@ Summary:        Prometheus Java Simpleclient Pushgateway
 Pushgateway exporter for the simpleclient.
 
 %package servlet
-Summary:        Prometheus Java Simpleclient Servlet
+Summary:        Prometheus Java Simpleclient Servlet (javax)
 
 %description servlet
+HTTP servlet exporter for the simpleclient (Javax API).
+
+%package servlet-common
+Summary:        Prometheus Java Simpleclient Servlet
+
+%description servlet-common
 HTTP servlet exporter for the simpleclient.
+
+%package servlet-jakarta
+Summary:        Prometheus Java Simpleclient Servlet (jakarta)
+
+%description servlet-jakarta
+HTTP servlet exporter for the simpleclient (Jakarta API).
+
+%package tracer
+Summary:        Prometheus Java Span Context Supplier - Parent
+
+%description tracer
+Prometheus Java Span Context Supplier - Parent POM.
+
+%package tracer-common
+Summary:        Prometheus Java Span Context Supplier - Common
+
+%description tracer-common
+Prometheus Java Span Context Supplier - Common.
 
 %package javadoc
 Summary:        Javadoc for %{name}
@@ -133,30 +170,38 @@ This package contains javadoc for %{name}.
 # Remove included jar files
 find . -name \*.jar -print0 | xargs -0 rm
 
+%pom_remove_plugin :maven-enforcer-plugin
 %pom_remove_plugin :maven-release-plugin
 %pom_remove_plugin :maven-deploy-plugin
 %pom_remove_plugin :maven-javadoc-plugin
+%pom_remove_plugin :versions-maven-plugin
 
-# Disable modules where we lack dependencies
-for m in simpleclient_caffeine \
-         simpleclient_dropwizard \
+for m in simpleclient_dropwizard \
          simpleclient_hibernate \
          simpleclient_spring_web \
          simpleclient_spring_boot \
          simpleclient_vertx \
-         benchmark; do
+         simpleclient_vertx4 \
+         integration_tests \
+         benchmarks; do
 %pom_disable_module $m
 done
+# Only build simpleclient_tracer_common as it's being used by an Examplar class
+%pom_disable_module simpleclient_tracer_otel_agent simpleclient_tracer
+%pom_disable_module simpleclient_tracer_otel simpleclient_tracer
 
-%pom_add_dep javax.xml.bind:jaxb-api::provided simpleclient_pushgateway
+# remove OpenTelemetry stuff, which we don't support
+%patch -P1 -p2
+%pom_remove_dep io.prometheus:simpleclient_tracer_otel simpleclient
+%pom_remove_dep io.prometheus:simpleclient_tracer_otel_agent simpleclient
+%pom_add_dep io.prometheus:simpleclient_tracer_common:%{version} simpleclient
 
-%pom_xpath_set "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:configuration/pom:source" "1.8"
-%pom_xpath_set "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:configuration/pom:target" "1.8"
+# Change compiler source/target version to JDK 8 level
+%pom_xpath_set "pom:build/pom:plugins/pom:plugin[pom:artifactId='maven-compiler-plugin']/pom:configuration/pom:source" "1.8" . simpleclient_hotspot
+%pom_xpath_set "pom:build/pom:plugins/pom:plugin[pom:artifactId='maven-compiler-plugin']/pom:configuration/pom:target" "1.8" . simpleclient_hotspot
 
 %build
-%{mvn_build} -f -s -- \
-    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
-    -Dsource=8
+%{mvn_build} -f -s
 
 %install
 %mvn_install
@@ -167,6 +212,10 @@ done
 %doc NOTICE
 
 %files parent -f .mfiles-parent
+
+%files bom -f .mfiles-simpleclient_bom
+
+%files caffeine -f .mfiles-simpleclient_caffeine
 
 %files common -f .mfiles-simpleclient_common
 
@@ -191,6 +240,14 @@ done
 %files pushgateway -f .mfiles-simpleclient_pushgateway
 
 %files servlet -f .mfiles-simpleclient_servlet
+
+%files servlet-common -f .mfiles-simpleclient_servlet_common
+
+%files servlet-jakarta -f .mfiles-simpleclient_servlet_jakarta
+
+%files tracer -f .mfiles-simpleclient_tracer
+
+%files tracer-common -f .mfiles-simpleclient_tracer_common
 
 %files javadoc -f .mfiles-javadoc
 %license LICENSE

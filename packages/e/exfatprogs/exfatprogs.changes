@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Nov 27 08:01:54 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.2.6:
+  CHANGES :
+  * exfatprogs: replace obsolete autoconf and libtool
+    macros.
+  * mkfs.exfat: prefer the physical block size over
+    the logical block size for the exFAT sector size.
+  * mkfs.exfat: add notes about the format of the volume
+    GUID to the man page.
+  * mkfs.exfat: fix an incorrect calculation of the number
+    of used clusters.
+  BUG FIXES :
+  * exfatlabel: fix an user input error when setting
+    a volume serial or label.
+
+-------------------------------------------------------------------
 Wed Aug  7 05:39:31 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.2.5:

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Nov 27 08:17:16 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.30.1:
+  * fix: fix --config=config.yml arg parse #1617
+  * fix: update python version #1614
+  * fix(deps): update dependency @swc/core to v1.9.3 63c1c8d
+  * chore: revert pyo3 2022f38
+  * feat: add rule entity inspection c569ec7
+
+-------------------------------------------------------------------
+Wed Nov 27 08:16:54 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.30.0:
+  * Breaking change: feat: semi-structured tracing output #1574
+  * fix: error=unused-suppression should change exit code #1585
+  * refactor: move stdErr into inspect mod #1575
+  * infra: switch to llvm-cov #1570
+  * Breaking change: refactor: rename --tracing to --inspect 105945e
+  * Breaking change: refactor: remove --json format for tracing ed05be4
+  * Breaking change: fix: remove builtin dart support cd25a62
+  * Breaking change: fix: report unused suppression always 893df63
+  * fix(deps): update babel monorepo b8803ce
+
+-------------------------------------------------------------------
 Wed Oct 30 08:44:50 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.29.0:
