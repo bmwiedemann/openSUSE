@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 22 08:58:19 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- Drop python 2.x support (it's been 4 years).
+- Add python3-setuptools BuildRequires which is needed for
+  distutils.
+
+-------------------------------------------------------------------
 Wed Dec 20 19:23:49 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - add: prereq "pam-config" in baselibs.conf

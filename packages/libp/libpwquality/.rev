@@ -193,4 +193,14 @@ Fixed bugref (forwarded request 922054 from dimstar)</comment>
     <comment></comment>
     <requestid>1134425</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>7ab98044f3744f39a48ab7ffab8991b5</srcmd5>
+    <version>1.4.5</version>
+    <time>1732835323</time>
+    <user>anag+factory</user>
+    <comment>- Drop python 2.x support (it's been 4 years).
+- Add python3-setuptools BuildRequires which is needed for
+  distutils.</comment>
+    <requestid>1227101</requestid>
+  </revision>
 </revisionlist>

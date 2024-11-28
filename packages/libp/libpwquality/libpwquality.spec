@@ -1,7 +1,7 @@
 #
 # spec file for package libpwquality
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,6 @@
 
 %define _secconfdir %{_sysconfdir}/security
 %define libname libpwquality1
-%bcond_without python2
 
 Name:           libpwquality
 Version:        1.4.5
@@ -34,11 +33,9 @@ BuildRequires:  cracklib-devel
 BuildRequires:  gettext-devel
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(python3)
-%if %{with python2}
-BuildRequires:  pkgconfig(python2)
-%endif
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-setuptools
+BuildRequires:  pkgconfig(python3)
 
 %description
 libpwquality is a library for password quality checks and generation
@@ -86,23 +83,11 @@ Summary:        PAM module to disallow weak new passwords
 Group:          System/Libraries
 Requires:       pam
 Requires(post): pam-config
-Requires(postun):pam-config
+Requires(postun): pam-config
 
 %description -n pam_pwquality
 The pam_pwquality PAM module can be used instead of pam_cracklib to
 disallow weak new passwords when user's login password is changed.
-
-%package -n python2-pwquality
-Summary:        Python bindings for libpwquality
-Group:          Development/Libraries/Python
-Provides:       python-pwquality = %{version}-%{release}
-Obsoletes:      python-pwquality < %{version}-%{release}
-
-%description -n python2-pwquality
-libpwquality is a library for password quality checks and generation
-of random passwords that pass the checks.
-
-This package provides Python bindings for the libpwquality library.
 
 %package -n python3-pwquality
 Summary:        Python 3 bindings for libpwquality
@@ -131,20 +116,9 @@ make -O %{?_smp_mflags}
 %else
 %make_build
 %endif
-%if %{with python2}
-pushd python
-%python_build
-popd
-%endif
 
 %install
 %make_install
-%if %{with python2}
-pushd python
-%python_install
-popd
-%endif
-
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name} %{?no_lang_C}
 
@@ -184,13 +158,8 @@ fi
 %{_pam_moduledir}/pam_pwquality.so
 %{_mandir}/man8/pam_pwquality.8%{?ext_man}
 
-%if %{with python2}
-%files -n python2-pwquality
-%{python2_sitearch}/*
-%endif
-
 %files -n python3-pwquality
-%{python3_sitearch}/*
+%{python3_sitearch}/pwquality-%{version}-py3*-linux-*.egg
 
 %files lang -f libpwquality.lang
 
