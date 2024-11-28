@@ -362,7 +362,6 @@ BuildRequires:  google-noto-naskharabic-fonts
 BuildRequires:  exfatprogs
 %endif
 BuildRequires:  fonts-config
-BuildRequires:  gamin-server
 BuildRequires:  gdb
 BuildRequires:  gettext-runtime
 BuildRequires:  glibc-i18ndata
@@ -688,7 +687,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        17.144
+Version:        17.146
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)

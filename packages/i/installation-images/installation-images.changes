@@ -1,4 +1,18 @@
 --------------------------------------------------------------------
+Thu Nov 28 11:39:14 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#746
+- add extra sync before removing zram swap device (bsc#1233893)
+- 17.146
+
+--------------------------------------------------------------------
+Thu Nov 28 08:53:16 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#745
+- Drop gamin-server BuildRequires: no longer relevant
+- 17.145
+
+--------------------------------------------------------------------
 Wed Nov 13 16:52:39 UTC 2024 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#744
