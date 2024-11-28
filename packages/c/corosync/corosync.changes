@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Nov 18 03:51:09 UTC 2024 - nicholas.yang@suse.com
+
+- Update to version 3.1.9:
+  * rust: Update to latest standards
+  * totemsrp: Fix orf_token stats
+  * totem: Use uint64_t type and QB_TIME_NS_IN_MSEC
+  * totem: Use proper timestamp type for token warning
+  * stats: Store token rx and tx timestamps as 64-bit
+  * rust: fix clippy warning in rust 1.81
+  * coroparse: Free kv_item key and value on failure
+  * icmap: Free memory if qb_map_notify_add fails
+  * cfg: Free new_config interfaces on failure
+  * main: support lock pid file arg
+  * man: fix a typo in cpg_model_initialize
+  * man: Improve quorum provider formatting
+  * rust: tests return errors and don't hang
+  * rust: Improve Rust bindings
+  * Move corosync-notifyd policy file into $(datadir)/dbus-1/system.d
+  * man: corosync.conf: Multi improvements
+  * totem: Fix reference links
+  * Report crypto errors back to cfg reload
+  * Fix up the library .versions files
+  * configure: Fix building of rust for release
+  * License: Fix year (mainly to fix rust building)
+
+-------------------------------------------------------------------
 Wed Nov 13 06:48:08 UTC 2024 - Nicholas Yang <nicholas.yang@suse.com>
 
 - Add a patch to harden services with systemd sandboxing:

@@ -51,10 +51,10 @@ Name:           corosync
 Summary:        The Corosync Cluster Engine and Application Programming Interfaces
 License:        BSD-3-Clause
 Group:          Productivity/Clustering/HA
-Version:        3.1.8
+Version:        3.1.9
 Release:        0
 URL:            http://corosync.github.io/corosync/
-Source0:        https://build.clusterlabs.org/corosync/releases/%{name}-%{version}%{?gittarver}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
 Patch0:         0001-harden-services-with-systemd-sandboxing.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
