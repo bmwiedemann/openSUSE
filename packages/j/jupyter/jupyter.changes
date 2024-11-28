@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 27 11:42:17 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to new metapackage 1.1.1
+- Drop doc package: No longer packaged at readthedocs 
+
+-------------------------------------------------------------------
 Tue Mar  5 18:17:56 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip python39: no longer supported since ipython 8.19

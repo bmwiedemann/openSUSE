@@ -1,0 +1,4 @@
+# no checks for metapackage
+addFilter("no-%check-section")
+# Makes sense here
+addFilter("name-repeated-in-summary Jupyter")

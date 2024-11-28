@@ -16,12 +16,11 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           jupyter-filesystem
 URL:            https://jupyter.org/
-Version:        20221227
+Version:        20241127
 Release:        0
-%define tar_ver 1.0.0
+%define tar_ver 1.1.1
 Summary:        Common directories shared by Jupyter packages
 License:        BSD-3-Clause
 Group:          System/Fhs
