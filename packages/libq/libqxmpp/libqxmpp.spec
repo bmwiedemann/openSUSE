@@ -32,7 +32,7 @@ ExclusiveArch:  do_not_build
 %endif
 %define sover 5
 Name:           libqxmpp%{?pkg_suffix}
-Version:        1.9.0
+Version:        1.9.1
 Release:        0
 Summary:        Qt XMPP Library
 License:        LGPL-2.1-or-later

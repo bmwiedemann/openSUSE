@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 28 16:43:34 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.9.1
+  * MixManager: Fix update node subscriptions adds and removes
+    all nodes with default parameters
+
+-------------------------------------------------------------------
 Sun Nov 17 13:43:36 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.9.0
