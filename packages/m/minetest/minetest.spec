@@ -22,12 +22,12 @@
 %bcond_without redis
 %bcond_without postgresql
 Name:           minetest
-Version:        5.9.1
+Version:        5.10.0
 Release:        0
 Summary:        A InfiniMiner/Minecraft inspired game
 License:        CC-BY-SA-3.0 AND LGPL-2.1-or-later
 Group:          Amusements/Games/3D/Simulation
-URL:            https://minetest.net/
+URL:            https://www.luanti.org/
 Source:         https://github.com/minetest/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        minetest-rpmlintrc
 Source2:        minetest@.service
@@ -92,7 +92,7 @@ InfiniMiner, Minecraft and the like.
 %lang_package
 
 %package -n %{name}server
-Summary:        Minetest server
+Summary:        Luanti server
 License:        LGPL-2.1-or-later
 Group:          Amusements/Games/3D/Simulation
 Requires:       %{name}-data = %{version}
@@ -194,7 +194,7 @@ MINETEST_OPTIONS=""
 
 mkdir -p %{buildroot}%{_localstatedir}/lib/%{name}/
 
-%find_lang %{name}
+%find_lang luanti
 
 %post
 desktop-file-validate %{_datadir}/applications/net.minetest.minetest.desktop
@@ -219,19 +219,21 @@ getent passwd %{name} > /dev/null || \
 %license LICENSE.txt
 %{_bindir}/%{name}
 %{_bindir}/%{name}-wrapper
+%{_bindir}/luanti
 %{_datadir}/applications/net.minetest.minetest.desktop
-%{_datadir}/icons/hicolor/*/apps/%{name}.*
+%{_datadir}/icons/hicolor/*/apps/luanti.*
 %dir %{_datadir}/metainfo/
 %{_datadir}/metainfo/net.minetest.minetest.metainfo.xml
-%{_mandir}/man6/%{name}.6%{?ext_man}
+%{_mandir}/man6/luanti.6%{?ext_man}
 
-%files lang -f %{name}.lang
+%files lang -f luanti.lang
 
 %files -n %{name}server
 %license LICENSE.txt
 %{_bindir}/%{name}server
+%{_bindir}/luantiserver
 %attr(0755,%{minetestuser},%{minetestgroup}) %{_localstatedir}/lib/%{name}/
-%{_mandir}/man6/%{name}server.6%{?ext_man}
+%{_mandir}/man6/luantiserver.6%{?ext_man}
 %dir %{_sysconfdir}/%{name}
 %config %{_sysconfdir}/%{name}/%{name}.conf.example
 %config %{_sysconfdir}/%{name}/%{name}.env.example

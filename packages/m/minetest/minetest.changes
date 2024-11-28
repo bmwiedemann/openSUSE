@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Nov 23 21:48:12 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 5.10.0:
+  * Note: The engine has renamed to Luanti and this is the first
+    release with the new name! For more information read:
+    https://blog.minetest.net/2024/10/13/Introducing-Our-New-Name/
+  * Full changes:
+    https://dev.minetest.net/Changelog#5.9.1_.E2.86.92_5.10.0
+
+-------------------------------------------------------------------
 Sun Sep 15 22:03:31 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to version 5.9.1:
