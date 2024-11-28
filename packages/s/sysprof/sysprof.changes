@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 28 08:55:10 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 47.2:
+  + Use pid when generating counter IDs in SysprofCollector.
+  + Fix potential UB in GtkBitset.
+  + Avoid UB in bsearch() with no data.
+  + Increased safety in SysprofDocumentLoader.
+  + Increased safety when parsing CPU counters with async IO.
+
+-------------------------------------------------------------------
 Tue Nov  5 08:42:24 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 47.1:
