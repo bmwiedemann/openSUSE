@@ -1,44 +1,29 @@
 ---
- system/linux |   10 ++++++++++
- config_f.h   |    9 +++++++--
+ config_f.h   |   11 ++++++++---
  glob.h       |    3 ++-
  host.defs    |    9 +++------
  pathnames.h  |    2 +-
  sh.c         |    3 +++
+ system/linux |   10 ++++++++++
  tc.alloc.c   |   10 ++++++----
  tc.func.c    |    8 ++++++--
  tc.str.c     |    2 +-
  tc.who.c     |    3 +++
  tcsh.man.in  |    2 +-
  tw.h         |    4 ++++
- 12 files changed, 47 insertions(+), 18 deletions(-)
+ 12 files changed, 48 insertions(+), 19 deletions(-)
 
---- system/linux
-+++ system/linux	2021-04-27 07:41:53.192829973 +0000
-@@ -99,6 +99,9 @@
- #ifndef _SVID_SOURCE
- # define _SVID_SOURCE
- #endif
-+#ifndef _DEFAULT_SOURCE
-+# define _DEFAULT_SOURCE
-+#endif
- #ifndef _POSIX_SOURCE
- # define _POSIX_SOURCE
- #endif
-@@ -139,4 +142,11 @@
- # define POSIX
- #endif
- 
-+#if !defined(PW_SHADOW)
-+# define PW_SHADOW
-+#endif
-+#if !defined(SuSE)
-+# define SuSE
-+#endif
-+
- #endif /* _h_config */
 --- config_f.h
-+++ config_f.h	2021-04-27 07:41:53.192829973 +0000
++++ config_f.h	2024-11-28 09:55:11.062052907 +0000
+@@ -64,7 +64,7 @@
+  */
+ #if defined (SHORT_STRINGS) && defined (NLS) && !defined (WINNT_NATIVE) && !defined(_OSD_POSIX) && SIZEOF_WCHAR_T > 1
+ # define WIDE_STRINGS
+-# if SIZEOF_WCHAR_T <= 4
++# if (SIZEOF_WCHAR_T <= 4) && !defined(__linux__)
+ #  define UTF16_STRINGS
+ # endif
+ #endif
 @@ -72,7 +72,12 @@
  /*
   * LOGINFIRST   Source ~/.login before ~/.cshrc
@@ -63,7 +48,7 @@
  /*
   * COLOR_LS_F Do you want to use builtin color ls-F ?
 --- glob.h
-+++ glob.h	2021-04-27 07:41:53.192829973 +0000
++++ glob.h	2024-11-28 09:54:10.575159476 +0000
 @@ -72,6 +72,7 @@ typedef struct {
  #define	GLOB_NOSYS	(-4)	/* Implementation does not support function. */
  
@@ -82,7 +67,7 @@
  int	glob (const char *, int, int (*)(const char *, int), glob_t *);
  void	globfree (glob_t *);
 --- host.defs
-+++ host.defs	2021-05-28 09:44:03.337584826 +0000
++++ host.defs	2024-11-28 09:54:10.575159476 +0000
 @@ -189,9 +189,8 @@ static void populate(void)
  #endif
  	}
@@ -107,7 +92,7 @@
      machtype = "unknown";
  #endif
 --- pathnames.h
-+++ pathnames.h	2021-04-27 07:41:53.192829973 +0000
++++ pathnames.h	2024-11-28 09:54:10.575159476 +0000
 @@ -83,7 +83,7 @@
  # endif /* !_PATH_DOTLOGIN */
  #endif /* sgi || OREO || cray || AMIX || CDC */
@@ -118,7 +103,7 @@
  #endif /* _CRAYCOM && !_PATH_TCSHELL */
  
 --- sh.c
-+++ sh.c	2021-04-27 07:41:53.192829973 +0000
++++ sh.c	2024-11-28 09:54:10.579159403 +0000
 @@ -1348,6 +1348,9 @@ main(int argc, char **argv)
  	    setintr = osetintr;
  	    parintr = oparintr;
@@ -129,8 +114,32 @@
  #ifdef LOGINFIRST
  	if (loginsh)
  	    (void) srccat(varval(STRhome), STRsldotlogin);
+--- system/linux
++++ system/linux	2024-11-28 09:54:10.575159476 +0000
+@@ -99,6 +99,9 @@
+ #ifndef _SVID_SOURCE
+ # define _SVID_SOURCE
+ #endif
++#ifndef _DEFAULT_SOURCE
++# define _DEFAULT_SOURCE
++#endif
+ #ifndef _POSIX_SOURCE
+ # define _POSIX_SOURCE
+ #endif
+@@ -139,4 +142,11 @@
+ # define POSIX
+ #endif
+ 
++#if !defined(PW_SHADOW)
++# define PW_SHADOW
++#endif
++#if !defined(SuSE)
++# define SuSE
++#endif
++
+ #endif /* _h_config */
 --- tc.alloc.c
-+++ tc.alloc.c	2021-04-27 07:41:53.192829973 +0000
++++ tc.alloc.c	2024-11-28 09:54:10.579159403 +0000
 @@ -518,7 +518,7 @@ smalloc(size_t n)
  {
      ptr_t   ptr;
@@ -171,7 +180,7 @@
  
  #endif /* SYSMALLOC */
 --- tc.func.c
-+++ tc.func.c	2021-04-27 07:41:53.196829900 +0000
++++ tc.func.c	2024-11-28 09:54:10.579159403 +0000
 @@ -743,9 +743,13 @@ auto_lock(void)
  	    handle_pending_signals();
  	    errno = 0;
@@ -187,7 +196,7 @@
  
  #else
  
-@@ -1965,7 +1965,7 @@ getremotehost(int dest_fd)
+@@ -1965,7 +1969,7 @@ getremotehost(int dest_fd)
  	     * have not caught up yet.
  	     */
  	    addr.s_addr = inet_addr(name);
@@ -197,7 +206,7 @@
  	    else {
  		if (sptr != name) {
 --- tc.str.c
-+++ tc.str.c	2021-04-27 07:41:53.196829900 +0000
++++ tc.str.c	2024-11-28 09:54:10.579159403 +0000
 @@ -347,7 +347,7 @@ s_strlen(const Char *str)
  {
      size_t n;
@@ -208,7 +217,7 @@
      return (n);
  }
 --- tc.who.c
-+++ tc.who.c	2021-04-27 07:41:53.196829900 +0000
++++ tc.who.c	2024-11-28 09:54:10.579159403 +0000
 @@ -259,6 +259,9 @@ watch_login(int force)
      }
      stlast = sta.st_mtime;
@@ -220,7 +229,7 @@
  #else
      if ((utmpfd = xopen(TCSH_PATH_UTMP, O_RDONLY|O_LARGEFILE)) < 0) {
 --- tcsh.man.in
-+++ tcsh.man.in	2021-04-27 07:41:53.196829900 +0000
++++ tcsh.man.in	2024-11-28 09:54:10.579159403 +0000
 @@ -1012,7 +1012,7 @@ much like
  .Ic history-search-backward
  does.
@@ -231,7 +240,7 @@
  See also
  .Ic delete-char-or-list-or-eof .
 --- tw.h
-+++ tw.h	2021-04-27 07:41:53.196829900 +0000
++++ tw.h	2024-11-28 09:54:10.579159403 +0000
 @@ -32,6 +32,10 @@
  #ifndef _h_tw
  #define _h_tw

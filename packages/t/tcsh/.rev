@@ -1119,4 +1119,17 @@
   * tcsh-6.21.00.dif</comment>
     <requestid>1180140</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>7ff332f3fec481ae76212c7bc4c62a42</srcmd5>
+    <version>6.24.14</version>
+    <time>1732835322</time>
+    <user>anag+factory</user>
+    <comment>- Update to tcsh 6.24.14 - 2024-11-26
+  * Fix issues with S-JIS handling (T. Nosaka)
+  * Handle redirections in bracketed expressions
+    if { foo &gt; /dev/null } (christos)
+  * Recognize history searches in history expansion
+    !?foo&lt;tab&gt; (christos)</comment>
+    <requestid>1227089</requestid>
+  </revision>
 </revisionlist>
