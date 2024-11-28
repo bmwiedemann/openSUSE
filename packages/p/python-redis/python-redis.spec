@@ -26,14 +26,14 @@ Summary:        Python client for Redis key-value store
 License:        MIT
 URL:            https://github.com/redis/redis-py
 Source0:        https://files.pythonhosted.org/packages/source/r/redis/redis-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/redis/redis-py/5.0/pytest.ini
+Source1:        https://github.com/redis/redis-py/raw/refs/tags/v%{version}/pytest.ini
 Patch0:         increase-test-timeout.patch
-BuildRequires:  %{python_module async-timeout >= 4.0.2}
+BuildRequires:  %{python_module async-timeout >= 4.0.2 if %python-base < 3.11.3}
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-asyncio < 0.24}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -44,7 +44,7 @@ BuildRequires:  python-rpm-macros
 %if %{with testing}
 BuildRequires:  redis
 %endif
-Requires:       python-async-timeout >= 4.0.2
+Requires:       (python-async-timeout >= 4.0.2 if python-base < 3.11.3)
 Recommends:     python-hiredis >= 1.0.0
 Recommends:     redis
 BuildArch:      noarch
@@ -55,8 +55,8 @@ The Python interface to the Redis key-value store.
 
 %prep
 %autosetup -N -n redis-%{version}
-# pytest.ini for pytest markers
-cp %SOURCE1 .
+# pytest.ini for pytest markers but without coverage
+sed /coverage/d  %SOURCE1 > pytest.ini
 %ifarch s390x
 %patch -P 0 -p1
 %endif
@@ -112,6 +112,6 @@ donttest+=" or test_acl_getuser_setuser or test_acl_log"
 %license LICENSE
 %doc README.md
 %{python_sitelib}/redis/
-%{python_sitelib}/redis-%{version}*-info
+%{python_sitelib}/redis-%{version}.dist-info
 
 %changelog

@@ -492,4 +492,12 @@
   * Extend AggregateRequest with scorer argument</comment>
     <requestid>1225386</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>d2260141c7b531b1f5028e1340687e21</srcmd5>
+    <version>5.2.0</version>
+    <time>1732835326</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1227113</requestid>
+  </revision>
 </revisionlist>
