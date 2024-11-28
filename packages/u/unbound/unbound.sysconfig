@@ -1,3 +1,6 @@
 # for extra debug, add "-v -v" or change verbosity: in unbound.conf
 
 UNBOUND_OPTIONS=""
+
+# to disable the anchor update, set this to 'yes'
+DISABLE_UNBOUND_ANCHOR="no"

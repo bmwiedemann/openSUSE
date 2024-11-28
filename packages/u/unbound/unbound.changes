@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 27 11:45:12 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- add workaround for bug
+  https://github.com/NLnetLabs/unbound/issues/509
+  Starting up with 127.0.0.1 in the /etc/resolv.conf leads to long
+  delays if the anchor update is being run as ExecStartPre in the
+  unbound service
+
+-------------------------------------------------------------------
 Fri Oct 18 11:02:26 UTC 2024 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to 1.22.0:

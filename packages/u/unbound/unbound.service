@@ -13,7 +13,8 @@ User=unbound
 Group=unbound
 EnvironmentFile=-/etc/sysconfig/unbound
 #ExecStartPre=/sbin/runuser --shell /bin/sh -c "/usr/sbin/unbound-anchor -a /var/lib/unbound/root.key -c /etc/unbound/icannbundle.pem" unbound
-ExecStartPre=/usr/sbin/unbound-anchor -a /var/lib/unbound/root.key -c /etc/unbound/icannbundle.pem
+# https://github.com/NLnetLabs/unbound/issues/509
+ExecStartPre=/bin/bash -c 'if [ ! "$DISABLE_UNBOUND_ANCHOR" == "yes" ]; then /usr/sbin/unbound-anchor -a /var/lib/unbound/root.key -c /etc/unbound/icannbundle.pem -R; else echo "Updates of root keys with unbound-anchor is disabled"; fi'
 ExecStartPre=/usr/sbin/unbound-checkconf
 ExecStart=!/usr/sbin/unbound -d $UNBOUND_OPTIONS
 
