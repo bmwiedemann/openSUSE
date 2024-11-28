@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 27 15:56:23 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.8.11:
+  * fixed #5772, #5761 unhandled exception
+  * fixed #5763 Can not perform sql blind injection again latest dvwa
+  * fixed #5798 Some bugs with common tables and columns check
+  * fixed #5767 direct connection to oracle database not working
+  * update translations
+
+-------------------------------------------------------------------
 Mon Sep  2 15:16:10 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 1.8.8:
