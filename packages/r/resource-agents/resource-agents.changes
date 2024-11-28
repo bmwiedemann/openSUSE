@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov 19 10:50:14 UTC 2024 - varkoly@suse.com
+
+- Update to version 4.16.0+git2.20a433c3:
+  * storage_mon: remove unused macro variables (#1994)
+  * AWS agents: reuse IMDS token until it expires (issue #1990) (#1991)
+  * build: update ChangeLog for 4.16.0
+  * build: update ChangeLog for 4.16.0-rc1
+  * spec: drop BuildReq python3-pyroute2 for RHEL/CentOS
+  * Add azure aznfs filesystem support (bsc#1233083)
+  * powervs-subnet: dont require api_type as it has a default value
+  * IPaddr2: improve fail logic and check ip_status after adding IP
+  * azure-events*: use node name from cluster instead of hostname to avoid failing if they're not the same
+  * ocf-shellfuncs: systemd_drop_in only if needed
+  * findif.sh: remove "local proto" to use global proto from the agents
+  * nfsserver: also stop rpc-statd for nfsv4_only to avoid stop failing in some cases
+
+-------------------------------------------------------------------
 Tue Sep 24 19:03:38 UTC 2024 - varkoly@suse.com
 
 - Update to version 4.15.1+git27.f2932e21:

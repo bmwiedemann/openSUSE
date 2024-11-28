@@ -17,7 +17,7 @@
 
 
 Name:           resource-agents
-Version:        4.15.1+git27.f2932e21
+Version:        4.16.0+git2.20a433c3
 Release:        0
 Summary:        HA Reusable Cluster Resource Scripts
 License:        GPL-2.0-only AND LGPL-2.1-or-later AND GPL-3.0-or-later
@@ -43,7 +43,6 @@ Patch9:         portblock.patch
 # PATCH-FIX-OPENSUSE: Remove deprecated perl-IO-Socket-INET6 dependency
 Patch10:        resource-agents-deprecate-INET6.patch
 
-BuildRequires:  %{python_module pyroute2}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module urllib3}
 BuildRequires:  autoconf
