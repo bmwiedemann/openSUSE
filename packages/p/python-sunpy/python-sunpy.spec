@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sunpy
-Version:        6.0.2
+Version:        6.0.3
 Release:        0
 Summary:        SunPy core package: Python for Solar Physics
 License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT
@@ -26,8 +26,6 @@ URL:            https://github.com/sunpy/sunpy
 Source0:        https://files.pythonhosted.org/packages/source/s/sunpy/sunpy-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE use custom hypothesis profile for slow OBS executions
 Patch1:         sunpy-obs-profile.patch
-# PATCH-FIX-OPENSUSE sunpy-exclude-toplevel.patch -- exclude directories and files from being installed into site-packages, reported gh#sunpy/sunpy#7780
-Patch2:         sunpy-exclude-toplevel.patch
 BuildRequires:  %{python_module aioftp}
 BuildRequires:  %{python_module astropy >= 5.3}
 BuildRequires:  %{python_module devel >= 3.10}
@@ -36,7 +34,7 @@ BuildRequires:  %{python_module numpy-devel >= 1.25 with %python-numpy-devel < 2
 BuildRequires:  %{python_module packaging >= 19}
 BuildRequires:  %{python_module parfive >= 2.0.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pyerfa}
+BuildRequires:  %{python_module pyerfa >= 2.0.0.1}
 BuildRequires:  %{python_module requests >= 2.28}
 BuildRequires:  %{python_module setuptools >= 62}
 BuildRequires:  %{python_module setuptools_scm >= 6.2}
@@ -47,7 +45,7 @@ Requires:       python-astropy >= 5.3
 Requires:       python-numpy > 1.24.5
 Requires:       python-packaging >= 23
 Requires:       python-parfive >= 2.0.0
-Requires:       python-pyerfa
+Requires:       python-pyerfa >= 2.0.0.1
 Requires:       python-requests >= 2.28.0
 # pafived[ftp], ignore rpmlint's python-leftover-require
 Requires:       python-aioftp >= 0.17.1
@@ -154,6 +152,10 @@ pushd testdir
 }
 # fails because it does not find any opencv-python dist metadata (even for python3-opencv installed)
 donttest="test_self_test"
+%ifarch aarch64
+# invalid cast of type
+donttest="$donttest or test_plot_unit8"
+%endif
 # spiceypy not available
 %pytest_arch --pyargs sunpy -ra -n auto -k "not ($donttest ${$python_donttest})" --ignore %{buildroot}%{$python_sitearch}/sunpy/coordinates/tests/test_spice.py
 popd

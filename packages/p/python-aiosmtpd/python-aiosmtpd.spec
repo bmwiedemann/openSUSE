@@ -22,16 +22,18 @@ Version:        1.4.6
 Release:        0
 Summary:        SMTP server based on asyncio
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://aiosmtpd.readthedocs.io/
 Source:         https://github.com/aio-libs/aiosmtpd/archive/v%{version}.tar.gz#/aiosmtpd-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Based on gh#aio-libs/aiosmtpd#473
+Patch0:         support-python-313.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
 Requires:       python-atpublic
 Requires:       python-attrs
-Requires:       (python-typing_extensions if python-base < 3.8)
 Requires:       user(nobody)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -42,7 +44,6 @@ BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module typing_extensions if %python-base < 3.8}
 BuildRequires:  user(nobody)
 # /SECTION
 %python_subpackages
@@ -68,10 +69,10 @@ This package provides such an implementation of both the SMTP and LMTP protocols
 sed -i '/--cov=/d' pytest.ini
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/aiosmtpd
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -97,7 +98,7 @@ ignore="--ignore aiosmtpd/tests/test_server.py"
 %license LICENSE
 %python_alternative %{_bindir}/aiosmtpd
 %{python_sitelib}/aiosmtpd
-%{python_sitelib}/aiosmtpd-%{version}*-info
+%{python_sitelib}/aiosmtpd-%{version}.dist-info
 %exclude %{python_sitelib}/aiosmtpd/docs
 
 %changelog

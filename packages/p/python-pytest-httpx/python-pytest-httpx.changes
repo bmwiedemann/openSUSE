@@ -1,4 +1,129 @@
 -------------------------------------------------------------------
+Mon Nov 25 09:16:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.34.0:
+  * `is_optional` parameter is now available on responses and
+    callbacks registration. Allowing to add optional responses
+    while keeping other responses as mandatory. Refer to
+    documentation for more details.
+  * `is_reusable` parameter is now available on responses and
+    callbacks registration. Allowing to add multi-match responses
+    while keeping other responses as single-match. Refer to
+    documentation for more details.
+  * `httpx_mock.get_request` will now also propose to refine
+    filters if more than one request is found instead of only
+    proposing to switch to `httpx_mock.get_requests`.
+  * Explicit support for python `3.13`.
+  * `should_mock` option (callable returning a boolean) is now
+    available, defaulting to always returning `True`. Refer to
+    documentation for more details.
+  * Matching on the full multipart body can now be performed
+    using `match_files` and `match_data` parameters. Refer to
+    documentation for more details.
+  * Matching on extensions (including timeout) can now be
+    performed using `match_extensions` parameter. Refer to
+    documentation for more details.
+  * The following option is now available:
+  * `can_send_already_matched_responses` (boolean), defaulting to
+    `False`.
+  * Assertion failure message in case of unmatched responses is
+    now linking documentation on how to deactivate the check.
+  * Assertion failure message in case of unmatched requests is
+    now linking documentation on how to deactivate the check.
+  * `httpx.TimeoutException` message issued in case of unmatched
+    request is now linking documentation on how to reuse
+    responses (in case some responses are already matched).
+  * Documentation now clearly state the risks associated with
+    changing the default options.
+  * Assertion failure message in case of unmatched requests at
+    teardown is now describing requests in a more user-friendly
+    way.
+  * Assertion failure message in case of unmatched requests at
+    teardown is now prefixing requests with `- ` to highlight the
+    fact that this is a list, preventing misapprehension in case
+    only one element exists.
+  * Assertion failure message in case of unmatched responses at
+    teardown is now prefixing responses with `- ` to highlight
+    the fact that this is a list, preventing misapprehension in
+    case only one element exists.
+  * `httpx.TimeoutException` message issued in case of unmatched
+    request is now prefixing available responses with `- ` to
+    highlight the fact that this is a list, preventing
+    misapprehension in case only one element exists.
+  * `httpx.TimeoutException` message issued in case of unmatched
+    request is now listing unmatched responses (in registration
+    order) before already matched one (still in registration
+    order).
+  * The incentive behind this change is to help identify a
+    potential mismatch faster as the first unmatched response is
+    the most likely to be the one expected to match.
+  * Response description in failure messages
+    (`httpx.TimeoutException` message issued in case of unmatched
+    request or assertion failure message in case of unmatched
+    responses at teardown) is now displaying if the response was
+    already matched or not and less misleading in it's phrasing
+    about what it can match (a single request by default).
+
+  * ### Changed
+  * Last registered matching response will not be reused by
+    default anymore in case all matching responses have already
+    been sent.
+  * This behavior can be changed thanks to the new `pytest.mark.h
+    ttpx_mock(can_send_already_matched_responses=True)` option.
+  * The incentive behind this change is to spot regression if a
+    request was issued more than the expected number of times.
+  * `HTTPXMock` class was only exposed for type hinting purpose.
+    This is now explained in the class docstring.
+  * As a result this is the last time a change to `__init__`
+    signature will be documented and considered a breaking
+    change.
+  * Future changes will not be documented and will be considered
+    as internal refactoring not worth a version bump.
+  * `__init__` now expects one parameter, the newly introduced
+    (since [0.31.0]) options.
+  * `HTTPXMockOptions` class was never intended to be exposed and
+    is now marked as private.
+  * `httpx_mock` marker can now be defined at different levels
+    for a single test.
+  * It is now possible to match on content provided as async
+    iterable by the client.
+  * Tests will now fail at teardown by default if some requests
+    were issued but were not matched.
+  * This behavior can be changed thanks to the new `pytest.mark.h
+    ttpx_mock(assert_all_requests_were_expected=False)` option.
+  * The incentive behind this change is to spot unexpected
+    requests in case code is swallowing `httpx.TimeoutException`.
+  * The `httpx_mock` fixture is now configured using a marker
+    (many thanks to `Frazer McLean`).
+  * ```python
+  * # Apply marker to whole module
+  * pytestmark = pytest.mark.httpx_mock(assert_all_responses_were
+    _requested=False)
+
+  * # Or to specific tests
+  * @pytest.mark.httpx_mock(non_mocked_hosts=[...])
+  * def test_foo(httpx_mock):
+  * ...
+  * ```
+  * The following options are available:
+  * `assert_all_responses_were_requested` (boolean), defaulting
+    to `True`.
+  * `assert_all_requests_were_expected` (boolean), defaulting to
+    `True`.
+  * `non_mocked_hosts` (iterable), defaulting to an empty list,
+    meaning all hosts are mocked.
+  * `httpx_mock.reset` do not expect any parameter anymore and
+    will only reset the mock state (no assertions will be
+    performed).
+  * `pytest` `7` is not supported anymore (`pytest` `8` has been
+    out for 9 months already).
+  * `assert_all_responses_were_requested` fixture is not
+    available anymore, use `pytest.mark.httpx_mock(assert_all_res
+    ponses_were_requested=False)` instead.
+  * `non_mocked_hosts` fixture is not available anymore, use
+    `pytest.mark.httpx_mock(non_mocked_hosts=[])` instead.
+
+-------------------------------------------------------------------
 Thu Feb  1 21:21:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.29.0:

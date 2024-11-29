@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 27 15:31:45 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Add scikit-build-pr1120-upddistutils.patch
+  * gh#scikit-build/scikit-build#1120
+
+-------------------------------------------------------------------
 Thu Aug 29 13:35:59 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.18.1

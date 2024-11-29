@@ -1001,4 +1001,16 @@
 * kubernetes (versionminus3) - 1.28.15</comment>
     <requestid>1220535</requestid>
   </revision>
+  <revision rev="108" vrev="48">
+    <srcmd5>4a9f0468480b3cb9bc0ee17bb06cf0cd</srcmd5>
+    <version>unknown</version>
+    <time>1732830186</time>
+    <user>anag+factory</user>
+    <comment>- Bump meta package versions:
+  * kubernetes (version) - 1.31.3
+  * kubernetes (versionminus1) - 1.30.7
+  * kubernetes (versionminus2) - 1.29.11
+  * Etcd (etcdversionminus2) - 3.5.16</comment>
+    <requestid>1227099</requestid>
+  </revision>
 </revisionlist>

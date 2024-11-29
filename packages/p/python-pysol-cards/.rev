@@ -46,4 +46,12 @@
 - Refresh python-pysol-cards-no-six.patch.</comment>
     <requestid>1154464</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>be9eaa8a3806744d6557bf11c7e2b4e8</srcmd5>
+    <version>0.16.0</version>
+    <time>1732830176</time>
+    <user>anag+factory</user>
+    <comment>- remove unneeded dependencies</comment>
+    <requestid>1227062</requestid>
+  </revision>
 </revisionlist>

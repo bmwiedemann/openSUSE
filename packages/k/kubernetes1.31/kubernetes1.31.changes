@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov 28 08:32:35 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.31.3:
+  * Fix TestCacherDontMissEventsOnReinitialization test
+  * bugfix(scheduler): preemption picks wrong victim node with higher priority pod on it.
+  * Update metrics documentation for v1.31
+  * fix(leaderelection): nil check in OnStoppedLeading func
+  * Fix crash on kube manager's service-lb-controller after v1.31.0.
+  * server/config: assing system:apiserver user to system:authenticated group
+  * tests for nodes with different nodeName and name
+  * manually revert #109877
+
+-------------------------------------------------------------------
 Mon Nov  4 05:53:45 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.31.2:

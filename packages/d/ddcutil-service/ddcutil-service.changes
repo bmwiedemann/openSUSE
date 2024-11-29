@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 27 19:36:37 UTC 2024 - Michael Hamilton <michael@actrix.gen.nz>
+
+- 1.0.12
+  - Return the error status-code if enable_ddca_watch_displays fails - was returning OK even on failure.
+
+-------------------------------------------------------------------
 Thu Aug 22 01:18:47 UTC 2024 - Michael Hamilton <michael@actrix.gen.nz>
 
 - 1.0.11

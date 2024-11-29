@@ -78,7 +78,7 @@
 %global with_gcc 12
 %endif
 Name:           libreoffice
-Version:        24.8.2.1
+Version:        24.8.3.2
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -152,8 +152,8 @@ BuildRequires:  zxcvbn-devel
 %if %{with system_curl}
 BuildRequires:  curl-devel >= 7.68.0
 %else
-Source2013:     %{external_url}/curl-8.10.1.tar.xz
-Provides:       bundled(curl) = 8.10.1
+Source2013:     %{external_url}/curl-8.11.0.tar.xz
+Provides:       bundled(curl) = 8.11.0
 %endif
 # Needed for tests
 BuildRequires:  dejavu-fonts
@@ -1057,6 +1057,7 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %langpack -l te -n Telugu -m te_IN -X
 %langpack -l tg -n Tajik -T -X
 %langpack -l th -n Thai -s ctl -c ctlseqcheck_th -m th_TH -X
+%langpack -l tl -n Tagalog -X
 %langpack -l tn -n Tswana -X
 %langpack -l tr -n Turkish -X -T -m tr_TR
 %langpack -l ts -n Tsonga -X

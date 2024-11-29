@@ -30,7 +30,7 @@
 %define mypython python
 %{?sle15_python_module_pythons}
 Name:           python-setuptools%{psuffix}
-Version:        72.1.0
+Version:        75.6.0
 Release:        0
 Summary:        Download, build, install, upgrade, and uninstall Python packages
 License:        Apache-2.0 AND MIT AND BSD-2-Clause AND Python-2.0
@@ -48,19 +48,19 @@ BuildArch:      noarch
 BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module filelock >= 3.4.0}
-BuildRequires:  %{python_module ini2toml-lite >= 0.9}
+BuildRequires:  %{python_module ini2toml-lite >= 0.14}
 BuildRequires:  %{python_module jaraco.develop >= 7.21}
 BuildRequires:  %{python_module jaraco.envs >= 2.2}
-BuildRequires:  %{python_module jaraco.packaging >= 10.0}
+BuildRequires:  %{python_module jaraco.packaging >= 9.3}
 BuildRequires:  %{python_module jaraco.path >= 3.2.0}
-BuildRequires:  %{python_module jaraco.test}
+BuildRequires:  %{python_module jaraco.test >= 5.5}
+BuildRequires:  %{python_module packaging >= 24.2}
 BuildRequires:  %{python_module pip >= 19.1}
-BuildRequires:  %{python_module pip-run >= 8.8}
 BuildRequires:  %{python_module pytest >= 6}
-BuildRequires:  %{python_module pytest-home}
+BuildRequires:  %{python_module pytest-home >= 0.5}
 BuildRequires:  %{python_module pytest-subprocess}
 BuildRequires:  %{python_module pytest-timeout}
-BuildRequires:  %{python_module pytest-xdist}
+# BuildRequires:  %%{python_module pytest-xdist >= 3}
 BuildRequires:  %{python_module setuptools = %{version}}
 BuildRequires:  %{python_module setuptools-wheel = %{version}}
 BuildRequires:  %{python_module tomli-w >= 1.0.0}
@@ -91,7 +91,7 @@ the wheel needs to be used directly in test or install setups
 rm -f setuptools/*.exe
 
 %build
-%if !%{with test}
+%if %{without test}
 %{python_expand # bootstrap with built-in pip
 $python -m venv build/env
 build/env/bin/python -m ensurepip
@@ -101,7 +101,7 @@ export PYTHONPATH=build/env/lib/python%{$python_bin_suffix}/site-packages
 %endif
 
 %install
-%if !%{with test}
+%if %{without test}
 %{python_expand # use pip bootstrapped above
 export PYTHONPATH=build/env/lib/python%{$python_bin_suffix}/site-packages
 %{$python_pyproject_install}
@@ -123,6 +123,8 @@ export PIP_FIND_LINKS=$PWD/dist
 export PYTHONPATH=$(pwd)
 # no online comparisons in obs
 donttest="(test_apply_pyproject_equivalent_to_setupcfg and https)"
+# no network access
+donttest+=" or uses_network"
 # test_pbr_integration tries to install pbr from network using pip
 donttest+=" or test_pbr_integration"
 # looks for .exe files that we do not ship
@@ -130,10 +132,12 @@ donttest+=" or test_wheel_includes_cli_scripts"
 # ignores environment variables
 donttest+=" or test_setup_requires_with_distutils_command_dep"
 donttest+=" or test_setup_requires_with_transitive_extra_dependency"
-%pytest -rfE -n auto -k "not ($donttest)"
+# skip tests that require network access
+donttest+=" or uses_network"
+%pytest -rfE -k "not ($donttest)"
 %endif
 
-%if !%{with test}
+%if %{without test}
 %files %{python_files}
 %if !%{with wheel}
 %license LICENSE

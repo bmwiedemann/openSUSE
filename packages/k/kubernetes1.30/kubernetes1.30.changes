@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 28 08:39:58 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.30.7:
+  * server/config: assing system:apiserver user to system:authenticated group
+  * bugfix(scheduler): preemption picks wrong victim node with higher priority pod on it.
+  * tests for nodes with different nodeName and name
+  * manually revert #109877
+
+-------------------------------------------------------------------
 Mon Nov  4 06:01:40 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.30.6:

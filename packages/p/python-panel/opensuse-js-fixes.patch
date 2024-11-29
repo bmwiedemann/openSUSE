@@ -1,0 +1,42 @@
+- Do not install package-lock.json into the wheel
+  * boo#1231254 gh#openSUSE/obs-service-node_modules#41
+- Require typescript for compilation
+- Fix test artifact destination
+
+Index: panel-1.5.4/pyproject.toml
+===================================================================
+--- panel-1.5.4.orig/pyproject.toml
++++ panel-1.5.4/pyproject.toml
+@@ -111,6 +111,7 @@ raw-options = { version_scheme = "no-gue
+ 
+ [tool.hatch.build.targets.wheel]
+ include = ["panel"]
++exclude = ["panel/package-lock.json"]
+ 
+ [tool.hatch.build.targets.wheel.force-include]
+ "panel/dist" = "panel/dist"
+Index: panel-1.5.4/panel/package.json
+===================================================================
+--- panel-1.5.4.orig/panel/package.json
++++ panel-1.5.4/panel/package.json
+@@ -23,6 +23,7 @@
+     "@stylistic/eslint-plugin": "^1.6.3",
+     "@typescript-eslint/eslint-plugin": "^7.2.0",
+     "@typescript-eslint/parser": "^7.2.0",
++    "typescript": "^5.1.0",
+     "acorn": "^8.11.3",
+     "eslint": "^8.57.0",
+     "flatpickr": "^4.6.9"
+Index: panel-1.5.4/panel/tests/command/test_compile.py
+===================================================================
+--- panel-1.5.4.orig/panel/tests/command/test_compile.py
++++ panel-1.5.4/panel/tests/command/test_compile.py
+@@ -14,7 +14,7 @@ class JSTestComponent(JSComponent):
+ 
+ def test_compile_component(py_file):
+     cmd = [sys.executable, "-m", "panel", "compile", "panel.tests.command.test_compile:JSTestComponent", "--unminified"]
+-    p = subprocess.Popen(cmd, shell=False, cwd=CWD)
++    p = subprocess.Popen(cmd, shell=False)
+     p.wait()
+ 
+     bundle = CWD / "JSTestComponent.bundle.js"

@@ -27,8 +27,6 @@ URL:            https://pypi.org/project/pysol-cards/
 Source:         https://files.pythonhosted.org/packages/source/p/pysol_cards/pysol_cards-%{version}.tar.gz
 # https://github.com/shlomif/pysol_cards/issues/6
 Patch0:         python-pysol-cards-no-six.patch
-BuildRequires:  %{python_module oslotest}
-BuildRequires:  %{python_module pbr >= 2.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module random2}

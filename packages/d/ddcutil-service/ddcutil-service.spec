@@ -18,7 +18,7 @@
 
 
 Name:           ddcutil-service
-Version:        1.0.11
+Version:        1.0.12
 Release:        0
 Summary:        D-Bus service for libddcutil VESA DDC Monitor Virtual Control Panel
 License:        GPL-2.0-or-later

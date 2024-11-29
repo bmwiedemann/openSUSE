@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Nov 27 19:49:17 UTC 2024 - Michael Hamilton <michael@actrix.gen.nz>
+
+- Version 2.1.2
+  * Replace the Preset-scheduler with an implementation that remains accurate after PC-sleep/hibernation.
+  * Fix the day-rollover which was scheduling for the wrong day if triggered at 12:59:59. 
+  * When performing a set-vcp, don't increment the NVRAM write count if the VDU doesn't respond.
+  * When reconfiguring VDU controllers, discard pending VDU VCP changes from previous controllers. 
+  * Eliminate a potential for deadlock when handling change-events from ddcutil-service.
+  * Better handle ddcutil-service unexpected event types (don't raise an error dialog).
+  * The main window height will now automatically resize to accommodate the number of controls present.
+  * Toggling lux brightness-interpolation now immediately updates the profile-plot to reflect the change.
+  * Fix the Lux Dialog, it was turning off interpolation when first constructed.
+
+-------------------------------------------------------------------
 Sun Oct 13 23:42:30 UTC 2024 - Michael Hamilton <michael@actrix.gen.nz>
 
 - Version 2.1.1

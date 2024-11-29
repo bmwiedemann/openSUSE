@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 28 14:01:00 UTC 2024 - msuchanek@suse.de
+
+- Update to version 1.1.0+git1.1d8b86b (jsc#PED-9893):
+  * external/libstb-secvar: version bump for 3k RSA key support
+  * guest/read: don't attempt to print an ESL from a zero-sized buffer
+
+-------------------------------------------------------------------
 Wed Feb 14 09:46:08 UTC 2024 - msuchanek@suse.com
 
 - Update to version v1.0.0 (jsc#PED-5449):

@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Thu Nov 21 07:15:54 UTC 2024 - pgajdos@suse.com
 
-- version update to 8.3.14
+- version update to 8.3.14 [bsc#1233644] [bsc#1233651] [bsc#1233703] [bsc#1233702] [bsc#1233705]
     CLI:
         Fixed bug GH-16373 (Shebang is not skipped for router script in cli-server started through shebang).
         Fixed bug GHSA-4w77-75f9-2c8w (Heap-Use-After-Free in sapi_read_post_data Processing in CLI SAPI Interface).

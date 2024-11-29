@@ -1000,4 +1000,12 @@
         Fixed bug GH-16595 (Another UAF in DOM -&gt; cloneNode).</comment>
     <requestid>1225446</requestid>
   </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>69813ee491dce257fc60b1a8b99d3249</srcmd5>
+    <version>8.3.14</version>
+    <time>1732830163</time>
+    <user>anag+factory</user>
+    <comment>- version update to 8.3.14 [bsc#1233644] [bsc#1233651] [bsc#1233703] [bsc#1233702] [bsc#1233705]</comment>
+    <requestid>1226875</requestid>
+  </revision>
 </revisionlist>

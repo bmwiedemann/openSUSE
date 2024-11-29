@@ -435,4 +435,31 @@
   * Fixed a performance issue with OPDS catalogs. (forwarded request 1164455 from Dead_Mozay)</comment>
     <requestid>1164572</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>c29424215186cddfa97aad6ba66f4d3d</srcmd5>
+    <version>3.2.0</version>
+    <time>1732830178</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.2.0:
+  * Revamped translation tool, which now remembers the last target 
+    language, and allows filtering languages
+  * Improved PDF support: the rendering is faster and no longer 
+    blurry
+  * Improved rendering of fixed layout EPUBs (see comments in #1318)
+  * Improved focus handling: the focus is no longer lost when 
+    navigating to new sections, and tabbing no longer breaks layout
+  * Improved text selection across pages, allowing selecting 
+    to the previous page
+  * It now only shows more than one column when the viewport is in 
+    landscape (or, for vertical writing, in portrait)
+  * Changed shortcut for the table of contents from Ctrl+Alt+T 
+    to Ctrl+T.
+  * Added Space/Shift+Space shortcuts for turning pages.
+  * Added option to open books with external application from 
+    the library view.
+  * Fixed formatting of copied text.
+  * Fixed extra border in CBZ files.
+  * Fixed handling of bare search template URL in OPDS feeds. (forwarded request 1227001 from Dead_Mozay)</comment>
+    <requestid>1227084</requestid>
+  </revision>
 </revisionlist>

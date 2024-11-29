@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 28 07:29:55 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.0.11:
+  * 45175e7 Remove upx compression (causes issues with MacOS).
+
+-------------------------------------------------------------------
 Mon Sep 30 06:23:06 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.0.10:

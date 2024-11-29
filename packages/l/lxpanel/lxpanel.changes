@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 27 13:45:22 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- fix build by adjust CFLAGS with -Wno-incompatible-pointer-types
+- remove update-desktop-files from BR
+
+-------------------------------------------------------------------
 Fri Mar  1 11:30:01 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

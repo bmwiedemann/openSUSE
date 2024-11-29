@@ -1,7 +1,7 @@
 #
 # spec file for package lxpanel
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,6 @@ BuildRequires:  libfm-gtk-devel
 BuildRequires:  libiw-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  wireless-tools
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
@@ -44,7 +43,6 @@ BuildRequires:  pkgconfig(libmenu-cache)
 BuildRequires:  pkgconfig(libwnck-1.0)
 Requires:       lxmenu-data
 Requires:       menu-cache
-Recommends:     %{name}-lang
 Provides:       %{name}-plugins >= %{version}
 Obsoletes:      %{name}-plugins < %{version}
 %lang_package
@@ -86,6 +84,7 @@ Headers and development files for lxpanel.
 %autosetup -p1
 
 %build
+export CFLAGS="%{optflags} -Wno-incompatible-pointer-types"
 # autoconf
 %configure --with-plugins=all
 %make_build

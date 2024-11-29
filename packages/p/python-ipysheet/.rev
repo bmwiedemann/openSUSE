@@ -100,4 +100,13 @@
   ipywidgets)</comment>
     <requestid>1155865</requestid>
   </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>bb2a9544b89cdb00359fd1344164b28b</srcmd5>
+    <version>0.7.0</version>
+    <time>1732830194</time>
+    <user>anag+factory</user>
+    <comment>- Skip python313: no pscript
+</comment>
+    <requestid>1227126</requestid>
+  </revision>
 </revisionlist>

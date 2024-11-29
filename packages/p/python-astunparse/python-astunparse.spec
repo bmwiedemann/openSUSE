@@ -1,7 +1,7 @@
 #
 # spec file for package python-astunparse
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?sle15_python_module_pythons}
+%global skip_python313 1
 Name:           python-astunparse
 Version:        1.6.3
 Release:        0

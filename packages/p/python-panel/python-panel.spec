@@ -25,10 +25,13 @@
 %bcond_with test
 %endif
 
+# too flaky server-side. Test it locally
+%bcond_with servertests
+
 # truncate trailing suffix
-%define distversion 1.5
+%define distversion 1.5.4
 Name:           python-panel%{psuffix}
-Version:        1.5.0
+Version:        1.5.4
 Release:        0
 Summary:        A high level app and dashboarding solution for Python
 License:        BSD-3-Clause
@@ -37,18 +40,18 @@ URL:            https://github.com/holoviz/panel
 Source0:        https://files.pythonhosted.org/packages/source/p/panel/panel-%{version}.tar.gz
 # package-lock.json file generated with procedure:
 # - delete old package-lock.json in panel subdirectory
-# - add '"typescript": "^4.2.0"' to package.json devDependencies
+# - add '"typescript": "^5.1.0"' to package.json devDependencies
 # - npm install --package-lock-only --legacy-peer-deps --ignore-scripts
 Source10:       package-lock.json
 # node_modules generated using "osc service mr" with https://github.com/openSUSE/obs-service-node_modules
 Source11:       node_modules.spec.inc
 Source99:       python-panel-rpmlintrc
 %include        %{_sourcedir}/node_modules.spec.inc
-# PATCH-FEATURE-OPENSUSE exclude-package-lock.patch boo#1231254 gh#openSUSE/obs-service-node_modules#41
-Patch0:         exclude-package-lock.patch
+# PATCH-FEATURE-OPENSUSE opensuse-js-fixes.patch boo#1231254 gh#openSUSE/obs-service-node_modules#41
+Patch0:         opensuse-js-fixes.patch
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module bleach}
-BuildRequires:  %{python_module bokeh >= 3.5.0 with %python-bokeh < 3.6}
+BuildRequires:  %{python_module bokeh >= 3.5.0 with %python-bokeh < 3.7}
 BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module packaging}
@@ -71,13 +74,13 @@ Requires:       python-pyviz_comms >= 2.0.0
 Requires:       python-requests
 Requires:       python-tqdm
 Requires:       python-typing_extensions
-Requires:       (python-bokeh >= 3.5.0 with python-bokeh < 3.6)
+Requires:       (python-bokeh >= 3.5.0 with python-bokeh < 3.7)
 Requires:       (python-param >= 2.1 with python-param < 3)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     jupyter-panel
 Recommends:     python-Pillow
-Recommends:     python-holoviews >= 1.16.0
+Recommends:     python-holoviews >= 1.18.0
 Recommends:     python-jupyterlab
 Recommends:     python-matplotlib
 Recommends:     python-plotly
@@ -89,6 +92,7 @@ BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module altair}
 BuildRequires:  %{python_module diskcache}
 BuildRequires:  %{python_module holoviews >= 1.16.0}
+BuildRequires:  %{python_module ipywidgets}
 BuildRequires:  %{python_module jupyterlab}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module plotly}
@@ -98,6 +102,7 @@ BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module streamz}
+BuildRequires:  esbuild
 BuildRequires:  unzip
 # Tests segfault
 # BuildRequires:  %%{python_module vtk}
@@ -129,6 +134,7 @@ to all Python flavors.
 %autosetup -p1 -n panel-%{version}
 # no color for pytest
 sed -i '/addopts/ s/--color=yes//' pyproject.toml
+sed -i /asyncio_default_fixture_loop_scope/d pyproject.toml
 rm panel/.eslintrc.js
 for p in panel/tests/io/reload_module.py
 do \
@@ -136,12 +142,11 @@ do \
 done
 # Resources are already bundled in sdist
 sed -i 's|bundle_resources()$|assert os.path.exists("panel/dist/bundled/font-awesome")|' hatch_build.py
-# npm registry for Source10 provided in Source11
 pushd panel
 rm package-lock.json
 local-npm-registry %{_sourcedir} install --include=dev --include=peer
 popd
-sed -i /asyncio_default_fixture_loop_scope/d pyproject.toml
+
 
 %if ! %{with test}
 %build
@@ -156,21 +161,21 @@ sed -i /asyncio_default_fixture_loop_scope/d pyproject.toml
 %if %{with test}
 %check
 export PYTEST_DEBUG_TEMPROOT=$(mktemp -d -p ./)
-# flaky async test
-donttest="test_server_async_callbacks"
-# flaky timeout
-donttest="$donttest or test_server_thread_pool_change_event or test_server_on_load_after_init"
-# upstream skips it for win and osx, we skip it because it (flakily) terminates everything on aarch64
-donttest="$donttest or (test_terminal and test_subprocess)"
-# file sample.pdf missing
-donttest="$donttest or test_pdf_local_file"
-# Don't test on 32-bit: asyncio is too flaky
-[ $(getconf LONG_BIT) -eq 32 ] && exit 0
+# test_compile tries to build and write next to the imported module: permission denied
+export PYTHONPATH=":x"
 # no network connection in obs
 deselectmark=(-m "not internet")
 # no multiflavor playwright
 ignorefiles=(--ignore scripts/panelite/test/test_utils.py --ignore scripts/panelite/test/test_panelite.py)
-%pytest -n auto -rsfE -k "not ($donttest)" "${deselectmark[@]}" "${ignorefiles[@]}"
+# upstream skips it for win and osx, we skip it because it (flakily) terminates everything on aarch64
+donttest="(test_terminal and test_subprocess)"
+# file sample.pdf missing
+donttest="$donttest or test_pdf_local_file"
+%if !%{with servertests}
+# flaky async tests
+donttest="$donttest or test_server"
+%endif
+%pytest -n auto -rsfE -k "not ($donttest)" "${deselectmark[@]}" "${ignorefiles[@]}" -p no:unraisableexception
 %endif
 
 %post

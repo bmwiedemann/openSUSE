@@ -22,7 +22,7 @@
 %define baseversionminus1 1.29
 
 Name:           kubernetes%{baseversion}
-Version:        1.30.6
+Version:        1.30.7
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
@@ -84,6 +84,7 @@ for management and discovery.
 
 
 # packages to build containerized control plane
+
 %package apiserver
 Summary:        Kubernetes apiserver for container image
 Group:          System/Management

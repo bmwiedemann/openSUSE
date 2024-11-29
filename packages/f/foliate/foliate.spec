@@ -18,7 +18,7 @@
 
 %define oname com.github.johnfactotum.Foliate
 Name:           foliate
-Version:        3.1.1
+Version:        3.2.0
 Release:        0
 Summary:        A GTK eBook reader
 License:        GPL-3.0-only

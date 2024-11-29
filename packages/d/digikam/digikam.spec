@@ -46,7 +46,6 @@ BuildRequires:  libtiff-devel
 BuildRequires:  opencv-devel
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF6CalendarCore) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6Contacts) >= %{kf6_version}
@@ -200,9 +199,6 @@ The main digikam libraries that are being shared between showfoto and digikam
 
 %install
 %kf6_install
-
-%suse_update_desktop_file -r org.kde.digikam Qt KDE Graphics Photography
-%suse_update_desktop_file -r org.kde.showfoto Qt KDE Graphics Photography
 
 %find_lang %{name} --without-kde
 

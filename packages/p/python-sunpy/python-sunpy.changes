@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Nov 28 11:25:14 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.0.3
+  * [6.0] backport all template changes by @nabobalis in #7805
+  * Backport PR #7810 on branch 6.0 (Fix map sources to always fall
+    back to default values for date and reference_date) by
+    @meeseeksmachine in #7811
+  * Backport PR #7814 on branch 6.0 (Fixed bug with tilted and
+    offset planar screen) by @meeseeksmachine in #7815
+  * Backport PR #7812 on branch 6.0 (Add Angstrom as default unit
+    for HMI wavelength) by @meeseeksmachine in #7821
+  * Backport PR #7674 on branch 6.0 (Handle norm for mapsequence)
+    by @meeseeksmachine in #7831
+- Drop sunpy-exclude-toplevel.patch fixed un templates upstream
+
+-------------------------------------------------------------------
 Thu Sep 26 08:27:24 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.0.2

@@ -48,7 +48,14 @@ nerdctl is a Docker-compatible CLI for containerd.
 
 %build
 CGO_ENABLED=0
-go build -mod=vendor -buildmode=pie -o _output/nerdctl %{provider_prefix}/v2/cmd/nerdctl
+
+go build \
+    -mod=vendor \
+    -buildmode=pie \
+    -ldflags "-X %{provider_prefix}/v2/pkg/version.Version=%{version} \
+              -X %{provider_prefix}/v2/pkg/version.Revision=unknown" \
+    -o _output/nerdctl \
+    %{provider_prefix}/v2/cmd/nerdctl
 
 %install
 mkdir -p %{buildroot}%{_bindir}/

@@ -26,14 +26,12 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pytest-asyncio%{psuffix}
-Version:        0.23.7
+Version:        0.24.0
 Release:        0
 Summary:        Pytest support for asyncio
 License:        Apache-2.0
 URL:            https://github.com/pytest-dev/pytest-asyncio
 Source:         https://github.com/pytest-dev/pytest-asyncio/archive/v%{version}.tar.gz#/pytest-asyncio-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/pytest-dev/pytest-asyncio/pull/838 Fix duplication of markers in async tests
-Patch:          duplicated-markers.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
@@ -41,14 +39,10 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       (python-pytest >= 7.0.0 with python-pytest < 9)
-%if 0%{?python_version_nodots} < 38
-Requires:       python-typing-extensions >= 3.7.2
-%endif
+Requires:       (python-pytest >= 8.2.0 with python-pytest < 9)
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module hypothesis >= 5.7.1}
-BuildRequires:  %{python_module pytest >= 7.0.0 with %python-pytest < 9}
 BuildRequires:  %{python_module pytest-asyncio = %{version}}
 %endif
 %python_subpackages

@@ -7,4 +7,16 @@
     <comment>This is required by the pgadmin4 update</comment>
     <requestid>1166144</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>191bcea3b42e205ff13c61e69e101f8c</srcmd5>
+    <version>0.3.4</version>
+    <time>1732830166</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.3.4:
+  * Support python 3.13
+  * fix: python &lt; 3.7 using pip install failed
+- Use pytest and license macros.
+- Remove patch remove-failing-test.py, no longer required.</comment>
+    <requestid>1227007</requestid>
+  </revision>
 </revisionlist>

@@ -346,4 +346,12 @@ factory)</comment>
   * Add support for 100Gbit interfaces</comment>
     <requestid>1146397</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>956b29887d507fe1ef3ee87ad9a409cd</srcmd5>
+    <version>B.02.20</version>
+    <time>1732830160</time>
+    <user>anag+factory</user>
+    <comment>- Update to version B.02.20 (jsc#9912):</comment>
+    <requestid>1226809</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Tue Feb 13 12:37:05 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
-- Update to version B.02.20:
+- Update to version B.02.20 (jsc#9912):
   * update changelog
   * update data files
   * get rid of GTK deprecation warning

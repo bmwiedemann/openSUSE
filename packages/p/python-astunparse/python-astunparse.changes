@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 21 10:08:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- skip for python 3.13
+
+-------------------------------------------------------------------
 Fri Oct 20 19:42:26 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
 
 - Clean up the SPEC file
@@ -16,7 +21,7 @@ Thu Apr 13 22:40:05 UTC 2023 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Fri Feb 17 10:59:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- need to turn off noarch to be able to skip tests on 32bit arches 
+- need to turn off noarch to be able to skip tests on 32bit arches
 
 -------------------------------------------------------------------
 Thu Feb 16 22:39:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -33,7 +38,7 @@ Fri Sep 10 05:23:39 UTC 2021 - pgajdos@suse.com
 Sun Apr 18 12:03:07 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add astunparse-pr57-py39.patch by Fedora maintainer for Python
-  3.9 support -- gh#simonpercivall/astunparse#57 
+  3.9 support -- gh#simonpercivall/astunparse#57
 
 -------------------------------------------------------------------
 Fri Jan 17 15:36:43 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>

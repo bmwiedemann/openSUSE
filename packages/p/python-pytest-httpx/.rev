@@ -132,4 +132,41 @@
   * Add support for `pytest`==8.\*</comment>
     <requestid>1143509</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>21eb7d08d564fd11fd02e9ae1639f193</srcmd5>
+    <version>0.34.0</version>
+    <time>1732830154</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.34.0:
+  * `is_optional` parameter is now available on responses and
+    callbacks registration. Allowing to add optional responses
+    while keeping other responses as mandatory. Refer to
+    documentation for more details.
+  * `is_reusable` parameter is now available on responses and
+    callbacks registration. Allowing to add multi-match responses
+    while keeping other responses as single-match. Refer to
+    documentation for more details.
+  * `httpx_mock.get_request` will now also propose to refine
+    filters if more than one request is found instead of only
+    proposing to switch to `httpx_mock.get_requests`.
+  * Explicit support for python `3.13`.
+  * `should_mock` option (callable returning a boolean) is now
+    available, defaulting to always returning `True`. Refer to
+    documentation for more details.
+  * Matching on the full multipart body can now be performed
+    using `match_files` and `match_data` parameters. Refer to
+    documentation for more details.
+  * Matching on extensions (including timeout) can now be
+    performed using `match_extensions` parameter. Refer to
+    documentation for more details.
+  * The following option is now available:
+  * `can_send_already_matched_responses` (boolean), defaulting to
+    `False`.
+  * Assertion failure message in case of unmatched responses is
+    now linking documentation on how to deactivate the check.
+  * Assertion failure message in case of unmatched requests is
+    now linking documentation on how to deactivate the check.
+  * `httpx.TimeoutException` message issued in case of unmatched</comment>
+    <requestid>1226222</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 27 20:33:48 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 31.7.6
+  * no user-visible changes
+- Leap: build with gcc 14
+- Drop Fedora 39 support
+
+-------------------------------------------------------------------
 Tue Nov 26 14:11:01 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - Fix ffmpeg refusing to play opus audio files (disable-FFmpegAllowLists.patch)

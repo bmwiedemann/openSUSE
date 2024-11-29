@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Nov 12 20:31:17 UTC 2024 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to 1.26.3:
+  * Fixed: Support an old import path that is still used by some
+    consumers like Hatch
+- additional changes from version 1.26.2:
+  * Fixed:
+    + Back-populate string license fields (License-Expression) for
+      core metadata versions prior to 2.4
+    + Remove the License-Expression and License-Files core metadata
+      from version 2.2 that was missed in the previous minor
+      release
+
+-------------------------------------------------------------------
+Sun Nov 10 16:24:38 UTC 2024 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.26.1:
+  * Fixed:
+    + Add backward compatibility for the old license-files metadata
+      field
+    + Support an old import path that is still used by some
+      consumers like Hatch
+- additional changes from version 1.26.0:
+  * Added:
+    + Support version 2.4 of core metadata for the wheel and sdist
+      targets
+    + Add HATCH_METADATA_CLASSIFIERS_NO_VERIFY environment variable
+      to disable trove classifier verification
+    + Add .pixi to the list of directories that cannot be traversed
+    + Bump the minimum supported version of packaging to 24.2
+  * Fixed:
+    + No longer write package metadata for license expressions and
+      files for versions of core metadata prior to 2.4
+    + Properly enable Zip64 support for the wheel target
+    + Properly ignore parent .gitingore files when the project root
+      matches one of the patterns
+- increase minimum version of python-packaging to 24.2
+
+-------------------------------------------------------------------
 Sat Jun 22 18:36:39 UTC 2024 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 1.25.0:

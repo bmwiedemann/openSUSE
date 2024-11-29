@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 28 04:53:42 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.3.4:
+  * Support python 3.13
+  * fix: python < 3.7 using pip install failed
+- Use pytest and license macros.
+- Remove patch remove-failing-test.py, no longer required.
+
+-------------------------------------------------------------------
 Mon Apr  8 08:43:00 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Initial release of python-jsonformatter 0.3.2

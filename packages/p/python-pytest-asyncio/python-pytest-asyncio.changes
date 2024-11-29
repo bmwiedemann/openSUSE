@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct  8 15:42:52 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.24.0
+  * BREAKING: Updated minimum supported pytest version to v8.2.0
+  * Adds an optional loop_scope keyword argument to pytest.mark.asyncio.
+  * Deprecates the optional scope keyword argument to pytest.mark.asyncio 
+    for API consistency with pytest_asyncio.fixture.
+  * Fixes a bug that caused module-scoped async fixtures to fail when 
+    reused in other modules
+  * Fixes a bug that caused duplicate markers in async tests
+  * Declare support for Python 3.13
+- Drop merged duplicated-markers.patch
+
+-------------------------------------------------------------------
 Tue Jul  9 13:43:10 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Add duplicated-markers.patch to fix some testsuites broken by

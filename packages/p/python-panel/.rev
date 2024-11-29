@@ -285,4 +285,108 @@
     <comment></comment>
     <requestid>1205542</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>a2fe170b5386bceb558e02f83958be12</srcmd5>
+    <version>1.5.4</version>
+    <time>1732830190</time>
+    <user>anag+factory</user>
+    <comment>- Disable server async tests. It's just too flaky on obs
+- Update to 1.5.4
+  * This release primarily focuses on improving the ESM components
+    including fixes for serialization of parameter values,
+    improvements for compiling bundles, and building custom
+    layouts. Additionally this release includes the new
+    DatetimeSlider, adds a copy button to codeblocks in Markdown
+    panes, improves responsive sizing for Plotly and starts adding
+    better support for Polars.
+  ## Enhancements
+  * Add DatetimeSlider widget (#7374)
+  * Improve Jupyter preview error handling (#7434)
+  * Add copy button to Markdown codeblocks (#7451)
+  * Various improvements for writing ESM components (#7462)
+  * Log authorization callback errors (#7463)
+  * Support polars in pn.cache (#7472)
+  * Improve and document hold utility (#7474)
+  * Improve how panel compile collects bundles (#7477)
+  ## Bug fixes
+  * Fix issues detecting changed property values during
+    serialization (#7432)
+  * Ensure ESM compilation correctly detects file extension (#7446)
+  * Ensure parameter overrides are applied to ESM components
+    (#7452)
+  * Ensure component Children parameter correctly resolves when
+    multiple types are defined (#7454)
+  * Fix issues using Jupyter Preview with notifications enabled
+    (#7466)
+  * Ensure HTML/Markdown streaming does not freeze during rapid
+    updates (#7480)
+  * Ensure Plotly sizes correctly on initial render (#7483)
+- Version 1.5.3
+  * This release fixes a number of smaller regressions related to
+    Tabulator row_content, ensures --dev/--autoreload picks up on
+    external modules correctly and resolves OAuth guest endpoints
+    correctly. Additionally it introduces some enhancements and bug
+    fixes for custom components, such as adding support for loading
+    custom components ESM Javascript bundles from the inbuilt
+    endpoint ensuring that the bundle can be cached by the browser. 
+  ## Enhancements
+  * Sync dark mode on browser_info object (#7382)
+  * Allow loading custom component ESM bundles from URL (#7410,
+    #7412)
+  ## Bug fixes
+  * Address issues with Tabulator embed_content and optimize row
+    expansion (#7364)
+  * Prevent pipeline network plot from linking with other plots
+    (#7372)
+  * Various fixes for custom component compilation (#7381)
+  * Fix OAuth guest endpoint (#7385)
+  * Fix ReactiveESM._importmap typing (#7392)
+  * Ensure that autoreload records modules to watch before startup
+    (#7399)
+  * Prevent Tabulator from overlapping when max_height is set
+    (#7403)
+  * Do not mutate layout Children inplace (#7417)
+  * Set Tabulator null formatter to empty string (#7421)
+  * Ensure Tabulator table content does not overflow (#7425)
+  ## Compatibility
+  * Upgraded Tabulator version to 6.3 (#7419)
+- Version 1.5.2
+  * This release is a small patch release primarily addressing a
+    regression handling selections on multi-indexed data on the
+    Tabulator widget along with a number of documentation
+    improvements.
+  ## Bug fixes
+  * Fix regression handling selection on multi-indexed Tabulator
+    data (#7336)
+  * Fix Fast template theme toggle color (#7341)
+- Version 1.5.1
+  * This release primarily focuses on a number of tweaks and
+    enhancements for the documentation and also resolves a number
+    of bugs related to Tabulator rendering and the new FastAPI
+    integration.
+  ## Enhancements
+  * Add mapboxgl CSS to Plotly (#7320)
+  * Tweak margins of icons in ChatMessage (#7310)
+  ## Bug fixes
+  * Fix langchain import in panel.chat.langchain (#7297)
+  * Ensure Tabulator is consistently redrawn after render and
+    resize (#7305)
+  * Filter out empty plotly_selected events (#7312)
+  * Improve parameter validation on Timepicker (#7308)
+  * Ensure Tabulator.selection consistency when pagination='local'
+    (#7304)
+  * Correctly handle ipv6 localhost URI in Location (#7316)
+  * Ensure resource URLs are handled correctly in all server
+    implementations (#7318)
+  * Ensure Plotly datetime are correctly converted from timestamp
+    to date string (#7319)
+  ## Regressions
+  * Only postpone --setup script until after server startup if
+    --num-procs is greater than 1 (#7289)
+  ## Compatibility
+  * Support for Bokeh 3.6.x releases (#7322)
+- Replace exclude-package-lock.patch with opensuse-js-fixes.patch
+</comment>
+    <requestid>1227121</requestid>
+  </revision>
 </revisionlist>

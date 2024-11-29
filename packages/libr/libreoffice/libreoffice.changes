@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 14 13:17:22 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 24.8.3.2 (24.8.3 final)
+  * Release notes:
+    https://wiki.documentfoundation.org/Releases/24.8.3/RC1
+    https://wiki.documentfoundation.org/Releases/24.8.3/RC2
+- Update bundled dependencies:
+  * curl 8.10.1 -> 8.11.0
+- New translation: Tagalog
+
+-------------------------------------------------------------------
 Fri Sep 27 22:34:11 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 24.8.2.1 (24.8.2 final)

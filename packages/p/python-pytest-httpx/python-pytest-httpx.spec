@@ -18,23 +18,25 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-httpx
-Version:        0.29.0
+Version:        0.34.0
 Release:        0
 Summary:        Send responses to httpx
 License:        MIT
 URL:            https://colin-b.github.io/pytest_httpx/
 Source:         https://github.com/Colin-b/pytest_httpx/archive/refs/tags/v%{version}.tar.gz#/pytest_httpx-%{version}-gh.tar.gz
 BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module httpx >= 0.26.0}
-BuildRequires:  %{python_module pytest >= 7.0}
-BuildRequires:  %{python_module pytest-asyncio >= 0.20.0}
+BuildRequires:  %{python_module httpx >= 0.27.0 with %python-httpx < 0.28}
+BuildRequires:  %{python_module pytest >= 8.0}
+BuildRequires:  %{python_module pytest-asyncio >= 0.24.0}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-httpx >= 0.26.0
-Requires:       python-pytest >= 7.0
+Requires:       python-pytest >= 8.0
+Requires:       (python-httpx >= 0.27.0 with python-httpx < 0.28)
 BuildArch:      noarch
 %python_subpackages
 
@@ -43,14 +45,12 @@ Send responses to httpx.
 
 %prep
 %setup -q -n pytest_httpx-%{version}
-# unpin exact version
-sed -i '/install_requires/ s/httpx==0.24.\*/httpx/' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -58,6 +58,6 @@ sed -i '/install_requires/ s/httpx==0.24.\*/httpx/' setup.py
 
 %files %{python_files}
 %{python_sitelib}/pytest_httpx
-%{python_sitelib}/pytest_httpx-%{version}*-info
+%{python_sitelib}/pytest_httpx-%{version}.dist-info
 
 %changelog

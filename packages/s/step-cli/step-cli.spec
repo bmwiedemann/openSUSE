@@ -22,22 +22,22 @@
 %define pkg_name cli
 %define pkg_version %{version}
 Name:           step-cli
-Version:        0.28.1
+Version:        0.28.2
 Release:        0
 Summary:        Zero trust swiss army knife for working with X509, OAuth, JWT, OATH OTP, etc
 License:        Apache-2.0
 URL:            https://smallstep.com/cli
 # https://github.com/smallstep/cli/releases
-Source:         %{pkg_name}-%{pkg_version}.tar.gz
+Source:         https://github.com/smallstep/cli/archive/refs/tags/v%{pkg_version}.tar.gz#/%{pkg_name}-%{pkg_version}.tar.gz
 Source1:        vendor.tar.xz
 Source2:        series
 Patch0:         more-units.patch
 Patch1:         add-missing-targets.patch
 BuildRequires:  fish
-BuildRequires:  golang(API) >= 1.19
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig
 BuildRequires:  zsh
+BuildRequires:  golang(API) >= 1.19
 BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(systemd)
 Conflicts:      step

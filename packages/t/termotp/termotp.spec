@@ -17,7 +17,7 @@
 
 
 Name:           termotp
-Version:        0.0.10
+Version:        0.0.11
 Release:        0
 Summary:        A TOTP code generator for your terminal
 License:        Apache-2.0

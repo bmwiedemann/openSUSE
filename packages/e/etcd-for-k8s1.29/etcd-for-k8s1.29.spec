@@ -19,7 +19,7 @@
 %define project go.etcd.io/etcd
 
 Name:           etcd-for-k8s1.29
-Version:        3.5.15
+Version:        3.5.16
 Release:        0
 Summary:        Etcd and etcdtl for k8s image
 License:        Apache-2.0
@@ -29,7 +29,7 @@ Source:         etcd-%{version}.tar.gz
 Source1:        vendor-etcdctl.tar.gz
 Source2:        vendor-server.tar.gz
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.21
+BuildRequires:  golang(API) >= 1.22
 ExcludeArch:    %ix86
 ExcludeArch:    s390
 Conflicts:      etcd

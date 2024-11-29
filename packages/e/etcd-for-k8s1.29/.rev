@@ -26,4 +26,13 @@ https://github.com/kubernetes/kubernetes/blob/v1.29.1/build/dependencies.yaml#L6
 wrt kubernetes 1.29.9- https://github.com/kubernetes/kubernetes/blob/v1.29.9/build/dependencies.yaml#L67</comment>
     <requestid>1207834</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>eee39b1c419a769791fa137fd64e534e</srcmd5>
+    <version>3.5.16</version>
+    <time>1732830181</time>
+    <user>anag+factory</user>
+    <comment>etcd update - version 3.5.16
+wrt kubernetes 1.29.11 — https://github.com/kubernetes/kubernetes/blob/v1.29.11/build/dependencies.yaml#L85</comment>
+    <requestid>1227090</requestid>
+  </revision>
 </revisionlist>

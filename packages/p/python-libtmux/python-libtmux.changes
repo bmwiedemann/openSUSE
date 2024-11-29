@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Nov 27 11:31:36 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.39.0:
+  * Drop Python 3.8 by @tony in #548
+    Python 3.8 reached end-of-life on October 7th, 2024 (see
+    devguide.python.org, Status of Python Versions, Unsupported
+    versions
+    See also:
+    https://devguide.python.org/versions/#unsupported-versions
+
+-------------------------------------------------------------------
+Wed Nov 27 11:22:20 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.38.1:
+  * Minimum Python back to 3.8 for now.
+
+-------------------------------------------------------------------
+Wed Nov 27 11:11:58 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.38.0:
+  * Development
+    - Project and package management: poetry to uv (#547)
+      uv is the new package and project manager for the project,
+      replacing Poetry.
+    - Code quality: Use f-strings in more places (#540)
+      via ruff 0.4.2.
+  * Documentation
+    - [docs] Sphinx v8 compatibility: configure a non-empty
+      inventory name for Python Intersphinx mapping. by @jayaddison
+      in #542
+    - Fix docstrings in query_list for MultipleObjectsReturned and
+      ObjectDoesNotExist.
+  * Other
+    - Bump dev dependencies, including ruff 0.4.2, f-string tweaks
+      by @tony in #540
+
+-------------------------------------------------------------------
 Tue Apr 23 08:02:41 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.37.0:

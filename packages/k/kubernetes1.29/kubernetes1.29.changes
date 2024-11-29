@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 28 08:44:44 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.29.11:
+  * Build etcd image v3.5.16
+  * Update etcd from v3.5.15 to v3.5.16
+  * server/config: assing system:apiserver user to system:authenticated group
+  * bugfix(scheduler): preemption picks wrong victim node with higher priority pod on it.
+  * tests for nodes with different nodeName and name
+  * manually revert #109877
+
+-------------------------------------------------------------------
 Mon Nov  4 06:06:06 UTC 2024 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.29.10:

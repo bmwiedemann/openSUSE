@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Nov 28 04:23:50 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 3.2.0:
+  * Revamped translation tool, which now remembers the last target 
+    language, and allows filtering languages
+  * Improved PDF support: the rendering is faster and no longer 
+    blurry
+  * Improved rendering of fixed layout EPUBs (see comments in #1318)
+  * Improved focus handling: the focus is no longer lost when 
+    navigating to new sections, and tabbing no longer breaks layout
+  * Improved text selection across pages, allowing selecting 
+    to the previous page
+  * It now only shows more than one column when the viewport is in 
+    landscape (or, for vertical writing, in portrait)
+  * Changed shortcut for the table of contents from Ctrl+Alt+T 
+    to Ctrl+T.
+  * Added Space/Shift+Space shortcuts for turning pages.
+  * Added option to open books with external application from 
+    the library view.
+  * Fixed formatting of copied text.
+  * Fixed extra border in CBZ files.
+  * Fixed handling of bare search template URL in OPDS feeds.
+
+-------------------------------------------------------------------
 Thu Apr  4 03:01:09 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 3.1.1:

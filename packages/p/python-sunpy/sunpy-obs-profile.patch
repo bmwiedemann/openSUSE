@@ -1,7 +1,7 @@
-Index: sunpy-5.0.0/sunpy/conftest.py
+Index: sunpy-6.0.3/sunpy/conftest.py
 ===================================================================
---- sunpy-5.0.0.orig/sunpy/conftest.py
-+++ sunpy-5.0.0/sunpy/conftest.py
+--- sunpy-6.0.3.orig/sunpy/conftest.py
++++ sunpy-6.0.3/sunpy/conftest.py
 @@ -4,6 +4,7 @@ import pathlib
  import tempfile
  import importlib
@@ -10,7 +10,7 @@ Index: sunpy-5.0.0/sunpy/conftest.py
  import pytest
  
  import astropy
-@@ -34,6 +35,14 @@ collect_ignore = ["data/sample.py"]
+@@ -33,6 +34,14 @@ collect_ignore = ["data/sample.py"]
  console_logger = logging.getLogger()
  console_logger.setLevel('INFO')
  

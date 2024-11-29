@@ -1,15 +1,10 @@
 ---
  setuptools/command/easy_install.py |    2 +-
- setuptools/command/egg_info.py     |    2 +-
- setuptools/dist.py                 |    2 +-
- setuptools/tests/test_egg_info.py  |    2 +-
  setuptools/tests/test_wheel.py     |    8 ++++----
- 5 files changed, 8 insertions(+), 8 deletions(-)
+ 2 files changed, 5 insertions(+), 5 deletions(-)
 
-Index: setuptools-70.0.0/setuptools/command/easy_install.py
-===================================================================
---- setuptools-70.0.0.orig/setuptools/command/easy_install.py
-+++ setuptools-70.0.0/setuptools/command/easy_install.py
+--- a/setuptools/command/easy_install.py
++++ b/setuptools/command/easy_install.py
 @@ -436,7 +436,7 @@ class easy_install(Command):
              for spec in self.args:
                  self.easy_install(spec, not self.no_deps)
@@ -19,11 +14,9 @@ Index: setuptools-70.0.0/setuptools/command/easy_install.py
                  if self.root:  # strip any package prefix
                      root_len = len(self.root)
                      for counter in range(len(outputs)):
-Index: setuptools-70.0.0/setuptools/tests/test_wheel.py
-===================================================================
---- setuptools-70.0.0.orig/setuptools/tests/test_wheel.py
-+++ setuptools-70.0.0/setuptools/tests/test_wheel.py
-@@ -411,30 +411,30 @@ WHEEL_INSTALL_TESTS = (
+--- a/setuptools/tests/test_wheel.py
++++ b/setuptools/tests/test_wheel.py
+@@ -417,30 +417,30 @@ WHEEL_INSTALL_TESTS: tuple[dict[str, Any
      dict(
          id='requires_ensure_order',
          install_requires="""

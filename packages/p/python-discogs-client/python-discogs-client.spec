@@ -1,7 +1,7 @@
 #
 # spec file for package python-discogs-client
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2015 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,25 +17,24 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-discogs-client
-Version:        2.3.0
+Version:        2.7.1
 Release:        0
-Summary:        Official Python API client for Discogs
+Summary:        Python API client for Discogs
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
-URL:            https://github.com/discogs/discogs_client
-Source:         https://files.pythonhosted.org/packages/source/d/discogs-client/discogs-client-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/discogs/discogs_client/master/LICENSE
+URL:            https://github.com/joalla/discogs_client/
+Source:         https://github.com/joalla/discogs_client/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:  %{python_module oauthlib}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-oauthlib
+Requires:       python-python-dateutil
 Requires:       python-requests
-Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 
@@ -47,14 +46,13 @@ which allows you to change user data such as profile information, collections
 and wantlists, inventory, and orders.
 
 %prep
-%setup -q -n discogs-client-%{version}
-cp %{SOURCE1} .
+%autosetup -p1 -n discogs_client-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -62,7 +60,8 @@ cp %{SOURCE1} .
 
 %files %{python_files}
 %license LICENSE
-%{python_sitelib}/discogs_client/
-%{python_sitelib}/discogs_client-%{version}-py*.egg-info
+%doc README.mkd
+%{python_sitelib}/discogs_client
+%{python_sitelib}/python3_discogs_client-%{version}.dist-info
 
 %changelog

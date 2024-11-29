@@ -144,4 +144,15 @@
 </comment>
     <requestid>1175330</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>6765098756a5f9d4c3bddeb8c059bdd0</srcmd5>
+    <version>1.4.6</version>
+    <time>1732830164</time>
+    <user>anag+factory</user>
+    <comment>- Switch to pyproject macros.
+- Add patch support-python-313.patch:
+  * With Python 3.13, the listening asyncio Unix socket is removed
+    on close</comment>
+    <requestid>1226979</requestid>
+  </revision>
 </revisionlist>

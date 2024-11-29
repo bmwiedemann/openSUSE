@@ -40,4 +40,19 @@
     <comment></comment>
     <requestid>1006496</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>17b207a752d3ac8466fd48e97df76357</srcmd5>
+    <version>2.7.1</version>
+    <time>1732830165</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.7.1:
+  * Small fixes for Python 3.12 references
+  * Parse artist role field
+- Drop seperate LICENSE file
+
+- switch to active fork
+- version update to 2.6
+- python-six is not required</comment>
+    <requestid>1226998</requestid>
+  </revision>
 </revisionlist>

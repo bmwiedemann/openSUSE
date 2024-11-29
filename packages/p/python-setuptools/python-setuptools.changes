@@ -1,4 +1,158 @@
 -------------------------------------------------------------------
+Thu Nov 21 12:01:23 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Skip over the tests which require network.
+- Don't use pytest-xdist, it breaks test suite.
+
+-------------------------------------------------------------------
+Thu Nov 21 11:35:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 75.6.0:
+  * Preserve original PKG-INFO into METADATA when creating wheel
+    (instead of calling wheel.metadata.pkginfo_to_metadata). This
+    helps to be more compliant with the flow specified in PEP
+    517.
+  * Changed the WindowsSdkVersion, FrameworkVersion32 and
+    FrameworkVersion64 properties of setuptools.msvc.PlatformInfo
+    to return an empty tuple instead of None as a fallthrough
+    case --  by :user:`Avasam`
+
+-------------------------------------------------------------------
+Wed Nov 20 17:30:46 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 75.5.0:
+  * Removed support for
+    SETUPTOOLS_DANGEROUSLY_SKIP_PYPROJECT_VALIDATION, as it is
+    deemed prone to errors.
+  * Added support for the environment variable
+    SETUPTOOLS_DANGEROUSLY_SKIP_PYPROJECT_VALIDATION=true,
+    allowing users to bypass the validation of pyproject.toml.
+    This option should be used only as a last resort when
+    resolving dependency issues, as it may lead to improper
+    functioning. Users who enable this setting are responsible
+    for ensuring that pyproject.toml complies with setuptools
+    requirements. (#4611)  Attention! This environment variable
+    was removed in a later version of setuptools.
+  * Require Python 3.9 or later. (#4718)
+  * Remove dependency on importlib_resources and the vendored
+    copy of the library. Instead, setuptools consistently rely on
+    stdlib's importlib.resources (available on Python 3.9+).
+    (#4718)
+  * Setuptools' bdist_wheel implementation no longer produces
+    wheels with the m SOABI flag (pymalloc-related). This flag
+    was removed on Python 3.8+ (see :obj:`sys.abiflags`). (#4718)
+  * Updated vendored packaging version to 24.2. (#4740)
+  * Merge with pypa/distutils@251797602, including fix for
+    dirutil.mkpath handling in pypa/distutils#304.
+  * Allowed using dict as an ordered type in
+    setuptools.dist.check_requirements -- by :user:`Avasam`
+  * Ensured methods in setuptools.modified preferably raise a
+    consistent distutils.errors.DistutilsError type (except in
+    the deprecated use case of SETUPTOOLS_USE_DISTUTILS=stdlib)
+    -- by :user:`Avasam`
+  * Fix the ABI tag when building a wheel using the debug build
+    of Python 3.13 on Windows. Previously, the ABI tag was
+    missing the "d" flag.
+  * Fix clashes for optional-dependencies in pyproject.toml and
+    extra_requires in setup.cfg/setup.py. As per PEP 621,
+    optional-dependencies have to be honoured and dynamic
+    behaviour is not allowed.
+  * #4560
+  * Made errors when parsing Distribution data more explicit
+    about the expected type (tuple[str, ...] | list[str]) -- by
+    :user:`Avasam`
+  * Fix a TypeError when a Distribution's old included attribute
+    was a tuple -- by :user:`Avasam`
+  * Add workaround for bdist_wheel --dist-info-dir errors when
+    customisation does not inherit from setuptools.
+  * Re-use pre-existing .dist-info dir when creating wheels via
+    the build backend APIs (PEP 517) and the metadata_directory
+    argument is passed -- by :user:`pelson`.
+  * Changed egg_info command to avoid adding an empty .egg-info
+    directory while iterating over entry-points. This avoids
+    triggering integration problems with
+    importlib.metadata/importlib_metadata (reference:
+    pypa/pyproject-hooks#206).
+  * Deprecated bdist_wheel.universal configuration.
+  * Removed reference to upload_docs module in entry points.
+  * Declare also the dependencies used by distutils (adds
+    jaraco.collections).
+  * Removed upload_docs command.
+  * Merge with pypa/distutils@7283751. Removed the register and
+    upload commands and the config module that backs them
+    (pypa/distutils#294). Removed the borland compiler. Replaced
+    vendored dependencies with natural dependencies. Cygwin C
+    compiler now gets compilers from sysconfig
+    (pypa/distutils#296).
+  * Fix cross-platform compilation using
+    distutils._msvccompiler.MSVCCompiler -- by :user:`saschanaz`
+    and :user:`Avasam`
+  * Fixed TypeError in sdist filelist processing by adding
+    support for pathlib Paths for the build_base.
+  * Removed degraded and deprecated test_integration
+    (easy_install) from the test suite.
+  * Fixed TypeError in msvc.EnvironmentInfo.return_env when no
+    runtime redistributables are installed.
+  * Added support for defining ext-modules via pyproject.toml
+    (EXPERIMENTAL, may change in future releases).
+  * Merge with pypa/distutils@3dcdf8567, removing the duplicate
+    vendored copy of packaging.
+  * Restored setuptools.msvc.Environmentinfo as it is used
+    externally.
+  * Changed the type of error raised by
+    setuptools.command.easy_install.CommandSpec.from_param on
+    unsupported argument from AttributeError to TypeError -- by
+    :user:`Avasam`
+  * Added detection of ARM64 variant of MSVC -- by
+    :user:`saschanaz`
+  * Made setuptools.package_index.Credential a typing.NamedTuple
+    -- by :user:`Avasam`
+  * Reraise error from setuptools.command.easy_install.auto_chmod
+    instead of nonsensical TypeError: 'Exception' object is not
+    subscriptable -- by :user:`Avasam`
+  * Fully typed all collection attributes in pkg_resources -- by
+    :user:`Avasam`
+  * Automatically exclude .tox|.nox|.venv directories from sdist.
+  * Removed the monkeypatching of distutils._msvccompiler. Now
+    all compiler logic is consolidated in distutils.
+  * Synced with pypa/distutils@58fe058e4, including consolidating
+    Visual Studio 2017 support (#4600, pypa/distutils#289),
+    removal of deprecated legacy MSVC compiler modules
+    (pypa/distutils#287), suppressing of errors when the home
+    directory is missing (pypa/distutils#278), removal of wininst
+    binaries (pypa/distutils#282).
+  * #4592
+  * Remove abc.ABCMeta metaclass from abstract classes.
+    pypa/setuptools#4503 had an unintended consequence of causing
+    potential TypeError: metaclass conflict: the metaclass of a
+    derived class must be a (non-strict) subclass of the
+    metaclasses of all its bases -- by :user:`Avasam`
+  * Mark abstract base classes and methods with abc.ABC and
+    abc.abstractmethod -- by :user:`Avasam`
+  * Changed the order of type checks in
+    setuptools.command.easy_install.CommandSpec.from_param to
+    support any collections.abc.Iterable of str param -- by
+    :user:`Avasam`
+  * Prevent an error in bdist_wheel if compression is set to a
+    str (even if valid) after finalizing options but before
+    running the command. -- by :user:`Avasam`
+  * Raises an exception when py_limited_api is used in a build
+    with Py_GIL_DISABLED. This is currently not supported
+    (python/cpython#111506).
+  * Synced with pypa/distutils@30b7331 including fix for modified
+    check on empty sources (pypa/distutils#284).
+  * setuptools is replacing the usages of :pypi:`ordered_set`
+    with simple instances of dict[Hashable, None]. This is done
+    to remove the extra dependency and it is possible because
+    since Python 3.7, dict maintain insertion order.
+  * #4534, #4546, #4554, #4559, #4565
+  * Merged with pypa/distutils@b7ee725f3 including: Support for
+    Pathlike objects in data files and extensions
+    (pypa/distutils#272, pypa/distutils#237), native support for
+    C++ compilers (pypa/distuils#228) and removed unused
+    get_msvcr() (pypa/distutils#274).
+
+-------------------------------------------------------------------
 Fri Sep 13 04:01:00 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove BuildRequires on wheel, it has been adopted since 71.1.

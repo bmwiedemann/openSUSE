@@ -39,4 +39,13 @@
   * 20a51e8 Use goreleaser to create releases.</comment>
     <requestid>1204660</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>313b76d83f088d5fbc0af5078f046bf8</srcmd5>
+    <version>0.0.11</version>
+    <time>1732830175</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.0.11:
+  * 45175e7 Remove upx compression (causes issues with MacOS).</comment>
+    <requestid>1227044</requestid>
+  </revision>
 </revisionlist>

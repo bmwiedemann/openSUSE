@@ -18,19 +18,19 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jsonformatter
-Version:        0.3.2
+Version:        0.3.4
 Release:        0
 Summary:        Python log in json format
 License:        BSD-2-Clause
 URL:            https://github.com/MyColorfulDays/jsonformatter.git
 Source:         https://files.pythonhosted.org/packages/source/j/jsonformatter/jsonformatter-%{version}.tar.gz
-Patch0:         remove-failing-test.py
-BuildRequires:  dos2unix
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  dos2unix
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
 
@@ -40,8 +40,8 @@ A formatter for python logging that outputs json log
 %prep
 %autosetup -p1 -n jsonformatter-%{version}
 find . -type f -exec chmod -x {} \;
-dos2unix jsonformatter/__init__.py
-sed -i '1{\,^#!%{_bindir}/env python,d}' jsonformatter/*.py
+dos2unix README.md
+sed -i '1{\,^#!%{_bindir}/env python,d}' src/jsonformatter/*.py
 
 %build
 %pyproject_wheel
@@ -51,13 +51,11 @@ sed -i '1{\,^#!%{_bindir}/env python,d}' jsonformatter/*.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%{python_expand  #
-export PYTHONPATH=%{buildroot}%{$python_sitelib}
-$python test/test.py
-}
+%pytest -k 'not test_file_config' tests
 
 %files %{python_files}
 %doc README.md
+%license LICENSE
 %{python_sitelib}/jsonformatter
 %{python_sitelib}/jsonformatter-%{version}.dist-info
 

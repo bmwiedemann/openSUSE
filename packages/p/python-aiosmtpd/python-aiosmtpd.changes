@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 27 23:07:53 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- Add patch support-python-313.patch:
+  * With Python 3.13, the listening asyncio Unix socket is removed
+    on close
+
+-------------------------------------------------------------------
 Mon May 20 11:20:49 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 1.4.6 (bsc#1224467, CVE-2024-34083):

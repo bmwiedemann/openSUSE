@@ -17,7 +17,8 @@
 
 
 %define distversion 0.7
-%define skip_python39 1
+# no pscript
+%define skip_python313 1
 Name:           python-ipysheet
 Version:        0.7.0
 Release:        0

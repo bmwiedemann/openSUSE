@@ -27,12 +27,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-asdf-astropy%{psuffix}
-Version:        0.6.1
+Version:        0.7.0
 Release:        0
 Summary:        ASDF serialization support for astropy
 License:        BSD-3-Clause
 URL:            https://github.com/astropy/asdf-astropy
-Source:         https://files.pythonhosted.org/packages/source/a/asdf-astropy/asdf-astropy-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/a/asdf-astropy/asdf_astropy-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module packaging >= 19}
 BuildRequires:  %{python_module pip}
@@ -41,12 +41,12 @@ BuildRequires:  %{python_module setuptools_scm >= 3.4}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-asdf >= 2.13
+Requires:       python-asdf >= 2.14.4
 Requires:       python-asdf-coordinates-schemas >= 0.3
 Requires:       python-asdf-standard >= 1.1.0
 Requires:       python-asdf-transform-schemas >= 0.5
-Requires:       python-astropy >= 5.0.4
-Requires:       python-numpy >= 1.20
+Requires:       python-astropy >= 5.2
+Requires:       python-numpy >= 1.24
 Requires:       python-packaging >= 19
 %if %{with test}
 BuildRequires:  %{python_module asdf-astropy = %{version}}
@@ -62,7 +62,7 @@ BuildArch:      noarch
 ASDF serialization support for astropy
 
 %prep
-%autosetup -p1 -n asdf-astropy-%{version}
+%autosetup -p1 -n asdf_astropy-%{version}
 sed -i 's/--color=yes//' pyproject.toml
 for c in asdf_astropy/conftest.py; do
   [ -f $c ] || exit 1 # does not exist anymore

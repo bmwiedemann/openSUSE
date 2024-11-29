@@ -23,7 +23,8 @@ Summary:        Really Slick Screensavers Port to GLX
 License:        GPL-2.0-only AND GPL-3.0-only
 Group:          Amusements/Toys/Screensavers
 URL:            http://rss-glx.sourceforge.net/
-Source:         http://prdownloads.sourceforge.net/rss-glx/rss-glx_%{version}.tar.bz2
+Source0:         http://prdownloads.sourceforge.net/rss-glx/rss-glx_%{version}.tar.bz2
+Source1:         README.SUSE
 # PATCH-FIX-OPENSUSE
 Patch0:         rss-glx-optflags.patch
 # patch should go upstream, but there is TODO: source files include
@@ -50,7 +51,9 @@ BuildRequires:  pkgconfig(freealut)
 BuildRequires:  pkgconfig(glu)
 
 %description
-Cool collection of 3D screensavers. Linux port of Really Slick Screensavers
+Cool collection of 3D screensavers. Linux port of Really Slick Screensavers -
+Web's most visually exciting collection of original, open-source screensavers.
+
 
 %prep
 %setup -q -n %{name}_%{version}
@@ -64,7 +67,8 @@ autoreconf -fiv
   --enable-shared \
   --with-pic \
   --with-configdir=%{_sysconfdir}/xscreensaver \
-  --program-prefix="%{name}-"
+  --program-prefix=""
+cp %{SOURCE1} .
 
 %make_build
 
@@ -74,26 +78,24 @@ find %{buildroot} -type f -name "*.la" -delete -print
 #no -devel files here..
 rm -rvf %{buildroot}%{_libdir}/*.so
 
-# RPM don't need rss-glx_install.pl to be installed
-rm -rf %{buildroot}%{_bindir}/%{name}-%{name}_install.pl
-
 # FIX boo#901450
-mkdir -pv %{buildroot}%{_libdir}/xscreensaver
+mkdir -pv %{buildroot}%{_libexecdir}/xscreensaver
 pushd %{buildroot}%{_bindir}
 for i in `ls` ; do
-  ln -sf %{_bindir}/${i} %{buildroot}%{_libdir}/xscreensaver
+  mv -vf %{buildroot}%{_bindir}/${i} %{buildroot}%{_libexecdir}/xscreensaver
 done
 popd
+rm -rvf %{buildroot}%{_bindir}
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
 %files
 %config %{_sysconfdir}/xscreensaver/*
-%{_bindir}/*
 %{_libdir}/lib*
 %{_mandir}/*/*%{ext_man}
-%dir %{_libdir}/xscreensaver
-%{_libdir}/xscreensaver/*
+%dir %{_libexecdir}/xscreensaver
+%{_libexecdir}/xscreensaver/*
+%doc README*
 
 %changelog

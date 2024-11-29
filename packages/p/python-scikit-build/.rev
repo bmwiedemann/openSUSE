@@ -271,4 +271,15 @@
     <comment></comment>
     <requestid>1197467</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>7d0ce5e46ed3e393eaff5917d33be4d8</srcmd5>
+    <version>0.18.1</version>
+    <time>1732830133</time>
+    <user>anag+factory</user>
+    <comment>- Add scikit-build-pr1120-upddistutils.patch
+  * gh#scikit-build/scikit-build#1120
+
+This is for updated setuptools in Staging:B</comment>
+    <requestid>1226931</requestid>
+  </revision>
 </revisionlist>

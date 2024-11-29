@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Nov 28 03:14:29 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.7.1:
+  * Small fixes for Python 3.12 references
+  * Parse artist role field
+- Drop seperate LICENSE file
+
+-------------------------------------------------------------------
+Thu Apr 13 11:02:51 UTC 2023 - pgajdos@suse.com
+
+- switch to active fork
+- version update to 2.6
+- python-six is not required
+
+-------------------------------------------------------------------
 Tue Sep 27 18:26:10 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 2.3.0 

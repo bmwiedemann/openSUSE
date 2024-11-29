@@ -240,4 +240,22 @@ required by mycroft-core</comment>
     <comment></comment>
     <requestid>1186442</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>5a00a965f2248eeb8daaa00be37ba983</srcmd5>
+    <version>0.24.0</version>
+    <time>1732830155</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.24.0
+  * BREAKING: Updated minimum supported pytest version to v8.2.0
+  * Adds an optional loop_scope keyword argument to pytest.mark.asyncio.
+  * Deprecates the optional scope keyword argument to pytest.mark.asyncio 
+    for API consistency with pytest_asyncio.fixture.
+  * Fixes a bug that caused module-scoped async fixtures to fail when 
+    reused in other modules
+  * Fixes a bug that caused duplicate markers in async tests
+  * Declare support for Python 3.13
+- Drop merged duplicated-markers.patch
+</comment>
+    <requestid>1227110</requestid>
+  </revision>
 </revisionlist>

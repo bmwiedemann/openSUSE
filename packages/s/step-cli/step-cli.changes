@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov 20 22:59:35 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.28.2
+  https://github.com/smallstep/cli/releases/tag/v0.28.2
+
+-------------------------------------------------------------------
+Wed Nov 20 09:12:42 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- use download_files service to download the tarball
+
+-------------------------------------------------------------------
 Wed Nov 20 08:40:45 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 0.28.1

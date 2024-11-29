@@ -114,4 +114,20 @@ This is just to get rid of the build failure in d:l:p. It is not suitable for an
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1173055</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>819b88f1e5d6275814d0835cb1e63350</srcmd5>
+    <version>0.7.0</version>
+    <time>1732830193</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.7.0
+  * strip None factor for spectral_density in equivalency converter
+    to avoid deprecation warnings for astropy 7. [#229]
+  * drop support for python 3.9. [#232]
+  * replace usages of copy_arrays with memmap [#230]
+  * require asdf 2.14.4 [#241]
+  * Add support for astropy.nddata.uncertainty classes [#239]
+  * Add support for astropy.wcs.WCS and
+    astropy.wcs.wcsapi.SlicedLowLevelWCS [#246] (forwarded request 1227122 from bnavigator)</comment>
+    <requestid>1227123</requestid>
+  </revision>
 </revisionlist>

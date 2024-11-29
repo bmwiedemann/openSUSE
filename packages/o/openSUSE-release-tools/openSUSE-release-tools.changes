@@ -1,4 +1,172 @@
 -------------------------------------------------------------------
+Thu Nov 21 07:41:33 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20241121.c222573:
+  * skippkg-finder: make skippkg-finder is able to support productcompose
+
+-------------------------------------------------------------------
+Fri Nov 15 19:23:41 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20241115.b39e201:
+  * Add Leap Micro 6.1 publish_distro configs
+
+-------------------------------------------------------------------
+Thu Nov 14 13:10:57 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20241114.81e4759:
+  * Add TTM config for Leap Micro 6.1
+
+-------------------------------------------------------------------
+Tue Nov 12 19:05:30 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20241112.ec75d57:
+  * Add Leap Micro 6.1 TTM / Pkglist workflows
+
+-------------------------------------------------------------------
+Tue Nov 12 15:46:49 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20241112.83ca9a3:
+  * gocd: slfo-stagings: slfo-stagings: fail on broken/failed products (SLFO:Main)
+
+-------------------------------------------------------------------
+Tue Nov 12 14:09:39 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20241112.e15d46c:
+  * gocd: slfo-stagings: properly escape comments
+  * gocd: slfo-stagings: fail on broken/failed products
+
+-------------------------------------------------------------------
+Mon Nov 11 14:05:09 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20241111.bc9b1c6:
+  * Add 180 minutes timeout to SLFO product building pipelines.
+
+-------------------------------------------------------------------
+Mon Nov 11 10:25:06 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20241111.0d5e755:
+  * Fix makeurl() usage in is_repo_dirty()
+
+-------------------------------------------------------------------
+Thu Nov 07 10:04:01 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20241107.88108f7:
+  * osclib/list_command.py: Show details also for requests targeted to packages not in rings.
+
+-------------------------------------------------------------------
+Mon Nov 04 10:26:47 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20241104.817ceac:
+  * Added SUSE:SLFO prefix for Agama SLES 16
+
+-------------------------------------------------------------------
+Thu Oct 31 16:47:02 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20241031.dcb6998:
+  * pcheck: fix creation of submit requests
+
+-------------------------------------------------------------------
+Wed Oct 30 11:52:59 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20241030.a6db18b:
+  * cleanup_rings: Also keep the main package if a multibuild flavor is needed
+  * cleanup_rings: Drop vagrant from the whitelist
+  * osclib/memoize: Fix memoize without session=True
+  * cleanup_rings: Make package_get_requiredby more memoize cache friendly
+
+-------------------------------------------------------------------
+Wed Oct 30 08:47:57 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20241030.fca81c8:
+  * gocd: Let the BCI role trigger BCI repo publishing
+
+-------------------------------------------------------------------
+Tue Oct 29 11:09:02 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20241029.a883e20:
+  * BCI repo pipeline for SP7
+
+-------------------------------------------------------------------
+Thu Oct 24 12:33:23 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20241024.40192e1:
+  * docker_publisher.py: Decouple opensuse/leap:15.6 from :15 and :latest
+  * docker_publisher.py: Add option to remove archs from published images
+
+-------------------------------------------------------------------
+Thu Oct 24 10:06:48 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20241024.d0f75c3:
+  * gocd: Add pipelines for Micro 6.2.
+
+-------------------------------------------------------------------
+Fri Oct 18 13:47:02 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20241018.97b7170:
+  * Specify project and repository when release SLES16
+
+-------------------------------------------------------------------
+Wed Oct 16 15:04:49 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20241016.841fa84:
+  * Add new pipeline to release SLES to :PUBLISH
+
+-------------------------------------------------------------------
+Thu Oct 10 15:28:03 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20241010.e8fa1ac:
+  * Fix broken relase to :PUBLISH pipeline for SLES16
+
+-------------------------------------------------------------------
+Wed Oct 09 13:56:46 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20241009.eb17b6b:
+  * Add Agama installer in SLES release pipeline
+
+-------------------------------------------------------------------
+Tue Oct 08 11:17:26 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20241008.8e13319:
+  * Fix SLFO Snapshot pipeline
+
+-------------------------------------------------------------------
+Tue Oct 08 10:36:41 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20241008.5a19ca5:
+  * slfo-packagelist-uploader: Leap 16.0 should stay with main branch
+
+-------------------------------------------------------------------
+Mon Oct 07 07:55:18 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20241007.0d331ee:
+  * slfo-packagelist-uploader: add a 'branch' argument and use 1.1 branch for Leap 16.0
+
+-------------------------------------------------------------------
+Tue Oct 01 12:10:32 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20241001.96def08:
+  * gocd: Add SUSE:SLFO:1.1 pipelines.
+
+-------------------------------------------------------------------
+Tue Oct 01 11:29:08 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20241001.90ee9c2:
+  * Use f-strings where possible
+
+-------------------------------------------------------------------
+Wed Sep 25 06:32:48 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240925.ba61d20:
+  * gocd: to update weakremovers.inc via pkglistgen --only-update-weakremovers
+  * pkglistgen: add an ability to update weakremovers.inc only
+
+-------------------------------------------------------------------
+Tue Sep 24 07:45:37 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20240924.af10cfa:
+  * Sync Agama Live ISO to OSD for all architectures
+
+-------------------------------------------------------------------
 Mon Sep 16 10:50:26 UTC 2024 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20240916.6615422:
