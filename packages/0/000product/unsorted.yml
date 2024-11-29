@@ -869,6 +869,7 @@ unsorted:
   - argocd-cli 
   - argocd-cli-bash-completion 
   - argocd-cli-zsh-completion 
+  - argocd-diff-preview 
   - argon2 
   - argon2-devel 
   - argon2-doc 
@@ -9790,7 +9791,6 @@ unsorted:
   - jupyter-cadabra2-kernel 
   - jupyter-collaboration-ui 
   - jupyter-dash 
-  - jupyter-doc 
   - jupyter-docprovider 
   - jupyter-ipyevents 
   - jupyter-ipyevents-jupyterlab 
@@ -10765,6 +10765,10 @@ unsorted:
   - kubeshark-cli-fish-completion 
   - kubeshark-cli-zsh-completion 
   - kubespy 
+  - kubeswitch 
+  - kubeswitch-bash-completion 
+  - kubeswitch-fish-completion 
+  - kubeswitch-zsh-completion 
   - kubetap 
   - kubetrim 
   - kubetui 
@@ -16064,6 +16068,7 @@ unsorted:
   - libreoffice-l10n-te 
   - libreoffice-l10n-tg 
   - libreoffice-l10n-th 
+  - libreoffice-l10n-tl 
   - libreoffice-l10n-tn 
   - libreoffice-l10n-tr 
   - libreoffice-l10n-ts 
@@ -35501,6 +35506,8 @@ unsorted:
   - python313-aioresponses 
   - python313-aiorpcX 
   - python313-aiosignal 
+  - python313-aiosmtpd 
+  - python313-aiosmtplib 
   - python313-aiosqlite 
   - python313-aiostream 
   - python313-aiounittest 
@@ -36908,6 +36915,7 @@ unsorted:
   - python313-json5 
   - python313-json_tricks 
   - python313-jsondiff 
+  - python313-jsonformatter 
   - python313-jsonlines 
   - python313-jsonpatch 
   - python313-jsonpath-ng 
@@ -38418,6 +38426,7 @@ unsorted:
   - python313-subscene-api 
   - python313-subst 
   - python313-suds 
+  - python313-sunpy 
   - python313-suntime 
   - python313-superqt 
   - python313-sure 
@@ -40635,7 +40644,6 @@ unsorted:
   - shadowsocks-rust 
   - shadowsocks-v2ray-plugin 
   - shairport-sync 
-  - shannpersand-comicshanns-fonts 
   - shapelib 
   - shared-color-targets 
   - sharpfont 
