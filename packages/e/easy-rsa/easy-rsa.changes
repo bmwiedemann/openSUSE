@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Sat Nov 30 02:54:52 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 3.2.1:
+  * inline: Add decimal value for cert. serial
+  * Always exit with error for unknown command options
+  * ntegrate Easy-RSA TLS-Key for use with 'init-pki soft'
+  * easyrsa-tools.lib, show-expire: Add CA certificate to report
+  * inline: OpenVPN TLS Keys inlining for TLS-AUTH, TLS-CRYPT-V1
+  * easyrsa-tools.lib: OpenVPN TLS Key gen. TLS-AUTH, TLS-CRYPT-V1
+  * easyrsa-tools.lib: expire_status_v2() (show-expire version 2)
+  * sign-req: Require 128bit serial number
+  * Move command 'verify-cert' to Tools-lib; drop 'verify' shortcut
+  * Windows secure_session(): Ensure $secured_session dir is created
+  * Switch to '-f' for file existence
+  * inline: Move auto-inline from build_full() to sign_req()
+  * gen-crl: Create additional CRL in DER format
+  * self-sign: Allow Edwards Curve based keys
+  * Re-enable command 'renew' (version 2): Requires EasyRSA Tools
+  * bug-fix: revoke: Pass the correct certificate location
+  * vars.example: Add flags for auto-SAN and X509 critical attribute
+  * Global option --eku-crit: Mark X509 extendedKeyUsage as critical
+  * sign-req: Add critical and pathlen details to confirmation
+  * export-p12: Automatically generate inline file
+  * Introduce global option --auto-san, use commonName as SAN
+  * Introduce global option --san-crit, mark SAN critical
+  * Introduce new global options: --ku-crit and --bc-crit
+  * gen-req: Always check for existing request file
+  * revoke/revoke-expired/-renewed: Keep duplicate certificate
+  * revoke-expired/-renewed: Keep req/key files for resigning
+  * revoke: Add abbreviations for optional 'reason'
+  * build-ca: Allow use of --req-cn without batch mode
+  * gen-req: Re-enable use of --req-cn
+  * write: Change syntax, target as file, not directory
+- update to 3.2.0:
+  * Revert ca76697: Restore escape_hazard()
+  * New X509 Type: 'selfsign' Internal only
+  * New commands: self-sign-server and self-sign-client
+  * build-ca: Command 'req', remove SSL option '-keyout'
+  * Remove escape_hazard(), obsolete
+  * Remove command and function display_cn(), unused
+  * docs: Update EasyRSA-Renew-and-Revoke.md
+  * Remove all 'renew' code; replaced by 'expire' code
+  * Introduce commands: 'expire' and 'revoke-expired'
+  * Keep request files [CSR] when revoking certificates
+  * Restrict use of --req-cn to build-ca
+  * Remove command 'display-san' (Code removed in 5a06f94)
+  * Move Status Reports to 'easyrsa-tools.lib'
+  * export-p12, OpenSSL v1.x: Upgrade PBE and MAC options
+  * LibreSSL: Add fix for missing 'x509' option '-ext'
+  * Variable heredoc expansion for SSL/Safe Config file
+  * Always use here-doc version of openssl-easyrsa.cnf
+  * export-p12: New command option 'legacy'. OpenSSL V3 Only
+  * export-p12: Always set 'friendlyName' to file-name-base
+  * As of Easy-RSA version 3.2.0-beta1, the configuration files
+    vars.example, openssl-eayrsa.cnf and all files in x509-types directory
+    are no longer required
+  * Rename X509-type file code-signing to codeSigning
+  * init-pki: Always write vars.example file to fresh PKI
+  * New command 'write': Write 'legacy' files to stdout or files
+  * Remove command 'make-safe-ssl': Replaced by command 'write safe-cnf' 
+  * New Command 'rand': Expose easyrsa_random() to the command line
+  * Remove function 'set_pass_legacy()'
+  * Remove command 'rewind-renew'
+  * Remove command 'rebuild'
+  * Remove command 'upgrade'
+  * Remove EASYRSA_NO_VARS; Allow graceful use without a vars file
+  * New diagnostic command 'display-cn'
+  * Expand renewable certificate types to include code-signing
+- attach a source to keyring
+
+-------------------------------------------------------------------
 Tue Oct 17 06:35:16 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.1.7:

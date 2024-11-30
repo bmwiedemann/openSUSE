@@ -1,18 +1,7 @@
---- EasyRSA-3.1.7/easyrsa.orig	2023-10-17 08:27:37.665021587 +0200
-+++ EasyRSA-3.1.7/easyrsa	2023-10-17 08:34:59.943976542 +0200
-@@ -1440,10 +1440,7 @@
- 	# "$EASYRSA" - Old default and Windows
- 	# "$PWD" - Usually the same as above, avoid
- 	# "${0%/*}" - Usually the same as above, avoid
--	# '/usr/local/share/easy-rsa' - Default user installed
--	# '/usr/share/easy-rsa' - Default system installed
--	# Room for more..
--	# '/etc/easy-rsa' - Last resort
-+	# '/etc/easy-rsa' 
- 
- 	# Find and optionally copy data-files, in specific order
- 	for area in \
-@@ -1451,8 +1448,6 @@
+diff -rub EasyRSA-3.2.1/easyrsa EasyRSA-3.2.1-patched/easyrsa
+--- EasyRSA-3.2.1/easyrsa	2024-09-13 20:04:18.000000000 +0200
++++ EasyRSA-3.2.1-patched/easyrsa	2024-11-27 15:30:40.171687859 +0100
+@@ -1510,8 +1510,6 @@
  		"$EASYRSA" \
  		"$PWD" \
  		"${0%/*}" \
