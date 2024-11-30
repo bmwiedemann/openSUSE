@@ -33,7 +33,7 @@
 %define svrcorelib libsvrcore0
 
 Name:           389-ds
-Version:        3.1.1~git13.a9c7ff9
+Version:        3.1.1~git57.65773c3
 Release:        0
 Summary:        389 Directory Server
 License:        GPL-3.0-or-later AND MPL-2.0
@@ -48,7 +48,6 @@ Source5:        70yast.ldif
 Source9:        %{name}-rpmlintrc
 Source10:       %{user_group}-user.conf
 Source11:       krbkdcbefore.conf
-Patch0:         389-ds-link-icu-uc.patch
 # 389-ds does not support i686
 ExcludeArch:    %ix86
 BuildRequires:  autoconf

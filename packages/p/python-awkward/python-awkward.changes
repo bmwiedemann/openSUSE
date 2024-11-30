@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Nov 22 13:19:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7.1:
+  * fix: test from_raggedtensor on CUDA
+  * fix: use None when ndims can't be inferred from a layout-like
+    obj
+  * fix: ak.argcombinations should allow negative axis
+  * fix: restrict `named_axis` inferring to
+    `ak.Arrays/ak.Records/ak.HighLevelContexts` by default
+- update to 2.7.0:
+  * chore: remove Python 3.8, ensure Python 3.13 is included
+- update to 2.6.10:
+  * feat: named axis for `ak.Array`
+  * feat: to/from TensorFlow Tensor
+  * feat: updated LayoutBuilder.h (added functors) for C++11
+    compatibility
+  * fix: make sure 'at' is a cupy zero dim array
+  * fix: add cuda backend support for `to_raggedtensor` and
+    `from_raggedtensor` functions
+  * fix: test `from_raggedtensor` on GPU
+  * fix: correct handling of keepdims and mask_identity for
+    weighted mean
+- update to 2.6.9:
+  * feat: Add to_cudf
+  * feat: to/from PyTorch Tensor
+  * perf: avoid inflating UnmaskedArrays in broadcasting when you
+    can
+  * fix: TypeError fix for `can_cast`
+  * fix: ListArray slicing on GPU
+  * fix: ak.typetracer.length_one_if_typetracer with option and
+    union types
+
+-------------------------------------------------------------------
 Sun Sep 22 12:33:43 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Revert numpy restriction to > 2

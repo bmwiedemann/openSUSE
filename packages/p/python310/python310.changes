@@ -2,6 +2,7 @@
 Thu Nov 14 07:06:20 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Remove -IVendor/ from python-config boo#1231795
+- Apply sphinx-72.patch only conditionally for non-SLE-15 builds.
 
 -------------------------------------------------------------------
 Wed Nov 13 13:25:01 UTC 2024 - Matej Cepl <mcepl@cepl.eu>

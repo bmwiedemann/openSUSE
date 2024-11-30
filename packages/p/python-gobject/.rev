@@ -823,4 +823,14 @@ not get invalid dependencies (forwarded request 390575 from dimstar)</comment>
     <comment>SCripted push of GNOME 47</comment>
     <requestid>1205486</requestid>
   </revision>
+  <revision rev="100" vrev="2">
+    <srcmd5>45ce9246458d6a5bbf109ad6a3b70a99</srcmd5>
+    <version>3.50.0</version>
+    <time>1732969628</time>
+    <user>anag+factory</user>
+    <comment>- Add python-pygobject provides: help packages to eliminate rpmlint
+  warnings when comparing requrements.txt vs the packages depdency.
+  'pygobject' is the proper upstream name.</comment>
+    <requestid>1227103</requestid>
+  </revision>
 </revisionlist>

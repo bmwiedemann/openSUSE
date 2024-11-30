@@ -35,6 +35,7 @@ Group:          Development/Libraries/C and C++
 Source:         %{name}-%{version}%{git_ver}.tar.bz2
 Source1:        baselibs.conf
 Patch0:         libfabric-libtool.patch
+Patch1:         psm3-fix-SIGILL-on-system-not-supporting-AVX.patch
 URL:            http://www.github.com/ofiwg/libfabric
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -79,7 +80,7 @@ libfabric provides a user-space API to access high-performance fabric
 services, such as RDMA. This package contains the development files.
 
 %prep
-%autosetup -p1 -n  %{name}-%{version}%{git_ver}
+%autosetup -p0 -n  %{name}-%{version}%{git_ver}
 
 %build
 export CFLAGS=-Wno-incompatible-pointer-types

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 27 17:40:33 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Have the glib2-tools postun trigger exit normally if
+  glib2-compile-schemas can't be run. Fixes error when uninstalling
+  if libgio is uninstalled first (bsc#1231463).
+
+-------------------------------------------------------------------
 Thu Oct 17 12:05:15 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.82.2:

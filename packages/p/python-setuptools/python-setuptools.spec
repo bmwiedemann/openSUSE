@@ -123,8 +123,6 @@ export PIP_FIND_LINKS=$PWD/dist
 export PYTHONPATH=$(pwd)
 # no online comparisons in obs
 donttest="(test_apply_pyproject_equivalent_to_setupcfg and https)"
-# no network access
-donttest+=" or uses_network"
 # test_pbr_integration tries to install pbr from network using pip
 donttest+=" or test_pbr_integration"
 # looks for .exe files that we do not ship

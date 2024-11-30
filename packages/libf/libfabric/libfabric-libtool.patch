@@ -1,8 +1,18 @@
-diff --git a/configure.ac b/configure.ac
-index d137250..4e67035 100644
---- a/configure.ac
-+++ b/configure.ac
-@@ -89,7 +89,7 @@ AC_HEADER_STDC
+commit 81de541fdd4abc77167f955f8ddd85f195888e5c
+Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+Date:   Fri Sep 30 13:49:16 2022 +0200
+
+    libfabric libtool
+    
+    Disable static libs
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+diff --git configure.ac configure.ac
+index 7dacf69c9a69..90fcdc610754 100644
+--- configure.ac
++++ configure.ac
+@@ -193,7 +193,7 @@ m4_version_prereq([2.70],
  dnl Check for compiler features
  AC_C_TYPEOF
  

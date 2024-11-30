@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Nov 07 12:04:40 UTC 2024 - cathy.hu@suse.com
+
+- Update to version 2.233.0:
+  * container_engine_t: small change to allow non root exec in a container
+  * RPM: explicitly list ghosted paths and skip mode verification
+  * container-selinux install on non selinux-policy-targeted systems (#332)
+  * set container_log_t type for /var/log/kube-apiserver
+  * Allow kubelet_t to create a sock file kubelet_var_lib_t
+  * dontaudit spc_t to mmap_zero
+  * Packit: update targets (#330)
+  * container_engine_t: another round of small improvements (#327)
+  * Allow container_device_plugin_t to use the network (#325)
+  * RPM: cleanup changelog (#324)
+  * TMT: Simplify tests
+
+-------------------------------------------------------------------
 Wed Jul 10 07:52:16 UTC 2024 - cathy.hu@suse.com
 
 - Update to version 2.232.1:

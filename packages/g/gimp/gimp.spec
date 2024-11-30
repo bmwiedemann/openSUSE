@@ -25,12 +25,18 @@
 %else
 %bcond_with    libheif
 %endif
-
+# --without-jpegxl on SLES 15 SP6
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
+%bcond_with    libjpegxl
+%else
+%bcond_without libjpegxl
+%endif
 %if 0%{?sle_version}
 %bcond_with python_plugin
 %else
 %bcond_without python_plugin
 %endif
+
 Name:           gimp
 Version:        2.10.38
 Release:        0
@@ -62,7 +68,9 @@ BuildRequires:  intltool >= 0.40.1
 BuildRequires:  libtiff-devel
 BuildRequires:  libwmf-devel >= 0.2.8
 BuildRequires:  libxslt-tools
+%if %{with libjpegxl}
 BuildRequires:  libjxl-devel >= 0.7.0
+%endif
 BuildRequires:  pkgconfig
 %if %{with python_plugin}
 BuildRequires:  python-gtk-devel >= 2.10.4
@@ -244,6 +252,9 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 	--libexecdir=%{_libexecdir}\
 	--enable-default-binary\
 	--disable-check-update\
+%if %{without libjpegxl}
+	--without-jpegxl\
+%endif
 	--enable-mp
 
 %make_build

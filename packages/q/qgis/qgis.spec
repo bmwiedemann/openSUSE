@@ -34,7 +34,7 @@ Name:           qgis
 %define mypython %pythons
 %define __mypython %{expand:%%__%{mypython}}
 
-Version:        3.40.0
+Version:        3.40.1
 Release:        0
 Summary:        A Geographic Information System (GIS)
 License:        GPL-2.0-only
@@ -43,7 +43,7 @@ URL:            https://qgis.org/
 Source:         https://qgis.org/downloads/qgis-%{version}.tar.bz2
 Source1:        https://qgis.org/downloads/qgis-%{version}.tar.bz2.sha256
 Source2:        %{name}.rpmlintrc
-Source3:        qgis_sample_data.zip
+Source3:        https://download.qgis.org/downloads/data/qgis_sample_data.zip
 # PATCH-FIX-OPENSUSE - adapt include path of fastcgi
 Patch1:         fix-fastcgi-include.patch
 # PATCH-FIX-UPSTREAM - scan for pdal-config instead of pdal in cmake

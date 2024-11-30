@@ -1,0 +1,22 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>271968d8cf0bf132e2a05884ec002b04</srcmd5>
+    <version>20241129.2509e96</version>
+    <time>1732969700</time>
+    <user>anag+factory</user>
+    <comment>A new package opensuse-migration-tool
+
+* A simple bash script utilizing get.opensuse.org
+api and openSUSE-repos to support cross distribution
+migrations as well as point release upgrades
+
+* Developed as part of Hackweek 24
+  https://hackweek.opensuse.org/24/projects/new-migration-tool-for-leap
+
+* Leap -&gt; Leap n+1, Leap -&gt; SLES, Leap -&gt; Tumbleweed
+  Leap -&gt; Slowroll
+* Leap Micro -&gt; Leap Micro n+1, Leap Micro -&gt; MicroOS
+* Slowroll -&gt; Tumbleweed</comment>
+    <requestid>1227346</requestid>
+  </revision>
+</revisionlist>

@@ -19,7 +19,7 @@
 
 %define services ntpd-rs.service ntpd-rs-metrics.service
 Name:           ntpd-rs
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        Full-featured implementation of NTP with NTS support
 License:        Apache-2.0 OR MIT

@@ -1,4 +1,97 @@
 -------------------------------------------------------------------
+Thu Nov 28 16:53:42 UTC 2024 - jbohac@suse.com
+
+- Update to version 4.4:
+  * Version 4.4
+  * ts2phc: check is_running in ts2phc_pps_sink_poll()
+  * ts2phc: check for errors on polling the sink devices
+  * timemaster: Wait for udev to set up vclock devices.
+  * ts2phc: Fix description of holdover option in man page.
+  * ts2phc: Describe servo options in man page.
+  * nmea: Fix tm_isdst uninitialized
+  * Complete SNMP cleanup.
+  * Add permanent subscription option
+  * rtnl: check if the kernel provides if_team
+  * port: Drop received 802.1AS packets with invalid transportSpecific values
+  * ts2phc: Fix timestamp conversion for leap seconds.
+  * nmea: Fix conversion of leap second.
+  * ts2phc: Reset parser after RMC message.
+  * Drop example snmpd.conf.
+  * ts2phc: Add option to correct for NMEA delay.
+  * ts2phc: Allow longer NMEA delays.
+  * ts2phc: Move upper/lower rejection limit calculation.
+  * ts2phc: Fix edge rejection for pulse widths over 0.5s.
+  * ts2phc: Provide source type.
+  * Filter any PTP frames with the source MAC of the local interface
+  * ts2phc: Add holdover support.
+  * ts2phc: Avoid unnecessary call of getppstime().
+  * Version 4.3
+  * ts2phc: Use CLOCK_MONOTONIC_RAW for NMEA PPS timestamp.
+  * nsm: add authentication tlv for nsm
+  * pmc: add authentication tlv for pmc
+  * msg: add authentication tlv in management handling
+  * sad: introduce sad_update_auth_tlv()
+  * man: add man/README updates for authentication tlv
+  * sad: introduce sad_append_auth_tlv() and sad_generate_icv()
+  * sad: introduce sad_set_last_seqid() and sad_check_seqid()
+  * port: add security processing to bc_event()
+  * sad: introduce sad_process_auth() and sad_check_auth_tlv()
+  * sad: introduce openssl mac library
+  * sad: introduce gnupg mac library
+  * sad: introduce gnutls mac library
+  * sad: introduce nettle mac library
+  * sad: introduce security association database
+  * tlv: add authentication tlv
+  * udp+udp6: Make IP addresses configurable.
+  * Add support for '-l' option to tz2alt.c as documented in its man page.
+  * Clean up compiler warnings about print_level.
+  * Clean up compiler warning in ts2phc_pps_sink.c.
+  * Clean up compiler warning in ts2phc.c.
+  * Clean up compiler warning in port.c.
+  * README: update mailing list.
+  * ts2phc: interact with new kernel timestamp channel masks
+  * lstab: Update Leap Second table validity
+  * Fix indentation in example configs.
+  * Document allowedLostResponses option.
+  * config: Allow port sections with longer names.
+  * sk: Fix descriptor leak in sk_get_if_info().
+  * lstab: Don't free lstab on update.
+  * lstab: Limit number of parsed leap seconds.
+  * uds: Warn if replacing existing socket.
+  * Add example Common Mean Link Delay Service configuration files.
+  * Implement the COMMON_P2P delay mechanism.
+  * Add a push notification for the CMLDS TLV.
+  * Introduce the Common Mean Link Delay Information TLV.
+  * pmc: Make SET SUBSCRIBE_EVENTS_NP forwards compatible.
+  * pmc/uds: Configure the remote server address using the interface API.
+  * interface: Add an optional remote address for use by the UDS transport.
+  * ts2phc: Don't switch system clock to nanosecond mode.
+  * Version 4.2
+  * phc_ctl: Use util.h NSEC_PER_SEC macro instead of local macro
+  * servo: Use util.h NSEC_PER_SEC macro instead of local macro
+  * port: Use util.h NSEC_PER_SEC macro instead of local macro
+  * util: Introduce NSEC_PER_SEC macro
+  * port: Fix multiple pdelay response handling
+  * Make allowedLostResponses configurable
+  * ptp4l: Allow advertisement of legacy PTP 2.0 protocol
+  * msg: Enable changing PTP message header version
+  * linuxptp: Use ${CC} in incdefs.sh
+  * include string.h for strncpy()
+  * lstab: Update leapfile validity
+  * print: Support log level in message tag.
+  * phc2sys: Stop synchronization when ptp4l stops responding.
+  * phc2sys: Better indicate domain with realtime clock.
+  * pmc_agent: Make update interval configurable.
+  * pmc_agent: Add function to check if still subscribed.
+  * port: set_tmo_log() timer interval calculation fix
+  * Add notification for changes in PARENT_DATA_SET.
+  * clock: Downgrade log message about failed uds forward.
+  * Avoid conflicting port IDs over PMC UDS
+  * phc_ctl: Use pr_notice instead of pr_err for displaying adjusted frequency
+  * phc_ctl: Add maximum offset capability
+  * phc_ctl: Add phase command to support ADJ_OFFSET
+
+-------------------------------------------------------------------
 Tue Sep 12 08:29:58 UTC 2023 - jbohac@suse.com
 
 - Update to version 4.1:

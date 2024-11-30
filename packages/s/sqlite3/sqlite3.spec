@@ -17,12 +17,12 @@
 
 
 %define oname sqlite
-%define tarversion 3460100
-%define docversion 3460100
+%define tarversion 3470100
+%define docversion 3470100
 %bcond_with icu
 %bcond_without check
 Name:           sqlite3
-Version:        3.46.1
+Version:        3.47.1
 Release:        0
 Summary:        Embeddable SQL Database Engine
 License:        SUSE-Public-Domain
@@ -145,7 +145,8 @@ cmp sqlite-doc-%{docversion}/fileformat{,2}.html && ln -sf fileformat.html sqlit
 
 %build
 export TCLLIBDIR=%tcl_archdir/sqlite%version
-export LIBS="$LIBS -lm %{?with_icu:-licuuc -licui18n}"
+export CC=gcc
+export CC_FOR_BUILD=gcc
 export CFLAGS="%{optflags} \
 	-DSQLITE_ENABLE_API_ARMOR \
 	-DSQLITE_ENABLE_COLUMN_METADATA \

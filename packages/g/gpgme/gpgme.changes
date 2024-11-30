@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 29 07:47:13 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add gpgme-fix-python-install.patch: Fix the installation of the
+  python bindings without having to move them around manually.
+
+-------------------------------------------------------------------
 Wed Nov 20 12:14:56 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Move the gpg python bindings out of the egg directory.

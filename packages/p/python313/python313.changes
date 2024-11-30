@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 29 12:14:59 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Drop CVE-2023-52425-libexpat-2.6.0-backport-15.6.patch, not needed
+  anymore because libexpat is updated to 2.6 in SP7. bsc#1233777
+
+-------------------------------------------------------------------
 Fri Nov 15 11:25:06 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Allow building with default LLVM version 19: just replace the

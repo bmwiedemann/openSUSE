@@ -1,13 +1,17 @@
 Index: magic/Magdir/cafebabe
 ===================================================================
---- magic/Magdir/cafebabe.orig
-+++ magic/Magdir/cafebabe
-@@ -17,7 +17,7 @@
- ### JAVA START ###
- # Reference:	http://en.wikipedia.org/wiki/Java_class_file
- # Update:	Joerg Jenderek
+---
+ magic/Magdir/cafebabe |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- magic/Magdir/cafebabe
++++ magic/Magdir/cafebabe	2024-11-28 08:56:12.978938091 +0000
+@@ -32,7 +32,7 @@
+ # Reference:	https://opensource.apple.com/source/cctools/cctools-949.0.1/
+ #		include/mach-o/fat.h
+ #		include/mach/machine.h
 -0	belong		0xcafebabe
 +0	belong		0xcafebabe	Cafe Babe
- >4	ubelong		>30		compiled Java class data,
- !:mime	application/x-java-applet
- #!:mime	application/java-byte-code
+ >4	belong		1		Mach-O universal binary with 1 architecture:
+ !:mime application/x-mach-binary
+ >>8	use		mach-o		\b

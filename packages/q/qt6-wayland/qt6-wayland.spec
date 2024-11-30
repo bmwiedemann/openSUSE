@@ -44,6 +44,8 @@ Patch0:         0001-update-wayland_xml-to-version-1_23_0.patch
 # fix crash when attach differ shellsurface to the same shellsurfaceitem
 # https://codereview.qt-project.org/c/qt/qtwayland/+/599732
 Patch1:         0001-fix-crash-issue.patch
+# PATCH-FIX-UPSTREAM -- Fix crash when unplugging a graphics tablet
+Patch2:         0001-client-Redo-management-of-tablet-object-proxies.patch
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-gui-private-devel

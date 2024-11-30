@@ -1,0 +1,150 @@
+-------------------------------------------------------------------
+Fri Nov 29 12:16:39 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.30.0:
+  * New
+    - New output: Webex (PR#979 thanks to @k0rventen)
+    - New output: OTLP Metrics (PR#1012 thanks to @ekoops)
+    - New output: Datadog Logs (PR#1052 thanks to @yohboy)
+  * Enhancement
+    - Reuse of the http client for 3-4x increase of the throughput
+      (PR#962 thanks to @alekmaus)
+    - Improve outputs throughput handling (PR#966 thanks to
+      @alekmaus)
+    - Batching and gzip compression for the Elastticsearch output
+      (PR#967 thanks to @alekmaus)
+    - Use the same convention for the Prometheus metrics than Falco
+      (PR#995)
+    - Add APIKey for Elasticsearch output (PR#980 thanks to
+      @alekmaus)
+    - Add Pipeline configuration for Elasticsearch output (PR#981
+      thanks to @alekmaus)
+    - Add MessageThreadID configuration in Telegram output (PR#1008
+      thanks to @vashian)
+    - Support multi-architecture in build (PR#1024 thanks to
+      @nickytd)
+    - Add falco as source for the Datadog Events (PR#1043 thanks to
+      @maxd-wttj)
+    - Support AlertManager output in HA mode (PR#1051)
+  * Fix
+    - Fix PolicyReports created in the same namespace than previous
+      event (PR#978)
+    - Fix missing customFields/extraFields in the Elasticsearch
+      payload (PR#1033)
+    - Fix incorrect key name for CloudEvent spec attribute
+      (PR#1051)
+  * Warning
+    - Breaking change: The Prometheus metrics have different names
+      from this release, it might break the queries for the
+      dashboards and alerts.
+
+-------------------------------------------------------------------
+Wed Jul 03 16:44:34 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.29.0:
+  * specify goreleaser version
+  * Add ClientCAs to TLSServer configuration
+  * Add Sumologic Output
+  * Add custom TLS CA global option
+  * Add test for utils sorting function
+  * Added 'Install' section to systemd example in README
+  * Apply suggestions from code review
+  * CI: fix linting
+  * Docs fix: Environment variables are all uppercase
+  * Fix G402: TLS MinVersion too low
+  * Fix Policy Report dead link
+  * Fix condition for forwarding events to OTLP traces
+  * Go fmt
+  * Make S3 output compatible with non-AWS S3 API-compliant
+    endpoints
+  * Split docs for the outputs
+  * Update README.md
+  * Update README.md path to the correct one
+  * Update config_example.yaml
+  * Update docs/outputs/alertmanager.md
+  * Update docs/outputs/syslog.md
+  * Update outputs/client.go
+  * Update outputs/otlp.go
+  * Update release.yml
+  * Update syslog.md
+  * Update types/types.go
+  * add Falco Talon output
+  * add flattenfields + create indexte
+  * add more checks for the upload on GCP Storage
+  * add outputFieldFormat parameter
+  * add screenshots from running whole OTLP stack (under
+    docker-compose, as documented)
+  * add source as label for prom metrics
+  * add table of contents + fix missing link
+  * address more @issif feedback (cleanup)
+  * bump up go version to 1.21 + bump up alpine base image to 3.19
+    + replace deprecated modules for azure
+  * change the method to set the custom headers in the client.go,
+    it allows now to override the content-type
+  * chore: remove refs to deprecated io/ioutil
+  * clarify the un-need to parse OTLP.Traces.Headers field
+  * display error message according to standards
+  * docs(LICENSE): add Apache 2.0
+  * docs(README.md): remove leftover
+  * docs(dynatrace): Fix typo in Dynatrace example image
+  * docs(dynatrace): [TR-1498] Add checkcert key to example config
+  * docs(dynatrace): [TR-1498] Add example image of Dynatrace
+  * docs: add license headers and spdx id
+  * docs: update SPDX-License-Identifier and cleanup copyright
+    notices
+  * feat(alertmanager): add custom headers to alert manager
+  * feat(alertmanager): fix labels for alertmanager
+  * feat(alertmanager): remove leading and tailing _
+  * feat(alertmanager): replace __ with _ in alertmanger labels
+  * feat(dynatrace): [TR-1498] Enhance Dynatrace output with
+    semantic attributes
+  * feat(dynatrace): [TR-1498] Implement Dynatrace output
+  * feat(log_inlined_json): inline the json logs when it's possible
+  * feat(quickwit_output): implement the quickwit output
+  * feat: add OTLP/Traces output support
+  * fix bug with extension 'source'
+  * fix issue #780: duplicated headers
+  * fix outputs/otlp_test.go for NewClient() using
+    `types.InitClientArgs`
+  * fix panic in prometheus when hostname field is missing
+  * fix the docs for Dynatrace output
+  * fix wrong env var for pagerduty output
+  * fix(dynatrace): [TR-1706] Check for nil when parsing output
+    fields and parse span.id
+  * fix(dynatrace): [TR-1706] Correct Falco output name
+    container.image, k8s.ns.name and Dynatrace field name
+    k8s.pod.uid
+  * fix(elasticsearch-doc): remove mattermost config coming from a
+    cc/cl mistake
+  * fix(loki): fix the deadlock in Loki integration
+  * go mod tidy (using go1.20.13)
+  * initialise root CAs for kafka output
+  * prepare v2.29.0
+  * refactor(dynatrace): [TR-1498] Remove redundant check for token
+    existence
+  * refactor(init_client): merge InitClient and NewClient functions
+  * remove hard setting of the Mattermost Username
+  * remove hard setting of the Rocketchat Username
+  * remove nested functions
+  * remove wrongly added local files
+  * revamp the policy reporter output
+  * set source to internal for the test rule
+  * test(dynatrace): [TR-1706] Add unit tests for the Dynatrace
+    output
+  * truncate output fiels with a length > 512 chars, a payload >
+    4096 is not accepted by a lot of outputs
+  * try to use a consistent order for the output_fields and tags
+    for more outputs
+  * update all deps + fix issues coming with
+  * update copyright year to 2024
+  * update dependencies
+  * update logs for TLS
+  * update the installation section
+  * use go 1.20 (fix CI), fix NewClient() call to use new
+    `types.InitClientArgs`
+
+-------------------------------------------------------------------
+Wed May 15 16:22:07 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package falcosidekick: simple daemon for connecting Falco to
+  your ecosystem

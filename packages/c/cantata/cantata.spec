@@ -17,7 +17,7 @@
 
 
 Name:           cantata
-Version:        3.2.1
+Version:        3.3.0
 Release:        0
 Summary:        Client for the Music Player Daemon (MPD)
 License:        GPL-3.0-only

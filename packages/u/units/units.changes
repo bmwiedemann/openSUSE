@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 26 20:56:15 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- units 2.24:
+  * Units definitions updated to reflect 2022 NIST CODATA.
+  * Added ':=' assignment for interactively defined variables
+  * Interactive variable definitions now appear in the log file
+  * Added interactive "set" command to set or change options
+  * Function additions for circles, diameters, wire gauges, pipes
+
+-------------------------------------------------------------------
 Mon Feb 26 09:28:29 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using

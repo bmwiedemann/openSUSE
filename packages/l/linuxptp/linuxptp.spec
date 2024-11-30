@@ -1,7 +1,7 @@
 #
 # spec file for package linuxptp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           linuxptp
-Version:        4.1
+Version:        4.4
 Release:        0
 Summary:        Precision Time Protocol v2 daemon
 License:        GPL-2.0-or-later

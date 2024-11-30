@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Nov 29 02:28:10 UTC 2024 - william.brown@suse.com
+
+- Update to version 0.6.6~0:
+  * Bump version in Cargo.toml
+  * Note the `object` upgrade in the changelog
+  * Upgrade cyclonedx-bom from 0.5 to 0.8 in auditable-cyclonedx
+  * Upgrade object crate from 0.30 to 0.36 to reduce dependency footprint
+  * Update dependencies in the lock file
+  * Populate changelog
+  * apply clippy lint
+  * add another --emit parsing test
+  * shorter code with cargo fmt
+  * Actually fix cargo-c compatibility
+  * Attempt to fix cargo-capi incompatibility
+  * Refactoring in preparation for fixes
+  * Also read the --emit flag to rustc
+  * Fill in changelogs
+  * Bump versions
+  * Drop cfg'd out tests
+  * Drop obsolete doc line
+  * Move dependency cycle tests from auditable-serde to cargo-auditable crate
+  * Remove cargo_metadata from auditable-serde API surface. I can expose it as a separate crate if anyone tells me they need it.
+  * Apply clippy lint
+  * Upgrade miniz_oxide to 0.8.0
+  * Insulate our semver from miniz_oxide semver
+  * Add support for Rust 2024 edition
+  * Update tests
+  * More robust OS detection for riscv feature detection
+  * bump version
+  * update changelog for auditable-extract 0.3.5
+  * Fix wasm component auditable data extraction
+  * Update blocker description in README.md
+  * Add openSUSE to adopters
+  * Update list of know adopters
+  * Fix detection of `riscv64-linux-android` target features
+  * Silence noisy lint
+  * Bump version requirement in rust-audit-info
+  * Fill in changelogs
+  * Bump semver of auditable-info
+  * Drop obsolete comment now that wasm is enabled by default
+  * Remove dependency on cargo-lock
+  * Brag about adoption in the README
+  * Don't use LTO for cargo-dist builds to make them consistent with `cargo install` etc
+  * Also build musl binaries
+  * dist: update dist config for future releases
+  * dist(cargo-auditable): ignore auditable2cdx for now
+  * chore: add cargo-dist
+
+-------------------------------------------------------------------
 Fri Jul 19 03:11:26 UTC 2024 - William Brown <william.brown@suse.com>
 
 - Resolve build failure when backported to 15-SP3

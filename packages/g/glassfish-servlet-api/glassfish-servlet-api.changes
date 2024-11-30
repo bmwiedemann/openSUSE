@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 11 17:07:37 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to javax.servlet-api 4.0.1
+  * no changelog provided by upstream
+  * last version with the javax.servlet:javax.servlet-api coordinates
+
+-------------------------------------------------------------------
 Wed Oct  2 15:41:50 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Spec file cleanup

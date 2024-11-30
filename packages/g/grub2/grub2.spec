@@ -415,6 +415,7 @@ Patch233:       0001-kern-ieee1275-init-Add-IEEE-1275-Radix-support-for-K.patch
 Patch234:       0001-cli_lock-Add-build-option-to-block-command-line-inte.patch
 Patch235:       0002-Requiring-authentication-after-tpm-unlock-for-CLI-ac.patch
 Patch236:       0001-kern-main-Fix-cmdpath-in-root-directory.patch
+Patch237:       grub2-s390x-secure-execution-support.patch
 
 %if 0%{?suse_version} > 1600
 # Always requires a default cpu-platform package
@@ -1193,7 +1194,11 @@ rm -f $R%{_sysconfdir}/grub.d/20_ppc_terminfo
 
 %ifarch s390x
 mv $R%{_sysconfdir}/{grub.d,default}/zipl2grub.conf.in
+mv $R%{_sysconfdir}/{grub.d,default}/se-zipl2grub.conf.in
+mv $R%{_sysconfdir}/{grub.d,default}/se-parm.conf.in
 chmod 600 $R%{_sysconfdir}/default/zipl2grub.conf.in
+chmod 600 $R%{_sysconfdir}/default/se-zipl2grub.conf.in
+chmod 600 $R%{_sysconfdir}/default/se-parm.conf.in
 
 %define dracutlibdir %{_prefix}/lib/dracut
 %define dracutgrubmoddir %{dracutlibdir}/modules.d/99grub2
@@ -1359,6 +1364,8 @@ grep -E ${EXTRA_PATTERN} %{grubarch}-mod-all.lst > %{grubarch}-mod-extras.lst
 %endif
 %ifarch s390x
 %config(noreplace) %{_sysconfdir}/default/zipl2grub.conf.in
+%config(noreplace) %{_sysconfdir}/default/se-zipl2grub.conf.in
+%config(noreplace) %{_sysconfdir}/default/se-parm.conf.in
 %{dracutlibdir}
 %{_sbindir}/%{name}-zipl-setup
 %{_datadir}/%{name}/zipl-refresh

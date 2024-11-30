@@ -72,10 +72,12 @@ skiptests+=" or test_findgarbage or test_prune or test_get_tree"
 skiptests+=" or test_findgarbage or test_prune or test_get_tree"
 # gh#pympler/pympler#163
 skiptests+=" or test_edges_new or test_edges_old or test_split or test_traceback"
-%if "%_arch" == "aarch64"
-# Slow and OBS can kill it on some archs
-skiptests+=" or test_otracker_diff"
+%if 0%{?qemu_user_space_build}
+# qemu does not implement process memory statistics
+skiptests+=" or test_snapshot_members"
 %endif
+# skip expensive tests
+export COVERAGE=1
 %pytest -k "not ($skiptests)"
 
 %files %{python_files}

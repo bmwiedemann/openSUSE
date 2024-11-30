@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Nov 28 10:51:57 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Update to 5.46:
+  * Add OFFPOSITIVE
+  * avoid leaking symbols in libmagic
+  * PR/562: jsummers: Search/regex offsets are absolute to the
+    beginning of the file, so adjust them by subtracting the
+    offset that the "use" starts so that we don't double-count it.
+  * PR/543: matshch: bump nbuf so we can get the flags into the buffer.
+  * Add Android elf notes (enh)
+  * Add limit for number of magic warnings allowed
+  * check regex bounds (found by clusterfuzz)
+- Remove patch file-5.45-type_t.dif now upstream
+- Port patches
+  * file-4.24-autoconf.dif
+  * file-5.17-option.dif
+  * file-5.18-javacheck.dif
+  * file-5.19-biorad.dif
+  * file-5.19-printf.dif
+  * file-5.19-zip2.0.dif
+  * file-5.22-elf.dif
+  * file-5.28-btrfs-image.dif
+  * file-5.45-type_t.dif
+  * file-secure_getenv.patch
+- Port patch file-5.45.dif and rename it to file-5.46.dif
+  * Note that our kernel magics do not fit anymore as
+    upstream now has a huge rework and extended features
+
+-------------------------------------------------------------------
 Thu Nov  7 20:11:48 UTC 2024 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - file-seccomp.patch: glibc uses getrandom in malloc, rseq and prctl

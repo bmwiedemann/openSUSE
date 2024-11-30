@@ -38,7 +38,7 @@
  #include <stdint.h>
  #endif
  
-@@ -542,4 +545,5 @@ typedef struct {
+@@ -573,4 +576,5 @@ typedef struct {
  #define	DF_1_STUB	0x04000000	/* Stub */
  #define	DF_1_PIE	0x08000000	/* Position Independent Executable */
  

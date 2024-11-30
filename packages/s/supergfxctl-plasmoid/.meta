@@ -1,0 +1,15 @@
+<package name="supergfxctl-plasmoid" project="openSUSE:Factory">
+  <title>KDE Plasma plasmoid for supergfxctl</title>
+  <description>KDE Plasma plasmoid for supergfxctl.  
+Features:  
+* Graphics mode switching  
+* dGPU power indication  
+* Dynamic plasmoid logo, tooltip, status  
+* Filter available switches  
+* Display dbus error message  
+* Revert change  
+
+** For access your user will need `video` group or `supergfxctl` group.</description>
+  <devel project="KDE:Extra" package="supergfxctl-plasmoid"/>
+  <url>https://gitlab.com/Jhyub/supergfxctl-plasmoid</url>
+</package>

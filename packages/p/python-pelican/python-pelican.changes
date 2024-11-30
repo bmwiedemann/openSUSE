@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 28 17:57:44 UTC 2024 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 4.10.2:
+  * Change IGNORE_FILES setting default to ignore all hidden files
+  * Fix SUMMARY_MAX_PARAGRAPHS not being respected in some
+    combinations with SUMMARY_MAX_LENGTH
+
+-------------------------------------------------------------------
 Sat Sep 28 20:22:21 UTC 2024 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 4.10.1:

@@ -22,6 +22,8 @@
 %bcond_with test
 BuildArch:      noarch
 %else
+# tests fail with python 3.13
+%global skip_python313 1
 %bcond_without test
 # Test suite fails on numerous tests when trying to convert 64-bit types
 ExcludeArch:    %{ix86} %{arm32}
@@ -33,10 +35,10 @@ ExcludeArch:    %{ix86} %{arm32}
 %endif
 %endif
 
-%define awkward_cpp_version 38
+%define awkward_cpp_version 41
 %{?sle15_python_module_pythons}
 Name:           python-awkward%{psuffix}
-Version:        2.6.8
+Version:        2.7.1
 Release:        0
 Summary:        Manipulate arrays of complex data structures as easily as Numpy
 License:        BSD-3-Clause

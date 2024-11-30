@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %define srcname awkward_cpp
 Name:           python-awkward-cpp
-Version:        38
+Version:        41
 Release:        0
 Summary:        CPU kernels and compiled extensions for Awkward Array
 License:        BSD-3-Clause

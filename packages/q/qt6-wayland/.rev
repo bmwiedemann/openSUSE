@@ -327,4 +327,13 @@
   fix crash when attach differ shellsurface to the same shellsurfaceitem (boo#1233141)</comment>
     <requestid>1222864</requestid>
   </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>a1d885043b5438435f2cb9fe6ce9a9e0</srcmd5>
+    <version>6.8.0</version>
+    <time>1732969635</time>
+    <user>anag+factory</user>
+    <comment>- Add patch to fix crash when unplugging a graphics tablet:
+  * 0001-client-Redo-management-of-tablet-object-proxies.patch</comment>
+    <requestid>1227163</requestid>
+  </revision>
 </revisionlist>

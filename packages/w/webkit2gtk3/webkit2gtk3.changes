@@ -43,7 +43,7 @@ Mon Nov  4 16:08:38 UTC 2024 - Michael Gorse <mgorse@suse.com>
   + Flatten layers to a plane when preseve-3d style is set.
   + Fix DuckDuckGo links by adding a user agent quirk.
   + Fix several crashes and rendering issues.
-  + Security fixes: CVE-2044-44244, CVE-2024-44296.
+  + Security fixes: CVE-2024-44244, CVE-2024-44296.
 - Drop bug281492.patch: fixed upstream.
 
 -------------------------------------------------------------------

@@ -1,3 +1,24 @@
+From 2a86e5f9e3abb622d2e16ee5f05b1ba2df1f756d Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Tue, 6 Aug 2024 14:46:17 +0800
+Subject: [PATCH] zipl2grub.pl.in: add the switch for hostonly/no-hostonly
+
+Since the kiwi build environment could be very different from the real
+system environment, it may cause some problem to build the zipl initrd
+with '--hostonly' since some critical files could be omitted
+accidentally. To avoid the potential issues, this commit introduces a
+variable, SUSE_S390_DRACUT_HOSTONLY, as the switch to use hostonly or
+no-hostonly for the zipl initrd. By default, it's detected automatically
+by tracing the root partition to the root block device. If the root
+block device is a loop device, then it's likely to be a build
+environment, and then '--no-hostonly' will be used to create the zipl
+initrd.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ util/s390x/zipl2grub.pl.in | 26 +++++++++++++++++++++++++-
+ 1 file changed, 25 insertions(+), 1 deletion(-)
+
 diff --git a/util/s390x/zipl2grub.pl.in b/util/s390x/zipl2grub.pl.in
 index f4f997100..46b902209 100644
 --- a/util/s390x/zipl2grub.pl.in
@@ -50,3 +71,6 @@ index f4f997100..46b902209 100644
  if ( $debug && $verbose > 2 ) {
    foreach ( sort( keys( %C)) ) {
      printf( "%s=\"%s\"\n", $_, $C{$_});
+-- 
+2.35.3
+

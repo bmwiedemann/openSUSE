@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Nov 22 12:50:32 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 41:
+  * Add stream position check to reader unit tests
+  * Add Templated accessors and range-based for
+  * Add (Pretty)Writer::RawValue()
+  * Add Document::Parse(std::string), Document::Parse(const
+    char*, size_t length) and related APIs.
+  * Add move constructor for GenericSchemaDocument
+  * Add VS2010 and VS2015 to AppVeyor CI
+  * Add parse-by-parts example
+  * Support parse number as string
+  * Add kFormatSingleLineArray for PrettyWriter
+  * Added optional support for trailing commas
+  * Added filterkey and filterkeydom examples
+  * Added npm docs
+  * Allow options for writing and parsing NaN/Infinity
+  * Add std::string overload to PrettyWriter::Key() when
+    RAPIDJSON_HAS_STDSTRING is defined
+
+-------------------------------------------------------------------
 Sun Sep 15 23:24:54 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 38:

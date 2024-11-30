@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 28 08:46:31 UTC 2024 - trenn@suse.de
+
+- Update to version 201:
+  * add listen backlog config for mcelog server
+  * mcelog: Add basic support for Diamond Rapids
+  * mcelog: Add support for other CPU families
+
+-------------------------------------------------------------------
 Mon Oct 07 12:57:23 UTC 2024 - trenn@suse.de
 
 - Update to version 200:

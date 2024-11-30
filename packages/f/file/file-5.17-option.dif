@@ -2,7 +2,7 @@ Index: file-5.43/src/file.c
 ===================================================================
 --- file-5.43.orig/src/file.c
 +++ file-5.43/src/file.c
-@@ -263,6 +263,8 @@ main(int argc, char *argv[])
+@@ -265,6 +265,8 @@ main(int argc, char *argv[])
  			break;
  		case 'e':
  		case OPT_EXCLUDE_QUIET:
@@ -11,7 +11,7 @@ Index: file-5.43/src/file.c
  			for (i = 0; i < __arraycount(nv); i++)
  				if (strcmp(nv[i].name, optarg) == 0)
  					break;
-@@ -275,7 +277,7 @@ main(int argc, char *argv[])
+@@ -277,7 +279,7 @@ main(int argc, char *argv[])
  			break;
  
  		case 'f':
@@ -20,7 +20,7 @@ Index: file-5.43/src/file.c
  				usage();
  			if (magic == NULL)
  				if ((magic = load(magicfile, flags)) == NULL)
-@@ -285,6 +287,8 @@ main(int argc, char *argv[])
+@@ -287,6 +289,8 @@ main(int argc, char *argv[])
  			++didsomefiles;
  			break;
  		case 'F':
@@ -29,7 +29,7 @@ Index: file-5.43/src/file.c
  			separator = optarg;
  			break;
  		case 'i':
-@@ -297,6 +301,8 @@ main(int argc, char *argv[])
+@@ -299,6 +303,8 @@ main(int argc, char *argv[])
  			action = FILE_LIST;
  			break;
  		case 'm':

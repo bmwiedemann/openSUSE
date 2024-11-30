@@ -2,10 +2,10 @@
  Doc/conf.py                             |    4 +-
  Doc/tools/check-warnings.py             |    3 +
  Doc/tools/extensions/audit_events.py    |   54 ++++++++++++++++----------------
- Doc/tools/extensions/c_annotations.py   |   33 ++++++++-----------
+ Doc/tools/extensions/c_annotations.py   |   37 ++++++++++-----------
  Doc/tools/extensions/glossary_search.py |   10 +----
  Doc/tools/extensions/patchlevel.py      |    9 ++---
- 6 files changed, 55 insertions(+), 58 deletions(-)
+ 6 files changed, 58 insertions(+), 59 deletions(-)
 
 --- a/Doc/conf.py
 +++ b/Doc/conf.py
@@ -251,7 +251,14 @@
      stable_abi_data = {}
      with open(stable_abi_file, encoding="utf8") as fp:
          for record in csv.DictReader(fp):
-@@ -132,7 +128,8 @@ def add_annotations(app: Sphinx, doctree
+@@ -128,11 +124,14 @@ def add_annotations(app: Sphinx, doctree
+             continue
+         if not par[0].get("ids", None):
+             continue
+-        name = par[0]["ids"][0].removeprefix("c.")
++        name = par[0]["ids"][0]
++        if name.startswith("c."):
++            name = name[len("c."):]
          objtype = par["objtype"]
  
          # Stable ABI annotation.
@@ -261,7 +268,7 @@
              if ROLE_TO_OBJECT_TYPE[record.role] != objtype:
                  msg = (
                      f"Object type mismatch in limited API annotation for {name}: "
-@@ -239,7 +236,7 @@ def _unstable_api_annotation() -> nodes.
+@@ -239,7 +238,7 @@ def _unstable_api_annotation() -> nodes.
      )
  
  
@@ -270,7 +277,7 @@
      classes = ["refcount"]
      if result_refs is None:
          rc = sphinx_gettext("Return value: Always NULL.")
-@@ -259,7 +256,7 @@ class LimitedAPIList(SphinxDirective):
+@@ -259,7 +258,7 @@ class LimitedAPIList(SphinxDirective):
      optional_arguments = 0
      final_argument_whitespace = True
  
@@ -279,7 +286,7 @@
          state = self.env.domaindata["c_annotations"]
          content = [
              f"* :c:{record.role}:`{record.name}`"
-@@ -282,7 +279,7 @@ def init_annotations(app: Sphinx) -> Non
+@@ -282,7 +281,7 @@ def init_annotations(app: Sphinx) -> Non
      )
  
  
@@ -288,7 +295,7 @@
      app.add_config_value("refcount_file", "", "env", types={str})
      app.add_config_value("stable_abi_file", "", "env", types={str})
      app.add_directive("limited-api-list", LimitedAPIList)
-@@ -294,10 +291,10 @@ def setup(app: Sphinx) -> ExtensionMetad
+@@ -294,10 +293,10 @@ def setup(app: Sphinx) -> ExtensionMetad
          from sphinx.domains.c import CObject
  
          # monkey-patch C object...

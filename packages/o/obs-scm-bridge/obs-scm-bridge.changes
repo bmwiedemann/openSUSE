@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 29 12:36:46 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- 0.5.3
+  * Switch to ssh url when using the bridge via osc
+
+-------------------------------------------------------------------
 Thu Nov 14 08:43:28 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
 - 0.5.2

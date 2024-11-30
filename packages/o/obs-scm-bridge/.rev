@@ -109,4 +109,13 @@
     of the git tree. boo#1230469</comment>
     <requestid>1224107</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>106c1230163aaf55daf46e81749f333c</srcmd5>
+    <version>0.5.3</version>
+    <time>1732969685</time>
+    <user>anag+factory</user>
+    <comment>- 0.5.3
+  * Switch to ssh url when using the bridge via osc</comment>
+    <requestid>1227319</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,13 @@
+[Unit]
+Description=Falcosidekick
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+ExecStart=/usr/bin/falcosidekick -c /etc/falcosidekick/config.yaml
+
+[Install]
+WantedBy=default.target

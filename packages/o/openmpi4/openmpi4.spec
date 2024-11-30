@@ -42,7 +42,7 @@
 # % define build_static_devel 1
 
 %global pname openmpi
-%define _vers 4_1_6
+%define _vers 4_1_7
 %define m_f_ver 4
 %bcond_with ringdisabled
 
@@ -124,7 +124,7 @@ ExcludeArch:    i586 %arm s390
 %{bcond_with hwloc}
 %endif
 
-%define git_ver .0.439b23db6288
+%define git_ver .0.6b7e5d9911d1
 
 #############################################################################
 #
@@ -133,7 +133,7 @@ ExcludeArch:    i586 %arm s390
 #############################################################################
 
 Name:           %{package_name}%{?testsuite:-testsuite}
-Version:        4.1.6
+Version:        4.1.7
 Release:        0
 Summary:        An implementation of MPI/SHMEM (Version %{m_f_ver})
 License:        BSD-3-Clause

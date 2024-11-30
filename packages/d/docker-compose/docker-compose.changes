@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Nov 29 12:45:19 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.31.0:
+  * bump containerd to v1.7,24
+  * bump google.golang.org/grpc to v1.68.0
+  * build(deps): bump github.com/moby/buildkit from 0.17.1 to
+    0.17.2
+  * build(deps): bump github.com/compose-spec/compose-go/v2
+  * only stop dependent containers ... if there's some
+  * disable TestNetworkConfigChanged which is unstable on CI
+  * only check attached networks on running containers
+  * fix: commit tests
+  * feat: add commit command
+  * run build tests against bake
+  * delegate build to buildx bake
+  * build(deps): bump github.com/stretchr/testify from 1.9.0 to
+    1.10.0
+  * use service.stop to stop dependent containers
+  * Update wait-timeout flag usage to include the unit
+  * go.mod: github.com/docker/cli v27.4.0-rc.2
+  * go.mod: github.com/docker/docker v27.4.0-rc.2
+  * go.mod: github.com/docker/cli 8d1bacae3e49 (v27.4.0-rc.2-dev)
+  * go.mod: github.com/docker/cli v27.4.0-rc.1
+  * go.mod: github.com/docker/docker v27.4.0-rc.1
+  * Update pkg/compose/convergence.go
+  * detect network config changes and recreate if needed
+  * go.mod: github.com/docker/buildx v0.18.0
+  * go.mod: github.com/moby/buildkit v0.17.1
+  * gha: test against docker engine v27.4.0
+  * push empty descriptor layer when using OCI version 1.1 for
+    Compose artifact it fixes a repository creation issue when
+    pushing the 1st time a Compose OCI artifact on the Hub
+  * remove ddev e2e tests
+  * implement remove-orphans on run
+  * ci: enable testifylint linter
+  * Emit events for building images
+  * Fix compose images that reutn a different image with the same
+    ID
+  * remove obsolete containers first on scale down
+  * pass stal bot inactivity limit from 6 to 3 months
+  * fix(config): Print service names with --no-interpolate
+  * build(deps): bump golang.org/x/sys from 0.26.0 to 0.27.0
+  * build(deps): bump golang.org/x/sync from 0.8.0 to 0.9.0
+
+-------------------------------------------------------------------
 Tue Nov 12 06:22:28 UTC 2024 - madhankumar.chellamuthu@suse.com
 
 - Update to version 2.30.3:

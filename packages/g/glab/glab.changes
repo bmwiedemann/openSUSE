@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Nov 29 08:29:43 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.50.0:
+  * feat(release): "release create --publish-to-catalog" flag
+  * feat: add environment scope for export
+  * chore(deps): update dependency axios to ^1.7.8
+  * feat(label list): flag to list group labels
+  * chore(deps): update module github.com/stretchr/testify to
+    v1.10.0
+  * feat(auth): support CI JOB TOKEN
+  * refactor: Fix some package names
+  * chore(deps): update module k8s.io/client-go to v0.31.3
+  * fix(cluster agent): constructing KAS Kubernetes API Proxy URL
+  * chore(dep): update cross-spawn
+  * test: Add basic stack sync testing
+  * chore(deps): update dependency @commitlint/config-conventional
+    ^19.6.0
+  * chore(deps): update dependency @commitlint/lint to ^19.6.0
+  * fix: adjust test data for new go-gitlab release
+  * chore(deps): update module github.com/xanzy/go-gitlab to
+    v0.114.0
+  * docs(debug): add information about debugging glab
+  * feat(test): Integration test for create mr with recover option
+
+-------------------------------------------------------------------
 Fri Nov 15 07:19:50 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.49.0:

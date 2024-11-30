@@ -1,6 +1,11 @@
 -------------------------------------------------------------------
-Thu Nov 14 07:06:20 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+Wed Nov 13 13:25:01 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
+- Add CVE-2024-11168-validation-IPv6-addrs.patch
+  fixing bsc#1233307 (CVE-2024-11168,
+  gh#python/cpython#103848): Improper validation of IPv6 and
+  IPvFuture addresses.
+- Add ipaddress module from https://github.com/phihag/ipaddress
 - Remove -IVendor/ from python-config boo#1231795
 
 -------------------------------------------------------------------

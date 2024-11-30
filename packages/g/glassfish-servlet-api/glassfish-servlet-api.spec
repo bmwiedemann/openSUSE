@@ -18,7 +18,7 @@
 
 %global artifactId javax.servlet-api
 Name:           glassfish-servlet-api
-Version:        3.1.0
+Version:        4.0.1
 Release:        0
 Summary:        Java Servlet API
 License:        Apache-2.0 AND (CDDL-1.0 OR GPL-2.0-only WITH Classpath-exception-2.0)

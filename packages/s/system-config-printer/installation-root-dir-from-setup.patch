@@ -1,0 +1,35 @@
+From 823a13f4be0e3fc025717088e02275839aa86a81 Mon Sep 17 00:00:00 2001
+From: Rafael Fontenelle <rffontenelle@users.noreply.github.com>
+Date: Fri, 3 May 2024 18:44:44 -0300
+Subject: [PATCH] Set installation root dir from setup.py
+
+---
+ Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: system-config-printer-1.5.18/Makefile.am
+===================================================================
+--- system-config-printer-1.5.18.orig/Makefile.am
++++ system-config-printer-1.5.18/Makefile.am
+@@ -63,7 +63,7 @@ all-local: .stamp-distutils-in-builddir
+ 
+ # Use distutils to install the module.
+ install-exec-local: .stamp-distutils-in-builddir
+-	$(PYTHON) setup.py install --prefix=$(DESTDIR)$(prefix)
++	$(PYTHON) setup.py install --root=$(DESTDIR) --prefix=$(prefix)
+ 
+ # Uninstall the module, crossing our fingers that we know enough
+ # about how distutils works to do this.  Unfortunately, distutils
+Index: system-config-printer-1.5.18/Makefile.in
+===================================================================
+--- system-config-printer-1.5.18.orig/Makefile.in
++++ system-config-printer-1.5.18/Makefile.in
+@@ -1955,7 +1955,7 @@ all-local: .stamp-distutils-in-builddir
+ 
+ # Use distutils to install the module.
+ install-exec-local: .stamp-distutils-in-builddir
+-	$(PYTHON) setup.py install --prefix=$(DESTDIR)$(prefix)
++	$(PYTHON) setup.py install --root=$(DESTDIR) --prefix=$(prefix)
+ 
+ # Uninstall the module, crossing our fingers that we know enough
+ # about how distutils works to do this.  Unfortunately, distutils

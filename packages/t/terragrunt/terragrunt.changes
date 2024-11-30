@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Nov 29 12:21:34 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.69.3:
+  * fix: `error_hook` processing (#3608)
+
+-------------------------------------------------------------------
+Fri Nov 29 12:15:34 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.69.2:
+  * fix: Wrap TF stdout and stderr in JSON (#3602)
+  * wrong environment name on document (#3600)
+  * build(deps): bump github.com/aws/aws-sdk-go-v2 from 1.30.3 to
+    1.32.5 (#3594)
+  * build(deps): bump cloud.google.com/go/storage from 1.46.0 to
+    1.47.0 (#3593)
+
+-------------------------------------------------------------------
 Tue Nov 26 13:46:32 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.69.1:

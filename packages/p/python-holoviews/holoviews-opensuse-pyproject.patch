@@ -1,0 +1,31 @@
+diff -ur holoviews-1.20.0.orig/pyproject.toml holoviews-1.20.0/pyproject.toml
+--- holoviews-1.20.0.orig/pyproject.toml	2024-11-28 22:41:42.243258842 +0100
++++ holoviews-1.20.0/pyproject.toml	2024-11-28 22:49:47.345433935 +0100
+@@ -70,7 +70,7 @@
+ version-file = "holoviews/_version.py"
+ 
+ [tool.pytest.ini_options]
+-addopts = ["--strict-config", "--strict-markers", "--color=yes"]
++addopts = ["--strict-config", "--strict-markers"]
+ asyncio_mode = "auto"
+ asyncio_default_fixture_loop_scope = "function"
+ minversion = "7"
+@@ -114,8 +114,6 @@
+     # 2024-01: Pandas 2.2
+     "ignore:\\s*Pyarrow will become a required dependency of pandas:DeprecationWarning", # Will go away by itself in Pandas 3.0
+     "ignore:Passing a (SingleBlockManager|BlockManager) to (Series|GeoSeries|DataFrame|GeoDataFrame) is deprecated:DeprecationWarning", # https://github.com/holoviz/spatialpandas/issues/137
+-    # 2024-04
+-    "ignore:No data was collected:coverage.exceptions.CoverageWarning", # https://github.com/pytest-dev/pytest-cov/issues/627
+     # 2024-05
+     "ignore:backend2gui is deprecated since IPython 8.24:DeprecationWarning", # https://github.com/holoviz/holoviews/pull/6227#issuecomment-2104401396
+     # 2024-06
+@@ -126,6 +124,9 @@
+     "ignore: Jitify is performing a one-time only warm::cupy", # OK,
+     # 2024-10
+     "ignore::ResourceWarning",
++    # OBS
++    "ignore::FutureWarning",
++    "ignore:\\s*The dash_core_components package is deprecated:UserWarning",
+ ]
+ 
+ [tool.coverage]

@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Fri Nov 29 08:37:19 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20241129.2509e96:
+  * Rename migration-tool to opensuse-migration-tool
+  * Ensure that we use opensuse-migration-tool name consistently
+  * Rename migration-tool.sh to opensuse-migration-tool
+  * Use /usr/share/migration-tool/SLES.prod
+
+-------------------------------------------------------------------
+Thu Nov 28 23:33:16 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20241129.c1d6038:
+  * Use /usr/share/migration-tool/SLES.prod
+  * Working migration to pretty much all releases
+  * Fix branding for SLE
+  * Replace macro with etc as macro doesn't work
+  * rpmsave Leap files after migration to TW/Slowroll
+  * Update README.md
+  * Fix license to Apache 2
+  * Support for Leap->SLE
+  * Fix repo naming
+  * Add rpmsaving repos
+
+-------------------------------------------------------------------
+Thu Nov 21 14:38:41 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Initial version from Hackweek

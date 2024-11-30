@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Fri Nov 29 04:47:33 UTC 2024 - william.brown@suse.com
+
+- Remove 389-ds-link-icu-uc.patch - upstreamed
+- Update to version 3.1.1~git57.65773c3:
+  * Issue 6340 - RFE - extract keys once (#6413)
+  * Issue 6415 - BUG - Incorrect icu linking (#6416)
+  * Issue 6420 - Update dsidm user get_dn test (#6421)
+  * Issue 6258 - Resolve race condition for two tests in health_config.py
+  * Bump cross-spawn from 7.0.3 to 7.0.6 in /src/cockpit/389-console (#6407)
+  * Issue 6386 - backup/restore broken after db log rotation (#6406)
+  * Issue 6401 - Remove logging macros
+  * Issue 6404 - UI - Add npm pretter package
+  * Issue 6374 - nsslapd-mdb-max-dbs autotuning doesn't work properly (#6400)
+  * Issue 5842 - Add log buffering for error log
+  * Issue 6397 - Remove deprecated setting for HR time stamps in logs
+  * Issue 6390 - Adjust cleanAllRUV max per txn and interval limits
+  * Issue 6349 - RFE - extract keys once (#6363) (#6394)
+  * Issue 6387 - Use make macro in the spec file
+  * Issue 6359 - Add exception to GPL license in license tag
+  * Issue 6381 - CleanAllRUV - move changelog purging to the very end of the task
+  * Issue 5920 - pamModuleIsThreadSafe is missing in the schema
+  * Issue 6377 - syntax error in setup.py (#6378)
+  * Issue 6349 - RFE - Use previously extracted key path (#6363)
+  * Issue 6067 - Update dsidm to prioritize basedn from .dsrc over interactive input (#6362)
+  * Issue 6347 - better fix for desyncronized vlv cache (#6358)
+  * Issue 6243 - dsctl bdb2mdb should cleanly fail if bundled libdb is not available (#6351)
+  * Issue 6331 - UI - Instance fails to load when DB backup directory doesn't exist (#6332)
+  * Issue 6356 - On LMDB, after an update the impact VLV index, the vlv recno cache is not systematically cleared (#6357)
+  * Issue 6056 - WebUI supports only instances with BDB (#6299)
+  * Issue 6339 - Address Coverity scan issues in memberof and bdb_layer (#6353)
+  * Issue 6328 - vlv control may not be logged (#6354)
+  * Issue 6347 - VLV search sometime fails with operation error (#6349)
+  * Issue 6343 - Improve online import robustness when the server is under load
+  * Issue 6345 - Ensure all slapi_log_err calls end format strings with newline character \n (#6346)
+  * Issue 6064 - bdb2mdb shows errors (#6341)
+  * Issue 6336 - Fix failing CI tests (roles) due to slow import (#6337)
+  * Fix duplicate detection logic by ensuring exact match on string length (#6333)
+  * Issue 6304 - RFE when memberof is enabled, defer updates of members from the update of the group (#6305)
+  * Issue 6329 - lmdb typo in error log notice message (#6330)
+  * Issue 6324 - Provide more information in the error message during setup_ol_tls_conn() (#6325)
+  * Issue 5965 - UI, CLI - Fix Account Policy Plugin functionality issues (#6323)
+  * Issue 6188 - Check if nsslapd-haproxy-trusted-ip attribute is returned in default schema
+  * Issue 6319 - bdb subpackage has `%description` in the wrong place
+  * Issue 6321 - lib389 get_db_lib function may returns the wrong db type (#6322)
+  * Issue 6245 - Fix some other coverity scan regressions (#6273)
+  * Issue 6316 - lmdb reindex is broken if index type is specified (#6318)
+  * Issue 6090 - Fix dbscan options and man pages (#6315)
+  * Issue 6307 - Wrong set of entries returned for some search filters (#6308)
+
+-------------------------------------------------------------------
 Thu Nov 21 09:26:16 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 389-ds-link-icu-uc.patch: properly link to icu-uc as well,

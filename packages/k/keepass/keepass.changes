@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 28 18:58:41 UTC 2024 - Matthias Bach <marix@marix.org> - 2.57.1
+
+- Update to 2.57.1
+  * Added options 'Show confirmation dialog when running/opening a cmd:// URI', 'Show confirmation dialog when evaluating/replacing a {CMD:...} placeholder' and 'Show confirmation dialog when evaluating/replacing a {REF:P@...} placeholder (action)' (in 'Tools' → 'Options' → tab 'Interface (1)', turned on by default).
+  * Added option 'Follow redirects' on the 'Advanced' tab page of the 'Open From URL' dialog.
+  * When an exception occurs while creating/compiling a PLGX file, streams/readers/writers are now closed immediately.
+  * When an exception occurs while a plugin performs a certain web request, streams/readers are now closed immediately.
+  * Removed Spamex.com import module.
+  * Minor other improvements.
+
+-------------------------------------------------------------------
 Sun Jun  2 13:50:14 UTC 2024 - Matthias Bach <marix@marix.org> - 2.57
 
 - Update to 2.57

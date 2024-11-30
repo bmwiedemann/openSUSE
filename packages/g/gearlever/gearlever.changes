@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov 28 20:15:55 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to 2.3.0:
+  * Added a confirmation modal when removing an app
+- Update to 2.2.1:
+  * Fixed an issue causing update errors for some apps
+- Update to 2.2.0:
+  * Added checks to download the correct AppImage for the current system architecture
+- Update to 2.1.0:
+  * Added an option to fetch updates in the background at system startup
+
+-------------------------------------------------------------------
 Mon Sep 23 19:37:39 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to 2.0.7:

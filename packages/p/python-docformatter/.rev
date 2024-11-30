@@ -65,4 +65,41 @@
     <comment></comment>
     <requestid>894546</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>83e00452fa400289813bff9ac7b82590</srcmd5>
+    <version>1.7.5</version>
+    <time>1732969665</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.7.5:
+  * Features
+    + fix: not recognizing `yield` as a sphinx field name
+    + feat: support epytext style
+    + feat: use tomllib for Python 3.11+
+    + feat: wrap Sphinx style long parameter descriptions
+    + feat: add option for user to provide list of words not to capitalize
+    + Support python 3.11
+  * Bug Fixes
+    + fix: summary with back ticks and sphinx field names with periods
+    + fix: removing newline between Sphinx field lists
+    + fix: wrapping issues with reST directives, quoted URLs, and Sphinx
+      field lists
+    + fix: improper wrapping of short anonymous hyperlnks
+    + fix: removing blank line after import section
+    + fix: IndexError when only URL in long description
+    + fix: removing newline after shebang
+    + fix: not capitalizing first word when summary ends in period
+    + fix: adding newlines around wrapped URL
+    + fix: adding blank line in summary with symbol
+    + fix: remove blank lines after line beginning with 'def'
+    + fix: update URL handling functions
+- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.
+- Add patches:
+  * remove-mock.patch
+    + Do not use external mock module
+  * support-python-312.patch
+    + Support Python 3.12+ changes
+  * do-not-require-venv.patch</comment>
+    <requestid>1227206</requestid>
+  </revision>
 </revisionlist>

@@ -1271,4 +1271,14 @@
 </comment>
     <requestid>1224261</requestid>
   </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>b322fb5a8c7cc89f5a96971c8e135e7b</srcmd5>
+    <version>3.12.7</version>
+    <time>1732969641</time>
+    <user>anag+factory</user>
+    <comment>- Update doc-py38-to-py36.patch to include str.removeprefix
+  replacement.
+</comment>
+    <requestid>1227202</requestid>
+  </revision>
 </revisionlist>

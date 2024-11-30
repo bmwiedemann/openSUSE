@@ -1679,4 +1679,36 @@ SPDX format (forwarded request 126065 from babelworx)</comment>
   in various other places, allow these syscalls in seccomp filter.</comment>
     <requestid>1222654</requestid>
   </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>051aa3071dce1618c65a0ad04e4ca577</srcmd5>
+    <version>5.46</version>
+    <time>1732969620</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.46:
+  * Add OFFPOSITIVE
+  * avoid leaking symbols in libmagic
+  * PR/562: jsummers: Search/regex offsets are absolute to the
+    beginning of the file, so adjust them by subtracting the
+    offset that the &quot;use&quot; starts so that we don't double-count it.
+  * PR/543: matshch: bump nbuf so we can get the flags into the buffer.
+  * Add Android elf notes (enh)
+  * Add limit for number of magic warnings allowed
+  * check regex bounds (found by clusterfuzz)
+- Remove patch file-5.45-type_t.dif now upstream
+- Port patches
+  * file-4.24-autoconf.dif
+  * file-5.17-option.dif
+  * file-5.18-javacheck.dif
+  * file-5.19-biorad.dif
+  * file-5.19-printf.dif
+  * file-5.19-zip2.0.dif
+  * file-5.22-elf.dif
+  * file-5.28-btrfs-image.dif
+  * file-5.45-type_t.dif
+  * file-secure_getenv.patch
+- Port patch file-5.45.dif and rename it to file-5.46.dif
+  * Note that our kernel magics do not fit anymore as
+    upstream now has a huge rework and extended features</comment>
+    <requestid>1227112</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 25 12:47:21 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add patch to relax python-portalocker version dependency in setup.py
+  + act_relax-portalocker.patch
+- Add %{_sitelibdir}/azure/cli directory in %files section
+- Drop superflouos azure-cli-core from BuildDepends
+- Drop extra LICENSE.txt as upstream now ships its own
+- Relax python-portalocker version dependency in Requires
+
+-------------------------------------------------------------------
 Wed May 22 10:09:11 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add azure-cli-core to BuildRequires and Requires

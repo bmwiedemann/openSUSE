@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 28 19:54:29 UTC 2024 - RN <R_Nik_C@proton.me>
+
+- Update to version 3.3.0:
+  * Migrate data from older Cantata versions
+  * Fix libVLC build
+  * Fix MPRIS desktopEntry property
+  * Fix deprecated FFMPEG function call
+  * Fix podcast saving and date retrieval
+  * Use embedded cover art from MPD server when needed
+
+-------------------------------------------------------------------
 Tue Oct 22 01:05:46 UTC 2024 - Илья Индиго <ilya@ilya.top>
 
 - Added qt6-sql-sqlite dependency.

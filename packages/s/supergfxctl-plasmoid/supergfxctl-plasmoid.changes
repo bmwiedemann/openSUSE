@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Thu Nov 21 15:54:50 UTC 2024 - RN <R_Nik_C@proton.me>
+
+- Clean up the .spec
+- Update to version 2.1.1:
+  * add context to polish translation
+  * 2.1.1
+  * fix translation conflict
+  * list solid as dependency in README
+  * 2.1.0 :tada:
+  * edit translation guide for metadata.desktop that was deleted since plasma 6
+  * add korean translations for new config
+  * implement dynamic plasmoid status
+  * implement plasmoid status on qml side
+  * set default GfxPower to unknown
+
+-------------------------------------------------------------------
+Sun Mar 17 22:44:53 UTC 2024 - RN <R_Nik_C@proton.me>
+- Version v2.0.0 
+- Moved to plasma 6.
+
+-------------------------------------------------------------------
+Tue Nov 14 13:56:07 UTC 2023 - RN <R_Nik_C@proton.me>
+- Version v1.3.1

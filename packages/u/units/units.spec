@@ -19,7 +19,7 @@
 
 %bcond_without	units_cur
 Name:           units
-Version:        2.23
+Version:        2.24
 Release:        0
 Summary:        Conversion Utility
 License:        GPL-3.0-or-later
@@ -55,7 +55,7 @@ export LDFLAGS="-pie"
 %install
 %make_install
 ln -fsv ../../..%{_sharedstatedir}/units/currency.units %{buildroot}%{_datadir}/units
-%python3_fix_shebang
+%{python3_fix_shebang}
 
 %check
 %make_build check

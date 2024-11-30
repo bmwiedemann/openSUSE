@@ -8,7 +8,7 @@
 
   <property file="build.properties"/>
 
-  <property name="build.finalName" value="javax.servlet-api-3.1.0"/>
+  <property name="build.finalName" value="javax.servlet-api-4.0.1"/>
   <property name="build.dir" value="target"/>
   <property name="build.outputDir" value="${build.dir}/classes"/>
   <property name="build.srcDir.0" value="src/main/java"/>

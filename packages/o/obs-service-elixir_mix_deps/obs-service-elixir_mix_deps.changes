@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Wed Nov 27 10:58:04 UTC 2024 - alessio.biancalana@suse.com
+
+- Update to version 0.2.0~0:
+  * Add outdir to the service file
+  * Strip a useless line in README
+
+-------------------------------------------------------------------
+Sat Nov 23 11:31:07 UTC 2024 - Alessio Biancalana <alessio.biancalana@suse.com>
+
+- First version of the package

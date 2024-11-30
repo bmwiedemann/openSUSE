@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Nov 29 12:21:14 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 6.5:
+  * Release v6.5
+  * Upgrade dependencies
+  * Introduce “basic” colour theme
+  * Upgrade Go version and all dependencies
+  * Add “resume” flags to `klog switch`
+  * Sort warn flags alphabetically
+  * Fix output alignment with Unicode characters (#324)
+  * Add config option to disable warnings permanently
+  * Enable CI on pull requests
+
+-------------------------------------------------------------------
 Tue Jul 16 20:19:38 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 6.4:

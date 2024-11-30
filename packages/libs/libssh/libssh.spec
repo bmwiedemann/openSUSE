@@ -19,31 +19,24 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define pkg_suffix -test
-%ifarch s390 s390x ppc64le
-  %define slow_test_system "ON"
-%else
-  %define slow_test_system "OFF"
-%endif
 %bcond_without test
 %else
 %define pkg_suffix %{nil}
 %bcond_with test
 %endif
 Name:           libssh%{pkg_suffix}
-Version:        0.10.6
+Version:        0.11.1
 Release:        0
 Summary:        The SSH library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.libssh.org
-Source0:        https://www.libssh.org/files/0.10/libssh-%{version}.tar.xz
-Source1:        https://www.libssh.org/files/0.10/libssh-%{version}.tar.xz.asc
-Source2:        https://cryptomilk.org/gpgkey-8DFF53E18F2ABC8D8F3C92237EE0FC4DCC014E3D.gpg#/libssh.keyring
+Source0:        https://www.libssh.org/files/0.11/libssh-%{version}.tar.xz
+Source1:        https://www.libssh.org/files/0.11/libssh-%{version}.tar.xz.asc
+Source2:        https://www.libssh.org/files/0x03D5DF8CFDD3E8E7_libssh_libssh_org_gpgkey.asc#/libssh.keyring
 Source3:        libssh_client.config
 Source4:        libssh_server.config
 Source99:       baselibs.conf
-Patch0:         0001-disable-timeout-test-on-slow-buildsystems.patch
-Patch1:         https://gitlab.com/libssh/libssh-mirror/-/merge_requests/431.patch#/libssh-fix-ipv6-hostname-regression.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  krb5-devel
@@ -88,6 +81,7 @@ confused with libssh2 available from https://www.libssh2.org (libssh2 package)
 %package config
 Summary:        SSH library configuration files
 Group:          Productivity/Networking/SSH
+BuildArch:      noarch
 
 %description config
 Configuration files for the SSH library.
@@ -109,7 +103,6 @@ Development headers for the SSH library.
     -DCMAKE_C_FLAGS:STRING="%{optflags} -DOPENSSL_LOAD_CONF" \
 %if %{with test}
     -DUNIT_TESTING="ON" \
-    -DSLOW_TEST_SYSTEM=%{slow_test_system} \
 %if 0%{?suse_version} > 1550
     -DCLIENT_TESTING=ON \
     -DSERVER_TESTING=ON \

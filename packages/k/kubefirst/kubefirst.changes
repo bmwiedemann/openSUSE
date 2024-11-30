@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Nov 29 12:19:48 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.7.7:
+  * revert bubbletea changes
+
+-------------------------------------------------------------------
+Fri Nov 29 12:15:48 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.7.6:
+  * set next macro chart for kubefirst - 2.7.6
+  * Bump Go versions.
+  * remove stat
+  * fix: delete k1dir instead of kubeconfig file
+
+-------------------------------------------------------------------
 Fri Nov 22 09:34:09 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.7.5:

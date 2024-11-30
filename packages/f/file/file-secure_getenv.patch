@@ -6,7 +6,7 @@
 
 --- file-5.42/configure.ac
 +++ file-5.42/configure.ac	2022-06-13 08:34:50.347521415 +0000
-@@ -130,6 +130,8 @@ if test "$enable_xzlib" != "no"; then
+@@ -138,6 +138,8 @@ if test "$enable_xzlib" != "no"; then
  fi
  AC_CHECK_TYPE([sig_t],[AC_DEFINE([HAVE_SIG_T],1,[Have sig_t type])],,[#include <signal.h>])
  
@@ -17,7 +17,7 @@
  AC_TYPE_SIZE_T
 --- file-5.42/src/file.h
 +++ file-5.42/src/file.h	2022-06-13 08:34:50.347521415 +0000
-@@ -726,4 +726,12 @@ static const char *rcsid(const char *p)
+@@ -735,4 +735,12 @@ static const char *rcsid(const char *p)
  #define __RCSID(a)
  #endif
  

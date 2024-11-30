@@ -38,7 +38,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Fabtests provides a set of examples that uses libfabric, a fabric software library.
 
 %prep
-%autosetup -p1 -n  libfabric-%{version}%{git_ver}
+%autosetup -p0 -n  libfabric-%{version}%{git_ver}
 
 %build
 cd fabtests

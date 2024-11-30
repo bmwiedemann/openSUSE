@@ -203,11 +203,6 @@ Patch07:        bpo-31046_ensurepip_honours_prefix.patch
 # PATCH-FIX-SLE skip-test_pyobject_freed_is_freed.patch mcepl@suse.com
 # skip a test failing on SLE-15
 Patch09:        skip-test_pyobject_freed_is_freed.patch
-# PATCH-FIX-OPENSUSE CVE-2023-52425-libexpat-2.6.0-backport-15.6.patch
-# This problem on libexpat is patched on 15.6 without version
-# update, this patch changes the tests to match the libexpat provided
-# by SUSE
-Patch39:        CVE-2023-52425-libexpat-2.6.0-backport-15.6.patch
 # PATCH-FIX-OPENSUSE fix-test-recursion-limit-15.6.patch gh#python/cpython#115083
 # Skip some failing tests in test_compile for i586 arch in 15.6.
 Patch40:        fix-test-recursion-limit-15.6.patch

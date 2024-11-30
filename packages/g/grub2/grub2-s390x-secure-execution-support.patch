@@ -1,0 +1,361 @@
+From 023b569648eece7a7fe2ae38d731185a1f2abeb5 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Fri, 23 Aug 2024 09:57:03 +0800
+Subject: [PATCH] s390x: add Secure Execution support
+
+To support Secure Execution, 2 extra files and 5 environment variables
+are introduced.
+
+- se-parm.conf.in
+  The template file for the kernel parameter to be used by 'genprotimg'
+
+- se-zipl2grub.conf.in
+  The template file of zipl.conf for secure execution
+
+- SUSE_S390_SE_ENABLE
+  The variable to enable s390x Secure Execution
+
+- SUSE_S390_SE_HOST_KEY
+  The variable to set the file list to the host key documents
+
+- SUSE_S390_SE_HOST_KEY_SIGNING_KEY
+  The variable to set the file list to the signing key certificates
+
+- SUSE_S390_SE_CA_CERT
+  The variable to set the file path to the CA certificate
+
+- SUSE_S390_SE_REVOCATION_LIST
+  The variable to set the file list of the host key revocation lists
+
+When enabling Secure Execution, the zipl initrd is generated in
+"/dev/shm/zipl-se" instead of "/boot/zipl" because the zipl initrd
+may contain the LUKS key for the encrypted root partition. Then,
+'genprotimg' stores the encrypted image, a combination of the zipl
+kernel, zipl initrd, and the kernel parameters, as
+"/boot/secure-linux-$version". To make the image ready for zipl,
+it is copied to "/boot/zipl/secure-linux-$version" and linked to
+"/boot/zipl/secure-linux" which is expected by the zipl config.
+---
+ Makefile.util.def               |  17 +++
+ util/s390x/se-parm.conf.in      |   1 +
+ util/s390x/se-zipl2grub.conf.in |  17 +++
+ util/s390x/zipl2grub.pl.in      | 202 ++++++++++++++++++++++++++------
+ 4 files changed, 198 insertions(+), 39 deletions(-)
+ create mode 100644 util/s390x/se-parm.conf.in
+ create mode 100644 util/s390x/se-zipl2grub.conf.in
+
+diff --git a/Makefile.util.def b/Makefile.util.def
+index ffedea24a..722542933 100644
+--- a/Makefile.util.def
++++ b/Makefile.util.def
+@@ -796,6 +796,23 @@ data = {
+   emu_condition = COND_s390x;
+ };
+ 
++data = {
++  name = se-parm.conf.in;
++  common = util/s390x/se-parm.conf.in;
++  installdir = grubconf;
++  enable = emu;
++  emu_condition = COND_s390x;
++};
++
++data = {
++  name = se-zipl2grub.conf.in;
++  common = util/s390x/se-zipl2grub.conf.in;
++  installdir = grubconf;
++  enable = emu;
++  emu_condition = COND_s390x;
++};
++
++
+ script = {
+   name = dracut-module-setup.sh;
+   common = util/s390x/dracut-module-setup.sh.in;
+diff --git a/util/s390x/se-parm.conf.in b/util/s390x/se-parm.conf.in
+new file mode 100644
+index 000000000..63959b753
+--- /dev/null
++++ b/util/s390x/se-parm.conf.in
+@@ -0,0 +1 @@
++root=@GRUB_DEVICE@ @GRUB_EMU_CONMODE@ @GRUB_CMDLINE_LINUX@ @GRUB_CMDLINE_LINUX_DEFAULT@ initgrub quiet splash=silent plymouth.enable=0
+diff --git a/util/s390x/se-zipl2grub.conf.in b/util/s390x/se-zipl2grub.conf.in
+new file mode 100644
+index 000000000..e9feeb9b6
+--- /dev/null
++++ b/util/s390x/se-zipl2grub.conf.in
+@@ -0,0 +1,17 @@
++## This is the template for '@zipldir@/config' and is subject to
++## rpm's %config file handling in case of grub2-s390x-emu package update.
++
++[defaultboot]
++defaultmenu = menu
++
++[grub2-secure]
++    target = @zipldir@
++    image = @zipldir@/secure-linux
++
++:menu
++    target = @zipldir@
++    timeout = 60
++    default = 1
++    prompt = 0
++    secure = @SUSE_SECURE_BOOT@
++    1 = grub2-secure
+diff --git a/util/s390x/zipl2grub.pl.in b/util/s390x/zipl2grub.pl.in
+index 46b902209..930ecc4cd 100644
+--- a/util/s390x/zipl2grub.pl.in
++++ b/util/s390x/zipl2grub.pl.in
+@@ -12,10 +12,19 @@ my $definitrd = "/boot/initrd";
+ my $Image = "$defimage";
+ my $previous = ".prev";
+ my $zipldir = "";
++my $imgdir = "";
+ my $running = "";
+ my $refresh = 1; # needs to default to "on" until most bugs are shaken out!
+ my $force = 0;
+ my $hostonly = 1;
++my $secure_exec = 0;
++my $sehostkey = "";
++my $sesignkey = "";
++my $secacert = "";
++my $serevoke = "";
++my $separm= "";
++my $se_zipconf = '@sysconfdir@/default/se-zipl2grub.conf.in';
++my $se_kernparm = '@sysconfdir@/default/se-parm.conf.in';
+ my $verbose = 0;
+ my $debug = 0;
+ my $miss = 0;
+@@ -183,6 +192,55 @@ sub ChkInitrd($$) {
+   return $found;
+ }
+ 
++sub GenSEImage($$$$) {
++  my( $kernel, $initrd, $parm, $out_image) = @_;
++
++  # genprotimg -i <kernel-image-file> \
++  #            -r <initrd-file>> \
++  #            -p <parm-file> \
++  #            --host-key-document <host-key-doc> \
++  #            --cert ibm-z-host-key-signing.crt \
++  #            --cert DigiCertCA.crt \
++  #            --crl revocation.crl \
++  #            -o /boot/zipl/secure-linux
++
++  my @C = ( "genprotimg", "-i", $kernel, "-r", $initrd, "-p", $parm,
++	    "--cert", $secacert);
++
++  # Handle the host key document list
++  if ($sehostkey) {
++    my @sehostkey_list = split('[,\s]+', $sehostkey);
++    my $hkd;
++    foreach $hkd (@sehostkey_list) {
++      Panic( 1, "$C: host key document '$hkd' not readable!?\n") unless (-r $hkd);
++      push @C, "--host-key-document", $hkd;
++    }
++  }
++
++  # Handle the signing key list
++  if ($sesignkey) {
++    my @sesignkey_list = split('[,\s]+', $sesignkey);
++    my $signkey;
++    foreach $signkey (@sesignkey_list) {
++      Panic( 1, "$C: signing key '$signkey' not readable!?\n") unless (-r $signkey);
++      push @C, "--cert", $signkey;
++    }
++  }
++
++  # Handle the revocation list files
++  if ($serevoke) {
++    my @serevoke_list = split('[,\s]+', $serevoke);
++    my $crl;
++    foreach $crl (@serevoke_list) {
++      Panic( 1, "$C: revocation list '$crl' not readable!?\n") unless (-r $crl);
++      push @C, "--crl", $crl;
++    }
++  }
++
++  push @C, "-o", "$out_image";
++  System( @C);
++}
++
+ sub Usage($) {
+   my @cat = ("",
+ 	"Parameter error.",
+@@ -401,49 +459,91 @@ if ( $debug && $verbose > 2 ) {
+   }
+ }
+ 
+-open( IN, "< $in") ||
+-   Panic( 1, "$C: Failed to open 'zipl.conf' template: $!.\n");
+-while ( <IN> ) {
+-  Info( 4, "$.. <$_$.. >");
+-  if ( $. == 1 && m{^## This} ) {
+-    $_ = "## This file was written by 'grub2-install/$C'\n" .
+-	 "## filling '$in' as template\n";
+-  } elsif ( $. == 2 && m{^## rpm's} ) {
+-    $_ = "## with values from '$default'.\n" .
+-	 "## In-place modifications will eventually go missing!\n";
++#
++# s390x Secure Execution variables
++#
++# SUSE_S390_SE_ENABLE: enabling s390x Secure Execution
++# SUSE_S390_SE_HOST_KEY: the host key
++# SUSE_S390_SE_HOST_KEY_SIGNING_KEY: the signing key of the host key
++# SUSE_S390_SE_CA_CERT: the CA certificate
++# SUSE_S390_SE_REVOCATION_LIST: the revocation list
++#
++if ( -r $C{SUSE_S390_SE_HOST_KEY} && -r $C{SUSE_S390_SE_HOST_KEY_SIGNING_KEY} &&
++     -r $C{SUSE_S390_SE_CA_CERT}) {
++
++  $sehostkey = $C{SUSE_S390_SE_HOST_KEY};
++  $sesignkey = $C{SUSE_S390_SE_HOST_KEY_SIGNING_KEY};
++  $secacert = $C{SUSE_S390_SE_CA_CERT};
++
++  $serevoke = $C{SUSE_S390_SE_REVOCATION_LIST} if $C{SUSE_S390_SE_REVOCATION_LIST};
++
++  if ( $C{SUSE_S390_SE_ENABLE} =~ m{^(yes|true|1)$} ) {
++    $secure_exec = 1;
+   }
+-  while ( m{\@([^\@\s]+)\@} ) {
+-    my $k = $1;
+-    my $v;
+-    if ( exists( $C{$k}) ) {
+-      $v = $C{$k};
+-    } elsif ( exists( $Mandatory{$k}) ) {
+-      $v =  "$k";
+-      $miss++;
+-    } else {
+-      $v = "";
++}
++
++sub MkConfig($$) {
++  my( $template, $name) = @_;
++  open( IN, "< $template") ||
++     Panic( 1, "$C: Failed to open '$name' template: $!.\n");
++  while ( <IN> ) {
++    Info( 4, "$.. <$_$.. >");
++    if ( $. == 1 && m{^## This} ) {
++      $_ = "## This file was written by 'grub2-install/$C'\n" .
++	   "## filling '$template' as template\n";
++    } elsif ( $. == 2 && m{^## rpm's} ) {
++      $_ = "## with values from '$default'.\n" .
++	   "## In-place modifications will eventually go missing!\n";
+     }
+-    if ($k eq "GRUB_DEVICE") {
+-      if (($v !~ /^UUID/ && ! -e $v) ||
+-          (exists( $C{SUSE_REMOVE_LINUX_ROOT_PARAM}) &&
+-          $C{SUSE_REMOVE_LINUX_ROOT_PARAM} eq "true")) {
+-        s{root=\@$k\@}{}g;
+-        next;
++    while ( m{\@([^\@\s]+)\@} ) {
++      my $k = $1;
++      my $v;
++      if ( exists( $C{$k}) ) {
++	$v = $C{$k};
++      } elsif ( exists( $Mandatory{$k}) ) {
++	$v =  "$k";
++	$miss++;
++      } else {
++	$v = "";
++      }
++      if ($k eq "GRUB_DEVICE") {
++	if (($v !~ /^UUID/ && ! -e $v) ||
++	  (exists( $C{SUSE_REMOVE_LINUX_ROOT_PARAM}) &&
++	  $C{SUSE_REMOVE_LINUX_ROOT_PARAM} eq "true")) {
++	    s{root=\@$k\@}{}g;
++	    next;
++	}
+       }
++      s{\@$k\@}{$v}g;
+     }
+-    s{\@$k\@}{$v}g;
++    Info( 3, $_);
++    $cfg .= $_;
++  }
++  if ( $miss ) {
++    Info( 1, "Partially filled config:\n===\n$cfg===\n");
++    Panic( 1, "$C: '$name' template could not be filled. \n");
+   }
+-  Info( 3, $_);
+-  $cfg .= $_;
+ }
+-if ( $miss ) {
+-  Info( 1, "Partially filled config:\n===\n$cfg===\n");
+-  Panic( 1, "$C: 'zipl.conf' template could not be filled. \n");
++
++if ( $secure_exec ) {
++  # create the kernel parameter file
++  MkConfig($se_kernparm, "parm.conf");
++  $separm = $cfg;
++
++  # clean up $cfg to reuse the variable for zipl.conf
++  $cfg = "";
++  MkConfig($se_zipconf, "zipl.conf");
++  $imgdir = "/dev/shm/zipl-se";
++
++  mkdir ($imgdir, 0700) unless (-d $imgdir);
++} else {
++  MkConfig($in, "zipl.conf");
++  $imgdir = $zipldir;
+ }
+ 
+ # copy out kernel and initrd
+-my $ziplimage = "$zipldir/image";
+-my $ziplinitrd = "$zipldir/initrd";
++my $ziplimage = "$imgdir/image";
++my $ziplinitrd = "$imgdir/initrd";
+ 
+ if ( ! $running && ! $force ) {
+   chomp( $running = qx{uname -r});
+@@ -478,18 +578,42 @@ my $initrd = "initrd-$version";
+ $image = "image-$version";
+ 
+ if ( ! -r $ziplimage || ! -r $ziplinitrd || $refresh ) {
+-  BootCopy( $Image, $image, $zipldir, "image");
+-  BootCopy( $initrd, $initrd, $zipldir, "initrd")
++  BootCopy( $Image, $image, $imgdir, "image");
++  BootCopy( $initrd, $initrd, $imgdir, "initrd")
+     if (-r "/boot/$initrd" && ! exists( $fsdev{"/boot"}));
+ }
+-if ( $refresh || ChkInitrd( $zipldir, "initrd") <= 0 ) {
+-  MkInitrd( $initrd, $zipldir, $version);
++if ( $refresh || ChkInitrd( $imgdir, "initrd") <= 0 ) {
++  MkInitrd( $initrd, $imgdir, $version);
+ }
+-if ( ChkInitrd( $zipldir, "initrd") == 0 ) {
++if ( ChkInitrd( $imgdir, "initrd") == 0 ) {
+   Info( 0, "$C: dracut does not work as expected! Help needed!\n");
+   $miss++;
+ }
+ 
++if ( $secure_exec ) {
++  my $seimage = "secure-linux-$version";
++  my $parmconf = "$imgdir/parm.conf";
++  my $bootseimg = "/boot/$seimage";
++
++  # write parm.conf
++  if ( ! $debug ) {
++    open( OUT, "> $parmconf") || die;
++    print( OUT $separm) || die;
++    close( OUT);
++  } else {
++    print( STDERR $separm);
++  }
++
++  # Create the secure-execution image in /boot first
++  GenSEImage( $ziplimage, $ziplinitrd, $parmconf, $bootseimg );
++
++  # check /boot/$seimage
++  Panic( 1, "$C: Secure Image '$bootseimg' not readable!?\n") unless (-r "$bootseimg");
++
++  # copy /boot/$seimage to $zipldir
++  BootCopy($seimage, $seimage, $zipldir, "secure-linux");
++}
++
+ # write zipl config file
+ my $ziplconf = "$zipldir/config";
+ $cfg =~ s{#@}{}g if ( -r "$ziplimage$previous"  && -r "$ziplinitrd$previous" );
+-- 
+2.43.0
+

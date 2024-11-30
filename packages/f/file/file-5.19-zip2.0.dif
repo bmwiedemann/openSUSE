@@ -1,18 +1,19 @@
 ---
- magic/Magdir/archive |    5 +++++
- 1 file changed, 5 insertions(+)
+ magic/Magdir/archive |    6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
 --- magic/Magdir/archive
-+++ magic/Magdir/archive	2023-07-28 09:40:12.243809381 +0000
-@@ -1622,6 +1622,11 @@
++++ magic/Magdir/archive	2024-11-28 08:59:31.099299217 +0000
+@@ -1793,7 +1793,11 @@
  0	string		PK\x07\x08PK\x03\x04	Zip multi-volume archive data, at least PKZIP v2.50 to extract
  !:mime	application/zip
  !:ext zip/cbz
+-
 +>30	ubelong		0x6d696d65	Zip archive data, at least v2.0 to extract
 +>>34	ubelong		0x74797065	\b, mime type
 +>>>38	regex		application/[a-z+-]+	\b %s
-+!:mime	application/unknown+zip
++!:mime application/unknown+zip
 +!:ext zip/cbz
  
- # Android APK file (Zip archive)
  0	string		PK\003\004
+ !:strength +1

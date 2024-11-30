@@ -1,0 +1,28 @@
+From ba56f8498a1ebed724316e3affcc2c98eeac4ca7 Mon Sep 17 00:00:00 2001
+From: Alexandre Detiste <alexandre.detiste@gmail.com>
+Date: Sat, 27 Apr 2024 13:44:08 +0200
+Subject: [PATCH] prefer new unittest.mock from the standard library
+
+---
+ tests/test_utility_functions.py | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/tests/test_utility_functions.py b/tests/test_utility_functions.py
+index c9fffd3..e127f33 100644
+--- a/tests/test_utility_functions.py
++++ b/tests/test_utility_functions.py
+@@ -36,9 +36,13 @@
+     - is_some_sort_of_code()
+ """
+ 
++try:
++    from unittest.mock import patch
++except ImportError:
++    from mock import patch
++
+ # Third Party Imports
+ import pytest
+-from mock import patch
+ 
+ # docformatter Package Imports
+ import docformatter

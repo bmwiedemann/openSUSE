@@ -2345,4 +2345,14 @@ Extra note: I see glib2 in G:N is missing its link - manual merge needed after a
     <comment></comment>
     <requestid>1223854</requestid>
   </revision>
+  <revision rev="287" vrev="3">
+    <srcmd5>8814f6ca780b3287621b562c4284d502</srcmd5>
+    <version>2.82.2</version>
+    <time>1732969624</time>
+    <user>anag+factory</user>
+    <comment>- Have the glib2-tools postun trigger exit normally if
+  glib2-compile-schemas can't be run. Fixes error when uninstalling
+  if libgio is uninstalled first (bsc#1231463). (forwarded request 1226951 from mgorse)</comment>
+    <requestid>1227081</requestid>
+  </revision>
 </revisionlist>

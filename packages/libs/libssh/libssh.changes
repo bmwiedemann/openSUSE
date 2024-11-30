@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Sep 13 07:42:23 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to version 0.11.1:
+  * Fixed default TTY modes that are set when stdin is not
+    connected to tty.
+  * Fixed zlib cleanup procedure, which could crash on i386.
+  * Various test fixes improving their stability.
+  * Remove 0001-disable-timeout-test-on-slow-buildsystems.patch
+    to enable slow tests also in s390 s390x ppc64le.
+
+-------------------------------------------------------------------
+Fri Sep 13 07:41:57 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Set BuildArch: noarch for the config package as it only ships
+  configuration files.
+
+-------------------------------------------------------------------
+Fri Aug  9 07:46:28 UTC 2024 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.11.0
+  https://www.libssh.org/2024/08/08/libssh-0-11-0-release/
+- Updated 0001-disable-timeout-test-on-slow-buildsystems.patch
+- Removed libssh-fix-ipv6-hostname-regression.patch
+
+-------------------------------------------------------------------
 Fri Apr 12 08:46:41 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Don't change the path for crypto-policies libssh.config (bsc#1222716)

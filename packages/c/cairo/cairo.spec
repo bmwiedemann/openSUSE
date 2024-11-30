@@ -25,7 +25,7 @@ Summary:        Vector Graphics Library with Cross-Device Output Support
 License:        LGPL-2.1-or-later OR MPL-1.1
 Group:          Development/Libraries/C and C++
 URL:            https://cairographics.org
-Source0:        %{url}/releases/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 Source99:       baselibs.conf
 
 # PATCH-FIX-UPSTREAM cairo-xlib-endianness.patch fdo#63461 bnc#882951 fcrozat@suse.com -- Fix crash when client and server have different endianness

@@ -18,13 +18,12 @@
 
 %define appid it.mijorus.gearlever
 Name:           gearlever
-Version:        2.0.7
+Version:        2.3.1
 Release:        0
 Summary:        Manage AppImages
 License:        GPL-3.0-or-later
 URL:            https://gearlever.mijorus.it/
 Source:         https://github.com/mijorus/gearlever/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM: https://github.com/mijorus/gearlever/pull/80
 Group:          System/X11/Utilities
 BuildArch:      noarch
 BuildRequires:  fdupes

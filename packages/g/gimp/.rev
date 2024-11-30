@@ -2136,4 +2136,12 @@ General:
     <comment></comment>
     <requestid>1208846</requestid>
   </revision>
+  <revision rev="145" vrev="4">
+    <srcmd5>346301f61e60a0f0a76847ec77dce063</srcmd5>
+    <version>2.10.38</version>
+    <time>1732969633</time>
+    <user>anag+factory</user>
+    <comment>Fix JPEG-XL disabling properly</comment>
+    <requestid>1227143</requestid>
+  </revision>
 </revisionlist>

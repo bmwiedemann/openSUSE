@@ -484,7 +484,11 @@ other applications.
 %patch -p1 -P 17
 %patch -p1 -P 18
 %patch -p1 -P 19
+
+%if ! 0%{?sle_version} || 0%{?sle_version} >= 160000
 %patch -p1 -P 21
+%endif
+
 %patch -p1 -P 22
 %patch -p1 -P 24
 %patch -p1 -P 27

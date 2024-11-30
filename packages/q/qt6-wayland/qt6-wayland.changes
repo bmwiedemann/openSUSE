@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 28 16:18:57 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add patch to fix crash when unplugging a graphics tablet:
+  * 0001-client-Redo-management-of-tablet-object-proxies.patch
+
+-------------------------------------------------------------------
 Fri Nov  8 14:10:37 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
 
 - Add 0001-fix-crash-issue.patch

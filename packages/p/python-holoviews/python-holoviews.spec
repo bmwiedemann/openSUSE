@@ -26,13 +26,14 @@
 %endif
 
 Name:           python-holoviews%{psuffix}
-Version:        1.19.1
+Version:        1.20.0
 Release:        0
 Summary:        Composable, declarative visualizations for Python
 License:        BSD-3-Clause
 URL:            https://github.com/holoviz/holoviews
 Source0:        https://files.pythonhosted.org/packages/source/h/holoviews/holoviews-%{version}.tar.gz
-Patch0:         ignore-pandas-warning.patch
+# PATCH-FEATURE-OPENSUSE holoviews-opensuse-pyproject.patch -- for obs builds, code@bnavigator.de
+Patch0:         holoviews-opensuse-pyproject.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling}
@@ -52,7 +53,6 @@ Requires(postun): update-alternatives
 Recommends:     python-ipython >= 5.4.0
 Recommends:     python-matplotlib >= 3
 Recommends:     python-notebook
-Recommends:     python-pscript >= 0.7.1
 Suggests:       python-networkx
 Suggests:       python-Pillow
 Suggests:       python-xarray >= 0.10.4
@@ -89,8 +89,7 @@ BuildRequires:  %{python_module netCDF4}
 BuildRequires:  %{python_module networkx}
 BuildRequires:  %{python_module notebook}
 BuildRequires:  %{python_module plotly >= 4.0}
-BuildRequires:  %{python_module pscript >= 0.7.1}
-BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest-asyncio >= 0.24}
 BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
@@ -117,7 +116,6 @@ rendered automatically by one of the supported plotting libraries
 
 %prep
 %autosetup -p1 -n holoviews-%{version}
-sed -i 's/, "--color=yes"//' pyproject.toml
 
 %if !%{with test}
 %build
@@ -140,6 +138,8 @@ $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/ho
 %check
 # Flaky
 donttest="test_cell_opts_plot_float_division or test_cell_opts_style"
+# tool not available in obs setup (?)
+donttest+=" or test_span_not_cloned_crosshair"
 # These fail on 32-bit -- gh#holoviz/holoviews#4778
 if [[ $(getconf LONG_BIT) -eq 32 ]]; then
     donttest+=" or (DatashaderAggregateTests and test_rasterize_regrid_and_spikes_overlay)"
@@ -178,7 +178,7 @@ if [[ $(getconf LONG_BIT) -eq 32 ]]; then
     donttest+=" or (DimensionDefaultTest and test_validate_default_against_values)"
 fi
 
-%pytest -W ignore::UserWarning -n auto holoviews -k "not ($donttest)"
+%pytest -n auto holoviews -k "not ($donttest)"
 %endif
 
 %post

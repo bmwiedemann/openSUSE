@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 28 10:20:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Convert to source service: allows for easier upgrades by the
+  GNOME team.
+
+-------------------------------------------------------------------
 Fri Sep 20 07:40:13 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add b9eed915f9a67380e7ef9d8746656455c43f67e2.patch: cff: Don't

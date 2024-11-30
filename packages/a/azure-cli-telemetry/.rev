@@ -103,4 +103,17 @@
 - Remove deletion of azure-cli namespace files (forwarded request 1175742 from glaubitz)</comment>
     <requestid>1175757</requestid>
   </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>2777a23965480dfe8c2d7f4c5941f0b2</srcmd5>
+    <version>1.1.0</version>
+    <time>1732969677</time>
+    <user>anag+factory</user>
+    <comment>- Add patch to relax python-portalocker version dependency in setup.py
+  + act_relax-portalocker.patch
+- Add %{_sitelibdir}/azure/cli directory in %files section
+- Drop superflouos azure-cli-core from BuildDepends
+- Drop extra LICENSE.txt as upstream now ships its own
+- Relax python-portalocker version dependency in Requires</comment>
+    <requestid>1227293</requestid>
+  </revision>
 </revisionlist>

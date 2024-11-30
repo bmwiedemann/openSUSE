@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 28 22:20:25 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update doc-py38-to-py36.patch to include str.removeprefix
+  replacement.
+
+-------------------------------------------------------------------
 Thu Nov 14 07:06:20 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Remove -IVendor/ from python-config boo#1231795

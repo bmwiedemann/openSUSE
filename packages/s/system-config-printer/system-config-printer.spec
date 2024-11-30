@@ -32,6 +32,8 @@ Source99:       %{name}-rpmlintrc
 Patch13:        system-config-printer-icon-brp-friendly.patch
 # PATCH-FIX-OPENSUSE system-config-printer-no-openprinting.patch bnc#733542 vuntz@opensuse.org -- Disable feature that downloads ppd from openprinting.org
 Patch19:        system-config-printer-no-openprinting.patch
+# PATCH-FIX-UPSTREAM installation-root-dir-from-setup.patch -- gh#OpenPrinting/system-config-printer#361
+Patch20:        installation-root-dir-from-setup.patch
 # PATCH-FEATURE-OPENSUSE system-config-printer-no-simple-gui.patch boo#1090189 dimstar@opensuse.org -- Remove unused _simple_gui class in openprinting.py. Pulls in GTK
 Patch100:       system-config-printer-no-simple-gui.patch
 # For directory ownership

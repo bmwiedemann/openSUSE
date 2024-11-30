@@ -944,4 +944,12 @@
 </comment>
     <requestid>1224262</requestid>
   </revision>
+  <revision rev="54" vrev="6">
+    <srcmd5>66761b76cc75ed4d9498e32efdc96b7d</srcmd5>
+    <version>3.10.15</version>
+    <time>1732969640</time>
+    <user>anag+factory</user>
+    <comment>- Apply sphinx-72.patch only conditionally for non-SLE-15 builds.</comment>
+    <requestid>1227182</requestid>
+  </revision>
 </revisionlist>

@@ -457,7 +457,7 @@ sed -i "s/1.32.1/1.32/" docs/reference/meson.build
 %{compile_schemas}
 
 %filetriggerpostun -n glib2-tools -- %{_datadir}/glib-2.0/schemas
-%{compile_schemas}
+%{compile_schemas} &> /dev/null || :
 
 %post -n %{libgio}
 %{ldconfig}

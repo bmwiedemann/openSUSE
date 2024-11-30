@@ -2,7 +2,7 @@
   <service mode="localonly" name="tar_scm">
     <param name="url">git://git.code.sf.net/p/linuxptp/code</param>
     <param name="scm">git</param>
-    <param name="revision">v4.1</param>
+    <param name="revision">v4.4</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">linuxptp</param>
     <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.g%h</param>

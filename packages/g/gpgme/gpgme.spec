@@ -58,6 +58,7 @@ Source99:       gpgme.changes
 # PATCH-FIX-OPENSUSE gpgme-suse-nobetasuffix.patch code@bnavigator.de -- remove "-unknown" betasuffix boo#1205197
 Patch2:         gpgme-suse-nobetasuffix.patch
 Patch3:         python313.patch
+Patch4:         gpgme-fix-python-install.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -316,14 +317,6 @@ rm -r %{buildroot}%{_mandir}/man1/gpgme-json.*
 %endif
 popd
 
-%if %{with python3}
-# Move the gpg directory out of the newly added egg upstream directory
-%if 0%{?suse_version} > 1500
-%python_expand mv %{buildroot}%{$python_sitearch}/gpg-%{version}*.egg/gpg %{buildroot}%{$python_sitearch}/gpg
-%python_expand rm -rf %{buildroot}%{$python_sitearch}/gpg-%{version}*.egg
-%endif
-%endif
-
 %check
 GPGME_DEBUG=2:mygpgme.log %make_build check skip=%{?qt_skip:%{qt_skip}} || cat $(find -name mygpgme.log -type f)
 
@@ -382,9 +375,7 @@ GPGME_DEBUG=2:mygpgme.log %make_build check skip=%{?qt_skip:%{qt_skip}} || cat $
 %files %{python_files gpg}
 %license COPYING COPYING.LESSER LICENSES
 %{python_sitearch}/gpg
-%if 0%{?suse_version} <= 1500
 %{python_sitearch}/gpg-%{version}*.egg-info
-%endif
 %endif
 
 %if %{with qt}

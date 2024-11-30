@@ -1,0 +1,28 @@
+Index: gpgme-1.24.0/lang/python/Makefile.am
+===================================================================
+--- gpgme-1.24.0.orig/lang/python/Makefile.am
++++ gpgme-1.24.0/lang/python/Makefile.am
+@@ -96,7 +96,8 @@ install-exec-local:
+ 	  build \
+ 	  --build-base="$$(basename "$${PYTHON}")-gpg" \
+ 	  install \
+-	  --prefix "$(DESTDIR)$(prefix)" \
++	  --root "$(DESTDIR)" \
++	  --prefix "$(prefix)" \
+ 	  --verbose ; \
+ 	done
+ 
+Index: gpgme-1.24.0/lang/python/Makefile.in
+===================================================================
+--- gpgme-1.24.0.orig/lang/python/Makefile.in
++++ gpgme-1.24.0/lang/python/Makefile.in
+@@ -818,7 +818,8 @@ install-exec-local:
+ 	  build \
+ 	  --build-base="$$(basename "$${PYTHON}")-gpg" \
+ 	  install \
+-	  --prefix "$(DESTDIR)$(prefix)" \
++	  --root "$(DESTDIR)" \
++	  --prefix "$(prefix)" \
+ 	  --verbose ; \
+ 	done
+ 

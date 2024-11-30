@@ -1,3 +1,4 @@
 addFilter("pem-certificate.*/usr/lib.*/python.*/test/*.pem")
 addFilter("devel-file-in-non-devel-package.*/usr/lib.*/python.*/tests/*.c")
+addFilter("devel-file-in-non-devel-package.*/usr/lib.*/python.*/test/*.c")
 addFilter("devel-file-in-non-devel-package.*/usr/lib.*/python.*/test/*.cpp")

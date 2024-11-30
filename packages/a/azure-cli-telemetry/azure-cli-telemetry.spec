@@ -31,18 +31,17 @@ License:        MIT
 Group:          System/Management
 URL:            https://github.com/Azure/azure-cli
 Source:         https://files.pythonhosted.org/packages/source/a/azure-cli-telemetry/azure-cli-telemetry-%{version}.tar.gz
-Source1:        LICENSE.txt
+Patch:          act_relax-portalocker.patch
 BuildRequires:  %{pythons}-azure-nspkg >= 3.0.0
 BuildRequires:  %{pythons}-pip
 BuildRequires:  %{pythons}-setuptools
 BuildRequires:  %{pythons}-wheel
-BuildRequires:  azure-cli-core
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       %{pythons}-applicationinsights < 0.12
 Requires:       %{pythons}-applicationinsights >= 0.11.1
 Requires:       %{pythons}-azure-nspkg >= 3.0.0
-Requires:       %{pythons}-portalocker < 3.0
+Requires:       %{pythons}-portalocker < 4.0
 Requires:       %{pythons}-portalocker >= 1.6
 Requires:       azure-cli-core
 Conflicts:      azure-cli < 2.0.0
@@ -60,9 +59,9 @@ This package includes:
 
 %prep
 %setup -q -n azure-cli-telemetry-%{version}
+%patch -P0 -p1
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-cli-telemetry-%{version}
 %pyproject_wheel
 
 %install
@@ -73,6 +72,7 @@ install -m 644 %{SOURCE1} %{_builddir}/azure-cli-telemetry-%{version}
 %defattr(-,root,root,-)
 %doc HISTORY.rst README.rst
 %license LICENSE.txt
+%dir %{_sitelibdir}/azure/cli
 %{_sitelibdir}/azure/cli/telemetry
 %{_sitelibdir}/azure_cli_telemetry-*.dist-info
 

@@ -1,0 +1,5 @@
+<package name="obs-service-elixir_mix_deps" project="openSUSE:Factory">
+  <title>obs-service-elixir_mix_deps</title>
+  <description>OBS Source Service for Elixir software packaging</description>
+  <devel project="devel:languages:erlang" package="obs-service-elixir_mix_deps"/>
+</package>

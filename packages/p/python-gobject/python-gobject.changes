@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 30 15:08:11 UTC 2024 - Yunhe Guo <i@guoyunhe.me>
+
+- Add python-pygobject provides: help packages to eliminate rpmlint
+  warnings when comparing requrements.txt vs the packages depdency.
+  'pygobject' is the proper upstream name.
+
+-------------------------------------------------------------------
 Thu Sep 12 12:32:33 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.50.0:

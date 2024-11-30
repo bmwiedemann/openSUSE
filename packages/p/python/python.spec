@@ -164,6 +164,9 @@ Patch81:        CVE-2023-52425-libexpat-2.6.0-remove-failing-tests.patch
 # PATCH-FIX-UPSTREAM CVE-2024-0450-zipfile-avoid-quoted-overlap-zipbomb.patch bsc#1221854 mcepl@suse.com
 # detecting the vulnerability of the "quoted-overlap" zipbomb (from gh#python/cpython!110016).
 Patch82:        CVE-2024-0450-zipfile-avoid-quoted-overlap-zipbomb.patch
+# PATCH-FIX-UPSTREAM CVE-2024-11168-validation-IPv6-addrs.patch bsc#1233307 mcepl@suse.com
+# properly validate IPv6 and IPvFuture addresses
+Patch83:        CVE-2024-11168-validation-IPv6-addrs.patch
 # COMMON-PATCH-END
 BuildRequires:  automake
 BuildRequires:  db-devel
@@ -314,67 +317,68 @@ that rely on earlier non-verification behavior.
 %prep
 %setup -q -n %{tarname}
 # COMMON-PREP-BEGIN
-%patch -P 1 -p1
-%patch -P 2 -p1
-%patch -P 3 -p1
-%patch -P 4 -p1
-%patch -P 5 -p1
-%patch -P 7 -p1
-%patch -P 8 -p1
-%patch -P 13 -p1
-%patch -P 17 -p1
-%patch -P 20 -p1
-%patch -P 24 -p1
-%patch -P 33 -p1
+%patch -p1 -P 1
+%patch -p1 -P 2
+%patch -p1 -P 3
+%patch -p1 -P 4
+%patch -p1 -P 5
+%patch -p1 -P 7
+%patch -p1 -P 8
+%patch -p1 -P 13
+%patch -p1 -P 17
+%patch -p1 -P 20
+%patch -p1 -P 24
+%patch -p1 -P 33
 %if %{suse_version} < 1500 && !0%{?is_opensuse}
-%patch -P 34 -p1
+%patch -p1 -P 34
 %endif
-%patch -P 35 -p1
-%patch -P 38 -p1
+%patch -p1 -P 35
+%patch -p1 -P 38
 %ifarch ppc ppc64 ppc64le
-%patch -P 40 -p1
+%patch -p1 -P 40
 %endif
-%patch -P 41 -p1
+%patch -p1 -P 41
 %if %{suse_version} >= 1500 || (0%{?sle_version} && 0%{?sle_version} >= 120400)
-%patch -P 47 -p1
-%patch -P 48 -p1
+%patch -p1 -P 47
+%patch -p1 -P 48
 %endif
 # SLE-12 needs to skip more
 %if %{suse_version} == 1315
-%patch -P 57 -p1
+%patch -p1 -P 57
 %endif
-%patch -P 49 -p1
-%patch -P 50 -p1
-%patch -P 51 -p1
-%patch -P 55 -p1
-%patch -P 56 -p1
-%patch -P 58 -p1
-%patch -P 59 -p1
-%patch -P 60 -p1
-%patch -P 61 -p1
-%patch -P 62 -p1
-%patch -P 63 -p1
-%patch -P 64 -p1
-%patch -P 65 -p1
-%patch -P 66 -p1
-%patch -P 67 -p1
-%patch -P 68 -p1
-%patch -P 69 -p1
-%patch -P 70 -p1
-%patch -P 71 -p1
-%patch -P 72 -p1
-%patch -P 73 -p1
+%patch -p1 -P 49
+%patch -p1 -P 50
+%patch -p1 -P 51
+%patch -p1 -P 55
+%patch -p1 -P 56
+%patch -p1 -P 58
+%patch -p1 -P 59
+%patch -p1 -P 60
+%patch -p1 -P 61
+%patch -p1 -P 62
+%patch -p1 -P 63
+%patch -p1 -P 64
+%patch -p1 -P 65
+%patch -p1 -P 66
+%patch -p1 -P 67
+%patch -p1 -P 68
+%patch -p1 -P 69
+%patch -p1 -P 70
+%patch -p1 -P 71
+%patch -p1 -P 72
+%patch -p1 -P 73
 %if 0%{?sle_version} && 0%{?sle_version} < 150000
-%patch -P 74 -p1
+%patch -p1 -P 74
 %endif
-%patch -P 75 -p1
-%patch -P 76 -p1
-%patch -P 77 -p1
-%patch -P 78 -p1
-%patch -P 79 -p1
-%patch -P 80 -p1
-%patch -P 81 -p1
-%patch -P 82 -p1
+%patch -p1 -P 75
+%patch -p1 -P 76
+%patch -p1 -P 77
+%patch -p1 -P 78
+%patch -p1 -P 79
+%patch -p1 -P 80
+%patch -p1 -P 81
+%patch -p1 -P 82
+%patch -p1 -P 83
 
 # For patch 66
 cp -v %{SOURCE66} Lib/test/recursion.tar

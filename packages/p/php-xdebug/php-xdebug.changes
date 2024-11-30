@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Nov 28 20:00:21 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to Xdebug 3.4.0
+  * Fixed issue #2239: Add 'XDEBUG_IGNORE' GET/POST/COOKIE/ENV to make
+    the step debugger ignore that specific request
+  * Fixed issue #2281: PHP 8.4 support
+  * Fixed issue #2261: Send control socket location in init packet
+  * Fixed issue #2262: PHP 8.4: Closure names need different wrapping
+    algorithm
+  * Fixed issue #2283: SoapClient usage causes segfault with codecoverage
+  * Fixed issue #2294: Nette Tester always crashes in all test jobs when
+    running with XDebug 3.4.0beta1 active
+  * Fixed issue #2304: Seg fault on throw exception
+  * Fixed issue #2305: Segfault when checking whether to ignore creating
+    a debug connection during shutdown functions
+
+-------------------------------------------------------------------
 Mon Apr 15 18:02:14 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - Updated to Xdebug 3.3.2

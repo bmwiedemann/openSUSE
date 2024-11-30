@@ -1,0 +1,60 @@
+commit fd049a0a053502a85b839a715fc6f9fdbfc4439a
+Author: Nicolas Morey <nmorey@suse.com>
+Date:   Thu Nov 28 16:44:12 2024 +0100
+
+    psm3: fix SIGILL on system not supporting AVX
+    
+    Even though code was added to not use the PSM3 provider on system
+    without AVX/AVX2 support, logs triggered by the detection code can
+    be using AVX instructions causing psmx3_getinfo to SIGILL
+    
+    Move the detection even earlier in the provider init and use OFI
+    standard print functions to avoid using any code that might have
+    been compiled with AVX instructions.
+    
+    Fixes: 3ef633408edf ("prov/psm3: update provider to sync with IEFS 11.5.1.0.3")
+    Signed-off-by: Nicolas Morey <nmorey@suse.com>
+
+diff --git prov/psm3/src/psmx3_init.c prov/psm3/src/psmx3_init.c
+index 29359d3ea348..cc259a1b6301 100644
+--- prov/psm3/src/psmx3_init.c
++++ prov/psm3/src/psmx3_init.c
+@@ -680,18 +680,6 @@ static int psmx3_getinfo(uint32_t api_version, const char *node,
+ 
+ 	PSMX3_INFO(&psmx3_prov, FI_LOG_CORE,"\n");
+ 
+-	__builtin_cpu_init();
+-	if (!__builtin_cpu_supports(PSM3_MARCH)) {
+-		PSMX3_INFO(&psmx3_prov, FI_LOG_CORE,
+-			"CPU does not support '%s'.\n", PSM3_MARCH);
+-		OFI_INFO_STR(&psmx3_prov,
+-			(__builtin_cpu_supports("avx2") ? "AVX2" :
+-				(__builtin_cpu_supports("avx") ? "AVX" :
+-					(__builtin_cpu_supports("sse4.2") ? "SSE4.2" : "unknown"))),
+-			PSM3_MARCH, "CPU Supports", "PSM3 Built With");
+-		goto err_out;
+-	}
+-
+ 	if (psmx3_init_prov_info(hints, &prov_info))
+ 		goto err_out;
+ 
+@@ -895,6 +883,19 @@ struct fi_provider psmx3_prov = {
+ 
+ PROVIDER_INI
+ {
++	__builtin_cpu_init();
++	if (!__builtin_cpu_supports(PSM3_MARCH)) {
++		FI_INFO(&core_prov, FI_LOG_CORE,
++			"PSM3: CPU does not support '%s'.\n", PSM3_MARCH);
++		OFI_INFO_STR(&core_prov,
++			(__builtin_cpu_supports("avx2") ? "AVX2" :
++				(__builtin_cpu_supports("avx") ? "AVX" :
++					(__builtin_cpu_supports("sse4.2") ? "SSE4.2" : "unknown"))),
++			PSM3_MARCH, "CPU Supports", "PSM3 Built With");
++		return NULL;
++	}
++
++
+ 	psmx3_prov.version = get_psm3_provider_version();
+ 
+ 	PSMX3_INFO(&psmx3_prov, FI_LOG_CORE, "build options: VERSION=%u.%u=%u.%u.%u.%u, "

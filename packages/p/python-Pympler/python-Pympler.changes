@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 28 11:42:05 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Set COVERAGE to skip expensive tests
+- Skip test_snapshot_members in qemu build
+
+-------------------------------------------------------------------
 Mon Nov 25 17:03:38 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable test_otracker_diff on aarch64 as it randomly makes the

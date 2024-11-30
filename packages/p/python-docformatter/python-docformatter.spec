@@ -1,7 +1,7 @@
 #
 # spec file for package python-docformatter
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,28 +16,32 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-docformatter
-Version:        1.4
+Version:        1.7.5
 Release:        0
 Summary:        Utility to re-format docstrings per PEP 257
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/myint/docformatter
-Source:         https://files.pythonhosted.org/packages/source/d/docformatter/docformatter-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+Source:         https://github.com/PyCQA/docformatter/archive/refs/tags/v%{version}.tar.gz#/docformatter-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#PyCQA/docformatter#280
+Patch0:         remove-mock.patch
+# PATCH-FIX-UPSTREAM gh#PyCQA/docformatter#296
+Patch1:         support-python-312.patch
+# PATCH-FIX-OPENSUSE Do not require virtualenvs to run the tests
+Patch2:         do-not-require-venv.patch
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-setuptools
+Requires:       python-charset-normalizer
 Requires:       python-untokenize
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
-%if %{suse_version} <= 1500
-BuildRequires:  python2-mock
-%endif
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module charset-normalizer >= 3.0}
 BuildRequires:  %{python_module untokenize}
 # /SECTION
 %python_subpackages
@@ -63,18 +67,22 @@ docformatter also handles some of the PEP 8 conventions.
   and some editors (or more recently, reindent.py) will trim them.
 
 %prep
-%setup -q -n docformatter-%{version}
-sed -i -e '/^#!\//, 1d' docformatter.py
+%autosetup -p1 -n docformatter-%{version}
+sed -i -e '/^#!\//, 1d' src/docformatter/*.py
+chmod -x src/docformatter/__main__.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
+# Do not install LICENSE
+%python_expand rm %{buildroot}%{$python_sitelib}/LICENSE
 %python_clone -a %{buildroot}%{_bindir}/docformatter
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+export BUILDROOT=%{buildroot}
 %pytest
 
 %post
@@ -87,6 +95,7 @@ sed -i -e '/^#!\//, 1d' docformatter.py
 %license LICENSE
 %doc AUTHORS.rst README.rst
 %python_alternative %{_bindir}/docformatter
-%{python_sitelib}/*
+%{python_sitelib}/docformatter
+%{python_sitelib}/docformatter-%{version}.dist-info
 
 %changelog

@@ -1,0 +1,15 @@
+Index: docformatter-1.7.5/tests/conftest.py
+===================================================================
+--- docformatter-1.7.5.orig/tests/conftest.py
++++ docformatter-1.7.5/tests/conftest.py
+@@ -113,8 +113,9 @@ def run_docformatter(arguments, temporar
+             os.environ["VIRTUAL_ENV"] + "/bin/docformatter",
+         ]
+     else:
++        version = f"{sys.version_info.major}.{sys.version_info.minor}"
+         DOCFORMATTER_COMMAND = [
+-            os.environ["VIRTUAL_ENV"] + "/bin/docformatter",
++            f"{os.environ['BUILDROOT']}/usr/bin/docformatter-{version}",
+         ]  # pragma: no cover
+ 
+     if "-" not in arguments:

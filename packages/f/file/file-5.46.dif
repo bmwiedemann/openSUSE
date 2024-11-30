@@ -1,0 +1,600 @@
+---
+ magic/Magdir/elf   |    2 
+ magic/Magdir/linux |   36 +++++----
+ magic/Magdir/msad  |    5 +
+ magic/Magdir/msdos |    6 -
+ magic/Makefile.am  |   63 +++++++++-------
+ magic/Makefile.in  |   60 +++++++++------
+ src/Makefile.am    |    2 
+ src/dcore.c        |  207 +++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 8 files changed, 313 insertions(+), 68 deletions(-)
+
+--- magic/Magdir/elf
++++ magic/Magdir/elf	2023-07-28 09:42:01.845813939 +0000
+@@ -154,7 +154,7 @@
+ >18	leshort		47		Renesas H8/300H,
+ >18	leshort		48		Renesas H8S,
+ >18	leshort		49		Renesas H8/500,
+->18	leshort		50		IA-64,
++>18	leshort		50		IA-64 (Intel 64 bit architecture),
+ >18	leshort		51		Stanford MIPS-X,
+ >18	leshort		52		Motorola Coldfire,
+ >18	leshort		53		Motorola M68HC12,
+! Does not fit anymore !!
+!--- magic/Magdir/linux
+!+++ magic/Magdir/linux	2023-07-28 09:42:01.845813939 +0000
+!@@ -140,27 +140,31 @@
+! # All known start with: b8 c0 07 8e d8 b8 00 90 8e c0 b9 00 01 29 f6 29
+! # Linux kernel boot images (i386 arch) (Wolfram Kleff)
+! # URL: https://www.kernel.org/doc/Documentation/x86/boot.txt
+!-514	string		HdrS		Linux kernel
+!+514	string		HdrS		Linux
+! !:strength + 55
+! # often no extension like in linux, vmlinuz, bzimage or memdisk but sometimes
+! # Acronis Recovery kernel64.dat and Plop Boot Manager plpbtrom.bin
+! # DamnSmallLinux 1.5 damnsmll.lnx 
+! !:ext	/dat/bin/lnx
+!->510	leshort		0xAA55		x86 boot executable
+!->>518	leshort		>0x1ff
+!->>>529	byte		0		zImage,
+!->>>529	byte		1		bzImage,
+!->>>526	lelong		>0
+!->>>>(526.s+0x200) string	>\0	version %s,
+!->>498	leshort		1		RO-rootFS,
+!->>498	leshort		0		RW-rootFS,
+!->>508	leshort		>0		root_dev %#X,
+!->>502	leshort		>0		swap_dev %#X,
+!->>504	leshort		>0		RAMdisksize %u KB,
+!->>506	leshort		0xFFFF		Normal VGA
+!->>506	leshort		0xFFFE		Extended VGA
+!->>506	leshort		0xFFFD		Prompt for Videomode
+!->>506	leshort		>0		Video mode %d
+!+>510	leshort		0xAA55		\b/x86 Kernel
+!+>510	leshort		<0xAA55		Kernel
+!+>510	leshort		>0xAA55		Kernel
+!+>518	leshort		0x0105		\b, Setup Version 0x105, zImage
+!+>518	leshort		>0x0105		\b, Setup Version %#x
+!+>518	leshort		>0x1ff
+!+>>529	byte		0		\b, zImage
+!+>>529	byte		1		\b, bzImage
+!+>>526	lelong		>0
+!+>>>(526.s+0x200)	string	>\0	\b, Version %s
+!+>>498	leshort		1		\b, RO-rootFS
+!+>>498	leshort		0		\b, RW-rootFS
+!+>>508	leshort		>0		\b, root_dev %#X
+!+>>502	leshort		>0		\b, swap_dev %#X
+!+>>504	leshort		>0		\b, RAMdisksize %u KB
+!+>>506	leshort		0xFFFF		\b, Normal VGA
+!+>>506	leshort		0xFFFE		\b, Extended VGA
+!+>>506	leshort		0xFFFD		\b, Prompt for Videomode
+!+>>506	leshort		>0		\b, Video mode %d
+! # This also matches new kernels, which were caught above by "HdrS".
+! 0		belong	0xb8c0078e	Linux kernel
+! >0x1e3		string	Loading		version 1.3.79 or older
+--- magic/Magdir/msad
++++ magic/Magdir/msad	2023-07-28 09:42:01.845813939 +0000
+@@ -0,0 +1,5 @@
++#------------------------------------------------------------------------------
++# msad:  file(1) magic for msad
++# Microsoft visual C
++# This must precede the heuristic for raw G3 data
++4	string	Standard\ Jet\ DB	Microsoft Access Database
+--- magic/Magdir/msdos
++++ magic/Magdir/msdos	2024-11-28 10:44:09.616373881 +0000
+@@ -331,10 +331,10 @@
+ # Check for presence of COM Runtime descriptor
+ >>(0x3c.l+24)	leshort		0x010b
+ >>>(0x3c.l+116)	leshort	>14
+->>>>(0x3c.l+232) lelong	>0	Mono/.Net assembly
++>>>>(0x3c.l+232) lelong	>0	\b, Mono/.Net assembly
+ >>(0x3c.l+24)	leshort		0x020b
+ >>>(0x3c.l+132)	leshort	>14
+->>>>(0x3c.l+248) lelong	>0	Mono/.Net assembly
++>>>>(0x3c.l+248) lelong	>0	\b, Mono/.Net assembly
+ 
+ # hooray, there's a DOS extender using the PE format, with a valid PE
+ # executable inside (which just prints a message and exits if run in win)
+@@ -1499,7 +1499,7 @@
+ >1		leshort	<-259
+ # that offset must be accessible
+ # add 10000h to jump at end of 64 KiB segment, add 1 for jump instruction and 2 for 16-bit offset
+->>(1,s+65539)   byte    x
++>>(1.s+65539)   byte    x
+ # after jump next instruction for DEBUGGING!
+ #>>>&-1		ubelong	x	\b, NEXT instruction %#8.8x
+ >>>0        use msdos-com
+--- magic/Makefile.am
++++ magic/Makefile.am	2023-07-28 09:42:01.849813866 +0000
+@@ -5,7 +5,7 @@ MAGIC_FRAGMENT_BASE = Magdir
+ MAGIC_DIR = $(top_srcdir)/magic
+ MAGIC_FRAGMENT_DIR = $(MAGIC_DIR)/$(MAGIC_FRAGMENT_BASE)
+ 
+-pkgdata_DATA = magic.mgc
++pkgdata_DATA = magic.mgc magic
+ 
+ MAGIC_FRAGMENTS = \
+ $(MAGIC_DIR)/Header \
+@@ -24,7 +24,6 @@ $(MAGIC_FRAGMENT_DIR)/animation \
+ $(MAGIC_FRAGMENT_DIR)/aout \
+ $(MAGIC_FRAGMENT_DIR)/apache \
+ $(MAGIC_FRAGMENT_DIR)/apl \
+-$(MAGIC_FRAGMENT_DIR)/apple \
+ $(MAGIC_FRAGMENT_DIR)/application \
+ $(MAGIC_FRAGMENT_DIR)/applix \
+ $(MAGIC_FRAGMENT_DIR)/apt \
+@@ -106,7 +105,6 @@ $(MAGIC_FRAGMENT_DIR)/erlang \
+ $(MAGIC_FRAGMENT_DIR)/espressif \
+ $(MAGIC_FRAGMENT_DIR)/esri \
+ $(MAGIC_FRAGMENT_DIR)/fcs \
+-$(MAGIC_FRAGMENT_DIR)/filesystems \
+ $(MAGIC_FRAGMENT_DIR)/finger \
+ $(MAGIC_FRAGMENT_DIR)/firmware \
+ $(MAGIC_FRAGMENT_DIR)/flash \
+@@ -153,6 +151,8 @@ $(MAGIC_FRAGMENT_DIR)/isz \
+ $(MAGIC_FRAGMENT_DIR)/java \
+ $(MAGIC_FRAGMENT_DIR)/javascript \
+ $(MAGIC_FRAGMENT_DIR)/jpeg \
++$(MAGIC_FRAGMENT_DIR)/linux \
++$(MAGIC_FRAGMENT_DIR)/filesystems \
+ $(MAGIC_FRAGMENT_DIR)/karma \
+ $(MAGIC_FRAGMENT_DIR)/kde \
+ $(MAGIC_FRAGMENT_DIR)/keepass \
+@@ -165,7 +165,6 @@ $(MAGIC_FRAGMENT_DIR)/lammps \
+ $(MAGIC_FRAGMENT_DIR)/lecter \
+ $(MAGIC_FRAGMENT_DIR)/lex \
+ $(MAGIC_FRAGMENT_DIR)/lif \
+-$(MAGIC_FRAGMENT_DIR)/linux \
+ $(MAGIC_FRAGMENT_DIR)/lisp \
+ $(MAGIC_FRAGMENT_DIR)/llvm \
+ $(MAGIC_FRAGMENT_DIR)/locoscript \
+@@ -173,7 +172,6 @@ $(MAGIC_FRAGMENT_DIR)/lua \
+ $(MAGIC_FRAGMENT_DIR)/luks \
+ $(MAGIC_FRAGMENT_DIR)/m4 \
+ $(MAGIC_FRAGMENT_DIR)/mach \
+-$(MAGIC_FRAGMENT_DIR)/macintosh \
+ $(MAGIC_FRAGMENT_DIR)/macos \
+ $(MAGIC_FRAGMENT_DIR)/magic \
+ $(MAGIC_FRAGMENT_DIR)/mail.news \
+@@ -197,11 +195,11 @@ $(MAGIC_FRAGMENT_DIR)/misctools \
+ $(MAGIC_FRAGMENT_DIR)/mkid \
+ $(MAGIC_FRAGMENT_DIR)/mlssa \
+ $(MAGIC_FRAGMENT_DIR)/mmdf \
+-$(MAGIC_FRAGMENT_DIR)/modem \
+ $(MAGIC_FRAGMENT_DIR)/modulefile \
+ $(MAGIC_FRAGMENT_DIR)/motorola \
+ $(MAGIC_FRAGMENT_DIR)/mozilla \
+ $(MAGIC_FRAGMENT_DIR)/msdos \
++$(MAGIC_FRAGMENT_DIR)/modem \
+ $(MAGIC_FRAGMENT_DIR)/msooxml \
+ $(MAGIC_FRAGMENT_DIR)/msvc \
+ $(MAGIC_FRAGMENT_DIR)/msx \
+@@ -265,6 +263,8 @@ $(MAGIC_FRAGMENT_DIR)/qt \
+ $(MAGIC_FRAGMENT_DIR)/revision \
+ $(MAGIC_FRAGMENT_DIR)/ringdove \
+ $(MAGIC_FRAGMENT_DIR)/riff \
++$(MAGIC_FRAGMENT_DIR)/apple \
++$(MAGIC_FRAGMENT_DIR)/macintosh \
+ $(MAGIC_FRAGMENT_DIR)/rpi \
+ $(MAGIC_FRAGMENT_DIR)/rpm \
+ $(MAGIC_FRAGMENT_DIR)/rpmsg \
+@@ -358,9 +358,21 @@ EXTRA_DIST = \
+ $(MAGIC_DIR)/scripts/create_filemagic_flac \
+ $(MAGIC_FRAGMENTS)
+ 
+-
++RAW   = magic	
+ MAGIC = magic.mgc
+-CLEANFILES = ${MAGIC} $(MAGIC_FRAGMENT_DIR)/Localstuff
++CLEANFILES = ${MAGIC} $(MAGIC_FRAGMENT_DIR)/Localstuff ${RAW}
++
++${RAW}: $(MAGIC_DIR)/Header $(MAGIC_DIR)/Localstuff $(MAGIC_FRAGMENTS)
++	cat /dev/null > $@
++	for frag in $(MAGIC_FRAGMENTS); do \
++	    if test -f $(srcdir)/$$frag; then \
++	        f=$(srcdir)/$$frag; \
++	    else \
++	        f=$$frag; \
++	    fi; \
++	    cat $$f; \
++	done >> $@
++
+ 
+ # FIXME: Build file natively as well so that it can be used to compile
+ # the target's magic file; for now we bail if the local version does not match
+@@ -372,19 +384,22 @@ FILE_COMPILE = $(top_builddir)/src/file$
+ FILE_COMPILE_DEP = $(FILE_COMPILE)
+ endif
+ 
+-${MAGIC}: $(MAGIC_FRAGMENTS) $(FILE_COMPILE_DEP)
+-	@rm -fr magic
+-	@mkdir magic && cp -p $(MAGIC_FRAGMENTS) magic
+-	@(if expr "${FILE_COMPILE}" : '.*/.*' > /dev/null; then \
+-	    echo "Using ${FILE_COMPILE} to generate ${MAGIC}" > /dev/null; \
+-	  else \
+-	    v=$$(${FILE_COMPILE} --version | sed -e s/file-// -e q); \
+-	    if [ "$$v" != "${PACKAGE_VERSION}" ]; then \
+-		echo "Cannot use the installed version of file ($$v) to"; \
+-		echo "cross-compile file ${PACKAGE_VERSION}"; \
+-		echo "Please install file ${PACKAGE_VERSION} locally first"; \
+-		exit 1; \
+-	    fi; \
+-	  fi)
+-	$(FILE_COMPILE) -C -m magic
+-	@rm -fr magic
++${MAGIC}: $(MAGIC_FRAGMENTS) $(FILE_COMPILE_DEP) $(RAW)
++	$(FILE_COMPILE) -C -m $(RAW)
++
++#${MAGIC}: $(MAGIC_FRAGMENTS) $(FILE_COMPILE_DEP)
++#	@rm -fr magic
++#	@mkdir magic && cp -p $(MAGIC_FRAGMENTS) magic
++#	@(if expr "${FILE_COMPILE}" : '.*/.*' > /dev/null; then \
++#	    echo "Using ${FILE_COMPILE} to generate ${MAGIC}" > /dev/null; \
++#	  else \
++#	    v=$$(${FILE_COMPILE} --version | sed -e s/file-// -e q); \
++#	    if [ "$$v" != "${PACKAGE_VERSION}" ]; then \
++#		echo "Cannot use the installed version of file ($$v) to"; \
++#		echo "cross-compile file ${PACKAGE_VERSION}"; \
++#		echo "Please install file ${PACKAGE_VERSION} locally first"; \
++#		exit 1; \
++#	    fi; \
++#	  fi)
++#	$(FILE_COMPILE) -C -m magic
++#	@rm -fr magic
+--- magic/Makefile.in
++++ magic/Makefile.in	2023-07-28 09:42:01.849813866 +0000
+@@ -284,7 +284,7 @@ top_srcdir = @top_srcdir@
+ MAGIC_FRAGMENT_BASE = Magdir
+ MAGIC_DIR = $(top_srcdir)/magic
+ MAGIC_FRAGMENT_DIR = $(MAGIC_DIR)/$(MAGIC_FRAGMENT_BASE)
+-pkgdata_DATA = magic.mgc
++pkgdata_DATA = magic.mgc magic
+ MAGIC_FRAGMENTS = \
+ $(MAGIC_DIR)/Header \
+ $(MAGIC_DIR)/Localstuff \
+@@ -302,7 +302,6 @@ $(MAGIC_FRAGMENT_DIR)/animation \
+ $(MAGIC_FRAGMENT_DIR)/aout \
+ $(MAGIC_FRAGMENT_DIR)/apache \
+ $(MAGIC_FRAGMENT_DIR)/apl \
+-$(MAGIC_FRAGMENT_DIR)/apple \
+ $(MAGIC_FRAGMENT_DIR)/application \
+ $(MAGIC_FRAGMENT_DIR)/applix \
+ $(MAGIC_FRAGMENT_DIR)/apt \
+@@ -384,7 +383,6 @@ $(MAGIC_FRAGMENT_DIR)/erlang \
+ $(MAGIC_FRAGMENT_DIR)/espressif \
+ $(MAGIC_FRAGMENT_DIR)/esri \
+ $(MAGIC_FRAGMENT_DIR)/fcs \
+-$(MAGIC_FRAGMENT_DIR)/filesystems \
+ $(MAGIC_FRAGMENT_DIR)/finger \
+ $(MAGIC_FRAGMENT_DIR)/firmware \
+ $(MAGIC_FRAGMENT_DIR)/flash \
+@@ -431,6 +429,8 @@ $(MAGIC_FRAGMENT_DIR)/isz \
+ $(MAGIC_FRAGMENT_DIR)/java \
+ $(MAGIC_FRAGMENT_DIR)/javascript \
+ $(MAGIC_FRAGMENT_DIR)/jpeg \
++$(MAGIC_FRAGMENT_DIR)/linux \
++$(MAGIC_FRAGMENT_DIR)/filesystems \
+ $(MAGIC_FRAGMENT_DIR)/karma \
+ $(MAGIC_FRAGMENT_DIR)/kde \
+ $(MAGIC_FRAGMENT_DIR)/keepass \
+@@ -443,7 +443,6 @@ $(MAGIC_FRAGMENT_DIR)/lammps \
+ $(MAGIC_FRAGMENT_DIR)/lecter \
+ $(MAGIC_FRAGMENT_DIR)/lex \
+ $(MAGIC_FRAGMENT_DIR)/lif \
+-$(MAGIC_FRAGMENT_DIR)/linux \
+ $(MAGIC_FRAGMENT_DIR)/lisp \
+ $(MAGIC_FRAGMENT_DIR)/llvm \
+ $(MAGIC_FRAGMENT_DIR)/locoscript \
+@@ -451,7 +450,6 @@ $(MAGIC_FRAGMENT_DIR)/lua \
+ $(MAGIC_FRAGMENT_DIR)/luks \
+ $(MAGIC_FRAGMENT_DIR)/m4 \
+ $(MAGIC_FRAGMENT_DIR)/mach \
+-$(MAGIC_FRAGMENT_DIR)/macintosh \
+ $(MAGIC_FRAGMENT_DIR)/macos \
+ $(MAGIC_FRAGMENT_DIR)/magic \
+ $(MAGIC_FRAGMENT_DIR)/mail.news \
+@@ -475,11 +473,11 @@ $(MAGIC_FRAGMENT_DIR)/misctools \
+ $(MAGIC_FRAGMENT_DIR)/mkid \
+ $(MAGIC_FRAGMENT_DIR)/mlssa \
+ $(MAGIC_FRAGMENT_DIR)/mmdf \
+-$(MAGIC_FRAGMENT_DIR)/modem \
+ $(MAGIC_FRAGMENT_DIR)/modulefile \
+ $(MAGIC_FRAGMENT_DIR)/motorola \
+ $(MAGIC_FRAGMENT_DIR)/mozilla \
+ $(MAGIC_FRAGMENT_DIR)/msdos \
++$(MAGIC_FRAGMENT_DIR)/modem \
+ $(MAGIC_FRAGMENT_DIR)/msooxml \
+ $(MAGIC_FRAGMENT_DIR)/msvc \
+ $(MAGIC_FRAGMENT_DIR)/msx \
+@@ -543,6 +541,8 @@ $(MAGIC_FRAGMENT_DIR)/qt \
+ $(MAGIC_FRAGMENT_DIR)/revision \
+ $(MAGIC_FRAGMENT_DIR)/ringdove \
+ $(MAGIC_FRAGMENT_DIR)/riff \
++$(MAGIC_FRAGMENT_DIR)/apple \
++$(MAGIC_FRAGMENT_DIR)/macintosh \
+ $(MAGIC_FRAGMENT_DIR)/rpi \
+ $(MAGIC_FRAGMENT_DIR)/rpm \
+ $(MAGIC_FRAGMENT_DIR)/rpmsg \
+@@ -636,10 +636,22 @@ EXTRA_DIST = \
+ $(MAGIC_DIR)/scripts/create_filemagic_flac \
+ $(MAGIC_FRAGMENTS)
+ 
++RAW   = magic
+ MAGIC = magic.mgc
+-CLEANFILES = ${MAGIC} $(MAGIC_FRAGMENT_DIR)/Localstuff
++CLEANFILES = ${MAGIC} $(MAGIC_FRAGMENT_DIR)/Localstuff ${RAW}
+ @IS_CROSS_COMPILE_FALSE@FILE_COMPILE = $(top_builddir)/src/file${EXEEXT}
+ 
++${RAW}: $(MAGIC_DIR)/Header $(MAGIC_DIR)/Localstuff $(MAGIC_FRAGMENTS)
++	cat /dev/null > $@
++	for frag in $(MAGIC_FRAGMENTS); do \
++	    if test -f $(srcdir)/$$frag; then \
++	        f=$(srcdir)/$$frag; \
++	    else \
++	        f=$$frag; \
++	    fi; \
++	    cat $$f; \
++	done >> $@
++
+ # FIXME: Build file natively as well so that it can be used to compile
+ # the target's magic file; for now we bail if the local version does not match
+ @IS_CROSS_COMPILE_TRUE@FILE_COMPILE = file${EXEEXT}
+@@ -863,23 +875,25 @@ uninstall-am: uninstall-pkgdataDATA
+ 
+ .PRECIOUS: Makefile
+ 
++${MAGIC}: $(MAGIC_FRAGMENTS) $(FILE_COMPILE_DEP) $(RAW)
++	$(FILE_COMPILE) -C -m $(RAW)
+ 
+-${MAGIC}: $(MAGIC_FRAGMENTS) $(FILE_COMPILE_DEP)
+-	@rm -fr magic
+-	@mkdir magic && cp -p $(MAGIC_FRAGMENTS) magic
+-	@(if expr "${FILE_COMPILE}" : '.*/.*' > /dev/null; then \
+-	    echo "Using ${FILE_COMPILE} to generate ${MAGIC}" > /dev/null; \
+-	  else \
+-	    v=$$(${FILE_COMPILE} --version | sed -e s/file-// -e q); \
+-	    if [ "$$v" != "${PACKAGE_VERSION}" ]; then \
+-		echo "Cannot use the installed version of file ($$v) to"; \
+-		echo "cross-compile file ${PACKAGE_VERSION}"; \
+-		echo "Please install file ${PACKAGE_VERSION} locally first"; \
+-		exit 1; \
+-	    fi; \
+-	  fi)
+-	$(FILE_COMPILE) -C -m magic
+-	@rm -fr magic
++#${MAGIC}: $(MAGIC_FRAGMENTS) $(FILE_COMPILE_DEP)
++#	@rm -fr magic
++#	@mkdir magic && cp -p $(MAGIC_FRAGMENTS) magic
++#	@(if expr "${FILE_COMPILE}" : '.*/.*' > /dev/null; then \
++#	    echo "Using ${FILE_COMPILE} to generate ${MAGIC}" > /dev/null; \
++#	  else \
++#	    v=$$(${FILE_COMPILE} --version | sed -e s/file-// -e q); \
++#	    if [ "$$v" != "${PACKAGE_VERSION}" ]; then \
++#		echo "Cannot use the installed version of file ($$v) to"; \
++#		echo "cross-compile file ${PACKAGE_VERSION}"; \
++#		echo "Please install file ${PACKAGE_VERSION} locally first"; \
++#		exit 1; \
++#	    fi; \
++#	  fi)
++#	$(FILE_COMPILE) -C -m magic
++#	@rm -fr magic
+ 
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
+--- src/Makefile.am
++++ src/Makefile.am	2023-07-28 09:42:01.849813866 +0000
+@@ -1,4 +1,4 @@
+-MAGIC = $(pkgdatadir)/magic
++MAGIC = $(sysconfdir)/magic:$(pkgdatadir)/magic
+ lib_LTLIBRARIES = libmagic.la
+ nodist_include_HEADERS = magic.h
+ 
+--- src/dcore.c
++++ src/dcore.c	2023-07-28 09:42:01.865813574 +0000
+@@ -0,0 +1,207 @@
++/*
++ * Show goo about ELF core files
++ * Jeremy Fitzhardinge <jeremy@zip.com.au> 1996
++ */
++#include <unistd.h>
++#include <fcntl.h>
++#include <stdlib.h>
++#include <stdio.h>
++#include <sys/types.h>
++#include <string.h>
++#if defined __GLIBC__ && __GLIBC__ >= 2
++#include <elf.h>
++#include <sys/procfs.h>
++# ifndef NT_PRFPREG
++#  define NT_PRFPREG 2
++# endif
++# ifndef NT_TASKSTRUCT
++#  define NT_TASKSTRUCT 4
++# endif
++#else
++#include <linux/elf.h>
++#include <linux/elfcore.h>
++#endif
++
++static void fperror(const char *str)
++{
++	perror(str);
++	exit(1);
++}
++
++static size_t myread(int fd, void *buf, size_t sz)
++{
++	size_t ret;
++	
++	if ((ret = read(fd, buf, sz)) != sz)
++		fperror("read failed");
++	return ret;
++}
++
++static void print_prstatus(const prstatus_t *pr)
++{
++	unsigned i;
++	static const char *regs[] = { "ebx", "ecx", "edx", "esi", "edi", "ebp",
++					      "eax", "ds", "es", "fs", "gs",
++					      "orig_eax", "eip", "cs",
++					      "efl", "uesp", "ss"};
++	
++	printf("    pid=%d ppid=%d pgrp=%d sid=%d\n",
++	      pr->pr_pid, pr->pr_ppid, pr->pr_pgrp, pr->pr_sid);
++	for(i = 0; i < NGREG; i++)
++	{
++		unsigned long val = pr->pr_reg[i];
++		printf("    %-2u %-5s=%08lx %lu\n", i, regs[i], val, val);
++	}
++}
++
++static void print_prpsinfo(const prpsinfo_t *ps)
++{
++	printf("    uid=%d gid=%d\n", ps->pr_uid, ps->pr_gid);
++	printf("    comm=%s\n", ps->pr_fname);
++	printf("    psargs=%s\n", ps->pr_psargs);
++}
++
++#define roundup(x, y)  ((((x)+((y)-1))/(y))*(y))
++
++static void do_note(int fd, Elf32_Phdr *phdr)
++{
++	off_t here = lseek(fd, 0, SEEK_CUR);
++	int size = phdr->p_filesz;
++	char *raw = alloca(size), *end;
++	end = raw+size;
++	
++	lseek(fd, phdr->p_offset, SEEK_SET);
++	myread(fd, raw, size);
++
++	while(raw < end)
++	{
++		Elf32_Nhdr *note = (Elf32_Nhdr *)raw;
++		const char *str;
++		const char *name, *desc;
++		
++		raw += sizeof(*note);
++		name = raw;
++		raw += roundup(note->n_namesz, sizeof(long));
++		desc = raw;
++		raw += roundup(note->n_descsz, sizeof(long));
++
++		printf("  name=%.*s", (int)note->n_namesz, name);
++
++		if(strncmp(name, "CORE", note->n_namesz) != 0)
++		{
++			printf("\n");
++			continue;
++		}
++		
++		switch(note->n_type)
++		{
++#define X(x)	case x: str = #x; break;
++			X(NT_PRSTATUS);
++			X(NT_PRFPREG);
++			X(NT_PRPSINFO);
++			X(NT_TASKSTRUCT);
++#undef X
++		default:
++			str = "???";
++		}
++		printf(" n_type=%s n_descsz=%ld\n",
++		       str, note->n_descsz);
++		switch(note->n_type)
++		{
++		case NT_PRSTATUS:
++			print_prstatus((prstatus_t *)desc);
++			break;
++		case NT_PRPSINFO:
++			print_prpsinfo((prpsinfo_t *)desc);
++			break;
++		}
++	}
++	lseek(fd, here, SEEK_SET);
++}
++
++int main(int argc, char *argv[])
++{
++	int fd;
++	Elf32_Ehdr elf;
++	int i;
++	
++	if (argc != 2)
++	{
++		fprintf(stderr, "Usage: %s corefile\n", argv[0]);
++		exit(1);
++	}
++
++	if ((fd = open(argv[1], O_RDONLY)) == -1)
++		fperror("open of core");
++
++	myread(fd, &elf, sizeof(elf));
++
++	if (memcmp(ELFMAG, elf.e_ident, SELFMAG) != 0)
++		printf("bad magic\n");
++
++	if (elf.e_ident[EI_CLASS] != ELFCLASS32)
++		printf("wrong class\n");
++		
++	if (elf.e_ident[EI_DATA] != ELFDATA2LSB)
++		printf("wrong endianess\n");
++
++	if (elf.e_ident[EI_VERSION] != EV_CURRENT)
++		printf("wrong version\n");
++
++	{
++		const char *str;
++		switch(elf.e_type)
++		{
++#define C(x)	case ET_##x: str = #x; break;
++			C(NONE);
++			C(REL);
++			C(EXEC);
++			C(DYN);
++			C(CORE);
++#undef C
++		default: str = "???"; break;
++		}
++		printf("elf file type ET_%s\n", str);
++	}
++
++	if (elf.e_machine != EM_386 && elf.e_machine != EM_486)
++		printf("not i386 or i486\n");
++
++	if (elf.e_ehsize != sizeof(elf))
++		printf("wrong header size\n");
++
++	if (elf.e_phentsize != sizeof(Elf32_Phdr))
++		printf("wrong phdr size\n");
++
++	if (lseek(fd, elf.e_phoff, SEEK_SET) != (off_t)elf.e_phoff)
++		fperror("lseek to phdr failed\n");
++
++	for(i = 0; i < elf.e_phnum; i++)
++	{
++		Elf32_Phdr phdr;
++		const char *str;
++		
++		myread(fd, &phdr, sizeof(phdr));
++		switch(phdr.p_type)
++		{
++#define C(x)	case PT_##x: str = #x; break;
++			C(NULL);
++			C(LOAD);
++			C(DYNAMIC);
++			C(INTERP);
++			C(NOTE);
++			C(SHLIB);
++			C(PHDR);
++#undef C
++		default:
++			str = "???"; break;
++		}
++		printf("type PT_%s off=%ld vaddr=%lx filesz=%ld flags=%lx\n",
++		       str, phdr.p_offset, phdr.p_vaddr, phdr.p_filesz,
++		       (unsigned long)phdr.p_flags);
++		if (phdr.p_type == PT_NOTE)
++			do_note(fd, &phdr);
++	}
++	exit(0);
++}
++

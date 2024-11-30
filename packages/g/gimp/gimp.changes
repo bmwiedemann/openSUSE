@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Nov 28 14:47:18 UTC 2024 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Fix jpeg-xl disabling, use proper with/without
+
+-------------------------------------------------------------------
+Mon Nov 11 15:16:56 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Disable jpeg-xl support on SLES < 16.0 (SP6, SP7) 
+  libjxl is only in Leap/PackageHUB but not in SLES.
+  Leap gets gimp binary rpms from SLES.
+  (helps to fix bsc#1233157)
+
+- Re-adding dropped references compared to SLES 15 SP6 changelog
+  CVE-2022-32990 CVE-2023-44441 CVE-2023-44442
+  CVE-2023-44443 CVE-2023-44444
+  bsc#1201192 bsc#1217160 bsc#1217161 bsc#1217162 bsc#1217163
+-------------------------------------------------------------------
 Fri Oct 18 08:15:54 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add gtk-update-icon-cache BuildRequires: Ensure
@@ -3347,4 +3364,3 @@ Fri Jun 20 01:59:59 CEST 2003 - ro@suse.de
 Tue Jun 10 13:16:54 CEST 2003 - sbrabec@suse.cz
 
 - Initial SuSE version of GTK2 port.
-

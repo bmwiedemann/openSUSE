@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 29 07:32:22 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add installation-root-dir-from-setup.patch
+  gh#OpenPrinting/system-config-printer#361 to fix cupshelpers
+  installation.
+
+-------------------------------------------------------------------
 Wed Jul 17 16:35:21 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop obsolete update-desktop-files BuildRequires and macro.

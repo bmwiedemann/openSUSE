@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Nov 26 07:12:00 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to 4.1.7 (jsc#PED-11355):
+  - Fix int overflow bug in UCC collectives routine, which would impact
+    large message collectives.
+  - Fix SHMEM bounds checking warnings
+  - Fix memory leak in the fcoll/vulcan component
+  - Fix memory leak when using non-contiguious datatyles with pml/cm
+    (used when using Libfabric or Portals transports)
+  - Change default locking protocol for ufs IO component to fix data
+    sieving use case.
+  - Fix bug in Fortran / C interface array calculation.
+  - Fix potential initialization in UCX OpenSHMEM support
+  - Add OpenSHMEM support for symmetric remote key handling to improve
+    scalability of OpenSHMEM interface.
+  - Add MCS Locks as default implementation for OpenSHMEM locks.
+  - Fix bug to properly handle ORTE Prefix of "/".
+  - Fix bug in I/O interface handling of soft links on Lustre
+    filesystems.
+  - Fix memory leak in UCX one-sided implementation.
+  - Fix bug in rcache components that could lead to assert on macOS
+    systems.
+  - Fix mishandling of a NULL completion context in the OFI transport.
+  - Tarballs are now built with the tar-pax format.
+  - Set MPI_THREAD_SERIALIZED instead of MPI_THREAD_SINGLE as supported
+    threading model when using UCX that supports
+    UCS_THREAD_MODE_SERIALIZED.
+  - Fix issue that would prevent using Libfabric 2.x releases.
+
+-------------------------------------------------------------------
 Thu Sep  5 06:58:41 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Add test-datatype-partial.c-fix-compiler-warnings.patch to fix

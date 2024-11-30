@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 28 15:47:54 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Add psm3-fix-SIGILL-on-system-not-supporting-AVX.patch to fix
+  SIGILL hapening during init on older CPU (bsc#1213538, bsc#1233356).
+- Refresh libfabric-libtool.patch tu support patch -p0
+
+-------------------------------------------------------------------
 Mon Aug  5 11:20:55 UTC 2024 - Filip Kastl <filip.kastl@suse.com>
 
 - Add -Wno-incompatible-pointer-types to CFLAGS to enable building

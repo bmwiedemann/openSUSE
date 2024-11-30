@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 29 05:56:22 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Support s390x Secure Execution (jsc#PED-9531)
+  * grub2-s390x-secure-execution-support.patch
+- Update grub2-s390x-set-hostonly.patch to add the patch header
+  and the description
+
+-------------------------------------------------------------------
 Wed Nov 13 01:09:47 UTC 2024 - Michael Chang <mchang@suse.com>
 
 - Revert the patches related to BLS support in grub2-mkconfig, as they are not

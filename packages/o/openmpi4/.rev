@@ -195,4 +195,37 @@
     <comment></comment>
     <requestid>1198895</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8e3a71947e7b91ea1c3a6ae0e65b9d2e</srcmd5>
+    <version>4.1.7</version>
+    <time>1732969634</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.1.7 (jsc#PED-11355):
+  - Fix int overflow bug in UCC collectives routine, which would impact
+    large message collectives.
+  - Fix SHMEM bounds checking warnings
+  - Fix memory leak in the fcoll/vulcan component
+  - Fix memory leak when using non-contiguious datatyles with pml/cm
+    (used when using Libfabric or Portals transports)
+  - Change default locking protocol for ufs IO component to fix data
+    sieving use case.
+  - Fix bug in Fortran / C interface array calculation.
+  - Fix potential initialization in UCX OpenSHMEM support
+  - Add OpenSHMEM support for symmetric remote key handling to improve
+    scalability of OpenSHMEM interface.
+  - Add MCS Locks as default implementation for OpenSHMEM locks.
+  - Fix bug to properly handle ORTE Prefix of &quot;/&quot;.
+  - Fix bug in I/O interface handling of soft links on Lustre
+    filesystems.
+  - Fix memory leak in UCX one-sided implementation.
+  - Fix bug in rcache components that could lead to assert on macOS
+    systems.
+  - Fix mishandling of a NULL completion context in the OFI transport.
+  - Tarballs are now built with the tar-pax format.
+  - Set MPI_THREAD_SERIALIZED instead of MPI_THREAD_SINGLE as supported
+    threading model when using UCX that supports
+    UCS_THREAD_MODE_SERIALIZED.
+  - Fix issue that would prevent using Libfabric 2.x releases.</comment>
+    <requestid>1227160</requestid>
+  </revision>
 </revisionlist>
