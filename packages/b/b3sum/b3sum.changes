@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Nov 30 08:47:40 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 1.5.5:
+  * b3sum --check now supports checkfiles with Windows-style
+    newlines. b3sum still emits Unix-style newlines, even on
+    Windows, but sometimes text editors or version control tools
+    will swap them.
+  * The "digest" feature (deleted in v1.5.2) has been added back to
+    the blake3 crate. This is for backwards compatibility only, and
+    it's insta-deprecated. All callers should prefer the
+    "traits-preview" feature.
+
+-------------------------------------------------------------------
 Mon Aug 19 19:13:34 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 1.5.4:

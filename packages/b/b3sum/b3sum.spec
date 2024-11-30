@@ -17,7 +17,7 @@
 
 
 Name:           b3sum
-Version:        1.5.4
+Version:        1.5.5
 Release:        0
 Summary:        A multithreaded rust implementation of BLAKE3
 License:        Apache-2.0 OR CC0-1.0
