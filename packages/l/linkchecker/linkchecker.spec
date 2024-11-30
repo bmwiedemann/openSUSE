@@ -1,7 +1,7 @@
 #
 # spec file for package linkchecker
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define pythons python3
 %{?sle15_python_module_pythons}
 Name:           linkchecker
-Version:        10.4.0
+Version:        10.5.0
 Release:        0
 Summary:        Tool to check websites and HTML documents for broken links
 License:        GPL-2.0-or-later
@@ -50,7 +50,7 @@ Requires:       python-dnspython >= 2.0
 Requires:       python-pyxdg
 Requires:       python-requests >= 2.4
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Provides:       linkchecker = %{version}
 Obsoletes:      linkchecker < %{version}
 BuildArch:      noarch

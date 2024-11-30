@@ -2,7 +2,7 @@
   <service mode="manual" name="obs_scm">
     <param name="url">https://github.com/linkchecker/linkchecker.git</param>
     <param name="scm">git</param>
-    <param name="versionformat">v10.4.0</param>
+    <param name="versionformat">v10.5.0</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="package-meta">yes</param>
   </service>
