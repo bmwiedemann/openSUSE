@@ -4031,6 +4031,7 @@ unsorted:
   - falcoctl-bash-completion 
   - falcoctl-fish-completion 
   - falcoctl-zsh-completion 
+  - falcosidekick 
   - falkon 
   - falkon-kde 
   - falkon-lang 
@@ -4735,8 +4736,6 @@ unsorted:
   - gamemode 
   - gamemoded 
   - gamescope 
-  - gamin-devel 
-  - gamin-server 
   - gammaray 
   - gammaray-devel 
   - gammaray-qt6 
@@ -7353,6 +7352,9 @@ unsorted:
   - gloox-devel 
   - glorytun 
   - glow 
+  - glow-bash-completion 
+  - glow-fish-completion 
+  - glow-zsh-completion 
   - glpk 
   - glpk-devel 
   - glpk-doc 
@@ -9528,6 +9530,7 @@ unsorted:
   - jeromq-javadoc 
   - jersey 
   - jersey-javadoc 
+  - jesusmgg-comicshanns-fonts 
   - jetbrains-annotations 
   - jetbrains-annotations-javadoc 
   - jetbrains-mono-fonts 
@@ -13147,7 +13150,6 @@ unsorted:
   - libfallocate-devel 
   - libfallocate-devel-static 
   - libfallocate0 
-  - libfam0-gamin 
   - libfann-devel 
   - libfann2 
   - libfarstream-0_2-5 
@@ -13411,7 +13413,6 @@ unsorted:
   - libgamemode0-32bit 
   - libgamemodeauto0 
   - libgamemodeauto0-32bit 
-  - libgamin-1-0 
   - libgaminggear 
   - libgaminggear-devel 
   - libgaminggear-lang 
@@ -15162,7 +15163,7 @@ unsorted:
   - libopenlibm4 
   - libopenmpi4-gnu-hpc 
   - libopenmpi5-gnu-hpc 
-  - libopenmpi_4_1_6-gnu-hpc 
+  - libopenmpi_4_1_7-gnu-hpc 
   - libopenmpi_5_0_5-gnu-hpc 
   - libopenmpt-devel 
   - libopenmpt-modplug-devel 
@@ -20155,6 +20156,7 @@ unsorted:
   - obs-service-download_assets 
   - obs-service-download_files 
   - obs-service-download_url 
+  - obs-service-elixir_mix_deps 
   - obs-service-extract_file 
   - obs-service-format_spec_file 
   - obs-service-go_modules 
@@ -20714,12 +20716,12 @@ unsorted:
   - openmpi5-libs 
   - openmpi5-macros-devel 
   - openmpi5-testsuite 
-  - openmpi_4_1_6-gnu-hpc 
-  - openmpi_4_1_6-gnu-hpc-devel 
-  - openmpi_4_1_6-gnu-hpc-devel-static 
-  - openmpi_4_1_6-gnu-hpc-docs 
-  - openmpi_4_1_6-gnu-hpc-macros-devel 
-  - openmpi_4_1_6-gnu-hpc-testsuite 
+  - openmpi_4_1_7-gnu-hpc 
+  - openmpi_4_1_7-gnu-hpc-devel 
+  - openmpi_4_1_7-gnu-hpc-devel-static 
+  - openmpi_4_1_7-gnu-hpc-docs 
+  - openmpi_4_1_7-gnu-hpc-macros-devel 
+  - openmpi_4_1_7-gnu-hpc-testsuite 
   - openmpi_5_0_5-gnu-hpc 
   - openmpi_5_0_5-gnu-hpc-devel 
   - openmpi_5_0_5-gnu-hpc-devel-static 
@@ -20785,6 +20787,7 @@ unsorted:
   - openssl_tpm_engine 
   - openstack-macros 
   - opensurge 
+  - opensuse-migration-tool 
   - opensuse-welcome-lang 
   - opentest4j 
   - opentest4j-javadoc 
@@ -25628,6 +25631,7 @@ unsorted:
   - python310-expiringdict 
   - python310-exrex 
   - python310-extension-helpers 
+  - python310-extra-platforms 
   - python310-extract-msg 
   - python310-extras 
   - python310-extratools 
@@ -27021,6 +27025,7 @@ unsorted:
   - python310-pytest-bdd 
   - python310-pytest-benchmark 
   - python310-pytest-black 
+  - python310-pytest-cases 
   - python310-pytest-check 
   - python310-pytest-check-links 
   - python310-pytest-click 
@@ -29265,6 +29270,7 @@ unsorted:
   - python311-expiringdict 
   - python311-exrex 
   - python311-extension-helpers 
+  - python311-extra-platforms 
   - python311-extract-msg 
   - python311-extratools 
   - python311-eyed3 
@@ -30596,6 +30602,7 @@ unsorted:
   - python311-pytest-bdd 
   - python311-pytest-benchmark 
   - python311-pytest-black 
+  - python311-pytest-cases 
   - python311-pytest-check 
   - python311-pytest-check-links 
   - python311-pytest-click 
@@ -32857,6 +32864,7 @@ unsorted:
   - python312-expiringdict 
   - python312-exrex 
   - python312-extension-helpers 
+  - python312-extra-platforms 
   - python312-extract-msg 
   - python312-extras 
   - python312-extratools 
@@ -34250,6 +34258,7 @@ unsorted:
   - python312-pytest-bdd 
   - python312-pytest-benchmark 
   - python312-pytest-black 
+  - python312-pytest-cases 
   - python312-pytest-check 
   - python312-pytest-check-links 
   - python312-pytest-click 
@@ -36412,6 +36421,7 @@ unsorted:
   - python313-dnspython 
   - python313-doc 
   - python313-doc-devhelp 
+  - python313-docformatter 
   - python313-docker 
   - python313-docopt 
   - python313-docopt-ng 
@@ -36506,6 +36516,7 @@ unsorted:
   - python313-expiringdict 
   - python313-exrex 
   - python313-extension-helpers 
+  - python313-extra-platforms 
   - python313-extract-msg 
   - python313-extras 
   - python313-extratools 
@@ -36725,6 +36736,7 @@ unsorted:
   - python313-h2 
   - python313-h5netcdf 
   - python313-h5py 
+  - python313-h5py-openmpi4 
   - python313-habanero 
   - python313-hammett 
   - python313-handy-archives 
@@ -37212,6 +37224,8 @@ unsorted:
   - python313-moto 
   - python313-moto-all 
   - python313-moto-server 
+  - python313-mpi4py 
+  - python313-mpi4py-devel 
   - python313-mpl-animators 
   - python313-mplcursors 
   - python313-mpld3 
@@ -37637,6 +37651,7 @@ unsorted:
   - python313-pyPEG2 
   - python313-pyRFC3339 
   - python313-pyRXP 
+  - python313-pyUSID 
   - python313-pyVows 
   - python313-pyacoustid 
   - python313-pyaes 
@@ -37856,6 +37871,7 @@ unsorted:
   - python313-pytest-bdd 
   - python313-pytest-benchmark 
   - python313-pytest-black 
+  - python313-pytest-cases 
   - python313-pytest-check 
   - python313-pytest-check-links 
   - python313-pytest-click 
@@ -37899,6 +37915,7 @@ unsorted:
   - python313-pytest-metadata 
   - python313-pytest-mock 
   - python313-pytest-mockito 
+  - python313-pytest-mpi 
   - python313-pytest-mpl 
   - python313-pytest-mypy 
   - python313-pytest-mypy-testing 
@@ -38283,6 +38300,7 @@ unsorted:
   - python313-show-in-file-manager 
   - python313-shtab 
   - python313-sidecar 
+  - python313-sidpy 
   - python313-sievelib 
   - python313-signedjson 
   - python313-simple-websocket 
@@ -38469,6 +38487,7 @@ unsorted:
   - python313-termstyle 
   - python313-tesserocr 
   - python313-testfixtures 
+  - python313-testflo 
   - python313-testpath 
   - python313-testrepository 
   - python313-testresources 
@@ -41208,6 +41227,7 @@ unsorted:
   - supercollider-sc3-plugins 
   - supercollider-vim 
   - supergfxctl 
+  - supergfxctl-plasmoid 
   - superlu-devel 
   - superlu-doc 
   - superlu-examples 
@@ -41453,6 +41473,7 @@ unsorted:
   - tagsoup-javadoc 
   - tai-heritage-pro-fonts 
   - taigo 
+  - tail-tray 
   - tailscale 
   - tailscale-bash-completion 
   - tailscale-fish-completion 
