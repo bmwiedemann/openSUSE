@@ -17,11 +17,12 @@
 
 
 Name:           translate-suse-desktop
-Version:        0.20241004.009da54
+Version:        0.20241115.cac1c69
 Release:        0
 Summary:        A Build Tool to Provide Desktop Translation
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Building
+URL:            https://github.com/openSUSE/suse-desktop-translations
 Source:         suse-desktop-translations-%{version}.tar.xz
 Source1:        translate_suse_desktop.macro
 Source2:        translate_suse_desktop.sh
@@ -31,6 +32,9 @@ BuildArch:      noarch
 %description
 This package provides a tool that will import translations for SUSE
 specific desktop files.
+
+For more, see
+https://en.opensuse.org/openSUSE:Packaging_Conventions_RPM_Macros#%translate_suse_desktop
 
 %prep
 %setup -q -n suse-desktop-translations-%{version}
