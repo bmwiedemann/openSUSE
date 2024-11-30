@@ -24,7 +24,7 @@
 %define bin wormhole-rs
 
 Name:           magic-wormhole.rs
-Version:        0.7.3
+Version:        0.7.4
 Release:        0
 Summary:        Rust implementation of Magic Wormhole
 License:        EUPL-1.2
@@ -78,6 +78,7 @@ Zsh command-line completion support for %{name}.
 
 %prep
 %autosetup -a 1
+rm .cargo/config
 
 %build
 %{cargo_build} %{?build_args}

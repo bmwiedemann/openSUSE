@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov 30 08:23:40 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 0.7.4:
+  Fixes
+  * cli: autocomplete would use the wrong wordlist exactly 100% of
+    the time
+  * cli: Remove unmaintained instant dependency
+
+-------------------------------------------------------------------
 Fri Oct 25 00:36:54 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Add system openSSL option
