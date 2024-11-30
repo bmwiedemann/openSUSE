@@ -6,11 +6,11 @@
 # be considered that important.
 # 2) use the 501 error code to mark spam - in such a case
 # the 'antispam' option should be used
-Index: fetchmail-6.4.1/sink.c
+Index: fetchmail-6.5.1/sink.c
 ===================================================================
---- fetchmail-6.4.1.orig/sink.c
-+++ fetchmail-6.4.1/sink.c
-@@ -536,6 +536,19 @@ static int handle_smtp_report(struct que
+--- fetchmail-6.5.1.orig/sink.c
++++ fetchmail-6.5.1/sink.c
+@@ -526,6 +526,19 @@ static int handle_smtp_report(struct que
  	free(responses[0]);
  	return(PS_TRANSIENT);
  
@@ -30,7 +30,7 @@ Index: fetchmail-6.4.1/sink.c
      default:
  	/* bounce non-transient errors back to the sender */
  	if (smtperr >= 500 && smtperr <= 599)
-@@ -601,7 +614,7 @@ static int handle_smtp_report_without_bo
+@@ -591,7 +604,7 @@ static int handle_smtp_report_without_bo
      case 553: /* invalid sending domain */
  	return(PS_REFUSED);
  

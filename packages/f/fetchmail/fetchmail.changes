@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Nov 26 09:22:07 UTC 2024 - Angel Yankov <angel.yankov@suse.com>
+
+- Upgrade to 6.5.1 
+  * Drop two wolfSSL compile-time checks that were for older 6.4 or for future
+    7.0 releases and broke compilation with wolfSSL 5.7.4. 
+    Fixes https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=282413#c4
+  * Use %p instead of non-portable %#p for one wolfSSL-related diagnostic message
+    (FreeBSD defines %#p to be %p, on many other platforms it's undefined 
+    behavior).
+  * Add regex_helper.c to list of files that contain translatable strings,
+    which contains two strings we missed to translate.
+  * Simplify EVP_MD_fetch API detection ("like OpenSSL 3" vs. "like OpenSSL 1") 
+    for version switch and base it on the claimed OpenSSL version of the crypto 
+    SSL, which works for LibreSSL (claims OpenSSL 2) and wolfSSL alike.
+  * Several translations added
+  - Rebased fetchmail-6.3.8-smtp_errors.patch
+  - Rebased fetchmail-FAQ-list-gmail-options-including-oauthbearer-and-app.patch
+  - Rebased fetchmail-add-contrib-fetchnmail-oauth2.py-token-acquisition-u.patch
+  - Rebased fetchmail-add-imap-oauthbearer-support.patch
+  - Rebased fetchmail-add-passwordfile-and-passwordfd-options.patch
+  - Rebased fetchmail-add-query_to64_outsize-utility-function.patch
+  - Rebased fetchmail-bump-max-passwordlen-to-1bytes.patch
+  - Rebased fetchmail-give-each-ctl-it-s-own-copy-of-password.patch
+  - Rebased fetchmail-increase-max-password-length-to-handle-oauth-tokens.patch
+  - Rebased fetchmail-re-read-passwordfile-on-every-poll.patch
+  - Rebased fetchmail-support-oauthbearer-xoauth2-with-pop3.patch
+  - Rebased fetchmailconf-no-more-future.patch
+
+-------------------------------------------------------------------
 Thu Apr  4 09:01:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.4.38:

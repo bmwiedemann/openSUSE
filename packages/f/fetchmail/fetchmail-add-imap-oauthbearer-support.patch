@@ -17,9 +17,11 @@ When configured, it will also fall back on trying xoauth2.
  rcfile_l.l       |    1 
  8 files changed, 137 insertions(+), 5 deletions(-)
 
---- a/conf.c
-+++ b/conf.c
-@@ -288,6 +288,8 @@ void dump_config(struct runctl *runp, st
+Index: fetchmail-6.5.1/conf.c
+===================================================================
+--- fetchmail-6.5.1.orig/conf.c
++++ fetchmail-6.5.1/conf.c
+@@ -284,6 +284,8 @@ void dump_config(struct runctl *runp, st
  		stringdump("auth", "otp");
  	    else if (ctl->server.authenticate == A_MSN)
  		stringdump("auth", "msn");
@@ -28,10 +30,12 @@ When configured, it will also fall back on trying xoauth2.
  
  #ifdef HAVE_RES_SEARCH
  	    booldump("dns", ctl->server.dns);
---- a/fetchmail.c
-+++ b/fetchmail.c
-@@ -1783,6 +1783,9 @@ static void dump_params (struct runctl *
- 	case A_SSH:
+Index: fetchmail-6.5.1/fetchmail.c
+===================================================================
+--- fetchmail-6.5.1.orig/fetchmail.c
++++ fetchmail-6.5.1/fetchmail.c
+@@ -1804,6 +1804,9 @@ static void dump_params (struct runctl *
+ 	case A_IMPLICIT:
  	    printf(GT_("  End-to-end encryption assumed.\n"));
  	    break;
 +	case A_OAUTHBEARER:
@@ -40,17 +44,19 @@ When configured, it will also fall back on trying xoauth2.
  	}
  	if (ctl->server.principal != (char *) NULL)
  	    printf(GT_("  Mail service principal is: %s\n"), ctl->server.principal);
---- a/fetchmail.h
-+++ b/fetchmail.h
-@@ -79,6 +79,7 @@ struct addrinfo;
- #define		A_SSH		8	/* authentication at session level */
+Index: fetchmail-6.5.1/fetchmail.h
+===================================================================
+--- fetchmail-6.5.1.orig/fetchmail.h
++++ fetchmail-6.5.1/fetchmail.h
+@@ -64,6 +64,7 @@ struct addrinfo;
+ #define		A_IMPLICIT	8	/* authentication at session level */
  #define		A_MSN		9	/* same as NTLM with keyword MSN */
  #define		A_EXTERNAL	10	/* external authentication (client cert) */
 +#define			A_OAUTHBEARER	11	/** oauth2 access token (not password) */
  
  /* some protocols or authentication types (KERBEROS, GSSAPI, SSH) don't
   * require a password */
-@@ -114,6 +115,7 @@ struct addrinfo;
+@@ -99,6 +100,7 @@ struct addrinfo;
  #define		MSGBUFSIZE	8192
  
  #define		NAMELEN		64	/* max username length */
@@ -58,18 +64,22 @@ When configured, it will also fall back on trying xoauth2.
  #define		PASSWORDLEN	256	/* max password length */
  #define		DIGESTLEN	33	/* length of MD5 digest */
  
---- a/fetchmail.man
-+++ b/fetchmail.man
-@@ -1006,7 +1006,7 @@ AUTHENTICATION below for details).  The
+Index: fetchmail-6.5.1/fetchmail.man
+===================================================================
+--- fetchmail-6.5.1.orig/fetchmail.man
++++ fetchmail-6.5.1/fetchmail.man
+@@ -1113,8 +1113,8 @@ AUTHENTICATION below for details).  The
  \&\fBpassword\fP, \fBkerberos_v5\fP, \fBkerberos\fP (or, for
  excruciating exactness, \fBkerberos_v4\fP), \fBgssapi\fP,
  \fBcram\-md5\fP, \fBotp\fP, \fBntlm\fP, \fBmsn\fP (only for POP3),
--\fBexternal\fP (only IMAP) and \fBssh\fP.
-+\fBexternal\fP (only IMAP), \fBssh\fP and \fBoauthbearer\fP (only IMAP).
+-\fBexternal\fP (only IMAP) and \fBimplicit\fP (\fBssh\fP is understood
+-as alias for \fBimplicit\fP).
++\fBexternal\fP (only IMAP),  \fBimplicit\fP (\fBssh\fP is understood
++as alias for \fBimplicit\fP) and \fBoauthbearer\fP (only IMAP).
  When \fBany\fP (the default) is specified, fetchmail tries
  first methods that do not require a password (EXTERNAL, GSSAPI, KERBEROS\ IV,
  KERBEROS\ 5); then it looks for methods that mask your password
-@@ -1031,8 +1031,24 @@ authentication.  This option does not wo
+@@ -1139,8 +1139,24 @@ authentication.  This option does not wo
  in line with RFC-2743 and IANA registrations, see
  .UR https://www.iana.org/assignments/gssapi-service-names/
  Generic Security Service Application Program Interface (GSSAPI)/Kerberos/Simple
@@ -96,31 +106,35 @@ When configured, it will also fall back on trying xoauth2.
  .SS Miscellaneous Options
  .TP
  .B \-f <pathname> | \-\-fetchmailrc <pathname>
-@@ -2325,7 +2341,9 @@ Legal protocol identifiers for use with
+@@ -2475,7 +2491,9 @@ Legal protocol identifiers for use with
  .PP
  Legal authentication types are 'any', 'password', 'kerberos',
  \&'kerberos_v4', 'kerberos_v5' and 'gssapi', 'cram\-md5', 'otp', 'msn'
--(only for POP3), 'ntlm', 'ssh', 'external' (only IMAP).
-+(only for POP3), 'ntlm', 'ssh', 'external' (only IMAP),
+-(only for POP3), 'ntlm', 'implicit', 'external' (only IMAP).
++(only for POP3), 'ntlm', 'implicit', 'external' (only IMAP),
 +'oauthbearer' (only for IMAP; requires authentication token in
 +place of password).
  The 'password' type specifies
  authentication by normal transmission of a password (the password may be
  plain text or subject to protocol-specific encryption as in CRAM-MD5);
---- a/fetchmailconf.py
-+++ b/fetchmailconf.py
-@@ -500,7 +500,7 @@ defaultports = {"auto":None,
+Index: fetchmail-6.5.1/fetchmailconf.py
+===================================================================
+--- fetchmail-6.5.1.orig/fetchmailconf.py
++++ fetchmail-6.5.1/fetchmailconf.py
+@@ -499,7 +499,7 @@ defaultports = {"auto":None,
                  "ODMR":"odmr"}
  
- authlist = ("any", "password", "gssapi", "kerberos", "ssh", "otp",
+ authlist = ("any", "password", "gssapi", "kerberos", "implicit", "otp",
 -            "msn", "ntlm")
 +            "msn", "ntlm", "oauthbearer")
  
  listboxhelp = {
      'title' : 'List Selection Help',
---- a/imap.c
-+++ b/imap.c
-@@ -26,6 +26,10 @@
+Index: fetchmail-6.5.1/imap.c
+===================================================================
+--- fetchmail-6.5.1.orig/imap.c
++++ fetchmail-6.5.1/imap.c
+@@ -24,6 +24,10 @@
  #define IMAP4		0	/* IMAP4 rev 0, RFC1730 */
  #define IMAP4rev1	1	/* IMAP4 rev 1, RFC2060 */
  
@@ -131,7 +145,7 @@ When configured, it will also fall back on trying xoauth2.
  /* global variables: please reinitialize them explicitly for proper
   * working in daemon mode */
  
-@@ -51,6 +55,8 @@ static void clear_sessiondata(void) {
+@@ -49,6 +53,8 @@ static void clear_sessiondata(void) {
   * a const initializer */
  const char *const capa_begin = " [CAPABILITY "; const unsigned capa_len = 13;
  
@@ -140,7 +154,7 @@ When configured, it will also fall back on trying xoauth2.
  /* mailbox variables initialized in imap_getrange() */
  static int count = 0, oldcount = 0, recentcount = 0, unseen = 0, deletions = 0;
  static unsigned int startcount = 1;
-@@ -266,6 +272,21 @@ static int imap_response(int sock, char
+@@ -262,6 +268,21 @@ static int imap_response(int sock, char
  	if (ok != PS_SUCCESS)
  	    return(ok);
  
@@ -162,7 +176,7 @@ When configured, it will also fall back on trying xoauth2.
  	/* all tokens in responses are caseblind */
  	for (cp = buf; *cp; cp++)
  	    if (islower((unsigned char)*cp))
-@@ -396,6 +417,69 @@ static int do_imap_ntlm(int sock, struct
+@@ -394,6 +415,69 @@ static int do_imap_ntlm(int sock, struct
  }
  #endif /* NTLM */
  
@@ -232,7 +246,7 @@ When configured, it will also fall back on trying xoauth2.
  static void imap_canonicalize(char *result, char *raw, size_t maxlen)
  /* encode an IMAP password as per RFC1730's quoting conventions */
  {
-@@ -582,6 +666,26 @@ static int imap_getauth(int sock, struct
+@@ -584,6 +668,26 @@ static int imap_getauth(int sock, struct
  			 for future maintenance */
      (void)ok;
  
@@ -259,9 +273,11 @@ When configured, it will also fall back on trying xoauth2.
      /* Yahoo hack - we'll just try ID if it was offered by the server,
       * and IGNORE errors. */
      {
---- a/options.c
-+++ b/options.c
-@@ -421,6 +421,8 @@ int parsecmdline (int argc /** argument
+Index: fetchmail-6.5.1/options.c
+===================================================================
+--- fetchmail-6.5.1.orig/options.c
++++ fetchmail-6.5.1/options.c
+@@ -395,6 +395,8 @@ int parsecmdline (int argc /** argument
  		ctl->server.authenticate = A_ANY;
  	    else if (strcmp(optarg, "msn") == 0)
  		ctl->server.authenticate = A_MSN;
@@ -270,13 +286,15 @@ When configured, it will also fall back on trying xoauth2.
  	    else {
  		fprintf(stderr,GT_("Invalid authentication `%s' specified.\n"), optarg);
  		errflag++;
---- a/rcfile_l.l
-+++ b/rcfile_l.l
-@@ -106,6 +106,7 @@ cram(-md5)?	{ SETSTATE(0); yylval.proto
+Index: fetchmail-6.5.1/rcfile_l.l
+===================================================================
+--- fetchmail-6.5.1.orig/rcfile_l.l
++++ fetchmail-6.5.1/rcfile_l.l
+@@ -103,6 +103,7 @@ cram(-md5)?	{ SETSTATE(0); yylval.proto
  msn		{ SETSTATE(0); yylval.proto = A_MSN; return AUTHTYPE;}
  ntlm		{ SETSTATE(0); yylval.proto = A_NTLM; return AUTHTYPE;}
  <AUTH>password	{ SETSTATE(0); yylval.proto = A_PASSWORD; return AUTHTYPE;}
 +oauthbearer 	{ SETSTATE(0); yylval.proto = A_OAUTHBEARER; return AUTHTYPE;}
  timeout		{ return TIMEOUT;}
+ idletimeout	{ return IDLETIMEOUT;}
  envelope	{ return ENVELOPE; }
- qvirtual	{ return QVIRTUAL; }

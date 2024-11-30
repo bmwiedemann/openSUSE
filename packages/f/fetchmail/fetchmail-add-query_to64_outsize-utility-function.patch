@@ -9,8 +9,10 @@ Git-commit: cc6e146d516140df800da68976eb7c0aa1cef7c0
  fetchmail.h |    1 +
  2 files changed, 8 insertions(+)
 
---- a/base64.c
-+++ b/base64.c
+Index: fetchmail-6.5.1/base64.c
+===================================================================
+--- fetchmail-6.5.1.orig/base64.c
++++ fetchmail-6.5.1/base64.c
 @@ -66,6 +66,13 @@ fail:
      return rc;
  }
@@ -25,9 +27,11 @@ Git-commit: cc6e146d516140df800da68976eb7c0aa1cef7c0
  int from64tobits(void *out_, const char *in, int maxlen)
  /* base 64 to raw bytes in quasi-big-endian order, returning count of bytes */
  /* maxlen limits output buffer size, set to zero to ignore */
---- a/fetchmail.h
-+++ b/fetchmail.h
-@@ -642,6 +642,7 @@ int prc_filecheck(const char *, const fl
+Index: fetchmail-6.5.1/fetchmail.h
+===================================================================
+--- fetchmail-6.5.1.orig/fetchmail.h
++++ fetchmail-6.5.1/fetchmail.h
+@@ -611,6 +611,7 @@ int prc_filecheck(const char *, const fl
  /* base64.c */
  unsigned len64frombits(unsigned inlen); /** calculate length needed to encode inlen octets. warnings: 1. caller needs to add 1 for a trailing \0 byte himself. 2. returns 0 for inlen 0! */
  int to64frombits(char *, const void *, int inlen, size_t outlen);

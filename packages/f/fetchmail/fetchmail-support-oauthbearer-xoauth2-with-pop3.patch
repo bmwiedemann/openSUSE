@@ -16,9 +16,11 @@ Git-commit: 7b5c56f0fa3acb4c5589a4747c1921a311d8a464
  create mode 100644 oauth2.c
  create mode 100644 oauth2.h
 
---- a/Makefile.am
-+++ b/Makefile.am
-@@ -74,7 +74,7 @@ fetchmail_SOURCES=	fetchmail.h getopt.h
+Index: fetchmail-6.5.1/Makefile.am
+===================================================================
+--- fetchmail-6.5.1.orig/Makefile.am
++++ fetchmail-6.5.1/Makefile.am
+@@ -63,7 +63,7 @@ fetchmail_SOURCES=	fetchmail.h getopt.h
  		fetchmail.c env.c idle.c options.c daemon.c \
  		driver.c transact.c sink.c smtp.c \
  		idlist.c uid.c mxget.c md5ify.c cram.c gssapi.c \
@@ -27,38 +29,42 @@ Git-commit: 7b5c56f0fa3acb4c5589a4747c1921a311d8a464
  		unmime.c conf.c checkalias.c uid_db.h uid_db.c\
  		lock.h lock.c \
  		rcfile_l.l rcfile_y.y \
---- a/fetchmail.man
-+++ b/fetchmail.man
-@@ -1006,7 +1006,7 @@ AUTHENTICATION below for details).  The
- \&\fBpassword\fP, \fBkerberos_v5\fP, \fBkerberos\fP (or, for
+Index: fetchmail-6.5.1/fetchmail.man
+===================================================================
+--- fetchmail-6.5.1.orig/fetchmail.man
++++ fetchmail-6.5.1/fetchmail.man
+@@ -1114,7 +1114,7 @@ AUTHENTICATION below for details).  The
  excruciating exactness, \fBkerberos_v4\fP), \fBgssapi\fP,
  \fBcram\-md5\fP, \fBotp\fP, \fBntlm\fP, \fBmsn\fP (only for POP3),
--\fBexternal\fP (only IMAP), \fBssh\fP and \fBoauthbearer\fP (only IMAP).
-+\fBexternal\fP (only IMAP), \fBssh\fP and \fBoauthbearer\fP (requires token).
+ \fBexternal\fP (only IMAP),  \fBimplicit\fP (\fBssh\fP is understood
+-as alias for \fBimplicit\fP) and \fBoauthbearer\fP (only IMAP).
++as alias for \fBimplicit\fP) and \fBoauthbearer\fP (requires token).
  When \fBany\fP (the default) is specified, fetchmail tries
  first methods that do not require a password (EXTERNAL, GSSAPI, KERBEROS\ IV,
  KERBEROS\ 5); then it looks for methods that mask your password
-@@ -2342,8 +2342,7 @@ Legal protocol identifiers for use with
+@@ -2492,8 +2492,7 @@ Legal protocol identifiers for use with
  Legal authentication types are 'any', 'password', 'kerberos',
  \&'kerberos_v4', 'kerberos_v5' and 'gssapi', 'cram\-md5', 'otp', 'msn'
- (only for POP3), 'ntlm', 'ssh', 'external' (only IMAP),
+ (only for POP3), 'ntlm', 'implicit', 'external' (only IMAP),
 -'oauthbearer' (only for IMAP; requires authentication token in
 -place of password).
 +'oauthbearer' (requires authentication token in place of password).
  The 'password' type specifies
  authentication by normal transmission of a password (the password may be
  plain text or subject to protocol-specific encryption as in CRAM-MD5);
---- a/imap.c
-+++ b/imap.c
-@@ -17,6 +17,7 @@
+Index: fetchmail-6.5.1/imap.c
+===================================================================
+--- fetchmail-6.5.1.orig/imap.c
++++ fetchmail-6.5.1/imap.c
+@@ -15,6 +15,7 @@
+ #include  <stdlib.h>
  #include  <limits.h>
  #include  <errno.h>
- #endif
-+#include  "oauth2.h"
++#include "oauth2.h"
  #include  "socket.h"
  
  #include  "i18n.h"
-@@ -419,63 +420,23 @@ static int do_imap_ntlm(int sock, struct
+@@ -417,63 +418,23 @@ static int do_imap_ntlm(int sock, struct
  
  static int do_imap_oauthbearer(int sock, struct query *ctl,flag xoauth2)
  {
@@ -128,8 +134,10 @@ Git-commit: 7b5c56f0fa3acb4c5589a4747c1921a311d8a464
  
      return ok;
  }
+Index: fetchmail-6.5.1/oauth2.c
+===================================================================
 --- /dev/null
-+++ b/oauth2.c
++++ fetchmail-6.5.1/oauth2.c
 @@ -0,0 +1,61 @@
 +/*
 + * oauth2.c -- oauthbearer and xoauth2 support
@@ -192,8 +200,10 @@ Git-commit: 7b5c56f0fa3acb4c5589a4747c1921a311d8a464
 +
 +    return oauth2b64;
 +}
+Index: fetchmail-6.5.1/oauth2.h
+===================================================================
 --- /dev/null
-+++ b/oauth2.h
++++ fetchmail-6.5.1/oauth2.h
 @@ -0,0 +1,6 @@
 +#ifndef OAUTH2_H
 +#define OAUTH2_H
@@ -201,17 +211,19 @@ Git-commit: 7b5c56f0fa3acb4c5589a4747c1921a311d8a464
 +char *get_oauth2_string(struct query *ctl,flag xoauth2);
 +
 +#endif /*OAUTH2_H*/
---- a/pop3.c
-+++ b/pop3.c
-@@ -20,6 +20,7 @@
+Index: fetchmail-6.5.1/pop3.c
+===================================================================
+--- fetchmail-6.5.1.orig/pop3.c
++++ fetchmail-6.5.1/pop3.c
+@@ -17,6 +17,7 @@
+ #include  <stdlib.h>
  #include  <errno.h>
  
- #include  "fetchmail.h"
 +#include  "oauth2.h"
  #include  "socket.h"
  #include  "i18n.h"
  #include  "uid_db.h"
-@@ -52,6 +53,10 @@ static flag has_cram = FALSE;
+@@ -49,6 +50,10 @@ static flag has_cram = FALSE;
  static flag has_otp = FALSE;
  static flag has_ntlm = FALSE;
  static flag has_stls = FALSE;
@@ -222,7 +234,7 @@ Git-commit: 7b5c56f0fa3acb4c5589a4747c1921a311d8a464
  
  static void clear_sessiondata(void) {
      /* must match defaults above */
-@@ -135,12 +140,65 @@ static int pop3_ok (int sock, char *argb
+@@ -132,12 +137,65 @@ static int pop3_ok (int sock, char *argb
      char buf [POPBUFSIZE+1];
      char *bufp;
  
@@ -292,7 +304,7 @@ Git-commit: 7b5c56f0fa3acb4c5589a4747c1921a311d8a464
  
  	while (isalpha((unsigned char)*bufp))
  	    bufp++;
-@@ -209,6 +267,8 @@ static int pop3_ok (int sock, char *argb
+@@ -206,6 +264,8 @@ static int pop3_ok (int sock, char *argb
  #endif
  	if (argbuf != NULL)
  	    strcpy(argbuf,bufp);
@@ -301,7 +313,7 @@ Git-commit: 7b5c56f0fa3acb4c5589a4747c1921a311d8a464
      }
  
      return(ok);
-@@ -237,11 +297,13 @@ static int capa_probe(int sock)
+@@ -234,11 +294,13 @@ static int capa_probe(int sock)
  #ifdef NTLM_ENABLE
      has_ntlm = FALSE;
  #endif /* NTLM_ENABLE */
@@ -316,7 +328,7 @@ Git-commit: 7b5c56f0fa3acb4c5589a4747c1921a311d8a464
  	char *cp;
  
  	/* determine what authentication methods we have available */
-@@ -256,6 +318,10 @@ static int capa_probe(int sock)
+@@ -253,6 +315,10 @@ static int capa_probe(int sock)
  	    if (strstr(buffer, "STLS"))
  		has_stls = TRUE;
  #endif /* SSL_ENABLE */
@@ -327,7 +339,7 @@ Git-commit: 7b5c56f0fa3acb4c5589a4747c1921a311d8a464
  
  #if defined(GSSAPI)
  	    if (strstr(buffer, "GSSAPI"))
-@@ -279,6 +345,12 @@ static int capa_probe(int sock)
+@@ -276,6 +342,12 @@ static int capa_probe(int sock)
  
  	    if (strstr(buffer, "CRAM-MD5"))
  		has_cram = TRUE;
@@ -340,7 +352,7 @@ Git-commit: 7b5c56f0fa3acb4c5589a4747c1921a311d8a464
  	}
      }
      done_capa = TRUE;
-@@ -295,6 +367,40 @@ static void set_peek_capable(struct quer
+@@ -292,6 +364,40 @@ static void set_peek_capable(struct quer
      peek_capable = !ctl->fetchall && (!ctl->keep || ctl->server.uidl);
  }
  
@@ -381,7 +393,7 @@ Git-commit: 7b5c56f0fa3acb4c5589a4747c1921a311d8a464
  static int pop3_getauth(int sock, struct query *ctl, char *greeting)
  /* apply for connection authorization */
  {
-@@ -374,6 +480,7 @@ static int pop3_getauth(int sock, struct
+@@ -371,6 +477,7 @@ static int pop3_getauth(int sock, struct
  		(ctl->server.authenticate == A_KERBEROS_V5) ||
  		(ctl->server.authenticate == A_OTP) ||
  		(ctl->server.authenticate == A_CRAM_MD5) ||
@@ -389,7 +401,7 @@ Git-commit: 7b5c56f0fa3acb4c5589a4747c1921a311d8a464
  		maybe_starttls(ctl))
  	{
  	    if ((ok = capa_probe(sock)) != PS_SUCCESS)
-@@ -523,6 +630,19 @@ static int pop3_getauth(int sock, struct
+@@ -520,6 +627,19 @@ static int pop3_getauth(int sock, struct
  	/*
  	 * OK, we have an authentication type now.
  	 */

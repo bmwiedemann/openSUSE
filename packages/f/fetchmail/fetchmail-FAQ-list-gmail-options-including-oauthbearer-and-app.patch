@@ -8,15 +8,15 @@ Git-commit: dbeee6a0c0fc5392953f38d6f0dcffdeeb8ae141
  fetchmail-FAQ.html |   24 +++++++++++++++++++++---
  1 file changed, 21 insertions(+), 3 deletions(-)
 
---- a/fetchmail-FAQ.html
-+++ b/fetchmail-FAQ.html
-@@ -1949,9 +1949,27 @@ sites.)</p>
- <p>Google has started pushing towards more complex authentication
- schemes based on OAuth 2.0 that require clients and users
- to jump through quite a few hoops, and use web browsers for signing in.
--If this hinders access to your account through fetchmail, you may need to turn on access for "less secure apps" at <a
--    href="https://myaccount.google.com/lesssecureapps">https://myaccount.google.com/lesssecureapps</a>.<br/>
--It is disputable whether an application that does not include web
+Index: fetchmail-6.5.1/fetchmail-FAQ.html
+===================================================================
+--- fetchmail-6.5.1.orig/fetchmail-FAQ.html
++++ fetchmail-6.5.1/fetchmail-FAQ.html
+@@ -1956,12 +1956,28 @@ authentication schemes based on OAuth 2.
+ users to jump through quite a few hoops, and use web browsers for
+ signing in, and software vendors to hand in their software for
+ sometimes paid reviews. Such is not going to happen for fetchmail.
++ 
 +If this hinders access to your account through fetchmail, you have some
 +options:</p>
 +<ul>
@@ -37,7 +37,12 @@ Git-commit: dbeee6a0c0fc5392953f38d6f0dcffdeeb8ae141
 +      But G-suite administrators are more likely to have disabled
 +      this option than "App Password"s.</li>
 +</ul>
-+<p>It is disputable whether an application that does not include web
+ 
+-If this hinders access to your account through fetchmail, you may
+-need to turn on access for "less secure apps", or create an application or service specific password.
+-	       
+-For Google, this - at some point in time - used to live at <a
+-    href="https://myaccount.google.com/lesssecureapps">https://myaccount.google.com/lesssecureapps</a>.<br/>
+ It is disputable whether an application that does not include web
  browsing capabilities or heavy-weight libraries is "less secure" as
  Google claims.</p>
- 
