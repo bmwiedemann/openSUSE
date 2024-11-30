@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov 30 08:29:48 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 0.39.0:
+  New Features
+  * add gix merge commit --debug
+  * add gix merge commits
+  * add gix merge tree to merge trees similarly to git merge-tree.
+
+-------------------------------------------------------------------
 Tue Oct 22 22:16:21 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 0.38.0:
