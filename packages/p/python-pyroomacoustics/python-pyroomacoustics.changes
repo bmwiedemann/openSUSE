@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Sat Nov 23 08:43:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.2:
+  * Makes the pyroomacoustics.utilities.resample backend is made
+    configurable to avoid soxr dependency. The resample backend
+    is configurable to soxr, samplerate, if these packages are
+    available, and otherwise falls back to
+    scipy.signal.resample_poly.
+  * Fixes typo in materials.json: ceiling_fibre_abosrber ->
+    ceiling_fibre_absorber.
+  * Adds the missing pyroomacoustics.directivities to the package
+    list in setup.py.
+  * New global parameters to control the octave bands used for
+    simulation. octave_bands_base_freq: the base frequency used
+    for the octave bands (default 125), note that together with
+    the sampling frequency this will determine the number of sub-
+    bands used in simulation. octave_bands_n_fft: lengths of the
+    octave band filters (current is default 512 but will be
+    changed to 128 in the next release) octave_bands_keep_dc:
+    extends the lowest band to include the DC offset, the current
+    default is False to match past behavior, but will be changed
+    to True in the next release because the filters have less
+    oscillations this way.
+  * octave_bands_base_freq: the base frequency used for the
+    octave bands (default 125), note that together with the
+    sampling frequency this will determine the number of sub-
+    bands used in simulation.
+  * octave_bands_n_fft: lengths of the octave band filters
+    (current is default 512 but will be changed to 128 in the
+    next release)
+  * octave_bands_keep_dc: extends the lowest band to include the
+    DC offset, the current default is False to match past
+    behavior, but will be changed to True in the next release
+    because the filters have less oscillations this way.
+  * New parameter min_phase of class Room. If set to True, the
+    band-pass filters are designed as minimum phase filters.
+  * Simulation with measured directivity responses in SOFA format
+    (limited file types) is possible with the image source model.
+    A flexible and extensible  SOFA file reader with optional
+    spherical interpolation. A small database of files is
+    bundled, including the DIRPAT database, collected by Manuel
+    Brandner, Matthias Frank, and Daniel Rudrich University of
+    Music and Performing Arts Graz, Graz. The file also include
+    two HRTF of the MIT KEMAR dummy head.
+  * A flexible and extensible  SOFA file reader with optional
+    spherical interpolation.
+  * A small database of files is bundled, including the DIRPAT
+    database, collected by Manuel Brandner, Matthias Frank, and
+    Daniel Rudrich University of Music and Performing Arts Graz,
+    Graz. The file also include two HRTF of the MIT KEMAR dummy
+    head.
+  * Introduces a new class
+    pyroomacoustics.directivities.Rotation3D to specify the
+    orientation of sources and receivers in 3D.
+  * Adds soxr as a dependency since resampling can often be
+    necessary when working with SOFA files.
+  * In ray tracing, the histograms are now linearly interpolated
+    between the bins to obtain smoother RIR
+  * Changed the API of CardioidFamily to take a float parameter.
+    New class wrappers for Cardioid, Hypercardioid,
+    Supercardioid, Bidirectional and Omnidirectional are added in
+    the directivity sub-module. The enum of type
+    DirectivityPattern has been removed.
+
+-------------------------------------------------------------------
 Thu Sep 26 17:49:26 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.7.7

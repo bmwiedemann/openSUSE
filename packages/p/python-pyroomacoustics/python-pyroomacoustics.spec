@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyroomacoustics
-Version:        0.7.7
+Version:        0.8.2
 Release:        0
 Summary:        A framework for room acoustics and audio processing in Python
 License:        MIT
