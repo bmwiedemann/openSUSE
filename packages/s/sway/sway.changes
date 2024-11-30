@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Nov 30 01:33:07 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update sway contrib to 1.10
+  * add --wait to grimshot
+  * add switch-top-level.py script
+  * docs: Add README
+  * contrib: add sway-session.target
+  * Chore / Limit grimshot window grab
+  * Add anything subject option to grimshot
+  * Disable escape in firefox player
+  * Add layout-per-window.py script
+  * Fix linting error
+  * Add savecopy command to grimshot
+  * Update README.md
+  * feature: added active vs inactive
+  * Default layout
+  * Bash completions for grimshot
+  * feat(grimshot): show image in notification when saved
+  * [grimshot] Avoid sending two notifications with savecopy
+  * refactor(grimshot): modularize and clean up with functional helpers
+  * Add color picker
+  * fix(grimshot): resolve missing functional-helpers file error (#40)
+- Add libinput-drag-lock-enabled-sticky.patch
+
+-------------------------------------------------------------------
 Tue Oct 29 00:55:21 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 1.10:

@@ -16,7 +16,7 @@
 #
 
 
-%define contribver 1.9
+%define contribver 1.10
 
 Name:           sway
 Version:        1.10
@@ -31,6 +31,7 @@ Source2:        https://emersion.fr/.well-known/openpgpkey/hu/dj3498u4hyyarh35rk
 Source3:        sway-portals.conf
 Source4:        https://github.com/OctopusET/sway-contrib/archive/refs/tags/%{contribver}-contrib.0.tar.gz#/sway-contrib-%{contribver}.tar.gz
 Source5:        sway.rpmlintrc
+Patch1:         https://github.com/swaywm/sway/pull/8470.patch#/libinput-drag-lock-enabled-sticky.patch
 BuildRequires:  gcc-c++
 #BuildRequires:  libxslt-tools
 BuildRequires:  libevdev-devel
@@ -127,9 +128,11 @@ Displays warning and error messages in %{name}.
 mkdir -p contrib
 tar xvf %{SOURCE4} --strip-components=1 -C contrib/
 pushd contrib
-find -name "*.py" -execdir sed -i 's,#!/usr/bin/env python$,#!/usr/bin/python3,' {} \;
-find -name "*.py" -execdir sed -i 's,#!/usr/bin/env python3$,#!/usr/bin/python3,' {} \;
-find -name "*.py" -execdir sed -i 's,#!/usr/bin/python$,#!/usr/bin/python3,' {} \;
+rm -rf .github
+find -type f -name "*.py" -execdir sed -i 's,#!/usr/bin/env python$,#!/usr/bin/python3,' {} \;
+find -type f -name "*.py" -execdir sed -i 's,#!/usr/bin/env python3$,#!/usr/bin/python3,' {} \;
+find -type f -name "grimpicker" -execdir sed -i 's,#!/usr/bin/env python3$,#!/usr/bin/python3,' {} \;
+find -type f -name "*.py" -execdir sed -i 's,#!/usr/bin/python$,#!/usr/bin/python3,' {} \;
 popd
 
 %build
@@ -146,15 +149,15 @@ export CFLAGS="%{optflags}"
 %meson_install
 
 # contrib
-install -Dpm 0644 -t %{buildroot}%{_mandir}/man1 contrib/*.1
-install -Dpm 0755 -t %{buildroot}%{_bindir} contrib/grimshot
+install -Dpm 0644 -t %{buildroot}%{_mandir}/man1 contrib/grimshot/*.1
+install -Dpm 0755 -t %{buildroot}%{_bindir} contrib/grimshot/grimshot
 
 # Move over other contrib files to /usr/share/sway/contrib folder
-install -Dpm 0644 -t %{buildroot}%{_datadir}/%{name}/contrib contrib/*
-install -Dpm 0755 -t %{buildroot}%{_datadir}/%{name}/contrib contrib/*.py
-install -Dpm 0644 -t %{buildroot}%{_datadir}/%{name}/contrib contrib/firefox-focus-monitor.py
+mkdir -p %{buildroot}%{_datadir}/%{name}/
+cp -r contrib %{buildroot}%{_datadir}/%{name}/contrib
+find %{buildroot}%{_datadir}/%{name}/contrib -type f -exec "chmod 0644 {}" \;
 # Remove it since it's installed in /usr/bin
-rm -v %{buildroot}%{_datadir}/%{name}/contrib/grimshot
+rm -v %{buildroot}%{_datadir}/%{name}/contrib/grimshot/grimshot
 
 # XDP >= 0.18.0 requires a portal for the environment and onwards
 install -Dpm 0644 -t %{buildroot}%{_datadir}/xdg-desktop-portal/ %{SOURCE3}

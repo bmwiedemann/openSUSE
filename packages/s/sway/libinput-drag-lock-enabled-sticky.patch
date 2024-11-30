@@ -1,0 +1,136 @@
+From 89723602d684f07885f29ce2606418f331185f38 Mon Sep 17 00:00:00 2001
+From: Simon Ser <contact@emersion.fr>
+Date: Wed, 20 Nov 2024 20:41:16 +0100
+Subject: [PATCH 1/2] ipc-json: handle LIBINPUT_CONFIG_DRAG_LOCK_ENABLED_STICKY
+
+New entry introduced in libinput 1.27.0.
+---
+ meson.build     | 8 +++-----
+ sway/ipc-json.c | 5 +++++
+ 2 files changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 71e75fd9bc..9ce5723e78 100644
+--- a/meson.build
++++ b/meson.build
+@@ -109,11 +109,9 @@ conf_data.set10('HAVE_LIBSYSTEMD', sdbus.found() and sdbus.name() == 'libsystemd
+ conf_data.set10('HAVE_LIBELOGIND', sdbus.found() and sdbus.name() == 'libelogind')
+ conf_data.set10('HAVE_BASU', sdbus.found() and sdbus.name() == 'basu')
+ conf_data.set10('HAVE_TRAY', have_tray)
+-conf_data.set10('HAVE_LIBINPUT_CONFIG_ACCEL_PROFILE_CUSTOM', cc.has_header_symbol(
+-	'libinput.h',
+-	'LIBINPUT_CONFIG_ACCEL_PROFILE_CUSTOM',
+-	dependencies: libinput,
+-))
++foreach sym : ['LIBINPUT_CONFIG_ACCEL_PROFILE_CUSTOM', 'LIBINPUT_CONFIG_DRAG_LOCK_ENABLED_STICKY']
++	conf_data.set10('HAVE_' + sym, cc.has_header_symbol('libinput.h', sym, dependencies: libinput))
++endforeach
+ 
+ scdoc = dependency('scdoc', version: '>=1.9.2', native: true, required: get_option('man-pages'))
+ if scdoc.found()
+diff --git a/sway/ipc-json.c b/sway/ipc-json.c
+index 571338a4f1..fc1df2ac64 100644
+--- a/sway/ipc-json.c
++++ b/sway/ipc-json.c
+@@ -931,6 +931,11 @@ static json_object *describe_libinput_device(struct libinput_device *device) {
+ 		case LIBINPUT_CONFIG_DRAG_LOCK_DISABLED:
+ 			drag_lock = "disabled";
+ 			break;
++#if HAVE_LIBINPUT_CONFIG_DRAG_LOCK_ENABLED_STICKY
++		case LIBINPUT_CONFIG_DRAG_LOCK_ENABLED_STICKY:
++			drag_lock = "enabled_sticky";
++			break;
++#endif
+ 		}
+ 		json_object_object_add(object, "tap_drag_lock",
+ 				json_object_new_string(drag_lock));
+
+From c8ea30122a0346ebf9959db194a78c8f677b2e0d Mon Sep 17 00:00:00 2001
+From: Simon Ser <contact@emersion.fr>
+Date: Wed, 20 Nov 2024 20:50:27 +0100
+Subject: [PATCH 2/2] Add support for LIBINPUT_CONFIG_DRAG_LOCK_ENABLED_STICKY
+
+Use it as the default, as recommended by the libinput release
+notes:
+https://lists.freedesktop.org/archives/wayland-devel/2024-November/043860.html
+---
+ sway/commands/input/drag_lock.c | 5 +++++
+ sway/input/libinput.c           | 8 ++++++++
+ sway/sway-input.5.scd           | 5 +++--
+ sway/sway-ipc.7.scd             | 3 ++-
+ 4 files changed, 18 insertions(+), 3 deletions(-)
+
+diff --git a/sway/commands/input/drag_lock.c b/sway/commands/input/drag_lock.c
+index 24c548e2de..55a39a64a7 100644
+--- a/sway/commands/input/drag_lock.c
++++ b/sway/commands/input/drag_lock.c
+@@ -15,6 +15,11 @@ struct cmd_results *input_cmd_drag_lock(int argc, char **argv) {
+ 		return cmd_results_new(CMD_FAILURE, "No input device defined.");
+ 	}
+ 
++#if HAVE_LIBINPUT_CONFIG_DRAG_LOCK_ENABLED_STICKY
++	if (strcmp(argv[0], "enabled_sticky")) {
++		ic->drag_lock = LIBINPUT_CONFIG_DRAG_LOCK_ENABLED_STICKY;
++	} else
++#endif
+ 	if (parse_boolean(argv[0], true)) {
+ 		ic->drag_lock = LIBINPUT_CONFIG_DRAG_LOCK_ENABLED;
+ 	} else {
+diff --git a/sway/input/libinput.c b/sway/input/libinput.c
+index 2fec290e7a..ad85927034 100644
+--- a/sway/input/libinput.c
++++ b/sway/input/libinput.c
+@@ -272,6 +272,10 @@ bool sway_input_configure_libinput_device(struct sway_input_device *input_device
+ 	}
+ 	if (ic->drag_lock != INT_MIN) {
+ 		changed |= set_tap_drag_lock(device, ic->drag_lock);
++	} else {
++#if HAVE_LIBINPUT_CONFIG_DRAG_LOCK_ENABLED_STICKY
++		changed |= set_tap_drag_lock(device, LIBINPUT_CONFIG_DRAG_LOCK_ENABLED_STICKY);
++#endif
+ 	}
+ 	if (ic->pointer_accel != FLT_MIN) {
+ 		changed |= set_accel_speed(device, ic->pointer_accel);
+@@ -354,8 +358,12 @@ void sway_input_reset_libinput_device(struct sway_input_device *input_device) {
+ 		libinput_device_config_tap_get_default_button_map(device));
+ 	changed |= set_tap_drag(device,
+ 		libinput_device_config_tap_get_default_drag_enabled(device));
++#if HAVE_LIBINPUT_CONFIG_DRAG_LOCK_ENABLED_STICKY
++	changed |= set_tap_drag_lock(device, LIBINPUT_CONFIG_DRAG_LOCK_ENABLED_STICKY);
++#else
+ 	changed |= set_tap_drag_lock(device,
+ 		libinput_device_config_tap_get_default_drag_lock_enabled(device));
++#endif
+ 	changed |= set_accel_speed(device,
+ 		libinput_device_config_accel_get_default_speed(device));
+ 	changed |= set_rotation_angle(device,
+diff --git a/sway/sway-input.5.scd b/sway/sway-input.5.scd
+index fbef2a3213..18744a22ae 100644
+--- a/sway/sway-input.5.scd
++++ b/sway/sway-input.5.scd
+@@ -152,8 +152,9 @@ The following commands may only be used in the configuration file.
+ *input* <identifier> drag enabled|disabled
+ 	Enables or disables tap-and-drag for specified input device.
+ 
+-*input* <identifier> drag_lock enabled|disabled
+-	Enables or disables drag lock for specified input device.
++*input* <identifier> drag_lock enabled|disabled|enabled_sticky
++	Enables or disables drag lock for specified input device. The default is
++	_enabled_sticky_.
+ 
+ *input* <identifier> dwt enabled|disabled
+ 	Enables or disables disable-while-typing for the specified input device.
+diff --git a/sway/sway-ipc.7.scd b/sway/sway-ipc.7.scd
+index e90abcbb8a..fe6bb92e23 100644
+--- a/sway/sway-ipc.7.scd
++++ b/sway/sway-ipc.7.scd
+@@ -1174,7 +1174,8 @@ following properties will be included for devices that support them:
+ :  Whether tap-and-drag is enabled. It can be _enabled_ or _disabled_
+ |- tap_drag_lock
+ :  string
+-:  Whether drag-lock is enabled. It can be _enabled_ or _disabled_
++:  Whether drag-lock is enabled. It can be _enabled_, _disabled_ or
++   _enabled_sticky_
+ |- accel_speed
+ :  double
+ :  The pointer-acceleration in use
