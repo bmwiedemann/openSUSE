@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Fri Nov 29 00:58:34 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 2.1.2:
+  * fix(node/timers): error when passing id to clearTimeout/clearInterval
+  * fix(init): support scoped npm packages
+  * fix: support bun specifiers in JSR publish
+  * fix(ext/node): `tls.connect` socket upgrades
+  * perf(compile): read embedded files as static references when UTF-8 and reading as strings
+  * fix(info): resolve bare specifier pointing to workspace member
+  * fix(ext/webgpu): use correct variable name
+  * chore: fix lint step due to node compat test changes
+  * fix(node/http): casing ignored in ServerResponse.hasHeader()
+  * fix(task): strip ansi codes and control chars when printing tasks
+  * test(ext/node): enable parallel/test-fs-promises-file-handle-stat.js
+  * feat(unstable): repurpose `--unstable-detect-cjs` to attempt loading more modules as cjs
+  * perf(ext/webstorage): use object wrap for `Storage`
+  * fix(tools/doc): HTML resolve main entrypoint from config file 
+  * fix(node/fs): add missing stat path argument validation
+  * chore(lint): add .out file reference checker
+  * fix(task): handle carriage return in task description
+  * chore: fix flaky `specs::publish::npm_workspace_jsr_pkg_with_npm_dep::dep_and_workspace_dep`
+  * fix(install): don't re-set up node_modules if running lifecycle script
+  * fix(streams): reject `string` in `ReadableStream.from` type
+  * fix(node): correct resolution of dynamic import of esm from cjs
+  * fix(ext/webgpu): normalize limits to number
+  * fix(ext/fetch): don't throw when `bodyUsed` inspect after upgrade
+  * chore(compile): prefer denort binary in target/ directory when available
+  * chore(node/tests): increase tolerance of timers test on CI
+  * chore: update node_compat setup script, show remaining percentage
+  * docs(cli): remove redundant word in comment
+  * refactor(unstable): move telemetry to own ext
+  * fix(lsp): support task object notation for tasks request
+  * fix(task): handle multiline descriptions properly
+  * fix(check): support jsdoc `@import` tag
+  * fix(compile): do not error embedding same symlink via multiple methods
+  * fix(runtime/ops): Fix watchfs remove event
+  * feat(unstable): Instrument fetch
+  * chore: upgrade sqlformat-rs to non-forked version
+  * fix(init): always force managed node modules
+  * fix(compile): handle TypeScript file included as asset
+  * chore: update node_compat setup script
+  * feat: Instrument Deno.serve
+  * fix(ext/node): add `fs.promises.fstat` and `FileHandle#stat`
+  * fix(lsp): wasm file import completions
+  * chore: update to file_test_runner 0.7.3
+  * fix(fmt): return `None` if sql fmt result is the same
+  * fix(lsp): remove stray debug output
+  * fix(node/fs): missing uv error context for readFile
+  * fix(compile): correct buffered reading of assets and files
+  * chore(check): add test for Wasm memory and table
+  * fix: support non-function exports in Wasm modules
+  * chore(compile): log code cache file path
+  * fix(ext/websocket): don't throw exception when sending to closed socket
+
+-------------------------------------------------------------------
 Fri Nov 22 02:36:21 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 2.1.1:
