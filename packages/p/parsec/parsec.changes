@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Nov 30 00:04:56 UTC 2024 - Rein Fernhout <me@levitati.ng>
+
+- Do not add lock group to parsec
+- Added a patch from upstream to fix a build error:
+  *  0001-Fix-unnecessary-qualifications-error.patch
+
+- Update to 1.4.1:
+  * Full changelog: https://github.com/parallaxsecond/parsec/compare/1.4.0...1.4.1
+
+-------------------------------------------------------------------
 Tue Apr 16 12:38:57 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 -  Update to 1.4.0:

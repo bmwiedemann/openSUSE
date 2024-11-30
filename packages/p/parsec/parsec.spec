@@ -17,11 +17,11 @@
 
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
-%define archive_version 1.4.0
+%define archive_version 1.4.1
 
 %{?systemd_ordering}
 Name:           parsec
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        Platform AbstRaction for SECurity
 License:        Apache-2.0
@@ -33,9 +33,11 @@ Source4:        config.toml
 Source5:        parsec.conf
 Source6:        system-user-parsec.conf
 Source10:       https://git.trustedfirmware.org/TS/trusted-services.git/snapshot/trusted-services-389b506.tar.gz
+Patch1:         0001-Fix-unnecessary-qualifications-error.patch
 BuildRequires:  cargo >= 1.66
 BuildRequires:  clang-devel
 BuildRequires:  cmake
+BuildRequires:  gcc-c++
 BuildRequires:  llvm-devel
 %if 0%{?suse_version} == 1500
 # Fix build with GCC13 on Backports SLE15-SPx - Avoid to get -lstdc++ not found
@@ -74,6 +76,7 @@ Package to install system user 'parsec'
 
 %prep
 %setup -q -a1 -a10 -n parsec-%{archive_version}
+%autopatch -p1
 rmdir trusted-services-vendor
 mv trusted-services-389b506 trusted-services-vendor
 # Enable all providers
