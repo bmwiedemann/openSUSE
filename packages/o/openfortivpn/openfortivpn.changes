@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 29 22:16:30 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- fix an issue where an error happened with certificate logins for
+  FortiOS 7.4.4 by adding fix-certificate-login-error.patch
+- fix SLE12
+- use pkgconfig for devel packages
+
+-------------------------------------------------------------------
 Thu Jun 20 03:48:56 UTC 2024 - ming li <mli@suse.com>
 
 - Update to version 1.22.1

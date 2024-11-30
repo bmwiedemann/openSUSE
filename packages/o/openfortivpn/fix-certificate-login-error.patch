@@ -1,0 +1,22 @@
+From a6fe5cbd57a754cf46942642c57dae452e07c852 Mon Sep 17 00:00:00 2001
+From: Voriaz <voriaz@gmail.com>
+Date: Mon, 22 Jul 2024 13:30:16 +0000
+Subject: [PATCH] Patch certificate login error for FortiOS 7.4.4
+
+---
+ src/http.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/http.c b/src/http.c
+index 80322894..4a202ae3 100644
+--- a/src/http.c
++++ b/src/http.c
+@@ -651,7 +651,7 @@ int auth_log_in(struct tunnel *tunnel)
+ 	tunnel->cookie[0] = '\0';
+ 
+ 	if (username[0] == '\0' && tunnel->config->password[0] == '\0') {
+-		snprintf(data, sizeof(data), "cert=&nup=1");
++		snprintf(data, sizeof(data), "");
+ 		ret = http_request(tunnel, "GET", "/remote/login",
+ 		                   data, &res, &response_size);
+ 	} else {

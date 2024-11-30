@@ -231,4 +231,12 @@
     <comment></comment>
     <requestid>1184847</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>9feeac07bcf949a6962155595ae122f7</srcmd5>
+    <version>1.22.1</version>
+    <time>1732969903</time>
+    <user>anag+factory</user>
+    <comment>FortiOS 7.4.4 by adding fix-certificate-login-error.patch (forwarded request 1227386 from rrahl0)</comment>
+    <requestid>1227387</requestid>
+  </revision>
 </revisionlist>

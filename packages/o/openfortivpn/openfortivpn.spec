@@ -23,14 +23,15 @@ Summary:        Client for PPP+SSL VPN tunnel services
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Security
 URL:            https://github.com/adrienverge/openfortivpn
-Source0:        https://github.com/adrienverge/openfortivpn/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         harden_openfortivpn@.service.patch
 Patch1:         openfortivpn-fix-usr-bin-env.patch
+Patch2:         https://github.com/adrienverge/openfortivpn/commit/a6fe5cbd57a754cf46942642c57dae452e07c852.patch#/fix-certificate-login-error.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  openssl-devel
+BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(systemd)
 Requires:       ppp
-BuildRequires:  systemd-devel
 
 %description
 openfortivpn is a client for PPP+SSL VPN tunnel services. It spawns a pppd
@@ -42,6 +43,9 @@ It is compatible with Fortinet VPNs.
 %autosetup -p1
 
 %build
+%if 0%{?suse_version} < 1500
+export CFLAGS="%{optflags} -std=gnu99"
+%endif
 autoreconf -fiv
 %configure \
     --with-systemdsystemunitdir=%{_unitdir}
