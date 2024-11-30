@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Nov 29 13:00:04 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.8.0:
+  * Security
+    - Extend approval options (#3348) [#4429]
+  * Features
+    - Docker Backend: fully support windows container (#4381)
+      [#4464]
+  * Bug Fixes
+    - Enforce exact matching for GitLab groups (#4473) [#4474]
+    - Normalize aarch64 -> arm64 for docker backend (#4451) [#4457]
+    - Add migration to autofix corrupted users.org_id entrys in db
+      (#4307) [#4327]
+  * Enhancement
+    - Deprecate secrets in favor of from_secret [#4360]
+    - Deprecate and warn of list syntax of environment [#4358]
+    - Process workflow logs in batches (#4045) [#4356]
+  * Misc
+    - Use release-helper for release/* branches [#4302]
+
+-------------------------------------------------------------------
 Thu Nov 07 10:09:58 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.7.3:
