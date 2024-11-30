@@ -1,0 +1,19 @@
+<package name="tail-tray" project="openSUSE:Factory">
+  <title>Tailscale tray menu and UI for the KDE Plasma Desktop</title>
+  <description>Tailscale tray menu and UI for Plasma Desktop
+
+Features
+
+- Control your Tailscale connection from the tray
+- Show IPs
+- Show current connection status of your devices
+- Overview of your network and network status
+- Set and change your Tailscale exit node
+- Proper multi account handling
+- Tail drive support - Working with davfs2 support + additional help setting up davfs2 and mounting etc
+- Send files to any device on your Tailnet directly from the tray menu
+- Get notified and receive files from any device on your Tailnet to a pre-defined location on disk
+</description>
+  <devel project="network:vpn" package="tail-tray"/>
+  <url>https://github.com/SneWs/tail-tray</url>
+</package>

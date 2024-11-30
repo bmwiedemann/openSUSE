@@ -1,0 +1,88 @@
+-------------------------------------------------------------------
+Fri Nov 29 23:29:24 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- set minimum version for various BuildRequires
+
+-------------------------------------------------------------------
+Tue Nov 26 14:09:57 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.2.7:
+  * Include translation files when making deb pkg
+  * Implement translations #19
+  * UI Fixes - Should be rich text for tail drive help text
+  * Windows - Force Fusion style on Windows builds
+  * UI cleanup and fixes
+  * Code cleanup and structure
+  * Bug fix: Make sure to start if we're not connected
+
+-------------------------------------------------------------------
+Thu Nov 14 10:12:03 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.2.6:
+  * Bump version to 0.2.6
+  * Bug fix: Do not add multiple separators after the account in
+    connected state menu
+  * Exit nodes - Add offline (and tag as offline + disabled) in
+    Exit node menu
+
+-------------------------------------------------------------------
+Tue Nov 12 06:44:14 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.2.5:
+  * Bump version to v0.2.5
+  * Last letter is missing for all clients #20
+  * Last letter is missing for all clients #20
+  * Network status overview - Inject latency for fastest DERP in
+    overview list
+  * Windows - Impl windows specific for restart dns and restart
+    tailscale service
+  * CMake additions for Windows builds + TailRunner additions to
+    not do some things on Windows
+
+-------------------------------------------------------------------
+Tue Nov 12 06:39:10 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.2.4:
+  * Bump version to v0.2.4
+  * Add information toast when connecting to tail tray from menu
+    action
+  * Better tailscale command invocations that runs each command as
+    a separate process
+  * Bug fix: Make sure to early out if not 0 exit code for file
+    receive process
+  * Bug fix: Make sure to check the self online state for correct
+    state updates
+  * Fix application name in Toast messages etc to be Tail Tray
+    instead of the cmd name tail-tray
+  * Fix File receiver - Add `--verbose` to get the file name info
+    for notification data
+  * Scan for missing operator ownership and recommend to set user
+    as operator.
+
+-------------------------------------------------------------------
+Tue Nov 12 06:27:56 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.2.3:
+  * Bump version to v0.2.3
+  * Fix application name in Toast messages etc to be Tail Tray
+    instead of the cmd name tail-tray
+  * Fix File receiver - Add `--verbose` to get the file name info
+    for notification data
+  * Scan for missing operator ownership and recommend to set user
+    as operator.
+  * Fix Fedora dependency install command
+  * Update README.md
+  * Bump version to 0.2.2
+  * Fix settings window to be wider + fix issue with resource file
+    since file moves
+  * Make it build and look somewhat proper on macOS
+  * Fix settings window to be wider + fix issue with resource file
+    since file moves
+  * Make it build and look somewhat proper on macOS
+  * Bug fix: Don't close application when window closes
+
+-------------------------------------------------------------------
+Sun Oct 27 19:46:22 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package tail-tray: Tailscale tray menu and UI for the KDE
+  Plasma Desktop
