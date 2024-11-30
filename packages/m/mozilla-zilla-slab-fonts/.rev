@@ -7,4 +7,12 @@
     <comment>We are using it in slide templates so I guess it should be in distro's , I'm happy to also be a maintainer if needed.</comment>
     <requestid>841511</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0b9df87f2cc1484a7f56d25f98e8333d</srcmd5>
+    <version>1.002</version>
+    <time>1732969910</time>
+    <user>anag+factory</user>
+    <comment>- Remove broken %attr for license file</comment>
+    <requestid>1227399</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package mozilla-zilla-slab-fonts
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %global short_name zilla-slab
 Name:           mozilla-%{short_name}-fonts
@@ -44,11 +45,12 @@ Designers: Typotheque
 install -d %{buildroot}%{_ttfontsdir}
 # by default install command uses 755 umask
 install -m 644 ttf/*.ttf %{buildroot}%{_ttfontsdir}
+chmod a-x LICENSE
 
 %reconfigure_fonts_scriptlets
 
 %files
-%attr(0644,-,-) %license LICENSE
+%license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/*.ttf
 

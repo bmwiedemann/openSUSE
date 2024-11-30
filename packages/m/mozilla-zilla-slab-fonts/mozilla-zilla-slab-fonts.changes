@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov 30 00:30:32 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove broken %attr for license file (the directive
+  affects the directory as well).
+
+-------------------------------------------------------------------
 Mon Oct 12 08:15:13 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 1.002
