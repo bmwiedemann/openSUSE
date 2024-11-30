@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Fri Nov 29 20:20:11 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.1.0:
+  * Note:
+    - This release does not ship with the UI enabled. The UI will
+      be available in the future. #129
+    - OpenBao does not provide support for Vault Enterprise
+      features. If there is an enterprise feature you would like to
+      see added to the project, please open a feature request.
+    - OpenBao is fully API compatible with Vault 1.14.9, and seal
+      compatible with the plugins the project supports. Plugin
+      support for OpenBao can be found here.
+  * New Features:
+    - Remove Mount Table Limits: Using transactional storage, we've
+      split the
+    - auth and secret mount tables into separate storage entires,
+      removing the
+    - requirement that the entire table fit into a single storage
+      entry limited by
+    - max_entry_size. This allows potentially hundreds of thousands
+      of mounts on
+    - a single scaled-up server. [GH-622]
+    - Transactional Storage: Plugin developers can now take
+      advantage of safe
+    - storage modification APIs when the underlying physical
+      storage supports
+    - them. The physical.TransactionalBackend and
+      logical.TransactionalStorage
+    - types allow developers to begin read-only and writable
+      transactions,
+    - committing or rolling back the desired changes. [GH-292]
+    - Transit: Support PKI CSR and certificate storage alongside
+      key material. This allows callers to securely create keys and
+      submit requests for certificates without the key material
+      leaving Transit. Storage of the certificate on the key avoids
+      the need for an additional K/V mount. Rotation of this
+      certificate and its chain is also supported. [GH-536]
+    - auth/oidc: Add a new callback_mode role option value device
+      to use the oidc device flow instead of a callback, add a new
+      poll_interval role option to control how often to poll for a
+      response, and add a new callbackmode=device option to the
+      oidc login method in the cli. [GH-319]
+    - auth/oidc: Add new callback_mode=direct role option to cause
+      the oidc callback to be direct to the server instead of the
+      client, and add a callbackmode=direct option to the oidc
+      login method in the cli. [GH-318]
+    - physical/postgres: Reintroduce Postgres database for OpenBao
+      storage, implementing paginated list support. This feature is
+      currently in preview and breaking changes may occur. [GH-467]
+  * Changelog
+    - 93609bf: Add changelog for v2.1.0 GA (#772) (@cipherboy)
+    - d083548: Bump go-kms-wrapping, openbao-template prior to
+      release (#770) (@cipherboy)
+    - Full changelog see
+      https://github.com/openbao/openbao/releases/tag/v2.1.0
+      https://github.com/openbao/openbao/releases/tag/v2.1.0-beta20241114.3
+
+-------------------------------------------------------------------
 Tue Nov 19 08:39:56 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.0.3:
