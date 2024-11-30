@@ -17,16 +17,20 @@
 
 
 Name:           python-pillow-heif
-Version:        0.20.0
+Version:        0.21.0
 Release:        0
 Summary:        Python interface for libheif library
 License:        BSD-3-Clause
 URL:            https://github.com/bigcat88/pillow_heif
-Source:         https://files.pythonhosted.org/packages/source/p/pillow-heif/pillow_heif-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module Pillow >= 9.5.0}
+BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 67.8}
+BuildRequires:  %{python_module sphinx-issues}
+BuildRequires:  %{python_module sphinx_rtd_theme}
+BuildRequires:  %{python_module sphinxcontrib-copybutton}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -34,6 +38,7 @@ BuildRequires:  pkgconfig(aom) >= 3.3.0
 BuildRequires:  pkgconfig(libavif)
 BuildRequires:  pkgconfig(libheif) >= 1.18.2
 Requires:       python-Pillow >= 9.5.0
+Suggests:       python-pillow-heif-doc
 %python_subpackages
 
 %description
@@ -45,11 +50,19 @@ Python interface for libheif library
 %build
 %pyproject_wheel
 
+#docs
+pushd docs
+%make_build html
+popd
+
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+rm docs/_build/html/.buildinfo
+%fdupes docs/_build/html
 
 %files %{python_files}
+%doc docs/_build/html
 %{python_sitearch}/pillow_heif
 %{python_sitearch}/pillow_heif-%{version}.dist-info
 %{python_sitearch}/_pillow_heif.cpython-*.so

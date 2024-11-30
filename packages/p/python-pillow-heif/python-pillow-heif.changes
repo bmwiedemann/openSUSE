@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 29 14:54:36 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.21.0:
+  * Allow specifying encoder parameters for non-primary images in image sequence.
+  * Error argument '-Ofast' is deprecated when building from source.
+- switch to github tarball, so we can build the documentation
+
+-------------------------------------------------------------------
 Sat Oct 19 18:52:26 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.20.0:

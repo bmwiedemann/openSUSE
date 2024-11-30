@@ -39,4 +39,12 @@
 - remove building option for x265, as I can't verify it for now (forwarded request 1217446 from rrahl0)</comment>
     <requestid>1217447</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bae98663a2e86a4109c769cd8601e5d5</srcmd5>
+    <version>0.21.0</version>
+    <time>1732969893</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1227376</requestid>
+  </revision>
 </revisionlist>
