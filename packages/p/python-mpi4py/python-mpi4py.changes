@@ -1,4 +1,106 @@
 -------------------------------------------------------------------
+Fri Nov 22 20:47:58 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.0.1
+  ## Update support for Python 3.13:
+  * Enable Cython 3.1 support for free-threaded CPython.
+  * Allow compiling Cython-generated C sources with the full Python
+    C-API.
+  * Fix MPI DLL path workarounds on Windows after changes to
+    locals().
+  ## Enhancements to test suite:
+  * Support XML reports via unittest-xml-reporting.
+  * Add command line options to exclude tests by patterns and
+    files.
+  * Refactor Python 2 code to use Python 3 constructs using
+    pyupgrade.
+  ## Miscellaneous:
+  * Minor and mostly inconsequential subclass fix in
+    mpi4py.util.pkl5.
+  * Update compatibility workarounds for legacy MPICH 3.0 release.
+- Release 4.0.0
+  ## New features:
+  ### Add support for the MPI-4.0 standard.
+  * Use large count MPI-4 routines.
+  * Add persistent collective communication.
+  * Add partitioned point-to-point communication.
+  * Add new communicator constructors.
+  * Add the Session class and its methods.
+  ### Add support for the MPI-4.1 standard.
+  * Add non-destructive completion test for multiple requests.
+  * Add value-index datatype constructor.
+  * Add communicator/session buffer attach/detach/flush.
+  * Support for removal of error classes/codes/strings.
+  * Support for querying hardware resource information.
+  ### Add preliminary support for the upcoming MPI-5.0 standard.
+  * User-level failure mitigation (ULFM).
+  * mpi4py.util.pool: New drop-in replacement for
+    multiprocessing.pool.
+  * mpi4py.util.sync: New synchronization utilities.
+  * Add runtime check for mismatch between mpiexec and MPI library.
+  * Support scikit-build-core as an alternative build backend.
+  * Support meson-python as an alternative build backend.
+  ## Enhancements:
+  * mpi4py.futures: Support for parallel tasks.
+  * mpi4py.futures: Report exception tracebacks in workers.
+  * mpi4py.util.pkl5: Add support for collective communication.
+  * Add methods Datatype.fromcode(), Datatype.tocode() and
+    attributes Datatype.typestr, Datatype.typechar to simplify
+    NumPy interoperability for simple cases.
+  * Add methods Comm.Create_errhandler(), Win.Create_errhandler(),
+    and File.Create_errhandler() to create custom error handlers.
+  * Add support for pickle serialization of instances of MPI types.
+    All instances of Datatype, Info, and Status can be serialized.
+    Instances of Op can be serialized only if created through
+    mpi4py by calling Op.Create(). Instances of other MPI types can
+    be serialized only if they reference predefined handles.
+  * Add handle attribute and fromhandle() class method to MPI
+    classes to ease interoperability with external code. The handle
+    value is an unsigned integer guaranteed to fit on the
+    platform's uintptr_t C type.
+  * Add lowercase free() method to MPI classes to ease MPI object
+    deallocation and cleanup. This method eventually attempts to
+    call Free(), but only if the object's MPI handle is not a null
+    or predefined handle, and such call is allowed within the World
+    Model init/finalize.
+  ## Backward-incompatible changes:
+  * Python 2 is no longer supported, Python 3.6+ is required, but
+    typing stubs are supported for Python 3.8+.
+  * The Intracomm.Create_group() method is no longer defined in the
+    base Comm class.
+  * Group.Compare() and Comm.Compare() are no longer class methods
+    but instance methods. Existing codes using the former class
+    methods are expected to continue working.
+  * Group.Translate_ranks() is no longer a class method but an
+    instance method. Existing codes using the former class method
+    are expected to continue working.
+  * The LB and UB datatypes are no longer available, use
+    Datatype.Create_resized() instead.
+  * The HOST predefined attribute key is no longer available.
+  * The MPI.memory class has been renamed to MPI.buffer. The old
+    name is still available as an alias to the new name.
+  * The mpi4py.dl module is no longer available.
+  * The mpi4py.get_config function returns an empty dictionary.
+  ## Miscellaneous:
+  * The project is now licensed under the BSD-3-Clause license.
+    This change is fairly inconsequential for users and
+    distributors. It simply adds an additional clause against using
+    contributor names for promotional purposes without their
+    consent.
+  * Add a new guidelines section to documentation laying out new
+    fair play rules. These rules ask companies and outside
+    developers to refrain from reusing the mpi4py name in
+    unaffiliated projects, publishing binary mpi4py wheels on the
+    main Python Package Index (PyPI), and distributing modified
+    versions with incompatible or extended API changes. The primary
+    motivation of these rules is to avoid fragmentation and
+    end-user confusion.
+- Skip failing tests: test fails are different on server and local
+  machines. TODO: Investigate
+- Remove unused rpm macro file: Static %mpi4py_mpi_ver is not used
+  anywhere (and had a strange name for value 'openmpi')
+
+-------------------------------------------------------------------
 Fri May 10 13:36:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.6:
