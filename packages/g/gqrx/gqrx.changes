@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Nov 30 08:33:42 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.17.6
+  * New: Fetch RDS Program Service & RadioText via remote control.
+  * New: Set and query audio mute via remote control.
+  * Improved: Save I/Q recording format to settings.
+  * Improved: Reduced CPU utilization of plot and waterfall display
+  * Improved: Display and formatting of RDS data.
+  * Fixed: Decoding of RDS flags.
+  * Fixed: Incorrect channel filter offset, for some devices.
+
+-------------------------------------------------------------------
 Thu Apr 18 21:42:48 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.17.5
