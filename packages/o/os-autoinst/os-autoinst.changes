@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 29 21:29:48 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1732909069.6642da0:
+  * cv: Mark extraordinary error handling as uncoverable
+  * Handle PID logging in Xvnc test
+  * Cover deprecation logging
+  * Remove obsolete amt backend
+  * snd2png: Clamping fix
+
+-------------------------------------------------------------------
 Tue Nov 26 09:55:46 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1732614935.3535e6c:
