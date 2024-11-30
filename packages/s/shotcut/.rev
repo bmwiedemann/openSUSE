@@ -651,4 +651,12 @@ Update to release 19.04.30.</comment>
     <comment>- Update to 24.10.29</comment>
     <requestid>1220331</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>df2bea3a96ba0f2d99687c5eb4ecf386</srcmd5>
+    <version>24.11.17</version>
+    <time>1732969919</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1227482</requestid>
+  </revision>
 </revisionlist>
