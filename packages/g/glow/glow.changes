@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Oct  8 09:51:23 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Enable actual go tests instead of just checking version
+- Remove patches fixed upstream:
+  fix-for-go-117.patch and fix-gitignore-bypass.patch
+- Switch _service from deprecated disabled to modern manual and
+  use upstream tarball instead
+- Update to 2.0.0:
+  * This release contains a massive amount of bug fixes and
+    rendering improvements, many of which come by way of Glamour
+    v0.8.0 which was released a few weeks ago. As a bonus, the
+    latest version of Glamour includes support for Tokyo Night.
+  New
+  * --preserve-new-lines
+  * add 'r' to refresh list and document
+  * allow --width=0 to disable wordwrap
+  * allow config from CHARM_CONFIG_HOME and XDG_CONFIG_HOME
+  * open editor in current line
+  * shell completions
+  * show line numbers configuration option
+  Fixes
+  * --all bypass .gitignore rules
+  * pass color profile down to glamour
+  * check other possible readme paths/branches
+  * replace string concatenation in loop with string builder
+  * config failing in tests
+  * do not hard fail if no config
+  * do not show absolute path as note
+  * handle not being able to create log file
+  * handle permission denied
+  * handle running inside a snap
+
+-------------------------------------------------------------------
+Wed Feb 14 10:08:12 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Enabled completions for bash, zsh and fish.
+
+-------------------------------------------------------------------
 Tue Jun 13 13:54:56 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Add fix-gitignore-bypass.patch.

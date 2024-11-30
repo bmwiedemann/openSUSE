@@ -11,7 +11,7 @@ Update the version variable in the the `_service` and spec file.
 
 Then run:
 
-    osc service disabledrun
+    osc service manualrun
 
 This will create a new source and vendor tarball.
 
