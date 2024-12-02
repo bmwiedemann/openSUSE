@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-sortedm2m
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-django-sortedm2m
-Version:        3.1.1
+Version:        4.0.0
 Release:        0
 Summary:        Drop-in replacement for django's many to many field with sorted relations
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/jazzband/django-sortedm2m
-Source:         https://files.pythonhosted.org/packages/source/d/django-sortedm2m/django-sortedm2m-%{version}.tar.gz
+Source:         https://github.com/jazzband/django-sortedm2m/archive/refs/tags/%{version}.tar.gz#/django-sortedm2m-%{version}.tar.gz
 BuildRequires:  %{python_module Django}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django
@@ -43,10 +42,10 @@ Drop-in replacement for Django's many to many field with sorted relations.
 %setup -q -n django-sortedm2m-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -58,6 +57,7 @@ export DB_ENGINE=sqlite3 DB_NAME=":memory:"
 %files %{python_files}
 %doc AUTHORS.rst CHANGES.rst README.rst
 %license LICENSE.txt
-%{python_sitelib}/*sortedm2m*/
+%{python_sitelib}/sortedm2m
+%{python_sitelib}/django_sortedm2m-%{version}.dist-info
 
 %changelog

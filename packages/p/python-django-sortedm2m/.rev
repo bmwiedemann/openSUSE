@@ -23,4 +23,23 @@
     <comment></comment>
     <requestid>1146543</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8ced1d91be3b5586cb04419580d4f63b</srcmd5>
+    <version>4.0.0</version>
+    <time>1733155175</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.0.0:
+  * better syntax highlighting
+  * Add Django 4 testing and remove unsupported Python and Django versions
+  * increase test coverage
+  * Combine 2 other PRs to get the checks fully passing
+  * Ensure that code quality checks are running
+  * Update Django testing versions
+  * Fix error in field in Django 5.1
+  * Updated Python and Django version support
+  * Removed QUnit tests
+- Switch back to GitHub tarball, no source on PyPi.
+- Switch to pyproject macros.</comment>
+    <requestid>1227717</requestid>
+  </revision>
 </revisionlist>

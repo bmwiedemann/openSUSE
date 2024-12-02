@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Dec  2 10:12:16 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.0.0:
+  * better syntax highlighting
+  * Add Django 4 testing and remove unsupported Python and Django versions
+  * increase test coverage
+  * Combine 2 other PRs to get the checks fully passing
+  * Ensure that code quality checks are running
+  * Update Django testing versions
+  * Fix error in field in Django 5.1
+  * Updated Python and Django version support
+  * Removed QUnit tests
+- Switch back to GitHub tarball, no source on PyPi.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Tue Feb 13 17:21:00 UTC 2024 - Christian Keil <keil@dfn-cert.de>
 
 - Switch to Python 3.11 build.
