@@ -23,7 +23,7 @@ VERSION=$(grep -Po '^Version:\s*\K.*?(?=$)' $REPO_NAME.spec)
 # Create tar file with name like selinux-policy-<current-version>.tar.xz 
 TAR_NAME=$REPO_NAME-$VERSION.tar.xz
 echo "Creating tar file: $TAR_NAME"
-tar --exclude-vcs -cJhf $TAR_NAME --transform "s,^,$REPO_NAME-$VERSION/," -C $REPO_NAME .
+tar --exclude-vcs -cJf $TAR_NAME --transform "s,^,$REPO_NAME-$VERSION/," -C $REPO_NAME .
 
 # Some helpful prompts
 if test $? -eq 0; then 

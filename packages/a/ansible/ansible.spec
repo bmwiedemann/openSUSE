@@ -16,6 +16,10 @@
 #
 
 
+%define ansible_community_major_version 11
+%define required_ansible_core_version 2.18.0
+
+
 %{?sle15_python_module_pythons}
 %if 0%{?suse_version} < 1550
 # Leap15, SLES15
@@ -38,13 +42,13 @@
 %endif
 
 Name:           ansible
-Version:        10.6.0
+Version:        11.0.0
 Release:        0
 Summary:        Radically simple IT automation
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 URL:            https://ansible.com/
 Source:         https://files.pythonhosted.org/packages/source/a/ansible/ansible-%{version}.tar.gz
-Source99:       ansible-rpmlintrc
+Source99:       ansible-%{ansible_community_major_version}-rpmlintrc
 BuildRequires:  python-rpm-macros
 BuildRequires:  %{ansible_python}-base >= 3.10
 BuildRequires:  %{ansible_python}-setuptools
@@ -54,14 +58,15 @@ BuildRequires:  fdupes
 BuildRequires:  dos2unix
 
 # SECTION test requirements
-BuildRequires:  ansible-core >= 2.17.6
+BuildRequires:  ansible-core = %{required_ansible_core_version}
 # /SECTION
 
 Requires:       %{ansible_python}-base >= 3.10
-Requires:       ansible-core >= 2.17.5
+Requires:       ansible-core = %{required_ansible_core_version}
 
-# Conflicts with ansible 9 or lower
-Conflicts:      ansible < 10
+# Conflicts with lower or higher ansible major versions
+Conflicts:      ansible < %{ansible_community_major_version}
+Conflicts:      ansible > %{ansible_community_major_version}
 
 # Do not check any files in collections for requires
 %global __requires_exclude_from ^%{ansible_python_sitelib}/.*$
@@ -97,7 +102,7 @@ find ./ansible_collections/azure -type f -exec dos2unix {} \;
 %fdupes %{buildroot}/%{ansible_python_sitelib}/ansible_collections/
 
 %files
-%doc CHANGELOG-v10.rst README.rst
+%doc CHANGELOG-v%{ansible_community_major_version}.rst README.rst
 %license COPYING
 %{_bindir}/ansible-community
 %{ansible_python_sitelib}/

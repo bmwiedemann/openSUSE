@@ -1,0 +1,1764 @@
+-------------------------------------------------------------------
+Fri Nov 22 10:18:19 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package ansible-core-2.17, following the 2.17.x versions of
+  ansible-core
+- introduce ansible_core_major_minor_version macro to make the spec
+  easier to manage
+
+-------------------------------------------------------------------
+Fri Nov 22 07:03:32 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Backport patch to relax resolvelib dependency:
+  771f7ad29ca4d259761eaa88673c2e32f6412bbe.patch
+
+-------------------------------------------------------------------
+Thu Nov 21 10:41:19 UTC 2024 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
+
+- Added necessary test dependencies: pytest-xdist, pytest-mock,
+  pytz, passlib, git-core, and openssh to ensure proper test
+  execution.
+- Introduced the `ansible_python_version` variable and updated the
+  test command.
+
+-------------------------------------------------------------------
+Thu Nov 14 16:23:53 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.17.6:
+  https://github.com/ansible/ansible/blob/v2.17.6/changelogs/CHANGELOG-v2.17.rst
+  * Minor Changes
+    - ansible-test - Improve container runtime probe error
+      handling. When unexpected probe output is encountered, an
+      error with more useful debugging information is provided.
+  * Security Fixes
+    - include_vars action - Ensure that result masking is correctly
+      requested when vault-encrypted files are read.
+      (CVE-2024-8775)
+    - task result processing - Ensure that action-sourced result
+      masking (_ansible_no_log=True) is preserved. (CVE-2024-8775)
+    - user action won't allow ssh-keygen, chown and chmod to run on
+      existing ssh public key file, avoiding traversal on existing
+      symlinks (CVE-2024-9902).
+  * Bugfixes
+    - Fix disabling SSL verification when installing collections
+      and roles from git repositories. If --ignore-certs isn't
+      provided, the value for the GALAXY_IGNORE_CERTS configuration
+      option will be used (#83326).
+    - Improve performance on large inventories by reducing the
+      number of implicit meta tasks.
+    - Use the requested error message in the
+      ansible.module_utils.facts.timeout timeout function instead
+      of hardcoding one.
+    - ansible-test - Enable the sys.unraisablehook work-around for
+      the pylint sanity test on Python 3.11. Previously the
+      work-around was only enabled for Python 3.12 and later.
+      However, the same issue has been discovered on Python 3.11.
+    - debconf - set empty password values (#83214).
+    - facts - skip if distribution file path is directory, instead
+      of raising error (#84006).
+    - user action will now require O(force) to overwrite the public
+      part of an ssh key when generating ssh keys, as was already
+      the case for the private part.
+    - user module now avoids changing ownership of files symlinked
+      in provided home dir skeleton
+
+-------------------------------------------------------------------
+Fri Oct 11 05:23:38 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.17.5:
+  https://github.com/ansible/ansible/blob/v2.17.5/changelogs/CHANGELOG-v2.17.rst
+  * Bugfixes
+    - Add descriptions for ansible-galaxy install --help` and
+      ``ansible-galaxy role|collection install --help.
+    - Errors now preserve stacked error messages even when YAML is
+      involved.
+    - ansible-galaxy install --help - Fix the usage text and
+      document that the requirements file passed to -r can include
+      collections and roles.
+    - copy - mtime/atime not updated. Fix now update
+      mtime/atime(#83013)
+    - delay keyword is now a float, matching the underlying 'time'
+      API and user expectations.
+    - dnf5 - re-introduce the state: installed alias to state:
+      present (#83960)
+    - module_utils atomic_move (used by most file based modules),
+      now correctly handles permission copy and setting mtime
+      correctly across all paths
+
+-------------------------------------------------------------------
+Wed Sep 11 05:24:58 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.17.4:
+  https://github.com/ansible/ansible/blob/v2.17.4/changelogs/CHANGELOG-v2.17.rst
+  * Bugfixes
+    - Fix SemanticVersion.parse() to store the version string so
+      that __repr__ reports it instead of None (#83831).
+    - Fix an issue where registered variable was not available for
+      templating in loop_control.label on skipped looped tasks
+      (#83619)
+    - Fix for meta tasks breaking host/fork affinity with
+      host_pinned strategy (#83294)
+    - Fix using the current task's directory for looking up
+      relative paths within roles (#82695).
+    - atomic_move - fix using the setgid bit on the parent
+      directory when creating files (#46742, #67177).
+    - connection plugins using the 'extras' option feature would
+      need variables to match the plugin's loaded name, sometimes
+      requiring fqcn, which is not the same as the
+      documented/declared/expected variables. Now we fall back to
+      the 'basename' of the fqcn, but plugin authors can still set
+      the expected value directly.
+    - csvfile lookup - give an error when no search term is
+      provided using modern config syntax (#83689).
+    - include_tasks - Display location when attempting to load a
+      task list where include_* did not specify any value - #83874
+    - powershell - Improve CLIXML decoding to decode all control
+      characters and unicode characters that are encoded as
+      surrogate pairs.
+    - psrp - Fix bug when attempting to fetch a file path that
+      contains special glob characters like []
+    - runtime-metadata sanity test - do not crash on deprecations
+      if galaxy.yml contains an empty version field (#83831).
+    - ssh - Fix bug when attempting to fetch a file path with
+      characters that should be quoted when using the piped
+      transfer method
+
+-------------------------------------------------------------------
+Tue Aug 13 17:47:30 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.17.3:
+  https://github.com/ansible/ansible/blob/v2.17.3/changelogs/CHANGELOG-v2.17.rst
+  * Minor Changes
+    - ansible-test - Improve the error message shown when an
+      unknown --remote or --docker option is given.
+    - ansible-test - Removed the vyos/1.1.8 network remote as it is
+      no longer functional.
+  * Bugfixes
+    - Warning now includes filename and line number of variable
+      when specifying a list of dictionaries for vars (#82528).
+    - config, restored the ability to set module compression via a
+      variable
+    - debconf - fix normalization of value representation for
+      boolean vtypes in new packages (#83594)
+    - linear strategy: fix handlers included via include_tasks
+      handler to be executed in lockstep (#83019)
+
+-------------------------------------------------------------------
+Tue Jul 16 05:47:40 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.17.2:
+  https://github.com/ansible/ansible/blob/v2.17.2/changelogs/CHANGELOG-v2.17.rst
+  * Bugfixes
+    - Fix a traceback when an environment variable contains certain
+      special characters (#83498)
+    - dnf - reverted incomplete fix from 2.17.2rc1 (#83504)
+    - dnf, dnf5 - fix for installing a set of packages by
+      specifying them using a wildcard character (#83373)
+    - linear strategy now provides a properly templated task name
+      to the v2_runner_on_started callback event.
+    - package_facts - ignore warnings sent by apk on stderr
+      (#83501).
+    - replace - Updated before/after example (#83390).
+    - templating hostvars under native jinja will not cause
+      serialization errors anymore.
+
+-------------------------------------------------------------------
+Sun Jul 14 16:01:58 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.17.1:
+  https://github.com/ansible/ansible/blob/v2.17.1/changelogs/CHANGELOG-v2.17.rst
+  * Minor Changes
+    - ansible-test - Update pypi-test-container to version 3.1.0.
+  * Bugfixes
+    - Fix rapid memory usage growth when notifying handlers using
+      the listen keyword (#83392)
+    - Fix the task attribute resolved_action to show the FQCN
+      instead of None when action or local_action is used in the
+      playbook.
+    - Fix using module_defaults with local_action/action (#81905).
+    - fixed unit test test_borken_cowsay to address mock not been
+      properly applied when existing unix system already have
+      cowsay installed.
+    - powershell - Implement more robust deletion mechanism for C#
+      code compilation temporary files. This should avoid scenarios
+      where the underlying temporary directory may be temporarily
+      locked by antivirus tools or other IO problems. A failure to
+      delete one of these temporary directories will result in a
+      warning rather than an outright failure.
+    - shell plugin - properly quote all needed components of shell
+      commands (#82535)
+
+-------------------------------------------------------------------
+Sun Jul 14 15:27:58 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.17.0:
+  https://github.com/ansible/ansible/blob/v2.17.0/changelogs/CHANGELOG-v2.17.rst
+  * Major Changes
+    - urls.py - Removed support for Python 2
+  * Minor Changes
+    - Add dump and passno mount information to facts component
+      (#80478)
+    - Added MIRACLE LINUX 9.2 in RedHat OS Family.
+    - Interpreter Discovery - Remove hardcoded references to
+      specific python interpreters to use for certain distro
+      versions, and modify logic for python3 to become the default.
+    - Use Python's built-in functools.update_wrapper instead an
+      inline copy from Python 3.7.
+    - User can now set ansible.log to record higher verbosity than
+      what is specified for display via new configuration item
+      LOG_VERBOSITY.
+    - DEFAULT_PRIVATE_ROLE_VARS is now overridden by explicit
+      setting of public for include_roles and import_roles.
+    - ansible-galaxy role|collection init - accept --extra-vars to
+      supplement/override the variables ansible-galaxy injects for
+      templating .j2 files in the skeleton.
+    - import_role action now also gets a public option that
+      controls variable exports, default depending on
+      DEFAULT_PRIVATE_ROLE_VARS (if using defaults equates to
+      public=True).
+    - added configuration item TARGET_LOG_INFO that allows the
+      user/author to add an information string to the log output on
+      targets.
+    - ansible-doc - treat double newlines in documentation strings
+      as paragraph breaks. This is useful to create multi-paragraph
+      notes in module/plugin documentation (#82465).
+    - ansible-doc output has been revamped to make it more visually
+      pleasing when going to a terminal, also more concise, use -v
+      to show extra information.
+    - ansible-galaxy - Started normalizing build directory with a
+      trailing separator when building collections, internally.
+      (#81619).
+    - ansible-galaxy dependency resolution messages have changed
+      the unexplained 'virtual' collection for the specific type
+      ('scm', 'dir', etc) that is more user friendly
+    - ansible-test - Add Alpine 3.19 container.
+    - ansible-test - Add Alpine 3.19 to remotes.
+    - ansible-test - Add Fedora 39 container.
+    - ansible-test - Add Fedora 39 remote.
+    - ansible-test - Add a work-around for permission denied errors
+      when using pytest >= 8 on multi-user systems with an
+      installed version of ansible-test.
+    - ansible-test - Add support for RHEL 9.3 remotes.
+    - ansible-test - Added a macOS 14.3 remote VM.
+    - ansible-test - Bump the nios-test-container from version
+      2.0.0 to version 3.0.0.
+    - ansible-test - Containers and remotes managed by ansible-test
+      will have their Python EXTERNALLY-MANAGED marker (PEP668)
+      removed. This provides backwards compatibility for existing
+      tests running in newer environments which mark their Python
+      as externally managed. A future version of ansible-test may
+      change this behavior, requiring tests to be adapted to such
+      environments.
+    - ansible-test - Make Python 3.12 the default version used in
+      the base and default containers.
+    - ansible-test - Remove Alpine 3(.18) container.
+    - ansible-test - Remove Alpine 3.18 from remotes.
+    - ansible-test - Remove Fedora 38 remote support.
+    - ansible-test - Remove Fedora 38 test container.
+    - ansible-test - Remove rhel/9.2 test remote
+    - ansible-test - Remove the FreeBSD 13.2 remote.
+    - ansible-test - Removed fallback to virtualenv when -m venv is
+      non-functional.
+    - ansible-test - Removed test remotes: macos/13.2
+    - ansible-test - Removed the no-basestring sanity test. The
+      test is no longer necessary now that Python 3 is required.
+    - ansible-test - Removed the no-dict-iteritems,
+      no-dict-iterkeys and no-dict-itervalues sanity tests. The
+      tests are no longer necessary since Python 3 is required.
+    - ansible-test - Removed the no-main-display sanity test. The
+      unwanted pattern is unlikely to occur, since the test has
+      existed since Ansible 2.8.
+    - ansible-test - Removed the no-unicode-literals sanity test.
+      The test is unnecessary now that Python 3 is required and the
+      unicode_literals feature has no effect.
+    - ansible-test - Special handling for installation of
+      cryptography has been removed, as it is no longer necessary.
+    - ansible-test - The shellcheck sanity test no longer disables
+      the SC2164 check. In most cases, seeing this error means the
+      script is missing set -e.
+    - ansible-test - The unidiomatic-typecheck rule has been
+      enabled in the pylint sanity test.
+    - ansible-test - The unidiomatic-typecheck rule has been
+      removed from the validate-modules sanity test.
+    - ansible-test - Update the base and default containers to use
+      Ubuntu 22.04 for the base image. This also updates PowerShell
+      to version 7.4.0 with .NET 8.0.0 and ShellCheck to version
+      0.8.0.
+    - ansible-test - Updated the CloudStack test container to
+      version 1.7.0.
+    - ansible-test - Updated the distro test containers to version
+      6.3.0 to include coverage 7.3.2 for Python 3.8+. The alpine3
+      container is now based on 3.18 instead of 3.17 and includes
+      Python 3.11 instead of Python 3.10.
+    - ansible-test - Updated the distro test containers to version
+      7.1.0.
+    - ansible-test - When ansible-test installs requirements, it
+      now instructs pip to allow installs on externally managed
+      environments as defined by PEP 668. This only occurs in
+      ephemeral environments managed by ansible-test, such as
+      containers, or when the --requirements option is used.
+    - ansible-test - When invoking sleep in containers during
+      container setup, the env command is used to avoid invoking
+      the shell builtin, if present.
+    - ansible-test - document block name now included in error
+      message for YAML parsing errors (#82353).
+    - ansible-test - sanity test allows EXAMPLES to be
+      multi-document YAML (#82353).
+    - ansible-test now has FreeBSD 13.3 and 14.0 support
+    - ansible.builtin.user - Remove user not found warning (#80267)
+    - apt_repository.py - use api.launchpad.net endpoint instead of
+      launchpad.net/api
+    - async tasks can now also support check mode at the same time.
+    - async_status now supports check mode.
+    - constructed inventory plugin - Adding a note that only
+      group_vars of explicit groups are loaded (#82580).
+    - csvfile - add a keycol parameter to specify in which column
+      to search.
+    - dnf - add the best option
+    - dnf5 - add the best option
+    - filter plugin - Add the count and mandatory_count parameters
+      in the regex_replace filter
+    - find - add a encoding parameter to specify which encoding of
+      the files to be searched.
+    - git module - gpg_allowlist name was added in 2.17 and we will
+      eventually deprecate the gpg_whitelist alias.
+    - import_role - allow subdirectories with `_from` options for
+      parity with include_role (#82584).
+    - module argument spec - Allow module authors to include
+      arbitrary additional context in the argument spec, by making
+      use of a new top level key called context. This key should be
+      a dict type. This allows for users to customize what they
+      place in the argument spec, without having to ignore sanity
+      tests that validate the schema.
+    - modules - Add the ability for an action plugin to call
+      self._execute_module(*, ignore_unknown_opts=True) to execute
+      a module with options that may not be supported for the
+      version being called. This tells the module basic wrapper to
+      ignore validating the options provided match the arg spec.
+    - package action now has a configuration that overrides the
+      detected package manager, it is still overridden itself by
+      the use option.
+    - py3compat - Remove ansible.utils.py3compat as it is no longer
+      necessary
+    - removed the unused argument create_new_password from
+      CLI.build_vault_ids (#82066).
+    - urls - Add support for TLS 1.3 post handshake certificate
+      authentication - #81782
+    - urls - reduce complexity of Request.open
+    - user - accept yescrypt hash as user password
+    - validate-modules tests now correctly handles choices in
+      dictionary format.
+  * Breaking Changes / Porting Guide
+    - assert - Nested templating may result in an inability for the
+      conditional to be evaluated. See the porting guide for more
+      information.
+  * Deprecated Features
+    - Old style vars plugins which use the entrypoints
+      get_host_vars or get_group_vars are deprecated. The plugin
+      should be updated to inherit from BaseVarsPlugin and define a
+      get_vars method as the entrypoint.
+    - The 'required' parameter in
+      'ansible.module_utils.common.process.get_bin_path' API is
+      deprecated (#82464).
+    - module_utils - importing the following convenience helpers
+      from ansible.module_utils.basic has been deprecated:
+      get_exception, literal_eval, _literal_eval, datetime, signal,
+      types, chain, repeat, PY2, PY3, b, binary_type,
+      integer_types, iteritems, string_types, test_type, map and
+      shlex_quote.
+    - ansible-doc - role entrypoint attributes are deprecated and
+      eventually will no longer be shown in ansible-doc from
+      ansible-core 2.20 on (#82639, #82678).
+    - paramiko connection plugin, configuration items in the global
+      scope are being deprecated and will be removed in favor or
+      the existing same options in the plugin itself. Users should
+      not need to change anything (how to configure them are the
+      same) but plugin authors using the global constants should
+      move to using the plugin's get_option().
+  * Removed Features (previously deprecated)
+    - Remove deprecated APIs from ansible-docs (#81716).
+    - Remove deprecated JINJA2_NATIVE_WARNING environment variable
+      (#81714)
+    - Remove deprecated scp_if_ssh from ssh connection plugin
+      (#81715).
+    - Remove deprecated crypt support from ansible.utils.encrypt
+      (#81717)
+    - Removed Python 2.7 and Python 3.6 as a supported remote
+      version. Python 3.7+ is now required for target execution.
+    - With the removal of Python 2 support, the yum module and yum
+      action plugin are removed and redirected to dnf.
+  * Security Fixes
+    - ANSIBLE_NO_LOG - Address issue where ANSIBLE_NO_LOG was
+      ignored (CVE-2024-0690)
+    - ansible-galaxy - Prevent roles from using symlinks to
+      overwrite files outside of the installation directory
+      (CVE-2023-5115)
+    - templating - Address issues where internal templating can
+      cause unsafe variables to lose their unsafe designation
+      (CVE-2023-5764)
+  * Bugfixes
+    - Add a version ceiling constraint for pypsrp to avoid
+      potential breaking changes in the 1.0.0 release.
+    - All core lookups now use set_option(s) even when doing their
+      own custom parsing. This ensures that the options are always
+      the proper type.
+    - Allow for searching handler subdir for included task via
+      include_role (#81722)
+    - AnsibleModule.atomic_move - fix preserving extended ACLs of
+      the destination when it exists (#72929).
+    - Cache host_group_vars after instantiating it once and limit
+      the amount of repetitive work it needs to do every time it
+      runs.
+    - Call PluginLoader.all() once for vars plugins, and load vars
+      plugins that run automatically or are enabled specifically by
+      name subsequently.
+    - Consolidate systemd detection logic into one place (#80975).
+    - Consolidated the list of internal static vars, centralized
+      them as constant and completed from some missing entries.
+    - Do not print undefined error message twice (#78703).
+    - Enable file cache for vaulted files during vars lookup to fix
+      a strong performance penalty in huge and complex playbboks.
+    - Fix NEVRA parsing of package names that include digit(s) in
+      them (#76463, #81018)
+    - Fix force_handlers not working with any_errors_fatal (#36308)
+    - Fix run_once being incorrectly interpreted on handlers
+      (#81666)
+    - Fix an issue when setting a plugin name from an unsafe source
+      resulted in ValueError: unmarshallable object (#82708)
+    - Fix check for missing _sub_plugin attribute in older
+      connection plugins (#82954)
+    - Fix condition for unquoting configuration strings from ini
+      files (#82387).
+    - Fix for when any_errors_fatal was ignored if error occurred
+      in a block with always (#31543)
+    - Fix handlers not being executed in lockstep using the linear
+      strategy in some cases (#82307)
+    - Fix handling missing urls in
+      ansible.module_utils.urls.fetch_file for Python 3.
+    - Fix issue where an include_tasks handler in a role was not
+      able to locate a file in tasks/ when tasks_from was used as a
+      role entry point and main.yml was not present (#82241)
+    - Fix issues when tasks withing nested blocks wouldn't run when
+      force_handlers is set (#81533)
+    - Fix loading vars_plugins in roles (#82239).
+    - Fix notifying role handlers by listen keyword topics with the
+      "role_name : " prefix (#82849).
+    - Fix setting proper locale for git executable when running on
+      non english systems, ensuring git output can always be
+      parsed.
+    - Fix tasks in always section not being executed for nested
+      blocks with any_errors_fatal (#73246)
+    - Fixes permission for cache json file from 600 to 644
+      (#82683).
+    - Give the tombstone error for include pre-fork like other
+      tombstoned action/module plugins.
+    - Harden python templates for respawn and ansiballz around str
+      literal quoting
+    - Include the task location when a module or action plugin is
+      deprecated (#82450).
+    - Interpreter discovery - Add Amzn to OS_FAMILY_MAP for correct
+      family fallback for interpreter discovery (#80882).
+    - Mirror the behavior of dnf on the command line when handling
+      NEVRAs with omitted epoch (#71808)
+    - Plugin loader does not dedupe nor cache filter/test plugins
+      by file basename, but full path name.
+    - Properly template tags in parent blocks (#81053)
+    - Provide additional information about the alternative plugin
+      in the deprecation message (#80561).
+    - Remove the galaxy_info field platforms from the role
+      templates (#82453).
+    - Restoring the ability of filters/tests can have same file
+      base name but different tests/filters defined inside.
+    - Reword the error message when the module fails to parse
+      parameters in JSON format (#81188).
+    - Reword warning if the reserved keyword _ansible_ used as a
+      module parameter (#82514).
+    - Run all handlers with the same listen topic, even when
+      notified from another handler (#82363).
+    - Slight optimization to hostvars (instantiate template only
+      once per host, vs per call to var).
+    - Stopped misleadingly advertising async mode support in the
+      reboot module (#71517).
+    - ansible-galaxy role import - fix using the role_name in a
+      standalone role's galaxy_info metadata by disabling automatic
+      removal of the ansible-role- prefix. This matches the
+      behavior of the Galaxy UI which also no longer implicitly
+      removes the ansible-role- prefix. Use the --role-name option
+      or add a role_name to the galaxy_info dictionary in the
+      role's meta/main.yml to use an alternate role name.
+    - ansible-test sanity --test runtime-metadata - add
+      action_plugin as a valid field for modules in the schema
+      (#82562).
+    - ansible.module_utils.service - ensure binary data
+      transmission in daemonize()
+    - any_errors_fatal should fail all hosts and rescue all of them
+      when a rescue section is specified (#80981)
+    - include_role - properly execute v2_playbook_on_include and
+      v2_runner_on_failed callbacks as well as increase ok and
+      failed stats in the play recap, when appropriate (#77336)
+    - allow_duplicates - fix evaluating if the current role allows
+      duplicates instead of using the initial value from the
+      duplicate's cached role.
+    - ansible-config init will now dedupe ini entries from plugins.
+    - ansible-config will now properly template defaults before
+      dumping them.
+    - ansible-doc - fixed "inicates" typo in output
+    - ansible-doc - format top-level descriptions with multiple
+      paragraphs as multiple paragraphs, instead of concatenating
+      them (#83155).
+    - ansible-galaxy - Deprecate use of the Galaxy v2 API (#81781)
+    - ansible-galaxy - Provide a better error message when using a
+      requirements file with an invalid format - #81901
+    - ansible-galaxy - Resolve issue with the dataclass used for
+      galaxy.yml manifest caused by using future annotations
+    - ansible-galaxy - ensure path to ansible collection when
+      installing or downloading doesn't have a backslash (#79705).
+    - ansible-galaxy - started allowing the use of pre-releases for
+      collections that do not have any stable versions published.
+      (#81606)
+    - ansible-galaxy - started allowing the use of pre-releases for
+      dependencies on any level of the dependency tree that
+      specifically demand exact pre-release versions of collections
+      and not version ranges. (#81606)
+    - ansible-galaxy error on dependency resolution will not error
+      itself due to 'virtual' collections not having a
+      name/namespace.
+    - ansible-galaxy info - fix reporting no role found when
+      lookup_role_by_name returns None.
+    - ansible-galaxy role import - exit with 1 when the import
+      fails (#82175).
+    - ansible-galaxy role install - fix installing roles from
+      Galaxy that have version None (#81832).
+    - ansible-galaxy role install - fix symlinks (#82702, #81965).
+    - ansible-galaxy role install - normalize tarfile paths and
+      symlinks using ansible.utils.path.unfrackpath and consider
+      them valid as long as the realpath is in the tarfile's role
+      directory (#81965).
+    - ansible-inventory - index available_hosts for major
+      performance boost when dumping large inventories
+    - ansible-pull now will expand relative paths for the
+      -d|--directory option is now expanded before use.
+    - ansible-pull will now correctly handle become and connection
+      password file options for ansible-playbook.
+    - ansible-test - Add a pylint plugin to work around a known
+      issue on Python 3.12.
+    - ansible-test - Explicitly supply ControlPath=none when
+      setting up port forwarding over SSH to address the scenario
+      where the local ssh configuration uses ControlPath for all
+      hosts, and would prevent ports to be forwarded after the
+      initial connection to the host.
+    - ansible-test - Fix parsing of cgroup entries which contain a
+      : in the path (#81977).
+    - ansible-test - Include missing pylint requirements for Python
+      3.10.
+    - ansible-test - Properly detect docker host when using ssh://
+      protocol for connecting to the docker daemon.
+    - ansible-test - The libexpat package is automatically upgraded
+      during remote bootstrapping to maintain compatibility with
+      newer Python packages.
+    - ansible-test - The validate-modules sanity test no longer
+      attempts to process files with unrecognized extensions as
+      Python (resolves #82604).
+    - ansible-test - Update pylint to version 3.0.1.
+    - ansible-test ansible-doc sanity test - do not remove
+      underscores from plugin names in collections before calling
+      ansible-doc (#82574).
+    - ansible-test validate-modules sanity test - do not treat
+      leading underscores for plugin names in collections as an
+      attempted deprecation (#82575).
+    - ansible-test — Python 3.8–3.12 will use coverage v7.3.2.
+    - ansible.builtin.apt - calling clean = true does not properly
+      clean certain cache files such as /var/cache/apt/pkgcache.bin
+      and /var/cache/apt/pkgcache.bin (#82611)
+    - ansible.builtin.uri - the module was ignoring the force
+      parameter and always requesting a cached copy (via the
+      If-Modified-Since header) when downloading to an existing
+      local file. Disable caching when force is true, as documented
+      (#82166).
+    - ansible_managed restored it's 'templatability' by ensuring
+      the possible injection routes are cut off earlier in the
+      process.
+    - apt - honor install_recommends and dpkg_options while
+      installing python3-apt library (#40608).
+    - apt - install recommended packages when installing package
+      via deb file (#29726).
+    - apt_repository - do not modify repo files if the file is a
+      symlink (#49809).
+    - apt_repository - update PPA URL to point to https URL
+      (#82463).
+    - assemble - fixed missing parameter 'content' in
+      `_get_diff_data` API (#82359).
+    - async - Fix bug that stopped running async task in --check
+      when check_mode: False was set as a task attribute - #82811
+    - blockinfile - when create=true is used with a filename
+      without path, the module crashed (#81638).
+    - check if there are attributes to set before attempting to set
+      them (#76727)
+    - copy action now also generates temprary files as hidden ('.'
+      prefixed) to avoid accidental pickup by running services that
+      glob by extension.
+    - copy action now ensures that tempfiles use the same suffix as
+      destination, to allow for validate to work with utilities
+      that check extensions.
+    - deb822_repository - handle idempotency if the order of
+      parameters is changed (#82454).
+    - debconf - allow user to specify a list for value when vtype
+      is multiselect (#81345).
+    - delegate_to when set to an empty or undefined variable will
+      now give a proper error.
+    - distribution.py - Recognize ALP-Dolomite as part of the SUSE
+      OS family in Ansible, fixing its previous misidentification
+      (#82496).
+    - distro - bump bundled distro version from 1.6.0 to 1.8.0
+      (#81713).
+    - dnf - fix an issue when cached RPMs were left in the cache
+      directory even when the keepcache setting was unset (#81954)
+    - dnf - fix an issue when installing a package by specifying a
+      file it provides could result in installing a different
+      package providing the same file than the package already
+      installed resulting in resolution failure (#82461)
+    - dnf - properly set gpg check options on enabled repositories
+      according to the disable_gpg_check option (#80110)
+    - dnf - properly skip unavailable packages when skip_broken is
+      enabled (#80590)
+    - dnf - the nobest option only overrides the distribution
+      default when explicitly used, and is used for all supported
+      operations (#82616)
+    - dnf5 - replace removed API calls
+    - dnf5 - respect allow_downgrade when installing packages
+      directly from rpm files
+    - dnf5 - the nobest option only overrides the distribution
+      default when used
+    - dwim functions for lookups should be better at detectging
+      role context even in abscense of tasks/main.
+    - ensure we have logger before we log when we have increased
+      verbosity.
+    - expect - fix argument spec error using timeout=null (#80982).
+    - fact gathering on linux now handles thread count by using
+      rounding vs dropping decimals, it should give slightly more
+      accurate numbers.
+    - facts - add a generic detection for VMware in product name.
+    - facts - detect VMware ESXi 8.0 virtualization by product name
+      VMware20,1
+    - fetch - Do not calculate the file size for Windows fetch
+      targets to improve performance.
+    - fetch - add error message when using dest with a trailing
+      slash that becomes a local directory - #82878
+    - find - do not fail on Permission errors (#82027).
+    - first_found lookup now always returns a full (absolute) and
+      normalized path
+    - first_found lookup now always takes into account k=v options
+    - flush_handlers - properly handle a handler failure in a
+      nested block when force_handlers is set
+      (http://github.com/ansible/ansible/issues/81532)
+    - galaxy - skip verification for unwanted Python compiled
+      bytecode files (#81628).
+    - handle exception raised while validating with elements='int'
+      and value is not within choices (#82776).
+    - include_tasks - include ansible_loop_var and
+      ansible_index_var in a loop (#82655).
+    - include_vars - fix calculating depth relative to the root and
+      ensure all files are included (#80987).
+    - interpreter_discovery - handle AnsibleError exception raised
+      while interpreter discovery (#78264).
+    - iptables - add option choices 'src,src' and 'dst,dst' in
+      match_set_flags (#81281).
+    - iptables - set jump to DSCP when set_dscp_mark or
+      set_dscp_mark_class is set (#77077).
+    - known_hosts - Fix issue with @cert-authority entries in
+      known_hosts incorrectly being removed.
+    - module no_log will no longer affect top level booleans, for
+      example no_log_module_parameter='a' will no longer hide
+      changed=False as a 'no log value' (matches 'a').
+    - moved assemble, raw, copy, fetch, reboot, script and
+      wait_for_connection to query task instead of play_context
+      ensuring they get the lastest and most correct data.
+    - reboot action now handles connections with 'timeout' vs only
+      'connection_timeout' settings.
+    - role params now have higher precedence than host facts again,
+      matching documentation, this had unintentionally changed in
+      2.15.
+    - roles, code cleanup and performance optimization of
+      dependencies, now cached, and public setting is now
+      determined once, at role instantiation.
+    - roles, the static property is now correctly set, this will
+      fix issues with public and DEFAULT_PRIVATE_ROLE_VARS controls
+      on exporting vars.
+    - set_option method for plugins to update config now properly
+      passes through type casting and validation.
+    - ssh - add tests for the SSH connection plugin.
+    - support url-encoded credentials in URLs like
+      http://x%40:%40@example.com (#82552)
+    - syslog - Handle ValueError exception raised when sending Null
+      Characters to syslog with Python 3.12.
+    - systemd_services - update documentation regarding
+      required_one_of and required_by parameters (#82914).
+    - template - Fix error when templating an unsafe string which
+      corresponds to an invalid type in Python (#82600).
+    - template action will also inherit the behavior from copy (as
+      it uses it internally).
+    - templating - ensure syntax errors originating from a template
+      being compiled into Python code object result in a failure
+      (#82606)
+    - unarchive - add support for 8 character permission strings
+      for zip archives (#81705).
+    - unarchive - force unarchive if symlink target changes
+      (#30420).
+    - unarchive modules now uses zipinfo options without relying on
+      implementation defaults, making it more compatible with all
+      OS/distributions.
+    - unsafe data - Address an incompatibility when iterating or
+      getting a single index from AnsibleUnsafeBytes
+    - unsafe data - Address an incompatibility with
+      AnsibleUnsafeText and AnsibleUnsafeBytes when pickling with
+      protocol=0
+    - unsafe data - Enable directly using AnsibleUnsafeText with
+      Python pathlib (#82414)
+    - uri - update the documentation for follow_redirects.
+    - uri action plugin now skipped during check mode (not
+      supported) instead of even trying to execute the module,
+      which already skipped, this does not really change the
+      result, but returns much faster.
+    - vars - handle exception while combining VarsWithSources and
+      dict (#81659).
+    - wait_for should not handle 'non mmapable files' again.
+    - winrm - Better handle send input failures when communicating
+      with hosts under load
+    - winrm - Do not raise another exception during cleanup when a
+      task is timed out - #81095
+    - winrm - does not hang when attempting to get process output
+      when stdin write failed
+
+-------------------------------------------------------------------
+Wed Jun 19 05:05:30 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.16.8:
+  https://github.com/ansible/ansible/blob/v2.16.8/changelogs/CHANGELOG-v2.16.rst
+  * Minor Changes
+    - ansible-test - Update pypi-test-container to version 3.1.0.
+  * Bugfixes
+    - Fix the task attribute resolved_action to show the FQCN
+      instead of None when action or local_action is used in the
+      playbook.
+    - Fix using module_defaults with local_action/action (#81905).
+    - fixed unit test test_borken_cowsay to address mock not been
+      properly applied when existing unix system already have
+      cowsay installed.
+    - powershell - Implement more robust deletion mechanism for C#
+      code compilation temporary files. This should avoid scenarios
+      where the underlying temporary directory may be temporarily
+      locked by antivirus tools or other IO problems. A failure to
+      delete one of these temporary directories will result in a
+      warning rather than an outright failure.
+
+-------------------------------------------------------------------
+Thu May 23 11:07:12 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.16.7:
+  https://github.com/ansible/ansible/blob/v2.16.7/changelogs/CHANGELOG-v2.16.rst
+  * Minor Changes
+    - ansible.builtin.user - Remove user not found warning (#80267)
+  * Bugfixes
+    - Add a version ceiling constraint for pypsrp to avoid
+      potential breaking changes in the 1.0.0 release.
+    - Fix NEVRA parsing of package names that include digit(s) in
+      them (#76463, #81018)
+    - Fix handlers not being executed in lockstep using the linear
+      strategy in some cases (#82307)
+    - Give the tombstone error for include pre-fork like other
+      tombstoned action/module plugins.
+    - Include the task location when a module or action plugin is
+      deprecated (#82450).
+    - Mirror the behavior of dnf on the command line when handling
+      NEVRAs with omitted epoch (#71808)
+    - ansible-test - Automatically enable the PyPI proxy for the
+      centos7 container to restore the ability to use pip in that
+      container.
+    - ansible_managed restored it's 'templatability' by ensuring
+      the possible injection routes are cut off earlier in the
+      process.
+    - assemble - fixed missing parameter 'content' in
+      `_get_diff_data` API (#82359).
+    - dnf - fix an issue when installing a package by specifying a
+      file it provides could result in installing a different
+      package providing the same file than the package already
+      installed resulting in resolution failure (#82461)
+    - uri - update the documentation for follow_redirects.
+
+-------------------------------------------------------------------
+Tue Apr 16 10:37:56 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- adjust spec to new name for PyPI file name (underscore instead of
+  hyphen: ansible_core-2.16.6.tar.gz)
+- update to 2.16.6:
+  https://github.com/ansible/ansible/blob/v2.16.6/changelogs/CHANGELOG-v2.16.rst
+  * Bugfixes
+    - Consolidated the list of internal static vars, centralized
+      them as constant and completed from some missing entries.
+    - Fix check for missing `_sub_plugin` attribute in older
+      connection plugins (#82954)
+    - Fixes permission for cache json file from 600 to 644
+      (#82683).
+    - Slight optimization to hostvars (instantiate template only
+      once per host, vs per call to var).
+    - allow_duplicates - fix evaluating if the current role allows
+      duplicates instead of using the initial value from the
+      duplicate's cached role.
+    - ansible-config will now properly template defaults before
+      dumping them.
+    - ansible-test ansible-doc sanity test - do not remove
+      underscores from plugin names in collections before calling
+      ansible-doc (#82574).
+    - async - Fix bug that stopped running async task in --check
+      when check_mode: False was set as a task attribute - #82811
+    - blockinfile - when create=true is used with a filename
+      without path, the module crashed (#81638).
+    - dnf - fix an issue when cached RPMs were left in the cache
+      directory even when the keepcache setting was unset (#81954)
+    - dnf5 - replace removed API calls
+    - facts - add a generic detection for VMware in product name.
+    - fetch - add error message when using dest with a trailing
+      slash that becomes a local directory - #82878
+    - find - do not fail on Permission errors (#82027).
+    - unarchive modules now uses zipinfo options without relying on
+      implementation defaults, making it more compatible with all
+      OS/distributions.
+    - winrm - Do not raise another exception during cleanup when a
+      task is timed out - #81095
+
+-------------------------------------------------------------------
+Wed Mar 27 19:54:49 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.16.5:
+  https://github.com/ansible/ansible/blob/v2.16.5/changelogs/CHANGELOG-v2.16.rst
+  * Minor Changes
+    - ansible-test - Add a work-around for permission denied errors
+      when using pytest >= 8 on multi-user systems with an
+      installed version of ansible-test.
+  * Bugfixes
+    - Fix an issue when setting a plugin name from an unsafe source
+      resulted in ValueError: unmarshallable object (#82708)
+    - Harden python templates for respawn and ansiballz around str
+      literal quoting
+    - ansible-test - The libexpat package is automatically upgraded
+      during remote bootstrapping to maintain compatibility with
+      newer Python packages.
+    - template - Fix error when templating an unsafe string which
+      corresponds to an invalid type in Python (#82600).
+    - winrm - does not hang when attempting to get process output
+      when stdin write failed
+
+-------------------------------------------------------------------
+Sat Mar 16 16:09:28 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.16.4:
+  https://github.com/ansible/ansible/blob/v2.16.4/changelogs/CHANGELOG-v2.16.rst
+  * Bugfixes
+    - Fix loading vars_plugins in roles (#82239).
+    - expect - fix argument spec error using timeout=null (#80982).
+    - include_vars - fix calculating depth relative to the root and
+      ensure all files are included (#80987).
+    - templating - ensure syntax errors originating from a template
+      being compiled into Python code object result in a failure
+      (#82606)
+
+-------------------------------------------------------------------
+Tue Jan 30 14:18:05 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.16.3:
+  https://github.com/ansible/ansible/blob/v2.16.3/changelogs/CHANGELOG-v2.16.rst
+  * Security Fixes
+    - ANSIBLE_NO_LOG - Address issue where ANSIBLE_NO_LOG was
+      ignored (CVE-2024-0690)
+  * Bugfixes
+    - Run all handlers with the same listen topic, even when
+      notified from another handler (#82363).
+    - ansible-galaxy role import - fix using the role_name in a
+      standalone role's galaxy_info metadata by disabling automatic
+      removal of the ansible-role- prefix. This matches the
+      behavior of the Galaxy UI which also no longer implicitly
+      removes the ansible-role- prefix. Use the --role-name option
+      or add a role_name to the galaxy_info dictionary in the
+      role's meta/main.yml to use an alternate role name.
+    - ansible-test sanity --test runtime-metadata - add
+      action_plugin as a valid field for modules in the schema
+      (#82562).
+    - ansible-config init will now dedupe ini entries from plugins.
+    - ansible-galaxy role import - exit with 1 when the import
+      fails (#82175).
+    - ansible-galaxy role install - normalize tarfile paths and
+      symlinks using ansible.utils.path.unfrackpath and consider
+      them valid as long as the realpath is in the tarfile's role
+      directory (#81965).
+    - delegate_to when set to an empty or undefined variable will
+      now give a proper error.
+    - dwim functions for lookups should be better at detectging
+      role context even in abscense of tasks/main.
+    - roles, code cleanup and performance optimization of
+      dependencies, now cached, and public setting is now
+      determined once, at role instantiation.
+    - roles, the static property is now correctly set, this will
+      fix issues with public and DEFAULT_PRIVATE_ROLE_VARS controls
+      on exporting vars.
+    - unsafe data - Enable directly using AnsibleUnsafeText with
+      Python pathlib (#82414)
+
+-------------------------------------------------------------------
+Sun Jan 21 08:09:23 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.16.2:
+  https://github.com/ansible/ansible/blob/v2.16.2/changelogs/CHANGELOG-v2.16.rst
+  * Bugfixes
+    - unsafe data - Address an incompatibility when iterating or
+      getting a single index from AnsibleUnsafeBytes
+    - unsafe data - Address an incompatibility with
+      AnsibleUnsafeText and AnsibleUnsafeBytes when pickling with
+      protocol=0
+
+-------------------------------------------------------------------
+Sun Jan 21 08:06:56 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.16.1:
+  https://github.com/ansible/ansible/blob/v2.16.1/changelogs/CHANGELOG-v2.16.rst
+  * Breaking Changes / Porting Guide
+    - assert - Nested templating may result in an inability for the
+      conditional to be evaluated. See the porting guide for more
+      information.
+  * Security Fixes
+    - templating - Address issues where internal templating can
+      cause unsafe variables to lose their unsafe designation
+      (CVE-2023-5764)
+  * Bugfixes
+    - Fix issue where an include_tasks handler in a role was not
+      able to locate a file in tasks/ when tasks_from was used as a
+      role entry point and main.yml was not present (#82241)
+    - Plugin loader does not dedupe nor cache filter/test plugins
+      by file basename, but full path name.
+    - Restoring the ability of filters/tests can have same file
+      base name but different tests/filters defined inside.
+    - ansible-pull now will expand relative paths for the
+      -d|--directory option is now expanded before use.
+    - ansible-pull will now correctly handle become and connection
+      password file options for ansible-playbook.
+    - flush_handlers - properly handle a handler failure in a
+      nested block when force_handlers is set
+      (http://github.com/ansible/ansible/issues/81532)
+    - module no_log will no longer affect top level booleans, for
+      example no_log_module_parameter='a' will no longer hide
+      changed=False as a 'no log value' (matches 'a').
+    - role params now have higher precedence than host facts again,
+      matching documentation, this had unintentionally changed in
+      2.15.
+    - wait_for should not handle 'non mmapable files' again.
+
+-------------------------------------------------------------------
+Sun Jan 21 08:02:12 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.16.0:
+  https://github.com/ansible/ansible/blob/v2.16.0/changelogs/CHANGELOG-v2.16.rst
+  * Bugfixes and Minor changes omitted for brevity, see full
+    changelog
+  * Breaking Changes / Porting Guide
+    - Any plugin using the config system and the cli entry to use
+      the timeout from the command line, will see the value change
+      if the use had configured it in any of the lower precedence
+      methods. If relying on this behaviour to consume the
+      global/generic timeout from the DEFAULT_TIMEOUT constant,
+      please consult the documentation on plugin configuration to
+      add the overlaping entries.
+    - ansible-test - Test plugins that rely on containers no longer
+      support reusing running containers. The previous behavior was
+      an undocumented, untested feature.
+    - service module will not permanently configure variables/flags
+      for openbsd when doing enable/disable operation anymore, this
+      module was never meant to do this type of work, just to
+      manage the service state itself. A rcctl_config or similar
+      module should be created and used instead.
+  * Deprecated Features
+    - Deprecated ini config option collections_paths, use the
+      singular form collections_path instead
+    - Deprecated the env var ANSIBLE_COLLECTIONS_PATHS, use the
+      singular form ANSIBLE_COLLECTIONS_PATH instead
+    - Old style vars plugins which use the entrypoints
+      get_host_vars or get_group_vars are deprecated. The plugin
+      should be updated to inherit from BaseVarsPlugin and define a
+      get_vars method as the entrypoint.
+    - Support for Windows Server 2012 and 2012 R2 has been removed
+      as the support end of life from Microsoft is October 10th
+      2023. These versions of Windows will no longer be tested in
+      this Ansible release and it cannot be guaranteed that they
+      will continue to work going forward.
+    - STRING_CONVERSION_ACTION config option is deprecated as it is
+      no longer used in the Ansible Core code base.
+    - the 'smart' option for setting a connection plugin is being
+      removed as it's main purpose (choosing between ssh and
+      paramiko) is now irrelevant.
+    - vault and unfault filters - the undocumented vaultid
+      parameter is deprecated and will be removed in ansible-core
+      2.20. Use vault_id instead.
+    - yum_repository - deprecated parameter 'keepcache' (#78693).
+  * Removed Features (previously deprecated)
+    - ActionBase - remove deprecated _remote_checksum method
+    - PlayIterator - remove deprecated cache_block_tasks and
+      get_original_task methods
+    - Remove deprecated FileLock class
+    - Removed Python 3.9 as a supported version on the controller.
+      Python 3.10 or newer is required.
+    - Removed include which has been deprecated in Ansible 2.12.
+      Use include_tasks or import_tasks instead.
+    - Templar - remove deprecated shared_loader_obj parameter of
+      __init__
+    - fetch_url - remove auto disabling decompress when gzip is not
+      available
+    - get_action_args_with_defaults - remove deprecated
+      redirected_names method parameter
+    - ansible-test - Removed support for the remote Windows targets
+      2012 and 2012-R2
+    - inventory_cache - remove deprecated
+      default.fact_caching_prefix ini configuration option, use
+      defaults.fact_caching_prefix instead.
+    - module_utils/basic.py - Removed Python 3.5 as a supported
+      remote version. Python 2.7 or Python 3.6+ is now required.
+    - stat - removed unused get_md5 parameter.
+  * Security Fixes
+    - ansible-galaxy - Prevent roles from using symlinks to
+      overwrite files outside of the installation directory
+      (CVE-2023-5115)
+  * Known issues
+    - ansible-galaxy - dies in the middle of installing a role when
+      that role contains Java inner classes (files with $ in the
+      file name). This is by design, to exclude temporary or backup
+      files. (#81553).
+    - ansible-test - The pep8 sanity test is unable to detect
+      f-string spacing issues (E201, E202) on Python 3.10 and 3.11.
+      They are correctly detected under Python 3.12. See
+      (PyCQA/pycodestyle#1190).
+
+-------------------------------------------------------------------
+Tue Dec 12 17:22:59 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.15.8:
+  * Minor Changes
+    - ansible-test - Add FreeBSD 13.2 remote.
+    - ansible-test - Removed freebsd/13.1 remote.
+  * Bugfixes
+    - unsafe data - Address an incompatibility when iterating or
+      getting a single index from AnsibleUnsafeBytes
+    - unsafe data - Address an incompatibility with
+      AnsibleUnsafeText and AnsibleUnsafeBytes when pickling with
+      protocol=0
+
+-------------------------------------------------------------------
+Tue Dec  5 06:08:05 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.15.7:
+  This release includes a fix for CVE-2023-5764, where internal
+  templating actions could result in unsafe data losing its unsafe
+  designation.
+  * Breaking Changes / Porting Guide
+    - assert - Nested templating may result in an inability for the
+      conditional to be evaluated. See the porting guide for more
+      information.
+  * Security Fixes
+    - templating - Address issues where internal templating can
+      cause unsafe variables to lose their unsafe designation
+      (CVE-2023-5764)
+  * Bugfixes
+    - ansible-pull now will expand relative paths for the
+      -d|--directory option is now expanded before use.
+    - flush_handlers - properly handle a handler failure in a
+      nested block when force_handlers is set
+      (http://github.com/ansible/ansible/issues/81532)
+    - module no_log will no longer affect top level booleans, for
+      example no_log_module_parameter='a' will no longer hide
+      changed=False as a 'no log value' (matches 'a').
+    - modules/user.py - Add check for valid directory when creating
+      new user homedir (allows /dev/null as skeleton) (#75063)
+    - role params now have higher precedence than host facts again,
+      matching documentation, this had unintentionally changed in
+      2.15.
+    - wait_for should not handle 'non mmapable files' again.
+
+-------------------------------------------------------------------
+Tue Nov  7 07:46:07 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.15.6:
+  * Minor Changes
+    - ansible-test - Windows 2012 and 2012-R2 instances are now
+      requested from Azure instead of AWS.
+  * Bugfixes
+    - Fix run_once being incorrectly interpreted on handlers
+      (#81666)
+    - Plugin loader does not dedupe nor cache filter/test plugins
+      by file basename, but full path name.
+    - Properly template tags in parent blocks (#81053)
+    - Restoring the ability of filters/tests can have same file
+      base name but different tests/filters defined inside.
+    - import_role reverts to previous behavior of exporting vars at
+      compile time.
+    - ansible-galaxy - Provide a better error message when using a
+      requirements file with an invalid format - #81901
+    - ansible-inventory - index available_hosts for major
+      performance boost when dumping large inventories
+    - ansible-test - Fix parsing of cgroup entries which contain a
+      : in the path (#81977).
+
+-------------------------------------------------------------------
+Tue Oct 10 04:44:30 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.15.5:
+  * Minor Changes
+    - ansible-galaxy dependency resolution messages have changed
+      the unexplained 'virtual' collection for the specific type
+      ('scm', 'dir', etc) that is more user friendly
+  * Security Fixes
+    - ansible-galaxy - Prevent roles from using symlinks to
+      overwrite files outside of the installation directory
+      (CVE-2023-5115)
+  * Bugfixes
+    - Allow for searching handler subdir for included task via
+      include_role (#81722)
+    - PluginLoader - fix Jinja plugin performance issues (#79652)
+    - ansible.module_utils.service - ensure binary data
+      transmission in daemonize()
+    - ansible.module_utils.service - fix inter-process
+      communication in daemonize()
+    - ansible-galaxy - started allowing the use of pre-releases for
+      collections that do not have any stable versions published.
+      (#81606)
+    - ansible-galaxy - started allowing the use of pre-releases for
+      dependencies on any level of the dependency tree that
+      specifically demand exact pre-release versions of collections
+      and not version ranges. (#81606)
+    - ansible-galaxy error on dependency resolution will not error
+      itself due to 'virtual' collections not having a
+      name/namespace.
+    - ansible-galaxy info - fix reporting no role found when
+      lookup_role_by_name returns None.
+    - role deduplication - don't deduplicate before a role has had
+      a task run for that particular host (#81486).
+    - uri/urls - Add compat function to handle the ability to parse
+      the filename from a Content-Disposition header (#81806)
+    - winrm - Better handle send input failures when communicating
+      with hosts under load
+
+-------------------------------------------------------------------
+Tue Sep 12 08:13:53 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.15.4:
+  * Deprecated Features
+    - vault and unfault filters - the undocumented vaultid
+      parameter is deprecated and will be removed in ansible-core
+      2.20. Use vault_id instead.
+  * Bugfixes
+    - PowerShell - Remove some code which is no longer valid for
+      dotnet 5+
+    - Prompting - add a short sleep between polling for user input
+      to reduce CPU consumption (#81516).
+    - ansible-galaxy - Enabled the data tarfile filter during role
+      installation for Python versions that support it. A probing
+      mechanism is used to avoid Python versions with a broken
+      implementation.
+    - ansible-test - Always use ansible-test managed entry points
+      for ansible-core CLI tools when not running from source. This
+      fixes issues where CLI entry points created during install
+      are not compatible with ansible-test.
+    - first found lookup has been updated to use the normalized
+      argument parsing (pythonic) matching the documented examples.
+    - handlers - the listen keyword can affect only one handler
+      with the same name, the last one defined as it is a case with
+      the notify keyword (#81013)
+    - include_role - expose variables from parent roles to role's
+      handlers (#80459)
+    - tarfile - handle data filter deprecation warning message for
+      extract and extractall (#80832).
+    - vault and unvault filters now properly take vault_id
+      parameter.
+
+-------------------------------------------------------------------
+Wed Sep  6 06:19:18 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- as example files were split out into a separate package
+  ansible-documentation upstream, this package now Recommends that
+  package
+- update to 2.15.3:
+  * Minor Changes
+    - Removed exclude and recursive-exclude commands for generated
+      files from the MANIFEST.in file. These excludes were
+      unnecessary since releases are expected to be built with a
+      clean worktree.
+    - Removed exclude commands for sanity test files from the
+      MANIFEST.in file. These tests were previously excluded
+      because they did not pass when run from an sdist. However,
+      sanity tests are not expected to pass from an sdist, so
+      excluding some (but not all) of the failing tests makes
+      little sense.
+    - Removed redundant include commands from the MANIFEST.in file.
+      These includes either duplicated default behavior or another
+      command.
+    - The ansible-core sdist no longer contains pre-generated man
+      pages. Instead, a packaging/cli-doc/build.py script is
+      included in the sdist. This script can generate man pages and
+      standalone RST documentation for ansible-core CLI programs.
+    - The docs and examples directories are no longer included in
+      the ansible-core sdist. These directories have been moved to
+      the https://github.com/ansible/ansible-documentation
+      repository.
+    - Use include where recursive-include is unnecessary in the
+      MANIFEST.in file.
+    - ansible-test - Update the logic used to detect when
+      ansible-test is running from source.
+    - ansible-test - Updated the CloudStack test container to
+      version 1.6.1.
+  * Bugfixes
+    - Exclude internal options from man pages and docs.
+    - Fix ansible-config init man page option indentation.
+    - The ansible-config init command now has a documentation
+      description.
+    - The ansible-galaxy collection download command now has a
+      documentation description.
+    - The ansible-galaxy collection install command documentation
+      is now visible (previously hidden by a decorator).
+    - The ansible-galaxy collection verify command now has a
+      documentation description.
+    - The ansible-galaxy role install command documentation is now
+      visible (previously hidden by a decorator).
+    - The ansible-inventory command command now has a documentation
+      description (previously used as the epilog).
+    - Update module_utils.urls unit test to work with cryptography
+      >= 41.0.0.
+    - When generating man pages, use func to find the command
+      function instead of looking it up by the command name.
+    - ansible-galaxy now considers all collection paths when
+      identifying which collection requirements are already
+      installed. Use the COLLECTIONS_PATHS and
+      COLLECTIONS_SCAN_SYS_PATHS config options to modify these.
+      Previously only the install path was considered when
+      resolving the candidates. The install path will remain the
+      only one potentially modified. (#79767, #81163)
+    - ansible-test - Fix several possible tracebacks when using the
+      -e option with sanity tests.
+    - ansible-test - Pre-build a PyYAML wheel before installing
+      requirements to avoid a potential Cython build failure.
+    - ansible-test - Remove redundant warning about missing
+      programs before attempting to execute them.
+    - core will now also look at the connection plugin to force
+      'local' interpreter for networking path compatibility as just
+      ansible_network_os could be misleading.
+    - man page build - Sub commands of ansible-galaxy role and
+      ansible-galaxy collection are now documented.
+    - password_hash - fix salt format for crypt (only used if
+      passlib is not installed) for the bcrypt algorithm.
+    - urls.py - fixed cert_file and key_file parameters when
+      running on Python 3.12 - #80490
+
+-------------------------------------------------------------------
+Tue Jul 18 05:02:29 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.15.2:
+  * Minor Changes
+    - Utilize gpg check provided internally by the transaction.run
+      method as oppose to calling it manually.
+    - ansible-test - Add Fedora 38 remote.
+    - ansible-test - Use a context manager to perform cleanup at
+      exit instead of using the built-in atexit module.
+    - dnf5 - enable environment groups installation testing in CI
+      as its support was added.
+    - dnf5 - enable now implemented cacheonly functionality
+  * Bugfixes
+    - From issue #80880, when notifying a handler from another
+      handler, handler notifications must be registered immediately
+      as the flush_handler call is not recursive.
+    - ansible-galaxy - Fix issue installing collections containing
+      directories with more than 100 characters on python versions
+      before 3.10.6
+    - paramiko_ssh, psrp, and ssh connection plugins - ensure that
+      all values for options that should be strings are actually
+      converted to strings (#81029).
+    - templating - In the template action and lookup, use local
+      jinja2 environment overlay overrides instead of mutating the
+      templars environment
+  * Known Issues
+    - ansible-test - The Fedora 37 remote is known to occasionally
+      hang during boot. It is no longer routinely tested as a
+      result. If possible, use the Fedora 38 remote instead.
+
+-------------------------------------------------------------------
+Wed Jun 21 04:46:09 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.15.1:
+  * Minor Changes
+    - ansible-test - Allow float values for the --timeout option to
+      the env command. This simplifies testing.
+    - ansible-test - Refactored env command logic and timeout
+      handling.
+    - ansible-test - Use datetime.datetime.now with tz specified
+      instead of datetime.datetime.utcnow.
+  * Bugfixes
+    - Properly disable jinja2_native in the template module when
+      jinja2 override is used in the template (#80605)
+    - ansible-galaxy - Fix variable type error when installing
+      subdir collections (#80943)
+    - ansible-test - Fix a traceback that occurs when attempting to
+      test Ansible source using a different ansible-test. A clear
+      error message is now given when this scenario occurs.
+    - ansible-test - Fix handling of timeouts exceeding one day.
+    - ansible-test - Fix various cases where the test timeout could
+      expire without terminating the tests.
+    - ansible-test local change detection - use git merge-base
+      <branch> HEAD instead of git merge-base --fork-point <branch>
+      (#79734).
+    - deb822_repository - use http-agent for receiving content
+      (#80809).
+    - dnf5 - Update dnf5 module to handle API change for setting
+      the download directory (#80887)
+    - man page build - Remove the dependency on the docs directory
+      for building man pages.
+    - pep517 build backend - Copy symlinks when copying the source
+      tree. This avoids tracebacks in various scenarios, such as
+      when a venv is present in the source tree.
+    - uri - fix search for JSON type to include complex strings
+      containing '+'
+
+-------------------------------------------------------------------
+Mon May 15 19:29:21 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- major update to 2.15.0:
+  https://github.com/ansible/ansible/blob/v2.15.0/changelogs/
+  CHANGELOG-v2.15.rst
+
+-------------------------------------------------------------------
+Sun May 14 19:08:37 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- modify %if-condition to allow building for python3.10 or
+  python3.11 on SLES15
+
+-------------------------------------------------------------------
+Fri May  5 07:11:16 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- change python version on Leap15/SLES15 to python3.11 to use the
+  new stack supported by SUSE
+
+-------------------------------------------------------------------
+Mon May  1 08:49:07 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- BuildRequire python3.9 to follow upstream (does not matter on
+  Tumbleweed which is using 3.10 already...)
+
+-------------------------------------------------------------------
+Mon Apr 24 16:40:52 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.14.5:
+  https://github.com/ansible/ansible/blob/v2.14.5/changelogs/
+  CHANGELOG-v2.14.rst
+  * Bugfixes
+    - ansible-doc - stop generating wrong module URLs for module
+      see-alsos. The URLs for modules in ansible.builtin do now
+      work, and URLs for modules outside ansible.builtin are no
+      longer added (#80280).
+    - ansible-galaxy - Improve retries for collection installs, to
+      properly retry, and extend retry logic to common URL related
+      connection errors (#80170 #80174)
+    - ansible-galaxy - reduce API calls to servers by fetching
+      signatures only for final candidates.
+    - ansible-test - Add support for argcomplete version 3.
+    - jinja2_native - fix intermittent 'could not find job'
+      failures when a value of ansible_job_id from a result of an
+      async task was inadvertently changed during execution; to
+      prevent this a format of ansible_job_id was changed.
+    - password lookup now correctly reads stored ident fields.
+    - pep517 build backend - Use the documented import_module
+      import from importlib.
+    - roles - Fix templating public, allow_duplicates and
+      rolespec_validate (#80304).
+    - syntax check - Limit --syntax-check to ansible-playbook only,
+      as that is the only CLI affected by this argument (#80506)
+
+-------------------------------------------------------------------
+Tue Mar 28 06:24:00 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- use `with` in dependencies instead of `and`
+- update to 2.14.4:
+  https://github.com/ansible/ansible/blob/v2.14.4/changelogs/
+  CHANGELOG-v2.14.rst
+  * Minor Changes
+    - ansible-test - Moved git handling out of the validate-modules
+      sanity test and into ansible-test.
+    - ansible-test - Removed the --keep-git sanity test option,
+      which was limited to testing ansible-core itself.
+    - ansible-test - Updated the Azure Pipelines CI plugin to work
+      with newer versions of git.
+  * Breaking Changes / Porting Guide
+    - ansible-test - Integration tests which depend on specific
+      file permissions when running in an ansible-test managed
+      host environment may require changes. Tests that require
+      permissions other than 755 or 644 may need to be updated to
+      set the necessary permissions as part of the test run.
+  * Bugfixes
+    - Fix MANIFEST.in to exclude unwanted files in the packaging/
+      directory.
+    - Fix MANIFEST.in to include `*.md` files in the test/support/
+      directory.
+    - Fix an issue where the value of become was ignored when used
+      on a role used as a dependency in main/meta.yml (#79777)
+    - ansible_eval_concat - avoid redundant unsafe wrapping of
+      templated strings converted to Python types
+    - ansible-galaxy role info - fix unhandled AttributeError by
+      catching the correct exception.
+    - ansible-test - Always indicate the Python version being used
+      before installing requirements. Resolves issue #72855
+    - ansible-test - Exclude ansible-core vendored Python packages
+      from ansible-test payloads.
+    - ansible-test - Integration test target prefixes defined in a
+      tests/integration/target-prefixes.{group} file can now
+      contain an underscore (`_`) character. Resolves issue #79225
+    - ansible-test - Removed pointless comparison in diff
+      evaluation logic.
+    - ansible-test - Set PYLINTHOME for the pylint sanity test to
+      prevent failures due to pylint checking for the existence of
+      an obsolete home directory.
+    - ansible-test - Support loading of vendored Python packages
+      from ansible-core.
+    - ansible-test - Use consistent file permissions when
+      delegating tests to a container or remote host. Files with
+      any execute bit set will use permissions 755. All other
+      files will use permissions 644. (Resolves issue #75079)
+    - copy - fix creating the dest directory in check mode with
+      remote_src=True (#78611).
+    - copy - fix reporting changes to file attributes in check mode
+      with remote_src=True (#77957).
+
+-------------------------------------------------------------------
+Mon Mar 20 06:10:47 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- adjust Requires and BuildRequires for python-resolvelib to
+  allow versions below 0.10.0
+  https://github.com/ansible/ansible/blob/devel/requirements.txt
+
+-------------------------------------------------------------------
+Tue Feb 28 14:38:13 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.14.3:
+  Full changelog
+	https://github.com/ansible/ansible/blob/v2.14.3/changelogs/
+	CHANGELOG-v2.14.rst
+  * Minor Changes
+    - Make using blocks as handlers a parser error (#79968)
+    - ansible-test - Specify the configuration file location
+			required by test plugins when the config file is not found.
+			This resolves issue: #79411
+    - ansible-test - Update error handling code to use Python 3.x
+			constructs, avoiding direct use of errno.
+    - ansible-test acme test container - update version to update
+			used Pebble version, underlying Python and Go base
+			containers, and Python requirements (#79783).
+  * Bugfixes
+    - Ansible.Basic.cs - Ignore compiler warning (reported as an
+			error) when running under PowerShell 7.3.x.
+    - Fix conditionally notifying include_tasks` handlers when
+			``force_handlers is used (#79776)
+    - TaskExecutor - don't ignore templated _raw_params that k=v
+			parser failed to parse (#79862)
+    - ansible-galaxy - fix installing collections in git
+			repositories/directories which contain a MANIFEST.json file
+			(#79796).
+    - ansible-test - Support Podman 4.4.0+ by adding the SYS_CHROOT
+			capability when running containers.
+    - ansible-test - fix warning message about failing to run an
+			image to include the image name
+    - strategy plugins now correctly identify bad registered
+			variables, even on skip.
+
+-------------------------------------------------------------------
+Tue Jan 31 15:08:40 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.14.2:
+  Full changelog https://github.com/ansible/ansible/blob/v2.14.2/changelogs/CHANGELOG-v2.14.rst
+  * Major Changes
+    - ansible-test - Docker Desktop on WSL2 is now supported (additional configuration required).
+    - ansible-test - Docker and Podman are now supported on hosts with cgroup v2 unified. Previously only cgroup v1 and cgroup v2 hybrid were supported.
+    - ansible-test - Podman now works on container hosts without systemd. Previously only some containers worked, while others required rootfull or rootless Podman, but would not work with both. Some containers did not work at all.
+    - ansible-test - Podman on WSL2 is now supported.
+    - ansible-test - When additional cgroup setup is required on the container host, this will be automatically detected. Instructions on how to configure the host will be provided in the error message shown.
+  * Minor Changes
+    - ansible-test - A new audit option is available when running custom containers. This option can be used to indicate whether a container requires the AUDIT_WRITE capability. The default is required, which most containers will need when using Podman. If necessary, the none option can be used to opt-out of the capability. This has no effect on Docker, which always provides the capability.
+    - ansible-test - A new cgroup option is available when running custom containers. This option can be used to indicate a container requires cgroup v1 or that it does not use cgroup. The default behavior assumes the container works with cgroup v2 (as well as v1).
+    - ansible-test - Additional log details are shown when containers fail to start or SSH connections to containers fail.
+    - ansible-test - Connection failures to remote provisioned hosts now show failure details as a warning.
+    - ansible-test - Containers included with ansible-test no longer disable seccomp by default.
+    - ansible-test - Failure to connect to a container over SSH now results in a clear error. Previously tests would be attempted even after initial connection attempts failed.
+    - ansible-test - Integration tests can be excluded from retries triggered by the --retry-on-error option by adding the retry/never alias. This is useful for tests that cannot pass on a retry or are too slow to make retries useful.
+    - ansible-test - More details are provided about an instance when provisioning fails.
+    - ansible-test - Reduce the polling limit for SSHD startup in containers from 60 retries to 10. The one second delay between retries remains in place.
+    - ansible-test - SSH connections from OpenSSH 8.8+ to CentOS 6 containers now work without additional configuration. However, clients older than OpenSSH 7.0 can no longer connect to CentOS 6 containers as a result. The container must have centos6 in the image name for this work-around to be applied.
+    - ansible-test - SSH shell connections from OpenSSH 8.8+ to ansible-test provisioned network instances now work without additional configuration. However, clients older than OpenSSH 7.0 can no longer open shell sessions for ansible-test provisioned network instances as a result.
+    - ansible-test - The ansible-test env command now detects and reports the container ID if running in a container.
+    - ansible-test - Unit tests now support network disconnect by default when running under Podman. Previously this feature only worked by default under Docker.
+    - ansible-test - Use stop --time 0 followed by rm to remove ephemeral containers instead of rm -f. This speeds up teardown of ephemeral containers.
+    - ansible-test - Warnings are now shown when using containers that were built with VOLUME instructions.
+    - ansible-test - When setting the max open files for containers, the container host's limit will be checked. If the host limit is lower than the preferred value, it will be used and a warning will be shown.
+    - ansible-test - When using Podman, ansible-test will detect if the loginuid used in containers is incorrect. When this occurs a warning is displayed and the container is run with the AUDIT_CONTROL capability. Previously containers would fail under this situation, with no useful warnings or errors given.
+  * Bugfixes
+    - Correctly count rescued tasks in play recap (#79711)
+    - Fix traceback when using the template module and running with ANSIBLE_DEBUG=1 (#79763)
+    - Fix using GALAXY_IGNORE_CERTS in conjunction with collections in requirements files which specify a specific source that isn't in the configured servers.
+    - Fix using GALAXY_IGNORE_CERTS when downloading tarballs from Galaxy servers (#79557).
+    - Module and role argument validation - include the valid suboption choices in the error when an invalid suboption is provided.
+    - ansible-doc now will correctly display short descriptions on listing filters/tests no matter the directory sorting.
+    - ansible-inventory will not explicitly sort groups/hosts anymore, giving a chance (depending on output format) to match the order in the input sources.
+    - ansible-test - Added a work-around for a traceback under Python 3.11 when completing certain command line options.
+    - ansible-test - Avoid using exec after container startup when possible. This improves container startup performance and avoids intermittent startup issues with some old containers.
+    - ansible-test - Connection attempts to managed remote instances no longer abort on Permission denied errors.
+    - ansible-test - Detection for running in a Podman or Docker container has been fixed to detect more scenarios. The new detection relies on /proc/self/mountinfo instead of /proc/self/cpuset. Detection now works with custom cgroups and private cgroup namespaces.
+    - ansible-test - Fix validate-modules error when retrieving PowerShell argspec when retrieved inside a Cmdlet
+    - ansible-test - Handle server errors when executing the docker info command.
+    - ansible-test - Multiple containers now work under Podman without specifying the --docker-network option.
+    - ansible-test - Pass the XDG_RUNTIME_DIR environment variable through to container commands.
+    - ansible-test - Perform PyPI proxy configuration after instances are ready and bootstrapping has been completed. Only target instances are affected, as controller instances were already handled this way. This avoids proxy configuration errors when target instances are not yet ready for use.
+    - ansible-test - Prevent concurrent / repeat inspections of the same container image.
+    - ansible-test - Prevent concurrent / repeat pulls of the same container image.
+    - ansible-test - Prevent concurrent execution of cached methods.
+    - ansible-test - Show the exception type when reporting errors during instance provisioning.
+    - ansible-test sanity - correctly report invalid YAML in validate-modules (#75837).
+    - argument spec validation - again report deprecated parameters for Python-based modules. This was accidentally removed in ansible-core 2.11 when argument spec validation was refactored (#79680, #79681).
+    - argument spec validation - ensure that deprecated aliases in suboptions are also reported (#79740).
+    - argument spec validation - fix warning message when two aliases of the same option are used for suboptions to also mention the option's name they are in (#79740).
+    - connection local now avoids traceback on invalid user being used to execuet ansible (valid in host, but not in container).
+    - file - touch action in check mode was always returning ok. Fix now evaluates the different conditions and returns the appropriate changed status. (#79360)
+    - get_url - Ensure we are passing ciphers to all url_get calls (#79717)
+    - plugin filter now works with rejectlist as documented (still falls back to blacklist if used).
+    - uri - improve JSON content type detection
+  * Known Issues
+    - ansible-test - Additional configuration may be required for certain container host and container combinations. Further details are available in the testing documentation.
+    - ansible-test - Custom containers with VOLUME instructions may be unable to start, when previously the containers started correctly. Remove the VOLUME instructions to resolve the issue. Containers with this condition will cause ansible-test to emit a warning.
+    - ansible-test - Systems with Podman networking issues may be unable to run containers, when previously the issue went unreported. Correct the networking issues to continue using ansible-test with Podman.
+    - ansible-test - Using Docker on systems with SELinux may require setting SELinux to permissive mode. Podman should work with SELinux in enforcing mode.
+
+-------------------------------------------------------------------
+Wed Dec  7 06:27:06 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.14.1:
+  Full changelog https://github.com/ansible/ansible/blob/v2.14.1/changelogs/CHANGELOG-v2.14.rst
+  * Minor Changes
+    - ansible-test - Improve consistency of executed pylint commands by making the plugins ordered.
+  * Bugfixes
+    - Fixes leftover _valid_attrs usage.
+    - ansible-galaxy - make initial call to Galaxy server on-demand only when installing, getting info about, and listing roles.
+    - copy module will no longer move 'non files' set as src when remote_src=true.
+    - display - reduce risk of post-fork output deadlocks (#79522)
+    - jinja2_native: preserve quotes in strings (#79083)
+    - updated error messages to include 'acl' and not just mode changes when failing to set required permissions on remote.
+
+-------------------------------------------------------------------
+Sat Nov 26 20:48:55 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- fix boo#1204320
+  - do no longer exclude %{ansible_python_sitelib}/ansible_test
+  - create subpackage for ansible-test
+  - remove Conflicts for ansible-test
+
+-------------------------------------------------------------------
+Fri Nov 25 07:03:33 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- rework spec file to define %ansible_python version, which is the
+  python version, that ansible is built against, as well as
+  %ansible_python_sitelib
+- remove duplicate entries for changelog and license
+- fix wrong %fdupes
+
+-------------------------------------------------------------------
+Wed Nov 23 10:13:04 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- add version contraints for both Requires and BuildRequires,
+  that upstream defines:
+  https://github.com/ansible/ansible/blob/devel/requirements.txt
+
+-------------------------------------------------------------------
+Thu Nov 17 13:48:58 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.14.0:
+  Full changelog https://github.com/ansible/ansible/blob/v2.14.0/changelogs/CHANGELOG-v2.14.rst
+
+-------------------------------------------------------------------
+Tue Nov 15 10:31:44 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.13.6:
+  Changelog https://github.com/ansible/ansible/blob/v2.13.6/changelogs/CHANGELOG-v2.13.rst
+  * Minor Changes
+    - ansible-test - Improve consistency of version specific documentation links.
+  * Bugfixes
+    - BSD network facts - Do not assume column indexes, look for netmask and broadcast for determining the correct columns when parsing inet line (#79117)
+    - ansible-galaxy - make initial call to Galaxy server on-demand only when installing, getting info about, and listing roles.
+    - ansible-test - Add wheel < 0.38.0 constraint for Python 3.6 and earlier.
+    - ansible-test - Fix broken documentation link for aws test plugin error messages.
+    - copy module will no longer move 'non files' set as src when remote_src=true.
+    - file lookup now handles missing files more gracefully.
+    - service_facts - Use python re to parse service output instead of grep (#78541)
+    - updated error messages to include 'acl' and not just mode changes when failing to set required permissions on remote.
+
+-------------------------------------------------------------------
+Wed Oct 12 04:50:21 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.13.5:
+  Changelog https://github.com/ansible/ansible/blob/v2.13.5/changelogs/CHANGELOG-v2.13.rst
+  * Bugfixes
+    - ansible-galaxy - remove extra server api call during dependency resolution for requirements and dependencies that are already satisfied (#77443).
+    - ansible-test - Allow disabled, unsupported, unstable and destructive integration test targets to be selected using their respective prefixes.
+    - ansible-test - Allow unstable tests to run when targeted changes are made and the --allow-unstable-changed option is specified (resolves #74213).
+    - apt - Fix module failure when a package is not installed and only_upgrade=True. Skip that package and check the remaining requested packages for upgrades. (#78762)
+    - apt module should not traceback on invalid type given as package. issue 78663.
+    - known_hosts - do not return changed status when a non-existing key is removed (#78598)
+    - paramiko - Add back support for ssh_args, ssh_common_args, and ssh_extra_args for parsing the ProxyCommand (#78750)
+    - plugin loader, fix detection for existing configuration before initializing for a plugin
+
+-------------------------------------------------------------------
+Wed Oct 12 00:27:53 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded BuildRequires on python3-mock
+
+-------------------------------------------------------------------
+Thu Oct  6 08:53:15 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- add Conflict with ansible-test
+
+-------------------------------------------------------------------
+Wed Sep 14 05:42:48 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.13.4:
+  Changelog https://github.com/ansible/ansible/blob/v2.13.4/changelogs/CHANGELOG-v2.13.rst
+  * Bugfixes
+    - Fix for network_cli not getting all relevant connection options
+    - ansible-galaxy - Fix detection of --role-file in arguments for implicit role invocation (#78204)
+    - ansible-galaxy - Fix exit codes for role search and delete (#78516)
+    - ansible-test - Fix change detection for ansible-test's own integration tests.
+    - ansible-test - ansible-doc sanity test - Correctly determine the fully-qualified collection name for plugins in subdirectories, resolving #78490.
+    - apt - don't actually update the cache in check mode with update_cache=true.
+    - apt - don't mark existing packages as manually installed in check mode (#66413).
+    - apt - fix package selection to include /etc/apt/preferences(.d) (#77969)
+    - urls - Guard imports of urllib3 by catching Exception instead of ImportError to prevent exceptions in the import process of optional dependencies from preventing use of urls.py (#78648)
+    - wait_for - Read file and perform comparisons using bytes to avoid decode errors (#78214)
+
+-------------------------------------------------------------------
+Wed Sep  7 13:09:23 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.13.3:
+  Changelog https://github.com/ansible/ansible/blob/v2.13.3/changelogs/CHANGELOG-v2.13.rst
+  * Bugfixes
+    - Avoid 'unreachable' error when chmod on AIX has 255 as return code.
+    - Fix PluginLoader to mimic Python import machinery by adding module to sys.modules before exec
+    - Fix dnf module documentation to indicate that comparison operators for package version require spaces around them (#78295)
+    - ansible-connection - decrypt vaulted parameters before sending over the socket, as vault secrets are not available on the other side.
+    - ansible-galaxy - Fix reinitializing the whole collection directory with ansible-galaxy collection init ns.coll --force. Now directories and files that are not included in the collection skeleton will be removed.
+    - ansible-galaxy - do not require mandatory keys in the galaxy.yml of source collections when listing them (#70180).
+    - ansible-galaxy - fix listing collections that contains metadata but the namespace or name are not strings.
+    - ansible-galaxy - fix setting the cache for paginated responses from Galaxy NG/AH (#77911).
+    - ansible-test - Delegation for commands which generate output for programmatic consumption no longer redirect all output to stdout. The affected commands and options are shell, sanity --lint, sanity --list-tests, integration --list-targets, coverage analyze
+    - ansible-test - Delegation now properly handles arguments given after -- on the command line.
+    - ansible-test - Test configuration for collections is now parsed only once, prior to delegation. Fixes issue: #78334
+    - ansible-test - The shell command no longer redirects all output to stdout when running a provided command. Any command output written to stderr will be mixed with the stderr output from ansible-test.
+    - ansible-test - The shell command no longer requests a TTY when using delegation unless an interactive shell is being used. An interactive shell is the default behavior when no command is given to pass to the shell.
+    - dnf - fix output parsing on systems with LANGUAGE set to a language other than English (#78193)
+    - if a config setting prevents running ansible it should at least show it's "origin".
+    - prevent type annotation shim failures from causing runtime failures (#77860)
+    - template module/lookup - fix convert_data option that was effectively always set to True for Jinja macros (#78141)
+    - uri - properly use uri parameter use_proxy (#58632)
+    - yum - fix traceback when releasever is specified with latest (#78058)
+
+-------------------------------------------------------------------
+Wed Jul 20 08:01:46 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- package conflicts with ansible < 3, i.e. the old packaging scheme
+
+-------------------------------------------------------------------
+Wed Jul 20 06:46:22 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.13.2:
+  * Minor Changes
+    - ansible-test - An improved error message is shown when the download of a pip bootstrap script fails. The download now uses urllib2 instead of urllib on Python 2.
+  * Bugfixes
+    - Move undefined check from concat to finalize (#78156)
+    - ansible-doc - no longer list module and plugin aliases that are created with symlinks (#78137).
+    - ansible-doc - when listing modules in collections, proceed recursively. This fixes module listing for community.general 5.x.y and community.network 4.x.y (#78137).
+    - ansible-doc will not add 'website for' in ":ref:" substitutions as it made them confusing.
+    - file backed cache plugins now handle concurrent access by making atomic updates to the files.
+    - password lookup does not ignore k=v arguments anymore.
+    - user - Fix error "Permission denied" in user module while generating SSH keys (#78017).
+
+- update to 2.13.1:
+  * Minor Changes
+    - Add an 'action_plugin' field for modules in runtime.yml plugin_routing.
+      This fixes module_defaults by supporting modules-as-redirected-actions without redirecting module_defaults entries to the common action.
+      With the runtime.yml above for ns.coll, a task such as
+      will end up with defaults for eos_facts and eos_command since both modules redirect to the same action.
+      To select an action plugin for a module without merging module_defaults, define an action_plugin field for the resolved module in the runtime.yml.
+      The action_plugin field can be a redirected action plugin, as it is resolved normally.
+      Using the modified runtime.yml, the example task will only use the ns.coll.eos_facts defaults.
+    - ansible-galaxy - Support resolvelib versions 0.6.x, 0.7.x, and 0.8.x. The full range of supported versions is now >= 0.5.3, < 0.9.0.
+    - ansible-test - Add RHEL 9.0 remote support.
+    - ansible-test - Add support for Ubuntu VMs using the --remote option.
+    - ansible-test - Add support for exporting inventory with ansible-test shell --export {path}.
+    - ansible-test - Add support for multi-arch remotes.
+    - ansible-test - Add support for running non-interactive commands with ansible-test shell.
+    - ansible-test - Avoid using the mock_use_standalone_module setting for unit tests running on Python 3.8 or later.
+    - ansible-test - Blocking mode is now enforced for stdin, stdout and stderr. If any of these are non-blocking then ansible-test will exit during startup with an error.
+    - ansible-test - Improve consistency of output messages by using stdout or stderr for most output, but not both.
+    - ansible-test - The shell command can be used outside a collection if no controller delegation is required.
+  * Bugfixes
+    - Add PyYAML >= 5.1 as a dependency of ansible-core to be compatible with Python 3.8+.
+    - ansible-config dump - Only display plugin type headers when plugin options are changed if --only-changed is specified.
+    - ansible-galaxy - handle unsupported versions of resolvelib gracefully.
+    - ansible-test - Fix internal validation of remote completion configuration.
+    - ansible-test - Prevent --target- prefixed options for the shell command from being combined with legacy environment options.
+    - ansible-test - Sanity test output with the --lint option is no longer mixed in with bootstrapping output.
+    - ansible-test - Subprocesses are now isolated from the stdin, stdout and stderr of ansible-test. This avoids issues with subprocesses tampering with the file descriptors, such as SSH making them non-blocking. As a result of this change, subprocess output from unit and integration tests on stderr now go to stdout.
+    - ansible-test - Subprocesses no longer have access to the TTY ansible-test is connected to, if any. This maintains consistent behavior between local testing and CI systems, which typically do not provide a TTY. Tests which require a TTY should use pexpect or another mechanism to create a PTY.
+    - apt module now correctly handles virtual packages.
+    - lookup plugin - catch KeyError when lookup returns dictionary (#77789).
+    - pip - fix cases where resolution of pip Python module fails when importlib.util has not already been imported
+    - plugin loader - Sort results when fuzzy matching plugin names (#77966).
+    - plugin loader will now load config data for plugin by name instead of by file to avoid issues with the same file being loaded under different names (fqcn + short name).
+    - psrp connection now handles default to inventory_hostname correctly.
+    - winrm connection now handles default to inventory_hostname correctly.
+
+- update to 2.13.0:
+  Full changelog see
+  https://github.com/ansible/ansible/blob/stable-2.13/changelogs/CHANGELOG-v2.13.rst#v2130
+
+- update to 2.12.7:
+  * Minor Changes
+    - Add an 'action_plugin' field for modules in runtime.yml plugin_routing.
+      This fixes module_defaults by supporting modules-as-redirected-actions without redirecting module_defaults entries to the common action.
+      With the runtime.yml above for ns.coll, a task such as
+      will end up with defaults for eos_facts and eos_command since both modules redirect to the same action.
+      To select an action plugin for a module without merging module_defaults, define an action_plugin field for the resolved module in the runtime.yml.
+      The action_plugin field can be a redirected action plugin, as it is resolved normally.
+      Using the modified runtime.yml, the example task will only use the ns.coll.eos_facts defaults.
+    - ansible-test - Avoid using the mock_use_standalone_module setting for unit tests running on Python 3.8 or later.
+  * Bugfixes
+    - pip - fix cases where resolution of pip Python module fails when importlib.util has not already been imported
+    - plugin loader - Sort results when fuzzy matching plugin names (#77966).
+
+- update to 2.12.6:
+  * Bugfixes
+    - Prevent losing unsafe on results returned from lookups (#77535)
+    - arg_spec - Fix incorrect no_log warning when a parameter alias is used (#77576)
+    - plugin loader will now load config data for plugin by name instead of by file to avoid issues with the same file being loaded under different names (fqcn + short name).
+    - variablemanager, more efficient read of vars files
+
+- update to 2.12.5:
+  * Bugfixes
+    - Ansible.ModuleUtils.SID - Use user principal name as is for lookup in the Convert-ToSID function - #77316
+    - Fix traceback when installing a collection from a git repository and git is not installed (#77479).
+    - ansible-test - Correctly detect when running as the root user (UID 0) on the origin host. The result of the detection was incorrectly being inverted.
+    - ansible-test - Fix skipping of tests marked needs/python on the origin host.
+    - ansible-test - Fix skipping of tests marked needs/root on the origin host.
+    - ansible-test compile sanity test - do not crash if a column could not be determined for an error (#77465).
+    - hostname - use file_get_content() to read the file containing the host name in the FileStrategy.get_permanent_hostname() method. This prevents a TypeError from being raised when the strategy is used (#77025).
+    - script - skip in check mode since the plugin cannot determine if a change will occur.
+    - shell/command - only skip in check mode if the options creates and removes are both None.
+    - winrm - Ensure kinit is run with the same PATH env var as the Ansible process
+
+-------------------------------------------------------------------
+Sat Apr 23 19:57:33 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- first version of package ansible-core at version 2.12.4

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Nov 28 20:01:06 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 8.15. Changes down below:
+  * Documentation search results are ordered, with visual cues
+    indicating what their source is (core, main-distribution, etc.).
+  * DrRacket offers to restore previously open files when starting,
+    which can be made the default.
+  * In DrRacket, Picts can be saved by right-clicking.
+    raco pkg introduces the uninstall command as the opposite of
+    install. The remove name for this functionality is retained for
+    compatibility.
+  * raco pkg improves the handling of --clone and --unclone.
+  * iOS is a compilation target, distinct from macOS.
+  * Racket supports falling back to IPv4 during hostname resolution when IPv6 fails.
+  * Memory allocated using the ffi/unsafe library can be initially zeroed,
+    using the 'zeroed-atomic and 'zeroed-atomic-interior flags.
+
+-------------------------------------------------------------------
 Mon Aug 26 18:25:45 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Update to 8.14. Changes down below:

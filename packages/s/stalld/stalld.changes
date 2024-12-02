@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 28 08:53:21 UTC 2024 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- add fixed-tmpfile-fix.patch: place the original scheduling values in a
+  root-owned directory in /run/stalld, not into the public /tmp directory
+  (bsc#1230327).
+
+-------------------------------------------------------------------
 Tue Aug 27 07:56:21 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - use source url, some spec cleanups

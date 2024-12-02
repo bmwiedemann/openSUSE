@@ -65,6 +65,8 @@ QtWidgets module, including multihandle (range) sliders, comboboxes, and more.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# skip flaky tests marked @skip_on_ci by upstream
+export CI=1
 for PYTEST_QT_API in pyqt5 pyqt6; do
   export PYTEST_QT_API
   %pytest

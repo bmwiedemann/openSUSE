@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Nov 30 13:45:24 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.3
+  * added three different window modes: 66%, 50% and 25% of screen
+    height to allow more choice with all the different resolutions
+    and monitor sizes.
+    The previous window mode was 66% and could be quite large on
+    bigger 4k monitors.
+
+-------------------------------------------------------------------
 Sat Oct 12 17:01:41 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.2

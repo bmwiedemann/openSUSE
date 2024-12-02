@@ -115,6 +115,8 @@ Patch34:        avahi-CVE-2023-38469.patch
 Patch35:        avahi-CVE-2023-38471.patch
 # PATCH-FIX-UPSTREAM avahi-filter-bogus-services.patch bsc#1226586 mgorse@suse.com -- no longer supply bogus services to callbacks.
 Patch36:        avahi-filter-bogus-services.patch
+# PATCH-FIX-UPSTREAM avahi-CVE-2024-52616.patch CVE-2024-52616 bsc#1233420 qzhao@suse.com -- Properly randomize query id of DNS packets.
+Patch37:        avahi-CVE-2024-52616.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gdbm-devel

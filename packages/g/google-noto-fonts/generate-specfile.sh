@@ -17,7 +17,7 @@
 set -euo pipefail
 
 pkg_name="google-noto-fonts"
-font_dir="notofonts.github.io-noto-monthly-release-24.9.1"
+font_dir="notofonts.github.io-noto-monthly-release-2024.12.01"
 
 # Used to extract the tarball to generate the specfile.
 # You can comment this out while testing out changes to the script,

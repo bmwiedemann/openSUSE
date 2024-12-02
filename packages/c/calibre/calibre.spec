@@ -20,7 +20,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           calibre
-Version:        7.21.0
+Version:        7.22.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -113,7 +113,7 @@ BuildRequires:  pkgconfig(fontconfig) >= 2.14.2
 BuildRequires:  pkgconfig(glib-2.0) >= 2.70.1
 BuildRequires:  pkgconfig(gpg-error) >= 1.43
 BuildRequires:  pkgconfig(hunspell) >= 1.7.0
-BuildRequires:  pkgconfig(icu-i18n) < 76.0
+###BuildRequires:  pkgconfig(icu-i18n) < 76.0
 BuildRequires:  pkgconfig(icu-i18n) >= 73.2
 # Upstream use 6.1.2
 BuildRequires:  ffmpeg-7-libavutil-devel >= 6.1.2
@@ -168,6 +168,7 @@ BuildRequires:  python311-ply >= 3.11
 BuildRequires:  python311-psutil >= 5.8.0
 BuildRequires:  python311-pychm >= 0.8.6
 BuildRequires:  python311-pycryptodome >= 3.11.0
+##BuildRequires:  python311-pykakasi >= 2.3.0
 BuildRequires:  python311-pyparsing >= 3.0.6
 BuildRequires:  python311-pyppmd >= 1.1.0
 BuildRequires:  python311-pyqt-builder >= 1.14.0
@@ -240,6 +241,7 @@ Requires:       python311-ply >= 3.11
 Requires:       python311-psutil >= 5.8.0
 Requires:       python311-pychm >= 0.8.6
 Requires:       python311-pycryptodome >= 3.11.0
+##Requires:       python311-pykakasi >= 2.3.0
 Requires:       python311-pyparsing >= 3.0.6
 Requires:       python311-pyppmd >= 1.1.0
 Requires:       python311-pyzstd >= 0.15.6
@@ -410,6 +412,8 @@ TEST_EXCLUDE=(
     --exclude-test-name test_fts_basic              # rise up build error
     --exclude-test-name test_websocket_basic        # rise up build error
     --exclude-test-name test_piper                  # rise up build error
+    --exclude-test-name test_pykakasi               # is not in openSUSE oss
+    --exclude-test-name test_import_of_all_python_modules # rise up build error because of pykakasi
 %endif
 )
 

@@ -20,7 +20,7 @@
 
 %define rdnn    com.github.ztefn.%{name}
 Name:           haguichi
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        Hamachi Network Manager
 License:        GPL-3.0-or-later

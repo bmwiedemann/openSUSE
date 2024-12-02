@@ -24,6 +24,7 @@ License:        GPL-2.0-only AND GPL-2.0-or-later
 URL:            https://gitlab.com/rt-linux-tools/%{name}/%{name}.git
 Source0:        https://gitlab.com/rt-linux-tools/stalld/-/archive/v%{version}/stalld-v%{version}.tar.bz2
 Patch0:         pid-dir.patch
+Patch1:         fixed-tmpfile-fix.patch
 BuildRequires:  systemd-rpm-macros
 %{?systemd_requires}
 Requires(post): %fillup_prereq

@@ -1135,4 +1135,12 @@ https://build.opensuse.org/request/show/1178504 </comment>
 </comment>
     <requestid>1227114</requestid>
   </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>9d1fb1b1405a1665bfb2b61ca8d0cfbc</srcmd5>
+    <version>20241105</version>
+    <time>1733155110</time>
+    <user>anag+factory</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1234037</comment>
+    <requestid>1227757</requestid>
+  </revision>
 </revisionlist>

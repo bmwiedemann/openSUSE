@@ -255,4 +255,12 @@ See http://lists.opensuse.org/opensuse-factory/2012-05/msg00164.html for a littl
     <comment></comment>
     <requestid>1189686</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>7fa6a58ef5606660afad4e4cf88b156f</srcmd5>
+    <version>1.0.138</version>
+    <time>1733155148</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1227647</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           ltris2
-Version:        2.0.2
+Version:        2.0.3
 Release:        0
 Summary:        Tetris Clone with Multiplayer and CPU Opponents
 License:        GPL-3.0-or-later

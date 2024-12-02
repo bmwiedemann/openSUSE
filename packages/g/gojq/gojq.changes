@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Dec  1 17:17:33 UTC 2024 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v0.12.17
+  * Implement `add/1`, `skip/2` functions.
+  * Implement `--library-path` option as the alias of `-L` option.
+  * Fix `reduce` syntax to emit results for each initial value.
+  * Fix `last/1` to yield no values when the argument yields no values.
+  * Fix `limit/2` to emit an error on negative count.
+  * Fix `@uri` and `@urid` formats not to convert space between plus sign.
+  * Fix resolving search paths of import statements in the query.
+  * Improve time functions to accept fewer element arrays.
+
+
+-------------------------------------------------------------------
 Sat Jun  1 15:43:28 UTC 2024 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to v0.12.16

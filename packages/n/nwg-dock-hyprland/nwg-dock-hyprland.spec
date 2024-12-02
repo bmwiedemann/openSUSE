@@ -18,7 +18,7 @@
 
 
 Name:           nwg-dock-hyprland
-Version:        0.1.9
+Version:        0.3.3
 Release:        0
 Summary:        Hyprland application dock
 License:        MIT
@@ -40,19 +40,21 @@ client buttons and the launcher button.
 
 %build
 ## Note build takes around 10 minutes, so be patient as there is no output!
-go build \
+go build -v \
    -mod=vendor \
    -buildmode=pie
 
 %install
-install -d -m 0755 %{buildroot}%{_bindir} %{buildroot}%{_datadir}/%{name}
+install -d -m 0755 %{buildroot}%{_bindir} %{buildroot}%{_datadir}/%{name}/images
 install -m 0755 %{name} %{buildroot}%{_bindir}/%{name}
 install -m 0644 config/style.css %{buildroot}%{_datadir}/%{name}/style.css
+cp -ar images/* %{buildroot}%{_datadir}/%{name}/images/
 
 %files
 %license LICENSE
 %{_bindir}/%{name}
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/style.css
+%{_datadir}/%{name}/images
 
 %changelog

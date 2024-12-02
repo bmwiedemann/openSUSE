@@ -300,4 +300,12 @@
     <comment></comment>
     <requestid>1153939</requestid>
   </revision>
+  <revision rev="41" vrev="9">
+    <srcmd5>b17211544586d946259e6d5e4b79f390</srcmd5>
+    <version>1.4.18</version>
+    <time>1733155074</time>
+    <user>anag+factory</user>
+    <comment>- fix build for loongarch64 (forwarded request 1227514 from adrianSuSE)</comment>
+    <requestid>1227584</requestid>
+  </revision>
 </revisionlist>

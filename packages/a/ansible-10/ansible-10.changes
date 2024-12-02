@@ -1,0 +1,3278 @@
+-------------------------------------------------------------------
+Fri Nov 22 10:12:31 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package ansible-10, following the 10.x.y versions of ansible
+- introduce ansible_community_major_version and
+  required_ansible_core_version macros to make handling the spec
+  easier
+
+-------------------------------------------------------------------
+Thu Nov 14 16:26:04 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 10.6.0:
+  Ansible 10.6.0 includes ansible-core 2.17.6 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 10
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/ansible-build-data/blob/main/10/CHANGELOG-v10.rst
+
+-------------------------------------------------------------------
+Fri Oct 11 05:19:51 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 10.5.0:
+  Ansible 10.5.0 includes ansible-core 2.17.5 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 10
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/ansible-build-data/blob/main/10/CHANGELOG-v10.rst
+
+-------------------------------------------------------------------
+Wed Sep 11 05:23:25 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 10.4.0:
+  Ansible 10.4.0 includes ansible-core 2.17.4 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 10
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/ansible-build-data/blob/main/10/CHANGELOG-v10.rst
+
+-------------------------------------------------------------------
+Tue Aug 13 17:46:46 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 10.3.0:
+  Ansible 10.3.0 includes ansible-core 2.17.3 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 10
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/ansible-build-data/blob/main/10/CHANGELOG-v10.rst
+
+-------------------------------------------------------------------
+Wed Jul 17 05:42:54 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 10.2.0:
+  Ansible 10.2.0 includes ansible-core 2.17.2 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 10
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/ansible-build-data/blob/main/10/CHANGELOG-v10.rst
+
+-------------------------------------------------------------------
+Sun Jul 14 15:45:28 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 10.1.0:
+  Ansible 10.1.0 includes ansible-core 2.17.1 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 10
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/ansible-build-data/blob/main/10/CHANGELOG-v10.rst
+
+-------------------------------------------------------------------
+Sun Jul 14 15:44:02 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 10.0.1:
+  Ansible 10.0.1 includes ansible-core 2.17.0 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 10
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/ansible-build-data/blob/main/10/CHANGELOG-v10.rst
+
+-------------------------------------------------------------------
+Sun Jul 14 15:38:48 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 10.0.0:
+  Ansible 10.0.0 includes ansible-core 2.17.0 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 10
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/ansible-build-data/blob/main/10/CHANGELOG-v10.rst
+
+-------------------------------------------------------------------
+Wed Jun 19 05:09:38 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.7.0:
+  Ansible 9.7.0 includes ansible-core 2.16.8 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 9
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/ansible-build-data/blob/main/9/CHANGELOG-v9.rst
+
+-------------------------------------------------------------------
+Fri Jun  7 20:11:44 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.6.1:
+  Ansible 9.6.1 includes ansible-core 2.16.7 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 9
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/ansible-build-data/blob/main/9/CHANGELOG-v9.rst
+
+-------------------------------------------------------------------
+Thu May 23 11:03:27 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.6.0:
+  Ansible 9.6.0 includes ansible-core 2.16.7 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 9
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/ansible-build-data/blob/main/9/CHANGELOG-v9.rst
+
+-------------------------------------------------------------------
+Wed Apr 24 12:13:43 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.5.1 (9.5.0 does not exist):
+  Ansible 9.5.1 includes ansible-core 2.16.6 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 9
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/ansible-build-data/blob/main/9/CHANGELOG-v9.rst
+
+-------------------------------------------------------------------
+Wed Mar 27 19:56:06 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.4.0:
+  Ansible 9.4.0 includes ansible-core 2.16.5 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 9
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/ansible-build-data/blob/main/9/CHANGELOG-v9.rst
+
+-------------------------------------------------------------------
+Sat Mar 16 16:06:35 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.3.0:
+  Ansible 9.3.0 includes ansible-core 2.16.4 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 9
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/ansible-build-data/blob/main/9/CHANGELOG-v9.rst
+
+-------------------------------------------------------------------
+Sat Feb  3 08:33:52 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.2.0:
+  Ansible 9.2.0 includes ansible-core 2.16.3 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 9
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/ansible-build-data/blob/main/9/CHANGELOG-v9.rst
+
+-------------------------------------------------------------------
+Sun Jan 21 08:43:52 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.1.0:
+  Ansible 9.1.0 includes ansible-core 2.16.1 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 9
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/ansible-build-data/blob/main/9/CHANGELOG-v9.rst
+
+-------------------------------------------------------------------
+Sun Jan 21 08:41:57 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.0.1:
+  Ansible 9.0.1 includes ansible-core 2.16.0 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 9
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/ansible-build-data/blob/main/9/CHANGELOG-v9.rst
+
+-------------------------------------------------------------------
+Sun Jan 21 08:25:51 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.0.0:
+  Ansible 9.0.0 includes ansible-core 2.16.0 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 9
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/ansible-build-data/blob/main/9/CHANGELOG-v9.rst
+
+-------------------------------------------------------------------
+Thu Dec  7 09:22:58 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 8.7.0:
+  Ansible 8.7.0 includes ansible-core 2.15.7 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 8
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/ansible-build-data/blob/main/8/CHANGELOG-v8.rst
+
+-------------------------------------------------------------------
+Mon Nov 13 06:57:27 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 8.6.1:
+  Bugfix release, change collections:
+  * netapp.ontap
+    - na_ontap_dns - fix keyerror for uuid when DNS is set to
+      vserver in REST.
+    - na_ontap_volume - fix invalid field error with
+      'space.snapshot.autodelete' in REST.
+
+-------------------------------------------------------------------
+Tue Nov  7 20:45:32 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 8.6.0:
+  Ansible 8.6.0 includes ansible-core 2.15.6 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 8
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/ansible-build-data/blob/main/8/CHANGELOG-v8.rst
+
+-------------------------------------------------------------------
+Thu Oct 19 06:31:54 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 8.5.0:
+  Ansible 8.5.0 includes ansible-core 2.15.5 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 8
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/ansible-build-data/blob/main/8/CHANGELOG-v8.rst
+
+-------------------------------------------------------------------
+Wed Sep 13 04:56:38 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 8.4.0:
+  Ansible 8.4.0 includes ansible-core 2.15.4 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 8
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/
+    ansible-build-data/blob/main/8/CHANGELOG-v8.rst
+
+-------------------------------------------------------------------
+Tue Sep 12 08:11:14 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 8.3.0:
+  Ansible 8.3.0 includes ansible-core 2.15.3 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 8
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/
+    ansible-build-data/blob/main/8/CHANGELOG-v8.rst
+
+-------------------------------------------------------------------
+Wed Jul 19 04:27:01 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 8.2.0:
+  Ansible 8.2.0 includes ansible-core 2.15.2 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 8
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/
+    ansible-build-data/blob/main/8/CHANGELOG-v8.rst
+
+-------------------------------------------------------------------
+Fri Jun 23 07:14:17 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 8.1.0:
+  Ansible 8.1.0 includes ansible-core 2.15.1 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 8
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/
+    ansible-build-data/blob/main/8/CHANGELOG-v8.rst
+
+-------------------------------------------------------------------
+Wed May 31 05:24:49 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 8.0.0
+  Ansible 8.0.0 includes ansible-core 2.15.0 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 8
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/
+    ansible-build-data/blob/main/8/CHANGELOG-v8.rst
+
+-------------------------------------------------------------------
+Tue May 23 12:20:17 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 7.6.0
+  Ansible 7.6.0 includes ansible-core 2.14.6 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 7
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/
+    ansible-build-data/blob/main/7/CHANGELOG-v7.rst
+
+-------------------------------------------------------------------
+Sun May 14 19:10:10 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- modify %if-condition to allow building for python3.10 or
+  python3.11 on SLES15
+
+-------------------------------------------------------------------
+Fri May  5 07:12:35 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- change python version on Leap15/SLES15 to python3.11 to use the
+  new stack supported by SUSE
+
+-------------------------------------------------------------------
+Wed Apr 26 12:00:09 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 7.5.0:
+  Ansible 7.5.0 includes ansible-core 2.14.5 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 7
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/
+    ansible-build-data/blob/main/7/CHANGELOG-v7.rst
+
+-------------------------------------------------------------------
+Wed Mar 29 16:02:06 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 7.4.0:
+  Ansible 7.4.0 will include ansible-core 2.14.4 as well as a
+  curated set of Ansible collections to provide a vast number of
+  modules and plugins.
+  Collections which have opted-in to being a part of the Ansible 7
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/
+    ansible-build-data/blob/main/7/CHANGELOG-v7.rst
+
+-------------------------------------------------------------------
+Tue Feb 28 16:03:45 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 7.3.0:
+  Ansible 7.3.0 will include ansible-core 2.14.3 as well as a
+  curated set of Ansible collections to provide a vast number of
+  modules and plugins.
+
+-------------------------------------------------------------------
+Thu Feb  2 07:09:32 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 7.2.0:
+  Ansible 7.2.0 will include ansible-core 2.14.2 as well as a
+  curated set of Ansible collections to provide a vast number of
+  modules and plugins.
+
+-------------------------------------------------------------------
+Thu Jan 12 12:17:31 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- do no longer remove ./ansible_collections/lowlydba/sqlserver/
+  as the powershell shebang is ignored and no longer causing issues
+
+-------------------------------------------------------------------
+Sun Dec 18 20:23:17 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- disable automatic generation of RPM dependencies from files in collections
+  The files are not meant to be executed on the Ansible controller
+  (i.e. the machine where this package is being installed), but rather
+  on the targets that get modified. So e.g. python2 is not needed as
+  a dependency on the ansible controller
+- do no longer change shebangs in files from collections
+
+-------------------------------------------------------------------
+Thu Dec  8 14:32:29 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 7.1.0:
+  Ansible 7.1.0 will include ansible-core 2.14.1 as well as a curated set of
+  Ansible collections to provide a vast number of modules and plugins.
+
+-------------------------------------------------------------------
+Fri Nov 25 07:03:33 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- rework spec file to define %ansible_python version, which is the
+  python version, that ansible is built against, as well as
+  %ansible_python_sitelib and %ansible_python_executable
+
+-------------------------------------------------------------------
+Wed Nov 23 07:27:47 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 7.0.0:
+  Ansible 7.0.0 will include ansible-core 2.14.0 as well as a curated set of
+  Ansible collections to provide a vast number of modules and plugins.
+  This is a major version update from Ansible 6.x which included
+  ansible-core 2.13 and there may be backwards incompatibilities in the
+  core playbook language.
+
+  * What's new in Ansible 7
+    - Ansible 7 requires Python 3.9 on the controller, same as ansible-core 2.14.
+    - Variables are now evaluated lazily; only when they are actually used. For
+      example, in ansible-core 2.14 an expression ``{{ defined_variable or
+      undefined_variable }}`` does not fail on ``undefined_variable`` if the
+      first part of ``or`` is evaluated to ``True`` as it is not needed to
+      evaluate the second part.
+
+  * Collections added to Ansible 7:
+    - ibm.spectrum_virtualize (version 1.9.0)
+    - inspur.ispim (version 1.0.1)
+    - purestorage.fusion (version 1.1.1)
+    - vultr.cloud (version 1.1.0)
+
+  * The previously deprecated servicenow.servicenow collection has been removed.
+
+  * NOTE: Read the full Ansible 7 porting guide at
+    https://github.com/ansible/ansible/blob/devel/docs/docsite/rst/porting_guides/porting_guide_7.rst
+    for complete details.
+    - The changelog for ansible-core 2.14 installed by this release of
+      ansible is available here:
+      https://github.com/ansible/ansible/blob/stable-2.14/changelogs/CHANGELOG-v2.14.rst
+    - Collections which have opted into being a part of the Ansible-7
+      unified changelog will have an entry on this page:
+      https://github.com/ansible-community/ansible-build-data/blob/main/7/CHANGELOG-v7.rst
+
+-------------------------------------------------------------------
+Wed Nov 16 08:27:00 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- remove lowlydba.sqlserver collection as rpmlint throws errors due to powershell:
+  "E: wrong-script-interpreter (Badness: 490) [...]/ansible_collections/lowlydba/sqlserver/plugins/modules/restore.ps1 powershell"
+
+-------------------------------------------------------------------
+Tue Nov 15 10:34:05 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.6.0:
+  Ansible 6.6.0 will include ansible-core 2.13.6 as well as a curated set of
+  Ansible collections to provide a vast number of modules and plugins.
+  * The changelog for ansible-core 2.13 installed by this release of
+    ansible is available here:
+    https://github.com/ansible/ansible/blob/stable-2.13/changelogs/CHANGELOG-v2.13.rst
+  * Collections which have opted into being a part of the Ansible-6
+    unified changelog will have an entry on this page:
+    https://github.com/ansible-community/ansible-build-data/blob/main/6/CHANGELOG-v6.rst
+
+-------------------------------------------------------------------
+Thu Oct 13 04:45:46 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.5.0:
+  Ansible 6.5.0 will include ansible-core 2.13.5 as well as a curated set of
+  Ansible collections to provide a vast number of modules and plugins.
+  * The changelog for ansible-core 2.13 installed by this release of
+    ansible is available here:
+    https://github.com/ansible/ansible/blob/stable-2.13/changelogs/CHANGELOG-v2.13.rst
+  * Collections which have opted into being a part of the Ansible-6
+    unified changelog will have an entry on this page:
+    https://github.com/ansible-community/ansible-build-data/blob/main/6/CHANGELOG-v6.rst
+
+-------------------------------------------------------------------
+Sun Sep 25 11:48:07 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.4.0:
+  Ansible 6.4.0 will include ansible-core 2.13.4 as well as a curated set of
+  Ansible collections to provide a vast number of modules and plugins.
+  * The changelog for ansible-core 2.13 installed by this release of
+    ansible is available here:
+    https://github.com/ansible/ansible/blob/stable-2.13/changelogs/CHANGELOG-v2.13.rst
+  * Collections which have opted into being a part of the Ansible-6
+    unified changelog will have an entry on this page:
+    https://github.com/ansible-community/ansible-build-data/blob/main/6/CHANGELOG-v6.rst
+
+-------------------------------------------------------------------
+Wed Sep  7 13:47:45 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.3.0:
+  * Ansible 6.3.0 will include ansible-core 2.13.3 as well as a curated set of
+    Ansible collections to provide a vast number of modules and plugins.
+  * The changelog for ansible-core 2.13 installed by this release of
+    ansible is available here:
+    https://github.com/ansible/ansible/blob/stable-2.13/changelogs/CHANGELOG-v2.13.rst
+  * Collections which have opted into being a part of the Ansible-6
+    unified changelog will have an entry on this page:
+    https://github.com/ansible-community/ansible-build-data/blob/main/6/CHANGELOG-v6.rst
+
+-------------------------------------------------------------------
+Wed Sep  7 13:38:07 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.2.0:
+  * Ansible 6.2.0 will include ansible-core 2.13.2 as well as a curated set of
+    Ansible collections to provide a vast number of modules and plugins.
+  * The changelog for ansible-core 2.13 installed by this release of
+    ansible is available here:
+    https://github.com/ansible/ansible/blob/stable-2.13/changelogs/CHANGELOG-v2.13.rst
+  * Collections which have opted into being a part of the Ansible-6
+    unified changelog will have an entry on this page:
+    https://github.com/ansible-community/ansible-build-data/blob/main/6/CHANGELOG-v6.rst
+
+-------------------------------------------------------------------
+Wed Jul 20 07:27:34 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- BREAKING CHANGE:
+  use this package for the ansible release made by the ansible
+  community. This requires ansible-core, which will contain the
+  actual ansible binar
+- rework ansible-rpmlintrc file to only use the filters we need
+  - most of the errors are handled inside the %build section
+
+-------------------------------------------------------------------
+Tue Dec 14 10:32:03 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Require python macros for building
+
+-------------------------------------------------------------------
+Mon Oct 11 19:33:37 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- update to 2.9.27
+
+-------------------------------------------------------------------
+Tue Sep 14 14:03:52 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- update to 2.9.26
+
+-------------------------------------------------------------------
+Tue Aug 17 07:34:43 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to 2.9.25
+
+-------------------------------------------------------------------
+Tue Jul 20 03:53:36 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- update to 2.9.24
+  maintenance release containing numerous bugfixes
+
+-------------------------------------------------------------------
+Mon Jul 12 04:59:25 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- If building with Python 3, change the shebang of the test scripts
+  shipped in ansible-test to be /usr/bin/python3.
+
+-------------------------------------------------------------------
+Thu Jun 24 15:46:27 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- recommend installation of python-selinux (boo#1187531)
+
+-------------------------------------------------------------------
+Tue Jun 22 14:35:05 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to 2.9.23, bug-fix release with security fix:
+  * templating engine fix for not preserving unsafe status when trying
+    to preserve newlines. CVE-2021-3583
+
+-------------------------------------------------------------------
+Wed Jun  2 05:58:58 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- update to 2.9.22
+
+-------------------------------------------------------------------
+Tue May  4 05:24:10 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- update to 2.9.21
+
+-------------------------------------------------------------------
+Fri Apr 16 12:54:09 UTC 2021 - Alexander Graul <alexander.graul@suse.com>
+
+- Drop python-coverage run-time requirement from openSUSE/SLE
+
+-------------------------------------------------------------------
+Fri Apr 16 12:05:06 UTC 2021 - Alexander Graul <alexander.graul@suse.com>
+
+- Switch to python3-cryptography in openSUSE/SLE
+
+-------------------------------------------------------------------
+Tue Apr 13 07:44:55 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- update to version 2.9.20
+  maintenance release containing numerous bugfixes
+
+-------------------------------------------------------------------
+Tue Mar 16 06:54:38 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- update to version 2.9.19 with minor changes and a few bug fixes
+
+-------------------------------------------------------------------
+Fri Feb 19 08:40:14 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- update to version 2.9.18
+  * CVE-2021-20228 where default and fallback values for no_log parameters
+    to modules were not previously masked.
+  * CVE-2021-20178 where several parameters to the snmp_facts module were
+    logged and displayed despite containing sensitive information.
+  * CVE-2021-20180 where several parameters to the
+    bitbucket_pipeline_variable were logged and displayed despite
+    containing sensitive information.
+  * CVE-2021-20191 which addresses a number of modules whose parameters
+    were logged and displayed despite containing sensitive
+    information. For the full list of affected modules, refer to the
+    changelog linked below.
+
+-------------------------------------------------------------------
+Tue Jan 19 00:48:05 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- update to version 2.9.17 with minor changes and a few bug fixes
+
+-------------------------------------------------------------------
+Tue Dec 15 08:29:48 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- update to version 2.9.16 with minor changes and many bug fixes
+
+-------------------------------------------------------------------
+Tue Nov  3 03:47:34 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- update to version 2.9.15 with following breaking change:
+  * ansible-galaxy login command has been removed
+
+-------------------------------------------------------------------
+Tue Oct  6 04:36:05 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- update to version 2.9.14 with many small improvements and bug fixes,
+  most notably:
+  * kubectl - connection plugin now redact kubectl_token and
+    kubectl_password in console log (CVE-2020-1753).
+- avoid trailing comments after %endif
+
+-------------------------------------------------------------------
+Tue Sep  1 08:44:17 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- update to version 2.9.13 with many bug fixes, most notably:
+  * A security issue was addressed in the "dnf" module, which previously
+    did not check GPG signatures of packages.
+  * A bug in the "cron" module was fixed. In some cases prior to this
+    fix, the module would inadvertently remove cron entries.
+- removed obsolete fix-cron-regression-71207.patch
+
+-------------------------------------------------------------------
+Wed Aug 12 12:44:52 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- added fix-cron-regression-71207.patch
+
+-------------------------------------------------------------------
+Tue Aug 11 05:09:36 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- update to version 2.9.12 with many bug fixes,
+  most notably the following security fixes:
+  * security issue - copy - Redact the value of the no_log 'content'
+    parameter in the result's invocation.module_args in check mode.
+    Previously when used with check mode and with '-vvv', the module would
+    not censor the content if a change would be made to the destination path.
+    (CVE-2020-14332)
+  * security issue atomic_move - change default permissions when creating
+    temporary files so they are not world readable
+    (https://github.com/ansible/ansible/issues/67794) (CVE-2020-1736)
+  * Fix warning for default permission change when no mode is specified.
+    Follow up to https://github.com/ansible/ansible/issues/67794.
+    (CVE-2020-1736)
+  * Sanitize no_log values from any response keys that might be returned
+    from the uri module (CVE-2020-14330).
+  * reset logging level to INFO due to CVE-2019-14846.
+
+-------------------------------------------------------------------
+Tue Jul 21 04:48:11 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- update to version 2.9.11 with many bug fixes
+- removed ansible_bugfix_640.diff obsoleted by upstream update
+
+-------------------------------------------------------------------
+Mon Jul 13 17:53:58 UTC 2020 - Andrey Karepin <egdfree@opensuse.org>
+
+- added ansible_bugfix_640.diff to fix gh#ansible-collections/community.general#640
+
+-------------------------------------------------------------------
+Mon Jun 22 23:10:23 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- update to version 2.9.10 with many bug fixes.
+- removed CVE-2020-1744_avoid_mkdir_p.patch obsoleted by upstream update
+
+-------------------------------------------------------------------
+Thu May 28 13:57:38 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Correct ID of CVE and rename the patch to
+  CVE-2020-1744_avoid_mkdir_p.patch
+
+-------------------------------------------------------------------
+Tue May 26 13:02:10 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add CVE-2020-1733_avoid_mkdir_p.patch to fix CVE-2020-1733
+  (bsc#1164140)
+- Add metadata information to this file to mark which SUSE
+  bugzilla have been already fixed.
+
+-------------------------------------------------------------------
+Tue May 12 23:34:59 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- update to version 2.9.9
+  * fix for a regression introduced in 2.9.8
+
+-------------------------------------------------------------------
+Tue May 12 09:42:53 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- update to version 2.9.8
+  maintenance release containing numerous bugfixes
+
+-------------------------------------------------------------------
+Fri Apr 17 06:49:56 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- update to version 2.9.7 with many bug fixes,
+  especially for these security issues:
+  - bsc#1164140 CVE-2020-1733 - insecure temporary directory when
+    running become_user from become directive
+  - bsc#1164139 CVE-2020-1734 shell enabled by default in a pipe
+    lookup plugin subprocess
+  - bsc#1164137 CVE-2020-1735 - path injection on dest parameter
+    in fetch module
+  - bsc#1164134 CVE-2020-1736 atomic_move primitive sets
+    permissive permissions
+  - bsc#1164138 CVE-2020-1737 - Extract-Zip function in win_unzip
+    module does not check extracted path
+  - bsc#1164136 CVE-2020-1738 module package can be selected by
+    the ansible facts
+  - bsc#1164133 CVE-2020-1739  - svn module leaks password when
+    specified as a parameter
+  - bsc#1164135 CVE-2020-1740 - secrets readable after
+    ansible-vault edit
+  - bsc#1165393 CVE-2020-1746 - information disclosure issue in
+    ldap_attr and ldap_entry modules
+  - bsc#1166389 CVE-2020-1753 - kubectl connection plugin leaks
+    sensitive information
+  - bsc#1167532 CVE-2020-10684 - code injection when using
+    ansible_facts as a subkey
+  - bsc#1167440 CVE-2020-10685 - modules which use files
+    encrypted with vault are not properly cleaned up
+  - CVE-2020-10691 - archive traversal vulnerability in ansible-galaxy collection install [2]
+
+-------------------------------------------------------------------
+Mon Apr  6 20:45:04 UTC 2020 - lars@linux-schulserver.de - 2.9.6
+
+- create missing (empty) template and files directories for
+  'ansible-galaxy init' during package build (fixes boo#1137479)
+- require python-xml on python 2 systems (boo#1142542)
+
+-------------------------------------------------------------------
+Thu Mar  5 08:23:57 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- update to version 2.9.6 (maintenance release) including
+  these security issues:
+  - bsc#1171162 CVE-2020-10729 two random password lookups in
+    same task return same value
+
+-------------------------------------------------------------------
+Thu Feb 13 21:38:06 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- update to version 2.9.5 (maintenance release)
+
+-------------------------------------------------------------------
+Tue Jan 28 12:38:16 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- update to version 2.9.4 (maintenance release)
+  - fix in yum module
+  - security fixes:
+    - bsc#1157968 CVE-2019-14904 vulnerability in solaris_zone
+      module via crafted solaris zone
+    - bsc#1157969 CVE-2019-14905 malicious code could craft
+      filename in nxos_file_copy module
+
+-------------------------------------------------------------------
+Thu Jan 16 17:34:28 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- update to version 2.9.3 (maintenance release)
+  * security fixes
+    - CVE-2019-14904 (solaris_zone module) (boo#1157968)
+    - CVE-2019-14905 (nxos_file_copy module) (boo#1157969)
+  * various bugfixes
+
+-------------------------------------------------------------------
+Sun Dec 29 15:21:09 UTC 2019 - Lars Vogdt <lars@linux-schulserver.de>
+
+- sync with upstream spec file (especially for RHEL & Fedora builds)
+- ran spec-cleaner
+- remove old SUSE targets (SLE-11, Leap 42.3 and below)
+  This simplifies the spec file and makes building easier
+- Additional required packages for building:
+  + python-boto3 and python-botocore for Amazon EC2
+  + python-jmespath for json queries
+  + python-memcached for cloud modules and local caching of JSON
+    formatted, per host records
+  + python-redis for cloud modules and local caching of JSON
+    formatted, per host records
+  + python-requests for many web-based modules (cloud, network,
+    netapp)
+  => as the need for those packages depends on the usage of the
+     tool, they are just recommended on openSUSE/SUSE machines
+- made dependencies for gitlab, vmware and winrm modules configurable,
+  as most of their dependencies are not (yet) available on current
+  openSUSE/SUSE distributions
+- exclude /usr/bin/pwsh from the automatic dependency generation,
+  as the Windows Power Shell is not available (yet) on openSUSE/SUSE
+- build additional docs and split up ansible-doc package;
+  moving changelogs, contrib and example directories there
+- prepare for building HTML documentation, but disable this per
+  default for the moment, as not all package dependencies are available
+  in openSUSE/SUSE (yet)
+- package some test scripts with executable permissions
+
+-------------------------------------------------------------------
+Thu Dec  5 09:21:27 UTC 2019 - Michael Ströder <michael@stroeder.com>
+
+- update to version 2.9.2
+  maintenance release containing numerous bugfixes
+
+-------------------------------------------------------------------
+Thu Nov 21 16:27:05 UTC 2019 - Lars Vogdt <lars@linux-schulserver.de>
+
+- Create system directories that Ansible defines as default locations
+  in ansible/config/base.yml
+- rephrase the summary line
+- Disable shebang munging for specific paths. These files are data files.
+  ansible-test munges the shebangs itself.
+
+-------------------------------------------------------------------
+Tue Nov 19 18:04:50 UTC 2019 - Lars Vogdt <lars@linux-schulserver.de>
+
+- split out ansible-test package for module developers
+
+-------------------------------------------------------------------
+Fri Nov 15 12:44:55 UTC 2019 - lars@linux-schulserver.de - 2.9.1
+
+- update to version 2.9.1
+  Full changelog is packaged at /usr/share/doc/packages/ansible/changelogs/
+  and also available online at
+  https://github.com/ansible/ansible/blob/stable-2.9/changelogs/CHANGELOG-v2.9.rst
+  + CVE-2019-14864: fixed Splunk and Sumologic callback plugins leak
+    sensitive data in logs (boo#1154830)
+- replace all #!/usr/bin/env lines to use #!/usr/bin/$1 directly
+
+-------------------------------------------------------------------
+Sun Nov  3 19:26:21 UTC 2019 - Johannes Kastl <kastl@b1-systems.de>
+
+- added file '/usr/bin/ansible-test' to spec file
+
+-------------------------------------------------------------------
+Fri Nov  1 21:11:03 UTC 2019 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to version 2.9.0:
+  Full changelog is packaged at /usr/share/doc/packages/ansible/changelogs/
+  and also available online at
+  https://github.com/ansible/ansible/blob/stable-2.9/changelogs/CHANGELOG-v2.9.rst
+- Fixed among other this security bug:
+  - bsc#1112959 CVE-2018-16837 Information leak in "user" module patch added
+
+-------------------------------------------------------------------
+Sun Oct 27 14:15:53 UTC 2019 - lars@linux-schulserver.de
+
+- include the sha checksum file in the source, which allows to verify
+  the original sources
+
+-------------------------------------------------------------------
+Wed Oct 23 16:10:41 UTC 2019 -  <abergmann@suse.com>
+
+- Update to version 2.8.6:
+  Full changelog is packaged at /usr/share/doc/packages/ansible/changelogs/
+  and also available online at
+  https://github.com/ansible/ansible/blob/stable-2.8/changelogs/CHANGELOG-v2.8.rst
+  Included security fixes:
+  * CVE-2019-14846: Fixed secrets disclosure on logs due to display is hardcoded
+    to DEBUG level (bsc#1153452)
+  * CVE-2019-14856: Fixed insufficient fix for CVE-2019-10206 (bsc#1154232)
+  * CVE-2019-14858: Fixed data in the sub parameter fields that will not be masked
+    and will be displayed when run with increased verbosity (bsc#1154231)
+
+-------------------------------------------------------------------
+Fri Sep 13 09:02:36 UTC 2019 - Lars Vogdt <lars@linux-schulserver.de>
+
+- Update to version 2.8.5:
+  Full changelog is packaged at /usr/share/doc/packages/ansible/changelogs/
+  and also available online at
+  https://github.com/ansible/ansible/blob/stable-2.8/changelogs/CHANGELOG-v2.8.rst
+- removed patches fixed upstream:
+  + CVE-2019-10206-data-disclosure.patch
+  + CVE-2019-10217-gcp-modules-sensitive-fields.patch
+
+-------------------------------------------------------------------
+Wed Aug  7 16:30:47 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to version 2.8.3:
+  Full changelog is packaged, but also at
+  https://github.com/ansible/ansible/blob/stable-2.8/changelogs/CHANGELOG-v2.8.rst
+  - (bsc#1137528) CVE-2019-10156: ansible: templating causing an
+    unexpected key file to be set on remote node
+- (bsc#1142690) Adds CVE-2019-10206-data-disclosure.patch fixing
+  CVE-2019-10206: ansible-playbook -k and ansible cli tools
+  prompt passwords by expanding them from templates as they could
+  contain special characters. Passwords should be wrapped to
+  prevent templates trigger and exposing them.
+- (bsc#1144453) Adds CVE-2019-10217-gcp-modules-sensitive-fields.patch
+  CVE-2019-10217: Fields managing sensitive data should be set as
+  such by no_log feature. Some of these fields in GCP modules are
+  not set properly. service_account_contents() which is common
+  class for all gcp modules is not setting no_log to True. Any
+  sensitive data managed by that function would be leak as an
+  output when running ansible playbooks.
+
+-------------------------------------------------------------------
+Sat Jun  8 16:33:53 UTC 2019 - Lars Vogdt <lars@linux-schulserver.de>
+
+- Update to version 2.8.1
+  Full changelog is at /usr/share/doc/packages/ansible/changelogs/
+  Bugfixes
+  --------
+  - ACI - DO not encode query_string
+  - ACI modules - Fix non-signature authentication
+  - Add missing directory provided via ``--playbook-dir`` to adjacent collection loading
+  - Fix "Interface not found" errors when using eos_l2_interface with nonexistant
+    interfaces configured
+  - Fix cannot get credential when `source_auth` set to `credential_file`.
+  - Fix netconf_config backup string issue
+  - Fix privilege escalation support for the docker connection plugin when
+    credentials need to be supplied (e.g. sudo with password).
+  - Fix vyos cli prompt inspection
+  - Fixed loading namespaced documentation fragments from collections.
+  - Fixing bug came up after running cnos_vrf module against coverity.
+  - Properly handle data importer failures on PVC creation, instead of timing out.
+  - To fix the ios static route TC failure in CI
+  - To fix the nios member module params
+  - To fix the nios_zone module idempotency failure
+  - add terminal initial prompt for initial connection
+  - allow include_role to work with ansible command
+  - allow python_requirements_facts to report on dependencies containing dashes
+  - asa_config fix
+  - azure_rm_roledefinition - fix a small error in build scope.
+  - azure_rm_virtualnetworkpeering - fix cross subscriptions virtual network
+    peering.
+  - cgroup_perf_recap - When not using file_per_task, make sure we don't
+    prematurely close the perf files
+  - display underlying error when reporting an invalid ``tasks:`` block.
+  - dnf - fix wildcard matching for state: absent
+  - docker connection plugin - accept version ``dev`` as 'newest version' and
+    print warning.
+  - docker_container - ``oom_killer`` and ``oom_score_adj`` options are available
+    since docker-py 1.8.0, not 2.0.0 as assumed by the version check.
+  - docker_container - fix network creation when ``networks_cli_compatible`` is
+    enabled.
+  - docker_container - use docker API's ``restart`` instead of ``stop``/``start``
+    to restart a container.
+  - docker_image - if ``build`` was not specified, the wrong default for
+    ``build.rm`` is used.
+  - docker_image - if ``nocache`` set to ``yes`` but not ``build.nocache``, the
+    module failed.
+  - docker_image - module failed when ``source: build`` was set but
+    ``build.path`` options not specified.
+  - docker_network module - fix idempotency when using ``aux_addresses`` in
+    ``ipam_config``.
+  - ec2_instance - make Name tag idempotent
+  - eos: don't fail modules without become set, instead show message and continue
+  - eos_config: check for session support when asked to 'diff_against: session'
+  - eos_eapi: fix idempotency issues when vrf was unspecified.
+  - fix bugs for ce - more info see
+  - fix incorrect uses of to_native that should be to_text instead.
+  - hcloud_volume - Fix idempotency when attaching a server to a volume.
+  - ibm_storage - Added a check for null fields in ibm_storage utils module.
+  - include_tasks - whitelist ``listen`` as a valid keyword
+  - k8s - resource updates applied with force work correctly now
+  - keep results subset also when not no_log.
+  - meraki_switchport - improve reliability with native VLAN functionality.
+  - netapp_e_iscsi_target - fix netapp_e_iscsi_target chap secret size and
+    clearing functionality
+  - netapp_e_volumes - fix workload profileId indexing when no previous workload
+    tags exist on the storage array.
+  - nxos_acl some platforms/versions raise when no ACLs are present
+  - nxos_facts fix <https://github.com/ansible/ansible/pull/57009>
+  - nxos_file_copy fix passwordless workflow
+  - nxos_interface Fix admin_state check for n6k
+  - nxos_snmp_traps fix group all for N35 platforms
+  - nxos_snmp_user fix platform fixes for get_snmp_user
+  - nxos_vlan mode idempotence bug
+  - nxos_vlan vlan names containing regex ctl chars should be escaped
+  - nxos_vtp_* modules fix n6k issues
+  - openssl_certificate - fix private key passphrase handling for
+    ``cryptography`` backend.
+  - openssl_pkcs12 - fixes crash when private key has a passphrase and the module
+    is run a second time.
+  - os_stack - Apply tags conditionally so that the module does not throw up an
+    error when using an older distro of openstacksdk
+  - pass correct loading context to persistent connections other than local
+  - pkg_mgr - Ansible 2.8.0 failing to install yum packages on Amazon Linux
+  - postgresql - added initial SSL related tests
+  - postgresql - added missing_required_libs, removed excess param mapping
+  - postgresql - move connect_to_db and get_pg_version into
+    module_utils/postgres.py (https://github.com/ansible/ansible/pull/55514)
+  - postgresql_db - add note to the documentation about state dump and the
+    incorrect rc (https://github.com/ansible/ansible/pull/57297)
+  - postgresql_db - fix for postgresql_db fails if stderr contains output
+  - postgresql_ping - fixed a typo in the module documentation
+  - preserve actual ssh error when we cannot connect.
+  - route53_facts - the module did not advertise check mode support, causing it
+    not to be run in check mode.
+  - sysctl: the module now also checks the output of STDERR to report if values
+    are correctly set (https://github.com/ansible/ansible/pull/55695)
+  - ufw - correctly check status when logging is off
+  - uri - always return a value for status even during failure
+  - urls - Handle redirects properly for IPv6 address by not splitting on ``:``
+    and rely on already parsed hostname and port values
+  - vmware_vm_facts - fix the support with regular ESXi
+  - vyos_interface fix <https://github.com/ansible/ansible/pull/57169>
+  - we don't really need to template vars on definition as we do this on demand
+    in templating.
+  - win_acl - Fix qualifier parser when using UNC paths -
+  - win_hostname - Fix non netbios compliant name handling
+  - winrm - Fix issue when attempting to parse CLIXML on send input failure
+  - xenserver_guest - fixed an issue where VM whould be powered off even though
+    check mode is used if reconfiguration requires VM to be powered off.
+  - xenserver_guest - proper error message is shown when maximum number of
+    network interfaces is reached and multiple network interfaces are added at
+    once.
+  - yum - Fix false error message about autoremove not being supported
+  - yum - fix failure when using ``update_cache`` standalone
+  - yum - handle special "_none_" value for proxy in yum.conf and .repo files
+
+
+-------------------------------------------------------------------
+Wed May 22 14:42:42 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 2.8.0
+  Major changes:
+  * Experimental support for Ansible Collections and content namespacing -
+    Ansible content can now be packaged in a collection and addressed via
+    namespaces. This allows for easier sharing, distribution, and installation
+    of bundled modules/roles/plugins, and consistent rules for accessing
+    specific content via namespaces.
+  * Python interpreter discovery - The first time a Python module runs on a
+    target, Ansible will attempt to discover the proper default Python
+    interpreter to use for the target platform/version (instead of immediately
+    defaulting to /usr/bin/python). You can override this behavior by
+    setting ansible_python_interpreter or via config.
+    (see https://github.com/ansible/ansible/pull/50163)
+  * become - The deprecated CLI arguments for --sudo, --sudo-user,
+    --ask-sudo-pass, -su, --su-user, and --ask-su-pass have been removed, in
+    favor of the more generic --become, --become-user, --become-method, and
+    --ask-become-pass.
+  * become - become functionality has been migrated to a plugin architecture,
+    to allow customization of become functionality and 3rd party become methods
+    (https://github.com/ansible/ansible/pull/50991)
+- addresses CVE-2018-16859, CVE-2018-16876, CVE-2019-3828, CVE-2018-16837
+
+For the full changelog see /usr/share/doc/packages/ansible/changelogs or online:
+https://github.com/ansible/ansible/blob/stable-2.8/changelogs/CHANGELOG-v2.8.rst
+
+-------------------------------------------------------------------
+Thu Apr  4 17:22:58 UTC 2019 - Michael Ströder <michael@stroeder.com>
+
+- Update to version 2.7.10
+
+Minor Changes
+- Catch all connection timeout related exceptions and raise AnsibleConnectionError instead
+- openssl_pkcs12, openssl_privatekey, openssl_publickey - These modules no longer delete the output file before starting to regenerate the output, or when generating the output failed.
+
+Bugfixes
+- Backport of https://github.com/ansible/ansible/pull/54105, pamd - fix idempotence issue when removing rules
+- Use custom JSON encoder in conneciton.py so that ansible objects (AnsibleVaultEncryptedUnicode, for example) can be sent to the persistent connection process
+- allow 'dict()' jinja2 global to function the same even though it has changed in jinja2 versions
+- azure_rm inventory plugin - fix missing hostvars properties (https://github.com/ansible/ansible/pull/53046)
+- azure_rm inventory plugin - fix no nic type in vmss nic. (https://github.com/ansible/ansible/pull/53496)
+- deprecate {Get/Set}ManagerAttributes commands (https://github.com/ansible/ansible/issues/47590)
+- flatpak_remote - Handle empty output in remote_exists, fixes https://github.com/ansible/ansible/issues/51481
+- foreman - fix Foreman returning host parameters
+- get_url - Fix issue with checksum validation when using a file to ensure we skip lines in the file that do not contain exactly 2 parts. Also restrict exception handling to the minimum number of necessary lines (https://github.com/ansible/ansible/issues/48790)
+- grafana_datasource - Fixed an issue when running Python3 and using basic auth (https://github.com/ansible/ansible/issues/49147)
+- include_tasks - Fixed an unexpected exception if no file was given to include.
+- openssl_certificate - fix ``state=absent``.
+- openssl_certificate, openssl_csr, openssl_pkcs12, openssl_privatekey, openssl_publickey - The modules are now able to overwrite write-protected files (https://github.com/ansible/ansible/issues/48656).
+- openssl_dhparam - fix ``state=absent`` idempotency and ``changed`` flag.
+- openssl_pkcs12, openssl_privatekey - These modules now accept the output file mode in symbolic form or as a octal string (https://github.com/ansible/ansible/issues/53476).
+- openssl_publickey - fixed crash on Python 3 when OpenSSH private keys were used with passphrases.
+- openstack inventory plugin: allow "constructed" functionality (``compose``, ``groups``, and ``keyed_groups``) to work as documented.
+- random_mac - generate a proper MAC address when the provided vendor prefix is two or four characters (https://github.com/ansible/ansible/issues/50838)
+- replace - fix behavior when ``before`` and ``after`` are used together (https://github.com/ansible/ansible/issues/31354)
+- report correct CPU information on ARM systems (https://github.com/ansible/ansible/pull/52884)
+- slurp - Fix issues when using paths on Windows with glob like characters, e.g. ``[``, ``]``
+- ssh - Check the return code of the ssh process before raising AnsibleConnectionFailure, as the error message for the ssh process will likely contain more useful information. This will improve the missing interpreter messaging when using modules such as setup which have a larger payload to transfer when combined with pipelining. (https://github.com/ansible/ansible/issues/53487)
+- tower_settings - 'name' and 'value' parameters are always required, module can not be used in order to get a setting
+- win_acl - Fix issues when using paths with glob like characters, e.g. ``[``, ``]``
+- win_acl_inheritance - Fix issues when using paths with glob like characters, e.g. ``[``, ``]``
+- win_certificate_store - Fix issues when using paths with glob like characters, e.g. ``[``, ``]``
+- win_chocolatey - Fix incompatibilities with the latest release of Chocolatey ``v0.10.12+``
+- win_copy - Fix issues when using paths with glob like characters, e.g. ``[``, ``]``
+- win_file - Fix issues when using paths with glob like characters, e.g. ``[``, ``]``
+- win_find - Ensure found files are sorted alphabetically by the path instead of it being random
+- win_find - Fix issues when using paths with glob like characters, e.g. ``[``, ``]``
+- win_owner - Fix issues when using paths with glob like characters, e.g. ``[``, ``]``
+- win_psexec - Support executables with a space in the path
+- win_reboot - Fix reboot command validation failure when running under the psrp connection plugin
+- win_tempfile - Always return the full NTFS absolute path and not a DOS 8.3 path.
+- win_user_right - Fix output containing non json data - https://github.com/ansible/ansible/issues/54413
+- windows - Fixed various module utils that did not work with path that had glob like chars
+- yum - fix disable_excludes on systems with yum rhn plugin enabled (https://github.com/ansible/ansible/issues/53134)
+
+-------------------------------------------------------------------
+Sun Mar 17 07:42:28 UTC 2019 - Michael Ströder <michael@stroeder.com>
+
+- Update to version 2.7.9
+  Minor Changes
+  * Add missing import for ConnectionError in edge and routeros module_utils.
+  * ``to_yaml`` filter updated to maintain formatting consistency when used
+    with ``pyyaml`` versions 5.1 and later
+    (https://github.com/ansible/ansible/pull/53772)
+  * docker_image * set ``changed`` to ``false`` when using ``force: yes`` to
+    tag or push an image that ends up being identical to one already present on
+    the Docker host or Docker registry.
+
+  * jenkins_plugin * Set new default value for the update_url parameter
+    (https://github.com/ansible/ansible/issues/52086)
+
+  Bugfixes
+  * Fix bug where some inventory parsing tracebacks were missing or reported under the wrong plugin.
+  * Fix rabbitmq_plugin idempotence due to information message in new version of rabbitmq (https://github.com/ansible/ansible/pull/52166)
+  * Fixed KeyError issue in vmware_host_config_manager when a supported option isn't already set (https://github.com/ansible/ansible/issues/44561).
+  * Fixed issue related to --yaml flag in vmware_vm_inventory. Also fixed caching issue in vmware_vm_inventory (https://github.com/ansible/ansible/issues/52381).
+  * If large integers are passed as options to modules under Python 2, module argument parsing will reject them as they are of type ``long`` and not of type ``int``.
+  * allow nice error to work when auto plugin reads file w/o `plugin` field
+  * ansible-doc * Fix traceback on providing arguemnt --all to ansible-doc command
+  * azure_rm_virtualmachine_facts * fixed crash related to attached managed disks (https://github.com/ansible/ansible/issues/52181)
+  * basic * modify the correct variable when determining available hashing algorithms to avoid errors when md5 is not available (https://github.com/ansible/ansible/issues/51355)
+  * cloudscale * Fix compatibilty with Python3 in version 3.5 and lower.
+  * convert input into text to ensure valid comparisons in nmap inventory plugin
+  * dict2items * Allow dict2items to work with hostvars
+  * dnsimple * fixed a KeyError exception related to record types handling.
+  * docker_container * now returns warnings from docker daemon on container creation and updating.
+  * docker_swarm * Fixed node_id parameter not working for node removal (https://github.com/ansible/ansible/issues/53501)
+  * docker_swarm * do not crash with older docker daemons (https://github.com/ansible/ansible/issues/51175).
+  * docker_swarm * fixes idempotency for the ``ca_force_rotate`` option.
+  * docker_swarm * improve Swarm detection.
+  * docker_swarm * improve idempotency checking; ``rotate_worker_token`` and ``rotate_manager_token`` are now also used when all other parameters have not changed.
+  * docker_swarm * now supports docker-py 1.10.0 and newer for most operations, instead only docker 2.6.0 and newer.
+  * docker_swarm * properly implement check mode (it did apply changes).
+  * docker_swarm * the ``force`` option was ignored when ``state: present``.
+  * docker_swarm_service * do basic validation of ``publish`` option if specified (must be list of dicts).
+  * docker_swarm_service * don't crash when ``publish`` is not specified.
+  * docker_swarm_service * fix problem with docker daemons which do not return ``UpdateConfig`` in the swarm service spec.
+  * docker_swarm_service * the return value was documented as ``ansible_swarm_service``, but the module actually returned ``ansible_docker_service``. Documentation and code have been updated so that the variable is now called ``swarm_service``. In Ansible 2.7.x, the old name ``ansible_docker_service`` can still be used to access the result.
+  * ec2 * if the private_ip has been provided for the new network interface it shouldn't also be added to top level parameters for run_instances()
+  * fix DNSimple to ensure check works even when the number of records is larger than 100
+  * get_url * return no change in check mode when checksum matches
+  * inventory plugins * Fix creating groups from composed variables by getting the latest host variables
+  * inventory_aws_ec2 * fix no_log indentation so AWS temporary credentials aren't displayed in tests
+  * jenkins_plugin * Prevent plugin to be reinstalled when state=present (https://github.com/ansible/ansible/issues/43728)
+  * lvol * fixed ValueError when using float size (https://github.com/ansible/ansible/issues/32886, https://github.com/ansible/ansible/issues/29429)
+  * mysql * MySQLdb doesn't import the cursors module for its own purposes so it has to be imported in MySQL module utilities before it can be used in dependent modules like the proxysql module family.
+  * mysql * fixing unexpected keyword argument 'cursorclass' issue after migration from MySQLdb to PyMySQL.
+  * mysql_user: match backticks, single and double quotes when checking user privileges.
+  * onepassword_facts * Fixes issues which prevented this module working with 1Password CLI version 0.5.5 (or greater). Older versions of the CLI were deprecated by 1Password and will no longer function.
+  * openssl_certificate * ``has_expired`` correctly checks if the certificate is expired or not
+  * openssl_certificate * fix Python 3 string/bytes problems for `notBefore`/`notAfter` for self-signed and ownCA providers.
+  * openssl_certificate * make sure that extensions are actually present when their values should be checked.
+  * openssl_csr * improve ``subject`` validation.
+  * openssl_csr * improve error messages for invalid SANs.
+  * play order is now applied under all circumstances, fixes
+  * remote_management foreman * Fixed issue where it was impossible to createdelete a product because product was missing in dict choices ( https://github.com/ansible/ansible/issues/48594 )
+  * rhsm_repository * handle systems without any repos
+  * skip invalid plugin after warning in loader
+  * urpmi module * fixed issue
+  * win_certificate_store * Fix exception handling typo
+  * win_chocolatey * Fix issue when parsing a beta Chocolatey install * https://github.com/ansible/ansible/issues/52331
+  * win_chocolatey_source * fix bug where a Chocolatey source could not be disabled unless ``source`` was also set * https://github.com/ansible/ansible/issues/50133
+  * win_domain * Do not fail if DC is already promoted but a reboot is required, return ``reboot_required: True``
+  * win_domain * Fix when running without credential delegated authentication * https://github.com/ansible/ansible/issues/53182
+  * win_file * Fix issue when managing hidden files and directories * https://github.com/ansible/ansible/issues/42466
+  * winrm * attempt to recover from a WinRM send input failure if possible
+  * zabbix_hostmacro: fixes truncation of macro contexts that contain colons (see https://github.com/ansible/ansible/pull/51853)
+
+  New Plugins
+  * vmware_vm_inventory * VMware Guest inventory source
+
+-------------------------------------------------------------------
+Sat Mar 16 20:12:47 UTC 2019 - Lars Vogdt <lars@linux-schulserver.de>
+
+- update URL (use SSL version of the URL)
+- prepare update for multiple releases (bsc#1102126, bsc#1109957)
+
+-------------------------------------------------------------------
+Sun Feb 24 10:06:31 UTC 2019 - Michael Ströder <michael@stroeder.com>
+
+- Update to version 2.7.8
+  Minor Changes:
+  * Raise AnsibleConnectionError on winrm connnection errors
+  Bugfixes:
+  * Backport of https://github.com/ansible/ansible/pull/46478 , fixes name collision in haproxy module
+  * Fix aws_ec2 inventory plugin code to automatically populate regions when missing as documentation states, also leverage config system vs self default/type validation
+  * Fix unexpected error when using Jinja2 native types with non-strict constructed keyed_groups (https://github.com/ansible/ansible/issues/52158).
+  * If an ios module uses a section filter on a device which does not support it, retry the command without the filter.
+  * acme_challenge_cert_helper * the module no longer crashes when the required ``cryptography`` library cannot be found.
+  * azure_rm_managed_disk_facts * added missing implementation of listing managed disks by resource group
+  * azure_rm_mysqlserver * fixed issues with passing parameters while updating existing server instance
+  * azure_rm_postgresqldatabase * fix force_update bug (https://github.com/ansible/ansible/issues/50978).
+  * azure_rm_postgresqldatabase * fix force_update bug.
+  * azure_rm_postgresqlserver * fixed issues with passing parameters while updating existing server instance
+  * azure_rm_sqlserver * fix for tags support
+  * azure_rm_virtualmachine * fixed several crashes in module
+  * azure_rm_virtualmachine_facts * fix crash when vm created from custom image
+  * azure_rm_virtualmachine_facts * fixed crash related to VM with managed disk attached
+  * ec2 * Correctly sets the end date of the Spot Instance request. Sets `ValidUntil` value in proper way so it will be auto-canceled through `spot_wait_timeout` interval.
+  * openssl_csr * fixes idempotence problem with PyOpenSSL backend when no Subject Alternative Names were specified.
+  * openstack inventory plugin * send logs from sdk to stderr so they do not combine with output
+  * psrp * do not display bootstrap wrapper for each module exec run
+  * redfish_utils * get standard properties for firmware entries (https://github.com/ansible/ansible/issues/49832)
+  * remote home directory * Disallow use of remote home directories that include relative pathing by means of `..` (CVE-2019-3828, bsc#1126503) (https://github.com/ansible/ansible/pull/52133)
+  * ufw * when using ``state: reset`` in check mode, ``ufw --dry-run reset`` was executed, which causes a loss of firewall rules. The ``ufw`` module was adjusted to no longer run ``ufw --dry-run reset`` to prevent this from happening.
+  * ufw: make sure that only valid values for ``direction`` are passed on.
+  * update GetBiosBootOrder to use standard Redfish resources (https://github.com/ansible/ansible/issues/47571)
+  * win become * Fix some scenarios where become failed to create an elevated process
+  * win_psmodule * the NuGet package provider will be updated, if needed, to avoid issue under adding a repository
+  * yum * Remove incorrect disable_includes error message when using disable_excludes (https://github.com/ansible/ansible/issues/51697)
+  * yum * properly handle a proxy config in yum.conf for an unauthenticated proxy
+
+-------------------------------------------------------------------
+Sat Feb  9 16:55:54 UTC 2019 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Update to version 2.7.7
+  Minor Changes:
+  * Allow check_mode with supports_generate_diff capability in cli_config. (https://github.com/ansible/ansible/pull/51417)
+  * Fixed typo in vmware documentation fragment. Changed "supported added" to "support added".
+  Bugfixes:
+  * All K8S_AUTH_* environment variables are now properly loaded by the k8s lookup plugin
+  * Change backup file globbing for network _config modules so backing up one host's config will not delete the backed up config of any host whose hostname is a subset of the first host's hostname (e.g., switch1 and switch11)
+  * Fixes bug where nios_a_record wasn't getting deleted if an uppercase named a_record was being passed. (https://github.com/ansible/ansible/pull/51539)
+  * aci_aaa_user - Fix setting user description (https://github.com/ansible/ansible/issues/51406)
+  * apt_repository - fixed failure under Python 3.7 (https://github.com/ansible/ansible/pull/47219)
+  * archive - Fix check if archive is created in path to be removed
+  * azure_rm inventory plugin - fix azure batch request (https://github.com/ansible/ansible/pull/50006)
+  * cnos_backup - fixed syntax error (https://github.com/ansible/ansible/pull/47219)
+  * cnos_image - fixed syntax error (https://github.com/ansible/ansible/pull/47219)
+  * consul_kv - minor error-handling bugfix under Python 3.7 (https://github.com/ansible/ansible/pull/47219)
+  * copy - align invocation in return value between check and normal mode
+  * delegate_facts - fix to work properly under block and include_role (https://github.com/ansible/ansible/pull/51553)
+  * docker_swarm_service - fix endpoint_mode and publish idempotency.
+  * ec2_instance - Correctly adds description when adding a single ENI to the instance
+  * ensure we have a XDG_RUNTIME_DIR, as it is not handled correctly by some privilege escalation configurations
+  * file - Allow state=touch on file the user does not own https://github.com/ansible/ansible/issues/50943
+  * fix ansible-pull hanlding of extra args, complex quoting is needed for inline JSON
+  * fix ansible_connect_timeout variable in network_cli,netconf,httpapi and nxos_install_os timeout check
+  * netapp_e_storagepool - fixed failure under Python 3.7 (https://github.com/ansible/ansible/pull/47219)
+  * onepassword_facts - Fix an issue looking up some 1Password items which have a 'password' attribute alongside the 'fields' attribute, not inside it.
+  * prevent import_role from inserting dupe into roles: execution when duplicate signature role already exists in the section.
+  * reboot - Fix bug where the connection timeout was not reset in the same task after rebooting
+  * ssh connection - do not retry with invalid credentials to prevent account lockout (https://github.com/ansible/ansible/issues/48422)
+  * systemd - warn when exeuting in a chroot environment rather than failing (https://github.com/ansible/ansible/pull/43904)
+  * win_chocolatey - Fix hang when used with proxy for the first time - https://github.com/ansible/ansible/issues/47669
+  * win_power_plan - Fix issue where win_power_plan failed on newer Windows 10 builds - https://github.com/ansible/ansible/issues/43827
+
+
+-------------------------------------------------------------------
+Sun Jan 20 19:55:26 UTC 2019 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- update to version 2.7.6
+  Minor Changes:
+  * Added documentation about using VMware dynamic inventory plugin.
+  * Fixed bug around populating host_ip in hostvars in vmware_vm_inventory.
+  * Image reference change in Azure VMSS is detected and applied correctly.
+  * docker_volume - reverted changed behavior of force, which was released in Ansible 2.7.1 to 2.7.5, and Ansible 2.6.8 to 2.6.11. Volumes are now only recreated if the parameters changed and force is set to true (instead of or). This is the behavior which has been described in the documentation all the time.
+  * set ansible_os_family from name variable in os-release
+  * yum and dnf can now handle installing packages from URIs that are proxy redirects and don't end in the .rpm file extension
+  Bugfixes:
+  * Added log message at -vvvv when using netconf connection listing connection details.
+  * Changes how ansible-connection names socket lock files. They now use the same name as the socket itself, and as such do not lock other attempts on connections to the same host, or cause issues with overly-long hostnames.
+  * Fix mandatory statement error for junos modules (https://github.com/ansible/ansible/pull/50138)
+  * Moved error in netconf connection plugin from at import to on connection.
+  * This reverts some changes from commit 723daf3. If a line is found in the file, exactly or via regexp matching, it must not be added again. insertafter/insertbefore options are used only when a line is to be inserted, to specify where it must be added.
+  * allow using openstack inventory plugin w/o a cache
+  * callbacks - Do not filter out exception, warnings, deprecations on failure when using debug (https://github.com/ansible/ansible/issues/47576)
+  * certificate_complete_chain - fix behavior when invalid file is parsed while reading intermediate or root certificates.
+  * copy - Ensure that the src file contents is converted to unicode in diff information so that it is properly wrapped by AnsibleUnsafeText to prevent unexpected templating of diff data in Python3 (https://github.com/ansible/ansible/issues/45717)
+  * correct behaviour of verify_file for vmware inventory plugin, it was always returning True
+  * dnf - fix issue where conf_file was not being loaded properly
+  * dnf - fix update_cache combined with install operation to not cause dnf transaction failure
+  * docker_container - fix network_mode idempotency if the container:<container-name> form is used (as opposed to container:<container-id>) (https://github.com/ansible/ansible/issues/49794)
+  * docker_container - warning when non-string env values are found, avoiding YAML parsing issues. Will be made an error in Ansible 2.8. (https://github.com/ansible/ansible/issues/49802)
+  * docker_swarm_service - Document labels and container_labels with correct type.
+  * docker_swarm_service - Document limit_memory and reserve_memory correctly on how to specify sizes.
+  * docker_swarm_service - Document minimal API version for configs and secrets.
+  * docker_swarm_service - fix use of Docker API so that services are not detected as present if there is an existing service whose name is a substring of the desired service
+  * docker_swarm_service - fixing falsely reporting update_order as changed when option is not used.
+  * document old option that was initally missed
+  * ec2_instance now respects check mode https://github.com/ansible/ansible/pull/46774
+  * fix for network_cli - ansible_command_timeout not working as expected (#49466)
+  * fix handling of firewalld port if protocol is missing
+  * fix lastpass lookup failure on python 3 (https://github.com/ansible/ansible/issues/42062)
+  * flatpak - Fixed Python 2/3 compatibility
+  * flatpak - Fixed issue where newer versions of flatpak failed on flatpak removal
+  * flatpak_remote - Fixed Python 2/3 compatibility
+  * gcp_compute_instance - fix crash when the instance metadata is not set
+  * grafana_dashboard - Fix a pair of unicode string handling issues with version checking (https://github.com/ansible/ansible/pull/49194)
+  * host execution order - Fix reverse_inventory not to change the order of the items before reversing on python2 and to not backtrace on python3
+  * icinga2_host - fixed the issue with not working use_proxy option of the module.
+  * influxdb_user - An unspecified password now sets the password to blank, except on existing users. This previously caused an unhandled exception.
+  * influxdb_user - Fixed unhandled exception when using invalid login credentials (https://github.com/ansible/ansible/issues/50131)
+  * openssl_* - fix error when path contains a file name without path.
+  * openssl_csr - fix problem with idempotency of keyUsage option.
+  * openssl_pkcs12 - now does proper path expansion for ca_certificates.
+  * os_security_group_rule - os_security_group_rule doesn't exit properly when secgroup doesn't exist and state=absent (https://github.com/ansible/ansible/issues/50057)
+  * paramiko_ssh - add auth_timeout parameter to ssh.connect when supported by installed paramiko version. This will prevent "Authentication timeout" errors when a slow authentication step (>30s) happens with a host (https://github.com/ansible/ansible/issues/42596)
+  * purefa_facts and purefb_facts now correctly adds facts into main ansible_fact dictionary (https://github.com/ansible/ansible/pull/50349)
+  * reboot - add appropriate commands to make the plugin work with VMware ESXi (https://github.com/ansible/ansible/issues/48425)
+  * reboot - add support for rebooting AIX (https://github.com/ansible/ansible/issues/49712)
+  * reboot - gather distribution information in order to support Alpine and other distributions (https://github.com/ansible/ansible/issues/46723)
+  * reboot - search common paths for the shutdown command and use the full path to the binary rather than depending on the PATH of the remote system (https://github.com/ansible/ansible/issues/47131)
+  * reboot - use a common set of commands for older and newer Solaris and SunOS variants (https://github.com/ansible/ansible/pull/48986)
+  * redfish_utils - fix reference to local variable 'systems_service'
+  * setup - fix the rounding of the ansible_memtotal_mb value on VMWare vm's (https://github.com/ansible/ansible/issues/49608)
+  * vultr_server - fixed multiple ssh keys were not handled.
+  * win_copy - Fix copy of a dir that contains an empty directory - https://github.com/ansible/ansible/issues/50077
+  * win_firewall_rule - Remove invalid 'bypass' action
+  * win_lineinfile - Fix issue where a malformed json block was returned causing an error
+  * win_updates - Correctly report changes on success
+
+-------------------------------------------------------------------
+Sun Dec 16 00:20:24 UTC 2018 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- update to version 2.7.5
+  Minor Changes:
+  * Add warning about falling back to jinja2_native=false when Jinja2 version is lower than 2.10.
+  * Change the position to search os-release since clearlinux new versions are providing /etc/os-release too
+  * Fixed typo in ansible-galaxy info command.
+  * Improve the deprecation message for squashing, to not give misleading advice
+  * Update docs and return section of vmware_host_service_facts module.
+  * ansible-galaxy: properly warn when git isn't found in an installed bin path instead of traceback
+  * dnf module properly load and initialize dnf package manager plugins
+  * docker_swarm_service: use docker defaults for the user parameter if it is set to null
+  Bugfixes:
+  * bsc#1118896 CVE-2018-16876 Information disclosure in vvv+ mode with no_log on (https://github.com/ansible/ansible/pull/49569)
+  * ACME modules: improve error messages in some cases (include error returned by server).
+  * Added unit test for VMware module_utils.
+  * Also check stdout for interpreter errors for more intelligent messages to user
+  * Backported support for Devuan-based distribution
+  * Convert hostvars data in OpenShift inventory plugin to be serializable by ansible-inventory
+  * Fix AttributeError (Python 3 only) when an exception occurs while rendering a template
+  * Fix N3K power supply facts (https://github.com/ansible/ansible/pull/49150).
+  * Fix NameError nxos_facts (https://github.com/ansible/ansible/pull/48981).
+  * Fix VMware module utils for self usage.
+  * Fix error in OpenShift inventory plugin when a pod has errored and is empty
+  * Fix if the route table changed to none (https://github.com/ansible/ansible/pull/49533)
+  * Fix iosxr netconf plugin response namespace (https://github.com/ansible/ansible/pull/49300)
+  * Fix issues with nxos_install_os module for nxapi (https://github.com/ansible/ansible/pull/48811).
+  * Fix lldp and cdp neighbors information (https://github.com/ansible/ansible/pull/48318)(https://github.com/ansible/ansible/pull/48087)(https://github.com/ansible/ansible/pull/49024).
+  * Fix nxos_interface and nxos_linkagg Idempotence issue (https://github.com/ansible/ansible/pull/46437).
+  * Fix traceback when updating facts and the fact cache plugin was nonfunctional
+  * Fix using vault encrypted data with jinja2_native (https://github.com/ansible/ansible/issues/48950)
+  * Fixed: Make sure that the files excluded when extracting the archive are not checked. https://github.com/ansible/ansible/pull/45122
+  * Fixes issue where a password parameter was not set to no_log
+  * Respect no_log on retry and high verbosity (CVE-2018-16876)
+  * aci_rest - Fix issue ignoring custom port
+  * acme_account, acme_account_facts - in some cases, it could happen that the modules return information on disabled accounts accidentally returned by the ACME server.
+  * docker_swarm - decreased minimal required API version from 1.35 to 1.25; some features require API version 1.30 though.
+  * docker_swarm_service: fails because of default "user: root" (https://github.com/ansible/ansible/issues/49199)
+  * ec2_metadata_facts - Parse IAM role name from the security credential field since the instance profile name is different
+  * fix azure_rm_image module use positional parameter (https://github.com/ansible/ansible/pull/49394)
+  * fixes an issue with dict_merge in network utils (https://github.com/ansible/ansible/pull/49474)
+  * gcp_utils - fix google auth scoping issue with application default credentials or google cloud engine credentials. Only scope credentials that can be scoped.
+  * mail - fix python 2.7 regression
+  * openstack - fix parameter handling when cloud provided as dict https://github.com/ansible/ansible/issues/42858
+  * os_user - Include domain parameter in user deletion https://github.com/ansible/ansible/issues/42901
+  * os_user - Include domain parameter in user lookup https://github.com/ansible/ansible/issues/42901
+  * ovirt_storage_connection - comparing passwords breaks idempotency in update_check (https://github.com/ansible/ansible/issues/48933)
+  * paramiko_ssh - improve log message to state the connection type
+  * reboot - use IndexError instead of TypeError in exception
+  * redis cache - Support version 3 of the redis python library (https://github.com/ansible/ansible/issues/49341)
+  * sensu_silence - Cast int for expire field to avoid call failure to sensu API.
+  * vmware_host_service_facts - handle exception when service package does not have package name.
+  * win_nssm - Switched to Argv-ToString for escaping NSSM credentials (https://github.com/ansible/ansible/issues/48728)
+  * zabbix_hostmacro - Added missing validate_certs logic for running module against Zabbix servers with untrused SSL certificates (https://github.com/ansible/ansible/issues/47611)
+  * zabbix_hostmacro - Fixed support for user macros with context (https://github.com/ansible/ansible/issues/46953)
+
+-------------------------------------------------------------------
+Sun Dec  2 21:25:32 UTC 2018 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- update to version 2.7.4
+  Bugfixes:
+  * powershell - add lib/ansible/executor/powershell to the packaging data
+
+-------------------------------------------------------------------
+Sun Dec  2 21:17:22 UTC 2018 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- update to version 2.7.3
+  Minor Changes:
+  * Document Path and Port are mutually exclusive parameters in wait_for module
+  * Puppet module remove --ignorecache to allow Puppet 6 support
+  * dnf properly support modularity appstream installation via overloaded group
+	modifier syntax
+  * proxmox_kvm - fix exception
+  * win_security_policy - warn users to use win_user_right instead when editing
+	Privilege Rights
+  Bugfixes:
+  * Fix the issue that FTD HTTP API retries authentication-related HTTP requests
+  * Fix the issue that module fails when the Swagger model does not have required fields
+  * Fix the issue with comparing string-like objects
+  * Fix using omit on play keywords
+  * Windows - prevent sensitive content from appearing in scriptblock logging (CVE-2018-16859)
+  * apt_key - Disable TTY requirement in GnuPG for the module to work correctly
+	when SSH pipelining is enabled
+  * better error message when bad type in config, deal with EVNAR= more gracefully
+  * configuration retrieval would fail on non primed plugins
+  * cs_template - Fixed a KeyError on state=extracted
+  * docker_container - fix idempotency problems with docker-py caused by previous
+	init idempotency fix
+  * docker_container - fix interplay of docker-py version check with argument_spec
+	validation improvements
+  * docker_network - driver_options containing Python booleans would cause Docker
+    to throw exceptions
+  * ec2_group - Fix comparison of determining which rules to purge by ignoring descriptions
+  * pip module - fix setuptools/distutils replacement
+  * sysvinit - enabling a service should use "defaults" if no runlevels are specified
+
+-------------------------------------------------------------------
+Wed Nov 28 18:57:37 UTC 2018 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- update to version 2.7.2
+  Minor changes:
+  * Fix documentation for cloning template
+  * Parsing plugin filter may raise TypeError, gracefully handle this
+	exception and let user know about the syntax error in plugin filter file
+  * Scenario guide for VMware HTTP API usage
+  * Update plugin filter documentation
+  * fix yum and dnf autoremove input sanitization to properly warn user if
+	invalid options passed and update documentation to match
+  * improve readability and fix privileges names on vmware scenario_clone_template
+  * k8s - updated module documentation to mention how to avoid SSL validation errors
+  * yum - when checking for updates, now properly include Obsoletes
+	(both old and new) package data in the module JSON output
+
+-------------------------------------------------------------------
+Sat Oct 27 03:22:44 UTC 2018 - sean@suspend.net
+
+- update to 2.7.1
+  Minor changes:
+  * Fix yum module to properly check for empty conf_file value
+  * added capability to set the scheme for the consul_kv lookup
+  * added optional certificate and certificate validation for consul_kv lookups
+  * dnf - properly handle modifying the enable/disable excludes data field
+  * dnf appropriately handles disable_excludes repoid argument
+  * dnf proerly honors disable_gpg_check for local package installation
+  * fix yum module to handle list argument optional empty strings properly
+  * netconf_config - Make default_operation optional in netconf_config module
+  * yum - properly handle proxy password and username embedded in url
+  * yum/dnf - fail when space separated string of names
+
+-------------------------------------------------------------------
+Mon Oct 08 06:09:05 UTC 2018 - sean@suspend.net
+
+- update to 2.7.0
+  Major changes:
+  * Allow config to enable native jinja types
+  * Remove support for simplejson
+  * yum and dnf modules now at feature parity
+
+  Minor changes:
+  * Changed the prefix of all Vultr modules from vr to vultr
+  * Enable installroot tests for yum4(dnf) integration testing, dnf backend now supports that
+  * Fixed timer in exponential backoff algorithm in vmware.py
+
+  Bugfixes:
+  * Security Fix - avoid loading host/group vars from cwd when not specifying a playbook or playbook base dir
+  * Security Fix - avoid using ansible.cfg in a world writable dir
+  * Some connection exception would cause no_log specified on a task to be ignored (stdout info disclosure)
+  * Fix glob path of rc.d (SUSE-specific)
+  * Fix lambda_policy updates
+  * Fix alt linux detection/matching
+
+-------------------------------------------------------------------
+Tue Sep 11 09:29:01 UTC 2018 - lars@linux-schulserver.de
+
+- update to 2.6.4
+  Minor Changes:
+  * add azure_rm_storageaccount support to StorageV2 kind.
+  * import_tasks - Do not allow import_tasks to transition to dynamic
+    if the file is missing
+  Bugfixes:
+  * Add md5sum check in nxos_file_copy module
+  * Allow arbitrary log_driver for docker_container
+  * Fix Python2.6 regex bug terminal plugin nxos, iosxr
+  * Fix check_mode in nxos_static_route module
+  * Fix glob path of rc.d Some distribtuions like SUSE has the rc%.d
+    directories under /etc/init.d
+  * Fix network config diff issue for lines
+  * Fixed an issue where ansible_facts.pkg_mgr would incorrectly set
+    to zypper on Debian/Ubuntu systems that happened to have the
+    command installed
+  * The docker_* modules respect the DOCKER_* environment variables again
+  * The fix for CVE-2018-10875 prints out a warning message about
+    skipping a config file from a world writable current working directory.
+    However, if the user is in a world writable current working directory
+    which does not contain a config file, it should not print a warning
+    message. This release fixes that extaneous warning.
+  * To resolve nios_network issue where vendor-encapsulated-options
+    can not have a use_option flag.
+  * To resolve the issue of handling exception for Nios lookup gracefully.
+  * always correctly template no log for tasks
+  * ansible-galaxy - properly list all roles in roles_path
+  * basic.py - catch ValueError in case a FIPS enabled platform
+    raises this exception
+  * docker_container: fixing working_dir idempotency problem
+  * docker_container: makes unit parsing for memory sizes more consistent,
+    and fixes idempotency problem when kernel_memory is set
+  * fix example code for AWS lightsail documentation
+  * fix the enable_snat parameter that is only supposed to be used by
+    an user with the right policies.
+  * fixes docker_container check and debug mode
+  * improves docker_container idempotency
+  * ios_l2_interface - fix bug when list of vlans ends with comma
+  * ios_l2_interface - fix issue with certain interface types
+  * ios_user - fix unable to delete user admin issue
+  * ios_vlan - fix unable to work on certain interface types issue
+  * nxos_facts test lldp feature and fix nxapi check_rc
+  * nxos_interface port-channel idempotence fix for mode
+  * nxos_linkagg mode fix
+  * nxos_system idempotence fix
+  * nxos_vlan refactor to support non structured output
+  * one_host - fixes settings via environment variables
+  * use retry_json nxos_banner
+  * user - Strip trailing comments in /etc/default/passwd
+  * user - when creating a new user without an expiration date,
+    properly set no expiration rather that expirining the account
+  * win_domain_computer - fixed deletion of computer active directory
+    object that have dependent objects
+  * win_domain_computer - fixed error in diff_support
+  * win_domain_computer - fixed error when description parameter is empty
+  * win_psexec - changed code to not escape the command option when building the args
+  * win_uri -- Fix support for JSON output when charset is set
+  * win_wait_for - fix issue where timeout doesn't wait unless state=drained
+
+-------------------------------------------------------------------
+Mon Aug 27 19:35:38 UTC 2018 - matthias.eliasson@gmail.com
+
+- update to 2.6.3
+  Bugfixes:
+  * Fix lxd module to be idempotent when the given configuration for
+	the lxd container has not changed
+  * Fix setting value type to str to avoid conversion during template
+	read. Fix Idempotency in case of 'no key'.
+  * Fix the mount module's handling of swap entries in fstab
+  * The fix for (CVE-2018-10875) prints out a warning message about
+	skipping a config file from a world writable current working
+	directory. However, if the user explicitly specifies that the
+	config file should be used via the ANSIBLE_CONFIG environment
+	variable then Ansible would honor that but still print out the
+	warning message. This has been fixed so that Ansible honors the
+	user's explicit wishes and does not print a warning message in
+	that circumstance.
+  * To fix the bug where existing host_record was deleted when existing
+	record name is used with different IP.
+  * VMware handle pnic in proxyswitch
+  * fix azure security group cannot add rules when purge_rule set to false.
+  * fix azure_rm_deployment collect tags from existing Resource Group.
+  * fix azure_rm_loadbalancer_facts list takes at least 2 arguments.
+  * fix for the bundled selectors module (used in the ssh and local
+	connection plugins) when a syscall is restarted after being
+	interrupted by a signal
+  * get_url - fix the bug that get_url does not change mode when checksum matches
+  * nicer error when multiprocessing breaks
+  * openssl_certificate - Convert valid_date to bytes for conversion
+  * openstack_inventory.py dynamic inventory file fixed the plugin to the
+	script so that it will work with current ansible-inventory. Also
+    redirect stdout before dumping the ouptput, because not doing so will
+	cause JSON parse errors in some cases.
+  * slack callback - Fix invocation by looking up data from cli.options
+  * sysvinit module: handle values of optional parameters. Don't disable
+	service when enabled parameter isn't set. Fix command when arguments
+	parameter isn't set.
+  * vars_prompt - properly template play level variables in vars_prompt
+  * win_domain - ensure the Netlogon service is up and running after
+	promoting host to controller
+  * win_domain_controller - ensure the Netlogon service is up and running
+	after promoting host to controller
+
+-------------------------------------------------------------------
+Mon Jul 30 15:05:07 UTC 2018 - lars@linux-schulserver.de
+
+- update to 2.6.2
+  Minor Changes
+  + Sceanrio guide for removing an existing virtual machine is added.
+  + lineinfile - add warning when using an empty regexp
+  + Restore module_utils.basic.BOOLEANS variable for backwards compatibility
+    with the module API in older ansible releases.
+  Bugfixes:
+  + Includes fix for bsc#1099808 (CVE-2018-10875) ansible.cfg is being read
+    from current working directory allowing possible code execution
+  + Add text output along with structured output in nxos_facts
+  + Allow more than one page of results by using the right pagination
+    indicator ('NextMarker' instead of 'NextToken').
+  + Fix an atomic_move error that is 'true', but misleading.
+    Now we show all 3 files involved and clarify what happened.
+  + Fix eos_l2_interface eapi.
+  + Fix fetching old style facts in junos_facts module
+  + Fix get_device_info nxos zero or more whitespace regex
+  + Fix nxos CI failures
+  + Fix nxos_nxapi default http behavior
+  + Fix nxos_vxlan_vtep_vni
+  + Fix regex network_os_platform nxos
+  + Refactor nxos cliconf get_device_info for non structured
+    output supported devices
+  + To fix the NoneType error raised in ios_l2_interface when
+    Access Mode VLAN is unassigned
+  + emtpy host/group name is an error
+  + fix default SSL version for docker modules
+  + fix mail module when using starttls
+  + fix nmap config example
+  + fix ps detection of service
+  + fix the remote tmp folder permissions issue when becoming a non
+    admin user
+  + fix typoe in sysvinit that breaks update.rc-d detection
+  + fixes docker_container compatibilty with docker-py < 2.2
+  + get_capabilities in nxapi module_utils should not return empty dictionary
+  + inventory - When using an inventory directory, ensure extension
+    comparison uses text types
+  + ios_vlan - fix unable to identify correct vlans issue
+  + nxos_facts warning message improved
+  + openvswitch_db - make 'key' argument optional
+  + pause - do not set stdout to raw mode when redirecting to a file
+  + pause - nest try except when importing curses to gracefully fail
+    if curses is not present
+  + plugins/inventory/openstack.py - Do not create group with empty
+    name if region is not set
+  + preseve delegation info on nolog
+  + remove ambiguity when it comes to 'the source'
+  + remove dupes from var precedence
+  + restores filtering out conflicting facts
+  + user - fix bug that resulted in module always reporting a change when
+    specifiying the home directory on FreeBSD
+  + user - use correct attribute name in FreeBSD for creat_home
+  + vultr - Do not fail trying to load configuration from ini files if
+    required variables have been set as environment variables.
+  + vyos_command correcting conditionals looping
+  + win_chocolatey - enable TLSv1.2 support when downloading the
+    Chocolatey installer
+  + win_reboot - fix for handling an already scheduled reboot and other
+    minor log formatting issues
+  + win_reboot - fix issue when overridding connection timeout hung
+    the post reboot uptime check
+  + win_reboot - handle post reboots when running test_command
+  + win_security_policy - allows an empty string to reset a policy value
+  + win_share - discard any cmdlet output we don't use to ensure only the
+    return json is received by Ansible
+  + win_unzip - discard any cmdlet output we don't use to ensure only the
+    return json is received by Ansible
+  + win_updates - fixed module return value is lost in error in some cases
+  + win_user - Use LogonUser to validate the password as it does not
+    rely on SMB/RPC to be available
+  + Security Fix - avoid loading host/group vars from cwd when not
+    specifying a playbook or playbook base dir
+  + Security Fix - avoid using ansible.cfg in a world writable dir.
+  + Fix junos_config confirm commit timeout issue
+    (https://github.com/ansible/ansible/pull/41527)
+  + file module - The touch subcommand had its diff output broken during
+    the 2.6.x development cycle. This is now fixed.
+  + inventory manager - This fixes required options being populated before
+    the inventory config file is read, so the required options may be
+    set in the config file.
+  + nsupdate - allow hmac-sha384 https://github.com/ansible/ansible/pull/42209
+  + win_domain - fixes typo in one of the AD cmdlets
+    https://github.com/ansible/ansible/issues/41536
+  + win_group_membership - uses the internal Ansible SID conversion logic
+    and uses that when comparing group membership instead of the name
+- use fdupes to save some space in python_sitelib
+- define BuildRoot on older distributions like SLE-11
+- be a bit more flexible with the ending of manpage files to allow
+  Fedora builds to succeed
+
+-------------------------------------------------------------------
+Mon Jul  2 17:23:10 UTC 2018 - mrueckert@suse.de
+
+- revert some unneeded changes from spec-cleaner
+
+
+-------------------------------------------------------------------
+Mon Jul  2 11:38:41 UTC 2018 - boris@steki.net
+
+- updated to latest release 2.6.0
+- New Plugins:
+  + Callback:
+    - cgroup_memory_recap
+    - grafana_annotations
+    - sumologic
+  + Connection:
+    - httpapi
+  + Inventory:
+    - foreman
+    - gcp_compute
+    - generator
+    - nmap
+  + Lookup:
+    - onepassword
+    - onepassword_raw
+- Modules updates too many to mention here
+  please look at package documentation directory (/usr/share/doc/packages/.../changelogs)
+- bug fixes:
+  - **Security Fix** - Some connection exceptions would cause no_log
+    specified on a task to be ignored.  If this happened, the task information,
+    including any private information coul d have been displayed to stdout and
+    (if enabled, not the default) logged to a log file specified in
+    ansible.cfg's log_path.  Additionally, sites which redirected stdout from
+    ansible runs to a log file may have stored that private information onto
+    disk that way as well.  (https://github.com/ansible/ansible/pull/41414)
+  - Changed the admin_users config option to not include "admin" by default
+    as admin is frequently used for a non-privileged account
+    (https://github.com/ansible/ansible/pull/41164)
+  - Changed the output to "text" for "show vrf" command as default "json"
+    output format with respect to "eapi" transport was failing
+    (https://github.com/ansible/ansible/pull/41470)
+  - Document mode=preserve for both the copy and template module
+  - Fix added for Digital Ocean Volumes API change causing Ansible to
+    recieve an unexpected value in the response.
+    (https://github.com/ansible/ansible/pull/41431)
+  - Fix an encoding issue when parsing the examples from a plugins'
+    documentation
+  - Fix iosxr_config module to handle route-policy, community-set,
+    prefix-set, as-path-set and rd-set blocks.  All these blocks are part of
+    route-policy language of iosxr.
+  - Fix mode=preserve with remote_src=True for the copy module
+  - Implement mode=preserve for the template module
+  - The yaml callback plugin now allows non-ascii characters to be
+    displayed.
+  - Various grafana_* modules - Port away from the deprecated
+    b64encodestring function to the b64encode function instead.
+    https://github.com/ansible/ansible/pull/38388
+  - added missing 'raise' to exception definition
+    https://github.com/ansible/ansible/pull/41690
+  - allow custom endpoints to be used in the aws_s3 module
+    (https://github.com/ansible/ansible/pull/36832)
+  - allow set_options to be called multiple times
+    https://github.com/ansible/ansible/pull/41913
+  - ansible-doc - fixed traceback on missing plugins
+    (https://github.com/ansible/ansible/pull/41167)
+  - cast the device_mapping volume size to an int in the ec2_ami module
+    (https://github.com/ansible/ansible/pull/40938)
+  - copy - fixed copy to only follow symlinks for files in the non-recursive case
+  - copy module - The copy module was attempting to change the mode of files
+    for remote_src=True even if mode was not set as a parameter.  This
+    failed on filesystems which do not have permission bits
+    (https://github.com/ansible/ansible/pull/40099)
+  - copy module - fixed recursive copy with relative paths
+    (https://github.com/ansible/ansible/pull/40166)
+  - correct debug display for all cases
+    https://github.com/ansible/ansible/pull/41331
+  - correctly check hostvars for vars term
+    https://github.com/ansible/ansible/pull/41819
+  - correctly handle yaml inventory files when entries are null dicts
+    https://github.com/ansible/ansible/issues/41692
+  - dynamic includes - Allow inheriting attributes from static parents
+    (https://github.com/ansible/ansible/pull/38827)
+  - dynamic includes - Don't treat undefined vars for conditional includes
+    as truthy (https://github.com/ansible/ansible/pull/39377)
+  - dynamic includes - Fix IncludedFile comparison for free strategy
+    (https://github.com/ansible/ansible/pull/37083)
+  - dynamic includes - Improved performance by fixing re-parenting on copy
+    (https://github.com/ansible/ansible/pull/38747)
+  - dynamic includes - Use the copied and merged task for calculating task
+    vars (https://github.com/ansible/ansible/pull/39762)
+  - file - fixed the default follow behaviour of file to be true
+  - file module - Eliminate an error if we're asked to remove a file but
+    something removes it while we are processing the request
+    (https://github.com/ansible/ansible/pull/39466)
+  - file module - Fix error when recursively assigning permissions and a
+    symlink to a nonexistent file is present in the directory tree
+    (https://github.com/ansible/ansible/issues/39456)
+  - file module - Fix error when running a task which assures a symlink to a
+    nonexistent file exists for the second and subsequent times
+    (https://github.com/ansible/ansible/issues/39558)
+  - file module - The file module allowed the user to specify src as a
+    parameter when state was not link or hard.  This is documented as only
+    applying to state=link or state=hard but in previous Ansible, this could
+    have an effect in rare cornercases.  For instance, "ansible -m file -a
+    'state=directory path=/tmp src=/var/lib'" would create /tmp/lib.  This
+    has been disabled and a warning emitted (will change to an error in
+    Ansible-2.10).
+  - file module - The touch subcommand had its diff output broken during the
+    2.6.x development cycle.  This is now fixed
+    (https://github.com/ansible/ansible/issues/41755)
+  - fix BotoCoreError exception handling
+  - fix apt-mark on debian6 (https://github.com/ansible/ansible/pull/41530)
+  - fix async for the aws_s3 module by adding async support to the action
+    plugin (https://github.com/ansible/ansible/pull/40826)
+  - fix decrypting vault files for the aws_s3 module
+    (https://github.com/ansible/ansible/pull/39634)
+  - fix errors with S3-compatible APIs if they cannot use ACLs for buckets
+    or objects
+  - fix permission handling to try to download a file even if the user does
+    not have permission to list all objects in the bucket
+  - fixed config required handling, specifically for _terms in lookups
+    https://github.com/ansible/ansible/pull/41740
+  - gce_net - Fix sorting of allowed ports
+    (https://github.com/ansible/ansible/pull/41567)
+  - group_by - support implicit localhost
+    (https://github.com/ansible/ansible/pull/41860)
+  - import/include - Ensure role handlers have the proper parent, allowing
+    for correct attribute inheritance
+    (https://github.com/ansible/ansible/pull/39426)
+  - import_playbook - Pass vars applied to import_playbook into parsing of
+    the playbook as they may be needed to parse the imported plays
+    (https://github.com/ansible/ansible/pull/39521)
+  - include_role/import_role - Don't overwrite included role handlers with
+    play handlers on parse (https://github.com/ansible/ansible/pull/39563)
+  - include_role/import_role - Fix parameter templating
+    (https://github.com/ansible/ansible/pull/36372)
+  - include_role/import_role - Use the computed role name for
+    include_role/import_role so to diffentiate between names computed from
+    host vars (https://github.com/ansible/ansible/pull/39516)-
+    include_role/import_role - improved performance and recursion depth
+    (https://github.com/ansible/ansible/pull/36470)
+  - lineinfile - fix insertbefore when used with BOF to not insert duplicate
+    lines (https://github.com/ansible/ansible/issues/38219)
+  - password lookup - Do not load password lookup in network filters,
+    allowing the password lookup to be overriden
+    (https://github.com/ansible/ansible/pull/41907)
+  - pause - ensure ctrl+c interrupt works in all cases
+    (https://github.com/ansible/ansible/issues/35372)
+  - powershell - use the tmpdir set by `remote_tmp` for become/async tasks
+    instead of the generic $env:TEMP -
+    https://github.com/ansible/ansible/pull/40210
+  - selinux - correct check mode behavior to report same changes as normal
+    mode (https://github.com/ansible/ansible/pull/40721)
+  - spwd - With python 3.6 spwd.getspnam returns PermissionError instead of
+    KeyError if user does not have privileges
+    (https://github.com/ansible/ansible/issues/39472)
+  - synchronize - Ensure the local connection created by synchronize uses
+    _remote_is_local=True, which causes ActionBase to build a local tmpdir
+    (https://github.com/ansible/ansible/pull/40833)
+  - template - Fix for encoding issues when a template path contains
+    non-ascii characters and using the template path in ansible_managed
+    (https://github.com/ansible/ansible/issues/27262)
+  - template action plugin - fix the encoding of filenames to avoid
+    tracebacks on Python2 when characters that are not present in the user's
+    locale are present.  (https://github.com/ansible/ansible/pull/39424)
+  - user - only change the expiration time when necessary
+    (https://github.com/ansible/ansible/issues/13235)
+  - uses correct conn info for reset_connection
+    https://github.com/ansible/ansible/issues/27520
+  - win_environment - Fix for issue where the environment value was deleted
+    when a null value or empty string was set -
+    https://github.com/ansible/ansible/issues/40450
+  - win_file - fix issue where special chars like [ and ] were not being
+    handled correctly https://github.com/ansible/ansible/pull/37901
+  - win_get_url - fixed a few bugs around authentication and force no when
+    using an FTP URL
+  - win_iis_webapppool - redirect some module output to null so Ansible can
+    read the output JSON https://github.com/ansible/ansible/issues/40874
+  - win_template - fix when specifying the dest option as a directory with
+    and without the trailing slash
+    https://github.com/ansible/ansible/issues/39886
+  - win_updates - Added the ability to run on a scheduled task for older
+    hosts so async starts working again -
+    https://github.com/ansible/ansible/issues/38364
+  - win_updates - Fix logic when using a whitelist for multiple updates
+  - win_updates - Fix typo that hid the download error when a download
+    failed
+  - win_updates - Fixed issue where running win_updates on async fails
+    without any error
+  - windows become - Show better error messages when the become process fails
+  - winrm - Add better error handling when the kinit process fails
+  - winrm - allow `ansible_user` or `ansible_winrm_user` to override
+    `ansible_ssh_user` when both are defined in an inventory -
+    https://github.com/ansible/ansible/issues/39844
+  - winrm - ensure pexpect is set to not echo the input on a failure and have
+    a manual sanity check afterwards
+    https://github.com/ansible/ansible/issues/41865
+  - winrm connection plugin - Fix exception messages sometimes raising a
+    traceback when the winrm connection plugin encounters an unrecoverable
+    error.  https://github.com/ansible/ansible/pull/39333
+  - xenserver_facts - ensure module works with newer versions of XenServer
+    (https://github.com/ansible/ansible/pull/35821)
+
+-------------------------------------------------------------------
+Tue Jun 26 13:55:07 UTC 2018 - mrueckert@suse.de
+
+- use python3 on (open)SUSE 15 or newer
+
+-------------------------------------------------------------------
+Fri Jun 15 13:49:23 UTC 2018 - kbabioch@suse.com
+
+- Update to 2.5.5
+  - Fixed the honouration of the no_log option with failed task iterations
+    (CVE-2018-10855 boo#1097775)
+  - Bufixes:
+    - Changed the admin_users config option to not include "admin" by default
+      as admin is frequently used for a non-privileged account
+    - aws_s3 - add async support to the action plugin
+    - aws_s3 - fix decrypting vault files
+    - ec2_ami - cast the device_mapping volume size to an int
+    - eos_logging - fix idempotency issues
+    - cache plugins - A cache timeout of 0 means the cache will not expire.
+    - ios_logging - fix idempotency issues
+    - ios/nxos/eos_config - don't retrieve config in running_config when config is provided for diff
+    - nxos_banner - fix multiline banner issue
+    - nxos terminal plugin - fix output truncation
+    - nxos_l3_interface - fix no switchport issue with loopback and svi interfaces
+    - nxos_snapshot - fix compare_option
+- Applied spec-cleaner
+
+-------------------------------------------------------------------
+Tue Apr 24 15:32:37 UTC 2018 - lars@linux-schulserver.de
+
+- Update to 2.5.1
+  Minor Changes
+  + Updated example in vcenter_license module.
+  + Updated virtual machine facts with instanceUUID which is unique
+    for each VM irrespective of name and BIOS UUID.
+  + A lot of Bugfixes, please refer to the Changelog installed in
+    /usr/share/doc/packages/ansible/changelogs/CHANGELOG-v2.5.rst
+
+-------------------------------------------------------------------
+Tue Mar 27 15:45:03 UTC 2018 - lars@linux-schulserver.de
+
+- Update to 2.5.0:
+  Major Changes
+  * Ansible Network improvements
+    + Created new connection plugins network_cli and netconf to replace
+      connection=local. connection=local will continue to work for a
+      number of Ansible releases.
+    + No more unable to open shell. A clear and descriptive message will
+      be displayed in normal ansible-playbook output without needing to enable debug mode
+    + Loads of documentation, see Ansible for Network Automation Documentation.
+    + Refactor common network shared code into package under module_utils/network/
+    + Filters: Add a filter to convert XML response from a network device to JSON object.
+    + Loads of bug fixes.
+    + Plus lots more.
+  * New simpler and more intuitive 'loop' keyword for task loops. The
+    with_<lookup> loops will likely be deprecated in the near future
+    and eventually removed.
+  * Added fact namespacing; from now on facts will be available under
+    ansible_facts namespace (for example: ansible_facts.os_distribution)
+    without the ansible_ prefix. They will continue to be added into the
+    main namespace directly, but now with a configuration toggle to enable
+    this. This is currently on by default, but in the future it will default to off.
+  * Added a configuration file that a site administrator can use to
+    specify modules to exclude from being used.
+  Minor Changes
+  * please refer to /share/doc/packages/ansible/changelogs/CHANGELOG-v2.5.rst
+  Deprecated Features
+  * Previously deprecated 'hostfile' config settings have been 're-deprecated'
+    because previously code did not warn about deprecated configuration settings.
+  * Using Ansible-provided Jinja tests as filters is deprecated and will
+    be removed in Ansible 2.9.
+  * The stat and win_stat modules have deprecated get_md5 and the md5 return
+    values. These options will become undocumented in Ansible 2.9 and
+    removed in a later version.
+  * The redis_kv lookup has been deprecated in favor of new redis lookup
+  * Passing arbitrary parameters that begin with HEADER_ to the uri module,
+    used for passing http headers, is deprecated. Use the headers parameter
+    with a dictionary of header names to value instead.
+    This will be removed in Ansible 2.9
+  * Passing arbitrary parameters to the zfs module to set zfs properties is
+    deprecated. Use the extra_zfs_properties parameter with a dictionary of
+    property names to values instead. This will be removed in Ansible 2.9.
+  * Use of the AnsibleModule parameter check\_invalid\_arguments in custom
+    modules is deprecated. In the future, all parameters will be checked to
+    see whether they are listed in the arg spec and an error raised if they
+    are not listed. This behaviour is the current and future default so most
+    custom modules can simply remove check\_invalid\_arguments if they set it
+    to the default value of True. The check\_invalid\_arguments parameter
+    will be removed in Ansible 2.9.
+  * The nxos_ip_interface module is deprecated in Ansible 2.5.
+    Use nxos_l3_interface module instead.
+  * The nxos_portchannel module is deprecated in Ansible 2.5.
+    Use nxos_linkagg module instead.
+  * The nxos_switchport module is deprecated in Ansible 2.5.
+    Use nxos_l2_interface module instead.
+  * The ec2_ami_find has been deprecated; use ec2_ami_facts instead.
+  * panos_security_policy: Use panos_security_rule - the old module uses
+    deprecated API calls
+  * vsphere_guest is deprecated in Ansible 2.5 and will be removed in
+    Ansible-2.9. Use vmware_guest module instead.
+  Removed Features (previously deprecated)
+  * accelerate.
+  * boundary_meter: There was no deprecation period for this but the hosted
+    service it relied on has gone away so the module has been removed. #29387
+  * cl_ : cl_interface, cl_interface_policy, cl_bridge, cl_img_install,
+    cl_ports, cl_license, cl_bond. Use nclu instead
+  * docker. Use docker_container and docker_image instead.
+  * ec2_vpc.
+  * ec2_ami_search, use ec2_ami_facts instead.
+  * nxos_mtu. Use nxos_system's system_mtu option instead.
+    To specify an interface's MTU use nxos_interface.
+  * panos_nat_policy: Use panos_nat_rule the old module uses
+    deprecated API calls
+- also package the changelogs directory below
+  /usr/share/doc/packages/ansible/ for better reference
+
+-------------------------------------------------------------------
+Tue Mar  6 09:47:28 UTC 2018 - lars@linux-schulserver.de
+
+- License changed to GPL-3.0-or-later, as mentioned in the source
+  (former license focues on GPL-3.0 only)
+
+-------------------------------------------------------------------
+Fri Feb 16 07:54:43 UTC 2018 - tbechtold@suse.com
+
+- Add python-passlib as Requires (bsc#1080682)
+  passlib is needed for the "vars_prompt" feature of ansible
+
+-------------------------------------------------------------------
+Sun Feb  4 16:36:34 UTC 2018 - mardnh@gmx.de
+
+- Update to version 2.4.3.0:
+  * Fix `pamd` rule args regexp to match file paths.
+  * Check if SELinux policy exists before setting.
+  * Set locale to `C` in `letsencrypt` module to fix date parsing
+    errors.
+  * Fix include in loop when stategy=free.
+  * Fix save parameter in asa_config.
+  * Fix --vault-id support in ansible-pull.
+  * In nxos_interface_ospf, fail nicely if loopback is used with
+    passive_interface.
+  * Fix quote filter when given an integer to quote.
+  * nxos_vrf_interface fix when validating the interface.
+  * Fix for win_copy when sourcing files from an SMBv1 share.
+  * correctly report callback plugin file.
+  * restrict revaulting to vault cli.
+  * Fix python3 tracebacks in letsencrypt module.
+  * Fix ansible_*_interpreter variables to be templated prior to
+    being used.
+  * Fix setting of environment in a task that uses a loop
+  * Fix fetch on Windows failing to fetch files or particular
+    block size.
+  * preserve certain fields during no log.
+  * fix issue with order of declaration of sections in ini
+    inventory.
+  * Fix win_iis_webapppool to correctly stop a apppool.
+  * Fix CloudEngine host failed.
+  * Fix ios_config save issue.
+  * Handle vault filenames with nonascii chars when displaying
+    messages.
+  * Fix win_iis_webapppool to not return passwords.
+  * Fix extended file attributes detection and changing.
+  * correctly ensure 'ungrouped' membership rules.
+  * made warnings less noisy when empty/no inventory is supplied.
+  * Fixes a failure which prevents to create servers in module
+    cloudscale_server.
+  * Fix win_firewall_rule "Specified cast is invalid" error when
+    modifying a rule with all of Domain/Public/Private profiles set.
+  * Fix case for multilib when installing from a file in the yum
+    module.
+  * Fix WinRM parsing/escaping of IPv6 addresses.
+  * Fix win_package to detect MSI regardless of the extension case.
+  * Updated win_mapped_drive docs to clarify what it is used for.
+  * Fix file related modules run in check_mode when the file being
+    operated on does not exist.
+  * Make eos_vlan idempotent.
+  * Fix win_iis_website to properly check attributes before setting.
+  * Fixed the removal date for ios_config save and force parameters.
+  * cloudstack: fix timeout from ini config file being ignored.
+  * fixes memory usage issues with many blocks/includes.
+  * Fixes maximum recursion depth exceeded with include_role.
+  * Fix to win_dns_client module to take ordering of DNS servers to
+    resolve into account.
+  * Fix for the nxos_banner module where some nxos images nest the
+    output inside of an additional dict.
+  * Fix failure message "got multiple values for keyword argument
+    id" in the azure_rm_securitygroup module (caused by changes to
+    the azure python API).
+  * Bump Azure storage client minimum to 1.5.0 to fix
+    deserialization issues.
+    This will break Azure Stack until it receives storage API
+    version 2017-10-01 or changes are made to support multiple
+    versions.
+  * Flush stdin when passing the become password. Fixes some cases
+    of timeout on Python 3 with the ssh connection plugin.
+
+-------------------------------------------------------------------
+Thu Nov 30 06:58:48 UTC 2017 - tbechtold@suse.com
+
+update to version v2.4.2.0:
+  * lock azure containerservice to below 2.0.0
+  * ovirt_host_networks: Fix label assignment
+  * Fix vault --ask-vault-pass with no tty (#31493)
+  * cherry-pick changes of azure_rm_common from devel to 2.4 (#32607)
+  * Fixes #31090. In network parse_cli filter plugin, this change moves the creation of a (#31092) (#32458)
+  * Use an abspath for network inventory ssh key path.
+  * Remove toLower on source (#31983)
+  * Add k8s_common.py logging fixes to the changelog
+  * inserts enable cmd hash with auth_pass used (#32107)
+  * Fix exception upon display.warn() (#31876)
+  * ios_system: Fix typo in unit test (#32284)
+  * yum: use the C locale when screen scraping (#32203)
+  * Use region derived from get_aws_connection_info() in dynamodb_table to fix tagging bug (#32557)
+  * fix item var in delegation (#32986)
+  * Add changelog entry for elb_application_lb fix
+  * Add a validate example to blockinfile. (#32088)
+  * Correct formatting --arguments (#31808)
+  * Add changelog for URI/get_url fix
+  * [cloud] Bugfix for aws_s3 empty directory creation (#32198)
+  * Fix junos integration test fixes as per connection refactor (#33050) (#33055)
+  * Update win_copy for #32677 (#32682)
+  * ios_interface testfix (#32381)
+  * Add proper check mode support to the script module (#31852)
+  * Add galaxy --force fix to changelog
+  * Fix non-ascii errors in config manager
+  * Add python3 urllib fixes to changelog
+  * Add changelog entry for the stdin py3 fix
+  * Update version info for the 2.4.2 release
+  * Add max_fail_percentage fix to changelog
+  * Changelog entry for script inventory plugin fix.
+  * Make RPM spec compatible with RHEL 6 (#31653)
+  * Add changelog entry for the yum locale fix
+  * Use vyos/1.1.8 in CI.
+  * Fix patching to epel package
+  * Pass proper error value to to_text (#33030)
+  * Fix and re-enable zypper* integration tests in CI.
+  * avoid chroot paths (#32778)
+  * Add changelog entry for inventory nonascii paths fix
+  * Fix ios_config integration test failures (#32959) (#32970)
+  * Fix ios_config file prompt issue (#32744) (#32780)
+  * Mdd module unit test docs (#31373)
+  * dont add all group vars to implicit on create
+  * Fix nxos_banner removal idempotence issue in N1 images (#31259)
+  * Clarify the release and maintenance cycle (#32402)
+  * Add ansible_distribution_major_version to macOS (#31708)
+  * Docs (#32718)
+  * Keep newlines when reading LXC container config file (#32219)
+  * Updated changelog for vmware logon error handling
+  * New release v2.4.2.0-0.2.beta2
+  * added doc notes about vars plugins in precedence
+  * revert module_utils/nxos change from #32846 (#32956)
+  * [cloud] add boto3 requirement to `cloudformation` module docs (#31135)
+  * Fixes #31056 (#31057)
+  * - Fix logging module issue where facility is being deleted along with host (#32234)
+  * Get the moid in a more failsafe manner (#32671)
+  * Integration Tests only: add static route, snmp_user, snapshot and hsrp it cases (#28933)
+  * Add the change to when we escape backslashes (for the template lookup plugin) to changelog
+  * correctly deal with changed (#31812)
+  * Add the template lookup escaping to the 2.4 porting guide (#32760)
+  * tests for InventoryModule error conditions (#31381)
+  * Disable pylint rules for stable-2.4.
+  * fix typo
+  * Enable TLS1.1 and TLS1.2 for win_package (#32184)
+  * Add remove host fix to changelog
+  * ios_interface provider issue testfix (#32335)
+  * win_service: quoted path fix (#32469)
+  * Add changes to succeeded/failed tests to the 2.4 porting guide (#33201)
+  * Run OS X tests in 3 groups in CI.
+  * ini inventory: document value parsing workaround
+  * Change netconf port in testcase as per test enviornment (#32883) (#32889)
+  * fix inventory loading for ansible-doc
+  * jsonify inventory (#32990)
+  * firewalld: don't reference undefined variable in error case (#31949)
+  * change ports to non well known ports and drop time_range for N1 (#31261)
+  * make vars only group declarations an error
+  * Add changelog for os_floating_ip fix
+  * Fix example on comparing master config (#32406)
+  * py2/py3 safer shas on hostvars (#31788)
+  * ensure we always have a basedir
+  * Add missing ansible-test --remote-terminate support. (#32918)
+  * Use show command to support wider platform set for nxos_interface module (#33037)
+  * ios_logging: change IOS command pipe to section to include (#33100) (#33116)
+  * win_find: allow module to skip on files it fails to check (#32105)
+  * New release v2.4.2.0-0.4.beta4
+  * multiple nxos fixes (#32905)
+  * Add changelog entry for git archive fix
+  * Add changelog entries for a myriad of 2.4.2 bugfixes
+  * iosxr integration testfix (#32344)
+  * Fix #31694: running with closed stdin on python 3 (#31695)
+  * Add eos_user fix to changelog
+  * updated changelog with win_find fix
+  * Added urls python3 fix to changelog
+  * [cloud] Support changeset_name parameter on CloudFormation stack create (#31436)
+  * use configured ansible_shell_executable
+  * New release v2.4.2.0-0.3.beta3
+  * Fix ec2_lc failing to create multi-volume configurations (#32191)
+  * Changelog win_package TLS fix
+  * Fix wrong prompt issue for network modules (#32426) (#32442)
+  * New release v2.4.2.0-0.1.beta1
+  * Exclude stack policy when running in check mode.
+  * change inventory_hostname to ansible_host to fix test (#32890) (#32891)
+  * Add azure_rm_acs check mode fix
+  * Updated changelog for win_copy fix
+  * corrected package docs
+  * make sure patterns are strings
+  * Add more bugfixes to changelog
+  * Fix junos netconf port issue in integration test (#32610) (#32668)
+  * fixed .loads error for non decoded json in Python 3 (#32065)
+  * nxos_config and nxos_facts - fixes for N35 platform.  (#32762) (#32875)
+  * Add changelog entry for #32219
+  * Remove provider from  ios integration test (#31037) (#32230)
+  * added note about serial behaviour (#32461)
+  * Fixes ios_logging unit test (#32240)
+  * Avoid AttributeError: internal_network on os_floating_ip (#32887)
+  * use to_str instead of json.dumps when serializing k8s object for logging
+  * Prefer the stdlib SSLContext over urllib3 context
+  * git: fix archive when update is set to no (#31829)
+  * Add elb_target_group port fix to the changelog
+  * Changelog entry for aws_s3 issue #32144
+  * Add error handling for user login (#32613)
+  * Move asa provider to suboptions (#32356)
+  * fix dci failure nxos (#32877) (#32878)
+  * Add inventory jsonification to the changelog
+  * eos_eapi: adding the desired state config to the new vrf fixes #32111 (#32112) (#32452)
+  * Handle ip name-server lines containing multiple nameservers (#32235) (#32373)
+  * Remove provider from prepare_ios_tests integration test (#31038)
+  * Add last minute bugfixes and doc updates for rc1
+  * Fix snmp bugs on Nexus 3500 platform (#32773) (#32847)
+  * validate that existing dest is valid directory
+  * Update the release data for 2.4.1 in the changelog
+  * add check mode for acs delete (#32063)
+  * More fixes added to changelog
+  * Add wait_for fix to the changelog
+  * removed psobject to hashtables that were missed (#32710)
+  * wait_for: treat broken connections as "unready" (#28839)
+  * Return all elements in a more robust way
+  * fix ios_interface test (#32372)
+  * Add missing packages to default docker image.
+  * fix nxos_igmp_snooping (#31688)
+  * - Fix to return error message back to the module. (#31035)
+  * Ensure that readonly result members are serialized (#33170)
+  * Keywords docs (#32807)
+  * remove hosts from removed when rescuing
+  * Add panos_security_rule docs typo fix to changelog
+  * Update vyos completion in network.txt.
+  * move to use ansible logging
+  * ovirt_clusters: Fix fencing and kuma comparision
+  * Documentation typo fixes (#32473)
+  * [fix] issue #30516 : take care about autoremove in upgrade function
+  * Enable ECHO in prompt module (#32083)
+  * calculate max fail against all hosts in batch
+  * Fix urlparse import for Python3 (#31240)
+  * Bunch of changelog updates for cherry-picks
+  * restore hostpattern regex/glob behaviour
+  * Better handling of malformed vault data envelope (#32515)
+  * Updated changelog regarding win_service quoted path fix
+  * nxos_interface error handling (#32846)
+  * An availability zone will be selected if none is provided. Set az to an empty string if it's None to avoid traceback. (#32216)
+  * Use to_native when validating proxy result (#32596)
+  * vmware_guest: refactor spec serialization (#32681)
+  * Add new default Docker container for ansible-test. (#31944)
+  * warn on bad keys in group
+  * NXOS: Integration tests to Ansible (part 3) (#29030)
+  * Add spec file fix to changelog
+  * eos_user testfix (#32264)
+  * iam.py: return iam.role dict when creating roles (#28964)
+  * Add networking bug fixes to changelog (#32201)
+  * [cloud] sns_topic: Fix unreferenced variable
+  * Fix service_mgr fact collection (#32086)
+  * Fix include_role unit tests (#31920)
+  * Updated changelog for win_iis_* modules things
+  * handle ignore_errors in loop
+  * adjust nohome param when using luser
+  * better cleanup on task results display (#27175)
+  * Improve python 2/3 ABC fallback for pylint. (#31848)
+  * fix html formatting
+  * Add ansible_shell_executable fix to changelog
+  * Move resource pool login to a separate function and fix undefined var reference (#32674)
+  * Update ansible-test sanity command. (#31958)
+  * ios_ping test fix (#32342)
+  * fix CI failure yaml syntax (#32374)
+  * Scan group_vars/host_vars in sorted order
+  *     luseradd defaults to creating w/o need for -m (#32411)
+  * Integration Tests only:  nxos_udld, nxos_udld_interface, nxos_vxlan_vtep_vni (#29143) (#32962)
+  * Fix: modifying existing application lb using certificates now properly sets certificates (#28217)
+  * ios_logging: Fix some smaller issues, add unit test (#32321)
+  * Fix nxos_snmp_host bug (#32916) (#32958)
+  * ovirt_hosts: Don't fail upgrade when NON_RESPONSIVE state
+  * ini plugin should recursively instantiate pending
+  * eos_user: sends user secret first on user creation fixes #31680 (#32162)
+  * Cast target port to an int in elb_target_group. Fixes #32098 (#32202)
+  * New release v2.4.2.0-0.5.rc1
+  * remove misleading group vars as they are flat (#32276)
+  * Fix typo
+  * Avoid default inventory proccessing for pull (#32135)
+  * Fix ansible-test default image. (#31966)
+  * removed superfluous `type` field from RecordSet constructor (#33167)
+  * Update k8s_common.py
+  * Add ios_logging fixes to changelog 2.4.2beta2 (#32447)
+  * Revert "Removed a force conditional (#28851)" (#32282)
+  * Add new documentation on writing unittests to the changelog
+  * Fix ansible-test race calling get_coverage_path.
+  * New release v2.4.2.0-1
+
+-------------------------------------------------------------------
+Fri Oct 27 19:16:56 UTC 2017 - matthias.eliasson@gmail.com
+
+- Update to 2.4.1.0:
+  * CVE-2017-7550: Prevent jenkins_plugin module from exposing
+    passwords in remote host logs (bsc#1065872)
+  * Various bug fixes and improvements
+
+-------------------------------------------------------------------
+Tue Oct  3 08:24:58 UTC 2017 - jengelh@inai.de
+
+- Remove radical wording from descriptions.
+  Use improved find syntax.
+
+-------------------------------------------------------------------
+Sat Sep 23 09:05:01 UTC 2017 - lars@linux-schulserver.de
+
+- update to 2.4.0.0 (final)
+  Major Changes
+  + Support for Python-2.4 and Python-2.5 on the managed system's side
+    was dropped. If you need to manage a system that ships with Python-2.4
+    or Python-2.5, you'll need to install Python-2.6 or better on the
+    managed system or run Ansible-2.3 until you can upgrade the system.
+  + New import/include keywords to replace the old bare include directives.
+    The use of static: {yes|no} on such includes is now deprecated.
+  ++ Using import_* (import_playbook, import_tasks, import_role) directives are static.
+  ++ Using include_* (include_tasks, include_role) directives are dynamic.
+     This is done to avoid collisions and possible security issues as
+     facts come from the remote targets and they might be compromised.
+  + New order play level keyword that allows the user to change the
+    order in which Ansible processes hosts when dispatching tasks.
+  + Users can now set group merge priority for groups of the same depth
+    (parent child relationship), using the new ansible_group_priority variable,
+    when values are the same or don't exist it will fallback to the previous
+    sorting by name'.
+  + Inventory has been revamped:
+  ++ Inventory classes have been split to allow for better
+     management and deduplication
+  ++ Logic that each inventory source duplicated is now common and pushed
+     up to reconciliation
+  ++ VariableManager has been updated for better interaction with inventory
+  ++ Updated CLI with helper method to initialize base objects for plays
+  ++ New inventory plugins for creating inventory
+  ++ Old inventory formats are still supported via plugins
+  ++ Inline host_list is also an inventory plugin, an example alternative
+     advanced_host_list is also provided (it supports ranges)
+  ++ New configuration option to list enabled plugins and precedence
+     order: whitelist_inventory in ansible.cfg
+  ++ vars_plugins have been reworked, they are now run from Vars manager
+     and API has changed (need docs)
+  ++ Loading group_vars/host_vars is now a vars plugin and can be overridden
+  ++ It is now possible to specify mulitple inventory sources in the
+     command line (-i /etc/hosts1 -i /opt/hosts2)
+  ++ Inventory plugins can use the cache plugin (i.e. virtualbox) and
+     is affected by meta: refresh_inventory
+  ++ Group variable precedence is now configurable via new 'precedence'
+     option in ansible.cfg (needs docs)
+  ++ Improved warnings and error messages across the board
+  + Configuration has been changed from a hardcoded listing in the
+    constants module to dynamically loaded from yaml definitions
+  ++ Also added an ansible-config CLI to allow for listing config options
+     and dumping current config (including origin)
+  ++ TODO: build upon this to add many features detailed in ansible-config
+     proposal https://github.com/ansible/proposals/issues/35
+  + Windows modules now support the use of multiple shared module_utils
+    files in the form of Powershell modules (.psm1), via
+      #Requires -Module Ansible.ModuleUtils.Whatever.psm1
+  + Python module argument_spec now supports custom validation logic
+    by accepting a callable as the type argument.
+  + Windows become_method: runas now works across all authtypes and
+    will auto-elevate under UAC if WinRM user has "Act as part of the
+    operating system" privilege
+  - please refer to /usr/share/doc/packages/ansible/CHANGELOG.md for
+    further changes
+- added ansible-inventory and ansible-config binaries and manpages
+- package contrib and examples directories in docdir
+- package all *md files as documentation for now
+- recommend the following new packages for (open)SUSE:
+  + python-httplib2
+  + python-keyczar
+  + python-six
+- enable/fix build for RHEL and Fedora by redefining __python2 and
+  adding/enhancing the needed (build)requires if needed
+
+-------------------------------------------------------------------
+Fri Sep  8 08:20:55 UTC 2017 - johannes.grassler@suse.com
+
+- update to 2.2.3.0 (bsc#1056094)
+  * Fixes for CVE-2017-7466 and CVE-2017-7481
+  * Various minor bug fixes
+
+-------------------------------------------------------------------
+Tue Aug  8 17:06:10 UTC 2017 - michael@stroeder.com
+
+- update to 2.3.2.0 (final)
+- replaced hard-coded version by var
+
+-------------------------------------------------------------------
+Wed Jun 07 20:51:30 UTC 2017 - matthias.eliasson@gmail.com
+
+- update to 2.3.1.0 (final)
+- clean up of spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Wed May 10 22:35:24 UTC 2017 - lars@linux-schulserver.de
+
+- update to 2.3.1 RC1 (package version 2.3.0.1) (bsc#1056094):
+  * SECURITY (MODERATE): fix for CVE-2017-7481, in which data for
+    lookup plugins used as variables was not being correctly marked
+    as "unsafe".
+  * SECURITY (MODERATE): fix for CVE-2017-7466, which finally fixes
+    an arbitrary command execution vulnerability
+
+-------------------------------------------------------------------
+Tue Mar 28 08:30:35 UTC 2017 - michael@stroeder.com
+
+- update to 2.3.0.0
+  for full list of changes see
+  /usr/share/doc/packages/ansible/CHANGELOG.md
+
+-------------------------------------------------------------------
+Mon Mar 27 21:26:31 UTC 2017 - michael@stroeder.com
+
+- update to 2.2.2.0
+  This release fixes a few bugs introduced in the previous version,
+  as well as another small tweak to catch an additional way in
+  which CVE-2016-9587 could be triggered.
+
+-------------------------------------------------------------------
+Mon Jan 16 18:11:04 UTC 2017 - michael@stroeder.com
+
+- update to 2.2.1.0 (final)
+
+-------------------------------------------------------------------
+Wed Jan 11 22:46:47 UTC 2017 - boris@steki.net
+
+- security update to rc4 of 2.2.1.0 version
+  CVE-2016-9587, CVE-2016-8628 and CVE-2016-8614
+  for full list of changes see
+  /usr/share/doc/packages/ansible/CHANGELOG.md
+
+-------------------------------------------------------------------
+Mon Oct 17 18:11:08 UTC 2016 - michael@stroeder.com
+
+- update to 2.2.0.0
+  (see /usr/share/doc/packages/ansible/CHANGELOG.md for details)
+
+-------------------------------------------------------------------
+Thu Sep 15 16:20:44 UTC 2016 - michael@stroeder.com
+
+- update to 2.1.2.0
+  (see /usr/share/doc/packages/ansible/CHANGELOG.md for details)
+
+-------------------------------------------------------------------
+Tue Jun 28 06:25:44 UTC 2016 - michael@stroeder.com
+
+- update to 2.1.1.0
+  (see /usr/share/doc/packages/ansible/CHANGELOG.md for details)
+- changed download link to https://releases.ansible.com
+
+-------------------------------------------------------------------
+Sun May 29 18:51:07 UTC 2016 - michael@stroeder.com
+
+- update to 2.1.0.0
+  (see /usr/share/doc/packages/ansible/CHANGELOG.md for details)
+- on SuSE platforms recommend package python-dnspython for
+  DNS lookups in playbooks
+
+-------------------------------------------------------------------
+Sat May  7 18:12:52 UTC 2016 - michael@stroeder.com
+
+- update to 2.0.2.0:
+  * Backport of the 2.1 feature to ensure per-item callbacks are sent as they occur,
+    rather than all at once at the end of the task.
+  * Fixed bugs related to the iteration of tasks when certain combinations of roles,
+    blocks, and includes were used, especially when handling errors in rescue/always
+    portions of blocks.
+  * Fixed handling of redirects in our helper code, and ported the uri module to use
+    this helper code. This removes the httplib dependency for this module while fixing
+    some bugs related to redirects and SSL certs.
+  * Fixed some bugs related to the incorrect creation of extra temp directories for
+    uploading files, which were not cleaned up properly.
+  * Improved error reporting in certain situations, to provide more information such as
+    the playbook file/line.
+  * Fixed a bug related to the variable precedence of role parameters, especially when
+    a role may be used both as a dependency of a role and directly by itself within the
+    same play.
+  * Fixed some bugs in the 2.0 implementation of do/until.
+  * Fixed some bugs related to run_once:
+    - Ensure that all hosts are marked as failed if a task marked as run_once fails.
+    - Show a warning when using the free strategy when a run_once task is encountered, as
+      there is no way for the free strategy to guarantee the task is not run more than once.
+  * Fixed a bug where the assemble module was not honoring check mode in some situations.
+  * Fixed a bug related to delegate_to, where we were incorrectly using variables from
+    the inventory host rather than the delegated-to host.
+  * The 'package' meta-module now properly squashes items down to a single execution (as the
+    apt/yum/other package modules do).
+  * Fixed a bug related to the ansible-galaxy CLI command dealing with paged results from
+    the Galaxy server.
+  * Pipelining support is now available for the local and jail connection plugins, which is
+    useful for users who do not wish to have temp files/directories created when running
+    tasks with these connection types.
+  * Improvements in support for additional shell types.
+  * Improvements in the code which is used to calculate checksums for remote files.
+  * Some speed ups and bug fixes related to the variable merging code.
+  * Workaround bug in python subprocess on El Capitan that was making vault fail
+    when attempting to encrypt a file
+  * Fix lxc_container module having predictable temp file names and setting file
+    permissions on the temporary file too leniently on a temporary file that was
+    executed as a script.  Addresses CVE-2016-3096
+  * Fix a bug in the uri module where setting headers via module params that
+    start with HEADER_ were causing a traceback.
+  * Fix bug in the free strategy that was causing it to synchronize its workers
+    after every task (making it a lot more like linear than it should have been).
+
+-------------------------------------------------------------------
+Wed Mar  9 14:37:43 UTC 2016 - lars@linux-schulserver.de
+
+- update to 2.0.1.0:
+  * Fixes a major compatibility break in the synchronize module shipped
+    with 2.0.0.x. That version of synchronize ran sudo on the controller
+    prior to running rsync. In 1.9.x and previous, sudo was run on the
+    host that rsync connected to. 2.0.1 restores the 1.9.x behaviour.
+  * Additionally, several other problems with where synchronize chose
+    to run when combined with delegate_to were fixed. In particular, if
+    a playbook targetted localhost and then delegated_to a remote host
+    the prior behavior (in 1.9.x and 2.0.0.x) was to copy files between
+    the src and destination directories on the delegated host. This has
+    now been fixed to copy between localhost and the delegated host.
+  * Fix a regression where synchronize was unable to deal with unicode paths.
+  * Fix a regression where synchronize deals with inventory hosts that
+    use localhost but with an alternate port.
+  * Fixes a regression where the retry files feature was not implemented.
+  * Fixes a regression where the any_errors_fatal option was implemented
+    in 2.0 incorrectly, and also adds a feature where any_errors_fatal
+    can be set at the block level.
+  * Fix tracebacks when playbooks or ansible itself were located in
+    directories with unicode characters.
+  * Fix bug when sending unicode characters to an external pager
+    for display.
+  * Fix a bug with squashing loops for special modules (mostly package
+    managers). The optimization was squashing when the loop did not
+    apply to the selection of packages. This has now been fixed.
+  * Temp files created when using vault are now "shredded" using the
+    unix shred program which overwrites the file with random data.
+  * Some fixes to cloudstack modules for case sensitivity
+  * Fix non-newstyle modules (non-python modules and old-style modules)
+    to disabled pipelining.
+  * Fix fetch module failing even if fail_on_missing is set to False
+  * Fix for cornercase when local connections, sudo, and raw were
+    used together.
+  * Fix dnf module to remove dependent packages when state=absent is
+    specified. This was a feature of the 1.9.x version that was left
+    out by mistake when the module was rewritten for 2.0.
+  * Fix bugs with non-english locales in yum, git, and apt modules
+  * Fix a bug with the dnf module where state=latest could only
+    upgrade, not install.
+
+-------------------------------------------------------------------
+Mon Feb 15 13:23:26 UTC 2016 - eshmarnev@suse.com
+
+- fix_zypper_errorhandling.patch is being deleted
+
+-------------------------------------------------------------------
+Thu Feb 11 10:44:40 UTC 2016 - erwin.vandevelde@gmail.com
+
+- update to 2.0.0.2
+  Version 2.0 is a new major version with a lot of changes, among which:
+  + New modules for cloud-based services and many more
+  + The new block/rescue/always directives allow for making task blocks and exception-like semantics
+  + Many API changes
+- more info at:
+  https://github.com/ansible/ansible/blob/devel/CHANGELOG.md#20-over-the-hills-and-far-away
+
+-------------------------------------------------------------------
+Sun Oct 11 16:11:02 UTC 2015 - lars@linux-schulserver.de
+
+- build again on SLE-11-SP4 by ignoring some dependencies that are
+  not available in the official OBS repository: python-paramiko,
+  python-Jinja2, python-PyYAML, python-pycrypto
+
+-------------------------------------------------------------------
+Sat Oct 10 12:10:59 UTC 2015 - lars@linux-schulserver.de
+
+- update to 1.9.4
+  This release addresses several bugs, most notably those related to
+  the yum module (introduced in 1.9.3):
+  + Fixes a bug where yum state=latest would error if there were no
+    updates to install.
+  + Fixes a bug where yum state=latest did not work with wildcard
+    package names.
+  + Fixes a bug in lineinfile relating to escape sequences.
+  + Fixes a bug where vars_prompt was not keeping passwords private
+    by default.
+  + Fix ansible-galaxy and the hipchat callback plugin to check that
+    the host it is contacting matches its TLS Certificate.
+
+-------------------------------------------------------------------
+Sat Sep 26 14:01:30 UTC 2015 - m0ses@samaxi.de
+
+- Added fix_zypper_errorhandling.patch as it`s have not been accepted
+  upstream, in lack of an reviewer. See patch for more comments
+
+-------------------------------------------------------------------
+Fri Sep 11 16:10:12 UTC 2015 - robin.roth@kit.edu
+
+- update to 1.9.3:
+  - Fixes a bug related to keyczar messing up encodings internally, resulting in decrypted
+    messages coming out as empty strings.
+  - AES Keys generated for use in accelerated mode are now 256-bit by default instead of 128.
+  - Fix url fetching for SNI with python-2.7.9 or greater.  SNI does not work
+    with python < 2.7.9.  The best workaround is probably to use the command
+    module with curl or wget.
+  - Fix url fetching to allow tls-1.1 and tls-1.2 if the system's openssl library
+    supports those protocols
+  - Fix ec2_ami_search module to check TLS Certificates
+  - Fix the following extras modules to check TLS Certificates:
+    - campfire
+    - layman
+    - librarto_annotate
+    - twilio
+    - typetalk
+  - Fix docker module's parsing of docker-py version for dev checkouts
+  - Fix docker module to work with docker server api 1.19
+  - Change yum module's state=latest feature to update all packages specified in
+    a single transaction.  This is the same type of fix as was made for yum's
+    state=installed in 1.9.2 and both solves the same problems and with the same caveats.
+  - Fixed a bug where stdout from a module might be blank when there were were non-printable
+    ASCII characters contained within it
+
+-------------------------------------------------------------------
+Wed Jul 15 09:17:54 UTC 2015 - lars@linux-schulserver.de
+
+- update to 1.9.2:
+  - Security fixes to check that hostnames match certificates with
+    https urls (CVE-2015-3908; bnc #938161):
+    + get_url and uri modules
+    + url and etcd lookup plugins
+  - Security fixes to the zone (Solaris containers), jail (bsd
+    containers), and chroot connection plugins.  These plugins can be
+    used to connect to their respective container types in leiu of the
+    standard ssh connection.  Prior to this fix being applied these
+    connection plugins didn't properly handle symlinks within the containers
+    which could lead to files intended to be written to or read from the
+    container being written to or read from the host system instead. (CVE
+    pending)
+  - Fixed a bug in the service module where init scripts were being
+    incorrectly used instead of upstart/systemd.
+  - Fixed a bug where sudo/su settings were not inherited from
+    ansible.cfg correctly.
+  - Fixed a bug in the rds module where a traceback may occur due to an
+    unbound variable.
+  - Fixed a bug where certain remote file systems where the SELinux
+    context was not being properly set.
+  - Re-enabled several windows modules which had been partially merged
+    (via action plugins):
+	+ win_copy.ps1
+	+ win_copy.py
+	+ win_file.ps1
+	+ win_file.py
+	+ win_template.py
+  - Fix bug using with_sequence and a count that is zero.  Also allows
+    counting backwards isntead of forwards
+  - Fix get_url module bug preventing use of custom ports with https
+    urls
+  - Fix bug disabling repositories in the yum module.
+  - Fix giving yum module a url to install a package from on
+    RHEL/CENTOS5
+  - Fix bug in dnf module preventing it from working when yum-utils was
+    not already installed
+
+-------------------------------------------------------------------
+Tue Apr 28 19:03:01 UTC 2015 - boris@steki.net
+
+- updated to version 1.9.1
+  * Fixed a bug related to Kerberos auth when using winrm with a domain account.
+  * Fixing several bugs in the s3 module.
+  * Fixed a bug with upstart service detection in the service module.
+  * Fixed several bugs with the user module when used on OSX.
+  * Fixed unicode handling in some module situations (assert and shell/command execution).
+  * Fixed a bug in redhat_subscription when using the activationkey parameter.
+  * Fixed a traceback in the gce module on EL6 distros when multiple pycrypto installations are available.
+  * Added support for PostgreSQL 9.4 in rds_param_group
+  * Several other minor fixes.
+
+-------------------------------------------------------------------
+Mon Mar 30 22:45:57 UTC 2015 - boris@steki.net
+
+- updated to version 1.9.0.1
+  * Added kerberos support to winrm connection plugin.
+  * Tags rehaul: added 'all', 'always', 'untagged' and 'tagged' special
+    tags and normalized tag resolution.  Added tag information to
+    --list-tasks and new --list-tags option.
+  * Privilege Escalation generalization, new 'Become' system and variables
+    now will handle existing and new methods.  Sudo and su have been kept
+    for backwards compatibility.  New methods pbrun and pfexec in 'alpha'
+    state, planned adding 'runas' for winrm connection plugin.
+  * Improved ssh connection error reporting, now you get back the specific
+    message from ssh.
+  * Added facility to document task module return values for registered
+    vars, both for ansible-doc and the docsite.  Documented copy, stats and
+    acl modules, the rest must be updated individually (we will start doing
+    so incrementally).
+  * Optimize the plugin loader to cache available plugins much more
+    efficiently.  For some use cases this can lead to dramatic improvements
+    in startup time.
+  * Overhaul of the checksum system, now supports more systems and more
+    cases more reliably and uniformly.
+  * Fix skipped tasks to not display their parameters if no_log is specified.
+  * Many fixes to unicode support, standarized functions to make it easier
+    to add to input/output boundries.
+  * Added travis integration to github for basic tests, this should speed
+    up ticket triage and merging.
+  * environment: directive now can also be applied to play and is
+    inhertited by tasks, which can still override it.
+  * expanded facts and OS/distribution support for existing facts and
+    improved performance with pypy.
+  * new 'wantlist' option to lookups allows for selecting a list typed
+    variable vs a command delimited string as the return.
+  * the shared module code for file backups now uses a timestamp resolution
+    of seconds (previouslly minutes).
+  * allow for empty inventories, this is now a warning and not an error
+   (for those using localhost and cloud modules).
+  * sped up YAML parsing in ansible by up to 25% by switching to CParser loader.
+- more info at:
+  https://github.com/ansible/ansible/blob/devel/CHANGELOG.md#19-dancing-in-the-street---mar-25-2015
+
+
+-------------------------------------------------------------------
+Mon Feb 23 11:46:55 UTC 2015 - boris@steki.net
+
+- updated to version 1.8.4 from 1.8.2
+ * Fixed regressions in ec2 and mount modules, introduced in 1.8.3
+ * Fixing a security bug related to the default permissions set on a
+   tempoary file created when using "ansible-vault view ".
+ * Many bug fixes, for both core code and core modules.
+
+-------------------------------------------------------------------
+Fri Dec  5 15:11:43 UTC 2014 - boris@steki.net
+
+- updated to version 1.8.2 from 1.8.1
+  * Windows modules should now be packaged correctly.
+  * A bug regarding wildcard grant strings in the mysql_user module has been fixed.
+  * Several other bugs regarding the postgresql modules have also been fixed.
+
+-------------------------------------------------------------------
+Mon Dec  1 18:28:18 UTC 2014 - boris@steki.net
+
+- enable build for older RHEL and SLE distributions
+
+-------------------------------------------------------------------
+Thu Nov 27 11:17:53 UTC 2014 - boris@steki.net
+
+- updated package to latest release ## 1.8.1 "You Really Got Me"
+  * Various bug fixes in postgresql and mysql modules.
+  * Fixed a bug related to lookup plugins used within roles not
+    finding files based on the relative paths to the roles files/ directory.
+  * Fixed a bug related to vars specified in plays being templated too early,
+    resulting in incorrect variable interpolation.
+  * Fixed a bug related to git submodules in bare repos.
+  * fact caching support, pluggable, initially supports Redis (DOCS pending)
+  * 'serial' size in a rolling update can be specified as a percentage
+  * added new Jinja2 filters, 'min' and 'max' that take lists
+  * new 'ansible_version' variable available contains a dictionary of version info
+  * For ec2 dynamic inventory, ec2.ini can has various new configuration options
+  * 'ansible vault view filename.yml' opens filename.yml decrypted in a pager.
+  * no_log parameter now surpressess data from callbacks/output as well as syslog
+  * ansible-galaxy install -f requirements.yml allows advanced options and installs
+    from non-galaxy SCM sources and tarballs.
+  * command_warnings feature will warn about when usage of the shell/command module
+    can be simplified to use core modules - this can be enabled in ansible.cfg
+  * new omit value can be used to leave off a parameter when not set, like so
+    module_name: a=1 b={{ c | default(omit) }}, would not pass value for b (not even
+    an empty value) if c was not set.
+  * developers: 'baby JSON' in module responses, originally intended for writing modules
+    in bash, is removed as a feature to simplify logic, script module remains available
+    for running bash scripts.
+  * async jobs started in "fire & forget" mode can now be checked on at a later time.
+  * added ability to subcategorize modules for docs.ansible.com
+  * added ability for shipped modules to have aliases with symlinks
+  * added ability to deprecate older modules by starting with "_" and
+    including "deprecated: message why" in module docs
+
+ + New Modules:
+  * cloud: rax_cdb - manages Rackspace Cloud Database instances
+  * cloud: rax_cdb_database - manages Rackspace Cloud Databases
+  * cloud: rax_cdb_user - manages Rackspace Cloud Database users
+  * monitoring: zabbix_maintaince - handles outage windows with Zabbix
+  * monitoring: bigpanda - support for bigpanda
+  * net_infrastructure: a10_server - manages server objects on A10 devices
+  * net_infrastructure: a10_service_group - manages service group objects on A10 devices
+  * net_infrastructure: a10_virtual_server - manages virtual server objects on A10 devices
+  * system: getent - read getent databases
+
+ + Some other notable changes:
+  * added the ability to set "instance filters" in the ec2.ini to limit results
+    from the inventory plugin.
+  * upgrades for various variable precedence items and parsing related items
+  * added a new "follow" parameter to the file and copy modules, which allows
+    actions to be taken on the target of a symlink rather than the symlink itself.
+  * if a module should ever traceback, it will return a standard error, catchable
+    by ignore_errors, versus an 'unreachable'
+  * ec2_lc: added support for multiple new parameters like kernel_id, ramdisk_id and ebs_optimized.
+  * ec2_elb_lb: added support for the connection_draining_timeout and cross_az_load_balancing options.
+  * support for symbolic representations (ie. u+rw) for file permission modes (file/copy/template modules etc.).
+  * docker: Added support for specifying the net type of the container.
+  * docker: support for specifying read-only volumes.
+  * docker: support for specifying the API version to use for the remote connection.
+  * openstack modules: various improvements
+  * irc: ssl support for the notification module
+  * npm: fix flags passed to package installation
+  * windows: improved error handling
+  * setup: additional facts on System Z
+  * apt_repository: certificate validation can be disabled if requested
+  * pagerduty module: misc improvements
+  * ec2_lc: public_ip boolean configurable in launch configurations
+  * ec2_asg: fixes related to proper termination of an autoscaling group
+  * win_setup: total memory fact correction
+  * ec2_vol: ability to list existing volumes
+  * ec2: can set optimized flag
+  * various parser improvements
+  * produce a friendly error message if the SSH key is too permissive
+  * ec2_ami_search: support for SSD and IOPS provisioned EBS images
+  * can set ansible_sudo_exe as an inventory variable which allows specifying
+    a different sudo (or equivalent) command
+  * git module: Submodule handling has changed.  Previously if you used the
+    "recursive" parameter to handle submodules, ansible would track the
+    submodule upstream's head revision.  This has been changed to checkout the
+    version of the submodule specified in the superproject's git repository.
+    This is inline with what git submodule update does.  If you want the old
+    behaviour use the new module parameter track_submodules=yes
+  * Checksumming of transferred files has been made more portable and now uses
+    the sha1 algorithm instead of md5 to be compatible with FIPS-140.
+  + As a small side effect, the fetch module no longer returns a useful value
+      in remote_md5.  If you need a replacement, switch to using remote_checksum
+    which returns the sha1sum of the remote file.
+ * ansible-doc CLI tool contains various improvements for working with different terminals
+
+-------------------------------------------------------------------
+Mon Oct 27 09:16:52 UTC 2014 - kgronlund@suse.com
+- update to 1.7.2:
+  - Fixes a bug in accelerate mode which caused a traceback when trying to use that connection method.
+  - Fixes a bug in vault where the password file option was not being used correctly internally.
+  - Improved multi-line parsing when using YAML literal blocks (using > or |).
+  - Fixed a bug with the file module and the creation of relative symlinks.
+  - Fixed a bug where checkmode was not being honored during the templating of files.
+  - Other various bug fixes.
+- Switch to xz for source package
+
+-------------------------------------------------------------------
+Wed Sep 10 12:55:35 UTC 2014 - boris@steki.net
+
+- add python-pywinrm to requirements to enable windows hosts automation
+
+-------------------------------------------------------------------
+Sun Aug 17 15:21:38 UTC 2014 - lars@linux-schulserver.de
+
+- update to 1.7.1:
+  Major new features:
+  + Windows support (alpha) using native PowerShell remoting
+  + Tasks can now specify run_once: true, meaning they will be executed
+    exactly once. This can be combined with delegate_to to trigger actions
+    you want done just the one time versus for every host in inventory.
+
+  New Modules:
+  + cloud: azure
+  + cloud: rax_meta
+  + cloud: rax_scaling_group
+  + cloud: rax_scaling_policy
+  + windows: version of setup module
+  + windows: version of slurp module
+  + windows: win_feature
+  + windows: win_get_url
+  + windows: win_msi
+  + windows: win_ping
+  + windows: win_user
+  + windows: win_service
+  + windows: win_group
+
+  New inventory scripts:
+  + SoftLayer
+  + Windows Azure
+
+  Docker module bug fixes:
+  + Fixed support for specifying rw/ro bind modes for volumes
+  + Fixed support for allowing the tag in the image parameter
+
+  Other notable changes:
+  + Performance enhancements related to previous security fixes, which
+    could cause slowness when modules returned very large JSON results.
+    This specifically impacted the unarchive module frequently, which
+    returns the details of all unarchived files in the result.
+  + Inventory speed improvements for very large inventories.
+  + Vault password files can now be executable, to support scripts
+    that fetch the vault password.
+  + Fixes an issue with the copy module when copying a directory that
+
+-------------------------------------------------------------------
+Fri Aug 15 15:25:04 UTC 2014 - boris@steki.net
+
+- updated to upstream version 1.7.1
+  * Security fix to disallow specifying 'args:' as a string,
+    which could allow the insertion of extra module parameters through variables.
+  * Performance enhancements related to previous security fixes,
+    which could cause slowness when modules returned very large JSON results.
+    This specifically impacted the unarchive module frequently, which returns
+    the details of all unarchived files in the result.
+  * Docker module bug fixes:
+    + Fixed support for specifying rw/ro bind modes for volumes
+    + Fixed support for allowing the tag in the image parameter
+  * Major new features:
+    + Windows support (alpha) using native PowerShell remoting
+    + Tasks can now specify `run_once: true`, meaning they will
+      be executed exactly once. This can be combined with delegate_to
+      to trigger actions you want done just the one time versus for
+      every host in inventory.
+  * Inventory speed improvements for very large inventories.
+  * Vault password files can now be executable, to support
+    scripts that fetch the vault password.
+
+  * Fixes an issue with the copy module when copying a directory that
+    fails when changing file attributes and the target file already exists
+  + Improved unicode handling when splitting args
+
+  + Further improvements to module parameter parsing to address
+    additional regressions caused by security fixes
+  + Corrects a regression in the way shell and command parameters
+    were being parsed
+  + Various other bug fixes
+
+  Security fixes:
+  + Security fix to disallow specifying 'args:' as a string, which could
+    allow the insertion of extra module parameters through variables.
+  + Strip lookup calls out of inventory variables and clean unsafe
+    data returned from lookup plugins (CVE-2014-4966)
+  + Make sure vars don't insert extra parameters into module args and
+    prevent duplicate params from superseding previous params (CVE-2014-4967)
+- adapt specfile requirements for RedHat and Fedora
+
+- fixed zypper and zypper_repository modules to support SLE 10
+
+-------------------------------------------------------------------
+Thu Jul 10 12:53:16 UTC 2014 - lars@linux-schulserver.de
+
+- update to 1.6.6:
+  * Security updates to further protect against the incorrect
+    execution of untrusted data
+  * Additional tweaks to prevent the incorrect execution of
+    untrusted data
+  * Security update to prevent local operations from executing as
+    the result of specifically crafted untrusted data
+
+-------------------------------------------------------------------
+Thu Jun 19 07:28:24 UTC 2014 - lars@linux-schulserver.de
+
+- update to 1.6.3:
+  * The deprecated legacy variable templating system has been
+    finally removed. Use {{ foo }} always not $foo or ${foo}.
+  * Any data file can also be JSON. Use sparingly -- with great power
+    comes great responsibility. Starting file with "{" or "[" denotes JSON.
+  * Added 'gathering' param for ansible.cfg to change the default
+    gather_facts policy.
+  * Accelerate improvements:
+    + multiple users can connect with different keys, when
+      accelerate_multi_key = yes is specified in the ansible.cfg.
+    + daemon lifetime is now based on the time from the last activity,
+      not the time from the daemon's launch.
+  * ansible-playbook now accepts --force-handlers to run handlers
+    even if tasks result in failures.
+  * Added VMWare support with the vsphere_guest module.
+  * many new modules and ther notable changes, please read
+    /usr/share/doc/packages/ansible/CHANGELOG.md for details
+- use new upstream URL(s)
+- require python-httplib2 and python-setuptools
+- ignore "wrong" permissions of synchronize.py
+- ignore rpmlint warning about requiring python-httplib2 explicitely
+
+-------------------------------------------------------------------
+Thu Mar 20 23:24:56 UTC 2014 - lars@linux-schulserver.de
+
+- update to 1.5.3:
+  * Fixes to the git module related to host key checking
+  * Force command action to not be executed by the shell unless
+    specifically enabled.
+  * Validate SSL certs accessed through urllib*.
+  * Implement new default cipher class AES256 in ansible-vault.
+  * Misc bug fixes.
+
+-------------------------------------------------------------------
+Sat Mar  8 11:08:25 UTC 2014 - lars@linux-schulserver.de
+
+- update to 1.5:
+  Major features/changes:
+  * when_foo which was previously deprecated is now removed, use
+    "when:" instead.  Code generates appropriate error suggestion.
+  * include + with_items which was previously deprecated is now
+    removed, ditto.  Use with_nested / with_together, etc.
+  * only_if, which is much older than when_foo and was deprecated,
+    is similarly removed.
+  * ssh connection plugin is now more efficient if you add
+    'pipelining=True' in ansible.cfg under [ssh_connection],
+    see example.cfg
+  * localhost/127.0.0.1 is not required to be in inventory if
+    referenced, if not in inventory, it does not implicitly appear
+    in the 'all' group.
+  * git module has new parameters (accept_hostkey, key_file, ssh_opts)
+    to ease the usage of git and ssh protocols.
+  * when using accelerate mode, the daemon will now be restarted
+    when specifying a different remote_user between plays.
+  * added no_log: option for tasks. When used, no logging information
+    will be sent to syslog during the module execution.
+  * acl module now handles 'default' and allows for either shorthand
+    entry or specific fields per entry section
+  * play_hosts is a new magic variable to provide a list of hosts
+    in scope for the current play.
+  * ec2 module now accepts 'exact_count' and 'count_tag' as a way to
+    enforce a running number of nodes by tags.
+  * all ec2 modules that work with Eucalyptus also now support a
+    'validate_certs' option, which can be set to 'off' for installations
+    using self-signed certs.
+  * Start of new integration test infrastructure (WIP)
+  * if repoquery is unavailble, the yum module will automatically
+    attempt to install yum-utils
+  * ansible-vault: a framework for encrypting your playbooks
+    and variable files
+
+  Other notable changes (many new module params & bugfixes may not not listed):
+  * no_reboot is now defaulted to "no" in the ec2_ami module to ensure
+    filesystem consistency in the resulting AMI.
+  * sysctl module overhauled
+  * authorized_key module overhauled
+  * synchronized module now handles local transport better
+  * apt_key module now ignores case on keys
+  * zypper_repository now skips on check mode
+  * file module now responds to force behavior when dealing with hardlinks
+  * new lookup plugin 'csvfile'
+  * fixes to allow hash_merge behavior to work with dynamic inventory
+  * mysql module will use port argument on dump/import
+  * subversion module now ignores locale to better intercept status messages
+  * rax api_key argument is no longer logged
+  * backwards/forwards compatibility for OpenStack modules, 'quantum'
+    modules grok neutron renaming
+  * hosts properly uniqueified if appearing in redundant groups
+  * hostname module support added for ScientificLinux
+  * ansible-pull can now show live stdout and pass verbosity levels
+    to ansible-playbook
+  * ec2 instances can now be stopped or started
+  * additional volumes can be created when creating new ec2 instances
+  * user module can move a home directory
+  * significant enhancement and cleanup of rackspace modules
+  * ansible_ssh_private_key_file can be templated
+  * docker module updated to support docker-py 0.3.0
+  * various other bug fixes
+  * md5 logic improved during sudo operation
+  * support for ed25519 keys in authorized_key module
+  * ability to set directory permissions during a recursive copy
+    (directory_mode parameter)
+  * update docker module, support for using docker python
+    library 0.3.0
+
+-------------------------------------------------------------------
+Thu Feb 27 17:39:07 UTC 2014 - lars@linux-schulserver.de
+
+- update to 1.4.5:
+  + fixed issue with permissions being incorrect on
+    fireball/accelerate keys when the umask setting was too loose.
+
+-------------------------------------------------------------------
+Sun Jan 19 03:12:17 UTC 2014 - lars@linux-schulserver.de
+
+- update to 1.4.4:
+  + Fixed issue with newer versions of pip not having --use-mirrors
+  + Fixed role_path parsing from ansible.cfg
+  + Fixed default role templates
+  + Fixed a few bugs related to unicode
+  + Fixed errors in the ssh connection method with large data returns
+  + Miscellaneous fixes for a few modules
+  + Add the ansible-galaxy command
+
+-------------------------------------------------------------------
+Mon Dec 16 21:28:31 UTC 2013 - lars@linux-schulserver.de
+
+- update to 1.4.1:
+  * Misc fix updates
+
+-------------------------------------------------------------------
+Thu Nov 28 13:54:02 UTC 2013 - kgronlund@suse.com
+
+- Update to release 1.4
+
+- Highlighted new features:
+
+ + Added do-until feature, which can be used to retry a failed task a
+   specified number of times with a delay in-between the retries.
+ + Added failed_when option for tasks, which can be used to specify
+   logical statements that make it easier to determine when a task has
+   failed, or to make it easier to ignore certain non-zero return
+   codes for some commands.
+ + Added the "subelement" lookup plugin, which allows iteration of the
+   keys of a dictionary or items in a list.
+ + Added the capability to use either paramiko or ssh for the inital
+   setup connection of an accelerated playbook.
+ + Automatically provide advice on common parser errors users
+   encounter.
+ + Deprecation warnings are now shown for legacy features:
+   when_integer/etc, only_if, include+with_items, etc. Can be disabled
+   in ansible.cfg
+ + The system will now provide helpful tips around possible YAML
+   syntax errors increasing ease of use for new users.
+ + warnings are now shown for using {{ foo }} in loops and
+   conditionals, and suggest leaving the variable expressions bare as
+   per docs.
+ + The roles search path is now configurable in
+   ansible.cfg. 'roles_path' in the config setting.
+ + Includes with parameters can now be done like roles for
+   consistency: - { include: song.yml, year:1984, song:'jump' }
+ + The name of each role is now shown before each task if roles are
+   being used
+ + Adds a "var=" option to the debug module for debugging variable
+   data. "debug: var=hostvars['hostname']" and "debug: var=foo" are
+   all valid syntax.
+ + Variables in {{ format }} can be used as references even if they
+   are structured data
+ + Can force binding of accelerate to ipv6 ports.
+ + the apt module will auto-install python-apt if not present rather
+   than requiring a manual installation
+ + the copy module is now recursive if the local 'src' parameter is a
+   directory.
+ + syntax checks now scan included task and variable files as well as
+   main files
+
+- New modules and plugins:
+
+ + cloud: ec2_eip -- manage AWS elastic IPs
+ + cloud: ec2_vpc -- manage ec2 virtual private clouds
+ + cloud: elasticcache -- Manages clusters in Amazon Elasticache
+ + cloud: rax_network -- sets up Rackspace networks
+ + cloud: rax_facts: retrieve facts about a Rackspace Cloud Server
+ + cloud: rax_clb_nodes -- manage Rackspace cloud load balanced nodes
+ + cloud: rax_clb -- manages Rackspace cloud load balancers
+ + cloud: docker - instantiates/removes/manages docker containers
+ + cloud: ovirt -- VM lifecycle controls for ovirt
+ + files: acl -- set or get acls on a file
+ + files: unarchive: pushes and extracts tarballs
+ + files: synchronize: a useful wraper around rsyncing trees of files
+ + system: firewalld -- manage the firewalld configuration
+ + system: modprobe -- manage kernel modules on systems that support
+   modprobe/rmmod
+ + system: open_iscsi -- manage targets on an initiator using
+   open-iscsi
+ + system: blacklist: add or remove modules from the kernel blacklist
+ + system: hostname - sets the systems hostname
+ + utilities: include_vars -- dynamically load variables based on
+   conditions.
+ + packaging: zypper_repository - adds or removes Zypper repositories
+ + packaging: urpmi - work with urpmi packages
+ + packaging: swdepot - a module for working with swdepot
+ + notification: grove - notifies to Grove hosted IRC channels
+ + web_infrastructure: ejabberd_user: add and remove users to ejabberd
+ + web_infrastructure: jboss: deploys or undeploys apps to jboss
+ + source_control: github_hooks: manages GitHub service hooks
+ + net_infrastructure: bigip_monitor_http: manages F5 BIG-IP LTM http
+   monitors
+ + net_infrastructure: bigip_monitor_tcp: manages F5 BIG-IP LTM TCP
+   monitors
+ + net_infrastructure: bigip_pool_member: manages F5 BIG-IP LTM pool
+   members
+ + net_infrastructure: bigip_node: manages F5 BIG-IP LTM nodes
+ + net_infrastructure: openvswitch_port
+ + net_infrastructure: openvswitch_bridge
+
+-------------------------------------------------------------------
+Fri Nov  1 15:09:48 UTC 2013 - kgronlund@suse.com
+
+- Updated .spec file:
+
+  + Remove deprecated fireball and node-fireball packages
+  + Add dependency on python-keyczar
+  + Add recommends for sshpass
+  + Fix support for RHEL
+  + Correct upstream URL
+  + Use upstream release package for 1.3.4
+  + Re-add CHANGELOG.md
+  + Re-added man3 man pages
+  + Updated short description to match upstream description
+
+-------------------------------------------------------------------
+Thu Oct 31 17:26:44 UTC 2013 - lars@linux-schulserver.de
+
+- update to 1.3.4:
+  Highlighted new features:
+  + accelerated mode: An enhanced fireball mode that requires zero
+    bootstrapping and fewer requirements plus adds capabilities
+    like sudo commands.
+  + role defaults: Allows roles to define a set of variables at the
+    lowest priority. These variables can be overridden by any
+    other variable.
+  + new /etc/ansible/facts.d allows JSON or INI-style facts to be
+    provided from the remote node, and supports executable fact
+    programs in this dir. Files must end in *.fact.
+  + added the ability to make undefined template variables raise
+    errors (see ansible.cfg)
+  + (DOCS PENDING) sudo: True/False and sudo_user: True/False can be
+    set at include and role level
+  + added changed_when: (expression) which allows overriding whether
+    a result is changed or not and can work with registered expressions
+  + --extra-vars can now take a file as input, e.g., "-e @filename"
+    and can also be formatted as YAML
+  + external inventory scripts may now return host variables in one
+    pass, which allows them to be much more efficient for large
+    numbers of hosts
+  + if --forks exceeds the numbers of hosts, it will be automatically
+    reduced. Set forks to 0 and you get "as many forks as I have
+    hosts" out of the box.
+  + enabled error_on_undefined_vars by default, which will make
+    errors in playbooks more obvious
+  + role dependencies -- one role can now pull in another, with
+    parameters of its own.
+  + added the ability to have tasks execute even during a check
+    run (always_run).
+  + added the ability to set the maximum failure percentage for a
+    group of hosts.
+  ...and a lot more information can be found at
+  /usr/share/doc/packages/ansible/CHANGELOG.md
+- removed man3 man pages
+- removed separate CHANGELOG.md source - now in upstream tarball
+
+-------------------------------------------------------------------
+Sun Jun 30 20:05:47 UTC 2013 - lars@linux-schulserver.de
+
+- update to 1.2:
+  + new feature: roles
+  + massively improved variable support and conditionals
+  + Pre and Post tasks provide greater controls to make rolling
+    updates even smoother
+  + added 32 new modules:
+  ++ including a openSUSE package management module
+  ++ added team chat notification modules for Flowdock, Hipchat,
+     Campfire, IRC, and more
+  ++ added monitoring modules to interact with New Relic, Airbrake,
+     Pingdom, Pagerduty and Monit
+- added CHANGELOG.md to /usr/share/doc/packages/ansible/ to have
+  the complete changelog at hand
+
+-------------------------------------------------------------------
+Thu Apr 25 08:01:24 UTC 2013 - lars@linux-schulserver.de
+
+- require python-pyzmq on (open)SUSE
+
+-------------------------------------------------------------------
+Thu Apr 18 07:42:43 UTC 2013 - lars@linux-schulserver.de
+
+- fix build on other distributions than openSUSE
+- License in SPDX format
+- added rpmlintrc
+
+-------------------------------------------------------------------
+Wed Apr 17 11:04:04 UTC 2013 - lars@linux-schulserver.de
+
+- update to 1.1:
+  + stderr shown when commands fail to parse
+  + uses yaml.safe_dump in filter plugins
+  + authentication Q&A no longer happens before --syntax-check, but after
+  + ability to get hostvars data for nodes not in the setup cache yet
+  + SSH timeout now correctly passed to native SSH connection plugin
+  + raise an error when multiple when_ statements are provided
+  + --list-hosts applies host limit selections better
+  + (internals) template engine specifications to use template_ds everywhere
+  + better error message when your host file can not be found
+  + end of line comments now work in the inventory file
+  + directory destinations now work better with remote md5 code
+  + lookup plugin macros like $FILE and $ENV now work without
+    returning arrays in variable definitions/playbooks
+  + uses yaml.safe_load everywhere
+  + able to add EXAMPLES to documentation via EXAMPLES docstring,
+    rather than just in main documentation YAML
+  + can set ANSIBLE_COW_SELECTION to pick other cowsay types (including random)
+  + to_nice_yaml and to_nice_json available as Jinja2 filters that indent and sort
+  + cowsay able to run out of macports (very important!)
+  + improved logging for fireball mode
+  + nicer error message when talking to an older system that needs a
+    JSON module installed
+  + 'magic' variable 'inventory_basedir' now gives path to inventory file
+  + 'magic' variable 'vars' works like 'hostvars' but gives global scope
+    variables, useful for debugging in templates mostly
+  + conditionals can be used on plugins like add_host
+  + ...and many more...
+- specfile cleanup
+- just recomend python-paramiko as the user can also use openssh
+
+-------------------------------------------------------------------
+Tue Jan 22 13:47:16 UTC 2013 - julien.tognazzi@gmail.com
+
+- Merge changes from upstream
+

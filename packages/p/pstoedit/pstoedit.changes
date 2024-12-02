@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Dec  1 16:40:06 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to version 4.02:
+  * Improve the build process to build also the GUI if QT is installed.
+  * Include a .desktop and Icon file for better Linux integration.
+  * Update the autoconf tools to enable the usage of homebrew.
+  * Update reflecting changes in GhostScript 10.03 and 10.04 (disable
+    some operators used by pstoedit).
+  * Fix a few warnings issued by Coverity.
+  * Improve code for g++ V14.
+  * Implemented sourceforge feature request #4 (show -nc option in GUI).
+
+-------------------------------------------------------------------
 Wed Apr 10 13:26:59 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to version 4.01:

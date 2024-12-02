@@ -17,7 +17,7 @@
 
 
 %define hyear     2024
-%define hmonth    09
+%define hmonth    12
 %define hday      01
 
 %define src_name  NotoFonts
@@ -31,7 +31,7 @@ Summary:        All Noto Fonts except CJK and Emoji
 License:        OFL-1.1
 URL:            https://notofonts.github.io/
 # https://github.com/notofonts/notofonts.github.io/archive/refs/tags/noto-monthly-release-24.9.1.tar.gz
-Source0:        notofonts.github.io-noto-monthly-release-24.9.1.tar.gz
+Source0:        notofonts.github.io-noto-monthly-release-%{hyear}.%{hmonth}.%{hday}.tar.gz
 Source1:        generate-specfile.sh
 Source2:        README.FAQ
 Source3:        README.maintain
@@ -2977,16 +2977,16 @@ ZnamennyMusicalNotation font, hinted.
 %prep
 %autosetup -c
 
-cp notofonts.github.io-noto-monthly-release-24.9.1/fonts/LICENSE .
+cp notofonts.github.io-noto-monthly-release-%{hyear}.%{hmonth}.%{hday}/fonts/LICENSE .
 
 %build
 
 %install
 
-rm -r notofonts.github.io-noto-monthly-release-24.9.1/fonts/Noto*Test
-rm -r notofonts.github.io-noto-monthly-release-24.9.1/fonts/NotoSansArabicUI
+rm -r notofonts.github.io-noto-monthly-release-%{hyear}.%{hmonth}.%{hday}/fonts/Noto*Test
+rm -r notofonts.github.io-noto-monthly-release-%{hyear}.%{hmonth}.%{hday}/fonts/NotoSansArabicUI
 
-install -Dm 644 -t %{buildroot}%{_ttfontsdir} notofonts.github.io-noto-monthly-release-24.9.1/fonts/*/hinted/ttf/*
+install -Dm 644 -t %{buildroot}%{_ttfontsdir} notofonts.github.io-noto-monthly-release-%{hyear}.%{hmonth}.%{hday}/fonts/*/hinted/ttf/*
 
 %reconfigure_fonts_scriptlets -n google-noto-fangsongkssrotated-fonts
 

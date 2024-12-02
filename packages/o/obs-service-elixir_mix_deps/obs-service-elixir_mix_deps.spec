@@ -22,7 +22,7 @@ Version:        0.2.0~0
 Release:        0
 Summary:        OBS Source Service for Elixir software packaging
 License:        GPL-2.0-only
-URL:            https://github.com/dottorblaster/obs-service-elixir_mix_deps
+URL:            https://github.com/openSUSE/obs-service-elixir_mix_deps
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  cargo

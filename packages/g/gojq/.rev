@@ -91,4 +91,20 @@
   * Improve compiler to emit error if query is missing.</comment>
     <requestid>1178069</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2b203254c6aee57921771e421317018d</srcmd5>
+    <version>0.12.17</version>
+    <time>1733155141</time>
+    <user>anag+factory</user>
+    <comment>- Update to v0.12.17
+  * Implement `add/1`, `skip/2` functions.
+  * Implement `--library-path` option as the alias of `-L` option.
+  * Fix `reduce` syntax to emit results for each initial value.
+  * Fix `last/1` to yield no values when the argument yields no values.
+  * Fix `limit/2` to emit an error on negative count.
+  * Fix `@uri` and `@urid` formats not to convert space between plus sign.
+  * Fix resolving search paths of import statements in the query.
+  * Improve time functions to accept fewer element arrays.</comment>
+    <requestid>1227621</requestid>
+  </revision>
 </revisionlist>

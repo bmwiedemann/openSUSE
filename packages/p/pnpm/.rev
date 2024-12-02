@@ -218,4 +218,17 @@
 </comment>
     <requestid>1225413</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9a9a5722d52b85b637c7081d8443c267</srcmd5>
+    <version>9.14.4</version>
+    <time>1733155123</time>
+    <user>anag+factory</user>
+    <comment>- update to version 9.14.4:
+  * Don't ever save mutated metadata to the metadata cache
+- includes 9.14.3:
+  * Some commands should ignore the packageManager field check of
+    package.json #7959
+</comment>
+    <requestid>1227543</requestid>
+  </revision>
 </revisionlist>

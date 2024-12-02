@@ -17,7 +17,7 @@
 
 
 Name:           xed
-Version:        3.6.6
+Version:        3.6.8
 Release:        0
 Summary:        A text editor with highlighting
 License:        GPL-2.0-or-later
@@ -28,7 +28,6 @@ BuildRequires:  gnome-common
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3
-BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(enchant)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
@@ -79,7 +78,6 @@ ChangeLogs, and adjusting indentation levels.
 
 %install
 %meson_install
-%suse_update_desktop_file %{name}
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}
 
@@ -93,10 +91,10 @@ ChangeLogs, and adjusting indentation levels.
 %{_datadir}/glib-2.0/schemas/org.x.editor.*.xml
 %{_datadir}/metainfo/xed.appdata.xml
 %{_datadir}/dbus-1/services/org.x.editor.service
-%{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/org.x.editor.desktop
 %{_mandir}/man?/%{name}.?%{?ext_man}
 %{_datadir}/help/C/%{name}
-%{_datadir}/gtksourceview-4/styles/xed.xml
+%{_datadir}/gtksourceview-4/styles/%{name}.xml
 
 %files devel
 %{_includedir}/%{name}

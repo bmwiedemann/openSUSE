@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 30 13:02:16 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- fix build for loongarch64
+
+-------------------------------------------------------------------
 Fri Feb 23 11:47:05 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

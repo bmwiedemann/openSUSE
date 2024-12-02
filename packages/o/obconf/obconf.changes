@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov 30 00:46:28 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- seperate out the translations into their own package
+- fix build by adjusting CFLAGS with -Wno-implicit-function-declaration
+- use macros for build commands
+- attach a source to the tarball
+
+-------------------------------------------------------------------
 Mon Feb 26 12:31:54 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

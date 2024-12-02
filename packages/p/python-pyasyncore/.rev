@@ -18,4 +18,13 @@
   * Add previous standard library tests</comment>
     <requestid>1158412</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>5ededea9a28f84d2ed2cb405cdc6dddc</srcmd5>
+    <version>1.0.4</version>
+    <time>1733155147</time>
+    <user>anag+factory</user>
+    <comment>- Build for all versions of Python that we can (Python 3.10 not supported)
+- Actually run the testsuite, switching to GitHub tarball so we have them.</comment>
+    <requestid>1227643</requestid>
+  </revision>
 </revisionlist>

@@ -36,7 +36,7 @@ Name:           carla
 #NOTE: to update this package please change these two version fields in "_service" <param name="revision">v2.1.1</param>
 # to the version that you want and execute "osc service runall"
 # It will even fill in the .changes file. Please don't touch the Version: in the spec file, it will be filled automaticaly.
-Version:        2.5.8
+Version:        2.5.9
 Release:        0
 Summary:        An audio plugin host
 License:        BSD-2-Clause AND GPL-2.0-or-later AND BSD-3-Clause
@@ -141,7 +141,7 @@ CarlaPatchbay, CarlaRackFX, and CarlaRack. It also contains the
 win32 and wine32 binaries for handling ms win32 vst plugins
 
 %prep
-%autosetup -p1 -n Carla-%{version}
+%autosetup -p1
 #for i in `grep -rl "/usr/bin/env python3"`;do $(sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i}; chmod +x ${i}) ;done
 
 %build

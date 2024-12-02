@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 29 13:47:15 UTC 2024 - filippo.bonazzi@suse.com
+
+- Update to version 2.6.1+git20241129.0f107c1:
+  * dbus-services: whitelist tuned-ppd (bsc#1232412)
+- Add format_spec_file service in manual mode
+- Convert existing services from disabled to manual mode
+
+-------------------------------------------------------------------
 Tue Nov 19 10:21:14 UTC 2024 - filippo.bonazzi@suse.com
 
 - Update to version 2.6.1+git20241119.2e09c30:

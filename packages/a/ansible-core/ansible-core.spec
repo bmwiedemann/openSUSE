@@ -16,6 +16,8 @@
 #
 
 
+%define ansible_core_major_minor_version 2.18
+
 %{?sle15_python_module_pythons}
 %if 0%{?suse_version} < 1550
 # Leap15, SLES15
@@ -41,7 +43,7 @@
 %endif
 
 Name:           ansible-core
-Version:        2.17.6
+Version:        2.18.0
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0-or-later
@@ -56,10 +58,16 @@ BuildArch:      noarch
 Conflicts:      ansible < 3
 Conflicts:      ansible-base
 
-# https://github.com/ansible/ansible/blob/stable-2.17/setup.cfg#L40
-BuildRequires:  %{ansible_python}-base >= 3.10
+# cannot be installed with a lower or higher 2.X version
+Conflicts:      ansible-core < %{ansible_core_major_minor_version}
+Conflicts:      ansible-core > %{ansible_core_major_minor_version}
+
+# https://github.com/ansible/ansible/blob/stable-2.18/pyproject.toml#L6
+BuildRequires:  %{ansible_python}-base >= 3.11
+BuildRequires:  %{ansible_python}-pip
 BuildRequires:  %{ansible_python}-setuptools
-# https://github.com/ansible/ansible/blob/stable-2.17/requirements.txt
+BuildRequires:  %{ansible_python}-wheel
+# https://github.com/ansible/ansible/blob/stable-2.18/requirements.txt
 BuildRequires:  %{ansible_python}-Jinja2 >= 3.0.0
 BuildRequires:  %{ansible_python}-PyYAML >= 5.1
 BuildRequires:  %{ansible_python}-cryptography
@@ -102,6 +110,9 @@ Summary:        Tool for testing ansible plugin and module code
 Requires:       %{name} = %{version}
 BuildRequires:  %{ansible_python}-virtualenv
 Requires:       %{ansible_python}-virtualenv
+# cannot be installed with a lower or higher 2.X version
+Conflicts:      ansible-test < %{ansible_core_major_minor_version}
+Conflicts:      ansible-test > %{ansible_core_major_minor_version}
 
 %description -n ansible-test
 This package installs the ansible-test command for testing modules and plugins
@@ -128,14 +139,19 @@ find ./ -type f -exec \
 find ./ -type f -exec \
     sed -i '1s|^#!%{_bindir}/python$|#!%{_bindir}/%{ansible_python_executable}|' {} \;
 
+# fix shebangs in scripts
+sed -i "1{/python3/d;}" ./lib/ansible/cli/*.py
+sed -i "1{/python3/d;}" ./lib/ansible/cli/scripts/ansible_connection_cli_stub.py
+sed -i "1{/python3/d;}" ./lib/ansible/modules/hostname.py
+
 %build
-%python_build
+%pyproject_wheel
 
 mkdir man1
 %{ansible_python_executable} packaging/cli-doc/build.py man --output-dir ./man1
 
 %install
-%python_install
+%pyproject_install
 %fdupes %{buildroot}%{ansible_python_sitelib}
 
 mkdir -p %{buildroot}%{_sysconfdir}/ansible/
@@ -182,24 +198,22 @@ mkdir -p %{buildroot}%{_sysconfdir}/ansible/roles/
 # resp. https://bugzilla.opensuse.org/show_bug.cgi?id=1137479
 mkdir -p %{buildroot}%{ansible_python_sitelib}/ansible/galaxy/data/default/role/{files,templates}
 
-# fix shebangs in scripts
-sed -i "1{/python3/d;}" %{buildroot}/%{ansible_python_sitelib}/ansible/cli/*.py
-sed -i "1{/python3/d;}" %{buildroot}/%{ansible_python_sitelib}/ansible/cli/scripts/ansible_connection_cli_stub.py
-sed -i "1{/python3/d;}" %{buildroot}/%{ansible_python_sitelib}/ansible/modules/hostname.py
-
 mkdir -p %{buildroot}/%{_mandir}/man1/
 cp -v ./man1/*.1 %{buildroot}/%{_mandir}/man1/
 
 %check
-# NEVER ship untested pure python packages. Enable this before the final submit.
+export PYTHONPATH=%{ansible_python_sitelib}:$PWD
+mkdir bin
+cd bin
+ln -s ../test/lib/ansible_test/_util/target/cli/ansible_test_cli_stub.py ./ansible-test
+cd ..
 %{ansible_python_executable} bin/ansible-test units -v --python %{ansible_python_version}
 
 %files
-%doc changelogs/CHANGELOG-v2.17.rst changelogs/changelog.yaml
+%doc changelogs/CHANGELOG-v%{ansible_core_major_minor_version}.rst changelogs/changelog.yaml
 %license COPYING licenses/Apache-License.txt licenses/MIT-license.txt licenses/PSF-license.txt licenses/simplified_bsd.txt
 %{_bindir}/ansible
 %{_bindir}/ansible-config
-%{_bindir}/ansible-connection
 %{_bindir}/ansible-console
 %{_bindir}/ansible-doc
 %{_bindir}/ansible-galaxy

@@ -1,0 +1,13 @@
+<package name="ansible-10" project="openSUSE:Factory">
+  <title>SSH-based configuration management, deployment, and task execution system</title>
+  <description>Ansible is a radically simple model-driven configuration management, multi-node
+deployment, and remote task execution system. Ansible works over SSH and does
+not require any software or daemons to be installed on remote nodes. Extension
+modules can be written in any language and are transferred to managed machines
+automatically.
+
+
+</description>
+  <devel project="systemsmanagement:ansible" package="ansible-10"/>
+  <url>https://ansible.com/</url>
+</package>

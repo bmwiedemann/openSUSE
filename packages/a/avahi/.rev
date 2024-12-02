@@ -1334,4 +1334,12 @@ Pushing GNOME 45.rc packages</comment>
     <comment>- Drop rcFOO symlinks (PED-266). (forwarded request 1208117 from dimstar)</comment>
     <requestid>1208161</requestid>
   </revision>
+  <revision rev="171" vrev="37">
+    <srcmd5>7d2c82d27eb567658df76e75e27333f6</srcmd5>
+    <version>0.8</version>
+    <time>1733155076</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1227530</requestid>
+  </revision>
 </revisionlist>

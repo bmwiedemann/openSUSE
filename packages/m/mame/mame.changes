@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov 30 11:19:38 UTC 2024 - Илья Индиго <ilya@ilya.top>
+
+- Used gcc14 for Leap 15.6.
+- Removed ld.gold for link (fixed aarch64 build).
+- Updated to 0.272
+  * /usr/share/doc/packages/mame/whatsnew-0.272.txt
+
+-------------------------------------------------------------------
 Thu Oct 31 21:56:33 UTC 2024 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 0.271

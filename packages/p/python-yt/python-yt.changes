@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Nov 23 11:04:14 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to yt-4.4.0:
+  * the frontend previously known as boxlib was renamed to AMReX
+  * this release contains a brand new frontend for Parthenon
+    datasets.
+  * off-axis projections are now supported
+  * improved convergence with grid resolution
+  * improved mass conservation
+  * fixed a critical bug where column densities estimates were
+    incorrect by a factor x3
+    calculation for Ramses, by @cphyc
+
+  * Change in the way cooling tables are used. If "self-
+    shielding" is detected from the namelist or is set by the
+    user with `ds=yt.load("output_12345", self_shielding=True)`,
+    the hydrogen number density used to obtain cooling, heating
+    and $$\mu$$ from the cooling tables are multiplied by an
+    exponential prefactor, consistently with what RAMSES is doing
+    internally. This will change the values of the cooling and
+    heating rates, as well as $$\mu$$ and temperature at high-
+    densities (above 0.01 mp/cm³).
+
+-------------------------------------------------------------------
 Thu Jul 18 17:12:30 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Revert restriction. Numpy 2 is supported since 4.3.1
@@ -6,7 +30,7 @@ Thu Jul 18 17:12:30 UTC 2024 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Wed Jul 17 05:41:40 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Restrict numpy to < 2 for now. 
+- Restrict numpy to < 2 for now.
 
 -------------------------------------------------------------------
 Thu Jul  4 05:28:54 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>

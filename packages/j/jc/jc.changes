@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Nov 26 19:19:25 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.25.4
+  * Add pacman command parser.
+  * Add wg show command parser.
+  * Enhance ethtool parser to support
+    link_partner_advertised_link_modes.
+  * Enhance nsd-control parser with additional state fields.
+  * Enhance ping-s streaming parser to support error replies.
+  * Fix bluetoothctl parser when extra attributes like
+    manufacturer and version exist.
+  * Fix df parser to correctly output binary vs. decimal size
+    outputs.
+  * Fix ip-address parser for Python 3.13 changes to IPv4 mapped
+    IPv6 addresses.
+  * Fix iw-scan parser to output more fields (still beta quality)
+  * Fix mount parser for cases where there are spaces in the
+    filesystem name.
+  * Fix netstat parser for cases where there are spaces in the
+    program name.
+  * Fix pkg-index-deb, apt-cache-show, and rpm-qi parsers to
+    correctly convert contiguous packages with the same name.
+  * Fix traceroute parser to support extreme IPv6 cases.
+  * Fix uptime parser for data that contains user instead of users.
+  * Fix yaml parser to support values that start with an equal
+    sign.
+  * Enhance jc.utils.convert_size_to_int() to add posix_mode and
+    decimal_bias parameters.
+  * Enhance cli to coerce any non-JSON-serializable objects to a
+    string.
+
+-------------------------------------------------------------------
 Sat Jun 15 12:58:49 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.25.3

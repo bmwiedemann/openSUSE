@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec  1 16:46:04 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 5.81:
+  * Fixed life3d mode when running by itself as it would not pick up
+    allGliders rules on refresh.
+  * Fixed building for CDE for Linux.  In general, for Linux, the build
+    now uses -R for linking like BSD.
+
+-------------------------------------------------------------------
 Mon Sep 30 12:32:40 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 5.80:

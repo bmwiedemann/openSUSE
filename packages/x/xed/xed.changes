@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec  1 19:02:05 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 3.6.8:
+  * Rename the desktop file
+- update to 3.6.7:
+  * textsize plugin: Don't propagate any scroll-zoom events.
+  * Duplicate only current line when cursor is at the end of the line
+
+-------------------------------------------------------------------
 Mon Aug 12 08:02:40 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 3.6.6:

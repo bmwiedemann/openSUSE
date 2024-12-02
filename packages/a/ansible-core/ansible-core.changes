@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Sat Nov 30 13:12:36 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.18.0:
+  * Breaking Changes / Porting Guide
+    - Stopped wrapping all commands sent over SSH on a Windows
+      target with a powershell.exe executable. This results in one
+      less process being started on each command for Windows to
+      improve efficiency, simplify the code, and make raw an actual
+      raw command run with the default shell configured on the
+      Windows sshd settings. This should have no affect on most
+      tasks except for raw which now is not guaranteed to always be
+      running in a PowerShell shell and from having the console
+      output codepage set to UTF-8. To avoid this issue either swap
+      to using ansible.windows.win_command,
+      ansible.windows.win_shell, ansible.windows.win_powershell or
+      manually wrap the raw command with the shell commands needed
+      to set the output console encoding.
+    - persistent connection plugins - The ANSIBLE_CONNECTION_PATH
+      config option no longer has any effect.
+  * Deprecated Features
+    - Deprecate ansible.module_utils.basic.AnsibleModule.safe_eval
+      and ansible.module_utils.common.safe_eval as they are no
+      longer used.
+    - persistent connection plugins - The ANSIBLE_CONNECTION_PATH
+      config option no longer has any effect, and will be removed
+      in a future release.
+    - yum_repository - deprecate async option as it has been
+      removed in RHEL 8 and will be removed in ansible-core 2.22.
+    - yum_repository - the following options are deprecated:
+      deltarpm_metadata_percentage, gpgcakey, http_caching,
+      keepalive, metadata_expire_filter, mirrorlist_expire,
+      protect, ssl_check_cert_permissions, ui_repoid_vars as they
+      have no effect for dnf as an underlying package manager. The
+      options will be removed in ansible-core 2.22.
+  * Removed Features (previously deprecated)
+    - Play - removed deprecated ROLE_CACHE property in favor of
+      role_cache.
+    - Remove deprecated VariableManager._get_delegated_vars method
+      (#82950)
+    - Removed Python 3.10 as a supported version on the controller.
+      Python 3.11 or newer is required.
+    - Removed support for setting the vars keyword to lists of
+      dictionaries. It is now required to be a single dictionary.
+    - loader - remove deprecated non-inclusive words (#82947).
+    - paramiko_ssh - removed deprecated ssh_args from the
+      paramiko_ssh connection plugin (#82939).
+    - paramiko_ssh - removed deprecated ssh_common_args from the
+      paramiko_ssh connection plugin (#82940).
+    - paramiko_ssh - removed deprecated ssh_extra_args from the
+      paramiko_ssh connection plugin (#82941).
+    - play_context - remove deprecated PlayContext.verbosity
+      property (#82945).
+    - utils/listify - remove deprecated 'loader' argument from
+      listify_lookup_plugin_terms API (#82949).
+  * Security Fixes
+    - include_vars action - Ensure that result masking is correctly
+      requested when vault-encrypted files are read.
+      (CVE-2024-8775)
+    - task result processing - Ensure that action-sourced result
+      masking (_ansible_no_log=True) is preserved. (CVE-2024-8775)
+    - user action won't allow ssh-keygen, chown and chmod to run on
+      existing ssh public key file, avoiding traversal on existing
+      symlinks (CVE-2024-9902).
+  * Known Issues
+    - ansible-test - When using ansible-test containers with Podman
+      on a Ubuntu 24.04 host, ansible-test must be run as a
+      non-root user to avoid permission issues caused by AppArmor.
+    - ansible-test - When using the Fedora 40 container with Podman
+      on a Ubuntu 24.04 host, the unix-chkpwd AppArmor profile must
+      be disabled on the host to allow SSH connections to the
+      container.
+  * New Plugins
+    - timedout - did the task time out
+    - vaulted_file - Is this file an encrypted vault
+  * New Modules
+    - ansible.modules
+      - mount_facts - Retrieve mount information.
+  * Bugfixes
+    Please see the full changelog:
+    https://github.com/ansible/ansible/blob/v2.18.0/changelogs/CHANGELOG-v2.18.rst
+
+-------------------------------------------------------------------
 Fri Nov 22 07:03:32 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Backport patch to relax resolvelib dependency:

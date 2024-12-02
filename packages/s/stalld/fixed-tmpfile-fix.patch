@@ -1,0 +1,13 @@
+Index: stalld-v1.19.3/scripts/throttlectl.sh
+===================================================================
+--- stalld-v1.19.3.orig/scripts/throttlectl.sh
++++ stalld-v1.19.3/scripts/throttlectl.sh
+@@ -10,7 +10,7 @@
+ 
+ path=/proc/sys/kernel
+ cmd=$1
+-savefile=/tmp/rtthrottle
++savefile=/run/stalld/rtthrottle
+ defperiod=1000000
+ defruntime=950000
+ case ${cmd} in

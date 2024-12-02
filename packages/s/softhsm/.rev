@@ -17,4 +17,88 @@
 </comment>
     <requestid>1175453</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2cab64d016d4dcddc6c11a9dfcfab470</srcmd5>
+    <version>2.6.1+git.1732869438.f7883c2</version>
+    <time>1733155102</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.6.1+git.1732869438.f7883c2:
+  * init
+  * add libtool for macos
+  * upgrade to macos-14
+  * build on selected branches push only
+  * tweek
+  * Minor README.md fixes
+  * Add macOS to CI
+  * Build and run tests in CI for Windows
+  * Add GitHub Actions CI
+- Update softhsm2-pk11install.c from
+  https://github.com/dogtagpki/coolkey/blob/master/src/install/pk11install.c
+- Update to version 2.6.1+git.1700562855.913e7bf:
+  * fix typo
+  * Move cmake modules into own/clearer directory
+  * avoid unnecessary check for sqlite3 binary
+  * Fix memory leak in SoftHSM::UnwrapKeySym.
+  * doc add CMAKE build for windows
+  * fix check minimal botan version
+  * fix db backend tools compilation errors
+  * feat enable DB backend for windows
+  * fix compilation warnings
+  * fix cmake minimal version (CMP0054)
+  * feat make test output more verbose
+  * feat enable openssl build
+  * feat make ctest ouput more verbose
+  * feat disable openssl backend
+  * fix cppunit handlemanager
+  * fix remove getopt from cache
+  * fix cppunit path
+  * fix cmake minimal version 3.20
+  * fix unreferenced formal parameter warning
+  * fix missing cppunit include
+  * fix cppUnit path
+  * fix remove windows getopt component under GNU license
+  * fix appveyor build script
+  * Update .appveyor.yml
+  * fix appveyor build script
+  * fix appveyor build script
+  * fix update vcpkg build tool
+  * Update .appveyor.yml
+  * fix update appveyor vcpkg build tool
+  * fix update appveyor vcpkg build tool
+  * fix cmake MSVC flags
+  * fix vcpkg options
+  * fix compile options
+  * feat add console output for test executable
+  * feat add windows compile options
+  * feat make tests more verbose
+  * fix disable ECB test
+  * fix build script for CppUnit
+  * fix disable ECB Tests
+  * fix enable appveyor cache on error
+  * fix enable appveyor cache on error
+  * fix cppunit vcpkg autodetect
+  * fix remove cppunit path
+  * fix enable post build tests
+  * fix windows duplicate define
+  * fix windows execution
+  * feat add a message if cppunit library is missing
+  * fix add Softhsm2-negative-mech.conf for p11test
+  * fix cmake windows static lib
+  * fix Botan ECB mode dropped
+  * fix set warning level to W4 for softhsm test binaries
+  * fix set warning level to W4 for softhsm libraries
+  * feat change compile crypto backend order
+  * fix add cmake windows compatibility files
+  * fix DEFAULT_UMASK missing
+  * fix set windows compile warning level W4
+  * fix set windows compiler warning W4
+  * fix ECC &amp; GOST are now disabled by default
+  * Fix issue 585 by resetting en/decrypt op on input validation
+  * Enforce attributes becoming read-only once set to CK_TRUE on CKA_WRAP_WITH_TRUSTED and CKA_SENSITIVE
+- Remove upstreamed patches:
+  * softhsm-2.6.1-rh1831086-exit.patch
+  * softhsm-2.6.1-uninitialized.patch
+</comment>
+    <requestid>1227357</requestid>
+  </revision>
 </revisionlist>

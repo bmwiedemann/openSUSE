@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov 30 20:15:39 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to version 9.14.4:
+  * Don't ever save mutated metadata to the metadata cache
+- includes 9.14.3:
+  * Some commands should ignore the packageManager field check of
+    package.json #7959
+
+-------------------------------------------------------------------
 Wed Nov 20 22:44:41 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
 
 - update to version 9.14.2:

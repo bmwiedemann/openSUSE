@@ -46,6 +46,7 @@ BuildRequires:  junit
 BuildRequires:  libtool
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  procps
+BuildRequires:  strip-nondeterminism
 BuildRequires:  rhino
 BuildRequires:  tagsoup
 BuildRequires:  zip
@@ -136,6 +137,7 @@ for i in javaws itweb-settings policyeditor; do
   ln -sf ${i}.itweb.sh %{buildroot}%{_bindir}/${i}.itweb
 done
 
+strip-nondeterminism %{buildroot}%{_datadir}/icedtea-web/javaws.jar
 %fdupes %{buildroot}
 
 rm -rf %{buildroot}%{_mandir}/*/man1

@@ -5091,4 +5091,15 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
 </comment>
     <requestid>1225050</requestid>
   </revision>
+  <revision rev="492" vrev="1">
+    <srcmd5>e1f020abf7a274292264fa1794cca2b8</srcmd5>
+    <version>2.6.1+git20241129.0f107c1</version>
+    <time>1733155099</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.6.1+git20241129.0f107c1:
+  * dbus-services: whitelist tuned-ppd (bsc#1232412)
+- Add format_spec_file service in manual mode
+- Convert existing services from disabled to manual mode (forwarded request 1227343 from fbonazzi)</comment>
+    <requestid>1227344</requestid>
+  </revision>
 </revisionlist>

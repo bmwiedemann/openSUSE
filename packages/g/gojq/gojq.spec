@@ -17,7 +17,7 @@
 
 
 Name:           gojq
-Version:        0.12.16
+Version:        0.12.17
 Release:        0
 Summary:        Pure Go implementation of jq
 License:        MIT
@@ -25,7 +25,7 @@ URL:            https://github.com/itchyny/gojq
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 Source2:        gojq.rpmlintrc
-BuildRequires:  go >= 1.20
+BuildRequires:  go >= 1.21
 BuildRequires:  golang-packaging
 BuildRequires:  zstd
 

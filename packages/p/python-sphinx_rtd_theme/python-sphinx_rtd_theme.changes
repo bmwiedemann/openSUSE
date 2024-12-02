@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Nov 23 11:35:46 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.2:
+  * Attached flyout: show the current translation
+  * Allow disabling selectors
+  * Use black color for switcher options
+  * Trigger search modal on "Search docs" input focus
+  * Theme option flyout to enable/disable theme's flyout
+  * Remove html5shiv
+  * Adjust the expected test_basic output to match Sphinx 7.3+
+
+-------------------------------------------------------------------
 Tue Jul  2 20:49:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - skip test_basic as it no longer works with sphinx 7.3

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Dec 01 20:45:50 UTC 2024 - mrueckert@suse.de
+
+- Update to version 1.3.0:
+  * New coverage.
+  * Get ready for versions.
+  * Note experimental status.
+  * Synchronise manpages.
+  * Add default HTML template.
+  * Case insensitive, allow arguments, meta().
+  * Add HTML-escaping functions.
+  * Settle on case insensitive for templates.
+  * Add some manpage bits for ongoing progress.
+  * Use "dot" notation instead of "::".
+  * Template "body" special value.
+  * Add looping and listing to template.
+  * Make valgrind run test cases.
+  * Clarify corner case behaviour of templates.
+  * Further specify metadata key canonicalisation.
+  * Initial template functionality.
+
+-------------------------------------------------------------------
 Fri Oct 25 11:22:02 UTC 2024 - mrueckert@suse.de
 
 - Update to version 1.2.0:

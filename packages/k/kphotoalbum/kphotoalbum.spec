@@ -16,6 +16,9 @@
 #
 
 
+# Temporarily disabled until kphotoalbum gets a Qt6-based release
+%bcond_with marble
+#
 %bcond_without released
 Name:           kphotoalbum
 Version:        5.13.0
@@ -49,7 +52,9 @@ BuildRequires:  cmake(KF5Purpose)
 BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5XmlGui)
+%if %{with marble}
 BuildRequires:  cmake(Marble)
+%endif
 BuildRequires:  cmake(Phonon4Qt5)
 BuildRequires:  cmake(Qt5Core) >= 5.15
 BuildRequires:  cmake(Qt5Sql)

@@ -195,4 +195,15 @@
   * Initial CLI support</comment>
     <requestid>1223399</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>201635b6c613e8a73a45f997ce81955b</srcmd5>
+    <version>1.3.3</version>
+    <time>1733155117</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.3.3:
+  * Fix for boo#1233876
+  * Minor bugfixes for CLI mode
+  * Add support for redefining OK and Cancel labels in CLI Mode</comment>
+    <requestid>1227510</requestid>
+  </revision>
 </revisionlist>

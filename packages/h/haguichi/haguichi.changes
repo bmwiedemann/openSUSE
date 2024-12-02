@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Dec  1 14:04:26 UTC 2024 - Stephen Brandt <stephen@stephenbrandt.com>
+
+- update to 1.5.1
+  * Modernized layout for all input dialogs.
+  * Now using Adw.Dialog as base for all dialogs when libadwaita 1.6 is available.
+  * Now using Adw.Spinner instead of Gtk.Spinner when libadwaita 1.6 is available.
+  * Fixed showing commands menu button if there is only one item present.
+  * Added support for Ptyxis.
+  * Added Finnish translation (thanks to Jiri Grönroos).
+  * Updated Indonesian and Russian translation.
+  * Other minor fixes and improvements.
+
+-------------------------------------------------------------------
 Sun Jul 21 14:51:53 UTC 2024 - Stephen Brandt <stephen@stephenbrandt.com>
 
 - update to 1.5.0

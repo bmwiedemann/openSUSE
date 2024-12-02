@@ -309,4 +309,13 @@ add: README.FAQ to answer some questions about Noto Fonts packaging
  * Various updates to fonts</comment>
     <requestid>1198121</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>5025db1dc2462393edb64737db7abc2f</srcmd5>
+    <version>20241201</version>
+    <time>1733155077</time>
+    <user>anag+factory</user>
+    <comment>- Update to 20241201
+ * Base Noto Sans and Noto Serif is updated</comment>
+    <requestid>1227622</requestid>
+  </revision>
 </revisionlist>

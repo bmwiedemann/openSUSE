@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Nov 30 21:56:34 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to version 11.1.6.
+  * evolve: unrelated parts of splits are no longer considered
+    content-divergent, this is a port of an upstream patch included in hg 6.8.2
+  * obshashrange: avoid executing too many DELETE requests at once
+  * obshashrange: reset the cache if too many ranges need to be deleted
+  topic (1.1.6)
+  * stack: when stack base is obsolete, pick any successor, even if at random
+
+-------------------------------------------------------------------
 Thu Nov  7 14:22:51 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 11.1.5.

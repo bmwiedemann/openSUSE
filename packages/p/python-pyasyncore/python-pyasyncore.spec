@@ -16,21 +16,22 @@
 #
 
 
-%define pythons python312
+# Requires Python 3.11 or above
+%define skip_python310 1
 Name:           python-pyasyncore
 Version:        1.0.4
 Release:        0
-Summary:        Make asyncore available for Python 312 onwards
+Summary:        Make asyncore available for Python 3.12 onwards
 License:        PSF-2.0
 URL:            https://github.com/simonrob/pyasyncore
-Source:         https://files.pythonhosted.org/packages/source/p/pyasyncore/pyasyncore-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.12}
+Source:         https://github.com/simonrob/pyasyncore/archive/refs/tags/v%{version}.tar.gz#/pyasyncore-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module testsuite}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-base >= 3.12
 BuildArch:      noarch
 %python_subpackages
 
@@ -39,6 +40,7 @@ Make asyncore available for Python 3.12 onwards
 
 %prep
 %autosetup -p1 -n pyasyncore-%{version}
+chmod -x LICENSE README.md
 
 %build
 %pyproject_wheel
@@ -47,7 +49,8 @@ Make asyncore available for Python 3.12 onwards
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-# no tests available
+%check
+%pyunittest -v
 
 %files %{python_files}
 %doc README.md

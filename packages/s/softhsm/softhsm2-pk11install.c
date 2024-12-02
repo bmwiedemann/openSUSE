@@ -19,8 +19,8 @@
 
 #include <stdio.h>
 #include <string.h>
-#include "pkcs11.h"
-#include "pkcs11n.h"
+#include <pkcs11.h>
+#include <pkcs11n.h>
 
 /*
  * windows specific globing search
@@ -171,17 +171,19 @@ int dirListCount = sizeof(dirList)/sizeof(dirList[0]);
 static void
 usage(char *prog)
 {
-    fprintf(stderr,"usage: %s [-u][-v] [-p path] module\n", prog);
+    fprintf(stderr,"usage: %s [-u][-v][-s][-l] [-p path] module\n", prog);
     return;
 }
 
 /* Utility printing functions */
 
+
+
 #define CONFIG_TAG "configDir="
 int
-installPKCS11(char *dirPath, InstType type, char *module)
+installPKCS11(char *dirPath, char *dbType, InstType type, char *module)
 {
-    char *paramString = (char *)malloc(strlen(dirPath)+sizeof(CONFIG_TAG)+3);
+    char *paramString = (char *)malloc(strlen(dbType)+strlen(dirPath)+sizeof(CONFIG_TAG)+3);
     char *cp;
     char **rc;
 
@@ -189,7 +191,7 @@ installPKCS11(char *dirPath, InstType type, char *module)
 	PINST_SET_ERROR(ERROR_NOT_ENOUGH_MEMORY);
 	return 0;
     }
-    sprintf(paramString,CONFIG_TAG"\"%s\" ",dirPath);
+    sprintf(paramString,CONFIG_TAG"\"%s%s\" ",dbType,dirPath);
 
     /* translate all the \'s to /'s */
     for (cp=paramString; *cp; cp++) {
@@ -198,9 +200,14 @@ installPKCS11(char *dirPath, InstType type, char *module)
 
     /* don't call this if you have NSS initialized!!, use SECMOD_AddModule
      * or SECMOD_AddUserModule instead */
+
+    /* Ignore this missing in the header for gcc14 */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wimplicit-function-declaration"
     rc = (char **) NSC_ModuleDBFunc(type == Install ? 
 			SECMOD_MODULE_DB_FUNCTION_ADD :
 			SECMOD_MODULE_DB_FUNCTION_DEL, paramString, module); 
+#pragma GCC diagnostic pop
     if (verbose) {
 	fprintf(stderr, "Install \"%s\" in %s : %s\n", module, dirPath, 
 							rc ? *rc : "Fail" );
@@ -212,7 +219,7 @@ installPKCS11(char *dirPath, InstType type, char *module)
 
 
 int
-installAllPKCS11(char *dirPath, char *search, char *tail,
+installAllPKCS11(char *dirPath, char *dbType, char *search, char *tail,
 					InstType type, char *module)
 {
     char *searchString;
@@ -280,9 +287,9 @@ installAllPKCS11(char *dirPath, char *search, char *tail,
 
 	myPath=PINST_FULLPATH(tempPath,path);
 	if (tail) {
-	    installAllPKCS11(myPath, tail, NULL, type, module);
+	    installAllPKCS11(myPath, dbType, tail, NULL, type, module);
 	} else {
-	    installPKCS11(myPath, type, module);
+	    installPKCS11(myPath, dbType, type, module);
 	}
     } while (PINST_NEXT(iter, fileData));
     free(tempPath);
@@ -307,6 +314,7 @@ int main(int argc, char **argv)
     int i;
     InstType type = Install;
     char * path = NULL;
+    char *dbType = "";
 #ifdef WIN32
     BOOL brc;
     HKEY regKey;
@@ -330,6 +338,12 @@ int main(int argc, char **argv)
 		break;
 	    case 'v':
 		verbose = 1;
+		break;
+	    case 'l':
+		dbType = "dbm:";
+		break;
+	    case 's':
+		dbType = "sql:";
 		break;
 	    case 'p':
 		path = *argv++;
@@ -357,7 +371,7 @@ int main(int argc, char **argv)
     }
 
     if (path) {
-	installAllPKCS11(path, "", NULL, type, module);
+	installAllPKCS11(path, dbType, "", NULL, type, module);
 	return 0;
     }
 
@@ -442,7 +456,7 @@ int main(int argc, char **argv)
 	if (!dirPath) {
 	    continue;
 	}
-	installAllPKCS11(dirPath, dirList[i].search, dirList[i].tail, 
+	installAllPKCS11(dirPath, dbType, dirList[i].search, dirList[i].tail, 
 								type, module);
     }
 

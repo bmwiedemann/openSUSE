@@ -19,7 +19,7 @@
 
 %global         _configure ../configure
 Name:           racket
-Version:        8.14
+Version:        8.15
 Release:        0
 Summary:        Scheme implementation with teaching tools
 License:        Apache-2.0 OR MIT

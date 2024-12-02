@@ -206,4 +206,15 @@
   * /usr/share/doc/packages/mame/whatsnew-0.271.txt</comment>
     <requestid>1219989</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>e8e16ffd4a2e31167ae9d21d596f4c83</srcmd5>
+    <version>0.272</version>
+    <time>1733155123</time>
+    <user>anag+factory</user>
+    <comment>- Used gcc14 for Leap 15.6.
+- Removed ld.gold for link (fixed aarch64 build).
+- Updated to 0.272
+  * /usr/share/doc/packages/mame/whatsnew-0.272.txt</comment>
+    <requestid>1227551</requestid>
+  </revision>
 </revisionlist>

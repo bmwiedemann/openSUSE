@@ -637,4 +637,12 @@ Try submission again, hoping that the service validator is updated on the server
     <comment>- Update to release 4.24</comment>
     <requestid>1218870</requestid>
   </revision>
+  <revision rev="81" vrev="2">
+    <srcmd5>697b4741bd132512ac78304982ad8a68</srcmd5>
+    <version>4.24</version>
+    <time>1733155076</time>
+    <user>anag+factory</user>
+    <comment>- keyring update</comment>
+    <requestid>1227588</requestid>
+  </revision>
 </revisionlist>

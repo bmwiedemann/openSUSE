@@ -7,4 +7,13 @@
     <comment>required for spyder 6</comment>
     <requestid>1199433</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0eaf36686916654cca7b3f3d6f72d5d8</srcmd5>
+    <version>0.6.7</version>
+    <time>1733155141</time>
+    <user>anag+factory</user>
+    <comment>- Skip flaky tests marked by @skip_on_ci
+</comment>
+    <requestid>1227632</requestid>
+  </revision>
 </revisionlist>

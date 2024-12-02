@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 20 10:09:45 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+
+- Add avahi-CVE-2024-52616.patch:
+  Backporting 1dade81c from upstream: Properly randomize query id
+  of DNS packets.
+  (CVE-2024-52616, bsc#1233420)
+
+-------------------------------------------------------------------
 Tue Oct 15 11:56:48 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop rcFOO symlinks (PED-266).

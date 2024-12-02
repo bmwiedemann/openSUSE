@@ -16,45 +16,65 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-Name:           gede
-Version:        2.20.2
+Version:        2.21.1
 Release:        0
-Summary:        Qt-based GUI to GDB
+
+%if "@BUILD_FLAVOR@" == "qt6"
+Name:           gede-qt6
+%global QTVER 6
+Provides:       gede = %version
+Conflicts:      gede
+%else
+Name:           gede
+%global QTVER 5
+%endif
+Summary:        Qt{%QTVER}-based GUI to GDB
 License:        BSD-2-Clause
 Group:          Development/Tools/Debuggers
 URL:            https://gede.dexar.se
 Source0:        https://github.com/jhn98032/gede/archive/refs/tags/v%{version}.tar.gz
 Source1:        gede.desktop
-BuildRequires:  libQt5SerialPort-devel
-BuildRequires:  libQt5Widgets-devel
+BuildRequires:  pkgconfig(Qt%{QTVER}SerialPort)
+BuildRequires:  pkgconfig(Qt%{QTVER}Widgets)
+%if "@BUILD_FLAVOR@" == "qt6"
+BuildRequires:  qt6-macros
+%else
 BuildRequires:  libqt5-qtbase-common-devel
+%endif
 Requires:       /usr/bin/ctags
 Recommends:     gdb
 
 %description
 Gede is a graphical frontend (GUI) to GDB written in C++ and using the Qt5 toolkit.
 Gede supports debugging programs written in Ada, FreeBasic, C++, C, Rust, Fortran and Go.
-
 %prep
-%setup -q
+%setup -q -n gede-%{version}
 
 %build
 cd src
+%if "@BUILD_FLAVOR@" == "qt6"
+%qmake6
+%else
 %qmake5
+%endif
 #Qmake adds this relocation model which is not needed for the main binary and produces worse code
 sed -i 's/ -fPIC / /g' Makefile
 %make_jobs
 
 %install
-install -pvDm755 %{_builddir}/%{name}-%{version}/src/gede -t %{buildroot}%{_bindir}
+install -pvDm755 src/gede -t %{buildroot}%{_bindir}
+install -pvDm644 AppDir/gede_icon.png -t %{buildroot}%{_datadir}/pixmaps
 install -pvDm644 %{_sourcedir}/gede.desktop -t %{buildroot}%{_datadir}/applications
 
 %check
 
 #The other programs in tests/ are samples/debug tools for the embedded highlighter library, not test suites.
 cd tests/ini
+%if "@BUILD_FLAVOR@" == "qt6"
+%qmake6
+%else
 %qmake5
+%endif
 sed -i 's/ -fPIC / /g' Makefile
 %make_jobs
 ./test_ini
@@ -66,6 +86,7 @@ sed -i 's/ -fPIC / /g' Makefile
 %files
 %{_bindir}/gede
 %{_datadir}/applications/gede.desktop
+%{_datadir}/pixmaps/gede_icon.png
 %license LICENSE
 %doc README.rst
 

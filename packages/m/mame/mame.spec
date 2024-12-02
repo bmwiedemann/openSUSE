@@ -16,7 +16,7 @@
 #
 
 
-%define ver     271
+%define ver     272
 Name:           mame
 Version:        0.%{ver}
 Release:        0
@@ -38,7 +38,6 @@ Patch3:         %{name}-fortify.patch
 Patch4:         %{name}-bgfx.patch
 Patch5:         reproducible.patch
 BuildRequires:  asio-devel
-BuildRequires:  binutils-gold
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
@@ -70,8 +69,8 @@ Requires:       %{name}-data = %{version}
 Suggests:       %{name}-tools = %{version}
 ExcludeArch:    i586 armv6hl armv7hl ppc
 %if 0%{?sle_version} > 150000 && 0%{?sle_version} < 160000
-BuildRequires:  gcc13
-BuildRequires:  gcc13-c++
+BuildRequires:  gcc14
+BuildRequires:  gcc14-c++
 %endif
 
 %description
@@ -108,7 +107,6 @@ rm -r 3rdparty/{asio,compat,dxsdk,expat,flac,glm,libjpeg,portaudio,portmidi,pugi
 %define _lto_cflags %{nil}
 MY_OPT_FLAGS=$(echo %{optflags} | sed -re 's@-g($|[0-9])@-g1@g; s@-g\s@-g1 @g')
 MY_OPT_FLAGS=$(echo $MY_OPT_FLAGS | sed 's@ -Wp,-D_GLIBCXX_ASSERTIONS@@')
-MY_LDFLAGS="${LDFLAGS} -Wl,-v -fuse-ld=gold -Wl,--no-map-whole-files -Wl,--no-keep-memory -Wl,--no-keep-files-mapped -Wl,--no-mmap-output-file"
 sed -i "s@-Wall -Wextra -Os \$(MPARAM)@$MY_OPT_FLAGS@" 3rdparty/genie/build/gmake.linux/genie.make
 sed -i "s@-s -rdynamic@$MY_LDFLAGS -rdynamic@" 3rdparty/genie/build/gmake.linux/genie.make
 
@@ -132,11 +130,10 @@ sed -i "s@-s -rdynamic@$MY_LDFLAGS -rdynamic@" 3rdparty/genie/build/gmake.linux/
     SDL_INI_PATH="%{_sysconfdir}/%{name};" \
     TOOLS=1 \
 %if 0%{?sle_version} > 150000 && 0%{?sle_version} < 160000
-    CC="gcc-13" \
-    CXX="g++-13" \
+    CC="gcc-14" \
+    CXX="g++-14" \
 %endif
-    OPT_FLAGS="$MY_OPT_FLAGS" \
-    LDOPTS="$MY_LDFLAGS"
+    OPT_FLAGS="$MY_OPT_FLAGS"
 
 %install
 install -pm0644 %{SOURCE1} whatsnew-%{version}.txt

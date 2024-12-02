@@ -1,4 +1,4 @@
-policy_module(container, 2.234.0)
+policy_module(container, 2.232.1)
 
 gen_require(`
 	class passwd rootok;
@@ -757,7 +757,6 @@ tunable_policy(`container_connect_any',`
 #
 allow spc_t { container_file_t container_var_lib_t container_ro_file_t container_runtime_tmpfs_t}:file entrypoint;
 role system_r types spc_t;
-dontaudit spc_t self:memprotect mmap_zero;
 
 domtrans_pattern(container_runtime_domain, container_ro_file_t, spc_t)
 domtrans_pattern(container_runtime_domain, container_var_lib_t, spc_t)
@@ -1451,14 +1450,11 @@ allow container_engine_t sysctl_t:{dir file} mounton;
 allow container_engine_t fusefs_t:dir { relabelfrom relabelto };
 allow container_engine_t fusefs_t:file relabelto;
 allow container_engine_t kernel_t:system module_request;
-allow container_engine_t null_device_t:chr_file { mounton setattr_chr_file_perms };
+allow container_engine_t null_device_t:chr_file mounton;
 allow container_engine_t random_device_t:chr_file mounton;
 allow container_engine_t self:netlink_tcpdiag_socket nlmsg_read;
 allow container_engine_t urandom_device_t:chr_file mounton;
 allow container_engine_t zero_device_t:chr_file mounton;
-allow container_engine_t container_file_t:sock_file mounton;
-allow container_engine_t container_runtime_tmpfs_t:dir { ioctl list_dir_perms };
-allow container_engine_t devpts_t:chr_file setattr;
 
 manage_chr_files_pattern(container_engine_t, fusefs_t, fusefs_t)
 
@@ -1486,17 +1482,6 @@ type kubelet_exec_t;
 application_executable_file(kubelet_exec_t)
 can_exec(container_runtime_t, kubelet_exec_t)
 allow kubelet_t kubelet_exec_t:file entrypoint;
-
-type kubelet_var_lib_t;
-files_type(kubelet_var_lib_t)
-
-manage_dirs_pattern(kubelet_t, kubelet_var_lib_t, kubelet_var_lib_t)
-manage_files_pattern(kubelet_t, kubelet_var_lib_t, kubelet_var_lib_t)
-manage_lnk_files_pattern(kubelet_t, kubelet_var_lib_t, kubelet_var_lib_t)
-manage_sock_files_pattern(kubelet_t, kubelet_var_lib_t, kubelet_var_lib_t)
-
-files_var_lib_filetrans(kubelet_t, kubelet_var_lib_t, dir, "pod-resources")
-filetrans_pattern(kubelet_t, container_var_lib_t, kubelet_var_lib_t, dir, "pod-resources")
 
 ifdef(`enable_mcs',`
 	init_ranged_daemon_domain(kubelet_t, kubelet_exec_t, s0 - mcs_systemhigh)
@@ -1531,12 +1516,10 @@ allow container_device_t device_node:chr_file rw_chr_file_perms;
 # Standard container which needs to be allowed to use any device and
 # communicate with kubelet
 container_domain_template(container_device_plugin, container)
-typeattribute container_device_plugin_t container_net_domain;
 allow container_device_plugin_t device_node:chr_file rw_chr_file_perms;
 dev_rw_sysfs(container_device_plugin_t)
 kernel_read_debugfs(container_device_plugin_t)
 container_kubelet_stream_connect(container_device_plugin_t)
-stream_connect_pattern(container_device_plugin_t, container_var_lib_t,  kubelet_var_lib_t, kubelet_t)
 
 # Standard container which needs to be allowed to use any device and
 # modify kubelet configuration

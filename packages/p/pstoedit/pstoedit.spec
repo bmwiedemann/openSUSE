@@ -17,7 +17,7 @@
 
 
 Name:           pstoedit
-Version:        4.01
+Version:        4.02
 Release:        0
 Summary:        PostScript and PDF Converter
 License:        GPL-2.0-or-later
@@ -122,6 +122,7 @@ rm -rf %{buildroot}/usr/share/doc/%{name}
 %{_libdir}/pstoedit/*.so
 %{_datadir}/%{name}
 %{_mandir}/man?*/*.*
+%defattr(644, -, -, 755)
 %license copying
 %doc examples doc/readme.txt
 %doc doc/*.htm doc/%{name}.pdf

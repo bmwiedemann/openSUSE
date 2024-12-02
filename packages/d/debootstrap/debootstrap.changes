@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov 27 22:47:12 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.138:
+  * Fix EXTRACTOR_OVERRIDE: parameter not set
+  * Fix several shellcheck complaints
+  * Self-identify the name and the version in the User-Agent header sent out
+    by wget.
+  * Add support for eLxr.
+  * fix fakechroot
+  * create /dev/fd symlink with --no-target-directory
+  * Ubuntu: add symlink for plucky
+
+-------------------------------------------------------------------
 Thu Jul 25 22:38:38 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.0.137:

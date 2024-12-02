@@ -30,7 +30,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-yt%{psuffix}
-Version:        4.3.1
+Version:        4.4.0
 Release:        0
 Summary:        An analysis and visualization toolkit for volumetric data
 License:        BSD-3-Clause

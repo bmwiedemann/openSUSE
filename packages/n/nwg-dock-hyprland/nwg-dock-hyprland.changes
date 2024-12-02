@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Nov 29 03:24:00 UTC 2024 - malcolmlewis@opensuse.org
+
+- Updated to version 0.3.3:
+  * Use separate task images (dots) and placement, according to the dock
+    position, (gh#nwg-piotr/nwg-dock-hyprland#62).
+  * Refresh the dock on item unpinned.
+  * Update dependencies.
+- Changes from version 0.3.2;
+  * Added -p right position flag for left-handed users,
+    (gh#nwg-piotr/nwg-dock-hyprland#43).
+  * Hotspot layershell namespace renamed to "hotspot", to avoid blurring the
+    window together with the dock;
+- Changes from version 0.3.1:
+  * Added -iw (ignoreWorkspaces) parameter to exclude clients from specified
+    workspaces, (gh#nwg-piotr/nwg-dock-hyprland#59).
+- Changes from version 0.3.0:
+  * Open new instances of apps using middle mouse button,
+    (gh#nwg-piotr/nwg-dock-hyprland#51).
+  * Add "Close all windows" context menu entry,
+    (gh#nwg-piotr/nwg-dock-hyprland#50).
+  * Add signals to explicit show and hide window,
+    (gh#nwg-piotr/nwg-dock-hyprland#55):
+    + use of SIGUSR1 to toggle window visibility deprecated,
+    + added sigToggle (SIGRTMIN+1) to toggle window visibility,
+    + added sigShow (SIGRTMIN+2) to show the window,
+    + added sigHide (SIGRTMIN+3) to hide the window.
+- Changes from version 0.2.2:
+  * Fixed crash on Hyprland v0.42.0: client.Fullscreen field type changed from
+    bool to int, (gh#nwg-piotr/nwg-dock-hyprland#48).
+- Changes from version 0.2.1:
+  * Fixed, (gh#nwg-piotr/nwg-dock-hyprland#49).
+  * gotk3 updated.
+- Changes from version 0.2.0:
+  * Added -lp flag for the launcher button position,
+    (gh#nwg-piotr/nwg-dock-hyprland#46).
+- Add image(s) install to spec file.
+
+-------------------------------------------------------------------
 Wed Jun 12 16:41:31 UTC 2024 - malcolmlewis@opensuse.org
 
 - Updated to version 0.1.9:

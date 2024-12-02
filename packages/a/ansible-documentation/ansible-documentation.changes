@@ -1,4 +1,351 @@
 -------------------------------------------------------------------
+Sat Nov 23 07:32:47 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.18.0:
+  * Added 2.18 porting guide (#2076) (#2091)
+  * Update module default groups documentation (#1893) (#2074)
+  * fix: correct typos (#2062) (#2071)
+  * nox pip-compile: temporarily pin pip version (#2085) (#2088)
+  * Add details of interactions between notifications and loops
+    (#597) (#2067)
+  * Remove ansible-test sanity from local module development
+    (#2034) (#2061)
+  * add example of extending ansible_facts (#2040) (#2055)
+  * Add rules on moving content to collections outside of Ansible
+    (#1971) (#2053)
+  * make survey more prominent (#2037) (#2046)
+  * remove build workflow from stable (#2032)
+  * Bump wntrblm/nox from 2024.04.15 to 2024.10.09 (#2006) (#2041)
+  * fix network_best_practices_2.5.rst (#2036) (#2039)
+  * docs typo, missing a space (#2004) (#2031)
+  * use standard indentation (#2005) (#2029)
+  * Tagging nuance (#1900) (#2021)
+  * Remove unsupported API example (#1939) (#2019)
+  * Update docs build to support the new antsibull-docs 2.15.0
+    features (#2001) (#2018)
+  * Add ecosystem_project_resources.rst document (#2007) (#2011)
+  * [stable-2.18] support pip-compile check mode and remove
+    pip-compile workflows from stable branch (#1946)
+  * Add porting guide for Ansible 11.0.0a2 (#2014) (#2015)
+  * Upgrade antsibull-docs to 2.15.0 and antsibull-core to 3.3.0.
+    (#1994) (#1995)
+  * [PR #1996/d6984678 backport][stable-2.18] update docs team info
+    page (#1999)
+  * Add porting guide for Ansible 9.11.0. (#1988) (#1992)
+  * Add porting guide for Ansible 10.5.0. (#1987) (#1993)
+  * Update playbooks_error_handling.rst (#1982) (#1986)
+  * add project survey 2024 banner (#1979) (#1981)
+  * Remove tagger script from stable (#1933)
+  * issue #1925 ee getting started missing content (#1975) (#1978)
+  * Remove no longer applicable part. (#1970) (#1974)
+  * Moved when condition after task name for block example (#1961)
+    (#1969)
+  * Update introduction.rst (#1960) (#1965)
+  * playbooks_filters: Mention the usage of the
+    ansible.builtin.split filter (#1929) (#1959)
+  * fix 2.18 python requirement version (#1945) (#1955)
+  * Add Ansible 11 porting guide (#1943) (#1944)
+  * many: Fix title case of Git references (#1938) (#1942)
+  * change core branch to 2.18 (#1931)
+  * getting_started_ee/build_execution_environment.rst: temporary
+    sample fix (#1924)
+  * Update other_tools_and_programs.rst (#1915)
+  * lint actionlint: enable shellcheck integration
+  * nox: add actionlint to lint Github Actions workflows
+  * pr_labeler: re-architect triager script (#1882)
+  * Nightly builds for package docs publishing workflow (#1869)
+  * Add caveat about installing collections from git (#1894)
+  * ci: refresh docs build dependencies (#1891)
+  * Fix Ansible 11 roadmap (#1892)
+  * ci: refresh dev dependencies (#1888)
+  * Revamp Windows docs (#1820)
+  * clone-core: update clone core script to remove old files
+  * nox clone-core: allow passing extra args to script
+  * Change Getting started EE guide reference to point to the
+    relevant location (#1877)
+  * Add documentation for loop_control option to stop a loop early
+    (#1764)
+  * Replace communication links with a link to communication guide,
+    part 2 (#1864)
+  * Correct information about plugin enabling (#1760)
+  * Give tag workflow access to github-bot environment. (#1866)
+  * ci: add workflow to create core tags automatically (#1863)
+  * Replace communication links with a link to communication guide,
+    part 1 (#1851)
+  * Restore community ee content (#1852)
+  * Add porting guide for Ansible 9.10.0 (#1854)
+  * Add porting guide for Ansible 10.4.0 (#1853)
+  * ci: refresh dev dependencies (#1845)
+  * [devel] ci: refresh docs build dependencies (#1835)
+  * Bump antsibull-docs to 2.14.0; add antsibull-docutils and
+    antsibull-fileutils. (#1837)
+  * community_steering_committee.rst: fix collection requirements
+    link (#1828)
+  * ci: refresh dev dependencies (#1834)
+  * add check-deploy job to publish workflow (#1814)
+  * ci: refresh dev dependencies (#1826)
+  * ci: refresh docs build dependencies (#1827)
+  * steering_committee_membership: clarify guidelines about team
+    representatives (#1806)
+  * Clarify any_errors_fatal behavior change in 2.17 porting guide
+    (#1815)
+  * steering_committee_membership: fix rst link syntax error
+    (#1805)
+  * nox: support nox uv backend (#1757)
+  * Issue1682_nightly_build_default_values (#1727)
+  * ci: refresh docs build dependencies (#1797)
+  * [devel] ci: refresh dev dependencies (#1794)
+  * Bump antsibull-docs and antsibull-docs-parser versions (#1799)
+  * Fix broken list markup in the "Installing collections"
+    documentation. (#1798)
+  * Fix links in collection requirements. (#1785)
+  * fix indents network documents (#1776)
+  * Ansible 11 roadmap (#1729)
+  * ci: ensure ansible-core files exist before running docs build
+    (#1756)
+  * ci: refresh docs build dependencies (#1771)
+  * add note about arguments in shebang in modules (#1718)
+  * ci: refresh dev dependencies (#1770)
+  * dev pip-compile: switch devel branch pip-compile to 3.11
+    (#1616)
+  * ci: refresh docs build dependencies (#1708)
+  * ci: refresh dev dependencies (#1744)
+  * [Needs SC vote before merging] Collection requirements: add
+    Forum-related reqs (#1703)
+  * Add porting guide for Ansible 10.3.0. (#1746)
+  * Add porting guide for Ansible 9.9.0. (#1745)
+  * setup.cfg and setup.py are gone since
+    https://github.com/ansible/ansible/commit/68515abf97dfc769c9aed2ba457ed7b8b2580a5c
+    (#1747)
+  * Added 'direct' to general precedence (#1740)
+  * Update integration test guide docker flag usage (#1731)
+  * ci: refresh dev dependencies (#1730)
+  * ci: refresh dev dependencies (#1722)
+  * add vault password file example (#1696)
+  * Be more explicit about registering with a loop (#1709)
+  * ci: refresh dev dependencies (#1707)
+  * Issue #1633 nox session for tagging (#1649)
+  * ci: refresh docs build dependencies (#1691)
+  * Move community_topics_workflow to docs.ansible.com (#1028)
+  * Add porting guide for Ansible 9.8.0. (#1698)
+  * Add porting guide for Ansible 10.2.0. (#1697)
+  * restore anchor in communication guide (#1692)
+  * collection_requirements: fix typo (#1684)
+  * Remove language option from workflow (#1681)
+  * notify docs matrix channel on docs build failures (#1651)
+  * remove the schedule from the workflow dispatch job (#1683)
+  * Adding daily schedule to CI build (#1659)
+  * Nightly builds for package docs publishing workflow (#1663)
+  * ci: refresh docs build dependencies (#1676)
+  * ci: refresh dev dependencies (#1675)
+  * Output workflow parameters for approval details (#1650)
+  * ci: refresh docs build dependencies (#1658)
+  * ci: refresh dev dependencies (#1657)
+  * communication guide: overhaul (#1667)
+  * [WIP, needs vote before merging] collection_requirements.rst:
+    update (#1422)
+  * docs/docsite/rst/dev_guide/developing_program_flow_modules.rst:
+    avoid using aliases (#1539)
+  * Remove references to archived ansible/ansible-examples
+    repository (#1653)
+  * Remove reference of scp_if_ssh option (#1346)
+  * Integrate the `alls-green` action into the main GHA CI workflow
+    (#1639)
+  * fix Ansible architecture docs (#1637)
+  * fix Validate data against set criteria with Ansible doc (#1636)
+  * ci: refresh docs build dependencies (#1635)
+  * Remove latest symlink from publishing workflow (#1615)
+  * ci: refresh dev dependencies (#1634)
+  * Revert "Add example /usr/bin/env python as Python interpreter
+    (#280)" (#1629)
+  * developing_collections_migrating.rst: update (#1605)
+  * Replace WG list with a pointer to the forum groups . (#1596)
+  * Update unit test document (#1597)
+  * Update playbooks_loops.rst (#1617)
+  * Add 2.18 support matrix entry (#1618)
+  * Add porting guide for Ansible 10.1.0. (#1610)
+  * Add porting guide for 9.7.0. (#1609)
+  * rm translation from rtd url
+  * use the package version as the branch name (#1600)
+  * Fix typo in communication.rst (#1598)
+  * ci: refresh docs build dependencies
+  * ci: refresh dev dependencies
+  * ci: refresh dev dependencies
+  * clarify how to verify collection-level docs (#1589)
+  * add steps to deploy doc build assets (#1353)
+  * Add 2.18 roadmap (#1590)
+  * Fix up PowerShell and Windows support lifecycle (#1587)
+  * ci: refresh docs build dependencies
+  * cause people keep doing this (#1567)
+  * Update uptime.py (#1524)
+  * Update playbooks_loops.rst (#1569)
+  * Update the Ansible 10 porting guide. (#1570)
+  * remove mailchimp subscribe from docs
+  * Add Ansible 10 to intersphinx links
+  * Update playbooks_advanced_syntax.rst
+  * Update release table for Ansible 10 and 9 (#1543)
+  * update conf.py for Ansible 10 (#1544)
+  * Add Ansible community 10.0.0 porting guide (#1555)
+  * Update playbooks_blocks.rst (#1546)
+  * ci: refresh docs build dependencies
+  * ci: refresh dev dependencies
+  * ci: refresh dev dependencies
+  * Python collection requirements: restructure (#1459)
+  * fix minor typo in Makefile
+  * Fix
+  * Requesting a collection: replace overview links
+  * ci: refresh docs build dependencies
+  * release_and_maintenance: mark 8.x unmaintained as 8.7.0
+    released (#1522)
+  * resolves #1491 adding assert details
+  * Add tagger section to README per 1272 (#1460)
+  *  mark 2.14 EOL in the release table (#1502)
+  * update backport instructions for 2.17 (#1504)
+  * Move Ansible package collection removal process to
+    docs.ansible.com (#1492)
+  * Update collection_checklist.md links to point to new location
+    (#1505)
+  * Add Ansible community 10.0.0b1 porting guide (#1494)
+  * Add Ansible community 9.6.0 porting guide (#1493)
+  * update version switcher to suppor 2.17 (#1464)
+  * collection_requirements: update community topic links (#1421)
+  * Fix list.
+  * ci: refresh dev dependencies
+  * Update docs/docsite/rst/command_guide/cheatsheet.rst
+  * make it a note
+  * Update docs/docsite/rst/playbook_guide/playbooks_loops.rst
+  * Update docs/docsite/rst/playbook_guide/playbook_pathing.rst
+  * Remove depreciated platforms reference (#1458)
+  * Update community topics links (#1451)
+  * revert subheading
+  * edits and suggestions
+  * Add Ansible 10.0.0a3 porting guide. (#1452)
+  * Remove output
+  * [Needs SC vote before merging] SC: update collection inclusion
+    procedure (#1256)
+  * ci: refresh docs build dependencies
+  * ci: refresh dev dependencies
+  * ci: refresh dev dependencies
+  * ci: refresh docs build dependencies (#1409)
+  * Document the possibility of vars/main and defaults/main being
+    directories (#1320)
+  * clarify backup_file (#1391)
+  * Restore the umask note for building docs (#1400)
+  * how_can_i_help page: rephrase the paragraph mentioning forums
+    (#1410)
+  * Update playbooks_reuse_roles.rst (#1415)
+  * Add changelog link and update powershell range
+  * intro_installation.rst: shells -> shell's to make possessive
+    (#1420)
+  * Bump antsibull-docs to 2.11.0. (#1417)
+  * Minor rewording changes
+  * removed example
+  * Section on retrying with timeout pass 2
+  * Code block edit.
+  * Added a section on retrying tasks with timeout.
+  * Adding explanation for combining until with loop (#1367)
+  * update codespell ignore lines (#1366)
+  * Integrate ansible-creator and devtools into the developing
+    collections guide (#1302)
+  * follows up on #1042 to remove smart from uptime script (#1340)
+  * CONTRIBUTING: document backport labels and PR Merging (#1364)
+  * New section on combining variables added (#1383)
+  * Fix typos in style guide (#1368)
+  * MUNI_TECH_WRITERS: Better documented local collections for
+    playbooks #1129 (#1315)
+  * Add Ansible 10.0.0a2 porting guide. (#1378)
+  * moved Troubleshooting search paths subsection to the bottom of
+    the page and moved the note with details about current work dir
+    up, where it fits better
+  * fix: tiny stylistic changes
+  * Update .github/workflows/build-package-docs.yaml
+  * ci: refresh docs build dependencies
+  * ci: refresh dev dependencies
+  * Add examples to clarify inventory plugin usage (#1347)
+  * improve workflow syntax
+  * update symlink step syntax in docs build workflow
+  * fix: wording and structure changes (#1167)
+  * mention of ANSIBLE_CONNECTION_PATH removed
+  * changing location
+  * 'for more information' added
+  * docs: added section referencing changed_when (#1167)
+  * comments integrated
+  * example removed
+  * comments integrated
+  * fix: remove mention of 'connection_plugins'
+  * Added a note describing how Ansible deals with relative tasks
+    paths when using include_role vs when using include_taks /
+    import_task
+  * Add Ansible 9.5.1 porting guide. (#1312)
+  * fix: connection keyword mentioned
+  * fix: more consistent displaying of changed_when: True example
+    (#1167)
+  * Refactored the line about ansible not searching the current
+    workdir.
+  * replaced single backticks with double ones in places where
+    syntax should be highlighted
+  * Reworked headings
+  * ci pip-compile-dev: add backport-2.17 label to PRs (#1310)
+  * fix: spelling (#1167)
+  * docs: wording (#1167)
+  * Update docs/docsite/rst/dev_guide/developing_plugins.rst
+  * fixes name of the upload artifact
+  * docs: referencing defining-changed in playbooks_handlers
+    (#1167)
+  * Bump wntrblm/nox from 2024.03.02 to 2024.04.15
+  * syntax fix
+  * typo fix
+  * ffeat: Relative path tip
+  * ci: refresh docs build dependencies
+  * ci: refresh dev dependencies
+  * docs: example with changed_when: true (#1167)
+  * Update playbooks_blocks.rst (#1190)
+  * fix: highlight ssh, remove unnecessary sentence
+  * fix: use backticks, all sentences on a new line
+  * fix: reformat sentence, check intendations with yamllint
+  * fix: add new example of the modules to clarify usage
+  * Apply suggestions from code review
+  * feat: mention ANSIBLE_CONNECTION_PATH (ansible#793)
+  * fix: typo in url (ansible#1199)
+  * fix: mentioned errors in the pull request
+  * izpell
+  * ci: refresh dev dependencies
+  * ci: refresh docs build dependencies
+  * Bump antsibull-docs to 2.10.0 (#1268)
+  * Update playbooks_reuse_roles.rst
+  * ansible-core 2.17 porting guide: remote Python version support
+  * community_topics_workflow: fix formatting (#1270)
+  * SC: move community_topics_workflow.md to docs.ansible.com
+    (#1257)
+  * [Needs SC vote before merging] Steering Committee: team
+    membership (#1237)
+  * Add Ansible 10.0.0a1 porting guide. (#1260)
+  * feat: update the paramiko description
+  * feat: remove depricated smart connection description in
+    connection plugins
+  * feat: remove the "smart option and rewrite the default
+    connection type
+  * change
+  * tar cmd update
+  * create latest symlink and include in tarball
+  * fix up repository inputs
+  * move env to top level
+  * change input to ansible-package-version
+  * use kebab-case for inputs
+  * split cmd over multiple lines
+  * add yaml start and fix indentation
+  * rm quotes
+  * update package version options
+  * build package docs via gh action
+  * edited
+  * format tag.py
+  * Update hacking/tagger/tag.py
+  * update tagger for 2.17
+  * Change
+  * ansible doc
+  * Update developing_modules_general.rst
+
+-------------------------------------------------------------------
 Thu Nov 14 16:20:02 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.17.6:

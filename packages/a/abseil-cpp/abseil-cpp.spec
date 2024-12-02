@@ -2,6 +2,7 @@
 # spec file for package abseil-cpp
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +17,18 @@
 #
 
 
-%global soversion so.2401.0.0
-%global lname_suffix 2401_0_0
+%global soversion so.2407.0.0
+%global lname_suffix 2407_0_0
 %if 0%{?gcc_version} < 7
 %global with_gcc 7
 %endif
 Name:           abseil-cpp
-Version:        20240116.2
+Version:        20240722.0
 Release:        0
 Summary:        C++11 libraries which augment the C++ stdlib
 License:        Apache-2.0
 URL:            https://abseil.io/
-Source0:        https://github.com/abseil/%{name}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/abseil/abseil-cpp/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -41,8 +42,6 @@ Patch1:         cmake.patch
 %else
 Patch0:         options-cxx17.patch
 %endif
-# upstream patch to prevent GTest error with CMake 3.30
-Patch2:         abseil-cmake-gtest-testonly.patch
 
 %description
 Abseil is a collection of C++11 libraries which augment the C++
@@ -166,6 +165,8 @@ export CXX="g++-%{with_gcc}"
 %{_libdir}/libabsl_civil_time.%{soversion}
 %{_libdir}/libabsl_cordz_sample_token.%{soversion}
 %{_libdir}/libabsl_crc_cpu_detect.%{soversion}
+%{_libdir}/libabsl_decode_rust_punycode.%{soversion}
+%{_libdir}/libabsl_demangle_rust.%{soversion}
 %{_libdir}/libabsl_die_if_null.%{soversion}
 %{_libdir}/libabsl_failure_signal_handler.%{soversion}
 %{_libdir}/libabsl_flags_commandlineflag_internal.%{soversion}
@@ -189,6 +190,7 @@ export CXX="g++-%{with_gcc}"
 %{_libdir}/libabsl_log_internal_fnmatch.%{soversion}
 %{_libdir}/libabsl_log_severity.%{soversion}
 %{_libdir}/libabsl_periodic_sampler.%{soversion}
+%{_libdir}/libabsl_poison.%{soversion}
 %{_libdir}/libabsl_random_distributions.%{soversion}
 %{_libdir}/libabsl_random_internal_distribution_test_util.%{soversion}
 %{_libdir}/libabsl_random_internal_platform.%{soversion}
@@ -203,6 +205,7 @@ export CXX="g++-%{with_gcc}"
 %{_libdir}/libabsl_scoped_set_env.%{soversion}
 %{_libdir}/libabsl_statusor.%{soversion}
 %{_libdir}/libabsl_status.%{soversion}
+%{_libdir}/libabsl_utf8_for_code_point.%{soversion}
 %{_libdir}/libabsl_vlog_config_internal.%{soversion}
 
 %files devel

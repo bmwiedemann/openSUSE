@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec  1 21:03:58 UTC 2024 - Christoph G <foss@grueninger.de>
+
+- update to 2.16.1
+  * SymbolDatabase: does not select l-value method properly
+
+-------------------------------------------------------------------
 Tue Oct 29 21:32:46 UTC 2024 - Christoph G <foss@grueninger.de>
 
 - update to 2.16.0

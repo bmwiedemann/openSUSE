@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Dec  1 20:05:57 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Skip flaky tests marked by @skip_on_ci
+
+-------------------------------------------------------------------
 Sun Sep  8 11:36:32 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile for v0.6.7

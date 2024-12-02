@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Dec  1 06:51:04 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Normalize javaws.jar mtimes
+
+-------------------------------------------------------------------
 Wed Feb 21 09:13:43 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

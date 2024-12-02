@@ -1,4 +1,4 @@
-From 41968e7b742ad59046523a7eeb63514237fb63af Mon Sep 17 00:00:00 2001
+From 6c5ec8db2d36017f67325593b386d1b358d7ee81 Mon Sep 17 00:00:00 2001
 From: Neil Horman <nhorman@openssl.org>
 Date: Fri, 27 Oct 2023 14:57:37 -0400
 Subject: [PATCH] Prevent accessing of global c++ objects once they are deleted
@@ -6,12 +6,10 @@ Subject: [PATCH] Prevent accessing of global c++ objects once they are deleted
 Fixes (Maybe) #729.
 Reset objects_deleted after reset is called.
 ---
- src/lib/SoftHSM.cpp |   5 ++
- src/lib/main.cpp    | 138 ++++++++++++++++++++++++++++++++++++++++++++
+ src/lib/SoftHSM.cpp |    5 +
+ src/lib/main.cpp    |  138 ++++++++++++++++++++++++++++++++++++++++++++++++++++
  2 files changed, 143 insertions(+)
 
-diff --git a/src/lib/SoftHSM.cpp b/src/lib/SoftHSM.cpp
-index 02c0f95ec..95bf208da 100644
 --- a/src/lib/SoftHSM.cpp
 +++ b/src/lib/SoftHSM.cpp
 @@ -89,6 +89,8 @@
@@ -40,8 +38,6 @@ index 02c0f95ec..95bf208da 100644
  	resetMutexFactoryCallbacks();
  }
  
-diff --git a/src/lib/main.cpp b/src/lib/main.cpp
-index 2dfd0eb87..e89f18c10 100644
 --- a/src/lib/main.cpp
 +++ b/src/lib/main.cpp
 @@ -49,6 +49,8 @@
@@ -53,7 +49,7 @@ index 2dfd0eb87..e89f18c10 100644
  // PKCS #11 function list
  static CK_FUNCTION_LIST functionList =
  {
-@@ -130,6 +132,8 @@ PKCS_API CK_RV C_Initialize(CK_VOID_PTR pInitArgs)
+@@ -130,6 +132,8 @@ PKCS_API CK_RV C_Initialize(CK_VOID_PTR
  {
  	try
  	{
@@ -62,7 +58,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_Initialize(pInitArgs);
  	}
  	catch (...)
-@@ -145,6 +149,8 @@ PKCS_API CK_RV C_Finalize(CK_VOID_PTR pReserved)
+@@ -145,6 +149,8 @@ PKCS_API CK_RV C_Finalize(CK_VOID_PTR pR
  {
  	try
  	{
@@ -71,7 +67,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_Finalize(pReserved);
  	}
  	catch (...)
-@@ -160,6 +166,8 @@ PKCS_API CK_RV C_GetInfo(CK_INFO_PTR pInfo)
+@@ -160,6 +166,8 @@ PKCS_API CK_RV C_GetInfo(CK_INFO_PTR pIn
  {
  	try
  	{
@@ -80,7 +76,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_GetInfo(pInfo);
  	}
  	catch (...)
-@@ -175,6 +183,8 @@ PKCS_API CK_RV C_GetFunctionList(CK_FUNCTION_LIST_PTR_PTR ppFunctionList)
+@@ -175,6 +183,8 @@ PKCS_API CK_RV C_GetFunctionList(CK_FUNC
  {
  	try
  	{
@@ -89,7 +85,7 @@ index 2dfd0eb87..e89f18c10 100644
  		if (ppFunctionList == NULL_PTR) return CKR_ARGUMENTS_BAD;
  
  		*ppFunctionList = &functionList;
-@@ -194,6 +204,8 @@ PKCS_API CK_RV C_GetSlotList(CK_BBOOL tokenPresent, CK_SLOT_ID_PTR pSlotList, CK
+@@ -194,6 +204,8 @@ PKCS_API CK_RV C_GetSlotList(CK_BBOOL to
  {
  	try
  	{
@@ -98,7 +94,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_GetSlotList(tokenPresent, pSlotList, pulCount);
  	}
  	catch (...)
-@@ -209,6 +221,8 @@ PKCS_API CK_RV C_GetSlotInfo(CK_SLOT_ID slotID, CK_SLOT_INFO_PTR pInfo)
+@@ -209,6 +221,8 @@ PKCS_API CK_RV C_GetSlotInfo(CK_SLOT_ID
  {
  	try
  	{
@@ -107,7 +103,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_GetSlotInfo(slotID, pInfo);
  	}
  	catch (...)
-@@ -224,6 +238,8 @@ PKCS_API CK_RV C_GetTokenInfo(CK_SLOT_ID slotID, CK_TOKEN_INFO_PTR pInfo)
+@@ -224,6 +238,8 @@ PKCS_API CK_RV C_GetTokenInfo(CK_SLOT_ID
  {
  	try
  	{
@@ -116,7 +112,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_GetTokenInfo(slotID, pInfo);
  	}
  	catch (...)
-@@ -239,6 +255,8 @@ PKCS_API CK_RV C_GetMechanismList(CK_SLOT_ID slotID, CK_MECHANISM_TYPE_PTR pMech
+@@ -239,6 +255,8 @@ PKCS_API CK_RV C_GetMechanismList(CK_SLO
  {
  	try
  	{
@@ -125,7 +121,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_GetMechanismList(slotID, pMechanismList, pulCount);
  	}
  	catch (...)
-@@ -254,6 +272,8 @@ PKCS_API CK_RV C_GetMechanismInfo(CK_SLOT_ID slotID, CK_MECHANISM_TYPE type, CK_
+@@ -254,6 +272,8 @@ PKCS_API CK_RV C_GetMechanismInfo(CK_SLO
  {
  	try
  	{
@@ -134,7 +130,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_GetMechanismInfo(slotID, type, pInfo);
  	}
  	catch (...)
-@@ -269,6 +289,8 @@ PKCS_API CK_RV C_InitToken(CK_SLOT_ID slotID, CK_UTF8CHAR_PTR pPin, CK_ULONG ulP
+@@ -269,6 +289,8 @@ PKCS_API CK_RV C_InitToken(CK_SLOT_ID sl
  {
  	try
  	{
@@ -143,7 +139,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_InitToken(slotID, pPin, ulPinLen, pLabel);
  	}
  	catch (...)
-@@ -284,6 +306,8 @@ PKCS_API CK_RV C_InitPIN(CK_SESSION_HANDLE hSession, CK_UTF8CHAR_PTR pPin, CK_UL
+@@ -284,6 +306,8 @@ PKCS_API CK_RV C_InitPIN(CK_SESSION_HAND
  {
  	try
  	{
@@ -152,7 +148,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_InitPIN(hSession, pPin, ulPinLen);
  	}
  	catch (...)
-@@ -299,6 +323,8 @@ PKCS_API CK_RV C_SetPIN(CK_SESSION_HANDLE hSession, CK_UTF8CHAR_PTR pOldPin, CK_
+@@ -299,6 +323,8 @@ PKCS_API CK_RV C_SetPIN(CK_SESSION_HANDL
  {
  	try
  	{
@@ -161,7 +157,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_SetPIN(hSession, pOldPin, ulOldLen, pNewPin, ulNewLen);
  	}
  	catch (...)
-@@ -314,6 +340,8 @@ PKCS_API CK_RV C_OpenSession(CK_SLOT_ID slotID, CK_FLAGS flags, CK_VOID_PTR pApp
+@@ -314,6 +340,8 @@ PKCS_API CK_RV C_OpenSession(CK_SLOT_ID
  {
  	try
  	{
@@ -170,7 +166,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_OpenSession(slotID, flags, pApplication, notify, phSession);
  	}
  	catch (...)
-@@ -329,6 +357,8 @@ PKCS_API CK_RV C_CloseSession(CK_SESSION_HANDLE hSession)
+@@ -329,6 +357,8 @@ PKCS_API CK_RV C_CloseSession(CK_SESSION
  {
  	try
  	{
@@ -179,7 +175,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_CloseSession(hSession);
  	}
  	catch (...)
-@@ -344,6 +374,8 @@ PKCS_API CK_RV C_CloseAllSessions(CK_SLOT_ID slotID)
+@@ -344,6 +374,8 @@ PKCS_API CK_RV C_CloseAllSessions(CK_SLO
  {
  	try
  	{
@@ -188,7 +184,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_CloseAllSessions(slotID);
  	}
  	catch (...)
-@@ -359,6 +391,8 @@ PKCS_API CK_RV C_GetSessionInfo(CK_SESSION_HANDLE hSession, CK_SESSION_INFO_PTR
+@@ -359,6 +391,8 @@ PKCS_API CK_RV C_GetSessionInfo(CK_SESSI
  {
  	try
  	{
@@ -197,7 +193,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_GetSessionInfo(hSession, pInfo);
  	}
  	catch (...)
-@@ -374,6 +408,8 @@ PKCS_API CK_RV C_GetOperationState(CK_SESSION_HANDLE hSession, CK_BYTE_PTR pOper
+@@ -374,6 +408,8 @@ PKCS_API CK_RV C_GetOperationState(CK_SE
  {
  	try
  	{
@@ -206,7 +202,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_GetOperationState(hSession, pOperationState, pulOperationStateLen);
  	}
  	catch (...)
-@@ -389,6 +425,8 @@ PKCS_API CK_RV C_SetOperationState(CK_SESSION_HANDLE hSession, CK_BYTE_PTR pOper
+@@ -389,6 +425,8 @@ PKCS_API CK_RV C_SetOperationState(CK_SE
  {
  	try
  	{
@@ -215,7 +211,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_SetOperationState(hSession, pOperationState, ulOperationStateLen, hEncryptionKey, hAuthenticationKey);
  	}
  	catch (...)
-@@ -404,6 +442,8 @@ PKCS_API CK_RV C_Login(CK_SESSION_HANDLE hSession, CK_USER_TYPE userType, CK_UTF
+@@ -404,6 +442,8 @@ PKCS_API CK_RV C_Login(CK_SESSION_HANDLE
  {
  	try
  	{
@@ -224,7 +220,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_Login(hSession, userType, pPin, ulPinLen);
  	}
  	catch (...)
-@@ -419,6 +459,8 @@ PKCS_API CK_RV C_Logout(CK_SESSION_HANDLE hSession)
+@@ -419,6 +459,8 @@ PKCS_API CK_RV C_Logout(CK_SESSION_HANDL
  {
  	try
  	{
@@ -233,7 +229,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_Logout(hSession);
  	}
  	catch (...)
-@@ -434,6 +476,8 @@ PKCS_API CK_RV C_CreateObject(CK_SESSION_HANDLE hSession, CK_ATTRIBUTE_PTR pTemp
+@@ -434,6 +476,8 @@ PKCS_API CK_RV C_CreateObject(CK_SESSION
  {
  	try
  	{
@@ -242,7 +238,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_CreateObject(hSession, pTemplate, ulCount, phObject);
  	}
  	catch (...)
-@@ -449,6 +493,8 @@ PKCS_API CK_RV C_CopyObject(CK_SESSION_HANDLE hSession, CK_OBJECT_HANDLE hObject
+@@ -449,6 +493,8 @@ PKCS_API CK_RV C_CopyObject(CK_SESSION_H
  {
  	try
  	{
@@ -251,7 +247,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_CopyObject(hSession, hObject, pTemplate, ulCount, phNewObject);
  	}
  	catch (...)
-@@ -464,6 +510,8 @@ PKCS_API CK_RV C_DestroyObject(CK_SESSION_HANDLE hSession, CK_OBJECT_HANDLE hObj
+@@ -464,6 +510,8 @@ PKCS_API CK_RV C_DestroyObject(CK_SESSIO
  {
  	try
  	{
@@ -260,7 +256,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_DestroyObject(hSession, hObject);
  	}
  	catch (...)
-@@ -479,6 +527,8 @@ PKCS_API CK_RV C_GetObjectSize(CK_SESSION_HANDLE hSession, CK_OBJECT_HANDLE hObj
+@@ -479,6 +527,8 @@ PKCS_API CK_RV C_GetObjectSize(CK_SESSIO
  {
  	try
  	{
@@ -269,7 +265,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_GetObjectSize(hSession, hObject, pulSize);
  	}
  	catch (...)
-@@ -494,6 +544,8 @@ PKCS_API CK_RV C_GetAttributeValue(CK_SESSION_HANDLE hSession, CK_OBJECT_HANDLE
+@@ -494,6 +544,8 @@ PKCS_API CK_RV C_GetAttributeValue(CK_SE
  {
  	try
  	{
@@ -278,7 +274,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_GetAttributeValue(hSession, hObject, pTemplate, ulCount);
  	}
  	catch (...)
-@@ -509,6 +561,8 @@ PKCS_API CK_RV C_SetAttributeValue(CK_SESSION_HANDLE hSession, CK_OBJECT_HANDLE
+@@ -509,6 +561,8 @@ PKCS_API CK_RV C_SetAttributeValue(CK_SE
  {
  	try
  	{
@@ -287,7 +283,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_SetAttributeValue(hSession, hObject, pTemplate, ulCount);
  	}
  	catch (...)
-@@ -524,6 +578,8 @@ PKCS_API CK_RV C_FindObjectsInit(CK_SESSION_HANDLE hSession, CK_ATTRIBUTE_PTR pT
+@@ -524,6 +578,8 @@ PKCS_API CK_RV C_FindObjectsInit(CK_SESS
  {
  	try
  	{
@@ -296,7 +292,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_FindObjectsInit(hSession, pTemplate, ulCount);
  	}
  	catch (...)
-@@ -539,6 +595,8 @@ PKCS_API CK_RV C_FindObjects(CK_SESSION_HANDLE hSession, CK_OBJECT_HANDLE_PTR ph
+@@ -539,6 +595,8 @@ PKCS_API CK_RV C_FindObjects(CK_SESSION_
  {
  	try
  	{
@@ -305,7 +301,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_FindObjects(hSession, phObject, ulMaxObjectCount, pulObjectCount);
  	}
  	catch (...)
-@@ -554,6 +612,8 @@ PKCS_API CK_RV C_FindObjectsFinal(CK_SESSION_HANDLE hSession)
+@@ -554,6 +612,8 @@ PKCS_API CK_RV C_FindObjectsFinal(CK_SES
  {
  	try
  	{
@@ -314,7 +310,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_FindObjectsFinal(hSession);
  	}
  	catch (...)
-@@ -569,6 +629,8 @@ PKCS_API CK_RV C_EncryptInit(CK_SESSION_HANDLE hSession, CK_MECHANISM_PTR pMecha
+@@ -569,6 +629,8 @@ PKCS_API CK_RV C_EncryptInit(CK_SESSION_
  {
  	try
  	{
@@ -323,7 +319,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_EncryptInit(hSession, pMechanism, hObject);
  	}
  	catch (...)
-@@ -584,6 +646,8 @@ PKCS_API CK_RV C_Encrypt(CK_SESSION_HANDLE hSession, CK_BYTE_PTR pData, CK_ULONG
+@@ -584,6 +646,8 @@ PKCS_API CK_RV C_Encrypt(CK_SESSION_HAND
  {
  	try
  	{
@@ -332,7 +328,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_Encrypt(hSession, pData, ulDataLen, pEncryptedData, pulEncryptedDataLen);
  	}
  	catch (...)
-@@ -599,6 +663,8 @@ PKCS_API CK_RV C_EncryptUpdate(CK_SESSION_HANDLE hSession, CK_BYTE_PTR pData, CK
+@@ -599,6 +663,8 @@ PKCS_API CK_RV C_EncryptUpdate(CK_SESSIO
  {
  	try
  	{
@@ -341,7 +337,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_EncryptUpdate(hSession, pData, ulDataLen, pEncryptedData, pulEncryptedDataLen);
  	}
  	catch (...)
-@@ -614,6 +680,8 @@ PKCS_API CK_RV C_EncryptFinal(CK_SESSION_HANDLE hSession, CK_BYTE_PTR pEncrypted
+@@ -614,6 +680,8 @@ PKCS_API CK_RV C_EncryptFinal(CK_SESSION
  {
  	try
  	{
@@ -350,7 +346,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_EncryptFinal(hSession, pEncryptedData, pulEncryptedDataLen);
  	}
  	catch (...)
-@@ -629,6 +697,8 @@ PKCS_API CK_RV C_DecryptInit(CK_SESSION_HANDLE hSession, CK_MECHANISM_PTR pMecha
+@@ -629,6 +697,8 @@ PKCS_API CK_RV C_DecryptInit(CK_SESSION_
  {
  	try
  	{
@@ -359,7 +355,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_DecryptInit(hSession, pMechanism, hObject);
  	}
  	catch (...)
-@@ -644,6 +714,8 @@ PKCS_API CK_RV C_Decrypt(CK_SESSION_HANDLE hSession, CK_BYTE_PTR pEncryptedData,
+@@ -644,6 +714,8 @@ PKCS_API CK_RV C_Decrypt(CK_SESSION_HAND
  {
  	try
  	{
@@ -368,7 +364,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_Decrypt(hSession, pEncryptedData, ulEncryptedDataLen, pData, pulDataLen);
  	}
  	catch (...)
-@@ -659,6 +731,8 @@ PKCS_API CK_RV C_DecryptUpdate(CK_SESSION_HANDLE hSession, CK_BYTE_PTR pEncrypte
+@@ -659,6 +731,8 @@ PKCS_API CK_RV C_DecryptUpdate(CK_SESSIO
  {
  	try
  	{
@@ -377,7 +373,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_DecryptUpdate(hSession, pEncryptedData, ulEncryptedDataLen, pData, pDataLen);
  	}
  	catch (...)
-@@ -674,6 +748,8 @@ PKCS_API CK_RV C_DecryptFinal(CK_SESSION_HANDLE hSession, CK_BYTE_PTR pData, CK_
+@@ -674,6 +748,8 @@ PKCS_API CK_RV C_DecryptFinal(CK_SESSION
  {
  	try
  	{
@@ -386,7 +382,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_DecryptFinal(hSession, pData, pDataLen);
  	}
  	catch (...)
-@@ -689,6 +765,8 @@ PKCS_API CK_RV C_DigestInit(CK_SESSION_HANDLE hSession, CK_MECHANISM_PTR pMechan
+@@ -689,6 +765,8 @@ PKCS_API CK_RV C_DigestInit(CK_SESSION_H
  {
  	try
  	{
@@ -395,7 +391,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_DigestInit(hSession, pMechanism);
  	}
  	catch (...)
-@@ -704,6 +782,8 @@ PKCS_API CK_RV C_Digest(CK_SESSION_HANDLE hSession, CK_BYTE_PTR pData, CK_ULONG
+@@ -704,6 +782,8 @@ PKCS_API CK_RV C_Digest(CK_SESSION_HANDL
  {
  	try
  	{
@@ -404,7 +400,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_Digest(hSession, pData, ulDataLen, pDigest, pulDigestLen);
  	}
  	catch (...)
-@@ -719,6 +799,8 @@ PKCS_API CK_RV C_DigestUpdate(CK_SESSION_HANDLE hSession, CK_BYTE_PTR pPart, CK_
+@@ -719,6 +799,8 @@ PKCS_API CK_RV C_DigestUpdate(CK_SESSION
  {
  	try
  	{
@@ -413,7 +409,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_DigestUpdate(hSession, pPart, ulPartLen);
  	}
  	catch (...)
-@@ -734,6 +816,8 @@ PKCS_API CK_RV C_DigestKey(CK_SESSION_HANDLE hSession, CK_OBJECT_HANDLE hObject)
+@@ -734,6 +816,8 @@ PKCS_API CK_RV C_DigestKey(CK_SESSION_HA
  {
  	try
  	{
@@ -422,7 +418,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_DigestKey(hSession, hObject);
  	}
  	catch (...)
-@@ -749,6 +833,8 @@ PKCS_API CK_RV C_DigestFinal(CK_SESSION_HANDLE hSession, CK_BYTE_PTR pDigest, CK
+@@ -749,6 +833,8 @@ PKCS_API CK_RV C_DigestFinal(CK_SESSION_
  {
  	try
  	{
@@ -431,7 +427,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_DigestFinal(hSession, pDigest, pulDigestLen);
  	}
  	catch (...)
-@@ -764,6 +850,8 @@ PKCS_API CK_RV C_SignInit(CK_SESSION_HANDLE hSession, CK_MECHANISM_PTR pMechanis
+@@ -764,6 +850,8 @@ PKCS_API CK_RV C_SignInit(CK_SESSION_HAN
  {
  	try
  	{
@@ -440,7 +436,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_SignInit(hSession, pMechanism, hKey);
  	}
  	catch (...)
-@@ -779,6 +867,8 @@ PKCS_API CK_RV C_Sign(CK_SESSION_HANDLE hSession, CK_BYTE_PTR pData, CK_ULONG ul
+@@ -779,6 +867,8 @@ PKCS_API CK_RV C_Sign(CK_SESSION_HANDLE
  {
  	try
  	{
@@ -449,7 +445,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_Sign(hSession, pData, ulDataLen, pSignature, pulSignatureLen);
  	}
  	catch (...)
-@@ -794,6 +884,8 @@ PKCS_API CK_RV C_SignUpdate(CK_SESSION_HANDLE hSession, CK_BYTE_PTR pPart, CK_UL
+@@ -794,6 +884,8 @@ PKCS_API CK_RV C_SignUpdate(CK_SESSION_H
  {
  	try
  	{
@@ -458,7 +454,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_SignUpdate(hSession, pPart, ulPartLen);
  	}
  	catch (...)
-@@ -809,6 +901,8 @@ PKCS_API CK_RV C_SignFinal(CK_SESSION_HANDLE hSession, CK_BYTE_PTR pSignature, C
+@@ -809,6 +901,8 @@ PKCS_API CK_RV C_SignFinal(CK_SESSION_HA
  {
  	try
  	{
@@ -467,7 +463,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_SignFinal(hSession, pSignature, pulSignatureLen);
  	}
  	catch (...)
-@@ -824,6 +918,8 @@ PKCS_API CK_RV C_SignRecoverInit(CK_SESSION_HANDLE hSession, CK_MECHANISM_PTR pM
+@@ -824,6 +918,8 @@ PKCS_API CK_RV C_SignRecoverInit(CK_SESS
  {
  	try
  	{
@@ -476,7 +472,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_SignRecoverInit(hSession, pMechanism, hKey);
  	}
  	catch (...)
-@@ -839,6 +935,8 @@ PKCS_API CK_RV C_SignRecover(CK_SESSION_HANDLE hSession, CK_BYTE_PTR pData, CK_U
+@@ -839,6 +935,8 @@ PKCS_API CK_RV C_SignRecover(CK_SESSION_
  {
  	try
  	{
@@ -485,7 +481,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_SignRecover(hSession, pData, ulDataLen, pSignature, pulSignatureLen);
  	}
  	catch (...)
-@@ -854,6 +952,8 @@ PKCS_API CK_RV C_VerifyInit(CK_SESSION_HANDLE hSession, CK_MECHANISM_PTR pMechan
+@@ -854,6 +952,8 @@ PKCS_API CK_RV C_VerifyInit(CK_SESSION_H
  {
  	try
  	{
@@ -494,7 +490,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_VerifyInit(hSession, pMechanism, hKey);
  	}
  	catch (...)
-@@ -869,6 +969,8 @@ PKCS_API CK_RV C_Verify(CK_SESSION_HANDLE hSession, CK_BYTE_PTR pData, CK_ULONG
+@@ -869,6 +969,8 @@ PKCS_API CK_RV C_Verify(CK_SESSION_HANDL
  {
  	try
  	{
@@ -503,7 +499,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_Verify(hSession, pData, ulDataLen, pSignature, ulSignatureLen);
  	}
  	catch (...)
-@@ -884,6 +986,8 @@ PKCS_API CK_RV C_VerifyUpdate(CK_SESSION_HANDLE hSession, CK_BYTE_PTR pPart, CK_
+@@ -884,6 +986,8 @@ PKCS_API CK_RV C_VerifyUpdate(CK_SESSION
  {
  	try
  	{
@@ -512,7 +508,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_VerifyUpdate(hSession, pPart, ulPartLen);
  	}
  	catch (...)
-@@ -899,6 +1003,8 @@ PKCS_API CK_RV C_VerifyFinal(CK_SESSION_HANDLE hSession, CK_BYTE_PTR pSignature,
+@@ -899,6 +1003,8 @@ PKCS_API CK_RV C_VerifyFinal(CK_SESSION_
  {
  	try
  	{
@@ -521,7 +517,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_VerifyFinal(hSession, pSignature, ulSignatureLen);
  	}
  	catch (...)
-@@ -914,6 +1020,8 @@ PKCS_API CK_RV C_VerifyRecoverInit(CK_SESSION_HANDLE hSession, CK_MECHANISM_PTR
+@@ -914,6 +1020,8 @@ PKCS_API CK_RV C_VerifyRecoverInit(CK_SE
  {
  	try
  	{
@@ -530,7 +526,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_VerifyRecoverInit(hSession, pMechanism, hKey);
  	}
  	catch (...)
-@@ -929,6 +1037,8 @@ PKCS_API CK_RV C_VerifyRecover(CK_SESSION_HANDLE hSession, CK_BYTE_PTR pSignatur
+@@ -929,6 +1037,8 @@ PKCS_API CK_RV C_VerifyRecover(CK_SESSIO
  {
  	try
  	{
@@ -539,7 +535,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_VerifyRecover(hSession, pSignature, ulSignatureLen, pData, pulDataLen);
  	}
  	catch (...)
-@@ -944,6 +1054,8 @@ PKCS_API CK_RV C_DigestEncryptUpdate(CK_SESSION_HANDLE hSession, CK_BYTE_PTR pPa
+@@ -944,6 +1054,8 @@ PKCS_API CK_RV C_DigestEncryptUpdate(CK_
  {
  	try
  	{
@@ -548,7 +544,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_DigestEncryptUpdate(hSession, pPart, ulPartLen, pEncryptedPart, pulEncryptedPartLen);
  	}
  	catch (...)
-@@ -959,6 +1071,8 @@ PKCS_API CK_RV C_DecryptDigestUpdate(CK_SESSION_HANDLE hSession, CK_BYTE_PTR pPa
+@@ -959,6 +1071,8 @@ PKCS_API CK_RV C_DecryptDigestUpdate(CK_
  {
  	try
  	{
@@ -557,7 +553,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_DecryptDigestUpdate(hSession, pPart, ulPartLen, pDecryptedPart, pulDecryptedPartLen);
  	}
  	catch (...)
-@@ -974,6 +1088,8 @@ PKCS_API CK_RV C_SignEncryptUpdate(CK_SESSION_HANDLE hSession, CK_BYTE_PTR pPart
+@@ -974,6 +1088,8 @@ PKCS_API CK_RV C_SignEncryptUpdate(CK_SE
  {
  	try
  	{
@@ -566,7 +562,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_SignEncryptUpdate(hSession, pPart, ulPartLen, pEncryptedPart, pulEncryptedPartLen);
  	}
  	catch (...)
-@@ -989,6 +1105,8 @@ PKCS_API CK_RV C_DecryptVerifyUpdate(CK_SESSION_HANDLE hSession, CK_BYTE_PTR pEn
+@@ -989,6 +1105,8 @@ PKCS_API CK_RV C_DecryptVerifyUpdate(CK_
  {
  	try
  	{
@@ -575,7 +571,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_DecryptVerifyUpdate(hSession, pEncryptedPart, ulEncryptedPartLen, pPart, pulPartLen);
  	}
  	catch (...)
-@@ -1004,6 +1122,8 @@ PKCS_API CK_RV C_GenerateKey(CK_SESSION_HANDLE hSession, CK_MECHANISM_PTR pMecha
+@@ -1004,6 +1122,8 @@ PKCS_API CK_RV C_GenerateKey(CK_SESSION_
  {
  	try
  	{
@@ -620,7 +616,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_DeriveKey(hSession, pMechanism, hBaseKey, pTemplate, ulCount, phKey);
  	}
  	catch (...)
-@@ -1115,6 +1243,8 @@ PKCS_API CK_RV C_SeedRandom(CK_SESSION_HANDLE hSession, CK_BYTE_PTR pSeed, CK_UL
+@@ -1115,6 +1243,8 @@ PKCS_API CK_RV C_SeedRandom(CK_SESSION_H
  {
  	try
  	{
@@ -629,7 +625,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_SeedRandom(hSession, pSeed, ulSeedLen);
  	}
  	catch (...)
-@@ -1130,6 +1260,8 @@ PKCS_API CK_RV C_GenerateRandom(CK_SESSION_HANDLE hSession, CK_BYTE_PTR pRandomD
+@@ -1130,6 +1260,8 @@ PKCS_API CK_RV C_GenerateRandom(CK_SESSI
  {
  	try
  	{
@@ -638,7 +634,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_GenerateRandom(hSession, pRandomData, ulRandomLen);
  	}
  	catch (...)
-@@ -1145,6 +1277,8 @@ PKCS_API CK_RV C_GetFunctionStatus(CK_SESSION_HANDLE hSession)
+@@ -1145,6 +1277,8 @@ PKCS_API CK_RV C_GetFunctionStatus(CK_SE
  {
  	try
  	{
@@ -647,7 +643,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_GetFunctionStatus(hSession);
  	}
  	catch (...)
-@@ -1160,6 +1294,8 @@ PKCS_API CK_RV C_CancelFunction(CK_SESSION_HANDLE hSession)
+@@ -1160,6 +1294,8 @@ PKCS_API CK_RV C_CancelFunction(CK_SESSI
  {
  	try
  	{
@@ -656,7 +652,7 @@ index 2dfd0eb87..e89f18c10 100644
  		return SoftHSM::i()->C_CancelFunction(hSession);
  	}
  	catch (...)
-@@ -1175,6 +1311,8 @@ PKCS_API CK_RV C_WaitForSlotEvent(CK_FLAGS flags, CK_SLOT_ID_PTR pSlot, CK_VOID_
+@@ -1175,6 +1311,8 @@ PKCS_API CK_RV C_WaitForSlotEvent(CK_FLA
  {
  	try
  	{

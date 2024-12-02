@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Nov 16 22:20:54 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 20240722.0:
+  * Add GoogleTest matchers for absl::Status. These matchers make
+    it easier to write unit tests for code that uses absl::Status.
+  * absl::AlphaNum no longer allows brace-initialization
+  * The deprecated symbol absl::kuint128max has been removed and
+    should be replaced with absl::Uint128Max().
+  * absl::aligned_storage_t, which was a polyfill consistent with
+    std::aligned_storage_t, has been removed.
+    std::aligned_storage_t is deprecated in C++23
+  * absl::StrJoin now has a absl::string_view overload. This
+    allows for passing a collection of string-like objects without
+    having to convert everything to the same type first. However,
+    this may be a breaking change for users passing an explicit
+    template argument to absl::StrJoin. In this case, simply remove
+    the explicit template parameter.
+  * vlog_is_on.h is now a public header and is no longer included
+    from log.h. To use VLOG_IS_ON(), absl/log/vlog_is_on.h must be
+    included.
+- drop abseil-cmake-gtest-testonly.patch
+
+-------------------------------------------------------------------
 Fri Jul  5 21:27:25 UTC 2024 - Christoph G <foss@grueninger.de>
 
 - Add upstream patch abseil-cmake-gtest-testonly.patch to fix

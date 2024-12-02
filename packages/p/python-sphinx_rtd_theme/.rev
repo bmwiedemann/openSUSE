@@ -198,4 +198,12 @@
     <comment>- skip test_basic as it no longer works with sphinx 7.3</comment>
     <requestid>1184946</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ad41a47b412c8d87ae937108dc5dd197</srcmd5>
+    <version>3.0.2</version>
+    <time>1733155075</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1227512</requestid>
+  </revision>
 </revisionlist>
