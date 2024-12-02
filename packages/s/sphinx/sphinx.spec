@@ -39,6 +39,7 @@ Patch2:         sphinx-default_listen.patch
 Patch3:         reproducible.patch
 #CVE-2020-29050 https://salsa.debian.org/debian/sphinxsearch/-/blob/4d6fe40644130308604845db43d3588e715ec85d/debian/patches/06-CVE-2020-29050.patch
 Patch4:         CVE-2020-29050.patch
+Patch5:         sphinx-gcc14.patch
 # for fix-ups
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++

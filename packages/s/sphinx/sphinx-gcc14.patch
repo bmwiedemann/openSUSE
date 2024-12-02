@@ -1,0 +1,11 @@
+--- a/api/libsphinxclient/test.c	2016-07-19 12:42:18.000000000 +0200
++++ b/api/libsphinxclient/test.c	2024-12-02 12:27:40.898095827 +0100
+@@ -268,7 +271,7 @@
+ 		}
+ 
+ 		printf ( "n=%d,\t", i );
+-		res = sphinx_build_excerpts ( client, 1, docs, index, words, &opts );
++		res = sphinx_build_excerpts ( client, 1, (const char **)docs, index, words, &opts );
+ 
+ 		if ( !res )
+ 		{

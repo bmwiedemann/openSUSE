@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec  2 11:34:46 UTC 2024 - Friedrich Haubensak <hsk17@mail.de>
+
+- add sphinx-gcc14.patch to fix gcc14 compile time error
+
+-------------------------------------------------------------------
 Tue Jan  9 12:48:18 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Fix weird restrictive permissions (0640) on files in /usr
