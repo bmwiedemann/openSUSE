@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec  1 10:00:20 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.5.47:
+  * Fixed #7750: Numeric tags break search
+  * Fixed #7748: Blog plugin breaks when using future drafts
+    (9.5.45 regression)
+
+-------------------------------------------------------------------
 Tue Nov 26 09:34:36 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.5.46:
