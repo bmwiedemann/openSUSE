@@ -30,7 +30,7 @@
 
 
 Name:           tryton
-Version:        %{majorver}.41
+Version:        %{majorver}.46
 Release:        0
 Summary:        The client of the Tryton application platform
 License:        GPL-3.0-or-later
