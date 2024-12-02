@@ -1,0 +1,89 @@
+From b58680a5b2fa444ade61928bde1db7d261a05b32 Mon Sep 17 00:00:00 2001
+From: Leo Singer <leo.singer@ligo.org>
+Date: Mon, 7 Oct 2024 07:53:58 -0400
+Subject: [PATCH] Fix build for Python 3.13
+
+Use PyList_Extend for Python >= 3.13, and provide replacement
+using _PyList_Extend for Python < 3.13. In Python 3.13, the
+function _PyList_Extend was removed and the public API method
+PyList_Extend was added in its place.
+
+Fixes #21.
+---
+ src/segmentlist.c |   22 ++++++++++++----------
+ 1 file changed, 12 insertions(+), 10 deletions(-)
+
+Index: ligo-segments-1.4.0/src/segmentlist.c
+===================================================================
+--- ligo-segments-1.4.0.orig/src/segmentlist.c
++++ ligo-segments-1.4.0/src/segmentlist.c
+@@ -240,34 +240,36 @@ static PyObject *make_segment(PyObject *
+ }
+ 
+ 
+-static int pylist_extend(PyListObject *l, PyObject *v)
++#if PY_VERSION_HEX < 0x030D0000
++static int PyList_Extend(PyObject *l, PyObject *v)
+ {
+ 	if(!PyList_Check(l)) {
+-		PyErr_SetObject(PyExc_TypeError, (PyObject *) l);
++		PyErr_SetObject(PyExc_TypeError, l);
+ 		return -1;
+ 	}
+-	PyObject *result = _PyList_Extend(l, v);
++	PyObject *result = _PyList_Extend((PyListObject *) l, v);
+ 	if(!result)
+ 		return -1;
+ 	Py_DECREF(result);
+ 	return 0;
+ }
++#endif
+ 
+ 
+ static PyListObject *segments_SegmentList_New(PyTypeObject *type, PyObject *sequence)
+ {
+-	PyListObject *new;
++	PyObject *new;
+ 	if(!type->tp_alloc) {
+ 		PyErr_SetObject(PyExc_TypeError, (PyObject *) type);
+ 		return NULL;
+ 	}
+-	new = (PyListObject *) type->tp_alloc(type, 0);
++	new = (PyObject *) type->tp_alloc(type, 0);
+ 	if(new && sequence)
+-		if(pylist_extend(new, sequence)) {
++		if(PyList_Extend(new, sequence) >= 0) {
+ 			Py_DECREF(new);
+ 			new = NULL;
+ 		}
+-	return new;
++	return (PyListObject *) new;
+ }
+ 
+ 
+@@ -817,7 +819,7 @@ static PyObject *__ior__(PyObject *self,
+ 	/* Faster algorithm when the two lists have very different sizes.
+ 	 * OK to not test size functions for error return values */
+ 	if(PySequence_Size(other) > PyList_GET_SIZE(self) / 2) {
+-		if(pylist_extend((PyListObject *) self, other))
++		if(PyList_Extend(self, other) >= 0)
+ 			return NULL;
+ 		return PyObject_CallMethod(self, "coalesce", NULL);
+ 	}
+@@ -988,14 +990,14 @@ static PyObject *__xor__(PyObject *self,
+ 		Py_XDECREF(other);
+ 		return NULL;
+ 	}
+-	if(pylist_extend((PyListObject *) new, other)) {
++	if(PyList_Extend(new, other) >= 0) {
+ 		Py_DECREF(new);
+ 		Py_DECREF(other);
+ 		return NULL;
+ 	}
+ 	Py_DECREF(other);
+ 
+-	if(PyList_Sort(new) < 0) {
++	if(PyList_Sort(new) >= 0) {
+ 		Py_DECREF(new);
+ 		return NULL;
+ 	}

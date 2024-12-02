@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec  2 06:30:32 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add python-3.13-compat.patch -- Compatibility for python 3.13,
+  patch taken from upstream merge request
+- Use %pyproject_* macros to build.
+- Disable testing for now as test suite is broken
+  (https://git.ligo.org/lscsoft/ligo-segments/-/issues/22).
+
+-------------------------------------------------------------------
 Thu Oct 17 23:12:06 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add ligo-segments-python312-compat.patch -- Initialize

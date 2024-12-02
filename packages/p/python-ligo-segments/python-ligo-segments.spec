@@ -20,7 +20,9 @@
 %ifarch %ix86
 %bcond_with tests
 %else
-%bcond_without tests
+# Disable tests for all other archs since they are broken for Python 3.13 anyway
+# https://git.ligo.org/lscsoft/ligo-segments/-/issues/22
+%bcond_with tests
 %endif
 
 %define skip_python2 1
@@ -34,8 +36,12 @@ URL:            https://git.ligo.org/lscsoft/ligo-segments
 Source:         https://files.pythonhosted.org/packages/source/l/ligo-segments/ligo-segments-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM ligo-segments-python312-compat.patch badshah400@gmail.com -- Initialize PyTypeObjects with PyVarObject_HEAD_INIT for python 3.12 compatibility; upstream commit
 Patch0:         ligo-segments-python312-compat.patch
+# PATCH-FIX-UPSTREAM python-3.13-compat.patch badshah400@gmail.com -- Compatibility for python 3.13
+Patch1:         python-3.13-compat.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION For tests
@@ -58,10 +64,10 @@ manipulating semi-open intervals.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %if %{with tests}
@@ -80,7 +86,7 @@ popd
 %doc README.rst
 %license LICENSE
 %{python_sitearch}/ligo/
-%{python_sitearch}/ligo_segments-%{version}-py%{python_version}.egg-info
+%{python_sitearch}/ligo_segments-%{version}*.*-info
 %if 0%{?suse_version} >= 1550
 %{python_sitearch}/ligo_segments-%{version}-py%{python_version}-nspkg.pth
 %endif
