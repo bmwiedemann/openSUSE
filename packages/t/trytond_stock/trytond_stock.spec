@@ -29,7 +29,7 @@
 
 %define majorver 6.0
 Name:           trytond_stock
-Version:        %{majorver}.29
+Version:        %{majorver}.30
 Release:        0
 Summary:        The "stock" module for the Tryton ERP system
 License:        GPL-3.0-only
