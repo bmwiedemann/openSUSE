@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Dec 02 12:31:03 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.196.0:
+  * Add release notes for v0.196.0
+  * userdocs: fix comment for custom managed nodegroup
+  * Reword IRSA warning message
+  * Fix deepcopy diff
+  * Prepare for next development iteration
+
+-------------------------------------------------------------------
+Mon Dec 02 09:57:23 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.195.0:
+  * Add release notes for v0.195.0
+  * Add support for EKS Hybrid Nodes (#8062)
+  * Fix tests, regenerate mocks
+  * Bump aws-sdk-go-v2 version and correct cluster types
+  * Update goformation
+  * Attach Auto Mode policies to cluster role when enabling Auto
+    Mode
+  * Rename AutonomousMode to AutoMode
+  * Remove unused mocks
+  * Support for Autonomous Mode
+  * Remove deletion of aws-efs-csi-driver
+  * Fix addons integration test
+  * Update docs
+  * Prepare for next development iteration
+
+-------------------------------------------------------------------
 Wed Oct 23 08:20:35 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.194.0:
