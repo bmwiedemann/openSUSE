@@ -10,6 +10,6 @@ Index: 2ping-4.5.1/2ping.service
 +# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
 +ProtectHostname=true
 +# end of automatic additions 
- User=nobody
+ DynamicUser=yes
  
  [Install]

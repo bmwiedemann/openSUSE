@@ -129,4 +129,21 @@
     <comment></comment>
     <requestid>1115957</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a87581df698ff472dc5e61fa62865c48</srcmd5>
+    <version>4.5.1+20241102</version>
+    <time>1733155184</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.5.1+20241102:
+  * get_system_addresses: Guard against netifaces race condition
+  * Remove snapcraft definition
+  * 2ping.service: Use DynamicUser=yes instead of User=nobody
+  * End stats updates
+  * Argument parsing cleanups
+  * Fix duplicated AUTHOR/AUTHORS section in manpage
+  * Tox updates
+  * Change license from GPLv2 to Mozilla Public License 2.0
+</comment>
+    <requestid>1227753</requestid>
+  </revision>
 </revisionlist>

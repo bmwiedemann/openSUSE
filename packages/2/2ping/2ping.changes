@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Dec 02 11:31:45 UTC 2024 - jslaby@suse.cz
+
+- Update to version 4.5.1+20241102:
+  * get_system_addresses: Guard against netifaces race condition
+  * Remove snapcraft definition
+  * 2ping.service: Use DynamicUser=yes instead of User=nobody
+  * End stats updates
+  * Argument parsing cleanups
+  * Fix duplicated AUTHOR/AUTHORS section in manpage
+  * Tox updates
+  * Change license from GPLv2 to Mozilla Public License 2.0
+
+-------------------------------------------------------------------
 Wed Oct  4 12:10:52 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove dependency on /usr/bin/python3 using %python3_fix_shebang

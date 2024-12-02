@@ -1,7 +1,7 @@
 #
 # spec file for package 2ping
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,12 @@
 
 
 Name:           2ping
-Version:        4.5.1
+Version:        4.5.1+20241102
 Release:        0
 Summary:        Bi-directional ping utility
-License:        GPL-2.0-or-later
+License:        MPL-2.0
 URL:            https://www.finnie.org/software/2ping/
-Source0:        https://www.finnie.org/software/2ping/%{name}-%{version}.tar.gz
-Source1:        https://www.finnie.org/software/2ping/%{name}-%{version}.tar.gz.asc
+Source0:        %{name}-%{version}.tar.xz
 Source2:        %{name}.keyring
 Patch0:         harden_2ping.service.patch
 BuildRequires:  fdupes
