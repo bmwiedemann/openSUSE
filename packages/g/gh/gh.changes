@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Mon Dec 02 09:52:54 UTC 2024 - pdostal@suse.com
+
+- Update to version 2.63.0:
+  * Bump cli/go-gh for codespace fix
+  * Update git/client_test.go
+  * Update git/client_test.go
+  * Update git/client_test.go
+  * Add checkout test that uses ssh git remote url
+  * Rename backwards compatible credentials pattern
+  * Fix CredentialPattern doc typos
+  * Remove TODOs
+  * Fix typos and add tests for CredentialPatternFrom* functions
+  * Add SSH remote todo
+  * General cleanup and docs
+  * Allow repo sync fetch to use insecure credentials pattern
+  * Allow client fetch to use insecure credentials pattern
+  * Allow client push to use insecure credential pattern
+  * Allow client pull to use insecure credential pattern
+  * Allow opt-in to insecure pattern
+  * Support secure credential pattern
+  * Refactor error handling for missing "workflow" scope in createRelease
+  * ScopesResponder wraps StatusScopesResponder
+  * Refactor `workflow` scope checking
+  * pr feedback
+  * pr feedback
+  * Update pkg/cmd/attestation/verify/attestation_integration_test.go
+  * Apply suggestions from code review
+  * Refactor command documentation to use heredoc
+  * pr feedback
+  * remove unused test file
+  * undo change
+  * add more testing testing fixtures
+  * update test with new test bundle
+  * naming
+  * update test
+  * update test
+  * Fix README.md code block formatting
+  * clean up
+  * wrap sigstore and cert ext verification into a single function
+  * Adding option to return `baseRefOid` in `pr view`
+  * verify cert extensions function should return filtered result list
+  * pr feedback
+  * Update pkg/cmd/attestation/download/download.go
+  * fix function param calls
+  * Update pkg/cmd/attestation/verification/extensions.go
+  * Formatting fix
+  * Updated formatting to be more clear
+  * Updated markdown syntax for a `note`.
+  * Added a section on manual verification of the relases.
+  * Handle missing "workflow" scope in createRelease
+  * Modify push prompt on repo create when bare
+  * Doc push behaviour for bare repo create
+  * Push --mirror on bare repo create
+  * Add acceptance test for bare repo create
+  * Doc isLocalRepo and git.Client IsLocalRepo differences
+  * Use errWithExitCode interface in repo create isLocalRepo
+  * Backfill repo creation failure tests
+  * Support bare repo creation
+  * use logger println method
+  * simplify verifyCertExtensions
+  * rename type
+  * refactor fetch attestations funcs
+
+-------------------------------------------------------------------
 Fri Nov 15 18:58:36 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 2.62.0
