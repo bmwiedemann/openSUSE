@@ -16,23 +16,28 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-esptool
-Version:        4.7.0
+Version:        4.8.1
 Release:        0
 Summary:        A serial utility to communicate & flash code to Espressif ESP8266 & ESP32 chips
 License:        GPL-2.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/espressif/esptool
 Source:         https://github.com/espressif/esptool/archive/v%{version}.tar.gz#/esptool-%{version}.tar.gz
+BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module bitstring >= 3.1.6}
 BuildRequires:  %{python_module ecdsa >= 0.16.0}
 BuildRequires:  %{python_module intelhex}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyelftools}
 BuildRequires:  %{python_module pyserial >= 3.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module reedsolo >= 1.5.3}
+BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  openssl
 BuildRequires:  python-rpm-macros
@@ -58,13 +63,12 @@ Allows flashing firmware, reading back firmware, querying chip parameters, etc.
 
 %prep
 %setup -q -n esptool-%{version}
-sed -i '/^#!/d' flasher_stub/*.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/espefuse.py
 %python_clone -a %{buildroot}%{_bindir}/espsecure.py
 %python_clone -a %{buildroot}%{_bindir}/esptool.py
@@ -75,7 +79,9 @@ sed -i '/^#!/d' flasher_stub/*.py
 %check
 # there are more tests but upstream runs only those in .travis.yml
 %pytest test/test_imagegen.py
-%pytest test/test_espsecure.py
+# requires python-pkcs11 which isn't packaged
+rm -v test/test_espsecure.py test/test_espsecure_hsm.py
+%pytest -m host_test
 
 %post
 %python_install_alternative espefuse.py
@@ -96,8 +102,9 @@ sed -i '/^#!/d' flasher_stub/*.py
 %python_alternative %{_bindir}/espsecure.py
 %python_alternative %{_bindir}/espefuse.py
 %python_alternative %{_bindir}/esp_rfc2217_server.py
-%{python_sitelib}/esptool-%{version}-*egg-info
+%{python_sitelib}/esptool-%{version}.dist-info
 %{python_sitelib}/esptool
+%{python_sitelib}/esp_rfc2217_server
 %{python_sitelib}/espsecure
 %{python_sitelib}/espefuse
 

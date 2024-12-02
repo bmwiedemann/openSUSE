@@ -177,4 +177,41 @@
 </comment>
     <requestid>1185698</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3d84d5f9086d7d26bd0e5ef180558ae4</srcmd5>
+    <version>4.8.1</version>
+    <time>1733162986</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.8.1:
+  * Add esp32c2 eco4 rom magic value
+  * Correctly exclude the unwanted sub/modules
+  * Supports wafer efuse versions for esp32c61
+  * add new command SFDP read
+  * Add option to retry connection in a loop
+  * Updates efuse table for esp32c5
+  * Updates efuse table for esp32p4
+  * Added stub flasher support
+  * add autocompletions
+  * allow picking UART by VID/PID/Name
+  * Add USB-serial/JTAG stub support
+  * Add UART stub support
+  * Print key_purpose name for get_security_info cmd
+  * Adds support extend efuse table by user CSV
+    file* separated(default) and united(new)
+  * Adds incompatible eFuse settings check for S3
+  * Apply reconnections to the whole reset sequence,
+    not line transitions
+  * Automatically reconnect if port disconnects during reset
+  * Add ECO1 magic number
+  * Add support for secure boot v2 using
+    ECDSA-P384 signatures
+  * retry flashing if chip disconnects
+  * Allow filtering efuses based on command line arguments
+  * Enable context manager for esp instances
+  * Added check for correctness of written data
+  * Improves help for burn_efuse cmd
+  * clear boot control register on hard reset
+  * add spi-connection restriction to ROM class</comment>
+    <requestid>1227783</requestid>
+  </revision>
 </revisionlist>
