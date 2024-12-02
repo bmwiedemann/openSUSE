@@ -689,4 +689,17 @@ hits.
 (🤖: Submission of Botan via https://src.opensuse.org/pool/Botan/pulls/7 by ayankov)</comment>
     <requestid>1218259</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>7875cab0d213ec864f591073e94378d8</srcmd5>
+    <version>3.6.1</version>
+    <time>1733155188</time>
+    <user>anag+factory</user>
+    <comment>Update to 3.6.1
+
+In some rare conditions, Botan 3.6.0 has problems with Processors, see:
+https://botan.randombit.net/news.html#version-3-6-1-2024-10-26
+
+(🤖: Submission of Botan via https://src.opensuse.org/pool/Botan/pulls/9 by ayankov)</comment>
+    <requestid>1227773</requestid>
+  </revision>
 </revisionlist>
