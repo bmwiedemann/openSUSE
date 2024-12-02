@@ -82,6 +82,7 @@ Requires:       pkgconfig(libmetaio)
 This package contains sources and header files needed to build applications
 that use the LAL MetaIO library.
 
+%if %{with octave}
 %package -n octave-lalmetaio
 Summary:        Octave bindings for LAL MetaIO
 Group:          Productivity/Scientific/Physics
@@ -90,6 +91,7 @@ Requires:       octave-lal
 
 %description -n octave-lalmetaio
 This package provides the necessary files for using LAL MetaIO with octave.
+%endif
 
 %prep
 %autosetup -p1
