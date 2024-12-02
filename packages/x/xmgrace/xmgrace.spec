@@ -26,10 +26,11 @@ URL:            https://plasma-gate.weizmann.ac.il/Grace/
 Source:         https://ftp.fu-berlin.de/unix/graphics/grace/src/grace5/grace-%{version}.tar.gz
 Source1:        %{name}.desktop
 Source2:        xmgrace.png
-Patch0:         xmgrace-null.patch
 Patch1:         xmgrace-strip.patch
 Patch2:         xmgrace-help.patch
 Patch3:         reproducible.patch
+Patch4:         grace-configure-c99.patch
+Patch5:         grace-gcc14.patch
 BuildRequires:  libpng-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  openmotif-devel
@@ -61,10 +62,11 @@ For further information consult the main package.
 
 %prep
 %setup -q -n grace-%{version}
-%patch -P 0
 %patch -P 1
 %patch -P 2
 %patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

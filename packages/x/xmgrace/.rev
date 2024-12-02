@@ -86,4 +86,12 @@
     <comment>- Use %patch -P N instead of deprecated %patchN.</comment>
     <requestid>1148795</requestid>
   </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>e7822ba17fe4a9bb8830ec1aa8cd4dcd</srcmd5>
+    <version>5.1.25</version>
+    <time>1733155158</time>
+    <user>anag+factory</user>
+    <comment>patch changes to support gcc14 (forwarded request 1227677 from hsk17)</comment>
+    <requestid>1227678</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec  1 18:12:11 UTC 2024 - Friedrich Haubensak <hsk17@mail.de>
+
+- to support gcc14:
+  * add grace-configure-c99.patch (from gentoo) and grace-gcc14.patch
+  * drop xmgrace-null.patch: last arg of XtCreateWidget isn't pointer
+
+-------------------------------------------------------------------
 Wed Feb 21 16:01:14 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.
