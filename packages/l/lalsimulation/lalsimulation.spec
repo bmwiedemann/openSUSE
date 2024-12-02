@@ -31,6 +31,8 @@ Summary:        LSC Algorithm Simulation Library
 License:        GPL-2.0-only
 URL:            https://wiki.ligo.org/Computing/DASWG/LALSuite
 Source:         https://software.igwn.org/sources/source/lalsuite/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         https://git.ligo.org/lscsoft/lalsuite/-/commit/9dba245ab3692ecf691247a442704f13c075ed34.patch#/lalsimulation-swig-stringval-not-value.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module lal >= 7.2.0}
 BuildRequires:  %{python_module numpy >= 1.7}
@@ -93,6 +95,7 @@ BuildArch:      noarch
 This package provides the data files used when running analyses involving
 lalsimulation.
 
+%if %{with octave}
 %package -n octave-lalsimulation
 Summary:        Octave bindings for LALSimulation
 Requires:       %{name}-data = %{version}
@@ -101,8 +104,10 @@ Requires:       octave-lal
 
 %description -n octave-lalsimulation
 This package provides the necessary files for using LALSimulation with octave.
+%endif
 
 %prep
+# Upstream commits are -p1 against the full lalsuite, but -p2 against individual lal* pkgs
 %autosetup -p2
 
 %build
