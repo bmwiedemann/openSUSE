@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Dec  2 08:38:00 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.2.0:
+  * Includes a number of additional libaugeas bindings:
+    + load_file
+    + source
+    + srun
+    + preview
+    + ns_attr
+    + ns_label
+    + ns_value
+    + ns_count
+    + ns_path
+  * CFFI mode changed to out-of-line ABI mode
+- Package no longer noarch.
+- Switch to pyproject and pytest macros.
+- Run fdupes.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Tue Oct  8 13:50:01 UTC 2024 - Dominik Heidler <dheidler@suse.de>
 
 - Add missing dependency on python-cffi

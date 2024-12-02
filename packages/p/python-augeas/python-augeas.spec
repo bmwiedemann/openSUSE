@@ -18,22 +18,26 @@
 
 %{?sle15allpythons}
 Name:           python-augeas
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Python bindings for Augeas
 License:        LGPL-2.1-or-later
-Group:          Development/Languages/Python
 URL:            http://augeas.net/
 Source:         https://github.com/hercules-team/python-augeas/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module cffi >= 1.0.0}
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  augeas-devel
 BuildRequires:  augeas-lenses
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       augeas
 Requires:       python-cffi >= 1.0.0
 # We'd always want to have augeas-lenses installed
 Requires:       augeas-lenses
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -44,21 +48,20 @@ configuration files.
 %setup -q
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-
-# do not pack tests
-%python_expand rm -rf %{buildroot}%{$python_sitelib}/test
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-cd test
-%python_exec test_augeas.py
+%pytest_arch
 
 %files %{python_files}
-%doc AUTHORS README.txt
+%doc AUTHORS README.md
 %license COPYING
-%{python_sitelib}/*
+%{python_sitearch}/augeas
+%{python_sitearch}/_augeas.abi3.so
+%{python_sitearch}/python_augeas-%{version}.dist-info
 
 %changelog

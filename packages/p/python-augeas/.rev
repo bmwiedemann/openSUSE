@@ -90,4 +90,27 @@
     <comment></comment>
     <requestid>1206341</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8792d0d5daf3dddfa808eea2926fafe7</srcmd5>
+    <version>1.2.0</version>
+    <time>1733155155</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.2.0:
+  * Includes a number of additional libaugeas bindings:
+    + load_file
+    + source
+    + srun
+    + preview
+    + ns_attr
+    + ns_label
+    + ns_value
+    + ns_count
+    + ns_path
+  * CFFI mode changed to out-of-line ABI mode
+- Package no longer noarch.
+- Switch to pyproject and pytest macros.
+- Run fdupes.
+- No more greedy globs in %files.</comment>
+    <requestid>1227679</requestid>
+  </revision>
 </revisionlist>
