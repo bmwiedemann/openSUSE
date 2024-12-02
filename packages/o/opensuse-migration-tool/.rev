@@ -19,4 +19,12 @@ migrations as well as point release upgrades
 * Slowroll -&gt; Tumbleweed</comment>
     <requestid>1227346</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0a83688b23096990047810e65b42ad46</srcmd5>
+    <version>20241202.1a4772b</version>
+    <time>1733155162</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1227703</requestid>
+  </revision>
 </revisionlist>

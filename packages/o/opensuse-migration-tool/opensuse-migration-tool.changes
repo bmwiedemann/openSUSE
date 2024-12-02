@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 02 09:20:54 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20241202.1a4772b:
+  * Fix missing mv and missing DRYRUN
+  * Use https instead of git in a README git clone examples
+  * Update README.md with opensuse-migration tool and new repo paths
+
+-------------------------------------------------------------------
 Fri Nov 29 08:37:19 UTC 2024 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20241129.2509e96:
