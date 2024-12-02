@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 02 10:02:15 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.17.1:
+  * test(compile): basic tests for stripComments
+  * fix(compile): label when compile error is for test pipeline
+
+-------------------------------------------------------------------
 Fri Nov 29 12:16:20 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.17.0:
