@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec  2 15:15:22 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add patch parentheses.patch to fix tests on Python 3.13
+
+-------------------------------------------------------------------
 Thu Nov 21 10:08:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - skip for python 3.13

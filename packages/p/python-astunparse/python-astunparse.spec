@@ -17,7 +17,6 @@
 
 
 %{?sle15_python_module_pythons}
-%global skip_python313 1
 Name:           python-astunparse
 Version:        1.6.3
 Release:        0
@@ -30,6 +29,9 @@ Source:         https://files.pythonhosted.org/packages/source/a/astunparse/astu
 Patch0:         astunparse-pr57-py39.patch
 # https://github.com/simonpercivall/astunparse/pull/59
 Patch1:         fix-formatted-value.patch
+# https://github.com/simonpercivall/astunparse/pull/70
+# it is a bit overpowered, but it fixes the issue
+Patch2:         parentheses.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.6.1}
