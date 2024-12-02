@@ -22,11 +22,11 @@ Name:           orthanc-ohif
 Summary:        OHIF plugin for Orthanc
 License:        AGPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
-Version:        1.3
+Version:        1.4
 Release:        0
 URL:            https://orthanc-server.com
 Source0:        https://orthanc.uclouvain.be/downloads/sources/%{name}/OrthancOHIF-%{version}.tar.gz
-Source1:        https://orthanc.uclouvain.be/downloads/linux-standard-base/orthanc-ohif/1.1/dist.zip
+Source1:        https://orthanc.uclouvain.be/downloads/linux-standard-base/orthanc-ohif/%{version}/dist.zip
 
 BuildRequires:  cmake
 BuildRequires:  e2fsprogs-devel

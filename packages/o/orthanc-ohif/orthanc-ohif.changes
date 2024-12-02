@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov 30 11:21:41 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.4
+  * Updated OHIF to 3.9.1
+  * The default value for the "DataSource" configuration is now "dicom-web"
+    instead of "dicom-json" since "dicom-web" is usually
+    more optimized.
+
+-------------------------------------------------------------------
 Fri Jul 12 19:27:33 UTC 2024 - Axel Braun <axel.braun@gmx.de>
 
 - version 1.3
