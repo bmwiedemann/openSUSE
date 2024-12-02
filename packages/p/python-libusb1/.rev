@@ -97,4 +97,12 @@
     segfault when closing a transfer from inside its callback function.</comment>
     <requestid>1132044</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>9cd57dc8e580195127d17cd396cd083a</srcmd5>
+    <version>3.1.0</version>
+    <time>1733163018</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1227781</requestid>
+  </revision>
 </revisionlist>

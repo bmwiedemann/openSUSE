@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec  2 12:43:40 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream py313.patch to fix build with new python
+
+-------------------------------------------------------------------
 Fri Dec  8 08:19:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.0:
