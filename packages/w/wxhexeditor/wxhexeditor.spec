@@ -1,7 +1,7 @@
 #
 # spec file for package wxhexeditor
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,8 @@ Patch2:         wxhexeditor-fixdesktopfile.patch
 Patch3:         wxhexeditor-fix-arm.patch
 # PATCH-FEATURE-UPSTREAM - https://github.com/EUA/wxHexEditor/pull/173
 Patch4:         wxhexeditor-appdata.patch
+# PATCH-FIX-UPSTREAM ebe2449fac22089825d124935a215fd1c0739403.patch -- Fix build for wxWidgets v3.1.2
+Patch5:         https://github.com/EUA/wxHexEditor/commit/ebe2449fac22089825d124935a215fd1c0739403.patch
 %if %{with gcc6}
 %if 0%{?sle_version} >= 120200
 #!BuildIgnore:  libgcc_s1
@@ -54,7 +56,7 @@ BuildRequires:  libtool
 BuildRequires:  mhash-devel
 BuildRequires:  pkg-config
 BuildRequires:  update-desktop-files
-BuildRequires:  wxWidgets-3_0-devel
+BuildRequires:  wxWidgets-devel
 Recommends:     %{name}-lang
 
 %description
@@ -76,6 +78,7 @@ rm -rf mhash
 %patch -P 2
 %patch -P 3 -p1
 %patch -P 4 -p1
+%patch -P 5 -p1
 chmod -x docs/*
 cp -v udis86/LICENSE LICENSE-udis86
 cp -v docs/GPL.txt .

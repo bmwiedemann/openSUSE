@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 27 14:08:46 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add ebe2449fac22089825d124935a215fd1c0739403.patch: Fix build for
+  wxWidgets v3.1.2. Following this, replace wxWidgets-3_0-devel
+  with wxWidgets-devel BuildRequires.
+
+-------------------------------------------------------------------
 Tue Feb 20 15:16:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
