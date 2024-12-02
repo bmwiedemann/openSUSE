@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec 02 13:50:55 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.88.1:
+  * feat: allow to login on Udash without auth enabled (#3203)
+  * deps: bump updatecli version to v0.88.0 (#3176)
+  * fix: display target console output in Updatecli report (#3190)
+  * deps(go): bump module github.com/zclconf/go-cty (#3182)
+
+-------------------------------------------------------------------
 Wed Nov 27 09:45:17 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.88.0:
