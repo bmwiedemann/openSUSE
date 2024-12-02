@@ -1,0 +1,16 @@
+Index: w3lib-2.2.1/tests/test_url.py
+===================================================================
+--- w3lib-2.2.1.orig/tests/test_url.py
++++ w3lib-2.2.1/tests/test_url.py
+@@ -420,8 +420,9 @@ KNOWN_SAFE_URL_STRING_URL_ISSUES = {
+     # (%) are not escaped.
+     f"a://example.com#{FRAGMENT_TO_ENCODE}",
+ }
+-if sys.version_info < (3, 11, 4):
+-    KNOWN_SAFE_URL_STRING_URL_ISSUES.add("http://[2a01:5cc0:1:2:3:4]")  # Invalid IPv6
++# openSUSE: All of our Python 3.10+ interpreters will fail this
++#if sys.version_info < (3, 11, 4):
++#    KNOWN_SAFE_URL_STRING_URL_ISSUES.add("http://[2a01:5cc0:1:2:3:4]")  # Invalid IPv6
+ 
+ 
+ @pytest.mark.parametrize(

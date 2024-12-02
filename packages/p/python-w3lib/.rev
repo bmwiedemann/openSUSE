@@ -125,4 +125,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1181993</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>1c2adf213d6743f2b93fbcd6b04f564e</srcmd5>
+    <version>2.2.1</version>
+    <time>1733155163</time>
+    <user>anag+factory</user>
+    <comment>- Add patch do-not-add-invalid-ipv6.patch:
+  * Do not check invalid IPv6 addresses.</comment>
+    <requestid>1227705</requestid>
+  </revision>
 </revisionlist>

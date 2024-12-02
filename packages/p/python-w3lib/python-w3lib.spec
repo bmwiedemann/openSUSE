@@ -22,9 +22,10 @@ Version:        2.2.1
 Release:        0
 Summary:        Library of Web-Related Functions
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/scrapy/w3lib
 Source:         https://files.pythonhosted.org/packages/source/w/w3lib/w3lib-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Do not check invalid IPv6 addresses
+Patch0:         do-not-add-invalid-ipv6.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
