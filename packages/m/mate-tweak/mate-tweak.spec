@@ -1,7 +1,7 @@
 #
 # spec file for package mate-tweak
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,13 +24,12 @@ Summary:        MATE desktop tweak tool
 License:        GPL-2.0-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/ubuntu-mate/mate-tweak
-Source:         https://github.com/ubuntu-mate/mate-tweak/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE mate-tweak-use-matemenu.patch sor.alexei@meowr.ru -- Layouts are patched to use mate-menu instead of mintMenu or gnome-main-menu.
 Patch0:         mate-tweak-use-matemenu.patch
 BuildRequires:  Mesa-demo-x
 BuildRequires:  dconf
 BuildRequires:  fdupes
-BuildRequires:  gobject-introspection-devel
 BuildRequires:  intltool
 BuildRequires:  python3
 BuildRequires:  python3-configobj
@@ -39,16 +38,18 @@ BuildRequires:  python3-gobject
 BuildRequires:  python3-psutil
 BuildRequires:  python3-setproctitle
 BuildRequires:  python3-setuptools
-BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
 Requires:       Mesa-demo-x
 Requires:       dconf
 Requires:       mate-panel
+Requires:       python3-base
 Requires:       python3-configobj
 Requires:       python3-distro
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
 Requires:       python3-psutil
 Requires:       python3-setproctitle
+Requires:       python3-setuptools
 # For privilege granting.
 Requires:       xdg-utils
 Recommends:     mate-applet-indicator
@@ -82,11 +83,17 @@ sed -i '/polkit/d' setup.py
 # Give gi-find-deps.sh a bait.
 ln -s %{_bindir}/%{name} %{buildroot}%{_prefix}/lib/%{name}/%{name}.py
 
+%if 0%{?suse_version} > 1500
 rm %{buildroot}%{python3_sitelib}/setup.py
+%endif
 %py3_compile %{buildroot}%{python3_sitelib}/
 
-%fdupes %{buildroot}%{python3_sitelib}/
 %find_lang %{name}
+
+sed -i 's|/usr/bin/env bash|/usr/bin/bash|g' %{buildroot}%{_bindir}/*
+sed -i 's|/usr/bin/env python3|/usr/bin/python3|g' %{buildroot}%{_prefix}/lib/%{name}/mate-tweak-helper
+
+%fdupes %{buildroot}
 
 %files
 %license COPYING
@@ -95,7 +102,9 @@ rm %{buildroot}%{python3_sitelib}/setup.py
 %{_bindir}/marco-*
 %{_prefix}/lib/%{name}/
 %{python3_sitelib}/%{_name}-*
+%if 0%{?suse_version} > 1500
 %pycache_only %{python3_sitelib}/__pycache__
+%endif
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/applications/marco-*.desktop
 %{_mandir}/man?/%{name}.?%{?ext_man}
