@@ -615,11 +615,13 @@ unsorted:
   - anjuta-devel 
   - anjuta-lang 
   - ansible 
+  - ansible-10 
   - ansible-9 
   - ansible-builder 
   - ansible-cmdb 
   - ansible-core 
   - ansible-core-2.16 
+  - ansible-core-2.17 
   - ansible-documentation 
   - ansible-lint 
   - ansible-navigator 
@@ -627,6 +629,7 @@ unsorted:
   - ansible-terraform-inventory 
   - ansible-test 
   - ansible-test-2.16 
+  - ansible-test-2.17 
   - ansible-variables 
   - ansifilter 
   - ansifilter-bash-completion 
@@ -2395,7 +2398,6 @@ unsorted:
   - codec2-devel 
   - codec2-examples 
   - codehaus-parent 
-  - codelite 
   - codemodel 
   - codemodel-javadoc 
   - codespell 
@@ -5101,6 +5103,7 @@ unsorted:
   - gecode-devel 
   - gecode-minizinc 
   - gede 
+  - gede-qt6 
   - gedit-devel 
   - gedit-plugin-bookmarks 
   - gedit-plugin-bracketcompletion 
@@ -11868,8 +11871,8 @@ unsorted:
   - libabigail4 
   - libabiword-3_0 
   - libabiword-3_0-devel 
-  - libabsl_2401_0_0-32bit 
-  - libabsl_lite_2401_0_0-32bit 
+  - libabsl_2407_0_0-32bit 
+  - libabsl_lite_2407_0_0-32bit 
   - libabw-devel 
   - libabw-devel-doc 
   - libabw-tools 
@@ -20134,6 +20137,7 @@ unsorted:
   - obby-devel 
   - obby-lang 
   - obconf 
+  - obconf-lang 
   - obconf-qt 
   - obconf-qt-lang 
   - obexfs 
@@ -24420,7 +24424,6 @@ unsorted:
   - python310-Morfessor 
   - python310-MouseInfo 
   - python310-MulticoreTSNE 
-  - python310-Nuitka 
   - python310-OSMPythonTools 
   - python310-OWSLib 
   - python310-PGet 
@@ -28092,7 +28095,6 @@ unsorted:
   - python311-Morfessor 
   - python311-MouseInfo 
   - python311-MulticoreTSNE 
-  - python311-Nuitka 
   - python311-OSMPythonTools 
   - python311-OWSLib 
   - python311-PGet 
@@ -30398,6 +30400,7 @@ unsorted:
   - python311-pyaml 
   - python311-pyarrow 
   - python311-pyarrow-devel 
+  - python311-pyasyncore 
   - python311-pybars3 
   - python311-pybcj 
   - python311-pybeam 
@@ -35328,9 +35331,6 @@ unsorted:
   - python313-Morfessor 
   - python313-MouseInfo 
   - python313-MulticoreTSNE 
-  - python313-Nuitka 
-  - python313-Nuitka-clang-test-py3 
-  - python313-Nuitka-gcc-test-py3 
   - python313-OSMPythonTools 
   - python313-OWSLib 
   - python313-PGet 
@@ -35597,6 +35597,7 @@ unsorted:
   - python313-astropy-healpix 
   - python313-astropy-iers-data 
   - python313-asttokens 
+  - python313-astunparse 
   - python313-asv 
   - python313-asv-runner 
   - python313-async-lru 
@@ -35618,6 +35619,7 @@ unsorted:
   - python313-audio-degrader 
   - python313-audiomate 
   - python313-audioread 
+  - python313-augeas 
   - python313-authheaders 
   - python313-authres 
   - python313-autobahn 
@@ -36084,6 +36086,7 @@ unsorted:
   - python313-canonicaljson 
   - python313-capturer 
   - python313-case 
+  - python313-cassandra-driver 
   - python313-cassowary 
   - python313-casttube 
   - python313-catkin-pkg 
@@ -36096,6 +36099,7 @@ unsorted:
   - python313-celery 
   - python313-celery-batches 
   - python313-certbot 
+  - python313-certbot-apache 
   - python313-certbot-dns-cloudflare 
   - python313-certbot-dns-digitalocean 
   - python313-certbot-dns-dnsimple 
@@ -36396,6 +36400,7 @@ unsorted:
   - python313-django-sekizai 
   - python313-django-settings-toml 
   - python313-django-silk 
+  - python313-django-sortedm2m 
   - python313-django-storages 
   - python313-django-tables2 
   - python313-django-taggit 
@@ -36440,6 +36445,7 @@ unsorted:
   - python313-dpcontracts 
   - python313-dpkt 
   - python313-dqsegdb 
+  - python313-dqsegdb2 
   - python313-dragonmapper 
   - python313-drgn 
   - python313-drms 
@@ -36497,6 +36503,7 @@ unsorted:
   - python313-epubmerge 
   - python313-eradicate 
   - python313-espeak 
+  - python313-esptool 
   - python313-et_xmlfile 
   - python313-etcd 
   - python313-ethtool 
@@ -36880,6 +36887,7 @@ unsorted:
   - python313-isoduration 
   - python313-isort 
   - python313-itemadapter 
+  - python313-itemloaders 
   - python313-iterable-io 
   - python313-itsdangerous 
   - python313-iwlib 
@@ -37004,6 +37012,8 @@ unsorted:
   - python313-kwant 
   - python313-labels 
   - python313-lal 
+  - python313-lalmetaio 
+  - python313-lalsimulation 
   - python313-lancet-ioam 
   - python313-langchain-chroma 
   - python313-langdetect 
@@ -37084,6 +37094,7 @@ unsorted:
   - python313-libsmdev 
   - python313-libsmraw 
   - python313-libtmux 
+  - python313-libusb1 
   - python313-libusbsio 
   - python313-libversion 
   - python313-libvhdi 
@@ -37098,6 +37109,7 @@ unsorted:
   - python313-libxml2 
   - python313-license-expression 
   - python313-ligo-lw 
+  - python313-ligo-segments 
   - python313-ligotimegps 
   - python313-line_profiler 
   - python313-linetable 
@@ -37288,6 +37300,7 @@ unsorted:
   - python313-ndindex 
   - python313-ndjson 
   - python313-ndtiff 
+  - python313-neovim 
   - python313-nest-asyncio 
   - python313-net-snmp 
   - python313-netCDF4 
@@ -37350,6 +37363,7 @@ unsorted:
   - python313-numpy_2_1_3-gnu-hpc 
   - python313-numpy_2_1_3-gnu-hpc-devel 
   - python313-numpydoc 
+  - python313-nvim-remote 
   - python313-nwdiag 
   - python313-o2sclpy 
   - python313-oauthlib 
@@ -37457,6 +37471,7 @@ unsorted:
   - python313-parse 
   - python313-parse_type 
   - python313-parsedatetime 
+  - python313-parsel 
   - python313-parsimonious 
   - python313-parso 
   - python313-parsy 
@@ -37662,6 +37677,7 @@ unsorted:
   - python313-pyarrow-devel 
   - python313-pyasn1 
   - python313-pyasn1-modules 
+  - python313-pyasyncore 
   - python313-pybars3 
   - python313-pybcj 
   - python313-pybeam 
@@ -37787,6 +37803,7 @@ unsorted:
   - python313-pynamodb 
   - python313-pynetbox 
   - python313-pyngus 
+  - python313-pynitrokey 
   - python313-pynput 
   - python313-pynxos 
   - python313-pyo 
@@ -38233,6 +38250,7 @@ unsorted:
   - python313-sambacc 
   - python313-samplerate 
   - python313-sane 
+  - python313-sanlock 
   - python313-sarge 
   - python313-sarif-om 
   - python313-schedule 
@@ -38330,6 +38348,7 @@ unsorted:
   - python313-smmap 
   - python313-smpplib 
   - python313-sniffio 
+  - python313-snimpy 
   - python313-snowballstemmer 
   - python313-snuggs 
   - python313-social-auth-app-django 
@@ -38680,6 +38699,7 @@ unsorted:
   - python313-voluptuous-serialize 
   - python313-vulkan 
   - python313-vulture 
+  - python313-w3lib 
   - python313-wadllib 
   - python313-wafw00f 
   - python313-waitress 
@@ -51081,6 +51101,7 @@ unsorted:
   - tree-sitter-css 
   - tree-sitter-devel 
   - tree-sitter-go 
+  - tree-sitter-gomod 
   - tree-sitter-haskell 
   - tree-sitter-html 
   - tree-sitter-java 
