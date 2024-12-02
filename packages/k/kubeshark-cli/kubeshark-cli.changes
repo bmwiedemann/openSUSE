@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 02 10:01:40 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 52.3.91:
+  * :bookmark: Bump the Helm chart version to 52.3.91
+  * fixed a small issues in the Makefile
+
+-------------------------------------------------------------------
 Wed Nov 20 12:55:49 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 52.3.90:
