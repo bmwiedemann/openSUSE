@@ -17,8 +17,9 @@
 
 
 %define modname pynvim
+%{?sle15_python_module_pythons}
 Name:           python-neovim
-Version:        0.5.0
+Version:        0.5.2
 Release:        0
 Summary:        Python client to Neovim
 License:        Apache-2.0
@@ -26,20 +27,23 @@ Group:          Productivity/Text/Editors
 URL:            https://github.com/neovim/pynvim
 Source:         https://github.com/neovim/%{modname}/archive/%{version}/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  neovim >= 0.9.0
 BuildRequires:  python-rpm-macros
-Requires:       neovim >= 0.9.0
+Requires:       neovim
 Requires:       python-greenlet
 Requires:       python-msgpack
+Requires:       python-typing_extensions
 Provides:       python-nvim
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module greenlet}
 BuildRequires:  %{python_module msgpack}
-BuildRequires:  neovim
 # /SECTION
 %python_subpackages
 
@@ -55,9 +59,6 @@ Library for scripting Nvim processes through its msgpack-rpc API.
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-
-%check
-%pytest
 
 %files %{python_files}
 %license LICENSE

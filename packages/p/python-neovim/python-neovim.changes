@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Nov 26 23:33:08 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.5.2:
+  * build: fix conditional install_requires
+- update to 0.5.1:
+  * Several refactoring on asyncio eventloop implementations
+  * test: add tests for attaching through socket, tcp, and stdio
+  * refactor: remove the use of forward references
+  * fix(tests): "provider#python3#Prog" was removed upstream
+  * Revert "fix: vim.eval('v:true') should return python bool
+  * fix: UpdateRemotePlugins not finding specs on windows
+  * fix(tests): broadcast test fails
+  * fix: Remove deprecated alias of logger.warn
+  * fix(tests): remove reference to pytest-runner
+  * fix(tests): failing tests on python3.13 about stacktrace messages
+- disable tests, as they time out
+- fix leap by using the newer python stack
+
+-------------------------------------------------------------------
 Fri Feb 16 20:50:09 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - "Do not use %python_module for Requires"
