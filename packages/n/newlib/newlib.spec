@@ -44,14 +44,13 @@
 # In the staging/ring projects, we don't want to build the unneeded packages
 %bcond_with ringdisabled
 Name:           %{pname}
-Version:        4.3.0.20230120
+Version:        4.4.0.20231231
 Release:        0
 Summary:        C library intended for use on embedded systems
 License:        BSD-3-Clause AND MIT AND LGPL-2.0-or-later AND ISC
 Group:          Development/Libraries/Cross
 URL:            https://sourceware.org/newlib/
 Source0:        ftp://sourceware.org/pub/newlib/newlib-%{version}.tar.gz
-Patch1:         epiphany-fixes.diff
 %if "%{flavor}" == ""
 BuildArch:      noarch
 %else
