@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-certbot-nginx
-Version:        2.11.0
+Version:        3.0.1
 Release:        0
 Summary:        Nginx plugin for Certbot
 License:        Apache-2.0
