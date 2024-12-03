@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-certbot-dns-dnsmadeeasy
-Version:        2.11.0
+Version:        3.0.1
 Release:        0
 Summary:        DNS Made Easy Authenticator plugin for Certbot
 License:        Apache-2.0
