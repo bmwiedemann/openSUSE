@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec  3 14:53:01 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- update to version 3.0.1
+  * The --dns-route53-propagation-seconds command line flag was removed.
+  * The certbot_dns_route53.authenticator module has been removed. This 
+    should not affect any users of the plugin and instead would only 
+    affect developers trying to develop on top of the old code.
+
+-------------------------------------------------------------------
 Tue Jun 25 12:23:40 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - update to version 2.11.0
