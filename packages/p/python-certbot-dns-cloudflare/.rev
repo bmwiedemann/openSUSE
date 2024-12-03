@@ -348,4 +348,12 @@
     <comment>certbot version bump</comment>
     <requestid>1183169</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>567dbc9bf125a0ea808223862c8f7427</srcmd5>
+    <version>3.0.1</version>
+    <time>1733255295</time>
+    <user>anag+factory</user>
+    <comment>certbot version bump</comment>
+    <requestid>1228067</requestid>
+  </revision>
 </revisionlist>
