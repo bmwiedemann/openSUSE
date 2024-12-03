@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec  3 13:26:38 UTC 2024 - SUSE Update Bot <bci-internal@suse.de>
+
+- Change attribute order in _service
+
+-------------------------------------------------------------------
 Mon Nov 25 15:06:00 UTC 2024 - SUSE Update Bot <bci-internal@suse.de>
 
 - Add major & major + minor version tag, do not install redis compat package
