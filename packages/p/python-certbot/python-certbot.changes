@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec  3 14:46:41 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.0.1
+  * The update_symlinks command was removed.
+  * The csr_dir and key_dir attributes on 
+    certbot.configuration.NamespaceConfig were removed.
+  * The --manual-public-ip-logging-ok command line flag was removed.
+  * Support for Python 3.8 was deprecated and will be removed in our 
+    next planned release.
+
+-------------------------------------------------------------------
 Tue Jun 25 12:15:06 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - update to 2.11.0
