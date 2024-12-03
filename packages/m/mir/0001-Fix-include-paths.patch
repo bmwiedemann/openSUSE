@@ -4,42 +4,7 @@ Date: Tue, 29 Oct 2024 17:57:08 -0700
 Subject: [PATCH] Fix include paths
 
 ---
- src/common/events/CMakeLists.txt               | 1 +
- src/platforms/evdev/CMakeLists.txt             | 2 ++
  tests/include/mir/test/doubles/mock_libinput.h | 2 +-
- tests/unit-tests/CMakeLists.txt                | 1 +
- 4 files changed, 5 insertions(+), 1 deletion(-)
-
-diff --git a/src/common/events/CMakeLists.txt b/src/common/events/CMakeLists.txt
-index 515b48795a..e80bfd08a7 100644
---- a/src/common/events/CMakeLists.txt
-+++ b/src/common/events/CMakeLists.txt
-@@ -39,4 +39,5 @@ add_library(
- target_link_libraries(mirevents
-   PUBLIC
-     mircore
-+    PkgConfig::XKBCOMMON
- )
-diff --git a/src/platforms/evdev/CMakeLists.txt b/src/platforms/evdev/CMakeLists.txt
-index 5658c980c0..48d8f73995 100644
---- a/src/platforms/evdev/CMakeLists.txt
-+++ b/src/platforms/evdev/CMakeLists.txt
-@@ -13,6 +13,7 @@ target_link_libraries(mirevdevutilsobjects
-   PUBLIC
-     mircommon
-     mircore
-+    PkgConfig::LIBINPUT
- )
- 
- add_library(mirplatforminputevdevobjects OBJECT
-@@ -27,6 +28,7 @@ target_link_libraries(mirplatforminputevdevobjects
-     mirplatform
-     mircommon
-     mircore
-+    PkgConfig::LIBINPUT
- )
- 
- add_library(mirplatforminputevdev MODULE
 diff --git a/tests/include/mir/test/doubles/mock_libinput.h b/tests/include/mir/test/doubles/mock_libinput.h
 index 4487f8290d..b59a4386d6 100644
 --- a/tests/include/mir/test/doubles/mock_libinput.h
@@ -53,18 +18,3 @@ index 4487f8290d..b59a4386d6 100644
  
  namespace mir
  {
-diff --git a/tests/unit-tests/CMakeLists.txt b/tests/unit-tests/CMakeLists.txt
-index f297e1fb50..88e161d766 100644
---- a/tests/unit-tests/CMakeLists.txt
-+++ b/tests/unit-tests/CMakeLists.txt
-@@ -187,6 +187,7 @@ target_link_libraries(
-   mircommon
- 
-   Boost::system
-+  PkgConfig::LIBINPUT
-   PkgConfig::WAYLAND_SERVER
-   ${CMAKE_THREAD_LIBS_INIT} # Link in pthread.
- )
--- 
-2.46.1
-

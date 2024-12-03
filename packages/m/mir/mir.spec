@@ -1,6 +1,7 @@
 #
 # spec file for package mir
 #
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) Shawn W Dunn
 #
 # All modifications and additions to the file contributed by third parties
@@ -15,6 +16,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 # Disable lto
 %global _lto_cflags %{nil}
 
@@ -25,19 +27,19 @@
 # Set globals for easier future maintenance
 %global commonlibsover 11
 %global mircoresover 2
-%global mirplatformsover 29
+%global mirplatformsover 30
 %global lomirisover 5
-%global miralsover 7 
+%global miralsover 7
 %global mirserversover 61
 %global mirwaylandsover 5
 
 Name:           mir
-Version:        2.18.2
+Version:        2.19.0
 Release:        0
 Summary:        Libraries for building Wayland shells
-License:        (GPL-2.0-only or GPL-3.0-only) and (LGPL-2.1-only or LGPL-3.0-only)
+License:        (GPL-2.0-only OR GPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only)
 URL:            https://mir-server.io
-Source:         https://github.com/MirServer/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz
+Source:         https://github.com/canonical/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM 0001-Fix-include-paths.patch
 Patch0:         0001-Fix-include-paths.patch
 BuildRequires:  boost-devel
@@ -57,22 +59,22 @@ BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libxslt-tools
 BuildRequires:  python3
-BuildRequires:  %{python_module Pillow}
+BuildRequires:  python3-Pillow
 BuildRequires:  systemtap-sdt-devel
 BuildRequires:  valgrind
 
+BuildRequires:  cmake(GTest) >= 1.8.0
 BuildRequires:  cmake(glm)
 BuildRequires:  cmake(glog)
-BuildRequires:  cmake(GTest) >= 1.8.0
 BuildRequires:  cmake(yaml-cpp)
 
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gbm) >= 9.0.0
+BuildRequires:  pkgconfig(gflags)
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gflags)
 BuildRequires:  pkgconfig(gtest) >= 1.8.0
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libevdev)
@@ -86,21 +88,21 @@ BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-eglstream)
 BuildRequires:  pkgconfig(wayland-server)
+BuildRequires:  pkgconfig(wlcs)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xkbcommon-x11)
-BuildRequires:  pkgconfig(wlcs)
 
 %description
 A set of libraries for building Wayland based shells.
 
 %package devel
 Summary:        Development files for Mir
-Requires:       libmircommon%{commonlibsover} = %{version}
-Requires:       libmirserver%{mirserversover} = %{version}
-Requires:       libmiroil%{lomirisover} = %{version}
 Requires:       %{name}-test-libs-static = %{version}
+Requires:       libmircommon%{commonlibsover} = %{version}
+Requires:       libmiroil%{lomirisover} = %{version}
+Requires:       libmirserver%{mirserversover} = %{version}
 
 %description devel
 This package provides the development files to create compositors built on Mir
@@ -115,56 +117,56 @@ Mir that need acces to private internal interfaces
 
 %package -n libmircommon%{commonlibsover}
 Summary:        Mir server library
-License:        LGPL-2.1-only or LGPL-3.0-only
+License:        LGPL-2.1-only OR LGPL-3.0-only
 
 %description -n libmircommon%{commonlibsover}
 Component library of the Mir compositing stack
 
 %package -n libmircore%{mircoresover}
 Summary:        Mir core library
-License:        LGPL-2.1-only or LGPL-3.0-only
+License:        LGPL-2.1-only OR LGPL-3.0-only
 
 %description -n libmircore%{mircoresover}
 Component library of the Mir compositing stack
 
 %package -n libmirplatform%{mirplatformsover}
 Summary:        Mir platform library
-License:        LGPL-2.1-only or LGPL-3.0-only
+License:        LGPL-2.1-only OR LGPL-3.0-only
 
 %description -n libmirplatform%{mirplatformsover}
 Component library of the Mir compositing stack
 
 %package -n libmiroil%{lomirisover}
 Summary:        Lomiri compatibility libraries for Mir
-License:        LGPL-2.1-only or LGPL-3.0-only
+License:        LGPL-2.1-only OR LGPL-3.0-only
 
 %description -n libmiroil%{lomirisover}
 This package provides the libraries for Lomiri to use Mir as a Wayland compositor
 
 %package -n libmiral%{miralsover}
 Summary:        Mir Abstraction Layer library
-License:        LGPL-2.1-only or LGPL-3.0-only
+License:        LGPL-2.1-only OR LGPL-3.0-only
 
 %description -n libmiral%{miralsover}
 Component library of the Mir compositing stack
 
 %package -n libmirserver%{mirserversover}
 Summary:        Mir server library
-License:        GPL-2.0-only or GPL-3.0-only
+License:        GPL-2.0-only OR GPL-3.0-only
 
 %description -n libmirserver%{mirserversover}
 Component library of the Mir compositing stack
 
 %package -n libmirwayland%{mirwaylandsover}
 Summary:        Mir Wayland library
-License:        LGPL-2.1-only or LGPL-3.0-only
+License:        LGPL-2.1-only OR LGPL-3.0-only
 
 %description -n libmirwayland%{mirwaylandsover}
 Component library of the Mir compsiting stack
 
 %package test-tools
 Summary:        Testing tools for Mir
-License:        GPL-2.0-only or GPL-3.0-only
+License:        GPL-2.0-only OR GPL-3.0-only
 Requires:       libmirserver%{mirserversover} = %{version}
 Requires:       wlcs
 Recommends:     %{name}-demos
@@ -176,11 +178,11 @@ This package provides tools for testing Mir
 
 %package demos
 Summary:        Demonstration applications using Mir
-License:        GPL-2.0-only or GPL-3.0-only
-Requires:       libmirserver%{mirserversover} = %{version}
+License:        GPL-2.0-only OR GPL-3.0-only
 Requires:       gnu-free-fonts
 Requires:       hicolor-icon-theme
 Requires:       inotify-tools
+Requires:       libmirserver%{mirserversover} = %{version}
 Requires:       xkeyboard-config
 Requires:       xwayland
 
@@ -190,7 +192,7 @@ Mir display server
 
 %package test-libs-static
 Summary:        Testing framework library for Mir
-License:        GPL-2.0-only or GPL-3.0-only
+License:        GPL-2.0-only OR GPL-3.0-only
 Requires:       %{name}-devel = %{version}
 
 %description test-libs-static
