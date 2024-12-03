@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec  3 14:42:56 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.0.1
+  * Support for Python 3.8 was deprecated and will be removed in 
+    our next planned release.
+
+-------------------------------------------------------------------
 Tue Jun 25 12:13:18 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.11.0

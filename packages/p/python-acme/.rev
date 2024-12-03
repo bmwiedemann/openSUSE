@@ -781,4 +781,14 @@
   * sync with the main certbot package</comment>
     <requestid>1183166</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>863c720f8444de4652014c918aef8f7a</srcmd5>
+    <version>3.0.1</version>
+    <time>1733255293</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.0.1
+  * Support for Python 3.8 was deprecated and will be removed in 
+    our next planned release.</comment>
+    <requestid>1228064</requestid>
+  </revision>
 </revisionlist>
