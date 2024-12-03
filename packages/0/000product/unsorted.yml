@@ -2828,6 +2828,7 @@ unsorted:
   - cross-i386-gcc7-icecream-backend 
   - cross-i386-linux-glibc-devel 
   - cross-ia64-binutils 
+  - cross-loongarch64-linux-glibc-devel 
   - cross-m68k-binutils 
   - cross-m68k-gcc12 
   - cross-m68k-gcc12-icecream-backend 
@@ -4555,6 +4556,8 @@ unsorted:
   - frame-devel 
   - framel 
   - framel-devel 
+  - framework-inputmodule-control 
+  - framework-inputmodule-udev-rules 
   - frameworkintegration-devel 
   - frameworkintegration-plugin 
   - francis 
@@ -12018,12 +12021,12 @@ unsorted:
   - libarm_compute43 
   - libarm_compute_graph43 
   - libarmadillo14 
-  - libarmnn33 
-  - libarmnn33-opencl 
-  - libarmnnBasePipeServer33 
-  - libarmnnBasePipeServer33-opencl 
-  - libarmnnSerializer33 
-  - libarmnnSerializer33-opencl 
+  - libarmnn34 
+  - libarmnn34-opencl 
+  - libarmnnBasePipeServer34 
+  - libarmnnBasePipeServer34-opencl 
+  - libarmnnSerializer34 
+  - libarmnnSerializer34-opencl 
   - libarmnnTestUtils3 
   - libarmnnTestUtils3-opencl 
   - libarmnnTfLiteParser24 
@@ -14733,7 +14736,7 @@ unsorted:
   - libmirisdr-devel 
   - libmirisdr0 
   - libmiroil5 
-  - libmirplatform29 
+  - libmirplatform30 
   - libmirserver61 
   - libmirwayland5 
   - libmjpegutils-2_2-0-32bit 
@@ -16688,10 +16691,10 @@ unsorted:
   - libtiff-devel-32bit 
   - libtiff-devel-docs 
   - libtiff6-32bit 
-  - libtimelineDecoder33 
-  - libtimelineDecoder33-opencl 
-  - libtimelineDecoderJson33 
-  - libtimelineDecoderJson33-opencl 
+  - libtimelineDecoder34 
+  - libtimelineDecoder34-opencl 
+  - libtimelineDecoderJson34 
+  - libtimelineDecoderJson34-opencl 
   - libtimezonemap1 
   - libtimidity-devel 
   - libtimidity2 
@@ -18166,6 +18169,7 @@ unsorted:
   - lunar-date-devel 
   - lunar-date-doc 
   - lutris 
+  - lutris-apparmor 
   - lutris-lang 
   - luvcview 
   - lux 
@@ -20845,6 +20849,8 @@ unsorted:
   - oprofile-devel 
   - optee-client 
   - optee-client-devel 
+  - optiimage 
+  - optiimage-lang 
   - optional-lite-devel 
   - optipng 
   - opus-tools 
@@ -24603,6 +24609,7 @@ unsorted:
   - python310-aiohappyeyeballs 
   - python310-aiohttp 
   - python310-aiohttp-jinja2 
+  - python310-aiohttp-retry 
   - python310-aiohttp-socks 
   - python310-aiohttp-theme 
   - python310-aiohttp_cors 
@@ -25762,6 +25769,7 @@ unsorted:
   - python310-geopandas 
   - python310-geopy 
   - python310-get-annotations 
+  - python310-getkey 
   - python310-getmac 
   - python310-gevent 
   - python310-gevent-websocket 
@@ -27732,6 +27740,7 @@ unsorted:
   - python310-translation-finder 
   - python310-translationstring 
   - python310-translitcodec 
+  - python310-tree-sitter 
   - python310-treq 
   - python310-tri.struct 
   - python310-trio 
@@ -28268,6 +28277,7 @@ unsorted:
   - python311-aiohappyeyeballs 
   - python311-aiohttp 
   - python311-aiohttp-jinja2 
+  - python311-aiohttp-retry 
   - python311-aiohttp-socks 
   - python311-aiohttp-theme 
   - python311-aiohttp_cors 
@@ -29399,6 +29409,7 @@ unsorted:
   - python311-geopandas 
   - python311-geopy 
   - python311-get-annotations 
+  - python311-getkey 
   - python311-getmac 
   - python311-gevent-websocket 
   - python311-geventhttpclient 
@@ -31291,6 +31302,7 @@ unsorted:
   - python311-translation-finder 
   - python311-translationstring 
   - python311-translitcodec 
+  - python311-tree-sitter 
   - python311-treq 
   - python311-tri.struct 
   - python311-trio 
@@ -31836,6 +31848,7 @@ unsorted:
   - python312-aiohappyeyeballs 
   - python312-aiohttp 
   - python312-aiohttp-jinja2 
+  - python312-aiohttp-retry 
   - python312-aiohttp-socks 
   - python312-aiohttp-theme 
   - python312-aiohttp_cors 
@@ -32995,6 +33008,7 @@ unsorted:
   - python312-geopandas 
   - python312-geopy 
   - python312-get-annotations 
+  - python312-getkey 
   - python312-getmac 
   - python312-gevent 
   - python312-gevent-websocket 
@@ -34964,6 +34978,7 @@ unsorted:
   - python312-translation-finder 
   - python312-translationstring 
   - python312-translitcodec 
+  - python312-tree-sitter 
   - python312-treq 
   - python312-tri.struct 
   - python312-trio 
@@ -35426,6 +35441,7 @@ unsorted:
   - python313-SQLAlchemy 
   - python313-SQLAlchemy-Utils 
   - python313-SQLAlchemy1 
+  - python313-Scrapy 
   - python313-SecretStorage 
   - python313-Send2Trash 
   - python313-Shapely 
@@ -35507,6 +35523,7 @@ unsorted:
   - python313-aiohappyeyeballs 
   - python313-aiohttp 
   - python313-aiohttp-jinja2 
+  - python313-aiohttp-retry 
   - python313-aiohttp-socks 
   - python313-aiohttp-theme 
   - python313-aiohttp_cors 
@@ -36649,6 +36666,7 @@ unsorted:
   - python313-geopandas 
   - python313-geopy 
   - python313-get-annotations 
+  - python313-getkey 
   - python313-getmac 
   - python313-gevent 
   - python313-gevent-websocket 
@@ -37012,7 +37030,12 @@ unsorted:
   - python313-kwant 
   - python313-labels 
   - python313-lal 
+  - python313-lalburst 
+  - python313-lalframe 
+  - python313-lalinference 
+  - python313-lalinspiral 
   - python313-lalmetaio 
+  - python313-lalpulsar 
   - python313-lalsimulation 
   - python313-lancet-ioam 
   - python313-langchain-chroma 
@@ -37309,6 +37332,7 @@ unsorted:
   - python313-netifaces 
   - python313-netmiko 
   - python313-netpbmfile 
+  - python313-netutils 
   - python313-networkx 
   - python313-nftables 
   - python313-nh3 
@@ -38260,7 +38284,6 @@ unsorted:
   - python313-scikit-build-core-pyproject 
   - python313-scikit-dsp-comm 
   - python313-scikit-hep-testdata 
-  - python313-scikit-image 
   - python313-scikit-learn 
   - python313-scikit-sound 
   - python313-scikit-sparse 
@@ -38581,6 +38604,7 @@ unsorted:
   - python313-translation-finder 
   - python313-translationstring 
   - python313-translitcodec 
+  - python313-tree-sitter 
   - python313-treq 
   - python313-tri.struct 
   - python313-trio 
@@ -40923,6 +40947,7 @@ unsorted:
   - soci-odbc-devel 
   - soci-postgresql-devel 
   - soci-sqlite3-devel 
+  - sockdump 
   - socket_wrapper 
   - sofia-sip 
   - sofia-sip-devel 
