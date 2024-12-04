@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  4 09:29:09 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Fix denose.patch according to advice by Miro Hrončok on
+  gh#ipython/ipython_genutils#17.
+
+-------------------------------------------------------------------
 Tue Mar  5 18:26:09 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Clean specfile from bogus requirements

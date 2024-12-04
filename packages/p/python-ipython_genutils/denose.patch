@@ -1,9 +1,9 @@
 ---
- ipython_genutils/testing/decorators.py      |   80 ++--------------------------
- ipython_genutils/tests/test_importstring.py |   12 ++--
- ipython_genutils/tests/test_path.py         |   23 +++-----
+ ipython_genutils/testing/decorators.py      |   85 ++--------------------------
+ ipython_genutils/tests/test_importstring.py |   12 +--
+ ipython_genutils/tests/test_path.py         |   31 ++++------
  ipython_genutils/tests/test_text.py         |   16 +----
- 4 files changed, 29 insertions(+), 102 deletions(-)
+ 4 files changed, 33 insertions(+), 111 deletions(-)
 
 --- a/ipython_genutils/testing/decorators.py
 +++ b/ipython_genutils/testing/decorators.py
@@ -186,7 +186,7 @@
  
  
  def test_filefind():
-@@ -22,20 +19,24 @@ def test_filefind():
+@@ -22,42 +19,42 @@ def test_filefind():
  
  
  def test_ensure_dir_exists():
@@ -204,17 +204,19 @@
  
  
  class TestLinkOrCopy(object):
-+    def __init__(self):
-+        self.tempdir = None
-+        self.src = None
-+
-     def setUp(self):
+-    def setUp(self):
 -        self.tempdir = TemporaryDirectory()
++    def setup_method(self):
 +        self.tempdir = tempfile.TemporaryDirectory()
          self.src = self.dst("src")
          with open(self.src, "w") as f:
              f.write("Hello, world!")
-@@ -47,17 +48,17 @@ class TestLinkOrCopy(object):
+ 
+-    def tearDown(self):
++    def teardown_method(self):
+         self.tempdir.cleanup()
+ 
+     def dst(self, *args):
          return os.path.join(self.tempdir.name, *args)
  
      def assert_inode_not_equal(self, a, b):
@@ -237,7 +239,7 @@
  
      @skip_win32
      def test_link_successful(self):
-@@ -105,4 +106,4 @@ class TestLinkOrCopy(object):
+@@ -105,4 +102,4 @@ class TestLinkOrCopy(object):
          path.link_or_copy(self.src, dst)
          path.link_or_copy(self.src, dst)
          self.assert_inode_equal(self.src, dst)

@@ -42,4 +42,14 @@ This version adds a specific requirement for Python 2.7, since it won't even bui
 - Build PEP517 wheel</comment>
     <requestid>1155324</requestid>
   </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>23849f7748d1b555a2d595d5b44b7547</srcmd5>
+    <version>0.2.0</version>
+    <time>1733322466</time>
+    <user>anag+factory</user>
+    <comment>- Fix denose.patch according to advice by Miro Hrončok on
+  gh#ipython/ipython_genutils#17.
+</comment>
+    <requestid>1228245</requestid>
+  </revision>
 </revisionlist>
