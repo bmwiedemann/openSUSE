@@ -62,8 +62,7 @@ modules to interface with the IBM eServer Cryptographic Accelerator
 %package -n libica4
 Summary:        Library interface for the IBM Cryptographic Accelerator
 Group:          System/Libraries
-# Recommends:     libica-tools
-Requires:       libica-tools
+Recommends:     libica-tools
 
 %description -n libica4
 This package contains the interface library routines used by IBM

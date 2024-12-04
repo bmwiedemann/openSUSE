@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  4 07:05:18 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Amended the .spec file (bsc#1234117, bsc#1231999)
+  * downgraded libica tools requires down to recommends again
+
+-------------------------------------------------------------------
 Wed Nov 13 08:57:23 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Applied updated patches (bsc#1231302, bsc#1231303, bsc#1231304, bsc#1231305)
