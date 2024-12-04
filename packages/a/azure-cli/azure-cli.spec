@@ -33,7 +33,7 @@
 %endif
 
 Name:           azure-cli%{?psuffix}
-Version:        2.66.0
+Version:        2.67.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -65,7 +65,7 @@ Requires:       %{pythons}-azure-keyvault-keys >= 4.9.0~b3
 Requires:       %{pythons}-azure-keyvault-secrets >= 4.7.0
 Requires:       %{pythons}-azure-mgmt-advisor >= 9.0.0
 Requires:       %{pythons}-azure-mgmt-apimanagement >= 4.0.0
-Requires:       %{pythons}-azure-mgmt-appconfiguration >= 3.0.0
+Requires:       %{pythons}-azure-mgmt-appconfiguration >= 3.1.0
 Requires:       %{pythons}-azure-mgmt-appcontainers >= 2.0.0
 Requires:       %{pythons}-azure-mgmt-applicationinsights >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-authorization >= 4.0.0
@@ -76,11 +76,12 @@ Requires:       %{pythons}-azure-mgmt-botservice >= 2.0.0b3
 Requires:       %{pythons}-azure-mgmt-cdn >= 12.0.0
 Requires:       %{pythons}-azure-mgmt-cognitiveservices >= 13.5.0
 Requires:       %{pythons}-azure-mgmt-compute >= 33.0.0
-Requires:       %{pythons}-azure-mgmt-containerinstance >= 10.1.0
+Requires:       %{pythons}-azure-mgmt-containerinstance >= 10.2.0~b1
 Requires:       %{pythons}-azure-mgmt-containerregistry >= 10.3.0
-Requires:       %{pythons}-azure-mgmt-containerservice >= 32.1.0
+Requires:       %{pythons}-azure-mgmt-containerservice >= 33.0.0
 Requires:       %{pythons}-azure-mgmt-cosmosdb >= 9.6.0
 Requires:       %{pythons}-azure-mgmt-databoxedge >= 1.0.0
+Requires:       %{pythons}-azure-mgmt-datalake-store >= 1.1.0~b1
 Requires:       %{pythons}-azure-mgmt-datamigration >= 10.0.0
 Requires:       %{pythons}-azure-mgmt-devtestlabs >= 2.2
 Requires:       %{pythons}-azure-mgmt-dns >= 8.0.0
@@ -93,7 +94,6 @@ Requires:       %{pythons}-azure-mgmt-iotcentral >= 10.0.0b1
 Requires:       %{pythons}-azure-mgmt-iothub >= 3.0.0
 Requires:       %{pythons}-azure-mgmt-iothubprovisioningservices >= 1.1.0
 Requires:       %{pythons}-azure-mgmt-keyvault >= 10.3.0
-Requires:       %{pythons}-azure-mgmt-kusto >= 0.3.0
 Requires:       %{pythons}-azure-mgmt-loganalytics >= 13.0.0
 Requires:       %{pythons}-azure-mgmt-managementgroups >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-maps >= 2.0.0
@@ -104,7 +104,7 @@ Requires:       %{pythons}-azure-mgmt-msi >= 7.0.0
 Requires:       %{pythons}-azure-mgmt-mysqlflexibleservers >= 1.0.0~b2
 Requires:       %{pythons}-azure-mgmt-netapp >= 10.1.0
 Requires:       %{pythons}-azure-mgmt-policyinsights >= 1.1.0b4
-Requires:       %{pythons}-azure-mgmt-postgresqlflexibleservers >= 1.0.0
+Requires:       %{pythons}-azure-mgmt-postgresqlflexibleservers >= 1.1.0~b1
 Requires:       %{pythons}-azure-mgmt-privatedns >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-rdbms >= 10.2.0b17
 Requires:       %{pythons}-azure-mgmt-recoveryservices >= 3.0.0
@@ -120,7 +120,7 @@ Requires:       %{pythons}-azure-mgmt-servicefabric >= 2.1.0
 Requires:       %{pythons}-azure-mgmt-servicefabricmanagedclusters >= 2.0.0~b6
 Requires:       %{pythons}-azure-mgmt-servicelinker >= 1.2.0~b3
 Requires:       %{pythons}-azure-mgmt-signalr >= 2.0.0~b2
-Requires:       %{pythons}-azure-mgmt-sql >= 4.0.0b19
+Requires:       %{pythons}-azure-mgmt-sql >= 4.0.0b20
 Requires:       %{pythons}-azure-mgmt-sqlvirtualmachine >= 1.0.0b5
 Requires:       %{pythons}-azure-mgmt-storage >= 21.2.0
 Requires:       %{pythons}-azure-mgmt-synapse >= 2.1.0b5
