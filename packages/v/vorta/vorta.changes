@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 28 20:49:32 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Updated to version 0.10.1:
+  * see https://github.com/borgbase/vorta/releases/tag/v0.10.1
+- Updated to version 0.10.0:
+  * see https://github.com/borgbase/vorta/releases/tag/v0.10.0
+- Clean dependencies
+- Refresh vorta-fix-dependencies.patch
+
+-------------------------------------------------------------------
 Fri May 24 07:11:25 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Update license to match legaldb report

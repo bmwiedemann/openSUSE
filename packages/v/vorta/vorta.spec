@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %if 0%{?suse_version} > 1500
 # Build only one time
 %define pythons %{primary_python}
@@ -23,7 +24,7 @@
 %{?sle15_python_module_pythons}
 %endif
 Name:           vorta
-Version:        0.9.1
+Version:        0.10.1
 Release:        0
 Summary:        Desktop Backup Client based on BorgBackup
 License:        Apache-2.0 AND GPL-3.0-only AND OFL-1.1
@@ -33,30 +34,23 @@ Source:         https://github.com/borgbase/%{name}/archive/v%{version}.tar.gz
 Source1:        vorta.desktop
 # PATCH-FIX-OPENSUSE vorta-fix-dependencies.patch malcolmlewis@opensuse.org -- Remove dependencies that are named differently.
 Patch0:         vorta-fix-dependencies.patch
-BuildRequires:  %{python_module APScheduler < 4.0}
-BuildRequires:  %{python_module QDarkStyle}
-BuildRequires:  %{python_module keyring}
+BuildRequires:  %{python_module PyQt6}
 BuildRequires:  %{python_module peewee}
 BuildRequires:  %{python_module platformdirs}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-dateutil}
-BuildRequires:  %{python_module qt6}
 BuildRequires:  %{python_module setuptools-git}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
 BuildRequires:  update-desktop-files
-Requires:       borgbackup
-Requires:       %{python_flavor}-APScheduler < 4.0
-Requires:       %{python_flavor}-QDarkStyle
-Requires:       %{python_flavor}-keyring
+Requires:       %{python_flavor}-PyQt6
+Requires:       %{python_flavor}-SecretStorage
 Requires:       %{python_flavor}-peewee
 Requires:       %{python_flavor}-platformdirs
 Requires:       %{python_flavor}-psutil
-Requires:       %{python_flavor}-python-dateutil
-Requires:       %{python_flavor}-qt6
+Requires:       borgbackup
 BuildArch:      noarch
 
 %description

@@ -1,14 +1,20 @@
-diff -Naur a/setup.cfg b/setup.cfg
---- a/setup.cfg	2024-01-10 07:20:01.000000000 -0600
-+++ b/setup.cfg	2024-01-11 10:30:19.262026062 -0600
-@@ -39,10 +39,8 @@
+Index: vorta-0.10.1/setup.cfg
+===================================================================
+--- vorta-0.10.1.orig/setup.cfg
++++ vorta-0.10.1/setup.cfg
+@@ -34,7 +34,6 @@ package_dir =
+ include_package_data = true
+ python_requires = >=3.8
  install_requires =
-   platformdirs >=3.0.0, <5.0.0; sys_platform == 'darwin'  # for macOS: breaking changes in 3.0.0,
-   platformdirs >=2.6.0, <5.0.0; sys_platform != 'darwin'  # for others: 2.6+ works consistently.
--  pyqt6
+-  packaging
    peewee
-   psutil
--  setuptools
+   platformdirs >=2.6.0, <5.0.0; sys_platform != 'darwin'  # for others: 2.6+ works consistently.
+   platformdirs >=3.0.0, <5.0.0; sys_platform == 'darwin'  # for macOS: breaking changes in 3.0.0,
+@@ -45,7 +44,6 @@ install_requires =
+   pyobjc-framework-LaunchServices < 10; sys_platform == 'darwin'
+   pyqt6
    secretstorage; sys_platform != 'darwin'
-   pyobjc-core < 10; sys_platform == 'darwin'
-   pyobjc-framework-Cocoa < 10; sys_platform == 'darwin'
+-  setuptools
+ tests_require =
+   pytest
+   pytest-qt
