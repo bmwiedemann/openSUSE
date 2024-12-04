@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Dec 04 06:03:42 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20241204.e1006f33:
+  * Dev: unittests: Adjust unit test for previous commits
+  * Dev: ui_sbd: Don't show stonith-watchdog-timeout for disk-based SBD
+  * Dev: sbd: Delete stonith-watchdog-timeout property when configuring
+  * Dev: sbd: Remove sbd delay start related diretories when running sbd purge
+  * Dev: Don't set and show SBD_WATCHDOG_TIMEOUT for disk-based SBD
+  * Dev: ui_sbd: Adjust output of `sbd status`
+  * Dev: ui_sbd: Adjust sbd configure subcommand
+  * Dev: ui_sbd: Print sbd cmdline content in `sbd status` command
+  * Dev: sbd: Split get_sbd_device_interactive into smaller functions
+  * Dev: behave: Add sbd_ui.feature to test the crm sbd UI
+  * Dev: doc: Upadate crm.8.adoc for SBD help text
+  * Dev: ui_sbd: Replace 'sbd disable' as 'sbd purge'
+  * Dev: sh: Add get_rc_output_without_input in ClusterShell
+  * Dev: sbd: Move constants.SHOW_SBD_START_TIMEOUT_CMD to sbd.py
+  * Dev: ui_sbd: Check if node is reachable when getting the node list
+  * Dev: ui_sbd: Reuse sbd.SBDManager.restart_cluster_if_possible
+  * Dev: bootstrap: Add a log info when starting pacemaker.service
+  * Dev: ui_sbd: Check if the adding device is already initialized
+  * Dev: ui_sbd: Adjust sbd confiure interface
+  * Dev: ui_sbd: Replace sbd remove as sbd disable sub-command
+  * Dev: ui_sbd: Add sbd device sub command
+  * Dev: ui_sbd: No need to specify device="" when trying to modify properties under diskless sbd
+  * Dev: report: Dump output of 'crm sbd configure show' and 'crm sbd status' to the report result
+  * Dev: Refactor the code to avoid circular import
+  * Dev: ui_sbd: Refactor do_status method
+  * Dev: bootstrap: Check if sbd package is installed in the right place
+  * Dev: ui_sbd: Minor changes to the code
+  * Dev: ui_sbd: Clean up existing fence_sbd resource before configure diskless SBD
+  * Dev: ui_sbd: Update regex for parsing SBD device by partlabel
+  * Dev: ui_sbd: Catch both stderr and stdout for crm resource status
+  * Dev: ui_sbd: No need to consider static case when calling crm configure show
+  * Dev: ui_sbd: Add property/sysconfig section header for sbd configure show
+  * Dev: doc: Add help info for crm sbd sublevel
+  * Dev: behave: Adjust functional test for previous changes
+  * Dev: ui_sbd: Add new 'crm sbd' sublevel (jsc#PED-8256)
+  * Dev: utils: Introduced `detect_duplicate_device_path` function in utils
+
+-------------------------------------------------------------------
 Wed Nov 27 06:03:53 UTC 2024 - XLiang@suse.com
 
 - Update to version 5.0.0+20241127.3e90e46f:
