@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec  4 06:20:59 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Stop skipping on Python versions.
+- Add patch use-importlib.patch:
+  * Use importlib to support Python 3.12+
+- Switch to autosetup and pyproject macros.
+
+-------------------------------------------------------------------
 Tue Oct 29 08:13:50 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - skip build on python313 as well

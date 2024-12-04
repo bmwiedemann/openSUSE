@@ -1,0 +1,36 @@
+From 31dfa7c419c3bae3bab090631cb6a13486e0ffb9 Mon Sep 17 00:00:00 2001
+From: Victor Engmark <victor@engmark.name>
+Date: Fri, 6 Sep 2024 09:00:10 +1200
+Subject: [PATCH] fix: Use new importlib
+
+As recommended by <https://docs.python.org/3/whatsnew/3.12.html#imp>.
+---
+ setup.py | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index b2bd3d7..692d0cd 100755
+--- a/setup.py
++++ b/setup.py
+@@ -1,9 +1,20 @@
+ #!/usr/bin/env python
++import importlib.util
++import importlib.machinery
+ from setuptools import setup, find_packages
+-from imp import load_source
+ from os import path
+ import io
+ 
++def load_source(modname, filename):
++    loader = importlib.machinery.SourceFileLoader(modname, filename)
++    spec = importlib.util.spec_from_file_location(modname, filename, loader=loader)
++    module = importlib.util.module_from_spec(spec)
++    # The module is always executed and not cached in sys.modules.
++    # Uncomment the following line to cache the module.
++    # sys.modules[module.__name__] = module
++    loader.exec_module(module)
++    return module
++
+ __version__ = load_source('satstac.version', 'satstac/version.py').__version__
+ 
+ here = path.abspath(path.dirname(__file__))

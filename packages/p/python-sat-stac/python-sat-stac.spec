@@ -17,9 +17,6 @@
 
 
 %{?sle15_python_module_pythons}
-# from imp import load_source
-%global skip_python312 1
-%global skip_python313 1
 %define packagename sat-stac
 Name:           python-sat-stac
 Version:        0.4.1
@@ -28,9 +25,13 @@ Summary:        A library for reading and working with Spatio-Temporal Asset Cat
 License:        MIT
 URL:            https://github.com/sat-utils/sat-stac
 Source:         https://files.pythonhosted.org/packages/source/s/sat-stac/sat-stac-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#sat-utils/sat-stac#75
+Patch0:         use-importlib.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python-dateutil >= 2.7.5}
 BuildRequires:  %{python_module requests >= 2.19.1}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-python-dateutil >= 2.7.5
@@ -46,13 +47,13 @@ and downloading publicly available satellite imagery using a conformant
 API such as sat-api.
 
 %prep
-%setup -q -n %{packagename}-%{version}
+%autosetup -p1 -n %{packagename}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 for p in %{packagename} ; do
     %python_clone -a %{buildroot}%{_bindir}/$p
@@ -71,7 +72,7 @@ done
 %files %{python_files}
 %doc README.md
 %python_alternative %{_bindir}/%{packagename}
-%{python_sitelib}/*egg-info
 %{python_sitelib}/satstac
+%{python_sitelib}/sat_stac-%{version}.dist-info
 
 %changelog

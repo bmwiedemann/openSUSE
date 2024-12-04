@@ -34,4 +34,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1221355</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>e1a2d560b2cffe5e60e094d4e86e20ec</srcmd5>
+    <version>0.4.1</version>
+    <time>1733322449</time>
+    <user>anag+factory</user>
+    <comment>- Stop skipping on Python versions.
+- Add patch use-importlib.patch:
+  * Use importlib to support Python 3.12+
+- Switch to autosetup and pyproject macros.</comment>
+    <requestid>1228151</requestid>
+  </revision>
 </revisionlist>
