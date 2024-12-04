@@ -21,7 +21,7 @@
 %endif
 
 Name:           os-update
-Version:        1.19+git.20241111
+Version:        1.20+git.20241204
 Release:        0
 Summary:        Updates the system regularly to stay current and safe
 License:        GPL-2.0-or-later
@@ -30,7 +30,7 @@ Source:         os-update-%{version}.tar.xz
 Source99:       os-update-rpmlintrc
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  pandoc
+BuildRequires:  go-md2man
 BuildRequires:  pkgconfig
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools

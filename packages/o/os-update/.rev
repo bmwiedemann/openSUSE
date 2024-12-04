@@ -242,4 +242,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1224833</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>20a9c30ca32b9e41ac1e4a7abe6e1a97</srcmd5>
+    <version>1.20+git.20241204</version>
+    <time>1733322471</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.20+git.20241204:
+  * Release version 1.20
+  * Switch from pandoc to go-md2man
+  * Add option to ignore services at all</comment>
+    <requestid>1228271</requestid>
+  </revision>
 </revisionlist>

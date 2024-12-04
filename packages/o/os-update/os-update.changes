@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 04 10:39:14 UTC 2024 - kukuk@suse.com
+
+- Update to version 1.20+git.20241204:
+  * Release version 1.20
+  * Switch from pandoc to go-md2man
+  * Add option to ignore services at all
+
+-------------------------------------------------------------------
 Mon Nov 11 10:51:57 UTC 2024 - kukuk@suse.com
 
 - Update to version 1.19+git.20241111:
