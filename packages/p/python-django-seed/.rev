@@ -47,4 +47,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1147981</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>3fc9a27e1bf0f326aae0b42536d7ab99</srcmd5>
+    <version>0.3.1</version>
+    <time>1733322426</time>
+    <user>anag+factory</user>
+    <comment>- Add patch do-not-use-is-dst.patch:
+  * Support Django 5.1 changes.</comment>
+    <requestid>1228132</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  4 05:16:58 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch do-not-use-is-dst.patch:
+  * Support Django 5.1 changes.
+
+-------------------------------------------------------------------
 Tue Feb 13 12:02:55 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 0.3.1:

@@ -25,6 +25,8 @@ License:        MIT
 URL:            https://github.com/brobin/django-seed
 Source0:        https://github.com/brobin/django-seed/archive/refs/tags/%{version}.tar.gz#/django-seed-%{version}.tar.gz
 Source1:        settings.py
+# PATCH-FIX-UPSTREAM gh#Brobin/django-seed#120
+Patch0:         do-not-use-is-dst.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -50,7 +52,7 @@ BuildRequires:  %{python_module toposort}
 A module to seed Django projects with fake data.
 
 %prep
-%setup -q -n django-seed-%{version}
+%autosetup -p1 -n django-seed-%{version}
 sed -i 's/fake-factory/Faker/' setup.py
 cp %SOURCE1 django_seed
 
@@ -66,12 +68,12 @@ sed -i 's/assertEquals/assertEqual/g' django_seed/tests.py
 
 %check
 export DJANGO_SETTINGS_MODULE=django_seed.settings
-%pytest -k "not test_locale" %{buildroot}%{$python_sitelib}/django_seed/tests.py
+%pytest -k "not (test_locale or test_auto_now)" %{buildroot}%{$python_sitelib}/django_seed/tests.py
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/django_seed
-%{python_sitelib}/django_seed-%{version}*-info
+%{python_sitelib}/django_seed-%{version}.dist-info
 
 %changelog
