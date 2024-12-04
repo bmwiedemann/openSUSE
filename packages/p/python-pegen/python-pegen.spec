@@ -23,6 +23,8 @@ Summary:        CPython's PEG parser generator
 License:        MIT
 URL:            https://github.com/we-like-parsers/pegen
 Source:         https://files.pythonhosted.org/packages/source/p/pegen/pegen-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#we-like-parsers/pegen#104
+Patch0:         support-python-313.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}

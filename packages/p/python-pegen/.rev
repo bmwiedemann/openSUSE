@@ -31,4 +31,13 @@
 - Switch to pyproject macros.</comment>
     <requestid>1148381</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>7cec2dfd5d4ff9569017bbe41dd030fd</srcmd5>
+    <version>0.3.0</version>
+    <time>1733322425</time>
+    <user>anag+factory</user>
+    <comment>- Add patch support-python-313.patch:
+  * Support Python 3.13's grammar changes.</comment>
+    <requestid>1228134</requestid>
+  </revision>
 </revisionlist>

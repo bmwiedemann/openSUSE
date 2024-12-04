@@ -1,0 +1,60 @@
+From 47ae0a4c96a23bc086c712870ff831f42484bdf5 Mon Sep 17 00:00:00 2001
+From: Daniel Fremont <dfremont@ucsc.edu>
+Date: Wed, 16 Oct 2024 15:37:42 -0700
+Subject: [PATCH 1/2] fix Python grammar to compile under Python 3.13
+
+---
+ data/python.gram | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/data/python.gram b/data/python.gram
+index 4777ebb..5b52b30 100644
+--- a/data/python.gram
++++ b/data/python.gram
+@@ -2354,7 +2354,7 @@ invalid_while_stmt[NoReturn]:
+         )
+      }
+ invalid_for_stmt[NoReturn]:
+-    | [ASYNC] 'for' star_targets 'in' star_expressions NEWLINE { self.raise_syntax_error("expected ':'") }
++    | ['async'] 'for' star_targets 'in' star_expressions NEWLINE { self.raise_syntax_error("expected ':'") }
+     | ['async'] a='for' star_targets 'in' star_expressions ':' NEWLINE !INDENT {
+         self.raise_indentation_error(
+             f"expected an indented block after 'for' statement on line {a.start[0]}"
+
+From c46fc0bc0747a7967b7efd88b6f9b290c021d788 Mon Sep 17 00:00:00 2001
+From: Daniel Fremont <dfremont@ucsc.edu>
+Date: Wed, 16 Oct 2024 15:53:27 -0700
+Subject: [PATCH 2/2] update Python classifiers and add 3.13 to CI
+
+---
+ .github/workflows/test.yml | 2 +-
+ pyproject.toml             | 3 +++
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/.github/workflows/test.yml b/.github/workflows/test.yml
+index b0214c7..f5db48e 100644
+--- a/.github/workflows/test.yml
++++ b/.github/workflows/test.yml
+@@ -13,7 +13,7 @@ jobs:
+     runs-on: ubuntu-latest
+     strategy:
+       matrix:
+-        python-version: ['3.8','3.9','3.10', '3.11', '3.12']
++        python-version: ['3.8','3.9','3.10', '3.11', '3.12', '3.13']
+     steps:
+     - uses: actions/checkout@v4
+     - name: Get history and tags for SCM versioning to work
+diff --git a/pyproject.toml b/pyproject.toml
+index 1aeb3da..951da71 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -21,6 +21,9 @@ classifiers = [
+     "Programming Language :: Python :: 3.8",
+     "Programming Language :: Python :: 3.9",
+     "Programming Language :: Python :: 3.10",
++    "Programming Language :: Python :: 3.11",
++    "Programming Language :: Python :: 3.12",
++    "Programming Language :: Python :: 3.13",
+     "Programming Language :: Python :: 3 :: Only",
+ ]
+ keywords = ["parser", "CPython", "PEG", "pegen"]

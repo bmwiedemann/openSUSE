@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  4 05:33:17 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python-313.patch:
+  * Support Python 3.13's grammar changes.
+
+-------------------------------------------------------------------
 Wed Feb 21 05:47:35 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Skip a truculent test.
