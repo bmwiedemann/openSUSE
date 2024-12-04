@@ -338,4 +338,12 @@
     <comment>bsc#1214713 bsc#1219241 bsc#1219639 (forwarded request 1146662 from jrecord)</comment>
     <requestid>1146663</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>4a1e5e776113d100eda8db29a1772a28</srcmd5>
+    <version>3.2.9</version>
+    <time>1733322424</time>
+    <user>anag+factory</user>
+    <comment>Merging sle15 and master branches PED-11669 and bsc#1222896, bsc#1213291, PED-8221, PED-7131, bsc#1231396, bsc#1231423, bsc#1233726 (forwarded request 1228126 from jrecord)</comment>
+    <requestid>1228127</requestid>
+  </revision>
 </revisionlist>

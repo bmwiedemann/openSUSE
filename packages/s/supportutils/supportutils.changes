@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Dec 03 22:09:11 UTC 2024 - jason.record@suse.com
+
+- Changes to version 3.2.9
+  + Map running PIDs to RPM package owner aiding BPF program detection (bsc#1222896, bsc#1213291, PED-8221)
+  + Supportconfig available in current distro (PED-7131)
+  + Corrected display issues (bsc#1231396)
+  + NFS takes too long, showmount times out (bsc#1231423)
+  + Merged sle15 and master branches (bsc#1233726, PED-11669)
+
+-------------------------------------------------------------------
+Thu 01 Aug 2024 03:11:32 AM UTC - jesse.chandler@suse.com
+
+- Changes to version 3.2.8
+  + Avoid getting duplicate kernel verifications in boot.text (pr#190)
+  + lvm: suppress file descriptor leak warnings from lvm commands (pr#191)
+  + docker_info: Add timestamps to container logs (pr#196)
+  + Key value pairs and container log timestamps (bsc#1222021 PED-8211, pr#198)
+  + Update supportconfig get pam.d sorted (pr#199)
+  + yast_files: Exclude .zcat (pr#201)
+  + Sanitize grub bootloader (bsc#1227127, pr#203)
+  + Sanitize regcodes (pr#204)
+  + Improve product detection (pr#205)
+  + Add read_values for s390x (bsc#1228265, pr#206)
+  + hardware_info: Remove old alsa ver check (pr#209)
+  + drbd_info: Fix incorrect escape of quotes (pr#210)
+
+-------------------------------------------------------------------
 Wed Feb 14 22:46:05 UTC 2024 - jason.record@suse.com
 
 - Changes to version 3.2.7
