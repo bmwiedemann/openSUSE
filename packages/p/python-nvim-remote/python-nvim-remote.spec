@@ -18,17 +18,17 @@
 
 %define modname nvim_remote
 Name:           python-nvim-remote
-Version:        4.1.0
+Version:        4.2.0
 Release:        0
 Summary:        Neovim process control utility
 License:        MIT
 URL:            https://github.com/1995parham/nvim-remote
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module neovim}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
