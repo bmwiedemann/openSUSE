@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Dec 04 06:43:54 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.20.0:
+  * Highlights
+    - feat: Configurable report granularity (#581)
+    - feat: add context switching in TestStep (#560)
+  * Bug Fixes
+    - Allow for processing tls-server-name attribute in kubeconfig
+      context (#587)
+    - fix: lock testsuite and sort child testcases (#585)
+    - Clarify help terminology (#583)
+    - fix: handle redundant deletion of Namespace (#566)
+    - Remove mention of unsupported flag (#561)
+  * Other Changes
+    - chore: pre-factor code related to junit reporting (#580)
+    - Make 0009-expression-based-assertions.md implementable (#574)
+    - chore: add Expression-Based Assertions KEP (#568)
+  * Dependency bumps
+    - Bump go version to 1.22.7 (#582)
+    - Bump the kubernetes group with 6 updates (#563, #571, #577)
+    - Bump github.com/stretchr/testify from 1.9.0 to 1.10.0 (#578)
+    - Bump github.com/Masterminds/semver/v3 from 3.3.0 to 3.3.1
+      (#579)
+    - Bump sigs.k8s.io/kind from 0.24.0 to 0.25.0 in the kubernetes
+      group (#573)
+    - Bump sigs.k8s.io/controller-tools from 0.16.3 to 0.16.5 in
+      the kubernetes group (#570, #572)
+    - Bump github.com/docker/docker from 27.2.0+incompatible to
+      27.3.1+incompatible (#564, #567)
+
+-------------------------------------------------------------------
 Sat Sep 14 15:05:25 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.19.0:

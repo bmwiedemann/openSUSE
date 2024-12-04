@@ -21,7 +21,7 @@
 %define executable_name kubectl-kuttl
 
 Name:           kuttl
-Version:        0.19.0
+Version:        0.20.0
 Release:        0
 Summary:        KUbernetes Test TooL
 License:        Apache-2.0
