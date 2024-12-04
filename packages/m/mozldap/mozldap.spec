@@ -1,7 +1,7 @@
 #
 # spec file for package mozldap
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2009-2011 Wolfgang Rosenauer
 #
 # All modifications and additions to the file contributed by third parties
@@ -80,6 +80,8 @@ Header and Library files for doing development with the Mozilla LDAP C SDK.
 
 %prep
 %autosetup -p1
+# quick fix for building in C99 standard; explicitly define the return type
+sed -i 's\^main(){return(0);}\int main(){return(0);}\g' c-sdk/configure
 
 %build
 cd c-sdk

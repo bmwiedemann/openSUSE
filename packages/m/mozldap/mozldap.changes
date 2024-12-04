@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec  3 22:37:17 UTC 2024 - Aeneas Jaißle <aj@ajaissle.de>
+
+- Quick fix building in C99 standard by explicitly defining the 
+  return types of configure's evaluation functions, rather than
+  of updating the entire build system.
+
+-------------------------------------------------------------------
 Fri Feb 23 08:30:13 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
