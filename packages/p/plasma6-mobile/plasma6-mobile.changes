@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  4 09:34:39 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add missing layer-shell-qt6 build and runtime dependencies
+  (boo#1234003)
+
+-------------------------------------------------------------------
 Tue Nov 26 15:47:14 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.2.4:
