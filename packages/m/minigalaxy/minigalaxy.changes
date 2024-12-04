@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 27 08:00:42 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.3.1:
+  * Fix Windows games with multiple parts not installing with wine
+  * Minor AppData fixes
+  * Added Portuguese translation
+
+-------------------------------------------------------------------
 Tue Jun 11 05:37:42 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.3.0:
