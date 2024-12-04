@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  4 06:04:30 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python-313.patch:
+  * Do not use crypt for testing.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Fri Jun  7 07:02:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 10.1.1:

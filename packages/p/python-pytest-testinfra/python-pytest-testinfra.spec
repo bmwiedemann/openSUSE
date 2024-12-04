@@ -22,17 +22,20 @@ Version:        10.1.1
 Release:        0
 Summary:        Python module to test infrastructures
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/pytest-dev/pytest-testinfra
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-testinfra/pytest-testinfra-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE testinfra-parametrize-backends-test.patch -- make backends deselectable which are not available for testing
-Patch1:         testinfra-parametrize-backends-test.patch
+Patch0:         testinfra-parametrize-backends-test.patch
+# PATCH-FIX-UPSTREAM gh#pytest-dev/pytest-testinfra#764
+Patch1:         support-python-313.patch
 BuildRequires:  %{python_module paramiko}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pywinrm}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tornado}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  ansible
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -59,10 +62,10 @@ sed -i -e '/\[tool:pytest\]/ a markers = \
   destructive' setup.cfg
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/testinfra
 
 %check
@@ -79,6 +82,6 @@ fi
 %doc CHANGELOG.rst README.rst
 %license LICENSE
 %{python_sitelib}/testinfra
-%{python_sitelib}/pytest_testinfra-%{version}*-info
+%{python_sitelib}/pytest_testinfra-%{version}.dist-info
 
 %changelog

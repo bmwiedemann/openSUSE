@@ -117,4 +117,14 @@
   * [FIX] Fix service.exists</comment>
     <requestid>1179143</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>46a203433115a80e3d62208fa804dbf4</srcmd5>
+    <version>10.1.1</version>
+    <time>1733322450</time>
+    <user>anag+factory</user>
+    <comment>- Add patch support-python-313.patch:
+  * Do not use crypt for testing.
+- Switch to pyproject macros.</comment>
+    <requestid>1228145</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,31 @@
+From 20ef83970b24cd53ce7f5bf952360d8b99a0b7de Mon Sep 17 00:00:00 2001
+From: Martin Hoyer <mhoyer@redhat.com>
+Date: Tue, 7 May 2024 15:55:07 +0200
+Subject: [PATCH] Remove crypt lib from testing
+
+---
+ test/test_modules.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/test/test_modules.py b/test/test_modules.py
+index 23a1f2f2..15416344 100644
+--- a/test/test_modules.py
++++ b/test/test_modules.py
+@@ -10,7 +10,6 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-import crypt
+ import datetime
+ import os
+ import re
+@@ -257,7 +256,8 @@ def test_nonexistent_user(host):
+ def test_current_user(host):
+     assert host.user().name == "root"
+     pw = host.user().password
+-    assert crypt.crypt("foo", pw) == pw
++    assert pw.startswith("$")
++    assert len(pw) == 73
+ 
+ 
+ def test_group(host):
