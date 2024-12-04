@@ -1,4 +1,123 @@
 -------------------------------------------------------------------
+Wed Dec  4 09:19:20 UTC 2024 - Boris Manojlovic <boris@steki.net>
+
+- update version to latest release 6.0.36
+- New Features and Improvements
+  + ZBXNEXT-9249 Added new items and trigger for disk space usage in
+    LXC containers for Proxmox VE by HTTP template Templates
+  + ZBXNEXT-9382 Added Nutanix template Templates
+  + ZBXNEXT-9058 Updated VMware Hypervisor template for ability to work as a standalone template Templates
+  + ZBXNEXT-9532 Updated maximum supported TimescaleDB version to 2.17 Server
+  + ZBXNEXT-9238 Updated maximum supported PostgreSQL version to 17 Proxy Server
+  + ZBXNEXT-9457 Added Huawei OceanStor V6 by SNMP template Templates
+  + ZBXNEXT-9246 Added monitoring of HA manager process utilization Server
+  + ZBXNEXT-9418 Split {$PG.CONNSTRING} macro in PostgreSQL templates Templates
+  + ZBXNEXT-9416 Updated max supported MariaDB version to 11.5 Proxy Server
+  + ZBXNEXT-9318 Added Microsoft 365 reports by HTTP template Templates
+  + ZBXNEXT-9248 Added GitHub repository by HTTP template Templates
+  + ZBXNEXT-9408 Updated max supported TimescaleDB version to 2.16 Server
+  + ZBXNEXT-8937 Added support of IMDSv2 in role-based authorization for AWS templates Templates
+  + ZBXNEXT-9398 Added new mediatype webhook MS Teams Workflow Templates
+  + ZBXNEXT-9341 Added assume role authorization in AWS templates Templates
+
+- Bug Fixes
+  + ZBX-25463 Fixed an endless loop in the report manager Server
+  + ZBX-25477 Fixed the crash occurring when a calculated item contained large value Server
+  + ZBX-21618 Fixed the layout of multiple list pages when displaying long entity names Frontend
+  + ZBX-25444 Fixed missing maintenance data in maps for map-type elements Frontend
+  + ZBX-25397 Fixed events not being suppressed during maintenance if a deadlock occurred Server
+  + ZBX-25324 Fixed FreeTDS ODBC login with special characters in the password field Server
+  + ZBX-24582 Truncated the error message for testing items with a value type mismatch Server
+  + ZBX-25096 Fixed performance counter query in MSSQL by ODBC template; updated documentation 
+    of MSSQL by Zabbix agent 2 template Templates
+  + ZBX-25301 Removed redundant message size check on 32-bit platforms when sending TCP message Agent Proxy Server
+  + ZBX-25208 Fixed merging of user macros in the `Inherited and host/template/host prototype macros` mode;
+    fixed resolving of user macros with unquoted context started with "regex:" Frontend
+  + ZBX-24652 Fixed name filtering for maps, maintenance, actions, host groups, and templates Frontend
+  + ZBX-20767 Removed the unnecessary Discard with heartbeat preprocessing step from
+    the discovery rules in Linux and Nextcloud templates Templates
+  + ZBX-23949 Fixed processing of the `host` parameter for trigger prototypes API
+  + ZBX-25034 Fixed discovery rule export issue where host prototypes with template
+    override defined used template’s visible name API
+  + ZBX-25416 Fixed unsupported value passing to the preprocessor Proxy Server
+  + ZBX-24528 Prevented SQL errors from being displayed to non-authorized users API Frontend
+  + ZBX-21503 Prevented creation of audit logs for Media type objects on updates without actual changes API Frontend
+  + ZBX-24633 Fixed code error when viewing graph and trigger lists with discovered objects set to expire Frontend
+  + ZBX-24846 Fixed checking for orphaned maintenances when deleting a host or host group API
+  + ZBX-25091 Fixed the colors of selected read-only radio buttons Frontend
+  + ZBX-25392 Fixed description of Microsoft 365 reports by HTTP template Templates
+  + ZBX-20848 Fixed multiselect not suggesting a just-removed record Frontend
+  + ZBX-25393 Fixed unwanted page scrolling when editing text in multiline text fields Frontend
+  + ZBX-24500 Fixed an issue that allowed defining multiple PSK keys for the same PSK identity
+    used in hosts, proxies, and autoregistration API
+  + ZBX-24960 Fixed specified item test by Zabbix agent 2 on Windows for "system.uptime" and
+    other performance counter-based items Agent
+  + ZBX-25311 Reverted passing errors to dependent items Proxy Server
+  + ZBX-24273 Fixed potential Zabbix agent crash for vfs.fs.get item Agent
+  + ZBX-25029 Fixed initiating HA failover in the case of invalid server response Agent Proxy Server
+  + ZBX-23410 Fixed assigning of interfaces for copied LLD rules and item prototypes API
+  + ZBX-23007 Added chunking when collecting related objects for item and item prototype API
+  + ZBX-23171 Fixed escaping of slash character in context-based macro patterns Frontend
+  + ZBX-25141 Fixed {FUNCTION.VALUE} and {FUNCTION.RECOVERY.VALUE} macro expansion in
+    notifications, commands, event names and manual event action scripts Server
+  + ZBX-24805 Added filter for discovery rule for family of APC templates Templates
+  + ZBX-23520 Added timeout and fixed keys for raw items for family of MSSQL templates Templates
+  + ZBX-24684 Moved Zabbix agent 2 plugin shutdown message to debug log level Agent
+  + ZBX-22918 Added database name macro for connection to all agent keys in PostgreSQL by Zabbix agent 2 Templates
+  + ZBX-24979 Removed incompatible "proxy last seen" threshold macro from Zabbix health templates Templates
+  + ZBX-24366 Fixed host group filters on availability report to show correct items Frontend
+  + ZBX-25072 Fixed splitting of a trigger expression in the expression builder Frontend
+  + ZBX-25255 Fixed macro in PostgreSQL by Zabbix agent 2 template Templates
+  + ZBX-25098 Fixed regsub output pattern issue with backslash and "at" sign in macro functions Server
+  + ZBX-24922 Prevented attempt to update trigger or graph prototypes while
+    importing discovery rules without "update existing" option specified API
+  + ZBX-25156 Fixed runtime error in trigger expression constructor if non-existent
+    function was used in the expression field Frontend
+  + ZBX-25280 Fixed trigger expression in Kubernetes cluster state by HTTP Templates
+  + ZBX-21663 Fixed timeselector display in problem list on PHP 7.4 Frontend
+  + ZBX-24030 Fixed manually closed problem action icon visibility in high-contrast theme Frontend
+  + ZBX-21843 Fixed "Check for not supported value" preprocessing step for dependent items Proxy Server
+  + ZBX-25154 Added deactivation of service manager problem cache if no services are configured Server
+  + ZBX-24997 Fixed script execution status in Action log page Frontend
+  + ZBX-25127 Fixed crash in JSON library due to null pointer arithmetic Agent Proxy Server
+  + ZBX-24485 Fixed undefined index error when importing host with technical name already in use by a template API
+  + ZBX-24245 Fixed Zabbix agent 2 and loadable plugin protocol mismatch error Agent
+  + ZBX-22557 Fixed time zones conflict leading to report scheduling errors Server
+  + ZBX-21618 Fixed layout for multiple lists when long names are used Frontend
+  + ZBX-25026 Fixed percentile line being displayed outside of classic graph Frontend
+  + ZBX-22754 Fixed 'Too old events' error for vmware.eventlog item Proxy Server
+  + ZBX-23535 Added alternative data source parsing for key ceph.status Agent
+  + ZBX-24418 Fixed Zabbix agent 2 build on MIPS architectures Agent
+  + ZBX-24471 Fixed system.run[,nowait] to include double quotes the same way as system.run[,wait] Agent
+  + ZBX-24619 Updated atomic variables to be more safe Agent
+  + ZBX-24052 Fixed the error when applying subfilter by tag on graph page if item tag contains special characters Frontend
+  + ZBX-24819 Fixed slow template cloning Installation Server
+  + ZBX-24570 Fixed right Y axis being enabled by default in SVG graph widget Frontend
+  + ZBX-24725 Added missing maxlength parameter to description fields Frontend
+  + ZBX-24874 Fixed item preprocessing Custom on fail checkbox readonly and disable state toggling Frontend
+  + ZBX-23315 Prevented attempt to update host triggers when importing template through hosts page API
+  + ZBX-24691 Fixed issue with SNMPv3 authentication protocol and privacy protocol
+    values not getting sent to server for item testing Frontend
+  + ZBX-24750 Fixed issues with maximum field length for map elements and shapes API Frontend
+  + ZBX-24966 Fixed sorting in Map navigation tree widget Frontend
+  + ZBX-24926 Fixed bad argument error when using latest libcurl Proxy Server
+  + ZBX-24431 Prevented showing the disabled items in the case when not supported state has been selected Frontend
+  + ZBX-24147 Fixed translation strings and comments to gender neutral ones Frontend
+  + ZBX-24903 Fixed row count in script dialog of script item Frontend
+  + ZBX-24466 Fixed configuration map import not resetting element icons Frontend
+  + ZBX-21663 Implemented ability to keep timeselector expanded when changing pages in problem view Frontend
+  + ZBX-23871 Fixed incorrect order of "query_fields" and "headers" being sent to server in item test form Frontend
+  + ZBX-23174 Fixed frontend maintenance configuration not following documentation Frontend
+  + ZBX-24339 Fixed validation of invalid API methods being passed down in user role rules API
+  + ZBX-24394 Made trigger housekeeper documentation more precise Server
+  + ZBX-24879 Fixed ODBC login with special characters in the password field Server
+  + ZBX-24650 Fixed {ITEM.LOG.SEVERITY} macro to resolve to event severity instead of trigger severity Frontend
+  + ZBX-24760 Fixed default timezone in macro {EVENT.DATE} & {EVENT.TIME} expansion Server
+  + ZBX-21838 Fixed max in table setting not being used to limit action count in mediatype list Frontend
+  + ZBX-24835 Fixed case-conversion and preg functions working incorrectly with the Turkish locale Frontend
+  + ZBX-23844 Fixed long names of icons and background images overlapping each other Frontend 
+
+-------------------------------------------------------------------
 Thu Sep 26 20:26:42 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
