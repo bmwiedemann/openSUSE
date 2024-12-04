@@ -481,6 +481,7 @@ unsorted:
   - aerc 
   - aespipe 
   - afl 
+  - afl-devel 
   - afterburn 
   - afterburn-dracut 
   - agama 
@@ -34646,6 +34647,7 @@ unsorted:
   - python312-sanlock 
   - python312-sarge 
   - python312-sarif-om 
+  - python312-sat-stac 
   - python312-schedule 
   - python312-schema 
   - python312-scikit-build 
@@ -36414,6 +36416,7 @@ unsorted:
   - python313-django-reversion 
   - python313-django-rosetta 
   - python313-django-rq 
+  - python313-django-seed 
   - python313-django-sekizai 
   - python313-django-settings-toml 
   - python313-django-silk 
@@ -36504,6 +36507,7 @@ unsorted:
   - python313-emcee 
   - python313-emoji 
   - python313-empy 
+  - python313-enaml 
   - python313-encore 
   - python313-endesive 
   - python313-enrich 
@@ -37533,6 +37537,7 @@ unsorted:
   - python313-pefile 
   - python313-pegasus-wms.api 
   - python313-pegasus-wms.common 
+  - python313-pegen 
   - python313-pelican 
   - python313-pem 
   - python313-pendulum 
@@ -37991,6 +37996,7 @@ unsorted:
   - python313-pytest-svn 
   - python313-pytest-system-statistics 
   - python313-pytest-testconfig 
+  - python313-pytest-testinfra 
   - python313-pytest-timeout 
   - python313-pytest-tldr 
   - python313-pytest-tornado 
@@ -38277,6 +38283,7 @@ unsorted:
   - python313-sanlock 
   - python313-sarge 
   - python313-sarif-om 
+  - python313-sat-stac 
   - python313-schedule 
   - python313-schema 
   - python313-scikit-build 
