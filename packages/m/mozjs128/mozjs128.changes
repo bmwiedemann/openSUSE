@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Dec  3 08:05:03 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 128.5.1:
+  + Fixed an issue that prevented some websites from loading when
+    using SSL Inspection. (bmo#1933747)
+- Changes from version 128.5.0:
+  + Various security fixes and other quality improvements.
+  + CVE-2024-11691: Out-of-bounds write in Apple GPU drivers via
+    WebGL.
+  + CVE-2024-11692: Select list elements could be shown over
+    another site.
+  + CVE-2024-11694: CSP Bypass and XSS Exposure via Web
+    Compatibility Shims.
+  + CVE-2024-11695: URL Bar Spoofing via Manipulated Punycode and
+    Whitespace Characters.
+  + CVE-2024-11696: Unhandled Exception in Add-on Signature
+    Verification.
+  + CVE-2024-11697: Improper Keypress Handling in Executable File
+    Confirmation Dialog.
+
+-------------------------------------------------------------------
 Mon Nov 18 16:05:42 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop autoconf213 BuildRequires: the source embeds autoconf.sh

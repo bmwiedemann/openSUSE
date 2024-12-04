@@ -1589,4 +1589,12 @@
   https://www.haproxy.com/blog/announcing-haproxy-3-1</comment>
     <requestid>1226579</requestid>
   </revision>
+  <revision rev="152" vrev="2">
+    <srcmd5>a2a16328b2ad0ea30982a809b0edad1d</srcmd5>
+    <version>3.1.0+git0.f2b97918e</version>
+    <time>1733322410</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1228096</requestid>
+  </revision>
 </revisionlist>

@@ -113,4 +113,14 @@
    to ensure that they were exhaustive. (Surya Rose)</comment>
     <requestid>1226382</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a8ac5768b8a4b9df4a631d6a45b6a9b5</srcmd5>
+    <version>1.6.3</version>
+    <time>1733322412</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.6.3:
+ * Fixed a bug where Gleam would be unable to compile to BEAM
+   bytecode on older versions of Erlang/OTP. (yoshi)</comment>
+    <requestid>1228090</requestid>
+  </revision>
 </revisionlist>

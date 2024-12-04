@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Nov 29 13:55:53 UTC 2024 - filippo.bonazzi@suse.com
+
+- Update to version 1550+20241129.21d7d0b:
+  * profiles: adjust tuned settings to new upstream default (bsc#1232412)
+  * profiles: add tuned methods for instance handling / PPD (bsc#1232412)
+- Add format_spec_file service in manual mode
+
+-------------------------------------------------------------------
+Thu Nov 28 08:28:00 UTC 2024 - matthias.gerstner@suse.com
+
+- Update to version 1550+20241127.a20426b:
+  * profiles: whitelist systemd v257 actions (bsc#1233295)
+
+-------------------------------------------------------------------
+Thu Nov 28 08:27:00 UTC 2024 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- _service: switch from "disabled" mode to "manual" mode, which is a more
+  fitting setting which is available now.
+
+-------------------------------------------------------------------
 Mon Nov 11 13:54:56 UTC 2024 - wolfgang.frisch@suse.com
 
 - Update to version 1550+20241111.762abac:

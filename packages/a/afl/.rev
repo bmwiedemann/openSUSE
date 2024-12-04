@@ -1484,4 +1484,41 @@
     - ensure shared memory variables are visible in weird build setups (forwarded request 1179645 from msmeissn)</comment>
     <requestid>1179646</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>06bbda413804d9096da4046839fbe0d8</srcmd5>
+    <version>4.30c</version>
+    <time>1733322420</time>
+    <user>anag+factory</user>
+    <comment>- updated to 4.30c
+  - afl-gcc and afl-clang funcionality is now removed
+  - afl-fuzz:
+    - fastresume feature added. if you abort fuzzing and resume fuzzing
+      with `-i -` or `AFL_AUTORESUME=1` and the target binary has not changed
+      then a dump will be loaded and the calibration phase skipped.
+      to disable this feature set `AFL_NO_FASTRESUME=1`
+      zlib compression is used if zlib is found at compile time
+    - improved seed selection algorithm
+    - added `AFL_CUSTOM_MUTATOR_LATE_SEND=1` to call the custom send()
+      function after the target has been restarted.
+    - because of bad math and undefined behaviour fixes we have to change
+      the CMPLOG map. **YOU NEED TO RECOMPILE CMPLOG TARGETS**
+    - fixed custom_post_process for calibration
+    - fixes for AFL_EXIT_ON_TIME and AFL_EXIT_WHEN_DONE, changed behaviour of
+      AFL_EXIT_WHEN_DONE to finish when really done :-)
+  - frida_mode:
+    - AFL_FRIDA_PERSISTENT_ADDR can now be be any reachable address not just
+      a function entry
+    - AFL_DEBUG is now the same as AFL_FRIDA_VERBOSE
+    - AFL_FRIDA_DEBUG_MAPS now works as expected
+  - qemu_mode:
+    - new hooks supported (optional), see qemu_mode/hooking_bridge - thanks to
+      @CowBoy4mH3LL
+  - unicorn_mode:
+    - fix install and forkserver (thanks aarnav!)
+    - pin unicorn version
+  - nyx_mode:
+    - bugfixes
+  - custom mutators:</comment>
+    <requestid>1228226</requestid>
+  </revision>
 </revisionlist>

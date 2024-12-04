@@ -19,7 +19,7 @@
 %define soname  lib%{name}
 %define sover   1
 Name:           benchmark
-Version:        1.9.0
+Version:        1.9.1
 Release:        0
 Summary:        A microbenchmark support library
 License:        Apache-2.0

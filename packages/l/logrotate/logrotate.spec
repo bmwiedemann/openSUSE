@@ -1,7 +1,7 @@
 #
 # spec file for package logrotate
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,8 @@
 
 
 %{!?_distconfdir: %global _distconfdir %{_prefix}%{_sysconfdir}}
-
 Name:           logrotate
-Version:        3.21.0
+Version:        3.22.0
 Release:        0
 Summary:        Cron service for rotating, compressing, mailing and removing system log files
 License:        GPL-2.0-or-later
@@ -33,6 +32,8 @@ Source3:        logrotate.service
 Source4:        logrotate-all
 Source10:       https://github.com/%{name}/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source11:       logrotate.keyring
+Patch0:         logrotate-3.22-skip-failing-test.patch
+
 BuildRequires:  acl
 BuildRequires:  automake
 BuildRequires:  libacl-devel

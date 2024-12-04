@@ -182,6 +182,8 @@ Patch22:        gh120226-fix-sendfile-test-kernel-610.patch
 # PATCH-FIX-UPSTREAM CVE-2024-9287-venv_path_unquoted.patch gh#python/cpython#124651 mcepl@suse.com
 # venv should properly quote path names provided when creating a venv
 Patch23:        CVE-2024-9287-venv_path_unquoted.patch
+# PATCH-FIX-UPSTREAM Add platform triplets for 64-bit LoongArch gh#python/cpython#30939 glaubitz@suse.com
+Patch24:        add-loongarch64-support.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -445,6 +447,7 @@ other applications.
 %patch -p1 -P 19
 %patch -p1 -P 22
 %patch -p1 -P 23
+%patch -p1 -P 24
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

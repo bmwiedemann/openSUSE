@@ -27,7 +27,7 @@
 %endif
 
 Name:           afl
-Version:        4.21c
+Version:        4.30c
 Release:        0
 Summary:        American fuzzy lop is a security-oriented fuzzer
 #URL:            https://lcamtuf.coredump.cx/afl/
@@ -48,6 +48,13 @@ BuildRequires:  lld
 BuildRequires:  python3-devel
 BuildRequires:  ((llvm-devel >= 11.0.0 with llvm-devel < 16) or llvm15-devel)
 Requires:       lld
+
+%package devel
+Summary:        Development headers for use when fuzzing with American fuzzy lop
+Requires:       %name = %version
+
+%description devel
+This package contains include files for use with afl.
 
 %description
 American fuzzy lop is a security-oriented fuzzer that employs a novel type
@@ -90,8 +97,8 @@ chmod -x %{buildroot}/%{_libexecdir}/%{name}/*.o
 %doc /usr/share/doc/packages/%name/
 %{_bindir}/%{name}-*
 %dir %{_libexecdir}/%{name}
-%{_libexecdir}/%{name}/%{name}-as
-%{_libexecdir}/%{name}/as
+#{_libexecdir}/%{name}/%{name}-as
+#{_libexecdir}/%{name}/as
 %if 0%{?afl_64}
 %{_libexecdir}/%{name}/afl-{%{afl_rt}}-64.o
 %endif
@@ -112,5 +119,9 @@ chmod -x %{buildroot}/%{_libexecdir}/%{name}/*.o
 %{_datadir}/afl/dictionaries/*
 %{_datadir}/afl/injections.dic
 %{_mandir}/man8/afl*.8*
+
+%files devel
+%license docs/COPYING LICENSE
+%{_includedir}/afl
 
 %changelog

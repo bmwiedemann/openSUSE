@@ -7365,4 +7365,29 @@ handle manual pages that consist only of a .so directive such as
 - Clean up some remnants from when homed was in the experimental sub-package (bsc#1231048)</comment>
     <requestid>1206519</requestid>
   </revision>
+  <revision rev="433" vrev="1">
+    <srcmd5>378e7a55c69f64437dc68500e556f4bf</srcmd5>
+    <version>256.9</version>
+    <time>1733322409</time>
+    <user>anag+factory</user>
+    <comment>- Add 5005-Revert-boot-Make-initrd_prepare-semantically-equival.patch
+  Revert commit d64193a2a652b15db9cb9ed10c6b77a17ca46cd2 until the regression it
+  caused, reported at https://github.com/systemd/systemd/issues/35439, is fixed
+  (see also bsc#1233752 for its downstream counterpart).
+
+- Disable EFI support on architectures that are not EFI-compliant
+
+- Import commit 290170c8550bf2de4b5085ecdf7f056769944444 (merge of v256.9)
+  This merge includes the following fix:
+    cf7b3cc182 pid1: make clear that $WATCHDOG_USEC is set for the shutdown binary, noone else (bsc#1232227)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/c7671762b39ead7f8f9e70064256f5efaccedeca...290170c8550bf2de4b5085ecdf7f056769944444
+
+- Import commit aee28e4c20a053ea27f8be69f2ea981e43bcb0b6
+  aee28e4c20 udev-builtin-path_id: SAS wide ports must have num_phys &gt; 1 (bsc#1231610)
+  280989cfa4 core: when switching root remove /run/systemd before executing the binary specified by init= (bsc#1227580)
+- Drop 5003-core-when-switching-root-remove-run-systemd-before-e.patch, this
+  patch has been integrated in branch 'SUSE/v256', see above.</comment>
+    <requestid>1228086</requestid>
+  </revision>
 </revisionlist>

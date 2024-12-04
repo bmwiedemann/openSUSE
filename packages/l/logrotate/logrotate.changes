@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Nov 29 13:01:12 UTC 2024 - Angel Yankov <angel.yankov@suse.com>
+
+- Skip test-0110.sh which fails after update in the build chroot 
+  but not with identical settings on TW.
+  * Add logrotate-3.22-skip-failing-test.patch
+
+-------------------------------------------------------------------
+Wed Oct 23 08:51:50 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.22.0:
+  * fix calculations for time differences
+  * fix extension for zip compression
+  * fix omitted copy for logs with `mail` and `rotate 0`
+  * fix wrongly skipping copy with `copytruncate` and `compress`
+  * fix ambiguities between `mode`, `UID` and `GID` parsing when
+    not specifying all options
+  * fix hang when encountering a named pipe
+  * on prerotate failure logs are preserved instead of rotated
+  * in case a configuration file was skipped due to unsafe
+    permissions the
+  * exit status after rotattion will be `1`
+  * the state is no longer written to non-regular files
+  * the systemd timer now correctly utilizes load distribution
+  * add dateformat specifier `%z` for timezone offsets
+  * change default mode for created `olddir` directories to
+    `0755`
+  * support quoted user and group names in `su`, `create`, and
+    `createolddir`
+- update logroate.keyring: new maintainer
+
+-------------------------------------------------------------------
 Tue Jan 24 07:53:00 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Update to 3.21.0:
@@ -78,9 +109,9 @@ Thu Feb 24 10:36:07 UTC 2022 - Stefan Schubert <schubi@suse.de>
   /etc/logrotate.d/*        Directory for additional configuration
                             files defined by the administrator.
                             (optional)
-- drop logrotate-3.19.0-systemd_add_home_env.patch: 
+- drop logrotate-3.19.0-systemd_add_home_env.patch:
   - included in new logrotate.service
-- Adapted man page: logrotate-3.19.0-man_logrotate.patch  
+- Adapted man page: logrotate-3.19.0-man_logrotate.patch
 
 -------------------------------------------------------------------
 Fri Jan  7 20:23:36 UTC 2022 - Michael Ströder <michael@stroeder.com>
@@ -216,7 +247,7 @@ Fri Sep  7 10:33:52 UTC 2018 - liedke@rz.uni-mannheim.de
 -------------------------------------------------------------------
 Thu Jun  7 09:51:50 UTC 2018 - kstreitova@suse.com
 
-- Add "Environment=HOME=/root" to logrotate.service file in order 
+- Add "Environment=HOME=/root" to logrotate.service file in order
   to allow mariadb to rotate its logs when the database has a root
   password defined [bsc#1093617]
 - Added patch:
@@ -336,12 +367,12 @@ Mon Jun 22 12:53:44 UTC 2015 - kstreitova@suse.com
     - Allow rotation of sparse files with copytruncate.
   * update logrotate-addextension.patch
 - use spec-cleaner
-- remove unused PreReq tags 
+- remove unused PreReq tags
 
 -------------------------------------------------------------------
 Tue May 19 23:42:27 UTC 2015 - crrodriguez@opensuse.org
 
-- Enable Persistent timer since we are now in systemd 219. 
+- Enable Persistent timer since we are now in systemd 219.
 
 -------------------------------------------------------------------
 Fri Feb 20 11:04:12 UTC 2015 - p.drouand@gmail.com
@@ -363,8 +394,8 @@ Fri Feb 20 11:04:12 UTC 2015 - p.drouand@gmail.com
 - Updated patches
   * logrotate-3.7.8-addextension.patch > logrotate-addextension.patch
   * logrotate-3.7.8-autoext.patch > logrotate-autoext.patch
-  * logrotate-3.7.8-conf.patch > logrotate-conf.patch 
-  * logrotate-manpage_config_clarification.patch 
+  * logrotate-3.7.8-conf.patch > logrotate-conf.patch
+  * logrotate-manpage_config_clarification.patch
 - Remove redunant %clean section
 
 -------------------------------------------------------------------
@@ -376,7 +407,7 @@ Thu Jun 26 12:01:30 UTC 2014 - vcizek@suse.com
 -------------------------------------------------------------------
 Thu Apr  3 17:16:40 UTC 2014 - crrodriguez@opensuse.org
 
-- Also, avoid logrotate unit activation when the system is 
+- Also, avoid logrotate unit activation when the system is
   on battery power.
 
 -------------------------------------------------------------------
@@ -387,8 +418,8 @@ Thu Apr  3 14:10:21 UTC 2014 - crrodriguez@opensuse.org
 -------------------------------------------------------------------
 Wed Apr  2 22:45:56 UTC 2014 - crrodriguez@opensuse.org
 
-- Migrate from cron to systemd timer units, this is overall 
-  the most important package to migrate since it is one 
+- Migrate from cron to systemd timer units, this is overall
+  the most important package to migrate since it is one
   of the very few base components that hard-require cron.
 
 -------------------------------------------------------------------
@@ -448,7 +479,7 @@ Thu Jul 25 14:19:48 UTC 2013 - vcizek@suse.com
   - Improved manpage consistency and formatting.
   - Fix race condition between acl_set_fd() and fchmod().
   - Added --version command line option
-  - Disable ACL tests if logrotate is not compiled WITH_ACL support or if 
+  - Disable ACL tests if logrotate is not compiled WITH_ACL support or if
     ACLs are not supported by the system running tests
   - Disable SELinux tests if logrotate is not compiled WITH_SELINUX support
     or if SELinux is not supported by the system running tests
@@ -599,7 +630,7 @@ Wed Dec 10 19:48:49 CET 2008 - schwab@suse.de
 -------------------------------------------------------------------
 Tue Oct 21 15:16:03 CEST 2008 - puzel@suse.cz
 
-- logrotate-3.7.7-hashes.patch (bnc#415072) 
+- logrotate-3.7.7-hashes.patch (bnc#415072)
 
 -------------------------------------------------------------------
 Tue Sep 30 13:17:04 CEST 2008 - puzel@suse.cz
@@ -646,19 +677,19 @@ Thu Aug 14 17:36:08 CEST 2008 - puzel@suse.cz
 Thu Jan 31 14:08:47 CET 2008 - ro@suse.de
 
 - log error if target file already exists
-  (upgrade from MESS_DEBUG to MESS_ERROR) 
+  (upgrade from MESS_DEBUG to MESS_ERROR)
 
 -------------------------------------------------------------------
 Wed Oct 31 18:01:58 CET 2007 - ro@suse.de
 
 - added bzip2 as dependency since it's used as default compressor
-  (#334555) 
+  (#334555)
 
 -------------------------------------------------------------------
 Thu Aug 16 15:33:29 CEST 2007 - ro@suse.de
 
 - update to 3.7.5 with some bugfixes containing:
-  - 251040 config option size not handled correctly 
+  - 251040 config option size not handled correctly
 - added the current fedora patchkit which adds shred support
 
 -------------------------------------------------------------------
@@ -672,7 +703,7 @@ Wed Jun 21 12:40:30 CEST 2006 - ro@suse.de
 
 - update to 3.7.4
   - adds the "minsize" option
-- clean up comments in sample logrotate.conf (#183440) 
+- clean up comments in sample logrotate.conf (#183440)
 
 -------------------------------------------------------------------
 Wed Jan 25 21:37:59 CET 2006 - mls@suse.de
@@ -690,37 +721,37 @@ Fri Dec  9 14:58:46 CET 2005 - ro@suse.de
 - updated to 3.7.3
 - removed upstreamed patches
 - added autoext patch for determining file extension
-  from used compression program 
+  from used compression program
 
 -------------------------------------------------------------------
 Tue Oct 18 12:42:16 CEST 2005 - ro@suse.de
 
-- update to upstream patchkit 
+- update to upstream patchkit
 
 -------------------------------------------------------------------
 Tue Oct 11 02:19:17 CEST 2005 - ro@suse.de
 
-- update to 3.7.2 and some upstream patches 
+- update to 3.7.2 and some upstream patches
 
 -------------------------------------------------------------------
 Tue Oct 11 01:41:53 CEST 2005 - ro@suse.de
 
-- fix else case in maxage patch (thanks to pvrabec) 
+- fix else case in maxage patch (thanks to pvrabec)
 
 -------------------------------------------------------------------
 Tue Jul 26 16:26:57 CEST 2005 - ro@suse.de
 
-- added noTMPDIR and selinux patches 
+- added noTMPDIR and selinux patches
 
 -------------------------------------------------------------------
 Fri May 20 00:28:58 CEST 2005 - ro@suse.de
 
-- update to 3.7.1 
+- update to 3.7.1
 
 -------------------------------------------------------------------
 Wed Apr 20 17:12:50 CEST 2005 - ro@suse.de
 
-- cron-script: give some more details when things fail 
+- cron-script: give some more details when things fail
 
 -------------------------------------------------------------------
 Mon Sep  6 17:44:42 CEST 2004 - ro@suse.de
@@ -745,12 +776,12 @@ Mon Feb 23 15:58:48 CET 2004 - ro@suse.de
 Fri Oct 17 11:51:01 CEST 2003 - ro@suse.de
 
 - don't build as root
-- use defattr 
+- use defattr
 
 -------------------------------------------------------------------
 Mon Oct 13 16:19:27 CEST 2003 - ro@suse.de
 
-- updated to 3.6.10 and ported patches 
+- updated to 3.6.10 and ported patches
 
 -------------------------------------------------------------------
 Thu Jun 12 11:14:24 CEST 2003 - kukuk@suse.de
@@ -779,7 +810,7 @@ Mon Jan 20 18:13:36 CET 2003 - ro@suse.de
 -------------------------------------------------------------------
 Thu Jan 16 00:00:40 CET 2003 - ro@suse.de
 
-- removed xdm logfile from main config (in XFree86 now) 
+- removed xdm logfile from main config (in XFree86 now)
 
 -------------------------------------------------------------------
 Wed Jan 15 15:12:06 CET 2003 - ro@suse.de
@@ -789,12 +820,12 @@ Wed Jan 15 15:12:06 CET 2003 - ro@suse.de
 -------------------------------------------------------------------
 Mon Nov 11 00:23:01 CET 2002 - ro@suse.de
 
-- fix deprecated multiline string literals 
+- fix deprecated multiline string literals
 
 -------------------------------------------------------------------
 Mon Oct 14 12:30:53 CEST 2002 - ro@suse.de
 
-- remove postgresql logfile from config on update (#20860) 
+- remove postgresql logfile from config on update (#20860)
 
 -------------------------------------------------------------------
 Mon Oct 14 11:24:50 CEST 2002 - ro@suse.de
@@ -804,12 +835,12 @@ Mon Oct 14 11:24:50 CEST 2002 - ro@suse.de
 -------------------------------------------------------------------
 Mon Sep 23 15:41:35 CEST 2002 - ro@suse.de
 
-- mark logrotate.del as missingok 
+- mark logrotate.del as missingok
 
 -------------------------------------------------------------------
 Mon Sep  9 15:05:11 CEST 2002 - ro@suse.de
 
-- remove handling of /var/account/pacct (moved to acct package) 
+- remove handling of /var/account/pacct (moved to acct package)
 
 -------------------------------------------------------------------
 Fri Aug 16 11:20:47 CEST 2002 - ro@suse.de
@@ -825,12 +856,12 @@ Mon Aug  5 08:57:21 CEST 2002 - kukuk@suse.de
 Wed Jul 31 00:47:28 CEST 2002 - ro@suse.de
 
 - fixed typo in specfile
-- added comment in config-file about bzip2 usage 
+- added comment in config-file about bzip2 usage
 
 -------------------------------------------------------------------
 Mon Jul 29 17:53:09 CEST 2002 - ro@suse.de
 
-- removed fetchmail logrotate entry (#17279) 
+- removed fetchmail logrotate entry (#17279)
 
 -------------------------------------------------------------------
 Mon Jul 29 16:24:17 CEST 2002 - ro@suse.de
@@ -856,59 +887,59 @@ Fri Jul 12 13:49:04 CEST 2002 - kukuk@suse.de
 -------------------------------------------------------------------
 Mon Jun 24 14:00:30 CEST 2002 - ro@suse.de
 
-- fixed squid log paths (#16557) 
+- fixed squid log paths (#16557)
 
 -------------------------------------------------------------------
 Wed May  8 23:27:09 CEST 2002 - ro@suse.de
 
-- uucp-logfiles are handled by own config 
+- uucp-logfiles are handled by own config
 
 -------------------------------------------------------------------
 Mon Mar 18 23:26:12 CET 2002 - ro@suse.de
 
-- don't rotate any file for /var/log/news.* 
+- don't rotate any file for /var/log/news.*
 
 -------------------------------------------------------------------
 Fri Mar  1 00:13:07 CET 2002 - ro@suse.de
 
 - don't overwrite logfiles with dateext if run more than once
-  a day (partial solution for #13202) 
+  a day (partial solution for #13202)
 
 -------------------------------------------------------------------
 Mon Feb 25 14:29:46 CET 2002 - ro@suse.de
 
-- install etc_logfiles as 644 
+- install etc_logfiles as 644
 
 -------------------------------------------------------------------
 Tue Feb 19 00:24:25 CET 2002 - ro@suse.de
 
-- removed yast from logrotate.d 
+- removed yast from logrotate.d
 
 -------------------------------------------------------------------
 Sat Feb 16 12:50:25 CET 2002 - ro@suse.de
 
-- removed postgresql logfile (handled by package) 
+- removed postgresql logfile (handled by package)
 
 -------------------------------------------------------------------
 Mon Jan  7 00:13:27 CET 2002 - ro@suse.de
 
-- take wtmp out of default config 
+- take wtmp out of default config
 
 -------------------------------------------------------------------
 Fri Dec 14 15:00:17 CET 2001 - ro@suse.de
 
-- really remove old variable from rc.config 
+- really remove old variable from rc.config
 
 -------------------------------------------------------------------
 Wed Dec 12 13:51:59 CET 2001 - ro@suse.de
 
-- mark files in /etc/logrotate.d as noreplace 
+- mark files in /etc/logrotate.d as noreplace
 
 -------------------------------------------------------------------
 Tue Dec 11 01:43:54 CET 2001 - ro@suse.de
 
 - implement maxage if dateext is not used
-- uncompress log for mail if maillast is used 
+- uncompress log for mail if maillast is used
 
 -------------------------------------------------------------------
 Mon Dec 10 14:01:53 CET 2001 - ro@suse.de
@@ -916,38 +947,38 @@ Mon Dec 10 14:01:53 CET 2001 - ro@suse.de
 - added etc_logfiles as reminder to sources
 - moved convert script into postinstall and try to find
   old etc/logfiles and use etc_logfiles as fallback
-- added yast and syslog to /etc/logrotate.d as config files 
+- added yast and syslog to /etc/logrotate.d as config files
 
 -------------------------------------------------------------------
 Mon Dec 10 01:24:03 CET 2001 - ro@suse.de
 
-- added maxage extension 
+- added maxage extension
 
 -------------------------------------------------------------------
 Thu Dec  6 12:44:14 CET 2001 - ro@suse.de
 
-- split patches for purpose 
+- split patches for purpose
 
 -------------------------------------------------------------------
 Tue Dec  4 17:52:14 CET 2001 - ro@suse.de
 
 - archiving option changed to "dateext" and
-  works completely transparent otherwise 
+  works completely transparent otherwise
 
 -------------------------------------------------------------------
 Tue Nov 27 02:05:26 CET 2001 - ro@suse.de
 
 - added multiple rotation criteria can be selected at one time
-- added/completed implementation for days (max days) 
+- added/completed implementation for days (max days)
 
 -------------------------------------------------------------------
 Mon Nov 26 18:11:14 CET 2001 - ro@suse.de
 
-- added archiving option 
+- added archiving option
 - added script to convert /etc/logfiles
 
 -------------------------------------------------------------------
 Tue Nov 13 11:59:20 CET 2001 - ro@suse.de
 
-- initial package for SuSE Linux (version 3.5.9) 
+- initial package for SuSE Linux (version 3.5.9)
 

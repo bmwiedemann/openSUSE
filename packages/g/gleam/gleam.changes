@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec  3 17:47:45 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update to 1.6.3:
+ * Fixed a bug where Gleam would be unable to compile to BEAM
+   bytecode on older versions of Erlang/OTP. (yoshi)
+
+-------------------------------------------------------------------
 Mon Nov 25 22:56:41 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - Update to 1.6.2:

@@ -343,6 +343,8 @@
 %{_unitdir}/sysinit.target.wants/cryptsetup.target
 %{_unitdir}/sysinit.target.wants/integritysetup.target
 %{_unitdir}/sysinit.target.wants/kmod-static-nodes.service
+%endif
+%if %{with sd_boot}
 %{_unitdir}/sysinit.target.wants/systemd-hibernate-clear.service
 %endif
 %{_unitdir}/sysinit.target.wants/systemd-hwdb-update.service
@@ -370,7 +372,7 @@
 %{_unitdir}/systemd-fsck@.service
 %{_unitdir}/systemd-growfs-root.service
 %{_unitdir}/systemd-growfs@.service
-%if %{without bootstrap}
+%if %{with sd_boot}
 %{_unitdir}/systemd-hibernate-clear.service
 %endif
 %{_unitdir}/systemd-hibernate-resume.service

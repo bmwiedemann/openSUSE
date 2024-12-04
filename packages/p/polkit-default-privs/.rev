@@ -2239,4 +2239,20 @@ for 12.3</comment>
   * profiles: xfce4-power-manager (bsc#1232244) (forwarded request 1223371 from wfrisch)</comment>
     <requestid>1223372</requestid>
   </revision>
+  <revision rev="243" vrev="1">
+    <srcmd5>2dbdaf8c93a1facc7803980423a9665b</srcmd5>
+    <version>1550+20241129.21d7d0b</version>
+    <time>1733322408</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1550+20241129.21d7d0b:
+  * profiles: adjust tuned settings to new upstream default (bsc#1232412)
+  * profiles: add tuned methods for instance handling / PPD (bsc#1232412)
+- Add format_spec_file service in manual mode
+- Update to version 1550+20241127.a20426b:
+  * profiles: whitelist systemd v257 actions (bsc#1233295)
+- _service: switch from &quot;disabled&quot; mode to &quot;manual&quot; mode, which is a more
+  fitting setting which is available now.
+</comment>
+    <requestid>1227348</requestid>
+  </revision>
 </revisionlist>

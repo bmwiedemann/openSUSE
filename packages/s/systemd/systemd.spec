@@ -26,9 +26,9 @@
 %define systemd_release    %{?release_override}%{!?release_override:0}
 %define archive_version    %{nil}
 %else
-%define systemd_version    256.7
+%define systemd_version    256.9
 %define systemd_release    0
-%define archive_version    +suse.9.gc7671762b3
+%define archive_version    +suse.12.g290170c855
 %endif
 
 %define systemd_major      %{sub %systemd_version 1 3}
@@ -237,8 +237,8 @@ Patch:          0009-pid1-handle-console-specificities-weirdness-for-s390.patch
 Patch:          5001-Revert-udev-update-devlink-with-the-newer-device-nod.patch
 Patch:          5002-Revert-udev-revert-workarounds-for-issues-caused-by-.patch
 Patch:          5004-disable-session-freeze.patch
+Patch:          5005-Revert-boot-Make-initrd_prepare-semantically-equival.patch
 %endif
-Patch:          5003-core-when-switching-root-remove-run-systemd-before-e.patch
 
 %description
 Systemd is a system and service manager, compatible with SysV and LSB
@@ -782,7 +782,6 @@ for the C APIs.
         -Daudit=%{disabled_with bootstrap} \
         -Dbpf-framework=%{disabled_with bootstrap} \
         -Dbzip2=%{enabled_with importd} \
-        -Defi=%{when_not bootstrap} \
         -Delfutils=%{disabled_with bootstrap} \
         -Dfdisk=%{disabled_with bootstrap} \
         -Dgcrypt=%{disabled_with bootstrap} \
@@ -834,6 +833,7 @@ for the C APIs.
         -Dselinux=%{enabled_with selinux} \
         \
         -Dbootloader=%{enabled_with sd_boot} \
+        -Defi=%{when sd_boot} \
         -Defi-color-highlight="black,green" \
         \
         -Dsbat-distro="%{?sbat_distro}" \

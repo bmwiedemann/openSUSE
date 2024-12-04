@@ -17,20 +17,20 @@
 
 
 Name:           arch-install-scripts
-Version:        28
+Version:        29
 Release:        0
 Summary:        Scripts aimed at automating some menial installation/recovery tasks
 License:        GPL-2.0-only
 Group:          System/Boot
-URL:            https://github.com/archlinux/arch-install-scripts
-Source0:        https://github.com/archlinux/arch-install-scripts/archive/refs/tags/v%{version}.tar.gz
+URL:            https://gitlab.archlinux.org/archlinux/arch-install-scripts
+Source0:        https://gitlab.archlinux.org/archlinux/arch-install-scripts/-/archive/v%{version}/arch-install-scripts-v%{version}.tar.bz2
 Patch0:         Do_not_build_Arch-specific_scripts.patch
 BuildRequires:  asciidoc
 BuildRequires:  m4
 Requires:       awk
 Requires:       bash >= 4.1
 Requires:       coreutils >= 8.15
-Requires:       util-linux >= 2.23
+Requires:       util-linux >= 2.39
 Requires:       util-linux-systemd >= 2.23
 BuildArch:      noarch
 
@@ -41,14 +41,14 @@ This package provides helper scripts originating in Arch Linux that are useful d
 * arch-chroot: Set up bind mounts and chroot into the target system
 
 %prep
-%setup -q
+%setup -q -n arch-install-scripts-v%{version}
 %autopatch
 
 #preserve original file dates
 sed -i 's/install -/install -p -/' Makefile
 
 #Remove an Arch-specific script that is useless on other distros and requires a working pacman install
-find . -name 'pacstrap*' -delete
+find . -name '*pacstrap*' -print -delete
 
 %build
 %make_build PREFIX=%{_prefix}
@@ -67,7 +67,8 @@ find . -name 'pacstrap*' -delete
 %{_datadir}/bash-completion/completions/genfstab
 %dir %{_datadir}/zsh
 %dir %{_datadir}/zsh/site-functions
-%{_datadir}/zsh/site-functions/_archinstallscripts
+%{_datadir}/zsh/site-functions/_arch-chroot
+%{_datadir}/zsh/site-functions/_genfstab
 %{_mandir}/man8/arch-chroot.8%{?ext_man}
 %{_mandir}/man8/genfstab.8%{?ext_man}
 

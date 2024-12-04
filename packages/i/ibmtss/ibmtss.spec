@@ -32,6 +32,7 @@ Source1:        90-tpm-ibmtss.rules
 Patch1:         ibmtss-configure.ac-Do-not-disable-optimization-for-debug-b.patch
 Patch2:         tss-Commit-changelog-and-autotools-version-update.patch
 Patch3:         utils-Update-.so-version-to-2.4.patch
+Patch4:         ibmtss-2.4.0-fix-FTBFS-2026.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  ibmswtpm2

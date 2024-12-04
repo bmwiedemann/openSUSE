@@ -1,0 +1,38 @@
+Index: logrotate-3.22.0/test/Makefile.am
+===================================================================
+--- logrotate-3.22.0.orig/test/Makefile.am
++++ logrotate-3.22.0/test/Makefile.am
+@@ -103,7 +103,6 @@ TEST_CASES = \
+ 	test-0107.sh \
+ 	test-0108.sh \
+ 	test-0109.sh \
+-	test-0110.sh \
+ 	test-0111.sh \
+ 	test-0112.sh
+ 
+Index: logrotate-3.22.0/test/Makefile.in
+===================================================================
+--- logrotate-3.22.0.orig/test/Makefile.in
++++ logrotate-3.22.0/test/Makefile.in
+@@ -532,7 +532,6 @@ TEST_CASES = \
+ 	test-0107.sh \
+ 	test-0108.sh \
+ 	test-0109.sh \
+-	test-0110.sh \
+ 	test-0111.sh \
+ 	test-0112.sh
+ 
+@@ -1463,13 +1462,6 @@ test-0109.sh.log: test-0109.sh
+ 	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+ 	--log-file $$b.log --trs-file $$b.trs \
+ 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+-	"$$tst" $(AM_TESTS_FD_REDIRECT)
+-test-0110.sh.log: test-0110.sh
+-	@p='test-0110.sh'; \
+-	b='test-0110.sh'; \
+-	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+-	--log-file $$b.log --trs-file $$b.trs \
+-	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+ 	"$$tst" $(AM_TESTS_FD_REDIRECT)
+ test-0111.sh.log: test-0111.sh
+ 	@p='test-0111.sh'; \

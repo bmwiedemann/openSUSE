@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Tue Dec  3 17:13:57 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.120.2 (boo#1234110)
+  This patch release fixes multiple security vulnerabilities, some
+  affecting all prior versions of Synapse. Server administrators
+  are encouraged to update Synapse as soon as possible. We are not
+  aware of these vulnerabilities being exploited in the wild.
+
+  Administrators who are unable to update Synapse may use the
+  workarounds described in the linked GitHub Security Advisory
+  below.
+
+  - Security advisory
+    The following issues are fixed in 1.120.1.
+    - GHSA-rfq8-j7rh-8hf2 / CVE-2024-52805 (high): Unsupported
+      content types can lead to memory exhaustion
+      Synapse instances which have a high max_upload_size and which
+      don't have a reverse proxy in front of them that would
+      otherwise limit upload size are affected.
+      Fixed by 4b7154c58501b4bf5e1c2d6c11ebef96529f2fdf.
+    - GHSA-f3r3-h2mq-hx2h / CVE-2024-52815 (high): Malicious
+      invites via federation can break a user's sync
+      Fixed by d82e1ed357b7ee21dff83d06cba7a67840cfd464.
+    - GHSA-vp6v-whfm-rv3g / CVE-2024-53863 (high): Synapse can be
+      forced to thumbnail unexpected file formats, invoking
+      potentially untrustworthy decoders
+      Synapse instances can disable dynamic thumbnailing by setting
+      dynamic_thumbnails to false in the configuration file.
+      Fixed by b64a4e5fbbbf119b6c65aedf0d999b4237d55503.
+    - GHSA-56w4-5538-8v8h / CVE-2024-53867 (moderate): The Sliding
+      Sync feature on Synapse versions between 1.113.0rc1 and
+      1.120.0 can leak partial room state changes to users no
+      longer in a room
+      Non-state events, like messages, are unaffected.
+      Synapse instances can disable the Sliding Sync feature by
+      setting experimental_features.msc3575_enabled to false in the
+      configuration file.
+      Fixed by 4daa533e82f345ce87b9495d31781af570ba3ead.
+
+  Additionally, we disclose the following vulnerabilities, both
+  have been fixed in Synapse 1.106.0:
+
+  - GHSA-4mhg-xv73-xq2x / CVE-2024-37302 (high): Denial of service
+    through media disk space consumption
+  - GHSA-gjgr-7834-rhxr / CVE-2024-37303 (moderate):
+    Unauthenticated writes to the media repository allow planting
+    of problematic content
+
+  See the advisories for more details. If you have any questions,
+  email security at element.io.
+
+  - Bug fixes
+    - Fix release process to not create duplicate releases. (#17970)
+
+-------------------------------------------------------------------
 Tue Nov 26 14:22:09 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.120.0

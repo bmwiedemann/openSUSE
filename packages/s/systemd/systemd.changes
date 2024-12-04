@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Dec  3 14:27:15 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Add 5005-Revert-boot-Make-initrd_prepare-semantically-equival.patch
+
+  Revert commit d64193a2a652b15db9cb9ed10c6b77a17ca46cd2 until the regression it
+  caused, reported at https://github.com/systemd/systemd/issues/35439, is fixed
+  (see also bsc#1233752 for its downstream counterpart).
+
+-------------------------------------------------------------------
+Tue Dec  3 09:39:39 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Disable EFI support on architectures that are not EFI-compliant
+
+-------------------------------------------------------------------
+Tue Dec  3 08:52:48 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Import commit 290170c8550bf2de4b5085ecdf7f056769944444 (merge of v256.9)
+
+  This merge includes the following fix:
+
+    cf7b3cc182 pid1: make clear that $WATCHDOG_USEC is set for the shutdown binary, noone else (bsc#1232227)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/c7671762b39ead7f8f9e70064256f5efaccedeca...290170c8550bf2de4b5085ecdf7f056769944444
+
+-------------------------------------------------------------------
+Mon Nov  4 10:18:04 UTC 2024 - Franck Bui <fbui@suse.com>
+
+- Import commit aee28e4c20a053ea27f8be69f2ea981e43bcb0b6
+
+  aee28e4c20 udev-builtin-path_id: SAS wide ports must have num_phys > 1 (bsc#1231610)
+  280989cfa4 core: when switching root remove /run/systemd before executing the binary specified by init= (bsc#1227580)
+
+- Drop 5003-core-when-switching-root-remove-run-systemd-before-e.patch, this
+  patch has been integrated in branch 'SUSE/v256', see above.
+
+-------------------------------------------------------------------
 Tue Oct  8 16:21:49 UTC 2024 - Franck Bui <fbui@suse.com>
 
 - Import commit c7671762b39ead7f8f9e70064256f5efaccedeca (merge of v256.7)

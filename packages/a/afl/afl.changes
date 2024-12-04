@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Tue Dec  3 14:59:59 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- updated to 4.30c
+  - afl-gcc and afl-clang funcionality is now removed
+  - afl-fuzz:
+    - fastresume feature added. if you abort fuzzing and resume fuzzing
+      with `-i -` or `AFL_AUTORESUME=1` and the target binary has not changed
+      then a dump will be loaded and the calibration phase skipped.
+      to disable this feature set `AFL_NO_FASTRESUME=1`
+      zlib compression is used if zlib is found at compile time
+    - improved seed selection algorithm
+    - added `AFL_CUSTOM_MUTATOR_LATE_SEND=1` to call the custom send()
+      function after the target has been restarted.
+    - because of bad math and undefined behaviour fixes we have to change
+      the CMPLOG map. **YOU NEED TO RECOMPILE CMPLOG TARGETS**
+    - fixed custom_post_process for calibration
+    - fixes for AFL_EXIT_ON_TIME and AFL_EXIT_WHEN_DONE, changed behaviour of
+      AFL_EXIT_WHEN_DONE to finish when really done :-)
+  - frida_mode:
+    - AFL_FRIDA_PERSISTENT_ADDR can now be be any reachable address not just
+      a function entry
+    - AFL_DEBUG is now the same as AFL_FRIDA_VERBOSE
+    - AFL_FRIDA_DEBUG_MAPS now works as expected
+  - qemu_mode:
+    - new hooks supported (optional), see qemu_mode/hooking_bridge - thanks to
+      @CowBoy4mH3LL
+  - unicorn_mode:
+    - fix install and forkserver (thanks aarnav!)
+    - pin unicorn version
+  - nyx_mode:
+    - bugfixes
+  - custom mutators:
+    - custom_send_tcp custom mutator added, thanks to @dergoegge
+  - afl-cc
+    - fix to support pointless changes in LLVM 20
+    - new runtime (!) variable: `AFL_OLD_FORKSERVER` to use the old vanilla
+      AFL type forkserver. Useful for symcc/symqemu/nautilus/etc. with
+      AFL_LLVM_INSTRUMENT=CLASSIC
+    - new compile time variable: `AFL_OPT_LEVEL` to set a specific optimization
+      level, default is `3`
+    - correctly explain how to get the correct map size for large targets
+    - small fix for weird LLVM defines in redhat
+  - code formatting updated to llvm 18
+  - improved custom_mutators/aflpp/standalone/aflpp-standalone
+  - added custom_mutators/autotokens/standalone/autotokens-standalone
+  - AFL++ headers are now installed to $PREFIX/include/afl
+
+-------------------------------------------------------------------
 Mon Jun 10 08:12:20 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - updated to 4.21c

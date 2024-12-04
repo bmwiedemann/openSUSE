@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Dec  3 12:30:33 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.9.1:
+  * v1.9.1 bump
+  * Improve examples on `ComputeStatistics` (#1881)
+  * update standard to C++17 per C++ build support (#1875)
+  * Declare a Python 3.13 toolchain, revert setup.py toolchain arget selection (#1876)
+  * Add a Python matrix to ensure the bindings build on all supported versions (#1871)
+  * Add `nb::is_flag()` annotation to Counter::Flags (#1870)
+  * [#1487] ensure that when printing color text the background color of the terminal on windows is preserved (#1865)
+  * Verify RegisterProfilerManager doesn't overwrite an existing registration (#1837)
+  * bump googletest version to match bazel (#1868)
+  * Update nanobind_bazel to v2.2.0 (#1866)
+  * upgrade bazel mods.  requires c++14 for tests (#1867)
+  * Update user_guide.md (#1863)
+  * Fix spurious warning 'misc-use-anonymous-namespace' (#1860) (#1861)
+  * Add enum value from newest Windows SDK (#1859)
+  * Version string correction in pkg-config files (#1858)
+  * add dry run docs
+  * Added the functionality for a dry run benchmark called through the cli argument --benchmark_dry_run. (#1851)
+  * enable the /MP MSVC compiler argument for parallel compilation (#1846)
+  * Bump oldest supported Python to 3.10, eliminate setuptools-scm (#1842)
+  * Fix C4459: Rename a function parameter `profiler_manager` to avoid hiding the global declaration. (#1839)
+  * Align benchmark::State to a cacheline. (#1230)
+  * Fix Python manual timing example (#1722)
+  * separate wheel versions in an effort to avoid timeouts
+
+-------------------------------------------------------------------
 Sat Oct 19 15:40:54 UTC 2024 - andrea.manzini@suse.com
 
 - Update to version 1.9.0:

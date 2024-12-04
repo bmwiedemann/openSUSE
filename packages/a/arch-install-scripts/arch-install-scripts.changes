@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec  3 19:13:23 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 29
+  * arch-chroot: fix unshare chroot /dev symlinks
+  * arch-chroot: bind mount over a /etc/resolv.conf symlink (requires mount >= 2.39)
+  * arch-chroot: add option to preserve the chroot resolv.conf
+  * arch-chroot: ensure /run is mounted with --make-private
+  * genfstab: ensure swap devices adhere to -f
+  * genfstab: remove atgc mount option
+
+-------------------------------------------------------------------
 Mon Nov 21 17:22:00 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
 - New upstream release 28
   * genfstab: disable fsck for btrfs (it does not need it and the binary is a no-op)

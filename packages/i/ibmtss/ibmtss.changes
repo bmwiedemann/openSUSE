@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec  3 07:26:17 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add ibmtss-2.4.0-fix-FTBFS-2026.patch to fix tests after 2026 (boo#1102840)
+
+-------------------------------------------------------------------
 Mon Oct 21 09:23:53 UTC 2024 - Michal Suchanek <msuchanek@suse.de>
 
 - Update to 2.4.0:

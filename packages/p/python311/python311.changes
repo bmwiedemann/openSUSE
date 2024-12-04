@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec  3 08:21:35 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add add-loongarch64-support.patch to support loongarch64
+
+-------------------------------------------------------------------
+Mon Dec  2 22:50:07 UTC 2024 - Matej Cepl <mcepl@suse.com>
+
+- Fix changelog
+
+-------------------------------------------------------------------
 Mon Nov 11 12:43:40 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove -IVendor/ from python-config boo#1231795
@@ -99,6 +109,9 @@ Mon Sep  9 16:53:07 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
   - CVE-2024-4032-private-IP-addrs.patch
   - CVE-2024-6923-email-hdr-inject.patch
   - CVE-2024-8088-inf-loop-zipfile_Path.patch
+    (renamed from CVE-2024-8088-zipfile-Path-sanitization.patch)
+  - CVE-2024-6232-ReDOS-backtrack-tarfile.patch
+  - CVE-2024-7592-quad-complex-cookies.patch
 
 -------------------------------------------------------------------
 Mon Sep  2 09:44:26 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
@@ -185,6 +198,7 @@ Mon Apr  8 05:44:04 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 - Remove not needed upstream patches:
   * libexpat260.patch
   * CVE-2023-6597-TempDir-cleaning-symlink.patch, bsc#1219666
+  * CVE-2024-0397-memrace_ssl.SSLContext_cert_store.patch
 
 - Update to 3.11.9:
   * Security
@@ -737,7 +751,8 @@ Thu Feb  8 07:27:40 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
       METH_FASTCALL | METH_KEYWORDS calling convention. Only the
       positional parameter count was checked; any keyword argument
       passed would be silently accepted.
-
+- Remove upstreamed patches:
+  - CVE-2024-0450-zipfile-avoid-quoted-overlap-zipbomb.patch
 - Refresh all patches:
   - CVE-2023-27043-email-parsing-errors.patch
   - F00251-change-user-install-location.patch
