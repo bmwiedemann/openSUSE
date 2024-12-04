@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Dec 04 05:59:44 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.69.6:
+  * Errors block (#3584)
+
+-------------------------------------------------------------------
+Wed Dec 04 05:55:57 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.69.5 (0.69.4 was not released):
+  * fix: Fixing concurrent access to read files map (#3615)
+  * build(deps): bump
+    go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp
+    (#3595)
+  * build(deps): bump
+    go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc
+    (#3597)
+  * build(deps): bump github.com/ProtonMail/go-crypto (#3598)
+  * add `--terragrunt-hclfmt-exclude-dir` parameter `hclfmt`
+    command. fix #3391 (#3609)
+
+-------------------------------------------------------------------
 Fri Nov 29 12:21:34 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.69.3:
