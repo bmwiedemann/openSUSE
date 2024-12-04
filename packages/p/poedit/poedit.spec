@@ -20,7 +20,7 @@
 %bcond_without crowdin_integration
 %bcond_with bundled_deps
 Name:           poedit
-Version:        3.4.4
+Version:        3.5.2
 Release:        0
 Summary:        Gettext Catalog Editing Tool
 License:        MIT
@@ -34,7 +34,7 @@ BuildRequires:  libboost_regex-devel >= 1.60
 BuildRequires:  libboost_system-devel >= 1.60
 BuildRequires:  libboost_thread-devel >= 1.60
 BuildRequires:  pkgconfig
-BuildRequires:  wxGTK3-devel >= 3.1.4
+BuildRequires:  wxGTK3-devel >= 3.2
 BuildRequires:  pkgconfig(gtkspell3-3.0)
 BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(icu-uc)

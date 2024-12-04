@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec  2 20:54:41 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.1:
+  * Use the portal
+  * Port to GTK4
+  * Fix copy to clipboard
+
+-------------------------------------------------------------------
 Mon Sep  9 08:00:11 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - rename to upstream name

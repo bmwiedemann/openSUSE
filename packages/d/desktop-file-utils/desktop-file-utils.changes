@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov  7 21:22:16 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to version 0.28:
+  * common
+   + Increase GLib requirement to 2.26 (Corentin Noël).
+   + Fix install failing on second run (Raziel Anarki).
+   + Fix use of deprecated Meson feature resulting in a warning (Raziel
+    Anarki).
+  * desktop-file-validate
+   + Allow groups with the same name as interfaces in Implements (Corentin
+     Noël).
+   + Add support for the COSMIC environment (Ryan Brue).
+
+-------------------------------------------------------------------
 Wed Jan 17 14:56:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - support non-SUSE distributions

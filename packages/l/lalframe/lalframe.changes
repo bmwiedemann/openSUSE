@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Dec  2 12:08:43 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add lalframe-swig-stringval-not-value.patch: For compatibility
+  with swig 4.3.0, prefer 'stringval' before 'value' attribute
+  (upstream commit 9dba245a).
+
+-------------------------------------------------------------------
+Mon Nov 18 12:40:11 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Fix use of %requires_eq with respect to octave.
+
+-------------------------------------------------------------------
 Wed Sep 11 16:42:03 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.0.5:

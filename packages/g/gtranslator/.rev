@@ -444,4 +444,26 @@
   recognized.</comment>
     <requestid>1206026</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>044bd52f24725886df9c065ff008fb8f</srcmd5>
+    <version>47.1</version>
+    <time>1733255260</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 47.1:
+  + Fix help page on sandboxed installations
+  + Fix title in translation memory dialog
+  + Fix focus behind translation memory GtkOverlay
+  + Fix Back button on D-L panel
+  + Fix default profile creation
+  + Fix crash when opening file chooser
+  + Store whether main window is maximized
+  + Fix search bar not appearing on new tabs
+  + Fix crash when pressing Ctrl+D earlier than expected
+  + Fix missing icon in preferences dialog
+  + Make search bar use the entire width
+  + Fix the generation of API endpoints for D-L after switching
+    module
+  + Fix plurals fixer (forwarded request 1227833 from iznogood)</comment>
+    <requestid>1227991</requestid>
+  </revision>
 </revisionlist>

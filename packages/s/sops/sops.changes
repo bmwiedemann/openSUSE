@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Dec 03 05:45:52 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.9.2:
+  * Add changelog for 3.9.2.
+  * Bump version to 3.9.2.
+  * build(deps): Bump the go group with 8 updates
+  * Update go.mod.
+  * Adjust protoc command line for latest versions of plugins; fix
+    protoc Go plugin versions and install plugins locally.
+  * keyservice: update protobuf to an recent release
+  * fix(config): remove unused variables
+  * chore(deps): Update Rust dependencies
+  * Correctly handle comments during JSON serialization.
+  * Move Python patch tool to .github/utils/.
+  * Run 'make vendor' in CodeQL build step.
+  * Patch harmless parts of go.mod before looking for changes in
+    CI.
+  * build(deps): Bump the go group across 1 directory with 18
+    updates
+  * build(deps): Bump the ci group with 2 updates
+  * build(deps): Bump the rust group in /functional-tests with 3
+    updates
+  * build(deps): Bump github/codeql-action in the ci group
+  * build(deps): Bump the rust group in /functional-tests with 2
+    updates
+  * build(deps): Bump the ci group across 1 directory with 3
+    updates
+  * build(deps): Bump the rust group in /functional-tests with 2
+    updates
+  * build(deps): Bump the ci group with 5 updates
+  * build(deps): Bump the go group with 7 updates
+  * fix(azkv): handle whitespace in Azure Key Vault URLs
+  * build(deps): Bump serde_json in /functional-tests in the rust
+    group
+  * build(deps): Bump the ci group with 2 updates
+  * build(deps): Bump the go group with 6 updates
+  * build(deps): Bump the ci group with 5 updates
+  * build(deps): Bump the go group with 12 updates
+  * build(deps): Bump the ci group with 4 updates
+  * build(deps): Bump the go group with 11 updates
+
+-------------------------------------------------------------------
 Sun Oct 06 08:22:29 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.9.1:

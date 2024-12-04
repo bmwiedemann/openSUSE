@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec  2 13:40:26 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Add iptables-nft-fix-interface-comparisons.patch
+  * fix '-C' commands for nft backend (bsc#1233690)
+
+-------------------------------------------------------------------
 Fri Nov  8 16:14:22 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.8.11

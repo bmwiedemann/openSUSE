@@ -20,7 +20,7 @@
 %define sover   25
 %define libname lib%{name}%{sover}
 Name:           proj
-Version:        9.5.0
+Version:        9.5.1
 Release:        0
 Summary:        Cartographic projection software
 License:        MIT

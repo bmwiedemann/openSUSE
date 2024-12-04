@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mashumaro
-Version:        3.14
+Version:        3.15
 Release:        0
 Summary:        Fast and well tested serialization library
 License:        Apache-2.0
@@ -33,7 +33,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module typing_extensions >= 4.1.0}
 BuildRequires:  %{python_module PyYAML >= 3.13}
 BuildRequires:  %{python_module msgpack >= 0.5.6}
-BuildRequires:  %{python_module orjson >= 3.6.1 if %python-base < 3.13}
+BuildRequires:  %{python_module orjson >= 3.10.10}
 BuildRequires:  %{python_module tomli >= 1.1.0 if %python-base < 3.11}
 BuildRequires:  %{python_module tomli-w >= 1.0}
 # SECTION test requirements
@@ -46,7 +46,7 @@ BuildRequires:  %{python_module pytest-xdist >= 3.5.0}
 BuildRequires:  fdupes
 Requires:       python-typing_extensions >= 4.1.0
 Suggests:       python-msgpack >= 0.5.6
-Suggests:       python-orjson >= 3.6.1
+Suggests:       python-orjson >= 3.10.10
 Suggests:       python-tomli >= 1.1.0
 Suggests:       python-tomli-w >= 1.0
 Suggests:       python-PyYAML >= 3.13

@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Thu Nov 28 21:57:18 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.15.12:
+  + Return to using the process ID of the Flatpak app in the cgroup
+    name. Using the instance ID in 1.15.11 caused crashes when
+    installing apps, extensions or runtimes that use the "extra
+    data" mechanism, which does not set up an instance ID.
+- Changes from version 1.15.11:
+  + Dependencies:
+    - In distributions that compile Flatpak to use a separate
+      xdg-dbus-proxy executable, version 0.1.6 is recommended (but
+      not required).
+    - The minimum xdg-dbus-proxy continues to be 0.1.0.
+  + Enhancements:
+    - Allow applications like WebKit to connect the AT-SPI
+      accessibility tree of processes in a sub-sandbox with the
+      tree in the main process.
+      . New sandboxing parameter flatpak run --a11y-own-name, which
+        is like --own-name but for the accessibility bus.
+      . flatpak-portal API v7: add new sandbox-a11y-own-names
+        option, which accepts names matching ${FLATPAK_ID}.*
+      . Apps may call the org.a11y.atspi.Socket.Embedded method on
+        names matching ${FLATPAK_ID}.Sandboxed.* by default
+      . flatpak run -vv $app_id shows all applicable sandboxing
+        parameters and their source, including overrides, as debug
+        messages
+    - Introduce USB device listing
+      . Apps can list which USB devices they want to access ahead
+        of time by using the --usb parameter. Check the manpages
+        for the more information about the accepted syntax.
+      . Denying access to USB devices is also possible with the
+        --no-usb parameter. The syntax is equal to --usb.
+      . Both options merely store metadata, and aren't used by
+        Flatpak itself. This metadata is intended to be used by the
+        (as of now, still in progress) USB portal to decide which
+        devices the app can enumerate and request access.
+    - Add support for KDE search completion
+    - Use the instance id of the Flatpak app as part of the cgroup
+      name. This better matches the naming conventions for cgroup.
+  + Bug fixes:
+    - Update libglnx to 2024-08-23
+    - fix build in environments that use -Werror=return-type, such
+      as openSUSE Tumbleweed
+    - add a fallback definition for G_PID_FORMAT with older GLib
+    - avoid warnings for g_steal_fd() with newer GLib
+    - improve compatibility of g_closefrom() backport with newer
+      GLib
+    - Update meson wrap file for xdg-dbus-proxy to version 0.1.6:
+    - compatibility with D-Bus implementations that pipeline the
+      authentication handshake, such as sd-bus and zbus
+    - compatibility with D-Bus implementations that use
+      non-consecutive serial numbers, such as godbus and zbus
+    - broadcast signals can be allowed without having to add TALK
+      permission
+    - fix memory leaks
+  + Internal changes:
+    - Better const-correctness
+    - Fix a shellcheck warning in the tests
+- Drop libglnx.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Tue Oct 15 11:54:41 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop rcFOO symlinks (PED-266).

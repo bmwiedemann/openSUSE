@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Dec  2 12:15:11 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.5.18:
+  * Lutris downloads the latest GE-Proton build for Wine if any Wine version is installed
+  * Use dark theme by default
+  * Display cover-art rather than banners by default
+  * Add 'Uncategorized' view to sidebar
+  * Preference options that do not work on Wayland will be hidden when on Wayland
+  * Game searches can now use fancy tags like 'installed:yes' or 'source:gog', with explanatory tool-tip
+  * A new filter button on the search box can build many of these fancy tags for you
+  * Runner searches can use 'installed:yes' as well, but no other fancy searches or anything
+  * Updated the Flathub and Amazon source to new APIs, restoring integration
+  * Itch.io source integration will load a collection named 'Lutris' if present
+  * GOG and Itch.io sources can now offer Linux and Windows installers for the same game
+  * Added support for the 'foot' terminal
+  * Support for DirectX 8 in DXVK v2.4
+  * Support for Ayatana Application Indicators
+  * Additional options for Ruffle runner
+  * Updated download links for the Atari800 and MicroM8 runners
+  * No longer re-download cached installation files even when some are missing
+  * Lutris log is included in the 'System' tab of the Preferences window
+  * Improved error reporting, with the Lutris log included in the error details
+  * Add AppArmor profile for Ubuntu versions >= 23.10
+  * Add Duckstation runner
+- add apparmor profile in it's seperate package
+- remove BR update-desktop-files
+
+-------------------------------------------------------------------
 Sat May  4 06:37:10 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
 
 - switch to meson, so we can have translations

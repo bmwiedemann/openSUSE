@@ -696,4 +696,26 @@ installing all /icons/hicolor/*/*/*   might have been only some png and a single
 </comment>
     <requestid>1175031</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>c0164ae20478515042e215efd69ff44d</srcmd5>
+    <version>3.5.2</version>
+    <time>1733255171</time>
+    <user>anag+factory</user>
+    <comment>- Poedit 3.5.2:
+  * Fixed false-positive QA warnings for Georgian.
+  * Improved formatting of empty translation nodes in XLIFF.
+  * Fixed several localization issues introduced with the switch wxWidgets 3.2.
+- Poedit 3.5.1:
+  * Minor visual fixes (alignment, dark mode, blurry icons).
+- Poedit 3.5:
+  * Added a tool to remove same-as-source translations.
+  * Further improvements to JSON support, e.g. better compatiblity with Angular files.
+  * Improved QA checks and editor performance.
+  * Many &quot;plumbing&quot; improvements: upgraded to wxWidgets 3.2, system ICU is now used
+    (smaller downloads) etc.
+  * Removed the bookmarks functionality. It was broken by design, only
+    implementable in PO files and is superseded by modern collaboration platforms.
+</comment>
+    <requestid>1227841</requestid>
+  </revision>
 </revisionlist>

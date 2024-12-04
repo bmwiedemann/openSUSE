@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Mon Dec  2 12:21:40 UTC 2024 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- update to 0.18.07:
+  * Manual: stress-prio-inv default scheduling policy is fifo
+  * Makefile: expand $(*FLAGS) and $(MACHINE) non-recursively
+  * stress-gpu: fix the gpu-upload option is not effective
+  * Makefile: fix machine detection for Ubuntu Bionic s390x VM
+  * Makefile: bump version
+  * stress-file-ioctl: replace long int with long for ioctl macros
+  * Makefile.machine: remove need for which command
+  * core-affinity: add die, core, cluster parsing options for affinity lists
+  * core-helper: refactor, add helper function to check for zero'd buffer
+  * stress-flipflop: use PRIu64 format specifiers for uint64_t values
+  * core-affinity: rename str to arg to avoid name shadowing on token string
+    str
+  * stress-vma: don't use void * pointer arithmetic
+  * stress-flipflop: add sanity check to avoid static analysis warnings
+  * core-shim: fix order of int declaration for vlen in shim_process_madvise
+  * core-affinity: swap args in calloc call
+  * stress-softlock: re-work drop_niceness to cater for POSIX conformant nice()
+    returns
+  * stress-opcode: add missing const cast
+  * stress-flipflop: constify casts in stress_flipflop_uint64_cmp
+  * core-affinity: make stress_package_set static
+  * core-, stress-: replace local static nowt pointer with global g_nowt
+  * core-affinity: fix off-by 1 when printing max packages available
+  * core-affinity: parse package list, e.g 0-3,7-11
+  * core-affinity: parse affinity list, allow packageN to be specified
+  * core-affinity: parse affinity list with mix of ranges and
+    odd,even,random,all
+  * Makefile.config: add built time check for cpu_set_t
+  * core-setting: add missing \n in string type output
+  * stress-flip-flop: add new single cacheline coherency scalability stressor
+  * stress-l1cache: unroll loops to improve throughput
+  * stress-*: handle nice returns in a portable way
+  * core-shim: add new Linux 6.13 xattrat system calls
+  * stress-shm-sysv: requires sys/ipc.h and sys_shm.h so check for these
+  * stress-llc-affinity: add cache line flushing option --llc-affinity-clflush
+  * stress-gpu: rename option OPT_gpu_uploads to OPT_gpu_uploads (2)
+  * stress-gpu: rename option OPT_gpu_uploads to OPT_gpu_uploads
+  * stress-ng: use generalized signal handler setup
+  * kernel-coverage: add --keep-going to workaround gcov errors
+  * stress-vma: fix stress_mmapaddr_get_addr to return validated non-mapped
+    addresses
+  * stress-vma: retry address randomization if address is in text or heap
+    sections
+  * stress-vma: add missing comments
+  * stress-vma: try access test on all pages of mmap
+  * stress-vma: ensure test alloc is the correct number of pages in size
+  * stress-vma: fix incorrect func name in comment block
+  * core-perf: add some more perf events based on recent kernels
+  * Revert "stress-pthread: disable pthread_sigqueue call for CYGWIN"
+  * stress-workload: add a few more permutations of fma computation
+  * core-nt-store: improve double nt stores on x86
+  * stress-opcode: x86: generate random length of opcode prefix ops
+  * stress-rawdev: use %jd format specifiers for intmax_t
+  * Makefile: use a smaller set of -W settings for PEDANTIC icc builds
+  * core-klog: add another const in err_exceptions[]
+  * core-helper: add some missing comment blocks
+  * core-shim: remove comment about use of pragma
+  * core-shim: remove extraneous ( in comment
+  * core-shim: use arch specific cacheflush system calls
+  * core-rapl: only emit "perhaps run as root" message if not running as root
+  * stress-cacheline: unroll loops, improve performance by 33%
+  * stress-bitonic: unroll test and verify loops for improved speed
+  * stress-bubblesort: unroll loops to improve performance
+  * core-, stress-: replace short with short int, long with long int
+  * stress-ng: add --taskset-random option to randomize stressor CPU affinity
+  * core-job: rename stress_chop to stress_str_chop
+  * stress-vm: fix early termination of prime-incdec stressor
+  * Manual: fix spelling mistake "optiob" -> "option"
+  * stress-prefetch: use K instead of KB for cache size
+  * stress-vma: use read rather than write on 8 bit pointer
+  * core-helper: add backtrace dumping, call when SIGABRT occurs
+  * core-affinity: --taskset: add "all" and "random" keywords
+  * stress-l1cache: fix reverse method, fix incorrect setting of data loop
+  * stress-brk: ensure the failure sbrk errno is being checked
+  * core-target-clones: add more power9,10,11 target clone build time
+    constraints
+  * core-shim: limit _FORTIFY_SOURCE to 2 for ALT linux gcc for ppoll
+    workaround
+  * core-shim: use shim'd types for shim_poll args
+  * core-shim: add shim to ppoll() and workaround fortification issues
+  * stress-fp-error: remove duplicated sqrt
+  * core-, stress-: fflush opened writable files
+
+-------------------------------------------------------------------
 Sat Nov  2 20:49:52 UTC 2024 - hui <sturm-fr@web.de>
 
 - update to 0.18.06:
@@ -154,7 +241,8 @@ Sat Nov  2 20:49:52 UTC 2024 - hui <sturm-fr@web.de>
   * stress-dfp: fix copyright year
   * stress-dfp: add _Decimal32/64/128 floating point add/mul/div stressors
   * kernel-coverage: cater for minix 1 to minux 3 fs types
-  * stress-cpu-sched: replace block/unblock functions with stress_cpu_sched_hrtimer_sigprocmask
+  * stress-cpu-sched: replace block/unblock functions with
+    stress_cpu_sched_hrtimer_sigprocmask
   * stress-cpu-sched: add fork retries for other forks
   * stress-cpu-sched: add fork retries
   * README.md: add a Cygwin bug link
@@ -170,7 +258,8 @@ Sat Nov  2 20:49:52 UTC 2024 - hui <sturm-fr@web.de>
   * core-cpu: Add some more Hypervisor ID string in EBX,ECX,EDX strings
   * stress-cpu-sched: add some random SIGSTOP/SIGCONT on child processes
   * stress-set: cater for setrlimit returning -EINVAL on sigrlimit
-  * stress-cpu-sched: replace clone with fork and ensure all child processes die
+  * stress-cpu-sched: replace clone with fork and ensure all child processes
+    die
   * stress-cpu-sched: add RT hrtimer to change cpu and scheduler
   * stress-cpu-sched: add more mechanisms to select next cpu to use
   * stress-cpu-sched: exec stress-ng from a fork'd child for more stress
@@ -191,7 +280,8 @@ Sat Nov  2 20:49:52 UTC 2024 - hui <sturm-fr@web.de>
   * stress-ng.h: move #include <dirent.h> to core-shim.h
   * stress-ng: mungify stressor names at startup time
   * stress-ng: remove space after \n in error messages
-  * core-shared-heap: rename stress_shared_heap_deinit to stress_shared_heap_free
+  * core-shared-heap: rename stress_shared_heap_deinit to
+    stress_shared_heap_free
   * Manual: use an escaped ? (e.g. ?) in class option example
   * stress-prio-inv: make priority inheritance error a warning
   * core-: stress-: voidify returns from various sleep function calls
@@ -218,7 +308,8 @@ Sat Nov  2 20:49:52 UTC 2024 - hui <sturm-fr@web.de>
   * stress-cpu-sched: yet another scheduler stressor
   * core-thrash: read memory related proc files on Linux
   * core-lock: increase number of concurrent locks to 2 * STRESS_PROCS_MAX
-  * Add new --stressor-time option to debug log the start/finish times of stressors
+  * Add new --stressor-time option to debug log the start/finish times of
+    stressors
 
 -------------------------------------------------------------------
 Sat Oct 26 14:02:44 UTC 2024 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>

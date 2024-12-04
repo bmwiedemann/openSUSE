@@ -5644,4 +5644,17 @@ I cannot test locally unfortunately.
     Improper Keypress Handling in Executable File Confirmation Dialog</comment>
     <requestid>1226643</requestid>
   </revision>
+  <revision rev="350" vrev="1">
+    <srcmd5>9a76b1b8a64cf294096b125a9c259da6</srcmd5>
+    <version>128.5.1</version>
+    <time>1733255236</time>
+    <user>anag+factory</user>
+    <comment>- Mozilla Thunderbird 128.5.1
+  * Add end of year donation appeal
+  * Total message count for favorite folders did not work consistently
+- make spec compatible with rpm &lt; 4.17 again
+- correct appdata for different desktop filename
+</comment>
+    <requestid>1227967</requestid>
+  </revision>
 </revisionlist>

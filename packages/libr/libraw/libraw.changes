@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec  2 14:38:59 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Limit fdupes to %_libdir
+
+-------------------------------------------------------------------
 Thu Dec 28 18:09:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.21.2:

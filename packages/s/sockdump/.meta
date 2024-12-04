@@ -1,0 +1,5 @@
+<package name="sockdump" project="openSUSE:Factory">
+  <title>Dump UNIX domain socket traffic with eBPF</title>
+  <description>https://github.com/mechpen/sockdump</description>
+  <devel project="security" package="sockdump"/>
+</package>

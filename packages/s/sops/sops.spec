@@ -20,7 +20,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           sops
-Version:        3.9.1
+Version:        3.9.2
 Release:        0
 Summary:        Simple and flexible tool for managing secrets
 License:        MPL-2.0

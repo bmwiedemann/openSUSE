@@ -34,6 +34,10 @@ URL:            https://wiki.ligo.org/Computing/LALSuite
 Source:         https://software.igwn.org/sources/source/lalsuite/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM lalburst-fix-uninitialised-variable.patch badshah400@gmail.com -- fix usage of an uninitialised variable
 Patch1:         lalburst-fix-uninitialised-variable.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         https://git.ligo.org/lscsoft/lalsuite/-/commit/9dba245ab3692ecf691247a442704f13c075ed34.patch#/lalburst-swig-stringval-not-value.patch
+# PATCH-FIX-UPSTREAM lalburst-tests-unittest-makeSuite.patch badshah400@gmail.com -- Remove usage of `unittest.makeSuite` as it is deprecated in Python 3.11+
+Patch3:         lalburst-tests-unittest-makeSuite.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module glue}
 BuildRequires:  %{python_module lal >= 7.2.0}
@@ -100,6 +104,7 @@ Requires:       pkgconfig(lalsimulation) >= 4.0.0
 This package contains sources and header files needed to build applications
 that use the LAL Burst library.
 
+%if %{with octave}
 %package -n octave-lalburst
 Summary:        Octave bindings for LAL Burst
 Group:          Productivity/Scientific/Physics
@@ -110,9 +115,14 @@ Requires:       octave-lalsimulation
 
 %description -n octave-lalburst
 This package provides the necessary files for using LAL Burst with octave.
+%endif
 
 %prep
-%autosetup -p1
+# Upstream commits are -p1 against the full lalsuite, but -p2 against individual lal* pkgs
+%autosetup -N
+%patch -P1 -p1
+%patch -P2 -p2
+%patch -P3 -p1
 
 %build
 %{python_expand # Necessary to run configure with multiple py3 flavors

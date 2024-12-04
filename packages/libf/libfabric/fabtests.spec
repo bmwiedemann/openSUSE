@@ -28,6 +28,7 @@ URL:            http://www.github.com/ofiwg/libfabric
 Source:         libfabric-%{version}%{git_ver}.tar.bz2
 Source1:        fabtests-rpmlintrc
 Patch0:         libfabric-libtool.patch
+Patch1:         psm3-prevent-code-from-building-using-AVX-AVX2.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libfabric-devel = %{version}

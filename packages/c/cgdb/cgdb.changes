@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec  2 15:18:32 UTC 2024 - Friedrich Haubensak <hsk17@mail.de>
+
+- to support gcc14, add patch cgdb-0.8.0-configure-c99.patch (from
+  gentoo) and run autoreconf in %prep stage
+
+-------------------------------------------------------------------
 Tue May 17 09:18:52 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 0.8.0:

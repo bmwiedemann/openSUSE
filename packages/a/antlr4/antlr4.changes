@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec  2 15:58:42 UTC 2024 - Christian Goll <cgoll@suse.com>
+
+- add cmake configuration files 
+
+-------------------------------------------------------------------
 Tue Feb 20 10:53:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

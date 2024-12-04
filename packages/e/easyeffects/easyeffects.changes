@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Dec  3 08:58:05 UTC 2024 - Gerald Chen <gerald_chen@foxmail.com>
+
+- update to release 7.2.1
+  + Fixed a bug that makes the application crash when the option Linux Studio Plugins package is not installed.
+- update to release 7.2.0
+  + Updated translations
+  + Fixed a bug in the crystalizer plugin where the scale values were not being properly applied.
+- update to release 7.1.9
+  + Latency compensation can be applied to the spectrum plugin.It will delay its drawing so it matches the latency offset applied by the user on programs like Pavucontrol.
+  + The command line option that shows EasyEffects version should work properly now.
+  + Fixed a regression in the autoload preset code.
+- update to release 7.1.8
+  + The loudness plugin exposes the ISO 226:2023 standard that is now available in the LSP plugin.
+  + Updated translations
+  + Performance optmizations to the spectrum plugin and the LADSPA wrapper
+  + We were not locking PipeWire's thread main loop before setting a  stream volume and mute controls. THis could cause these operations to fail in some situations 
+- update to release 7.1.7
+  + Community Presets have been implemented. Users can install packages containing multiple Easy Effects presets to be imported and applied inside the application. These packages will be maintained and shipped by volunteers. You can search them on the repositories of your favorite distribution.
+  + Added the ability of collapsing the sidebar to hide the effects list and expand the area of the effects user interface.
+  + EasyEffects won't touch streams that define `PW_KEY_TARGET_OBJECT` to an output device that is different from the one EasyEffects is using.
+  + Equalizer APO import feature can now apply Band-Pass filters.
+  + A change in GTK 4.14.1 prevented to apply the values inserted into the text field of our SpinButton widgets. This issue is now resolved.
+  + The latest Maximizer plugin releases do not have the ceiling control anymore. So we removed it from our user interface (you can use the plugin input gain to retrieve the same functionality).
+  + Equalizer APO import feature does not crash anymore on Flatpak when invalid values are provided.
+  + In order for Community Presets to be correctly shipped, packagers are invited to read and follow the guidelines linked inside the README of EasyEffects master branch.
+  + Presets with Convolver and/or Noise Reduction (RNNoise) effects created before `7.2.0` version are deprecated. Please reload the irs/model file inside the Convolver/RNNoise UI and resave the preset.
+
+-------------------------------------------------------------------
 Sun Apr 21 13:30:56 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to release 7.1.6

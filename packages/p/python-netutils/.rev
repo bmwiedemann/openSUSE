@@ -84,4 +84,22 @@
   * Added HP Comware parser.</comment>
     <requestid>1172449</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f04c3f66ba3c7add55e1e028958aeb84</srcmd5>
+    <version>1.10.0</version>
+    <time>1733255186</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.10.0:
+  * Added Functionality to ip_network filter to support method calls
+    with kwargs.
+  * Fix configuration parsers to allow newlines, no longer auto strip
+    all newlines.
+  * Added NIST URL creation and platform mapper.
+  * Added DNA Center platform mappings.
+  * Improved error message when duplicate line is parsed.
+- Add patch use-legacycrypt-if-required.patch:
+  * Use the legacycrypt module where we need to.
+- Switch to autosetup macros.</comment>
+    <requestid>1227889</requestid>
+  </revision>
 </revisionlist>

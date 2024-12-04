@@ -43,13 +43,6 @@
 %else
 %bcond_with armnn_tests
 %endif
-# Extra tests require opencv(3)-devel, but it is broken for Leap 15.1 - boo#1154091
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
-# FIXME: disabled for now, as it fails since version 21.05
-%bcond_with armnn_extra_tests
-%else
-%bcond_with armnn_extra_tests
-%endif
 # flatbuffers-devel is available on Leap 15.2+/SLE15SP2+
 # But tensorflow-lite >= 2.10 is only avaialble on Tumbleweed
 %if 0%{?suse_version} > 1500
@@ -65,8 +58,8 @@
 %bcond_with armnn_onnx
 %endif
 %define version_major 24
-%define version_minor 08
-%define version_lib 33
+%define version_minor 11
+%define version_lib 34
 %define version_lib_testutils 3
 %define version_lib_tfliteparser 24
 %define version_lib_onnxparser 24
@@ -79,15 +72,6 @@ Group:          Development/Libraries/Other
 URL:            https://developer.arm.com/products/processors/machine-learning/arm-nn
 Source0:        https://github.com/ARM-software/armnn/archive/v%{version}.tar.gz#/armnn-%{version}.tar.gz
 Source1:        armnn-rpmlintrc
-# PATCH-FIX-UPSTREAM - https://github.com/ARM-software/armnn/issues/786
-Patch1:         armnn-fix-armv7.patch
-# PATCHES to add downstream ArmnnExamples binary - https://layers.openembedded.org/layerindex/recipe/87610/
-Patch200:       0003-add-more-test-command-line-arguments.patch
-Patch201:       0005-add-armnn-mobilenet-test-example.patch
-Patch202:       0006-armnn-mobilenet-test-example.patch
-Patch203:       0009-command-line-options-for-video-port-selection.patch
-Patch204:       0010-armnnexamples-update-for-19.08-modifications.patch
-Patch205:       armnn-fix_find_opencv.patch
 BuildRequires:  ComputeLibrary-devel >= %{version_major}.%{version_minor}
 BuildRequires:  cmake >= 3.22
 BuildRequires:  gcc-c++
@@ -105,10 +89,6 @@ BuildRequires:  libboost_filesystem-devel >= 1.59
 BuildRequires:  libboost_program_options-devel >= 1.59
 BuildRequires:  libboost_system-devel >= 1.59
 BuildRequires:  libboost_test-devel >= 1.59
-%if %{with armnn_extra_tests}
-BuildRequires:  libboost_log-devel >= 1.59
-BuildRequires:  libboost_thread-devel >= 1.59
-%endif
 %endif
 %if %{with armnn_flatbuffers}
 BuildRequires:  flatbuffers-devel
@@ -124,13 +104,6 @@ BuildRequires:  Mesa-libOpenCL
 BuildRequires:  ocl-icd-devel
 BuildRequires:  opencl-cpp-headers
 BuildRequires:  opencl-headers
-%endif
-%if %{with armnn_extra_tests}
-%if 0%{?suse_version} > 1500
-BuildRequires:  opencv3-devel
-%else
-BuildRequires:  opencv-devel
-%endif
 %endif
 %if %{with armnn_onnx}
 BuildRequires:  python3-onnx
@@ -200,29 +173,6 @@ such as TensorFlow Lite, allowing them to run efficiently – without
 modification – across Arm Cortex CPUs and Arm Mali GPUs.
 
 This package contains the development libraries and headers for armnn.
-
-%if %{with armnn_extra_tests}
-%package -n %{name}-extratests
-Summary:        Additionnal downstream tests for Arm NN
-# Make sure we do not install both openCL and non-openCL (CPU only) versions.
-Group:          Development/Libraries/C and C++
-Requires:       %{name}
-# Make sure we do not install both openCL and non-openCL (CPU only) versions.
-%if "%{target}" == "opencl"
-Conflicts:      armnn-extratests
-%else
-Conflicts:      armnn-opencl-extratests
-%endif
-
-%description -n %{name}-extratests
-Arm NN is an inference engine for CPUs, GPUs and NPUs.
-It bridges the gap between existing NN frameworks and the underlying IP.
-It enables efficient translation of existing neural network frameworks,
-such as TensorFlow Lite, allowing them to run efficiently – without
-modification – across Arm Cortex CPUs and Arm Mali GPUs.
-
-This package contains additionnal downstream tests for armnn.
-%endif
 
 %package -n libarmnn%{version_lib}%{?package_suffix}
 Summary:        libarmnn from armnn
@@ -374,17 +324,6 @@ This package contains the libarmnnOnnxParser library from armnn.
 
 %prep
 %setup -q -n armnn-%{version}
-%patch -P 1 -p1
-%if %{with armnn_extra_tests}
-%patch -P 200 -p1
-%patch -P 201 -p1
-%patch -P 202 -p1
-%patch -P 203 -p1
-%patch -P 204 -p1
-%patch -P 205 -p1
-# Add Boost log as downstream extra test requires it
-sed -i 's/ find_package(Boost 1.59 REQUIRED COMPONENTS unit_test_framework)/find_package(Boost 1.59 REQUIRED COMPONENTS unit_test_framework filesystem system log program_options)/' ./cmake/GlobalConfig.cmake
-%endif
 
 %build
 %if %{with armnn_onnx}
@@ -451,11 +390,7 @@ protoc $PROTO --proto_path=. --proto_path=%{_includedir} --proto_path=$(dirname 
   -DBUILD_PYTHON_WHL=OFF \
   -DBUILD_PYTHON_SRC=OFF \
 %endif
-%if %{with armnn_extra_tests}
-  -DBUILD_ARMNN_EXAMPLES=ON
-%else
-  -DBUILD_ARMNN_EXAMPLES=OFF
-%endif
+
 
 %if 0%{?suse_version} > 1500
 %cmake_build
@@ -530,7 +465,6 @@ LD_LIBRARY_PATH="$(pwd)/build/" \
 %if %{with armnn_tests}
 %{_bindir}/ExecuteNetwork
 %if %{with armnn_flatbuffers}
-%{_bindir}/ArmnnConverter
 %{_bindir}/TfLite*-Armnn
 %endif
 %if %{with armnn_onnx}
@@ -539,11 +473,6 @@ LD_LIBRARY_PATH="$(pwd)/build/" \
 %if %{with armnn_flatbuffers}
 %{_bindir}/SimpleSample
 %endif
-%endif
-
-%if %{with armnn_extra_tests}
-%files -n %{name}-extratests
-%{_bindir}/ArmnnExamples
 %endif
 
 %files -n libarmnn%{version_lib}%{?package_suffix}

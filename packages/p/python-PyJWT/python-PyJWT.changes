@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec  3 09:42:44 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to version 2.10.1 (bsc#1234038, CVE-2024-53861):
+  * Prevent partial matching of iss claim. Thanks @fabianbadoi!
+    (See: GHSA-75c5-xw7c-p5pm)
+
+-------------------------------------------------------------------
 Wed Nov 20 07:59:12 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
 - Update to version 2.10.0

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec 02 16:43:42 UTC 2024 - david.mulder@suse.com
+
+- Update to version 0.7.7+git.0.b48d0bb:
+  * Version 0.7.7
+  * Fix CVE-2024-11738: rustls network-reachable panic in `Acceptor::accept`
+    (bsc#1233949).
+  * Version 0.7.6
+  * Enable module for utf8proc-devel in Rocky8
+
+-------------------------------------------------------------------
 Mon Nov 25 19:55:22 UTC 2024 - david.mulder@suse.com
 
 - Update to version 0.7.5+git.0.8f421b0:

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec  2 17:31:25 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 2024.9:
+  + deploy: Don't recompute verity checksums if not enabled
+    (performance improvement)
+  + prepare-root: allow sysroot.readonly=true with kernel cmdline
+    ro
+  + various bug fixes 
+
+-------------------------------------------------------------------
 Tue Oct 15 11:55:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop rcFOO symlinks (PED-266).

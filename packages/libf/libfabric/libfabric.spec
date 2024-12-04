@@ -35,7 +35,7 @@ Group:          Development/Libraries/C and C++
 Source:         %{name}-%{version}%{git_ver}.tar.bz2
 Source1:        baselibs.conf
 Patch0:         libfabric-libtool.patch
-Patch1:         psm3-fix-SIGILL-on-system-not-supporting-AVX.patch
+Patch1:         psm3-prevent-code-from-building-using-AVX-AVX2.patch
 URL:            http://www.github.com/ofiwg/libfabric
 BuildRequires:  autoconf
 BuildRequires:  automake

@@ -37,7 +37,7 @@ Obsoletes:      linux-kernel-headers < %{version}
 
 %{lua:
 function cross_archs()
-  return "aarch64", "arm", "hppa", "i386", "m68k", "mips", "ppc64", "ppc64le", "riscv64", "s390x", "sparc", "sparc64", "x86_64"
+  return "aarch64", "arm", "hppa", "i386", "loongarch64", "m68k", "mips", "ppc64", "ppc64le", "riscv64", "s390x", "sparc", "sparc64", "x86_64"
 end
 
 function kernel_arch(arch)
@@ -49,6 +49,7 @@ function kernel_arch(arch)
      ["i386"] = "x86",
      ["i586"] = "x86",
      ["i686"] = "x86",
+     ["loongarch64"] = "loongarch",
      ["ppc"] = "powerpc",
      ["ppc64"] = "powerpc",
      ["ppc64le"] = "powerpc",

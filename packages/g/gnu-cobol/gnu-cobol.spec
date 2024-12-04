@@ -1,7 +1,7 @@
 #
 # spec file for package gnu-cobol
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ Source0:        https://sourceforge.net/projects/open-cobol/files/gnu-cobol/%{_m
 Source1:        https://sourceforge.net/projects/open-cobol/files/gnu-cobol/%{_mver}/gnucobol-%{version}.tar.xz.sig
 # PATCH-FIX-UPSTREAM fix_test_698.patch -- see https://sourceforge.net/p/gnucobol/bugs/695/
 Patch1:         fix_test_698.patch
+# PATCH-FIX-UPSTREAM gnucobol-3.1.2-C99.diff -- Missing include which causes compilation errors with GCC 14
+Patch2:         gnucobol-3.1.2-C99.diff
 BuildRequires:  autoconf
 BuildRequires:  db-devel
 BuildRequires:  dos2unix
@@ -41,15 +43,14 @@ BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(ncurses) >= 5.4
 Requires(post): %{install_info_prereq}
 Requires(preun): %{install_info_prereq}
-Provides:       opencobol = %{version}
 Provides:       libcob-devel = %{version}
+Provides:       opencobol = %{version}
 Obsoletes:      libcob-devel <= 3.1.2
 
 %description
 GnuCOBOL (formerly OpenCOBOL) is a COBOL compiler.
 cobc translates COBOL to executable using intermediate C sources,
 providing full access to nearly all C libraries.
-
 
 %package -n libcob%{sover}
 Summary:        GnuCOBOL shared library
@@ -61,11 +62,12 @@ GnuCOBOL (formerly OpenCOBOL) is a COBOL compiler.
 cobc translates COBOL to executable using intermediate C sources,
 providing full access to nearly all C libraries.
 
-
 %prep
 %autosetup -p1 -n gnucobol-%{version}
 
 %build
+
+%global optflags %{optflags} -Wno-error=incompatible-pointer-types
 %configure \
         --enable-hardening \
         --enable-static=no
@@ -107,6 +109,5 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n libcob%{sover}
 %license COPYING.LESSER
 %{_libdir}/libcob.so.%{sover}*
-
 
 %changelog

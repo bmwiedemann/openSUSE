@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Dec 02 20:39:09 UTC 2024 - felix.niederwanger@suse.com
+
+- Update to version 3.84.2:
+  * Auto packing the repository in background for optimum performance.
+  * See "git help gc" for manual housekeeping.
+  * fix(deps): update module github.com/aymanbagabas/go-osc52 to v2 (#3715)
+  * [refactor] - `detectorKeywordMatcher` initialization (#3687)
+  * fix typo (#3683)
+  * upgrade Github dep (#3699)
+  * Added how to scan a local git repo (#3593)
+  * Add Flexport detector (#3633)
+  * add pkg level doc (#3684)
+  * Improved cloudflarecakey detector (#3688)
+  * fixed and updated satismeterwritekey detector (#3693)
+  * feat(cli): fine-grained log level (#3703)
+  * fixed scalr detector integration test (#3707)
+  * Fix/saucelabs detector (#3696)
+  * fixed issue#3701 (#3711)
+  * added and updated pattern tests for detectors starting from p to q (#3710)
+  * fix(deps): update module github.com/wasilibs/go-re2 to v1.8.0 (#3695)
+  * updated the function names of new pattern tests for detetors n through o (#3691)
+  * fix(deps): update module github.com/jedib0t/go-pretty/v6 to v6.6.3 (#3690)
+  * Added pattern unit tests for detectors starting with the letters n through o (#3685)
+  * fixed api flash detector (#3666)
+  * [feat] - S3 metrics (#3577)
+  * chore(deps): update jaxxstorm/action-install-gh-release action to v1.14.0 (#3672)
+  * fix(deps): update module github.com/couchbase/gocb/v2 to v2.9.3 (#3682)
+  * Add Scan method to SourceManager to scan a single SourceUnit (#3650)
+  * [scan-9] Update enumeration logic (#3626)
+  * test: fix multiple package names (#3661)
+
+-------------------------------------------------------------------
 Sun Nov 24 08:36:57 UTC 2024 - felix.niederwanger@suse.com
 
 - Update to version 3.84.1:

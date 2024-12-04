@@ -24,6 +24,8 @@ License:        GPL-2.0-or-later
 Group:          Development/Tools/Debuggers
 URL:            https://cgdb.github.io/
 Source0:        https://cgdb.me/files/%{name}-%{version}.tar.gz
+Patch0:         cgdb-0.8.0-configure-c99.patch
+BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gcc-c++
@@ -44,7 +46,8 @@ interface is inspired by the classic Unix text editor, vi. Those familiar with
 vi (or vim) should feel right at home using CGDB.
 
 %prep
-%setup -q
+%autosetup -p1
+autoreconf -Iconfig
 
 %build
 %configure

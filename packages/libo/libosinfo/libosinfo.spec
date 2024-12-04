@@ -20,15 +20,14 @@
 %define with_lang 1
 
 Name:           libosinfo
-Version:        1.11.0
+Version:        1.12.0
 Release:        0
 Summary:        Operating system and hypervisor information management library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://releases.pagure.org/libosinfo
 Source0:        %{url}/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM -- libxml 2.12 compatibility
-Patch0:         0001-osinfo-Make-xmlError-struct-constant-in-propagate_li.patch
+
 BuildRequires:  gtk-doc
 BuildRequires:  hwdata
 BuildRequires:  libcurl-devel

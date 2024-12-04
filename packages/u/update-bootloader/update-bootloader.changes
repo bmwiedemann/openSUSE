@@ -1,4 +1,21 @@
 --------------------------------------------------------------------
+Tue Dec 3 12:23:38 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/perl-bootloader#185
+- provide default settings in cases where kernel and initrd
+  symlinks are missing (bsc#1233956)
+- update test results
+- 1.21
+
+--------------------------------------------------------------------
+Mon Dec 2 13:35:30 UTC 2024 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/perl-bootloader#184
+- bash in SLE15 works differently than in TW; adjust for
+  differences (bsc#1231018)
+- 1.20
+
+--------------------------------------------------------------------
 Fri Nov 8 14:40:20 UTC 2024 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/perl-bootloader#183

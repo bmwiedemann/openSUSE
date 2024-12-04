@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Dec  3 12:55:41 UTC 2024 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.28.1
+  * Bugfixes:
+    #9400: Folder overlap not detected when using tilde
+    #9590: WebUI table column widths broken on iPhone 12 Pro Max and wider
+    #9686: Sync status stays at 'Syncing xx%" when remote device pauses the folder.
+    #9757: Firefox, dark theme: device ID is hard to read
+    #9775: Junctions as dirs doesn't work anymore
+    #9776: Disabled checkbox panels don't respect dark theme
+    #9783: gui: Address override not respected in fresh default config
+    #9821: panic: runtime error: index out of range [-1]
+  * Enhancements:
+    #9725: Ignoring symbolic links when syncing on android as well
+
+-------------------------------------------------------------------
 Wed Oct 16 08:28:46 UTC 2024 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.28.0

@@ -18,35 +18,27 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-extra-platforms
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        Detect platforms and group them by family
 License:        GPL-2.0-or-later
 URL:            https://github.com/kdeldycke/extra-platforms
 Source:         https://files.pythonhosted.org/packages/source/e/extra-platforms/extra_platforms-%{version}.tar.gz
+BuildRequires:  %{python_module boltons >= 24.1.0}
+BuildRequires:  %{python_module distro >= 1.9.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module boltons >= 24.1.0}
-BuildRequires:  %{python_module distro >= 1.9.0}
 BuildRequires:  %{python_module pytest >= 8.3.1}
 BuildRequires:  %{python_module pytest-randomly >= 3.16.0}
+BuildRequires:  %{python_module pytest-xdist >= 3.6.1}
+BuildRequires:  %{python_module requests >= 2.32.3 with %python-requests < 2.33}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-boltons >= 24.1.0
 Requires:       python-distro >= 1.9.0
-Suggests:       python-pytest >= 8
-Suggests:       python-furo >= 2024.8.6
-Suggests:       python-myst-parser >= 4.0.0
-Suggests:       python-sphinx >= 8.1.3
-Suggests:       python-sphinx-autodoc-typehints >= 2.5.0
-Suggests:       python-sphinx-copybutton >= 0.5.2
-Suggests:       python-sphinx-design >= 0.6.0
-Suggests:       python-sphinx-issues >= 5.0.0
-Suggests:       python-sphinxcontrib-mermaid >= 1.0.0
-Suggests:       python-sphinxext-opengraph >= 0.9.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -67,6 +59,8 @@ Detect platforms and group them by family
 # remove coverage configuration
 sed -i '/cov=/d' pyproject.toml
 sed -i '/cov-report=/d' pyproject.toml
+# do not run tests that try to connect to websites
+rm -f tests/test_platform_data.py
 %pytest
 
 %files %{python_files}

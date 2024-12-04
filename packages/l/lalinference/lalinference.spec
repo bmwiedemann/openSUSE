@@ -41,6 +41,8 @@ URL:            https://wiki.ligo.org/Computing/DASWG/LALSuite
 Source:         https://software.igwn.org/sources/source/lalsuite/%{pname}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM lalinference-printf-data-type-consistency.patch badshah400@gmail.com -- Cast data passed to printf from size_t to long to make it consistent with the format "%li"; this fixes build failures on i586
 Patch0:         lalinference-printf-data-type-consistency.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         https://git.ligo.org/lscsoft/lalsuite/-/commit/9dba245ab3692ecf691247a442704f13c075ed34.patch#/lalinference-swig-stringval-not-value.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.7}
 BuildRequires:  fdupes
@@ -133,6 +135,7 @@ BuildArch:      noarch
 %description -n %{name}-data
 This package provides the data files for lalinference.
 
+%if %{with octave}
 %package -n octave-lalinference
 Summary:        Octave bindings for LAL Inference
 Group:          Productivity/Scientific/Physics
@@ -148,9 +151,14 @@ Requires:       octave-lalsimulation
 
 %description -n octave-lalinference
 This package provides the necessary files for using LAL Inference with octave.
+%endif
 
 %prep
-%autosetup -p1 -n %{pname}-%{version}
+# Upstream commits are -p1 against the full lalsuite, but -p2 against individual lal* pkgs
+# Patch0 is not upstream and uses -p1, so we have a mix of -p1 and -p2 patches
+%autosetup -N -n %{pname}-%{version}
+%patch -P0 -p1
+%patch -P1 -p2
 
 %build
 %{python_expand # Necessary to run %%configure with all python flavors

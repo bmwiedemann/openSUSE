@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Nov 28 14:41:06 UTC 2024 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Removed patch: build-remove-llvm-dev-dependency-from-libbcc.patch
+  It is included in the latest upstream release.
+
+- Update to version 0.32.0
+  * Support for kernel up to 6.11.
+  * bcc tool update: wakeuptime, readahead, shmsnoop, offcputime, cachestat,
+    cachetop, hardirqs
+  * libbpf tool update: futexctn, profile, readhead, softirqs, hardirqs
+  * Multiple enhancements for memleak: better error path checking, adding
+    mremap uprobe, etc.
+  * Support get pid/tgid in pid namespaces (cpudist, profile)
+  * multiple pid filtering support: profile, offcputime
+  * detect whether elf binary is PIE even if the binary is marked as DYN
+  * Fix several compilation issues with llvm20
+  * doc update, other bug fixes and tools improvement.
+
+- Update to version 0.31.0
+  * Support for kernel up to 6.9.
+  * Add support for bcachefs to fsdist and fsslower tools
+  * libbpf tool update: memleak, syncsnoop, numamove, syscount, vfsstat,
+    tcptop, capable, syncsnoop, sigsnoop, etc.
+  * bcc tool update: biolatency, biosnoop, biotop, vfsstat, kvmexit, sslsniff,
+    swapin, etc.
+  * build: Remove llvm-dev dependency from libbcc
+  * build: Remove dependency on LLVM header from libbcc packages
+  * usdt: Fix bare register dereference on aarch64
+  * Extend `bcc_proc` API which allows to limit search to specific pid
+  * Fix several flaky tests.
+  * doc update, other bug fixes and tools improvement.
+
+-------------------------------------------------------------------
 Tue Jun  4 06:14:17 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Add python3-pyelftools as requirement of bcc-tools (boo#1225497)

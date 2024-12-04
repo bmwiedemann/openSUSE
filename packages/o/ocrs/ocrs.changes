@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec  2 09:33:08 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.9.0:
+  * Added allowed_chars library option and --allowed-chars CLI
+    option to filter the characters produced by text recognition.
+  * Improved error message if custom alphabet size does not match
+    recognition model output.
+
+-------------------------------------------------------------------
 Wed Sep 18 10:11:01 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.8.1:

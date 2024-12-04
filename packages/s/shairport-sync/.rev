@@ -267,4 +267,12 @@
 - Add missing runtime dependency: avahi (boo#1213521) (forwarded request 1198479 from wfrisch)</comment>
     <requestid>1198759</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>cab9df7a95e78666b810385f778d3306</srcmd5>
+    <version>4.3.5</version>
+    <time>1733255254</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1227974</requestid>
+  </revision>
 </revisionlist>

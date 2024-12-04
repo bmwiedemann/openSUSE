@@ -23,7 +23,7 @@
 %define pear_module_version(m) %(sed -n 's/.*=>.*%{1}-\\(.*\\)\\.tar.*/\\1/p' %{SOURCE0})
 
 Name:           php8-pear
-Version:        1.10.23
+Version:        1.10.24
 Release:        0
 Summary:        PHP Extension and Application Repository
 License:        BSD-2-Clause

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec  2 13:18:45 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 0.6.0.
+  * Migrated to diamondburned GTK bindings, bye bye gotk3 library (but we are still on GTK3);
+  * disallowed userDirButton parent selection (makes possible keyboard usage on directory names);
+  * desktopEntries sorted case insensitive.
+
+-------------------------------------------------------------------
 Sat Oct 26 01:25:13 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 0.5.2.

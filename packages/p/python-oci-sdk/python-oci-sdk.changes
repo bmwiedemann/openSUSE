@@ -1,4 +1,144 @@
 -------------------------------------------------------------------
+Mon Dec  2 09:37:42 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.139.0
+  * Support for optional parameters for unified auditing in the Database service
+  * Support for user groups for creating technical requests in the Support Management service
+  * Support for additional checksum algorithms (SHA-256, SHA-384, CRC32C) in the Object Storage service
+  * Support for single Read Only (RO) endpoint for the read replicas in the PostgreSQL service
+  * Support for exascale database vaults in the Database service
+  * Support for virtual machine clusters with database vaults in the Database service
+  * Support for N3-Gi version in the Database service
+  * The vendored library idna was upgraded from version `2.10` to `3.10`
+  * The vendored library urllib3 was upgraded from version `1.26.9` to `1.26.20`
+  * The property `sub_components` was removed from the model `SubCategories`
+    in the Customer Incident Management Service
+  * The constants `LIMIT_STATUS_APPROVED`, `LIMIT_STATUS_PARTIALLY_APPROVED`,
+    `LIMIT_STATUS_NOT_APPROVED`, `LIMIT_STATUS_REJECTED` were removed from the
+    model `CreateLimitItemDetails` in the Customer Incident Management Service
+  * The property `limit_status` was removed from the model `CreateLimitItemDetails`
+    in the Customer Incident Management Service
+  * The model `ServiceCategories` was removed from the Customer Incident Management Service
+- from version 2.138.1
+  * Support for calling Oracle Cloud Infrastructure services in the me-alain-1 region
+  * Support for connection refresh in the GoldenGate service
+  * Support for secret compartment id in import and export
+    operations of deployment wallet in the GoldenGate service
+  * Support for creating metadata only backups in the GoldenGate service
+  * Support for Llama 3.2 unit shape in Generative AI service
+  * Support for Llama 3.2 vision in Generative AI Inference service
+  * Support for Cohere CommandR response format in Generative AI Inference service
+- from version 2.138.0
+  * Support for calling Oracle Cloud Infrastructure services in the ap-seoul-2 region
+  * Support for calling Oracle Cloud Infrastructure services in the ap-suwon-1 region
+  * Support for calling Oracle Cloud Infrastructure services in the ap-chuncheon-2 region
+  * Support for MFA Enablement v2 in the Identity Domains service
+  * Support for starting, stopping and updating min/max executor
+    count for SQL Endpoints in the Data Flow service
+  * Support for customer message in the Customer Incident Management Service
+  * Support for REJECTED limitStatus in the Customer Incident Management Service
+  * Issue with using `OkeWorkloaIdentityResourcePrincipalSigner` after the
+    PyJWT upgrade to 2.4.0 introduced int OCI Python SDK `2.137.1`
+  * UserWarning being emitted from Cryptography 43.x
+  * The operations `get_status` and `get_csi_number` were removed from
+    the IncidentClient in the Customer Incident Management Service
+  * The property `service_categories` was removed from the model
+    `IncidentResourceType` in the Customer Incident Management Service
+  * The properties `service_category` and `issue_type` were removed from
+    the model `ServiceCategories` in the Customer Incident Management Service
+  * The retry strategy for getting the X509 token from Identity
+    service was modified and is now protected via circuit breaker
+- from version 2.137.1
+  * Support for L3IP (Layer 3 IP) listeners in the Network Load Balancing service
+  * Support for overriding an existing add-on installation in the Kubernetes Engine service
+- from version 2.137.0
+  * Support for resource locking in the File storage service
+  * Support for customer managed keys via Azure key vault and
+    Amazon Web Services key vault in the Database service
+  * Support for generated tokens on create secret operations in the Identity Domains service
+  * Support for creating and updating Amazon Web Services asset-sources,
+    EC2 and EBS assets in the Cloud Bridge service
+  * Support for listing Amazon Web Services regions which are available
+    for discovery and migration in the Cloud Bridge service
+  * Support for model backup retention and restore in the Datascience service
+  * Support for host capacity planning for host IO metrics in the Operations Insight service
+  * Support for FastConnect redundancy in the Compute service
+  * Support for create, publish, clone and delete operations
+    on runbooks in the Fleet Application Management service
+  * Support for platform configurations and metadata management
+    in the Fleet Application Management service
+  * Support for management of compliance policy rules
+    in the Fleet Application Management service
+  * Support for compliance report details based on compliance
+    policy in the Fleet Application Management service
+  * Support for administrative settings like auto discovery
+    frequency in the Fleet Application Management service
+  * The vendored library PyJWT was upgraded from version `1.7.1` to version `2.4.0`
+  * The operation `update_plugin` was removed from the
+    `OcbAgentSvcClient` client in the Cloud Bridge service
+  * The property `discovery_schedule_id` was removed from the model
+    `UpdateVmWareAssetSourceDetails` in the Cloud Bridge service
+  * The constant `METRIC_NAME_HOST_CONTAINERS` and its value `HOST_CONTAINERS`
+    was removed from the list of allowed values for the parameter `metric_name`
+    in the model `HostPerformanceMetricGroup` in the Operations Insight service
+  * The parent class of model `HostContainers` was changed from `HostPerformanceMetricGroup`
+    to `HostConfigurationMetricGroup` and list of allowed values for the parameter
+    `metric_name` was changed to `HOST_PRODUCT`, `HOST_RESOURCE_ALLOCATION`,
+    `HOST_MEMORY_CONFIGURATION`, `HOST_HARDWARE_CONFIGURATION`, `HOST_CPU_HARDWARE_CONFIGURATION`,
+    `HOST_NETWORK_CONFIGURATION`, `HOST_ENTITES`, `HOST_FILESYSTEM_CONFIGURATION`,
+    `HOST_GPU_CONFIGURATION`, `HOST_CONTAINERS` in the Operations Insight service
+- from version 2.136.0
+  * Support for open id connect discovery in the Oracle Kubernetes Engine service
+  * Support for DNS security extensions (DNSSEC) in the DNS service
+  * Support for restoring delta between backups to a new volume in the Block Volume service
+  * Support for cross region backup copy and replication for
+    volumes encrypted with customer keys in the Block Volume service
+  * Support for list operation on deployment environments in the GoldenGate service
+  * Support for defining environment types for deployments in the GoldenGate service
+  * Fixed an issue with decoding UTF-8 characters in response models
+  * Removed model files which were not accessible programmatically
+  * Response type changed to `oci.golden_gate.models.DeploymentBackup` for operations
+    `copy_deployment_backup` and `create_deployment_backup` in the GoldenGate service
+- from version 2.135.2
+  * Support for OCI Secure Desktops service
+  * Support for window preferences on cloud automation tooling updates
+    on ExaCC and ExaCS VM clusters in the Database service
+  * Support for maintenance windows in the Stack Monitoring service
+  * Renamed service OCI Container Engine to OCI Kubernetes Engine
+  * Support for password as an optional parameter on creating
+    admin users in the Fusion Apps as a Service
+  * Support for IAM credentials for autonomous databases in the Operations Insights service
+  * The upper bound for `cryptography` dependency has changed to versions less than `46.0.0`
+- from version 2.135.1
+  * Support for calling Oracle Cloud Infrastructure services in the us-somerset-1 region
+  * Support for calling Oracle Cloud Infrastructure services in the us-thames-1 region
+  * Support for Security Attribute service
+  * Support for Zero Trust Packet Routing service
+  * Support for zero trust packet routing security attributes in the Database service
+  * Support for zero trust packet routing security attributes in the Networking service
+  * Support for zero trust packet routing security attributes in the Network Load Balancer service
+  * Support for disaster recovery failover in the Integration Cloud service
+- from version 2.135.0
+  * Support for Generative AI Agent service
+  * Support for undeleting autonomous databases in the Database service
+  * Support for assigning key versions for the pluggable databases in the Database service
+  * Support for lifecycle states on list autonomous database operation in the Database service
+  * Support for data masking parameter on list refresh activity operation in the Fusion Application as a Service
+  * Support for configuring custom endpoints on an instance in the Integration Cloud service
+  * Support for updating channel schedules on instance create operation in the Analytics service
+  * Support for ExaCC via management agents in the Operations Insights service
+  * Support for appending and deleting allowed SQLs from SQL firewall policies in the Data Safe service
+  * Support for alarm suppressions with compartment targets and recurring schedules in the Monitoring service
+  * A new value called `UNKNOWN_ENUM_VALUE` has been added to the enums of the parent class when a subclass
+    is in the responses returned from services. If a service returns a value that cannot be recognized by
+    the version of the SDK, then the enum will be set to this value. Previously this would throw an exception.
+  * Property `dimensions` changed from required to optional in model `AlarmSuppressionSummary` in the Monitoring service
+  * Value `STANDBY` was removed from the property `lifecycle_state` in models `IntegrationInstance`
+    and `IntegrationInstanceSummary` in the Integration Cloud service
+- Refresh patches for new version
+  * ops_relax-python-depends.patch
+
+-------------------------------------------------------------------
 Mon Sep 23 14:28:12 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.134.0

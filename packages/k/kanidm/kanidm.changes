@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Dec 03 05:55:52 UTC 2024 - william.brown@suse.com
+
+- Update to version 1.4.4~git0.c3dbf83:
+  * Release 1.4.4
+  * Check DNS on replication loop start not at task start (#3243)
+  * Work around systemd race condition (#3262)
+  * Clear invalid tokens from unix resolver (#3256)
+  * Allow OAuth2 loopback redirects if the path matches (#3252)
+  * Correctly display domain name on login (#3254)
+  * Display account_id during success/deny paths in unixd (#3253)
+  * s/idm_people_self_write_mail/idm_people_self_mail_write/g (#3250)
+  * handle missing map_group setting in config (#3242)
+  * owncloud: Add SameSite=Lax config for cross-domain auth (#3245)
+  * Yaleman/issue3229 (#3239)
+
+-------------------------------------------------------------------
 Fri Nov 22 07:08:34 UTC 2024 - william.brown@suse.com
 
 - Update to version 1.4.3~git1.078625c:

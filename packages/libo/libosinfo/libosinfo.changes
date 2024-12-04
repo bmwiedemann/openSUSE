@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec  2 11:20:36 MST 2024 - carnold@suse.com
+
+- Update to version 1.12.0 (jsc#PED-8910)
+  * Some memory leak fixes
+  * Adapt to change in libxml2
+  * Several CI improvements
+  * Several translations improvements
+- Drop 0001-osinfo-Make-xmlError-struct-constant-in-propagate_li.patch
+
+-------------------------------------------------------------------
 Sun May 26 10:18:24 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change:

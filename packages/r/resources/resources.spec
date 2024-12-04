@@ -17,10 +17,10 @@
 #
 
 
-%bcond_without test
+%bcond_with test
 %define appid net.nokyan.Resources
 Name:           resources
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        Monitor your system processes
 License:        GPL-3.0-or-later

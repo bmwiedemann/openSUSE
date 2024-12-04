@@ -1,7 +1,7 @@
 #
 # spec file for package antlr4
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -174,7 +174,7 @@ export CXX=g++-7
 export CFLAGS="$RPM_OPT_FLAGS"
 export CXXFLAGS="$RPM_OPT_FLAGS"
 %endif
-%cmake -DWITH_DEMO=OFF -DANTLR_BUILD_CPP_TESTS=OFF -DANTLR_BUILD_SHARED=ON -DANTLR_BUILD_STATIC=OFF
+%cmake -DWITH_DEMO=OFF -DANTLR_BUILD_CPP_TESTS=OFF -DANTLR_BUILD_SHARED=ON -DANTLR_BUILD_STATIC=OFF -DANTLR4_INSTALL=ON
 %make_build
 popd
 
@@ -210,6 +210,7 @@ popd
 
 %files -n %{runtime_cpp_lib}-devel
 %{_libdir}/lib%{name}-runtime.so
+%{_libdir}/cmake/antlr4*
 %{_includedir}/%{name}-runtime/
 
 %changelog

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec 03 09:37:27 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.197.0:
+  * Add release notes for v0.197.0
+  * Cleanup Hybrid Nodes docs (#8072)
+  * Add IAM capability if a custom IAM role is provided for Auto
+    Mode
+  * add link to markdown and note for hybrid nodes
+  * add readme note for auto mode
+  * Prepare for next development iteration
+
+-------------------------------------------------------------------
 Mon Dec 02 12:31:03 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.196.0:

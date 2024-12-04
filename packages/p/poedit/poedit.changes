@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Dec  2 18:29:13 UTC 2024 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Poedit 3.5.2:
+  * Fixed false-positive QA warnings for Georgian.
+  * Improved formatting of empty translation nodes in XLIFF.
+  * Fixed several localization issues introduced with the switch wxWidgets 3.2.
+- Poedit 3.5.1:
+  * Minor visual fixes (alignment, dark mode, blurry icons).
+- Poedit 3.5:
+  * Added a tool to remove same-as-source translations.
+  * Further improvements to JSON support, e.g. better compatiblity with Angular files.
+  * Improved QA checks and editor performance.
+  * Many "plumbing" improvements: upgraded to wxWidgets 3.2, system ICU is now used
+    (smaller downloads) etc.
+  * Removed the bookmarks functionality. It was broken by design, only
+    implementable in PO files and is superseded by modern collaboration platforms.
+
+-------------------------------------------------------------------
 Sat May 18 14:14:55 UTC 2024 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Poedit 3.4.4:

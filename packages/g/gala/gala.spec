@@ -19,7 +19,7 @@
 %define         sover 0
 %define         appid io.elementary.desktop.wm
 Name:           gala
-Version:        8.0.3
+Version:        8.0.4
 Release:        0
 Summary:        The Pantheon window manager
 License:        GPL-3.0-or-later

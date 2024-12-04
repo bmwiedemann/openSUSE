@@ -17,14 +17,14 @@
 
 
 Name:           osinfo-db-tools
-Version:        1.11.0
+Version:        1.12.0
 Release:        0
 Summary:        Tools for managing the osinfo database
 License:        LGPL-2.1+ and GPL-2.0+
 Group:          System/Management
 Url:            https://releases.pagure.org/libosinfo/
 Source:         https://releases.pagure.org/libosinfo/%{name}-%{version}.tar.xz
-Patch1:         001-Make-xmlError-structs-constant.patch
+
 BuildRequires:  gettext-devel
 BuildRequires:  glib2-devel
 BuildRequires:  json-glib-devel

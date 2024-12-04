@@ -23,7 +23,7 @@
 %define _udevdir %(pkg-config --variable udev_dir udev)
 %endif
 Name:           google-guest-configs
-Version:        20241021.00
+Version:        20241121.00
 Release:        0
 Summary:        Google Cloud Guest Configs
 License:        Apache-2.0
@@ -70,6 +70,7 @@ cp -av src/usr/bin/* %{buildroot}%{_bindir}/
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150300
 %dir %{_modprobedir}
 %endif
+%attr(0755, root, root) %{_bindir}/gce-nic-naming
 %dir %{_sysconfdir}/rsyslog.d
 %{_modprobedir}/gce-blacklist.conf
 %config %{_sysconfdir}/rsyslog.d/*

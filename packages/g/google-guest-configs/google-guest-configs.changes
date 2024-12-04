@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Dec  3 13:05:43 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20241121.00 (bsc#1233625, bsc#1233626)
+  * Temporarily revert google_set_multiqueue changes for release (#92)
+- from version 20241115.00
+  * Remove IDPF devices from renaming rules (#91)
+- from version 20241112.00
+  * Revert "Revert 3 commits:" (#89)
+- from version 20241108.00
+  * Revert 3 commits: (#87)
+- from version 20241107.00
+  * gce-nic-naming: Exit 1 so that udev ignores the rule on error (#86)
+- from version 20241106.00
+  * Remove Apt IPv4 only config for Debian and Ubuntu (#85)
+- from version 20241031.00
+  * Add GCE intent based NIC naming tools (#84)
+- from version 20241025.00
+  * Update google_set_multiqueue to skip set_irq
+    if NIC is not a gvnic device (#83)
+- Add new binary gce-nic-naming to %{_bindir} in %files section
+
+-------------------------------------------------------------------
 Tue Oct 22 06:46:40 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20241021.00 (bsc#1231775, bsc#1231776)

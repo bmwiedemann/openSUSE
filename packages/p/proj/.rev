@@ -456,4 +456,12 @@ This package is included in Debian.
 - Bump gcc version used for Leap building to 13</comment>
     <requestid>1226921</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>0f383b615b8a611d1b10bd223ada4c14</srcmd5>
+    <version>9.5.1</version>
+    <time>1733255203</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1227920</requestid>
+  </revision>
 </revisionlist>

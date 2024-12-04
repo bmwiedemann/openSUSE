@@ -1,0 +1,22 @@
+From 1a3bc19e15de202755e5cdf67c1c011aef2926c9 Mon Sep 17 00:00:00 2001
+From: Dmitrii Iniutin <inyutin.da@gmail.com>
+Date: Wed, 6 Nov 2024 10:34:48 +0000
+Subject: [PATCH] Bump version to v2.9.1
+
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 0293b5a..4250e3d 100644
+--- a/setup.py
++++ b/setup.py
+@@ -6,7 +6,7 @@
+ 
+ setup(
+     name="aiohttp_retry",
+-    version="2.9.0",
++    version="2.9.1",
+     description="Simple retry client for aiohttp",
+     long_description=long_description,
+     long_description_content_type="text/markdown",

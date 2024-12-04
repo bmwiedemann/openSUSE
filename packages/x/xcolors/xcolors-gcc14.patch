@@ -1,0 +1,13 @@
+--- xcolors.c	2024-12-02 16:46:29.511789914 +0100
++++ xcolors.c	2024-12-02 16:58:30.288353436 +0100
+@@ -32,6 +32,10 @@
+ #define RGB_TXT "/usr/share/X11/rgb.txt"
+ #endif
+ 
++/* forward declarations to silence gcc14 */
++void colordemo( Widget parent, char *startcolor, XColor nearcolor, int maxdist);
++int l_strcasecmp(char *s1, char *s2);
++
+ String fallback_resources[] = {
+     "*Label.Font: 5x7",
+     "*panes.Width: 985",

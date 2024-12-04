@@ -17,20 +17,26 @@
 
 
 Name:           python-netutils
-Version:        1.8.1
+Version:        1.10.0
 Release:        0
 Summary:        Common helper functions useful in network automation
 License:        Apache-2.0
 URL:            https://netutils.readthedocs.io
 Source:         https://github.com/networktocode/netutils/archive/refs/tags/v%{version}.tar.gz#/netutils-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#networktocode/netutils#601
+Patch0:         use-legacycrypt-if-required.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module jinja2}
+BuildRequires:  %{python_module legacycrypt if %python-base >= 3.13}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core >= 1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module toml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if 0%{?python_version_nodots} >= 313
+Requires:       python-legacycrypt
+%endif
 Recommends:     python-napalm
 BuildArch:      noarch
 %python_subpackages
@@ -39,7 +45,8 @@ BuildArch:      noarch
 A Python library that is a collection of objects for common network automation tasks.
 
 %prep
-%setup -q -n netutils-%{version}
+%autosetup -p1 -n netutils-%{version}
+chmod -x netutils/lib_helpers.py
 
 %build
 %pyproject_wheel

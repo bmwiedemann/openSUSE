@@ -40,9 +40,11 @@ configured.
 %build
 export GOWORK=off
 
-go build \
-   -buildmode=pie \
-   -ldflags "-s -w"
+%ifnarch ppc64
+export GOFLAGS="-buildmode=pie"
+%endif
+
+go build
 
 %install
 # Install the binary.

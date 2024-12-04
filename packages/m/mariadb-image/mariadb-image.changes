@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec  3 13:26:37 UTC 2024 - SUSE Update Bot <bci-internal@suse.de>
+
+- Change attribute order in _service
+
+-------------------------------------------------------------------
 Mon Nov 25 11:56:07 UTC 2024 - SUSE Update Bot <bci-internal@suse.de>
 
 - Switch to a multistage build and base the final image on micro

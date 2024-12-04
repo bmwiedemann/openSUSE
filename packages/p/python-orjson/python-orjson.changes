@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Dec  2 11:05:13 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 3.10.12:
+  * Changed
+    - Publish PyPI manylinux i686 wheels.
+    - Publish PyPI musllinux i686 and arm7l wheels.
+    - Publish PyPI macOS wheels for Python 3.10 or later built on
+      macOS 15.
+    - Publish PyPI Windows wheels using trusted publishing.
+- update to 3.10.11:
+  * Changed
+    - Improve performance of UUIDs.
+    - Publish PyPI wheels with trusted publishing and PEP 740
+      attestations.
+    - Include text of licenses for vendored dependencies.
+- update to 3.10.10:
+  * Fixed
+    - Fix int serialization on s390x. This was introduced in 3.10.8.
+  * Changed
+    - Publish aarch64 manylinux_2_17 wheel for 3.13 to PyPI.
+- update to 3.10.9:
+  * Fixed
+    - Fix int serialization on 32-bit Python 3.8, 3.9, 3.10. This
+      was introduced in 3.10.8.
+- update to 3.10.8:
+  * Changed
+    - int serialization no longer chains OverflowError to the
+    - the __cause__ attribute of orjson.JSONEncodeError when range
+      exceeded.
+    - Compatibility with CPython 3.14 alpha 1.
+    - Improve performance.
+
+-------------------------------------------------------------------
 Mon Sep  9 10:29:05 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.10.7

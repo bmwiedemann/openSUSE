@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec  2 16:06:52 UTC 2024 - Friedrich Haubensak <hsk17@mail.de>
+
+- add xcolors-gcc14.patch to fix gcc14 compile time error
+
+-------------------------------------------------------------------
 Tue Feb  9 08:43:47 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Modernise spec file

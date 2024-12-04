@@ -1,0 +1,24 @@
+Index: gnucobol-3.1.2/libcob/common.c
+===================================================================
+--- gnucobol-3.1.2.orig/libcob/common.c
++++ gnucobol-3.1.2/libcob/common.c
+@@ -111,6 +111,7 @@
+ #endif
+ 
+ #if defined (WITH_XML2)
++#include <libxml/parser.h>
+ #include <libxml/xmlversion.h>
+ #include <libxml/xmlwriter.h>
+ #endif
+Index: gnucobol-3.1.2/libcob/mlio.c
+===================================================================
+--- gnucobol-3.1.2.orig/libcob/mlio.c
++++ gnucobol-3.1.2/libcob/mlio.c
+@@ -35,6 +35,7 @@
+ #include <libxml/xmlversion.h>
+ #include <libxml/xmlwriter.h>
+ #include <libxml/uri.h>
++#include <libxml/parser.h>
+ #endif
+ 
+ #if defined (WITH_CJSON)

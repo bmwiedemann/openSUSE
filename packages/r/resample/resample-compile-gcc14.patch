@@ -1,0 +1,12 @@
+Index: resample-1.8.1/src/sndlibextra.c
+===================================================================
+--- resample-1.8.1.orig/src/sndlibextra.c
++++ resample-1.8.1/src/sndlibextra.c
+@@ -6,6 +6,7 @@
+ 
+    - John Gibson (jgg9c@virginia.edu)
+ */
++#include <stdlib.h>
+ #include <assert.h>
+ #include <string.h>
+ #include "sndlibextra.h"

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Dec 02 18:17:00 UTC 2024 - antonio.teixeira@suse.com
+
+- Update to version 3.15.14:
+  * Fix a CVulkanCmdBuffer leak that could result in screenshot request failures
+  * Fixed conversion from RGB to full range BT.709 YCbCr
+  * Use the correct colorspace for YUV capture
+  * Removed GAMESCOPE_NV12_COLORSPACE default
+  * Add clipboard support from SDL backend
+  * Fix how reshade effects are cleared
+  * WaylandResource: Fix deleting resource
+  * layer: Print application info at instance creation time
+  * steamcompmgr: Fix crash when using magnifier and game recording
+  * layer: Add hacks for Talos Principle and Serious Sam's bad swapchain usage
+  * steamcompmgr: Ensure forward progress for surfaces without windows when we discard commits
+  * steamcompmgr: Disregard XWayland commits if we have an override surface and there was no damage
+  * build: fix meson compiler warning
+  * steamcompmgr: Add some logic for picking commits if we have an override w/ WSI layer
+  * layer: Send VK_ERROR_OUT_OF_DATE when window size changes on X11
+  * steamcompmgr: Add logging for when pipewire focus appid changes
+  * pipewire: Fix truncation of SPA_FORMAT_VIDEO_gamescope_focus_appid
+  * backend, rendervulkan: Use DRM format for output format on backend
+  * Add gamescope-reshade Wayland interface (#1495)
+  * build: add compiler information to gamescope_version
+  * drm: fix wrong degamma/shaper TFs on NV12
+  * steamcompmgr: Advertise UTF8_STRING in clipboard TARGETS.
+  * pipewire: cmpxchng in_buffer + out_buffer to nullptr if they equal to buffer
+
+-------------------------------------------------------------------
 Fri Sep 13 13:56:01 UTC 2024 - llyyr@yukari.in
 
 - Update to version 3.15.9:

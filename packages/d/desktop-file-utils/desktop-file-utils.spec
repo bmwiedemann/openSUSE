@@ -17,7 +17,7 @@
 
 
 Name:           desktop-file-utils
-Version:        0.27
+Version:        0.28
 Release:        0
 Summary:        Utilities for Manipulating Desktop Files
 License:        GPL-2.0-or-later

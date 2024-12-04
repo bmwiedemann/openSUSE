@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec  3 13:26:37 UTC 2024 - SUSE Update Bot <bci-internal@suse.de>
+
+- Change attribute order in _service
+
+-------------------------------------------------------------------
 Wed Oct 30 15:34:45 UTC 2024 - SUSE Update Bot <bci-internal@suse.de>
 
 - remove nonsensical org.opencontainers.image.authors - duplication of .vendor

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec  2 15:18:22 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add lalinference-swig-stringval-not-value.patch: For
+  compatibility with swig 4.3.0, prefer 'stringval' before 'value'
+  attribute (upstream commit 9dba245a).
+
+-------------------------------------------------------------------
 Thu Sep 12 17:40:21 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Drop upstreamed patches:

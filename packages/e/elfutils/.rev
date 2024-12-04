@@ -1136,4 +1136,41 @@ Fixes CVE-2018-18310, CVE-2018-18520 and CVE-2018-18521.
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1177390</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>ae3c385db7376bf26c82397e59c44db8</srcmd5>
+    <version>0.192</version>
+    <time>1733255125</time>
+    <user>anag+factory</user>
+    <comment>- Add pkgconfig(json-c) to reenable debuginfod support
+- Add fish to enable profile support for fish
+- Remove files packaged by libelf-devel
+
+- update to 0.192
+  CONDUCT: A new code of conduct has been adopted.  See the
+  	   CONDUCT file for more information.
+  debuginfod: Add per-file signature verification for integrity
+              checking, using RPM IMA scheme from Fedora/RHEL.
+  	      New API for metadata queries: file name -&gt; buildid.
+  	      Server-side extraction of files from kernel debuginfo
+  	      packages is significantly faster. Now takes &lt; 0.25 seconds,
+  	      down from ~50 seconds.
+  libdw: New functions dwfl_set_sysroot, dwfl_frame_unwound_source
+  	 and dwfl_unwound_source_str.
+  stacktrace: Experimental new tool that can process a stream of stack
+              samples from the Sysprof profiler and unwind them into call
+              chains. Enable on x86 with --enable-stacktrace. See
+              README.eu-stacktrace in the development branch for detailed
+              usage instructions:
+              https://sourceware.org/cgit/elfutils/tree/README.eu-stacktrace?h=users/serhei/eu-stacktrace
+
+- Remove files packaged by elfutils-debuginfod
+
+- update to 0.192
+  CONDUCT: A new code of conduct has been adopted.  See the
+  	   CONDUCT file for more information.
+  debuginfod: Add per-file signature verification for integrity
+              checking, using RPM IMA scheme from Fedora/RHEL.
+  	      New API for metadata queries: file name -&gt; buildid.</comment>
+    <requestid>1227791</requestid>
+  </revision>
 </revisionlist>

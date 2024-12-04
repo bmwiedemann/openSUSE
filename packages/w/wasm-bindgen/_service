@@ -3,7 +3,7 @@
     <param name="url">https://github.com/rustwasm/wasm-bindgen.git</param>
     <param name="versionformat">@PARENT_TAG@~@TAG_OFFSET@</param>
     <param name="scm">git</param>
-    <param name="revision">0.2.95</param>
+    <param name="revision">0.2.97</param>
     <param name="match-tag">*</param>
     <param name="changesgenerate">enable</param>
   </service>

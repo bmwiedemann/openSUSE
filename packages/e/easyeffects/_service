@@ -3,7 +3,7 @@
   <service name="tar_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/wwmm/easyeffects.git</param>
-    <param name="revision">v7.1.6</param>
+    <param name="revision">v7.2.1</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@~git.%h</param>
     <param name="versionrewrite-pattern">v(.*)\+0.git.*</param>
     <param name="versionrewrite-replacement">\1</param>

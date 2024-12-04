@@ -18,11 +18,10 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Scrapy
-Version:        2.11.2
+Version:        2.12.0
 Release:        0
 Summary:        A high-level Python Screen Scraping framework
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://scrapy.org
 Source:         https://files.pythonhosted.org/packages/source/s/scrapy/scrapy-%{version}.tar.gz
 BuildRequires:  %{python_module Brotli}
@@ -31,7 +30,7 @@ BuildRequires:  %{python_module Protego}
 BuildRequires:  %{python_module PyDispatcher >= 2.0.5}
 BuildRequires:  %{python_module Twisted >= 18.9.0}
 BuildRequires:  %{python_module attrs}
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module botocore >= 1.4.87}
 BuildRequires:  %{python_module cryptography >= 36.0.0}
 BuildRequires:  %{python_module cssselect >= 0.9.1}
@@ -74,7 +73,6 @@ Requires:       python-parsel >= 1.5.0
 Requires:       python-pyOpenSSL >= 21.0.0
 Requires:       python-queuelib >= 1.4.2
 Requires:       python-service_identity >= 18.1.0
-Requires:       python-setuptools
 Requires:       python-tldextract
 Requires:       python-w3lib >= 1.17.2
 Requires:       python-zope.interface >= 5.1.0
@@ -90,7 +88,6 @@ retrieval to monitoring or testing web sites.
 
 %package -n %{name}-doc
 Summary:        Documentation for %{name}
-Group:          Documentation/HTML
 
 %description -n %{name}-doc
 Provides documentation for %{name}.

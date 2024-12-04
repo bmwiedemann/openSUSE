@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Tue Dec  3 00:08:47 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Downgrade requirement of python-yarl to Recommends (and don’t
+  require it for building at all).
+
+-------------------------------------------------------------------
+Wed Nov 20 07:47:13 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 2.9.1:
+  - Add tests init file
+  - Fix the client sometimes would not retry
+- Update to 2.9.0:
+  - Retry based on HTTP methods
+  - refactor: _RequestContext._do_request()
+  - Add ruff
+  - Remove code-coverage
+  - Test on python packages up to 3.13
+  - Fix typo detected by codespell + add codespell workflow to
+    avoid typos sneaking in
+  - Improve documentation a little bit
+  - Update ci dependencies
+- Add fix_version.patch to fix ommitted version in setup.py
+
+-------------------------------------------------------------------
+Tue Apr 25 00:16:14 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v2.8.3
+

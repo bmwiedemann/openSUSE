@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Dec  1 19:14:16 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 1.10.24
+  - PEAR 1.10.16
+    * Fix bug #27796: "Array to string" conversion warnings on
+      installs/other actions
+    * Never reference E_STRICT on PHP 8.4+
+    * Fix tests 8.1+
+  - Archive_Tar 1.5.0
+    * Fix @return true... to @return bool true... on some functions
+    * Use 775 default for mkdirs, to avoid world-write
+  - Structures_Graph 1.2.0
+    * Update composer info (adds PHP/PEAR deps)
+    * Update phpunit tests
+    * Composer shows wrong license
+
+-------------------------------------------------------------------
 Sat Mar  9 19:59:45 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to 1.10.23

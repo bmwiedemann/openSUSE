@@ -17,7 +17,7 @@
 
 
 Name:           elfutils-debuginfod
-Version:        0.191
+Version:        0.192
 Release:        0
 Summary:        Debuginfod server provided by elfutils
 License:        GPL-3.0-or-later
@@ -48,6 +48,8 @@ BuildRequires:  zlib-devel
 BuildRequires:  zstd
 
 # For debuginfod
+BuildRequires:  pkgconfig(json-c) >= 0.11
+BuildRequires:  fish
 BuildRequires:  pkgconfig(libarchive) >= 3.1.2
 BuildRequires:  pkgconfig(libcurl) >= 7.29.0
 BuildRequires:  pkgconfig(libmicrohttpd) >= 0.9.33
@@ -143,6 +145,7 @@ autoreconf -fi
 # some patches create new test scripts, which are created 644 by default
 chmod a+x tests/run*.sh
 %configure \
+  --enable-libdebuginfod --enable-debuginfod \
 %if %{suse_version} > 1500
   --enable-debuginfod-urls=https://debuginfod.opensuse.org/ \
 %endif
@@ -167,7 +170,8 @@ rm -f %{buildroot}/%{_includedir}/gelf.h
 rm -f %{buildroot}/%{_includedir}/nlist.h
 rm -f %{buildroot}/%{_includedir}/dwarf.h
 rm -f %{buildroot}/%{_libdir}/libdw*
-rm -f %{buildroot}/%{_mandir}/man3/elf_*.3*
+rm -f %{buildroot}/%{_mandir}/man3/elf*_*.3*
+rm -f %{buildroot}/%{_mandir}/man3/libelf.3*
 rm -f %{buildroot}/%{_mandir}/man1/eu-*.1*
 rm -rf %{buildroot}%{_datadir}/locale/
 rm -f %{buildroot}/%{_libdir}/pkgconfig/libdw.pc
@@ -188,7 +192,7 @@ touch %{buildroot}%{_localstatedir}/cache/debuginfod/debuginfod.sqlite
 %check
 %if 0%{?qemu_user_space_build}
 # qemu-linux-user does not support ptrace and a few other process details
-export XFAIL_TESTS="dwfl-proc-attach run-backtrace-dwarf.sh run-backtrace-native.sh run-deleted.sh"
+export XFAIL_TESTS="dwfl-proc-attach run-backtrace-dwarf.sh run-backtrace-native.sh run-deleted.sh run-backtrace-native-core.sh"
 %endif
 %make_build check
 
@@ -224,6 +228,7 @@ export XFAIL_TESTS="dwfl-proc-attach run-backtrace-dwarf.sh run-backtrace-native
 %files -n debuginfod-profile
 %config %{_sysconfdir}/profile.d/debuginfod.sh
 %config %{_sysconfdir}/profile.d/debuginfod.csh
+%{_datadir}/fish/vendor_conf.d/debuginfod.fish
 %dir %{_sysconfdir}/debuginfod
 %if %{suse_version} > 1500
 %config %{_sysconfdir}/debuginfod/elfutils.urls

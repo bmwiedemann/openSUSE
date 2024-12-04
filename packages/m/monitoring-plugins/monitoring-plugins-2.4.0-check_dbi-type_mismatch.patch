@@ -1,0 +1,14 @@
+--- monitoring-plugins-2.4.0/plugins/check_dbi.c	2024/12/02 16:16:03	1.1
++++ monitoring-plugins-2.4.0/plugins/check_dbi.c	2024/12/02 17:02:44
+@@ -141,9 +141,9 @@
+ 	if (verbose > 2)
+ 		printf ("Initializing DBI\n");
+ 
+-	dbi_inst *instance_p = { 0 };
++	dbi_inst instance_p = { 0 };
+ 
+-	if (dbi_initialize_r(NULL, instance_p) < 0) {
++	if (dbi_initialize_r(NULL, &instance_p) < 0) {
+ 		printf ("UNKNOWN - failed to initialize DBI; possibly you don't have any drivers installed.\n");
+ 		return STATE_UNKNOWN;
+ 	}

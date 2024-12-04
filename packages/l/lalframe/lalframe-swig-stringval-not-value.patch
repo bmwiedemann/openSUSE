@@ -1,0 +1,33 @@
+From 9dba245ab3692ecf691247a442704f13c075ed34 Mon Sep 17 00:00:00 2001
+From: Karl Wette <karl.wette@ligo.org>
+Date: Thu, 24 Oct 2024 18:06:30 +1100
+Subject: [PATCH] common/swig/generate_swig_iface.py: prefer "stringval" before
+ "value" attribute
+
+- As of SWIG 4.3.0 "value" attribute contains quote characters
+- "stringval" attribute appears to still contain the raw string
+---
+ common/swig/generate_swig_iface.py | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/common/swig/generate_swig_iface.py b/common/swig/generate_swig_iface.py
+index 530b026d5d..eaee2d41ce 100644
+--- a/common/swig/generate_swig_iface.py
++++ b/common/swig/generate_swig_iface.py
+@@ -195,9 +195,11 @@ class SwigSymbols(object):
+         """Parse a swiglal macro
+         """
+         cdecl_name = get_swig_attr(cdecl, 'name')
+-        cdecl_value = get_swig_attr(cdecl, 'value')
++        cdecl_value = get_swig_attr(cdecl, 'stringval')
+         if not cdecl_value:
+-            raise ValueError("cdecl '{}' has no value".format(cdecl_name))
++            cdecl_value = get_swig_attr(cdecl, 'value')
++            if not cdecl_value:
++                raise ValueError("cdecl '{}' has no value".format(cdecl_name))
+         macro = re.sub(r'\s', '', cdecl_value)
+         if cdecl_name == '__swiglal__':
+             if macro in clear_macros:
+-- 
+GitLab
+

@@ -95,6 +95,9 @@ This package contains the header files and libraries.
 
 %prep
 %autosetup -p1 -n %{generic_name}-%{version}
+%ifarch loongarch64
+cp -a /usr/lib/rpm/config.{sub,guess} dist/
+%endif
 
 %build
 cd dist

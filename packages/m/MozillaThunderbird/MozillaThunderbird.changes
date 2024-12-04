@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec  3 07:41:29 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 128.5.1
+  * Add end of year donation appeal
+  * Total message count for favorite folders did not work consistently
+
+-------------------------------------------------------------------
+Thu Nov 28 09:07:50 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- make spec compatible with rpm < 4.17 again
+- correct appdata for different desktop filename
+
+-------------------------------------------------------------------
 Tue Nov 26 10:15:25 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 128.5.0

@@ -1,8 +1,91 @@
 -------------------------------------------------------------------
+Sat Nov 30 08:43:01 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.2.97~0:
+  * Regenerate reference tests (#4309)
+  * Prepare v0.2.97 release (#4308)
+  * Note that feature resolver version 2 is required (#4307)
+  * Only use `wasm_bindgen::__rt` in proc-macros (#4305)
+  * Removed a few `#[allow(dead_code)]` (#4299)
+
+-------------------------------------------------------------------
+Fri Nov 29 20:27:09 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.2.96~0:
+  * Prepare v0.2.96 release (#4298)
+  * Add environment variables to configure tests (#4295)
+  * transition away from deprecated setters internally (#4297)
+  * Use private constructors in type definitions of structs without
+    an exported constructor (#4282)
+  * Improved errors for invalid `self` arguments (#4276)
+  * Add test for most data conversions (#4281)
+  * Update WebGPU API to draft 2024-11-22 (#4290)
+  * Move lints to workspace (#4294)
+  * Test `no_std` MSRV in CI (#4292)
+  * Update to Rust v1.83 (#4293)
+  * Update walrus requirement from 0.22 to 0.23 (#4279)
+  * All dependencies are now pinned to each other (#4291)
+  * Revert bundler target specific default transformations (#4253)
+  * Don't emit unexpected cfgs in proc-macros (#4284)
+  * Added support for the `wasm32v1-none` target (#4277)
+  * Update reference tests (#4275)
+  * Add test for imported getters and setters (#4270)
+  * Hash full signature for imported functions (#4269)
+  * Improved TS type generation from WASM (#4229)
+  * Restart WebDriver on failure (#4267)
+  * Update test coverage documentation to LLVM 19 (#4265)
+  * Test different CLI flags in reference tests (#4264)
+  * Added note for which versions of wasm-bindgen support i128
+    (#4262)
+  * Add support for i128 and u128 (#4222)
+  * Faster local testing with `reference.rs` (#4255)
+  * Add bindings for `MediaStreamTrack.getCapabilities` (#4236)
+  * Update testing docs for `wasm-bindgen-macro` (#4256)
+  * Add support for enums with negative discriminants (#4204)
+  * Fix Rust edition 2024 compatibility (#4259)
+  * Make it clearer which versions are affected by the constructor
+    bug (#4249)
+  * Fix docs on `Option<char>` (#4226)
+  * Added more documentation for `bool`, `char`, and numeric types
+    (#4245)
+  * Fixed imports with late binding and `this` (#4225)
+  * webidl: fix structopt macro to be clap (#4244)
+  * Improved how references test handles paths (#4242)
+  * Fix `JsCast::instanceof()` not respecting JS namespaces (#4241)
+  * wasm-bindgen-webidl: use `clap` instead of `structopt` (#4219)
+  * More tests for result type (#4208)
+  * Deprecate `Bindgen::reference_types()` (#4238)
+  * Improved indentation and enum formatting (#4205)
+  * Deprecate `--reference-types` (#4237)
+  * Fix invalid TS return types for multivalue signatures (#4210)
+  * Disable enabling reference types by default with the bundler
+    target (#4235)
+  * Fixed generated types for getters and setters (#4202)
+  * Add JSDoc type annotations to C-style enums (#4157)
+  * Optimized ABI performance for `Option<[all 32-bit primitives]>`
+    (#4183)
+  * Add `MathMLElement` and `HTMLOrSVGElement` bindings (#4143)
+  * Added missing space in doc comments (#4200)
+  * Fix link to Node.js module documentation (#4197)
+  * Fix potential `null` error in `JsValue::as_debug_string()`
+    (#4192)
+  * Make CI deterministic try 2 (#4190)
+  * Fix `#[should_panic]` with `unsupported` tests (#4196)
+  * Fix triggering lints in testing facilities (#4195)
+  * Only generate JS values for string enums if used (#4193)
+  * Remove JSDoc type annotations in TS files (#4187)
+  * Generate TS types for string enums (#4180)
+  * Fixed methods with `self: &Self` consuming the object (#4178)
+  * Use `isLikeNone` to detect null/undefined for string enums
+    (#4186)
+  * Use new `web_sys` `Uint8ClampedArray` bindings (#4184)
+  * Add test for code gen with `web-sys` (#4179)
+
+-------------------------------------------------------------------
 Tue Oct 22 08:08:19 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
-- switch to using tar_scm to make maintenance easier for William (large obscpio
-  uploads)
+- switch to using tar_scm to make maintenance easier for William
+  (large obscpio uploads)
 
 -------------------------------------------------------------------
 Thu Oct 17 11:53:48 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>

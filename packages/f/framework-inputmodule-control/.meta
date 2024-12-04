@@ -1,0 +1,7 @@
+<package name="framework-inputmodule-control" project="openSUSE:Factory">
+  <title>framework-inputmodule-control</title>
+  <description>Framework Laptop 16 Input Module control software
+
+https://github.com/FrameworkComputer/inputmodule-rs</description>
+  <devel project="hardware" package="framework-inputmodule-control"/>
+</package>

@@ -42,6 +42,8 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Physics
 URL:            https://wiki.ligo.org/Computing/LALSuite
 Source:         https://software.igwn.org/sources/source/lalsuite/%{pname}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         https://git.ligo.org/lscsoft/lalsuite/-/commit/9dba245ab3692ecf691247a442704f13c075ed34.patch#/lalinspiral-swig-stringval-not-value.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.7}
 BuildRequires:  fdupes
@@ -118,6 +120,7 @@ Requires:       pkgconfig(octave)
 This package contains sources and header files needed to build applications
 that use the LAL Inspiral library.
 
+%if %{with octave}
 %package -n octave-lalinspiral
 Summary:        Octave bindings for LAL Inspiral
 Group:          Productivity/Scientific/Physics
@@ -129,9 +132,11 @@ Requires:       octave-lalsimulation >= 4.0.0
 
 %description -n octave-lalinspiral
 This package provides the necessary files for using LAL Inspiral with octave.
+%endif
 
 %prep
-%autosetup -p1 -n %{pname}-%{version}
+# Upstream commits are -p1 against the full lalsuite, but -p2 against individual lal* pkgs
+%autosetup -p2 -n %{pname}-%{version}
 
 %build
 %{python_expand # Necessary to run configure with multiple py3 flavors

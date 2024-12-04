@@ -17,7 +17,7 @@
 
 
 Name:           gtranslator
-Version:        47.0
+Version:        47.1
 Release:        0
 Summary:        A gettext po file editor for the GNOME desktop
 License:        GPL-3.0-or-later

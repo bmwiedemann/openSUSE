@@ -21,23 +21,26 @@
 %define         _pyb 3.11
 %define         appid net.lutris.Lutris
 Name:           lutris
-Version:        0.5.17
+Version:        0.5.18
 Release:        0
 Summary:        Manager for game installation and execution
 License:        GPL-3.0-or-later
 URL:            https://lutris.net
 Source0:        https://lutris.net/releases/lutris_%{version}.tar.xz
+Source1:        %{name}.apparmor
 %if 0%{?suse_version} >= 1600
+BuildRequires:  apparmor-abstractions
+BuildRequires:  apparmor-rpm-macros
 BuildRequires:  fdupes
 BuildRequires:  gettext-tools
 BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  libapparmor-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel >= 3.7
 BuildRequires:  python3-gobject
 BuildRequires:  python3-setuptools
-BuildRequires:  update-desktop-files
 Requires:       cabextract
 Requires:       curl
 Requires:       fluid-soundfont-gm
@@ -71,7 +74,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  python%{_py}-devel
 BuildRequires:  python%{_py}-gobject
 BuildRequires:  python%{_py}-setuptools
-BuildRequires:  update-desktop-files
 Requires:       cabextract
 Requires:       curl
 Requires:       fluid-soundfont-gm
@@ -107,6 +109,14 @@ all games acquired from any source, in a single interface.
 This includes, for example, Steam or GOG games, Windows games (WINE),
 or emulated console games and browser games.
 
+%package apparmor
+Summary:        Apparmor profile for %{name}
+Requires:       %{name} = %{version}-%{release}
+Supplements:    (%{name} and apparmor-profiles)
+
+%description apparmor
+%{summary}.
+
 %prep
 %autosetup -n %{name}
 
@@ -131,6 +141,10 @@ sed -i "s|!%{_bindir}/env python3|!%{_bindir}/python%{_pyb}|" \
 %endif
 %fdupes %{buildroot}
 
+#install apparmor profile
+install -d %{buildroot}%{_sysconfdir}/apparmor.d
+install -Dm0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/apparmor.d/usr.bin.%{name}
+
 %files
 %doc README.rst CONTRIBUTING.md AUTHORS
 %license LICENSE
@@ -149,5 +163,8 @@ sed -i "s|!%{_bindir}/env python3|!%{_bindir}/python%{_pyb}|" \
 %else
 %{python_sitelib}/%{name}-*.egg-info
 %endif
+
+%files apparmor
+%{_sysconfdir}/apparmor.d/usr.bin.%{name}
 
 %changelog

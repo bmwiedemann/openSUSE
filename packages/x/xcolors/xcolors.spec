@@ -31,6 +31,7 @@ Group:          System/X11/Utilities
 Source:         xcolors-04oct91.tar.bz2
 Patch0:         xcolors-04oct91.patch
 Patch1:         xcolors-04oct91-xorg7_rgbtxt.patch
+Patch2:         xcolors-gcc14.patch
 BuildRequires:  imake
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)

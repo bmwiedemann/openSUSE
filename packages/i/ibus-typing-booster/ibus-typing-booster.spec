@@ -17,7 +17,7 @@
 
 
 Name:           ibus-typing-booster
-Version:        2.26.11
+Version:        2.26.12
 Release:        0
 Summary:        An input completion utility
 License:        GPL-3.0-or-later
@@ -27,7 +27,6 @@ Source0:        https://github.com/mike-fabian/ibus-typing-booster/releases/down
 Source1:        https://releases.pagure.org/inscript2/inscript2-20210820.tar.gz
 BuildRequires:  AppStream
 BuildRequires:  appstream-glib
-BuildRequires:  dbus-1-x11
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  glib2
@@ -152,7 +151,7 @@ mkdir -p /tmp/glib-2.0/schemas/
 cp org.freedesktop.ibus.engine.typing-booster.gschema.xml \
    /tmp/glib-2.0/schemas/org.freedesktop.ibus.engine.typing-booster.gschema.xml
 glib-compile-schemas /tmp/glib-2.0/schemas #&>/dev/null || :
-export XDG_DATA_DIRS=/tmp:%{_datadir} # /usr/share is needed to make enchant2 work!
+
 eval $(dbus-launch --sh-syntax)
 dconf dump /
 dconf write /org/freedesktop/ibus/engine/typing-booster/offtherecord false
@@ -171,24 +170,6 @@ dconf write /org/freedesktop/ibus/engine/typing-booster/showstatusinfoinaux true
 dconf write /org/freedesktop/ibus/engine/typing-booster/inlinecompletion false
 dconf write /org/freedesktop/ibus/engine/typing-booster/keybindings "{'next_input_method': <['Control+Down', 'Control+KP_Down']>, 'previous_input_method': <['Control+Up', 'Control+KP_Up']>, 'lookup_related': <['Mod5+F12']>, 'enable_lookup': <['Tab', 'ISO_Left_Tab', 'KP_Divide']>, 'select_next_candidate': <['Tab', 'ISO_Left_Tab', 'Down', 'KP_Down']>, 'lookup_table_page_down': <['Page_Down', 'KP_Page_Down', 'KP_Next']>, 'toggle_emoji_prediction': <['Mod5+F6']>, 'lookup_table_page_up': <['Page_Up', 'KP_Page_Up', 'KP_Prior']>, 'toggle_off_the_record': <['Mod5+F9']>, 'cancel': <['Escape']>, 'setup': <['Mod5+F10']>, 'select_previous_candidate': <['Shift+Tab', 'Shift+ISO_Left_Tab', 'Up', 'KP_Up']>}"
 dconf dump /
-# A window manager and and ibus-daemon are needed to run the GUI
-# test tests/test_gtk.py, for example i3 can be used.
-#
-# To debug what is going on if there is a problem with the GUI test
-# add BuildRequires: x11vnc and start a vnc server:
-#
-#     x11vnc -display $DISPLAY -unixsock /tmp/mysock -bg -nopw -listen localhost -xkb
-#
-# Then one can view what is going on outside of the chroot with vncviewer:
-#
-#     vncviewer /var/lib/mock/fedora-32-x86_64/root/tmp/mysock
-#
-# The GUI test will be skipped if XDG_SESSION_TYPE is not x11 or wayland.
-#
-#ibus-daemon -drx
-#touch /tmp/i3config
-#i3 -c /tmp/i3config &
-#export XDG_SESSION_TYPE=x11
 
 make check && rc=0 || rc=1
 cat tests/*.log

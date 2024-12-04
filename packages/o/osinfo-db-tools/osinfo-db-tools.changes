@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec  2 11:12:22 MST 2024 - carnold@suse.com
+
+- Update to version 1.12.0 (jsc#PED-8910)
+  * Fix some memory leaks
+  * Fix runtime warnings on osinfo-db-export
+  * Adapt to libxml2 changes
+  * Several CI improvements
+  * Several translation improvements
+- Drop 001-Make-xmlError-structs-constant.patch
+
+-------------------------------------------------------------------
 Mon Jul  1 13:35:02 MDT 2024 - carnold@suse.com
 
 - bsc#1225908 - Package osinfo-db-tools does not build with gcc14

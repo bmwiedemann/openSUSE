@@ -22,7 +22,7 @@
 %bcond_without test
 %endif
 Name:           ocrs
-Version:        0.8.1
+Version:        0.9.0
 Release:        0
 Summary:        A modern OCR engine written in Rust
 License:        Apache-2.0 AND MIT
@@ -44,8 +44,8 @@ ocrs is CLI tool for extracting text from images, also known as OCR
 %install
 install -Dm755 target/release/ocrs -t %{buildroot}%{_bindir}
 
-%check
 %if %{with test}
+%check
 %{cargo_test}
 %endif
 

@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Tue Dec  3 13:45:51 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- It is really not possible to run the test suite right now. Make
+  a note about it.
+
+-------------------------------------------------------------------
+Mon Dec  2 18:51:29 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package python-tree-sitter, optional runtime dependency of
+  and required by tests in python-textual

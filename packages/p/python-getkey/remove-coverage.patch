@@ -1,0 +1,12 @@
+Index: getkey-0.6.5/setup.cfg
+===================================================================
+--- getkey-0.6.5.orig/setup.cfg
++++ getkey-0.6.5/setup.cfg
+@@ -1,6 +1,6 @@
+ [tool:pytest]
+ norecursedirs = .git venv build dist *egg
+-addopts = -rfEsxwX --cov getkey
++addopts = -rfEsxwX
+ 
+ [egg_info]
+ tag_build = 

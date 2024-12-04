@@ -21,11 +21,11 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define version_unconverted 20241125
+%define version_unconverted 20241128
 # Force bzip2 instead of lzma compression (bsc#1176981)
 %define _binary_payload w9.bzdio
 Name:           kernel-firmware
-Version:        20241125
+Version:        20241128
 Release:        0
 Summary:        Linux kernel firmware files
 License:        GPL-2.0-only AND SUSE-Firmware AND GPL-2.0-or-later AND MIT
@@ -949,6 +949,7 @@ Supplements:    modalias(pci:v000014E4d00004425sv*sd*bc02sc80i*)
 Supplements:    modalias(pci:v000014E4d00004433sv*sd*bc02sc80i*)
 Supplements:    modalias(pci:v000014E4d00004464sv*sd*bc02sc80i*)
 Supplements:    modalias(pci:v000014E4d00004488sv*sd*bc02sc80i*)
+Supplements:    modalias(pci:v000014E4d0000449Dsv*sd*bc02sc80i*)
 Supplements:    modalias(pci:v000014E4d0000AA31sv*sd*bc02sc80i*)
 Supplements:    modalias(pci:v000014E4d0000AA52sv*sd*bc02sc80i*)
 Supplements:    modalias(sdio:c*v02D0d4324*)
@@ -1805,6 +1806,15 @@ Supplements:    modalias(pci:v00008086d0000A7AAsv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d0000A7ABsv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d0000A7ACsv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d0000A7ADsv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d0000B080sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d0000B081sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d0000B082sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d0000B090sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d0000B091sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d0000B092sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d0000B0A0sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d0000B0A1sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d0000B0A2sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d0000B640sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d0000E202sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d0000E20Bsv*sd*bc03sc*i*)
@@ -4513,6 +4523,7 @@ Supplements:    modalias(of:N*T*Cqcom,x1e80100-dpu)
 Supplements:    modalias(of:N*T*Cqcom,x1e80100-dpuC*)
 Supplements:    modalias(of:N*T*Cqcom,x1e80100-mdss)
 Supplements:    modalias(of:N*T*Cqcom,x1e80100-mdssC*)
+Supplements:    modalias(pci:v000017CBd0000A080sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000017CBd0000A100sv*sd*bc*sc*i*)
 
 %description qcom

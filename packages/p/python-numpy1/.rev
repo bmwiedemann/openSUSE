@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>1226370</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>f25272e5126d97b40b5fff66f2a661a6</srcmd5>
+    <version>1.26.4</version>
+    <time>1733255175</time>
+    <user>anag+factory</user>
+    <comment>- Skip tests failing with new setuptools 75
+</comment>
+    <requestid>1227864</requestid>
+  </revision>
 </revisionlist>

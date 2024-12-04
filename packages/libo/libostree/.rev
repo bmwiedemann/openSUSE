@@ -435,4 +435,12 @@ CVE-2014-9862 boo#1201770 (forwarded request 991255 from AndreasStieger)</commen
     <comment>Drop SUSE specific rcFOO symlinks (forwarded request 1208120 from dimstar)</comment>
     <requestid>1208164</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>eee6c318d0c51a2e5d66d0e0985991e2</srcmd5>
+    <version>2024.9</version>
+    <time>1733255155</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1227836</requestid>
+  </revision>
 </revisionlist>

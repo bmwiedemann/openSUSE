@@ -1,7 +1,7 @@
 #
 # spec file for package compsize
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        GPL-2.0-or-later
 Group:          System/Filesystems
 URL:            https://github.com/kilobyte/compsize
 Source:         %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM compsize-1.5-fix-build-btrfsprogs-0.6.1.patch -- gh#kilobyte/compsize!54
+Patch:          compsize-1.5-fix-build-btrfsprogs-0.6.1.patch
 BuildRequires:  gcc
 BuildRequires:  libbtrfs-devel
 
@@ -33,7 +35,7 @@ filesystem and measures used compression types and effective
 compression ratio, producing a report.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %make_build CFLAGS="%{optflags}"

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Dec  3 08:53:30 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Remove downstream patches:
+  * 0003-add-more-test-command-line-arguments.patch
+  * 0005-add-armnn-mobilenet-test-example.patch
+  * 0006-armnn-mobilenet-test-example.patch
+  * 0009-command-line-options-for-video-port-selection.patch
+  * 0010-armnnexamples-update-for-19.08-modifications.patch
+  * armnn-fix_find_opencv.patch
+
+-------------------------------------------------------------------
+Mon Dec  2 12:59:30 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+-  Update to 24.11:
+  * Changelog: https://github.com/ARM-software/armnn/releases/tag/v24.11
+- Drop upstream patch:
+  * armnn-fix-armv7.patch
+
+-------------------------------------------------------------------
 Fri Sep  6 13:29:47 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add patch to fix build on armv7:

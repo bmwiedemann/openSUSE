@@ -18,7 +18,7 @@
 %bcond_with mssql
 
 Name:           monitoring-plugins
-Version:        2.3.5
+Version:        2.4.0
 Release:        0
 Summary:        The Monitoring Plug-Ins
 License:        GPL-2.0-or-later AND GPL-3.0-only
@@ -63,18 +63,16 @@ Source58:       nrpe-check_zombie_procs
 Source59:       nrpe-check_mysql
 Source60:       nrpe-check_ups
 # PATCH-FIX-UPSTREAM Quote the options comming in from users (path names might contain whitespaces)
-Patch1:         %{name}-2.3.5-check_log_-_quoting.patch
+Patch1:         %{name}-2.4.0-check_log_-_quoting.patch
 # PATH-FIX-openSUSE - do not use/run chown in Makefile: we use RPM for this
-Patch6:         %{name}-2.3.5-plugins-root-Makefile_-_no_chown.patch
+Patch6:         %{name}-2.4.0-plugins-root-Makefile_-_no_chown.patch
 # PATCH-FIX-UPSTREAM see https://bugzilla.redhat.com/512559
-Patch121:       %{name}-2.3.5-check_swap_wrong_percent.patch
+Patch121:       %{name}-2.4.0-check_swap_wrong_percent.patch
 # PATCH-FIX-UPSTREAM - return ntp offset absolute (as positive value) in performance data since warn and crit are also positive values 
-Patch122:       %{name}-2.3.5-check_ntp_perf_absolute.patch
-# PATCH-FIX-UPSTREAM - see https://github.com/monitoring-plugins/monitoring-plugins/pull/1322
-Patch125:       %{name}-2.3.5-check_ssh.patch
-Patch126:       %{name}-2.3.5-check_ssh.t_-_improve_testing.patch
-# PATCH-FIX-UPSTREAM - see https://github.com/monitoring-plugins/monitoring-plugins/pull/1862
-Patch130:       %{name}-2.3.5-check_http-proxy.patch
+Patch122:       %{name}-2.4.0-check_ntp_perf_absolute.patch
+Patch130:       %{name}-2.4.0-check_http-proxy.patch
+Patch131:       %{name}-2.4.0-check_dbi-type_mismatch.patch
+BuildRequires:  automake
 BuildRequires:  bind-utils
 BuildRequires:  dhcp-devel
 BuildRequires:  fping
@@ -115,22 +113,9 @@ BuildRequires:  systemd-devel
 %endif
 BuildRequires:  samba-client
 %if 0%{?suse_version}
-%if 0%{?suse_version} > 1020
 BuildRequires:  freeradius-client-devel
 BuildRequires:  rpcbind
-%else
-BuildRequires:  portmap
-BuildRequires:  radiusclient
-%endif
-%if 0%{?suse_version} > 910
 BuildRequires:  krb5-devel
-%else
-BuildRequires:  heimdal-devel
-%endif
-%else
-BuildRequires:  krb5-devel
-%endif
-%if 0%{?suse_version} > 1315
 BuildRequires:  libcurl-devel
 BuildRequires:  uriparser-devel
 %endif
@@ -321,20 +306,6 @@ This virtual package recommends all currently available, official
 Monitoring plugins and additional packages that are available in
 https://build.opensuse.org/project/show/server:monitoring
 
-%if 0%{?suse_version} < 01310
-%package apt
-Summary:        Check for software updates via apt-get
-Group:          System/Monitoring
-Requires:       %{apt_get_command}
-Provides:       nagios-plugins-apt = %{version}
-Obsoletes:      nagios-plugins-apt <= 1.5
-
-%description apt
-This plugin checks for software updates on systems that use package management
-systems based on the apt-get command found in Debian GNU/Linux or Ubuntu for
-example.
-%endif
-
 %package breeze
 Summary:        Monitor Breezecom wireless equipment
 Group:          System/Monitoring
@@ -390,7 +361,6 @@ Obsoletes:      nagios-plugins-common <= 1.5
 This package includes the libraries (scripts) that are included by many
 of the standard checks.
 
-%if 0%{?suse_version} > 1315
 %package curl
 Summary:        Test the HTTP service on the specified host, via libcurl
 Group:          System/Monitoring
@@ -405,7 +375,6 @@ certificate expiration times.
 
 It makes use of libcurl to do so. It tries to be as compatible to check_http
 as possible.
-%endif
 
 %package dbi
 Summary:        Check databases using DBI
@@ -480,9 +449,6 @@ Obsoletes:      nagios-plugins-dhcp <= 1.5
 %if 0%{?suse_version}
 Recommends:     apparmor-parser
 Recommends:     apparmor-profiles
-%else
-#Requires:       apparmor-parser
-#Requires:       apparmor-profiles
 %endif
 
 %description dhcp
@@ -583,19 +549,6 @@ Obsoletes:      nagios-plugins-fping <= 1.5
 %description fping
 This plugin will use the fping command to ping the specified host for
 a fast check. Note that it is necessary to set the suid flag on fping.
-
-%if 0%{?suse_version} < 01310
-%package game
-Summary:        Gameserver check
-Group:          System/Monitoring
-Requires:       %{qstat_command}
-Provides:       nagios-plugins-game = %{version}
-Obsoletes:      nagios-plugins-game <= 1.5
-
-%description game
-Check connections to game servers. This plugin uses the 'qstat' command, the
-popular game server status query tool.
-%endif
 
 %package hpjd
 Summary:        Check status of an HP printer
@@ -852,9 +805,6 @@ Provides:       %{name}-ntp = %{version}
 %if 0%{?suse_version}
 Recommends:     apparmor-parser
 Recommends:     apparmor-profiles
-%else
-#Requires:       apparmor-parser
-#Requires:       apparmor-profiles
 %endif
 
 %description ntp_time
@@ -1148,7 +1098,7 @@ or one selected. It can also check queue there:
 it will provide the size of the queue of age of queue.
 
 %prep
-%setup -q
+%autosetup -p1
 %if 0%{?suse_version}
 mkdir -p example/permissions.d
 cp %{S:11} example/permissions.d/%{name}
@@ -1174,17 +1124,9 @@ with the libdbi driver for $extension.
 EOF
 done
 
-%patch -P 1 -p1
-%patch -P 6 -p1
-# Debian patches
-%patch -P 121 -p1
-%patch -P 122 -p1
-# Github patches
-%patch -P 125 -p1
-%patch -P 126 -p1
-%patch -P 130 -p1
 
 %build
+autoreconf -v --force --install
 export CFLAGS="%{optflags} -fno-strict-aliasing -DLDAP_DEPRECATED"
 # Translations were (temporarily?) removed upstream:
 #   https://github.com/monitoring-plugins/monitoring-plugins/pull/1947
@@ -1207,18 +1149,15 @@ export CFLAGS="%{optflags} -fno-strict-aliasing -DLDAP_DEPRECATED"
 	--with-ps-format='%s %d %d %d %d %d %f %s %s %n' \
 	--with-ps-cols=10 \
 	--with-ps-varlist='procstat,&procuid,&procpid,&procppid,&procvsz,&procrss,&procpcpu,procetime,procprog,&pos' \
-%if 0%{?suse_version} > 1300
 	--with-rpcinfo-command=/sbin/rpcinfo \
-%else
-	--with-rpcinfo-command=%{_sbindir}/rpcinfo \
-%endif
 	--with-qstat-command=%{qstat_command} \
 	--with-mysql=%{_prefix} \
 	--disable-rpath
+
 make all %{?_smp_mflags}
 
 %install
-sed -i 's,^MKINSTALLDIRS.*,MKINSTALLDIRS = ../mkinstalldirs,' po/Makefile
+# sed -i 's,^MKINSTALLDIRS.*,MKINSTALLDIRS = ../mkinstalldirs,' po/Makefile
 %make_install install-root
 install -m 0755 %{S:18} %{buildroot}%{nagios_plugindir}/check_cups
 # provide check_host and check_rta_multi as on Debian
@@ -1229,10 +1168,8 @@ if [ -x %{buildroot}%{nagios_plugindir}/check_icmp ] ; then
 	ln -s %{nagios_plugindir}/check_icmp %{buildroot}%{nagios_plugindir}/check_rta_multi ;
 fi
 # Factory maintainers do not want packages requiring software not in Factory: remove the checks
-%if 0%{?suse_version} >= 01310
 rm %{buildroot}%{nagios_plugindir}/check_apt
 rm %{buildroot}%{nagios_plugindir}/check_game
-%endif
 
 # mssql plugin is not installable due to missing package DBD::Sybase - Do not ship until built --with=mssql
 %if %{without mssql}
@@ -1304,41 +1241,31 @@ EOF
 install -Dm 644  %{SOURCE27} %{buildroot}%{_sysconfdir}/%{name}/README
 touch %{buildroot}%{_sysconfdir}/%{name}/%{name}.ini
 
-# find locale files
-%find_lang %{name}
+
+%check
+#
+
 
 %if 0%{?suse_version}
 %post dhcp
 # in case somebody uses the permissions file we provide
 # in docdir, run permission here
 if [ -f %{_sysconfdir}/permissions.d/monitoring-plugins ]; then
-%if 0%{?suse_version} < 1210
-%run_permissions
-%else
 	%set_permissions monitoring-plugins
-%endif
 fi
 
 %post icmp
 if [ -f %{_sysconfdir}/permissions.d/monitoring-plugins ]; then
 # in case somebody uses the permissions file we provide
 # in docdir, run permission here
-%if 0%{?suse_version} < 1210
-%run_permissions
-%else
 %set_permissions monitoring-plugins
-%endif
 fi
 
 %post ide_smart
 if [ -f %{_sysconfdir}/permissions.d/monitoring-plugins ]; then
 # in case somebody uses the permissions file we provide
 # in docdir, run permission here
-%if 0%{?suse_version} < 1210
-%run_permissions
-%else
 %set_permissions monitoring-plugins
-%endif
 fi
 %endif
 
@@ -1381,7 +1308,7 @@ fi
 %dir %{nagios_plugindir}
 %{nagios_plugindir}/check_cluster
 
-%files common -f %{name}.lang
+%files common 
 %defattr(-,root,root)
 %doc ABOUT-NLS ACKNOWLEDGEMENTS AUTHORS ChangeLog CODING FAQ
 %doc NEWS README REQUIREMENTS SUPPORT README.SUSE
@@ -1404,12 +1331,10 @@ fi
 %{nagios_plugindir}/utils.sh
 %attr(0644,root,root) %{nagios_plugindir}/utils.pm
 
-%if 0%{?suse_version} > 1315
 %files curl
 %defattr(0755,root,root)
 %dir %{nagios_plugindir}
 %{nagios_plugindir}/check_curl
-%endif
 
 %files dbi
 %defattr(-,root,root)
@@ -1481,13 +1406,6 @@ fi
 %defattr(0755,root,root)
 %dir %{nagios_plugindir}
 %{nagios_plugindir}/check_fping
-
-%if 0%{?suse_version} < 01310
-%files game
-%defattr(0755,root,root)
-%dir %{nagios_plugindir}
-%{nagios_plugindir}/check_game
-%endif
 
 %files hpjd
 %defattr(0755,root,root)

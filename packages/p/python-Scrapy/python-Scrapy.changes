@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec  3 08:24:29 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.12.0:
+  * Dropped support for Python 3.8, added support for Python 3.13
+  * start_requests can now yield items
+  * Added scrapy.http.JsonResponse
+  * Added the CLOSESPIDER_PAGECOUNT_NO_ITEM setting
+
+-------------------------------------------------------------------
 Thu Jul 11 10:38:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.11.2 (bsc#1224474, CVE-2024-1968):

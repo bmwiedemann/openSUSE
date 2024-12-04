@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Dec  3 03:45:37 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.10.0:
+  * Added Functionality to ip_network filter to support method calls
+    with kwargs.
+  * Fix configuration parsers to allow newlines, no longer auto strip
+    all newlines.
+  * Added NIST URL creation and platform mapper.
+  * Added DNA Center platform mappings.
+  * Improved error message when duplicate line is parsed.
+- Add patch use-legacycrypt-if-required.patch:
+  * Use the legacycrypt module where we need to.
+- Switch to autosetup macros.
+
+-------------------------------------------------------------------
 Tue May  7 13:18:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.1:

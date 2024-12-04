@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec  2 16:28:31 UTC 2024 - antoine.belvire@opensuse.org
+
+- Add compsize-1.5-fix-build-btrfsprogs-0.6.1.patch: Fix build with
+  recent btrfs-progs (gh#kilobyte/compsize#52,
+  gh#kilobyte/compsize!54).
+
+-------------------------------------------------------------------
 Mon Feb  8 17:48:57 UTC 2021 - antoine.belvire@opensuse.org
 
 - Update to version 1.5:

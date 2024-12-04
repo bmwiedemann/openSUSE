@@ -361,6 +361,9 @@ test_failok+=" or (test_umath and test_fp_noncontiguous)"
 %endif
 # fail on Python 3.13 https://github.com/numpy/numpy/issues/27842
 test_failok+=" or (test_nditer and test_iter_refcount) or (test_utils and (test_deprecate_help_indentation or test_deprecate_preserve_whitespace))"
+# not supported by setuptools 75
+test_failok+=" or test_all_modules_are_expected_2"
+test_failok+=" or test_api_importable"
 
 echo "
 import sys
@@ -373,9 +376,11 @@ sys.exit(0 if r else 1)
 %{python_expand # for all python3 flavors
 export PYTHONPATH=%{buildroot}%{$python_sitearch}
 export PYTHONDONTWRITEBYTECODE=1
-[ -n "$test_failok" ] && $python runobstest.py "${test_failok:4}" ||:
+ignore="--ignore %{buildroot}%{$python_sitearch}/numpy/distutils/tests/test_mingw32ccompiler.py"
+ignore+=" --ignore %{buildroot}%{$python_sitearch}/numpy/distutils/tests/test_system_info.py"
+[ -n "$test_failok" ] && $python runobstest.py "${test_failok:4}" $ignore ||:
 # test_new_policy: duplicates test runs and output and does not follow our deselection
-$python runobstest.py "not (test_new_policy ${test_failok} or slow)"
+$python runobstest.py "not (test_new_policy ${test_failok} or slow)" $ignore
 }
 
 popd

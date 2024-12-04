@@ -25,6 +25,10 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+
+# Not ready for python313 yet: gh#scikit-image/scikit-image#7585
+%define skip_python313 1
+
 Name:           python-scikit-image%{psuffix}
 Version:        0.24.0
 Release:        0

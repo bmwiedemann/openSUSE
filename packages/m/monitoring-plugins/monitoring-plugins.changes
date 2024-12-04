@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Mon Dec  2 17:52:44 CET 2024 - ro@suse.de
+
+- add patch monitoring-plugins-2.4.0-check_dbi-type_mismatch.patch
+  to fix compilation with gcc-14
+  passing argument 2 of ‘dbi_driver_open_r’ from incompatible pointer type 
+- change mode to "manual" in service file
+
+-------------------------------------------------------------------
+Mon Jul 29 08:06:37 UTC 2024 - Lars Vogdt <lars@linux-schulserver.de>
+
+- update to 2.4.0
+  General
+  + Use C99 booleans @RincewindsHat
+  + Improve negate plugin helptext @euniceremoquillo
+  + Add new test function for percentage expressions @RincewindsHat
+  Single Plugins
+  + check_mailq: remove trailing whitespaces @sni
+  + check_mailq: unify tabs/spaces @sni
+  + check_oracle: Shellcheck fixes @RincewindsHat
+  + check_ups: output ups.realpower if supported @sbraz
+  + check_disk: add -n short option for --ignore-missing @sni
+  + check_procs: Improve help text, mentioning excluded processes @shartge
+  + check_procs: Generalise wording, remove mentioning of nrpe @shartge
+  + check_curl: add haproxy protocol option @emriver
+  + check_disk: increase alert precision @sni
+  + check_ircd: IPv6 support @oxzi
+  + check_nwstat: adds percentage used space
+  + check_swap: Possibility to run check_swap without thresholds @Napsty
+  + check_ups: additional alarm conditions @RincewindsHat
+  + check_http/check_curl: added a --regex-state option to change the state of a regex check @andreasbaumann
+  General Fixes
+  + Fixes for -Wsign-compare @RincewindsHat
+  + Fix logic in is_uint64_t to fix type-limit warning @RincewindsHat
+  + Prevent -lcrypto from showing up in Makefile dependencies @EricFromCanada
+  + Change irritating NULL assignment @RincewindsHat
+  Single Plugin Fixes
+  + check_dbi: Compiler warning for uninitialized variable @RincewindsHat
+  + check_curl: Initialize pointer before usage @RincewindsHat
+  + check_ntp: Initialize intermediate results in any case @RincewindsHat
+  + check_tcp: Fixes an error with using the wrong type for a variable @RincewindsHat
+  + check_mailq: exit on empty strings and exit early @sni
+  + check_users: Change option for sanity checking arguments to avoid segfault @RincewindsHat
+  + check_users: Update help to properly show that thresholds are ranges @RincewindsHat
+  + check_users: fix segfault @RincewindsHat
+  + check_dbi: Fix compiler warning for uninitialized variable @RincewindsHat
+  + check_curl: Initialize pointer before usage @RincewindsHat
+  + check_ntp: Initialize intermediate results in any case @RincewindsHat
+  + check_ntp_peer: Fixes for Wmaybe-unitialized and some restructuring @RincewindsHat
+  + check_dns: Remove unused variable @RincewindsHat
+  + check_disk: fix ignore-missing in combination with includes @sni
+  + check_procs: ignore our own children @shartge
+  + check_http: Remove self assignment of a variable and add some comments @RincewindsHat
+  + check_snmp: Remove unused variable @RincewindsHat
+  + check_dhcp: Make implicit conversion explicit to dismiss warning @RincewindsHat
+  + Ini Parser: Avoid freeing symbols from text section @RincewindsHat
+  + check_icmp: keep performance data order in case of none-reachable hosts @sni
+  + check_swap: Change another fake boolean to a real one @RincewindsHat
+  + check_swap: Rename type since *_t is reserved for C standard types @RincewindsHat
+  + check_ssh: Fix a typo in "remote-protocol parameter
+  + check_ssh: Handle non-alpha software versions
+  + check_ssh: properly parse a delayed version control string
+  + check_disk: Fail on missing arguments for --warning and --critical and fix a test case @RincewindsHat
+  + check_disk: Use new test function for percentage expressions @RincewindsHat
+  + check_load: remove unused code @RincewindsHat
+  + check_curl/check_http: clarified format of POST data @andreasbaumann
+- introduce _service
+- refresh patches:
+  + monitoring-plugins-2.3.5-check_http-proxy.patch
+    -> monitoring-plugins-2.4.0-check_http-proxy.patch
+  + monitoring-plugins-2.3.5-check_log_-_quoting.patch
+    -> monitoring-plugins-2.4.0-check_log_-_quoting.patch
+  + monitoring-plugins-2.3.5-check_ntp_perf_absolute.patch
+    -> monitoring-plugins-2.4.0-check_ntp_perf_absolute.patch
+  + monitoring-plugins-2.3.5-check_swap_wrong_percent.patch
+    -> monitoring-plugins-2.4.0-check_swap_wrong_percent.patch
+  + monitoring-plugins-2.3.5-plugins-root-Makefile_-_no_chown.patch 
+    -> monitoring-plugins-2.4.0-plugins-root-Makefile_-_no_chown.patch
+- dropped patches:
+  + monitoring-plugins-2.3.5-check_ssh.patch
+  + monitoring-plugins-2.3.5-check_ssh.t_-_improve_testing.patch
+- remove old distribution flags and following subpackages:
+  + monitoring-plugins-apt
+  + monitoring-plugins-game
+
+-------------------------------------------------------------------
 Mon Apr  8 15:31:23 CEST 2024 - ro@suse.de
 
 - update apparmor profiles:

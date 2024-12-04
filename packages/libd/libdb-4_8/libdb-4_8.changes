@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 30 14:14:04 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- fix build for LoongArch64
+
+-------------------------------------------------------------------
 Tue Nov 26 14:15:24 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add libdb-4_8-sequence.patch: Fix code to detect/enable 64-bit

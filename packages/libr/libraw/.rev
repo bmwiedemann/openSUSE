@@ -731,4 +731,14 @@
     <comment></comment>
     <requestid>1136090</requestid>
   </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>22089f301895e00887b2213f68797669</srcmd5>
+    <version>0.21.2</version>
+    <time>1733255153</time>
+    <user>anag+factory</user>
+    <comment>Limit fdupes to %_libdir
+
+The only dup reported was for /usr/lib64/libraw.a and libraw_r.a (forwarded request 1227792 from bmwiedemann)</comment>
+    <requestid>1227816</requestid>
+  </revision>
 </revisionlist>

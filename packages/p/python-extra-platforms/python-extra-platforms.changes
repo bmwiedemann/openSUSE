@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec  3 08:39:24 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.7.0:
+  * Display the hierarchy of non-overlapping groups as a mindmap.
+  * Add URL on all platforms.
+  * Add support for openSUSE Tumbleweed detection. Closes #133.
+  * Do not allow icons on platforms and groups to be empty.
+  * Run tests in parallel to speed up CI.
+
+-------------------------------------------------------------------
 Thu Nov 28 10:31:10 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - enable builds for python3.13

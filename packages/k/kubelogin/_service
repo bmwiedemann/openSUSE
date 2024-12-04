@@ -2,19 +2,20 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/Azure/kubelogin.git</param>
     <param name="scm">git</param>
+    <param name="revision">v0.1.5</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
-    <param name="revision">v0.1.4</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="set_version" mode="manual">
-    <param name="basename">kubelogin</param>
   </service>
-  <service name="go_modules" mode="manual"/>
-  <service name="tar" mode="buildtime"/>
+  <service name="go_modules" mode="manual">
+  </service>
+  <!-- services below are running at buildtime -->
+  <service name="tar" mode="buildtime">
+  </service>
   <service name="recompress" mode="buildtime">
-    <param name="file">kubelogin-*.tar</param>
+    <param name="file">*.tar</param>
     <param name="compression">gz</param>
   </service>
 </services>
-

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Dec  1 07:00:56 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add lalinspiral-swig-stringval-not-value.patch: For
+  compatibility with swig 4.3.0, prefer 'stringval' before 'value'
+  attribute (upstream commit 9dba245a).
+
+-------------------------------------------------------------------
+Mon Nov 18 12:41:39 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Fix use of %requires_eq with respect to octave.
+
+-------------------------------------------------------------------
 Wed Sep 11 17:38:25 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.0.1 (no release notes).

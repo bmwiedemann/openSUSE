@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Dec  2 15:04:13 UTC 2024 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update version to 4.3.5
+ * https://github.com/mikebrady/shairport-sync/releases/tag/4.3.5
+ * Add Home Assistant MQTT Auto-Discovery and active/playing State Messages.
+   Thanks to aaronk6 for their considerable work and code -- see this PR.
+ * Send pvol metadata on mute, thanks to Tucker Kern.
+ * Ensure the PipeWire backend is initially inactive and that it goes active at
+   the start of a play session and inactive at the end. This is to facilitate
+   external activity-monitoring software. Thanks to Nemo157. Note that in
+   AirPlay 2, play often stops momentarily between tracks, and so there will be
+   momentary changes from active to inactive and back to active again in the
+   PipeWire backend. This may change as the backend improves.
+ * Fix a bug in the Jack Audio backend. If the system's Jack Audio server was
+   running at anything other than 44,100 frames per second, the delay
+   information being returned by the backend was incorrect. Thanks to
+   lucianoiam.
+ * Fix an incompatibility with the recently-introduced FFmpeg version 7. Thanks
+   to Deyan Dragov.
+ * Stop advertising the SFTP and SSH services on Bonjour. Thanks to
+   Jean-Philippe Baril.
+
+-------------------------------------------------------------------
 Tue Sep  3 08:42:40 UTC 2024 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Add missing runtime dependency: avahi (boo#1213521)

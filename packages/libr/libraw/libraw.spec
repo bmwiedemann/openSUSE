@@ -132,7 +132,7 @@ chmod -x manual/index.html
 find %buildroot -type f -name "*.la" -delete -print
 # duplicated files
 rm -rf %buildroot%_datadir/doc
-%fdupes %buildroot/%_prefix
+%fdupes %buildroot/%_libdir
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig

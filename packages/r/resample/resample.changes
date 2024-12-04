@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  3 08:15:36 UTC 2024 - Angel Yankov <angel.yankov@suse.com>
+
+- Fix compiling with gcc14
+  * Add resample-compile-gcc14.patch 
+
+-------------------------------------------------------------------
 Fri Feb 23 11:51:50 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 03 09:04:16 UTC 2024 - madhankumar.chellamuthu@suse.com
+
+- Update to version 0.18.0:
+  * ci: use edge releases of buildx
+  * docs: add --checksum only supports sha256
+  * tests: frontend/dockerfile: update integration tests for windows/wcow - [x] `testCopyThroughSymlinkContext` - [x] `testIgnoreEntrypoint` - [x] `testQuotedMetaArgs` - [x] `testDockerfileCheckHostname` - [x] `testEmptyStages` - [x] `testNamedImageContextScratch` - [x] `testNamedImageContextPlatform`
+
+-------------------------------------------------------------------
 Tue Nov 26 06:14:13 UTC 2024 - madhankumar.chellamuthu@suse.com
 
 - Update to version 0.17.2:

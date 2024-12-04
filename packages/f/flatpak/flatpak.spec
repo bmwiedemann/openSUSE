@@ -35,7 +35,7 @@
 %define support_environment_generators 1
 %endif
 Name:           flatpak
-Version:        1.15.10
+Version:        1.15.12
 Release:        0
 Summary:        OSTree based application bundles management
 License:        LGPL-2.1-or-later
@@ -49,8 +49,6 @@ Source4:        update-user-flatpaks.timer
 Source5:        https://flathub.org/repo/flathub.flatpakrepo
 # PATCH-FEATURE-OPENSUSE polkit_rules_usability.patch -- Make the rules comply with openSUSE expectations
 Patch0:         polkit_rules_usability.patch
-# PATCH-FIX-UPSTREAM libglnx.patch https://gitlab.gnome.org/GNOME/libglnx/-/merge_requests/57
-Patch1:         libglnx.patch
 
 BuildRequires:  bison
 BuildRequires:  bubblewrap >= %{bubblewrap_version}

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 30 09:51:06 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Skip tests failing with new setuptools 75
+
+-------------------------------------------------------------------
 Mon Nov 25 15:30:10 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Drop meson-python upper bound

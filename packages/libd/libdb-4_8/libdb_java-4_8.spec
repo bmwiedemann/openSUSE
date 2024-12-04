@@ -74,6 +74,9 @@ if jar --help|grep -q -- --date=TIMESTAMP ; then
 fi
 %patch -P 4 -p1
 %patch -P 5 -p1
+%ifarch loongarch64
+cp -a /usr/lib/rpm/config.{sub,guess} dist/
+%endif
 
 %build
 cd dist

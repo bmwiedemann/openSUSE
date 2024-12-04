@@ -1,0 +1,20 @@
+<services>
+  <service name="download_url" mode="manual">
+    <param name="host">www.monitoring-plugins.org</param>
+    <param name="protocol">https</param>
+    <param name="path">/download/monitoring-plugins-2.4.0.tar.gz</param>
+    <param name="filename">monitoring-plugins-2.4.0.tar.gz</param>
+  </service>
+  <service name="download_url" mode="manual">
+    <param name="host">www.monitoring-plugins.org</param>
+    <param name="protocol">https</param>
+    <param name="path">/download/monitoring-plugins-2.4.0.tar.gz.sha1</param>
+    <param name="filename">monitoring-plugins-2.4.0.tar.gz.sha1</param>
+  </service>
+  <service name="verify_file" mode="manual">
+	<param name="verifier">sha1</param>
+	<param name="checksum">595fcfe92a5273031e8ad7f294ba683c27078a1a</param>
+<!--	<param name="file">monitoring-plugins-2.4.0.tar.gz</param> -->
+   <param name="file">_service:download_url:monitoring-plugins-2.4.0.tar.gz</param>
+  </service>
+</services>

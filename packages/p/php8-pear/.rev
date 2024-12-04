@@ -47,4 +47,24 @@
     * Fix PHP Deprecated: Calling get_class() without arguments (forwarded request 1156654 from adkorte)</comment>
     <requestid>1157606</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e51515a41b6fce874085834b77e0a10e</srcmd5>
+    <version>1.10.24</version>
+    <time>1733255133</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.10.24
+  - PEAR 1.10.16
+    * Fix bug #27796: &quot;Array to string&quot; conversion warnings on
+      installs/other actions
+    * Never reference E_STRICT on PHP 8.4+
+    * Fix tests 8.1+
+  - Archive_Tar 1.5.0
+    * Fix @return true... to @return bool true... on some functions
+    * Use 775 default for mkdirs, to avoid world-write
+  - Structures_Graph 1.2.0
+    * Update composer info (adds PHP/PEAR deps)
+    * Update phpunit tests
+    * Composer shows wrong license (forwarded request 1227628 from adkorte)</comment>
+    <requestid>1227674</requestid>
+  </revision>
 </revisionlist>

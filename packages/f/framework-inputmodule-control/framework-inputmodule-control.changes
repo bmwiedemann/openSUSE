@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Tue Dec  3 08:31:30 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
+
+- fix source URL
+
+-------------------------------------------------------------------
+Mon Dec  2 15:36:24 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
+
+- use smaller pkgconfig(libsystemd) as dependency
+
+-------------------------------------------------------------------
+Mon Nov 18 10:13:28 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
+
+- inital version 0.2.0

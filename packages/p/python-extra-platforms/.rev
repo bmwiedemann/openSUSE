@@ -7,4 +7,12 @@
     <comment>new package python-extra-platforms, required by python-click-extra</comment>
     <requestid>1227279</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ac957ee951bdfdee495eddcdfbabf27b</srcmd5>
+    <version>1.7.0</version>
+    <time>1733255256</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1227982</requestid>
+  </revision>
 </revisionlist>

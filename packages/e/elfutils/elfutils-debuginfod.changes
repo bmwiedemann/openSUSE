@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Dec  2 13:14:04 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Add pkgconfig(json-c) to reenable debuginfod support
+- Add fish to enable profile support for fish
+- Remove files packaged by libelf-devel
+
+-------------------------------------------------------------------
+Sun Dec  1 17:36:52 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- update to 0.192
+  CONDUCT: A new code of conduct has been adopted.  See the
+  	   CONDUCT file for more information.
+  debuginfod: Add per-file signature verification for integrity
+              checking, using RPM IMA scheme from Fedora/RHEL.
+  	      New API for metadata queries: file name -> buildid.
+  	      Server-side extraction of files from kernel debuginfo
+  	      packages is significantly faster. Now takes < 0.25 seconds,
+  	      down from ~50 seconds.
+  libdw: New functions dwfl_set_sysroot, dwfl_frame_unwound_source
+  	 and dwfl_unwound_source_str.
+  stacktrace: Experimental new tool that can process a stream of stack
+              samples from the Sysprof profiler and unwind them into call
+              chains. Enable on x86 with --enable-stacktrace. See
+              README.eu-stacktrace in the development branch for detailed
+              usage instructions:
+              https://sourceware.org/cgit/elfutils/tree/README.eu-stacktrace?h=users/serhei/eu-stacktrace
+
+-------------------------------------------------------------------
 Tue May 21 15:45:51 UTC 2024 - Michael Matz <matz@suse.com>
 
 - Add "-g" to %optflags, so that the tests work in all repos,

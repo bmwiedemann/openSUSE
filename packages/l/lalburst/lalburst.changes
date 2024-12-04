@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Dec  2 14:31:34 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add lalburst-swig-stringval-not-value.patch: For
+  compatibility with swig 4.3.0, prefer 'stringval' before 'value'
+  attribute (upstream commit 9dba245a).
+- Add lalburst-tests-unittest-makeSuite.patch -- Remove usage of
+  `unittest.makeSuite` as it is deprecated in Python 3.11+
+
+-------------------------------------------------------------------
+Mon Nov 18 12:38:31 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Fix use of %requires_eq with respect to octave.
+
+-------------------------------------------------------------------
 Thu Sep 12 17:47:14 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Pass `-Wno-error=strict-prototypes` to CFLAGS to work around

@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Tue Dec  3 09:14:10 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
+
+- add remove-coverage.patch to remove coverage report from tests
+
+-------------------------------------------------------------------
+Mon Dec  2 15:15:45 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
+
+- enable Python3.13 build again
+
+-------------------------------------------------------------------
+Tue Nov 19 15:25:58 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
+
+- add sle15_python_module_pythons macro
+
+-------------------------------------------------------------------
+Tue Nov 19 15:14:44 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
+
+- temporarily disable Python3.13 until modules are stable
+
+-------------------------------------------------------------------
+Tue Nov 19 14:51:25 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
+
+- initial version 0.6.5

@@ -1,12 +1,12 @@
 <services>
   <service mode="buildtime" name="docker_label_helper"/>
   <service mode="buildtime" name="kiwi_metainfo_helper"/>
-  <service name="replace_using_package_version" mode="buildtime">
+  <service mode="buildtime" name="replace_using_package_version">
     <param name="file">Dockerfile</param>
     <param name="regex">%%composer_version%%</param>
     <param name="package">php-composer2</param>
   </service>
-  <service name="replace_using_package_version" mode="buildtime">
+  <service mode="buildtime" name="replace_using_package_version">
     <param name="file">Dockerfile</param>
     <param name="regex">%%php_version%%</param>
     <param name="package">php8</param>

@@ -1,0 +1,15 @@
+---
+ test/python/snglcoinc_coincrates_verify.py |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: lalburst-2.0.5/test/python/snglcoinc_coincrates_verify.py
+===================================================================
+--- lalburst-2.0.5.orig/test/python/snglcoinc_coincrates_verify.py
++++ lalburst-2.0.5/test/python/snglcoinc_coincrates_verify.py
+@@ -118,5 +118,5 @@ class TestCoincRates(unittest.TestCase):
+ 
+ 
+ suite = unittest.TestSuite()
+-suite.addTest(unittest.makeSuite(TestCoincRates))
++suite.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestCoincRates))
+ sys.exit(not unittest.TextTestRunner(verbosity=2).run(suite).wasSuccessful())

@@ -17,21 +17,24 @@
 
 
 Name:           nwg-drawer
-Version:        0.5.2
+Version:        0.6.0
 Release:        0
 Summary:        Wlroots application drawer
 License:        MIT
 URL:            https://github.com/nwg-piotr/nwg-drawer
-Source:         https://github.com/nwg-piotr/nwg-drawer/archive/v%{version}/%{name}-%{version}.tar.gz
+Source:         https://github.com/nwg-piotr/nwg-drawer/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
 BuildRequires:  make
 BuildRequires:  golang(API) >= 1.23
+BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(gdk-3.0)
-BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk-layer-shell-0)
+BuildRequires:  pkgconfig(pango)
 
 %description
 Application drawer for wlroots-based Wayland compositors.

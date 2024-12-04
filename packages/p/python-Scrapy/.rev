@@ -277,4 +277,16 @@
     enabled.</comment>
     <requestid>1186841</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c17e194bc03d4769a06b3891afe0965d</srcmd5>
+    <version>2.12.0</version>
+    <time>1733255224</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.12.0:
+  * Dropped support for Python 3.8, added support for Python 3.13
+  * start_requests can now yield items
+  * Added scrapy.http.JsonResponse
+  * Added the CLOSESPIDER_PAGECOUNT_NO_ITEM setting</comment>
+    <requestid>1227933</requestid>
+  </revision>
 </revisionlist>

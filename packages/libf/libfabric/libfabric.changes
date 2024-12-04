@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Dec  2 08:47:15 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Completely remove building for AVX/AVX2 in PSM3  (bsc#1213538, bsc#1233356, bsc#1234014)
+  Runtime detection before initializing the provider is not enough as
+  PSM3 uses constructors which may include AVX insctruction.
+  Only requires SSE4.2 as it does make a large performance impact
+  in calculatin packet hashes.
+  - Remove psm3-fix-SIGILL-on-system-not-supporting-AVX.patch
+  - Add psm3-prevent-code-from-building-using-AVX-AVX2.patch
+- Add _constraints to mark SSE4.2 as required
+
+-------------------------------------------------------------------
 Thu Nov 28 15:47:54 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Add psm3-fix-SIGILL-on-system-not-supporting-AVX.patch to fix

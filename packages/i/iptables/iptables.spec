@@ -37,6 +37,7 @@ Source4:        baselibs.conf
 Patch1:         iptables-batch.patch
 Patch2:         iptables-batch-lock.patch
 Patch3:         iptables-1.8.2-dont_read_garbage.patch
+Patch4:         iptables-nft-fix-interface-comparisons.patch
 
 BuildRequires:  bison
 BuildRequires:  fdupes

@@ -1437,4 +1437,41 @@
    * [pyupgrade] Detect permutations in redundant open modes (UP015)</comment>
     <requestid>1224610</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>8517bdc88e801946cb3c90b2f178d4bd</srcmd5>
+    <version>0.8.1</version>
+    <time>1733255139</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.8.1
+ * Preview features
+   * Formatter: Avoid invalid syntax for format-spec with quotes for all Python versions 
+   * Formatter: Consider quotes inside format-specs when choosing the quotes for an f-string 
+   * Formatter: Do not consider f-strings with escaped newlines as multiline 
+   * Formatter: Fix f-string formatting in assignment statement 
+   * Formatter: Fix unnecessary space around power operator (**) in overlong f-string expressions 
+   * [airflow] Avoid implicit schedule argument to DAG and @dag (AIR301) 
+   * [flake8-builtins] Exempt private built-in modules (A005) 
+   * [flake8-pytest-style] Fix pytest.mark.parametrize rules to check calls instead of decorators 
+   * [flake8-type-checking] Implement runtime-cast-value (TC006) 
+   * [flake8-type-checking] Implement unquoted-type-alias (TC007) and quoted-type-alias (TC008) 
+   * [flake8-use-pathlib] Recommend Path.iterdir() over os.listdir() (PTH208) 
+   * [pylint] Extend invalid-envvar-default to detect os.environ.get (PLW1508) 
+   * [pylint] Implement len-test (PLC1802) 
+   * [refurb] Fix bug where methods defined using lambdas were flagged by FURB118 
+   * [ruff] Auto-add r prefix when string has no backslashes for unraw-re-pattern (RUF039) 
+   * [ruff] Implement invalid-assert-message-literal-argument (RUF040) 
+   * [ruff] Implement unnecessary-nested-literal (RUF041) 
+   * [ruff] Implement unnecessary-regular-expression (RUF055) 
+ * Rule changes
+   * Ignore more rules for stub files 
+   * [pep8-naming] Eliminate false positives for single-letter names (N811, N814) 
+   * [pyflakes] Avoid false positives in @no_type_check contexts (F821, F722) 
+   * [ruff] Detect redirected-noqa in file-level comments (RUF101) 
+   * [ruff] Mark fixes for unsorted-dunder-all and unsorted-dunder-slots as unsafe when there are complex comments in the sequence (RUF022, RUF023) 
+ * Bug fixes
+   * Avoid fixing code to None | None for redundant-none-literal (PYI061) and never-union (RUF020) (#14583, #14589)
+   * [flake8-bugbear] Fix mutable-contextvar-default to resolve annotated function calls properly (B039) 
+   * [flake8-pyi, ruff] Fix traversal of nested literals and unions (PYI016, PYI051, PYI055, PYI062, RUF041)</comment>
+    <requestid>1227743</requestid>
+  </revision>
 </revisionlist>

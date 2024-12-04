@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.screenshot
 Name:           pantheon-screenshot
-Version:        8.0.0
+Version:        8.0.1
 Release:        0
 Summary:        A simple screen capture tool
 License:        GPL-3.0-or-later
@@ -32,9 +32,10 @@ BuildRequires:  pkgconfig
 BuildRequires:  vala
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(granite)
-BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(libhandy-1)
+BuildRequires:  pkgconfig(granite-7)
+BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  pkgconfig(libportal)
 Provides:       elementary-screenshot-tool = %{version}
 Obsoletes:      elementary-screenshot-tool < %{version}
 Provides:       elementary-screenshot = %{version}

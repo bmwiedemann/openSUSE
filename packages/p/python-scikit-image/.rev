@@ -217,4 +217,13 @@
 </comment>
     <requestid>1224507</requestid>
   </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>48f082c716351c5b3a674d5031c414a0</srcmd5>
+    <version>0.24.0</version>
+    <time>1733255176</time>
+    <user>anag+factory</user>
+    <comment>- Not ready for python313 yet: gh#scikit-image/scikit-image#7585
+</comment>
+    <requestid>1227865</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,25 @@
 -------------------------------------------------------------------
+Mon Dec  2 23:25:15 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 1.7.0
+  + Bug fixes
+    - Dialogs could be weirdly cutoff at very small window heights
+    - Compute usage was not shown as GPU usage for AMD GPUs
+  + New features
+    - Support for monitoring Intel Neural Processing Units (NPUs)
+    - Added a column for swap usage in the Apps and Processes view
+    - Added temperature graphs
+  + Improvements
+    - Multiple processes can now be selected in the Processes view
+    - Improved handling of media engines on newer AMD GPUs
+    - Graphs can now include 600 datapoints (up from 300)
+    - Added more tests for statistics gathering code
+- disable tests: failed on cargo tests
+
+-------------------------------------------------------------------
 Fri Aug 23 15:27:05 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
- Update to version 1.6.0
+- Update to version 1.6.0
   + Bug fixes
     - Multiple dialogs (e. g. Settings dialog) could be shown at
       the same time

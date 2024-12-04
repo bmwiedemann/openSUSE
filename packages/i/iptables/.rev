@@ -698,4 +698,13 @@ GPL version does not have ^or later^ due to inclusion of numerous GPL 2 ^only^ f
     <comment>- Update to release 1.8.11</comment>
     <requestid>1224043</requestid>
   </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>220d55fadbf8ef04b46ee76c84f46b10</srcmd5>
+    <version>1.8.11</version>
+    <time>1733255154</time>
+    <user>anag+factory</user>
+    <comment>- Add iptables-nft-fix-interface-comparisons.patch
+  * fix '-C' commands for nft backend (bsc#1233690)</comment>
+    <requestid>1227830</requestid>
+  </revision>
 </revisionlist>

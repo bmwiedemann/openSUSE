@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-orjson
-Version:        3.10.7
+Version:        3.10.12
 Release:        0
 Summary:        Fast, correct Python JSON library supporting dataclasses, datetimes, and numpy
 License:        Apache-2.0 OR MIT
@@ -28,6 +28,7 @@ Source0:        orjson-%{version}-devendored.tar.xz
 Source1:        vendor.tar.xz
 Source2:        https://files.pythonhosted.org/packages/source/o/orjson/orjson-%{version}.tar.gz
 Source3:        devendor-sdist.sh
+Source4:        PACKAGING_README.md
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module maturin >= 1}
 BuildRequires:  %{python_module pip}

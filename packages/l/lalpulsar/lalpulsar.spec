@@ -37,7 +37,7 @@
 %define skip_python2 1
 
 Name:           %{pname}%{?psuffix}
-Version:        7.0.0
+Version:        7.0.1
 Release:        0
 Summary:        LSC Algorithm Pulsar Library
 License:        GPL-2.0-or-later
@@ -128,6 +128,7 @@ BuildArch:      noarch
 %description  -n %{name}-data
 This package provides auxiliary data useful for analyses with LAL Pulsar.
 
+%if %{with octave}
 %package -n octave-lalpulsar
 Summary:        Octave bindings for LAL Pulsar
 Group:          Productivity/Scientific/Physics
@@ -136,6 +137,7 @@ Requires:       octave-lal
 
 %description -n octave-lalpulsar
 This package provides the necessary files for using LAL Pulsar with octave.
+%endif
 
 %prep
 %autosetup -p1 -n %{pname}-%{version}

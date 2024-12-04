@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<constraints>
+  <overwrite>
+    <conditions>
+      <arch>i586</arch>
+      <arch>x86_64</arch>
+    </conditions>
+    <hardware>
+      <cpu>
+        <flag>sse4_2</flag>
+      </cpu>
+    </hardware>
+  </overwrite>
+</constraints>

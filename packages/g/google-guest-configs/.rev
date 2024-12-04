@@ -252,4 +252,29 @@
     networkd-dispatcher routable hook (#78) (forwarded request 1217003 from glaubitz)</comment>
     <requestid>1217008</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>23403a580e11143edefd0b45ab1ef697</srcmd5>
+    <version>20241121.00</version>
+    <time>1733255259</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20241121.00 (bsc#1233625, bsc#1233626)
+  * Temporarily revert google_set_multiqueue changes for release (#92)
+- from version 20241115.00
+  * Remove IDPF devices from renaming rules (#91)
+- from version 20241112.00
+  * Revert &quot;Revert 3 commits:&quot; (#89)
+- from version 20241108.00
+  * Revert 3 commits: (#87)
+- from version 20241107.00
+  * gce-nic-naming: Exit 1 so that udev ignores the rule on error (#86)
+- from version 20241106.00
+  * Remove Apt IPv4 only config for Debian and Ubuntu (#85)
+- from version 20241031.00
+  * Add GCE intent based NIC naming tools (#84)
+- from version 20241025.00
+  * Update google_set_multiqueue to skip set_irq
+    if NIC is not a gvnic device (#83)
+- Add new binary gce-nic-naming to %{_bindir} in %files section (forwarded request 1227987 from glaubitz)</comment>
+    <requestid>1227989</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,14 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>388e5073bea44124427bad32d6284112</srcmd5>
+    <version>20231211</version>
+    <time>1733255224</time>
+    <user>anag+factory</user>
+    <comment>I'd like to add this package to Factory.
+Note that it depends on bcc &gt;= 0.32, which is currently in the pipeline:
+https://build.opensuse.org/requests/1227937
+
+* added %changelog and ran spec-cleaner</comment>
+    <requestid>1227960</requestid>
+  </revision>
+</revisionlist>

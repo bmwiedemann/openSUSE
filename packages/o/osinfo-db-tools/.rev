@@ -119,4 +119,12 @@
     <comment>Fix for bsc#1225908 - Package osinfo-db-tools does not build with gcc14</comment>
     <requestid>1184376</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9334a775c8ecc75b9bb955e392592d0a</srcmd5>
+    <version>1.12.0</version>
+    <time>1733255157</time>
+    <user>anag+factory</user>
+    <comment>Update osinfo-db-tools to version 1.12.0</comment>
+    <requestid>1227840</requestid>
+  </revision>
 </revisionlist>

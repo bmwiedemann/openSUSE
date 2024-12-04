@@ -1,0 +1,13 @@
+Index: monitoring-plugins-2.4.0/plugins/check_ntp_time.c
+===================================================================
+--- monitoring-plugins-2.4.0.orig/plugins/check_ntp_time.c
++++ monitoring-plugins-2.4.0/plugins/check_ntp_time.c
+@@ -532,7 +532,7 @@ int process_arguments(int argc, char **a
+ }
+ 
+ char *perfd_offset (double offset) {
+-	return fperfdata ("offset", offset, "s",
++	return fperfdata ("offset", fabs(offset), "s",
+ 		true, offset_thresholds->warning->end,
+ 		true, offset_thresholds->critical->end,
+ 		false, 0, false, 0);

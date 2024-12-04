@@ -2,6 +2,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="url">https://github.com/Plagman/gamescope.git</param>
+    <param name="revision">refs/tags/3.15.14</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
     <param name="versionrewrite-pattern">([\.\d]+)</param>

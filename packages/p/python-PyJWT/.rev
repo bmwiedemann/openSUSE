@@ -388,4 +388,14 @@
     <comment></comment>
     <requestid>1225415</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>6f530e33f7e247bcce51efe5050926b6</srcmd5>
+    <version>2.10.1</version>
+    <time>1733255159</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.10.1 (bsc#1234038, CVE-2024-53861):
+  * Prevent partial matching of iss claim. Thanks @fabianbadoi!
+    (See: GHSA-75c5-xw7c-p5pm)</comment>
+    <requestid>1227953</requestid>
+  </revision>
 </revisionlist>

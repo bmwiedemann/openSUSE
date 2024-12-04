@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 18 18:20:00 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add loongarch64 as new target
+
+-------------------------------------------------------------------
 Mon Nov 18 15:57:13 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - Update to kernel headers 6.12

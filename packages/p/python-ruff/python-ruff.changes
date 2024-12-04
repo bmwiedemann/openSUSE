@@ -1,4 +1,100 @@
 -------------------------------------------------------------------
+Mon Dec  2 11:13:33 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.8.1
+ * Preview features
+   * Formatter: Avoid invalid syntax for format-spec with quotes for all Python versions 
+   * Formatter: Consider quotes inside format-specs when choosing the quotes for an f-string 
+   * Formatter: Do not consider f-strings with escaped newlines as multiline 
+   * Formatter: Fix f-string formatting in assignment statement 
+   * Formatter: Fix unnecessary space around power operator (**) in overlong f-string expressions 
+   * [airflow] Avoid implicit schedule argument to DAG and @dag (AIR301) 
+   * [flake8-builtins] Exempt private built-in modules (A005) 
+   * [flake8-pytest-style] Fix pytest.mark.parametrize rules to check calls instead of decorators 
+   * [flake8-type-checking] Implement runtime-cast-value (TC006) 
+   * [flake8-type-checking] Implement unquoted-type-alias (TC007) and quoted-type-alias (TC008) 
+   * [flake8-use-pathlib] Recommend Path.iterdir() over os.listdir() (PTH208) 
+   * [pylint] Extend invalid-envvar-default to detect os.environ.get (PLW1508) 
+   * [pylint] Implement len-test (PLC1802) 
+   * [refurb] Fix bug where methods defined using lambdas were flagged by FURB118 
+   * [ruff] Auto-add r prefix when string has no backslashes for unraw-re-pattern (RUF039) 
+   * [ruff] Implement invalid-assert-message-literal-argument (RUF040) 
+   * [ruff] Implement unnecessary-nested-literal (RUF041) 
+   * [ruff] Implement unnecessary-regular-expression (RUF055) 
+ * Rule changes
+   * Ignore more rules for stub files 
+   * [pep8-naming] Eliminate false positives for single-letter names (N811, N814) 
+   * [pyflakes] Avoid false positives in @no_type_check contexts (F821, F722) 
+   * [ruff] Detect redirected-noqa in file-level comments (RUF101) 
+   * [ruff] Mark fixes for unsorted-dunder-all and unsorted-dunder-slots as unsafe when there are complex comments in the sequence (RUF022, RUF023) 
+ * Bug fixes
+   * Avoid fixing code to None | None for redundant-none-literal (PYI061) and never-union (RUF020) (#14583, #14589)
+   * [flake8-bugbear] Fix mutable-contextvar-default to resolve annotated function calls properly (B039) 
+   * [flake8-pyi, ruff] Fix traversal of nested literals and unions (PYI016, PYI051, PYI055, PYI062, RUF041) 
+   * [flake8-pyi] Avoid rewriting invalid type expressions in unnecessary-type-union (PYI055) 
+   * [flake8-type-checking] Avoid syntax errors and type checking problem for quoted annotations autofix (TC003, TC006) 
+   * [pylint] Do not wrap function calls in parentheses in the fix for unnecessary-dunder-call (PLC2801) 
+   * [ruff] Handle attrs's auto_attribs correctly (RUF009) 
+* Breaking changes
+   * See also, the "Remapped rules" section which may result in disabled rules.
+   * Default to Python 3.9
+   * Ruff now defaults to Python 3.9 instead of 3.8 if no explicit Python version is configured using ruff.target-version or project.requires-python 
+   * Changed location of pydoclint diagnostics
+   * pydoclint diagnostics now point to the first-line of the problematic docstring. Previously, this was not the case.
+   * If you've opted into these preview rules but have them suppressed using noqa comments in some places, this change may mean that you need to move the noqa suppression comments. Most users should be unaffected by this change.
+   * Use XDG (i.e. ~/.local/bin) instead of the Cargo home directory in the standalone installer
+   * Previously, Ruff's installer used $CARGO_HOME or ~/.cargo/bin for its target install directory. Now, Ruff will be installed into $XDG_BIN_HOME, $XDG_DATA_HOME/../bin, or ~/.local/bin (in that order).
+   * This change is only relevant to users of the standalone Ruff installer (using the shell or PowerShell script). If you installed Ruff using uv or pip, you should be unaffected.
+   * Changes to the line width calculation
+   * Ruff now uses a new version of the unicode-width Rust crate to calculate the line width. In very rare cases, this may lead to lines containing Unicode characters being reformatted, or being considered too long when they were not before (E501).
+ * Removed Rules
+  * The following deprecated rules have been removed:
+   * missing-type-self (ANN101)
+   * missing-type-cls (ANN102)
+   * syntax-error (E999)
+   * pytest-missing-fixture-name-underscore (PT004)
+   * pytest-incorrect-fixture-name-underscore (PT005)
+   * unpacked-list-comprehension (UP027)
+  * Remapped rules
+   * flake8-type-checking: TCH to TC
+  * Stabilization
+   * builtin-import-shadowing (A004)
+   * mutable-contextvar-default (B039)
+   * fast-api-redundant-response-model (FAST001)
+   * fast-api-non-annotated-dependency (FAST002)
+   * dict-index-missing-items (PLC0206)
+   * pep484-style-positional-only-parameter (PYI063)
+   * redundant-final-literal (PYI064)
+   * bad-version-info-order (PYI066)
+   * parenthesize-chained-operators (RUF021)
+   * unsorted-dunder-all (RUF022)
+   * unsorted-dunder-slots (RUF023)
+   * assert-with-print-message (RUF030)
+   * unnecessary-default-type-args (UP043)
+  * The following behaviors have been stabilized:
+   * ambiguous-variable-name (E741): Violations in stub files are now ignored. Stub authors typically don't control variable names.
+   * printf-string-formatting (UP031): Report all printf-like usages even if no autofix is available
+   * zip-instead-of-pairwise (RUF007)
+ * Preview features
+   * [flake8-datetimez] Exempt min.time() and max.time() (DTZ901) 
+   * [flake8-pie] Mark fix as unsafe if the following statement is a string literal (PIE790) 
+   * [flake8-pyi] New rule redundant-none-literal (PYI061) 
+   * [flake8-pyi] Add autofix for redundant-numeric-union (PYI041) 
+   * [ruff] New rule map-int-version-parsing (RUF048) 
+   * [ruff] New rule redundant-bool-literal (RUF038) 
+   * [ruff] New rule unraw-re-pattern (RUF039) 
+   * [pycodestyle] Exempt pytest.importorskip() calls (E402) 
+   * [pylint] Autofix suggests using sets when possible (PLR1714) 
+ * Rule changes
+   * invalid-pyproject-toml (RUF200): Updated to reflect the provisionally accepted PEP 639.
+   * [flake8-pyi] Avoid panic in unfixable case (PYI041) 
+   * [flake8-type-checking] Correctly handle quotes in subscript expression when generating an autofix 
+   * [pylint] Suggest correct autofix for __contains__ (PLC2801) 
+ * Configuration
+   * Ruff now emits a warning instead of an error when a configuration ignores a rule that has been removed 
+   * Ruff now validates that lint.flake8-import-conventions.aliases only uses valid module names and aliases  
+
+-------------------------------------------------------------------
 Sun Nov 17 01:34:46 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.7.4

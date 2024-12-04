@@ -17,7 +17,7 @@
 
 
 Name:           himmelblau
-Version:        0.7.5+git.0.8f421b0
+Version:        0.7.7+git.0.b48d0bb
 Release:        0
 Summary:        Interoperability suite for Microsoft Azure Entra Id
 License:        GPL-3.0-or-later
@@ -197,6 +197,10 @@ install -m 0644 %{_builddir}/%{name}-%{version}/src/sso/src/firefox/policies.jso
 %{_pam_moduledir}/pam_%{name}.so
 
 %files -n himmelblau-sshd-config
+# openssh-server doesn't own /etc/ssh/sshd_config.d before 15.5
+%if 0%{?sle_version} <= 150500
+%dir %{_sysconfdir}/ssh/sshd_config.d
+%endif
 %config %{_sysconfdir}/ssh/sshd_config.d/himmelblau.conf
 
 %files -n himmelblau-sso

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Dec 03 05:46:41 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.1.5:
+  * v0.1.5 release (#563)
+  * Expose MSAL PoP for Consistent CSP Integration (#542)
+  * Pre-emtive fix for the breaking GH Action. (#546)
+  * Bump github.com/Azure/azure-sdk-for-go/sdk/azidentity (#534)
+  * Bump github.com/golang-jwt/jwt/v4 from 4.5.0 to 4.5.1 (#543)
+  * fix: fix fallback to Git tag if VCS is unavailable (#530)
+  * Use AZURE_CONFIG_DIR in kubelogin command example (#522)
+  * Bump golang.org/x/crypto from 0.25.0 to 0.26.0 (#505)
+  * Bump golang.org/x/crypto from 0.24.0 to 0.25.0 (#490)
+  * Bump ossf/scorecard-action from 2.0.6 to 2.4.0 (#498)
+  * support of environment variable KUBECACHEDIR #500 (#501)
+
+-------------------------------------------------------------------
 Wed Jul 10 19:13:47 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.1.4:

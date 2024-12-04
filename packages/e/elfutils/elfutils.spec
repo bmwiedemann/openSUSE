@@ -17,7 +17,7 @@
 
 
 Name:           elfutils
-Version:        0.191
+Version:        0.192
 Release:        0
 Summary:        Higher-level library to access ELF files
 License:        GPL-3.0-or-later
@@ -172,7 +172,10 @@ chmod a+x tests/run*.sh
 # remove unneeded files
 rm -f %{buildroot}/%{_libdir}/*.la
 rm -f %{buildroot}/%{_sysconfdir}/profile.d/debuginfod.*sh
+rm -f %{buildroot}%{_datadir}/fish/vendor_conf.d/debuginfod.fish
 rm -f %{buildroot}/%{_libdir}/pkgconfig/libdebuginfod.pc
+rm -f %{buildroot}%{_mandir}/man8/debuginfod*.8*
+rm -rf %{buildroot}/%{_datadir}/fish
 ls -lR %{buildroot}/%{_libdir}/libelf*
 %find_lang %{name}
 
@@ -188,7 +191,7 @@ ls -lR %{buildroot}/%{_libdir}/libelf*
 %check
 %if 0%{?qemu_user_space_build}
 # qemu-linux-user does not support ptrace and a few other process details
-export XFAIL_TESTS="dwfl-proc-attach run-backtrace-dwarf.sh run-backtrace-native.sh run-deleted.sh"
+export XFAIL_TESTS="dwfl-proc-attach run-backtrace-dwarf.sh run-backtrace-native.sh run-deleted.sh run-backtrace-native-core.sh"
 %endif
 %make_build check
 
@@ -240,6 +243,9 @@ export XFAIL_TESTS="dwfl-proc-attach run-backtrace-dwarf.sh run-backtrace-native
 %{_includedir}/elfutils/version.h
 %{_libdir}/pkgconfig/libelf.pc
 %{_mandir}/man3/elf_*.3*
+%{_mandir}/man3/elf32_*.3*
+%{_mandir}/man3/elf64_*.3*
+%{_mandir}/man3/libelf.3.gz
 
 %files -n libdw1
 %{_libdir}/libdw.so.*

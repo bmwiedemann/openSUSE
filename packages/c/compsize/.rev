@@ -37,4 +37,15 @@ Requested here: https://lists.opensuse.org/opensuse-factory/2018-10/msg00229.htm
   * Improve performances.</comment>
     <requestid>870328</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>13eae2e5249c6faa3713e6155f738702</srcmd5>
+    <version>1.5</version>
+    <time>1733255164</time>
+    <user>anag+factory</user>
+    <comment>- Add compsize-1.5-fix-build-btrfsprogs-0.6.1.patch: Fix build with
+  recent btrfs-progs (gh#kilobyte/compsize#52,
+  gh#kilobyte/compsize!54).
+</comment>
+    <requestid>1227824</requestid>
+  </revision>
 </revisionlist>

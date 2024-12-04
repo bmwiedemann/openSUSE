@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec  2 16:21:47 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.55.0:
+  - Features
+    * feat: Add multiple URL support for externals
+    * feat: Warn if the user is using the Helix editor with chezmoi edit
+    * feat: Support file:// URLs in externals
+  - Fixes
+    * fix: Fix error when choice variables are set in flags and config file
+
+-------------------------------------------------------------------
 Mon Nov 11 18:45:42 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.54.0:

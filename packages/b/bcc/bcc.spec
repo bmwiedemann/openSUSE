@@ -49,15 +49,13 @@
 %endif
 
 Name:           bcc
-Version:        0.30.0
+Version:        0.32.0
 Release:        0
 Summary:        BPF Compiler Collection (BCC)
 License:        Apache-2.0
 Group:          Development/Tools/Other
 URL:            https://github.com/iovisor/bcc
 Source:         https://github.com/iovisor/bcc/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM build-remove-llvm-dev-dependency-from-libbcc.patch -- based on PR 5018
-Patch1:         build-remove-llvm-dev-dependency-from-libbcc.patch
 ExcludeArch:    ppc s390
 BuildRequires:  bison
 BuildRequires:  cmake >= 2.8.7

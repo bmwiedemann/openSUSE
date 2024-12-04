@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 24 13:48:02 UTC 2024 - Martin Jambor <mjambor@suse.com>
+
+- Add gnucobol-3.1.2-C99.diff to add missing includes of
+  libxml/parser.h which cause GCC 14 to emit compiler error rather
+  than a warning.
+
+- Add -Wno-error=incompatible-pointer-types to optflags so that GCC 14
+  can compile test 0987 without failing with an error.
+
+-------------------------------------------------------------------
 Sat Jul 15 18:11:27 UTC 2023 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Move libcob-devel files to gnucobol.lang because libcob.h can not be found 

@@ -7,4 +7,12 @@
     <comment>🤖: initial submission of kea-image</comment>
     <requestid>1226893</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>faf3866741c37936c0d88e8d0604a9dc</srcmd5>
+    <version>unknown</version>
+    <time>1733255270</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1228019</requestid>
+  </revision>
 </revisionlist>

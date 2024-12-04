@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 30 10:11:00 UTC 2024 - Sai Karthik Karra <kskarthik@disroot.org>
+
+- build: disable pie flag for ppc64 arch
+
+-------------------------------------------------------------------
 Tue Jun 25 11:08:36 UTC 2024 - Sai Karthik Karra <kskarthik@disroot.org>
 
 - Bump release version to 1

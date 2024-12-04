@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Dec  2 09:45:29 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to v3.15:
+  * Improved Union and basic types deserialization (#256),
+    highlighted changes:
+    - Expected int | float or float | int value can now be passed
+      through without coercion and losing precision
+    - Expected str value will be guaranteed to be a string version
+      of the input value (#42)
+    - Expected bool value will be guaranteed to be a boolean using
+      standard truth testing procedure for the input value
+    - Expected NoneType will be guaranteed to be None regardless of
+      the input value
+  * Introduced JSON Schema plugin system (#265), see updated
+    documentation
+    - Added built-in DocstringDescriptionPlugin to use a docstring
+      as a description (#222)
+  * Added support for recursive Union types (#206)
+  * Configured MANIFEST.in to include tests folder in the sdist
+    (#262)
+  * Dropped support for Python 3.8 (#258)
+
+-------------------------------------------------------------------
 Tue Nov 12 14:09:47 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to v3.14
