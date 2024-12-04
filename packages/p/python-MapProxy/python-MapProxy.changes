@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  4 08:33:52 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Remove disfunct requires_eq: MapProxy does not directly load
+  load libgeos* via ctypes. Shapely does, and was fixed already.
+
+-------------------------------------------------------------------
 Wed May 15 09:18:07 UTC 2024 - ming li <mli@suse.com>
 
 - Update to 2.0.2:

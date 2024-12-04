@@ -108,4 +108,13 @@
     <comment></comment>
     <requestid>1174288</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>2bc40b99ced50cc93a6a0e7454f458c0</srcmd5>
+    <version>2.0.2</version>
+    <time>1733322463</time>
+    <user>anag+factory</user>
+    <comment>- Remove disfunct requires_eq: MapProxy does not directly load
+  load libgeos* via ctypes. Shapely does, and was fixed already. (forwarded request 1228222 from bnavigator)</comment>
+    <requestid>1228223</requestid>
+  </revision>
 </revisionlist>

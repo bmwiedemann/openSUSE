@@ -59,15 +59,12 @@ BuildRequires:  %{python_module pyproj}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module redis}
 BuildRequires:  %{python_module requests}
-BuildRequires:  geos-devel
 BuildRequires:  proj
 # /SECTION
-# MapProxy calls the GEOS libs libgeos and libgeos_c via ctypes in python scripts, undetected by rpm ld analyzer.
-# use requires_eq in order to be detectable by the python_subpackages rewriter
-%requires_eq    %(rpm -q --requires geos-devel | grep libgeos)
 Requires:       proj
 Requires:       python-Pillow
 Requires:       python-PyYAML >= 3.0
+Recommends:     python-GDAL
 Recommends:     python-Shapely >= 1.8
 Provides:       python-mapproxy = %{version}-%{release}
 BuildArch:      noarch
@@ -131,6 +128,6 @@ donttest="$donttest or TestCGIClient"
 %python_alternative %{_bindir}/mapproxy-seed
 %python_alternative %{_bindir}/mapproxy-util
 %{python_sitelib}/mapproxy
-%{python_sitelib}/MapProxy-%{version}*-info
+%{python_sitelib}/MapProxy-%{version}.dist-info
 
 %changelog
