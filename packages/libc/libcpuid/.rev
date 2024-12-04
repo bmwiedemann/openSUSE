@@ -236,4 +236,21 @@
     <comment></comment>
     <requestid>1199594</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>7b89c0256f7cc4375a7d07e4569a1216</srcmd5>
+    <version>0.7.1</version>
+    <time>1733322461</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.7.1:
+  * Fix cpuid kernel module build on ARM
+  * Return ERR_NO_CPUID when cpuid kernel module cannot be used on AArch32
+  * state
+  * Refactor the build of the bindings (#203)
+  * Fix build error on AArch64 when HWCAP_CPUID is not defined (#205)
+  * Fix build on Windows ARM with MSVC (206)
+  * Fix detection of Intel Meteor Lake
+  * Support for Intel Arrow Lake
+  * Support for AMD Turin</comment>
+    <requestid>1228175</requestid>
+  </revision>
 </revisionlist>

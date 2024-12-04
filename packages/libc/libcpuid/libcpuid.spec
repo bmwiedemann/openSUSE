@@ -18,11 +18,10 @@
 
 %define so_ver  17
 Name:           libcpuid
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 Summary:        Library providing x86 CPU identification
 License:        BSD-2-Clause
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/anrieff/libcpuid
 Source0:        https://github.com/anrieff/libcpuid/releases/download/v%{version}/libcpuid-%{version}.tar.gz
 BuildRequires:  help2man
@@ -56,7 +55,7 @@ Libcpuid provides CPU identification for the x86 (and x86_64)
 architectures.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %configure \
