@@ -1,0 +1,11 @@
+--- a/mpv_gtk.c	2018-02-19 13:22:50.000000000 +0100
++++ b/mpv_gtk.c	2024-12-03 15:29:07.578801575 +0100
+@@ -517,7 +517,7 @@
+ 
+ #if CONFOPT_GTK == 3
+     case GDK_SCROLL_SMOOTH:
+-        gdk_event_get_scroll_deltas(event, &dx, &dy);
++        gdk_event_get_scroll_deltas((GdkEvent *)event, &dx, &dy);
+ 
+         if (dy > 0)
+             ptr = L"mouse-wheel-down";

@@ -23,4 +23,17 @@
     <comment></comment>
     <requestid>1149605</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>5b150f690e5b99bb26dcafbb5b077643</srcmd5>
+    <version>5.2.13</version>
+    <time>1733322458</time>
+    <user>anag+factory</user>
+    <comment>- Modernise spec file and remove obsolete rpmlintrc filters 
+- Do not use source urls for download as they are not available
+  anymore
+
+- Add mp-scrollevent.patch to fix type issue found by gcc14 compile
+  time error.</comment>
+    <requestid>1228179</requestid>
+  </revision>
 </revisionlist>

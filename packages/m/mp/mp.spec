@@ -1,7 +1,7 @@
 #
 # spec file for package mp
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,27 +20,23 @@ Name:           mp
 Version:        5.2.13
 Release:        0
 Summary:        A text editor for programmers
-License:        GPL-2.0
-Group:          Productivity/Text/Editors
-Url:            http://triptico.com/software/mp.html
-Source0:        http://triptico.com/download/mp/mp-%{version}.tar.gz
-Source1:        http://triptico.com/download/mp/mp-%{version}.tar.gz.asc
+License:        GPL-2.0-only
+URL:            https://triptico.com/software/mp.html
+Source0:        mp-%{version}.tar.gz
+Source1:        mp-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 Source3:        %{name}-5.desktop
 Source4:        %{name}-5.png
 Source5:        %{name}-rpmlintrc
 Source6:        %{name}-5-gtk3.desktop
 Patch0:         %{name}-docdir.patch
+Patch1:         %{name}-scrollevent.patch
 BuildRequires:  fdupes
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(gtk+-3.0)
-%if 0%{?suse_version} < 1500
-Requires(post): update-desktop-files
-Requires(postun): update-desktop-files
-%endif
 
 %description
 Minimum Profit
@@ -73,7 +69,6 @@ Features
 
 %package        gtk3
 Summary:        A text editor for programmers (GTK+3 version)
-Group:          Productivity/Text/Editors
 Requires:       %{name} = %{version}
 
 %description    gtk3
@@ -111,10 +106,10 @@ Features
 %build
 export CFLAGS="%{optflags}"
 ./config.sh --prefix=%{_prefix} --docdir=%{_docdir}/mp-5
-make %{?_smp_mflags}
+%make_build
 mv mp-5 mp-5-qt5
 WITHOUT_QT5=1 WITHOUT_QT4=1 ./config.sh --prefix=%{_prefix} --docdir=%{_docdir}/mp-5
-make %{?_smp_mflags}
+%make_build
 mv mp-5 mp-5-gtk3
 mv mp-5-qt5 mp-5
 
@@ -130,23 +125,15 @@ install -m 644 mp-5.1 %{buildroot}/%{_mandir}/man1/mp-5-gtk3.1
 %suse_update_desktop_file %{name}-5 TextEditor
 
 %find_lang minimum-profit
-rm %{buildroot}%{_datadir}/doc/packages/mp-5/mpsl_quickref.ps
+rm %{buildroot}%{_docdir}/mp-5/mpsl_quickref.ps
 %fdupes -s %{buildroot}
-
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-
-%postun
-%desktop_database_postun
-%endif
 
 %files -f minimum-profit.lang
 %{_bindir}/%{name}-5
 %{_bindir}/%{name}sl
 %dir %{_docdir}/%{name}-5
 %{_docdir}/%{name}-5/*
-%{_mandir}/man1/%{name}-5.1%{ext_man}
+%{_mandir}/man1/%{name}-5.1%{?ext_man}
 %dir %{_datadir}/%{name}-5
 %{_datadir}/%{name}-5/*
 %{_datadir}/applications/%{name}-5.desktop
@@ -155,6 +142,6 @@ rm %{buildroot}%{_datadir}/doc/packages/mp-5/mpsl_quickref.ps
 %files gtk3
 %{_bindir}/%{name}-5-gtk3
 %{_datadir}/applications/%{name}-5-gtk3.desktop
-%{_mandir}/man1/%{name}-5-gtk3.1%{ext_man}
+%{_mandir}/man1/%{name}-5-gtk3.1%{?ext_man}
 
 %changelog

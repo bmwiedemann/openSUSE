@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec  4 08:23:42 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Modernise spec file and remove obsolete rpmlintrc filters 
+- Do not use source urls for download as they are not available
+  anymore
+
+-------------------------------------------------------------------
+Tue Dec  3 13:35:57 UTC 2024 - Friedrich Haubensak <hsk17@mail.de>
+
+- Add mp-scrollevent.patch to fix type issue found by gcc14 compile
+  time error.
+
+-------------------------------------------------------------------
 Thu Feb 22 14:04:01 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
