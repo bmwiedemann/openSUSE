@@ -118,4 +118,16 @@
   * Switch to ssh url when using the bridge via osc</comment>
     <requestid>1227319</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>cc44856174a096fc52d62b1ac07a5601</srcmd5>
+    <version>0.5.4</version>
+    <time>1733322454</time>
+    <user>anag+factory</user>
+    <comment>- 0.5.4
+  * fixed support of subdir parameter usage on project level
+  * Fix handling of projectscmsync in the package xml writers
+
+    of the git tree. boo#1230469 CVE-2024-22038</comment>
+    <requestid>1228162</requestid>
+  </revision>
 </revisionlist>
