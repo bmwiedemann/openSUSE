@@ -20,18 +20,14 @@
 # symbol libraries from version 8.0.0
 %define compatversion 8.0.0
 Name:           kicad
-Version:        8.0.6
-%define file_version 8.0.6
+Version:        8.0.7
+%define file_version 8.0.7
 Release:        0
 Summary:        EDA software suite for the creation of schematics and PCB
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later
 Group:          Productivity/Scientific/Electronics
 URL:            https://www.kicad.org
 Source:         https://gitlab.com/kicad/code/kicad/-/archive/%{file_version}/kicad-%{file_version}.tar.bz2
-# PATCH-FIX-UPSTREAM
-Patch0:         https://gitlab.com/kicad/code/kicad/-/commit/75c2f17b42fd203f2f255adf16ca6b723631d2f1.patch#/fix_libgit2_API_breakage.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         https://gitlab.com/kicad/code/kicad/-/commit/b80334baa1c0883309328b6f4d7659cbec2f8338.patch#/fix_libgit2_API_breakage_again.patch
 
 BuildRequires:  cmake >= 3.16
 BuildRequires:  fdupes
