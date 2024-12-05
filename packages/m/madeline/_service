@@ -1,0 +1,17 @@
+<services>
+  <service mode="manual" name="obs_scm">
+    <param name="url">https://git.sr.ht/~ecs/madeline</param>
+    <param name="versionprefix">0.1+git</param>
+    <param name="scm">git</param>
+    <param name="revision">madeline</param>
+    <param name="changesgenerate">enable</param>
+    <param name="changesauthor">mcepl@cepl.eu</param>
+  </service>
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+  <service name="set_version" mode="manual" />
+</services>
+

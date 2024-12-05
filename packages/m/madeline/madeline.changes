@@ -1,0 +1,91 @@
+-------------------------------------------------------------------
+Wed Oct 23 10:10:29 UTC 2024 - mcepl@cepl.eu
+
+- Update to version 0.1+git.1716356019.c693a0a:
+  * Update per breaking stdlib changes
+  * Use done type and for-each iterator loops
+- Add madeline-rpmlintrc as an additional Source.
+
+-------------------------------------------------------------------
+Mon May 13 05:39:50 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Fix location of installation of hare files.
+- Silence rpmlint warnings (including making the package noarch).
+
+-------------------------------------------------------------------
+Sun May 12 22:50:26 UTC 2024 - mcepl@cepl.eu
+
+- Update to version 0+git.1710484775.54dcf14:
+  * implement numeric prefixes
+  * don't explode on f3
+  * make hash table growth a more aggressive
+  * fix leak in example
+  * vi: add dd
+  * more vi mode stuff
+  * move default config into a separate file
+  * separate words with '-' in actions
+  * first stab at a vi mode
+  * pass full made::state to prompter
+
+-------------------------------------------------------------------
+Sun May 12 22:48:50 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add missing dir ownership for %%{_libdir}/hare
+
+-------------------------------------------------------------------
+Sun May 12 22:44:06 UTC 2024 - mcepl@cepl.eu
+
+- Update to version 0+git.1710484775.54dcf14:
+  * implement numeric prefixes
+  * don't explode on f3
+  * make hash table growth a more aggressive
+  * fix leak in example
+  * vi: add dd
+  * more vi mode stuff
+  * move default config into a separate file
+  * separate words with '-' in actions
+  * first stab at a vi mode
+  * pass full made::state to prompter
+  * recognize esc
+  * bit of work towards a vi mode
+  * add configurable bindings
+  * update for new label syntax
+  * fix enter in hist tok mode
+  * fix a double-free
+  * add token history mode
+  * escape: always return escaped string
+  * split: allow getting arbitrary tokens
+  * remove unreachable return
+  * Use utf8::strerror
+  * Capitalize strerror messages
+  * Add more types to error tagged union
+  * s/os::finish/fs::finish/
+  * graph: fix memory leak on invalid UTF-8
+  * fix a use-after-free in complete_fs
+  * Update per bufio function name changes
+
+-------------------------------------------------------------------
+Sun Aug 27 16:11:02 UTC 2023 - mcepl@cepl.eu
+
+- Update to version 0+git.1692625360.0d00d20:
+  * Use opaque
+
+-------------------------------------------------------------------
+Wed Aug 09 12:17:25 UTC 2023 - mcepl@cepl.eu
+
+- Update to version 0+git.1691186389.17a6c61:
+  * stdlib updates
+  * move splitter into made::
+  * Add hinter type
+  * fix ^p and ^n
+  * style
+  * add default completer
+  * dedupe our history
+  * show post-prompt during history traversal
+  * differentiate between synced lines and our lines
+  * sync history across madeline instances
+
+-------------------------------------------------------------------
+Wed Aug  9 12:12:49 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Initial packaging of madeline from git.

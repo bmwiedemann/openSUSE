@@ -1,0 +1,8 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://git.sr.ht/~sircmpwn/harec</param>
+              <param name="changesrevision">f735abab4516d2fb729e3ea7aee309eab5a1b0bf</param></service><service name="tar_scm">
+                <param name="url">https://git.d2evs.net/~ecs/madeline</param>
+              <param name="changesrevision">54dcf14b67f34da392be837d01889e2956905d68</param></service><service name="tar_scm">
+                <param name="url">https://git.sr.ht/~ecs/madeline</param>
+              <param name="changesrevision">c693a0a797849cff0ac629c83e21f028fa60bff6</param></service></servicedata>
