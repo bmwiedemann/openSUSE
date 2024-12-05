@@ -501,4 +501,56 @@
 </comment>
     <requestid>1200728</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>92cefc3b9fbe932d9a3670c15ed3eabf</srcmd5>
+    <version>1.17.10</version>
+    <time>1733415019</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.17.10:
+  * Update src/command_update.rs
+  * Prevent compiler warning without panicking
+  * Update src/operations.rs
+  * Add a eprintln! when the version db is updated
+  * Delete a temp file if optimistic locking didn't work
+  * Update a call signature
+  * Allow longer read lock
+  * Finish temp download of version db
+  * Add `pr{number}~{arch}` variations to list
+  * Update tests/command_initial_setup_from_launcher_test.rs
+  * Print more things to stderr rather than stdout
+  * Update tests/command_initial_setup_from_launcher_test.rs
+  * Clean up error messages in the launcher
+  * Use `rustls-tls-native-roots` for `reqwest` on FreeBSD (#1062)
+  * Update the LTS version to 1.10
+  * Also notify when updating nightly/pr channels
+  * Add tests for --prune-linked
+  * Use separate conditional steps for passing --check to rustfmt
+  * Address comment
+  * Fix windows check
+  * Warn when linking to invalid julia binary
+  * Error when attempting to launch invalid julia binary.
+  * Address feedback
+  * Phrasing and comments
+  * Use reviewdog to suggest rustfmt diff
+  * Add 'up' alias to self update
+  * fix: first read, then delete.
+  * feat: shows when updating symlinks
+  * fix: styled message.
+  * fix: better message
+  * fix: old version too chatty
+  * Get current juliaup channel with `juliaup self channel`
+  * Add --prune-linked option for garbage collection
+  * Remove unnecessary flag on Windows job
+  * Check if path points to valid julia binary
+  * Ensure Julia termintes when launcher terminates on Windows
+  * Put AUR publishing in release channel
+  * Support overriding an override
+  * fix `is_juliaup_installed`
+  * use is_terminal not atty
+  * Check if the terminal is a TTY and not redirected
+  * Don't import Term
+  * Don't change terminal title
+</comment>
+    <requestid>1228518</requestid>
+  </revision>
 </revisionlist>
