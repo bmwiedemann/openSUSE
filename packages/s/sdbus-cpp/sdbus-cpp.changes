@@ -1,7 +1,56 @@
 -------------------------------------------------------------------
+Thu Dec  5 13:42:57 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 2.1.0:
+  * Add SDBUSCPP_REGISTER_STRUCT macro to conveniently teach sdbus-c++ about user-defined structs
+  * Extend the SDBUSCPP_REGISTER_STRUCT macro with serialization of user-defined structs as dicts, and deserialization of dicts into user-defined structs
+  * Make createPlainMessage() function public
+  * Solve the problem of sending large D-Bus messages properly (through the event loop thread)
+  * Fix partially renamed BUILD_DOXYGEN_DOC CMake option
+  * Change googletest to default version 1.14.0
+  * Add version parameter to the xml2cpp codegen tool
+  * A few other internal refactorings and improvements
+- Changes since version 2.0.0:
+  * A new major version with revamped API, bringing numerous new features, simplifications, fixes and breaking changes improving not only API consistency, safety and expressiveness, but also performance
+  * Add section 'Migrating to sdbus-c++ v2' to the 'Using sdbus-c++' document providing the complete list of breaking API/ABI/behavior changes and migration notes
+  * Switch to C++20 standard (but the API is backwards-compatible with C++17, skipping C++20 features in such a case)
+  * Add strong types to public API
+  * Add support for string_view as a D-Bus type representation
+  * Enable compile-time D-Bus signature generation
+  * Redesign Object vtable registration API
+  * Improve Proxy signal subscription API
+  * Refactor object manager API for consistency
+  * Introduce native sd-event integration
+  * Let callbacks take message objects by value
+  * Simplify async D-Bus connection handling
+  * Simplify async call state flag
+  * Make Variant constructor explicit
+  * Use optional for passing potential call errors
+  * Rename and re-organize CMake options
+  * Rename connection creation methods
+  * Have all async function names finish with *Async for consistency
+  * Implement more flexible searching for sd-bus libs
+  * Add new `SDBUSCPP_SDBUS_LIB` CMake configuration variable determining which sd-bus library shall be picked
+  * Make Variant conversion operator explicit
+  * Use sd-bus API to get the current message
+  * Use sd_bus_match_signal() for signal registration
+  * Provide also const char* overloads for convenience functions
+  * Disable move in generated adaptor and proxy classes
+  * Improve and make more efficient some Message API
+  * Add Slot-returning overloads of async method calls
+  * Remove floating_slot_t tag and use return_slot_t instead
+  * Add [[nodiscard]] to many relevant API functions
+  * Add proper fix for timeout handling
+  * Fix for external event loops in which the event loop thread ID was not correctly initialized (now fixed and simplified by not needing the thread ID anymore)
+  * Remove deprecated stuff
+  * Add `SDBUSCPP_` prefix to CMake configuration variables to avoid conflicts with downstream projects
+  * Require systemd of at least v238
+  * Many other fixes and updates in code, tests, build system, CI, and documentation
+
+-------------------------------------------------------------------
 * Wed Apr 24 19:33:19 UTC 2024 - Luca Boccassi <bluca@debian.org>
 
-- Update to new version 1.5.0:
+- Update to new version 1.6.0:
   - Add support for enums in D-Bus serialization and signatures
   - Add support for std::variant as an alternative C++ type for D-Bus Variant
   - Add support for implicit conversions between std::variant and sdbus::Variant
