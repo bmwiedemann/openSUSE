@@ -18,14 +18,12 @@
 
 %global srcname JCTools
 Name:           jctools
-Version:        3.3.0
+Version:        4.0.5
 Release:        0
 Summary:        Java Concurrency Tools for the JVM
 License:        Apache-2.0
 URL:            https://github.com/JCTools/JCTools
 Source0:        %{url}/archive/v%{version}/%{srcname}-%{version}.tar.gz
-Patch0:         imports.patch
-Patch1:         jctools-javadoc.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
@@ -69,8 +67,6 @@ This package contains javadoc for %{name}.
 
 %prep
 %setup -q -n %{srcname}-%{version}
-%patch -P 0 -p1
-%patch -P 1 -p1
 
 # set correct version in all pom.xml files
 %pom_xpath_set pom:project/pom:version %{version}
@@ -89,6 +85,12 @@ This package contains javadoc for %{name}.
 
 %pom_xpath_set "pom:project/pom:properties/pom:java.version" "1.8"
 %pom_xpath_set "pom:project/pom:properties/pom:java.test.version" "1.8"
+
+# Avoid runtime dependency on test-jar
+%pom_xpath_set "pom:dependency[pom:scope='compile']/pom:scope" test jctools-experimental
+# Deprecated classes "only used for testing" needed for compiling jctools-experimental
+mkdir -p jctools-experimental/src/main/java/org/jctools/queues/
+cp -r jctools-core/src/test/java/org/jctools/queues/spec jctools-experimental/src/main/java/org/jctools/queues/
 
 # do not install internal build tools
 %{mvn_package} :jctools-build __noinstall
