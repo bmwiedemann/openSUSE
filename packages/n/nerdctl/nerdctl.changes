@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Dec 03 08:53:13 UTC 2024 - madhankumar.chellamuthu@suse.com
+
+- Update to version 2.0.1:
+  * update CNI plugins (1.6.1)
+  * update stargz-snapshotter (0.16.2)
+  * update BuildKit (0.18.0)
+  * docs: the next release will be v2.0.1, not v2.1.0
+  * Fix permissions for resolv.conf and hosts
+  * build(deps): bump the stargz group with 3 updates
+  * build(deps): bump github.com/containerd/nydus-snapshotter
+  * build(deps): bump docker/build-push-action from 6.9.0 to 6.10.0
+  * fix redundant error checks and comment format
+  * fix: add fields such as CONTAINER_NAME to journald log entries sent to by containers
+  * build(deps): bump github.com/compose-spec/compose-go/v2
+  * Update containerd (1.7.24) in CI
+  * build(deps): bump github.com/containerd/cgroups/v3 from 3.0.3 to 3.0.4
+  * fix: refactor pkg/infoutil in order to resolve import cycle
+  * update stargz-snapshotter (0.16.1)
+  * build(deps): bump github.com/Masterminds/semver/v3 from 3.3.0 to 3.3.1
+  * build(deps): bump docker/metadata-action from 5.5.1 to 5.6.1
+  * Pass appropriate --device arguments from compose to run
+  * update BuildKit (0.17.1)
+  * update runc (1.2.2)
+  * fix: default json-file log size to 100MB
+  * build(deps): bump the stargz group across 1 directory with 3 updates
+  * build(deps): bump github.com/containerd/continuity from 0.4.4 to 0.4.5
+  * refactor: Fix golanglint action error
+  * Use a more direct and less error-prone return value
+  * build(deps): bump the golang-x group with 2 updates
+  * build(deps): bump github.com/containerd/typeurl/v2 from 2.2.2 to 2.2.3
+  * build(deps): bump github.com/compose-spec/compose-go/v2
+  * build(deps): bump the golang-x group with 4 updates
+  * feat: configure custom IP for default bridge network
+  * build(deps): bump github.com/vishvananda/netns from 0.0.4 to 0.0.5
+  * Mark `nerdctl builder debug` as incompatible with Docker
+  * typo: remove extra spaces at the lead #3650 #3651
+  * typo: remove extra colons and whitespaces #3650
+  * [fix] avoid escaping '<', '>', '&'
+
+-------------------------------------------------------------------
 Wed Nov 27 12:47:08 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
 
 - Set build version to package version and revision to unknown
