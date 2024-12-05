@@ -1,20 +1,8 @@
-diff -rub a/data/fallback/app-catalog/text-editor b/data/fallback/app-catalog/text-editor
---- a/data/fallback/app-catalog/text-editor	2022-08-11 08:36:34.373131935 +0800
-+++ b/data/fallback/app-catalog/text-editor	2022-08-11 08:38:16.501413773 +0800
-@@ -16,3 +16,4 @@
+diff -rub NsCDE-2.3/data/fallback/app-catalog/text-editor NsCDE-2.3-patched/data/fallback/app-catalog/text-editor
+--- NsCDE-2.3/data/fallback/app-catalog/text-editor	2023-06-16 08:55:34.000000000 +0200
++++ NsCDE-2.3-patched/data/fallback/app-catalog/text-editor	2024-11-06 04:48:04.669950789 +0100
+@@ -15,3 +15,4 @@
+ kate
  kedit
  jedit
- gedit
 +leafpad
-diff -rub a/nscde_tools/bootstrap.in b/nscde_tools/bootstrap.in
---- a/nscde_tools/bootstrap.in	2022-08-11 08:36:34.429131937 +0800
-+++ b/nscde_tools/bootstrap.in	2022-08-11 08:38:29.125414200 +0800
-@@ -653,7 +653,7 @@
-          echo "$locale_skipping_fm_set_later $FVWM_USERDIR/NsCDE.conf."
-       fi
- 
--      for xeditor in gvim emacs nedit mousepad tea pluma xfe xemacs geany bluefish uxvile xfwrite kate xfpack xjed gedit
-+      for xeditor in gvim emacs nedit mousepad tea pluma xfe xemacs geany bluefish uxvile xfwrite kate xfpack xjed gedit leafpad
-       do
-          whence -q $xeditor
-          if (($? == 0)); then
