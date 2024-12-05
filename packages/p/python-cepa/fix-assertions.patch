@@ -1,0 +1,221 @@
+Index: cepa-1.8.4/test/integ/descriptor/collector.py
+===================================================================
+--- cepa-1.8.4.orig/test/integ/descriptor/collector.py
++++ cepa-1.8.4/test/integ/descriptor/collector.py
+@@ -88,7 +88,7 @@ class TestCollector(unittest.TestCase):
+     )
+ 
+     for args, expected_msg in test_values:
+-      self.assertRaisesRegexp(ValueError, re.escape(expected_msg), list, stem.descriptor.collector.get_consensus(**args))
++      self.assertRaisesRegex(ValueError, re.escape(expected_msg), list, stem.descriptor.collector.get_consensus(**args))
+ 
+   def _test_index(self, compression):
+     if compression and not compression.available:
+Index: cepa-1.8.4/test/unit/client/cell.py
+===================================================================
+--- cepa-1.8.4.orig/test/unit/client/cell.py
++++ cepa-1.8.4/test/unit/client/cell.py
+@@ -213,7 +213,7 @@ class TestCell(unittest.TestCase):
+     self.assertEqual(3257622417, RelayCell(5, 'RELAY_BEGIN_DIR', '', digest.digest(), 564346860).digest)
+     self.assertEqual(3257622417, RelayCell(5, 'RELAY_BEGIN_DIR', '', 3257622417, 564346860).digest)
+     self.assertRaisesWith(ValueError, 'RELAY cell digest must be a hash, string, or int but was a list', RelayCell, 5, 'RELAY_BEGIN_DIR', '', [], 564346860)
+-    self.assertRaisesRegexp(ValueError, "Invalid enumeration 'NO_SUCH_COMMAND', options are RELAY_BEGIN, RELAY_DATA", RelayCell, 5, 'NO_SUCH_COMMAND', '', 5, 564346860)
++    self.assertRaisesRegex(ValueError, "Invalid enumeration 'NO_SUCH_COMMAND', options are RELAY_BEGIN, RELAY_DATA", RelayCell, 5, 'NO_SUCH_COMMAND', '', 5, 564346860)
+ 
+     mismatched_data_length_bytes = b''.join((
+       b'\x00\x01',  # circ ID
+Index: cepa-1.8.4/test/unit/client/size.py
+===================================================================
+--- cepa-1.8.4.orig/test/unit/client/size.py
++++ cepa-1.8.4/test/unit/client/size.py
+@@ -28,7 +28,7 @@ class TestSize(unittest.TestCase):
+     self.assertRaisesWith(ValueError, 'Packed values must be positive (attempted to pack -1 as a CHAR)', Size.CHAR.pack, -1)
+ 
+     bad_size = Size('BAD_SIZE', 1, '!H')
+-    self.assertRaisesRegexp(ValueError, re.escape("'\\x00\\x12' is the wrong size for a BAD_SIZE field"), bad_size.pack, 18)
++    self.assertRaisesRegex(ValueError, re.escape("'\\x00\\x12' is the wrong size for a BAD_SIZE field"), bad_size.pack, 18)
+ 
+   def test_unpack(self):
+     self.assertEqual(18, Size.CHAR.unpack(b'\x12'))
+Index: cepa-1.8.4/test/unit/descriptor/certificate.py
+===================================================================
+--- cepa-1.8.4.orig/test/unit/descriptor/certificate.py
++++ cepa-1.8.4/test/unit/descriptor/certificate.py
+@@ -119,7 +119,7 @@ class TestEd25519Certificate(unittest.Te
+     """
+ 
+     exc_msg = re.escape("Ed25519 certificate wasn't propoerly base64 encoded (Incorrect padding):")
+-    self.assertRaisesRegexp(ValueError, exc_msg, Ed25519Certificate.from_base64, '\x02\x0323\x04')
++    self.assertRaisesRegex(ValueError, exc_msg, Ed25519Certificate.from_base64, '\x02\x0323\x04')
+ 
+   def test_too_short(self):
+     """
+Index: cepa-1.8.4/test/unit/descriptor/collector.py
+===================================================================
+--- cepa-1.8.4.orig/test/unit/descriptor/collector.py
++++ cepa-1.8.4/test/unit/descriptor/collector.py
+@@ -107,13 +107,13 @@ class TestCollector(unittest.TestCase):
+     urlopen_mock.side_effect = IOError('boom')
+ 
+     collector = CollecTor(retries = 0)
+-    self.assertRaisesRegexp(IOError, 'boom', collector.index)
++    self.assertRaisesRegex(IOError, 'boom', collector.index)
+     self.assertEqual(1, urlopen_mock.call_count)
+ 
+     urlopen_mock.reset_mock()
+ 
+     collector = CollecTor(retries = 4)
+-    self.assertRaisesRegexp(IOError, 'boom', collector.index)
++    self.assertRaisesRegex(IOError, 'boom', collector.index)
+     self.assertEqual(5, urlopen_mock.call_count)
+ 
+   @patch(URL_OPEN, Mock(return_value = io.BytesIO(b'not json')))
+@@ -121,7 +121,7 @@ class TestCollector(unittest.TestCase):
+     collector = CollecTor()
+ 
+     if stem.prereq.is_python_3():
+-      self.assertRaisesRegexp(ValueError, 'Expecting value: line 1 column 1', collector.index, Compression.PLAINTEXT)
++      self.assertRaisesRegex(ValueError, 'Expecting value: line 1 column 1', collector.index, Compression.PLAINTEXT)
+     else:
+       self.assertRaisesRegexp(ValueError, 'No JSON object could be decoded', collector.index, Compression.PLAINTEXT)
+ 
+@@ -132,7 +132,7 @@ class TestCollector(unittest.TestCase):
+ 
+       with patch(URL_OPEN, Mock(return_value = io.BytesIO(b'not compressed'))):
+         collector = CollecTor()
+-        self.assertRaisesRegexp(IOError, 'Failed to decompress as %s' % compression, collector.index, compression)
++        self.assertRaisesRegex(IOError, 'Failed to decompress as %s' % compression, collector.index, compression)
+ 
+   @patch('stem.descriptor.collector.CollecTor.index', Mock(return_value = EXAMPLE_INDEX))
+   def test_files(self):
+Index: cepa-1.8.4/test/unit/descriptor/remote.py
+===================================================================
+--- cepa-1.8.4.orig/test/unit/descriptor/remote.py
++++ cepa-1.8.4/test/unit/descriptor/remote.py
+@@ -159,7 +159,7 @@ class TestDescriptorDownloader(unittest.
+         validate = True,
+       )
+ 
+-      self.assertRaisesRegexp(stem.ProtocolError, "^Response should begin with HTTP success, but was 'HTTP/1.0 500 Kaboom'", request.run)
++      self.assertRaisesRegex(stem.ProtocolError, "^Response should begin with HTTP success, but was 'HTTP/1.0 500 Kaboom'", request.run)
+ 
+   @patch(URL_OPEN, _dirport_mock(TEST_DESCRIPTOR))
+   def test_using_dirport(self):
+Index: cepa-1.8.4/test/unit/directory/authority.py
+===================================================================
+--- cepa-1.8.4.orig/test/unit/directory/authority.py
++++ cepa-1.8.4/test/unit/directory/authority.py
+@@ -75,4 +75,4 @@ class TestAuthority(unittest.TestCase):
+ 
+   @patch(URL_OPEN, Mock(return_value = io.BytesIO(b'')))
+   def test_from_remote_empty(self):
+-    self.assertRaisesRegexp(stem.DownloadFailed, 'no content', stem.directory.Authority.from_remote)
++    self.assertRaisesRegex(stem.DownloadFailed, 'no content', stem.directory.Authority.from_remote)
+Index: cepa-1.8.4/test/unit/directory/fallback.py
+===================================================================
+--- cepa-1.8.4.orig/test/unit/directory/fallback.py
++++ cepa-1.8.4/test/unit/directory/fallback.py
+@@ -120,15 +120,15 @@ class TestFallback(unittest.TestCase):
+ 
+   @patch(URL_OPEN, Mock(return_value = io.BytesIO(b'')))
+   def test_from_remote_empty(self):
+-    self.assertRaisesRegexp(stem.DownloadFailed, 'no content', stem.directory.Fallback.from_remote)
++    self.assertRaisesRegex(stem.DownloadFailed, 'no content', stem.directory.Fallback.from_remote)
+ 
+   @patch(URL_OPEN, Mock(return_value = io.BytesIO(b'\n'.join(FALLBACK_GITWEB_CONTENT.splitlines()[1:]))))
+   def test_from_remote_no_header(self):
+-    self.assertRaisesRegexp(IOError, 'does not have a type field indicating it is fallback directory metadata', stem.directory.Fallback.from_remote)
++    self.assertRaisesRegex(IOError, 'does not have a type field indicating it is fallback directory metadata', stem.directory.Fallback.from_remote)
+ 
+   @patch(URL_OPEN, Mock(return_value = io.BytesIO(FALLBACK_GITWEB_CONTENT.replace(b'version=2.0.0', b'version'))))
+   def test_from_remote_malformed_header(self):
+-    self.assertRaisesRegexp(IOError, 'Malformed fallback directory header line: /\\* version \\*/', stem.directory.Fallback.from_remote)
++    self.assertRaisesRegex(IOError, 'Malformed fallback directory header line: /\\* version \\*/', stem.directory.Fallback.from_remote)
+ 
+   def test_from_remote_malformed(self):
+     test_values = {
+@@ -142,7 +142,7 @@ class TestFallback(unittest.TestCase):
+ 
+     for entry, expected in test_values.items():
+       with patch(URL_OPEN, Mock(return_value = io.BytesIO(entry))):
+-        self.assertRaisesRegexp(IOError, re.escape(expected), stem.directory.Fallback.from_remote)
++        self.assertRaisesRegex(IOError, re.escape(expected), stem.directory.Fallback.from_remote)
+ 
+   def test_persistence(self):
+     expected = {
+Index: cepa-1.8.4/test/unit/response/add_onion.py
+===================================================================
+--- cepa-1.8.4.orig/test/unit/response/add_onion.py
++++ cepa-1.8.4/test/unit/response/add_onion.py
+@@ -89,7 +89,7 @@ class TestAddOnionResponse(unittest.Test
+     """
+ 
+     response = ControlMessage.from_str(WRONG_FIRST_KEY, normalize = True)
+-    self.assertRaisesRegexp(stem.ProtocolError, 'ADD_ONION response should start with', stem.response.convert, 'ADD_ONION', response)
++    self.assertRaisesRegex(stem.ProtocolError, 'ADD_ONION response should start with', stem.response.convert, 'ADD_ONION', response)
+ 
+   def test_no_key_type(self):
+     """
+@@ -97,4 +97,4 @@ class TestAddOnionResponse(unittest.Test
+     """
+ 
+     response = ControlMessage.from_str(MISSING_KEY_TYPE, normalize = True)
+-    self.assertRaisesRegexp(stem.ProtocolError, 'ADD_ONION PrivateKey lines should be of the form', stem.response.convert, 'ADD_ONION', response)
++    self.assertRaisesRegex(stem.ProtocolError, 'ADD_ONION PrivateKey lines should be of the form', stem.response.convert, 'ADD_ONION', response)
+Index: cepa-1.8.4/test/unit/util/connection.py
+===================================================================
+--- cepa-1.8.4.orig/test/unit/util/connection.py
++++ cepa-1.8.4/test/unit/util/connection.py
+@@ -198,12 +198,12 @@ class TestConnection(unittest.TestCase):
+   def test_download_retries(self, urlopen_mock):
+     urlopen_mock.side_effect = urllib.URLError('boom')
+ 
+-    self.assertRaisesRegexp(IOError, 'boom', stem.util.connection.download, URL)
++    self.assertRaisesRegex(IOError, 'boom', stem.util.connection.download, URL)
+     self.assertEqual(1, urlopen_mock.call_count)
+ 
+     urlopen_mock.reset_mock()
+ 
+-    self.assertRaisesRegexp(IOError, 'boom', stem.util.connection.download, URL, retries = 4)
++    self.assertRaisesRegex(IOError, 'boom', stem.util.connection.download, URL, retries = 4)
+     self.assertEqual(5, urlopen_mock.call_count)
+ 
+   @patch('os.access')
+Index: cepa-1.8.4/test/unit/version.py
+===================================================================
+--- cepa-1.8.4.orig/test/unit/version.py
++++ cepa-1.8.4/test/unit/version.py
+@@ -58,7 +58,7 @@ class TestVersion(unittest.TestCase):
+     Tor version output that doesn't include a version within it.
+     """
+ 
+-    self.assertRaisesRegexp(IOError, "'tor_unit --version' didn't provide a parseable version", stem.version.get_system_tor_version, 'tor_unit')
++    self.assertRaisesRegex(IOError, "'tor_unit --version' didn't provide a parseable version", stem.version.get_system_tor_version, 'tor_unit')
+ 
+   @patch('stem.util.system.call', Mock(return_value = MALFORMED_TOR_VERSION.splitlines()))
+   @patch.dict(stem.version.VERSION_CACHE)
+Index: cepa-1.8.4/stem/util/test_tools.py
+===================================================================
+--- cepa-1.8.4.orig/stem/util/test_tools.py
++++ cepa-1.8.4/stem/util/test_tools.py
+@@ -285,17 +285,10 @@ class TimedTestRunner(unittest.TextTestR
+           vended API then please let us know.
+           """
+ 
+-          return self.assertRaisesRegexp(exc_type, '^%s$' % re.escape(exc_msg), func, *args, **kwargs)
++          return self.assertRaisesRegex(exc_type, '^%s$' % re.escape(exc_msg), func, *args, **kwargs)
+ 
+-        def assertRaisesRegexp(self, exc_type, exc_msg, func, *args, **kwargs):
+-          if stem.prereq._is_python_26():
+-            try:
+-              func(*args, **kwargs)
+-              self.fail('Expected a %s to be raised but nothing was' % exc_type)
+-            except exc_type as exc:
+-              self.assertTrue(re.search(exc_msg, str(exc), re.MULTILINE))
+-          else:
+-            return super(original_type, self).assertRaisesRegexp(exc_type, exc_msg, func, *args, **kwargs)
++        def assertRaisesRegex(self, exc_type, exc_msg, func, *args, **kwargs):
++          return super(original_type, self).assertRaisesRegex(exc_type, exc_msg, func, *args, **kwargs)
+ 
+         def id(self):
+           return '%s.%s.%s' % (original_type.__module__, original_type.__name__, self._testMethodName)

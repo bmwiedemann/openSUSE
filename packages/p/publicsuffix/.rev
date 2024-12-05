@@ -1601,4 +1601,41 @@ Now with build cycle removed.</comment>
   * tool/internal/parser: sanitize input to clean, valid UTF-8 (#2005)</comment>
     <requestid>1188969</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>0a3ecda84eb13534ca0ae72c524f1601</srcmd5>
+    <version>20241202</version>
+    <time>1733414714</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20241202:
+  * remove `upli.io` (#2302)
+  * added o365 sub domain (#2291)
+  * tools/internal/parser: enforce suffix ordering in the ICANN section (#2295)
+  * chore: Fix Alphabetizing for the ICANN section (#2287)
+  * remove `mcpe.me` (#2294)
+  * util: gTLD data autopull updates for 2024-11-27T15:18:00 UTC (#2293)
+  * Update `.EG` Section (#2290)
+  * Adding RUB domain (#2292)
+  * Update `.TW` Section (#2289)
+  * Update `.CV` Section (#2286)
+  * Update company name and email address (#2285)
+  * Update `.GE` Section (#2283)
+  * Update `.BO` (#2276)
+  * Update `.DM` Block (#2277)
+  * Update `.MG` Section (#2274)
+  * chore: Update `.AF` Section link and sorting (#2279)
+  * chore: Update `.CW` Section comments (#2281)
+  * update `.tt` section (#2272)
+  * remove `betainabox.com` (#2259)
+  * Update `.AZ` comments and fix sorting (#2275)
+  * alphabetise `.tm` section + add confirmation comment (#2268)
+  * Update `.RE` Section (#2271)
+  * Update `.CO` Section (#2269)
+  * Update `.PL` comments and fix alphabetical sorting (#2270)
+  * Update `.SG` Section (#2273)
+  * Update 2nd levels for .JO (Jordan) section (#2264)
+  * remove `nom.ad` (#2263)
+  * Update .IS (#2266)
+  * Update .AU Section (#2267)</comment>
+    <requestid>1228225</requestid>
+  </revision>
 </revisionlist>

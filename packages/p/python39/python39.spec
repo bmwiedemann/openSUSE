@@ -99,13 +99,13 @@
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 %bcond_without profileopt
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.9.20
+Version:        3.9.21
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
 URL:            https://www.python.org/
 Source0:        https://www.python.org/ftp/python/%{folderversion}/%{tarname}.tar.xz
-Source1:        https://www.python.org/ftp/python/%{folderversion}/%{tarname}.tar.xz.asc
+Source1:        https://www.python.org/ftp/python/%{folderversion}/%{tarname}.tar.xz.sigstore
 Source2:        baselibs.conf
 Source3:        README.SUSE
 Source7:        macros.python3
@@ -194,12 +194,6 @@ Patch50:        gh120226-fix-sendfile-test-kernel-610.patch
 # PATCH-FIX-UPSTREAM sphinx-802.patch mcepl@suse.com
 # status_iterator method moved between the Sphinx versions
 Patch51:        sphinx-802.patch
-# PATCH-FIX-UPSTREAM CVE-2024-9287-venv_path_unquoted.patch gh#python/cpython#124651 mcepl@suse.com
-# venv should properly quote path names provided when creating a venv
-Patch52:        CVE-2024-9287-venv_path_unquoted.patch
-# PATCH-FIX-UPSTREAM CVE-2024-11168-validation-IPv6-addrs.patch bsc#1233307 mcepl@suse.com
-# improve validation of IPv6 and IPvFuture addresses in urlparse and urlsplit
-Patch53:        CVE-2024-11168-validation-IPv6-addrs.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -472,8 +466,6 @@ other applications.
 %patch -P 48 -p1
 %patch -P 50 -p1
 %patch -P 51 -p1
-%patch -P 52 -p1
-%patch -P 53 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

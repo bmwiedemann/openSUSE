@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package nvidia-open-driver-G06-signed
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -16,8 +16,8 @@
 #
 
 
-%define gfx_version 550.127.05
-%define cuda_version 560.35.03
+%define gfx_version 550.135
+%define cuda_version 565.57.01
 
 %global flavor @BUILD_FLAVOR@%{?nil}
 %if "%{flavor}" == "cuda"
@@ -25,6 +25,11 @@
 ExclusiveArch:  do_not_build
  %endif
 %{bcond_without cuda}
+%define mykind cuda
+%define otherkind gfx
+%else
+%define mykind gfx
+%define otherkind cuda
 %endif
 %if %{undefined kernel_module_directory}
 %if 0%{?suse_version} >= 1550
@@ -83,6 +88,7 @@ Source14:       group-source-files.pl
 Source15:       kmp-trigger.sh
 Patch0:         persistent-nvidia-id-string.patch
 %if "%{flavor}" != "cuda"
+Patch1:         550.135.patch
 %ifarch aarch64
 %if 0%{?suse_version} >= 1600
 Patch2:         aarch64-TW-buildfix.patch
@@ -138,6 +144,26 @@ Requires:       ( nvidia-compute-G06 = 555.42.06 if ( cuda-drivers = 555.42.06 o
 By installing this package, the signed NVIDIA open driver built by SUSE will be preferred during installation
 of CUDA components.
 Simply run: `zypper install --no-recommends cuda-runtime-<version> nv-prefer-signed-open-driver`
+
+%package -n kernel-firmware-nvidia-gspx-G06%{?with_cuda:-cuda}
+Summary:        Kernel firmware file for open NVIDIA kernel module driver G06
+Provides:       multiversion(kernel)
+# Kill version 555 with a 'Conflicts: kernel-firmware-nvidia-gspx-G06'
+Obsoletes:      kernel-firmware-nvidia-gspx-G06 < 560.35.03
+Obsoletes:      kernel-firmware-nvidia-gsp-G06 = 535.86.05
+Obsoletes:      kernel-firmware-nvidia-gspx-G06-cuda < 560.35.03
+Requires:       (kernel-firmware-nvidia-gspx-G06 = %{version} if (nvidia-compute-utils-G06 = %{version} or nvidia-compute-G06 = %{version} or sle-module-NVIDIA-compute-release))
+%if 0%{?sle_version} >= 150700
+BuildArch:      noarch
+%endif
+
+%description -n kernel-firmware-nvidia-gspx-G06%{?with_cuda:-cuda}
+This package fetches the versioned kernel firmware file "gsp.bin" for
+the OpenSource NVIDIA kernel module driver G06 once it's available.
+
+%if 0%{?sle_version:1} && %{with cuda}
+%files -n kernel-firmware-nvidia-gspx-G06%{?with_cuda:-cuda}
+%endif
 
 %if %{with cuda}
 %files -n nv-prefer-signed-open-driver

@@ -2,9 +2,11 @@
  utils.mk |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
---- a/utils.mk
-+++ b/utils.mk
-@@ -524,7 +524,7 @@ define GENERATE_NVIDSTRING
+Index: open-gpu-kernel-modules-550.135/utils.mk
+===================================================================
+--- open-gpu-kernel-modules-550.135.orig/utils.mk
++++ open-gpu-kernel-modules-550.135/utils.mk
+@@ -544,7 +544,7 @@ define GENERATE_NVIDSTRING
    # g_nvid_string.c depends on all objects except g_nvid_string.o, and version.mk
    $(NVIDSTRING): $$(filter-out $$(call BUILD_OBJECT_LIST,$$(NVIDSTRING)), $(3)) $$(VERSION_MK)
  	$(at_if_quiet)$$(MKDIR) $$(dir $$@)

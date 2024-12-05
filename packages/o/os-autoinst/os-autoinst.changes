@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec 05 11:26:04 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1733320281.c273366:
+  * Fix: console reset on milestone loading
+  * codecov: Mark basetest as completely covered
+  * basetest: Simplify record_screenfail to increase coverage
+  * Remove obsolete basetest::ocr_checklist
+  * cv: Mark extraordinary error handling as uncoverable
+
+-------------------------------------------------------------------
 Fri Nov 29 21:29:48 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1732909069.6642da0:

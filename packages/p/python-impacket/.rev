@@ -80,4 +80,15 @@
     <comment></comment>
     <requestid>1201611</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>38adc3813c282985c56c63991fe4b311</srcmd5>
+    <version>0.12.0</version>
+    <time>1733414956</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1228356 from mnhauke
+
+- Skip test tests/SMB_RPC/test_smbserver.py to fix the actual
+    build failure.</comment>
+    <requestid>1228389</requestid>
+  </revision>
 </revisionlist>

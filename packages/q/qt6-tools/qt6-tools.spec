@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.8.0
+%define real_version 6.8.1
 %define short_version 6.8
 %define tar_name qttools-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-tools%{?pkg_suffix}
-Version:        6.8.0
+Version:        6.8.1
 Release:        0
 Summary:        Qt 6 Tools libraries and tools
 # TODO Check if it's still valid
@@ -281,7 +281,9 @@ This library does not have any ABI or API guarantees.
 %autosetup -p1 -n %{tar_name}-%{real_version}%{tar_suffix}
 
 %build
-%cmake_qt6 -DBUILD_TESTING:BOOL=OFF
+%cmake_qt6 \
+  -DQT_GENERATE_SBOM:BOOL=FALSE \
+  -DBUILD_TESTING:BOOL=FALSE
 
 %{qt6_build}
 

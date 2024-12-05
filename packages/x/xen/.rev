@@ -2998,4 +2998,12 @@
     <comment>Security and Maintenance Update. Fix for bsc#1232622 CVE-2024-45818 XSA-463 and bsc#1232624 CVE-2024-45819 XSA-464</comment>
     <requestid>1226362</requestid>
   </revision>
+  <revision rev="353" vrev="1">
+    <srcmd5>8178e1446d766b6e800a879c4ccfa992</srcmd5>
+    <version>4.19.1_02</version>
+    <time>1733414723</time>
+    <user>anag+factory</user>
+    <comment>Update to Xen version 4.19.1 bug fix release</comment>
+    <requestid>1228353</requestid>
+  </revision>
 </revisionlist>

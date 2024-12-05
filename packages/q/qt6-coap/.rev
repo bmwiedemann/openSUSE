@@ -263,4 +263,12 @@
     <comment>Qt 6.8.0 (forwarded request 1206590 from krop)</comment>
     <requestid>1207605</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>5dcec6247049e90a8a3296c22e86797a</srcmd5>
+    <version>6.8.1</version>
+    <time>1733414777</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.8.1</comment>
+    <requestid>1228234</requestid>
+  </revision>
 </revisionlist>

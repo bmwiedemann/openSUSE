@@ -4163,4 +4163,18 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
 - supersedes U_xorg-xserver-e89edec497ba.patch</comment>
     <requestid>1221609</requestid>
   </revision>
+  <revision rev="436" vrev="2">
+    <srcmd5>cd256a88a1835e6a18a41b1ee5d09493</srcmd5>
+    <version>21.1.14</version>
+    <time>1733414720</time>
+    <user>anag+factory</user>
+    <comment>- no longer apply and remove 
+  u_xfree86-activate-GPU-screens-on-autobind.patch since it's
+  no longer needed and might be harmful even ... (tested
+  successfully on Thinkpad P16 with Intel/NVIDIA hybrid graphics)
+- remove no longer applied and no longer needed patch 
+  n_xserver-optimus-autoconfig-hack.patch (feature implemented
+  upstream)</comment>
+    <requestid>1228313</requestid>
+  </revision>
 </revisionlist>

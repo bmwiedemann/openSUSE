@@ -114,4 +114,12 @@ Most of the pattern matches in the package are for CC-BY-2.5, not CC-BY-3.0 (for
     <comment>Use SOURCE_DATE_EPOCH for reproducible builds</comment>
     <requestid>1202690</requestid>
   </revision>
+  <revision rev="16" vrev="23">
+    <srcmd5>fa3513c34dba609a8aa1935e980824a4</srcmd5>
+    <version>1.0</version>
+    <time>1733414911</time>
+    <user>anag+factory</user>
+    <comment>Add an alias</comment>
+    <requestid>1228274</requestid>
+  </revision>
 </revisionlist>

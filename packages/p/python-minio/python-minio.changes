@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Dec  4 13:33:28 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 7.2.12:
+  https://github.com/minio/minio-py/releases/tag/7.1.17
+  https://github.com/minio/minio-py/releases/tag/7.2.0
+  https://github.com/minio/minio-py/releases/tag/7.2.1
+  https://github.com/minio/minio-py/releases/tag/7.2.2
+  https://github.com/minio/minio-py/releases/tag/7.2.3
+  https://github.com/minio/minio-py/releases/tag/7.2.4
+  https://github.com/minio/minio-py/releases/tag/7.2.5
+  https://github.com/minio/minio-py/releases/tag/7.2.6
+  https://github.com/minio/minio-py/releases/tag/7.2.7
+  https://github.com/minio/minio-py/releases/tag/7.2.8
+  https://github.com/minio/minio-py/releases/tag/7.2.9
+  https://github.com/minio/minio-py/releases/tag/7.2.10
+  https://github.com/minio/minio-py/releases/tag/7.2.11
+  https://github.com/minio/minio-py/releases/tag/7.2.12
+- sync requires/buildrequires with setup.py
+
+-------------------------------------------------------------------
 Fri Mar 29 06:29:02 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Add %{?sle15_python_module_pythons}

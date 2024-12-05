@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec  4 15:17:03 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.2.5:
+  * Fixed crash if the working directory changes after a first successfull Automated light Curve process
+  * Fixed bug in TIFF files that have TIFFTAG_MINSAMPLEVALUE and TIFFTAG_MAXSAMPLEVALUE set to 0: we have removed these tags
+  * Added HISTORY after seqcrop and GUI crop
+  * Fixed potential crash in synthstar
+
+-------------------------------------------------------------------
 Wed Sep 11 07:32:29 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.2.4:

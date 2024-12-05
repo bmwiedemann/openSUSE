@@ -67,4 +67,18 @@
   * autogen.sh: use exec instead of waiting for configure to finish</comment>
     <requestid>1035538</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b076ba50d67ca198e18c1441ef13f5be</srcmd5>
+    <version>1.1.6</version>
+    <time>1733414961</time>
+    <user>anag+factory</user>
+    <comment>- update to version 1.1.6
+  * Assume target platforms have strcasecmp now
+  * Remove detectableRepeat variable
+  * evargs.c: Use standard strchr() instead of deprecated index()
+  * evargs.c: constify pointer arguments that aren't modified
+  * Accept --help &amp; --version as aliases to -help &amp; -version
+  * Use _stricmp() instead of strcasecmp() on Windows</comment>
+    <requestid>1228412</requestid>
+  </revision>
 </revisionlist>

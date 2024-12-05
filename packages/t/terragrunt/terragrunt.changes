@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 05 05:46:56 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.69.7:
+  * add new built-in function get_aws_account_aliases(), fix #2483
+    (#3607)
+
+-------------------------------------------------------------------
 Wed Dec 04 05:59:44 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.69.6:

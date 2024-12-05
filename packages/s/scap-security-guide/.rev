@@ -423,4 +423,18 @@ Setting up scap-security-guide (0.1.56-30.1) ... (forwarded request 896944 from 
   - Update CIS RHEL9 control file to v2.0.0 (#12067)</comment>
     <requestid>1198901</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>64c3ff30cdcd8c9b7ece1eee5cb3e38d</srcmd5>
+    <version>0.1.75</version>
+    <time>1733414926</time>
+    <user>anag+factory</user>
+    <comment>- updated to 0.1.75 (jsc#ECO-3319)
+  -  Add new product kylinserver10 
+  -  Create OL10 product 
+  -  Update PCI-DSS control file for version 4.0.1 
+  -  Add Ism profile for ol8, ol9
+  -  Release SLMicro5 product 
+  -  Various updates for SLE 12/15</comment>
+    <requestid>1228301</requestid>
+  </revision>
 </revisionlist>

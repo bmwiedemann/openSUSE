@@ -17,9 +17,6 @@
 
 
 %{?sle15_python_module_pythons}
-# tests do not work with python312. Hopefully we can go back to stem before python312 is mandatory
-# https://github.com/onionshare/onionshare/issues/1851
-%define skip_python312 1
 Name:           python-cepa
 Version:        1.8.4
 Release:        0
@@ -31,6 +28,7 @@ Source:         https://files.pythonhosted.org/packages/source/c/cepa/cepa-%{ver
 # Replace use of the external mock module with the one in stdlib.
 Patch0:         mock.patch
 Patch1:         use-fullargspec.patch
+Patch2:         fix-assertions.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -43,7 +41,7 @@ BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module pycodestyle}
 # /SECTION
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 Recommends:     python-cryptography
 Provides:       python-stem = %version-%release

@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Dec 03 13:23:13 UTC 2024 - christophe@krop.fr
+
+- Update to version 5.15.18:
+  * Bump version to 5.15.18
+  * Fix build errors with -no-opengl configuration
+  * Fixup "Add option to chose python version for building 5.15 WebEngine"
+  * [Backport] CVE-2024-9602: Type Confusion in V8
+  * [Backport] CVE-2024-9603: Type Confusion in V8
+  * FIXUP: [Backport] CVE-2024-7965: Inappropriate implementation in V8
+  * [Backport] CVE-2024-45492 / Security bug 364778067
+  * [Backport] CVE-2024-9123: Integer overflow in Skia
+  * [Backport] CVE-2024-5158: Type Confusion in V8
+  * [Backport] CVE-2024-7971: Type confusion in V8
+  * [Backport] CVE-2024-4761: Out of bounds write in V8
+  * [Backport] CVE-2024-8636: Heap buffer overflow in Skia
+  * [Backport] CVE-2024-8198: Heap buffer overflow in Skia
+  * [Backport] Security bug 346799730
+  * [Backport] CVE-2024-7967: Heap buffer overflow in Fonts
+  * [Backport] CVE-2024-7965: Inappropriate implementation in V8
+  * [Backport] CVE-2024-7532: Out of bounds memory access in ANGLE
+  * Fix build with GCC 15
+  * [Backport] CVE-2024-7536: Use after free in WebAudio
+  * [Backport] Dependency for CVE-2024-7536
+  * [Backport] Security bug 338574384
+  * [Backport] CVE-2024-6996: Race in Frames
+  * [Backport] CVE-2024-6989: Use after free in Loader
+  * [Backport] CVE-2024-6291: Use after free in Swiftshader
+  * [Backport] CVE-2024-5846: Use after free in PDFium
+  * [Backport] Security bug 340606786
+  * [Backport] CVE-2024-5496: Use after free in Media Session
+  * [Backport] Dependency for CVE-2024-3914
+  * [Backport] Security bug 329699609
+  * [Backport] CVE-2024-3914: Use after free in V8
+  * [Backport] CVE-2024-4558: Use after free in ANGLE
+  * [Backport] Security bug 327698060
+  * [Backport] CVE-2024-4058: Type Confusion in ANGLE
+  * [Backport] Security bug 40940917
+  * [Backport] CVE-2024-3837: Use after free in QUIC
+  * [Backport] CVE-2024-3839: Out of bounds read in Fonts
+  * Fix dependecy when compiling content/browser
+  * [Backport] CVE-2024-3516: Heap buffer overflow in ANGLE
+  * [Backport] CVE-2024-3157: Out of bounds write in Compositing
+  * [Backport] Security bug 329674887
+  * Prevent duplicate definition of blink::ResolveColor in jumbo builds
+
+-------------------------------------------------------------------
 Wed Sep  4 14:27:07 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable LTO on %{arm} to fix build

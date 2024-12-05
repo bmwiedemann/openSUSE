@@ -525,4 +525,12 @@
   * 0001-QDirIterator-don-t-crash-with-next-after-hasNext-ret.patch</comment>
     <requestid>1216969</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>1fdc5d5ee63387a90fa08437b883fbba</srcmd5>
+    <version>6.8.1</version>
+    <time>1733414725</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.8.1 (forwarded request 1227981 from krop)</comment>
+    <requestid>1228181</requestid>
+  </revision>
 </revisionlist>

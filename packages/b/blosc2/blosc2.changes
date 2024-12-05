@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec  4 10:39:46 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.25.2:
+  * Support wasm32 by disabling ZLIB WITH_OPTIM option.
+  * Avoid rip-relative addressing for OSX x86_64.
+  * Added support for nvcc (NVidia Cuda Compiler) in CMake.
+  * Fix public include directories for blosc2 targets.
+  * Fix ub in shuffle and unshuffle by marking _dst non-const.
+- See RELEASE_NOTES.md for detailed list of changes from previous
+  releases
+
+-------------------------------------------------------------------
 Fri Apr 26 16:30:37 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.14.4

@@ -22,7 +22,7 @@
 %define sover 0
 %define libwireplumber libwireplumber-%{apiver_str}-%{sover}
 Name:           wireplumber
-Version:        0.5.6
+Version:        0.5.7
 Release:        0
 Summary:        Session / policy manager implementation for PipeWire
 License:        MIT
@@ -30,10 +30,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://gitlab.freedesktop.org/pipewire/wireplumber
 Source0:        wireplumber-%{version}.tar.xz
 Source1:        split-config-file.py
-Patch0:         0001-autoswitch-bluetooth-profile-switch-only-Bluetooth-devices.patch
-Patch1:         0002-autoswitch-bluetooth-profile-Switch-to-HSP_HFP-on-timeout.patch
-Patch2:         0003-m-mixer-api-Fix-memory-in-leak-wp_mixer_api_set_volume.patch
-Patch3:         0004-module-dbus-connection-fix-GCancellable-leak.patch
 # docs
 BuildRequires:  doxygen
 BuildRequires:  graphviz

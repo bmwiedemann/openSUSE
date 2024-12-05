@@ -96,7 +96,7 @@ BuildRequires:  pkgconfig(libdisplay-info)
 BuildRequires:  pkgconfig(libdrm) >= 2.4.112
 BuildRequires:  pkgconfig(libeis-1.0)
 BuildRequires:  pkgconfig(libinput) >= 1.19
-%if 0%{?suse_version} > 1500 || 0%{?suse_version} > 150500
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150500
 # Leap 15.5 version is too old and 0.3.65 has API breaking changes
 BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.65
 %endif
@@ -295,7 +295,7 @@ This package provides development files.
 %{_kf6_plugindir}/kwin/plugins/KeyNotificationPlugin.so
 %{_kf6_plugindir}/kwin/plugins/krunnerintegration.so
 %{_kf6_plugindir}/kwin/plugins/nightlight.so
-%if 0%{?suse_version} > 1500 || 0%{?suse_version} > 150500
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150500
 %{_kf6_plugindir}/kwin/plugins/screencast.so
 %endif
 %dir %{_kf6_plugindir}/org.kde.kdecoration2.kcm

@@ -339,10 +339,10 @@ Patch147:       0001-grub-probe-Deduplicate-probed-partmap-output.patch
 Patch148:       0001-Fix-infinite-boot-loop-on-headless-system-in-qemu.patch
 Patch149:       0001-ofdisk-improve-boot-time-by-lookup-boot-disk-first.patch
 Patch150:       0001-key_protector-Add-key-protectors-framework.patch
-Patch151:       0002-tpm2-Add-TPM-Software-Stack-TSS.patch
-Patch152:       0003-key_protector-Add-TPM2-Key-Protector.patch
+Patch151:       grub2-add-tss2-support.patch
+Patch152:       0001-key_protector-Add-TPM2-Key-Protector.patch
 Patch153:       0004-cryptodisk-Support-key-protectors.patch
-Patch154:       0005-util-grub-protect-Add-new-tool.patch
+Patch154:       0001-util-grub-protect-Add-new-tool.patch
 Patch155:       0008-linuxefi-Use-common-grub_initrd_load.patch
 Patch156:       0009-Add-crypttab_entry-to-obviate-the-need-to-input-pass.patch
 Patch157:       0010-templates-import-etc-crypttab-to-grub.cfg.patch
@@ -356,7 +356,7 @@ Patch164:       0003-ieee1275-change-the-logic-of-ieee1275_get_devargs.patch
 Patch165:       0004-ofpath-controller-name-update.patch
 Patch166:       0002-Mark-environmet-blocks-as-used-for-image-embedding.patch
 Patch167:       grub2-increase-crypttab-path-buffer.patch
-Patch170:       0001-tpm2-Support-authorized-policy.patch
+Patch170:       0001-tpm2_key_protector-Support-authorized-policy.patch
 Patch171:       0001-tpm2-Add-extra-RSA-SRK-types.patch
 Patch174:       0001-clean-up-crypttab-and-linux-modules-dependency.patch
 Patch175:       0002-discard-cached-key-before-entering-grub-shell-and-ed.patch
@@ -368,7 +368,7 @@ Patch180:       0001-xen_boot-add-missing-grub_arch_efi_linux_load_image_.patch
 Patch181:       0001-font-Try-memdisk-fonts-with-the-same-name.patch
 Patch182:       0001-Make-grub.cfg-compatible-to-old-binaries.patch
 Patch183:       grub2-change-bash-completion-dir.patch
-Patch184:       0001-tpm2-Implement-NV-index.patch
+Patch184:       0001-tpm2_key_protector-Implement-NV-index.patch
 Patch185:       0002-cryptodisk-Fallback-to-passphrase.patch
 Patch186:       0003-cryptodisk-wipe-out-the-cached-keys-from-protectors.patch
 Patch187:       0004-diskfilter-look-up-cryptodisk-devices-first.patch
@@ -779,7 +779,7 @@ CD_MODULES="all_video boot cat configfile echo true \
 PXE_MODULES="tftp http"
 CRYPTO_MODULES="luks luks2 gcry_rijndael gcry_sha1 gcry_sha256 gcry_sha512 crypttab"
 %ifarch %{efi}
-CD_MODULES="${CD_MODULES} chain efifwsetup efinet read tpm tpm2 memdisk tar squash4 xzio blscfg"
+CD_MODULES="${CD_MODULES} chain efifwsetup efinet read tpm tss2 tpm2_key_protector memdisk tar squash4 xzio blscfg"
 PXE_MODULES="${PXE_MODULES} efinet"
 %else
 CD_MODULES="${CD_MODULES} net ofnet"
@@ -877,7 +877,7 @@ mksquashfs ./boot memdisk.sqsh -keep-as-directory -comp xz -quiet -no-progress
     %{?sbat_generation:--sbat sbat.csv} \
     -d grub-core \
     all_video boot font gfxmenu gfxterm gzio halt jpeg minicmd normal part_gpt png reboot video \
-    fat tpm tpm2 memdisk tar squash4 xzio blscfg linux bli regexp loadenv test echo true sleep
+    fat tpm tss2 tpm2_key_protector memdisk tar squash4 xzio blscfg linux bli regexp loadenv test echo true sleep
 %endif
 
 %ifarch x86_64 aarch64

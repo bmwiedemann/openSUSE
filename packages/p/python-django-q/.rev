@@ -140,4 +140,15 @@
     <comment></comment>
     <requestid>1188343</requestid>
   </revision>
+  <revision rev="13" vrev="8">
+    <srcmd5>fb8c19fd7e2ad5448e25f25f99a88019</srcmd5>
+    <version>1.3.9</version>
+    <time>1733414957</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1228379 from Andreas_Schwab
+
+- Increase timeout not to kill the redis server in the middle of the
+    testsuite run</comment>
+    <requestid>1228390</requestid>
+  </revision>
 </revisionlist>

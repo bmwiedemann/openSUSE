@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec  4 09:30:59 UTC 2024 - Rumen Chikov <rumen.chikov@suse.com>
+
+- updated to 0.1.75 (jsc#ECO-3319)
+  -  Add new product kylinserver10 
+  -  Create OL10 product 
+  -  Update PCI-DSS control file for version 4.0.1 
+  -  Add Ism profile for ol8, ol9
+  -  Release SLMicro5 product 
+  -  Various updates for SLE 12/15 
+
+-------------------------------------------------------------------
 Mon Sep  2 13:58:50 UTC 2024 - Rumen Chikov <rumen.chikov@suse.com>
 
 - updated to 0.1.74 (jsc#ECO-3319)

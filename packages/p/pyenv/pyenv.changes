@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec  4 07:05:00 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.4.20
+
+- Update 2.4.20
+  * README: Fix Markdown in "Notes about python releases" by @noelleleigh in #3112
+  * README: correct link to shell setup instructions by @shortcuts in #3113
+  * Add CPython 3.9.21, 3.10.16, 3.11.11, 3.12.8 and 3.13.1 by @edgarrmondragon in #3117
+
+-------------------------------------------------------------------
 Thu Nov 21 08:47:01 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.4.19
 
 - Update 2.4.19

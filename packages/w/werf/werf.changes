@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Thu Dec 05 11:38:52 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.16.1:
+  * chore: release 2.16.1 (#6473)
+  * fix(deploy): ignore error "Additional property werf is not
+    allowed"
+  * fix(deploy): no resources deleted in uninstall if pre-delete
+    hook present
+  * fix(export): resolve issue with exporting specific images
+    (#6471)
+  * chore(channels): bump alpha
+
+-------------------------------------------------------------------
+Wed Dec 04 12:01:22 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.16.0:
+  * chore: release 2.16.0
+  * fix(deploy): hooks might run twice
+  * feat(werf): add helmChartConfig property to werf.yaml
+  * chore(ci): remove deploy test docs
+
+-------------------------------------------------------------------
+Wed Dec 04 06:06:55 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.15.3:
+  * chore: release 2.15.3
+  * chore(release): 2 alpha,beta (#6465)
+  * chore(ci): remove inputs in reusable workflow (#6464)
+  * chore(channels): bump alpha
+
+-------------------------------------------------------------------
+Wed Dec 04 06:04:43 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.15.2:
+  * chore: release 2.15.2
+  * fix(deploy): global encryption key (~/.werf/global_secret_key)
+    ignored
+  * fix(ci): try to fix error (#6461)
+  * chore(channels): bump alpha 2
+
+-------------------------------------------------------------------
+Wed Dec 04 06:00:44 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.15.1:
+  * chore: release 2.15.1
+  * fix(deploy): "unable to release lock" errors in werf dismiss
+  * chore(release): 1.2 alpha,stable 2 alpha,beta
+
+-------------------------------------------------------------------
+Wed Dec 04 05:56:59 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.15.0:
+  * chore: release 2.15.0
+  * fix(build, buildah, stapel): prevent build failure on invalid
+    dest link (#6453)
+  * docs: small fixes and improvements
+  * feat(build, buildah, dockerfile, staged): add secrets support
+    (#6454)
+  * fix(cleanup): resolve potential deadlock issue
+  * refactor(cleanup): remove duplicate code
+  * refactor: always use live output for parallel tasks
+  * fix(cleanup): handle Too Many Requests (429) (#6455)
+  * chore(ci): update notification (#6441)
+  * docs(stapel): add secrets usage to instructions (#6448)
+  * fix(build, secrets) resolve path with tilde (#6450)
+  * refactor(werf-in-image): optimize build (#6451)
+  * feat(build, docker, buildah, stapel): add secrets support
+    (#6446)
+  * docs(build, secrets): update example
+  * chore(release): 2 alpha
+  * chore(release): 1.2 ea, 2 rock-solid
+
+-------------------------------------------------------------------
 Wed Nov 27 09:37:41 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.14.0:

@@ -527,4 +527,44 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1224830</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>ca851724b496fe519a840004ab54a541</srcmd5>
+    <version>550.135</version>
+    <time>1733414763</time>
+    <user>anag+factory</user>
+    <comment>- Make sure the correct FW package is installed on non-CUDA.
+
+- kmp-trigger.sh:
+  * avoid to return with exit code != 0 if modules could not be
+    unloaded for some reason
+
+- only obsolete 555 CUDA driver/firmware packages
+
+- preamble:
+  no longer need to provide nvidia-open-driver-G06-kmp because
+  since 565.57.01 to the list of requires of nvidia-compute-G06
+  the -signed packages has been added
+
+- For CUDA update version to 565.57.01
+
+- Add 'dummy' firmware package on SLE to work around update
+  issues. On SLE, the firmware is installed directly from
+  an NVIDIA-hosted repo.
+
+- preamble
+  * resolve self conflicts of -cuda KMP during update by adding
+    obsoletes to older versions (boo#1233332)
+
+- fixed my wrong patch 550.135.patch I introduced right below;
+  it fixed x86_64 build more-or-less accidently but broke aarch64
+  build completely ...
+
+- Improve handling of conflicts between different flavors
+  (gfx vs. CUDA) (bsc#1233332).
+
+- Update to 550.135 (boo#1233673)
+- 550.135.patch: 
+  * fixes wrong logic for checking supported architectures</comment>
+    <requestid>1228250</requestid>
+  </revision>
 </revisionlist>

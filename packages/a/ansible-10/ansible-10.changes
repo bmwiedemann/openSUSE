@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Dec  4 06:36:41 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 10.7.0:
+  Ansible 10.7.0 includes ansible-core 2.17.7 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 10
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/ansible-build-data/blob/main/10/CHANGELOG-v10.md
+
+-------------------------------------------------------------------
+Tue Dec  3 06:40:34 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- introduce next_ansible_core_version to ease updates of
+  ansible-core while making sure we keep to the same minor release
+  family (2.16.x, 2.17.x, 2.18.x)
+
+-------------------------------------------------------------------
 Fri Nov 22 10:12:31 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package ansible-10, following the 10.x.y versions of ansible

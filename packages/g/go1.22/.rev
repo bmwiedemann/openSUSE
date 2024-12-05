@@ -256,4 +256,17 @@ the go metapackage to version 1.22.</comment>
   * go#70124 cmd/cgo/internal/testcarchive: TestManyCalls failures (forwarded request 1222504 from jfkw)</comment>
     <requestid>1222506</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ee4cc86e655710b5f2cfdbe3171b0720</srcmd5>
+    <version>1.22.10</version>
+    <time>1733414759</time>
+    <user>anag+factory</user>
+    <comment>- go1.22.10 (released 2024-12-03) includes fixes to the runtime and
+  the syscall package.
+  Refs boo#1218424 go1.22 release tracking
+  * go#70201 syscall: SyscallN always escapes the variadic argument
+  * go#70238 time: TestLoadFixed failures
+  * go#70474 sync/atomic: TestNilDeref flaky failure on windows-386 with runtime fatal error (forwarded request 1228337 from jfkw)</comment>
+    <requestid>1228339</requestid>
+  </revision>
 </revisionlist>

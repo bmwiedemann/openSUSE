@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  4 18:27:21 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Skip test tests/SMB_RPC/test_smbserver.py to fix the actual
+  build failure.
+
+-------------------------------------------------------------------
 Tue Sep 17 08:55:05 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.12.0

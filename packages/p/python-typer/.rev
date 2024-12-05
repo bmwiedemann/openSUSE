@@ -209,4 +209,20 @@
   * Fix typo in function name `_make_rich_text`.</comment>
     <requestid>1225371</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>65c01cb8169e76fc8731dd6ad6c86b03</srcmd5>
+    <version>0.15.1</version>
+    <time>1733414725</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.15.1
+  * Deprecate shell_complete and continue to use autocompletion for
+    CLI parameters.
+- Update to 0.15.0
+  * Add support for extending typer apps without passing a name,
+    add commands to the top level.
+  * Breaking change:  Remove auto naming of groups added via
+    add_typer based on the group's callback function name.
+</comment>
+    <requestid>1228371</requestid>
+  </revision>
 </revisionlist>

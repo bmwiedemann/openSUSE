@@ -15,8 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define ansible_core_major_minor_version 2.17
 
+%define ansible_core_major_minor_version 2.17
 
 %{?sle15_python_module_pythons}
 %if 0%{?suse_version} < 1550
@@ -43,7 +43,7 @@
 %endif
 
 Name:           ansible-core-2.17
-Version:        2.17.6
+Version:        2.17.7
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0-or-later

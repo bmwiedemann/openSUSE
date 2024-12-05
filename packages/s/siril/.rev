@@ -236,4 +236,17 @@
 </comment>
     <requestid>1199986</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>2856b6b01fee4f88ea94d7a34a6f1a70</srcmd5>
+    <version>1.2.5</version>
+    <time>1733414975</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.2.5:
+  * Fixed crash if the working directory changes after a first successfull Automated light Curve process
+  * Fixed bug in TIFF files that have TIFFTAG_MINSAMPLEVALUE and TIFFTAG_MAXSAMPLEVALUE set to 0: we have removed these tags
+  * Added HISTORY after seqcrop and GUI crop
+  * Fixed potential crash in synthstar
+</comment>
+    <requestid>1228459</requestid>
+  </revision>
 </revisionlist>

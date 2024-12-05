@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.8.0
+%define real_version 6.8.1
 %define short_version 6.8
 %define tar_name qtquick3d-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-quick3d%{?pkg_suffix}
-Version:        6.8.0
+Version:        6.8.1
 Release:        0
 Summary:        API for creating 3D content and 3D user interfaces based on Qt Quick
 License:        GPL-3.0-or-later
@@ -395,8 +395,8 @@ This library does not have any ABI or API guarantees.
 
 ### Static libraries ###
 
-# Embree only supports x86_64 %x86_64 and arm64
-%ifarch x86_64 %x86_64 aarch64
+# Embree only supports x86_64 %%x86_64 and arm64
+%ifarch x86_64 %{x86_64} aarch64
 %package -n qt6-bundledembree-devel-static
 Summary:        Qt6 BundledEmbree static library
 %requires_eq    qt6-core-private-devel
@@ -419,11 +419,12 @@ This library does not have any ABI or API guarantees.
 
 %if %{qt6_docs_flavor}
 # Work around https://bugreports.qt.io/browse/QTBUG-129807
-%define extra_args -DFEATURE_quick3dxr_openxr:BOOL=OFF -DFEATURE_system_openxr:BOOL=OFF
+%define extra_args -DFEATURE_quick3dxr_openxr:BOOL=FALSE -DFEATURE_system_openxr:BOOL=FALSE
 %endif
 
 %cmake_qt6 \
-  -DFEATURE_system_assimp:BOOL=ON %{?extra_args}
+  -DQT_GENERATE_SBOM:BOOL=FALSE \
+  -DFEATURE_system_assimp:BOOL=TRUE %{?extra_args}
 
 %{qt6_build}
 
@@ -682,17 +683,13 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledOpenXR
 
 %files -n qt6-quick3dxr-private-devel
 %{_qt6_cmakedir}/Qt6/FindWrapSystemOpenXR.cmake
-%{_qt6_cmakedir}/Qt6OpenXRPrivate/
 %{_qt6_cmakedir}/Qt6Quick3DXr/
-%{_qt6_descriptionsdir}/OpenXRPrivate.json
 %{_qt6_descriptionsdir}/Quick3DXr.json
-%{_qt6_includedir}/QtOpenXR/
 %{_qt6_includedir}/QtQuick3DXr/
 %{_qt6_libdir}/libQt6Quick3DXr.prl
 %{_qt6_libdir}/libQt6Quick3DXr.so
 %{_qt6_metatypesdir}/qt6quick3dxr_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_ext_openxr_loader.pri
-%{_qt6_mkspecsdir}/modules/qt_lib_openxr_private.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3dxr.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3dxr_private.pri
 %{_qt6_pkgconfigdir}/Qt6Quick3DXr.pc
@@ -713,7 +710,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledOpenXR
 
 ### Static libraries ###
 
-%ifarch x86_64 %x86_64 aarch64
+%ifarch x86_64 %{x86_64} aarch64
 %files -n qt6-bundledembree-devel-static
 %{_qt6_cmakedir}/Qt6/FindWrapBundledEmbreeConfigExtra.cmake
 %{_qt6_cmakedir}/Qt6BundledEmbree/

@@ -92,7 +92,7 @@ export DJANGO_SETTINGS_MODULE=tests.settings
 
 export PYTHONPATH=${PWD}
 
-timeout 5m %{_sbindir}/redis-server &
+timeout 20m %{_sbindir}/redis-server &
 # Mongo & Disque servers not installed
 # test_max_rss assertions fail
 %pytest -k 'not (mongo or disque or test_max_rss)'

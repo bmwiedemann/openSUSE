@@ -17,8 +17,8 @@
 
 
 %define ansible_community_major_version 10
-%define required_ansible_core_version 2.17.6
-
+%define required_ansible_core_version 2.17.7
+%define next_ansible_core_version 2.18.0
 
 %{?sle15_python_module_pythons}
 %if 0%{?suse_version} < 1550
@@ -42,27 +42,27 @@
 %endif
 
 Name:           ansible-10
-Version:        10.6.0
+Version:        10.7.0
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0-or-later
 URL:            https://ansible.com/
 Source:         https://files.pythonhosted.org/packages/source/a/ansible/ansible-%{version}.tar.gz
 Source99:       ansible-%{ansible_community_major_version}-rpmlintrc
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{ansible_python}-base >= 3.10
 BuildRequires:  %{ansible_python}-setuptools
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 
 # required to fix the azure collection line endings
 BuildRequires:  dos2unix
 
 # SECTION test requirements
-BuildRequires:  ansible-core = %{required_ansible_core_version}
+BuildRequires:  (ansible-core >= %{required_ansible_core_version} with ansible-core < %{next_ansible_core_version})
 # /SECTION
 
 Requires:       %{ansible_python}-base >= 3.10
-Requires:       ansible-core = %{required_ansible_core_version}
+Requires:       (ansible-core >= %{required_ansible_core_version} with ansible-core < %{next_ansible_core_version})
 
 # Conflicts with lower or higher ansible major versions
 Conflicts:      ansible < %{ansible_community_major_version}

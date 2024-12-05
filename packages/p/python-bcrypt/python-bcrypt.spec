@@ -20,7 +20,7 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 %{?sle15_python_module_pythons}
 Name:           python-bcrypt
-Version:        4.2.0
+Version:        4.2.1
 Release:        0
 Summary:        BSD type 2a and 2b password hashing
 License:        Apache-2.0

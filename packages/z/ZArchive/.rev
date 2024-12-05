@@ -23,4 +23,22 @@
     <comment></comment>
     <requestid>1087323</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b5c609d143d12fce65fd3ab77b71a3ee</srcmd5>
+    <version>0.1.2+git20240721.b467f7a</version>
+    <time>1733414932</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.1.2+git20240721.b467f7a:
+  * ci: use vcpkg for both builds
+  * Add CI builds + add support for static linux binaries (#23)
+  * tool: Ignore the output file in case it's inside the input path (#20)
+  * Bump version
+  * build: force MODULE mode for find_package(zstd)
+  * build: add pkg-config support
+  * build: general improvements
+  * Install the zarchive executable
+  * Don't hardcode the installation path of the library
+- Drop use_pkgconfig_for_zstd.patch</comment>
+    <requestid>1228317</requestid>
+  </revision>
 </revisionlist>

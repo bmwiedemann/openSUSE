@@ -15,4 +15,15 @@
     <comment></comment>
     <requestid>1223343</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>70c6ae7c3ca52ef7e1c51d4b326cea0b</srcmd5>
+    <version>0.0.28</version>
+    <time>1733414952</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1228095 from mnhauke
+
+- Update to version 0.0.28
+    * Now documents with multiple charsets should be parsed correctly</comment>
+    <requestid>1228382</requestid>
+  </revision>
 </revisionlist>

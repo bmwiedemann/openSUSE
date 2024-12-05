@@ -22,7 +22,7 @@
 %define with_gcc 11
 %endif
 Name:           netty-tcnative
-Version:        2.0.68
+Version:        2.0.69
 Release:        0
 Summary:        Fork of Tomcat Native with improved OpenSSL and mavenized build
 License:        Apache-2.0

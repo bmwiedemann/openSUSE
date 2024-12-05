@@ -37,4 +37,14 @@ When accepted to Factory, please, remove python-stem.</comment>
     <comment></comment>
     <requestid>1142804</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>38600f4e69ed0058dd24155d6dbaaac0</srcmd5>
+    <version>1.8.4</version>
+    <time>1733414965</time>
+    <user>anag+factory</user>
+    <comment>- Add patch fix-assertions.patch:
+  * Use correct assertion functions.
+- Stop skipping Python 3.12.</comment>
+    <requestid>1228418</requestid>
+  </revision>
 </revisionlist>

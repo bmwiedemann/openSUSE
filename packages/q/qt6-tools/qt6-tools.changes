@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec  2 13:02:14 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.8.1:
+  * https://www.qt.io/blog/qt-6.8.1-released
+
+-------------------------------------------------------------------
 Mon Nov 11 14:53:49 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Reintroduce proper %requires_eq on libclang, it's needed to ensure

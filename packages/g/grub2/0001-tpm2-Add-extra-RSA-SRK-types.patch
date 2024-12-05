@@ -1,4 +1,4 @@
-From f41a45b080cb9c6f59879a3e23f9ec2380015a16 Mon Sep 17 00:00:00 2001
+From 5b4ecd408417249dec8bfc71a3c0b7ef1070d3fa Mon Sep 17 00:00:00 2001
 From: Gary Lin <glin@suse.com>
 Date: Thu, 25 Apr 2024 16:21:45 +0800
 Subject: [PATCH] tpm2: Add extra RSA SRK types
@@ -8,16 +8,16 @@ to support those parameters.
 
 Signed-off-by: Gary Lin <glin@suse.com>
 ---
- grub-core/tpm2/args.c   | 12 ++++++++++++
- grub-core/tpm2/module.c | 16 ++++++++++++++--
- util/grub-protect.c     |  4 ++--
+ grub-core/commands/tpm2_key_protector/args.c   | 12 ++++++++++++
+ grub-core/commands/tpm2_key_protector/module.c | 16 ++++++++++++++--
+ util/grub-protect.c                            |  4 ++--
  3 files changed, 28 insertions(+), 4 deletions(-)
 
-diff --git a/grub-core/tpm2/args.c b/grub-core/tpm2/args.c
-index c11280ab9..d140364d2 100644
---- a/grub-core/tpm2/args.c
-+++ b/grub-core/tpm2/args.c
-@@ -92,6 +92,18 @@ grub_tpm2_protector_parse_asymmetric (const char *value,
+diff --git a/grub-core/commands/tpm2_key_protector/args.c b/grub-core/commands/tpm2_key_protector/args.c
+index 48c39de01..b291793a7 100644
+--- a/grub-core/commands/tpm2_key_protector/args.c
++++ b/grub-core/commands/tpm2_key_protector/args.c
+@@ -85,6 +85,18 @@ grub_tpm2_protector_parse_asymmetric (const char *value,
        srk_type->type = TPM_ALG_RSA;
        srk_type->detail.rsa_bits = 2048;
      }
@@ -34,13 +34,13 @@ index c11280ab9..d140364d2 100644
 +      srk_type->detail.rsa_bits = 4096;
 +    }
    else
-     return grub_error (GRUB_ERR_OUT_OF_RANGE,
- 		       N_("Value '%s' is not a valid asymmetric key type"),
-diff --git a/grub-core/tpm2/module.c b/grub-core/tpm2/module.c
-index b754b38df..8b72ed6fa 100644
---- a/grub-core/tpm2/module.c
-+++ b/grub-core/tpm2/module.c
-@@ -136,8 +136,8 @@ static const struct grub_arg_option grub_tpm2_protector_init_cmd_options[] =
+     return grub_error (GRUB_ERR_OUT_OF_RANGE, N_("value '%s' is not a valid asymmetric key type"), value);
+ 
+diff --git a/grub-core/commands/tpm2_key_protector/module.c b/grub-core/commands/tpm2_key_protector/module.c
+index 74e79a545..ee16d7f15 100644
+--- a/grub-core/commands/tpm2_key_protector/module.c
++++ b/grub-core/commands/tpm2_key_protector/module.c
+@@ -138,8 +138,8 @@ static const struct grub_arg_option tpm2_protector_init_cmd_options[] =
        .arg      = NULL,
        .type     = ARG_TYPE_STRING,
        .doc      =
@@ -51,18 +51,18 @@ index b754b38df..8b72ed6fa 100644
      },
      /* NV Index-mode options */
      {
-@@ -541,6 +541,10 @@ srk_type_to_name (grub_srk_type_t srk_type)
- 	{
- 	  case 2048:
- 	    return "RSA2048";
-+	  case 3072:
-+	    return "RSA3072";
-+	  case 4096:
-+	    return "RSA4096";
- 	}
-    }
+@@ -517,6 +517,10 @@ srk_type_to_name (grub_srk_type_t srk_type)
+     return "ECC_NIST_P256";
+   else if (srk_type.type == TPM_ALG_RSA && srk_type.detail.rsa_bits == 2048)
+     return "RSA2048";
++  else if (srk_type.type == TPM_ALG_RSA && srk_type.detail.rsa_bits == 3072)
++    return "RSA3072";
++  else if (srk_type.type == TPM_ALG_RSA && srk_type.detail.rsa_bits == 4096)
++    return "RSA4096";
  
-@@ -561,6 +565,14 @@ grub_tpm2_protector_load_key (const struct grub_tpm2_protector_context *ctx,
+   return "Unknown";
+ }
+@@ -535,6 +539,14 @@ tpm2_protector_load_key (const tpm2_protector_context_t *ctx,
        .type = TPM_ALG_ECC,
        .detail.ecc_curve = TPM_ECC_NIST_P256,
      },
@@ -78,20 +78,20 @@ index b754b38df..8b72ed6fa 100644
        .type = TPM_ALG_RSA,
        .detail.rsa_bits = 2048,
 diff --git a/util/grub-protect.c b/util/grub-protect.c
-index 869f45861..00be03ca0 100644
+index 5b7e952f4..f1108f2c5 100644
 --- a/util/grub-protect.c
 +++ b/util/grub-protect.c
-@@ -199,8 +199,8 @@ static struct argp_option grub_protect_options[] =
+@@ -202,8 +202,8 @@ static struct argp_option protect_options[] =
        .arg   = "TYPE",
        .flags = 0,
        .doc   =
--	N_("The type of SRK: RSA (RSA2048) and ECC (ECC_NIST_P256)."
+-	N_("Set the type of SRK: RSA (RSA2048) and ECC (ECC_NIST_P256)."
 -	   "(default: ECC)"),
-+	N_("The type of SRK: RSA (RSA2048), RSA3072, RSA4096, "
++	N_("Set the type of SRK: RSA (RSA2048),  RSA3072, RSA4096, "
 +	   "and ECC (ECC_NIST_P256). (default: ECC)"),
        .group = 0
      },
      {
 -- 
-2.35.3
+2.43.0
 

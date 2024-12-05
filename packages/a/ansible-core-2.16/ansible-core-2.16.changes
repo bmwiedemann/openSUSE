@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Dec  3 05:58:27 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.16.14:
+  https://github.com/ansible/ansible/blob/v2.16.14/changelogs/CHANGELOG-v2.16.rst
+  * Security Fixes
+    - Templating will not prefer AnsibleUnsafe when a variable is
+      referenced via hostvars - CVE-2024-11079
+  * Bugfixes
+    - ansible-test - Fix traceback that occurs after an interactive
+      command fails.
+
+-------------------------------------------------------------------
+Fri Nov 22 15:03:55 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- introduce ansible_core_major_minor_version macro to make the spec
+  easier to manage
+
+-------------------------------------------------------------------
 Fri Nov 22 07:02:33 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Backport patch to relax resolvelib dependency:

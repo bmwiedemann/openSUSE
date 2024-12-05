@@ -73,7 +73,7 @@ install -pm 0644 target/%{name}-%{version}.jar \
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}
 %{mvn_install_pom} %{SOURCE1} %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
-%add_maven_depmap JPP-%{name}.pom %{name}.jar
+%add_maven_depmap JPP-%{name}.pom %{name}.jar -a "com.github.stephenc.jcip:%{name}"
 
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}

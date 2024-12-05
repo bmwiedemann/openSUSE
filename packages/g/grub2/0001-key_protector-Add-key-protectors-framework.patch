@@ -1,7 +1,7 @@
-From bf09618c47c6632b763960e265436294ab98dd43 Mon Sep 17 00:00:00 2001
+From 1bc53f8fc980914132040670b85a010e094559ec Mon Sep 17 00:00:00 2001
 From: Hernan Gatta <hegatta@linux.microsoft.com>
 Date: Tue, 1 Feb 2022 05:02:53 -0800
-Subject: [PATCH 1/5] key_protector: Add key protectors framework
+Subject: [PATCH] key_protector: Add key protectors framework
 
 A key protector encapsulates functionality to retrieve an unlocking key
 for a fully-encrypted disk from a specific source. A key protector
@@ -19,17 +19,18 @@ Cc: Vladimir Serbinenko <phcoder@gmail.com>
 Signed-off-by: Hernan Gatta <hegatta@linux.microsoft.com>
 Signed-off-by: Gary Lin <glin@suse.com>
 Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
+Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
 ---
  grub-core/Makefile.am          |  1 +
  grub-core/Makefile.core.def    |  5 +++
- grub-core/disk/key_protector.c | 78 ++++++++++++++++++++++++++++++++++
- include/grub/key_protector.h   | 46 ++++++++++++++++++++
- 4 files changed, 130 insertions(+)
+ grub-core/disk/key_protector.c | 73 ++++++++++++++++++++++++++++++++++
+ include/grub/key_protector.h   | 47 ++++++++++++++++++++++
+ 4 files changed, 126 insertions(+)
  create mode 100644 grub-core/disk/key_protector.c
  create mode 100644 include/grub/key_protector.h
 
 diff --git a/grub-core/Makefile.am b/grub-core/Makefile.am
-index f18550c1c..9d3d5f519 100644
+index 1eda467e0..e50db8106 100644
 --- a/grub-core/Makefile.am
 +++ b/grub-core/Makefile.am
 @@ -90,6 +90,7 @@ endif
@@ -41,10 +42,10 @@ index f18550c1c..9d3d5f519 100644
  KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/term.h
  KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/time.h
 diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index bc893e547..4307b8e2d 100644
+index a38955e18..37f131ae2 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
-@@ -1302,6 +1302,11 @@ module = {
+@@ -1282,6 +1282,11 @@ module = {
    common = disk/raid6_recover.c;
  };
  
@@ -58,13 +59,14 @@ index bc893e547..4307b8e2d 100644
    common = disk/scsi.c;
 diff --git a/grub-core/disk/key_protector.c b/grub-core/disk/key_protector.c
 new file mode 100644
-index 000000000..b84afe1c7
+index 000000000..0d146c1c0
 --- /dev/null
 +++ b/grub-core/disk/key_protector.c
-@@ -0,0 +1,78 @@
+@@ -0,0 +1,73 @@
 +/*
 + *  GRUB  --  GRand Unified Bootloader
 + *  Copyright (C) 2022 Microsoft Corporation
++ *  Copyright (C) 2024 Free Software Foundation, Inc.
 + *
 + *  GRUB is free software: you can redistribute it and/or modify
 + *  it under the terms of the GNU General Public License as published by
@@ -93,16 +95,14 @@ index 000000000..b84afe1c7
 +grub_err_t
 +grub_key_protector_register (struct grub_key_protector *protector)
 +{
-+  if (protector == NULL || protector->name == NULL || grub_strlen (protector->name) == 0)
-+    return GRUB_ERR_BAD_ARGUMENT;
++  if (protector == NULL || protector->name == NULL || protector->name[0] == '\0')
++    return grub_error (GRUB_ERR_BAD_ARGUMENT, "Invalid key protector for registration");
 +
-+  if (grub_key_protectors &&
-+      grub_named_list_find (GRUB_AS_NAMED_LIST (grub_key_protectors),
-+			    protector->name))
-+    return GRUB_ERR_BAD_ARGUMENT;
++  if (grub_key_protectors != NULL &&
++      grub_named_list_find (GRUB_AS_NAMED_LIST (grub_key_protectors), protector->name) != NULL)
++    return grub_error (GRUB_ERR_BAD_ARGUMENT, "Key protector '%s' already registered", protector->name);
 +
-+  grub_list_push (GRUB_AS_LIST_P (&grub_key_protectors),
-+		  GRUB_AS_LIST (protector));
++  grub_list_push (GRUB_AS_LIST_P (&grub_key_protectors), GRUB_AS_LIST (protector));
 +
 +  return GRUB_ERR_NONE;
 +}
@@ -111,7 +111,7 @@ index 000000000..b84afe1c7
 +grub_key_protector_unregister (struct grub_key_protector *protector)
 +{
 +  if (protector == NULL)
-+    return GRUB_ERR_BAD_ARGUMENT;
++    return grub_error (GRUB_ERR_BAD_ARGUMENT, "Invalid key protector for unregistration");
 +
 +  grub_list_remove (GRUB_AS_LIST (protector));
 +
@@ -125,30 +125,27 @@ index 000000000..b84afe1c7
 +  struct grub_key_protector *kp = NULL;
 +
 +  if (grub_key_protectors == NULL)
-+    return GRUB_ERR_OUT_OF_RANGE;
++    return grub_error (GRUB_ERR_OUT_OF_RANGE, "No key protector registered");
 +
-+  if (protector == NULL || grub_strlen (protector) == 0)
-+    return GRUB_ERR_BAD_ARGUMENT;
++  if (protector == NULL || protector[0] == '\0')
++    return grub_error (GRUB_ERR_BAD_ARGUMENT, "Invalid key protector");
 +
-+  kp = grub_named_list_find (GRUB_AS_NAMED_LIST (grub_key_protectors),
-+			     protector);
++  kp = grub_named_list_find (GRUB_AS_NAMED_LIST (grub_key_protectors), protector);
 +  if (kp == NULL)
-+    return grub_error (GRUB_ERR_OUT_OF_RANGE,
-+		       N_("A key protector with name '%s' could not be found. "
-+			  "Is the name spelled correctly and is the "
-+			  "corresponding module loaded?"), protector);
++    return grub_error (GRUB_ERR_OUT_OF_RANGE, "Key protector '%s' not found", protector);
 +
 +  return kp->recover_key (key, key_size);
 +}
 diff --git a/include/grub/key_protector.h b/include/grub/key_protector.h
 new file mode 100644
-index 000000000..6e6a6fb24
+index 000000000..00b15c13d
 --- /dev/null
 +++ b/include/grub/key_protector.h
-@@ -0,0 +1,46 @@
+@@ -0,0 +1,47 @@
 +/*
 + *  GRUB  --  GRand Unified Bootloader
 + *  Copyright (C) 2022 Microsoft Corporation
++ *  Copyright (C) 2024 Free Software Foundation, Inc.
 + *
 + *  GRUB is free software: you can redistribute it and/or modify
 + *  it under the terms of the GNU General Public License as published by
@@ -193,5 +190,5 @@ index 000000000..6e6a6fb24
 +
 +#endif /* ! GRUB_PROTECTOR_HEADER */
 -- 
-2.35.3
+2.43.0
 

@@ -4710,4 +4710,15 @@ bsc#1216656</comment>
 make it easier to directly use the Factory package in SUSE projects.</comment>
     <requestid>1223830</requestid>
   </revision>
+  <revision rev="408" vrev="1">
+    <srcmd5>8a51716e3edc527e134ccc0a3c8f5507</srcmd5>
+    <version>10.10.0</version>
+    <time>1733414709</time>
+    <user>anag+factory</user>
+    <comment>- Update to libvirt 10.10.0
+  - jsc#PED-8909, jsc#PED-9543, jsc#9854, jsc#9855
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v10-10-0-2024-12-02</comment>
+    <requestid>1228124</requestid>
+  </revision>
 </revisionlist>

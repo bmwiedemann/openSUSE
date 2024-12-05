@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec 05 11:13:32 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1733317338.f0e8a3c7:
+  * Bump prettier from 3.4.1 to 3.4.2
+  * Add endpoint for listing all WebAPI routes
+  * Make 'Broken' workers show as 'Unavailable' instead
+  * Update SUSE Jira url
+  * Bump prettier from 3.4.0 to 3.4.1
+  * Bump eslint from 9.15.0 to 9.16.0
+
+-------------------------------------------------------------------
 Tue Nov 26 12:50:14 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1732625402.19572aa2:

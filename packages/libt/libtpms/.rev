@@ -190,4 +190,32 @@
   0003-tpm2-Restore-original-value-if-unmarsalled-value-was.patch (forwarded request 1134474 from msmeissn)</comment>
     <requestid>1135332</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>eb71a006c6f3b6b11f3269f6f38970e7</srcmd5>
+    <version>0.10.0</version>
+    <time>1733414718</time>
+    <user>anag+factory</user>
+    <comment>- Add tpm2-Add-padding-to-OBJECT-for-32bit-targets.patch
+- Update to 0.10.0:
+  * tpm2: Support for profiles: default-v1 &amp; custom
+  * tpm2: Add new API call TPMLIB_SetProfile to enable user to set a
+    profile
+  * tpm2: Extende TPMLIB_GetInfo to return profiles-related info
+  * tpm2: Implemented crypto tests and restrictions on crypto related
+    to FIPS-140-3; can be enabled with profiles
+  * tpm2: Enable Camellia-192 and AES-192
+  * tpm2: Implement TPMLIB_WasManufactured API call
+  * tpm2: Fixes for issues detected by static analyzers
+  * tpm2: Use OpenSSL-based KDFe implementation if possible
+  * tpm2: Update to TPM 2 spec rev 183 (many changes)
+  * tpm2: Better support for OpenSSL 3.x
+  * tpm2: Use Carmichael function for RSA priv. exponent D (&gt;= 2048
+    bits)
+  * tpm2: Fixes for CVE-2023-1017 and CVE-2023-1018
+  * tpm2: Fix of SignedCompareB().
+- NOTE: This fix may result in backwards compatibility issues with PCR
+  policies used by TPM2_PolicyCounterTimer and TPM2_PolicyNV when
+  upgrading from v0.9 to v0.10. (forwarded request 1228299 from aplanas)</comment>
+    <requestid>1228303</requestid>
+  </revision>
 </revisionlist>

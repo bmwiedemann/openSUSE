@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.8.0
+%define real_version 6.8.1
 %define short_version 6.8
 %define tar_name qtlocation-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-location%{?pkg_suffix}
-Version:        6.8.0
+Version:        6.8.1
 Release:        0
 Summary:        Qt 6 Location plugins and libraries
 License:        GPL-3.0-or-later
@@ -95,7 +95,8 @@ ABI or API guarantees.
 %autosetup -p1 -n %{tar_name}-%{real_version}%{tar_suffix}
 
 %build
-%cmake_qt6
+%cmake_qt6 \
+  -DQT_GENERATE_SBOM:BOOL=FALSE
 
 %{qt6_build}
 

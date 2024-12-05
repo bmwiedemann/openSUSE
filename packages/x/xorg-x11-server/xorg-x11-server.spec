@@ -220,8 +220,6 @@ Patch210:       u_os-connections-Check-for-stale-FDs.patch
 
 Patch215:       u_Use-better-fallbacks-to-generate-cookies-if-arc4rand.patch
 
-Patch1000:      n_xserver-optimus-autoconfig-hack.patch
-
 Patch1162:      b_cache-xkbcomp-output-for-fast-start-up.patch
 Patch1211:      b_0001-Prevent-XSync-Alarms-from-senslessly-calling-CheckTr.patch
 Patch1222:      b_sync-fix.patch
@@ -236,8 +234,6 @@ Patch1910:      u_modesetting-Fix-dirty-updates-for-sw-rotation.patch
 
 Patch1920:      u_xf86-Accept-devices-with-the-hyperv_drm-driver.patch
 Patch1921:      u_xf86-Accept-devices-with-the-kernels-ofdrm-driver.patch
-
-Patch1930:      u_xfree86-activate-GPU-screens-on-autobind.patch
 
 Patch1960:      u_sync-pci-ids-with-Mesa.patch
 
@@ -379,14 +375,6 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 ### not applicable anymore
 #%patch -P 210 -p1
 %patch -P 215 -p1
-### apparently supersed by upstream
-###  commit 078277e4d92f05a90c4715d61b89b9d9d38d68ea
-###  Author: Dave Airlie <airlied@redhat.com>
-###  Date:   Fri Aug 17 09:49:24 2012 +1000
-###
-###    xf86: autobind GPUs to the screen
-#%patch -P 1000 -p1
-
 ### disabled for now
 #%patch -P 1162 -p1
 ### disabled for now
@@ -399,7 +387,6 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch -P 1910 -p1
 %patch -P 1920 -p1
 %patch -P 1921 -p1
-%patch -P 1930 -p1
 %patch -P 1960 -p1
 %patch -P 2000 -p1
 

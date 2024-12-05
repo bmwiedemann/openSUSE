@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec  2 13:01:57 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.8.1:
+  * https://www.qt.io/blog/qt-6.8.1-released
+- Drop patches, merged upstream:
+  * 0001-QAbstractItemModelPrivate-add-resetting-member.patch
+  * 0001-QUuid-restore-sorting-order-of-Qt-6.8.patch
+  * 0001-QDirIterator-don-t-crash-with-next-after-hasNext-ret.patch
+
+-------------------------------------------------------------------
 Tue Oct 22 06:59:37 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add patch to fix qxmpp test failures (gh#qxmpp-project/qxmpp#659):

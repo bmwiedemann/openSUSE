@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Dec  4 06:37:20 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.13.0:
+  Ansible 9.13.0 includes ansible-core 2.16.14 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 9
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/ansible-build-data/blob/main/9/CHANGELOG-v9.md
+
+-------------------------------------------------------------------
+Tue Dec  3 06:40:37 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- introduce next_ansible_core_version to ease updates of
+  ansible-core while making sure we keep to the same minor release
+  family (2.16.x, 2.17.x, 2.18.x)
+
+-------------------------------------------------------------------
+Fri Nov 22 15:04:57 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- introduce ansible_community_major_version and
+  required_ansible_core_version macros to make handling the spec
+  easier
+
+-------------------------------------------------------------------
 Thu Nov 14 16:32:18 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.12.0:

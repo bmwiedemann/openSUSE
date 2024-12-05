@@ -58,4 +58,17 @@
   * Add cast to clear -Wsign-compare warning</comment>
     <requestid>1000407</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>166e46a0eb5e06f12488804f9529382b</srcmd5>
+    <version>1.0.6</version>
+    <time>1733414958</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.0.6
+  * Print which argument was unknown before giving usage message
+  * Add -help and -version options
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Variable scope reductions
+  * Initialize: fix indentation of conditional clause after if statement</comment>
+    <requestid>1228411</requestid>
+  </revision>
 </revisionlist>

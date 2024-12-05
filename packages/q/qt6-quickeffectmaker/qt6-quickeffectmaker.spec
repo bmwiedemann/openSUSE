@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.8.0
+%define real_version 6.8.1
 %define short_version 6.8
 %define tar_name qtquickeffectmaker-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-quickeffectmaker%{?pkg_suffix}
-Version:        6.8.0
+Version:        6.8.1
 Release:        0
 Summary:        Tool for creating shader effects for Qt Quick
 License:        GPL-3.0-only
@@ -66,7 +66,8 @@ Quick applications and offers both a node editor and a code editor.
 %autosetup -p1 -n %{tar_name}-%{real_version}%{tar_suffix}
 
 %build
-%cmake_qt6
+%cmake_qt6 \
+  -DQT_GENERATE_SBOM:BOOL=FALSE
 
 %{qt6_build}
 

@@ -25,6 +25,9 @@
 %bcond_with    check
 %bcond_with    java
 %bcond_with    python3
+%if 0%{?gcc_version} < 11
+%define with_gcc 11
+%endif
 Name:           protobuf21
 Version:        21.12
 Release:        0
@@ -45,7 +48,7 @@ BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  cmake
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?with_gcc}-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -164,9 +167,12 @@ sed -i -e '/env python/d' python/google/protobuf/internal/*.py
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 
+%if 0%{?with_gcc}
+export CXX=g++-%{with_gcc}
+export CC=gcc-%{with_gcc}
+%endif
 %cmake \
   -Dprotobuf_BUILD_TESTS=OFF \
-  -Dprotobuf_ABSL_PROVIDER=package \
   %{nil}
 %cmake_build
 

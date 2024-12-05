@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec  2 18:48:20 UTC 2024 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 10.10.0
+  - jsc#PED-8909, jsc#PED-9543, jsc#9854, jsc#9855
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v10-10-0-2024-12-02
+
+-------------------------------------------------------------------
 Mon Nov  4 21:00:34 UTC 2024 - James Fehlig <jfehlig@suse.com>
 
 - json: do not call json_tokener_free with NULL

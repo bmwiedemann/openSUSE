@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  4 12:42:34 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
+
+- refresh node modules
+  * update cross-spawn module to 7.0.6 - CVE-2024-21538 (bsc#1233851)
+
+-------------------------------------------------------------------
 Wed Jul 24 12:13:44 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Build from source instead of use .whl from pypi.

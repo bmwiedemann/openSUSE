@@ -1,7 +1,7 @@
 #
 # spec file for package python-minio
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,9 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-minio
-Version:        7.1.16
+Version:        7.2.12
 Release:        0
 Summary:        Minio library for Amazon S3 compatible cloud storage
 License:        Apache-2.0
@@ -28,12 +29,18 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-argon2-cffi
 Requires:       python-certifi
+Requires:       python-pycryptodome
+Requires:       python-typing-extensions
 Requires:       python-urllib3
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module certifi}
+BuildRequires:  %{python_module argon2-cffi}
+BuildRequires:  %{python_module pycryptodome}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module typing-extensions}
 BuildRequires:  %{python_module urllib3}
 # /SECTION
 %python_subpackages

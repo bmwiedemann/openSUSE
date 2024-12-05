@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Nov 27 14:00:09 UTC 2024 - Ákos Szőts <szotsaki@gmail.com>
+
+- Update to 3.3.1
+  * Add: option [auth] type=dovecot
+  * Add: option [server] protocol + ciphersuite for optional restrictions on SSL socket
+  * Enhancement: log content in case of multiple main components error
+  * Enhancement: [storage] hook documentation, logging, error behavior (no longer throwing an exception)
+  * Fix: expand does not take timezones into account
+  * Fix: expand does not support overridden recurring events
+  * Fix: expand does not honor start and end times
+- Update to 3.3.0
+  * Adjustment: option [auth] htpasswd_encryption change default from "md5" to "autodetect"
+  * Adjustment: switch from setup.py to pyproject.toml (but keep files for legacy packaging)
+  * Adjustment: 'rights' file is now read only during startup
+  * Add: option [auth] type=ldap with (group) rights management via LDAP/LDAPS
+  * Add: option [rights] permit_overwrite_collection (default=True) which can be also controlled per collection by rights 'O' or 'o'
+  * Enhancement: permit_delete_collection can be now controlled also per collection by rights 'D' or 'd'
+  * Fix: only expand VEVENT on REPORT request containing 'expand'
+  * Cleanup: Python 3.7 leftovers
+
+-------------------------------------------------------------------
 Fri Aug 30 04:42:28 UTC 2024 - Ákos Szőts <szotsaki@gmail.com>
 
 - Cleaned up unnecessary BuildRequires

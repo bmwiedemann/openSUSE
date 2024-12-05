@@ -51,12 +51,12 @@ standard conform QR Code and Micro QR Code generation acc. to ISO/IEC
 
 %build
 %pyproject_wheel
+sed -i 's/env python/python/' ./segno/cli.py
+chmod 755 ./segno/cli.py
 
 %install
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/segno
-%python_expand sed -i 's/env python/python/' %{buildroot}%{$python_sitelib}/segno/cli.py
-%python_expand chmod 755 %{buildroot}%{$python_sitelib}/segno/cli.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

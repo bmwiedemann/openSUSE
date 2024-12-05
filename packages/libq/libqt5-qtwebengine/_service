@@ -1,11 +1,12 @@
 <services>
   <service name="tar_scm" mode="disabled">
    <param name="changesgenerate">enable</param>
-   <param name="version">5.15.17</param>
+   <!-- submodule from fdfef5b3 to 85337c28b -->
+   <param name="version">5.15.18</param>
    <param name="url">git://code.qt.io/qt/qtwebengine.git</param>
    <param name="scm">git</param>
    <param name="filename">qtwebengine-everywhere-src</param>
-   <param name="revision">v5.15.17-lts</param>
+   <param name="revision">v5.15.18-lts</param>
   </service>
   <service name="recompress" mode="disabled">
    <param name="file">*.tar</param>

@@ -281,4 +281,18 @@ Implement single-spec version</comment>
     pyproject.toml file for more of the configuration options.</comment>
     <requestid>1223649</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>924fbabc0da3bbe545e1aa33fe2195ed</srcmd5>
+    <version>2.10.2</version>
+    <time>1733414930</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.10.2
+  * Better support for CPUs that do not have a power of 2 number of
+    cores.  See #479 and #490.  Thanks to @avalentino.
+  * Allow numexpr to run with the multithreading package in Python.
+    See PR #496.  Thanks to @emmaai
+  * Wheels for Python 3.13 are now provided.
+- Drop fix-test-max-threads-unset.patch (forwarded request 1228309 from bnavigator)</comment>
+    <requestid>1228310</requestid>
+  </revision>
 </revisionlist>

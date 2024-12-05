@@ -79,4 +79,12 @@
     <comment>- Set memory constraints for building qt6-graphs</comment>
     <requestid>1218734</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>62f9672282a2c216814e476cce482729</srcmd5>
+    <version>6.8.1</version>
+    <time>1733414770</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.8.1 (forwarded request 1227981 from krop)</comment>
+    <requestid>1228187</requestid>
+  </revision>
 </revisionlist>

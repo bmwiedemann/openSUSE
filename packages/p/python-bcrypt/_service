@@ -3,7 +3,7 @@
     <param name="url">https://github.com/pyca/bcrypt/</param>
     <param name="versionformat">@PARENT_TAG@~@TAG_OFFSET@</param>
     <param name="scm">git</param>
-    <param name="revision">4.2.0</param>
+    <param name="revision">4.2.1</param>
   </service>
   <service name="cargo_vendor" mode="manual">
      <param name="srcdir">bcrypt/src/_bcrypt</param>

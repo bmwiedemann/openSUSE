@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Dec  4 13:35:30 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.1.2+git20240721.b467f7a:
+  * ci: use vcpkg for both builds
+  * Add CI builds + add support for static linux binaries (#23)
+  * tool: Ignore the output file in case it's inside the input path (#20)
+  * Bump version
+  * build: force MODULE mode for find_package(zstd)
+  * build: add pkg-config support
+  * build: general improvements
+  * Install the zarchive executable
+  * Don't hardcode the installation path of the library
+- Drop use_pkgconfig_for_zstd.patch
+
+-------------------------------------------------------------------
 Mon May 15 19:29:55 UTC 2023 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Add use_pkgconfig_for_zstd.patch

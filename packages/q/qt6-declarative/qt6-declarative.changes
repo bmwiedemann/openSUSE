@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Dec  2 13:02:02 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.8.1:
+  * https://www.qt.io/blog/qt-6.8.1-released
+- Drop patches, merged upstream:
+  * 0001-Revert-QQmlDelegateModel-fix-delegates-not-being-cre.patch
+  * 0002-QQmlDelegateModel-fix-delegates-not-being-created-in.patch
+  * 0001-Compiler-Wrap-raw-string-literals-in-QStringLiteral-.patch
+  * 0001-QQuickItemView-fix-crash-with-zero-size-SwipeView-th.patch
+  * 0001-QQuickAccessibleAttached-Let-implicit-names-work-whe.patch
+  * 0001-QQuickItem-map-To-From-Item-Account-for-not-having-a.patch
+  * 0001-Log-state-transitions-for-the-GC.patch
+  * 0001-Engine-Mark-created-wrapped-objects-after-GCState-Ma.patch
+
+-------------------------------------------------------------------
 Tue Nov 12 15:40:15 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Replace 0001-WIP-speculative-gc-fix.patch with newer ones,

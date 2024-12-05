@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.8.0
+%define real_version 6.8.1
 %define short_version 6.8
 %define tar_name qtdeclarative-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-declarative%{?pkg_suffix}
-Version:        6.8.0
+Version:        6.8.1
 Release:        0
 Summary:        Qt 6 Declarative Libraries and tools
 License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
@@ -36,21 +36,6 @@ Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{r
 Source99:       qt6-declarative-rpmlintrc
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-qmlimportscanner-Include-module-versions-again.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Revert-QQmlDelegateModel-fix-delegates-not-being-cre.patch
-Patch2:         0002-QQmlDelegateModel-fix-delegates-not-being-created-in.patch
-# PATCH-FIX-UPSTREAM
-Patch3:         0001-Compiler-Wrap-raw-string-literals-in-QStringLiteral-.patch
-# PATCH-FIX-UPSTREAM
-Patch4:         0001-QQuickItemView-fix-crash-with-zero-size-SwipeView-th.patch
-# PATCH-FIX-UPSTREAM
-Patch5:         0001-QQuickAccessibleAttached-Let-implicit-names-work-whe.patch
-# PATCH-FIX-UPSTREAM
-Patch6:         0001-QQuickItem-map-To-From-Item-Account-for-not-having-a.patch
-# PATCH-FIX-UPSTREAM (requisite for the next one)
-Patch7:         0001-Log-state-transitions-for-the-GC.patch
-# PATCH-FIX-UPSTREAM (https://codereview.qt-project.org/c/qt/qtdeclarative/+/603331)
-Patch8:         0001-Engine-Mark-created-wrapped-objects-after-GCState-Ma.patch
 BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
@@ -1003,7 +988,8 @@ EOF
 # Package provides static libraries
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 
-%cmake_qt6
+%cmake_qt6 \
+  -DQT_GENERATE_SBOM:BOOL=FALSE
 
 %{qt6_build}
 

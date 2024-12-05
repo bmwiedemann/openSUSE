@@ -85,4 +85,15 @@ Also a dep of fastapi (https://repology.org/project/python:fastapi/versions) and
     <comment></comment>
     <requestid>1221776</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f462de83d439194509bb65d2691ceb3b</srcmd5>
+    <version>0.0.19</version>
+    <time>1733414716</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.0.19 (bsc#1234115, CVE-2024-53981):
+  * Don't warn when CRLF is found after last boundary #193
+- 0.0.18:
+  * Hard break if found data after last boundary on MultipartParser #189</comment>
+    <requestid>1228255</requestid>
+  </revision>
 </revisionlist>

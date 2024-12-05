@@ -2,6 +2,7 @@
   <service mode="manual" name="obs_scm">
     <param name="url">https://github.com/publicsuffix/list.git</param>
     <param name="scm">git</param>
+    <param name="revision">main</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">publicsuffix</param>
     <param name="versionformat">%cd</param>

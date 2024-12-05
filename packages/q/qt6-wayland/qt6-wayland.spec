@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.8.0
+%define real_version 6.8.1
 %define short_version 6.8
 %define tar_name qtwayland-everywhere-src
 %define tar_suffix %{nil}
@@ -30,7 +30,7 @@
 %global with_opengl 1
 %endif
 Name:           qt6-wayland%{?pkg_suffix}
-Version:        6.8.0
+Version:        6.8.1
 Release:        0
 Summary:        Qt 6 Wayland libraries and tools
 # The wayland compositor files are GPL-3.0-or-later
@@ -239,7 +239,8 @@ This is a meta package, it does not contain any file
 EOF
 
 %build
-%cmake_qt6
+%cmake_qt6 \
+  -DQT_GENERATE_SBOM:BOOL=FALSE
 
 %{qt6_build}
 

@@ -17,7 +17,7 @@
 
 
 Name:           siril
-Version:        1.2.4
+Version:        1.2.5
 Release:        0
 Summary:        An astronomical image processing software for Linux. (IRIS clone)
 License:        BSL-1.0 AND GPL-3.0-or-later
@@ -74,8 +74,8 @@ automatically or manually, stack them and enhance final images.
 %meson_install
 rm %{buildroot}/%{_datadir}/doc/siril/*
 %find_lang %{name}
-install -m 0644 -D platform-specific/linux/org.free_astro.siril.desktop %{buildroot}%{_datadir}/applications/org.free_astro.siril.desktop
-install -m 0644 -D platform-specific/linux/siril.xml                    %{buildroot}%{_datadir}/mime/packages/siril.xml
+install -m 0644 -D platform-specific/linux/org.siril.Siril.desktop %{buildroot}%{_datadir}/applications/org.siril.Siril.desktop
+install -m 0644 -D platform-specific/linux/siril.xml %{buildroot}%{_datadir}/mime/packages/siril.xml
 
 %fdupes %{buildroot}/%{_datadir}
 
@@ -87,11 +87,11 @@ install -m 0644 -D platform-specific/linux/siril.xml                    %{buildr
 %{_mandir}/man1/siril.1%{?ext_man}
 %{_mandir}/man1/siril-cli.1%{?ext_man}
 %{_datadir}/siril/
-%{_datadir}/metainfo/org.free_astro.siril.appdata.xml
-%{_datadir}/applications/org.free_astro.siril.desktop
+%{_datadir}/metainfo/org.siril.Siril.appdata.xml
+%{_datadir}/applications/org.siril.Siril.desktop
 %{_datadir}/mime/packages/siril.xml
 %{_datadir}/icons/hicolor/scalable/mimetypes/text-x-seq.svg
-%{_datadir}/icons/hicolor/scalable/apps/org.free_astro.siril.svg
-%{_datadir}/icons/hicolor/symbolic/apps/org.free_astro.siril-symbolic.svg
+%{_datadir}/icons/hicolor/scalable/apps/org.siril.Siril.svg
+%{_datadir}/icons/hicolor/symbolic/apps/org.siril.Siril-symbolic.svg
 
 %changelog

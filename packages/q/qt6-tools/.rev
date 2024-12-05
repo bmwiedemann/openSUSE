@@ -337,4 +337,12 @@
   that qdoc pulls in a libclang suitable for the used libclang-cpp.</comment>
     <requestid>1223890</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>27f71db4f1370ac660b47ae3b5b4ec9e</srcmd5>
+    <version>6.8.1</version>
+    <time>1733414743</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.8.1 (forwarded request 1227981 from krop)</comment>
+    <requestid>1228212</requestid>
+  </revision>
 </revisionlist>

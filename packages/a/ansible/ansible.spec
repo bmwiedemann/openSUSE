@@ -17,7 +17,8 @@
 
 
 %define ansible_community_major_version 11
-%define required_ansible_core_version 2.18.0
+%define required_ansible_core_version 2.18.1
+%define next_ansible_core_version 2.19.0
 
 
 %{?sle15_python_module_pythons}
@@ -42,13 +43,13 @@
 %endif
 
 Name:           ansible
-Version:        11.0.0
+Version:        11.1.0
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0-or-later
 URL:            https://ansible.com/
 Source:         https://files.pythonhosted.org/packages/source/a/ansible/ansible-%{version}.tar.gz
-Source99:       ansible-%{ansible_community_major_version}-rpmlintrc
+Source99:       ansible-rpmlintrc
 BuildRequires:  python-rpm-macros
 BuildRequires:  %{ansible_python}-base >= 3.10
 BuildRequires:  %{ansible_python}-setuptools
@@ -58,11 +59,11 @@ BuildRequires:  fdupes
 BuildRequires:  dos2unix
 
 # SECTION test requirements
-BuildRequires:  ansible-core = %{required_ansible_core_version}
+BuildRequires:  (ansible-core >= %{required_ansible_core_version} with ansible-core < %{next_ansible_core_version})
 # /SECTION
 
 Requires:       %{ansible_python}-base >= 3.10
-Requires:       ansible-core = %{required_ansible_core_version}
+Requires:       (ansible-core >= %{required_ansible_core_version} with ansible-core < %{next_ansible_core_version})
 
 # Conflicts with lower or higher ansible major versions
 Conflicts:      ansible < %{ansible_community_major_version}

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Dec  3 06:06:45 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.17.7:
+  https://github.com/ansible/ansible/blob/v2.17.7/changelogs/CHANGELOG-v2.17.rst
+  * Minor Changes
+    - remove extraneous selinux import (#83657).
+  * Security Fixes
+    - Templating will not prefer AnsibleUnsafe when a variable is
+      referenced via hostvars - CVE-2024-11079
+  * Bugfixes
+    - Fix returning 'unreachable' for the overall task result. This
+      prevents false positives when a looped task has unignored
+      unreachable items (#84019).
+    - ansible-test - Fix traceback that occurs after an interactive
+      command fails.
+    - dnf5 - fix installing a package using state=latest when a
+      binary of the same name as the package is already installed
+      (#84259)
+    - dnf5 - matching on a binary can be achieved only by
+      specifying a full path (#84334)
+
+-------------------------------------------------------------------
 Fri Nov 22 10:18:19 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package ansible-core-2.17, following the 2.17.x versions of

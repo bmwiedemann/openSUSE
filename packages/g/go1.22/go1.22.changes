@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec  3 18:00:04 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.22.10 (released 2024-12-03) includes fixes to the runtime and
+  the syscall package.
+  Refs boo#1218424 go1.22 release tracking
+  * go#70201 syscall: SyscallN always escapes the variadic argument
+  * go#70238 time: TestLoadFixed failures
+  * go#70474 sync/atomic: TestNilDeref flaky failure on windows-386 with runtime fatal error
+
+-------------------------------------------------------------------
 Wed Nov  6 22:47:22 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.22.9 (released 2024-11-06) includes fixes to the linker.

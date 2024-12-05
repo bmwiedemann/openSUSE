@@ -1,16 +1,16 @@
-Index: swtpm-0.9.0/src/selinux/swtpm.te
+Index: swtpm-0.10.0/src/selinux/swtpm.te
 ===================================================================
---- swtpm-0.9.0.orig/src/selinux/swtpm.te
-+++ swtpm-0.9.0/src/selinux/swtpm.te
-@@ -8,6 +8,7 @@ policy_module(swtpm, 1.0.0)
- require {
+--- swtpm-0.10.0.orig/src/selinux/swtpm.te
++++ swtpm-0.10.0/src/selinux/swtpm.te
+@@ -9,6 +9,7 @@ require {
  	type qemu_var_run_t;
+ 	type svirt_image_t;
  	type var_log_t;
 +	type virt_log_t;
  	type virt_var_lib_t;
  	type virtqemud_t;
  	type virtqemud_tmp_t;
-@@ -29,6 +30,7 @@ allow swtpm_t qemu_var_run_t:file { crea
+@@ -30,6 +31,7 @@ allow swtpm_t qemu_var_run_t:file { crea
  allow swtpm_t qemu_var_run_t:dir { add_name remove_name write };
  allow swtpm_t qemu_var_run_t:sock_file { create setattr unlink };
  allow swtpm_t var_log_t:file open;

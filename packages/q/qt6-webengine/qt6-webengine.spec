@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.8.0
+%define real_version 6.8.1
 %define short_version 6.8
 %define tar_name qtwebengine-everywhere-src
 %define tar_suffix %{nil}
@@ -44,7 +44,7 @@
 %define pyver python311
 %endif
 Name:           qt6-webengine%{?pkg_suffix}
-Version:        6.8.0
+Version:        6.8.1
 Release:        0
 Summary:        Web browser engine for Qt applications
 License:        GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-only
@@ -376,31 +376,32 @@ export NINJAFLAGS="%{?_smp_mflags}"
 %if 0%{?suse_version} == 1500
   -DPython3_EXECUTABLE=%{_bindir}/python3.11 \
 %endif
-  -DFEATURE_qtpdf_build:BOOL=ON \
-  -DFEATURE_webengine_developer_build:BOOL=OFF \
-  -DFEATURE_webengine_embedded_build:BOOL=OFF \
-  -DFEATURE_webengine_extensions:BOOL=ON \
-  -DFEATURE_webengine_kerberos:BOOL=ON \
-  -DFEATURE_webengine_native_spellchecker:BOOL=OFF \
-  -DFEATURE_webengine_printing_and_pdf:BOOL=ON \
-  -DFEATURE_webengine_proprietary_codecs:BOOL=ON \
+  -DFEATURE_qtpdf_build:BOOL=TRUE \
+  -DFEATURE_webengine_developer_build:BOOL=FALSE \
+  -DFEATURE_webengine_embedded_build:BOOL=FALSE \
+  -DFEATURE_webengine_extensions:BOOL=TRUE \
+  -DFEATURE_webengine_kerberos:BOOL=TRUE \
+  -DFEATURE_webengine_native_spellchecker:BOOL=FALSE \
+  -DFEATURE_webengine_printing_and_pdf:BOOL=TRUE \
+  -DFEATURE_webengine_proprietary_codecs:BOOL=TRUE \
 %if %{with system_ffmpeg}
-  -DFEATURE_webengine_system_ffmpeg:BOOL=ON \
+  -DFEATURE_webengine_system_ffmpeg:BOOL=TRUE \
 %else
-  -DFEATURE_webengine_system_ffmpeg:BOOL=OFF \
+  -DFEATURE_webengine_system_ffmpeg:BOOL=FALSE \
 %endif
 %if %{without system_harfbuzz}
-  -DFEATURE_webengine-system-harfbuzz:BOOL=OFF \
+  -DFEATURE_webengine-system-harfbuzz:BOOL=FALSE \
 %endif
 %if %{with system_icu}
-  -DFEATURE_webengine_system_icu:BOOL=ON \
+  -DFEATURE_webengine_system_icu:BOOL=TRUE \
 %else
-  -DFEATURE_webengine_system_icu:BOOL=OFF \
+  -DFEATURE_webengine_system_icu:BOOL=FALSE \
 %endif
-  -DFEATURE_webengine_system_libevent:BOOL=ON \
-  -DFEATURE_webengine_webrtc:BOOL=ON \
-  -DFEATURE_webengine_webrtc_pipewire:BOOL=ON \
-  -DQT_BUILD_EXAMPLES:BOOL=ON
+  -DFEATURE_webengine_system_libevent:BOOL=TRUE \
+  -DFEATURE_webengine_webrtc:BOOL=TRUE \
+  -DFEATURE_webengine_webrtc_pipewire:BOOL=TRUE \
+  -DQT_BUILD_EXAMPLES:BOOL=TRUE \
+  -DQT_GENERATE_SBOM:BOOL=FALSE
 
 %{qt6_build}
 

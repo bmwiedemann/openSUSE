@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Dec  3 07:18:32 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update the TPM2 patches to the upstream final version
+  * Update 0001-key_protector-Add-key-protectors-framework.patch
+  * Replace 0002-tpm2-Add-TPM-Software-Stack-TSS.patch with
+    grub2-add-tss2-support.patch
+  * Replace 0003-key_protector-Add-TPM2-Key-Protector.patch with
+    0001-key_protector-Add-TPM2-Key-Protector.patch
+  * Replace 0005-util-grub-protect-Add-new-tool.patch with
+    0001-util-grub-protect-Add-new-tool.patch
+  * Replace 0001-tpm2-Implement-NV-index.patch with
+    0001-tpm2_key_protector-Implement-NV-index.patch
+  * Replace 0001-tpm2-Support-authorized-policy.patch with
+    0001-tpm2_key_protector-Support-authorized-policy.patch
+- Refresh the TPM2 related patches
+  * grub-read-pcr.patch
+  * 0001-tpm2-Add-extra-RSA-SRK-types.patch
+  * grub2-bsc1220338-key_protector-implement-the-blocklist.patch
+  * safe_tpm_pcr_snapshot.patch
+  * tpm-record-pcrs.patch
+
+-------------------------------------------------------------------
 Fri Nov 29 05:56:22 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Support s390x Secure Execution (jsc#PED-9531)

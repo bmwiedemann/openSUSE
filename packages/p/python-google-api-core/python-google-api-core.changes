@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec  4 14:22:59 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.23.0
+  * Migrate to pyproject.toml (#736)
+- from version 2.22.0
+  * Add support for python 3.13 (#696)
+  * Add type hints to ClientOptions (#735)
+  * Improve `Any` decode error (#712)
+  * Require proto-plus >= 1.25.0 for Python 3.13 (#740)
+  * Switch to unittest.mock from mock (#713)
+- Drop python-google-api-core-no-mock.patch, merged upstream
+
+-------------------------------------------------------------------
 Tue Oct 29 04:42:29 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Resurrect python-google-api-core-no-mock.patch and refresh it, it is

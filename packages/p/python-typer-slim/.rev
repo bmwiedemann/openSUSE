@@ -93,4 +93,20 @@ I tested the upgrade path and this will not break anybody relying on the package
     `_TYPER_RUN_INSTALL_COMPLETION_TESTS` is set.</comment>
     <requestid>1225477</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>534d399e4353471f5c2530de88be3329</srcmd5>
+    <version>0.15.1</version>
+    <time>1733414724</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.15.1
+  * Deprecate shell_complete and continue to use autocompletion for
+    CLI parameters.
+- Update to 0.15.0
+  * Add support for extending typer apps without passing a name,
+    add commands to the top level.
+  * Breaking change:  Remove auto naming of groups added via
+    add_typer based on the group's callback function name.
+</comment>
+    <requestid>1228370</requestid>
+  </revision>
 </revisionlist>

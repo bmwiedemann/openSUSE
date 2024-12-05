@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec  4 11:15:53 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Add alias to the other implementation out there
+
+-------------------------------------------------------------------
 Mon Sep 23 13:15:04 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use SOURCE_DATE_EPOCH for reproducible builds

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 29 06:56:17 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build on some architectures in SLE15 where the default
+  compiler gives internal compiler error
+
+-------------------------------------------------------------------
 Fri Aug  9 09:02:58 UTC 2024 - Christian Goll <cgoll@suse.com>
 
 - switch to cmake buidling to that cmake projects can consume it

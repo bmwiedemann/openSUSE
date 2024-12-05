@@ -1,8 +1,8 @@
-Index: swtpm-0.8.0/configure.ac
+Index: swtpm-0.10.0/configure.ac
 ===================================================================
---- swtpm-0.8.0.orig/configure.ac
-+++ swtpm-0.8.0/configure.ac
-@@ -418,11 +418,11 @@ if test "x$enable_hardening" != "xno"; t
+--- swtpm-0.10.0.orig/configure.ac
++++ swtpm-0.10.0/configure.ac
+@@ -449,11 +449,11 @@ if test "x$enable_hardening" != "xno"; t
  	# Some versions of gcc fail with -Wstack-protector,
  	# some with -Wstack-protector-strong enabled
  	if ! $CC -fstack-protector-strong -Wstack-protector $srcdir/include/swtpm/tpm_ioctl.h 2>/dev/null; then

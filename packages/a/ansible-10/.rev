@@ -7,4 +7,12 @@
     <comment>new package ansible-10, following the 10.x.y versions of ansible</comment>
     <requestid>1227519</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d5481e86f36da7550e60d42658abd936</srcmd5>
+    <version>10.7.0</version>
+    <time>1733414916</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1228290</requestid>
+  </revision>
 </revisionlist>

@@ -91,4 +91,39 @@
   * go#70020 net/http: short writes with FileServer on macos (forwarded request 1222505 from jfkw)</comment>
     <requestid>1222507</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>319835c2eefed0ac4b254f246460d02a</srcmd5>
+    <version>1.23.4</version>
+    <time>1733414761</time>
+    <user>anag+factory</user>
+    <comment>- go1.23.4 (released 2024-12-03) includes fixes to the compiler,
+  the runtime, the trace command, and the syscall package.
+  Refs boo#1229122 go1.23 release tracking
+  * go#70644 crypto/rsa: new key generation prohibitively slow under race detector
+  * go#70645 proposal: go/types: add Scope.Node convenience getter
+  * go#70646 x/tools/gopls: unimported completion corrupts import decl (client=BBEdit)
+  * go#70648 crypto/tls: TestHandshakeClientECDHEECDSAAESGCM/TLSv12 failures
+  * go#70649 x/benchmarks/sweet/cmd/sweet: TestSweetEndToEnd failures
+  * go#70650 crypto/tls: TestGetClientCertificate/TLSv13 failures
+  * go#70651 x/tools/go/gcexportdata: simplify implementation assuming go &gt;= 1.21
+  * go#70654 cmd/go: Incorrect output from go list
+  * go#70655 x/build/cmd/relui: add workflows for some remaining manual recurring Go major release cycle tasks
+  * go#70657 proposal: bufio: Scanner.IterText/Scanner.IterBytes
+  * go#70658 x/net/http2: stuck extended CONNECT requests
+  * go#70659 os: TestRootDirFS failures on linux-mips64 and linux-mips64le arch-mips
+  * go#70660 crypto/ecdsa: TestRFC6979 failures on s390x
+  * go#70664 x/mobile: target maccatalyst cannot find OpenGLES header
+  * go#70665 x/tools/gopls: refactor.extract.variable fails at package level
+  * go#70666 x/tools/gopls: panic in GetIfaceStubInfo
+  * go#70667 proposal: crypto/x509: support extracting X25519 public keys from certificates
+  * go#70668 proposal: x/mobile: better support for unrecovered panics
+  * go#70669 cmd/go: local failure in TestScript/build_trimpath_cgo
+  * go#70670 cmd/link: unused functions aren't getting deadcoded from the binary
+  * go#70674 x/pkgsite: package removal request for https://pkg.go.dev/github.com/uisdevsquad/go-test/debugmate
+  * go#70675 cmd/go/internal/lockedfile: mountrpc flake in TestTransform on plan9
+  * go#70677 all: remote file server I/O flakiness with &quot;Bad fid&quot; errors on plan9
+  * go#70678 internal/poll: deadlock on 'Intel(R) Xeon(R) Platinum' when an FD is closed
+  * go#70679 mime/multipart: With go 1.23.3, mime/multipart does not link (forwarded request 1228338 from jfkw)</comment>
+    <requestid>1228340</requestid>
+  </revision>
 </revisionlist>

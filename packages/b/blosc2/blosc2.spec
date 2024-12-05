@@ -17,10 +17,10 @@
 
 
 # Adjust baselibs.conf if this changes
-%define major 3
+%define major 4
 %define libname lib%{name}-%{major}
 Name:           blosc2
-Version:        2.14.4
+Version:        2.15.2
 Release:        0
 Summary:        A fast, compressed, persistent binary data store library for C
 License:        BSD-2-Clause AND BSD-3-Clause AND MIT
@@ -55,7 +55,6 @@ define the BLOSC1_COMPAT symbol.
 
 %package -n %{libname}
 Summary:        A fast, compressed, persistent binary data store library for C
-Group:          System/Libraries
 
 %description -n %{libname}
 Blosc is a high performance compressor optimized for binary data
@@ -63,7 +62,6 @@ Blosc is a high performance compressor optimized for binary data
 
 %package devel
 Summary:        Development libraries for %{libname}
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 
 %description devel

@@ -4,15 +4,22 @@ Requires: group(video)
 Provides: nvidia-open-driver-G06 = %{-v*}
 %if %{with cuda}
 Provides: nvidia-open-driver-G06-signed-cuda-kmp-%1 = %{-v*}
+# Provide plain version to simplify installation
 Provides: nvidia-open-driver-G06-signed-kmp = %{-v*}
 Provides: nvidia-open-driver-G06-signed-kmp-%1 = %{-v*}
-Conflicts: nvidia-open-driver-G06-signed-kmp
-Conflicts: nvidia-open-driver-G06-signed-kmp-%1
 # workaround for broken cuda-drivers
-Provides: nvidia-open-driver-G06-kmp = %{-v*}
-Provides: nvidia-open-driver-G06-kmp-%1 = %{-v*}
-Requires: (kernel-firmware-nvidia-gspx-G06 = %{-v*} if (nvidia-compute-utils-G06 = %{-v*} or nvidia-compute-G06 = %{-v*} or sle-module-NVIDIA-compute-release))
+# resolve self conflicts of -cuda KMP during update by adding
+# obsoletes pre-560 version due to its broad conflicts (boo#1233332)
+Obsoletes: nvidia-open-driver-G06-signed-cuda-kmp-%1 < 560.35.03
+Obsoletes: nvidia-open-driver-G06-signed-cuda-kmp < 560.35.03
+%endif
+%if 0%{?sle_version:1} && %{with cuda}
+Requires: kernel-firmware-nvidia-gspx-G06-cuda = %{-v*}
 %else
 Requires: (kernel-firmware-nvidia-gspx-G06 = %{-v*} if nvidia-compute-utils-G06 = %{-v*})
 %endif
+Provides: nvidia-open-signed-kmp = %version
+Provides:  nvidia-open-signed-kmp(%mykind)
+Conflicts: nvidia-open-signed-kmp(%otherkind)
+
 Obsoletes: nvidia-open-driver-G06 = %{-v*}

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Dec  4 09:16:24 MST 2024 - carnold@suse.com
+
+- Update to Xen 4.19.1 bug fix release (jsc#PED-8907)
+  xen-4.19.1-testing-src.tar.bz2
+  * No upstream changelog found in sources or webpage
+- Dropped patches
+  66a8b8ac-bunzip2-rare-failure.patch
+  66bb6f78-x86-IOMMU-move-tracking-in-iommu_identity_mapping.patch
+  66bb6fa5-x86-pass-through-document-as-security-unsupported.patch
+  66cf737b-x86-Dom0-disable-SMAP-for-PV-only.patch
+  66d02b69-Arm64-adjust-irq_to_desc-to-fix-build-with-gcc14.patch
+  66d6dca8-libxl-nul-termination-in-xen_console_read_line.patch
+  66d8690f-SUPPORT-split-XSM-from-Flask.patch
+  66e29480-x86-HVM-properly-reject-indirect-VRAM-writes.patch
+  66e44ae2-x86-ucode-AMD-buffer-underrun.patch
+  66f2af41-x86-vLAPIC-undue-recursion-of-vlapic_error.patch
+  66f2fd92-x86-ucode-Intel-stricter-sanity-check.patch
+  xsa463-01.patch
+  xsa463-02.patch
+  xsa463-03.patch
+  xsa463-04.patch
+  xsa463-05.patch
+  xsa463-06.patch
+  xsa463-07.patch
+  xsa463-08.patch
+  xsa463-09.patch
+  xsa464.patch
+  gcc14-fixes.patch
+
+-------------------------------------------------------------------
 Wed Oct 30 09:34:38 MDT 2024 - carnold@suse.com
 
 - bsc#1232622 - VUL-0: CVE-2024-45818: xen: Deadlock in x86 HVM

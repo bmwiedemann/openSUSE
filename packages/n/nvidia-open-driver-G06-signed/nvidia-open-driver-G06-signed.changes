@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Wed Dec  4 09:00:04 UTC 2024 - Egbert Eich <eich@suse.com>
+
+- Make sure the correct FW package is installed on non-CUDA.
+
+-------------------------------------------------------------------
+Tue Dec  3 12:17:24 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- kmp-trigger.sh:
+  * avoid to return with exit code != 0 if modules could not be
+    unloaded for some reason
+
+-------------------------------------------------------------------
+Sat Nov 30 12:30:19 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- only obsolete 555 CUDA driver/firmware packages
+
+-------------------------------------------------------------------
+Sat Nov 30 09:21:37 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- preamble:
+  no longer need to provide nvidia-open-driver-G06-kmp because
+  since 565.57.01 to the list of requires of nvidia-compute-G06
+  the -signed packages has been added
+
+-------------------------------------------------------------------
+Sat Nov 30 02:18:26 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- For CUDA update version to 565.57.01
+
+-------------------------------------------------------------------
+Fri Nov 29 10:02:34 UTC 2024 - Egbert Eich <eich@suse.com>
+
+- Add 'dummy' firmware package on SLE to work around update
+  issues. On SLE, the firmware is installed directly from
+  an NVIDIA-hosted repo.
+
+-------------------------------------------------------------------
+Thu Nov 28 12:28:40 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- preamble
+  * resolve self conflicts of -cuda KMP during update by adding
+    obsoletes to older versions (boo#1233332)
+
+-------------------------------------------------------------------
+Mon Nov 25 19:16:46 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- fixed my wrong patch 550.135.patch I introduced right below;
+  it fixed x86_64 build more-or-less accidently but broke aarch64
+  build completely ...
+
+-------------------------------------------------------------------
+Mon Nov 25 13:34:20 UTC 2024 - Egbert Eich <eich@suse.com>
+
+- Improve handling of conflicts between different flavors
+  (gfx vs. CUDA) (bsc#1233332).
+
+-------------------------------------------------------------------
+Mon Nov 25 12:08:18 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 550.135 (boo#1233673)
+- 550.135.patch: 
+  * fixes wrong logic for checking supported architectures
+
+-------------------------------------------------------------------
 Mon Nov 11 10:32:20 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - kmp-trigger.sh:

@@ -1,7 +1,7 @@
 #
 # spec file for package re2c
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,10 @@
 
 
 Name:           re2c
-Version:        3.1
+Version:        4.0.1
 Release:        0
 Summary:        Tool for generating C-based recognizers from regular expressions
 License:        SUSE-Public-Domain
-Group:          Development/Libraries/C and C++
 URL:            https://re2c.org/
 Source:         https://github.com/skvadrik/re2c/releases/download/%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  bison
@@ -63,11 +62,25 @@ terms of size and speed.
 %{_bindir}/re2c
 %{_bindir}/re2go
 %{_bindir}/re2rust
+%{_bindir}/re2d
+%{_bindir}/re2hs
+%{_bindir}/re2js
+%{_bindir}/re2ocaml
+%{_bindir}/re2py
+%{_bindir}/re2v
+%{_bindir}/re2zig
 %{_mandir}/man1/re2c.1%{?ext_man}
 %{_mandir}/man1/re2go.1%{?ext_man}
 %{_mandir}/man1/re2rust.1%{?ext_man}
+%{_mandir}/man1/re2d.1%{?ext_man}
+%{_mandir}/man1/re2hs.1%{?ext_man}
+%{_mandir}/man1/re2js.1%{?ext_man}
+%{_mandir}/man1/re2ocaml.1%{?ext_man}
+%{_mandir}/man1/re2py.1%{?ext_man}
+%{_mandir}/man1/re2v.1%{?ext_man}
+%{_mandir}/man1/re2zig.1%{?ext_man}
 %dir %{_datadir}/re2c
 %dir %{_datadir}/re2c/stdlib
-%{_datadir}/re2c/stdlib/unicode_categories.re
+%{_datadir}/re2c/stdlib/*
 
 %changelog

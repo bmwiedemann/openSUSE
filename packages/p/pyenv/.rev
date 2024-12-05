@@ -511,4 +511,17 @@ Full Changelog: https://github.com/pyenv/pyenv/compare/v2.4.7...v2.4.8</comment>
     <comment></comment>
     <requestid>1225459</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>cd22207d91b7803ce6036fcacfdaa80e</srcmd5>
+    <version>2.4.20</version>
+    <time>1733414953</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1228163 from thomas-schraitle
+
+- Update 2.4.20
+    * README: Fix Markdown in &quot;Notes about python releases&quot; by @noelleleigh in #3112
+    * README: correct link to shell setup instructions by @shortcuts in #3113
+    * Add CPython 3.9.21, 3.10.16, 3.11.11, 3.12.8 and 3.13.1 by @edgarrmondragon in #3117</comment>
+    <requestid>1228384</requestid>
+  </revision>
 </revisionlist>

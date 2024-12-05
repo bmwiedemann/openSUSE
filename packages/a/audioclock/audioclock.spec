@@ -17,7 +17,7 @@
 
 
 Name:           audioclock
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        An audible clock
 License:        GPL-2.0+
@@ -25,6 +25,7 @@ Url:            https://github.com/bmwiedemann/audioclock
 Group:          Amusements/Toys/Clocks
 BuildArch:      noarch
 Source0:        %name-%version.tar.gz
+Requires:       perl(Alien::SDL)
 Requires:       perl(SDL::Mixer)
 
 %description

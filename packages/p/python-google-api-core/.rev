@@ -384,4 +384,20 @@
 - Drop python-google-api-core-no-mock.patch, merged upstream</comment>
     <requestid>1218907</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>8dd6e747fa4b3764211b9137cb53b1fb</srcmd5>
+    <version>2.23.0</version>
+    <time>1733414948</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.23.0
+  * Migrate to pyproject.toml (#736)
+- from version 2.22.0
+  * Add support for python 3.13 (#696)
+  * Add type hints to ClientOptions (#735)
+  * Improve `Any` decode error (#712)
+  * Require proto-plus &gt;= 1.25.0 for Python 3.13 (#740)
+  * Switch to unittest.mock from mock (#713)
+- Drop python-google-api-core-no-mock.patch, merged upstream (forwarded request 1228327 from glaubitz)</comment>
+    <requestid>1228363</requestid>
+  </revision>
 </revisionlist>

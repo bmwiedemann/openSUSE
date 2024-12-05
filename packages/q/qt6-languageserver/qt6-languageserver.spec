@@ -16,14 +16,14 @@
 #
 
 
-%define real_version 6.8.0
+%define real_version 6.8.1
 %define short_version 6.8
 %define short_name qtlanguageserver
 %define tar_name qtlanguageserver-everywhere-src
 %define tar_suffix %{nil}
 #
 Name:           qt6-languageserver
-Version:        6.8.0
+Version:        6.8.1
 Release:        0
 Summary:        Implementation of the Language Server Protocol
 License:        LGPL-3.0-only OR GPL-2.0-or-later
@@ -45,7 +45,7 @@ Summary:        LSP implementation for Qt6
 Provides:       qt6-languageserver-private-devel = %{version}
 Obsoletes:      qt6-languageserver-private-devel < %{version}
 Requires:       cmake(Qt6JsonRpcPrivate) = %{real_version}
-Obsoletes:      libQt6LanguageServer6 < 6.8.0
+Obsoletes:      libQt6LanguageServer6 < 6.8.1
 
 %description -n qt6-languageserver-devel-static
 The Qt 6 LanguageServer library implements the Language Server Protocol (LSP)
@@ -56,7 +56,7 @@ This library does not have any ABI or API guarantees.
 Summary:        JsonRpc 2.0 protocol implementation
 Provides:       qt6-jsonrpc-private-devel = %{version}
 Obsoletes:      qt6-jsonrpc-private-devel < %{version}
-Obsoletes:      libQt6JsonRpc6 < 6.8.0
+Obsoletes:      libQt6JsonRpc6 < 6.8.1
 
 %description -n qt6-jsonrpc-devel-static
 JsonRpc 2.0 protocol implementation for Qt6.
@@ -68,7 +68,8 @@ This library does not have any ABI or API guarantees.
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 
-%cmake_qt6
+%cmake_qt6 \
+  -DQT_GENERATE_SBOM:BOOL=FALSE
 
 %{qt6_build}
 

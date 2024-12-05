@@ -19,6 +19,14 @@
 
 %bcond_without  apparmor
 
+# There is currently a known bug between buildx and SUSE secrets, so we don't
+# package docker-buildx for SLES. bsc#1233819
+%if 0%{?is_opensuse} == 0
+%bcond_with     buildx
+%else
+%bcond_without  buildx
+%endif
+
 # The flavour is defined with a macro to try to keep docker and docker-stable
 # as similar as possible, to make maintenance a little easier.
 %define flavour -stable
@@ -40,8 +48,10 @@
 # parsed by other people. boo#1182476
 %define docker_nice_version %{docker_real_version}-ce
 
+%if %{with buildx}
 # MANUAL: This needs to be updated with every docker-buildx update.
 %define buildx_version 0.17.1
+%endif
 
 # Used when generating the "build" information for Docker version. The value of
 # git_commit_epoch is unused here (we use SOURCE_DATE_EPOCH, which rpm
@@ -169,9 +179,11 @@ Requires:       iptables >= 1.4
 Requires:       procps
 Requires:       tar >= 1.26
 Requires:       xz >= 4.9
+%if %{with buildx}
 # Standard docker-build is deprecated, so require docker-buildx to avoid users
 # hitting bugs that have long since been fixed by docker-buildx. bsc#1230331
 Requires:       %{name}-buildx
+%endif
 %?sysusers_requires
 Requires(post): %fillup_prereq
 Requires(post): udev
@@ -193,6 +205,7 @@ Docker is a great building block for automating distributed systems: large-scale
 web deployments, database clusters, continuous deployment systems, private PaaS,
 service-oriented architectures, etc.
 
+%if %{with buildx}
 %package buildx
 Version:        %{buildx_version}
 Summary:        Docker CLI plugin for extended build capabilities with BuildKit
@@ -221,6 +234,7 @@ Key features:
 - Compose build support
 - High-level build constructs (bake)
 - In-container driver support (both Docker and Kubernetes)
+%endif
 
 %package rootless-extras
 Summary:        Rootless support for Docker
@@ -309,10 +323,12 @@ Fish command line completion support for %{name}.
 # offline manpages
 %patch -P900 -p1
 
+%if %{with buildx}
 # docker-buildx
 %define buildx_builddir %{_builddir}/docker-buildx-%{buildx_version}
 %setup -q -T -b 500 -n docker-buildx-%{buildx_version}
 [ "%{buildx_builddir}" = "$PWD" ]
+%endif
 
 # docker
 %define docker_builddir %{_builddir}/docker-%{docker_version}_%{docker_git_version}
@@ -389,6 +405,7 @@ ln -s {vendor,go}.sum
 make DISABLE_WARN_OUTSIDE_CONTAINER=1 dynbinary manpages
 popd
 
+%if %{with buildx}
 ###################
 ## DOCKER BUILDX ##
 ###################
@@ -401,6 +418,7 @@ make \
 	GO_EXTRA_FLAGS="-buildmode=pie" \
 	build
 popd
+%endif
 
 %install
 install -Dd -m0755 \
@@ -415,8 +433,10 @@ install -D -m0755 %{docker_builddir}/bundles/dynbinary-daemon/docker-proxy %{bui
 
 # cli-plugins/
 install -d %{buildroot}/usr/lib/docker/cli-plugins
+%if %{with buildx}
 # buildx plugin
 install -D -m0755 %{buildx_builddir}/bin/build/docker-buildx %{buildroot}/usr/lib/docker/cli-plugins/docker-buildx
+%endif
 
 # /var/lib/docker
 install -d %{buildroot}/%{_localstatedir}/lib/docker
@@ -519,9 +539,11 @@ grep -q '^dockremap:' /etc/subgid || \
 %{_mandir}/man5/Dockerfile.5%{ext_man}
 %{_mandir}/man8/dockerd.8%{ext_man}
 
+%if %{with buildx}
 %files buildx
 %defattr(-,root,root)
 /usr/lib/docker/cli-plugins/docker-buildx
+%endif
 
 %files rootless-extras
 %defattr(-,root,root)

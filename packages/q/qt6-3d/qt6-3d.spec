@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.8.0
+%define real_version 6.8.1
 %define short_version 6.8
 %define tar_name qt3d-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-3d%{?pkg_suffix}
-Version:        6.8.0
+Version:        6.8.1
 Release:        0
 Summary:        Qt 6 3D Library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -43,8 +43,6 @@ BuildRequires:  qt6-quick-private-devel
 BuildRequires:  qt6-shadertools-private-devel
 BuildRequires:  cmake(Qt6Concurrent) = %{real_version}
 BuildRequires:  cmake(Qt6Core) = %{real_version}
-# Doesn't build yet
-# BuildRequires: cmake(Qt6Gamepad)
 BuildRequires:  cmake(Qt6Gui) = %{real_version}
 BuildRequires:  cmake(Qt6Multimedia) = %{real_version}
 BuildRequires:  cmake(Qt6Network) = %{real_version}
@@ -80,6 +78,7 @@ Requires:       cmake(Qt63DQuickExtras) = %{real_version}
 Requires:       cmake(Qt63DQuickInput) = %{real_version}
 Requires:       cmake(Qt63DQuickRender) = %{real_version}
 Requires:       cmake(Qt63DQuickScene2D) = %{real_version}
+Requires:       cmake(Qt63DQuickScene3D) = %{real_version}
 Requires:       cmake(Qt63DRender) = %{real_version}
 BuildArch:      noarch
 
@@ -100,6 +99,7 @@ Requires:       qt6-3dquickextras-private-devel = %{version}
 Requires:       qt6-3dquickinput-private-devel = %{version}
 Requires:       qt6-3dquickrender-private-devel = %{version}
 Requires:       qt6-3dquickscene2d-private-devel = %{version}
+Requires:       qt6-3dquickscene3d-private-devel = %{version}
 Requires:       qt6-3drender-private-devel = %{version}
 BuildArch:      noarch
 
@@ -430,6 +430,36 @@ Requires:       cmake(Qt63DQuickScene2D) = %{real_version}
 This package provides private headers of libQt63DQuickScene2D that do not have
 any ABI or API guarantees.
 
+%package -n libQt63DQuickScene3D6
+Summary:        Qt 6 3DQuickScene3D library
+
+%description -n libQt63DQuickScene3D6
+The Qt 6 3DQuickScene3D library.
+
+%package -n qt6-3dquickscene3d-devel
+Summary:        Development files for the Qt 6 3DQuickScene3D library
+Requires:       libQt63DQuickScene3D6 = %{version}
+Requires:       cmake(Qt63DCore) = %{real_version}
+Requires:       cmake(Qt63DQuick) = %{real_version}
+Requires:       cmake(Qt63DRender) = %{real_version}
+Requires:       cmake(Qt6Gui) = %{real_version}
+Requires:       cmake(Qt6Qml) = %{real_version}
+
+%description -n qt6-3dquickscene3d-devel
+Development files for the Qt 6 3DQuickScene3D library.
+
+%package -n qt6-3dquickscene3d-private-devel
+Summary:        Non-ABI stable API for the Qt 6 3DQuickScene3D library
+Requires:       qt6-3dcore-private-devel = %{version}
+Requires:       qt6-3drender-private-devel = %{version}
+Requires:       cmake(Qt63DQuickScene3D) = %{real_version}
+%requires_eq    qt6-core-private-devel
+%requires_eq    qt6-qml-private-devel
+
+%description -n qt6-3dquickscene3d-private-devel
+This package provides private headers of libQt63DQuickScene3D that do not have
+any ABI or API guarantees.
+
 %package -n libQt63DRender6
 Summary:        Qt 6 3DRender library
 
@@ -481,7 +511,8 @@ touch meta_package
 %define _lto_cflags %{nil}
 
 %cmake_qt6 \
-  -DFEATURE_qt3d_system_assimp:BOOL=ON
+  -DQT_GENERATE_SBOM:BOOL=FALSE \
+  -DFEATURE_qt3d_system_assimp:BOOL=TRUE
 
 %{qt6_build}
 
@@ -505,6 +536,7 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 %ldconfig_scriptlets -n libQt63DQuickInput6
 %ldconfig_scriptlets -n libQt63DQuickRender6
 %ldconfig_scriptlets -n libQt63DQuickScene2D6
+%ldconfig_scriptlets -n libQt63DQuickScene3D6
 %ldconfig_scriptlets -n libQt63DRender6
 
 %files devel
@@ -715,6 +747,24 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 %files -n qt6-3dquickscene2d-private-devel
 %{_qt6_includedir}/Qt3DQuickScene2D/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_3dquickscene2d_private.pri
+
+%files -n libQt63DQuickScene3D6
+%{_qt6_libdir}/libQt63DQuickScene3D.so.*
+
+%files -n qt6-3dquickscene3d-devel
+%{_qt6_cmakedir}/Qt63DQuickScene3D/
+%{_qt6_descriptionsdir}/3DQuickScene3D.json
+%{_qt6_includedir}/Qt3DQuickScene3D/
+%{_qt6_libdir}/libQt63DQuickScene3D.prl
+%{_qt6_libdir}/libQt63DQuickScene3D.so
+%{_qt6_metatypesdir}/qt63dquickscene3d_*_metatypes.json
+%{_qt6_mkspecsdir}/modules/qt_lib_3dquickscene3d.pri
+%{_qt6_pkgconfigdir}/Qt63DQuickScene3D.pc
+%exclude %{_qt6_includedir}/Qt3DQuickScene3D/%{real_version}
+
+%files -n qt6-3dquickscene3d-private-devel
+%{_qt6_includedir}/Qt3DQuickScene3D/%{real_version}/
+%{_qt6_mkspecsdir}/modules/qt_lib_3dquickscene3d_private.pri
 
 %files -n libQt63DRender6
 %{_qt6_libdir}/libQt63DRender.so.*

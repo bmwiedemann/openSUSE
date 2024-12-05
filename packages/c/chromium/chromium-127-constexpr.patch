@@ -59,15 +59,15 @@ author: Andres Salomon <dilinger@debian.org>
  
 --- a/chrome/browser/ui/lens/lens_overlay_url_builder.cc
 +++ b/chrome/browser/ui/lens/lens_overlay_url_builder.cc
-@@ -78,7 +78,7 @@ inline constexpr char kXSRFTokenQueryPar
+@@ -80,7 +80,7 @@
  inline constexpr char kSecActQueryParamKey[] = "sec_act";
  
  // The list of query parameters to ignore when comparing search URLs.
 -inline constexpr std::string kIgnoredSearchUrlQueryParameters[] = {
 +inline const std::string kIgnoredSearchUrlQueryParameters[] = {
      kViewportWidthQueryParamKey, kViewportHeightQueryParamKey,
-     kXSRFTokenQueryParamKey, kSecActQueryParamKey};
- 
+     kXSRFTokenQueryParamKey,     kSecActQueryParamKey,
+     kModeParameterKey,           kToolbeltModeParameterKey};
 --- a/content/public/test/prefetch_test_util.h
 +++ b/content/public/test/prefetch_test_util.h
 @@ -15,7 +15,7 @@ namespace content::test {

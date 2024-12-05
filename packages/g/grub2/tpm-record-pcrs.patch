@@ -1,16 +1,17 @@
---- a/grub-core/commands/tpm.c
-+++ b/grub-core/commands/tpm.c
-@@ -26,6 +26,9 @@
+Index: grub-2.12/grub-core/commands/tpm.c
+===================================================================
+--- grub-2.12.orig/grub-core/commands/tpm.c
++++ grub-2.12/grub-core/commands/tpm.c
+@@ -26,6 +26,8 @@
  #include <grub/term.h>
  #include <grub/verify.h>
  #include <grub/dl.h>
 +#include <grub/extcmd.h>
-+#include <grub/tpm2/tpm2.h>
 +#include <grub/efi/efi.h>
  
  GRUB_MOD_LICENSE ("GPLv3+");
  
-@@ -94,8 +97,214 @@
+@@ -94,8 +96,214 @@ struct grub_file_verifier grub_tpm_verif
    .verify_string = grub_tpm_verify_string,
  };
  
@@ -225,7 +226,7 @@
    /*
     * Even though this now calls ibmvtpm's grub_tpm_present() from GRUB_MOD_INIT(),
     * it does seem to call it late enough in the initialization sequence so
-@@ -109,6 +318,7 @@
+@@ -109,6 +317,7 @@ GRUB_MOD_INIT (tpm)
  
  GRUB_MOD_FINI (tpm)
  {

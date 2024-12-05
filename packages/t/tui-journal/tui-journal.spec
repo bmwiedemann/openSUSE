@@ -1,6 +1,7 @@
 #
 # spec file for package tui-journal
 #
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2024 mantarimay
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +19,7 @@
 
 %bcond_without test
 Name:           tui-journal
-Version:        0.12.0
+Version:        0.13.0
 Release:        0
 Summary:        Write and manage journals/notes from the terminal
 License:        MIT

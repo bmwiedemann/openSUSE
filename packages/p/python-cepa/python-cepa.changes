@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec  5 05:09:33 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch fix-assertions.patch:
+  * Use correct assertion functions.
+- Stop skipping Python 3.12.
+
+-------------------------------------------------------------------
 Sun Jan 28 16:46:07 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Enable SLE15 python module for onionshare with Python 3.11

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 27 12:10:42 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+[NOTE: This update was only ever released in SLES and Leap.]
+
+- Disable docker-buildx builds for SLES. It turns out that build containers
+  with docker-buildx don't currently get the SUSE secrets mounts applied,
+  meaning that container-suseconnect doesn't work when building images.
+  bsc#1233819
+
+-------------------------------------------------------------------
 Tue Nov 12 06:34:28 UTC 2024 - Aleksa Sarai <asarai@suse.com>
 
 - Remove DOCKER_NETWORK_OPTS from docker.service. This was removed from

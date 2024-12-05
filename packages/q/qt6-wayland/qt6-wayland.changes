@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec  2 13:02:16 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.8.1:
+  * https://www.qt.io/blog/qt-6.8.1-released
+
+-------------------------------------------------------------------
 Thu Nov 28 16:18:57 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Add patch to fix crash when unplugging a graphics tablet:

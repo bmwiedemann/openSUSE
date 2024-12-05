@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  4 20:11:19 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Increase timeout not to kill the redis server in the middle of the
+  testsuite run
+
+-------------------------------------------------------------------
 Thu Jul 18 07:52:24 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Restrict Django to < 5

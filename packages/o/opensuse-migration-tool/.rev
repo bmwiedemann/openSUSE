@@ -27,4 +27,19 @@ migrations as well as point release upgrades
     <comment></comment>
     <requestid>1227703</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fd29a85413dc66947653568d9111d4ee</srcmd5>
+    <version>20241204.834c66a</version>
+    <time>1733414938</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20241204.834c66a:
+  * Ensure that we do not check for Immutability in dryrun
+
+- Update to version 20241204.89bbbc3:
+  * Add immutable check
+  * Drop the echo before running sudo
+  * Ensure root permissions unless --dry-run
+  * Update README.md</comment>
+    <requestid>1228375</requestid>
+  </revision>
 </revisionlist>

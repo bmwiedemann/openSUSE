@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec  4 11:53:46 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 1.9.0
+  * Fix most glaring issues in the Qobuz plugin
+  * Qobuz: updated the plugin to be closer to the choices on the Web
+    site (reason for the middle version bump)
+  * Qobuz: fixed the search to better return what actually requested
+  * Tidal: updated plugin
+  * Misc fixes: restore custom icon support, clear "phantom" track from mpd
+    to avoid its reappearance on startup
+
+-------------------------------------------------------------------
 Thu Aug 22 09:23:30 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to 1.8.16:

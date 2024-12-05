@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.8.0
+%define real_version 6.8.1
 %define short_version 6.8
 %define tar_name qtbase-everywhere-src
 %define tar_suffix %{nil}
@@ -33,7 +33,7 @@
 %bcond_without system_md4c
 %endif
 Name:           qt6-base%{?pkg_suffix}
-Version:        6.8.0
+Version:        6.8.1
 Release:        0
 Summary:        Qt 6 core components (Core, Gui, Widgets, Network...)
 # Legal: qtpaths is BSD-3-Clause
@@ -42,9 +42,6 @@ URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-base-rpmlintrc
 # Patches 0-100 are upstream patches #
-Patch0:         0001-QAbstractItemModelPrivate-add-resetting-member.patch
-Patch1:         0001-QUuid-restore-sorting-order-of-Qt-6.8.patch
-Patch2:         0001-QDirIterator-don-t-crash-with-next-after-hasNext-ret.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 # No need to pollute the library dir with object files, install them in the qt6 subfolder
 Patch100:       0001-CMake-Install-objects-files-into-ARCHDATADIR.patch
@@ -743,6 +740,9 @@ installed on your system.
 cp src/3rdparty/freetype/LICENSE.txt src/gui/painting/FREETYPE_LICENSE.txt
 sed -i 's#../../3rdparty/freetype/LICENSE.txt#FREETYPE_LICENSE.txt#' src/gui/painting/qt_attribution.json
 
+# Same thing for blake2
+sed -i '/\/3rdparty\/blake2/d' src/corelib/CMakeLists.txt
+
 # We don't want to use these 3rdparty libraries
 rm -r src/3rdparty/{blake2,double-conversion,freetype,harfbuzz-ng,libjpeg,libpng,pcre2,sqlite,xcb,zlib}
 %if %{with system_md4c}
@@ -784,11 +784,15 @@ sed -i '/zstd CONFIG/d' cmake/FindWrapZSTD.cmake
     -DQT_BUILD_TESTS:BOOL=FALSE \
     -DQT_CREATE_VERSIONED_HARD_LINK:BOOL=FALSE \
     -DQT_DISABLE_RPATH:BOOL=FALSE \
+    -DQT_GENERATE_SBOM:BOOL=FALSE \
+    -DQT_SBOM_GENERATE_JSON:BOOL=FALSE \
+    -DQT_SBOM_VERIFY:BOOL=FALSE \
 %ifnarch ppc64
     -DCMAKE_INTERPROCEDURAL_OPTIMIZATION:BOOL=TRUE \
 %endif
     -DFEATURE_elf_private_full_version=TRUE \
     -DFEATURE_enable_new_dtags:BOOL=TRUE \
+    -DFEATURE_forkfd_pidfd:BOOL=FALSE \
     -DFEATURE_journald:BOOL=TRUE \
     -DFEATURE_libproxy:BOOL=TRUE \
     -DFEATURE_reduce_relocations:BOOL=FALSE \
@@ -797,7 +801,6 @@ sed -i '/zstd CONFIG/d' cmake/FindWrapZSTD.cmake
     -DFEATURE_system_xcb_xinput:BOOL=TRUE \
     -DFEATURE_xcb_native_painting:BOOL=TRUE \
     -DINPUT_openssl:STRING=linked \
-    -DFEATURE_forkfd_pidfd:BOOL=FALSE \
 %if 0%{?with_gles}
     -DINPUT_opengl:STRING=es2 \
     -DFEATURE_opengles3:BOOL=TRUE
@@ -829,6 +832,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_openglwidgets_private.pri
 
 # These files are only useful for the Qt continuous integration
 rm %{buildroot}%{_qt6_libexecdir}/ensure_pro_file.cmake
+rm %{buildroot}%{_qt6_libexecdir}/qt-android-runner.py
 rm %{buildroot}%{_qt6_libexecdir}/qt-testrunner.py
 rm %{buildroot}%{_qt6_libexecdir}/sanitizer-testrunner.py
 

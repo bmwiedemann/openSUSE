@@ -11,18 +11,15 @@ With GCC 14, build fails with:
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/src/resonance-audio/CMakeLists.txt b/src/resonance-audio/CMakeLists.txt
-index 0fa9dec..1eff0a3 100644
+index 7690ae2..3abaa99 100644
 --- a/src/resonance-audio/CMakeLists.txt
 +++ b/src/resonance-audio/CMakeLists.txt
 @@ -233,7 +233,7 @@ qt_internal_extend_target(BundledResonanceAudio CONDITION (${CMAKE_SYSTEM_PROCES
  # Use fallback mode if SSE is not available
- qt_internal_extend_target(BundledResonanceAudio CONDITION (${CMAKE_SYSTEM_PROCESSOR} MATCHES "i[3-6]86$")
+ qt_internal_extend_target(BundledResonanceAudio CONDITION (${CMAKE_SYSTEM_PROCESSOR} MATCHES "i[3-6]86(-AT386)?$")
      COMPILE_OPTIONS
 -        -DPFFFT_SIMD_DISABLE
 +        -DPFFFT_SIMD_DISABLE -DDISABLE_SIMD
  )
  
  qt_disable_warnings(BundledResonanceAudio)
--- 
-2.46.1
-

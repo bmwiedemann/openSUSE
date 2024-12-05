@@ -1,7 +1,7 @@
 #
 # spec file for package ZArchive
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,15 @@
 
 %define libpackage libzarchive0_1
 Name:           ZArchive
-Version:        0.1.2+git20220908.d2c7177
+Version:        0.1.2+git20240721.b467f7a
 Release:        0
 Summary:        Library and program for creating and reading .zar files
 License:        MIT-0
 URL:            https://github.com/Exzap/ZArchive
 Source0:        ZArchive-%{version}.tar.xz
-# PATCH-FIX-OPENSUSE
-Patch1:         use_pkgconfig_for_zstd.patch
 BuildRequires:  cmake >= 3.15
 %if 0%{?suse_version} < 1550
-BuildRequires:  gcc12-c++
+BuildRequires:  gcc13-c++
 %else
 BuildRequires:  gcc-c++ >= 11
 %endif
@@ -55,7 +53,7 @@ This subpackage contains the devel files for ZArchive
 
 %build
 %if 0%{?suse_version} < 1550
-export CXX=g++-12
+export CXX=g++-13
 %endif
 %cmake
 %cmake_build
@@ -73,7 +71,7 @@ export CXX=g++-12
 %files -n %{libpackage}
 %license LICENSE
 %{_libdir}/libzarchive.so.0.1
-%{_libdir}/libzarchive.so.0.1.2
+%{_libdir}/libzarchive.so.0.1.3
 
 %files devel
 %license LICENSE

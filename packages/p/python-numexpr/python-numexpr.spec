@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-numexpr
-Version:        2.10.1
+Version:        2.10.2
 Release:        0
 Summary:        Numerical expression evaluator for NumPy
 License:        MIT
@@ -26,8 +26,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/pydata/numexpr/
 Source:         https://files.pythonhosted.org/packages/source/n/numexpr/numexpr-%{version}.tar.gz
 BuildRequires:  %{python_module devel >= 3.7}
-# PATCH-FIX-UPSTREAM: fix-test-max-threads-unset.patch gh#pydata/numexpr#491
-Patch0:         fix-test-max-threads-unset.patch
 BuildRequires:  %{python_module numpy-devel >= 1.23}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

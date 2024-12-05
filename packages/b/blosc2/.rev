@@ -205,4 +205,12 @@
     Also, compression ratios do not seem to be improved in our (forwarded request 1170320 from bnavigator)</comment>
     <requestid>1170322</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8402095b0cea43f6932b4d13d01a51b3</srcmd5>
+    <version>2.15.2</version>
+    <time>1733414929</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1228308</requestid>
+  </revision>
 </revisionlist>

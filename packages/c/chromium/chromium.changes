@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec  4 10:31:04 CET 2024 - ro@suse.de
+
+- Chromium 131.0.6778.108
+  (stable released 2024-12-04) (boo#1234118)
+  * CVE-2024-12053: Type Confusion in V8
+- update patches:
+  chromium-127-constexpr.patch
+
+-------------------------------------------------------------------
 Wed Nov 20 23:20:12 CET 2024 - ro@suse.de
 
 - Chromium 131.0.6778.85

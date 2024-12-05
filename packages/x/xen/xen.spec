@@ -30,7 +30,7 @@
 
 Name:           xen
 ExclusiveArch:  %ix86 x86_64 aarch64
-%define xen_build_dir xen-4.19.0-testing
+%define xen_build_dir xen-4.19.1-testing
 #
 %define with_gdbsx 0
 %define with_dom0_support 0
@@ -124,12 +124,12 @@ BuildRequires:  pesign-obs-integration
 BuildRequires:  python-rpm-macros
 Provides:       installhint(reboot-needed)
 
-Version:        4.19.0_06
+Version:        4.19.1_02
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
 Group:          System/Kernel
-Source0:        xen-4.19.0-testing-src.tar.bz2
+Source0:        xen-4.19.1-testing-src.tar.bz2
 Source1:        stubdom.tar.bz2
 Source2:        mini-os.tar.bz2
 Source9:        xen.changes
@@ -159,28 +159,7 @@ Source10183:    xen_maskcalc.py
 # For xen-libs
 Source99:       baselibs.conf
 # Upstream patches
-Patch1:         66a8b8ac-bunzip2-rare-failure.patch
-Patch2:         66bb6f78-x86-IOMMU-move-tracking-in-iommu_identity_mapping.patch
-Patch3:         66bb6fa5-x86-pass-through-document-as-security-unsupported.patch
-Patch4:         66cf737b-x86-Dom0-disable-SMAP-for-PV-only.patch
-Patch5:         66d02b69-Arm64-adjust-irq_to_desc-to-fix-build-with-gcc14.patch
-Patch6:         66d6dca8-libxl-nul-termination-in-xen_console_read_line.patch
-Patch7:         66d8690f-SUPPORT-split-XSM-from-Flask.patch
-Patch8:         66e29480-x86-HVM-properly-reject-indirect-VRAM-writes.patch
-Patch9:         66e44ae2-x86-ucode-AMD-buffer-underrun.patch
-Patch10:        66f2af41-x86-vLAPIC-undue-recursion-of-vlapic_error.patch
-Patch11:        66f2fd92-x86-ucode-Intel-stricter-sanity-check.patch
 # EMBARGOED security fixes
-Patch101:       xsa463-01.patch
-Patch102:       xsa463-02.patch
-Patch103:       xsa463-03.patch
-Patch104:       xsa463-04.patch
-Patch105:       xsa463-05.patch
-Patch106:       xsa463-06.patch
-Patch107:       xsa463-07.patch
-Patch108:       xsa463-08.patch
-Patch109:       xsa463-09.patch
-Patch110:       xsa464.patch
 # libxc
 Patch301:       libxc-bitmap-long.patch
 Patch302:       libxc-sr-xl-migration-debug.patch
@@ -225,7 +204,6 @@ Patch408:       ignore-ip-command-script-errors.patch
 # Needs to go upstream
 Patch420:       suspend_evtchn_lock.patch
 Patch421:       vif-route.patch
-Patch422:       gcc14-fixes.patch
 # Other bug fixes or features
 Patch450:       xen.sysconfig-fillup.patch
 Patch451:       xenconsole-no-multiple-connections.patch

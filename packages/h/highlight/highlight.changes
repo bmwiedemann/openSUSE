@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec  4 03:43:54 UTC 2024 - ming li <mli@suse.com>
+
+- Update to version 4.13:
+  * updated astyle lib to version 3.6
+  * added Gleam and V definitions
+  * added Meson and CMake build files
+    (https://gitlab.com/saalen/highlight/-/issues/232)
+  * improved LSP compatibility with bash-language-server
+    and haskell-language-server
+  * applied several clang-tidy modernize fixes
+  * GUI: refactored settings retore code
+
+-------------------------------------------------------------------
 Sat May 25 15:46:13 UTC 2024 - antoine.belvire@opensuse.org
 
 - Update to version 4.12:

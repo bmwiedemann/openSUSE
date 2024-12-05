@@ -336,4 +336,12 @@
   * 0001-client-Redo-management-of-tablet-object-proxies.patch</comment>
     <requestid>1227163</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>55487e7fce03b5909e06809706237120</srcmd5>
+    <version>6.8.1</version>
+    <time>1733414745</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.8.1 (forwarded request 1227981 from krop)</comment>
+    <requestid>1228215</requestid>
+  </revision>
 </revisionlist>

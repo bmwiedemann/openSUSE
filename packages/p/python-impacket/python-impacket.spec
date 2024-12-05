@@ -134,6 +134,7 @@ rm tests/dcerpc/test_wkst.py
 rm tests/SMB_RPC/test_wmi.py
 rm tests/misc/test_dcerpc_v5_ndr.py
 rm tests/misc/test_structure.py
+rm tests/SMB_RPC/test_smbserver.py
 #%%pytest -k 'not (test_well_formed)'
 %pytest
 

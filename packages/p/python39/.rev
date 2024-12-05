@@ -1298,4 +1298,41 @@
 </comment>
     <requestid>1224263</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>afc96cd8bb1e775fae6299bf9403e7d3</srcmd5>
+    <version>3.9.21</version>
+    <time>1733414949</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.9.21:
+  - Tests
+    - gh-125041: Re-enable skipped tests for zlib on the
+      s390x architecture: only skip checks of the compressed
+      bytes, which can be different between zlib’s software
+      implementation and the hardware-accelerated implementation.
+    - gh-109396: Fix test_socket.test_hmac_sha1() in FIPS
+      mode. Use a longer key: FIPS mode requires at least of at
+      least 112 bits. The previous key was only 32 bits. Patch by
+      Victor Stinner.
+    - gh-100454: Fix SSL tests CI for OpenSSL 3.1+
+  - Security
+    - gh-126623: Upgrade libexpat to 2.6.4
+    - gh-122792: Changed IPv4-mapped ipaddress.IPv6Address to
+      consistently use the mapped IPv4 address value for deciding
+      properties. Properties which have their behavior fixed are
+      is_multicast, is_reserved, is_link_local, is_global, and
+      is_unspecified (bsc#1233307, CVE-2024-11168).
+  - Library
+    - gh-124651: Properly quote template strings in venv
+      activation scripts (bsc#1232241, CVE-2024-9287).
+    - gh-103848: Add checks to ensure that [ bracketed ] hosts
+      found by urllib.parse.urlsplit() are of IPv6 or IPvFuture
+      format.
+  - Documentation
+    - gh-95588: Clarified the conflicting advice given in the ast
+      documentation about ast.literal_eval() being “safe” for use
+      on untrusted input while at the same time warning that it
+      can crash the process. The latter statement is true and is
+      deemed unfixable without a large amount of work unsuitable</comment>
+    <requestid>1228377</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed De  4 09:23:26 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.0.1:
+  * Added missing doc sources to the distribution tarball (#503)
+  * Reworked C/C++ examples to avoid using new configuration aliases until the world has updated to re2c 4.0, made them compatible with C.
+  * A few build system changes: increased CMake minimum required version to 3.15, added missing dependencies on doc sources in Makefile.am.
+  * Fixed typos in docs.
+	* Added a generic technique for describing language backends based on the idea of syntax files (#450).
+	* Added support for new languages: D, Haskell, Java, JavaScript, OCaml, Python, V, Zig.
+	* Added new record API for all languages (enabled with --api record, re2c:api = record) and made it the default API for Haskell and OCaml.
+	* Renamed former “default API” to “simple API”, implemented it for all backends except Haskell and OCaml, and enabled by default API for C, D, Java, JavaScript, Python, V and Zig.
+	* Added new code generation model - recursive functions (enabled with --recursive-functions), primarily to be used for functional languages.
+
+-------------------------------------------------------------------
 Wed Aug  9 14:24:49 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 3.1:
@@ -8,7 +22,6 @@ Wed Aug  9 14:24:49 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
     so that (...) is a capturing group and (! ...) is a non-capturing one
   * TDFA paper and removal of experimental algorithms
   * internal codebase , build system and CI improvements
-  
   see details at https://re2c.org/releases/release_notes.html#release-3-1
 
 -------------------------------------------------------------------

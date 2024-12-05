@@ -1,4 +1,4 @@
-From beb26b1be325ea55f3f9a230152d170a3faa85d5 Mon Sep 17 00:00:00 2001
+From 32e07f7b99a1dbae933f4d916b0342a82e7ccf35 Mon Sep 17 00:00:00 2001
 From: Gary Lin <glin@suse.com>
 Date: Mon, 18 Mar 2024 14:53:11 +0800
 Subject: [PATCH] key_protector: implement the blocklist
@@ -15,11 +15,11 @@ Signed-off-by: Gary Lin <glin@suse.com>
  include/grub/efi/api.h         |  5 +++++
  2 files changed, 36 insertions(+)
 
-diff --git a/grub-core/disk/key_protector.c b/grub-core/disk/key_protector.c
-index b84afe1c7..3d630ca4f 100644
---- a/grub-core/disk/key_protector.c
-+++ b/grub-core/disk/key_protector.c
-@@ -24,6 +24,10 @@
+Index: grub-2.12/grub-core/disk/key_protector.c
+===================================================================
+--- grub-2.12.orig/grub-core/disk/key_protector.c
++++ grub-2.12/grub-core/disk/key_protector.c
+@@ -25,6 +25,10 @@
  
  GRUB_MOD_LICENSE ("GPLv3+");
  
@@ -30,7 +30,7 @@ index b84afe1c7..3d630ca4f 100644
  struct grub_key_protector *grub_key_protectors = NULL;
  
  grub_err_t
-@@ -54,11 +58,34 @@ grub_key_protector_unregister (struct grub_key_protector *protector)
+@@ -53,11 +57,34 @@ grub_key_protector_unregister (struct gr
    return GRUB_ERR_NONE;
  }
  
@@ -64,10 +64,10 @@ index b84afe1c7..3d630ca4f 100644
 +  grub_err_t err;
  
    if (grub_key_protectors == NULL)
-     return GRUB_ERR_OUT_OF_RANGE;
-@@ -74,5 +101,9 @@ grub_key_protector_recover_key (const char *protector, grub_uint8_t **key,
- 			  "Is the name spelled correctly and is the "
- 			  "corresponding module loaded?"), protector);
+     return grub_error (GRUB_ERR_OUT_OF_RANGE, "No key protector registered");
+@@ -69,5 +96,9 @@ grub_key_protector_recover_key (const ch
+   if (kp == NULL)
+     return grub_error (GRUB_ERR_OUT_OF_RANGE, "Key protector '%s' not found", protector);
  
 +  err = grub_key_protector_check_blocklist ();
 +  if (err != GRUB_ERR_NONE)
@@ -75,10 +75,10 @@ index b84afe1c7..3d630ca4f 100644
 +
    return kp->recover_key (key, key_size);
  }
-diff --git a/include/grub/efi/api.h b/include/grub/efi/api.h
-index 7947cf592..975b90b09 100644
---- a/include/grub/efi/api.h
-+++ b/include/grub/efi/api.h
+Index: grub-2.12/include/grub/efi/api.h
+===================================================================
+--- grub-2.12.orig/include/grub/efi/api.h
++++ grub-2.12/include/grub/efi/api.h
 @@ -389,6 +389,11 @@
        { 0x89, 0x29, 0x48, 0xbc, 0xd9, 0x0a, 0xd3, 0x1a } \
    }
@@ -91,6 +91,3 @@ index 7947cf592..975b90b09 100644
  struct grub_efi_sal_system_table
  {
    grub_uint32_t signature;
--- 
-2.35.3
-

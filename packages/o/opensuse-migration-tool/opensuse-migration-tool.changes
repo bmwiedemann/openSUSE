@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Dec 04 21:27:39 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20241204.834c66a:
+  * Ensure that we do not check for Immutability in dryrun
+
+-------------------------------------------------------------------
+Wed Dec 04 14:47:39 UTC 2024 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20241204.89bbbc3:
+  * Add immutable check
+  * Drop the echo before running sudo
+  * Ensure root permissions unless --dry-run
+  * Update README.md
+
+-------------------------------------------------------------------
 Mon Dec 02 09:20:54 UTC 2024 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20241202.1a4772b:

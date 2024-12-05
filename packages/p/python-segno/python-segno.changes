@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec  5 06:20:37 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- remove `_buildinfo/_buildconfig`, fix inconsistent-mtime warning
+
+-------------------------------------------------------------------
 Fri Sep 20 08:12:20 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package python-segno, required by eduMFA

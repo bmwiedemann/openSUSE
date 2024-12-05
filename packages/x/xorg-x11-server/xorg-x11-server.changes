@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec  4 12:41:37 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- no longer apply and remove 
+  u_xfree86-activate-GPU-screens-on-autobind.patch since it's
+  no longer needed and might be harmful even ... (tested
+  successfully on Thinkpad P16 with Intel/NVIDIA hybrid graphics)
+- remove no longer applied and no longer needed patch 
+  n_xserver-optimus-autoconfig-hack.patch (feature implemented
+  upstream)
+
+-------------------------------------------------------------------
 Tue Oct 29 19:08:32 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - 21.1.14 covers also

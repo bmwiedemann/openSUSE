@@ -42,7 +42,7 @@
 %endif
 
 Name:           scap-security-guide
-Version:        0.1.74
+Version:        0.1.75
 Release:        0
 Summary:        XCCDF files for SUSE Linux and openSUSE
 License:        BSD-3-Clause
@@ -132,11 +132,12 @@ Security Content Automation Protocol (SCAP) Security Guide for SUSE Linux.
 This package contains XCCDF (Extensible Configuration Checklist
 Description Format), OVAL (Open Vulnerability and Assessment
 Language), CPE (Common Platform Enumeration) and DS (Data Stream)
-files to run a compliance test on SLE12, SLE15 and openSUSE
+files to run a compliance test on SLE12, SLE15, SLEM5 and openSUSE
 
 SUSE supported in this version of scap-security-guide:
 
 - DISA STIG profile for SUSE Linux Enterprise Server 12 and 15
+- DISA STIG profile for SUSE Linux Enterprise Micro 5
 - ANSSI-BP-028 profile for SUSE Linux Enterprise Server 12 and 15
 - PCI-DSS profile for SUSE Linux Enterprise Server 12 and 15
 - HIPAA profile for SUSE Linux Enterprise Server 12 and 15
@@ -213,13 +214,13 @@ cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
 	 -DSSG_PRODUCT_JRE=OFF \
 	 -DSSG_PRODUCT_MACOS1015=OFF \
 	 -DSSG_PRODUCT_OCP4=OFF \
+	 -DSSG_PRODUCT_KYLINSERVER10=OFF \
 	 -DSSG_PRODUCT_OL7=ON \
 	 -DSSG_PRODUCT_OL8=ON \
 	 -DSSG_PRODUCT_OL9=ON \
 	 -DSSG_PRODUCT_OPENSUSE=ON \
 	 -DSSG_PRODUCT_OPENEMBEDDED=OFF \
 	 -DSSG_PRODUCT_RHCOS4=ON \
-	 -DSSG_PRODUCT_RHEL7=ON \
 	 -DSSG_PRODUCT_RHEL8=ON \
 	 -DSSG_PRODUCT_RHEL9=ON \
 	 -DSSG_PRODUCT_RHEL10=ON \
@@ -229,6 +230,7 @@ cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
 	 -DSSG_PRODUCT_RHV4=ON \
 	 -DSSG_PRODUCT_SLE12=ON \
 	 -DSSG_PRODUCT_SLE15=ON \
+         -DSSG_PRODUCT_SLMICRO5=ON \
 	 -DSSG_PRODUCT_UBUNTU1604=ON \
 	 -DSSG_PRODUCT_UBUNTU1804=ON \
 	 -DSSG_PRODUCT_UBUNTU2004=ON \

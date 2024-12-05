@@ -16,6 +16,8 @@
 #
 
 
+%define ansible_core_major_minor_version 2.16
+
 %{?sle15_python_module_pythons}
 %if 0%{?suse_version} < 1550
 # Leap15, SLES15
@@ -41,7 +43,7 @@
 %endif
 
 Name:           ansible-core-2.16
-Version:        2.16.13
+Version:        2.16.14
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0-or-later
@@ -58,8 +60,9 @@ Provides:       ansible-core = %{version}
 Conflicts:      ansible < 3
 Conflicts:      ansible-base
 
-# cannot be installed with ansible-core 2.17.x or higher
-Conflicts:      ansible-core >= 2.17
+# cannot be installed with a lower or higher 2.X version
+Conflicts:      ansible-core < %{ansible_core_major_minor_version}
+Conflicts:      ansible-core > %{ansible_core_major_minor_version}
 
 # https://github.com/ansible/ansible/blob/stable-2.16/setup.cfg#L40
 BuildRequires:  %{ansible_python}-base >= 3.10
@@ -102,15 +105,16 @@ network automation, and multi-node orchestration. Ansible makes complex changes
 like zero-downtime rolling updates with load balancers easy. More information
 on the Ansible website <https://ansible.com/>.
 
-%package -n ansible-test-2.16
+%package -n ansible-test-%{ansible_core_major_minor_version}
 Summary:        Tool for testing ansible plugin and module code
 Requires:       %{name} = %{version}
 BuildRequires:  %{ansible_python}-virtualenv
 Requires:       %{ansible_python}-virtualenv
-# cannot be installed with ansible-core 2.17.x or higher
-Conflicts:      ansible-test >= 2.17
+# cannot be installed with a lower or higher 2.X version
+Conflicts:      ansible-test < %{ansible_core_major_minor_version}
+Conflicts:      ansible-test > %{ansible_core_major_minor_version}
 
-%description -n ansible-test-2.16
+%description -n ansible-test-%{ansible_core_major_minor_version}
 This package installs the ansible-test command for testing modules and plugins
 developed for ansible.
 
@@ -202,7 +206,7 @@ cp -v ./man1/*.1 %{buildroot}/%{_mandir}/man1/
 %{ansible_python_executable} bin/ansible-test units -v --python %{ansible_python_version}
 
 %files
-%doc changelogs/CHANGELOG-v2.16.rst changelogs/changelog.yaml
+%doc changelogs/CHANGELOG-v%{ansible_core_major_minor_version}.rst changelogs/changelog.yaml
 %license COPYING licenses/Apache-License.txt licenses/MIT-license.txt licenses/PSF-license.txt licenses/simplified_bsd.txt
 %{_bindir}/ansible
 %{_bindir}/ansible-config
@@ -230,7 +234,7 @@ cp -v ./man1/*.1 %{buildroot}/%{_mandir}/man1/
 %dir %{_sysconfdir}/ansible
 %{_datadir}/ansible/
 
-%files -n ansible-test-2.16
+%files -n ansible-test-%{ansible_core_major_minor_version}
 %{_bindir}/ansible-test
 %{ansible_python_sitelib}/ansible_test
 

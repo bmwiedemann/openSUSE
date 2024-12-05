@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.8.0
+%define real_version 6.8.1
 %define short_version 6.8
 %define short_name qtmultimedia
 %define tar_name qtmultimedia-everywhere-src
@@ -28,7 +28,7 @@
 %endif
 #
 Name:           qt6-multimedia%{?pkg_suffix}
-Version:        6.8.0
+Version:        6.8.1
 Release:        0
 Summary:        Qt 6 Multimedia libraries
 License:        GPL-3.0-or-later
@@ -229,8 +229,9 @@ rm -r ./src/3rdparty/eigen
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 
 %cmake_qt6 \
-  -DINPUT_gstreamer:BOOL=ON \
-  -DINPUT_ffmpeg:BOOL=ON
+  -DQT_GENERATE_SBOM:BOOL=FALSE \
+  -DINPUT_gstreamer:BOOL=TRUE \
+  -DINPUT_ffmpeg:BOOL=TRUE
 
 %{qt6_build}
 
@@ -255,6 +256,14 @@ rm %{buildroot}%{_qt6_metatypesdir}/qt6qgstreamermediapluginimplprivate_*_metaty
 rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qgstreamermediapluginimpl_private.pri
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6QGstreamerMediaPluginImplPrivate/
 rm -r %{buildroot}%{_qt6_includedir}/QtQGstreamerMediaPluginImpl/
+
+# Same thing for the testlib
+rm %{buildroot}%{_qt6_libdir}/libQt6MultimediaTestLib.*
+rm -r %{buildroot}%{_qt6_cmakedir}/Qt6MultimediaTestLibPrivate
+rm -r %{buildroot}%{_qt6_descriptionsdir}/MultimediaTestLibPrivate.json
+rm -r %{buildroot}%{_qt6_includedir}/QtMultimediaTestLib
+rm -r %{buildroot}%{_qt6_metatypesdir}/qt6multimediatestlibprivate_relwithdebinfo_metatypes.json
+rm -r %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_multimediatestlibprivate_private.pri
 
 %ldconfig_scriptlets -n libQt6Multimedia6
 %ldconfig_scriptlets -n libQt6MultimediaQuick6
