@@ -324,4 +324,23 @@
   * Fixed:</comment>
     <requestid>1160042</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>f8903b6c142b5d0926235c40a381adbe</srcmd5>
+    <version>1.3.0</version>
+    <time>1733414984</time>
+    <user>anag+factory</user>
+    <comment>- Fix incorrect removal of shebangs
+- update to 1.3.0:
+  * Added:
+    - Add partial address expansion in IPNetwork via the
+      expand_partial switch, this enables opting into pre-1.1.0
+      behavior
+  * Fixed:
+    - Fix running the test suite on musl systems
+    - Fix IPAddress IPv6 parsing with ZEROFILL enabled
+    - Fix handling of the NOHOST flag in the IPNetwork copy
+      constructor
+</comment>
+    <requestid>1228484</requestid>
+  </revision>
 </revisionlist>

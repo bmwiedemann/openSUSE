@@ -18,17 +18,22 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-netaddr
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Summary:        Pythonic manipulation of IPv4, IPv6, CIDR, EUI and MAC network addresses
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            https://github.com/drkjam/netaddr
+URL:            https://github.com/netaddr/netaddr
 Source:         https://files.pythonhosted.org/packages/source/n/netaddr/netaddr-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+# SECTION test
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module iniconfig}
+BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module pluggy}
+# /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
@@ -55,7 +60,7 @@ Included are routines for:
 
 %prep
 %autosetup -p1 -n netaddr-%{version}
-sed -i "1d" netaddr/{cli,ip/iana,eui/ieee,tests/__init__}.py # Fix non-executable scripts
+sed -i "1{\@/usr/bin/env python@d}" netaddr/{cli,ip/iana,eui/ieee}.py # Fix non-executable scripts
 
 %build
 %pyproject_wheel
