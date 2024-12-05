@@ -286,4 +286,54 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1157359</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>60f47f07b9a8fddd9acdd2aa21a37797</srcmd5>
+    <version>2.19.0</version>
+    <time>1733414978</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.19.0:
+  - Features
+    - Add integration test for universe domain
+    - Add restore_bucket and handling for soft-deleted buckets
+    - Add support for restore token
+    - IAM signBlob retry and universe domain support
+  - Bug Fixes
+    - Allow signed post policy v4 with service account and token
+    - Do not spam the log with checksum related INFO messages
+      when downloading using transfer_manager
+- Update to 2.18.2:
+  - Bug Fixes
+    - Add regression test for range read retry issue and bump
+      dependency to fix
+- Update to 2.18.1:
+  - Bug Fixes
+    - Properly escape URL construction for XML MPU API
+- Update to 2.18.0:
+  - Features
+    - Add OpenTelemetry Tracing support as a preview feature
+  - Bug Fixes
+    - Allow Protobuf 5.x
+    - Correct notification error message
+- Update to 2.17.0:
+  - Features
+    - Support HNS enablement in bucket metadata
+    - Support page_size in bucket.list_blobs
+  - Bug Fixes
+    - Remove deprecated methods in samples and tests
+  - Documentation
+    - Reference Storage Control in readme
+    - Update DEFAULT_RETRY_IF_GENERATION_SPECIFIED docstrings
+- Update to 2.16.0:
+  - Features
+    - Add support for soft delete
+    - Support includeFoldersAsPrefixes
+- Update to 2.15.0:
+  - Features
+    - Support custom universe domains/TPC
+  - Bug Fixes
+    - Add &quot;updated&quot; as property for Bucket
+    - Remove utcnow usage
+</comment>
+    <requestid>1228478</requestid>
+  </revision>
 </revisionlist>

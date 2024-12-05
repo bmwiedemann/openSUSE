@@ -1,7 +1,23 @@
-Index: google-cloud-storage-2.14.0/tests/system/test_blob.py
-===================================================================
---- google-cloud-storage-2.14.0.orig/tests/system/test_blob.py
-+++ google-cloud-storage-2.14.0/tests/system/test_blob.py
+---
+ tests/system/test_blob.py                 |    2 +-
+ tests/unit/test__helpers.py               |    4 +---
+ tests/unit/test__http.py                  |    2 +-
+ tests/unit/test__opentelemetry_tracing.py |    2 +-
+ tests/unit/test__signing.py               |    2 +-
+ tests/unit/test_acl.py                    |    2 +-
+ tests/unit/test_batch.py                  |    2 +-
+ tests/unit/test_blob.py                   |    2 +-
+ tests/unit/test_bucket.py                 |    2 +-
+ tests/unit/test_client.py                 |    2 +-
+ tests/unit/test_fileio.py                 |    2 +-
+ tests/unit/test_hmac_key.py               |    2 +-
+ tests/unit/test_notification.py           |    2 +-
+ tests/unit/test_retry.py                  |    2 +-
+ tests/unit/test_transfer_manager.py       |    2 +-
+ 15 files changed, 15 insertions(+), 17 deletions(-)
+
+--- a/tests/system/test_blob.py
++++ b/tests/system/test_blob.py
 @@ -21,7 +21,7 @@ import uuid
  import warnings
  
@@ -11,88 +27,8 @@ Index: google-cloud-storage-2.14.0/tests/system/test_blob.py
  
  from google import resumable_media
  from google.api_core import exceptions
-Index: google-cloud-storage-2.14.0/tests/unit/test_acl.py
-===================================================================
---- google-cloud-storage-2.14.0.orig/tests/unit/test_acl.py
-+++ google-cloud-storage-2.14.0/tests/unit/test_acl.py
-@@ -14,7 +14,7 @@
- 
- import unittest
- 
--import mock
-+from unittest import mock
- 
- from google.cloud.storage.retry import (
-     DEFAULT_RETRY,
-Index: google-cloud-storage-2.14.0/tests/unit/test_batch.py
-===================================================================
---- google-cloud-storage-2.14.0.orig/tests/unit/test_batch.py
-+++ google-cloud-storage-2.14.0/tests/unit/test_batch.py
-@@ -17,7 +17,7 @@ from http.client import SERVICE_UNAVAILA
- from http.client import NO_CONTENT
- import unittest
- 
--import mock
-+from unittest import mock
- import requests
- 
- 
-Index: google-cloud-storage-2.14.0/tests/unit/test_blob.py
-===================================================================
---- google-cloud-storage-2.14.0.orig/tests/unit/test_blob.py
-+++ google-cloud-storage-2.14.0/tests/unit/test_blob.py
-@@ -24,7 +24,7 @@ import http.client
- from unittest.mock import patch
- from urllib.parse import urlencode
- 
--import mock
-+from unittest import mock
- import pytest
- 
- from google.cloud.storage import _helpers
-Index: google-cloud-storage-2.14.0/tests/unit/test_bucket.py
-===================================================================
---- google-cloud-storage-2.14.0.orig/tests/unit/test_bucket.py
-+++ google-cloud-storage-2.14.0/tests/unit/test_bucket.py
-@@ -15,7 +15,7 @@
- import datetime
- import unittest
- 
--import mock
-+from unittest import mock
- import pytest
- 
- from google.cloud.storage.retry import DEFAULT_RETRY
-Index: google-cloud-storage-2.14.0/tests/unit/test_client.py
-===================================================================
---- google-cloud-storage-2.14.0.orig/tests/unit/test_client.py
-+++ google-cloud-storage-2.14.0/tests/unit/test_client.py
-@@ -17,7 +17,7 @@ import http.client
- import io
- import json
- from unittest.mock import patch
--import mock
-+from unittest import mock
- import pytest
- import re
- import requests
-Index: google-cloud-storage-2.14.0/tests/unit/test_fileio.py
-===================================================================
---- google-cloud-storage-2.14.0.orig/tests/unit/test_fileio.py
-+++ google-cloud-storage-2.14.0/tests/unit/test_fileio.py
-@@ -18,7 +18,7 @@ import unittest
- import io
- import string
- 
--import mock
-+from unittest import mock
- 
- from google.api_core.exceptions import RequestRangeNotSatisfiable
- from google.cloud.storage.retry import DEFAULT_RETRY
-Index: google-cloud-storage-2.14.0/tests/unit/test__helpers.py
-===================================================================
---- google-cloud-storage-2.14.0.orig/tests/unit/test__helpers.py
-+++ google-cloud-storage-2.14.0/tests/unit/test__helpers.py
+--- a/tests/unit/test__helpers.py
++++ b/tests/unit/test__helpers.py
 @@ -14,7 +14,7 @@
  
  import unittest
@@ -102,7 +38,7 @@ Index: google-cloud-storage-2.14.0/tests/unit/test__helpers.py
  
  from google.cloud.storage.retry import DEFAULT_RETRY
  from google.cloud.storage.retry import DEFAULT_RETRY_IF_METAGENERATION_SPECIFIED
-@@ -561,8 +561,6 @@ class Test__base64_md5hash(unittest.Test
+@@ -586,8 +586,6 @@ class Test__base64_md5hash(unittest.Test
          self.assertEqual(SIGNED_CONTENT, b"kBiQqOnIz21aGlQrIp/r/w==")
  
      def test_it_with_stubs(self):
@@ -111,23 +47,8 @@ Index: google-cloud-storage-2.14.0/tests/unit/test__helpers.py
          class _Buffer(object):
              def __init__(self, return_vals):
                  self.return_vals = return_vals
-Index: google-cloud-storage-2.14.0/tests/unit/test_hmac_key.py
-===================================================================
---- google-cloud-storage-2.14.0.orig/tests/unit/test_hmac_key.py
-+++ google-cloud-storage-2.14.0/tests/unit/test_hmac_key.py
-@@ -14,7 +14,7 @@
- 
- import unittest
- 
--import mock
-+from unittest import mock
- 
- from google.cloud.storage.retry import DEFAULT_RETRY
- from google.cloud.storage.retry import DEFAULT_RETRY_IF_ETAG_IN_JSON
-Index: google-cloud-storage-2.14.0/tests/unit/test__http.py
-===================================================================
---- google-cloud-storage-2.14.0.orig/tests/unit/test__http.py
-+++ google-cloud-storage-2.14.0/tests/unit/test__http.py
+--- a/tests/unit/test__http.py
++++ b/tests/unit/test__http.py
 @@ -15,7 +15,7 @@
  import unittest
  from unittest.mock import patch
@@ -137,10 +58,107 @@ Index: google-cloud-storage-2.14.0/tests/unit/test__http.py
  
  from google.cloud.storage import _helpers
  
-Index: google-cloud-storage-2.14.0/tests/unit/test_notification.py
-===================================================================
---- google-cloud-storage-2.14.0.orig/tests/unit/test_notification.py
-+++ google-cloud-storage-2.14.0/tests/unit/test_notification.py
+--- a/tests/unit/test__opentelemetry_tracing.py
++++ b/tests/unit/test__opentelemetry_tracing.py
+@@ -17,7 +17,7 @@ import os
+ import pytest
+ import sys
+ 
+-import mock
++from unittest import mock
+ from google.api_core.exceptions import GoogleAPICallError
+ from google.cloud.storage import __version__
+ from google.cloud.storage import _opentelemetry_tracing
+--- a/tests/unit/test__signing.py
++++ b/tests/unit/test__signing.py
+@@ -23,7 +23,7 @@ import time
+ import unittest
+ import urllib.parse
+ 
+-import mock
++from unittest import mock
+ import pytest
+ 
+ from google.cloud.storage._helpers import _UTC
+--- a/tests/unit/test_acl.py
++++ b/tests/unit/test_acl.py
+@@ -14,7 +14,7 @@
+ 
+ import unittest
+ 
+-import mock
++from unittest import mock
+ 
+ from google.cloud.storage.retry import (
+     DEFAULT_RETRY,
+--- a/tests/unit/test_batch.py
++++ b/tests/unit/test_batch.py
+@@ -17,7 +17,7 @@ from http.client import SERVICE_UNAVAILA
+ from http.client import NO_CONTENT
+ import unittest
+ 
+-import mock
++from unittest import mock
+ import requests
+ 
+ from google.cloud.storage._helpers import _DEFAULT_UNIVERSE_DOMAIN
+--- a/tests/unit/test_blob.py
++++ b/tests/unit/test_blob.py
+@@ -24,7 +24,7 @@ import http.client
+ from unittest.mock import patch
+ from urllib.parse import urlencode
+ 
+-import mock
++from unittest import mock
+ import pytest
+ 
+ from google.cloud.storage import _helpers
+--- a/tests/unit/test_bucket.py
++++ b/tests/unit/test_bucket.py
+@@ -15,7 +15,7 @@
+ import datetime
+ import unittest
+ 
+-import mock
++from unittest import mock
+ import pytest
+ 
+ from google.cloud.storage.retry import DEFAULT_RETRY
+--- a/tests/unit/test_client.py
++++ b/tests/unit/test_client.py
+@@ -17,7 +17,7 @@ import http.client
+ import io
+ import json
+ from unittest.mock import patch
+-import mock
++from unittest import mock
+ import pytest
+ import re
+ import requests
+--- a/tests/unit/test_fileio.py
++++ b/tests/unit/test_fileio.py
+@@ -18,7 +18,7 @@ import unittest
+ import io
+ import string
+ 
+-import mock
++from unittest import mock
+ 
+ from google.api_core.exceptions import RequestRangeNotSatisfiable
+ from google.cloud.storage.retry import DEFAULT_RETRY
+--- a/tests/unit/test_hmac_key.py
++++ b/tests/unit/test_hmac_key.py
+@@ -14,7 +14,7 @@
+ 
+ import unittest
+ 
+-import mock
++from unittest import mock
+ 
+ from google.cloud.storage.retry import DEFAULT_RETRY
+ from google.cloud.storage.retry import DEFAULT_RETRY_IF_ETAG_IN_JSON
+--- a/tests/unit/test_notification.py
++++ b/tests/unit/test_notification.py
 @@ -14,7 +14,7 @@
  
  import unittest
@@ -150,10 +168,8 @@ Index: google-cloud-storage-2.14.0/tests/unit/test_notification.py
  
  from google.cloud.storage.retry import DEFAULT_RETRY
  
-Index: google-cloud-storage-2.14.0/tests/unit/test_retry.py
-===================================================================
---- google-cloud-storage-2.14.0.orig/tests/unit/test_retry.py
-+++ google-cloud-storage-2.14.0/tests/unit/test_retry.py
+--- a/tests/unit/test_retry.py
++++ b/tests/unit/test_retry.py
 @@ -16,7 +16,7 @@ import unittest
  
  from google.cloud.storage import _helpers
@@ -163,23 +179,8 @@ Index: google-cloud-storage-2.14.0/tests/unit/test_retry.py
  
  
  class Test_should_retry(unittest.TestCase):
-Index: google-cloud-storage-2.14.0/tests/unit/test__signing.py
-===================================================================
---- google-cloud-storage-2.14.0.orig/tests/unit/test__signing.py
-+++ google-cloud-storage-2.14.0/tests/unit/test__signing.py
-@@ -23,7 +23,7 @@ import time
- import unittest
- import urllib.parse
- 
--import mock
-+from unittest import mock
- import pytest
- 
- from . import _read_local_json
-Index: google-cloud-storage-2.14.0/tests/unit/test_transfer_manager.py
-===================================================================
---- google-cloud-storage-2.14.0.orig/tests/unit/test_transfer_manager.py
-+++ google-cloud-storage-2.14.0/tests/unit/test_transfer_manager.py
+--- a/tests/unit/test_transfer_manager.py
++++ b/tests/unit/test_transfer_manager.py
 @@ -24,7 +24,7 @@ from google.resumable_media.common impor
  
  import os

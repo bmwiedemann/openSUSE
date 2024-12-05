@@ -28,12 +28,12 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-storage%{pkg_suffix}
-Version:        2.14.0
+Version:        2.19.0
 Release:        0
 Summary:        Google Cloud Storage API python client library
 License:        Apache-2.0
 URL:            https://github.com/googleapis/python-storage
-Source:         https://files.pythonhosted.org/packages/source/g/google-cloud-storage/google-cloud-storage-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/g/google-cloud-storage/google_cloud_storage-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM demock.patch gh#googleapis/python-storage#770 mcepl@suse.com
 # Don’t use external mock package
 Patch1:         demock.patch
@@ -76,7 +76,7 @@ availability, and can be used to distribute large data objects
 to users via direct download. This package provides client to it.
 
 %prep
-%autosetup -p1 -n google-cloud-storage-%{version}
+%autosetup -p1 -n google_cloud_storage-%{version}
 
 %if !%{with test}
 %build
