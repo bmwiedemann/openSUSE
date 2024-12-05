@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 14.0.2
-%define short_version 14.0
+%define real_version 15.0.0
+%define short_version 15.0
 %define tar_name qt-creator-opensource-src
 %define tar_suffix %{nil}
 #
@@ -29,7 +29,7 @@ ExclusiveArch:  do_not_build
 %if "%{flavor}" == "qt6"
   %define qt6 1
   %define pkgname_prefix qt6
-  %define qt_min_version 6.2
+  %define qt_min_version 6.4.3
   %define qtc_docdir %{_qt6_docdir}
 %endif
 #
@@ -39,7 +39,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 # Private QML imports
-%global __requires_exclude qt6qmlimport\\((AssetsLibraryBackend|BackendApi|CameraGeometry|CollectionDetails|CollectionEditor|CollectionEditorBackend|ConnectionsEditorEditorBackend|content|ContentLibraryBackend|DataModels|EffectComposerBackend|EffectMakerBackend|ExampleCheckout|GridGeometry|HelperWidgets|ItemLibraryBackend|LandingPage|LightUtils|LineGeometry|MaterialBrowserBackend|MaterialToolBarAction|MouseArea3D|NewProjectDialog|projectmodel|ProjectType|QtQuickDesignerColorPalette|QtQuickDesignerTheme|SelectionBoxGeometry|StatesEditor|StudioControls|StudioFonts|StudioHelpers|StudioTheme|StudioWindowManager|TextureToolBarAction|ToolBar|UiTour|WebFetcher|WelcomeScreen).*
+%global __requires_exclude qt6qmlimport\\((AssetsLibraryBackend|BackendApi|CameraGeometry|CollectionDetails|CollectionEditor|CollectionEditorBackend|ConnectionsEditorEditorBackend|content|ContentLibraryBackend|DataModels|EffectComposerBackend|EffectMakerBackend|ExampleCheckout|GridGeometry|HelperWidgets|ItemLibraryBackend|LandingPage|LightUtils|LineGeometry|MaterialBrowserBackend|MaterialToolBarAction|MouseArea3D|NewProjectDialog|OutputPane|projectmodel|ProjectType|QtQuickDesignerColorPalette|QtQuickDesignerTheme|SelectionBoxGeometry|StatesEditor|StudioControls|StudioFonts|StudioHelpers|StudioQuickUtils|StudioTheme|StudioWindowManager|TextureToolBarAction|ToolBar|UiTour|WebFetcher|WelcomeScreen).*
 
 # Has mocks for quite a few components, which are only pulled in when actually used
 %global __requires_exclude_from %{_datadir}/qtcreator/qml/qmlpuppet/
@@ -47,7 +47,7 @@ ExclusiveArch:  do_not_build
 %bcond_without docs
 
 Name:           %{pkgname_prefix}-creator
-Version:        14.0.2
+Version:        15.0.0
 Release:        0
 Summary:        Integrated Development Environment targeting Qt apps
 # src/plugins/cmakeprojectmanager/configmodelitemdelegate.* -> LGPL-2.1-only OR LGPL-3.0-only
@@ -93,6 +93,7 @@ BuildRequires:  qt6-quick3dassetimport-private-devel >= %{qt_min_version}
 BuildRequires:  qt6-quick3dassetutils-private-devel >= %{qt_min_version}
 BuildRequires:  qt6-quick3dparticles-private-devel >= %{qt_min_version}
 BuildRequires:  qt6-tools-qdoc >= %{qt_min_version}
+BuildRequires:  cmake(Qt6Charts) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Concurrent) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Core5Compat) >= %{qt_min_version}
@@ -174,13 +175,13 @@ rm -r src/shared/qbs
 %endif
   -DCMAKE_INSTALL_LIBDIR:STRING=%{_lib} \
   -DCMAKE_INSTALL_LIBEXECDIR:STRING=%{libexecdirname} \
-  -DCLANGTOOLING_LINK_CLANG_DYLIB:BOOL=ON \
-  -DBUILD_WITH_PCH:BOOL=OFF \
-  -DWITH_DOCS:BOOL=ON \
-  -DBUILD_TESTING:BOOL=OFF \
-  -DQTC_SEPARATE_DEBUG_INFO:BOOL=OFF \
-  -DBUILD_LIBRARY_QLITEHTML:BOOL=ON \
-  -DBUILD_HELPVIEWERBACKEND_QTWEBENGINE:BOOL=OFF
+  -DCLANGTOOLING_LINK_CLANG_DYLIB:BOOL=TRUE \
+  -DBUILD_WITH_PCH:BOOL=FALSE \
+  -DWITH_DOCS:BOOL=TRUE \
+  -DBUILD_TESTING:BOOL=FALSE \
+  -DQTC_SEPARATE_DEBUG_INFO:BOOL=FALSE \
+  -DBUILD_LIBRARY_QLITEHTML:BOOL=TRUE \
+  -DBUILD_HELPVIEWERBACKEND_QTWEBENGINE:BOOL=FALSE
 
 %if 0%{?qt6}
 %{qt6_build}
@@ -244,7 +245,7 @@ rm -r %{buildroot}%{_datadir}/qtcreator/debugger-with-python2
 %{_datadir}/qtcreator/glsl/
 %{_datadir}/qtcreator/indexer_preincludes/
 %{_datadir}/qtcreator/jsonschemas/
-%{_datadir}/qtcreator/lua/
+%{_datadir}/qtcreator/lua-lupdate/
 %{_datadir}/qtcreator/lua-plugins/
 %{_datadir}/qtcreator/modeleditor/
 %{_datadir}/qtcreator/package-manager/
