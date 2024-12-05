@@ -1,7 +1,7 @@
-diff -Nru oci-cli-3.44.3.orig/requirements.txt oci-cli-3.44.3/requirements.txt
---- oci-cli-3.44.3.orig/requirements.txt	2024-07-16 09:07:19.000000000 +0200
-+++ oci-cli-3.44.3/requirements.txt	2024-07-25 12:16:02.559485192 +0200
-@@ -2,45 +2,45 @@
+diff -Nru oci-cli-3.50.2.orig/requirements.txt oci-cli-3.50.2/requirements.txt
+--- oci-cli-3.50.2.orig/requirements.txt	2024-11-19 05:51:21.000000000 +0100
++++ oci-cli-3.50.2/requirements.txt	2024-12-05 12:30:34.895782410 +0100
+@@ -2,51 +2,51 @@
  # (https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format),
  # you may need to use the --extra-index-url option instead.
  
@@ -12,13 +12,14 @@ diff -Nru oci-cli-3.44.3.orig/requirements.txt oci-cli-3.44.3/requirements.txt
  cffi>=1.9.1
 -click==8.0.4
 -coverage==4.5.2
--cryptography>=3.2.1,<43.0.0
+-cryptography>=3.2.1,<46.0.0
 -httpsig-cffi==15.0.0
--Jinja2==3.0.3
+-Jinja2==3.0.3; python_version == '3.6'
+-Jinja2<3.1; python_version >= '3.7'
 -jmespath==0.10.0
 -ndg-httpsclient==0.4.2
 -mock==2.0.0
--oci==2.129.3
+-oci==2.139.0
 -packaging==20.2
 -pluggy==0.13.0
 -py==1.11.0
@@ -26,15 +27,20 @@ diff -Nru oci-cli-3.44.3.orig/requirements.txt oci-cli-3.44.3/requirements.txt
 -pyOpenSSL>=17.5.0,<25.0.0
 -pycparser==2.20
 -pyparsing==2.2.0
+-pytest==4.6.10; python_version <= '3.9'
+-pytest==7.1.2; python_version >= '3.10'
+-pytest-cov==2.5.1
+-python-dateutil>=2.5.3,<3.0.0
 +click>=8.0.4
 +coverage>=4.5.2
 +cryptography>=3.2.1
 +httpsig-cffi>=15.0.0
-+Jinja2>=3.0.3
++Jinja2>=3.0.3; python_version == '3.6'
++Jinja2; python_version >= '3.7'
 +jmespath>=0.10.0
 +ndg-httpsclient>=0.4.2
 +mock>=2.0.0
-+oci>=2.129.3
++oci>=2.139.0
 +packaging>=20.2
 +pluggy>=0.13.0
 +py>=1.11.0
@@ -42,59 +48,69 @@ diff -Nru oci-cli-3.44.3.orig/requirements.txt oci-cli-3.44.3/requirements.txt
 +pyOpenSSL>=17.5.0
 +pycparser>=2.20
 +pyparsing>=2.2.0
- pytest==4.6.10; python_version <= '3.9'
--pytest==7.1.2; python_version >= '3.10'
--pytest-cov==2.5.1
--python-dateutil>=2.5.3,<3.0.0
++pytest>=4.6.10; python_version <= '3.9'
 +pytest>=7.1.2; python_version >= '3.10'
 +pytest-cov>=2.5.1
 +python-dateutil>=2.5.3
  pytz>=2016.10
- requests==2.21.0; python_version == '3.6'
--requests==2.31.0; python_version > '3.6'
-+requests>=2.31.0; python_version > '3.6'
+-requests==2.21.0; python_version == '3.6'
+-requests==2.31.0; python_version == '3.7'
++requests>=2.21.0; python_version == '3.6'
++requests>=2.31.0; python_version == '3.7'
+ requests>=2.32.0; python_version > '3.7'
  six>=1.15.0
 -sphinx==3.3.0
 -sphinx-rtd-theme==0.4.3
 -terminaltables==3.1.10
 -tox==3.23.0
-+sphinx>=3.3.0
-+sphinx-rtd-theme>=0.4.3
-+terminaltables>=3.1.10
-+tox>=3.23.0
- vcrpy==1.13.0; python_version <= '3.9'
+-vcrpy==1.13.0; python_version <= '3.9'
 -vcrpy==4.2.1; python_version >= '3.10'
 -virtualenv==20.13.0
 -pytest-xdist==1.22.2
 -pytest-forked==1.0.2
 -PyYAML>=5.4,<=6.0.1
 -docutils==0.15.2
+-prompt-toolkit==3.0.29; python_version == '3.6'
+-prompt-toolkit>=3.0.38,<=3.0.43; python_version > '3.6'
++sphinx>=3.3.0
++sphinx-rtd-theme>=0.4.3
++terminaltables>=3.1.10
++tox>=3.23.0
++vcrpy>=1.13.0; python_version <= '3.9'
 +vcrpy>=4.2.1; python_version >= '3.10'
 +virtualenv>=20.13.0
 +pytest-xdist>=1.22.2
 +pytest-forked>=1.0.2
 +PyYAML>=5.4
 +docutils>=0.15.2
- prompt-toolkit==3.0.29; python_version == '3.6'
- prompt-toolkit>=3.0.38,<=3.0.43; python_version > '3.6'
- setuptools>65.5.1; python_version > '3.6'
-diff -Nru oci-cli-3.44.3.orig/setup.py oci-cli-3.44.3/setup.py
---- oci-cli-3.44.3.orig/setup.py	2024-07-16 09:07:19.000000000 +0200
-+++ oci-cli-3.44.3/setup.py	2024-07-25 12:12:13.974765186 +0200
-@@ -30,18 +30,18 @@
++prompt-toolkit>=3.0.29; python_version == '3.6'
++prompt-toolkit>=3.0.38; python_version > '3.6'
+ setuptools>70.0.0; python_version > '3.7'
+-setuptools==68.0.0; python_version == '3.7'
+-setuptools==59.6.0; python_version == '3.6'
++setuptools>=68.0.0; python_version == '3.7'
++setuptools>=59.6.0; python_version == '3.6'
+ # this is required because of python 3.6 requests dependency version bound
+-urllib3<=1.26.15
++urllib3
+diff -Nru oci-cli-3.50.2.orig/setup.py oci-cli-3.50.2/setup.py
+--- oci-cli-3.50.2.orig/setup.py	2024-11-19 05:51:21.000000000 +0100
++++ oci-cli-3.50.2/setup.py	2024-12-05 12:22:45.025213713 +0100
+@@ -30,21 +30,21 @@
      readme = f.read()
  
  requires = [
--    'oci==2.129.3',
-+    'oci>=2.129.3',
+-    'oci==2.139.0',
++    'oci>=2.139.0',
      'arrow>=1.0.0',
      'certifi',
 -    'click==8.0.4',
--    'cryptography>=3.2.1,<43.0.0',
+-    'cryptography>=3.2.1,<46.0.0',
+-    'jmespath==0.10.0',
+-    'python-dateutil>=2.5.3,<3.0.0',
 +    'click>=8.0.4',
 +    'cryptography>=3.2.1',
-     'jmespath==0.10.0',
--    'python-dateutil>=2.5.3,<3.0.0',
++    'jmespath>=0.10.0',
 +    'python-dateutil>=2.5.3',
      'pytz>=2016.10',
      'six>=1.15.0',
@@ -105,5 +121,10 @@ diff -Nru oci-cli-3.44.3.orig/setup.py oci-cli-3.44.3/setup.py
 +    'pyOpenSSL>=17.5.0',
 +    'PyYAML>=5.4',
      'prompt-toolkit>=3.0.38,<=3.0.43; python_version > "3.6"',
-     'prompt-toolkit==3.0.29; python_version == "3.6"'
+-    'prompt-toolkit==3.0.29; python_version == "3.6"',
+-    'setuptools>70.0.0; python_version == "3.12"'
++    'prompt-toolkit>=3.0.29; python_version == "3.6"',
++    'setuptools>70.0.0; python_version >= "3.12"'
  ]
+ 
+ extras = {

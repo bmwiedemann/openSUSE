@@ -36,7 +36,7 @@
 %global _sitelibdir %{%{pythons}_sitelib}
 
 Name:           oci-cli%{psuffix}
-Version:        3.44.3
+Version:        3.50.2
 Release:        0
 Summary:        Oracle Cloud Infrastructure CLI
 License:        Apache-2.0
