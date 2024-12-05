@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 05 08:49:50 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.9.4 (1.9.2 and 1.9.3 were on the same commit
+  as 1.9.1):
+  * Bump codecov/codecov-action from 4 to 5
+
+-------------------------------------------------------------------
 Sat Sep 21 16:59:43 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.9.1:
