@@ -1,0 +1,5 @@
+<package name="lldap-cli" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="network:ldap" package="lldap-cli"/>
+</package>
