@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Fri Dec  6 06:54:25 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.169.2:
+  * build(deps): bump github.com/helmfile/vals from 0.37.6 to 0.37.7
+    by @dependabot in #1747
+  * build(deps): bump k8s.io/apimachinery from 0.31.1 to 0.31.2 by
+    @dependabot in #1754
+  * Reset extra args before running 'dependency build' by @baurmatt
+    in #1751
+  * Introducing Helmfile Guru on Gurubase.io by @kursataktas in #1748
+  * feat: add skip json schema validation during the install /upgrade
+    of a Chart by @zhaque44 in #1737
+  * fix(maputil): prevent nil value overwrite by @ban11111 in #1755
+  * build(deps): bump github.com/goccy/go-yaml from 1.12.0 to
+    1.13.0 by @dependabot in #1759
+  * fix: this url doesn't work anymore by @zekena2 in #1760
+  * build(deps): bump github.com/goccy/go-yaml from 1.13.0 to
+    1.13.1 by @dependabot in #1762
+  * build(deps): bump github.com/goccy/go-yaml from 1.13.1 to
+    1.13.2 by @dependabot in #1763
+  * build(deps): bump github.com/golang-jwt/jwt/v4 from 4.5.0 to
+    4.5.1 by @dependabot in #1767
+  * build(deps): bump github.com/helmfile/vals from 0.37.7 to
+    0.37.8 by @dependabot in #1764
+  * build(deps): bump github.com/goccy/go-yaml from 1.13.2 to
+    1.13.4 by @dependabot in #1765
+  * fix(integration-tests): read correct minikube status (#1768)
+    by @ceriath in #1769
+  * build(deps): bump github.com/goccy/go-yaml from 1.13.4 to
+    1.13.5 by @dependabot in #1770
+  * Add integration tests for #1749 by @baurmatt in #1766
+  * fix: update acme chart URL in input.yaml by @yxxhero in #1773
+  * build(deps): bump github.com/goccy/go-yaml from 1.13.5 to
+    1.13.6 by @dependabot in #1771
+  * build(deps): bump golang.org/x/sync from 0.8.0 to 0.9.0 by
+    @dependabot in #1775
+  * build(deps): bump golang.org/x/term from 0.25.0 to 0.26.0
+    by @dependabot in #1774
+  * Revive dead badge links by @eggplants in #1776
+  * feat: refactor label creation in state.go by @yxxhero in #1758
+  * docs: Add Gurubase badge to README-zh_CN by @yxxhero in #1777
+  * build(deps): bump github.com/goccy/go-yaml from 1.13.6 to
+    1.13.9 by @dependabot in #1781
+  * build(deps): bump github.com/goccy/go-yaml from 1.13.9 to
+    1.14.0 by @dependabot in #1782
+  * build(deps): bump github.com/goccy/go-yaml from 1.14.0 to
+    1.14.3 by @dependabot in #1788
+  * build(deps): bump helm.sh/helm/v3 from 3.16.2 to 3.16.3 by
+    @dependabot in #1786
+  * fix: update helm-diff to version 3.9.12 in CI and Dockerfiles
+    by @yxxhero in #1792
+  * build: update Helm version to v3.16.3 in CI and Dockerfiles
+    by @yxxhero in #1791
+  * feat: add HELMFILE_INTERACTIVE env var to enable interactive
+    mode by @thevops in #1787
+  * build(deps): bump github.com/hashicorp/hcl/v2 from 2.22.0 to
+    2.23.0 by @dependabot in #1793
+  * build(deps): bump github.com/Masterminds/semver/v3 from 3.3.0
+    to 3.3.1 by @dependabot in #1795
+  * chore: update with testify/assert assertion and table driven
+    tests for fs.go by @zhaque44 in #1794
+  * build(deps): bump k8s.io/apimachinery from 0.31.2 to 0.31.3
+    by @dependabot in #1798
+  * build(deps): bump github.com/stretchr/testify from 1.9.0 to
+    1.10.0 by @dependabot in #1800
+  * build(deps): bump github.com/goccy/go-yaml from 1.14.3 to
+    1.15.0 by @dependabot in #1804
+  * build(deps): bump github.com/goccy/go-yaml from 1.15.0 to
+    1.15.1 by @dependabot in #1807
+  * build(deps): bump github.com/zclconf/go-cty from 1.15.0 to
+    1.15.1 by @dependabot in #1806
+  * update example chart URL in remote-secrets doc by @daveneeley
+    in #1809
+  * build(deps): bump github.com/goccy/go-yaml from 1.15.1 to
+    1.15.3 by @dependabot in #1811
+  * build(deps): bump github.com/goccy/go-yaml from 1.15.3 to
+    1.15.6 by @dependabot in #1812
+  * fix: inject global values in Chartify by @xabufr in #1805
+  * build(deps): bump github.com/helmfile/vals from 0.37.8 to
+    0.38.0 by @dependabot in #1814
+  * build(deps): bump github.com/helmfile/chartify from 0.20.3 to
+    0.20.4 by @dependabot in #1815
+  * build(deps): bump golang.org/x/sync from 0.9.0 to 0.10.0 by
+    @dependabot in #1816
+
+-------------------------------------------------------------------
 Tue Oct 22 08:01:22 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.169.1:
