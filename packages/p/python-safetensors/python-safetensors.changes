@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Dec  6 04:42:20 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.4.5:
+  * Use id rather than modelId
+  * fix lifetimes, add tensors iterator
+  * Fixing empty serialization (no tensor) with some metadata.
+  * Upgrading Pyo3 0.22 (with gil-refs)
+  * Improving the bf16 tests for PT+TF.
+  * Add support for xla devices
+  * Improving bf16 tests
+  * Fixing zero-width tensor for in memory loading.
+  * Respects torch.device(0) new behavior without breaking backward
+    compatibility
+  * Forcing empty list/empty tuple behavior.
+- Run most of the testsuite.
+- Switch to cargo-vendor to generate the vendor tarball.
+
+-------------------------------------------------------------------
 Fri Aug 23 19:18:25 UTC 2024 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - switch to modern python on sle15 

@@ -1,0 +1,10 @@
+<services>
+  <service name="cargo_vendor" mode="manual">
+    <param name="srctar">python-safetensors-0.4.5.tar.gz</param>
+    <param name="cargotoml">bindings/python/Cargo.toml</param>
+    <param name="compression">xz</param>
+    <param name="update">true</param>
+  </service>
+  <service name="cargo_audit" mode="manual"></service>
+</services>
+
