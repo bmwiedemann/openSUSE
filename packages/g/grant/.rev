@@ -7,4 +7,12 @@
     <comment>new package grant: search an SBOM for licenses and the packages they belong to</comment>
     <requestid>1188851</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>40445818decfec2d007613e34431e92b</srcmd5>
+    <version>0.2.4</version>
+    <time>1733491625</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1228681</requestid>
+  </revision>
 </revisionlist>

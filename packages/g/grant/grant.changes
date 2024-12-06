@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Fri Dec 06 06:37:53 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.2.4:
+  * dependencies: latest syft and stereoscope (#156)
+  * chore(deps): bump github.com/charmbracelet/bubbletea from 1.2.2
+    to 1.2.3 (#155)
+  * chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.6.1 to
+    6.6.2 (#153)
+  * chore(deps): bump github.com/anchore/stereoscope (#150)
+  * chore(deps): bump github.com/charmbracelet/bubbletea from 1.1.2
+    to 1.2.2 (#152)
+  * chore: update trigger-release.sh same as syft/grype (#148)
+  * chore(deps): bump github.com/anchore/syft from 1.14.2 to 1.16.0
+    (#147)
+  * Changed exclusions to exceptions (#142)
+  * chore(deps): bump github.com/charmbracelet/lipgloss from 0.13.1
+    to 1.0.0 (#146)
+  * chore(deps): bump github.com/anchore/stereoscope (#145)
+  * chore(deps): bump github.com/charmbracelet/lipgloss (#141)
+  * chore(deps): bump github.com/charmbracelet/bubbletea from 1.1.1
+    to 1.1.2 (#143)
+  * chore(deps): bump github.com/anchore/syft from 1.14.1 to 1.14.2
+    (#140)
+  * chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.6.0 to
+    6.6.1 (#138)
+
+-------------------------------------------------------------------
+Fri Dec 06 06:33:31 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.2.3:
+  * update syft to v1.14.1 (#137)
+  * add release docs (#134)
+  * chore(deps): bump github.com/anchore/syft from 1.13.0 to 1.14.0
+    (#133)
+
+-------------------------------------------------------------------
+Fri Dec 06 06:30:18 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.2.2:
+  * feature: add support for allowlists (#123)
+  * fix: Update to support #101 (#124)
+  * chore: bump go version for build (#132)
+  * chore(deps): bump github.com/anchore/syft from 1.11.1 to 1.13.0
+    (#129)
+  * add awaiting response management (#130)
+  * chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.5.9 to
+    6.6.0 (#131)
+  * chore(deps): bump github.com/anchore/syft from 1.11.0 to 1.11.1
+    (#116)
+  * chore(deps): bump github.com/charmbracelet/bubbletea (#114)
+  * chore(deps): bump github.com/anchore/syft from 1.10.0 to 1.11.0
+    (#113)
+  * chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.6 to
+    0.5.7 (#112)
+  * chore(deps): bump github.com/anchore/syft from 1.9.0 to 1.10.0
+    (#111)
+  * chore(deps): bump github.com/docker/docker (#110)
+  * chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.5 to
+    0.5.6 (#109)
+  * chore(deps): bump github.com/anchore/syft from 1.8.0 to 1.9.0
+    (#103)
+  * chore: Add issue templates (#107)
+  * docs: CODE_OF_CONDUCT.md (#106)
+  * chore(deps): bump github.com/charmbracelet/lipgloss (#105)
+  * chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.4 to
+    0.5.5 (#108)
+  * chore(deps): bump github.com/charmbracelet/lipgloss (#102)
+
+-------------------------------------------------------------------
 Thu Jul 11 08:16:14 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.2.1:
