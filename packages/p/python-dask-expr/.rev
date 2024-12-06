@@ -99,4 +99,27 @@
 </comment>
     <requestid>1226506</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0807a4c2717aa158e08645ca1c02254f</srcmd5>
+    <version>1.1.20</version>
+    <time>1733491648</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.1.20
+  * Fix value_counts with split_out != 1 (#1170) Patrick Hoefler
+  * Remove recursion in task spec (#1158) Florian Jetter
+  * Deprecated and remove from_legacy_dataframe usage (#1168)
+    Patrick Hoefler
+  * Remove from_dask_dataframe (#1167) Patrick Hoefler
+  * Avoid exponentially growing graph for Assign-Projection
+    combinations (#1164) Patrick Hoefler
+  * Introduce more caching when walking the expression (#1165)
+    Patrick Hoefler
+  * Use Taskspec fuse implementation (#1162) Florian Jetter
+  * Fix orphaned dependencies in Fused expression (#1163) Patrick
+    Hoefler
+- Add dask-expr-pr1173-blockwise.patch
+  * Use new blockwise unpack collection in array
+  * gh#dask/dask-expr#1173 (forwarded request 1228727 from bnavigator)</comment>
+    <requestid>1228730</requestid>
+  </revision>
 </revisionlist>

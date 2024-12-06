@@ -1,0 +1,64 @@
+From 7b6d178a31cdc52816908ba93aae3f6e3bbae680 Mon Sep 17 00:00:00 2001
+From: James Bourbeau <jrbourbeau@gmail.com>
+Date: Wed, 4 Dec 2024 10:41:15 -0600
+Subject: [PATCH 1/2] Use new blockwise unpack collection in array
+
+---
+ dask_expr/array/blockwise.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/dask_expr/array/blockwise.py b/dask_expr/array/blockwise.py
+index 838539e0..23792434 100644
+--- a/dask_expr/array/blockwise.py
++++ b/dask_expr/array/blockwise.py
+@@ -18,7 +18,7 @@
+ from dask.array.utils import compute_meta
+ from dask.base import is_dask_collection
+ from dask.blockwise import blockwise as core_blockwise
+-from dask.delayed import unpack_collections
++from dask.blockwise import _blockwise_unpack_collections_task_spec
+ from dask.tokenize import tokenize
+ from dask.utils import cached_property, funcname
+ 
+@@ -142,7 +142,7 @@ def _layer(self):
+         for arg, ind in arginds:
+             if ind is None:
+                 arg = normalize_arg(arg)
+-                arg, collections = unpack_collections(arg)
++                arg, collections = _blockwise_unpack_collections_task_spec(arg)
+                 dependencies.extend(collections)
+             else:
+                 if (
+@@ -163,7 +163,7 @@ def _layer(self):
+         kwargs2 = {}
+         for k, v in self.kwargs.items():
+             v = normalize_arg(v)
+-            v, collections = unpack_collections(v)
++            v, collections = _blockwise_unpack_collections_task_spec(v)
+             dependencies.extend(collections)
+             kwargs2[k] = v
+ 
+
+From fd6f081bcce4f36190b87ce26ae278cc3de71d04 Mon Sep 17 00:00:00 2001
+From: James Bourbeau <jrbourbeau@gmail.com>
+Date: Wed, 4 Dec 2024 10:46:47 -0600
+Subject: [PATCH 2/2] Lint
+
+---
+ dask_expr/array/blockwise.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/dask_expr/array/blockwise.py b/dask_expr/array/blockwise.py
+index 23792434..4553f05c 100644
+--- a/dask_expr/array/blockwise.py
++++ b/dask_expr/array/blockwise.py
+@@ -17,8 +17,8 @@
+ )
+ from dask.array.utils import compute_meta
+ from dask.base import is_dask_collection
+-from dask.blockwise import blockwise as core_blockwise
+ from dask.blockwise import _blockwise_unpack_collections_task_spec
++from dask.blockwise import blockwise as core_blockwise
+ from dask.tokenize import tokenize
+ from dask.utils import cached_property, funcname
+ 

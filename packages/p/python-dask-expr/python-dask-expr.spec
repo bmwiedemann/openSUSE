@@ -26,12 +26,14 @@
 %bcond_with test
 %endif
 Name:           python-dask-expr%{psuffix}
-Version:        1.1.19
+Version:        1.1.20
 Release:        0
 Summary:        High Level Expressions for Dask
 License:        BSD-3-Clause
 URL:            https://github.com/dask/dask-expr
 Source0:        https://github.com/dask/dask-expr/archive/refs/tags/v%{version}.tar.gz#/dask_expr-%{version}-gh.tar.gz
+# PATCH-FIX-UPSTREAM dask-expr-pr1173-blockwise.patch gh#dask/dask-expr#1173
+Patch0:         https://github.com/dask/dask-expr/pull/1173.patch#/dask-expr-pr1173-blockwise.patch
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 62.6}
@@ -39,7 +41,7 @@ BuildRequires:  %{python_module versioneer-toml}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-dask = 2024.11.2
+Requires:       python-dask = 2024.12.0
 Requires:       python-pandas >= 2
 Requires:       python-pyarrow >= 14.0.1
 Provides:       python-dask_expr = %{version}-%{release}

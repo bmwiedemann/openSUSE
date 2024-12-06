@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Dec  5 21:53:04 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.1.20
+  * Fix value_counts with split_out != 1 (#1170) Patrick Hoefler
+  * Remove recursion in task spec (#1158) Florian Jetter
+  * Deprecated and remove from_legacy_dataframe usage (#1168)
+    Patrick Hoefler
+  * Remove from_dask_dataframe (#1167) Patrick Hoefler
+  * Avoid exponentially growing graph for Assign-Projection
+    combinations (#1164) Patrick Hoefler
+  * Introduce more caching when walking the expression (#1165)
+    Patrick Hoefler
+  * Use Taskspec fuse implementation (#1162) Florian Jetter
+  * Fix orphaned dependencies in Fused expression (#1163) Patrick
+    Hoefler
+- Add dask-expr-pr1173-blockwise.patch
+  * Use new blockwise unpack collection in array
+  * gh#dask/dask-expr#1173
+
+-------------------------------------------------------------------
 Fri Nov 22 12:06:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - reenable python313, numba is available
