@@ -1,0 +1,17 @@
+[Unit]
+Description=LLDAP LightLDAP server
+Documentation=https://github.com/lldap/lldap
+Requires=network.target
+After=network.target
+ConditionPathExists=/etc/lldap/lldap_config.toml
+
+[Service]
+User=lldap
+Group=lldap
+
+ExecStart=/usr/bin/lldap run --config-file /etc/lldap/lldap_config.toml
+WorkingDirectory=/var/lib/lldap/
+ReadWriteDirectories=/var/lib/lldap/
+
+[Install]
+WantedBy=multi-user.target

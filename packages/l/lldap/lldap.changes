@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Tue Dec 03 06:47:52 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.6.1:
+  * release: 0.6.1
+  * server: Fix schema migration from v8 for sqlite and postgres
+  * example_configs: expand url for OneDev config
+  * docs: update architecture.md
+  * example_configs: Add onedev
+  * cargo,auth,server: update opaque-ke => 0.7
+  * server: Fix the instructions to silence the key_seed warning
+  * readme: add reference to terraform provider (#1035)
+  * example_configs: Update pam example for release 0.6..0
+  * chore: bump version to 0.6.1-alpha
+  * github: Remove release PR comment bot
+
+-------------------------------------------------------------------
+Tue Dec 03 06:31:58 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.6.0:
+  * release: 0.6.0
+  * server: Remove session-wide logging, add session_uuid to
+    message logs
+  * server: Only use a single connection with SQlite
+  * server: Correctly handle removal of the display_name attribute
+  * server: Correctly handle attempts to probe for password resets
+  * example_configs: add ldap_ssl to vaultwarden_ldap_sync:2.0.2
+    (#1011)
+  * server: Fix env warning for nested keys
+  * server: Fix missing lowercasing when changing passwords through
+    LDAP
+  * app: Allow custom attributes in group creation
+  * server: return custom attributes when asked for all attributes
+  * build(deps): bump actions/checkout from 4.2.1 to 4.2.2
+  * server: improve key_seed warning
+  * server: Fix env variable warning
+  * app: fix password reset probing
+  * app: Add support for group attributes
+  * example_configs: keycloak typo for first name attribute (#1004)
+
+-------------------------------------------------------------------
+Tue Oct  8 07:44:40 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package lldap: Light LDAP implementation
