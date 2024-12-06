@@ -15141,13 +15141,13 @@ unsorted:
   - libopenblas_serial-devel-32bit 
   - libopenblas_serial0 
   - libopenblas_serial0-32bit 
-  - libopencascade-applicationframework7_7_2 
-  - libopencascade-dataexchange7_7_2 
-  - libopencascade-draw7_7_2 
-  - libopencascade-foundationclasses7_7_2 
-  - libopencascade-modelingalgorithms7_7_2 
-  - libopencascade-modelingdata7_7_2 
-  - libopencascade-visualization7_7_2 
+  - libopencascade-applicationframework7_8_1 
+  - libopencascade-dataexchange7_8_1 
+  - libopencascade-draw7_8_1 
+  - libopencascade-foundationclasses7_8_1 
+  - libopencascade-modelingalgorithms7_8_1 
+  - libopencascade-modelingdata7_8_1 
+  - libopencascade-visualization7_8_1 
   - libopencl-clang14 
   - libopencore-amr-devel 
   - libopencore-amrnb0-32bit 
@@ -17694,6 +17694,10 @@ unsorted:
   - lld17 
   - lld18 
   - lld19 
+  - lldap 
+  - lldap-cli 
+  - lldap-migration-tool 
+  - lldap-set-password 
   - lldb 
   - lldb-devel 
   - lldb13 
@@ -24393,6 +24397,7 @@ unsorted:
   - python310-Flask-RESTful 
   - python310-Flask-RSTPages 
   - python310-Flask-SQLAlchemy 
+  - python310-Flask-Security 
   - python310-Flask-Security-Too 
   - python310-Flask-SocketIO 
   - python310-Flask-Versioned 
@@ -25259,6 +25264,7 @@ unsorted:
   - python310-click-completion 
   - python310-click-default-group 
   - python310-click-didyoumean 
+  - python310-click-extra 
   - python310-click-help-colors 
   - python310-click-log 
   - python310-click-man 
@@ -28072,6 +28078,7 @@ unsorted:
   - python311-Flask-RESTful 
   - python311-Flask-RSTPages 
   - python311-Flask-SQLAlchemy 
+  - python311-Flask-Security 
   - python311-Flask-Security-Too 
   - python311-Flask-SocketIO 
   - python311-Flask-Versioned 
@@ -28911,6 +28918,7 @@ unsorted:
   - python311-click-completion 
   - python311-click-default-group 
   - python311-click-didyoumean 
+  - python311-click-extra 
   - python311-click-help-colors 
   - python311-click-log 
   - python311-click-man 
@@ -29935,7 +29943,6 @@ unsorted:
   - python311-matplotlib-wx 
   - python311-matrix-nio 
   - python311-matrix_common 
-  - python311-maturin 
   - python311-mautrix 
   - python311-maxminddb 
   - python311-mbstrdecoder 
@@ -31631,6 +31638,7 @@ unsorted:
   - python312-Flask-RESTful 
   - python312-Flask-RSTPages 
   - python312-Flask-SQLAlchemy 
+  - python312-Flask-Security 
   - python312-Flask-Security-Too 
   - python312-Flask-SocketIO 
   - python312-Flask-Versioned 
@@ -32498,6 +32506,7 @@ unsorted:
   - python312-click-completion 
   - python312-click-default-group 
   - python312-click-didyoumean 
+  - python312-click-extra 
   - python312-click-help-colors 
   - python312-click-log 
   - python312-click-man 
@@ -35315,6 +35324,7 @@ unsorted:
   - python313-Flask-RESTful 
   - python313-Flask-RSTPages 
   - python313-Flask-SQLAlchemy 
+  - python313-Flask-Security 
   - python313-Flask-SocketIO 
   - python313-Flask-Versioned 
   - python313-Flask-WTF 
@@ -36169,6 +36179,7 @@ unsorted:
   - python313-click-completion 
   - python313-click-default-group 
   - python313-click-didyoumean 
+  - python313-click-extra 
   - python313-click-help-colors 
   - python313-click-log 
   - python313-click-man 
@@ -36828,6 +36839,7 @@ unsorted:
   - python313-httpx-socks 
   - python313-httpx-ws 
   - python313-huey 
+  - python313-huggingface-hub 
   - python313-humanfriendly 
   - python313-humanhash3 
   - python313-humanize 
@@ -37812,6 +37824,7 @@ unsorted:
   - python313-pyleri 
   - python313-pylev 
   - python313-pylibacl 
+  - python313-pylibfdt 
   - python313-pylibmc 
   - python313-pylineclip 
   - python313-pylink-square 
@@ -38285,6 +38298,7 @@ unsorted:
   - python313-s3transfer 
   - python313-sadisplay 
   - python313-safe-netrc 
+  - python313-safetensors 
   - python313-sambacc 
   - python313-samplerate 
   - python313-sane 
@@ -38613,6 +38627,7 @@ unsorted:
   - python313-traitsui 
   - python313-traittypes 
   - python313-transaction 
+  - python313-transformers 
   - python313-transip 
   - python313-transitions 
   - python313-translate-toolkit 
