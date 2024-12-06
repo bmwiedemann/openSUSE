@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Dec  4 10:16:13 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2024.12.0
+  * Revert "Add LLM chatbot to Dask docs (#11556)" @dchudz (#11577)
+  * Automatically rechunk if array in to_zarr has irregular chunks
+    @phofl (#11553)
+  * Blockwise uses Task class @fjetter (#11568)
+  * Migrate rechunk and reshape to task spec @phofl (#11555)
+  * Cache svg-representation for arrays @dcherian (#11560)
+  * Fix empty input for containers @fjetter (#11571)
+  * Convert Bag graphs to TaskSpec graphs during optimization
+    @fjetter (#11569)
+  * add LLM chatbot to Dask docs @dchudz (#11556)
+  * Add support for Python 3.13 @phofl (#11456)
+  * Fuse data nodes in linear fusion too @phofl (#11549)
+  * Migrate slicing code to task spec @phofl (#11548)
+  * Speed up ArraySliceDep tokenization @phofl (#11551)
+  * Fix fusing of p2p barrier tasks @phofl (#11543)
+  * Remove infra/mentions of GPU CI @charlesbluca (#11546)
+  * Temporarily disable gpuCI update CI job @jrbourbeau (#11545)
+  * Use BlockwiseDep to implement map_blocks keywords @phofl
+    (#11542)
+  * Remove optimize_slices @phofl (#11538)
+  * Make reshape_blockwise a noop if shape is the same @phofl
+    (#11541)
+  * Remove read-only flag from open_arry in open_zarr @phofl
+    (#11539)
+  * Implement linear_fusion for task spec class @phofl (#11525)
+  * Remove recursion from TaskSpec @fjetter (#11477)
+  * Fixup test after dask-expr change @phofl (#11536)
+  * Bump codecov/codecov-action from 3 to 5 @dependabot (#11532)
+  * Create dask-expr frame directly without roundtripping @phofl
+    (#11529)
+  * Add scikit-image nightly back to upstream CI @jrbourbeau
+    (#11530)
+  * Remove from\_dask\_dataframe import @phofl (#11528)
+  * Ensure that from_array creates a copy @phofl (#11524)
+  * Simplify and improve performance of normalize chunks @phofl
+    (#11521)
+  * Fix flaky nanquantile test @phofl (#11518)
+  * Fix tests for new read\_only kwarg in zarr=3 @phofl (#11516)
+
+-------------------------------------------------------------------
 Wed Nov 27 08:21:12 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip tokenize test on python313

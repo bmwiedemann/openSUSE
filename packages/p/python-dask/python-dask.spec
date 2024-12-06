@@ -51,7 +51,7 @@ ExclusiveArch:  donotbuild
 
 Name:           python-dask%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-dask-expr,python-distributed! <===
-Version:        2024.11.2
+Version:        2024.12.0
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
@@ -69,11 +69,11 @@ BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 5.3.1
 Requires:       python-click >= 8.1
 Requires:       python-cloudpickle >= 3.0
-Requires:       (python-cloudpickle >= 3.1 if python-base >= 3.13)
 Requires:       python-fsspec >= 2021.9
 Requires:       python-packaging >= 20.0
 Requires:       python-partd >= 1.4.0
 Requires:       python-toolz >= 0.10.0
+Requires:       (python-cloudpickle >= 3.1 if python-base >= 3.13)
 Requires:       (python-importlib-metadata >= 4.13.0 if python-base < 3.12)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -132,7 +132,7 @@ BuildRequires:  %{python_module numba}
 # snappy required for using fastparquet
 BuildRequires:  %{python_module python-snappy}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module scikit-image}
+BuildRequires:  %{python_module scikit-image if %python-base < 3.13}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module sparse}
 BuildRequires:  %{python_module tables}
@@ -345,9 +345,7 @@ donttest+=" or test_map_partitions_df_input"
 donttest+=" or test_pyarrow_filesystem_option_real_data"
 # different hash naming (?)
 donttest+=" or test_to_delayed_optimize_graph"
-# See gh#dask/dask#11456, gh#dask/dask#11457
-python313_donttest=" or test_tokenize_dataclass"
-%pytest --pyargs dask -n auto -r fE -m "not network" -k "not ($donttest ${$python_donttest})" --reruns 3 --reruns-delay 3
+%pytest --pyargs dask -n auto -r fE -m "not network" -k "not ($donttest)" --reruns 3 --reruns-delay 3
 %endif
 
 %post
