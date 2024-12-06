@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 06 06:02:55 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.69.8:
+  * Improve negative error pattern handling (#3621)
+  * fix: Fixing some broken links in the docs (#3623)
+
+-------------------------------------------------------------------
 Thu Dec 05 05:46:56 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.69.7:
