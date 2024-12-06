@@ -23,6 +23,8 @@ Summary:        Graphical Disk Usage Utility
 License:        GPL-2.0-only AND LGPL-2.0-only
 URL:            https://github.com/jeromerobert/k4dirstat
 Source0:        https://github.com/jeromerobert/k4dirstat/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM -- fixes running k4dirstat from the dolphin context menu
+Patch0:         0001-Remove-i-from-desktop-file.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  zlib-devel
 BuildRequires:  cmake(KF5CoreAddons)

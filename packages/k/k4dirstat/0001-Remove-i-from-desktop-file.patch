@@ -1,0 +1,25 @@
+From 494c5a6e6bfc1b4acf4fec7937468514b6938ab6 Mon Sep 17 00:00:00 2001
+From: gunqqer <gunqqer@friithian.dev>
+Date: Sat, 14 Sep 2024 22:27:00 -0400
+Subject: [PATCH] Remove %i from desktop file
+
+Fixes #57
+---
+ src/k4dirstat.desktop | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/k4dirstat.desktop b/src/k4dirstat.desktop
+index 1f311c7..398d293 100644
+--- a/src/k4dirstat.desktop
++++ b/src/k4dirstat.desktop
+@@ -1,6 +1,6 @@
+ [Desktop Entry]
+ Name=K4DirStat
+-Exec=k4dirstat %i -qwindowtitle %c %u
++Exec=k4dirstat -qwindowtitle %c %u
+ Icon=k4dirstat
+ Type=Application
+ X-DocPath=k4dirstat/index.html
+-- 
+2.47.1
+

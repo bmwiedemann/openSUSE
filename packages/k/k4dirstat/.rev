@@ -120,4 +120,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1226965</requestid>
   </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>30799d4ab474313b79bc0d8a873af0c1</srcmd5>
+    <version>3.4.3</version>
+    <time>1733491635</time>
+    <user>anag+factory</user>
+    <comment>- Add patch (gh#jeromerobert/k4dirstat#57)
+  * 0001-Remove-i-from-desktop-file.patch</comment>
+    <requestid>1228702</requestid>
+  </revision>
 </revisionlist>

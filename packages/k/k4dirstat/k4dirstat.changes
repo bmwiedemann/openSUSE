@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec  6 07:46:37 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add patch (gh#jeromerobert/k4dirstat#57)
+  * 0001-Remove-i-from-desktop-file.patch
+
+-------------------------------------------------------------------
 Wed Nov 20 18:04:49 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Stop using the %suse_update_desktop_file macro
