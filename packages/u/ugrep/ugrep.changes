@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec  5 16:03:18 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 7.1.1:
+  * fix negative character classes when option -i or --ignore-case
+    is used and make ugrep closely emulate GNU grep's character
+    class behavior when options -i and -P are used
+  * appease -Woverload-virtual and -Wshadow warnings
+
+-------------------------------------------------------------------
 Sat Nov 23 10:07:23 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 7.1.0:
