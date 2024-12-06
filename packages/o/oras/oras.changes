@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Dec 06 06:30:57 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.2.1:
+  * bump: tag and release ORAS CLI v1.2.1
+  * docs: add experimental marks to examples (#1570)
+  * fix: document pushing files with colon in name (#1508)
+  * docs: improve the description of cp (#1498)
+  * docs: add examples for --format (#1497)
+  * docs: fix typo in help text of 'attach' command (#1477)
+  * fix: Mention the resolve command in manifest fetch help (#1466)
+  * fix: oras repo tags exlude-digest-tags documentation (#1467)
+  * fix: disable oras tag fallback to tag schema when tagging a
+    referrer (#1435)
+  * fix(doc): resolve example error for `oras tag` (#1419)
+  * Update links in README.md (#1408)
+  * chore: Update goreleaser to v6 and configuration to v2 (#1402)
+  * chore: bump golang and dependencies (#1564)
+  * bump: golang version to fix CVE-2024-24790 and CVE-2024-34156
+    (#1562)
+- fix zsh completions
+
+-------------------------------------------------------------------
 Thu Jul 11 10:58:16 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - add completion subpackages
