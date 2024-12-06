@@ -44,4 +44,12 @@
   * Fix crash when capturing 'Expires' cookie attribute #2870</comment>
     <requestid>1198230</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>50ce574ae72aa3f347605018d6659b0d</srcmd5>
+    <version>6.0.0</version>
+    <time>1733491615</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1228647</requestid>
+  </revision>
 </revisionlist>

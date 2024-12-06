@@ -17,27 +17,36 @@
 
 
 Name:           hurl
-Version:        5.0.1+0
+Version:        6.0.0
 Release:        0
 Summary:        Run and test HTTP requests with plain text
 License:        Apache-2.0
 URL:            https://github.com/Orange-OpenSource/hurl
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-Source2:        cargo_config
+BuildRequires:  cargo >= 1.77.2
 BuildRequires:  cargo-packaging
 BuildRequires:  libxml2-devel
 BuildRequires:  openssl-devel
 BuildRequires:  zstd
 
-%description
-Hurl is a command line tool that runs HTTP requests defined in a simple plain text format.
+# Test depdencies
+BuildRequires:  python3-base
+BuildRequires:  python3-Flask
 
-It can perform requests, capture values and evaluate queries on headers and body response. Hurl is very versatile: it can be used for both fetching data and testing HTTP sessions.
+ExcludeArch:    i586
+
+%description
+Hurl is a command line tool that runs HTTP requests defined in a simple plain
+text format.
+
+It can perform requests, capture values and evaluate queries on headers and
+body response. Hurl is very versatile: it can be used for both fetching data
+and testing HTTP sessions.
 
 %prep
-%autosetup -a1
-cp %{SOURCE2} .cargo/config
+%autosetup -a 1 -p 1
+mkdir -p .cargo
 
 %build
 %{cargo_build}
@@ -46,9 +55,32 @@ cp %{SOURCE2} .cargo/config
 install -D -d -m 0755 %{buildroot}%{_bindir}
 install -m 0755 %{_builddir}/%{name}-%{version}/target/release/%{name} %{buildroot}%{_bindir}/%{name}
 
+%check
+# start a local HTTP server for the tests
+cd integration/hurl
+mkdir -p build
+
+echo -e "\n------------------ Starting server.py"
+python3 server.py > build/server.log 2>&1 &
+
+echo -e "\n------------------ Starting ssl/server.py (Self-signed certificate)"
+python3 ssl/server.py 8001 ssl/server/cert.selfsigned.pem false > build/server-ssl-selfsigned.log 2>&1 &
+
+echo -e "\n------------------ Starting ssl/server.py (Signed by CA)"
+python3 ssl/server.py 8002 ssl/server/cert.pem false > build/server-ssl-signedbyca.log 2>&1 &
+
+echo -e "\n------------------ Starting ssl/server.py (Self-signed certificate + Client certificate authentication)"
+python3 ssl/server.py 8003 ssl/server/cert.selfsigned.pem true > build/server-ssl-client-authent.log 2>&1 &
+
+echo -e "\n------------------ Starting unix_socket/server.py"
+python3 unix_socket/server.py > build/server-unix-socket.log 2>&1 &
+
+# run the tests
+%{cargo_test}
+
 %files
 %doc README.md
 %license LICENSE
-%{_bindir}/%{name}
+%{_bindir}/hurl
 
 %changelog

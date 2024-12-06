@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Wed Dec 04 05:54:52 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 6.0.0:
+  * Breaking Changes:
+    - Check that variables do not conflict with existing functions
+      #3229
+    - Remove deprecated --fail-at-end option #3430
+    - Change API for setting variable in hurl::runner::run #3440
+    - Remove hurlfmt deprecated --format option #3445
+    - Rename feature flag from vendored-openssl to static-openssl
+      #3460
+  * Enhancements:
+    - Implement function newUuid #973
+    - Implement --limit-rate from curl #1222
+    - Add --curl option to export executed requests to curl
+      commands #2679
+    - Configure --connect-timeout per request #3163
+    - Support short name for sections [QueryStringParams] =>
+      [Query], [FormParams] => [Form], [MultipartFormData] =>
+      [Multipart] #3238
+    - Remove url-specific parser (align with grammar) #3244
+    - Remove the crate float-cmp #3247
+    - Jsonpath / Add filter on boolean value #3252
+    - Jsonpath / Add non-equal filter on string and number value
+      #3261
+    - Add support for backtick strings in predicates values #3317
+    - Categorise options in --help #3339
+    - Support more JSON / XML "like" mimetypes with debug output
+      #3343
+    - Add curl debug command to --json and JSON report #3374
+    - Add curl debug command to HTML report #3386
+    - Render Date value #3431
+    - Add newDate generator #3443
+  * Bugs Fixed:
+    - Fix reading standard input multiple times #3216
+    - Fix filename parsing (used by cert option) #3242
+    - Add additional check for --max-filesize option #3245
+    - Support case-insensitive Cookie Attributes #3265
+    - Allow any string in Location Header when not following
+      redirection #3293
+    - Fix graceful shutdown of workers threads in --test #3297
+    - Fix missing space in variable option HTML export #3412
+
+-------------------------------------------------------------------
+Fri Oct 04 19:36:41 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- rework spec file to obs_scm and "manual" instead of "disabled"
+- add %check section
+
+-------------------------------------------------------------------
 Mon Sep  2 06:05:17 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 5.0.1:
