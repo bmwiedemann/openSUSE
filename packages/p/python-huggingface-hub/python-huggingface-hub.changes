@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Dec  3 13:47:08 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.26.3
+  * release the huggingface-cli upload-large-folder command
+  * Add 'gated' search parameter
+  * InferenceClient.conversational task has been removed in favor of 
+    InferenceClient.chat_completion. Also removed ConversationalOutput 
+    data class.
+  * All InferenceClient output values are now dataclasses, not dictionaries.
+  * Multiple access tokens support
+  * Conversational VLMs support
+  * More complete support for inference parameters
+  * cached_download(), url_to_filename(), filename_to_url() methods are now 
+    completely removed. From now on, you will have to use hf_hub_download() 
+    to benefit from the new cache layout.
+- Improve packaging
+  * expand glob in %files
+  * shorten the Summary
+
+-------------------------------------------------------------------
 Fri Aug 30 05:11:39 UTC 2024 - Simon Lees <sflees@suse.de>
 
 - Drop suggests from package

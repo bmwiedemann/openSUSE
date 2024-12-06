@@ -1,5 +1,5 @@
 #
-# spec file for package python-huggingface_hub
+# spec file for package python-huggingface-hub
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -18,26 +18,26 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-huggingface-hub
-Version:        0.23.4
+Version:        0.26.3
 Release:        0
-Summary:        Client library to download and publish models, datasets and other repos on the huggingfaceco hub
+Summary:        Client library for interaction with the huggingface hub
 License:        Apache-2.0
 URL:            https://github.com/huggingface/huggingface_hub
 Source:         https://github.com/huggingface/huggingface_hub/archive/refs/tags/v%{version}.tar.gz#/huggingface_hub-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module PyYAML >= 5.1}
 BuildRequires:  %{python_module filelock}
 BuildRequires:  %{python_module fsspec >= 2023.5.0}
 BuildRequires:  %{python_module packaging >= 20.9}
-BuildRequires:  %{python_module PyYAML >= 5.1}
 BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tqdm >= 4.42.1}
 BuildRequires:  %{python_module typing-extensions >= 3.7.4.3}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python-PyYAML >= 5.1
 Requires:       python-filelock
 Requires:       python-fsspec >= 2023.5.0
 Requires:       python-packaging >= 20.9
-Requires:       python-PyYAML >= 5.1
 Requires:       python-requests
 Requires:       python-tqdm >= 4.42.1
 Requires:       python-typing-extensions >= 3.7.4.3
@@ -66,6 +66,7 @@ Client library to download and publish models, datasets and other repos on the h
 
 %files %{python_files}
 %python_alternative %{_bindir}/huggingface-cli
-%{python_sitelib}/*
+%{python_sitelib}/huggingface_hub
+%{python_sitelib}/huggingface_hub-%{version}*info
 
 %changelog
