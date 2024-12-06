@@ -228,4 +228,13 @@
     <comment></comment>
     <requestid>1179939</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d6c23069b57fc00a7f074fe867debb13</srcmd5>
+    <version>1.6.4.post1</version>
+    <time>1733491529</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.6.4.post1:
+  * metadata fixes</comment>
+    <requestid>1228543</requestid>
+  </revision>
 </revisionlist>

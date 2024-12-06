@@ -4,6 +4,11 @@ Tue Nov 12 12:25:21 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
 - Use the enrollment packages from sdbootutil
 
 -------------------------------------------------------------------
+Sat Nov  2 10:54:27 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- disable and mask the jeos-firstboot.service on Vagrant boxes
+
+-------------------------------------------------------------------
 Wed Oct  9 09:15:28 UTC 2024 - Stefan Schubert <schubi@suse.com>
 
 - Added package systemd-repart-dracut to kvm-and-xen-sdboot and

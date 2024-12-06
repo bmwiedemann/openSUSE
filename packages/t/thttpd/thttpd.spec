@@ -1,7 +1,7 @@
 #
 # spec file for package thttpd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,6 +49,8 @@ Patch10:        %{name}-2.25b-zerolen.patch
 Patch13:        thttpd-2.25b-CVE-2012-5640-check_crypt_return_value.patch
 Patch14:        thttpd-CVE-2013-0348.patch
 Patch15:        thttpd-crypt_is_in_crypt.h.patch
+# PATCH-FIX-SUSE keep using deprecated function sigset
+Patch16:        thttpd-c99.patch
 BuildRequires:  automake
 BuildRequires:  libtool
 Requires(post): permissions
@@ -91,6 +93,7 @@ traffic.
 %patch -P 13 -p1
 %patch -P 14 -p1
 %patch -P 15 -p1
+%patch -P 16 -p1
 
 %build
 cp %{_datadir}/automake-1.*/config.* .
@@ -156,6 +159,8 @@ ln -s %{buildroot}%{_initddir}/%{name} %{buildroot}%{_sbindir}/rc%{name}
 
 %files
 %doc README config.h
+%dir %{serverroot}
+%dir %{serverroot}/htdocs
 %{serverroot}/htdocs/*
 %attr(775, root, www) %{serverroot}/htdocs/users
 %verify(not mode) %attr(2751, root, www) %{_bindir}/makeweb

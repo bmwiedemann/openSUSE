@@ -14,16 +14,15 @@ SLADE's own crash handler has two problems:
 
 Fixes: #1166
 ---
- COMPILE.md                     | 1 +
- src/Application/SLADEWxApp.cpp | 2 +-
- src/CMakeLists.txt             | 4 ++++
- 3 files changed, 6 insertions(+), 1 deletion(-)
+ src/Application/SLADEWxApp.cpp |    2 +-
+ src/CMakeLists.txt             |    4 ++++
+ 2 files changed, 5 insertions(+), 1 deletion(-)
 
-diff --git a/src/Application/SLADEWxApp.cpp b/src/Application/SLADEWxApp.cpp
-index 375f62b8..d9196355 100644
---- a/src/Application/SLADEWxApp.cpp
-+++ b/src/Application/SLADEWxApp.cpp
-@@ -523,7 +523,7 @@ bool SLADEWxApp::OnInit()
+Index: SLADE-3.2.6/src/Application/SLADEWxApp.cpp
+===================================================================
+--- SLADE-3.2.6.orig/src/Application/SLADEWxApp.cpp
++++ SLADE-3.2.6/src/Application/SLADEWxApp.cpp
+@@ -449,7 +449,7 @@ bool SLADEWxApp::OnInit()
  #endif
  
  	// Handle exceptions using wxDebug stuff, but only in release mode
@@ -32,21 +31,15 @@ index 375f62b8..d9196355 100644
  	wxHandleFatalExceptions(true);
  #endif
  
-diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index 4ce2403d..5eabe4c7 100644
---- a/src/CMakeLists.txt
-+++ b/src/CMakeLists.txt
-@@ -132,6 +132,10 @@ if (NOT NO_FLUIDSYNTH)
- 	include_directories(${FLUIDSYNTH_INCLUDE_DIR})
- endif()
- 
+Index: SLADE-3.2.6/src/CMakeLists.txt
+===================================================================
+--- SLADE-3.2.6.orig/src/CMakeLists.txt
++++ SLADE-3.2.6/src/CMakeLists.txt
+@@ -41,3 +41,7 @@ if (WIN32 AND MSVC)
+ else ()
+ 	include("unix")     # Linux or MacOS
+ endif ()
 +if (NOT NO_CRASHHANDLER)
 +	add_definitions(-DUSE_CRASHHANDLER)
 +endif ()
 +
- set(SLADE_SOURCES
- )
- # Don't include external libraries here as they should be compiled separately
--- 
-2.27.0
-

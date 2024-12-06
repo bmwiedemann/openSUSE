@@ -2,23 +2,30 @@ From: Jan Engelhardt <jengelh@inai.de>
 Date: 2020-06-22 21:16:10.343429323 +0200
 
 Make use of the clzma library in openSUSE.
+[openSUSE-specific patch. I was under the impression that Debian and/or Ubuntu shipped
+lzma-sdk-dev too, but, upon checking, do not do so (anymore) as of 2024-11-27.]
 ---
- src/External/CMakeLists.txt |    3 +--
+ thirdparty/CMakeLists.txt |    3 +--
  1 file changed, 1 insertion(+), 2 deletions(-)
 
-Index: SLADE-3.1.12/src/External/CMakeLists.txt
+Index: SLADE-3.2.6/thirdparty/CMakeLists.txt
 ===================================================================
---- SLADE-3.1.12.orig/src/External/CMakeLists.txt
-+++ SLADE-3.1.12/src/External/CMakeLists.txt
-@@ -26,10 +26,9 @@ file(GLOB_RECURSE EXTERNAL_SOURCES
- 	*.cxx
- 	dumb/*.c
- 	lua/*.c
+--- SLADE-3.2.6.orig/thirdparty/CMakeLists.txt
++++ SLADE-3.2.6/thirdparty/CMakeLists.txt
+@@ -17,7 +17,6 @@ endif()
+ set(EXTERNAL_SOURCES
+ )
+ file(GLOB_RECURSE EXTERNAL_SOURCES
 -	lzma/C/LzmaDec.c
- 	${SLADE_HEADERS}
- 	)
+ 	mus2mid/mus2mid.cpp
+ 	zreaders/*.cpp
+ 	glad/src/*.c
+@@ -43,7 +42,7 @@ add_subdirectory(lunasvg/3rdparty/softwa
+ add_subdirectory(lunasvg/3rdparty/plutovg)
  
  add_library(external STATIC ${EXTERNAL_SOURCES})
--target_link_libraries(external ${ZLIB_LIBRARY} ${wxWidgets_LIBRARIES})
-+target_link_libraries(external ${ZLIB_LIBRARY} ${wxWidgets_LIBRARIES} -lclzma)
+-target_link_libraries(external ${ZLIB_LIBRARY} lunasvg fmt::fmt ${CMAKE_DL_LIBS})
++target_link_libraries(external ${ZLIB_LIBRARY} -lclzma lunasvg fmt::fmt ${CMAKE_DL_LIBS})
  set(EXTERNAL_LIBRARIES external PARENT_SCOPE)
+ 
+ if(USE_SYSTEM_DUMB)

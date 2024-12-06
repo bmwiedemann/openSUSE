@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec  5 14:49:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.115.6:
+  * Preserve traceback when an exception is raised in sync
+    dependency with `yield`. PR #5823 by @sombek.
+  * Update tests and internals for compatibility with Pydantic
+    >=2.10. PR #12971 by @tamird.
+
+-------------------------------------------------------------------
 Thu Nov 21 08:52:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.115.5:

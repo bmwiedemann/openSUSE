@@ -1,7 +1,7 @@
 #
 # spec file for package desktopfolder
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,14 @@
 #
 
 
+%define         appid com.github.spheras.desktopfolder
 Name:           desktopfolder
 Version:        1.1.3
 Release:        0
 Summary:        Tool for organizing the desktop with panels, notes and photos
 License:        GPL-3.0-or-later
-Group:          System/GUI/Other
-URL:            https://github.com/spheras/desktopfolder/
-Source:         https://github.com/spheras/desktopfolder/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/spheras/desktopfolder
+Source:         %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM -- https://github.com/spheras/desktopfolder/pull/328
 Patch0:         000-drop-gsettings-schema.patch
 # PATCH-FIX-UPSTREAM -- https://github.com/spheras/desktopfolder/pull/328
@@ -35,7 +35,6 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  meson >= 0.40.0
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  vala
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
@@ -48,7 +47,6 @@ BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
 BuildRequires:  pkgconfig(gtksourceview-3.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libwnck-3.0)
-Recommends:     %{name}-lang
 
 %description
 A program with which the desktop can be organized with panels that hold things.
@@ -61,8 +59,7 @@ A program with which the desktop can be organized with panels that hold things.
 %lang_package
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 %meson
@@ -70,33 +67,33 @@ A program with which the desktop can be organized with panels that hold things.
 
 %install
 %meson_install
+%find_lang %{appid}
 
 # https://github.com/spheras/desktopfolder/issues/69
-find %{buildroot} -name \*.??g -exec chmod 0644 {} \;
+find %{buildroot} -name '*.svg' -exec chmod 0644 {} \;
 
-%{suse_update_desktop_file -r \
-  %{buildroot}%{_datadir}/applications/com.github.spheras.desktopfolder.desktop GTK Utility DesktopSettings}
-%find_lang com.github.spheras.desktopfolder %{name}.lang
-%fdupes %{buildroot}/%{_datadir}
+%if 0%{?suse_version} >= 1600
+mkdir -p %{buildroot}%{_distconfdir}/xdg/autostart
+mv %{buildroot}%{_sysconfdir}/xdg/autostart/%{appid}-autostart.desktop \
+   %{buildroot}%{_distconfdir}/xdg/autostart/%{appid}-autostart.desktop
+%endif
 
-# Add OnlyShowIn key
-if ! grep OnlyShowIn.*Pantheon %{buildroot}%{_sysconfdir}/xdg/autostart/com.github.spheras.desktopfolder-autostart.desktop; then
-	sed -i '$aOnlyShowIn=Pantheon;' %{buildroot}%{_sysconfdir}/xdg/autostart/com.github.spheras.desktopfolder-autostart.desktop
-else
-	'This entry already exists' 2> /dev/null
-fi
-#
+%fdupes -s %{buildroot}
 
 %files
-%license LICENSE*
-%doc AUTHORS* README.md
-%{_bindir}/com.github.spheras.desktopfolder
-%{_datadir}/applications/com.github.spheras.desktopfolder.desktop
-%{_datadir}/glib-2.0/schemas/com.github.spheras.desktopfolder.gschema.xml
-%{_datadir}/icons/hicolor/*/apps/com.github.spheras.desktopfolder.??g
-%{_datadir}/metainfo/com.github.spheras.desktopfolder.appdata.xml
-%{_sysconfdir}/xdg/autostart/com.github.spheras.desktopfolder-autostart.desktop
+%license LICENSE
+%doc AUTHORS.md README.md
+%{_bindir}/%{appid}
+%{_datadir}/applications/%{appid}.desktop
+%{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
+%{_datadir}/icons/hicolor/*/apps/%{appid}.svg
+%{_datadir}/metainfo/%{appid}.appdata.xml
+%if 0%{?suse_version} >= 1600
+%{_distconfdir}/xdg/autostart/%{appid}-autostart.desktop
+%else
+%{_sysconfdir}/xdg/autostart/%{appid}-autostart.desktop
+%endif
 
-%files lang -f %{name}.lang
+%files lang -f %{appid}.lang
 
 %changelog

@@ -29,6 +29,7 @@ URL:            https://%project
 Source:         %{name}-%{version}.tar.xz
 Source1:        skopeo.rpmlintrc
 Requires:       libcontainers-common
+Patch0:         0001-Update-container-storage-to-v1.55.1.patch
 BuildRequires:  bash
 BuildRequires:  device-mapper-devel >= 1.2.68
 BuildRequires:  glib2-devel
@@ -76,7 +77,7 @@ Supplements:    (%{name} and zsh)
 This package contains the zsh completion for skopeo.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 mkdir -p .gopath/src/github.com/containers

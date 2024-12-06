@@ -1,7 +1,7 @@
 #
 # spec file for package hourglass
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,37 +16,31 @@
 #
 
 
+%define         appid com.github.sgpthomas.hourglass
 Name:           hourglass
-Version:        2.0.2
+Version:        3.1.0
 Release:        0
-Summary:        Clock gadget for Elementary OS
+Summary:        Clock gadget for the Pantheon DE
 License:        GPL-3.0-only
-Group:          System/X11/Utilities
-URL:            https://github.com/sgpthomas
-Source:         https://github.com/sgpthomas/hourglass/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/sgpthomas/hourglass
+Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
-BuildRequires:  meson
+BuildRequires:  meson >= 0.57.0
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  vala >= 0.28
 BuildRequires:  pkgconfig(gee-0.8)
-BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(granite) >= 6.0.0
-BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(libcanberra)
-BuildRequires:  pkgconfig(libhandy-1)
-BuildRequires:  pkgconfig(libnotify)
-Recommends:     %{name}-lang
+BuildRequires:  pkgconfig(granite-7) >= 7.1.0
+BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(libportal-gtk4)
 
 %description
 A clock application that is designed to fit perfectly into
-Elementary's design scheme.
+Pantheon's design scheme.
 
 %lang_package
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %meson
@@ -54,22 +48,23 @@ Elementary's design scheme.
 
 %install
 %meson_install
-%suse_update_desktop_file -r com.github.sgpthomas.hourglass GTK Utility Clock
-%find_lang com.github.sgpthomas.hourglass %{name}.lang
-%fdupes %{buildroot}/%{_datadir}
+%find_lang %{appid}
+%fdupes %{buildroot}
+
+#fix upstream
+chmod -x %{buildroot}%{_datadir}/icons/hicolor/*/apps/%{appid}.svg
+chmod -x %{buildroot}%{_datadir}/pixmaps/%{appid}.svg
 
 %files
 %license COPYING
 %doc AUTHORS README.md
-%{_bindir}/com.github.sgpthomas.hourglass
-%{_bindir}/com.github.sgpthomas.hourglass-daemon
-%{_datadir}/applications/com.github.sgpthomas.hourglass.desktop
-%{_datadir}/glib-2.0/schemas/com.github.sgpthomas.hourglass.gschema.xml
-%{_datadir}/icons/hicolor/*/*/com.github.sgpthomas.hourglass.??g
-%{_datadir}/metainfo/com.github.sgpthomas.hourglass.appdata.xml
-%{_datadir}/pixmaps/com.github.sgpthomas.hourglass.??g
-%{_sysconfdir}/xdg/autostart/com.github.sgpthomas.hourglass-daemon.desktop
+%{_bindir}/%{appid}
+%{_datadir}/applications/%{appid}.desktop
+%{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
+%{_datadir}/icons/hicolor/*/apps/%{appid}.svg
+%{_datadir}/metainfo/%{appid}.metainfo.xml
+%{_datadir}/pixmaps/%{appid}.svg
 
-%files lang -f %{name}.lang
+%files lang -f %{appid}.lang
 
 %changelog

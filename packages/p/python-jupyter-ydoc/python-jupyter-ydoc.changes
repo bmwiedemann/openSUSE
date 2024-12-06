@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec  5 16:01:23 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
+
+- refresh node modules
+  * update cross-spawn module to 7.0.6 - CVE-2024-21538 (bsc#1233852)
+
+-------------------------------------------------------------------
 Mon Nov  4 19:55:23 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.0.0

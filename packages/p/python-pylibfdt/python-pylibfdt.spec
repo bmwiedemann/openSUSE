@@ -1,7 +1,7 @@
 #
 # spec file for package python-pylibfdt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pylibfdt
-Version:        1.6.1
+Version:        1.7.2
 Release:        0
 Summary:        Python binding for libfdt
 License:        BSD-2-Clause AND GPL-2.0-only
 Group:          Development/Languages/Python
 URL:            https://pypi.org/project/pylibfdt/
-Source:         pylibfdt-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pylibfdt/pylibfdt-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}

@@ -1,7 +1,7 @@
 #
 # spec file for package yishu
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,29 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define         appid com.github.lainsce.yishu
 Name:           yishu
 Version:        1.2.5
 Release:        0
 Summary:        A bespoke and simple Todo.txt client
 License:        GPL-3.0-or-later
-Group:          Productivity/Office/Organizers
-URL:            https://github.com/lainsce
-Source:         https://github.com/lainsce/yishu/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/lainsce/yishu
+Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libxml2-tools
 BuildRequires:  meson >= 0.40.0
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  vala
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(granite) >= 0.5
 BuildRequires:  pkgconfig(gtk+-3.0)
-Recommends:     %{name}-lang
 
 %description
 Write a to-do list that will be easy to sync with most known Todo.txt clients.
@@ -42,7 +40,7 @@ Write a to-do list that will be easy to sync with most known Todo.txt clients.
 %lang_package
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %meson
@@ -50,31 +48,19 @@ Write a to-do list that will be easy to sync with most known Todo.txt clients.
 
 %install
 %meson_install
-%suse_update_desktop_file -r com.github.lainsce.yishu GTK Utility DesktopUtility
-%find_lang com.github.lainsce.yishu %{name}.lang
-%fdupes %{buildroot}/%{_datadir}
+%find_lang %{appid}
+%fdupes %{buildroot}
 
-# dirlist HiDPI icons (see: hicolor/index.theme)
-_dirlist=$PWD/dir.lst
-pushd %{buildroot}
-find ./ | while read _list; do
-    echo $_list | grep '[0-9]\@[0-9]' || continue
-    _path=$(echo $_list | sed 's/[^/]//')
-    if ! ls ${_path%/*}; then
-        grep -xqs "\%dir\ ${_path%/*}" $_dirlist || echo "%dir ${_path%/*}" >> $_dirlist
-    fi
-done
-popd
-
-%files -f dir.lst
+%files
 %license LICENSE
 %doc AUTHORS README.md
-%{_bindir}/com.github.lainsce.yishu
-%{_datadir}/applications/com.github.lainsce.yishu.desktop
-%{_datadir}/glib-2.0/schemas/com.github.lainsce.yishu.gschema.xml
-%{_datadir}/icons/hicolor/*/apps/com.github.lainsce.yishu.??g
-%{_datadir}/metainfo/com.github.lainsce.yishu.appdata.xml
+%{_bindir}/%{appid}
+%{_datadir}/applications/%{appid}.desktop
+%{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
+%{_datadir}/icons/hicolor/*/apps/%{appid}.svg
+%{_datadir}/metainfo/%{appid}.appdata.xml
+%dir %{_datadir}/icons/hicolor/{128x128@2,128x128@2/apps,16x16@2,16x16@2/apps,24x24@2,24x24@2/apps,32x32@2,32x32@2/apps,48x48@2,48x48@2/apps,64x64@2,64x64@2/apps}
 
-%files lang -f %{name}.lang
+%files lang -f %{appid}.lang
 
 %changelog

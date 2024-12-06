@@ -9,4 +9,12 @@
 Fix missing Source OBS error.</comment>
     <requestid>1224170</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9e46d6dc74f4dfb777fb7cc03744e0f9</srcmd5>
+    <version>2024.8.6</version>
+    <time>1733491550</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1228573</requestid>
+  </revision>
 </revisionlist>

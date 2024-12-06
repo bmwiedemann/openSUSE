@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec  4 23:21:41 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- The test suite survives without
+  ca-certificates-mozilla-prebuilt now, so we can remove BR (and
+  avoid deadly cycles).
+
+-------------------------------------------------------------------
+Thu Jul 11 14:26:38 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add buildignores to break buildcycle over
+  p11-kit/dbus-1/systemd:mini/python-MarkupSafe
+
+-------------------------------------------------------------------
 Sun Feb  4 10:45:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.5:

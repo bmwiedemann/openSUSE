@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec  3 20:19:55 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- added thttpd-c99.patch
+  * keep using the deprecated function sigset
+  * patch borrowed from fedora rpm
+
+-------------------------------------------------------------------
 Mon Feb 26 14:42:02 UTC 2024 - pgajdos@suse.com
 
 - Use %patch -P N instead of deprecated %patchN.

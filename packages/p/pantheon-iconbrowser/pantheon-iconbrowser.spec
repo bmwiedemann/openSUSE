@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.iconbrowser
 Name:           pantheon-iconbrowser
-Version:        2.2.0
+Version:        8.0.0
 Release:        0
 Summary:        Browse and search system icons
 License:        GPL-3.0-or-later

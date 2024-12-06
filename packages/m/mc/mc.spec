@@ -57,6 +57,9 @@ Patch63:        mc-extd-doc.patch
 Patch64:        mc-extd-sound.patch
 Patch69:        mc-extd-xdg.patch
 Patch71:        mc-ext-audio.patch
+# PATCH-FEATURE-OPENSUSE mc-ext-obscpio.patch bsc#1233006 mcepl@suse.com
+# mc can now handle SUSE *.obscpio archives
+Patch72:        mc-ext-obscpio.patch
 Patch100:       xls2csv_update.patch
 BuildRequires:  audiofile-devel
 BuildRequires:  e2fsprogs-devel

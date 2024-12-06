@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Dec  6 01:22:05 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.78.1:
+  * health: fix TestHealthMetric
+
+-------------------------------------------------------------------
+Thu Dec  5 22:10:32 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.78.0:
+  * Client metrics have been added, to provide insights into Tailscale client
+    behavior, health, and performance.
+  * tailscale metrics command has been added, to expose and collect client
+    metrics for use with third-party monitoring systems.
+  * tailscale syspolicy command has been added, to list system policies, reload
+    system policies, or view errors related to the system policies configured
+    on the device.
+  * Tailscale system policies are applied immediately when pushed via mobile
+    device management (MDM) or Group Policy, without requiring a client restart.
+  * Tailscale SSH session recording detects the disappearance of the recorder
+    node sooner. This fix addresses a security vulnerability described
+    in TS-2024-013.
+  * New scopes for OAuth clients have been added with more granular permissions.
+    Existing OAuth clients using the previous set of scopes, and keys generated
+    using these clients, are still valid.
+
+-------------------------------------------------------------------
 Fri Nov  8 03:46:50 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.76.6:

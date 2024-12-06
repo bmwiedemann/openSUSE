@@ -283,4 +283,12 @@
   dependency to 6.6.0. bsc#1231688</comment>
     <requestid>1218732</requestid>
   </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>5b786b47e43c5fe67207c1c4e7fa3fa0</srcmd5>
+    <version>4.1.1</version>
+    <time>1733491552</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1228572</requestid>
+  </revision>
 </revisionlist>

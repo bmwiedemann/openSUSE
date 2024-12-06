@@ -2102,4 +2102,12 @@
     <comment>Update virt-manager to version 5.0.0</comment>
     <requestid>1226683</requestid>
   </revision>
+  <revision rev="266" vrev="2">
+    <srcmd5>6cb05f83407f6e21eb950070f706cc0d</srcmd5>
+    <version>5.0.0</version>
+    <time>1733491520</time>
+    <user>anag+factory</user>
+    <comment>Fix for bsc#1234215 str object has no attribute removeprefix</comment>
+    <requestid>1228558</requestid>
+  </revision>
 </revisionlist>

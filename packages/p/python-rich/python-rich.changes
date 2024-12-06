@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec  5 01:45:25 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to GitHub tarball so we can run the testsuite.
+- Correct version guard for typing_extensions Requires.
+- Drop Python 3.7 sections.
+
+-------------------------------------------------------------------
 Wed Nov 20 17:44:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 13.9.4:

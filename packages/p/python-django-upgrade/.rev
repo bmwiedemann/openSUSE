@@ -176,4 +176,15 @@
     #477.</comment>
     <requestid>1218806</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b961bd1dd3e481bdaa937e845bc70c3e</srcmd5>
+    <version>1.22.2</version>
+    <time>1733491529</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.22.2:
+  * Make these fixers work when django.contrib.gis.db.models is
+    used to import objects from django.db.models:
+    check_constraint_condition index_together  Issue #513.</comment>
+    <requestid>1228547</requestid>
+  </revision>
 </revisionlist>

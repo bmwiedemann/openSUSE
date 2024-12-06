@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Fri Nov 29 01:56:59 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.3.1+git20241110.cde491b:
+  * Fixed error around get_repository_addons cache.
+  * Sigh.
+  * Possible link order fix.
+  * Signedness issue.
+  * Added warnings for fetching https repositories when we don't have the network active.
+  * Allows for accessible false variables.
+  * Split off compile options to disable large portions of lpm if you don't want to build them.
+  * Add option to install Lite-XL plugin (#138)
+  * Added in -DLPM_NO_THREADS.
+  * reformat executable statement, make installable (#137)
+
+-------------------------------------------------------------------
+Fri Nov 08 15:13:56 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.3.1+git20241108.d1a84c7:
+  * Updated CHANGELOG.md.
+  * Disabled switch if no default release url.
+  * Fixed up tests.
+  * Changed erroneous return; thanks to Jan for reporting.
+  * Ensured that "any" was being respected.
+
+-------------------------------------------------------------------
+Sun Oct 20 15:26:50 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.3.0+git20241019.3de92ec:
+  * Added liblzma to list.
+  * Removed encoders for lzma.
+  * Updated CHANGELOG.md.
+  * Properly determined mod_version of lite-xl.
+  * Reported actual improvement.
+  * Update CHANGELOG.md.
+  * Added in small optimization.
+  * Fixed small issue.
+  * Fixed some config stuff.
+  * Adding in ability to set mod-version "any".
+  * Add `lzma` dependency to `meson.build` (#129)
+  * Test?
+  * Specifically made include directories non-relative.
+  * Fix windows and linux compiles.
+  * Updated spec to include xz.
+  * Added in libxz support, because this keeps coming up.
+
+-------------------------------------------------------------------
+Mon Oct 14 17:23:01 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.2.9+git20241014.13d213a:
+  * Small changes to microtar, fixed some issues with the long names in the extract code.
+  * Fixed issue with fetch not receiving final progress update.
+  * Only insert lite-xls in priority order.
+  * Ensures that we actually get all lpm output.
+  * Added in fix for handling different versions of lite-xl.
+  * Update README.md
+  * Added a Scoop install manifest (#123)
+  * Added in override for mod_version on system lite-xl.
+  * Change names of types so that mac doesn't cry.
+  * Fixed windows non-blocking.
+  * Made C mutli-threading possible.
+
+-------------------------------------------------------------------
+Tue Jul 23 20:25:39 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.2.9+git20240723.1564bb1:
+  * Stopped backfilling path for stubs.
+  * Should be more robust at detecthing orphans.
+  * Don't allow stubs to override non-stubs in our potential dependency list.
+  * Removed duplicatge line.
+
+-------------------------------------------------------------------
 Sat Jun 22 19:04:09 UTC 2024 - scott.bradnick@suse.com
 
 - Update to version 1.2.9+git20240622.1cf4f05:

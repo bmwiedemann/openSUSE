@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  4 22:17:12 UTC 2024 - Michael Gorse <mgorse@suse.com>
+
+- Increase test timeout on s390x. The http2-body-stream test can be
+  slow and sometimes times out in our builds.
+
+-------------------------------------------------------------------
 Fri Nov 22 20:25:12 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.6.1:

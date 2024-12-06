@@ -17,13 +17,14 @@
 
 
 Name:           lite-xl
-Version:        2.1.5+git20240629.af9c834
+Version:        2.1.6
 Release:        0
 Summary:        A lightweight text editor written in Lua
 Group:          Productivity/Text/Editors
 License:        MIT
 URL:            https://github.com/lite-xl/lite-xl
-Source:         %{name}-%{version}.tar.gz
+#Source:         %%{name}-%%{version}.tar.gz
+Source:         https://github.com/%{name}/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  git-core
 BuildRequires:  meson

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec  4 19:20:45 UTC 2024 - Enno Tensing <tenno+suse@suij.in>
+
+- Update to 2.8.2
+  * See PDAL changelog at https://github.com/PDAL/PDAL/releases/tag/2.8.2
+  * For commits between 2.8.1 and 2.8.2 see
+    https://github.com/PDAL/PDAL/compare/2.8.1...2.8.2
+
+-------------------------------------------------------------------
 Fri Oct 25 21:51:44 UTC 2024 - Enno Tensing <tenno+suse@suij.in>
 
 - Update to 2.8.1

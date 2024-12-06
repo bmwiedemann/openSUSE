@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Nov 18 01:18:06 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 3.1.0:
+  * Use portal for background and autostart
+  * Update translations
+- update to 3.0.0:
+  * Port to GTK 4
+  * Ctrl+S to toggle stopwatch
+  * Correct license in the app metainfo
+  * Update translations
+- update to 2.0.4:
+  * Improve relative time handling
+- update to 2.0.3:
+  * Add additional categories other than ambiguous Utility in the desktop entry
+  * Show the window in the center of the display at the first launch
+  * Make styling more consistent between stopwatch and timer
+  * Ring alarms only on repeated days
+  * Fix the condition of closing the app window being reversed
+  * Update translations
+- update spec file for Leap 16.0:
+  * rework make dependencies, as a lot changed for the last 3y
+  * remove mentioning of elementary
+  * remove %suse_update_desktop_file
+
+-------------------------------------------------------------------
 Sat Nov 20 16:57:19 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 2.0.2:

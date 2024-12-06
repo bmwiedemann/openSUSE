@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  4 07:44:28 UTC 2024 - Nicholas Yang <nicholas.yang@suse.com>
+
+- kronosnet-1.30
+  * Convert time_t to unsigned long long before formatting
+  * Add warning when packets are being received from the wrong interface
+
+-------------------------------------------------------------------
 Fri Sep 27 06:32:49 UTC 2024 - Nicholas Yang <nicholas.yang@suse.com>
 
 - kronosnet-1.29

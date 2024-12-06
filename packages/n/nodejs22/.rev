@@ -76,4 +76,12 @@
 - BuildRequire python311 for SLE15</comment>
     <requestid>1225344</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>b545d38f17bfddd405349aa3bd931089</srcmd5>
+    <version>22.11.0</version>
+    <time>1733491516</time>
+    <user>anag+factory</user>
+    <comment>- add python3-setuptools requirements (needed for python 3.13+)</comment>
+    <requestid>1228531</requestid>
+  </revision>
 </revisionlist>

@@ -9,4 +9,15 @@ https://github.com/asdil12/zyppkeys
 https://hackweek.opensuse.org/22/projects/create-tool-for-managing-rpm-package-signing-keys</comment>
     <requestid>1063839</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c00a0967c13e757c8a24d3781eea7474</srcmd5>
+    <version>0.4.0</version>
+    <time>1733491536</time>
+    <user>anag+factory</user>
+    <comment>- Version 0.4.0
+- Better doc in --help
+- Show help and list keys if no args are given
+</comment>
+    <requestid>1228555</requestid>
+  </revision>
 </revisionlist>

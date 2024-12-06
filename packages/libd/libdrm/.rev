@@ -1865,4 +1865,20 @@ Man pages are disabled for this build, upstream disabled them for this release. 
   * tests: Make modetest and proptest cc_binary in Android.bp</comment>
     <requestid>1196225</requestid>
   </revision>
+  <revision rev="179" vrev="1">
+    <srcmd5>1b67035f3dbbb9ad171af235c2656ffe</srcmd5>
+    <version>2.4.124</version>
+    <time>1733491503</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.4.124
+  * include/drm/README: update drm-next link to use gitlab instead of cgit
+  * modetest: simplify planar YUV handling
+  * modetest: add support for YUV422 and YUV444 plane format
+  * xf86drm: print AMD modifiers properly
+  * tests/util: Call `drmGetDevices2()` instead of `drmOpen()`ing all modules
+  * android: add genrule for generated_static_table_fourcc.h
+  * modetest: Make modetest availble to vendor on Android
+  * build: simplify Linux system check</comment>
+    <requestid>1228410</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package metronome
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,33 +16,31 @@
 #
 
 
+%define         appid com.github.artemanufrij.metronome
 Name:           metronome
 Version:        1.0.0
 Release:        0
 Summary:        Audible beat generator
 License:        GPL-3.0-or-later
-Group:          Productivity/Multimedia/Other
 URL:            https://github.com/artemanufrij/metronome
-Source:         https://github.com/artemanufrij/metronome/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.40.0
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  vala
 BuildRequires:  pkgconfig(granite)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
-Recommends:     %{name}-lang
 
 %description
-A program for Elementary OS that produces an audible beat — a click
+A program for the Pantheon Desktop, that produces an audible beat — a click
 or other sound — at regular intervals that the user can set in beats
 per minute (BPM).
 
 %lang_package
 
 %prep
-%setup -q
+%autosetup
 
 mv debian/copyright COPYING
 
@@ -52,19 +50,18 @@ mv debian/copyright COPYING
 
 %install
 %meson_install
-%suse_update_desktop_file -r com.github.artemanufrij.metronome GTK AudioVideo Sequencer
-%find_lang metronome %{name}.lang
-%fdupes %{buildroot}%{_datadir}
+%find_lang %{name}
+%fdupes %{buildroot}
 
 %files
 %license COPYING
 %doc README.md
-%{_bindir}/com.github.artemanufrij.metronome
-%{_datadir}/applications/com.github.artemanufrij.metronome.desktop
-%{_datadir}/com.github.artemanufrij.metronome
+%{_bindir}/%{appid}
+%{_datadir}/applications/%{appid}.desktop
+%{_datadir}/%{appid}
 %{_datadir}/glib-2.0/schemas/org.pantheon.metronome.gschema.xml
-%{_datadir}/icons/hicolor/*/*/com.github.artemanufrij.metronome.??g
-%{_datadir}/metainfo/com.github.artemanufrij.metronome.appdata.xml
+%{_datadir}/icons/hicolor/*/apps/%{appid}.svg
+%{_datadir}/metainfo/%{appid}.appdata.xml
 
 %files lang -f %{name}.lang
 

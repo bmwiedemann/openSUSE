@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  3 12:13:23 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add mc-ext-obscpio.patch making mc handle SUSE *.obscpio
+  archives (bsc#1233006).
+
+-------------------------------------------------------------------
 Mon Sep 23 20:12:03 UTC 2024 - Adam Mizerski <adam@mizerski.pl>
 
 - Added patch 4575-fix-wrapper.patch - fixes boo#1203617

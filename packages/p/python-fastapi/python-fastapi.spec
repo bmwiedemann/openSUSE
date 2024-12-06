@@ -20,7 +20,7 @@
 %bcond_with ringdisabled
 %{?sle15_python_module_pythons}
 Name:           python-fastapi
-Version:        0.115.5
+Version:        0.115.6
 Release:        0
 Summary:        FastAPI framework
 License:        MIT

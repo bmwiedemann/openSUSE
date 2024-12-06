@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec  5 15:13:49 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied a patch (bsc#1233889)
+  * s390-tools-01-zipl_helper.device-mapper-add-missed-step-in-logical.patch
+- Amended the /usr/lib/modules-load.d/pkey.conf (bsc#1233233). Added
+  * pkey_cca
+  * pkey_ep11
+  * pkey_pckmo
+
+-------------------------------------------------------------------
 Tue Nov  5 07:39:58 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Amended the *_configure scripts to update again the SUSE's specific file

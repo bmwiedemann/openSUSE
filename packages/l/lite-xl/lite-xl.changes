@@ -1,4 +1,311 @@
 -------------------------------------------------------------------
+Fri Nov 29 01:50:51 UTC 2024 - scott.bradnick@suse.com
+
+- Moving to official release tarball vs. point-in-time git hash tarball.
+- Update to version 2.1.6:
+  * Install plugins with lpm inside meson (#1951)
+  * Remove install-dependencies.sh (#1950)
+  * Fix multiple continuous release binaries (#1948)
+  * convert unix style paths literals into meson path segments
+  * use meson datadir as lite_datadir base
+  * fix appimage cd error and use static appimage runtime (#1924)
+  * Update lua wrap
+  * Update FreeType2 wrap
+  * Update PCRE2 wrap fixes configuration issues on systems that don't support the sealloc jit
+  * Format renderer font scale code to be actually readable
+  * build(deps): bump softprops/action-gh-release
+  * include unicode patch in lua meson wrap (#1908)
+  * Add `minimum_thumb_size` and `{contracted,expanded}_scrollbar_margin` to `Scrollbar` (#1589)
+  * Lock LPM version.
+  * Add `inclusive` parameter to `Doc:get_text` (#1586)
+  * feat(core.emptyview): add name to emptyview (#1569)
+  * feat(core.emptyview): add name to emptyview (#1569)
+  * Fix multi-type usage in delimited patterns (#1740)
+  * Add support for relative `require`s (#1634)
+  * Allow writing to hidden files on Windows (#1653)
+  * improve projectsearch (#1876)
+  * Streamlined and simplified CI, and made it use lpm to install addons. (#1649)
+  * Additional small fixes for windows as part of the process API move to lua.
+  * Fixed minor typo from merge of #1854 for windows builds.
+  * arena_allocator: return lxl_arena instead of initializing an existing struct
+  * process: migrate arg validation and checking to Lua
+  * utfconv: add functions that use arena_allocator
+  * allocator: add arena_allocator
+  * remove lhelper script, build configuration and dependency support (#1906)
+  * Implement logic for tracking target window (#1891)
+  * treeview: remove unused code (#1895)
+
+-------------------------------------------------------------------
+Mon Oct 14 17:14:35 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 2.1.5+git20241011.219dc55e:
+  * meta: remove `FUNDING.yml`
+  * Add keyboard shortcut to tooltips in `ToolbarView` (#1880)
+  * Add primary selection support (#1729)
+  * Removed draw asserts for window renderer, because certain commands between frames may want to use draw commands to get the sizes of things. (#1878)
+  * ci: use lite-xl-build-box-manylinux (#1877)
+  * Configurable statusview icon (#1617)
+  * Revert "fix: avoid following symlinks in `common.rm`"
+  * fix: avoid following symlinks in `common.rm`
+  * renderer: rewrite glyph cache (#1845)
+  * macos: Add proper platform-specific icon
+  * api/system: check if a window is created when firing DND events
+  * src/renwindow: correctly free texture and renderer
+  * add cuda
+  * (fix): passed missing core.window to set_window_mode call (#1836)
+  * Release v2.1.5 (#1840)
+  * ci/release: adapt release note generation to the new script
+  * resources,scripts: use gh cli to fetch the correct release tags
+  * refactor(mac): adapt `LITE_USE_SDL_RENDERER` scaling to new windowing system
+  * core/doc: fix wrong table index in Doc:merge_cursors
+  * Fix window memory allocation bug.
+  * fix(doc): convert `Doc:merge_cursors` parameter from "selection index" to table index
+  * core/rootview: fix dnd multiple folders into dock (#1828)
+  * fix(autoreload): wait a second before automatically reloading a file (#1823)
+  * fix(dirmonitor): avoid calling the change callback multiple times in the same notification (#1824)
+  * move window creation and management to Lua (#1751)
+  * Expand Process API (#1757)
+  * Handle static constexpr in language_cpp (#1806)
+  * macos: support drag-and-drop and default file associations (#1822)
+  * Update font scale on monitor scale change for `RENDERER` backend (macOS) (#1650)
+  * Update language_python.lua (#1723)
+  * Add support for binary integer literals. (#1819)
+  * language_cpp: backport number highlighting from c (#1818)
+  * improve number highlighting for c (#1752)
+  * resources/macos: better macos installer background (#1816)
+  * ci: dependabot updates (#1814)
+  * subprojects: update lua,pcre2,sdl2 (#1812)
+  * Update macOS copyright notice (#1815)
+  * ci: use latest macos images (#1804)
+  * Update labeler config for new version (#1805)
+  * Update action dependencies (#1724)
+  * ci: fix typo in release note template (#1801)
+  * fix: avoid iterating over a changing table in `run_threads` (#1794)
+  * Change co_wait to co_await in language_cpp (#1800)
+  * api/system: fix newlines returned by get_clipboard (#1788)
+  * Generate release notes (#1774)
+  * build: fix dirmonitor backend selection (#1790)
+  * Release v2.1.4 (#1772)
+  * ci: fix missing permission for creating releases (#1770)
+  * Skip patterns matching nothing in `tokenizer` (#1743)
+  * Fix BufferSize in g_read for Windows (#1722)
+  * Added Arduino syntax highlighting support alongside C++. (#1767)
+  * Fixed some typos in core.init (#1755)
+  * Limit `language_js` regex avoidance to numbers, and fix starting `/*` comments (#1744)
+  * Add from symbol to support ESM (#1754)
+  * Add SerenityOS platform support (#1745)
+  * Rectify `LICENSE` dates and owners (#1748)
+  * scripts: not hardcode MSYSTEM (#1739)
+  * Fix `language_js` regex/comment distinction (#1731)
+  * Improve `CommandView` and `autocomplete` scroll behavior (#1732)
+  * Improve `autocomplete` suggestions box behavior (#1734)
+  * Added .pyi extension to python. (#1728)
+  * wasm cross file improvements (#1660)
+  * readme: add minimum supported OSes (#1711)
+  * process: fix unitialized variables (#1719)
+  * v2.1.3 (#1712)
+  * Add system.setenv (#1706)
+  * Fix comment typos in data/core/{init.lua,dirwatch.lua} (#1549)
+  * process: style changes (#1709)
+  * language_js: support binary and octal representation (#1710)
+  * autoreload docs only if their filename matches an actual file (#1698)
+  * reorder nagview options on doc:save error to be more consistent with other nagview confirmations (#1696)
+  * Improve number highlighting for python syntax highlighting (#1704)
+  * Memory fixes (#1705)
+  * Fix doc:create-cursor-previous/next-line with tabs (#1697)
+  * v2.1.2 (#1695)
+  * turn window_renderer into managed pointer (#1683)
+  * Fixed a minor bug, should close issue #1680.
+  * fix nagbar failed save message (#1678)
+  * Expose plaintext syntax (#1652)
+  * Use `\r\n` for new files on Windows (#1596)
+  * feat(process): allow commands and envs on proces_start (#1477)
+  * chore(deps): update Lua
+  * chore(deps): update SDL2
+  * chore(deps): update pcre2
+  * chore(deps): update freetype
+  * fix(ci,build.sh): un-hardcode lua subproject detection
+  * Revert "feat(subprojects): update wraps (#1577)"
+  * Improve font/color change detection in `language_md` (#1614)
+  * Use x offset to define render command rect in `rencache_draw_text` (#1618)
+  * Reverted cursor API to something more compatible with old API. (#1674)
+  * Text overwriting (#1495)
+  * Fix patterns starting with `^` in `tokenizer` (#1645)
+  * Fix `language_js` regex constant detection (#1581)
+  * Fix editing after undo not clearing the change id (#1574)
+  * Fix selecting newlines with `find-replace:select-add-{next,all}` (#1608)
+  * Fix `core.redraw` when window is not focused (#1601)
+  * Scale mouse coordinates by window scale (#1630)
+  * feat(subprojects): update wraps (#1577)
+  * Fix `dirmonitor` sorting issues (#1599)
+  * Fix running `core.step` when receiving an event while not waiting
+  * Limit `system.{sleep,wait_event}` to timeouts >= 0 (#1666)
+  * Fixed issue with set_target_size passing the wrong value to plugins (#1657)
+  * Fix deleting indentation with multiple cursors (#1670)
+  * Avoid considering single spaces in `detectindent` (#1595)
+  * refactor(build): use dmgbuild to create dmgs (#1664)
+  * feat(package): ad-hoc sign macOS bundles (#1656)
+  * ease transparency of nagbar dim (#1658)
+  * Make license time-independent (#1655)
+  * Sanitize tab index in `Node:add_view` (#1651)
+  * fix(dirmonitor): deadlock if error handler jumps somewhere else (#1647)
+  * Set SDL hint to prefer software render driver (#1646)
+  * ci: fix diff files having "wrong" path separator (#1648)
+  * Save in the `workspace` unsaved named files and `crlf` status (#1597)
+  * Ignore keypresses during IME composition (#1573)
+  * Improve `common.serialize` (#1640)
+  * Mark unsaved named files as dirty (#1598)
+  * fix: dim rendering when antialiasing is turned off (#1641)
+  * docs: fix prebuilt install instructions (#1637)
+  * Remove DPI detection for default `SCALE`
+  * docs: update invite link on README
+  * Make `linewrapping` consider the expanded `Scrollbar` size
+  * Fix `Scrollbar.{expanded,contracted}_size` documentation
+  * Fixed C++14 digit separators (#1593)
+  * docs(core.config): add documentation for config options (#1512)
+  * feat(statusview): make a separate item for doc position percent (#1579)
+  * Autocomplete plugin improvements (#1519)
+  * Add `NaN` guard to `View:update_scrollbar`
+  * Adds super as a modkey. (#1590)
+  * Normalize strokes in fixed order (#1572)
+  * Use Lua wrap by default (#1481)
+  * docs(core.contextmenu): add documentation for contextmenu (#1567)
+  * Fix returned `percent` when clicking the `Scrollbar` `track`
+  * Fix `scrollbar` misinterpreting `percent` (#1587)
+  * fix(core): defer core:open-log until everything is loaded (#1585)
+  * ci(release): use lite-xl org (#1571)
+  * Make `DocView` aware of scrollbars sizes (#1177)
+  * Updated README.md as per PR comittee meeting #8.
+  * Updating the *Installing prebuild* section in README.md (#1548)
+  * Use proper timeouts for coroutines that don't need to wait (#1467)
+  * Normalize stroke before adding keybind (#1334)
+  * feat(src/renderer): unify fontgroup baseline (#1560)
+  * Fixed things for when a thread requests a redraw. (#1570)
+  * Documentation for core.command (#1564)
+  * docs(system): fix missing parameter for system.path_compare (#1566)
+  * Documentation for core.common (#1510)
+  * Updated extension for mac. (#1563)
+  * feat(src/renderer): stream fonts with SDL_RWops on all platforms (#1555)
+  * Return state when tokenizing plaintext syntaxes
+  * style(src/renderer): use FreeType header names (#1554)
+  * Allow setting custom glyphset size (#1542)
+  * Skip checking `files` if no filename was provided to `syntax.get`
+  * Fix #1538 log scrolls automatically (the real PR) (#1546)
+  * comment typo in object.lua (#1541)
+  * Windows Installer Path Modification (#1536)
+  * Attach command buffer to Renderer Window (#1472)
+  * Increase number of loadable glyphsets (#1524)
+  * Add top tab margins (#1479)
+  * Show cursor at the start of the next line when selecting full lines (#761)
+  * Make `Doc:sanitize_position` return a more appropriate `col` (#1469)
+  * Revert "core syntax: strip the path from filename on syntax.get (#1168)" (#1322)
+  * Change AppID (#1187)
+  * When logging don't use `core.status_view` if not yet initialized
+  * Mark `linewrapping` `open_files` table as weak
+  * Add mouse grab (#1501)
+  * Close lua state when exiting on a runtime error (#1487)
+  * Move lineguide below blinking cursor, fixes #1488 (#1511)
+  * fix(renderer): fix memory leak when freeing glyphsets
+  * docs(system): make all parameters for set_window_hit_test optional
+  * detectindent: fix wrong detection reported by Adam (#1500)
+  * Allowed for overrides of toolbar items, so plugins can add things if they want to with different fonts. (#1157)
+  * Restore horizontal scroll position after scale change (#494)
+  * feat(bootstrap): return error string from C searcher
+  * fix(rencache): fix compiler warning for printing size_t
+  * Fixing linewrapping bug to do with wordwrapping.
+  * Added in double-clicking on emptyview and tab bar. (#1478)
+  * ci(build): update action dependencies
+  * fix(process): check for HANDLE_INVALID (#1475)
+  * Make `system.path_compare` more digit-aware (#1474)
+  * StatusView compat fix with older Lua runtimes
+  * Process API improvements (again) (#1370)
+  * Build releases with Ubuntu 18.04 container (#1460)
+  * Merge carets after `doc:move-to-{previous,next}-char` (#1462)
+  * refactor(plugin_api): move the header into include/ (#1440)
+  * Show error message in crash message box (#1461)
+  * Cross compiling improvements + macOS universal binary (#1458)
+  * upgrade header files to Lua 5.4 (#1436)
+  * Fix for api_require wrong macro && conditions (#1465)
+  * feat: add statusview item to show selections (#1445)
+  * #1393 followup (#1463)
+  * Make `system.path_compare` more case-aware (#1457)
+  * Update api_require to expose more symbols (#1437)
+  * Optimizing MSYS2 CI (#1435)
+  * fix(CI): bump dependency versions (#1434)
+  * fix: fix differing stacktrace on stdout and file (#1404)
+  * Add View dragging (#1402)
+  * fix(windows-utf8-patch): fix os.getenv() not supporting UTF-8 output (#1397)
+  * Fix invalid EXEFILE and EXEDIR on Windows (#1396)
+  * Added in support for foreground and background events. (#1395)
+  * add autocompletion to multicursor (#1394)
+  * fix cursors positions when deleting multiple selections (#1393)
+  * Added in explicit touchscreen keyboard support. (#1389)
+  * Allow `tokenizer` to pause and resume in the middle of a line (#1444)
+  * Disable `trimwhitespace` and `drawwhitespace` via their configs (#1446)
+  * Limit `core.threads` without a timeout to run 30 times per second
+  * Made things clearer, as per jgm's suggestion.
+  * Made coroutines make more sense, and fixed a bug. (#1381)
+  * Don't calculate widths per-uft8-char when not needed (#1409)
+  * Asynchronous process reaping (#1412)
+  * Aggregate `SDL_Surface`s and their scale in `RenSurface` (#1429)
+  * Make `TreeView` follow the current tab (#1411)
+  * Use clipping functions provided by SDL (#1426)
+  * Improve text width calculation precision (#1408)
+  * refactor(main): move SetProcessDPIAware to manifests (#1413)
+  * Split `Command` struct into different structs for each command type (#1407)
+  * Add manifest on Windows (#1405)
+  * Use correct view for scrolling to `find-replace:repeat-find` results (#1400)
+  * Added in ability to specify prefix via env variable. (#1388)
+  * fix incorrect x_offset if opened docs have different tab sizes (#1383)
+  * Fixed up some post 5.1/jit Symbols (#1385)
+  * Make tab scrolling more flexible (#1384)
+  * Correct the inverted tabs scrolling
+  * Make mouse scrollwheel hovering tabs scroll the tab bar (#1314)
+  * Allow groups to be used in end delimiter patterns in tokenizer (#1317)
+  * Improve `DocView:get_visible_line_range` precision (#1382)
+  * plugins scale: also rescale style.expanded_scrollbar_size (#1380)
+  * NagView: properly rescale on scale change (#1379)
+  * Restore in-selection replace as discussed in #1331 (#1368)
+  * Improved plugins config table handling (#1356)
+  * Make mod-version follow semver (#1036)
+  * fix: exec() error not returned to parent (#1363)
+  * Context menu fixes and keyboard navigation (#1338)
+  * Replace globally when replacing from selection (#1331)
+  * feat: add option to only draw whitespace if it is within selection (#1312)
+  * Abstracted open_doc out to allow for more easy overriding. (#1344)
+  * Getting rid of annoying forward slash on windows. (#1345)
+  * gh workflow: fix path to macOS arm64 cross file
+  * ci: fix msys build now requiring ca-certificates (#1348)
+  * pass RenWindow by argument (#1321)
+  * Add "Open with Lite XL" to windows' context menu (#1333)
+  * Added missing header declaration.
+  * plugin api: allow usage on multiple source files (#1335)
+  * Added in Config Postload (#1336)
+  * Avoid drawing hidden text in `DocView:draw_line_text` (#1298)
+  * remove static libgcc from meson (#1290)
+  * Updated dummy method signature to match prototypes.
+  * Make empty groups in `regex.gmatch` return their offset (#1325)
+  * Use `table.move` to implement `common.splice` (#1324)
+  * language_md: add nix code block highlighting (#1323)
+  * Create Renderer Only When It Doesn't Exist (#1315)
+  * replace uses of SDL_Window with RenWindow (#1319)
+  * Reorganize resources/ + wasm target (#1244)
+  * packaging: use master branch for plugin addons
+  * fix: center title and version in emptyview (#1311)
+  * defer lua error until after cleanup (#1310)
+  * plugin api: added missing luaL_typeerror (#1313)
+  * Packaging Scripts: updated widgets install location
+  * `linewrapping`: Disable horizontal scrolling when enabled (#1309)
+  * Handle readlink errors (#1292)
+  * Make `dirwatch` sorting compatible with what `file_bisect` expects (#1300)
+  * Don't set a value twice (#1306)
+  * Fix a memory leak (#1305)
+  * Make api_require's nodes const (#1296)
+  * do not allow users to create an empty font group (#1303)
+  * Allow command buffer to be expanded (#1297)
+  * Minor typos in init text
+
+-------------------------------------------------------------------
 Sat Jun 29 17:39:00 UTC 2024 - scott.bradnick@suse.com
 
 - Update to version 2.1.5+git20240629.af9c834:

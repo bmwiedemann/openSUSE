@@ -375,4 +375,12 @@
 - Update BuildRequires from requirements/test.txt</comment>
     <requestid>1206598</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>20759fc773168d3844fa3670d2e9e508</srcmd5>
+    <version>1.18.3</version>
+    <time>1733491513</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1228522</requestid>
+  </revision>
 </revisionlist>

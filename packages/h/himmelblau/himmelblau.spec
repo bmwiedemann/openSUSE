@@ -17,7 +17,7 @@
 
 
 Name:           himmelblau
-Version:        0.7.7+git.0.b48d0bb
+Version:        0.7.9+git.0.93655d2
 Release:        0
 Summary:        Interoperability suite for Microsoft Azure Entra Id
 License:        GPL-3.0-or-later
@@ -51,6 +51,7 @@ Recommends:     pam-himmelblau
 Provides:       aad-cli
 Provides:       aad-common
 Suggests:       himmelblau-sso
+Requires:       man
 # This is necessary to prevent users from installing Himmelblau along side
 # Microsoft's Broker, as these will conflict.
 Provides:       microsoft-identity-broker
@@ -164,6 +165,15 @@ install -m 0644 %{_builddir}/%{name}-%{version}/src/sso/src/firefox/linux_entra_
 install -D -d -m 0755 %{buildroot}%{_sysconfdir}/firefox/policies
 install -m 0644 %{_builddir}/%{name}-%{version}/src/sso/src/firefox/policies.json %{buildroot}%{_sysconfdir}/firefox/policies/
 
+# Man pages
+install -D -d -m 0755 %{buildroot}%{_mandir}/man1
+install -D -d -m 0755 %{buildroot}%{_mandir}/man5
+install -D -d -m 0755 %{buildroot}%{_mandir}/man8
+install -m 0644 %{_builddir}/%{name}-%{version}/man/man1/aad-tool.1 %{buildroot}%{_mandir}/man1/
+install -m 0644 %{_builddir}/%{name}-%{version}/man/man5/himmelblau.conf.5 %{buildroot}%{_mandir}/man5/
+install -m 0644 %{_builddir}/%{name}-%{version}/man/man8/himmelblaud.8 %{buildroot}%{_mandir}/man8/
+install -m 0644 %{_builddir}/%{name}-%{version}/man/man8/himmelblaud_tasks.8 %{buildroot}%{_mandir}/man8/
+
 %pre
 %service_add_pre himmelblaud.service himmelblaud-tasks.service
 
@@ -189,6 +199,10 @@ install -m 0644 %{_builddir}/%{name}-%{version}/src/sso/src/firefox/policies.jso
 %{_unitdir}/himmelblaud.service
 %{_unitdir}/himmelblaud-tasks.service
 %{_datarootdir}/dbus-1/services/com.microsoft.identity.broker1.service
+%{_mandir}/man1/aad-tool.1*
+%{_mandir}/man5/himmelblau.conf.5*
+%{_mandir}/man8/himmelblaud.8*
+%{_mandir}/man8/himmelblaud_tasks.8*
 
 %files -n libnss_himmelblau2
 %{_libdir}/libnss_%{name}.so.*

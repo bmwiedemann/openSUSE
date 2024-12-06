@@ -17,7 +17,7 @@
 
 %define baseprogramname lite-xl
 Name:           lite-xl-plugin-manager
-Version:        1.2.9+git20240622.1cf4f05
+Version:        1.3.1+git20241110.cde491b
 Release:        0
 Summary:        A %{baseprogramname} plugin manager
 %if 0%{?suse_version} > 1500
@@ -37,6 +37,7 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig(libgit2)
 BuildRequires:  pkgconfig(libzip)
 BuildRequires:  pkgconfig(lua) >= 5.4
+BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(zlib)
 Requires:       %{baseprogramname}
 # This can be managed by 'lite-xl-plugin-manager' (lpm)

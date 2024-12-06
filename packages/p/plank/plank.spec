@@ -1,7 +1,7 @@
 #
 # spec file for package plank
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,16 @@
 #
 
 
-%global __provides_exclude_from ^%{_libdir}/.*/docklets/.*\\.so$
-%define soname	libplank
-%define sover 1
+%define         sover 1
 Name:           plank
 Version:        0.11.89
 Release:        0
 Summary:        Trivial dock
 License:        GPL-3.0-or-later
-Group:          System/GUI/Other
 URL:            https://launchpad.net/plank
-Source0:        https://launchpad.net/%{name}/1.0/%{version}/+download/%{name}-%{version}.tar.xz
-Source1:        https://launchpad.net/%{name}/1.0/%{version}/+download/%{name}-%{version}.tar.xz.asc
-Source3:        %{name}.keyring
+Source0:        %{url}/1.0/%{version}/+download/%{name}-%{version}.tar.xz
+Source1:        %{url}/1.0/%{version}/+download/%{name}-%{version}.tar.xz.asc
+Source3:        https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xe4884aeede4cc02043c3d8045decdba89270e723#/%{name}.keyring
 Patch1:         0001_changed-plank-positioning-according-to-workarea.patch
 BuildRequires:  autoconf >= 2.65
 BuildRequires:  automake >= 1.11
@@ -57,8 +54,6 @@ BuildRequires:  pkgconfig(xfixes) >= 5.0
 BuildRequires:  pkgconfig(xi) >= 1.6.99.1
 Requires:       bamf-daemon >= 0.2.92
 Recommends:     %{name}-docklets
-Recommends:     %{name}-lang
-Recommends:     bamf-daemon
 
 %description
 Plank is a trivial dock.
@@ -66,18 +61,16 @@ Plank is a trivial dock.
 It is a library which can be extended to create other
 dock programs with more advanced features.
 
-%package -n %{soname}%{sover}
+%package -n lib%{name}%{sover}
 Summary:        Library for the Plank dock
-Group:          System/Libraries
 
-%description -n %{soname}%{sover}
+%description -n lib%{name}%{sover}
 Plank is a trivial dock.
 It is, however, a library which can be extended to create other
 dock programs with more advanced features.
 
 %package docklets
 Summary:        A collection of docklets for the Plank dock
-Group:          System/GUI/Other
 Requires:       %{name} = %{version}
 
 %description docklets
@@ -86,8 +79,7 @@ desktop, trash and etc.
 
 %package devel
 Summary:        Development files for the Plank dock
-Group:          Development/Libraries/C and C++
-Requires:       %{soname}%{sover} = %{version}
+Requires:       lib%{name}%{sover} = %{version}
 
 %description devel
 The libxnoise development package includes the header files, libraries,
@@ -104,30 +96,29 @@ linking application which will use libplank.
 %configure \
   --disable-static \
   --disable-apport
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
-%suse_update_desktop_file -r %{name} Utility DesktopUtility
-find %{buildroot} -type f -name "*.la" -delete -print
+%suse_update_desktop_file %{name}
 %find_lang %{name}
+rm -f %{buildroot}%{_libdir}/lib%{name}.la
 
-%post -n %{soname}%{sover} -p /sbin/ldconfig
-%postun -n %{soname}%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n lib%{name}%{sover}
 
 %files
 %license COPYING
 %doc AUTHORS COPYRIGHT HACKING NEWS README
 %{_bindir}/%{name}
-%{_datadir}/%{name}/
+%{_datadir}/%{name}
 %{_datadir}/metainfo/%{name}.appdata.xml
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/*/apps/%{name}.??g
+%{_datadir}/icons/hicolor/*/apps/%{name}.svg
 %{_datadir}/glib-2.0/schemas/*%{name}.gschema.xml
 %{_mandir}/man?/%{name}.?%{?ext_man}
 %dir %{_libdir}/%{name}
 
-%files -n %{soname}%{sover}
+%files -n lib%{name}%{sover}
 %{_libdir}/lib%{name}.so.*
 
 %files docklets
@@ -137,8 +128,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files devel
 %{_libdir}/pkgconfig/%{name}.pc
-%{_includedir}/%{name}/
+%{_includedir}/%{name}
 %{_libdir}/lib%{name}.so
-%{_datadir}/vala/
+%{_datadir}/vala/vapi/plank.{deps,vapi}
 
 %changelog

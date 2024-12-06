@@ -952,4 +952,37 @@
     <comment>- Apply sphinx-72.patch only conditionally for non-SLE-15 builds.</comment>
     <requestid>1227182</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>f3863cc3e2529d39c898109d1eb43d62</srcmd5>
+    <version>3.10.16</version>
+    <time>1733491497</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.10.16:
+  - Tests
+    - gh-125041: Re-enable skipped tests for zlib on the
+      s390x architecture: only skip checks of the compressed
+      bytes, which can be different between zlib’s software
+      implementation and the hardware-accelerated implementation.
+    - gh-109396: Fix test_socket.test_hmac_sha1() in FIPS
+      mode. Use a longer key: FIPS mode requires at least of at
+      least 112 bits. The previous key was only 32 bits. Patch by
+      Victor Stinner.
+  - Security
+    - gh-126623: Upgrade libexpat to 2.6.4
+    - gh-122792: Changed IPv4-mapped ipaddress.IPv6Address to
+      consistently use the mapped IPv4 address value for deciding
+      properties. Properties which have their behavior fixed are
+      is_multicast, is_reserved, is_link_local, is_global, and
+      is_unspecified (bsc#1233307, CVE-2024-11168).
+  - Library
+    - gh-124651: Properly quote template strings in venv
+      activation scripts (bsc#1232241, CVE-2024-9287).
+    - gh-103848: Add checks to ensure that [ bracketed ] hosts
+      found by urllib.parse.urlsplit() are of IPv6 or IPvFuture
+      format.
+- Removed upstreamed patches:
+  - CVE-2024-9287-venv_path_unquoted.patch
+  - CVE-2024-11168-validation-IPv6-addrs.patch</comment>
+    <requestid>1228381</requestid>
+  </revision>
 </revisionlist>

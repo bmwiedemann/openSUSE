@@ -16,15 +16,16 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-django-ckeditor
-Version:        6.7.1
+Version:        6.7.2
 Release:        0
 Summary:        Django admin CKEditor integration
 License:        BSD-3-Clause
 URL:            https://github.com/django-ckeditor/django-ckeditor
-Source:         https://files.pythonhosted.org/packages/source/d/django-ckeditor/django-ckeditor-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/d/django_ckeditor/django_ckeditor-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/ckeditor/ckeditor4/commit/8ed1a3c93d0ae5f49f4ecff5738ab8a2972194cb https://github.com/ckeditor/ckeditor4/security/advisories/GHSA-fq6h-4g8v-qqvm
+Patch:          CVE-2024-24815.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -40,7 +41,7 @@ CKEditorWidget utilizing CKEditor with image upload and browsing
 support included.
 
 %prep
-%setup -q -n django-ckeditor-%{version}
+%autosetup -p1 -n django_ckeditor-%{version}
 
 %build
 %python_build
@@ -55,6 +56,7 @@ support included.
 %files %{python_files}
 %doc AUTHORS.rst CHANGELOG.rst README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/ckeditor*
+%{python_sitelib}/django_ckeditor-%{version}*info
 
 %changelog

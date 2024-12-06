@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Dec  4 21:40:41 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 3.11.11:
+  - Tools/Demos
+    - gh-123418: Update GitHub CI workflows to use OpenSSL 3.0.15
+      and multissltests to use 3.0.15, 3.1.7, and 3.2.3.
+  - Tests
+    - gh-125041: Re-enable skipped tests for zlib on the
+      s390x architecture: only skip checks of the compressed
+      bytes, which can be different between zlib’s software
+      implementation and the hardware-accelerated implementation.
+  - Security
+    - gh-126623: Upgrade libexpat to 2.6.4
+    - gh-122792: Changed IPv4-mapped ipaddress.IPv6Address to
+      consistently use the mapped IPv4 address value for deciding
+      properties. Properties which have their behavior fixed are
+      is_multicast, is_reserved, is_link_local, is_global, and
+      is_unspecified.
+  - Library
+    - gh-124651: Properly quote template strings in venv
+      activation scripts (bsc#1232241, CVE-2024-9287).
+- Removed upstreamed patches:
+  - CVE-2024-9287-venv_path_unquoted.patch
+
+-------------------------------------------------------------------
 Tue Dec  3 08:21:35 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add add-loongarch64-support.patch to support loongarch64

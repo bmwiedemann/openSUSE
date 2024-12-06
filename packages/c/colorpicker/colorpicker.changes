@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Nov 17 19:27:38 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update spec file for Leap 16.0:
+  * remove %suse_update_desktop_file
+  * remove mention of elementary
+  * remove recommend of lang package
+  * remove stuff which were for Leap < 1500
+
+-------------------------------------------------------------------
 Sun May 17 12:15:24 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 1.1.5:

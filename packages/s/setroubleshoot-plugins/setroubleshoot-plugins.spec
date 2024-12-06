@@ -1,7 +1,7 @@
 #
 # spec file for package setroubleshoot-plugins
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,8 +22,10 @@ Release:        0
 Summary:        Helps troubleshoot SELinux problems
 License:        GPL-2.0-or-later
 Group:          Productivity/Security
-URL:            https://github.com/fedora-selinux/setroubleshoot
+URL:            https://gitlab.com/setroubleshoot/plugins/
 Source:         https://releases.pagure.org/setroubleshoot/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM regenerate to fix build with python 3.13
+Patch0:         https://gitlab.com/setroubleshoot/plugins/-/commit/9e54f6a661330070ad25a0e86f197b3530bfc5c7.patch
 BuildRequires:  fdupes
 BuildRequires:  gettext
 BuildRequires:  intltool
@@ -42,7 +44,7 @@ to interpret SELinux AVC denials.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure

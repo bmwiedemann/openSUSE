@@ -1,5 +1,5 @@
 -------------------------------------------------------------------
-Tue Dec 03 22:09:11 UTC 2024 - jason.record@suse.com
+Tue Dec  3 22:09:11 UTC 2024 - jason.record@suse.com
 
 - Changes to version 3.2.9
   + Map running PIDs to RPM package owner aiding BPF program detection (bsc#1222896, bsc#1213291, PED-8221)
@@ -9,7 +9,7 @@ Tue Dec 03 22:09:11 UTC 2024 - jason.record@suse.com
   + Merged sle15 and master branches (bsc#1233726, PED-11669)
 
 -------------------------------------------------------------------
-Thu 01 Aug 2024 03:11:32 AM UTC - jesse.chandler@suse.com
+Thu Aug  1 03:11:32 UTC 2024 - jesse.chandler@suse.com
 
 - Changes to version 3.2.8
   + Avoid getting duplicate kernel verifications in boot.text (pr#190)
@@ -26,10 +26,30 @@ Thu 01 Aug 2024 03:11:32 AM UTC - jesse.chandler@suse.com
   + drbd_info: Fix incorrect escape of quotes (pr#210)
 
 -------------------------------------------------------------------
+Mon Apr 15 17:00:03 UTC 2024 - jason.record@suse.com
+
+- Changes in version 3.1.30
+  + Added -V key:value pair option (bsc#1222021, PED-8211)
+  + Avoid getting duplicate kernel verifications in boot.text (pr#193)
+  + Suppress file descriptor leak warnings from lvm commands (pr#192, bsc#1220082)
+  + Includes container log timestamps (pr#197)
+
+-------------------------------------------------------------------
 Wed Feb 14 22:46:05 UTC 2024 - jason.record@suse.com
 
 - Changes to version 3.2.7
   + Extended scaling for performance (bsc#1214713)
+  + Corrected get_sles_ver for SLE Micro (bsc#1219241)
+  + Check nvidida-persistenced state (bsc#1219639)
+
+-------------------------------------------------------------------
+Mon Feb 12 22:02:10 UTC 2024 - jason.record@suse.com
+
+- Changes to version 3.1.29
+  + Extended scaling for performance (bsc#1214713)
+  + Fixed kdumptool output error (bsc#1218632)
+  + Corrected podman ID errors (bsc#1218812)
+  + Duplicate non root podman entries removed (bsc#1218814)
   + Corrected get_sles_ver for SLE Micro (bsc#1219241)
   + Check nvidida-persistenced state (bsc#1219639)
 
@@ -49,6 +69,30 @@ Thu Jan 11 14:01:52 UTC 2024 - jason.record@suse.com
   + Correctly detects Xen Dom0 (bsc#1218201)
 
 -------------------------------------------------------------------
+Thu Jan 11 13:37:41 UTC 2024 - jason.record@suse.com
+
+- Additional changes in version 3.1.28
+  + ipset - List entries for all sets
+  + ipvsadm - Inspect the virtual server table (pr#185)
+  + Correctly detects Xen Dom0 (bsc#1218201)
+  + Fixed smart disk error (bsc#1218282)
+
+-------------------------------------------------------------------
+Wed Dec 20 15:22:09 UTC 2023 - jason.record@suse.com
+
+- Changes in version 3.1.28
+  + Inhibit the conversion of port numbers to port names for network files (cherry picked from commit 55f5f716638fb15e3eb1315443949ed98723d250)
+  + powerpc: collect rtas_errd.log and lp_diag.log files (pr#175)
+  + Get list of pam.d file (cherry picked from commit eaf35c77fd4bc039fd7e3d779ec1c2c6521283e2)
+  + Remove supportutils requires for util-linux-systemd and kmod (bsc#1193173)
+  + Added missing klp information to kernel-livepatch.txt (bsc#1216390)
+  + Fixed plugins creating empty files when using supportconfig.rc (bsc#1216388)
+  + Provides long listing for /etc/sssd/sssd.conf (bsc#1211547)
+  + Optimize lsof usage (bsc#1183663)
+  + Added mokutil commands for secureboot (pr#179)
+  + Collects chrony or ntp as needed (bsc#1196293)
+
+-------------------------------------------------------------------
 Mon Dec 18 21:21:56 UTC 2023 - jason.record@suse.com
 
 - Changes in version 3.2.4
@@ -61,6 +105,17 @@ Mon Dec 18 21:21:56 UTC 2023 - jason.record@suse.com
   + Added mokutil commands for secureboot (pr#178)
   + ipset - List entries for all sets (pr#180)
   + ipvsadm - Inspect the virtual server table (pr#181)
+
+-------------------------------------------------------------------
+Fri Nov 17 20:49:50 UTC 2023 - jason.record@suse.com
+
+- Changes in version 3.1.27
+  + Fixed podman display issue (bsc#1217287)
+  + Added nvme-stas configuration to nvme.txt (bsc#1216049)
+  + Added timed command to fs-files.txt (bsc#1216827)
+  + Collects zypp history file issue#166 (bsc#1216522)
+  + Changed -x OPTION to really be exclude only (issue#146)
+  + Collect HA related rpm package versions in ha.txt (pr#169)
 
 -------------------------------------------------------------------
 Fri Nov 17 15:35:15 UTC 2023 - jason.record@suse.com

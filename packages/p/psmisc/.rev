@@ -892,4 +892,12 @@
 - Port patch psmisc-v23.6.dif and rename it to psmisc-v23.7.dif</comment>
     <requestid>1177128</requestid>
   </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>3d20f8f9fb82ea262ea18051410f3ed2</srcmd5>
+    <version>23.7</version>
+    <time>1733491519</time>
+    <user>anag+factory</user>
+    <comment>- add loongarch64 as peekfd supported arch (forwarded request 1228512 from adrianSuSE)</comment>
+    <requestid>1228556</requestid>
+  </revision>
 </revisionlist>

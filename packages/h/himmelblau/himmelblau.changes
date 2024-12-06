@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec 05 14:18:37 UTC 2024 - david.mulder@suse.com
+
+- Update to version 0.7.9+git.0.93655d2:
+  * Version 0.7.9
+  * Update to the latest libhimmelblau
+  * Version 0.7.8
+  * Add a himmelblau.conf man page, and package the man pages
+  * Add DAG flow as a fallback for MFA
+
+-------------------------------------------------------------------
 Mon Dec 02 16:43:42 UTC 2024 - david.mulder@suse.com
 
 - Update to version 0.7.7+git.0.b48d0bb:

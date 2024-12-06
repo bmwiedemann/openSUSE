@@ -59,6 +59,8 @@ Patch4:         uwsgi-2.0.18-postgresql-config.patch
 Patch5:         uwsgi-ld-noexecstack.patch
 # PATCH-FIX-UPSTREAM python313.patch - plugins/python: handle cframe removal from CPython thread state https://github.com/unbit/uwsgi/commit/699dc20f8204ee18812951600b0221156d217530
 Patch6:         python313.patch
+# PATCH-FIX-OPENSUSE
+Patch100:       uwsgi-reproducible-jar-mtime.patch
 BuildRequires:  apache-rpm-macros
 %if 0%{suse_version} < 1500
 BuildRequires:  apache2-devel
@@ -442,7 +444,18 @@ This package contains support for PHP version 7.
 %endif
 
 %prep
-%autosetup -p1 -n uwsgi-%{version}
+%setup -n uwsgi-%{version}
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
+%patch -P 6 -p1
+# The "--date" option was added into jar in OpenJDK 17
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+%patch -P 100 -p1
+%endif
 
 # Generate a config that builds all plugins except for examples and stuff we
 # can't satisfy the requirements for or are just broken

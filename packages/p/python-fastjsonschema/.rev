@@ -101,4 +101,25 @@
     <comment></comment>
     <requestid>1225676</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4469a118c33c158f9b524e1fb3b2b23a</srcmd5>
+    <version>2.21.1</version>
+    <time>1733491507</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.21.1:
+  * Fixed ResourceWarning where file was not properly closed
+  * Fixed regexp for date format
+  * Updated test suite
+  * Fixed detecting when infinity is reached with multipleOf
+  * Fixed that min/max items/lenght/properties can be float
+  * Fixed that everything with empty `not` is invalid
+  * Fixed missing re import when using regex pattern
+  * Improved regexp for email format to comfort test suite
+  * Improved regexp for date format to comfort test suite
+  * Improved regexp for ipv4 format to comfort test suite
+  * Added partial support of idn-hostname format
+  * Added `detailed_exceptions` flag (default to True to avoid
+    breaking change) - when used, results are twice as fast</comment>
+    <requestid>1228480</requestid>
+  </revision>
 </revisionlist>

@@ -362,4 +362,14 @@
   * Fixed `Table` rendering of box elements so &quot;footer&quot; elements</comment>
     <requestid>1225564</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>e64b54f0a4cbba5c415d93ad00b09592</srcmd5>
+    <version>13.9.4</version>
+    <time>1733491502</time>
+    <user>anag+factory</user>
+    <comment>- Switch to GitHub tarball so we can run the testsuite.
+- Correct version guard for typing_extensions Requires.
+- Drop Python 3.7 sections.</comment>
+    <requestid>1228407</requestid>
+  </revision>
 </revisionlist>

@@ -41,7 +41,7 @@ BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(pangocairo)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.24
 BuildRequires:  pkgconfig(wayland-server) >= 1.20.0
-BuildRequires:  pkgconfig(wlroots) >= 0.16.0
+BuildRequires:  pkgconfig(wlroots-0.18) >= 0.18.0
 BuildRequires:  pkgconfig(xwaylandproto)
 
 %description

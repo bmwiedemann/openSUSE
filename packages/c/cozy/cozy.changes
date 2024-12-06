@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Nov 17 20:31:47 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update spec file for Leap 16.0:
+  * rework the BuildRequires, as the software moved from granite to gtk directly
+  * remove %suse_update_desktop_file
+  * use autosetup
+
+-------------------------------------------------------------------
+Fri May 10 15:38:45 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Fix build by adding missing dependency and using correct filename
+
+-------------------------------------------------------------------
+Sat Mar 23 13:01:30 UTC 2024 - Julian Geywitz <suse@geigi.de>
+
+- Update to 1.3.0
+After almost two years, a new version of Cozy is finally here! This release brings an updated user interface along with numerous bug fixes and improved performance.
+
+The user interface has been ported to GTK4 and Libadwaita. Thus, Cozy benefits from the new style sheet, automatic dark mode, and utilizes the latest and greatest UI elements throughout the application. Many thanks to Benedek Dévényi (@rdbende) and @grahamvh!
+
+  * Improved mobile support
+  * Smaller visual refinements to match the state of the art of GNOME apps
+  * Dozens of bug fixes and performance improvements
+  * Significant cleanup and improvements to the codebase
+  * As always, updated translations thanks to all translators!
+
+-------------------------------------------------------------------
 Tue Jan 10 10:55:04 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Drop unnecessary python3-magic dependency

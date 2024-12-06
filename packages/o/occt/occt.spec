@@ -22,23 +22,19 @@
 %bcond_with    docs
 %endif
 
-%define OCCT_TAG V7_7_2
+%define OCCT_TAG 7_8_1
 
 Name:           occt
-Version:        7.7.2
+Version:        7.8.1
 Release:        0
-%define soname 7_7_2
-%define sover  7.7.2
+%define soname 7_8_1
+%define sover  7.8.1
 %define sover_len 3
 Summary:        OpenCASCADE Official Edition
 License:        LGPL-2.1-only WITH OCCT-exception-1.0
 Group:          Productivity/Graphics/CAD
 URL:            https://www.opencascade.com/open-cascade-technology/
-# Password protected URL, factory validation will fail
-# https://www.opencascade.com/sites/default/files/private/occt/OCC_%%{version}_release/opencascade-%%{version}.tgz
-# getting it from git for patch level releases not existing as tar ball
-# Source0:        https://github.com/Open-Cascade-SAS/OCCT/archive/refs/tags/V%%{OCCT_TAG}.tar.gz#/occt-%%{version}.tar.gz
-Source0:        https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/%{OCCT_TAG};sf=tgz#/occt-%{version}.tar.gz
+Source0:        https://github.com/Open-Cascade-SAS/OCCT/archive/refs/tags/V%{OCCT_TAG}.tar.gz#/occt-%{version}.tar.gz
 BuildRequires:  bison
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -105,7 +101,6 @@ Developer documentation for OpenCASCADE
 %package -n libopencascade-applicationframework%{soname}
 Summary:        OpenCASCADE application framework libraries
 Group:          System/Libraries
-Conflicts:      libopencascade-applicationframework7_7 = %{version}
 
 %description -n libopencascade-applicationframework%{soname}
 This package contains the OpenCASCADE libraries from the
@@ -116,7 +111,6 @@ OpenCASCADE application framework module:
 %package -n libopencascade-dataexchange%{soname}
 Summary:        OpenCASCADE data exchange libraries
 Group:          System/Libraries
-Conflicts:      libopencascade-dataexchange7_7 = %{version}
 
 %description -n libopencascade-dataexchange%{soname}
 This package contains the OpenCASCADE libraries from the
@@ -129,7 +123,6 @@ OpenCASCADE data exchange module:
 Summary:        OpenCASCADE Draw support libraries
 Group:          System/Libraries
 Requires:       %{name}-resources
-Conflicts:      libopencascade-draw7_7 = %{version}
 
 %description -n libopencascade-draw%{soname}
 This package contains support libraries for the
@@ -138,7 +131,6 @@ OpenCASCADE DRAWEXE test harness.
 %package -n libopencascade-foundationclasses%{soname}
 Summary:        OpenCASCADE foundation classes libraries
 Group:          System/Libraries
-Conflicts:      libopencascade-foundationclasses7_7 = %{version}
 
 %description -n libopencascade-foundationclasses%{soname}
 This package contains the OpenCASCADE libraries from the
@@ -148,7 +140,6 @@ OpenCASCADE foundation classes module:
 %package -n libopencascade-modelingalgorithms%{soname}
 Summary:        OpenCASCADE modeling algorithms libraries
 Group:          System/Libraries
-Conflicts:      libopencascade-modelingalgorithms7_7 = %{version}
 
 %description -n libopencascade-modelingalgorithms%{soname}
 This package contains the OpenCASCADE libraries from the
@@ -159,7 +150,6 @@ OpenCASCADE modeling module:
 %package -n libopencascade-modelingdata%{soname}
 Summary:        OpenCASCADE modeling data libraries
 Group:          System/Libraries
-Conflicts:      libopencascade-modelingdata7_7 = %{version}
 
 %description -n libopencascade-modelingdata%{soname}
 This package contains the OpenCASCADE libraries from the
@@ -169,7 +159,6 @@ OpenCASCADE modeling module:
 %package -n libopencascade-visualization%{soname}
 Summary:        OpenCASCADE visualization libraries
 Group:          System/Libraries
-Conflicts:      libopencascade-visualization7_7 = %{version}
 
 %description -n libopencascade-visualization%{soname}
 This package contains the OpenCASCADE libraries from the
@@ -186,7 +175,7 @@ This package contains the OpenCASCADE DRAWEXE test
 harness executable.
 
 %prep
-%autosetup -p1 -n occt-%{OCCT_TAG}
+%autosetup -p1 -n OCCT-%{OCCT_TAG}
 
 %build
 %cmake \
@@ -252,19 +241,17 @@ rm -rf %buildroot/usr/share/doc
 %files -n libopencascade-dataexchange%{soname}
 %_libdir/libTKBinXCAF.so.%{sover}*
 %_libdir/libTKExpress.so.%{sover}*
-%_libdir/libTKIGES.so.%{sover}*
 %_libdir/libTKRWMesh.so.%{sover}*
-%_libdir/libTKSTEP.so.%{sover}*
-%_libdir/libTKSTEP209.so.%{sover}*
-%_libdir/libTKSTEPAttr.so.%{sover}*
-%_libdir/libTKSTEPBase.so.%{sover}*
-%_libdir/libTKSTL.so.%{sover}*
-%_libdir/libTKVRML.so.%{sover}*
 %_libdir/libTKXCAF.so.%{sover}*
-%_libdir/libTKXDE.so.%{sover}*
-%_libdir/libTKXDECascade.so.%{sover}*
-%_libdir/libTKXDEIGES.so.%{sover}*
-%_libdir/libTKXDESTEP.so.%{sover}*
+%_libdir/libTKDE.so.%{sover}*
+%_libdir/libTKDECascade.so.%{sover}*
+%_libdir/libTKDEGLTF.so.%{sover}*
+%_libdir/libTKDEIGES.so.%{sover}*
+%_libdir/libTKDEOBJ.so.%{sover}*
+%_libdir/libTKDEPLY.so.%{sover}*
+%_libdir/libTKDESTEP.so.%{sover}*
+%_libdir/libTKDESTL.so.%{sover}*
+%_libdir/libTKDEVRML.so.%{sover}*
 %_libdir/libTKXSBase.so.%{sover}*
 %_libdir/libTKXmlXCAF.so.%{sover}*
 
@@ -280,6 +267,14 @@ rm -rf %buildroot/usr/share/doc
 %_libdir/libTKTObjDRAW.so.%{sover}*
 %_libdir/libTKXDEDRAW.so.%{sover}*
 %_libdir/libTKXSDRAW.so.%{sover}*
+%_libdir/libTKXSDRAWDE.so.%{sover}*
+%_libdir/libTKXSDRAWGLTF.so.%{sover}*
+%_libdir/libTKXSDRAWIGES.so.%{sover}*
+%_libdir/libTKXSDRAWOBJ.so.%{sover}*
+%_libdir/libTKXSDRAWPLY.so.%{sover}*
+%_libdir/libTKXSDRAWSTEP.so.%{sover}*
+%_libdir/libTKXSDRAWSTL.so.%{sover}*
+%_libdir/libTKXSDRAWVRML.so.%{sover}*
 %_libdir/libTK*Test.so.%{sover}*
 
 %files -n libopencascade-modelingalgorithms%{soname}

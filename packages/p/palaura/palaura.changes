@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 18 13:12:50 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update spec file for Leap 16.0:
+  * remove %suse_update_desktop_file
+  * remove HiDPI workaround
+
+-------------------------------------------------------------------
 Mon May 17 22:58:06 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.5.1

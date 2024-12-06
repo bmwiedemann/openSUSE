@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec  5 07:06:07 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * uwsgi-reproducible-jar-mtime.patch
+    + Use SOURCE_DATE_EPOCH for reproducible jar mtime
+    + Applied if building with Java >= 17
+
+-------------------------------------------------------------------
 Tue Nov  5 14:58:48 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - add python313.patch to support the newest CPython

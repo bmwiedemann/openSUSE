@@ -27,7 +27,7 @@
 %endif
 
 Name:           golang-github-prometheus-prometheus
-Version:        2.55.1
+Version:        3.0.1
 Release:        0
 Summary:        The Prometheus monitoring system and time series database
 License:        Apache-2.0
@@ -98,9 +98,6 @@ install -D -m 0644 %{SOURCE4} %{buildroot}%{_sysconfdir}/prometheus/prometheus.y
 install -d -m 0755 %{buildroot}%{_sbindir}
 ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rcprometheus
 
-install -m 0755 -d %{buildroot}%{_datarootdir}/prometheus
-cp -fr console_libraries/ consoles/ %{buildroot}%{_datarootdir}/prometheus
-
 install -m 0755 -d %{buildroot}%{_fillupdir}
 install -m 0644 %{SOURCE5} %{buildroot}%{_fillupdir}/sysconfig.prometheus
 
@@ -146,7 +143,6 @@ install -D -m0644 %{SOURCE7} %{buildroot}/%{_defaultlicensedir}/%{name}/npm_lice
 %{_bindir}/promtool
 %{_unitdir}/prometheus.service
 %{_sbindir}/rcprometheus
-%{_datarootdir}/prometheus
 %{_fillupdir}/sysconfig.prometheus
 %dir %attr(0700,prometheus,prometheus) %{_sharedstatedir}/prometheus
 %dir %attr(0700,prometheus,prometheus) %{_sharedstatedir}/prometheus/data

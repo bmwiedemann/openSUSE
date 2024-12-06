@@ -1,7 +1,7 @@
 #
 # spec file for package libplist
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,7 @@ BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Cython >= 0.17
+BuildRequires:  python3-setuptools
 BuildRequires:  pkgconfig(python3)
 
 %description

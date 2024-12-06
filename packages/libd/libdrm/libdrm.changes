@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Dec  5 02:41:24 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 2.4.124
+  * include/drm/README: update drm-next link to use gitlab instead of cgit
+  * modetest: simplify planar YUV handling
+  * modetest: add support for YUV422 and YUV444 plane format
+  * xf86drm: print AMD modifiers properly
+  * tests/util: Call `drmGetDevices2()` instead of `drmOpen()`ing all modules
+  * android: add genrule for generated_static_table_fourcc.h
+  * modetest: Make modetest availble to vendor on Android
+  * build: simplify Linux system check
+
+-------------------------------------------------------------------
 Tue Aug 27 07:57:17 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to 2.4.123

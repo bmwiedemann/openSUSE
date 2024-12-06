@@ -23,15 +23,14 @@ Version:        13.9.4
 Release:        0
 Summary:        A Python library for rich text and beautiful formatting in the terminal
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/Textualize/rich
-Source:         https://files.pythonhosted.org/packages/source/r/rich/rich-%{version}.tar.gz
-BuildRequires:  %{python_module dataclasses >= 0.7 if %python-base < 3.7}
+Source:         https://github.com/Textualize/rich/archive/refs/tags/v%{version}.tar.gz#/rich-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module markdown-it-py >= 2.2.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pygments >= 2.13.0}
-BuildRequires:  %{python_module typing_extensions >= 4.0.0 if %python-base < 3.9}
+BuildRequires:  %{python_module typing_extensions >= 4.0.0 if %python-base < 3.11}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-markdown-it-py >= 2.2.0
@@ -41,11 +40,8 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION
-%if 0%{?python_version_nodots} < 39
+%if 0%{?python_version_nodots} < 311
 Requires:       python-typing_extensions >= 4.0.0
-%endif
-%if 0%{?python_version_nodots} < 37
-Requires:       python-dataclasses >= 0.7
 %endif
 %python_subpackages
 
@@ -63,10 +59,13 @@ markdown and more to the terminal.
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%check
+%pytest
+
 %files %{python_files}
 %license LICENSE
 %doc README.md
 %{python_sitelib}/rich
-%{python_sitelib}/rich-%{version}*-info
+%{python_sitelib}/rich-%{version}.dist-info
 
 %changelog

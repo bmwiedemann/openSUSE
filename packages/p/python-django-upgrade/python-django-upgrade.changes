@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec  5 14:51:27 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.22.2:
+  * Make these fixers work when django.contrib.gis.db.models is
+    used to import objects from django.db.models:
+    check_constraint_condition index_together  Issue #513.
+
+-------------------------------------------------------------------
 Mon Oct 28 12:27:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.22.1:

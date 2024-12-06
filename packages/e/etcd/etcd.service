@@ -21,6 +21,7 @@ RestrictRealtime=true
 Type=notify
 WorkingDirectory=/var/lib/etcd/
 EnvironmentFile=-/etc/sysconfig/etcd
+EnvironmentFile=-/etc/default/etcd
 User=etcd
 # set GOMAXPROCS to number of processors
 ExecStart=/bin/bash -c "GOMAXPROCS=$(nproc) /usr/sbin/etcd $ETCD_OPTIONS"

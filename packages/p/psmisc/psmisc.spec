@@ -48,7 +48,7 @@ Patch2:         %{name}-22.21-pstree.patch
 # https://gitlab.com/bitstreamout/psmisc/tree/mountinfo
 Patch3:         0001-Use-mountinfo-to-be-able-to-use-the-mount-identity.patch
 
-%define have_peekfd %ix86 x86_64 ppc ppc64 ppc64le %arm mipsel m68k aarch64
+%define have_peekfd %ix86 x86_64 ppc ppc64 ppc64le %arm mipsel m68k aarch64 loongarch64
 
 %description
 The psmisc package contains utilities for managing processes on your

@@ -52,7 +52,7 @@ This package contains a small demo app to send notifications.
 
 %prep
 %autosetup -N -n notifications-%{version}
-%if 0%{?suse_version} <= 1600
+%if 0%{?suse_version} < 1600
 %patch -P0 -p1
 %endif
 

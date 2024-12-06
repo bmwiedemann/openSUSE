@@ -1,0 +1,43 @@
+---
+ misc/ext.d/archive.sh  |    3 +++
+ misc/filehighlight.ini |    2 +-
+ misc/mc.ext.ini.in     |    5 +++++
+ 3 files changed, 9 insertions(+), 1 deletion(-)
+
+--- a/misc/ext.d/archive.sh
++++ b/misc/ext.d/archive.sh
+@@ -136,6 +136,9 @@ do_view_action() {
+     cpio)
+         cpio -itv < "${MC_EXT_FILENAME}" 2>/dev/null
+         ;;
++    obscpio)
++        cpio -itv < "${MC_EXT_FILENAME}" 2>/dev/null
++        ;;
+     7z)
+         7za l "${MC_EXT_FILENAME}" 2>/dev/null ||
+             7z l "${MC_EXT_FILENAME}"
+--- a/misc/filehighlight.ini
++++ b/misc/filehighlight.ini
+@@ -25,7 +25,7 @@
+     regexp=(^#.*|.*~$)
+ 
+ [archive]
+-    extensions=7z;Z;ace;apk;arc;arj;ark;bz2;cab;cpio;deb;gz;lha;lz;lz4;lzh;lzma;lzo;rar;rpm;tar;tbz;tbz2;tgz;tlz;txz;tzo;tzst;vsix;xz;zip;zoo;zst
++    extensions=7z;Z;ace;apk;arc;arj;ark;bz2;cab;cpio;obscpio;deb;gz;lha;lz;lz4;lzh;lzma;lzo;rar;rpm;tar;tbz;tbz2;tgz;tlz;txz;tzo;tzst;vsix;xz;zip;zoo;zst
+ 
+ [doc]
+     extensions=chm;css;ctl;diz;doc;docm;docx;dtd;fodg;fodp;fods;fodt;htm;html;json;letter;lsm;mail;man;markdown;md;me;mkd;msg;nroff;odg;odp;ods;odt;pdf;po;ppt;pptm;pptx;ps;rtf;sgml;shtml;tex;text;txt;xls;xlsm;xlsx;xml;xsd;xslt
+--- a/misc/mc.ext.ini.in
++++ b/misc/mc.ext.ini.in
+@@ -349,6 +349,11 @@ Shell=.cpio
+ ShellIgnoreCase=true
+ Include=cpio
+ 
++[obscpio]
++Shell=.obscpio
++Open=%cd %p/ucpio://
++View=%view{ascii} @EXTHELPERSDIR@/archive.sh view obscpio
++
+ [initrd]
+ Regex=^(initramfs.*\\.img|initrd(-.+)?\\.img(-.+)?)$
+ Include=cpio

@@ -7,4 +7,14 @@
     <comment></comment>
     <requestid>1223031</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>284b60d87abdbcec658c9ffc8bdbf717</srcmd5>
+    <version>8.0.0</version>
+    <time>1733491565</time>
+    <user>anag+factory</user>
+    <comment>- update to 8.0.0:
+  * Update icon list to match Platform 8
+  * Update translations (forwarded request 1228593 from rrahl0)</comment>
+    <requestid>1228594</requestid>
+  </revision>
 </revisionlist>

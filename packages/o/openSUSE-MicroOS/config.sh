@@ -242,6 +242,7 @@ fi
 # Configure Vagrant specifics
 #--------------------------------------
 if [[ "$kiwi_profiles" == *"Vagrant"* ]]; then
+        echo "Add user vagrant"
         # create vagrant user
         useradd vagrant
         # allow password-less sudo
@@ -254,6 +255,10 @@ ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA6NF8iallvQVp22WDkTkyrtvp9eWW6A8YVr+kz4TjGYe7
 EOF
         chmod 0600 /home/vagrant/.ssh/authorized_keys
         chown -R vagrant /home/vagrant
+
+        echo "Disable jeos-firstboot.service for Vagrant boxes"
+	systemctl disable jeos-firstboot.service
+	systemctl mask jeos-firstboot.service
 fi
 
 #======================================
@@ -265,7 +270,7 @@ if rpm -q sdbootutil; then
 		test -d "$d" || continue
 		depmod -a "${d##*/}"
 	done
-	ENTRY_TOKEN=$(. /usr/lib/os-release; echo $ID)
+	ENTRY_TOKEN=$(. /usr/lib/os-release; echo "$ID")
 	mkdir -p /etc/kernel
 	echo "$ENTRY_TOKEN" > /etc/kernel/entry-token
 	# FIXME: kiwi needs /boot/efi to exist before syncing the disk image

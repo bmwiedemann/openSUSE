@@ -16,19 +16,20 @@
 #
 
 
+%define         appid com.github.louis77.tuner
 Name:           tuner
-Version:        1.5.2
+Version:        1.5.5
 Release:        0
 Summary:        Minimalist radio station player
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://github.com/louis77/tuner
-Source:         https://github.com/louis77/tuner/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         fix-gschema.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  vala >= 0.44
 BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(gio-2.0)
@@ -39,19 +40,18 @@ BuildRequires:  pkgconfig(gstreamer-player-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libsoup-3.0)
-Recommends:     %{name}-lang
 Recommends:     gstreamer-plugins-base
 Recommends:     gstreamer-plugins-good
 Recommends:     gstreamer-plugins-libav
 Recommends:     gstreamer-plugins-ugly
 
 %description
-An Internet Radio Station player for elementary OS.
+An Internet Radio Station player for the Pantheon Desktop.
 
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %meson
@@ -59,32 +59,19 @@ An Internet Radio Station player for elementary OS.
 
 %install
 %meson_install
-%suse_update_desktop_file -r com.github.louis77.tuner GTK AudioVideo Audio Player
-%find_lang com.github.louis77.tuner %{name}.lang
-%fdupes %{buildroot}/%{_datadir}
+%find_lang %{appid}
+%fdupes %{buildroot}
 
-# dirlist HiDPI icons (see: hicolor/index.theme)
-touch $PWD/dir.lst
-_dirlist=$PWD/dir.lst
-pushd %{buildroot}
-find ./ | while read _list; do
-    echo $_list | grep '[0-9]\@[0-9]' || continue
-    _path=$(echo $_list | sed 's/[^/]//')
-    if ! ls ${_path%/*}; then
-        grep -xqs "\%dir\ ${_path%/*}" $_dirlist || echo "%dir ${_path%/*}" >> $_dirlist
-    fi
-done
-popd
-
-%files -f dir.lst
+%files
 %license LICENSE
 %doc README.md
-%{_bindir}/com.github.louis77.tuner
-%{_datadir}/applications/com.github.louis77.tuner.desktop
-%{_datadir}/glib-2.0/schemas/com.github.louis77.tuner.gschema.xml
-%{_datadir}/icons/hicolor/*/*/com.github.louis77.tuner.??g
-%{_datadir}/metainfo/com.github.louis77.tuner.appdata.xml
+%{_bindir}/%{appid}
+%{_datadir}/applications/%{appid}.desktop
+%{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
+%{_datadir}/icons/hicolor/*/*/%{appid}.svg
+%{_datadir}/metainfo/%{appid}.appdata.xml
+%dir %{_datadir}/icons/hicolor/{128x128@2,128x128@2/apps,16x16@2,16x16@2/apps,24x24@2,24x24@2/apps,32x32@2,32x32@2/apps,48x48@2,48x48@2/apps,64x64@2,64x64@2/apps}
 
-%files lang -f %{name}.lang
+%files lang -f %{appid}.lang
 
 %changelog

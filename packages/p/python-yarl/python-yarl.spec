@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-yarl
-Version:        1.14.0
+Version:        1.18.3
 Release:        0
 Summary:        Yet another URL library
 License:        Apache-2.0
@@ -31,11 +31,9 @@ BuildRequires:  %{python_module expandvars}
 BuildRequires:  %{python_module idna >= 2.0}
 # test requirements
 BuildRequires:  %{python_module multidict >= 4.0}
-BuildRequires:  %{python_module covdefaults}
 BuildRequires:  %{python_module hypothesis >= 6.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module propcache >= 0.2.0}
-BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
@@ -52,6 +50,9 @@ The module provides a URL class for url parsing and changing.
 %prep
 %autosetup -p1 -n yarl-%{version}
 sed -i '/addopts/d' setup.cfg
+# Remove pytest_cov build requirement
+sed -i 's/-p pytest_cov/-p no:pytest_cov/' pytest.ini
+sed -i '/--cov/d' pytest.ini
 
 %build
 export CFLAGS="%{optflags} -Wno-return-type"
@@ -62,7 +63,8 @@ export CFLAGS="%{optflags} -Wno-return-type"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%pytest_arch
+# Ignore benchmarks tests that requires pytest-codspeed package
+%pytest_arch --ignore tests/test_url_benchmarks.py --ignore tests/test_quoting_benchmarks.py
 
 %files %{python_files}
 %license LICENSE

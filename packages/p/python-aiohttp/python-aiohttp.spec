@@ -19,7 +19,7 @@
 %bcond_with docs
 %{?sle15_python_module_pythons}
 Name:           python-aiohttp
-Version:        3.10.10
+Version:        3.11.9
 Release:        0
 Summary:        Asynchronous HTTP client/server framework
 License:        Apache-2.0
@@ -36,7 +36,7 @@ Requires:       (python-async_timeout >= 4.0 with python-async_timeout < 5)
 %endif
 Requires:       (python-charset-normalizer >= 2.0 with python-charset-normalizer < 4)
 Requires:       (python-multidict >= 4.5 with python-multidict < 7)
-Requires:       (python-yarl >= 1.13.0 with python-yarl < 2)
+Requires:       (python-yarl >= 1.17.0 with python-yarl < 2)
 Recommends:     python-Brotli
 Recommends:     python-aiodns
 Recommends:     python-cChardet
@@ -58,7 +58,7 @@ BuildRequires:  %{python_module attrs >= 17.3.0}
 BuildRequires:  %{python_module charset-normalizer >= 2.0 with %python-charset-normalizer < 4}
 BuildRequires:  %{python_module frozenlist >= 1.1.1}
 BuildRequires:  %{python_module multidict >= 4.5 with %python-multidict < 7}
-BuildRequires:  %{python_module yarl >= 1.13.0 with %python-yarl < 2}
+BuildRequires:  %{python_module yarl >= 1.17.0 with %python-yarl < 2}
 # /SECTION
 # SECTION test requirements
 BuildRequires:  %{python_module aiodns}
@@ -68,6 +68,7 @@ BuildRequires:  %{python_module gunicorn}
 BuildRequires:  %{python_module pluggy}
 BuildRequires:  %{python_module propcache}
 BuildRequires:  %{python_module pytest >= 6.2.0}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest-xdist}
@@ -141,6 +142,9 @@ donttest+=" or (test_pytest_plugin and test_aiohttp_plugin)"
 rm -v tests/autobahn/test_autobahn.py
 # uses proxy.py which is not maintained anymore
 rm -v tests/test_proxy_functional.py
+# Requires python-pytest-codspeed
+rm -v tests/test_benchmarks_*
+
 # randomly fails on xdist splits
 single_runs="(test_run_app or test_web_runner)"
 # breaks without threading

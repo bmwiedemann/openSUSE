@@ -1,4 +1,183 @@
 -------------------------------------------------------------------
+Wed Dec 04 07:42:20 UTC 2024 - adrian@suse.de
+
+- Update to version 0.21.0:
+  * Release v0.21.0
+  * Oh hello there zizmor.
+  * Add a link to the upstream repo.
+  * The packaging docs apparently discourage license.
+  * bump pyO3 to 0.22.6
+  * Update requirements.
+  * Drop support for 3.8, which is EOL.
+  * Bump to 0.20.1.
+  * Set --profile=dev in tests to catch issues like #86.
+  * Bump pyo3 from 0.22.3 to 0.22.5
+  * Bump wntrblm/nox from 2024.04.15 to 2024.10.09
+  * [pre-commit.ci] pre-commit autoupdate
+  * Bump pyo3 from 0.22.2 to 0.22.3
+  * Bump archery from 1.2.0 to 1.2.1
+  * Fix hashing overflow issues
+  * Tag a release.
+  * Minor comment typo.
+  * [pre-commit.ci] pre-commit autoupdate
+  * Bump hynek/setup-cached-uv from 1 to 2
+  * Tag a release.
+  * Bump pyo3 from 0.22.1 to 0.22.2
+  * Better result handling
+  * Fix ruff configuration section
+  * Fix styling
+  * Turn on hashing tests for HashTrieMap
+  * Remove hash error handling for elements in HashTrieSet
+  * Implement __hash__ for HashTrieMap
+  * Fix tests
+  * Remove __hash__ for HashTrieMap
+  * Fix testing
+  * Re-implement __hash__ for unordered collections
+  * Make Python versions in GitHub Actions consistent
+  * Move to the v4 artifact actions.
+  * Newer ruff + minor linter tweaks.
+  * Let pre-commit.ci handle pre-commit.
+  * uv in the noxfile and CI.
+  * Add the 3.13 classifier.
+  * Bump to 0.19.0
+  * Update requirements.
+  * Revise inline comments
+  * Implement __hash__ for HashTrieMap
+  * Add __hash__ to ListPy
+  * Implement __hash__ for HashTrieSetPy
+  * Update PyO3 from 0.22.0 to 0.22.1
+  * Use #[derive(FromPyObject)] instead of manual impl
+  * Remove redundant Python::wiht_gil calls
+  * Add Python 3.13 to GitHub actions CI
+  * Fix clippy warnings
+  * Remove redundant Python::with_gil calls
+  * Fix formatting
+  * WIP
+  * WIP
+  * Bump pyo3 from 0.20.3 to 0.22.0
+  * [pre-commit.ci] pre-commit autoupdate
+  * deps: bump libc from 0.2.147 to 0.2.155
+  * WIP
+  * Tag a release for PyO3 0.20.3 support.
+  * [pre-commit.ci] pre-commit autoupdate
+  * Update requirements.
+  * [pre-commit.ci] pre-commit autoupdate
+  * Bump wntrblm/nox from 2024.03.02 to 2024.04.15
+  * [pre-commit.ci] pre-commit autoupdate
+  * [pre-commit.ci] pre-commit autoupdate
+  * Bump softprops/action-gh-release from 1 to 2
+  * Bump wntrblm/nox from 2023.04.22 to 2024.03.02
+  * Bump archery from 1.1.0 to 1.2.0
+  * Bump pyo3 from 0.20.2 to 0.20.3
+  * I'm one person, not two.
+  * [pre-commit.ci] pre-commit autoupdate
+  * Type annotation and test for HashTrieMap.update.
+  * [pre-commit.ci] pre-commit autoupdate
+  * Bump pre-commit/action from 3.0.0 to 3.0.1
+  * [pre-commit.ci] auto fixes from pre-commit.com hooks
+  * [pre-commit.ci] pre-commit autoupdate
+  * Implement Queue.__hash__.
+  * Explicitly remind ourselves that dict.values != dict.values in the tests.
+  * Yet again, same mistake.
+  * Remove a non-doc dependency.
+  * Reimplement view types for maps.
+  * Start reworking the HashTrieMap methods that should return views.
+  * And same for HashTrieMap.
+  * And now an iterator for HashTrieSet.
+  * Trim down the manual Py wrapping too.
+  * Proper List + Queue iterators.
+  * Bump pyo3 from 0.20.1 to 0.20.2
+  * Bump pyo3 from 0.20.0 to 0.20.1
+  * Type annotation for fromkeys.
+  * Release v0.16.1
+  * Add HashTrieMap.fromkeys with dict.fromkeys' signature.
+  * [pre-commit.ci] pre-commit autoupdate
+  * Fix the Queue type annotations.
+  * Install cargo in RTD.
+  * Release v0.15.0 for docs!
+  * Still install the package obviously, and minor spelling and style fix.
+  * Enable the rest of the ruff rulesets.
+  * Simple docs.
+  * Fix HashTrieMap.get to properly take 2 arguments.
+  * Le type annotacions
+  * Expose rpds.Queue.
+  * [pre-commit.ci] pre-commit autoupdate
+  * Bump actions/setup-python from 4 to 5
+  * Update pre-commit hooks.
+  * Fix HashTrieMap __repr__s, which need to repr() the key as well.
+  * Add the explicit Tidelift link.
+  * Release v0.13.1.
+  * Fix `drop_first` method name for typing
+  * Release v0.13.0
+  * Configure Black in pyproject.toml
+  * [pre-commit.ci] auto fixes from pre-commit.com hooks
+  * Add pickle support
+  * [pre-commit.ci] pre-commit autoupdate
+  * Bump rpds from 1.0.1 to 1.1.0
+  * That's what I get for copy/paste.
+  * Skip Rust on pre-commit.ci which doesn't seem to have Rust installed.
+  * Bump archery from 1.0.0 to 1.1.0
+  * List.drop_front
+  * Update for PyO3 0.20.0.
+  * Update pre-commit hooks.
+  * [pre-commit.ci] pre-commit autoupdate
+  * Publish to PyPI using trusted publishing.
+  * Try enabling sccache.
+  * Build wheel for Windows on Python 3.12
+  * Give up entirely for now.
+  * Flail again for Windows.
+  * There is apparently no --release argument for sdist.
+  * Build an sdist in a separate explicit job.
+  * Give up for  now. Let's get 3.12 working.
+  * Take 3 on PyPy+Windows.
+  * Try again to get PyPy 3.x versions on Windows.
+  * Drop PyPy 3.8 which seems to fail.
+  * Release v0.10.4
+  * Try building wheels for more Windows interpreters as well.
+  * Release v0.10.3
+  * Update test dependencies.
+  * Remove an unused test dependency on hypothesis
+  * Bump rpds from 1.0.0 to 1.0.1
+  * Bump actions/checkout from 3 to 4
+  * Release v0.10.2
+  * Update pre-commit hooks.
+  * Enable clippy and fix what it complains about.
+  * Update requirements.
+  * Don't use nox.session.create_tmp.
+  * Release 0.10.0.
+  * Unused.
+  * Bump rpds from 0.13.0 to 1.0.0
+  * Bump pyo3 from 0.19.1 to 0.19.2
+  * Add a security policy.
+  * More correct listing of nox envs for the GitHub actions workflow
+  * Bump archery from 0.5.0 to 1.0.0
+  * Take 3, try using setup-python with multiple versions.
+  * Try enabling pre-releases in the setup-python action.
+  * Declare support for 3.12.
+  * Link to rpds.
+  * Update deps and bump the version.
+  * Update target-lexicon to support loongarch64 architecture
+  * Again forget to bump the version properly...
+  * Try adding wheels for PyPy3.10 and CPython 3.12
+  * Also build wheels for macOS 3.9 and others.
+  * Add a note on installation instructions (and the need for rust).
+  * One more wheel for aarch64.
+  * Fix the needs list as well.
+  * Let's see if this gets us MUSL wheels.
+  * Fix the badge URLs.
+  * Sigh and the lock too...
+  * Actually bump the version to 0.8.3.
+  * Add the missing Project URLs for PyPI
+  * Add rpds to known_first_party for isort.
+  * Bump to PyO3 v0.19
+  * Bump pre-commit.
+  * Bump wntrblm/nox from 2022.11.21 to 2023.04.22
+  * Update pre-commit hooks.
+  * Bump pyo3 from 0.18.2 to 0.18.3
+  * Bump pyo3 from 0.18.1 to 0.18.2
+  * Exclude bots from release notes.
+
+-------------------------------------------------------------------
 Fri May  5 11:14:59 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add sle15_python_module_pythons

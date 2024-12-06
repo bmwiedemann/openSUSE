@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 29 05:16:59 UTC 2024 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Add patch for CVE-2024-9676 (bsc#1231698):
+  * 0001-Update-container-storage-to-v1.55.1.patch
+
+-------------------------------------------------------------------
 Fri Aug 23 06:33:23 UTC 2024 - dcermak@suse.com
 
 - Update to version 1.16.1:

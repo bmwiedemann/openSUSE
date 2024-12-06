@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Dec  4 13:16:38 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.3.9
+  * Merge #215: preload script wrappers on Windows to assist with a pip issue (thanks,
+    Paul Moore).
+  * Fix #220: Remove duplicated newline in shebang of windows launcher (thanks. A2uria).
+  * Fix #230: Add handling for cross-compilation environments (thanks, Russell Keith-Magee).
+  * Fix #224: Do not use the absolute path to cache wheel extensions (thanks, Stewart Miles).
+  * Fix #222: Support mounting wheels that use extensions without an EXTENSIONS file (thanks,
+    Stewart Miles).
+  * Fix #225: Add support for wheel compatibility with the limited API (thanks, Stewart Miles).
+- Drop py313-interpreter-repr.patch, merged upstream
+
+-------------------------------------------------------------------
 Mon Jul  1 08:04:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add py313-interpreter-repr.patch to fix testsuite with python

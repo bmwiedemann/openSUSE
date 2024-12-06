@@ -195,10 +195,10 @@ BuildRequires:  config(netcfg)
 %if 0%{?suse_version} == 1110
 # GCC 5 is only available in the SUSE:SLE-11:SP4:Update repository (SDK).
 %if %node_version_number >= 8
-BuildRequires:   gcc5-c++
+BuildRequires:  gcc5-c++
 %define forced_gcc_version 5
 %else
-BuildRequires:   gcc48-c++
+BuildRequires:  gcc48-c++
 %define forced_gcc_version 4.8
 %endif
 %endif
@@ -208,15 +208,15 @@ BuildRequires:   gcc48-c++
 # for SLE-12:Update targets
 %if 0%{?suse_version} == 1315
 %if %node_version_number >= 17
-BuildRequires:   gcc12-c++
+BuildRequires:  gcc12-c++
 %define forced_gcc_version 12
 %else
 %if %node_version_number >= 14
-BuildRequires:   gcc9-c++
+BuildRequires:  gcc9-c++
 %define forced_gcc_version 9
 %else
 %if %node_version_number >= 8
-BuildRequires:   gcc7-c++
+BuildRequires:  gcc7-c++
 %define forced_gcc_version 7
 %endif
 %endif
@@ -225,7 +225,7 @@ BuildRequires:   gcc7-c++
 
 %if 0%{?suse_version} == 1500
 %if %node_version_number >= 17
-BuildRequires:   gcc12-c++
+BuildRequires:  gcc12-c++
 %define forced_gcc_version 12
 %endif
 %endif
@@ -251,6 +251,7 @@ BuildRequires:  python311
 %endif
 %if %{?suse_version} > 1500
 BuildRequires:  python3
+BuildRequires:  python3-setuptools
 %endif
 %endif
 

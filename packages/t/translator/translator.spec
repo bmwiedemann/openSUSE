@@ -1,7 +1,7 @@
 #
 # spec file for package translator
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,17 @@
 #
 
 
+%define         appid com.github.rapidfingers.translator
 Name:           translator
 Version:        1.4.1
 Release:        0
 Summary:        Translation program
 License:        GPL-3.0-or-later
-Group:          Productivity/Office/Dictionary
-URL:            https://rapidfingers.github.io/Translator
-Source:         https://github.com/RapidFingers/Translator/archive/%{version}.tar.gz#/Translator-%{version}.tar.gz
+URL:            https://github.com/RapidFingers/Translator
+Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  vala >= 0.28
 BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(gio-2.0)
@@ -36,16 +35,15 @@ BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libsoup-2.4)
-Recommends:     %{name}-lang
 
 %description
 This is a translator. It is suited only for small messages, not
-big text. Google Translate is used as a backend.
+big text. Google Translate is used as the backend.
 
 %lang_package
 
 %prep
-%setup -q -n Translator-%{version}
+%autosetup -n Translator-%{version}
 
 cp debian/copyright COPYING
 
@@ -55,32 +53,19 @@ cp debian/copyright COPYING
 
 %install
 %meson_install
-%suse_update_desktop_file -r com.github.rapidfingers.translator GTK Office Dictionary
-%find_lang com.github.rapidfingers.translator %{name}.lang
-%fdupes %{buildroot}%{_datadir}
+%find_lang %{appid}
+%fdupes %{buildroot}
 
-# dirlist HiDPI icons (see: hicolor/index.theme)
-touch $PWD/dir.lst
-_dirlist=$PWD/dir.lst
-pushd %{buildroot}
-find ./ | while read _list; do
-    echo $_list | grep '[0-9]\@[0-9]' || continue
-    _path=$(echo $_list | sed 's/[^/]//')
-    if ! ls ${_path%/*}; then
-        grep -xqs "\%dir\ ${_path%/*}" $_dirlist || echo "%dir ${_path%/*}" >> $_dirlist
-    fi
-done
-popd
-
-%files -f dir.lst
+%files
 %license COPYING
 %doc README.md
-%{_bindir}/com.github.rapidfingers.translator
-%{_datadir}/applications/com.github.rapidfingers.translator.desktop
-%{_datadir}/glib-2.0/schemas/com.github.rapidfingers.translator.gschema.xml
-%{_datadir}/icons/hicolor/*/apps/com.github.rapidfingers.translator.??g
-%{_datadir}/metainfo/com.github.rapidfingers.translator.appdata.xml
+%{_bindir}/%{appid}
+%{_datadir}/applications/%{appid}.desktop
+%{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
+%{_datadir}/icons/hicolor/*/apps/%{appid}.svg
+%{_datadir}/metainfo/%{appid}.appdata.xml
+%dir %{_datadir}/icons/hicolor/{128x128@2,128x128@2/apps,16x16@2,16x16@2/apps,24x24@2,24x24@2/apps,32x32@2,32x32@2/apps,48x48@2,48x48@2/apps,64x64@2,64x64@2/apps}
 
-%files lang -f %{name}.lang
+%files lang -f %{appid}.lang
 
 %changelog

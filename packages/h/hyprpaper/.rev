@@ -46,4 +46,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1225976</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>6e4cd9f19abd8bb1bc2ca8bd8fde742d</srcmd5>
+    <version>0.7.1</version>
+    <time>1733491585</time>
+    <user>anag+factory</user>
+    <comment>- Update wlroots dependency.
+</comment>
+    <requestid>1228630</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,34 @@
+diff --git a/libhttpd.c b/libhttpd.c
+index 6a985f8601d0ccfc..7c3ae74d0cda56d1 100644
+--- a/libhttpd.c
++++ b/libhttpd.c
+@@ -47,7 +47,12 @@
+ #include <memory.h>
+ #endif /* HAVE_MEMORY_H */
+ #include <pwd.h>
++
+ #include <signal.h>
++/* Not available with glibc default feature test macros.  Kludge to
++   avoid extensive changes.  */
++extern __typeof (signal) sigset;
++
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+diff --git a/thttpd.c b/thttpd.c
+index bfb57bacd955cd1b..25ad5d4cd47dc094 100644
+--- a/thttpd.c
++++ b/thttpd.c
+@@ -44,7 +44,12 @@
+ #ifdef HAVE_GRP_H
+ #include <grp.h>
+ #endif
++
+ #include <signal.h>
++/* Not available with glibc default feature test macros.  Kludge to
++   avoid extensive changes.  */
++extern __typeof (signal) sigset;
++
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>

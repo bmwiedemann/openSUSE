@@ -15,4 +15,43 @@
     <comment></comment>
     <requestid>1086700</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>50546dfdc8efe367502eb992512fb91c</srcmd5>
+    <version>0.21.0</version>
+    <time>1733491500</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1228320 from adrianSuSE
+
+- Update to version 0.21.0:
+    * Release v0.21.0
+    * Oh hello there zizmor.
+    * Add a link to the upstream repo.
+    * The packaging docs apparently discourage license.
+    * bump pyO3 to 0.22.6
+    * Update requirements.
+    * Drop support for 3.8, which is EOL.
+    * Bump to 0.20.1.
+    * Set --profile=dev in tests to catch issues like #86.
+    * Bump pyo3 from 0.22.3 to 0.22.5
+    * Bump wntrblm/nox from 2024.04.15 to 2024.10.09
+    * [pre-commit.ci] pre-commit autoupdate
+    * Bump pyo3 from 0.22.2 to 0.22.3
+    * Bump archery from 1.2.0 to 1.2.1
+    * Fix hashing overflow issues
+    * Tag a release.
+    * Minor comment typo.
+    * [pre-commit.ci] pre-commit autoupdate
+    * Bump hynek/setup-cached-uv from 1 to 2
+    * Tag a release.
+    * Bump pyo3 from 0.22.1 to 0.22.2
+    * Better result handling
+    * Fix ruff configuration section
+    * Fix styling
+    * Turn on hashing tests for HashTrieMap
+    * Remove hash error handling for elements in HashTrieSet
+    * Implement __hash__ for HashTrieMap
+    * Fix tests
+    * Remove __hash__ for HashTrieMap</comment>
+    <requestid>1228386</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package dippi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,28 +16,23 @@
 #
 
 
+%define         appid com.github.cassidyjames.dippi
 Name:           dippi
-Version:        3.1.4
+Version:        4.1.0
 Release:        0
 Summary:        Tool for calculating display info like DPI and aspect ratio
 License:        GPL-3.0-or-later
-Group:          System/GUI/Other
-URL:            https://cassidyjames.com/dippi
-Source:         https://github.com/cassidyjames/dippi/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  AppStream
+URL:            https://github.com/cassidyjames/dippi
+Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gettext-runtime >= 0.19.7
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libxml2-tools
-BuildRequires:  meson >= 0.40.0
+BuildRequires:  meson >= 1.3.2
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  vala
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(granite)
-BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(libhandy-1)
-Recommends:     %{name}-lang
+BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(libadwaita-1)
 
 %description
 A tool to analyze displays and to input a few details and figure out the aspect
@@ -48,7 +43,7 @@ HiDPI.
 %lang_package
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %meson
@@ -56,30 +51,18 @@ HiDPI.
 
 %install
 %meson_install
-%suse_update_desktop_file -r com.github.cassidyjames.dippi GTK Utility DesktopSettings
-%find_lang com.github.cassidyjames.dippi %{name}.lang
-%fdupes %{buildroot}/%{_datadir}
+%find_lang %{appid}
+%fdupes %{buildroot}
 
-# dirlist HiDPI icons (see: hicolor/index.theme)
-_dirlist=$PWD/dir.lst
-pushd %{buildroot}
-find ./ | while read _list; do
-    echo $_list | grep '[0-9]\@[0-9]' || continue
-    _path=$(echo $_list | sed 's/[^/]//')
-    if ! ls ${_path%/*}; then
-        grep -xqs "\%dir\ ${_path%/*}" $_dirlist || echo "%dir ${_path%/*}" >> $_dirlist
-    fi
-done
-popd
-
-%files -f dir.lst
+%files
 %license COPYING
 %doc AUTHORS README.md
-%{_bindir}/com.github.cassidyjames.dippi
-%{_datadir}/applications/com.github.cassidyjames.dippi.desktop
-%{_datadir}/icons/hicolor/*/apps/com.github.cassidyjames.dippi.??g
-%{_datadir}/metainfo/com.github.cassidyjames.dippi.appdata.xml
+%{_bindir}/%{appid}
+%{_datadir}/applications/%{appid}.desktop
+%{_datadir}/icons/hicolor/*/apps/%{appid}.svg
+%{_datadir}/icons/hicolor/symbolic/apps/%{appid}-symbolic.svg
+%{_datadir}/metainfo/%{appid}.metainfo.xml
 
-%files lang -f %{name}.lang
+%files lang -f %{appid}.lang
 
 %changelog

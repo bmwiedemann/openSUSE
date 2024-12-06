@@ -1,7 +1,7 @@
 #
 # spec file for package palaura
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define         appid com.github.lainsce.palaura
 Name:           palaura
 Version:        1.5.1
 Release:        0
 Summary:        A dictionary with word definitions
 License:        GPL-3.0-or-later
-Group:          Productivity/Office/Other
-URL:            https://lainsce.us/
-Source:         https://github.com/lainsce/palaura/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/lainsce/palaura
+Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson >= 0.40.0
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  vala
 BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(gio-2.0)
@@ -44,7 +43,7 @@ palaura is a dictionary application featuring word definitions.
 It uses the Oxford Dictionaries API for lookups.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %meson
@@ -52,29 +51,16 @@ It uses the Oxford Dictionaries API for lookups.
 
 %install
 %meson_install
-%suse_update_desktop_file -r com.github.lainsce.palaura GTK Office Dictionary
-%fdupes %{buildroot}/%{_datadir}
+%fdupes %{buildroot}
 
-# dirlist HiDPI icons (see: hicolor/index.theme)
-touch $PWD/dir.lst
-_dirlist=$PWD/dir.lst
-pushd %{buildroot}
-find ./ | while read _list; do
-    echo $_list | grep '[0-9]\@[0-9]' || continue
-    _path=$(echo $_list | sed 's/[^/]//')
-    if ! ls ${_path%/*}; then
-        grep -xqs "\%dir\ ${_path%/*}" $_dirlist || echo "%dir ${_path%/*}" >> $_dirlist
-    fi
-done
-popd
-
-%files -f dir.lst
+%files
 %license LICENSE
 %doc AUTHORS README.md
-%{_bindir}/com.github.lainsce.palaura
-%{_datadir}/applications/com.github.lainsce.palaura.desktop
-%{_datadir}/glib-2.0/schemas/com.github.lainsce.palaura.gschema.xml
-%{_datadir}/icons/hicolor/*/apps/com.github.lainsce.palaura.??g
-%{_datadir}/metainfo/com.github.lainsce.palaura.appdata.xml
+%{_bindir}/%{appid}
+%{_datadir}/applications/%{appid}.desktop
+%{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
+%{_datadir}/icons/hicolor/*/apps/%{appid}.svg
+%{_datadir}/metainfo/%{appid}.appdata.xml
+%dir %{_datadir}/icons/hicolor/{128x128@2,128x128@2/apps,16x16@2,16x16@2/apps,24x24@2,24x24@2/apps,32x32@2,32x32@2/apps,48x48@2,48x48@2/apps,64x64@2,64x64@2/apps}
 
 %changelog

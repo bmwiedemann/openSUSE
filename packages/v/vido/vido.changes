@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 19 06:55:49 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- switch runtime dep from youtube-dl to yt-dlp
+- update spec file for Leap 16.0:
+  * remove %suse_update_desktop_file
+  * remove recommending lang package
+  * use autosetup
+  * remove HiDPI workaround
+
+-------------------------------------------------------------------
 Sun Feb 20 16:05:39 UTC 2022 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 2.3.0:

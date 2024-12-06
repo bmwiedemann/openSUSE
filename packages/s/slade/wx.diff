@@ -1,41 +1,28 @@
 From: Jan Engelhardt <jengelh@inai.de>
 Date: 2020-04-18 20:10:34.215071041 +0200
 
-external.so references wx functions (including those present in base), but does
-not link them => add wx libs to the link.
+Under SLADE 3.1.x, I observed:
 
 [   12s] /usr/include/wx-3.0/wx/filename.h:139: undefined reference to `wxFileName::Assign(wxString const&, wxPathFormat)'
 [   12s] /usr/lib64/gcc/x86_64-suse-linux/9/../../../../x86_64-suse-linux/bin/ld: CMakeFiles/external.dir/email/wxEmailMessage.o: in function `wxEmailMessage::DoAddAttachment(wxString const&, wxString&) const':
 
-Furthermore, external.so references MemChunk:: functions, but does not link
-them => change to STATIC because I am too lazy.
+While external.so is gone in SLADE 3.2.6, the function is still used,
+and so we should add "base" to WX_LIBS regardless.
 
 ---
- src/CMakeLists.txt          |    2 +-
- src/External/CMakeLists.txt |    2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ cmake/unix.cmake |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: SLADE-3.1.12/src/CMakeLists.txt
+Index: SLADE-3.2.6/cmake/unix.cmake
 ===================================================================
---- SLADE-3.1.12.orig/src/CMakeLists.txt
-+++ SLADE-3.1.12/src/CMakeLists.txt
-@@ -52,7 +52,7 @@ if (WX_GTK3)
+--- SLADE-3.2.6.orig/cmake/unix.cmake
++++ SLADE-3.2.6/cmake/unix.cmake
+@@ -65,7 +65,7 @@ if (WX_GTK3)
  	set(wxWidgets_CONFIG_OPTIONS --toolkit=gtk3)
  endif (WX_GTK3)
  
--SET(WX_LIBS std aui gl stc richtext propgrid media)
-+SET(WX_LIBS base std aui gl stc richtext propgrid media)
+-SET(WX_LIBS std aui gl stc richtext propgrid)
++SET(WX_LIBS base std aui gl stc richtext propgrid)
  if (NO_WEBVIEW)
  	SET(WX_LIBS ${WX_LIBS} html)
  else (NO_WEBVIEW)
-Index: SLADE-3.1.12/src/External/CMakeLists.txt
-===================================================================
---- SLADE-3.1.12.orig/src/External/CMakeLists.txt
-+++ SLADE-3.1.12/src/External/CMakeLists.txt
-@@ -31,5 +31,5 @@ file(GLOB_RECURSE EXTERNAL_SOURCES
- 	)
- 
- add_library(external STATIC ${EXTERNAL_SOURCES})
--target_link_libraries(external ${ZLIB_LIBRARY})
-+target_link_libraries(external ${ZLIB_LIBRARY} ${wxWidgets_LIBRARIES})
- set(EXTERNAL_LIBRARIES external PARENT_SCOPE)

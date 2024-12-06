@@ -46,11 +46,7 @@ export CFLAGS="%{optflags}"
 %configure
 %if %{do_profiling}
   %make_build CFLAGS="$CFLAGS %{cflags_profile_generate}" LDFLAGS="-fprofile-arcs"
-  %make_build check \
-%if 0%{?qemu_user_space_build}
-	NEED_PMA= \
-%endif
-  %{nil}
+  %make_build check
   %make_build clean
   %make_build CFLAGS="$CFLAGS %{cflags_profile_feedback}" LDFLAGS="-fprofile-arcs"
 %else
@@ -58,12 +54,7 @@ export CFLAGS="%{optflags}"
 %endif
 
 %check
-# Disable pma tests when running in linux-user emulation (bsc#1203140)
-%make_build check \
-%if 0%{?qemu_user_space_build}
-  NEED_PMA= \
-%endif
-  %{nil}
+%make_build check
 
 %install
 %make_install

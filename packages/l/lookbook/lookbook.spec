@@ -1,7 +1,7 @@
 #
 # spec file for package lookbook
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,18 @@
 #
 
 
+%define         appid com.github.danrabbit.lookbook
 Name:           lookbook
 Version:        1.2.0
 Release:        0
 Summary:        Navigator for finding and browsing system icons
 License:        GPL-3.0-or-later
-Group:          Development/Tools/Navigators
-URL:            http://danielfore.com
-Source:         https://github.com/danrabbit/lookbook/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/danrabbit/lookbook
+Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  vala >= 0.40.4
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
@@ -36,7 +35,6 @@ BuildRequires:  pkgconfig(granite) >= 0.5
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtksourceview-4)
 BuildRequires:  pkgconfig(libhandy-1) >= 1.0.0
-Recommends:     %{name}-lang
 
 %description
 Lookbook is a browser for system icons. Icons can be grouped by
@@ -46,7 +44,7 @@ sizes. A code snippet to use in programs can be displayed.
 %lang_package
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %meson
@@ -54,31 +52,19 @@ sizes. A code snippet to use in programs can be displayed.
 
 %install
 %meson_install
-%suse_update_desktop_file -r com.github.danrabbit.lookbook GTK Development X-SuSE-Core-Development
-%find_lang com.github.danrabbit.lookbook %{name}.lang
-%fdupes %{buildroot}/%{_datadir}
+%find_lang %{appid}
+%fdupes %{buildroot}
 
-# dirlist HiDPI icons (see: hicolor/index.theme)
-_dirlist=$PWD/dir.lst
-pushd %{buildroot}
-find ./ | while read _list; do
-    echo $_list | grep '[0-9]\@[0-9]' || continue
-    _path=$(echo $_list | sed 's/[^/]//')
-    if ! ls ${_path%/*}; then
-        grep -xqs "\%dir\ ${_path%/*}" $_dirlist || echo "%dir ${_path%/*}" >> $_dirlist
-    fi
-done
-popd
-
-%files -f dir.lst
+%files
 %license COPYING
 %doc README.md
-%{_bindir}/com.github.danrabbit.lookbook
-%{_datadir}/applications/com.github.danrabbit.lookbook.desktop
-%{_datadir}/glib-2.0/schemas/com.github.danrabbit.lookbook.gschema.xml
-%{_datadir}/icons/hicolor/*/apps/com.github.danrabbit.lookbook.??g
-%{_datadir}/metainfo/com.github.danrabbit.lookbook.appdata.xml
+%{_bindir}/%{appid}
+%{_datadir}/applications/%{appid}.desktop
+%{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
+%{_datadir}/icons/hicolor/*/apps/%{appid}.svg
+%{_datadir}/metainfo/%{appid}.appdata.xml
+%dir %{_datadir}/icons/hicolor/{128x128@2,128x128@2/apps,16x16@2,16x16@2/apps,24x24@2,24x24@2/apps,32x32@2,32x32@2/apps,48x48@2,48x48@2/apps,64x64@2,64x64@2/apps}
 
-%files lang -f %{name}.lang
+%files lang -f %{appid}.lang
 
 %changelog

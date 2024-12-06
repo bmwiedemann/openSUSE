@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-upgrade
-Version:        1.22.1
+Version:        1.22.2
 Release:        0
 Summary:        Automatically upgrade your Django projects
 License:        MIT

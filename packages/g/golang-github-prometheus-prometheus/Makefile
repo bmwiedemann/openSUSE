@@ -19,8 +19,8 @@ tar:
 	tar -zxf $$wd/$$tar.gz && \
 	cd $$basename && \
         make assets npm_licenses assets-compress && \
-	tar -cf $$wd/$$web_ui web/ui/static/react && \
-        find web/ui/static -type f -name '*.gz' -exec tar -rf $$wd/$$web_ui "{}" \; && \
+	tar -cf $$wd/$$web_ui web/ui/static/react-app && \
+	find web/ui/static -type f -name '*.gz' -exec tar -rf $$wd/$$web_ui "{}" \; && \
 	tar -rf $$wd/$$web_ui web/ui/embed.go && \
 	cd .. && \
 	echo "Creating web assets tarball" && \
@@ -28,3 +28,4 @@ tar:
 	cd $$wd && \
 	gzip -f $$web_ui && \
 	rm -rf $$tmpdir
+	echo "Finished successfully"

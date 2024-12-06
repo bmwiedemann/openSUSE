@@ -18,21 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-eventlet
-Version:        0.37.0+git.1726056572.8637820
-%define up_version 0.37.0
+Version:        0.38.0
 Release:        0
 Summary:        Concurrent networking library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://eventlet.net
-# Source:         https://files.pythonhosted.org/packages/source/e/eventlet/eventlet-%%{version}.tar.gz
-Source:         eventlet-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM 313-new-thread-attributes.patch gh#eventlet/eventlet#964 mcepl@suse.com
-# Hroncko's python3.13 branch
-Patch0:         313-new-thread-attributes.patch
-# PATCH-FIX-OPENSUSE no-dynamic-version.patch mcepl@suse.com
-# We cannot use dynamic version number on a git checkout
-Patch1:         no-dynamic-version.patch
+Source:         https://files.pythonhosted.org/packages/source/e/eventlet/eventlet-%{version}.tar.gz
 BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
@@ -68,9 +60,6 @@ interpreter, or as part of a larger application.
 %prep
 %autosetup -p1 -n eventlet-%{version}
 
-# set the package version manually
-sed -i -e '/^\s*__version__/s/0.0.0/%{up_version}/' eventlet/__init__.py
-
 %build
 %pyproject_wheel
 
@@ -102,6 +91,6 @@ python310_skiptests+=" or test_017_ssl_zeroreturnerror"
 %license LICENSE
 %doc AUTHORS NEWS README.rst
 %{python_sitelib}/eventlet
-%{python_sitelib}/eventlet-%{up_version}.dist-info
+%{python_sitelib}/eventlet-%{version}.dist-info
 
 %changelog

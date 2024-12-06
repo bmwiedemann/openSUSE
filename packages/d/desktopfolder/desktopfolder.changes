@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Nov 17 21:33:01 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update spec file for Leap 16.0:
+  * remove %suse_update_desktop_file
+  * remove lang package from recommends
+  * use autosetup
+  * mv autostart desktop file to /usr/etc
+
+-------------------------------------------------------------------
 Sun Feb 20 19:52:22 UTC 2022 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Add 002-drop-deprecated-arguments.patch 

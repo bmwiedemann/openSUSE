@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-cftime
-Version:        1.6.4
+Version:        1.6.4.post1
 Release:        0
 Summary:        Time-handling functionality from netcdf4-python
 License:        MIT

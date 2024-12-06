@@ -104,7 +104,7 @@ BuildRequires:  libxml2-devel
 # main (empty) package
 # http://www.rpm.org/max-rpm/s1-rpm-subpack-spec-file-changes.html
 Name:           kronosnet
-Version:        1.29
+Version:        1.30
 Release:        0
 Summary:        Multipoint-to-Multipoint VPN daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

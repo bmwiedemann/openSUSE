@@ -140,7 +140,11 @@ mv %{buildroot}%{_datadir}/doc/%{name}-%{api_version} %{buildroot}%{_docdir}
 %check
 # Run the regression tests using GnuTLS NORMAL priority
 export G_TLS_GNUTLS_PRIORITY=NORMAL
+%ifarch s390x
+%meson_test -t 5
+%else
 %meson_test
+%endif
 
 %ldconfig_scriptlets 3_0-0
 

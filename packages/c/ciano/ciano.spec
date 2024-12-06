@@ -1,7 +1,7 @@
 #
 # spec file for package ciano
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,19 @@
 #
 
 
+%define         appid com.github.robertsanseries.ciano
 Name:           ciano
 Version:        0.2.4
 Release:        0
 Summary:        A multimedia file converter
 License:        GPL-3.0-or-later
-Group:          Productivity/Multimedia/Video/Editors and Convertors
-URL:            https://robertsanseries.github.io/ciano
-Source:         https://github.com/robertsanseries/ciano/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/robertsanseries/ciano
+Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gettext-runtime >= 0.19.7
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson >= 0.40.0
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  vala
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
@@ -37,8 +36,6 @@ BuildRequires:  pkgconfig(granite)
 BuildRequires:  pkgconfig(gtk+-3.0)
 Requires:       ImageMagick
 Requires:       ffmpeg
-Recommends:     %{name}-lang
-%glib2_gsettings_schema_requires
 
 %description
 A program to convert your multimedia files to contemporary formats.
@@ -46,9 +43,7 @@ A program to convert your multimedia files to contemporary formats.
 %lang_package
 
 %prep
-%setup -q
-
-sed -i 's/\bmetainfo\b/appdata/' $(grep -rwl 'metainfo')
+%autosetup
 
 %build
 %meson
@@ -56,34 +51,21 @@ sed -i 's/\bmetainfo\b/appdata/' $(grep -rwl 'metainfo')
 
 %install
 %meson_install
-%suse_update_desktop_file -r com.github.robertsanseries.ciano GTK AudioVideo Video AudioVideoEditing
-%find_lang com.github.robertsanseries.ciano %{name}.lang
-%fdupes %{buildroot}/%{_datadir}
+%find_lang %{appid}
+%fdupes %{buildroot}
 
-# dirlist HiDPI icons (see: hicolor/index.theme)
-touch $PWD/dir.lst
-_dirlist=$PWD/dir.lst
-pushd %{buildroot}
-find ./ | while read _list; do
-    echo $_list | grep '[0-9]\@[0-9]' || continue
-    _path=$(echo $_list | sed 's/[^/]//')
-    if ! ls ${_path%/*}; then
-        grep -xqs "\%dir\ ${_path%/*}" $_dirlist || echo "%dir ${_path%/*}" >> $_dirlist
-    fi
-done
-popd
+%files
+%license LICENSE
+%doc AUTHORS README.md
+%{_bindir}/%{appid}
+%{_datadir}/metainfo/%{appid}.appdata.xml
+%{_datadir}/applications/%{appid}.desktop
+%{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
+%{_datadir}/icons/hicolor/*/apps/%{appid}.svg
+%{_datadir}/pixmaps/%{appid}.png
+%{_datadir}/%{name}
+%dir %{_datadir}/icons/hicolor/{128x128@2,128x128@2/apps,16x16@2,16x16@2/apps,24x24@2,24x24@2/apps,32x32@2,32x32@2/apps,48x48@2,48x48@2/apps,64x64@2,64x64@2/apps}
 
-%files -f dir.lst
-%doc AUTHORS LICENSE* README.md
-%{_bindir}/com.github.robertsanseries.ciano
-%dir %{_datadir}/appdata
-%{_datadir}/appdata/com.github.robertsanseries.ciano.appdata.xml
-%{_datadir}/applications/com.github.robertsanseries.ciano.desktop
-%{_datadir}/glib-2.0/schemas/com.github.robertsanseries.ciano.gschema.xml
-%{_datadir}/icons/hicolor/*/apps/com.github.robertsanseries.ciano.??g
-%{_datadir}/pixmaps/com.github.robertsanseries.ciano.??g
-%{_datadir}/ciano/
-
-%files lang -f %{name}.lang
+%files lang -f %{appid}.lang
 
 %changelog

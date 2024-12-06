@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec  5 10:45:51 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- drop remove-mock.patch, it's part of upstream now.
+- Update to 8.15.1
+  * Add explicit Python 3.13 support (#189)
+- 8.15.0:
+  * Removed call to raise_for_status() when using HttpxAsyncHttpNode
+    to prevent exceptions being raised for 404 responses (#182)
+  * Documented response classes (#175)
+  * Dropped support for Python 3.7 (#179)
+
+-------------------------------------------------------------------
 Fri Jun 21 07:55:47 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Skip some failing tests with pytest 8.x. 

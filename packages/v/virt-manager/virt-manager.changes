@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec  5 07:25:57 MST 2024 - carnold@suse.com
+
+- bsc#1234215 - fail to install a guest with virt-install and
+  report "AttributeError: 'str' object has no attribute 'removeprefix'"
+  virtinst-drop-removeprefix-usage.patch
+
+-------------------------------------------------------------------
 Tue Nov 26 14:30:04 MST 2024 - carnold@suse.com
 
 - Update to Version 5.0.0 (jsc#PED-8910)

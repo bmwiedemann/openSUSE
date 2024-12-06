@@ -1,9 +1,16 @@
-Disable virtio transport in SUSE-provided config file
+SUSE-specific config file changes
 
-In SUSE distros, the default vhostmd config file has only enabled
-one transport - vbd. Comment the recently added virtio transport.
-Users can uncomment it and restart vhostmd if virtio transport is
-desired, similar to the xenstore transport.
+In SUSE distros, the default vhostmd config file has historically only
+enabled the vbd transport. Preserve the behavior by commenting the
+recently added virtio transport. Users can uncomment it and restart
+vhostmd if virtio transport is desired, similar to the xenstore transport.
+
+In SUSE enterprise distros, the 'Vendor' field in package information
+contains 'SUSE LLC <https://www.suse.com/>'. This field is used as the
+value for the 'VirtualizationVendor' metric. The URL contains special
+XML characters that need escaped. A simpler and perhaps better approach
+is to strip the URL and only provide the company name. (One could argue
+this hunk of the patch is upstream material.)
 
 Index: vhostmd-1.2/vhostmd.xml
 ===================================================================
@@ -18,3 +25,12 @@ Index: vhostmd-1.2/vhostmd.xml
        <!-- <transport>xenstore</transport> -->
      </globals>
      <metrics>
+@@ -53,7 +53,7 @@ the logical && operator must be replaced
+       <metric type="string" context="host">
+         <name>VirtualizationVendor</name>
+         <action>
+-	  rpm -q --qf '%{VENDOR}\n' -qf /etc/os-release
++	  rpm -q --qf '%{VENDOR}\n' -f /etc/os-release | sed -e 's/&lt;.*//' -e 's/ *$//'
+         </action>
+       </metric>
+       <metric type="string" context="host">

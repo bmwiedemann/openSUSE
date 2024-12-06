@@ -90,6 +90,7 @@ Patch282:       virtinst-add-sle-hpc-support.patch
 Patch283:       virtinst-add-oracle-linux-support.patch
 Patch284:       virtinst-add-slem60-detection-support.patch
 Patch285:       virtinst-windows-server-detection.patch
+Patch286:       virtinst-drop-removeprefix-usage.patch
 
 BuildArch:      noarch
 

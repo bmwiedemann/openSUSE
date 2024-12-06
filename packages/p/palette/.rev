@@ -114,4 +114,12 @@
     <comment>- Update to new release (forwarded request 917844 from awissu)</comment>
     <requestid>917851</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>36bb3e2b8cda7f19a54ea6c6bd384ca8</srcmd5>
+    <version>4.0.0</version>
+    <time>1733491580</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1228623</requestid>
+  </revision>
 </revisionlist>

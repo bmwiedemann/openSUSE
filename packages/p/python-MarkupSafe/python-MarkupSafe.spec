@@ -42,7 +42,10 @@ Implements a unicode subclass that supports HTML strings. This can be used to
 safely encode strings for dynamically generated web pages.
 
 %prep
-%setup -q -n MarkupSafe-%{version}
+%autosetup -p1 -n MarkupSafe-%{version}
+
+# Upstream changed the Python package metadata to require Python 3.7, but the tests pass on Python 3.6.
+sed -i -e '/^python_requires =/s/3\.7/3\.6/' setup.cfg
 
 %build
 export CFLAGS="%{optflags}"
@@ -52,10 +55,6 @@ export CFLAGS="%{optflags}"
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 %python_expand rm %{buildroot}%{$python_sitearch}/markupsafe/_speedups.c
-# Upstream changed the Python package metadata to require Python 3.7, but the tests pass on Python 3.6.
-%if %python_version_nodots == 36
-%python_expand sed 's/Requires-Python: >=3.7/Requires-Python: >=3.6/' -i %{buildroot}%{python_sitearch}/MarkupSafe-%{version}-py3.6.egg-info/PKG-INFO
-%endif
 
 %if %{with test}
 %check

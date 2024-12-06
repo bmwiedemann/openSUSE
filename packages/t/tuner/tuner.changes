@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Nov 18 22:04:09 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.5.5:
+  * Updated HTTP Session params to improve response
+  * Increased Search re-fire interval to reduce number of concurrent searches
+  * Made Search asynchronous so UI remains responsive during searches
+  * Ignore request to load failing favicons URLs
+  * Removed shadow from.svg images per Flathub quality directives
+  * Removed org.gnome.SettingsDaemon.MediaKeys from manifest per flathub
+- update to 1.5.4:
+  * Added API server lookup via SRV and backup via JSON, plus randomization
+  * Added JSON validation for empty nodes
+  * Refactored libsoup calls out to HttpClient.vala
+  * Refactored loading of favicons to Favicon.vala
+  * Turned off TLS checks for HTTP calls to avoid non loading of favicons with
+    invalid certs
+- update to 1.5.3:
+  * Upgrade taglib to v1.13.1
+  *  Documentation correction.
+- add patch fix-gschema.patch, for fixing glib-schemas-compile
+- update spec file for Leap 16.0:
+  * remove %suse_update_desktop_file
+  * remove recommending lang package
+  * remove mentions of elementary
+  * use autosetup
+  * remove HiDPI workaround
+
+-------------------------------------------------------------------
 Thu Oct 31 20:51:49 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop unused pkgconfig(geocode-glib-1.0) and

@@ -16,4 +16,14 @@
   * Python 3.12 support</comment>
     <requestid>1111927</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b86e6c0a44da0a0d112ac56c56e1f7a7</srcmd5>
+    <version>2.0.10</version>
+    <time>1733491530</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0.10:
+  * Update to more recent cibuildwheel, to build wheels for
+    Python v3.13</comment>
+    <requestid>1228548</requestid>
+  </revision>
 </revisionlist>

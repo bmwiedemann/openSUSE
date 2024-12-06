@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec  5 16:25:45 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
+
+- refresh node modules
+  * update cross-spawn module to 7.0.6 - CVE-2024-21538 (bsc#1233852)
+
+-------------------------------------------------------------------
 Mon Oct 28 08:14:38 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update packages-lock.json to fix CVE-2024-48948, update elliptic js

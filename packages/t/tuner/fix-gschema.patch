@@ -1,0 +1,11 @@
+diff -rub tuner-1.5.5/data/meson.build tuner-1.5.5-patched/data/meson.build
+--- tuner-1.5.5/data/meson.build	2024-11-11 19:27:33.000000000 +0100
++++ tuner-1.5.5-patched/data/meson.build	2024-11-18 22:59:43.983113621 +0100
+@@ -75,7 +75,4 @@
+ 
+ install_data(settings_schemas, install_dir: schemas_dir)
+ 
+-meson.add_install_script('glib-compile-schemas', schemas_dir, install_tag: 'schemas')
+-
+-
+ message('Installed schema\n')

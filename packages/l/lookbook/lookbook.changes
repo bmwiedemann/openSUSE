@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 18 02:40:10 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update spec file for Leap 16.0:
+  * remove %suse_update_desktop_file
+  * remove workaround for HiDPI images
+  * use autosetup
+  * remove recommending lang package
+
+-------------------------------------------------------------------
 Thu Sep  9 22:32:12 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 1.2.0:

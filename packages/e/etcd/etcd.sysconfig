@@ -1,0 +1,9 @@
+## Path:     Applications/etcd
+## Description:    etcd key value store
+## Type:     string()
+## Default:    ""
+## ServiceRestart: etcd
+#
+# additional options to pass to etcd. e.g. --enable-v2=true
+#
+ETCD_OPTIONS=""

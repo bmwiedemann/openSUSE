@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec  5 13:53:22 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- add python3-setuptools requirements (needed for python 3.13+)
+
+-------------------------------------------------------------------
 Wed Nov 20 10:04:23 UTC 2024 - Adam Majer <adam.majer@suse.de>
 
 - BuildRequire python311 for SLE15

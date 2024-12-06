@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%global etcd_default_file /etc/default/etcd
 
 %define project go.etcd.io/etcd
 #Compat macro for new _fillupdir macro introduced in Nov 2017
@@ -22,7 +23,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           etcd
-Version:        3.5.12
+Version:        3.5.17
 Release:        0
 Summary:        Highly-available key value store for configuration and service discovery
 License:        Apache-2.0
@@ -32,10 +33,11 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source11:       %{name}.conf
 Source12:       %{name}.service
+Source13:       %{name}.sysconfig
 Source15:       README.security
 Source16:       system-user-etcd.conf
 Source17:       vendor-update.sh
-BuildRequires:  golang(API) >= 1.20
+BuildRequires:  golang(API) >= 1.22
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
@@ -108,13 +110,19 @@ install -D -p -m 0644 %{SOURCE12} %{buildroot}%{_unitdir}/%{name}.service
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 
 # Sysconfig
-install -D -p -m 0644 %{SOURCE11} %{buildroot}%{_fillupdir}/sysconfig.%{name}
+install -D -p -m 0644 %{SOURCE13} %{buildroot}%{_fillupdir}/sysconfig.%{name}
+install -D -p -m 0644 %{SOURCE11} %{buildroot}%{etcd_default_file}
 
 # Additional
 install -d -m 750 %{buildroot}%{_localstatedir}/lib/%{name}
 install -Dm0644 %{SOURCE16} %{buildroot}%{_sysusersdir}/system-user-etcd.conf
 
 %pre -f %{name}.pre
+if [ ! -e %{etcd_default_file} -a /etc/sysconfig/etcd ] ; then
+echo "Migrating existing /etc/sysconfig/etcd to %{etcd_default_file}."
+echo "From now on only ETCD_OPTIONS should be in /etc/sysconfig/etcd"
+mv -i /etc/sysconfig/etcd %{etcd_default_file}
+fi
 %service_add_pre %{name}.service
 
 %post
@@ -139,6 +147,8 @@ install -Dm0644 %{SOURCE16} %{buildroot}%{_sysusersdir}/system-user-etcd.conf
 
 # Sysconfig
 %{_fillupdir}/sysconfig.%{name}
+
+%config(noreplace) %{etcd_default_file}
 
 # Additional
 %dir %attr(0750,%{name},%{name}) %{_localstatedir}/lib/%{name}

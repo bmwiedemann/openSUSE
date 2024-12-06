@@ -268,4 +268,17 @@ minor spec improvement (forwarded request 121844 from HighwayStar)</comment>
   * Fix striptags not collapsing spaces. :issue:`417`</comment>
     <requestid>1143981</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>f5bbcfada787b70c106d32ebd4566cd3</srcmd5>
+    <version>2.1.5</version>
+    <time>1733491522</time>
+    <user>anag+factory</user>
+    <comment>- The test suite survives without
+  ca-certificates-mozilla-prebuilt now, so we can remove BR (and
+  avoid deadly cycles).
+- add buildignores to break buildcycle over
+  p11-kit/dbus-1/systemd:mini/python-MarkupSafe
+</comment>
+    <requestid>1228575</requestid>
+  </revision>
 </revisionlist>

@@ -8,23 +8,23 @@ which is not used in Linux distros.)
  src/Archive/ArchiveManager.cpp |    4 +---
  1 file changed, 1 insertion(+), 3 deletions(-)
 
-Index: SLADE-3.1.11/src/Archive/ArchiveManager.cpp
+Index: SLADE-3.2.6/src/Archive/ArchiveManager.cpp
 ===================================================================
---- SLADE-3.1.11.orig/src/Archive/ArchiveManager.cpp
-+++ SLADE-3.1.11/src/Archive/ArchiveManager.cpp
-@@ -153,14 +153,12 @@ bool ArchiveManager::init()
+--- SLADE-3.2.6.orig/src/Archive/ArchiveManager.cpp
++++ SLADE-3.2.6/src/Archive/ArchiveManager.cpp
+@@ -132,14 +132,12 @@ bool ArchiveManager::init()
  	}
  
  	// Find slade3.pk3 directory
--	string dir_slade_pk3 = App::path("slade.pk3", App::Dir::Resources);
-+	string dir_slade_pk3 = App::path("slade.pk3", App::Dir::User);
- 	if (!wxFileExists(dir_slade_pk3))
- 		dir_slade_pk3 = App::path("slade.pk3", App::Dir::Data);
- 	if (!wxFileExists(dir_slade_pk3))
- 		dir_slade_pk3 = App::path("slade.pk3", App::Dir::Executable);
- 	if (!wxFileExists(dir_slade_pk3))
--		dir_slade_pk3 = App::path("slade.pk3", App::Dir::User);
--	if (!wxFileExists(dir_slade_pk3))
+-	auto dir_slade_pk3 = app::path("slade.pk3", app::Dir::Resources);
++	auto dir_slade_pk3 = app::path("slade.pk3", app::Dir::User);
+ 	if (!fileutil::fileExists(dir_slade_pk3))
+ 		dir_slade_pk3 = app::path("slade.pk3", app::Dir::Data);
+ 	if (!fileutil::fileExists(dir_slade_pk3))
+ 		dir_slade_pk3 = app::path("slade.pk3", app::Dir::Executable);
+ 	if (!fileutil::fileExists(dir_slade_pk3))
+-		dir_slade_pk3 = app::path("slade.pk3", app::Dir::User);
+-	if (!fileutil::fileExists(dir_slade_pk3))
  		dir_slade_pk3 = "slade.pk3";
  
  	// Open slade.pk3

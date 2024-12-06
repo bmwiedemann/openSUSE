@@ -1,7 +1,7 @@
 #
 # spec file for package slade
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           slade
-Version:        3.1.13
+Version:        3.2.6
 Release:        0
 Summary:        An editor for DOOM maps and WAD/PK3 archives
 License:        GPL-2.0-or-later
@@ -29,16 +29,14 @@ Patch2:         wx.diff
 Patch3:         clzma.diff
 Patch4:         0001-build-allow-deactivating-the-crash-handler-at-build-.patch
 Patch10:        disable_sse.patch
-Patch11:        0001-build-add-cmake-option-to-skip-Lua-components-1175.patch
-# slade 3.2 will need gcc-c++>=8 and pkgconfig(fmt)>=6
 BuildRequires:  ImageMagick
 BuildRequires:  cmake >= 3.1
 BuildRequires:  freeimage-devel
-BuildRequires:  gcc-c++ >= 6
+BuildRequires:  gcc-c++ >= 8
 BuildRequires:  pkg-config
 BuildRequires:  strip-nondeterminism
 BuildRequires:  update-desktop-files
-BuildRequires:  wxWidgets-3_0-devel
+BuildRequires:  wxWidgets-devel
 BuildRequires:  zip
 BuildRequires:  pkgconfig(clzma)
 BuildRequires:  pkgconfig(fluidsynth)
@@ -46,8 +44,14 @@ BuildRequires:  pkgconfig(ftgl)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libmpg123)
 BuildRequires:  pkgconfig(sfml-all)
 BuildRequires:  pkgconfig(x11)
+%if 0%{?suse_version} >= 1600
+BuildRequires:  fmt-10-devel
+%else
+Provides:       bundled(fmt) = 10
+%endif
 Provides:       bundled(dumb) = 0.9.3
 
 %description
@@ -57,21 +61,17 @@ game-specific formats, and even convert between some of them, or
 from/to other generic formats such as PNG.
 
 %prep
-%setup -q -n SLADE-%version
-%patch -P 1 -P 2 -P 3 -P 4 -p1
-%ifnarch %ix86 x86_64
-%patch -P 10 -p1
-%endif
-%if 0%{?suse_version} >= 1550
-%patch -P 11 -p1
-%endif
+%autosetup -p1 -n SLADE-%version
 
 %build
 %define _lto_cflags %nil
 %cmake -DNO_WEBVIEW=ON -DWX_GTK3=OFF -DNO_CRASHHANDLER=ON \
 	-DCMAKE_C_FLAGS_RELWITHDEBINFO:STRING="%optflags" \
 	-DCMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING="%optflags" \
-	-DNO_LUA:BOOL=TRUE
+%if 0%{?suse_version} >= 1600
+	-DUSE_SYSTEM_FMT:BOOL=ON \
+%endif
+	-DNO_LUA:BOOL=ON
 %cmake_build
 
 %install
@@ -79,11 +79,11 @@ strip-nondeterminism build/slade.pk3
 %cmake_install
 
 %files
-%license gpl-2.0.txt
+%license LICENSE
 %doc README.md
 %_bindir/slade
 %_datadir/slade3/
-%_datadir/icons/net.mancubus.SLADE.png
+%_datadir/icons/hicolor/scalable/apps/net.mancubus.SLADE.svg
 %_datadir/applications/net.mancubus.SLADE.desktop
 %_datadir/metainfo/net.mancubus.SLADE.metainfo.xml
 

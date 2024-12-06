@@ -100,13 +100,13 @@
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 %bcond_without profileopt
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.11.10
+Version:        3.11.11
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
 URL:            https://www.python.org/
 Source0:        https://www.python.org/ftp/python/%{folderversion}/%{tarname}.tar.xz
-Source1:        https://www.python.org/ftp/python/%{folderversion}/%{tarname}.tar.xz.asc
+Source1:        https://www.python.org/ftp/python/%{folderversion}/%{tarname}.tar.xz.sigstore
 Source2:        baselibs.conf
 Source3:        README.SUSE
 Source4:        externally_managed.in
@@ -179,9 +179,6 @@ Patch19:        bso1227999-reproducible-builds.patch
 # PATCH-FIX-UPSTREAM gh120226-fix-sendfile-test-kernel-610.patch gh#python/cpython#120226 mcepl@suse.com
 # Fix test_sendfile_close_peer_in_the_middle_of_receiving on Linux >= 6.10 (GH-120227)
 Patch22:        gh120226-fix-sendfile-test-kernel-610.patch
-# PATCH-FIX-UPSTREAM CVE-2024-9287-venv_path_unquoted.patch gh#python/cpython#124651 mcepl@suse.com
-# venv should properly quote path names provided when creating a venv
-Patch23:        CVE-2024-9287-venv_path_unquoted.patch
 # PATCH-FIX-UPSTREAM Add platform triplets for 64-bit LoongArch gh#python/cpython#30939 glaubitz@suse.com
 Patch24:        add-loongarch64-support.patch
 BuildRequires:  autoconf-archive
@@ -446,7 +443,6 @@ other applications.
 %patch -p1 -P 17
 %patch -p1 -P 19
 %patch -p1 -P 22
-%patch -p1 -P 23
 %patch -p1 -P 24
 
 # drop Autoconf version requirement

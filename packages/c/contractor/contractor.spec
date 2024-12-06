@@ -46,10 +46,14 @@ hard coded into them.
 %install
 %meson_install
 
+#dir for "contract" files
+install -d %{buildroot}%{_datadir}/%{name}
+
 %files
 %license COPYING
 %doc README.md CODE_OF_CONDUCT.md
 %{_bindir}/%{name}
+%{_datadir}/%{name}
 %{_datadir}/dbus-1/services/%{appid}.service
 
 %changelog

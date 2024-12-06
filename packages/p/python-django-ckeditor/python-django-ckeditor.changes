@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec  5 13:54:34 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 6.7.2
+  * Deprecated the package.
+  * Added a new ckeditor/fixups.js script which disables the version check again 
+    (if something slips through by accident) and which disables the behavior 
+    where CKEditor 4 would automatically attach itself to unrelated HTML elements 
+    with a contenteditable attribute (see CKEDITOR.disableAutoInline in the 
+    CKEditor 4 docs).
+- Add CVE-2024-24815.patch (bsc#1219720, CVE-2024-24815)
+
+-------------------------------------------------------------------
 Thu Mar 28 05:41:41 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Add %{?sle15_python_module_pythons}

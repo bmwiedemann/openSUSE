@@ -1,0 +1,67 @@
+From 2d26a63806d2847f549c06276070a636a61bcb80 Mon Sep 17 00:00:00 2001
+From: Eduard Shishkin <edward6@linux.ibm.com>
+Date: Wed, 4 Dec 2024 13:37:46 +0100
+Subject: [PATCH s390-tools] zipl_helper.device-mapper: add missed step in
+ logical device resolution
+
+This fixes 670bf3e
+
+Preparing a loop device for IPL by zipl tool, using its partition as
+zipl target, leads to inconsistent installation setup. The problem is in
+a missed step in the procedure of logical device resolution performed
+by the script zipl_helper.device-mapper:
+
+\# lsblk
+
+NAME                             MAJ:MIN RM  SIZE RO TYPE  MOUNTPOINT
+loop0                              7:0    0    5G  0 loop
+|-loop0p1                        253:15   0  128M  0 part
+`-loop0p2                        253:16   0  4.9G  0 part  /mnt
+
+\# ./zipl_helper.device-mapper 253:16
+
+Expected result:
+
+targetbase=7:0
+targettype=SCSI
+targetblocksize=4096
+targetoffset=32784
+
+Actual result:
+
+targetbase=253:16
+targettype=SCSI
+targetblocksize=4096
+targetoffset=32784
+
+The fixup adds a missed resolution step.
+
+Reference-ID: LTC210771
+Signed-off-by: Eduard Shishkin <edward6@linux.ibm.com>
+---
+ zipl/src/zipl_helper.device-mapper.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/zipl/src/zipl_helper.device-mapper.c b/zipl/src/zipl_helper.device-mapper.c
+index aca52be1..918c5aba 100644
+--- a/zipl/src/zipl_helper.device-mapper.c
++++ b/zipl/src/zipl_helper.device-mapper.c
+@@ -1306,13 +1306,13 @@ static int complete_physical_device(struct physical_device *pd, dev_t *base_dev)
+ 		*base_dev = base_entry->dev.dev;
+ 	} else {
+ 		/*
+-		 * In this case base device is the uppermost logical
++		 * In this case base device is the uppermost
+ 		 * device which provides access to boot sectors
+ 		 */
+ 		base_entry = find_base_entry(pd->dmpath, dc->bootsectors);
+ 		if (!base_entry)
+ 			return -1;
+-		*base_dev = base_entry->dev.dev;
++		*base_dev = first_device_by_target_data(base_entry->target);
+ 	}
+ 	/* Check for valid offset of filesystem */
+ 	if ((pd->offset % (dc->blocksize / SECTOR_SIZE)) != 0) {
+-- 
+2.39.0
+

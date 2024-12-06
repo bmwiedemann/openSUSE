@@ -320,4 +320,15 @@ regression introduced by the last update. See bsc#1152803 for details.
   bsc#1230961</comment>
     <requestid>1204975</requestid>
   </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>f727423f492296c432f8014df66c96bd</srcmd5>
+    <version>1.2</version>
+    <time>1733491611</time>
+    <user>anag+factory</user>
+    <comment>- conf: Update the 'VirtualizationVendor' action to strip any
+  URLs that may follow the vendor name
+  Modified vhostmd-conf.patch
+  bsc#1230961</comment>
+    <requestid>1228642</requestid>
+  </revision>
 </revisionlist>

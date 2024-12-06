@@ -48,4 +48,12 @@
     <comment>- remove elementary from description (forwarded request 1223010 from rrahl0)</comment>
     <requestid>1223011</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>cd1f6e889d944a0219c94006d07f66c4</srcmd5>
+    <version>0.3.5</version>
+    <time>1733491568</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1228601</requestid>
+  </revision>
 </revisionlist>

@@ -1,6 +1,6 @@
 yarn run v1.22.22
 $ /tmp/node_modules/.bin/license-checker --summary
-├─ MIT: 236
+├─ MIT: 237
 ├─ ISC: 31
 ├─ BSD-2-Clause: 15
 ├─ BSD-3-Clause: 7
@@ -11,4 +11,4 @@ $ /tmp/node_modules/.bin/license-checker --summary
 ├─ CC-BY-3.0: 1
 └─ (MIT AND CC-BY-3.0): 1
 
-Done in 0.38s.
+Done in 0.83s.

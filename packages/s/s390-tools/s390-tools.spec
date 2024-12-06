@@ -154,6 +154,7 @@ Patch911:       s390-tools-sles15sp5-remove-no-pie-link-arguments.patch
 Patch912:       s390-tools-ALP-zdev-live.patch
 Patch913:       s390-tools-sles15sp6-kdump-initrd-59-zfcp-compat-rules.patch
 Patch914:       s390-tools-slfo-01-parse-ipl-device-for-activation.patch
+Patch915:       s390-tools-01-zipl_helper.device-mapper-add-missed-step-in-logical.patch
 ###
 
 BuildRequires:  curl-devel

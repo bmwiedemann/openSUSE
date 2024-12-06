@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Thu Dec  5 12:10:05 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 1.18.3:
+  * Fixed uppercase ASCII hosts being rejected by :meth:URL.build()
+    <yarl.URL.build> and :py:meth:~yarl.URL.with_host -- by :user:bdraco.
+  * Improved performances of multiple path properties on cache miss --
+    by :user:bdraco.
+1.18.0:
+  * Added keep_query and keep_fragment flags in the
+    :py:meth:yarl.URL.with_path, :py:meth:yarl.URL.with_name and
+    :py:meth:yarl.URL.with_suffix methods, allowing users to
+    optionally retain the query string and fragment in the resulting
+    URL when replacing the path -- by :user:paul-nameless.
+1.17.2:
+  * Stopped implicitly allowing the use of Cython pre-release versions when
+    building the distribution package -- by :user:ajsanchezsanz and
+    :user:markgreene74.
+  * Fixed a bug causing :attr:~yarl.URL.port to return the default
+    port when the given port was zero -- by :user:gmacon.
+  * Make error messages include details of incorrect type when port is
+    not int in :py:meth:~yarl.URL.build. -- by :user:Cycloctane.
+  * Stopped implicitly allowing the use of Cython pre-release versions when
+    building the distribution package -- by :user:ajsanchezsanz and
+    :user:markgreene74.
+  * Improved performance of the :py:meth:~yarl.URL.joinpath method --
+    by :user:bdraco.
+1.17.1:
+  * Improved performance of many URL methods – by @bdraco.
+  * Improved performance of passing a dict or str to extend_query() –
+    by @bdraco.
+1.17.0:
+  * Added host_port_subcomponent which returns the RFC 3986 Section
+    3.2.2 host and RFC 3986 Section 3.2.3 port subcomponent – by
+    @bdraco.
+1.16.0:
+  * Fixed blocking I/O to load Python code when creating a new URL
+    with non-ascii characters in the network location part – by
+    @bdraco.
+  * Migrated to using a single cache for encoding hosts – by @bdraco.
+  * Passing ip_address_size and host_validate_size to
+    cache_configure() is deprecated in favor of the new
+    encode_host_size parameter and will be removed in a future
+    release. For backwards compatibility, the old parameters affect
+    the encode_host cache size.
+  * Improved performance of constructing URL – by @bdraco.
+  * Improved performance of calling build() and constructing unencoded
+    URL – by @bdraco.
+  * Reworked the internal encoding cache to improve performance on
+    cache hit – by @bdraco.
+1.15.5:
+  * Improved performance of the joinpath() method – by @bdraco.
+  * Improved performance of the extend_query() method – by @bdraco.
+  * Improved performance of the origin() method – by @bdraco.
+  * Improved performance of the with_path() method – by @bdraco.
+  * Improved performance of the with_query() method – by @bdraco.
+  * Improved performance of the update_query() method – by @bdraco.
+  * Improved performance of the join() method – by @bdraco.
+  * Improved performance of URL equality checks – by @bdraco.
+  * Improved performance of URL methods that modify the network location – by @bdraco.
+  * Improved performance of the with_fragment() method – by @bdraco.
+  * Improved performance of calculating the hash of URL objects – by @bdraco.
+  * Improved performance of the relative() method – by @bdraco.
+  * Improved performance of the with_name() method – by @bdraco.
+  * Improved performance of parent – by @bdraco.
+  * Improved performance of the with_scheme() method – by @bdraco.
+1.15.4:
+  * Improved performance of the quoter when all characters are safe – by @bdraco.
+  * Improved performance of unquoting strings – by @bdraco.
+  * Improved performance of calling build() – by @bdraco.
+1.15.3:
+  * Fixed build() failing to validate paths must start with a / when
+    passing authority – by @bdraco.
+  * Removed support for Python 3.8 as it has reached end of life – by @bdraco.
+  * Improved performance of constructing URL when the net location is
+    only the host – by @bdraco.
+1.15.2:
+  * Improved performance of converting URL to a string – by @bdraco.
+  * Improved performance of joinpath() – by @bdraco.
+  * Improved performance of constructing query strings from MultiDict – by @bdraco.
+  * Improved performance of constructing query strings with int values – by @bdraco.
+1.15.1:
+  * Improved performance of calling build() – by @bdraco.
+  * Improved performance of all URL methods that create new URL objects – by @bdraco.
+  * Improved performance of URL methods that modify the network location – by @bdraco.
+1.15.0:
+  * Fixed validation with with_scheme() when passed scheme is not lowercase – by @bdraco.
+  * Improved performance of constructing unencoded URL objects – by @bdraco.
+  * Added a cache for parsing hosts to reduce overhead of encoding URL – by @bdraco.
+  * Improved performance of constructing query strings from Mapping – by @bdraco.
+  * Improved performance of converting URL objects to strings – by @bdraco.
+
+-------------------------------------------------------------------
 Wed Oct  9 07:39:46 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.14.0

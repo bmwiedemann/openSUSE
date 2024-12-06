@@ -8,7 +8,7 @@
     -->
     <!-- Sometimes it's "continuous", sometimes "latest" -->
     <param name="versionrewrite-pattern">continuous</param>
-    <param name="versionrewrite-replacement">1.2.9</param>
+    <param name="versionrewrite-replacement">1.3.1</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="set_version" mode="manual"/>

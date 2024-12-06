@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Dec  5 09:35:07 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.21.1:
+  * Fixed ResourceWarning where file was not properly closed
+  * Fixed regexp for date format
+  * Updated test suite
+  * Fixed detecting when infinity is reached with multipleOf
+  * Fixed that min/max items/lenght/properties can be float
+  * Fixed that everything with empty `not` is invalid
+  * Fixed missing re import when using regex pattern
+  * Improved regexp for email format to comfort test suite
+  * Improved regexp for date format to comfort test suite
+  * Improved regexp for ipv4 format to comfort test suite
+  * Added partial support of idn-hostname format
+  * Added `detailed_exceptions` flag (default to True to avoid
+    breaking change) - when used, results are twice as fast
+
+-------------------------------------------------------------------
 Wed Nov 20 09:47:35 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 2.20.0:

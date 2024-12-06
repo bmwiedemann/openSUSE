@@ -1,0 +1,16 @@
+References: bsc#1234215
+
+--- virt-manager-5.0.0/virtinst/devices/disk.py.orig	2024-12-05 07:15:41.023613127 -0700
++++ virt-manager-5.0.0/virtinst/devices/disk.py	2024-12-05 07:22:16.587622553 -0700
+@@ -677,7 +677,10 @@ class DeviceDisk(Device):
+         # Some file managers use 'file://' when passing files to
+         # virt-manager, we need to strip it from the newpath.
+         if newpath is not None:
+-            newpath = newpath.removeprefix("file://")
++            # str.removeprefix(prefix, /) available in python 3.9 or newer
++            prefix = "file://"
++            if newpath.startswith(prefix):
++                newpath = newpath[len(prefix):]
+ 
+         if self._storage_backend.will_create_storage():
+             raise xmlutil.DevError(

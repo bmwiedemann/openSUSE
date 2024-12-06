@@ -18,13 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-distlib
-Version:        0.3.8
+Version:        0.3.9
 Release:        0
 Summary:        Distribution utilities
 License:        Python-2.0
 URL:            https://github.com/pypa/distlib
 Source:         https://files.pythonhosted.org/packages/source/d/distlib/distlib-%{version}.tar.gz
-Patch1:         https://github.com/pypa/distlib/commit/1c08845b05d022692252ed45cb07e9cb9647caac.patch#/py313-interpreter-repr.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module testsuite}

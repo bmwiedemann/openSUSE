@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec  3 19:48:41 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.4
+  * fix: handle OSError on failure to close socket instead of
+    raising IndexError (#114).
+
+-------------------------------------------------------------------
 Mon Oct 28 15:43:47 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.4.3

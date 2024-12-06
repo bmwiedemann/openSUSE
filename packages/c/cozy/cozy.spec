@@ -1,7 +1,7 @@
 #
 # spec file for package cozy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,58 +16,38 @@
 #
 
 
+%define         appid com.github.geigi.cozy
 Name:           cozy
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Summary:        Audio Book Player
 License:        GPL-3.0-only
-Group:          Productivity/Multimedia/Sound/Players
-URL:            https://github.com/geigi
-Source0:        https://github.com/geigi/cozy/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/geigi/cozy
+Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libhandy-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  python3-base
+BuildRequires:  python3-distro
 BuildRequires:  python3-gobject
-BuildRequires:  python3-setuptools
-BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(granite) >= 5.3.0
-BuildRequires:  pkgconfig(gtk+-3.0)
-Requires:       granite
-Requires:       libhandy-1-0
-Requires:       python3-apsw
-Requires:       python3-cairo
+BuildRequires:  python3-mutagen
+BuildRequires:  python3-peewee
+BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.5.0
+BuildRequires:  pkgconfig(python3)
 Requires:       python3-distro
-Requires:       python3-gst
+Requires:       python3-injector
 Requires:       python3-mutagen
-Requires:       python3-packaging
-Requires:       python3-peewee >= 3.9.6
-Requires:       python3-pytaglib
+Requires:       python3-peewee
 Requires:       python3-pytz
 Requires:       python3-requests
-Requires:       pkgconfig(libdazzle-1.0)
-Recommends:     %{name}-lang
 Recommends:     gstreamer-plugins-base
 Recommends:     gstreamer-plugins-good
 Recommends:     gstreamer-plugins-ugly
-Conflicts:      com.github.geigi.cozy
-Provides:       com.github.geigi.cozy = %{version}
+Provides:       %{appid} = %{version}
+Obsoletes:      %{appid} < %{version}
 BuildArch:      noarch
-# SECTION test requirements
-BuildRequires:  python3-cairo
-BuildRequires:  libhandy-1-0
-BuildRequires:  python3-apsw
-BuildRequires:  python3-distro
-BuildRequires:  python3-gst
-BuildRequires:  python3-mutagen
-BuildRequires:  python3-packaging
-BuildRequires:  python3-peewee >= 3.9.6
-BuildRequires:  python3-pytaglib
-BuildRequires:  pkgconfig(libdazzle-1.0)
-# /SECTION
 
 %description
 Play and organize your audio book collection.
@@ -75,7 +55,7 @@ Play and organize your audio book collection.
 %lang_package
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %meson
@@ -83,23 +63,22 @@ Play and organize your audio book collection.
 
 %install
 %meson_install
-%suse_update_desktop_file com.github.geigi.cozy
-%find_lang com.github.geigi.cozy %{name}.lang
-%fdupes %{buildroot}%{_datadir}
-%fdupes %{buildroot}%{python3_sitelib}
+%find_lang %{appid}
+%fdupes %{buildroot}
 
 %files
-%defattr(0644,root,root,0755)
 %license LICENSE
-%doc AUTHORS README.md
-%attr(0755,root,root) %{_bindir}/com.github.geigi.cozy
-%{_datadir}/applications/com.github.geigi.cozy.desktop
-%{_datadir}/glib-2.0/schemas/com.github.geigi.cozy.gschema.xml
-%{_datadir}/metainfo/com.github.geigi.cozy.appdata.xml
-%{_datadir}/icons/hicolor/*/*/*.??g
-%{_datadir}/com.github.geigi.cozy/
-%{python3_sitelib}/cozy/
+%doc AUTHORS.md README.md
+%attr(0755,root,root) %{_bindir}/%{appid}
+%{_datadir}/applications/%{appid}.desktop
+%{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
+%{_datadir}/metainfo/%{appid}.appdata.xml
+%{_datadir}/icons/hicolor/*/apps/%{appid}.svg
+%{_datadir}/icons/hicolor/*/apps/%{appid}{.Devel,-symbolic}.svg
+%{_datadir}/icons/hicolor/*/actions/*.svg
+%{_datadir}/%{appid}
+%{python3_sitelib}/%{name}
 
-%files lang -f %{name}.lang
+%files lang -f %{appid}.lang
 
 %changelog

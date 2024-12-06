@@ -17,7 +17,7 @@
 
 
 Name:           kora-icon-theme
-Version:        1.6.1
+Version:        1.6.2
 Release:        0
 Summary:        SVG icon theme suitable for every desktop environment (dark and light versions, HiDPI support)
 License:        GPL-3.0-only
@@ -55,6 +55,15 @@ rm -f "kora-light-panel/create-new-icon-theme.cache.sh"
 rm -f "kora-light-panel/icon-theme.cache"
 rm -f "kora-pgrey/create-new-icon-theme.cache.sh"
 rm -f "kora-pgrey/icon-theme.cache"
+# Delete danling symlinks
+rm -f "kora/actions/16/akonadi-phone-home.svg"
+rm -f "kora/actions/16/go-home-large.svg"
+rm -f "kora/actions/16/gohome.svg"
+rm -f "kora/actions/16/gtg-home.svg"
+rm -f "kora/actions/16/gtk-home.svg"
+rm -f "kora/actions/16/kfm_home.svg"
+rm -f "kora/actions/16/redhat-home.svg"
+rm -f "kora/actions/16/stock_home.svg"
 
 # Install icons
 mkdir -p %{buildroot}/usr/share/icons

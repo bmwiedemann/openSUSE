@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec  5 15:18:13 UTC 2024 - Dominik Heidler <dheidler@suse.de>
+
+- Version 0.4.0
+- Better doc in --help
+- Show help and list keys if no args are given
+
+-------------------------------------------------------------------
 Tue Feb  7 12:45:25 UTC 2023 - Dominik Heidler <dheidler@suse.de>
 
 - Version 0.3.0

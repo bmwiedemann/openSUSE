@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Wed Sep 11 19:53:21 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to version 7.8.1
+  * Details on
+    https://github.com/Open-Cascade-SAS/OCCT/releases/tag/V7_8_1
+- update to version 7.8.0
+  * General
+    + Fixed TDataStd_NamedData HasSmth() methods to no longer
+      return true for empty containers.
+    + Improved general performance through code updates with static
+      analysis.
+    + Implemented "Memory Manager" configurations: Native, TBB,
+      JeMalloc, Flexible. JeMalloc leads to a performance increase
+      of up to 40% for large files.
+    + Introduced CMake configuration for optimization profiles:
+      Default and Production. Production activates all available
+      compiler optimizations.
+    + Implemented move semantics into NCollection and TCollection
+      containers.
+    + Modernized NCollection_Vector(NCollection_DynamicArray),
+      NCollection_Array1, and NCollection_Array2.
+    + Updated memory allocation functionality to avoid unnecessary
+      memory cleaning (set 0).
+    + Modernized NCollection_IncAllocator (optimized pool for
+      small objects).
+  * Modeling
+    + Addressed multiple bug fixes and improvements for various
+      modeling algorithm methods.
+    + Increased memory management performance.
+    + Improved overall modeling stability.
+    + Resolved canonical geoplane detection problems.
+  * Visualization
+    + Resolved compilation issues related to vtk 9.2.6.
+    + Improved SelectMgr_EntityOwner to process the selection
+      scheme.
+    + Modified Image_AlienPixMap::Save() to write into a memory
+      buffer instead of a file.
+    + Reduced sensitivity of lines.
+    + Extended AIS_AnimationObject with syntax for defining
+      rotation around a specific point.
+    + Introduced separate gesture mappings for dragging to
+      AIS_ViewController.
+    + Integrated the ability to scale by moving the mouse on
+      the OY axis.
+  * Mesh
+    + Fixed BRepMesh_IncrementalMesh issue with overflowing 
+      system memory.
+    + Unhandled Standard_OutOfRange, BRepMesh_PairOfIndex::Append()
+      no longer prevents triangulation with large deflection
+      values.
+  * Data Exchange
+    + Resolved multiple issues regarding DE Wrapper and Step import
+      and export.
+    + Increased STEP parser performance.
+    + Introduced thread-safety interface to STEP import and export.
+    + Reorganized DE ToolKits according to specific CAD formats.
+    + Introduced DE plug-in system to load CAD format providers
+      during library loading time.
+    + Fixed stability issues with XBF and IGES file formats.
+    + Addressed general problems with importing VRML V1.
+    + Improved processing of STEP-oriented dimensions.
+  * Draw Test Harness
+    + Enabled loading of plugins on Linux OS.
+    + Reorganized DRAW DE ToolKits according to specific CAD
+      formats.
+    + Resolved environment-related issues with debug tools
+      DrawTrSurf_Set, DrawTrSurf_SetPnt, and `DrawTrSurf_SetPnt2d.
+
+-------------------------------------------------------------------
 Sun Jan  7 16:30:06 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Use 3-digit soversion to fix BIC change between 7.7.0 and 7.7.1.

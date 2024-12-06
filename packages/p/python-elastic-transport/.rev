@@ -115,4 +115,12 @@
     <comment>- Skip some failing tests with pytest 8.x.</comment>
     <requestid>1182049</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a98679ac1d7f62c398ca239e02b704e5</srcmd5>
+    <version>8.15.1</version>
+    <time>1733491517</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1228532</requestid>
+  </revision>
 </revisionlist>

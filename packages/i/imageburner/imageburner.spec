@@ -1,7 +1,7 @@
 #
 # spec file for package imageburner
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,31 +16,30 @@
 #
 
 
+%define         appid com.github.artemanufrij.imageburner
 Name:           imageburner
 Version:        1.0.2
 Release:        0
 Summary:        Image burner
 License:        GPL-3.0-or-later
-Group:          Hardware/Other
 URL:            https://github.com/artemanufrij/imageburner
-Source:         https://github.com/artemanufrij/imageburner/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  contractor
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  vala
 BuildRequires:  pkgconfig(granite) >= 0.5
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
-Recommends:     %{name}-lang
 
 %description
-An image burner, written especially for Elementary OS.
+An image burner, written especially for the Pantheon Desktop.
 
 %lang_package
 
 %prep
-%setup -q
+%autosetup
 
 mv debian/copyright COPYING
 
@@ -50,19 +49,18 @@ mv debian/copyright COPYING
 
 %install
 %meson_install
-%suse_update_desktop_file -r com.github.artemanufrij.imageburner GTK System Utility Archiving
-%find_lang com.github.artemanufrij.imageburner %{name}.lang
-%fdupes %{buildroot}/%{_datadir}
+%find_lang %{appid}
+%fdupes %{buildroot}
 
 %files
 %license COPYING
 %doc README.md
-%{_bindir}/com.github.artemanufrij.imageburner
-%{_datadir}/applications/com.github.artemanufrij.imageburner.desktop
-%{_datadir}/icons/hicolor/*/*/com.github.artemanufrij.imageburner.??g
-%{_datadir}/metainfo/com.github.artemanufrij.imageburner.appdata.xml
-%{_datadir}/contractor/
+%{_bindir}/%{appid}
+%{_datadir}/applications/%{appid}.desktop
+%{_datadir}/icons/hicolor/*/{apps,mimetypes}/%{appid}.svg
+%{_datadir}/metainfo/%{appid}.appdata.xml
+%{_datadir}/contractor/%{appid}.contract
 
-%files lang -f %{name}.lang
+%files lang -f %{appid}.lang
 
 %changelog

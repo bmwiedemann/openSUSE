@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Dec  4 13:49:59 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.38.0
+  * Python 3.13 Support (#988)
+  * [fix] wsgi: server MUST NOT send Content-Length/Transfer-Encoding
+    header in response with a status code of 1xx, 204 or (2xx to CONNECT
+    request) (#747)
+  * [fix] wsgi: No request Content-Length nor Transfer-Encoding implies
+    no body (#985)
+- Drop 313-new-thread-attributes.patch, merged upstream
+- Drop no-dynamic-version.patch, no longer required
+- Switch back to stable releases
+
+-------------------------------------------------------------------
 Wed Oct 23 23:18:11 UTC 2024 - mcepl@cepl.eu
 
 - Temporarily switch to direct download from GitHub, and update

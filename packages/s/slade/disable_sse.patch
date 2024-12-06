@@ -1,12 +1,43 @@
---- SLADE-3.1.13/src/CMakeLists.txt.orig	2021-06-15 14:13:13.473287606 +0200
-+++ SLADE-3.1.13/src/CMakeLists.txt	2021-06-15 14:13:28.233451010 +0200
-@@ -159,9 +159,6 @@ if(APPLE)
- 	set_source_files_properties(${OSX_ICON} PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
- endif(APPLE)
+From: Jan Engelhardt <ej@inai.de>
+Date: 2024-11-27 17:12:00 +0100
+Original-Submitter: guillaume.gardet@opensuse.org
+Original-Date: 2018-04-18 14:26:53
+
+SSE is not guaranteed to be available on i586.
+Testing the compiler for SSE availability is wrong — if anything,
+the test needs to happen at runtime.
+
+---
+ cmake/unix.cmake                    |    5 -----
+ thirdparty/dumb/helpers/resampler.c |    2 +-
+ 2 files changed, 1 insertion(+), 6 deletions(-)
+
+Index: SLADE-3.2.6/cmake/unix.cmake
+===================================================================
+--- SLADE-3.2.6.orig/cmake/unix.cmake
++++ SLADE-3.2.6/cmake/unix.cmake
+@@ -150,11 +150,6 @@ endif(APPLE)
  
--# enable SSE instructions for dumb library
--set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_USE_SSE -msse")
--
- if(USE_SANITIZER)
- 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address")
- 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address")
+ # Enable SSE instructions for dumb library
+ include(CheckCCompilerFlag)
+-check_c_compiler_flag(-msse HAVE_SSE)
+-if(HAVE_SSE)
+-	add_compile_options(-msse)
+-	add_definitions(-D_USE_SSE)
+-endif()
+ 
+ # Enable debug symbols for glib (so gdb debugging works properly with strings etc.)
+ set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -D_GLIBCXX_DEBUG")
+Index: SLADE-3.2.6/thirdparty/dumb/helpers/resampler.c
+===================================================================
+--- SLADE-3.2.6.orig/thirdparty/dumb/helpers/resampler.c
++++ SLADE-3.2.6/thirdparty/dumb/helpers/resampler.c
+@@ -2,7 +2,7 @@
+ #include <string.h>
+ #define _USE_MATH_DEFINES
+ #include <math.h>
+-#if (defined(_M_IX86) || defined(__i386__) || defined(_M_X64) || defined(__amd64__))
++#if defined(_USE_SSE) && (defined(_M_IX86) || defined(__i386__) || defined(_M_X64) || defined(__amd64__))
+ #include <xmmintrin.h>
+ #define RESAMPLER_SSE
+ #endif

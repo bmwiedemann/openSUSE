@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Nov 23 17:10:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add 9e54f6a661330070ad25a0e86f197b3530bfc5c7.patch: fixes
+  build with python 3.13+
+
+-------------------------------------------------------------------
+Tue Jan 24 09:42:41 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Update project url.
+
+-------------------------------------------------------------------
 Sun Dec  4 13:42:11 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.14:

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Nov 17 21:34:44 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 4.1.0:
+  * Consistently use the "analyse" spelling in British and Australian English
+  * Fix deprecated top-level developer_name in AppData XML
+  * Lighter icon
+- update to 4.0.6:
+  * Fix crash when width/height is set to 0
+  * Update for GNOME 45
+- update to 4.0.5:
+  * update for GNOME 44
+  * updated translations
+- update to 4.0.2:
+  * Fix About window when closing and re-opening it
+- update to 4.0.1:
+  * Added “About” window
+  * Improved text legibility
+  * Update runtime to GNOME 43
+  * updated translations
+  * Improvements to developer tools to make translations easier to keep up to date
+- update to 4.0.0:
+  * move to gtk4, abandoning granite version
+- update spec file for Leap 16.0:
+  * remove %suse_update_desktop_file
+  * renew buildrequires, since the project moved to gtk4/gnome
+  * remove HiDPI workaround
+
+-------------------------------------------------------------------
 Sun Feb 20 15:52:57 UTC 2022 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 3.1.4:

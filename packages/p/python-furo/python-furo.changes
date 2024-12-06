@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  4 14:31:25 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
+
+- refresh node modules
+  * update cross-spawn module to 7.0.6 - CVE-2024-21538 (bsc#1233852)
+
+-------------------------------------------------------------------
 Thu Nov 14 11:32:54 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Add prepare_vendor.sh as Source99.

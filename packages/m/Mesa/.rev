@@ -6043,4 +6043,13 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   * u_mesa-CVE-2023-45913-s390x.patch</comment>
     <requestid>1226983</requestid>
   </revision>
+  <revision rev="524" vrev="396">
+    <srcmd5>f9697381c620d1444724e5a6387d2b62</srcmd5>
+    <version>unknown</version>
+    <time>1733491504</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 24.3.1
+  --&gt; https://docs.mesa3d.org/relnotes/24.3.1</comment>
+    <requestid>1228413</requestid>
+  </revision>
 </revisionlist>
