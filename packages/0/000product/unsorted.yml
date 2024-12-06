@@ -186,6 +186,8 @@ unsorted:
   - NetworkManager-strongswan 
   - NetworkManager-strongswan-lang 
   - NsCDE 
+  - NsCDE-doc 
+  - NsCDE-lang 
   - NumCpp-devel 
   - OOKiedokie 
   - OpenBoard 
@@ -11640,6 +11642,7 @@ unsorted:
   - libQt63DQuickInput6 
   - libQt63DQuickRender6 
   - libQt63DQuickScene2D6 
+  - libQt63DQuickScene3D6 
   - libQt63DRender6 
   - libQt6Bodymovin6 
   - libQt6Charts6 
@@ -12258,8 +12261,8 @@ unsorted:
   - libblkid1-32bit 
   - libblockdev-devel 
   - libblosc1 
-  - libblosc2-3 
-  - libblosc2-3-x86-64-v3 
+  - libblosc2-4 
+  - libblosc2-4-x86-64-v3 
   - libbluetooth3-32bit 
   - libbluray-bdj 
   - libbluray-devel 
@@ -16255,7 +16258,7 @@ unsorted:
   - libscrypt-devel 
   - libscrypt0 
   - libscrypt0-x86-64-v3 
-  - libsdbus-c++1 
+  - libsdbus-c++2 
   - libseafile0 
   - libsearpc-devel 
   - libsearpc1 
@@ -18291,6 +18294,7 @@ unsorted:
   - macchanger 
   - macchina 
   - macrofusion 
+  - madeline 
   - madplay 
   - madplay-lang 
   - maelstrom 
@@ -19908,10 +19912,11 @@ unsorted:
   - netsurf-buildsystem 
   - nettle 
   - netty 
+  - netty-bom 
   - netty-incubator-transport-io_uring 
   - netty-incubator-transport-io_uring-javadoc 
   - netty-javadoc 
-  - netty-poms 
+  - netty-parent 
   - netty-tcnative 
   - netty-tcnative-javadoc 
   - netty-tcnative-openssl-dynamic 
@@ -32447,6 +32452,7 @@ unsorted:
   - python312-cdflib 
   - python312-celery 
   - python312-celery-batches 
+  - python312-cepa 
   - python312-certbot 
   - python312-certbot-apache 
   - python312-certbot-dns-cloudflare 
@@ -36117,6 +36123,7 @@ unsorted:
   - python313-cdflib 
   - python313-celery 
   - python313-celery-batches 
+  - python313-cepa 
   - python313-certbot 
   - python313-certbot-apache 
   - python313-certbot-dns-cloudflare 
@@ -36856,6 +36863,7 @@ unsorted:
   - python313-iminuit 
   - python313-immutabledict 
   - python313-immutables 
+  - python313-impacket 
   - python313-importlab 
   - python313-importlib-metadata 
   - python313-importlib-resources 
@@ -39113,6 +39121,8 @@ unsorted:
   - qt6-3dquickrender-private-devel 
   - qt6-3dquickscene2d-devel 
   - qt6-3dquickscene2d-private-devel 
+  - qt6-3dquickscene3d-devel 
+  - qt6-3dquickscene3d-private-devel 
   - qt6-3drender-devel 
   - qt6-3drender-private-devel 
   - qt6-base-common-devel 
