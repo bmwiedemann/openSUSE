@@ -17,13 +17,13 @@
 
 
 Name:           kaidan
-Version:        0.9.1
+Version:        0.9.2
 Release:        0
 Summary:        A XMPP client based on KDE Framework
 License:        AML AND GPL-3.0-or-later AND SUSE-GPL-3.0+-with-openssl-exception AND MIT AND CC-BY-SA-4.0
 URL:            https://www.kaidan.im
-Source0:        https://download.kde.org/unstable/%{name}/%{name}-%{version}.tar.xz
-Source1:        https://download.kde.org/unstable/%{name}/%{name}-%{version}.tar.xz.sig
+Source0:        https://download.kde.org/unstable/%{name}/%{version}/%{name}-%{version}.tar.xz
+Source1:        https://download.kde.org/unstable/%{name}/%{version}/%{name}-%{version}.tar.xz.sig
 Source2:        kaidan.keyring
 BuildRequires:  cmake >= 3.3
 BuildRequires:  extra-cmake-modules >= 5.40.0
@@ -42,7 +42,7 @@ BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5QQC2DeskopStyle)
 BuildRequires:  cmake(QXmpp) >= 1.5.0
 BuildRequires:  cmake(Qt5Concurrent)
-BuildRequires:  cmake(Qt5Core) >= 5.14.0
+BuildRequires:  cmake(Qt5Core) >= 5.15.0
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  cmake(Qt5Location)
 BuildRequires:  cmake(Qt5Multimedia)
@@ -71,7 +71,7 @@ using the qxmpp XMPP client library and Qt 5.
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n kaidan-v%{version}
 
 %build
 %if 0%{?suse_version} == 1500
