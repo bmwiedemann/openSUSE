@@ -18,7 +18,7 @@
 
 
 Name:           viddy
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Summary:        A modern watch command
 License:        MIT
