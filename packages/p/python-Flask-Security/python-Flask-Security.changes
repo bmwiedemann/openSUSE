@@ -1,0 +1,380 @@
+-------------------------------------------------------------------
+Fri Dec  6 03:40:50 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Rename back to Flask-Security!
+- Update to 5.5.2:
+  * a new 'change email' feature
+  * convert SQLalchemy access to modern select(xx).where(xx) syntax
+  * support for Flask-SQLAlchemy-Lite
+  * change default password hash to argon2
+  * auth tokens now support freshness checks
+  * drop python 3.8 support
+- Refreshed no-mongodb.patch
+- Drop patches, not required: 
+  * support-python-312.patch
+  * use-pyqrcodeng.patch
+- Add patch ignore-resourcewarning.patch:
+  * Ignore ResourceWarnings about unclosed databases.
+
+-------------------------------------------------------------------
+Mon Feb 12 04:11:51 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python-312.patch:
+  * Support Python 3.12 changes.
+
+-------------------------------------------------------------------
+Sat Jan  6 20:55:19 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 5.3.3:
+  Fix for CVE-2023-49438 (bsc#1218412).
+- Refresh patches:
+  - no-mongodb.patch
+  - use-pyqrcodeng.patch
+
+-------------------------------------------------------------------
+Thu Nov 30 13:24:31 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Mon Nov 27 06:29:23 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.3.2:
+  * Update Quickstart to show how to properly handle SQLAlchemy connections.
+  * Auth Token not returned from /tf-validate.
+  * Fix for latest email_validator deprecation - bump minimum to 2.0.0
+  * Deprecate passing in the anonymous_user class
+  * Compatability with Flask 3.0
+  * Revert change in 5.3.0 that added a Referrer-Policy header.
+  * Fix 'next' propagation when passed as form.next
+- Drop patch filterwarnings-ignore-pkg_resources.patch, no longer needed
+
+
+-------------------------------------------------------------------
+Tue Oct  3 06:10:21 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add required python-requests build dependency to fix tests.
+
+-------------------------------------------------------------------
+Thu Aug  3 11:48:11 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 5.3.0:
+  * Improvements to recoverability and confirmation to align with
+    OWASP best practices and reduce possible exploitation.
+  * Webauthn Updates to handling of transport.
+  * Fix MongoDB support by eliminating dependency on flask-mongoengine. Improve MongoDB quickstart.
+  * Fix Quickstart for SQLAlchemy with scoped session.
+  * Login no longer, by default, checks for email deliverability.
+  * Token authentication is no longer accepted on endpoints which only allow 'session' as authentication-method. (N247S)
+  * /reset and /confirm and GENERIC_RESPONSES and additional form args don't mix.
+  * Reset password can be exploited and other OWASP improvements.
+  * Confirmation can be exploited and other OWASP improvements.
+  * Convert to pyproject.toml, build, remove setup.py/.cfg.
+  * the tf_validity feature now ONLY sets a cookie - and the token is no longer returned as part of a JSON response.
+  * Fix login/unified signin templates to properly send CSRF token. Add more tests.
+  * Improve Social Oauth example code.
+- 5.2.0:
+  * Small updates to work with latest Flask/Werkzeug.
+  * Drop support for Python 3.7
+  * Drop support for older versions of dependent packages (such as Flask).
+  * Remove old Werkzeug compatibility check.
+  * Compatibility with Quart.
+  * Remove dependence on pkg_resources / setuptools (use importlib_resources package)
+  * Fix tests to work with latest Werkzeug/Flask. Update requirements_low to match current releases.
+  * Drop support for Python 3.7
+- 5.1.2:
+  * Hungarian translations not working.
+  * Fix documentation for send_mail. (gg)
+  * Fix for latest mongoengine and mongomock.
+  * Fix inappropriate use of &thinsp& in French translations. (maxdup)
+  * Improve documentation around subclassing forms.
+
+-------------------------------------------------------------------
+Tue Apr 11 05:12:22 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch filterwarnings-ignore-pkg_resources.patch:
+  * Filter out DeprecationWarning for pkg_resources.
+- Add Authlib to BuildRequires. 
+
+-------------------------------------------------------------------
+Fri Mar  3 06:08:25 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.1.1:
+  * Fix 2 Flask apps in same thread with USERNAME_ENABLE set. There was a
+    too aggressive config check.
+  * Fix json/flask backwards compatibility hack.
+  * Fix unified signup when two-factor not enabled. (sebdroid)
+  * Add dependency on setuptools (pkg_resources). (hroncok)
+  * Option to encrypt recovery codes.
+  * Support for authentication via 'social' oauth.
+  * Support for Python 3.11
+  * Fixes for Flask-SQLAlchemy 3.0.0. (jrast)
+  * Fixes for sqlalchemy 2.0.0 (jrast)
+  * Webauthn and Unified signin features now properly take into account
+    blueprint prefixes.
+  * Properly propagate ?next=/xx - the verify, webauthn, and unified signin
+    endpoints, that had multiple redirects, needed fixes.
+  * Two factor redirects ignored url_prefix. Added a
+    SECURITY_TWO_FACTOR_ERROR_VIEW configuration option.
+  * Add configurations for static folder/URL and make sure templates
+    reference blueprint relative static folder.
+  * Send entire context to MailUtil::send_mail (patrickyan)
+  * Support for Flask-Babel 3.0.0
+  * Add configuration option SECURITY_TWO_FACTOR_POST_SETUP_VIEW which is
+    redirected to upon successful change of a two factor method.
+  * The ability to pass in a LoginManager instance which was deprecated in
+    5.0 has been removed.
+- Drop patch support-Flask-SQLAlchemy-3.0.patch, now included upstream.
+- Refresh all other patches.
+
+-------------------------------------------------------------------
+Fri Jan  6 03:54:08 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-Flask-SQLAlchemy-3.0.patch:
+  * Support Flask-SQLAlchemy >= 3.0 
+
+-------------------------------------------------------------------
+Fri Sep 30 06:52:16 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Upate to 5.0.2:
+  * Role permissions backwards compatibility bug.
+  * Fix Change Password regression.
+  * Support for WebAuthn.
+  * Support Two-factor recovery codes.
+  * Provide option to prevent user enumeration (i.e. Generic Responses).
+  * Support for Python 3.10.
+  * Support for Flask >= 2.2.
+  * Add custom HTML attributes to improve user experience.
+  * Make the required zxcvbn complexity score configurable.
+  * Get rid of Flask-Mail. Flask-Mailman is now the default preferred email
+    package.
+  * A delete option has been added to us-setup (form and view).
+  * Improve username support - the LoginForm now has a separate field for
+    username.
+  * Fix test and other failures with newer Flask-Login/Werkzeug versions.
+  * Fix test failures with newer Flask versions.
+- Drop patch endswith-assert.patch:
+  * Included upstream.
+- Rebase patches no-mongodb.patch and use-pyqrcodeng.patch
+- Update {Build,}Requires versions.
+
+-------------------------------------------------------------------
+Thu Sep  8 06:45:05 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use email-validator, not email_validator package name. 
+
+-------------------------------------------------------------------
+Sat Apr 16 22:35:37 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add endswith-assert.patch to overcome incompatibilities with
+  WTForms >= 3.0.0 (gh#Flask-Middleware/flask-security#605).
+
+-------------------------------------------------------------------
+Thu Mar 17 16:52:37 UTC 2022 - pgajdos@suse.com
+
+- python-mock is actually not required for build
+
+-------------------------------------------------------------------
+Sat Mar  5 18:01:11 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * updated minimum required version for packages listed in setup.py
+  * request pytest >=6.2.5 (for pytest.FixtureRequest)
+
+- update to version 4.1.3:
+  * Fixes
+    + (:issue:`581`) Fix bug when attempting to disable
+      register_blueprint. (halali)
+    + (:pr:`539`) Fix example documentation re: generating localized
+      messages. (kazuhei2)
+    + (:pr:`546`) Make roles joinedload compatible with SQLAlchemy
+      2.0. (keats)
+    + (:pr:`586`) Ship py.typed as part of package.
+    + (:issue:`580`) Improve documentation around use of bleach and
+      include in common install extra.
+
+-------------------------------------------------------------------
+Mon Feb 28 06:16:49 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.1.2:
+  * default_reauthn_handler doesn't honor SECURITY_URL_PREFIX
+  * Add public API and CLI command to change a user's password.
+  * Add type hints. Please note that many of the packages that flask-security
+  * Add first-class support for using username for signing in.
+  * Possible open redirect vulnerability.
+  * Improve cookie handling and default ``samesite`` to ``Strict``.
+  * Email validation confusion - added documentation.
+  * Add documentation on how to override specific error messages.
+  * Don't install global-scope tests.
+  * Add Blinker as explicit dependency, improve/fix celery usage docs,
+    don't require pyqrcode unless authenticator configured, improve SMS
+    configuration variables documentation.
+  * Your UserModel must contain ``fs_uniquifier``
+  * Removal of python 2.7 and <3.6 support
+  * Remove two-factor `/tf-confirm` endpoint and use generic `freshness`
+    mechanism.
+  * Remove ``SECURITY_BACKWARDS_COMPAT_AUTH_TOKEN_INVALID(ATE)``. In
+    addition to not making sense - the documentation has never been correct.
+  * Add 2FA Validity Window so an application can configure how often the
+    second factor has to be entered.
+  * Add HTML5 Email input types to email fields.
+- 4.1.0 fixed bsc#1202105 CVE-2021-23385.
+- Refresh no-mongodb.patch
+- Drop patches:
+  * no-setup-dependencies.patch
+  * fix-dependencies.patch
+  * 0001-Do-not-raise-a-TypeError-exception-if-phone.data-is-.patch
+- Add patch use-pyqrcodeng.patch:
+  * Use pyqrcodeng rather than pyqrcode.
+
+-------------------------------------------------------------------
+Tue Jun 15 16:37:41 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 3.4.5
+  * Security Vulnerability Fix. Two CSRF vulnerabilities were
+    reported: qrcode and login. This release fixes the more severe
+    of the 2 - the /login vulnerability. The QRcode issue has a
+    much smaller risk profile since a) it is only for two-factor
+    authentication using an authenticator app b) the qrcode is only
+    available during the time the user is first setting up their
+    authentication app. The QRcode issue has been fixed in 4.0.
+  * Fixed
+    - GET on /login and /change could return the callers
+      authentication_token. This is a security concern since GETs
+      don't have CSRF protection. This bug was introduced in 3.3.0.
+      (bsc#1181058, CVE-2021-21241)
+  * Backwards Compatibility Concerns. Fix CSRF vulnerability on
+    /login and /change that could return the callers authentication
+    token. Now, callers can only get the authentication token on
+    successful POST calls.
+
+- Update to 3.4.4
+  * Fix 3 regressions and a couple other bugs
+  * Fixed
+    - Basic Auth broken. When the unauthenticated handler was
+      changed to provide a more uniform/consistent response - it
+      broke using Basic Auth from a browser, since it always
+      redirected rather than returning 401. Now, if the response
+      headers contain WWW-Authenticate (which is set if basic
+      @auth_required method is used), a 401 is returned. See below
+      for backwards compatibility concerns.
+    - As part of figuring out issue 359 - a redirect loop was
+      found. In release 3.3.0 code was put in to redirect to
+      :py:data:`SECURITY_POST_LOGIN_VIEW` when GET or POST was
+      called and the caller was already authenticated. The method
+      used would honor the request next query parameter. This could
+      cause redirect loops. The pre-3.3.0 behavior of redirecting
+      to :py:data:`SECURITY_POST_LOGIN_VIEW` and ignoring the next
+      parameter has been restored.
+    - Fix peewee. Turns out - due to lack of unit tests - peewee
+      hasn't worked since 'permissions' were added in 3.3.
+      Furthermore, changes in 3.4 around get_id and alternative
+      tokens also didn't work since peewee defines its own get_id
+      method.
+  * Compatibility Concerns. In 3.3.0, flask_security.auth_required
+    was changed to add a default argument if none was given. The
+    default include all current methods - session, token, and
+    basic. However basic really isn't like the others and requires
+    that we send back a WWW-Authenticate header if authentication
+    fails (and return a 401 and not redirect). basic has been
+    removed from the default set and must once again be explicitly
+    requested.
+- Rebase patch to remove another case where mongo is used:
+  * no-mongodb.patch
+- Rebase patch to fix context:
+  * fix-dependencies.patch
+- Add patch to fix failed tests (so an exception is not
+  raised if phone.data is None). Submitted upstream at
+  gh#Flask-Middleware/flask-security#495:
+  * 0001-Do-not-raise-a-TypeError-exception-if-phone.data-is-.patch
+
+-------------------------------------------------------------------
+Wed Jul  1 10:13:03 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 3.4.3
+  * Minor fixes for a regression and a couple other minor changes
+
+-------------------------------------------------------------------
+Thu May 14 07:12:48 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Decrease dependencies which aren't really required so we can build
+  in SLE/Leap:
+  * Werkzeug 0.15.5 requirement decreased to 0.14.1
+  * cryptography 2.3.1 requirement decreased to 2.1.4
+  * bcrypt 3.1.5 requirement decreased to 3.1.4
+  * peewee 3.11.2 requirement decreased to 3.7.1
+  * Remove python-pony requirement
+- Add patch that applies previous dependency changes:
+  * fix-dependencies.patch
+
+-------------------------------------------------------------------
+Thu May 14 06:27:54 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to not pull in babel/twine/pytest-runner as
+  upstream needs those but we really don't require them during
+  a rpm build:
+  * no-setup-dependencies.patch
+
+-------------------------------------------------------------------
+Thu May  7 10:42:20 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 3.4.2:
+  * The flask-security repo was moved to a github organization
+    Flask-Middleware.
+
+- Update to 3.4.1:
+  * Fix a bunch of bugs in new unified sign in along with a couple
+    other major issues.
+  * (:issue:`298`) Alternative ID feature ran afoul of
+    postgres/psycopg2 finickiness.
+  * (:issue:`300`) JSON 401 responses had WWW-Authenticate Header
+    attached - that caused browsers to pop up their own login/password
+    form. Not what applications want.
+  * (:issue:`280`) Allow admin/api to setup TFA (and unified sign in)
+    out of band. Please see :meth:`.UserDatastore.tf_set`,
+    :meth:`.UserDatastore.tf_reset`, :meth:`.UserDatastore.us_set`,
+    :meth:`.UserDatastore.us_reset` and
+    :meth:`.UserDatastore.reset_user_access`.
+  * (:pr:`305`) We used form._errors which wasn't very pythonic,
+    and it was removed in WTForms 2.3.0.
+  * (:pr:`310`) WTForms 2.3.0 made email_validator optional,
+    we need it.
+
+- Added Requires python-bcrypt and python-email_validator,
+  Recommends python-PyQRCode, python-SQLAlchemy, python-zxcvbn
+  and Suggests python-argon2_cffi and python-phonenumbers
+
+-------------------------------------------------------------------
+Sun Apr  5 07:58:15 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.4.0:
+  * (:pr:`257`) Support a unified sign in feature.
+    Please see :ref:`unified-sign-in`.
+  * (:pr:`265`) Add phone number validation class. This is used in
+    both unified sign in as well as two-factor when using sms.
+  * (:pr:`274`) Add support for 'freshness' of caller's authentication.
+    This permits endpoints to be additionally protected by ensuring a
+    recent authentication.
+  * (:issue:`99`, :issue:`195`) Support pluggable password validators.
+    Provide a default validator that offers complexity and breached support.
+  * (:issue:`266`) Provide interface to two-factor send_token so that
+    applications can provide error mitigation. Defaults to returning
+    errors if can't send the verification code.
+  * (:pr:`247`) Updated all-inclusive data models (fsqlaV2). Add
+    fields necessary for the new unified sign in feature and changed
+    'username' to be unique (but not required).
+  * (:pr:`245`) Use fs_uniquifier as the default Flask-Login
+    'alternative token'. Basically this means that changing the
+    fs_uniquifier will cause outstanding auth tokens, session and
+    remember me cookies to be invalidated. So if an account gets
+    compromised, an admin can easily stop access. Prior to this cookies
+    were storing the 'id' which is the user's primary key - difficult
+    to change! (kishi85)
+- Enable the testing
+- Add patch to not require mongodb during testing:
+  * no-mongodb.patch
+
+-------------------------------------------------------------------
+Tue Mar 24 15:35:47 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Initial release of python-Flask-Security-Too 3.3.0

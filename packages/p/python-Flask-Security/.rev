@@ -1,0 +1,23 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fc4bb9aacba31593cf5bfdeafe9c8f3b</srcmd5>
+    <version>5.5.2</version>
+    <time>1733491615</time>
+    <user>anag+factory</user>
+    <comment>- Rename back to Flask-Security!
+- Update to 5.5.2:
+  * a new 'change email' feature
+  * convert SQLalchemy access to modern select(xx).where(xx) syntax
+  * support for Flask-SQLAlchemy-Lite
+  * change default password hash to argon2
+  * auth tokens now support freshness checks
+  * drop python 3.8 support
+- Refreshed no-mongodb.patch
+- Drop patches, not required: 
+  * support-python-312.patch
+  * use-pyqrcodeng.patch
+- Add patch ignore-resourcewarning.patch:
+  * Ignore ResourceWarnings about unclosed databases.</comment>
+    <requestid>1228649</requestid>
+  </revision>
+</revisionlist>
