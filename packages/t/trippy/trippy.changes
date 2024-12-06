@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Dec  6 08:39:52 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 0.12.0:
+  Added
+  * Highlight lost probes in sample history
+  * Added quit-preserve-screen (default: shift+q) key binding to
+    quit Tui without clearing the screen
+  * Added forward add backward loss heuristics
+  * Added --tui-locale flag to support i18n
+  * Added translations for locales en, fr, tr, zh, pt, sv, it, ru,
+    es & de
+  * Added --print-locales flag to print all available locales
+  Changed
+  * Added information bar to Tui
+  * [BREAKING CHANGE] Remove Timestamp from all DnsEntry variants
+  * [BREAKING CHANGE] Replace toggle-privacy key binding with
+    expand-privacy and contract-privacy
+  * [BREAKING CHANGE] Hide source address when
+    --tui-privacy-max-ttl is set
+  * Only show hostnames if different from IPs
+  * Lookup GeoIp with current locale
+  * Enable Link-Time Optimization (LTO) for release builds
+  Fixed
+  * Reverse dns enqueued multiple times when dns-ttl expires
+  * Fixed panic for icmp extensions with malformed length
+  * Cursor not moved to the bottom on exit when using
+    --tui-preserve-screen
+  * Config item tui-address-mode does not accept ip
+  * Icmp extension mode not shown in Tui settings
+  * Sample history and frequency charts ignore sub-millisecond
+    samples
+
+-------------------------------------------------------------------
 Sun Aug 11 13:20:22 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 0.11.0:
