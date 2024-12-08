@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  4 10:22:45 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.29.6
+  * Fix crash when building with _GLIBCXX_USE_CXX11_ABI=0 by @graebm in (#686)
+
+-------------------------------------------------------------------
 Thu Nov 21 10:39:01 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.29.5
