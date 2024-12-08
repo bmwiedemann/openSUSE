@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Nov 26 14:30:11 UTC 2024 - mmachova@suse.com
+
+- Update to version 0.22.3:
+  * README: new logo
+  * v0.22.3
+  * readthedocs: use poetry to install dependencies
+  * uuids: Remove extra quotes (#1649)
+  * build(deps-dev): bump certifi from 2023.7.22 to 2024.7.4
+  * Update remaining pyobjc packages
+  * Update github action version
+  * Add support for Python 3.13
+  * Index BlueZ advertisement_callbacks by adapter (#1632)
+  * Remove unused changed argument from BlueZManager._run_advertisement_callbacks
+  * docs/troubleshooting: update for macOS 14.5
+  * build(deps-dev): bump zipp from 3.8.1 to 3.19.1
+  * examples: use context manager in detection_callback.py
+  * Provide a local definition of user32.SetTimer, user32.KillTimer and ole32.CoGetApartmentType on Windows
+  * build(deps-dev): bump urllib3 from 1.26.18 to 1.26.19
+
+-------------------------------------------------------------------
 Sun Jun 02 17:55:55 UTC 2024 - marec@detebe.org
 
 - Update to version 0.22.2:

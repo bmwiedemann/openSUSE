@@ -27,7 +27,7 @@
 %define pname bleak
 %{?sle15_python_module_pythons}
 Name:           python-%{pname}%{psuffix}
-Version:        0.22.2
+Version:        0.22.3
 Release:        0
 Summary:        Python GATT client
 License:        MIT
@@ -43,12 +43,12 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module async_timeout >= 3.0.0}
 %endif
 %if %{with test}
+BuildRequires:  %{python_module async_timeout}
+BuildRequires:  %{python_module bleak}
 BuildRequires:  %{python_module pytest >= 7.0.0}
 BuildRequires:  %{python_module pytest-asyncio >= 0.19.0}
 BuildRequires:  %{python_module pytest-cov >= 3.0.0}
 BuildRequires:  %{python_module typing_extensions >= 4.7.0}
-BuildRequires:  %{python_module async_timeout}
-BuildRequires:  %{python_module bleak}
 %endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
