@@ -28,6 +28,7 @@ Source0:        https://notmuchmail.org/releases/notmuch-%{version}.tar.xz
 Source1:        https://notmuchmail.org/releases/notmuch-%{version}.tar.xz.asc
 # key fingerprint: 7A18 807F 100A 4570 C596  8420 7E4E 65C8 720B 706B
 Source4:        notmuch.keyring
+Patch0:         docs-Update-intersphinx_mapping.patch
 BuildRequires:  libxapian-devel
 # info pages
 BuildRequires:  info

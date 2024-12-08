@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec  6 11:27:06 UTC 2024 - Dan Čermák <dcermak@suse.com>
+
+- Add patch to fix build failure with sphinx 8:
+  add docs-Update-intersphinx_mapping.patch from
+  id:20241205164550.2419455-1-fredrik@frelon.se
+
+-------------------------------------------------------------------
 Sat May 18 15:18:13 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.38.3:

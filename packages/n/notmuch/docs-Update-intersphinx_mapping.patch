@@ -1,0 +1,44 @@
+From: fredrik@frelon.se
+To: notmuch@notmuchmail.org
+Subject: [PATCH] docs: Update intersphinx_mapping
+Date: Thu,  5 Dec 2024 17:45:50 +0100
+Message-ID: <20241205164550.2419455-1-fredrik@frelon.se>
+X-Mailer: git-send-email 2.47.1
+Precedence: list
+List-Id: "Use and development of the notmuch mail system." <notmuch.notmuchmail.org>
+List-Help: <mailto:notmuch-request@notmuchmail.org?subject=help>
+List-Owner: <mailto:notmuch-owner@notmuchmail.org>
+List-Post: <mailto:notmuch@notmuchmail.org>
+List-Subscribe: <mailto:notmuch-join@notmuchmail.org>
+List-Unsubscribe: <mailto:notmuch-leave@notmuchmail.org>
+
+Running `make dirhtml` in bindings/python/docs generates the following
+error:
+
+```
+sphinx-build -b dirhtml -d build/doctrees   source build/dirhtml
+Running Sphinx v8.0.2
+loading translations [en]... done
+making output directory... done
+Converting `source_suffix = '.rst'` to `source_suffix = {'.rst': 'restructuredtext'}`.
+ERROR: Invalid value `None` in intersphinx_mapping['https://docs.python.org/']. Expected a two-element tuple or list.
+```
+
+This commit updates intersphinx_mapping to follow the latest docs [1]
+
+[1] https://www.sphinx-doc.org/en/master/usage/extensions/intersphinx.html
+
+Signed-off-by: Fredrik Lönnegren <fredrik@frelon.se>
+---
+ bindings/python/docs/source/conf.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/bindings/python/docs/source/conf.py b/bindings/python/docs/source/conf.py
+index 8b43c5ca3f9f..bd4c8b17d94f 100644
+--- a/bindings/python/docs/source/conf.py
++++ b/bindings/python/docs/source/conf.py
+@@ -206,3 +206,3 @@ latex_documents = [
+
+ # Example configuration for intersphinx: refer to the Python standard library.
+-intersphinx_mapping = {'https://docs.python.org/': None}
++intersphinx_mapping = {'python': ('https://docs.python.org/3', None)}

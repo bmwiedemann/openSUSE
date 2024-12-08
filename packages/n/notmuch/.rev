@@ -465,4 +465,14 @@ From the NEWS file, this version reports the following:
     <comment></comment>
     <requestid>1175364</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>5a2394e0fad632e883137b718ba8c1dc</srcmd5>
+    <version>0.38.3</version>
+    <time>1733654270</time>
+    <user>anag+factory</user>
+    <comment>- Add patch to fix build failure with sphinx 8:
+  add docs-Update-intersphinx_mapping.patch from
+  id:20241205164550.2419455-1-fredrik@frelon.se</comment>
+    <requestid>1228980</requestid>
+  </revision>
 </revisionlist>
