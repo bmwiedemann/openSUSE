@@ -17,7 +17,7 @@
 
 
 Name:           nebula
-Version:        1.9.4
+Version:        1.9.5
 Release:        0
 Summary:        A scalable overlay networking tool
 License:        MIT

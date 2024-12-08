@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec  6 17:28:15 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.9.5:
+  * Backport reestablish relays from cert-v2 to release-1.9
+  * do not panic when loading a V2 CA certificate
+
+-------------------------------------------------------------------
 Tue Sep 10 08:26:36 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.9.4:
