@@ -1,0 +1,63 @@
+diff -ur sherpa-4.17.0.orig/helpers/sherpa_config.py sherpa-4.17.0/helpers/sherpa_config.py
+--- sherpa-4.17.0.orig/helpers/sherpa_config.py	2024-12-06 15:08:24.931381043 +0100
++++ sherpa-4.17.0/helpers/sherpa_config.py	2024-12-06 16:38:48.368539972 +0100
+@@ -79,7 +79,7 @@
+     def finalize_options(self):
+         incdir = os.path.join(self.install_dir, 'include')
+         libdir = os.path.join(self.install_dir, 'lib')
+-        pydir = os.path.join(libdir, f'python{version}', 'site-packages')
++        pydir = os.path.join(self.install_dir, '@_LIB@', f'python{version}', 'site-packages')
+ 
+         if self.fftw_include_dirs is None:
+             self.fftw_include_dirs = incdir
+@@ -144,7 +144,7 @@
+         # normal installs: editable installs do not seem to care about
+         # the data_files setting.
+         #
+-        libdir = os.path.join('lib',
++        libdir = os.path.join('@_LIB@',
+                               f'python{version}',
+                               'site-packages')
+         dfiles = []
+diff -ur sherpa-4.17.0.orig/setup.cfg sherpa-4.17.0/setup.cfg
+--- sherpa-4.17.0.orig/setup.cfg	2024-12-06 15:08:24.934714481 +0100
++++ sherpa-4.17.0/setup.cfg	2024-12-06 16:38:22.761072281 +0100
+@@ -20,15 +20,15 @@
+ 
+ # FFTW Library
+ # Uncomment to use a local installation
+-#fftw=local
++fftw=local
+ 
+ # If fftw=local uncomment the following lines and
+ # change the default location of libraries and the name
+ # of the library to be linked (usually fftw3)
+ # (include multiple values by separating them with spaces)
+-#fftw-include_dirs=build/include
+-#fftw-lib-dirs=build/lib
+-#fftw-libraries=fftw3
++fftw-include_dirs=include
++fftw-lib-dirs=@_LIB@
++fftw-libraries=fftw3
+ 
+ # Region Library
+ # Uncomment to use a local installation
+@@ -50,13 +50,10 @@
+ #region-use-cxc-parser=False
+ 
+ # WCS Subroutines
+-# Uncomment to use a local installation
+-#wcs=local
+-
+-# Uncomment and change default location if needed
+-#wcs-include-dirs=build/include
+-#wcs-lib-dirs=build/lib
+-#wcs-libraries=wcs
++# sherpa is not compatible with wcs.h from system. Make it build and find vendored wcssubs in extern/
++wcs-include-dirs=build/include
++wcs-lib-dirs=build/lib
++wcs-libraries=wcs
+ 
+ 
+ [build_sphinx]
+Nur in sherpa-4.17.0: sherpa-suse-libdir.patch.

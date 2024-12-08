@@ -1,0 +1,248 @@
+From 388a7b3c87b8068c572041aeb57d2136a583e83b Mon Sep 17 00:00:00 2001
+From: Douglas Burke <dburke.gw@gmail.com>
+Date: Tue, 29 Oct 2024 14:35:02 -0400
+Subject: [PATCH] TEST: address numpy 2 changes to output for docstring tests
+
+The str/repr output in NumPy 2 is much-more verbose and no-longet
+matches the behaviour of the associated Python types. This breaks
+a number of doctests, which had things like
+
+    >>> (a == b).all()
+    True
+    >>> x.val
+    3.4
+
+which now fails for "textual" reasons even though the values are
+the same. The simplest approach is just to print the values, so
+we now have
+
+    >>> print((a == b).all())
+    True
+    >>> print(x.val)
+    3.4
+
+It is not ideal, but is a simple fix that works with versions 1
+and 2 of NumPy.
+---
+ sherpa/astro/data.py       | 14 +++++++-------
+ sherpa/data.py             |  8 ++++----
+ sherpa/models/basic.py     | 24 ++++++++++++------------
+ sherpa/models/model.py     |  2 +-
+ sherpa/models/parameter.py | 10 +++++-----
+ 5 files changed, 29 insertions(+), 29 deletions(-)
+
+diff --git a/sherpa/astro/data.py b/sherpa/astro/data.py
+index 15f91fad72..87db02f617 100644
+--- a/sherpa/astro/data.py
++++ b/sherpa/astro/data.py
+@@ -2563,9 +2563,9 @@ def _get_ebins(self,
+         >>> pha.ungroup()
+         >>> pha.units = 'channel'
+         >>> clo, chi = pha._get_ebins()
+-        >>> (clo == pha.channel).all()
++        >>> print((clo == pha.channel).all())
+         True
+-        >>> (chi == clo + 1).all()
++        >>> print((chi == clo + 1).all())
+         True
+ 
+         >>> pha.units = 'energy'
+@@ -2574,7 +2574,7 @@ def _get_ebins(self,
+         True
+         >>> elo[0:5]
+         array([0.00146, 0.0146 , 0.0292 , 0.0438 , 0.0584 ])
+-        >>> (elo[1:] == ehi[:-1]).all()
++        >>> print((elo[1:] == ehi[:-1]).all())
+         True
+ 
+         >>> pha.group()
+@@ -2587,7 +2587,7 @@ def _get_ebins(self,
+ 
+         >>> pha.units = 'wave'
+         >>> wlo, whi = pha._get_ebins()
+-        >>> (wlo == glo).all()
++        >>> print((wlo == glo).all())
+         True
+         """
+ 
+@@ -2702,7 +2702,7 @@ def _get_indep(self,
+         array([0.1 , 0.11, 0.12, 0.13, 0.14])
+         >>> ehi[0:5]
+         array([0.11      , 0.12      , 0.13      , 0.14      , 0.15000001])
+-        >>> (elo[1:] == ehi[:-1]).all()
++        >>> print((elo[1:] == ehi[:-1]).all())
+         True
+ 
+         >>> pha.units = 'wave'
+@@ -2711,7 +2711,7 @@ def _get_indep(self,
+         array([112.71289825, 103.32015848,  95.37245534,  88.56013348])
+         >>> whi[0:4]
+         array([123.98418555, 112.71289825, 103.32015848,  95.37245534])
+-        >>> (wlo[:-1] == whi[1:]).all()
++        >>> print((wlo[:-1] == whi[1:]).all())
+         True
+ 
+         """
+@@ -3425,7 +3425,7 @@ def apply_grouping(self, data, groupfunc=np.sum):
+         >>> v1 = pha.apply_grouping(dvals)
+         >>> pha.notice(1.2, 4.5)
+         >>> v2 = pha.apply_grouping(dvals)
+-        >>> np.all(v1 == v2)
++        >>> print(np.all(v1 == v2))
+         True
+ 
+         """
+diff --git a/sherpa/data.py b/sherpa/data.py
+index 30fe9dbf0f..daf79d93e2 100644
+--- a/sherpa/data.py
++++ b/sherpa/data.py
+@@ -2042,8 +2042,8 @@ def notice(self,
+         >>> x = np.arange(0.4, 2.6, 0.2)
+         >>> y = np.ones_like(x)
+         >>> d = Data1D('example', x, y)
+-        >>> d.x[0], d.x[-1]
+-        (0.4, 2.4000000000000004)
++        >>> print(d.x[0], d.x[-1])
++        0.4 2.4000000000000004
+         >>> d.notice()
+         >>> d.get_filter(format='%.1f')
+         '0.4:2.4'
+@@ -2326,8 +2326,8 @@ def notice(self,
+         >>> xlo, xhi = edges[:-1], edges[1:]
+         >>> y = np.ones_like(xlo)
+         >>> d = Data1DInt('example', xlo, xhi, y)
+-        >>> d.xlo[0], d.xhi[-1]
+-        (0.4, 2.400000000000001)
++        >>> print(d.xlo[0], d.xhi[-1])
++        0.4 2.400000000000001
+         >>> d.get_filter(format='%.1f')
+         '0.4:2.4'
+         >>> d.notice(0.8, 1.9)
+diff --git a/sherpa/models/basic.py b/sherpa/models/basic.py
+index c1061e033a..d5280eda0f 100644
+--- a/sherpa/models/basic.py
++++ b/sherpa/models/basic.py
+@@ -539,14 +539,14 @@ class Gauss1D(RegriddableModel1D):
+     >>> m1.pos, m2.pos = 10, 10
+     >>> m1.ampl, m2.ampl = 10, 10
+     >>> m1.fwhm, m2.fwhm = 5, 5
+-    >>> m1(10)
++    >>> print(m1(10))
+     10.0
+-    >>> m2(10)
++    >>> print(m2(10))
+     1.8788745573993026
+     >>> m1.fwhm, m2.fwhm = 1, 1
+-    >>> m1(10)
++    >>> print(m1(10))
+     10.0
+-    >>> m2(10)
++    >>> print(m2(10))
+     9.394372786996513
+ 
+     The normalised version will sum to the amplitude when given
+@@ -558,9 +558,9 @@ class Gauss1D(RegriddableModel1D):
+     >>> m1.fwhm, m2.fwhm = 12.2, 12.2
+     >>> grid = np.arange(-90, 110, 0.01)
+     >>> glo, ghi = grid[:-1], grid[1:]
+-    >>> m1(glo, ghi).sum()
++    >>> print(m1(glo, ghi).sum())
+     129.86497637060958
+-    >>> m2(glo, ghi).sum()
++    >>> print(m2(glo, ghi).sum())
+     10.000000000000002
+ 
+     """
+@@ -1923,12 +1923,12 @@ class TableModel(ArithmeticModel):
+     >>> d.staterror = [.2, .2, .2, .2, .2]
+     >>> tm1 = TableModel('tabmodel')
+     >>> tm1.load(None, [.6, .2, 1.1, .2, .5])
+-    >>> tm1.ampl.val
++    >>> print(tm1.ampl.val)
+     1.0
+     >>> tm1.fold(d)
+     >>> fit1 = Fit(d, tm1)
+     >>> res1 = fit1.fit()
+-    >>> tm1.ampl.val
++    >>> print(tm1.ampl.val)
+     1.9894736842102083
+ 
+     In this case the `fold` method is necessary, to ensure that the
+@@ -1941,11 +1941,11 @@ class TableModel(ArithmeticModel):
+     >>> tm2 = TableModel('tabmodel')
+     >>> tm2.load(None, [.6, .2, 1.1, .2, .5])
+     >>> tm2.fold(d)
+-    >>> tm2.ampl.val
++    >>> print(tm2.ampl.val)
+     1.0
+     >>> fit2 = Fit(d, tm2)
+     >>> res2 = fit2.fit()
+-    >>> tm2.ampl.val
++    >>> print(tm2.ampl.val)
+     1.9866666666663104
+ 
+     The masking also holds if the notice or ignore method has been
+@@ -1957,11 +1957,11 @@ class TableModel(ArithmeticModel):
+     >>> tm3 = TableModel('tabmodel')
+     >>> tm3.load(None, [.6, .2, 1.1, .2, .5])
+     >>> tm3.fold(d)
+-    >>> tm3.ampl.val
++    >>> print(tm3.ampl.val)
+     1.0
+     >>> fit3 = Fit(d, tm3)
+     >>> res = fit3.fit()
+-    >>> tm3.ampl.val
++    >>> print(tm3.ampl.val)
+     1.9866666666663104
+ 
+     """
+diff --git a/sherpa/models/model.py b/sherpa/models/model.py
+index 5b89181d28..020ef7a30f 100644
+--- a/sherpa/models/model.py
++++ b/sherpa/models/model.py
+@@ -152,7 +152,7 @@
+ 
+     >>> m1.ampl = 10
+     >>> m2.ampl = 12
+-    >>> m3.ampl.val
++    >>> print(m3.ampl.val)
+     11.0
+     >>> m3.ampl.link
+     <BinaryOpParameter '(gauss1d.ampl + gmdl.ampl) / 2'>
+diff --git a/sherpa/models/parameter.py b/sherpa/models/parameter.py
+index 3e1ee5215a..09af7c9bcf 100644
+--- a/sherpa/models/parameter.py
++++ b/sherpa/models/parameter.py
+@@ -60,7 +60,7 @@
+ 
+ The `val` attribute is used to retrieve or change the parameter value:
+ 
+-    >>> p.val
++    >>> print(p.val)
+     2.0
+     >>> p.val = 3
+ 
+@@ -72,9 +72,9 @@
+ for these are the 32-bit floating point maximum value, and it's
+ negative:
+ 
+-    >>> p.max
++    >>> print(p.max)
+     3.4028234663852886e+38
+-    >>> p.min
++    >>> print(p.min)
+     -3.4028234663852886e+38
+ 
+ Setting a value outside this range will raise a
+@@ -578,9 +578,9 @@ def _set_link(self, link: Optional[Parameter]) -> None:
+ >>> a = Parameter("mdl", "a", 2)
+ >>> b = Parameter("mdl", "b", 1)
+ >>> b.link = 10 - a
+->>> a.val
++>>> print(a.val)
+ 2.0
+->>> b.val
++>>> print(b.val)
+ 8.0
+ """)
+ 

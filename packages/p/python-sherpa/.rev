@@ -223,4 +223,44 @@
     <comment></comment>
     <requestid>1200258</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>1748a6b2719e575f7fb2ec630998caf1</srcmd5>
+    <version>4.17.0</version>
+    <time>1733654244</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.17.0
+  * This release of Sherpa includes various enhancements,
+    documentation updates, bug fixes, and infrastructure changes.
+  ## enhancements:
+  * add calc_model and calc_source functions to return an evaluated
+    model/source array
+  * added wstat to plot_pvalue for the likelihood ratio test
+  * changed XSpec interface to use FunctionUtility C++ API instead
+    of XSFortran API
+  * improved support for PHA data starting at channel 0 and
+    handling of STAT_ERR and SYS_ERR PHA columns which are set to 0
+  * improved guess for complex models
+  * improved filtering handling
+  * several updates to enhance plotting capabilities and layout
+  ## documentation changes:
+  * added paper citations to front page of Sherpa Read the Docs
+    documentation
+  * cleaned up various typos and URL references
+  * added examples such as use of set_x/y_label
+  ## infrastructure and testing:
+  * improved test coverage
+  * many updates to CI
+  * drop support for Python 3.9 and numpy &lt;1.24
+  * initial/experimental support for Python 3.12
+  ## bug fixes:
+  * fixed an issue with plotting 1D data with asymmetric errs after
+    filter
+  * include the default identifier in save_all output if it has
+    been changed
+- Drop numpy2.patch
+- Add sherpa-pr2188-np2docstrings.patch gh#sherpa/sherpa#2188
+- Add sherpa-suse-libdir.patch
+</comment>
+    <requestid>1228824</requestid>
+  </revision>
 </revisionlist>

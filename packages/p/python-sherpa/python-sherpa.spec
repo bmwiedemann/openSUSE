@@ -16,22 +16,23 @@
 #
 
 
-# requires distutils and setuptools < 60, which does not backport distutils. Unsuitable for python312
-# Track upstream progress in https://github.com/sherpa/sherpa/pull/1949
-%define skip_python312 1
 Name:           python-sherpa
-Version:        4.16.1
+Version:        4.17.0
 Release:        0
 Summary:        Modeling and fitting package for scientific data analysis
 License:        GPL-3.0-only
 URL:            https://github.com/sherpa/sherpa/
 Source0:        https://github.com/sherpa/sherpa/archive/%{version}.tar.gz#/sherpa-%{version}.tar.gz
 Source1:        https://github.com/sherpa/sherpa-test-data/archive/refs/tags/%{version}.tar.gz#/sherpa-test-data-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/sherpa/sherpa/pull/2069 Allow the tests to pass with NumPy 2.0
-Patch:          numpy2.patch
-BuildRequires:  %{python_module devel >= 3.8}
-BuildRequires:  %{python_module numpy-devel >= 1.19}
+# PATCH-FIX-UPSTREAM sherpa-pr2188-np2docstrings.patch gh#sherpa/sherpa#2188
+Patch0:         https://github.com/sherpa/sherpa/pull/2188.patch#/sherpa-pr2188-np2docstrings.patch
+# PATCH-FIX-OPENSUSE sherpa-suse-libdir.patch -- UPSTREAM struggles with library paths, see e.g. gh#sherpa/sherpa#2159 code@bnavigator.de
+Patch1:         sherpa-suse-libdir.patch
+BuildRequires:  %{python_module devel >= 3.9}
+BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 64}
+BuildRequires:  %{python_module tomli if %python-base < 3.11}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  bison
 BuildRequires:  fdupes
@@ -39,14 +40,15 @@ BuildRequires:  fftw3-devel
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.19
+BuildRequires:  wcslib-devel
+Requires:       python-numpy
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 ExcludeArch:    %{ix86} %{arm}
 # SECTION test requirements
-BuildRequires:  %{python_module pytest >= 5}
+BuildRequires:  %{python_module pytest >= 8}
 # doctestplus tests don’t look ready gh#sherpa/sherpa#1719
-# BuildRequires:  %{python_module pytest-doctestplus}
+# BuildRequires:  %%{python_module pytest-doctestplus}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest-xvfb}
 # Highly recommended by upstream when building from source
@@ -62,23 +64,19 @@ data, using a variety of statistics and optimization methods.
 
 %prep
 %autosetup -p1 -n sherpa-%{version} -a1
-# uncomment system libs https://sherpa.readthedocs.io/en/latest/install.html#fftw
-sed -i "s|#fftw=local|fftw=local|" setup.cfg
-sed -i "s|#fftw-include[-_]dirs.*$|fftw-include-dirs=%{_includedir}|" setup.cfg
-sed -i "s|#fftw-lib-dirs.*$|fftw-lib-dirs=%{_libdir}|" setup.cfg
-sed -i "s|#fftw-libraries|fftw-libraries|" setup.cfg
+sed -i -e 's|@_LIB@|%{_lib}|' setup.cfg helpers/sherpa_config.py
 rm -r extern/fftw-*
-# adjust the "install path" for stk.so and group.so for the build phase
-sed -i "/pydir =/ s/libdir,/self.install_dir, '%{_lib}',/" helpers/sherpa_config.py
+# Remove shebangs
+sed -i "1{/\\/usr\\/bin\\/env python/d}" \
+  sherpa/optmethods/ncoresde.py \
+  sherpa/optmethods/ncoresnm.py \
+  sherpa/optmethods/opt.py \
+  sherpa/utils/akima.py
 
 %build
 cp -r extern extern0
-%{python_expand #
-# use the python3X bundled setuptools instead of setuptools 60+ from the distribution
-# https://sherpa.readthedocs.io/en/latest/install.html#building-from-source
-mkdir -p build
-$python -m venv build/buildenv --system-site-packages
-build/buildenv/bin/pip wheel --no-deps --disable-pip-version-check --use-pep517 --no-build-isolation --progress-bar off --verbose . -w build/
+%{python_expand # rebuild and install extern/ into build/ for every wheel
+%$python_pyproject_wheel
 rm -r extern
 cp -r extern0 extern
 }
@@ -90,27 +88,24 @@ cp -r extern0 extern
 %python_clone -a %{buildroot}%{_bindir}/sherpa_smoke
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
-%{python_expand # REMOVE HASHBANGS FROM NON-EXEC FILES
-sed -i "1{/\\/usr\\/bin\\/env python/d}" %{buildroot}%{$python_sitearch}/sherpa/optmethods/ncoresde.py
-sed -i "1{/\\/usr\\/bin\\/env python/d}" %{buildroot}%{$python_sitearch}/sherpa/optmethods/ncoresnm.py
-sed -i "1{/\\/usr\\/bin\\/env python/d}" %{buildroot}%{$python_sitearch}/sherpa/optmethods/opt.py
-sed -i "1{/\\/usr\\/bin\\/env python/d}" %{buildroot}%{$python_sitearch}/sherpa/utils/akima.py
-}
-
 %check
 # avoid conftest import mismatch
 mv sherpa sherpa_temp
 export PYTHONPATH=$PWD/sherpa-test-data-%{version}
-# unclosed resource warnings by pytest although the tests use Path.to_text which should have closed it.
-donttest="test_save"
+donttest="test_Griewank"
 # precision issues
 %ifnarch x86_64
 donttest+=" or (test_regproj and sherpa.plot.dummy_backend)"
 donttest+=" or (test_fit_single and Chi2XspecVar)"
 %endif
-donttest+=" or test_Griewank"
-# Tests must not be run in parallel https://github.com/sherpa/sherpa/issues/2031
-%pytest_arch -n1 --pyargs sherpa -k "not ($donttest)"
+# gh#sherpa/sherpa#1923
+donttest+=" or test_integrate1d_basic_epsabs"
+# flaky
+donttest+=" or test_scaling_staterr"
+donttest+=" or (test_Shekel7 and montecarlo)"
+# docstring mismatches
+python313_donttest=" or test_show_fit or test_modify_doctring or test_modelwrapper_str_with_doc"
+%pytest_arch --pyargs sherpa -n auto --dist=loadgroup -r fE -k "not ($donttest ${$python_donttest})"
 
 %post
 %python_install_alternative sherpa_smoke
