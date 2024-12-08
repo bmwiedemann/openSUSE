@@ -3278,4 +3278,42 @@
 </comment>
     <requestid>1227361</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>cd5fb21b25d3351b5fc38682faca0dfa</srcmd5>
+    <version>2.1.3</version>
+    <time>1733654281</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.1.3:
+  * fix(install): use locked version of jsr package when fetching exports
+  * fix(task): `--recursive` option not working
+  * fix: clear dep analysis when module loading is done
+  * test(ext/node): fix flaky node/http2.createServer() test
+  * chore: update hickory dns crates
+  * fix(unstable/temporal): respect locale in `Duration.prototype.toLocaleString`
+  * fix(node/worker_threads): data url not encoded properly with eval
+  * refactor: remove usages of `deno_core::resolve_import` for resolving redirects
+  * fix(outdated): allow `--latest` without `--update`
+  * fix(task): kill descendants when killing task process on Windows
+  * fix: improve auto-imports for npm packages
+  * fix(unstable): otel context with multiple keys
+  * fix(task): don't panic with filter on missing task argument
+  * test: add node compat test cases
+  * test(ext/node): reduce race condition in test case
+  * refactor: remove `CliNpmRegistryApi`
+  * fix(task): only pass args to root task
+  * fix(node/fs): support `recursive` option in readdir
+  * refactor(ext/web): align error messages
+  * refactor: add deno_npm_cache crate
+  * chore: fix cjs_with_deps test to use a temp dir
+  * fix(fmt): stable formatting of HTML files with JS
+  * chore: upgrade deno_lint to 0.68.2
+  * feat(unstable): add metrics to otel
+  * refactor: upgrade to deno_npm 0.26
+  * chore: export variables from node compat tools script
+  * fix: support `workspace:^` and `workspace:~` version constraints
+  * fix(task): forward signals to spawned sub-processes on unix
+  * refactor(ext/fs): align error messages
+</comment>
+    <requestid>1229052</requestid>
+  </revision>
 </revisionlist>
