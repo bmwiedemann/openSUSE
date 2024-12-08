@@ -66,7 +66,7 @@ BuildRequires:  %{python_module pyshp}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module scikit-image}
+BuildRequires:  %{python_module scikit-image if %python-base < 3.13}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module statsmodels}
 BuildRequires:  %{python_module xarray}
@@ -154,7 +154,9 @@ donttest="$donttest or test_matplotlylib"
 donttest="$donttest or test_masked_constants_example"
 # flaky timing error
 donttest="$donttest or test_fast_track_finite_arrays"
-%pytest plotly/tests/test_optional -k "not ($donttest)"
+# no python313-scikit-image yet
+python313_donttest=" or TestTernarycontour"
+%pytest plotly/tests/test_optional -k "not ($donttest ${$python_donttest})"
 
 %files %{python_files}
 %license LICENSE.txt

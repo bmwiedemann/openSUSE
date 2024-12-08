@@ -430,4 +430,12 @@
       subtitles to plots [#7012]</comment>
     <requestid>1226899</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>850927ad13185b87b6c95c4b10682638</srcmd5>
+    <version>5.24.1</version>
+    <time>1733654253</time>
+    <user>anag+factory</user>
+    <comment>- Skip scikit-image tests on python313: not available yet</comment>
+    <requestid>1228967</requestid>
+  </revision>
 </revisionlist>
