@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Dec 06 15:13:51 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1733491860.60a7833b:
+  * Bump debug from 4.3.7 to 4.4.0
+  * Bump @eslint/config-array from 0.19.0 to 0.19.1
+  * Bump @eslint/core from 0.9.0 to 0.9.1
+  * Bump @eslint/object-schema from 2.1.4 to 2.1.5
+
+-------------------------------------------------------------------
 Thu Dec 05 16:13:07 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1733407564.7c427bbb:
