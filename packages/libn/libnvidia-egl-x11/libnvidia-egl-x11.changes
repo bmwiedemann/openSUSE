@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec  6 13:32:30 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to self-tagged version 1.0.1
+  * Fix the HAVE_TYPEOF macro in glvnd_list.h.
+  * Fix a couple typos.
+  * Use the correct Present event mask in eplX11CreateWindowSurface.
+  * Add a warning to glvnd_list.h if typeof() isn't supported.
+  * X11: Factor out native handle to XID conversion
+  * X11: Check for duplicate native drawables
+
+-------------------------------------------------------------------
 Thu Oct 24 14:07:35 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - added '#src/x11/dma-buf.h:/* SPDX-License-Identifier: GPL-2.0

@@ -857,4 +857,12 @@ See SR#946556</comment>
     <comment>Submit new package rust1.82</comment>
     <requestid>1216852</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>69535bca1caa973d8dd3254deaa499f6</srcmd5>
+    <version>1.83.0</version>
+    <time>1733654167</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.83.0 - for details see the rust1.83 package</comment>
+    <requestid>1228417</requestid>
+  </revision>
 </revisionlist>

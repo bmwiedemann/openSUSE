@@ -2155,4 +2155,12 @@
     <comment>SCripted push of GNOME 47</comment>
     <requestid>1205468</requestid>
   </revision>
+  <revision rev="114" vrev="2">
+    <srcmd5>e2de70fbf3131c95f9dd9a9b98e7547e</srcmd5>
+    <version>1.82.0</version>
+    <time>1733654215</time>
+    <user>anag+factory</user>
+    <comment>Fix dependency generation for loongarch64.</comment>
+    <requestid>1229007</requestid>
+  </revision>
 </revisionlist>

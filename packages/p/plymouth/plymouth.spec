@@ -1,7 +1,7 @@
 #
 # spec file for package plymouth
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,22 +38,20 @@ Patch1:         plymouth-some-greenish-openSUSE-colors.patch
 Patch2:         plymouth-manpages.patch
 # PATCH-FIX-OPENSUSE plymouth-disable-fedora-logo.patch qzhao@suse.com -- Disable the fedora logo reference which is not in openSUSE.
 Patch3:         plymouth-disable-fedora-logo.patch
-# PATCH-FIX-OPENSUSE plymouth-only_use_fb_for_cirrus_bochs.patch bnc#888590 boo#1172028 bsc#1181913 fvogt@suse.com -- Force fb for cirrus and bochs, force drm otherwise. replace removal of framebuffer driver and plymouth-ignore-cirrusdrm.patch with single patch.
-Patch4:         plymouth-only_use_fb_for_cirrus_bochs.patch
 # PATCH-FIX-OPENSUSE plymouth-keep-KillMode-none.patch bsc#1177082 bsc#1184087 boo#1182145 qzhao@suse.com -- Keep the plymouth-start.service KillMode=none.
-Patch5:         plymouth-keep-KillMode-none.patch
+Patch4:         plymouth-keep-KillMode-none.patch
 # PATCH-FIX-OPENSUSE plymouth-install-label-library-and-font-file-to-initrd.patch boo#1183425 boo#1184309 qzhao@suse.com -- Pack label plugin and font into initram to ensure notice info could successfully show when partition encrypted.
-Patch6:         plymouth-install-label-library-and-font-file-to-initrd.patch
+Patch5:         plymouth-install-label-library-and-font-file-to-initrd.patch
 # PATCH-FIX-OPENSUSE plymouth-quiet-dracut-build-info.patch bsc#1189613 qzhao@suse.com -- Hide unuseful output when re-generate initrd.
-Patch7:         plymouth-quiet-dracut-build-info.patch
+Patch6:         plymouth-quiet-dracut-build-info.patch
 # PATCH-FIX-OPENSUSE plymouth-watermark-config.patch bsc#1189613 qzhao@suse.com -- Add two-step water mark config support.
-Patch8:         plymouth-watermark-config.patch
+Patch7:         plymouth-watermark-config.patch
 # PATCH-FIX-OPENSUSE plymouth-log-on-default.patch bsc#1193736 qzhao@suse.com -- Enable plymouth log by default, help to resolve random appear problems.
-Patch9:         plymouth-log-on-default.patch
+Patch8:         plymouth-log-on-default.patch
 # PATCH-FIX-OPENSUSE plymouth-screen-twice-scale-on-160DPI-higher.patch boo#1183425 boo#1184309 qzhao@suse.com -- When DPI > 160, screen will scale output twice.
-Patch10:        plymouth-screen-twice-scale-on-160DPI-higher.patch
+Patch9:         plymouth-screen-twice-scale-on-160DPI-higher.patch
 # PATCH-FIX-OPENSUSE plymouth-crash-avoid-on-keyboard-remove-input-handler.patch bsc#1193736 qzhao@suse.com -- Confirm keyboard handler list not NULL before release memory to avoid crash.
-Patch11:        plymouth-crash-avoid-on-keyboard-remove-input-handler.patch
+Patch10:        plymouth-crash-avoid-on-keyboard-remove-input-handler.patch
 BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gcc
@@ -85,7 +83,7 @@ Requires:       %{name}-branding
 Requires:       systemd >= 186
 Requires(post): coreutils
 Requires(post): plymouth-scripts = %{version}
-Requires(postun):coreutils
+Requires(postun): coreutils
 Suggests:       plymouth-plugin-label
 Provides:       bootsplash = 3.5
 Obsoletes:      bootsplash < 3.5

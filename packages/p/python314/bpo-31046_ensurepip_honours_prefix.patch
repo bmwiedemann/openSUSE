@@ -139,7 +139,7 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
  
 --- a/Makefile.pre.in
 +++ b/Makefile.pre.in
-@@ -2209,7 +2209,7 @@ install: @FRAMEWORKINSTALLFIRST@ @INSTAL
+@@ -2228,7 +2228,7 @@ install: @FRAMEWORKINSTALLFIRST@ @INSTAL
  			install|*) ensurepip="" ;; \
  		esac; \
  		$(RUNSHARED) $(PYTHON_FOR_BUILD) -m ensurepip \
@@ -148,7 +148,7 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
  	fi
  
  .PHONY: altinstall
-@@ -2220,7 +2220,7 @@ altinstall: commoninstall
+@@ -2239,7 +2239,7 @@ altinstall: commoninstall
  			install|*) ensurepip="--altinstall" ;; \
  		esac; \
  		$(RUNSHARED) $(PYTHON_FOR_BUILD) -m ensurepip \

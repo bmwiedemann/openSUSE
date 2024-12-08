@@ -218,4 +218,13 @@
   upgrading from v0.9 to v0.10. (forwarded request 1228299 from aplanas)</comment>
     <requestid>1228303</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>8fdd3ae937fa00ff97d82f3e80f69cef</srcmd5>
+    <version>0.10.0</version>
+    <time>1733654191</time>
+    <user>anag+factory</user>
+    <comment>- Use gcc/g++-13 on Leap to fix the following failure:
+  &quot;tpm2_setprofile.c:49:24: error: initializer element is not constant&quot; (forwarded request 1228719 from manfred-h)</comment>
+    <requestid>1228778</requestid>
+  </revision>
 </revisionlist>

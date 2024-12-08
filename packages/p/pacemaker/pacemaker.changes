@@ -1,8 +1,111 @@
 -------------------------------------------------------------------
+Thu Nov 07 15:40:34 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.9+20241107.c3b66b02d0:
+- CTS: Fix cts-lab --list. (gh#ClusterLabs/pacemaker#3723)
+
+-------------------------------------------------------------------
+Thu Nov 07 11:10:26 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.9+20241105.e043e6816a:
+- executor: avoid use-after-free upon shutdown (bsc#1232613, gh#ClusterLabs/pacemaker#3719)
+
+-------------------------------------------------------------------
+Mon Nov 04 11:52:55 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.9+20241031.49aab99839 (Pacemaker-2.1.9):
+- includes: Bump CRM_FEATURE_SET for iso8601 formatted output.
+- schemas: Add an XML schema for iso8601 output.
+- tools: Convert iso8601 to formatted output.
+
+-------------------------------------------------------------------
+Mon Nov 04 11:03:41 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.8+20241021.40d69ff424 (Pacemaker-2.1.9-rc3):
+- tools: restore crmadmin default timeout to 30 seconds (bsc#1217259, bsc#1228781, jsc#PED-8311, gh#ClusterLabs/pacemaker#3703)
+- libcrmcommon: any negative interval is an error
+- agents: always allow attribute agent to show metadata
+- agents: use RESOURCENAME in attribute agent metadata
+- agents: use configured run directory in attribute agent
+- controld: leave xml-src attribute empty when no DC selected #2902 (bsc#1217259, bsc#1228781, jsc#PED-8311, gh#ClusterLabs/pacemaker#3702)
+
+-------------------------------------------------------------------
+Fri Oct 25 17:04:35 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.8+20241015.33f3052b89 (Pacemaker-2.1.9-rc2):
+- pacemakerd: combine subdaemon start-up logs
+- libcrmcommon: avoid potential overflow when adding seconds
+- libcib: Perform server-side remote CIB reads asynchronously.
+- libcib: Perform client-side remote CIB reads asynchronously.
+- tools: crm_resource returns error on failed schema upgrade
+- libcrmcommon: Don't assert on failure to write errors. (gh#ClusterLabs/pacemaker#3684)
+
+-------------------------------------------------------------------
+Fri Oct 25 11:02:37 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.8+20241003.95cef6b307 (Pacemaker-2.1.9-rc1):
+- NLS: update translations for current code base
+- scheduler: Fixed memory leak when searching for unfencing devices. (gh#ClusterLabs/pacemaker#3678)
+- libcrmcommon: bounds-check when adding to years
+- controller: avoid overflow in recheck time
+- libcrmservice: accept no more than around 10MiB stdout/stderr
+- pacemaker-based,libcib: warn for invalid call options
+- controller,liblrmd: warn for invalid remote proxy IPC flags
+- fencer: warn for invalid call options
+- fencer: warn if device support flags invalid
+- libcrmservice: use proper types with write()
+- libcrmcommon,libcib,scheduler: use unsigned int for CIB sequence number
+- scheduler: avoid overflow in utilization values
+- libcrmcommon: handle corner cases better in crm_time_add_days()
+- libcrmcommon: handle too-negative components of ISO8601 durations
+- controller: avoid memory leak on scheduler API error
+- libcib: treat empty variant variables same as unset (gh#ClusterLabs/pacemaker#3658)
+- pacemaker-based: compare remote user names case-sensitively
+- pacemaker-based: improve remote client connection messages
+- scheduler: ignore and warn for invalid node health attributes
+- scheduler: warn for invalid promotion scores
+- scheduler: warn if node score is invalid
+- scheduler: warn if nvpair block score is invalid
+- scheduler: warn for invalid fail counts
+- scheduler: warn if resource stickiness is invalid
+- scheduler: warn if resource priority is invalid
+- scheduler: warn for invalid health cluster option values
+- controller: improve stonith-max-attempts logs
+- all: improve messages when parsing long integers
+- pacemaker-based: log cluster-ipc-limit errors
+- libcrmcommon: improve IPC buffer size messages
+
+-------------------------------------------------------------------
+Fri Oct 25 10:28:12 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.8+20240916.5936f92119:
+- lrmd: Report the result of add_tls_to_mainloop...
+- libcrmcommon: NULL-check pcmk__xml_tree_foreach() argument
+- libcrmcommon: tweak parse_date() validations
+- libcrmcommon: bounds-check seconds in pcmk_parse_interval_spec()
+- libcrmcommon: return int from get_ordinal_days()
+- libcrmcommon: use uint32_t in parse_date()
+- libcib: improve error handling in cib_file_new()
+- CIB: allow no-quorum-policy "fence" and deprecate "suicide"
+- tools: handle orphans when outputting node history in crm_mon
+
+-------------------------------------------------------------------
+Fri Oct 04 16:20:24 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.8+20240829.2c01183c93:
+- libcrmcommon: Detect newly created alerts section (gh#ClusterLabs/pacemaker#3628)
+- lrmd: Perform the TLS handshake asynchronously.
+- schemas: Add additional node types to the crmadmin schema.
+- tools: fix crm_rule man page section division (gh#ClusterLabs/pacemaker#3612)
+- pacemaker-based: client name can be NULL (gh#ClusterLabs/pacemaker#3608)
+- various: ensure there are spaces around CRM_XS
+- controller,libpacemaker: transition graph IDs should be positive
+
+-------------------------------------------------------------------
 Tue Oct 01 11:36:55 UTC 2024 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.1.8+20240808.3980678f03 (Pacemaker-2.1.8):
-- scheduler: correct format arguments
+- scheduler: correct format arguments (gh#ClusterLabs/pacemaker#3600)
 - libpacemaker: Don't apply colocation twice for promotion priority
 - libpacemaker: Apply promotion priority to cloned group instance
 
@@ -123,7 +226,7 @@ Mon Jun 03 14:15:26 UTC 2024 - Yan Gao <ygao@suse.com>
 - libcib: Fix memory leak in cib_client_fetch_schemas()
 - libpacemaker: Fix mem leak in pcmk__acl_evaled_render()
 - libcrmcommon: avoid memory leaks when loading and freeing schemas
-- libcib: avoid memory leak in async calls
+- libcib: avoid memory leak in async calls (bsc#1233544)
 - scheduler,tools: compare resource history IDs case-sensitively
 - executor: avoid pacemaker-remoted crash
 - libcrmcommon: Fix memory leak in pcmk__build_schema_xml_node()

@@ -51,7 +51,7 @@ BuildRequires:  %{python_module gwcs >= 0.19}
 BuildRequires:  %{python_module matplotlib >= 3.7}
 BuildRequires:  %{python_module pytest-astropy >= 0.10}
 BuildRequires:  %{python_module pytest-xdist >= 2.5}
-BuildRequires:  %{python_module scikit-image >= 0.19.0}
+BuildRequires:  %{python_module scikit-image >= 0.19.0 if %python-base < 3.13}
 BuildRequires:  %{python_module scipy >= 1.10}
 # /SECTION
 %python_subpackages

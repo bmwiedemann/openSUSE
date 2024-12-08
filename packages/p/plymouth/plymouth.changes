@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec  4 14:03:31 UTC 2024 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Remove plymouth-only_use_fb_for_cirrus_bochs.patch: Bochs and cirrus
+  DRM drivers are fully compatible with plymouth. Remove the workaround
+  that forces them to use fbdev. Resolves the blank screen when disabling
+  fbdev interfaces.(bsc#1232727)
+
+-------------------------------------------------------------------
 Mon Aug 28 03:33:51 UTC 2023 - Cliff Zhao <qzhao@suse.com>
 
 - Remove plymouth-runstatedir-revert.patch: Tumbleweed following

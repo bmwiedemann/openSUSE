@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Dec 06 11:44:20 UTC 2024 - pdostal@suse.com
+
+- Update to version 2.63.2:
+  * include alg with digest when fetching bundles from OCI
+  * Error for mutually exclusive json and watch flags
+  * Use safepaths for run download
+  * Use consistent slice ordering in run download tests
+  * Consolidate logic for isolating artifacts
+  * Fix PR checkout panic when base repo is not in remotes
+  * When renaming an existing remote in `gh repo fork`, log the change
+  * Improve DNF version clarity in install steps
+  * Fix formatting in client_test.go comments for linter
+  * Expand logic and tests to handle edge cases
+  * Refactor download testing, simpler file descends
+  * Bump github.com/gabriel-vasile/mimetype from 1.4.6 to 1.4.7
+  * Improve test names so there is no repetition
+  * Second attempt to address exploit
+
+-------------------------------------------------------------------
 Mon Dec 02 09:52:54 UTC 2024 - pdostal@suse.com
 
 - Update to version 2.63.0:

@@ -32,7 +32,6 @@ Source2:        gobjectintrospection.attr
 Source3:        gobject-introspection-typelib.template
 Source98:       baselibs.conf
 Source99:       %{name}-rpmlintrc
-
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
@@ -51,6 +50,7 @@ Requires:       file
 Requires:       libgirepository-1_0-1 = %{version}
 # gi-find-deps uses the enhanced grep variant in order to do multi-line matching (for pkg.requires(..))
 Requires:       pcre2-tools
+Requires:       python3-setuptools
 Requires:       python3-xml
 Requires:       python(abi) = %{python3_version}
 

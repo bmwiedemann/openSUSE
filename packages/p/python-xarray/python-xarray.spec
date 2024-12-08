@@ -180,6 +180,7 @@ if [ $(getconf LONG_BIT) -eq 32 ]; then
   # tests for 64bit types
   donttest="$donttest or TestZarrDictStore or TestZarrDirectoryStore or TestZarrWriteEmpty"
   donttest="$donttest or test_repr_multiindex or test_array_repr_dtypes_unix or test_asi8"
+  donttest="$donttest or (test_datatree and TestRepr and test_doc_example)"
 fi
 # h5py was built without ROS3 support, can't use ros3 driver
 donttest="$donttest or TestH5NetCDFDataRos3Driver"

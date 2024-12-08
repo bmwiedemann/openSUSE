@@ -20,7 +20,7 @@
 %define lname libnvidia-egl-x11%{so_ver}
 %define rname egl-x11
 Name:           libnvidia-egl-x11
-Version:        1.0
+Version:        1.0.1
 Release:        0
 Summary:        NVIDIA XLib and XCB EGL Platform Library
 # src/x11/dma-buf.h:/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */

@@ -19,7 +19,7 @@
 
 %define sover   19
 Name:           spirv-llvm-translator
-Version:        19.1.1
+Version:        19.1.2
 Release:        0
 Summary:        LLVM/SPIR-V Bi-Directional Translator library
 License:        BSD-3-Clause

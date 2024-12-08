@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec  6 11:50:30 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Re-add iptables temporarily
+    * See https://github.com/containers/crun/pull/1613
+
+-------------------------------------------------------------------
 Tue Nov 26 05:59:43 UTC 2024 - madhankumar.chellamuthu@suse.com
 
 - Update to version 5.3.1:

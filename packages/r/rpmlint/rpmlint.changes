@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 06 13:01:31 UTC 2024 - matthias.gerstner@suse.com
+
+- Update to version 2.6.1+git20241206.0bc429f2:
+  * dbus-services: fix mistake in sddm-kalpa whitelisting (bsc#1232647)
+
+-------------------------------------------------------------------
 Fri Nov 29 13:47:15 UTC 2024 - filippo.bonazzi@suse.com
 
 - Update to version 2.6.1+git20241129.0f107c1:

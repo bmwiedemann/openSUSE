@@ -1,0 +1,73 @@
+From eeb29e10e5e7bedb0ce81cfff34683eda960bc80 Mon Sep 17 00:00:00 2001
+From: Kyle Brenneman <kbrenneman@nvidia.com>
+Date: Thu, 14 Nov 2024 12:40:45 -0700
+Subject: [PATCH 2/2] Check for a duplicate wl_surface in
+ wlEglCreatePlatformWindowSurfaceHook
+
+In wlEglCreatePlatformWindowSurfaceHook, check if there's already a
+EGLSurface that uses the same wl_surface object, and if so, fail with
+EGL_BAD_ALLOC.
+
+We've got a check (using the wl_egl_window::driver_private pointer) to
+catch if the app tries to create multiple EGLSurfaces from the same
+wl_egl_window. But, an app could still call wl_egl_window_create
+multiple times, which would give it multiple wl_egl_window structs for
+the same wl_surface.
+---
+ src/wayland-eglsurface.c | 25 ++++++++++++++++++++++---
+ 1 file changed, 22 insertions(+), 3 deletions(-)
+
+diff --git a/src/wayland-eglsurface.c b/src/wayland-eglsurface.c
+index 16161f0..72c0863 100644
+--- a/src/wayland-eglsurface.c
++++ b/src/wayland-eglsurface.c
+@@ -2652,7 +2652,10 @@ EGLSurface wlEglCreatePlatformWindowSurfaceHook(EGLDisplay dpy,
+     WlEglDisplay         *display = wlEglAcquireDisplay(dpy);
+     WlEglPlatformData    *data    = NULL;
+     WlEglSurface         *surface = NULL;
++    WlEglSurface         *existingSurf = NULL;
+     struct wl_egl_window *window  = (struct wl_egl_window *)nativeWin;
++    struct wl_surface    *wsurf   = NULL;
++    long int              wver    = 0;
+     EGLBoolean            res     = EGL_FALSE;
+     EGLint                err     = EGL_SUCCESS;
+     EGLint                surfType;
+@@ -2683,6 +2686,23 @@ EGLSurface wlEglCreatePlatformWindowSurfaceHook(EGLDisplay dpy,
+         goto fail;
+     }
+ 
++    getWlEglWindowVersionAndSurface(window, &wver, &wsurf);
++    if (wsurf == NULL) {
++        err = EGL_BAD_ALLOC;
++        goto fail;
++    }
++
++    // Make sure that we don't have any existing EGLSurfaces for this
++    // wl_surface. The driver_private check above isn't sufficient for this: If
++    // the app calls wl_egl_window_create more than once on the same
++    // wl_surface, then it would get multiple wl_egl_window structs.
++    wl_list_for_each(existingSurf, &display->wlEglSurfaceList, link) {
++        if (existingSurf->wlSurface == wsurf) {
++            err = EGL_BAD_ALLOC;
++            goto fail;
++        }
++    }
++
+     res = data->egl.getConfigAttrib(dpy, config, EGL_SURFACE_TYPE, &surfType);
+ 
+     if (!res || !(surfType & EGL_STREAM_BIT_KHR)) {
+@@ -2757,9 +2777,8 @@ EGLSurface wlEglCreatePlatformWindowSurfaceHook(EGLDisplay dpy,
+     // Create per surface wayland queue
+     surface->wlEventQueue = wl_display_create_queue(display->nativeDpy);
+ 
+-    getWlEglWindowVersionAndSurface(window,
+-                                    &surface->wlEglWinVer,
+-                                    &surface->wlSurface);
++    surface->wlEglWinVer = wver;
++    surface->wlSurface = wsurf;
+ 
+     err = assignWlEglSurfaceAttribs(surface, attribs);
+     if (err != EGL_SUCCESS) {
+-- 
+2.43.0
+

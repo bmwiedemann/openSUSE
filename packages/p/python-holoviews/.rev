@@ -489,4 +489,12 @@
   * Ensure proper cleanup of stream subscribers (#6389) (forwarded request 1227198 from bnavigator)</comment>
     <requestid>1227199</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>79bfd367525bdac3cd85aaab4e448d1e</srcmd5>
+    <version>1.20.0</version>
+    <time>1733654231</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1228768</requestid>
+  </revision>
 </revisionlist>

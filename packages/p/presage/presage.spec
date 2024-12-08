@@ -50,6 +50,8 @@ Patch7:         presage-buildcycle.diff
 Patch8:         presage-0.9.1-python3.patch
 # PATCH-FIX-UPSTREAM fix ISO C++17 does not allow dynamic exception specifications
 Patch9:         presage-0.9.1-gcc11.patch
+# PATCH-FIX-UPSTREAM Fix installation of python bindings with recent setuptools
+Patch10:        presage-setuptools.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes

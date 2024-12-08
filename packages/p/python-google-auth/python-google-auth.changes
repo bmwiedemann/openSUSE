@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Dec  5 11:00:48 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.36.0
+  * IAM signblob retries (#1600)
+  * Making IAM endpoint universe-aware (#1604)
+  * Support External Account Authorized User as a Source
+    Credential for impersonated credentials in ADC (#1608)
+  * Adding default parameters to updated interfaces (#1622)
+  * Change universe_domain to universe-domain (#1613)
+  * Remove base class to avoid type conflict (#1619)
+  * Revert templates for iam endpoints (#1614)
+  * Update secret (#1611)
+  * Update secret (#1617)
+  * Update secret (#1621)
+
+-------------------------------------------------------------------
 Tue Oct  1 14:24:58 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.35.0

@@ -89,4 +89,26 @@
     <comment></comment>
     <requestid>1198010</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>dda0f6afb1dd207630e28c464d02f88b</srcmd5>
+    <version>0.8.4</version>
+    <time>1733654230</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.8.4
+  * UX: a bit of rich support
+  * Examples: runnable from command line / uv
+- Release 0.8.2
+  * Typing: Added py.typed file
+  * Plotting: auto tight_layout()
+  * Improved: polars.DataFrame.physt.h accepts any selectors
+  * Dependency: support Python 3.13, don't use scipy
+- Release 0.8.1
+  * Tooling: embrace uv
+  * Dependency: drop Python 3.8, numpy&lt;1.25, pandas&lt;1.5, polars&lt;1.0
+- Release 0.8.0
+  * Dependency: allow numpy&gt;=2.0
+  * Removed a few deprecated methods for histogram statistics
+- Drop physt-pr116-np2.patch</comment>
+    <requestid>1228766</requestid>
+  </revision>
 </revisionlist>

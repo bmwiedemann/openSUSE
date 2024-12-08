@@ -17,4 +17,13 @@ AFAIK we do miss an open source SYCL implementation in Factory.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1226349</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c3e25afcd545b2d8430902dd6f64b0db</srcmd5>
+    <version>24.06.0~0</version>
+    <time>1733654219</time>
+    <user>anag+factory</user>
+    <comment>- Split OpenMP runtime from the generic library
+</comment>
+    <requestid>1228747</requestid>
+  </revision>
 </revisionlist>

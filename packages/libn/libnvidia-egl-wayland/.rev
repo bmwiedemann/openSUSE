@@ -158,4 +158,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1225034</requestid>
   </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>68e29f3cbe338c0173e9bb799e039dc6</srcmd5>
+    <version>1.1.16</version>
+    <time>1733654202</time>
+    <user>anag+factory</user>
+    <comment>- 0001-Fix-a-segfault-in-wlEglCreatePlatformWindowSurfaceHo.patch
+  0002-Check-for-a-duplicate-wl_surface-in-wlEglCreatePlatf.patch
+  * apply latest fixes from git (jsc#PED-11284)</comment>
+    <requestid>1228785</requestid>
+  </revision>
 </revisionlist>

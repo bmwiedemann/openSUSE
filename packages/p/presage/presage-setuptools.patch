@@ -1,0 +1,26 @@
+Index: presage-0.9.1/apps/python/Makefile.am
+===================================================================
+--- presage-0.9.1.orig/apps/python/Makefile.am
++++ presage-0.9.1/apps/python/Makefile.am
+@@ -70,7 +70,7 @@ install-exec-local:
+ 		$(PYTHON) setup.py install --prefix="$$NATIVE_WINDOWS_PREFIX" \
+ 	  ;; \
+ 	  *) \
+-		$(PYTHON) setup.py install --prefix=$(DESTDIR)$(prefix) \
++		$(PYTHON) setup.py install --root=$(DESTDIR) --prefix=$(prefix) \
+ 	  ;; \
+ 	esac;
+ 
+Index: presage-0.9.1/bindings/python/Makefile.am
+===================================================================
+--- presage-0.9.1.orig/bindings/python/Makefile.am
++++ presage-0.9.1/bindings/python/Makefile.am
+@@ -60,7 +60,7 @@ install-exec-local:
+ 		$(PYTHON) setup.py install --prefix="$$NATIVE_WINDOWS_PREFIX" \
+ 	  ;; \
+ 	  *) \
+-		$(PYTHON) setup.py install --prefix=$(DESTDIR)$(prefix) \
++		$(PYTHON) setup.py install --root=$(DESTDIR) --prefix=$(prefix) \
+ 	  ;; \
+ 	esac;
+ 

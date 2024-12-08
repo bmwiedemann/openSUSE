@@ -1,0 +1,10 @@
+<package name="mergiraf" project="openSUSE:Factory">
+  <title>A syntax-aware git merge driver</title>
+  <description>Mergiraf can solve a wide range of Git merge conflicts.
+That's because it's aware of the trees in your files!
+
+Thanks to its understanding of your language, it can often
+reconcile the needs of both sides.</description>
+  <devel project="devel:tools:scm" package="mergiraf"/>
+  <url>https://mergiraf.org/</url>
+</package>

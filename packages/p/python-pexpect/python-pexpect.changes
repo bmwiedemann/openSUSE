@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec  6 07:28:04 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable test_performance as it randomly fails
+
+-------------------------------------------------------------------
 Tue Dec 12 15:16:28 UTC 2023 - pgajdos@suse.com
 
 - disable randomly failing tests [bsc#1209560]

@@ -1,0 +1,149 @@
+-------------------------------------------------------------------
+Thu Nov 28 17:36:23 UTC 2024 - Rein Fernhout <me@levitati.ng>
+
+- add rpmlintrc to :sources: in gem2rpm.yml
+- add rpmlintrc to .spec sources
+
+-------------------------------------------------------------------
+Tue Nov 28 08:16:02 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- New upstream release 3.6.0, see bundled CHANGELOG.md
+
+-------------------------------------------------------------------
+Wed Jan 20 13:11:59 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 3.5.1
+  no changelog found
+
+-------------------------------------------------------------------
+Mon Feb 10 15:32:49 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 3.5.0
+  no changelog found
+
+-------------------------------------------------------------------
+Fri Jun 23 08:25:21 UTC 2017 - bgeuken@suse.com
+
+- Remove fixing_url_generation_from_markdown.patch. This got introduced
+  with version 3.4.0.
+
+-------------------------------------------------------------------
+Tue Feb 14 05:41:57 UTC 2017 - coolo@suse.com
+
+- updated to version 3.4.0
+  no changelog found
+
+-------------------------------------------------------------------
+Tue Apr  5 15:28:08 UTC 2016 - bgeuken@suse.com
+
+- Add upstream patch to fix issue#460 - fixing url generation from markdown
+
+  Upstream issue:
+    Take from https://github.com/vmg/redcarpet/pull/460
+
+  Required by OBS for issue#1529:
+    https://github.com/openSUSE/open-build-service/issues/1529
+
+
+
+-------------------------------------------------------------------
+Thu Jan 21 05:46:28 UTC 2016 - coolo@suse.com
+
+- updated to version 3.3.4
+  no changelog found
+
+-------------------------------------------------------------------
+Tue Sep 29 04:30:04 UTC 2015 - coolo@suse.com
+
+- updated to version 3.3.3
+  no changelog found
+
+-------------------------------------------------------------------
+Tue Jun 23 04:31:33 UTC 2015 - coolo@suse.com
+
+- updated to version 3.3.2
+  no changelog found
+
+-------------------------------------------------------------------
+Wed Jun 17 04:40:43 UTC 2015 - coolo@suse.com
+
+- updated to version 3.3.1
+  no changelog found
+
+-------------------------------------------------------------------
+Sat Jun  6 04:37:22 UTC 2015 - coolo@suse.com
+
+- updated to version 3.3.0
+  no changelog found
+
+-------------------------------------------------------------------
+Wed Apr  8 04:37:17 UTC 2015 - coolo@suse.com
+
+- updated to version 3.2.3
+   - Avoid rewinding previous inline when auto-linking 
+   - Fix escaping of slashes with the `Safe` render
+ - fixes security issue (bnc#926328)
+
+-------------------------------------------------------------------
+Mon Feb  9 08:06:41 UTC 2015 - coolo@suse.com
+
+- updated to version 3.2.2
+
+-------------------------------------------------------------------
+Tue Nov 11 14:29:56 UTC 2014 - tboerger@suse.com
+
+- To get this running on SLE 11 i have switched the rb_build_versions
+  definition to ruby21 as it is activated within devel:languages:ruby.
+  That way we can get it running on SLE 11 in some way.
+
+-------------------------------------------------------------------
+Wed Oct 15 11:45:44 UTC 2014 - coolo@suse.com
+
+- updated to version 3.2.0
+
+-------------------------------------------------------------------
+Mon Oct 13 18:37:44 UTC 2014 - coolo@suse.com
+
+- adapt to new rubygem packaging
+
+-------------------------------------------------------------------
+Sun May 18 09:04:42 UTC 2014 - coolo@suse.com
+
+- updated to version 3.1.2
+
+-------------------------------------------------------------------
+Sat Feb 22 06:25:43 UTC 2014 - coolo@suse.com
+
+- updated to version 3.1.1
+
+-------------------------------------------------------------------
+Sat Feb 15 13:30:44 UTC 2014 - kkaempf@suse.com
+
+- adapt gem pathes for Ruby 2.1
+- add ruby-devel buildrequires
+
+-------------------------------------------------------------------
+Wed Jul 31 05:45:54 UTC 2013 - coolo@suse.com
+
+- updated to version 3.0.0
+
+-------------------------------------------------------------------
+Fri May 24 06:34:57 UTC 2013 - coolo@suse.com
+
+- updated to version 2.3.0
+
+-------------------------------------------------------------------
+Mon Dec 17 16:06:38 UTC 2012 - coolo@suse.com
+
+- updated to version 2.2.2
+
+-------------------------------------------------------------------
+Tue Nov 29 15:45:40 UTC 2011 - darix@nordisch.org
+
+- update to 2.0.0b5
+
+-------------------------------------------------------------------
+Tue Nov 29 14:52:58 UTC 2011 - darix@nordisch.org
+
+- initial package
+

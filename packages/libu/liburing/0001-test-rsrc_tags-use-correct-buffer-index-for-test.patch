@@ -1,0 +1,39 @@
+From: Jens Axboe <axboe@kernel.dk>
+Date: Sun, 27 Oct 2024 18:48:55 -0600
+Subject: test/rsrc_tags: use correct buffer index for test
+References: fix-kernel-6.13
+Git-repo: https://github.com/axboe/liburing
+Git-commit: 91eecf3a88aa7f72898c17b530d3873331cc1661
+Patch-mainline: 2.9
+
+The test is reading from buffer 0, but updating buffer 1. It's expecting
+buffer 1 not to be put until the per-ring state allows it, but with
+per-node refs, this is no longer true. However what is true, is that if
+we use the right buffer, then the ordering will be observed.
+
+Hence use buffer offset 1 for both the read and the update test, then
+the test is actually testing what it should be testing. And it'll pass
+without full buffer table pinning.
+
+Signed-off-by: Jens Axboe <axboe@kernel.dk>
+Signed-off-by: Jiri Slaby (SUSE) <jirislaby@kernel.org>
+---
+ test/rsrc_tags.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/rsrc_tags.c b/test/rsrc_tags.c
+index 95f65e930ee5..e78cfe403bfb 100644
+--- a/test/rsrc_tags.c
++++ b/test/rsrc_tags.c
+@@ -184,7 +184,7 @@ static int test_buffers_update(void)
+ 
+ 	/* test that CQE is not emitted before we're done with a buffer */
+ 	sqe = io_uring_get_sqe(&ring);
+-	io_uring_prep_read_fixed(sqe, pipes[0], tmp_buf, 10, 0, 0);
++	io_uring_prep_read_fixed(sqe, pipes[0], tmp_buf, 10, 0, 1);
+ 	sqe->user_data = 100;
+ 	ret = io_uring_submit(&ring);
+ 	if (ret != 1) {
+-- 
+2.47.1
+

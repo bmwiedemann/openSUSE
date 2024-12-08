@@ -30,7 +30,11 @@ Patch0:         tpm2-Add-padding-to-OBJECT-for-32bit-targets.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
+%if 0%{is_opensuse} && 0%{?suse_version} < 1599
+BuildRequires:  gcc13-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  libtool
 BuildRequires:  mozilla-nspr-devel
 BuildRequires:  openssl-devel
@@ -63,6 +67,10 @@ Libtpms header files and documentation.
 
 %build
 autoreconf -fiv
+%if 0%{?suse_version} < 1599
+export CC=gcc-13
+export CXX=g++-13
+%endif
 %configure         \
     --with-tpm2    \
     --with-openssl \

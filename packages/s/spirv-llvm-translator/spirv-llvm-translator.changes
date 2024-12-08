@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Dec  5 21:39:15 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 19.1.2.
+  * Add fast math flag translation for OpenCL standard library.
+  * Ensure that PHI node has an incoming value per each predecessor
+    instance, even if the input SPIR-V module is invalid as
+    reported by `spirv-val`.
+  * SPIRVReader: Support OpConstantComposite for cooperative matrix.
+  * SPIRVReader: Add OpSizeOf support (SPIR-V 1.1).
+  * Generate load and store for OpCopyLogical.
+  * SPIRVReader: Add AlignmentId support (SPIR-V 1.2).
+
+-------------------------------------------------------------------
 Thu Nov 14 21:23:30 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 19.1.1.

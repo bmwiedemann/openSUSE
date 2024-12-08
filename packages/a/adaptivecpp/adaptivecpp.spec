@@ -57,11 +57,20 @@ GPUs from all vendors.
 
 %package -n libadaptivecpp
 Summary:        Library for AdaptiveCpp
+Requires:       libadaptivecpp-omp
+Requires:       libadaptivecpp-rt
 
 %description -n libadaptivecpp
-Implementation of SYCL and C++ standard parallelism for CPUs and GPUs from all vendors:
-The independent, community-driven compiler for C++-based heterogeneous programming models.
-Lets applications adapt themselves to all the hardware in the system - even at runtime!
+Implementation of SYCL and C++ standard parallelism for CPUs and GPUs from all vendors.
+
+%package -n libadaptivecpp-omp
+Summary:        OpenMP runtime for AdaptiveCpp
+Requires:       libadaptivecpp = %{version}
+Provides:       libadaptivecpp-rt
+
+%description -n libadaptivecpp-omp
+Implementation of SYCL and C++ standard parallelism for CPUs and GPUs from all vendors.
+This package contains the OpenMP runtime for AdaptiveCpp.
 
 %package -n libadaptivecpp-devel
 Summary:        Development files for libadaptivecpp
@@ -73,7 +82,6 @@ Development files for libadaptivecpp
 %autosetup -p1
 
 %build
-
 %define __builder ninja
 %cmake
 %cmake_build
@@ -108,7 +116,12 @@ Development files for libadaptivecpp
 %{_prefix}/lib/libacpp-clang.so
 %{_prefix}/lib/libacpp-common.so
 %{_prefix}/lib/libacpp-rt.so
-%{_prefix}/lib/hipSYCL/
+%dir %{_prefix}/lib/hipSYCL
+%{_prefix}/lib/hipSYCL/bitcode/
+%{_prefix}/lib/hipSYCL/llvm-to-backend/
+
+%files -n libadaptivecpp-omp
+%{_prefix}/lib/hipSYCL/librt-backend-omp.so
 
 %files -n libadaptivecpp-devel
 %{_includedir}/AdaptiveCpp/

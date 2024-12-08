@@ -4,7 +4,7 @@
 
 --- a/Lib/test/test_compile.py
 +++ b/Lib/test/test_compile.py
-@@ -24,6 +24,9 @@ from test.support import (script_helper,
+@@ -25,6 +25,9 @@ from test.support import (script_helper,
  from test.support.bytecode_helper import instructions_with_positions
  from test.support.os_helper import FakePath
  
@@ -14,7 +14,7 @@
  class TestSpecifics(unittest.TestCase):
  
      def compile_single(self, source):
-@@ -120,6 +123,7 @@ class TestSpecifics(unittest.TestCase):
+@@ -121,6 +124,7 @@ class TestSpecifics(unittest.TestCase):
          self.assertEqual(d['z'], 12)
  
      @unittest.skipIf(support.is_wasi, "exhausts limited stack on WASI")
@@ -22,7 +22,7 @@
      def test_extended_arg(self):
          repeat = int(get_c_recursion_limit() * 0.9)
          longexpr = 'x = x or ' + '-x' * repeat
-@@ -704,6 +708,7 @@ class TestSpecifics(unittest.TestCase):
+@@ -709,6 +713,7 @@ class TestSpecifics(unittest.TestCase):
  
      @support.cpython_only
      @unittest.skipIf(support.is_wasi, "exhausts limited stack on WASI")

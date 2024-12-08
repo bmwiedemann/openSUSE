@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec  6 07:39:33 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- Disable luajit on LoongArch64
+
+-------------------------------------------------------------------
 Wed Nov  6 22:42:54 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 0.4.50:

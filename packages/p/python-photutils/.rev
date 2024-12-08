@@ -676,4 +676,12 @@
   * The regions package is now an optional dependency. [#1813]</comment>
     <requestid>1222854</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>53416426361d2f8b8973fba1b944e1a3</srcmd5>
+    <version>2.0.2</version>
+    <time>1733654222</time>
+    <user>anag+factory</user>
+    <comment>- Skip scikit-image tests for python313</comment>
+    <requestid>1228760</requestid>
+  </revision>
 </revisionlist>

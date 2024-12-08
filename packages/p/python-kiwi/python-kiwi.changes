@@ -1,4 +1,192 @@
 -------------------------------------------------------------------
+Tue Dec 03 14:58:40 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.2 → 10.2.3
+
+-------------------------------------------------------------------
+Tue Dec 03 14:56:47 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update STYLEROOT to SUSE 2022
+
+-------------------------------------------------------------------
+Mon Dec 02 14:57:30 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix broken links in the documentation
+
+-------------------------------------------------------------------
+Mon Dec 02 11:30:51 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix legacy_bios_mode detection
+
+  The code in this method does not work correctly if the
+  firmware is set to 'bios'. In bios only mode the method
+  returned a false value which is incorrect as it should
+  return a true value in this case. Without this patch
+  ISO images will fail to boot because no loader gets
+  configured.
+
+-------------------------------------------------------------------
+Mon Dec 02 09:48:50 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added /dev/pts to bind mount locations
+
+  During runtime several kernel filesystems are bind mounted into
+  the image root system such that programs expecting it can work.
+  /dev/pts was not needed so far but seems to be a good addition
+  to the list to make tools like sudo to work properly when called
+  e.g. from a config.sh script. This Fixes #2686
+
+-------------------------------------------------------------------
+Wed Nov 27 15:59:32 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added provide/require system files for containers
+
+  Added the attributes provide_system_files and require_system_files
+  to control the provider and requester of system files in
+  container image builds. systemfiles is a metadata file which
+  contains all files from the package database at call time.
+  It is used in flake-pilot to provision the systemfiles data
+  from the host into the container instance. One possible use
+  case for this data is a flake registration which uses a
+  base container that is derived from a runtime container but
+  all data from the runtime should be provisioned from the
+  host. Using this feature tightly couples the flake to the
+  host OS distribution and version.
+
+-------------------------------------------------------------------
+Wed Nov 27 09:59:27 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.1 → 10.2.2
+
+-------------------------------------------------------------------
+Wed Nov 27 09:49:05 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix scope issue
+
+  Increase livetime of the the compressor instances
+  to the livetime of RootImportOCI. They create temporary
+  files which are referenced later and need to live longer
+  than the block they got created in
+
+-------------------------------------------------------------------
+Tue Nov 26 13:14:19 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.0 → 10.2.1
+
+-------------------------------------------------------------------
+Mon Nov 25 16:30:53 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed use of fscreateoptions for iso type
+
+  The information for fscreateoptions was not passed along to the
+  tooling if a custom filesystem attribute was specified.
+  This Fixes #2681
+
+-------------------------------------------------------------------
+Mon Nov 25 12:32:20 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow to derive from multiple containers
+
+  Add support for multi inheritance to the derived_from attribute
+  In the order of a comma seperated list of docker source URI's
+  a base tree is created. This was possible only with one container
+  so far and Fixes #2680 as well as jira#OBS-354
+
+-------------------------------------------------------------------
+Thu Nov 21 11:52:53 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.1.18 → 10.2.0
+
+-------------------------------------------------------------------
+Thu Nov 21 11:33:25 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add selinux test build to TW
+
+  Also update derived docker integration test to latest Leap
+
+-------------------------------------------------------------------
+Wed Nov 20 02:14:58 CET 2024 - Neal Gompa <ngompa@velocitylimitless.com>
+
+- kiwi/schema: Fix allowed value type for ISO publisher and application ID
+
+  According to the spec, this should be constrained to 128 characters
+  but also allow quite a few other special characters (as well as spaces).
+  We didn't allow spaces in application ID, but allowed too much for Publisher.
+
+  Now we set up both correctly.
+
+-------------------------------------------------------------------
+Sun Nov 17 23:25:35 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix setup of kiwi environment variables
+
+  Some kiwi env vars are initialized with an empty value
+  and not overwritten if another value is provided. For
+  the selected variables an empty value setting is not
+  allowed because the schema also enforces the value to
+  be set at least once. In addition a helpful option
+  named --print-kiwi-env was added to the 'image info'
+  command which allows to print the environment variables
+  and their values.
+
+-------------------------------------------------------------------
+Tue Nov 12 09:52:44 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add random key support for LUKS encryption
+
+  Allow to pass luks="random". In random mode use the
+  generated keyfile as the only key to decrypt. This is
+  only secure if the generated initrd also gets protected
+  e.g. through encryption like it is done with the secure
+  linux execution on zSystems
+
+-------------------------------------------------------------------
+Thu Nov 07 08:43:03 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added development group in pyproject setup
+
+  generateDS and other tools are needed and were forgotten
+  to be added when we deleted the tox dependency
+
+-------------------------------------------------------------------
+Wed Nov 06 10:13:01 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added containers integration with OBS
+
+  When building in the Open Build Service (OBS) there is no way
+  to create outgoing connections from the build workers. To allow
+  the <containers> section to fetch containers from the SUSE
+  registry we need to apply an OCI URI translation into a local
+  path. The actual OCI container image is expected to be provided
+  by the obs backend on the worker. Along with this commit also an
+  integration test named test-image-disk-containers is provided.
+  This Fixes jira#OBS-351
+
+-------------------------------------------------------------------
+Sun Nov 03 18:17:43 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix rendering of SUSE docs
+
+  The SUSE documentation is produced through a conversion
+  of the ReST source into docbook. The name kiwi is reserved
+  in the index and needs to be referenced as kiwi-ng when
+  used as command.
+
+-------------------------------------------------------------------
+Sun Nov 03 14:37:49 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Remove tox dependency
+
+  tox was used as sort of a make target to run unit tests
+  and more in a python virtualenv. However, since we switched
+  everything to poetry it's no longer needed to let tox create
+  the python virtual environments. This commit moves the tox
+  targets into the Makefile and adapts the github workflow
+  files accordingly. In addition the scripts container based
+  tests were re-activated and fixed such that they succeed
+  again.
+
+-------------------------------------------------------------------
 Fri Nov 01 13:31:20 CET 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Fix make build target
@@ -1670,6 +1858,26 @@ Mon Apr 15 16:43:21 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
   in a busy state because of the auto-snapshot mounts which does
   not get umounted and keeps a busy state until the lazy umount
   kicks in. This Fixes #2529
+
+-------------------------------------------------------------------
+Fri Apr 12 10:39:31 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added IBM Secure Execution support on s390
+
+  IBM SEL(Secure Execution for Linux) is supported for s390
+  KVM guests. SEL images used to start a confidential computing
+  protected guest contain an encrypted boot image which encapsulates
+  the kernel the initrd and the bootparams. The encrypted Image is
+  provided by the KVM/hypervisor to the Embedded zFirmware of the
+  system (the ultravisor device). The decryption keys are hardware
+  based and each system has an individual keypool unique to that
+  system. The root filesystem is LUKS encrypted with a random key
+  produced by kiwi at build time and kept inside of the initrd which
+  exists only inside of the encrypted boot image and the encrypted
+  rootfs to allow kernel updates. The commit to support secure
+  execution also comes with an integration test that provides
+  profiled image builds to target SUSE's LinuxONE as well
+  as IBM Cloud systems.
 
 -------------------------------------------------------------------
 Tue Apr 09 14:13:08 CEST 2024 - Marcus Schäfer <marcus.schaefer@gmail.com>

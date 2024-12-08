@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec  6 12:27:55 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Skip another type induced test error on 32-bit
+
+-------------------------------------------------------------------
 Sun Nov 24 13:23:43 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
 
 - skip test test_asi8 on 32bit, results in "OverflowError: Python int too large to convert to C long"

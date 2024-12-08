@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec  5 12:44:33 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- pam_access: rework resolving of tokens as hostname
+  - separate resolving of IP addresses from hostnames. Don't resolve TTYs or
+    display variables as hostname.
+  - Add "nodns" option to disallow resolving of tokens as hostname.
+  - [pam_access-rework-resolving-of-tokens-as-hostname.patch, bsc#1233078,
+   CVE-2024-10963]
+
+-------------------------------------------------------------------
 Thu Oct 24 11:57:20 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 1.7.0

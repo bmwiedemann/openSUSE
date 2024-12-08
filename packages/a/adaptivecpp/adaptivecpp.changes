@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec  5 13:27:56 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Split OpenMP runtime from the generic library
+
+-------------------------------------------------------------------
 Mon Nov 18 14:28:00 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Convert patches to git format

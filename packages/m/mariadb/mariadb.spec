@@ -80,6 +80,7 @@ Patch6:         mariadb-10.4.12-harden_setuid.patch
 Patch7:         mariadb-10.4.12-fix-install-db.patch
 Patch10:        fix-pamdir.patch
 Patch11:        gcc13-fix.patch
+Patch12:	mariadb-fix-testsuite-openssl3.2.3.patch
 # needed for bison SQL parser and wsrep API
 BuildRequires:  bison
 BuildRequires:  cmake
@@ -361,6 +362,7 @@ find . -name "*.jar" -type f -exec rm --verbose -f {} \;
 %patch -P 10 -p1
 %endif
 %patch -P 11 -p1
+%patch -P 12 -p1
 
 cp %{_sourcedir}/suse-test-run .
 

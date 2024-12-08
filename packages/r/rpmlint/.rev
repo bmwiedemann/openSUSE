@@ -5102,4 +5102,13 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
 - Convert existing services from disabled to manual mode (forwarded request 1227343 from fbonazzi)</comment>
     <requestid>1227344</requestid>
   </revision>
+  <revision rev="493" vrev="1">
+    <srcmd5>f4e9f36292dd6ce73d3ee7ab76c95bd8</srcmd5>
+    <version>2.6.1+git20241206.0bc429f2</version>
+    <time>1733654198</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.6.1+git20241206.0bc429f2:
+  * dbus-services: fix mistake in sddm-kalpa whitelisting (bsc#1232647)</comment>
+    <requestid>1228780</requestid>
+  </revision>
 </revisionlist>

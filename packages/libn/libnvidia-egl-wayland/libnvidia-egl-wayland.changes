@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec  6 13:44:48 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- 0001-Fix-a-segfault-in-wlEglCreatePlatformWindowSurfaceHo.patch
+  0002-Check-for-a-duplicate-wl_surface-in-wlEglCreatePlatf.patch
+  * apply latest fixes from git (jsc#PED-11284)
+
+-------------------------------------------------------------------
 Wed Nov  6 15:53:40 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - 0001-egl-wayland-enable-CI-with-github-actions.patch

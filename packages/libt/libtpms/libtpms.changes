@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec  6 09:03:46 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Use gcc/g++-13 on Leap to fix the following failure:
+  "tpm2_setprofile.c:49:24: error: initializer element is not constant"
+
+-------------------------------------------------------------------
 Wed Dec  4 10:30:30 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Add tpm2-Add-padding-to-OBJECT-for-32bit-targets.patch

@@ -1,0 +1,8 @@
+<package name="rubygem-redcarpet" project="openSUSE:Factory">
+  <title>Redcarpet</title>
+  <description>Redcarpet is a Ruby library for Markdown processing that smells like butterflies and popcorn.
+
+</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-redcarpet"/>
+  <url>https://github.com/vmg/redcarpet</url>
+</package>

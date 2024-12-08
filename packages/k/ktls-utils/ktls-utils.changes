@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Dec 06 13:56:33 UTC 2024 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 0.10+33.g311d943:
+  * tlshd: always link .nvme default keyring into the session (bsc#1229034)
+  * tlshd: Ensure libnl-genl3 is available
+  * tlshd: receive new session ticket msg after completing quic handshake
+  * tlshd: use quic_config to get parameters for quic handshake
+  * tlshd: clean up some unnecessary code in quic handshake
+  * tlshd: improve error logging for tlshd_server_psk_cb()
+  * tlshd: guard against possible overrun of tlshd_peername
+  * tlshd: fix optlen passed to getsockopt()
+  * tlshd: free pathname before it goes out of scope
+  * tlshd: add support for quic handshake
+  * tlshd: include socket ip_proto in tlshd_handshake_parms
+  * tlshd: Refactor tlshd_service_socket()
+  * config: supply meaningful error for non-existing pathnames
+  * tlshd: Fix implicit signedness conversion
+  * tlshd: Fix memory leaks
+
+-------------------------------------------------------------------
 Thu Mar 21 21:50:44 UTC 2024 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 0.10+12.gc3923f7:

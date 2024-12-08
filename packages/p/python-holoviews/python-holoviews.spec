@@ -94,7 +94,7 @@ BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module rfc3986}
-BuildRequires:  %{python_module scikit-image}
+BuildRequires:  %{python_module scikit-image if %python-base < 3.13}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module shapely}
 BuildRequires:  %{python_module streamz >= 0.5.0}

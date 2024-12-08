@@ -54,4 +54,15 @@ make use of %ldconfig_scriptlets</comment>
   --&gt; https://github.com/NVIDIA/nvidia-settings/commit/394e8a71c8330331da340c12be7267e85830bfe7</comment>
     <requestid>1224150</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>12ec33711bde8fe1fe2bd9bdac56c448</srcmd5>
+    <version>565.77</version>
+    <time>1733654213</time>
+    <user>anag+factory</user>
+    <comment>- found the official tarball of 565.77; do the update for real 
+
+- fake update to 565.77 due to lack of new release/any changes on
+  github; driver package will need it ...</comment>
+    <requestid>1228821</requestid>
+  </revision>
 </revisionlist>

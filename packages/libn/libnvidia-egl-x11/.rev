@@ -21,4 +21,18 @@
   https://github.com/torvalds/linux/blob/master/LICENSES/exceptions/Linux-syscall-note</comment>
     <requestid>1218074</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>57fc78e73920e8d75303484e5b6f6d9b</srcmd5>
+    <version>1.0.1</version>
+    <time>1733654233</time>
+    <user>anag+factory</user>
+    <comment>- update to self-tagged version 1.0.1
+  * Fix the HAVE_TYPEOF macro in glvnd_list.h.
+  * Fix a couple typos.
+  * Use the correct Present event mask in eplX11CreateWindowSurface.
+  * Add a warning to glvnd_list.h if typeof() isn't supported.
+  * X11: Factor out native handle to XID conversion
+  * X11: Check for duplicate native drawables</comment>
+    <requestid>1228783</requestid>
+  </revision>
 </revisionlist>

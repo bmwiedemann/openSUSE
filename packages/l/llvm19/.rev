@@ -62,4 +62,16 @@
 </comment>
     <requestid>1225427</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5dc41b02fe3338574f7d9642b96f13c7</srcmd5>
+    <version>19.1.5</version>
+    <time>1733654205</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 19.1.5.
+  * This release contains bug-fixes for the LLVM 19.1.0 release.
+    This release is API and ABI compatible with 19.1.0.
+- Rebase llvm-do-not-install-static-libraries.patch.
+</comment>
+    <requestid>1228786</requestid>
+  </revision>
 </revisionlist>

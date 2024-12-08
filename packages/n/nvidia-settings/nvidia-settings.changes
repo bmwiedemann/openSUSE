@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec  6 16:42:34 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- found the official tarball of 565.77; do the update for real 
+
+-------------------------------------------------------------------
+Fri Dec  6 16:28:00 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- fake update to 565.77 due to lack of new release/any changes on
+  github; driver package will need it ...
+
+-------------------------------------------------------------------
 Thu Nov 14 10:04:42 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - fixed URL in specfile and made 'osc service runall download_files'

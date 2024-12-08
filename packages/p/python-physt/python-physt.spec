@@ -17,38 +17,36 @@
 
 
 Name:           python-physt
-Version:        0.7.4
+Version:        0.8.4
 Release:        0
 Summary:        Python histogram library
 License:        MIT
 URL:            https://github.com/janpipek/physt
 Source:         https://github.com/janpipek/physt/archive/v%{version}.tar.gz#/physt-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM physt-pr116-np2.patch gh#janpipek/physt#116
-Patch0:         physt-pr116-np2.patch
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 65}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-hypothesis >= 6.96.1
-Requires:       python-numpy >= 1.22
+Requires:       python-numpy >= 1.25
 Requires:       python-packaging
 Requires:       python-typing-extensions
-Recommends:     python-dask-array
+Recommends:     python-astropy >= 6
+Recommends:     python-dask-array >= 2023.0
 Recommends:     python-folium
 Recommends:     python-matplotlib
 Recommends:     python-pandas
-Recommends:     python-protobuf
-Recommends:     python-uproot
-Recommends:     python-vega3
 Recommends:     python-xarray
+Suggests:       python-plotly
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module dask-array}
+BuildRequires:  %{python_module astropy}
+BuildRequires:  %{python_module dask-array >= 2023.0}
 BuildRequires:  %{python_module hypothesis >= 6.96.1}
 BuildRequires:  %{python_module matplotlib}
-BuildRequires:  %{python_module numpy >= 1.22}
+BuildRequires:  %{python_module numpy >= 1.25}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module plotly}
@@ -79,7 +77,10 @@ options.
 
 %check
 # no polars
-%pytest --ignore tests/compat/test_polars.py
+ignore="--ignore tests/compat/test_polars.py"
+# gh#janpipek/physt#121
+python313_donttest=("-k" "not test_zero_statistics")
+%pytest $ignore "${$python_donttest[@]}"
 
 %files %{python_files}
 %doc README.md

@@ -18,16 +18,16 @@
 
 %define lname   liburing2
 Name:           liburing
-Version:        2.6
+Version:        2.8
 Release:        0
 Summary:        Linux-native io_uring I/O access library
 License:        (GPL-2.0-only AND LGPL-2.1-or-later) OR MIT
 Group:          Development/Libraries/C and C++
-URL:            https://git.kernel.dk/cgit/liburing
-Source:         https://git.kernel.dk/cgit/liburing/snapshot/%{name}-%{version}.tar.bz2
-Patch0:         test-buf-ring-nommap-zero-the-ringbuf-memory.patch
-# PATCH-FIX-UPSTREAM f11c1ab393185aecedc3f1445b0dff5b187f58c1
-Patch1:         test-buf-ring-nommap-skip-the-test-on-queue-init-ENO.patch
+URL:            https://github.com/axboe/liburing
+Source:         https://github.com/axboe/liburing/archive/refs/tags/%{name}-%{version}.tar.gz
+Patch0:         0001-test-init-mem-zero-the-ringbuf-memory.patch
+Patch1:         0001-test-rsrc_tags-use-correct-buffer-index-for-test.patch
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  procps
@@ -67,7 +67,7 @@ This package provides header files to include and libraries to link with
 for the Linux-native io_uring.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n liburing-liburing-%{version}
 
 %build
 # not autotools, so configure macro doesn't work
@@ -77,10 +77,10 @@ for the Linux-native io_uring.
 export CFLAGS="%{optflags} -fno-stack-protector"
 export CPPFLAGS="%{optflags} -fno-stack-protector"
 %endif
-sh ./configure --prefix=%{_prefix} \
+./configure --prefix=%{_prefix} \
             --includedir=%{_includedir} \
-            --libdir=/%{_libdir} \
-            --libdevdir=/%{_libdir} \
+            --libdir=%{_libdir} \
+            --libdevdir=%{_libdir} \
             --mandir=%{_mandir} \
             --datadir=%{_datadir}
 %make_build -C src
@@ -89,12 +89,14 @@ sh ./configure --prefix=%{_prefix} \
 # io_uring syscalls not supported as of qemu 7.0.0 and would test the host
 # kernel anyway not the target kernel..
 %if !0%{?qemu_user_space_build}
-/usr/bin/make %{?_smp_mflags} runtests
+%make_build runtests
 %endif
 
 %install
 %make_install
 rm -v %{buildroot}%{_libdir}/%{name}*.a
+
+%fdupes %{buildroot}/%{_mandir}/
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig

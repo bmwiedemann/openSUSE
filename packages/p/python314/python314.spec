@@ -149,8 +149,8 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.14.0~a1
-%define         tarversion 3.14.0a1
+Version:        3.14.0~a2
+%define         tarversion 3.14.0a2
 %define         tarname    Python-%{tarversion}
 Release:        0
 Summary:        Python 3 Interpreter
@@ -209,15 +209,6 @@ Patch39:        CVE-2023-52425-libexpat-2.6.0-backport-15.6.patch
 # Skip some failing tests in test_compile for i586 arch in 15.6.
 Patch40:        fix-test-recursion-limit-15.6.patch
 #### Python 3.14 DEVELOPMENT PATCHES
-# PATCH-FIX-UPSTREAM gh125535-Lib_IntVector_Intrinsics_vec128.patch gh#python/cpython#125535 mcepl@suse.com
-# Patch from gh#python/cpython!125244
-Patch41:        gh125535-Lib_IntVector_Intrinsics_vec128.patch
-# PATCH-FIX-UPSTREAM fix_test_ftp_error.patch gh#python/cpython#125584 mcepl@suse.com
-# Patch from gh#python/cpython!125586
-Patch42:        fix_test_ftp_error.patch
-# PATCH-FIX-UPSTREAM fix_test_generated_data.patch gh#python/cpython#121938 mcepl@suse.com
-# skip the failing test on 32bit arch
-Patch43:        fix_test_generated_data.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -261,8 +252,8 @@ BuildRequires:  python3-python-docs-theme >= 2022.1
 
 %if %{with experimental_jit}
 # needed for experimental_jit
-BuildRequires:  clang18
-BuildRequires:  llvm18
+BuildRequires:  clang
+BuildRequires:  llvm
 %endif
 
 %if %{without GIL}

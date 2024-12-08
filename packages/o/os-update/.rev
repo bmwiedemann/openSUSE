@@ -253,4 +253,14 @@
   * Add option to ignore services at all</comment>
     <requestid>1228271</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>4c37d2bab2b4a7fb5ca66da0b5467dc9</srcmd5>
+    <version>1.21+git.20241206</version>
+    <time>1733654234</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.21+git.20241206:
+  * Release version 1.21
+  * Fix check for service restarts</comment>
+    <requestid>1228787</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 # This is based on the ExcludeArch in https://build.opensuse.org/package/show/openSUSE:Factory/luajit
-%ifarch riscv64 ppc64 ppc64le
+%ifarch riscv64 ppc64 ppc64le loongarch64
 %bcond_with    luajit
 %else
 %bcond_without luajit

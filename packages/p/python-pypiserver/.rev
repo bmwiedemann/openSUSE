@@ -97,4 +97,29 @@
     <comment></comment>
     <requestid>1110445</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5910d32256cae090d1fbd0acf11681e9</srcmd5>
+    <version>2.3.2</version>
+    <time>1733654218</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.3.2:
+  * use importlib_resources only when needed (#627)
+  * use json client for update (#588)
+  * solve deprecated types-pkg_resources (#589)
+  * Update Deprecated Compose Commands for Pypiserver Services (#583)
+  * Updated HTML formatting (#580) (#581)
+  * deprecated setuptools.py when building in package.sh (#568)
+  * use the right env variables in release-tag workflow (#569)
+  * Handle tar.xz archives (#536)
+  * support Python 3.12 (#539)
+  * add tar xz test case (#538)
+  * specify long_description as MD type (#532)
+  * simpler release_tag action (#530)
+  * Json Info for the same version (#511)
+  * Switch default hash-algo to sha256 (#459)
+  * cleanup release process (#516)
+  * TOC internal links (#520)
+- Correct URL.</comment>
+    <requestid>1228408</requestid>
+  </revision>
 </revisionlist>

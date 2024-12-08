@@ -250,7 +250,7 @@ function inList() {
 }
 
 # Confer with /usr/lib/rpm/platforms
-x64bitarch="aarch64 mips64 mips64el mips64r6 mips64r6el ppc64 ppc64le riscv64 s390x sparc64 x86_64"
+x64bitarch="aarch64 loongarch64 mips64 mips64el mips64r6 mips64r6el ppc64 ppc64le riscv64 s390x sparc64 x86_64"
 
 for path in \
 	$(for tlpath in \

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Nov 28 12:36:35 UTC 2024 - Klaus Kämpf <kkaempf@suse.de>
+
+- Update to 2.8.0
+  * Update to OpenSSL 3
+  * Needs CMake 3.27 or later
+  * Mostly compatibility and compiler warning fixes
+    - builds on MacOS now (kkaempf)
+    - updated to cmake 3.x (kkaempf)
+    - fix usage of `facility` in logging (kkaempf)
+    - fix Ruby rb_io vs rb_io_t to support Ruby 3.x (Vitezslav Crhonek, kkaempf)
+    - Fixed missing void in prototypes causing compile errors when
+      using -Wstrict-prototypes (Olaf Trygve Berglihn)
+    - Removed unused token lineno causing errors due to compile
+      flag -Wunused (Olaf Trygve Berglihn)
+    - Link with libm for floor() function (Khem Raj)
+    - Added wsman-key-value.h to list of headers to install (Olaf Trygve Berglihn)
+    - wsman-win-client-transport: add SECURITY_FLAG_IGNORE_CERT_WRONG_USAGE,
+      Ignore more problematic certificates if verify_peer is 0. (Alexander Usyskin)
+    - unlock mutex before destroy (kkaempf)
+    - fix many compiler warnings (Alexander Usyskin)
+    - add Python 3.11 support (Joshua Kugler)
+    - drop Python 3.7 support (kkaempf)
+
+-------------------------------------------------------------------
 Thu Feb 22 10:10:26 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

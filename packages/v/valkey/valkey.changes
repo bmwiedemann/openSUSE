@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  4 20:05:34 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Fix redis and sentinel units lookup in migration script (bsc#1226986)
+  * Look for units in /etc/systemd/system/redis.target.wants
+- Fix sentinel config files permissions in migration script
+
+-------------------------------------------------------------------
 Tue Oct 22 09:03:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - fix requires for compat-redis package

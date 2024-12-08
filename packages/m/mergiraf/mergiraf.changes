@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Wed Nov 13 20:01:16 UTC 2024 - mardnh@gmx.de
+
+- Update to version 0.3.1:
+  * Updated tree-sitter-xml to 0.7.0
+
+-------------------------------------------------------------------
+Tue Nov 12 18:43:16 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.3.0
+  * New language: Dart (*.dart).
+  * .cc files are correctly detected as C++.
+  * Documentation improvements.
+  * Fixes to the integration test suite when GPG signing is enabled
+
+-------------------------------------------------------------------
+Sun Nov 10 11:29:24 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 0.2.0

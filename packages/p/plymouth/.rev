@@ -1180,4 +1180,12 @@ https://bugzilla.suse.com/show_bug.cgi?id=1233532
 https://bugzilla.suse.com/show_bug.cgi?id=1233675</comment>
     <requestid>1226916</requestid>
   </revision>
+  <revision rev="133" vrev="13">
+    <srcmd5>5051c076cc76747f8cc2a8fdaecf196b</srcmd5>
+    <version>22.02.122+94.4bd41a3</version>
+    <time>1733654179</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1228732</requestid>
+  </revision>
 </revisionlist>

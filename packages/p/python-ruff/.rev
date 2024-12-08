@@ -1474,4 +1474,37 @@
    * [flake8-pyi, ruff] Fix traversal of nested literals and unions (PYI016, PYI051, PYI055, PYI062, RUF041)</comment>
     <requestid>1227743</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>c9ed1096b8efd763091c87f3bcb9a1a7</srcmd5>
+    <version>0.8.2</version>
+    <time>1733654185</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.8.2
+ * Preview features
+   * [airflow] Avoid deprecated values (AIR302) 
+   * [airflow] Extend removed names for AIR302 
+   * [ruff] Extend unnecessary-regular-expression to non-literal strings (RUF055) 
+   * [ruff] Implement used-dummy-variable (RUF052) 
+   * [ruff] Implement unnecessary-cast-to-int (RUF046) 
+ * Rule changes
+   * [airflow] Check AIR001 from builtin or providers operators module 
+   * [flake8-pytest-style] Remove @ in pytest.mark.parametrize rule messages 
+   * [pandas-vet] Skip rules if the panda module hasn't been seen 
+   * [pylint] Fix false negatives for ascii and sorted in len-as-condition (PLC1802) 
+   * [refurb] Guard hashlib imports and mark hashlib-digest-hex fix as safe (FURB181) 
+ * Configuration
+   * [flake8-import-conventions] Improve syntax check for aliases supplied in configuration for unconventional-import-alias (ICN001) 
+ * Bug fixes
+   * Revert: [pyflakes] Avoid false positives in @no_type_check contexts (F821, F722)  
+   * [pep8-naming] Avoid false positive for class Bar(type(foo)) (N804) 
+   * [pycodestyle] Handle f-strings properly for invalid-escape-sequence (W605) 
+   * [pylint] Ignore @overload in PLR0904 
+   * [refurb] Handle non-finite decimals in verbose-decimal-constructor (FURB157) 
+   * [ruff] Avoid emitting assignment-in-assert when all references to the assigned variable are themselves inside asserts (RUF018) 
+ * Documentation
+   * Improve docs for flake8-use-pathlib rules 
+   * Improve error messages and docs for flake8-comprehensions rules 
+   * [flake8-type-checking] Expands TC006 docs to better explain itself</comment>
+    <requestid>1228749</requestid>
+  </revision>
 </revisionlist>

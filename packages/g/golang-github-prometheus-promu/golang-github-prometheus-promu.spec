@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?rhel}
+%global debug_package %{nil}
+# Fix ERROR: No build ID note found in
+%undefine _missing_build_ids_terminate_build
+%endif
+
 %define shortname promu
 
 Name:           golang-github-prometheus-promu
@@ -31,9 +37,7 @@ Source1:        vendor.tar.gz
 Patch2:         extldflags-no-static.patch
 ExcludeArch:    s390
 %if 0%{?rhel}
-# Fix ERROR: No build ID note found in
-%undefine _missing_build_ids_terminate_build
-BuildRequires:  golang >= 1.21
+BuildRequires:  golang >= 1.20
 %else
 BuildRequires:  golang(API) >= 1.21
 %endif
@@ -53,6 +57,10 @@ go build
 %check
 # execute the binary as a basic check
 ./%{shortname} --help
+%if 0%{?rhel}
+rm -f %{buildroot}/usr/lib/debug%{_bindir}/%{shortname}*.debug
+rm -rf %{buildroot}/usr/lib/debug/.build-id/*
+%endif
 
 %install
 install -D -m 0755 %{shortname} "%{buildroot}/%{_bindir}/%{shortname}"

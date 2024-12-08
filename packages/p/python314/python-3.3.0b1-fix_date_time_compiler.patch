@@ -4,7 +4,7 @@
 
 --- a/Makefile.pre.in
 +++ b/Makefile.pre.in
-@@ -1730,11 +1730,18 @@ Modules/getbuildinfo.o: $(PARSER_OBJS) \
+@@ -1743,11 +1743,18 @@ Modules/getbuildinfo.o: $(PARSER_OBJS) \
  		$(DTRACE_OBJS) \
  		$(srcdir)/Modules/getbuildinfo.c
  	$(CC) -c $(PY_CORE_CFLAGS) \
@@ -22,4 +22,4 @@
 +
  Modules/getpath.o: $(srcdir)/Modules/getpath.c Python/frozen_modules/getpath.h Makefile $(PYTHON_HEADERS)
  	$(CC) -c $(PY_CORE_CFLAGS) -DPYTHONPATH='"$(PYTHONPATH)"' \
- 		-DPREFIX='"$(prefix)"' \
+ 		-DPREFIX='"$(host_prefix)"' \

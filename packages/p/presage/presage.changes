@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec  6 07:54:09 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add presage-setuptools.patch: Fix installation of python bindings
+  with setuptools 76.
+
+-------------------------------------------------------------------
 Wed Mar 13 09:37:25 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using

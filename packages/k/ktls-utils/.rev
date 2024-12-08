@@ -36,4 +36,12 @@
   * server: add missing priority setting (gh#oracle/ktls-utils#49) (forwarded request 1160478 from mwilck)</comment>
     <requestid>1160479</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>edb150dfa6f3304849484b44a7773aaa</srcmd5>
+    <version>0.10+33.g311d943</version>
+    <time>1733654235</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1228793</requestid>
+  </revision>
 </revisionlist>

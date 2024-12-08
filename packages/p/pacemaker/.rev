@@ -2368,4 +2368,41 @@
 - libpacemaker: Apply promotion priority to cloned group instance (forwarded request 1204954 from yan_gao)</comment>
     <requestid>1204955</requestid>
   </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>8a0743837cd095684a180a0718468e50</srcmd5>
+    <version>2.1.9+20241107.c3b66b02d0</version>
+    <time>1733654172</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.1.9+20241107.c3b66b02d0:
+- CTS: Fix cts-lab --list. (gh#ClusterLabs/pacemaker#3723)
+
+- Update to version 2.1.9+20241105.e043e6816a:
+- executor: avoid use-after-free upon shutdown (bsc#1232613, gh#ClusterLabs/pacemaker#3719)
+
+- Update to version 2.1.9+20241031.49aab99839 (Pacemaker-2.1.9):
+- includes: Bump CRM_FEATURE_SET for iso8601 formatted output.
+- schemas: Add an XML schema for iso8601 output.
+- tools: Convert iso8601 to formatted output.
+
+- Update to version 2.1.8+20241021.40d69ff424 (Pacemaker-2.1.9-rc3):
+- tools: restore crmadmin default timeout to 30 seconds (bsc#1217259, bsc#1228781, jsc#PED-8311, gh#ClusterLabs/pacemaker#3703)
+- libcrmcommon: any negative interval is an error
+- agents: always allow attribute agent to show metadata
+- agents: use RESOURCENAME in attribute agent metadata
+- agents: use configured run directory in attribute agent
+- controld: leave xml-src attribute empty when no DC selected #2902 (bsc#1217259, bsc#1228781, jsc#PED-8311, gh#ClusterLabs/pacemaker#3702)
+
+- Update to version 2.1.8+20241015.33f3052b89 (Pacemaker-2.1.9-rc2):
+- pacemakerd: combine subdaemon start-up logs
+- libcrmcommon: avoid potential overflow when adding seconds
+- libcib: Perform server-side remote CIB reads asynchronously.
+- libcib: Perform client-side remote CIB reads asynchronously.
+- tools: crm_resource returns error on failed schema upgrade
+- libcrmcommon: Don't assert on failure to write errors. (gh#ClusterLabs/pacemaker#3684)
+
+- Update to version 2.1.8+20241003.95cef6b307 (Pacemaker-2.1.9-rc1):
+- NLS: update translations for current code base
+- scheduler: Fixed memory leak when searching for unfencing devices. (gh#ClusterLabs/pacemaker#3678) (forwarded request 1228709 from yan_gao)</comment>
+    <requestid>1228711</requestid>
+  </revision>
 </revisionlist>

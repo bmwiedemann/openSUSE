@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Dec 06 11:21:38 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.21:
+  * Prepare for v0.16.21 release
+  * ci: switch kind workflow to new IPsec key system
+  * Remove stable-v0.14.txt
+  * chore(deps): update go to v1.23.4
+  * chore(deps): update ubuntu:24.04 docker digest to 80dd3c3
+  * chore(deps): update golang docker tag to v1.23.4
+  * renovate: update Go version in action.yaml
+  * .github/workflows: add validation of renovate config
+  * action: Explicitly set go-version
+  * chore(deps): update golangci/golangci-lint docker tag to
+    v1.62.2
+  * chore(deps): update docker/dockerfile docker tag to v1.12
+  * chore(deps): update docker/build-push-action action to v6.10.0
+  * chore(deps): update ubuntu:24.04 docker digest to 278628f
+  * chore(deps): update golang:1.23.3-alpine3.19 docker digest to
+    f72297e
+  * chore(deps): update dependency cilium/cilium to v1.16.4
+  * chore(deps): update docker.io/library/golang:1.23.3-alpine3.19
+    docker digest to f72297e
+  * chore(deps): update softprops/action-gh-release action to
+    v2.1.0
+  * chore(deps): update docker/dockerfile:1.11 docker digest to
+    10c699f
+  * Refactor Dockerfile to use native docker features to target the
+    specific image
+  * Improve cacheability of Docker layers and add ca-certs to
+    scratch image
+  * chore(deps): update dependency kubernetes-sigs/kind to v0.25.0
+  * chore(deps): update golangci/golangci-lint docker tag to
+    v1.62.0
+  * chore(deps): update golang docker tag to v1.23.3
+  * chore(deps): update go to v1.23.3
+  * .github: use netcat to check port-forward success
+  * Update stable release to v0.16.20
+
+-------------------------------------------------------------------
 Tue Nov 12 07:42:32 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.16.20:

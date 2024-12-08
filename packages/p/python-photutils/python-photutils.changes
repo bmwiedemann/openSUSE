@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec  6 11:56:47 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Skip scikit-image tests for python313
+
+-------------------------------------------------------------------
 Fri Nov  8 15:08:58 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.0.2

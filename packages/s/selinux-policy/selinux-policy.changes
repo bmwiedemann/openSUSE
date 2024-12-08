@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 06 16:01:26 UTC 2024 - cathy.hu@suse.com
+
+- Update to version 20241206:
+  * Move systemd-homed interfaces to seperate optional_policy block (bsc#1234228)
+  * adjust kandim binary paths (bsc#1232328)
+
+-------------------------------------------------------------------
 Tue Dec  3 14:25:28 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
 
 - Fix minimum policy by readding snapper module (bsc#1234037) 

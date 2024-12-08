@@ -2,7 +2,6 @@
 
 import os
 import subprocess
-import sys
 
 def customize_build(EXTENSIONS, OPTIONS):
 
@@ -19,6 +18,9 @@ def customize_build(EXTENSIONS, OPTIONS):
     del EXTENSIONS['mozjpeg']  # Win32 only
     del EXTENSIONS['pcodec']   # not available in Factory
     del EXTENSIONS['sperr']    # not available in Factory
+    del EXTENSIONS['jpegxs']   # jxs not available in Factory
+    del EXTENSIONS['sz3']      # SZ3c not available in Factory
+    del EXTENSIONS['ultrahdr'] # uhdr not available in Factory
     
     EXTENSIONS['avif']['libraries'] = [
         'avif',
@@ -38,3 +40,5 @@ def customize_build(EXTENSIONS, OPTIONS):
     EXTENSIONS['rcomp']['include_dirs'].append(includedir +   'cfitsio')
     EXTENSIONS['zopfli']['include_dirs'].append(includedir +  'zopfli')
     EXTENSIONS['lzham']['libraries'] = ['lzhamdll']
+    # gh#gohlke/imagecodecs#111
+    EXTENSIONS['jpeg8']['sources'] = []

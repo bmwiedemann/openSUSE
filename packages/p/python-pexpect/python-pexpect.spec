@@ -73,7 +73,8 @@ export INPUTRC=$(readlink -f .inputrc) TRAVIS=true
 # test_replwrap - seen failed on s390x, [ ValueError: Continuation prompt found - input was incomplete: ]
 # test_pxssh - seen failed on s390x, [ pexpect.pxssh.ExceptionPxssh: could not synchronize with original prompt ]
 # test_interact_exit_unicode - seen failed on s390x [ pexpect.exceptions.EOF: End Of File (EOF). Exception style platform. ]
-%pytest -k "not (test_large_stdout_stream or test_pager_as_cat or test_replwrap or test_pxssh or test_zsh or test_interrupt or test_multiple_interrupts or test_interact_exit_unicode)"
+# test_performance - random failures seen on aarch64 [ pexpect.exceptions.TIMEOUT: Timeout exceeded. ]
+%pytest -k "not (test_large_stdout_stream or test_pager_as_cat or test_replwrap or test_pxssh or test_zsh or test_interrupt or test_multiple_interrupts or test_interact_exit_unicode or test_performance)"
 
 %files %{python_files}
 %license LICENSE

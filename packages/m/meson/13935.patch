@@ -1,0 +1,66 @@
+From d082aec6ce0a3dc8ec7b3748a5130634d1f1c098 Mon Sep 17 00:00:00 2001
+From: Paolo Bonzini <pbonzini@redhat.com>
+Date: Wed, 20 Nov 2024 16:19:49 +0100
+Subject: [PATCH] rust: fix computation of library directory
+
+Using a rustup-based toolchain fails the "rust/2 sharedlib" test for me:
+
+./prog: error while loading shared libraries: libstd-211931512faabf29.so: cannot open shared object file: No such file or directory
+
+This happens because recent rustup places the standard library under
+SYSROOT/lib/rustlib/TARGET/lib.  Retrieve the right directory using
+"--print target-libdir".  This also provides a more accurate version
+for rustc installed in /usr.
+
+Before:
+  $ echo $(/usr/bin/rustc --print sysroot)/lib
+  /usr/lib
+
+After:
+  $ /usr/bin/rustc --print target-libdir
+  /usr/lib/rustlib/x86_64-unknown-linux-gnu/lib
+
+While at it, cache the value to avoid repeated process invocation.
+
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+---
+ mesonbuild/backend/ninjabackend.py | 2 +-
+ mesonbuild/compilers/rust.py       | 7 +++++++
+ 2 files changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/mesonbuild/backend/ninjabackend.py b/mesonbuild/backend/ninjabackend.py
+index 05d5320798fd..5716ea29e351 100644
+--- a/mesonbuild/backend/ninjabackend.py
++++ b/mesonbuild/backend/ninjabackend.py
+@@ -2125,7 +2125,7 @@ def _link_library(libname: str, static: bool, bundle: bool = False):
+             # ... but then add rustc's sysroot to account for rustup
+             # installations
+             for rpath_arg in rpath_args:
+-                args += ['-C', 'link-arg=' + rpath_arg + ':' + os.path.join(rustc.get_sysroot(), 'lib')]
++                args += ['-C', 'link-arg=' + rpath_arg + ':' + rustc.get_target_libdir()]
+ 
+         proc_macro_dylib_path = None
+         if getattr(target, 'rust_crate_type', '') == 'proc-macro':
+diff --git a/mesonbuild/compilers/rust.py b/mesonbuild/compilers/rust.py
+index f09911db642c..02ac593842ad 100644
+--- a/mesonbuild/compilers/rust.py
++++ b/mesonbuild/compilers/rust.py
+@@ -142,11 +142,18 @@ def _native_static_libs(self, work_dir: str, source_name: str) -> None:
+     def get_dependency_gen_args(self, outtarget: str, outfile: str) -> T.List[str]:
+         return ['--dep-info', outfile]
+ 
++    @functools.lru_cache(maxsize=None)
+     def get_sysroot(self) -> str:
+         cmd = self.get_exelist(ccache=False) + ['--print', 'sysroot']
+         p, stdo, stde = Popen_safe_logged(cmd)
+         return stdo.split('\n', maxsplit=1)[0]
+ 
++    @functools.lru_cache(maxsize=None)
++    def get_target_libdir(self) -> str:
++        cmd = self.get_exelist(ccache=False) + ['--print', 'target-libdir']
++        p, stdo, stde = Popen_safe_logged(cmd)
++        return stdo.split('\n', maxsplit=1)[0]
++
+     @functools.lru_cache(maxsize=None)
+     def get_crt_static(self) -> bool:
+         cmd = self.get_exelist(ccache=False) + ['--print', 'cfg']

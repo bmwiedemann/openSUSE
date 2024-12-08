@@ -1408,4 +1408,12 @@
     <comment>- Use %patch -P N instead of deprecated %patchN.</comment>
     <requestid>1149159</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>018d497064d614511f5b46d14c6992e9</srcmd5>
+    <version>2.8.0</version>
+    <time>1733654235</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1228797</requestid>
+  </revision>
 </revisionlist>

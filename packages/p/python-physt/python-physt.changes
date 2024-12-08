@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Dec  6 12:04:15 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.8.4
+  * UX: a bit of rich support
+  * Examples: runnable from command line / uv
+- Release 0.8.2
+  * Typing: Added py.typed file
+  * Plotting: auto tight_layout()
+  * Improved: polars.DataFrame.physt.h accepts any selectors
+  * Dependency: support Python 3.13, don't use scipy
+- Release 0.8.1
+  * Tooling: embrace uv
+  * Dependency: drop Python 3.8, numpy<1.25, pandas<1.5, polars<1.0
+- Release 0.8.0
+  * Dependency: allow numpy>=2.0
+  * Removed a few deprecated methods for histogram statistics
+- Drop physt-pr116-np2.patch
+
+-------------------------------------------------------------------
 Fri Aug 30 13:38:42 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.7.4

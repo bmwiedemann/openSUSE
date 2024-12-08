@@ -2,8 +2,8 @@
 
 # Identify whether any config files exist
 configfiles=($(find /etc/redis -maxdepth 1 -name "*.conf"))
-redisunits=($(find /etc/systemd/system -maxdepth 1 -name "redis@*.service" -execdir basename {} \;))
-sentinelunits=($(find /etc/systemd/system -maxdepth 1 -name "redis-sentinel@*.service" -execdir basename {} \;))
+redisunits=($(find /etc/systemd/system/redis.target.wants -maxdepth 1 -name "redis@*.service" -execdir basename {} \;))
+sentinelunits=($(find /etc/systemd/system/redis.target.wants -maxdepth 1 -name "redis-sentinel@*.service" -execdir basename {} \;))
 
 if [ ${#configfiles[@]} -gt 0 ]; then
   for configfile in ${configfiles[@]}
@@ -11,6 +11,10 @@ if [ ${#configfiles[@]} -gt 0 ]; then
       configfilename=$(basename "$configfile")
       cp $configfile /etc/valkey/$configfilename
       chown root:valkey /etc/valkey/$configfilename
+      if [[ $configfilename == sentinel-*.conf ]]; then
+        # Sentinel config files need to be writable by valkey group
+        chmod 660 /etc/valkey/$configfilename
+      fi
       mv $configfile ${configfile}.bak
   done
   sed -e 's|^dir\s.*|dir /var/lib/valkey|g' -i /etc/valkey/*.conf

@@ -17,7 +17,7 @@
 
 
 Name:           qatengine
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        Intel QuickAssist Technology (QAT) QATengine Library
 License:        BSD-3-Clause

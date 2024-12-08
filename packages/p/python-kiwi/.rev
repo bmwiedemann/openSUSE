@@ -2713,4 +2713,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1222746</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>93d350d11f085d99f288227351697be4</srcmd5>
+    <version>10.2.3</version>
+    <time>1733654181</time>
+    <user>anag+factory</user>
+    <comment>- Bump version: 10.2.2 → 10.2.3
+
+- Update STYLEROOT to SUSE 2022
+
+- Fix broken links in the documentation
+
+- Fix legacy_bios_mode detection
+  The code in this method does not work correctly if the
+  firmware is set to 'bios'. In bios only mode the method
+  returned a false value which is incorrect as it should
+  return a true value in this case. Without this patch
+  ISO images will fail to boot because no loader gets
+  configured.
+
+- Added /dev/pts to bind mount locations
+  During runtime several kernel filesystems are bind mounted into
+  the image root system such that programs expecting it can work.
+  /dev/pts was not needed so far but seems to be a good addition
+  to the list to make tools like sudo to work properly when called
+  e.g. from a config.sh script. This Fixes #2686
+
+- Added provide/require system files for containers
+  Added the attributes provide_system_files and require_system_files
+  to control the provider and requester of system files in
+  container image builds. systemfiles is a metadata file which
+  contains all files from the package database at call time.
+  It is used in flake-pilot to provision the systemfiles data
+  from the host into the container instance. One possible use
+  case for this data is a flake registration which uses a
+  base container that is derived from a runtime container but</comment>
+    <requestid>1228733</requestid>
+  </revision>
 </revisionlist>

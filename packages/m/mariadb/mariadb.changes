@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 26 16:59:42 UTC 2024 - Angel Yankov <angel.yankov@suse.com>
+
+- Fix test for SSL connection init with openssl 3.2.3.
+  * Added mariadb-fix-testsuite-openssl3.2.3.patch 
+
+-------------------------------------------------------------------
 Thu Nov 14 21:10:35 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 11.6.1:

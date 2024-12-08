@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-imagecodecs%{psuffix}
-Version:        2024.6.1
+Version:        2024.9.22
 Release:        0
 Summary:        Image transformation, compression, and decompression codecs
 License:        BSD-3-Clause
@@ -34,8 +34,8 @@ URL:            https://github.com/cgohlke/imagecodecs/
 Source0:        https://files.pythonhosted.org/packages/source/i/imagecodecs/imagecodecs-%{version}.tar.gz
 Source1:        imagecodecs_distributor_setup.py
 ExcludeArch:    %ix86 %arm32 ppc s390
-BuildRequires:  %{python_module Cython >= 3}
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module Cython >= 3.0.11}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -68,7 +68,7 @@ BuildRequires:  %{python_module numcodecs}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-snappy}
-BuildRequires:  %{python_module scikit-image}
+BuildRequires:  %{python_module scikit-image if %python-base < 3.13}
 BuildRequires:  %{python_module tifffile}
 BuildRequires:  %{python_module zarr}
 BuildRequires:  %{python_module zstd}
@@ -97,6 +97,7 @@ BuildRequires:  snappy-devel
 BuildRequires:  sz2-devel
 BuildRequires:  xz-devel
 BuildRequires:  zfp-devel
+BuildRequires:  pkgconfig(SvtAv1Enc)
 BuildRequires:  pkgconfig(blosc)
 BuildRequires:  pkgconfig(blosc2) >= 2.7.1
 BuildRequires:  pkgconfig(bzip2)
@@ -105,16 +106,14 @@ BuildRequires:  pkgconfig(lcms2) >= 2.16
 BuildRequires:  pkgconfig(libavif) >= 1.0.0
 BuildRequires:  pkgconfig(libbrotlicommon)
 BuildRequires:  pkgconfig(libheif)
-# Tests fail if enabled
-# BuildRequires:  pkgconfig(libturbojpeg)
 BuildRequires:  pkgconfig(libjxl) >= 0.9
-BuildRequires:  pkgconfig(SvtAv1Enc)
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libsharpyuv)
 BuildRequires:  pkgconfig(libtiff-4)
+BuildRequires:  pkgconfig(libturbojpeg) >= 3
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(zlib)
@@ -146,6 +145,9 @@ rm imagecodecs/licenses/LICENSE-lzokay
 rm imagecodecs/licenses/LICENSE-mozjpeg
 rm imagecodecs/licenses/LICENSE-pcodec
 rm imagecodecs/licenses/LICENSE-sperr
+rm imagecodecs/licenses/LICENSE-libjxs
+rm imagecodecs/licenses/LICENSE-sz3
+rm imagecodecs/licenses/LICENSE-libultrahdr
 
 %build
 %if !%{with test}

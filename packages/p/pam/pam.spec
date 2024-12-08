@@ -95,6 +95,8 @@ Source22:       postlogin-account.pamd
 Source23:       postlogin-password.pamd
 Source24:       postlogin-session.pamd
 Patch1:         pam-limit-nproc.patch
+# PATCH-FIX-UPSTREAM: CVE-2024-10963
+Patch2:         pam_access-rework-resolving-of-tokens-as-hostname.patch
 BuildRequires:  audit-devel
 BuildRequires:  bison
 BuildRequires:  flex

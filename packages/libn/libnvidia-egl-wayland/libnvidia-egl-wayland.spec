@@ -40,6 +40,8 @@ Patch9:         0009-egl-wayland-Fix-roundtrip-eating-wl_drm-events-in-ge.patch
 Patch11:        0001-egl-wayland-enable-CI-with-github-actions.patch
 Patch12:        0002-egl-wayland-Fix-use-after-free-in-library-teardown.patch
 Patch13:        0003-egl-wayland-Handle-failure-to-acquire-image-in-wlEgl.patch
+Patch21:        0001-Fix-a-segfault-in-wlEglCreatePlatformWindowSurfaceHo.patch
+Patch22:        0002-Check-for-a-duplicate-wl_surface-in-wlEglCreatePlatf.patch
 BuildRequires:  gcc-c++
 BuildRequires:  meson >= 0.50
 BuildRequires:  ninja

@@ -1252,4 +1252,15 @@ https://build.opensuse.org/request/show/1178504 </comment>
 </comment>
     <requestid>1228002</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>b834ae16637b91bd4eeed5548fed12a6</srcmd5>
+    <version>20241206</version>
+    <time>1733654212</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20241206:
+  * Move systemd-homed interfaces to seperate optional_policy block (bsc#1234228)
+  * adjust kandim binary paths (bsc#1232328)
+</comment>
+    <requestid>1228810</requestid>
+  </revision>
 </revisionlist>

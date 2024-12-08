@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec  6 09:18:48 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- Fix dependency generation for loongarch64.
+
+-------------------------------------------------------------------
+Fri Nov 22 08:33:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- Add python3-setuptools Requires: needed for python 3.13 which
+  dropped distutils; setuptools now provides it.
+
+-------------------------------------------------------------------
 Fri Sep 13 14:36:24 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.82.0:
@@ -272,7 +283,7 @@ Mon Feb 14 15:06:06 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 -------------------------------------------------------------------
 Thu Feb 10 20:54:01 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- use bash for bash scripts (bsc#1195391) 
+- use bash for bash scripts (bsc#1195391)
 
 -------------------------------------------------------------------
 Tue Feb  1 09:30:07 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>

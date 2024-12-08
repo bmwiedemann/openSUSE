@@ -50,7 +50,7 @@ Obsoletes:      lua51-luajit <= 2.2.0
 Provides:       moonjit = %{version}-%{release}
 Obsoletes:      moonjit <= 2.2.0
 # lj_arch.h:441:2: error: #error "No target architecture defined"
-ExcludeArch:    riscv64 ppc64 ppc64le
+ExclusiveArch:  x86_64 %ix86 aarch64 %arm ppc mips mips64 mips64el s390x
 
 %description
 A Just-In-Time Compiler for Lua language

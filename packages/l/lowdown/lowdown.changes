@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Dec 06 15:58:50 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.3.1:
+  * Version bump.
+  * Internal template documentation.
+  * Add --template functionality to -tlatex.
+  * Only use --template along with -s.
+  * Update docs.
+  * Add regressions and fix corner case.
+  * Add boolean operators and() and or().
+  * Add latex escaping to template.
+  * Rename hesc and move latex escape.
+
+-------------------------------------------------------------------
 Sun Dec 01 20:45:50 UTC 2024 - mrueckert@suse.de
 
 - Update to version 1.3.0:

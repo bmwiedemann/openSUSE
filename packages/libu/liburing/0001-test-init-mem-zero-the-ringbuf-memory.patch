@@ -1,0 +1,35 @@
+From: "Jiri Slaby (SUSE)" <jirislaby@kernel.org>
+Date: Wed, 4 Dec 2024 13:05:15 +0100
+Subject: test/init-mem: zero the ringbuf memory
+References: fix-test-crash
+Patch-mainline: Submitted, #1293
+
+This is a similar fix to commit 8100d7b5f862 (test/buf-ring-nommap: zero
+the ringbuf memory). The same is needed for test/init-mem as it crashes
+with MALLOC_PERTURB_=69 too.
+
+So zero the ringbuf memory after posix_memalign() too.
+
+Fixes #1291.
+
+Signed-off-by: Jiri Slaby (SUSE) <jirislaby@kernel.org>
+---
+ test/init-mem.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/test/init-mem.c b/test/init-mem.c
+index 59973c8b7521..8b139fedd83b 100644
+--- a/test/init-mem.c
++++ b/test/init-mem.c
+@@ -41,6 +41,8 @@ static int setup_ctx(struct ctx *ctx, struct q_entries *q)
+ 	if (posix_memalign(&ctx->mem, 4096, 2*1024*1024))
+ 		return T_EXIT_FAIL;
+ 
++	memset(ctx->mem, 0, 2*1024*1024);
++
+ 	ctx->pre = ctx->mem + 4096 - sizeof(unsigned long long);
+ 	*ctx->pre = PRE_RED;
+ 
+-- 
+2.47.1
+

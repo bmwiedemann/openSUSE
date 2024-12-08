@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Dec  6 16:11:21 UTC 2024 - Torsten Duwe <duwe@suse.com>
+
+- update to 1.7.0:
+  * ipp-crypto name change to cryptography-primitives
+  * QAT_SW GCM memory leak fix in cleanup function
+  * Update limitation section in README for v1.7.0 release
+  * Fix build with OPENSSL_NO_ENGINE
+  * Fix for build issues with qatprovider in qatlib
+  * Bug fixes and README updates to v1.7.0
+  * Remove qat_contig_mem driver support
+  * Add support for building QAT Engine ENGINE and PROVIDER modules
+    with QuicTLS 3.x libraries
+  * Fix for DSA issue with openssl3.2
+  * Fix missing lower bounds check on index i
+  * Enabled SW Fallback support for FBSD
+  * Fix for segfault issue when SHIM config section is unavailable
+  * Fix for Coverity & Resource leak
+  * Fix for RSA failure with SVM enabled in openssl-3.2
+  * SM3 Memory Leak Issue Fix
+  * Fix qatprovider lib name issue with system openssl
+
+-------------------------------------------------------------------
 Wed May 15 07:45:53 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 1.6.0:

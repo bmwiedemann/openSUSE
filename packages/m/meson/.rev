@@ -1002,4 +1002,12 @@ Smoketest in GNOME:Next passed</comment>
   against CMake 3.31.</comment>
     <requestid>1225964</requestid>
   </revision>
+  <revision rev="117" vrev="3">
+    <srcmd5>b985a48ce743f7b87a36db865278bd23</srcmd5>
+    <version>1.6.0</version>
+    <time>1733654168</time>
+    <user>anag+factory</user>
+    <comment>- Add 13935.patch: Fix test suite with rust 1.83. (forwarded request 1228752 from dimstar)</comment>
+    <requestid>1228753</requestid>
+  </revision>
 </revisionlist>
