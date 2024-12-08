@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Dec  4 09:47:18 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.4
+  * Switch CI to use roles by @DmitriyMusatkin in (#463)
+  * [meta request]: Assign shutdown_callback inside
+    critical region by @grrtrr in (#470)
+- from version 0.7.3
+  * Switch CI to use roles by @DmitriyMusatkin in (#463)
+  * [meta request]: Assign shutdown_callback inside
+    critical region by @grrtrr in (#470)
+- from version 0.7.2
+  * Support if-none-match for upload by @TingDaoK in (#462)
+
+-------------------------------------------------------------------
 Thu Nov 14 12:32:52 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.7.1
