@@ -18,7 +18,7 @@
 
 %define         appid com.mattjakeman.ExtensionManager
 Name:           extension-manager
-Version:        0.5.1+244
+Version:        0.6.0
 Release:        0
 Summary:        A utility for browsing and installing GNOME Shell Extensions
 License:        GPL-3.0-only
