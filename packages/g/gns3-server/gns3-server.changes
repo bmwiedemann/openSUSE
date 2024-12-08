@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec  4 18:29:47 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.52
+  * Sync appliances
+  * Remove restrictions based on file extension when listing images
+    and fix ELF header checks.
+  * Fix use project name instead of ID for fast duplication when
+    running local server.
+  * Overwrite user resources when the originals have changed.
+
+-------------------------------------------------------------------
 Sun Nov 10 08:42:43 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.51
