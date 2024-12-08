@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Dec  7 16:54:08 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20241206:
+  * radtel_rt490: Fix deprecations
+  * radtel_rt490: Add language toggle
+  * rt490: Fix channel names in chinese characters
+  * Add TYT TH-350US version
+  * translations updates
+  * Initial support for Radtel RT-620 (GPS) radio, based on UV17
+  * UI fixes
+  * ft70: Some bank assignment fixes
+  * Initial ICOM IC-M710 driver
+  * icf: Allow drivers to skip clone result
+  * Add Radtel RT-470X Plus BT signature
+  * query sources: add przemienniki.eu
+  * icv80: Fix txinhibit as duplex=off
+  * ft70: Fix tuning steps 5.0 and 6.25
+  * Add US GMRS bandplan defaults
+  * bandplan: Allow offset defaults without duplex
+  * Backup radio image before each upload
+  * Avoid force-wrapping long locale lines
+  * tdh8: Update power definitions for TD-H3
+  * tdh8: Convert all OFF/ON selections to checkboxes
+  * tdh8: Add settings from 240416 TD-H3 firmware
+  * Make baofeng_common radios suggest K1 help
+  * id31/51: Fix TSQL/DTCS "error" on CS-31
+  * id31/51: Fix 6.25kHz offsets values
+  * id51: Fix loading ICF files
+- disable clickwrap license dialog
+  quilt-disable-clickwrap-license.patch
+
+-------------------------------------------------------------------
 Sun Nov  3 08:09:05 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20241101:

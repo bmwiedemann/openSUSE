@@ -1,0 +1,14 @@
+Index: chirp-20241206/chirp/wxui/main.py
+===================================================================
+--- chirp-20241206.orig/chirp/wxui/main.py
++++ chirp-20241206/chirp/wxui/main.py
+@@ -423,9 +423,6 @@ class ChirpMain(wx.Frame):
+ 
+         ALL_MAIN_WINDOWS.append(self)
+ 
+-        if not CONF.get_bool('agreed_to_license', 'state'):
+-            wx.CallAfter(self._menu_about, None)
+-
+         self.set_icon()
+         self._drop_target = ChirpDropTarget(self)
+         self.SetDropTarget(self._drop_target)
