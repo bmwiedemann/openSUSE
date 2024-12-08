@@ -1,7 +1,7 @@
 #
 # spec file for package php-maxminddb
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{php_name}-%{pkg_name}
-Version:        1.11.1
+Version:        1.12.0
 Release:        0
 Summary:        PHP extension providing access to maxminddb databases
 License:        Apache-2.0
