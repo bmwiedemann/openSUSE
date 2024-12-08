@@ -1,7 +1,7 @@
 #
 # spec file for package bookworm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,21 @@
 #
 
 
+%define         appid com.github.babluboy.bookworm
 Name:           bookworm
 Version:        1.1.2
 Release:        0
 Summary:        E-book reader
 License:        GPL-3.0-or-later
-Group:          Productivity/Office/Other
-URL:            https://babluboy.github.io/bookworm
-Source:         https://github.com/babluboy/bookworm/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/babluboy/bookworm
+Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  ImageMagick
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  html2text
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
+BuildRequires:  poppler-tools
 BuildRequires:  vala
 BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(granite) >= 0.5
@@ -37,29 +38,18 @@ BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
 BuildRequires:  pkgconfig(poppler-glib)
 BuildRequires:  pkgconfig(sqlite3) >= 3.5.9
 BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.16.0
-# Check list of dependencies
-BuildRequires:  html2text
-BuildRequires:  poppler-tools
-Requires:       html2text
-Requires:       poppler-tools
-Recommends:     %{name}-lang
 Recommends:     unrar
 Recommends:     unzip
 
 %description
-An eBook reader for Elementary OS.
+An eBook reader for the Pantheon Desktop.
 
 It uses poppler for decoding and read formats like EPUB, PDF, mobi, cbr, etc.
 
 %lang_package
 
 %prep
-%setup -q
-
-chmod -x AUTHORS
-
-# Fix shebangs for Python files
-find . -name \*.py -exec sed -E -i "1{s/env\s*python2?\s*$/python3/}" '{}' \;
+%autosetup
 
 %build
 %meson
@@ -68,62 +58,24 @@ find . -name \*.py -exec sed -E -i "1{s/env\s*python2?\s*$/python3/}" '{}' \;
 %install
 %meson_install
 
-# fix env-script-interpreter
-pushd %{buildroot}%{_datadir}
-for _file in $(grep -rl '^\#\!'); do
-   find -name ${_file##*/} -type f -executable -exec sed '/^\#\!/s/env\ \+//' -i {} \;
-done
-popd
+%find_lang %{appid}
+%fdupes %{buildroot}
 
-# fix wrong-icon-size
-_file=$(find -name %{name}.png)
-_count=$(echo "$_file" | wc -l)
-for _file in $_file; do
-  ((_count -- ))
-  _width=$(identify -format %w $_file)
-  _height=$(identify -format %h $_file)
-  _size+=$'\n'$(echo "${_width}x$_height$_file")
-  [ "$_count" -eq 0 ] || continue
-  _file=$(echo "$_size" | sort -rn | grep -m1 .)
-  ls %{_datadir}/icons/hicolor | grep '[0-9]x[0-9]' | sort -n | while read _size; do
-    if [ "${_file%x*}" -ge ${_size%x*} ]; then
-      mkdir -p %{buildroot}%{_datadir}/icons/hicolor/${_size}/apps
-      convert -strip ${_file#*./} -resize $_size \
-        %{buildroot}%{_datadir}/icons/hicolor/${_size}/apps/${_file##*/}
-    fi
-  done
-done
+# fix shebangs
+%python2_fix_shebang_path %{buildroot}%{_datadir}/%{appid}/scripts/mobi_lib/*.py
+sed -i '1 i #!/usr/bin/sh' %{buildroot}%{_datadir}/%{appid}/scripts/tasks/%{appid}.dictionary.sh
 
-# remove executable flags
-find %{buildroot} -name \*.txt -exec chmod 0644 {} +
-
-%suse_update_desktop_file -r com.github.babluboy.bookworm GTK Office Viewer
-%find_lang com.github.babluboy.bookworm %{name}.lang
-%fdupes %{buildroot}/%{_datadir}
-
-# dirlist HiDPI icons (see: hicolor/index.theme)
-touch $PWD/dir.lst
-_dirlist=$PWD/dir.lst
-pushd %{buildroot}
-find ./ | while read _list; do
-    echo $_list | grep '[0-9]\@[0-9]' || continue
-    _path=$(echo $_list | sed 's/[^/]//')
-    if ! ls ${_path%/*}; then
-        grep -xqs "\%dir\ ${_path%/*}" $_dirlist || echo "%dir ${_path%/*}" >> $_dirlist
-    fi
-done
-popd
-
-%files -f dir.lst
+%files
 %license COPYING
 %doc AUTHORS README.md
-%{_bindir}/com.github.babluboy.bookworm
-%{_datadir}/applications/com.github.babluboy.bookworm.desktop
-%{_datadir}/com.github.babluboy.bookworm/
-%{_datadir}/glib-2.0/schemas/com.github.babluboy.bookworm.gschema.xml
-%{_datadir}/icons/hicolor/*/*/com.github.babluboy.bookworm.??g
-%{_datadir}/metainfo/com.github.babluboy.bookworm.appdata.xml
+%{_bindir}/%{appid}
+%{_datadir}/applications/%{appid}.desktop
+%{_datadir}/%{appid}
+%{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
+%{_datadir}/icons/hicolor/*/apps/%{appid}.svg
+%{_datadir}/metainfo/%{appid}.appdata.xml
+%dir %{_datadir}/icons/hicolor/{128x128@2,128x128@2/apps,16x16@2,16x16@2/apps,24x24@2,24x24@2/apps,32x32@2,32x32@2/apps,48x48@2,48x48@2/apps,64x64@2,64x64@2/apps}
 
-%files lang -f %{name}.lang
+%files lang -f %{appid}.lang
 
 %changelog

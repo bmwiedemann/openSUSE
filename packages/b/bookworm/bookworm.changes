@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Nov 17 16:59:05 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update spec file for Leap 16.0:
+  * remove mention of elementary
+  * remove %suse_update_desktop_file
+  * use autosetup
+  * remove a lot of the workarounds, as they are not needed anymore
+  * remove recommending lang package
+
+-------------------------------------------------------------------
 Thu Oct  7 16:12:53 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Remove dependency on Python 2

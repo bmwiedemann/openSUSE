@@ -47,4 +47,15 @@
     <comment></comment>
     <requestid>924085</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>17e2bc1f97093aff5047e6a6c919cf6e</srcmd5>
+    <version>1.1.2</version>
+    <time>1733654251</time>
+    <user>anag+factory</user>
+    <comment>* remove mention of elementary
+  * use autosetup
+  * remove a lot of the workarounds, as they are not needed anymore
+  * remove recommending lang package (forwarded request 1228950 from rrahl0)</comment>
+    <requestid>1228951</requestid>
+  </revision>
 </revisionlist>
