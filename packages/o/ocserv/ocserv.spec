@@ -16,6 +16,8 @@
 #
 
 
+#!BuildIgnore: pkgconfig(libevent)
+
 Name:           ocserv
 Version:        1.3.0
 Release:        0
@@ -23,16 +25,15 @@ Summary:        OpenConnect VPN Server
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Security
 URL:            https://ocserv.gitlab.io/www/
-#Git-Clone:     https://gitlab.com/openconnect/ocserv.git
-Source:         ftp://ftp.infradead.org/pub/ocserv/%{name}-%{version}.tar.xz
-Source1:        ftp://ftp.infradead.org/pub/ocserv/%{name}-%{version}.tar.xz.sig
+Source:         https://www.infradead.org/%{name}/download/%{name}-%{version}.tar.xz
+Source1:        https://www.infradead.org/%{name}/download/%{name}-%{version}.tar.xz.sig
 Source2:        ca.tmpl
 Source3:        server.tmpl
 Source4:        user.tmpl
 Source5:        ocserv-forwarding.sh
 Source6:        ocserv.firewalld.xml
 Source99:       README.SUSE
-Source100:      gpgkey-1F42418905D8206AA754CCDC29EE58B996865171.gpg
+Source100:      https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x1f42418905d8206aa754ccdc29ee58b996865171#/%{name}.keyring
 #PATCH-FIX-UPSTREAM marguerite@opensuse.org $LIBSYSTEMD_DAEMON env is not set on openSUSE
 Patch1:         %{name}-enable-systemd.patch
 #PATCH-FIX-UPSTREAM marguerite@opensuse.org tweak configuration
@@ -40,32 +41,36 @@ Patch2:         %{name}.config.patch
 #PATCH-FIX-OPENSUSE marguerite@opensuse.org leap doesn't have LZ4_compress_default
 Patch3:         %{name}-LZ4_compress_default.patch
 BuildRequires:  autogen
-BuildRequires:  dbus-1-devel
 BuildRequires:  firewall-macros
+BuildRequires:  firewalld
 BuildRequires:  freeradius-client-devel
 BuildRequires:  gperf
 BuildRequires:  gpg2
 BuildRequires:  ipcalc
-BuildRequires:  libev-devel
-#!BuildIgnore:  libevent-devel
-BuildRequires:  /usr/bin/ronn
-BuildRequires:  libgnutls-devel >= 3.1.10
-BuildRequires:  liblz4-devel
-BuildRequires:  libmaxminddb-devel
-BuildRequires:  libnl3-devel
-BuildRequires:  libprotobuf-c-devel
-BuildRequires:  libseccomp-devel
-BuildRequires:  libtalloc-devel
 BuildRequires:  libtool
-BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  protobuf-c
-BuildRequires:  readline-devel
+BuildRequires:  pkgconfig(dbus-1)
+BuildRequires:  pkgconfig(gnutls) >= 3.1.10
+BuildRequires:  pkgconfig(libev)
+BuildRequires:  pkgconfig(liblz4)
+BuildRequires:  pkgconfig(libmaxminddb)
+BuildRequires:  pkgconfig(libnl-3.0)
 BuildRequires:  pkgconfig(liboath)
+BuildRequires:  pkgconfig(libprotobuf-c)
+BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(pam)
+BuildRequires:  pkgconfig(readline)
+BuildRequires:  pkgconfig(talloc)
+BuildRequires:  rubygem(ronn-ng)
 # /usr/bin/certtool for generating certificates
 Requires:       gnutls >= 3.1.10
 %{?systemd_requires}
+
+%if 0%{?suse_version} < 1600
+ExclusiveArch:  do_not_build
+%endif
 
 %description
 OpenConnect server (ocserv) is an SSL VPN server. Its purpose is to
@@ -97,63 +102,60 @@ autoreconf -fiv
 	--disable-rpath \
 	--enable-local-libopts \
 	--enable-libopts-install
-make V=1 %{?_smp_mflags}
+%make_build
 
 %install
-make %{?_smp_mflags} DESTDIR=%{buildroot} install
+%make_install DESTDIR=%{buildroot}
 
-install -Dm 0755 %{SOURCE5} %{buildroot}%{_sbindir}/ocserv-forwarding
-install -D -m 644 %{SOURCE6} %{buildroot}%{_prefix}/lib/firewalld/services/ocserv.xml
+install -Dm 0755 %{SOURCE5} %{buildroot}%{_sbindir}/%{name}-forwarding
+install -D -m 644 %{SOURCE6} %{buildroot}%{_prefix}/lib/firewalld/services/%{name}.xml
 
-install -d %{buildroot}%{_sysconfdir}/ocserv/certificates
-install -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/ocserv/certificates
-install -m 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/ocserv/certificates
-install -m 0644 %{SOURCE4} %{buildroot}%{_sysconfdir}/ocserv/certificates
-install -m 0644 %{SOURCE99} %{buildroot}%{_sysconfdir}/ocserv/
-install -m 0644 doc/sample.config %{buildroot}%{_sysconfdir}/ocserv/ocserv.conf
+install -d %{buildroot}%{_sysconfdir}/%{name}/certificates
+install -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/%{name}/certificates
+install -m 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/%{name}/certificates
+install -m 0644 %{SOURCE4} %{buildroot}%{_sysconfdir}/%{name}/certificates
+install -m 0644 %{SOURCE99} %{buildroot}%{_sysconfdir}/%{name}/
+install -m 0644 doc/sample.config %{buildroot}%{_sysconfdir}/ocserv/%{name}.conf
 install -m 0644 doc/sample.passwd %{buildroot}%{_sysconfdir}/ocserv/ocpasswd
-install -m 0755 doc/scripts/ocserv-script %{buildroot}%{_bindir}
+install -m 0755 doc/scripts/%{name}-script %{buildroot}%{_bindir}
 
 install -d %{buildroot}%{_unitdir}
 # if --with-dubs, here should be "standalone"
-install -m 0644 doc/systemd/socket-activated/ocserv.socket %{buildroot}%{_unitdir}
-install -m 0644 doc/systemd/socket-activated/ocserv.service %{buildroot}%{_unitdir}
+install -m 0644 doc/systemd/socket-activated/%{name}.socket %{buildroot}%{_unitdir}
+install -m 0644 doc/systemd/socket-activated/%{name}.service %{buildroot}%{_unitdir}
 
-sed -i '/^\[Service\].*/a ExecStopPost=%{_sbindir}/ocserv-forwarding --disable' %{buildroot}%{_unitdir}/ocserv.service
-sed -i '/^\[Service\].*/a ExecStartPre=%{_sbindir}/ocserv-forwarding --enable' %{buildroot}%{_unitdir}/ocserv.service
+sed -i '/^\[Service\].*/a ExecStopPost=%{_sbindir}/%{name}-forwarding --disable' %{buildroot}%{_unitdir}/%{name}.service
+sed -i '/^\[Service\].*/a ExecStartPre=%{_sbindir}/%{name}-forwarding --enable' %{buildroot}%{_unitdir}/%{name}.service
 
 %pre
-%service_add_pre ocserv.service ocserv.socket
+%service_add_pre %{name}.service %{name}.socket
 
 %post
-%service_add_post ocserv.service ocserv.socket
+%service_add_post %{name}.service %{name}.socket
 %firewalld_reload
 
 %preun
-%service_del_preun ocserv.service ocserv.socket
+%service_del_preun %{name}.service %{name}.socket
 
 %postun
-%service_del_postun ocserv.service ocserv.socket
+%service_del_postun %{name}.service %{name}.socket
 
 %files
-%defattr(-,root,root)
 %doc AUTHORS NEWS README.md
 %license COPYING
-%config %{_sysconfdir}/ocserv
-%dir %{_prefix}/lib/firewalld
-%dir %{_prefix}/lib/firewalld/services
-%{_prefix}/lib/firewalld/services/ocserv.xml
+%config %{_sysconfdir}/%{name}
+%{_prefix}/lib/firewalld/services/%{name}.xml
 %{_bindir}/occtl
 %{_bindir}/ocpasswd
-%{_bindir}/ocserv-script
-%{_libexecdir}/ocserv-fw
-%{_sbindir}/ocserv
-%{_sbindir}/ocserv-forwarding
-%{_sbindir}/ocserv-worker
-%{_unitdir}/ocserv.service
-%{_unitdir}/ocserv.socket
-%{_mandir}/man8/occtl.8%{ext_man}
-%{_mandir}/man8/ocpasswd.8%{ext_man}
-%{_mandir}/man8/ocserv.8%{ext_man}
+%{_bindir}/%{name}-script
+%{_libexecdir}/%{name}-fw
+%{_sbindir}/%{name}
+%{_sbindir}/%{name}-forwarding
+%{_sbindir}/%{name}-worker
+%{_unitdir}/%{name}.service
+%{_unitdir}/%{name}.socket
+%{_mandir}/man?/occtl.?%{ext_man}
+%{_mandir}/man?/ocpasswd.?%{ext_man}
+%{_mandir}/man?/%{name}.?%{ext_man}
 
 %changelog

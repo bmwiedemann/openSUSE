@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov 30 00:19:36 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- use https for downloading sources (over ftp)
+- actually verify tarballs
+- use as many pkgconfig and rubygem names
+
+-------------------------------------------------------------------
 Fri Aug 23 15:09:09 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire /usr/bin/ronn instead of rubygem(ronn): there are
