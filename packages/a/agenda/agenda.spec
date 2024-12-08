@@ -1,7 +1,7 @@
 #
 # spec file for package agenda
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,34 +16,32 @@
 #
 
 
+%define         appid com.github.dahenson.agenda
 Name:           agenda
 Version:        1.1.2
 Release:        0
 Summary:        Task Manager for Elementary
 License:        GPL-3.0-or-later
-Group:          Productivity/Office/Organizers
 URL:            https://github.com/dahenson/agenda
-Source:         https://github.com/dahenson/agenda/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson >= 0.40.
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(granite) >= 5.3.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.16
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(vapigen) >= 0.26.0
-Recommends:     %{name}-lang
 Provides:       agenda-tasks = %{version}
 Obsoletes:      agenda-tasks < %{version}
 
 %description
-A task manager for Elementary OS.
+A task manager for the Pantheon Desktop.
 
 %lang_package
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %meson
@@ -51,32 +49,19 @@ A task manager for Elementary OS.
 
 %install
 %meson_install
-%suse_update_desktop_file -r com.github.dahenson.agenda GTK Office ProjectManagement
-%find_lang com.github.dahenson.agenda %{name}.lang
-%fdupes %{buildroot}/%{_datadir}
+%find_lang %{appid}
+%fdupes %{buildroot}
 
-# dirlist HiDPI icons (see: hicolor/index.theme)
-touch $PWD/dir.lst
-_dirlist=$PWD/dir.lst
-pushd %{buildroot}
-find ./ | while read _list; do
-    echo $_list | grep '[0-9]\@[0-9]' || continue
-    _path=$(echo $_list | sed 's/[^/]//')
-    if ! ls ${_path%/*}; then
-        grep -xqs "\%dir\ ${_path%/*}" $_dirlist || echo "%dir ${_path%/*}" >> $_dirlist
-    fi
-done
-popd
-
-%files -f dir.lst
+%files
 %license LICENSE
 %doc README.md
-%{_bindir}/com.github.dahenson.agenda
-%{_datadir}/applications/com.github.dahenson.agenda.desktop
-%{_datadir}/glib-2.0/schemas/com.github.dahenson.agenda.gschema.xml
-%{_datadir}/icons/hicolor/*/*/com.github.dahenson.agenda.??g
-%{_datadir}/metainfo/com.github.dahenson.agenda.appdata.xml
+%{_bindir}/%{appid}
+%{_datadir}/applications/%{appid}.desktop
+%{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
+%{_datadir}/icons/hicolor/*/apps/%{appid}.svg
+%{_datadir}/metainfo/%{appid}.appdata.xml
+%dir %{_datadir}/icons/hicolor/{128x128@2,128x128@2/apps,16x16@2,16x16@2/apps,24x24@2,24x24@2/apps,32x32@2,32x32@2/apps,48x48@2,48x48@2/apps,64x64@2,64x64@2,64x64@2/apps}
 
-%files lang -f agenda.lang
+%files lang -f %{appid}.lang
 
 %changelog
