@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Dec  4 09:40:15 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.10.5
+  * Switch CI to use roles by @DmitriyMusatkin in (#1173)
+  * Support relative paths when prebuilding dependencies
+    with CMake by @graebm in (#1174)
+- from version 0.10.4
+  * Doc fix for cbor by @TingDaoK in (#1171)
+  * Remove reliance on hardcoded user in ci by @DmitriyMusatkin in (#1170)
+  * Forward CMake variables to prebuilding dependencies by @sfod in (#1161)
+  * Update CBMC proof tooling to latest releases by @tautschnig in (#1164)
+  * Fix test that made no sense by @graebm in (#1172)
+
+-------------------------------------------------------------------
 Thu Nov 14 12:25:30 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.10.3
