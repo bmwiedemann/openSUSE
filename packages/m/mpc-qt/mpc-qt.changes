@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Dec  7 12:20:04 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 24.12
+  * The position, in addition to audio, video and subtitle
+    tracks can now be remembered for 1000 videos.
+  * The seek bar is easier to use thanks to a pointing hand
+    cursor and a bigger clickable area.
+  * Seeking is faster (and playing videos uses less power) on
+    Intel integrated GPUs thanks to updated hardware decoding
+    backends.
+  * You can now easily know which subtitle, audio or video track
+    is active. And if you're not a native speaker, disabling the
+    "Prefer forced/default subtitles" will make mpc-qt use the
+    subtitle track with full close captioning by default.
+  * You can adjust the subtitles delay and change (or disable)
+    the video aspect ratio.
+  * The OSD is now more useful, with the current and total time
+    on seek or on key press, the subtitles delay and even the
+    aspect ratio name.
+  Full changelog at https://github.com/mpc-qt/mpc-qt/compare/v24.06...v24.12
+
+-------------------------------------------------------------------
 Tue Jul  2 04:58:47 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 24.06

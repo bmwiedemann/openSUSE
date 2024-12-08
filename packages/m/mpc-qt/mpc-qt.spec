@@ -17,7 +17,7 @@
 
 
 Name:           mpc-qt
-Version:        24.06
+Version:        24.12
 Release:        0
 Summary:        Media Player Classic Qute Theater
 License:        GPL-2.0-only
@@ -31,6 +31,7 @@ BuildRequires:  pkgconfig(Qt6DBus)
 BuildRequires:  pkgconfig(Qt6Gui)
 BuildRequires:  pkgconfig(Qt6Network)
 BuildRequires:  pkgconfig(Qt6OpenGLWidgets)
+BuildRequires:  pkgconfig(Qt6Svg)
 BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(mpv) >= 1.101.0
 %if 0%{?suse_version} > 1500
@@ -61,7 +62,7 @@ mkdir -p %{buildroot}/%{_bindir} \
          %{buildroot}/%{_datadir}/applications \
          %{buildroot}/%{_datadir}/pixmaps \
          %{buildroot}/%{_datadir}/%{name}/translations
-install -m 0755 %{name} %{buildroot}/%{_bindir}
+install -m 0755 bin/%{name} %{buildroot}/%{_bindir}
 install -m 0644 images/icon/mpc-qt.svg %{buildroot}/%{_datadir}/pixmaps/%{name}.svg
 install -m 0644 %{name}_*.qm -t %{buildroot}/%{_datadir}/%{name}/translations
 install -m 0644 mpc-qt.desktop %{buildroot}/%{_datadir}/applications/Media\ Player\ Classic\ Qute\ Theater.desktop
