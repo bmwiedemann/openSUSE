@@ -353,4 +353,41 @@
     <comment></comment>
     <requestid>1227117</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>49e747d73eb0f95eca66c12766574496</srcmd5>
+    <version>6.0.4</version>
+    <time>1733654252</time>
+    <user>anag+factory</user>
+    <comment>- Update to 6.0.4
+  * Backport PR #7843 (Updates from the package template) by
+    @meeseeksmachine in #7847
+  * Backport PR #7846 (Add support for Python 3.13) by @Cadair in
+    #7848
+  * Backport PR #7849 (Fix figure devdeps) by @meeseeksmachine in
+    #7850
+  * Backport PR #7855 (Don't use 3.13 for the core CI yet) by
+    @meeseeksmachine in #7858
+  * Backport PR #7854 (Use updated astropy.Table api) by
+    @meeseeksmachine in #7859
+  * Backport PR #7852 (Updates from the package template) by
+    @meeseeksmachine in #7860
+  * Backport PR #7857 (Fixed some issues related to WCSAxes in
+    astropy 7.0) by @meeseeksmachine in #7861
+  * Backport PR #7867 (Use a fixed time in the past for the gallery
+    example with STEREO locations) by @meeseeksmachine in #7876
+  * Backport PR #7875 (Fix devdeps fails with astropy) by
+    @meeseeksmachine in #7877
+  * Backport PR #7878 (Use main instead of master for figure tests
+    comparison ) by @meeseeksmachine in #7879
+  * Backport PR #7881 (Improved clarity &amp; structure of
+    documentation in the installation section; fixed formatting) by
+    @meeseeksmachine in #7882
+  * Backport PR #7887 (Only fail docs on deprecation warnings when
+    not on RTD) by @meeseeksmachine in #7888
+  * Backport PR #7892 (Fix cache configuration for tests against
+    astropy 7) by @meeseeksmachine in #7894
+  * Backport PR #7890 (Add fallback if lasco has a 0 bunit in the
+    jp2) by @meeseeksmachine in #7901</comment>
+    <requestid>1229021</requestid>
+  </revision>
 </revisionlist>

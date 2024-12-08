@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sunpy
-Version:        6.0.3
+Version:        6.0.4
 Release:        0
 Summary:        SunPy core package: Python for Solar Physics
 License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT
@@ -93,7 +93,6 @@ Recommends:     python-pandas >= 1.4
 #               mpl-animators
 # /SECTION
 # SECTION test requirements (and extras)
-# even although we do not use tox and doctestplus, there are tests in the suite checking their existence.
 BuildRequires:  %{python_module asdf >= 2.13}
 BuildRequires:  %{python_module asdf-astropy >= 0.1.1}
 BuildRequires:  %{python_module beautifulsoup4 >= 4.11.0}
@@ -113,11 +112,10 @@ BuildRequires:  %{python_module pytest-astropy >= 0.11}
 BuildRequires:  %{python_module pytest-mpl >= 0.16}
 BuildRequires:  %{python_module pytest-xdist >= 3.0.2}
 BuildRequires:  %{python_module reproject >= 0.9}
-BuildRequires:  %{python_module scikit-image >= 0.19.0}
+BuildRequires:  %{python_module scikit-image >= 0.19.0 if %python-base < 3.13}
 BuildRequires:  %{python_module scipy >= 1.9}
 BuildRequires:  %{python_module zeep >= 4.1}
-# opencv is not compiled with numpy2 yet
-#BuildRequires:  python3-opencv
+BuildRequires:  python3-opencv
 # /SECTION
 %python_subpackages
 
@@ -145,19 +143,22 @@ chmod +x %{buildroot}%{$python_sitearch}/sunpy/extern/distro.py
 mkdir testdir
 pushd testdir
 %{python_expand # no opencv for non-primary python3
-# if condition commented out: opencv is not compiled with numpy2 yet, disable for all
-#if [ "%%{$python_provides}" != "python3" ]; then
+if [ "%{$python_provides}" != "python3" ]; then
   $python_donttest=" or opencv or (test_transform and (test_nans or test_clipping))"
-#fi
+fi
 }
+# python313-scikit-image not available
+python313_donttest+=" or test_differential_rotation or (test_mapbase and test_contour)"
+ignore="--ignore %{buildroot}%{python313_sitearch}/sunpy/image/tests/test_transform.py"
 # fails because it does not find any opencv-python dist metadata (even for python3-opencv installed)
 donttest="test_self_test"
+# spiceypy not available
+%python_expand ignore="$ignore --ignore %{buildroot}%{$python_sitearch}/sunpy/coordinates/tests/test_spice.py"
 %ifarch aarch64
 # invalid cast of type
 donttest="$donttest or test_plot_unit8"
 %endif
-# spiceypy not available
-%pytest_arch --pyargs sunpy -ra -n auto -k "not ($donttest ${$python_donttest})" --ignore %{buildroot}%{$python_sitearch}/sunpy/coordinates/tests/test_spice.py
+%pytest_arch --pyargs sunpy -ra -n auto -k "not ($donttest ${$python_donttest})" $ignore
 popd
 
 %files %{python_files}
