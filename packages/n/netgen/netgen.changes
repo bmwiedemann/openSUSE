@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec  5 16:28:50 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to version 6.2.2404
+  * no changelog provided
+- Rebase:
+  * 0001-Include-filesystem-from-experimental-for-GCC-7.patch
+  * 0001-Disable-backtrace-generation.patch
+- Add:
+  * 0001-Fix-ODR-violation-for-struct-class-Line.patch
+  * 0002-Add-missing-includes-for-std-string-std-cerr-fix-nam.patch
+
+-------------------------------------------------------------------
 Fri Jan 27 05:39:24 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to version 6.2.2301

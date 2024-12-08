@@ -1,7 +1,7 @@
 #
 # spec file for package netgen
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %bcond_with pytest
 
 Name:           netgen
-Version:        6.2.2301
+Version:        6.2.2404
 Release:        0
 Summary:        Automatic 3D tetrahedral mesh generator
 License:        LGPL-2.1-only
@@ -42,6 +42,10 @@ Patch7:         0001-Avoid-installation-of-Togl-static-library.patch
 Patch9:         0001-Include-filesystem-from-experimental-for-GCC-7.patch
 # PATCH-FIX-UPSTREAM
 Patch10:        0001-Fix-netgen-executable-and-library-RUNPATHs.patch
+# PATCH-FIX-OPENSUSE
+Patch11:        0001-Fix-ODR-violation-for-struct-class-Line.patch
+# PATCH-FIX-OPENSUSE
+Patch12:        0002-Add-missing-includes-for-std-string-std-cerr-fix-nam.patch
 %if %{with opencascade}
 BuildRequires:  occt-devel
 BuildRequires:  (pkgconfig(catch2) >= 2.13.4 with pkgconfig(catch2) < 3)
@@ -227,6 +231,7 @@ export PYTHONDONTWRITEBYTECODE=1
 %files -n python3-%{name}
 %{python3_sitearch}/netgen
 %{python3_sitearch}/pyngcore
+%{python3_sitearch}/netgen_mesher-*.egg-info
 
 %files devel
 %dir %{_prefix}/lib/cmake

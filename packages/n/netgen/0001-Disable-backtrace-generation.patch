@@ -20,7 +20,7 @@ index b89d721e..335e3411 100644
  
  
  // ********* STUFF FOR GETBACKTRACE ***************************
--#ifdef __GNUC__
+-#if defined __GNUC__ && !defined __EMSCRIPTEN__
 +#if 0
  
  #include <execinfo.h>

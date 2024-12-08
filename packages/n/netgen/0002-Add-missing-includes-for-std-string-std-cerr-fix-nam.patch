@@ -1,0 +1,46 @@
+From 8b281f03f2972be460d690cf5eb6e4d8129dc0bc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Fri, 6 Dec 2024 01:22:02 +0100
+Subject: [PATCH 2/2] Add missing includes for std::string/std::cerr, fix
+ namespaces
+
+---
+ ng/encoding.hpp | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/ng/encoding.hpp b/ng/encoding.hpp
+index 9ea2ffb..f6ee27c 100644
+--- a/ng/encoding.hpp
++++ b/ng/encoding.hpp
+@@ -15,6 +15,8 @@ extern "C" {
+ #include <libswscale/swscale.h>
+ #include <libswresample/swresample.h>
+ }
++#include <string>
++#include <iostream>
+ 
+ constexpr int BITRATE = 50000000;
+ 
+@@ -55,6 +57,8 @@ class Mpeg {
+     int height;
+     bool IsStarted() { return is_started; }
+     int AddFrame() {
++        using std::cerr;
++        using std::endl;
+         int ret;
+         int got_packet = 0;
+         AVPacket pkt = { 0 };
+@@ -113,7 +117,9 @@ class Mpeg {
+         return 0;
+     }
+ 
+-    int Start(string filename) {
++    int Start(std::string filename) {
++        using std::cerr;
++        using std::endl;
+         AVCodec *video_codec;
+         if(is_started) {
+             cerr << "Stream already started" << endl;
+-- 
+2.47.1
+

@@ -71,14 +71,14 @@ index 62d4d136..184342ae 100644
 --- a/libsrc/core/utils.cpp
 +++ b/libsrc/core/utils.cpp
 @@ -7,8 +7,6 @@
- #include <cxxabi.h>
- #endif
+ #endif //WIN32
+ //
  #include <array>
 -#include <filesystem>
 -#include <iostream>
  #include <regex>
- 
- #include "ngstream.hpp"
+ #include <string>
+ #include <thread>
 @@ -112,10 +110,10 @@ namespace ngcore
  #endif
    }
@@ -109,7 +109,7 @@ index d072be47..32f4c9f6 100644
 +#endif
  #include <map>
  #include <ostream>
- #include <sstream>
+ #include <optional>
 @@ -96,11 +102,6 @@ namespace ngcore
      return res;
    }
@@ -119,9 +119,9 @@ index d072be47..32f4c9f6 100644
 -    return ToLower(p.string());
 -  }
 -
-   template<typename T1, typename T2>
-   std::ostream& operator << (std::ostream& ost, const std::map<T1,T2>& map)
-   {
+ 
+ 
+   template <class T>
 @@ -221,7 +222,7 @@ namespace ngcore
    NGCORE_API int GetCompiledSIMDSize();
    NGCORE_API bool IsRangeCheckEnabled();
@@ -129,8 +129,8 @@ index d072be47..32f4c9f6 100644
 -  NGCORE_API std::filesystem::path GetTempFilename();
 +  NGCORE_API filesystem::path GetTempFilename();
  
- } // namespace ngcore
- 
+   NGCORE_API void* GetRawSymbol( std::string func_name );
+
 diff --git a/libsrc/general/mystring.hpp b/libsrc/general/mystring.hpp
 index ee364d77..5eb39df9 100644
 --- a/libsrc/general/mystring.hpp
@@ -164,8 +164,8 @@ index 0d063963..5f278107 100644
 +#include <filesystem>
 +#endif
  
- namespace netgen
- {
+ #include <gprim/adtree.hpp>
+ #include <gprim/transform3d.hpp>
 -- 
 2.37.0
 

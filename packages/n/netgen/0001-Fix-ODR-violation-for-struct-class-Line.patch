@@ -1,0 +1,33 @@
+From b1bfab8f1df38ff35b87edeb033be3aec6b35ce3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Fri, 6 Dec 2024 01:20:31 +0100
+Subject: [PATCH 1/2] Fix ODR violation for struct/class Line
+
+Another class Line is defined in occ/occgeom.hpp.
+---
+ libsrc/meshing/basegeom.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/libsrc/meshing/basegeom.cpp b/libsrc/meshing/basegeom.cpp
+index 379185f..56d8135 100644
+--- a/libsrc/meshing/basegeom.cpp
++++ b/libsrc/meshing/basegeom.cpp
+@@ -213,6 +213,7 @@ namespace netgen
+       }
+   }
+ 
++namespace {
+   struct Line
+   {
+     Point<3> p0, p1;
+@@ -229,6 +230,7 @@ namespace netgen
+       return 1e99;
+     }
+   };
++}
+ 
+   void NetgenGeometry :: Clear()
+   {
+-- 
+2.47.1
+
