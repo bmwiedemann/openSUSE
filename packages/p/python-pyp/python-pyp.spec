@@ -62,9 +62,11 @@ sed -i '/^#!\//, 1d' pyp.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# gh#hauntsaninja/pyp#40
+skip_tests_python313="test_user_error or test_tracebacks"
 export PATH=$(pwd):$PATH
 %{python_expand ln -sf %{buildroot}%{_bindir}/pyp-%{$python_bin_suffix} pyp
-PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} -vv
+PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} -vv "$( [ -n "${skip_tests_$python}" ] && printf "%s" '-k not ('"${skip_tests_$python}"')')"
 }
 
 %post
