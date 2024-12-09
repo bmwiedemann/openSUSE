@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Mon Dec 09 12:46:09 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.2.0:
+  * fix bug compose deploy sts (#4609) (#4610)
+  * chore: update google.golang.org/grpc to v1.66.3 and replace
+    buildkit dependency version (#4604) (#4606)
+  * fix version warning (#4602) (#4605)
+  * feat: add FSGroup to PodSecurityContext in StatefulSet
+    translation (#4601) (#4603)
+  * chore: update dependencies to patches versions in Dockerfile
+    and go.mod (#4596) (#4599)
+  * chore: remove deprecated dependency (#4594) (#4597)
+  * feat: get cli image from cluster metadata (#4589)
+  * Update e2e tests once staging.okteto.dev is applied to the new
+    staging environment in the product cluster (#4581)
+  * Use always user 0 for remote operations to make it work for
+    rootless runner images (#4593)
+  * Update error when image does not exist on `okteto deploy`
+    (#4572)
+  * refactor: Setenv OKTETO_DOMAIN when okteto context use cmd
+    (#4591)
+  * fix: push image (#4588)
+  * chore: use numeric user in Dockerfile (#4587)
+  * Remove endpoints from deprecated function resources (#4584)
+  * fixes for `make lint` (#4586)
+  * Divert using services with external names (#4563)
+  * Added runAsNonRoot field to Json Schema for dev.securityContext
+    property (#4582)
+  * Unify CLI images (#4558)
+  * refactor: lookup OKTETO_DEV_PERSISTENT_VOLUME_SIZE before using
+    defaultVolumeSize (#4580)
+  * Jlo/fix buildkit bump 0.17 (#4577)
+  * Fixed log message format (#4579)
+  * Add command `validate` (#4575)
+  * [JSON Schema] `dev.environment` multi-type support (#4578)
+  * Add Okteto JSON schema to repo (#4573)
+  * Add command to generate Okteto Manifest JSON Schema (#4566)
+  * revert buildkit update (#4576)
+  * Fix compose deployServices ticker loop (#4568)
+  * bump cli to use buildkit 0.17 (#4562)
+  * fix var name in checkCLIVersion (#4574)
+  * Validate version against cluster supported versions (#4557)
+  * build(deps): bump sinatra and sinatra-contrib in /samples/ruby
+    (#4571)
+  * move to manifest v2 (#4560)
+  * Build images with depot.dev (#4570)
+  * Simplify "make integration-actions" to reduce their execution
+    time (#4567)
+  * Configure e2e tests to run in product staging (#4565)
+  * Update golang-ci dependency to 2.7.0 to have CLI 3.x (#4564)
+  * DEV-774: When inferring dev environment name, check if
+    `OKTETO_NAME` is set if cannot get the name from the repository
+    and before getting the name from the folder (#4559)
+  * Update `okteto deploy` timeout and wait output (#4547)
+  * build(deps): bump github.com/golang-jwt/jwt/v4 from 4.5.0 to
+    4.5.1 (#4554)
+  * feat (build): support overriding default frontend image (#4543)
+  * build(deps): bump werkzeug from 3.0.3 to 3.0.6 in
+    /samples/python (#4542)
+  * Update kustomize and helm version (#4552)
+  * DEV-510: Fix availability of CI env var on remote executions
+    (#4545)
+  * refactor: rename env vars to follow same syntax (#4546)
+  * removes duplicated if-then-else branches and refactors to be
+    more idiomatic (#4541)
+  * Revert "Removes kustomize from docker image (#4534)" (#4548)
+
+-------------------------------------------------------------------
 Tue Nov 12 06:52:59 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.1.0:
