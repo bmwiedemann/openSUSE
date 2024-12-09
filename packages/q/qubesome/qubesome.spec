@@ -17,7 +17,7 @@
 
 
 Name:           qubesome
-Version:        0.0.7
+Version:        0.0.8
 Release:        0
 Summary:        Containerize Window Managers, apps and config from a declarative state in Git
 License:        Apache-2.0
@@ -41,7 +41,7 @@ go build -o %{name} cmd/qubesome/main.go
 
 %check
 # execute the binary as a basic check
-./%{name} deps show
+./%{name} deps
 
 %install
 install -D -m 0755 %{name} "%{buildroot}/%{_bindir}/%{name}"

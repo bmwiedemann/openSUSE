@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Dec 08 09:47:22 UTC 2024 - pjbgf@linux.com
+
+- Update to version 0.0.8:
+  * obs: Remove rebuild process
+  * build: Group dependabot updates
+  * profiles: Check whether profile is running Instead of erroring, confirm whether the profile is running, if it isn't it is safe to delete to file and start a new profile.
+  * build(deps): bump github.com/urfave/cli/v3
+  * Add GPU support for podman
+  * Move drive and env pkgs to internal/util
+  * obs: Add rebuild_package step on push
+  * Move ephemeral dir to ~/.qubesome/run Previously the ephemeral dir for qubesome was kept at /run/user/1000/qubesome, this has now moved to ~/.qubesome/run instead. Profile dirs are created inside the new dir and removed once 'qubesome start' finishes.
+  * build: Add fuzz testing checks
+  * profile: Enforce mTLS with inception server
+  * obs: Move source project to :unstable A new long standing project will be the home of qubesome packages when changes are merged into main. The new project name is: home:pjbgf:devel:languages:go:unstable
+  * build(deps): bump github.com/urfave/cli/v3
+  * obs: Trigger services on PR merge
+  * WSL: Eval symlink to .X11-unix dir
+  * xauth: Decrease min magic cookie length to 40 This is causing issues on Tumbleweed distrobox in WSL, where the cookie being generated is 49 chars long.
+  * Remove redundant files
+  * xauth: Add Fuzz tests
+  * clip: Show active profiles for autocomplete
+  * build: Pin GH Actions. Set bump interval to monthly
+  * obs: Change target project to align with branch convention
+  * build: Add OBS integration
+
+-------------------------------------------------------------------
 Mon Nov 25 20:59:14 UTC 2024 - pjbgf@linux.com
 
 - Update to version 0.0.7:
