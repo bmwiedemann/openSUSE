@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec  9 10:57:09 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update _constraints to avoid OOM seen on aarch64
+
+-------------------------------------------------------------------
 Tue Dec 03 06:47:52 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.6.1:

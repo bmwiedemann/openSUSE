@@ -7,4 +7,12 @@
     <comment>new package lldap: lightweight authentication server that provides an opinionated, simplified LDAP interface for authentication. It integrates with many backends, from KeyCloak to Authelia to Nextcloud and more</comment>
     <requestid>1228694</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0ffab8ad8a176e02ab680fe0178e8999</srcmd5>
+    <version>0.6.1</version>
+    <time>1733775166</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1229328</requestid>
+  </revision>
 </revisionlist>
