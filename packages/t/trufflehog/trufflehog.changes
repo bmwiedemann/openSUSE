@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Dec 09 08:54:36 UTC 2024 - felix.niederwanger@suse.de
+
+- Update to version 3.85.0:
+  * chore(deps): update alpine docker tag to v3.21 (#3739)
+  * fix(deps): update module github.com/microsoft/go-mssqldb to v1.8.0 (#3741)
+  * fix(deps): update module cloud.google.com/go/storage to v1.48.0 (#3740)
+  * fix(deps): update golang.org/x/exp digest to 43b7b7c (#3737)
+  * fix(deps): update module github.com/snowflakedb/gosnowflake to v1.12.1 (#3738)
+  * fix(deps): update module google.golang.org/api to v0.210.0 (#3732)
+  * fix(deps): update module golang.org/x/crypto to v0.30.0 (#3733)
+  * feat: replace --only-verified with --results in docs/precommit (#3643)
+  * updated twilio detector (#3734)
+  * Add analysis info for GCP creds (#3727)
+  * fix(deps): update module golang.org/x/text to v0.21.0 (#3731)
+  * fix(deps): update module golang.org/x/sync to v0.10.0 (#3730)
+  * feat(typeform): add v2 detector for new key formats (#3660)
+  * chore(deps): update dependency go to v1.23.4 (#3726)
+  * fix(deps): update module github.com/getsentry/sentry-go to v0.30.0 (#3725)
+  * Add additional canary ID (#3720)
+
+-------------------------------------------------------------------
 Mon Dec 02 20:39:09 UTC 2024 - felix.niederwanger@suse.com
 
 - Update to version 3.84.2:
