@@ -136,4 +136,17 @@
   * Add ejson extension</comment>
     <requestid>1223988</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ee749f5dcc10c99e3e155071c2e59f63</srcmd5>
+    <version>2.6.3</version>
+    <time>1733775154</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1229226 from glaubitz
+
+- Update to 2.6.3
+    * Add C# Script and F# Source and Script filetypes
+    * Add bitbake extensions and files
+    * feat: identify direnv files as Bash</comment>
+    <requestid>1229249</requestid>
+  </revision>
 </revisionlist>
