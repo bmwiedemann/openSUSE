@@ -183,4 +183,13 @@
     <comment>- Update project url</comment>
     <requestid>868315</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>608eb2762bf53987f488f23c9cce0c55</srcmd5>
+    <version>2.2.0</version>
+    <time>1733775164</time>
+    <user>anag+factory</user>
+    <comment>- Small package cleanup
+- Resolve building on Tumbleweed</comment>
+    <requestid>1229268</requestid>
+  </revision>
 </revisionlist>

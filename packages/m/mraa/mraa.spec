@@ -1,7 +1,7 @@
 #
 # spec file for package mraa
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Version:        2.2.0
 Release:        0
 Summary:        Low Level Skeleton Library for IO Communication
 License:        MIT
-Group:          Hardware/Other
 URL:            https://github.com/eclipse/mraa
 Source:         https://github.com/eclipse/mraa/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         mraa-i686.patch
@@ -53,7 +52,6 @@ constructs.
 
 %package -n lib%{name}%{sover}
 Summary:        Low Level Skeleton Library for IO Communication
-Group:          System/Libraries
 
 %description -n lib%{name}%{sover}
 libmraa is a C/C++ library with bindings to Java, Python and JavaScript to
@@ -67,7 +65,6 @@ This package contains shared library for %{name}.
 
 %package devel
 Summary:        Development files for %{name}
-Group:          Development/Languages/C and C++
 Requires:       lib%{name}%{sover} = %{version}
 
 %description devel
@@ -82,7 +79,6 @@ This package contains development files for %{name}.
 
 %package -n python3-%{name}
 Summary:        Python3 bindings for %{name}
-Group:          Development/Languages/Python
 Requires:       lib%{name}%{sover} = %{version}
 
 %description -n python3-%{name}
@@ -97,7 +93,6 @@ This package contains python3 bindings for %{name}.
 
 %package -n java-%{name}
 Summary:        Java bindings for %{name}
-Group:          Development/Languages/Java
 Requires:       javapackages-tools
 Requires:       lib%{name}%{sover} = %{version}
 
@@ -113,8 +108,6 @@ This package contains java bindings for %{name}.
 
 %package -n nodejs-%{name}
 Summary:        Nodes bindings for %{name}
-Group:          Development/Languages/Other
-%requires_ge    nodejs6
 
 %description -n nodejs-%{name}
 libmraa is a C/C++ library with bindings to Java, Python and JavaScript to
@@ -128,7 +121,7 @@ This package contains nodejs bindings for %{name}.
 
 %package examples
 Summary:        Examples for %{name}
-Group:          Hardware/Other
+BuildArch:      noarch
 
 %description examples
 libmraa is a C/C++ library with bindings to Java, Python and JavaScript to
@@ -190,7 +183,8 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}%{_libdir}
 %{_libdir}/pkgconfig/%{name}.pc
 
 %files -n python3-%{name}
-%{python3_sitearch}/*
+%{python3_sitearch}/%{name}.py
+%{python3_sitearch}/_%{name}.so
 
 %files -n java-%{name}
 %{_javadir}/%{name}.jar
