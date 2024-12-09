@@ -332,4 +332,14 @@
     <comment></comment>
     <requestid>1206228</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>00f1d2072f94d9dfd17ce584e08ff180</srcmd5>
+    <version>1.31.1</version>
+    <time>1733775170</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.31.1
+  * Bugfix: The Managed Identity detection logic on Arc (#731)
+    had a bug (#762), now fixed in PR (#763) (forwarded request 1229314 from glaubitz)</comment>
+    <requestid>1229331</requestid>
+  </revision>
 </revisionlist>

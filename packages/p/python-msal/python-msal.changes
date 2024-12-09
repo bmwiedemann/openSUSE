@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec  9 10:56:29 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.31.1
+  * Bugfix: The Managed Identity detection logic on Arc (#731)
+    had a bug (#762), now fixed in PR (#763)
+
+-------------------------------------------------------------------
 Wed Oct  2 09:57:49 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.31.0
