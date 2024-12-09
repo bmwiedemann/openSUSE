@@ -26,7 +26,7 @@ like scripts or configuration files.
 To build a KIWI NG appliance, launch the container in privileged mode:
 
 ```ShellSession
-$ podman run --privileged -v /path/to/kiwi/descr:/image:Z registry.opensuse.org/opensuse/bci/kiwi:10.1
+$ podman run --privileged -v /path/to/kiwi/descr:/image:Z registry.opensuse.org/opensuse/bci/kiwi:10.2
 ```
 
 For more information about KIWI NG, see the [KIWI NG documentation](https://osinside.github.io/kiwi/),
