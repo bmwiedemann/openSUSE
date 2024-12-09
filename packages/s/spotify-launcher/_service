@@ -1,5 +1,5 @@
 <services>
-  <service mode="disabled" name="obs_scm">
+  <service mode="manual" name="obs_scm">
     <param name="url">https://github.com/kpcyrd/spotify-launcher.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
@@ -15,7 +15,7 @@
     <param name="compression">zst</param>
   </service>
   <service mode="buildtime" name="set_version" />
-  <service name="cargo_vendor" mode="disabled">
+  <service name="cargo_vendor" mode="manual">
      <param name="src">spotify-launcher</param>
      <param name="compression">zst</param>
      <param name="update">true</param>

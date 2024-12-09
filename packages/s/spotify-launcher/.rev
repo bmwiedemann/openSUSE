@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>1204007</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9a5e0c0cc257f372a098a29d8f3e85e0</srcmd5>
+    <version>0.6.0</version>
+    <time>1733775183</time>
+    <user>anag+factory</user>
+    <comment>- Update vendor file: fixes RUSTSEC-2024-0399 and RUSTSEC-2024-0421</comment>
+    <requestid>1229461</requestid>
+  </revision>
 </revisionlist>

@@ -15,30 +15,31 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           spotify-launcher
 Version:        0.6.0
 Release:        0
-Summary:	Client for spotify's apt repository written in Rust
-License:        Apache-2.0 or MIT
+Summary:        Client for spotify's apt repository written in Rust
+License:        Apache-2.0 OR MIT
 URL:            https://github.com/kpcyrd/spotify-launcher
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
-BuildRequires:  rust >= 1.70
-BuildRequires:  pkgconfig(openssl)
-BuildRequires:  pkgconfig(liblzma)
-BuildRequires:  hicolor-icon-theme
 BuildRequires:  fdupes
+BuildRequires:  hicolor-icon-theme
+BuildRequires:  rust >= 1.70
+BuildRequires:  pkgconfig(liblzma)
+BuildRequires:  pkgconfig(openssl)
 ExclusiveArch:  %{rust_tier1_arches}
 Requires:       sequoia-sqv
 # Spotify dependencies
 Requires:       libayatana-appindicator3-1
-Requires:       libasound2 >= 1.0.14
 Requires:       desktop-file-utils
+Requires:       libSM6
+Requires:       libasound2 >= 1.0.14
+Requires:       libatomic1
 Requires:       mozilla-nss
 Requires:       zenity
-Requires:       libatomic1
-Requires:       libSM6
 
 %description
 Client for spotify's apt repository written in Rust

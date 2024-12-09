@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec  9 17:21:37 UTC 2024 - Jan Kužílek <jan.kuzilek@suse.com>
+
+- Update vendor file: fixes RUSTSEC-2024-0399 and RUSTSEC-2024-0421
+
+-------------------------------------------------------------------
 Fri Sep 27 03:58:17 UTC 2024 - Jan Kužílek <jan.kuzilek@suse.com>
 
 - Remove TAG_OFFSET version suffix
