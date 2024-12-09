@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec  9 09:31:10 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.1.17 (bsc#1234231, CVE-2024-53908, bsc#1234232, CVE-2024-53907)
+  * CVE-2024-53907: Potential denial-of-service in django.utils.html.strip_tags()
+  * CVE-2024-53908: Potential SQL injection in HasKey(lhs, rhs) on Oracle
+
+-------------------------------------------------------------------
 Tue Nov 19 10:22:00 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream py313.patch to fix tests on Python 3.13

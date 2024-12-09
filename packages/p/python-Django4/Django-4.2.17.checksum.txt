@@ -1,0 +1,65 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+This file contains MD5, SHA1, and SHA256 checksums for the source-code
+tarball and wheel files of Django 4.2.17, released December 4, 2024.
+
+To use this file, you will need a working install of PGP or other
+compatible public-key encryption software. You will also need to have
+the Django release manager's public key in your keyring. This key has
+the ID ``3955B19851EA96EF`` and can be imported from the MIT
+keyserver, for example, if using the open-source GNU Privacy Guard
+implementation of PGP:
+
+    gpg --keyserver pgp.mit.edu --recv-key 3955B19851EA96EF
+
+or via the GitHub API:
+
+    curl https://github.com/sarahboyce.gpg | gpg --import -
+
+Once the key is imported, verify this file:
+
+    gpg --verify Django-4.2.17.checksum.txt
+
+Once you have verified this file, you can use normal MD5, SHA1, or SHA256
+checksumming applications to generate the checksums of the Django
+package and compare them to the checksums listed below.
+
+Release packages
+================
+
+https://www.djangoproject.com/m/releases/4.2/Django-4.2.17-py3-none-any.whl
+https://www.djangoproject.com/m/releases/4.2/Django-4.2.17.tar.gz
+
+MD5 checksums
+=============
+
+27f13e8049fd9416b53cbc8bde828331  Django-4.2.17-py3-none-any.whl
+f4da72476600b58016ddce31af4dc12b  Django-4.2.17.tar.gz
+
+SHA1 checksums
+==============
+
+a06c8254934dedfa9d3a423014d7997745ca5605  Django-4.2.17-py3-none-any.whl
+b96eaf8c473c6db686ca83125a26fd60f353b414  Django-4.2.17.tar.gz
+
+SHA256 checksums
+================
+
+3a93350214ba25f178d4045c0786c61573e7dbfa3c509b3551374f1e11ba8de0  Django-4.2.17-py3-none-any.whl
+6b56d834cc94c8b21a8f4e775064896be3b4a4ca387f2612d4406a5927cd2fdc  Django-4.2.17.tar.gz
+-----BEGIN PGP SIGNATURE-----
+
+iQHhBAEBCABLFiEE6xs4DYrFLQArrNMyOVWxmFHqlu8FAmdQWrstHDQyMjk2NTY2
+K3NhcmFoYm95Y2VAdXNlcnMubm9yZXBseS5naXRodWIuY29tAAoJEDlVsZhR6pbv
+WHsMAKlbu+X3NKtG1SfIia6GjvHRmFh+5jbfzJaWU8WFiQmjiPndZaJC/aMyk1UI
+3vCKdqgi8GrwQK3d6DsDE21jdLj9PJYqfQP19fp4oG9Ctapj6RQ0dcQRadyB1DP+
+aJUc3GVo6wT04EDJjbCs9hl1a8PX6qk+WbFG16W9iia8M90KxtEtr0DnDYvqkdEi
+rnkShDV/f8iAckZ5k+SCfKdva2iKxpqt4iHFju5Pa//3pxCnHcz91LLogq7TxqiC
+4GzLu1aTKnwPZgqrwDkRkdCgRuT2LZRW2NCjRCe6MHxHbKLgCGvc2aBn8aW1lbRU
+61cCbP7MQUfj6GSar/TqavtB5FajbVmLVM84HXbxPLDp6djUwp++Jbva9ywXx9p9
+b8LmnskFZiRgwaIgyZqc5cDzpLeQ5xcrISCpND6SlJBovndtLuO3hqeUX3Whag8C
+PfcjSJqwgTcp9ugWe76NinMsQHXEvSOuJB5thiWZBa3GuhCYIjAsBZT3YTQ6OUui
+CuWS2g==
+=61Fe
+-----END PGP SIGNATURE-----
