@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec  5 17:54:30 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 5.1.0:
+  * update the regex converter of reflex::Matcher
+    (and reflex::FuzzyMatcher by inheritance) to accept \0 as NUL
+  * appease all -Wshadow warnings
+  * appease gcc method overload warning
+
+-------------------------------------------------------------------
 Mon Nov 25 12:49:45 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 5.0.1:
