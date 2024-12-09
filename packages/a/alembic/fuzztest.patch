@@ -1,7 +1,8 @@
-diff -Nur alembic-1.8.1/lib/Alembic/AbcCoreOgawa/Tests/fuzzTest.cpp new/lib/Alembic/AbcCoreOgawa/Tests/fuzzTest.cpp
---- alembic-1.8.1/lib/Alembic/AbcCoreOgawa/Tests/fuzzTest.cpp	2021-05-15 21:42:08.000000000 +0200
-+++ new/lib/Alembic/AbcCoreOgawa/Tests/fuzzTest.cpp	2021-05-20 18:27:55.945186656 +0200
-@@ -696,7 +696,8 @@
+Index: alembic-1.8.8/lib/Alembic/AbcCoreOgawa/Tests/fuzzTest.cpp
+===================================================================
+--- alembic-1.8.8.orig/lib/Alembic/AbcCoreOgawa/Tests/fuzzTest.cpp
++++ alembic-1.8.8/lib/Alembic/AbcCoreOgawa/Tests/fuzzTest.cpp
+@@ -1024,7 +1024,8 @@ int main ( int argc, char *argv[] )
      testFuzzer25185(false);
  
      testFuzzer25192(true);
