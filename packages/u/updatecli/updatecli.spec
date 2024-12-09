@@ -17,7 +17,7 @@
 
 
 Name:           updatecli
-Version:        0.88.1
+Version:        0.89.0
 Release:        0
 Summary:        A Declarative Dependency Management tool
 License:        Apache-2.0
@@ -26,7 +26,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.23.1
+BuildRequires:  go >= 1.23.4
 BuildRequires:  zsh
 
 %description

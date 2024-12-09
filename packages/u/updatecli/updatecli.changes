@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Dec 09 09:42:37 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.89.0:
+  * deps(go): bump module golang.org/x/text (#3255)
+  * deps(go): bump module github.com/goccy/go-yaml (#3248)
+  * deps: Bump Golang version to 1.23.4 (#3237)
+  * feat: display action result in Summary (#3223)
+  * deps(go): bump module github.com/getsops/sops/v3 (#3232)
+  * deps(go): bump module github.com/drone/go-scm (#3220)
+  * fix(stash): use markdown body instead of html (#3224)
+  * deps: bump updatecli version to v0.88.1 (#3211)
+
+-------------------------------------------------------------------
 Mon Dec 02 13:50:55 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.88.1:
