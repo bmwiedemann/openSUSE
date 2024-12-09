@@ -7,4 +7,18 @@
     <comment></comment>
     <requestid>1136959</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>babb9858f8a2b1ce91a9f15b207e62fd</srcmd5>
+    <version>0.32.0</version>
+    <time>1733775153</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1229223 from glaubitz
+
+- Update to version 0.32.0
+    * Support Python 3.12 and remove Python 3.7
+    * Bump hacking and flake8-import-order versions
+    * Update min version of tox and remove constraints for pycodestyle
+    * fix: use --random_generator=tausworthe64</comment>
+    <requestid>1229248</requestid>
+  </revision>
 </revisionlist>

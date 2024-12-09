@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-hardware
-Version:        0.31.0
+Version:        0.32.0
 Release:        0
 Summary:        Hardware detection and classification utilities
 License:        Apache-2.0

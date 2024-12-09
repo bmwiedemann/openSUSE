@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec  9 08:19:05 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.32.0
+  * Support Python 3.12 and remove Python 3.7
+  * Bump hacking and flake8-import-order versions
+  * Update min version of tox and remove constraints for pycodestyle
+  * fix: use --random_generator=tausworthe64
+
+-------------------------------------------------------------------
 Thu Jan  4 22:37:12 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - Initial package (0.31.0)
