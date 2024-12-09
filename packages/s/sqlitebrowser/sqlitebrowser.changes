@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov  4 17:44:01 UTC 2024 - Mariusz Fik <fisiu@opensuse.org>
+
+- Update to 3.13.1:
+  * Docked data browsers
+  * Better support for HiDPI and new svg icons
+  * Theme updates
+  * Import/Export enhancements
+  * Built with qcustomplot and qhexedit
+- Add switch_case_return.patch: fix compilation.
+
+-------------------------------------------------------------------
 Tue Jan  4 12:16:26 UTC 2022 - marec <marec@detebe.org>
 
 - Fixed build for Leap

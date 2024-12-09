@@ -1,7 +1,7 @@
 #
 # spec file for package sqlitebrowser
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,16 @@
 
 
 Name:           sqlitebrowser
-Version:        3.12.2
+Version:        3.13.1
 Release:        0
 Summary:        Spreadsheet-like interface to SQLite databases
 License:        GPL-3.0-or-later AND MPL-2.0
 Group:          Productivity/Office/Organizers
-URL:            http://sqlitebrowser.org
+URL:            https://sqlitebrowser.org
 Source0:        https://github.com/%{name}/%{name}/archive/v%{version}.tar.gz
 Source1:        sqlitebrowser.1
+# PATCH-FIX-UPSTREAM switch_case_return.patch -- fisiu@opensuse.org
+Patch0:         switch_case_return.patch
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqscintilla_qt5-devel
@@ -39,6 +41,8 @@ BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(qcustomplot)
+BuildRequires:  pkgconfig(qhexedit2)
 BuildRequires:  pkgconfig(sqlcipher)
 BuildRequires:  pkgconfig(sqlite3)
 # not on SLE-12
@@ -65,12 +69,15 @@ Controls and guided dialogs are available for users to:
 
 %prep
 %setup -qn %{name}-%{version}
+%patch -P 0 -p1
 
 %build
 %cmake \
   -DQSCINTILLA_INCLUDE_DIR=%{_includedir}/qt5/Qsci \
   -DQSCINTILLA_LIBRARY=%{_libdir}/libqscintilla2_qt5.so \
-  -DBUILD_SHARED_LIBS=OFF \
+  -DBUILD_STABLE_VERSION=ON \
+  -DFORCE_INTERNAL_QCUSTOMPLOT=OFF \
+  -DFORCE_INTERNAL_QHEXEDIT=OFF \
 %if 0%{?suse_version} && 0%{?suse_version} <= 1500
   -DFORCE_INTERNAL_QSCINTILLA=ON \
 %endif
@@ -100,12 +107,13 @@ EOF
 %files
 %doc README.md currentrelease
 %license LICENSE
-%{_mandir}/man1/%{name}.1%{ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 %{_bindir}/%{name}
 %{_datadir}/applications/*
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/%{name}.desktop.appdata.xml
 %{_datadir}/pixmaps/*
 %{_datadir}/icons/hicolor/*/apps/sqlitebrowser.png
+%{_datadir}/icons/hicolor/scalable/apps/sqlitebrowser.svg
 
 %changelog

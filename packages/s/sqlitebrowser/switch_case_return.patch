@@ -1,0 +1,13 @@
+Index: sqlitebrowser-3.13.1/src/sql/ObjectIdentifier.cpp
+===================================================================
+--- sqlitebrowser-3.13.1.orig/src/sql/ObjectIdentifier.cpp
++++ sqlitebrowser-3.13.1/src/sql/ObjectIdentifier.cpp
+@@ -49,6 +49,8 @@ std::string escapeIdentifier(const std::
+         // default branch is removed, even though we have covered all possibilities in the
+         // switch statement.
+         return '"' + duplicate_char(id, '"') + '"';
++    default:
++        return id;
+     }
+ }
+ 
