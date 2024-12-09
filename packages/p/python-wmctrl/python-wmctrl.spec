@@ -1,7 +1,7 @@
 #
 # spec file for package python-wmctrl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-wmctrl
-Version:        0.4
+Version:        0.5
 Release:        0
 Summary:        Python programmatic control of X windows
 # Project is in the process of transitioning from Bitbucket to GitHub
@@ -26,8 +26,10 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/antocuni/wmctrl
 Source:         https://files.pythonhosted.org/packages/source/w/wmctrl/wmctrl-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  openbox
 BuildRequires:  python-rpm-macros
@@ -36,6 +38,7 @@ BuildRequires:  xclock
 BuildRequires:  xfontsel
 BuildRequires:  xorg-x11-server
 BuildRequires:  xvfb-run
+Requires:       python-attrs
 Requires:       wmctrl
 Requires:       xorg-x11-server
 BuildArch:      noarch
@@ -50,10 +53,10 @@ Python tool to programmatically control windows inside X.
 sed -i 's/\(py$\|py\.test\)/pytest/g' test/test_wmctrl.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
