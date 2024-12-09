@@ -64,4 +64,19 @@
 - Use modern RPM macros to express version dependencies (forwarded request 1164871 from glaubitz)</comment>
     <requestid>1165265</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>56c3c1c2812a1bbd7e4df78dc46d66e9</srcmd5>
+    <version>1.0.0b6</version>
+    <time>1733775169</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 1.0.0b6
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Rename LICENSE.txt to LICENSE in %files section
+- Update Requires from setup.py (forwarded request 1229310 from glaubitz)</comment>
+    <requestid>1229330</requestid>
+  </revision>
 </revisionlist>
