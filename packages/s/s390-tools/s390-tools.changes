@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Dec  9 09:49:52 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade s390-tools to version 2.36 (jsc#PED-10303, jsc#PED-9591)
+  * s390-tools: Define Rust MSRV as 1.75.0
+  * Add new tools / libraries:
+    - cpacfinfo: Tool to provide CPACF information
+    - opticsmon: Tools to monitor optical modules for directly attached PCI based NICs
+    - pvimg: Rust rewrite of genprotimg
+  * Changes of existing tools:
+    - chpstat: Add data bandwidth utilization column
+    - chpstat: Add support for full CMCB
+    - chpstat: Add support for new CMG types
+    - dbginfo.sh: add overview commands and crypto update
+    - hyptop: Support for structured output (json, json-seq, csv)
+    - lszfcp: Add missing fallback marker for non-good fc_host port_state
+    - lszfcp: Improve speed with many SCSI devices
+    - pvattest: Add attestation policy check command
+    - zipl: Add support of partitions of mirror md-devices
+  * Bug Fixes:
+    - lszcrypt: Fix wrong state showing up for removed AP queue within SE guest
+    - lszfcp: Show device names line for zfcp_units without SCSI device
+- Revendored vendor.tar.gz
+- Applied additional patch (bsc#1233889, bsc#1233079)
+  * s390-tools-02-zipl-src-fix-imprecise-check-that-file-is-on-specifi.patch
+
+-------------------------------------------------------------------
 Thu Dec  5 15:13:49 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Applied a patch (bsc#1233889)

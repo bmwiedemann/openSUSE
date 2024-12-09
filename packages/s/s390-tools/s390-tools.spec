@@ -33,7 +33,7 @@
 %endif
 
 Name:           s390-tools
-Version:        2.35.0
+Version:        2.36.0
 Release:        0
 Summary:        S/390 tools like zipl and dasdfmt for s390x (plus selected tools for x86_64)
 License:        MIT
@@ -153,20 +153,23 @@ Patch910:       s390-tools-sles15sp1-11-zdev-Do-not-call-zipl-on-initrd-update.p
 Patch911:       s390-tools-sles15sp5-remove-no-pie-link-arguments.patch
 Patch912:       s390-tools-ALP-zdev-live.patch
 Patch913:       s390-tools-sles15sp6-kdump-initrd-59-zfcp-compat-rules.patch
-Patch914:       s390-tools-slfo-01-parse-ipl-device-for-activation.patch
-Patch915:       s390-tools-01-zipl_helper.device-mapper-add-missed-step-in-logical.patch
+Patch914:       s390-tools-01-zipl_helper.device-mapper-add-missed-step-in-logical.patch
+Patch915:       s390-tools-02-zipl-src-fix-imprecise-check-that-file-is-on-specifi.patch
+###
+Patch920:       s390-tools-slfo-01-parse-ipl-device-for-activation.patch
 ###
 
 BuildRequires:  curl-devel
 BuildRequires:  dracut
 BuildRequires:  fuse3-devel
-BuildRequires:  gcc13
-BuildRequires:  gcc13-c++
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
 BuildRequires:  gettext-tools
 BuildRequires:  glib2-devel
 BuildRequires:  glibc-devel-static
 BuildRequires:  libcryptsetup-devel > 2.0.3
 BuildRequires:  libjson-c-devel
+BuildRequires:  libnl3-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  mdevctl
 BuildRequires:  ncurses-devel
@@ -225,10 +228,9 @@ zipl     - boot loader and dump DASD initializer
 zgetdump - tool to get linux system dumps from DASD
 
  - x86_64
-genprotimg - create a protected virtualization image
+pvimg      - create a protected virtualization image (genprotimg)
 pvattest   - create, perform, and verify protected virtualization attestation measurements
 pvsecret   - manage secrets for IBM Secure Execution guests.
-pvapconfig - used to automatically set up the AP configuration within an IBM Secure Execution guest.
 
 Warning: There is an auxiliary data package - s390-tools-genprotimg-data.
          To install s390-tools properly, please use:
@@ -351,11 +353,11 @@ BuildArch:      noarch
 Requires(pre):  filesystem
 
 %description genprotimg-data
-The genprotimg allows preparing and analyzing boot images
+The pvimg (genprotimg) allows preparing and analyzing boot images
 in the realm of IBM Secure Execution on a trusted environment,
 such as the laptop of an admin by limiting the build targets
 depending on the defined or detected host architecture.
-This package provides auxiliary data used by genprotimg.
+This package provides auxiliary data used by pvimg(genprotimg).
 
 ### *** s390x ************************************************************************* ###
 %ifarch s390x
@@ -365,7 +367,7 @@ This package provides auxiliary data used by genprotimg.
 
 cp -vi %{SOURCE22} CAUTION
 
-install -D -m 0644 %{SOURCE200} .cargo/config
+install -D -m 0644 %{SOURCE200} .cargo/config.toml
 tar -xzf %{SOURCE201}
 
 %build
@@ -382,11 +384,9 @@ export KERNELIMAGE_MAKEFLAGS="%%{?_smp_mflags}"
      DISTRELEASE=%{release} \
      UDEVRUNDIR=/run/udev \
      HAVE_CARGO=1 \
-     HAVE_DRACUT=1 \
-     CC=gcc-13 \
-     CXX=g++-13
+     HAVE_DRACUT=1
 ###     all
-gcc-13 -static -o read_values ${OPT_FLAGS} %{SOURCE86} -lqc
+gcc -static -o read_values ${OPT_FLAGS} %{SOURCE86} -lqc
 
 %install
 mkdir -p %{buildroot}/boot/zipl
@@ -397,9 +397,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/zkey/repository
      SYSTEMDSYSTEMUNITDIR=%{_unitdir} \
      UDEVRUNDIR=/run/udev \
      HAVE_CARGO=1 \
-     HAVE_DRACUT=1 \
-     CC=gcc-13 \
-     CXX=g++-13
+     HAVE_DRACUT=1
 ###     all
 
 # The make install command puts things in /etc/sysconfig and not the
@@ -721,7 +719,6 @@ done
 %dir %{_prefix}/lib/systemd/scripts
 %dir %{_datadir}/s390-tools
 %dir %{_datadir}/s390-tools/netboot
-%dir %{_datadir}/s390-tools/genprotimg
 %dir %{_prefix}/lib/dracut/modules.d/95zdev
 %dir %{_prefix}/lib/dracut/modules.d/95zdev-kdump
 %dir %{_prefix}/lib/dracut/modules.d/96zdev-live
@@ -744,8 +741,8 @@ done
 %dir /etc/mdevctl.d/scripts.d/callouts/
 ###
 %exclude /lib/s390-tools/stage3.bin
-%exclude %{_datadir}/s390-tools/genprotimg/stage3a.bin
-%exclude %{_datadir}/s390-tools/genprotimg/stage3b_reloc.bin
+%exclude %{_datadir}/s390-tools/pvimg/stage3a.bin
+%exclude %{_datadir}/s390-tools/pvimg/stage3b_reloc.bin
 ###
 
 %files -n osasnmpd -f %{_builddir}/%{name}.osasnmp
@@ -796,8 +793,9 @@ done
 ### genprotimg
 %files genprotimg-data
 /lib/s390-tools/stage3.bin
-%{_datadir}/s390-tools/genprotimg/stage3a.bin
-%{_datadir}/s390-tools/genprotimg/stage3b_reloc.bin
+%dir %{_datadir}/s390-tools/pvimg
+%{_datadir}/s390-tools/pvimg/stage3a.bin
+%{_datadir}/s390-tools/pvimg/stage3b_reloc.bin
 
 ### _endif
 ### *** !s390x ************************************************************************* ###
@@ -813,6 +811,7 @@ tar -xzf %{SOURCE201}
 %build
 export OPT_FLAGS="%{optflags}"
 export KERNELIMAGE_MAKEFLAGS="%%{?_smp_mflags}"
+
 %make_build \
      DISTRELEASE=%{release} \
      UDEVRUNDIR=/run/udev \
@@ -820,6 +819,7 @@ export KERNELIMAGE_MAKEFLAGS="%%{?_smp_mflags}"
      HAVE_DRACUT=1
 
 %install
+
 %make_install \
      DISTRELEASE=%{release} \
      SYSTEMDSYSTEMUNITDIR=%{_unitdir} \
@@ -830,8 +830,8 @@ export KERNELIMAGE_MAKEFLAGS="%%{?_smp_mflags}"
 %files
 %{_prefix}/bin/*
 %dir %{_datadir}/s390-tools
-%dir %{_datadir}/s390-tools/genprotimg
-%{_datadir}/s390-tools/genprotimg/check_hostkeydoc
+%dir %{_datadir}/s390-tools/pvimg
+%{_datadir}/s390-tools/pvimg/check_hostkeydoc
 %{_mandir}/man1/*
 
 %endif
