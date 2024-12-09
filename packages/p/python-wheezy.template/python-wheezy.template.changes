@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec  9 12:39:50 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.2.3
+  * feat: cli contexts passed are available as the __args__ list variable.
+- Adjust upstream source name in spec file
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Wed Jan  3 10:37:27 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.2:

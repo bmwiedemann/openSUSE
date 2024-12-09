@@ -16,21 +16,22 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-wheezy.template
-Version:        3.2.2
+Version:        3.2.3
 Release:        0
 Summary:        A lightweight template library
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/akornatskyy/wheezy.template
-Source:         https://files.pythonhosted.org/packages/source/w/wheezy.template/wheezy.template-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/w/wheezy_template/wheezy_template-%{version}.tar.gz#/wheezy.template-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Suggests:       python-mock
 Suggests:       python-pytest
 Suggests:       python-pytest-cov
@@ -42,7 +43,7 @@ BuildArch:      noarch
 A lightweight template library written in pure python.
 
 %prep
-%setup -q -n wheezy.template-%{version}
+%setup -q -n wheezy_template-%{version}
 
 %build
 export CFLAGS="%{optflags}"
