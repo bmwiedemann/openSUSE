@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec  9 08:06:20 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 4.3.6:
+  * improvement: ensure to communicate well to users when a "No space left on device occurs"
+- Update vendored dependencies.
+
+-------------------------------------------------------------------
 Wed Nov 27 05:10:00 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 4.3.5:

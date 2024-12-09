@@ -424,4 +424,15 @@ packages. This library is fasted, easier to maintain and easier for a user to co
 </comment>
     <requestid>1226765</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>d11283ac9138e7686116b09da4aca03c</srcmd5>
+    <version>4.3.6</version>
+    <time>1733775147</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.3.6:
+  * improvement: ensure to communicate well to users when a &quot;No space left on device occurs&quot;
+- Update vendored dependencies.
+</comment>
+    <requestid>1229221</requestid>
+  </revision>
 </revisionlist>
