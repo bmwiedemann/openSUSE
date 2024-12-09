@@ -1267,4 +1267,20 @@ and CVE references,
   - Fix build with clang v18 [-Wvla-cxx-extension] (#1813) (#1817)</comment>
     <requestid>1183540</requestid>
   </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>8946f92edc123c75b0b6b29bd729d571</srcmd5>
+    <version>6.12</version>
+    <time>1733775178</time>
+    <user>anag+factory</user>
+    <comment>- Update to 6.12
+  - Fix validation of Digest auth header parameters
+- changes since squid-6.11:
+  - Fix Kerberos detection when cross-compiling
+  - Improve robustness of DNS code on reconfigure
+  - Prevent slow memory leak in TCP DNS queries
+  - Improve errors emitted when invalid ACLs are parsed
+
+- Disble ESI. The code is removed upstream in 7.x (bsc#1232485, CVE-2024-45802)</comment>
+    <requestid>1229399</requestid>
+  </revision>
 </revisionlist>

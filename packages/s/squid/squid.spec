@@ -24,7 +24,7 @@
 %define         squidhelperdir %{_sbindir}
 %endif
 Name:           squid
-Version:        6.10
+Version:        6.12
 Release:        0
 Summary:        Caching and forwarding HTTP web proxy
 License:        GPL-2.0-or-later
@@ -138,7 +138,6 @@ export CXX=g++-11
 	--enable-removal-policies=heap,lru \
 	--enable-icmp \
 	--enable-delay-pools \
-	--enable-esi \
 	--enable-icap-client \
 	--enable-useragent-log \
 	--enable-referer-log \

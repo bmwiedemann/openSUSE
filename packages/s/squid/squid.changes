@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Dec  9 13:01:22 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- Update to 6.12
+  - Fix validation of Digest auth header parameters
+
+- changes since squid-6.11:
+  - Fix Kerberos detection when cross-compiling
+  - Improve robustness of DNS code on reconfigure
+  - Prevent slow memory leak in TCP DNS queries
+  - Improve errors emitted when invalid ACLs are parsed
+
+-------------------------------------------------------------------
+Mon Nov 25 11:31:27 UTC 2024 - Adam Majer <adam.majer@suse.de>
+
+- Disble ESI. The code is removed upstream in 7.x (bsc#1232485, CVE-2024-45802)
+
+-------------------------------------------------------------------
 Thu Jun 27 07:00:50 UTC 2024 - Adam Majer <adam.majer@suse.de>
 
 - update to 6.10
