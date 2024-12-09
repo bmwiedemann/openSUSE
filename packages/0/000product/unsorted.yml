@@ -2615,6 +2615,7 @@ unsorted:
   - cosign-fish-completion 
   - cosign-zsh-completion 
   - cosmic-app-library 
+  - cosmic-applet-a11y 
   - cosmic-applet-app-list 
   - cosmic-applet-audio 
   - cosmic-applet-battery 
@@ -2662,6 +2663,7 @@ unsorted:
   - cosmic-session 
   - cosmic-store 
   - cosmic-term 
+  - cosmic-wallpapers 
   - cosmic-workspaces 
   - coturn 
   - coturn-devel 
@@ -8624,8 +8626,6 @@ unsorted:
   - healpix_cxx-devel 
   - health-check 
   - health-check-bash-completion 
-  - health-checker-plugins-caasp 
-  - health-checker-plugins-kubic 
   - health-checker-testing 
   - heaptrack-devel 
   - heatshrink 
@@ -16454,8 +16454,8 @@ unsorted:
   - libspooles2_2-openmpi 
   - libspqr4 
   - libspread-sheet-widget0 
-  - libsqlcipher-3_45_3-0 
-  - libsqlcipher-3_45_3-0-x86-64-v3 
+  - libsqlcipher-3_46_1-0 
+  - libsqlcipher-3_46_1-0-x86-64-v3 
   - libsqlite3-0-32bit 
   - libsqlitecpp0 
   - libsqlparser1 
@@ -18764,6 +18764,7 @@ unsorted:
   - melange-zsh-completion 
   - meld 
   - meld-lang 
+  - meli 
   - melt 
   - memcached 
   - memcached-devel 
@@ -18996,6 +18997,7 @@ unsorted:
   - mininet 
   - mininews 
   - minio-client 
+  - minio-client-as-mc 
   - minisat 
   - minisat-devel 
   - minisign 
@@ -23172,6 +23174,10 @@ unsorted:
   - playerctl-devel 
   - playerctl-doc 
   - playerctl-zsh-completion 
+  - playmymusic 
+  - playmymusic-lang 
+  - playmyvideos 
+  - playmyvideos-lang 
   - playwright 
   - pleaser 
   - plee-the-bear 
@@ -23807,6 +23813,7 @@ unsorted:
   - pueue-bash-completion 
   - pueue-fish-completion 
   - pueue-zsh-completion 
+  - pugaipadam 
   - pugixml-devel 
   - pulseaudio 
   - pulseaudio-bash-completion 
@@ -26962,6 +26969,7 @@ unsorted:
   - python310-pynetbox 
   - python310-pyngus 
   - python310-pynitrokey 
+  - python310-pynntp 
   - python310-pynput 
   - python310-pynxos 
   - python310-pyo 
@@ -27054,6 +27062,7 @@ unsorted:
   - python310-pytest-console-scripts 
   - python310-pytest-cov 
   - python310-pytest-datadir 
+  - python310-pytest-datafiles 
   - python310-pytest-dependency 
   - python310-pytest-describe 
   - python310-pytest-django 
@@ -30544,6 +30553,7 @@ unsorted:
   - python311-pynetbox 
   - python311-pyngus 
   - python311-pynitrokey 
+  - python311-pynntp 
   - python311-pynput 
   - python311-pynxos 
   - python311-pyo 
@@ -30635,6 +30645,7 @@ unsorted:
   - python311-pytest-console-scripts 
   - python311-pytest-cov 
   - python311-pytest-datadir 
+  - python311-pytest-datafiles 
   - python311-pytest-dependency 
   - python311-pytest-describe 
   - python311-pytest-django 
@@ -34205,6 +34216,7 @@ unsorted:
   - python312-pynetbox 
   - python312-pyngus 
   - python312-pynitrokey 
+  - python312-pynntp 
   - python312-pynput 
   - python312-pynxos 
   - python312-pyo 
@@ -34297,6 +34309,7 @@ unsorted:
   - python312-pytest-console-scripts 
   - python312-pytest-cov 
   - python312-pytest-datadir 
+  - python312-pytest-datafiles 
   - python312-pytest-dependency 
   - python312-pytest-describe 
   - python312-pytest-django 
@@ -36115,6 +36128,7 @@ unsorted:
   - python313-cairocffi 
   - python313-cairocffi-pixbuf 
   - python313-caldav 
+  - python313-calmjs 
   - python313-calmjs.parse 
   - python313-calmjs.types 
   - python313-calver 
@@ -36380,6 +36394,7 @@ unsorted:
   - python313-django-classy-tags 
   - python313-django-codemod 
   - python313-django-collectd-rest 
+  - python313-django-compressor 
   - python313-django-cors-headers 
   - python313-django-countries 
   - python313-django-coverage-plugin 
@@ -36778,6 +36793,7 @@ unsorted:
   - python313-guzzle_sphinx_theme 
   - python313-gvm-tools 
   - python313-gwcs 
+  - python313-gwdatafind 
   - python313-gwosc 
   - python313-gwyfile 
   - python313-gyp 
@@ -37857,6 +37873,7 @@ unsorted:
   - python313-pynetbox 
   - python313-pyngus 
   - python313-pynitrokey 
+  - python313-pynntp 
   - python313-pynput 
   - python313-pynxos 
   - python313-pyo 
@@ -37866,6 +37883,7 @@ unsorted:
   - python313-pyosf 
   - python313-pyotp 
   - python313-pyowm 
+  - python313-pyp 
   - python313-pypandoc 
   - python313-pyparallel 
   - python313-pyparsing 
@@ -37948,6 +37966,7 @@ unsorted:
   - python313-pytest-console-scripts 
   - python313-pytest-cov 
   - python313-pytest-datadir 
+  - python313-pytest-datafiles 
   - python313-pytest-dependency 
   - python313-pytest-describe 
   - python313-pytest-django 
@@ -39026,6 +39045,8 @@ unsorted:
   - qlipper 
   - qlipper-lang 
   - qloud 
+  - qmk_hid 
+  - qmk_hid-udev-rules 
   - qml-autoreqprov 
   - qml-box2d 
   - qmlkonsole 
