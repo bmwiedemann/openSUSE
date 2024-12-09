@@ -81,4 +81,23 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1219418</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8a962f1fc0ef61c1c66f7fc7411bb7c4</srcmd5>
+    <version>2.1.1</version>
+    <time>1733775152</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.1.1:
+  * Fixed missing apply() on TrackStateSP property by @atoy40 in #2130
+  * Update SnapCap driver to use common abort capability from DustCapInterface instead of doing it manually. by @jpaana in #2136
+  * Miscellaneous ScopeDome driver updates. by @jpaana in #2137
+  * FP2 motor status by @DeepSkyDad in #2139
+  * Migrate INDI Astrolink4 by @naheedsa in #2133
+  * Migrate Astromech focuser by @naheedsa in #2134
+  * Update ieaffocus.cpp by @joe13905179063 in #2141
+  * Fixed crash due not checking boundary values of the axis in telescope_simulator by @artyom-beilis in #2144
+  * Upgrade CheapoDC driver for new device firmware features by @hcomet in #2142
+  * Sim crash fix - looks like found root cause by @artyom-beilis in #2147
+</comment>
+    <requestid>1229227</requestid>
+  </revision>
 </revisionlist>
