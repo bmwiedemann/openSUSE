@@ -227,4 +227,21 @@
   * Moves Swift support defines for podspec user_target_xcconfig so they only apply to the consuming project</comment>
     <requestid>1188968</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>7ba9a619ed79520088fa8236368165c4</srcmd5>
+    <version>4.6.1</version>
+    <time>1733775161</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.6.1:
+	* Updates baseline to upstream SQLite 3.46.1
+	* Significant refactor to merge crypto.h, crypto.c, and crypto_impl.c into a single sqlcipher.c source file for simplicity.
+	* Updates minimum working set size on windows to increase lockable pages
+	* Adds new PRAGMA cipher_log_source for filtering log output on higher verbosity levels
+	* Improves log output by including the log level and source prior to message
+	* Improves error logging in PRAGMA cipher_migrate
+	* Fixes issue where log level and target would be overwritten if set prior to initialization
+	* Corrects Podspec license element to use specific BSD 3 Clause
+	* Fixes default log output to console for macOS</comment>
+    <requestid>1229260</requestid>
+  </revision>
 </revisionlist>
