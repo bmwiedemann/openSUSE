@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 10 15:23:50 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.198.0:
+  * Add release notes for v0.198.0 (#8077)
+  * Add support for `preBootstrapCommands` in AL2023 (#8031)
+  * Prepare for next development iteration
+
+-------------------------------------------------------------------
 Tue Dec 03 09:37:27 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.197.0:
