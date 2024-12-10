@@ -17,7 +17,7 @@
 
 
 Name:           mtd-utils
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
 Summary:        Tools for maintaining Memory Technology Devices
 License:        GPL-2.0-or-later

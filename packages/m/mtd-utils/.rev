@@ -164,4 +164,26 @@ kernel)</comment>
 - Enable SELinux support</comment>
     <requestid>1190853</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b124a5bd47ad789d49043649ee2528e1</srcmd5>
+    <version>2.2.1</version>
+    <time>1733870972</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.2.1:
+  * fectest: Fix time formatting with _TIME_BITS=64 on 32-bit system
+  * also check for static libuuid
+  * mkfs.ubifs: Clear direct_write property when closing target
+  * mkfs.ubifs: Initialize 'cipher_name' as NULL
+  * mkfs.ubifs: Fix wrong xattr entry type
+  * mkfs.ubifs: Fix incorrect dir size calculation in encryption scenario
+  * mkfs.ubifs: Close libubi in error handling paths
+  * mkfs.ubifs: Fix missed closing out_fd
+  * mkfs.ubifs: Fix memleak for 'output' in error paths
+  * libubi: ubi_update_start: slightly improve documentation
+  * fs-tests: integck: Refactor: split out common remount logic
+  * fs-tests: integck: Refactor: split out common remount logic
+  * Extract list implementation to common lib and add list_sort support
+  * Extract rbtree implementation to common lib</comment>
+    <requestid>1229816</requestid>
+  </revision>
 </revisionlist>
