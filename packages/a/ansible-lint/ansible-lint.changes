@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Dec 10 14:38:08 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 24.12.0:
+  * Enhancements
+    - Refactor code to avoid use of rich library (#4396) @ssbarnea
+    - Search for config with the yml/yaml extension (#4416)
+      @cornfeedhobo
+    - Rename color module to output (#4433) @ssbarnea
+    - Remove formatting options for listing rules (#4432) @ssbarnea
+  * Bugfixes
+    - Accommodate specified inventory files (#4393) @cavcrosby
+    - Utilize create_matcherror more in other rules (#4408)
+      @cavcrosby
+    - Add Astra Linux Platform to platform items (#4429)
+      @razerisback
+    - Normalize version field for rules (#4431) @ssbarnea
+    - Enable pyright hook (#4426) @ssbarnea
+    - Remove dead code and prevent regressions (#4425) @ssbarnea
+    - Prepare for pyright hook enablement (#4410) @ssbarnea
+    - Activate and address some ruff violations (preview) (#4421)
+      @ssbarnea
+    - Fix exception with 'skipped' test (#4406) @Gilles95
+    - Include ! as a shell word. closes #4386 (#4403) @wimglenn
+
+-------------------------------------------------------------------
 Wed Nov 13 14:44:07 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 24.10.0:
