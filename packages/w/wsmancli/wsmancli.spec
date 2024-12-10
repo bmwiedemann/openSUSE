@@ -1,7 +1,7 @@
 #
 # spec file for package wsmancli
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -27,14 +27,13 @@ BuildRequires:  libcurl-devel
 # SLE 10
 BuildRequires:  curl-devel
 %endif
-Version:        2.6.0
+Version:        2.8.0
 Release:        0
-Url:            http://www.openwsman.org/
+URL:            http://www.openwsman.org/
 Summary:        Command line client utilities for WS-Management
 License:        BSD-3-Clause
 Group:          System/Management
 Source:         %{name}-%{version}.tar.bz2
-Patch0:         reproducible.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description

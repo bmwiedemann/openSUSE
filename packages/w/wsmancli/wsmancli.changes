@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 10 13:43:41 UTC 2024 - Klaus Kämpf <kkaempf@suse.de>
+
+- Version 2.8.0
+  - fix compatibility with Openwsman 2.8.0
+  - fix compiler warnings  
+
+- drop reproducible.patch, upstream
+
+-------------------------------------------------------------------
 Tue Feb 20 15:25:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
