@@ -2,16 +2,6 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/easymodo/qimgv</param>
     <param name="scm">git</param>
-    <!-- TESTING -->
-    <!-- LAST KNOWN GOOD:  (older) ;  (newer)
-    <param name="revision">fa75f65</param>
-    <param name="revision">d24f3fa</param>
-    -->
-    <!-- BUILD FAILS:      (older) ;  (newer)
-    <param name="revision">df8ebbd</param>  # Something seems to break here.
-    <param name="revision">bc355f6</param>
-    <param name="revision">cfed4cb</param>
-    -->
     <!-- Commenting out for TEMP
     <param name="versionrewrite-pattern">v(.*)</param>
     -->

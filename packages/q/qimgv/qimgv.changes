@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Nov  6 17:25:57 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Switching to Qt6
+  * Adding 'BuildRequires: cmake(Qt6OpenGLWidgets)'
+
+-------------------------------------------------------------------
+Wed Oct 16 14:03:48 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.0.3a+git20241011.a4d475fa:
+  * [ThumbnailStripProxy] move pointer check to the top
+  * [IconWidget] use slot function instead of lambda for some reason using lambda causes a random crash...
+  * [ImageViewerV2] fitFree() - wrong center target
+  * reduce wget noise in build output
+  * Update & tidy workflow
+  * whoops wrong pointer
+  * VideoPlayerInitProxy::removeEventFilter()
+  * [ViewerWidget] fix click zone input over videoplayer
+  * clickable windows edges #382 #469 #276 visuals might need some tweaking
+  * fix trackpad scrolling speed with wayland/libinput
+  * Add FreeBSD Support
+  * Revert "Don't try to link inotify stuff on FreeBSD."
+  * Add FreeBSD to installation list
+  * Don't try to link inotify stuff on FreeBSD.
+  * [settings] fix reading/saving shortcuts which contain "=" #546
+  * update zooming shortcuts #546
+  * Update README.md
+
+-------------------------------------------------------------------
 Tue Apr 30 13:49:11 UTC 2024 - scott.bradnick@suse.com
 
 - Update to version 1.0.3a+git20240430.b515dcd5:

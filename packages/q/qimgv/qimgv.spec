@@ -17,9 +17,9 @@
 
 
 Name:           qimgv
-Version:        1.0.3a+git20240430.b515dcd5
+Version:        1.0.3a+git20241011.a4d475fa
 Release:        0
-Summary:        Qt5 image viewer
+Summary:        Qt6 image viewer
 License:        GPL-3.0-only
 Group:          Productivity/Multimedia/Other
 URL:            https://github.com/easymodo/qimgv
@@ -30,20 +30,21 @@ BuildRequires:  gcc-c++
 %else
 BuildRequires:  gcc9-c++
 %endif
-BuildRequires:  cmake(Qt5LinguistTools)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6OpenGLWidgets)
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  opencv-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.12
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6PrintSupport)
+BuildRequires:  pkgconfig(Qt6Svg)
+BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(exiv2)
 BuildRequires:  pkgconfig(mpv) >= 1.22.0
 Requires:       mpv >= 0.32.0
 
 %description
-Qt5 image viewer with webm support.
+Qt6 image viewer with webm support.
 
 %prep
 %autosetup
