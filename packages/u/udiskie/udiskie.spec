@@ -67,6 +67,8 @@ or flash drives from userspace. Its features include:
 
 %prep
 %autosetup
+# work-around Python error in easy_install.py (setuptools)
+sed -e '/ScriptWriter.template/s/^/#/g' -i setup.py
 
 %build
 %python3_build

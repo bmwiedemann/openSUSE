@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 10 11:54:37 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- fix install error
+
+-------------------------------------------------------------------
 Thu Apr 25 13:21:10 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
 - removed fix-keyutils-module-conflict.patch, fixed upstream
