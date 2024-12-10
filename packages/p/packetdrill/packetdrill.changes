@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 10 13:30:54 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.0+git.20241204:
+  * net-test: mss value change for tcp setsockopt mss
+
+-------------------------------------------------------------------
 Tue Jul 30 08:34:31 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.0+git.20240726:

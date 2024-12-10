@@ -17,7 +17,7 @@
 
 
 Name:           packetdrill
-Version:        2.0+git.20240726
+Version:        2.0+git.20241204
 Release:        0
 Summary:        Testing tool for kernel networking stack
 License:        GPL-2.0-only

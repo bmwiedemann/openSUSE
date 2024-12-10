@@ -25,4 +25,13 @@
   * net-test: packetdrill: bug fix: wire_server must ignore new --wire_server_at arg</comment>
     <requestid>1190422</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>aeb1c81663d658e7243f0af0590f0193</srcmd5>
+    <version>2.0+git.20241204</version>
+    <time>1733870967</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.0+git.20241204:
+  * net-test: mss value change for tcp setsockopt mss</comment>
+    <requestid>1229785</requestid>
+  </revision>
 </revisionlist>
