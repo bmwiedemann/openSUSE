@@ -178,4 +178,15 @@
   * Remove Travis integration, since GYP is now idle.</comment>
     <requestid>1085111</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>6dba7ca1bab567f145b8cb6bc3333ac9</srcmd5>
+    <version>0+git.20240207</version>
+    <time>1733870969</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0+git.20240207:
+  * Make gyp.el conform to conventional library format
+  * Correct toolset version for Visual Studio 2019
+  * Added support for constructing Xcode project files that import XCFrameworks.</comment>
+    <requestid>1229801</requestid>
+  </revision>
 </revisionlist>

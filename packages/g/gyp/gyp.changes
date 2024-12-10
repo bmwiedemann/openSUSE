@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 10 13:35:14 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0+git.20240207:
+  * Make gyp.el conform to conventional library format
+  * Correct toolset version for Visual Studio 2019
+  * Added support for constructing Xcode project files that import XCFrameworks.
+
+-------------------------------------------------------------------
 Fri May 05 12:23:53 UTC 2023 - martin.sirringhaus@suse.com
 
 - Update to version 0+git.20230301:

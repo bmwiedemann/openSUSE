@@ -1,5 +1,5 @@
 <services>
-  <service name="obs_scm" mode="disabled">
+  <service name="obs_scm" mode="manual">
     <param name="versionformat">0+git.%cd</param>
     <param name="url">https://chromium.googlesource.com/external/gyp</param>
     <param name="scm">git</param>

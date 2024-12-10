@@ -1,7 +1,7 @@
 #
 # spec file for package gyp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2015 SUSE LINUX Products GmbH, Nurenberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,11 +18,10 @@
 
 
 Name:           gyp
-Version:        0+git.20230301
+Version:        0+git.20240207
 Release:        0
 Summary:        Generate Your Projects
 License:        BSD-3-Clause
-Group:          Development/Tools/Building
 URL:            https://gyp.gsrc.io
 Source:         %{name}-%{version}.tar.gz
 Patch0:         gyp-rpmoptflags.patch
@@ -31,7 +30,7 @@ BuildRequires:  fdupes
 Requires:       ninja
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Provides:       gyp = %{version}
 Obsoletes:      gyp < %{version}
 BuildArch:      noarch
@@ -69,6 +68,7 @@ sed -i '/^#!/d' ./pylib/%{name}/generator/*.py
 %license LICENSE
 %doc AUTHORS
 %python_alternative %{_bindir}/gyp
-%{python_sitelib}/*
+%{python_sitelib}/gyp
+%{python_sitelib}/gyp-*-info
 
 %changelog
