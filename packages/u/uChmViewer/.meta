@@ -1,0 +1,7 @@
+<package name="uChmViewer" project="openSUSE:Factory">
+  <title>KDE CHM and ePub Viewer</title>
+  <description>This is a viewer for ebooks and documentation in CHM (Microsoft Compiled HTML) and ePub formats.
+It supports complex searching for large books and has various viewing features.</description>
+  <devel project="Office" package="uChmViewer"/>
+  <url>https://www.kchmviewer.net/</url>
+</package>

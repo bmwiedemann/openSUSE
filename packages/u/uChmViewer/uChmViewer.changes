@@ -1,0 +1,396 @@
+-------------------------------------------------------------------
+Mon Dec  9 21:25:35 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Switch to uChmViewer fork
+- Update to 8.3:
+  * fixes empty title tag bug (gh#eBookProjects/uChmViewer#4)
+  * fixes mojibake bug
+  * add translations
+- Build against Qt6
+- Drop upstreamed patches
+  * qtwebengine-1-linkClicked.patch
+  * qtwebengine-2-createWindow.patch
+  * qtwebengine-3-synchronize-url.patch
+  * url-scheme.patch
+- Drop no longer relevant patches (qmake is not used anymore)
+  * kchmviewer-adding-support-for-old-single-pass-gcc-linker.patch
+  * no-webkit.patch
+- Drop rename-desktop-file.patch (no longer relevant due to app changing name)
+
+-------------------------------------------------------------------
+Mon Mar 20 17:23:58 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Add kchmviewer-adding-support-for-old-single-pass-gcc-linker.patch,
+  fixes building for openSUSE Leap
+
+-------------------------------------------------------------------
+Thu Feb 17 11:25:23 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- Add InitialPreference-greater-than-okular.patch
+
+-------------------------------------------------------------------
+Thu Jan  6 20:30:18 UTC 2022 - brunopitrus@hotmail.com
+
+- Update to 8.0
+  * This release uses QtWebEngine for rendering instead of the dropped QtWebKit.
+- Remove fix-build.patch as it related to QtWebKit.
+- Add backported patches from Arch:
+  * no-webkit.patch
+  * qtwebengine-1-linkClicked.patch
+  * qtwebengine-2-createWindow.patch
+  * qtwebengine-3-synchronize-url.patch
+  * url-scheme.patch
+- Add a patch from Fedora:
+  * rename-desktop-file.patch
+
+-------------------------------------------------------------------
+Fri May 25 21:00:47 UTC 2018 - christophe@krop.fr
+
+- Update to 7.7:
+  * Added a Ctrl-I shortcut which copies the URL of currently opened page.
+  * Minor bugfixes
+- Add fix-build.patch
+
+-------------------------------------------------------------------
+Fri Dec 22 14:04:25 UTC 2017 - wbauer@tmo.at
+
+- Update to 7.5:
+  * Added more useful information into About window
+  * Fixed EPUB default encoding to be UTF-8
+  * Changed the TOC/Index/Search default click to be single-click, not system-specific.
+  * On Windows we do not store the window size if it is minimized or maximized; using default size instead.
+- Update to 7.4:
+  * Zoom level is now inherited in newly opened windows
+  * Fixed the empty or stale tab names while using the back/forward navigation buttons and new tab options
+  * Added -v and --version command-line options
+  * Added an option (Settings/Browser/Always use single click) to use a single-click to open tree items in the contents/index tabs despite the selected OS activator such as KDE double-click. Off by default.
+  * Fixed TOC parsing on some CHM files which had TOC names without associated URLs.
+  * Disabled encoding selection menu for epubs
+- Update to 7.3:
+  * Fixed Windows-specific issues, Windows build works again
+  * Added X11-specific way to bring the window to front when requested
+  * Added search highlighting suggested by Jomart
+  * Various KDE build fixes
+  * Added an option to disable automatic auto-expansion of Table of Contents entries
+  * Fixed the new version check which was triggered on older versions
+  * Fixed Qt5 build, it works fine now
+  * Fixed settings storage on Qt4/Qt5
+
+-------------------------------------------------------------------
+Thu Dec 14 10:15:11 UTC 2017 - wbauer@tmo.at
+
+- Build with Qt5, Qt4's QtWebKit is about to be dropped
+
+-------------------------------------------------------------------
+Thu Dec  8 19:57:53 UTC 2016 - fabian@ritter-vogt.de
+
+- Revert kde4_runtime_requires change
+
+-------------------------------------------------------------------
+Tue Nov 29 07:20:36 UTC 2016 - olaf@aepfle.de
+
+- Expand macro kde4_runtime_requires only when its available
+  to fix quilt setup
+
+-------------------------------------------------------------------
+Sun Jan 11 19:08:44 UTC 2015 - mailaender@opensuse.org
+
+- Update to 7.2.1
+  * Fixed a crash when indexing (in search) certain malformed HTML files.
+  * Fixed parsing CHM files whose filenames contained URL-encoded characters.
+- Remove upstreamed ftbfs.patch
+
+-------------------------------------------------------------------
+Sat Oct  4 16:17:43 UTC 2014 - mailaender@opensuse.org
+
+- Update to version 6.1
+    - Keyboard usability improved thanks to the Giuseppe "Cowo" Corbelli.
+    - The focus is now moved to the content page once the link is clicked, so the keyboard navigation is available immediately. You can switch the focus back by pressing Ctrl+(1-4).
+    - Added extended keyboard shortcuts for FindNext and FindPrevious; F3 still works.
+    - Navigation tab window activation (Contents, Search, Index, Bookmarks) now automatically focus the proper element.
+    - The items in the navigation page now reacts on onItemActivated, and hence act on <Return> key and follow the DE policy (such as respecting KDE single click).
+    - Upon successful search, the focus moves to the results list.
+    - Titles are now space-trimmed.
+    - Fixed binary TOC parser check which led to crashes for some CHM files.
+    - Fixed incorrect settings file storage name when the CHM file contains multiple dots.
+    - Fixed the Ctrl+click and Shift+click when the release event was intercepted by other applications (i.e. GoldenDict)
+    - 'Esc' closes the search dialog and restores focus in the content window.
+- Use http://en.opensuse.org/SourceUrls
+- Add ftbfs.patch to fix the build.
+
+-------------------------------------------------------------------
+Tue Nov 20 17:23:54 UTC 2012 - nico.kruber@gmail.com
+
+- Fix the SLES build (%make_install is not expanded on SLES)
+
+-------------------------------------------------------------------
+Mon Jan  9 11:03:18 UTC 2012 - wstephenson@suse.com
+- Update to version 6.0
+  - Removed outdated and buggy QTextBrowser support.
+  - Removed unneeded KHTMLPart support. Only QWebKit is now supported.
+  - Fixed zoom and "select all".
+  - Fixed storing scrollbar position.
+  - Added browser options to control JavaScript, Java and HTML5
+    features, which now apply to Webkit
+  - Fixed crash on start when the number of recent files was set to zero
+  - Added support for opening the specific page on startup using the
+    --url switch
+  - Fixed scrolling at the same page when links are clicked
+  - Fixed the "Locate in content tree" which was broken for QWebKit
+  - For CHM entries with an URL but no name use the URL as name
+
+-------------------------------------------------------------------
+Sun Jan 16 09:15:41 UTC 2011 - tittiatcoke@gmail.com
+
+- Update to 5.3
+  * Bugfix release:
+    - Fixed spelling error (thx Razvan Visan)
+    - Changed encodings order for Chinese and Japanese languages 
+      (thanks Kai-Chieh Ku)
+    - Fixed some grammatical errors (thanks Robin 'cheese' Lee)
+    - Fixed webkit engine for buggy CHMs which do not have all 
+      content, as well as cases when external references cannot be 
+      loaded. Thanks to Kai-Chieh Ku
+  * Added Mac Support
+  * Added translations: Ukrainian and Brazilian
+
+-------------------------------------------------------------------
+Thu Jul  8 18:18:32 UTC 2010 - bitshuffler@opensuse.org
+
+- Fix build
+- Add %kde4_runtime_requires
+
+-------------------------------------------------------------------
+Thu Jul  8 05:06:50 UTC 2010 - beineri@opensuse.org
+
+- update to 5.2
+  * Bugfix release:
+   - Fixed viewing CHM files which embed links to other CHM files
+   - Fixed errors while building index because 'keyword' was ignored
+
+-------------------------------------------------------------------
+Thu Dec 17 19:04:08 UTC 2009 - tittiatcoke@gmail.com
+
+- update to 5.1
+  * Bugfix release:
+     + Fixed settings saving and bookmarks edit
+     + Fixed content tree lookup for some pecky CHM's
+
+-------------------------------------------------------------------
+Tue Dec 15 18:51:48 UTC 2009 - tittiatcoke@gmail.com
+
+- Update to 5.0
+  * Now based on QT4.5
+  * Major internal GUI redesign
+  * Fixed settings Storage
+  * Fixed index parser
+  * Default toolbars now use large icons and text labels, and is 
+    configurable through settings
+  * Can start without opening a CHM file 
+  * Added configurable check if a new version is available
+  * Added missing icons
+
+-------------------------------------------------------------------
+Sun Oct 25 19:10:04 UTC 2009 - tittiatcoke@gmail.com
+
+- Update to 4.2
+   * Fixed font size change on KHTMLPart
+   * Fixed "Open in new tab" for QTextBrowser
+   * Other minor feature enhancements
+
+-------------------------------------------------------------------
+Tue Aug 18 14:39:37 CEST 2009 - beineri@opensuse.org
+
+- fix menu entry icon
+
+-------------------------------------------------------------------
+Sat Jul 25 20:56:19 CEST 2009 - beineri@opensuse.org
+
+- Update to 4.1:
+   * Updated Dutch and Turkish translations
+   * Default toolbar button order changed to standard -/+
+   * Automatic encoding detection for KHTMLPart/WebKit is now 
+     disabled by default
+   * Fixed incorrest index string encoding for non-English strings
+   * Fixed text size auto-increase each time the file is loaded 
+     for WebKit browser.
+   * License changed from GPLv2 to GPLv3
+
+-------------------------------------------------------------------
+Mon Mar 16 13:57:54 CET 2009 - dmueller@suse.de
+
+- update to 4.0:
+  * parsing of binary table of contents and indexes, which speeds
+  up loading of CHM files up to five times. The most annoying
+  bugs were fixed as well. 
+  * port to KDE4
+
+-------------------------------------------------------------------
+Mon Oct 29 14:55:43 CET 2007 - dmueller@suse.de
+
+- fix build against gcc 4.3 
+
+-------------------------------------------------------------------
+Mon Oct  8 14:55:17 CEST 2007 - schwab@suse.de
+
+- Fix specfile.
+
+-------------------------------------------------------------------
+Sun Jun 17 11:46:49 CEST 2007 - stbinner@suse.de
+
+- update to version 3.1:
+   * Increased the speed of search engine indexing.
+   * Fixed the problem when kchmviewer is called from a browse
+     with URL like file://.
+   * Fixed the unability to run the program when the last opened file
+     does not exist anymore, and LoadLatestFileOnStartup is set to 1.
+   * Fixed CHMs with Unicode index/topic filenames inside CHM file.
+   * Fixed showing book images in QTextBrowser when file path contains
+     urlencoded symbols.
+
+-------------------------------------------------------------------
+Mon Apr 30 16:58:39 CEST 2007 - stbinner@suse.de
+
+- with build with desktop-file-validate run
+
+-------------------------------------------------------------------
+Wed Mar 14 10:22:47 CET 2007 - stbinner@suse.de
+
+- update to version 3.0:
+   * new search engine, which can correctly search in any language
+     (including Asian languages), and can search for symbols
+   * Added DCOP bindings for KDE version.
+   * Chm procesing code moved in a separate library and was rewritten
+     resulted in up to 20x(!) speed increase for loading large chm files.
+   * Fixed a lot of old bugs, including 'Copy' in KDE, removing a
+     duplicated application title, and incorrect popup menu position. 
+
+-------------------------------------------------------------------
+Mon Jan 29 16:40:48 CET 2007 - stbinner@suse.de
+
+- patch internal chmlib copy with 0.39 fixes for KDE:Backports
+- update to version 2.7:
+   * You can now switch between tabs using Alt+[number].
+   * Now current window size and splitter position is also stored 
+     on exit - separately for each chm file.
+   * Kchmviewer should now work correctly on non-x86 platforms,
+     including the codepage autodetection.
+   * TOC directory entries now could be opened/closed with double-
+     click on the entry name/icon, not just +/- icons.
+   * Added a warning when the browser or browser settings are changed 
+     that application restart is required for changes to take effect.
+
+-------------------------------------------------------------------
+Fri Jul  7 08:54:21 CEST 2006 - adrian@suse.de
+
+- update to version 2.6:
+  * Added shortcut help in context menus.
+  * Right-click menu is now available in Contents, Search, Index and Favorites windows.
+  * Fixed navigation buttons 'What's this' messages.
+
+-------------------------------------------------------------------
+Mon Jun 26 11:34:30 CEST 2006 - stbinner@suse.de
+
+- fix build for 64 bit
+
+-------------------------------------------------------------------
+Wed May 31 11:53:22 CEST 2006 - adrian@suse.de
+
+- fix build for < 10.1
+
+-------------------------------------------------------------------
+Mon May 22 13:32:44 CEST 2006 - stbinner@suse.de
+
+- Use system-wide chmlib package (#153012)
+
+-------------------------------------------------------------------
+Wed May 17 13:09:28 CEST 2006 - stbinner@suse.de
+
+- update to version 2.5:
+   * Application icon should now be correctly installed.
+   * Fixed handling of mailto: urls.
+   * 'Locate in content' button now opens a Contents tab, if hidden.
+   * Version 2.5 release.
+   * A tooltip is now shows the full text in all the tree and list views if truncated on screen.
+   * Fixed content tree parser, now the content table should be parsed correctly.
+   * Fixed crash after the encoding is changed, if any tree item is clicked.
+   * Added a bookmark menu. Ctrl-B is a shortcut to add a bookmark.
+   * Added tab browsing. Use right-click and 'Open in new tab'.
+     - Added right-click content menu to open pages in a new tab.
+     - Control-click on link or table of contents opens a page in a new tab in background.
+     - Shift-click on link or table of contents opens a page in a new tab in foreground.
+   * 'Setup' menu renamed to 'Settings'
+   * Fixed various navigation errors when 'Locate' button didn't locate the appropriate topic.
+   * Fixed forward navigation, and saved scroll position.
+   * Navigation history rewritten, now it stores text position too.
+   * Added 'Extract CHM content' menu item to extract the whole CHM file into a directory.
+   * Added i18n calls for complete internationalization. pot file created.
+   * Switched to a new, correct automake file structure.
+   * Fixed autotest.
+   * Now kchmviewer uses system libchm if found, and no --with-builtin-chmlib configure switch defined.
+   * Made configure more compatible with newest autoconf and Debian - thanks to Jose Luis Tallon. 
+   * Added an application icon - thanks to Jose Luis Tallon. 
+   * Fixed index parser for PHP manual - thanks to Dmitry Bakshaev.
+   * In full screen mode the menu bar and status bar are now hidden.
+   * Added 'locate in content window' button to open currently opened topic in the content window.
+   * Fixed compilation with gcc 4.1 - thanks to Jan Jitse Venselaar.
+   * The algorithm to detect the valid root offset in contents page is changed. Now there should be less
+      "CHMFile::ParseAndFillTopicsTree: child entry 1 with no root entry!" errors.
+   * Pages with images only are now shown correctly.
+   * Fixed kqrunprocess.h compilation bug on some platforms.
+
+-------------------------------------------------------------------
+Wed Feb 15 11:26:26 CET 2006 - stbinner@suse.de
+
+- add GenericName to .desktop file
+
+-------------------------------------------------------------------
+Wed Jan 25 21:33:00 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Nov 28 09:45:04 CET 2005 - stbinner@suse.de
+
+- update to version 1.3
+
+-------------------------------------------------------------------
+Mon Nov 21 13:55:48 CET 2005 - stbinner@suse.de
+
+- update to version 1.2
+
+-------------------------------------------------------------------
+Sun Oct 30 18:50:01 CET 2005 - stbinner@suse.de
+
+- update to version 1.1
+
+-------------------------------------------------------------------
+Wed Oct 26 17:50:10 CEST 2005 - stbinner@suse.de
+
+- update internal CHM lib copy to 0.37 to fix exploitable buffer 
+  overflow (#130751)
+
+-------------------------------------------------------------------
+Tue Oct 11 16:52:47 CEST 2005 - dmueller@suse.de
+
+- fix build 
+
+-------------------------------------------------------------------
+Tue Sep 27 14:49:33 CEST 2005 - dmueller@suse.de
+
+- fix build 
+
+-------------------------------------------------------------------
+Wed Aug 17 11:53:03 CEST 2005 - schwab@suse.de
+
+- Fix to build.
+
+-------------------------------------------------------------------
+Tue Aug  2 15:41:05 CEST 2005 - coolo@suse.de
+
+- cleaning up behind project management
+
+-------------------------------------------------------------------
+Fri Jul 29 09:30:39 CEST 2005 - adrian@suse.de
+
+- initial package of version 1.0
+
