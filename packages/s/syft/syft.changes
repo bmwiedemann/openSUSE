@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Tue Dec 10 08:48:44 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.18.0:
+  * chore(deps): update anchore dependencies (#3510)
+  * fix: convert file paths for spdx formats from absolute to
+    relative (#3509)
+  * chore(deps): update CPE dictionary index (#3507)
+  * chore(deps): update tools to latest versions (#3506)
+  * chore(deps): bump github.com/magiconair/properties from 1.8.7
+    to 1.8.9 (#3508)
+  * chore(deps): bump actions/cache from 4.1.2 to 4.2.0 (#3503)
+  * Add relationships for rust audit binary packages (#3500)
+  * fix order of rust dependencies and support git sources in
+    Cargo.lock dependencies (#3502)
+  * chore(deps): update tools to latest versions (#3501)
+  * chore(deps): bump golang.org/x/net from 0.31.0 to 0.32.0
+    (#3499)
+  * chore: add and document target for updating unit snapshots
+    (#3498)
+  * fix: emit NOASSERTION for copyright text to fix SPDX 2.2
+    validation failure (#3495)
+  * chore(deps): update tools to latest versions (#3496)
+  * chore(deps): update tools to latest versions (#3487)
+  * chore(deps): bump github/codeql-action from 3.27.5 to 3.27.6
+    (#3494)
+  * chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.6.2 to
+    6.6.3 (#3489)
+  * feat: set max layer size (#3464)
+  * chore(deps): update CPE dictionary index (#3491)
+  * chore(deps): bump modernc.org/sqlite from 1.34.1 to 1.34.2
+    (#3492)
+  * chore(deps): bump github.com/saferwall/pe from 1.5.5 to 1.5.6
+    (#3493)
+  * chore(deps): update tools to latest versions (#3478)
+  * chore(deps): update CPE dictionary index (#3479)
+  * chore(deps): bump github.com/stretchr/testify from 1.9.0 to
+    1.10.0 (#3480)
+  * chore(deps): bump github.com/charmbracelet/bubbletea from 1.2.3
+    to 1.2.4 (#3482)
+  * chore(deps): update stereoscope to
+    be5deed44b7c03fcbfa6f1f42fb67202d31636a9 (#3483)
+  * fix: dart classifier for 2.x and ARM (#3475)
+  * Use file indexer directly when scanning with file source
+    (#3333)
+  * chore(deps): bump anchore/sbom-action from 0.17.7 to 0.17.8
+    (#3476)
+  * chore(deps): bump github/codeql-action from 3.27.4 to 3.27.5
+    (#3473)
+
+-------------------------------------------------------------------
 Thu Nov 21 14:50:55 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.17.0:
