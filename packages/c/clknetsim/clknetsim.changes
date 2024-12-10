@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec 10 14:33:42 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0+git.20241128:
+  * bash: wait for client processes to exit
+  * close client socket on exit
+  * round nanoseconds in PTP_SYS_OFFSET* delay adjustments
+  * avoid timestamps from future in PTP_SYS_OFFSET_EXTENDED
+  * add options to cycle PHC jitter
+  * init symbols in fdopen()
+
+-------------------------------------------------------------------
 Wed Aug 28 07:19:19 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0+git.20240610:

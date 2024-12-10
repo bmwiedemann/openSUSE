@@ -50,4 +50,18 @@
   * fix missing stat/fstat with latest glibc</comment>
     <requestid>1196409</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>971c54c678b0ba21a2ee5126134d113c</srcmd5>
+    <version>0+git.20241128</version>
+    <time>1733870977</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0+git.20241128:
+  * bash: wait for client processes to exit
+  * close client socket on exit
+  * round nanoseconds in PTP_SYS_OFFSET* delay adjustments
+  * avoid timestamps from future in PTP_SYS_OFFSET_EXTENDED
+  * add options to cycle PHC jitter
+  * init symbols in fdopen()</comment>
+    <requestid>1229838</requestid>
+  </revision>
 </revisionlist>
