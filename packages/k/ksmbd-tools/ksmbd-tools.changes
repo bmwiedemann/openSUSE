@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Dec  5 13:29:50 UTC 2024 - David Disseldorp <ddiss@suse.com>
+
+- Update to version 3.5.3
+  * Fix adduser / addshare prompting on musl libc
+  * Fix use of `veto files` as global share parameter
+  * Lookup primary group and don't recurse in ksmbd.conf @group handling
+  * Fix a leak and an intermittent auth failure in Kerberos 5
+  * Add global parameter `kerberos support`
+  * Fix intermittent `ksmbd.control --list` failure
+  * Fix potential UAFs on mountd shutdown
+  * Use supplementary groups on filesystem access
+  * Document long-standing duplicate key-value quirk
+  * Log ignored key-values
+  * Have only one of `read only`, `writeable`, etc. take effect on share
+  * Allow ASCII tab in user names and share names
+  * Invalidate share / server if certain parameters fail to take effect
+  * Increase minimum GLib version to 2.58
+  * Fix man page formatting issues
+
+-------------------------------------------------------------------
 Sat Apr  6 06:09:20 UTC 2024 - David Disseldorp <ddiss@suse.com>
 
 - Update to version 3.5.2

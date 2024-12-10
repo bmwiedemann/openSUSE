@@ -50,4 +50,12 @@ https://build.opensuse.org/package/show/network:samba:STABLE/ksmbd-tools</commen
     <comment></comment>
     <requestid>1172499</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>342e8e53e850c53644394b5b4460f544</srcmd5>
+    <version>3.5.3</version>
+    <time>1733871051</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1229923</requestid>
+  </revision>
 </revisionlist>
