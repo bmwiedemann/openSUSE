@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec  9 02:06:17 UTC 2024 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Add glab-disable_update_check.patch to disable the update check by default
+  (it is not useful for distribution packages)
+
+-------------------------------------------------------------------
 Fri Nov 29 08:29:43 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.50.0:

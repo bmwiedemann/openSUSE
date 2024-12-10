@@ -28,6 +28,8 @@ Group:          Development/Tools/Other
 URL:            https://gitlab.com/gitlab-org/cli
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
+# https://sources.debian.org/src/glab/1.49.0-1/debian/patches/0001-Disable-update-check.patch
+Patch0:         glab-disable_update_check.patch
 %if 0%{?fedora_version} || 0%{?rhel_version} || 0%{?centos_version} || 0%{?almalinux_version} || 0%{?rocky_version}
 BuildRequires:  golang >= 1.23.0
 %else
