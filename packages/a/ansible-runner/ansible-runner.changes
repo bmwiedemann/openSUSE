@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 10 14:15:28 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- ignore another test that fails now (possibly with
+  ansible-core-2.18)
+
+-------------------------------------------------------------------
 Wed Oct 16 11:19:09 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - fix checks

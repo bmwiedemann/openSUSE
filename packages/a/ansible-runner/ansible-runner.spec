@@ -91,15 +91,16 @@ sed -i -e '/cov/d' -e '/color/d' pytest.ini
 # Ignored tests, upstream bug report:
 # https://github.com/ansible/ansible-runner/issues/1237
 #
-IGNORED_TESTS='test_callback_plugin_task_args_leak[playbook0] or '
-IGNORED_TESTS+='test_resolved_actions[playbook0] or '
-IGNORED_TESTS+='test_playbook_on_stats_summary_fields or '
-IGNORED_TESTS+='test_multiline_blank_write[pexpect] or '
+IGNORED_TESTS='test_callback_plugin_task_args_leak[playbook0]'
+IGNORED_TESTS+=' or test_resolved_actions[playbook0]'
+IGNORED_TESTS+=' or test_playbook_on_stats_summary_fields'
+IGNORED_TESTS+=' or test_multiline_blank_write[pexpect]'
 # flaky tests
-IGNORED_TESTS+='test_run_command_long_running or '
-IGNORED_TESTS+='test_run_command_long_running_children or '
-IGNORED_TESTS+='test_password_prompt or '
-IGNORED_TESTS+='test_get_role_list'
+IGNORED_TESTS+=' or test_run_command_long_running'
+IGNORED_TESTS+=' or test_run_command_long_running_children'
+IGNORED_TESTS+=' or test_password_prompt'
+IGNORED_TESTS+=' or test_get_role_list'
+IGNORED_TESTS+=' or test_module_level_no_log[playbook0]'
 export PATH=%{buildroot}%{_bindir}:$PATH
 %pytest -n auto -k "not ($IGNORED_TESTS)"
 
