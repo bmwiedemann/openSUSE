@@ -96,4 +96,19 @@
     <comment></comment>
     <requestid>1153184</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e3bc159bf6b49b9b8f66925829181dab</srcmd5>
+    <version>3.0.13</version>
+    <time>1733871053</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1227926 from flavio_castelli
+
+- Update to version 3.0.13:
+  + Added Windows port
+  + Improved CI workflow
+  + Removed unnecessary string copy operations, improved engine speed - several PR's
+  + Fixed a bug in @pm operator
+  + Extended the C/C++ API</comment>
+    <requestid>1229925</requestid>
+  </revision>
 </revisionlist>

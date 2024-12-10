@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec  3 07:24:11 UTC 2024 - Flavio Castelli <fcastelli@suse.com>
+
+- Update to version 3.0.13:
+  + Added Windows port
+  + Improved CI workflow
+  + Removed unnecessary string copy operations, improved engine speed - several PR's
+  + Fixed a bug in @pm operator
+  + Extended the C/C++ API
+
+-------------------------------------------------------------------
 Thu Feb 15 15:58:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.0.12:
