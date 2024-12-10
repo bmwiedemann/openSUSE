@@ -653,6 +653,12 @@ Prefer: -python310-FontTools -python311-FontTools
 # have choice for (python311-qt5 or python311-pyside2 or python311-PyQt6 or python311-pyside6) needed by python311-qtconsole: python311-pyside6 python311-qt5
 Prefer: -python311-pyside6
 
+# Remove when SR#1229168 is accepted. Ana
+# have choice for (python312-nntplib if python312-base >= 3.12): python312-nntplib python312-pynntp
+Prefer: -python312-nntplib
+# have choice for (python313-nntplib if python313-base >= 3.12): python313-nntplib python313-pynntp
+Prefer: -python313-nntplib
+
 # have choice for libsundials_core.so.7()(64bit) needed by libsundials_ida7: libsundials_core7 libsundials_core7-mvapich2 libsundials_core7-openmpi4,
 Prefer: -libsundials_core7-mvapich2 -libsundials_core7-openmpi4
 
