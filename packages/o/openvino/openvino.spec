@@ -78,7 +78,7 @@ BuildRequires:  pkgconfig(flatbuffers)
 BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(nlohmann_json)
 BuildRequires:  pkgconfig(ocl-icd)
-BuildRequires:  pkgconfig(protobuf)
+BuildRequires:  pkgconfig(protobuf) < 22
 BuildRequires:  pkgconfig(pugixml)
 %if %{defined isLeap15}
 BuildRequires:  opencl-headers

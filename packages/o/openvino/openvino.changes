@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 10 15:50:41 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- fix build on tumbleweed
+  * currently openvino does not support protobuf v22 or newer
+
+-------------------------------------------------------------------
 Tue Oct 15 00:56:54 UTC 2024 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 - Temporarily inserted gcc-13 in Tumbleweed/Factory/Slowroll: 
