@@ -437,4 +437,13 @@ Setting up scap-security-guide (0.1.56-30.1) ... (forwarded request 896944 from 
   -  Various updates for SLE 12/15</comment>
     <requestid>1228301</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>fa21cb7ddb6af52e46e55e18a147330a</srcmd5>
+    <version>0.1.75</version>
+    <time>1733870978</time>
+    <user>anag+factory</user>
+    <comment>- ssg-reproducable.patch: replace two date injections by SOURCE_DATE_EPOCH
+  to make reproducible. bsc#1230361 (forwarded request 1229843 from msmeissn)</comment>
+    <requestid>1229844</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec  5 20:18:21 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- ssg-reproducable.patch: replace two date injections by SOURCE_DATE_EPOCH
+  to make reproducible. bsc#1230361
+
+-------------------------------------------------------------------
 Wed Dec  4 09:30:59 UTC 2024 - Rumen Chikov <rumen.chikov@suse.com>
 
 - updated to 0.1.75 (jsc#ECO-3319)

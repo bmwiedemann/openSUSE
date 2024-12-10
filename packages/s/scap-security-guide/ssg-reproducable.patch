@@ -1,0 +1,49 @@
+Index: content-0.1.75/utils/create_scap_delta_tailoring.py
+===================================================================
+--- content-0.1.75.orig/utils/create_scap_delta_tailoring.py
++++ content-0.1.75/utils/create_scap_delta_tailoring.py
+@@ -2,6 +2,7 @@
+ 
+ import argparse
+ import datetime
++import time
+ import json
+ import os
+ import re
+@@ -165,10 +166,11 @@ setup_tailoring_profile.__annotations__
+ 
+ 
+ def _get_datetime():
+-    try:
+-        return datetime.datetime.now(datetime.UTC).isoformat()
+-    except AttributeError:
+-        return datetime.datetime.utcnow().isoformat()
++    return datetime.datetime.fromtimestamp(int(os.environ.get('SOURCE_DATE_EPOCH', time.time()))).isoformat()
++    #try:
++    #    return datetime.datetime.now(datetime.UTC).isoformat()
++    #except AttributeError:
++    #    return datetime.datetime.utcnow().isoformat()
+ 
+ 
+ def create_tailoring(args):
+Index: content-0.1.75/ssg/build_yaml.py
+===================================================================
+--- content-0.1.75.orig/ssg/build_yaml.py
++++ content-0.1.75/ssg/build_yaml.py
+@@ -3,6 +3,7 @@ from __future__ import print_function
+ 
+ from copy import deepcopy
+ import datetime
++import time
+ import json
+ import os
+ import os.path
+@@ -423,7 +424,7 @@ class Benchmark(XCCDFEntity):
+         root.set('xml:lang', 'en-US')
+ 
+         status = ET.SubElement(root, '{%s}status' % XCCDF12_NS)
+-        status.set('date', datetime.date.today().strftime("%Y-%m-%d"))
++        status.set('date', time.strftime( "%Y-%m-%d", time.gmtime(int(os.environ.get('SOURCE_DATE_EPOCH', time.time())))))
+         status.text = self.status
+ 
+         add_sub_element(root, "title", XCCDF12_NS, self.title)
