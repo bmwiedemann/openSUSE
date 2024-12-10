@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Dec 10 19:57:40 UTC 2024 - felix.niederwanger@suse.de
+
+- Update to version 3.86.0:
+  * Add new detector for Twitch OAuth Access Tokens (#3756)
+  * Fix SatisMeter Detector (#3692)
+  * updated and added pattern tests for detectors t-v (#3753)
+  * Fixed stripe detector integration tests (#3754)
+  * fixed scrapingAnt detector (#3736)
+  * [chore] - Upgrade `Archiver` dependency (#3743)
+  * fix(deps): update module github.com/jedib0t/go-pretty/v6 to v6.6.4 (#3751)
+  * fixed slack detector integration tests (#3748)
+  * fixed skybiometery detector and integration tests (#3747)
+  * [Fix] detector's integration tests starting with alphabet 'd' (#3750)
+  * [Fix] detector's integration tests starting with alphabet 'c' (#3749)
+  * [Fix] detector's integration tests starting with alphabet 'b' (#3746)
+  * [Fix] detector's integration tests starting with alphabet 'A' (#3745)
+  * fixed shopify integration test (#3744)
+
+-------------------------------------------------------------------
 Mon Dec 09 08:54:36 UTC 2024 - felix.niederwanger@suse.de
 
 - Update to version 3.85.0:

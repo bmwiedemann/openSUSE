@@ -1710,4 +1710,26 @@
   * Add additional canary ID (#3720) (forwarded request 1229257 from ph03nix)</comment>
     <requestid>1229428</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>8734a5c3a43ad2c9dc4ed25ab55ce15f</srcmd5>
+    <version>3.86.0</version>
+    <time>1733871054</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.86.0:
+  * Add new detector for Twitch OAuth Access Tokens (#3756)
+  * Fix SatisMeter Detector (#3692)
+  * updated and added pattern tests for detectors t-v (#3753)
+  * Fixed stripe detector integration tests (#3754)
+  * fixed scrapingAnt detector (#3736)
+  * [chore] - Upgrade `Archiver` dependency (#3743)
+  * fix(deps): update module github.com/jedib0t/go-pretty/v6 to v6.6.4 (#3751)
+  * fixed slack detector integration tests (#3748)
+  * fixed skybiometery detector and integration tests (#3747)
+  * [Fix] detector's integration tests starting with alphabet 'd' (#3750)
+  * [Fix] detector's integration tests starting with alphabet 'c' (#3749)
+  * [Fix] detector's integration tests starting with alphabet 'b' (#3746)
+  * [Fix] detector's integration tests starting with alphabet 'A' (#3745)
+  * fixed shopify integration test (#3744) (forwarded request 1229926 from ph03nix)</comment>
+    <requestid>1229927</requestid>
+  </revision>
 </revisionlist>
