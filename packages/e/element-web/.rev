@@ -1044,4 +1044,12 @@ Version 1.11.84
   * Remove &quot;Upgrade your encryption&quot; flow in `CreateSecretStorageDialog` (https://github.com/element-hq/element-web/pull/28290). Contributed by @florianduros.</comment>
     <requestid>1225169</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>9f6ae5d86f42df7e448f31dbab78a925</srcmd5>
+    <version>1.11.87</version>
+    <time>1733870974</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1229821</requestid>
+  </revision>
 </revisionlist>
