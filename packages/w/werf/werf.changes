@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Dec 10 13:10:13 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.16.2:
+  * chore: release 2.16.2 (#6479)
+  * fix(deploy): fix segfault in get-release (#6486)
+  * chore(release): 2 stable
+  * docs(deploy): overriding appVersion during deploy
+  * chore(site): fix tls key (#6482)
+  * chore(docs): update ci cd doc
+  * fix(deploy): deploy graph cycle if same external dependency on
+    multiple resources
+  * fix(deploy): initial resource status should be "unknown"
+    instead of "created"
+  * chore(release): 1.2 alpha,beta,ea,stable(-) 2 alpha,beta
+
+-------------------------------------------------------------------
 Thu Dec 05 11:38:52 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.16.1:
