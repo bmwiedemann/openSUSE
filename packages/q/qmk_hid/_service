@@ -1,0 +1,6 @@
+<services>
+  <service name="cargo_vendor" mode="disabled">
+     <param name="src">qmk_hid-*.tar.gz</param>
+     <param name="update">false</param>
+  </service>
+</services>

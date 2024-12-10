@@ -1,0 +1,195 @@
+-------------------------------------------------------------------
+Mon Nov 18 03:28:19 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- rename to upstream name
+- update spec file for Leap 16.0:
+  * remove %suse_update_desktop_file
+  * remove recommending lang package
+
+-------------------------------------------------------------------
+Mon Jul 22 17:20:09 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.2.1:
+  * Merge pull request #158 from artemanufrij/sleep-on-async-scan
+  * Make post_install.py script executable
+  * Update packaging for meson
+  * Fix … typo
+  * Add tooltips
+  * Fix appstream
+  * Let LocalFilesManager handle file paths while importing
+    playlist
+  * Fix playlist import on relative paths and symlinks
+  * just a comment
+
+-------------------------------------------------------------------
+Mon Nov 19 18:57:06 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.2.0:
+  * file name for queue export
+  * po/pot content; tooltip
+  * added import button into status bar
+  * import playlist
+  * Radio: Fix new Radio Popup
+  * markup for playlist details
+  * tracks counter and playlist duration
+  * Queue export
+  * Export Playlist
+  * select button when moved queue into playlist
+
+-------------------------------------------------------------------
+Mon Nov  5 17:28:38 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.1.0:
+  * improved smooth playing for mix collections
+  * moved State.NULL mode from EOS to next ()
+  * update po/pot content; don't sort album view if view mode == 
+    1 (default)
+  * sorting menu
+  * new option: remember track progress
+  * add launchable tag
+  * add few missing tags to the appdata file
+  * update changelog for debian package
+  * fix shuffle and repeat tooltip
+  * Add a download on Flathub badge
+  * Update README.md
+  * radio icon
+  * Merge pull request #151 from kaisfm/master
+  * Add preview for choose_new_cover
+  * Update zh_CN.po
+  * code clean up
+  * remove spinner if it's not in use
+  * Update ru.po
+  * context menu: don't show separator if no playlists are 
+    available
+
+-------------------------------------------------------------------
+Mon Oct 29 19:37:54 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.0.0:
+  * fixed alert for "no items found" inside playlists
+  * removen wapi from meson
+  * deleted unuserd vapi stuff
+  * updated po/pot content
+  * added do_sort method into playlistview
+  * remove PlaylistView class. use playlist instead
+  * moved from flowbox to box inside playlist
+  * ignore shuffle mode for queue
+  * PAUSED behavior for queue
+  * queue button opacity
+  * don't show queue playlist inside context menu
+  * new symbolic icons
+  * RC: Queue Functionality
+  * imporoved context menu
+  * set custom playlist title if it was creating fom queue
+  * prepare for Queue function
+  * adden toast message; protect hidding of all columns
+
+-------------------------------------------------------------------
+Mon Oct 22 15:50:55 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.1.2:
+  * Update az.po
+  * changed id into appdata
+  * fixed restore window size
+  * fixed warnings for appdata
+  * Traduzione Italiana
+  * Add files via upload
+  * changed appdata
+
+-------------------------------------------------------------------
+Sat Sep  8 16:51:34 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.1.1:
+  * buttons can't grab focus
+  * improved grabing focus
+  * fix toggle playing in trackview
+  * Update README.md
+  * tracks view: scroll to current song
+  * new option: Remove Playlist if last Track was removed 
+    [default: true]
+  * don't reset timer if playing was paused
+  * Add tracks into Playlists directly from TrackView
+  * commit edit of radio station by ctrl+enter
+  * improved initial load
+  * toggle playing by space
+  * Update com.github.artemanufrij.playmymusic.appdata.xml.in
+
+-------------------------------------------------------------------
+Wed Aug  1 21:26:58 UTC 2018 - avvissu@yandex.by
+
+- Update to 1.1.0:
+  * fixed appdata
+  * prepare for new release
+- Switch to metainfo from appdata
+- Remove obsolete macros
+
+-------------------------------------------------------------------
+Fri Jun 29 19:12:20 UTC 2018 - avvissu@yandex.by
+
+- Update to 1.0.3:
+  * Close dialogs "Edit Album Properties" / "Edit Artist 
+    Properties" by single X click
+  * fixed sorting if all tracks are 0
+  * Create fr_FR.po
+  * fixed search in Tracks View
+  * Update ru.po
+  * use markdown utils
+  * [MB] fixed first behaviour
+  * changed size of artist cover
+  * remove 'excape'
+  * named scan thread
+  * show corrupt uri
+  * use escaped string
+  * Import files into library; Use FileUtils instead File instance
+  * updated de.po file
+
+-------------------------------------------------------------------
+Sun Jun 10 23:41:58 UTC 2018 - jengelh@inai.de
+
+- Fix broken sentence in description and update summary.
+
+-------------------------------------------------------------------
+Sat Apr  7 18:41:39 UTC 2018 - avvissu@yandex.by
+
+- Update to 1.0.1:
+  * simplify actions
+  * use newer gtk functions
+  * Change indicator to show CD artist
+  * changed meson
+  * added oars
+  * Update readme
+  * switch to meson
+  * updated po/pot content
+  * Fetching Artist Art; Using FileUtils instead File
+  * fixed '&' in tracksView
+  * Update com.github.artemanufrij.playmymusic.appdata.xml
+
+-------------------------------------------------------------------
+Sat Mar 17 15:59:38 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.6.7:
+  * open right view for audio CD
+  * drag line color
+  * Update pt_BR.po
+  * double click for start playing
+
+-------------------------------------------------------------------
+Fri Mar  9 14:57:06 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.6.5:
+  * Merge branch 'master' of github.com:artemanufrij/playmymusic
+  * default-decoration
+  * Merge pull request #83 from dar5hak/add-gitignore
+  * Add~ to .gitignore
+  * fix start
+  * desktop actins
+  * remove help
+  * improved .desktop actions behavior
+  * back to static quckmenu
+  * code style
+  * debian
+-------------------------------------------------------------------
+Fri Mar  2 22:01:11 UTC 2018 - avvissu@yandex.by
+
+- Initial package
+

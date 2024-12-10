@@ -2,9 +2,7 @@
 
 # tg_owt origin
 # get it from https://github.com/telegramdesktop/tdesktop/blob/dev/Telegram/build/docker/centos_env/Dockerfile around line 761
-# tg_owt_origin="4a60ce1ab9fdb962004c6a959f682ace3db50cbd"
-# use xuzhao9's fork to workaround the h264 dlopen issue
-tg_owt_origin="0342ae21ee2cc6c6052798bc8fa6b737d9a66418"
+tg_owt_origin="8198c4d8b91e22d68eb5c7327fd408e3b6abcc79"
 
 rm -rf tg_owt \
   && mkdir tg_owt \

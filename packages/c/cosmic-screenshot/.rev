@@ -24,4 +24,20 @@
 - enable leap (thanks to vyvir)</comment>
     <requestid>1192475</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cc8aefc8edbcad37ab37553ec2f5d49c</srcmd5>
+    <version>1.0.0~alpha4+0</version>
+    <time>1733775003</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.0~alpha4+0:
+  * update icon
+  * chore: update notification icon and text
+  * Update justfile
+  * chore: update icon
+  * support CARGO_TARGET_DIR
+  * feat: add notification for clipboard
+  * Fix .desktop file installation from justfile
+  * chore: add desktop file (forwarded request 1228842 from rrahl0)</comment>
+    <requestid>1228843</requestid>
+  </revision>
 </revisionlist>

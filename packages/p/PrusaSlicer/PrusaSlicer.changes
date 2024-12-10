@@ -1,4 +1,173 @@
 -------------------------------------------------------------------
+Sun Dec  8 16:40:40 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Changelog for 2.8.1
+  * When using the wipe tower with "No sparse layers" option
+    enabled, there would still be travels to the wipe tower
+    location even for the skipped layers. This is a regression
+    introduced in 2.8.1-rc1 (#13384).
+  * A warning about inconsistent color profiles in PNGs used as
+    Prusa Account avatar is now silently ignored (#12920).
+  ## Improvements with respect to 2.8.0
+  * Based on the feedback received after 2.8.0 release, the menu
+    bar was reinstated and the menu no longer hides under a button.
+    Thanks everyone for the feedback, it was very helpful and it
+    will be taken into consideration during possible UI-related
+    decisions in the future. #12943
+  * When logging-in with the PrusaAccount using third party
+    authorization (Google, Apple, Facebook), an external browser
+    window is opened so the user is not forced to enter their
+    credentials into windows created by PrusaSlicer.
+  * The built-in web engine no longer remembers the user after
+    logout.
+  * There are two new parameters: Filaments->Advanced->Abrasive
+    material and Printers->Extruder->High flow nozzle. Both flags
+    will be used to check whether a sliced G-code is compatible
+    with the given printer (abrasive material requires hardened
+    nozzle) and also to ensure that "Set as current" function in
+    PrusaSlicer-embedded Prusa Connect will select the suitable
+    profile for the given configuration.
+  * Note that this feature is supported since MINI/MK4/XL firmware
+    version 6.2.0-alpha1, and that the implementation in Prusa
+    Connect is not completely finished yet, meaning that the dialog
+    where printer is selected does not use this information - it
+    will later start working without the need to download a new
+    slicer version.
+  * Automatic orientation of bridges has been improved. Issues with
+    unanchored bridges caused by inconvenient choice of their angle
+    should now occur less frequently, although there is still a
+    large class of scenarios where the solution is suboptimal.
+  * The output of --query-printer-models command line option was
+    extended to contain bed shape and dimensions. Note that custom
+    bed shapes are currently not supported.
+  * The 'new version available' notification can now be used to
+    direct the user to our website, instead of just downloading the
+    executable. As of now, we release two different Linux
+    AppImages, so the user needs to be able to choose which one
+    they want to download.
+  * A new infill type called Zig-zag was created. It behaves the
+    same as Rectilinear, except that the pattern is aligned between
+    layers (Rectilinear is optimized for short travels, which leads
+    to inconsistencies). The new infill may thus take slightly
+    longer to print because of that, although the effect will be
+    negligible in most prints. It is possible that Rectilinear and
+    Zig-zag will be merged into a single infill type in one of the
+    upcoming releases. #12613
+  ## Bugs fixed with respect to 2.8.0
+  * General improvement of Prusa Connect / PrusaAccount session
+    stability. There were scenarios which led to uncommanded
+    logouts from PrusaAccount, some resulting in partially blank
+    Prusa Connect screen and requiring application restart to fix.
+    The problems occurred after being logged on for a long time,
+    after waking the PC up from sleep, or when internet connection
+    was unstable.
+  * Fixed missing G-code preview on setups using older GPUs
+    (#12908).
+  * Some settings were not applied when overridden per object
+    (#12916).
+  * Fixed adding SVGs as parts/modifiers. This was broken in 2.8.0
+    (#12915).
+  * Fixed UI glitch resulting in disappearing text in edit boxes
+    after editing (#12932).
+  * Fixed incorrect capture of keyboard input, which led to some
+    keys being ignored (#13043).
+  * Physical printer configured to use username/password
+    authentication no longer asks the user for the credentials when
+    opening the Physical Printer page (#12921, #12933).
+  * Notification informing about the user having logged in into
+    PrusaAccount occasionally showed even when the user was in fact
+    logged in for a long time already (#12963, #13166).
+  * Object shells incorrectly stayed visible after switching from
+    FFF to SLA and back.
+  * Fixed rotation slider in SVG tool when "Use surface" option was
+    active (it incorrectly reverted to original position when
+    released).
+  * Changing Dynamic overhang speeds settings did not trigger
+    G-code regeneration as is should have.
+  * Fixed loading of specific OBJ files (#12157).
+  * Fixed a crash when scaling to fit in specific cases (circular
+    bed and objects with parts).
+  * Fixed an infinite loop during infill generation stage occurring
+    in rare cases (#11426).
+  * 'Export Plate as STL/OBJ Including Supports' no longer exports
+    non-printable objects.
+  * Fixed zero velocity G-code commands when the pressure equalizer
+    was combined with spiral vase mode. This bugfix was ported from
+    OrcaSlicer. Thanks to @Noisyfox, @SoftFever and everyone
+    involved.
+  * Fixed incorrect Color Changes placement after reslicing in
+    certain cases (#13008).
+  * Reduced number of emitted M106 G-codes when dynamic fan speed
+    on overhangs is enabled. Too many commands were generated even
+    when the fan speed barely changed or did not change at all.
+    #11981, #11856
+  * Fixed missing update when adding Color Change with supports
+    enabled.
+  * Fixed crash when loading specific 3MFs containing Color Changes
+    (#13038).
+  * Adaptive layer height feature did not work when Z shrinkage
+    compensation was used.
+  * Fixed unexpected autoselection of SLA printer in Configuration
+    Wizard in certain cases (#13058).
+  * Fixed couple of usability issues with the vertical slider in
+    preview (hovered ticks selection and reaction to mouse wheel)
+    (#12944).
+  * Fixed unexpected deceleration on overhangs with dynamic
+    overhangs speed enabled.
+  * Line infill did not generate at all when maximum anchor length
+    was set to zero.
+  * When seam position was set to Random, the algorithm would
+    occasionally place the seam on a bridging perimeter.
+  * Fixed erratic placement of seams occassionally happening with
+    specific object geometry.
+  * Fixed a problem in STEP file loading, which resulted in errors
+    in the geometry of the loaded model (#12271, #12122).
+  * Using certain fonts for the text embossing led to project files
+    which PrusaSlicer was not able to open anymore (#13123).
+  * Custom G-codes are not allowed to contain certain keywords
+    which PrusaSlicer uses for internal purposes. The check that
+    these keywords are not present was not working in the previous
+    version. It is now fixed.
+  * Fixed artifacts sometimes appearing in the "Actual speed"
+    preview. The artifacts were a result of long-existing bug in
+    the G-code processor, the "Actual speed" preview just made them
+    visible. The bug could have led to incorrect time estimates for
+    specific G-codes.
+  * Fixed three distinct crashes in Configuration Wizard occurring
+    after a specific sequence of steps.
+  * Fixed a long-existing bug in the cooling logic, which resulted
+    in zero or possibly negative extrusion commands in very rare
+    cases.
+  * Downloading from Printables did not work when the download
+    folder contained non-ASCII characters.
+  * Fixed selection of print host type in Physical Printer dialog.
+    PrusaLink was missing in the list for several printers which
+    actually support it. This also caused several other glitches
+    (#13286).
+  * The Connect status dots in the Printer Settings dropdown did
+    not show for SLA printers.
+  * Custom printer profile created in Config Wizard could be saved
+    under a name clashing with a system profile name.
+  * "Rename preset" button was inadvertently not shown in the UI
+    when physical printer profile was selected.
+  * Number of toolchanges did not show in the "Sliced info" box
+    when wipe tower was disabled (#6832).
+- Replace PrusaSlicer-2.8.1-fix-build.patch with
+  PrusaSlicer-2.8.1-pr13609-fix-build.patch and remove unstable
+  (because not merged yet) URL from Source tag.
+  gh#prusa3d/PrusaSlicer#13609
+- Remove update-desktop-files
+
+-------------------------------------------------------------------
+Sun Dec  8 08:57:27 UTC 2024 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 2.8.1
+  https://github.com/prusa3d/PrusaSlicer/releases/tag/version_2.8.1
+- Removed PrusaSlicer-2.8.0-slic3r-includes.patch
+- Added PrusaSlicer-2.8.1-fix-build.patch
+- Updated up-occt-version.patch
+
+-------------------------------------------------------------------
 Fri Sep 13 19:22:26 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Remove quadmath workaround for gcc14 with boost error:

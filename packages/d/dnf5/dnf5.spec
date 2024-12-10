@@ -47,7 +47,8 @@
 %bcond_without python3
 %bcond_without ruby
 
-%bcond_without tests
+# Tests are currently broken: https://github.com/rpm-software-management/dnf5/issues/1893
+%bcond_with    tests
 %bcond_with    sanitizers
 %bcond_with    performance_tests
 %bcond_with    dnf5daemon_tests
@@ -55,8 +56,8 @@
 # ========== versions of dependencies ==========
 
 %global libmodulemd_version 2.5.0
-%global librepo_version 1.15.0
-%global libsolv_version 0.7.25
+%global librepo_version 1.18.0
+%global libsolv_version 0.7.30
 %global sqlite_version 3.35.0
 %global swig_version 4
 %global zchunk_version 0.9.11
@@ -75,7 +76,7 @@
 %global devcliname %{libcliprefix}-devel
 
 Name:           dnf5
-Version:        5.2.3.0
+Version:        5.2.8.1
 Release:        0
 Summary:        Next generation RPM package manager
 License:        GPL-2.0-or-later
@@ -85,6 +86,8 @@ Source0:        %{url}/archive/%{version}/dnf5-%{version}.tar.gz
 # Backports from upstream
 
 # Proposed upstream
+## Fix with sdbus-cpp v2
+Patch0101:      https://github.com/rpm-software-management/dnf5/pull/1888.patch#/dnf5-PR1888.patch
 
 # openSUSE specific fixes
 ## Fix libdnf build with static libsolvext
@@ -201,6 +204,8 @@ BuildRequires:  python3-breathe
 BuildRequires:  python3-Sphinx >= 4.1.2
 #BuildRequires:  python3dist(sphinx-rtd-theme)
 BuildRequires:  python3-sphinx_rtd_theme
+# requests requires ca-certs to work properly
+BuildRequires:  ca-certificates-mozilla
 %endif
 
 %if %{with sanitizers}
@@ -246,6 +251,7 @@ BuildRequires:  perl(strict)
 BuildRequires:  perl(Test::More)
 BuildRequires:  perl(Test::Exception)
 BuildRequires:  perl(warnings)
+BuildRequires:  perl(FindBin)
 %endif
 %endif
 
@@ -268,6 +274,16 @@ DNF5 is a command-line package manager that automates the process of installing,
 upgrading, configuring, and removing computer programs in a consistent manner.
 It supports RPM packages, modulemd modules, and comps groups & environments.
 
+%post
+%systemd_post dnf5-makecache.timer
+
+%preun
+%systemd_preun dnf5-makecache.timer
+
+%postun
+%systemd_postun_with_restart dnf5-makecache.timer
+
+
 %files -f dnf5.lang
 %{_bindir}/dnf5
 %if %{with as_microdnf}
@@ -280,6 +296,9 @@ It supports RPM packages, modulemd modules, and comps groups & environments.
 %if %{with as_yum}
 %{_bindir}/yum
 %endif
+
+%{_unitdir}/dnf5-makecache.service
+%{_unitdir}/dnf5-makecache.timer
 
 %dir %{_sysconfdir}/dnf
 %dir %{_sysconfdir}/dnf/dnf5-aliases.d
@@ -313,8 +332,7 @@ It supports RPM packages, modulemd modules, and comps groups & environments.
 %{_mandir}/man8/dnf5-download.8.*
 %{_mandir}/man8/dnf5-environment.8.*
 %{_mandir}/man8/dnf5-group.8.*
-# TODO(jkolarik): history is not ready yet
-# %%{_mandir}/man8/dnf5-history.8.*
+%{_mandir}/man8/dnf5-history.8.*
 %{_mandir}/man8/dnf5-info.8.*
 %{_mandir}/man8/dnf5-install.8.*
 %{_mandir}/man8/dnf5-leaves.8.*
@@ -326,6 +344,7 @@ It supports RPM packages, modulemd modules, and comps groups & environments.
 %{_mandir}/man8/dnf5-provides.8.*
 %{_mandir}/man8/dnf5-reinstall.8.*
 %{_mandir}/man8/dnf5-remove.8.*
+%{_mandir}/man8/dnf5-replay.8.*
 %{_mandir}/man8/dnf5-repo.8.*
 %{_mandir}/man8/dnf5-repoquery.8.*
 %{_mandir}/man8/dnf5-search.8.*
@@ -335,14 +354,14 @@ It supports RPM packages, modulemd modules, and comps groups & environments.
 %{_mandir}/man8/dnf5-versionlock.8.*
 %{_mandir}/man7/dnf5-aliases.7.*
 %{_mandir}/man7/dnf5-caching.7.*
+%{_mandir}/man7/dnf5-changes-from-dnf4.7.*
 %{_mandir}/man7/dnf5-comps.7.*
-# TODO(jkolarik): filtering is not ready yet
-# %%{_mandir}/man7/dnf5-filtering.7.*
+%{_mandir}/man7/dnf5-filtering.7.*
 %{_mandir}/man7/dnf5-forcearch.7.*
 %{_mandir}/man7/dnf5-installroot.7.*
-# TODO(jkolarik): modularity is not ready yet
-# %%{_mandir}/man7/dnf5-modularity.7.*
+%{_mandir}/man7/dnf5-modularity.7.*
 %{_mandir}/man7/dnf5-specs.7.*
+%{_mandir}/man7/dnf5-system-state.7.*
 %{_mandir}/man5/dnf5.conf.5.*
 %{_mandir}/man5/dnf5.conf-todo.5.*
 %{_mandir}/man5/dnf5.conf-deprecated.5.*
@@ -370,7 +389,7 @@ Package management library.
 %dir %{_libdir}/libdnf5
 %{_libdir}/libdnf5.so.%{libsoversion}
 %license lgpl-2.1.txt
-%{_var}/cache/libdnf5/
+%ghost %attr(0755, root, root) %dir %{_var}/cache/libdnf5
 %dir %{_datadir}/dnf5/libdnf.conf.d
 %dir %{_sysconfdir}/dnf/libdnf5.conf.d
 %dir %{_datadir}/dnf5/repos.override.d
@@ -693,24 +712,29 @@ Provides:       dnf5-command(config-manager)
 Provides:       dnf5-command(copr)
 Provides:       dnf5-command(needs-restarting)
 Provides:       dnf5-command(repoclosure)
+Provides:       dnf5-command(reposync)
 
 %description -n dnf5-plugins
 Core DNF5 plugins that enhance dnf5 with builddep, changelog,
-config-manager, copr, and repoclosure commands.
+config-manager, copr, repoclosure, and reposync commands.
 
-%files -n dnf5-plugins -f dnf5-plugin-builddep.lang -f dnf5-plugin-changelog.lang -f dnf5-plugin-config-manager.lang -f dnf5-plugin-copr.lang -f dnf5-plugin-needs-restarting.lang -f dnf5-plugin-repoclosure.lang
+%files -n dnf5-plugins -f dnf5-plugin-builddep.lang -f dnf5-plugin-changelog.lang -f dnf5-plugin-config-manager.lang -f dnf5-plugin-copr.lang -f dnf5-plugin-needs-restarting.lang -f dnf5-plugin-repoclosure.lang -f dnf5-plugin-reposync.lang
 %{_libdir}/dnf5/plugins/builddep_cmd_plugin.so
 %{_libdir}/dnf5/plugins/changelog_cmd_plugin.so
 %{_libdir}/dnf5/plugins/config-manager_cmd_plugin.so
 %{_libdir}/dnf5/plugins/copr_cmd_plugin.so
 %{_libdir}/dnf5/plugins/needs_restarting_cmd_plugin.so
 %{_libdir}/dnf5/plugins/repoclosure_cmd_plugin.so
+%{_libdir}/dnf5/plugins/reposync_cmd_plugin.so
 %{_mandir}/man8/dnf5-builddep.8.*
 %{_mandir}/man8/dnf5-changelog.8.*
 %{_mandir}/man8/dnf5-config-manager.8.*
 %{_mandir}/man8/dnf5-copr.8.*
 %{_mandir}/man8/dnf5-needs-restarting.8.*
 %{_mandir}/man8/dnf5-repoclosure.8.*
+%{_mandir}/man8/dnf5-reposync.8.*
+%{_datadir}/dnf5/aliases.d/compatibility-plugins.conf
+%{_datadir}/dnf5/aliases.d/compatibility-reposync.conf
 
 # ========== dnf5-automatic plugin ==========
 
@@ -735,6 +759,8 @@ automatically and regularly from systemd timers, cron jobs or similar.
 %ghost %{_sysconfdir}/motd.d/dnf5-automatic
 %{_libdir}/dnf5/plugins/automatic_cmd_plugin.so
 %{_datadir}/dnf5/dnf5-plugins/automatic.conf
+%ghost %config(noreplace) %{_sysconfdir}/dnf/automatic.conf
+%ghost %config(noreplace) %{_sysconfdir}/dnf/dnf5-plugins/automatic.conf
 %{_mandir}/man8/dnf5-automatic.8.*
 %{_unitdir}/dnf5-automatic.service
 %{_unitdir}/dnf5-automatic.timer
@@ -757,6 +783,7 @@ automatically and regularly from systemd timers, cron jobs or similar.
 %cmake \
     -DPERL_INSTALLDIRS=vendor \
     \
+    -DENABLE_SOLV_FOCUSNEW=ON \
     -DWITH_SYSTEMD=ON \
     -DWITH_DNF5DAEMON_CLIENT=%{?with_dnf5daemon_client:ON}%{!?with_dnf5daemon_client:OFF} \
     -DWITH_DNF5DAEMON_SERVER=%{?with_dnf5daemon_server:ON}%{!?with_dnf5daemon_server:OFF} \
@@ -823,6 +850,7 @@ popd
 %find_lang dnf5-plugin-copr
 %find_lang dnf5-plugin-needs-restarting
 %find_lang dnf5-plugin-repoclosure
+%find_lang dnf5-plugin-reposync
 %find_lang dnf5daemon-client
 %find_lang dnf5daemon-server
 %find_lang libdnf5

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Dec  7 10:16:02 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Fix build without %check (boo#1227364)
+
+-------------------------------------------------------------------
 Wed Dec  4 10:34:20 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to 0.10.0:

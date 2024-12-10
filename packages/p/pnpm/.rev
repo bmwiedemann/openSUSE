@@ -231,4 +231,20 @@
 </comment>
     <requestid>1227543</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>eb23f5b60186713422213080a1bd66eb</srcmd5>
+    <version>9.15.0</version>
+    <time>1733775064</time>
+    <user>anag+factory</user>
+    <comment>- update to version 9.15.0:
+  * Metadata directory version bumped to force fresh cache after
+    we shipped a fix to the metadata write function. This change
+    is backward compatible as install doesn't require a metadata cache
+  * pnpm update --global should not crash if there are no any
+    global packages installed #7898
+  * Fix an exception when running pnpm update --interactive if
+    catalogs are used.
+</comment>
+    <requestid>1229063</requestid>
+  </revision>
 </revisionlist>

@@ -26,4 +26,13 @@
     <comment></comment>
     <requestid>1207343</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>289c8f7f795505a1b3fe10e9af591ab0</srcmd5>
+    <version>0.1.0+git20240923.45bc56d</version>
+    <time>1733775052</time>
+    <user>anag+factory</user>
+    <comment>- require rust &gt;= 1.80
+</comment>
+    <requestid>1228977</requestid>
+  </revision>
 </revisionlist>

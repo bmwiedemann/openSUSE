@@ -42,4 +42,13 @@
 - update upstream url (forwarded request 1206730 from rrahl0)</comment>
     <requestid>1206731</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>eec429cd2e123d681b5c45e75d2e996d</srcmd5>
+    <version>0.1.0+git20241009.2fd615c</version>
+    <time>1733775055</time>
+    <user>anag+factory</user>
+    <comment>- Update URL to https://github.com/cosmic-utils/tasks
+</comment>
+    <requestid>1228979</requestid>
+  </revision>
 </revisionlist>

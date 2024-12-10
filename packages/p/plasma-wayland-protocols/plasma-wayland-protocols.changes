@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Dec  7 13:06:01 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 1.15.0:
+  * Add a request to create a virtual output stream with description
+  * Add alpine CI
+  * Add modifier information to keystate
+  * gitignore: use same as KWin
+  * Add a destructor to appmenu manager
+  * Add protocol tests
+  * Add CI for static builds on Linux
+
+-------------------------------------------------------------------
 Thu Sep 12 17:46:53 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 1.14.0:

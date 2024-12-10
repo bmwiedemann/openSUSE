@@ -18,7 +18,7 @@
 
 %define         appname io.github.cosmic_utils.Examine
 Name:           examine
-Version:        1.0.0
+Version:        1.0.0+13
 Release:        0
 Summary:        System Information viewer
 License:        GPL-3.0-only
@@ -31,7 +31,6 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  just
 BuildRequires:  pkgconfig
 BuildRequires:  rust >= 1.80
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(xkbcommon)
 
 %description
@@ -45,7 +44,6 @@ just build-release
 
 %install
 just rootdir=%{buildroot} prefix=%{_prefix} install
-%suse_update_desktop_file %{appname}
 
 %files
 %license LICENSE

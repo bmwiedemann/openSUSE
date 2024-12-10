@@ -54,4 +54,22 @@
 - require rust &gt;= 1.80</comment>
     <requestid>1223149</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>77e93c5e6718a26304e8d33b44ecb7f5</srcmd5>
+    <version>1.0.0~alpha4+0</version>
+    <time>1733775036</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.0~alpha4+0:
+  * fix: wrap windows in a scrollable after 8 toplevels, and add max sizes
+  * fix: save screenshot to clipboard
+  * Fix auto-sizing of access portal dialog
+  * acccess: Fixes for handling of choices
+  * access: Use `dialog` widget
+  * Update access.rs
+  * Derive `Debug` for `Event`
+  * Add a `on_cancel` callback method to `Request::run`
+  * Add a `Request::run` helper for running cancellable task
+  * screencast: Pass buffer transform to pipewire metadata</comment>
+    <requestid>1228864</requestid>
+  </revision>
 </revisionlist>

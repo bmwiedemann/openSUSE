@@ -1318,4 +1318,12 @@
   * Emoji from Unicode 15.1. (forwarded request 1208908 from Dmitry_R)</comment>
     <requestid>1218755</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>9fd56bccbc1a9766d8558c412badf96c</srcmd5>
+    <version>5.9.0</version>
+    <time>1733775131</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1229175</requestid>
+  </revision>
 </revisionlist>

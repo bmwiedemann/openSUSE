@@ -39,7 +39,7 @@ Name:           hawk2
 Summary:        HA Web Konsole
 License:        GPL-2.0-only
 Group:          %{pkg_group}
-Version:        2.6.5+git.1732776108.1d325f4e
+Version:        2.6.5+git.1733657357.36d3ca16
 Release:        0
 URL:            http://www.clusterlabs.org/wiki/Hawk
 Source:         %{name}-%{version}.tar.bz2
@@ -72,14 +72,14 @@ BuildRequires:  distribution-release
 BuildRequires:  timezone
 BuildRequires:  rubygem(%{rb_build_abi}:bundler)
 Requires:       rubygem(%{rb_build_abi}:bundler)
-BuildRequires:  rubygem(%{rb_build_abi}:rails:7)
-Requires:       rubygem(%{rb_build_abi}:rails:7)
+BuildRequires:  rubygem(%{rb_build_abi}:rails) >= 7
+Requires:       rubygem(%{rb_build_abi}:rails) >= 7
 BuildRequires:  rubygem(%{rb_build_abi}:websocket-driver:0.7.6)
 Requires:       rubygem(%{rb_build_abi}:websocket-driver:0.7.6)
 BuildRequires:  rubygem(%{rb_build_abi}:puma) >= 5
 Requires:       rubygem(%{rb_build_abi}:puma) >= 5
-BuildRequires:  rubygem(%{rb_build_abi}:sass-rails:5)
-Requires:       rubygem(%{rb_build_abi}:sass-rails:5)
+BuildRequires:  rubygem(%{rb_build_abi}:sass-rails) >= 6
+Requires:       rubygem(%{rb_build_abi}:sass-rails) >= 6
 BuildRequires:  rubygem(%{rb_build_abi}:virtus) >= 1.0.1
 Requires:       rubygem(%{rb_build_abi}:virtus) >= 1.0.1
 BuildRequires:  rubygem(%{rb_build_abi}:js-routes) >= 2.0.0
@@ -90,10 +90,12 @@ BuildRequires:  rubygem(%{rb_build_abi}:gettext_i18n_rails) >= 1.8
 Requires:       rubygem(%{rb_build_abi}:gettext_i18n_rails) >= 1.8
 BuildRequires:  rubygem(%{rb_build_abi}:gettext_i18n_rails_js) >= 1.3
 Requires:       rubygem(%{rb_build_abi}:gettext_i18n_rails_js) >= 1.3
-BuildRequires:  rubygem(%{rb_build_abi}:sprockets:3.7)
-Requires:       rubygem(%{rb_build_abi}:sprockets:3.7)
+BuildRequires:  rubygem(%{rb_build_abi}:sprockets:4.2)
+Requires:       rubygem(%{rb_build_abi}:sprockets:4.2)
 BuildRequires:  rubygem(%{rb_build_abi}:kramdown) >= 1.14
 Requires:       rubygem(%{rb_build_abi}:kramdown) >= 1.14
+BuildRequires:  rubygem(%{rb_build_abi}:mini_mime) >= 1.1.5
+Requires:       rubygem(%{rb_build_abi}:mini_mime) >= 1.1.5
 
 # TODO: remove uglifier completely
 BuildRequires:  rubygem(%{rb_build_abi}:uglifier) >= 1.14

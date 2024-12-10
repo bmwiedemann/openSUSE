@@ -1,4 +1,4 @@
-From 605a6f59132937ee53a11de07544abb496228c95 Mon Sep 17 00:00:00 2001
+From 80507f3683d33d8ae62bf6c9d9b293a9916691a7 Mon Sep 17 00:00:00 2001
 From: Neal Gompa <neal@gompa.dev>
 Date: Tue, 12 Sep 2023 18:25:34 -0400
 Subject: [PATCH] cmake: Drop Werror from compile options
@@ -13,18 +13,18 @@ References:
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 2267e3d6..5bc551a7 100644
+index b031aea8..bad35c26 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -81,7 +81,7 @@ set(CMAKE_VISIBILITY_INLINES_HIDDEN ON)
+@@ -83,7 +83,7 @@ set(CMAKE_VISIBILITY_INLINES_HIDDEN ON)
  add_compile_options("-fmacro-prefix-map=${PROJECT_SOURCE_DIR}/=")
  
  # warnings
 -add_compile_options(-Wall -Wextra -Werror)
 +add_compile_options(-Wall -Wextra)
- add_compile_options(-Wcast-align -Wformat-nonliteral -Wmissing-format-attribute -Wredundant-decls -Wsign-compare -Wtype-limits -Wuninitialized -Wwrite-strings)
+ add_compile_options(-Wcast-align -Wformat-nonliteral -Wmissing-format-attribute -Wredundant-decls -Wsign-compare -Wsign-conversion -Wtype-limits -Wuninitialized -Wwrite-strings)
  add_compile_options(-Werror=unused-result -Wodr)
  
 -- 
-2.45.1
+2.47.0
 

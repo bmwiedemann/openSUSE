@@ -23,7 +23,7 @@
 %bcond_with bootstrap
 %endif
 %global base_name maven-javadoc-plugin
-Version:        3.11.1
+Version:        3.11.2
 Release:        0
 Summary:        Maven plugin for creating javadocs
 License:        Apache-2.0
@@ -65,6 +65,7 @@ BuildRequires:  plexus-xml
 BuildRequires:  qdox
 BuildRequires:  sisu-inject
 BuildRequires:  sisu-plexus
+BuildRequires:  slf4j
 BuildRequires:  unzip
 BuildRequires:  xmvn-install
 BuildRequires:  xmvn-resolve
@@ -155,7 +156,8 @@ build-jar-repository -s lib \
     plexus-languages/plexus-java \
     plexus/utils \
     plexus/xml \
-    qdox
+    qdox \
+    slf4j/api
 ant -Dtest.skip=true jar
 %else
 xmvn --batch-mode --offline \

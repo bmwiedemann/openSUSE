@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Dec 06 03:06:13 UTC 2024 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha4+0:
+  * update icon
+  * chore: update notification icon and text
+  * Update justfile
+  * chore: update icon
+  * support CARGO_TARGET_DIR
+  * feat: add notification for clipboard
+  * Fix .desktop file installation from justfile
+  * chore: add desktop file
+
+-------------------------------------------------------------------
+Fri Nov  1 01:30:57 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.0~alpha3:
+  * same as alpha2, and alpha2 is same as alpha1
+
+-------------------------------------------------------------------
 Thu Aug  8 01:00:25 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - standardize packaging with also fixes for miscellaneous hardcoding

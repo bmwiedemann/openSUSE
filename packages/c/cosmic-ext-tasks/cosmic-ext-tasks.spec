@@ -22,7 +22,7 @@ Version:        0.1.0+git20241009.2fd615c
 Release:        0
 Summary:        Task Management app for COSMIC DE
 License:        GPL-3.0-only
-URL:            https://github.com/edfloreshz/tasks
+URL:            https://github.com/cosmic-utils/tasks
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Dec  7 00:20:26 UTC 2024 - Roman Gromov <phoenix91140@gmail.com>
+
+- Update to version 1.7.1
+  + Bug fixes
+    - GPU, encoder and decoder usage stats for NVIDIA GPUs were 
+      displayed as 0% most of the time
+  + Improvements
+    - Improved detection for VPN tunnels
+- Removed cargo_audit from _service due that contains vendor now
+
+-------------------------------------------------------------------
 Mon Dec  2 23:25:15 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 1.7.0

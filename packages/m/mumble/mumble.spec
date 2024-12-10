@@ -21,7 +21,7 @@
 %bcond_without tests
 %bcond_without server
 Name:           mumble
-Version:        1.5.634
+Version:        1.5.735
 Release:        0
 Summary:        Voice Communication Client for Gamers
 # Most files are BSD-3-Clause

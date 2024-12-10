@@ -81,4 +81,17 @@
     <comment></comment>
     <requestid>1179012</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>682103efcf0aac3143657da8491c8bb6</srcmd5>
+    <version>2.10.2</version>
+    <time>1733775058</time>
+    <user>anag+factory</user>
+    <comment>- Added ADIOS2 v2.10.2:
+  * Support for ROCm 6.X
+  * Dill update
+  * Multiple fixes and performance improvements.
+  * Release notes: https://github.com/ornladios/ADIOS2/releases/tag/v2.10.2
+</comment>
+    <requestid>1229067</requestid>
+  </revision>
 </revisionlist>

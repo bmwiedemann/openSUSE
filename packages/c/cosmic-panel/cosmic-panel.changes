@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Dec 06 00:32:51 UTC 2024 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha4+0:
+  * fix: rounded rectangle crop position
+  * refactor: add namespace
+  * fix: namespace
+  * fix: typo
+  * refactor: intellihide always enabled if autohiding
+  * wip: overlap notify
+  * feat: intellihide
+  * refactor: avoid changing exclusive zone when hiding
+  * fix: set focus to new popup
+  * refactor: throttle frame events and increase timeouts in general
+
+-------------------------------------------------------------------
 Thu Oct 31 22:24:16 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.0.0~alpha3:

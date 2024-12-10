@@ -7,4 +7,22 @@
     <comment></comment>
     <requestid>1223140</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a13b5ea296c264afca375d91adea68fd</srcmd5>
+    <version>1.0.0~alpha4+0</version>
+    <time>1733775022</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.0~alpha4+0:
+  * fix bug where screen off was triggered while in inhibit state
+  * Set DPMS and remove fade surfaces in one place
+  * Lock session on screen blanking
+  * Load `system_actions` config, and refactor commmand spawning code
+  * Use `zbus::connection::Builder`
+  * Update default settings
+  * Also expose screensaver DBus protocol at path `/ScreenSaver`
+  * debian: Fix description
+  * Destroy idle notifications when inhibited
+  * Fixes for `freedesktop_screensaver`</comment>
+    <requestid>1228856</requestid>
+  </revision>
 </revisionlist>

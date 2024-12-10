@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Dec 06 02:56:10 UTC 2024 - rrahl0@opensuse.org
+
+- Update to version 0.1.0+git20241022.9f62f54:
+  * Update libcosmic/iced and implement images
+  * Parse pdf images and update lopdf
+  * Use metrically compatible fonts when font name not specified
+  * Update dependencies
+  * Add license (GPLv3)
+  * Use fork of lopdf for identity-h encoding
+  * Update dependencies
+  * Move text lines using transforms
+
+-------------------------------------------------------------------
 Thu Aug  8 01:00:21 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - standardize packaging with also fixes for miscellaneous hardcoding

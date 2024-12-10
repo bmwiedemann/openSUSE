@@ -29,6 +29,7 @@ BuildRequires:  cargo-packaging
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  just
 BuildRequires:  pkgconfig
+BuildRequires:  rust >= 1.80
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(xkbcommon)

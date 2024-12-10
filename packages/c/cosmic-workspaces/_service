@@ -3,11 +3,12 @@
   <service name="tar_scm" mode="manual">
     <param name="url">https://github.com/pop-os/cosmic-workspaces-epoch.git</param>
     <param name="scm">git</param>
-    <param name="revision">refs/tags/epoch-1.0.0-alpha.3</param>
-    <param name="versionrewrite-pattern">epoch-(.*)</param>
-    <param name="versionformat">1.0.0~alpha3</param>
+    <param name="revision">master</param>
+    <param name="versionrewrite-pattern">epoch-(.*)\+0</param>
+    <param name="versionformat">1.0.0~alpha4+@TAG_OFFSET@</param>
     <param name="package-meta">yes</param>
     <param name="filename">cosmic-workspaces</param>
+    <param name="changesgenerate">enable</param>
   </service>
   <service name="recompress" mode="manual">
     <param name="file">*.tar</param>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Dec  8 21:51:23 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.12.0:
+  + Bugs fixes
+    - Fix incorrect start time, enforce deterministic ports order
+  + New Features
+    - Highlight for cmd, path and ports
+    - args fuzzy highlight
+- Removed cargo_audit from _service due that contains vendor now
+
+-------------------------------------------------------------------
 Sat Nov  9 13:47:41 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.10.0

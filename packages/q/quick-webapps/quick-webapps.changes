@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Dec 06 04:44:40 UTC 2024 - rrahl0@opensuse.org
+
+- Update to version 0.5.4a+2:
+  * update screenshots in metainfo
+  * use tag for screenshots
+  * update screenshots
+  * update README
+  * feat: add more snap browsers
+  * fix: remove nav-bar css rule to fix urlbar visibility
+  * wip: add snap browsers support
+  * update dependencies
+
+-------------------------------------------------------------------
+Thu Oct 17 00:30:08 UTC 2024 - John Vandenberg <jayvdb@gmail.com>
+
+- Update URL to https://github.com/cosmic-utils/web-apps
+
+-------------------------------------------------------------------
 Fri Oct 11 20:03:25 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.5.1+git20241009.953a096:

@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b5b41b42d5f246f8387ddb6b1a5711b4</srcmd5>
+    <version>2.0.1</version>
+    <time>1733775123</time>
+    <user>anag+factory</user>
+    <comment>Replacement of `python-nntplib` (see sr#1229168).</comment>
+    <requestid>1229171</requestid>
+  </revision>
+</revisionlist>

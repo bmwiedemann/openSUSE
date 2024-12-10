@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Dec  8 11:05:37 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.12.0
+  * Completed port away from Qt5, 6.6 now required version due
+    to delayed ICU support in Qt
+  * Fixed UTF-8-BOM output encoding issues mustly seen on windows.
+  * horizontal scroll correctly comptuted for diff windows
+  * False errors on first launch with files selected should be fixed.
+    (kde#497102, boo#1234260)
+
+-------------------------------------------------------------------
 Wed Nov 20 12:44:08 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Stop using the %suse_update_desktop_file macro

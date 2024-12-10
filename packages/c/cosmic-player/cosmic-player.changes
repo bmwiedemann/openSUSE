@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Dec 06 02:47:38 UTC 2024 - rrahl0@opensuse.org
+
+- Update to version 0.1.0+git20241205.b26005d:
+  * Move language selection to bottom bar, implement volume
+  * Add file menu, improve naming of subtitles
+  * Create cosmic_player.ftl
+  * Update iced video player
+  * Use prev-master branch of libcosmic
+  * i18n (pt-BR) translation update
+  * Improve argument handling
+  * Fix appstream data
+  * Update dependencies
+- remove patch ffmpeg-next.patch as it's not required anymore
+
+-------------------------------------------------------------------
 Tue Oct  8 15:35:23 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.1.0+git20241008.d614269:

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Dec  6 00:00:00 UTC 2024 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com> - 2.10.2
+
+- Added ADIOS2 v2.10.2:
+  * Support for ROCm 6.X
+  * Dill update
+  * Multiple fixes and performance improvements.
+  * Release notes: https://github.com/ornladios/ADIOS2/releases/tag/v2.10.2
+
+-------------------------------------------------------------------
 Wed May 29 00:00:00 UTC 2024 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com> - 2.10.1
 
 - Added ADIOS2 v2.10.1:

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec  8 19:21:39 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update to 0.15.7
+ * https://github.com/sile-typesetter/sile/releases/tag/v0.15.7
+- Added luarocks as a BuildRequires
+
+-------------------------------------------------------------------
 Thu Nov 14 00:59:36 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - Update to 0.15.6

@@ -49,4 +49,22 @@
   * feat: add JPEG XL support via jxl-oxide</comment>
     <requestid>1223136</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d7815f62f7443b7b831561891fe2e8f1</srcmd5>
+    <version>1.0.0~alpha4+0</version>
+    <time>1733775015</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.0~alpha4+0:
+  * feat: add JPEG XL support via jxl-oxide
+  * i18n(it): add translation
+  * fix: use scaled width and height for buffer damage
+  * fix: clear current images and mark surfaces for redraw after slideshow cycle
+  * fix(justfile): fix vendoring
+  * fix: use appropriate libcosmic patch URL for cargo
+  * Added German Translation
+  * Add Turkish translation
+  * Create cosmic_bg.ftl PL Translation
+  * i18n(hu): Add Hungarian translation</comment>
+    <requestid>1228851</requestid>
+  </revision>
 </revisionlist>

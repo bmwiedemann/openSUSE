@@ -18,20 +18,19 @@
 
 %define         appname com.system76.CosmicPlayer
 Name:           cosmic-player
-Version:        0.1.0+git20241008.d614269
+Version:        0.1.0+git20241205.b26005d
 Release:        0
 Summary:        COSMIC media player
 License:        GPL-3.0-only
 URL:            https://github.com/pop-os/cosmic-player
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-Patch0:         ffmpeg-next.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  clang-devel
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  just
 BuildRequires:  pkgconfig
 BuildRequires:  rust >= 1.80
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gstreamer-1.0)
@@ -43,14 +42,13 @@ BuildRequires:  pkgconfig(xkbcommon)
 %{summary}.
 
 %prep
-%autosetup -a1 -p1
+%autosetup -a1
 
 %build
 just build-release
 
 %install
 just rootdir=%{buildroot} prefix=%{_prefix} install
-%suse_update_desktop_file %{appname}
 
 %check
 %{cargo_test}
@@ -60,5 +58,7 @@ just rootdir=%{buildroot} prefix=%{_prefix} install
 %doc README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/%{appname}.desktop
+%{_datadir}/icons/hicolor/*/apps/%{appname}.svg
+%{_datadir}/metainfo/%{appname}.metainfo.xml
 
 %changelog

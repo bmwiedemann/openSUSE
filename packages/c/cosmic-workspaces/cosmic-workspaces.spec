@@ -18,7 +18,7 @@
 
 %define         appname com.system76.CosmicWorkspaces
 Name:           cosmic-workspaces
-Version:        1.0.0~alpha3
+Version:        1.0.0~alpha4+0
 Release:        0
 Summary:        COSMIC workspaces
 License:        GPL-3.0-only

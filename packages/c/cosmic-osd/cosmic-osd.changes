@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Dec 06 00:26:30 UTC 2024 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha4+0:
+  * update iced
+  * Adjusted to 52px-tall valued OSD container, 4px progress bar
+  * Updated osd outline dimensions to be according to spec
+  * Update osd view layout
+  * Add zh_TW translation
+  * support CARGO_TARGET_DIR
+  * Show volume as muted if mute is active
+  * Update `cosmic-settings-subscription` for integer keyboard brightness
+  * Divide display brighness by maximum
+
+-------------------------------------------------------------------
 Thu Oct 31 22:23:07 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.0.0~alpha3:

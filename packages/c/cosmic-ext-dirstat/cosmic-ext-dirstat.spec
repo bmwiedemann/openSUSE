@@ -17,7 +17,7 @@
 
 
 Name:           cosmic-ext-dirstat
-Version:        0.1.0+git20240717.37fc665
+Version:        0.1.0+git20241120.bab06c8
 Release:        0
 Summary:        KDirStat-esque disk usage analyzer using libcosmic
 License:        GPL-3.0-only
@@ -25,8 +25,8 @@ URL:            https://github.com/Koranir/cosmic-dirstat
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
-BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(xkbcommon)
 
 %description
 A WIP KDirStat-esque GUI to analyze disk usage with.

@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Sat Dec 07 15:26:48 UTC 2024 - andrea.manzini@suse.com
+
+- Update to version 4.8.0:
+  * bump deps
+  * stomp: guard against race in test
+  * openshift: add backstop cron manifest
+  * openshift: handle multiple Dockerfiles in build script
+  * quaybackstop: add backstop GC command
+  * introspection: lints
+  * contrib: correct position of startupProbe spec
+  * contrib/openshfit: only start buildkitd container if needed
+  * contrib/openshift: login shenanigans
+  * contrib/openshift: avoid patching when using upstream images
+  * clair: add platform-specific signals
+  * introspection: allow trace shutdown hook full timeout
+  * clair: break cancellation chain for request contexts
+  * clair: redo shutdown structure
+  * docs: add building and Makefile usage sections
+  * chore: run the go formatting over the repo
+  * contrib: update `build_and_deploy.sh` script
+  * openshift: have the pr_check script "dry run" a build
+  * openshift: add "dry run" flag
+  * auto: improve log messages
+  * chore: fix some comments
+  * chore: use the merge-multiple directive when downloading binaries
+  * chore: Add merge step when creating release binaries
+  * contrib: account for different container engine clients
+  * contrib: update build script to use podman
+  * httptransport: fix test flake
+  * contrib: remove rms that were needed for previous fetcher
+  * chore: update production manifest with new tmp dir
+  * docs: add mention of disk space path and usage
+  * initialize: use defaults for NewRemoteFetcher
+  * httptransport: GET vuln report returns 404 when indexing in-progress
+  * documentation: correct stale configuration options
+  * httptransport: change api error handling to panic internally
+  * httptransport: add metrics test
+  * httputil: add test for non-OK statuses
+  * httptransport: add unauthenticated "/robots.txt" endpoint
+  * httptransport: add "robots.txt" endpoint
+  * cmd: add exported source date
+  * config: update minimum TLS version for server
+  * docs: add OTLP configuration to prose documentation
+  * chore: Add Go 1.22 support via moved godeltaprof dependancy bump
+  * contrib: update dashboard regex
+  * cmd: annotate fake key for gitleaks
+  * chore: clean up sample config
+  * openshift: make build_and_deploy script shellcheck-clean
+  * config: Update comment to describe currently supported updaters
+  * admin: add a check for compatible migration version
+  * admin: add command to update go packages with norm_version
+  * all: fix incorrect API paths
+  * all: fix some typos
+  * amqp: migrate to maintained package
+  * chore: migrate go-jose to maintained version
+  * config: add Sentry config
+  * contrib: simplify openshift/pr_check.sh
+  * config: add OTLP configuration types
+  * httptransport: add client-close detection
+  * httptransport: use compression middleware
+  * httptransport: lints
+  * httptransport: rework constructor
+  * httptransport: update DiscoveryHandler to new style
+  * httptransport: re-instrument handlers with new primitives
+  * httptransport: exit goroutine in error helper
+  * webhook: move+update debug server
+  * httputil: add response recorder
+  * compress: update compression middleware
+  * admin: add pre v4.7.3 admin command to create index
+  * contrib: add grafana dashboards for deletion metrics
+  * Documentation: add more information on how to test and get started
+  * config: fix typo
+
+-------------------------------------------------------------------
 Fri May 31 12:27:45 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 4.7.4:

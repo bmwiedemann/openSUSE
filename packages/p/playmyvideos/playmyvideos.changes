@@ -1,0 +1,99 @@
+-------------------------------------------------------------------
+Sun Nov 17 18:49:05 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- rename to the new upstream name
+- update spec for Leap 16.0
+  * remove %suse_update_desktop_file
+  * remove -lang package from recommends
+
+-------------------------------------------------------------------
+Mon Nov 19 18:50:24 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.1.2:
+  * fixed possible chrash on smb://
+  * simplified cursor handling
+  * tavis
+  * fixed warnings and and video height
+- Build with granite >= 5.1.0
+
+-------------------------------------------------------------------
+Mon Oct 22 15:40:16 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.1.1:
+  * changed id inside appdata
+  * fixed restore window size
+  * fixed warnings for appdata
+  * changed appdata fix #29
+  * Update README.md
+  * Update com.github.artemanufrij.playmyvideos.appdata.xml.in
+
+-------------------------------------------------------------------
+Wed Aug  1 21:21:48 UTC 2018 - avvissu@yandex.by
+
+- Update to 1.1.0:
+  * Update appdata
+- Switch to metainfo from appdata
+
+-------------------------------------------------------------------
+Tue Jun 26 11:51:33 UTC 2018 - avvissu@yandex.by
+
+- Remove obsolete macros
+
+-------------------------------------------------------------------
+Sun Jun 10 23:42:53 UTC 2018 - jengelh@inai.de
+
+- Fix broken sentence in description, and update summary.
+
+-------------------------------------------------------------------
+Sat Apr 14 17:27:49 UTC 2018 - avvissu@yandex.by
+
+- Update to 1.0.0:
+  * Update README.md
+  * remove unused cmakelists.txt file
+  * updated de.po
+  * switch to meson
+
+-------------------------------------------------------------------
+Sat Apr  7 18:29:33 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.3.5:
+  * simplified actions
+  * added oars
+  * small code style fixes
+  * simlified some file checks
+  * Add Russian language
+  * Update com.github.artemanufrij.playmyvideos.appdata.xml
+  * fix cover fetching
+  * code style in preferences
+  * double click on box for starting playing first video
+
+-------------------------------------------------------------------
+Sat Mar 17 15:53:00 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.3.3:
+  * Merge pull request #20 from GitHaarek/patch-2
+  * Merge pull request #19 from GitHaarek/patch-1
+
+-------------------------------------------------------------------
+Fri Mar  9 14:46:35 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.3.2:
+  * default-decoration
+  * desktop actions
+  * changed homepage
+  * add missing separator
+  * Changed Title "Play My Videos" -> Cinema
+  * appdata
+  * updated Screenshots
+  * don't load last played video if its no more exists
+  * code style
+  * clear covers from cache if box was deleted
+  * appdata homepage
+  * Merge branch 'master' of github.com:artemanufrij/playmyvideos
+  * regard release year for cover fetching
+
+-------------------------------------------------------------------
+Fri Mar  2 22:01:11 UTC 2018 - avvissu@yandex.by
+
+- Initial package
+

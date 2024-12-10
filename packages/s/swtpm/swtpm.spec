@@ -134,13 +134,13 @@ mv %{buildroot}%{_datadir}/selinux/packages/*.pp %{buildroot}%{_datadir}/selinux
 mkdir -p %{buildroot}%{_localstatedir}/lib/swtpm-localca
 sed -e 's|#!/usr/bin/env |#!/usr/bin/|g' -i %{buildroot}%{_datadir}/swtpm/swtpm-create-tpmca
 sed -e 's|#!/usr/bin/env |#!/usr/bin/|g' -i %{buildroot}%{_datadir}/swtpm/swtpm-create-user-config-files
+rm -fr %{buildroot}%{_libexecdir}/installed-tests
 
 %check
 # fix check-local
 # https://bugzilla.suse.com/show_bug.cgi?id=1204556#c9
 sed -i "s@\(-L\./\.libs\)@\1 -Wl,--no-as-needed@" src/Makefile
 %make_build check
-rm -fr %{buildroot}%{_libexecdir}/installed-tests
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig

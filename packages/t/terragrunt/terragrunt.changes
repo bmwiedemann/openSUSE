@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Dec 08 08:26:07 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.69.9:
+  * zip archive extraction (#3630)
+  * build(deps): bump github.com/charmbracelet/bubbles from 0.16.1
+    to 0.20.0 (#3612)
+  * build(deps): bump github.com/creack/pty from 1.1.17 to 1.1.24
+    (#3613)
+
+-------------------------------------------------------------------
 Fri Dec 06 06:02:55 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.69.8:

@@ -17,7 +17,7 @@
 
 
 Name:           cosmic-reader
-Version:        0.1.0+git20240616.c54e8ec
+Version:        0.1.0+git20241022.9f62f54
 Release:        0
 Summary:        COSMIC PDF reader
 License:        GPL-3.0-only

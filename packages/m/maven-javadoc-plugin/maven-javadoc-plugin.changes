@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Dec  8 19:49:03 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.11.2
+  * New Feature
+    + MJAVADOC-814: Ability to split grouped packages over multiple
+      lines
+  * Improvement
+    + MJAVADOC-823: legacyMode keeps using module-info.java
+      (-sourcedirectory still use as well as java files input)
+  * Task
+    + MJAVADOC-822: parameter skippedModules should scale and easier
+      to use
+
+-------------------------------------------------------------------
 Mon Nov  4 10:11:17 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 3.11.1

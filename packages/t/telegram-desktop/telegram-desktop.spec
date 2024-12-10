@@ -38,7 +38,7 @@
 %define qt_major_version 6
 
 Name:           telegram-desktop
-Version:        5.6.3
+Version:        5.9.0
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
@@ -69,6 +69,8 @@ Patch4:         0004-use-dynamic-x-libraries.patch
 Patch5:         0005-use-bundled-ada.patch
 # PATCH-FIX-OPENSUSE
 Patch6:         0006-tdesktop-disable-h264.patch
+# PATCH-FIX_OPENSUSE
+Patch7:         0007-tg_owt-h264-dlopen.patch
 # There is an (incomplete) patch available for part of the source:
 # https://github.com/desktop-app/lib_base.git 3582bca53a1e195a31760978dc41f67ce44fc7e4
 # but tdesktop itself still falls short, and it looks to be something
@@ -244,6 +246,9 @@ mv ../rnnoise-git20210122 ../Libraries/rnnoise
 
 unzip -q %{SOURCE2}
 mv tg_owt-master Libraries/tg_owt
+pushd Libraries/tg_owt
+%autopatch -p1 7
+popd
 
 %build
 %if %{with compiler_upgrade} || %{with compiler_downgrade}

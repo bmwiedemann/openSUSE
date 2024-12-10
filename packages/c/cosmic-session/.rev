@@ -21,4 +21,35 @@
 </comment>
     <requestid>1203366</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>db87a01e165aa969646344b05932346f</srcmd5>
+    <version>1.0.0~alpha4+0</version>
+    <time>1733775034</time>
+    <user>anag+factory</user>
+    <comment>- add cosmic dconf config
+
+- Update to version 1.0.0~alpha4+0:
+  * session: Add custom dconf profile
+  * cleanup
+  * feat: try to gracefully shut down settings daemon when exiting
+  * feat: a11y
+  * main: Only launch xdg-portal on COSMIC
+  * comp: Allow to specify different compositors
+  * Launch `cosmic-idle`
+  * fix: log cosmic-settings-daemon output
+  * Handle inode/mount-point with cosmic-files
+  * Launch cosmic-files-applet
+
+- update to 1.0.0~alpha3:
+  * Add store to mimeapps, cleanup unused entries
+  * Handle flatpakref with cosmic-store
+  * Handle inode/mount-point with cosmic-files
+  * fix: log cosmic-settings-daemon output
+  * Launch cosmic-idle
+  * comp: Allow to specify different compositors
+  * main: Only launch xdg-portal on COSMIC
+
+- Add dependency on cosmic-settings-daemon</comment>
+    <requestid>1228862</requestid>
+  </revision>
 </revisionlist>

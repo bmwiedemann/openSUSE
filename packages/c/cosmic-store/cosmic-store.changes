@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Dec 06 03:07:20 UTC 2024 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha4+0:
+  * Update cosmic_store.ftl PL translation
+  * update italian translation
+  * update euro spanish translation
+  * update french translation
+  * update japanese translation
+  * update libcosmic
+  * fix: move button to top right corner
+  * fix: info button not displaying when summary is long
+  * Add progress notification
+
+-------------------------------------------------------------------
 Fri Nov  1 01:14:23 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.0.0~alpha3:

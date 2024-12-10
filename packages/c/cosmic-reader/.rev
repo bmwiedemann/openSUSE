@@ -18,4 +18,20 @@
   added</comment>
     <requestid>1192474</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>83265e62c8a2b1b5e7d1eca571ed97a0</srcmd5>
+    <version>0.1.0+git20241022.9f62f54</version>
+    <time>1733775000</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.1.0+git20241022.9f62f54:
+  * Update libcosmic/iced and implement images
+  * Parse pdf images and update lopdf
+  * Use metrically compatible fonts when font name not specified
+  * Update dependencies
+  * Add license (GPLv3)
+  * Use fork of lopdf for identity-h encoding
+  * Update dependencies
+  * Move text lines using transforms (forwarded request 1228840 from rrahl0)</comment>
+    <requestid>1228841</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Dec 06 00:20:28 UTC 2024 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha4+0:
+  * update libcosmic
+  * chore: update deps
+  * update iced
+  * Make failure to connect to journald a warning, not a hard error
+  * Add a defaulted systemd feature to include and use tracing_journald
+  * chore: update deps
+  * Add zh-TW translation
+  * support CARGO_TARGET_DIR
+  * fix: set caps for timeout and notification list
+  * cleanup
+
+-------------------------------------------------------------------
 Thu Oct 31 22:21:27 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.0.0~alpha3:

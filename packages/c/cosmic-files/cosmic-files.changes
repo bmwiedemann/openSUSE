@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec 05 23:51:21 UTC 2024 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha4+0:
+  * Unset `show_details` on escape
+  * refactor: overlap handling for surfaces that occupy a corner
+  * feat: avoid overlap with panel
+  * update libcosmic
+  * Update cosmic_files.ftl zh-CN and fix several translation errors
+
+-------------------------------------------------------------------
 Thu Oct 31 22:15:02 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.0.0~alpha3:

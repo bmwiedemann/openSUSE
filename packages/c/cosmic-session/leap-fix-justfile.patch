@@ -1,27 +1,12 @@
-diff -rub cosmic-session-1.0.0~alpha1/Justfile cosmic-session-1.0.0~alpha1-patched/Justfile
---- cosmic-session-1.0.0~alpha1/Justfile	2024-07-31 20:17:20.000000000 +0200
-+++ cosmic-session-1.0.0~alpha1-patched/Justfile	2024-08-08 01:39:58.397316941 +0200
-@@ -9,16 +9,16 @@
+diff -rub cosmic-session-1.0.0~alpha4+0/Justfile cosmic-session-1.0.0~alpha4+0-patched/Justfile
+--- cosmic-session-1.0.0~alpha4+0/Justfile	2024-12-05 22:07:06.858005652 +0100
++++ cosmic-session-1.0.0~alpha4+0-patched/Justfile	2024-12-05 22:06:46.831359772 +0100
+@@ -9,7 +9,7 @@
  vendor_args := if vendor == '1' { '--frozen --offline' } else { '' }
  debug_args := if debug == '1' { '' } else { '--release' }
  cargo_args := vendor_args + ' ' + debug_args
 -xdp_cosmic := '/usr/libexec/xdg-desktop-portal-cosmic'
 +xdp_cosmic := '/usr/lib/xdg-desktop-portal-cosmic'
+ orca := '/usr/bin/orca'
  
--bindir := prefix + '/bin'
--systemddir := prefix + '/lib/systemd/user'
--sessiondir := prefix + '/share/wayland-sessions'
--applicationdir := prefix + '/share/applications'
-+bindir := rootdir + prefix + '/bin'
-+systemddir := rootdir + prefix + '/lib/systemd/user'
-+sessiondir := rootdir + prefix + '/share/wayland-sessions'
-+applicationdir := rootdir + prefix + '/share/applications'
- 
--all: _extract_vendor build
-+all: _extract_vendor build-release
- 
--build:
-+build-release:
-         XDP_COSMIC={{xdp_cosmic}} cargo build {{cargo_args}}
- 
- # Installs files into the system
+ bindir := rootdir + prefix + '/bin'

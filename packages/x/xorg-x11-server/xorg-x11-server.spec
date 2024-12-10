@@ -235,6 +235,8 @@ Patch1910:      u_modesetting-Fix-dirty-updates-for-sw-rotation.patch
 Patch1920:      u_xf86-Accept-devices-with-the-hyperv_drm-driver.patch
 Patch1921:      u_xf86-Accept-devices-with-the-kernels-ofdrm-driver.patch
 
+Patch1930:      u_xfree86-activate-GPU-screens-on-autobind.patch
+
 Patch1960:      u_sync-pci-ids-with-Mesa.patch
 
 Patch2000:      u_fbdevhw_kernel6.9_break_fbdev_open.patch
@@ -387,6 +389,7 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch -P 1910 -p1
 %patch -P 1920 -p1
 %patch -P 1921 -p1
+%patch -P 1930 -p1
 %patch -P 1960 -p1
 %patch -P 2000 -p1
 

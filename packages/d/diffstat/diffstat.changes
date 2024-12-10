@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec  4 13:18:54 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.77:
+  + align license text with xterm, i.e., "MIT-X11"
+  + add decompression for zstd files
+  + improve configure script checks, reducing compiler warnings
+  + update config.guess, config.sub
+
+-------------------------------------------------------------------
 Sun Feb 11 17:27:48 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 1.66:

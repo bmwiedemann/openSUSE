@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec  9 03:34:48 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python-313.patch:
+  * Support Python 3.13+ argparse output changes.
+- Switch to pyrpoject macros.
+
+-------------------------------------------------------------------
 Sun Jun 18 16:34:42 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Use sle15_python_module_pythons

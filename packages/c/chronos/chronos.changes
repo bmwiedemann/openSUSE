@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec 06 02:25:17 UTC 2024 - rrahl0@opensuse.org
+
+- Update to version 0.1.4+3:
+  * Update chronos.ftl
+  * update metainfo
+  * italian translation
+  * activate notification setting
+  * Update chronos.ftl
+- remove fix-justfile.patch, as upstream applied my patch
+
+-------------------------------------------------------------------
 Sat Oct 12 13:33:35 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - initial packaging

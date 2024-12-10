@@ -4,10 +4,11 @@
     <param name="url">https://github.com/cosmic-utils/app-hub.git</param>
     <param name="scm">git</param>
     <param name="revision">master</param>
-    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionrewrite-pattern">v(.*)\+0</param>
     <param name="versionformat">1.0.0~alpha.2+@TAG_OFFSET@</param>
     <param name="package-meta">yes</param>
     <param name="filename">apphub</param>
+    <param name="changesgenerate">enable</param>
   </service>
   <service name="recompress" mode="manual">
     <param name="file">*.tar</param>

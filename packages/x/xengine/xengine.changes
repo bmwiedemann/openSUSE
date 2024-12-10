@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec  2 16:39:21 UTC 2024 - Friedrich Haubensak <hsk17@mail.de>
+
+- Add xengine-1.11-gcc14.patch to fix gcc14 compile time error.
+
+-------------------------------------------------------------------
 Mon Feb 26 12:08:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

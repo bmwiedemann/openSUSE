@@ -25,6 +25,7 @@ Group:          Productivity/Scientific/Physics
 Source:         %{name}-%{version}.tar.gz
 Patch0:         %{name}-%{version}-pi.patch
 Patch1:         %{name}-%{version}-warnings-fix.patch
+Patch2:         %{name}-%{version}-gcc14.patch
 BuildRequires:  imake
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xaw7)

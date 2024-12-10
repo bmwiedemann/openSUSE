@@ -1,0 +1,24 @@
+ Calling the client with different binary names
+------------------------------------------------
+
+The minio client searches for the config based
+on the binary name. This also happens with a
+symlinked binary name. With the default file name
+in the package it will look for
+
+```
+${HOME}/.minio-client/config.json
+``` 
+
+If you use the minio-client-as-mc package, it
+looks for:
+
+```
+${HOME}/.mc/config.json
+``` 
+
+A possible solution is creating a symlink:
+
+```
+ln -s ~/.minio-client/ ~/.mc
+```

@@ -94,4 +94,14 @@
     <comment></comment>
     <requestid>1094308</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>565083583a8a78236cf5768bcb172fd5</srcmd5>
+    <version>3.4.4</version>
+    <time>1733775134</time>
+    <user>anag+factory</user>
+    <comment>- Add patch support-python-313.patch:
+  * Support Python 3.13+ argparse output changes.
+- Switch to pyrpoject macros.</comment>
+    <requestid>1229184</requestid>
+  </revision>
 </revisionlist>

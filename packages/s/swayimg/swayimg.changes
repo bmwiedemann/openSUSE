@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Dec  8 21:46:22 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 3.6:
+  * Added DICOM image format support;
+  * Added Farbfeld image format support;
+  * Added new action: jump to a random file;
+  * Added option to set default image position;
+  * Added mouse cursor shape support;
+  * Added configurable background color for text;
+  * Fixed alpha blending;
+  * Fixed out-of-bounds cache indexing;
+  * Fixed bug with overriding config over command line;
+  * Fixed bug with keyboard repeat timer and lost focus;
+  * Added wp_content_type_v1 protocol support;
+  * Added default/global scale action.
+
+-------------------------------------------------------------------
 Tue Oct 15 10:32:07 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 3.4

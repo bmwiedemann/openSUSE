@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec 06 02:40:22 UTC 2024 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha4+0:
+  * Update dependencies
+  * i18n(de): add German translation
+  * fix(context menu): use radius from theme
+  * Update cosmic_edit.ftl (French)
+  * i18n(ar): add Arabic translation
+  * Update libcosmic/iced
+
+-------------------------------------------------------------------
 Fri Nov  1 01:08:56 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.0.0~alpha3:

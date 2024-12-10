@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/pop-os/cosmic-store.git</param>
+              <param name="changesrevision">9885eee8e7d052712bbbb8bf656727657ec590cd</param></service></servicedata>

@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sun Dec  8 19:20:50 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 1.5.735:
+  * TRANSLATION: Backport translations
+  * CI(appveyor): Workaround for FXC failing to run with error C0000139
+  * DOCS(server): Add Documentation key to mumble-server unit
+  * FIX(cmake): Ensure the client installer target is built after its dependencies
+  * FIX(cmake): Don't set WORKING_DIRECTORY for ExternalProject_Add()
+  * TRANSLATION: Backport translations
+  * FIX(client): Fix AudioWizard echo cancellation checkbox
+  * FIX(client): Use correct off audio cue
+  * FIX(plugins): Load correct pages for modules
+  * FIX(client): Limit size of the chat bar
+  * FIX(client): Save local volume adjustment when clicking slider bar
+  * FIX(client): Prevent sending plain text on fast CTRL+V + ENTER
+  * TRANSLATION: Update translation files
+  * FIX(client): Replace dead URL in Certificate Wizard
+  * TRANSLATION: Update translation files
+  * FIX(client): Remove mention of the Mumble wiki
+  * MAINT: Remove mentions of the Mumble wiki
+  * FIX(server): Change server thread name to "mumble-server" instead of "Main"
+  * FIX(client, server): Remove redundant OpenSSL locking callback check
+  * BUILD: Fix compiler warnings on 32bit architectures
+  * FIX(client): Fix crash on mono pos. audio warning from audio thread
+  * BUILD: Disable MSVC 17.8 warning for stdext::checked_array_iterator
+  * CI(cirrus): Disable warnings-as-errors for the 1.5.x branch
+  * CI(cirrus): Install "ice37" package instead of "ice"
+  * FIX(client, plugins): Wrong sample count in plugin callback
+  * MAINT: Update backport config
+  * MAINT: Only run backport action when PR is merged
+  * FIX(client): Do not spam log when adjusting volume of clients without certificate
+  * FIX(client): Update tab order in AudioInput.ui
+  * BUILD: Use correct type for num locks
+  * FIX(client): Do not duplicate group name in ACLEditor combobox
+  * FIX(a11y): In ACLEditor make space popup the combobox list
+  * FIX(client): In ACLEditor apply changes to group or user on lost focus
+  * FIX(server): Allow to move temporary channels provided sufficient permissions
+  * REFAC(client): Use ellipsis character ("…") instead of three dots ("...") in elideText
+  * FIX(client): Remove placeholder wrapping in ChatBar
+  * FIX(client): Improve handling of the GlobalShortcutButtons dialog
+  * FIX(client): Correctly remember muted state across restarts
+  * FIX(client): Capture "this" explicitly in lambdas
+  * FIX(client): Crash when loading settings
+
+-------------------------------------------------------------------
 Mon May 20 07:04:42 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.5.634:

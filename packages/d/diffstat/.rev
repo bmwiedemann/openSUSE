@@ -290,4 +290,12 @@
   + improve configure script checks, reducing compiler warnings (forwarded request 1145993 from amanzini)</comment>
     <requestid>1146096</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>fd334aed9c5b4cae703c6d9da74b4e47</srcmd5>
+    <version>1.67</version>
+    <time>1733775112</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1229157</requestid>
+  </revision>
 </revisionlist>

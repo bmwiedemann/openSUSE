@@ -1,7 +1,7 @@
 #
 # spec file for package python-calmjs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        A Python framework for working with the Node.js ecosystem
 License:        GPL-2.0-or-later
 URL:            https://github.com/calmjs/calmjs/
 Source:         https://github.com/calmjs/calmjs/archive/%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Support Python 3.13 argparse output changes
+Patch0:         support-python-313.patch
 BuildRequires:  %{python_module calmjs.parse >= 1.0.0}
 BuildRequires:  %{python_module calmjs.types}
 BuildRequires:  %{python_module pip}
@@ -33,8 +35,9 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-calmjs.parse >= 1.0.0
 Requires:       python-calmjs.types
+Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  nodejs-common
@@ -54,11 +57,11 @@ rm src/calmjs/tests/test_yarn.py
 
 %build
 export LANG=en_US.UTF-8
-%python_build
+%pyproject_wheel
 
 %install
 export LANG=en_US.UTF-8
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/calmjs
 # see https://github.com/calmjs/calmjs/issues/65 for maintainer feedback
 # regarding these two subpackages.
@@ -83,6 +86,6 @@ export LANG=en_US.UTF-8
 %python_alternative %{_bindir}/calmjs
 %{python_sitelib}/calmjs
 %{python_sitelib}/calmjs-%{version}*-nspkg.pth
-%{python_sitelib}/calmjs-%{version}*-info
+%{python_sitelib}/calmjs-%{version}.dist-info
 
 %changelog

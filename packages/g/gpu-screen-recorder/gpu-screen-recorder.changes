@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Dec 08 21:34:28 UTC 2024 - mantarimay@pm.me
+
+- Update to version 20241208:
+  * minor fixes and refactoring
+  * Fix window creation on wayland
+  * Add card path to --info, add card path and vendor to
+    --list-capture-options if known to speed up the command
+  * Refactor windowing from egl to window_x11/window_wayland, yolo
+  * Comment out unused egl priority for now because amd error is
+    misleading
+  * Fix virtual sink not destroyed if gsr is forcefully killed (use
+    pipewire to create the virtual sink instead of pulseaudio)
+  * Add error output when reaching max ports/stream nodes/links
+  * Increase pipewire audio max nodes/ports limit
+  * Remove incorrect references to -aa and -aai
+
+-------------------------------------------------------------------
 Tue Dec 03 00:08:27 UTC 2024 - mantarimay@pm.me
 
 - Update to version 20241130:

@@ -43,4 +43,18 @@
   * update translations</comment>
     <requestid>1223150</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ec0af0d4475ab4ebda685fffcd0a576e</srcmd5>
+    <version>1.0.0~alpha4+0</version>
+    <time>1733774995</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.0~alpha4+0:
+  * Update dependencies
+  * i18n(de): add German translation
+  * fix(context menu): use radius from theme
+  * Update cosmic_edit.ftl (French)
+  * i18n(ar): add Arabic translation
+  * Update libcosmic/iced (forwarded request 1228836 from rrahl0)</comment>
+    <requestid>1228837</requestid>
+  </revision>
 </revisionlist>

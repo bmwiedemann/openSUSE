@@ -1,0 +1,5 @@
+<package name="meli" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="server:mail" package="meli"/>
+</package>

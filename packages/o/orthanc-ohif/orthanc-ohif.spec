@@ -20,7 +20,7 @@
 %{?sle15_python_module_pythons}
 Name:           orthanc-ohif
 Summary:        OHIF plugin for Orthanc
-License:        AGPL-3.0-or-later
+License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
 Version:        1.4
 Release:        0

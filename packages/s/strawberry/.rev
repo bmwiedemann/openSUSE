@@ -1544,4 +1544,17 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>1226004</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>9beaad98c5ded245e52294289fd45f2c</srcmd5>
+    <version>1.2.3</version>
+    <time>1733775103</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.2.3
+  + Bugfixes:
+   + Fixed libcdio NULL related compilation error on FreeBSD (#1610).
+   + Fixed missing seek when starting playback of a CUE song (#1568).
+   + Fixed &quot;QDBusObjectPath: invalid path&quot; error.
+</comment>
+    <requestid>1229136</requestid>
+  </revision>
 </revisionlist>

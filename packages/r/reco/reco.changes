@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec  6 20:43:06 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update spec file for Leap 16.0:
+  * remove %suse_update_desktop_file
+  * remove any mentions of elementary
+  * use autosetup
+
+-------------------------------------------------------------------
 Sun Feb 20 16:02:30 UTC 2022 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 3.2.1:

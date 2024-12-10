@@ -17,7 +17,7 @@
 
 
 Name:           PrusaSlicer
-Version:        2.8.0
+Version:        2.8.1
 Release:        0
 Summary:        G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)
 License:        AGPL-3.0-only
@@ -27,8 +27,8 @@ URL:            https://www.prusa3d.com/prusaslicer/
 Source0:        https://github.com/prusa3d/PrusaSlicer/archive/version_%{version}.tar.gz#/%{name}-version_%{version}.tar.gz
 # PATCH-FIX-UPSTREAM PrusaSlicer-2.7.1-slic3r-wxWidgets-3.2.4.patch gh#prusa3d/PrusaSlicer#11769
 Patch1:         PrusaSlicer-2.7.1-slic3r-wxWidgets-3.2.4.patch
-# PATCH-FIX-UPSTREAM PrusaSlicer-2.8.0-includes.patch gh#prusa3d/PrusaSlicer#13080
-Patch2:         PrusaSlicer-2.8.0-slic3r-includes.patch
+# PATCH-FIX-UPSTREAM PrusaSlicer-2.8.1-pr13609-fix-build.patch gh#prusa3d/PrusaSlicer#13609
+Patch2:         PrusaSlicer-2.8.1-pr13609-fix-build.patch
 # PATCH-FIX-OPENSUSE up-occt-version.patch mike.chikov@gmail.com -- install wrapper so into libdir, not bindir
 Patch10:        up-occt-version.patch
 # PATCH-FIX-OPENSUSE PrusaSlicer-2.6.0-octoprint-name-fix.patch -- cast lambda expression to same type
@@ -64,11 +64,11 @@ BuildRequires:  memory-constraints
 BuildRequires:  nlopt-devel
 BuildRequires:  occt-devel
 BuildRequires:  openexr-devel
+BuildRequires:  openssl-devel
 BuildRequires:  openvdb-devel >= 7.1
 BuildRequires:  openvdb-tools
 BuildRequires:  pkgconfig
 BuildRequires:  tbb-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  wxGTK3-devel >= 3.2
 # need the fltk fork, see deps/NanoSVG/NanoSVG.cmake
 BuildRequires:  nanosvg-devel >= 2022.12.22
@@ -83,6 +83,7 @@ BuildRequires:  pkgconfig(qhull_r)
 BuildRequires:  pkgconfig(qhullcpp)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-egl)
+BuildRequires:  pkgconfig(webkit2gtk-4.1)
 Requires:       noto-sans-fonts
 # Cannot allocate memory to build
 ExcludeArch:    %{ix86}
@@ -126,9 +127,6 @@ export CC=gcc-%gcc_ver CXX=g++-%gcc_ver
 
 %install
 %cmake_install
-
-%suse_update_desktop_file -r PrusaSlicer Graphics 3DGraphics
-%suse_update_desktop_file -r PrusaGcodeviewer Graphics 3DGraphics
 
 #remove stray font file
 rm -rf %{buildroot}%{_datadir}/%{name}/fonts

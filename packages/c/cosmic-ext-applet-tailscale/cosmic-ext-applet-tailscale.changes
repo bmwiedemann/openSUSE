@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Dec 06 03:47:57 UTC 2024 - rrahl0@opensuse.org
+
+- Update to version 2.0.0+1:
+  * Updated README.md and screenshots
+  * Updated version number to 2.0.0
+  * Update UI
+  * Exit node feature complete
+  * Refactored window.rs and logic.rs
+  * Refactored logic.rs
+  * Updated config logic and window
+  * Updated Cargo.lock for bug
+  * updated ui and adding allow lan
+  * Config file is working
+  * Added Cargo.lock
+  * Updating config.rs
+  * Working on config file
+  * Started working on config for exit-node
+  * Created host exit node functionality and set exit node functionality
+
+-------------------------------------------------------------------
 Sat Oct 12 14:25:24 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - initial packaging

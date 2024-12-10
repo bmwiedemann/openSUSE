@@ -18,7 +18,7 @@
 
 %define         appname com.francescogaglione.apphub
 Name:           apphub
-Version:        1.0.0~alpha.2+22
+Version:        1.0.0~alpha.2+26
 Release:        0
 Summary:        Apphub simplifies managing appimages
 License:        MIT
@@ -30,7 +30,6 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  just
 BuildRequires:  pkgconfig
 BuildRequires:  rust >= 1.80
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(xkbcommon)
 
 %description
@@ -44,7 +43,6 @@ just build-release
 
 %install
 just rootdir=%{buildroot} prefix=%{_prefix} install
-%suse_update_desktop_file %{appname}
 
 %check
 %{cargo_test}
@@ -53,6 +51,7 @@ just rootdir=%{buildroot} prefix=%{_prefix} install
 %license LICENSE
 %doc README.md
 %{_bindir}/%{name}
+%{_bindir}/app_hub_backend
 %{_datadir}/applications/%{appname}.desktop
 %{_datadir}/icons/hicolor/scalable/apps/%{appname}.png
 

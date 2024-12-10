@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec  6 03:39:43 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.1.5+git20240819.13c0a7e:
+  * Create LICENSE-MIT
+  * add spdx license identifiers
+  * fix: load available languages from i18n-json dir
+  * remove rayon
+  * Update README.md / remove copying works now
+- update license
+
+-------------------------------------------------------------------
 Thu Aug  8 00:59:05 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - standardize packaging with also fixes for miscellaneous hardcoding

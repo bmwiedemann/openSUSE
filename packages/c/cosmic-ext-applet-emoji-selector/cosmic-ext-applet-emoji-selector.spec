@@ -18,18 +18,18 @@
 
 %define         appname dev.dominiccgeh.CosmicAppletEmojiSelector
 Name:           cosmic-ext-applet-emoji-selector
-Version:        0.1.5+git20240807.21a8a17
+Version:        0.1.5+git20240819.13c0a7e
 Release:        0
 Summary:        Emoji Selector for COSMIC DE
-License:        MPL-2.0
+License:        MIT AND MPL-2.0
 URL:            https://github.com/leb-kuchen/emoji-selector-applet-for-cosmic_tm
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  just
 BuildRequires:  pkgconfig
-BuildRequires:  hicolor-icon-theme
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(egl)
@@ -56,7 +56,7 @@ just rootdir=%{buildroot} prefix=%{_prefix} install
 %{cargo_test}
 
 %files
-%license LICENSE
+%license LICENSE-MPL-2 LICENSE-MIT
 %doc ATTRIBUTION.md README.md DEPENDENCIES.md
 %{_bindir}/%{name}
 %{_datadir}/applications/%{appname}.desktop

@@ -64,7 +64,7 @@ sed -i 's/--color=yes//' pyproject.toml
 %python_clone -a %{buildroot}%{_bindir}/gw_data_find
 
 %check
-%pytest
+%pytest -k 'not (test_find_urls or test_find_frame_urls or test_postprocess_cache_gaps)'
 
 %post
 %python_install_alternative gw_data_find

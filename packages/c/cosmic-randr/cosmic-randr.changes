@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Dec 06 00:39:21 UTC 2024 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha4+0:
+  * feat: support adaptive-sync (VRR)
+  * cli: Ignore disabled/mirrored outputs in `auto_correct_offsets`
+  * lib: Don't `enable_head` on mirrored displays on `test`/`apply`
+  * cli: Dispatch until compositor responds to output config
+  * cli: Dispatch until `ManagerDone`
+  * lib: Destroy output configuration on receiving event
+  * lib: Send `ManagerDone` only after getting cosmic heads
+  * Run `cargo update`
+  * chore: update dependencies
+  * fix(shell): lingering cosmic-randr process
+
+-------------------------------------------------------------------
 Thu Oct 31 22:25:04 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.0.0~alpha3:

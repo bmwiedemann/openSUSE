@@ -164,4 +164,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>957916</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>62354f13b3bdc115b6165c6cd9738278</srcmd5>
+    <version>3.2.1</version>
+    <time>1733775062</time>
+    <user>anag+factory</user>
+    <comment>- update spec file for Leap 16.0:
+  * remove %suse_update_desktop_file
+  * remove any mentions of elementary
+  * use autosetup (forwarded request 1228955 from rrahl0)</comment>
+    <requestid>1228956</requestid>
+  </revision>
 </revisionlist>

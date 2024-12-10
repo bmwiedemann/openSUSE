@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec 08 11:59:58 UTC 2024 - aburlakov@suse.com
+
+- Update to version 2.6.5+git.1733657357.36d3ca16:
+  * Dev: make sprockets-4.2 compatible
+  * Dev: bump sprockets v3.7 --> v4.2
+  * Dev: bump sass-rails v5.1 --> v6.0
+
+-------------------------------------------------------------------
 Tue Dec 03 17:20:46 UTC 2024 - aburlakov@suse.com
 
 - Update to version 2.6.5+git.1732776108.1d325f4e:

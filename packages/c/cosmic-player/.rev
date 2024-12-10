@@ -35,4 +35,22 @@
   anymore (forwarded request 1206436 from rrahl0)</comment>
     <requestid>1206437</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1620f4d2e68b3f2aa0f0d7d1a715afc9</srcmd5>
+    <version>0.1.0+git20241205.b26005d</version>
+    <time>1733774998</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.1.0+git20241205.b26005d:
+  * Move language selection to bottom bar, implement volume
+  * Add file menu, improve naming of subtitles
+  * Create cosmic_player.ftl
+  * Update iced video player
+  * Use prev-master branch of libcosmic
+  * i18n (pt-BR) translation update
+  * Improve argument handling
+  * Fix appstream data
+  * Update dependencies
+- remove patch ffmpeg-next.patch as it's not required anymore (forwarded request 1228838 from rrahl0)</comment>
+    <requestid>1228839</requestid>
+  </revision>
 </revisionlist>

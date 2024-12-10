@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Dec  8 16:15:06 UTC 2024 - Neal Gompa <ngompa@opensuse.org>
+
+- Update to 5.2.8.1
+  + 5.2.8.1 changelog: https://github.com/rpm-software-management/dnf5/releases/tag/5.2.8.1
+  + 5.2.8.0 changelog: https://github.com/rpm-software-management/dnf5/releases/tag/5.2.8.0
+- Add patch to fix build with sdbus-cpp v2
+  + Patch: dnf5-PR1888.patch
+- Temporarily disable running tests until crashes are fixed (gh#rpm-software-management/dnf5#1893)
+
+-------------------------------------------------------------------
+Sun Nov 24 00:19:01 UTC 2024 - Neal Gompa <ngompa@opensuse.org>
+
+- Update to 5.2.7.0
+  + 5.2.7.0 changelog: https://github.com/rpm-software-management/dnf5/releases/tag/5.2.7.0
+  + 5.2.6.2 changelog: https://github.com/rpm-software-management/dnf5/releases/tag/5.2.6.2
+  + 5.2.6.1 changelog: https://github.com/rpm-software-management/dnf5/releases/tag/5.2.6.1
+  + 5.2.6.0 changelog: https://github.com/rpm-software-management/dnf5/releases/tag/5.2.6.0
+  + 5.2.5.0 changelog: https://github.com/rpm-software-management/dnf5/releases/tag/5.2.5.0
+  + 5.2.4.0 changelog: https://github.com/rpm-software-management/dnf5/releases/tag/5.2.4.0
+- Refresh patches
+  + Patch: dnf5-disable-Werror.patch
+  + Patch: dnf5-with-static-libsolvext.patch
+
+-------------------------------------------------------------------
 Mon Sep 23 12:56:49 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Do not conflict with libdnf-devel yet, PackageKit needs both

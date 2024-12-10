@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Dec 06 00:08:41 UTC 2024 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha4+0:
+  * fix bug where screen off was triggered while in inhibit state
+  * Set DPMS and remove fade surfaces in one place
+  * Lock session on screen blanking
+  * Load `system_actions` config, and refactor commmand spawning code
+  * Use `zbus::connection::Builder`
+  * Update default settings
+  * Also expose screensaver DBus protocol at path `/ScreenSaver`
+  * debian: Fix description
+  * Destroy idle notifications when inhibited
+  * Fixes for `freedesktop_screensaver`
+
+-------------------------------------------------------------------
 Mon Nov  4 01:49:57 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - initial packaging

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Dec 06 00:06:58 UTC 2024 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha4+0:
+  * chore: add navbar icons
+  * feat: add window-pop-out-symbolic
+  * chore: add connection-secure-symbolic
+  * chore: add networking symbolic icons
+  * chore: update places icons
+  * fix: symbolic icon size
+  * chore: update status icons
+  * fix: reduce symbolic icon background opacity to 0
+
+-------------------------------------------------------------------
 Thu Oct 31 22:20:22 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.0.0~alpha3:

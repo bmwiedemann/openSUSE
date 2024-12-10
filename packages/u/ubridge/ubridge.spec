@@ -1,7 +1,7 @@
 #
 # spec file for package ubridge
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           ubridge
-Version:        0.9.18
+Version:        0.9.19
 Release:        0
 Summary:        Bridging between UDP tunnels, Ethernet and TAP interfaces
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Other
 URL:            https://github.com/GNS3/ubridge
 Source0:        https://github.com/GNS3/ubridge/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  libpcap-devel >= 1.5.3
 BuildRequires:  libiniparser-devel >= 4.1
+BuildRequires:  libpcap-devel >= 1.5.3
 
 %description
 uBridge is a simple application to create user-land bridges between
@@ -48,7 +48,7 @@ install -D -m0755 ubridge %{buildroot}%{_bindir}/ubridge
 
 %files
 %license LICENSE
-%doc README.rst
+%doc README.md
 %{_bindir}/ubridge
 
 %changelog

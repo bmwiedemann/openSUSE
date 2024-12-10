@@ -76,4 +76,17 @@
   * updated translations</comment>
     <requestid>1223138</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ba6553e0f33d05b825f49dd461e87fec</srcmd5>
+    <version>1.0.0~alpha4+0</version>
+    <time>1733775019</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.0~alpha4+0:
+  * Unset `show_details` on escape
+  * refactor: overlap handling for surfaces that occupy a corner
+  * feat: avoid overlap with panel
+  * update libcosmic
+  * Update cosmic_files.ftl zh-CN and fix several translation errors</comment>
+    <requestid>1228853</requestid>
+  </revision>
 </revisionlist>

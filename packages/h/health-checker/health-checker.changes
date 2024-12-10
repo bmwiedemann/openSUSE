@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Nov 05 10:07:57 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.12+git20241105.2e2832f15742:
+  * Set RemainAfterExit=yes
+  * Fix header of NEWS file
+- Switch _service over to obs_scm and type="manual"
+
+-------------------------------------------------------------------
+Wed Sep 25 13:49:49 UTC 2024 - iforster@suse.com
+
+- Update to version 1.12+git20240925.08fb1bc:
+  * Release version 1.12
+  * Fix typos: replaced `health-checker.state` occurances with
+    `health-check.state` (#23)
+  * Improve rpmdb consistency check (#21)
+  * Drop crio, etcd and kubelet
+  * Implement missing stop argument
+- Remove plugins-kubic and plugins-caasp packages - the tests were
+  removed upstream because the products were EOL
+
+-------------------------------------------------------------------
 Tue Jul 30 09:58:30 UTC 2024 - iforster@suse.com
 
 - Update to version 1.11+git20240730.5dafd6a:

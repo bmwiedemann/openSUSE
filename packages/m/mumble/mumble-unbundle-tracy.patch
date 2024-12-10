@@ -1,7 +1,7 @@
-Index: mumble-1.5.629/src/CMakeLists.txt
+Index: mumble-1.5.735/src/CMakeLists.txt
 ===================================================================
---- mumble-1.5.629.orig/src/CMakeLists.txt
-+++ mumble-1.5.629/src/CMakeLists.txt
+--- mumble-1.5.735.orig/src/CMakeLists.txt
++++ mumble-1.5.735/src/CMakeLists.txt
 @@ -12,8 +12,6 @@ option(qssldiffiehellmanparameters "Buil
  
  option(zeroconf "Build support for zeroconf (mDNS/DNS-SD)." ON)
@@ -35,10 +35,10 @@ Index: mumble-1.5.629/src/CMakeLists.txt
  # Add the GSL
  if(bundled-gsl)
  	add_subdirectory("${3RDPARTY_DIR}/gsl" "${CMAKE_CURRENT_BINARY_DIR}/gsl" EXCLUDE_FROM_ALL)
-Index: mumble-1.5.629/src/murmur/AudioReceiverBuffer.cpp
+Index: mumble-1.5.735/src/murmur/AudioReceiverBuffer.cpp
 ===================================================================
---- mumble-1.5.629.orig/src/murmur/AudioReceiverBuffer.cpp
-+++ mumble-1.5.629/src/murmur/AudioReceiverBuffer.cpp
+--- mumble-1.5.735.orig/src/murmur/AudioReceiverBuffer.cpp
++++ mumble-1.5.735/src/murmur/AudioReceiverBuffer.cpp
 @@ -8,8 +8,6 @@
  #include <algorithm>
  #include <cassert>
@@ -75,10 +75,10 @@ Index: mumble-1.5.629/src/murmur/AudioReceiverBuffer.cpp
  #ifndef NDEBUG
  	// Sort the list such that entries with same receiver are next to each other
  	std::sort(receiverList.begin(), receiverList.end(), [](const AudioReceiver &lhs, const AudioReceiver &rhs) {
-Index: mumble-1.5.629/src/murmur/Server.cpp
+Index: mumble-1.5.735/src/murmur/Server.cpp
 ===================================================================
---- mumble-1.5.629.orig/src/murmur/Server.cpp
-+++ mumble-1.5.629/src/murmur/Server.cpp
+--- mumble-1.5.735.orig/src/murmur/Server.cpp
++++ mumble-1.5.735/src/murmur/Server.cpp
 @@ -37,10 +37,6 @@
  
  #include <boost/bind/bind.hpp>
@@ -94,7 +94,7 @@ Index: mumble-1.5.629/src/murmur/Server.cpp
  
  
  Server::Server(int snum, QObject *p) : QThread(p) {
--	tracy::SetThreadName("Main");
+-	tracy::SetThreadName("mumble-server");
 -
  	bValid     = true;
  	iServerNum = snum;
@@ -242,10 +242,10 @@ Index: mumble-1.5.629/src/murmur/Server.cpp
  	QMutexLocker qml(&qmCache);
  
  	WhisperTargetCache cache;
-Index: mumble-1.5.629/src/murmur/AudioReceiverBuffer.h
+Index: mumble-1.5.735/src/murmur/AudioReceiverBuffer.h
 ===================================================================
---- mumble-1.5.629.orig/src/murmur/AudioReceiverBuffer.h
-+++ mumble-1.5.629/src/murmur/AudioReceiverBuffer.h
+--- mumble-1.5.735.orig/src/murmur/AudioReceiverBuffer.h
++++ mumble-1.5.735/src/murmur/AudioReceiverBuffer.h
 @@ -14,8 +14,6 @@
  #include <unordered_map>
  #include <vector>
@@ -264,9 +264,9 @@ Index: mumble-1.5.629/src/murmur/AudioReceiverBuffer.h
  		ReceiverRange< Iterator > range;
  		range.begin = begin;
  
-Index: mumble-1.5.629/src/murmur/TracyConstants.h
+Index: mumble-1.5.735/src/murmur/TracyConstants.h
 ===================================================================
---- mumble-1.5.629.orig/src/murmur/TracyConstants.h
+--- mumble-1.5.735.orig/src/murmur/TracyConstants.h
 +++ /dev/null
 @@ -1,25 +0,0 @@
 -// Copyright 2021-2023 The Mumble Developers. All rights reserved.
@@ -294,9 +294,9 @@ Index: mumble-1.5.629/src/murmur/TracyConstants.h
 -} // namespace TracyConstants
 -
 -#endif // MUMBLE_MURMUR_TRACYCONSTANTS_H_
-Index: mumble-1.5.629/docs/dev/Profiling.md
+Index: mumble-1.5.735/docs/dev/Profiling.md
 ===================================================================
---- mumble-1.5.629.orig/docs/dev/Profiling.md
+--- mumble-1.5.735.orig/docs/dev/Profiling.md
 +++ /dev/null
 @@ -1,33 +0,0 @@
 -# Profiling
@@ -332,10 +332,10 @@ Index: mumble-1.5.629/docs/dev/Profiling.md
 -- Profiling should generally be done in `Release` mode in order to obtain reasonable data
 -- If you are having issues connecting your Tracy _server_ to the Mumble server, you should not let it fork. The default behavior in release
 -  mode is to fork, but you can change that by using the `-fg` parameter when starting the server.
-Index: mumble-1.5.629/docs/dev/build-instructions/cmake_options.md
+Index: mumble-1.5.735/docs/dev/build-instructions/cmake_options.md
 ===================================================================
---- mumble-1.5.629.orig/docs/dev/build-instructions/cmake_options.md
-+++ mumble-1.5.629/docs/dev/build-instructions/cmake_options.md
+--- mumble-1.5.735.orig/docs/dev/build-instructions/cmake_options.md
++++ mumble-1.5.735/docs/dev/build-instructions/cmake_options.md
 @@ -224,11 +224,6 @@ Build binaries in a way that allows easi
  Build tests.
  (Default: ${packaging})
@@ -348,10 +348,10 @@ Index: mumble-1.5.629/docs/dev/build-instructions/cmake_options.md
  ### translations
  
  Include languages other than English.
-Index: mumble-1.5.629/src/murmur/Messages.cpp
+Index: mumble-1.5.735/src/murmur/Messages.cpp
 ===================================================================
---- mumble-1.5.629.orig/src/murmur/Messages.cpp
-+++ mumble-1.5.629/src/murmur/Messages.cpp
+--- mumble-1.5.735.orig/src/murmur/Messages.cpp
++++ mumble-1.5.735/src/murmur/Messages.cpp
 @@ -26,8 +26,6 @@
  #include <cassert>
  #include <unordered_map>
@@ -406,7 +406,7 @@ Index: mumble-1.5.629/src/murmur/Messages.cpp
  	MSG_SETUP(ServerUser::Authenticated);
  
  	Channel *c = nullptr;
-@@ -1516,8 +1504,6 @@ void Server::msgChannelState(ServerUser
+@@ -1518,8 +1506,6 @@ void Server::msgChannelState(ServerUser
  }
  
  void Server::msgChannelRemove(ServerUser *uSource, MumbleProto::ChannelRemove &msg) {
@@ -415,7 +415,7 @@ Index: mumble-1.5.629/src/murmur/Messages.cpp
  	MSG_SETUP(ServerUser::Authenticated);
  
  	Channel *c = qhChannels.value(msg.channel_id());
-@@ -1535,8 +1521,6 @@ void Server::msgChannelRemove(ServerUser
+@@ -1537,8 +1523,6 @@ void Server::msgChannelRemove(ServerUser
  }
  
  void Server::msgTextMessage(ServerUser *uSource, MumbleProto::TextMessage &msg) {
@@ -424,7 +424,7 @@ Index: mumble-1.5.629/src/murmur/Messages.cpp
  	MSG_SETUP(ServerUser::Authenticated);
  	QMutexLocker qml(&qmCache);
  
-@@ -1746,8 +1730,6 @@ void logACLs(Server *server, const Chann
+@@ -1748,8 +1732,6 @@ void logACLs(Server *server, const Chann
  
  
  void Server::msgACL(ServerUser *uSource, MumbleProto::ACL &msg) {
@@ -433,7 +433,7 @@ Index: mumble-1.5.629/src/murmur/Messages.cpp
  	MSG_SETUP(ServerUser::Authenticated);
  
  	Channel *c = qhChannels.value(msg.channel_id());
-@@ -1959,8 +1941,6 @@ void Server::msgACL(ServerUser *uSource,
+@@ -1961,8 +1943,6 @@ void Server::msgACL(ServerUser *uSource,
  }
  
  void Server::msgQueryUsers(ServerUser *uSource, MumbleProto::QueryUsers &msg) {
@@ -442,7 +442,7 @@ Index: mumble-1.5.629/src/murmur/Messages.cpp
  	MSG_SETUP(ServerUser::Authenticated);
  
  	MumbleProto::QueryUsers reply;
-@@ -1988,8 +1968,6 @@ void Server::msgQueryUsers(ServerUser *u
+@@ -1990,8 +1970,6 @@ void Server::msgQueryUsers(ServerUser *u
  }
  
  void Server::msgPing(ServerUser *uSource, MumbleProto::Ping &msg) {
@@ -451,7 +451,7 @@ Index: mumble-1.5.629/src/murmur/Messages.cpp
  	MSG_SETUP_NO_UNIDLE(ServerUser::Authenticated);
  
  	QMutexLocker l(&uSource->qmCrypt);
-@@ -2019,8 +1997,6 @@ void Server::msgPing(ServerUser *uSource
+@@ -2021,8 +1999,6 @@ void Server::msgPing(ServerUser *uSource
  }
  
  void Server::msgCryptSetup(ServerUser *uSource, MumbleProto::CryptSetup &msg) {
@@ -460,7 +460,7 @@ Index: mumble-1.5.629/src/murmur/Messages.cpp
  	MSG_SETUP_NO_UNIDLE(ServerUser::Authenticated);
  
  	QMutexLocker l(&uSource->qmCrypt);
-@@ -2042,8 +2018,6 @@ void Server::msgContextActionModify(Serv
+@@ -2044,8 +2020,6 @@ void Server::msgContextActionModify(Serv
  }
  
  void Server::msgContextAction(ServerUser *uSource, MumbleProto::ContextAction &msg) {
@@ -469,7 +469,7 @@ Index: mumble-1.5.629/src/murmur/Messages.cpp
  	MSG_SETUP(ServerUser::Authenticated);
  
  	unsigned int session = msg.has_session() ? msg.session() : 0;
-@@ -2070,8 +2044,6 @@ QString convertWithSizeRestriction(const
+@@ -2072,8 +2046,6 @@ QString convertWithSizeRestriction(const
  }
  
  void Server::msgVersion(ServerUser *uSource, MumbleProto::Version &msg) {
@@ -478,7 +478,7 @@ Index: mumble-1.5.629/src/murmur/Messages.cpp
  	RATELIMIT(uSource);
  
  	uSource->m_version = MumbleProto::getVersion(msg);
-@@ -2094,8 +2066,6 @@ void Server::msgVersion(ServerUser *uSou
+@@ -2096,8 +2068,6 @@ void Server::msgVersion(ServerUser *uSou
  }
  
  void Server::msgUserList(ServerUser *uSource, MumbleProto::UserList &msg) {
@@ -487,7 +487,7 @@ Index: mumble-1.5.629/src/murmur/Messages.cpp
  	MSG_SETUP(ServerUser::Authenticated);
  
  	// The register permission is required on the root channel to be allowed to
-@@ -2171,8 +2141,6 @@ void Server::msgUserList(ServerUser *uSo
+@@ -2173,8 +2143,6 @@ void Server::msgUserList(ServerUser *uSo
  }
  
  void Server::msgVoiceTarget(ServerUser *uSource, MumbleProto::VoiceTarget &msg) {
@@ -496,7 +496,7 @@ Index: mumble-1.5.629/src/murmur/Messages.cpp
  	MSG_SETUP_NO_UNIDLE(ServerUser::Authenticated);
  
  	int target = static_cast< int >(msg.id());
-@@ -2220,8 +2188,6 @@ void Server::msgVoiceTarget(ServerUser *
+@@ -2222,8 +2190,6 @@ void Server::msgVoiceTarget(ServerUser *
  }
  
  void Server::msgPermissionQuery(ServerUser *uSource, MumbleProto::PermissionQuery &msg) {
@@ -505,7 +505,7 @@ Index: mumble-1.5.629/src/murmur/Messages.cpp
  	MSG_SETUP_NO_UNIDLE(ServerUser::Authenticated);
  
  	Channel *c = qhChannels.value(msg.channel_id());
-@@ -2235,8 +2201,6 @@ void Server::msgCodecVersion(ServerUser
+@@ -2237,8 +2203,6 @@ void Server::msgCodecVersion(ServerUser
  }
  
  void Server::msgUserStats(ServerUser *uSource, MumbleProto::UserStats &msg) {
@@ -514,7 +514,7 @@ Index: mumble-1.5.629/src/murmur/Messages.cpp
  	MSG_SETUP_NO_UNIDLE(ServerUser::Authenticated);
  	VICTIM_SETUP;
  	const BandwidthRecord &bwr            = pDstServerUser->bwr;
-@@ -2324,8 +2288,6 @@ void Server::msgUserStats(ServerUser *uS
+@@ -2326,8 +2290,6 @@ void Server::msgUserStats(ServerUser *uS
  }
  
  void Server::msgRequestBlob(ServerUser *uSource, MumbleProto::RequestBlob &msg) {
@@ -523,7 +523,7 @@ Index: mumble-1.5.629/src/murmur/Messages.cpp
  	MSG_SETUP_NO_UNIDLE(ServerUser::Authenticated);
  
  	int ntextures     = msg.session_texture_size();
-@@ -2376,8 +2338,6 @@ void Server::msgSuggestConfig(ServerUser
+@@ -2378,8 +2340,6 @@ void Server::msgSuggestConfig(ServerUser
  }
  
  void Server::msgPluginDataTransmission(ServerUser *sender, MumbleProto::PluginDataTransmission &msg) {

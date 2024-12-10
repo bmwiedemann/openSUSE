@@ -39,4 +39,21 @@
   * Adjusted to 52px-tall valued OSD container, 4px progress bar</comment>
     <requestid>1223143</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f655fe1e20ab8f581f27509c4bcf993f</srcmd5>
+    <version>1.0.0~alpha4+0</version>
+    <time>1733775028</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.0~alpha4+0:
+  * update iced
+  * Adjusted to 52px-tall valued OSD container, 4px progress bar
+  * Updated osd outline dimensions to be according to spec
+  * Update osd view layout
+  * Add zh_TW translation
+  * support CARGO_TARGET_DIR
+  * Show volume as muted if mute is active
+  * Update `cosmic-settings-subscription` for integer keyboard brightness
+  * Divide display brighness by maximum</comment>
+    <requestid>1228859</requestid>
+  </revision>
 </revisionlist>

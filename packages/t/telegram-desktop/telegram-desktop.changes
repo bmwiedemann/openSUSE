@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Nov 17 09:24:53 UTC 2024 - Xu Zhao <i@xuzhao.net>
+
+- Update to version 5.9.0
+  * Affiliate programs for bots.
+  * Add option to show folder tags in chats list.
+- Add 0007-tg_owt-h264-dlopen.patch
+  * Patch tg_owt to load h264 decoder with dlopen.
+
+-------------------------------------------------------------------
 Fri Oct 18 18:26:23 UTC 2024 - Dmitry Roshchin <dmitry_r@opensuse.org>
 
 - Update to version 5.6.3

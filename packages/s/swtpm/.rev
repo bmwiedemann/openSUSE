@@ -338,4 +338,12 @@
     * Require that libtpms v0.10 is available for TPMLIB_SetProfile (forwarded request 1228302 from aplanas)</comment>
     <requestid>1228304</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>b6aa3bb5738fc20f55358d5fe1395bd3</srcmd5>
+    <version>0.10.0</version>
+    <time>1733774983</time>
+    <user>anag+factory</user>
+    <comment>Fix build without %check (boo#1227364) (forwarded request 1229015 from bmwiedemann)</comment>
+    <requestid>1229046</requestid>
+  </revision>
 </revisionlist>

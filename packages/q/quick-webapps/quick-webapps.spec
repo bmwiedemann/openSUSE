@@ -18,11 +18,11 @@
 
 %define         appname io.github.elevenhsoft.WebApps
 Name:           quick-webapps
-Version:        0.5.1+git20241009.953a096
+Version:        0.5.4a+2
 Release:        0
 Summary:        Web App Manager written with love and libcosmic
 License:        GPL-3.0-only
-URL:            https://github.com/elevenhsoft/WebApps
+URL:            https://github.com/cosmic-utils/web-apps
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging

@@ -34,4 +34,22 @@
 - require rust &gt;= 1.80</comment>
     <requestid>1223142</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>94fba02f9c04c8fe6cd9eac62a218bc5</srcmd5>
+    <version>1.0.0~alpha4+0</version>
+    <time>1733775026</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.0~alpha4+0:
+  * update libcosmic
+  * chore: update deps
+  * update iced
+  * Make failure to connect to journald a warning, not a hard error
+  * Add a defaulted systemd feature to include and use tracing_journald
+  * chore: update deps
+  * Add zh-TW translation
+  * support CARGO_TARGET_DIR
+  * fix: set caps for timeout and notification list
+  * cleanup</comment>
+    <requestid>1228858</requestid>
+  </revision>
 </revisionlist>

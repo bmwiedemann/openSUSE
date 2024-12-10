@@ -18,7 +18,7 @@
 
 %define         appname com.github.bhh32.GUIScaleApplet
 Name:           cosmic-ext-applet-tailscale
-Version:        1.0.0
+Version:        2.0.0+1
 Release:        0
 Summary:        Tailscale applet for the COSMIC Desktop
 License:        BSD-3-Clause

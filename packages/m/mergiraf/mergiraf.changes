@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Dec  8 09:30:11 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.4.0:
+  New languages
+  * Python
+  * TOML
+  * Scala
+  * Typescript
+  Performance
+  * Many performance improvements.
+  Bug fixes
+  * The solve command preserves revision names in conflicts.
+  * Don't swallow trailing whitespace of merged nodes.
+  * Make helpers runnable from any directory.
+  New features
+  * Replace MERGIRAF_DISABLE=1 by mergiraf=0
+  * Support for restricting commutativity.
+
+-------------------------------------------------------------------
 Wed Nov 13 20:01:16 UTC 2024 - mardnh@gmx.de
 
 - Update to version 0.3.1:

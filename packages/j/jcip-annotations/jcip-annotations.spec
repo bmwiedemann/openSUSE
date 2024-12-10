@@ -27,7 +27,7 @@ Source0:        http://www.jcip.net/jcip-annotations-src.jar
 Source1:        https://repo1.maven.org/maven2/net/jcip/jcip-annotations/1.0/jcip-annotations-1.0.pom
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local >= 6
+BuildRequires:  javapackages-local
 BuildRequires:  unzip
 BuildArch:      noarch
 
@@ -72,7 +72,7 @@ install -pm 0644 target/%{name}-%{version}.jar \
 
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}
-%{mvn_install_pom} %{SOURCE1} %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
+install -pm 0644 %{SOURCE1} %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
 %add_maven_depmap JPP-%{name}.pom %{name}.jar -a "com.github.stephenc.jcip:%{name}"
 
 # javadoc

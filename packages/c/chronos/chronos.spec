@@ -18,20 +18,18 @@
 
 %define         appname com.francescogaglione.chronos
 Name:           chronos
-Version:        0.1.1+10
+Version:        0.1.4+3
 Release:        0
 Summary:        Chronos is a simple Pomodoro timer
 License:        GPL-3.0-only
 URL:            https://github.com/cosmic-utils/Chronos
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-Patch0:         fix-justfile.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  just
 BuildRequires:  pkgconfig
 BuildRequires:  rust >= 1.80
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(xkbcommon)
 
 %description
@@ -45,7 +43,6 @@ just build-release
 
 %install
 just rootdir=%{buildroot} prefix=%{_prefix} install
-%suse_update_desktop_file %{appname}
 
 %check
 %{cargo_test}

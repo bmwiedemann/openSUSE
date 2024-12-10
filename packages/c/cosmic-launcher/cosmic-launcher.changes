@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec 06 00:14:14 UTC 2024 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha4+0:
+  * update pop-launcher
+  * improv: increase truncate limit
+  * update libcosmic
+  * Correct the filename for the Swedish translation (#189)
+  * i18n(sv): add translation
+  * chore: padding fixes
+
+-------------------------------------------------------------------
 Thu Oct 31 22:20:48 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.0.0~alpha3:

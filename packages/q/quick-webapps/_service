@@ -4,9 +4,11 @@
     <param name="url">https://github.com/cosmic-utils/web-apps.git</param>
     <param name="scm">git</param>
     <param name="revision">master</param>
-    <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
+    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
+    <param name="versionrewrite-pattern">v(.*)\+0</param>
     <param name="package-meta">yes</param>
     <param name="filename">quick-webapps</param>
+    <param name="changesgenerate">enable</param>
   </service>
   <service name="recompress" mode="manual">
     <param name="file">*.tar</param>

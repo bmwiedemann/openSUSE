@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Dec 08 09:04:12 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.17.3:
+  * fix(sca): Revert recent SCA changes for Ruby
+
+-------------------------------------------------------------------
+Sun Dec 08 08:48:12 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.17.2:
+  * fix(qemu): fix MacOS crosscompile path (#1678)
+  * fix(sca): Don't generate ruby dep when found in shebang
+  * fix(sca_test): Check for ruby-base
+  * fix(sca): Generate dependency for ruby-*-base instead of ruby-*
+  * Improve comment stripping errors
+  * Add package.srcdir substitution to README
+
+-------------------------------------------------------------------
 Mon Dec 02 10:02:15 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.17.1:

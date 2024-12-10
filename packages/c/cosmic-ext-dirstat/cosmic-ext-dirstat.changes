@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Dec 06 04:03:25 UTC 2024 - rrahl0@opensuse.org
+
+- Update to version 0.1.0+git20241120.bab06c8:
+  * Update screenshot.png
+  * a little clippy
+  * Update to latest libcosmic, use tooltip widget
+
+-------------------------------------------------------------------
+Thu Aug  8 00:59:32 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- standardize packaging with also fixes for miscellaneous hardcoding
+  filenames, using @PARENT_TAG where applicable, and be more specific
+  with files in the %files section (so no non-wanted files are getting
+  added
+
+-------------------------------------------------------------------
 Sat Jul 13 08:19:13 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - initial packaging

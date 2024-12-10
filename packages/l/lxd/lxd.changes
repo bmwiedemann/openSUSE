@@ -28,7 +28,8 @@ Tue Jun 11 11:27:33 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
   + Debug mode for EDK2 UEFI firmware
   + Authorization restructure
   + Shiftfs support has been removed
-  
+  + Fix CVE-2023-46565. bsc#1223794
+
 -------------------------------------------------------------------
 Mon Nov 20 21:51:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
 

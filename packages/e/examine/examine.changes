@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec 06 04:25:48 UTC 2024 - rrahl0@opensuse.org
+
+- Update to version 1.0.0+13:
+  * chore: set version in Cargo.toml
+  * chore: update libcosmic (and other deps)
+  * Update Cargo.lock
+  * improv: add dbus-config feature to Cargo.toml
+  * upd: update dependencies (libcosmic + iced 0.13)
+  * improv: allow clicking on links on distribution page
+
+-------------------------------------------------------------------
 Sat Oct 12 13:53:25 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - initial packaging

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Dec  7 19:23:19 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to version 9.15.0:
+  * Metadata directory version bumped to force fresh cache after
+    we shipped a fix to the metadata write function. This change
+    is backward compatible as install doesn't require a metadata cache
+  * pnpm update --global should not crash if there are no any
+    global packages installed #7898
+  * Fix an exception when running pnpm update --interactive if
+    catalogs are used.
+
+-------------------------------------------------------------------
 Sat Nov 30 20:15:39 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
 
 - update to version 9.14.4:

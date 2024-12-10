@@ -5,7 +5,7 @@
     <param name="changesgenerate">enable</param>
     <param name="filename">mumble</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">v1.5.634</param>
+    <param name="revision">v1.5.735</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
   </service>

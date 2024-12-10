@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Dec 05 22:45:45 UTC 2024 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha4+0:
+  * fix(battery): fix brightness slider lag
+  * update libcosmic
+  * chore(tiling): update text for tile-current
+  * feat: overamplification support for audio applet like cosmic system settings
+  * fix: update libcosmic
+  * refactor: status area single threaded executor
+  * fix: use `on_press_down` to toggle time applet
+  * fix: a11y applet desktop file validation
+  * cleanup(a11y): imports
+  * fix: patch sctk
+
+-------------------------------------------------------------------
 Thu Oct 31 22:09:04 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.0.0~alpha3:

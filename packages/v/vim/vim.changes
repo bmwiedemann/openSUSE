@@ -1,4 +1,165 @@
 -------------------------------------------------------------------
+Sat Dec  7 12:51:41 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 9.1.0908
+- refresh vim-7.3-mktemp_tutor.patch 
+ * 9.1.0908: not possible to configure :messages
+ * 9.1.0907: printoptions:portrait does not change postscript Orientation
+ * runtime(doc): Add vietnamese.txt to helps main TOC
+ * 9.1.0906: filetype: Nvidia PTX files are not recognized
+ * runtime(doc): updated version9.txt with changes from v9.1.0905
+ * 9.1.0905: Missing information in CompleteDone event
+ * 9.1.0904: Vim9: copy-paste error in class_defining_member()
+ * 9.1.0903: potential overflow in spell_soundfold_wsal()
+ * runtime(netrw): do not detach when launching external programs in gvim
+ * runtime(doc): make tag alignment more consistent in filetype.txt
+ * runtime(doc): fix wrong syntax and style of vietnamese.txt
+ * translation(it): update Italian manpage for vimtutor
+ * runtime(lua): add optional lua function folding
+ * Filelist: include translations for Chapter 2 tutor
+ * translation(vi): Update Vietnamese translation
+ * runtime(doc): include vietnamese.txt
+ * runtime(tutor): fix another typo in tutor2
+ * runtime(doc): fix typo in vimtutor manpage
+ * translation(it): update Italian manpage for vimtutor
+ * translation(it): include Italian version of tutor chapter 2
+ * runtime(tutor): regenerated some translated tutor1 files
+ * runtime(tutor): fix typo in Chapter 2
+ * 9.1.0902: filetype: Conda configuration files are not recognized
+ * runtime(doc): Tweak documentation style a bit
+ * runtime(tutor): update the tutor files and re-number the chapters
+ * runtime(tutor): Update the makefiles for tutor1 and tutor2 files
+ * 9.1.0901: MS-Windows: vimtutor batch script can be improved
+ * runtime(doc): remove buffer-local completeopt todo item
+ * 9.1.0900: Vim9: digraph_getlist() does not accept bool arg
+ * runtime(typst): provide a formatlistpat in ftplugin
+ * runtime(doc): Update documentation for "noselect" in 'completeopt'
+ * 9.1.0899: default for 'backspace' can be set in C code
+ * runtime(helptoc): reload cached g:helptoc.shell_prompt when starting toc
+ * translation(ru): Updated messages translation
+ * 9.1.0898: runtime(compiler): pytest compiler not included
+ * 9.1.0897: filetype: pyrex files are not detected
+ * runtime(compiler): update eslint compiler
+ * 9.1.0896: completion list wrong after v9.1.0891
+ * runtime(doc): document changed default value for 'history'
+ * 9.1.0895: default history value is too small
+ * 9.1.0894: No test for what the spotbug compiler parses
+ * 9.1.0893: No test that undofile format does not regress
+ * translation(de): update German manpages
+ * runtime(compiler): include spotbugs Java linter
+ * 9.1.0892: the max value of 'tabheight' is limited by other tabpages
+ * runtime(po): remove poDiffOld/New, add po-format flags to syntax file
+ * 9.1.0891: building the completion list array is inefficient
+ * patch 9.1.0890: %! item not allowed for 'rulerformat'
+ * runtime(gzip): load undofile if there exists one
+ * 9.1.0889: Possible unnecessary redraw after adding/deleting lines
+ * 9.1.0888: leftcol property not available in getwininfo()
+ * 9.1.0887: Wrong expression in sign.c
+ * 9.1.0886: filetype: debian control file not detected
+ * runtime(c3): include c3 filetype plugin
+ * 9.1.0885: style of sign.c can be improved
+ * 9.1.0884: gcc warns about uninitialized variable
+ * runtime(apache): Update syntax directives for apache server 2.4.62
+ * translation(ru): updated vimtutor translation, update MAINTAINERS file
+ * 9.1.0883: message history cleanup is missing some tests
+ * runtime(doc): Expand docs on :! vs. :term
+ * runtime(netrw): Fixing powershell execution issues on Windows
+ * 9.1.0882: too many strlen() calls in insexpand.c
+ * 9.1.0881: GUI: message dialog may not get focus
+ * runtime(netrw): update netrw's decompress logic
+ * runtime(apache): Update syntax keyword definition
+ * runtime(misc): add Italian LICENSE and (top-level) README file
+ * 9.1.0880: filetype: C3 files are not recognized
+ * runtime(doc): add helptag for :HelpToc command
+ * 9.1.0879: source is not consistently formatted
+ * Add clang-format config file
+ * runtime(compiler): fix escaping of arguments passed to :CompilerSet
+ * 9.1.0878: termdebug: cannot enable DEBUG mode
+ * 9.1.0877: tests: missing test for termdebug + decimal signs
+ * 9.1.0876: filetype: openCL files are not recognized
+ * 9.1.0875: filetype: hyprlang detection can be improved
+ * 9.1.0874: filetype: karel files are not detected
+ * 9.1.0873: filetype: Vivado files are not recognized
+ * 9.1.0872: No test for W23 message
+ * 9.1.0871: getcellpixels() can be further improved
+ * 9.1.0870: too many strlen() calls in eval.c
+ * 9.1.0869: Problem: curswant not set on gm in folded line
+ * 9.1.0868: the warning about missing clipboard can be improved
+ * runtime(doc): Makefile does not clean up all temporary files
+ * 9.1.0867: ins_compl_add() has too many args
+ * editorconfig: don't trim trailing whitespaces in runtime/doc
+ * translation(am): Remove duplicate keys in desktop files
+ * runtime(doc): update helptags
+ * runtime(filetype): remove duplicated *.org file pattern
+ * runtime(cfg): only consider leading // as starting a comment
+ * 9.1.0866: filetype: LLVM IR files are not recognized
+ * 9.1.0865: filetype: org files are not recognized
+ * 9.1.0864: message history is fixed to 200
+ * 9.1.0863: getcellpixels() can be further improved
+ * runtime(sh): better function support for bash/zsh in indent script
+ * runtime(netrw): small fixes to netrw#BrowseX
+ * 9.1.0862: 'wildmenu' not enabled by default in nocp mode
+ * runtime(doc): update how to report issues for mac Vim
+ * runtime(doc): mention option-backslash at :h CompilerSet
+ * runtime(compiler): include a Java Maven compiler plugin
+ * runtime(racket): update Racket runtime files
+ * runtime(doc): improve indentation in examples for netrw-handler
+ * runtime(doc): improve examples for netrw-handler functions
+ * runtime(idris2): include filetype,indent+syntax plugins for (L)Idris2 + ipkg
+ * runtime(doc): clarify the use of filters and external commands
+ * 9.1.0861: Vim9: no runtime check for object member access of any var
+ * runtime(compiler): update pylint linter
+ * 9.1.0860: tests: mouse_shape tests use hard code sleep value
+ * 9.1.0859: several problems with the GLVS plugin
+ * 9.1.0858: Coverity complains about dead code
+ * runtime(tar): Update tar.vim to support permissions
+ * 9.1.0857: xxd: --- is incorrectly recognized as end-of-options
+ * 9.1.0851: too many strlen() calls in getchar.c
+ * 9.1.0850: Vim9: cannot access nested object inside objects
+ * runtime(tex): extra Number highlighting causes issues
+ * runtime(vim): Fix indent after :silent! function
+ * 9.1.0849: there are a few typos in the source
+ * runtime(netrw): directory symlink not resolved in tree view
+ * runtime(doc): add a table of supported Operating Systems
+ * runtime(tex): update Last Change header in syntax script
+ * runtime(doc): fix typo in g:termdebug_config
+ * runtime(vim): Update base-syntax, improve :normal highlighting
+ * runtime(tex): add Number highlighting to syntax file
+ * runtime(doc): Tweak documentation style a bit
+ * 9.1.0848: if_lua: v:false/v:true are not evaluated to boolean
+ * runtime(dune): use :setl instead of :set in ftplugin
+ * runtime(termdebug): allow to use decimal signs
+ * translation(it): Updated Italian vimtutor
+ * runtime(compiler): improve cppcheck
+ * git: git-blame-ignore-revs shown as an error on Github
+ * 9.1.0847: tests: test_popupwin fails because of updated help file
+ * 9.1.0846: debug symbols for xxd are not cleaned in Makefile
+ * runtime(structurizr): Update structurizr syntax
+ * runtime(8th): updated 8th syntax
+ * runtime(doc): Add pi_tutor.txt to help TOC
+ * runtime(compiler): add mypy and ruff compiler; update pylint linter
+ * runtime(netrw): fix several bugs in netrw tree listing
+ * runtime(netrw): prevent polluting the search history
+ * 9.1.0845: vimtutor shell script can be improved
+ * 9.1.0844: if_python: no way to pass local vars to python
+ * 9.1.0843: too many strlen() calls in undo.c
+ * runtime(doc): update default value for fillchars option
+ * runtime(compiler): fix typo in cppcheck compiler plugin
+ * runtime(doc): simplify vimtutor manpage a bit more
+ * runtime(matchparen): Add matchparen_disable_cursor_hl config option
+ * 9.1.0842: not checking for the sync() systemcall
+ * 9.1.0841: tests: still preferring python2 over python3
+ * 9.1.0840: filetype: idris2 files are not recognized
+ * 9.1.0839: filetype: leo files are not recognized
+ * runtime(cook): include cook filetype plugin
+ * runtime(debversions): Update Debian versions
+ * patch 9.1.0838: vimtutor is bash-specific
+ * runtime(doc): add help specific modeline to pi_tutor.txt
+ * Filelist: vimtutor chapter 2 is missing in Filelist
+ * 9.1.0837: cross-compiling has some issues
+ * runtime(vimtutor): Add a second chapter
+
+-------------------------------------------------------------------
 Sun Nov  3 15:50:30 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 9.1.0836 

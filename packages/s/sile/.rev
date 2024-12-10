@@ -335,4 +335,14 @@
  * https://github.com/sile-typesetter/sile/releases/tag/v0.15.6</comment>
     <requestid>1224051</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>11b6e01bc57edc67341067be31a63648</srcmd5>
+    <version>0.15.7</version>
+    <time>1733775109</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.15.7
+ * https://github.com/sile-typesetter/sile/releases/tag/v0.15.7
+- Added luarocks as a BuildRequires</comment>
+    <requestid>1229144</requestid>
+  </revision>
 </revisionlist>

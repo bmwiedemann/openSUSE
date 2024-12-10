@@ -20,7 +20,7 @@
 %bcond_with test
 %define appid net.nokyan.Resources
 Name:           resources
-Version:        1.7.0
+Version:        1.7.1
 Release:        0
 Summary:        Monitor your system processes
 License:        GPL-3.0-or-later
@@ -31,8 +31,8 @@ BuildRequires:  appstream-glib
 BuildRequires:  cargo-packaging
 BuildRequires:  desktop-file-utils
 BuildRequires:  meson
-BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.5.0
+BuildRequires:  pkgconfig(gtk4) >= 4.10
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.6.0
 Requires:       dmidecode
 Requires:       polkit
 

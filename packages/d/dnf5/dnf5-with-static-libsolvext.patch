@@ -1,6 +1,6 @@
-From ead23935896021491771553e73a43f8adc844520 Mon Sep 17 00:00:00 2001
-From: Neal Gompa <ngompa@opensuse.org>
-Date: Thu, 21 Sep 2023 05:50:40 -0400
+From efcdddb25419ea6c21f2024a0e8af654d4841b85 Mon Sep 17 00:00:00 2001
+From: Neal Gompa <neal@gompa.dev>
+Date: Sat, 23 Nov 2024 19:34:42 -0500
 Subject: [PATCH] Add build option to link libsolvext dynamic library
  dependencies
 
@@ -14,14 +14,14 @@ This patch works around it by doing the declarations here rather than
 in libsolv, since it's not easy to fix there, given upstream constraints.
 ---
  CMakeLists.txt         |  3 +++
- libdnf5/CMakeLists.txt | 20 +++++++++++++++++++-
- 2 files changed, 22 insertions(+), 1 deletion(-)
+ libdnf5/CMakeLists.txt | 24 +++++++++++++++++++++++-
+ 2 files changed, 26 insertions(+), 1 deletion(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 5bc551a7..3014b3e0 100644
+index bad35c26..8272ba3f 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -56,6 +56,9 @@ option(WITH_PERL5 "Build Perl 5 bindings" ON)
+@@ -58,6 +58,9 @@ option(WITH_PERL5 "Build Perl 5 bindings" ON)
  option(WITH_PYTHON3 "Build Python 3 bindings" ON)
  option(WITH_RUBY "Build Ruby bindings" ON)
  
@@ -32,30 +32,34 @@ index 5bc551a7..3014b3e0 100644
  if(WITH_PERFORMANCE_TESTS AND WITH_SANITIZERS)
      message(FATAL_ERROR "Cannot perform performance tests with sanitizers enabled because they influence the results. Disable sanitizers to continue.")
 diff --git a/libdnf5/CMakeLists.txt b/libdnf5/CMakeLists.txt
-index 237ac9e4..7151c63a 100644
+index d360901e..df9535a3 100644
 --- a/libdnf5/CMakeLists.txt
 +++ b/libdnf5/CMakeLists.txt
-@@ -63,7 +63,25 @@ pkg_check_modules(RPM REQUIRED rpm>=4.17.0)
- list(APPEND LIBDNF5_PC_REQUIRES "${RPM_MODULE_NAME}")
+@@ -100,7 +100,29 @@ list(APPEND LIBDNF5_PC_REQUIRES "${RPM_MODULE_NAME}")
  target_link_libraries(libdnf5 PRIVATE ${RPM_LIBRARIES})
+ target_link_libraries(libdnf5_static PRIVATE ${RPM_LIBRARIES})
  
 -if(WITH_COMPS)
 +if(WITH_STATIC_LIBSOLV)
 +    pkg_check_modules(BZIP2 REQUIRED bzip2)
 +    list(APPEND LIBDNF5_PC_REQUIRES_PRIVATE "${BZIP2_MODULE_NAME}")
 +    target_link_libraries(libdnf5 PRIVATE ${BZIP2_LIBRARIES})
++    target_link_libraries(libdnf5_static PRIVATE ${BZIP2_LIBRARIES})
 +
 +    pkg_check_modules(LZMA REQUIRED liblzma)
 +    list(APPEND LIBDNF5_PC_REQUIRES_PRIVATE "${LZMA_MODULE_NAME}")
 +    target_link_libraries(libdnf5 PRIVATE ${LZMA_LIBRARIES})
++    target_link_libraries(libdnf5_static PRIVATE ${LZMA_LIBRARIES})
 +
 +    pkg_check_modules(ZLIB REQUIRED zlib)
 +    list(APPEND LIBDNF5_PC_REQUIRES_PRIVATE "${ZLIB_MODULE_NAME}")
 +    target_link_libraries(libdnf5 PRIVATE ${ZLIB_LIBRARIES})
++    target_link_libraries(libdnf5_static PRIVATE ${ZLIB_LIBRARIES})
 +
 +    pkg_check_modules(ZSTD REQUIRED libzstd)
 +    list(APPEND LIBDNF5_PC_REQUIRES_PRIVATE "${ZSTD_MODULE_NAME}")
 +    target_link_libraries(libdnf5 PRIVATE ${ZSTD_LIBRARIES})
++    target_link_libraries(libdnf5_static PRIVATE ${ZSTD_LIBRARIES})
 +endif()
 +
 +if(WITH_COMPS OR WITH_STATIC_LIBSOLV)
@@ -63,5 +67,5 @@ index 237ac9e4..7151c63a 100644
      list(APPEND LIBDNF5_PC_REQUIRES_PRIVATE "${LIBXML2_MODULE_NAME}")
      include_directories(${LIBXML2_INCLUDE_DIRS})
 -- 
-2.45.1
+2.47.0
 

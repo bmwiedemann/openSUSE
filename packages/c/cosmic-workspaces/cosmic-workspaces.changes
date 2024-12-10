@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Dec 06 01:03:13 UTC 2024 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha4+0:
+  * Don't panic if `dmabuf` global isn't present
+  * Run `cargo update`
+  * Close workspaces view if window spawns while open
+  * Correctly restrict modifiers in screencopy
+  * chore(desktop-file): remove ICED category
+  * Don't show background; rely on cosmic-comp for that
+  * Deduplicate `drag_surface` code a bit
+  * support CARGO_TARGET_DIR
+  * Move drag surface view into a function
+  * Run `cargo update`
+
+-------------------------------------------------------------------
 Thu Oct 31 22:39:20 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.0.0~alpha3:

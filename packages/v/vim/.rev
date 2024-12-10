@@ -7759,4 +7759,41 @@ always built-in because vim has direct perl dependencies anyway.
  * runtime(doc): Clean up minor formatting issues for builtin functions</comment>
     <requestid>1220427</requestid>
   </revision>
+  <revision rev="375" vrev="1">
+    <srcmd5>0139a6aab9d2e188e5b25444153dde36</srcmd5>
+    <version>9.1.0908</version>
+    <time>1733774981</time>
+    <user>anag+factory</user>
+    <comment>- update to 9.1.0908
+- refresh vim-7.3-mktemp_tutor.patch 
+ * 9.1.0908: not possible to configure :messages
+ * 9.1.0907: printoptions:portrait does not change postscript Orientation
+ * runtime(doc): Add vietnamese.txt to helps main TOC
+ * 9.1.0906: filetype: Nvidia PTX files are not recognized
+ * runtime(doc): updated version9.txt with changes from v9.1.0905
+ * 9.1.0905: Missing information in CompleteDone event
+ * 9.1.0904: Vim9: copy-paste error in class_defining_member()
+ * 9.1.0903: potential overflow in spell_soundfold_wsal()
+ * runtime(netrw): do not detach when launching external programs in gvim
+ * runtime(doc): make tag alignment more consistent in filetype.txt
+ * runtime(doc): fix wrong syntax and style of vietnamese.txt
+ * translation(it): update Italian manpage for vimtutor
+ * runtime(lua): add optional lua function folding
+ * Filelist: include translations for Chapter 2 tutor
+ * translation(vi): Update Vietnamese translation
+ * runtime(doc): include vietnamese.txt
+ * runtime(tutor): fix another typo in tutor2
+ * runtime(doc): fix typo in vimtutor manpage
+ * translation(it): update Italian manpage for vimtutor
+ * translation(it): include Italian version of tutor chapter 2
+ * runtime(tutor): regenerated some translated tutor1 files
+ * runtime(tutor): fix typo in Chapter 2
+ * 9.1.0902: filetype: Conda configuration files are not recognized
+ * runtime(doc): Tweak documentation style a bit
+ * runtime(tutor): update the tutor files and re-number the chapters
+ * runtime(tutor): Update the makefiles for tutor1 and tutor2 files
+ * 9.1.0901: MS-Windows: vimtutor batch script can be improved
+ * runtime(doc): remove buffer-local completeopt todo item</comment>
+    <requestid>1229027</requestid>
+  </revision>
 </revisionlist>

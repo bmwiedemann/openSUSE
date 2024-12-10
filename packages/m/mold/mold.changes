@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Dec  8 08:58:41 UTC 2024 - Martin Liška <martin.liska@hey.com>
+
+- Update to version 2.35.0
+  * Big-endian ARM64 is now supported. ARM64 is a bi-endian processor, meaning that
+    the processor can run in either little- or big-endian mode. Even though
+    little-endian is the de facto standard, the ARM64 processor-specific ABI defines
+    its big-endian variant, and the ARM toolchain supports it. Now we support it
+    too. (882e7eb)
+  * Big-endian SH4 is now supported. SH4 has become a minor CPU nowadays, and its
+    big-endian variant is even more so, but some SHARP scientific calculators still
+    use SH4 processors in big-endian mode. (0cb9fc6)
+  * mold attempts to overwrite an existing file if a specified output file already
+    exists because reusing an existing file is much faster than creating a fresh
+    file and writing to it on Linux. If an existing file is currently running,
+    open(2) for that file fails with ETXTBSY. When that happens, mold falls back to
+    creating a new file. The problem here is that Linux kernel version 6.11 changed
+    that well-known behavior of open(2), and it now allows user programs to
+    overwrite a running executable. That caused a very mysterious issue for programs
+    that rebuild themselves during the build, such as gcc or ninja (#1361). Even
+    though the kernel's change has been reverted (torvalds/linux@3b83203), we need
+    to make adjustments to mold for that particular version of the Linux kernel. So,
+    if mold detects that it is running on Linux 6.11, it no longer tries to reuse an
+    existing output file. (8e4f7b5)
+  * On rare occasions, mold could fail with a "ConcurrentMap is full" error. Now the
+    issue has been resolved. (e56b649)
+  * Even if a user choose not to use mimalloc memory allocator (i.e. built mold with
+    -DMOLD_USE_MIMALLOC=0), mold was still being built with mimalloc. This issue has
+    been resolved. (ffd10dd)
+  * [s390x] s390x uses nonstandard 8-byte entries for the .hash section. Previously,
+    mold created 4-byte entries for .hash, which caused mold-generated executables
+    to crash on startup if they were built with -Wl,--hash-style=sysv. Now, mold
+    generates a psABI-compliant .hash section. (e2e1146)
+
+-------------------------------------------------------------------
 Fri Oct  4 18:37:30 UTC 2024 - Martin Liška <martin.liska@hey.com>
 
 - Update to version 2.34.1

@@ -72,4 +72,28 @@
     <comment></comment>
     <requestid>1210014</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d1ad136ae277a9e800056ad2aa178542</srcmd5>
+    <version>5.2.8.1</version>
+    <time>1733775107</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.2.8.1
+  + 5.2.8.1 changelog: https://github.com/rpm-software-management/dnf5/releases/tag/5.2.8.1
+  + 5.2.8.0 changelog: https://github.com/rpm-software-management/dnf5/releases/tag/5.2.8.0
+- Add patch to fix build with sdbus-cpp v2
+  + Patch: dnf5-PR1888.patch
+- Temporarily disable running tests until crashes are fixed (gh#rpm-software-management/dnf5#1893)
+
+- Update to 5.2.7.0
+  + 5.2.7.0 changelog: https://github.com/rpm-software-management/dnf5/releases/tag/5.2.7.0
+  + 5.2.6.2 changelog: https://github.com/rpm-software-management/dnf5/releases/tag/5.2.6.2
+  + 5.2.6.1 changelog: https://github.com/rpm-software-management/dnf5/releases/tag/5.2.6.1
+  + 5.2.6.0 changelog: https://github.com/rpm-software-management/dnf5/releases/tag/5.2.6.0
+  + 5.2.5.0 changelog: https://github.com/rpm-software-management/dnf5/releases/tag/5.2.5.0
+  + 5.2.4.0 changelog: https://github.com/rpm-software-management/dnf5/releases/tag/5.2.4.0
+- Refresh patches
+  + Patch: dnf5-disable-Werror.patch
+  + Patch: dnf5-with-static-libsolvext.patch</comment>
+    <requestid>1229134</requestid>
+  </revision>
 </revisionlist>

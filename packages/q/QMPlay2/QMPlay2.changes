@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Dec  7 12:59:18 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 24.12.06:
+  * optimize visualizations when wallpaper is used (especially for
+    Qt6),
+  * fix issues with some unsupported codecs for DXVA2/D3D11VA,
+  * fix loading Vulkan library for some Linux distributions,
+  * fix displaying covers for radio stations (regression),
+  * improve applying custom styles for ASS/SSA subtitles,
+  * fix enlarging small covers when blur is disabled,
+  * add displaying frequency limit for FFT spectrum,
+  * fix MediaBrowser download file names on Qt 6.8,
+  * add bold font style for text subtitles,
+  * read CUE files containing binary data,
+  * use white subtitles color as default,
+  * fix playlist sorting for mixed case,
+  * allow to scale bitmap subtitles,
+  * add more YouTubeDL settings,
+  * update translations files,
+  * other minor fixes.
+- Add 0001-fix-log-message.patch to fix excessive log generation
+
+-------------------------------------------------------------------
 Sun Jun 16 21:13:24 UTC 2024 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to version 24.06.16:

@@ -4177,4 +4177,15 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
   upstream)</comment>
     <requestid>1228313</requestid>
   </revision>
+  <revision rev="437" vrev="3">
+    <srcmd5>e8970d70e50c71600d0eb16a125e56fa</srcmd5>
+    <version>21.1.14</version>
+    <time>1733774984</time>
+    <user>anag+factory</user>
+    <comment>- re-added and re-enabled u_xfree86-activate-GPU-screens-on-autobind.patch
+  in order to fix the regression of a black screen in login screen
+  (SDDM) on some hybrid graphics Laptop (Intel Meteor Lake-P/
+  NVIDIA GeForce RTX 4060) (boo#1234301)</comment>
+    <requestid>1229142</requestid>
+  </revision>
 </revisionlist>

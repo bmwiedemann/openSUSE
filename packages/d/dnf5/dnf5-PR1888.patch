@@ -1,0 +1,2089 @@
+From b26c5abfcb4b22e104a042e2d6faa66c8668f4e2 Mon Sep 17 00:00:00 2001
+From: Marek Blaha <mblaha@redhat.com>
+Date: Fri, 17 May 2024 12:11:06 +0200
+Subject: [PATCH 1/6] cmake: Move sdbus-c++ check to one place
+
+Also set SDBUS_CPP_VERSION_2 macro in case sdbus-c++ was found in
+version 2. This enables conditional compilation according the version of
+the library found.
+---
+ cmake/sdbus_cpp.cmake                               | 11 +++++++++++
+ dnf5-plugins/needs_restarting_plugin/CMakeLists.txt |  2 +-
+ dnf5/CMakeLists.txt                                 |  2 +-
+ dnf5daemon-client/CMakeLists.txt                    |  3 +--
+ dnf5daemon-server/CMakeLists.txt                    |  2 +-
+ 5 files changed, 15 insertions(+), 5 deletions(-)
+ create mode 100644 cmake/sdbus_cpp.cmake
+
+diff --git a/cmake/sdbus_cpp.cmake b/cmake/sdbus_cpp.cmake
+new file mode 100644
+index 000000000..914b20f2b
+--- /dev/null
++++ b/cmake/sdbus_cpp.cmake
+@@ -0,0 +1,11 @@
++
++# Attempt to find sdbus-c++ version 2 (preferred)
++pkg_check_modules(SDBUS_CPP REQUIRED sdbus-c++>=1)
++
++if(SDBUS_CPP_VERSION LESS 2)
++    message(STATUS "Using sdbus-c++ version 1")
++else()
++    # Define macro for version 2 if found
++    add_definitions(-DSDBUS_CPP_VERSION_2)
++    message(STATUS "Using sdbus-c++ version 2")
++endif()
+diff --git a/dnf5-plugins/needs_restarting_plugin/CMakeLists.txt b/dnf5-plugins/needs_restarting_plugin/CMakeLists.txt
+index 651d9f3d0..cf290146e 100644
+--- a/dnf5-plugins/needs_restarting_plugin/CMakeLists.txt
++++ b/dnf5-plugins/needs_restarting_plugin/CMakeLists.txt
+@@ -7,7 +7,7 @@ add_library(needs_restarting_cmd_plugin MODULE needs_restarting.cpp needs_restar
+ # disable the 'lib' prefix in order to create needs_restarting_cmd_plugin.so
+ set_target_properties(needs_restarting_cmd_plugin PROPERTIES PREFIX "")
+ 
+-pkg_check_modules(SDBUS_CPP REQUIRED sdbus-c++)
++include(sdbus_cpp)
+ 
+ target_link_libraries(needs_restarting_cmd_plugin PRIVATE dnf5 libdnf5 libdnf5-cli ${SDBUS_CPP_LIBRARIES})
+ 
+diff --git a/dnf5/CMakeLists.txt b/dnf5/CMakeLists.txt
+index 6ef8c67c8..05696137a 100644
+--- a/dnf5/CMakeLists.txt
++++ b/dnf5/CMakeLists.txt
+@@ -45,7 +45,7 @@ install(TARGETS dnf5 RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+ pkg_check_modules(RPM REQUIRED rpm>=4.17.0)
+ 
+ if(WITH_SYSTEMD)
+-  pkg_check_modules(SDBUS_CPP REQUIRED sdbus-c++)
++  include(sdbus_cpp)
+   pkg_check_modules(LIBSYSTEMD REQUIRED libsystemd)
+   add_definitions(-DWITH_SYSTEMD)
+   target_link_libraries(dnf5 PRIVATE ${RPM_LIBRARIES} ${SDBUS_CPP_LIBRARIES} ${LIBSYSTEMD_LIBRARIES})
+diff --git a/dnf5daemon-client/CMakeLists.txt b/dnf5daemon-client/CMakeLists.txt
+index aa824d715..142076e09 100644
+--- a/dnf5daemon-client/CMakeLists.txt
++++ b/dnf5daemon-client/CMakeLists.txt
+@@ -13,8 +13,7 @@ include_directories(.)
+ # TODO(mblaha) workaround for dnf5daemon-client using server's headers, fix
+ include_directories(..)
+ 
+-pkg_check_modules(SDBUS_CPP REQUIRED sdbus-c++>=0.9.0)
+-
++include(sdbus_cpp)
+ pkg_check_modules(JSONC REQUIRED json-c)
+ include_directories(${JSONC_INCLUDE_DIRS})
+ 
+diff --git a/dnf5daemon-server/CMakeLists.txt b/dnf5daemon-server/CMakeLists.txt
+index caeee223a..2897404c0 100644
+--- a/dnf5daemon-server/CMakeLists.txt
++++ b/dnf5daemon-server/CMakeLists.txt
+@@ -12,7 +12,7 @@ add_definitions(-DGETTEXT_DOMAIN=\"${GETTEXT_DOMAIN}\")
+ include_directories(.)
+ 
+ pkg_check_modules(JSONC REQUIRED json-c)
+-pkg_check_modules(SDBUS_CPP REQUIRED sdbus-c++>=0.9.0)
++include(sdbus_cpp)
+ find_package(Threads)
+ 
+ include_directories(${JSONC_INCLUDE_DIRS})
+
+From c48855b62d7aa509f023726dd4c51d09132f3248 Mon Sep 17 00:00:00 2001
+From: Marek Blaha <mblaha@redhat.com>
+Date: Fri, 7 Jun 2024 11:52:55 +0200
+Subject: [PATCH 2/6] dnfdaemon: sdbus-cpp v. 2 requires strong types
+
+- Use InterfaceName type instead of char * for interface names
+- Use SignalName type instead of char * for signal names
+- Use ServiceName instead of char * for bus names
+- Use Error::Name type instead of char * for errors
+---
+ .../needs_restarting.cpp                      |  9 +-
+ dnf5/commands/offline/offline.cpp             |  9 +-
+ dnf5daemon-server/callbacks.cpp               |  9 +-
+ dnf5daemon-server/callbacks.hpp               | 11 ++-
+ dnf5daemon-server/dbus.hpp                    | 83 ++++++++++---------
+ dnf5daemon-server/services/rpm/rpm.cpp        |  3 +-
+ dnf5daemon-server/session.cpp                 | 10 +--
+ dnf5daemon-server/session.hpp                 |  6 +-
+ dnf5daemon-server/session_manager.cpp         |  5 +-
+ include/libdnf5/sdbus_compat.hpp              | 39 +++++++++
+ 10 files changed, 118 insertions(+), 66 deletions(-)
+ create mode 100644 include/libdnf5/sdbus_compat.hpp
+
+diff --git a/dnf5-plugins/needs_restarting_plugin/needs_restarting.cpp b/dnf5-plugins/needs_restarting_plugin/needs_restarting.cpp
+index e8f695bae..6d9de330c 100644
+--- a/dnf5-plugins/needs_restarting_plugin/needs_restarting.cpp
++++ b/dnf5-plugins/needs_restarting_plugin/needs_restarting.cpp
+@@ -25,6 +25,7 @@ along with libdnf.  If not, see <https://www.gnu.org/licenses/>.
+ #include <libdnf5/conf/option_string.hpp>
+ #include <libdnf5/rpm/package.hpp>
+ #include <libdnf5/rpm/package_query.hpp>
++#include <libdnf5/sdbus_compat.hpp>
+ #include <libdnf5/utils/bgettext/bgettext-mark-domain.h>
+ #include <utils/string.hpp>
+ 
+@@ -33,10 +34,10 @@ along with libdnf.  If not, see <https://www.gnu.org/licenses/>.
+ #include <iostream>
+ #include <vector>
+ 
+-const std::string SYSTEMD_DESTINATION_NAME{"org.freedesktop.systemd1"};
+-const std::string SYSTEMD_OBJECT_PATH{"/org/freedesktop/systemd1"};
+-const std::string SYSTEMD_MANAGER_INTERFACE{"org.freedesktop.systemd1.Manager"};
+-const std::string SYSTEMD_UNIT_INTERFACE{"org.freedesktop.systemd1.Unit"};
++const SDBUS_SERVICE_NAME_TYPE SYSTEMD_DESTINATION_NAME{"org.freedesktop.systemd1"};
++const sdbus::ObjectPath SYSTEMD_OBJECT_PATH{"/org/freedesktop/systemd1"};
++const SDBUS_INTERFACE_NAME_TYPE SYSTEMD_MANAGER_INTERFACE{"org.freedesktop.systemd1.Manager"};
++const SDBUS_INTERFACE_NAME_TYPE SYSTEMD_UNIT_INTERFACE{"org.freedesktop.systemd1.Unit"};
+ 
+ namespace dnf5 {
+ 
+diff --git a/dnf5/commands/offline/offline.cpp b/dnf5/commands/offline/offline.cpp
+index 5d49a50af..4ca1f09ce 100644
+--- a/dnf5/commands/offline/offline.cpp
++++ b/dnf5/commands/offline/offline.cpp
+@@ -29,6 +29,7 @@ along with libdnf.  If not, see <https://www.gnu.org/licenses/>.
+ #include <libdnf5/base/goal.hpp>
+ #include <libdnf5/conf/const.hpp>
+ #include <libdnf5/conf/option_path.hpp>
++#include <libdnf5/sdbus_compat.hpp>
+ #include <libdnf5/transaction/offline.hpp>
+ #include <libdnf5/utils/bgettext/bgettext-lib.h>
+ #include <libdnf5/utils/bgettext/bgettext-mark-domain.h>
+@@ -48,10 +49,10 @@ using namespace libdnf5::cli;
+ 
+ const std::string & ID_TO_IDENTIFY_BOOTS = libdnf5::offline::OFFLINE_STARTED_ID;
+ 
+-const std::string SYSTEMD_DESTINATION_NAME{"org.freedesktop.systemd1"};
+-const std::string SYSTEMD_OBJECT_PATH{"/org/freedesktop/systemd1"};
+-const std::string SYSTEMD_MANAGER_INTERFACE{"org.freedesktop.systemd1.Manager"};
+-const std::string SYSTEMD_UNIT_INTERFACE{"org.freedesktop.systemd1.Unit"};
++const SDBUS_SERVICE_NAME_TYPE SYSTEMD_DESTINATION_NAME{"org.freedesktop.systemd1"};
++const sdbus::ObjectPath SYSTEMD_OBJECT_PATH{"/org/freedesktop/systemd1"};
++const SDBUS_INTERFACE_NAME_TYPE SYSTEMD_MANAGER_INTERFACE{"org.freedesktop.systemd1.Manager"};
++const SDBUS_INTERFACE_NAME_TYPE SYSTEMD_UNIT_INTERFACE{"org.freedesktop.systemd1.Unit"};
+ const std::string SYSTEMD_SERVICE_NAME{"dnf5-offline-transaction.service"};
+ 
+ int call(const std::string & command, const std::vector<std::string> & args) {
+diff --git a/dnf5daemon-server/callbacks.cpp b/dnf5daemon-server/callbacks.cpp
+index cefb93974..aa0ebb7ee 100644
+--- a/dnf5daemon-server/callbacks.cpp
++++ b/dnf5daemon-server/callbacks.cpp
+@@ -35,7 +35,8 @@ DbusCallback::DbusCallback(Session & session) : session(session) {
+     dbus_object = session.get_dbus_object();
+ }
+ 
+-sdbus::Signal DbusCallback::create_signal(std::string interface, std::string signal_name) {
++sdbus::Signal DbusCallback::create_signal(
++    const SDBUS_INTERFACE_NAME_TYPE & interface, const SDBUS_SIGNAL_NAME_TYPE & signal_name) {
+     auto signal = dbus_object->createSignal(interface, signal_name);
+     signal.setDestination(session.get_sender());
+     signal << session.get_object_path();
+@@ -45,7 +46,7 @@ sdbus::Signal DbusCallback::create_signal(std::string interface, std::string sig
+ std::chrono::time_point<std::chrono::steady_clock> DbusCallback::prev_print_time = std::chrono::steady_clock::now();
+ 
+ 
+-sdbus::Signal DownloadCB::create_signal_download(const std::string & signal_name, void * user_data) {
++sdbus::Signal DownloadCB::create_signal_download(const SDBUS_SIGNAL_NAME_TYPE & signal_name, void * user_data) {
+     auto signal = create_signal(dnfdaemon::INTERFACE_BASE, signal_name);
+     if (user_data) {
+         auto * data = reinterpret_cast<DownloadUserData *>(user_data);
+@@ -121,7 +122,9 @@ bool KeyImportRepoCB::repokey_import(const libdnf5::rpm::KeyInfo & key_info) {
+ 
+ 
+ sdbus::Signal DbusTransactionCB::create_signal_pkg(
+-    std::string interface, std::string signal_name, const std::string & nevra) {
++    const SDBUS_INTERFACE_NAME_TYPE & interface,
++    const SDBUS_SIGNAL_NAME_TYPE & signal_name,
++    const std::string & nevra) {
+     auto signal = create_signal(interface, signal_name);
+     signal << nevra;
+     return signal;
+diff --git a/dnf5daemon-server/callbacks.hpp b/dnf5daemon-server/callbacks.hpp
+index fab052e4d..1d5f31f77 100644
+--- a/dnf5daemon-server/callbacks.hpp
++++ b/dnf5daemon-server/callbacks.hpp
+@@ -25,6 +25,7 @@ along with libdnf.  If not, see <https://www.gnu.org/licenses/>.
+ #include <libdnf5/repo/repo_callbacks.hpp>
+ #include <libdnf5/rpm/rpm_signature.hpp>
+ #include <libdnf5/rpm/transaction_callbacks.hpp>
++#include <libdnf5/sdbus_compat.hpp>
+ #include <sdbus-c++/sdbus-c++.h>
+ 
+ #include <chrono>
+@@ -49,7 +50,8 @@ class DbusCallback {
+     Session & session;
+     sdbus::IObject * dbus_object;
+ 
+-    virtual sdbus::Signal create_signal(std::string interface, std::string signal_name);
++    virtual sdbus::Signal create_signal(
++        const SDBUS_INTERFACE_NAME_TYPE & interface, const SDBUS_SIGNAL_NAME_TYPE & signal_name);
+     static bool is_time_to_print() {
+         auto now = std::chrono::steady_clock::now();
+         auto delta = now - prev_print_time;
+@@ -76,7 +78,7 @@ class DownloadCB : public DbusCallback, public libdnf5::repo::DownloadCallbacks
+     int mirror_failure(void * user_cb_data, const char * msg, const char * url, const char * metadata) override;
+ 
+ private:
+-    sdbus::Signal create_signal_download(const std::string & signal_name, void * user_data);
++    sdbus::Signal create_signal_download(const SDBUS_SIGNAL_NAME_TYPE & signal_name, void * user_data);
+ };
+ 
+ 
+@@ -146,7 +148,10 @@ class DbusTransactionCB : public libdnf5::rpm::TransactionCallbacks, public Dbus
+     void finish();
+ 
+ private:
+-    sdbus::Signal create_signal_pkg(std::string interface, std::string signal_name, const std::string & nevra);
++    sdbus::Signal create_signal_pkg(
++        const SDBUS_INTERFACE_NAME_TYPE & interface,
++        const SDBUS_SIGNAL_NAME_TYPE & signal_name,
++        const std::string & nevra);
+ };
+ 
+ }  // namespace dnf5daemon
+diff --git a/dnf5daemon-server/dbus.hpp b/dnf5daemon-server/dbus.hpp
+index 61482b90e..68df8db15 100644
+--- a/dnf5daemon-server/dbus.hpp
++++ b/dnf5daemon-server/dbus.hpp
+@@ -20,6 +20,7 @@ along with libdnf.  If not, see <https://www.gnu.org/licenses/>.
+ #ifndef DNF5DAEMON_SERVER_DBUS_HPP
+ #define DNF5DAEMON_SERVER_DBUS_HPP
+ 
++#include <libdnf5/sdbus_compat.hpp>
+ #include <sdbus-c++/sdbus-c++.h>
+ 
+ #include <map>
+@@ -51,46 +52,46 @@ using AdvisoryReference = sdbus::Struct<std::string, std::string, std::string, s
+ 
+ // constants
+ 
+-const char * const DBUS_NAME = "org.rpm.dnf.v0";
+-const char * const DBUS_OBJECT_PATH = "/org/rpm/dnf/v0";
++const SDBUS_SERVICE_NAME_TYPE DBUS_NAME{"org.rpm.dnf.v0"};
++const sdbus::ObjectPath DBUS_OBJECT_PATH{"/org/rpm/dnf/v0"};
+ 
+ // interfaces
+-const char * const INTERFACE_BASE = "org.rpm.dnf.v0.Base";
+-const char * const INTERFACE_REPO = "org.rpm.dnf.v0.rpm.Repo";
+-const char * const INTERFACE_RPM = "org.rpm.dnf.v0.rpm.Rpm";
+-const char * const INTERFACE_GOAL = "org.rpm.dnf.v0.Goal";
+-const char * const INTERFACE_GROUP = "org.rpm.dnf.v0.comps.Group";
+-const char * const INTERFACE_ADVISORY = "org.rpm.dnf.v0.Advisory";
+-const char * const INTERFACE_OFFLINE = "org.rpm.dnf.v0.Offline";
+-const char * const INTERFACE_SESSION_MANAGER = "org.rpm.dnf.v0.SessionManager";
++const SDBUS_INTERFACE_NAME_TYPE INTERFACE_BASE{"org.rpm.dnf.v0.Base"};
++const SDBUS_INTERFACE_NAME_TYPE INTERFACE_REPO{"org.rpm.dnf.v0.rpm.Repo"};
++const SDBUS_INTERFACE_NAME_TYPE INTERFACE_RPM{"org.rpm.dnf.v0.rpm.Rpm"};
++const SDBUS_INTERFACE_NAME_TYPE INTERFACE_GOAL{"org.rpm.dnf.v0.Goal"};
++const SDBUS_INTERFACE_NAME_TYPE INTERFACE_GROUP{"org.rpm.dnf.v0.comps.Group"};
++const SDBUS_INTERFACE_NAME_TYPE INTERFACE_ADVISORY{"org.rpm.dnf.v0.Advisory"};
++const SDBUS_INTERFACE_NAME_TYPE INTERFACE_OFFLINE{"org.rpm.dnf.v0.Offline"};
++const SDBUS_INTERFACE_NAME_TYPE INTERFACE_SESSION_MANAGER{"org.rpm.dnf.v0.SessionManager"};
+ 
+ // signals
+-const char * const SIGNAL_DOWNLOAD_ADD_NEW = "download_add_new";
+-const char * const SIGNAL_DOWNLOAD_PROGRESS = "download_progress";
+-const char * const SIGNAL_DOWNLOAD_END = "download_end";
+-const char * const SIGNAL_DOWNLOAD_MIRROR_FAILURE = "download_mirror_failure";
+-
+-const char * const SIGNAL_REPO_KEY_IMPORT_REQUEST = "repo_key_import_request";
+-
+-const char * const SIGNAL_TRANSACTION_BEFORE_BEGIN = "transaction_before_begin";
+-const char * const SIGNAL_TRANSACTION_AFTER_COMPLETE = "transaction_after_complete";
+-const char * const SIGNAL_TRANSACTION_TRANSACTION_START = "transaction_transaction_start";
+-const char * const SIGNAL_TRANSACTION_TRANSACTION_PROGRESS = "transaction_transaction_progress";
+-const char * const SIGNAL_TRANSACTION_TRANSACTION_STOP = "transaction_transaction_stop";
+-const char * const SIGNAL_TRANSACTION_VERIFY_START = "transaction_verify_start";
+-const char * const SIGNAL_TRANSACTION_VERIFY_PROGRESS = "transaction_verify_progress";
+-const char * const SIGNAL_TRANSACTION_VERIFY_STOP = "transaction_verify_stop";
+-const char * const SIGNAL_TRANSACTION_ACTION_START = "transaction_action_start";
+-const char * const SIGNAL_TRANSACTION_ACTION_PROGRESS = "transaction_action_progress";
+-const char * const SIGNAL_TRANSACTION_ACTION_STOP = "transaction_action_stop";
+-const char * const SIGNAL_TRANSACTION_SCRIPT_START = "transaction_script_start";
+-const char * const SIGNAL_TRANSACTION_SCRIPT_STOP = "transaction_script_stop";
+-const char * const SIGNAL_TRANSACTION_SCRIPT_ERROR = "transaction_script_error";
+-const char * const SIGNAL_TRANSACTION_UNPACK_ERROR = "transaction_unpack_error";
+-const char * const SIGNAL_TRANSACTION_ELEM_PROGRESS = "transaction_elem_progress";
+-const char * const SIGNAL_TRANSACTION_FINISHED = "transaction_finished";
+-
+-const char * const SIGNAL_WRITE_TO_FD_FINISHED = "write_to_fd_finished";
++const SDBUS_SIGNAL_NAME_TYPE SIGNAL_DOWNLOAD_ADD_NEW{"download_add_new"};
++const SDBUS_SIGNAL_NAME_TYPE SIGNAL_DOWNLOAD_PROGRESS{"download_progress"};
++const SDBUS_SIGNAL_NAME_TYPE SIGNAL_DOWNLOAD_END{"download_end"};
++const SDBUS_SIGNAL_NAME_TYPE SIGNAL_DOWNLOAD_MIRROR_FAILURE{"download_mirror_failure"};
++
++const SDBUS_SIGNAL_NAME_TYPE SIGNAL_REPO_KEY_IMPORT_REQUEST{"repo_key_import_request"};
++
++const SDBUS_SIGNAL_NAME_TYPE SIGNAL_TRANSACTION_BEFORE_BEGIN{"transaction_before_begin"};
++const SDBUS_SIGNAL_NAME_TYPE SIGNAL_TRANSACTION_AFTER_COMPLETE{"transaction_after_complete"};
++const SDBUS_SIGNAL_NAME_TYPE SIGNAL_TRANSACTION_TRANSACTION_START{"transaction_transaction_start"};
++const SDBUS_SIGNAL_NAME_TYPE SIGNAL_TRANSACTION_TRANSACTION_PROGRESS{"transaction_transaction_progress"};
++const SDBUS_SIGNAL_NAME_TYPE SIGNAL_TRANSACTION_TRANSACTION_STOP{"transaction_transaction_stop"};
++const SDBUS_SIGNAL_NAME_TYPE SIGNAL_TRANSACTION_VERIFY_START{"transaction_verify_start"};
++const SDBUS_SIGNAL_NAME_TYPE SIGNAL_TRANSACTION_VERIFY_PROGRESS{"transaction_verify_progress"};
++const SDBUS_SIGNAL_NAME_TYPE SIGNAL_TRANSACTION_VERIFY_STOP{"transaction_verify_stop"};
++const SDBUS_SIGNAL_NAME_TYPE SIGNAL_TRANSACTION_ACTION_START{"transaction_action_start"};
++const SDBUS_SIGNAL_NAME_TYPE SIGNAL_TRANSACTION_ACTION_PROGRESS{"transaction_action_progress"};
++const SDBUS_SIGNAL_NAME_TYPE SIGNAL_TRANSACTION_ACTION_STOP{"transaction_action_stop"};
++const SDBUS_SIGNAL_NAME_TYPE SIGNAL_TRANSACTION_SCRIPT_START{"transaction_script_start"};
++const SDBUS_SIGNAL_NAME_TYPE SIGNAL_TRANSACTION_SCRIPT_STOP{"transaction_script_stop"};
++const SDBUS_SIGNAL_NAME_TYPE SIGNAL_TRANSACTION_SCRIPT_ERROR{"transaction_script_error"};
++const SDBUS_SIGNAL_NAME_TYPE SIGNAL_TRANSACTION_UNPACK_ERROR{"transaction_unpack_error"};
++const SDBUS_SIGNAL_NAME_TYPE SIGNAL_TRANSACTION_ELEM_PROGRESS{"transaction_elem_progress"};
++const SDBUS_SIGNAL_NAME_TYPE SIGNAL_TRANSACTION_FINISHED{"transaction_finished"};
++
++const SDBUS_SIGNAL_NAME_TYPE SIGNAL_WRITE_TO_FD_FINISHED{"write_to_fd_finished"};
+ 
+ // polkit actions
+ const char * const POLKIT_REPOCONF_WRITE = "org.rpm.dnf.v0.rpm.Repo.conf_write";
+@@ -99,11 +100,11 @@ const char * const POLKIT_CONFIRM_KEY_IMPORT = "org.rpm.dnf.v0.rpm.Repo.confirm_
+ const char * const POLKIT_CONFIG_OVERRIDE = "org.rpm.dnf.v0.base.Config.override";
+ 
+ // errors
+-const char * const ERROR = "org.rpm.dnf.v0.Error";
+-const char * const ERROR_REPOCONF = "org.rpm.dnf.v0.rpm.Repo.ConfError";
+-const char * const ERROR_REPO_ID_UNKNOWN = "org.rpm.dnf.v0.rpm.Repo.NoMatchingIdError";
+-const char * const ERROR_RESOLVE = "org.rpm.dnf.v0.rpm.Rpm.ResolveError";
+-const char * const ERROR_TRANSACTION = "org.rpm.dnf.v0.rpm.Rpm.TransactionError";
++const SDBUS_ERROR_NAME_TYPE ERROR{"org.rpm.dnf.v0.Error"};
++const SDBUS_ERROR_NAME_TYPE ERROR_REPOCONF{"org.rpm.dnf.v0.rpm.Repo.ConfError"};
++const SDBUS_ERROR_NAME_TYPE ERROR_REPO_ID_UNKNOWN{"org.rpm.dnf.v0.rpm.Repo.NoMatchingIdError"};
++const SDBUS_ERROR_NAME_TYPE ERROR_RESOLVE{"org.rpm.dnf.v0.rpm.Rpm.ResolveError"};
++const SDBUS_ERROR_NAME_TYPE ERROR_TRANSACTION{"org.rpm.dnf.v0.rpm.Rpm.TransactionError"};
+ 
+ }  // namespace dnfdaemon
+ 
+diff --git a/dnf5daemon-server/services/rpm/rpm.cpp b/dnf5daemon-server/services/rpm/rpm.cpp
+index 2a8ff695c..83cf253e5 100644
+--- a/dnf5daemon-server/services/rpm/rpm.cpp
++++ b/dnf5daemon-server/services/rpm/rpm.cpp
+@@ -467,7 +467,8 @@ void Rpm::list_fd(sdbus::MethodCall & call, const std::string & transfer_id) {
+ 
+     // signal client that the transfer has finished and the output file descriptor is closed
+     auto dbus_object = get_session().get_dbus_object();
+-    auto signal = dbus_object->createSignal(call.getInterfaceName(), dnfdaemon::SIGNAL_WRITE_TO_FD_FINISHED);
++    auto signal = dbus_object->createSignal(
++        SDBUS_INTERFACE_NAME_TYPE{call.getInterfaceName()}, dnfdaemon::SIGNAL_WRITE_TO_FD_FINISHED);
+     signal << error_msg.empty();
+     signal << transfer_id;
+     signal << error_msg;
+diff --git a/dnf5daemon-server/session.cpp b/dnf5daemon-server/session.cpp
+index 06911587f..e53635218 100644
+--- a/dnf5daemon-server/session.cpp
++++ b/dnf5daemon-server/session.cpp
+@@ -133,8 +133,8 @@ void Session::setup_base() {
+ Session::Session(
+     sdbus::IConnection & connection,
+     dnfdaemon::KeyValueMap session_configuration,
+-    std::string object_path,
+-    std::string sender)
++    const sdbus::ObjectPath & object_path,
++    const std::string & sender)
+     : connection(connection),
+       session_configuration(session_configuration),
+       object_path(object_path),
+@@ -264,9 +264,9 @@ bool Session::read_all_repos() {
+ bool Session::check_authorization(
+     const std::string & actionid, const std::string & sender, bool allow_user_interaction) {
+     // create proxy for PolicyKit1 object
+-    const std::string destination_name = "org.freedesktop.PolicyKit1";
+-    const std::string object_path = "/org/freedesktop/PolicyKit1/Authority";
+-    const std::string interface_name = "org.freedesktop.PolicyKit1.Authority";
++    const SDBUS_SERVICE_NAME_TYPE destination_name{"org.freedesktop.PolicyKit1"};
++    const sdbus::ObjectPath object_path{"/org/freedesktop/PolicyKit1/Authority"};
++    const SDBUS_INTERFACE_NAME_TYPE interface_name{"org.freedesktop.PolicyKit1.Authority"};
+     auto polkit_proxy = sdbus::createProxy(connection, destination_name, object_path);
+     polkit_proxy->finishRegistration();
+ 
+diff --git a/dnf5daemon-server/session.hpp b/dnf5daemon-server/session.hpp
+index 9c7d5944a..189383b70 100644
+--- a/dnf5daemon-server/session.hpp
++++ b/dnf5daemon-server/session.hpp
+@@ -56,8 +56,8 @@ class Session {
+     Session(
+         sdbus::IConnection & connection,
+         dnfdaemon::KeyValueMap session_configuration,
+-        std::string object_path,
+-        std::string sender);
++        const sdbus::ObjectPath & object_path,
++        const std::string & sender);
+     ~Session();
+ 
+     template <typename ItemType>
+@@ -69,7 +69,7 @@ class Session {
+         return dnfdaemon::key_value_map_get<ItemType>(session_configuration, key);
+     }
+ 
+-    const sdbus::ObjectPath & get_object_path() const { return object_path; };
++    const sdbus::ObjectPath & get_object_path() { return object_path; };
+     sdbus::IConnection & get_connection() { return connection; };
+     libdnf5::Base * get_base() { return base.get(); };
+     ThreadsManager & get_threads_manager() { return threads_manager; };
+diff --git a/dnf5daemon-server/session_manager.cpp b/dnf5daemon-server/session_manager.cpp
+index f5d184b10..8ea9d2c8e 100644
+--- a/dnf5daemon-server/session_manager.cpp
++++ b/dnf5daemon-server/session_manager.cpp
+@@ -70,7 +70,8 @@ void SessionManager::dbus_register() {
+     dbus_object->finishRegistration();
+ 
+     // register signal handler for NameOwnerChanged
+-    name_changed_proxy = sdbus::createProxy(*connection, "org.freedesktop.DBus", "/org/freedesktop/DBus");
++    name_changed_proxy = sdbus::createProxy(
++        *connection, SDBUS_SERVICE_NAME_TYPE{"org.freedesktop.DBus"}, sdbus::ObjectPath{"/org/freedesktop/DBus"});
+     name_changed_proxy->registerSignalHandler(
+         "org.freedesktop.DBus", "NameOwnerChanged", [this](sdbus::Signal signal) -> void {
+             threads_manager.handle_signal(*this, &SessionManager::on_name_owner_changed, signal);
+@@ -130,7 +131,7 @@ sdbus::MethodReply SessionManager::open_session(sdbus::MethodCall & call) {
+     call >> configuration;
+ 
+     // generate UUID-like session id
+-    const std::string sessionid = dnfdaemon::DBUS_OBJECT_PATH + std::string("/") + gen_session_id();
++    const sdbus::ObjectPath sessionid{dnfdaemon::DBUS_OBJECT_PATH + std::string("/") + gen_session_id()};
+     // store newly created session
+     {
+         std::lock_guard<std::mutex> lock(sessions_mutex);
+diff --git a/include/libdnf5/sdbus_compat.hpp b/include/libdnf5/sdbus_compat.hpp
+new file mode 100644
+index 000000000..029182dd6
+--- /dev/null
++++ b/include/libdnf5/sdbus_compat.hpp
+@@ -0,0 +1,39 @@
++/*
++Copyright Contributors to the libdnf project.
++
++This file is part of libdnf: https://github.com/rpm-software-management/libdnf/
++
++Libdnf is free software: you can redistribute it and/or modify
++it under the terms of the GNU General Public License as published by
++the Free Software Foundation, either version 2 of the License, or
++(at your option) any later version.
++
++Libdnf is distributed in the hope that it will be useful,
++but WITHOUT ANY WARRANTY; without even the implied warranty of
++MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++GNU General Public License for more details.
++
++You should have received a copy of the GNU General Public License
++along with libdnf.  If not, see <https://www.gnu.org/licenses/>.
++*/
++
++#ifndef DNF5DAEMON_SERVER_SDBUS_COMPAT_HPP
++#define DNF5DAEMON_SERVER_SDBUS_COMPAT_HPP
++
++#ifdef SDBUS_CPP_VERSION_2
++
++#define SDBUS_INTERFACE_NAME_TYPE sdbus::InterfaceName
++#define SDBUS_SIGNAL_NAME_TYPE    sdbus::SignalName
++#define SDBUS_SERVICE_NAME_TYPE   sdbus::ServiceName
++#define SDBUS_ERROR_NAME_TYPE     sdbus::Error::Name
++
++#else
++
++#define SDBUS_INTERFACE_NAME_TYPE std::string
++#define SDBUS_SIGNAL_NAME_TYPE    std::string
++#define SDBUS_SERVICE_NAME_TYPE   std::string
++#define SDBUS_ERROR_NAME_TYPE     std::string
++
++#endif
++
++#endif
+
+From 000eb09edc968d87c67fcb7ebec0518d66438565 Mon Sep 17 00:00:00 2001
+From: Marek Blaha <mblaha@redhat.com>
+Date: Fri, 17 May 2024 13:01:30 +0200
+Subject: [PATCH 3/6] dnfdaemon: sdbus::Variant constructor is explicit
+
+In version 2 the sdbus::Variant constuctor was made explicit.
+---
+ .../commands/advisory/advisory_subcommand.cpp | 26 +++++++-------
+ dnf5daemon-client/commands/command.cpp        |  4 +--
+ .../commands/group/group_list.cpp             | 14 ++++----
+ .../commands/install/install.cpp              |  4 +--
+ .../commands/repolist/repolist.cpp            |  8 ++---
+ .../commands/repoquery/repoquery.cpp          | 14 ++++----
+ .../system-upgrade/system-upgrade.cpp         |  2 +-
+ dnf5daemon-client/context.cpp                 |  6 ++--
+ dnf5daemon-server/advisory.cpp                | 34 +++++++++----------
+ dnf5daemon-server/services/goal/goal.cpp      | 16 ++++-----
+ .../services/offline/offline.cpp              | 16 ++++-----
+ dnf5daemon-server/session.cpp                 |  2 +-
+ 12 files changed, 73 insertions(+), 73 deletions(-)
+
+diff --git a/dnf5daemon-client/commands/advisory/advisory_subcommand.cpp b/dnf5daemon-client/commands/advisory/advisory_subcommand.cpp
+index 9c612869c..9fe388583 100644
+--- a/dnf5daemon-client/commands/advisory/advisory_subcommand.cpp
++++ b/dnf5daemon-client/commands/advisory/advisory_subcommand.cpp
+@@ -57,9 +57,9 @@ void AdvisorySubCommand::set_argument_parser() {
+ 
+ dnfdaemon::KeyValueMap AdvisorySubCommand::session_config() {
+     dnfdaemon::KeyValueMap cfg = {};
+-    cfg["load_system_repo"] = true;
+-    cfg["load_available_repos"] = true;
+-    cfg["optional_metadata_types"] = std::vector<std::string>{libdnf5::METADATA_TYPE_UPDATEINFO};
++    cfg["load_system_repo"] = sdbus::Variant(true);
++    cfg["load_available_repos"] = sdbus::Variant(true);
++    cfg["optional_metadata_types"] = sdbus::Variant(std::vector<std::string>{libdnf5::METADATA_TYPE_UPDATEINFO});
+     return cfg;
+ }
+ 
+@@ -69,7 +69,7 @@ void AdvisorySubCommand::run() {
+     // convert arguments to dbus call options
+     dnfdaemon::KeyValueMap options = {};
+ 
+-    options["names"] = advisory_names->get_value();
++    options["names"] = sdbus::Variant(advisory_names->get_value());
+ 
+     // by default return available advisories
+     std::string availability = "available";
+@@ -80,7 +80,7 @@ void AdvisorySubCommand::run() {
+     } else if (updates->get_value()) {
+         availability = "updates";
+     }
+-    options["availability"] = availability;  // string
++    options["availability"] = sdbus::Variant(availability);  // string
+ 
+     // advisory types
+     std::vector<std::string> advisory_types{};
+@@ -96,16 +96,16 @@ void AdvisorySubCommand::run() {
+     if (advisory_newpackage->get_value()) {
+         advisory_types.emplace_back("newpackage");
+     }
+-    options["types"] = advisory_types;  // vector<string>
++    options["types"] = sdbus::Variant(advisory_types);  // vector<string>
+ 
+-    options["contains_pkgs"] = contains_pkgs->get_value();     // vector<string>
+-    options["severities"] = advisory_severities->get_value();  // vector<string>
+-    options["reference_bzs"] = advisory_bzs->get_value();      // vector<string>
+-    options["reference_cves"] = advisory_cves->get_value();    // vector<string>
+-    options["with_bz"] = with_bz->get_value();                 // bool
+-    options["with_cve"] = with_cve->get_value();               // bool
++    options["contains_pkgs"] = sdbus::Variant(contains_pkgs->get_value());     // vector<string>
++    options["severities"] = sdbus::Variant(advisory_severities->get_value());  // vector<string>
++    options["reference_bzs"] = sdbus::Variant(advisory_bzs->get_value());      // vector<string>
++    options["reference_cves"] = sdbus::Variant(advisory_cves->get_value());    // vector<string>
++    options["with_bz"] = sdbus::Variant(with_bz->get_value());                 // bool
++    options["with_cve"] = sdbus::Variant(with_cve->get_value());               // bool
+ 
+-    options["advisory_attrs"] = advisory_attrs;
++    options["advisory_attrs"] = sdbus::Variant(advisory_attrs);
+ 
+     // call the server
+     dnfdaemon::KeyValueMapList raw_advisories;
+diff --git a/dnf5daemon-client/commands/command.cpp b/dnf5daemon-client/commands/command.cpp
+index 67a4e8ea2..6f9f55acd 100644
+--- a/dnf5daemon-client/commands/command.cpp
++++ b/dnf5daemon-client/commands/command.cpp
+@@ -42,7 +42,7 @@ void TransactionCommand::run_transaction(bool offline) {
+     dnfdaemon::KeyValueMap options = {};
+ 
+     // resolve the transaction
+-    options["allow_erasing"] = ctx.allow_erasing.get_value();
++    options["allow_erasing"] = sdbus::Variant(ctx.allow_erasing.get_value());
+     std::vector<dnfdaemon::DbusTransactionItem> transaction;
+     unsigned int result_int;
+     ctx.session_proxy->callMethod("resolve")
+@@ -80,7 +80,7 @@ void TransactionCommand::run_transaction(bool offline) {
+ 
+     // do the transaction
+     options.clear();
+-    options["offline"] = offline;
++    options["offline"] = sdbus::Variant(offline);
+     ctx.session_proxy->callMethod("do_transaction")
+         .onInterface(dnfdaemon::INTERFACE_GOAL)
+         .withTimeout(static_cast<uint64_t>(-1))
+diff --git a/dnf5daemon-client/commands/group/group_list.cpp b/dnf5daemon-client/commands/group/group_list.cpp
+index 8bd7e194e..e99c0c90b 100644
+--- a/dnf5daemon-client/commands/group/group_list.cpp
++++ b/dnf5daemon-client/commands/group/group_list.cpp
+@@ -72,7 +72,7 @@ void GroupListCommand::run() {
+             patterns.emplace_back(option->get_value());
+         }
+     }
+-    options["patterns"] = patterns;
++    options["patterns"] = sdbus::Variant(patterns);
+ 
+     std::vector<std::string> attributes{"groupid", "name", "installed"};
+     if (command == "info") {
+@@ -81,10 +81,10 @@ void GroupListCommand::run() {
+         attributes.reserve(attributes.size() + more_attributes.size());
+         std::move(std::begin(more_attributes), std::end(more_attributes), std::back_inserter(attributes));
+     }
+-    options["attributes"] = attributes;
++    options["attributes"] = sdbus::Variant(attributes);
+ 
+     if (hidden->get_value() || !patterns.empty()) {
+-        options["with_hidden"] = true;
++        options["with_hidden"] = sdbus::Variant(true);
+     }
+ 
+     std::string scope = "all";
+@@ -93,14 +93,14 @@ void GroupListCommand::run() {
+     } else if (available->get_value()) {
+         scope = "available";
+     }
+-    options["scope"] = scope;
++    options["scope"] = sdbus::Variant(scope);
+ 
+     if (!contains_pkgs->get_value().empty()) {
+-        options["contains_pkgs"] = contains_pkgs->get_value();
++        options["contains_pkgs"] = sdbus::Variant(contains_pkgs->get_value());
+     }
+ 
+-    options["match_group_id"] = true;
+-    options["match_group_name"] = true;
++    options["match_group_id"] = sdbus::Variant(true);
++    options["match_group_name"] = sdbus::Variant(true);
+ 
+     dnfdaemon::KeyValueMapList raw_groups;
+     ctx.session_proxy->callMethod("list")
+diff --git a/dnf5daemon-client/commands/install/install.cpp b/dnf5daemon-client/commands/install/install.cpp
+index 4dba94f50..0db5acecf 100644
+--- a/dnf5daemon-client/commands/install/install.cpp
++++ b/dnf5daemon-client/commands/install/install.cpp
+@@ -80,10 +80,10 @@ void InstallCommand::run() {
+     dnfdaemon::KeyValueMap options = {};
+     // pass the `skip_*` value to the server only when explicitly set by command line option
+     if (skip_broken_option.get_priority() >= libdnf5::Option::Priority::COMMANDLINE) {
+-        options["skip_broken"] = skip_broken_option.get_value();
++        options["skip_broken"] = sdbus::Variant(skip_broken_option.get_value());
+     }
+     if (skip_unavailable_option.get_priority() >= libdnf5::Option::Priority::COMMANDLINE) {
+-        options["skip_unavailable"] = skip_unavailable_option.get_value();
++        options["skip_unavailable"] = sdbus::Variant(skip_unavailable_option.get_value());
+     }
+ 
+     ctx.session_proxy->callMethod("install")
+diff --git a/dnf5daemon-client/commands/repolist/repolist.cpp b/dnf5daemon-client/commands/repolist/repolist.cpp
+index 6798bb643..a729b39e9 100644
+--- a/dnf5daemon-client/commands/repolist/repolist.cpp
++++ b/dnf5daemon-client/commands/repolist/repolist.cpp
+@@ -107,17 +107,17 @@ void RepolistCommand::run() {
+ 
+     // prepare options from command line arguments
+     dnfdaemon::KeyValueMap options = {};
+-    options["enable_disable"] = enable_disable_option->get_value();
++    options["enable_disable"] = sdbus::Variant(enable_disable_option->get_value());
+     std::vector<std::string> patterns;
+     if (!patterns_options->empty()) {
+-        options["enable_disable"] = "all";
++        options["enable_disable"] = sdbus::Variant("all");
+         patterns.reserve(patterns_options->size());
+         for (auto & pattern : *patterns_options) {
+             auto option = dynamic_cast<libdnf5::OptionString *>(pattern.get());
+             patterns.emplace_back(option->get_value());
+         }
+     }
+-    options["patterns"] = patterns;
++    options["patterns"] = sdbus::Variant(patterns);
+ 
+     std::vector<std::string> attrs{"id", "name", "enabled"};
+     if (command == "repoinfo") {
+@@ -147,7 +147,7 @@ void RepolistCommand::run() {
+             "mirrors"};
+         attrs.insert(attrs.end(), repoinfo_attrs.begin(), repoinfo_attrs.end());
+     }
+-    options["repo_attrs"] = attrs;
++    options["repo_attrs"] = sdbus::Variant(attrs);
+ 
+     // call list() method on repo interface via dbus
+     dnfdaemon::KeyValueMapList repositories;
+diff --git a/dnf5daemon-client/commands/repoquery/repoquery.cpp b/dnf5daemon-client/commands/repoquery/repoquery.cpp
+index 10d39e89c..f1f0ed75e 100644
+--- a/dnf5daemon-client/commands/repoquery/repoquery.cpp
++++ b/dnf5daemon-client/commands/repoquery/repoquery.cpp
+@@ -102,9 +102,9 @@ void RepoqueryCommand::set_argument_parser() {
+ 
+ dnfdaemon::KeyValueMap RepoqueryCommand::session_config() {
+     dnfdaemon::KeyValueMap cfg = {};
+-    cfg["load_system_repo"] = installed_option->get_value();
+-    cfg["load_available_repos"] =
+-        (available_option->get_priority() >= libdnf5::Option::Priority::COMMANDLINE || !installed_option->get_value());
++    cfg["load_system_repo"] = sdbus::Variant(installed_option->get_value());
++    cfg["load_available_repos"] = sdbus::Variant(
++        (available_option->get_priority() >= libdnf5::Option::Priority::COMMANDLINE || !installed_option->get_value()));
+     return cfg;
+ }
+ 
+@@ -125,13 +125,13 @@ std::vector<DbusPackageWrapper> json_to_packages(std::string & json_stream) {
+             json_object_object_foreach(json_pkg, key, val) {
+                 switch (json_object_get_type(val)) {
+                     case json_type_boolean:
+-                        dbuspkg[key] = static_cast<bool>(json_object_get_boolean(val));
++                        dbuspkg[key] = sdbus::Variant(static_cast<bool>(json_object_get_boolean(val)));
+                         break;
+                     case json_type_int:
+-                        dbuspkg[key] = static_cast<uint64_t>(json_object_get_int64(val));
++                        dbuspkg[key] = sdbus::Variant(static_cast<uint64_t>(json_object_get_int64(val)));
+                         break;
+                     default:
+-                        dbuspkg[key] = json_object_get_string(val);
++                        dbuspkg[key] = sdbus::Variant(json_object_get_string(val));
+                 }
+             }
+             packages.emplace_back(DbusPackageWrapper(dbuspkg));
+@@ -180,7 +180,7 @@ void RepoqueryCommand::run() {
+             patterns.emplace_back(option->get_value());
+         }
+     }
+-    options["patterns"] = patterns;
++    options["patterns"] = sdbus::Variant(patterns);
+     if (info_option->get_value()) {
+         options.insert(std::pair<std::string, std::vector<std::string>>(
+             "package_attrs",
+diff --git a/dnf5daemon-client/commands/system-upgrade/system-upgrade.cpp b/dnf5daemon-client/commands/system-upgrade/system-upgrade.cpp
+index 9e09e8120..4aa41c6d9 100644
+--- a/dnf5daemon-client/commands/system-upgrade/system-upgrade.cpp
++++ b/dnf5daemon-client/commands/system-upgrade/system-upgrade.cpp
+@@ -67,7 +67,7 @@ void SystemUpgradeCommand::run() {
+ 
+     dnfdaemon::KeyValueMap options = {};
+     if (no_downgrade_option.get_value()) {
+-        options["mode"] = "upgrade";
++        options["mode"] = sdbus::Variant("upgrade");
+     }
+ 
+     ctx.session_proxy->callMethod("system_upgrade")
+diff --git a/dnf5daemon-client/context.cpp b/dnf5daemon-client/context.cpp
+index 2624b4ddc..bcfd1bfa6 100644
+--- a/dnf5daemon-client/context.cpp
++++ b/dnf5daemon-client/context.cpp
+@@ -47,12 +47,12 @@ void Context::init_session(sdbus::IConnection & connection) {
+     for (auto & opt : setopts) {
+         config[opt.first] = opt.second;
+     }
+-    cfg["config"] = config;
++    cfg["config"] = sdbus::Variant(config);
+ 
+     if (!releasever.get_value().empty()) {
+-        cfg["releasever"] = releasever.get_value();
++        cfg["releasever"] = sdbus::Variant(releasever.get_value());
+     }
+-    cfg["locale"] = setlocale(LC_MESSAGES, nullptr);
++    cfg["locale"] = sdbus::Variant(setlocale(LC_MESSAGES, nullptr));
+ 
+     session_manager_proxy->callMethod("open_session")
+         .onInterface(dnfdaemon::INTERFACE_SESSION_MANAGER)
+diff --git a/dnf5daemon-server/advisory.cpp b/dnf5daemon-server/advisory.cpp
+index 7bab99614..f6a6c9bf3 100644
+--- a/dnf5daemon-server/advisory.cpp
++++ b/dnf5daemon-server/advisory.cpp
+@@ -71,12 +71,12 @@ KeyValueMapList collections_to_list(
+             auto name = pkg.get_name();
+             auto arch = pkg.get_arch();
+ 
+-            package["n"] = name;
+-            package["e"] = pkg.get_epoch();
+-            package["v"] = pkg.get_version();
+-            package["r"] = pkg.get_release();
+-            package["a"] = arch;
+-            package["nevra"] = pkg.get_nevra();
++            package["n"] = sdbus::Variant(name);
++            package["e"] = sdbus::Variant(pkg.get_epoch());
++            package["v"] = sdbus::Variant(pkg.get_version());
++            package["r"] = sdbus::Variant(pkg.get_release());
++            package["a"] = sdbus::Variant(arch);
++            package["nevra"] = sdbus::Variant(pkg.get_nevra());
+ 
+             std::string na{std::move(name)};
+             na.append(".");
+@@ -84,12 +84,12 @@ KeyValueMapList collections_to_list(
+             auto it = installed_versions.find(na);
+             if (it == installed_versions.end()) {
+                 // advisory package is not installed => not related to system
+-                package["applicability"] = "unrelated";
++                package["applicability"] = sdbus::Variant("unrelated");
+             } else if (libdnf5::rpm::evrcmp(it->second, pkg) < 0) {
+                 // installed version is lower than one in advisory
+-                package["applicability"] = "available";
++                package["applicability"] = sdbus::Variant("available");
+             } else {
+-                package["applicability"] = "installed";
++                package["applicability"] = sdbus::Variant("installed");
+             }
+ 
+             packages.emplace_back(std::move(package));
+@@ -99,18 +99,18 @@ KeyValueMapList collections_to_list(
+         auto libdnf_modules = col.get_modules();
+         for (const auto & mdl : libdnf_modules) {
+             KeyValueMap col_module;
+-            col_module["n"] = mdl.get_name();
+-            col_module["s"] = mdl.get_stream();
+-            col_module["v"] = mdl.get_version();
+-            col_module["c"] = mdl.get_context();
+-            col_module["a"] = mdl.get_arch();
+-            col_module["nsvca"] = mdl.get_nsvca();
++            col_module["n"] = sdbus::Variant(mdl.get_name());
++            col_module["s"] = sdbus::Variant(mdl.get_stream());
++            col_module["v"] = sdbus::Variant(mdl.get_version());
++            col_module["c"] = sdbus::Variant(mdl.get_context());
++            col_module["a"] = sdbus::Variant(mdl.get_arch());
++            col_module["nsvca"] = sdbus::Variant(mdl.get_nsvca());
+             modules.emplace_back(std::move(col_module));
+         }
+ 
+         KeyValueMap collection;
+-        collection["packages"] = std::move(packages);
+-        collection["modules"] = std::move(modules);
++        collection["packages"] = sdbus::Variant(std::move(packages));
++        collection["modules"] = sdbus::Variant(std::move(modules));
+         collections.emplace_back(std::move(collection));
+     }
+     return collections;
+diff --git a/dnf5daemon-server/services/goal/goal.cpp b/dnf5daemon-server/services/goal/goal.cpp
+index 1803ea5ef..27cc93db5 100644
+--- a/dnf5daemon-server/services/goal/goal.cpp
++++ b/dnf5daemon-server/services/goal/goal.cpp
+@@ -249,20 +249,20 @@ sdbus::MethodReply Goal::get_transaction_problems(sdbus::MethodCall & call) {
+     goal_resolve_log_list.reserve(resolve_logs.size());
+     for (const auto & log : resolve_logs) {
+         dnfdaemon::KeyValueMap goal_resolve_log_item;
+-        goal_resolve_log_item["action"] = static_cast<uint32_t>(log.get_action());
+-        goal_resolve_log_item["problem"] = static_cast<uint32_t>(log.get_problem());
++        goal_resolve_log_item["action"] = sdbus::Variant(static_cast<uint32_t>(log.get_action()));
++        goal_resolve_log_item["problem"] = sdbus::Variant(static_cast<uint32_t>(log.get_problem()));
+         if (log.get_job_settings()) {
+             dnfdaemon::KeyValueMap goal_job_settings;
+-            goal_job_settings["to_repo_ids"] = log.get_job_settings()->get_to_repo_ids();
+-            goal_resolve_log_item["goal_job_settings"] = goal_job_settings;
++            goal_job_settings["to_repo_ids"] = sdbus::Variant(log.get_job_settings()->get_to_repo_ids());
++            goal_resolve_log_item["goal_job_settings"] = sdbus::Variant(goal_job_settings);
+         }
+         if (log.get_spec()) {
+-            goal_resolve_log_item["spec"] = *log.get_spec();
++            goal_resolve_log_item["spec"] = sdbus::Variant(*log.get_spec());
+         }
+         if (log.get_additional_data().size() > 0) {
+             // convert std::set<std::string> to std::vector<std::string>
+-            goal_resolve_log_item["additional_data"] =
+-                std::vector<std::string>{log.get_additional_data().begin(), log.get_additional_data().end()};
++            goal_resolve_log_item["additional_data"] = sdbus::Variant(
++                std::vector<std::string>{log.get_additional_data().begin(), log.get_additional_data().end()});
+         }
+         if (log.get_solver_problems()) {
+             using DbusRule = sdbus::Struct<uint32_t, std::vector<std::string>>;
+@@ -274,7 +274,7 @@ sdbus::MethodReply Goal::get_transaction_problems(sdbus::MethodCall & call) {
+                 }
+                 dbus_problems.push_back(std::move(dbus_problem));
+             }
+-            goal_resolve_log_item["solver_problems"] = std::move(dbus_problems);
++            goal_resolve_log_item["solver_problems"] = sdbus::Variant(std::move(dbus_problems));
+         }
+         goal_resolve_log_list.push_back(std::move(goal_resolve_log_item));
+     }
+diff --git a/dnf5daemon-server/services/offline/offline.cpp b/dnf5daemon-server/services/offline/offline.cpp
+index 27e6d7931..c9ff03fc6 100644
+--- a/dnf5daemon-server/services/offline/offline.cpp
++++ b/dnf5daemon-server/services/offline/offline.cpp
+@@ -103,14 +103,14 @@ sdbus::MethodReply Offline::get_status(sdbus::MethodCall & call) {
+     libdnf5::offline::OfflineTransactionState state{state_path};
+     if (!state.get_read_exception()) {
+         const auto & state_data = state.get_data();
+-        transaction_state["status"] = state_data.get_status();
+-        transaction_state["cachedir"] = state_data.get_cachedir();
+-        transaction_state["target_releasever"] = state_data.get_target_releasever();
+-        transaction_state["system_releasever"] = state_data.get_system_releasever();
+-        transaction_state["verb"] = state_data.get_verb();
+-        transaction_state["cmd_line"] = state_data.get_cmd_line();
+-        transaction_state["poweroff_after"] = state_data.get_poweroff_after();
+-        transaction_state["module_platform_id"] = state_data.get_module_platform_id();
++        transaction_state["status"] = sdbus::Variant(state_data.get_status());
++        transaction_state["cachedir"] = sdbus::Variant(state_data.get_cachedir());
++        transaction_state["target_releasever"] = sdbus::Variant(state_data.get_target_releasever());
++        transaction_state["system_releasever"] = sdbus::Variant(state_data.get_system_releasever());
++        transaction_state["verb"] = sdbus::Variant(state_data.get_verb());
++        transaction_state["cmd_line"] = sdbus::Variant(state_data.get_cmd_line());
++        transaction_state["poweroff_after"] = sdbus::Variant(state_data.get_poweroff_after());
++        transaction_state["module_platform_id"] = sdbus::Variant(state_data.get_module_platform_id());
+     }
+ 
+     auto reply = call.createReply();
+diff --git a/dnf5daemon-server/session.cpp b/dnf5daemon-server/session.cpp
+index e53635218..2ff8ffea5 100644
+--- a/dnf5daemon-server/session.cpp
++++ b/dnf5daemon-server/session.cpp
+@@ -272,7 +272,7 @@ bool Session::check_authorization(
+ 
+     // call CheckAuthorization method
+     sdbus::Struct<bool, bool, std::map<std::string, std::string>> auth_result;
+-    sdbus::Struct<std::string, dnfdaemon::KeyValueMap> subject{"system-bus-name", {{"name", sender}}};
++    sdbus::Struct<std::string, dnfdaemon::KeyValueMap> subject{"system-bus-name", {{"name", sdbus::Variant(sender)}}};
+     std::map<std::string, std::string> details{};
+     // allow polkit to ask user to enter root password
+     uint flags = allow_user_interaction ? 1 : 0;
+
+From c65b03d7344d1db040c4ab4839d605b7f1ba828a Mon Sep 17 00:00:00 2001
+From: Marek Blaha <mblaha@redhat.com>
+Date: Fri, 17 May 2024 13:03:42 +0200
+Subject: [PATCH 4/6] dnfdaemon: Explicit sdbus::Variant conversion
+
+In version 2, conversion of sdbus::Variant to the underlying type is
+explicit.
+---
+ .../needs_restarting.cpp                      |  6 +--
+ dnf5/commands/offline/offline.cpp             |  3 +-
+ .../wrappers/dbus_advisory_wrapper.hpp        | 44 ++++++++--------
+ .../wrappers/dbus_environment_wrapper.cpp     |  2 +-
+ .../wrappers/dbus_environment_wrapper.hpp     |  9 ++--
+ .../wrappers/dbus_goal_wrapper.cpp            |  2 +-
+ .../wrappers/dbus_group_wrapper.cpp           |  4 +-
+ .../wrappers/dbus_group_wrapper.hpp           | 16 +++---
+ .../wrappers/dbus_package_wrapper.hpp         | 42 +++++++--------
+ .../wrappers/dbus_repo_wrapper.cpp            |  2 +-
+ .../wrappers/dbus_repo_wrapper.hpp            | 52 +++++++++----------
+ 11 files changed, 92 insertions(+), 90 deletions(-)
+
+diff --git a/dnf5-plugins/needs_restarting_plugin/needs_restarting.cpp b/dnf5-plugins/needs_restarting_plugin/needs_restarting.cpp
+index 6d9de330c..846a95f5f 100644
+--- a/dnf5-plugins/needs_restarting_plugin/needs_restarting.cpp
++++ b/dnf5-plugins/needs_restarting_plugin/needs_restarting.cpp
+@@ -119,8 +119,8 @@ time_t NeedsRestartingCommand::get_boot_time(Context & ctx) {
+         connection = sdbus::createSystemBusConnection();
+         auto proxy = sdbus::createProxy(SYSTEMD_DESTINATION_NAME, SYSTEMD_OBJECT_PATH);
+ 
+-        const uint64_t systemd_boot_time_us =
+-            proxy->getProperty("UnitsLoadStartTimestamp").onInterface(SYSTEMD_MANAGER_INTERFACE);
++        const auto systemd_boot_time_us =
++            uint64_t{proxy->getProperty("UnitsLoadStartTimestamp").onInterface(SYSTEMD_MANAGER_INTERFACE)};
+ 
+         const time_t systemd_boot_time = static_cast<long>(systemd_boot_time_us) / (1000L * 1000L);
+ 
+@@ -275,7 +275,7 @@ void NeedsRestartingCommand::services_need_restarting(Context & ctx) {
+         // FragmentPath is the path to the unit file that defines the service
+         const auto fragment_path = unit_proxy->getProperty("FragmentPath").onInterface(SYSTEMD_UNIT_INTERFACE);
+         const auto start_timestamp_us =
+-            unit_proxy->getProperty("ActiveEnterTimestamp").onInterface(SYSTEMD_UNIT_INTERFACE);
++            uint64_t{unit_proxy->getProperty("ActiveEnterTimestamp").onInterface(SYSTEMD_UNIT_INTERFACE)};
+ 
+         unit_file_to_service.insert(std::make_pair(fragment_path, Service{unit_name, start_timestamp_us}));
+     }
+diff --git a/dnf5/commands/offline/offline.cpp b/dnf5/commands/offline/offline.cpp
+index 4ca1f09ce..8db5c06b5 100644
+--- a/dnf5/commands/offline/offline.cpp
++++ b/dnf5/commands/offline/offline.cpp
+@@ -322,7 +322,8 @@ void OfflineRebootCommand::run() {
+             .storeResultsTo(unit_object_path);
+ 
+         auto unit_proxy = sdbus::createProxy(SYSTEMD_DESTINATION_NAME, unit_object_path);
+-        const std::vector<std::string> & wants = unit_proxy->getProperty("Wants").onInterface(SYSTEMD_UNIT_INTERFACE);
++        const auto & wants =
++            std::vector<std::string>{unit_proxy->getProperty("Wants").onInterface(SYSTEMD_UNIT_INTERFACE)};
+         if (std::find(wants.begin(), wants.end(), SYSTEMD_SERVICE_NAME) == wants.end()) {
+             throw libdnf5::cli::CommandExitError(
+                 1, M_("{} is not wanted by system-update.target."), SYSTEMD_SERVICE_NAME);
+diff --git a/dnf5daemon-client/wrappers/dbus_advisory_wrapper.hpp b/dnf5daemon-client/wrappers/dbus_advisory_wrapper.hpp
+index 150d6cc9b..d8a62fc64 100644
+--- a/dnf5daemon-client/wrappers/dbus_advisory_wrapper.hpp
++++ b/dnf5daemon-client/wrappers/dbus_advisory_wrapper.hpp
+@@ -55,13 +55,13 @@ class DbusAdvisoryReferenceWrapper {
+ class DbusAdvisoryPackageWrapper {
+ public:
+     DbusAdvisoryPackageWrapper(const dnfdaemon::KeyValueMap & rawdata, DbusAdvisoryWrapper * advisory);
+-    std::string get_name() const { return rawdata.at("n"); }
+-    std::string get_epoch() const { return rawdata.at("e"); }
+-    std::string get_version() const { return rawdata.at("v"); }
+-    std::string get_release() const { return rawdata.at("r"); }
+-    std::string get_arch() const { return rawdata.at("a"); }
++    std::string get_name() const { return std::string{rawdata.at("n")}; }
++    std::string get_epoch() const { return std::string{rawdata.at("e")}; }
++    std::string get_version() const { return std::string{rawdata.at("v")}; }
++    std::string get_release() const { return std::string{rawdata.at("r")}; }
++    std::string get_arch() const { return std::string{rawdata.at("a")}; }
+     std::string get_nevra() const { return libdnf5::rpm::to_nevra_string(*this); }
+-    std::string get_applicability() const { return rawdata.at("applicability"); }
++    std::string get_applicability() const { return std::string{rawdata.at("applicability")}; }
+ 
+     DbusAdvisoryWrapper get_advisory() const;
+ 
+@@ -74,11 +74,11 @@ class DbusAdvisoryPackageWrapper {
+ class DbusAdvisoryModuleWrapper {
+ public:
+     DbusAdvisoryModuleWrapper(const dnfdaemon::KeyValueMap & rawdata, DbusAdvisoryWrapper * advisory);
+-    std::string get_name() const { return rawdata.at("n"); }
+-    std::string get_stream() const { return rawdata.at("s"); }
+-    std::string get_version() const { return rawdata.at("v"); }
+-    std::string get_context() const { return rawdata.at("c"); }
+-    std::string get_arch() const { return rawdata.at("a"); }
++    std::string get_name() const { return std::string{rawdata.at("n")}; }
++    std::string get_stream() const { return std::string{rawdata.at("s")}; }
++    std::string get_version() const { return std::string{rawdata.at("v")}; }
++    std::string get_context() const { return std::string{rawdata.at("c")}; }
++    std::string get_arch() const { return std::string{rawdata.at("a")}; }
+     std::string get_nsvca() const {
+         return get_name() + ":" + get_stream() + ":" + get_version() + ":" + get_context() + ":" + get_arch();
+     }
+@@ -107,17 +107,17 @@ class DbusAdvisoryWrapper {
+ public:
+     explicit DbusAdvisoryWrapper(const dnfdaemon::KeyValueMap & rawdata);
+ 
+-    std::string get_advisoryid() const { return rawdata.at("advisoryid"); }
+-    std::string get_name() const { return rawdata.at("name"); }
+-    std::string get_severity() const { return rawdata.at("severity"); }
+-    std::string get_type() const { return rawdata.at("type"); }
+-    uint64_t get_buildtime() const { return rawdata.at("buildtime"); }
+-    std::string get_vendor() const { return rawdata.at("vendor"); }
+-    std::string get_description() const { return rawdata.at("description"); }
+-    std::string get_title() const { return rawdata.at("title"); }
+-    std::string get_status() const { return rawdata.at("status"); }
+-    std::string get_rights() const { return rawdata.at("rights"); }
+-    std::string get_message() const { return rawdata.at("message"); }
++    std::string get_advisoryid() const { return std::string{rawdata.at("advisoryid")}; }
++    std::string get_name() const { return std::string{rawdata.at("name")}; }
++    std::string get_severity() const { return std::string{rawdata.at("severity")}; }
++    std::string get_type() const { return std::string{rawdata.at("type")}; }
++    uint64_t get_buildtime() const { return uint64_t{rawdata.at("buildtime")}; }
++    std::string get_vendor() const { return std::string{rawdata.at("vendor")}; }
++    std::string get_description() const { return std::string{rawdata.at("description")}; }
++    std::string get_title() const { return std::string{rawdata.at("title")}; }
++    std::string get_status() const { return std::string{rawdata.at("status")}; }
++    std::string get_rights() const { return std::string{rawdata.at("rights")}; }
++    std::string get_message() const { return std::string{rawdata.at("message")}; }
+     std::vector<DbusAdvisoryReferenceWrapper> get_references() const { return references; }
+     std::vector<DbusAdvisoryCollectionWrapper> get_collections() const { return collections; }
+ 
+diff --git a/dnf5daemon-client/wrappers/dbus_environment_wrapper.cpp b/dnf5daemon-client/wrappers/dbus_environment_wrapper.cpp
+index 51499e001..68f31ce7e 100644
+--- a/dnf5daemon-client/wrappers/dbus_environment_wrapper.cpp
++++ b/dnf5daemon-client/wrappers/dbus_environment_wrapper.cpp
+@@ -24,7 +24,7 @@ namespace dnfdaemon::client {
+ DbusEnvironmentWrapper::DbusEnvironmentWrapper(const dnfdaemon::KeyValueMap & rawdata) : rawdata(rawdata){};
+ 
+ std::set<std::string> DbusEnvironmentWrapper::get_repos() const {
+-    std::vector<std::string> repos_vector = rawdata.at("repos");
++    auto repos_vector = std::vector<std::string>{rawdata.at("repos")};
+     std::set<std::string> repos_set(repos_vector.begin(), repos_vector.end());
+     return repos_set;
+ };
+diff --git a/dnf5daemon-client/wrappers/dbus_environment_wrapper.hpp b/dnf5daemon-client/wrappers/dbus_environment_wrapper.hpp
+index 16e4a52d4..aa8d9e178 100644
+--- a/dnf5daemon-client/wrappers/dbus_environment_wrapper.hpp
++++ b/dnf5daemon-client/wrappers/dbus_environment_wrapper.hpp
+@@ -24,6 +24,7 @@ along with libdnf.  If not, see <https://www.gnu.org/licenses/>.
+ #include <dnf5daemon-server/utils.hpp>
+ 
+ #include <set>
++#include <string>
+ #include <vector>
+ 
+ namespace dnfdaemon::client {
+@@ -32,10 +33,10 @@ class DbusEnvironmentWrapper {
+ public:
+     explicit DbusEnvironmentWrapper(const dnfdaemon::KeyValueMap & rawdata);
+ 
+-    std::string get_environmentid() const { return rawdata.at("environmentid"); }
+-    std::string get_name() const { return rawdata.at("name"); }
+-    std::string get_description() const { return rawdata.at("description"); }
+-    std::string get_order() const { return rawdata.at("order"); }
++    std::string get_environmentid() const { return std::string{rawdata.at("environmentid")}; }
++    std::string get_name() const { return std::string{rawdata.at("name")}; }
++    std::string get_description() const { return std::string{rawdata.at("description")}; }
++    std::string get_order() const { return std::string{rawdata.at("order")}; }
+     // TODO(mblaha) proper installed value
+     bool get_installed() const { return false; }
+     std::set<std::string> get_repos() const;
+diff --git a/dnf5daemon-client/wrappers/dbus_goal_wrapper.cpp b/dnf5daemon-client/wrappers/dbus_goal_wrapper.cpp
+index 044c13ac0..45c8fdcc2 100644
+--- a/dnf5daemon-client/wrappers/dbus_goal_wrapper.cpp
++++ b/dnf5daemon-client/wrappers/dbus_goal_wrapper.cpp
+@@ -59,7 +59,7 @@ DbusGoalWrapper::DbusGoalWrapper(std::vector<dnfdaemon::DbusTransactionItem> tra
+         auto ti_replaces = ti_attrs.find("replaces");
+         if (ti_replaces != ti_attrs.end()) {
+             std::vector<DbusPackageWrapper> replaces;
+-            std::vector<int> replaces_id = ti_replaces->second;
++            std::vector<int> replaces_id = std::vector<int>{ti_replaces->second};
+             for (const auto & pkg_id : replaces_id) {
+                 auto replaced_pkg_idx = transaction_packages_by_id.find(pkg_id);
+                 if (replaced_pkg_idx != transaction_packages_by_id.end()) {
+diff --git a/dnf5daemon-client/wrappers/dbus_group_wrapper.cpp b/dnf5daemon-client/wrappers/dbus_group_wrapper.cpp
+index 13faed85e..ec5f7d682 100644
+--- a/dnf5daemon-client/wrappers/dbus_group_wrapper.cpp
++++ b/dnf5daemon-client/wrappers/dbus_group_wrapper.cpp
+@@ -24,7 +24,7 @@ namespace dnfdaemon::client {
+ DbusGroupWrapper::DbusGroupWrapper(const dnfdaemon::KeyValueMap & rawdata) : rawdata(rawdata) {
+     auto packages_iter = rawdata.find("packages");
+     if (packages_iter != rawdata.end()) {
+-        dnfdaemon::KeyValueMapList raw_packages = packages_iter->second;
++        auto raw_packages = dnfdaemon::KeyValueMapList(packages_iter->second);
+         for (auto & raw_package : raw_packages) {
+             packages.push_back(DbusGroupPackageWrapper(raw_package));
+         }
+@@ -32,7 +32,7 @@ DbusGroupWrapper::DbusGroupWrapper(const dnfdaemon::KeyValueMap & rawdata) : raw
+ };
+ 
+ std::set<std::string> DbusGroupWrapper::get_repos() const {
+-    std::vector<std::string> repos_vector = rawdata.at("repos");
++    std::vector<std::string> repos_vector = std::vector<std::string>{rawdata.at("repos")};
+     std::set<std::string> repos_set(repos_vector.begin(), repos_vector.end());
+     return repos_set;
+ };
+diff --git a/dnf5daemon-client/wrappers/dbus_group_wrapper.hpp b/dnf5daemon-client/wrappers/dbus_group_wrapper.hpp
+index 87bdda6f0..c6245fddc 100644
+--- a/dnf5daemon-client/wrappers/dbus_group_wrapper.hpp
++++ b/dnf5daemon-client/wrappers/dbus_group_wrapper.hpp
+@@ -34,7 +34,7 @@ class DbusGroupWrapper {
+     class DbusGroupPackageWrapper {
+     public:
+         explicit DbusGroupPackageWrapper(dnfdaemon::KeyValueMap & rawdata) : rawdata(rawdata) {}
+-        std::string get_name() const { return rawdata.at("name"); }
++        std::string get_name() const { return std::string{rawdata.at("name")}; }
+         libdnf5::comps::PackageType get_type() const {
+             return static_cast<libdnf5::comps::PackageType>(key_value_map_get<int>(rawdata, "type"));
+         }
+@@ -45,13 +45,13 @@ class DbusGroupWrapper {
+ 
+     explicit DbusGroupWrapper(const dnfdaemon::KeyValueMap & rawdata);
+ 
+-    std::string get_groupid() const { return rawdata.at("groupid"); }
+-    std::string get_name() const { return rawdata.at("name"); }
+-    std::string get_description() const { return rawdata.at("description"); }
+-    std::string get_order() const { return rawdata.at("order"); }
+-    std::string get_langonly() const { return rawdata.at("langonly"); }
+-    bool get_installed() const { return rawdata.at("installed"); }
+-    bool get_uservisible() const { return rawdata.at("uservisible"); }
++    std::string get_groupid() const { return std::string{rawdata.at("groupid")}; }
++    std::string get_name() const { return std::string{rawdata.at("name")}; }
++    std::string get_description() const { return std::string{rawdata.at("description")}; }
++    std::string get_order() const { return std::string{rawdata.at("order")}; }
++    std::string get_langonly() const { return std::string{rawdata.at("langonly")}; }
++    bool get_installed() const { return bool{rawdata.at("installed")}; }
++    bool get_uservisible() const { return bool{rawdata.at("uservisible")}; }
+     std::set<std::string> get_repos() const;
+     std::vector<DbusGroupPackageWrapper> get_packages() const { return packages; }
+ 
+diff --git a/dnf5daemon-client/wrappers/dbus_package_wrapper.hpp b/dnf5daemon-client/wrappers/dbus_package_wrapper.hpp
+index b94d16307..a38ea7e38 100644
+--- a/dnf5daemon-client/wrappers/dbus_package_wrapper.hpp
++++ b/dnf5daemon-client/wrappers/dbus_package_wrapper.hpp
+@@ -32,30 +32,30 @@ class DbusPackageWrapper {
+ public:
+     explicit DbusPackageWrapper(const dnfdaemon::KeyValueMap & rawdata) : rawdata(rawdata){};
+ 
+-    int get_id() { return rawdata.at("id"); }
+-    std::string get_name() const { return rawdata.at("name"); }
++    int get_id() { return int{rawdata.at("id")}; }
++    std::string get_name() const { return std::string{rawdata.at("name")}; }
+     std::string get_na() const { return get_name() + "." + get_arch(); }
+-    std::string get_epoch() const { return rawdata.at("epoch"); }
+-    std::string get_version() const { return rawdata.at("version"); }
+-    std::string get_release() const { return rawdata.at("release"); }
+-    std::string get_arch() const { return rawdata.at("arch"); }
+-    std::string get_repo_id() const { return rawdata.at("repo_id"); }
+-    std::string get_from_repo_id() const { return rawdata.at("from_repo_id"); }
+-    std::string get_nevra() const { return rawdata.at("nevra"); }
+-    std::string get_full_nevra() const { return rawdata.at("full_nevra"); }
+-    std::string get_evr() const { return rawdata.at("evr"); }
+-    bool is_installed() const { return rawdata.at("is_installed"); }
+-    uint64_t get_install_size() const { return rawdata.at("install_size"); }
+-    uint64_t get_download_size() const { return rawdata.at("download_size"); }
+-    std::string get_sourcerpm() const { return rawdata.at("sourcerpm"); }
+-    std::string get_summary() const { return rawdata.at("summary"); }
+-    std::string get_url() const { return rawdata.at("url"); }
+-    std::string get_license() const { return rawdata.at("license"); }
+-    std::string get_description() const { return rawdata.at("description"); }
++    std::string get_epoch() const { return std::string{rawdata.at("epoch")}; }
++    std::string get_version() const { return std::string{rawdata.at("version")}; }
++    std::string get_release() const { return std::string{rawdata.at("release")}; }
++    std::string get_arch() const { return std::string{rawdata.at("arch")}; }
++    std::string get_repo_id() const { return std::string{rawdata.at("repo_id")}; }
++    std::string get_from_repo_id() const { return std::string{rawdata.at("from_repo_id")}; }
++    std::string get_nevra() const { return std::string{rawdata.at("nevra")}; }
++    std::string get_full_nevra() const { return std::string{rawdata.at("full_nevra")}; }
++    std::string get_evr() const { return std::string{rawdata.at("evr")}; }
++    bool is_installed() const { return bool{rawdata.at("is_installed")}; }
++    uint64_t get_install_size() const { return uint64_t{rawdata.at("install_size")}; }
++    uint64_t get_download_size() const { return uint64_t{rawdata.at("download_size")}; }
++    std::string get_sourcerpm() const { return std::string{rawdata.at("sourcerpm")}; }
++    std::string get_summary() const { return std::string{rawdata.at("summary")}; }
++    std::string get_url() const { return std::string{rawdata.at("url")}; }
++    std::string get_license() const { return std::string{rawdata.at("license")}; }
++    std::string get_description() const { return std::string{rawdata.at("description")}; }
+     libdnf5::transaction::TransactionItemReason get_reason() const {
+-        return libdnf5::transaction::transaction_item_reason_from_string(rawdata.at("reason"));
++        return libdnf5::transaction::transaction_item_reason_from_string(std::string{rawdata.at("reason")});
+     }
+-    std::string get_vendor() const { return rawdata.at("vendor"); }
++    std::string get_vendor() const { return std::string{rawdata.at("vendor")}; }
+ 
+ private:
+     dnfdaemon::KeyValueMap rawdata;
+diff --git a/dnf5daemon-client/wrappers/dbus_repo_wrapper.cpp b/dnf5daemon-client/wrappers/dbus_repo_wrapper.cpp
+index a5c5dd19c..1a8c79ed8 100644
+--- a/dnf5daemon-client/wrappers/dbus_repo_wrapper.cpp
++++ b/dnf5daemon-client/wrappers/dbus_repo_wrapper.cpp
+@@ -26,7 +26,7 @@ std::vector<std::pair<std::string, std::string>> DbusRepoWrapper::get_distro_tag
+     // serialized to vector<string>.
+     // convert [tag1, val1, tag2, val2,...] back to [(tag1, val1), (tag2, val2),...]
+     std::vector<std::pair<std::string, std::string>> dt{};
+-    std::vector<std::string> tags_raw = rawdata.at("distro_tags");
++    auto tags_raw = std::vector<std::string>{rawdata.at("distro_tags")};
+     if (!tags_raw.empty()) {
+         for (size_t i = 0; i < (tags_raw.size() - 1); i += 2) {
+             dt.emplace_back(tags_raw[i], tags_raw[i + 1]);
+diff --git a/dnf5daemon-client/wrappers/dbus_repo_wrapper.hpp b/dnf5daemon-client/wrappers/dbus_repo_wrapper.hpp
+index 2f30397be..067f63832 100644
+--- a/dnf5daemon-client/wrappers/dbus_repo_wrapper.hpp
++++ b/dnf5daemon-client/wrappers/dbus_repo_wrapper.hpp
+@@ -31,33 +31,33 @@ class DbusRepoWrapper : public libdnf5::cli::output::IRepoInfo {
+ public:
+     explicit DbusRepoWrapper(dnfdaemon::KeyValueMap & rawdata) : rawdata(rawdata){};
+ 
+-    std::string get_id() const { return rawdata.at("id"); }
+-    std::string get_name() const { return rawdata.at("name"); }
+-    std::string get_type() const { return rawdata.at("type"); }
+-    bool is_enabled() const { return rawdata.at("enabled"); }
+-    int get_priority() const { return rawdata.at("priority"); }
+-    int get_cost() const { return rawdata.at("cost"); }
+-    std::vector<std::string> get_baseurl() const { return rawdata.at("baseurl"); }
+-    std::string get_metalink() const { return rawdata.at("metalink"); }
+-    std::string get_mirrorlist() const { return rawdata.at("mirrorlist"); }
+-    int get_metadata_expire() const { return rawdata.at("metadata_expire"); }
+-    std::vector<std::string> get_excludepkgs() const { return rawdata.at("excludepkgs"); }
+-    std::vector<std::string> get_includepkgs() const { return rawdata.at("includepkgs"); }
+-    bool get_skip_if_unavailable() const { return rawdata.at("skip_if_unavailable"); }
+-    std::vector<std::string> get_gpgkey() const { return rawdata.at("gpgkey"); }
+-    bool get_gpgcheck() const { return rawdata.at("pkg_gpgcheck"); }
+-    bool get_pkg_gpgcheck() const { return rawdata.at("pkg_gpgcheck"); }
+-    bool get_repo_gpgcheck() const { return rawdata.at("repo_gpgcheck"); }
+-    std::string get_repo_file_path() const { return rawdata.at("repofile"); }
+-    std::string get_revision() const { return rawdata.at("revision"); }
+-    std::vector<std::string> get_content_tags() const { return rawdata.at("content_tags"); }
++    std::string get_id() const { return std::string{rawdata.at("id")}; }
++    std::string get_name() const { return std::string{rawdata.at("name")}; }
++    std::string get_type() const { return std::string{rawdata.at("type")}; }
++    bool is_enabled() const { return bool{rawdata.at("enabled")}; }
++    int get_priority() const { return int{rawdata.at("priority")}; }
++    int get_cost() const { return int{rawdata.at("cost")}; }
++    std::vector<std::string> get_baseurl() const { return std::vector<std::string>{rawdata.at("baseurl")}; }
++    std::string get_metalink() const { return std::string{rawdata.at("metalink")}; }
++    std::string get_mirrorlist() const { return std::string{rawdata.at("mirrorlist")}; }
++    int get_metadata_expire() const { return int{rawdata.at("metadata_expire")}; }
++    std::vector<std::string> get_excludepkgs() const { return std::vector<std::string>{rawdata.at("excludepkgs")}; }
++    std::vector<std::string> get_includepkgs() const { return std::vector<std::string>{rawdata.at("includepkgs")}; }
++    bool get_skip_if_unavailable() const { return bool{rawdata.at("skip_if_unavailable")}; }
++    std::vector<std::string> get_gpgkey() const { return std::vector<std::string>{rawdata.at("gpgkey")}; }
++    bool get_gpgcheck() const { return bool{rawdata.at("gpgcheck")}; }
++    bool get_pkg_gpgcheck() const { return bool{rawdata.at("pkg_gpgcheck")}; }
++    bool get_repo_gpgcheck() const { return bool{rawdata.at("repo_gpgcheck")}; }
++    std::string get_repo_file_path() const { return std::string{rawdata.at("repofile")}; }
++    std::string get_revision() const { return std::string{rawdata.at("revision")}; }
++    std::vector<std::string> get_content_tags() const { return std::vector<std::string>{rawdata.at("content_tags")}; }
+     std::vector<std::pair<std::string, std::string>> get_distro_tags() const;
+-    int64_t get_timestamp() const { return rawdata.at("cache_updated"); }
+-    int get_max_timestamp() const { return rawdata.at("updated"); }
+-    uint64_t get_size() const { return rawdata.at("size"); }
+-    uint64_t get_pkgs() const { return rawdata.at("pkgs"); }
+-    uint64_t get_available_pkgs() const { return rawdata.at("available_pkgs"); }
+-    std::vector<std::string> get_mirrors() const { return rawdata.at("mirrors"); }
++    int64_t get_timestamp() const { return int64_t{rawdata.at("cache_updated")}; }
++    int get_max_timestamp() const { return int{rawdata.at("updated")}; }
++    uint64_t get_size() const { return uint64_t{rawdata.at("size")}; }
++    uint64_t get_pkgs() const { return uint64_t{rawdata.at("pkgs")}; }
++    uint64_t get_available_pkgs() const { return uint64_t{rawdata.at("available_pkgs")}; }
++    std::vector<std::string> get_mirrors() const { return std::vector<std::string>{rawdata.at("mirrors")}; }
+ 
+ private:
+     dnfdaemon::KeyValueMap rawdata;
+
+From 54eea4e1a08101fed7560eb226338b49e89b7077 Mon Sep 17 00:00:00 2001
+From: Marek Blaha <mblaha@redhat.com>
+Date: Fri, 17 May 2024 13:05:09 +0200
+Subject: [PATCH 5/6] dnfdaemon: Make signal handlers compatible
+
+sdbus-cpp version 2 requires signal handler to have signature
+(sdbus::Signal signal) -> void, which is also acceptable for version 1.
+---
+ dnf5daemon-client/callbacks.cpp | 48 ++++++++++++++++-----------------
+ 1 file changed, 24 insertions(+), 24 deletions(-)
+
+diff --git a/dnf5daemon-client/callbacks.cpp b/dnf5daemon-client/callbacks.cpp
+index 4adfe2e00..8060902ce 100644
+--- a/dnf5daemon-client/callbacks.cpp
++++ b/dnf5daemon-client/callbacks.cpp
+@@ -46,23 +46,23 @@ DownloadCB::DownloadCB(Context & context) : DbusCallback(context) {
+     // register signal handlers
+     auto proxy = context.session_proxy.get();
+     proxy->registerSignalHandler(
+-        dnfdaemon::INTERFACE_BASE, dnfdaemon::SIGNAL_DOWNLOAD_ADD_NEW, [this](sdbus::Signal & signal) -> void {
++        dnfdaemon::INTERFACE_BASE, dnfdaemon::SIGNAL_DOWNLOAD_ADD_NEW, [this](sdbus::Signal signal) -> void {
+             this->add_new_download(signal);
+         });
+     proxy->registerSignalHandler(
+-        dnfdaemon::INTERFACE_BASE, dnfdaemon::SIGNAL_DOWNLOAD_END, [this](sdbus::Signal & signal) -> void {
++        dnfdaemon::INTERFACE_BASE, dnfdaemon::SIGNAL_DOWNLOAD_END, [this](sdbus::Signal signal) -> void {
+             this->end(signal);
+         });
+     proxy->registerSignalHandler(
+-        dnfdaemon::INTERFACE_BASE, dnfdaemon::SIGNAL_DOWNLOAD_PROGRESS, [this](sdbus::Signal & signal) -> void {
++        dnfdaemon::INTERFACE_BASE, dnfdaemon::SIGNAL_DOWNLOAD_PROGRESS, [this](sdbus::Signal signal) -> void {
+             this->progress(signal);
+         });
+     proxy->registerSignalHandler(
+-        dnfdaemon::INTERFACE_BASE, dnfdaemon::SIGNAL_DOWNLOAD_MIRROR_FAILURE, [this](sdbus::Signal & signal) -> void {
++        dnfdaemon::INTERFACE_BASE, dnfdaemon::SIGNAL_DOWNLOAD_MIRROR_FAILURE, [this](sdbus::Signal signal) -> void {
+             this->mirror_failure(signal);
+         });
+     proxy->registerSignalHandler(
+-        dnfdaemon::INTERFACE_BASE, dnfdaemon::SIGNAL_REPO_KEY_IMPORT_REQUEST, [this](sdbus::Signal & signal) -> void {
++        dnfdaemon::INTERFACE_BASE, dnfdaemon::SIGNAL_REPO_KEY_IMPORT_REQUEST, [this](sdbus::Signal signal) -> void {
+             this->key_import(signal);
+         });
+ }
+@@ -242,55 +242,55 @@ TransactionCB::TransactionCB(Context & context) : DbusCallback(context) {
+     // register signal handlers
+     auto proxy = context.session_proxy.get();
+     proxy->registerSignalHandler(
+-        dnfdaemon::INTERFACE_RPM, dnfdaemon::SIGNAL_TRANSACTION_VERIFY_START, [this](sdbus::Signal & signal) -> void {
++        dnfdaemon::INTERFACE_RPM, dnfdaemon::SIGNAL_TRANSACTION_VERIFY_START, [this](sdbus::Signal signal) -> void {
+             this->verify_start(signal);
+         });
+     proxy->registerSignalHandler(
+-        dnfdaemon::INTERFACE_RPM,
+-        dnfdaemon::SIGNAL_TRANSACTION_VERIFY_PROGRESS,
+-        [this](sdbus::Signal & signal) -> void { this->verify_progress(signal); });
++        dnfdaemon::INTERFACE_RPM, dnfdaemon::SIGNAL_TRANSACTION_VERIFY_PROGRESS, [this](sdbus::Signal signal) -> void {
++            this->verify_progress(signal);
++        });
+     proxy->registerSignalHandler(
+-        dnfdaemon::INTERFACE_RPM, dnfdaemon::SIGNAL_TRANSACTION_VERIFY_STOP, [this](sdbus::Signal & signal) -> void {
++        dnfdaemon::INTERFACE_RPM, dnfdaemon::SIGNAL_TRANSACTION_VERIFY_STOP, [this](sdbus::Signal signal) -> void {
+             this->verify_end(signal);
+         });
+     proxy->registerSignalHandler(
+         dnfdaemon::INTERFACE_RPM,
+         dnfdaemon::SIGNAL_TRANSACTION_TRANSACTION_START,
+-        [this](sdbus::Signal & signal) -> void { this->transaction_start(signal); });
++        [this](sdbus::Signal signal) -> void { this->transaction_start(signal); });
+     proxy->registerSignalHandler(
+         dnfdaemon::INTERFACE_RPM,
+         dnfdaemon::SIGNAL_TRANSACTION_TRANSACTION_PROGRESS,
+-        [this](sdbus::Signal & signal) -> void { this->transaction_progress(signal); });
++        [this](sdbus::Signal signal) -> void { this->transaction_progress(signal); });
+     proxy->registerSignalHandler(
+-        dnfdaemon::INTERFACE_RPM,
+-        dnfdaemon::SIGNAL_TRANSACTION_TRANSACTION_STOP,
+-        [this](sdbus::Signal & signal) -> void { this->transaction_end(signal); });
++        dnfdaemon::INTERFACE_RPM, dnfdaemon::SIGNAL_TRANSACTION_TRANSACTION_STOP, [this](sdbus::Signal signal) -> void {
++            this->transaction_end(signal);
++        });
+     proxy->registerSignalHandler(
+-        dnfdaemon::INTERFACE_RPM, dnfdaemon::SIGNAL_TRANSACTION_ACTION_START, [this](sdbus::Signal & signal) -> void {
++        dnfdaemon::INTERFACE_RPM, dnfdaemon::SIGNAL_TRANSACTION_ACTION_START, [this](sdbus::Signal signal) -> void {
+             this->action_start(signal);
+         });
+     proxy->registerSignalHandler(
+-        dnfdaemon::INTERFACE_RPM,
+-        dnfdaemon::SIGNAL_TRANSACTION_ACTION_PROGRESS,
+-        [this](sdbus::Signal & signal) -> void { this->action_progress(signal); });
++        dnfdaemon::INTERFACE_RPM, dnfdaemon::SIGNAL_TRANSACTION_ACTION_PROGRESS, [this](sdbus::Signal signal) -> void {
++            this->action_progress(signal);
++        });
+     proxy->registerSignalHandler(
+-        dnfdaemon::INTERFACE_RPM, dnfdaemon::SIGNAL_TRANSACTION_ACTION_STOP, [this](sdbus::Signal & signal) -> void {
++        dnfdaemon::INTERFACE_RPM, dnfdaemon::SIGNAL_TRANSACTION_ACTION_STOP, [this](sdbus::Signal signal) -> void {
+             this->action_end(signal);
+         });
+     proxy->registerSignalHandler(
+-        dnfdaemon::INTERFACE_RPM, dnfdaemon::SIGNAL_TRANSACTION_SCRIPT_START, [this](sdbus::Signal & signal) -> void {
++        dnfdaemon::INTERFACE_RPM, dnfdaemon::SIGNAL_TRANSACTION_SCRIPT_START, [this](sdbus::Signal signal) -> void {
+             this->script_start(signal);
+         });
+     proxy->registerSignalHandler(
+-        dnfdaemon::INTERFACE_RPM, dnfdaemon::SIGNAL_TRANSACTION_SCRIPT_STOP, [this](sdbus::Signal & signal) -> void {
++        dnfdaemon::INTERFACE_RPM, dnfdaemon::SIGNAL_TRANSACTION_SCRIPT_STOP, [this](sdbus::Signal signal) -> void {
+             this->script_stop(signal);
+         });
+     proxy->registerSignalHandler(
+-        dnfdaemon::INTERFACE_RPM, dnfdaemon::SIGNAL_TRANSACTION_SCRIPT_ERROR, [this](sdbus::Signal & signal) -> void {
++        dnfdaemon::INTERFACE_RPM, dnfdaemon::SIGNAL_TRANSACTION_SCRIPT_ERROR, [this](sdbus::Signal signal) -> void {
+             this->script_error(signal);
+         });
+     proxy->registerSignalHandler(
+-        dnfdaemon::INTERFACE_RPM, dnfdaemon::SIGNAL_TRANSACTION_FINISHED, [this](sdbus::Signal & signal) -> void {
++        dnfdaemon::INTERFACE_RPM, dnfdaemon::SIGNAL_TRANSACTION_FINISHED, [this](sdbus::Signal signal) -> void {
+             this->finished(signal);
+         });
+ }
+
+From 2f18a1659b63cbb17544f7b1d6cbe96ddb6f5d57 Mon Sep 17 00:00:00 2001
+From: Marek Blaha <mblaha@redhat.com>
+Date: Fri, 7 Jun 2024 14:16:57 +0200
+Subject: [PATCH 6/6] dnfdaemon: Register interface methods for sdbus-cpp-2
+
+sdbus-cpp-2 uses different approach to registering methods and signals
+on the interface.
+---
+ dnf5daemon-client/context.cpp                 |   4 +
+ .../services/advisory/advisory.cpp            |  15 ++
+ dnf5daemon-server/services/base/base.cpp      |  62 ++++++
+ dnf5daemon-server/services/comps/group.cpp    |  23 ++-
+ dnf5daemon-server/services/goal/goal.cpp      |  62 +++++-
+ .../services/offline/offline.cpp              |  48 +++++
+ dnf5daemon-server/services/repo/repo.cpp      |  47 +++++
+ dnf5daemon-server/services/rpm/rpm.cpp        | 178 ++++++++++++++++++
+ dnf5daemon-server/session.cpp                 |   6 +
+ dnf5daemon-server/session_manager.cpp         |  33 +++-
+ 10 files changed, 474 insertions(+), 4 deletions(-)
+
+diff --git a/dnf5daemon-client/context.cpp b/dnf5daemon-client/context.cpp
+index bcfd1bfa6..f2bb40cad 100644
+--- a/dnf5daemon-client/context.cpp
++++ b/dnf5daemon-client/context.cpp
+@@ -37,7 +37,9 @@ void Context::init_session(sdbus::IConnection & connection) {
+     // open dnf5daemon-server session
+     auto cfg = static_cast<DaemonCommand *>(get_selected_command())->session_config();
+     auto session_manager_proxy = sdbus::createProxy(connection, dnfdaemon::DBUS_NAME, dnfdaemon::DBUS_OBJECT_PATH);
++#ifndef SDBUS_CPP_VERSION_2
+     session_manager_proxy->finishRegistration();
++#endif
+ 
+     // set up the install root end setopts
+     std::map<std::string, std::string> empty_options{};
+@@ -63,7 +65,9 @@ void Context::init_session(sdbus::IConnection & connection) {
+     // register progress bars callbacks
+     download_cb = std::make_unique<DownloadCB>(*this);
+     transaction_cb = std::make_unique<TransactionCB>(*this);
++#ifndef SDBUS_CPP_VERSION_2
+     session_proxy->finishRegistration();
++#endif
+ }
+ 
+ 
+diff --git a/dnf5daemon-server/services/advisory/advisory.cpp b/dnf5daemon-server/services/advisory/advisory.cpp
+index 65e7e217f..454340264 100644
+--- a/dnf5daemon-server/services/advisory/advisory.cpp
++++ b/dnf5daemon-server/services/advisory/advisory.cpp
+@@ -31,6 +31,20 @@ namespace dnfdaemon {
+ 
+ void Advisory::dbus_register() {
+     auto dbus_object = session.get_dbus_object();
++#ifdef SDBUS_CPP_VERSION_2
++    dbus_object
++        ->addVTable(sdbus::MethodVTableItem{
++            sdbus::MethodName{"list"},
++            sdbus::Signature{"a{sv}"},
++            {"options"},
++            sdbus::Signature{"aa{sv}"},
++            {"advisories"},
++            [this](sdbus::MethodCall call) -> void {
++                session.get_threads_manager().handle_method(*this, &Advisory::list, call, session.session_locale);
++            },
++            {}})
++        .forInterface(INTERFACE_ADVISORY);
++#else
+     dbus_object->registerMethod(
+         INTERFACE_ADVISORY,
+         "list",
+@@ -41,6 +55,7 @@ void Advisory::dbus_register() {
+         [this](sdbus::MethodCall call) -> void {
+             session.get_threads_manager().handle_method(*this, &Advisory::list, call, session.session_locale);
+         });
++#endif
+ }
+ 
+ libdnf5::advisory::AdvisoryQuery Advisory::advisory_query_from_options(
+diff --git a/dnf5daemon-server/services/base/base.cpp b/dnf5daemon-server/services/base/base.cpp
+index d1a356504..301c1c411 100644
+--- a/dnf5daemon-server/services/base/base.cpp
++++ b/dnf5daemon-server/services/base/base.cpp
+@@ -45,6 +45,67 @@ static const std::unordered_set<std::string> ALLOWED_CACHE_TYPES = {
+ 
+ void Base::dbus_register() {
+     auto dbus_object = session.get_dbus_object();
++#ifdef SDBUS_CPP_VERSION_2
++    dbus_object
++        ->addVTable(
++            sdbus::MethodVTableItem{
++                sdbus::MethodName{"read_all_repos"},
++                sdbus::Signature{""},
++                {},
++                sdbus::Signature{"b"},
++                {"success"},
++                [this](sdbus::MethodCall call) -> void {
++                    session.get_threads_manager().handle_method(
++                        *this, &Base::read_all_repos, call, session.session_locale);
++                },
++                {}},
++            sdbus::MethodVTableItem{
++                sdbus::MethodName{"clean"},
++                sdbus::Signature{"s"},
++                {"cache_type"},
++                sdbus::Signature{"bs"},
++                {"success", "error_msg"},
++                [this](sdbus::MethodCall call) -> void {
++                    session.get_threads_manager().handle_method(*this, &Base::clean, call, session.session_locale);
++                },
++                {}},
++            sdbus::MethodVTableItem{
++                sdbus::MethodName{"reset"},
++                sdbus::Signature{""},
++                {},
++                sdbus::Signature{"bs"},
++                {"success", "error_msg"},
++                [this](sdbus::MethodCall call) -> void {
++                    session.get_threads_manager().handle_method(*this, &Base::reset, call, session.session_locale);
++                },
++                {}},
++            sdbus::SignalVTableItem{
++                dnfdaemon::SIGNAL_DOWNLOAD_ADD_NEW,
++                sdbus::Signature{"ossx"},
++                {"session_object_path", "download_id", "description", "total_to_download"},
++                {}},
++            sdbus::SignalVTableItem{
++                dnfdaemon::SIGNAL_DOWNLOAD_PROGRESS,
++                sdbus::Signature{"osxx"},
++                {"session_object_path", "download_id", "total_to_download", "downloaded"},
++                {}},
++            sdbus::SignalVTableItem{
++                dnfdaemon::SIGNAL_DOWNLOAD_END,
++                sdbus::Signature{"osus"},
++                {"session_object_path", "download_id", "transfer_status", "message"},
++                {}},
++            sdbus::SignalVTableItem{
++                dnfdaemon::SIGNAL_DOWNLOAD_MIRROR_FAILURE,
++                sdbus::Signature{"ossss"},
++                {"session_object_path", "download_id", "message", "url", "metadata"},
++                {}},
++            sdbus::SignalVTableItem{
++                dnfdaemon::SIGNAL_REPO_KEY_IMPORT_REQUEST,
++                sdbus::Signature{"osasssx"},
++                {"session_object_path", "key_id", "user_ids", "key_fingerprint", "key_url", "timestamp"},
++                {}})
++        .forInterface(dnfdaemon::INTERFACE_BASE);
++#else
+     dbus_object->registerMethod(
+         dnfdaemon::INTERFACE_BASE, "read_all_repos", "", {}, "b", {"success"}, [this](sdbus::MethodCall call) -> void {
+             session.get_threads_manager().handle_method(*this, &Base::read_all_repos, call, session.session_locale);
+@@ -95,6 +156,7 @@ void Base::dbus_register() {
+         dnfdaemon::SIGNAL_REPO_KEY_IMPORT_REQUEST,
+         "osasssx",
+         {"session_object_path", "key_id", "user_ids", "key_fingerprint", "key_url", "timestamp"});
++#endif
+ }
+ 
+ sdbus::MethodReply Base::read_all_repos(sdbus::MethodCall & call) {
+diff --git a/dnf5daemon-server/services/comps/group.cpp b/dnf5daemon-server/services/comps/group.cpp
+index 178c44065..3164cac51 100644
+--- a/dnf5daemon-server/services/comps/group.cpp
++++ b/dnf5daemon-server/services/comps/group.cpp
+@@ -118,10 +118,31 @@ dnfdaemon::KeyValueMap group_to_map(libdnf5::comps::Group & libdnf_group, const
+ 
+ void Group::dbus_register() {
+     auto dbus_object = session.get_dbus_object();
++#ifdef SDBUS_CPP_VERSION_2
++    dbus_object
++        ->addVTable(sdbus::MethodVTableItem{
++            sdbus::MethodName{"list"},
++            sdbus::Signature{"a{sv}"},
++            {"options"},
++            sdbus::Signature{"aa{sv}"},
++            {"groups"},
++            [this](sdbus::MethodCall call) -> void {
++                session.get_threads_manager().handle_method(*this, &Group::list, call, session.session_locale);
++            },
++            {}})
++        .forInterface(dnfdaemon::INTERFACE_GROUP);
++#else
+     dbus_object->registerMethod(
+-        dnfdaemon::INTERFACE_GROUP, "list", "a{sv}", "aa{sv}", [this](sdbus::MethodCall call) -> void {
++        dnfdaemon::INTERFACE_GROUP,
++        "list",
++        "a{sv}",
++        {"options"},
++        "aa{sv}",
++        {"groups"},
++        [this](sdbus::MethodCall call) -> void {
+             session.get_threads_manager().handle_method(*this, &Group::list, call, session.session_locale);
+         });
++#endif
+ }
+ 
+ sdbus::MethodReply Group::list(sdbus::MethodCall & call) {
+diff --git a/dnf5daemon-server/services/goal/goal.cpp b/dnf5daemon-server/services/goal/goal.cpp
+index 27cc93db5..493f717a2 100644
+--- a/dnf5daemon-server/services/goal/goal.cpp
++++ b/dnf5daemon-server/services/goal/goal.cpp
+@@ -60,8 +60,65 @@ static std::string dbus_transaction_item_type_to_string(dnfdaemon::DbusTransacti
+ 
+ void Goal::dbus_register() {
+     auto dbus_object = session.get_dbus_object();
+-    // TODO(mblaha) Adjust resolve method to accommodate also groups, environments,
+-    // and modules as part of the transaction
++#ifdef SDBUS_CPP_VERSION_2
++    dbus_object
++        ->addVTable(
++            sdbus::MethodVTableItem{
++                sdbus::MethodName{"resolve"},
++                sdbus::Signature{"a{sv}"},
++                {"options"},
++                sdbus::Signature{"a(sssa{sv}a{sv})u"},
++                {"transaction_items", "result"},
++                [this](sdbus::MethodCall call) -> void {
++                    session.get_threads_manager().handle_method(*this, &Goal::resolve, call, session.session_locale);
++                },
++                {}},
++            sdbus::MethodVTableItem{
++                sdbus::MethodName{"get_transaction_problems_string"},
++                {},
++                {},
++                sdbus::Signature{"as"},
++                {"problems"},
++                [this](sdbus::MethodCall call) -> void {
++                    session.get_threads_manager().handle_method(
++                        *this, &Goal::get_transaction_problems_string, call, session.session_locale);
++                },
++                {}},
++            sdbus::MethodVTableItem{
++                sdbus::MethodName{"get_transaction_problems"},
++                {},
++                {},
++                sdbus::Signature{"aa{sv}"},
++                {"problems"},
++                [this](sdbus::MethodCall call) -> void {
++                    session.get_threads_manager().handle_method(
++                        *this, &Goal::get_transaction_problems, call, session.session_locale);
++                },
++                {}},
++            sdbus::MethodVTableItem{
++                sdbus::MethodName{"do_transaction"},
++                sdbus::Signature{"a{sv}"},
++                {"options"},
++                {},
++                {},
++                [this](sdbus::MethodCall call) -> void {
++                    session.get_threads_manager().handle_method(
++                        *this, &Goal::do_transaction, call, session.session_locale);
++                },
++                {}},
++            sdbus::MethodVTableItem{
++                sdbus::MethodName{"cancel"},
++                sdbus::Signature{""},
++                {},
++                sdbus::Signature{"bs"},
++                {"success", "error_msg"},
++                [this](sdbus::MethodCall call) -> void {
++                    session.get_threads_manager().handle_method(
++                        *this, &Goal::cancel, call, session.session_locale);
++                },
++                {}})
++        .forInterface(dnfdaemon::INTERFACE_GOAL);
++#else
+     dbus_object->registerMethod(
+         dnfdaemon::INTERFACE_GOAL,
+         "resolve",
+@@ -118,6 +175,7 @@ void Goal::dbus_register() {
+         dnfdaemon::INTERFACE_GOAL, "reset", "", {}, "", {}, [this](sdbus::MethodCall call) -> void {
+             session.get_threads_manager().handle_method(*this, &Goal::reset, call, session.session_locale);
+         });
++#endif
+ }
+ 
+ sdbus::MethodReply Goal::resolve(sdbus::MethodCall & call) {
+diff --git a/dnf5daemon-server/services/offline/offline.cpp b/dnf5daemon-server/services/offline/offline.cpp
+index c9ff03fc6..48968f867 100644
+--- a/dnf5daemon-server/services/offline/offline.cpp
++++ b/dnf5daemon-server/services/offline/offline.cpp
+@@ -52,6 +52,53 @@ Offline::Scheduled Offline::offline_transaction_scheduled() {
+ 
+ void Offline::dbus_register() {
+     auto dbus_object = session.get_dbus_object();
++#ifdef SDBUS_CPP_VERSION_2
++    dbus_object
++        ->addVTable(
++            sdbus::MethodVTableItem{
++                sdbus::MethodName{"cancel"},
++                {},
++                {},
++                sdbus::Signature{"bs"},
++                {"success", "error_msg"},
++                [this](sdbus::MethodCall call) -> void {
++                    session.get_threads_manager().handle_method(*this, &Offline::cancel, call, session.session_locale);
++                },
++                {}},
++            sdbus::MethodVTableItem{
++                sdbus::MethodName{"get_status"},
++                {},
++                {},
++                sdbus::Signature{"ba{sv}"},
++                {"is_pending", "transaction_status"},
++                [this](sdbus::MethodCall call) -> void {
++                    session.get_threads_manager().handle_method(
++                        *this, &Offline::get_status, call, session.session_locale);
++                },
++                {}},
++            sdbus::MethodVTableItem{
++                sdbus::MethodName{"clean"},
++                {},
++                {},
++                sdbus::Signature{"bs"},
++                {"success", "error_msg"},
++                [this](sdbus::MethodCall call) -> void {
++                    session.get_threads_manager().handle_method(*this, &Offline::clean, call, session.session_locale);
++                },
++                {}},
++            sdbus::MethodVTableItem{
++                sdbus::MethodName{"set_finish_action"},
++                sdbus::Signature{"s"},
++                {"action"},
++                sdbus::Signature{"bs"},
++                {"success", "error_msg"},
++                [this](sdbus::MethodCall call) -> void {
++                    session.get_threads_manager().handle_method(
++                        *this, &Offline::set_finish_action, call, session.session_locale);
++                },
++                {}})
++        .forInterface(dnfdaemon::INTERFACE_OFFLINE);
++#else
+     dbus_object->registerMethod(
+         dnfdaemon::INTERFACE_OFFLINE,
+         "cancel",
+@@ -93,6 +140,7 @@ void Offline::dbus_register() {
+             session.get_threads_manager().handle_method(
+                 *this, &Offline::set_finish_action, call, session.session_locale);
+         });
++#endif
+ }
+ 
+ sdbus::MethodReply Offline::get_status(sdbus::MethodCall & call) {
+diff --git a/dnf5daemon-server/services/repo/repo.cpp b/dnf5daemon-server/services/repo/repo.cpp
+index 521a93a3f..cee863916 100644
+--- a/dnf5daemon-server/services/repo/repo.cpp
++++ b/dnf5daemon-server/services/repo/repo.cpp
+@@ -262,6 +262,52 @@ bool keyval_repo_compare(const dnfdaemon::KeyValueMap & first, const dnfdaemon::
+ 
+ void Repo::dbus_register() {
+     auto dbus_object = session.get_dbus_object();
++
++#ifdef SDBUS_CPP_VERSION_2
++    dbus_object
++        ->addVTable(
++            sdbus::MethodVTableItem{
++                sdbus::MethodName{"list"},
++                sdbus::Signature{"a{sv}"},
++                {"options"},
++                sdbus::Signature{"aa{sv}"},
++                {"repositories"},
++                [this](sdbus::MethodCall call) -> void {
++                    session.get_threads_manager().handle_method(*this, &Repo::list, call, session.session_locale);
++                },
++                {}},
++            sdbus::MethodVTableItem{
++                sdbus::MethodName{"confirm_key"},
++                sdbus::Signature{"sb"},
++                {"key_id", "confirmed"},
++                sdbus::Signature{""},
++                {},
++                [this](sdbus::MethodCall call) -> void {
++                    session.get_threads_manager().handle_method(*this, &Repo::confirm_key, call);
++                },
++                {}},
++            sdbus::MethodVTableItem{
++                sdbus::MethodName{"enable"},
++                sdbus::Signature{"as"},
++                {"repo_ids"},
++                sdbus::Signature{""},
++                {},
++                [this](sdbus::MethodCall call) -> void {
++                    session.get_threads_manager().handle_method(*this, &Repo::enable, call, session.session_locale);
++                },
++                {}},
++            sdbus::MethodVTableItem{
++                sdbus::MethodName{"disable"},
++                sdbus::Signature{"as"},
++                {"repo_ids"},
++                sdbus::Signature{""},
++                {},
++                [this](sdbus::MethodCall call) -> void {
++                    session.get_threads_manager().handle_method(*this, &Repo::disable, call, session.session_locale);
++                },
++                {}})
++        .forInterface(dnfdaemon::INTERFACE_REPO);
++#else
+     dbus_object->registerMethod(
+         dnfdaemon::INTERFACE_REPO,
+         "list",
+@@ -290,6 +336,7 @@ void Repo::dbus_register() {
+         dnfdaemon::INTERFACE_REPO, "disable", "as", {"repo_ids"}, "", {}, [this](sdbus::MethodCall call) -> void {
+             session.get_threads_manager().handle_method(*this, &Repo::disable, call, session.session_locale);
+         });
++#endif
+ }
+ 
+ sdbus::MethodReply Repo::confirm_key(sdbus::MethodCall & call) {
+diff --git a/dnf5daemon-server/services/rpm/rpm.cpp b/dnf5daemon-server/services/rpm/rpm.cpp
+index 83cf253e5..aa8f5393a 100644
+--- a/dnf5daemon-server/services/rpm/rpm.cpp
++++ b/dnf5daemon-server/services/rpm/rpm.cpp
+@@ -33,6 +33,183 @@ along with libdnf.  If not, see <https://www.gnu.org/licenses/>.
+ 
+ void Rpm::dbus_register() {
+     auto dbus_object = session.get_dbus_object();
++#ifdef SDBUS_CPP_VERSION_2
++    dbus_object
++        ->addVTable(
++            sdbus::MethodVTableItem{
++                sdbus::MethodName{"distro_sync"},
++                sdbus::Signature{"asa{sv}"},
++                {"pkg_specs", "options"},
++                {},
++                {},
++                [this](sdbus::MethodCall call) -> void {
++                    session.get_threads_manager().handle_method(*this, &Rpm::distro_sync, call, session.session_locale);
++                },
++                {}},
++            sdbus::MethodVTableItem{
++                sdbus::MethodName{"downgrade"},
++                sdbus::Signature{"asa{sv}"},
++                {"pkg_specs", "options"},
++                {},
++                {},
++                [this](sdbus::MethodCall call) -> void {
++                    session.get_threads_manager().handle_method(*this, &Rpm::downgrade, call, session.session_locale);
++                },
++                {}},
++            sdbus::MethodVTableItem{
++                sdbus::MethodName{"list"},
++                sdbus::Signature{"a{sv}"},
++                {"options"},
++                sdbus::Signature{"aa{sv}"},
++                {"packages"},
++                [this](sdbus::MethodCall call) -> void {
++                    session.get_threads_manager().handle_method(*this, &Rpm::list, call, session.session_locale);
++                },
++                {}},
++            sdbus::MethodVTableItem{
++                sdbus::MethodName{"list_fd"},
++                sdbus::Signature{"a{sv}h"},
++                {"options", "file_descriptor"},
++                sdbus::Signature{"s"},
++                {"transfer_id"},
++                [this](sdbus::MethodCall call) -> void {
++                    session.get_threads_manager().handle_method_fd(*this, &Rpm::list_fd, call, session.session_locale);
++                },
++                {}},
++            sdbus::MethodVTableItem{
++                sdbus::MethodName{"install"},
++                sdbus::Signature{"asa{sv}"},
++                {"pkg_specs", "options"},
++                {},
++                {},
++                [this](sdbus::MethodCall call) -> void {
++                    session.get_threads_manager().handle_method(*this, &Rpm::install, call, session.session_locale);
++                },
++                {}},
++            sdbus::MethodVTableItem{
++                sdbus::MethodName{"upgrade"},
++                sdbus::Signature{"asa{sv}"},
++                {"pkg_specs", "options"},
++                {},
++                {},
++                [this](sdbus::MethodCall call) -> void {
++                    session.get_threads_manager().handle_method(*this, &Rpm::upgrade, call, session.session_locale);
++                },
++                {}},
++            sdbus::MethodVTableItem{
++                sdbus::MethodName{"reinstall"},
++                sdbus::Signature{"asa{sv}"},
++                {"pkg_specs", "options"},
++                {},
++                {},
++                [this](sdbus::MethodCall call) -> void {
++                    session.get_threads_manager().handle_method(*this, &Rpm::reinstall, call, session.session_locale);
++                },
++                {}},
++            sdbus::MethodVTableItem{
++                sdbus::MethodName{"remove"},
++                sdbus::Signature{"asa{sv}"},
++                {"pkg_specs", "options"},
++                {},
++                {},
++                [this](sdbus::MethodCall call) -> void {
++                    session.get_threads_manager().handle_method(*this, &Rpm::remove, call, session.session_locale);
++                },
++                {}},
++            sdbus::MethodVTableItem{
++                sdbus::MethodName{"system_upgrade"},
++                sdbus::Signature{"a{sv}"},
++                {"options"},
++                {},
++                {},
++                [this](sdbus::MethodCall call) -> void {
++                    session.get_threads_manager().handle_method(
++                        *this, &Rpm::system_upgrade, call, session.session_locale);
++                },
++                {}},
++
++            sdbus::SignalVTableItem{
++                dnfdaemon::SIGNAL_TRANSACTION_BEFORE_BEGIN,
++                sdbus::Signature{"ot"},
++                {"session_object_path", "total"},
++                {}},
++            sdbus::SignalVTableItem{
++                dnfdaemon::SIGNAL_TRANSACTION_AFTER_COMPLETE,
++                sdbus::Signature{"ob"},
++                {"session_object_path", "success"},
++                {}},
++            sdbus::SignalVTableItem{
++                dnfdaemon::SIGNAL_TRANSACTION_ELEM_PROGRESS,
++                sdbus::Signature{"ostt"},
++                {"session_object_path", "nevra", "processed", "total"},
++                {}},
++            sdbus::SignalVTableItem{
++                dnfdaemon::SIGNAL_TRANSACTION_ACTION_START,
++                sdbus::Signature{"osut"},
++                {"session_object_path", "nevra", "action", "total"},
++                {}},
++            sdbus::SignalVTableItem{
++                dnfdaemon::SIGNAL_TRANSACTION_ACTION_PROGRESS,
++                sdbus::Signature{"ostt"},
++                {"session_object_path", "nevra", "processed", "total"},
++                {}},
++            sdbus::SignalVTableItem{
++                dnfdaemon::SIGNAL_TRANSACTION_ACTION_STOP,
++                sdbus::Signature{"ost"},
++                {"session_object_path", "nevra", "total"},
++                {}},
++            sdbus::SignalVTableItem{
++                dnfdaemon::SIGNAL_TRANSACTION_SCRIPT_START,
++                sdbus::Signature{"osu"},
++                {"session_object_path", "nevra", "scriptlet_type"},
++                {}},
++            sdbus::SignalVTableItem{
++                dnfdaemon::SIGNAL_TRANSACTION_SCRIPT_STOP,
++                sdbus::Signature{"osut"},
++                {"session_object_path", "nevra", "scriptlet_type", "return_code"},
++                {}},
++            sdbus::SignalVTableItem{
++                dnfdaemon::SIGNAL_TRANSACTION_SCRIPT_ERROR,
++                sdbus::Signature{"osut"},
++                {"session_object_path", "nevra", "scriptlet_type", "return_code"},
++                {}},
++            sdbus::SignalVTableItem{
++                dnfdaemon::SIGNAL_TRANSACTION_VERIFY_START,
++                sdbus::Signature{"ot"},
++                {"session_object_path", "total"},
++                {}},
++            sdbus::SignalVTableItem{
++                dnfdaemon::SIGNAL_TRANSACTION_VERIFY_PROGRESS,
++                sdbus::Signature{"ott"},
++                {"session_object_path", "processed", "total"},
++                {}},
++            sdbus::SignalVTableItem{
++                dnfdaemon::SIGNAL_TRANSACTION_VERIFY_STOP,
++                sdbus::Signature{"ot"},
++                {"session_object_path", "total"},
++                {}},
++            sdbus::SignalVTableItem{
++                dnfdaemon::SIGNAL_TRANSACTION_TRANSACTION_START,
++                sdbus::Signature{"ot"},
++                {"session_object_path", "total"},
++                {}},
++            sdbus::SignalVTableItem{
++                dnfdaemon::SIGNAL_TRANSACTION_TRANSACTION_PROGRESS,
++                sdbus::Signature{"ott"},
++                {"session_object_path", "processed", "total"},
++                {}},
++            sdbus::SignalVTableItem{
++                dnfdaemon::SIGNAL_TRANSACTION_TRANSACTION_STOP,
++                sdbus::Signature{"ot"},
++                {"session_object_path", "total"},
++                {}},
++            sdbus::SignalVTableItem{
++                dnfdaemon::SIGNAL_TRANSACTION_UNPACK_ERROR,
++                sdbus::Signature{"os"},
++                {"session_object_path", "nevra"},
++                {}})
++        .forInterface(dnfdaemon::INTERFACE_RPM);
++#else
+     dbus_object->registerMethod(
+         dnfdaemon::INTERFACE_RPM,
+         "distro_sync",
+@@ -192,6 +369,7 @@ void Rpm::dbus_register() {
+         {"session_object_path", "total"});
+     dbus_object->registerSignal(
+         dnfdaemon::INTERFACE_RPM, dnfdaemon::SIGNAL_TRANSACTION_UNPACK_ERROR, "os", {"session_object_path", "nevra"});
++#endif
+ }
+ 
+ std::vector<std::string> get_filter_patterns(dnfdaemon::KeyValueMap options, const std::string & option) {
+diff --git a/dnf5daemon-server/session.cpp b/dnf5daemon-server/session.cpp
+index 2ff8ffea5..ad677c384 100644
+--- a/dnf5daemon-server/session.cpp
++++ b/dnf5daemon-server/session.cpp
+@@ -159,7 +159,10 @@ Session::Session(
+     for (auto & s : services) {
+         s->dbus_register();
+     }
++
++#ifndef SDBUS_CPP_VERSION_2
+     dbus_object->finishRegistration();
++#endif
+ }
+ 
+ Session::~Session() {
+@@ -268,7 +271,10 @@ bool Session::check_authorization(
+     const sdbus::ObjectPath object_path{"/org/freedesktop/PolicyKit1/Authority"};
+     const SDBUS_INTERFACE_NAME_TYPE interface_name{"org.freedesktop.PolicyKit1.Authority"};
+     auto polkit_proxy = sdbus::createProxy(connection, destination_name, object_path);
++
++#ifndef SDBUS_CPP_VERSION_2
+     polkit_proxy->finishRegistration();
++#endif
+ 
+     // call CheckAuthorization method
+     sdbus::Struct<bool, bool, std::map<std::string, std::string>> auth_result;
+diff --git a/dnf5daemon-server/session_manager.cpp b/dnf5daemon-server/session_manager.cpp
+index 8ea9d2c8e..e6494199d 100644
+--- a/dnf5daemon-server/session_manager.cpp
++++ b/dnf5daemon-server/session_manager.cpp
+@@ -47,6 +47,31 @@ SessionManager::~SessionManager() {
+ 
+ void SessionManager::dbus_register() {
+     dbus_object = sdbus::createObject(*connection, dnfdaemon::DBUS_OBJECT_PATH);
++#ifdef SDBUS_CPP_VERSION_2
++    dbus_object
++        ->addVTable(
++            sdbus::MethodVTableItem{
++                sdbus::MethodName{"open_session"},
++                sdbus::Signature{"a{sv}"},
++                {"options"},
++                sdbus::Signature{"o"},
++                {"session_object_path"},
++                [this](sdbus::MethodCall call) -> void {
++                    threads_manager.handle_method(*this, &SessionManager::open_session, call);
++                },
++                {}},
++            sdbus::MethodVTableItem{
++                sdbus::MethodName{"close_session"},
++                sdbus::Signature{"o"},
++                {"session_object_path"},
++                sdbus::Signature{"b"},
++                {"success"},
++                [this](sdbus::MethodCall call) -> void {
++                    threads_manager.handle_method(*this, &SessionManager::close_session, call);
++                },
++                {}})
++        .forInterface(dnfdaemon::INTERFACE_SESSION_MANAGER);
++#else
+     dbus_object->registerMethod(
+         dnfdaemon::INTERFACE_SESSION_MANAGER,
+         "open_session",
+@@ -69,14 +94,20 @@ void SessionManager::dbus_register() {
+         });
+     dbus_object->finishRegistration();
+ 
++#endif
++
+     // register signal handler for NameOwnerChanged
+     name_changed_proxy = sdbus::createProxy(
+         *connection, SDBUS_SERVICE_NAME_TYPE{"org.freedesktop.DBus"}, sdbus::ObjectPath{"/org/freedesktop/DBus"});
+     name_changed_proxy->registerSignalHandler(
+-        "org.freedesktop.DBus", "NameOwnerChanged", [this](sdbus::Signal signal) -> void {
++        SDBUS_INTERFACE_NAME_TYPE{"org.freedesktop.DBus"},
++        SDBUS_SIGNAL_NAME_TYPE{"NameOwnerChanged"},
++        [this](sdbus::Signal signal) -> void {
+             threads_manager.handle_signal(*this, &SessionManager::on_name_owner_changed, signal);
+         });
++#ifndef SDBUS_CPP_VERSION_2
+     name_changed_proxy->finishRegistration();
++#endif
+ }
+ 
+ 

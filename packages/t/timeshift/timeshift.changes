@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Dec  6 13:22:20 UTC 2024 - malcolmlewis@opensuse.org
+
+- Updated to version 24.06.5:
+  * l10n: Translation updates.
+- Changes from version 24.06.4:
+  * Always have a config object, (gh#linuxmint/timeshift#371).
+  * Update timeshift.appdata.xml, (gh#linuxmint/timeshift#356).
+- Changes from version 24.06.3:
+  * l10n: Translation updates.
+- Changes from version 24.06.2:
+  * l10n: Translation updates.
+- Drop deprecated %%suse_update_desktop_file and build requires on
+  update-desktop-files from spec file.
+
+-------------------------------------------------------------------
 Sat Jun  8 22:24:20 UTC 2024 - malcolmlewis@opensuse.org
 
 - Update to 24.06.1:

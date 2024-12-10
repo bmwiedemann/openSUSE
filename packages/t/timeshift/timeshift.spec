@@ -18,7 +18,7 @@
 
 
 Name:           timeshift
-Version:        24.06.1
+Version:        24.06.5
 Release:        0
 Summary:        System restore utility
 License:        GPL-3.0-only
@@ -29,7 +29,7 @@ BuildRequires:  fdupes
 BuildRequires:  help2man
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
+##BuildRequires:  update-desktop-files
 BuildRequires:  vala
 BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(gtk+-3.0)
@@ -74,7 +74,7 @@ rm -rf %{buildroot}%{_datadir}/appdata
 #Manually add log directories, set mode to 0750 and owned by root (boo#1165805)
 install -d %{buildroot}%{_localstatedir}/log/timeshift
 install -d %{buildroot}%{_localstatedir}/log/timeshift-btrfs
-%suse_update_desktop_file -r timeshift-gtk Utility Archiving
+#%%suse_update_desktop_file -r timeshift-gtk Utility Archiving
 %find_lang %{name} %{?no_lang_C}
 
 %fdupes %{buildroot}%{_datadir}

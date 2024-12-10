@@ -18,7 +18,7 @@
 
 %define         appname com.system76.CosmicTerm
 Name:           cosmic-term
-Version:        1.0.0~alpha3
+Version:        1.0.0~alpha4+0
 Release:        0
 Summary:        COSMIC terminal emulator
 License:        GPL-3.0-only
@@ -57,8 +57,7 @@ just rootdir=%{buildroot} prefix=%{_prefix} install
 %doc README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/%{appname}.desktop
-%{_datadir}/icons/hicolor/??x??/apps/%{appname}.svg
-%{_datadir}/icons/hicolor/???x???/apps/%{appname}.svg
+%{_datadir}/icons/hicolor/*/apps/%{appname}.svg
 %{_datadir}/metainfo/%{appname}.metainfo.xml
 
 %changelog

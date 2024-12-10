@@ -122,4 +122,12 @@ Most of the pattern matches in the package are for CC-BY-2.5, not CC-BY-3.0 (for
     <comment>Add an alias</comment>
     <requestid>1228274</requestid>
   </revision>
+  <revision rev="17" vrev="24">
+    <srcmd5>794e2219505168388cb4e04feaa1422b</srcmd5>
+    <version>1.0</version>
+    <time>1733775111</time>
+    <user>anag+factory</user>
+    <comment>Relax javapackages version requirement</comment>
+    <requestid>1229149</requestid>
+  </revision>
 </revisionlist>

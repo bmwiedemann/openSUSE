@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Dec  6 18:26:03 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- add cosmic dconf config
+
+-------------------------------------------------------------------
+Fri Dec 06 00:42:48 UTC 2024 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha4+0:
+  * session: Add custom dconf profile
+  * cleanup
+  * feat: try to gracefully shut down settings daemon when exiting
+  * feat: a11y
+  * main: Only launch xdg-portal on COSMIC
+  * comp: Allow to specify different compositors
+  * Launch `cosmic-idle`
+  * fix: log cosmic-settings-daemon output
+  * Handle inode/mount-point with cosmic-files
+  * Launch cosmic-files-applet
+
+-------------------------------------------------------------------
+Thu Oct 31 22:26:11 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.0~alpha3:
+  * Add store to mimeapps, cleanup unused entries
+  * Handle flatpakref with cosmic-store
+  * Handle inode/mount-point with cosmic-files
+  * fix: log cosmic-settings-daemon output
+  * Launch cosmic-idle
+  * comp: Allow to specify different compositors
+  * main: Only launch xdg-portal on COSMIC
+
+-------------------------------------------------------------------
+Thu Oct 17 00:13:38 UTC 2024 - John Vandenberg <jayvdb@gmail.com>
+
+- Add dependency on cosmic-settings-daemon
+
+-------------------------------------------------------------------
 Wed Sep 25 06:45:48 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.0.0~alpha2:

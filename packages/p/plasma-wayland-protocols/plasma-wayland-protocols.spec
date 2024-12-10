@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           plasma-wayland-protocols
-Version:        1.14.0
+Version:        1.15.0
 Release:        0
 Summary:        Wayland protocols used by Plasma
 License:        BSD-3-Clause AND LGPL-2.1-only AND LGPL-2.1-or-later AND MIT

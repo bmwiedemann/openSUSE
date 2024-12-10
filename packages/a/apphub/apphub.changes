@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Dec 06 02:04:56 UTC 2024 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha.2+26:
+  * Cargo.lock and install app_hub_backend
+  * fixes
+  * temp
+  * layout fixes
+
+-------------------------------------------------------------------
+Mon Oct 14 07:59:48 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- fix installation of appimage files (need to compile backend)
+
+-------------------------------------------------------------------
 Sat Oct 12 08:40:28 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - initial packaging

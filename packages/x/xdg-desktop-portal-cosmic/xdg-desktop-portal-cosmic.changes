@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Dec 06 01:09:39 UTC 2024 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha4+0:
+  * fix: wrap windows in a scrollable after 8 toplevels, and add max sizes
+  * fix: save screenshot to clipboard
+  * Fix auto-sizing of access portal dialog
+  * acccess: Fixes for handling of choices
+  * access: Use `dialog` widget
+  * Update access.rs
+  * Derive `Debug` for `Event`
+  * Add a `on_cancel` callback method to `Request::run`
+  * Add a `Request::run` helper for running cancellable task
+  * screencast: Pass buffer transform to pipewire metadata
+
+-------------------------------------------------------------------
 Thu Oct 31 23:06:45 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.0.0~alpha3:

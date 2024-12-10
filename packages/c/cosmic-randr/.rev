@@ -36,4 +36,22 @@
   * cli: Ignore disabled/mirrored outputs in auto_correct_offsets</comment>
     <requestid>1223145</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5da4c27a0433605280bc3cd9cbd8442e</srcmd5>
+    <version>1.0.0~alpha4+0</version>
+    <time>1733775032</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.0~alpha4+0:
+  * feat: support adaptive-sync (VRR)
+  * cli: Ignore disabled/mirrored outputs in `auto_correct_offsets`
+  * lib: Don't `enable_head` on mirrored displays on `test`/`apply`
+  * cli: Dispatch until compositor responds to output config
+  * cli: Dispatch until `ManagerDone`
+  * lib: Destroy output configuration on receiving event
+  * lib: Send `ManagerDone` only after getting cosmic heads
+  * Run `cargo update`
+  * chore: update dependencies
+  * fix(shell): lingering cosmic-randr process</comment>
+    <requestid>1228861</requestid>
+  </revision>
 </revisionlist>

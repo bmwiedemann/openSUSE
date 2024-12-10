@@ -64,4 +64,22 @@
   * update translations</comment>
     <requestid>1223135</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>51b1eb661d085f49145319dc9bc410c6</srcmd5>
+    <version>1.0.0~alpha4+0</version>
+    <time>1733775012</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.0~alpha4+0:
+  * fix(battery): fix brightness slider lag
+  * update libcosmic
+  * chore(tiling): update text for tile-current
+  * feat: overamplification support for audio applet like cosmic system settings
+  * fix: update libcosmic
+  * refactor: status area single threaded executor
+  * fix: use `on_press_down` to toggle time applet
+  * fix: a11y applet desktop file validation
+  * cleanup(a11y): imports
+  * fix: patch sctk</comment>
+    <requestid>1228850</requestid>
+  </revision>
 </revisionlist>

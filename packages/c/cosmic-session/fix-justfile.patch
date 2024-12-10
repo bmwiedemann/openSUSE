@@ -1,9 +1,9 @@
-diff -rub cosmic-session-1.0.0~alpha1/Justfile cosmic-session-1.0.0~alpha1-patched/Justfile
---- cosmic-session-1.0.0~alpha1/Justfile	2024-07-31 20:17:20.000000000 +0200
-+++ cosmic-session-1.0.0~alpha1-patched/Justfile	2024-08-08 01:33:35.218115522 +0200
-@@ -11,14 +11,14 @@
- cargo_args := vendor_args + ' ' + debug_args
+diff -rub cosmic-session-1.0.0~alpha4+0/Justfile cosmic-session-1.0.0~alpha4+0-patched/Justfile
+--- cosmic-session-1.0.0~alpha4+0/Justfile	2024-12-04 16:51:50.000000000 +0100
++++ cosmic-session-1.0.0~alpha4+0-patched/Justfile	2024-12-05 22:02:59.118243910 +0100
+@@ -12,14 +12,14 @@
  xdp_cosmic := '/usr/libexec/xdg-desktop-portal-cosmic'
+ orca := '/usr/bin/orca'
  
 -bindir := prefix + '/bin'
 -systemddir := prefix + '/lib/systemd/user'
@@ -19,6 +19,6 @@ diff -rub cosmic-session-1.0.0~alpha1/Justfile cosmic-session-1.0.0~alpha1-patch
  
 -build:
 +build-release:
-         XDP_COSMIC={{xdp_cosmic}} cargo build {{cargo_args}}
+         XDP_COSMIC={{xdp_cosmic}} ORCA={{orca}} cargo build {{cargo_args}}
  
  # Installs files into the system

@@ -1,0 +1,42 @@
+Index: calmjs-3.4.4/src/calmjs/tests/test_argparse.py
+===================================================================
+--- calmjs-3.4.4.orig/src/calmjs/tests/test_argparse.py
++++ calmjs-3.4.4/src/calmjs/tests/test_argparse.py
+@@ -112,7 +112,10 @@ class HelpFormatterTestCase(unittest.Tes
+             for line in stream.getvalue().splitlines() if
+             '--' in line
+         ]
+-        self.assertEqual(options, ['-a', '-g', '-s', '-z'])
++        expected = ['-a', '-g', '-s', '-z']
++        if sys.version_info >= (3, 13):
++            expected = [f"{x}," for x in expected]
++        self.assertEqual(options, expected)
+ 
+     def test_sorted_case_insensitivity(self):
+         parser = argparse.ArgumentParser(
+@@ -131,7 +134,10 @@ class HelpFormatterTestCase(unittest.Tes
+             '--' in line
+         ]
+         # the case is unspecified due to in-place sorting
+-        self.assertEqual(options, ['-a', '-A', '-g', '-S', '-s', '-z'])
++        expected = ['-a', '-A', '-g', '-S', '-s', '-z']
++        if sys.version_info >= (3, 13):
++            expected = [f"{x}," for x in expected]
++        self.assertEqual(options, expected)
+ 
+     def test_sorted_simple_first(self):
+         parser = argparse.ArgumentParser(
+@@ -150,8 +156,11 @@ class HelpFormatterTestCase(unittest.Tes
+             '--' in line and '[' not in line
+         ]
+         # the case is unspecified due to in-place sorting
+-        self.assertEqual(options, [
+-            '-a', '-A', '-z', '--goat', '--sheep', '--SNAKE'])
++        long_options = ['--goat', '--sheep', '--SNAKE']
++        expected = ['-a', '-A', '-z']
++        if sys.version_info >= (3, 13):
++            expected = [f"{x}," for x in expected]
++        self.assertEqual(options, expected + long_options)
+ 
+ 
+ class ArgumentParserTestCase(unittest.TestCase):

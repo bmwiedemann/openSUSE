@@ -2,7 +2,7 @@
 	<service name="tar_scm" mode="disabled">
 		<param name="scm">git</param>
 		<param name="url">https://github.com/apache/maven-javadoc-plugin.git</param>
-		<param name="revision">maven-javadoc-plugin-3.11.1</param>
+		<param name="revision">maven-javadoc-plugin-3.11.2</param>
 		<param name="match-tag">maven-javadoc-plugin-*</param>
 		<param name="versionformat">@PARENT_TAG@</param>
 		<param name="versionrewrite-pattern">maven-javadoc-plugin-(.*)</param>

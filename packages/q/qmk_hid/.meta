@@ -1,0 +1,7 @@
+<package name="qmk_hid" project="openSUSE:Factory">
+  <title>qmk_hid</title>
+  <description>Commandline tool for interacting with QMK devices over HID
+
+https://github.com/FrameworkComputer/qmk_hid</description>
+  <devel project="hardware" package="qmk_hid"/>
+</package>

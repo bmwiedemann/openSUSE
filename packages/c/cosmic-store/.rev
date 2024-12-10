@@ -54,4 +54,21 @@
   * update dependencies</comment>
     <requestid>1223151</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0a4df23e19a7e1187a1b4fe51c8c11eb</srcmd5>
+    <version>1.0.0~alpha4+0</version>
+    <time>1733775004</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.0~alpha4+0:
+  * Update cosmic_store.ftl PL translation
+  * update italian translation
+  * update euro spanish translation
+  * update french translation
+  * update japanese translation
+  * update libcosmic
+  * fix: move button to top right corner
+  * fix: info button not displaying when summary is long
+  * Add progress notification (forwarded request 1228844 from rrahl0)</comment>
+    <requestid>1228845</requestid>
+  </revision>
 </revisionlist>

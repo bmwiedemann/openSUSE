@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Dec 06 03:14:30 UTC 2024 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha4+0:
+  * update libcosmic
+  * Allow startup options to supercede profile
+  * Do not use repeat_n as it was introduced in 1.82
+  * Accumulate mouse scrolls for smoother scrolling
+  * fix(window): round corners based on header
+  * Update dependencies
+  * fix(context menu): use radius from theme
+  * Use unbounded channel to prevent deadlock
+
+-------------------------------------------------------------------
 Fri Nov  1 01:17:36 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.0.0~alpha3:

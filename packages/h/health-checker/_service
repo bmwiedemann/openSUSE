@@ -1,14 +1,15 @@
 <services>
-  <service name="tar_scm" mode="disabled">
-    <param name="version">1.11</param>
-    <param name="versionformat">1.11+git%cd.%h</param>
+  <service name="obs_scm" mode="manual">
+    <param name="version">1.12</param>
+    <param name="versionformat">1.12+git%cd.%h</param>
     <param name="url">https://github.com/openSUSE/health-checker.git</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
   </service>
-  <service name="recompress" mode="disabled">
+  <service name="set_version" mode="manual"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
     <param name="compression">xz</param>
     <param name="file">*.tar</param>
   </service>
-  <service name="set_version" mode="disabled"/>
 </services>

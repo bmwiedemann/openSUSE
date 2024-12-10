@@ -17,7 +17,7 @@
 
 
 Name:           mold
-Version:        2.34.1
+Version:        2.35.0
 Release:        0
 Summary:        A Modern Linker (mold)
 License:        MIT
@@ -110,6 +110,5 @@ fi
 %{_mandir}/man1/ld.mold.1.gz
 %dir %{_docdir}/mold
 %doc %{_docdir}/mold/LICENSE
-%doc %{_docdir}/mold/LICENSE.third-party
 
 %changelog

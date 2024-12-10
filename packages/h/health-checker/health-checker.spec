@@ -19,7 +19,7 @@
 %define _dracutmoduledir %(pkg-config --variable=dracutmodulesdir dracut)
 
 Name:           health-checker
-Version:        1.11+git20240730.5dafd6a
+Version:        1.12+git20241105.2e2832f15742
 Release:        0
 Summary:        Service for verifying that important services are running
 License:        GPL-2.0-only
@@ -53,26 +53,6 @@ Provides:       health-checker-plugins = 1.0
 %description plugins-MicroOS
 This package contains health-checker plugins for testing that
 the openSUSE MicroOS did boot correctly.
-
-%package plugins-kubic
-Summary:        Health-checker plugins for openSUSE Kubic
-Group:          System/Base
-Requires:       %{name} >= %{version}
-Provides:       health-checker-plugins = 1.0
-
-%description plugins-kubic
-This package contains health-checker plugins for testing that
-the openSUSE Kubic did boot correctly.
-
-%package plugins-caasp
-Summary:        Health-checker plugins for SUSE CaaS Platform
-Group:          System/Base
-Requires:       %{name} >= %{version}
-Provides:       health-checker-plugins = 1.0
-
-%description plugins-caasp
-This package contains health-checker plugins for testing that
-the SUSE CaaS Platform did boot correctly.
 
 %package testing
 Summary:        Test plugin for health-checker
@@ -130,15 +110,8 @@ make %{?_smp_mflags}
 %{_dracutmoduledir}/50health-checker
 
 %files plugins-MicroOS
-%{_libexecdir}/health-checker/crio.sh
 %{_libexecdir}/health-checker/etc-overlayfs.sh
 %{_libexecdir}/health-checker/rebootmgr.sh
-
-%files plugins-caasp
-%{_libexecdir}/health-checker/etcd.sh
-
-%files plugins-kubic
-%{_libexecdir}/health-checker/kubelet.sh
 
 %files testing
 %{_libexecdir}/health-checker/health-check-tester.sh

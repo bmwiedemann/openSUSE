@@ -7,4 +7,12 @@
     <comment>new package hcloud-upload-image: quickly upload any raw disk images into your Hetzner Cloud projects</comment>
     <requestid>1207119</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3fd9ee3a16913a5b8c9fab6b6099e37b</srcmd5>
+    <version>0.3.1</version>
+    <time>1733775072</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1229101</requestid>
+  </revision>
 </revisionlist>

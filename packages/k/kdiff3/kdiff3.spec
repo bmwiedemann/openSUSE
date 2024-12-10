@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kdiff3
-Version:        1.11.5
+Version:        1.12.0
 Release:        0
 Summary:        Code Comparison Utility
 License:        GPL-2.0-or-later
@@ -31,9 +31,11 @@ Source0:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.x
 Source1:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz.sig
 Source2:        kdiff3.keyring
 %endif
-BuildRequires:  boost-devel >= 1.71
+BuildRequires:  cmake >= 3.22
+BuildRequires:  boost-devel >= 1.82
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  fdupes
+BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
@@ -48,6 +50,8 @@ BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  pkgconfig(icu-i18n) >= 70.0
+BuildRequires:  pkgconfig(icu-uc) >= 70.0
 
 %description
 KDiff3 is a program that:
@@ -64,7 +68,7 @@ KDiff3 is a program that:
 %autosetup -p1
 
 %build
-%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 

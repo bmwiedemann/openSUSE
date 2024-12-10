@@ -46,4 +46,20 @@
   * add navbar icons</comment>
     <requestid>1223139</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>59771af727bef5265261cea588733357</srcmd5>
+    <version>1.0.0~alpha4+0</version>
+    <time>1733775022</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.0~alpha4+0:
+  * chore: add navbar icons
+  * feat: add window-pop-out-symbolic
+  * chore: add connection-secure-symbolic
+  * chore: add networking symbolic icons
+  * chore: update places icons
+  * fix: symbolic icon size
+  * chore: update status icons
+  * fix: reduce symbolic icon background opacity to 0</comment>
+    <requestid>1228854</requestid>
+  </revision>
 </revisionlist>

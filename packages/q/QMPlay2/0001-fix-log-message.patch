@@ -1,0 +1,26 @@
+From 2ded75d71b78ce7859bc0b9b11f30e2dfd39da95 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?B=C5=82a=C5=BCej=20Szczygie=C5=82?= <mumei6102@gmail.com>
+Date: Sat, 7 Dec 2024 09:06:02 +0100
+Subject: [PATCH] DemuxerThr: Don't try to decode image from empty array
+
+Closes #789
+---
+ src/gui/DemuxerThr.cpp | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/gui/DemuxerThr.cpp b/src/gui/DemuxerThr.cpp
+index 33930bd9e..1ac889309 100644
+--- a/src/gui/DemuxerThr.cpp
++++ b/src/gui/DemuxerThr.cpp
+@@ -93,7 +93,10 @@ void DemuxerThr::loadImage()
+     if (isDemuxerReady())
+     {
+         const QByteArray demuxerImage = demuxer->image();
+-        QImage img = QImage::fromData(demuxerImage);
++        QImage img = demuxerImage.isEmpty()
++            ? QImage()
++            : QImage::fromData(demuxerImage)
++        ;
+         if (!img.isNull())
+             emit QMPlay2Core.coverDataFromMediaFile(demuxerImage);
+         else

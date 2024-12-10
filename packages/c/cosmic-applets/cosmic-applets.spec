@@ -19,6 +19,7 @@
 %define         pkgname cosmic-applet
 %define         bin cosmic-applet
 %define         appname com.system76.Cosmic
+%define         a11y AppletA11y
 %define         applist AppList
 %define         audio AppletAudio
 %define         battery AppletBattery
@@ -36,7 +37,7 @@
 %define         workspacesbutton PanelWorkspacesButton
 %define         launcherbutton PanelLauncherButton
 Name:           cosmic-applets
-Version:        1.0.0~alpha3
+Version:        1.0.0~alpha4+0
 Release:        0
 Summary:        Applets for COSMIC DE
 License:        GPL-3.0-only
@@ -67,6 +68,13 @@ BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(xkbcommon)
 Requires:       cosmic-icons
+
+%package -n %{pkgname}-a11y
+Summary:        %{summary}
+Requires:       %{name} = %{version}
+
+%description -n %{pkgname}-a11y
+%{summary}.
 
 %package -n %{pkgname}-app-list
 Summary:        %{summary}
@@ -208,6 +216,10 @@ just rootdir=%{buildroot} prefix=%{_prefix} install
 %{_bindir}/%{name}
 %{_datadir}/cosmic
 %{_datadir}/metainfo/%{appname}Applets.metainfo.xml
+
+%files -n %{pkgname}-a11y
+%{_bindir}/cosmic-applet-a11y
+%{_datadir}/applications/%{appname}%{a11y}.desktop
 
 %files -n %{pkgname}-app-list
 %{_bindir}/cosmic-app-list

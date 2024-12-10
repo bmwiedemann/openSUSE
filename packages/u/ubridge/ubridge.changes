@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov 10 14:18:19 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.19
+  * Support for setting custom MAC addresses on interfaces.
+
+-------------------------------------------------------------------
 Tue Jun  2 19:20:55 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Build with system provided iniparser

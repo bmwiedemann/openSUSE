@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Sat Dec  7 23:05:51 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 0.8.10:
+  * Two years of changes is too long. See
+    https://github.com/meli/meli/blob/v0.8.10/CHANGELOG.md instead
+- Use shipped source tarball instead of archiving git source
+- Move from vendor.tar.xz to vendor.tar.zst
+- Remove cargo_config
+
+-------------------------------------------------------------------
+Mon Mar 14 14:57:54 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Initial package of meli 0.7.2 for openSUSE

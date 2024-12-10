@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec  8 19:01:08 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- re-added and re-enabled u_xfree86-activate-GPU-screens-on-autobind.patch
+  in order to fix the regression of a black screen in login screen
+  (SDDM) on some hybrid graphics Laptop (Intel Meteor Lake-P/
+  NVIDIA GeForce RTX 4060) (boo#1234301)
+
+-------------------------------------------------------------------
 Wed Dec  4 12:41:37 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - no longer apply and remove 

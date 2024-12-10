@@ -8,6 +8,7 @@
     <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
     <param name="package-meta">yes</param>
     <param name="filename">cosmic-ext-applet-emoji-selector</param>
+    <param name="changesgenerate">enable</param>
   </service>
   <service name="recompress" mode="manual">
     <param name="file">*.tar</param>

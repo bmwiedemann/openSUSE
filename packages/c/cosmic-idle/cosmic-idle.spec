@@ -6,6 +6,7 @@
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
 # upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
 # license for the pristine package is not an Open Source License, in which
 # case the license is the MIT License). An "Open Source License" is a
 # license that conforms to the Open Source Definition (Version 1.9)
@@ -16,15 +17,13 @@
 
 
 Name:           cosmic-idle
-Version:        1.0.0~alpha3
+Version:        1.0.0~alpha4+0
 Release:        0
 Summary:        Idle notify manager for COSMIC
 License:        GPL-3.0-only
 URL:            https://github.com/pop-os/cosmic-idle
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-Source2:        cargo_config
-Source3:        Cargo.lock
 BuildRequires:  cargo-packaging
 BuildRequires:  just
 BuildRequires:  pkgconfig
@@ -36,9 +35,6 @@ BuildRequires:  pkgconfig(xkbcommon)
 
 %prep
 %autosetup -a1
-cp %{SOURCE3} .
-mkdir -p .cargo
-cp %{SOURCE2} .cargo/config.toml
 
 %build
 just build-release

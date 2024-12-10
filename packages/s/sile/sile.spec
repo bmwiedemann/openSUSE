@@ -18,7 +18,7 @@
 
 %bcond_without  tests
 Name:           sile
-Version:        0.15.6
+Version:        0.15.7
 Release:        0
 Summary:        Simon’s Improved Layout Engine
 License:        MIT
@@ -30,6 +30,7 @@ Source2:        sile-rpmlintrc
 # Lua modules
 BuildRequires:  luajit
 BuildRequires:  lua51-bit32
+BuildRequires:  lua51-luarocks
 BuildRequires:  luajit-devel
 Requires:       lua51-bit32
 BuildRequires:  lua51-cassowary

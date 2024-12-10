@@ -48,4 +48,18 @@
 - require rust &gt;= 1.80</comment>
     <requestid>1223141</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b531533c44d1be049df2d0cb123671fa</srcmd5>
+    <version>1.0.0~alpha4+0</version>
+    <time>1733775023</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.0~alpha4+0:
+  * update pop-launcher
+  * improv: increase truncate limit
+  * update libcosmic
+  * Correct the filename for the Swedish translation (#189)
+  * i18n(sv): add translation
+  * chore: padding fixes</comment>
+    <requestid>1228857</requestid>
+  </revision>
 </revisionlist>

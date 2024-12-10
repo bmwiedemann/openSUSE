@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Dec  8 16:41:12 UTC 2024 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Update to version 1.2.3
+
+  + Bugfixes:
+   + Fixed libcdio NULL related compilation error on FreeBSD (#1610).
+   + Fixed missing seek when starting playback of a CUE song (#1568).
+   + Fixed "QDBusObjectPath: invalid path" error.
+
+-------------------------------------------------------------------
 Sat Nov 23 18:21:20 UTC 2024 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Update to version 1.2.2

@@ -1,7 +1,7 @@
 #
 # spec file for package reco
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,39 +16,33 @@
 #
 
 
+%define         appid com.github.ryonakano.reco
 Name:           reco
 Version:        3.2.1
 Release:        0
 Summary:        Audio Recording App
 License:        GPL-3.0-or-later
-Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://github.com/ryonakano/reco
-Source:         https://github.com/ryonakano/reco/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libxml2-tools
 BuildRequires:  meson >= 0.49.0
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  vala
 BuildRequires:  pkgconfig(granite) >= 5.2.3
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libhandy-1)
 BuildRequires:  pkgconfig(libpulse)
-Recommends:     %{name}-lang
 
 %description
-An audio recording app designed for elementary OS.
+An audio recording app designed for the Pantheon Desktop.
 
 %lang_package
 
 %prep
-%setup -q
-
-# Switch to bugs.opensuse.org
-find -name \*.xml* -exec \
-sed -i '/bugtracker/s|>[^>]*<|>https://bugs.opensuse.org<|' {} +
+%autosetup
 
 %build
 %meson
@@ -56,20 +50,19 @@ sed -i '/bugtracker/s|>[^>]*<|>https://bugs.opensuse.org<|' {} +
 
 %install
 %meson_install
-%suse_update_desktop_file -r com.github.ryonakano.reco GTK Utility AudioVideo
-%find_lang com.github.ryonakano.reco %{name}.lang
-%fdupes %{buildroot}/%{_datadir}
+%find_lang %{appid}
+%fdupes %{buildroot}
 
 %files
 %license LICENSE
 %doc README.md
-%{_bindir}/com.github.ryonakano.reco
-%{_datadir}/applications/com.github.ryonakano.reco.desktop
-%{_datadir}/glib-2.0/schemas/com.github.ryonakano.reco.gschema.xml
-%{_datadir}/icons/hicolor/*/apps/com.github.ryonakano.reco.??g
-%{_datadir}/icons/hicolor/*/apps/record-completed-symbolic.??g
-%{_datadir}/metainfo/com.github.ryonakano.reco.appdata.xml
+%{_bindir}/%{appid}
+%{_datadir}/applications/%{appid}.desktop
+%{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
+%{_datadir}/icons/hicolor/*/apps/%{appid}.svg
+%{_datadir}/icons/hicolor/symbolic/apps/record-completed-symbolic.svg
+%{_datadir}/metainfo/%{appid}.appdata.xml
 
-%files lang -f %{name}.lang
+%files lang -f %{appid}.lang
 
 %changelog

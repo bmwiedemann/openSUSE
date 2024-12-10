@@ -17,16 +17,16 @@
 
 
 Name:           diffstat
-Version:        1.66
+Version:        1.67
 Release:        0
 Summary:        Utility That Provides Statistics Based on the Output of diff
 License:        MIT
-Group:          Productivity/Text/Utilities
 URL:            https://invisible-island.net/diffstat/
 Source0:        https://invisible-island.net/archives/diffstat/diffstat-%{version}.tgz
 Source1:        https://invisible-island.net/archives/diffstat/diffstat-%{version}.tgz.asc
 Source2:        %{name}.keyring
 Patch0:         %{name}.diff
+BuildRequires:  zstd
 
 %description
 diffstat reads the output of the diff command and displays a histogram

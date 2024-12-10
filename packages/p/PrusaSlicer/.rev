@@ -368,4 +368,41 @@ Resubmitting in the hope that all bots and maintainers pick it up this time. The
     <comment></comment>
     <requestid>1201717</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>c1520e3045077b28421c77f444cf282b</srcmd5>
+    <version>2.8.1</version>
+    <time>1733775105</time>
+    <user>anag+factory</user>
+    <comment>- Changelog for 2.8.1
+  * When using the wipe tower with &quot;No sparse layers&quot; option
+    enabled, there would still be travels to the wipe tower
+    location even for the skipped layers. This is a regression
+    introduced in 2.8.1-rc1 (#13384).
+  * A warning about inconsistent color profiles in PNGs used as
+    Prusa Account avatar is now silently ignored (#12920).
+  ## Improvements with respect to 2.8.0
+  * Based on the feedback received after 2.8.0 release, the menu
+    bar was reinstated and the menu no longer hides under a button.
+    Thanks everyone for the feedback, it was very helpful and it
+    will be taken into consideration during possible UI-related
+    decisions in the future. #12943
+  * When logging-in with the PrusaAccount using third party
+    authorization (Google, Apple, Facebook), an external browser
+    window is opened so the user is not forced to enter their
+    credentials into windows created by PrusaSlicer.
+  * The built-in web engine no longer remembers the user after
+    logout.
+  * There are two new parameters: Filaments-&gt;Advanced-&gt;Abrasive
+    material and Printers-&gt;Extruder-&gt;High flow nozzle. Both flags
+    will be used to check whether a sliced G-code is compatible
+    with the given printer (abrasive material requires hardened
+    nozzle) and also to ensure that &quot;Set as current&quot; function in
+    PrusaSlicer-embedded Prusa Connect will select the suitable
+    profile for the given configuration.
+  * Note that this feature is supported since MINI/MK4/XL firmware
+    version 6.2.0-alpha1, and that the implementation in Prusa
+    Connect is not completely finished yet, meaning that the dialog
+    where printer is selected does not use this information - it</comment>
+    <requestid>1229138</requestid>
+  </revision>
 </revisionlist>

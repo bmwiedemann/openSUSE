@@ -53,4 +53,22 @@
   * Make cosmic-protocols truly optional</comment>
     <requestid>1223144</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>902a0c2ec1365ec4c2a849b67c78c38c</srcmd5>
+    <version>1.0.0~alpha4+0</version>
+    <time>1733775030</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.0~alpha4+0:
+  * fix: rounded rectangle crop position
+  * refactor: add namespace
+  * fix: namespace
+  * fix: typo
+  * refactor: intellihide always enabled if autohiding
+  * wip: overlap notify
+  * feat: intellihide
+  * refactor: avoid changing exclusive zone when hiding
+  * fix: set focus to new popup
+  * refactor: throttle frame events and increase timeouts in general</comment>
+    <requestid>1228860</requestid>
+  </revision>
 </revisionlist>

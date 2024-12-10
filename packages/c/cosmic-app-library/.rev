@@ -51,4 +51,22 @@
   * updated translations</comment>
     <requestid>1223134</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c32d0b429aedc236ffe6b955733c4696</srcmd5>
+    <version>1.0.0~alpha4+0</version>
+    <time>1733775010</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.0~alpha4+epoch-1.0.0-alpha.4:
+  * fix: focus search on activation
+  * fix: icon on a raised layer
+  * fix: icon position
+  * refactor: change widget order for button event handling
+  * fix: autosize wrapper for group add/delete
+  * fix: autosize wrapper for menu
+  * update deps
+  * udpate
+  * draft: update libcosmic
+  * chore: update libcosmic</comment>
+    <requestid>1228849</requestid>
+  </revision>
 </revisionlist>

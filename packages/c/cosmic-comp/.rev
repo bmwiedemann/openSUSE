@@ -88,4 +88,22 @@
   * Update egui, smithay-egui, smithay</comment>
     <requestid>1223137</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>98dbf9b248a492b128564207be821b47</srcmd5>
+    <version>1.0.0~alpha4+0</version>
+    <time>1733775016</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.0~alpha4+0:
+  * focus: Only consider focused output
+  * focus: Un-activate non-active workspaces
+  * fix: filter by active workspace in overlap notify
+  * shell: Fix windows global geometry to include ssd
+  * input: Apply output transform to touch/tablet events
+  * input: Define function for transforming touch/tablet event position
+  * screencopy: don't force opaque window backgrounds
+  * refactor: add namespace
+  * overlay-notify: Implement handler
+  * overlap-notify: Implementation fixes</comment>
+    <requestid>1228852</requestid>
+  </revision>
 </revisionlist>

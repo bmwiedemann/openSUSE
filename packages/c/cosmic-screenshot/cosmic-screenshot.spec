@@ -18,7 +18,7 @@
 
 %define         appname com.system76.CosmicScreenshot
 Name:           cosmic-screenshot
-Version:        1.0.0~alpha1
+Version:        1.0.0~alpha4+0
 Release:        0
 Summary:        Utility for capturing screenshots via XDG Desktop Portal
 License:        GPL-3.0-only
@@ -28,7 +28,6 @@ Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  just
-BuildRequires:  update-desktop-files
 
 %description
 %{summary}.
@@ -41,7 +40,6 @@ just build-release
 
 %install
 just rootdir=%{buildroot} prefix=%{_prefix} install
-%suse_update_desktop_file %{appname}
 
 %check
 %{cargo_test}
@@ -51,7 +49,6 @@ just rootdir=%{buildroot} prefix=%{_prefix} install
 %doc README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/%{appname}.desktop
-%{_datadir}/icons/hicolor/??x??/apps/%{appname}.svg
-%{_datadir}/icons/hicolor/???x???/apps/%{appname}.svg
+%{_datadir}/icons/hicolor/*/apps/%{appname}.svg
 
 %changelog
