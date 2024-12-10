@@ -1,7 +1,7 @@
 #
 # spec file for package erlang
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,12 +23,14 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           erlang
-Version:        26.2.5.2
+Version:        27.1.3
 Release:        0
 Summary:        General-purpose programming language and runtime environment
 License:        Apache-2.0
 URL:            https://www.erlang.org
 Source0:        https://github.com/erlang/otp/archive/OTP-%{version}.tar.gz
+# The link comes from ./make/ex_doc_link file
+Source1:        https://github.com/elixir-lang/ex_doc/releases/download/v0.34.1/ex_doc_otp_26
 Source3:        %{name}-rpmlintrc
 Source5:        erlang.sysconfig
 Source6:        macros.erlang
@@ -111,7 +113,6 @@ Summary:        Erlang Port Mapper daemon
 Requires:       %{name} = %{version}
 Requires(post): %fillup_prereq
 %{sysusers_requires}
-%{?systemd_requires}
 
 %description epmd
 The Erlang Port Mapper daemon acts as a name server on all hosts involved in distributed Erlang computations.
@@ -248,8 +249,8 @@ A Graphics System used to write platform independent user interfaces.
 %patch -P 0 -p1 -b .rpath
 %patch -P 4 -p1
 cp %{SOURCE9} .
+install -m 0755 %{SOURCE1} ./bin/ex_doc
 
-./otp_build autoconf
 # enable dynamic linking for ssl
 sed -i 's|SSL_DYNAMIC_ONLY=no|SSL_DYNAMIC_ONLY=yes|' erts/configure
 # Remove shipped zlib sources
@@ -294,9 +295,9 @@ find %{buildroot}%{_libdir}/erlang -name Makefile | xargs chmod -v 0644
 find %{buildroot}%{_libdir}/erlang -name \*.bat | xargs rm -fv
 find %{buildroot}%{_libdir}/erlang -name index.txt.old | xargs rm -fv
 find %{buildroot}%{_libdir}/erlang -type d -path '*/priv/obj' -print | xargs rm -rfv
+find %{buildroot}%{_libdir}/erlang -name '.build' -print | xargs rm -rfv
 
 # doc
-mv README.md README
 mkdir -p erlang_doc
 mv %{buildroot}%{_libdir}/erlang/doc ./erlang_doc
 find %{buildroot}%{_libdir}/erlang -maxdepth 4 -name info -or -type d -and -path '%{buildroot}%{_libdir}/**/doc/*' -and -not -name chunks -prune | while read S;do D=`echo $S | sed -e 's|%{buildroot}%{_libdir}/erlang|erlang_doc|'`; B=`dirname $D`; mkdir -p $B; mv $S $D; done
@@ -355,11 +356,8 @@ install -m 0644 %{SOURCE10} %{buildroot}%{_sysusersdir}
 
 %files
 %license LICENSE.txt
-%doc AUTHORS README
+%doc AUTHORS README.md
 %doc README.SUSE
-%doc %{_libdir}/erlang/PR.template
-%doc %{_libdir}/erlang/README.md
-%doc %{_libdir}/erlang/COPYRIGHT
 %{_bindir}/*
 %exclude %{_bindir}/dialyzer
 %exclude %{_bindir}/epmd
@@ -390,8 +388,6 @@ install -m 0644 %{SOURCE10} %{buildroot}%{_sysusersdir}
 %{_libdir}/erlang/lib/edoc-*/*
 %dir %{_libdir}/erlang/lib/eldap-*/
 %{_libdir}/erlang/lib/eldap-*/*
-%dir %{_libdir}/erlang/lib/erl_docgen-*/
-%{_libdir}/erlang/lib/erl_docgen-*/*
 %dir %{_libdir}/erlang/lib/erl_interface-*/
 %{_libdir}/erlang/lib/erl_interface-*/*
 %dir %{_libdir}/erlang/lib/erts-*/

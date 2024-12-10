@@ -1,4 +1,527 @@
 -------------------------------------------------------------------
+Tue Dec 10 12:33:11 UTC 2024 - matwey.kornilov@gmail.com
+
+- Changes for 27.1.3:
+  * public_key: If both ext-key-usage and key-usage are defined for
+    a certificate it should be checked that these usages are
+    consistent with each other. This will have the affect that such
+    certificates where the ext-key-usages is marked as critical and
+    the usages is consistent with the key-use it can be considered
+    valid without mandatory application specific checks for the
+    ext-key-useage extension.
+  * public_key: Handle decoding of EDDSA key properly, when
+    decoding a PEM file that contains only the public EDDSA key.
+  * erts: gen_udp:send on domain local can leak inet_reply
+    messages.
+  * erts: net:getifaddrs does not properly report the running flag
+    on windows.
+  * compiler: In rare circumstances, the destructive tuple update
+    optimization could be applied when it was unsafe.
+  * compiler: In rare circumstances involving appending to multiple
+    binaries, the compile could emit unsafe code that would crash
+    the runtime system.
+  * ssh: With this change, ssh connection does not crash upon
+    receiving exit-signal message for an already terminated
+    channel.
+  * kernel: On windows the socket:recv could return with success
+    ({ok, Data}) even though not all data had been read.
+  * kernel: gen_udp:send on domain local can leak inet_reply
+    messages.
+  * kernel: Failure to create an UDP IPv6 socket when inet_backend
+    = socket with certain IPv6 socket options.
+  * kernel: net:getifaddrs does not properly report the running
+    flag on windows.
+  * ssl: Avoid generating an internal alert for case that should
+    have been an orderly shutdown by the supervisor.
+  * ssl: If present, extended key-usage TLS (SSL) role check (pk-
+    clientAuth, pk-serverAuth) should always be performed for peer-
+    cert. An intermediate CA cert may relax the requirement if
+    AnyExtendedKeyUsage purpose is present.
+  * ssl: Back port certificate_authorities option for TLS-1.3
+    servers to pre TLS-1.3 servers to enable them to disable the
+    sending of certificate authorities in their certificate
+    request. This will have same affect as the the TLS-1.3 server
+    option although it is handled by a different mechanism in these
+    versions, where the functionality is described to be more of a
+    guidance, although some pre TLS clients have proven to make it
+    mandatory as in TLS-1.3 extension handling.
+  * common_test: With this change, cth_surefire hook module handles
+    group path reduction for a skipped group. This fixes a bug
+    manifesting with improper group path for a group executed after
+    a group which was skipped.
+  * common_test: With this change, prefix option can be specified
+    in cth_conn_log option list. Option allows to specify how much
+    of additional information is added in raw log output.
+
+-------------------------------------------------------------------
+Thu Dec  5 14:37:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- drop systemd_requires, see
+  https://en.opensuse.org/openSUSE:Systemd_packaging_guidelines#Runtime_requirements
+
+-------------------------------------------------------------------
+Sat Nov 30 10:19:31 UTC 2024 - matwey.kornilov@gmail.com
+
+- Changes for 27.1.2:
+  * stdlib: With this change, uri_string:normalize assumes empty
+    path (do not crash) when no path is provided in the URI map.
+  * stdlib: Fixed spec for json:format/3.
+  * kernel: A bug has been fixed where receiving an SCTP message
+    with gen_sctp could waste the first fragments of a message and
+    only deliver the last fragment.
+  * kernel: An boolean option non_block_send for SCTP, has ben
+    added to be able to achieve the old behaviour to avoid blocking
+    send operations by passing the OS network stack error message
+    ({error,eagain} through.
+  * common_test: With this change, jquery and tablesorter licenses
+    are added to COPYRIGHT file. Also tablesorter is updated to
+    version 2.32.
+  * ssl: Refactor trying to also make some optimizations introduced
+    a bug in signature algorithms checks in OTP-26.2.1. This could
+    manifest itself in not being able to negotiate connections
+    using certificates needing to use some TLS-1.2 compatibility
+    legacy signature schemes.
+  * ssl: Correct timeout handling for termination code run for own
+    alerts, so that intended timeout is used instead of falling
+    back to OS TCP-stack timeout that is unreasonably long on some
+    platforms.
+  * ssl: Fix assertion so that works as intended. This could result
+    in that some TLS-1.2 clients would fail to connect to the the
+    erlang server.  Bug introduced in OTP-27.1.1
+  * erts: A bug has been fixed where receiving an SCTP message with
+    gen_sctp could waste the first fragments of a message and only
+    deliver the last fragment.
+  * erts: An boolean option non_block_send for SCTP, has ben added
+    to be able to achieve the old behaviour to avoid blocking send
+    operations by passing the OS network stack error message
+    ({error,eagain} through.
+  * erts: The call gen_tcp:send/2 could hang indefinitely despite
+    having set the send_timeout option for the following
+    unfortunate combination of circumstances:
+  * erts: In rare circumstances, in code that matches multiple
+    tuples, the JIT could generate code that would raise a badmatch
+    exception even if the given tuples were correct.
+  * erts: Fixed beam crash that could happen if resetting call_time
+    or call_memory trace counters of a function while it is called.
+    Bug exists since OTP R16.
+  * ssh: With this change, a race condition is removed from ssh
+    client connection setup procedure.
+  * ssh: With this change, ssh:connect is not affected by presence
+    of EXIT message in queue.
+  * ssh: With this change, ssh appends {active, false} option after
+    socket options received from user - so that false value is
+    always used.
+- Changes for 27.1.1:
+  * public_key: Introduction of verify_fun/4 unfortunately
+    introduced an argument switch for some specific path validation
+    errors so that verify_fun/3 could under these circumstances be
+    called with a DER cert instead of a decod cert, also in this
+    situation the verify_fun/4 would have the certificates in
+    reverse order.
+  * public_key: Do not hide crypto badarg reason, this error
+    handling enhancement facilitates debugging. These kind of
+    runtime errors are not documented and should never be relied on
+    for matching, they are intended for catching input errors
+    early.
+  * stdlib: Remove whitespace stripping of returned binaries in
+    json:decode/3.
+  * stdlib: Fix zip:unzip/2 to not crash when extracting zip files
+    with garbage in the Zip64 extra header. This bug was introduced
+    in Erlang 27.1 and has so far only been seen on some archives
+    creates by MS Excel.
+  * stdlib: With this change, shutdown procedure handles a race
+    condition between supervisor executing a shutdown and child
+    process termination from other reason.
+  * common_test: With this change, HTML reports include jQuery
+    version 3.7.1.
+  * ssl: Starting from TLS-1.3 some server handshake alerts might
+    arrive after ssl:connection/2,3,4 has returned. If the socket
+    is in active mode the controlling process will get the alert
+    message, but passive sockets would only get {error, closed} on
+    next call to ssl:recv/2,3 or ssl/setopts/2. Passive sockets
+    calls will now return  {error,  error_alert()}  instead.
+  * ssl: Servers configured to support only version (pre TLS-1.2)
+    should ignore hello version extension, as it is an unknown
+    extension to them, this will result in that new clients that do
+    not support the old server version will get an insufficient
+    security alert from the server and not a protocol version
+    alert, this is consistent with how old servers not able to
+    support higher protocol versions work.
+  * erts: On Windows, successive failed socket calls caused socket
+    to become "uninitialized".
+  * erts: The socket framework fails to start on a IPv6-only
+    Windows machine.
+
+-------------------------------------------------------------------
+Sun Sep 29 15:03:44 UTC 2024 - matwey.kornilov@gmail.com
+
+- Changes for 27.1:
+  * crypto: crypto built with --enable-fips will now accept an
+    OpenSSL 3 lib without fips provider as long as fips mode is not
+    enabled.
+  * crypto: Added a warning in the documentation to avoid calling
+    crypto:start/0 as it does not work for FIPS mode. Use
+    application:start(crypto) instead.
+  * crypto: Deprecation of RSA encryption functions has been
+    reverted, as there still exists legitimate use cases with other
+    padding modes than PKCS-1.
+  * crypto: Compiler warnings for some removed functions have been
+    corrected to point out the correct replacement functions.
+  * ssh: The SSh daemon started with a TCP port number argument
+    will now re-try obtaining a listen socket before returning an
+    error to the user.
+  * ssh: Robustness has been improved by monitoring the connection
+    handler process before casting the socket control notification.
+  * ssl: A race in the kTLS flavour of SSL distribution has been
+    fixed so that inet_drv.c doesn't read ahead too much data,
+    which could cause the kTLS encryption to be activated too late
+    when some encrypted data had already been read into the
+    inet_drv.c buffer as unencrypted.
+  * ssl: All TLS-1.3 terminations are now graceful (previous TLS
+    version terminations already were).
+  * ssl: It is now possible to use a verification fun of arity 4,
+    giving the user fun access to both encoded and decoded versions
+    of the certificate. This is desirable as a workaround for
+    encoding errors preventing re-encoding from being reliable.
+    This also saves some work load if the encoded version is
+    needed.
+  * ssl: Compiler warnings for some removed functions have been
+    corrected to point out the correct replacement functions.
+  * ssl: Include more information in logging of SNI (Server Name
+    Indication) mismatch error.
+  * diameter: Function specs for the main API module has been
+    updated.
+  * diameter: Man pages are now available for erl, erlc, dialyzer,
+    and all other programs that are included in Erlang/OTP.
+  * diameter: diameter:stop_service/1 has been made more
+    synchronous.
+  * wx: Documentation has been improved.
+  * public_key: For completeness handle rsa_pss implicit default
+    value, although this will probably not be commonly used as it
+    provides very weak security.
+  * public_key: The public_key:cacerts_load() function could in
+    some error cases return undefined instead of {error, Reason}.
+  * public_key: Added support for DragonFly.
+  * public_key: Deprecation of RSA encryption functions has been
+    reverted, as there still exists legitimate use cases with other
+    padding modes than PKCS-1.
+  * public_key: It is now possible to use a verification fun of
+    arity 4, giving the user fun access to both encoded and decoded
+    versions of the certificate. This is desirable as a workaround
+    for encoding errors preventing re-encoding from being reliable.
+    This also saves some work load if the encoded version is
+    needed.
+  * snmp: Man pages are now available for erl, erlc, dialyzer, and
+    all other programs that are included in Erlang/OTP.
+  * snmp: Figures in the documentation have been improved.
+  * tftp: The legacy dependency to m:error_logger has been removed.
+    m:logger is now used.
+  * ftp: Eliminated a race condition that sometimes resulted in
+    ftp:recv_bin/2 returning ok instead of {ok, Data}.
+  * odbc: Figures in the documentation have been improved.
+  * compiler: Fixed a crash in an optimization pass relating to
+    appending binaries.
+  * compiler: Fixed a bug in the compiler's alias analysis pass
+    that could make it emit unsafe code.
+  * common_test: Groups with empty list specifying groups and test
+    cases no longer crash execution.
+  * common_test: The Common_Test documentation and type specs have
+    been polished.
+  * common_test: Man pages are now available for erl, erlc,
+    dialyzer, and all other programs that are included in
+    Erlang/OTP.
+  * dialyzer: Man pages are now available for erl, erlc, dialyzer,
+    and all other programs that are included in Erlang/OTP.
+  * xmerl: Corrected export functions from internal structure to
+    XML so xmlText items of type cdata are handled correctly. They
+    were just exported as normal text instead of output in a CDATA
+    section.
+  * xmerl: The type spec for xmerl_sax_parser:file/2 has been
+    corrected to indicate that it can return an {error, _} tuple.
+  * runtime_tools: Fixed a bug where dbg sessions on remote nodes
+    were terminated prematurely.
+  * inets: The documentation for the m:httpd module has been
+    improved, along with correction of headings and types.
+  * inets: Userinfo is now properly percent-decoded before usage in
+    headers.
+  * stdlib: The help printout for incorrect t:io:format/0 strings
+    now handles the k modifier correctly.
+  * stdlib: Fixed a bug that caused the shell completion to crash
+    when keyword and tuple appeared on the same line.
+  * stdlib: Due to PR-7419/OTP-18671, the cached internal value of
+    the callback_mode started leaking out to logger reports, which
+    could cause logger handlers to crash.  This has now been fixed
+    to show the value that was set, as before caching.
+  * stdlib: Fixed an emulator crash relating to compressed ETS
+    tables.
+  * stdlib: The error description for maps:update/3 will no longer
+    insist that the third argument is not a map when a key could
+    not be found
+  * stdlib: Multiple issues have been corrected in the markdown
+    parser that creates documentation for the shell.
+  * stdlib: Fixed category for some codepoint ranges in
+    unicode_util.
+  * stdlib: Fixed m:argparse to print sub-commands help when
+    available.
+  * stdlib: Class annotation to HTML from fenced blocks have been
+    added.
+  * stdlib: Added JSON formatting functions for indented output.
+  * stdlib: Improved illegal pattern error for accidental map
+    associations.
+  * stdlib: Progress reports for a dynamically started supervisor
+    will now be logged at debug level.
+  * stdlib: The m:zip module has been updated with support for:
+  * edoc: Broken links in release notes have been mended.
+  * tools: m:tprof no longer crashes when using
+    pause/restart/continue when profiling all modules.
+  * tools: On systems supporting native coverage, calls to m:cover
+    could hang or crash if cover-compiled module had been reloaded
+    from outside cover. This has been corrected so that cover now
+    recovers from the error and and sends a report to the logger
+    about the failure to retrieve coverage information.
+  * tools: Figures in the documentation have been improved.
+  * erts: The erl -man example has been corrected to not consider
+    values set in ERL_ZFLAGS and stop parsing arguments when a --
+    is encountered.
+  * erts: Compiler warnings for  Windows I/O back-end have been
+    silenced.
+  * erts: Bugs related to return_to trace have been fixed. It did
+    not work for more than once trace session and it did sometimes
+    not trigger for exceptions.
+  * erts: Potential deadlocks while writing a crash dump have been
+    eliminated.
+  * erts: When loading a damaged or too old BEAM file, the runtime
+    system could crash.
+  * erts: A scheduler thread could get stuck when deleting a memory
+    allocator carrier when adjacent carriers were deleted and/or
+    inserted simultaneously by other schedulers. This in turn could
+    cause the other schedulers to get stuck as well.
+  * erts: Statistics for number of carriers in a shared pool after
+    calling instrument:allocations or instrument:carriers are now
+    correct. Also, a potential bug in carrier block scanning was
+    eliminated.
+  * erts: A race in the kTLS flavour of SSL distribution has been
+    fixed so that inet_drv.c doesn't read ahead too much data,
+    which could cause the kTLS encryption to be activated too late
+    when some encrypted data had already been read into the
+    inet_drv.c buffer as unencrypted.
+  * erts: Fixed an emulator crash relating to compressed ETS
+    tables.
+  * erts: A function (encode_sockaddr) was called with superfluous
+    argument, on Windows, in the net nif.
+  * erts: Fixed a crash that could happen on reallocation failure.
+  * erts: Man pages are now available for erl, erlc, dialyzer, and
+    all other programs that are included in Erlang/OTP.
+  * erts: A previous correction in the Erlang/OTP 27.0.1 emergency
+    patch had the unfortunate side effect of sometimes causing an
+    unnecessary fullsweep (major) garbage collection instead of a
+    generation (minor) garbage collection. This has been corrected.
+  * erts: Fixed trace matchspec functions trace and enable_trace to
+    use the session tracer when enabling trace flags on untraced
+    processes.
+  * erts: Fixed a typo in the type spec for
+    t:erlang:garbage_collection_defaults/0.
+  * erts: Corrected socket:ioctl for genaddr (SIOCGENADDR).
+  * erts: The support for Transparent Huge Pages has been disabled
+    on non-amd64 Linux systems.
+  * erts: Fixed a race condition on Windows when upgrading from
+    -noshell to a shell that would cause Erlang to crash with the
+    error:
+  * erts: Added functions getservbyname and getservbyport to the
+    net module.
+  * erts: Introduced enet | esock variants of m:inet functions,
+    either when called with sockets, with explicit inet_backend
+    config or with the e inet_backend kernel config option.
+  * erts: Optimize process and port creation when such tracing is
+    not enabled by any trace session.
+  * erts: Compiler warnings for some removed functions have been
+    corrected to point out the correct replacement functions.
+  * erts: A boolean option read_ahead has been implemented for
+    gen_tcp, default true, to facilitate not reading past (caching
+    data) the end of a packet.  In particular, for kTLS, caching
+    data could read in data that was supposed to be decrypted by
+    the platform's network stack, before crypto parameters could be
+    activated.
+  * erts: The m:zip module has been updated with support for:
+  * kernel: A faulty assertion was corrected in the prim_tty
+    module. This assertion could trigger when invalid UTF-8 was
+    read from stdin just as the mode was changed from unicode to
+    latin1.
+  * kernel: Opening a disk_log file and combining head_func with
+    rotate options did not work.
+  * kernel: Fixed an error info printout for
+    erlang:is_process_alive/1 on non-local pids.
+  * kernel: A race in the kTLS flavour of SSL distribution has been
+    fixed so that inet_drv.c doesn't read ahead too much data,
+    which could cause the kTLS encryption to be activated too late
+    when some encrypted data had already been read into the
+    inet_drv.c buffer as unencrypted.
+  * kernel: Fixed a deadlock when an application crashes during
+    startup and log messages were sent to standard out. Logger
+    would fail to print the messages to standard out and instead
+    print them to standard error.
+  * kernel: The -proto_dist init parameter will no longer be
+    ignored when specified multiple times. It will now log a
+    warning and use the first specified value.
+  * kernel: Corrected socket:ioctl for genaddr (SIOCGENADDR).
+  * kernel: Added functions getservbyname and getservbyport to the
+    net module.
+  * kernel: Introduced enet | esock variants of m:inet functions,
+    either when called with sockets, with explicit inet_backend
+    config or with the e inet_backend kernel config option.
+  * kernel: The function socket:i/0 now uses the m:net module
+    (instead of the m:inet module) for service translation.
+  * kernel: A boolean option read_ahead has been implemented for
+    gen_tcp, default true, to facilitate not reading past (caching
+    data) the end of a packet.  In particular, for kTLS, caching
+    data could read in data that was supposed to be decrypted by
+    the platform's network stack, before crypto parameters could be
+    activated.
+  * syntax_tools: The documentation for syntax_tools has been
+    polished after the migration to the new documentation system.
+  * asn1: Fixed a cosmetic but harmless issue with the ASN.1
+    compiler passing on the undec_rest option to the Erlang
+    compiler.
+- Changes for 27.0.1:
+  * ssh: With this change, race condition between connection
+    closing and automatic window adjustment is fixed.
+  * ssl: Check  for TLS-1.3 support should check minimum
+    requirements.
+  * ssl: If both TLS-1.3 and TLS-1.2 is supported and TLS-1.2
+    negotiated convert TLS-1.3 ECDSA schemes to TLS-1.2 hash and
+    signature pairs for increased interoperability.
+  * ssl: TLS-1.3 negotiation now uses SNI based options correctly
+    instead of ignoring them.
+  * ssl: Make it easier to distinguish between a invalid signature
+    and unsupported signature.
+  * ssl: Enhance ALERT logs to help understand what causes the
+    alert.
+  * ssl: When the default value for signature_algs is used, default
+    the signature_algs_cert to the default value + rsa_pkcs1_sha1
+    to allow this algorithms for certificates but not for the TLS
+    protocol. This is for better interoperability.  If
+    signature_algs is set explicitly signature_algs_cert must also
+    be set explicitly if they should be different.
+  * public_key: Fix bug in dnsName constraint check, could cause
+    valid cert to be considered bad during path validation.
+  * compiler: One of the compiler's optimization passes would get
+    very slow when compiling certain modules. The compiler will now
+    automatically disable that pass for input that would trigger
+    the slowdown.
+  * compiler: Fix +deterministic to work properly with
+    documentation attributes.
+  * stdlib: Fix so that missing -doc({file, File}) files only
+    result in a warning and not an error.
+  * stdlib: Fixed m:json bugs, json:encode_key_value_list/2 did not
+    generate arrays and json:decode/3 did not invoke the user
+    callback for 0.
+  * edoc: Fix broken makefile dependency when building HTML
+    documentation.
+  * erts: In rare circumstances the JIT could do an unsafe in-place
+    update of a tuple.
+  * erts: When a port command crashed in the inet driver during
+    gen_tcp:send/2, a monitor 'DOWN' message could be left
+    lingering in the caller's mailbox. This has now been fixed.
+  * erts: 'DOWN' messages originating from a monitored port,
+    contained the atom process instead of the atom port as the
+    third element when the exit reason was not an immediate term.
+  * erts: Fix so that the options to enable Transparent Huge Page
+    alignment of the Erlang VM executable are only applied to the
+    Erlang VM and not other native programs such as erlc and
+    dialyzer. This bug was introduced in Erlang/OTP 27.0.
+  * erts: When [*no time warp mode*](time_correction.md#no-time-
+    warp-mode) was enabled, a smaller Erlang monotonic time could
+    be read than a previously read time, i.e., breaking the
+    monotonic property. The runtime system will abort when
+    detecting an issue like this since OTP 24.3.4.17 and OTP 25.0.
+  * erts: When calling trace:function(Session, _, true, [meta]) the
+    meta tracer was incorrectly set to be the calling process. Now
+    it's set to the session tracer as expected.
+  * kernel: Polish the m:logger documentation.
+
+-------------------------------------------------------------------
+Fri Sep 20 15:42:43 UTC 2024 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Version 27.0:
+  * Triple-Quoted Strings has been implemented as per EEP 64 to
+    allow a string to encompass a complete paragraph.
+  * Adjacent string literals without intervening white space is now
+    a syntax error, to avoid possible confusion with triple-quoted
+    strings.
+  * Sigils on string literals (both ordinary and triple-quoted)
+    have been implemented as per EEP 66. For example, ~"Björn" or
+    ~b"Björn" are now equivalent to <<"Björn"/utf8>>.
+  * The compiler will now merge consecutive updates of the same
+    record.
+  * Safe destructive update of tuples has been implemented in the
+    compiler and runtime system. This allows the VM to update
+    tuples in-place when it is safe to do so, thus improving
+    performance by doing less copying but also by producing less
+    garbage.
+  * The maybe expression is now enabled by default, eliminating the
+    need for enabling the maybe_expr feature.
+  * Native coverage support has been implemented in the JIT. It
+    will automatically be used by the cover tool to reduce the
+    execution overhead when running cover-compiled code. There are
+    also new APIs to support native coverage without using the
+    cover tool.
+  * The compiler will now raise a warning when updating record/map
+    literals to catch a common mistake. For example, the compiler
+    will now emit a warning for #r{a=1}#r{b=2}.
+  * The erl command now supports the -S flag, which is similar to
+    the -run flag, but with some of the rough edges filed off.
+  * By default, escripts will now be compiled instead of
+    interpreted. That means that the compiler application must be
+    installed.
+  * The default process limit has been raised to 1048576 processes.
+  * The erlang:system_monitor/2 functionality is now able to
+    monitor long message queues in the system.
+  * The obsolete and undocumented support for opening a port to an
+    external resource by passing an atom (or a string) as first
+    argument to open_port(), implemented by the vanilla driver, has
+    been removed. This feature has been scheduled for removal in
+    OTP 27 since the release of OTP 26.
+  * The pid field has been removed from erlang:fun_info/1,2.
+    Multiple trace sessions are now supported.
+  * There is a new module json for encoding and decoding JSON.
+  * Several new functions that accept funs have been added to module timer.
+  * The functions is_equal/2, map/2, and filtermap/2 have been
+    added to the modules sets, ordsets, and gb_sets.
+  * There are new efficient ets traversal functions with guaranteed
+    atomicity. For example, ets:next/2 followed by ets:lookup/2 can
+    now be replaced with ets:next_lookup/1.
+  * The new function ets:update_element/4 is similar to
+    ets:update_element/3, but takes a default tuple as the fourth
+    argument, which will be inserted if no previous record with
+    that key exists.
+  * binary:replace/3,4 now supports using a fun for supplying the
+    replacement binary.
+  * The new function proc_lib:set_label/1 can be used to add a
+    descriptive term to any process that does not have a registered
+    name. The name will be shown by tools such as c:i/0 and
+    observer, and it will be included in crash reports produced by
+    processes using gen_server, gen_statem, gen_event, and gen_fsm.
+  * Added functions to retrieve the next higher or lower
+    key/element from gb_trees and gb_sets, as well as returning
+    iterators that start at given keys/elements.
+  * common_test: Calls to ct:capture_start/0 and ct:capture_stop/0
+    are now synchronous to ensure that all output is captured.
+  * common_test: The default CSS will now include a basic dark mode
+    handling if it is preferred by the browser.
+  * crypto: The functions crypto_dyn_iv_init/3 and
+    crypto_dyn_iv_update/3 that were marked as deprecated in
+    Erlang/OTP 25 have been removed.
+  * dialyzer: The --gui option for Dialyzer has been removed.
+  * ssl: The ssl client can negotiate and handle certificate status
+    request (OCSP stapling support on the client side).
+  * tools: There is a new tool tprof, which combines the
+    functionality of eprof and cprof under one interface. It also
+    adds heap profiling.
+  * xmerl: As an alternative to xmerl_xml, a new export module
+    xmerl_xml_indent that provides out-of-the box indented output
+    has been added.
+
+-------------------------------------------------------------------
 Sat Aug 03 07:23:34 UTC 2024 - matwey.kornilov@gmail.com
 
 - Changes for 26.2.5.2:
@@ -4338,7 +4861,7 @@ Mon Feb  3 07:59:55 UTC 2020 - Gabriele Santomaggio <gsantomaggio@suse.com>
 
 - Changes for 22.2.4:
   * ssl: Enhance error handling, all ALERTS shall be handled
-    gracefully and not cause a crash.  
+    gracefully and not cause a crash.
   * ssl: Enhance alert logging, in some places the role
     indication of the alert origin was missing. So the log
     would say undefined instead of client or server.
@@ -4419,15 +4942,15 @@ Thu Dec 12 07:55:22 UTC 2019 - Gabriele Santomaggio <gsantomaggio@suse.de>
 - Changes for 22.2
   * http://erlang.org/download/OTP-22.2.README
   * Highlights:
-  * erts: The Kernel application's User's Guide now contains a 
+  * erts: The Kernel application's User's Guide now contains a
     Logger Cookbook with common usage patterns.
   * erts: Numerous improvements in the new socket and net modules
   * Standard libraries: common_test: ct_property_test logging is improved
-  * Standard libraries: ssl: Correct handling of unordered chains so that it 
+  * Standard libraries: ssl: Correct handling of unordered chains so that it
     works as expected
-  * Tools: Emacs erlang-mode function that lets the user open the documentation 
-    for an Erlang/OTP function in an Emacs buffer has been improved. 
-    Users will be asked if they want the man pages downloaded if they are not present 
+  * Tools: Emacs erlang-mode function that lets the user open the documentation
+    for an Erlang/OTP function in an Emacs buffer has been improved.
+    Users will be asked if they want the man pages downloaded if they are not present
     in the system.
 
 -------------------------------------------------------------------
@@ -4446,7 +4969,7 @@ Mon Nov 11 11:22:05 UTC 2019 - Gabriele Santomaggio <gsantomaggio@gmail.com>
 - Changes for 22.1.7
   * http://erlang.org/download/OTP-22.1.7.README
   * compiler: Fixed a performance bug that caused repeated matches of
-    large records to take a very long time to compile. 
+    large records to take a very long time to compile.
   * erts: A literal area could prematurely be released before all
     uses of it had been removed. This occurred either when
     a terminating process had a complex exit reason
@@ -4464,7 +4987,7 @@ Mon Nov 11 11:22:05 UTC 2019 - Gabriele Santomaggio <gsantomaggio@gmail.com>
     message contains both a bit string and the heap binary
     (< 65 bytes) which the bit string was matched from. Bug
     exists since OTP-19.0 but has seen to be easier to
-    provoke since OTP-22.1. 
+    provoke since OTP-22.1.
 
 - Changes for 22.1.6
   * http://erlang.org/download/OTP-22.1.6.README
@@ -4980,7 +5503,7 @@ Mon Jul 29 08:15:47 UTC 2019 - opensuse-packaging@opensuse.org
 -------------------------------------------------------------------
 Thu Jul  4 13:13:17 UTC 2019 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
-- Drop priv/obj directories: boo#1140404 
+- Drop priv/obj directories: boo#1140404
 
 -------------------------------------------------------------------
 Tue Jun 25 10:23:44 UTC 2019 - Gabriele Santomaggio <g.santomaggio@gmail.com>
@@ -4996,7 +5519,7 @@ Tue Jun 25 10:23:44 UTC 2019 - Gabriele Santomaggio <g.santomaggio@gmail.com>
     process on an old incarnation of the current node. That
     is, the receiving node had the same node name, but
     another "creation" number. The signal will now just be
-    dropped since the receiving process no longer exists. 
+    dropped since the receiving process no longer exists.
   * kernel: user/user_drv could respond to io requests before they
     had been processed, which could cause data to be
     dropped if the emulator was halted soon after a call to
@@ -5084,7 +5607,7 @@ Thu May 16 09:47:44 UTC 2019 - Gabriele Santomaggio <g.santomaggio@gmail.com>
  * http://erlang.org/download/OTP-21.3.8.1.README
  * erts: Fixed a buffer overflow when binary_to_existing_atom/2
    and list_to_existing_atom/2 was used with the latin1
-   encoding. 
+   encoding.
  * ssl: Correct solution for retaining tcp flow control
    OTP-15802 (ERL-934) as to not break ssl:recv as
    reported in (ERL-938)
@@ -5156,7 +5679,7 @@ Thu May 16 09:47:44 UTC 2019 - Gabriele Santomaggio <g.santomaggio@gmail.com>
    timeout message could arrive as an info to the callback
    module during high load due to incorrect use of
    asynchronous timer cancel.
- 
+
 -------------------------------------------------------------------
 Mon Apr 29 09:48:44 UTC 2019 - Gabriele Santomaggio <g.santomaggio@gmail.com>
 
@@ -5189,7 +5712,7 @@ Wed Apr 17 09:56:44 UTC 2019 - Gabriele Santomaggio <g.santomaggio@gmail.com>
  * http://erlang.org/download/OTP-21.3.5.README
  * diameter: Fix inadvertently broad monitor that resulted in
    gen_server cast messages to hidden nodes from module
-   diameter_dist. 
+   diameter_dist.
  * erts: Add missing documentation of new external tags NEW_PID,
    NEW_PORT and NEWER_REFERENCE introduced in OTP 19.
    These new tags are planned to be "activated" in OTP 23
@@ -5256,7 +5779,7 @@ Tue Mar 26 09:18:44 UTC 2019 - Gabriele Santomaggio <g.santomaggio@gmail.com>
    caused by a dirty scheduler not releasing it's
    run-queue lock when terminating.
  * xmerl: Handling of character references in attributes are
-   fixed. 
+   fixed.
  * xmerl:  Normalization of whitespace characters in attributes
    are fixed so it works when character references are
    used.
@@ -5277,7 +5800,7 @@ Wed Mar 20 11:32:44 UTC 2019 - Gabriele Santomaggio <g.santomaggio@gmail.com>
    cancelled and later caused a server crash. This bug has
    now been corrected.
  * ssl: Add tag for passive message (active N) in cb_info to
-   retain transport transparency.  
+   retain transport transparency.
 
 - Update to 21.3:
 - Changes for 21.3:
@@ -5311,19 +5834,19 @@ Wed Mar 20 11:32:44 UTC 2019 - Gabriele Santomaggio <g.santomaggio@gmail.com>
    -- Some files were installed with wrong access rights.
    -- If applying a patch (using otp_patch_apply) as
    another user (except root) than the user that built the
-   source, the documentation was not properly updated. 
+   source, the documentation was not properly updated.
  * erts, kernel: Setting the recbuf size of an inet socket the buffer is
    also automatically increased. Fix a bug where the auto
    adjustment of inet buffer size would be triggered even
    if an explicit inet buffer size had already been set.
  * erts: Reading from UDP using active true or active N mode has
    been optimized when more packets than specified by
-   read_packets are available on the socket. 
+   read_packets are available on the socket.
  * erts, kernel:  Setting the recbuf size of an inet socket the buffer is
    also automatically increased. Fix a bug where the auto
    adjustment of inet buffer size would be triggered even
    if an explicit inet buffer size had already been set.
- 
+
 -------------------------------------------------------------------
 Tue Feb 19 10:37:44 UTC 2019 - Gabriele Santomaggio <g.santomaggio@gmail.com>
 
@@ -5354,7 +5877,7 @@ Tue Feb  5 10:43:37 UTC 2019 - Gabriele Santomaggio <g.santomaggio@gmail.com>
    This change also fixes a regression: httpc:request
    fails with connection error (nxdomain) if option
    ipv6_host_with_brackets set to true and host component
-   of the URI is an IPv6 address.  
+   of the URI is an IPv6 address.
 
 -------------------------------------------------------------------
 Fri Jan 25 15:26:37 UTC 2019 - Gabriele Santomaggio <g.santomaggio@gmail.com>
@@ -5399,7 +5922,7 @@ Fri Jan 25 15:26:37 UTC 2019 - Gabriele Santomaggio <g.santomaggio@gmail.com>
    Correct gen_statem returns for some error cases
  * xmerl: The charset detection parsing crash in some cases when
    the XML directive is not syntactic correct.
-       
+
 -------------------------------------------------------------------
 Mon Dec 31 17:59:37 UTC 2018 - Gabriele Santomaggio <g.santomaggio@gmail.com>
 
@@ -5419,7 +5942,7 @@ Mon Dec 31 17:59:37 UTC 2018 - Gabriele Santomaggio <g.santomaggio@gmail.com>
    of the operands have the lowest N*W bits as zero and
    the other absolute value is not larger than N*W bits. N
    is an integer of 1 or larger and W is 32 or 64
-   depending on word size. 
+   depending on word size.
  * ssl:  Fixed renegotiation bug. Client did not handle server
    initiated renegotiation correctly after rewrite to two
    connection processes, due to ERL-622 commit
@@ -5459,7 +5982,7 @@ Mon Dec 31 17:59:37 UTC 2018 - Gabriele Santomaggio <g.santomaggio@gmail.com>
    kernel: A new function, logger:update_handler_config/3 is
    added, and the handler callback changing_config now has
    a new argument, SetOrUpdate, which indicates if the
-   configuration change comes from set_handler_config/2,3    
+   configuration change comes from set_handler_config/2,3
    or update_handler_config/2,3.
    This allows the handler to consistently merge the new
    configuration with the old (if the change comes from
@@ -5580,7 +6103,7 @@ Fri Nov  2 21:24:41 UTC 2018 -  Gabriele Santomaggio <g.santomaggio@gmail.com>
  * erts: The fix made for OTP-15279 in erts-10.07 (OTP-21.0.8)
    was not complete. It could cause a new connection
    attempt to be incorrectly aborted in certain cases.
-   This fix will amend that flaw.    
+   This fix will amend that flaw.
 - Changes for 21.0.8:
  - http://erlang.org/download/OTP-21.0.8.
  * erts: A process could get stuck in an infinite rescheduling
@@ -5678,7 +6201,7 @@ Fri Nov  2 21:24:41 UTC 2018 -  Gabriele Santomaggio <g.santomaggio@gmail.com>
    - A new Corba repository will be created https://github.com/erlang
    - New applications ftp and tftp, moved from inets
    - ssl no longer supports 3_DES cipher suites or RSA-key exchange cipher suites by default
-   - Erlang:monitor on a primitive node (erl_interface, jinterface, etc) will no longer fail with badarg exception. 
+   - Erlang:monitor on a primitive node (erl_interface, jinterface, etc) will no longer fail with badarg exception.
      Instead a monitor will be created, but it will only supervise the connection to the node.
  * Highlights:
  * Erts:
@@ -5942,12 +6465,12 @@ Mon Nov 27 07:46:03 UTC 2017 - matwey.kornilov@gmail.com
     available cpu is not the first detected cpu. e.g. when using
     "taskset -c X..Y" when X is not equal to 0.
   * snmp: The recbuf configuration option was not propagated
-    correctly to the socket for the SNMP Manager. 
+    correctly to the socket for the SNMP Manager.
 
 -------------------------------------------------------------------
 Thu Nov 23 13:49:29 UTC 2017 - rbrown@suse.com
 
-- Replace references to /var/adm/fillup-templates with new 
+- Replace references to /var/adm/fillup-templates with new
   %_fillupdir macro (boo#1069468)
 
 -------------------------------------------------------------------
@@ -6329,7 +6852,7 @@ Fri Aug 12 18:20:31 UTC 2016 - matwey.kornilov@gmail.com
   * erts: Fixed a race that could cause a lost wakeup of a process
     that timed out in a receive ... after. This bug was introduced
     in ERTS version 7.0.
-  * erts: Fixed segfault after writing an erl crash dump. 
+  * erts: Fixed segfault after writing an erl crash dump.
 
 -------------------------------------------------------------------
 Sun Jun 26 09:01:32 UTC 2016 - matwey.kornilov@gmail.com
@@ -6388,11 +6911,11 @@ Sun May 22 08:58:48 UTC 2016 - matwey.kornilov@gmail.com
 - Update to 18.3.3:
   * common_test: The nodelay option used to be enabled (true) by
 		 default for sockets opened by the Common Test
-                 telnet client. 
+                 telnet client.
   * common_test: Fix bug in cth_surefire
   * common_test: The ct:get_timetrap_info/0 function has been
 		 updated to return more information about timetrap
-                 scaling. 
+                 scaling.
   * common_test: A problem with stylesheet HTML tags getting
 		 incorrectly escaped by Common Test has been
                  corrected.
@@ -6440,7 +6963,7 @@ Tue Jan 12 14:08:41 UTC 2016 - matwey.kornilov@gmail.com
     * ssh: The authentication method 'keyboard-interactive' failed
       in the Erlang client when the server after successful
       authentication continued by asking for zero more
-      passwords. 
+      passwords.
 
 -------------------------------------------------------------------
 Mon Dec 28 08:50:34 UTC 2015 - matwey.kornilov@gmail.com
@@ -6468,7 +6991,7 @@ Mon Dec 28 08:50:34 UTC 2015 - matwey.kornilov@gmail.com
 -------------------------------------------------------------------
 Thu Dec 17 17:37:16 CET 2015 - ro@suse.de
 
-- disable hipe on s390/s390x to fix build 
+- disable hipe on s390/s390x to fix build
 
 -------------------------------------------------------------------
 Thu Oct 29 13:41:47 UTC 2015 - matwey.kornilov@gmail.com
@@ -6797,7 +7320,7 @@ Fri Jun 21 20:11:27 UTC 2013 - kruber@zib.de
     large input into several calls to avoid blocking the scheduler
     for too long.
   + Elliptic curve support in crypto, ssl and ssh
-    (thanks to Andreas Schultz)  
+    (thanks to Andreas Schultz)
   + Lift static limitation (FD_SETSIZE) for file descriptors on
     Mac OS X. (thanks to Anthony Ramine)
   + Removed a lock around GC statistics counter
@@ -6902,7 +7425,7 @@ Mon Feb  4 10:54:07 UTC 2013 - kruber@zib.de
 -------------------------------------------------------------------
 Mon Jan  7 12:40:48 UTC 2013 - matwey.kornilov@gmail.com
 
-- Add fix-armv7hl.patch - temporary fix build at armv7hl 
+- Add fix-armv7hl.patch - temporary fix build at armv7hl
 
 -------------------------------------------------------------------
 Sat Jan  5 19:39:43 UTC 2013 - matwey.kornilov@gmail.com
@@ -6952,7 +7475,7 @@ Fri Nov  9 11:54:55 UTC 2012 - saschpe@suse.de
 Tue Nov  6 14:00:09 UTC 2012 - saschpe@suse.de
 
 - Use SPDX-style license (ErlPL-1.1)
-- Merge changes from devel:languages:misc/erlang, which is still the 
+- Merge changes from devel:languages:misc/erlang, which is still the
   devel project for Factory.
 
 -------------------------------------------------------------------
@@ -7010,7 +7533,7 @@ Thu Sep  6 09:00:14 UTC 2012 - kruber@zib.de
 -------------------------------------------------------------------
 Wed Jul 25 14:05:47 UTC 2012 - dvaleev@suse.com
 
-- Add erlang-ppc.patch: Fix PPC architecture detection 
+- Add erlang-ppc.patch: Fix PPC architecture detection
 
 -------------------------------------------------------------------
 Tue Jun 26 13:46:36 UTC 2012 - mvyskocil@suse.cz
@@ -7181,7 +7704,7 @@ Thu Nov 26 2009 kruber@zib.de
  * Native Implemented Functions (NIFs) still experimental but very useful.
  * The documentation is built in a new way using xsltproc and Apache FOP.
    The layout is changed both in HTML and PDF versions. This is the first step,
-   more changes and improvements will come in the following releases. 
+   more changes and improvements will come in the following releases.
 
 -------------------------------------------------------------------
 Mon Oct 12 2009 nico.laus.2001@gmx.de
@@ -7210,7 +7733,7 @@ Mon Oct 12 2009 nico.laus.2001@gmx.de
 -------------------------------------------------------------------
 Tue Feb 10 2009 alex@simonov.in.ua
 
-- add OTP-7738 patch  
+- add OTP-7738 patch
 A process being garbage collected via the garbage_collect/1
 BIF or the check_process_code/2 BIF didn't handle message
 receive and resume correctly during the garbage collect.
