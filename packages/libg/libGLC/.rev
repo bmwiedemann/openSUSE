@@ -25,4 +25,13 @@ Ask from @dimstar for chromium-bsu 262716</comment>
     <comment></comment>
     <requestid>967380</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>4c48ace8a7a411322c251f2fa3898750</srcmd5>
+    <version>0.7.2</version>
+    <time>1733870975</time>
+    <user>anag+factory</user>
+    <comment>- Fix building on Tumbleweed
+- Minor spec file modernisation</comment>
+    <requestid>1229819</requestid>
+  </revision>
 </revisionlist>
