@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec 10 11:50:18 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.5.7:
+  * chore: bump chart pre release (#389)
+  * Fix: Check initContainers if they have env vars from a
+    configmap or a secret (#388)
+  * refactor: Use new filter framework & unused labels (#387)
+  * Fix:	Removes duplicate printing of the included namespaces
+    (#383)
+  * chore(deps): bump k8s.io/apiextensions-apiserver from 0.31.2 to
+    0.31.3 (#382)
+
+-------------------------------------------------------------------
 Tue Oct 29 14:37:59 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.5.6:
