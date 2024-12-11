@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec  7 18:22:02 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Add compiz-plugins-extra-0.8.18-fix-gcc-14.patch by
+  Que Quotion and Samuel Thibault: Fix build with GCC-14
+  (commits e4f0ed89, 5f653e44).
+
+-------------------------------------------------------------------
 Sat Apr  4 22:34:57 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 0.8.18:

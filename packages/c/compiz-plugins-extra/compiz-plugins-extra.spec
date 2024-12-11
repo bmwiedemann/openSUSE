@@ -1,7 +1,7 @@
 #
 # spec file for package compiz-plugins-extra
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            https://gitlab.com/compiz/compiz-plugins-extra
 Source:         https://gitlab.com/compiz/compiz-plugins-extra/uploads/%{_rev}/%{name}-%{version}.tar.xz
 # PATCH-FEATURE-OPENSUSE dimstar@opensuse.org -- Define some sane standards for the extra plugins.
 Patch0:         compiz-plugins-extra-defaults.diff
+# PATCH-FIX-UPSTREAM compiz-plugins-extra-0.8.18-fix-gcc-14.patch quequotion@gmail.com -- Fix build with GCC-14 (commits e4f0ed89, 5f653e44).
+Patch1:         compiz-plugins-extra-0.8.18-fix-gcc-14.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  intltool
