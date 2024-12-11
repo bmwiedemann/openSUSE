@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20241210" schemaversion="4.1">
+<image name="OBS__openSUSE___20241211" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20241210</productvar>
+      <productvar name="VERSION">20241211</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20241210,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20241211,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20241210/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20241211/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1604,10 +1604,11 @@
       <repopackage name="libgedit-amtk-5-0"/>
       <repopackage name="libgedit-amtk-5-lang"/>
       <repopackage name="libgedit-gfls-1-0"/>
+      <repopackage name="libgedit-gfls-lang"/>
       <repopackage name="libgedit-gtksourceview"/>
-      <repopackage name="libgedit-gtksourceview-300-2"/>
+      <repopackage name="libgedit-gtksourceview-300-3"/>
       <repopackage name="libgedit-gtksourceview-lang"/>
-      <repopackage name="libgedit-tepl-6-1"/>
+      <repopackage name="libgedit-tepl-6-2"/>
       <repopackage name="libgedit-tepl-6-lang"/>
       <repopackage name="libgee-0_8-2"/>
       <repopackage name="libgegl-0_4-0"/>
@@ -4210,7 +4211,6 @@
       <repopackage name="typelib-1_0-PackageKitGlib-1_0"/>
       <repopackage name="typelib-1_0-Pango-1_0"/>
       <repopackage name="typelib-1_0-Peas-1_0"/>
-      <repopackage name="typelib-1_0-PeasGtk-1_0"/>
       <repopackage name="typelib-1_0-Polkit-1_0"/>
       <repopackage name="typelib-1_0-Rest-1_0"/>
       <repopackage name="typelib-1_0-Rsvg-2_0"/>

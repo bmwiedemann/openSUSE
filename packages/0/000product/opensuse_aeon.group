@@ -37,7 +37,6 @@
     <package name="libacl1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libalternatives1" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libapparmor1" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
-    <package name="libargon2-1" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libasm1" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libattr1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libaudit1" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->

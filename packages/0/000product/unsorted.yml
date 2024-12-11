@@ -2493,6 +2493,9 @@ unsorted:
   - compiz-lang 
   - compiz-manager 
   - compiz-plugins 
+  - compiz-plugins-experimental 
+  - compiz-plugins-experimental-devel 
+  - compiz-plugins-experimental-lang 
   - compiz-plugins-extra 
   - compiz-plugins-extra-devel 
   - compiz-plugins-extra-lang 
@@ -2833,6 +2836,7 @@ unsorted:
   - cross-i386-gcc7-icecream-backend 
   - cross-i386-linux-glibc-devel 
   - cross-ia64-binutils 
+  - cross-loongarch64-binutils 
   - cross-loongarch64-linux-glibc-devel 
   - cross-m68k-binutils 
   - cross-m68k-gcc12 
@@ -5162,6 +5166,8 @@ unsorted:
   - geotiff 
   - geotiff-devel 
   - gerbera 
+  - gerbera-apache 
+  - gerbera-nginx 
   - gerbv 
   - gerbv-devel 
   - german-pos-dict 
@@ -5319,10 +5325,6 @@ unsorted:
   - ghc-ansi-terminal-types-devel 
   - ghc-ansi-terminal-types-doc 
   - ghc-ansi-terminal-types-prof 
-  - ghc-ansi-wl-pprint 
-  - ghc-ansi-wl-pprint-devel 
-  - ghc-ansi-wl-pprint-doc 
-  - ghc-ansi-wl-pprint-prof 
   - ghc-appar 
   - ghc-appar-devel 
   - ghc-appar-doc 
@@ -5369,10 +5371,6 @@ unsorted:
   - ghc-aws-prof 
   - ghc-base 
   - ghc-base-compat 
-  - ghc-base-compat-batteries 
-  - ghc-base-compat-batteries-devel 
-  - ghc-base-compat-batteries-doc 
-  - ghc-base-compat-batteries-prof 
   - ghc-base-compat-devel 
   - ghc-base-compat-doc 
   - ghc-base-compat-prof 
@@ -5391,14 +5389,10 @@ unsorted:
   - ghc-base16-bytestring-devel 
   - ghc-base16-bytestring-doc 
   - ghc-base16-bytestring-prof 
-  - ghc-base64 
   - ghc-base64-bytestring 
   - ghc-base64-bytestring-devel 
   - ghc-base64-bytestring-doc 
   - ghc-base64-bytestring-prof 
-  - ghc-base64-devel 
-  - ghc-base64-doc 
-  - ghc-base64-prof 
   - ghc-basement 
   - ghc-basement-devel 
   - ghc-basement-doc 
@@ -5614,14 +5608,10 @@ unsorted:
   - ghc-cpphs-devel 
   - ghc-cpphs-doc 
   - ghc-cpphs-prof 
-  - ghc-criterion 
-  - ghc-criterion-devel 
-  - ghc-criterion-doc 
   - ghc-criterion-measurement 
   - ghc-criterion-measurement-devel 
   - ghc-criterion-measurement-doc 
   - ghc-criterion-measurement-prof 
-  - ghc-criterion-prof 
   - ghc-crypto-api 
   - ghc-crypto-api-devel 
   - ghc-crypto-api-doc 
@@ -5726,10 +5716,6 @@ unsorted:
   - ghc-deepseq-devel 
   - ghc-deepseq-doc 
   - ghc-deepseq-prof 
-  - ghc-deferred-folds 
-  - ghc-deferred-folds-devel 
-  - ghc-deferred-folds-doc 
-  - ghc-deferred-folds-prof 
   - ghc-dense-linear-algebra 
   - ghc-dense-linear-algebra-devel 
   - ghc-dense-linear-algebra-doc 
@@ -5889,14 +5875,6 @@ unsorted:
   - ghc-ghc-heap-devel 
   - ghc-ghc-heap-doc 
   - ghc-ghc-heap-prof 
-  - ghc-ghc-lib-parser 
-  - ghc-ghc-lib-parser-devel 
-  - ghc-ghc-lib-parser-doc 
-  - ghc-ghc-lib-parser-ex 
-  - ghc-ghc-lib-parser-ex-devel 
-  - ghc-ghc-lib-parser-ex-doc 
-  - ghc-ghc-lib-parser-ex-prof 
-  - ghc-ghc-lib-parser-prof 
   - ghc-ghc-prof 
   - ghc-ghci 
   - ghc-ghci-devel 
@@ -5934,10 +5912,6 @@ unsorted:
   - ghc-haddock-library-devel 
   - ghc-haddock-library-doc 
   - ghc-haddock-library-prof 
-  - ghc-hadolint 
-  - ghc-hadolint-devel 
-  - ghc-hadolint-doc 
-  - ghc-hadolint-prof 
   - ghc-half 
   - ghc-half-devel 
   - ghc-half-doc 
@@ -5978,10 +5952,6 @@ unsorted:
   - ghc-hledger-ui-devel 
   - ghc-hledger-ui-doc 
   - ghc-hledger-ui-prof 
-  - ghc-hlint 
-  - ghc-hlint-devel 
-  - ghc-hlint-doc 
-  - ghc-hlint-prof 
   - ghc-hourglass 
   - ghc-hourglass-devel 
   - ghc-hourglass-doc 
@@ -6468,10 +6438,6 @@ unsorted:
   - ghc-puresat-devel 
   - ghc-puresat-doc 
   - ghc-puresat-prof 
-  - ghc-quickcheck-instances 
-  - ghc-quickcheck-instances-devel 
-  - ghc-quickcheck-instances-doc 
-  - ghc-quickcheck-instances-prof 
   - ghc-quote-quot 
   - ghc-quote-quot-devel 
   - ghc-quote-quot-doc 
@@ -8507,7 +8473,6 @@ unsorted:
   - hackrf-firmware 
   - hackrf-udev 
   - hactool 
-  - hadolint 
   - haguichi 
   - haguichi-lang 
   - halloy 
@@ -8711,7 +8676,6 @@ unsorted:
   - hledger 
   - hledger-interest 
   - hledger-ui 
-  - hlint 
   - hmaccalc 
   - hmcfgusb 
   - hmconv 
@@ -11220,8 +11184,6 @@ unsorted:
   - libFLAC++10-x86-64-v3 
   - libFLAC12-32bit 
   - libFOX-1_6-0 
-  - libFS-devel 
-  - libFS6 
   - libFcitx5Config6 
   - libFcitx5Core7 
   - libFcitx5GClient-devel 
@@ -13514,11 +13476,11 @@ unsorted:
   - libgenders0 
   - libgendersplusplus2 
   - libgeners0 
-  - libgensio6 
-  - libgensio_python_swig6 
-  - libgensiocpp6 
-  - libgensiomdns6 
-  - libgensioosh6 
+  - libgensio10 
+  - libgensio_python_swig10 
+  - libgensiocpp10 
+  - libgensiomdns10 
+  - libgensioosh10 
   - libgeocode-glib0 
   - libgeos3_12_2 
   - libgeos_c1 
@@ -17539,6 +17501,8 @@ unsorted:
   - libzen-devel 
   - libzen0 
   - libzfp1 
+  - libzim-devel 
+  - libzim9 
   - libzimg2-32bit 
   - libzinnia0 
   - libzio-devel 
@@ -20341,9 +20305,6 @@ unsorted:
   - occt-devel 
   - occt-devel-doc 
   - occt-resources 
-  - oce 
-  - oce-DRAWEXE 
-  - oce-devel 
   - ocfs2-tools 
   - ocfs2-tools-devel 
   - ocfs2-tools-devel-static 
@@ -24412,7 +24373,6 @@ unsorted:
   - python310-Flask-RSTPages 
   - python310-Flask-SQLAlchemy 
   - python310-Flask-Security 
-  - python310-Flask-Security-Too 
   - python310-Flask-SocketIO 
   - python310-Flask-Versioned 
   - python310-Flask-WTF 
@@ -28095,7 +28055,6 @@ unsorted:
   - python311-Flask-RSTPages 
   - python311-Flask-SQLAlchemy 
   - python311-Flask-Security 
-  - python311-Flask-Security-Too 
   - python311-Flask-SocketIO 
   - python311-Flask-Versioned 
   - python311-Flask-WTF 
@@ -31657,7 +31616,6 @@ unsorted:
   - python312-Flask-RSTPages 
   - python312-Flask-SQLAlchemy 
   - python312-Flask-Security 
-  - python312-Flask-Security-Too 
   - python312-Flask-SocketIO 
   - python312-Flask-Versioned 
   - python312-Flask-WTF 
@@ -35305,6 +35263,7 @@ unsorted:
   - python313-CairoSVG 
   - python313-Cerberus 
   - python313-Chameleon 
+  - python313-Cheetah3 
   - python313-CherryPy 
   - python313-CommonMark 
   - python313-ConfigArgParse 
@@ -36404,6 +36363,7 @@ unsorted:
   - python313-django-codemod 
   - python313-django-collectd-rest 
   - python313-django-compressor 
+  - python313-django-contrib-comments 
   - python313-django-cors-headers 
   - python313-django-countries 
   - python313-django-coverage-plugin 
@@ -36435,6 +36395,7 @@ unsorted:
   - python313-django-mathfilters 
   - python313-django-minio-storage 
   - python313-django-model-utils 
+  - python313-django-money 
   - python313-django-mptt 
   - python313-django-nine 
   - python313-django-oauth-toolkit 
@@ -36655,6 +36616,7 @@ unsorted:
   - python313-flexcache 
   - python313-flexmock 
   - python313-flexparser 
+  - python313-flexx 
   - python313-flickrapi 
   - python313-flit 
   - python313-flit-core 
@@ -37498,6 +37460,7 @@ unsorted:
   - python313-orderedmultidict 
   - python313-orderly-set 
   - python313-orjson 
+  - python313-osc-tiny 
   - python313-oscrypto 
   - python313-osmviz 
   - python313-ospd-openvas 
@@ -37700,6 +37663,7 @@ unsorted:
   - python313-proton-vpn-session 
   - python313-protonvpn-nm-lib 
   - python313-proxmoxer 
+  - python313-pscript 
   - python313-psutil 
   - python313-psychtoolbox 
   - python313-psycopg 
@@ -37725,6 +37689,8 @@ unsorted:
   - python313-py-build-cmake 
   - python313-py-cpuinfo 
   - python313-py-espeak-ng 
+  - python313-py-gitea-opensuse-org 
+  - python313-py-moneyed 
   - python313-py-obs 
   - python313-py-partiql-parser 
   - python313-py-radix 
@@ -38444,6 +38410,7 @@ unsorted:
   - python313-solv 
   - python313-sortedcollections 
   - python313-sortedcontainers 
+  - python313-sortinghat 
   - python313-soundcloud-v2 
   - python313-sounddevice 
   - python313-soupsieve 
@@ -40153,6 +40120,7 @@ unsorted:
   - ruby3.3-rubygem-docile 
   - ruby3.3-rubygem-docker-api 
   - ruby3.3-rubygem-domain_name 
+  - ruby3.3-rubygem-dotenv 
   - ruby3.3-rubygem-down 
   - ruby3.3-rubygem-dry-configurable 
   - ruby3.3-rubygem-dry-container 
@@ -40290,12 +40258,14 @@ unsorted:
   - ruby3.3-rubygem-pg 
   - ruby3.3-rubygem-pkg-config 
   - ruby3.3-rubygem-po_to_json 
+  - ruby3.3-rubygem-propshaft 
   - ruby3.3-rubygem-pry 
   - ruby3.3-rubygem-pry-doc 
   - ruby3.3-rubygem-public_suffix 
   - ruby3.3-rubygem-puma 
   - ruby3.3-rubygem-puma_worker_killer 
   - ruby3.3-rubygem-pundit 
+  - ruby3.3-rubygem-raabro 
   - ruby3.3-rubygem-rack 
   - ruby3.3-rubygem-rack-2.2 
   - ruby3.3-rubygem-rack-accept 
@@ -40332,6 +40302,7 @@ unsorted:
   - ruby3.3-rubygem-ruby-libvirt 
   - ruby3.3-rubygem-ruby-openid 
   - ruby3.3-rubygem-ruby-progressbar 
+  - ruby3.3-rubygem-ruby-vips 
   - ruby3.3-rubygem-ruby2_keywords 
   - ruby3.3-rubygem-ruby_parser 
   - ruby3.3-rubygem-rubyntlm 
@@ -40377,6 +40348,8 @@ unsorted:
   - ruby3.3-rubygem-unf 
   - ruby3.3-rubygem-unf_ext 
   - ruby3.3-rubygem-unicode-display_width 
+  - ruby3.3-rubygem-uri 
+  - ruby3.3-rubygem-useragent 
   - ruby3.3-rubygem-validate_email 
   - ruby3.3-rubygem-validate_url 
   - ruby3.3-rubygem-version_gem 
@@ -40807,7 +40780,6 @@ unsorted:
   - shotcut-lang 
   - shotwell 
   - shotwell-lang 
-  - showfont 
   - showfoto 
   - showtime 
   - showtime-lang 
@@ -51189,37 +51161,174 @@ unsorted:
   - transset 
   - tre-devel 
   - tree-sitter 
+  - tree-sitter-arduino 
+  - tree-sitter-arduino-devel 
   - tree-sitter-bash 
+  - tree-sitter-bash-devel 
+  - tree-sitter-bicep 
+  - tree-sitter-bicep-devel 
   - tree-sitter-c 
   - tree-sitter-c-devel 
   - tree-sitter-c-sharp 
+  - tree-sitter-c-sharp-devel 
+  - tree-sitter-capnp 
+  - tree-sitter-capnp-devel 
+  - tree-sitter-chatito 
+  - tree-sitter-chatito-devel 
+  - tree-sitter-clojure 
+  - tree-sitter-clojure-devel 
+  - tree-sitter-commonlisp 
+  - tree-sitter-commonlisp-devel 
+  - tree-sitter-cpon 
+  - tree-sitter-cpon-devel 
   - tree-sitter-cpp 
+  - tree-sitter-cpp-devel 
   - tree-sitter-css 
+  - tree-sitter-css-devel 
+  - tree-sitter-cuda 
+  - tree-sitter-cuda-devel 
   - tree-sitter-devel 
+  - tree-sitter-doxygen 
+  - tree-sitter-doxygen-devel 
+  - tree-sitter-firrtl 
+  - tree-sitter-firrtl-devel 
+  - tree-sitter-gitattributes 
+  - tree-sitter-gitattributes-devel 
+  - tree-sitter-glsl 
+  - tree-sitter-glsl-devel 
   - tree-sitter-go 
+  - tree-sitter-go-devel 
+  - tree-sitter-go-sum 
+  - tree-sitter-go-sum-devel 
   - tree-sitter-gomod 
+  - tree-sitter-gomod-devel 
+  - tree-sitter-gpg-config 
+  - tree-sitter-gpg-config-devel 
+  - tree-sitter-gstlaunch 
+  - tree-sitter-gstlaunch-devel 
+  - tree-sitter-hare 
+  - tree-sitter-hare-devel 
   - tree-sitter-haskell 
+  - tree-sitter-hlsl 
+  - tree-sitter-hlsl-devel 
   - tree-sitter-html 
+  - tree-sitter-html-devel 
+  - tree-sitter-hyprlang 
+  - tree-sitter-hyprlang-devel 
   - tree-sitter-java 
+  - tree-sitter-java-devel 
   - tree-sitter-javascript 
   - tree-sitter-javascript-devel 
+  - tree-sitter-jinja2 
+  - tree-sitter-jinja2-devel 
   - tree-sitter-json 
+  - tree-sitter-json-devel 
+  - tree-sitter-kconfig 
+  - tree-sitter-kconfig-devel 
+  - tree-sitter-kdl 
+  - tree-sitter-kdl-devel 
+  - tree-sitter-kotlin 
+  - tree-sitter-kotlin-devel 
+  - tree-sitter-linkerscript 
+  - tree-sitter-linkerscript-devel 
   - tree-sitter-lua 
+  - tree-sitter-lua-devel 
+  - tree-sitter-luadoc 
+  - tree-sitter-luadoc-devel 
+  - tree-sitter-luap 
+  - tree-sitter-luap-devel 
+  - tree-sitter-luau 
+  - tree-sitter-luau-devel 
   - tree-sitter-markdown 
   - tree-sitter-markdown-devel 
+  - tree-sitter-odin 
+  - tree-sitter-odin-devel 
+  - tree-sitter-pem 
+  - tree-sitter-pem-devel 
+  - tree-sitter-po 
+  - tree-sitter-po-devel 
+  - tree-sitter-poe-filter 
+  - tree-sitter-poe-filter-devel 
+  - tree-sitter-pony 
+  - tree-sitter-pony-devel 
+  - tree-sitter-printf 
+  - tree-sitter-printf-devel 
+  - tree-sitter-properties 
+  - tree-sitter-properties-devel 
+  - tree-sitter-puppet 
+  - tree-sitter-puppet-devel 
+  - tree-sitter-pymanifest 
+  - tree-sitter-pymanifest-devel 
   - tree-sitter-python 
+  - tree-sitter-python-devel 
   - tree-sitter-qmldir 
+  - tree-sitter-qmldir-devel 
   - tree-sitter-qmljs 
   - tree-sitter-query 
+  - tree-sitter-query-devel 
+  - tree-sitter-re2c 
+  - tree-sitter-re2c-devel 
+  - tree-sitter-readline 
+  - tree-sitter-readline-devel 
   - tree-sitter-regex 
+  - tree-sitter-regex-devel 
+  - tree-sitter-requirements 
+  - tree-sitter-requirements-devel 
+  - tree-sitter-ron 
+  - tree-sitter-ron-devel 
   - tree-sitter-ruby 
+  - tree-sitter-ruby-devel 
   - tree-sitter-rust 
+  - tree-sitter-rust-devel 
+  - tree-sitter-scss 
+  - tree-sitter-scss-devel 
+  - tree-sitter-smali 
+  - tree-sitter-smali-devel 
+  - tree-sitter-squirrel 
+  - tree-sitter-squirrel-devel 
+  - tree-sitter-ssh-config 
+  - tree-sitter-ssh-config-devel 
+  - tree-sitter-starlark 
+  - tree-sitter-starlark-devel 
+  - tree-sitter-svelte 
+  - tree-sitter-svelte-devel 
+  - tree-sitter-tablegen 
+  - tree-sitter-tablegen-devel 
+  - tree-sitter-tcl 
+  - tree-sitter-tcl-devel 
+  - tree-sitter-test 
+  - tree-sitter-test-devel 
+  - tree-sitter-thrift 
+  - tree-sitter-thrift-devel 
+  - tree-sitter-toml 
+  - tree-sitter-toml-devel 
   - tree-sitter-typescript 
   - tree-sitter-typescript-devel 
+  - tree-sitter-udev 
+  - tree-sitter-udev-devel 
+  - tree-sitter-ungrammar 
+  - tree-sitter-ungrammar-devel 
+  - tree-sitter-uxntal 
+  - tree-sitter-uxntal-devel 
   - tree-sitter-vim 
   - tree-sitter-vimdoc 
   - tree-sitter-vimdoc-devel 
+  - tree-sitter-vue 
+  - tree-sitter-vue-devel 
+  - tree-sitter-wgsl 
+  - tree-sitter-wgsl-bevy 
+  - tree-sitter-wgsl-bevy-devel 
+  - tree-sitter-wgsl-devel 
+  - tree-sitter-xcompose 
+  - tree-sitter-xcompose-devel 
   - tree-sitter-xml 
+  - tree-sitter-xml-devel 
+  - tree-sitter-yaml 
+  - tree-sitter-yaml-devel 
+  - tree-sitter-yuck 
+  - tree-sitter-yuck-devel 
+  - tree-sitter-zig 
+  - tree-sitter-zig-devel 
   - treefetch 
   - treelayout 
   - treelayout-demo 
@@ -51551,6 +51660,7 @@ unsorted:
   - typelib-1_0-PapersDocument-4_0 
   - typelib-1_0-PapersView-4_0 
   - typelib-1_0-Peas-2 
+  - typelib-1_0-PeasGtk-1_0 
   - typelib-1_0-Playerctl-2_0 
   - typelib-1_0-Pluma-1_0 
   - typelib-1_0-Poppler-0_18 

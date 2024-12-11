@@ -1094,8 +1094,8 @@
     <package name="kio-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kio_audiocd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kio_audiocd-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="kio_kamera" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_imaging -->
-    <package name="kio_kamera-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_imaging -->
+    <package name="kio_kamera" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="kio_kamera-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="kipi-plugins" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kipi-plugins-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kirigami-addons6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2050,10 +2050,11 @@
     <package name="libgedit-amtk-5-0" supportstatus="unsupported"/> <!-- reason: dvd:gedit -->
     <package name="libgedit-amtk-5-lang" supportstatus="unsupported"/> <!-- reason: dvd:gedit -->
     <package name="libgedit-gfls-1-0" supportstatus="unsupported"/> <!-- reason: dvd:gedit -->
+    <package name="libgedit-gfls-lang" supportstatus="unsupported"/> <!-- reason: dvd:gedit -->
     <package name="libgedit-gtksourceview" supportstatus="unsupported"/> <!-- reason: dvd:gedit -->
-    <package name="libgedit-gtksourceview-300-2" supportstatus="unsupported"/> <!-- reason: dvd:gedit -->
+    <package name="libgedit-gtksourceview-300-3" supportstatus="unsupported"/> <!-- reason: dvd:gedit -->
     <package name="libgedit-gtksourceview-lang" supportstatus="unsupported"/> <!-- reason: dvd:gedit -->
-    <package name="libgedit-tepl-6-1" supportstatus="unsupported"/> <!-- reason: dvd:gedit -->
+    <package name="libgedit-tepl-6-2" supportstatus="unsupported"/> <!-- reason: dvd:gedit -->
     <package name="libgedit-tepl-6-lang" supportstatus="unsupported"/> <!-- reason: dvd:gedit -->
     <package name="libgee-0_8-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgegl-0_4-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4160,7 +4161,6 @@
     <package name="typelib-1_0-PackageKitGlib-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-Pango-1_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="typelib-1_0-Peas-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="typelib-1_0-PeasGtk-1_0" supportstatus="unsupported"/> <!-- reason: dvd:gedit -->
     <package name="typelib-1_0-Polkit-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-Rest-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-Rsvg-2_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
