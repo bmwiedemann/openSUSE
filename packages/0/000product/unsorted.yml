@@ -496,6 +496,7 @@ unsorted:
   - agama-openapi 
   - agama-products-opensuse 
   - agama-products-sle 
+  - agama-scripts 
   - agama-web-ui 
   - agama-yast 
   - age 
@@ -10868,7 +10869,6 @@ unsorted:
   - labplot-kf5-lang 
   - labwc 
   - labwc-lang 
-  - labwc-theme-vent 
   - ladish 
   - ladspa 
   - ladspa-32bit 
@@ -17143,6 +17143,8 @@ unsorted:
   - libwebsockets19 
   - libweston-14 
   - libweston-14-0 
+  - libwf-config1 
+  - libwf-utils0 
   - libwget2 
   - libwhich 
   - libwiiuse0 
@@ -18233,8 +18235,11 @@ unsorted:
   - lxqt-globalkeys-branding-upstream 
   - lxqt-globalkeys-devel 
   - lxqt-globalkeys-lang 
+  - lxqt-hyprland-session 
+  - lxqt-labwc-session 
   - lxqt-menu-data 
   - lxqt-menu-data-devel 
+  - lxqt-niri-session 
   - lxqt-notificationd 
   - lxqt-notificationd-lang 
   - lxqt-openssh-askpass 
@@ -18249,6 +18254,7 @@ unsorted:
   - lxqt-powermanagement-lang 
   - lxqt-qt5plugin 
   - lxqt-qtplugin 
+  - lxqt-river-session 
   - lxqt-runner 
   - lxqt-runner-lang 
   - lxqt-session 
@@ -18256,6 +18262,7 @@ unsorted:
   - lxqt-session-lang 
   - lxqt-sudo 
   - lxqt-sudo-lang 
+  - lxqt-sway-session 
   - lxqt-theme-openSUSE-default 
   - lxqt-theme-openSUSE-leaper 
   - lxqt-theme-openSUSE-light 
@@ -18263,6 +18270,7 @@ unsorted:
   - lxqt-wallet 
   - lxqt-wallet-devel 
   - lxqt-wallet-lang 
+  - lxqt-wayfire-session 
   - lxqt-wayland-session 
   - lxqt2-build-tools-devel 
   - lxrandr 
@@ -35537,6 +35545,7 @@ unsorted:
   - python313-addict 
   - python313-aeidon 
   - python313-aenum 
+  - python313-aexpect 
   - python313-affine 
   - python313-agate 
   - python313-agate-dbf 
@@ -37346,6 +37355,8 @@ unsorted:
   - python313-myst-parser 
   - python313-nagiosplugin 
   - python313-named 
+  - python313-napalm 
+  - python313-napalm-asa 
   - python313-natsort 
   - python313-nautilus 
   - python313-nautilus-devel 
@@ -51599,6 +51610,7 @@ unsorted:
   - typst-zsh-completion 
   - u-boot-tools 
   - u3-tool 
+  - uChmViewer 
   - uacme 
   - uasm 
   - ubi_reader 
@@ -52196,6 +52208,8 @@ unsorted:
   - waybar-branding-openSUSE 
   - waybar-branding-upstream 
   - waycheck 
+  - wayfire 
+  - wayfire-devel 
   - wayland-devel 
   - wayland-devel-32bit 
   - wayland-protocols-devel 
@@ -52273,6 +52287,7 @@ unsorted:
   - wezterm-fish-completion 
   - wezterm-mux-server 
   - wezterm-zsh-completion 
+  - wf-config-devel 
   - wf-recorder 
   - wg-info 
   - wget2 
