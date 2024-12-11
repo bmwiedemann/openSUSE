@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec 11 15:47:00 UTC 2024 - Vlastimil Babka <vbabka@suse.com>
+
+- update to version 2.5
+  * Support GNR processors (jsc#PED-10182, jsc#PED-10575)
+  * Support SRF processors (jsc#PED-10588)
+- remove numatop-fix-missing-fields.patch: upstream
+- remove numatop-power11.patch: upstream
+
+-------------------------------------------------------------------
 Tue Oct 15 13:34:50 UTC 2024 - Vlastimil Babka <vbabka@suse.com>
 
 - numatop-fix-missing-fields.patch: Fix building with recent gcc

@@ -17,7 +17,7 @@
 
 
 Name:           numatop
-Version:        2.4
+Version:        2.5
 Release:        0
 Summary:        A top-like tool for runtime memory locality monitoring on NUMA systems
 License:        BSD-3-Clause
@@ -32,10 +32,6 @@ BuildRequires:  libtool
 BuildRequires:  ncurses-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  x86_64 ppc64le
-# PATCH-FIX-UPSTREAM numatop-fix-missing-fields.patch
-Patch0:         numatop-fix-missing-fields.patch
-# PATCH-FEATURE-SLE numatop-power11.patch jsc#PED-9887 jsc#PED-10899
-Patch1:         numatop-power11.patch
 
 %description
 NumaTOP is an observation tool for runtime memory locality characterization
