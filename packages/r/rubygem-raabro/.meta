@@ -1,0 +1,8 @@
+<package name="rubygem-raabro" project="openSUSE:Factory">
+  <title>a very dumb PEG parser library</title>
+  <description>A very dumb PEG parser library, with a horrible interface.
+
+</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-raabro"/>
+  <url>http://github.com/floraison/raabro</url>
+</package>
