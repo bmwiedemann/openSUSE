@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Dec  9 22:17:56 UTC 2024 - Lubos Kocman <Lubos.Kocman+factory@suse.de>
+
+- Disable Leap flavor building on Leap Micro 6.1+
+  which newly contains sle_version 
+
+-------------------------------------------------------------------
+Mon Dec  9 20:02:29 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Make new symlink and zypper addservice in postrans
+  * To ensure that addition of service and symlink creation
+    is executed only after the postun of old package.
+    Otherwise we end up with no service and no repoindex symlink.
+  * This supports migration from LeapMicro to MicroOS 
+  * Fixes gh#openSUSE/opensuse-migration-tool#17
+
+-------------------------------------------------------------------
 Fri Jul 12 20:59:33 UTC 2024 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20240712.dd8c2eb:

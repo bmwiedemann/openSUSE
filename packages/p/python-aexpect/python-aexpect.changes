@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 10 04:16:23 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch drop-use-of-pipes.patch:
+  * Use shlex, not pipes module.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Fri Oct 20 20:30:01 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Update to 1.7.0

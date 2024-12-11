@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-aexpect
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,12 +24,16 @@ Summary:        Python library to control interactive applications
 License:        GPL-2.0-only
 URL:            http://avocado-framework.readthedocs.org/
 Source:         https://github.com/avocado-framework/aexpect/archive/%{version}.tar.gz#/%{pkgname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Based on gh#avocado-framework/aexpect#128
+Patch0:         drop-use-of-pipes.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -42,10 +46,10 @@ sftp, telnet, among others.
 %autosetup -p1 -n %{pkgname}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/aexpect_helper
 %fdupes %{buildroot}
 
@@ -64,6 +68,6 @@ export PATH=$PATH:%{buildroot}%{_bindir}
 %doc README.rst
 %python_alternative %{_bindir}/aexpect_helper
 %{python_sitelib}/aexpect
-%{python_sitelib}/aexpect-%{version}*-info
+%{python_sitelib}/aexpect-%{version}.dist-info
 
 %changelog

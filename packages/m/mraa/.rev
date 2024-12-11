@@ -192,4 +192,12 @@
 - Resolve building on Tumbleweed</comment>
     <requestid>1229268</requestid>
   </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>90f07bcbe8b7301afe3dee6d39ba1a25</srcmd5>
+    <version>2.2.0</version>
+    <time>1733870944</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1229763</requestid>
+  </revision>
 </revisionlist>

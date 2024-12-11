@@ -23,7 +23,7 @@
 %endif
 
 Name:           python-autobahn
-Version:        23.6.2
+Version:        24.4.2
 Release:        0
 Summary:        WebSocket and WAMP in Python for Twisted and asyncio
 License:        MIT
@@ -31,15 +31,16 @@ URL:            https://github.com/crossbario/autobahn-python
 Source:         https://files.pythonhosted.org/packages/source/a/autobahn/autobahn-%{version}.tar.gz
 Patch0:         respect-cflags.patch
 Patch1:         intrin-arch.patch
-# PATCH-FIX-UPSTREAM fix-wamp-tests.patch gh#crossbario/autobahn-python#1634
-Patch2:         fix-wamp-tests.patch
+# PATCH-FIX-UPSTREAM gh#crossbario/autobahn-python#1647
+Patch2:         support-new-pytest-asyncio.patch
 BuildRequires:  %{python_module PyNaCl >= 1.4.0}
-BuildRequires:  %{python_module Twisted >= 20.3.0}
+BuildRequires:  %{python_module Twisted >= 24.3.0}
 BuildRequires:  %{python_module argon2-cffi >= 20.1.0}
 BuildRequires:  %{python_module attrs >= 20.3.0}
 BuildRequires:  %{python_module cbor2 >= 5.2.0}
 BuildRequires:  %{python_module cffi >= 1.14.5}
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module cryptography >= 3.4.6}
+BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module flatbuffers >= 22.12.6}
 BuildRequires:  %{python_module hyperlink >= 21.0.0}
 BuildRequires:  %{python_module msgpack >= 1.0.2}
@@ -51,6 +52,7 @@ BuildRequires:  %{python_module pytest >= 2.8.6}
 BuildRequires:  %{python_module pytest-aiohttp}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytrie >= 0.4.0}
+BuildRequires:  %{python_module qrcode >= 7.3.1}
 BuildRequires:  %{python_module service_identity >= 18.1.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module txaio >= 21.2.1}
@@ -61,11 +63,12 @@ BuildRequires:  %{python_module zope.interface >= 5.2.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyNaCl >= 1.4.0
-Requires:       python-Twisted >= 20.3.0
+Requires:       python-Twisted >= 24.3.0
 Requires:       python-argon2-cffi >= 20.1.0
 Requires:       python-attrs >= 20.3.0
 Requires:       python-cbor2 >= 5.2.0
 Requires:       python-cffi >= 1.14.5
+Requires:       python-cryptography >= 3.4.6
 Requires:       python-flatbuffers >= 22.12.6
 Requires:       python-hyperlink >= 21.0.0
 Requires:       python-msgpack >= 1.0.2
@@ -73,7 +76,9 @@ Requires:       python-passlib >= 1.7.4
 Requires:       python-py-ubjson >= 0.16.1
 Requires:       python-pyOpenSSL >= 20.0.1
 Requires:       python-pytrie >= 0.4.0
+Requires:       python-qrcode >= 7.3.1
 Requires:       python-service_identity >= 18.1.0
+Requires:       python-setuptools
 Requires:       python-txaio >= 21.2.1
 Requires:       python-ujson >= 4.0.2
 Requires:       python-wsaccel >= 0.6.3

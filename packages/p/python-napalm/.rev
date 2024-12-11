@@ -175,4 +175,40 @@
 - Stop using greedy globs in %files.</comment>
     <requestid>1109156</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>84ac1f15ff05cfe22b43ae5119700232</srcmd5>
+    <version>5.0.0</version>
+    <time>1733870626</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.0.0:
+  * New features
+    + Add format optional variable to core drivers to support get_config()
+      options
+    + [Junos] Add huge_tree as an optional_arg in junos to fix xml huge
+      tree node
+    + [Validate] Add tolerance percentage
+  * Improvements and bug fixes
+    + [NX-OS] Update nxos.py to expose file transfer errors
+    + [Validate] Use isinstance(list) instead of types comparison
+    + [Junos] Do not try to parse a &quot;none&quot; value and convert it to &quot;&quot; for
+      get_ipv6_neighbors_table
+    + [JUNOS] Fix call to lxml.etree.ElementBase.getparent erroneously
+      using get_parent
+    + [NX-OS SSH, IOS] IPv6 Regex update
+    + [IOS] Make get_vlans name whitespace aware
+    + [NX-OS] Fix get_bgp_neighbor when neighbor is admin shut
+    + [JUNOS] get_bgp_config() - ValueError: Can't convert with callable None
+    + [IOS] get_bgp_neighbors same IP different VRF
+    + [NX-OS] Handle non standard output for PSU's in get_environment
+    + [IOS-XR] Use LastStateTransitionTime to populate last_flapped for
+      get_interfaces() in IOS-XR
+    + [Junos] Fix Can't convert with callable None
+- Refreshed python-napalm-no-mock.patch
+- Removed patches, included upstream: 
+  * napalm-gh-pr1796-xmlgetparent.patch
+  * remove-future-requirement.patch
+- Add patch support-python-313.patch:
+  * Use vendored telnetlib provided by netmiko</comment>
+    <requestid>1229703</requestid>
+  </revision>
 </revisionlist>

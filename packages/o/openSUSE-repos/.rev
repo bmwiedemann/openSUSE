@@ -199,4 +199,20 @@
   * Update opensuse-leap16-repoindex.xml to use distribution (#71)</comment>
     <requestid>1187246</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>5aef832ba50399e799e9fa0c04741ba1</srcmd5>
+    <version>20240712.dd8c2eb</version>
+    <time>1733870614</time>
+    <user>anag+factory</user>
+    <comment>- Disable Leap flavor building on Leap Micro 6.1+
+  which newly contains sle_version 
+
+- Make new symlink and zypper addservice in postrans
+  * To ensure that addition of service and symlink creation
+    is executed only after the postun of old package.
+    Otherwise we end up with no service and no repoindex symlink.
+  * This supports migration from LeapMicro to MicroOS 
+  * Fixes gh#openSUSE/opensuse-migration-tool#17</comment>
+    <requestid>1229496</requestid>
+  </revision>
 </revisionlist>

@@ -1096,4 +1096,13 @@ mostly-working synapse than nothing at all) and the package has been update to
 - Update to 1.120.2 (boo#1234110)</comment>
     <requestid>1228089</requestid>
   </revision>
+  <revision rev="117" vrev="2">
+    <srcmd5>cc885a21e928faa6d412ac2097dab776</srcmd5>
+    <version>1.120.2</version>
+    <time>1733870620</time>
+    <user>anag+factory</user>
+    <comment>- BuildIgnore cargo and rust as they both obsolete the version we
+  currently need</comment>
+    <requestid>1229593</requestid>
+  </revision>
 </revisionlist>

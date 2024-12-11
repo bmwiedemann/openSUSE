@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec  9 20:58:52 UTC 2024 - SUSE Update Bot <bci-internal@suse.de>
+
+- switch to multibuild and add a version check at build time to avoid releasing incorrectly tagged containers
+
+-------------------------------------------------------------------
 Wed Oct 30 15:34:45 UTC 2024 - SUSE Update Bot <bci-internal@suse.de>
 
 - remove nonsensical org.opencontainers.image.authors - duplication of .vendor

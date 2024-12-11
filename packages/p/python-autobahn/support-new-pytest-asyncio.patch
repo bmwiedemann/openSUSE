@@ -1,0 +1,78 @@
+From b8d88d02fe9458a084cf6c4a4ce4672b3cd7c4aa Mon Sep 17 00:00:00 2001
+From: David Hotham <david.hotham@blueyonder.co.uk>
+Date: Sat, 3 Aug 2024 22:01:10 +0100
+Subject: [PATCH] fix some deprecations in tests
+
+---
+ autobahn/asyncio/test/test_aio_websocket.py   |  7 +++----
+ autobahn/wamp/test/test_wamp_component_aio.py | 12 ++++++------
+ 2 files changed, 9 insertions(+), 10 deletions(-)
+
+diff --git a/autobahn/asyncio/test/test_aio_websocket.py b/autobahn/asyncio/test/test_aio_websocket.py
+index f80cc2499..afcbfcf9e 100644
+--- a/autobahn/asyncio/test/test_aio_websocket.py
++++ b/autobahn/asyncio/test/test_aio_websocket.py
+@@ -21,7 +21,6 @@ async def test_echo_async():
+     assert 'Hello!' == await echo_async('Hello!', 0)
+ 
+ 
+-# @pytest.mark.asyncio(forbid_global_loop=True)
+ @pytest.mark.skipif(not os.environ.get('USE_ASYNCIO', False), reason='test runs on asyncio only')
+ def test_websocket_custom_loop(event_loop):
+     factory = WebSocketServerFactory(loop=event_loop)
+@@ -31,8 +30,7 @@ def test_websocket_custom_loop(event_loop):
+ 
+ 
+ @pytest.mark.skipif(not os.environ.get('USE_ASYNCIO', False), reason='test runs on asyncio only')
+-@pytest.mark.asyncio
+-async def test_async_on_connect_server(event_loop):
++def test_async_on_connect_server(event_loop):
+ 
+     num = 42
+     done = txaio.create_future()
+@@ -65,7 +63,8 @@ async def on_connect(req):
+         b'\r\n',  # last string doesn't get a \r\n from join()
+     ])
+     server.processHandshake()
+-    await done
++
++    event_loop.run_until_complete(done)
+ 
+     assert len(values) == 1
+     assert values[0] == num * num
+diff --git a/autobahn/wamp/test/test_wamp_component_aio.py b/autobahn/wamp/test/test_wamp_component_aio.py
+index 2de9bf358..2393fd7c6 100644
+--- a/autobahn/wamp/test/test_wamp_component_aio.py
++++ b/autobahn/wamp/test/test_wamp_component_aio.py
+@@ -34,8 +34,7 @@
+     from autobahn.asyncio.component import Component
+ 
+     @pytest.mark.skipif(sys.version_info < (3, 5), reason="requires Python 3.5+")
+-    @pytest.mark.asyncio(forbid_global_loop=True)
+-    async def test_asyncio_component(event_loop):
++    def test_asyncio_component(event_loop):
+         orig_loop = txaio.config.loop
+         txaio.config.loop = event_loop
+ 
+@@ -72,11 +71,11 @@ def done(f):
+             txaio.config.loop = orig_loop
+             assert comp._done_f is None
+         f.add_done_callback(done)
+-        await finished
++
++        event_loop.run_until_complete(finished)
+ 
+     @pytest.mark.skipif(sys.version_info < (3, 5), reason="requires Python 3.5+")
+-    @pytest.mark.asyncio(forbid_global_loop=True)
+-    async def test_asyncio_component_404(event_loop):
++    def test_asyncio_component_404(event_loop):
+         """
+         If something connects but then gets aborted, it should still try
+         to re-connect (in real cases this could be e.g. wrong path,
+@@ -151,4 +150,5 @@ def done(f):
+                 finished.set_result(None)
+                 txaio.config.loop = orig_loop
+             f.add_done_callback(done)
+-            await finished
++
++            event_loop.run_until_complete(finished)

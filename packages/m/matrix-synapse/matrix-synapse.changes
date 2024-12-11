@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec  9 23:07:09 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- BuildIgnore cargo and rust as they both obsolete the version we
+  currently need
+
+-------------------------------------------------------------------
 Tue Dec  3 17:13:57 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.120.2 (boo#1234110)

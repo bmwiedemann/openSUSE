@@ -244,4 +244,12 @@
     <comment></comment>
     <requestid>1203904</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>18af3d908e046f88ce776f210725978e</srcmd5>
+    <version>0.2.0+llvm19.1.0</version>
+    <time>1733870585</time>
+    <user>anag+factory</user>
+    <comment>- use clang19-devel, llvm19-devel for sle15-sp7</comment>
+    <requestid>1229390</requestid>
+  </revision>
 </revisionlist>

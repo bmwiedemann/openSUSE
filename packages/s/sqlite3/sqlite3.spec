@@ -17,12 +17,12 @@
 
 
 %define oname sqlite
-%define tarversion 3470100
-%define docversion 3470100
+%define tarversion 3470200
+%define docversion 3470200
 %bcond_with icu
 %bcond_without check
 Name:           sqlite3
-Version:        3.47.1
+Version:        3.47.2
 Release:        0
 Summary:        Embeddable SQL Database Engine
 License:        SUSE-Public-Domain
@@ -175,7 +175,8 @@ export CFLAGS="%{optflags} \
   --enable-fts4 \
   --enable-fts5 \
   --enable-update-limit \
-  --enable-rtree
+  --enable-rtree \
+  --enable-session
 %make_build sqlite3.c
 %make_build
 

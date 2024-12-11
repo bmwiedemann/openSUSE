@@ -399,4 +399,41 @@ devel:languages:go/telegraf r7 (forwarded request 758639 from jfkw)</comment>
   * chore(deps): Bump github.com/golang-jwt/jwt/v4 from 4.5.0 to 4.5.1 (#16136) (forwarded request 1224958 from jfkw)</comment>
     <requestid>1224959</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>8d279a6d7f56237632a5de43cfc3508d</srcmd5>
+    <version>1.33.0</version>
+    <time>1733870617</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.33.0:
+  * Telegraf v1.33.0
+  * Update changelog for v1.33.0
+  * chore(inputs.prometheus): Improve label and field selector logging (#16228)
+  * fix(logging): Fix deplicated prefix+attrMsg in log message when redirectLogger is used (#16274)
+  * fix(outputs.quix): Replace deprecated serializer type
+  * feat(outputs.quix): Add plugin (#16144)
+  * chore: Update go to v1.23.4 (#16265)
+  * feat(outputs.influxdb_v2): Add rate limit implementation (#15742)
+  * feat(outputs): Add rate-limiting infrastructure (#16258)
+  * feat(logging): Allow overriding message key for structured logging (#16242)
+  * chore(parsers.avro): Add unit-test for enum (#16260)
+  * chore: Fix linter findings for `revive:exported` in `plugins/inputs/o*` (#16224)
+  * chore(serializers)!: Remove old-style creation (#15971)
+  * chore(deps): Bump golangci-lint from v1.62.0 to v1.62.2 (#16250)
+  * chore(deps): Bump cloud.google.com/go/storage from 1.43.0 to 1.47.0 (#16235)
+  * fix(logging): Clean up extra empty spaces when redirectLogger is used (#16255)
+  * feat(outputs): Implement partial write errors (#16146)
+  * feat(inputs.vsphere): Add cpu temperature field (#16109)
+  * docs: Fix PostgreSQL example DSN (#16229)
+  * fix(inputs.procstat): Handle running processes correctly across multiple filters (#16257)
+  * feat(inputs.smart): Add Power on Hours and Cycle Count (#16230)
+  * chore: Fix function names in comments (#16231)
+  * fix(inputs.netflow): Decode flags in TCP and IP headers correctly (#16248)
+  * docs(serializers.json): Fix typo (#16245)
+  * chore(actions): Only check PR title for semantic commit message (#16253)
+  * chore(deps): Bump github.com/aws/aws-sdk-go-v2/service/kinesis from 1.29.3 to 1.32.6 (#16234)
+  * chore(deps): Bump google.golang.org/grpc from 1.67.1 to 1.68.0 (#16233)
+  * chore(deps): Bump cloud.google.com/go/bigquery from 1.63.1 to 1.64.0 (#16232)
+  * chore(deps): Bump golang.org/x/net from 0.30.0 to 0.31.0 (#16236) (forwarded request 1229491 from jfkw)</comment>
+    <requestid>1229492</requestid>
+  </revision>
 </revisionlist>

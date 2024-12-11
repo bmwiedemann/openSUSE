@@ -1,7 +1,7 @@
 #
 # spec file for package python-napalm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,17 @@
 
 
 Name:           python-napalm
-Version:        4.1.0
+Version:        5.0.0
 Release:        0
 Summary:        Network Automation and Programmability Abstraction Layer
 License:        Apache-2.0
 URL:            https://github.com/napalm-automation/napalm
 Source:         https://github.com/napalm-automation/napalm/archive/%{version}.tar.gz#/napalm-%{version}.tar.gz
-# https://github.com/napalm-automation/napalm/issues/1594
+# PATCH-FIX-UPSTREAM Based on gh#napalm-automation/napalm#2155
 Patch0:         python-napalm-no-mock.patch
-# https://github.com/napalm-automation/napalm/pull/1796
-Patch1:         napalm-gh-pr1796-xmlgetparent.patch
-# https://github.com/napalm-automation/napalm/pull/2002
-Patch2:         remove-future-requirement.patch
+# PATCH-FIX-UPSTREAM gh#napalm-automation/napalm#2137
+Patch1:         support-python-313.patch
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -41,7 +40,7 @@ Requires:       python-junos-eznc >= 2.6.3
 Requires:       python-lxml >= 4.3.0
 Requires:       python-ncclient
 Requires:       python-netaddr
-Requires:       python-netmiko >= 4.0.0
+Requires:       python-netmiko >= 4.4.0
 Requires:       python-netutils >= 1.0.0
 Requires:       python-paramiko >= 2.6.0
 Requires:       python-pyeapi >= 0.8.2
@@ -53,7 +52,7 @@ Requires:       python-ttp
 Requires:       python-ttp-templates
 Requires:       python-typing_extensions
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Jinja2}
@@ -64,7 +63,7 @@ BuildRequires:  %{python_module junos-eznc >= 2.6.3}
 BuildRequires:  %{python_module lxml >= 4.3.0}
 BuildRequires:  %{python_module ncclient}
 BuildRequires:  %{python_module netaddr}
-BuildRequires:  %{python_module netmiko >= 4.0.0}
+BuildRequires:  %{python_module netmiko >= 4.4.0}
 BuildRequires:  %{python_module netutils >= 1.0.0}
 BuildRequires:  %{python_module paramiko >= 2.6.0}
 BuildRequires:  %{python_module pyeapi >= 0.8.2}

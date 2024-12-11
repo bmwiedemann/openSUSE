@@ -1,7 +1,7 @@
 #
 # spec file for package python-jedi
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jedi
-Version:        0.19.1
+Version:        0.19.2
 Release:        0
 Summary:        An autocompletion tool for Python
 License:        MIT AND Python-2.0
 URL:            https://github.com/davidhalter/jedi
 Source0:        https://files.pythonhosted.org/packages/source/j/jedi/jedi-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
-# PATCH-FIX-UPSTREAM - Add support for Python 3.13	
-# https://github.com/davidhalter/jedi/pull/2008
-# https://github.com/davidhalter/jedi/pull/2003
-Patch0:         python3.13-support.patch
 # The author of jedi and parso takes pinning very seriously, adhere to it!
 BuildRequires:  %{python_module parso >= 0.8.4 with %python-parso < 0.9}
 BuildRequires:  %{python_module pip}
@@ -39,7 +35,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # See pinning note above
-Requires:       (python-parso >= 0.8.3 with python-parso < 0.9)
+Requires:       (python-parso >= 0.8.4 with python-parso < 0.9)
 BuildArch:      noarch
 %python_subpackages
 

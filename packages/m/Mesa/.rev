@@ -6052,4 +6052,22 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   --&gt; https://docs.mesa3d.org/relnotes/24.3.1</comment>
     <requestid>1228413</requestid>
   </revision>
+  <revision rev="525" vrev="397">
+    <srcmd5>add642b76dfe4012fa7692b3ea27a5f0</srcmd5>
+    <version>unknown</version>
+    <time>1733870592</time>
+    <user>anag+factory</user>
+    <comment>- aarch64: disable build of etnaviv driver on sle15-sp7 due to
+  python3-pycparser &gt;= 2.20 not available
+
+- don't apply patches of previous changelog for s390x; Mesa 24.1.7
+  doesn't suffer from this issue, only Mesa 24.3.1 ... 
+
+- 0001-dri-don-t-fetch-X11-modifiers-if-we-don-t-support-th.patch
+  0002-egl-wayland-only-supply-LINEAR-modifier-when-support.patch
+  0003-egl-wayland-fallback-to-implicit-modifiers-if-advert.patch
+  * fixes mesa 24.3.1 gallium crash/segfault on GPUs without
+    format modifiers (mesa issue#12253, mesa MR#32535, boo#1234302)</comment>
+    <requestid>1229753</requestid>
+  </revision>
 </revisionlist>

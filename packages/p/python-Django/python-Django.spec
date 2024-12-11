@@ -21,7 +21,7 @@
 %bcond_with memcached
 %{?sle15_python_module_pythons}
 Name:           python-Django
-Version:        5.1.2
+Version:        5.1.4
 Release:        0
 Summary:        A high-level Python Web framework
 License:        BSD-3-Clause

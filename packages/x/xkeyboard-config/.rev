@@ -1000,4 +1000,13 @@ Everything below symbols/sun_vndr/ is CDDL-1.0 licensed (forwarded request 13624
     files (boo#1227420)</comment>
     <requestid>1219707</requestid>
   </revision>
+  <revision rev="107" vrev="3">
+    <srcmd5>65da3a9ca2abc5cc8cc5ede6871e7ae1</srcmd5>
+    <version>2.42</version>
+    <time>1733870587</time>
+    <user>anag+factory</user>
+    <comment>- python-3.11.patch/buildrequire python311-base
+  * fixes build on Leap 15.6 and sle15-sp7</comment>
+    <requestid>1229400</requestid>
+  </revision>
 </revisionlist>

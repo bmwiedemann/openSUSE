@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec  9 15:23:50 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add necessary BuildRequires for hpc flavours to allow use of
+  %requires_eq.
+
+-------------------------------------------------------------------
 Thu Jul 25 19:18:20 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix missing libyaml requirement of -devel package boo#1228280

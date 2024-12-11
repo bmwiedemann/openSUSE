@@ -23,7 +23,7 @@
 # Directory where we install documentation
 %global glue_docdir %{_defaultdocdir}/%{name}
 Name:           cluster-glue
-Version:        1.0.12+v1.git.1663933145.1619d044
+Version:        1.0.13+v1.git.1711478146.5cc622b4
 Release:        0
 Summary:        Reusable cluster components
 License:        GPL-2.0-only AND LGPL-2.1-or-later

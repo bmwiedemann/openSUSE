@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec 10 08:49:44 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.168:
+  * Meshery CLI
+    - Meshsync apis and extension enhancements @aabidsofi19
+      (#12807)
+    - mesheryctl: add filter for not publishing to meshery
+      relationship @jerensl (#12826)
+- update to 0.7.167:
+  * no CLI-related changes in this release
+
+-------------------------------------------------------------------
 Fri Nov 29 13:41:36 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.7.166:

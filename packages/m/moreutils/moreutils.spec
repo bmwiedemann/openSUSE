@@ -17,7 +17,7 @@
 
 
 Name:           moreutils
-Version:        0.68
+Version:        0.70
 Release:        0
 Summary:        Additional Unix Utilities
 # sponge — GPL2

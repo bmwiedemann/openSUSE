@@ -181,7 +181,16 @@ BuildRequires:  %{use_python}-pip
 BuildRequires:  %{use_python}-poetry-core >= 1.1.0
 BuildRequires:  %{use_python}-setuptools
 BuildRequires:  %{use_python}-wheel
-BuildRequires:  cargo
+# workaround for:
+# zypper in cargo1.79 cargo cargo-packaging
+# Problem: 1: the to be installed cargo-1.81.0-150500.27.21.1.x86_64 obsoletes 'cargo1.79' provided by the to be installed cargo1.79-1.79.0-150500.11.3.1.x86_64
+#   Solution 1: do not install cargo1.79-1.79.0-150500.11.3.1.x86_64
+#   Solution 2: do not install cargo-1.81.0-150500.27.21.1.x86_64
+#
+#!BuildIgnore: cargo
+#!BuildIgnore: rust
+%global rust_version 1.82
+BuildRequires:  cargo%{rust_version}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  systemd-rpm-macros

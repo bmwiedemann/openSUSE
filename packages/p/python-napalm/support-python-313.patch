@@ -1,0 +1,117 @@
+From eca5aaecbd05305dda4b28ae4fbbcf40332aa909 Mon Sep 17 00:00:00 2001
+From: Kirk Byers <ktbyers@twb-tech.com>
+Date: Fri, 2 Aug 2024 10:53:18 -0700
+Subject: [PATCH 1/9] Add support for PY3.13; use vendored version of telnetlib
+
+---
+ .github/workflows/commit.yaml | 2 +-
+ napalm/ios/ios.py             | 2 +-
+ requirements.txt              | 2 +-
+ setup.py                      | 1 +
+ 4 files changed, 4 insertions(+), 3 deletions(-)
+
+Index: napalm-5.0.0/.github/workflows/commit.yaml
+===================================================================
+--- napalm-5.0.0.orig/.github/workflows/commit.yaml
++++ napalm-5.0.0/.github/workflows/commit.yaml
+@@ -10,7 +10,7 @@ jobs:
+     strategy:
+       max-parallel: 4
+       matrix:
+-        python-version: [3.8, 3.9, 3.10.9, 3.11, 3.12.0]
++        python-version: ["3.9", "3.10.9", "3.11", "3.12", "3.13"]
+ 
+     steps:
+       - name: Checkout repository
+Index: napalm-5.0.0/napalm/ios/ios.py
+===================================================================
+--- napalm-5.0.0.orig/napalm/ios/ios.py
++++ napalm-5.0.0/napalm/ios/ios.py
+@@ -19,7 +19,7 @@ import ipaddress
+ import os
+ import re
+ import socket
+-import telnetlib
++from netmiko._telnetlib import telnetlib
+ import tempfile
+ import uuid
+ from collections import defaultdict
+Index: napalm-5.0.0/requirements.txt
+===================================================================
+--- napalm-5.0.0.orig/requirements.txt
++++ napalm-5.0.0/requirements.txt
+@@ -7,7 +7,7 @@ jinja2
+ netaddr
+ pyYAML
+ pyeapi>=1.0.2
+-netmiko>=4.1.0
++netmiko>=4.4.0
+ junos-eznc>=2.7.0
+ scp
+ lxml>=4.3.0
+Index: napalm-5.0.0/setup.py
+===================================================================
+--- napalm-5.0.0.orig/setup.py
++++ napalm-5.0.0/setup.py
+@@ -19,19 +19,17 @@ setup(
+     author="David Barroso, Kirk Byers, Mircea Ulinic",
+     author_email="dbarrosop@dravetech.com, ping@mirceaulinic.net, ktbyers@twb-tech.com",
+     description="Network Automation and Programmability Abstraction Layer with Multivendor support",
+-    license="Apache 2.0",
++    license="Apache-2.0",
+     long_description=long_description,
+     long_description_content_type="text/markdown",
+     classifiers=[
+         "Topic :: Utilities",
+-        "License :: OSI Approved :: Apache Software License",
+-        "Programming Language :: Python",
+-        "Programming Language :: Python :: 3",
+-        "Programming Language :: Python :: 3.8",
++        "License :: OSI Approved :: Apache Software License 2.0 (Apache-2.0)",
+         "Programming Language :: Python :: 3.9",
+         "Programming Language :: Python :: 3.10",
+         "Programming Language :: Python :: 3.11",
+         "Programming Language :: Python :: 3.12",
++        "Programming Language :: Python :: 3.13",
+         "Operating System :: POSIX :: Linux",
+         "Operating System :: MacOS",
+     ],
+Index: napalm-5.0.0/README.md
+===================================================================
+--- napalm-5.0.0.orig/README.md
++++ napalm-5.0.0/README.md
+@@ -31,15 +31,15 @@ Install
+ pip install napalm
+ ```
+ 
++*Note*: Beginning with release 5.1.0 and later, NAPALM offers support for
++Python 3.9+ only.
++
+ *Note*: Beginning with release 5.0.0 and later, NAPALM offers support for
+ Python 3.8+ only.
+ 
+ *Note*: Beginning with release 4.0.0 and later, NAPALM offers support for
+ Python 3.7+ only.
+ 
+-*Note*: Beginning with release 3.0.0 and later, NAPALM offers support for
+-Python 3.6+ only.
+-
+ 
+ Upgrading
+ =========
+Index: napalm-5.0.0/requirements-coveralls.txt
+===================================================================
+--- /dev/null
++++ napalm-5.0.0/requirements-coveralls.txt
+@@ -0,0 +1 @@
++coveralls==4.0.1
+Index: napalm-5.0.0/requirements-dev.txt
+===================================================================
+--- napalm-5.0.0.orig/requirements-dev.txt
++++ napalm-5.0.0/requirements-dev.txt
+@@ -1,5 +1,4 @@
+ black==24.3.0
+-coveralls==3.3.1
+ ddt==1.7.2
+ flake8-import-order==0.18.2
+ pytest==7.3.1

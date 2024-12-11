@@ -79,4 +79,14 @@
 - drop 0001-Remove-six-dependency.patch (forwarded request 1119278 from mimi_vx)</comment>
     <requestid>1119279</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>2df5420115a8951975b737a3d824d109</srcmd5>
+    <version>1.7.0</version>
+    <time>1733870627</time>
+    <user>anag+factory</user>
+    <comment>- Add patch drop-use-of-pipes.patch:
+  * Use shlex, not pipes module.
+- Switch to pyproject macros.</comment>
+    <requestid>1229652</requestid>
+  </revision>
 </revisionlist>

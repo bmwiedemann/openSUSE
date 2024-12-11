@@ -27,11 +27,18 @@ Source:         https://xorg.freedesktop.org/archive/individual/data/%{name}/%{n
 # PATCH-FIX-OPENSUSE disable-2xalt_2xctrl-toggle.diff fdo#4927 -- This is just a workaround until fdo#4927 is fixed
 Patch109:       n_disable-2xalt_2xctrl-toggle.diff
 Patch110:       n_fi-kotoistus-metainfo.patch
+%if 0%{?suse_version} < 1550
+Patch0:         python-3.11.patch
+%endif
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
+%if 0%{?suse_version} < 1550
+BuildRequires:  python311-base
+%else
 BuildRequires:  python3-base
+%endif
 BuildRequires:  xsltproc
 BuildRequires:  perl(XML::Parser)
 BuildRequires:  pkgconfig(xorg-macros) >= 1.12

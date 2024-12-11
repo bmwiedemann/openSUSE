@@ -1,0 +1,55 @@
+From 4e315cdd7c9072fd33ac1df3d208a0990b8231c3 Mon Sep 17 00:00:00 2001
+From: Olly Betts <olly@survex.com>
+Date: Sun, 27 Oct 2024 10:02:11 +1300
+Subject: [PATCH] Fix precedence of casts
+
+Casts should have the same high precedence as unary plus and minus, but
+actually had a lower precedence than anything else.
+
+This could lead to the wrong type being deduced in obscure cases, but
+also prevented SWIG deducing a type for expressions such as (0)*1+2
+which SWIG parses as a cast and then fixes up afterwards.
+
+A bug fixed in 4.3.0 made this latter problem manifest more often
+(previously type deduction happened to work for (0)*1+2 due to an
+internal field not getting cleared properly).
+
+Fixes #3058
+
+Index: swig-4.3.0/Examples/test-suite/cpp11_auto_variable.i
+===================================================================
+--- swig-4.3.0.orig/Examples/test-suite/cpp11_auto_variable.i
++++ swig-4.3.0/Examples/test-suite/cpp11_auto_variable.i
+@@ -62,3 +62,11 @@ static auto wstring_lit_len2 = sizeof("1
+ //static auto constexpr greeting = "Hello";
+ 
+ %}
++
++%inline %{
++/* Regression test for #3058 */
++auto CAST_HAD_WRONG_PRECEDENCE1 = (0)*1+2;
++auto CAST_HAD_WRONG_PRECEDENCE2 = (0)&1|2;
++auto CAST_HAD_WRONG_PRECEDENCE3 = (0)-1|2;
++auto CAST_HAD_WRONG_PRECEDENCE4 = (0)+1|2;
++%}
+Index: swig-4.3.0/Source/CParse/parser.y
+===================================================================
+--- swig-4.3.0.orig/Source/CParse/parser.y
++++ swig-4.3.0/Source/CParse/parser.y
+@@ -1793,7 +1793,6 @@ static String *add_qualifier_to_declarat
+ %token <str> DOXYGENSTRING
+ %token <str> DOXYGENPOSTSTRING
+ 
+-%precedence CAST
+ %left  QUESTIONMARK
+ %left  LOR
+ %left  LAND
+@@ -1809,7 +1808,7 @@ static String *add_qualifier_to_declarat
+ %left  LSHIFT RSHIFT
+ %left  PLUS MINUS
+ %left  STAR SLASH MODULO
+-%precedence UMINUS NOT LNOT
++%precedence UMINUS NOT LNOT CAST
+ %token DCOLON
+ 
+ %type <node>     program interface declaration swig_directive ;

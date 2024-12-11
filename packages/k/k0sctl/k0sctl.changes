@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Dec 09 09:42:59 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.20.0:
+  * Use the URL from join token to validate connectivity (#799)
+  * Bump golang.org/x/text from 0.20.0 to 0.21.0 (#805)
+  * Add zsh completion tip to README (#804)
+  * Remove system pods running check (#802)
+  * Fix installFlags change detection for --enable-worker flag
+    (#803)
+  * Bump github.com/stretchr/testify from 1.9.0 to 1.10.0 (#800)
+  * Bump k8s.io/client-go from 0.31.2 to 0.31.3 (#797)
+  * Go forces the patch version into go.mod
+  * Do not require a specific go patch version for module use
+  * Use go1.23.3 (#796)
+  * Allow setting kubeconfig username (#793)
+  * Do not wait for scheduling events after reinstall (#794)
+  * Bump github.com/go-playground/validator/v10 from 10.22.1 to
+    10.23.0 (#795)
+
+-------------------------------------------------------------------
 Tue Nov 12 13:04:18 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.19.4:

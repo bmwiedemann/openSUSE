@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Dec 09 08:24:47 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 1.5.2+20241209.5946119:
+- spec: try finding and using libaio.so.x library name (gh#ClusterLabs/sbd#157)
+- tests: ability to specify a libaio name (gh#ClusterLabs/sbd#157)
+
+-------------------------------------------------------------------
+Mon Dec 02 09:43:34 UTC 2024 - Yan Gao <ygao@suse.com>
+
+- Update to version 1.5.2+20241126.6cc9ac9:
+- sbd-inquisitor: avoid parsing SBD_DELAY_START as a time duration if its value is boolean false (gh#ClusterLabs/sbd#156)
+- test: load libaio.so instead of libaio.so.1
+- move time difference / timeout calculation to single place
+- use int for timeouts & latency instead of wild mix and casts
+
+-------------------------------------------------------------------
 Tue Jun 20 04:16:55 UTC 2023 - Yan Gao <ygao@suse.com>
 
 - Update to version 1.5.2+20230316.5ec38cf:

@@ -261,8 +261,8 @@ ln -sf %{_libdir}/opencryptoki/libopencryptoki.so %{_prefix}/lib/pkcs11/PKCS11_A
   # configuration directory
 %dir %{_sysconfdir}/opencryptoki
 %config %{_sysconfdir}/opencryptoki/opencryptoki.conf
-%config %{_sysconfdir}/opencryptoki/strength.conf
-%config %{_sysconfdir}/opencryptoki/p11sak_defined_attrs.conf
+%attr(0640,root,%{pkcs_group}) %config %{_sysconfdir}/opencryptoki/strength.conf
+%attr(0640,root,%{pkcs_group}) %config %{_sysconfdir}/opencryptoki/p11sak_defined_attrs.conf
 %ifarch s390 s390x
 %config %{_sysconfdir}/opencryptoki/ep11cpfilter.conf
 %config %{_sysconfdir}/opencryptoki/ep11tok.conf

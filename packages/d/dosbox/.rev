@@ -392,4 +392,14 @@
   * https://www.dosbox-staging.org/releases/release-notes/0.81.2</comment>
     <requestid>1188901</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>b26d429e5636cdcf393a7fc117cfbfc3</srcmd5>
+    <version>0.82.0</version>
+    <time>1733870631</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 0.82.0
+  * Changed files dosbox-staging-config.patch and dosbox-staging-name.patch.
+  * https://www.dosbox-staging.org/releases/release-notes/0.82.0</comment>
+    <requestid>1229657</requestid>
+  </revision>
 </revisionlist>

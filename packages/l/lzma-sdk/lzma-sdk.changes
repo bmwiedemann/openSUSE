@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec  2 23:46:55 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 24.09
+  * The default dictionary size values for LZMA/LZMA2 compression
+    methods -mx7, -mx8, -mx9 were increased on 64-bit platforms.
+
+-------------------------------------------------------------------
 Thu May 16 17:46:29 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 24.05

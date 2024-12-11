@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Dec  8 10:22:43 UTC 2024 - Michael Chang <mchang@suse.com>
+
+- Update PowerPC SBAT patches to upstream (bsc#1233730)
+  * 0007-grub-mkimage-Create-new-ELF-note-for-SBAT.patch
+  * 0008-grub-mkimage-Add-SBAT-metadata-into-ELF-note-for-Pow.patch
+- Replaced patches
+  * 0007-mkimage-create-new-ELF-Note-for-SBAT.patch
+  * 0008-mkimage-adding-sbat-data-into-sbat-ELF-Note-on-power.patch
+
+-------------------------------------------------------------------
+Fri Dec  6 16:40:54 UTC 2024 - Michael Chang <mchang@suse.com>
+
+- Fix missing requires in SLE package (bsc#1234264) (bsc#1234272)
+
+-------------------------------------------------------------------
 Tue Dec  3 07:18:32 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update the TPM2 patches to the upstream final version

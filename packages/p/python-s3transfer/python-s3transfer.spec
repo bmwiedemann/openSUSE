@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-s3transfer
-Version:        0.10.3
+Version:        0.10.4
 Release:        0
 Summary:        Python S3 transfer manager
 License:        Apache-2.0

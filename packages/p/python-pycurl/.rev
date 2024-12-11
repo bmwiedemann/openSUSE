@@ -487,4 +487,13 @@
 </comment>
     <requestid>1205723</requestid>
   </revision>
+  <revision rev="49" vrev="4">
+    <srcmd5>6512d7859b8a2856e4137370fa50c616</srcmd5>
+    <version>7.45.3</version>
+    <time>1733870583</time>
+    <user>anag+factory</user>
+    <comment>- Switch to %pyproject_*.
+</comment>
+    <requestid>1229355</requestid>
+  </revision>
 </revisionlist>

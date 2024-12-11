@@ -17,7 +17,7 @@
 
 
 Name:           wasm-bindgen
-Version:        0.2.97~0
+Version:        0.2.99~0
 Release:        0
 Summary:        Facilitating high-level interactions between Wasm modules and JavaScript
 License:        Apache-2.0 OR MIT

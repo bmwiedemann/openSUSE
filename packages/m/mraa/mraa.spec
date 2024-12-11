@@ -25,6 +25,9 @@ License:        MIT
 URL:            https://github.com/eclipse/mraa
 Source:         https://github.com/eclipse/mraa/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         mraa-i686.patch
+%if 0%{?suse_version} > 1500
+BuildRequires:  strip-nondeterminism
+%endif
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gtest
@@ -156,6 +159,9 @@ This package contains examples for %{name}.
 %cmake_install
 install -d %{buildroot}%{_javadir}
 mv %{buildroot}%{_prefix}/lib/java/mraa.jar %{buildroot}%{_javadir}/%{name}.jar
+%if 0%?have_strip_nondeterminism > 0
+strip-nondeterminism %{buildroot}%{_javadir}/%{name}.jar
+%endif
 
 %check
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}%{_libdir}

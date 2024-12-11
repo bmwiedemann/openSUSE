@@ -1,7 +1,7 @@
 #
 # spec file for package molecule
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,7 @@
 
 %bcond_without test
 Name:           molecule
-Version:        24.9.0
+Version:        24.12.0
 Release:        0
 Summary:        Aids in the development and testing of Ansible roles
 License:        MIT

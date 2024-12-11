@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec 10 09:15:29 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1733821168.aff71c7:
+  * Add logging and error handling
+  * video_stream: add support for ustreamer >= 6.10
+  * video_stream: add support for RGB3 format
+  * video_stream: typo fix
+  * video_stream: adjust raw sink name for ustreamer >= 6.5
+  * Fix: console reset on milestone loading
+
+-------------------------------------------------------------------
 Fri Dec 06 22:46:16 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1733508209.cfb5ba6:

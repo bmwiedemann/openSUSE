@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Dec  9 16:20:23 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.90
+  * Fixed: The Nibbles game broke in v1.89 (snake food was no
+    longer visible)
+
+-------------------------------------------------------------------
+Sun Dec  8 07:07:57 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.89
+  * Fixed a possible crash on macOS (and possibly Linux) when
+    loading a module whose filename includes special non-ASCII
+    characters.
+  * Added a "Default audio device" option when selecting
+    input/output audio devices in the config screen. This option
+    has a few edge-case bugs, though.
+  * Added an experimental Impulse Tracker module loader. This
+    should only be used to extract patterns/instruments/samples,
+    as there are severe conversion errors when this format is
+    converted to XM under load. WARNING: This loader has not
+    been thoroughly tested, and may cause a crash!
+  * Fixed a bug with the tracker scopes where the sample would
+    sometimes not be isplayed correctly during a sample/note
+    trigger.
+  * Replaced the Gaussian (SNES) interpolator with a 6-point
+    cubic Hermite option. The Gaussian interpolator was very niche
+    anyway, and as it sounded quite filtered, I think the vast
+    majority of users wouldn't see a use for it.
+  * Added a few missing Norwegian/Danish alphabet letters to the
+    main font (code page is now 850 instead of 437).
+  * Show extra digits (when space for them) in the C-4 Hz string
+    in the instrument editor screen.
+  * Again, slightly improved the interpolation method for the
+    tracker scopes in "Lined" mode (when using the cubic/sinc
+    interpolators)
+  * Slightly increased the contrast for the sample editor's loop
+    pin lines.
+
+-------------------------------------------------------------------
 Thu Nov  7 16:30:26 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.88

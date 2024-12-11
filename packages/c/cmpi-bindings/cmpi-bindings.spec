@@ -1,7 +1,7 @@
 #
 # spec file for package cmpi-bindings
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@
 URL:            http://github.com/kkaempf/cmpi-bindings
 
 Name:           cmpi-bindings
-Version:        1.0.4
+Version:        1.0.5
 Release:        0
 Summary:        Adapter to write and run CMPI-type CIM providers
 License:        BSD-3-Clause AND CPL-1.0

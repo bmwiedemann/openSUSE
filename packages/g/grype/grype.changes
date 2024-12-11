@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Dec 10 08:54:29 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.86.0:
+  * chore(deps): update anchore dependencies (#2308)
+  * chore(deps): update tools to latest versions (#2307)
+  * chore(deps): update tools to latest versions (#2305)
+  * chore(deps): bump actions/cache from 4.1.2 to 4.2.0 (#2306)
+  * add initial os aliases to the DB after migration (#2301)
+  * latest doc from reader should allow for empty (#2294)
+  * Migrate searchable vulnerability data out of v6 blob (#2300)
+  * fix: add PURLs in SARIF report (#2254)
+  * ignore linux-aws-headers-.* as well like linux-headers-.*
+    (#2295)
+  * chore(deps): bump github/codeql-action from 3.27.5 to 3.27.6
+    (#2296)
+  * chore(deps): update tools to latest versions (#2298)
+  * chore: refactor v5-specific code out of core packages (#2299)
+  * modify store to be one getter-per-noun (#2297)
+  * Add ability to map CPEs directly to packages (v6 schema)
+    (#2285)
+  * Fix DB v6 curator directory creation (#2293)
+  * test: update quality gate db to latest version (#2291)
+  * chore(deps): update tools to latest versions (#2290)
+  * add db v6 feature flag and wire to db commands (#2288)
+  * Simplify v6 distribution material (#2277)
+  * chore(deps): bump anchore/sbom-action from 0.17.7 to 0.17.8
+    (#2279)
+  * chore(deps): bump github.com/stretchr/testify from 1.9.0 to
+    1.10.0 (#2284)
+  * chore(deps): update tools to latest versions (#2280)
+  * chore(deps): bump github.com/charmbracelet/bubbletea from 1.2.3
+    to 1.2.4 (#2283)
+  * note supported grype versions (#2287)
+  * remove support for v1 & v2 schemas (#2278)
+  * allow distro search to be entirely data driven (#2265)
+
+-------------------------------------------------------------------
 Fri Nov 22 09:34:28 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.85.0:

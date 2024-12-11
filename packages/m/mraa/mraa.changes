@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 10 05:35:12 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Normalize jar mtimes with strip-nondeterminism (boo#1134568)
+
+-------------------------------------------------------------------
 Mon Dec  9 10:03:41 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Small package cleanup

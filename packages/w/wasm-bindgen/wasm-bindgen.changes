@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Dec 08 09:04:35 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.2.99~0:
+  * Prepare v0.2.99 release (#4331)
+
+-------------------------------------------------------------------
+Sun Dec 08 08:25:14 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.2.98~0:
+  * Prepare v0.2.98 release (#4330)
+  * Remove dead code (#4300)
+  * Add support for number slices of type `MaybeUninit<T>` (#4316)
+  * Re-establish feature resolver version 1 compatibility (#4327)
+  * Add `WASM_BINDGEN_TEST_DRIVER_TIMEOUT` (#4320)
+  * Move `walrus/parallel` to `wasm-bindgen-cli-support` (#4321)
+  * Improved contributing docs in `web-sys` README (#4302)
+  * Support `undefined` static imports with `Option` (#4319)
+  * Remove `critical-section` requirement for `no_std` with atomics
+    (#4322)
+  * Remove leftover macro (#4326)
+  * Add support for multi-threading in Node.js (#4318)
+  * Fix macro-hygiene for calls to `std::thread_local!` (#4315)
+  * Add clear error message to communicate new feature resolver
+    version requirements (#4312)
+
+-------------------------------------------------------------------
 Sat Nov 30 08:43:01 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.2.97~0:

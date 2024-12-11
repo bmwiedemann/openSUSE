@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package petsc
 #
 # Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
@@ -274,9 +274,9 @@ Patch2:         Allow-lib64-as-library-directory-for-scalapack.patch
 URL:            https://www.mcs.anl.gov/petsc/
 BuildRequires:  fdupes
 BuildRequires:  hwloc-devel
-BuildRequires:  pkgconfig(yaml-0.1)
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
+BuildRequires:  pkgconfig(yaml-0.1)
 
 %if %{without hpc}
 BuildRequires:  Modules
@@ -308,8 +308,11 @@ BuildRequires:  metis-devel
 BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
 BuildRequires:  %{mpi_family}%{?mpi_vers}-%{compiler_family}%{?c_f_ver}-hpc-macros-devel
 BuildRequires:  hdf5%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-%{mpi_family}%{?mpi_vers}-hpc-devel
+BuildRequires:  libhdf5%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-%{mpi_family}%{?mpi_vers}-hpc
+BuildRequires:  libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc
 BuildRequires:  libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc-devel
 BuildRequires:  libopenblas-%{compiler_family}-hpc >=  %{openblas_vers}
+BuildRequires:  libscalapack2%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-%{mpi_family}%{?mpi_vers}-hpc
 BuildRequires:  libscalapack2%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-%{mpi_family}%{?mpi_vers}-hpc-devel
 BuildRequires:  lua-lmod
 BuildRequires:  suse-hpc

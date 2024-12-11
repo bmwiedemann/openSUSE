@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 10 08:46:26 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.11.2:
+  * Fail whole prebackup if command exit != 0
+  * pin the mariadb prebackuppod image to a working one
+  * chore: Address linter issues
+
+-------------------------------------------------------------------
 Tue Sep 10 07:25:08 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package k8up-cli: CLI for the K8up Kubernetes and OpenShift

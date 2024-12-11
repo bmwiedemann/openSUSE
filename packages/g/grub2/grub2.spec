@@ -408,14 +408,42 @@ Patch226:       0003-appendedsig-The-creation-of-trusted-and-distrusted-l.patch
 Patch227:       0004-appendedsig-While-verifying-the-kernel-use-trusted-a.patch
 Patch228:       0005-appendedsig-The-grub-command-s-trusted-and-distruste.patch
 Patch229:       0006-appendedsig-documentation.patch
-Patch230:       0007-mkimage-create-new-ELF-Note-for-SBAT.patch
-Patch231:       0008-mkimage-adding-sbat-data-into-sbat-ELF-Note-on-power.patch
+Patch230:       0007-grub-mkimage-Create-new-ELF-note-for-SBAT.patch
+Patch231:       0008-grub-mkimage-Add-SBAT-metadata-into-ELF-note-for-Pow.patch
 Patch232:       0001-ieee1275-support-added-for-multiple-nvme-bootpaths.patch
 Patch233:       0001-kern-ieee1275-init-Add-IEEE-1275-Radix-support-for-K.patch
 Patch234:       0001-cli_lock-Add-build-option-to-block-command-line-inte.patch
 Patch235:       0002-Requiring-authentication-after-tpm-unlock-for-CLI-ac.patch
 Patch236:       0001-kern-main-Fix-cmdpath-in-root-directory.patch
 Patch237:       grub2-s390x-secure-execution-support.patch
+
+%if 0%{?suse_version} <= 1600
+Requires:       gettext-runtime
+%if 0%{?suse_version} >= 1140
+%ifnarch s390x
+Recommends:     os-prober
+%endif
+# xorriso not available using grub2-mkrescue (bnc#812681)
+# downgrade to suggest as minimal system can't afford pulling in tcl/tk and half of the x11 stack (bsc#1102515)
+Suggests:       libburnia-tools
+Suggests:       mtools
+%endif
+%ifarch s390x
+# required utilities by grub2-s390x-04-grub2-install.patch
+# use 'showconsole' to determine console device. (bnc#876743)
+Requires:       kexec-tools
+Requires:       (/sbin/showconsole or /usr/sbin/showconsole)
+# for /sbin/zipl used by grub2-zipl-setup
+Requires:       s390-tools
+%endif
+%ifarch ppc64 ppc64le
+Requires:       powerpc-utils
+%endif
+%ifarch %{ix86}
+# meanwhile, memtest is available as EFI executable
+Recommends:     memtest86+
+%endif
+%endif
 
 %if 0%{?suse_version} > 1600
 # Always requires a default cpu-platform package
@@ -442,9 +470,7 @@ computer architectures and hardware devices.
 %package common
 Summary:        Utilies to manage grub
 Group:          System/Boot
-%endif
 Requires:       gettext-runtime
-%if 0%{?suse_version} >= 1140
 %ifnarch s390x
 Recommends:     os-prober
 %endif
@@ -452,7 +478,6 @@ Recommends:     os-prober
 # downgrade to suggest as minimal system can't afford pulling in tcl/tk and half of the x11 stack (bsc#1102515)
 Suggests:       libburnia-tools
 Suggests:       mtools
-%endif
 %ifarch s390x
 # required utilities by grub2-s390x-04-grub2-install.patch
 # use 'showconsole' to determine console device. (bnc#876743)
@@ -469,7 +494,6 @@ Requires:       powerpc-utils
 Recommends:     memtest86+
 %endif
 
-%if 0%{?suse_version} > 1600
 %description common
 This package includes user space utlities to manage GRUB on your system.
 %endif

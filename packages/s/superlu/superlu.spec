@@ -110,6 +110,7 @@ BuildRequires:  gcc-fortran
 %else
 Requires:       %{compiler_family}%{?c_f_ver}-compilers-hpc
 BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
+BuildRequires:  libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc
 BuildRequires:  libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc-devel
 BuildRequires:  suse-hpc >= 0.5.20230501
 %endif

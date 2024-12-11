@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec 10 08:46:11 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 52.3.92:
+  * :bookmark: Bump the Helm chart version to 52.3.92
+  * change the tlx dissector name to tlsx (#1648)
+  * Added LDAP support (#1647)
+  * Default startup values change (#1646)
+  * fixed a bug where a new script can't be added if (#1645)
+  * Add permissions to watch namespaces (#1644)
+
+-------------------------------------------------------------------
 Mon Dec 02 10:01:40 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 52.3.91:

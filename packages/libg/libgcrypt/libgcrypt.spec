@@ -124,7 +124,6 @@ export CFLAGS="%{optflags} $(getconf LFS_CFLAGS)"
            --enable-kdfs="$KDFS" \
            --enable-noexecstack \
            --disable-static \
-           --enable-m-guard \
 %ifarch %{sparc}
            --disable-asm \
 %endif

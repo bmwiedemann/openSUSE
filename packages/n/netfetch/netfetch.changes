@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Wed Dec 04 06:12:47 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.5.4:
+  * docs: updated docs for --kubeconfig flag and updated score
+    section
+  * feat: format output for when kubeconfig is provided
+  * feat: add ability to use optional kubeconfig flag to all
+    optional commands
+  * chore: update index with helm repo index
+  * chore: update tgz
+  * chore: update helm chart versions
+  * chore: update homebrew formula for v0.5.3
+  * ci: replace github for create pull request and use github cli
+    directly
+  * ci: specify token and rearrange parameters
+  * ci: debug workflow
+  * ci: try force
+  * ci: remove fetch
+  * ci: remove debug and move pull
+  * ci: dont delete branch in workflow
+  * ci: branch does not exist yet
+  * ci: fetch changes
+  * ci: remove redundant steps
+  * ci: set base in create pr step
+  * ci: remove temp files befoer pulling
+  * ci: verify no changes
+  * ci: fetch latest changes from main if any
+  * ci: update create pull request job
+  * ci: adjust formula path
+  * ci: add debug step for shasums
+  * ci: add prefix
+  * ci: use temp dir to not include binaries in prs
+  * ci: specify to create branch and author details
+  * ci: adjust formula path in workflow
+  * ci: debug workflow extracting version
+  * ci: add workflow to update homebrew
+
+-------------------------------------------------------------------
+Wed Dec 04 06:09:49 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- use correct version number (the one for the CLI, not the helm
+  chart)
+- Update to version 0.5.3:
+  * ci: remove hooks, duplicate
+  * ci: update goreleaser and release workflow
+  * ci: refactor release process using goreleaser
+
+-------------------------------------------------------------------
 Sun Sep 15 05:07:31 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 5.2.10:

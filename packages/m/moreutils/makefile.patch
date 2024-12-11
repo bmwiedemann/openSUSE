@@ -1,6 +1,6 @@
---- a/Makefile
-+++ b/Makefile
-@@ -21,15 +21,15 @@
+--- moreutils-0.70/Makefile.orig	2024-12-09 19:02:37.000000000 +0100
++++ moreutils-0.70/Makefile	2024-12-09 23:00:31.043374101 +0100
+@@ -21,7 +21,7 @@ clean:
  
  isutf8: is_utf8/*.c is_utf8/*.h
  	$(MAKE) -C is_utf8/
@@ -8,6 +8,10 @@
 +	cp -p is_utf8/isutf8 .
  
  install:
+ 	@if [ $(MANS) = .noop ]; then \
+@@ -30,11 +30,11 @@ install:
+ 	fi
+ 
  	mkdir -p $(DESTDIR)$(PREFIX)/bin
 -	$(INSTALL_BIN) $(BINS) $(DESTDIR)$(PREFIX)/bin
 -	install $(PERLSCRIPTS) $(DESTDIR)$(PREFIX)/bin

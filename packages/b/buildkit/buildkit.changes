@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec 10 07:21:58 UTC 2024 - madhankumar.chellamuthu@suse.com
+
+- Update to version 0.18.1:
+  * integration: add extra timeout for GHA test
+  * integration: log goroutine trace on test timeout
+  * chore: fix some function name in comment
+  * buildkitd: allow unix address for debug address
+  * llbsolver: fix recompute test and avoid struct copy
+  * llbsolver: tie op metadata to the op before recomputing digests
+
+-------------------------------------------------------------------
 Tue Dec 03 09:04:16 UTC 2024 - madhankumar.chellamuthu@suse.com
 
 - Update to version 0.18.0:

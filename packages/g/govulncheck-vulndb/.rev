@@ -196,4 +196,36 @@
   * GO-2024-3283 CVE-2024-52309 (forwarded request 1225889 from jfkw)</comment>
     <requestid>1225890</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9dc6068d3ea9a354e975b2ce46d54539</srcmd5>
+    <version>0.0.20241209T183251</version>
+    <time>1733870605</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.0.20241209T183251 2024-12-09T18:32:51Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2024-3284 CVE-2024-37820 GHSA-9g6g-xqv5-8g5w
+  * GO-2024-3286 CVE-2024-10220 GHSA-27wf-5967-98gx
+  * GO-2024-3287 CVE-2024-45719 GHSA-mr95-vfcf-fx9p
+  * GO-2024-3288 GHSA-7f6p-phw2-8253
+  * GO-2024-3289 CVE-2024-6538 GHSA-v3w7-g6p2-mpx7
+  * GO-2024-3290 CVE-2024-52529 GHSA-xg58-75qf-9r67
+  * GO-2024-3291 CVE-2024-43784 GHSA-hh33-46q4-hwm2
+  * GO-2024-3292 CVE-2024-8676 GHSA-7p9f-6x8j-gxxp
+  * GO-2024-3294 CVE-2024-53264
+  * GO-2024-3296 CVE-2024-53858 GHSA-jwcm-9g39-pmcw
+  * GO-2024-3299 CVE-2024-52003 GHSA-h924-8g65-j9wg
+  * GO-2024-3300 CVE-2024-52801 GHSA-6943-qr24-82vx
+  * GO-2024-3302 CVE-2024-53259 GHSA-px8v-pp82-rcvr
+  * GO-2024-3303 CVE-2024-53862
+  * GO-2024-3304 CVE-2024-36621 GHSA-2mj3-vfvx-fc43
+  * GO-2024-3305 CVE-2024-36623 GHSA-gh5c-3h97-2f3q
+  * GO-2024-3307 CVE-2024-50948
+  * GO-2024-3308 CVE-2024-54131 GHSA-66q9-2rvx-qfj5
+  * GO-2024-3310 CVE-2024-54132 GHSA-2m9h-r57g-45pj
+  * GO-2024-3311 CVE-2024-36620 GHSA-q59j-vv4j-v33c
+  * GO-2024-3312 CVE-2024-6156
+  * GO-2024-3313 CVE-2024-6219 (forwarded request 1229475 from jfkw)</comment>
+    <requestid>1229476</requestid>
+  </revision>
 </revisionlist>

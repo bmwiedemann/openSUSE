@@ -40,4 +40,29 @@
   + Fix scrolling within close-tabs dialog (forwarded request 1225670 from iznogood)</comment>
     <requestid>1225811</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0f92e98ab26b6e0be1d535bbda471c50</srcmd5>
+    <version>47.6</version>
+    <time>1733870641</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 47.6:
+  + Many separate light/dark palettes have been merged so that they
+    may switch between light/dark like the core palettes.
+  + A new GSetting has been added to allow controlling
+    middle-mouse-click behavior.
+  + Use the minimum size request for the header bar to prevent
+    --title from creating larger than necessary windows.
+  + Fix brightness of GNOME palette on dark mode to match palette
+    index 7.
+  + Revert a workaround for reverse video cursor which caused some
+    fg/bg issues in some terminal applications.
+  + Ensure all palettes specify Cursor color which makes the
+    previous mitigation unnecessary.
+  + Allow the window to grow/shrink when dragging a tab out of the
+    tab bar.
+  + Send SIGHUP before SIGKILL upon forcing a tab to quit so that
+    shells like bash may save history.
+  + Mark mosh/mosh-client as &quot;remote&quot; processes. (forwarded request 1228588 from iznogood)</comment>
+    <requestid>1229722</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec  9 09:38:48 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch to %pyproject_*.
+
+-------------------------------------------------------------------
 Fri Oct  4 14:25:56 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Switching off test_multi_ tests, they are just too

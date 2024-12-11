@@ -2,6 +2,7 @@
 # spec file for package swig
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +39,7 @@ Group:          Development/Languages/C and C++
 URL:            https://www.swig.org/
 Source:         https://prdownloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 Source1:        %{name}.rpmlintrc
+Patch0:         swig-4.3.0-Fix-precedence-of-casts.patch
 BuildRequires:  fdupes
 BuildRequires:  pcre2-devel
 BuildRequires:  perl
@@ -69,6 +71,9 @@ BuildRequires:  ocaml >= 3.12.0
 BuildRequires:  ocaml-camlp4-devel
 BuildRequires:  ocaml-findlib
 %endif
+
+# for swig-4.3.0-Fix-precedence-of-casts.patch
+BuildRequires:  bison
 
 %description
 SWIG is a compiler that attempts to make it easy to integrate C, C++,

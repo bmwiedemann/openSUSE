@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Dec  6 06:04:58 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 24.12.0:
+  * Bugfixes
+    - Add support for py313 (#4322) @ssbarnea
+    - Add -h option to print help (#4316) @cfasnacht
+    - Refactor API to use standard types (#4240) @ssbarnea
+
+-------------------------------------------------------------------
 Sat Sep 14 15:55:14 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 24.9.0:

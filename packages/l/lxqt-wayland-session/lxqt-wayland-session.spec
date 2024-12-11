@@ -17,27 +17,27 @@
 
 
 Name:           lxqt-wayland-session
-Version:        0.1.0
+Version:        0.1.1
 Release:        0
 Summary:        Files needed for the LXQt Wayland Session
-License:        LGPL-2.1-or-later
+License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND MIT AND CC-BY-SA-4.0
 URL:            https://github.com/lxqt/lxqt-wayland-session
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 Patch1:         001-labwc-autostart-swaybg.patch
 BuildRequires:  cmake
-BuildRequires:  cmake(lxqt2-build-tools)
-BuildRequires:  cmake(KF6WindowSystem)
-BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(lxqt) >= 2.1.0
 BuildRequires:  xdg-user-dirs
+BuildRequires:  cmake(KF6WindowSystem)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(lxqt2-build-tools)
+BuildRequires:  pkgconfig(lxqt) >= 2.1.0
+Requires:       layer-shell-qt6 >= 6.2.0
+Requires:       lxqt-session >= 2.1.0
 Requires:       xdg-user-dirs
-#ecommends:     kwin6
-#uggests:       labwc
 BuildArch:      noarch
 
 %description
@@ -45,15 +45,73 @@ Files needed for the LXQt Wayland Session: Wayland session start script,
 its desktop entry for display managers and default configurations for
 actually supported compositors.
 
-%package -n     labwc-theme-vent
-Summary:        Vent openbox themes
-Requires:       labwc
+%package -n     lxqt-hyprland-session
+Summary:        Session files for LXQt-Hyprland
+License:        BSD-3-Clause
+Requires:       %{name} = %{version}
+Requires:       hyprland
+Supplements:    (%{name} and hyprland)
+
+%description -n lxqt-hyprland-session
+This package contains the files necessary to use Hyprland as the Wayland
+compositor with LXQt
+
+%package -n     lxqt-niri-session
+Summary:        Session files for LXQT-niri
+License:        GPL-3.0-or-later
+Requires:       %{name} = %{version}
+Requires:       niri
+Supplements:    (%{name} and niri)
+
+%description -n lxqt-niri-session
+This package contains the files necessary to use niri as the Wayland compositor
+for LXQt
+
+%package -n     lxqt-river-session
+Summary:        Session files for LXQt-river
+License:        GPL-3.0-or-later
+Requires:       %{name} = %{version}
+Requires:       river
+Supplements:    (%{name} and river)
+
+%description -n lxqt-river-session
+This package contains the files necessary to use river as the Wayland
+compositor with LXQt
+
+%package -n     lxqt-sway-session
+Summary:        Session files for LXQt-Sway
+License:        MIT
+Requires:       %{name} = %{version}
+Requires:       sway
+Supplements:    (%{name} and sway)
+
+%description -n lxqt-sway-session
+This package contains the files necessary to use Sway as the Wayland compositor
+with LXQt
+
+%package -n     lxqt-wayfire-session
+Summary:        Session files for LXQt-wayfire
+License:        MIT
+Requires:       %{name} = %{version}
+Requires:       wayfire
+Supplements:    (%{name} and wayfire)
+
+%description -n lxqt-wayfire-session
+This package contains the files necessary to use wayfire as the Wayland
+compositor with LXQt
+
+%package -n     lxqt-labwc-session
+Summary:        Session files and theme for labwc
+License:        CC-BY-SA-4.0 AND GPL-2.0-or-later
+Requires:       %{name} = %{version}
+Requires:       labwc >= 0.7.2
 Requires:       swaybg
 Requires:       swayidle
 Requires:       swaylock
 Supplements:    (%{name} and labwc)
+Conflicts:      labwc-theme-vent <= %{version}
 
-%description -n labwc-theme-vent
+%description -n lxqt-labwc-session
 This package contains the openbox themes and other files for labwc.
 
 %prep
@@ -61,30 +119,55 @@ This package contains the openbox themes and other files for labwc.
 
 %build
 %cmake
-%make_build
+%cmake_build
 
 %install
 %cmake_install
+
 %fdupes -s %{buildroot}%{_datadir}/themes/
+
+%check
+%ctest
 
 %files
 %doc README.md
-%{_bindir}/startlxqtwayland
+%license COPYING.LESSER LICENSE
 %dir %{_datadir}/lxqt
 %dir %{_datadir}/lxqt/wayland
-%{_datadir}/lxqt/wayland/lxqt-*
 %dir %{_datadir}/lxqt/wayland/firstrun
-%{_datadir}/lxqt/wayland/firstrun/autostart
 %dir %{_datadir}/wayland-sessions
+%{_bindir}/startlxqtwayland
+%{_datadir}/lxqt/wayland/firstrun/autostart
 %{_datadir}/wayland-sessions/lxqt-wayland.desktop
-%license COPYING.LESSER
 
-%files -n labwc-theme-vent
+%files -n lxqt-hyprland-session
+%license LICENSE.BSD
+%{_datadir}/lxqt/wayland/lxqt-hyprland.conf
+
+%files -n lxqt-niri-session
+%license COPYING
+%{_datadir}/lxqt/wayland/lxqt-niri.kdl
+
+%files -n lxqt-river-session
+%license COPYING
+%{_datadir}/lxqt/wayland/lxqt-river-init
+
+%files -n lxqt-sway-session
+%license LICENSE.MIT
+%{_datadir}/lxqt/wayland/lxqt-sway.config
+
+%files -n lxqt-wayfire-session
+%license LICENSE.MIT
+%{_datadir}/lxqt/wayland/lxqt-wayfire.ini
+
+%files -n lxqt-labwc-session
+%license LICENSE.GPLv2
+%dir %{_datadir}/lxqt/wallpapers
+%dir %{_datadir}/lxqt/wayland/labwc
+%dir %{_datadir}/lxqt/graphics
 %{_datadir}/themes/Vent/
 %{_datadir}/themes/Vent-dark/
-%dir %{_datadir}/lxqt/wallpapers
 %{_datadir}/lxqt/wallpapers/origami-dark-labwc.png
-%dir %{_datadir}/lxqt/wayland/labwc
 %{_datadir}/lxqt/wayland/labwc/README
 %{_datadir}/lxqt/wayland/labwc/autostart
 %{_datadir}/lxqt/wayland/labwc/environment
@@ -92,7 +175,6 @@ This package contains the openbox themes and other files for labwc.
 %{_datadir}/lxqt/wayland/labwc/rc.xml
 %{_datadir}/lxqt/wayland/labwc/themerc
 %{_datadir}/lxqt/wayland/labwc/themerc-override
-%dir %{_datadir}/lxqt/graphics
 %{_datadir}/lxqt/graphics/lxqt-labwc.png
 
 %changelog

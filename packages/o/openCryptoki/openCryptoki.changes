@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 10 07:08:59 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Amended the .spec file (jsc#PED-10291, jsc#PED-10290)
+  * Changed attributes - %attr(0640,root,%{pkcs_group}) - of files below:
+    - %{_sysconfdir}/opencryptoki/strength.conf
+    - %{_sysconfdir}/opencryptoki/p11sak_defined_attrs.conf
+
+-------------------------------------------------------------------
 Thu Nov 21 10:42:00 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Amended the .spec file (jsc#PED-10291, jsc#PED-10290)

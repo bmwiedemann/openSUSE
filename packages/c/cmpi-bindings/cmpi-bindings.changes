@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec  9 16:40:05 UTC 2024 - Klaus Kämpf <kkaempf@suse.de>
+
+- Update to 1.0.5
+  - Fix build error with gcc14 (leimaohui)
+  - Update Python initialization for Python 3.11 (kkaempf)
+
+-------------------------------------------------------------------
 Sun Feb 19 13:12:59 UTC 2023 - Klaus Kämpf <kkaempf@suse.com>
 
 - Update to 1.0.4

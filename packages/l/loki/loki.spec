@@ -21,7 +21,7 @@
 %global promtail_datadir /var/lib/promtail
 
 Name:           loki
-Version:        3.2.1
+Version:        3.3.1
 Release:        0
 Summary:        Loki: like Prometheus, but for logs
 License:        Apache-2.0
@@ -35,9 +35,9 @@ Source4:        sysconfig.promtail
 Source99:       series
 Patch0:         proper-data-directories.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  go >= 1.23
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-devel
-BuildRequires:  golang(API) = 1.21
 Requires:       logcli = %{version}
 Requires(pre):  group(loki)
 Requires(pre):  user(loki)
@@ -46,19 +46,19 @@ Requires:       user(loki)
 Requires(post): %fillup_prereq
 %systemd_ordering
 
-###%%{go_nostrip}
-
 %description
-Loki is a horizontally-scalable, highly-available, multi-tenant log aggregation system inspired by Prometheus.
+Loki is a horizontally-scalable, highly-available, multi-tenant log aggregation
+system inspired by Prometheus.
 
-This package contains the Loki server
+This package contains the Loki server.
 
 %package -n promtail
 Summary:        Promtail Client
 Group:          System/Monitoring
 
 %description -n promtail
-Loki is a horizontally-scalable, highly-available, multi-tenant log aggregation system inspired by Prometheus.
+Loki is a horizontally-scalable, highly-available, multi-tenant log aggregation
+system inspired by Prometheus.
 
 This package contains the Promtail client.
 
@@ -67,7 +67,8 @@ Summary:        LogCLI tool
 Group:          System/Monitoring
 
 %description -n logcli
-Loki is a horizontally-scalable, highly-available, multi-tenant log aggregation system inspired by Prometheus.
+Loki is a horizontally-scalable, highly-available, multi-tenant log aggregation
+system inspired by Prometheus.
 
 This package contains the LogCLI command-line tool.
 
@@ -76,7 +77,8 @@ Summary:        A command-line tool to manage Loki
 Group:          System/Monitoring
 
 %description -n lokitool
-Loki is a horizontally-scalable, highly-available, multi-tenant log aggregation system inspired by Prometheus.
+Loki is a horizontally-scalable, highly-available, multi-tenant log aggregation
+system inspired by Prometheus.
 
 This package contains the lokitool command-line tool.
 
@@ -88,7 +90,12 @@ This package contains the lokitool command-line tool.
 DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
 BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")
 
-export CGO_ENABLED=0
+%ifarch %{ix86} s390 s390x armv7l armv7hl armv7l:armv6l:armv5tel
+    export CGO_ENABLED=1
+%else
+    export CGO_ENABLED=0
+%endif
+
 export GOFLAGS="-mod=vendor -buildmode=pie -tags=netgo"
 export GOLDFLAGS="-X %{buildpkg}.Version=%{version} \
                   -X %{buildpkg}.Revision=v%{version} \

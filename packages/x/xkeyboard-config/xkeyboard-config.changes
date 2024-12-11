@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec  9 13:39:32 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- python-3.11.patch/buildrequire python311-base
+  * fixes build on Leap 15.6 and sle15-sp7
+
+-------------------------------------------------------------------
 Mon Oct 28 10:38:05 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - n_fi-kotoistus-metainfo.patch

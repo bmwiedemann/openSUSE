@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Dec 09 16:33:49 UTC 2024 - schubi@suse.com
+
+- Update to version 0.7.5:
+  * Removed PATH_MAX (Issue #220)
+  * Add ROOT_PREFIX as option to replace TESTSDIR hack
+  * CI: valgrind doesn't work together with sanitizers
+  * econf_readConfig: don't allocate econf_file in error case
+  * tests: use cleanup to free key_file for some tests
+  * libeconf: don't allocate array from size 0
+  * libeconf: fix use of uninitialized stat result if file does not exist
+  * econftool: dynamically allocate xdg_config_dir
+  * Disable clang <= 17, enable valgrind
+  * Disable whitespace check
+  * Disable deprecation warning for econftool and example
+  * Add new CI with different compilers and valgrind
+  * Test econf_readConfig()
+  * Disable deprecation warning for tests
+  * Implement econf_*freep functions for automatic cleanup
+  * Cleanup *free functions
+
+-------------------------------------------------------------------
 Wed Oct  2 07:09:19 UTC 2024 - Stefan Schubert <schubi@suse.com>
 
 - Updated license in the spec file to MIT.

@@ -1,8 +1,10 @@
-Index: pycurl-7.43.0/tests/runwsgi.py
-===================================================================
---- pycurl-7.43.0.orig/tests/runwsgi.py
-+++ pycurl-7.43.0/tests/runwsgi.py
-@@ -48,10 +48,10 @@ def start_bottle_server(app, port, serve
+---
+ tests/runwsgi.py |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/tests/runwsgi.py
++++ b/tests/runwsgi.py
+@@ -56,10 +56,10 @@ def start_bottle_server(app, port, serve
      server_thread.daemon = True
      server_thread.start()
  

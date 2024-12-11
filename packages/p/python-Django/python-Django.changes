@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Dec  9 09:13:02 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.1.4 (bsc#1234231, CVE-2024-53908, bsc#1234232, CVE-2024-53907)
+  * CVE-2024-53907: Potential denial-of-service in django.utils.html.strip_tags()
+  * CVE-2024-53908: Potential SQL injection in HasKey(lhs, rhs) on Oracle
+  * Fixed a crash in createsuperuser on Python 3.13+ caused by an unhandled OSError
+  * Fixed a regression in Django 5.1 where relational fields were not updated
+  * Fixed a bug in Django 5.1 where DomainNameValidator accepted any input value 
+    that contained a valid domain name, rather than only input values that were 
+    a valid domain name
+  * Fixed a regression in Django 5.1 that prevented the use of DB-IP databases with GeoIP2
+  * Fixed a regression in Django 5.1 where non-ASCII fieldset names were not displayed 
+    when rendering admin fieldsets
+
+-------------------------------------------------------------------
 Thu Oct 17 10:16:22 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.1.2

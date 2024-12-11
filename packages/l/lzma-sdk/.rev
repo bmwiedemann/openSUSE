@@ -234,4 +234,12 @@
     <comment>- Update to release 24.05</comment>
     <requestid>1174679</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>723860c2fc1bdf6f9c7403a91ea0a66a</srcmd5>
+    <version>24.09</version>
+    <time>1733870624</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1229598</requestid>
+  </revision>
 </revisionlist>

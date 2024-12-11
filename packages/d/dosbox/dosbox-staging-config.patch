@@ -1,60 +1,77 @@
-diff -Pdpru dosbox-staging-0.81.0.orig/src/gui/render.cpp dosbox-staging-0.81.0/src/gui/render.cpp
---- dosbox-staging-0.81.0.orig/src/gui/render.cpp	2024-02-11 07:55:05.000000000 +0300
-+++ dosbox-staging-0.81.0/src/gui/render.cpp	2024-02-16 05:29:25.250435682 +0300
-@@ -1155,7 +1155,7 @@ static void init_render_settings(Section
- 	        "    options instead.");
+diff -Pdpru dosbox-staging-0.82.0.orig/src/gui/render.cpp dosbox-staging-0.82.0/src/gui/render.cpp
+--- dosbox-staging-0.82.0.orig/src/gui/render.cpp	2024-10-23 10:37:53.000000000 +0300
++++ dosbox-staging-0.82.0/src/gui/render.cpp	2024-12-10 05:45:37.585036932 +0300
+@@ -1011,10 +1011,10 @@ static void init_render_settings(Section
+ 	int_prop->Set_help(
+ 	        "Consider capping frame rates using the 'host_rate' setting.");
  
- #if C_OPENGL
--	string_prop = secprop.Add_string("glshader", always, "crt-auto");
-+	string_prop = secprop.Add_string("glshader", always, "sharp");
- 	string_prop->Set_help(
+-	auto* string_prop = secprop.Add_string("glshader", always, "crt-auto");
++	auto* string_prop = secprop.Add_string("glshader", always, "sharp");
+ 	string_prop->SetOptionHelp(
  	        "Set an adaptive CRT monitor emulation shader or a regular GLSL shader in OpenGL\n"
- 	        "output modes. Adaptive CRT shader options:\n"
-diff -Pdpru dosbox-staging-0.81.0.orig/src/gui/sdlmain.cpp dosbox-staging-0.81.0/src/gui/sdlmain.cpp
---- dosbox-staging-0.81.0.orig/src/gui/sdlmain.cpp	2024-02-11 07:55:05.000000000 +0300
-+++ dosbox-staging-0.81.0/src/gui/sdlmain.cpp	2024-02-16 05:26:04.974174717 +0300
-@@ -4308,7 +4308,7 @@ static void config_add_sdl() {
- 	constexpr auto deprecated = Property::Changeable::Deprecated;
- 	constexpr auto on_start = Property::Changeable::OnlyAtStart;
+-	        "output modes ('crt-auto' by default). Adaptive CRT shader options:\n"
++	        "output modes ('sharp' by default). Adaptive CRT shader options:\n"
+ 	        "  crt-auto:               A CRT shader that prioritises developer intent and\n"
+ 	        "                          how people experienced the game at the time of\n"
+ 	        "                          release (default). The appropriate shader variant is\n"
+diff -Pdpru dosbox-staging-0.82.0.orig/src/gui/sdlmain.cpp dosbox-staging-0.82.0/src/gui/sdlmain.cpp
+--- dosbox-staging-0.82.0.orig/src/gui/sdlmain.cpp	2024-10-23 10:37:53.000000000 +0300
++++ dosbox-staging-0.82.0/src/gui/sdlmain.cpp	2024-12-10 05:53:13.278263053 +0300
+@@ -4392,9 +4392,9 @@ static void config_add_sdl()
+ 	        "Number of display to use; values depend on OS and user "
+ 	        "settings (0 by default).");
  
--	Pbool = sdl_sec->Add_bool("fullscreen", always, false);
-+	Pbool = sdl_sec->Add_bool("fullscreen", always, true);
- 	Pbool->Set_help("Start directly in fullscreen (disabled by default).\n"
- 	                "Run INTRO and see Special Keys for window control hotkeys.");
+-	auto pbool = sdl_sec->Add_bool("fullscreen", always, false);
++	auto pbool = sdl_sec->Add_bool("fullscreen", always, true);
+ 	pbool->Set_help(
+-	        "Start directly in fullscreen (disabled by default).\n"
++	        "Start directly in fullscreen (enabled by default).\n"
+ 	        "Run INTRO and see Special Keys for window control hotkeys.");
  
-diff -Pdpru dosbox-staging-0.81.0.orig/src/hardware/gus.cpp dosbox-staging-0.81.0/src/hardware/gus.cpp
---- dosbox-staging-0.81.0.orig/src/hardware/gus.cpp	2024-02-11 07:55:05.000000000 +0300
-+++ dosbox-staging-0.81.0/src/hardware/gus.cpp	2024-02-16 05:20:40.799436885 +0300
-@@ -1666,7 +1666,7 @@ void init_gus_dosbox_settings(Section_pr
+ 	pstring = sdl_sec->Add_string("fullresolution", always, "desktop");
+diff -Pdpru dosbox-staging-0.82.0.orig/src/hardware/gus.cpp dosbox-staging-0.82.0/src/hardware/gus.cpp
+--- dosbox-staging-0.82.0.orig/src/hardware/gus.cpp	2024-10-23 10:37:53.000000000 +0300
++++ dosbox-staging-0.82.0/src/hardware/gus.cpp	2024-12-10 05:54:32.568244400 +0300
+@@ -1532,10 +1532,10 @@ void init_gus_dosbox_settings(Section_pr
  {
  	constexpr auto when_idle = Property::Changeable::WhenIdle;
  
--	auto *bool_prop = secprop.Add_bool("gus", when_idle, false);
-+	auto *bool_prop = secprop.Add_bool("gus", when_idle, true);
+-	auto* bool_prop = secprop.Add_bool("gus", when_idle, false);
++	auto* bool_prop = secprop.Add_bool("gus", when_idle, true);
  	assert(bool_prop);
  	bool_prop->Set_help(
- 	        "Enable Gravis UltraSound emulation (disabled by default).\n"
-diff -Pdpru dosbox-staging-0.81.0.orig/src/midi/midi.cpp dosbox-staging-0.81.0/src/midi/midi.cpp
---- dosbox-staging-0.81.0.orig/src/midi/midi.cpp	2024-02-11 07:55:05.000000000 +0300
-+++ dosbox-staging-0.81.0/src/midi/midi.cpp	2024-02-16 05:23:10.121618722 +0300
-@@ -785,7 +785,7 @@ void init_midi_dosbox_settings(Section_p
- 	        "               synthesizer or physical device. This is the default behaviour.\n"
- 	        "  none:        Disable MIDI output.");
+-	        "Enable Gravis UltraSound emulation (disabled by default).\n"
++	        "Enable Gravis UltraSound emulation (enabled by default).\n"
+ 	        "The default settings of base address 240, IRQ 5, and DMA 3 have been chosen so\n"
+ 	        "the GUS can coexist with a Sound Blaster card. This works fine for the majority\n"
+ 	        "of programs, but some games and demos expect the GUS factory defaults of base\n"
+diff -Pdpru dosbox-staging-0.82.0.orig/src/midi/midi.cpp dosbox-staging-0.82.0/src/midi/midi.cpp
+--- dosbox-staging-0.82.0.orig/src/midi/midi.cpp	2024-10-23 10:37:53.000000000 +0300
++++ dosbox-staging-0.82.0/src/midi/midi.cpp	2024-12-10 05:56:35.091548900 +0300
+@@ -779,9 +779,9 @@ void init_midi_dosbox_settings(Section_p
+ 		        "none"
+ 	});
  
 -	str_prop = secprop.Add_string("midiconfig", when_idle, "");
 +	str_prop = secprop.Add_string("midiconfig", when_idle, "128:0");
  	str_prop->Set_help(
- 	        "Configuration options for the selected MIDI interface (unset by default).\n"
+-	        "Configuration options for the selected MIDI interface (unset by default).\n"
++	        "Configuration options for the selected MIDI interface ('128:0' by default).\n"
  	        "This is usually the ID or name of the MIDI synthesizer you want\n"
-diff -Pdpru dosbox-staging-0.81.0.orig/src/midi/midi_fluidsynth.cpp dosbox-staging-0.81.0/src/midi/midi_fluidsynth.cpp
---- dosbox-staging-0.81.0.orig/src/midi/midi_fluidsynth.cpp	2024-02-11 07:55:05.000000000 +0300
-+++ dosbox-staging-0.81.0/src/midi/midi_fluidsynth.cpp	2024-02-16 05:24:16.459255114 +0300
-@@ -52,7 +52,7 @@ static void init_fluid_dosbox_settings(S
+ 	        "to use (find the ID/name with the DOS command 'MIXER /LISTMIDI').\n"
+ 	        "Notes:");
+diff -Pdpru dosbox-staging-0.82.0.orig/src/midi/midi_fluidsynth.cpp dosbox-staging-0.82.0/src/midi/midi_fluidsynth.cpp
+--- dosbox-staging-0.82.0.orig/src/midi/midi_fluidsynth.cpp	2024-10-23 10:37:53.000000000 +0300
++++ dosbox-staging-0.82.0/src/midi/midi_fluidsynth.cpp	2024-12-10 05:49:00.304989236 +0300
+@@ -52,9 +52,9 @@ static void init_fluid_dosbox_settings(S
  
  	// Name 'default.sf2' picks the default SoundFont if it's installed
  	// in the OS. Usually it's Fluid_R3.
 -	auto* str_prop = secprop.Add_string("soundfont", when_idle, "default.sf2");
-+	auto* str_prop = secprop.Add_string("soundfont", when_idle, "FluidR3_GM.sf2 25");
++	auto* str_prop = secprop.Add_string("soundfont", when_idle, "FluidR3_GM.sf2 20");
  	str_prop->Set_help(
- 	        "Path to a SoundFont file in .sf2 format ('default.sf2' by default).\n"
+-	        "Path to a SoundFont file in .sf2 format ('default.sf2' by default).\n"
++	        "Path to a SoundFont file in .sf2 format ('FluidR3_GM.sf2 20' by default).\n"
  	        "You can use an absolute or relative path, or the name of an .sf2 inside the\n"
+ 	        "'soundfonts' directory within your DOSBox configuration directory.\n"
+ 	        "An optional percentage value after the name will scale the SoundFont's volume.\n"

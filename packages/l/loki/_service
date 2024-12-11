@@ -1,22 +1,23 @@
 <services>
-  <service name="tar_scm" mode="manual">
+  <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/grafana/loki.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="filename">loki</param>
     <!-- use this pattern for snapshots
     <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param>
     -->
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">v3.2.1</param>
+    <param name="revision">v3.3.1</param>
     <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="submodules">disable</param>
     <param name="changesgenerate">enable</param>
   </service>
-  <service name="recompress" mode="manual">
+  <service name="set_version" mode="manual">
+  </service>
+  <service name="tar" mode="buildtime">
+  </service>
+  <service name="recompress" mode="buildtime">
     <param name="file">loki*.tar</param>
     <param name="compression">xz</param>
-  </service>
-  <service name="set_version" mode="manual">
-    <param name="basename">loki</param>
   </service>
 </services>

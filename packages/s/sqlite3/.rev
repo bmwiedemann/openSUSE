@@ -1742,4 +1742,18 @@ CVE-2020-13871 boo#1172646</comment>
   * Use a Bloom filter on subqueries on the right-hand side of the</comment>
     <requestid>1227134</requestid>
   </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>5b1092a63729138d4e8917b741461008</srcmd5>
+    <version>3.47.2</version>
+    <time>1733870589</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 3.47.2:
+  * Fix a problem in text-to-floating-point conversion that affects
+    text values where the first 16 significant digits are
+    '1844674407370955'. This issue was introduced in 3.47.0 and
+    only arises on x64 and i386 hardware.
+  * Other minor bug fixes.
+- Enable the session extension, because NodeJS 22 needs it.</comment>
+    <requestid>1229466</requestid>
+  </revision>
 </revisionlist>

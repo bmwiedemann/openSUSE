@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec 10 08:48:22 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.17.4:
+  * build(deps): bump golang.org/x/crypto from 0.29.0 to 0.30.0
+  * build(deps): bump github.com/chainguard-dev/clog
+  * build(deps): bump github.com/chainguard-dev/yam in the gomod
+    group
+  * melange/update block: provide config option to indicate that
+    automated pull requests should be merged in order rather than
+    superseding and closing previous unmerged PRs
+
+-------------------------------------------------------------------
 Sun Dec 08 09:04:12 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.17.3:

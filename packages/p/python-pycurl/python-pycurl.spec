@@ -28,11 +28,13 @@
 %{?sle15_python_module_pythons}
 Name:           python-pycurl%{psuffix}
 Version:        7.45.3
+%global upversion %{version}
 Release:        0
 Summary:        PycURL -- cURL library module
 License:        LGPL-2.1-or-later AND MIT
 URL:            http://pycurl.io/
 Source:         https://files.pythonhosted.org/packages/source/p/pycurl/pycurl-%{version}.tar.gz
+# Source:         pycurl-%%{version}.tar.gz
 # PATCH-FIX-OPENSUSE increase_test_timeout.diff -- Increase the timeout in a test so it doesn't fail when obs is overloaded
 Patch0:         increase_test_timeout.diff
 # PATCH-FIX-UPSTREAM handle difference between libssh and libssh2
@@ -44,7 +46,9 @@ Patch3:         make-leap15-compat.patch
 # PATCH-FIX-UPSTREAM test-bottle-flask.patch gh#pycurl/pycurl#838
 Patch4:         test-bottle-flask.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -86,11 +90,11 @@ rm -f tests/failonerror_test.py
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 export PYCURL_SSL_LIBRARY=openssl
-%python_build --with-openssl
+%pyproject_wheel
 
 %install
 export PYCURL_SSL_LIBRARY=openssl
-%python_install --with-openssl
+%pyproject_install
 
 rm -rf %{buildroot}%{_datadir}/doc # Remove wrongly installed junk
 
@@ -108,7 +112,7 @@ export PYCURL_SSL_LIBRARY=openssl
 # not the rest of the mess in the upstream runner
 pushd tests/fake-curl/libcurl
 rm -f *.so
-make %{?_smp_mflags}
+%make_build
 popd
 # exclude certain tests
 test_flags='online or occasionally_failing'
@@ -142,7 +146,7 @@ rm -rf %{buildroot}%{_prefix}/lib/debug %{buildroot}%{_libdir}/python*
 %doc AUTHORS ChangeLog README.rst
 %{python_sitearch}/curl
 %{python_sitearch}/pycurl*.so
-%{python_sitearch}/pycurl-%{version}*-info
+%{python_sitearch}/pycurl-%{upversion}*-info
 
 %if 0%{?suse_version} > 1500
 %files -n %{name}-doc

@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Tue Dec 10 09:10:53 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.13.2:
+  * release 1.13.2 (#11736)
+  * release 1.13.2-rc.1 (#11713)
+  * fix: properly verify precondition in old object validation
+    (#11644) (#11705)
+  * fix: add metrics-server Helm repo (#11717) (#11718)
+  * add allowExistingViolations option in policy chart (#11656)
+    (#11720)
+  * fix(readme): add changelog for
+    spec.validate[*].allowExistingViolations field in kyverno chart
+    (#11714) (#11719)
+  * feat: Show textual diff when generate test fails (#11674)
+    (#11704)
+  * fix: api call chainsaw tests (#11682) (#11696)
+  * fix: check the patchedResources in kyverno-test (#11686)
+    (#11695)
+  * Print generate output cli (#11634) (#11678)
+  * fix(chart): global image registry bug in 3.3.3 (#11604)
+    (#11672)
+  * chore: Add a new field in the test results CRD to specify
+    patched resources (#11297) (#11673)
+  * fix: add conversion function in Helm template (#11651) (#11666)
+  * fix(policy chart): fix the merging of policyExclude
+    customizations to avoid wrong overrides (#11653) (#11663)
+  * fix: Open the mutated resources file in append mode to allow
+    additions to it (#11619) (#11633)
+  * Context vars with labelselector (#11608) (#11631)
+  * fix: return nil error when trigger resource not found for a
+    subresouces (#11594) (#11627)
+  * fix(background-controller): reduce logging for URs (#11616)
+    (#11617)
+  * fix: use ephemeralreportsfor reports controller in helm
+    (#11600) (#11614)
+  * fix: use generate name for background scan reports (#11586)
+    (#11599)
+  * Add missing error check (#11587) (#11590)
+  * fix: update explicit webhook based on the policy type (#11580)
+    (#11581)
+  * fix: add a check for nil rule response (cherry-pick #11591)
+    (#11593)
+  * feat: Add Manifest Index to ImageRegistry context (#9883)
+    (#11585)
+  * Set the UserAgent in client-go based calls to kube-apiserver
+    (#11569) (#11571)
+
+-------------------------------------------------------------------
 Tue Nov 12 13:17:08 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.13.1:

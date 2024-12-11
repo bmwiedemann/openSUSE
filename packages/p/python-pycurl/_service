@@ -1,0 +1,15 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="versionprefix">7.45.3+git</param>
+    <param name="url">https://github.com/pycurl/pycurl.git</param>
+    <param name="scm">git</param>
+    <param name="revision">main</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="tar" mode="manual"/>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  <service name="set_version" mode="manual" />
+</services>

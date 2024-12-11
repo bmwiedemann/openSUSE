@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 02 11:07:13 UTC 2024 - varkoly@suse.com
+
+- Update to version 1.0.13+v1.git.1711478146.5cc622b4:
+  * build: disable fatal warnings
+  * stable release 1.0.13
+  * Support custom port in external/ipmi
+
+-------------------------------------------------------------------
 Fri Jan  5 13:41:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Provide user(%{uname}) and group(%{gname}): With RPM 4.19,

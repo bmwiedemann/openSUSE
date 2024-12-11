@@ -461,4 +461,12 @@ The SUSE licensed code (.mof files) are CPL-1.0, not EPL-1.0 (forwarded request 
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1067812</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>65bebb3082f3c74532572e9553c01f59</srcmd5>
+    <version>1.0.5</version>
+    <time>1733870942</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1229762</requestid>
+  </revision>
 </revisionlist>

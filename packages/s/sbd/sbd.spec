@@ -1,7 +1,7 @@
 #
 # spec file for package sbd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013 Lars Marowsky-Bree
 #
 # All modifications and additions to the file contributed by third parties
@@ -46,10 +46,18 @@
 # by setting below to an explicit 'yes' or 'no'.
 %global sync_resource_startup_sysconfig ""
 
+# Try finding and using libaio.so.x library name i.e. the one with the major
+# version number such as libaio.so.1
+%global libaio_name %(readlink -f %{_libdir}/libaio.so | xargs basename | cut -d "." -f 1-3)
+
+%if "%{libaio_name}" != "" && "%{libaio_name}" != "libaio.so"
+%global specify_libaio 1
+%endif
+
 Name:           sbd
-Version:        1.5.2+20230316.5ec38cf
+Version:        1.5.2+20241209.5946119
 Release:        0
-Summary:        Storage-based death
+Summary:        Shared-storage based death
 License:        GPL-2.0-or-later
 Group:          Productivity/Clustering/HA
 URL:            https://github.com/ClusterLabs/sbd
@@ -78,12 +86,17 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_requires}
 
 %description
-This package contains the storage-based death functionality.
+A highly reliable fencing or Shoot-the-other-node-in-the-head (STONITH)
+mechanism that works by utilizing shared storage.
 
 %package devel
 Summary:        Storage-based death environment for regression tests
 Group:          Productivity/Clustering/HA
 Requires:       %{name} = %{version}-%{release}
+%if ! 0%{?specify_libaio}
+# Requires libaio-devel for the generic symbolic link libaio.so
+Requires:       libaio-devel
+%endif
 
 %description devel
 This package provides an environment + testscripts for
@@ -94,6 +107,10 @@ regression-testing sbd.
 
 %build
 ./autogen.sh
+
+%if 0%{?specify_libaio}
+export CFLAGS="${CFLAGS} -DLIBAIO_NAME=%{libaio_name}"
+%endif
 
 %configure --with-watchdog-timeout-default=%{watchdog_timeout_default} \
            --with-sync-resource-startup-default=%{?with_sync_resource_startup_default:yes}%{!?with_sync_resource_startup_default:no}  \

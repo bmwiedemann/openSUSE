@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Dec  2 18:37:12 UTC 2024 - Elisei Roca <eroca@suse.com>
+
+- Update assets cache and improve update-cache.sh script
+
+-------------------------------------------------------------------
+Thu Nov 28 14:27:21 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.088:
+  * Add parameter strict to /app/package
+  * Use urandom for random_string
+  * backstage: properly close DB connections in minion jobs
+  * systemd: for background services LOG_LEVEL=error and MemoryMax
+  * ci: Bump mariadb experimental version to 11.7
+
+-------------------------------------------------------------------
+Sat Nov 23 12:10:19 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.087:
+  * Fix enormous query retrieving existing packages (#536)
+
+-------------------------------------------------------------------
+Fri Nov 22 09:46:10 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.086:
+  * Extra filters to /app/package (#535)
+
+-------------------------------------------------------------------
+Thu Nov 21 10:36:04 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.085:
+  * Add /app/package (#534)
+  * Make sure services are started in setup.md
+
+-------------------------------------------------------------------
 Wed Nov 06 08:45:02 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.084:

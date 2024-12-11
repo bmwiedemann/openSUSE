@@ -202,6 +202,9 @@ Patch500:       u_dep_xcb.patch
 %else
 Patch500:       u_dep_xcb-s390x.patch
 %endif
+Patch501:       0001-dri-don-t-fetch-X11-modifiers-if-we-don-t-support-th.patch
+Patch502:       0002-egl-wayland-only-supply-LINEAR-modifier-when-support.patch
+Patch503:       0003-egl-wayland-fallback-to-implicit-modifiers-if-advert.patch
 %ifnarch s390x
 Patch1222040:   u_mesa-CVE-2023-45913.patch
 %else
@@ -292,8 +295,10 @@ Obsoletes:      libXvMC_r600 < %{version}
 Provides:       libtxc_dxtn = %{version}
 Obsoletes:      libtxc_dxtn < %{version}
 %ifarch %{arm} aarch64
+%if 0%{?suse_version} >= 1550
 BuildRequires:  python3-pycparser >= 2.20
 BuildRequires:  pkgconfig(libdrm_etnaviv) >= 2.4.89
+%endif
 BuildRequires:  pkgconfig(libdrm_freedreno) >= 2.4.74
 BuildRequires:  pkgconfig(libelf)
 %endif
@@ -873,6 +878,11 @@ cp %{SOURCE6} subprojects/packagecache/
 %patch -P 100 -p1
 %patch -P 400 -p1
 %patch -P 500 -p1
+%ifnarch s390x
+%patch -P 501 -p1
+%patch -P 502 -p1
+%patch -P 503 -p1
+%endif
 %patch -P 1222040 -p1
 %patch -P 1222041 -p1
 %patch -P 1222042 -p1
@@ -966,7 +976,11 @@ egl_platforms=x11,wayland
             -Dgallium-d3d12-graphics=enabled \
   %else
   %ifarch %{arm} aarch64
+%if 0%{?suse_version} >= 1550
             -Dgallium-drivers=r300,r600,radeonsi,nouveau,softpipe,llvmpipe,virgl,iris,freedreno,vc4,etnaviv,lima,panfrost,v3d,svga,tegra,zink \
+%else
+            -Dgallium-drivers=r300,r600,radeonsi,nouveau,softpipe,llvmpipe,virgl,iris,freedreno,vc4,lima,panfrost,v3d,svga,tegra,zink \
+%endif
   %else
   %ifarch ppc64 ppc64le riscv64
             -Dgallium-drivers=r300,r600,radeonsi,nouveau,softpipe,llvmpipe,virgl,iris,zink \

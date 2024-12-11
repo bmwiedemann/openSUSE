@@ -18,7 +18,7 @@
 
 %define _config_dir %{_sysconfdir}/%{name}
 Name:           telegraf
-Version:        1.32.3
+Version:        1.33.0
 Release:        0
 Summary:        The plugin-driven server agent for collecting & reporting metrics
 License:        MIT
@@ -30,7 +30,7 @@ Patch0:         harden_telegraf.service.patch
 BuildRequires:  git-core
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  golang(API) >= 1.22
+BuildRequires:  golang(API) >= 1.23
 %{?systemd_ordering}
 
 %description

@@ -1,36 +1,73 @@
-Index: napalm-4.0.0/test/nxos/test_getters.py
+From 9dd413d6254f2dc034903736b65b1853b2163e7d Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Tue, 10 Dec 2024 12:07:37 +1100
+Subject: [PATCH] Remove external mock dependency
+
+Since the minimum version of Python we support contains mock in the
+standard library, we should switch to it and remove one external
+dependency.
+---
+ requirements-dev.txt          | 1 -
+ test/eos/test_heredoc.py      | 2 +-
+ test/nxos/test_getters.py     | 3 ++-
+ test/nxos_ssh/test_getters.py | 3 ++-
+ 4 files changed, 5 insertions(+), 4 deletions(-)
+
+Index: napalm-5.0.0/requirements-dev.txt
 ===================================================================
---- napalm-4.0.0.orig/test/nxos/test_getters.py
-+++ napalm-4.0.0/test/nxos/test_getters.py
-@@ -5,7 +5,7 @@ from napalm.base.test import helpers
- from napalm.base import models
- 
- import pytest
--from mock import patch
-+from unittest.mock import patch
- 
- 
- def mock_time():
-Index: napalm-4.0.0/test/nxos_ssh/test_getters.py
+--- napalm-5.0.0.orig/requirements-dev.txt
++++ napalm-5.0.0/requirements-dev.txt
+@@ -7,7 +7,6 @@ pytest-cov==5.0.0
+ pytest-json-report==1.5.0
+ pyflakes==3.2.0
+ pylama==8.4.1
+-mock==5.1.0
+ mypy==1.9.0
+ types-PyYAML==6.0.12.20240311
+ types-requests==2.31.0.20240406
+Index: napalm-5.0.0/test/eos/test_heredoc.py
 ===================================================================
---- napalm-4.0.0.orig/test/nxos_ssh/test_getters.py
-+++ napalm-4.0.0/test/nxos_ssh/test_getters.py
-@@ -5,7 +5,7 @@ from napalm.base.test import helpers
- from napalm.base import models
- 
- import pytest
--from mock import patch
-+from unittest.mock import patch
- 
- 
- def mock_time():
-Index: napalm-4.0.0/test/eos/test_heredoc.py
-===================================================================
---- napalm-4.0.0.orig/test/eos/test_heredoc.py
-+++ napalm-4.0.0/test/eos/test_heredoc.py
+--- napalm-5.0.0.orig/test/eos/test_heredoc.py
++++ napalm-5.0.0/test/eos/test_heredoc.py
 @@ -1,4 +1,4 @@
 -import mock
-+import unittest.mock as mock
++from unittest import mock
  import pytest
  from textwrap import dedent
  
+Index: napalm-5.0.0/test/nxos/test_getters.py
+===================================================================
+--- napalm-5.0.0.orig/test/nxos/test_getters.py
++++ napalm-5.0.0/test/nxos/test_getters.py
+@@ -1,11 +1,12 @@
+ """Tests for getters."""
+ 
++from unittest.mock import patch
++
+ from napalm.base.test.getters import BaseTestGetters, wrap_test_cases
+ from napalm.base.test import helpers
+ from napalm.base import models
+ 
+ import pytest
+-from mock import patch
+ 
+ 
+ def mock_time():
+Index: napalm-5.0.0/test/nxos_ssh/test_getters.py
+===================================================================
+--- napalm-5.0.0.orig/test/nxos_ssh/test_getters.py
++++ napalm-5.0.0/test/nxos_ssh/test_getters.py
+@@ -1,11 +1,12 @@
+ """Tests for getters."""
+ 
++from unittest.mock import patch
++
+ from napalm.base.test.getters import BaseTestGetters, wrap_test_cases
+ from napalm.base.test import helpers
+ from napalm.base import models
+ 
+ import pytest
+-from mock import patch
+ 
+ 
+ def mock_time():

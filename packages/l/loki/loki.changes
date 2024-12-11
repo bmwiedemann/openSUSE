@@ -1,4 +1,132 @@
 -------------------------------------------------------------------
+Mon Dec 09 10:04:09 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.3.1:
+  * BREAKING CHANGES
+    - promtail: Remove wget from Promtail docker image (backport
+      release-3.3.x) (#15146)
+  * Miscellaneous Chores
+    - promtail: Switch Promtail base image from Debian to Ubuntu to
+      fix critical security issues (#15195).
+    - docker: Move from base-nossl to static. This PR removes the
+      inclusion of glibc into most of the Docker images created by
+      the Loki build system. (#15203).
+
+-------------------------------------------------------------------
+Mon Dec 09 09:39:06 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.3.0:
+  * BREAKING CHANGES
+    - blooms: Introduce a new block schema (V3) (#14038)
+    - blooms: Index structured metadata into blooms (#14061)
+  * Features
+    - ability to log stream selectors before service name detection
+      (#14154) (d7ff426)
+    - add app_name as a service label (#13660) (f2a16f4)
+    - add backoff mechanism to the retention process (#14182)
+      (3136880)
+    - add functions to common.libsonnet for warpstream (#14123)
+      (2bde071)
+    - add gauge loki_ingest_storage_reader_phase (#14679) (f5b0fb6)
+    - add gauge to track the partition_id (#14713) (a142b3d)
+    - add missing cluster label to mixins (#12870) (547ca70)
+    - add query user and query source to "executing query" log
+      lines (#14320) (4d69929)
+    - add retries for s3 ObjectExists calls (#14062) (73cbbb0)
+    - add structured metadata to the promtail push API (#14153)
+      (66cffcb)
+    - Add support for partition ingester in dashboards (#14498)
+      (70deebf)
+    - Allows to configure client_max_body_size (#12924) (809a024)
+    - Apply patterns line length limit to json message key (#14296)
+      (41fafd8)
+    - blooms: Add bloom planner and bloom builder to backend target
+      (#13997) (bf60455)
+    - blooms: disk-backed queue for the bloom-planner (backport
+      k227) (#14927) (1f6828b)
+    - blooms: Index structured metadata into blooms (#14061)
+      (a2fbaa8)
+    - blooms: Only write key and key=value to blooms (#14686)
+      (3af0004)
+    - Configurable list of json fields to mine patterns (#14528)
+      (7050897)
+    - detected field values (#14350) (7983f94)
+    - distributors: Use a pool of worker to push to ingesters.
+      (#14245) (f80d68a)
+    - Do not add empty blooms to offsets (#14577) (51c42e8)
+    - Extract task computing into a strategy interface (#13690)
+      (ab5e6ea)
+    - fluentd-plugin-datadog-loki: support custom http headers
+      (#14299) (e59035e)
+    - helm: add additional service annotations for components in
+      distributed mode (#14131) (5978f13)
+    - helm: add configurable extraEnvFrom to admin-api and
+      enterprisegw (#14533) (5d78a3a)
+    - helm: Add kubeVersionOverride for Helm chart (#14434)
+      (0935d77)
+    - helm: Add persistence option to memcached on Helm chart
+      (#13619) (ef1df0e)
+    - helm: add tolerations to pattern-ingester statefulset
+      (#13605) (09530c0)
+    - helm: Allow setting node attributes to tokengen and
+      provisioner (#14311) (c708ae6)
+    - helm: Replace bloom compactor with bloom planner and builder
+      (#14003) (08e61ca)
+    - helm: update chart with loki version 3.2.0 (#14281) (11b92ee)
+    - Helm: Update Loki Helm chart for restricted environments
+      (#14440) (adc7538)
+    - implement IsRetryableErr for S3ObjectClient (#14174)
+      (fc90a63)
+    - Implement owned streams calculation using Partition Ring
+      (#14282) (3c36ba9)
+    - Implement WAL segment ingestion via Kafka with partition ring
+      (#14043) (d178f4c)
+    - Improve pattern ingester tracing (#14707) (80aec25)
+    - ingester: implement partition shuffle sharding for ingester
+      (#14304) (1a4436c)
+    - Introduce new ObjectExistsWithSize API to (#14268) (ac422b3)
+    - Introduce shardable probabilistic topk for instant queries.
+      (backport k227) (#14765) (02eb024)
+    - jsonnet: Allow to name prefix zoned ingesters (#14260)
+      (fac3177)
+    - kafka: Add Ingestion from Kafka in Ingesters (#14192)
+      (b6e9945)
+    - kafka: Add support for SASL auth to Kafka (#14487) (e2a209c)
+    - kafka: Enable querier to optionally query partition ingesters
+      (#14418) (633bb5e)
+    - kafka: enqueue commit offset only once per batch process
+      (#14278) (beca6f3)
+    - kafka: Implement limiter using partition ring for Kafka
+      (#14359) (5cbb239)
+    - kafka: Remove rate limits for kafka ingestion (#14460)
+      (83a8893)
+    - kafka: Replay kafka from last commit before allowing
+      ingesters to become ready (#14330) (39b57ec)
+
+-------------------------------------------------------------------
+Mon Dec 09 07:32:06 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.2.2:
+  * BREAKING CHANGES
+    - promtail: Remove wget from Promtail docker image (backport
+      release-3.2.x) (#15145)
+  * Bug Fixes
+    - logql: Updated JSONExpressionParser not to unescape extracted
+      values if it is JSON object. (#14499).
+    - storage: Have GetObject check for canceled context.
+      S3ObjectClient.GetObject incorrectly returned nil, 0, nil
+      when the provided context is already canceled (#14420).
+  * Miscellaneous Chores
+    - promtail: Switch Promtail base image from Debian to Ubuntu to
+      fix critical security issues (#15195).
+    - docker: Move from base-nossl to static. This PR removes the
+      inclusion of glibc into most of the Docker images created by
+      the Loki build system. (#15203).
+- convert to obs_scm
+- add %if condition to build using CGO_ENABLED=1 on s390x, armv7l
+  and i586
+
+-------------------------------------------------------------------
 Thu Oct 17 21:30:13 UTC 2024 - mrueckert@suse.de
 
 - Update to version 3.2.1:

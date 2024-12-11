@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Dec 09 17:36:20 UTC 2024 - jan.kuzilek@suse.com
+
+- Update to version 2.38.5:
+  * fix(new-releases): stop close button propagation (#3224)
+  * chore(deps): bump golang.org/x/net from 0.30.0 to 0.31.0 (#3218)
+  * style(trashbin): update used icon (#3212)
+  * feat(fullAppDisplay): seekable progress and aligned buttons (#3168)
+  * chore(deps): bump golang.org/x/net from 0.29.0 to 0.30.0 (#3196)
+  * feat(css-map): add header 1.2.49 classnames (#3208)
+  * chore: remove stale labeler (#3207)
+  * fix: svg url in readme.md (#3204)
+  * chore(sidebarConfig): make phrasing more os inclusive (#3190)
+
+-------------------------------------------------------------------
 Sat Sep 28 14:54:38 UTC 2024 - jan.kuzilek@suse.com
 
 - Update to version 2.38.4:

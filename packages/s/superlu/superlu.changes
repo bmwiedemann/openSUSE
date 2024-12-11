@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec  9 15:13:46 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add BuildRequires:
+  libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc to fix
+  use of %requires_eq.
+
+-------------------------------------------------------------------
 Tue Oct 29 21:47:29 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Move manual installation of files from %check section to

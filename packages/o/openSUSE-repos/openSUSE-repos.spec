@@ -63,7 +63,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 # Leap 16
-%if 0%{?is_opensuse} && 0%{?suse_version} >= 1600
+%if 0%{?is_opensuse} && 0%{?suse_version} >= 1600 && !0%{?is_leapmicro}
 %if "%flavor" == "openSUSE-repos-Leap"
 %define theme Leap
 %define branding leap
@@ -290,6 +290,24 @@ echo "zsystems" >  %{buildroot}%{_sysconfdir}/zypp/vars.d/DIST_ARCH
 %endif
 
 %post
+# Disable all non-zypp-service managed repos with default filenames
+for repo_file in \
+repo-backports-debug-update.repo repo-oss.repo repo-backports-update.repo \
+repo-sle-debug-update.repo repo-debug-non-oss.repo repo-sle-update.repo \
+repo-debug.repo repo-source.repo repo-debug-update.repo repo-update.repo \
+repo-debug-update-non-oss.repo repo-update-non-oss.repo repo-non-oss.repo \
+download.opensuse.org-oss.repo download.opensuse.org-non-oss.repo download.opensuse.org-tumbleweed.repo \
+repo-openh264.repo openSUSE-*-0.repo repo-main.repo; do
+  if [ -f %{_sysconfdir}/zypp/repos.d/$repo_file ]; then
+    echo "Content of $repo_file will be newly managed by zypp-services."
+    echo "Storing old copy as %{_sysconfdir}/zypp/repos.d/$repo_file.rpmsave"
+    mv %{_sysconfdir}/zypp/repos.d/$repo_file %{_sysconfdir}/zypp/repos.d/$repo_file.rpmsave
+  fi
+done
+
+# Needs to be called after postun of old package or we might endup with
+# No service and no repos as there is a symlink and service removal in postun of old pkg
+%posttrans
 %if "%{theme}" == "Tumbleweed"
 %ifarch %{ix86} x86_64
 ln -sf opensuse-%{branding}-repoindex.xml %{_datadir}/zypp/local/service/openSUSE/repo/repoindex.xml
@@ -324,28 +342,12 @@ ln -sf opensuse-%{branding}-ports-repoindex.xml %{_datadir}/zypp/local/service/o
 %endif
 %endif
 
-# Disable all non-zypp-service managed repos with default filenames
-
-for repo_file in \
-repo-backports-debug-update.repo repo-oss.repo repo-backports-update.repo \
-repo-sle-debug-update.repo repo-debug-non-oss.repo repo-sle-update.repo \
-repo-debug.repo repo-source.repo repo-debug-update.repo repo-update.repo \
-repo-debug-update-non-oss.repo repo-update-non-oss.repo repo-non-oss.repo \
-download.opensuse.org-oss.repo download.opensuse.org-non-oss.repo download.opensuse.org-tumbleweed.repo \
-repo-openh264.repo openSUSE-*-0.repo repo-main.repo; do
-  if [ -f %{_sysconfdir}/zypp/repos.d/$repo_file ]; then
-    echo "Content of $repo_file will be newly managed by zypp-services."
-    echo "Storing old copy as %{_sysconfdir}/zypp/repos.d/$repo_file.rpmsave"
-    mv %{_sysconfdir}/zypp/repos.d/$repo_file %{_sysconfdir}/zypp/repos.d/$repo_file.rpmsave
-  fi
-done
-
 # We hereby declare that running this will not influence existing transaction
 ZYPP_READONLY_HACK=1 zypper addservice %{_datadir}/zypp/local/service/openSUSE openSUSE
 ZYPP_READONLY_HACK=1 zypper refresh-services
 
 %if 0%{?with_nvidia}
-%post NVIDIA
+%posttrans NVIDIA
 ln -sf nvidia-%{branding}-repoindex.xml %{_datadir}/zypp/local/service/NVIDIA/repo/repoindex.xml
 
 # Disable user-defined with default filename from wiki

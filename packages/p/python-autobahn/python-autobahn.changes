@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec 10 06:10:04 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 24.6.2:
+  * unit test fixes (#1634)
+  * bump minimum twisted to 24.3.0 (#1635)
+  * a couple of packaging fixes (#1632)
+  * update license file to include contributors (#1628)
+  * Random ID should beginning with 1 (#1637)
+- Drop patch fix-wamp-tests.patch, included upstream.
+- Add patch support-new-pytest-asyncio.patch:
+  * Support even more pytest-asyncio.
+
+-------------------------------------------------------------------
 Thu Apr 25 08:18:43 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add upstream patch fix-wamp-tests.patch to make it work with modern

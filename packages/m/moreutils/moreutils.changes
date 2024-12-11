@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec  9 21:39:03 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 0.70
+  * vidir: Improve zero padding to support larger directories, and also avoid unncessary padding.
+  * zrun: Add support for zstd compression
+  * ts: Do not accept extra args and always read from stdin (deb#1041291)
+
+-------------------------------------------------------------------
 Wed Nov 29 13:42:27 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 0.68

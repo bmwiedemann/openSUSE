@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec  8 18:15:12 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Add patch from upstream to fix regression affecting hamlib
+  swig-4.3.0-Fix-precedence-of-casts.patch
+
+-------------------------------------------------------------------
 Mon Oct 21 11:49:43 UTC 2024 - Klaus Kämpf <kkaempf@suse.de>
 
 - Update to 4.3.0 (final)

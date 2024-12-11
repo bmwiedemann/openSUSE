@@ -1,0 +1,75 @@
+diff -u -r -p xkeyboard-config-2.42.orig/meson.build xkeyboard-config-2.42/meson.build
+--- xkeyboard-config-2.42.orig/meson.build	2024-12-09 14:33:33.685493000 +0100
++++ xkeyboard-config-2.42/meson.build	2024-12-09 14:35:09.281509000 +0100
+@@ -77,7 +77,7 @@ endif
+ 
+ # pytest suite
+ pymod = import('python')
+-python = pymod.find_installation('python3',
++python = pymod.find_installation('python3.11',
+                                  modules: ['pytest'],
+                                  required: false)
+ pytest = find_program('pytest-3', 'pytest', required: false)
+@@ -86,7 +86,7 @@ if enable_pytest
+     pytest_args = ['--verbose', '--log-level=DEBUG']
+     # use pytest xdist if available, it really speeds up the tests cases
+     optional_python_modules = ['xdist']
+-    if pymod.find_installation('python3', modules: optional_python_modules, required: false).found()
++    if pymod.find_installation('python3.11', modules: optional_python_modules, required: false).found()
+         pytest_args += ['-n', 'auto']
+     endif
+ 
+diff -u -r -p xkeyboard-config-2.42.orig/rules/compat/map-variants.py xkeyboard-config-2.42/rules/compat/map-variants.py
+--- xkeyboard-config-2.42.orig/rules/compat/map-variants.py	2024-12-09 14:33:37.968787000 +0100
++++ xkeyboard-config-2.42/rules/compat/map-variants.py	2024-12-09 14:35:19.598496000 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/env python3.11
+ 
+ import argparse
+ import re
+diff -u -r -p xkeyboard-config-2.42.orig/rules/generate-options-symbols.py xkeyboard-config-2.42/rules/generate-options-symbols.py
+--- xkeyboard-config-2.42.orig/rules/generate-options-symbols.py	2024-12-09 14:33:38.057788000 +0100
++++ xkeyboard-config-2.42/rules/generate-options-symbols.py	2024-12-09 14:35:24.650708000 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/env python3.11
+ #
+ # This file is formatted with python black
+ #
+diff -u -r -p xkeyboard-config-2.42.orig/rules/merge.py xkeyboard-config-2.42/rules/merge.py
+--- xkeyboard-config-2.42.orig/rules/merge.py	2024-12-09 14:33:38.086824000 +0100
++++ xkeyboard-config-2.42/rules/merge.py	2024-12-09 14:35:28.163506000 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/env python3.11
+ 
+ import argparse
+ import sys
+diff -u -r -p xkeyboard-config-2.42.orig/scripts/symbols-tree.py xkeyboard-config-2.42/scripts/symbols-tree.py
+--- xkeyboard-config-2.42.orig/scripts/symbols-tree.py	2024-12-09 14:33:38.372760000 +0100
++++ xkeyboard-config-2.42/scripts/symbols-tree.py	2024-12-09 14:35:31.811319000 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/env python3.11
+ #
+ # Builds a tree view of a symbols file (showing all includes)
+ #
+diff -u -r -p xkeyboard-config-2.42.orig/tests/test_rules_xml.py xkeyboard-config-2.42/tests/test_rules_xml.py
+--- xkeyboard-config-2.42.orig/tests/test_rules_xml.py	2024-12-09 14:33:45.854374000 +0100
++++ xkeyboard-config-2.42/tests/test_rules_xml.py	2024-12-09 14:35:35.266642000 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/env python3.11
+ #
+ # Call with pytest. Requires XKB_CONFIG_ROOT to be set
+ 
+diff -u -r -p xkeyboard-config-2.42.orig/tests/test_xkb_symbols.py xkeyboard-config-2.42/tests/test_xkb_symbols.py
+--- xkeyboard-config-2.42.orig/tests/test_xkb_symbols.py	2024-12-09 14:33:45.884365000 +0100
++++ xkeyboard-config-2.42/tests/test_xkb_symbols.py	2024-12-09 14:35:39.039457000 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/env python3.11
+ #
+ # Call with pytest. Requires XKB_CONFIG_ROOT to be set
+ 
