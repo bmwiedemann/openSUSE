@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec  7 19:59:30 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Replace notify-osd-fix-voidreturn.patch with
+  notify-osd-fix-types.patch: Fix compilation error due to the use
+  of a null pointer with GType.
+
+-------------------------------------------------------------------
 Thu Feb 22 14:03:41 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

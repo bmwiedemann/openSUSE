@@ -1,7 +1,7 @@
 #
 # spec file for package notify-osd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,8 +26,8 @@ URL:            https://launchpad.net/notify-osd
 Source:         https://launchpad.net/ubuntu/+archive/primary/+files/%{name}_%{_version}.orig.tar.gz
 # PATCH-FEATURE-OPENSUSE notify-osd-leolik.patch -- Extend the configuration capabilities, patch by Roman Sukochev (Leolik) from https://launchpad.net/~leolik/+archive/leolik.
 Patch0:         %{name}-leolik.patch
-# PATCH-FIX-UPSTREAM notify-osd-fix-voidreturn.patch sor.alexei@meowr.ru -- Fix value non-return in display.c stack_layout().
-Patch1:         %{name}-fix-voidreturn.patch
+# PATCH-FIX-UPSTREAM notify-osd-fix-types.patch sor.alexei@meowr.ru -- Fix type errors.
+Patch1:         %{name}-fix-types.patch
 # PATCH-FIX-UPSTREAM notify-osd-fix-workarea.patch sor.alexei@meowr.ru -- Fix workarea on GTK+ 3.22.[0-21].
 Patch2:         %{name}-fix-workarea.patch
 BuildRequires:  autoconf >= 2.59

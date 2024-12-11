@@ -1,0 +1,24 @@
+--- a/src/bubble-window.c
++++ b/src/bubble-window.c
+@@ -78,8 +78,8 @@ bubble_window_get_accessible (GtkWidget
+     {
+       AtkObjectFactory *factory = NULL;
+       AtkRegistry *registry = NULL;
+-      GType derived_type = NULL;
+-      GType derived_atk_type = NULL;
++      GType derived_type = G_TYPE_INVALID;
++      GType derived_atk_type = G_TYPE_INVALID;
+ 
+       /*
+        * Figure out whether accessibility is enabled by looking at the
+--- a/src/display.c
++++ b/src/display.c
+@@ -288,7 +288,7 @@ stack_layout (Stack* self)
+ 	gint       y      = 0;
+ 	gint       x      = 0;
+ 
+-	g_return_if_fail (self != NULL);
++	g_return_val_if_fail (self != NULL, TRUE);
+ 
+ 	bubble = stack_select_next_to_display (self);
+ 	if (bubble == NULL)
