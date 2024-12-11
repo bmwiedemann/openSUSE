@@ -37,6 +37,7 @@ BuildRequires:  gcc-c++
 %if %{with java}
 BuildRequires:  cmake >= 3.21
 BuildRequires:  java-devel >= 11
+BuildRequires:  strip-nondeterminism
 %else
 BuildRequires:  cmake >= 3.20
 Obsoletes:      portmidi-java <= %{version}-%{release}
@@ -108,6 +109,8 @@ popd
 
 %if %{with java}
 install -D -m 0644 pm_java/pmdefaults/pmdefaults.jar %{buildroot}%{_javadir}/pmdefaults.jar
+cd %{buildroot}%{_javadir}
+%?strip_all_nondeterminism
 cat > %{buildroot}%{_bindir}/pmdefaults <<EOF
 #!/bin/bash
 exec java -jar "@@JAVADIR@@/pmdefaults.jar" "$@" >/dev/null

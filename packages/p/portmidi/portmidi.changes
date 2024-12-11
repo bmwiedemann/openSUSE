@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 11 07:10:51 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Normalize jar mtimes for reproducible builds (boo#1134568)
+
+-------------------------------------------------------------------
 Fri Dec 30 10:50:46 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
 
 - If we don't build the java bindings, we can reduce the minimum 
