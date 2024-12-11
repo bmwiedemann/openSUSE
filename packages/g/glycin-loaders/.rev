@@ -92,4 +92,12 @@
   rebuild libheif-rs create as a workaround (forwarded request 1225969 from iznogood)</comment>
     <requestid>1226289</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>7e044f18dbf5b5f68e77078e09bd7d6a</srcmd5>
+    <version>1.1.2</version>
+    <time>1733947528</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1230135</requestid>
+  </revision>
 </revisionlist>
