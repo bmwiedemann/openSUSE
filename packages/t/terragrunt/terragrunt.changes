@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec 11 14:30:40 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.69.10:
+  * fix: TF output log level (#3646)
+  * feat: Add Discord logo  (#3641)
+  * chore: Reorganize Getting Started Guide (#3632)
+  * fix: Deprecating legacy exclude and error configurations
+    (#3625)
+
+-------------------------------------------------------------------
 Sun Dec 08 08:26:07 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.69.9:
