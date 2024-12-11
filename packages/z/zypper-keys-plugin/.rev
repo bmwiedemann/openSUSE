@@ -20,4 +20,15 @@ https://hackweek.opensuse.org/22/projects/create-tool-for-managing-rpm-package-s
 </comment>
     <requestid>1228555</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>13e8797b4a37c07e2331781777bbc2f3</srcmd5>
+    <version>0.5.0</version>
+    <time>1733947523</time>
+    <user>anag+factory</user>
+    <comment>- Version 0.5.0
+- Relicense to GPL3
+- Add release script
+- Require pytz</comment>
+    <requestid>1230157</requestid>
+  </revision>
 </revisionlist>

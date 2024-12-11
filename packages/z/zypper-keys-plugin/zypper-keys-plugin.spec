@@ -20,10 +20,10 @@
 %define pythons %{use_python}
 
 Name:           zypper-keys-plugin
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        Zypper plugin to manage RPM keys
-License:        AGPL-3.0-or-later
+License:        GPL-3.0-or-later
 Group:          System/Packages
 URL:            https://github.com/asdil12/%{name}
 Source0:        https://github.com/asdil12/zyppkeys/archive/v%{version}.tar.gz#/zyppkeys-%{version}.tar.gz
