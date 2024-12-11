@@ -22,13 +22,13 @@
 %bcond_without system_debugedit
 %endif
 Name:           flatpak-builder
-Version:        1.4.2
+Version:        1.4.4
 Release:        0
 Summary:        Tool to build flatpaks from source
 License:        LGPL-2.1-or-later
 Group:          Development/Tools/Building
 URL:            http://flatpak.org/
-Source0:        https://github.com/flatpak/flatpak-builder/releases/download/%{version}/%{name}-%{version}-fixed-libglnx.tar.xz
+Source0:        https://github.com/flatpak/flatpak-builder/releases/download/%{version}/%{name}-%{version}.tar.xz
 Patch0:         fusermount3.diff
 BuildRequires:  AppStream
 BuildRequires:  AppStream-compose

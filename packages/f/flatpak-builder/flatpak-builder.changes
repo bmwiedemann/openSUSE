@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec 11 14:43:40 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.4.4:
+  + Default to a relative path for CMAKE_INSTALL_LIBDIR on cmake
+    modules.
+  + Only pass --libdir to autotools modules when libdir is
+    explicitly set.
+- Changes from version 1.4.3:
+  + Always set `CMAKE_INSTALL_LIBDIR` with cmake buildsystems.
+  + Update libglnx submodule to latest commit.
+
+-------------------------------------------------------------------
 Mon Aug 19 11:28:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire gettext-devel instead of gettext: allow OBS to

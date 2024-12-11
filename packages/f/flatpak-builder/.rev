@@ -320,4 +320,20 @@
     <comment></comment>
     <requestid>1194726</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>9ddd0216db660cea736d798ffaa0fb1b</srcmd5>
+    <version>1.4.4</version>
+    <time>1733947514</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.4.4:
+  + Default to a relative path for CMAKE_INSTALL_LIBDIR on cmake
+    modules.
+  + Only pass --libdir to autotools modules when libdir is
+    explicitly set.
+- Changes from version 1.4.3:
+  + Always set `CMAKE_INSTALL_LIBDIR` with cmake buildsystems.
+  + Update libglnx submodule to latest commit.
+</comment>
+    <requestid>1230134</requestid>
+  </revision>
 </revisionlist>
