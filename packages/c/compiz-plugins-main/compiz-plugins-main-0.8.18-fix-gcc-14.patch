@@ -1,0 +1,80 @@
+--- a/src/mag/mag.c
++++ b/src/mag/mag.c
+@@ -20,6 +20,7 @@
+  *
+  */
+ 
++#include <stdlib.h>
+ #include <math.h>
+ #include <string.h>
+ 
+--- a/src/mousepoll/mousepoll.c
++++ b/src/mousepoll/mousepoll.c
+@@ -20,6 +20,7 @@
+  *
+  */
+ 
++#include <stdlib.h>
+ #include <compiz-core.h>
+ 
+ #include "compiz-mousepoll.h"
+--- a/src/opacify/opacify.c
++++ b/src/opacify/opacify.c
+@@ -21,6 +21,7 @@
+  *
+  */
+ 
++#include <stdlib.h>
+ #include <compiz-core.h>
+ #include "opacify_options.h"
+ 
+--- a/src/scaleaddon/scaleaddon.c
++++ b/src/scaleaddon/scaleaddon.c
+@@ -24,6 +24,7 @@
+  *
+  */
+ 
++#include <stdlib.h>
+ #include <math.h>
+ #include <string.h>
+ #include <X11/Xatom.h>
+--- a/src/session/session.c
++++ b/src/session/session.c
+@@ -29,6 +29,7 @@
+ 
+ #include <compiz-core.h>
+ 
++#include <stdlib.h>
+ #include <string.h>
+ #include <errno.h>
+ #include <pwd.h>
+--- a/src/vpswitch/vpswitch.c
++++ b/src/vpswitch/vpswitch.c
+@@ -27,6 +27,7 @@
+  */
+ 
+ #include <compiz-core.h>
++#include <stdlib.h>
+ #include <string.h>
+ #include <X11/keysymdef.h>
+ #include "vpswitch_options.h"
+--- a/src/winrules/winrules.c
++++ b/src/winrules/winrules.c
+@@ -21,6 +21,7 @@
+ 
+ #include <compiz-core.h>
+ 
++#include <stdlib.h>
+ #include <X11/Xatom.h>
+ 
+ #define WINRULES_SCREEN_OPTION_SKIPTASKBAR_MATCH  0
+--- a/src/workarounds/workarounds.c
++++ b/src/workarounds/workarounds.c
+@@ -20,6 +20,7 @@
+  * This plug-in for Marco-like workarounds.
+  */
+ 
++#include <stdlib.h>
+ #include <string.h>
+ #include <limits.h>
+ 

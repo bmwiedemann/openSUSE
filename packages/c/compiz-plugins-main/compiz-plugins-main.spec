@@ -1,7 +1,7 @@
 #
 # spec file for package compiz-plugins-main
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        OpenGL window and compositing manager plugins
 License:        GPL-2.0-or-later
 URL:            https://gitlab.com/compiz/compiz-plugins-main
 Source:         https://gitlab.com/compiz/compiz-plugins-main/uploads/%{_rev}/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM compiz-plugins-main-0.8.18-fix-gcc-14.patch jskarvad@redhat.com -- Fix build with GCC-14 (commit 568f653a).
+Patch0:         compiz-plugins-main-0.8.18-fix-gcc-14.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -67,7 +69,7 @@ This package contains the non-default Compiz compositing manager
 plugins.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 NOCONFIGURE=1 ./autogen.sh
