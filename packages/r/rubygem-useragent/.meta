@@ -1,0 +1,8 @@
+<package name="rubygem-useragent" project="openSUSE:Factory">
+  <title>HTTP User Agent parser</title>
+  <description>HTTP User Agent parser.
+
+</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-useragent"/>
+  <url>https://github.com/gshutler/useragent</url>
+</package>
