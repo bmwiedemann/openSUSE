@@ -1,0 +1,149 @@
+--- a/src/anaglyph/anaglyph.c
++++ b/src/anaglyph/anaglyph.c
+@@ -18,6 +18,7 @@
+  * Author:	Patryk Kowalczyk <wodor@wodor.org>
+  **/
+ 
++#include <stdlib.h>
+ #include <compiz-core.h>
+ #include "anaglyph_options.h"
+ 
+--- a/src/atlantis/atlantis-internal.h
++++ b/src/atlantis/atlantis-internal.h
+@@ -102,6 +102,7 @@
+ #define NRAND(n)                ((int) (LRAND() % (n)))
+ #define MAXRAND                 (2147483648.0) /* unsigned 1<<31 as a float */
+ 
++#include <stdlib.h>
+ #include <math.h>
+ #include <float.h>
+ 
+--- a/src/elements/elements.c
++++ b/src/elements/elements.c
+@@ -48,6 +48,7 @@
+ 
+ 
+ 
++#include <stdlib.h>
+ #include <compiz-core.h>
+ #include "elements_options.h"
+ #define GET_DISPLAY(d)                            \
+--- a/src/fakeargb/fakeargb.c
++++ b/src/fakeargb/fakeargb.c
+@@ -19,6 +19,7 @@
+  *
+  **/
+ 
++#include <stdlib.h>
+ #include <compiz-core.h>
+ #include "fakeargb_options.h"
+ 
+--- a/src/fireflies/fireflies.c
++++ b/src/fireflies/fireflies.c
+@@ -27,6 +27,7 @@
+  * for helping me make this possible
+  */
+ 
++#include <stdlib.h>
+ #include <math.h>
+ 
+ #include <compiz-core.h>
+--- a/src/freewins/freewins.c
++++ b/src/freewins/freewins.c
+@@ -48,6 +48,7 @@
+  *    - 'Rotate' Button
+  */
+ 
++#include <stdlib.h>
+ #include "freewins.h"
+ 
+ static CompMetadata freewinsMetadata;
+--- a/src/freewins/input.c
++++ b/src/freewins/input.c
+@@ -48,6 +48,7 @@
+  */
+ 
+ #include "freewins.h"
++#include <stdlib.h>
+ #include <cairo/cairo-xlib.h>
+ 
+ /* ------ Input Prevention -------------------------------------------*/
+--- a/src/freewins/util.c
++++ b/src/freewins/util.c
+@@ -48,6 +48,7 @@
+  */
+ 
+ #include "freewins.h"
++#include <stdlib.h>
+ 
+ 
+ /* ------ Utility Functions ---------------------------------------------*/
+--- a/src/smartput/smartput.c
++++ b/src/smartput/smartput.c
+@@ -45,6 +45,7 @@
+  *  Animation is based on Put Plugin (Author: Darryll Truchan <moopsy@comcast.net>
+  *
+  */
++#include <stdlib.h>
+ #include <X11/Xatom.h>
+ #include <math.h>
+ #include <compiz-core.h>
+--- a/src/snow/snow.c
++++ b/src/snow/snow.c
+@@ -27,6 +27,7 @@
+  * for helping me make this possible
+  */
+ 
++#include <stdlib.h>
+ #include <math.h>
+ 
+ #include <compiz-core.h>
+--- a/src/snowglobe/movement.c
++++ b/src/snowglobe/movement.c
+@@ -1,5 +1,6 @@
+ #include "snowglobe-internal.h"
+ #include "snowglobe_options.h"
++#include <stdlib.h>
+ #include <math.h>
+ #include <float.h>
+ 
+--- a/src/snowglobe/water.c
++++ b/src/snowglobe/water.c
+@@ -24,6 +24,7 @@
+ 
+ /* Uses water amplitude calculation by David Mikos */
+ 
++#include <stdlib.h>
+ #include "snowglobe-internal.h"
+ #include "math.h"
+ #include "snowglobe_options.h"
+--- a/src/stars/star.c
++++ b/src/stars/star.c
+@@ -38,6 +38,7 @@
+  * for helping me make this possible
+  */
+ 
++#include <stdlib.h>
+ #include <math.h>
+ 
+ #include <compiz-core.h>
+--- a/src/tile/tile.c
++++ b/src/tile/tile.c
+@@ -25,6 +25,7 @@
+  *
+  **/
+ 
++#include <stdlib.h>
+ #include <string.h>
+ #include <math.h>
+ #include <compiz-core.h>
+--- a/src/wizard/wizard.c
++++ b/src/wizard/wizard.c
+@@ -21,6 +21,7 @@
+  *
+  */
+ 
++#include <stdlib.h>
+ #include <math.h>
+ #include <string.h>
+ 

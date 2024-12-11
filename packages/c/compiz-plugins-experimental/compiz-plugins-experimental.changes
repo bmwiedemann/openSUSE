@@ -1,0 +1,152 @@
+-------------------------------------------------------------------
+Sat Dec  7 18:22:02 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Add compiz-plugins-main-0.8.18-fix-gcc-14.patch by
+  Jaroslav Škarvada: Fix build with GCC-14 (commit 82c05c42).
+
+-------------------------------------------------------------------
+Sat Apr  4 22:34:57 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.8.18:
+  * Fix build with gcc-10.
+  * earth: Initialise screen structure with calloc.
+  * Migrate workspacenames plugin to plugins-extra.
+
+-------------------------------------------------------------------
+Sat Feb 22 15:48:43 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Drop support for old openSUSE versions.
+
+-------------------------------------------------------------------
+Sun Nov 11 18:15:12 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.8.16:
+  * Improvements to earth.
+  * Import icons from CCSM.
+
+-------------------------------------------------------------------
+Tue Apr 18 11:10:04 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 0.8.14:
+  * Add models for the cubemodel plugin.
+  * Many improvements to the elements plugin.
+  * Increase bonanza animation speed.
+  * Add a default enabled option for stars, fireflies, wizard and
+    snow.
+  * Improvements to the static plugin.
+  * Exit on user input after starting screensaver manually.
+  * Improve the default snow texture.
+  * Increase maximum text size in workspacenames.
+  * Add earth plugin.
+  * Update translations.
+- Add GPL-2.0 to the list of licences for the elements plugin.
+- Workaround /usr/@DATADIRNAME@/locale/ on openSUSE Leap 42.1 and
+  older.
+
+-------------------------------------------------------------------
+Tue Mar 22 13:08:34 UTC 2016 - sor.alexei@meowr.ru
+
+- Add a missing gcc-c++ dependency.
+
+-------------------------------------------------------------------
+Sat Feb 13 09:25:54 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to 0.8.12:
+  * Rename project from compiz-plugins-unsupported to
+    compiz-plugins-experimental.
+  * Plugin updates.
+  * Don't fail if compiz-plugins-main and compiz-plugins-extra
+    development files are not present.
+  * Note that plugins are currently being excluded by that silently.
+  * New plugins collected: Anaglyph, Simple Animations,
+    Animations Plus, ADDialog, Fireflies,
+    Freely Transformable Windows, Ghost, Photowheel, Put Plus,
+    Screensaver, Smart Put, Cube Snow Globe, Stars,
+    Stack Window Switcher, Static Windows, Swap Windows,
+    Throw Windows, Toggle Decoration, Wizard, Workspace Naming.
+- Rename compiz-plugins-unsupported package to
+  compiz-plugins-experimental.
+- Replace compiz-plugin-photowheel as it's now included.
+- Only exclude s390 and s390x architectures.
+
+-------------------------------------------------------------------
+Sat Dec 19 21:13:15 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 0.8.9.
+- Add compiz-plugins-unsupported-lang.
+- Split compiz-plugins-unsupported-devel.
+- Update dependencies.
+- Remove self-obsoletion.
+- Spec cleanup.
+- Add ARM to "ExclusiveArch".
+
+-------------------------------------------------------------------
+Tue Apr 28 12:00:00 UTC 2011 - robertherb@arcor.de
+
+- Update to version 0.8.8
+
+-------------------------------------------------------------------
+Fri Sep 19 21:39:53 IST 2008 - cyberorg@opensuse.org
+
+- Release 0.7.8
+
+-------------------------------------------------------------------
+Sat May 31 19:30:00 IST 2008 - cyberorg@opensuse.org
+
+- Keep it in sync with compiz 0.7.6
+
+-------------------------------------------------------------------
+Thu Apr 03 22:03:00 IST 2008 - cyberorg@cyberorg.info
+
+- 0.7.4 release
+- Update bcop dependency
+- Send out sync request when changing window size
+- Fix division-by-zero when snow speed is 100
+
+-------------------------------------------------------------------
+Fri Mar 07 01:20:00 IST 2008 - cyberorg@opensuse.org
+
+- 0.7.2 development release
+
+-------------------------------------------------------------------
+Fri Feb 08 23:33:00 IST 2008 - cyberorg@cyberorg.info
+
+- sync to the latest git
+
+-------------------------------------------------------------------
+Sat Dec 15 16:45:00 IST 2007 - cyberorg@cyberorg.info
+
+- atlantis cleanup
+
+-------------------------------------------------------------------
+Tue Dec 04 13:40:00 IST 2007 - cyberorg@cyberorg.info
+
+- sync to latest git
+- 3D plugin back again
+
+-------------------------------------------------------------------
+Tue Oct 16 13:40:00 IST 2007 - cyberorg@cyberorg.info
+
+- Update to release 0.6.0
+- remove 3D plugin as it does not work properly any more
+-------------------------------------------------------------------
+Tue Aug 24 14:25:00 IST 2007 - cyberorg@cyberorg.info
+
+- Sync to the latest git.
+- new action settings rework
+
+-------------------------------------------------------------------
+Fri Aug  17 13:45:15 IST 2007 - cyberorg@cyberorg.info
+
+- Add 3D plugin
+
+-------------------------------------------------------------------
+Mon Aug  13 18:03:15 IST 2007 - cyberorg@cyberorg.info
+
+- Update to 0.5.2 release.
+
+-------------------------------------------------------------------
+Mon Aug 06 11:58:00 IST 2007 - cyberorg@cyberorg.info
+
+- Clean up spec, thanks Stanislav Brabec
+- remove gconf subpackage, include schemas in main
