@@ -57,7 +57,7 @@
 %global matrix_synapse_ldap3_version  0.3.0
 %global packaging_version             24.0
 %global psycopg2_version              2.9.9
-%global pysaml2_version               7.3.1
+%global pysaml2_version               7.5.0
 %global Authlib_version               1.3.2
 %global lxml_version                  5.3.0
 %global sentry_sdk_version            2.13.0
@@ -125,7 +125,7 @@
 
 %define requires_peq() %(echo '%*' | LC_ALL=C xargs -r rpm -q --whatprovides --qf 'Requires: %%{name} = %%{epoch}:%%{version}\\n' | sed -e 's/ (none):/ /' -e 's/ 0:/ /' | grep -v "is not")
 
-%define use_python python3
+%define use_python %{primary_python}
 
 %define pythons %{use_python}
 
@@ -154,7 +154,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.120.2
+Version:        1.121.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        AGPL-3.0-or-later

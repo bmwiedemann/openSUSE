@@ -1105,4 +1105,16 @@ mostly-working synapse than nothing at all) and the package has been update to
   currently need</comment>
     <requestid>1229593</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>71338fee3e7d836c67b6b8b815963c0d</srcmd5>
+    <version>1.121.0</version>
+    <time>1733947525</time>
+    <user>anag+factory</user>
+    <comment>The diff for the older entries is a trailing whitespace cleanup
+
+- Update to 1.121.0
+- switch to primary_python to directly follow the default python
+  without the python3 indirection</comment>
+    <requestid>1230166</requestid>
+  </revision>
 </revisionlist>

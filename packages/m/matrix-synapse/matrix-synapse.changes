@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Wed Dec 11 16:11:34 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- switch to primary_python to directly follow the default python
+  without the python3 indirection
+
+-------------------------------------------------------------------
+Wed Dec 11 15:58:41 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.121.0
+  This release candidate contains the security fixes from v1.120.2.
+
+  - Features
+    - Support for MSC4190: device management for Application
+      Services. (#17705)
+    - Update MSC4186 Sliding Sync to include invite, ban, kick,
+      targets when $LAZY-loading room members. (#17947)
+    - Use stable M_USER_LOCKED error code for locked accounts, as
+      per Matrix 1.12. (#17965)
+    - MSC4076: Add disable_badge_count to pusher configuration.
+      (#17975)
+  - Bugfixes
+    - Fix long-standing bug where read receipts could get overly
+      delayed being sent over federation. (#17933)
+  - Improved Documentation
+    - Add OIDC example configuration for Forgejo (fork of Gitea).
+      (#17872)
+    - Link to element-docker-demo from contrib/docker*. (#17953)
+  - Internal Changes
+    - MSC4108: Add a Content-Type header on the PUT response to
+      work around a faulty behavior in some caching reverse
+      proxies. (#17253)
+    - Fix incorrect comment in new schema delta. (#17936)
+    - Raise setuptools_rust version cap to 1.10.2. (#17944)
+    - Enable encrypted appservice related experimental features in
+      the complement docker image. (#17945)
+    - Return whether the user is suspended when querying the user
+      account in the Admin API. (#17952)
+    - Fix new scheduled tasks jumping the queue. (#17962)
+    - Bump pyo3 and dependencies to v0.23.2. (#17966)
+    - Update setuptools-rust and fix building abi3 wheels in latest
+      version. (#17969)
+    - Consolidate SSO redirects through
+      /_matrix/client/v3/login/sso/redirect(/{idpId}). (#17972)
+    - Fix Docker and Complement config to be able to use
+      public_baseurl. (#17986)
+    - Fix building wheels for MacOS which was temporarily disabled
+      in Synapse 1.120.2. (#17993)
+    - Fix release process to not create duplicate releases.
+      (#17970, #17995)
+  - Updates to locked dependencies
+    - Bump bytes from 1.8.0 to 1.9.0. (#17982)
+    - Bump pysaml2 from 7.3.1 to 7.5.0. (#17978)
+    - Bump serde_json from 1.0.132 to 1.0.133. (#17939)
+    - Bump tomli from 2.0.2 to 2.1.0. (#17959)
+    - Bump tomli from 2.1.0 to 2.2.1. (#17979)
+    - Bump tornado from 6.4.1 to 6.4.2. (#17955)
+
+-------------------------------------------------------------------
 Mon Dec  9 23:07:09 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - BuildIgnore cargo and rust as they both obsolete the version we
@@ -224,7 +282,7 @@ Wed Oct 30 18:19:09 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 Tue Oct 29 19:07:58 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.118.0
-	Python 3.8 support will be dropped in the next release
+  Python 3.8 support will be dropped in the next release
   Python 3.8 is now end-of-life. As per our Deprecation Policy for
   Platform Dependencies, Synapse will be dropping support for
   Python 3.8 in the next release; Synapse 1.119.0.
@@ -1394,7 +1452,7 @@ Fri Nov 17 23:44:47 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
   The Matrix.org Foundation copy of the project will be archived.
   Any changes needed by server administrators will be communicated
   via our usual announcements channels, but we are striving to make
-  this as seamless as possible. 
+  this as seamless as possible.
 
   - Features
     - Add experimental support to allow multiple workers to write
@@ -2223,7 +2281,7 @@ Tue Jun  6 10:06:46 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
       side request forgery or bypassing network policies. Impact is
       limited to IP addresses allowed by the
       url_preview_ip_range_blacklist setting (by default this only
-      allows public IPs). (boo#1212054) 
+      allows public IPs). (boo#1212054)
 
   - Features
     - Improve performance of backfill requests by performing
@@ -3346,7 +3404,7 @@ Tue Dec 20 20:16:04 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
     - Bump phonenumbers from 8.13.1 to 8.13.2. (#14660)
     - Bump authlib from 1.1.0 to 1.2.0. (#14661)
     - Move StateFilter to synapse.types. (#14668)
-    - Improve type hints. (#14597, #14646, #14671)  
+    - Improve type hints. (#14597, #14646, #14671)
 
 -------------------------------------------------------------------
 Tue Dec  6 13:39:40 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
@@ -3356,7 +3414,7 @@ Tue Dec  6 13:39:40 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
   in this release; see the upgrade notes for more details.
 
   https://github.com/matrix-org/synapse/blob/release-v1.73/docs/upgrade.md#legacy-prometheus-metric-names-have-now-been-removed
-  
+
   - Features
     - Speed-up /messages with filter_events_for_client
       optimizations. (#14527)
@@ -3818,7 +3876,7 @@ Wed Oct 26 11:56:57 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
     - Specify dev-dependencies using lower bounds, to reduce the
       likelihood of a dependabot merge conflict. The lockfile
       continues to pin to specific versions. (#14227)
-- Drop https://patch-diff.githubusercontent.com/raw/matrix-org/synapse/pull/14221.patch 
+- Drop https://patch-diff.githubusercontent.com/raw/matrix-org/synapse/pull/14221.patch
 
 -------------------------------------------------------------------
 Thu Oct 20 10:44:17 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
@@ -3835,7 +3893,7 @@ Tue Oct 18 14:52:09 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 -------------------------------------------------------------------
 Tue Oct 18 12:44:57 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
-- Added https://patch-diff.githubusercontent.com/raw/matrix-org/synapse/pull/14221.patch 
+- Added https://patch-diff.githubusercontent.com/raw/matrix-org/synapse/pull/14221.patch
   Same fix for the cache_memory as for url_preview
 
 -------------------------------------------------------------------
@@ -4071,7 +4129,7 @@ Sun Oct  9 21:58:05 UTC 2022 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Fri Sep 30 09:37:21 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
-- added https://patch-diff.githubusercontent.com/raw/matrix-org/synapse/pull/13952.patch 
+- added https://patch-diff.githubusercontent.com/raw/matrix-org/synapse/pull/13952.patch
   this prevents setuptools-rust being enforced as a runtime
   dependency. Drop dependency in the package again.
 
@@ -4079,7 +4137,7 @@ Fri Sep 30 09:37:21 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 Wed Sep 28 01:07:43 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - synapse checks for setuptools-rust as a runtime dep. add this
-  until we figured out a better solution 
+  until we figured out a better solution
 
 -------------------------------------------------------------------
 Tue Sep 27 20:50:59 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
@@ -4503,7 +4561,7 @@ Wed Aug 31 22:26:31 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
     - Allow specifying additional request fields when using the
       HomeServerTestCase.login helper method. (#13549)
     - Make HomeServerTestCase load any configured homeserver
-      modules automatically. (#13558)  
+      modules automatically. (#13558)
 - sync update package dependencies from the pyproject.toml
   adds pydantic >= 1.7.4 (>= 1.9.1 in poetry mode)
 
@@ -4622,7 +4680,7 @@ Tue Aug 16 17:58:42 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
     - Use literals in place of HTTPStatus constants in tests.
       (#13463, #13469)
     - Correct a misnamed argument in state res v2 internals.
-      (#13467)  
+      (#13467)
 
 -------------------------------------------------------------------
 Tue Aug  2 11:32:12 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
@@ -4780,7 +4838,7 @@ Tue Aug  2 11:32:12 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 -------------------------------------------------------------------
 Wed Jul 20 13:54:45 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to 1.63.1 
+- Update to 1.63.1
   - Features
     - Add a rate limit for local users sending invites. (#13125)
     - Implement MSC3827: Filtering of /publicRooms by room type.
@@ -4887,7 +4945,7 @@ Wed Jul 20 13:54:45 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 -------------------------------------------------------------------
 Tue Jul  5 12:48:31 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to 1.62.0 
+- Update to 1.62.0
   Authors of spam-checker plugins should consult the upgrade notes
   to learn about the enriched signatures for spam checker
   callbacks, which are supported with this release of Synapse.
@@ -5453,7 +5511,7 @@ Tue May 17 10:27:39 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
   login type from Synapse. It can be replaced with
   org.matrix.login.jwt for identical behaviour. This is only used
   if jwt_config.enabled is set to true in the configuration.
-  (#12597) 
+  (#12597)
 
   - Features
     - Support MSC3266 room summaries over federation. (#11507)
@@ -5593,7 +5651,7 @@ Thu May  5 18:33:27 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
   systemd.journal.JournalHandler log handler was configured. See
   #12631 for further information.
 
-  Otherwise, no significant changes since 1.58.0. 
+  Otherwise, no significant changes since 1.58.0.
 
 -------------------------------------------------------------------
 Tue May  3 11:14:28 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
@@ -5720,7 +5778,7 @@ Thu Apr 21 10:19:32 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
   - Updates to the Docker image
     - Include version 0.2.0 of the Synapse LDAP Auth Provider
       module in the Docker image. This matches the version that was
-      present in the Docker image for Synapse v1.56.0. 
+      present in the Docker image for Synapse v1.56.0.
 
 -------------------------------------------------------------------
 Tue Apr 19 13:18:59 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
@@ -5889,7 +5947,7 @@ Tue Apr 19 13:18:59 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 -------------------------------------------------------------------
 Tue Apr  5 14:16:27 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to 1.56.0 
+- Update to 1.56.0
   Synapse will now refuse to start up if open registration is
   enabled, in order to help mitigate abuse across the federation.
   If you would like to provide registration to anyone, consider
@@ -5981,7 +6039,7 @@ Tue Apr  5 14:16:27 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
     - Fix compatibility with the recently-released Jinja 3.1.
       (#12313)
     - Avoid trying to calculate the state at outlier events.
-      (#12314) 
+      (#12314)
 - refreshed patches:
   dont-bump-cryptography-with-system-openssl.patch
   matrix-synapse-1.4.1-paths.patch
@@ -6681,7 +6739,7 @@ Tue Jan 18 16:24:25 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 -------------------------------------------------------------------
 Tue Jan 18 11:57:01 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
-- bump minimum python in the BuildRequires to 3.8 
+- bump minimum python in the BuildRequires to 3.8
 
 -------------------------------------------------------------------
 Tue Jan 18 11:53:13 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
@@ -6828,7 +6886,7 @@ Fri Jan  7 22:44:45 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 -------------------------------------------------------------------
 Tue Dec 28 03:45:30 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
-- Add explicit minimum versions for more dependencies. 
+- Add explicit minimum versions for more dependencies.
 
 -------------------------------------------------------------------
 Tue Dec 21 18:39:09 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
@@ -7093,7 +7151,7 @@ Tue Nov 30 14:59:49 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
       scripts-dev/complement.sh. (#11389)
     - Remove dead code from supporting ACME. (#11393)
     - Refactor including the bundled relations when serializing an
-      event. (#11408) 
+      event. (#11408)
 
 -------------------------------------------------------------------
 Sun Nov 28 18:35:03 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
@@ -7124,7 +7182,7 @@ Tue Nov 23 14:45:19 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
     attacker, which limits the impact.  Homeservers with the media
     repository disabled are unaffected. Homeservers configured with
     a federation whitelist are also unaffected.  Fixed by
-    91f2bd090. 
+    91f2bd090.
 
 -------------------------------------------------------------------
 Wed Nov 17 14:19:53 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
@@ -7534,7 +7592,7 @@ Wed Oct 20 09:47:52 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 -------------------------------------------------------------------
 Tue Oct  5 13:44:42 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to 1.44.0 
+- Update to 1.44.0
   - Features
     - Only allow the MSC2716 /batch_send?chunk_id=xxx endpoint to
       connect to an already existing insertion event. (#10776)
@@ -7866,7 +7924,7 @@ Tue Sep  7 16:11:58 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 -------------------------------------------------------------------
 Thu Sep  2 09:52:14 UTC 2021 - Jan Zerebecki <jan.suse@zerebecki.de>
 
-- Add 10719-Fix-instert-of-duplicate-key-into-event_json.patch 
+- Add 10719-Fix-instert-of-duplicate-key-into-event_json.patch
 
 -------------------------------------------------------------------
 Tue Aug 31 14:21:51 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
@@ -8246,7 +8304,7 @@ Thu Jul 22 16:20:00 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 -------------------------------------------------------------------
 Fri Jul 16 15:32:21 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
-- oidc can be enabled on TW as the Authlib package is in the distro 
+- oidc can be enabled on TW as the Authlib package is in the distro
 
 -------------------------------------------------------------------
 Fri Jul 16 14:48:15 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
@@ -8552,7 +8610,7 @@ Tue Jun 15 18:04:01 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
     - Work to improve the responsiveness of /sync requests.
       (#10124)
     - OpenTracing: use a consistent name for background processes.
-      (#10135)  
+      (#10135)
 
 -------------------------------------------------------------------
 Thu Jun  3 15:16:29 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
@@ -8663,7 +8721,7 @@ Sun May 30 17:50:21 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 -------------------------------------------------------------------
 Wed May 19 15:50:36 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
-- Switch package to use sysuser 
+- Switch package to use sysuser
 - Cleanup duplicated buildrequires and switch to %requires_eq for
   the base python as well
 
@@ -9064,10 +9122,10 @@ Fri Mar 26 12:39:34 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
   - Internal Changes
     - Enforce that `cryptography` dependency is up to date to
       ensure it has the most recent openssl patches. (#9697)
-  
+
 - Note: we do not bump the cryptography dependency in our package
   as we use the system OpenSSL which gets the fix.
-  
+
   Add dont-bump-cryptography-with-system-openssl.patch to comment
   out the dependency because otherwise the newer version
   requirement is enforced on startup
@@ -9356,7 +9414,7 @@ Thu Feb 25 22:00:48 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 -------------------------------------------------------------------
 Tue Feb 16 14:12:41 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to 1.27.0 
+- Update to 1.27.0
   Note that this release includes a change in Synapse to use Redis
   as a cache ─ as well as a pub/sub mechanism ─ if Redis support is
   enabled for workers. No action is needed by server
@@ -9604,13 +9662,13 @@ Mon Jan 25 09:28:42 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Remove python singlespec macro usage: This package only builds
   against the primary python3 flavor. No need to pull in and expand
-  legacy python36 
+  legacy python36
 - Remove Leap 42 python2 handling in matrix-synapse-test.spec
 
 -------------------------------------------------------------------
 Wed Jan 13 12:28:54 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to 1.25.0 
+- Update to 1.25.0
   Ending Support for Python 3.5 and Postgres 9.5 With this release,
   the Synapse team is announcing a formal deprecation policy for
   our platform dependencies, like Python and PostgreSQL:
@@ -10204,7 +10262,7 @@ Thu Oct 15 17:16:29 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 -------------------------------------------------------------------
 Thu Oct 15 16:45:55 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to 1.21.2 
+- Update to 1.21.2
   - Security advisory
     - HTML pages served via Synapse were vulnerable to cross-site
       scripting (XSS) attacks. All server administrators are
