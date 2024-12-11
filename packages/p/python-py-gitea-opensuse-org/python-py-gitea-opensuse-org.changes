@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec 11 14:05:45 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 1.22.4 (there is no upstream changelog at all, code
+  is automatically generated from src.o.o API)
+
+-------------------------------------------------------------------
+Wed Nov 20 07:39:17 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 1.22.0 (there is no upstream changelog at all, code
+  is automatically generated from src.o.o API)
+
+-------------------------------------------------------------------
 Fri Sep 22 18:48:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - Initial package (1.19.4)

@@ -7,4 +7,16 @@
     <comment></comment>
     <requestid>1113072</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2b98092cb11a76064367f632bde2dbc6</srcmd5>
+    <version>1.22.4</version>
+    <time>1733947731</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.22.4 (there is no upstream changelog at all, code
+  is automatically generated from src.o.o API)
+- Update to 1.22.0 (there is no upstream changelog at all, code
+  is automatically generated from src.o.o API)
+</comment>
+    <requestid>1230183</requestid>
+  </revision>
 </revisionlist>
