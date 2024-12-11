@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec 11 15:23:06 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.0.6:
+  + flatpak-spawn now supports --sandbox-a11y-own-name (if
+    supported by portal).
+  + flatpak-spawn prints a useful error when --host isn't
+    permitted.
+- Drop 264052bbf52899410421454150c493264bd1a696.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
 Mon Nov  6 16:02:32 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with RPM 4.19: unnumbered patches are no longer

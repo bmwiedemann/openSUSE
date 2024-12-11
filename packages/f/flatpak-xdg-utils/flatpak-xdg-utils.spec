@@ -1,7 +1,7 @@
 #
 # spec file for package flatpak-xdg-utils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,11 @@
 
 Name:           flatpak-xdg-utils
 Summary:        Command-line tools for use inside Flatpak sandboxes
-Version:        1.0.5
+Version:        1.0.6
 Release:        0
 License:        LGPL-2.1-or-later
 URL:            https://github.com/flatpak/flatpak-xdg-utils
 Source:         %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM 264052bbf52899410421454150c493264bd1a696.patch -- flatpak-spawn: Fix memory leak when receiving NameOwnerChanged
-Patch0:         %{url}/commit/264052bbf52899410421454150c493264bd1a696.patch
 
 BuildRequires:  c_compiler
 BuildRequires:  meson
