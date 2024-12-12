@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Dec 12 05:56:35 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.17.7:
+  * Bump apko and fix the thing I broke
+  * Handle WalkDir errors
+  * build(deps): bump dagger.io/dagger from 0.14.0 to 0.15.0
+
+-------------------------------------------------------------------
+Thu Dec 12 05:55:01 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.17.6:
+  * Bump apko to v0.20.2
+
+-------------------------------------------------------------------
+Thu Dec 12 05:53:56 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.17.5:
+  * drop spammy slog attributes
+  * build(deps): bump cloud.google.com/go/storage from 1.47.0 to
+    1.48.0
+
+-------------------------------------------------------------------
 Tue Dec 10 08:48:22 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.17.4:
