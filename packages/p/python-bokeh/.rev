@@ -480,4 +480,12 @@
   * #13972 BOKEH_MINIFIED not working</comment>
     <requestid>1226944</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>599650af2eb8126142f510ce605db460</srcmd5>
+    <version>3.6.2</version>
+    <time>1734034812</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1230615</requestid>
+  </revision>
 </revisionlist>

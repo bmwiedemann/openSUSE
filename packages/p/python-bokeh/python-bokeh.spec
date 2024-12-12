@@ -30,7 +30,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-bokeh%{psuffix}
-Version:        3.6.1
+Version:        3.6.2
 Release:        0
 Summary:        Interactive plots and applications in the browser from Python
 License:        BSD-3-Clause

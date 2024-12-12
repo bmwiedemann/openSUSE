@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Dec  5 14:52:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.6.2:
+  * #14082 [BUG] p.circle(..) can't be added as renderer to
+    PointDrawTool since 3.6
+  * #14153 [component: bokehjs] `ScaleBar` positioning
+    doesn't work correctly
+  * #14160 [component: docs] Search box on start page has
+    no surrounding line
+  * #14168 [component: bokehjs] [BUG] using add_tile to add
+    multiple layers causes error on JScript side
+  * #14088 [component: docs] [BUG] Missing radius parameter
+    in code example
+  * #14086 Update links to sponsor page
+  * #14155 Backports for 3.6.2
+
+-------------------------------------------------------------------
 Wed Nov 27 16:37:34 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.6.1
@@ -34,7 +51,7 @@ Wed Nov 27 16:37:34 UTC 2024 - Ben Greiner <code@bnavigator.de>
   * #13984 [component: tests] [BUG] Deprecation warning treated as
     error in pytest hook
   * #14014 [component: bokehjs] [BUG] StringFormatter `nan_format`
-    seems broken 
+    seems broken
   * #14054 [component: bokehjs] [BUG] Custom hover tooltip on image
     plot shows all the image data.
   * #14058 [component: bokehjs] [BUG] Clearing selection with ESC
@@ -72,7 +89,7 @@ Wed Nov 27 16:37:34 UTC 2024 - Ben Greiner <code@bnavigator.de>
   * #13835 [FEATURE] NumPy 2.0 support
   * #13960 [component: docs] Remove sampledata download in
     contributing guide
-  * #13963 [FEATURE] Add a conda channel for rc releases 
+  * #13963 [FEATURE] Add a conda channel for rc releases
   * #13969 [component: bokehjs] [BUG] Plots fail in Firefox
     115.12.0esr (64-bit)
   * #13946 [component: build] Upgrade to TypeScript 5.5

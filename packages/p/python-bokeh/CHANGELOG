@@ -1,3 +1,16 @@
+2024-12-03    3.6.2:
+--------------------
+  * bugfixes:
+    - #14082 [BUG] p.circle(..) can't be added as renderer to PointDrawTool since 3.6
+    - #14153 [component: bokehjs] `ScaleBar` positioning doesn't work correctly
+    - #14160 [component: docs] Search box on start page has no surrounding line
+    - #14168 [component: bokehjs] [BUG] using add_tile to add multiple layers causes error on JScript side
+
+  * tasks:
+    - #14088 [component: docs] [BUG] Missing radius parameter in code example
+    - #14086 Update links to sponsor page
+    - #14155 Backports for 3.6.2
+
 2024-11-06    3.6.1:
 --------------------
   * bugfixes:
