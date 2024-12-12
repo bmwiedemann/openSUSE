@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec 12 15:15:16 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1734015736.407e9c7:
+  * Avoid Perl warning about when handling tags to assert
+  * Extend sshVirtsh console test coverage
+  * Add logging and error handling
+  * video_stream: add support for ustreamer >= 6.10
+  * video_stream: add support for RGB3 format
+  * video_stream: typo fix
+
+-------------------------------------------------------------------
 Tue Dec 10 23:16:57 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1733849750.e4a580f:
