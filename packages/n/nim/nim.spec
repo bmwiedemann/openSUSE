@@ -17,9 +17,10 @@
 
 
 %define _atlas_version 0.8.0
+%define _sat_commit faf1617f44d7632ee9601ebc13887644925dcc01
 
 Name:           nim
-Version:        2.0.6
+Version:        2.0.12
 Release:        0
 Summary:        A statically typed compiled systems programming language
 License:        MIT
@@ -28,8 +29,13 @@ URL:            https://nim-lang.org/
 Source0:        https://nim-lang.org/download/nim-%{version}.tar.xz
 Source1:        https://github.com/nim-lang/atlas/archive/refs/tags/%{_atlas_version}.tar.gz#/atlas-%{_atlas_version}.tar.gz
 Source2:        nim-rpmlintrc
+Source3:        https://github.com/nim-lang/sat/archive/%{_sat_commit}.tar.gz#/sat-%{_sat_commit}.tar.gz
 Patch0:         nim-nim-gdb_fix_interpreter.patch
 Patch1:         nim-fix-tests-i586.patch
+Patch2:         0001-disable-toop1-test.patch
+Patch3:         0002-disable-tvmmisc-test.patch
+Patch4:         0003-disable-cpp-tmanual_exception-test.patch
+Patch5:         0004-disable-tobjcov-test.patch
 BuildRequires:  binutils-devel
 BuildRequires:  ca-certificates
 BuildRequires:  ca-certificates-mozilla
@@ -93,14 +99,20 @@ Elegant:
 * Statements are grouped by indentation but can span multiple lines.
 
 %prep
-%autosetup -a1 -N
+%setup -a1 -a3
+
+mv atlas-%{_atlas_version} dist/atlas
+mkdir dist/atlas/dist
+mv sat-%{_sat_commit} dist/atlas/dist/sat
 
 %patch -P 0 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
 %ifarch i586
 %patch -P 1 -p1
 %endif
-
-mv -v atlas-%{_atlas_version} dist/atlas
 
 %build
 export CFLAGS="%{optflags}"

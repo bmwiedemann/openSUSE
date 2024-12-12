@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Dec 12 13:44:24 UTC 2024 - Rein Fernhout <me@levitati.ng>
+
+- Added various patches to disable tests that
+  don't pass on the current version of GCC.
+  * 0001-disable-toop1-test.patch
+  * 0002-disable-tvmmisc-test.patch
+  * 0003-disable-cpp-tmanual_exception-test.patch
+  * 0004-disable-tobjcov-test.patch
+
+-------------------------------------------------------------------
+Thu Dec 12 03:24:53 UTC 2024 - Rein Fernhout <me@levitati.ng>
+
+- Update to version 2.0.12
+  See https://nim-lang.org/blog/2024/11/01/nim-2012-released.html
+  and https://nim-lang.org/blog/2024/10/02/nim-220-2010.html
+  and https://nim-lang.org/blog/2024/07/03/version-208-released.html
+  for all changes.
+
+-------------------------------------------------------------------
 Tue Jun 18 08:11:16 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 2.0.6:

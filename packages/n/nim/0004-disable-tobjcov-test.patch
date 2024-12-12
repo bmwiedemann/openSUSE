@@ -1,0 +1,24 @@
+From 34b968eac2cabdea9c6a616520f17bf1624e3586 Mon Sep 17 00:00:00 2001
+From: "LevitatingBusinessMan (Rein Fernhout)" <me@levitati.ng>
+Date: Thu, 12 Dec 2024 10:02:12 +0100
+Subject: [PATCH 4/4] disable tobjcov test
+
+---
+ tests/objects/tobjcov.nim | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tests/objects/tobjcov.nim b/tests/objects/tobjcov.nim
+index a12f74702..ea76d193c 100644
+--- a/tests/objects/tobjcov.nim
++++ b/tests/objects/tobjcov.nim
+@@ -1,6 +1,7 @@
+ discard """
+ action: compile
+ targets: "c"
++disabled: true
+ """
+ 
+ # Covariance is not type safe:
+-- 
+2.47.1
+

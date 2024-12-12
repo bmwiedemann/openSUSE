@@ -1,0 +1,23 @@
+From 42093f126275d0b5f511acaf2318298df1fec63d Mon Sep 17 00:00:00 2001
+From: "LevitatingBusinessMan (Rein Fernhout)" <me@levitati.ng>
+Date: Thu, 12 Dec 2024 06:42:43 +0100
+Subject: [PATCH] disable toop1 test
+
+---
+ tests/objects/toop1.nim | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tests/objects/toop1.nim b/tests/objects/toop1.nim
+index 3e9b24990..8dc9e312d 100644
+--- a/tests/objects/toop1.nim
++++ b/tests/objects/toop1.nim
+@@ -1,5 +1,6 @@
+ discard """
+   output: "34[]o 5"
++  disabled: true
+ """
+ # Test the stuff in the tutorial
+ import macros
+-- 
+2.47.1
+

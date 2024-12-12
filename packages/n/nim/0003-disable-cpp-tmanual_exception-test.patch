@@ -1,0 +1,26 @@
+From 62a51ada54036de518538860539278813f7fb7e4 Mon Sep 17 00:00:00 2001
+From: "LevitatingBusinessMan (Rein Fernhout)" <me@levitati.ng>
+Date: Thu, 12 Dec 2024 09:32:41 +0100
+Subject: [PATCH 3/3] disable cpp tmanual_exception test
+
+---
+ tests/cpp/tmanual_exception.nim | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/tests/cpp/tmanual_exception.nim b/tests/cpp/tmanual_exception.nim
+index a91ccffe4..19d1a47b2 100644
+--- a/tests/cpp/tmanual_exception.nim
++++ b/tests/cpp/tmanual_exception.nim
+@@ -1,7 +1,8 @@
+ discard """
+   # doesn't work on macos 13 seemingly due to libc++ linking issue https://stackoverflow.com/a/77375947
+-  disabled: osx
++  # disabled: osx
+   targets: cpp
++  disabled: true
+ """
+ 
+ # manual example
+-- 
+2.47.1
+

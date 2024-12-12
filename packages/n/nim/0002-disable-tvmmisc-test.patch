@@ -1,0 +1,23 @@
+From cf40199267b6f3a6e19ecce3c5b1cd4a7863143b Mon Sep 17 00:00:00 2001
+From: "LevitatingBusinessMan (Rein Fernhout)" <me@levitati.ng>
+Date: Thu, 12 Dec 2024 08:37:59 +0100
+Subject: [PATCH 2/2] disable tvmmisc test
+
+---
+ tests/vm/tvmmisc.nim | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/tests/vm/tvmmisc.nim b/tests/vm/tvmmisc.nim
+index 6aeac5529..487b7cd94 100644
+--- a/tests/vm/tvmmisc.nim
++++ b/tests/vm/tvmmisc.nim
+@@ -1,3 +1,6 @@
++discard """
++disabled: true
++"""
+ import macros
+ import os
+ 
+-- 
+2.47.1
+
