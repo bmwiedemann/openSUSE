@@ -1,6 +1,0 @@
-<package name="python-nntplib" project="openSUSE:Factory">
-  <title>NNTP module from the standard library</title>
-  <description>nntplib from Python 3 standard library as an independent module</description>
-  <devel project="devel:languages:python" package="python-nntplib"/>
-  <url>https://git.cepl.eu/cgit/python/nntplib</url>
-</package>
