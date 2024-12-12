@@ -1,7 +1,7 @@
 #
 # spec file for package tpm2-pkcs11
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define so_ver  0
 %define pythons python3
 Name:           tpm2-pkcs11
-Version:        1.9.0
+Version:        1.9.1
 Release:        0
 Summary:        A PKCS#11 interface for TPM2 hardware
 License:        BSD-2-Clause
@@ -50,6 +50,9 @@ BuildRequires:  pkgconfig(tss2-mu)
 BuildRequires:  pkgconfig(tss2-rc)
 BuildRequires:  pkgconfig(tss2-tctildr)
 BuildRequires:  pkgconfig(yaml-0.1)
+# Required for testing
+BuildRequires:  pkgconfig(cmocka)
+BuildRequires:  dbus-1-daemon
 # Merge both subpackages
 Provides:       libtpm2_pkcs11-0 = %{version}
 Obsoletes:      libtpm2_pkcs11-0 < %{version}
@@ -69,7 +72,7 @@ Cryptographic Token Interface (Cryptoki) C API atop of TPM2 devices.
 
 %build
 autoreconf -fiv
-%configure --disable-static
+%configure --disable-static --enable-unit
 %make_build
 cd tools
 %python_build
@@ -81,6 +84,9 @@ mkdir -p %{buildroot}%{_sysconfdir}/tpm2_pkcs11
 cd tools
 %python_install
 %fdupes %{buildroot}
+
+%check
+%make_build check
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
