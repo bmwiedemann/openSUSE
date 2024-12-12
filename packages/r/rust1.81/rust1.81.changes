@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 12 02:55:09 UTC 2024 - William Brown <william.brown@suse.com>
+
+- add patch: 0001-Disable-pidfs-tests-for-15SP3.patch
+- bsc#1232667 - SLFO:Main requires changes for gcc version detection
+
+-------------------------------------------------------------------
 Tue Sep 24 03:52:06 UTC 2024 - William Brown <william.brown@suse.com>
 
 - Fix specification of cmake version for SLE15SP3 and SP4

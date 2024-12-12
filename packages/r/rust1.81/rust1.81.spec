@@ -23,13 +23,14 @@
 # This has to be kept lock step to the rust version.
 # -- will be 18 for 1.78
 %global llvm_version 18
-%if 0%{?sle_version} <= 150900 && 0%{?suse_version} < 1599
+
+%if 0%{?gcc_version} < 13
 # We may need a minimum gcc version for some linker flags
 # This is especially true on leap/sle
 #
-# ⚠️   11 or greater is required for a number of linker flags to be supported in sle.
+# ⚠️   13 or greater is required for a number of linker flags to be supported in sle.
 #
-%global gcc_version 13
+%global need_gcc_version 13
 %endif
 
 #KEEP NOSOURCE DEBUGINFO
@@ -153,8 +154,8 @@ Obsoletes:      %{1}1.62%{?2:-%{2}}
 %if %{with llvmtools}
 %define rust_linker clang
 %else
-%if 0%{?gcc_version} != 0
-%define rust_linker gcc-%{gcc_version}
+%if 0%{?need_gcc_version} != 0
+%define rust_linker gcc-%{need_gcc_version}
 %else
 %define rust_linker cc
 %endif
@@ -279,6 +280,13 @@ Patch0:         ignore-Wstring-conversion.patch
 # IMPORTANT - To generate patches for submodules in git so they apply relatively you can use
 #  git format-patch --text --dst-prefix=b/src/tools/cargo/  HEAD~2
 
+# SLE 15 SP3 and lower do not support pidfs, but it's not possible to disable that
+# test individually. As a result, we have to skip testing below 15.4.
+
+%if 0%{?sle_version} <= 150400
+Patch3:         0001-Disable-pidfs-tests-for-15SP3.patch
+%endif
+
 BuildRequires:  chrpath
 BuildRequires:  curl
 # BUG - fdupes on leap/sle causes issues with debug info
@@ -317,9 +325,9 @@ BuildRequires:  lld
 Requires:       clang
 Requires:       lld
 %else
-%if 0%{?gcc_version} != 0
-BuildRequires:  gcc%{gcc_version}-c++
-Requires:       gcc%{gcc_version}
+%if 0%{?need_gcc_version} != 0
+BuildRequires:  gcc%{need_gcc_version}-c++
+Requires:       gcc%{need_gcc_version}
 %else
 BuildRequires:  gcc-c++
 Requires:       gcc
@@ -498,10 +506,10 @@ export CXX="/usr/bin/clang++"
 EOF
 %else
 
-%if 0%{?gcc_version} != 0
+%if 0%{?need_gcc_version} != 0
 cat > .env.sh <<EOF
-export CC="/usr/bin/gcc-%{gcc_version}"
-export CXX="/usr/bin/g++-%{gcc_version}"
+export CC="/usr/bin/gcc-%{need_gcc_version}"
+export CXX="/usr/bin/g++-%{need_gcc_version}"
 EOF
 %else
 cat > .env.sh <<EOF

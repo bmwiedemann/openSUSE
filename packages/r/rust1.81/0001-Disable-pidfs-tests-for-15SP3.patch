@@ -1,0 +1,34 @@
+From f965ed2f96fd846436345b4a952c77900c3a644b Mon Sep 17 00:00:00 2001
+From: William <william@blackhats.net.au>
+Date: Tue, 10 Dec 2024 12:57:45 +1000
+Subject: [PATCH] Disable pidfs tests for 15SP3
+
+SLE-15-SP3 has a kernel that is too old to correctly use pidfs. Disable
+testing pidfs features for that platform.
+---
+ library/std/src/sys/pal/unix/linux/pidfd/tests.rs | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/library/std/src/sys/pal/unix/linux/pidfd/tests.rs b/library/std/src/sys/pal/unix/linux/pidfd/tests.rs
+index fb928c76fbd..686d92c50be 100644
+--- a/library/std/src/sys/pal/unix/linux/pidfd/tests.rs
++++ b/library/std/src/sys/pal/unix/linux/pidfd/tests.rs
+@@ -5,6 +5,7 @@
+ use crate::process::Command;
+ 
+ #[test]
++#[ignore = "fails on 15-SP3"]
+ fn test_command_pidfd() {
+     let pidfd_open_available = probe_pidfd_support();
+ 
+@@ -57,6 +58,7 @@ fn test_command_pidfd() {
+ }
+ 
+ #[test]
++#[ignore = "fails on 15-SP3"]
+ fn test_pidfd() {
+     if !probe_pidfd_support() {
+         return;
+-- 
+2.47.1
+
