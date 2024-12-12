@@ -104,4 +104,13 @@
     <comment></comment>
     <requestid>1203330</requestid>
   </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>9c328267fcbee13fd32e5b9654f5071a</srcmd5>
+    <version>0.25.1</version>
+    <time>1734036544</time>
+    <user>anag+factory</user>
+    <comment>- (Build)Require audioop-lts on Python 3.13
+</comment>
+    <requestid>1230305</requestid>
+  </revision>
 </revisionlist>

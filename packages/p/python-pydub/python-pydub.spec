@@ -38,6 +38,7 @@ Patch0:         skip_libopenh264-7.patch
 # PATCH-FIX-UPSTREAM gh#jiaaro/pydub#769
 Patch1:         fix-assertions.patch
 BuildRequires:  %{ffmpeg_pref}
+BuildRequires:  %{python_module audioop-lts if %python-base >= 3.13}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
@@ -47,6 +48,9 @@ BuildRequires:  fdupes
 BuildConflicts: %{ffmpeg_pref}-mini-libs
 BuildRequires:  python-rpm-macros
 Requires:       %{ffmpeg_pref}
+%if 0%{?python_version_nodots} >= 313
+Requires:       python-audioop-lts
+%endif
 Recommends:     python-scipy
 Recommends:     python-simpleaudio
 BuildArch:      noarch

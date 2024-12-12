@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 11 11:56:48 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- (Build)Require audioop-lts on Python 3.13
+
+-------------------------------------------------------------------
 Tue Sep 24 23:02:36 UTC 2024 - Guang Yee <gyee@suse.com>
 
 - Enable sle15_python_module_pythons. 
