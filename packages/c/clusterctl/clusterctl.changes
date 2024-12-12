@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Dec 11 08:49:50 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.9.0:
+  Full changelog is available here:
+  https://github.com/kubernetes-sigs/cluster-api/releases/tag/v1.9.0
+  * New providers in clusterctl: Canonical (#11337), Nutanix
+    (#11135), Vultr (#11091)
+  * New features:
+    - clusterctl: Add support for v1beta2 conditions to clusterctl
+      describe (#11277)
+    - clusterctl: Allow user to suppress API warnings (#11149)
+    - clusterctl: Suppress "finalizer name" API warnings in "move"
+      command (#11173)
+  * Bugfixes
+    - clusterctl: Ensure move uses mutated metadata when updating a
+      target object (#10957)
+    - clusterctl: Fix: considers objects in kube-system for
+      cert-manager to avoid upgrading twice (#11351)
+    - clusterctl: Handle a nil mutator by returning an error, not
+      panicking (#10951)
+
+-------------------------------------------------------------------
 Wed Dec 11 07:12:04 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.8.6:
