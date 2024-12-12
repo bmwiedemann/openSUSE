@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Dec 12 15:14:46 UTC 2024 - david.mulder@suse.com
+
+- Update to version 0.7.13+git.0.d790d31:
+  * Version 0.7.13
+  * Fix Fedora build dependencies
+  * Version 0.7.12
+  * Add Debian 12 packaging
+  * Update github CI dependencies
+  * Version 0.7.11
+  * Implement Hello Pin changes via PAM
+  * Utilize HimmelblauConfig directly in pam and nss
+  * Version 0.7.10
+  * Add config parsing unit tests
+  * Fix incorrect default domain
+  * Fix config hsm type Tpm error
+  * Include multi-domain important info in himmelblau.conf man
+
+-------------------------------------------------------------------
 Thu Dec 05 14:18:37 UTC 2024 - david.mulder@suse.com
 
 - Update to version 0.7.9+git.0.93655d2:

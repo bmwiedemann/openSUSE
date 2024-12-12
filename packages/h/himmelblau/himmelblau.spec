@@ -17,7 +17,7 @@
 
 
 Name:           himmelblau
-Version:        0.7.9+git.0.93655d2
+Version:        0.7.13+git.0.d790d31
 Release:        0
 Summary:        Interoperability suite for Microsoft Azure Entra Id
 License:        GPL-3.0-or-later
@@ -35,22 +35,36 @@ BuildRequires:  krb5-devel
 BuildRequires:  libcap-devel
 BuildRequires:  libclang13
 BuildRequires:  libdhash-devel
-BuildRequires:  libldb-devel
 BuildRequires:  libopenssl-3-devel
-BuildRequires:  libtalloc-devel
-BuildRequires:  libtevent-devel
 BuildRequires:  pam-devel
 BuildRequires:  patchelf
 BuildRequires:  pcre2-devel
 BuildRequires:  sqlite3-devel
 BuildRequires:  tpm2-0-tss-devel
 BuildRequires:  utf8proc-devel
+%if 0%{?sle_version} > 150600
+BuildRequires:  atk-devel
+BuildRequires:  cairo-devel
+BuildRequires:  gdk-pixbuf-devel
+BuildRequires:  gobject-introspection-devel
+BuildRequires:  gtk3-devel
+BuildRequires:  libsoup-devel
+BuildRequires:  libudev-devel
+BuildRequires:  mercurial
+BuildRequires:  pango-devel
+BuildRequires:  python3-gyp
+BuildRequires:  webkit2gtk3-devel
+%endif
 ExclusiveArch:  %{rust_tier1_arches}
 Recommends:     libnss_himmelblau2
 Recommends:     pam-himmelblau
 Provides:       aad-cli
 Provides:       aad-common
+Provides:       authd
+Provides:       authd-msentraid
+%if !0%{?is_opensuse}
 Suggests:       himmelblau-sso
+%endif
 Requires:       man
 # This is necessary to prevent users from installing Himmelblau along side
 # Microsoft's Broker, as these will conflict.
@@ -97,6 +111,8 @@ Himmelblau is an interoperability suite for Microsoft Azure Entra Id,
 which allows users to sign into a Linux machine using Azure
 Entra Id credentials.
 
+%if !0%{?is_opensuse}
+# SLE doesn't provide python3-pydbus
 %package -n himmelblau-sso
 Summary:        Azure Entra Id Firefox SSO Configuration
 Requires:       %{name} = %{version}
@@ -108,6 +124,7 @@ Provides:       linux-entra-sso
 Himmelblau is an interoperability suite for Microsoft Azure Entra Id,
 which allows users to sign into a Linux machine using Azure
 Entra Id credentials.
+%endif
 
 %post   -n libnss_himmelblau2 -p /sbin/ldconfig
 %postun -n libnss_himmelblau2 -p /sbin/ldconfig
@@ -117,7 +134,12 @@ Entra Id credentials.
 install -D -m 644 %{SOURCE2} .cargo/config
 
 %build
+# Dependencies for interative Hello PIN changes aren't present prior to 15.6
+%if 0%{?sle_version} <= 150600
 %{cargo_build}
+%else
+%{cargo_build} --features interactive
+%endif
 
 %check
 
@@ -158,12 +180,14 @@ install -D -d -m 0755 %{buildroot}%{_sysconfdir}/ssh/sshd_config.d
 install -m 0644 %{_builddir}/%{name}-%{version}/platform/el/sshd_config %{buildroot}%{_sysconfdir}/ssh/sshd_config.d/himmelblau.conf
 
 # Firefox Single Sign On
+%if !0%{?is_opensuse}
 install -m 0755 %{_builddir}/%{name}-%{version}/src/sso/src/linux-entra-sso.py %{buildroot}/%{_bindir}/linux-entra-sso
 sed -i 's/#!\/usr\/bin\/env python3/#!\/usr\/bin\/python3/' %{buildroot}/%{_bindir}/linux-entra-sso
 install -D -d -m 0755 %{buildroot}%{_libdir}/mozilla/native-messaging-hosts
 install -m 0644 %{_builddir}/%{name}-%{version}/src/sso/src/firefox/linux_entra_sso.json %{buildroot}%{_libdir}/mozilla/native-messaging-hosts/
 install -D -d -m 0755 %{buildroot}%{_sysconfdir}/firefox/policies
 install -m 0644 %{_builddir}/%{name}-%{version}/src/sso/src/firefox/policies.json %{buildroot}%{_sysconfdir}/firefox/policies/
+%endif
 
 # Man pages
 install -D -d -m 0755 %{buildroot}%{_mandir}/man1
@@ -217,6 +241,7 @@ install -m 0644 %{_builddir}/%{name}-%{version}/man/man8/himmelblaud_tasks.8 %{b
 %endif
 %config %{_sysconfdir}/ssh/sshd_config.d/himmelblau.conf
 
+%if !0%{?is_opensuse}
 %files -n himmelblau-sso
 %{_bindir}/linux-entra-sso
 %dir %{_libdir}/mozilla
@@ -225,5 +250,6 @@ install -m 0644 %{_builddir}/%{name}-%{version}/man/man8/himmelblaud_tasks.8 %{b
 %dir %{_sysconfdir}/firefox
 %dir %{_sysconfdir}/firefox/policies
 %config %{_sysconfdir}/firefox/policies/policies.json
+%endif
 
 %changelog
