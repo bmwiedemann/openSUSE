@@ -1,7 +1,38 @@
 -------------------------------------------------------------------
+Thu Dec 12 14:47:34 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 24.12.2:
+  Note that this changelog entry contains changes also included in
+  the two yanked releases before it.
+  * Enhancements
+    - Added additional galaxy[tags] checks (#4422) @minsis
+    - Refactor code to avoid use of rich library (#4396) @ssbarnea
+    - Search for config with the yml/yaml extension (#4416)
+      @cornfeedhobo
+    - Rename color module to output (#4433) @ssbarnea
+    - Remove formatting options for listing rules (#4432) @ssbarnea
+  * Bugfixes
+    - Revert "Accommodate specified inventory files (#4393)"
+      (#4450) @ssbarnea
+    - Enable FQCNs for import_playbook to have subdirs (#4412)
+      @cavcrosby
+    - Utilize create_matcherror more in other rules (#4408)
+      @cavcrosby
+    - Add Astra Linux Platform to platform items (#4429)
+      @razerisback
+    - Normalize version field for rules (#4431) @ssbarnea
+    - Enable pyright hook (#4426) @ssbarnea
+    - Remove dead code and prevent regressions (#4425) @ssbarnea
+    - Prepare for pyright hook enablement (#4410) @ssbarnea
+    - Activate and address some ruff violations (preview) (#4421)
+      @ssbarnea
+    - Fix exception with 'skipped' test (#4406) @Gilles95
+    - Include ! as a shell word. closes #4386 (#4403) @wimglenn
+
+-------------------------------------------------------------------
 Wed Dec 11 14:30:25 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
-- update to 24.12.0:
+- update to 24.12.1:
   * Enhancements
     - Added additional galaxy[tags] checks (#4422) @minsis
   * Bugfixes
