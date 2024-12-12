@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 11 07:25:11 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Moved pkcshsm_mk_change from openCryptoki-devel to openCryptoki 
+        (jsc#PED-10291, jsc#PED-10290) 
+
+-------------------------------------------------------------------
 Tue Dec 10 07:08:59 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Amended the .spec file (jsc#PED-10291, jsc#PED-10290)

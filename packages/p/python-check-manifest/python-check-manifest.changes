@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 11 10:46:24 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.50
+  * Add Python 3.12 and 3.13 support.
+- Adjust upstream source name in spec file
+
+-------------------------------------------------------------------
 Wed Feb 28 05:56:23 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to breezy everywhere.

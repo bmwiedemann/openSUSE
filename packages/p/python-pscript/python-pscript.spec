@@ -1,7 +1,7 @@
 #
 # spec file for package python-pscript
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,7 +52,8 @@ of Python that this compiler supports.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest pscript/tests
+# https://github.com/flexxui/pscript/issues/69
+%pytest -k 'not test_async_and_await' pscript/tests
 
 %files %{python_files}
 %doc README.md

@@ -17,10 +17,10 @@
 
 
 %bcond_without  python_bindings
-%define api_ver 48
+%define api_ver 48.1
 
 Name:           gedit
-Version:        48.0
+Version:        48.1
 Release:        0
 Summary:        UTF-8 text editor
 License:        GPL-2.0-or-later
@@ -29,8 +29,6 @@ URL:            https://wiki.gnome.org/Apps/Gedit
 Source0:        %{name}-%{version}.tar.zst
 # PATCH-FIX-OPENSUSE gedit-desktop.patch -- Adds more MIME types.
 Patch0:         gedit-desktop.patch
-# PATCH-FIX-OPENSUSE gedit-plugins-python-env.patch bjorn.lie@gmail.com -- Fix python env
-Patch1:         gedit-plugins-python-env.patch
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -138,7 +136,6 @@ This subpackage contains the header files for creating gedit plugins.
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.filebrowser.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.filebrowser.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.pythonconsole.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.spell.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.time.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.time.gschema.xml
@@ -155,9 +152,7 @@ This subpackage contains the header files for creating gedit plugins.
 %{_libdir}/gedit/plugins/libfilebrowser.so
 %{_libdir}/gedit/plugins/modelines.plugin
 %{_libdir}/gedit/plugins/libmodelines.so
-%{_libdir}/gedit/plugins/pythonconsole/
-%{_libdir}/gedit/plugins/pythonconsole.plugin
-%{_libdir}/gedit/plugins/textsize/
+%{_libdir}/gedit/plugins/libtextsize.so
 %{_libdir}/gedit/plugins/textsize.plugin
 %{_libdir}/gedit/plugins/sort.plugin
 %{_libdir}/gedit/plugins/libsort.so

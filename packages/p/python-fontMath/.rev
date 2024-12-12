@@ -63,4 +63,12 @@
   Pass &quot;strict&quot; flag down to copies, so strict remains strict. By @justvanrossum in #305, as required to fix googlefonts/fontmake#961</comment>
     <requestid>1042823</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8cfbb14941326c167463e0b3c6205f4a</srcmd5>
+    <version>0.9.4</version>
+    <time>1733947507</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1230122</requestid>
+  </revision>
 </revisionlist>

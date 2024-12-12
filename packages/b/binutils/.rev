@@ -2328,4 +2328,34 @@ that rarely could lead to variations in optimized finaly binaries (forwarded req
 - Adjusted binutils-2.43-branch.diff.gz.</comment>
     <requestid>1197005</requestid>
   </revision>
+  <revision rev="174" vrev="3">
+    <srcmd5>66a7080f4b8738d086788cd572ca21f8</srcmd5>
+    <version>2.43</version>
+    <time>1733947282</time>
+    <user>anag+factory</user>
+    <comment>This gives us loongarch, new s390 insns (for SLE), and for now
+avoid the issue with zstd we had in the last submission (by not
+using it by default).  It's also what is going to be in SLE-15
+soon.
+
+- Update to current 2.43.1 branch [PED-10254, PED-10306]:
+  * s390 - Add arch15 instructions
+  * various fixes from upstream: PR32153, PR32171, PR32189,
+    PR32196, PR32191, PR32109, PR32372, PR32387
+- Adjusted binutils-2.43-branch.diff.gz.
+- Disable zstd-by-default again (needs adjustments in at least
+  golang,llvm15,llvm17 first)
+- Add binutils-fix-branch.diff.
+- Check non-changing of flex/bison inputs only after applying
+  branch and fix-branch diffs.
+
+- drop ld-relro.diff (relro is the default for some time)
+  and it warns on avr spuriously (bsc#1233520)
+
+- Add loongarch64 as new target
+
+- Enable zstd compression algorithm (instead of zlib)
+  for debug info sections by default.</comment>
+    <requestid>1229830</requestid>
+  </revision>
 </revisionlist>

@@ -7,4 +7,27 @@
     <comment>New package for tree-sitter grammar bash</comment>
     <requestid>1162317</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8c4080f35938540df953c35f5c9895c2</srcmd5>
+    <version>0.23.3</version>
+    <time>1733947387</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.23.3:
+  * ci(publish): add attestations and generate parser
+- update to 0.23.2:
+  * build: update bindings
+- update to 0.23.1:
+  * fix: fix Python bindings
+- update to 0.23.0:
+  * build: update bindings
+  * ci: update workflows
+  * fix: don't copy to null heredoc delimiters
+  * fix: don't copy null heredoc delimiters
+- add symlink for neovim
+- switch to download_files service, as we stay with the releases
+  anyway, and nothing special needs to happen for preparing the
+  sources
+- add devel package</comment>
+    <requestid>1229646</requestid>
+  </revision>
 </revisionlist>

@@ -567,4 +567,16 @@
   * fixes wrong logic for checking supported architectures</comment>
     <requestid>1228250</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>446997653f285bf1c6b6e84efba88f04</srcmd5>
+    <version>550.135</version>
+    <time>1733947429</time>
+    <user>anag+factory</user>
+    <comment>- Do not set %{?linux_make_arch} for running make modules/modules-install
+- supersedes 550.135.patch
+
+- obsolete &lt;=560.35.03 -cuda KMPs; mistakenly we released
+  560.35.03 for SP4 ...</comment>
+    <requestid>1229956</requestid>
+  </revision>
 </revisionlist>

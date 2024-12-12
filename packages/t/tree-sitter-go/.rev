@@ -17,4 +17,41 @@
   * feat: support type instantiation expressions</comment>
     <requestid>1170882</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>55bfeeac094d0f68d43b914fc3f1714b</srcmd5>
+    <version>0.23.4</version>
+    <time>1733947368</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.23.4:
+  * fix: tag query
+  * fix: correct raw string literal parsing
+  * feat: improve tags query
+- update to 0.23.3:
+  * build: update bindings
+- update to 0.23.2:
+  * build: update bindings
+  * chore: generate
+  * feat: add string content nodes
+  * build: update bindings
+  * chore: regenerate
+  * feat: add fields in keyed_element
+- update to 0.23.1:
+  * build: update bindings (again)
+- update to 0.23.0:
+  * fix: hide newline tokens
+  * fix(go): correct test
+  * fix(go): move go.mod to root dir
+  * fix(go): correct module path
+- update to 0.21.2:
+  * nothing relevant
+- update to 0.21.1:
+  * chore: generate
+  * feat: add var_spec_list
+  * fix: the name field should not include commas
+  * fix: allow special argument lists to be omitted in case it's a local
+  * fix: rename highlights query constant
+- add neovim links
+- switch to download_files service</comment>
+    <requestid>1229626</requestid>
+  </revision>
 </revisionlist>

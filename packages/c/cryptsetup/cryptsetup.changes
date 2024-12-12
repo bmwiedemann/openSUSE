@@ -15,6 +15,12 @@ Fri Sep 13 07:36:26 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
   * Fix crypto backend initialization in crypt_format_luks2_opal API call.
 
 -------------------------------------------------------------------
+Fri Aug 30 15:07:28 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- cryptsetup-fips140-3.patch: extend the password for PBKDF2 benchmarking
+  to be more than 20 chars to meet FIPS 140-3 requirements (bsc#1229975)
+
+-------------------------------------------------------------------
 Wed Jul 31 06:27:18 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Update to 2.7.4:

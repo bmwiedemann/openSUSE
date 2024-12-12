@@ -7,4 +7,15 @@
     <comment>Add new tree-sitter package for go.mod files</comment>
     <requestid>1225162</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ee1bed4cc3e4039cfa66ab993c6bd09c</srcmd5>
+    <version>1.1.0</version>
+    <time>1733947365</time>
+    <user>anag+factory</user>
+    <comment>- switch to new upstream url
+- add neovim links
+- switch to download_files service
+- add devel package</comment>
+    <requestid>1229624</requestid>
+  </revision>
 </revisionlist>

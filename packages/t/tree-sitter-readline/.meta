@@ -1,0 +1,5 @@
+<package name="tree-sitter-readline" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="editors:tree-sitter" package="tree-sitter-readline"/>
+</package>

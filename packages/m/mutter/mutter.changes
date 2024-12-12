@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec  6 07:39:00 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.3:
+  + Fix maximized X11 when using native xwayland scaling
+  + Fix blank screen in remote headless sessions
+  + Fix touch-triggered popups being cancelled too early
+  + Fix pointer cursor during compositor grabs
+  + Fixed crash
+
+-------------------------------------------------------------------
 Mon Nov 25 19:50:53 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.2:

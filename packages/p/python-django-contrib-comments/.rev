@@ -67,4 +67,12 @@
 - Add %{?sle15_python_module_pythons}</comment>
     <requestid>1157623</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>3b82cefec5f8d780223543fc65c0a007</srcmd5>
+    <version>2.2.0</version>
+    <time>1733947436</time>
+    <user>anag+factory</user>
+    <comment>- Switch to Django 4, Django 5 isn't supported yet.</comment>
+    <requestid>1229973</requestid>
+  </revision>
 </revisionlist>

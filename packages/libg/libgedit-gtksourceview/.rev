@@ -31,4 +31,17 @@
     <comment>SCripted push of GNOME 47</comment>
     <requestid>1205476</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b06fb800f7b65c4e4fb2f4094db5c125</srcmd5>
+    <version>299.4.0</version>
+    <time>1733947242</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 299.4.0:
+  + Remove the background-pattern (with the grid) feature.
+  + Fix some crashes.
+  + Fix GI annotation warnings.
+  + Updated translations.
+- Add sover define. (forwarded request 1229040 from iznogood)</comment>
+    <requestid>1229726</requestid>
+  </revision>
 </revisionlist>

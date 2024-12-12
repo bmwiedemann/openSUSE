@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec 11 06:56:44 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.16.22:
+  * Prepare for v0.16.22 release
+  * Makefile: Remove CILIUM_VERSION variable
+  * Pick up the latest cilium/cilium
+  * Update stable release to v0.16.21
+  * chore(deps): update golang:1.23.4-alpine3.19 docker digest to
+    5f33368
+
+-------------------------------------------------------------------
 Fri Dec 06 11:21:38 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.16.21:

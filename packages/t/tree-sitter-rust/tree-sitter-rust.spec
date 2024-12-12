@@ -16,15 +16,14 @@
 #
 
 
-%define _name rust
-Summary:        Rust grammar for tree-sitter
-Name:           tree-sitter-%{_name}
-Version:        0.21.2
+%define         _name rust
+Name:           tree-sitter-rust
+Version:        0.23.2
 Release:        0
+Summary:        Rust grammar for tree-sitter
 License:        MIT
-Group:          Development/Tools/Other
 URL:            https://github.com/tree-sitter/tree-sitter-rust
-Source0:        %{name}-%{version}.tar.gz
+Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  tree-sitter
 %treesitter_grammars %{_name}
 
@@ -32,7 +31,7 @@ BuildRequires:  tree-sitter
 %{summary}.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 %treesitter_configure
@@ -40,8 +39,20 @@ BuildRequires:  tree-sitter
 
 %install
 %treesitter_install
+%treesitter_devel_install
+
+#neovim stuff
+install -d %{buildroot}%{_libdir}/tree_sitter
+ln -s %{_libdir}/lib%{name}.so %{buildroot}%{_libdir}/tree_sitter/%{_name}.so
 
 %files
-%{treesitter_files}
+%license LICENSE
+%treesitter_files
+%{_libdir}/tree_sitter/%{_name}.so
+%if 0%{?suse_version} < 1600
+%dir %{_libdir}/tree_sitter
+%endif
+
+%treesitter_devel_package
 
 %changelog

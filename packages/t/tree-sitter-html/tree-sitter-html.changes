@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Dec  4 22:41:52 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.23.2:
+  * build: update bindings
+- update to 0.23.1:
+  * build: update bindings
+  * chore: regenerate
+- update to 0.23.0:
+  * build: update bindings
+  * fix: correct test
+- update to 0.20.4:
+  * fix: move go.mod to root dir
+  * ci: use common workflows
+  * chore(scanner): remove unused token types
+  * fix(scanner): use ts_* allocator functions
+  * chore: remove .appveyor.yml
+- add license file to %license
+- switch to download_files service
+- add neovim links
+- add devel package
+
+-------------------------------------------------------------------
 Mon Mar 25 17:33:11 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Update to version 0.20.2:

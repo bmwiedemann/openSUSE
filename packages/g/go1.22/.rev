@@ -269,4 +269,12 @@ the go metapackage to version 1.22.</comment>
   * go#70474 sync/atomic: TestNilDeref flaky failure on windows-386 with runtime fatal error (forwarded request 1228337 from jfkw)</comment>
     <requestid>1228339</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>b247380ded401955f6752dcd69604e72</srcmd5>
+    <version>1.22.10</version>
+    <time>1733947266</time>
+    <user>anag+factory</user>
+    <comment>- Enable loongarch64 builds (forwarded request 1229907 from jfkw)</comment>
+    <requestid>1229908</requestid>
+  </revision>
 </revisionlist>

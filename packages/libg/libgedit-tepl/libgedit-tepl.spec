@@ -1,5 +1,5 @@
 #
-# spec file for package tepl
+# spec file for package libgedit-tepl
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -17,10 +17,10 @@
 
 
 %define api_ver 6
-%define lib_ver %{api_ver}-1
+%define lib_ver %{api_ver}-2
 
 Name:           libgedit-tepl
-Version:        6.11.0
+Version:        6.12.0
 Release:        0
 Summary:        Text Editor Product Line
 License:        LGPL-3.0-or-later

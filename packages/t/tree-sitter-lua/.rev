@@ -23,4 +23,13 @@
     <comment> (forwarded request 1201867 from rrahl0)</comment>
     <requestid>1201868</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>576bbd905c313cfc27f1841b660772ba</srcmd5>
+    <version>0.2.0</version>
+    <time>1733947349</time>
+    <user>anag+factory</user>
+    <comment>- switch to download_files service
+- add devel package</comment>
+    <requestid>1229609</requestid>
+  </revision>
 </revisionlist>

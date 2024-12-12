@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec 10 11:41:49 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 8.30
+  * improve the documentatation for custom IPython formatters, and how 
+    you can register formatters for custom mime types.
+  * fix a bug in which commands that were not assigned a shortcut could 
+    not be assigned one.
+  * fix a bug in which a single / on an empty line would not be an error. 
+    This is due to the autocall behavior that we are thinking of deprecating.
+- Add py3131.patch to fix behaviour with Python 3.13.1
+
+-------------------------------------------------------------------
 Sun Nov 17 14:50:16 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 8.29

@@ -1,0 +1,12 @@
+diff -rub tree-sitter-squirrel-1.0.0/grammar.js tree-sitter-squirrel-1.0.0-patched/grammar.js
+--- tree-sitter-squirrel-1.0.0/grammar.js	2023-06-21 01:09:27.000000000 +0200
++++ tree-sitter-squirrel-1.0.0-patched/grammar.js	2024-12-05 05:44:11.792442651 +0100
+@@ -614,7 +614,7 @@
+         /[0-7]{1,3}/,
+         /x[0-9a-fA-F]{2}/,
+         /u[0-9a-fA-F]{4}/,
+-        /u{[0-9a-fA-F]+}/,
++        /u\{[0-9a-fA-F]+\}/,
+       ))),
+ 
+     bool: _ => choice('true', 'false'),

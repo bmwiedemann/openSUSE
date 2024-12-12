@@ -176,7 +176,7 @@ Obsoletes:      go-devel < go%{version}
 # go-vim/emacs were separate projects starting from 1.4
 Obsoletes:      go-emacs <= 1.3.3
 Obsoletes:      go-vim <= 1.3.3
-ExclusiveArch:  %ix86 x86_64 %arm aarch64 ppc64 ppc64le s390x riscv64
+ExclusiveArch:  %ix86 x86_64 %arm aarch64 ppc64 ppc64le s390x riscv64 loongarch64
 
 %description
 Go is an expressive, concurrent, garbage collected systems programming language

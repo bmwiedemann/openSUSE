@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python36 1
 %{?sle15_python_module_pythons}
 Name:           python-django-contrib-comments
 Version:        2.2.0
@@ -30,10 +29,10 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 2.2
+Requires:       python-Django4 >= 2.2
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Django >= 2.2}
+BuildRequires:  %{python_module Django4 >= 2.2}
 # /SECTION
 %python_subpackages
 
@@ -60,6 +59,6 @@ This is the same framework that was removed from Django 1.6.
 %doc README.rst HISTORY.rst
 %license LICENSE.txt
 %{python_sitelib}/django_comments
-%{python_sitelib}/django_contrib_comments-%{version}*-info
+%{python_sitelib}/django_contrib_comments-%{version}.dist-info
 
 %changelog

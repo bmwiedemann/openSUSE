@@ -1,0 +1,12 @@
+Index: py-moneyed-3.0/src/moneyed/classes.py
+===================================================================
+--- py-moneyed-3.0.orig/src/moneyed/classes.py
++++ py-moneyed-3.0/src/moneyed/classes.py
+@@ -723,6 +723,7 @@ XBB = add_currency("XBB", "956")
+ XBC = add_currency("XBC", "957")
+ XBD = add_currency("XBD", "958")
+ XCD = add_currency("XCD", "951", 100)
++XCG = add_currency("XCG", None, 100)
+ XDR = add_currency("XDR", "960")
+ XFO = add_currency("XFO", None)
+ XFU = add_currency("XFU", None)

@@ -104,7 +104,7 @@ Release:        0
 %else
 %define build_multitarget 0
 %endif
-%define target_list aarch64 alpha armv5l armv6l armv7l armv8l avr pru epiphany hppa hppa64 i686 ia64 m68k mips powerpc powerpc64 powerpc64le riscv64 rx s390 s390x sh4 sparc sparc64 x86_64 xtensa
+%define target_list aarch64 alpha armv5l armv6l armv7l armv8l avr pru epiphany hppa hppa64 i686 ia64 loongarch64 m68k mips powerpc powerpc64 powerpc64le riscv64 rx s390 s390x sh4 sparc sparc64 x86_64 xtensa
 
 %define build_gprofng 0
 
@@ -132,11 +132,11 @@ Source2:        binutils-%{version}.tar.bz2.sig
 Source3:        binutils.keyring
 Source4:        baselibs.conf
 Patch1:         binutils-2.43-branch.diff.gz
+Patch2:         binutils-fix-branch.diff
 Patch3:         binutils-skip-rpaths.patch
 Patch4:         s390-biarch.diff
 Patch5:         x86-64-biarch.patch
 Patch6:         unit-at-a-time.patch
-Patch8:         ld-relro.diff
 Patch9:         testsuite.diff
 Patch10:        enable-targets-gold.diff
 Patch12:        s390-pic-dso.diff
@@ -245,19 +245,23 @@ The next generation profiling tool for Linux
 echo "make check will return with %{make_check_handling} in case of testsuite failures."
 %setup -q -n binutils-%{version}
 
-# Backup flex and biscon files for later verification.
-cp ld/ldlex.l ld/ldlex.l.orig
-cp ld/ldgram.y ld/ldgram.y.orig
-
 # Patch is outside test_vanilla because it's supposed to be the
 # patch bringing the tarball to the newest upstream version
 %patch -P 1 -p1
+%patch -P 2 -p1
+
+# Backup flex and biscon files for later verification.  Do this
+# after branch and fix-branch patches are applied (which are assumed
+# to manual fixup generated files, in case the branch diff touches
+# the flex/bison source files)
+cp ld/ldlex.l ld/ldlex.l.orig
+cp ld/ldgram.y ld/ldgram.y.orig
+
 %if !%{test_vanilla}
 %patch -P 3 -p1
 %patch -P 4
 %patch -P 5
 %patch -P 6
-%patch -P 8
 %patch -P 9
 %patch -P 10
 %patch -P 12
@@ -388,8 +392,9 @@ cd build-dir
 	--enable-warn-execstack=yes \
 	--enable-warn-rwx-segments=yes
 
-#FIXME: enable in the future
-#%if %{suse_version} > 1550
+# FIXME: enable in future, when at least llvm15,llvm17,golang are
+# fixed to accept zstd
+#%if %{suse_version} > 1600
 #  --enable-default-compressed-debug-sections-algorithm=zstd \
 #%endif
 

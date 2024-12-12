@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  4 23:01:50 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Increase test timeout on s390x. Several tests can be slow and
+  sometimes times out in our builds.
+- Use autosetup macro.
+
+-------------------------------------------------------------------
 Fri May  3 02:29:07 UTC 2024 - Federico Mena Quintero <federico@suse.com>
 
 - Update to version 0.43.4

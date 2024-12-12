@@ -24,7 +24,11 @@
 # Usually ahead of bootstrap version specified by upstream Go
 # Use Tumbleweed default gccgo and N-1 go1.x for testing
 %define gcc_go_version 13
+%ifarch loongarch64
+%define go_bootstrap_version go1.20
+%else
 %define go_bootstrap_version go1.18
+%endif
 %else
 # Use gccgo and go1.x specified by upstream Go
 %define gcc_go_version 11
@@ -124,6 +128,9 @@
 %ifarch riscv64
 %define go_arch riscv64
 %endif
+%ifarch loongarch64
+%define go_arch loongarch64
+%endif
 
 Name:           go1.20
 Version:        1.20.14
@@ -176,7 +183,7 @@ Obsoletes:      go-devel < go%{version}
 # go-vim/emacs were separate projects starting from 1.4
 Obsoletes:      go-emacs <= 1.3.3
 Obsoletes:      go-vim <= 1.3.3
-ExclusiveArch:  %ix86 x86_64 %arm aarch64 ppc64 ppc64le s390x riscv64
+ExclusiveArch:  %ix86 x86_64 %arm aarch64 ppc64 ppc64le s390x riscv64 loongarch64
 
 %description
 Go is an expressive, concurrent, garbage collected systems programming language

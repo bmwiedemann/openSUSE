@@ -1,0 +1,5 @@
+<package name="tree-sitter-uxntal" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="editors:tree-sitter" package="tree-sitter-uxntal"/>
+</package>

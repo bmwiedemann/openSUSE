@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Dec  4 23:03:53 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.24.8:
+  * ci(publish): add attestations and generate parser
+- update to 0.24.4:
+  * ci: use permissions in both spots
+- update to 0.24.2:
+  * update bindings
+- update to 0.24.1:
+  * update bindings
+- update to 0.24.0:
+  * build: update bindings
+  * ci: update workflows
+- update to 0.23.0:
+  * fix(go): correct test
+  * fix: move go.mod to root dir
+  * feat: expose non-escaped string literal content in the parse tree
+- switch to download_files service
+- add neovim links
+- add a license file
+- enable devel package
+
+-------------------------------------------------------------------
 Mon Apr 29 22:02:31 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Update to version 0.21.0:

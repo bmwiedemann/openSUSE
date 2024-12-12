@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  4 23:32:38 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- adapt spec file to other grammars
+- switch to download_files service
+- enable devel package
+
+-------------------------------------------------------------------
 Sun Sep 15 20:04:16 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - change spec file, so neovim autodetects the grammar

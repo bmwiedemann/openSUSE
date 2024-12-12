@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Dec  4 21:46:43 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.23.3:
+  * ci(publish): add attestations and generate parser
+- update to 0.23.2:
+  * build: update bindings
+- update to 0.23.1:
+  * fix: fix Python bindings
+- update to 0.23.0:
+  * build: update bindings
+  * ci: update workflows
+  * fix: don't copy to null heredoc delimiters
+  * fix: don't copy null heredoc delimiters
+- add symlink for neovim
+- switch to download_files service, as we stay with the releases
+  anyway, and nothing special needs to happen for preparing the
+  sources
+- add devel package
+
+-------------------------------------------------------------------
 Mon Mar 25 17:34:42 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Update to version 0.21.0:

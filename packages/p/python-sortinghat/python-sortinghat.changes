@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 11 04:53:10 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.5.1:
+  * Update Poetry dependencies.
+- Add patch support-new-django-graphql-jwt.patch:
+  * Stop calling a now removed method in new django-graphql-jwt.
+
+-------------------------------------------------------------------
 Sat Nov  9 16:00:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.0:

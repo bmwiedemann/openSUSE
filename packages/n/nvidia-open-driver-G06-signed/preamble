@@ -9,9 +9,9 @@ Provides: nvidia-open-driver-G06-signed-kmp = %{-v*}
 Provides: nvidia-open-driver-G06-signed-kmp-%1 = %{-v*}
 # workaround for broken cuda-drivers
 # resolve self conflicts of -cuda KMP during update by adding
-# obsoletes pre-560 version due to its broad conflicts (boo#1233332)
-Obsoletes: nvidia-open-driver-G06-signed-cuda-kmp-%1 < 560.35.03
-Obsoletes: nvidia-open-driver-G06-signed-cuda-kmp < 560.35.03
+# obsoletes pre-560/560 version due to its broad conflicts (boo#1233332)
+Obsoletes: nvidia-open-driver-G06-signed-cuda-kmp-%1 <= 560.35.03
+Obsoletes: nvidia-open-driver-G06-signed-cuda-kmp <= 560.35.03
 %endif
 %if 0%{?sle_version:1} && %{with cuda}
 Requires: kernel-firmware-nvidia-gspx-G06-cuda = %{-v*}

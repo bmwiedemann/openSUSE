@@ -1,8 +1,8 @@
 #
 # spec file for package gensio
 #
-# Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2020-2023, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2020-2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 #
 
 
-%global sover 6
-%global sover_cpp 6
-%global libname libgensio6
+%global sover 10
+%global sover_cpp 10
+%global libname libgensio10
 %global libname_cpp libgensiocpp%{sover_cpp}
 %if 0%{?suse_version} > 1500
 %bcond_without openipmi
@@ -27,7 +27,7 @@
 %bcond_with    openipmi
 %endif
 Name:           gensio
-Version:        2.8.2
+Version:        2.8.10
 Release:        0
 Summary:        Library to abstract stream and packet I/O
 # examples/* is licenced under Apache-2.0
@@ -177,6 +177,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files
 %license COPYING COPYING.LIB
 %doc AUTHORS ChangeLog NEWS README.rst
+%{_bindir}/gagwpe
 %{_bindir}/gensiot
 %{_bindir}/gmdns
 %{_bindir}/greflector

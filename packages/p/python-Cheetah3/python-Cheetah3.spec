@@ -17,9 +17,8 @@
 
 
 %define modname cheetah3
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Cheetah3
-Version:        3.3.3.post1
+Version:        3.4.0
 Release:        0
 Summary:        Template engine and code generation tool
 License:        MIT
@@ -27,6 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://cheetahtemplate.org/
 Source:         https://github.com/CheetahTemplate3/cheetah3/archive/refs/tags/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -65,10 +65,10 @@ find . -name \*.py -print0 |xargs -0 -t -l sed -i -e '1{\@^#!%{_bindir}/env pyth
 sed -Ei 's/(test6)/_\1/' Cheetah/Tests/SyntaxAndOutput.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/cheetah
 %python_clone -a %{buildroot}%{_bindir}/cheetah-analyze
 %python_clone -a %{buildroot}%{_bindir}/cheetah-compile
@@ -97,6 +97,7 @@ $python Cheetah/Tests/Test.py
 %python_alternative %{_bindir}/cheetah
 %python_alternative %{_bindir}/cheetah-analyze
 %python_alternative %{_bindir}/cheetah-compile
-%{python_sitearch}/*
+%{python_sitearch}/Cheetah
+%{python_sitearch}/CT3-%{version}*info
 
 %changelog

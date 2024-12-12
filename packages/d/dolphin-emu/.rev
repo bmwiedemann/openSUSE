@@ -146,4 +146,14 @@
   * Upstream doesn't provide a ChangeLog.</comment>
     <requestid>1201905</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>41a89ef1b78de41e1e1a9b6ecabeb802</srcmd5>
+    <version>2412</version>
+    <time>1733947474</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 2412
+  * Limited build to fmt &gt;= 10.1 and sdl2 &gt;= 2.30.9.
+  * Enabled LTO and Achievements.</comment>
+    <requestid>1230069</requestid>
+  </revision>
 </revisionlist>

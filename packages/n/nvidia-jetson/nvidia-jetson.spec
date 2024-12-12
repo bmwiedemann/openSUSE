@@ -30,13 +30,14 @@ Release:        0
 Summary:        Open-Source NVIDIA Jetson Orin graphics drivers
 License:        GPL-2.0-only AND MIT
 Group:          System/Kernel
-URL:            https://developer.nvidia.com/embedded/jetson-linux-r363
+URL:            https://developer.nvidia.com/embedded/jetson-linux-r3640
 Source0:        nvidia-oot-l4t-l4t-r36.4_eng_2024-09-12.tar.bz2
 Source1:        kmp-post-extra.sh
 Source2:        kmp-postun-extra.sh
 Source3:        kmp-filelist
 Source4:        kmp-post.sh
 Source5:        kmp-postun.sh
+Source6:        kmp-preun.sh
 Source7:        preamble
 Source8:        kmp-filelist-extra
 Source9:        preamble-extra
@@ -62,6 +63,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  kernel-source
 BuildRequires:  kernel-syms
+BuildRequires:  kmod
 BuildRequires:  perl-Bootloader
 BuildRequires:  pesign-obs-integration
 BuildRequires:  pkgconfig(systemd)
@@ -71,7 +73,7 @@ ExclusiveArch:  aarch64
 %if 0%{!?kmp_template_name:1}
 %define kmp_template_name /usr/lib/rpm/kernel-module-subpackage
 %endif
-%(sed -e '/^%%post\>/ r %_sourcedir/kmp-post.sh' -e '/^%%postun\>/ r %_sourcedir/kmp-postun.sh' %kmp_template_name >%_builddir/nvidia-kmp-template)
+%(sed -e '/^%%post\>/ r %_sourcedir/kmp-post.sh' -e '/^%%postun\>/ r %_sourcedir/kmp-postun.sh' -e '/^%%preun\>/ r %_sourcedir/kmp-preun.sh' %kmp_template_name >%_builddir/nvidia-kmp-template)
 %(sed -e '/^%%post\>/ r %_sourcedir/kmp-post-extra.sh' -e '/^%%postun\>/ r %_sourcedir/kmp-postun-extra.sh' %kmp_template_name >%_builddir/nvidia-kmp-extra-template)
 %kernel_module_package -n %{name}-36_4 -t %_builddir/nvidia-kmp-template -f %_sourcedir/kmp-filelist -p %_sourcedir/preamble
 %kernel_module_package -n %{name}-36_4-extra -t %_builddir/nvidia-kmp-extra-template -f %_sourcedir/kmp-filelist-extra -p %_sourcedir/preamble-extra
@@ -168,13 +170,13 @@ EOF
     ### Using systemd service file for loading "nvidia-drm" doesn't
     ### work on SLE Micro 6.0 for some reason, but apparently this
     ### line helps
-%if 0%{?suse_version} == 1600
+    ### Update: On some sle15-sp6 AGP system this extra line is also needed
     cat >> $MODPROBE_DIR/50-nvidia-$flavor.conf << EOF
 install nvidia /sbin/rmmod tegra_drm; /sbin/modprobe --ignore-install nvidia; /sbin/modprobe tegra_drm
 EOF
-%endif
     cat > $MODPROBE_DIR/50-nvidia-extra-$flavor.conf << EOF
 blacklist dwmac_tegra
+blacklist snd-soc-tegra-audio-graph-card
 EOF
     mkdir -p %{buildroot}/usr/lib/dracut/dracut.conf.d
     dracutfile=%{buildroot}/usr/lib/dracut/dracut.conf.d/60-nvidia-jetson-36_4-$flavor.conf
@@ -190,12 +192,9 @@ EOF
     drivers=$(find %{buildroot}/lib/modules/*-${flavor}/updates -name "*.ko*"|grep -v -E "nvidia-drm.ko|nvidia-modeset.ko|nvidia.ko")
 %endif
     for driver in ${drivers}; do 
-        dname=$(basename $driver|sed 's/.ko.*//g')
-        if [ "$dname" == "tegra-drm" ]; then
-            echo "add_drivers+=${dname}" >> ${dracutfile_extra}
-        else
-            echo "omit_drivers+=${dname}" >> ${dracutfile_extra}
-        fi 
+        #dname=$(basename $driver|sed 's/.ko.*//g')
+        dname=$(/sbin/modinfo -F name $driver)
+        echo "omit_drivers+=\" ${dname} \"" >> ${dracutfile_extra}
     done
     mkdir -p %{buildroot}/usr/lib/systemd/system
     install -m 644 %{SOURCE10} %{buildroot}/usr/lib/systemd/system/load-nvidia-drm-$flavor.service

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Dec  4 23:37:11 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.24.3:
+  * ci(publish): add attestations and generate parser
+  * build: update bindings
+  * feat: alternative syntax for named groups
+- update to 0.24.2:
+  * build: update deps
+  * feat: support inline flags
+  * feat: support hexadecimal escape sequences
+  * fix: correct grammar rule for named backreferences
+- update to 0.24.1:
+  * ci(publish): add github job
+- update to 0.24.0:
+  * feat: support half-open intervals
+  * fix: correct parse tree when character class is only a range
+  * feat: allow underscores in named capturing groups
+  * feat: add unicode character escapes
+  * ci: test every language
+  * feat: add support for posix character classes
+  * build: update bindings
+  * chore: regenerate
+  * feat: migrate to tree-sitter.json
+- update to 0.23.0:
+  * build: update bindings
+- switch to download_files service
+- add neovim links
+- enable devel package
+
+-------------------------------------------------------------------
 Sun Jul 07 14:18:07 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Update to version 0.21.0:

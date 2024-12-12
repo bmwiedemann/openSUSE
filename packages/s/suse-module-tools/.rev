@@ -870,4 +870,13 @@ source service setup which messed up my spec file.
     (jsc#PED-11154) (forwarded request 1220904 from mwilck)</comment>
     <requestid>1220906</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>3941ca62fb49b2de71c9bb193b5b33ce</srcmd5>
+    <version>16.0.54</version>
+    <time>1733947254</time>
+    <user>anag+factory</user>
+    <comment>* rpm-script: create dangling symlinks in kiwi environments
+    (bsc#1234275) (forwarded request 1229758 from mwilck)</comment>
+    <requestid>1229759</requestid>
+  </revision>
 </revisionlist>

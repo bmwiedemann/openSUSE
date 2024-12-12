@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov 18 12:16:42 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Create config.xml automatically in the psot section,
+  because config.xml is much too old and udn para is static and not
+  unique.
+- Also generate a config-example.xml, a new config-new.xml
+  and a config-diff.xml which show the new parameter in a newer
+  gerbera version.
+- Add README.SUSE.
+- Add vhost configuration for apache nginx.
+- Fix suse-logrotate-user-writable-log-dir /var/log/gerbera gerbera:gerbera 0755
+
+-------------------------------------------------------------------
 Mon Nov 11 13:45:55 UTC 2024 - Friedrich Haubensak <hsk17@mail.de>
 
 - update to 2.3.0:

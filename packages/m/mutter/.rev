@@ -2174,4 +2174,17 @@ New stable rel</comment>
   + Misc. bug fixes and cleanups (forwarded request 1226356 from iznogood)</comment>
     <requestid>1226515</requestid>
   </revision>
+  <revision rev="242" vrev="1">
+    <srcmd5>0fb9e98c07c1ceae017a525a0a00f209</srcmd5>
+    <version>47.3</version>
+    <time>1733947238</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 47.3:
+  + Fix maximized X11 when using native xwayland scaling
+  + Fix blank screen in remote headless sessions
+  + Fix touch-triggered popups being cancelled too early
+  + Fix pointer cursor during compositor grabs
+  + Fixed crash (forwarded request 1228701 from iznogood)</comment>
+    <requestid>1229723</requestid>
+  </revision>
 </revisionlist>

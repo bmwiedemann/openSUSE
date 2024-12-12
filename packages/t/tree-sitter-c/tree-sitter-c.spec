@@ -16,24 +16,22 @@
 #
 
 
-%define _name c
-Summary:        C grammar for tree-sitter
-Name:           tree-sitter-%{_name}
-Version:        0.21.4
+%define         _name c
+Name:           tree-sitter-c
+Version:        0.23.2
 Release:        0
+Summary:        C grammar for tree-sitter
 License:        MIT
-Group:          Development/Tools/Other
 URL:            https://github.com/tree-sitter/tree-sitter-c
-Source0:        %{name}-%{version}.tar.gz
-BuildRequires:  filesystem
-BuildRequires:  tree-sitter >= 0.22.6
+Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  tree-sitter
 %treesitter_grammars %{_name}
 
 %description
 %{summary}.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 %treesitter_configure
@@ -43,8 +41,17 @@ BuildRequires:  tree-sitter >= 0.22.6
 %treesitter_install
 %treesitter_devel_install
 
+#neovim stuff
+install -d %{buildroot}%{_libdir}/tree_sitter
+ln -s %{_libdir}/lib%{name}.so %{buildroot}%{_libdir}/tree_sitter/%{_name}.so
+
 %files
-%{treesitter_files}
+%license LICENSE
+%treesitter_files
+%{_libdir}/tree_sitter/%{_name}.so
+%if 0%{?suse_version} < 1600
+%dir %{_libdir}/tree_sitter
+%endif
 
 %treesitter_devel_package
 

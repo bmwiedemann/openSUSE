@@ -31,6 +31,7 @@ Source2:        baselibs.conf
 Source3:        cryptsetup.keyring
 # FAQ.md is CC-BY-SA-4.0
 Source4:        https://creativecommons.org/licenses/by-sa/4.0/legalcode.txt#/cc-by-sa-4.0.txt
+Patch0:         cryptsetup-fips140-3.patch
 # 2.6.38 has the required if_alg.h
 BuildRequires:  linux-glibc-devel >= 2.6.38
 BuildRequires:  fdupes

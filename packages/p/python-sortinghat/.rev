@@ -200,4 +200,15 @@
   * Wrong arrong direction when merging recommendations (#934)</comment>
     <requestid>1222990</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>73af2439daeb4bd233a80757f857f27e</srcmd5>
+    <version>1.5.1</version>
+    <time>1733947438</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.5.1:
+  * Update Poetry dependencies.
+- Add patch support-new-django-graphql-jwt.patch:
+  * Stop calling a now removed method in new django-graphql-jwt.</comment>
+    <requestid>1229987</requestid>
+  </revision>
 </revisionlist>

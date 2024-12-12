@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec  9 18:38:01 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Apache Subversion 1.14.5
+  * CVE-2024-46901: mod_dav_svn denial-of-service via control
+    characters in paths (boo#1234317)
+- drop patches included upstream:
+  * subversion-1.14.4-swig-4.3.0-swig-py.patch
+  * subversion-1.14.4-swig-4.3.0-swig-rb.patch
+
+-------------------------------------------------------------------
 Thu Oct 24 15:20:32 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Fix build with Swig 4.3.0 (boo#1231590)

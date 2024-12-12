@@ -27,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-argcomplete%{psuffix}
-Version:        3.5.1
+Version:        3.5.2
 Release:        0
 Summary:        Bash tab completion for argparse
 License:        Apache-2.0

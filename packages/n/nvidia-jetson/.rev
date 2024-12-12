@@ -233,4 +233,12 @@ Supersedes SR #1190973</comment>
   Jetpack 6.1/36.4 firmware)</comment>
     <requestid>1218688</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>6e94fe8f7d53fa241c62cf04ddfcb97f</srcmd5>
+    <version>36.4.0_20240912212859</version>
+    <time>1733947422</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1229934</requestid>
+  </revision>
 </revisionlist>

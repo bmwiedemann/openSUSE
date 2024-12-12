@@ -16,15 +16,14 @@
 #
 
 
-%define _name cpp
-Summary:        C++ grammar for tree-sitter
-Name:           tree-sitter-%{_name}
-Version:        0.22.3
+%define         _name cpp
+Name:           tree-sitter-cpp
+Version:        0.23.4
 Release:        0
+Summary:        C++ grammar for tree-sitter
 License:        MIT
-Group:          Development/Tools/Other
 URL:            https://github.com/tree-sitter/tree-sitter-cpp
-Source0:        %{name}-%{version}.tar.gz
+Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  tree-sitter
 BuildRequires:  treesitter_grammar_src(tree-sitter-c)
 %treesitter_grammars %{_name}
@@ -33,7 +32,7 @@ BuildRequires:  treesitter_grammar_src(tree-sitter-c)
 %{summary}.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 %treesitter_configure
@@ -41,9 +40,20 @@ BuildRequires:  treesitter_grammar_src(tree-sitter-c)
 
 %install
 %treesitter_install
+%treesitter_devel_install
+
+#neovim stuff
+install -d %{buildroot}%{_libdir}/tree_sitter
+ln -s %{_libdir}/lib%{name}.so %{buildroot}%{_libdir}/tree_sitter/%{_name}.so
 
 %files
 %license LICENSE
-%{treesitter_files}
+%treesitter_files
+%{_libdir}/tree_sitter/%{_name}.so
+%if 0%{?suse_version} < 1600
+%dir %{_libdir}/tree_sitter
+%endif
+
+%treesitter_devel_package
 
 %changelog

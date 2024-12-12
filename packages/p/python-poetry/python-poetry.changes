@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec  9 09:04:48 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.8.5
+  * Require pkginfo>=1.12 to fix an issue with an unknown metadata
+    version 2.4 (#9888).
+  * Do not fail if the unknown metadata version is only a minor
+    version update (#9888).
+
+-------------------------------------------------------------------
 Mon Oct 28 22:57:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.4:

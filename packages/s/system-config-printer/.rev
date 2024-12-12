@@ -887,4 +887,13 @@
     <comment></comment>
     <requestid>1227288</requestid>
   </revision>
+  <revision rev="109" vrev="9">
+    <srcmd5>dc9a1aadbeee2c9cc925a36098d1b2e5</srcmd5>
+    <version>1.5.18</version>
+    <time>1733947237</time>
+    <user>anag+factory</user>
+    <comment>- add keyring for gpg validation
+- add python3-setuptools dependency (needed for python 3.13) (forwarded request 1228474 from dirkmueller)</comment>
+    <requestid>1229721</requestid>
+  </revision>
 </revisionlist>

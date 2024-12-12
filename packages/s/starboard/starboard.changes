@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec 11 12:10:49 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.15.23:
+  * release: prepare v0.15.23 (#1407)
+  * Updates to controller-runtime and client-go for better
+    performance, bug fixes, and memory optimization. (#1406)
+  * No Disc space error fix and Removing the build process for UBI8
+    images. (#1402)
+  * Add cleanup and disk usage checks to GitHub Actions workflow.
+    (#1401)
+
+-------------------------------------------------------------------
 Mon Sep 30 16:43:07 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.15.22:

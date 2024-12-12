@@ -27,6 +27,7 @@ Group:          Hardware/Printing
 URL:            https://github.com/OpenPrinting/system-config-printer/
 Source0:        https://github.com/OpenPrinting/system-config-printer/releases/download/v%{version}/system-config-printer-%{version}.tar.gz
 Source1:        https://github.com/OpenPrinting/system-config-printer/releases/download/v%{version}/system-config-printer-%{version}.tar.gz.asc
+Source98:       system-config-printer.keyring
 Source99:       %{name}-rpmlintrc
 # PATCH-FIX-OPENSUSE system-config-printer-icon-brp-friendly.patch vuntz@novell.com -- brp checks don't like the printer icon name, so we have to use something else
 Patch13:        system-config-printer-icon-brp-friendly.patch
@@ -52,6 +53,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel
 BuildRequires:  python3-lxml
+BuildRequires:  python3-setuptools
 BuildRequires:  xmlto
 BuildRequires:  pkgconfig(libudev) >= 172
 BuildRequires:  pkgconfig(libusb-1.0)

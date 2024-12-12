@@ -1,7 +1,7 @@
 #
 # spec file for package radare2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           radare2
-Version:        5.8.8
+Version:        5.9.8
 Release:        0
 Summary:        Reverse Engineering Framework
 License:        GPL-3.0-only AND LGPL-3.0-only
@@ -31,6 +31,7 @@ BuildRequires:  git-core
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(capstone)
+BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(libuv)
 BuildRequires:  pkgconfig(libxxhash)
 BuildRequires:  pkgconfig(libzip)
@@ -47,6 +48,7 @@ Group:          Development/Tools/Debuggers
 Requires:       %{name} = %{version}
 Requires:       file-devel
 Requires:       pkgconfig(capstone)
+Requires:       pkgconfig(liblz4)
 Requires:       pkgconfig(libxxhash)
 Requires:       pkgconfig(libzip)
 Requires:       pkgconfig(openssl)
@@ -116,11 +118,15 @@ mv %{buildroot}/%{_datadir}/doc/radare2/* %{buildroot}%{_docdir}/radare2/
 %dir %{_datadir}/radare2/%{version}/hud
 %dir %{_datadir}/radare2/%{version}/magic
 %dir %{_datadir}/radare2/%{version}/www
+%dir %{_datadir}/radare2/%{version}/platform
+%dir %{_datadir}/radare2/%{version}/scripts
 %{_datadir}/radare2/%{version}/cons/*
 %{_datadir}/radare2/%{version}/flag/*
 %{_datadir}/radare2/%{version}/hud/*
 %{_datadir}/radare2/%{version}/magic/*
 %{_datadir}/radare2/%{version}/www/*
+%{_datadir}/radare2/%{version}/platform/*
+%{_datadir}/radare2/%{version}/scripts/*
 
 %{_mandir}/man1/*
 %{_mandir}/man7/*

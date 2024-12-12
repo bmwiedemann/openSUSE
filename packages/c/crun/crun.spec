@@ -27,13 +27,14 @@
 %endif
 
 Name:           crun
-Version:        1.18.2
+Version:        1.19
 Release:        0
 Summary:        OCI runtime written in C
 License:        GPL-2.0-or-later
 URL:            https://github.com/containers/crun
 Source0:        %{URL}/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:        %{URL}/releases/download/%{version}/%{name}-%{version}.tar.gz.asc
+# From <https://github.com/giuseppe.gpg>. See <https://github.com/containers/crun/issues/1423>.
 Source2:        %{name}.keyring
 # We always run autogen.sh
 BuildRequires:  autoconf

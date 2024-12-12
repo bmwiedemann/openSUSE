@@ -16,9 +16,9 @@
 #
 
 
-%define pkgver 124-2-1
+%define pkgver 124-2-2
 Name:           simutrans
-Version:        124.2.1
+Version:        124.2.2
 Release:        0
 Summary:        Transport and Economic Simulation Game
 License:        Artistic-1.0

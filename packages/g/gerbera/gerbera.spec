@@ -30,7 +30,11 @@ URL:            https://gerbera.io
 Source0:        https://github.com/gerbera/gerbera/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        config.xml
 Source2:        gerbera.sysusers.in
+Source10:       %{name}-vhost-apache.conf
+Source11:       %{name}-vhost-nginx.conf
+Source90:       README.SUSE
 Patch0:         harden_gerbera.service.patch
+BuildRequires:  apache-rpm-macros
 BuildRequires:  ccache
 BuildRequires:  cmake >= 3.13
 BuildRequires:  fdupes
@@ -60,6 +64,7 @@ BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(taglib) >= 1.12
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(zlib)
+Requires:       diffutils
 Requires:       logrotate
 %{?systemd_requires}
 %sysusers_requires
@@ -70,8 +75,33 @@ Gerbera is a UPnP media server which allows streaming digital
 media through a network and consume it on a variety of UPnP
 compatible devices.
 
+%package apache
+Summary:        Apache configuration for %{name}
+Group:          Productivity/Networking/Web/Utilities
+BuildRequires:  apache2
+Requires:       %{name} = %{version}
+Requires:       apache2
+Supplements:    (apache2 and %{name})
+Conflicts:      %{name}-nginx
+
+%description apache
+This subpackage contains the Apache configuration files
+
+%package nginx
+Summary:        Nginx configuration for %{name}
+Group:          Productivity/Networking/Web/Utilities
+BuildRequires:  nginx
+Requires:       %{name} = %{version}
+Requires:       nginx
+Supplements:    (nginx and %{name})
+Conflicts:      %{name}-apache
+
+%description nginx
+This subpackage contains the nginx configuration files
+
 %prep
 %autosetup -p1
+install -m 644 %{SOURCE90} .
 
 rm -f web/.gitignore
 
@@ -108,7 +138,7 @@ touch %{buildroot}%{_localstatedir}/log/%{name}
 mkdir -p  %{buildroot}%{_sysconfdir}/logrotate.d
 cat > %{buildroot}%{_sysconfdir}/logrotate.d/%{name} << 'EOF'
 %{_localstatedir}/log/gerbera/gerbera {
-create 644 gerbera gerbera
+      su gerbera gerbera
       monthly
       compress
       missingok
@@ -118,8 +148,15 @@ EOF
 install -d %{buildroot}%{_sbindir}
 ln -s service  %{buildroot}%{_sbindir}/rc%{name}
 
-install -p -D -m0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/gerbera/config.xml
+#install -p -D -m0644 %%{SOURCE1} %%{buildroot}%%{_sysconfdir}/gerbera/config.xml
 install -p -D -m0644 %{SOURCE2} %{buildroot}%{_sysusersdir}/gerbera.conf
+
+# vhost config apache and nginx
+mkdir -p %{buildroot}%{apache_sysconfdir}/conf.d
+install -D -m0644 %{SOURCE10} %{buildroot}%{apache_sysconfdir}/vhosts.d/%{name}.conf
+# nginx config
+mkdir -p %{buildroot}%{_sysconfdir}/nginx/vhosts.d/
+install -D -m0644 %{SOURCE11} %{buildroot}%{_sysconfdir}/nginx/vhosts.d/%{name}.conf
 
 %sysusers_generate_pre %{buildroot}%{_sysusersdir}/gerbera.conf gerbera gerbera.conf
 
@@ -131,6 +168,17 @@ install -p -D -m0644 %{SOURCE2} %{buildroot}%{_sysusersdir}/gerbera.conf
 
 %post
 %service_add_post %{name}.service
+# only do on install
+if [ "$1" -eq 1 ]; then
+  gerbera --create-config | sudo tee /etc/gerbera/config.xml || :
+  sed -i -e 's|<home>/root/</home>|<home>/etc/gerbera</home>|g' /etc/gerbera/config.xml
+fi
+# only do on upgrade
+if [ "$1" -gt 1 ]; then
+  gerbera --create-config | sudo tee /etc/gerbera/config-new.xml || :
+  diff /etc/gerbera/config.xml /etc/gerbera/config-new.xml > config-diff.xml || :
+fi
+gerbera --create-example-config | sudo tee /etc/gerbera/config-example.xml || :
 
 %preun
 %service_del_preun %{name}.service
@@ -140,7 +188,7 @@ install -p -D -m0644 %{SOURCE2} %{buildroot}%{_sysusersdir}/gerbera.conf
 
 %files
 %license LICENSE.md
-%doc AUTHORS CONTRIBUTING.md ChangeLog.md
+%doc AUTHORS CONTRIBUTING.md ChangeLog.md README.SUSE
 %attr(-,gerbera,gerbera)%dir %{_sysconfdir}/%{name}/
 %attr(-,gerbera,gerbera)%config(noreplace) %{_sysconfdir}/%{name}/*
 %attr(-,gerbera,gerbera) %{_localstatedir}/log/%{name}
@@ -160,5 +208,13 @@ install -p -D -m0644 %{SOURCE2} %{buildroot}%{_sysusersdir}/gerbera.conf
 %dir %{_datadir}/gerbera/web
 %{_datadir}/gerbera/js/*
 %{_datadir}/gerbera/web/*
+%exclude %{apache_sysconfdir}/vhosts.d/%{name}.conf
+%exclude %{_sysconfdir}/nginx/vhosts.d/%{name}.conf
+
+%files apache
+%config(noreplace) %{apache_sysconfdir}/vhosts.d/%{name}.conf
+
+%files nginx
+%config(noreplace) %{_sysconfdir}/nginx/vhosts.d/%{name}.conf
 
 %changelog

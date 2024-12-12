@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec 11 06:35:24 UTC 2024 - Michiel van der Wulp <michiel.vanderwulp@gmail.com> - 124-2-2
+
+- update to version 124.2.2 (r11400 on 31-August-2024)
+- See for more information about the 124.2.2 release:
+https://forum.simutrans.com/index.php/topic,23193.0.html
+- In the words of prissi: "... There were even some ancient bugs unearthed with crossings 
+and tiles with ways in cities and more. On Intel/AMD cpu's the memory footprint 
+became 10% smaller with some faster sync_step."
+- Complete history can be found at (unofficial): 
+https://github.com/simutrans/simutrans/blob/master/simutrans/history.txt
+
+
+-------------------------------------------------------------------
 Wed Jul 31 08:13:14 UTC 2024 - Michiel van der Wulp <michiel.vanderwulp@gmail.com> - 124-2-1
 
 - update to version 124.2.1 (r11351 on 20-July-2024)

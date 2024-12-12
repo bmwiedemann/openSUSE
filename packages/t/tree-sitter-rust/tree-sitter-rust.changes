@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Dec  4 23:49:30 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.23.2:
+  * fix: add gen to _reserved_identifier
+  * feat: support raw references
+  * chore: generate
+  * feat: support gen block syntax
+  * build: fix lint
+- update to 0.23.1:
+  * build: update bindings
+  * chore: generate
+  * build: update bindings
+- update to 0.23.0:
+  * build: update bindings
+  * fix(go): correct test
+  * fix: move go.mod to root dir
+  * chore: generate
+  * fix: allow shebangs to contain spaces
+- switch to download_files service
+- add neovim links
+- add license file to package
+- enable devel package
+
+-------------------------------------------------------------------
 Mon Apr 29 22:09:22 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Remove 0001-fix-escape-braces-in-regex.patch cherry-picked from

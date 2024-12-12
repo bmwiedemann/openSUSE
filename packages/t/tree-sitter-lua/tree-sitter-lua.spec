@@ -17,13 +17,13 @@
 
 
 %define         _name lua
-Name:           tree-sitter-%{_name}
+Name:           tree-sitter-lua
 Version:        0.2.0
 Release:        0
 Summary:        Lua grammar for tree-sitter
 License:        MIT
 URL:            https://github.com/tree-sitter-grammars/tree-sitter-lua
-Source:         %{name}-%{version}.tar.xz
+Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  tree-sitter
 %treesitter_grammars %{_name}
 
@@ -31,7 +31,7 @@ BuildRequires:  tree-sitter
 %{summary}.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 %treesitter_configure
@@ -39,6 +39,7 @@ BuildRequires:  tree-sitter
 
 %install
 %treesitter_install
+%treesitter_devel_install
 
 #neovim stuff
 install -d %{buildroot}%{_libdir}/tree_sitter
@@ -47,10 +48,12 @@ ln -s %{_libdir}/lib%{name}.so %{buildroot}%{_libdir}/tree_sitter/%{_name}.so
 %files
 %license LICENSE.md
 %doc README.md
-%{treesitter_files}
+%treesitter_files
 %{_libdir}/tree_sitter/%{_name}.so
 %if 0%{?suse_version} < 1600
 %dir %{_libdir}/tree_sitter
 %endif
+
+%treesitter_devel_package
 
 %changelog

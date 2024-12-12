@@ -179,4 +179,12 @@ Needed for python3-jupyter_ipython</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1155416</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>2b9fea03da001ae0ee756ed0593f17ca</srcmd5>
+    <version>0.50</version>
+    <time>1733947489</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1230088</requestid>
+  </revision>
 </revisionlist>

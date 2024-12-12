@@ -1,0 +1,5 @@
+<package name="tree-sitter-re2c" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="editors:tree-sitter" package="tree-sitter-re2c"/>
+</package>

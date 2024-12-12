@@ -16,15 +16,14 @@
 #
 
 
-%define _name gomod
-Summary:        A tree-sitter grammar for go.mod files
-Name:           tree-sitter-%{_name}
+%define         _name gomod
+Name:           tree-sitter-gomod
 Version:        1.1.0
 Release:        0
+Summary:        A tree-sitter grammar for go.mod files
 License:        MIT
-Group:          Development/Tools/Other
-URL:            https://github.com/tree-sitter/tree-sitter-go-mod
-Source0:        %{name}-%{version}.tar.gz
+URL:            https://github.com/camdencheek/tree-sitter-go-mod
+Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  tree-sitter
 %treesitter_grammars %{_name}
 
@@ -32,7 +31,7 @@ BuildRequires:  tree-sitter
 %{summary}.
 
 %prep
-%autosetup -p1
+%autosetup -n tree-sitter-go-mod-%{version}
 
 %build
 %treesitter_configure
@@ -40,9 +39,20 @@ BuildRequires:  tree-sitter
 
 %install
 %treesitter_install
+%treesitter_devel_install
+
+#neovim stuff
+install -d %{buildroot}%{_libdir}/tree_sitter
+ln -s %{_libdir}/lib%{name}.so %{buildroot}%{_libdir}/tree_sitter/%{_name}.so
 
 %files
-%{treesitter_files}
 %license LICENSE
+%treesitter_files
+%{_libdir}/tree_sitter/%{_name}.so
+%if 0%{?suse_version} < 1600
+%dir %{_libdir}/tree_sitter
+%endif
+
+%treesitter_devel_package
 
 %changelog

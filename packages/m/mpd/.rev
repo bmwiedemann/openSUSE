@@ -781,4 +781,17 @@
     <comment>- Added mpd-icu76.patch (fixed build with icu 76.1). </comment>
     <requestid>1225906</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>78d6a59985977ba49ba2b075a33d64fa</srcmd5>
+    <version>0.23.16</version>
+    <time>1733947495</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 0.23.16
+  * Removed files mpd-fmt11.patch and mpd-icu76.patch.
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.23.16/NEWS
+  * database: fixed integer overflows with 64-bit inode numbers
+  * filter: ffmpeg: fixed for filters producing no output
+  * supported libfmt 11 and ICU 76</comment>
+    <requestid>1230097</requestid>
+  </revision>
 </revisionlist>

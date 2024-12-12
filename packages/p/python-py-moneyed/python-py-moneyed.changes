@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 11 01:37:46 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch add-missing-xcg.patch:
+  * Support the upcoming Caribbean guilder (XCG)
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Mon Nov 28 07:29:42 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.0:

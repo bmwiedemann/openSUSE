@@ -26,4 +26,12 @@ It is not possible to have a coexistence of plocate and mlocate, as some files h
     <comment></comment>
     <requestid>1180248</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>595d352a6e41e55be1d09d0a8c617e7c</srcmd5>
+    <version>1.1.23</version>
+    <time>1733947497</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1230107</requestid>
+  </revision>
 </revisionlist>

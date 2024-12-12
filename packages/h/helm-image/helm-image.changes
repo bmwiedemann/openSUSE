@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 10 16:28:02 UTC 2024 - SUSE Update Bot <bci-internal@suse.de>
+
+- update container description
+
+-------------------------------------------------------------------
 Mon Dec  9 20:58:52 UTC 2024 - SUSE Update Bot <bci-internal@suse.de>
 
 - switch to multibuild and add a version check at build time to avoid releasing incorrectly tagged containers

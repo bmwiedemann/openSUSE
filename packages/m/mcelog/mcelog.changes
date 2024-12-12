@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Dec 07 00:18:22 UTC 2024 - trenn@suse.de
+
+- Update to version 202:
+  * mcelog: Wire up model-specific decoding for Clearwater Forest
+  * mcelog: New model number for Clearwater Forest
+- PED-10052
+
+-------------------------------------------------------------------
 Thu Nov 28 08:46:31 UTC 2024 - trenn@suse.de
 
 - Update to version 201:
@@ -30,6 +38,7 @@ M    add-f10h-support.patch
 M    email.patch
 M    fix_setgroups_missing_call.patch
 M    mcelog_invert_prefill_db_warning.patch
+- jsc#PED-10212
 
 -------------------------------------------------------------------
 Mon Feb 12 06:23:11 UTC 2024 - trenn@suse.de
@@ -47,6 +56,7 @@ Mon Nov 20 12:01:41 UTC 2023 - trenn@suse.de
 
 - Update to version 196:
   * mcelog: Add second model number for Arrowlake
+- jsc#PED-10217
 
 -------------------------------------------------------------------
 Tue Sep 12 14:08:37 UTC 2023 - trenn@suse.de

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Dec  7 13:04:57 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.2.1:
+  + Updated translations.
+- Add new lang package via lang macros now that package is
+  translated. Following this, add libgedit-gfls Provides to
+  libgedit-gfls-1-0, make the lang package installable.
+
+-------------------------------------------------------------------
 Wed Oct  2 13:59:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.2.0:

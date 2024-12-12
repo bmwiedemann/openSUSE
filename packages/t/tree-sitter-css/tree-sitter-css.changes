@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Dec  4 22:13:06 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.23.1:
+  * feat: allow escape sequences in class names
+  * feat: improve string parsing
+  * fix: prefer attribute selectors in pseudo class selectors
+  * feat: add string_content
+  * fix: allow :host, :host-context, :nth-child
+  * build: update bindings
+- update to 0.23.0:
+  * build: update bindings
+- update to 0.21.1:
+  * fix: do not consume braces in a string
+  * fix: correct identifier regex
+  * fix: Restrict :has, :not, :is, and :where to selector arguments
+  * chore: remove reset function
+- update to 0.21.0:
+  * build: update bindings
+  * docs: update badges
+- add neovim links
+- switch to download_files service, as nothing special happens with
+  the source
+- add devel package
+
+-------------------------------------------------------------------
 Mon Feb 26 07:09:21 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Initial packaging for openSUSE

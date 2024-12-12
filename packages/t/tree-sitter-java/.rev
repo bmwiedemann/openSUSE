@@ -22,4 +22,24 @@
   * fix: unescaped curly brace in regex and invert query precedence for test</comment>
     <requestid>1170889</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fc6082b937f2281fd32500be5a5f75e0</srcmd5>
+    <version>0.23.4</version>
+    <time>1733947357</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.23.4:
+  * irrelevant changes to openSUSE
+- update to 0.23.3:
+  * build: update bindings
+  * fix: remove comment from supertypes
+  * chore: regenerate
+  * build: update bindings
+  * build: set minimum Go version to 1.22
+- update to 0.23.0:
+  * chore: generate
+- switch to download_files service
+- add neovim links
+- enable devel package</comment>
+    <requestid>1229616</requestid>
+  </revision>
 </revisionlist>

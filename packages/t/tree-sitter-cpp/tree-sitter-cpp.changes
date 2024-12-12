@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Dec  5 00:36:24 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.23.4:
+  * fix: disallow recursive grammar.js files to be included
+- update to 0.23.3:
+  * build: move tree-sitter-c to dependencies
+  * ci(publish): add attestations and generate parser
+- update to 0.23.2:
+  * build: update bindings
+  * chore: regenerate
+- update to 0.23.1:
+  * build: bump tree-sitter-c to 0.23.1
+  * chore: generate
+  * lambda expressions: support capture syntax through cpp20
+- update to 0.23.0:
+  * build: update bindings
+  * chore: generate
+  * feat: allow semicolon in field declaration list items
+  * feat: add raw_string_literal to _string
+  * feat: support constexpr-prefixed friend declarations
+  * fix: do not give higher precedence to a token 0
+  * fix: inline the virtual node
+  * feat: bump tree-sitter-c to 0.23.0
+  * fix(go): correct test
+  * chore: fix line endings
+- switch to download_files service
+- add neovim links
+- adapt spec file to other grammars
+- add devel package
+
+-------------------------------------------------------------------
 Thu Aug 01 21:52:23 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Update to version 0.22.3:

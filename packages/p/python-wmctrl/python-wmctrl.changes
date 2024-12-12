@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 11 12:48:56 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Avoid race condition in test script
+
+-------------------------------------------------------------------
 Mon Dec  9 11:08:46 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.5

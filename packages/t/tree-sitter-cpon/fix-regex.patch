@@ -1,0 +1,1035 @@
+From 594289eadfec719198e560f9d7fd243c4db678d5 Mon Sep 17 00:00:00 2001
+From: Christian Clason <c.clason@uni-graz.at>
+Date: Sat, 20 Apr 2024 14:17:55 +0200
+Subject: [PATCH] fix(grammar): adapt to upstream regex change
+
+---
+ grammar.js               |   2 +-
+ src/grammar.json         |   3 +-
+ src/parser.c             | 346 +++++++++++++++++++--------------------
+ src/tree_sitter/alloc.h  |  54 ++++++
+ src/tree_sitter/array.h  | 290 ++++++++++++++++++++++++++++++++
+ src/tree_sitter/parser.h |  67 ++++++--
+ 6 files changed, 569 insertions(+), 193 deletions(-)
+ create mode 100644 src/tree_sitter/alloc.h
+ create mode 100644 src/tree_sitter/array.h
+
+diff --git a/grammar.js b/grammar.js
+index be97e67..53da782 100644
+--- a/grammar.js
++++ b/grammar.js
+@@ -90,7 +90,7 @@ module.exports = grammar({
+         /[0-7]{1,3}/,
+         /x[0-9a-fA-F]{2}/,
+         /u[0-9a-fA-F]{4}/,
+-        /u{[0-9a-fA-F]+}/,
++        /u\{[0-9a-fA-F]+\}/,
+       ))),
+ 
+     number: _ => {
+diff --git a/src/grammar.json b/src/grammar.json
+index 390a8d5..fc09ff4 100644
+--- a/src/grammar.json
++++ b/src/grammar.json
+@@ -499,7 +499,7 @@
+               },
+               {
+                 "type": "PATTERN",
+-                "value": "u{[0-9a-fA-F]+}"
++                "value": "u\\{[0-9a-fA-F]+\\}"
+               }
+             ]
+           }
+@@ -786,4 +786,3 @@
+   "inline": [],
+   "supertypes": []
+ }
+-
+diff --git a/src/parser.c b/src/parser.c
+index 3c6a3f0..25399a0 100644
+--- a/src/parser.c
++++ b/src/parser.c
+@@ -1,7 +1,6 @@
+-#include <tree_sitter/parser.h>
++#include "tree_sitter/parser.h"
+ 
+ #if defined(__GNUC__) || defined(__clang__)
+-#pragma GCC diagnostic push
+ #pragma GCC diagnostic ignored "-Wmissing-field-initializers"
+ #endif
+ 
+@@ -16,7 +15,7 @@
+ #define MAX_ALIAS_SEQUENCE_LENGTH 6
+ #define PRODUCTION_ID_COUNT 2
+ 
+-enum {
++enum ts_symbol_identifiers {
+   anon_sym_LT = 1,
+   anon_sym_COMMA = 2,
+   anon_sym_GT = 3,
+@@ -349,7 +348,7 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
+   },
+ };
+ 
+-enum {
++enum ts_field_identifiers {
+   field_key = 1,
+   field_value = 2,
+ };
+@@ -465,61 +464,45 @@ static const TSStateId ts_primary_state_ids[STATE_COUNT] = {
+   [83] = 83,
+ };
+ 
+-static inline bool sym_escape_sequence_character_set_1(int32_t c) {
+-  return (c < 'a'
+-    ? (c < '?'
+-      ? (c < '\''
+-        ? c == '"'
+-        : c <= '\'')
+-      : (c <= '?' || c == '\\'))
+-    : (c <= 'b' || (c < 'r'
+-      ? (c < 'n'
+-        ? c == 'f'
+-        : c <= 'n')
+-      : (c <= 'r' || (c >= 't' && c <= 'v')))));
+-}
+-
+ static bool ts_lex(TSLexer *lexer, TSStateId state) {
+   START_LEXER();
+   eof = lexer->eof(lexer);
+   switch (state) {
+     case 0:
+       if (eof) ADVANCE(59);
+-      if (lookahead == '"') ADVANCE(69);
+-      if (lookahead == '+' ||
+-          lookahead == '-') ADVANCE(7);
+-      if (lookahead == ',') ADVANCE(61);
+-      if (lookahead == '.') ADVANCE(39);
+-      if (lookahead == '/') ADVANCE(2);
+-      if (lookahead == '0') ADVANCE(82);
+-      if (lookahead == ':') ADVANCE(63);
+-      if (lookahead == '<') ADVANCE(60);
+-      if (lookahead == '>') ADVANCE(62);
+-      if (lookahead == '[') ADVANCE(67);
+-      if (lookahead == '\\') ADVANCE(24);
+-      if (lookahead == ']') ADVANCE(68);
+-      if (lookahead == 'b') ADVANCE(96);
+-      if (lookahead == 'd') ADVANCE(86);
+-      if (lookahead == 'f') ADVANCE(16);
+-      if (lookahead == 'i') ADVANCE(66);
+-      if (lookahead == 'n') ADVANCE(26);
+-      if (lookahead == 't') ADVANCE(22);
+-      if (lookahead == 'x') ADVANCE(94);
+-      if (lookahead == '{') ADVANCE(64);
+-      if (lookahead == '}') ADVANCE(65);
+-      if (lookahead == '\t' ||
+-          lookahead == '\n' ||
+-          lookahead == '\r' ||
+-          lookahead == ' ') SKIP(58)
+-      if (('1' <= lookahead && lookahead <= '9')) ADVANCE(80);
++      ADVANCE_MAP(
++        '"', 69,
++        ',', 61,
++        '.', 39,
++        '/', 2,
++        '0', 80,
++        ':', 63,
++        '<', 60,
++        '>', 62,
++        '[', 67,
++        '\\', 24,
++        ']', 68,
++        'b', 96,
++        'd', 86,
++        'f', 16,
++        'i', 66,
++        'n', 26,
++        't', 22,
++        'x', 94,
++        '{', 64,
++        '}', 65,
++        '+', 7,
++        '-', 7,
++      );
++      if (('\t' <= lookahead && lookahead <= '\r') ||
++          lookahead == ' ') SKIP(58);
++      if (('1' <= lookahead && lookahead <= '9')) ADVANCE(81);
+       END_STATE();
+     case 1:
+       if (lookahead == '"') ADVANCE(69);
+       if (lookahead == '/') ADVANCE(71);
+       if (lookahead == '\\') ADVANCE(24);
+-      if (lookahead == '\t' ||
+-          lookahead == '\n' ||
+-          lookahead == '\r' ||
++      if (('\t' <= lookahead && lookahead <= '\r') ||
+           lookahead == ' ') ADVANCE(70);
+       if (lookahead != 0) ADVANCE(74);
+       END_STATE();
+@@ -544,15 +527,13 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
+       END_STATE();
+     case 7:
+       if (lookahead == '.') ADVANCE(39);
+-      if (lookahead == '0') ADVANCE(81);
+-      if (('1' <= lookahead && lookahead <= '9')) ADVANCE(81);
++      if (lookahead == '0') ADVANCE(82);
++      if (('1' <= lookahead && lookahead <= '9')) ADVANCE(82);
+       END_STATE();
+     case 8:
+       if (lookahead == '/') ADVANCE(2);
+-      if (lookahead == '\t' ||
+-          lookahead == '\n' ||
+-          lookahead == '\r' ||
+-          lookahead == ' ') SKIP(8)
++      if (('\t' <= lookahead && lookahead <= '\r') ||
++          lookahead == ' ') SKIP(8);
+       if (('0' <= lookahead && lookahead <= '9')) ADVANCE(49);
+       END_STATE();
+     case 9:
+@@ -611,7 +592,16 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
+       if (lookahead == 'u') ADVANCE(27);
+       if (lookahead == 'x') ADVANCE(57);
+       if (('0' <= lookahead && lookahead <= '7')) ADVANCE(76);
+-      if (sym_escape_sequence_character_set_1(lookahead)) ADVANCE(77);
++      if (lookahead == '"' ||
++          lookahead == '\'' ||
++          lookahead == '?' ||
++          lookahead == '\\' ||
++          lookahead == 'a' ||
++          lookahead == 'b' ||
++          lookahead == 'f' ||
++          lookahead == 'n' ||
++          lookahead == 'r' ||
++          ('t' <= lookahead && lookahead <= 'v')) ADVANCE(77);
+       if (lookahead != 0) ADVANCE(75);
+       END_STATE();
+     case 25:
+@@ -736,32 +726,32 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
+       END_STATE();
+     case 58:
+       if (eof) ADVANCE(59);
+-      if (lookahead == '"') ADVANCE(69);
+-      if (lookahead == '+' ||
+-          lookahead == '-') ADVANCE(7);
+-      if (lookahead == ',') ADVANCE(61);
+-      if (lookahead == '.') ADVANCE(39);
+-      if (lookahead == '/') ADVANCE(2);
+-      if (lookahead == '0') ADVANCE(82);
+-      if (lookahead == ':') ADVANCE(63);
+-      if (lookahead == '<') ADVANCE(60);
+-      if (lookahead == '>') ADVANCE(62);
+-      if (lookahead == '[') ADVANCE(67);
+-      if (lookahead == ']') ADVANCE(68);
+-      if (lookahead == 'b') ADVANCE(96);
+-      if (lookahead == 'd') ADVANCE(86);
+-      if (lookahead == 'f') ADVANCE(16);
+-      if (lookahead == 'i') ADVANCE(66);
+-      if (lookahead == 'n') ADVANCE(26);
+-      if (lookahead == 't') ADVANCE(22);
+-      if (lookahead == 'x') ADVANCE(94);
+-      if (lookahead == '{') ADVANCE(64);
+-      if (lookahead == '}') ADVANCE(65);
+-      if (lookahead == '\t' ||
+-          lookahead == '\n' ||
+-          lookahead == '\r' ||
+-          lookahead == ' ') SKIP(58)
+-      if (('1' <= lookahead && lookahead <= '9')) ADVANCE(80);
++      ADVANCE_MAP(
++        '"', 69,
++        ',', 61,
++        '.', 39,
++        '/', 2,
++        '0', 80,
++        ':', 63,
++        '<', 60,
++        '>', 62,
++        '[', 67,
++        ']', 68,
++        'b', 96,
++        'd', 86,
++        'f', 16,
++        'i', 66,
++        'n', 26,
++        't', 22,
++        'x', 94,
++        '{', 64,
++        '}', 65,
++        '+', 7,
++        '-', 7,
++      );
++      if (('\t' <= lookahead && lookahead <= '\r') ||
++          lookahead == ' ') SKIP(58);
++      if (('1' <= lookahead && lookahead <= '9')) ADVANCE(81);
+       END_STATE();
+     case 59:
+       ACCEPT_TOKEN(ts_builtin_sym_end);
+@@ -800,9 +790,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
+       ACCEPT_TOKEN(sym_string_content);
+       if (lookahead == '"') ADVANCE(69);
+       if (lookahead == '/') ADVANCE(71);
+-      if (lookahead == '\t' ||
+-          lookahead == '\n' ||
+-          lookahead == '\r' ||
++      if (('\t' <= lookahead && lookahead <= '\r') ||
+           lookahead == ' ') ADVANCE(70);
+       if (lookahead != 0 &&
+           lookahead != '\\') ADVANCE(74);
+@@ -859,11 +847,14 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
+       if (lookahead == 'u') ADVANCE(79);
+       if (lookahead == 'E' ||
+           lookahead == 'e') ADVANCE(29);
+-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(80);
++      if (lookahead == 'X' ||
++          lookahead == 'x') ADVANCE(53);
++      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(81);
+       END_STATE();
+     case 81:
+       ACCEPT_TOKEN(sym_number);
+       if (lookahead == '.') ADVANCE(39);
++      if (lookahead == 'u') ADVANCE(79);
+       if (lookahead == 'E' ||
+           lookahead == 'e') ADVANCE(29);
+       if (('0' <= lookahead && lookahead <= '9')) ADVANCE(81);
+@@ -871,12 +862,9 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
+     case 82:
+       ACCEPT_TOKEN(sym_number);
+       if (lookahead == '.') ADVANCE(39);
+-      if (lookahead == 'X' ||
+-          lookahead == 'x') ADVANCE(53);
+-      if (lookahead == 'u') ADVANCE(79);
+       if (lookahead == 'E' ||
+           lookahead == 'e') ADVANCE(29);
+-      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(80);
++      if (('0' <= lookahead && lookahead <= '9')) ADVANCE(82);
+       END_STATE();
+     case 83:
+       ACCEPT_TOKEN(sym_number);
+@@ -2580,19 +2568,19 @@ static const TSParseActionEntry ts_parse_actions[] = {
+   [21] = {.entry = {.count = 1, .reusable = true}}, SHIFT(80),
+   [23] = {.entry = {.count = 1, .reusable = true}}, SHIFT(77),
+   [25] = {.entry = {.count = 1, .reusable = true}}, SHIFT(74),
+-  [27] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_array_repeat1, 2), SHIFT_REPEAT(57),
+-  [30] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_array_repeat1, 2), SHIFT_REPEAT(7),
+-  [33] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_array_repeat1, 2), SHIFT_REPEAT(66),
+-  [36] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_array_repeat1, 2), SHIFT_REPEAT(75),
+-  [39] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_array_repeat1, 2), SHIFT_REPEAT(8),
+-  [42] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_array_repeat1, 2),
+-  [44] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_array_repeat1, 2), SHIFT_REPEAT(51),
+-  [47] = {.entry = {.count = 2, .reusable = false}}, REDUCE(aux_sym_array_repeat1, 2), SHIFT_REPEAT(2),
+-  [50] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_array_repeat1, 2), SHIFT_REPEAT(71),
+-  [53] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_array_repeat1, 2), SHIFT_REPEAT(26),
+-  [56] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_array_repeat1, 2), SHIFT_REPEAT(2),
+-  [59] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_array_repeat1, 2), SHIFT_REPEAT(77),
+-  [62] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_array_repeat1, 2), SHIFT_REPEAT(74),
++  [27] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_array_repeat1, 2, 0, 0), SHIFT_REPEAT(57),
++  [30] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_array_repeat1, 2, 0, 0), SHIFT_REPEAT(7),
++  [33] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_array_repeat1, 2, 0, 0), SHIFT_REPEAT(66),
++  [36] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_array_repeat1, 2, 0, 0), SHIFT_REPEAT(75),
++  [39] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_array_repeat1, 2, 0, 0), SHIFT_REPEAT(8),
++  [42] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_array_repeat1, 2, 0, 0),
++  [44] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_array_repeat1, 2, 0, 0), SHIFT_REPEAT(51),
++  [47] = {.entry = {.count = 2, .reusable = false}}, REDUCE(aux_sym_array_repeat1, 2, 0, 0), SHIFT_REPEAT(2),
++  [50] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_array_repeat1, 2, 0, 0), SHIFT_REPEAT(71),
++  [53] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_array_repeat1, 2, 0, 0), SHIFT_REPEAT(26),
++  [56] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_array_repeat1, 2, 0, 0), SHIFT_REPEAT(2),
++  [59] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_array_repeat1, 2, 0, 0), SHIFT_REPEAT(77),
++  [62] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_array_repeat1, 2, 0, 0), SHIFT_REPEAT(74),
+   [65] = {.entry = {.count = 1, .reusable = true}}, SHIFT(5),
+   [67] = {.entry = {.count = 1, .reusable = true}}, SHIFT(30),
+   [69] = {.entry = {.count = 1, .reusable = false}}, SHIFT(2),
+@@ -2616,73 +2604,73 @@ static const TSParseActionEntry ts_parse_actions[] = {
+   [105] = {.entry = {.count = 1, .reusable = true}}, SHIFT(62),
+   [107] = {.entry = {.count = 1, .reusable = false}}, SHIFT(31),
+   [109] = {.entry = {.count = 1, .reusable = true}}, SHIFT(31),
+-  [111] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_string, 3),
+-  [113] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_string, 3),
+-  [115] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_string, 2),
+-  [117] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_string, 2),
+-  [119] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_array, 2),
+-  [121] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_array, 2),
+-  [123] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_datetime, 4),
+-  [125] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_datetime, 4),
+-  [127] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_imap, 6),
+-  [129] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_imap, 6),
+-  [131] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_array, 5),
+-  [133] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_array, 5),
+-  [135] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_esc_blob, 3),
+-  [137] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_esc_blob, 3),
+-  [139] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_map, 4),
+-  [141] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_map, 4),
+-  [143] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_imap, 5),
+-  [145] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_imap, 5),
+-  [147] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_imap, 4),
+-  [149] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_imap, 4),
+-  [151] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_map, 2),
+-  [153] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_map, 2),
+-  [155] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_meta_map_repeat1, 2),
+-  [157] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_meta_map_repeat1, 2), SHIFT_REPEAT(24),
+-  [160] = {.entry = {.count = 1, .reusable = false}}, REDUCE(aux_sym_meta_map_repeat1, 2),
+-  [162] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_map, 5),
+-  [164] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_map, 5),
+-  [166] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_boolean, 1),
+-  [168] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_boolean, 1),
+-  [170] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_array, 3),
+-  [172] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_array, 3),
+-  [174] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_esc_blob, 4),
+-  [176] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_esc_blob, 4),
+-  [178] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_hex_blob, 4),
+-  [180] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_hex_blob, 4),
+-  [182] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_array, 4),
+-  [184] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_array, 4),
+-  [186] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym__value, 2),
+-  [188] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym__value, 2),
+-  [190] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_imap, 3),
+-  [192] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_imap, 3),
+-  [194] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_map, 3),
+-  [196] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_map, 3),
+-  [198] = {.entry = {.count = 1, .reusable = false}}, REDUCE(aux_sym_array_repeat1, 2),
+-  [200] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_meta_map, 3),
+-  [202] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_meta_map, 3),
+-  [204] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_meta_map, 5),
+-  [206] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_meta_map, 5),
+-  [208] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_meta_map, 2),
+-  [210] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_meta_map, 2),
+-  [212] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_meta_map, 4),
+-  [214] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_meta_map, 4),
++  [111] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_string, 3, 0, 0),
++  [113] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_string, 3, 0, 0),
++  [115] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_string, 2, 0, 0),
++  [117] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_string, 2, 0, 0),
++  [119] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_array, 2, 0, 0),
++  [121] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_array, 2, 0, 0),
++  [123] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_datetime, 4, 0, 0),
++  [125] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_datetime, 4, 0, 0),
++  [127] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_imap, 6, 0, 0),
++  [129] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_imap, 6, 0, 0),
++  [131] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_array, 5, 0, 0),
++  [133] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_array, 5, 0, 0),
++  [135] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_esc_blob, 3, 0, 0),
++  [137] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_esc_blob, 3, 0, 0),
++  [139] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_map, 4, 0, 0),
++  [141] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_map, 4, 0, 0),
++  [143] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_imap, 5, 0, 0),
++  [145] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_imap, 5, 0, 0),
++  [147] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_imap, 4, 0, 0),
++  [149] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_imap, 4, 0, 0),
++  [151] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_map, 2, 0, 0),
++  [153] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_map, 2, 0, 0),
++  [155] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_meta_map_repeat1, 2, 0, 0),
++  [157] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_meta_map_repeat1, 2, 0, 0), SHIFT_REPEAT(24),
++  [160] = {.entry = {.count = 1, .reusable = false}}, REDUCE(aux_sym_meta_map_repeat1, 2, 0, 0),
++  [162] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_map, 5, 0, 0),
++  [164] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_map, 5, 0, 0),
++  [166] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_boolean, 1, 0, 0),
++  [168] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_boolean, 1, 0, 0),
++  [170] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_array, 3, 0, 0),
++  [172] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_array, 3, 0, 0),
++  [174] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_esc_blob, 4, 0, 0),
++  [176] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_esc_blob, 4, 0, 0),
++  [178] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_hex_blob, 4, 0, 0),
++  [180] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_hex_blob, 4, 0, 0),
++  [182] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_array, 4, 0, 0),
++  [184] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_array, 4, 0, 0),
++  [186] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym__value, 2, 0, 0),
++  [188] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym__value, 2, 0, 0),
++  [190] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_imap, 3, 0, 0),
++  [192] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_imap, 3, 0, 0),
++  [194] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_map, 3, 0, 0),
++  [196] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_map, 3, 0, 0),
++  [198] = {.entry = {.count = 1, .reusable = false}}, REDUCE(aux_sym_array_repeat1, 2, 0, 0),
++  [200] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_meta_map, 3, 0, 0),
++  [202] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_meta_map, 3, 0, 0),
++  [204] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_meta_map, 5, 0, 0),
++  [206] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_meta_map, 5, 0, 0),
++  [208] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_meta_map, 2, 0, 0),
++  [210] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_meta_map, 2, 0, 0),
++  [212] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_meta_map, 4, 0, 0),
++  [214] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_meta_map, 4, 0, 0),
+   [216] = {.entry = {.count = 1, .reusable = true}}, SHIFT(43),
+   [218] = {.entry = {.count = 1, .reusable = true}}, SHIFT(38),
+   [220] = {.entry = {.count = 1, .reusable = false}}, SHIFT(79),
+-  [222] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_meta_map_repeat2, 2), SHIFT_REPEAT(50),
+-  [225] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_meta_map_repeat2, 2),
+-  [227] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_meta_map_repeat2, 2), SHIFT_REPEAT(51),
+-  [230] = {.entry = {.count = 2, .reusable = false}}, REDUCE(aux_sym_meta_map_repeat2, 2), SHIFT_REPEAT(79),
++  [222] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_meta_map_repeat2, 2, 0, 0), SHIFT_REPEAT(50),
++  [225] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_meta_map_repeat2, 2, 0, 0),
++  [227] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_meta_map_repeat2, 2, 0, 0), SHIFT_REPEAT(51),
++  [230] = {.entry = {.count = 2, .reusable = false}}, REDUCE(aux_sym_meta_map_repeat2, 2, 0, 0), SHIFT_REPEAT(79),
+   [233] = {.entry = {.count = 1, .reusable = true}}, SHIFT(42),
+   [235] = {.entry = {.count = 1, .reusable = true}}, SHIFT(35),
+   [237] = {.entry = {.count = 1, .reusable = true}}, SHIFT(36),
+   [239] = {.entry = {.count = 1, .reusable = true}}, SHIFT(58),
+   [241] = {.entry = {.count = 1, .reusable = true}}, SHIFT(33),
+-  [243] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_map_repeat1, 2), SHIFT_REPEAT(64),
+-  [246] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_map_repeat1, 2),
+-  [248] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_map_repeat1, 2), SHIFT_REPEAT(51),
++  [243] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_map_repeat1, 2, 0, 0), SHIFT_REPEAT(64),
++  [246] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_map_repeat1, 2, 0, 0),
++  [248] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_map_repeat1, 2, 0, 0), SHIFT_REPEAT(51),
+   [251] = {.entry = {.count = 1, .reusable = true}}, SHIFT(54),
+   [253] = {.entry = {.count = 1, .reusable = true}}, SHIFT(21),
+   [255] = {.entry = {.count = 1, .reusable = false}}, SHIFT(78),
+@@ -2690,9 +2678,9 @@ static const TSParseActionEntry ts_parse_actions[] = {
+   [259] = {.entry = {.count = 1, .reusable = true}}, SHIFT(22),
+   [261] = {.entry = {.count = 1, .reusable = true}}, SHIFT(53),
+   [263] = {.entry = {.count = 1, .reusable = true}}, SHIFT(20),
+-  [265] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_imap_repeat1, 2), SHIFT_REPEAT(61),
+-  [268] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_imap_repeat1, 2),
+-  [270] = {.entry = {.count = 2, .reusable = false}}, REDUCE(aux_sym_imap_repeat1, 2), SHIFT_REPEAT(78),
++  [265] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_imap_repeat1, 2, 0, 0), SHIFT_REPEAT(61),
++  [268] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_imap_repeat1, 2, 0, 0),
++  [270] = {.entry = {.count = 2, .reusable = false}}, REDUCE(aux_sym_imap_repeat1, 2, 0, 0), SHIFT_REPEAT(78),
+   [273] = {.entry = {.count = 1, .reusable = false}}, SHIFT(14),
+   [275] = {.entry = {.count = 1, .reusable = false}}, SHIFT(60),
+   [277] = {.entry = {.count = 1, .reusable = false}}, SHIFT_EXTRA(),
+@@ -2700,21 +2688,21 @@ static const TSParseActionEntry ts_parse_actions[] = {
+   [281] = {.entry = {.count = 1, .reusable = false}}, SHIFT(56),
+   [283] = {.entry = {.count = 1, .reusable = true}}, SHIFT(25),
+   [285] = {.entry = {.count = 1, .reusable = true}}, SHIFT(17),
+-  [287] = {.entry = {.count = 1, .reusable = false}}, REDUCE(aux_sym_string_repeat1, 2),
+-  [289] = {.entry = {.count = 2, .reusable = false}}, REDUCE(aux_sym_string_repeat1, 2), SHIFT_REPEAT(56),
++  [287] = {.entry = {.count = 1, .reusable = false}}, REDUCE(aux_sym_string_repeat1, 2, 0, 0),
++  [289] = {.entry = {.count = 2, .reusable = false}}, REDUCE(aux_sym_string_repeat1, 2, 0, 0), SHIFT_REPEAT(56),
+   [292] = {.entry = {.count = 1, .reusable = true}}, SHIFT(37),
+   [294] = {.entry = {.count = 1, .reusable = false}}, SHIFT(19),
+   [296] = {.entry = {.count = 1, .reusable = false}}, SHIFT(52),
+   [298] = {.entry = {.count = 1, .reusable = false}}, SHIFT(13),
+-  [300] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_meta_pair, 3, .production_id = 1),
+-  [302] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_meta_pair, 3, .production_id = 1),
+-  [304] = {.entry = {.count = 1, .reusable = false}}, REDUCE(aux_sym_meta_map_repeat2, 2),
++  [300] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_meta_pair, 3, 0, 1),
++  [302] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_meta_pair, 3, 0, 1),
++  [304] = {.entry = {.count = 1, .reusable = false}}, REDUCE(aux_sym_meta_map_repeat2, 2, 0, 0),
+   [306] = {.entry = {.count = 1, .reusable = true}}, SHIFT(32),
+   [308] = {.entry = {.count = 1, .reusable = true}}, SHIFT(23),
+-  [310] = {.entry = {.count = 1, .reusable = false}}, REDUCE(aux_sym_imap_repeat1, 2),
+-  [312] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_ipair, 3, .production_id = 1),
+-  [314] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_ipair, 3, .production_id = 1),
+-  [316] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_pair, 3, .production_id = 1),
++  [310] = {.entry = {.count = 1, .reusable = false}}, REDUCE(aux_sym_imap_repeat1, 2, 0, 0),
++  [312] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_ipair, 3, 0, 1),
++  [314] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_ipair, 3, 0, 1),
++  [316] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_pair, 3, 0, 1),
+   [318] = {.entry = {.count = 1, .reusable = true}}, SHIFT(73),
+   [320] = {.entry = {.count = 1, .reusable = true}}, SHIFT(83),
+   [322] = {.entry = {.count = 1, .reusable = true}}, SHIFT(81),
+@@ -2724,7 +2712,7 @@ static const TSParseActionEntry ts_parse_actions[] = {
+   [330] = {.entry = {.count = 1, .reusable = true}}, SHIFT(72),
+   [332] = {.entry = {.count = 1, .reusable = true}}, SHIFT(9),
+   [334] = {.entry = {.count = 1, .reusable = true}}, SHIFT(11),
+-  [336] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_document, 1),
++  [336] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_document, 1, 0, 0),
+   [338] = {.entry = {.count = 1, .reusable = true}}, SHIFT(16),
+   [340] = {.entry = {.count = 1, .reusable = true}},  ACCEPT_INPUT(),
+   [342] = {.entry = {.count = 1, .reusable = true}}, SHIFT(29),
+@@ -2733,11 +2721,15 @@ static const TSParseActionEntry ts_parse_actions[] = {
+ #ifdef __cplusplus
+ extern "C" {
+ #endif
+-#ifdef _WIN32
+-#define extern __declspec(dllexport)
++#ifdef TREE_SITTER_HIDE_SYMBOLS
++#define TS_PUBLIC
++#elif defined(_WIN32)
++#define TS_PUBLIC __declspec(dllexport)
++#else
++#define TS_PUBLIC __attribute__((visibility("default")))
+ #endif
+ 
+-extern const TSLanguage *tree_sitter_cpon(void) {
++TS_PUBLIC const TSLanguage *tree_sitter_cpon(void) {
+   static const TSLanguage language = {
+     .version = LANGUAGE_VERSION,
+     .symbol_count = SYMBOL_COUNT,
+diff --git a/src/tree_sitter/alloc.h b/src/tree_sitter/alloc.h
+new file mode 100644
+index 0000000..1f4466d
+--- /dev/null
++++ b/src/tree_sitter/alloc.h
+@@ -0,0 +1,54 @@
++#ifndef TREE_SITTER_ALLOC_H_
++#define TREE_SITTER_ALLOC_H_
++
++#ifdef __cplusplus
++extern "C" {
++#endif
++
++#include <stdbool.h>
++#include <stdio.h>
++#include <stdlib.h>
++
++// Allow clients to override allocation functions
++#ifdef TREE_SITTER_REUSE_ALLOCATOR
++
++extern void *(*ts_current_malloc)(size_t);
++extern void *(*ts_current_calloc)(size_t, size_t);
++extern void *(*ts_current_realloc)(void *, size_t);
++extern void (*ts_current_free)(void *);
++
++#ifndef ts_malloc
++#define ts_malloc  ts_current_malloc
++#endif
++#ifndef ts_calloc
++#define ts_calloc  ts_current_calloc
++#endif
++#ifndef ts_realloc
++#define ts_realloc ts_current_realloc
++#endif
++#ifndef ts_free
++#define ts_free    ts_current_free
++#endif
++
++#else
++
++#ifndef ts_malloc
++#define ts_malloc  malloc
++#endif
++#ifndef ts_calloc
++#define ts_calloc  calloc
++#endif
++#ifndef ts_realloc
++#define ts_realloc realloc
++#endif
++#ifndef ts_free
++#define ts_free    free
++#endif
++
++#endif
++
++#ifdef __cplusplus
++}
++#endif
++
++#endif // TREE_SITTER_ALLOC_H_
+diff --git a/src/tree_sitter/array.h b/src/tree_sitter/array.h
+new file mode 100644
+index 0000000..15a3b23
+--- /dev/null
++++ b/src/tree_sitter/array.h
+@@ -0,0 +1,290 @@
++#ifndef TREE_SITTER_ARRAY_H_
++#define TREE_SITTER_ARRAY_H_
++
++#ifdef __cplusplus
++extern "C" {
++#endif
++
++#include "./alloc.h"
++
++#include <assert.h>
++#include <stdbool.h>
++#include <stdint.h>
++#include <stdlib.h>
++#include <string.h>
++
++#ifdef _MSC_VER
++#pragma warning(disable : 4101)
++#elif defined(__GNUC__) || defined(__clang__)
++#pragma GCC diagnostic push
++#pragma GCC diagnostic ignored "-Wunused-variable"
++#endif
++
++#define Array(T)       \
++  struct {             \
++    T *contents;       \
++    uint32_t size;     \
++    uint32_t capacity; \
++  }
++
++/// Initialize an array.
++#define array_init(self) \
++  ((self)->size = 0, (self)->capacity = 0, (self)->contents = NULL)
++
++/// Create an empty array.
++#define array_new() \
++  { NULL, 0, 0 }
++
++/// Get a pointer to the element at a given `index` in the array.
++#define array_get(self, _index) \
++  (assert((uint32_t)(_index) < (self)->size), &(self)->contents[_index])
++
++/// Get a pointer to the first element in the array.
++#define array_front(self) array_get(self, 0)
++
++/// Get a pointer to the last element in the array.
++#define array_back(self) array_get(self, (self)->size - 1)
++
++/// Clear the array, setting its size to zero. Note that this does not free any
++/// memory allocated for the array's contents.
++#define array_clear(self) ((self)->size = 0)
++
++/// Reserve `new_capacity` elements of space in the array. If `new_capacity` is
++/// less than the array's current capacity, this function has no effect.
++#define array_reserve(self, new_capacity) \
++  _array__reserve((Array *)(self), array_elem_size(self), new_capacity)
++
++/// Free any memory allocated for this array. Note that this does not free any
++/// memory allocated for the array's contents.
++#define array_delete(self) _array__delete((Array *)(self))
++
++/// Push a new `element` onto the end of the array.
++#define array_push(self, element)                            \
++  (_array__grow((Array *)(self), 1, array_elem_size(self)), \
++   (self)->contents[(self)->size++] = (element))
++
++/// Increase the array's size by `count` elements.
++/// New elements are zero-initialized.
++#define array_grow_by(self, count) \
++  do { \
++    if ((count) == 0) break; \
++    _array__grow((Array *)(self), count, array_elem_size(self)); \
++    memset((self)->contents + (self)->size, 0, (count) * array_elem_size(self)); \
++    (self)->size += (count); \
++  } while (0)
++
++/// Append all elements from one array to the end of another.
++#define array_push_all(self, other)                                       \
++  array_extend((self), (other)->size, (other)->contents)
++
++/// Append `count` elements to the end of the array, reading their values from the
++/// `contents` pointer.
++#define array_extend(self, count, contents)                    \
++  _array__splice(                                               \
++    (Array *)(self), array_elem_size(self), (self)->size, \
++    0, count,  contents                                        \
++  )
++
++/// Remove `old_count` elements from the array starting at the given `index`. At
++/// the same index, insert `new_count` new elements, reading their values from the
++/// `new_contents` pointer.
++#define array_splice(self, _index, old_count, new_count, new_contents)  \
++  _array__splice(                                                       \
++    (Array *)(self), array_elem_size(self), _index,                \
++    old_count, new_count, new_contents                                 \
++  )
++
++/// Insert one `element` into the array at the given `index`.
++#define array_insert(self, _index, element) \
++  _array__splice((Array *)(self), array_elem_size(self), _index, 0, 1, &(element))
++
++/// Remove one element from the array at the given `index`.
++#define array_erase(self, _index) \
++  _array__erase((Array *)(self), array_elem_size(self), _index)
++
++/// Pop the last element off the array, returning the element by value.
++#define array_pop(self) ((self)->contents[--(self)->size])
++
++/// Assign the contents of one array to another, reallocating if necessary.
++#define array_assign(self, other) \
++  _array__assign((Array *)(self), (const Array *)(other), array_elem_size(self))
++
++/// Swap one array with another
++#define array_swap(self, other) \
++  _array__swap((Array *)(self), (Array *)(other))
++
++/// Get the size of the array contents
++#define array_elem_size(self) (sizeof *(self)->contents)
++
++/// Search a sorted array for a given `needle` value, using the given `compare`
++/// callback to determine the order.
++///
++/// If an existing element is found to be equal to `needle`, then the `index`
++/// out-parameter is set to the existing value's index, and the `exists`
++/// out-parameter is set to true. Otherwise, `index` is set to an index where
++/// `needle` should be inserted in order to preserve the sorting, and `exists`
++/// is set to false.
++#define array_search_sorted_with(self, compare, needle, _index, _exists) \
++  _array__search_sorted(self, 0, compare, , needle, _index, _exists)
++
++/// Search a sorted array for a given `needle` value, using integer comparisons
++/// of a given struct field (specified with a leading dot) to determine the order.
++///
++/// See also `array_search_sorted_with`.
++#define array_search_sorted_by(self, field, needle, _index, _exists) \
++  _array__search_sorted(self, 0, _compare_int, field, needle, _index, _exists)
++
++/// Insert a given `value` into a sorted array, using the given `compare`
++/// callback to determine the order.
++#define array_insert_sorted_with(self, compare, value) \
++  do { \
++    unsigned _index, _exists; \
++    array_search_sorted_with(self, compare, &(value), &_index, &_exists); \
++    if (!_exists) array_insert(self, _index, value); \
++  } while (0)
++
++/// Insert a given `value` into a sorted array, using integer comparisons of
++/// a given struct field (specified with a leading dot) to determine the order.
++///
++/// See also `array_search_sorted_by`.
++#define array_insert_sorted_by(self, field, value) \
++  do { \
++    unsigned _index, _exists; \
++    array_search_sorted_by(self, field, (value) field, &_index, &_exists); \
++    if (!_exists) array_insert(self, _index, value); \
++  } while (0)
++
++// Private
++
++typedef Array(void) Array;
++
++/// This is not what you're looking for, see `array_delete`.
++static inline void _array__delete(Array *self) {
++  if (self->contents) {
++    ts_free(self->contents);
++    self->contents = NULL;
++    self->size = 0;
++    self->capacity = 0;
++  }
++}
++
++/// This is not what you're looking for, see `array_erase`.
++static inline void _array__erase(Array *self, size_t element_size,
++                                uint32_t index) {
++  assert(index < self->size);
++  char *contents = (char *)self->contents;
++  memmove(contents + index * element_size, contents + (index + 1) * element_size,
++          (self->size - index - 1) * element_size);
++  self->size--;
++}
++
++/// This is not what you're looking for, see `array_reserve`.
++static inline void _array__reserve(Array *self, size_t element_size, uint32_t new_capacity) {
++  if (new_capacity > self->capacity) {
++    if (self->contents) {
++      self->contents = ts_realloc(self->contents, new_capacity * element_size);
++    } else {
++      self->contents = ts_malloc(new_capacity * element_size);
++    }
++    self->capacity = new_capacity;
++  }
++}
++
++/// This is not what you're looking for, see `array_assign`.
++static inline void _array__assign(Array *self, const Array *other, size_t element_size) {
++  _array__reserve(self, element_size, other->size);
++  self->size = other->size;
++  memcpy(self->contents, other->contents, self->size * element_size);
++}
++
++/// This is not what you're looking for, see `array_swap`.
++static inline void _array__swap(Array *self, Array *other) {
++  Array swap = *other;
++  *other = *self;
++  *self = swap;
++}
++
++/// This is not what you're looking for, see `array_push` or `array_grow_by`.
++static inline void _array__grow(Array *self, uint32_t count, size_t element_size) {
++  uint32_t new_size = self->size + count;
++  if (new_size > self->capacity) {
++    uint32_t new_capacity = self->capacity * 2;
++    if (new_capacity < 8) new_capacity = 8;
++    if (new_capacity < new_size) new_capacity = new_size;
++    _array__reserve(self, element_size, new_capacity);
++  }
++}
++
++/// This is not what you're looking for, see `array_splice`.
++static inline void _array__splice(Array *self, size_t element_size,
++                                 uint32_t index, uint32_t old_count,
++                                 uint32_t new_count, const void *elements) {
++  uint32_t new_size = self->size + new_count - old_count;
++  uint32_t old_end = index + old_count;
++  uint32_t new_end = index + new_count;
++  assert(old_end <= self->size);
++
++  _array__reserve(self, element_size, new_size);
++
++  char *contents = (char *)self->contents;
++  if (self->size > old_end) {
++    memmove(
++      contents + new_end * element_size,
++      contents + old_end * element_size,
++      (self->size - old_end) * element_size
++    );
++  }
++  if (new_count > 0) {
++    if (elements) {
++      memcpy(
++        (contents + index * element_size),
++        elements,
++        new_count * element_size
++      );
++    } else {
++      memset(
++        (contents + index * element_size),
++        0,
++        new_count * element_size
++      );
++    }
++  }
++  self->size += new_count - old_count;
++}
++
++/// A binary search routine, based on Rust's `std::slice::binary_search_by`.
++/// This is not what you're looking for, see `array_search_sorted_with` or `array_search_sorted_by`.
++#define _array__search_sorted(self, start, compare, suffix, needle, _index, _exists) \
++  do { \
++    *(_index) = start; \
++    *(_exists) = false; \
++    uint32_t size = (self)->size - *(_index); \
++    if (size == 0) break; \
++    int comparison; \
++    while (size > 1) { \
++      uint32_t half_size = size / 2; \
++      uint32_t mid_index = *(_index) + half_size; \
++      comparison = compare(&((self)->contents[mid_index] suffix), (needle)); \
++      if (comparison <= 0) *(_index) = mid_index; \
++      size -= half_size; \
++    } \
++    comparison = compare(&((self)->contents[*(_index)] suffix), (needle)); \
++    if (comparison == 0) *(_exists) = true; \
++    else if (comparison < 0) *(_index) += 1; \
++  } while (0)
++
++/// Helper macro for the `_sorted_by` routines below. This takes the left (existing)
++/// parameter by reference in order to work with the generic sorting function above.
++#define _compare_int(a, b) ((int)*(a) - (int)(b))
++
++#ifdef _MSC_VER
++#pragma warning(default : 4101)
++#elif defined(__GNUC__) || defined(__clang__)
++#pragma GCC diagnostic pop
++#endif
++
++#ifdef __cplusplus
++}
++#endif
++
++#endif  // TREE_SITTER_ARRAY_H_
+diff --git a/src/tree_sitter/parser.h b/src/tree_sitter/parser.h
+index 2b14ac1..17f0e94 100644
+--- a/src/tree_sitter/parser.h
++++ b/src/tree_sitter/parser.h
+@@ -13,9 +13,8 @@ extern "C" {
+ #define ts_builtin_sym_end 0
+ #define TREE_SITTER_SERIALIZATION_BUFFER_SIZE 1024
+ 
+-typedef uint16_t TSStateId;
+-
+ #ifndef TREE_SITTER_API_H_
++typedef uint16_t TSStateId;
+ typedef uint16_t TSSymbol;
+ typedef uint16_t TSFieldId;
+ typedef struct TSLanguage TSLanguage;
+@@ -87,6 +86,11 @@ typedef union {
+   } entry;
+ } TSParseActionEntry;
+ 
++typedef struct {
++  int32_t start;
++  int32_t end;
++} TSCharacterRange;
++
+ struct TSLanguage {
+   uint32_t version;
+   uint32_t symbol_count;
+@@ -126,13 +130,38 @@ struct TSLanguage {
+   const TSStateId *primary_state_ids;
+ };
+ 
++static inline bool set_contains(TSCharacterRange *ranges, uint32_t len, int32_t lookahead) {
++  uint32_t index = 0;
++  uint32_t size = len - index;
++  while (size > 1) {
++    uint32_t half_size = size / 2;
++    uint32_t mid_index = index + half_size;
++    TSCharacterRange *range = &ranges[mid_index];
++    if (lookahead >= range->start && lookahead <= range->end) {
++      return true;
++    } else if (lookahead > range->end) {
++      index = mid_index;
++    }
++    size -= half_size;
++  }
++  TSCharacterRange *range = &ranges[index];
++  return (lookahead >= range->start && lookahead <= range->end);
++}
++
+ /*
+  *  Lexer Macros
+  */
+ 
++#ifdef _MSC_VER
++#define UNUSED __pragma(warning(suppress : 4101))
++#else
++#define UNUSED __attribute__((unused))
++#endif
++
+ #define START_LEXER()           \
+   bool result = false;          \
+   bool skip = false;            \
++  UNUSED                        \
+   bool eof = false;             \
+   int32_t lookahead;            \
+   goto start;                   \
+@@ -148,6 +177,17 @@ struct TSLanguage {
+     goto next_state;         \
+   }
+ 
++#define ADVANCE_MAP(...)                                              \
++  {                                                                   \
++    static const uint16_t map[] = { __VA_ARGS__ };                    \
++    for (uint32_t i = 0; i < sizeof(map) / sizeof(map[0]); i += 2) {  \
++      if (map[i] == lookahead) {                                      \
++        state = map[i + 1];                                           \
++        goto next_state;                                              \
++      }                                                               \
++    }                                                                 \
++  }
++
+ #define SKIP(state_value) \
+   {                       \
+     skip = true;          \
+@@ -166,7 +206,7 @@ struct TSLanguage {
+  *  Parse Table Macros
+  */
+ 
+-#define SMALL_STATE(id) id - LARGE_STATE_COUNT
++#define SMALL_STATE(id) ((id) - LARGE_STATE_COUNT)
+ 
+ #define STATE(id) id
+ 
+@@ -176,7 +216,7 @@ struct TSLanguage {
+   {{                                  \
+     .shift = {                        \
+       .type = TSParseActionTypeShift, \
+-      .state = state_value            \
++      .state = (state_value)          \
+     }                                 \
+   }}
+ 
+@@ -184,7 +224,7 @@ struct TSLanguage {
+   {{                                  \
+     .shift = {                        \
+       .type = TSParseActionTypeShift, \
+-      .state = state_value,           \
++      .state = (state_value),         \
+       .repetition = true              \
+     }                                 \
+   }}
+@@ -197,14 +237,15 @@ struct TSLanguage {
+     }                                 \
+   }}
+ 
+-#define REDUCE(symbol_val, child_count_val, ...) \
+-  {{                                             \
+-    .reduce = {                                  \
+-      .type = TSParseActionTypeReduce,           \
+-      .symbol = symbol_val,                      \
+-      .child_count = child_count_val,            \
+-      __VA_ARGS__                                \
+-    },                                           \
++#define REDUCE(symbol_name, children, precedence, prod_id) \
++  {{                                                       \
++    .reduce = {                                            \
++      .type = TSParseActionTypeReduce,                     \
++      .symbol = symbol_name,                               \
++      .child_count = children,                             \
++      .dynamic_precedence = precedence,                    \
++      .production_id = prod_id                             \
++    },                                                     \
+   }}
+ 
+ #define RECOVER()                    \

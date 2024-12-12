@@ -17,7 +17,7 @@
 
 
 Name:           libgedit-gfls
-Version:        0.2.0
+Version:        0.2.1
 Release:        0
 Summary:        Gedit Technology - File loading and saving
 License:        LGPL-3.0-or-later
@@ -35,6 +35,8 @@ libgedit-gfls is a module dedicated to file loading and saving for the needs of 
 
 %package -n libgedit-gfls-1-0
 Summary:        Gedit Technology - File loading and saving
+# Needed to make lang package installable
+Provides:       libgedit-gfls = %{version}
 
 %description -n libgedit-gfls-1-0
 libgedit-gfls is a module dedicated to file loading and saving for the needs of gedit and other similar text editors.
@@ -53,6 +55,8 @@ Requires:       typelib-1_0-Gfls-1 = %{version}
 %description devel
 libgedit-gfls is a module dedicated to file loading and saving for the needs of gedit and other similar text editors.
 
+%lang_package
+
 %prep
 %autosetup -p1
 
@@ -62,6 +66,7 @@ libgedit-gfls is a module dedicated to file loading and saving for the needs of 
 
 %install
 %meson_install
+%find_lang %{name}-1 %{?no_lang_C}
 
 %check
 %meson_test
@@ -80,5 +85,7 @@ libgedit-gfls is a module dedicated to file loading and saving for the needs of 
 %{_datadir}/gir-1.0/Gfls-1.gir
 %{_datadir}/gtk-doc/html/libgedit-gfls-1/
 %{_includedir}/libgedit-gfls-1/
+
+%files lang -f %{name}-1.lang
 
 %changelog

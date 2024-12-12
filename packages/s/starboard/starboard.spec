@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           starboard
-Version:        0.15.22
+Version:        0.15.23
 Release:        0
 Summary:        Kubernetes-native security toolkit
 License:        Apache-2.0

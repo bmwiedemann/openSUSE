@@ -100,4 +100,12 @@
 - Switch to pyproject macros.</comment>
     <requestid>1101457</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>fc14bc530653f4810fe97decf760f5e0</srcmd5>
+    <version>0.7.7</version>
+    <time>1733947434</time>
+    <user>anag+factory</user>
+    <comment>- Skip a test broken by nodejs feature.</comment>
+    <requestid>1229975</requestid>
+  </revision>
 </revisionlist>

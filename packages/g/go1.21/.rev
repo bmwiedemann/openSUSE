@@ -326,4 +326,12 @@
   * go#68221 cmd/go: list with -export and -covermode=atomic fails to build (forwarded request 1192310 from jfkw)</comment>
     <requestid>1192313</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>eacf661a408f65542584dfdc7ddadf0a</srcmd5>
+    <version>1.21.13</version>
+    <time>1733947264</time>
+    <user>anag+factory</user>
+    <comment>- Enable loongarch64 builds (forwarded request 1229871 from jfkw)</comment>
+    <requestid>1229876</requestid>
+  </revision>
 </revisionlist>

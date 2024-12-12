@@ -24,7 +24,7 @@
 %global _sitelibdir %{%{pythons}_sitelib}
 
 Name:           aws-cli
-Version:        1.36.1
+Version:        1.36.18
 Release:        0
 Summary:        Amazon Web Services Command Line Interface
 License:        Apache-2.0

@@ -1,0 +1,25 @@
+After install
+=============
+
+1.) config.xml
+
+1.1.) config.xml from package
+The config.xml is generated automatically during installation.
+This must then be adapted under /etc/gerbera.
+
+1.2.) config.xml own
+In exceptional cases, a new config.xml can also be generated.
+    gerbera --create-config | sudo tee /etc/gerbera/config.xml
+Make sure that the new file has the correct rights. These should be 644 gerbera:gerbera.
+
+Described here:
+    https://docs.gerbera.io/en/stable/config-generate.html#generateconfig
+
+
+2.) vhost
+To use vhost of the web servers apache or nginx, their files must first be adapted.
+Uncomment ProxyPass and ProxyPassReverse after configure.
+
+Further information on configuration can be found at:
+    https://docs.gerbera.io/en/stable/run.html#first-time-launch
+to find.

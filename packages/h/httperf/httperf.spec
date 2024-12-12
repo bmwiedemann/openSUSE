@@ -1,7 +1,7 @@
 #
 # spec file for package httperf
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,12 @@
 
 
 Name:           httperf
-Version:        0.9.0+git.20180712
+Version:        0.9.0+git.20201206
 Release:        0
 Summary:        A tool for measuring web server performance
 License:        SUSE-GPL-2.0+-with-openssl-exception
-Group:          Productivity/Networking/Web/Utilities
-Url:            https://github.com/httperf/httperf
-Source0:        %{name}-%{version}.tar.xz
-Source1:        %{name}.changes
+URL:            https://github.com/httperf/httperf
+Source0:        %{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -37,22 +35,14 @@ flexible facility for generating various HTTP workloads and for measuring
 server performance.
 
 %prep
-%setup -q
-if [ -z "$SOURCE_DATE_EPOCH" ]; then
-# replace build date with date from changelog
-modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{SOURCE1}")"
-DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
-TIME="\"$(date -d "${modified}" "+%%R")\""
-find .  -name '*.[ch]' |\
-    xargs sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g"
-fi
+%autosetup
 chmod -x AUTHORS ChangeLog NEWS README.md TODO
 
 %build
 mkdir m4
 autoreconf -fiv
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -60,7 +50,7 @@ make %{?_smp_mflags}
 %files
 %doc AUTHORS ChangeLog NEWS README.md TODO
 %{_bindir}/httperf
-%{_mandir}/man1/httperf.1%{ext_man}
-%{_mandir}/man1/idleconn.1%{ext_man}
+%{_mandir}/man1/httperf.1%{?ext_man}
+%{_mandir}/man1/idleconn.1%{?ext_man}
 
 %changelog

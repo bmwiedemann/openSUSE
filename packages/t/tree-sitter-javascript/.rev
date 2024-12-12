@@ -18,4 +18,41 @@
   * refactor!: use last-wins precedence for queries</comment>
     <requestid>1170884</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2c77b4cad206f3e6c280a7d990aa2de3</srcmd5>
+    <version>0.23.1</version>
+    <time>1733947357</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.23.1:
+  * build: update bindings
+  * feat!: remove glimmer template tags
+  * build: update bindings
+  * fix(swift): add scanner.c to sources
+- update to 0.23.0:
+  * fix: operator precedence rules for tagged template functions
+  * build: update bindings
+  * fix(go): correct test
+  * fix: move go.mod to root dir
+  * fix: for in / of statements containing new lines
+  * fix: disallow semi injection before a backtick
+  * fix: add import.meta to meta_property
+- update to 0.21.4:
+  * fix: jsx_text node trims whitespace too often
+  * fix: automatic semicolon should be inserted given a number decimal
+  * fix: comment optimization should not cause automatic-semi insert
+  * fix: unnecessary seq sequences
+  * fix: comment should be terminal
+- update to 0.21.3:
+  * fix: comments should not consume 2028+2029, and neither should
+    identifiers
+  * feat(build): and add jsx
+  * feat(build): add mjs and cjs file types
+  * fix(build): use flag_if_supported for cc flags
+- update to 0.21.2:
+  * chore: bump deps
+- update to 0.21.1:
+  * chore: remove reset function
+  * fix: un-inline statement</comment>
+    <requestid>1229617</requestid>
+  </revision>
 </revisionlist>

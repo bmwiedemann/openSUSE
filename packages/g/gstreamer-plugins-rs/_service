@@ -3,8 +3,8 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git</param>
     <param name="filename">gst-plugins-rs</param>
-    <param name="versionformat">0.13.2</param>
-    <param name="revision">refs/tags/0.13.2</param>
+    <param name="versionformat">0.13.3</param>
+    <param name="revision">refs/tags/0.13.3</param>
     <param name="scm">git</param>
   </service>
   <service name="set_version" mode="manual"/>

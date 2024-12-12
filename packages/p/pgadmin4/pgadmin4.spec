@@ -37,7 +37,7 @@
 %global python3_flask_migrate_min_version 4.0
 %global python3_flask_min_version 3.0
 %global python3_flask_paranoid_min_version 0.2.0
-%global python3_flask_security_too_min_version 5.4.0
+%global python3_flask_security_min_version 5.4.0
 %global python3_flask_socketio_min_version 5.3.0
 %global python3_flask_sqlalchemy_min_version 3.1
 %global python3_flask_wtf_min_version 1.2
@@ -109,7 +109,7 @@ BuildRequires:  %{python_module Flask-Mail >= %{python3_flask_mail_min_version}}
 BuildRequires:  %{python_module Flask-Migrate >= %{python3_flask_migrate_min_version}}
 BuildRequires:  %{python_module Flask-Paranoid >= %{python3_flask_paranoid_min_version}}
 BuildRequires:  %{python_module Flask-SQLAlchemy >= %{python3_flask_sqlalchemy_min_version}}
-BuildRequires:  %{python_module Flask-Security-Too >= %{python3_flask_security_too_min_version}}
+BuildRequires:  %{python_module Flask-Security >= %{python3_flask_security_min_version}}
 BuildRequires:  %{python_module Flask-SocketIO >= %{python3_flask_socketio_min_version}}
 BuildRequires:  %{python_module Flask-WTF >= %{python3_flask_wtf_min_version}}
 BuildRequires:  %{python_module SQLAlchemy >= %{python3_sqlalchemy_min_version}}
@@ -154,7 +154,7 @@ Requires:       %{python_module Flask-Mail >= %{python3_flask_mail_min_version}}
 Requires:       %{python_module Flask-Migrate >= %{python3_flask_migrate_min_version}}
 Requires:       %{python_module Flask-Paranoid >= %{python3_flask_paranoid_min_version}}
 Requires:       %{python_module Flask-SQLAlchemy >= %{python3_flask_sqlalchemy_min_version}}
-Requires:       %{python_module Flask-Security-Too >= %{python3_flask_security_too_min_version}}
+Requires:       %{python_module Flask-Security >= %{python3_flask_security_min_version}}
 Requires:       %{python_module Flask-SocketIO >= %{python3_flask_socketio_min_version}}
 Requires:       %{python_module Flask-WTF >= %{python3_flask_wtf_min_version}}
 Requires:       %{python_module SQLAlchemy >= %{python3_sqlalchemy_min_version}}

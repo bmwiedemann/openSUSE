@@ -33,7 +33,7 @@
 %endif
 
 Name:           gstreamer-plugins-good
-Version:        1.24.9
+Version:        1.24.10
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later

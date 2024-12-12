@@ -6,6 +6,12 @@ Fri Nov 29 07:32:22 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
   installation.
 
 -------------------------------------------------------------------
+Fri Nov 22 09:58:42 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- add keyring for gpg validation
+- add python3-setuptools dependency (needed for python 3.13)
+
+-------------------------------------------------------------------
 Wed Jul 17 16:35:21 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop obsolete update-desktop-files BuildRequires and macro.

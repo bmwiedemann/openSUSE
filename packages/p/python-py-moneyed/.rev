@@ -54,4 +54,14 @@
 </comment>
     <requestid>1038584</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>2d3666eec545fb9250266332e01bd193</srcmd5>
+    <version>3.0</version>
+    <time>1733947435</time>
+    <user>anag+factory</user>
+    <comment>- Add patch add-missing-xcg.patch:
+  * Support the upcoming Caribbean guilder (XCG)
+- Switch to pyproject macros.</comment>
+    <requestid>1229977</requestid>
+  </revision>
 </revisionlist>

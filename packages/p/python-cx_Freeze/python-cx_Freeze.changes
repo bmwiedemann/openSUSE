@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Wed Dec 11 00:13:31 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 7.2.7:
+  * bdist_rpm: drop rpm2_mode and refactor spec_file
+  * hooks: the optimized mode is the default for pip installations
+  * hooks: support numpy 2.0
+  * Exit with non-zero exit code on exception
+  * hooks: improve scipy hooks
+  * hooks: fix matplotlib hooks used in zip_include_packages
+  * hooks: fix scipy hooks used in zip_include_packages
+  * linux: bdist_rpm depends on rpmbuild being installed
+  * chore: use pytest-datafiles to run tests in temporary path
+  * fix: zip_include_packages/zip_exclude_packages regression
+  * chore: use pytest-xdist to speed up the tests
+  * chore: drop support for python 3.7
+  * parser: support for lief 0.14 ParserConfig
+  * chore: add basic support for Python 3.12
+  * fix: bdist_rpm should generate only binaries [linux]
+  * samples: fix pydantic sample to work python < 3.10
+  * hooks: fix the sentry_sdk hook
+  * hooks: move sklearn hook to a submodule
+  * hooks: add boto3
+  * fix: bdist_rpm to pass tests in python 3.12b4
+  * hooks: multiprocessing support for forkserver and spawn
+  * hooks: update sysconfig hook
+  * hooks: PySide2/6 - shiboken2/6 in zip_include_packages
+  * finder: add base modules at the end to simplify tests
+  * hooks: fix for pyqt [conda linux]
+  * hooks: move ssl hook to a submodule
+  * hooks: fix pyside2 webengine [conda linux]
+  * hooks: fix pyqt5 webengine [conda linux]
+  * module: ModuleHook class to support inheritance
+  * finder: improve scan code to detect packages using import call
+  * finder: cache_path holds where distribution data is saved
+  * module: propagate cache_path from the finder
+  * module: get the implicit imports of extensions in a stub file
+  * module: add a importshed for parsed stubs
+  * hooks: qt extension modules are detected using stubs
+  * module: search for the stub file already parsed in the distribution
+  * hooks: improve tzdata/zoneinfo/pytz hooks a bit for use in zip
+  * hooks: use module.exclude_names to filter missing modules
+  * build-wheel: add support for ppc64le binary wheels for py310+
+  * hooks: add pycryptodomex and update pycryptodome
+  * hooks: add support for pandas 2.1.0
+  * hooks: improve numpy and pandas hooks
+  * samples: small tweaks to demonstrate independent options
+  * hooks: fix numpy/scipy dylibs are included twice
+  * hooks: add RNS (Reticulum)
+  * hooks: add numpy 1.26
+  * hooks: move tkinter and tz data to share folder
+  * fix: avoid false builtin modules developing in multi-environment
+  * parser: use the internal path instead of sys.path
+  * hooks: add tidylib
+  * parser: exclude LD_PRELOAD to not include triggered dependencies
+  * hooks: initialize blas [numpy conda-forge]
+  * bdist_deb: create an DEB distribution [new feature]
+  * chore: rewrite some imports as absolute
+  * hooks: add triton and support for pytorch 2.1
+  * hooks: tweaks to the debugging of qt hooks
+  * hooks: adds anyio, pyarrow and tiktoken
+  * hooks: add yt_dlp
+  * hooks: add AV and PyAV
+  * bdist_appimage: build Linux AppImage format [new feature]
+  * setup script: extend executables keyword to support more types
+  * setup script: pre-defined values for base are valid in all OS
+  * setup script: add an extension to executable icon that is valid across OS
+  * freezer: improve/fixes validate_executable
+  * hooks: opencv-python - minor fixes
+  * hooks: add pyproj
+  * parser: minor fix to support lief 0.14
+  * fix: incorrect metadata usage in install/install_exe
+  * freezer: remove dead code (not used in py38+)
+  * hooks: add easyocr and torchvision (also update skickit-image and pytorch)
+  * hooks: support tensorflow plugins
+  * chore: refactor internal modules
+  * chore: move License to the project root dir
+  * chore: generate multiple files for requirements
+  * test: add a linux binary wheel test in ci
+  * fix: coverage report usage and omit option
+  * initscripts: use of loader is deprecated
+  * parser: show what patchelf is doing if silent is off
+  * fix: regression in _pre_copy_hook (Linux)
+  * hooks: support numpy in python 3.12
+- Drop patch python312.patch, included upstream.
+
+-------------------------------------------------------------------
 Fri Mar 22 19:36:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.15.16:

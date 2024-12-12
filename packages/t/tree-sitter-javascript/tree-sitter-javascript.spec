@@ -16,15 +16,14 @@
 #
 
 
-%define _name javascript
-Summary:        Javascript grammar for tree-sitter
-Name:           tree-sitter-%{_name}
-Version:        0.21.0
+%define         _name javascript
+Name:           tree-sitter-javascript
+Version:        0.23.1
 Release:        0
+Summary:        Javascript grammar for tree-sitter
 License:        MIT
-Group:          Development/Tools/Other
 URL:            https://github.com/tree-sitter/tree-sitter-javascript
-Source0:        %{name}-%{version}.tar.gz
+Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  tree-sitter
 %treesitter_grammars %{_name}
 
@@ -32,7 +31,7 @@ BuildRequires:  tree-sitter
 %{summary}.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 %treesitter_configure
@@ -42,9 +41,17 @@ BuildRequires:  tree-sitter
 %treesitter_install
 %treesitter_devel_install
 
+#neovim stuff
+install -d %{buildroot}%{_libdir}/tree_sitter
+ln -s %{_libdir}/lib%{name}.so %{buildroot}%{_libdir}/tree_sitter/%{_name}.so
+
 %files
-%{treesitter_files}
 %license LICENSE
+%treesitter_files
+%{_libdir}/tree_sitter/%{_name}.so
+%if 0%{?suse_version} < 1600
+%dir %{_libdir}/tree_sitter
+%endif
 
 %treesitter_devel_package
 

@@ -1164,4 +1164,12 @@ in future, e.g. &quot;Version: 2.0~beta1&quot; (forwarded request 160813 from je
     <comment></comment>
     <requestid>1200765</requestid>
   </revision>
+  <revision rev="130" vrev="2">
+    <srcmd5>b020805a30084872320eb9f2a2ab582b</srcmd5>
+    <version>2.7.5</version>
+    <time>1733947252</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1229756</requestid>
+  </revision>
 </revisionlist>

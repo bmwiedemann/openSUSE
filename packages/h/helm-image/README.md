@@ -1,4 +1,4 @@
-# Kubernetes Package Manager container image
+# Helm (Kubernetes Package Manager) container image
 
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 

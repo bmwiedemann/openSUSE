@@ -46,7 +46,7 @@ Requires:       libpixman-1-0 = %{version}
 Pixman is a pixel manipulation library for X and cairo.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 #
@@ -73,11 +73,15 @@ Pixman is a pixel manipulation library for X and cairo.
        -Dlibpng=disabled
 %meson_build
 
+%check
+%ifarch s390x
+%meson_test -t 5
+%else
+%meson_test
+%endif
+
 %install
 %meson_install
-
-%check
-%meson_test
 
 %ldconfig_scriptlets -n libpixman-1-0
 

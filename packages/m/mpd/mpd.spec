@@ -20,7 +20,7 @@
 %bcond_with    faad
 %bcond_without mpd_iso9660
 Name:           mpd
-Version:        0.23.15
+Version:        0.23.16
 Release:        0
 Summary:        Music Player Daemon
 License:        GPL-2.0-or-later
@@ -34,8 +34,6 @@ Source5:        %{name}.tmpfiles.d
 Source9:        %{name}.keyring
 Patch0:         %{name}-conf.patch
 Patch1:         %{name}-sndfile.patch
-Patch2:         %{name}-fmt11.patch
-Patch3:         %{name}-icu76.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  group(audio)
@@ -66,7 +64,7 @@ BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
-BuildRequires:  pkgconfig(libcdio) >= 2.0.0
+BuildRequires:  pkgconfig(libcdio)
 BuildRequires:  pkgconfig(libcdio_paranoia)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libgme)

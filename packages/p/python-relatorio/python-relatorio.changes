@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec  9 13:15:39 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- version 0.11.0
+  * Allow setting zip file generation options on opendocument templates
+
+-------------------------------------------------------------------
 Fri Apr  5 09:28:52 UTC 2024 - Nathan Cutler <ncutler@suse.com>
 
 - spec: use %{?sle15allpythons} instead of

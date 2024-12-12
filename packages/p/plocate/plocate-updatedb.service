@@ -1,12 +1,10 @@
 [Unit]
 Description=Update the locate database
 Documentation=man:updatedb
-ConditionACPower=true
 
 [Service]
 # added automatically, for details please see
 # https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
-ProtectSystem=full
 ProtectHome=read-only
 PrivateDevices=true
 ProtectHostname=true
@@ -16,6 +14,18 @@ ProtectKernelLogs=true
 ProtectControlGroups=true
 RestrictRealtime=true
 # end of automatic additions
+CapabilityBoundingSet=CAP_DAC_READ_SEARCH CAP_CHOWN CAP_SETUID CAP_SETGID CAP_SYS_RESOURCE
+IPAddressDeny=any
+LockPersonality=true
+MemoryDenyWriteExecute=true
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateNetwork=true
+RestrictAddressFamilies=AF_UNIX
+RestrictNamespaces=true
+RestrictSUIDSGID=true
+SystemCallArchitectures=native
+SystemCallFilter=@system-service @chown
 Type=oneshot
 ExecStart=/bin/sh -c \
           "chown -R ${RUN_UPDATEDB_AS}:root /var/lib/plocate && \
@@ -30,8 +40,7 @@ LimitNOFILE=131072
 
 # Alter the priority of the updatedb process
 Nice=19
-IOSchedulingClass=2
-IOSchedulingPriority=7
+IOSchedulingClass=idle
 
 # Load sysconfig
 EnvironmentFile=/etc/sysconfig/locate

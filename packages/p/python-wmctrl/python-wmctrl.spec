@@ -64,7 +64,7 @@ sed -i 's/\(py$\|py\.test\)/pytest/g' test/test_wmctrl.py
 cat > /tmp/test_script.sh <<EOF
 #!/bin/sh
 openbox &
-sleep 5
+sleep 10
 wmctrl -l -G -p -x
 $python -m pytest -rs -k 'not (test_activate or test_properties or test_Desktop_active)' test/test_wmctrl.py
 EOF

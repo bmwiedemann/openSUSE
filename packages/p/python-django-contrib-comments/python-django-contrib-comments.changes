@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 11 01:11:50 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to Django 4, Django 5 isn't supported yet. 
+
+-------------------------------------------------------------------
 Wed Mar 13 13:53:02 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Clean up the SPEC file

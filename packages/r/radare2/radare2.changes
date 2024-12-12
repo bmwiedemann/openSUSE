@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Dec  3 09:56:42 UTC 2024 - Alexander Bergmann <abergmann@suse.com>
+
+- Update to version 5.9.8:
+  * Resolved CVE:
+    - CVE-2024-29645: buffer overflow vulnerability allows an attacker to
+      execute arbitrary code via the parse_die function (boo#1234065).
+  For details, check full release notes:
+  https://github.com/radareorg/radare2/releases/tag/5.9.8
+  https://github.com/radareorg/radare2/releases/tag/5.9.6
+  https://github.com/radareorg/radare2/releases/tag/5.9.4
+  https://github.com/radareorg/radare2/releases/tag/5.9.2
+  https://github.com/radareorg/radare2/releases/tag/5.9.0 
+
+-------------------------------------------------------------------
 Wed Oct 18 10:53:22 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 5.8.8:

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Dec  7 13:24:49 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 299.4.0:
+  + Remove the background-pattern (with the grid) feature.
+  + Fix some crashes.
+  + Fix GI annotation warnings.
+  + Updated translations.
+- Add sover define.
+
+-------------------------------------------------------------------
 Wed Oct  2 14:12:08 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 299.3.0:

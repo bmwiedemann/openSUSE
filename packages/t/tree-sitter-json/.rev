@@ -15,4 +15,30 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1172279</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ded1e91cfc17de462341d2c71d1fc68c</srcmd5>
+    <version>0.24.8</version>
+    <time>1733947355</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.24.8:
+  * ci(publish): add attestations and generate parser
+- update to 0.24.4:
+  * ci: use permissions in both spots
+- update to 0.24.2:
+  * update bindings
+- update to 0.24.1:
+  * update bindings
+- update to 0.24.0:
+  * build: update bindings
+  * ci: update workflows
+- update to 0.23.0:
+  * fix(go): correct test
+  * fix: move go.mod to root dir
+  * feat: expose non-escaped string literal content in the parse tree
+- switch to download_files service
+- add neovim links
+- add a license file
+- enable devel package</comment>
+    <requestid>1229615</requestid>
+  </revision>
 </revisionlist>

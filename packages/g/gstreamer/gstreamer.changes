@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Dec  9 11:49:13 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.24.10:
+  + Highlighted bugfixes:
+    - More than 40 security fixes across a wide range of elements
+      following an audit by the GitHub Security Lab, including the
+      MP4, Matroska, Ogg and WAV demuxers, subtitle parsers, image
+      decoders, audio decoders and the id3v2 tag parser.
+    - avviddec: Fix regression that could trigger assertions about
+      width/height mismatches.
+    - appsink and appsrc fixes.
+    - closed caption handling fixes.
+    - decodebin3 and urisourcebin fixes.
+    - glupload: dmabuf: Fix emulated tiled import.
+    - level: fix LevelMeta values outside of the stated range.
+    - mpegtsmux, flvmux: fix potential busy looping with high cpu
+      usage in live mode.
+    - pipeline dot file graph generation improvements.
+    - qt(6): fix criticals with multiple qml(6)gl{src,sink}.
+    - rtspsrc: Optionally timestamp RTP packets with their receive
+      times in TCP/HTTP mode to enable clock drift handling.
+    - splitmuxsrc: reduce number of file descriptors used.
+    - systemclock: locking order fixes.
+    - v4l2: fix possible v4l2videodec deadlock on shutdown; 8-bit
+      bayer format fixes.
+    - x265: Fix build with libx265 version >= 4.1 after
+      masteringDisplayColorVolume API change.
+    - macOS: fix rendering artifacts in retina displays, plus ptp
+      clock fixes.
+    - cargo: Default to thin lto for the release profile (for
+      faster builds with lower memory requirements).
+    - Various bug fixes, build fixes, memory leak fixes, and other
+      stability and reliability improvements.
+    - Updated translations.
+  + gstreamer:
+    - allocator: Avoid integer overflow when allocating sysmem and
+      avoid integer overflow in qtdemux theora extension parsing.
+    - deviceprovider: fix leaking hidden providers.
+    - gstreamer: prefix debug dot node names to prevent splitting.
+    - pad: Never push sticky events in response to a FLUSH_STOP.
+    - systemclock: Fix lock order violation and some cleanup.
+    - utils: improve gst_util_ceil_log2().
+    - ptp: use ip_mreq instead of ip_mreqn for macos.
+    - tracers: unlock leaks tracer if already tracking.
+
+-------------------------------------------------------------------
 Tue Nov  5 09:33:25 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.24.9:

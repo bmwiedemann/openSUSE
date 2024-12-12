@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Wed Dec 11 10:55:21 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Cleanup spec file and make it ready for openSUSE inclusion 
+- Add 936.patch to fix building with current ICU 
+
+-------------------------------------------------------------------
+Tue May 30 20:10:44 UTC 2023 - Андрей Алыпов <and.november@opensuse.org>
+
+- initial package (version 8.2.0) for openSUSE

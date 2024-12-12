@@ -1,5 +1,5 @@
 <package name="tree-sitter-lua" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <devel project="editors" package="tree-sitter-lua"/>
+  <devel project="editors:tree-sitter" package="tree-sitter-lua"/>
 </package>

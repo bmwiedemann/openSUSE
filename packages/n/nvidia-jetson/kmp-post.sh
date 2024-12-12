@@ -21,3 +21,7 @@ if dmidecode |grep "Product Name"|grep -q IGX; then
   sed -i "s/modeset=1/modeset=0/" /lib/modprobe.d/50-nvidia-$flavor.conf
 fi
 
+# Preset the service to follow the system's policy
+%systemd_post load-nvidia-drm-${flavor}.service
+# the official way above doesn't seem to work ;-(
+/usr/bin/systemctl preset load-nvidia-drm-${flavor}.service

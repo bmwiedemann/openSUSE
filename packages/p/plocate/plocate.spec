@@ -19,7 +19,7 @@
 %bcond_without  apparmor
 
 Name:           plocate
-Version:        1.1.22
+Version:        1.1.23
 Release:        0
 Summary:        A much faster locate(1)
 License:        GPL-2.0-only
@@ -78,13 +78,10 @@ install -Dm644 %{SOURCE3} %{buildroot}%{_fillupdir}/sysconfig.locate
 ln -sr %{buildroot}%{_bindir}/%{name} %{buildroot}%{_bindir}/locate
 ln -sr %{buildroot}%{_mandir}/man1/%{name}.1%{?ext_man} %{buildroot}%{_mandir}/man1/locate.1%{?ext_man}
 ln -s  %{_sbindir}/updatedb %{buildroot}%{_bindir}/updatedb
-ln -s  %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}-updatedb
 %if %{with apparmor}
 install -Dm644 %{SOURCE5} %{buildroot}%{_sysconfdir}/apparmor.d/usr.bin.plocate
 install -Dm644 %{SOURCE6} %{buildroot}%{_sysconfdir}/apparmor.d/usr.sbin.updatedb
 %endif
-
-%check
 
 %pre
 %service_add_pre %{name}-updatedb.service %{name}-updatedb.timer
@@ -109,7 +106,6 @@ install -Dm644 %{SOURCE6} %{buildroot}%{_sysconfdir}/apparmor.d/usr.sbin.updated
 %{_sbindir}/updatedb
 %{_bindir}/updatedb
 %{_sbindir}/%{name}-build
-%{_sbindir}/rc%{name}-updatedb
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_mandir}/man1/locate.1%{?ext_man}
 %{_mandir}/man5/updatedb.conf.5%{?ext_man}

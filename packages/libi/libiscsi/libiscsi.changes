@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Dec 10 13:25:26 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.20.0+git.20241207:
+  * fix: scan PDUs before exiting event_loop due to connect timedout
+  * lib: finish event_loop on invalid fd
+  * lib: reserve the fd on reconnect
+  * Fix free pdu mismatch with alloc
+  * Fix pdu indata of iser alloc and free mismatch
+  * feat: add iscsi_reset_next_reconnect interface
+  * For failing writes, show what is in the sector instead
+  * libcunit1-dev is required for iscsi-test-cu to be build
+  * install binaries and manpage to rpm
+  * Add utils.h to dist_noinst_HEADERS
+
+-------------------------------------------------------------------
 Fri Jun  7 13:49:23 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.20.0+git.20240530:

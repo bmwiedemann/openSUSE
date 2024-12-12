@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Tue Dec  3 21:27:52 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- updated URL in specfiel to Jetpack 6.1/36.4.0  
+
+-------------------------------------------------------------------
+Thu Nov 21 03:32:28 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- using the offical macros apparently doesn't work, so try it
+  the hard way in %post:
+  /usr/bin/systemctl preset load-nvidia-drm-${flavor}.service
+
+-------------------------------------------------------------------
+Thu Nov 21 02:39:59 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- make use of %systemd_post, %systemd_postun_with_restart and
+  %systemd_preun in %post, %postun and %preun in order to enable
+  load-nvidia-drm-${flavor} service according to service preset
+
+-------------------------------------------------------------------
+Wed Nov 20 12:04:51 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- run '/sbin/modinfo' instead of just 'modinfo' in the hope that
+  the command is found now 
+
+-------------------------------------------------------------------
+Wed Nov 20 05:36:00 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- extra subpackage
+  * fixed module names in dracut.conf.d snippets by making use
+    of 'modinfo -F name' ("-" vs. "_" in module and file names)
+- added kmod to Buildrequires for the above
+
+-------------------------------------------------------------------
+Wed Nov 20 05:00:51 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- extra subpackage 
+  * blacklist snd-soc-tegra-audio-graph-card kernel module
+  * fixed syntax of 'omit_drivers+=' dracut.conf.d snippet lines
+    in order to really exclude kernel mdoules from initrd now
+  * also exclude 'tegra-drm' module from initrd
+
+-------------------------------------------------------------------
+Mon Nov  4 14:41:10 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- modprobe.d snippet:
+  * reload tegra_drm also on sle15-sp6, since on some AGP system
+    this is also needed
+
+-------------------------------------------------------------------
 Sun Oct 27 20:26:33 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - use "-36_4" suffix for package names (only to be used with 

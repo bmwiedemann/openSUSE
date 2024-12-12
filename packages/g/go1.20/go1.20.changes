@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec  5 17:30:38 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- Add LoongArch64 builds, bootstrap against myself (go1.20)
+
+-------------------------------------------------------------------
 Tue Feb 27 05:45:13 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Packaging improvements:

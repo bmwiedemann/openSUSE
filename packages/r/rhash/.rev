@@ -102,4 +102,23 @@
     <comment></comment>
     <requestid>1101381</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0a888e8737341f67ac77f88047e1d3f4</srcmd5>
+    <version>1.4.5</version>
+    <time>1733947285</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.4.5:
+  * Support --one-hash formatting option
+  * Bugfix: Show correct config directory in the manpage
+  * Bugfix: Updating must continue after a file access error
+  * Bugfix: Show correct size and time for Windows symlinks
+  * Bugfix: Enable large file support on 32-bit platforms
+  * Bugfix: Fix runtime error on WinXP
+  * Bugfix: Fix building with glibc &lt; 2.15
+  * Bugfix: Fix building on Solaris
+  * Bugfix: Fix building on Unix
+  * Bugfix: Fix dynamic library symlink on macOS
+  * Bugfix: Fix dynamic library symlink on *BSD</comment>
+    <requestid>1229831</requestid>
+  </revision>
 </revisionlist>

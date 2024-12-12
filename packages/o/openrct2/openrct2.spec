@@ -15,6 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+# disable lto build - https://github.com/OpenRCT2/OpenRCT2/issues/23180
+%define _lto_cflags %{nil}
+
 # std=c++20 now required, use GCC 12 for Leap
 %if 0%{?suse_version} < 1650
 %define gcc_ver 12
@@ -26,10 +29,10 @@
 %endif
 %define title_version 0.4.14
 %define title_version_url %{title_version}
-%define objects_version 1.4.7
+%define objects_version 1.4.11
 %define openmusic_version 1.6
 %define opensound_version 1.0.5
-%define openrct2_version 0.4.15
+%define openrct2_version 0.4.17
 
 Name:           openrct2
 Version:        %{openrct2_version}
@@ -52,7 +55,6 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  nlohmann_json-devel >= 3.6.0
 BuildRequires:  pkgconfig
 BuildRequires:  shared-mime-info
-BuildRequires:  update-desktop-files
 BuildRequires:  zip
 BuildRequires:  pkgconfig(duktape)
 BuildRequires:  pkgconfig(flac)

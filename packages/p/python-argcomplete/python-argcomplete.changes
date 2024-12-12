@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 10 11:12:48 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to version 3.5.2
+  * Fix _parse_known_args monkeypatching. This fix is required to restore 
+    compatibility with Python 3.12.8 and 3.13.1.
+
+-------------------------------------------------------------------
 Tue Oct 29 17:07:05 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to the version 3.5.1:

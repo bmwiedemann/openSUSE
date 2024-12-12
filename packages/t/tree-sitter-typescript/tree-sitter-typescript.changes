@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Dec  5 00:02:30 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.23.2:
+  * nothing of relevance
+- update to 0.23.1:
+  * fix(rust): don't fetch files from node_modules
+  * fix: remove glimmer tags
+  * build: move tree-sitter-javascript to dependencies
+  * chore: regenerate
+  * build: update bindings
+  * feat(node): support single-file executables via bun build --compile
+  * chore: regenerate
+  * build: update bindings
+- update to 0.23.0:
+  * build: update bindings
+  * feat: bump tree-sitter-javascript to 0.23
+  * chore: generate
+  * feat: support parenthesized expressions in decorators
+  * feat: support assert syntax in imports
+  * perf: improve generation time, state count, & memory usage
+- update to 0.22.2:
+  * chore: generate
+  * feat: add accessor keyword
+  * feat: support special type_query types everywhere
+  * fix: allow this in type queries
+  * make type a supertype
+  * style: remove wrapping parenthesis
+  * fix(swift): add excludes
+  * fix(rust): comments for node types
+  * fix: decorators of call expressions can have type arguments
+  * fix: allow automatic semicolons where binary operators are valid
+- update to 0.21.1:
+  * nothing of relevance
+- update to 0.21.0:
+  * chore: generate
+  * build: update bindings and manifests
+- add neovim links
+- switch to download_files service
+- enable devel package
+
+-------------------------------------------------------------------
 Mon Mar 25 17:42:51 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Update to version 0.20.6:

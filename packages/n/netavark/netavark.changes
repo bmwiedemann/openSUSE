@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 10 06:53:58 UTC 2024 - madhankumar.chellamuthu@suse.com
+
+- Update to version 1.13.1:
+  * Release v1.13.1
+  * Release notes for v1.13.1
+  * setup: on av errors cleanup again
+  * nftables: add daddr match to port forward jump rule
+
+-------------------------------------------------------------------
 Wed Nov 27 19:17:10 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
 
 - Fix source definition for netavark-iptables.conf and netavark-nftables.conf

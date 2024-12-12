@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Dec  7 16:02:02 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.1:
+  + Removed plugins: External Tools, Snippets, Python Console.
+  + Text Size plugin: rewrite in C.
+  + Remove the background-pattern feature (with the grid).
+  + Fix bug on Wayland to unmaximize the window.
+  + Code refactorings.
+  + Fix compilation warning.
+  + Updated translations.
+- Drop gedit-plugins-python-env.patch: No longer needed, nor
+  applies.
+
+-------------------------------------------------------------------
 Wed Oct  2 14:51:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 48.0:

@@ -121,4 +121,26 @@
   * fix: verbatim content with double quotes</comment>
     <requestid>1191439</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>13b43539a90185249a763d3fcd0380cb</srcmd5>
+    <version>0.23.1</version>
+    <time>1733947382</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.23.1:
+  * ci(publish): add attestations and generate parser
+  * chore: generate
+  * build: update bindings
+  * feat: improve identifier regex
+  * fix(go): correct module name
+- update to 0.23.0:
+  * chore: generate
+  * fix: properly handle nested strings of different types inside
+  * feat: support preproc warnings
+  * fix(scanner): verbatim string parsing with immediate quotes
+- add neovim links
+- switch over to download_files service, as nothing special happens
+  with the source
+- add devel package</comment>
+    <requestid>1229639</requestid>
+  </revision>
 </revisionlist>

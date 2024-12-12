@@ -1,0 +1,22 @@
+This is used to manually patch the bison generated files when
+the binutils-X.YZ-branch.diff touches them.  That diff is generated
+directly from git and doesn't contain the generated .c/h files.
+The base tarball does contain them, but generated from the unpatched state.
+In SLE12 and older we can't regenerate them due to too old versions
+of flex and bison.
+So, when the branch diff _does_ touch them we need to do the regeneration
+via such a manual patch.
+Index: binutils-2.43/ld/ldgram.c
+===================================================================
+--- binutils-2.43.orig/ld/ldgram.c	2024-08-04 01:00:00.000000000 +0200
++++ binutils-2.43/ld/ldgram.c	2024-12-09 16:41:08.089715376 +0100
+@@ -2839,7 +2839,7 @@ yyreduce:
+ 
+   case 73: /* ifile_p1: SEARCH_DIR '(' filename ')'  */
+ #line 324 "ldgram.y"
+-                { ldfile_add_library_path ((yyvsp[-1].name), search_dir_linker_script); }
++                { ldfile_add_library_path ((yyvsp[-1].name), false); }
+ #line 2844 "ldgram.c"
+     break;
+ 
+

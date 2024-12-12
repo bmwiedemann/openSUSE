@@ -311,4 +311,12 @@
   * Use %patch -P N instead of deprecated %patchN (forwarded request 1151996 from jfkw)</comment>
     <requestid>1152004</requestid>
   </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>c80244515ff20830cab0a59d0dbffd83</srcmd5>
+    <version>1.20.14</version>
+    <time>1733947231</time>
+    <user>anag+factory</user>
+    <comment>- Add LoongArch64 builds, bootstrap against myself (go1.20) (forwarded request 1228581 from adrianSuSE)</comment>
+    <requestid>1229594</requestid>
+  </revision>
 </revisionlist>

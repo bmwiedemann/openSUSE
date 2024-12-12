@@ -16,25 +16,22 @@
 #
 
 
-%define _name c-sharp
-Summary:        C# grammar for tree-sitter
-Name:           tree-sitter-%{_name}
-Version:        0.21.3
+%define         _name c-sharp
+Name:           tree-sitter-c-sharp
+Version:        0.23.1
 Release:        0
+Summary:        C# grammar for tree-sitter
 License:        MIT
-Group:          Development/Tools/Other
 URL:            https://github.com/tree-sitter/tree-sitter-c-sharp
-Source0:        %{name}-%{version}.tar.gz
+Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  tree-sitter
-# Not enough memory for %%{ix86} and %%{arm32} to generate the grammar sources
-ExcludeArch:    %{ix86} %{arm32}
 %treesitter_grammars %{_name}
 
 %description
 %{summary}.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 %treesitter_configure
@@ -42,11 +39,20 @@ ExcludeArch:    %{ix86} %{arm32}
 
 %install
 %treesitter_install
+%treesitter_devel_install
 
-%check
+#neovim stuff
+install -d %{buildroot}%{_libdir}/tree_sitter
+ln -s %{_libdir}/lib%{name}.so %{buildroot}%{_libdir}/tree_sitter/%{_name}.so
 
 %files
-%{treesitter_files}
 %license LICENSE
+%treesitter_files
+%{_libdir}/tree_sitter/%{_name}.so
+%if 0%{?suse_version} < 1600
+%dir %{_libdir}/tree_sitter
+%endif
+
+%treesitter_devel_package
 
 %changelog

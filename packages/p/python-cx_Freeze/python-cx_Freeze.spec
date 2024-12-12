@@ -16,29 +16,39 @@
 #
 
 
+# https://github.com/marcelotduarte/cx_Freeze/issues/2568
+%define skip_python313 1
 %define oldpython python
 Name:           python-cx_Freeze
-Version:        6.15.16
+Version:        7.2.7
 Release:        0
 Summary:        Scripts to create standalone executables from Python scripts
 License:        Python-2.0
 URL:            https://github.com/anthony-tuininga/cx_Freeze
 Source:         https://github.com/anthony-tuininga/cx_Freeze/archive/%{version}.tar.gz
-# PATCH-FIX-UPSTREAM python312.patch gh#marcelotduarte/cx_Freeze#1925
-Patch1:         python312.patch
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module filelock >= 3.12.3}
 BuildRequires:  %{python_module hatchling}
-BuildRequires:  %{python_module openpyxl}
+BuildRequires:  %{python_module packaging >= 24}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest-datafiles}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 65}
+BuildRequires:  %{python_module tomli >= 2.0.1 if %python-base < 3.11}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  chrpath
 BuildRequires:  fdupes
 BuildRequires:  patchelf
 BuildRequires:  python-rpm-macros
+Requires:       patchelf
+Requires:       python-filelock >= 3.12
+Requires:       python-packaging >= 24
+Requires:       python-setuptools >= 65
+%if 0%{python_version_nodots} < 311
+Requires:       python-tomli >= 2.0.1
+%endif
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 # we provide same binary like the deprecated py2 variant
@@ -75,7 +85,7 @@ export CFLAGS="%{optflags}"
 
 %check
 # bdist_rpm is not long for this world, and it always execs the default Python
-%pytest_arch -k 'not (test_command_bdist_rpm or test_command_build_exe or test_command_build)'
+%pytest_arch -k 'not (test_command_bdist_rpm or test_command_build_exe or test_command_build or test_bdist_appimage)'
 
 %post
 %python_install_alternative cxfreeze-quickstart
@@ -91,6 +101,6 @@ export CFLAGS="%{optflags}"
 %python_alternative %{_bindir}/cxfreeze
 %python_alternative %{_bindir}/cxfreeze-quickstart
 %{python_sitearch}/cx_Freeze
-%{python_sitearch}/cx_Freeze-%{version}*info
+%{python_sitearch}/cx_Freeze-%{version}.dist-info
 
 %changelog

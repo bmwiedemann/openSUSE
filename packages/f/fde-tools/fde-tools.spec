@@ -47,7 +47,7 @@ Requires:       cryptsetup
 Requires:       mokutil
 Requires:       pcr-oracle >= 0.4.5
 Requires:       util-linux-systemd
-ExclusiveArch:  aarch64 x86_64 riscv64
+ExclusiveArch:  aarch64 x86_64 riscv64 loongarch64
 
 %description
 This package provides several components required to support Full Disk

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Dec  4 23:18:53 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.23.4:
+  * ci(publish): add attestations and generate parser
+- update to 0.23.3:
+  * build: update bindings
+- update to 0.23.2:
+  * chore: regenerate
+  * build: update bindings
+  * fix: correct test
+- update to 0.23.1:
+  * build: update bindings
+- update to 0.23.0:
+  * build: regenerate and update bindings
+  * fix(go): correct test
+  * fix: move go.mod to root dir
+  * fix: allow "not in" & "is not" to be queried
+  * fix: give match the same priority as normal identifiers
+  * fix: allow octal escapes with 1 to 3 digits
+  * fix(build): correct Makefile version
+  * chore: update gitignore & remove build remnant
+  * build: update makefile for macos installation
+- switch to download_files service
+- add neovim links
+- add devel package
+
+-------------------------------------------------------------------
 Mon Apr 29 22:04:04 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Update to version 0.21.0:

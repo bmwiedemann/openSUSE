@@ -145,4 +145,14 @@
     <comment></comment>
     <requestid>1166111</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>04cd713d1e3f6f5f54e7deddc09b0723</srcmd5>
+    <version>0.11.0</version>
+    <time>1733947472</time>
+    <user>anag+factory</user>
+    <comment>- version 0.11.0
+  * Allow setting zip file generation options on opendocument templates
+</comment>
+    <requestid>1230056</requestid>
+  </revision>
 </revisionlist>

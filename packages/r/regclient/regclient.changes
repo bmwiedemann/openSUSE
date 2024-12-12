@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Dec 11 06:54:31 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.8.0:
+  * Release v0.8.0
+  * Feat: Support incomplete subject descriptor
+  * Fix: Handle repeated digest in copy with external referrers
+  * Feat: Support external referrers in regsync
+  * Version bump
+  * Fix: Platform test for darwin/macos should not add variant
+  * Feat: Document community maintained packages
+  * Chore: Remove unused short arg parameters
+  * Feat: Copy image with external referrers
+  * Feat: Add external flag to regctl artifact put
+  * Feat: Include source in referrers response
+  * Version bump
+  * Feat: Image mod environment variables
+  * Feat: Support referrers in an external repository
+  * Version bump
+  * Chore: Improve error message when inspecting artifacts
+  * Version bump
+  * Feat: Allow plus in ocidir path
+  * Fix: Inject release notes by file
+  * Feat: Move logrus calls into files excluded by wasm
+  * Breaking: Disable legacy packages by default.
+  * Switch regsync to slog
+  * Feat: Switch regctl to slog
+  * Feat: Switch regbot to slog
+  * Version bump
+  * Feat: Refactor logging to use log/slog
+
+-------------------------------------------------------------------
 Mon Nov 04 19:50:32 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.7.2:

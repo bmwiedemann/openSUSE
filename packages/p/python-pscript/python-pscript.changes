@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 11 01:21:50 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Skip a test broken by nodejs feature.
+
+-------------------------------------------------------------------
 Mon Jul 31 06:13:34 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Stop using greedy globs in %files.

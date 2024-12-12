@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Dec  9 14:49:46 UTC 2024 - Michael Matz <matz@suse.com>
+
+- Update to current 2.43.1 branch [PED-10254, PED-10306]:
+  * s390 - Add arch15 instructions
+  * various fixes from upstream: PR32153, PR32171, PR32189,
+    PR32196, PR32191, PR32109, PR32372, PR32387
+- Adjusted binutils-2.43-branch.diff.gz.
+- Disable zstd-by-default again (needs adjustments in at least
+  golang,llvm15,llvm17 first)
+- Add binutils-fix-branch.diff.
+- Check non-changing of flex/bison inputs only after applying
+  branch and fix-branch diffs.
+
+-------------------------------------------------------------------
+Wed Nov 20 14:59:28 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
+
+- drop ld-relro.diff (relro is the default for some time)
+  and it warns on avr spuriously (bsc#1233520)
+
+-------------------------------------------------------------------
+Mon Nov 18 18:12:05 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add loongarch64 as new target
+
+-------------------------------------------------------------------
+Tue Sep 10 05:25:27 UTC 2024 - Martin Liška <martin.liska@hey.com>
+
+- Enable zstd compression algorithm (instead of zlib)
+  for debug info sections by default.
+
+-------------------------------------------------------------------
 Wed Aug 28 13:18:28 UTC 2024 - Michael Matz <matz@suse.com>
 
 - Update to current 2.43.1 branch [PED-10474]:

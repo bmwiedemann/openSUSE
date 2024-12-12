@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  4 23:10:09 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- switch to download_files service
+- add devel package
+
+-------------------------------------------------------------------
 Sun Sep 15 20:02:18 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - change spec file so that neovim automatically detects the grammar

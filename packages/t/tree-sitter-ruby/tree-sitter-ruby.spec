@@ -16,26 +16,22 @@
 #
 
 
-%define _name ruby
-Summary:        Ruby grammar for tree-sitter
-Name:           tree-sitter-%{_name}
-Version:        0.20.1
+%define         _name ruby
+Name:           tree-sitter-ruby
+Version:        0.23.1
 Release:        0
+Summary:        Ruby grammar for tree-sitter
 License:        MIT
-Group:          Development/Tools/Other
 URL:            https://github.com/tree-sitter/tree-sitter-ruby
-Source0:        %{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM 0001-fix-escape-braces-in-regex.patch
-# -- unescaped curly brace in regex and invert query precedence for test
-# Fix build against new tree-sitter based taken from master branch
-Patch1:         0001-fix-escape-braces-in-regex.patch
+Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  tree-sitter
 %treesitter_grammars %{_name}
 
 %description
+%{summary}.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 %treesitter_configure
@@ -43,8 +39,20 @@ BuildRequires:  tree-sitter
 
 %install
 %treesitter_install
+%treesitter_devel_install
+
+#neovim stuff
+install -d %{buildroot}%{_libdir}/tree_sitter
+ln -s %{_libdir}/lib%{name}.so %{buildroot}%{_libdir}/tree_sitter/%{_name}.so
 
 %files
-%{treesitter_files}
+%license LICENSE
+%treesitter_files
+%{_libdir}/tree_sitter/%{_name}.so
+%if 0%{?suse_version} < 1600
+%dir %{_libdir}/tree_sitter
+%endif
+
+%treesitter_devel_package
 
 %changelog

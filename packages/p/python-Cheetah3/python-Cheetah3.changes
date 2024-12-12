@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 10 16:53:01 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.4.0
+  * Fixed ImportHooks: it must raise ModuleNotFoundError instead of ImportError.
+  * Use cache_from_source in ImportManager to find out .pyc/.pyo byte-code files.
+  * Add compatibility with Python 3.13 (multiple fixes)
+
+-------------------------------------------------------------------
 Tue Aug 27 07:25:57 UTC 2024 - Frantisek Simorda <frantisek.simorda@suse.com>
 
 - update to 3.3.3.post1:

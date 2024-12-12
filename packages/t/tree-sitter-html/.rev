@@ -7,4 +7,29 @@
     <comment>New package for tree-sitter grammar html</comment>
     <requestid>1162324</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5fe232904c4cb74a9a705470d208a6db</srcmd5>
+    <version>0.23.2</version>
+    <time>1733947339</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.23.2:
+  * build: update bindings
+- update to 0.23.1:
+  * build: update bindings
+  * chore: regenerate
+- update to 0.23.0:
+  * build: update bindings
+  * fix: correct test
+- update to 0.20.4:
+  * fix: move go.mod to root dir
+  * ci: use common workflows
+  * chore(scanner): remove unused token types
+  * fix(scanner): use ts_* allocator functions
+  * chore: remove .appveyor.yml
+- add license file to %license
+- switch to download_files service
+- add neovim links
+- add devel package</comment>
+    <requestid>1229596</requestid>
+  </revision>
 </revisionlist>

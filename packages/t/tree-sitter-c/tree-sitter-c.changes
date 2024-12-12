@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Dec  4 21:56:34 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.23.2:
+  * build: update bindings
+  * fix: go mod
+  * build: update for 0.24
+- update to 0.23.1:
+  * fix: support __attribute
+  * fix: allow the output operand value to be an expression
+  * fix: allow 1 character in hex escape sequences
+  * fix: allow type qualifiers after sized type specifiers
+  * fix: allow empty expression statements at the top level
+  * feat: migrate to eslint-config-treesitter
+  * feat: allow attribute specifers after a parameter's declarator
+  * feat: allow __volatile__ in asm qualifiers
+- update to 0.23.0:
+  * build: update bindings
+  * feat: add extension_expression
+  * feat: allow compound statements in parenthesized expressions
+  * feat: allow declarations in labeled statements
+  * fix(go): correct test
+  * chore: fix line endings
+  * feat: support __asm in asm expressions
+  * feat: support the _Nonnull clang attribute
+- switch to download_files service, as nothing special happens with
+  the sources
+- enable devel package
+
+-------------------------------------------------------------------
 Fri Jul 26 19:04:48 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 0.21.4:

@@ -1,5 +1,5 @@
 <package name="tree-sitter-c-sharp" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <devel project="editors" package="tree-sitter-c-sharp"/>
+  <devel project="editors:tree-sitter" package="tree-sitter-c-sharp"/>
 </package>

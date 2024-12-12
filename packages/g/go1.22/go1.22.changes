@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec  5 08:01:10 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- Enable loongarch64 builds
+
+-------------------------------------------------------------------
 Tue Dec  3 18:00:04 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.22.10 (released 2024-12-03) includes fixes to the runtime and

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Dec  4 23:40:23 UTC 2024 - Manfred Schwarb <manfred99@gmx.ch>
+
+- tweak file plocate-updatedb.service:
+  * remove ProtectSystem=full (plocate ignores bind mounts by default)
+  * add additional hardening taken from upstream version
+- update to version 1.1.23:
+  * Run updatedb with low scheduling priority
+  * Avoid writing uninitialized header data
+  * Don't leak file descriptor
+  * Reset string explicitely to prevent undefined behavior
+  * Suggest starting timer immediately instead of on reboot
+  * Sandbox plocate-updatedb.service some more
+
+-------------------------------------------------------------------
+Wed Jun 19 08:06:03 UTC 2024 - Manfred Schwarb <manfred99@gmx.ch>
+
+- remove ConditionACPower systemd condition. Updates are generally
+    fast, so no excessive battery drainage has to be expected.
+    Reason for missing updates on laptops is not easy to figure out.
+- remove rc* service link, sysV init has long gone. 
+
+-------------------------------------------------------------------
 Wed Jun 12 15:04:47 UTC 2024 - Manfred Schwarb <manfred99@gmx.ch>
 
 - changes taken from mlocate updates:

@@ -19,7 +19,7 @@
 %define executable_name cilium
 
 Name:           cilium-cli
-Version:        0.16.21
+Version:        0.16.22
 Release:        0
 Summary:        CLI to install, manage & troubleshoot Kubernetes clusters running Cilium
 License:        Apache-2.0

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Dec  7 09:01:41 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.0
+  * Add new game icons.
+  * Fix game freeze when loading shareware wolf3d campaign.
+  * Fix player 1 controls affecting others in player selection.
+  * Fix joystick not working in pause menu.
+  * Fix damage text not resetting.
+  * Fix automaps for very large levels.
+  * Fix repeated inputs when switching in/out of pause menu.
+  * Fix uncommon crash when live background map is too small.
+  * Fix crash when exiting some campaigns with custom ammo.
+  * Improve menus by merging redefine keys and controls menu.
+
+-------------------------------------------------------------------
 Sat Nov  2 14:21:27 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Add cdogs-sdl-gcc-14.patch, fixes building with gcc14

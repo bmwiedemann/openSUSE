@@ -304,13 +304,13 @@ ln -sf %{_libdir}/opencryptoki/libopencryptoki.so %{_prefix}/lib/pkcs11/PKCS11_A
 %endif
 %dir %attr(770,root,%{pkcs_group}) %{_localstatedir}/log/opencryptoki/
 %{_mandir}/man*/*
+%{_sbindir}/pkcshsm_mk_change
 
 %files devel
 %dir %{_libdir}/opencryptoki
 %dir %{_libdir}/opencryptoki/stdll
 %{_includedir}/opencryptoki
 %{_libdir}/pkgconfig/opencryptoki.pc
-%{_sbindir}/pkcshsm_mk_change
 
 %ifarch %{openCryptoki_32bit_arch}
 %files 32bit

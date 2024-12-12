@@ -19,21 +19,25 @@
 %define skip_python2 1
 %{?sle15allpythons}
 Name:           python-osc-tiny
-Version:        0.10.5
+Version:        0.10.6
 Release:        0
 Summary:        Client API for openSUSE BuildService
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/SUSE/osc-tiny
 Source:         https://files.pythonhosted.org/packages/source/o/osc-tiny/osc_tiny-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/SUSE/osc-tiny/pull/204 fix test failure in PY13
+Patch:          py313.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module urllib3}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
@@ -41,7 +45,7 @@ Requires:       python-lxml
 Requires:       python-python-dateutil
 Requires:       python-pytz
 Requires:       python-requests
-Requires:       (python-cached-property if python-base < 3.8)
+Requires:       python-urllib3
 Suggests:       openssh
 BuildArch:      noarch
 # Using 'if' instead of 'with' because the latter requires rpm >= 4.14
@@ -63,13 +67,13 @@ For further details see:
  * https://build.opensuse.org/apidocs/index
 
 %prep
-%setup -q -n osc_tiny-%{version}
+%autosetup -p1 -n osc_tiny-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

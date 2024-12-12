@@ -1,5 +1,5 @@
 #
-# spec file for package nvidia-open-driver-G06-signed
+# spec file
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -88,7 +88,6 @@ Source14:       group-source-files.pl
 Source15:       kmp-trigger.sh
 Patch0:         persistent-nvidia-id-string.patch
 %if "%{flavor}" != "cuda"
-Patch1:         550.135.patch
 %ifarch aarch64
 %if 0%{?suse_version} >= 1600
 Patch2:         aarch64-TW-buildfix.patch
@@ -214,7 +213,7 @@ for flavor in %{flavors_to_build}; do
 	  export SYSSRC=/usr/src/linux
 	fi
 	export SYSOUT=/usr/src/linux-obj/%_target_cpu/$flavor
-        make %{?_smp_mflags} %{?linux_make_arch} modules
+        make %{?_smp_mflags} modules
         popd
 done
 
@@ -231,7 +230,7 @@ for flavor in %{flavors_to_build}; do
 	  export SYSSRC=/usr/src/linux
 	fi
 	export SYSOUT=/usr/src/linux-obj/%_target_cpu/$flavor
-        make %{?linux_make_arch} modules_install
+        make modules_install
 	popd
 done
 

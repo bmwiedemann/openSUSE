@@ -1,5 +1,5 @@
 <package name="tree-sitter-ruby" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <devel project="editors" package="tree-sitter-ruby"/>
+  <devel project="editors:tree-sitter" package="tree-sitter-ruby"/>
 </package>

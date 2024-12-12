@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Dec  9 11:58:04 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.24.10:
+  + avisubtitle: Fix size checks and avoid overflows when checking
+    sizes.
+  + flvmux: Don't time out in live mode if no timestamped next
+    buffer is available.
+  + gdkpixbufdec: Check if initializing the video info actually
+    succeeded.
+  + jpegdec: Directly error out on negotiation failures.
+  + level:
+    - Fix integer overflow when filling LevelMeta.
+    - Produces level value outside of Stated Range.
+  + matroskademux: header parsing fixes.
+  + qtdemux:
+    - Header and sample table parsing fixes.
+    - Avoid integer overflow in theora extension parsing.
+  + qt(6)/material: ensure that we always update the context in
+    setBuffer().
+  + rtspsrc: Optionally timestamp RTP packets with their receive
+    times in TCP/HTTP mode.
+  + rtp: Fix precision loss in gst_rtcp_ntp_to_unix().
+  + rtpfunnel: Ensure segment events are forwarded after flushs.
+  + rtpmanager: don't map READWRITE in twcc header ext.
+  + rtph264depay, rtph265depay: Fix various OOB reads / NULL
+    pointer dereferences in parameter-set string handling.
+  + shout2send: Unref event at the end of the event function.
+  + udpsrc: protect cancellable from unlock/unlock_stop race.
+  + v4l2object:
+    - Fixed incorrect maximum value for int range.
+    - Remove little endian marker on 8 bit bayer format names.
+  + v4l2videodec: fix freeze race condition.
+  + wavparse: Fix various (missing) size checks and other parsing
+    problems.
+
+-------------------------------------------------------------------
 Tue Nov  5 09:44:41 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.24.9:

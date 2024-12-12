@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Dec 10 14:22:07 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.4.5:
+  * Support --one-hash formatting option
+  * Bugfix: Show correct config directory in the manpage
+  * Bugfix: Updating must continue after a file access error
+  * Bugfix: Show correct size and time for Windows symlinks
+  * Bugfix: Enable large file support on 32-bit platforms
+  * Bugfix: Fix runtime error on WinXP
+  * Bugfix: Fix building with glibc < 2.15
+  * Bugfix: Fix building on Solaris
+  * Bugfix: Fix building on Unix
+  * Bugfix: Fix dynamic library symlink on macOS
+  * Bugfix: Fix dynamic library symlink on *BSD
+
+-------------------------------------------------------------------
 Sat Jul 29 08:26:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.4:

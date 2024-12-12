@@ -1,5 +1,5 @@
 <package name="tree-sitter-java" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <devel project="editors" package="tree-sitter-java"/>
+  <devel project="editors:tree-sitter" package="tree-sitter-java"/>
 </package>

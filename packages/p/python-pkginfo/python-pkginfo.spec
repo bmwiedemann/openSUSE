@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pkginfo
-Version:        1.11.2
+Version:        1.12.0
 Release:        0
 Summary:        Python package for querying metadatdata from sdists/bdists/installed packages
 License:        MIT
@@ -61,6 +61,8 @@ the *.egg-info stored in a "development checkout"
 %python_clone -a %{buildroot}%{_bindir}/pkginfo
 
 %check
+# install wheel in tests with an explicit metadata version, looks like we have a different default (openSUSE-only)
+sed -iE "s/_make_installed('wheel')/_make_installed('wheel', metadata_version='2.3')/" pkginfo/tests/test_installed.py
 %pytest
 
 %post

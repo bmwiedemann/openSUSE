@@ -17,7 +17,7 @@
 
 
 Name:           dkms
-Version:        3.1.1
+Version:        3.1.3
 Release:        0
 Summary:        Dynamic Kernel Module Support Framework
 License:        GPL-2.0-only
@@ -86,7 +86,7 @@ Zsh command line completion support for %{name}.
 #    paths are concatenated with DESTDIR (which has buildroot) by
 #    the makefile
 # 2. BASHDIR, ETC and VAR are not settable
-%make_install \
+%make_install install-redhat \
   SBIN=%{_sbindir} \
   MAN=%{_mandir}/man8 \
   LIBDIR=%{_libexecdir}/%{name} \
@@ -139,16 +139,10 @@ exit 0
 %{_sbindir}/rcdkms
 %{_prefix}/lib/kernel/install.d/40-%{name}.install
 %{_localstatedir}/lib/%{name}
-%{_libexecdir}/%{name}
 %{_tmpfilesdir}/dkms.conf
 %{_mandir}/man8/dkms.8%{ext_man}
-%{_sysconfdir}/kernel/postinst.d/%{name}
-%{_sysconfdir}/kernel/prerm.d/%{name}
 %{_unitdir}/dkms.service
 # these dirs are for plugins - owned by other packages
-%dir %{_sysconfdir}/kernel
-%dir %{_sysconfdir}/kernel/postinst.d
-%dir %{_sysconfdir}/kernel/prerm.d
 %dir %{_prefix}/lib/kernel/
 %dir %{_prefix}/lib/kernel/install.d
 

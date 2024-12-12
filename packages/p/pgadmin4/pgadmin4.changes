@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec  9 22:43:51 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch {Build,}Requires on Flask-Security-Too back to Flask-Security. 
+
+-------------------------------------------------------------------
 Mon Jun 17 10:11:42 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - update to 8.8:

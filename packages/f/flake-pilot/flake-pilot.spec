@@ -23,7 +23,7 @@
 # SOFTWARE.
 #
 Name:           flake-pilot
-Version:        3.0.15
+Version:        3.1.8
 Release:        0
 Summary:        Launcher for flake applications
 License:        MIT
@@ -157,7 +157,6 @@ install -m 644 flakes.yml %{buildroot}/etc/flakes.yml
 
 %files
 %defattr(-,root,root)
-%dir /usr/share/flakes
 %dir /etc/flakes
 %config /etc/flakes.yml
 /usr/bin/flake-ctl
@@ -168,6 +167,7 @@ install -m 644 flakes.yml %{buildroot}/etc/flakes.yml
 
 %files -n flake-pilot-podman
 %config /etc/flakes/container-flake.yaml
+%config /etc/flakes/storage.conf
 /usr/bin/podman-pilot
 /usr/sbin/flake-registry
 %doc /usr/share/man/man8/flake-ctl-podman-load.8.gz

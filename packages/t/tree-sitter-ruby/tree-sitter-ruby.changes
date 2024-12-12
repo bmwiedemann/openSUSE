@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Dec  4 23:43:56 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.23.1:
+  * ci(publish): add attestations and generate parser
+  * build: update bindings
+  * fix: remove unnecessary empty string usage
+  * chore: regenerate
+  * build: update bindings
+  * ci: update workflows
+  * fix(swift): include scanner.c
+- update to 0.23.0:
+  * build: update bindings
+  * fix(go): correct test
+  * fix: handle != operator definition
+  * feat: support element references with blocks
+  * fix: do not require newline after block comment =end
+  * fix: parsing of multiple unicode escapes
+  * fix: correct repo url
+- update to 0.21.0:
+  * ci: update workflows
+  * feat: rewrite scanner with array header and regenerate
+  * build: update bindings and manifests
+  * fix: reverse precedence queries
+  * fix: escape braces in regex
+  * docs: update badges
+- switch to download_files service
+- add neovim links
+- add license file to package
+- remove 0001-fix-escape-braces-in-regex.patch as it got fixed upstream
+- enable devel package
+
+-------------------------------------------------------------------
 Fri Mar 22 22:09:04 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Add patch from 0001-fix-escape-braces-in-regex.patch

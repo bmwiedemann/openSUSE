@@ -17,7 +17,7 @@
 
 
 Name:           markdown-oxide
-Version:        0.24.3
+Version:        0.25.0
 Release:        0
 Summary:        A markdown language server with Obsidian syntax support
 License:        Apache-2.0

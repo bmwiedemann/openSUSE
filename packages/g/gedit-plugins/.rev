@@ -567,4 +567,13 @@ Pushing GNOME 45.rc packages</comment>
     <comment>SCripted push of GNOME 47</comment>
     <requestid>1205428</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>605b175c939e144bac31cde7d670ec59</srcmd5>
+    <version>48.1</version>
+    <time>1733947422</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 48.1:
+  + Updated translations. (forwarded request 1229054 from iznogood)</comment>
+    <requestid>1229728</requestid>
+  </revision>
 </revisionlist>

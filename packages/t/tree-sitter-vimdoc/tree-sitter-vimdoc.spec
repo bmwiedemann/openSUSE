@@ -17,24 +17,21 @@
 
 
 %define         _name vimdoc
-Name:           tree-sitter-%{_name}
+Name:           tree-sitter-vimdoc
 Version:        3.0.0
 Release:        0
 Summary:        Tree-sitter parser for Vim help files
 License:        Apache-2.0
 URL:            https://github.com/neovim/tree-sitter-vimdoc
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  tree-sitter
 %treesitter_grammars %{_name}
 
 %description
-This grammar implements the vimdoc "spec". Predictable results are the primary
-goal, so that output formats (e.g. HTML) are well-formed; the input (vimdoc) is
-secondary. The first step should always be to try to fix the input rather than
-insist on a grammar that handles vimdoc's endless quirks.
+%{summary}.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 %treesitter_configure
@@ -50,8 +47,7 @@ ln -s %{_libdir}/lib%{name}.so %{buildroot}%{_libdir}/tree_sitter/%{_name}.so
 
 %files
 %license LICENSE
-%doc README.md
-%{treesitter_files}
+%treesitter_files
 %{_libdir}/tree_sitter/%{_name}.so
 %if 0%{?suse_version} < 1600
 %dir %{_libdir}/tree_sitter

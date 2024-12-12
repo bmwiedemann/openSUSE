@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Dec  9 11:12:56 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.13.3:
+  + Fixed:
+    - gtk4paintablesink:
+      . Don't check for a GL context when filtering dmabuf caps.
+      . Use a correctly typed None value when retrieving paintable
+        property fails.
+    - mpegtslivesrc: Parse PAT/PMT to lock to a single program/PCR
+      in case multiple are in the stream.
+    - rtp: Fix reference timestamp meta de-duplication in
+      depayloaders.
+    - quinn: Specify a default crypto provider to avoid conflicts.
+    - transcriberbin: Fix linking of user-provided transcriber.
+    - webrtcsink:
+      . Allow pixel-aspect-ratio changes.
+      . Fix naming of error dot files of discovery pipelines.
+      . Fix session not in place errors.
+    - webrtc: janus: Do not block in end_session().
+  + Added:
+    - awstranscriber: Post warning message with details when items
+      are too late.
+    - transcriberbin: Support both latency and translate-latency
+      properties.
+    - webrtc: janus: Add janus-state property.
+  + Changed: gtk4paintablesink: Deprecated "wayland" feature and
+    call it "waylandegl" as it has nothing to do with generic
+    Wayland support.
+
+-------------------------------------------------------------------
 Wed Oct 16 18:58:43 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.13.2:

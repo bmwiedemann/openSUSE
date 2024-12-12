@@ -17,7 +17,7 @@
 
 
 Name:           nautilus
-Version:        47.0+14
+Version:        47.1
 Release:        0
 Summary:        File Manager for the GNOME Desktop
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -26,9 +26,6 @@ URL:            https://wiki.gnome.org/Apps/Nautilus
 Source0:        %{name}-%{version}.tar.zst
 Source1:        set_trusted.desktop
 Source2:        set_trusted.sh
-
-# PATCH-FIX-OPENSUSE revert-post-release-bump.patch -- Allow us to ship a git checkout, drop on next stable bump
-Patch:          revert-post-release-bump.patch
 
 # needed for directory ownership
 BuildRequires:  dbus-1

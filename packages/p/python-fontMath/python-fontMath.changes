@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Dec 11 13:01:16 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.4
+  * Fix typo by @schriftgestalt in #323
+  * Do not re-cycle the outline in strict mode
+    by @simoncozens in #325
+- Adjust upstream source name in spec file
+- Switch package to modern Python Stack on SLE-15
+  * Use Python 3.11 on SLE-15 by default
+  * Drop support for older Python versions
+- Switch build system from setuptools to pyproject.toml
+  * Add python-pip and python-wheel to BuildRequires
+  * Replace %python_build with %pyproject_wheel
+  * Replace %python_install with %pyproject_install
+
+-------------------------------------------------------------------
 Wed Dec 14 08:39:04 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove python_module macro definition

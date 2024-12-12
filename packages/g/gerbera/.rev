@@ -255,4 +255,12 @@ Sorry - I missed that on the previous fixup. Now we should be good for sysusers 
     <comment></comment>
     <requestid>1223431</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>5541705159dbe0eeed1fa07386fb9301</srcmd5>
+    <version>2.3.0</version>
+    <time>1733947470</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1230024</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 10 14:12:26 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.8.2:
+  + Fix database inconsistency resulting from some patterns of
+    folder updates, and possible resulting CPU churn.
+
+-------------------------------------------------------------------
 Thu Nov 21 16:50:23 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.8.1:

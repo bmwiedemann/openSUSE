@@ -1670,4 +1670,41 @@ Hence, recommended to be added to 12.3</comment>
     <comment></comment>
     <requestid>1216796</requestid>
   </revision>
+  <revision rev="218" vrev="1">
+    <srcmd5>68524f8b69e9c87a953291fa596dc309</srcmd5>
+    <version>47.1</version>
+    <time>1733947246</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 47.1:
+  + Enhancements: Speed up thumbnail loading.
+  + Bugfixes:
+    - Do not force reload when error is present to avoid showing
+      auth dialog.
+    - Open folder in correct window during a DnD hover.
+    - Show username in file properties if name is an empty string.
+    - Various a11y fixes.
+    - Fix number placement when making new name for directory.
+    - Various pathbar fixes.
+    - Show alert dialog when a symlink is broken.
+    - Fix crashes when opening.
+    - Various sidebar fixes.
+    - Fix ctrl + scroll to zoom in and out of view.
+  + Updated translations.
+- Drop revert-post-release-bump.patch: No longer needed.
+
+- Update to version 47.0+38:
+  * gtk/placessidebar: Fix placeholder sometimes being stuck at the bottom
+  * pathbar: Remove dir separator in front of some schemes
+  * gtk/placessidebar: Don't open insensitive rows
+  * gtk/nautilusgtkplacessidebar: Don't start drag timer if row can't be known
+  * file-chooser: Focus file name entry when cancelling overwrite
+  * list-base: Activate folder to open on drag instead of opening through application
+  * properties: Hide extensions list box when empty
+  * file: Ignore empty strings for owner name
+  * general: Various a11y fixes
+  * files-view: Fix leak
+  * compress-dialog: Fix name entry activation
+  * file-utilities: Ignore extension when making new name for directories (forwarded request 1229341 from iznogood)</comment>
+    <requestid>1229730</requestid>
+  </revision>
 </revisionlist>

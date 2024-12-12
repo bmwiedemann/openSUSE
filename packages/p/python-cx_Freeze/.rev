@@ -197,4 +197,41 @@
     ze/compare/6.15.15...6.15.16</comment>
     <requestid>1160804</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0bf94b91cf9c05f5cc91449b89fda60e</srcmd5>
+    <version>7.2.7</version>
+    <time>1733947432</time>
+    <user>anag+factory</user>
+    <comment>- Update to 7.2.7:
+  * bdist_rpm: drop rpm2_mode and refactor spec_file
+  * hooks: the optimized mode is the default for pip installations
+  * hooks: support numpy 2.0
+  * Exit with non-zero exit code on exception
+  * hooks: improve scipy hooks
+  * hooks: fix matplotlib hooks used in zip_include_packages
+  * hooks: fix scipy hooks used in zip_include_packages
+  * linux: bdist_rpm depends on rpmbuild being installed
+  * chore: use pytest-datafiles to run tests in temporary path
+  * fix: zip_include_packages/zip_exclude_packages regression
+  * chore: use pytest-xdist to speed up the tests
+  * chore: drop support for python 3.7
+  * parser: support for lief 0.14 ParserConfig
+  * chore: add basic support for Python 3.12
+  * fix: bdist_rpm should generate only binaries [linux]
+  * samples: fix pydantic sample to work python &lt; 3.10
+  * hooks: fix the sentry_sdk hook
+  * hooks: move sklearn hook to a submodule
+  * hooks: add boto3
+  * fix: bdist_rpm to pass tests in python 3.12b4
+  * hooks: multiprocessing support for forkserver and spawn
+  * hooks: update sysconfig hook
+  * hooks: PySide2/6 - shiboken2/6 in zip_include_packages
+  * finder: add base modules at the end to simplify tests
+  * hooks: fix for pyqt [conda linux]
+  * hooks: move ssl hook to a submodule
+  * hooks: fix pyside2 webengine [conda linux]
+  * hooks: fix pyqt5 webengine [conda linux]
+  * module: ModuleHook class to support inheritance</comment>
+    <requestid>1229957</requestid>
+  </revision>
 </revisionlist>

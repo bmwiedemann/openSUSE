@@ -126,4 +126,12 @@
   * go#70679 mime/multipart: With go 1.23.3, mime/multipart does not link (forwarded request 1228338 from jfkw)</comment>
     <requestid>1228340</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>524e8781e90aa7fc1ff8aa59f7174206</srcmd5>
+    <version>1.23.4</version>
+    <time>1733947233</time>
+    <user>anag+factory</user>
+    <comment>- Enable loongarch64 builds (forwarded request 1228463 from adrianSuSE)</comment>
+    <requestid>1229688</requestid>
+  </revision>
 </revisionlist>

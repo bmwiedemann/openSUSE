@@ -21,7 +21,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         mod_name relatorio
 Name:           python-relatorio
-Version:        0.10.1
+Version:        0.11.0
 Release:        0
 Summary:        Python module to create reports from Python objects
 License:        GPL-3.0-or-later
@@ -44,7 +44,7 @@ Requires:       python-lxml
 Requires:       python-pycha
 Requires:       python-python-magic
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -78,7 +78,7 @@ mv relatorio relatorio_hide
 
 %files %{python_files}
 %license LICENSE
-%doc README COPYRIGHT README
+%doc README.rst COPYRIGHT
 %python_alternative %{_bindir}/relatorio-render
 %{python_sitelib}/relatorio
 %{python_sitelib}/relatorio-%{version}*-info

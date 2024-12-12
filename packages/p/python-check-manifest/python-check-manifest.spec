@@ -26,12 +26,12 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-check-manifest%{psuffix}
-Version:        0.49
+Version:        0.50
 Release:        0
 Summary:        Tool to check Python source package MANIFEST.in for completeness
 License:        MIT
 URL:            https://github.com/mgedmin/check-manifest
-Source:         https://files.pythonhosted.org/packages/source/c/check-manifest/check-manifest-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/c/check_manifest/check_manifest-%{version}.tar.gz
 Patch0:         use-current-interpreter.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
@@ -68,7 +68,7 @@ check-manifest is a tool for python developers to check for broken packages
 and missing files in MANIFEST.
 
 %prep
-%setup -q -n check-manifest-%{version}
+%setup -q -n check_manifest-%{version}
 %if 0%{?suse_version} == 1500
 %patch -P 0 -p1
 %endif

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec  6 12:28:34 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Enable build on loongarch64
+
+-------------------------------------------------------------------
 Wed Jul 31 06:40:52 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add fde-tools-bsc1218181-replace-crypttab-key-path.patch to

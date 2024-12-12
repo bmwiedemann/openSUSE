@@ -1,0 +1,5 @@
+<package name="tree-sitter-vue" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="editors:tree-sitter" package="tree-sitter-vue"/>
+</package>

@@ -1,8 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec 10 06:14:24 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Update crun.keyring to point to primary key. The original packaging of
+  crun.keyring used the subkey 0xAF60FCA3CDAA6DEAD157EA3A67E38F7A8BA21772 as
+  the key to verify against, rather than the primary key
+  0xAC404C1C0BF735C63FF4D562263D6DF2E163E1EA. If/when upstream rotates their
+  signing keys, the old key verification would start to fail.
+
+-------------------------------------------------------------------
 Tue Nov  5 07:14:16 UTC 2024 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to crun v1.18.2 Upstream changelog is available from
-  <https://github.com/containers/crun/releases/tag/1.18.2> 
+  <https://github.com/containers/crun/releases/tag/1.18.2>
 
 -------------------------------------------------------------------
 Mon Oct 28 09:39:05 UTC 2024 - Aleksa Sarai <asarai@suse.com>

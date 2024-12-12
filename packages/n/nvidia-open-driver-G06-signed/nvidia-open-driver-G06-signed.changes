@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec 11 00:07:03 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Do not set %{?linux_make_arch} for running make modules/modules-install
+- supersedes 550.135.patch
+
+-------------------------------------------------------------------
+Thu Dec  5 09:38:56 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- obsolete <=560.35.03 -cuda KMPs; mistakenly we released
+  560.35.03 for SP4 ...
+
+-------------------------------------------------------------------
 Wed Dec  4 09:00:04 UTC 2024 - Egbert Eich <eich@suse.com>
 
 - Make sure the correct FW package is installed on non-CUDA.

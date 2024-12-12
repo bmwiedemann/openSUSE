@@ -7,4 +7,16 @@
     <comment>GNOME 47</comment>
     <requestid>1205616</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>df0b3158cbbc56e766f5b91f75577f0a</srcmd5>
+    <version>6.12.0</version>
+    <time>1733947243</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 6.12.0:
+  + New and removed API: see the API reference.
+  + Fix compilation warnings.
+  + Updated translations.
+- Bump libver (forwarded request 1229044 from iznogood)</comment>
+    <requestid>1229727</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 11 06:52:18 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.2.1:
+  * revert: rootless image (#4615) (#4618)
+  * DEV-828: Don't allow execution of empty tests names (#4614)
+    (#4616)
+
+-------------------------------------------------------------------
 Mon Dec 09 12:46:09 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.2.0:

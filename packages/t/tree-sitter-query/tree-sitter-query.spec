@@ -17,21 +17,21 @@
 
 
 %define         _name query
-Name:           tree-sitter-%{_name}
+Name:           tree-sitter-query
 Version:        0.4.0
 Release:        0
-Summary:        TS query grammar for tree-sitter
+Summary:        Query grammar for tree-sitter
 License:        Apache-2.0
 URL:            https://github.com/tree-sitter-grammars/tree-sitter-query
-Source:         %{name}-%{version}.tar.xz
+Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  tree-sitter
 %treesitter_grammars %{_name}
 
 %description
-A tree-sitter parser for tree-sitter query files (scheme-like).
+%{summary}.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 %treesitter_configure
@@ -39,17 +39,21 @@ A tree-sitter parser for tree-sitter query files (scheme-like).
 
 %install
 %treesitter_install
+%treesitter_devel_install
 
+#neovim stuff
 install -d %{buildroot}%{_libdir}/tree_sitter
 ln -s %{_libdir}/lib%{name}.so %{buildroot}%{_libdir}/tree_sitter/%{_name}.so
 
 %files
 %license LICENSE
 %doc README.md
-%{treesitter_files}
+%treesitter_files
 %{_libdir}/tree_sitter/%{_name}.so
 %if 0%{?suse_version} < 1600
 %dir %{_libdir}/tree_sitter
 %endif
+
+%treesitter_devel_package
 
 %changelog

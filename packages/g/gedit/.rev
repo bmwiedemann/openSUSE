@@ -1215,4 +1215,21 @@ Pushing GNOME 45.rc packages</comment>
     <comment>SCripted push of GNOME 47</comment>
     <requestid>1205427</requestid>
   </revision>
+  <revision rev="158" vrev="1">
+    <srcmd5>0926bdf36ab2e79dd06133779431aff2</srcmd5>
+    <version>48.1</version>
+    <time>1733947244</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 48.1:
+  + Removed plugins: External Tools, Snippets, Python Console.
+  + Text Size plugin: rewrite in C.
+  + Remove the background-pattern feature (with the grid).
+  + Fix bug on Wayland to unmaximize the window.
+  + Code refactorings.
+  + Fix compilation warning.
+  + Updated translations.
+- Drop gedit-plugins-python-env.patch: No longer needed, nor
+  applies. (forwarded request 1229055 from iznogood)</comment>
+    <requestid>1229729</requestid>
+  </revision>
 </revisionlist>

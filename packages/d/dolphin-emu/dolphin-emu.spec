@@ -17,12 +17,12 @@
 
 
 Name:           dolphin-emu
-Version:        2409
+Version:        2412
 Release:        0
 Summary:        Dolphin, a GameCube and Wii Emulator
 License:        (Apache-2.0 OR MIT) AND BSD-2-Clause AND libpng-2.0 AND GPL-2.0-or-later
 URL:            https://dolphin-emu.org
-# n=dolphin-emu && v=2409 && d=$n-$v && f=$d.tar.xz && cd /tmp && git clone https://github.com/$n/dolphin.git $n && pushd $n && git checkout $v && git submodule && git submodule update --init --recursive Externals/VulkanMemoryAllocator Externals/cubeb/cubeb Externals/enet/enet Externals/gtest Externals/implot/implot Externals/libspng/libspng Externals/minizip-ng/minizip-ng Externals/rcheevos/rcheevos Externals/tinygltf/tinygltf Externals/zlib-ng/zlib-ng && git submodule status && rm -rf .??* && popd && mv $n $d && tar c --remove-files "$d" | xz -9e > "$f"
+# n=dolphin-emu && v=2412 && d=$n-$v && f=$d.tar.xz && cd /tmp && git clone https://github.com/$n/dolphin.git $n && pushd $n && git checkout $v && git submodule && git submodule update --init --recursive Externals/VulkanMemoryAllocator Externals/cubeb/cubeb Externals/enet/enet Externals/gtest Externals/implot/implot Externals/libspng/libspng Externals/minizip-ng/minizip-ng Externals/rcheevos/rcheevos Externals/tinygltf/tinygltf Externals/zlib-ng/zlib-ng && git submodule status && rm -rf .??* && popd && mv $n $d && tar c --remove-files "$d" | xz -9e > "$f"
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -42,7 +42,7 @@ BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(ao)
 BuildRequires:  pkgconfig(bluez)
 BuildRequires:  pkgconfig(bzip2)
-BuildRequires:  pkgconfig(fmt) = 10.2.1
+BuildRequires:  pkgconfig(fmt) >= 10.1
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(hidapi-hidraw)
 BuildRequires:  pkgconfig(jack)
@@ -65,7 +65,7 @@ BuildRequires:  pkgconfig(lzo2)
 BuildRequires:  pkgconfig(miniupnpc)
 BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(pugixml)
-BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(sdl2) >= 2.30.9
 BuildRequires:  pkgconfig(sfml-network)
 BuildRequires:  pkgconfig(sfml-system)
 BuildRequires:  pkgconfig(sm)
@@ -109,13 +109,7 @@ sed -i '/CMAKE_C.*_FLAGS/d' CMakeLists.txt
 echo "%{_datadir}/%{name}/Sys/GC:" > font-licenses.txt
 cat Data/Sys/GC/font-licenses.txt >> font-licenses.txt
 
-#Fix for newer vulkan
-sed -i "s/VK_PRESENT_MODE_RANGE_SIZE_KHR/(VkPresentModeKHR)("`
-    `"VK_PRESENT_MODE_FIFO_RELAXED_KHR - VK_PRESENT_MODE_IMMEDIATE_KHR + 1)/" \
-    Source/Core/VideoBackends/Vulkan/VKSwapChain.h
-
 %build
-%define _lto_cflags %{nil}
 # FIXME: you should use the %%cmake macros
 cmake . -LA \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
@@ -131,11 +125,10 @@ cmake . -LA \
     -DDOLPHIN_WC_DESCRIBE=%{version} \
     -DDOLPHIN_WC_REVISION=%{version} \
     -DENABLE_ANALYTICS=OFF \
-    -DENABLE_LTO=OFF \
+    -DENABLE_LTO=ON \
     -DENCODE_FRAMEDUMPS=OFF \
     -DUSE_DISCORD_PRESENCE=OFF \
     -DUSE_MGBA=OFF \
-    -DUSE_RETRO_ACHIEVEMENTS=OFF \
     -DUSE_SANITIZERS=OFF \
     -DXXHASH_FOUND=ON \
     -G Ninja
