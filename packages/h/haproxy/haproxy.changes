@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Thu Dec 12 15:13:23 UTC 2024 - mrueckert@suse.de
+
+- Update to version 3.1.1+git0.717960de0:
+  * [RELEASE] Released version 3.1.1
+  * BUG/MINOR: hlua_fcn: restore server pairs iterator pointer consistency
+  * BUG/MINOR: server-state: Fix expiration date of srvrq_check tasks
+  * BUG/MINOR: http-fetch: Ignore empty argument string for query()
+  * BUG/MEDIUM: stats/server: use watcher to track server during stats dump
+  * MINOR: list: define a watcher type
+  * BUG/MINOR: stats: decrement srv refcount on stats-file release
+  * BUG/MINOR: resolvers: handle a possible strdup() failure
+  * BUG/MINOR: ssl_crtlist: handle a possible strdup() failure
+  * BUG/MINOR: namespace: handle a possible strdup() failure
+  * BUG/MEDIUM: mworker: report status, if daemonized master fails
+  * BUG/MEDIUM: startup: report status if daemonized process fails
+  * BUG/MEDIUM: startup: don't daemonize if started with -c
+  * BUG/MINOR: startup: fix error path for master, if can't open pidfile
+  * BUG/MINOR: mworker: fix -D -W -sf/-st modes
+  * BUG/MINOR: mworker: don't save program PIDs in oldpids
+  * BUG/MINOR: mux-h2: fix expression when detecting excess of CONTINUATION frames
+  * MINOR: mux-h2/glitches: add a description to the H2 glitches
+  * CLEANUP: mux-h2/traces: reword certain ambiguous traces
+  * MINOR: mux-h2/traces: add a missing trace on negative initial window size
+  * BUILD: debug: fix build issues in COUNT_IF() with -Wunused-value
+  * BUG/MINOR: debug: COUNT_IF() should return true/false
+  * DOC: config: fix confusing init-state examples
+  * BUG/MINOR: config: Fix parsing of accept-invalid-http-{request,response}
+  * BUG/MEDIUM: mux-h2: make sure not to touch dummy streams when sending WU
+  * BUG/MINOR: quic: remove startup alert if GSO unsupported
+  * BUG/MINOR: quic: remove startup alert if conn socket-owner unsupported
+  * BUG/MEDIUM: mux-quic: remove pacing status when everything is sent
+  * BUG/MINOR: init: do not call fork_poller() for non-forked processes
+  * BUG/MEDIUM: init: make sure only daemonized processes change their session
+  * BUG/MINOR: quic: fix bbr_inflight() calls with wrong gain value
+  * BUG/MINOR: startup: fix pidfile creation
+  * BUG/MINOR: startup: close pidfd and free global.pidfile in handle_pidfile()
+  * BUG/MINOR: signal: register default handler for SIGINT in signal_init()
+  * BUILD: quic: fix a build error about an non initialized timestamp
+  * BUG/MINOR: h1-htx: Use default reason if not set when formatting the response
+  * BUG/MEDIUM: http-ana: Reset request flag about data sent to perform a L7 retry
+  * BUG/MEDIUM: quic: prevent stream freeze on pacing
+  * BUG/MEDIUM: event_hdl: fix uninitialized value in async mode when no data is provided
+  * BUG/MINOR: improve BBR throughput on very fast links
+  * BUG/MINOR: log: fix lf_text() behavior with empty string
+  * MINOR: proxy: Add support of 421-Misdirected-Request in retry-on status
+  * BUG/MEDIUM: sock: Remove FD_POLL_HUP during connect() if FD_POLL_ERR is not set
+
+-------------------------------------------------------------------
 Tue Nov 26 14:57:39 UTC 2024 - mrueckert@suse.de
 
 - Update to version 3.1.0+git0.f2b97918e:

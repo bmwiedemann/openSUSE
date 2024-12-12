@@ -53,7 +53,7 @@
 %endif
 
 Name:           haproxy
-Version:        3.1.0+git0.f2b97918e
+Version:        3.1.1+git0.717960de0
 Release:        0
 #
 #
