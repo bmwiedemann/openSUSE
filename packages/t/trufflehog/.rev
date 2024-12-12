@@ -1732,4 +1732,21 @@
   * fixed shopify integration test (#3744) (forwarded request 1229926 from ph03nix)</comment>
     <requestid>1229927</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>40287ddaa11c399f5f602c6616ee4306</srcmd5>
+    <version>3.86.1</version>
+    <time>1734034816</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.86.1:
+  * updated tickettailor detector (#3766)
+  * fix(deps): update module golang.org/x/crypto to v0.31.0 (#3767)
+  * fix(deps): update golang.org/x/exp digest to 1829a12 (#3761)
+  * [refactor] - s3 metrics (#3760)
+  * [Fix] detector's integration tests starting with alphabet 'g' (#3765)
+  * [Fix] detector's integration tests starting with alphabet 'e' &amp; 'f' (#3764)
+  * updated testingbot detector and it's integration tests (#3763)
+  * fix(deps): update module google.golang.org/api to v0.211.0 (#3759)
+  * fix(deps): update golang.org/x/exp digest to 1443442 (#3758) (forwarded request 1230301 from ph03nix)</comment>
+    <requestid>1230627</requestid>
+  </revision>
 </revisionlist>

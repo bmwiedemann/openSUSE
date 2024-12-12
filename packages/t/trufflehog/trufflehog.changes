@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec 12 08:00:04 UTC 2024 - felix.niederwanger@suse.de
+
+- Update to version 3.86.1:
+  * updated tickettailor detector (#3766)
+  * fix(deps): update module golang.org/x/crypto to v0.31.0 (#3767)
+  * fix(deps): update golang.org/x/exp digest to 1829a12 (#3761)
+  * [refactor] - s3 metrics (#3760)
+  * [Fix] detector's integration tests starting with alphabet 'g' (#3765)
+  * [Fix] detector's integration tests starting with alphabet 'e' & 'f' (#3764)
+  * updated testingbot detector and it's integration tests (#3763)
+  * fix(deps): update module google.golang.org/api to v0.211.0 (#3759)
+  * fix(deps): update golang.org/x/exp digest to 1443442 (#3758)
+
+-------------------------------------------------------------------
 Tue Dec 10 19:57:40 UTC 2024 - felix.niederwanger@suse.de
 
 - Update to version 3.86.0:
