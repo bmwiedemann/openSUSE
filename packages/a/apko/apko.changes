@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 12 05:54:50 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.21.0:
+  * Make LockImageConfiguration multi-arch aware (#1432)
+
+-------------------------------------------------------------------
 Wed Dec 11 07:01:11 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.20.2:
