@@ -21,11 +21,14 @@ Version:        0.5
 Release:        0
 Summary:        Tool to modify strings to use the same quotes
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/myint/unify
 Source:         https://github.com/myint/unify/archive/v%{version}.tar.gz
 Source9:        README.suse
+# PATCH-FIX-OPENSUSE Do not use lib2to3
+Patch0:         no-more-lib2to3.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-untokenize
@@ -45,21 +48,22 @@ Note that the "unify" executable has been renamed to "unify_quotes" to
 avoid conflicts with the wdiff package.
 
 %prep
-%setup -q -n unify-%{version}
+%autosetup -p1 -n unify-%{version}
 sed -i -e '/^#!\//, 1d' unify.py
 cp %{SOURCE9} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %check
 # https://github.com/myint/unify/issues/22
 donttest="DUMMY"
 python312_donttest="or (TestUnitsWithFstrings and test_format_code)"
+python313_donttest=$python312_donttest
 %pytest -k "not ($donttest ${$python_donttest})"
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 mv %{buildroot}%{_bindir}/unify %{buildroot}%{_bindir}/unify_quotes
 %python_clone -a %{buildroot}%{_bindir}/unify_quotes
@@ -75,7 +79,7 @@ mv %{buildroot}%{_bindir}/unify %{buildroot}%{_bindir}/unify_quotes
 %doc README.rst README.suse
 %python_alternative %{_bindir}/unify_quotes
 %{python_sitelib}/unify.py
-%pycache_only %{python_sitelib}/__pycache__/unify*
-%{python_sitelib}/unify-%{version}*info
+%pycache_only %{python_sitelib}/__pycache__/unify*pyc
+%{python_sitelib}/unify-%{version}.dist-info
 
 %changelog

@@ -51,4 +51,14 @@
 - Skip failing tests on Python 3.12</comment>
     <requestid>1164043</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>6fcbaad6d7efa6d59b613f9828e16766</srcmd5>
+    <version>0.5</version>
+    <time>1734034770</time>
+    <user>anag+factory</user>
+    <comment>- Switch to autosetup and pyproject macros.
+- Add patch no-more-lib2to3.patch:
+  * Don't use lib2to3, use the tokenize module.</comment>
+    <requestid>1230268</requestid>
+  </revision>
 </revisionlist>

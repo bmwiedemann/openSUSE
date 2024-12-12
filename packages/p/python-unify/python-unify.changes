@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 12 05:44:15 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup and pyproject macros.
+- Add patch no-more-lib2to3.patch:
+  * Don't use lib2to3, use the tokenize module.
+
+-------------------------------------------------------------------
 Tue Mar 19 12:44:31 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Skip failing tests on Python 3.12
