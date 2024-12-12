@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Dec 12 06:13:23 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.13.2:
+  * Bump version to 2.13.2 (#21133)
+  * fix: add missing fields in listrepositories (#20991) (#21129)
+  * fix: Allow to delete repos with invalid urls (#20921) (#20975)
+    (#21116)
+  * fix: 20791 - sync multi-source application out of order source
+    syncs (cherry-pick #21071) (#21077)
+  * fix: Bitbucket Cloud PR Author is processed correctly (#20769)
+    (#20990) (#21039)
+  * fix: API server should not attempt to read secrets in all
+    namespaces (#20950) (#20960)
+  * fix: Memory leak in repo-server (#20876) (#20894)
+  * chore(deps): bump http-proxy-middleware from 2.0.4 to 2.0.7 in
+    /ui (#20518) (#20892)
+  * fix(cli): Fix appset generate in --core mode (#20717) (#20883)
+
+-------------------------------------------------------------------
 Thu Nov 21 07:51:46 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.13.1:
