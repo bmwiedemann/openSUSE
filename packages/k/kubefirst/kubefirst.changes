@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec 12 05:55:29 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.7.8:
+  * fix: delete kubefirst file when doing kubefirst reset - KRA-73
+    (#2344)
+  * chore: remove unused GitHub Workflow for devrel (#2346)
+  * docs: add azure to the readme (#2343)
+  * update role name docs (#2327)
+  * fix(azure): make the dns resource group optional (#2339)
+
+-------------------------------------------------------------------
 Fri Nov 29 12:19:48 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.7.7:
