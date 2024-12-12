@@ -15,9 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define ROCm_version 6.2.1
+%define ROCm_version 6.3.0
 Name:           btop
-Version:        1.4.0+git20240922.6c0cedd
+Version:        1.4.0+git20241108.e17bc6b
 Release:        0
 Summary:        Usage and stats for processor, memory, disks, network and processes
 License:        Apache-2.0

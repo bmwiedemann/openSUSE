@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Dec  5 14:36:56 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Updating ROCm to v6.3.0
+
+-------------------------------------------------------------------
+Sun Nov 10 23:26:49 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.4.0+git20241108.e17bc6b:
+  * Add 'Everforest Ligth Medium' theme
+  * Support intel GPUs before Gen-6 (patch from upstream)
+  * intel_name_lookup_shim.c (get_intel_device_name): Fix SEGFAULT
+  * Fix rsmi_measure_pcie_speeds not saving, issue #934
+  * Show GPU Watt fractions when below 100W
+
+-------------------------------------------------------------------
 Sun Sep 22 15:13:22 UTC 2024 - scott.bradnick@suse.com
 
 - Updating ROCm to v6.2.1
