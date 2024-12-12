@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-bootstrap3
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
 %{?sle15_python_module_pythons}
 Name:           python-django-bootstrap3
-Version:        14.2.0
+Version:        24.3
 Release:        0
 Summary:        Bootstrap support for Django projects
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/zostera/django-bootstrap3
-# Get the published sdist from PyPI because it has the setup.py ...
-Source0:        https://files.pythonhosted.org/packages/source/d/django-bootstrap3/django-bootstrap3-14.2.0.tar.gz 
-# --- but get the test files from Github: https://github.com/zostera/django-bootstrap3/issues/492
-Source1:        %{url}/archive/v%{version}.tar.gz#/django-bootstrap3-%{version}-gh.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/d/django_bootstrap3/django_bootstrap3-%{version}.tar.gz
 BuildRequires:  %{python_module Django}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -44,14 +39,13 @@ BuildArch:      noarch
 Bootstrap support for Django projects.
 
 %prep
-%setup -q -n django-bootstrap3-%{version}
-(cd ..; tar xf %{SOURCE1} django-bootstrap3-%{version}/tests)
+%setup -q -n django_bootstrap3-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

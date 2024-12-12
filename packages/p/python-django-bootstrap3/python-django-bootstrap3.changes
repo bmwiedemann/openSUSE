@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec 12 10:39:13 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Update to 24.3
+  * Switch to a CalVer YY.MINOR versioning scheme.
+  * Replace m2r2 with sphinx-mdinclude
+  * Update packaging, reduce dependencies
+  * Fix check order of CheckboxSelectMultiple and RadioSelect
+  * Fix inline form spacing
+  * Add support for Django up to 5.1 and Python up to 3.12
+- Drop the *-gh.tar.gz tarball, not needed anymore
+
+-------------------------------------------------------------------
 Tue Feb 13 17:36:00 UTC 2024 - Christian Keil <keil@dfn-cert.de>
 
 - Switch to Python 3.11 build.
