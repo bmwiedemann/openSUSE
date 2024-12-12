@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Dec 11 20:03:36 UTC 2024 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.18.4
+  - Added option to disable page width expansion to fit long lines.
+  - Limited page width expansion to 33% so room is left for the current title in
+    the margin.
+  - Audio player UI shows number of downloaded bytes if length of audio is still
+    unknown.
+  - Strip CR characters in content pasted to input fields. Line breaks are
+    expected to be just LFs.
+  - Fixed use of non-Gemini search URLs. (Do not force-prepend "gemini://".)
+  - Fixed handling of the reserved : character in URL paths.
+  - TUI: Fixed possible crash at launch.
+  - Updated UI translations.
+
+-------------------------------------------------------------------
 Mon Oct 14 15:23:04 UTC 2024 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 1.18.3
