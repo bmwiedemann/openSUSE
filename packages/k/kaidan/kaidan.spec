@@ -17,7 +17,7 @@
 
 
 Name:           kaidan
-Version:        0.9.2
+Version:        0.10.0
 Release:        0
 Summary:        A XMPP client based on KDE Framework
 License:        AML AND GPL-3.0-or-later AND SUSE-GPL-3.0+-with-openssl-exception AND MIT AND CC-BY-SA-4.0
@@ -34,13 +34,14 @@ BuildRequires:  gcc13-PIE
 # Both Qt 5 and Qt 6 flavors use the same cmake config name, use the -devel package name
 # BuildRequires:  cmake(KQuickImageEditor)
 BuildRequires:  kquickimageeditor-devel
+BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5CoreAddons) >= 5.67.0
 BuildRequires:  cmake(KF5KIO) >= 5.67.0
 BuildRequires:  cmake(KF5Kirigami2) >= 5.67.0
-BuildRequires:  cmake(KF5KirigamiAddons) >= 0.7.0
+BuildRequires:  cmake(KF5KirigamiAddons) >= 0.10.0
 BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5QQC2DeskopStyle)
-BuildRequires:  cmake(QXmpp) >= 1.5.0
+BuildRequires:  cmake(QXmppQt5) >= 1.9.0
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Core) >= 5.15.0
 BuildRequires:  cmake(Qt5LinguistTools)
@@ -56,6 +57,7 @@ BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  cmake(ZXing) >= 1.0.8
+BuildRequires:  pkgconfig(icu-uc)
 Requires:       kirigami-addons >= 0.7.0
 Requires:       kirigami2 >= 5.67.0
 Requires:       kquickimageeditor-imports
@@ -71,7 +73,7 @@ using the qxmpp XMPP client library and Qt 5.
 %lang_package
 
 %prep
-%autosetup -p1 -n kaidan-v%{version}
+%autosetup -p1
 
 %build
 %if 0%{?suse_version} == 1500
@@ -86,7 +88,7 @@ export CXX=g++-13
 %find_lang %{name} --with-qt
 
 %files
-%license LICENSE
+%license LICENSES/*
 %doc README.md NEWS
 %dir %{_kf5_sharedir}/kaidan
 %{_kf5_applicationsdir}/im.kaidan.kaidan.desktop
@@ -95,7 +97,7 @@ export CXX=g++-13
 %{_kf5_iconsdir}/hicolor/*/apps/kaidan.*
 %{_kf5_notifydir}/kaidan.notifyrc
 %{_kf5_sharedir}/kaidan/images
-%{_kf5_sharedir}/kaidan/providers.json
+%{_kf5_sharedir}/kaidan/providers*
 
 %files lang -f %{name}.lang
 
