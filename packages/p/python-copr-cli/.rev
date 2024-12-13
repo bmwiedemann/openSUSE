@@ -103,4 +103,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1170478</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>16d2368c7b0318ff14a2b37a8cbaf478</srcmd5>
+    <version>2.0</version>
+    <time>1734125962</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1230656 from rrahl0
+
+- update to 2.0:
+    * no upstream changelog
+  - remove remove-simplejson.patch, as upstream removed simplejson</comment>
+    <requestid>1230779</requestid>
+  </revision>
 </revisionlist>

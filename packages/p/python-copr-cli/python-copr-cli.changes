@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 12 21:00:03 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 2.0:
+  * no upstream changelog
+- remove remove-simplejson.patch, as upstream removed simplejson
+
+-------------------------------------------------------------------
 Sat Apr 20 13:40:42 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.111:

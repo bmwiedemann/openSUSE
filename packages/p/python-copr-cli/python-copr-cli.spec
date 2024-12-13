@@ -17,16 +17,12 @@
 
 
 Name:           python-copr-cli
-Version:        1.111
+Version:        2.0
 Release:        0
 Summary:        Copr cli
 License:        GPL-2.0-or-later
 URL:            https://github.com/fedora-copr/copr
 Source:         https://files.pythonhosted.org/packages/source/c/copr-cli/copr-cli-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM remove-simplejson.patch gh#fedora-copr/copr#2539 mcepl@suse.com
-# Remove dependency on simplejson
-# (not upstream, which on master switched to ujson)
-Patch0:         remove-simplejson.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
