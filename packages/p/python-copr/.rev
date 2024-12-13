@@ -81,4 +81,15 @@
 - Fiddle with {Build,}Requires as appropiate.</comment>
     <requestid>1110413</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>41154e8c5294c18b9db34f5b32bf4d69</srcmd5>
+    <version>2.0</version>
+    <time>1734125961</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1230655 from rrahl0
+
+- update to 2.0:
+    * no upstream changelog</comment>
+    <requestid>1230778</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-copr
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-copr
-Version:        1.130
+Version:        2.0
 Release:        0
 Summary:        Python client for copr service
 License:        GPL-2.0-or-later
