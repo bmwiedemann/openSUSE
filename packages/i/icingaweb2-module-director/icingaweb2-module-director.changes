@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Dec 13 07:00:48 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.11.3
+  * UI
+    - FIX: Property sort tables does not cause CSRF token validation anymore (#2937)
+    - FIX: No error when clicking modify action link for services belonging to service set in Icinga DB (#2938)
+    - FIX: No crashing of Host template form when invalid check command is entered (#2941)
+  * Internals
+    - FIX: Filter can be now removed in import source modifiers (#2939)
+  * Fixed Issues
+    You can find issues related to this release on our roadmap
+
+-------------------------------------------------------------------
 Fri Nov 22 09:19:07 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.11.2
