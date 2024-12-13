@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.dock
 Name:           pantheon-dock
-Version:        8.0.1
+Version:        8.0.2
 Release:        0
 Summary:        Quick app launcher and window switcher for Pantheon
 License:        GPL-3.0-or-later
@@ -43,7 +43,6 @@ A quick app launcher and window switcher for the Pantheon Desktop Environment.
 
 %build
 export CFLAGS="%{optflags} -Wno-error=return-type"
-export CXXFLAGS="%{optflags} -Wnoerror=return-type"
 %meson
 %meson_build
 

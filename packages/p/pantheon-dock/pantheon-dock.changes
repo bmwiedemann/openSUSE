@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec 13 05:27:51 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.2:
+  * App: Respect startup notify key for launching animation
+  * meson: Specify minimum GLib version
+  * Add spacing between icon and running indicator
+  * Fix icons clipping when bouncing and separate background from window
+  * MainWindow: respect reduce transparency key
+
+-------------------------------------------------------------------
 Wed Oct 23 20:14:44 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 8.0.1:
