@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec 12 18:40:10 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 2024.12.0
+  * Added new SSH agent
+  * Added new item type for SSH keys
+  * Added new import options
+  * fix: Add new item should set item type
+  * Desktop edit folder button visibility
+  * Import TOTP with ZohoVault CSV importer
+  * fix BufferSource conversions
+
+-------------------------------------------------------------------
 Thu Nov 21 18:06:28 UTC 2024 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 2024.11.2

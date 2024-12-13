@@ -22,11 +22,13 @@
 
 
 Name:       bitwarden
-Version:    2024.11.2
+Version:    2024.12.0
 Release:    0
 Summary:    A secure and free password manager for all of your devices
 Group:      Productivity/Security
-License:    GPL-3.0-only and MIT and (Apache-2.0 or MIT)
+License:    GPL-3.0-only and MIT and (Apache-2.0 or MIT) and OFL-1.1
+#TODO: This font should be submitted to openSUSE and Fedora and debundled from here
+Provides:   bundled(google-dm-fonts)
 URL:        https://github.com/bitwarden/clients
 
 #x86 electron requires SSE2
@@ -116,7 +118,6 @@ BuildRequires:  dbus-1-daemon
 %endif
 %endif
 
-Requires: (google-opensans-fonts or open-sans-fonts)
 Requires: nodejs-electron%{_isa}
 
 %global __requires_exclude ^npm(.*)|^nodejs(.*)
@@ -137,9 +138,6 @@ sed -i 's[XXXLIBDIRXXX[%{_libdir}[g' apps/desktop/src/main/native-messaging.main
 # Remove unused postinstall script (electron-rebuild)
 sed -i '/"postinstall":/d' apps/desktop/package.json
 
-#Remove bundled open sans
-cp -v /dev/null libs/angular/src/scss/webfonts.css
-rm -rvf libs/angular/src/scss/webfonts
 
 
 
@@ -155,7 +153,7 @@ cd apps/desktop/desktop_native
 rm -rf vendor/wayland-protocols/protocols
 ln -svT /usr/share/wayland-protocols vendor/wayland-protocols/protocols
 # https://blogs.gnome.org/mcatanzaro/2020/05/18/patching-vendored-rust-dependencies/
-for i in wayland-protocols libloading system-deps; do
+for i in wayland-protocols libloading system-deps pkcs5 aes-gcm; do
 pushd vendor/$i
 jq -cj '.files={}' .cargo-checksum.json >tmp && mv tmp .cargo-checksum.json && popd
 done

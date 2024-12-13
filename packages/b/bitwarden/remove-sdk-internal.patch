@@ -91,12 +91,12 @@ This patch will be removed once some _actual_ JS functionality gets migrated to 
      return Promise.reject(new Error("SDK not available"));
    }
  }
---- clients-desktop-v2024.11.0/libs/common/src/platform/services/sdk/default-sdk.service.ts.orig	2024-11-14 21:24:34.418710861 +0100
-+++ clients-desktop-v2024.11.0/libs/common/src/platform/services/sdk/default-sdk.service.ts	2024-11-14 21:43:13.174498626 +0100
-@@ -11,12 +11,6 @@ import {
+--- clients/libs/common/src/platform/services/sdk/default-sdk.service.ts.orig	2024-12-12 18:52:12.448979879 +0100
++++ clients/libs/common/src/platform/services/sdk/default-sdk.service.ts	2024-12-12 19:08:41.399904218 +0100
+@@ -12,12 +12,6 @@ import {
  } from "rxjs";
  
- import { KeyService } from "@bitwarden/key-management";
+ import { KeyService, KdfConfigService, KdfConfig, KdfType } from "@bitwarden/key-management";
 -import {
 -  BitwardenClient,
 -  ClientSettings,
@@ -106,8 +106,21 @@ This patch will be removed once some _actual_ JS functionality gets migrated to 
  
  import { ApiService } from "../../../abstractions/api.service";
  import { EncryptedOrganizationKeyData } from "../../../admin-console/models/data/encrypted-organization-key.data";
-@@ -35,12 +29,12 @@ import { compareValues } from "../../mis
+@@ -33,10 +27,10 @@ import { compareValues } from "../../mis
  import { EncryptedString } from "../../models/domain/enc-string";
+ 
+ export class RecoverableSDKError extends Error {
+-  sdk: BitwardenClient;
++  sdk: any;
+   timeout: number;
+ 
+-  constructor(sdk: BitwardenClient, timeout: number) {
++  constructor(sdk: any, timeout: number) {
+     super(`SDK took ${timeout}s to initialize`);
+ 
+     this.sdk = sdk;
+@@ -45,13 +39,13 @@ export class RecoverableSDKError extends
+ }
  
  export class DefaultSdkService implements SdkService {
 -  private sdkClientCache = new Map<UserId, Observable<BitwardenClient>>();
@@ -116,12 +129,13 @@ This patch will be removed once some _actual_ JS functionality gets migrated to 
    client$ = this.environmentService.environment$.pipe(
      concatMap(async (env) => {
        const settings = this.toSettings(env);
--      return await this.sdkClientFactory.createSdkClient(settings, LogLevel.Info);
-+      return await this.sdkClientFactory.createSdkClient(settings, 'unused');
-     }),
-     shareReplay({ refCount: true, bufferSize: 1 }),
-   );
-@@ -62,7 +56,7 @@ export class DefaultSdkService implement
+       try {
+-        return await this.sdkClientFactory.createSdkClient(settings, LogLevel.Info);
++        return await this.sdkClientFactory.createSdkClient(settings, 'unused');
+       } catch (e) {
+         if (e instanceof RecoverableSDKError) {
+           await this.failedToInitialize("sdk", e);
+@@ -85,7 +79,7 @@ export class DefaultSdkService implement
      private userAgent: string = null,
    ) {}
  
@@ -130,7 +144,7 @@ This patch will be removed once some _actual_ JS functionality gets migrated to 
      // TODO: Figure out what happens when the user logs out
      if (this.sdkClientCache.has(userId)) {
        return this.sdkClientCache.get(userId);
-@@ -92,8 +86,8 @@ export class DefaultSdkService implement
+@@ -115,8 +109,8 @@ export class DefaultSdkService implement
        // switchMap is required to allow the clean-up logic to be executed when `combineLatest` emits a new value.
        switchMap(([env, account, kdfParams, privateKey, userKey, orgKeys]) => {
          // Create our own observable to be able to implement clean-up logic
@@ -141,7 +155,7 @@ This patch will be removed once some _actual_ JS functionality gets migrated to 
  
            const createAndInitializeClient = async () => {
              if (privateKey == null || userKey == null) {
-@@ -101,7 +95,7 @@ export class DefaultSdkService implement
+@@ -124,7 +118,7 @@ export class DefaultSdkService implement
              }
  
              const settings = this.toSettings(env);
@@ -150,7 +164,7 @@ This patch will be removed once some _actual_ JS functionality gets migrated to 
  
              await this.initializeClient(client, account, kdfParams, privateKey, userKey, orgKeys);
  
-@@ -156,7 +150,7 @@ export class DefaultSdkService implement
+@@ -179,7 +173,7 @@ export class DefaultSdkService implement
    }
  
    private async initializeClient(
@@ -159,7 +173,7 @@ This patch will be removed once some _actual_ JS functionality gets migrated to 
      account: AccountInfo,
      kdfParams: KdfConfig,
      privateKey: EncryptedString,
-@@ -192,7 +186,7 @@ export class DefaultSdkService implement
+@@ -215,7 +209,7 @@ export class DefaultSdkService implement
      });
    }
  
@@ -168,7 +182,7 @@ This patch will be removed once some _actual_ JS functionality gets migrated to 
      return {
        apiUrl: env.getApiUrl(),
        identityUrl: env.getIdentityUrl(),
-@@ -201,7 +195,7 @@ export class DefaultSdkService implement
+@@ -224,7 +218,7 @@ export class DefaultSdkService implement
      };
    }
  
