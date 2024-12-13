@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Thu Dec 12 19:10:52 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.2.0
+  * PHP 8.4
+    - #22471 Ensure Matomo is functional with PHP 8.4.
+    - #22693 Explicitly mark parameters as nullable where necessary,
+      eliminating deprecation warnings and ensuring compatibility with PHP 8.4.
+    - #22690 Replace the usage of Zend_Session_SaveHandler_Interface with the PHP built
+      in interface SessionHandlerInterface, which can be directly passed to session_set_save_handler.
+    - #22667 Fixes for PHP 8.4.
+    - #22803 Correct EOL dates of PHP versions.
+  * Security
+    - #22750 Enhanced security to manage secure access to the Matomo Installer. Learn more.
+    - #9152 Matomo will notify users by email when a login is detected from a different country
+      than the user’s usual login area.
+    - #14543 Matomo now includes a This Wasn’t Me link in password reset emails,
+      allowing users to cancel accidental or unauthorised password change requests
+      by deleting the reset link from the database.
+    - #22644 Improve handling for changing email of invited users where changing the email address
+      of an invited user did not invalidate the original invitation link.
+    - #20716 Restricted the ability to write annotations to users with ‘Write’ permission and adjusted the API accordingly.
+    - #7029 Migrate from md5 to sha256 in config/manifest.inc.php to enhance security.
+  * Marketplace plugins
+    - #22694 The marketplace cards now display the owner’s name for each plugin.
+    - #21003 Add console plugin:install command to automate the process of fetching and installing
+      the latest compatible version, replacing the manual wget-unzip method.
+    - #22559 Addressed performance slowdowns in the CustomVariables, Cohorts, and MarketingCampaignsReporting
+      plugins by adding the ability to enforce index usage during log aggregation.
+  # User Interface
+  * Admin settings
+    - #18667 When setting up 2FA in Personal > Security, the QR code remains securely hidden and only displayed on the user’s request.
+    - #22729 Introduce new configurable exclusion types for Global list of Query URL parameters to exclude.
+      Users can choose which parameters to exclude from tracking and reporting.
+  * All websites
+    - #18978 Add Total Hits for all websites and Total Hits per site.
+  * General
+    - #17784 Enhance the style for the AdBlock warning when starting the installation process.
+    - #19779 Improve title of Ecommerce Overview widget in the dashboard.
+    - #22668 Refine the workflow for number verification in mobile messaging and increase security on the code’s validity.
+  * Matomo Tag Manager
+    - #22484 Enhance the website deletion process to help users manage and export associated Tag Manager containers.
+    - #813 Improve the instructions displayed when installing Matomo Tag Manager.
+    - #910 Consent Management Platform tags for Axeptio, CookieYes, and OneTrust.
+    - #911 Add introductory explainer text to the container dashboard screen.
+    - #917 Implement a new copy feature for containers.
+    - #924 Implement a new copy feature for tags.
+    - #936 Implement a new copy for triggers and variables.
+    - #928 Disable the spell check in the Custom HTML tag > Custom HTML field.
+    - #938 Add new in-app links to FAQs on how to copy containers, tags, triggers, and variables.
+  * Reports
+    - #22646 Resolve correct handling of formulas in CSV export where website names starting with = and
+      containing null bytes were not properly escaped in CSV exports.
+    - #22344 Add the evolution graph and the segmented visit log to the Referrer report in Acquisition > All Channels.
+    - #22552 Update the Annotation API to disable automatic sanitisation, manually sanitise notes before storage,
+      limit annotation notes to 255 characters and add type hinting to ensure parameter correctness.
+    - #22462 Allow the sorting of email reports by description in API & UI.
+    - #22364 Added attribution information for eCommerce conversions to API responses and updated the visits log
+      to display attribution details for all conversion types in the action tooltip.
+    - #22279 Allow alphabetical sorting of goals in Manage Goals and all Goal-related reports.
+    - #22473 Standardised the order of goals in reports by sorting them by ID,
+      ensuring consistent display across databases and resolving test failures on TiDB.
+  * Database and configuration
+    - #22634 The database collation is now written to the configuration to ensure consistency between
+      the database connection and table collations, and to avoid issues when running the core:convert-to-utf8mb4 command.
+    - #22355 Refactored table optimisation logic to the Schema classes to account for differences in database engines (MySQL, MariaDB, TiDB).
+      For TiDB, where table optimisation is not supported, the feature is now deactivated.
+    - #22271 Aligned table and database creation to ensure consistent collation across engines,
+      addressing differences in sorting behavior between TiDB’s default utf8mb4_general_bin and MySQL’s utf8mb4_general_ci.
+    - #22485 Ensure utf8 is always used for load data infile on TiDB to resolve compatibility issues with the latin1 charset.
+  * Feature Management and Release Process
+    - #22221 Introduce a feature flag system to control the release of new features, ensuring stability by allowing code deployment without immediate visibility to users.
+    - #22367 Introduce a workflow to automate preview releases, including version determination, testing, and publishing on success.
+  * Developer tools and code standards
+    - #22711 Update to use the automation user for committing built Vue files, ensuring that subsequent actions, such as tests, are triggered correctly after these commits.
+    - #22421 Aligned the project with the Matomo coding standards repository to ensure consistent code quality and formatting across the codebase.
+    - #22488 Test fixes for TiDb; improve test stability across DB engines.
+    - #22648 Improve console message handling by allowing single strings to be passed directly.
+    - #22610 Update DOMPurify to 2.5.6.
+    - #22679 Enable automatic NPM updates using Dependabot, limited to minor and patch versions.
+  * Archiving improvements
+    Matomo introduces key enhancements to the archiving process to improve performance, reliability,
+    and flexibility for both on-premise and cloud users:
+    - #22546 Optimised segment archiving: The –skip-segments-today flag in the core:archive command now prevents invalidations
+     for segments not only for the current day but also for higher periods (week, month, year).
+     This ensures faster and more efficient archiving by skipping unnecessary updates.
+    - #22400 Smarter archiving for recent data: The system now avoids reprocessing yesterday’s data if an archive
+      built after midnight already exists or if another archiving process started after midnight is still running.
+      This reduces redundant work and speeds up archiving operations, particularly for users managing high-traffic environments.
+    - #22435 Configurable recovery for failed archiving: A new recovery timeout setting, archiving failure recovery timeout (in seconds),
+      allows users to configure retries for interrupted archiving processes.
+      This ensures that archiving can resume automatically after disruptions, enhancing reliability and minimising manual intervention.
+  * Tracking
+    - #22728 Add 3D printing files to download extensions (STL, OBJ, 3MF and PLY.
+    - #22549 Enable support for Chrome’s formFactors client hint in Matomo’s JavaScript Tracker.
+    - #22334 Updated the ResponseBuilder to return a 404 status code when a non-existing method is requested.
+
+-------------------------------------------------------------------
 Sun Sep 29 20:47:06 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add /srv/www directories to filelist [bsc#1231027]

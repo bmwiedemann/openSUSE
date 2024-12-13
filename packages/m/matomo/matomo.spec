@@ -21,7 +21,7 @@
 %{!?_tmpfilesdir:%global _tmpfilesdir %{_prefix}/lib/tmpfiles.d}
 
 Name:           matomo
-Version:        5.1.2
+Version:        5.2.0
 Release:        0
 Summary:        Web analytics platform
 License:        GPL-3.0-or-later
@@ -126,7 +126,7 @@ done
 for file in console 'vendor/tecnickcom/tcpdf/tools/tcpdf_addfont.php' 'config/global.ini.php' 'core/CliMulti/Output.php' 'plugins/CoreUpdater/Commands/Update.php' 'vendor/matomo/matomo-php-tracker/run_tests.sh' 'vendor/wikimedia/less.php/bin/lessc' 'misc/log-analytics/import_logs.py' 'core/CliMulti.php' 'vendor/symfony/error-handler/Resources/bin/extract-tentative-return-types.php' 'vendor/symfony/error-handler/Resources/bin/patch-type-declarations' 'vendor/symfony/var-dumper/Resources/bin/var-dump-server'
 do
   size=$(ls -l $file | awk '{ print $5 }')
-  checksum=$(md5sum $file  | awk '{ print $1 }')
+  checksum=$(sha256sum $file  | awk '{ print $1 }')
   file2=$(echo "$file" | sed 's/\//\\\//g')
   sed -i "/\W\"$file2\"\W/c \"$file\" => array(\"$size\", \"$checksum\")," config/manifest.inc.php
 done
