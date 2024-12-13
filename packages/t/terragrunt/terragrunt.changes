@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Dec 13 06:12:34 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.69.12:
+  * fix #3169 allow `endpoints.s3` in `remote_state` block. (#3643)
+
+-------------------------------------------------------------------
+Fri Dec 13 06:06:48 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.69.11:
+  * build(deps): bump golang.org/x/crypto from 0.28.0 to 0.31.0
+    (#3650)
+  * Add missed close parenthesis (#3651)
+  * chore: Adding signature verification docs (#3647)
+
+-------------------------------------------------------------------
 Wed Dec 11 14:30:40 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.69.10:
