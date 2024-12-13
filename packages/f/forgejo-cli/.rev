@@ -15,4 +15,46 @@
     <comment></comment>
     <requestid>1193063</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8ba460939f40b31059c0ecd997fe6cd6</srcmd5>
+    <version>0.2.0</version>
+    <time>1734125894</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.2.0:
+  * Additions
+    - pr create and issue create now have a --web flag that opens
+      the creation page in your browser instead of creating it on
+      the terminal.
+    - pr --agit will create a pull request with agit flow, so you
+      don't need to fork the repository.
+    - pr status --wait will only exits once all PR checks finish.
+    - repo migrate to migrate/mirror repositories from other hosts.
+    - repo readme to print a repository's readme to the terminal.
+    - version --verbose prints extra info useful for debugging
+  * Fixes
+    - Public endpoints can now be accessed without authenticating
+    - The API will be accessed via the http url even when it
+      differs from the ssh url and the local remote points to the
+      ssh url.
+    - browse commands will no long hang the terminal
+    - Local repos will now be found even when in a subdirectory
+    - SSH urls in repo remotes will now be parsed correctly
+    - Improved pull request detection
+- update to 0.1.1:
+  * Suggest correct command when OAuth login isn't supported on an
+    instance
+- update to 0.1.0:
+  * feat: add branch guessing on pr creation
+  * fix: print message before reading in readline 
+  * fix: prioritize remote tracking branch in repo detection 
+  * fix: read detected pr from correct repo 
+  * fix: pr detection from branch 
+  * add status command
+  * add user search
+  * add list user orgs
+  * add list user repos
+- initial packaging
+</comment>
+    <requestid>1230725</requestid>
+  </revision>
 </revisionlist>

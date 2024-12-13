@@ -17,13 +17,14 @@
 
 
 Name:           forgejo-cli
-Version:        0.1.1
+Version:        0.2.0
 Release:        0
 Summary:        CLI application for interacting with Forgejo
 License:        Apache-2.0 OR MIT
 URL:            https://codeberg.org/Cyborus/forgejo-cli
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.zst
+BuildRequires:  cargo >= 1.82.0
 BuildRequires:  cargo-packaging
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(openssl)
@@ -38,7 +39,7 @@ BuildRequires:  pkgconfig(openssl)
 %{cargo_build}
 
 %install
-%{cargo_install}
+install -Dm0755 ./target/release/fj %{buildroot}%{_bindir}/fj
 
 %files
 %license LICENSE-APACHE LICENSE-MIT
