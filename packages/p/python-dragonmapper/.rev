@@ -45,4 +45,15 @@
 - drop 31-fix-erroneous-IPA-you-yong.patch (upstream)</comment>
     <requestid>1223208</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dd30ab282d45862a79a3e1f4826f38c6</srcmd5>
+    <version>0.3.0</version>
+    <time>1734125956</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.3.0:
+  - Removes Python 3.8 support.
+  - Fixes transcriptions for &quot;you&quot; and &quot;yong&quot;.
+</comment>
+    <requestid>1230759</requestid>
+  </revision>
 </revisionlist>

@@ -18,25 +18,26 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-dragonmapper
-Version:        0.2.7
+Version:        0.3.0
 Release:        0
 Summary:        Identification and conversion functions for Chinese text processing
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/tsroten/dragonmapper
 Source:         https://github.com/tsroten/dragonmapper/archive/v%{version}.tar.gz#/dragonmapper-%{version}.tar.gz
+BuildRequires:  %{python_module base > 3.8}
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-hanzidentifier >= 1.0.2
-Requires:       python-zhon >= 1.1.3
+Requires:       python-hanzidentifier >= 1.2.0
+Requires:       python-zhon >= 2.0.0
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module hanzidentifier >= 1.0.2}
-BuildRequires:  %{python_module zhon >= 1.1.3}
+BuildRequires:  %{python_module hanzidentifier >= 1.2.0}
+BuildRequires:  %{python_module zhon >= 2.0.0}
 # /SECTION
 %python_subpackages
 
@@ -55,8 +56,7 @@ Identification and conversion functions for Chinese text processing.
 
 %check
 export LANG=en_US.UTF-8
-# skips because of gh#tsroten/dragonmapper#35
-%pytest -k 'not (test_identify or test_is_ipa or test_is_pinyin or test_is_pinyin_compatible or test_accented_to_numbered or test_numbered_to_accented)'
+%pytest
 
 %files %{python_files}
 %doc AUTHORS.rst CHANGES.rst README.rst
