@@ -2312,6 +2312,8 @@ unsorted:
   - cln-devel 
   - clojure 
   - clone-master-clean-up 
+  - cloud-hypervisor 
+  - cloud-hypervisor-remote 
   - cloud-init-config-suse 
   - cloud-init-doc 
   - cloud-netconfig-azure 
@@ -4376,7 +4378,11 @@ unsorted:
   - fira-code-fonts 
   - firecracker 
   - firectl 
+  - firefox-esr 
   - firefox-esr-branding-openSUSE 
+  - firefox-esr-branding-upstream 
+  - firefox-esr-translations-common 
+  - firefox-esr-translations-other 
   - firefox-uget-integrator 
   - firehol 
   - firehol-doc 
@@ -8664,7 +8670,6 @@ unsorted:
   - himeno 
   - himmelblau 
   - himmelblau-sshd-config 
-  - himmelblau-sso 
   - hiredis 
   - hiredis-devel 
   - hitori 
@@ -33693,7 +33698,6 @@ unsorted:
   - python312-nkdfu 
   - python312-nlopt 
   - python312-nltk 
-  - python312-nntplib 
   - python312-nocasedict 
   - python312-nocaselist 
   - python312-node-semver 
@@ -35634,7 +35638,9 @@ unsorted:
   - python313-aubio 
   - python313-audible 
   - python313-audio-degrader 
+  - python313-audiogrep 
   - python313-audiomate 
+  - python313-audioop-lts 
   - python313-audioread 
   - python313-augeas 
   - python313-authheaders 
@@ -36354,6 +36360,7 @@ unsorted:
   - python313-django-auth-ldap 
   - python313-django-avatar 
   - python313-django-axes 
+  - python313-django-bootstrap3 
   - python313-django-bootstrap4 
   - python313-django-braces 
   - python313-django-cacheops 
@@ -37123,6 +37130,7 @@ unsorted:
   - python313-libphdi 
   - python313-libqcow 
   - python313-libregf 
+  - python313-librosa 
   - python313-librouteros 
   - python313-libsass 
   - python313-libscca 
@@ -37358,7 +37366,6 @@ unsorted:
   - python313-nkdfu 
   - python313-nlopt 
   - python313-nltk 
-  - python313-nntplib 
   - python313-nocasedict 
   - python313-nocaselist 
   - python313-node-semver 
@@ -37771,6 +37778,7 @@ unsorted:
   - python313-pydot 
   - python313-pydotplus 
   - python313-pydrive2 
+  - python313-pydub 
   - python313-pydyf 
   - python313-pyeapi 
   - python313-pyee 
@@ -38010,6 +38018,7 @@ unsorted:
   - python313-pytest-skip-markers 
   - python313-pytest-socket 
   - python313-pytest-spec 
+  - python313-pytest-sphinx 
   - python313-pytest-subprocess 
   - python313-pytest-subtests 
   - python313-pytest-sugar 
@@ -38494,6 +38503,9 @@ unsorted:
   - python313-sshpubkeys 
   - python313-sshtunnel 
   - python313-stack-data 
+  - python313-standard-aifc 
+  - python313-standard-chunk 
+  - python313-standard-sunau 
   - python313-starlette 
   - python313-statsd 
   - python313-statsmodels 
@@ -38689,6 +38701,7 @@ unsorted:
   - python313-unicodecsv 
   - python313-unicodedata2 
   - python313-unidiff 
+  - python313-unify 
   - python313-uniseg 
   - python313-unittest-mixins 
   - python313-unittest-xml-reporting 
@@ -51167,10 +51180,12 @@ unsorted:
   - tree-sitter-bash-devel 
   - tree-sitter-bicep 
   - tree-sitter-bicep-devel 
+  - tree-sitter-bitbake 
   - tree-sitter-c 
   - tree-sitter-c-devel 
   - tree-sitter-c-sharp 
   - tree-sitter-c-sharp-devel 
+  - tree-sitter-cairo 
   - tree-sitter-capnp 
   - tree-sitter-capnp-devel 
   - tree-sitter-chatito 
@@ -51185,6 +51200,7 @@ unsorted:
   - tree-sitter-cpp-devel 
   - tree-sitter-css 
   - tree-sitter-css-devel 
+  - tree-sitter-csv 
   - tree-sitter-cuda 
   - tree-sitter-cuda-devel 
   - tree-sitter-devel 
@@ -51192,6 +51208,7 @@ unsorted:
   - tree-sitter-doxygen-devel 
   - tree-sitter-firrtl 
   - tree-sitter-firrtl-devel 
+  - tree-sitter-func 
   - tree-sitter-gitattributes 
   - tree-sitter-gitattributes-devel 
   - tree-sitter-glsl 
@@ -51209,6 +51226,7 @@ unsorted:
   - tree-sitter-hare 
   - tree-sitter-hare-devel 
   - tree-sitter-haskell 
+  - tree-sitter-hcl 
   - tree-sitter-hlsl 
   - tree-sitter-hlsl-devel 
   - tree-sitter-html 
@@ -51240,7 +51258,7 @@ unsorted:
   - tree-sitter-luau 
   - tree-sitter-luau-devel 
   - tree-sitter-markdown 
-  - tree-sitter-markdown-devel 
+  - tree-sitter-meson 
   - tree-sitter-odin 
   - tree-sitter-odin-devel 
   - tree-sitter-pem 
@@ -52902,7 +52920,6 @@ unsorted:
   - xpr 
   - xpra 
   - xpra-html5 
-  - xprehashprinterlist 
   - xprintidle 
   - xprompt 
   - xquarto 
