@@ -18,12 +18,13 @@
 
 %define         appid io.elementary.settings.system
 Name:           switchboard-plug-about
-Version:        8.0.0
+Version:        8.1.0
 Release:        0
 Summary:        Switchboard plug to show system information
 License:        GPL-3.0-or-later
 URL:            https://github.com/elementary/switchboard-plug-about
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         revert-progress-bar.patch
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.40.0
 BuildRequires:  pkgconfig
@@ -35,8 +36,10 @@ BuildRequires:  pkgconfig(granite-7)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(gudev-1.0)
+BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libgtop-2.0)
+BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(packagekit-glib2)
 BuildRequires:  pkgconfig(polkit-gobject-1)
 BuildRequires:  pkgconfig(switchboard-3)
@@ -52,7 +55,7 @@ This plug displays information about the system.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %meson

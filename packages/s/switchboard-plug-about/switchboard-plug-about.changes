@@ -1,3 +1,16 @@
+-------------------------------------------------------------------
+Fri Dec 13 05:42:07 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.1.0:
+  * Add hexpand
+  * Meson: add log domain
+  * build: Fix build with fwupd 2.0.0
+  * Fix Scroll Padding
+  * Plug: use Adw.ToolbarView
+  * Show sponsor goal progress bar
+  * Updated translations
+- add patch revert-progress-bar.patch
+
 ------------------------------------------------------------------
 Wed Nov 12 03:00:00 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
