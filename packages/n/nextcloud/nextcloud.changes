@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Dec 12 19:02:15 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 30.0.4
+  - Fix(app-store): Add back legacy store API used for update and removal (server#49216)
+  - Fix(activity): make emails for link share uploads true by default (server#49691)
+  - Chore(deps-dev): bump @babel/node from 7.25.0 to 7.25.9 (server#49712)
+  - Chore(deps-dev): bump @nextcloud/cypress from 1.0.0-beta.8 to 1.0.0-beta.12 (server#49713)
+  - Chore(deps): bump @nextcloud/sharing from 0.2.3 to 0.2.4 (server#49714)
+  - Chore(deps): bump pinia from 2.2.6 to 2.2.8 (server#49715)
+  - Chore(deps-dev): bump cypress-split from 1.24.0 to 1.24.7 (server#49716)
+  - Fix(files_sharing): Stop infinite loop blocking link share requests (server#49724)
+  - Fix(files_sharing): Correct property enforced property names (server#49809)
+  - Fix(files_sharing): also submit new share on password submit (server#49817)
+  - Update nextcloud/ocp dependency (logreader#1424)
+  - Fix npm audit (logreader#1434)
+  - Update nextcloud/ocp dependency (nextcloud_announcements#408)
+  - Update nextcloud/ocp dependency (notifications#2112)
+  - Update nextcloud/ocp dependency (serverinfo#717)
+  - Update dependency @rollup/rollup-linux-x64-gnu to ^4.28.1 (text#6716)
+  - Chore(deps): update dependency cypress-split to ^1.24.7 (text#6717)
+  - Fix(deps): update dependency @nextcloud/vue to ^8.21.0 (text#6748)
+  - Fix(deps): update dependency lib0 to ^0.2.99 (text#6749)
+  - Fix(deps): update dependency y-prosemirror to ^1.2.15 (text#6751)
+
+-------------------------------------------------------------------
 Thu Dec  5 19:12:18 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 30.0.3
