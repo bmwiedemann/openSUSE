@@ -16,25 +16,25 @@
 #
 
 
-%global appid com.usebottles.bottles
+%global         appid com.usebottles.bottles
 Name:           Bottles
-Version:        51.15
+Version:        51.16
 Release:        0
 Summary:        Easily manage wineprefix using environments
-License:        GPL-3.0-or-later
-Group:          System/Emulators/Other
+License:        GPL-3.0-only
 URL:            https://usebottles.com/
 Source0:        https://github.com/bottlesdevs/Bottles/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         disable-core-preferences.patch
-BuildRequires:  blueprint-compiler
+Patch1:         dont-care-about-sandbox.patch
+Patch2:         dont-support.patch
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gtk4-tools
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  meson
+BuildRequires:  meson >= 1.5.0
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
-BuildRequires:  python-rpm-macros
-BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(blueprint-compiler)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libadwaita-1)
@@ -96,7 +96,6 @@ Runners are compatibility layers capable of running Windows applications on Linu
 
 %install
 %meson_install
-%suse_update_desktop_file %{appid}
 %find_lang bottles
 
 %fdupes %{buildroot}
@@ -108,9 +107,8 @@ Runners are compatibility layers capable of running Windows applications on Linu
 %{_bindir}/bottles-cli
 %{_datadir}/bottles
 %{_datadir}/metainfo/%{appid}.metainfo.xml
-%{_datadir}/icons/hicolor/*/apps/%{appid}*.svg
-%{_datadir}/icons/hicolor/*/apps/bottle-symbolic.svg
-%{_datadir}/icons/hicolor/symbolic/apps/bottles-steam-symbolic.svg
+%{_datadir}/icons/hicolor/*/apps/%{appid}.svg
+%{_datadir}/icons/hicolor/symbolic/apps/%{appid}-symbolic.svg
 %{_datadir}/applications/%{appid}.desktop
 %{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
 

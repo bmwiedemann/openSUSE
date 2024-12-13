@@ -64,4 +64,12 @@
     <comment></comment>
     <requestid>1208179</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>38d93418102b9f18bf3076a62e5d663d</srcmd5>
+    <version>51.16</version>
+    <time>1734125903</time>
+    <user>anag+factory</user>
+    <comment>- change license to GPL-3.0-only (forwarded request 1230732 from rrahl0)</comment>
+    <requestid>1230733</requestid>
+  </revision>
 </revisionlist>

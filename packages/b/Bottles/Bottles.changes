@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Dec 13 05:35:30 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 51.16:
+  * Bug Fix: added $@ parameter in the Gamescope wrapper script
+  * Add Gamescope toggle as an override for individual programs
+  * Blueprint improvements
+  * main: Exit on non-sandboxed environments
+  * MangoHud Settings menu + Display On Game Start toggle
+  * Improve buildsystem
+  * fix: Clicking on a snapshot instantly starts the restore process
+  * Alphabetize Option for Programs List
+  * bottles-cli run crashes if you don't specify either --executable or --program
+  * Launch options not honored when application is launched from Desktop Entry
+- add patches dont-support.patch and dont-care-about-sandbox.patch
+- change license to GPL-3.0-only
+
+-------------------------------------------------------------------
 Tue Oct 15 10:04:49 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 51.15:
