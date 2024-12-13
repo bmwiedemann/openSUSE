@@ -3427,11 +3427,14 @@ Macros:
 %rb_build_versions      ruby33
 :Macros
 
+
+%if "%{_project}" != "openSUSE:Factory:Staging:L"
 Macros:
 %_with_ruby33               1
 :Macros
 
 %define _with_ruby33         1
+%endif
 
 %define rb_default_ruby        ruby33
 %define rb_default_ruby_suffix ruby3.3
