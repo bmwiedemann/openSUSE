@@ -17,7 +17,7 @@
 
 
 Name:           tesseract-ocr-traineddata
-Version:        4.1.0+git.20231024.dd24b9d
+Version:        4.1.0+git.20240801.8741641
 Release:        0
 Summary:        Tesseract Traineddata for Various Languages
 License:        Apache-2.0
@@ -147,6 +147,7 @@ trained models for the Tesseract Open Source OCR Engine.\
 %lang_subpkg -m fil -n %{quote:Filipino; Pilipino} -o filipino
 %lang_subpkg -m fin -n Finnish -o finnish
 %lang_subpkg -m fra -n French -o french
+%lang_subpkg -m deu_latf -n Frankish -o frankish
 %lang_subpkg -m frk -n Frankish -o frankish
 %lang_subpkg -m frm -n %{quote:Middle French (ca. 1400-1600)} -o french_middle
 %lang_subpkg -m fry -n %{quote:Western Frisian} -o frisian

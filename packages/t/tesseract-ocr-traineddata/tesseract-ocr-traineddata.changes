@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec 11 11:33:31 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.1.0+git.20240801.8741641:
+  * Mention Tesseract 5 too
+  * Add deprecation hint for frk to the documentation
+  * Create symbolic link for frk.traineddata
+  * Rename frk -> deu_latf (ISO 639-3, ISO 15924)
+
+-------------------------------------------------------------------
 Wed Feb 14 17:29:00 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 4.1.0+git.20231024.dd24b9d:
