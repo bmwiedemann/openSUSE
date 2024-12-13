@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.settings.applications
 Name:           switchboard-plug-applications
-Version:        8.0.0
+Version:        8.1.0
 Release:        0
 Summary:        Application configuration management
 License:        GPL-3.0-or-later
