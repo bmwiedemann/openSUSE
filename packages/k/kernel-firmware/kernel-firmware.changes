@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Wed Dec 11 14:39:32 UTC 2024 - tiwai@suse.com
+
+- Update to version 20241211 (git commit 163296523cd4):
+  * rtl_nic: add firmware rtl8125d-2
+  * linux-firmware: Update firmware file for Intel BlazarU core
+  * QCA: Add Bluetooth nvm files for WCN785x
+  * QCA: Update Bluetooth WCN785x firmware to 2.0.0-00515-2
+
+-------------------------------------------------------------------
+Sun Dec 08 08:49:35 UTC 2024 - tiwai@suse.com
+
+- Update to version 20241206 (git commit 209c18b0e7cd):
+  * amdgpu: update dmcub 0.0.246.0 firmware
+  * Add top level license file.
+
+-------------------------------------------------------------------
+Thu Dec 05 08:17:24 UTC 2024 - tiwai@suse.com
+
+- Update to version 20241203 (git commit f5aeeb47697c):
+  * amdgpu: update raven firmware
+  * amdgpu: update gc 11.0.3 firmware
+  * amdgpu: update psp 13.0.14 firmware
+  * amdgpu: update vcn 3.1.2 firmware
+  * amdgpu: update vpe 6.1.3 firmware
+  * amdgpu: update psp 14.0.4 firmware
+  * amdgpu: update gc 11.5.2 firmware
+  * amdgpu: update vcn 4.0.0 firmware
+  * amdgpu: update gc 11.0.0 firmware
+  * amdgpu: update picasso firmware
+  * amdgpu: update beige goby firmware
+  * amdgpu: update vangogh firmware
+  * amdgpu: update dimgrey cavefish firmware
+  * amdgpu: update navy flounder firmware
+  * amdgpu: update gc 11.0.4 firmware
+  * amdgpu: update green sardine firmware
+  * amdgpu: update vcn 4.0.2 firmware
+  * amdgpu: update gc 11.0.1 firmware
+  * amdgpu: update sienna cichlid firmware
+  * amdgpu: update vcn 4.0.6 firmware
+  * amdgpu: update gc 11.5.1 firmware
+  * amdgpu: update vcn 4.0.5 firmware
+  * amdgpu: update psp 14.0.0 firmware
+  * amdgpu: add vcn 5.0.0 firmware
+  * amdgpu: add smu 14.0.3 firmware
+  * amdgpu: add sdma 7.0.1 firmware
+  * amdgpu: add psp 14.0.3 firmware
+  * amdgpu: add gc 12.0.1 firmware
+  * amdgpu: update navi14 firmware
+  * amdgpu: update renoir firmware
+  * amdgpu: add smu 14.0.2 firmware
+  * amdgpu: add sdma 7.0.0 firmware
+  * amdgpu: add psp 14.0.2 firmware
+  * amdgpu: add gc 12.0.0 firmware
+  * amdgpu: update navi12 firmware
+  * amdgpu: update psp 13.0.6 firmware
+  * amdgpu: update yellow carp firmware
+  * amdgpu: update vcn 4.0.4 firmware
+  * amdgpu: update gc 11.0.2 firmware
+  * amdgpu: update navi10 firmware
+  * amdgpu: update aldebaran firmware
+  * upstream amdnpu firmware
+- Add amdnpu entries
+- Add missing license entry for amd_pmf
+
+-------------------------------------------------------------------
 Mon Dec 02 09:38:12 UTC 2024 - tiwai@suse.com
 
 - Update to version 20241128 (git commit ea71da6f0690):

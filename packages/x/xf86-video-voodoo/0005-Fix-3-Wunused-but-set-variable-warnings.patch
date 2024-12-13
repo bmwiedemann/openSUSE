@@ -1,0 +1,59 @@
+From ead68c88de422c82004715403776ec0d21c6d6aa Mon Sep 17 00:00:00 2001
+From: Alan Coopersmith <alan.coopersmith@oracle.com>
+Date: Tue, 16 Jan 2024 16:27:27 -0800
+Subject: [PATCH 05/15] Fix 3 -Wunused-but-set-variable warnings
+
+Signed-off-by: Alan Coopersmith <alan.coopersmith@oracle.com>
+---
+ src/voodoo_dga.c    | 5 -----
+ src/voodoo_driver.c | 4 ----
+ 2 files changed, 9 deletions(-)
+
+diff --git a/src/voodoo_dga.c b/src/voodoo_dga.c
+index c30c5c2..76da169 100644
+--- a/src/voodoo_dga.c
++++ b/src/voodoo_dga.c
+@@ -91,18 +91,13 @@ static Bool VoodooDGASetMode(ScrnInfoPtr pScrn, DGAModePtr pDGAMode)
+ {
+     DisplayModePtr pMode;
+     int scrnIdx = pScrn->pScreen->myNum;
+-    int frameX0, frameY0;
+ 
+     if (pDGAMode) {
+ 	pMode = pDGAMode->mode;
+-	frameX0 = frameY0 = 0;
+     }
+     else {
+ 	if (!(pMode = pScrn->currentMode))
+ 	    return TRUE;
+-
+-	frameX0 = pScrn->frameX0;
+-	frameY0 = pScrn->frameY0;
+     }
+ 
+     if (!(*pScrn->SwitchMode)(SWITCH_MODE_ARGS(pScrn, pMode)))
+diff --git a/src/voodoo_driver.c b/src/voodoo_driver.c
+index 11bf2cf..456152f 100644
+--- a/src/voodoo_driver.c
++++ b/src/voodoo_driver.c
+@@ -834,7 +834,6 @@ static Bool
+ VoodooModeInit(ScrnInfoPtr pScrn, DisplayModePtr mode)
+ {
+   VoodooPtr pVoo;
+-  int width, height;
+ 
+   pVoo = VoodooPTR(pScrn);
+ 
+@@ -860,9 +859,6 @@ VoodooModeInit(ScrnInfoPtr pScrn, DisplayModePtr mode)
+     return FALSE;
+   }
+ 
+-  width = mode->HDisplay;
+-  height = mode->VDisplay;
+-
+   /* Initialize the video card */
+   if(VoodooMode(pScrn, mode))
+   {
+-- 
+2.43.0
+

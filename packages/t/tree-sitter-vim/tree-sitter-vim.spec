@@ -17,21 +17,21 @@
 
 
 %define         _name vim
-Name:           tree-sitter-%{_name}
+Name:           tree-sitter-vim
 Version:        0.4.0
 Release:        0
 Summary:        Vimscript grammar for tree-sitter
 License:        MIT
 URL:            https://github.com/tree-sitter-grammars/tree-sitter-vim
-Source:         %{name}-%{version}.tar.xz
+Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  tree-sitter
 %treesitter_grammars %{_name}
 
 %description
-A tree-sitter parser for Vimscript files.
+%{summary}.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 %treesitter_configure

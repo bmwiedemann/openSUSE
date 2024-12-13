@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Thu Dec 12 14:00:56 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch for deterministic .gz creation (boo#1047218)
+
+-------------------------------------------------------------------
+Sat Dec 07 18:24:04 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.5.1:
+  * Fixed issue where Ollama's API would generate JSON output when
+    specifying "format": null
+  * Fixed issue where passing --format json to ollama run would
+    cause an error
+
+- Update to version 0.5.0:
+  * New models:
+    ~ Llama 3.3: a new state of the art 70B model.
+    ~ Snowflake Arctic Embed 2: Snowflake's frontier embedding
+      model.
+  * Ollama now supports structured outputs, making it possible to
+    constrain a model's output to a specific format defined by a
+    JSON schema. The Ollama Python and JavaScript libraries have
+    been updated to support structured outputs, together with
+    Ollama's OpenAI-compatible API endpoints.
+  * Fixed error importing model vocabulary files
+  * Experimental: new flag to set KV cache quantization to 4-bit
+    (q4_0), 8-bit (q8_0) or 16-bit (f16). This reduces VRAM
+    requirements for longer context windows.
+
+- Update to version 0.4.7:
+  * Enable index tracking for tools - openai api support (#7888)
+  * llama: fix typo and formatting in readme (#7876)
+  * readme: add SpaceLlama, YouLama, and DualMind to community
+    integrations (#7216)
+
+-------------------------------------------------------------------
+Sat Nov 30 19:47:23 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.4.6:
+  * New model: QwQ: an experimental research model by the Qwen
+    team, focused on advancing AI reasoning capabilities.
+  * Tool calls will now be included in streaming responses
+  * Ollama will now provide an error when submitting SVG images
+  * Image tokens will no longer be counted in token counts when
+    running a text-only model
+
+- Update to version 0.4.5:
+  * The Ollama Python Library has been updated
+  * Fixed issue where HTTPS_PROXY and HTTP_PROXY environment
+    variables would have no effect
+  * Ollama will now accept X-Stainless-Retry-Count used by many
+    OpenAI API clients
+  * Fix issue where importing certain GGUF files would result in
+    the incorrect quantization level
+  * ollama push will now print the uploaded model URL on
+    ollama.com
+
+- Update to version 0.4.4:
+  * Marco-o1: An open large reasoning model for real-world
+    solutions by the Alibaba International Digital Commerce Group
+    (AIDC-AI).
+  * Fixed issue where Ollama would freeze when processing requests
+    in parallel (e.g. when using code completion tools)
+  * Redirecting output to a file no longer outputs progress bars
+    or spinners
+
+- Update to version 0.4.3:
+  * New model: Tülu 3 is a leading instruction following model
+    family, offering fully open-source data, code, and recipes by
+    the The Allen Institute for AI.
+  * New model: Mistral Large: a new version of Mistral Large with
+    improved Long Context, Function Calling and System Prompt
+    support.
+  * Improved performance issues that occurred in Ollama versions
+    0.4.0-0.4.2
+  * Fixed issue that would cause granite3-dense to generate empty
+    responses
+  * Fixed crashes and hanging caused by KV cache management
+
+-------------------------------------------------------------------
 Sat Nov 16 16:07:38 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 0.4.2:

@@ -113,4 +113,14 @@
   * Only use the rawread backend for Python 3.12 and below.</comment>
     <requestid>1226391</requestid>
   </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>7fb23d49711c183deeab6d36b7a5f18d</srcmd5>
+    <version>3.0.1</version>
+    <time>1734034712</time>
+    <user>anag+factory</user>
+    <comment>- Drop patch no-removed-formats.patch, it was a terrible idea.
+- Add patch support-python-313.patch:
+  * Add two external module depends for Python 3.13+.</comment>
+    <requestid>1230257</requestid>
+  </revision>
 </revisionlist>

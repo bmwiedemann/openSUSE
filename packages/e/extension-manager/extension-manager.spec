@@ -21,7 +21,7 @@ Name:           extension-manager
 Version:        0.6.0
 Release:        0
 Summary:        A utility for browsing and installing GNOME Shell Extensions
-License:        GPL-3.0-only
+License:        GPL-3.0-or-later
 URL:            https://github.com/mjakeman/extension-manager
 Source0:        %{name}-%{version}.tar.gz
 BuildRequires:  desktop-file-utils

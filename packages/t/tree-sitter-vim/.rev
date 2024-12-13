@@ -15,4 +15,16 @@
     <comment> (forwarded request 1201869 from rrahl0)</comment>
     <requestid>1201870</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>29eb280cf064ec0979fc633726c1ded7</srcmd5>
+    <version>0.4.0</version>
+    <time>1734034680</time>
+    <user>anag+factory</user>
+    <comment>- disable devel package (for now)
+
+- adapt spec file to other grammars
+- switch to download_files service
+- enable devel package</comment>
+    <requestid>1230240</requestid>
+  </revision>
 </revisionlist>

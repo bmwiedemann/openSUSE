@@ -71,4 +71,14 @@
     <comment>- switch to modern python for sle15</comment>
     <requestid>1193898</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>fbe39119673075b144693f8d1e960c44</srcmd5>
+    <version>0.6.3</version>
+    <time>1734034715</time>
+    <user>anag+factory</user>
+    <comment>- Add patch support-python-313.patch:
+  * Support Python 3.13 doctest changes.
+- Switch to autosetup macro.</comment>
+    <requestid>1230261</requestid>
+  </revision>
 </revisionlist>

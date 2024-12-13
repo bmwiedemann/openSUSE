@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Dec 11 19:28:49 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.66.0
+  * Add `MISSING_ORIGIN` and `OVERLOADED_CREDENTIALS` to
+    `ErrorReason` enum (d0478d8)
+  * Add field `protobuf_pythonic_types_enabled` to
+    `ExperimentalFeatures` message (d0478d8)
+  * Add field `selective_gapic_generation` to
+    `CommonLanguageSettings` message (d0478d8)
+  * Add field `time_series_resource_hierarchy_level` to
+    `MetricDescriptorMetadata` message (d0478d8)
+  * Add message `SelectiveGapicGeneration` (d0478d8)
+
+-------------------------------------------------------------------
 Tue Sep  3 13:21:42 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.65.0

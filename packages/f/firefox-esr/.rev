@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c14096a868fcc9d9dc62045004e5db4a</srcmd5>
+    <version>128.5.1</version>
+    <time>1734034685</time>
+    <user>anag+factory</user>
+    <comment>Introduce Mozilla Firefox ESR as a new package &quot;firefox-esr&quot; to Factory; this package happily co-exists with the real &quot;MozillaFirefox&quot;.</comment>
+    <requestid>1230315</requestid>
+  </revision>
+</revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 10 14:17:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop meson-testsuite-with-cmake-3.31.patch: the actual fix was
+  done in CMake 3.31.2.
+
+-------------------------------------------------------------------
 Fri Dec  6 11:11:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 13935.patch: Fix test suite with rust 1.83.

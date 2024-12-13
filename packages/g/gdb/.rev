@@ -3240,4 +3240,26 @@ Please forward to 13.2, so we can have a working DrKonqi there (forwarded reques
 </comment>
     <requestid>1197484</requestid>
   </revision>
+  <revision rev="181" vrev="3">
+    <srcmd5>2fe8218ba81a6662b6bfb745dc698c31</srcmd5>
+    <version>14.2</version>
+    <time>1734034464</time>
+    <user>anag+factory</user>
+    <comment>- Maintenance script qa.sh:
+  * Add PR32446 kfail.
+  * Add to be investigated FAILs on Leap 15.6 ppc64le.
+- Patches added:
+  * gdb-testsuite-avoid-intermittent-failures-on-a-debug.patch
+- Maintenance script qa.sh:
+  * Add PR32439 kfail.
+- Patches added (jsc#PED-10258):
+  * gdb-tdep-s390-add-arch15-record-replay-support.patch
+- Patches added (jsc#PED-10751):
+  * s390-provide-ibm-z16-arch14-instruction-descriptions.patch
+  * gdb-s390-add-arch14-record-replay-support.patch
+- Maintenance script qa.sh:
+  * Add PR32407 kfail.
+</comment>
+    <requestid>1230185</requestid>
+  </revision>
 </revisionlist>

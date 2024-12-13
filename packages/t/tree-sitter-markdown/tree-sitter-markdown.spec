@@ -17,66 +17,41 @@
 
 
 %define         _name markdown
-Name:           tree-sitter-%{_name}
+Name:           tree-sitter-markdown
 Version:        0.3.2
 Release:        0
 Summary:        Markdown grammar for tree-sitter
 License:        MIT
 URL:            https://github.com/tree-sitter-grammars/tree-sitter-markdown
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  tree-sitter
+%treesitter_grammars %{name} %{name}-inline
 
 %description
-The parser is designed to read markdown according to the CommonMark Spec, but
-some extensions to the spec from different sources such as Github flavored
-markdown are also included. These can be toggled on or off at compile time.
-
-%package devel
-Summary:        Devel files for %{name}
-
-%description devel
-Development files for %{name}.
+%{summary}.
 
 %prep
-%autosetup -p1
-pushd %{name}
-tree-sitter generate --no-bindings src/grammar.json
-popd
-pushd %{name}-inline
-tree-sitter generate --no-bindings src/grammar.json
-popd
+%autosetup
 
 %build
-%make_build PREFIX=%{_prefix} INCLUDEDIR=%{_includedir} LIBDIR=%{_libdir} PCLIBDIR=%{_libdir}/pkgconfig
+%treesitter_configure
+%treesitter_build
 
 %install
-%make_install PREFIX=%{_prefix} LIBDIR=%{_libdir} INCLUDEDIR=%{_includedir} PCLIBDIR=%{_libdir}/pkgconfig
-#remove unncessary stuff
-rm %{buildroot}%{_libdir}/libtree-sitter-{markdown-inline.a,markdown.a}
+%treesitter_install
 
 #neovim stuff
 install -d %{buildroot}%{_libdir}/tree_sitter
-ln -s %{_libdir}/lib%{name}.so.0.14 %{buildroot}%{_libdir}/tree_sitter/%{_name}.so
-ln -s %{_libdir}/lib%{name}-inline.so.0.14 %{buildroot}%{_libdir}/tree_sitter/%{_name}_inline.so
-
-%ldconfig_scriptlets
+ln -s %{_libdir}/libtree-sitter-%{name}.so %{buildroot}%{_libdir}/tree_sitter/%{_name}.so
+ln -s %{_libdir}/libtree-sitter-%{name}-inline.so %{buildroot}%{_libdir}/tree_sitter/%{_name}_inline.so
 
 %files
 %license LICENSE
-%doc README.md CONTRIBUTING.md
-%{_libdir}/lib%{name}.so.*
-%{_libdir}/lib%{name}-inline.so.*
+%treesitter_files
 %{_libdir}/tree_sitter/%{_name}.so
 %{_libdir}/tree_sitter/%{_name}_inline.so
 %if 0%{?suse_version} < 1600
 %dir %{_libdir}/tree_sitter
 %endif
-
-%files devel
-%{_includedir}/tree_sitter
-%{_libdir}/lib%{name}.so
-%{_libdir}/lib%{name}-inline.so
-%{_libdir}/pkgconfig/%{name}.pc
-%{_libdir}/pkgconfig/%{name}-inline.pc
 
 %changelog

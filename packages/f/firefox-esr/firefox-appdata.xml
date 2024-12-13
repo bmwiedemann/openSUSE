@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Upstream does not want to ship it https://bugzilla.mozilla.org/show_bug.cgi?id=1071061
+so maintain a stub in here.
+-->
+
+<component>
+  <id type="desktop">firefox.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <name>Firefox Web Browser</name>
+  <project_license>MPL-2.0</project_license>
+  <summary>Mozilla Firefox Web Browser</summary>
+  <url type="homepage">https://www.mozilla.org/</url>
+  <description>
+    <p>Mozilla Firefox is a standalone web browser, designed for privacy, security, standards
+compliance and performance.  Its functionality can be enhanced via a plethora of extensions.</p>
+    <p>Firefox makes your daily web browsing fun and easy with a number of features, including:</p>
+    <ul>
+      <li>Tabbed browsing</li>
+      <li>Private browsing including do-not-track enabled by default</li>
+      <li>Advanced phishing and malware protection</li>
+      <li>Spell checking</li>
+      <li>Incremental find within pages</li>
+      <li>Live bookmarking and Smart Bookmarks</li>
+      <li>Download manager</li>
+      <li>Location-aware browsing</li>
+      <li>Compliant with modern web standards</li>
+      <li>Modern web development tools</li>
+      <li>Available in a wide number of locales</li>
+      <li>A thriving ecosystem of themes and extensions at https://addons.mozilla.org</li>
+    </ul>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+      <image height="800" width="1280">https://support.cdn.mozilla.net/media/uploads/gallery/images/2015-05-20-16-04-21-88bff4.png</image>
+      <caption>New tab page with speed dials</caption>
+    </screenshot>
+    <screenshot>
+      <image height="439" width="620">https://support.cdn.mozilla.net/media/uploads/gallery/images/2015-12-22-15-15-05-3c0a80.png</image>
+      <caption>Search suggestions from home page</caption>
+    </screenshot>
+    <screenshot>
+      <image height="394" width="700">https://addons.cdn.mozilla.net/user-media/previews/full/159/159648.png</image>
+      <caption>Firefox with Adwaita theme</caption>
+    </screenshot>
+  </screenshots>
+  <update_contact>mdn@lists.mozilla.org</update_contact>
+</component>

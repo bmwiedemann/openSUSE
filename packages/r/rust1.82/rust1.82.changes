@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec 10 04:53:57 UTC 2024 - William Brown <william.brown@suse.com>
+
+- add patch: 0001-Disable-pidfs-tests-for-15SP3.patch
+
+-------------------------------------------------------------------
+Wed Nov  6 04:54:52 UTC 2024 - William Brown <william.brown@suse.com>
+
+- bsc#1232667 - SLFO:Main requires changes for gcc version detection
+
+-------------------------------------------------------------------
 Tue Nov  5 03:41:46 UTC 2024 - William Brown <william.brown@suse.com>
 
 - Resolve build failure on PPC64LE due to invalid float cast

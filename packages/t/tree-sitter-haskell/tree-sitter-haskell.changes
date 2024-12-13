@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Dec 11 23:20:52 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- disable devel package (for now)
+
+-------------------------------------------------------------------
+Wed Dec  4 22:33:46 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.23.1:
+  * build: update bindings
+  * fix: correct generate with strict mode
+- update to 0.23.0:
+  * build: update bindings
+  * docs: update readme
+- switch to download_files service
+- add neovim links
+- enable devel package
+
+-------------------------------------------------------------------
 Sat Aug 03 16:06:12 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Update to version 0.21.0:

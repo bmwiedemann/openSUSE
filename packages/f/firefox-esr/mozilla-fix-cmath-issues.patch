@@ -1,0 +1,23 @@
+diff -rup a/modules/fdlibm/src/math_private.h b/modules/fdlibm/src/math_private.h
+--- a/modules/fdlibm/src/math_private.h	2024-10-22 01:59:57.000000000 +0200
++++ b/modules/fdlibm/src/math_private.h	2024-11-19 09:16:00.223397014 +0100
+@@ -17,6 +17,9 @@
+ #ifndef _MATH_PRIVATE_H_
+ #define	_MATH_PRIVATE_H_
+ 
++#include <float.h>
++#include <math.h>
++#include <cmath>
+ #include <cfloat>
+ #include <stdint.h>
+ #include <sys/types.h>
+@@ -31,7 +34,9 @@
+  */
+ 
+ typedef double      __double_t;
++#if ! (defined (__GLIBC_FLT_EVAL_METHOD) || defined (_GLIBCXX_HAVE_C99_FLT_EVAL_TYPES))
+ typedef __double_t  double_t;
++#endif
+ typedef float       __float_t;
+ 
+ /*

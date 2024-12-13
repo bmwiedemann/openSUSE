@@ -1,5 +1,5 @@
 <package name="tree-sitter-qmljs" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <devel project="editors" package="tree-sitter-qmljs"/>
+  <devel project="editors:tree-sitter" package="tree-sitter-qmljs"/>
 </package>

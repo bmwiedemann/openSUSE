@@ -1,3 +1,10 @@
+gpxsee (13.33) stable; urgency=low
+
+  * Improved IMG & Mapsforge maps rendering performance.
+  * Improved Mapsforge map render theme.
+
+ -- Martin Tuma <tumic@cbox.cz>  Tue, 10 Dec 2024 19:57:23 +0100
+
 gpxsee (13.32) stable; urgency=low
 
   * Improved Mapsforge maps rendering performance.

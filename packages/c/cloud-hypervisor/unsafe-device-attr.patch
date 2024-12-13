@@ -1,0 +1,93 @@
+From 838a8573115efc344648efac29e07ccaa2d008fa Mon Sep 17 00:00:00 2001
+From: Ruoqing He <heruoqing@iscas.ac.cn>
+Date: Mon, 4 Nov 2024 15:04:36 +0800
+Subject: [PATCH] hypervisor: Wrap get_device_attr with unsafe
+
+`get_device_attr` in 0.19.0 kvm-ioctls is marked as unsafe, wrap
+invokation of `get_device_attr` with `unsafe` block.
+
+Signed-off-by: Ruoqing He <heruoqing@iscas.ac.cn>
+---
+ hypervisor/src/kvm/aarch64/gic/dist_regs.rs   | 6 ++----
+ hypervisor/src/kvm/aarch64/gic/icc_regs.rs    | 3 +--
+ hypervisor/src/kvm/aarch64/gic/mod.rs         | 9 +++------
+ hypervisor/src/kvm/aarch64/gic/redist_regs.rs | 3 +--
+ 4 files changed, 7 insertions(+), 14 deletions(-)
+
+diff --git a/hypervisor/src/kvm/aarch64/gic/dist_regs.rs b/hypervisor/src/kvm/aarch64/gic/dist_regs.rs
+index 8c4809476c..9135ad0031 100644
+--- a/hypervisor/src/kvm/aarch64/gic/dist_regs.rs
++++ b/hypervisor/src/kvm/aarch64/gic/dist_regs.rs
+@@ -103,9 +103,8 @@ fn dist_attr_get(gic: &DeviceFd, offset: u32) -> Result<u32> {
+         flags: 0,
+     };
+ 
+-    // get_device_attr should be marked as unsafe, and will be in future.
+     // SAFETY: gic_dist_attr.addr is safe to write to.
+-    gic.get_device_attr(&mut gic_dist_attr).map_err(|e| {
++    unsafe { gic.get_device_attr(&mut gic_dist_attr) }.map_err(|e| {
+         Error::GetDeviceAttribute(HypervisorDeviceError::GetDeviceAttribute(e.into()))
+     })?;
+ 
+@@ -131,9 +130,8 @@ fn get_interrupts_num(gic: &DeviceFd) -> Result<u32> {
+         addr: &mut num_irq as *mut u32 as u64,
+         flags: 0,
+     };
+-    // get_device_attr should be marked as unsafe, and will be in future.
+     // SAFETY: nr_irqs_attr.addr is safe to write to.
+-    gic.get_device_attr(&mut nr_irqs_attr).map_err(|e| {
++    unsafe { gic.get_device_attr(&mut nr_irqs_attr) }.map_err(|e| {
+         Error::GetDeviceAttribute(HypervisorDeviceError::GetDeviceAttribute(e.into()))
+     })?;
+     Ok(num_irq)
+diff --git a/hypervisor/src/kvm/aarch64/gic/icc_regs.rs b/hypervisor/src/kvm/aarch64/gic/icc_regs.rs
+index 24fba17278..f993581840 100644
+--- a/hypervisor/src/kvm/aarch64/gic/icc_regs.rs
++++ b/hypervisor/src/kvm/aarch64/gic/icc_regs.rs
+@@ -105,9 +105,8 @@ fn icc_attr_get(gic: &DeviceFd, offset: u64, typer: u64) -> Result<u32> {
+         flags: 0,
+     };
+ 
+-    // get_device_attr should be marked as unsafe, and will be in future.
+     // SAFETY: gic_icc_attr.addr is safe to write to.
+-    gic.get_device_attr(&mut gic_icc_attr).map_err(|e| {
++    unsafe { gic.get_device_attr(&mut gic_icc_attr) }.map_err(|e| {
+         Error::GetDeviceAttribute(HypervisorDeviceError::GetDeviceAttribute(e.into()))
+     })?;
+ 
+diff --git a/hypervisor/src/kvm/aarch64/gic/mod.rs b/hypervisor/src/kvm/aarch64/gic/mod.rs
+index eead0da7df..9b8b8668e3 100644
+--- a/hypervisor/src/kvm/aarch64/gic/mod.rs
++++ b/hypervisor/src/kvm/aarch64/gic/mod.rs
+@@ -49,13 +49,10 @@ fn gicv3_its_attr_get(its_device: &DeviceFd, group: u32, attr: u32) -> Result<u6
+         flags: 0,
+     };
+ 
+-    // get_device_attr should be marked as unsafe, and will be in future.
+     // SAFETY: gicv3_its_attr.addr is safe to write to.
+-    its_device
+-        .get_device_attr(&mut gicv3_its_attr)
+-        .map_err(|e| {
+-            Error::GetDeviceAttribute(HypervisorDeviceError::GetDeviceAttribute(e.into()))
+-        })?;
++    unsafe { its_device.get_device_attr(&mut gicv3_its_attr) }.map_err(|e| {
++        Error::GetDeviceAttribute(HypervisorDeviceError::GetDeviceAttribute(e.into()))
++    })?;
+ 
+     Ok(val)
+ }
+diff --git a/hypervisor/src/kvm/aarch64/gic/redist_regs.rs b/hypervisor/src/kvm/aarch64/gic/redist_regs.rs
+index c1803a12fa..13f7cffc4d 100644
+--- a/hypervisor/src/kvm/aarch64/gic/redist_regs.rs
++++ b/hypervisor/src/kvm/aarch64/gic/redist_regs.rs
+@@ -121,9 +121,8 @@ fn redist_attr_get(gic: &DeviceFd, offset: u32, typer: u64) -> Result<u32> {
+         flags: 0,
+     };
+ 
+-    // get_device_attr should be marked as unsafe, and will be in future.
+     // SAFETY: gic_redist_attr.addr is safe to write to.
+-    gic.get_device_attr(&mut gic_redist_attr).map_err(|e| {
++    unsafe { gic.get_device_attr(&mut gic_redist_attr) }.map_err(|e| {
+         Error::GetDeviceAttribute(HypervisorDeviceError::GetDeviceAttribute(e.into()))
+     })?;
+ 

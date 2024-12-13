@@ -78,6 +78,7 @@ r128:		platform
 radeon:		radeon		radeon amdgpu
 en8811h:	network
 amdgpu:		amdgpu
+amdxdna:	platform
 amd_pmf:	platform
 s2255drv:	platform
 rtl8192e:	realtek		r8192e_pci

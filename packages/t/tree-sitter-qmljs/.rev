@@ -31,4 +31,16 @@
   * include tree_sitter/parser.h as local header</comment>
     <requestid>1186016</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>4950de40798c4c586c8faad4b1ddcc47</srcmd5>
+    <version>0.1.2.41.febf48a</version>
+    <time>1734034681</time>
+    <user>anag+factory</user>
+    <comment>- disable devel package (for now)
+
+- format spec file like the other grammars
+- add neovim links
+- enable devel package</comment>
+    <requestid>1230241</requestid>
+  </revision>
 </revisionlist>

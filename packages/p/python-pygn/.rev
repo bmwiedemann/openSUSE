@@ -51,4 +51,14 @@
     <comment>- require setuptools</comment>
     <requestid>1136314</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>39ff48d3234e0e056c6d6f677df39ef0</srcmd5>
+    <version>0.12.0</version>
+    <time>1734034689</time>
+    <user>anag+factory</user>
+    <comment>    - fix: change dependency from nntplib to pynntp
+    - First attempt to create .build.yml script for builds.sr.ht
+</comment>
+    <requestid>1230201</requestid>
+  </revision>
 </revisionlist>

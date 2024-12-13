@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-video-voodoo
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,23 @@ URL:            https://xorg.freedesktop.org/
 Source0:        http://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.xz
 Source1:        http://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.xz.sig
 Source2:        xf86-video-voodoo.keyring
+Patch2:         0002-configure-Use-LT_INIT-from-libtool-2-instead-of-depr.patch
+Patch3:         0003-Add-X.Org-s-standard-C-warning-flags-to-AM_CFLAGS.patch
+Patch4:         0004-Quiet-Wredundant-decls-from-xorg-os.h-fallbacks-for-.patch
+Patch5:         0005-Fix-3-Wunused-but-set-variable-warnings.patch
+Patch6:         0006-Fix-4-Wunused-variable-warnings.patch
+Patch7:         0007-voodoo_find_dac-doesn-t-check-device_ids-2.patch
+Patch8:         0008-use-XNFalloc-instead-of-xnfalloc.patch
+Patch9:         0009-use-XNFcallocarray-instead-of-xnfcalloc-macro.patch
+Patch10:        0010-bump-minimal-xorg-version-to-1.18.patch
+Patch11:        0011-drop-compat-with-ancient-xserver-versions.patch
+Patch12:        0012-Drop-ifdefs-for-ABI_VIDEODRV_VERSION-6.patch
+Patch13:        0013-Remove-XAA-support.patch
+Patch14:        0014-drop-dead-code.patch
+Patch15:        0015-drop-remains-of-old-compat-code.patch
+Patch20:        u_buildfix.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(fontsproto)
 BuildRequires:  pkgconfig(pciaccess) >= 0.8.0
@@ -77,9 +94,10 @@ display size. This is a hardware limitation. 3D rendering is also not
 supported.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+autoreconf --force
 %configure
 %make_build
 

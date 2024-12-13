@@ -86,4 +86,12 @@
     <comment></comment>
     <requestid>1228826</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>154501ba04de6a81489cf090b5cedccd</srcmd5>
+    <version>0.6.0</version>
+    <time>1734034693</time>
+    <user>anag+factory</user>
+    <comment>- fix license (forwarded request 1230206 from rrahl0)</comment>
+    <requestid>1230207</requestid>
+  </revision>
 </revisionlist>

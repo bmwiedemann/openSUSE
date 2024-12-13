@@ -1,0 +1,39 @@
+From 2da59302a2fe1a16225af4e7da9ef5b00727a663 Mon Sep 17 00:00:00 2001
+From: "Enrico Weigelt, metux IT consult" <info@metux.net>
+Date: Wed, 8 May 2024 17:27:13 +0200
+Subject: [PATCH 09/15] use XNFcallocarray() instead of xnfcalloc macro
+
+xnfcalloc is just an alias for XNFcallocarray() that doesn't seem to serve
+any practical purpose, so it can go away once all drivers stopped using it.
+
+Signed-off-by: Enrico Weigelt, metux IT consult <info@metux.net>
+Part-of: <https://gitlab.freedesktop.org/xorg/driver/xf86-video-voodoo/-/merge_requests/6>
+---
+ src/voodoo_driver.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/voodoo_driver.c b/src/voodoo_driver.c
+index 377da32..559fdc8 100644
+--- a/src/voodoo_driver.c
++++ b/src/voodoo_driver.c
+@@ -182,7 +182,7 @@ VoodooGetRec(ScrnInfoPtr pScrn)
+   if (pScrn->driverPrivate != NULL)
+     return TRUE;
+ 
+-  pScrn->driverPrivate = xnfcalloc(sizeof(VoodooRec), 1);
++  pScrn->driverPrivate = XNFcallocarray(sizeof(VoodooRec), 1);
+ 
+   /* Initialize it */
+   /* No init here yet */
+@@ -480,7 +480,7 @@ VoodooPreInit(ScrnInfoPtr pScrn, int flags)
+ 
+   /* Set up clock ranges so that the xf86ValidateModes() function will not fail a mode because of the clock
+      requirement (because we don't use the clock value anyway) */
+-  clockRanges = xnfcalloc(sizeof(ClockRange), 1);
++  clockRanges = XNFcallocarray(sizeof(ClockRange), 1);
+   clockRanges->next = NULL;
+   clockRanges->minClock = 10000;
+   clockRanges->maxClock = 250000;	/* 250MHz DAC */
+-- 
+2.43.0
+

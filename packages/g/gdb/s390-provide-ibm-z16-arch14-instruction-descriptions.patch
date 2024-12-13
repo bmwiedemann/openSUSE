@@ -1,0 +1,103 @@
+From 789e5514da246a792a78ce5f61a6c286f874b03c Mon Sep 17 00:00:00 2001
+From: Jens Remus <jremus@linux.ibm.com>
+Date: Wed, 20 Dec 2023 11:16:38 +0100
+Subject: [PATCH 1/2] s390: Provide IBM z16 (arch14) instruction descriptions
+
+Provide descriptions for instructions introduced with commit ba2b480f103
+("IBM Z: Implement instruction set extensions"). This complements commit
+69341966def ("IBM zSystems: Add support for z16 as CPU name."). Use
+instruction names from IBM z/Architecture Principles of Operation [1] as
+instruction description.
+
+[1]: IBM z/Architecture Principles of Operation, SA22-7832-13, IBM z16,
+     https://publibfp.dhe.ibm.com/epubs/pdf/a227832d.pdf
+
+opcodes/
+	* s390-opc.txt: Add descriptions for IBM z16 (arch14)
+	  instructions.
+
+Signed-off-by: Jens Remus <jremus@linux.ibm.com>
+Reviewed-by: Andreas Krebbel <krebbel@linux.ibm.com>
+---
+ opcodes/s390-opc.txt | 66 +++++++++++++++++++++++++-------------------
+ 1 file changed, 38 insertions(+), 28 deletions(-)
+
+diff --git a/opcodes/s390-opc.txt b/opcodes/s390-opc.txt
+index b7efa813e47..b33ee34ea8f 100644
+--- a/opcodes/s390-opc.txt
++++ b/opcodes/s390-opc.txt
+@@ -2018,31 +2018,41 @@ e60000000052 vcvbg VRR_RV0UU "vector convert to binary 64 bit" arch13 zarch optp
+ b93a kdsa RRE_RR "compute digital signature authentication" arch13 zarch
+ 
+ 
+-# arch14 instructions
+-
+-e60000000074 vschp VRR_VVV0U0U " " arch14 zarch
+-e60000002074 vschsp VRR_VVV0U0 " " arch14 zarch
+-e60000003074 vschdp VRR_VVV0U0 " " arch14 zarch
+-e60000004074 vschxp VRR_VVV0U0 " " arch14 zarch
+-e6000000007c vscshp VRR_VVV " " arch14 zarch
+-e6000000007d vcsph VRR_VVV0U0 " " arch14 zarch
+-e60000000051 vclzdp VRR_VV0U2 " " arch14 zarch
+-e60000000070 vpkzr VRI_VVV0UU2 " " arch14 zarch
+-e60000000072 vsrpr VRI_VVV0UU2 " " arch14 zarch
+-e60000000054 vupkzh VRR_VV0U2 " " arch14 zarch
+-e6000000005c vupkzl VRR_VV0U2 " " arch14 zarch
+-
+-b93b nnpa RRE_00 " " arch14 zarch
+-e60000000056 vclfnh VRR_VV0UU2 " " arch14 zarch
+-e6000000005e vclfnl VRR_VV0UU2 " " arch14 zarch
+-e60000000075 vcrnf VRR_VVV0UU " " arch14 zarch
+-e6000000005d vcfn VRR_VV0UU2 " " arch14 zarch
+-e60000000055 vcnf VRR_VV0UU2 " " arch14 zarch
+-
+-b98B rdp RRF_RURR2 " " arch14 zarch optparm
+-
+-eb0000000071 lpswey SIY_RD " " arch14 zarch
+-b200 lbear S_RD " " arch14 zarch
+-b201 stbear S_RD " " arch14 zarch
+-
+-b28f qpaci S_RD " " arch14 zarch
++# arch14 (z16) instructions
++
++# Vector-Packed-Decimal-Enhancement Facility 2
++
++e60000000074 vschp VRR_VVV0U0U "decimal scale and convert to hfp" arch14 zarch
++e60000002074 vschsp VRR_VVV0U0 "decimal scale and convert to short hfp" arch14 zarch
++e60000003074 vschdp VRR_VVV0U0 "decimal scale and convert to long hfp" arch14 zarch
++e60000004074 vschxp VRR_VVV0U0 "decimal scale and convert to extended hfp" arch14 zarch
++e6000000007c vscshp VRR_VVV "decimal scale and convert and split to hfp" arch14 zarch
++e6000000007d vcsph VRR_VVV0U0 "vector convert hfp to scaled decimal" arch14 zarch
++e60000000051 vclzdp VRR_VV0U2 "vector count leading zero digits" arch14 zarch
++e60000000070 vpkzr VRI_VVV0UU2 "vector pack zoned register" arch14 zarch
++e60000000072 vsrpr VRI_VVV0UU2 "vector shift and round decimal register" arch14 zarch
++e60000000054 vupkzh VRR_VV0U2 "vector unpack zoned high" arch14 zarch
++e6000000005c vupkzl VRR_VV0U2 "vector unpack zoned low" arch14 zarch
++
++# Neural-Network-Processing-Assist Facility
++
++b93b nnpa RRE_00 "neural network processing assist" arch14 zarch
++e60000000056 vclfnh VRR_VV0UU2 "vector fp convert and lengthen from nnp high" arch14 zarch
++e6000000005e vclfnl VRR_VV0UU2 "vector fp convert and lengthen from nnp low" arch14 zarch
++e60000000075 vcrnf VRR_VVV0UU "vector fp convert and round to nnp" arch14 zarch
++e6000000005d vcfn VRR_VV0UU2 "vector fp convert from nnp" arch14 zarch
++e60000000055 vcnf VRR_VV0UU2 "vector fp convert to nnp" arch14 zarch
++
++# Reset-DAT-Protection Facility
++
++b98B rdp RRF_RURR2 "reset dat protection" arch14 zarch optparm
++
++# BEAR-Enhancement Facility
++
++eb0000000071 lpswey SIY_RD "load PSW extended" arch14 zarch
++b200 lbear S_RD "load bear" arch14 zarch
++b201 stbear S_RD "store bear" arch14 zarch
++
++# Processor-Activity-Instrumentation Facility
++
++b28f qpaci S_RD "query processor activity counter information" arch14 zarch
+
+base-commit: 84b9218d98eb2ac242fe3afc81598206279f7b13
+-- 
+2.35.3
+

@@ -1,0 +1,59 @@
+From 729d6b050f41d1d058c0f22f2c767995f5441b7a Mon Sep 17 00:00:00 2001
+From: Andrew Burgess <aburgess@redhat.com>
+Date: Sun, 27 Oct 2024 08:55:16 +0000
+Subject: [PATCH] gdb/testsuite: avoid intermittent failures on a debuginfod
+ test
+
+I saw a failure in gdb.debuginfod/build-id-no-debug-warning.exp which
+I could only produce one time.
+
+Normally the test output looks like this:
+
+  file /tmp/build/gdb/testsuite/outputs/gdb.debuginfod/build-id-no-debug-warning/.build-id/0c/30f589cc4f2c0fb22c8914d042ddf39c9a3885.debug
+  Reading symbols from /tmp/build/gdb/testsuite/outputs/gdb.debuginfod/build-id-no-debug-warning/.build-id/0c/30f589cc4f2c0fb22c8914d042ddf39c9a3885.debug...
+  Downloading separate debug info for /tmp/build/gdb/testsuite/outputs/gdb.debuginfod/build-id-no-debug-warning/.build-id/0c/30f589cc4f2c0fb22c8914d042ddf39c9a3885.debug...
+  Reading symbols from /tmp/build/gdb/testsuite/outputs/gdb.debuginfod/build-id-no-debug-warning/.client_cache/0c30f589cc4f2c0fb22c8914d042ddf39c9a3885/debuginfo...
+  (gdb) PASS: gdb.debuginfod/build-id-no-debug-warning.exp: local_debuginfod: debuginfod running, info downloaded, no war
+
+But one time I saw this:
+
+  file /tmp/build/gdb/testsuite/outputs/gdb.debuginfod/build-id-no-debug-warning/.build-id/0c/30f589cc4f2c0fb22c8914d042ddf39c9a3885.debug
+  Reading symbols from /tmp/build/gdb/testsuite/outputs/gdb.debuginfod/build-id-no-debug-warning/.build-id/0c/30f589cc4f2c0fb22c8914d042ddf39c9a3885.debug...
+  Downloading 6.77 K separate debug info for /tmp/build/gdb/testsuite/outputs/gdb.debuginfod/build-id-no-debug-warning/.build-id/0c/30f589cc4f2c0fb22c8914d042ddf39c9a3885.debug...
+  Reading symbols from /tmp/build/gdb/testsuite/outputs/gdb.debuginfod/build-id-no-debug-warning/.client_cache/0c30f589cc4f2c0fb22c8914d042ddf39c9a3885/debuginfo...
+  (gdb) FAIL: gdb.debuginfod/build-id-no-debug-warning.exp: local_debuginfod: debuginfod running, info downloaded, no warnings
+
+The difference is the "Downloading separate debug info for ..." line
+has gained an extra '6.77 K' component.  When I got the FAIL the
+machine was under heavy load, so I suspect everything was running
+pretty slow.  I think the size is only added when the debuginfod
+download is taking its time.
+
+Anyway, the test in question is not expecting to see a size, which is
+why it failed.
+
+Every other debuginfod test does allow for an optional size being
+printed, so lets update this test to also accept an optional size,
+this should prevent failures like this in the future.
+---
+ gdb/testsuite/gdb.debuginfod/build-id-no-debug-warning.exp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.debuginfod/build-id-no-debug-warning.exp b/gdb/testsuite/gdb.debuginfod/build-id-no-debug-warning.exp
+index 8ee3bb0e78c..fcadfddd293 100644
+--- a/gdb/testsuite/gdb.debuginfod/build-id-no-debug-warning.exp
++++ b/gdb/testsuite/gdb.debuginfod/build-id-no-debug-warning.exp
+@@ -148,7 +148,7 @@ proc_with_prefix local_debuginfod { } {
+     gdb_test "file ${build_id_debug_file}" \
+ 	[multi_line \
+ 	     "Reading symbols from ${build_id_debug_file}\\.\\.\\." \
+-	     "Downloading separate debug info for ${build_id_debug_file}\\.\\.\\." \
++	     "Downloading\[^\r\n\]*separate debug info for ${build_id_debug_file}\\.\\.\\." \
+ 	     "Reading symbols from ${cache}/\[^\r\n\]+\\.\\.\\.(?:\r\nExpanding full symbols from \[^\r\n\]+)*"] \
+ 	"debuginfod running, info downloaded, no warnings"
+ }
+
+base-commit: 6cfb7bf81be3ab6f131dbc6a27eefca516cf7517
+-- 
+2.43.0
+

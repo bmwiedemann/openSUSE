@@ -1,0 +1,818 @@
+From 38537b4dffdcba1dfde99f3e7106a5c23c9859b3 Mon Sep 17 00:00:00 2001
+From: Alan Coopersmith <alan.coopersmith@oracle.com>
+Date: Wed, 22 May 2024 19:02:40 -0700
+Subject: [PATCH 13/15] Remove XAA support
+
+Mostly done via unifdef -UHAVE_XAA_H, followed by minor manual editing
+
+Since recent commits require xserver-1.18.0 or later to build against,
+there's no reason leaving behind big chunks of code that can only build
+against the XAA support removed in xserver-1.13.0 (released in 2012).
+
+Signed-off-by: Alan Coopersmith <alan.coopersmith@oracle.com>
+Part-of: <https://gitlab.freedesktop.org/xorg/driver/xf86-video-voodoo/-/merge_requests/8>
+---
+ configure.ac          |  18 --
+ src/voodoo.h          |  10 -
+ src/voodoo_dga.c      |   3 -
+ src/voodoo_driver.c   |  19 +-
+ src/voodoo_hardware.c | 629 ------------------------------------------
+ 5 files changed, 4 insertions(+), 675 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index c1e826f..827d293 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -84,24 +84,6 @@ fi
+ AM_CONDITIONAL(XSERVER_LIBPCIACCESS, test "x$XSERVER_LIBPCIACCESS" = xyes)
+ 
+ 
+-AC_ARG_ENABLE(xaa,
+-              AS_HELP_STRING([--enable-xaa],
+-                             [Enable legacy X Acceleration Architecture (XAA) [default=auto]]),
+-              [XAA="$enableval"],
+-              [XAA=auto])
+-if test "x$XAA" != xno; then
+-        save_CFLAGS=$CFLAGS
+-        save_CPPFLAGS=$CPPFLAGS
+-        CFLAGS=$XORG_CFLAGS
+-        CPPFLAGS="$XORG_CFLAGS"
+-        AC_CHECK_HEADERS([xaa.h], XAA=yes, XAA=no)
+-        CFLAGS=$save_CFLAGS
+-        CPPFLAGS=$save_CPPFLAGS
+-fi
+-AC_MSG_CHECKING([whether to include XAA support])
+-AM_CONDITIONAL(XAA, test "x$XAA" = xyes)
+-AC_MSG_RESULT([$XAA])
+-
+ AC_SUBST([moduledir])
+ 
+ DRIVER_NAME=voodoo
+diff --git a/src/voodoo.h b/src/voodoo.h
+index 846ce66..772b3b6 100644
+--- a/src/voodoo.h
++++ b/src/voodoo.h
+@@ -13,9 +13,6 @@ typedef struct {
+   CARD8 *             ShadowPtr;	/* Shadow buffer */
+   CARD32              ShadowPitch;
+   CloseScreenProcPtr  CloseScreen;	/* Wrapped Close */
+-#ifdef HAVE_XAA_H
+-  XAAInfoRecPtr	      AccelInfoRec;	/* Cached Accel rec for close */
+-#endif
+   Bool                Blanked;
+   Bool                PassThrough;     /* Set to restore pass through on exit */
+   EntityInfoPtr       pEnt;
+@@ -33,9 +30,6 @@ typedef struct {
+   CARD32	      FullHeight;	/* Height including pixmap cache */
+   CARD32	      Tiles;		/* 32 tile count */
+   
+-  int		      BlitDirX;		/* Cache blitter direction */
+-  int		      BlitDirY;		/* Cache blitter direction */
+-  
+   CARD32	      lfbMode;		/* Cached lfbMode value */
+ 
+   CARD32	      alpha;		/* Cached alpha reg for sw blit */
+@@ -71,9 +65,6 @@ typedef struct {
+ 
+   PLLClock	      vClock;
+   PLLClock	      gClock;
+-  
+-  unsigned char	      LineBuffer[1028];	/* Draw buffer */
+-  unsigned char       *LinePtr;		/* To keep XAA amused */  
+ } VoodooRec, *VoodooPtr;
+ 
+ #define TRUE 1
+@@ -105,7 +96,6 @@ extern int VoodooHardwareInit(VoodooPtr pVoo);
+ extern int VoodooMode(ScrnInfoPtr pScrn, DisplayModePtr mode);
+ extern void VoodooBlank(VoodooPtr pVoo);
+ extern int VoodooMemorySize(VoodooPtr pVoo);
+-extern void Voodoo2XAAInit(ScreenPtr pScreen);
+ extern void VoodooSync(ScrnInfoPtr pScrn);
+ extern void VoodooReadBank(ScreenPtr pScreen, int bank);
+ extern void VoodooWriteBank(ScreenPtr pScreen, int bank);
+diff --git a/src/voodoo_dga.c b/src/voodoo_dga.c
+index a13c9e7..b0865dc 100644
+--- a/src/voodoo_dga.c
++++ b/src/voodoo_dga.c
+@@ -47,9 +47,6 @@
+ #include "vgaHW.h"
+ #include "compiler.h"
+ #include "dgaproc.h"
+-#ifdef HAVE_XAA_H
+-#include "xaa.h"
+-#endif
+ #include "voodoo.h"
+ 
+ #define _XF86DGA_SERVER_
+diff --git a/src/voodoo_driver.c b/src/voodoo_driver.c
+index 01c2710..88de297 100644
+--- a/src/voodoo_driver.c
++++ b/src/voodoo_driver.c
+@@ -54,9 +54,6 @@
+ #include "xf86cmap.h"
+ #include "shadowfb.h"
+ #include "compiler.h"
+-#ifdef HAVE_XAA_H
+-#include "xaa.h"
+-#endif
+ #include "voodoo.h"
+ 
+ #define _XF86DGA_SERVER_
+@@ -555,11 +552,10 @@ VoodooPreInit(ScrnInfoPtr pScrn, int flags)
+     return FALSE;
+   }
+ 
+-  if (!xf86LoadSubModule(pScrn, "xaa")) {
+-      xf86DrvMsg(pScrn->scrnIndex, X_INFO, "Falling back to shadowfb\n");
+-      pVoo->Accel = 0;
+-      pVoo->ShadowFB = 1;
+-  }
++  /* No acceleration support since XAA was removed */
++  xf86DrvMsg(pScrn->scrnIndex, X_INFO, "Falling back to shadowfb\n");
++  pVoo->Accel = 0;
++  pVoo->ShadowFB = 1;
+   
+   if(pVoo->ShadowFB)
+   {
+@@ -672,9 +668,6 @@ VoodooScreenInit(SCREEN_INIT_ARGS_DECL)
+     VoodooDGAInit(pScrn, pScreen);
+ 
+   /* Activate accelerations */
+-  if(pVoo->Accel)
+-  	Voodoo2XAAInit(pScreen);
+-
+   xf86SetBackingStore(pScreen);
+   
+ 
+@@ -764,10 +757,6 @@ VoodooCloseScreen(CLOSE_SCREEN_ARGS_DECL)
+       VoodooRestore(pScrn, TRUE);
+   if(pVoo->ShadowPtr)
+       free(pVoo->ShadowPtr);
+-#ifdef HAVE_XAA_H
+-  if(pVoo->AccelInfoRec)
+-      free(pVoo->AccelInfoRec);
+-#endif
+   if (pVoo->pDGAMode) {
+     free(pVoo->pDGAMode);
+     pVoo->pDGAMode = NULL;
+diff --git a/src/voodoo_hardware.c b/src/voodoo_hardware.c
+index d1463e7..be33dd8 100644
+--- a/src/voodoo_hardware.c
++++ b/src/voodoo_hardware.c
+@@ -48,10 +48,6 @@
+ #include "vgaHW.h"
+ #include "compiler.h"
+ 
+-#ifdef HAVE_XAA_H
+-#include "xaa.h"
+-#endif
+-
+ #include "voodoo.h"
+ 
+ #include <X11/extensions/xf86dgaproto.h>
+@@ -69,23 +65,6 @@
+ 
+ #include <unistd.h>
+ 
+-#ifdef HAVE_XAA_H
+-#if 0
+-static void VoodooReadWriteBank(ScreenPtr pScreen, int bank);
+-#endif
+-static Bool VoodooSetupForCPUToScreenAlphaTexture(ScrnInfoPtr pScrn, int op,
+-	CARD16 red, CARD16 green, CARD16 blue, CARD16 alpha, int alphaType,
+-	CARD8 *alphaPtr, int alphaPitch, int width, int height, int flags);
+-static void VoodooSubsequentCPUToScreenAlphaTexture(ScrnInfoPtr pScrn,
+-	int dstx, int dsty, int srcx, int srcy, int width, int height);
+-static Bool VoodooSetupForCPUToScreenTexture(ScrnInfoPtr pScrn, int op,
+-	int texType, CARD8 *texPtr, int texPitch, int width, int height,
+-	int flags);
+-static void VoodooSubsequentCPUToScreenTexture(ScrnInfoPtr pScrn,
+-	int dstx, int dsty, int srcx, int srcy, int width, int height);
+-
+-static int debug = 0;
+-#endif
+ 
+ /*
+  *	Big endian might need to byteswap these ?
+@@ -865,56 +844,6 @@ static void VoodooReadWriteBank(ScreenPtr pScreen, int bank)
+ 	mmio32_w(pVoo, 0x114, pVoo->lfbMode);
+ }
+ #endif
+-
+-#ifdef HAVE_XAA_H
+-/*
+- *	We normally want to load all four rop variants at once so
+- *	the table is the 16bits for the lot equal.
+- */
+-
+-static CARD16 ropxlate[16] = {
+-	0x0000, 	/* GXclear */
+-	0x8888,		/* GXand */
+-	0x4444,		/* GXandReverse */
+-	0xCCCC,		/* GXcopy */
+-	0x2222,		/* GXandInverted */
+-	0xAAAA,		/* GXnop */
+-	0x6666,		/* GXxor */
+-	0xEEEE,		/* GXor */
+-	0x1111,		/* GXnor */
+-	0x9999,		/* GXequiv */
+-	0x5555,		/* GXinvert */
+-	0xDDDD,		/* GXorReverse */
+-	0x3333,		/* GXcopyInverted */
+-	0xBBBB,		/* GXorInverted */
+-	0x7777,		/* GXnand */
+-	0xFFFF		/* GXset */
+-};
+-
+-/*
+- *	Transparent mask rops
+- */
+-
+-static CARD16 tropxlate[16] = {
+-	0xAA00, 	/* GXclear */
+-	0xAA88,		/* GXand */
+-	0xAA44,		/* GXandReverse */
+-	0xAACC,		/* GXcopy */
+-	0xAA22,		/* GXandInverted */
+-	0xAAAA,		/* GXnop */
+-	0xAA66,		/* GXxor */
+-	0xAAEE,		/* GXor */
+-	0xAA11,		/* GXnor */
+-	0xAA99,		/* GXequiv */
+-	0xAA55,		/* GXinvert */
+-	0xAADD,		/* GXorReverse */
+-	0xAA33,		/* GXcopyInverted */
+-	0xAABB,		/* GXorInverted */
+-	0xAA77,		/* GXnand */
+-	0xAAFF		/* GXset */
+-};
+-#endif
+-
+ 	
+ void VoodooSync(ScrnInfoPtr pScrn)
+ {
+@@ -923,561 +852,3 @@ void VoodooSync(ScrnInfoPtr pScrn)
+ 	wait_idle(pVoo);
+ 	mmio32_w(pVoo, 0x10C, 0);	/* Maybe flag this */
+ }
+-
+-#ifdef HAVE_XAA_H
+-static void Voodoo2Setup2D(VoodooPtr pVoo)
+-{
+-	wait_idle(pVoo);
+-}
+-
+-static void Voodoo2SetupForScreenToScreenCopy(ScrnInfoPtr pScrn,
+-			int xdir, int ydir, int rop,
+-			unsigned int planemask,
+-			int trans_color)
+-{
+-	VoodooPtr pVoo = VoodooPTR(pScrn);
+-	Voodoo2Setup2D(pVoo);
+-	pVoo->BlitDirX = xdir;
+-	pVoo->BlitDirY = ydir;
+-	
+-	if(trans_color == -1)
+-	{
+-		mmio32_w_chuck(pVoo, 0x2EC, ropxlate[rop]);	/* Set the rop */
+-		mmio32_w_chuck(pVoo, 0x2F8, 0 | (1<<14) | (1<<15) | (1<<16));	/* 16bpp no color compare */
+-	}
+-	else
+-	{
+-		mmio32_w_chuck(pVoo, 0x2EC, tropxlate[rop]);	 /* Transparent src rop */
+-		mmio32_w_chuck(pVoo, 0x2CC, (trans_color << 16) | trans_color);	/* Match transparent colour */
+-		mmio32_w_chuck(pVoo, 0x2F8, 0 | (1<<10) | (1<<14) | (1<<15) | (1<<16));	/* 16bpp color compare */
+-	}
+-}
+-
+-static void Voodoo2SubsequentScreenToScreenCopy(ScrnInfoPtr pScrn,
+-			int x1, int y1,
+-			int x2, int y2,
+-			int width, int height)
+-{
+-	VoodooPtr pVoo = VoodooPTR(pScrn);
+-	wait_idle(pVoo);
+-	/* Adjust coordinates for backward blits */
+-	height --;	/* Adjust for fenceposting in the hardware */
+-	width --;
+-	if(pVoo->BlitDirY < 0)
+-	{
+-		y1 += height;
+-		y2 += height;
+-		height = -height;
+-	}
+-	if(pVoo->BlitDirY < 0)
+-	{
+-		x1 += width;
+-		x2 += width;
+-		width = -width;
+-	}
+-	mmio32_w_chuck(pVoo, 0x2E0, (y1 << 16) | x1);  /* Src x/y */
+-	mmio32_w_chuck(pVoo, 0x2E4, (y2 << 16) | x2);  /* Dst x/y */
+-	/* Set size and fire */
+-	height &= 0xFFF;
+-	width  &= 0xFFF;
+-	mmio32_w_chuck(pVoo, 0x2E8, (height << 16) | width | (1<<31));
+-}
+-
+-static void Voodoo2SetupForSolidFill(ScrnInfoPtr pScrn, int color,
+-			int rop, unsigned int planemask)
+-{
+-	VoodooPtr pVoo = VoodooPTR(pScrn);
+-	if (debug)
+-	    ErrorF("Setup for solid fill colour %04X, rop %d, Mask %04X.\n",
+-		   color, rop, planemask);
+-	Voodoo2Setup2D(pVoo);
+-	mmio32_w_chuck(pVoo, 0x2EC, ropxlate[rop]); 	/* rop */
+-	mmio32_w_chuck(pVoo, 0x2F0, color);		/* fg color */
+-	mmio32_w_chuck(pVoo, 0x2F8, 2 | (1<<14) | (1<<15) | (0/*1*/<<16)); /* Solid fill 16bpp front */
+-}
+-
+-static void Voodoo2SubsequentSolidFillRect(ScrnInfoPtr pScrn, int x, int y, 
+-			int w, int h)
+-{
+-	VoodooPtr pVoo = VoodooPTR(pScrn);
+-	if (debug)
+-	    ErrorF("Fill (%d, %d) for (%d, %d)\n", x, y, w, h);
+-	wait_idle(pVoo);
+-	mmio32_w_chuck(pVoo, 0x2E4, (y<<16) | x);	/* Dst x,y */
+-	/* Set size and fire */
+-	mmio32_w_chuck(pVoo, 0x2E8, ((h-1) << 16) | (w-1) | (1<<31));
+-}
+-
+-
+-/*
+- *	Colour expand fills are standard hardware goodies
+- */
+- 
+-static void Voodoo2SetupForScanlineCPUToScreenColorExpandFill(ScrnInfoPtr pScrn,
+-			int fg, int bg,
+-			int rop,
+-			unsigned int planemask)
+-{
+-	VoodooPtr pVoo = VoodooPTR(pScrn);
+-	Voodoo2Setup2D(pVoo);
+-	mmio32_w_chuck(pVoo, 0x2EC, ropxlate[rop]);	/* Pattern op */
+-	mmio32_w_chuck(pVoo, 0x2F0, fg | (bg << 16));	/* colors */
+-	if(bg != -1)	/* Set transparent if needed */
+-		mmio32_w_chuck(pVoo, 0x2F8, 1 | (1<<14) | (1<<15) | (1<<16));
+-	else
+-		mmio32_w_chuck(pVoo, 0x2F8, 1 | (1<<14) | (1<<15) | (1<<16) | (1<<17));
+-}
+-
+-static void Voodoo2SubsequentScanlineCPUToScreenColorExpandFill(ScrnInfoPtr pScrn,
+-			int x, int y, int w, int h,
+-			int skipleft)
+-{
+-	VoodooPtr pVoo = VoodooPTR(pScrn);
+-	wait_idle(pVoo);
+-	mmio32_w_chuck(pVoo, 0x2E4,  x | (y<<16));			/* destination */
+-	mmio32_w_chuck(pVoo, 0x2E8, (w-1) | ((h-1)<<16) | (1<<31)); 	/* fire */
+-	pVoo->texW = w;
+-}
+-
+-static void Voodoo2SubsequentColorExpandScanline(ScrnInfoPtr pScrn, int bufno)
+-{
+-	VoodooPtr pVoo = VoodooPTR(pScrn);
+-	CARD32 *data = (CARD32 *)pVoo->LineBuffer;
+-	int w = pVoo->texW;
+-	int i;
+-	
+-	wait_idle(pVoo);
+-	for(i = 0; i < w; i += 32)	/* Each dword is 32 pixels mask */
+-		mmio32_w(pVoo, 0x2FC, *data++);
+-}
+-
+-static void Voodoo2SetupForMono8x8PatternFill(ScrnInfoPtr pScrn, int patx, int paty,
+-	int fg, int bg, int rop, unsigned int planemask)
+-{
+-	VoodooPtr pVoo = VoodooPTR(pScrn);
+-	Voodoo2Setup2D(pVoo);
+-	mmio32_w_chuck(pVoo, 0x2EC, ropxlate[rop]);
+-	mmio32_w_chuck(pVoo, 0x2F0, fg | (bg << 16));
+-	if(bg != -1)
+-		mmio32_w_chuck(pVoo, 0x2F8, 1 | (1<<14) | (1<<15) | (1<<16));
+-	else
+-		mmio32_w_chuck(pVoo, 0x2F8, 1 | (1<<14) | (1<<15) | (1<<16) | (1<<17));
+-}
+-
+-/*
+- *	We don't have pattern fill hardware but for any operation that
+- *	references dst it is going to be faster to use the hardware
+- *	and simply upload the pattern a lot as we avoid reading
+- *	video memory. GXcopy ought to be the same either way.
+- */
+- 
+-static __inline__ CARD32 spread(CARD32 v)
+-{
+-	return v * 16843009;
+-}
+-
+-static void Voodoo2SubsequentMono8x8PatternFillRect(ScrnInfoPtr pScrn, int patx, int paty,
+-	int x, int y, int w, int h)
+-{
+-	int ln = 0;
+-	CARD32 l[8];
+-	VoodooPtr pVoo = VoodooPTR(pScrn);
+-
+-	wait_idle(pVoo);
+-	
+-	if( w <3)
+-		return;
+-	
+-	mmio32_w_chuck(pVoo, 0x2E4,  x | (y<<16));
+-	mmio32_w_chuck(pVoo, 0x2E8, (w - 1) | ((h - 1)<<16) | (1<<31));
+-	
+-	/* Turn the pattern into 32x8 for the expansion engine */
+-	l[0] = spread((patx >> 24) & 0xFF);
+-	l[1] = spread((patx >> 16) & 0xFF);
+-	l[2] = spread((patx >> 8)  & 0xFF);
+-	l[3] = spread(patx & 0xFF);
+-	
+-	l[4] = spread((paty >> 24) & 0xFF);
+-	l[5] = spread((paty >> 16) & 0xFF);
+-	l[6] = spread((paty >> 8)  & 0xFF);
+-	l[7] = spread(paty & 0xFF);
+-	
+-	while(h > 0)
+-	{
+-		int i;
+-		for(i = 0; i < w; i += 32) /* DWORD pad */
+-			mmio32_w_chuck(pVoo, 0x2FC, l[ln]);
+-		wait_idle(pVoo);
+-		ln = (ln + 1) & 7;
+-		h--;
+-	}
+-}
+-
+-/*
+- *	The XAA layer uses video memory as the basis for colour pattern
+- *	fill, so we can't usefully perform it. 
+- */
+- 
+-static void Voodoo2SetupForSolidLine(ScrnInfoPtr pScrn, int color, int rop,
+-	unsigned int planemask)
+-{
+-	VoodooPtr pVoo = VoodooPTR(pScrn);
+-	Voodoo2Setup2D(pVoo);
+-	mmio32_w_chuck(pVoo, 0x2CC, color);
+-	mmio32_w_chuck(pVoo, 0x2EC, ropxlate[rop]);
+-	mmio32_w_chuck(pVoo, 0x2F8, 2 | (1<<14) | (1<<15) | (1<<16)); 	/* Solid fill 16 bpp front */
+-}	
+-
+-static void Voodoo2SubsequentSolidHorVertLine(ScrnInfoPtr pScrn, int x, int y, int len, int dir)
+-{
+-	VoodooPtr pVoo = VoodooPTR(pScrn);
+-	wait_idle(pVoo);
+-	mmio32_w_chuck(pVoo, 0x2E4, (y<<16) | x);	/* Dst x,y */
+-	if(dir == DEGREES_0)
+-		mmio32_w_chuck(pVoo, 0x2E8,  (len - 1) | (1<<31));
+-	else
+-		mmio32_w_chuck(pVoo, 0x2E8, ((len - 1) << 16) | (1<<31));
+-}
+-	
+-static void Voodoo2SetupForScanlineImageWrite(ScrnInfoPtr pScrn, int rop,
+-			unsigned int planemask, int trans_color,
+-			int bpp, int depth)
+-{
+-	VoodooPtr pVoo = VoodooPTR(pScrn);
+-	Voodoo2Setup2D(pVoo);
+-	if(trans_color != -1)
+-	{
+-		mmio32_w_chuck(pVoo, 0x2CC, (trans_color << 16) | trans_color);
+-		mmio32_w_chuck(pVoo, 0x2EC, tropxlate[rop]);
+-		mmio32_w_chuck(pVoo, 0x2F8, 1 | (2<<3) | (1<<10) | (1<<14) | (1<<15) | (1<<16));
+-	}
+-	else
+-	{
+-		mmio32_w_chuck(pVoo, 0x2EC, ropxlate[rop]);
+-		mmio32_w_chuck(pVoo, 0x2F8, 1 | (2<<3) | (1<<14) | (1<<15) | (1<<16));
+-	}
+-	if(debug)
+-		ErrorF("Setup for image write rop %d col %d bpp %d depth %d\n",
+-			rop, trans_color, bpp, depth);
+-}
+-
+-static void Voodoo2SubsequentImageWriteRect(ScrnInfoPtr pScrn, 
+-			int x, int y,
+-			int w, int h,
+-			int skipleft)
+-{
+-	VoodooPtr pVoo = VoodooPTR(pScrn);
+-	wait_idle(pVoo);
+-	mmio32_w_chuck(pVoo, 0x2E4, x | (y<<16));
+-	mmio32_w_chuck(pVoo, 0x2E8, (w - 1) | ((h - 1)<<16) | (1<<31));
+-	if(debug)
+-		ErrorF("Image Write (%d,%d) [%d,%d]\n", x,y,w,h);
+-	pVoo->texW = w;
+-}
+-
+-static void Voodoo2SubsequentImageWriteScanline(ScrnInfoPtr pScrn, int bufno)
+-{
+-	VoodooPtr pVoo = VoodooPTR(pScrn);
+-	CARD32 *data = (CARD32 *)pVoo->LineBuffer;
+-	int w = pVoo->texW;
+-	int i;
+-	
+-	wait_idle(pVoo);
+-	for(i = 0; i < w; i += 2)
+-		mmio32_w(pVoo, 0x2FC, *data++);
+-}
+-
+-static void Voodoo2SetClippingRectangle(ScrnInfoPtr pScrn,
+-			int left, int top, int right, int bottom)
+-{
+-	VoodooPtr pVoo = VoodooPTR(pScrn);
+-	if(debug)
+-		ErrorF("Clip to (%d,%d)-(%d,%d)\n", left,top,right,bottom);
+-	mmio32_w_chuck(pVoo, 0x2D4, (left << 16) | right);
+-	mmio32_w_chuck(pVoo, 0x2D8, (top << 16 ) | bottom);
+-}
+-
+-static void Voodoo2DisableClipping(ScrnInfoPtr pScrn)
+-{
+-	VoodooPtr pVoo = VoodooPTR(pScrn);
+-	/* FIXME: pVoo->FullHeight for the cache ! */
+-	if(debug)
+-		ErrorF("Clip to (0,0)-(%d,%d)\n", (int)pVoo->Width, (int)pVoo->Height);
+-	mmio32_w_chuck(pVoo, 0x2D4, pVoo->Width);
+-	mmio32_w_chuck(pVoo, 0x2D8, pVoo->FullHeight);
+-}
+-
+-/*
+- *	TODO: Implement 2D line acceleration using the 3D engines
+- */
+- 
+-#ifdef RENDER
+-
+-/*
+- *	Render acceleration. All Voodoo chips support cpu driver alpha
+- *	composite to the frame buffer. This is presumably meant for software
+- *	fallbacks on rendering 3D but happens to be very useful to avoid
+- *	some render operations reading from the frame buffer as much
+- *
+- *	Possibly we could the 3D engine for this once we get it working.
+- *	We can't however use the 2D engine much as it lacks Alpha
+- */
+- 
+-
+-static Bool VoodooSetupForCPUToScreenAlphaTexture(ScrnInfoPtr pScrn, int op,
+-	CARD16 red, CARD16 green, CARD16 blue, CARD16 alpha, int alphaType,
+-	CARD8 *alphaPtr, int alphaPitch, int width, int height, int flags)
+-{
+-	VoodooPtr pVoo = VoodooPTR(pScrn);
+-
+-	pVoo->alphaType = alphaType;
+-	pVoo->alphaPitch = alphaPitch;
+-	pVoo->alphaPtr = alphaPtr;
+-	pVoo->alphaW = width;
+-	pVoo->alphaH = height;
+-	pVoo->alphaC = (red & 0xFF00)  << 8 | (green & 0xFF00) | blue >> 8;
+-	
+-	if(op != PictOpOver && op != PictOpSrc)
+-		return FALSE;
+-
+-	if(debug)
+-		ErrorF("Supported CPU To Screen Alpha Texture (%d) -> %d,%d\n", op, width, height);		
+-	wait_idle(pVoo);
+-	if(op == PictOpSrc)
+-		pVoo->alpha = 0;
+-	else	/* dst = src * srcalpha + (1-a) * dst */
+-		pVoo->alpha = (1<<4) | (1<<8) | (5<<12);
+-
+-	return TRUE;	
+-}	
+-
+-static void VoodooSubsequentCPUToScreenAlphaTexture(ScrnInfoPtr pScrn,
+-	int dstx, int dsty, int srcx, int srcy, int width, int height)
+-{
+-	VoodooPtr pVoo = VoodooPTR(pScrn);
+-	/* 32bit LFB write mode */
+-	CARD32 *fb = (CARD32 *)(pVoo->FBBase + 4096 * dsty + 4 * dstx);
+-	CARD8 *db = pVoo->alphaPtr + pVoo->alphaW * srcy + srcx;
+-	int x, y;
+-	CARD32 *fdb;
+-	CARD8 *cdb;
+-	CARD32 colour = pVoo->alphaC;
+-	int dw, dh;
+-	int w, h;
+-
+-	mmio32_w(pVoo, 0x10C, pVoo->alpha);
+-	mmio32_w(pVoo, 0x110, 1 | (1<<9));
+-	mmio32_w(pVoo, 0x114, (1<<8) | 5);	/* ARGB888 */
+-
+-	dh = srcy;
+-	w = pVoo->alphaW;
+-	h = pVoo->alphaH;
+-	
+-	for(y = 0; y < height; y++)
+-	{
+-		cdb = db;
+-		fdb = fb;
+-
+-		dw = srcx;
+-		for(x = 0; x < width; x++)
+-		{
+-			*fdb++ = (*cdb++<< 24) | colour;
+-			if(++dw == w)
+-			{
+-				dw = 0;
+-				cdb -= pVoo->alphaW;
+-			}
+-		}
+-		db += pVoo->alphaW;
+-		fb += 1024;
+-		if(++dh == h)
+-		{
+-			db = pVoo->alphaPtr + srcx;
+-			dh = 0;
+-		}
+-	}	
+-	mmio32_w(pVoo, 0x114, pVoo->lfbMode);
+-	mmio32_w(pVoo, 0x10C, 0);
+-}
+-
+-static Bool VoodooSetupForCPUToScreenTexture(ScrnInfoPtr pScrn, int op,
+-	int texType, CARD8 *texPtr, int texPitch, int width, int height,
+-	int flags)
+-{
+-	VoodooPtr pVoo = VoodooPTR(pScrn);
+-	
+-	if(op != PictOpOver && op != PictOpSrc)
+-		return FALSE;	/* For now */
+-
+-	if(debug)
+-		ErrorF("Supported CPU TO Screen Texture (%d) -> %d,%d\n", op, width, height);		
+-	pVoo->texType = texType;
+-	pVoo->texPitch = texPitch;
+-	pVoo->texPtr = texPtr;
+-	pVoo->texW = width;
+-	pVoo->texH = height;
+-
+-	wait_idle(pVoo);
+-	if(op == PictOpSrc || texType == PICT_x8r8g8b8)
+-		pVoo->alpha = 0;
+-	else
+-		pVoo->alpha = (1<<4) | (1<<8) | (5<<12);
+-		
+-	return TRUE;
+-}
+-
+-static void VoodooSubsequentCPUToScreenTexture(ScrnInfoPtr pScrn,
+-	int dstx, int dsty, int srcx, int srcy, int width, int height)
+-{
+-	VoodooPtr pVoo = VoodooPTR(pScrn);
+-	/* 32bit LFB write mode */
+-	CARD32 *fb = (CARD32 *)(pVoo->FBBase + 4096 * dsty + 4 * dstx);
+-	CARD32 *db = ((CARD32 *)(pVoo->texPtr)) + pVoo->texW * srcy + srcx;
+-	int x, y;
+-	CARD32 *cdb, *fdb;
+-	int dw, dh;
+-	int w, h;
+-
+-	mmio32_w(pVoo, 0x10C, pVoo->alpha);
+-	mmio32_w(pVoo, 0x110, 1 | (1<<9));
+-	
+-	if(pVoo->texType == PICT_a8r8g8b8)
+-		mmio32_w(pVoo, 0x114, (1<<8) | 5);	/* ARGB888 */
+-	else if(pVoo->texType == PICT_x8r8g8b8)
+-		mmio32_w(pVoo, 0x114, (1<<8) | 4);	/* xRGB888 */
+-	else ErrorF("BOGOFORMAT\n");
+-	
+-	dh = srcy;
+-	w = pVoo->texW;
+-	h = pVoo->texH;
+-	
+-	if(debug)
+-		ErrorF("CPUToScreenTexture (%d,%d)->(%d,%d)[%d,%d]\n",
+-			srcx,srcy,dstx,dsty,width,height);
+-	/*
+-	 *	Tiled software render letting hardware do the read merge
+-	 *	that we don't want the CPU to do.
+-	 */
+-	 
+-	for(y = 0; y < height; y++)
+-	{
+-		cdb = db;
+-		fdb = fb;
+-		dw = srcx;
+-		for(x = 0; x < width; x++)
+-		{
+-			*fdb++ = *cdb++;
+-			
+-			if(++dw == w)
+-			{
+-				dw = 0;
+-				cdb -= pVoo->texW;
+-			}
+-		}
+-		db += pVoo->texW;
+-		fb += 1024;
+-		dh ++;
+-		if(dh == h)
+-		{
+-			db = ((CARD32 *)pVoo->texPtr) + srcx;
+-			dh = 0;
+-		}
+-	}	
+-	mmio32_w(pVoo, 0x114, pVoo->lfbMode);
+-	mmio32_w(pVoo, 0x10C, 0);
+-}
+-
+-CARD32 VoodooAlphaTextureFormats[2] = {PICT_a8, 0};
+-CARD32 VoodooTextureFormats[3] = {PICT_a8r8g8b8, PICT_x8r8g8b8, 0};
+-
+-#endif
+-#endif
+-
+-void Voodoo2XAAInit(ScreenPtr pScreen)
+-{
+-#ifdef HAVE_XAA_H
+-	ScrnInfoPtr pScrn = xf86ScreenToScrn(pScreen);
+-	VoodooPtr pVoo = VoodooPTR(pScrn);
+-	XAAInfoRecPtr pAccel = XAACreateInfoRec();
+-	BoxRec cacheArea;
+-	
+-	pAccel->Flags = OFFSCREEN_PIXMAPS|LINEAR_FRAMEBUFFER;
+-	pAccel->Sync = VoodooSync;
+-
+-	pAccel->ScreenToScreenCopyFlags =  NO_PLANEMASK;
+-	pAccel->SetupForScreenToScreenCopy = Voodoo2SetupForScreenToScreenCopy;
+-	pAccel->SubsequentScreenToScreenCopy = Voodoo2SubsequentScreenToScreenCopy;
+-
+-	pAccel->SolidFillFlags = NO_PLANEMASK;
+-	pAccel->SetupForSolidFill = Voodoo2SetupForSolidFill;
+-	pAccel->SubsequentSolidFillRect = Voodoo2SubsequentSolidFillRect;
+-
+-	pAccel->ScanlineCPUToScreenColorExpandFillFlags = 
+-		BIT_ORDER_IN_BYTE_MSBFIRST | NO_PLANEMASK | 
+-			SCANLINE_PAD_DWORD | CPU_TRANSFER_BASE_FIXED;
+-	pAccel->SetupForScanlineCPUToScreenColorExpandFill = 
+-				Voodoo2SetupForScanlineCPUToScreenColorExpandFill;
+-	pAccel->SubsequentScanlineCPUToScreenColorExpandFill =
+-				Voodoo2SubsequentScanlineCPUToScreenColorExpandFill;
+-	pAccel->SubsequentColorExpandScanline = 
+-				Voodoo2SubsequentColorExpandScanline;
+-
+-	pAccel->NumScanlineColorExpandBuffers = 1;
+-	pVoo->LinePtr = pVoo->LineBuffer;
+-	pAccel->ScanlineColorExpandBuffers = &pVoo->LinePtr;
+-
+-	pAccel->SetupForSolidLine = Voodoo2SetupForSolidLine;
+-	pAccel->SubsequentSolidHorVertLine = Voodoo2SubsequentSolidHorVertLine;
+-	pAccel->SolidLineFlags = NO_PLANEMASK;
+-
+-	pAccel->Mono8x8PatternFillFlags = HARDWARE_PATTERN_PROGRAMMED_BITS;
+-	pAccel->SetupForMono8x8PatternFill = Voodoo2SetupForMono8x8PatternFill;
+-	pAccel->SubsequentMono8x8PatternFillRect = Voodoo2SubsequentMono8x8PatternFillRect;
+-
+-	pAccel->ScanlineImageWriteFlags = NO_PLANEMASK;
+-	pAccel->SetupForScanlineImageWrite = Voodoo2SetupForScanlineImageWrite;
+-	pAccel->SubsequentImageWriteRect = Voodoo2SubsequentImageWriteRect;
+-	pAccel->SubsequentImageWriteScanline = Voodoo2SubsequentImageWriteScanline;
+-
+-	pAccel->ClippingFlags =
+-		HARDWARE_CLIP_SCREEN_TO_SCREEN_COLOR_EXPAND |
+-		HARDWARE_CLIP_SCREEN_TO_SCREEN_COPY |
+-		HARDWARE_CLIP_MONO_8x8_FILL |
+-		HARDWARE_CLIP_SOLID_FILL;
+-		
+-	pAccel->SetClippingRectangle = Voodoo2SetClippingRectangle;
+-	pAccel->DisableClipping = Voodoo2DisableClipping;
+-	
+-#ifdef RENDER
+-	pAccel->CPUToScreenAlphaTextureFlags = 0;
+-	pAccel->SetupForCPUToScreenAlphaTexture = VoodooSetupForCPUToScreenAlphaTexture;
+-	pAccel->SubsequentCPUToScreenAlphaTexture = VoodooSubsequentCPUToScreenAlphaTexture;
+-	
+-	pAccel->CPUToScreenTextureFlags = 0;
+-	pAccel->SetupForCPUToScreenTexture = VoodooSetupForCPUToScreenTexture;
+-	pAccel->SubsequentCPUToScreenTexture = VoodooSubsequentCPUToScreenTexture;
+-	
+-	pAccel->CPUToScreenTextureFormats = VoodooTextureFormats;
+-	pAccel->CPUToScreenAlphaTextureFormats = VoodooAlphaTextureFormats;
+-#endif
+-
+-	cacheArea.x1 = 0;
+-	cacheArea.x2 = pScrn->displayWidth;
+-	cacheArea.y1 = pVoo->Height;
+-	cacheArea.y2 = (pScrn->videoRam * 1024) / (pVoo->Tiles * 64);
+-	if(cacheArea.y2 > 2047)
+-		cacheArea.y2 = 2047;
+-		
+-	if(cacheArea.y2 > cacheArea.y1)
+-	{
+-		xf86DrvMsg(pScrn->scrnIndex, X_DEFAULT, "Using %d lines of pixmap cache.\n", cacheArea.y2-cacheArea.y1);
+-		pAccel->Flags |= PIXMAP_CACHE;
+-		pVoo->FullHeight = cacheArea.y2;
+-		xf86InitFBManager(pScreen, &cacheArea);
+-	}
+-	if( XAAInit(pScreen, pAccel) == FALSE)
+-		ErrorF("Unable to set up acceleration.\n");
+-		
+-	Voodoo2DisableClipping(pScrn);
+-#endif
+-}
+-- 
+2.43.0
+

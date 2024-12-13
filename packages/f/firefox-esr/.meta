@@ -1,0 +1,12 @@
+<package name="firefox-esr" project="openSUSE:Factory">
+  <title>Mozilla Firefox Web Browser</title>
+  <description>This package is based on the package 'MozillaFirefox' from project 'openSUSE:Factory'.
+
+Mozilla Firefox, formerly known as Phoenix and Firebird, is a redesign
+of the Mozilla browser component, similar to Galeon, K-Meleon and
+Camino, but written using the XUL user interface language and designed
+to be cross-platform. It is a stand-alone application instead of part
+of the Mozilla Application Suite.
+</description>
+  <devel project="mozilla:Factory" package="firefox-esr"/>
+</package>

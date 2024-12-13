@@ -17,19 +17,18 @@
 
 
 Name:           just
-Version:        1.37.0
+Version:        1.38.0
 Release:        0
 Summary:        Commmand runner
 License:        (Apache-2.0 OR MIT) AND Unicode-DFS-2016 AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND (MIT OR Unlicense) AND Apache-2.0 AND BSD-3-Clause AND CC0-1.0 AND MIT AND CC0-1.0
 Group:          Development/Tools/Building
 URL:            https://github.com/casey/just
-Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Source2:        cargo_config
 BuildRequires:  bash-completion
 BuildRequires:  cargo-packaging
 BuildRequires:  fish
-BuildRequires:  git
 BuildRequires:  git-core
 BuildRequires:  python3-base
 BuildRequires:  zsh

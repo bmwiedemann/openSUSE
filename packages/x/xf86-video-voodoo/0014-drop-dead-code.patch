@@ -1,0 +1,92 @@
+From 4f34e3c1b12127f985be6073f59b68bb482236d5 Mon Sep 17 00:00:00 2001
+From: "Enrico Weigelt, metux IT consult" <info@metux.net>
+Date: Fri, 24 May 2024 20:04:48 +0200
+Subject: [PATCH 14/15] drop dead code
+
+Part-of: <https://gitlab.freedesktop.org/xorg/driver/xf86-video-voodoo/-/merge_requests/9>
+---
+ configure.ac          |  1 -
+ src/voodoo_hardware.c | 41 -----------------------------------------
+ 2 files changed, 42 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 827d293..8818f24 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -83,7 +83,6 @@ if test "x$XSERVER_LIBPCIACCESS" = xyes; then
+ fi
+ AM_CONDITIONAL(XSERVER_LIBPCIACCESS, test "x$XSERVER_LIBPCIACCESS" = xyes)
+ 
+-
+ AC_SUBST([moduledir])
+ 
+ DRIVER_NAME=voodoo
+diff --git a/src/voodoo_hardware.c b/src/voodoo_hardware.c
+index be33dd8..6305b35 100644
+--- a/src/voodoo_hardware.c
++++ b/src/voodoo_hardware.c
+@@ -65,7 +65,6 @@
+ 
+ #include <unistd.h>
+ 
+-
+ /*
+  *	Big endian might need to byteswap these ?
+  */
+@@ -754,25 +753,6 @@ void VoodooCopy24(VoodooPtr pVoo, CARD32 x1, CARD32 y1, CARD32 w, CARD32 h, CARD
+ void VoodooClear(VoodooPtr pVoo)
+ {
+ 	memset(pVoo->FBBase,0, 0x400000);
+-#if 0
+-	/*
+-	 *	We can't do this as the 3D engine setup is not
+-	 *	done by this driver..
+-	 */
+-	mmio32_w(pVoo, 0x130, 0);		/* No Alpha ! */
+-	
+-	mmio32_w(pVoo, 0x118, pVoo->Width);
+-	mmio32_w(pVoo, 0x11C, pVoo->Height << 16);
+-	/* On entry we know Clip is set correctly so we will clear the lot */
+-	mmio32_w(pVoo, 0x148, 0xC0C0C0);	/* RGB888 black */
+-	mmio32_w(pVoo, 0x130, 0xFFFF);	/* I think ?? */
+-	/* We want to write to screen and depth, front buffer, and no dither */
+-	mmio32_w(pVoo, 0x110, (mmio32_r(pVoo, 0x110) | 0x601) & 0xFFE00EE1);
+-	/* Fire */
+-	mmio32_w(pVoo, 0x124, 1);
+-	wait_idle(pVoo);
+-	/* In case X decides to read the LFB before clear finishes */
+-#endif	
+ }
+ 
+ /*
+@@ -824,27 +804,6 @@ void VoodooWriteBank(ScreenPtr pScreen, int bank)
+ 	mmio32_w(pVoo, 0x114, pVoo->lfbMode);
+ }
+ 
+-#if 0
+-static void VoodooReadWriteBank(ScreenPtr pScreen, int bank)
+-{
+-	ScrnInfoPtr pScrn = xf86ScreenToScrn(pScreen);
+-	VoodooPtr pVoo = VoodooPTR(pScrn);
+-	if(bank)
+-	{
+-		mmio32_w(pVoo, 0x2C0, pVoo->Height);
+-		mmio32_w(pVoo, 0x2C4, pVoo->Height);
+-		pVoo->lfbMode |= (1<<4) | (1<<6);
+-	}
+-	else
+-	{
+-		mmio32_w(pVoo, 0x2C0, 0);
+-		mmio32_w(pVoo, 0x2C4, 0);
+-		pVoo->lfbMode &= ~((1<<4) | (1<<6));
+-	}
+-	mmio32_w(pVoo, 0x114, pVoo->lfbMode);
+-}
+-#endif
+-	
+ void VoodooSync(ScrnInfoPtr pScrn)
+ {
+ 	VoodooPtr pVoo = VoodooPTR(pScrn);
+-- 
+2.43.0
+

@@ -1,0 +1,41 @@
+From c81adeb553f25f408a85803afcff7d3efd11f722 Mon Sep 17 00:00:00 2001
+From: Luke Blaney <git@lukeblaney.co.uk>
+Date: Wed, 30 Oct 2024 18:42:47 +0000
+Subject: [PATCH 1/2] Add standard-aifc and standard-sunau as dependencies for
+ python 3.13 and above. Python core removed these modules in 3.13 as part of
+ PEP-594 https://peps.python.org/pep-0594/ The standard-* modules are forks of
+ the modules that had previously been in the python core. Fixes
+ https://github.com/beetbox/audioread/issues/144
+
+---
+ pyproject.toml | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+Index: audioread-3.0.1/pyproject.toml
+===================================================================
+--- audioread-3.0.1.orig/pyproject.toml
++++ audioread-3.0.1/pyproject.toml
+@@ -11,6 +11,10 @@ readme = "README.rst"
+ requires-python = ">=3.6"
+ dynamic = ["version", "description"]
+ urls.Home = "https://github.com/beetbox/audioread"
++dependencies = [
++    "standard-aifc; python_version >= '3.13'",
++    "standard-sunau; python_version >= '3.13'",
++]
+ classifiers = [
+     'Topic :: Multimedia :: Sound/Audio :: Conversion',
+     'Intended Audience :: Developers',
+Index: audioread-3.0.1/.github/workflows/main.yml
+===================================================================
+--- audioread-3.0.1.orig/.github/workflows/main.yml
++++ audioread-3.0.1/.github/workflows/main.yml
+@@ -8,7 +8,7 @@ jobs:
+     runs-on: ubuntu-latest
+     strategy:
+       matrix:
+-        python: ["3.8", "3.9", "3.10", "3.11"]
++        python: ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13"]
+ 
+     steps:
+       - uses: actions/checkout@v2

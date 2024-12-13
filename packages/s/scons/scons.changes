@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 11 09:10:56 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add site_init.py to pass through SOURCE_DATE_EPOCH
+
+-------------------------------------------------------------------
 Thu Oct 24 18:52:36 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - SCons 4.8.1:

@@ -1,7 +1,7 @@
-From b50a8d343af0323ad2e615b652d8a653a14b2232 Mon Sep 17 00:00:00 2001
+From b6213c77313f15ac74a551b9a03670fce06280fb Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <cyphar@cyphar.com>
 Date: Wed, 19 Jun 2024 16:30:49 +1000
-Subject: [PATCH 8/9] bsc1214855: volume: use AtomicWriteFile to save volume
+Subject: [PATCH 08/13] bsc1214855: volume: use AtomicWriteFile to save volume
  options
 
 If the system (or Docker) crashes while saivng the volume options, on
@@ -49,5 +49,5 @@ index b4f3a3669a84..077b26f1b813 100644
  		return errdefs.System(errors.Wrap(err, "error while persisting volume options"))
  	}
 -- 
-2.46.0
+2.47.0
 

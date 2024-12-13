@@ -1,0 +1,30 @@
+From 7f0ef65c8b7735152689085deb7556e03ab63a10 Mon Sep 17 00:00:00 2001
+From: "Enrico Weigelt, metux IT consult" <info@metux.net>
+Date: Wed, 8 May 2024 13:20:10 +0200
+Subject: [PATCH 08/15] use XNFalloc() instead of xnfalloc
+
+xnfalloc is just an alias for XNFalloc() that doesn't seem to serve
+any practical purpose, so it can go away once all drivers stopped using it.
+
+Signed-off-by: Enrico Weigelt, metux IT consult <info@metux.net>
+Part-of: <https://gitlab.freedesktop.org/xorg/driver/xf86-video-voodoo/-/merge_requests/6>
+---
+ src/voodoo_driver.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/voodoo_driver.c b/src/voodoo_driver.c
+index 456152f..377da32 100644
+--- a/src/voodoo_driver.c
++++ b/src/voodoo_driver.c
+@@ -627,7 +627,7 @@ VoodooScreenInit(SCREEN_INIT_ARGS_DECL)
+   if(pVoo->ShadowFB)
+   {
+     pVoo->ShadowPitch = ((pScrn->virtualX * pScrn->bitsPerPixel >> 3) + 3) & ~3L;
+-    pVoo->ShadowPtr = xnfalloc(pVoo->ShadowPitch * pScrn->virtualY);
++    pVoo->ShadowPtr = XNFalloc(pVoo->ShadowPitch * pScrn->virtualY);
+     FBStart = pVoo->ShadowPtr;
+     displayWidth = pScrn->virtualX;
+   }
+-- 
+2.43.0
+

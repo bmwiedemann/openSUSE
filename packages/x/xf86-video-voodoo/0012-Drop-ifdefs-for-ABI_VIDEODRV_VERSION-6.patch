@@ -1,0 +1,31 @@
+From 014923aa853a50f9afe07d900f6bc6f006f78e91 Mon Sep 17 00:00:00 2001
+From: Alan Coopersmith <alan.coopersmith@oracle.com>
+Date: Wed, 22 May 2024 18:51:20 -0700
+Subject: [PATCH 12/15] Drop ifdefs for ABI_VIDEODRV_VERSION < 6
+
+ABI_VIDEODRV_VERSION 6 shipped in Xserver 1.7, less than our new minimum
+
+Signed-off-by: Alan Coopersmith <alan.coopersmith@oracle.com>
+Part-of: <https://gitlab.freedesktop.org/xorg/driver/xf86-video-voodoo/-/merge_requests/8>
+---
+ src/voodoo_driver.c | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/src/voodoo_driver.c b/src/voodoo_driver.c
+index 559fdc8..01c2710 100644
+--- a/src/voodoo_driver.c
++++ b/src/voodoo_driver.c
+@@ -53,10 +53,6 @@
+ #include "xf86Pci.h"
+ #include "xf86cmap.h"
+ #include "shadowfb.h"
+-#if GET_ABI_MAJOR(ABI_VIDEODRV_VERSION) < 6
+-#include "xf86RAC.h"
+-#include "xf86Resources.h"
+-#endif
+ #include "compiler.h"
+ #ifdef HAVE_XAA_H
+ #include "xaa.h"
+-- 
+2.43.0
+

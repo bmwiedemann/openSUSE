@@ -5252,4 +5252,15 @@ boo#1224178</comment>
   chromium-127-constexpr.patch</comment>
     <requestid>1228256</requestid>
   </revision>
+  <revision rev="441" vrev="1">
+    <srcmd5>9dffd0144434c804bdd48715b7e9d1e7</srcmd5>
+    <version>131.0.6778.139</version>
+    <time>1734034525</time>
+    <user>anag+factory</user>
+    <comment>- Chromium 131.0.6778.139 (boo#1234361)
+  * CVE-2024-12381: Type Confusion in V8
+  * CVE-2024-12382: Use after free in Translate
+  * Various fixes from internal audits, fuzzing and other initiatives</comment>
+    <requestid>1230050</requestid>
+  </revision>
 </revisionlist>

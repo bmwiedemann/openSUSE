@@ -23,4 +23,15 @@
     <comment>as neovim disallows dashes in names (fixes boo#1232021) (forwarded request 1218625 from rrahl0)</comment>
     <requestid>1218626</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>ca829ae39a0804b3df0f1b4d763c19b7</srcmd5>
+    <version>0.3.2</version>
+    <time>1734034678</time>
+    <user>anag+factory</user>
+    <comment>- disable devel package (for now)
+
+- switch to download_files service
+- enable devel package</comment>
+    <requestid>1230238</requestid>
+  </revision>
 </revisionlist>

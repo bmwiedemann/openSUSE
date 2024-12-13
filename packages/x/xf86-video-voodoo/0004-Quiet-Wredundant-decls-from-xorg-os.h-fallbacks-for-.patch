@@ -1,0 +1,35 @@
+From cfe1fcb4eefba66243ecf1336e38f4e77a491cff Mon Sep 17 00:00:00 2001
+From: Alan Coopersmith <alan.coopersmith@oracle.com>
+Date: Mon, 15 Jan 2024 11:44:21 -0800
+Subject: [PATCH 04/15] Quiet -Wredundant-decls from xorg/os.h fallbacks for
+ new libc functions
+
+The Xorg headers provide their own versions of strlcat, strlcpy, and
+timingsafe_memcmp for platforms that don't have them in libc yet, but
+rely on configure to set HAVE_* defines to determine if they should be
+defined in the headers.
+
+Signed-off-by: Alan Coopersmith <alan.coopersmith@oracle.com>
+---
+ configure.ac | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index b7a711b..fe407d7 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -63,7 +63,10 @@ PKG_CHECK_MODULES(XEXT, [xextproto >= 7.0.99.1],
+                   HAVE_XEXTPROTO_71="no")
+ AM_CONDITIONAL(HAVE_XEXTPROTO_71, [ test "$HAVE_XEXTPROTO_71" = "yes" ])
+ 
+-# Checks for libraries.
++# Checks for library functions
++# We don't use strlcat, strlcpy, or timingsafe_memcmp, but check to quiet
++# -Wredundant-decls warning from xorg/os.h which will otherwise redefine them.
++AC_CHECK_FUNCS([strlcat strlcpy timingsafe_memcmp])
+ 
+ SAVE_CPPFLAGS="$CPPFLAGS"
+ CPPFLAGS="$CPPFLAGS $XORG_CFLAGS"
+-- 
+2.43.0
+

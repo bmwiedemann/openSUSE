@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec 11 23:21:22 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- disable devel package (for now)
+
+-------------------------------------------------------------------
+Wed Dec  4 23:29:49 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- format spec file like the other grammars
+- add neovim links
+- enable devel package
+
+-------------------------------------------------------------------
 Sun Jul 07 13:53:19 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Update to version 0.1.2.41.febf48a:

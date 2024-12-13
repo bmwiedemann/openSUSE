@@ -123,6 +123,12 @@ report_sum ()
 	return
     fi
 
+    if false; then
+	for i in "${kfail[@]}"; do
+	    echo "K$i"
+	done
+    fi
+
     kfail_re=$(join "|" "${kfail[@]}")
     echo FAILs:
     grep ^FAIL: "$sum" \
@@ -341,6 +347,9 @@ kfail=(
     # https://sourceware.org/bugzilla/show_bug.cgi?id=26867
     "FAIL: gdb.threads/signal-sigtrap.exp: sigtrap thread 1: signal SIGTRAP reaches handler"
     "FAIL: gdb.threads/signal-command-handle-nopass.exp: step-over (yes|no): signal SIGUSR1"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=32439
+    "FAIL: gdb.base/step-over-syscall.exp: (fork|vfork): displaced=on: check_pc_after_cross_syscall: single step over (fork|vfork) final pc"
 
 ) # kfail
 
@@ -635,6 +644,12 @@ kfail_powerpc64le=(
     # https://sourceware.org/bugzilla/show_bug.cgi?id=31827
     "FAIL: gdb.base/gnu_vector.exp: call add_structvecs"
 
+    # Failures on opensuse Leap 15.6.  To be reproduced and investigated.
+    "FAIL: gdb.ada/tasks.exp: info threads"
+    "FAIL: gdb.linespec/explicit.exp: complete after -qualified -source: cmd complete .b -qualified -source thr."
+    "FAIL: gdb.linespec/explicit.exp: complete after -qualified -source: tab complete .b -qualified -source thr."
+    "FAIL: gdb.linespec/explicit.exp: complete after -source: cmd complete .b -source thr."
+    "FAIL: gdb.linespec/explicit.exp: complete after -source: tab complete .b -source thr."
 )
 
 kfail_powerpc64le_sle12=(
@@ -717,6 +732,11 @@ kfail_i586=(
     "FAIL: gdb.python/py-parameter.exp: test_integer_parameter: kind=PARAM_UINTEGER: test set to 0"
     "FAIL: gdb.python/py-parameter.exp: test_integer_parameter: kind=PARAM_UINTEGER: test value of 0 via gdb.parameter"
 
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=32407
+    "FAIL: gdb.base/valgrind-bt.exp:"
+    "FAIL: gdb.base/valgrind-disp-step.exp:"
+    "FAIL: gdb.base/valgrind-infcall-2.exp:"
+    "FAIL: gdb.base/valgrind-infcall.exp:"
 )
 
 kfail_arm=(
@@ -829,6 +849,11 @@ case $n in
 
 	    # https://sourceware.org/bugzilla/show_bug.cgi?id=31061
 	    "intrusive_list.h:[0-9]*: internal-error: erase_element: Assertion \`elem_node->prev != INTRUSIVE_LIST_UNLINKED_VALUE' failed\."
+
+	    # Assumed to be variant of
+	    # https://sourceware.org/bugzilla/show_bug.cgi?id=32446
+	    "linux-nat.c:[0-9]*: internal-error: mark_lwp_dead: Assertion .lp->status == 0. failed\."
+
 	)
 
 	kfail_re=$(join "|" "${kfail[@]}")

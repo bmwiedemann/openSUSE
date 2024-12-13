@@ -81,4 +81,28 @@
     <comment></comment>
     <requestid>1045914</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>eb1e9f261496a1841a3e68adc332be4f</srcmd5>
+    <version>1.2.6</version>
+    <time>1734034687</time>
+    <user>anag+factory</user>
+    <comment>- 0002-configure-Use-LT_INIT-from-libtool-2-instead-of-depr.patch
+  0003-Add-X.Org-s-standard-C-warning-flags-to-AM_CFLAGS.patch
+  0004-Quiet-Wredundant-decls-from-xorg-os.h-fallbacks-for-.patch
+  0005-Fix-3-Wunused-but-set-variable-warnings.patch
+  0006-Fix-4-Wunused-variable-warnings.patch
+  0007-voodoo_find_dac-doesn-t-check-device_ids-2.patch
+  0008-use-XNFalloc-instead-of-xnfalloc.patch
+  0009-use-XNFcallocarray-instead-of-xnfcalloc-macro.patch
+  0010-bump-minimal-xorg-version-to-1.18.patch
+  0011-drop-compat-with-ancient-xserver-versions.patch
+  0012-Drop-ifdefs-for-ABI_VIDEODRV_VERSION-6.patch
+  0013-Remove-XAA-support.patch
+  0014-drop-dead-code.patch
+  0015-drop-remains-of-old-compat-code.patch
+  * latest changes to fix build against current xserver
+- u_buildfix.patch
+  * fixes build on i586 (hopefully)</comment>
+    <requestid>1230203</requestid>
+  </revision>
 </revisionlist>

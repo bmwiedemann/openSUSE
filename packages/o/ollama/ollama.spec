@@ -17,7 +17,7 @@
 
 
 Name:           ollama
-Version:        0.4.2
+Version:        0.5.1
 Release:        0
 Summary:        Tool for running AI models on-premise
 License:        MIT
@@ -27,11 +27,14 @@ Source1:        vendor.tar.zstd
 Source2:        ollama.service
 Source3:        %{name}-user.conf
 Patch1:         01-build-verbose.patch
+Patch2:         reproducible.patch
 BuildRequires:  cmake >= 3.24
 BuildRequires:  git
 BuildRequires:  sysuser-tools
 BuildRequires:  zstd
 BuildRequires:  golang(API) >= 1.22
+# 32bit seems not to be supported anymore
+ExcludeArch:    %{ix86} %{arm}
 %sysusers_requires
 %if 0%{?sle_version} == 150600
 BuildRequires:  gcc12-c++
@@ -39,8 +42,6 @@ BuildRequires:  libstdc++6-gcc12
 %else
 BuildRequires:  gcc-c++ >= 11.4.0
 %endif
-# 32bit seems not to be supported anymore
-ExcludeArch:    %ix86 %arm
 
 %description
 Ollama is a tool for running AI models on one's own hardware.

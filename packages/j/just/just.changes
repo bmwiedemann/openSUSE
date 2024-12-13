@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Dec 11 21:59:05 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.38.0:
+  * Add [openbsd] recipe attribute
+  * Add [working-directory] recipe attribute
+  * Add --allow-missing to ignore missing recipe and submodule errors
+  * Add snap package back to readme
+  * Forbid duplicate non-repeatable attributes
+  * Publish docs to GitHub pages on release only
+  * Note lack of support for string interpolation
+  * Embolden help text errors
+  * Style help text
+  * Add --request subcommand for testing
+  * [bin/forbid] Improve error message if ripgrep is missing
+  * Fix Rust 1.83 clippy warnings
+  * Refactor JSON tests
+  * Get Config from ExecutionContext instead of passing separately
+  * Don't write justfiles unchanged by formatting
+- switch to tar_scm, so we can actually offer the correct package-meta
+
+-------------------------------------------------------------------
 Wed Nov 20 22:16:34 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.37.0:

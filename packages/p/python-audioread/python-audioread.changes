@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 12 03:15:22 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Drop patch no-removed-formats.patch, it was a terrible idea.
+- Add patch support-python-313.patch:
+  * Add two external module depends for Python 3.13+.
+
+-------------------------------------------------------------------
 Tue Nov 26 04:12:39 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch no-removed-formats.patch:

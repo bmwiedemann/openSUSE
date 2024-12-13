@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 12 04:44:11 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python-313.patch:
+  * Support Python 3.13 doctest changes.
+- Switch to autosetup macro.
+
+-------------------------------------------------------------------
 Wed Aug 14 14:54:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - switch to modern python for sle15

@@ -1,0 +1,56 @@
+From a2b65b4bca30a9805e4757e5e05860aa00d56483 Mon Sep 17 00:00:00 2001
+From: Alan Coopersmith <alan.coopersmith@oracle.com>
+Date: Tue, 16 Jan 2024 16:30:18 -0800
+Subject: [PATCH 06/15] Fix 4 -Wunused-variable warnings
+
+Signed-off-by: Alan Coopersmith <alan.coopersmith@oracle.com>
+---
+ src/voodoo_dga.c      | 1 -
+ src/voodoo_hardware.c | 4 +++-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/voodoo_dga.c b/src/voodoo_dga.c
+index 76da169..a13c9e7 100644
+--- a/src/voodoo_dga.c
++++ b/src/voodoo_dga.c
+@@ -90,7 +90,6 @@ static Bool VoodooDGAOpenFramebuffer(ScrnInfoPtr pScrn, char **DeviceName,
+ static Bool VoodooDGASetMode(ScrnInfoPtr pScrn, DGAModePtr pDGAMode)
+ {
+     DisplayModePtr pMode;
+-    int scrnIdx = pScrn->pScreen->myNum;
+ 
+     if (pDGAMode) {
+ 	pMode = pDGAMode->mode;
+diff --git a/src/voodoo_hardware.c b/src/voodoo_hardware.c
+index c360263..8dcfb63 100644
+--- a/src/voodoo_hardware.c
++++ b/src/voodoo_hardware.c
+@@ -84,8 +84,8 @@ static Bool VoodooSetupForCPUToScreenTexture(ScrnInfoPtr pScrn, int op,
+ static void VoodooSubsequentCPUToScreenTexture(ScrnInfoPtr pScrn,
+ 	int dstx, int dsty, int srcx, int srcy, int width, int height);
+ 
+-#endif
+ static int debug = 0;
++#endif
+ 
+ /*
+  *	Big endian might need to byteswap these ?
+@@ -866,6 +866,7 @@ static void VoodooReadWriteBank(ScreenPtr pScreen, int bank)
+ }
+ #endif
+ 
++#ifdef HAVE_XAA_H
+ /*
+  *	We normally want to load all four rop variants at once so
+  *	the table is the 16bits for the lot equal.
+@@ -912,6 +913,7 @@ static CARD16 tropxlate[16] = {
+ 	0xAA77,		/* GXnand */
+ 	0xAAFF		/* GXset */
+ };
++#endif
+ 
+ 	
+ void VoodooSync(ScrnInfoPtr pScrn)
+-- 
+2.43.0
+

@@ -339,12 +339,16 @@ Patch2073:      gdb-build-fix-gdbserver-linux-aarch64-low.cc-build.patch
 Patch2074:      powerpc-fix-test-gdb.ada-finish-large.exp.patch
 Patch2075:      gdb-python-make-gdb.unwindinfo.add_saved_register-mo-fixup.patch
 Patch2076:      gdb-exp-redo-cast-handling-for-indirection.patch
+Patch2077:      s390-provide-ibm-z16-arch14-instruction-descriptions.patch
+Patch2078:      gdb-s390-add-arch14-record-replay-support.patch
 
 # Backports from master, not yet available in next release (GDB 16).
 
 Patch2090:      gdb-python-fix-gdb.python-py-disasm.exp-on-arm-linux.patch
 Patch2091:      gdb-testsuite-fix-gdb.fortran-array-bounds.exp-on-ar.patch
 Patch2092:      gdb-symtab-return-correct-reader-for-top-level-cu-in.patch
+Patch2093:      gdb-tdep-s390-add-arch15-record-replay-support.patch
+Patch2094:      gdb-testsuite-avoid-intermittent-failures-on-a-debug.patch
 
 #
 
@@ -824,10 +828,14 @@ find -name "*.info*"|xargs rm -f
 %patch -P 2074 -p1
 %patch -P 2075 -p1
 %patch -P 2076 -p1
+%patch -P 2077 -p1
+%patch -P 2078 -p1
 
 %patch -P 2090 -p1
 %patch -P 2091 -p1
 %patch -P 2092 -p1
+%patch -P 2093 -p1
+%patch -P 2094 -p1
 
 %patch -P 2100 -p1
 %patch -P 2101 -p1

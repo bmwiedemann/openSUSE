@@ -24,6 +24,7 @@ Summary:        Doctest plugin for pytest with support for Sphinx-specific docte
 License:        BSD-3-Clause
 URL:            https://github.com/thisch/pytest-sphinx
 Source:         https://github.com/thisch/pytest-sphinx/archive/v%{version}.tar.gz#/pytest-sphinx-%{version}.tar.gz
+Patch0:         support-python-313.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -42,7 +43,7 @@ BuildRequires:  %{python_module pytest >= 8.1.1}
 Doctest plugin for pytest with support for Sphinx-specific doctest-directives.
 
 %prep
-%setup -q -n pytest-sphinx-%{version}
+%autosetup -p1 -n pytest-sphinx-%{version}
 
 %build
 %pyproject_wheel

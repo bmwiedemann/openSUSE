@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Tue Dec 10 05:57:32 UTC 2024 - william.brown@suse.com
+
+- Update to version 0.9.0~1:
+  * Add experimental concurrent cache support
+  * prepare release 0.9.0 (#2293)
+  * build(deps): bump codecov/codecov-action from 4 to 5 (#2289)
+  * feat: set user agent in webdav requests (#2284)
+  * test CTK 11.1 in CI
+  * add test to ensure -v|--verbose are never dist-compiled
+  * don't generate a dist-compile command for clang-cuda
+  * don't use leading digit in renamed file names
+  * include the output file name in nvcc trace logs
+  * revert adding --gen_module_id_file when --module_id_file_name is present
+  * read NVCC_{PREPEND,APPEND}_FLAGS from the compile environment, not the server environment
+  * add --default-stream arg, fix parsing concatenated form of nvcc -t1
+  * always add --gen_module_id_file if --module_id_file_name is specified
+  * Normalize nvcc subcommand order for CTK <12.0, ensuring the DAG is parsed by inputs/outputs even if the preprocessor, cicc, and ptxas commands are out of order.
+  * hash --gen_module_id_file and --module_id_file_name arguments
+  * add more clang flags
+  * compiler invocations with -v or --verbose must not be dist-compiled, since tools like CMake parse the output and expect to see client paths not dist-server paths
+  * report total compilation count and compile times for uncached and failed compilations
+  * ensure dist_type is reported for failed and uncached compilations
+  * check for more host-compiler nvcc defines to accommodate older nvcc versions
+  * Pass correct argument to rustc -Z ls
+  * Make start_compile_task spawn a tokio task again
+  * ensure SCCACHE_NO_CACHE calls aren't tracked as an uncacheable compilations in the stats
+  * Attempt to fix intermittent config_from_env() test failures by ensuring envvars are reset before unwrapping/asserting
+  * Test nvcc and clang-cuda in workflows/ci.yml
+  * Ensure compatibility with MSVC compatibility on Windows
+  * fix exit_status propagation, handle long nvcc language option (--x)
+  * Detect both nvcc and host compiler version so we can safely revert to caching outer nvcc invocations
+  * Update `Nvcc` compiler to support distributed compilation
+  * Add an `UnhashedFlag` argument type for flags which should not affect the computed hash
+  * Add an `extra_dist_files` field to the `ParsedArguments` struct, so compilers can add additional files to be included for each distributed compilation
+  * Refactor `CompileCommand` into a trait
+  * Ensure `use_preprocessor_cache_mode` considers the current value of the `SCCACHE_DIRECT` envvar.
+  * * Refactor `start_compile_task()` into an async function * Spawn the tokio compilation task in `check_compiler()` instead of in `start_compile_task()` * Map the tokio compilation task into a stream, and return that stream as the response body
+  * refactor: Bump OpenDAL to 0.50 (#2283)
+  * Fix: fix sccache bug for dwo file generate (#2271)
+  * feat: Use profile-generate to replace outdated -Zprofile options (#2282)
+  * chore(docs): bump the github script version used in GHA (#2281)
+  * *: add UDS support (#2206)
+  * Simplify Xcode CI / Docs (#2266)
+  * Fix cache collision between object file and precompiled headers (#2268)
+  * docs: fix formatting in Caching (#2267)
+  * Implement features required by Xcode (#2257)
+
+-------------------------------------------------------------------
 Tue Oct 01 02:15:01 UTC 2024 - william.brown@suse.com
 
 - Update to version 0.8.2~1:

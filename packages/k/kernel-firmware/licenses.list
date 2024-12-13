@@ -78,6 +78,8 @@ r128:		platform
 radeon:		radeon		LICENSE.radeon
 en8811h:	network		LICENSE.airoha
 amdgpu:		amdgpu		LICENSE.amdgpu
+amdxdna:	platform	LICENSE.amdnpu
+amd_pmf:	platform	LICENSE.amd_pmf
 s2255drv:	platform
 rtl8192e:	realtek
 lgs8gxx:	media

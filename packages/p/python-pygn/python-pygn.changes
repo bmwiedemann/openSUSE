@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 11 21:28:12 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+    - fix: change dependency from nntplib to pynntp
+    - First attempt to create .build.yml script for builds.sr.ht
+
+-------------------------------------------------------------------
 Tue Jan  2 22:37:19 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - require setuptools

@@ -1,0 +1,38 @@
+From f1434139a366539ef632ad1aec4764a8c89f2f99 Mon Sep 17 00:00:00 2001
+From: Alan Coopersmith <alan.coopersmith@oracle.com>
+Date: Mon, 15 Jan 2024 11:33:07 -0800
+Subject: [PATCH 02/15] configure: Use LT_INIT from libtool 2 instead of
+ deprecated AC_PROG_LIBTOOL
+
+AC_PROG_LIBTOOL was replaced by LT_INIT in libtool 2 in 2008,
+so it's time to rely on it.
+
+Clears autoconf warnings:
+
+configure.ac:44: warning: The macro 'AC_PROG_LIBTOOL' is obsolete.
+configure.ac:44: You should run autoupdate.
+aclocal.m4:3515: AC_PROG_LIBTOOL is expanded from...
+configure.ac:44: the top level
+
+Signed-off-by: Alan Coopersmith <alan.coopersmith@oracle.com>
+---
+ configure.ac | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index bd48b58..b7a711b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -40,8 +40,7 @@ XORG_MACROS_VERSION(1.8)
+ XORG_DEFAULT_OPTIONS
+ 
+ # Initialize libtool
+-AC_DISABLE_STATIC
+-AC_PROG_LIBTOOL
++LT_INIT([disable-static])
+ 
+ AH_TOP([#include "xorg-server.h"])
+ 
+-- 
+2.43.0
+

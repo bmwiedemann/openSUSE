@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Dec 11 22:17:37 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 1.1.17 tarball; no source code changes; actually we
+  had 1.1.7 before without noticing it ...
+- supersedes 
+  * 0001-egl-wayland-bump-version-to-1.1.17.patch
+  * 0002-Fix-the-include-path-for-drm_fourcc.h.patch
+  * 0003-Fix-a-declaration-after-code.patch
+  * 0004-egl-swap-provide-damage-rectangles-to-wl_surface.patch
+  * 0005-Use-INT32_MAX-for-wl_surface_damage.patch
+  * 0006-egl-wayland-Accept-device-name-from-either-wl_drm-or.patch
+  * 0007-egl-wayland-fix-device-name-case-where-only-wl_drm-e.patch
+  * 0008-Add-ICD-json-file.patch
+  * 0009-egl-wayland-Fix-roundtrip-eating-wl_drm-events-in-ge.patch
+  * 0001-egl-wayland-enable-CI-with-github-actions.patch
+  * 0002-egl-wayland-Fix-use-after-free-in-library-teardown.patch
+  * 0003-egl-wayland-Handle-failure-to-acquire-image-in-wlEgl.patch
+  * 0001-Fix-a-segfault-in-wlEglCreatePlatformWindowSurfaceHo.patch
+  * 0002-Check-for-a-duplicate-wl_surface-in-wlEglCreatePlatf.patch
+
+-------------------------------------------------------------------
 Fri Dec  6 13:44:48 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - 0001-Fix-a-segfault-in-wlEglCreatePlatformWindowSurfaceHo.patch

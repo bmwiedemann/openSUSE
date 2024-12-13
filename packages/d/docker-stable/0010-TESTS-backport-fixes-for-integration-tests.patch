@@ -1,0 +1,65 @@
+From 971d5a3b8431c9263060b12c6b131ebb8158a389 Mon Sep 17 00:00:00 2001
+From: Aleksa Sarai <cyphar@cyphar.com>
+Date: Thu, 21 Nov 2024 20:00:07 +1100
+Subject: [PATCH 10/10] TESTS: backport fixes for integration tests
+
+We need a couple of patches to make the tests work on SLES:
+
+ * 143b3b2ef3d0 ("test: update registry version to latest")
+ * 1a453abfb172 ("integration-cli: don't skip AppArmor tests on SLES")
+
+Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
+---
+ Dockerfile                           | 2 +-
+ integration-cli/requirements_test.go | 3 ---
+ testutil/registry/registry.go        | 4 +++-
+ 3 files changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/Dockerfile b/Dockerfile
+index 463d5cfc1a86..7a23962af09b 100644
+--- a/Dockerfile
++++ b/Dockerfile
+@@ -59,7 +59,7 @@ WORKDIR /go/src/github.com/docker/distribution
+ # from the https://github.com/docker/distribution repository. This version of
+ # the registry is used to test both schema 1 and schema 2 manifests. Generally,
+ # the version specified here should match a current release.
+-ARG REGISTRY_VERSION=v2.3.0
++ARG REGISTRY_VERSION=v2.8.2
+ # REGISTRY_VERSION_SCHEMA1 specifies the version of the registry to build and
+ # install from the https://github.com/docker/distribution repository. This is
+ # an older (pre v2.3.0) version of the registry that only supports schema1
+diff --git a/integration-cli/requirements_test.go b/integration-cli/requirements_test.go
+index 2313272d7704..e5f72397e1bc 100644
+--- a/integration-cli/requirements_test.go
++++ b/integration-cli/requirements_test.go
+@@ -85,9 +85,6 @@ func Network() bool {
+ }
+ 
+ func Apparmor() bool {
+-	if strings.HasPrefix(testEnv.DaemonInfo.OperatingSystem, "SUSE Linux Enterprise Server ") {
+-		return false
+-	}
+ 	buf, err := os.ReadFile("/sys/module/apparmor/parameters/enabled")
+ 	return err == nil && len(buf) > 1 && buf[0] == 'Y'
+ }
+diff --git a/testutil/registry/registry.go b/testutil/registry/registry.go
+index 9213db2ba21a..d8bfe17678a4 100644
+--- a/testutil/registry/registry.go
++++ b/testutil/registry/registry.go
+@@ -107,10 +107,12 @@ http:
+ 	}
+ 
+ 	binary := V2binary
++	args := []string{"serve", confPath}
+ 	if c.schema1 {
+ 		binary = V2binarySchema1
++		args = []string{confPath}
+ 	}
+-	cmd := exec.Command(binary, confPath)
++	cmd := exec.Command(binary, args...)
+ 	cmd.Stdout = c.stdout
+ 	cmd.Stderr = c.stderr
+ 	if err := cmd.Start(); err != nil {
+-- 
+2.47.1
+

@@ -18,4 +18,22 @@
   * Rewrite the grammar once again.</comment>
     <requestid>1191440</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5be7b15e7239a73298546e744fa163f2</srcmd5>
+    <version>0.23.1</version>
+    <time>1734034677</time>
+    <user>anag+factory</user>
+    <comment>- disable devel package (for now)
+
+- update to 0.23.1:
+  * build: update bindings
+  * fix: correct generate with strict mode
+- update to 0.23.0:
+  * build: update bindings
+  * docs: update readme
+- switch to download_files service
+- add neovim links
+- enable devel package</comment>
+    <requestid>1230236</requestid>
+  </revision>
 </revisionlist>

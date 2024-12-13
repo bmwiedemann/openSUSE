@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 11 01:24:06 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 131.0.6778.139 (boo#1234361)
+  * CVE-2024-12381: Type Confusion in V8
+  * CVE-2024-12382: Use after free in Translate
+  * Various fixes from internal audits, fuzzing and other initiatives
+
+-------------------------------------------------------------------
 Wed Dec  4 10:31:04 CET 2024 - ro@suse.de
 
 - Chromium 131.0.6778.108

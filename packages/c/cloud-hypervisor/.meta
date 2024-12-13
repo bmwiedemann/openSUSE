@@ -1,0 +1,5 @@
+<package name="cloud-hypervisor" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Virtualization" package="cloud-hypervisor"/>
+</package>

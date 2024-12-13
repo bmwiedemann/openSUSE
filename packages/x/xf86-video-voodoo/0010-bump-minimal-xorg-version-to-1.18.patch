@@ -1,0 +1,30 @@
+From 12b735fe2cd084f9c135792f55e7cfc8c1bc5339 Mon Sep 17 00:00:00 2001
+From: "Enrico Weigelt, metux IT consult" <info@metux.net>
+Date: Tue, 14 May 2024 16:30:38 +0200
+Subject: [PATCH 10/15] bump minimal xorg version to 1.18
+
+1.18 was released a decade ago, so it seems reasonable stop supporting
+older ones.
+
+Signed-off-by: Enrico Weigelt, metux IT consult <info@metux.net>
+Part-of: <https://gitlab.freedesktop.org/xorg/driver/xf86-video-voodoo/-/merge_requests/7>
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index fe407d7..c1e826f 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -57,7 +57,7 @@ XORG_DRIVER_CHECK_EXT(RENDER, renderproto)
+ XORG_DRIVER_CHECK_EXT(DPMSExtension, xextproto)
+ 
+ # Obtain compiler/linker options for the driver dependencies
+-PKG_CHECK_MODULES(XORG, [xorg-server >= 1.0.99.901 xproto fontsproto xf86dgaproto $REQUIRED_MODULES])
++PKG_CHECK_MODULES(XORG, [xorg-server >= 1.18 xproto fontsproto xf86dgaproto $REQUIRED_MODULES])
+ PKG_CHECK_MODULES(XEXT, [xextproto >= 7.0.99.1],
+                   HAVE_XEXTPROTO_71="yes"; AC_DEFINE(HAVE_XEXTPROTO_71, 1, [xextproto 7.1 available]),
+                   HAVE_XEXTPROTO_71="no")
+-- 
+2.43.0
+

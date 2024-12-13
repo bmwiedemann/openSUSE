@@ -17,7 +17,7 @@
 
 
 Name:           translate-suse-desktop
-Version:        0.20241115.cac1c69
+Version:        0.20241212.07d20b6
 Release:        0
 Summary:        A Build Tool to Provide Desktop Translation
 License:        GPL-3.0-or-later

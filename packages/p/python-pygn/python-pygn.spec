@@ -17,24 +17,24 @@
 
 
 Name:           python-pygn
-Version:        0.11.0
+Version:        0.12.0
 Release:        0
 Summary:        The Python Gateway Script: news2mail mail2news gateway
 License:        GPL-3.0-only
 Group:          Productivity/Networking/News/Utilities
 URL:            https://git.sr.ht/~mcepl/pygn
 Source:         https://files.pythonhosted.org/packages/source/p/pygn/pygn-%{version}.tar.gz
-BuildRequires:  %{python_module nntplib if %python-base >= 3.12}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pynntp if %python-base >= 3.12}
 BuildRequires:  %{python_module rply}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-rply
-Requires:       (python-nntplib if python-base >= 3.12)
+Requires:       (python-pynntp if python-base >= 3.12)
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

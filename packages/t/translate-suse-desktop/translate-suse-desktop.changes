@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec 12 01:49:23 UTC 2024 - opensuse-packaging@opensuse.org
+
+- Update to version 0.20241212.07d20b6:
+  * Remove English text from Burmese translation.
+  * Import translations from conflicting mis-named languages from
+    MozillaFirefox.desktop.
+  * Import remaining translations from MozillaFirefox.desktop
+  * Import translations from mis-named languages from
+    MozillaFirefox.desktop.
+  * Remove en_GB.po that contains no real contents.
+
+-------------------------------------------------------------------
 Fri Nov 29 22:11:19 UTC 2024 - opensuse-packaging@opensuse.org
 
 - Update to version 0.20241115.cac1c69:

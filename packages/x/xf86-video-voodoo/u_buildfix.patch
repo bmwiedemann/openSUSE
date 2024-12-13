@@ -1,0 +1,12 @@
+diff -u -r xf86-video-voodoo-1.2.6.old/src/voodoo_hardware.c xf86-video-voodoo-1.2.6/src/voodoo_hardware.c
+--- xf86-video-voodoo-1.2.6.old/src/voodoo_hardware.c	2024-12-11 17:27:10.628925000 +0100
++++ xf86-video-voodoo-1.2.6/src/voodoo_hardware.c	2024-12-11 17:29:56.398752000 +0100
+@@ -144,7 +144,7 @@
+ static void pci_enable(VoodooPtr pVoo, int wr, int dac, int fifo)
+ {
+ 	CARD32 x;
+-	PCI_READ_LONG(pVoo->PciInfo, &x, 0x40);
++	PCI_READ_LONG(pVoo->PciInfo, (uint32_t *) &x, 0x40);
+ 	x &= ~7;
+ 	x |= wr;
+ 	x |= fifo<<1;

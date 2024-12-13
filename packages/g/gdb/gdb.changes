@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Dec 11 18:13:33 UTC 2024 - Tom de Vries <tdevries@suse.com>
+
+- Maintenance script qa.sh:
+  * Add PR32446 kfail.
+  * Add to be investigated FAILs on Leap 15.6 ppc64le.
+
+-------------------------------------------------------------------
+Tue Dec 10 08:19:28 UTC 2024 - Tom de Vries <tdevries@suse.com>
+
+- Patches added:
+  * gdb-testsuite-avoid-intermittent-failures-on-a-debug.patch
+- Maintenance script qa.sh:
+  * Add PR32439 kfail.
+
+-------------------------------------------------------------------
+Mon Dec  9 14:09:01 UTC 2024 - Tom de Vries <tdevries@suse.com>
+
+- Patches added (jsc#PED-10258):
+  * gdb-tdep-s390-add-arch15-record-replay-support.patch
+
+-------------------------------------------------------------------
+Mon Dec  2 16:05:47 UTC 2024 - Tom de Vries <tdevries@suse.com>
+
+- Patches added (jsc#PED-10751):
+  * s390-provide-ibm-z16-arch14-instruction-descriptions.patch
+  * gdb-s390-add-arch14-record-replay-support.patch
+- Maintenance script qa.sh:
+  * Add PR32407 kfail.
+
+-------------------------------------------------------------------
 Thu Aug 29 05:55:04 UTC 2024 - Tom de Vries <tdevries@suse.com>
 
 - Maintenance script qa.sh:

@@ -16,13 +16,12 @@
 #
 
 
-%define _name qmljs
-Summary:        QML grammar for tree-sitter
-Name:           tree-sitter-%{_name}
+%define         _name qmljs
+Name:           tree-sitter-qmljs
 Version:        0.1.2.41.febf48a
 Release:        0
+Summary:        QML grammar for tree-sitter
 License:        MIT
-Group:          Development/Tools/Other
 URL:            https://github.com/yuja/tree-sitter-qmljs
 Source0:        %{name}-%{version}.tar.gz
 BuildRequires:  tree-sitter
@@ -33,7 +32,7 @@ BuildRequires:  treesitter_grammar_src(tree-sitter-typescript)
 %{summary}.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 %treesitter_configure
@@ -42,10 +41,16 @@ BuildRequires:  treesitter_grammar_src(tree-sitter-typescript)
 %install
 %treesitter_install
 
-%check
+#neovim stuff
+install -d %{buildroot}%{_libdir}/tree_sitter
+ln -s %{_libdir}/lib%{name}.so %{buildroot}%{_libdir}/tree_sitter/%{_name}.so
 
 %files
-%{treesitter_files}
 %license LICENSE
+%treesitter_files
+%{_libdir}/tree_sitter/%{_name}.so
+%if 0%{?suse_version} < 1600
+%dir %{_libdir}/tree_sitter
+%endif
 
 %changelog

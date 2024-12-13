@@ -1,0 +1,218 @@
+From c70353ddf49d557c596a47b835b6b8d8bbe35ebe Mon Sep 17 00:00:00 2001
+From: "Enrico Weigelt, metux IT consult" <info@metux.net>
+Date: Tue, 28 May 2024 10:43:35 +0200
+Subject: [PATCH 15/15] drop remains of old compat code
+
+Signed-off-by: Enrico Weigelt, metux IT consult <info@metux.net>
+Part-of: <https://gitlab.freedesktop.org/xorg/driver/xf86-video-voodoo/-/merge_requests/9>
+---
+ src/Makefile.am     |  1 -
+ src/compat-api.h    | 58 ---------------------------------------------
+ src/voodoo.h        |  2 --
+ src/voodoo_dga.c    |  2 +-
+ src/voodoo_driver.c | 30 ++++++++++-------------
+ 5 files changed, 14 insertions(+), 79 deletions(-)
+ delete mode 100644 src/compat-api.h
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 7a6d4d9..04e9ea5 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -29,7 +29,6 @@ voodoo_drv_la_LDFLAGS = -module -avoid-version
+ voodoo_drv_ladir = @moduledir@/drivers
+ 
+ voodoo_drv_la_SOURCES = \
+-         compat-api.h \
+          voodoo_dga.c \
+          voodoo_driver.c \
+          voodoo.h \
+diff --git a/src/compat-api.h b/src/compat-api.h
+deleted file mode 100644
+index 2376b25..0000000
+--- a/src/compat-api.h
++++ /dev/null
+@@ -1,58 +0,0 @@
+-/*
+- * Copyright 2012 Red Hat, Inc.
+- *
+- * Permission is hereby granted, free of charge, to any person obtaining a
+- * copy of this software and associated documentation files (the "Software"),
+- * to deal in the Software without restriction, including without limitation
+- * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+- * and/or sell copies of the Software, and to permit persons to whom the
+- * Software is furnished to do so, subject to the following conditions:
+- *
+- * The above copyright notice and this permission notice (including the next
+- * paragraph) shall be included in all copies or substantial portions of the
+- * Software.
+- *
+- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
+- * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+- * DEALINGS IN THE SOFTWARE.
+- *
+- * Author: Dave Airlie <airlied@redhat.com>
+- */
+-
+-/* this file provides API compat between server post 1.13 and pre it,
+-   it should be reused inside as many drivers as possible */
+-#ifndef COMPAT_API_H
+-#define COMPAT_API_H
+-
+-#define SCRN_ARG_TYPE ScrnInfoPtr
+-#define SCRN_INFO_PTR(arg1) ScrnInfoPtr pScrn = (arg1)
+-
+-#define SCREEN_ARG_TYPE ScreenPtr
+-#define SCREEN_PTR(arg1) ScreenPtr pScreen = (arg1)
+-
+-#define SCREEN_INIT_ARGS_DECL ScreenPtr pScreen, int argc, char **argv
+-
+-#define BLOCKHANDLER_ARGS_DECL ScreenPtr arg, pointer pTimeout, pointer pReadmask
+-#define BLOCKHANDLER_ARGS arg, pTimeout, pReadmask
+-
+-#define CLOSE_SCREEN_ARGS_DECL ScreenPtr pScreen
+-#define CLOSE_SCREEN_ARGS pScreen
+-
+-#define ADJUST_FRAME_ARGS_DECL ScrnInfoPtr arg, int x, int y
+-#define ADJUST_FRAME_ARGS(arg, x, y) arg, x, y
+-
+-#define SWITCH_MODE_ARGS_DECL ScrnInfoPtr arg, DisplayModePtr mode
+-#define SWITCH_MODE_ARGS(arg, m) arg, m
+-
+-#define FREE_SCREEN_ARGS_DECL ScrnInfoPtr arg
+-
+-#define VT_FUNC_ARGS_DECL ScrnInfoPtr arg
+-#define VT_FUNC_ARGS pScrn
+-
+-#define XF86_SCRN_ARG(x) (x)
+-
+-#endif
+diff --git a/src/voodoo.h b/src/voodoo.h
+index 772b3b6..9667081 100644
+--- a/src/voodoo.h
++++ b/src/voodoo.h
+@@ -1,8 +1,6 @@
+ #include "voodoo_pcirename.h"
+ #include <string.h>
+ 
+-#include "compat-api.h"
+-
+ typedef struct {
+   CARD32		m;
+   CARD32		n;
+diff --git a/src/voodoo_dga.c b/src/voodoo_dga.c
+index b0865dc..d1cb891 100644
+--- a/src/voodoo_dga.c
++++ b/src/voodoo_dga.c
+@@ -96,7 +96,7 @@ static Bool VoodooDGASetMode(ScrnInfoPtr pScrn, DGAModePtr pDGAMode)
+ 	    return TRUE;
+     }
+ 
+-    if (!(*pScrn->SwitchMode)(SWITCH_MODE_ARGS(pScrn, pMode)))
++    if (!(*pScrn->SwitchMode)(pScrn, pMode))
+ 	return FALSE;
+     return TRUE;
+ }
+diff --git a/src/voodoo_driver.c b/src/voodoo_driver.c
+index 88de297..8f336c6 100644
+--- a/src/voodoo_driver.c
++++ b/src/voodoo_driver.c
+@@ -72,15 +72,15 @@ static const OptionInfoRec * VoodooAvailableOptions(int chipid, int busid);
+ static void	VoodooIdentify(int flags);
+ static Bool	VoodooProbe(DriverPtr drv, int flags);
+ static Bool	VoodooPreInit(ScrnInfoPtr pScrn, int flags);
+-static Bool	VoodooScreenInit(SCREEN_INIT_ARGS_DECL);
+-static Bool	VoodooEnterVT(VT_FUNC_ARGS_DECL);
+-static void	VoodooLeaveVT(VT_FUNC_ARGS_DECL);
+-static Bool	VoodooCloseScreen(CLOSE_SCREEN_ARGS_DECL);
++static Bool	VoodooScreenInit(ScreenPtr pScreen, int argc, char **argv);
++static Bool	VoodooEnterVT(ScrnInfoPtr pScrn);
++static void	VoodooLeaveVT(ScrnInfoPtr pScrn);
++static Bool	VoodooCloseScreen(ScreenPtr pScreen);
+ static Bool	VoodooSaveScreen(ScreenPtr pScreen, int mode);
+-static void     VoodooFreeScreen(FREE_SCREEN_ARGS_DECL);
++static void     VoodooFreeScreen(ScrnInfoPtr arg);
+ static void     VoodooRefreshArea16(ScrnInfoPtr pScrn, int num, BoxPtr pbox);
+ static void     VoodooRefreshArea24(ScrnInfoPtr pScrn, int num, BoxPtr pbox);
+-static Bool	VoodooSwitchMode(SWITCH_MODE_ARGS_DECL);
++static Bool	VoodooSwitchMode(ScrnInfoPtr pScrn, DisplayModePtr mode);
+ static Bool     VoodooModeInit(ScrnInfoPtr pScrn, DisplayModePtr mode);
+ static void     VoodooRestore(ScrnInfoPtr pScrn, Bool Closing);
+ 
+@@ -572,7 +572,7 @@ VoodooPreInit(ScrnInfoPtr pScrn, int flags)
+ /* Mandatory */
+ /* This gets called at the start of each server generation */
+ static Bool
+-VoodooScreenInit(SCREEN_INIT_ARGS_DECL)
++VoodooScreenInit(ScreenPtr pScreen, int argc, char **argv)
+ {
+   ScrnInfoPtr pScrn;
+   VoodooPtr pVoo;
+@@ -718,9 +718,8 @@ VoodooScreenInit(SCREEN_INIT_ARGS_DECL)
+ 
+ /* Mandatory */
+ static Bool
+-VoodooEnterVT(VT_FUNC_ARGS_DECL)
++VoodooEnterVT(ScrnInfoPtr pScrn)
+ {
+-  SCRN_INFO_PTR(arg);
+   return VoodooModeInit(pScrn, pScrn->currentMode);
+ }
+ 
+@@ -733,9 +732,8 @@ VoodooEnterVT(VT_FUNC_ARGS_DECL)
+ 
+ /* Mandatory */
+ static void
+-VoodooLeaveVT(VT_FUNC_ARGS_DECL)
++VoodooLeaveVT(ScrnInfoPtr pScrn)
+ {
+-  SCRN_INFO_PTR(arg);
+   VoodooRestore(pScrn, FALSE);
+ }
+ 
+@@ -748,7 +746,7 @@ VoodooLeaveVT(VT_FUNC_ARGS_DECL)
+ 
+ /* Mandatory */
+ static Bool
+-VoodooCloseScreen(CLOSE_SCREEN_ARGS_DECL)
++VoodooCloseScreen(ScreenPtr pScreen)
+ {
+   ScrnInfoPtr pScrn = xf86ScreenToScrn(pScreen);
+   VoodooPtr pVoo = VoodooPTR(pScrn);
+@@ -766,7 +764,7 @@ VoodooCloseScreen(CLOSE_SCREEN_ARGS_DECL)
+   pScrn->vtSema = FALSE;
+ 
+   pScreen->CloseScreen = pVoo->CloseScreen;
+-  return (*pScreen->CloseScreen)(CLOSE_SCREEN_ARGS);
++  return (*pScreen->CloseScreen)(pScreen);
+ }
+ 
+ 
+@@ -774,9 +772,8 @@ VoodooCloseScreen(CLOSE_SCREEN_ARGS_DECL)
+ 
+ /* Optional */
+ static void
+-VoodooFreeScreen(FREE_SCREEN_ARGS_DECL)
++VoodooFreeScreen(ScrnInfoPtr pScrn)
+ {
+-  SCRN_INFO_PTR(arg);
+   VoodooPtr pVoo = VoodooPTR(pScrn);
+   /*
+    * This only gets called when a screen is being deleted.  It does not
+@@ -860,9 +857,8 @@ VoodooModeInit(ScrnInfoPtr pScrn, DisplayModePtr mode)
+  *	this is needed but it does no harm.
+  */
+  
+-static Bool VoodooSwitchMode(SWITCH_MODE_ARGS_DECL)
++static Bool VoodooSwitchMode(ScrnInfoPtr pScrn, DisplayModePtr mode)
+ {
+-  SCRN_INFO_PTR(arg);
+   VoodooSync(pScrn);
+   return VoodooModeInit(pScrn, mode);
+ }
+-- 
+2.43.0
+

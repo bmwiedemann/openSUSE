@@ -1,0 +1,26 @@
+From 2495db60d9c163941e1ae4b89982ecb8ce4e954a Mon Sep 17 00:00:00 2001
+From: Alan Coopersmith <alan.coopersmith@oracle.com>
+Date: Mon, 15 Jan 2024 11:38:33 -0800
+Subject: [PATCH 03/15] Add X.Org's standard C warning flags to AM_CFLAGS
+
+Signed-off-by: Alan Coopersmith <alan.coopersmith@oracle.com>
+---
+ src/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index c145c27..7a6d4d9 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -23,7 +23,7 @@
+ # -avoid-version prevents gratuitous .0.0.0 version numbers on the end
+ # _ladir passes a dummy rpath to libtool so the thing will actually link
+ # TODO: -nostdlib/-Bstatic/-lgcc platform magic, not installing the .a, etc.
+-AM_CFLAGS = @XORG_CFLAGS@
++AM_CFLAGS = $(BASE_CFLAGS) $(XORG_CFLAGS)
+ voodoo_drv_la_LTLIBRARIES = voodoo_drv.la
+ voodoo_drv_la_LDFLAGS = -module -avoid-version
+ voodoo_drv_ladir = @moduledir@/drivers
+-- 
+2.43.0
+

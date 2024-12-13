@@ -1010,4 +1010,12 @@ Smoketest in GNOME:Next passed</comment>
     <comment>- Add 13935.patch: Fix test suite with rust 1.83. (forwarded request 1228752 from dimstar)</comment>
     <requestid>1228753</requestid>
   </revision>
+  <revision rev="118" vrev="4">
+    <srcmd5>23fd6fe336c1424cc7e7ff650d1fdc20</srcmd5>
+    <version>1.6.0</version>
+    <time>1734034460</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1230120</requestid>
+  </revision>
 </revisionlist>

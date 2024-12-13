@@ -20,7 +20,7 @@
 %define lname libnvidia-egl-wayland%{so_ver}
 %define rname egl-wayland
 Name:           libnvidia-egl-wayland
-Version:        1.1.16
+Version:        1.1.17
 Release:        0
 Summary:        The EGLStream-based Wayland external platform
 License:        MIT
@@ -28,20 +28,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/NVIDIA/egl-wayland
 Source0:        https://github.com/NVIDIA/egl-wayland/archive/%{version}/%{rname}-%{version}.tar.gz
 Source1:        baselibs.conf
-Patch1:         0001-egl-wayland-bump-version-to-1.1.17.patch
-Patch2:         0002-Fix-the-include-path-for-drm_fourcc.h.patch
-Patch3:         0003-Fix-a-declaration-after-code.patch
-Patch4:         0004-egl-swap-provide-damage-rectangles-to-wl_surface.patch
-Patch5:         0005-Use-INT32_MAX-for-wl_surface_damage.patch
-Patch6:         0006-egl-wayland-Accept-device-name-from-either-wl_drm-or.patch
-Patch7:         0007-egl-wayland-fix-device-name-case-where-only-wl_drm-e.patch
-Patch8:         0008-Add-ICD-json-file.patch
-Patch9:         0009-egl-wayland-Fix-roundtrip-eating-wl_drm-events-in-ge.patch
-Patch11:        0001-egl-wayland-enable-CI-with-github-actions.patch
-Patch12:        0002-egl-wayland-Fix-use-after-free-in-library-teardown.patch
-Patch13:        0003-egl-wayland-Handle-failure-to-acquire-image-in-wlEgl.patch
-Patch21:        0001-Fix-a-segfault-in-wlEglCreatePlatformWindowSurfaceHo.patch
-Patch22:        0002-Check-for-a-duplicate-wl_surface-in-wlEglCreatePlatf.patch
 BuildRequires:  gcc-c++
 BuildRequires:  meson >= 0.50
 BuildRequires:  ninja
