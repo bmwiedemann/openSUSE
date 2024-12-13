@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 12 12:52:32 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add patch py313.patch to fix compatibility with Python 3.13
+  * sent upstream in https://github.com/ixs/napalm-procurve/pull/33
+
+-------------------------------------------------------------------
 Wed Jan 11 08:25:45 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Skip failing test test_get_facts (gh#ixs/napalm-procurve#30).

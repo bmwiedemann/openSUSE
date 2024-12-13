@@ -1,7 +1,7 @@
 #
 # spec file for package python-napalm-procurve
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -31,6 +31,8 @@ Patch0:         setup-parse-requirements.patch
 Patch1:         float-speed.patch
 #PATCH-FIX-OPENSUSE fix-linter.patch remove pyflakes from code lint because it's failing
 Patch2:         fix-linter.patch
+# PATCH-FIX-UPSTREAM https://github.com/ixs/napalm-procurve/pull/33 compatibility with Python 3.13
+Patch3:         py313.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros

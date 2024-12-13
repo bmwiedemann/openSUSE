@@ -84,4 +84,15 @@
 </comment>
     <requestid>1057734</requestid>
   </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>3e97e51875b269ddd097f423045e3754</srcmd5>
+    <version>0.7.0</version>
+    <time>1734125958</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1230581 from mcalabkova
+
+- Add patch py313.patch to fix compatibility with Python 3.13
+    * sent upstream in https://github.com/ixs/napalm-procurve/pull/33</comment>
+    <requestid>1230773</requestid>
+  </revision>
 </revisionlist>

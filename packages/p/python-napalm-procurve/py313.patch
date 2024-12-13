@@ -1,0 +1,27 @@
+Index: napalm-procurve-0.7.0/napalm_procurve/procurve.py
+===================================================================
+--- napalm-procurve-0.7.0.orig/napalm_procurve/procurve.py
++++ napalm-procurve-0.7.0/napalm_procurve/procurve.py
+@@ -23,7 +23,12 @@ from __future__ import unicode_literals
+ import re
+ import sys
+ import socket
+-import telnetlib
++try:
++    from telnetlib import IAC, NOP
++except ImportError:
++    # Python 3.13+ has dropped telnetlib
++    IAC = chr(255)
++    NOP = chr(241)
+ 
+ from netmiko import ConnectHandler
+ from napalm.base.base import NetworkDriver
+@@ -129,7 +134,7 @@ class ProcurveDriver(NetworkDriver):
+             if self.transport == "telnet":
+                 # Try sending IAC + NOP (IAC is telnet way of sending command
+                 # IAC = Interpret as Command (it comes before the NOP)
+-                self.device.write_channel(telnetlib.IAC + telnetlib.NOP)
++                self.device.write_channel(IAC + NOP)
+                 return {"is_alive": True}
+             else:
+                 # SSH
