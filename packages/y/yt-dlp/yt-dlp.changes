@@ -1,8 +1,17 @@
 -------------------------------------------------------------------
+Fri Dec 13 12:28:50 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2024.12.13
+  * yt: fix signature function extraction for 2f1832d2
+  * yt: prioritize original language over auto-dubbed audio
+
+-------------------------------------------------------------------
 Thu Dec 12 12:50:03 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2024.12.06
-  * No changelog was provided
+  * yt: fix ``n`` sig extraction for player 3bb1f723
+  * yt: fix signature function extraction
+  * yt: player client maintenance
 
 -------------------------------------------------------------------
 Tue Dec  3 20:59:18 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
