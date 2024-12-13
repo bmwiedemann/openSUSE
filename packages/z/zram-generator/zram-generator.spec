@@ -1,7 +1,7 @@
 #
 # spec file for package zram-generator
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global _systemd_util_dir /usr/lib/systemd
 
 Name:           zram-generator
-Version:        1.1.2
+Version:        1.2.1
 Release:        0
 Summary:        Systemd unit generator for zram swap devices
 License:        MIT
@@ -29,13 +29,12 @@ Group:          Development/Libraries/Rust
 URL:            https://github.com/systemd/zram-generator
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
-Source2:        cargo_config
-Source3:        zram-generator-rpmlintrc
 
 # pregenerated man-pages to avoid dependency on ronn
-Source4:        zram-generator.conf.5
-Source5:        zram-generator.8
+Source2:        zram-generator.conf.5
+Source3:        zram-generator.8
 
+BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  pkgconfig(systemd)
 
@@ -48,18 +47,15 @@ To configure and activate swap and zram devices with file-systems,  create a con
 
 %prep
 %autosetup -a1 -p1 -n %{name}-%{version}
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
-cp %{SOURCE4} man/
-cp %{SOURCE5} man/
+cp %{SOURCE2} man/
+cp %{SOURCE3} man/
 
 %build
 export SYSTEMD_UTIL_DIR=%{_systemd_util_dir}
 export LC_ALL=C.UTF-8
 %{cargo_build}
 
-%make_build SYSTEMD_SYSTEM_UNIT_DIR=%{_unitdir} SYSTEMD_SYSTEM_GENERATOR_DIR=%{_systemdgeneratordir} \
-  systemd-service
+%make_build SYSTEMD_SYSTEM_UNIT_DIR=%{_unitdir} SYSTEMD_SYSTEM_GENERATOR_DIR=%{_systemdgeneratordir} systemd-service
 
 %install
 %make_install SYSTEMD_SYSTEM_UNIT_DIR=%{_unitdir} SYSTEMD_SYSTEM_GENERATOR_DIR=%{_systemdgeneratordir} NOBUILD=1

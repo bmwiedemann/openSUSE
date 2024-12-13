@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Dec 10 16:18:41 UTC 2024 - bbrunner@suse.com
+
+- Update to version 1.2.1:
+  * Fix panic in option parsing
+  * New option to set mem_limit for devices
+  * Recompression algorithms and their parameters can be configured
+  * External programs can be called and their return value
+    included in calculation of properties of zram devices
+  * Swap units will survive shutdown (unless they have a writeback
+    device configured)
+  * Emit nice warning if writeback-device= is configured but not supported
+  * Small updates to documentation
+  * Small updates to build system and tests
+- Cleanup spec-file
+- Updated vendor.tar.xz
+
+-------------------------------------------------------------------
 Wed Jun 29 07:44:43 UTC 2022 - Benjamin Brunner <bbrunner@suse.com>
 
 - Fixed typo in description (bsc#1200961)
