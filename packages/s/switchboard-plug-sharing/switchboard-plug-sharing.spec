@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.settings.sharing
 Name:           switchboard-plug-sharing
-Version:        8.0.0
+Version:        8.0.1
 Release:        0
 Summary:        Configure the sharing of system services
 License:        GPL-3.0-or-later
