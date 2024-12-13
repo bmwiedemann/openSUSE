@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-Bottleneck
 Version:        1.4.2
 Release:        0
@@ -24,7 +25,7 @@ License:        BSD-2-Clause AND BSD-3-Clause
 URL:            https://github.com/pydata/bottleneck
 Source0:        https://files.pythonhosted.org/packages/source/b/bottleneck/bottleneck-%{version}.tar.gz
 Source99:       python-Bottleneck.rpmlintrc
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module numpy-devel >= 1.16.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}

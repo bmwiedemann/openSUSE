@@ -153,4 +153,12 @@ This is a dependency of python-pandas.</comment>
   * Add python 3.13 build</comment>
     <requestid>1217028</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>f764a855d55b5947a0b45a4b00e3652b</srcmd5>
+    <version>1.4.2</version>
+    <time>1734125976</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1230797</requestid>
+  </revision>
 </revisionlist>
