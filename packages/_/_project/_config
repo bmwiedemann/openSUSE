@@ -238,6 +238,7 @@ FileProvides: /usr/bin/7z 7zip
 FileProvides: /usr/bin/Xvnc xorg-x11-Xvnc
 FileProvides: /usr/bin/appstream-compose appstream-glib
 FileProvides: /usr/bin/appstreamcli AppStream
+FileProvides: /usr/libexec/appstreamcli-compose AppStream-compose
 FileProvides: /usr/bin/ar binutils busybox-misc
 FileProvides: /usr/bin/at at
 FileProvides: /usr/bin/awk busybox-gawk gawk
