@@ -17,7 +17,7 @@
 
 
 Name:           oomstaller
-Version:        0.2.0
+Version:        0.3.0
 Release:        0
 Summary:        A tool for suppressing swap thrashing at build time
 License:        BSL-1.0
@@ -40,10 +40,12 @@ swapping from occurring.
 
 %install
 install -D -m0755 %{name} %{buildroot}%{_bindir}/%{name}
+install -D -m0644 %{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
 
 %files
 %license LICENSE.txt
 %doc README.md
 %{_bindir}/*
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %changelog
