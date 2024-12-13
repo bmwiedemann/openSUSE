@@ -1,7 +1,7 @@
-Index: rosegarden-19.12/scripts/distclean.sh
+Index: b/scripts/distclean.sh
 ===================================================================
---- rosegarden-19.12.orig/scripts/distclean.sh	2020-06-03 13:56:12.929998737 +0200
-+++ rosegarden-19.12/scripts/distclean.sh	2020-06-03 13:56:42.131153109 +0200
+--- a/scripts/distclean.sh	2024-12-04 20:06:05.000000000 +0200
++++ b/scripts/distclean.sh	2024-12-13 12:49:36.571854220 +0200
 @@ -1,12 +1,10 @@
  #!/bin/sh
 -rm -f  {,src/,po/,docs/,data/}CMakeCache.txt
@@ -23,10 +23,10 @@ Index: rosegarden-19.12/scripts/distclean.sh
 +	done
 +done
  rm -rf RGbuild/*
-Index: rosegarden-19.12/scripts/reorganise.sh
+Index: b/scripts/reorganise.sh
 ===================================================================
---- rosegarden-19.12.orig/scripts/reorganise.sh	2020-06-03 13:56:12.929998737 +0200
-+++ rosegarden-19.12/scripts/reorganise.sh	2020-06-03 13:56:42.131153109 +0200
+--- a/scripts/reorganise.sh	2024-12-04 20:06:05.000000000 +0200
++++ b/scripts/reorganise.sh	2024-12-13 12:49:36.571854220 +0200
 @@ -585,7 +585,7 @@ for file in guitar/*.h ; do
  	fi
      fi

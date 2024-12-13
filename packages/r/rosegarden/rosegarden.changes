@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Fri Dec 13 10:22:07 UTC 2024 - Dave Plater <davejplater@gmail.com>
+
+- Renamed rosegarden-10.10-filepaths.patch to
+  rosegarden-fix-filepaths.patch to prevent future confusion.
+
+-------------------------------------------------------------------
+Thu Dec  5 00:23:45 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- enable LV2 beta support
+- refresh rosegarden-10.10-filepaths.patch
+- update .spec
+- update to 24.12: 
+  * Bug Fixes
+
+  * LV2: Fix link problem with no gtk2. [2e168f0d]
+  * LV2: Add lv2 check for GUI library ok. [9cb306b3]
+  * Manage MIDI Banks and Programs dialog now allows the same bank
+  * MSB/LSB to be used for percussion and non-percussion banks on
+  * the same device. Bug #1692.
+  * Fix wrong ports being assigned on file load. Bug #1687.
+  * [663099cc]
+  * Fix autoscroll and highlighting behavior with multiple segments
+  * on a track. Bug #1672.
+  * Fix missing scroll bar on Instrument Parameters Bank dropdown.
+  * Bug #1695. [295a2f7a]
+  * Fix "turn repeats into copies" misses last segment. Bug #1696.
+  * [afcf2f0e]
+  * Fix shortcut order ignored. Bug #1702. [b1272a6d]
+  * Fix unexpected cursor position when moving from note to note
+  * on a bar with a clef or time signature. Bug #1704. [215b9d27]
+  * Fix unexpected translation of bank and program names. Bug #1705.
+  * [6dbd6bcd]
+  * Fix unexpected Save As... directory. Feature #522. [15db9d10]
+  * Fix broken tempo line in tempo ruler after adding a time
+  * signature change. Bug #1706. [6a7ef89e]
+  * Fix "Modify MIDI Filters" dialog does not mark document as changed.
+  * Bug #1707. [4e505977]
+  * Fix LV2 sfizz plugin support. [8fce0614]
+  * Fix group box formatting issue in native/light theme. Bug #1678.
+  * [d2df6376]
+  * LV2: Fix crashes and locking related to atom buffers. [95b09722]
+  * [be37b31e]
+
+  * New Features
+
+  * Make MIDI File Division value configurable for Export.
+  * GH #9. [991e4839]
+  * WAV export of audio and soft synth tracks.
+  * File > Export > Export WAV File... [5b4d109e]
+  * Apply interpretations to more than one segment.
+  * Segment > Interpret... Feature #517. [b8a243a5]
+  * LV2 support has been promoted to beta. [a602850c]
+  * Advanced Looping has been promoted out of beta. [25bdbf69]
+
+  * General Improvements
+  
+  * Manage MIDI Banks and Programs dialog is now full-featured and can
+  * be used to edit every aspect of an .rgd device file.
+  * Studio > Manage MIDI Devices > Banks...
+  * Tempo and Time Signature Editor has been rewritten and improved.
+
+  * Additional Contributions
+
+  * Korg-M3-Factory-ALL.rgd (Chuck Elliot)
+  * Korg-M1.rgd (Chuck Elliot)
+  * Updated Polish translation (Grzegorz Pruchniakowski)
+  * Updated Chinese translation (Icenowy Zheng)
+  * Yamaha-MM6-MM8.rgd (Icenowy Zheng)
+  * Yamaha-PSR-SX600.rgd (Huanyu Liu)
+
+-------------------------------------------------------------------
 Sun Jun 30 08:28:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 24.06:

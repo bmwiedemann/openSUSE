@@ -16,10 +16,10 @@
 #
 
 
-%define vers    22.12
+%define vers    24.12
 
 Name:           rosegarden
-Version:        24.06
+Version:        24.12
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Midi, Audio And Notation Editor
@@ -29,7 +29,7 @@ Source0:        https://github.com/tedfelix/%{name}-official/archive/refs/tags/%
 Source1:        %{name}.xpm
 Source2:        %{name}.1
 # PATCH-FIX-OPENSUSE davejplater@gmail.com This patch fixes the file search paths for examples, templates and midi driver libraries.
-Patch1:         rosegarden-10.10-filepaths.patch
+Patch1:         rosegarden-fix-filepaths.patch
 # PATCH-FIX-OPENSUSE ledest@gmail.com fix bashisms in scripts
 Patch2:         rosegarden-14.02-fix-bashisms.patch
 # PATCH-FIX-OPENSUSE port scripts/sf2rg.py to Python 3
@@ -59,6 +59,7 @@ BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  pkgconfig(lilv-0)
 #BuildRequires:  pkgconfig(libxml++-2.6)
 BuildRequires:  shared-mime-info
 BuildRequires:  update-desktop-files
@@ -108,7 +109,7 @@ make %{?_smp_mflags}
 
 %install
 mkdir -p %{buildroot}%{_datadir}/%{name}/scripts
-cp -p scripts/* %{buildroot}%{_datadir}/%{name}/scripts/
+cp -p -r scripts/* %{buildroot}%{_datadir}/%{name}/scripts/
 cp -r data/* %{buildroot}%{_datadir}/%{name}/
 
 pushd build

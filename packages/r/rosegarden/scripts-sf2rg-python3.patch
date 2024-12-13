@@ -1,7 +1,7 @@
-Index: rosegarden-20.12/scripts/sf2rg.py
+Index: b/scripts/sf2rg.py
 ===================================================================
---- rosegarden-20.12.orig/scripts/sf2rg.py
-+++ rosegarden-20.12/scripts/sf2rg.py
+--- a/scripts/sf2rg.py	2024-12-04 20:06:05.000000000 +0200
++++ b/scripts/sf2rg.py	2024-12-13 12:49:45.871443718 +0200
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python3

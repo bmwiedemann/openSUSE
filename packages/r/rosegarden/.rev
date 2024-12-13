@@ -468,4 +468,12 @@ Only recommend jack to allow pipewire jack to be installed.
   * Fix UnusedAudioSelectionDialog column widths.</comment>
     <requestid>1184082</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>01cd3e650f02dc3c82b6d10a1d939ce1</srcmd5>
+    <version>24.12</version>
+    <time>1734125966</time>
+    <user>anag+factory</user>
+    <comment>fix patch names</comment>
+    <requestid>1230782</requestid>
+  </revision>
 </revisionlist>
