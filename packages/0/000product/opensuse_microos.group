@@ -1100,6 +1100,7 @@
     <package name="libixml11" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libjack0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libjansson4" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-sssd_ldap -->
+    <package name="libjasper7" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libjavascriptcoregtk-4_1-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libjavascriptcoregtk-6_0-1" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libjaylink0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
@@ -1734,6 +1735,7 @@
     <package name="qqc2-breeze-style6" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="qrencode" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="qt6-declarative-imports" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
+    <package name="qt6-imageformats" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="qt6-multimedia" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="qt6-multimedia-imports" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="qt6-network-tls" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
@@ -1768,7 +1770,7 @@
     <package name="rust-keylime" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="samba" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="samba-ad-dc-libs" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
-    <package name="samba-client" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
+    <package name="samba-client" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="samba-client-libs" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="samba-dcerpc" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="samba-libs" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->

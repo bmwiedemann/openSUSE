@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20241212" schemaversion="4.1">
+<image name="OBS__openSUSE___20241213" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20241212</productvar>
+      <productvar name="VERSION">20241213</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20241212,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20241213,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20241212/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20241213/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1804,7 +1804,9 @@
       <repopackage name="libidn2-lang"/>
       <repopackage name="libiec61883-0"/>
       <repopackage name="libIex-3_2-31"/>
+      <repopackage name="libIex-3_2-31-x86-64-v3"/>
       <repopackage name="libIlmThread-3_2-31"/>
+      <repopackage name="libIlmThread-3_2-31-x86-64-v3"/>
       <repopackage name="libimagequant0"/>
       <repopackage name="libImath-3_1-29"/>
       <repopackage name="libImlib2-1"/>
@@ -1873,7 +1875,7 @@
       <repopackage name="libKDEGames6"/>
       <repopackage name="libkdepim"/>
       <repopackage name="libkdepim-lang"/>
-      <repopackage name="libkdevplatform60"/>
+      <repopackage name="libkdevplatform61"/>
       <repopackage name="libkdsoap-qt6-2"/>
       <repopackage name="libKDSoapWSDiscoveryClient0"/>
       <repopackage name="libKEduVocDocument5"/>
@@ -2105,8 +2107,6 @@
       <repopackage name="libKPim6AkonadiCore6"/>
       <repopackage name="libKPim6AkonadiMime6"/>
       <repopackage name="libKPim6AkonadiMime6-lang"/>
-      <repopackage name="libKPim6AkonadiNotes6"/>
-      <repopackage name="libKPim6AkonadiNotes6-lang"/>
       <repopackage name="libKPim6AkonadiPrivate6"/>
       <repopackage name="libKPim6AkonadiSearch6"/>
       <repopackage name="libKPim6AkonadiWidgets6"/>
@@ -2358,7 +2358,9 @@
       <repopackage name="libopencore-amrwb0"/>
       <repopackage name="libopencv410"/>
       <repopackage name="libOpenEXR-3_2-31"/>
+      <repopackage name="libOpenEXR-3_2-31-x86-64-v3"/>
       <repopackage name="libOpenEXRCore-3_2-31"/>
+      <repopackage name="libOpenEXRCore-3_2-31-x86-64-v3"/>
       <repopackage name="libopeniscsiusr0"/>
       <repopackage name="libopenjp2-7"/>
       <repopackage name="libopenjp2-7-x86-64-v3"/>

@@ -1313,6 +1313,7 @@
     <package name="rpm-config-SUSE" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="rsync" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="rtkit" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
+    <package name="samba-client" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="samba-client-libs" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="sddm-greeter-qt5" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="sddm-greeter-qt6" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->

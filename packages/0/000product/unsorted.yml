@@ -7440,7 +7440,6 @@ unsorted:
   - gnome-nibbles 
   - gnome-nibbles-lang 
   - gnome-online-accounts-devel 
-  - gnome-online-miners 
   - gnome-packagekit-extras 
   - gnome-patch-translation 
   - gnome-podcasts 
@@ -10550,7 +10549,6 @@ unsorted:
   - kryo 
   - kryo-javadoc 
   - ksanecore-devel 
-  - ksanecore-kf5-devel 
   - kscreenlocker-devel 
   - kscreenlocker6-devel 
   - kseexpr-devel 
@@ -11254,7 +11252,6 @@ unsorted:
   - libKF5BalooEngine5-lang 
   - libKF5CalendarCore5 
   - libKF5Cddb5 
-  - libKF5CompactDisc5 
   - libKF5Contacts5 
   - libKF5DAV5 
   - libKF5Emoticons5 
@@ -11285,7 +11282,6 @@ unsorted:
   - libKF5Pty5-lang 
   - libKF5PulseAudioQt5 
   - libKF5Runner5 
-  - libKF5Sane6 
   - libKF5Su5 
   - libKF5Su5-lang 
   - libKF5Syndication5 
@@ -11300,6 +11296,8 @@ unsorted:
   - libKOSMIndoorRouting1 
   - libKOpeningHours1 
   - libKPim6AddressbookImportExport6-devel 
+  - libKPim6AkonadiNotes6 
+  - libKPim6AkonadiNotes6-lang 
   - libKPim6GAPIBlogger6 
   - libKPim6GAPILatitude6 
   - libKPim6GAPIMaps6 
@@ -11313,8 +11311,6 @@ unsorted:
   - libKPublicTransport1 
   - libKPublicTransportOnboard1 
   - libKReport3-4 
-  - libKSaneCore1 
-  - libKSaneCore1-lang 
   - libKScreenLocker5 
   - libKSeExpr4 
   - libKTorrent6 
@@ -11396,6 +11392,7 @@ unsorted:
   - libOpenEXRCore-3_2-31-32bit 
   - libOpenEXRUtil-3_2-31 
   - libOpenEXRUtil-3_2-31-32bit 
+  - libOpenEXRUtil-3_2-31-x86-64-v3 
   - libOpenIPMI0 
   - libOpenIPMIui1 
   - libOpenImageDenoise2 
@@ -14229,7 +14226,6 @@ unsorted:
   - libkcddb-devel 
   - libkcddb-lang 
   - libkcddb-qt6-devel 
-  - libkcompactdisc-devel 
   - libkcompactdisc-qt6-devel 
   - libkdc2 
   - libkdcraw 
@@ -14333,7 +14329,6 @@ unsorted:
   - libkrunfw-sev-devel 
   - libkrunfw-sev4 
   - libksane-devel 
-  - libksane-kf5-devel 
   - libksba-devel 
   - libkscreen2-devel 
   - libkscreen2-plugin 
@@ -14569,7 +14564,7 @@ unsorted:
   - libmapidb-devel 
   - libmapidb1 
   - libmapserver2 
-  - libmarblewidget-qt5-28 
+  - libmarblewidget-qt6-28 
   - libmarco-private2 
   - libmariadb-devel 
   - libmariadb3-32bit 
@@ -15194,8 +15189,8 @@ unsorted:
   - libopusfile0 
   - liboqs-devel 
   - liboqs-devel-32bit 
-  - liboqs6 
-  - liboqs6-32bit 
+  - liboqs7 
+  - liboqs7-32bit 
   - liborc-0_4-0-32bit 
   - liborcania2_3 
   - liborcus-devel 
@@ -35451,6 +35446,7 @@ unsorted:
   - python313-SimpleWebSocketServer 
   - python313-SoundCard 
   - python313-SoundFile 
+  - python313-SpeechRecognition 
   - python313-Sphinx 
   - python313-Sphinx-latex 
   - python313-StrEnum 
@@ -37327,6 +37323,7 @@ unsorted:
   - python313-named 
   - python313-napalm 
   - python313-napalm-asa 
+  - python313-napalm-procurve 
   - python313-natsort 
   - python313-nautilus 
   - python313-nautilus-devel 
@@ -40073,16 +40070,27 @@ unsorted:
   - ruby3.3-doc-ri 
   - ruby3.3-rubygem-Ascii85 
   - ruby3.3-rubygem-actioncable-7.0 
+  - ruby3.3-rubygem-actioncable-8.0 
   - ruby3.3-rubygem-actionmailbox-7.0 
+  - ruby3.3-rubygem-actionmailbox-8.0 
   - ruby3.3-rubygem-actionmailer-7.0 
+  - ruby3.3-rubygem-actionmailer-8.0 
   - ruby3.3-rubygem-actionpack-7.0 
+  - ruby3.3-rubygem-actionpack-8.0 
   - ruby3.3-rubygem-actiontext-7.0 
+  - ruby3.3-rubygem-actiontext-8.0 
   - ruby3.3-rubygem-actionview-7.0 
+  - ruby3.3-rubygem-actionview-8.0 
   - ruby3.3-rubygem-activejob-7.0 
+  - ruby3.3-rubygem-activejob-8.0 
   - ruby3.3-rubygem-activemodel-7.0 
+  - ruby3.3-rubygem-activemodel-8.0 
   - ruby3.3-rubygem-activerecord-7.0 
+  - ruby3.3-rubygem-activerecord-8.0 
   - ruby3.3-rubygem-activestorage-7.0 
+  - ruby3.3-rubygem-activestorage-8.0 
   - ruby3.3-rubygem-activesupport-7.0 
+  - ruby3.3-rubygem-activesupport-8.0 
   - ruby3.3-rubygem-addressable 
   - ruby3.3-rubygem-aes_key_wrap 
   - ruby3.3-rubygem-afm 
@@ -40117,6 +40125,7 @@ unsorted:
   - ruby3.3-rubygem-coffee-script-source 
   - ruby3.3-rubygem-colorator 
   - ruby3.3-rubygem-concurrent-ruby 
+  - ruby3.3-rubygem-connection_pool 
   - ruby3.3-rubygem-cool.io 
   - ruby3.3-rubygem-crack 
   - ruby3.3-rubygem-crass 
@@ -40147,6 +40156,7 @@ unsorted:
   - ruby3.3-rubygem-equalizer 
   - ruby3.3-rubygem-erubi 
   - ruby3.3-rubygem-erubis 
+  - ruby3.3-rubygem-et-orbi 
   - ruby3.3-rubygem-eventmachine 
   - ruby3.3-rubygem-exception_notification 
   - ruby3.3-rubygem-excon 
@@ -40167,6 +40177,7 @@ unsorted:
   - ruby3.3-rubygem-font-awesome-rails 
   - ruby3.3-rubygem-formatador 
   - ruby3.3-rubygem-forwardable-extended 
+  - ruby3.3-rubygem-fugit 
   - ruby3.3-rubygem-get_process_mem 
   - ruby3.3-rubygem-gettext 
   - ruby3.3-rubygem-gettext_i18n_rails 
@@ -40201,14 +40212,17 @@ unsorted:
   - ruby3.3-rubygem-jbuilder 
   - ruby3.3-rubygem-jquery-rails 
   - ruby3.3-rubygem-js-routes 
+  - ruby3.3-rubygem-jsbundling-rails 
   - ruby3.3-rubygem-json 
   - ruby3.3-rubygem-json-jwt 
   - ruby3.3-rubygem-json-schema 
   - ruby3.3-rubygem-json_pure 
   - ruby3.3-rubygem-jwt 
+  - ruby3.3-rubygem-kamal 
   - ruby3.3-rubygem-kgio 
   - ruby3.3-rubygem-kramdown 
   - ruby3.3-rubygem-kramdown-parser-gfm 
+  - ruby3.3-rubygem-kredis 
   - ruby3.3-rubygem-language_server-protocol 
   - ruby3.3-rubygem-launchy 
   - ruby3.3-rubygem-libyui-rake 
@@ -40285,19 +40299,24 @@ unsorted:
   - ruby3.3-rubygem-rack-oauth2 
   - ruby3.3-rubygem-rack-protection 
   - ruby3.3-rubygem-rack-proxy 
+  - ruby3.3-rubygem-rack-session 
   - ruby3.3-rubygem-rack-test 
   - ruby3.3-rubygem-rack-test-0_6 
   - ruby3.3-rubygem-rackup 
   - ruby3.3-rubygem-rails-7.0 
+  - ruby3.3-rubygem-rails-8.0 
   - ruby3.3-rubygem-rails-dom-testing 
   - ruby3.3-rubygem-rails-html-sanitizer 
   - ruby3.3-rubygem-rails-i18n 
   - ruby3.3-rubygem-railties-7.0 
+  - ruby3.3-rubygem-railties-8.0 
   - ruby3.3-rubygem-rainbow 
   - ruby3.3-rubygem-rake-compiler 
   - ruby3.3-rubygem-rb-fsevent 
   - ruby3.3-rubygem-rb-inotify 
   - ruby3.3-rubygem-redcarpet 
+  - ruby3.3-rubygem-redis 
+  - ruby3.3-rubygem-redis-client 
   - ruby3.3-rubygem-regexp_parser 
   - ruby3.3-rubygem-reverse_markdown 
   - ruby3.3-rubygem-ronn-ng 
@@ -40337,6 +40356,9 @@ unsorted:
   - ruby3.3-rubygem-slim 
   - ruby3.3-rubygem-slop 
   - ruby3.3-rubygem-snaky_hash 
+  - ruby3.3-rubygem-solid_cable 
+  - ruby3.3-rubygem-solid_cache 
+  - ruby3.3-rubygem-solid_queue 
   - ruby3.3-rubygem-sorbet-runtime 
   - ruby3.3-rubygem-spring 
   - ruby3.3-rubygem-sprockets 
@@ -40344,6 +40366,7 @@ unsorted:
   - ruby3.3-rubygem-sprockets-helpers 
   - ruby3.3-rubygem-sprockets-rails 
   - ruby3.3-rubygem-sqlite3 
+  - ruby3.3-rubygem-sshkit 
   - ruby3.3-rubygem-stimulus-rails 
   - ruby3.3-rubygem-strptime 
   - ruby3.3-rubygem-temple 
@@ -41273,7 +41296,6 @@ unsorted:
   - strongswan-doc 
   - strongswan-fips 
   - strongswan-ipsec 
-  - strongswan-libs0 
   - strongswan-mysql 
   - strongswan-nm 
   - strongswan-sqlite 
@@ -41751,6 +41773,7 @@ unsorted:
   - tesseract-ocr-traineddata-cym 
   - tesseract-ocr-traineddata-dan 
   - tesseract-ocr-traineddata-deu 
+  - tesseract-ocr-traineddata-deu_latf 
   - tesseract-ocr-traineddata-div 
   - tesseract-ocr-traineddata-doc 
   - tesseract-ocr-traineddata-dzo 

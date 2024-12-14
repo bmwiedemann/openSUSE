@@ -875,8 +875,8 @@
     <package name="kalgebra-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="kanagram" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="kanagram-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
-    <package name="kapptemplate" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="kapptemplate-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="kapptemplate" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
+    <package name="kapptemplate-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="kate" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kate-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kate-plugins" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1232,7 +1232,9 @@
     <package name="libHX32" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libICE6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libIex-3_2-31" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libIex-3_2-31-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libIlmThread-3_2-31" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libIlmThread-3_2-31-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libImath-3_1-29" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libImlib2-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libJudy1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1449,8 +1451,6 @@
     <package name="libKPim6AkonadiCore6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKPim6AkonadiMime6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKPim6AkonadiMime6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libKPim6AkonadiNotes6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libKPim6AkonadiNotes6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKPim6AkonadiPrivate6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKPim6AkonadiSearch6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKPim6AkonadiWidgets6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1521,7 +1521,9 @@
     <package name="libMagickCore-7_Q16HDRI10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libMagickWand-7_Q16HDRI10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libOpenEXR-3_2-31" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libOpenEXR-3_2-31-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libOpenEXRCore-3_2-31" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libOpenEXRCore-3_2-31-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libPlasma5Support6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libPlasma5Support6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libPlasma6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2304,7 +2306,7 @@
     <package name="libkdegames-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkdepim" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkdepim-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libkdevplatform60" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libkdevplatform61" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libkdsoap-qt6-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkerfuffle24" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkexiv2-qt6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
