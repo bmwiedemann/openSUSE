@@ -125,7 +125,7 @@ zypper --non-interactive rm yast2-trans-{uk,sv,ru,ja,da,cs,sr,vi} || :
 rm -rf /usr/share/doc/packages/*
 
 # Save more than 150 MiB by removing this, not very useful for lives
-rm -rf /lib/firmware/{amdgpu/isp*,liquidio,netronome,qca,qed,mrvl,mellanox,cypress,dpaa2,bnx2x,cxgb4,intel/vsc,intel/ipu,ueagle-atm,xe}
+rm -rf /lib/firmware/{amdgpu/{gc_,isp,psp}*,amdnpu,liquidio,netronome,qca,qed,mrvl,mellanox,cypress,dpaa2,bnx2x,cxgb4,intel/vsc,intel/ipu,ueagle-atm,xe}
 if [ "$(arch)" == "aarch64" ]; then
 	# Keep some qcom firmware for Lenovo X13s and delete others (save ~50MiB)
 	rm -rf /lib/firmware/qcom/{apq8016,apq8096,qcm2290,qrb4210,sdm845,sm8250,venus*,vpu*}
