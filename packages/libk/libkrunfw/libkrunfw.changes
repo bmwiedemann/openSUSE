@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 19 21:49:06 UTC 2024 - James Fehlig <jfehlig@suse.com>
+
+- Update to v4.5.1
+  * sev_x86_64: sync config with 6.6.59
+  * enable IPv6
+  * bump max number of cpus to 16
+  * sync config with 6.6.59
+  * Rebase on a v6.6.59 kernel
+  
+-------------------------------------------------------------------
 Thu May 30 11:52:22 UTC 2024 - Dario Faggioli <dfaggioli@suse.com>
 
 - Update to v4.0.0

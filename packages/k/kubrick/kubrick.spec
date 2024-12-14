@@ -15,12 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kubrick
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Game based on Rubik's Cube
 License:        GPL-2.0-or-later

@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.2.3
+%define kpim6_version 6.3.0
 
 %bcond_without released
 Name:           kleopatra
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Certificate manager and GUI for OpenPGP and CMS cryptography
 License:        GPL-2.0-or-later
@@ -33,7 +33,7 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
-BuildRequires:  libgpgmepp-devel
+BuildRequires:  libgpgmepp-devel >= 1.23.2
 BuildRequires:  pkgconfig
 BuildRequires:  shared-mime-info
 BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
@@ -42,6 +42,7 @@ BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6ItemModels) >= %{kf6_version}
@@ -102,10 +103,11 @@ Kleopatra is a certificate manager and GUI for OpenPGP and CMS cryptography.
 %{_kf6_appstreamdir}/org.kde.kleopatra.appdata.xml
 %{_kf6_bindir}/kleopatra
 %{_kf6_bindir}/kwatchgnupg
+%{_kf6_configdir}/kleopatradebugcommandsrc
 %{_kf6_debugdir}/kleopatra.categories
 %{_kf6_debugdir}/kleopatra.renamecategories
 %{_kf6_iconsdir}/hicolor/*/apps/kleopatra.png
-%{_kf6_iconsdir}/hicolor/*/apps/kwatchgnupg.png
+%{_kf6_iconsdir}/hicolor/*/apps/org.kde.kwatchgnupg.*
 %{_kf6_libdir}/libkleopatraclientcore.so.*
 %{_kf6_libdir}/libkleopatraclientgui.so.*
 %dir %{_kf6_plugindir}/pim6/
@@ -118,8 +120,6 @@ Kleopatra is a certificate manager and GUI for OpenPGP and CMS cryptography.
 %{_kf6_sharedir}/kio/servicemenus/kleopatra_decryptverifyfolders.desktop
 %{_kf6_sharedir}/kio/servicemenus/kleopatra_signencryptfiles.desktop
 %{_kf6_sharedir}/kio/servicemenus/kleopatra_signencryptfolders.desktop
-%{_kf6_sharedir}/kleopatra/
-%{_kf6_sharedir}/kwatchgnupg/
 %{_kf6_sharedir}/mime/packages/application-vnd-kde-kleopatra.xml
 %{_kf6_sharedir}/mime/packages/kleopatra-mime.xml
 

@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kcalc
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Scientific Calculator
 License:        GPL-2.0-or-later
@@ -45,6 +45,7 @@ BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 Obsoletes:      kcalc5 < %{version}
 Provides:       kcalc5 = %{version}
 

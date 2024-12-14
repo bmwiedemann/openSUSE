@@ -411,4 +411,41 @@ See README (forwarded request 157221 from babelworx)</comment>
     <comment>- 0004-udp-listen-bind4.patch: fixed a UDP listen error (bsc#1226459) (forwarded request 1181502 from msmeissn)</comment>
     <requestid>1181503</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>9c73b7a96116045da96a3bbe02692665</srcmd5>
+    <version>1.8.0.2</version>
+    <time>1734125492</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.8.0.2:
+  - Security fix for readline.sh: arbitrary file overwrite via predictable /tmp
+    directory (bsc#1225462 CVE-2024-54661)
+- Update to 1.8.0.1:
+  - Bug fixes
+    - UDP-SENDTO, UDPLITE-SENDTO, and IP-SENDTO addresses now select an IPv4
+      address in case the server name resolves to both IPv4 and IPv6 addresses.
+    - Guard applyopts_termios_value() with WITH_TERMIOS.
+    - In some situations xioclose() was called nested what could cause hanging
+      of OpenSSL in pthread_rwlock_wrlock().
+    - socat 1.8.0.0 with addresses of type RECVFROM and option fork, where the
+      second address failed to connect/open in the child process, entered a
+      fork loop that was only stopped by FD exhaustion caused by FD leak.
+    - socat 1.8.0.0 had an FD leak with addresses of type RECVFROM with fork.
+    - With version 1.8.0.0, options ipv6-join-group and ipv6-join-source-group
+      did not work.
+    - IP-SENDTO and option pf (protocol-family) with protocol name (vs.numeric
+      argument) failed with message: E retropts_int(): trailing garbage in
+      numerical arg of option &quot;protocol-family&quot;.
+    - Fixed a possible buffer overrun with long log lines. In fact it does not
+      write beyond end of buffer but lets pass excessive data to the write()
+      function.
+    - Reworked domain name resolution, centralized IPv4/IPv6 sorting.
+    - Print warning about not checking CRLs in OpenSSL only in the first child
+      process.
+  - Features
+    - Total inactivity timeout option -T 0 now means 0.0 seconds;
+    - Changed socat-chain.sh, socat-mux.sh, and socat-broker.sh to work with
+      older Socat versions.
+    - socat-mux.sh and socat-broker.sh, when run as root, now internally use (forwarded request 1230098 from wfrisch)</comment>
+    <requestid>1230116</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Dec  8 09:27:37 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.0/
+- No code change since 24.11.90
+
+-------------------------------------------------------------------
+Mon Dec  2 08:43:05 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.90
+  * New feature release
+- No code change since 24.11.80
+
+-------------------------------------------------------------------
+Sat Nov 16 17:29:44 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.80
+  * New feature release
+- Changes since 24.08.3:
+  * Don't include quiet packages in feature_summary
+  * Fix CMake include
+  * Add clang-format git commit hook
+  * Add git blame ignore file
+  * Run clang-format
+  * Categorize the app as "Documentation" and add "Center" to name
+  * Fix cmakelint issues
+  * searchhandlers: Replace Perl manpage script with Python (kde#493223)
+  * Put more relevant man search results first
+  * Fix links for Windows and Mac tips (spotted by smart.luck6184)
+
+-------------------------------------------------------------------
 Tue Nov  5 10:43:20 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.3

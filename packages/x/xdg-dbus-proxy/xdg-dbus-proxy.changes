@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec 11 15:26:02 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.1.6:
+  + Use lower serial bits to differentiate proxy / client serials,
+    and handle non-monotonically increasing serials better.
+  + Fix various GVariant reference leaks.
+  + Don't require talk permission for broadcast rules.
+  + Support sdbus clients.
+
+-------------------------------------------------------------------
 Fri Sep 29 06:20:45 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.1.5:

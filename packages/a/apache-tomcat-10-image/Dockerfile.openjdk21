@@ -25,7 +25,7 @@ FROM opensuse/tumbleweed:latest AS builder
 COPY --from=target / /target
 
 RUN set -euo pipefail; \
-    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends tomcat10 curl sed java-21-openjdk java-21-openjdk-headless; \
+    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends tomcat10 java-21-openjdk java-21-openjdk-headless; \
     zypper -n --installroot /target remove util-linux; \
     zypper -n clean; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
@@ -58,11 +58,14 @@ CMD ["/usr/libexec/tomcat/server", "start"]
 EXPOSE 8080/tcp
 RUN set -euo pipefail; mkdir -p /var/log/tomcat; chown --recursive tomcat:tomcat /var/log/tomcat
 RUN set -euo pipefail; ln -s /usr/share/tomcat /usr/local/tomcat
-RUN set -euo pipefail; \
-    sed -i /etc/tomcat/logging.properties \
-        -e 's|org\.apache\.catalina\.core\.ContainerBase\.\[Catalina\]\.\[localhost\]\.handlers =.*|org.apache.catalina.core.ContainerBase.[Catalina].[localhost].handlers = java.util.logging.ConsoleHandler|' \
-        -e 's|org\.apache\.catalina\.core\.ContainerBase\.\[Catalina\]\.\[localhost\]\.\[/manager\]\.handlers =.*|org.apache.catalina.core.ContainerBase.[Catalina].[localhost].[/manager].handlers = java.util.logging.ConsoleHandler|' \
-        -e 's|org\.apache\.catalina\.core\.ContainerBase\.\[Catalina\]\.\[localhost\]\.\[/host-manager\]\.handlers =.*|org.apache.catalina.core.ContainerBase.[Catalina].[localhost].[/host-manager].handlers = java.util.logging.ConsoleHandler|'
+RUN set -euo pipefail; while IFS= read -r line; do \
+  line=${line/org\.apache\.catalina\.core\.ContainerBase\.\[Catalina\]\.\[localhost\]\.handlers =*/org.apache.catalina.core.ContainerBase.[Catalina].[localhost].handlers = java.util.logging.ConsoleHandler}; \
+  line=${line/org\.apache\.catalina\.core\.ContainerBase\.\[Catalina\]\.\[localhost\]\.\[\/manager\]\.handlers =*/org.apache.catalina.core.ContainerBase.[Catalina].[localhost].[/manager].handlers = java.util.logging.ConsoleHandler}; \
+  line=${line/org\.apache\.catalina\.core\.ContainerBase\.\[Catalina\]\.\[localhost\]\.\[\/host-manager\]\.handlers =*/org.apache.catalina.core.ContainerBase.[Catalina].[localhost].[/host-manager].handlers = java.util.logging.ConsoleHandler}; \
+  echo "$line" >> /tmp/logging.properties; \
+done < /usr/share/tomcat/conf/logging.properties; \
+
+mv /tmp/logging.properties /usr/share/tomcat/conf/logging.properties
 
 WORKDIR $CATALINA_HOME
 USER tomcat

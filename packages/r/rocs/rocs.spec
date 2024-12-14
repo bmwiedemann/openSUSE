@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           rocs
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Graph Theory IDE
 License:        GPL-2.0-or-later

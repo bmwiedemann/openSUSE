@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sun Dec  8 09:27:08 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.0/
+- No code change since 24.11.90
+
+-------------------------------------------------------------------
+Mon Dec  2 08:42:35 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.90
+  * New feature release
+- Changes since 24.11.80:
+  * Avoid QList clones when testing for indexed color
+  * Fix color management for images in premultipled alpha format
+  * Fix garbled colors when scaling indexed-color images (kde#459627)
+
+-------------------------------------------------------------------
+Sat Nov 16 17:29:11 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.80
+  * New feature release
+- Changes since 24.08.3:
+  * Fix flatpak
+  * Update cfitsio
+  * Don't include quiet packages in feature_summary
+  * Set up crash handling
+  * Add formatting commit to ignore file
+  * Re-run clang-format
+  * Appdata Fixes
+  * Make it optional to start over after last image (kde#458332)
+  * documentview: fix whatsthis KUIT context marker
+  * Use KDcraw for RAW thumbnails if available
+  * Fix using KDcraw for thumbnails
+  * fix ODR violation: many files had the wrong definition of Enum
+  * Generate wayland code with PRIVATE_CODE
+  * Add missing include moc
+  * Make Name Filters Search Recursively
+  * Remove virtual keyword when we use override
+  * Fix sizing of ToolButton in KWidgetItemDelegate
+
+-------------------------------------------------------------------
 Tue Nov  5 10:42:49 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.3

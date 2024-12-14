@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sun Dec  8 09:27:04 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.0/
+- Changes since 24.11.90:
+  * Update Changelog
+  * Fix printing to printer other than PDF printer (kde#497051)
+
+-------------------------------------------------------------------
+Mon Dec  2 08:42:32 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.90
+  * New feature release
+- Changes since 24.11.80:
+  * Enable "Enable Screen Capture" by default
+
+-------------------------------------------------------------------
+Sat Nov 16 17:29:07 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.80
+  * New feature release
+- Changes since 24.08.3:
+  * Keep "ftp" as an internal scheme
+  * GreaseMonkey - Check content type of url *.user.js (kde#467459)
+  * GreaseMonkey: Add ex/in-clude match to ContextMenu
+  * GreaseMonkey: Add support for context menu (kde#469855)
+  * Remove FTP support (kde#494222)
+  * Fix appdata to align with appstream spec
+  * Add missing overrides
+  * Appdata Fixes
+  * VerticalTabs - Disable tab switching when mouse is over scrollbar
+  * Mark TabBarHelper::initStyleOption() as override
+  * Port QSqlDatabase::exec to QSqlQuery::exec
+  * Set security icon according to certificate error. (kde#420902)
+  * Preferences: Fix crash when un/loading of plugins (kde#492023)
+  * Fix failing tests after removing loadfinished hack
+  * Remove WinExtras usage since it no longer exists
+  * ProfileManager: remove leftopver debug print.
+  * ProfileManager: Skip clear comment SQL statements (kde#491993)
+  * PluginsManager: Move UserRoles to own Enum
+  * VerticalTabs: Arrange pinned tabs vertically (kde#452818)
+  * VerticalTabs: Fix tab switching with mouse wheel (kde#394066)
+  * Fix image search actions
+  * Remove WebPage loadFinished workaround
+  * SiteSettingsView Add delay for reloading same site
+  * BookmarksToolbar: Fix drag and drop
+  * Enable WebInspector with disabled JavaScript (kde#462887)
+  * Remove own implementation and use QProgressBar
+
+-------------------------------------------------------------------
 Tue Nov  5 10:42:45 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.3

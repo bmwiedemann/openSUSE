@@ -1,0 +1,8 @@
+<package name="rubygem-redis" project="openSUSE:Factory">
+  <title>Ruby client library for redis key value storage server</title>
+  <description>Ruby client library for redis key value storage server
+
+</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-redis"/>
+  <url>http://github.com/ezmobius/redis-rb</url>
+</package>

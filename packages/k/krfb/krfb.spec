@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           krfb
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Screen sharing using the VNC/RFB protocol
 License:        GPL-2.0-or-later
@@ -37,6 +37,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6DNSSD) >= %{kf6_version}
 BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}

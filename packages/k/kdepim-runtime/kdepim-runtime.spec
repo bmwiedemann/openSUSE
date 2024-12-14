@@ -16,9 +16,9 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.2.3
+%define kpim6_version 6.3.0
 
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150500
 %bcond_without etebase
@@ -27,7 +27,7 @@
 %bcond_with kolabxml
 %bcond_without released
 Name:           kdepim-runtime
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Akonadi resources for PIM applications
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -62,14 +62,12 @@ BuildRequires:  cmake(KF6KCMUtils) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
 BuildRequires:  cmake(KF6NotifyConfig) >= %{kf6_version}
-BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6Wallet) >= %{kf6_version}
 BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
 BuildRequires:  cmake(KPim6Akonadi) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6AkonadiCalendar) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6AkonadiContactWidgets) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6AkonadiMime) >= %{kpim6_version}
-BuildRequires:  cmake(KPim6AkonadiNotes) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6CalendarUtils) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6GAPI) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6IMAP) >= %{kpim6_version}

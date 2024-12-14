@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.terminal
 Name:           pantheon-terminal
-Version:        6.2.0
+Version:        6.3.0
 Release:        0
 Summary:        Lightweight and modern Terminal for the Pantheon Desktop
 License:        GPL-3.0-or-later

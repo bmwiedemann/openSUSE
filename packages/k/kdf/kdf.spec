@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kdf
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Disk Usage Viewer
 License:        GPL-2.0-or-later
@@ -33,9 +33,9 @@ Source2:        applications.keyring
 %endif
 Patch0:         desktop-files.diff
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
@@ -73,8 +73,6 @@ This utility allows you to manage removable media.
 %kf6_install
 
 %find_lang %{name} --with-html --all-name
-
-%suse_update_desktop_file org.kde.kdf System Filesystem
 
 %ldconfig_scriptlets
 

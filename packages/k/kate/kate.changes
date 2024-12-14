@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun Dec  8 09:27:17 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.0/
+- Changes since 24.11.90:
+  * Make placeholder text translatable
+  * Add Kate branding color
+
+-------------------------------------------------------------------
+Mon Dec  2 08:42:44 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.90
+  * New feature release
+- Changes since 24.11.80:
+  * Add back distance check to hide tooltip
+  * Fix #496460: Match export not working with lookarounds (kde#496460)
+  * don't die if the arrays not only contain integers
+  * don't pass a nullptr to ::fromLatin1 (kde#496602)
+  * Update typescript-language-server url
+  * Avoid ctag indexing the home/root dir
+  * fix language ids for javascript derivates (kde#495805)
+  * Try to have a PATH on macos when not launched from terminal
+  * Build output improvements
+  * Build: Append html output
+  * try to properly use toLocalFile for local files
+  * Skip "Save macro recording" action when recording is going on (kde#494464)
+  * Ensure key press/release are sent to the same widget
+  * Fix active tab not being set inactive
+  * Fix snippet completion execution
+  * Fix snippets not working unless completion is hard invoked (kde#495416)
+  * Remove useless Qbytearray->QString conversion
+
+-------------------------------------------------------------------
+Sat Nov 16 17:29:21 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.80
+  * New feature release
+- Too many changes to list here.
+
+-------------------------------------------------------------------
 Tue Nov  5 10:42:58 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.3

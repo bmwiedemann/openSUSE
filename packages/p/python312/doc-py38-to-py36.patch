@@ -1,24 +1,25 @@
 ---
- Doc/conf.py                             |    4 +-
+ Doc/conf.py                             |    8 ++--
  Doc/tools/check-warnings.py             |    3 +
  Doc/tools/extensions/audit_events.py    |   54 ++++++++++++++++----------------
+ Doc/tools/extensions/availability.py    |   15 ++++----
  Doc/tools/extensions/c_annotations.py   |   37 ++++++++++-----------
  Doc/tools/extensions/glossary_search.py |   10 +----
  Doc/tools/extensions/patchlevel.py      |    9 ++---
- 6 files changed, 58 insertions(+), 59 deletions(-)
+ 7 files changed, 67 insertions(+), 69 deletions(-)
 
 --- a/Doc/conf.py
 +++ b/Doc/conf.py
-@@ -76,7 +76,7 @@ today_fmt = '%B %d, %Y'
+@@ -85,7 +85,7 @@ today_fmt = '%B %d, %Y'
  highlight_language = 'python3'
  
  # Minimum version of sphinx required
--needs_sphinx = '6.2.1'
+-needs_sphinx = '7.2.6'
 +needs_sphinx = '4.2.0'
  
  # Create table of contents entries for domain objects (e.g. functions, classes,
  # attributes, etc.). Default is True.
-@@ -329,7 +329,7 @@ html_short_title = f'{release} Documenta
+@@ -342,7 +342,7 @@ html_short_title = f'{release} Documenta
  # (See .readthedocs.yml and https://docs.readthedocs.io/en/stable/reference/environment-variables.html)
  is_deployment_preview = os.getenv("READTHEDOCS_VERSION_TYPE") == "external"
  repository_url = os.getenv("READTHEDOCS_GIT_CLONE_URL", "")
@@ -27,6 +28,22 @@
  html_context = {
      "is_deployment_preview": is_deployment_preview,
      "repository_url": repository_url or None,
+@@ -598,13 +598,13 @@ extlinks_detect_hardcoded_links = True
+ 
+ if sphinx.version_info[:2] < (8, 1):
+     # Sphinx 8.1 has in-built CVE and CWE roles.
+-    extlinks |= {
++    extlinks.update({
+         "cve": (
+             "https://www.cve.org/CVERecord?id=CVE-%s",
+             "CVE-%s",
+         ),
+         "cwe": ("https://cwe.mitre.org/data/definitions/%s.html", "CWE-%s"),
+-    }
++    })
+ 
+ # Options for c_annotations extension
+ # -----------------------------------
 --- a/Doc/tools/check-warnings.py
 +++ b/Doc/tools/check-warnings.py
 @@ -228,7 +228,8 @@ def fail_if_regression(
@@ -181,6 +198,61 @@
      ) -> nodes.row:
          row = nodes.row()
          name_node = nodes.paragraph("", nodes.Text(name))
+--- a/Doc/tools/extensions/availability.py
++++ b/Doc/tools/extensions/availability.py
+@@ -1,8 +1,6 @@
+ """Support for documenting platform availability"""
+ 
+-from __future__ import annotations
+-
+-from typing import TYPE_CHECKING
++from typing import Dict, List, TYPE_CHECKING, Union
+ 
+ from docutils import nodes
+ from sphinx import addnodes
+@@ -52,7 +50,7 @@ class Availability(SphinxDirective):
+     optional_arguments = 0
+     final_argument_whitespace = True
+ 
+-    def run(self) -> list[nodes.container]:
++    def run(self) -> List[nodes.container]:
+         title = "Availability"
+         refnode = addnodes.pending_xref(
+             title,
+@@ -76,7 +74,7 @@ class Availability(SphinxDirective):
+ 
+         return [cnode]
+ 
+-    def parse_platforms(self) -> dict[str, str | bool]:
++    def parse_platforms(self) -> Dict[str, Union[str, bool]]:
+         """Parse platform information from arguments
+ 
+         Arguments is a comma-separated string of platforms. A platform may
+@@ -95,12 +93,13 @@ class Availability(SphinxDirective):
+             platform, _, version = arg.partition(" >= ")
+             if platform.startswith("not "):
+                 version = False
+-                platform = platform.removeprefix("not ")
++                platform = platform[len("not "):]
+             elif not version:
+                 version = True
+             platforms[platform] = version
+ 
+-        if unknown := set(platforms).difference(KNOWN_PLATFORMS):
++        unknown = set(platforms).difference(KNOWN_PLATFORMS)
++        if unknown:
+             logger.warning(
+                 "Unknown platform%s or syntax '%s' in '.. availability:: %s', "
+                 "see %s:KNOWN_PLATFORMS for a set of known platforms.",
+@@ -113,7 +112,7 @@ class Availability(SphinxDirective):
+         return platforms
+ 
+ 
+-def setup(app: Sphinx) -> ExtensionMetadata:
++def setup(app):
+     app.add_directive("availability", Availability)
+ 
+     return {
 --- a/Doc/tools/extensions/c_annotations.py
 +++ b/Doc/tools/extensions/c_annotations.py
 @@ -9,12 +9,10 @@ Configuration:

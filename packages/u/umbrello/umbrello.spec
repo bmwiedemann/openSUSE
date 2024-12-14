@@ -22,7 +22,7 @@
 %endif
 %bcond_without released
 Name:           umbrello
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        UML Modeller
 License:        GPL-2.0-only AND GFDL-1.2-only AND GPL-3.0-or-later
@@ -39,7 +39,6 @@ BuildRequires:  kdevplatform-devel
 %endif
 BuildRequires:  libxml2-devel
 BuildRequires:  libxslt-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Completion)
 BuildRequires:  cmake(KF5Config)
@@ -75,12 +74,6 @@ Umbrello is a UML modelling application.
 %autosetup -p1
 
 %build
-%ifarch ppc64
-RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
-%endif
-export CXXFLAGS="%{optflags} -fPIC"
-export CFLAGS="%{optflags} -fPIC"
-
 %cmake_kf5 -d build -- -DBUILD_KF5=ON
 
 %cmake_build
@@ -91,8 +84,6 @@ export CFLAGS="%{optflags} -fPIC"
 %find_lang %{name} --with-man --all-name
 
 %{kf5_find_htmldocs}
-
-%suse_update_desktop_file org.kde.umbrello Development Design
 
 %files
 %license COPYING COPYING.DOC

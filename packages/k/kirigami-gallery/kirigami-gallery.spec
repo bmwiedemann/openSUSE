@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kirigami-gallery
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Gallery application built using Kirigami
 License:        LGPL-2.0-or-later
@@ -69,7 +69,7 @@ code examples on cgit
 %files
 %license LICENSE.LGPL-2
 %{_kf6_applicationsdir}/org.kde.kirigami2.gallery.desktop
-# %%{_kf6_appstreamdir}/org.kde.kirigami2.gallery.appdata.xml
+%{_kf6_appstreamdir}/org.kde.kirigami2.gallery.appdata.xml
 %{_kf6_bindir}/kirigami2gallery
 
 %files lang -f %{name}.lang

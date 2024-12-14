@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 
 %bcond_without  released
 Name:           calindori
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Kirigami-based calendar application
 License:        GPL-3.0-or-later

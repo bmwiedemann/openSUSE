@@ -64,8 +64,12 @@ RUN set -euo pipefail; ln -s usr/local/bin/docker-entrypoint.sh / # backwards co
 COPY healthcheck.sh /usr/local/bin/
 RUN set -euo pipefail; chmod 755 /usr/local/bin/healthcheck.sh
 
-COPY gosu /usr/local/bin/gosu
-RUN set -euo pipefail; chmod 755 /usr/local/bin/gosu
+COPY idexec /usr/local/bin/idexec
+RUN set -euo pipefail; chmod 755 /usr/local/bin/idexec
+
+# replace gosu calls with idexec
+RUN set -euo pipefail; sed -i 's/exec gosu /exec idexec /g' /usr/local/bin/docker-entrypoint.sh
+RUN set -euo pipefail; sed -i 's/exec gosu /exec idexec /g' /usr/local/bin/healthcheck.sh
 
 RUN set -euo pipefail; sed -i -e 's,$(pwgen .*),$(openssl rand -base64 36),' /usr/local/bin/docker-entrypoint.sh
 

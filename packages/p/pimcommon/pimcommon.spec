@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.2.3
+%define kpim6_version 6.3.0
 
 %bcond_without released
 Name:           pimcommon
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Base package of KDE PIM PimCommon library
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -62,6 +62,7 @@ BuildRequires:  cmake(KPim6AkonadiSearch) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6IMAP) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6LdapWidgets) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6Libkdepim) >= %{kpim6_version}
+BuildRequires:  cmake(PlasmaActivities)
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
@@ -87,6 +88,7 @@ Requires:       cmake(KPim6Akonadi) >= %{kpim6_version}
 Requires:       cmake(KPim6AkonadiContactWidgets) >= %{kpim6_version}
 Requires:       cmake(KPim6IMAP) >= %{kpim6_version}
 Requires:       cmake(KPim6Libkdepim) >= %{kpim6_version}
+Requires:       cmake(PlasmaActivities)
 Requires:       cmake(Qt6DBus) >= %{qt6_version}
 Requires:       cmake(Qt6Gui) >= %{qt6_version}
 Requires:       cmake(Qt6Widgets) >= %{qt6_version}
@@ -141,6 +143,7 @@ The PimCommon Akonadi library
 %files -n libKPim6PimCommon6
 %license LICENSES/*
 %{_kf6_libdir}/libKPim6PimCommon.so.*
+%{_kf6_libdir}/libKPim6PimCommonActivities.so.*
 
 %files -n libKPim6PimCommonAkonadi6
 %{_kf6_libdir}/libKPim6PimCommonAkonadi.so.*
@@ -148,10 +151,13 @@ The PimCommon Akonadi library
 %files devel
 %doc %{_kf6_qchdir}/KPim6PimCommon*.*
 %{_includedir}/KPim6/PimCommon/
+%{_includedir}/KPim6/PimCommonActivities/
 %{_includedir}/KPim6/PimCommonAkonadi/
 %{_kf6_cmakedir}/KPim6PimCommon/
+%{_kf6_cmakedir}/KPim6PimCommonActivities/
 %{_kf6_cmakedir}/KPim6PimCommonAkonadi/
 %{_kf6_libdir}/libKPim6PimCommon.so
+%{_kf6_libdir}/libKPim6PimCommonActivities.so
 %{_kf6_libdir}/libKPim6PimCommonAkonadi.so
 %{_kf6_plugindir}/designer/
 

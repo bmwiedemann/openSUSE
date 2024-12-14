@@ -48,4 +48,12 @@ Needed for future versions of flatpak, previously a part of flatpak itself. Resu
     <comment></comment>
     <requestid>1114704</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1359545389cadcff2b95c821ec3ca7b3</srcmd5>
+    <version>0.1.6</version>
+    <time>1734125510</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1230180</requestid>
+  </revision>
 </revisionlist>

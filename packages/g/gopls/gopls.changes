@@ -1,4 +1,217 @@
 -------------------------------------------------------------------
+Wed Dec 11 15:57:17 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.17.0:
+  * gopls: update go.mod for v0.17.0-pre.5
+  * internal/typesinternal: rollback of Zero{Value,Expr} for gopls
+  * gopls: update go.mod for v0.17.0-pre.4
+  * gopls/internal/golang: support extract variable at top level
+  * gopls/internal/golang: ignore effects for change signature refactoring
+  * gopls/internal/golang: add "Extract constant" counterpart
+  * gopls/internal/golang/stubmethods: refine crash into bug report
+  * gopls/internal/golang: don't offer to move variadic parameters
+  * gopls/internal/test/marker: add reproducers for moveparam bug bash bugs
+  * gopls/internal/analysis/yield: add comment about dataflow
+  * gopls/internal/golang: avoid crash in lookupDocLinkSymbol
+  * gopls/internal/golang/completion: fix crash with extra results
+  * gopls/internal/settings: enable 'waitgroup' analyzer
+  * gopls/internal/golang: Disable test generation for generic functions
+  * gopls/internal/analysis/yield: peephole-optimize phi(false, x)
+  * gopls/internal/golang: fix folding range for function calls
+  * gopls/internal/golang/completion: add alias support for literals
+  * gopls/internal/undeclaredname: add missing colon when appropriate
+  * gopls/internal/golang: simplify package name collection in add test
+  * gopls: update go.mod for v0.17.0-pre.3
+  * gopls/internal/golang: refactor.extract.variable: allow all exprs
+  * gopls/internal/cache/methodsets: refine crash for missing object path
+  * gopls/internal/golang: refine crash golang/go#70553
+  * gopls/internal/golang: change signature via renaming 'func'
+  * gopls/internal/golang: support parameter movement refactorings
+  * gopls/doc/features: enable and document source.addTest code action
+  * gopls/internal/golang: improve test package name selection for new file
+  * gopls/internal/golang: don't lose ... when split/joining variadics
+  * gopls/internal/crash: don't crash in xrefs on out of bound nodes
+  * gopls/internal/golang: preserve copyright and build constraint
+  * gopls/internal/test/marker: add defloc, to bind positions by definition
+  * gopls/internal/test/marker: document named parameters
+  * gopls/internal/golang/extract: preserve comments in extracted block
+  * gopls/internal/test/marker: ignore diags in fixedbugs/issue59944.txt
+  * gopls/internal/golang: fix gopls hover doc link
+  * gopls/doc/contributing.md: update expectations
+  * gopls/internal/analysis/undeclaredname: merge into CodeAction
+  * gopls/internal/test/marker: generalize codeaction with named args
+  * gopls/internal/golang: don't try to inline dynamic calls
+  * gopls/internal/cache: refine bug reports for inconsistent dep view
+  * gopls/internal/cache: fix handling of cgo standalone files
+  * gopls/internal/test: synchronize notifications during commands
+  * gopls/internal/cache: failure to extract diagnostic fixes is an error
+  * gopls/internal/server: remove spurious Async in legacy RunGoVulncheck
+  * gopls/internal/cache: use a named bool type for allowNetwork
+  * gopls/internal/protocol: add DocumentURI.DirPath
+  * gopls/internal/cache: simplify usage of snapshot.GoCommandInvocation
+  * gopls/internal/analysis/yield: analyzer for iterator (yield) mistakes
+  * gopls/internal/cache: id command-line-arguments packages using GoFiles
+  * gopls/internal/golang: more idiomatic result naming in extract
+  * gopls/internal/golang: special handling for input context.Context
+  * gopls/internal/golang, go/ssa: remove unnamed input parameter
+  * gopls: update go.mod for v0.17.0-pre.2
+  * gopls/internal/golang: fix bad slice append in function extraction
+  * gopls/codeaction: fix panic when removing unused parameters with syntax errors.
+  * gopls/internal/server: don't call window/showDocument if unsupported
+  * gopls/internal/golang: add missing imports in foo_test.go
+  * gopls/internal/server: revert the gopls.run_govulncheck command
+  * gopls/internal/golang: avoid crash in hover on field of non-struct
+  * gopls: update go.mod for v0.17.0-pre.1
+  * all: update codereview.cfg for gopls-release-branch.0.17
+  * gopls/internal/golang: refine crash report golang/go#69362
+  * gopls/internal/golang: support add test for receiver w/o constructor
+  * gopls/internal/golang: semtok: use type information consistently
+  * gopls/internal/protocol: upgrade to latest LSP
+  * gopls/internal/golang: strength reduce ComputeImportFixEdits
+  * gopls/internal/golang: show package attributes on hover
+  * gopls/doc: add missing doc link
+  * gopls/internal/cache: guard against malformed paths in port.matches
+  * gopls/internal/semtok: change types.Named to types.Basic for iota, true, and false
+  * gopls: update x/telemetry to pick up fix for countertest.ReadCounter
+  * gopls/internal/server: don't interact with os.UserConfigDir from tests
+  * gopls/internal/cache: ensure GO111MODULE is unset in GOPATH tests
+  * gopls/internal/golang: run testcases as subtests
+  * gopls/internal/golang: add testcase handling for func with error returns
+  * gopls/internal/cache: log go env in TestZeroConfigAlgorithm
+  * gopls/internal/golang: consolidate imports from both file in qualifier
+  * gopls/internal/golang: support generating test for functions
+  * gopls/internal/test/integration/workspace: fix TestStdWorkspace
+  * gopls/internal/golang: generate test name for selected function/method
+  * gopls/internal/golang: use correct imports in HTML pkg doc links
+  * gopls/internal/test: fix path to local go in integration tests
+  * gopls/internal/golang: add source code action for add test
+  * Revert "gopls/internal/analysis: disable ssa/ir analyzers on range-over-func"
+  * gopls: update honnef.co/go/tools (staticcheck) to v0.5.1
+  * gopls/internal: stubcalledfunction: improve logic of selecting insert position
+  * gopls/internal/template: fix completion token boundary conditions
+  * gopls/internal/cache: share type checking with analysis
+  * gopls/internal/cache/parsego: support lazy object resolution for Files
+  * gopls/internal/cache: memoize cache keys
+  * gopls/internal/cache: async pull diagnostics and joined analysis
+  * gopls/release: remove unused(?) script
+  * gopls/internal/cache: avoid reporting bugs when go/packages has errors
+  * gopls/internal/settings: remove "allowImplicitNetworkAccess"
+  * gopls/internal/cache: refine a bug report related to package metadata
+  * gopls/internal/cache: refine bug reports
+  * gopls/internal/telemetry/cmd/stacks: print double-claimed stacks
+  * gopls/internal/test/marker: rename s/suggestedfix/quickfix/
+  * gopls/internal/cache: add tolerance for builtin test variants
+  * gopls: allow for asynchronous request handling
+  * gopls/internal/telemetry/cmd/stacks: fix bad tmpreaper interaction
+  * gopls: remove cruft
+  * gopls/internal: CodeAction:  quickfix to generate missing method
+  * gopls/internal/cache/analysis: lazily resolve the import map
+  * gopls/internal/test/integration/bench: add a pull diagnostics benchmark
+  * gopls/doc/features: add index of supported Code Actions
+  * gopls: add initial support for pull diagnostics
+  * gopls/internal/cache: use packageHandles to hold an active package cache
+  * gopls/doc/codelenses: fix link typo
+  * gopls/internal/golang/stubmethods: rename analysis/stubmethods
+  * gopls/internal/analysis/stubmethods: merge into CodeAction
+  * gopls/internal/cache: memoize dependent hash on analysisNode
+  * gopls/internal/cache: express packageHandle as a state machine
+  * gopls/internal/test/marker: update regression test issue68918.txt
+  * gopls/internal: fix extract refactor for cases with anonymous functions
+  * gopls/internal/server: CodeAction: interpret Only=[] as [QuickFix]
+  * gopls/rename: include filename in error message
+  * gopls/completion: tweak fuzz handling to make its own MethodSet
+  * gopls: update x/telemetry to pick up fix for golang/go#69681
+  * gopls/internal/test/integration/bench: add an IWL test that opens files
+  * gopls/internal/cache: remove unnecessary active package check
+  * gopls/internal/cache: add a few checks for context cancellation
+  * gopls/internal/cache: join concurrent package batch operations
+  * gopls: disable ast.Object resolution wherever possible
+  * gopls/internal/server: allow suppression of showDocument
+  * gopls/internal/protocol/command: simplify ApplyFix
+  * gopls/internal/golang: CodeAction: split into producers
+  * gopls/internal/telemetry/cmd/stacks: show build failure stderr
+  * gopls/internal/protocol/command: remove nuisance error handling
+  * gopls/internal/cache: add telemetry counter for GOPACKAGESDRIVER
+  * gopls/internal/test/integration: skip BenchmarkPackages with -short
+  * gopls/internal/cache: build the import map lazily during type checking
+  * gopls/internal/telemetry/cmd/stacks: display closed issues white
+  * gopls/internal/golang: Definition: jump to assembly
+  * gopls/internal/telemetry/cmd/stacks: predicate de-duplication
+  * gopls/internal/telemetry/cmd/stacks: fix two bugs
+  * gopls: rm GofumptFormat from internal/settings
+  * gopls/internal/telemetry/cmd/stacks: generate CodeSearch links
+  * gopls/internal/settings: use CodeActionKind hierarchy
+  * gopls: bump gofumpt to 0.7.0
+  * gopls/internal/lsp/source: put testing.T/B first when extracting
+  * gopls/internal/golang: Definitions: support renaming imports in doc links
+  * gopls/internal/server: fix build following semantic merge conflict
+  * gopls/internal: test discovery
+  * gopls/internal/golang: Highlight: work around go/types bug
+  * gopls: use Func.Signature everywhere
+  * x/tools/gopls: delete code obsoleted by go1.23
+  * internal/golang: add a fast path for FormatVarType with gopls at 1.23
+  * gopls/internal/settings: add missing deep cloning in Options.Clone
+  * gopls/go.mod: update the go directive to 1.23.1
+  * gopls: fix non-constant format strings
+  * gopls: update x/telemetry dependency
+  * gopls/internal/test/marker: simplify completion markers
+  * gopls: report semantic tokens of top-level type constructor modifiers
+  * gopls/internal/cache: add a note about GOMEMLIMIT and ballasts
+  * gopls/internal/cache: add a 100MB ballast to reduce GC CPU
+  * gopls/internal/util/lru: make lru.Cache generic
+  * gopls: increment the telemetryprompt acceptance counter for each session
+  * gopls/internal: implement Packages command
+  * gopls/internal: implement Modules command
+  * gopls/internal/settings: rename goTest code action to source.test
+  * gopls/internal/cache: remove spurious assertions
+  * gopls/internal/golang: downgrade assertion in methodsets index
+  * gopls: enhance read/write access distinction in document highlighting for symbols
+  * gopls/internal/analysis: add skipped analysis simplify on generated code
+  * gopls/internal/telemetry/cmd/stacks: use authentication token
+  * gopls/doc/features: fix prominent typo
+  * gopls/doc: delete commands.md
+  * gopls/internal/golang: add "Browse gopls features" code action
+  * gopls/internal/cmd: redesign codeaction subcommand
+  * gopls/doc/features: more doc tweaks
+  * gopls: update x/telemetry dependency
+  * gopls/internal/protocol/command: draft Packages/Modules API
+  * gopls/completion: prefer rangeable funcs in range statements
+  * gopls/internal/analysis/fillswitch: use qualified type names
+  * gopls/internal/golang: provide version info for stdlib in pkgdoc
+  * gopls/internal/server: add counters to inform v0.17.0
+  * gopls/doc: respond to Hana's review of CL 583316
+  * gopls/doc: document all of gopls' features
+  * gopls/internal/golang: provide version info for stdlib fields
+  * gopls/internal/analysis/fillstruct: use package name (not path) in UI
+  * gopls/internal/golang: splitlines: s/parameter/arguments/ in CallExpr
+  * gopls/internal/golang: splitlines: remove workaround for golang/go#68202
+  * gopls/internal/golang: don't panic when findKeyword fails
+  * gopls/internal/server: conditionally prompt for telemetry
+  * gopls/internal/golang: provide version info for stdlib methods
+  * gopls/internal/golang: provide available version info in stdlib hover
+  * gopls/internal/golang/completion: fix package clause completion suffix
+  * gopls/internal/golang: s/return values/results/
+  * gopls/internal/fuzzy: move the fuzzy package to gopls
+  * gopls/internal/cache: lift package caching to forEachPackage
+  * gopls/matcher: don't give bonus to case insensitive match
+  * gopls/completion: don't take address of interfaces for "%p" values
+  * gopls/internal: add code action "extract declarations to new file"
+  * gopls: skip failing tests on wasm/wasip1
+  * gopls/internal/golang: fix hovering from the builtin file
+  * gopls/internal/settings: remove fieldalignment analyzer
+  * gopls/internal/golang: strip @v1.2.3 suffix from pkgdoc URLs
+  * gopls/internal/analysis/simplifyrange: reenable on range-over-func
+  * gopls/internal/settings: define InlayHints enum
+  * gopls/internal/settings: move CodeActionKind values from protocol
+  * gopls/internal/server: fix CSS typo
+  * gopls/internal/settings: minor cleanups
+  * gopls/doc/generate: treat LinksInHover as an enum
+  * gopls/doc/assets: create dummy submodule for image files
+  * gopls/doc/release: finalize v0.16.0 release notes
+  * gopls/internal/settings: move CodeLensSource from protocol
+  * gopls/internal/test/integration/misc: skip asm test unless a{rm,md}64
+
+-------------------------------------------------------------------
 Thu Sep 05 17:31:58 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.16.2:

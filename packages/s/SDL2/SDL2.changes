@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec  8 23:43:33 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.30.10
+  * Improved the performance of whole surface fill operations
+  * Fixed an assertion when connecting/disconnecting over RDP
+  * Added support for mouse wheel and extended buttons on PS Vita
+  * Fixed a rare crash on KMSDRM
+
+-------------------------------------------------------------------
 Sat Nov  2 11:45:47 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.30.9

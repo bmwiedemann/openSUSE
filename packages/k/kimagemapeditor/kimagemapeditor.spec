@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kimagemapeditor
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        HTML Image Map Editor
 License:        GPL-2.0-or-later
@@ -33,7 +33,6 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  fdupes
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
@@ -69,9 +68,7 @@ A tool to edit image maps of HTML files
 
 %find_lang %{name} --with-html --all-name
 
-%suse_update_desktop_file -r org.kde.kimagemapeditor Office WebDevelopment
-
-%fdupes -s %{buildroot}
+%fdupes %{buildroot}
 
 %files
 %license COPYING*

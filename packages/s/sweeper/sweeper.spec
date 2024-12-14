@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define plasma6_version 5.27.80
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           sweeper
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        KDE Privacy Utility
 License:        LGPL-2.1-or-later
@@ -34,7 +34,6 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-breeze-icons
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF6Bookmarks) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
@@ -66,8 +65,6 @@ Helps clean unwanted traces the user leaves on the system.
 %kf6_install
 
 %find_lang %{name} --with-html --all-name
-
-%suse_update_desktop_file org.kde.sweeper Utility Security
 
 mkdir -p %{buildroot}%{_kf6_iconsdir}/hicolor/scalable/apps/
 cp %{_kf6_iconsdir}/breeze/apps/48/sweeper.svg %{buildroot}%{_kf6_iconsdir}/hicolor/scalable/apps/

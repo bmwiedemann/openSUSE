@@ -934,4 +934,14 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
   enforce fips mode.</comment>
     <requestid>1226518</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>79229a61ebeff35a094661b9beecd786</srcmd5>
+    <version>6.0.0</version>
+    <time>1734125578</time>
+    <user>anag+factory</user>
+    <comment>- /usr/sbin/ipsec is deprecated since 5.2.0 and will be removed
+  in the future.
+- Update to release 6.0.0</comment>
+    <requestid>1230634</requestid>
+  </revision>
 </revisionlist>

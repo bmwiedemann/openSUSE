@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec  3 08:07:16 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- ppcl64le: POWER10 performance enhancements for cryptography [jsc#PED-9904]
+  * powerpc64/sha256: fix loading overreads by loading less and shifting
+  * powerpc64/sha256: adjust stack offset for storing non-volatile registers
+  * powerpc64: remove use of m4_unquote in the load step for sha256
+  * Temporarily skip the gcm test: libnettle-powerpc64-skip-AES-GCM-test.patch
+  * Add patches:
+    - libnettle-powerpc64-sha256-fix-loading-overreads.patch
+    - libnettle-powerpc64-sha256-adjust-stack-offset-for-non-volatile-registers.patch
+    - libnettle-powerpc64-remove-m4_unquote-sha256.patch
+
+-------------------------------------------------------------------
 Mon Jun 17 06:22:31 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 3.10:

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 12 16:09:18 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Add starlette-pr2773-httpx0.28.patch gh#encode/starlette#2773
+  for httpx 0.28
+
+-------------------------------------------------------------------
 Wed Nov 20 17:28:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.41.3:

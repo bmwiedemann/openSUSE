@@ -17,7 +17,7 @@
 
 
 Name:           liboqs
-Version:        0.11.0
+Version:        0.12.0
 Release:        0
 Summary:        C library for quantum-resistant cryptographic algorithms
 License:        MIT
@@ -35,18 +35,18 @@ BuildRequires:  libopenssl-devel
 liboqs is a C library for quantum-resistant cryptographic algorithms.
 See the bundled README.md for particular limitations on intended use.
 
-%package -n liboqs6
+%package -n liboqs7
 Summary:        C library for quantum-resistant cryptographic algorithms
 Group:          System/Libraries
 
-%description -n liboqs6
+%description -n liboqs7
 liboqs is a C library for quantum-resistant cryptographic algorithms.
 See the bundled README.md for particular limitations on intended use.
 
 %package devel
 Summary:        Headers for liboqs, a library for quantum-resistant cryptography
 Group:          Development/Languages/C and C++
-Requires:       liboqs6 = %{version}
+Requires:       liboqs7 = %{version}
 
 %description devel
 liboqs is a C library for quantum-resistant cryptographic algorithms.
@@ -78,13 +78,13 @@ mv %{buildroot}%{_prefix}/local/* %{buildroot}%{_prefix}
 
 rmdir %{buildroot}%{_prefix}/local/
 
-%post -n liboqs6 -p /sbin/ldconfig
-%postun -n liboqs6 -p /sbin/ldconfig
+%post -n liboqs7 -p /sbin/ldconfig
+%postun -n liboqs7 -p /sbin/ldconfig
 
-%files -n liboqs6
+%files -n liboqs7
 %license LICENSE.txt
 %{_libdir}/liboqs.so.%version
-%{_libdir}/liboqs.so.6
+%{_libdir}/liboqs.so.7
 %doc README.md
 
 %files devel

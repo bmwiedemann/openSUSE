@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Dec  3 15:59:06 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- /usr/sbin/ipsec is deprecated since 5.2.0 and will be removed
+  in the future.
+- Update to release 6.0.0
+  * Support for multiple IKEv2 key exchanges (RFC 9370)
+  * Support for the Module-Lattice-Based Key-Encapsulation
+    Mechanism (ML-KEM, FIPS 203)
+  * AF_VSOCK socket support
+  * The file logger can optionally log messages as JSON objects
+  * Handling of CHILD_SA rekey collisions has been improved
+  * The kernel-netlink plugin explicitly configures the direction
+    of IPsec SAs when running on 6.10+ kernels
+  * The NetworkManager plugin (charon-nm) now uses a different
+    routing table than the regular IKE daemon to avoid conflicts
+    if both are running
+  * The following crypto plugins are no longer built:
+    aes, curve25519, des, fips-prf, gmp, hmac, md5, pkcs12, rc2,
+    sha1, sha2. (Their replacement is the "openssl" plugin.)
+  * The following deprecated plugins have been removed: bliss
+    (signature scheme), newhope (key exchange method), ntru (key
+    exchange method).
+- Add init.patch
+
+-------------------------------------------------------------------
 Tue Nov 26 12:02:16 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - rename -hmac subpackage to -fips because it isn't providing

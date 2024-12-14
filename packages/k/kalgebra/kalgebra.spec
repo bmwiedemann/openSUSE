@@ -19,13 +19,13 @@
 # Internal QML imports
 %global __requires_exclude qt6qmlimport\\((widgets|org\\.kde\\.kalgebra\\.mobile).*
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 %define plasma6_version 5.27.80
 
 %bcond_without released
 Name:           kalgebra
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Math Expression Solver and Plotter
 License:        GPL-2.0-or-later

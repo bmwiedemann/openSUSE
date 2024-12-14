@@ -509,17 +509,17 @@ SKIP_TESTS+=" or test_psycopg2_schema_support"
 SKIP_TESTS+=" or test_self_join_date_columns"
 # expects a dirty git revision from git repo
 SKIP_TESTS+=" or test_git_version"
-%if "%{flavor}" == "test-py312"
 # https://github.com/pandas-dev/pandas/pull/57391, proposed change is not necessarily the right one
+%if "%{flavor}" == "test-py312"
 SKIP_TESTS+=" or (test_scalar_unary and numexpr-pandas)"
 %endif
-# Numpy2: unexpected 'np.str_(...)' in error message
-SKIP_TESTS+=" or test_group_subplot_invalid_column_name"
+%if "%{flavor}" == "test-py313"
+SKIP_TESTS+=" or (test_scalar_unary and numexpr-pandas)"
+%endif
 # https://github.com/pandas-dev/pandas/pull/55901, not gonna merge this huge patch to fix one test failing with new timezone, will be included in new release
 SKIP_TESTS+=" or test_array_inference[data7-expected7]"
 # numpy 2.1 issues?
 SKIP_TESTS+=" or test_frame_setitem_dask_array_into_new_col"
-SKIP_TESTS+=" or test_from_obscure_array"
 # too new xarray https://github.com/pandas-dev/pandas/pull/60109
 SKIP_TESTS+=" or (TestDataFrameToXArray and test_to_xarray_index_types)"
 

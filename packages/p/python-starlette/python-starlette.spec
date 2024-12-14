@@ -33,6 +33,8 @@ Summary:        Lightweight ASGI framework/toolkit
 License:        BSD-3-Clause
 URL:            https://github.com/encode/starlette
 Source:         https://github.com/encode/starlette/archive/refs/tags/%{version}.tar.gz#/starlette-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM starlette-pr2773-httpx0.28.patch gh#encode/starlette#2773
+Patch0:         https://github.com/encode/starlette/pull/2773.patch#/starlette-pr2773-httpx0.28.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
@@ -47,7 +49,7 @@ BuildRequires:  %{python_module anyio >= 3.4.0}
 # SECTION [full]
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module Jinja2}
-BuildRequires:  %{python_module httpx >= 0.22}
+BuildRequires:  %{python_module httpx >= 0.28}
 BuildRequires:  %{python_module itsdangerous}
 BuildRequires:  %{python_module python-multipart >= 0.0.7}
 # /SECTION
@@ -69,10 +71,12 @@ Starlette is a lightweight ASGI framework/toolkit, which is ideal for
 building high performance asyncio services.
 
 %prep
-%autosetup -n starlette-%{version}
+%autosetup -p1 -n starlette-%{version}
 
 %build
+%if ! %{with test}
 %pyproject_wheel
+%endif
 
 %install
 %if ! %{with test}

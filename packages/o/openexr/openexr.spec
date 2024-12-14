@@ -39,6 +39,7 @@ BuildRequires:  pkgconfig(libdeflate)
 BuildRequires:  pkgconfig(zlib)
 Obsoletes:      OpenEXR <= 1.6.1
 Provides:       OpenEXR = %{version}
+%{?suse_build_hwcaps_libs}
 
 %description
 OpenEXR is a high dynamic-range (HDR) image file format developed by

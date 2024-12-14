@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.2.3
+%define kpim6_version 6.3.0
 
 %bcond_without released
 Name:           kio-gdrive
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Google Drive KIO slave for KDE applications
 License:        GPL-2.0-or-later
@@ -62,7 +62,7 @@ This can be Dolphin or Gwenview.
 %autosetup -p1
 
 %build
-%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
@@ -74,18 +74,26 @@ This can be Dolphin or Gwenview.
 %files
 %license COPYING
 %doc README.md README.packagers
-%doc %lang(en) %{_kf6_htmldir}/en/kioslave5/gdrive/
 %{_kf6_appstreamdir}/org.kde.kio_gdrive.metainfo.xml
 %{_kf6_notificationsdir}/gdrive.notifyrc
 %{_kf6_plugindir}/kaccounts/
-%{_kf6_plugindir}/kf6/
-%{_kf6_sharedir}/accounts/
+%dir %{_kf6_plugindir}/kf6/kfileitemaction
+%{_kf6_plugindir}/kf6/kfileitemaction/gdrivecontextmenuaction.so
+%dir %{_kf6_plugindir}/kf6/kio
+%{_kf6_plugindir}/kf6/kio/gdrive.so
+%dir %{_kf6_plugindir}/kf6/propertiesdialog
+%{_kf6_plugindir}/kf6/propertiesdialog/gdrivepropertiesplugin.so
+%dir %{_kf6_plugindir}/kf6/purpose
+%{_kf6_plugindir}/kf6/purpose/purpose_gdrive.so
+%dir %{_kf6_sharedir}/accounts
+%dir %{_kf6_sharedir}/accounts/services
+%dir %{_kf6_sharedir}/accounts/services/kde
+%{_kf6_sharedir}/accounts/services/kde/google-drive.service
 %dir %{_kf6_sharedir}/purpose
 %{_kf6_sharedir}/purpose/purpose_gdrive_config.qml
 %dir %{_kf6_sharedir}/remoteview
 %{_kf6_sharedir}/remoteview/gdrive-network.desktop
 
 %files lang -f %{name}.lang
-%exclude %{_kf6_htmldir}/en/kioslave5/gdrive/
 
 %changelog

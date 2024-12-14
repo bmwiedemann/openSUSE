@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 12 18:00:38 UTC 2024 - James Fehlig <jfehlig@suse.com>
+
+- qemu: tpm: do not update profile name for transient domains
+  Fixes a crash when starting a transient domain
+  boo#1234438
+
+-------------------------------------------------------------------
 Mon Dec  2 18:48:20 UTC 2024 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 10.10.0

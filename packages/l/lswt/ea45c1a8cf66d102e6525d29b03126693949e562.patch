@@ -1,0 +1,25 @@
+From ea45c1a8cf66d102e6525d29b03126693949e562 Mon Sep 17 00:00:00 2001
+From: Leon Henrik Plickat <leonhenrik.plickat@stud.uni-goettingen.de>
+Date: Fri, 17 May 2024 14:53:57 +0200
+Subject: [PATCH] update version to 2.0.1-dev
+
+---
+ lswt.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lswt.c b/lswt.c
+index 2b4b2ed..4e4bb16 100644
+--- a/lswt.c
++++ b/lswt.c
+@@ -42,7 +42,7 @@
+ 
+ #define BOOL_TO_STR(B) (B) ? "true" : "false"
+ 
+-#define VERSION "2.0.0"
++#define VERSION "2.0.1-dev"
+ 
+ const char usage[] =
+ 	"Usage: lswt [options...]\n"
+-- 
+2.45.2
+

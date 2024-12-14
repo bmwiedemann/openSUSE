@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sun Dec  8 09:26:55 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.0/
+- Changes since 24.11.90:
+  * Fix access to undefined variable
+  * Clip TableOfContentDrawer listview
+  * Add missing icon in Settings page
+  * Remove boring screenshots
+  * Fix crash with Qt 6.8
+  * Fix creation of EpubViewerPage
+  * Ensure cover cache is regenerated when deleted
+
+-------------------------------------------------------------------
+Mon Dec  2 08:42:23 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.90
+  * New feature release
+- No code change since 24.11.80
+
+-------------------------------------------------------------------
+Sat Nov 16 17:28:57 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.80
+  * New feature release
+- Changes since 24.08.3:
+  * Don't include quiet packages in feature_summary
+  * fix clang-format
+  * Fix build with Qt 6.8 (kde#491761)
+  * Simplify AboutPage and AboutKDE component creation
+  * Port to REUSE.toml
+  * Use new Kirigami SearchDialog
+  * Remove duplicate headers
+  * Add missing override keyword
+  * const'ify pointer
+  * Remove qt5 support
+
+-------------------------------------------------------------------
 Tue Nov  5 10:42:36 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.3

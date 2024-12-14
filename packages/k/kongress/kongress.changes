@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Sun Dec  8 09:27:56 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.0/
+- No code change since 24.11.90
+
+-------------------------------------------------------------------
+Mon Dec  2 08:43:25 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.90
+  * New feature release
+- Changes since 24.11.80:
+  * Build packages against stable dependencies
+  * Update Flatpak runtime
+
+-------------------------------------------------------------------
+Sat Nov 16 17:30:05 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.80
+  * New feature release
+- Changes since 24.08.3:
+  * Simplify appstream summary
+  * Add details to schedule view entries
+  * fix clang-format
+  * Port KColorSchemeManager
+  * Use ecm_set_disabled_deprecation_versions
+  * Port to KLocalizedQmlContext
+  * flatpak: Build the same modules that we build in flathub
+  * Remove unused forward declaration
+  * const'ify pointer
+  * show all headers in qtc6
+  * Add clang-format validation job
+  * Ignore .clang-format
+  * Use ===
+  * const'ify pointer + initialize nullptr
+  * Show headers in qtc6
+  * Update repo link in README
+  * Enable automatic dark mode support on Android
+  * Fix QML exclusion patterns, part 2
+  * Fix QML exclude patterns
+  * Bundle icons used by the indoor map in APKs
+  * Exclude KPublicTransport leftovers from the APK
+  * Set up crash handling
+  * Support searching time-conditional rooms
+  * Implement room matching on the venue map
+  * Fix QML errors in venue map routing UI
+
+-------------------------------------------------------------------
 Tue Nov  5 10:43:39 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.3

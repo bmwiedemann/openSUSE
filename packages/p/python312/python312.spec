@@ -110,7 +110,7 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.12.7
+Version:        3.12.8
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -182,9 +182,9 @@ Patch41:        docs-docutils_014-Sphinx_420.patch
 # PATCH-FIX-SLE doc-py38-to-py36.patch mcepl@suse.com
 # Make documentation extensions working with Python 3.6
 Patch44:        doc-py38-to-py36.patch
-# PATCH-FIX-UPSTREAM CVE-2024-9287-venv_path_unquoted.patch gh#python/cpython#124651 mcepl@suse.com
-# venv should properly quote path names provided when creating a venv
-Patch45:        CVE-2024-9287-venv_path_unquoted.patch
+# PATCH-FIX-UPSTREAM CVE-2024-12254-unbound-mem-buffering-SelectorSocketTransport.writelines.patch bsc#1234290 mcepl@suse.com
+# prevents exhaustion of memory
+Patch45:        CVE-2024-12254-unbound-mem-buffering-SelectorSocketTransport.writelines.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -441,8 +441,7 @@ This package contains libpython3.2 shared library for embedding in
 other applications.
 
 %prep
-%setup -q -n %{tarname}
-%autopatch -p1
+%autosetup -p1 -n %{tarname}
 
 # Fix devhelp doc build gh#python/cpython#120150
 echo "master_doc = 'contents'" >> Doc/conf.py

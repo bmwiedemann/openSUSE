@@ -1,0 +1,25 @@
+From fbb7be4354508b41552ce2159b1203db123916ac Mon Sep 17 00:00:00 2001
+From: Leon Henrik Plickat <leonhenrik.plickat@stud.uni-goettingen.de>
+Date: Fri, 28 Jun 2024 11:29:09 +0200
+Subject: [PATCH] remove accidental characters from license comment
+
+---
+ lswt.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lswt.c b/lswt.c
+index 47dcfdd..60c6ce7 100644
+--- a/lswt.c
++++ b/lswt.c
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- sdcsdc * along with this program.  If not, see <https://www.gnu.org/licenses/>.
++ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+  */
+ 
+ #include <ctype.h>
+-- 
+2.45.2
+

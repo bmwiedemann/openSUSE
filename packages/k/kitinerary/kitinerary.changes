@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sun Dec  8 09:27:43 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.0/
+- Changes since 24.11.90:
+  * JsonLdImportFilter: Filter LodgingBusiness as a place
+  * Update leoexpress.js
+  * add: add Leo Express PkPass extractor
+  * Add Dimedis Fairmate extractor
+  * add: finish droplabs extractor
+  * add: begin droplabs extractor
+  * extractor for PKPass tickets from Droplabs
+  * Handle French language European Sleeper seat reservations
+  * Update RSP6 keys
+  * add: Coloseum Ticket extractor
+  * Fix pdf seats parsing for inoui trains
+
+-------------------------------------------------------------------
+Mon Dec  2 08:43:11 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.90
+  * New feature release
+- Changes since 24.11.80:
+  * add: add luma extractor
+  * fix according to reviews in MR
+  * Update flixbus.js: remove console.logs
+  * add: add parser for Flixbus.de pkpasses
+  * Build Flatpak and static extractor against release branches
+  * Update Flatpak dependencies
+  * Update static build versions
+
+-------------------------------------------------------------------
+Sat Nov 16 17:29:51 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.80
+  * New feature release
+- Too many changes since 24.08.3, only listing bugfixes:
+  * Make Renfe barcode trigger pattern more strict (kde#494613)
+  * Make Renfe extractor script more robust (kde#494617)
+  * Add extractor script for Reisnordland ferries (kde#492096)
+  * Relax MAV barcode matching pattern (kde#491403)
+  * Add extractor script for EnTur PDF tickets (kde#490997)
+
+-------------------------------------------------------------------
 Tue Nov  5 10:43:26 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.3

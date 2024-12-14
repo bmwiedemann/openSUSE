@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Dec 11 08:28:32 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.3.8
+  * Reverted the fix for :ticket:`140` released in Mako 1.3.7 as it produced
+    regressions in existing user code.
+- from version 1.3.7
+  * During the lexical analysis phase, add an additional prefix for undeclared
+    identifiers that have the same name as built-in flags, and determine the
+    final filter to be used during the code generation phase based on the
+    context provided by the user. Pull request by Hai Zhu.
+  * Support the direct passing of dictionary literals when calling functions
+    and fix the errors caused by nested braces.   This revises the fix that was
+    released in 1.3.4 and then reverted in 1.3.5. Pull request by Hai Zhu and
+    Jose Galvez.
+
+-------------------------------------------------------------------
 Wed Nov  6 15:56:23 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.3.6

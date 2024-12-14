@@ -19,8 +19,8 @@
     <param name="url">https://github.com/docker/buildx.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="versionformat">0.17.1</param>
-    <param name="revision">v0.17.1</param>
+    <param name="versionformat">0.19.2</param>
+    <param name="revision">v0.19.2</param>
     <param name="filename">docker-buildx</param>
   </service>
   <service name="recompress" mode="manual">

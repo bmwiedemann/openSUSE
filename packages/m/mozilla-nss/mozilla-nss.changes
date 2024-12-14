@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 11 15:00:16 UTC 2024 - Adrian Schröter <adrian@suse.de>
+
+- fix build on loongarch64 (setting it as 64bit arch)
+
+-------------------------------------------------------------------
 Tue Nov 26 15:07:49 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Remove upstreamed bmo-1400603.patch

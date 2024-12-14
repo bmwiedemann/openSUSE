@@ -1,7 +1,7 @@
 #
 # spec file for package paprefs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,6 @@ Source0:        %{url}/%{name}-%{version}.tar.xz
 BuildRequires:  c++_compiler
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(giomm-2.4) >= 2.26
 BuildRequires:  pkgconfig(gtkmm-3.0)
 BuildRequires:  pkgconfig(libpulse)
@@ -49,12 +48,12 @@ server.
 %autosetup -p1
 
 %build
+sed -i 's@Icon=.*@Icon=audio-speakers@' src/paprefs.desktop.in
 %meson
 %meson_build
 
 %install
 %meson_install
-%suse_update_desktop_file %{name} HardwareSettings AudioVideo Utility
 %find_lang %{name} %{?no_lang_C}
 
 %files

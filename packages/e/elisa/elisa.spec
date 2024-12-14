@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           elisa
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Music player and collection organizer
 License:        LGPL-3.0-or-later

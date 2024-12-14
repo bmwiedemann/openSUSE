@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Dec 11 07:42:31 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 8.11.1:
+  * Security fixes:
+    - netrc and redirect credential leak [bsc#1234068, CVE-2024-11053]
+  * Bugfixes:
+    - build: fix ECH to always enable HTTPS RR
+    - cookie: treat cookie name case sensitively
+    - curl-rustls.m4: keep existing 'CPPFLAGS'/'LDFLAGS' when detected
+    - curl: use realtime in trace timestamps
+    - digest: produce a shorter cnonce in Digest headers
+    - docs: document default 'User-Agent'
+    - docs: suggest --ssl-reqd instead of --ftp-ssl
+    - duphandle: also init netrc
+    - hostip: don't use the resolver for FQDN localhost
+    - http_negotiate: allow for a one byte larger channel binding buffer
+    - krb5: fix socket/sockindex confusion, MSVC compiler warnings
+    - libssh: use libssh sftp_aio to upload file
+    - libssh: when using IPv6 numerical address, add brackets
+    - mime: fix reader stall on small read lengths
+    - mk-ca-bundle: remove CKA_NSS_SERVER_DISTRUST_AFTER conditions
+    - mprintf: fix the integer overflow checks
+    - multi: fix callback for 'CURLMOPT_TIMERFUNCTION' not being called again when...
+    - netrc: address several netrc parser flaws
+    - netrc: support large file, longer lines, longer tokens
+    - nghttp2: use custom memory functions
+    - OpenSSL: improvde error message on expired certificate
+    - openssl: remove three "Useless Assignments"
+    - openssl: stop using SSL_CTX_ function prefix for our functions
+    - pytest: add test for use of CURLMOPT_MAX_HOST_CONNECTIONS
+    - rtsp: check EOS in the RTSP receive and return an error code
+    - schannel: remove TLS 1.3 ciphersuite-list support
+    - setopt: fix CURLOPT_HTTP_CONTENT_DECODING
+    - setopt: fix missing options for builds without HTTP & MQTT
+    - socket: handle binding to "host!<ip>"
+    - socketpair: fix enabling 'USE_EVENTFD'
+    - strtok: use namespaced 'strtok_r' macro instead of redefining it
+  * Remove 0001-duphandle-also-init-netrc.patch upstream
+
+-------------------------------------------------------------------
 Wed Nov 13 12:21:51 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Add patch to fix libcurl when netrc parsing is enabled.

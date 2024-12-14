@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Mon Dec  9 14:02:36 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- the my_apps_rb_build* defines are only set in darix' default
+  project. dont forward them to the distro.
+
+-------------------------------------------------------------------
+Thu Nov  7 23:05:09 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 8.0.0:
+  https://rubyonrails.org/2024/11/7/rails-8-no-paas-required
+
+-------------------------------------------------------------------
+Wed Oct 16 21:53:47 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- initial package

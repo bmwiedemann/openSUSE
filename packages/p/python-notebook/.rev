@@ -388,4 +388,12 @@
   * Upgrade JupyterLab dependencies to v4.2.5 #7447 (@krassowski)</comment>
     <requestid>1201273</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>16abb84b2cbf10d706ecd5403cd3c0a0</srcmd5>
+    <version>7.3.1</version>
+    <time>1734125597</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1229062</requestid>
+  </revision>
 </revisionlist>

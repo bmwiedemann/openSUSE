@@ -16,11 +16,11 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 %bcond_without released
 Name:           kget
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Download Manager
 License:        GPL-2.0-or-later
@@ -112,7 +112,6 @@ An advanced download manager by KDE
 %dir %{_kf6_sharedir}/kio
 %dir %{_kf6_sharedir}/kio/servicemenus
 %{_kf6_sharedir}/kio/servicemenus/kget_download.desktop
-%{_kf6_sharedir}/kio/servicemenus/kget_plugin.desktop
 
 %files lang -f %{name}.lang
 %exclude %{_kf6_htmldir}/en/kget

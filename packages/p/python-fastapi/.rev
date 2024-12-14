@@ -475,4 +475,16 @@
     &gt;=2.10. PR #12971 by @tamird.</comment>
     <requestid>1228546</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>a3093820f9cab34e128ed80de46b80ab</srcmd5>
+    <version>0.115.6</version>
+    <time>1734125590</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1230610 from bnavigator
+
+- Skip a test because httpx 0.28 cosmetically changed the format
+    of a body response. Note that fastapi technically does not yet
+    support httpx 0.28 upstream.</comment>
+    <requestid>1230775</requestid>
+  </revision>
 </revisionlist>

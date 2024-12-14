@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           ktrip
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Public transport assistant targeted towards mobile Linux and Android
 License:        GPL-2.0-or-later
@@ -33,7 +33,6 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-breeze-icons >= %{kf6_version}
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
@@ -73,8 +72,6 @@ transport providers by leveraging KPublicTransport.
 
 %install
 %kf6_install
-
-%suse_update_desktop_file org.kde.ktrip Utility Maps
 
 %find_lang %{name}
 

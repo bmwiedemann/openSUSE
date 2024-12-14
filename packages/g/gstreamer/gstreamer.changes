@@ -35,7 +35,8 @@ Mon Dec  9 11:49:13 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
     - Updated translations.
   + gstreamer:
     - allocator: Avoid integer overflow when allocating sysmem and
-      avoid integer overflow in qtdemux theora extension parsing.
+      avoid integer overflow in qtdemux theora extension parsing
+      (boo#1233449 CVE-2024-47606).
     - deviceprovider: fix leaking hidden providers.
     - gstreamer: prefix debug dot node names to prevent splitting.
     - pad: Never push sticky events in response to a FLUSH_STOP.

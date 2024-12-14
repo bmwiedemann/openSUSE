@@ -17,13 +17,13 @@
 
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 
 %define rname baloo-widgets
 %bcond_without released
 Name:           baloo-widgets
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Framework for searching and managing metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only

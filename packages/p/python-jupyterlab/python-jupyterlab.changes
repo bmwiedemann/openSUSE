@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Sat Dec  7 13:23:22 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.3.2
+  ## Bugs fixed
+  * Improve performance of rendering stdout/stderr #17022
+    (@krassowski)
+  * Fixing missed first keystroke on Ctrl+F #17005 (@itsmevichu)
+  * Fix disappearing cells (heal offsets after updating estimated
+    sizes) #17000 (@krassowski)
+  * Fix regression in standard error rendering performance #16975
+    (@krassowski)
+  * Fix handling of carriage return in output streams #16999
+    (@davidbrochart)
+  * Fix emission of FileBrowserModel.onFileChanged for drives
+    (including RTC:) #16988 (@davidbrochart)
+  * Drag image prompt styling #16972 (@JasonWeill)
+  * Restore viewport min-height when not windowing #16979
+    (@brichet)
+  ## Maintenance and upkeep improvements
+  * Bump required setuptools to 40.8.0 #17032 (@krassowski)
+  * Fix extension manager failure with new httpx versions, bump
+    httpx to v0.28.0 #17013 (@davidbrochart)
+  * Pin Python version for visual regression testing to 3.11 #16989
+    (@krassowski)
+  * Reconfigure 4.3.x branch #16970 (@krassowski)
+  ## Documentation improvements
+  * Add forgotten bracket in code sample #16998 (@cmarmo)
+  * Reconfigure 4.3.x branch #16970 (@krassowski)
+
+-------------------------------------------------------------------
+Sun Nov 17 14:17:22 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.3.1
+  ## Bugs fixed
+  * Fix total size estimation in full windowing mode to reduce
+    scrollbar jitter #16950 (@krassowski)
+  * Fix moving files when Last Modified column is hidden #16962
+    (@krassowski)
+  * Enable Scroll for Overflowing Menus on Small Screens #16945
+    (@Darshan808)
+  * Fix prefix removal when reconciling completions from multiple
+    sources #16953 (@krassowski)
+  * Disable paste for read-only markdown cells & fix replace all
+    for markdown cells #16943 (@itsmevichu)
+  * Maintain autosave timers while disconnected #16903 (@holzman)
+  * Fix Regex Functionality for Find and Replace / Replace All
+    #16940 (@itsmevichu)
+  * Fix triggering completer on the beginning of the lines #16863
+    (@andrewfulton9)
+  * Add clarification about FileFormat in Services.Contents #16927
+    (@cmarmo)
+  * Reuse serverSettings when reopen an existing terminal #16921
+    (@ianthomas23)
+
+-------------------------------------------------------------------
 Sun Nov 17 14:12:53 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Downgrade to 4.2.6 

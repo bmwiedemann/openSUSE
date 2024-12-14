@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Mon Nov 18 23:58:38 UTC 2024 - jfehlig@suse.com
+
+- Update to version 1.9.8:
+  * Bump version to 1.9.8
+  * Update rust-vmm deps
+  * Bump version to 1.9.7
+  * vmm: update sev crates to latest version
+  * chroot_vm: fix argument types
+  * Bump version to 1.9.6
+  * vmm/amdsnp: Remove deprecated as_slice() for guest memory
+  * vmm/amdsnp: Set SMT bit in guest policy
+  * Add X11 cross domain channel type.
+  * rutabaga: cross_domain: Handle Host->Guest dmabufs correctly
+  * rutabaga: cross_domain: Clean up resource item logic
+  * vmm: Create an export table and pass it to the FS and GPU code.
+  * gpu: Plumb through export_table into cross_domain
+  * virtio/fs: Add support for exporting FDs to other subsystems
+  * rutabaga: cross_domain: Signal host-initiated EOF
+  * rutabaga: cross_domain: Fix EPOLLRDHUP logic
+  * device_manager: Keep SHM region order
+  * virtio/fs/linux: Fix redundant close()
+  * virtio/fs/linux: Fix xattrs on symlinks (leak fix)
+  * virtio/fs/linux: Fix xattrs on symlinks
+  * virtio, krun: Name all the worker threads
+  * Bump version to 1.9.5
+  * init: support other locations for krun_config
+  * virtio/fs/linux: announce submounts
+  * Add krun_add_disk() method; deprecate set_*_disk
+  * Drop outdated comment
+  * Drop deadcode
+  * Drop unused is_disk_root field
+  * README: update for virtio-block on non-SEV
+  * devices/legacy: use pl011 for earlycon in aarch64
+  * libkrun: use unwrap_or while grabbing mac address
+  * virtio/fs/macos: drop dead code
+  * virtio/queue: use inspect instead of map
+  * CODEOWNERS: remove myself
+  * libkrun: (gpu/fs) introduce variants set shm size
+  * virtio/fs/macos: implement DAX support
+  * virtio/fs: plumb SHM region into worker
+  * arch: implement SHM region management
+  * vmm: unify create_guest_memory
+  * vmm/vstate/linux: remove broken kvm_context test
+  * clippy: minor fixes in docs
+  * virtio/fs/macos: announce submounts
+  * virtio/fs: add FUSE ATTR_SUBMOUNT support
+  * virtio/fs/macos: decouple host-guest inodes
+  * Bump version to 1.9.4
+  * Update kbs-types dependency to 0.7.0
+  * Make linter happy
+  * Remove contention on the gic
+  * virtiofs: fallocate: should enlarge but not shrink the file
+  * Bump version to 1.9.3
+  * vmm: Fix the nomodule kernel parameter
+  * console: avoid using the raw ioctl for TIOCGWINSZ
+  * virtio/fs: translate raw errors in server.rs
+  * Various minor fixes for rust 1.79.0
+  * edk2: update KRUN_EFI binary
+  * hvf: support ARM PSCI SYSTEM_OFF
+  * gpu: use resource_map() for mapping BOs
+  * rutabaga: add support for virgl's resource_map2
+  * Bump version to 1.9.2
+  * Update kvm-bindings and kvm-ioctls deps
+  * vmm: drop unused code for boot time logging
+  * rutabaga: cross_domain: Fix EINTR handling
+  * Bump version to 1.9.1
+  * virtio/fs: Fix corrupted dirents due to trailing garbage
+  * init: tell the kernel to reap our children for us
+  * builder: only enable TSI if there are no netdevs
+  * Add SMBIOS OEM Strings support (aarch64 only)
+  * Add SMBIOS internal crate
+  * Add edk2 firmware with SMBIOS support (aarch64)
+
+-------------------------------------------------------------------
 Mon Jun 03 08:46:39 UTC 2024 - dfaggioli@suse.com
 
 - Update to version 1.9.0:

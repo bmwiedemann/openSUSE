@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           tokodon
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Mastodon client by KDE
 License:        GPL-3.0-only
@@ -38,6 +38,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF6ColorScheme) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
@@ -47,6 +48,7 @@ BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
 BuildRequires:  cmake(KF6Purpose) >= %{kf6_version}
 BuildRequires:  cmake(KF6QQC2DesktopStyle) >= %{kf6_version}
 BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
+BuildRequires:  cmake(KUnifiedPush) >= 1.0.0
 BuildRequires:  cmake(MpvQt)
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
@@ -59,6 +61,7 @@ BuildRequires:  cmake(Qt6WebSockets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WebView) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  pkgconfig(mpv)
+BuildRequires:  pkgconfig(openssl)
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  x86_64 %{x86_64} aarch64 riscv64
 Requires:       kf6-kirigami-imports >= %{kf6_version}
@@ -101,8 +104,7 @@ community.
 %{_kf6_iconsdir}/hicolor/scalable/actions/*.svg
 %{_kf6_notificationsdir}/tokodon.notifyrc
 %{_kf6_plugindir}/kf6/purpose/tokodonplugin.so
-# TODO: only installed if kunifiedpush BR is present
-# %%{_kf6_sharedir}/dbus-1/services/org.kde.tokodon.service
+%{_kf6_sharedir}/dbus-1/services/org.kde.tokodon.service
 
 %files lang -f tokodon.lang
 

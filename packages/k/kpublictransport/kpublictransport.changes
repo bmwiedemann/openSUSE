@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Dec  8 09:28:03 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.0/
+- Changes since 24.11.90:
+  * Sync OSM data types from KOSMIndoorMap (kde#497034)
+  * Remove ZVV configuration
+  * Update VRS client certificate
+  * Discard CA certificates found in PKCS12 bundles
+  * Refactor IVV ASS request generation and allow to configure extra arguments
+
+-------------------------------------------------------------------
+Mon Dec  2 08:43:33 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.90
+  * New feature release
+- Changes since 24.11.80:
+  * Update line metadata from OSM/Wikidata
+  * Consider more Wikidata properties for line logos
+  * Resize some of the icons to 22px
+
+-------------------------------------------------------------------
+Sat Nov 16 17:30:12 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.80
+  * New feature release
+- Too many changes since 24.08.3, only listing bugfixes:
+  * Remove DE and ES coverage from Navitia (kde#494608)
+
+-------------------------------------------------------------------
 Tue Nov  5 10:43:46 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.3

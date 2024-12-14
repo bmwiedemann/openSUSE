@@ -21,7 +21,7 @@
 %if "%{flavor}" == "qt6"
 %define qt6 1
 %define pkg_suffix -qt6
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 %define library_name libKCddb5
 %define so_suffix -5
@@ -35,7 +35,7 @@
 
 %bcond_without released
 Name:           libkcddb%{?pkg_suffix}
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        CDDB library for KDE Applications
 License:        GPL-2.0-or-later

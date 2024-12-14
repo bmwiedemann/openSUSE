@@ -18,7 +18,7 @@
 
 
 Name:           gpg2
-Version:        2.5.1
+Version:        2.5.2
 Release:        0
 Summary:        File encryption, decryption, signature creation and verification utility
 License:        GPL-3.0-or-later
@@ -49,8 +49,10 @@ Patch12:        gnupg-revert-rfc4880bis.patch
 Patch13:        gnupg-nobetasuffix.patch
 BuildRequires:  expect
 BuildRequires:  fdupes
+%ifnarch loongarch64
 BuildRequires:  ibmswtpm2
 BuildRequires:  ibmtss-devel
+%endif
 BuildRequires:  libassuan-devel >= 2.5.0
 BuildRequires:  libgcrypt-devel >= 1.9.1
 BuildRequires:  libgpg-error-devel >= 1.46
@@ -189,8 +191,10 @@ cp systemd-user/README.systemd %{buildroot}%{_docdir}/gpg2/
 %{_libexecdir}/dirmngr_ldap
 %{_userunitdir}/dirmngr.*
 
+%ifnarch loongarch64
 %files tpm
 %license COPYING*
 %{_libexecdir}/tpm2daemon*
+%endif
 
 %changelog

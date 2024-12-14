@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kiten
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Japanese Reference/Study Tool
 # Data files are under CC-BY-SA-3.0 (edict) and CC-BY-SA-4.0 ("kanjidic"/SKIP numbers therein)

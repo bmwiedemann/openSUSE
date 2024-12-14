@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov 16 13:17:52 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 1.3.8:
+  * Readded call to toplevel activate function in onCreateSession
+  * sdbus-cpp version used for build should be 2.0.0
+  * core: reset toplevel before disconnect
+
+-------------------------------------------------------------------
 Sat Sep 28 23:44:59 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - Update to version 1.3.6:

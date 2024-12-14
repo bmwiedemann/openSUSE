@@ -1,0 +1,171 @@
+From a39b55080dcb50edc9321d38af8775af22cf852f Mon Sep 17 00:00:00 2001
+From: Leon Henrik Plickat <leonhenrik.plickat@stud.uni-goettingen.de>
+Date: Thu, 5 Dec 2024 15:45:49 +0100
+Subject: [PATCH] add --force-protocol option
+
+---
+ lswt.1 | 22 ++++++++++++++----
+ lswt.c | 71 +++++++++++++++++++++++++++++++++++++++++++++++++++++-----
+ 2 files changed, 84 insertions(+), 9 deletions(-)
+
+diff --git a/lswt.1 b/lswt.1
+index a84ce02..4414120 100644
+--- a/lswt.1
++++ b/lswt.1
+@@ -11,6 +11,7 @@ lswt \- list Wayland toplevels
+ .OP \-\-json
+ .OP \-c custom-format
+ .OP \-\-custom custom-format
++.OP \-\-force\-protocol protocol
+ .YS
+ .
+ .SY lswt
+@@ -49,6 +50,13 @@ which specifies the information about the toplevels lswt should
+ print.
+ The JSON output is versioned.
+ .P
++lswt also supports a watch mode, which will run continuosly and log whenever
++toplevels change their app-id or title.
++The watch mode is incompatible with the JSON and CSV output formats.
++.
++.
++.SH SUPPORTED PROTOCOLS
++.P
+ The information is querried from the Wayland server via one of
+ the following protocols:
+ .IP \(bu 2
+@@ -58,10 +66,6 @@ wlr-foreign-toplevel-management-unstable-v1
+ .P
+ As of now, only the ext- protocol supports unique toplevel IDs and
+ only the wlr- protocol supports toplevel states.
+-.P
+-lswt also supports a watch mode, which will run continuosly and log whenever
+-toplevels change their app-id or title.
+-The watch mode is incompatible with the JSON and CSV output formats.
+ .
+ .
+ .SH OPTIONS
+@@ -133,6 +137,16 @@ T}
+ .RE
+ .
+ .
++.P
++\fB--force-protocol\fR \fIprotocol-name\fR
++.RS
++Force the use of the specified protocl.
++lswt will not fall back onto another protocol if the specified one is not
++supported.
++See the \fBSUPPORTED PROTOCOLS\fR section for protocol names.
++.RE
++.
++.
+ .SH AUTHOR
+ .P
+ .MT leonhenrik.plickat@stud.uni-goettingen.de
+diff --git a/lswt.c b/lswt.c
+index 9201975..5376af0 100644
+--- a/lswt.c
++++ b/lswt.c
+@@ -56,7 +56,8 @@ const char usage[] =
+ 	"                              and app-id events.\n"
+ 	"  -W,       --verbose-watch   Like --watch, but also log activated, fullscreen,\n"
+ 	"                              minimized and maximized state.\n"
+-	"  -c <fmt>, --custom <fmt>    Define a custom line-based output format.\n";
++	"  -c <fmt>, --custom <fmt>    Define a custom line-based output format.\n"
++	"  --force-protocol <name>     Use specified protocol, do not fall back onto others.";
+ 
+ enum Output_format
+ {
+@@ -103,6 +104,7 @@ enum UsedProtocol
+ 	EXT_FOREIGN_TOPLEVEL,
+ };
+ enum UsedProtocol used_protocol;
++bool force_protocol = false;
+ 
+ struct wl_list toplevels;
+ 
+@@ -1136,11 +1138,40 @@ static void sync_handle_done
+ 		/* First sync: The registry finished advertising globals.
+ 		 * Now we can check whether we have everything we need.
+ 		 */
+-		if ( zwlr_toplevel_manager != NULL )
+-			used_protocol = ZWLR_FOREIGN_TOPLEVEL;
+-		if ( ext_toplevel_list != NULL )
++		if (force_protocol)
++		{
++			switch (used_protocol)
++			{
++				case ZWLR_FOREIGN_TOPLEVEL:
++					if ( zwlr_toplevel_manager == NULL )
++					{
++						fputs("ERROR: Wayland server does not support zwlr-foreign-toplevel-management-unstable-v1 version 3.\n", stderr);
++						ret = EXIT_FAILURE;
++						loop = false;
++						return;
++					}
++					break;
++
++				case EXT_FOREIGN_TOPLEVEL:
++					if ( ext_toplevel_list == NULL )
++					{
++						fputs("ERROR: Wayland server does not support ext-foreign-toplevel-list-v1 version 1.\n", stderr);
++						ret = EXIT_FAILURE;
++						loop = false;
++						return;
++					}
++					break;
++
++				case NONE: /* Unreachable. */
++					assert(false);
++					break;
++			}
++		}
++		else if ( ext_toplevel_list != NULL )
+ 			used_protocol = EXT_FOREIGN_TOPLEVEL;
+-		if ( used_protocol == NONE )
++		else  if ( zwlr_toplevel_manager != NULL )
++			used_protocol = ZWLR_FOREIGN_TOPLEVEL;
++		else
+ 		{
+ 			const char *err_message =
+ 				"ERROR: Wayland server supports none of the protocol extensions required for getting toplevel information:\n"
+@@ -1366,6 +1397,36 @@ int main(int argc, char *argv[])
+ 			mode = WATCH;
+ 		else if ( strcmp(argv[i], "-W") == 0 || strcmp(argv[i], "--verbose-watch") == 0 )
+ 			mode = VERBOSE_WATCH;
++		else if ( strcmp(argv[i], "--force-protocol") == 0 )
++		{
++			if (force_protocol)
++			{
++				fputs("ERROR: Forced protocol may only be specified once.\n", stderr);
++				ret = EXIT_FAILURE;
++				goto cleanup;
++			}
++			force_protocol = true;
++
++			if ( argc == i + 1 )
++			{
++				fprintf(stderr, "ERROR: Flag '%s' requires a parameter.\n", argv[i]);
++				ret = EXIT_FAILURE;
++				goto cleanup;
++			}
++
++			if ( strcmp(argv[i+1], "ext-foreign-toplevel-list-v1") == 0 )
++				used_protocol = EXT_FOREIGN_TOPLEVEL;
++			else if ( strcmp (argv[i+1], "zwlr-foreign-toplevel-management-unstable-v1") == 0 )
++				used_protocol = ZWLR_FOREIGN_TOPLEVEL;
++			else
++			{
++				fprintf(stderr, "ERROR: Unknown protocol: '%s'.\n", argv[i+1]);
++				ret = EXIT_FAILURE;
++				goto cleanup;
++			}
++
++			i++;
++		}
+ 		else if ( strcmp(argv[i], "-v") == 0 || strcmp(argv[i], "--version") == 0 )
+ 		{
+ 			fputs("lswt version " VERSION "\n", stderr);
+-- 
+2.45.2
+

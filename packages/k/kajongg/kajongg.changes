@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sun Dec  8 09:27:11 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.0/
+- No code change since 24.11.90
+
+-------------------------------------------------------------------
+Mon Dec  2 08:42:39 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.90
+  * New feature release
+- No code change since 24.11.80
+
+-------------------------------------------------------------------
+Sat Nov 16 17:29:15 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.80
+  * New feature release
+- Changes since 24.08.3:
+  * Don't include quiet packages in feature_summary
+  * remove remaining traces for windows installer
+  * also remove *.ui files from CMake and other metadata
+  * mypy: also silence warnings from Pyside6 bindings
+  * Pyside: fix drawing the lines for scores
+  * Pyside does not implement __len__ for QListWidget
+  * toolbar was not editable anymore since mypy: kdestub.py
+  * fixup ui removal
+  * fixup cgibt
+  * get rid of *.ui files
+  * better error message if kmahjongg resources are not installed
+  * remove windows installer
+  * remove unused cgitb module
+  * document default ports in README
+  * workaround: qtpy sometimes uses PYQT6 bindings even if it cannot find module PyQt6. See KDE bug 486171
+  * this should work with PYSIDE6 without PyQt6 being installed
+  * Help/About did not work with QT5 anymore
+  * did not work with QT=API=PYSIDE2 anymore
+
+-------------------------------------------------------------------
 Tue Nov  5 10:42:53 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.3

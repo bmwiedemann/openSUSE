@@ -12,7 +12,7 @@
 +   TTY="-t $TTY"
 +fi
 +pkill -USR1 $TTY socat || { echo "pkill $TTY -USR1 socat"; }
- relsleep 1
+ relsleep 2
 -pkill -t $TTY socat
 +pkill $TTY socat
  wait

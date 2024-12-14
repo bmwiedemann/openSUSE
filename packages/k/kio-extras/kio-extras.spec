@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define plasma6_version 5.27.80
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kio-extras
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Additional KIO slaves for KDE applications
 License:        GPL-2.0-or-later
@@ -188,6 +188,8 @@ This is the development package for libkioarchive6
 %{_kf6_plugindir}/kf6/kded/smbwatcher.so
 %{_kf6_plugindir}/kf6/kio/smb.so
 %{_kf6_libexecdir}/smbnotifier
+%dir %{_kf6_sharedir}/kio_filenamesearch
+%{_kf6_sharedir}/kio_filenamesearch/kio-filenamesearch-grep
 %{_datadir}/mime/packages/org.kde.kio.smb.xml
 %exclude %{_kf6_applicationsdir}/kcm_trash.desktop
 

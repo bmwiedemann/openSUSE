@@ -1,0 +1,230 @@
+From ade15dbc3d11325a2569a0efd543d43a3ecb3547 Mon Sep 17 00:00:00 2001
+From: Leon Henrik Plickat <leonhenrik.plickat@stud.uni-goettingen.de>
+Date: Sat, 24 Aug 2024 18:44:52 +0200
+Subject: [PATCH] add verbose watcch mode
+
+---
+ lswt.c | 105 +++++++++++++++++++++++++++++++++++++--------------------
+ 1 file changed, 69 insertions(+), 36 deletions(-)
+
+diff --git a/lswt.c b/lswt.c
+index e90808d..d564e53 100644
+--- a/lswt.c
++++ b/lswt.c
+@@ -50,11 +50,14 @@
+ 
+ const char usage[] =
+ 	"Usage: lswt [options...]\n"
+-	"  -h,       --help           Print this helpt text and exit.\n"
+-	"  -v,       --version        Print version and exit.\n"
+-	"  -j,       --json           Output data in JSON format.\n"
+-	"  -w,       --watch          Run continously and log events.\n"
+-	"  -c <fmt>, --custom <fmt>   Define a custom line-based output format.\n";
++	"  -h,       --help            Print this helpt text and exit.\n"
++	"  -v,       --version         Print version and exit.\n"
++	"  -j,       --json            Output data in JSON format.\n"
++	"  -w,       --watch           Run continously and log title, identifier\n"
++	"                              and app-id events.\n"
++	"  -W,       --verbose-watch   Like --watch, but also log activated, fullscreen,\n"
++	"                              minimized and maximized state.\n"
++	"  -c <fmt>, --custom <fmt>    Define a custom line-based output format.\n";
+ 
+ enum Output_format
+ {
+@@ -70,6 +73,7 @@ enum Mode
+ {
+ 	LIST,
+ 	WATCH,
++	VERBOSE_WATCH,
+ };
+ enum Mode mode = LIST;
+ 
+@@ -208,7 +212,7 @@ static struct Toplevel *toplevel_new (void)
+ 	new->maximized = false;
+ 	new->minimized = false;
+ 
+-	if ( mode == WATCH || debug_log )
++	if ( mode == WATCH || mode == VERBOSE_WATCH || debug_log )
+ 		fprintf(stdout, "toplevel %ld: created\n", new->id);
+ 
+ 	return new;
+@@ -217,7 +221,7 @@ static struct Toplevel *toplevel_new (void)
+ /** Destroys a toplevel and removes it from the list, if it is listed. */
+ static void toplevel_destroy (struct Toplevel *self)
+ {
+-	if ( mode == WATCH || debug_log )
++	if ( mode == WATCH || mode == VERBOSE_WATCH || debug_log )
+ 		fprintf(stdout, "toplevel %ld: destroyed\n", self->id);
+ 
+ 	if ( self->zwlr_handle != NULL )
+@@ -238,15 +242,21 @@ static void toplevel_destroy (struct Toplevel *self)
+ /** Set the title of the toplevel. Called from protocol implementations. */
+ static void toplevel_set_title (struct Toplevel *self, const char *title)
+ {
+-	if ( mode == WATCH || debug_log )
++	if ( mode == WATCH || mode == VERBOSE_WATCH || debug_log )
+ 	{
+ 		if ( self->title == NULL )
+-			fprintf(stdout, "toplevel %ld: set title: '%s'\n",
+-					self->id, title);
++			fprintf(
++				stdout,
++				"toplevel %ld: set title: '%s'\n",
++				self->id, title
++			);
+ 
+ 		else
+-			fprintf(stdout, "toplevel %ld: change title: '%s' -> '%s'\n",
+-					self->id, self->title, title);
++			fprintf(
++				stdout,
++				"toplevel %ld: change title: '%s' -> '%s'\n",
++				self->id, self->title, title
++			);
+ 	}
+ 
+ 	if ( self->title != NULL )
+@@ -260,18 +270,23 @@ static void toplevel_set_title (struct Toplevel *self, const char *title)
+ static size_t real_strlen (const char *str);
+ static void toplevel_set_app_id (struct Toplevel *self, const char *app_id)
+ {
+-	if ( mode == WATCH || debug_log )
++	if ( mode == WATCH || mode == VERBOSE_WATCH || debug_log )
+ 	{
+ 		if ( self->app_id == NULL )
+-			fprintf(stdout, "toplevel %ld: set app-id: '%s'\n",
+-					self->id, app_id);
++			fprintf(
++				stdout,
++				"toplevel %ld: set app-id: '%s'\n",
++				self->id, app_id
++			);
+ 
+ 		else
+-			fprintf(stdout, "toplevel %ld: change app-id: '%s' -> '%s'\n",
+-					self->id, self->app_id, app_id);
++			fprintf(
++				stdout,
++				"toplevel %ld: change app-id: '%s' -> '%s'\n",
++				self->id, self->app_id, app_id
++			);
+ 	}
+ 
+-
+ 	if ( self->app_id != NULL )
+ 		free(self->app_id);
+ 	self->app_id = strdup(app_id);
+@@ -290,9 +305,12 @@ static void toplevel_set_app_id (struct Toplevel *self, const char *app_id)
+ /** Set the identifier of the toplevel. Called from protocol implementations. */
+ static void toplevel_set_identifier (struct Toplevel *self, const char *identifier)
+ {
+-	if ( mode == WATCH || debug_log )
+-		fprintf(stdout, "toplevel %ld: set identifier: %s\n",
+-				self->id, identifier);
++	if ( mode == WATCH || mode == VERBOSE_WATCH || debug_log )
++		fprintf(
++			stdout,
++			"toplevel %ld: set identifier: %s\n",
++			self->id, identifier
++		);
+ 
+ 	if ( self->identifier != NULL )
+ 	{
+@@ -310,33 +328,46 @@ static void toplevel_set_identifier (struct Toplevel *self, const char *identifi
+ 
+ static void toplevel_set_fullscreen (struct Toplevel *self, bool fullscreen)
+ {
+-	if (debug_log)
+-		fprintf(stdout, "[toplevel %ld: set fullscreen: %d]\n",
+-				self->id, fullscreen);
++	if ( mode == VERBOSE_WATCH || debug_log )
++		fprintf(
++			stdout,
++			"toplevel %ld: fullscreen: %s\n",
++			self->id, BOOL_TO_STR(fullscreen)
++		);
++
+ 	self->fullscreen = fullscreen;
+ }
+ 
+ static void toplevel_set_activated (struct Toplevel *self, bool activated)
+ {
+-	if (debug_log)
+-		fprintf(stdout, "[toplevel %ld: set activated: %d]\n",
+-				self->id, activated);
++	if ( mode == VERBOSE_WATCH || debug_log )
++		fprintf(
++			stdout,
++			"toplevel %ld: activated (focused): %s\n",
++			self->id, BOOL_TO_STR(activated)
++		);
+ 	self->activated = activated;
+ }
+ 
+ static void toplevel_set_maximized (struct Toplevel *self, bool maximized)
+ {
+-	if (debug_log)
+-		fprintf(stdout, "[toplevel %ld: set maximized: %d]\n",
+-				self->id, maximized);
++	if ( mode == VERBOSE_WATCH || debug_log )
++		fprintf(
++			stdout,
++			"toplevel %ld: maximized: %s\n",
++			self->id, BOOL_TO_STR(maximized)
++		);
+ 	self->maximized = maximized;
+ }
+ 
+ static void toplevel_set_minimized (struct Toplevel *self, bool minimized)
+ {
+-	if (debug_log)
+-		fprintf(stdout, "[toplevel %ld: set minimized: %d]\n",
+-				self->id, minimized);
++	if ( mode == VERBOSE_WATCH || debug_log )
++		fprintf(
++			stdout,
++			"toplevel %ld: minimized: %s\n",
++			self->id, BOOL_TO_STR(minimized)
++		);
+ 	self->minimized = minimized;
+ }
+ 
+@@ -407,7 +438,7 @@ static void ext_foreign_handle_handle_closed
+ )
+ {
+ 	/* We only care when watching for events. */
+-	if ( mode == WATCH )
++	if ( mode == WATCH || mode == VERBOSE_WATCH )
+ 	{
+ 		struct Toplevel *toplevel = (struct Toplevel *)data;
+ 		toplevel_destroy(toplevel);
+@@ -534,7 +565,7 @@ static void zwlr_foreign_handle_handle_closed
+ )
+ {
+ 	/* We only care when watching for events. */
+-	if ( mode == WATCH )
++	if ( mode == WATCH || mode == VERBOSE_WATCH )
+ 	{
+ 		struct Toplevel *toplevel = (struct Toplevel *)data;
+ 		toplevel_destroy(toplevel);
+@@ -1326,6 +1357,8 @@ int main(int argc, char *argv[])
+ 			debug_log = true;
+ 		else if ( strcmp(argv[i], "-w") == 0 || strcmp(argv[i], "--watch") == 0 )
+ 			mode = WATCH;
++		else if ( strcmp(argv[i], "-W") == 0 || strcmp(argv[i], "--verbose-watch") == 0 )
++			mode = VERBOSE_WATCH;
+ 		else if ( strcmp(argv[i], "-v") == 0 || strcmp(argv[i], "--version") == 0 )
+ 		{
+ 			fputs("lswt version " VERSION "\n", stderr);
+@@ -1347,7 +1380,7 @@ int main(int argc, char *argv[])
+ 		}
+ 	}
+ 
+-	if ( mode == WATCH && output_format != NORMAL )
++	if ( ( mode == WATCH || mode == VERBOSE_WATCH ) && output_format != NORMAL )
+ 	{
+ 		fputs("ERROR: Alternative output formats are not supported in watch mode.\n", stderr);
+ 		ret = EXIT_FAILURE;
+-- 
+2.45.2
+

@@ -18,14 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-WebOb
-Version:        1.8.8
+Version:        1.8.9
 Release:        0
 Summary:        WSGI request and response object
 License:        MIT
 URL:            http://webob.org/
 Source:         https://files.pythonhosted.org/packages/source/w/webob/webob-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#Pylons/webob#469
-Patch0:         support-python-313.patch
 BuildRequires:  %{python_module legacy-cgi if %python-base >= 3.13}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -36,7 +34,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  fdupes
 BuildRequires:  python3-Sphinx
 %if %{python_version_nodots} >= 313
-Requires:       python-legacy-cgi
+Requires:       python-legacy-cgi >= 2.6
 %endif
 BuildArch:      noarch
 %python_subpackages

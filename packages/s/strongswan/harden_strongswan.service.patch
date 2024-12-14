@@ -1,9 +1,13 @@
-Index: strongswan-5.9.5/init/systemd/strongswan.service.in
+---
+ init/systemd/strongswan.service.in |   11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+Index: strongswan-6.0.0/init/systemd/strongswan.service.in
 ===================================================================
---- strongswan-5.9.5.orig/init/systemd/strongswan.service.in
-+++ strongswan-5.9.5/init/systemd/strongswan.service.in
-@@ -3,6 +3,17 @@ Description=strongSwan IPsec IKEv1/IKEv2
- After=network-online.target
+--- strongswan-6.0.0.orig/init/systemd/strongswan.service.in
++++ strongswan-6.0.0/init/systemd/strongswan.service.in
+@@ -4,6 +4,17 @@ After=network-online.target
+ Wants=network-online.target
  
  [Service]
 +# added automatically, for details please see

@@ -19,11 +19,18 @@
 
 %bcond_without  apparmor
 
+# This subpackage is only used for testing by developers, and shouldn't be
+# built for actual users.
+%bcond_with     integration_tests
+
+%if 0%{?is_opensuse} == 0
+# SUSEConnect support ("SUSE secrets") only makes sense for SLES hosts.
+%bcond_without  suseconnect
 # There is currently a known bug between buildx and SUSE secrets, so we don't
 # package docker-buildx for SLES. bsc#1233819
-%if 0%{?is_opensuse} == 0
 %bcond_with     buildx
 %else
+%bcond_with     suseconnect
 %bcond_without  buildx
 %endif
 
@@ -34,6 +41,9 @@
 # Where important update information will be stored, such that an administrator
 # is guaranteed to see the relevant warning.
 %define update_messages %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}
+
+# Test binaries.
+%define testdir /usr/src/docker-test
 
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
@@ -50,7 +60,7 @@
 
 %if %{with buildx}
 # MANUAL: This needs to be updated with every docker-buildx update.
-%define buildx_version 0.17.1
+%define buildx_version 0.19.2
 %endif
 
 # Used when generating the "build" information for Docker version. The value of
@@ -79,6 +89,8 @@ Source130:      README_SUSE.md
 Source140:      docker-audit.rules
 Source150:      docker-daemon.json
 Source160:      docker.sysusers
+# docker-integration-tests-devel
+Source900:      docker-integration.sh
 # NOTE: All of these patches are maintained in <https://github.com/suse/docker>
 #       in the suse-v<version> branch. Make sure you update the patches in that
 #       branch and then git-format-patch the patch here.
@@ -117,7 +129,7 @@ BuildRequires:  procps
 BuildRequires:  sqlite3-devel
 BuildRequires:  sysuser-tools
 BuildRequires:  zsh
-BuildRequires:  golang(API) = 1.21
+BuildRequires:  golang(API) = 1.22
 BuildRequires:  pkgconfig(libsystemd)
 %if %{with apparmor}
 %if 0%{?sle_version} >= 150000
@@ -242,6 +254,27 @@ Rootless support for Docker.
 Use dockerd-rootless.sh to run the daemon.
 Use dockerd-rootless-setuptool.sh to setup systemd for dockerd-rootless.sh.
 
+%if %{with integration_tests}
+%package integration-tests-devel
+Summary:        Rootless support for Docker
+Group:          TestSuite
+Requires:       %{name} = %{docker_version}
+Requires:       containerd-ctr
+Requires:       curl
+Requires:       gcc
+Requires:       git
+Requires:       glibc-devel-static
+Requires:       go
+Requires:       jq
+Requires:       libcap-progs
+
+%description integration-tests-devel
+Integration testing binaries for Docker.
+
+THIS PACKAGE SHOULD NOT BE INSTALLED BY END-USERS, IT IS ONLY INTENDED FOR
+INTERNAL DEVELOPMENT OF THE DOCKER PACKAGE FOR (OPEN)SUSE.
+%endif
+
 %package bash-completion
 Summary:        Bash Completion for %{name}
 Group:          System/Shells
@@ -321,7 +354,7 @@ Fish command line completion support for %{name}.
 # README_SUSE.md for documentation.
 cp %{SOURCE130} .
 
-%if 0%{?is_opensuse} == 0
+%if %{with suseconnect}
 # PATCH-SUSE: Secrets patches.
 %patch -P100 -p1
 %patch -P101 -p1
@@ -372,6 +405,21 @@ pushd "%{docker_builddir}"
 ln -s {vendor,go}.mod
 ln -s {vendor,go}.sum
 ./hack/make.sh dynbinary
+
+%if %{with integration_tests}
+# build test binaries for integration tests
+readarray -t integration_dirs \
+	<<<"$(go list -test -f '{{- if ne .ForTest "" -}}{{- .Dir -}}{{- end -}}' ./integration/... ./integration-cli/...)"
+for dir in "${integration_dirs[@]}"
+do
+	pushd "$dir"
+	go test -c -buildmode=pie -tags "$BUILDTAGS" -o test.main .
+	popd
+done
+# Update __DOCKER_BUILDIR in the integration testing script.
+sed -i 's|^__DOCKER_BUILDIR=.*|__DOCKER_BUILDIR=%{docker_builddir}|g' "%{SOURCE900}"
+%endif
+
 popd
 
 ###################
@@ -422,6 +470,10 @@ install -D -m0755 %{buildx_builddir}/bin/build/docker-buildx %{buildroot}/usr/li
 install -d %{buildroot}/%{_localstatedir}/lib/docker
 # daemon.json config file
 install -D -m0644 %{SOURCE150} %{buildroot}%{_sysconfdir}/docker/daemon.json
+%if %{with suseconnect}
+# SUSE-specific config file
+echo 1 > %{buildroot}%{_sysconfdir}/docker/suse-secrets-enable
+%endif
 
 # docker cli
 install -D -m0755 %{cli_builddir}/build/docker %{buildroot}/%{_bindir}/docker
@@ -458,6 +510,16 @@ install -D -m0644 %{SOURCE160} %{buildroot}%{_sysusersdir}/docker.conf
 # rootless extras
 install -D -p -m 0755 contrib/dockerd-rootless.sh %{buildroot}/%{_bindir}/dockerd-rootless.sh
 install -D -p -m 0755 contrib/dockerd-rootless-setuptool.sh %{buildroot}/%{_bindir}/dockerd-rootless-setuptool.sh
+
+%if %{with integration_tests}
+# integration tests
+install -d %{buildroot}%{testdir}
+cp -ar %{docker_builddir} %{buildroot}%{testdir}/src
+install -d %{buildroot}%{testdir}/bin
+install -D -p -m 0755 %{SOURCE900} %{buildroot}%{testdir}/docker-integration.sh
+# remove all of the non-test binaries in bundles/
+rm -rfv %{buildroot}%{testdir}/src/bundles/
+%endif
 
 %fdupes %{buildroot}
 
@@ -508,6 +570,9 @@ grep -q '^dockremap:' /etc/subgid || \
 
 %dir %{_sysconfdir}/docker
 %config(noreplace) %{_sysconfdir}/docker/daemon.json
+%if %{with suseconnect}
+%config(noreplace) %{_sysconfdir}/docker/suse-secrets-enable
+%endif
 %{_fillupdir}/sysconfig.docker
 
 %dir %attr(750,root,root) %{_sysconfdir}/audit/rules.d
@@ -529,6 +594,12 @@ grep -q '^dockremap:' /etc/subgid || \
 %defattr(-,root,root)
 %{_bindir}/dockerd-rootless.sh
 %{_bindir}/dockerd-rootless-setuptool.sh
+
+%if %{with integration_tests}
+%files integration-tests-devel
+%defattr(-,root,root)
+%{testdir}
+%endif
 
 %files bash-completion
 %defattr(-,root,root)

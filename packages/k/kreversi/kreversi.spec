@@ -19,12 +19,12 @@
 # Internal QML import
 %global __requires_exclude qt6qmlimport\\(ColorScheme.*
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kreversi
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Reversi board game
 License:        GPL-2.0-or-later

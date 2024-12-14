@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kontrast
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Contrast checker
 License:        GPL-3.0-or-later AND CC0-1.0
@@ -32,7 +32,6 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(FutureSQL6)
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
@@ -74,8 +73,6 @@ used together.
 %kf6_install
 
 %find_lang %{name} --with-html
-
-%suse_update_desktop_file -r org.kde.kontrast Qt KDE Utility Accessibility
 
 %files
 %license LICENSES/*

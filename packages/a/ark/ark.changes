@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sun Dec  8 09:26:56 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.0/
+- Changes since 24.11.90:
+  * Treat absolute paths as relative paths during extraction
+
+-------------------------------------------------------------------
+Mon Dec  2 08:42:23 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.90
+  * New feature release
+- No code change since 24.11.80
+
+-------------------------------------------------------------------
+Sat Nov 16 17:28:58 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.80
+  * New feature release
+- Changes since 24.08.3:
+  * Don't include quiet packages in feature_summary
+  * Add developer name to appdata
+  * fix clang-format
+  * Disable "compress to tar.gz/zip" service menu items in read-only dirs
+  * Re-enable clang-format CI job
+  * Simply combine string for log message
+  * Reformat with clang-format and avoid version differences
+  * Convert .reuse/dep5 to REUSE.toml
+  * Fix clazy-non-pod-global-static warnings
+  * Fix clazy-detaching-temporary warnings
+  * Fix clazy-use-static-qregularexpression warnings
+  * Fix clazy-fully-qualified-moc-types warnings
+  * cliinterface: drop unnecessary qRegisterMetaType
+  * Fix validation of tar mimetypes
+  * PluginManager: add api to retrieve plugin by id
+  * Fix display of ampersands in filename (kde#463279)
+  * Initialize pointer
+  * const'ify pointer + initialize to nullptr
+  * Show headers in qtc6
+  * Use modern kf6
+  * Const'ify pointer
+  * Set up KCrash after KAboutData::setApplicationData()
+  * Port [=] operator
+
+-------------------------------------------------------------------
 Tue Nov  5 10:42:36 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.3

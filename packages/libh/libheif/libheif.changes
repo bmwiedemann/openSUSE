@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 12 11:32:04 UTC 2024 - pgajdos@suse.com
+
+- complete rpm changelog:
+  * 0.18.0 fixed CVE-2023-0996 [bsc#1208640] and
+                 CVE-2024-41311 [bsc#1231714]
+  * 1.15.2 fixed CVE-2023-29659 [bsc#1211174]
+
+-------------------------------------------------------------------
 Wed Nov 20 06:01:59 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 1.19.5:

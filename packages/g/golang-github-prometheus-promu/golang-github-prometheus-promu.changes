@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec  9 10:46:49 UTC 2024 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Do not auto-generate changelog entries
+- Require Go >= 1.21 for building Red Hat Enterprise Linux packages
+
+-------------------------------------------------------------------
 Wed Dec  4 11:32:05 UTC 2024 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Fix build error on Red Hat Enterprise Linux

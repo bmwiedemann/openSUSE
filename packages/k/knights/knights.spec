@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define plasma6_version 5.27.80
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           knights
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        A simple chess board
 License:        GPL-2.0-or-later

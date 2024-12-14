@@ -17,14 +17,14 @@
 
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 
-%define libkdev_major 60
+%define libkdev_major 61
 
 %bcond_without released
 Name:           kdevelop
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Plugin-extensible IDE for C/C++ and other programming languages
 License:        GPL-2.0-or-later
@@ -232,8 +232,6 @@ done
 %{_kf6_plugindir}/kf6/krunner/kdevelopsessions.so
 %dir %{_kf6_plugindir}/kf6/ktexttemplate
 %{_kf6_plugindir}/kf6/ktexttemplate/kdev_filters.so
-%dir %{_kf6_qmldir}/org
-%dir %{_kf6_qmldir}/org/kde
 %dir %{_kf6_qmldir}/org/kde/plasma
 %dir %{_kf6_qmldir}/org/kde/plasma/private
 %{_kf6_qmldir}/org/kde/plasma/private/kdevelopsessions/

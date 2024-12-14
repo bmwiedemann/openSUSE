@@ -18,7 +18,7 @@
 
 %define sev 1
 
-%global kernel linux-6.4.7
+%global kernel linux-6.6.59
 
 %ifnarch x86_64
 %define sev 0
@@ -33,7 +33,7 @@ directly inject those mappings into the guest without any kind of additional \
 work nor processing.
 
 Name:           libkrunfw
-Version:        4.0.0
+Version:        4.5.1
 Release:        0
 Summary:        A dynamic library bundling a Linux kernel in a convenient storage format
 License:        GPL-2.0-only AND LGPL-2.1-only

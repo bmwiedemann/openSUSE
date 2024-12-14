@@ -1,0 +1,68 @@
+From b781c571068f4afc0417c7dfb8df2eda0547af55 Mon Sep 17 00:00:00 2001
+From: Marcelo Trylesinski <marcelotryle@gmail.com>
+Date: Sat, 30 Nov 2024 10:32:50 +0100
+Subject: [PATCH 1/2] Pin httpx in `full` extra
+
+---
+ pyproject.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index a532e4628..598d4333b 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -37,7 +37,7 @@ full = [
+     "jinja2",
+     "python-multipart>=0.0.7",
+     "pyyaml",
+-    "httpx>=0.22.0",
++    "httpx>=0.27.0,<0.29.0",
+ ]
+ 
+ [project.urls]
+
+From 24de2bfc8aa99a084a9b4fcfab1e52d7a6747cd9 Mon Sep 17 00:00:00 2001
+From: Marcelo Trylesinski <marcelotryle@gmail.com>
+Date: Sat, 30 Nov 2024 10:51:11 +0100
+Subject: [PATCH 2/2] fix test
+
+---
+ tests/middleware/test_wsgi.py | 2 +-
+ tests/test_requests.py        | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/tests/middleware/test_wsgi.py b/tests/middleware/test_wsgi.py
+index 58696bb65..e4ac66ab4 100644
+--- a/tests/middleware/test_wsgi.py
++++ b/tests/middleware/test_wsgi.py
+@@ -77,7 +77,7 @@ def test_wsgi_post(test_client_factory: TestClientFactory) -> None:
+     client = test_client_factory(app)
+     response = client.post("/", json={"example": 123})
+     assert response.status_code == 200
+-    assert response.text == '{"example": 123}'
++    assert response.text == '{"example":123}'
+ 
+ 
+ def test_wsgi_exception(test_client_factory: TestClientFactory) -> None:
+diff --git a/tests/test_requests.py b/tests/test_requests.py
+index f0494e751..665dceb87 100644
+--- a/tests/test_requests.py
++++ b/tests/test_requests.py
+@@ -91,7 +91,7 @@ async def app(scope: Scope, receive: Receive, send: Send) -> None:
+     assert response.json() == {"body": ""}
+ 
+     response = client.post("/", json={"a": "123"})
+-    assert response.json() == {"body": '{"a": "123"}'}
++    assert response.json() == {"body": '{"a":"123"}'}
+ 
+     response = client.post("/", data="abc")  # type: ignore
+     assert response.json() == {"body": "abc"}
+@@ -112,7 +112,7 @@ async def app(scope: Scope, receive: Receive, send: Send) -> None:
+     assert response.json() == {"body": ""}
+ 
+     response = client.post("/", json={"a": "123"})
+-    assert response.json() == {"body": '{"a": "123"}'}
++    assert response.json() == {"body": '{"a":"123"}'}
+ 
+     response = client.post("/", data="abc")  # type: ignore
+     assert response.json() == {"body": "abc"}

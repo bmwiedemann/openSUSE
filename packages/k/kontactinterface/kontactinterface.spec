@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kontactinterface
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        KDE PIM Libraries: Interface to Contacts
 License:        LGPL-2.1-or-later

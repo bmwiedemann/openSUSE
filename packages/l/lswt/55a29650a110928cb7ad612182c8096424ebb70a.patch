@@ -1,0 +1,62 @@
+From 55a29650a110928cb7ad612182c8096424ebb70a Mon Sep 17 00:00:00 2001
+From: Leon Henrik Plickat <leonhenrik.plickat@stud.uni-goettingen.de>
+Date: Sat, 24 Aug 2024 18:21:02 +0200
+Subject: [PATCH] improve watch mode messages
+
+---
+ lswt.c | 25 ++++++++++++++++++++-----
+ 1 file changed, 20 insertions(+), 5 deletions(-)
+
+diff --git a/lswt.c b/lswt.c
+index 675cfd0..e90808d 100644
+--- a/lswt.c
++++ b/lswt.c
+@@ -239,8 +239,15 @@ static void toplevel_destroy (struct Toplevel *self)
+ static void toplevel_set_title (struct Toplevel *self, const char *title)
+ {
+ 	if ( mode == WATCH || debug_log )
+-		fprintf(stdout, "toplevel %ld: set title: '%s' -> '%s'\n",
+-				self->id, self->title, title);
++	{
++		if ( self->title == NULL )
++			fprintf(stdout, "toplevel %ld: set title: '%s'\n",
++					self->id, title);
++
++		else
++			fprintf(stdout, "toplevel %ld: change title: '%s' -> '%s'\n",
++					self->id, self->title, title);
++	}
+ 
+ 	if ( self->title != NULL )
+ 		free(self->title);
+@@ -254,8 +261,16 @@ static size_t real_strlen (const char *str);
+ static void toplevel_set_app_id (struct Toplevel *self, const char *app_id)
+ {
+ 	if ( mode == WATCH || debug_log )
+-		fprintf(stdout, "toplevel %ld: set app-id: '%s' -> '%s'\n",
+-				self->id, self->app_id, app_id);
++	{
++		if ( self->app_id == NULL )
++			fprintf(stdout, "toplevel %ld: set app-id: '%s'\n",
++					self->id, app_id);
++
++		else
++			fprintf(stdout, "toplevel %ld: change app-id: '%s' -> '%s'\n",
++					self->id, self->app_id, app_id);
++	}
++
+ 
+ 	if ( self->app_id != NULL )
+ 		free(self->app_id);
+@@ -282,7 +297,7 @@ static void toplevel_set_identifier (struct Toplevel *self, const char *identifi
+ 	if ( self->identifier != NULL )
+ 	{
+ 		fputs(
+-			"ERROR: protocol-error: Compositor changed identifier of toplevel, "
++			"ERROR: protocol-error: Server changed identifier of toplevel, "
+ 			"which is forbidden by the protocol. Continuing anyway...\n",
+ 			stderr
+ 		);
+-- 
+2.45.2
+

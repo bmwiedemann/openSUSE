@@ -882,4 +882,12 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
   + openexr-CVE-2023-5841.patch</comment>
     <requestid>1146590</requestid>
   </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>2397a848e81631da8b4c6be10245b0da</srcmd5>
+    <version>3.2.2</version>
+    <time>1734125576</time>
+    <user>anag+factory</user>
+    <comment>- Build AVX2 enabled hwcaps library for x86_64-v3 (forwarded request 1230619 from pluskalm)</comment>
+    <requestid>1230625</requestid>
+  </revision>
 </revisionlist>

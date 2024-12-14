@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sun Dec  8 09:27:27 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.0/
+- Changes since 24.11.90:
+  * Save extracted frames in project folder is project is supposed to save files in its parent folder (kde#496486)
+  * Fix proxied image messes exif orentation (kde#496681)
+  * Fix audio capture, ensure default monitor scene is active to start recording
+  * Don't allow question mark in script names (not supported by MLT) (kde#496763)
+  * Fix motion tracker effect link to documentation and create models folder in any case to avoid error message
+  * Allow creating 1 frame mixes
+  * Fix resizing mix to 1 frame duration breaking mix position
+  * Move enable builtin effects from asset panel to Kdenlive Settings dialog
+  * Various built in effect fixes on copy effect
+  * Properly display the full log on missing render file
+  * Ensure we display an error if the render job finishes but rendered file does not exist
+  * Don't enable keyframes in timeline if an effect is disabled
+  * Disable keep original size feature as it has issues (causes distortion if another transform is added in timeline)
+  * Archiving: don't show two abort buttons
+
+-------------------------------------------------------------------
+Mon Dec  2 08:42:55 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.90
+  * New feature release
+- Too many changes since 24.11.80, only listing bugfixes:
+  * Don't change timeline audio/video targets while dragging (kde#496354)
+  * Fix crash trying to remove keyframes when there are none (kde#496391)
+
+-------------------------------------------------------------------
+Sat Nov 16 17:29:33 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.80
+  * New feature release
+- Too many changes since 24.08.3, only listing bugfixes:
+  * fix resetting Help shortcuts on each application launch (kde#495373)
+  * Fix title producer update on edit undo (kde#494142)
+  * Fix scolling timeline with rubberband or when dragging from file manager can move last selected clip in timeline (kde#492635)
+  * Fix adding marker from project notes always adds it at 00:00 (kde#492697)
+  * Fix MLT lumas not correctly recognized by archive feature (kde#492435)
+
+-------------------------------------------------------------------
 Tue Nov  5 10:43:10 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.3

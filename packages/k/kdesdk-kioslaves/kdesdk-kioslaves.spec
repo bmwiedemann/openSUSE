@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 %define rname kdesdk-kio
 Name:           kdesdk-kioslaves
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        KDE SDK KIO slaves
 License:        GPL-2.0-only

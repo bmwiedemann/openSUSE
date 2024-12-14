@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Dec  8 09:27:40 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.0/
+- No code change since 24.11.90
+
+-------------------------------------------------------------------
+Mon Dec  2 08:43:08 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.90
+  * New feature release
+- No code change since 24.11.80
+
+-------------------------------------------------------------------
+Sat Nov 16 17:29:47 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.80
+  * New feature release
+- Changes since 24.08.3:
+  * Reformat code with clang-format
+  * Don't look at build dir folder for clang format
+  * Port away from deprecated KMime::Content::decodedText API
+  * Use ECMCheckOutboundLicense
+  * Fix reuse lint
+  * Convert .reuse/dep5 to REUSE.toml
+  * Add clang-format validation job
+
+-------------------------------------------------------------------
 Tue Nov  5 10:43:23 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.3

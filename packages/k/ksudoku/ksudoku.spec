@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           ksudoku
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Program to generate and solve Sudoku puzzles in 2D or 3D
 License:        GPL-2.0-or-later

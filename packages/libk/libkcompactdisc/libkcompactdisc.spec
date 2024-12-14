@@ -21,20 +21,16 @@
 %if "%{flavor}" == "qt6"
 %define qt6 1
 %define pkg_suffix -qt6
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 %define library_name libKCompactDisc6
 %define so_suffix -5
 %else
-%define qt5 1
-%define kf5_version 5.92.0
-%define qt5_version 5.15.2
-%define library_name libKF5CompactDisc
-%define so_suffix 5
+ExclusiveArch:  do_not_build
 %endif
 %bcond_without released
 Name:           libkcompactdisc%{?pkg_suffix}
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        CD drive library for KDE Platform
 License:        GPL-2.0-or-later
@@ -53,13 +49,6 @@ BuildRequires:  cmake(KF6Solid) >= %{kf6_version}
 BuildRequires:  cmake(Phonon4Qt6)
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
-%else
-BuildRequires:  extra-cmake-modules >= %{kf5_version}
-BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
-BuildRequires:  cmake(KF5Solid) >= %{kf5_version}
-BuildRequires:  cmake(Phonon4Qt5)
-BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
-BuildRequires:  cmake(Qt5DBus) >= %{qt5_version}
 %endif
 
 %description
@@ -103,9 +92,6 @@ Provides translations for package libkcompactdisc.
 %if 0%{?qt6}
 %cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
 %kf6_build
-%else
-%cmake_kf5 -d build
-%cmake_build
 %endif
 
 %install
@@ -113,11 +99,6 @@ Provides translations for package libkcompactdisc.
 %kf6_install
 
 %find_lang %{name} --all-name
-%else
-%kf5_makeinstall -C build
-
-# Only one translation package for both flavors
-rm -r %{buildroot}%{_datadir}/locale
 %endif
 
 %ldconfig_scriptlets -n %{library_name}%{so_suffix}
@@ -131,10 +112,6 @@ rm -r %{buildroot}%{_datadir}/locale
 %{_kf6_cmakedir}/KCompactDisc6/
 %{_includedir}/KCompactDisc6/
 %{_kf6_mkspecsdir}/qt_KCompactDisc.pri
-%else
-%{_kf5_cmakedir}/KF5CompactDisc/
-%{_kf5_includedir}/KCompactDisc/
-%{_kf5_mkspecsdir}/qt_KCompactDisc.pri
 %endif
 %{_libdir}/%{library_name}.so
 

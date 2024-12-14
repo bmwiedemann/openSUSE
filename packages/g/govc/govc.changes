@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Dec 13 06:06:35 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.46.3:
+  * chore: Update version.go for v0.46.3
+  * fix: toolbox: add freebsd stub for fileExtendedInfoFormat
+  * vcsim: fix object.save when run directly against ESX
+  * vcsim: LicenseManager enhancements
+  * fix: vcsim: swap order of xsi type attribute
+  * govc: remove minimum API version check
+  * vcsim: add UpdateAssignedLicense method
+  * fix: assert Entity interface in mo.Value()
+  * fix: Property Collector updates should be triggered on the
+    empty FilterSet
+
+-------------------------------------------------------------------
 Wed Nov 20 08:12:22 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.46.2:

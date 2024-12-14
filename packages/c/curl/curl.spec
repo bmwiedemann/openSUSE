@@ -29,7 +29,7 @@
 %endif
 
 Name:           curl%{?psuffix}
-Version:        8.11.0
+Version:        8.11.1
 Release:        0
 Summary:        A Tool for Transferring Data from URLs
 License:        curl
@@ -43,8 +43,6 @@ Patch1:         dont-mess-with-rpmoptflags.patch
 Patch2:         curl-secure-getenv.patch
 #PATCH-FIX-OPENSUSE bsc#1076446 protocol redirection not supported or disabled
 Patch3:         curl-disabled-redirect-protocol-message.patch
-#PATCH-FIX-UPSTREAM fix parsingg of netrc in libcurl ghub#curl/curl#15496
-Patch4:         0001-duphandle-also-init-netrc.patch
 BuildRequires:  groff
 BuildRequires:  libtool
 BuildRequires:  pkgconfig

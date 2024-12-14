@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.2.3
+%define kpim6_version 6.3.0
 
 %bcond_without released
 Name:           itinerary
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Itinerary and boarding pass management application
 License:        LGPL-2.0-or-later
@@ -35,7 +35,6 @@ Source2:        applications.keyring
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  shared-mime-info
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  qt6-core-private-devel >= %{qt6_version}
 BuildRequires:  cmake(KF6CalendarCore) >= %{kf6_version}
 BuildRequires:  cmake(KF6Contacts) >= %{kf6_version}
@@ -96,23 +95,24 @@ Itinerary and boarding pass management application.
 
 %build
 %cmake_kf6 \
-  -DBUILD_TESTING=ON
+  -DBUILD_TESTING:BOOL=TRUE
 
 %kf6_build
 
 %install
 %kf6_install
 
-# Should be Utility Maps, but the checker does not like it
-%suse_update_desktop_file org.kde.itinerary Education Geography
-
 %find_lang %{name} --all-name
 
 %check
-# one test fails on ppc64 (be)
-%ifnarch ppc64
-%ctest --exclude-regex "(itinerary-self-test)"
+# Test aborts
+excluded_tests+="itinerary-self-test"
+%ifarch %{ix86}
+# Rounding issue on x86
+excluded_tests+="|timelinemodeltest|transfertest"
 %endif
+
+%ctest --exclude-regex "($excluded_tests)"
 
 %files
 %license LICENSES/*

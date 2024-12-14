@@ -24,15 +24,12 @@ Co-authored-by: Miro Hrončok <miro@hroncok.cz>
 Co-authored-by: Michal Cyprian <m.cyprian@gmail.com>
 Co-authored-by: Lumír Balhar <frenzy.madness@gmail.com>
 ---
- Lib/site.py                |  9 ++++++-
- Lib/sysconfig.py           | 49 +++++++++++++++++++++++++++++++++++++-
- Lib/test/test_sysconfig.py | 17 +++++++++++--
- 3 files changed, 71 insertions(+), 4 deletions(-)
+ Lib/sysconfig.py           |   51 ++++++++++++++++++++++++++++++++++++++++++++-
+ Lib/test/test_sysconfig.py |   17 +++++++++++++--
+ 2 files changed, 65 insertions(+), 3 deletions(-)
 
-Index: Python-3.12.4/Lib/sysconfig.py
-===================================================================
---- Python-3.12.4.orig/Lib/sysconfig.py
-+++ Python-3.12.4/Lib/sysconfig.py
+--- a/Lib/sysconfig.py
++++ b/Lib/sysconfig.py
 @@ -104,6 +104,11 @@ if os.name == 'nt':
  else:
      _INSTALL_SCHEMES['venv'] = _INSTALL_SCHEMES['posix_venv']
@@ -45,7 +42,7 @@ Index: Python-3.12.4/Lib/sysconfig.py
  
  # NOTE: site.py has copy of this function.
  # Sync it when modify this function.
-@@ -163,6 +168,19 @@ if _HAS_USER_BASE:
+@@ -163,13 +168,28 @@ if _HAS_USER_BASE:
              },
      }
  
@@ -65,7 +62,16 @@ Index: Python-3.12.4/Lib/sysconfig.py
  _SCHEME_KEYS = ('stdlib', 'platstdlib', 'purelib', 'platlib', 'include',
                  'scripts', 'data')
  
-@@ -263,11 +281,40 @@ def _extend_dict(target_dict, other_dict
+ _PY_VERSION = sys.version.split()[0]
+ _PY_VERSION_SHORT = f'{sys.version_info[0]}.{sys.version_info[1]}'
+ _PY_VERSION_SHORT_NO_DOT = f'{sys.version_info[0]}{sys.version_info[1]}'
++_PREFIX = os.path.normpath(sys.prefix)
+ _BASE_PREFIX = os.path.normpath(sys.base_prefix)
++_EXEC_PREFIX = os.path.normpath(sys.exec_prefix)
+ _BASE_EXEC_PREFIX = os.path.normpath(sys.base_exec_prefix)
+ # Mutex guarding initialization of _CONFIG_VARS.
+ _CONFIG_VARS_LOCK = threading.RLock()
+@@ -261,11 +281,40 @@ def _extend_dict(target_dict, other_dict
          target_dict[key] = value
  
  
@@ -107,11 +113,9 @@ Index: Python-3.12.4/Lib/sysconfig.py
      if os.name == 'nt':
          # On Windows we want to substitute 'lib' for schemes rather
          # than the native value (without modifying vars, in case it
-Index: Python-3.12.4/Lib/test/test_sysconfig.py
-===================================================================
---- Python-3.12.4.orig/Lib/test/test_sysconfig.py
-+++ Python-3.12.4/Lib/test/test_sysconfig.py
-@@ -110,8 +110,19 @@ class TestSysConfig(unittest.TestCase):
+--- a/Lib/test/test_sysconfig.py
++++ b/Lib/test/test_sysconfig.py
+@@ -119,8 +119,19 @@ class TestSysConfig(unittest.TestCase):
          for scheme in _INSTALL_SCHEMES:
              for name in _INSTALL_SCHEMES[scheme]:
                  expected = _INSTALL_SCHEMES[scheme][name].format(**config_vars)
@@ -132,7 +136,7 @@ Index: Python-3.12.4/Lib/test/test_sysconfig.py
                      os.path.normpath(expected),
                  )
  
-@@ -344,7 +355,7 @@ class TestSysConfig(unittest.TestCase):
+@@ -353,7 +364,7 @@ class TestSysConfig(unittest.TestCase):
          self.assertTrue(os.path.isfile(config_h), config_h)
  
      def test_get_scheme_names(self):
@@ -141,7 +145,7 @@ Index: Python-3.12.4/Lib/test/test_sysconfig.py
          if HAS_USER_BASE:
              wanted.extend(['nt_user', 'osx_framework_user', 'posix_user'])
          self.assertEqual(get_scheme_names(), tuple(sorted(wanted)))
-@@ -356,6 +367,8 @@ class TestSysConfig(unittest.TestCase):
+@@ -365,6 +376,8 @@ class TestSysConfig(unittest.TestCase):
              cmd = "-c", "import sysconfig; print(sysconfig.get_platform())"
              self.assertEqual(py.call_real(*cmd), py.call_link(*cmd))
  

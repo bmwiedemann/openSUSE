@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kdeconnect-kde
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Integration of Android with Linux desktops
 License:        GPL-2.0-or-later
@@ -35,7 +35,6 @@ Source100:      kdeconnect-kde.SuSEfirewall
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
@@ -51,7 +50,6 @@ BuildRequires:  cmake(KF6ModemManagerQt) >= %{kf6_version}
 BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
 BuildRequires:  cmake(KF6Package) >= %{kf6_version}
 BuildRequires:  cmake(KF6People) >= %{kf6_version}
-# BuildRequires:  cmake(KF6PeopleVCard)
 BuildRequires:  cmake(KF6PulseAudioQt)
 BuildRequires:  cmake(KF6QQC2DesktopStyle) >= %{kf6_version}
 BuildRequires:  cmake(KF6Service) >= %{kf6_version}
@@ -64,6 +62,7 @@ BuildRequires:  cmake(Qt6Multimedia) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
+BuildRequires:  cmake(Qt6QuickWidgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(libfakekey)
@@ -79,8 +78,6 @@ Requires:       kirigami-addons6
 Requires:       qt6-declarative-imports >= %{qt6_version}
 Requires:       qt6-multimedia-imports >= %{qt6_version}
 Requires:       sshfs >= 3.7.2
-# TODO Not packaged yet
-# Recommends:     kpeoplevcard
 Conflicts:      kdeconnect-kde4
 
 %description
@@ -129,9 +126,6 @@ rm %{buildroot}%{_kf6_libdir}/libkdeconnectinterfaces.a
 install -D -m 0644 %{SOURCE100} \
     %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/kdeconnect-kde
 %endif
-
-%suse_update_desktop_file %{buildroot}%{_kf6_applicationsdir}/org.kde.kdeconnect.app.desktop RemoteAccess
-%suse_update_desktop_file %{buildroot}%{_kf6_applicationsdir}/org.kde.kdeconnect.nonplasma.desktop RemoteAccess
 
 %pre
 # migrate old kdeconnect-kde service

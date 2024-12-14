@@ -86,8 +86,8 @@ Python FastAPI framework.
 %check
 # more warnings as expected
 donttest="test_warn_duplicate_operation_id"
-# https://github.com/tiangolo/fastapi/discussions/9934
-donttest+=" or test_dependency_gets_exception"
+# fails because of changed (cosmetic) body format in httpx 0.28 (technically not suppoerted yet upstream)
+donttest+=" or test_exception_handler_body_access"
 # python-fastapi-cli packages doesn't exists in openSUSE
 donttest+=" or test_fastapi_cli"
 donttest+=" or test_openapi"

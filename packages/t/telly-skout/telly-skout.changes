@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Dec  8 09:28:39 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.0/
+- Changes since 24.11.90:
+  * self-test: use correct executable
+
+-------------------------------------------------------------------
+Mon Dec  2 08:44:11 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.90
+  * New feature release
+- Changes since 24.11.80:
+  * Get qmlformat from Qt CMake files instead of searching for it
+  * Fix: "Favorites" page empty after opening different page
+
+-------------------------------------------------------------------
+Sat Nov 16 17:30:51 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.80
+  * New feature release
+- Changes since 24.08.3:
+  * Add option self-test and corresponding autotest
+  * Fix Qt 6.8 deprecation warnings
+  * Appdata: fix developer
+  * Rework "Favorites" page
+  * Save window state
+
+-------------------------------------------------------------------
 Tue Nov  5 10:44:23 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.3

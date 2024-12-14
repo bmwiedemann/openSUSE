@@ -42,8 +42,8 @@
  
 --- a/Doc/tools/extensions/pyspecific.py
 +++ b/Doc/tools/extensions/pyspecific.py
-@@ -27,7 +27,10 @@ from sphinx.locale import _ as sphinx_ge
- from sphinx.util import logging
+@@ -26,7 +26,10 @@ from sphinx.domains.python import PyFunc
+ from sphinx.locale import _ as sphinx_gettext
  from sphinx.util.docutils import SphinxDirective
  from sphinx.writers.text import TextWriter, TextTranslator
 -from sphinx.util.display import status_iterator

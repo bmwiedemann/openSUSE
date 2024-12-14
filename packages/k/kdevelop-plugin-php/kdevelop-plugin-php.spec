@@ -17,12 +17,12 @@
 
 
 %define rname   kdev-php
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kdevelop-plugin-php
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        PHP plugin for Kdevelop5 Integrated Development Environment
 License:        GPL-2.0-or-later
@@ -42,7 +42,7 @@ BuildRequires:  cmake(KF6ThreadWeaver) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 # Package was renamed before 24.08 release
-Requires:       kdevelop >= 24.08.3
+Requires:       kdevelop >= 24.08.0
 Conflicts:      kdevelop4-plugin-php
 Obsoletes:      kdevelop5-plugin-php < %{version}
 # Only build on archs where Qt6WebEngine is available

@@ -18,7 +18,7 @@
 
 %define         somajor 0_24
 Name:           tree-sitter
-Version:        0.24.4
+Version:        0.24.5
 Release:        0
 Summary:        An incremental parsing system for programming tools
 License:        GPL-2.0-only AND MIT

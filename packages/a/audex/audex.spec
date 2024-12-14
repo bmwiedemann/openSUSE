@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           audex
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Tool for ripping compact discs
 License:        GPL-3.0-or-later
@@ -34,7 +34,6 @@ Source2:        applications.keyring
 BuildRequires:  cdparanoia-devel
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KCddb6) >= 5.1
 BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
@@ -73,8 +72,6 @@ Audex is an audio grabber tool for CD-ROM drives.
 
 %install
 %kf6_install
-
-%suse_update_desktop_file -r org.kde.audex Qt KDE AudioVideo Audio CD
 
 %find_lang %{name}
 

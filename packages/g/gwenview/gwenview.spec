@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define plasma6_version 5.27.80
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           gwenview
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Image Viewer by KDE
 License:        GPL-2.0-or-later
@@ -40,6 +40,7 @@ BuildRequires:  libpng-devel
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
 BuildRequires:  cmake(KF6Baloo) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
 BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}

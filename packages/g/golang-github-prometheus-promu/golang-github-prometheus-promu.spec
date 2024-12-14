@@ -37,7 +37,7 @@ Source1:        vendor.tar.gz
 Patch2:         extldflags-no-static.patch
 ExcludeArch:    s390
 %if 0%{?rhel}
-BuildRequires:  golang >= 1.20
+BuildRequires:  golang >= 1.21
 %else
 BuildRequires:  golang(API) >= 1.21
 %endif

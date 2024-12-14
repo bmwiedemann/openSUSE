@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 12 14:56:41 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Build AVX2 enabled hwcaps library for x86_64-v3
+
+-------------------------------------------------------------------
 Wed Feb 14 14:32:50 UTC 2024 - pgajdos@suse.com
 
 - version update to 3.2.2 [bsc#1219498]

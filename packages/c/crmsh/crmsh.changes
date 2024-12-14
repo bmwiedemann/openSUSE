@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec 09 11:26:08 UTC 2024 - XLiang@suse.com
+
+- Update to version 5.0.0+20241209.20981523:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: report: Remove unused function dump_D_process
+  * Dev: report: Handle collect files with the same name
+  * Dev: report: Add ~/.config/crm/crm.conf to the list of collected files
+
+-------------------------------------------------------------------
 Wed Dec 04 06:03:42 UTC 2024 - XLiang@suse.com
 
 - Update to version 5.0.0+20241204.e1006f33:

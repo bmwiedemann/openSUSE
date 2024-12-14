@@ -395,4 +395,12 @@ https://build.opensuse.org/request/show/1126958
   * Bump minimum `python-multipart` version to 0.0.13</comment>
     <requestid>1225373</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>4359b3ff55080f6065aedc98cd17a3e7</srcmd5>
+    <version>0.41.3</version>
+    <time>1734125588</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1230669</requestid>
+  </revision>
 </revisionlist>

@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.2.3
+%define kpim6_version 6.3.0
 
 %bcond_without released
 Name:           akonadi-contacts
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        KDE PIM Libraries for Akonadi Contacts
 License:        LGPL-2.1-or-later
@@ -32,8 +32,6 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Fix-KAddressBook-crash-when-editing-a-contact-with-n.patch
 BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}

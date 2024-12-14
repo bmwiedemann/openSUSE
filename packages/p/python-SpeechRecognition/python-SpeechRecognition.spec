@@ -1,7 +1,7 @@
 #
 # spec file for package python-SpeechRecognition
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define justpython python
 Name:           python-SpeechRecognition
-Version:        3.8.1
+Version:        3.12.0
 Release:        0
 Summary:        Library for performing speech recognition, with support for several engines
 # Note: The sources include third party code with different licenses.
@@ -30,17 +29,27 @@ URL:            https://github.com/Uberi/speech_recognition#readme
 Source:         https://github.com/Uberi/speech_recognition/archive/%{version}.tar.gz
 # Remove information about unbundled libraries.
 Patch0:         fix-readme.patch
-# PATCH-FIX-UPSTREAM 406-google-cloud-speech.patch gh#Uberi/speech_recognition#406 mcepl@suse.com
-# Switch dependency to google-cloud-speech from deprecated oauth2client and googleapiclient
-Patch1:         406-google-cloud-speech.patch
+BuildRequires:  %{python_module audioop-lts if %python-base >= 3.13}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module google-cloud-speech}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module standard-aifc if %python-base >= 3.13}
+BuildRequires:  %{python_module typing-extensions}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  flac
 BuildRequires:  python-rpm-macros
 Requires:       %{justpython}-SpeechRecognition-common-en-US
 Requires:       flac
 Requires:       python-PyAudio
 Requires:       python-google-cloud-speech
+Requires:       python-typing-extensions
+%if 0%{?python_version_nodots} >= 313
+Requires:       python-audioop-lts
+Requires:       python-standard-aifc
+%endif
 Recommends:     python-pocketsphinx-python
 BuildArch:      noarch
 %python_subpackages
@@ -74,19 +83,29 @@ rm speech_recognition/flac-*
 rm LICENSE-FLAC.txt
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
+# Do not ship tests
+%python_expand rm -r %{buildroot}%{$python_sitelib}/tests
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 mkdir -p %{buildroot}%{_datadir}/speech_recognition
 cp -Ra speech_recognition/pocketsphinx-data %{buildroot}%{_datadir}/speech_recognition/
 %python_expand rm -Rf %{buildroot}%{$python_sitelib}/speech_recognition/pocketsphinx-data
 %python_expand ln -s %{_datadir}/speech_recognition/pocketsphinx-data %{buildroot}%{$python_sitelib}/speech_recognition/
 
+%check
+# No internet access for OpenAI or Groq
+ignore="--ignore tests/recognizers/test_groq.py --ignore tests/recognizers/test_openai.py"
+ignore+=" --ignore tests/test_whisper_recognition.py"
+# PocketSphinx is only built for primary Python
+%pytest $ignore -k 'not test_sphinx_'
+
 %files %{python_files}
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/speech_recognition
+%{python_sitelib}/SpeechRecognition-%{version}.dist-info
 %dir %{_datadir}/speech_recognition/
 %dir %{_datadir}/speech_recognition/pocketsphinx-data
 

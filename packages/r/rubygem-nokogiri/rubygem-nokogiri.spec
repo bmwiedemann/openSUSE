@@ -29,8 +29,6 @@ Release:        0
 %define mod_name nokogiri
 %define mod_full_name %{mod_name}-%{version}
 # MANUAL
-%define rb_build_versions     ruby33
-%define rb_build_ruby_abis    ruby:3.3.0
 BuildRequires:  %{rubygem mini_portile2 >= 2.8.2}
 BuildRequires:  %{rubygem openssl}
 BuildRequires:  %{rubygem pkg-config}
@@ -51,7 +49,6 @@ Patch0:         only-complain-about-version-diff-if-it-is-older.patch
 # /MANUAL
 Summary:        Nokogiri (鋸) makes it easy and painless to work with XML and HTML
 License:        MIT
-PreReq:         update-alternatives
 
 %description
 Nokogiri (鋸) makes it easy and painless to work with XML and HTML from Ruby.

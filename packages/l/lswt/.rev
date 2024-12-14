@@ -32,4 +32,27 @@
     <comment></comment>
     <requestid>1179520</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>2cf62cb432f286bb092c8b37bc5481e0</srcmd5>
+    <version>2.0.0</version>
+    <time>1734125877</time>
+    <user>anag+factory</user>
+    <comment>- Add ea45c1a8cf66d102e6525d29b03126693949e562.patch
+- Add the following patches:
+  * 55a29650a110928cb7ad612182c8096424ebb70a.patch
+  * 8d76a317ad2da073a638d72eac8a24df33ae01f1.patch
+  * ade15dbc3d11325a2569a0efd543d43a3ecb3547.patch
+  * c1ea4ee2a6e4a4e579a17f1e15351f225cb23a1d.patch
+  * e4ebefcb30053a990cb821a75c4e1310fc967673.patch
+  * fbb7be4354508b41552ce2159b1203db123916ac.patch
+  * fdf0932f2939696a8398b63871ccc85335274c1f.patch
+- Add the following patches:
+  * 29329779b72cb0a7958b7491296782816de8e477.patch
+  * a39b55080dcb50edc9321d38af8775af22cf852f.patch
+  * d35786da4383388c19f5437128fd393a6f16f74f.patch
+- Remove _service file
+- Set source tarball to archived sources.
+</comment>
+    <requestid>1230681</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 12 15:56:05 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update test runs: pytest 8 is supported, httpx 0.28 creates
+  problems 
+
+-------------------------------------------------------------------
 Thu Dec  5 10:45:51 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - drop remove-mock.patch, it's part of upstream now.

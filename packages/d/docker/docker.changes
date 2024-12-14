@@ -1,12 +1,52 @@
 -------------------------------------------------------------------
-Wed Nov 27 12:10:42 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+Wed Dec 11 10:14:56 UTC 2024 - Aleksa Sarai <asarai@suse.com>
 
-[NOTE: This update was only ever released in SLES and Leap.]
+- Update docker-buildx to v0.19.2. See upstream changelog online at
+  <https://github.com/docker/buildx/releases/tag/v0.19.2>.
+
+  Some notable changelogs from the last update:
+    * <https://github.com/docker/buildx/releases/tag/v0.19.0>
+	* <https://github.com/docker/buildx/releases/tag/v0.18.0>
+- Update to Go 1.22.
+
+-------------------------------------------------------------------
+Wed Dec 11 05:39:42 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Add a new toggle file /etc/docker/suse-secrets-enable which allows users to
+  disable the SUSEConnect integration with Docker (which creates special mounts
+  in /run/secrets to allow container-suseconnect to authenticate containers
+  with registries on registered hosts). bsc#1231348 bsc#1232999
+
+  In order to disable these mounts, just do
+
+    echo 0 > /etc/docker/suse-secrets-enable
+
+  and restart Docker. In order to re-enable them, just do
+
+    echo 1 > /etc/docker/suse-secrets-enable
+
+  and restart Docker. Docker will output information on startup to tell you
+  whether the SUSE secrets feature is enabled or not.
+
+  * 0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+
+-------------------------------------------------------------------
+Wed Nov 27 12:10:42 UTC 2024 - Aleksa Sarai <asarai@suse.com>
 
 - Disable docker-buildx builds for SLES. It turns out that build containers
   with docker-buildx don't currently get the SUSE secrets mounts applied,
   meaning that container-suseconnect doesn't work when building images.
   bsc#1233819
+
+-------------------------------------------------------------------
+Wed Nov 20 05:34:38 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Add docker-integration-tests-devel subpackage for building and running the
+  upstream Docker integration tests on machines to test that Docker works
+  properly. Users should not install this package.
+- docker-rpmlintrc updated to include allow-list for all of the integration
+  tests package, since it contains a bunch of stuff that wouldn't normally be
+  allowed.
 
 -------------------------------------------------------------------
 Tue Nov 12 06:34:28 UTC 2024 - Aleksa Sarai <asarai@suse.com>
@@ -28,13 +68,6 @@ Wed Oct 16 05:37:14 UTC 2024 - Aleksa Sarai <asarai@suse.com>
 - Update to docker-buildx v0.17.1 to match standalone docker-buildx package we
   are replacing. See upstream changelog online at
   <https://github.com/docker/buildx/releases/tag/v0.17.1>
-
--------------------------------------------------------------------
-Tue Oct 15 04:58:46 UTC 2024 - Aleksa Sarai <asarai@suse.com>
-
-- Allow users to disable SUSE secrets support by setting
-  DOCKER_SUSE_SECRETS_ENABLE=0 in /etc/sysconfig/docker. bsc#1231348
-  bsc#1232999
 
 -------------------------------------------------------------------
 Wed Sep 18 13:47:45 UTC 2024 - Ana Guerrero <ana.guerrero@suse.com>

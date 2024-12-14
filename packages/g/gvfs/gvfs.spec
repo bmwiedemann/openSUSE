@@ -44,7 +44,7 @@ BuildRequires:  pkgconfig(avahi-client) >= 0.6
 BuildRequires:  pkgconfig(avahi-glib) >= 0.6
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(fuse3) >= 3.0.0
-BuildRequires:  pkgconfig(gcr-base-3)
+BuildRequires:  pkgconfig(gcr-4)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.70.0

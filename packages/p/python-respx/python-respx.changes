@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 12 15:14:25 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Add patches for httpx 0.28
+  * respx-pr267-httpx0.28.patch gh#lundberg/respx#267
+  * respx-pr278-httpx0.28.patch gh#lundberg/respx#278
+
+-------------------------------------------------------------------
 Wed May 22 17:02:32 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - add sle15_python_module_pythons

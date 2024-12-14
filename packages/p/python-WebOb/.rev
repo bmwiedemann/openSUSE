@@ -433,4 +433,12 @@ Drop sphinx doctrees for reproducible builds</comment>
 - Switch to autosetup macro.</comment>
     <requestid>1208518</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>3ccd0c42f0cb030bf31f65fcdf7898db</srcmd5>
+    <version>1.8.9</version>
+    <time>1734125471</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1230046</requestid>
+  </revision>
 </revisionlist>

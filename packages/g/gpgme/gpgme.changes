@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec 11 12:54:20 UTC 2024 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 1.24.1:
+  * Support the Kyber algorithm in key listings.
+  * Allow building on some older Linux platforms.  [rM4a62318422]
+  * Interface changes relative to the 1.24.0 release:
+    GPGME_PK_KYBER                          NEW enum value.
+
+-------------------------------------------------------------------
 Fri Nov 29 07:47:13 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add gpgme-fix-python-install.patch: Fix the installation of the

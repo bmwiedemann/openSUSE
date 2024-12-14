@@ -19,7 +19,7 @@
 %define gstnum  1.0
 %bcond_without released
 Name:           kamoso
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Application to take pictures and videos using a webcam
 License:        GPL-2.0-or-later
@@ -31,7 +31,6 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5Declarative)
 BuildRequires:  cmake(KF5DocTools)
@@ -72,9 +71,8 @@ YouTube.
 %install
 %kf5_makeinstall -C build
 
-%suse_update_desktop_file -r org.kde.kamoso Qt KDE AudioVideo Recorder
-
 %find_lang %{name} --with-man --all-name
+
 %{kf5_find_htmldocs}
 
 %files

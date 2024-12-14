@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Dec 12 22:14:59 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1734019324.33fca53:
+  * Fix unhandled output "Sending tests_done" in t/08-autotest.t
+  * Avoid Perl warning about when handling tags to assert
+  * Ensure full statement coverage in consoles::sshVirtsh
+  * Extend sshVirtsh console test coverage
+  * video_stream: add support for ustreamer >= 6.10
+  * video_stream: add support for RGB3 format
+  * video_stream: typo fix
+  * video_stream: adjust raw sink name for ustreamer >= 6.5
+
+-------------------------------------------------------------------
 Thu Dec 12 15:15:16 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1734015736.407e9c7:

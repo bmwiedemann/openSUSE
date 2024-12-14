@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.2.3
+%define kpim6_version 6.3.0
 
 %bcond_without released
 Name:           kdepim-addons
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Addons for KDE PIM applications
 License:        GPL-2.0-only
@@ -65,7 +65,6 @@ BuildRequires:  cmake(KPim6AddressbookImportExport) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6Akonadi) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6AkonadiCalendar) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6AkonadiContactWidgets) >= %{kpim6_version}
-BuildRequires:  cmake(KPim6AkonadiNotes) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6CalendarSupport) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6CalendarUtils) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6EventViews) >= %{kpim6_version}
@@ -77,6 +76,7 @@ BuildRequires:  cmake(KPim6ImportWizard) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6IncidenceEditor) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6Itinerary) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6KSieveUi) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6LdapWidgets) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6Libkdepim) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6Libkleo) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6MailCommon) >= %{kpim6_version}

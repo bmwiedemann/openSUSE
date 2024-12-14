@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Dec  8 09:27:05 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.0/
+- Changes since 24.11.90:
+  * Add brand colors
+
+-------------------------------------------------------------------
+Mon Dec  2 08:42:33 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.90
+  * New feature release
+- No code change since 24.11.80
+
+-------------------------------------------------------------------
+Sat Nov 16 17:29:08 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.80
+  * New feature release
+- Changes since 24.08.3:
+  * CI - Re-enable flatpak builds.
+  * Port francis to declarative QML registration
+  * Remove QML import versionning
+  * Main: Port manual geometry logic to KConfig.WindowStateSaver
+  * Fix do not disturb button
+  * Feature: skip round
+  * About: Use Qt.createComponent to create About page across Global Menu and PageHeader
+
+-------------------------------------------------------------------
 Tue Nov  5 10:42:47 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.3

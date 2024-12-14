@@ -1,0 +1,67 @@
+From 4abc14b995d5d7e3b1a593927ff9a95f9da4d097 Mon Sep 17 00:00:00 2001
+From: Jonas Lundberg <jonas@5monkeys.se>
+Date: Tue, 2 Apr 2024 20:14:16 +0200
+Subject: [PATCH] Fix test warnings
+
+---
+ tests/conftest.py  | 6 +++---
+ tests/test_mock.py | 8 +++-----
+ 2 files changed, 6 insertions(+), 8 deletions(-)
+
+diff --git a/tests/conftest.py b/tests/conftest.py
+index 47b3fcb..02b7edf 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -2,7 +2,7 @@
+ import pytest
+ 
+ import respx
+-from respx.fixtures import session_event_loop as event_loop  # noqa: F401
++from respx.fixtures import session_event_loop  # noqa: F401
+ 
+ pytest_plugins = ["pytester"]
+ 
+@@ -23,7 +23,7 @@ async def my_mock():
+ 
+ 
+ @pytest.fixture(scope="session")
+-async def mocked_foo(event_loop):  # noqa: F811
++async def mocked_foo(session_event_loop):  # noqa: F811
+     async with respx.mock(
+         base_url="https://foo.api/api/", using="httpcore"
+     ) as respx_mock:
+@@ -33,7 +33,7 @@ async def mocked_foo(event_loop):  # noqa: F811
+ 
+ 
+ @pytest.fixture(scope="session")
+-async def mocked_ham(event_loop):  # noqa: F811
++async def mocked_ham(session_event_loop):  # noqa: F811
+     async with respx.mock(base_url="https://ham.api", using="httpcore") as respx_mock:
+         respx_mock.get("/", name="index").respond(200)
+         yield respx_mock
+diff --git a/tests/test_mock.py b/tests/test_mock.py
+index 76631b5..12b2d23 100644
+--- a/tests/test_mock.py
++++ b/tests/test_mock.py
+@@ -473,18 +473,16 @@ def test_add_remove_targets():
+         assert len(HTTPCoreMocker.targets) == pre_add_count
+ 
+ 
+-async def test_proxies():
++async def test_proxy():
+     with respx.mock:
+         respx.get("https://foo.bar/") % dict(json={"foo": "bar"})
+-        with httpx.Client(proxies={"https://": "https://1.1.1.1:1"}) as client:
++        with httpx.Client(proxy="https://1.1.1.1:1") as client:
+             response = client.get("https://foo.bar/")
+         assert response.json() == {"foo": "bar"}
+ 
+     async with respx.mock:
+         respx.get("https://foo.bar/") % dict(json={"foo": "bar"})
+-        async with httpx.AsyncClient(
+-            proxies={"https://": "https://1.1.1.1:1"}
+-        ) as client:
++        async with httpx.AsyncClient(proxy="https://1.1.1.1:1") as client:
+             response = await client.get("https://foo.bar/")
+         assert response.json() == {"foo": "bar"}
+ 

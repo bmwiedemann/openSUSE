@@ -18,12 +18,12 @@
 
 %define rname kde-dev-scripts
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kdesdk-scripts
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Scripts for KDE software development
 License:        GPL-2.0-only AND GFDL-1.2-only

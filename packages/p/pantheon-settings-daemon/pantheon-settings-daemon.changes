@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec 13 05:39:57 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.1.1:
+  * Launcher: add X-GNOME-UsesNotifications
+  * SystemUpdate: Don't auto update on a metered connection
+  * SystemUpdate: make sure we notify if network is metered
+  * Don't check for updates in demo mode
+  * build: Fix build with fwupd 2.0.0
+  * Translation updates
+
+-------------------------------------------------------------------
 Wed Aug 28 19:02:26 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 8.1.0:

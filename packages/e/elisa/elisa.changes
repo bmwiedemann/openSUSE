@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Dec  8 09:27:03 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.0/
+- No code change since 24.11.90
+
+-------------------------------------------------------------------
+Mon Dec  2 08:42:31 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.90
+  * New feature release
+- No code change since 24.11.80
+
+-------------------------------------------------------------------
+Sat Nov 16 17:29:06 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.80
+  * New feature release
+- Too many changes since 24.08.3, only listing bugfixes:
+  * libvlc: Set media player role to "Music" (kde#492316)
+  * Fix displaying lyrics with no linebreak at the end (kde#491625)
+  * Rework track metadata editor form (kde#480177)
+  * Lyrics: load sidecar .lrc file as song lyrics (kde#465716)
+  * Fix tracks without metadata not playing (kde#492699)
+  * Remove filters to hide title, artist, and album from Now Playing view (kde#468644)
+  * HeaderBar: set background image background (kde#464865)
+  * use tabular numerals for durations and positions (kde#491714)
+  * Save and restore maximization state (kde#428510)
+
+-------------------------------------------------------------------
 Tue Nov  5 10:42:44 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.3

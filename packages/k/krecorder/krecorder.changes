@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Dec  8 09:28:04 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.0/
+- No code change since 24.11.90
+
+-------------------------------------------------------------------
+Mon Dec  2 08:43:34 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.90
+  * New feature release
+- No code change since 24.11.80
+
+-------------------------------------------------------------------
+Sat Nov 16 17:30:13 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.80
+  * New feature release
+- Changes since 24.08.3:
+  * Appdata Fixes
+  * Fix up 17b80ac
+  * DefaultPage: Hide New Recording panel when opened in non-widescreen configuration
+  * Main: Store window geometry with KConfig.WindowStateSaver
+  * About: Use Qt.createComponent to create About Page
+
+-------------------------------------------------------------------
 Tue Nov  5 10:43:48 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.3

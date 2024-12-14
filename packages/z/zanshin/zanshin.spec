@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.2.3
+%define kpim6_version 6.3.0
 
 %bcond_without released
 Name:           zanshin
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        TODO Application
 License:        GPL-2.0-only
@@ -34,7 +34,6 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  boost-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF6CalendarCore) >= %{kf6_version}
 BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
@@ -68,8 +67,6 @@ job and personal life. You will never forget anything anymore.
 
 %install
 %kf6_install
-
-%suse_update_desktop_file org.kde.zanshin Utility TimeUtility
 
 %find_lang %{name}
 

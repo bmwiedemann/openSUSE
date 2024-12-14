@@ -695,4 +695,12 @@
   - update intree libxml2 copy (unused in our build) (forwarded request 1190495 from darix)</comment>
     <requestid>1190956</requestid>
   </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>2448081b6af186a09a937f200e91921a</srcmd5>
+    <version>1.16.7</version>
+    <time>1734125508</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1230173</requestid>
+  </revision>
 </revisionlist>

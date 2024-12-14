@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Dec  7 13:19:30 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.3.1
+  * Adds jupyter-ui-toolkit packages in shared scope #7530
+    (@brichet)
+- Release 7.3.0
+  ## Enhancements made
+  * Fix for auto scroll output option #7511 (@gjmooney)
+  * Add a setting to enable the notebook to take up the full width
+    #7487 (@jtpio)
+  * Add the file filter button to the file browser toolbar #7479
+    (@jtpio)
+  * Redirect paths from the notebooks route to the tree route if
+    they are directories #7446 (@andyscho)
+  * Update to JupyterLab 4.3.0a1 #7416 (@jtpio)
+  * Support custom page_data_hook function #7387 (@bluestealth)
+  * Add missing "Open..." file menu #7385 (@martinRenou)
+  * Duplicate notebook menu option #7374 (@JasonWeill)
+  ## Bugs fixed
+  * Move handling of the file browser settings to a separate
+    plugin, enable file browser single click navigation #7481
+    (@jtpio)
+  * Remove pseudoelement obstructing the cell collapser #7392
+    (@krassowski)
+  * "Close and Shut Down Notebook" shuts down without the
+    confirmation dialog #7384 (@JasonWeill)
+  * Adds message about building code before running 'develop' #7382
+    (@JasonWeill)
+  ## Maintenance and upkeep improvements
+  * Update to JupyterLab 4.3.2 #7527 (@jtpio)  
+  * Add webpack prod config #7513 (@gjmooney)
+  * Remove the StateDB file browser trick #7477 (@jtpio)
+
+-------------------------------------------------------------------
 Sun Sep 15 16:32:30 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 7.2.2

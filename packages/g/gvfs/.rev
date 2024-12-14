@@ -1565,4 +1565,14 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1208854</requestid>
   </revision>
+  <revision rev="198" vrev="2">
+    <srcmd5>f0a304102b065be8ff066c3cad6a4f4d</srcmd5>
+    <version>1.56.1</version>
+    <time>1734125571</time>
+    <user>anag+factory</user>
+    <comment>- Drop unused and obsolete pkgconfig(gcr-base-3) BuildRequires and
+  replace it with pkgconfig(gcr-4) BuildRequires already pulled in
+  via libgdata dependency. (forwarded request 1230298 from iznogood)</comment>
+    <requestid>1230572</requestid>
+  </revision>
 </revisionlist>

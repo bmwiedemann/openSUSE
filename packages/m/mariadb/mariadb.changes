@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 26 19:23:02 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 11.6.2:
+    https://mariadb.com/kb/en/mariadb-11-6-2-release-notes/
+    https://mariadb.com/kb/en/mariadb-11-6-2-changelog/
+- Update list of skipped tests
+
+-------------------------------------------------------------------
 Tue Nov 26 16:59:42 UTC 2024 - Angel Yankov <angel.yankov@suse.com>
 
 - Fix test for SSL connection init with openssl 3.2.3.
@@ -8,7 +16,7 @@ Tue Nov 26 16:59:42 UTC 2024 - Angel Yankov <angel.yankov@suse.com>
 Thu Nov 14 21:10:35 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 11.6.1:
-    https://mariadb.com/kb/en/mariadb-11-6-1-releasqe-notes/
+    https://mariadb.com/kb/en/mariadb-11-6-1-release-notes/
     https://mariadb.com/kb/en/mariadb-11-6-1-changelog/
 - Update list of skipped tests
 - Refresh gcc13-fix.patch

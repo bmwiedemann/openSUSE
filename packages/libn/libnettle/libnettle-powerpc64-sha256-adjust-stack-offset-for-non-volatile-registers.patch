@@ -1,0 +1,45 @@
+From 9d8b3e93bbfea1da668a28760540a2b25fae4a50 Mon Sep 17 00:00:00 2001
+From: Eric Richter <erichte@linux.ibm.com>
+Date: Thu, 29 Aug 2024 09:44:25 -0500
+Subject: [PATCH] powerpc64/sha256: adjust stack offset for storing
+ non-volatile registers
+
+According to the ABI, the stack pointer is quadword aligned, so starting
+the stack storage at offset -8, may cause the return address to be
+stepped on. Adjusting to use -16 as the starting point, which also
+matches other POWER assembly code.
+
+Signed-off-by: Eric Richter <erichte@linux.ibm.com>
+---
+ powerpc64/p8/sha256-compress-n.asm | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/powerpc64/p8/sha256-compress-n.asm b/powerpc64/p8/sha256-compress-n.asm
+index 309db1fa..e08ae132 100644
+--- a/powerpc64/p8/sha256-compress-n.asm
++++ b/powerpc64/p8/sha256-compress-n.asm
+@@ -216,8 +216,8 @@ PROLOGUE(_nettle_sha256_compress_n)
+ 
+ 	C Store non-volatile registers
+ 
+-	li	T0, -8
+-	li	T1, -24
++	li	T0, -16
++	li	T1, -32
+ 	stvx	v20, T0, SP
+ 	stvx	v21, T1, SP
+ 	subi	T0, T0, 32
+@@ -321,8 +321,8 @@ PROLOGUE(_nettle_sha256_compress_n)
+ 
+ 
+ 	C Restore nonvolatile registers
+-	li	T0, -8
+-	li	T1, -24
++	li	T0, -16
++	li	T1, -32
+ 	lvx	v20, T0, SP
+ 	lvx	v21, T1, SP
+ 	subi	T0, T0, 32
+-- 
+GitLab
+

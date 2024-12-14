@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Sun Dec  8 09:27:57 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.0/
+- Changes since 24.11.90:
+  * Fix compilation error when building without PlasmaActivities
+
+-------------------------------------------------------------------
+Mon Dec  2 08:43:26 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.90
+  * New feature release
+- Changes since 24.11.80:
+  * Don't inconditionally display an error message when asked to use Konqueror as external application
+  * Wait for the service to be ready before restoring activities
+  * Don't call setOnActivity when the Activities key doesn't exist
+  * Move preloaded window to current activity before displaying it
+
+-------------------------------------------------------------------
+Sat Nov 16 17:30:05 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.80
+  * New feature release
+- Changes since 24.08.3:
+  * Allow the user to choose the source for screen capturing
+  * Ask the user what to do when WebEnginePart wants to download a mimetype it can display
+  * Attempt to perform downloads even if no part is associated with it
+  * Improve the "act on downloaded file" bar
+  * Add action to scan again the current page for forms to auto fill
+  * Add a generic way to specify allowed actions when opening an URL
+  * Generalize webengine-specific code
+  * Improve auto-filling of login information
+  * Remove caption here
+  * Remove DownloaderInterface and ensure only UrlLoader starts download jobs
+  * Ensure the message in ActOnDownloadFileBar fits the widget width
+  * Better integrate BrowserOpenSaveQuestion with Konqueror
+  * Explicitly set program logo and window icon on application startup
+  * Separate mimetypes and part capabilities
+  * Disable GPU for HTML thumbnailer (kde#492188)
+  * Allow opening data URIs from location bar
+  * Make KonqSidebarNavigationExtension derive from BrowserExtension
+  * Display bookmarks in bookmark sidebar module
+  * Add fields to BrowserArguments in order to avoid using OpenUrlArguments::metaData
+  * Avoid crash when restoring the session after a logout (kde#487952)
+  * Append slash to URLs without path before adding to history rather than ignoring them
+  * Apply correct fix to avoid autosaving settings of preloaded windows
+  * Don't autosave settings for preloaded windows
+  * Fix bug preventing switching internal view mode
+  * Apply URL-specific javascript policy in WebEnginePage::acceptNavigationRequest, too (kde#490321)
+  * Fix logic error in konqueror --open-session
+  * Update file khtml_js.json
+  * Add option to always embed files from web pages in a new tab
+  * Add a library allowing to read and write settings from konquerorrc without using KConfig directly
+
+-------------------------------------------------------------------
 Tue Nov  5 10:43:40 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.3

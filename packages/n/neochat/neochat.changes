@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sun Dec  8 09:28:30 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.0/
+- Changes since 24.11.90:
+  * snap: Update libquotient
+  * Fix removeConnection
+  * Remove system information from device display name (kde#496901)
+
+-------------------------------------------------------------------
+Mon Dec  2 08:44:00 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.90
+  * New feature release
+- Too many changes since 24.11.80, only listing bugfixes:
+  * Make sure the loading text for a new login wraps (kde#493869)
+
+-------------------------------------------------------------------
+Sat Nov 16 17:30:41 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.80
+  * New feature release
+- Too many changes since 24.08.3, only listing bugfixes:
+  * PollHandler: Ensure that m_pollStartEvent is always initialized to null (kde#493649)
+  * Make fullscreen images focused when they're opened (kde#484322)
+  * Make send message and insert newline shortcuts configurable (kde#476758)
+  * Pester Network Error Messages (kde#488572)
+  * Fix crash when opening invitation (kde#493197)
+  * NeochatRoomMember ID fallback (kde#491025)
+  * Fix NeoChatRoom::directChatRemoteMember (kde#492733)
+  * Fix Eventhandler strings for translation (kde#466201, kde#491024)
+  * Use im-kick-user consistently for logout. (kde#491355)
+  * Fix parsing self-closing tags with no space (such as <br/>) (kde#487377)
+  * Fix default permissions settings (kde#491371)
+  * Don't end kick messages without a reason with a ":" (kde#492512)
+  * Re-add pending event indicator (kde#491277)
+  * Fix pending events all showing the same text (kde#491277)
+  * Show notification counts on the room Avatars when collapsed. (kde#468520)
+  * Make sure that apostrophes are unescaped when visualising messages (kde#488325)
+
+-------------------------------------------------------------------
 Wed Nov 13 09:31:29 UTC 2024 - Adam Mizerski <adam@mizerski.pl>
 
 - enabled support for KUnifiedPush

@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun Dec  8 09:27:58 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.0/
+- No code change since 24.11.90
+
+-------------------------------------------------------------------
+Mon Dec  2 08:43:27 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.90
+  * New feature release
+- No code change since 24.11.80
+
+-------------------------------------------------------------------
+Sat Nov 16 17:30:06 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.80
+  * New feature release
+- Changes since 24.08.3:
+  * Use org.kde.kalendarac
+  * Reactivate craft support
+  * Remove unused variables
+  * Use KStandardActions where is possible
+  * Reformat code with clang-format
+  * Remove old code
+  * USe QLatin1String
+  * Don't look at build dir folder for clang format
+  * setDynamicSortFilter(true); is default
+  * Use ECMCheckOutboundLicense
+  * _version.h is not necessary now
+  * Add clang-format validation job
+  * Fix clang format
+  * Use KColorSchemeManager::instance in kf6.6
+  * Set up KCrash after KAboutData::setApplicationData()
+  * Add TODO
+  * Remove QDBusInterface about knotes
+  * knotes is dead now
+  * Use @title:window for title
+
+-------------------------------------------------------------------
 Tue Nov  5 10:43:41 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.3

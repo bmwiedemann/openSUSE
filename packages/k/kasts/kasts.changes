@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Dec  8 09:27:16 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.0/
+- Changes since 24.11.90:
+  * [snap] Add password-manager-service plug (kde#497049)
+
+-------------------------------------------------------------------
+Mon Dec  2 08:42:44 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.90
+  * New feature release
+- No code change since 24.11.80
+
+-------------------------------------------------------------------
+Sat Nov 16 17:29:21 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.80
+  * New feature release
+- Changes since 24.08.3:
+  * On startup, remove feed entries with empty URL on startup (kde#495961)
+  * Fix password saving for windows
+  * Update flatpak manifest (to align with flathub)
+  * Fix 1px left and bottom border on mobile
+  * Convert .reuse/dep5 to REUSE.toml
+  * Add KCrash dependency and remove outdated debian deps from README.md
+  * Set up crash handling
+
+-------------------------------------------------------------------
 Tue Nov  5 10:42:58 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.3

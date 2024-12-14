@@ -18,14 +18,14 @@
 
 %global __requires_exclude qt6qmlimport\\((org\\.kde\\.merkuro|org\\.kde\\.raven).*
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.2.3
+%define kpim6_version 6.3.0
 %define plasma6_version 5.27.80
 
 %bcond_without released
 Name:           merkuro
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Calendar Application
 License:        GPL-3.0-only
@@ -66,6 +66,7 @@ BuildRequires:  cmake(Plasma) >= %{plasma6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Location) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QuickTest) >= %{qt6_version}
@@ -119,6 +120,7 @@ This package provides a Plasma widget to view address book contacts.
 %{_kf6_applicationsdir}/org.kde.merkuro.calendar.desktop
 %{_kf6_applicationsdir}/org.kde.merkuro.contact.desktop
 %{_kf6_applicationsdir}/org.kde.merkuro.mail.desktop
+%{_kf6_applicationsdir}/org.kde.merkuro.desktop
 %{_kf6_appstreamdir}/org.kde.merkuro.calendar.metainfo.xml
 %{_kf6_appstreamdir}/org.kde.merkuro.contact.metainfo.xml
 %{_kf6_appstreamdir}/org.kde.merkuro.mail.metainfo.xml

@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.2.3
+%define kpim6_version 6.3.0
 
 %bcond_without released
 Name:           messagelib
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        KDE PIM library for e-mail message parsing and display
 License:        GPL-2.0-only AND GPL-3.0-only AND LGPL-2.1-or-later
@@ -35,6 +35,7 @@ Source2:        applications.keyring
 BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  libgpgmepp-devel
+BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
 BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
 BuildRequires:  cmake(KF6ColorScheme) >= %{kf6_version}
@@ -86,6 +87,7 @@ BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WebEngineWidgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  pkgconfig(openssl) >= 3.0.0
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  x86_64 %{x86_64} aarch64 riscv64
 

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec 13 14:39:22 UTC 2024 - Aleksei Burlakov <aburlakov@suse.com>
+
+- openSUSE:Factory doesn't support ruby3.2 --> don't limit to ruby3.2
+
+-------------------------------------------------------------------
+Wed Nov  6 13:19:12 UTC 2024 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 2.7.1
+- limit building to ruby >= 3.2
+
+-------------------------------------------------------------------
 Fri Jun 21 10:57:43 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
 
 - New upstream release 2.6.16, no changelog found

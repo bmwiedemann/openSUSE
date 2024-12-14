@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kdenetwork-filesharing
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        KDE Network Libraries
 License:        GPL-2.0-or-later
@@ -44,7 +44,9 @@ BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QuickWidgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  cmake(packagekitqt6)
-Recommends:     samba-client
+Requires:       kf6-kirigami-imports >= %{kf6_version}
+Requires:       qt6-declarative-imports >= %{qt6_version}
+Requires:       samba-client
 Enhances:       dolphin
 # The package used to named kdenetwork4-filesharing
 Provides:       kdenetwork4-filesharing = %{version}
@@ -61,9 +63,6 @@ Used for configuring Samba shares.
 %autosetup -p1
 
 %build
-%ifarch ppc ppc64
-export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
-%endif
 %cmake_kf6
 
 %kf6_build

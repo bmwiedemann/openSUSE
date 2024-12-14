@@ -183,4 +183,12 @@ Leap 15.5
     <comment>- Update to release 0.11.1</comment>
     <requestid>1226668</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>e35e1abc845e24f6ed37fe16179ca739</srcmd5>
+    <version>0.11.1</version>
+    <time>1734125458</time>
+    <user>anag+factory</user>
+    <comment>- add bugrefs</comment>
+    <requestid>1230037</requestid>
+  </revision>
 </revisionlist>

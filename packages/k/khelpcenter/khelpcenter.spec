@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           khelpcenter
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        KDE Documentation Application
 License:        GPL-2.0-or-later
@@ -34,7 +34,6 @@ Source2:        applications.keyring
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  libxapian-devel
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
 BuildRequires:  cmake(KF6Bookmarks) >= %{kf6_version}
 BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
@@ -72,6 +71,8 @@ Application to show KDE Applications' documentation.
 %prep
 %autosetup -p1
 
+sed -i 's,^#!/bin/env python3$,#!/usr/bin/python3,' searchhandlers/khc_mansearch.py
+
 %build
 %cmake_kf6
 
@@ -81,8 +82,6 @@ Application to show KDE Applications' documentation.
 %kf6_install
 
 %find_lang %{name} --with-html --all-name
-
-%suse_update_desktop_file org.kde.khelpcenter Documentation Viewer
 
 %ldconfig_scriptlets
 
@@ -97,7 +96,7 @@ Application to show KDE Applications' documentation.
 %{_kf6_debugdir}/khelpcenter.categories
 %{_kf6_sharedir}/dbus-1/services/org.kde.khelpcenter.service
 %{_kf6_sharedir}/khelpcenter/
-%{_libexecdir}/khc_mansearch.pl
+%{_libexecdir}/khc_mansearch.py
 %{_libexecdir}/khc_xapianindexer
 %{_libexecdir}/khc_xapiansearch
 

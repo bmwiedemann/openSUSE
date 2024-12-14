@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec 13 06:51:11 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Change skipped tests to also support Python 3.13. 
+
+-------------------------------------------------------------------
 Wed Nov 27 12:26:36 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Drop tests-nomkl.patch and tests-wasm.patch, not needed anymore

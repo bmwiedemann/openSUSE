@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.2.3
+%define kpim6_version 6.3.0
 
 %bcond_without released
 Name:           kalarm
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Personal Alarm Scheduler
 License:        GPL-2.0-only
@@ -73,7 +73,6 @@ BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
-BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libvlc)
 BuildRequires:  pkgconfig(x11)
 Provides:       kalarm5 = %{version}
@@ -114,6 +113,7 @@ Personal alarm message, command and email scheduler by KDE.
 %{_kf6_debugdir}/kalarm.categories
 %{_kf6_debugdir}/kalarm.renamecategories
 %{_kf6_iconsdir}/hicolor/*/apps/kalarm.png
+%{_kf6_libdir}/kconf_update_bin/kalarm-3.10.0-run_mode
 %{_kf6_libdir}/libkalarmcalendar.so.*
 %{_kf6_libdir}/libkalarmplugin.so.*
 %{_kf6_libexecdir}/kauth/kalarm_helper
@@ -122,6 +122,7 @@ Personal alarm message, command and email scheduler by KDE.
 %dir %{_kf6_plugindir}/pim6/kalarm/
 %{_kf6_plugindir}/pim6/kalarm/akonadiplugin.so
 %{_kf6_sharedir}/dbus-1/system-services/org.kde.kalarm.rtcwake.service
+%{_kf6_sharedir}/kconf_update/kalarm.upd
 %{_kf6_sharedir}/kalarm/
 %{_kf6_sharedir}/polkit-1/actions/org.kde.kalarm.rtcwake.policy
 

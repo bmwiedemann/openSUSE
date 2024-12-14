@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kapptemplate
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Template for KDE Application Development
 License:        GPL-2.0-only AND GFDL-1.2-only
@@ -34,13 +34,14 @@ Source2:        applications.keyring
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
 BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
-BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
-BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6KirigamiAddons)
 # Disabled upstream
 # BuildRequires:  cmake(KF6NewStuff) >= %%{kf6_version}
+BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 Obsoletes:      kapptemplate5 < %{version}

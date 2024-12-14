@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Dec 12 04:26:36 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.12.0:
+  * New features
+    + Groq Support
+    + Python 3.13 Support (experimental)
+    + Support Python 3.11
+    + Support Whisper API
+    + Add recognize_tensorflow
+    + Add recognize_vosk
+    + Add recognize_amazon and recognize_assemblyai
+    + Add recognize_whisper
+  * Bugfixes & improvements
+    + Support Python maintenance: Add 3.12, Drop 3.8
+    + Updated to the latest OpenAI API changes
+    + Replace with in-memory stream on recognize_whisper
+    + Remove prints that shouldn't be printed by default
+    + Update to speechContext formatting for recognize_google_cloud
+    + Fix for OSError: [Errno -9988] Stream closed Error
+    + Add paramater to change profanity filter level for Google Speech
+      Recognition
+    + Updating Wit API version (20160526 -> 20170307)
+    + Google cloud speech library
+    + Fix large cpu consumption in snowboy detect
+    + Replace Bing Speech API with Azure Speech API
+    + Removed duplicate code
+    + fix recognize_google_cloud
+    + Specify fp16 parameter for whisper
+- Switch to pyproject macros.
+- Run at least a portion of the testsuite.
+- No more greedy globs in %files.
+- Drop patch 406-google-cloud-speech.patch, included upstream.
+- Refresh patch fix-readme.patch
+
+-------------------------------------------------------------------
 Thu Jul 14 09:04:00 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Actually do what you have promised in changelog.

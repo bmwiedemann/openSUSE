@@ -1,0 +1,25 @@
+From e4ebefcb30053a990cb821a75c4e1310fc967673 Mon Sep 17 00:00:00 2001
+From: Leon Henrik Plickat <leonhenrik.plickat@stud.uni-goettingen.de>
+Date: Sat, 24 Aug 2024 17:57:36 +0200
+Subject: [PATCH] print errno when connecting to display fails
+
+---
+ lswt.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lswt.c b/lswt.c
+index 60c6ce7..675cfd0 100644
+--- a/lswt.c
++++ b/lswt.c
+@@ -1361,7 +1361,7 @@ int main(int argc, char *argv[])
+ 	wl_display = wl_display_connect(display_name);
+ 	if ( wl_display == NULL )
+ 	{
+-		fputs("ERROR: Can not connect to wayland display.\n", stderr);
++		fprintf(stderr, "ERROR: Can not connect to wayland display: %s\n", strerror(errno));
+ 		ret = EXIT_FAILURE;
+ 		goto cleanup;
+ 	}
+-- 
+2.45.2
+

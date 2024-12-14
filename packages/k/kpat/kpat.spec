@@ -16,7 +16,7 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150400
@@ -25,7 +25,7 @@
 
 %bcond_without released
 Name:           kpat
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Patience card game
 License:        GPL-2.0-or-later

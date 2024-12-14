@@ -4142,4 +4142,17 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
 </comment>
     <requestid>1226796</requestid>
   </revision>
+  <revision rev="282" vrev="2">
+    <srcmd5>14f53e1a29e02cc5e2fc8444be43cf40</srcmd5>
+    <version>9.1.2</version>
+    <time>1734125285</time>
+    <user>anag+factory</user>
+    <comment>- Fix bsc#1232712. The problem must be addressed upstream. This is
+  only a temporary measure, that should be reverted as soon as
+  possible:
+  * Revert &quot;ui/curses: Do not use console_select()&quot; (bsc#1232712)
+  * Revert &quot;hw/xen: Register framebuffer backend via xen_backend_init()&quot; (bsc#1232712)
+</comment>
+    <requestid>1229953</requestid>
+  </revision>
 </revisionlist>

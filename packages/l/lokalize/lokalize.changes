@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Dec  8 09:28:24 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.0/
+- Changes since 24.11.90:
+  * Make TsStorage/XliffStorage::isEmpty work again (kde#496916)
+
+-------------------------------------------------------------------
+Mon Dec  2 08:43:54 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.90
+  * New feature release
+- Changes since 24.11.80:
+  * Fix variable names
+  * Resize TMV and ATV when shown
+  * Accept unicode chars in regexps (kde#495785)
+  * Fix failing test
+
+-------------------------------------------------------------------
+Sat Nov 16 17:30:35 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.80
+  * New feature release
+- Too many changes since 24.08.3, only listing bugfixes:
+  * Search across full relative paths of files and dirs in Project Overview (kde#475163)
+  * Separate translation entry previous msgctxt into context string in AltTrans struct (kde#493709)
+  * Fix Translation Memory import job not finishing (kde#451461)
+  * Translation Memory: Set correct query type on startup (kde#491113)
+  * Make leading/trailing spaces and other invisible character easier to see (kde#490575)
+  * Fix porting regression in diff computation (kde#490837)
+  * Add option QRegularExpression::UnanchoredWildcardConversion to addPart and delPart diff regexes (kde#490441)
+
+-------------------------------------------------------------------
 Tue Nov  5 10:44:08 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.3

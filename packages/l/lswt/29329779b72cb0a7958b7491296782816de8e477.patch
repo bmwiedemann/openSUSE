@@ -1,0 +1,36 @@
+From 29329779b72cb0a7958b7491296782816de8e477 Mon Sep 17 00:00:00 2001
+From: Willow Barraco <contact@willowbarraco.fr>
+Date: Thu, 5 Dec 2024 07:55:17 +0100
+Subject: [PATCH] fix build error on redefinition of prctl_mm_map
+
+When including both linux/prctl.h and sys/prctl.h, the build fails with:
+
+In file included from lswt.c:35:
+/usr/include/sys/prctl.h:88:8: error: redefinition of 'struct prctl_mm_map'
+   88 | struct prctl_mm_map {
+      |        ^~~~~~~~~~~~
+In file included from lswt.c:34:
+/usr/include/linux/prctl.h:134:8: note: originally defined here
+  134 | struct prctl_mm_map {
+      |        ^~~~~~~~~~~~
+
+Signed-off-by: Willow Barraco <contact@willowbarraco.fr>
+---
+ lswt.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/lswt.c b/lswt.c
+index 385a780..9201975 100644
+--- a/lswt.c
++++ b/lswt.c
+@@ -31,7 +31,6 @@
+ #ifdef __linux__
+ #include <features.h>
+ #include <linux/landlock.h>
+-#include <linux/prctl.h>
+ #include <sys/prctl.h>
+ #include <sys/syscall.h>
+ #ifdef __GLIBC__
+-- 
+2.45.2
+

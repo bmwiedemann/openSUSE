@@ -1,0 +1,33 @@
+From d35786da4383388c19f5437128fd393a6f16f74f Mon Sep 17 00:00:00 2001
+From: Leon Henrik Plickat <leonhenrik.plickat@stud.uni-goettingen.de>
+Date: Thu, 5 Dec 2024 05:48:44 +0100
+Subject: [PATCH] fix JSON formatting of identifier string
+
+---
+ lswt.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/lswt.c b/lswt.c
+index d564e53..385a780 100644
+--- a/lswt.c
++++ b/lswt.c
+@@ -933,7 +933,15 @@ static void out_write_toplevel (struct Toplevel *toplevel)
+ 			if (support_maximized)
+ 				fprintf(stdout, "            \"maximized\": %s,\n", BOOL_TO_STR(toplevel->maximized));
+ 			if (support_identifier)
+-				fprintf(stdout, "            \"identifier\": %s,\n", toplevel->identifier);
++			{
++				/* Identifiers may contain all
++                                 * printable ASCII bytes, including
++                                 * quotes.
++				 */
++				fputs("            \"identifier\": ", stdout);
++				write_json(toplevel->identifier, stdout);
++				fputs(",\n", stdout);
++			}
+ 
+ 			/* Whoever designed JSON made the incredibly weird
+ 			 * mistake of enforcing that there is no comma on the
+-- 
+2.45.2
+

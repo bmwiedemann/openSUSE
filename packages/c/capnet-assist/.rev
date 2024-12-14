@@ -75,4 +75,12 @@
     <comment>- support leap = 1500 (forwarded request 1223007 from rrahl0)</comment>
     <requestid>1223008</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f8694c344e8c7e8edb9434bf7e1302c7</srcmd5>
+    <version>8.0.1</version>
+    <time>1734125884</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1230696</requestid>
+  </revision>
 </revisionlist>

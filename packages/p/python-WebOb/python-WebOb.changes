@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec 11 08:46:23 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.8.9
+  * Add `legacy-cgi` dependency for Python 3.13+
+  * Add info for 1.8.9 fix for Python 3.13
+- Drop support-python-313.patch, merged upstream
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Wed Oct 16 22:59:06 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-python-313.patch:

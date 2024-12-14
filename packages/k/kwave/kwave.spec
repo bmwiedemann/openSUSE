@@ -16,9 +16,12 @@
 #
 
 
+%define kf6_version 6.6.0
+%define qt6_version 6.6.0
+
 %bcond_without released
 Name:           kwave
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Sound editor by KDE
 License:        GPL-2.0-or-later
@@ -30,7 +33,7 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  alsa-devel
 BuildRequires:  audiofile-devel
-BuildRequires:  extra-cmake-modules
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  fftw3-devel
 BuildRequires:  flac-devel
 BuildRequires:  id3lib-devel
@@ -39,28 +42,25 @@ BuildRequires:  libopus-devel
 BuildRequires:  libpulse-devel
 BuildRequires:  libsamplerate-devel
 BuildRequires:  libvorbis-devel
-BuildRequires:  perl
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5Archive)
-BuildRequires:  cmake(KF5Completion)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5ConfigWidgets)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Service)
-BuildRequires:  cmake(KF5TextWidgets)
-BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(Qt5Concurrent)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Multimedia)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
+BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Multimedia) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  pkgconfig(mad)
 Recommends:     lame
 Recommends:     toolame
@@ -81,34 +81,30 @@ and scroll capability.
 %prep
 %autosetup -p1
 
-# Remove "X-SuSE-translate=true" from desktop file (will be added again using "suse_update_desktop_file") - Fixes package build error
-perl -pi -e "s|X-SuSE-translate=true||" kwave/org.kde.kwave.desktop.in
-
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
-
-%suse_update_desktop_file -r org.kde.%{name} Qt KDE AudioVideo Audio Recorder AudioVideoEditing
+%find_lang %{name} --with-html --all-name
 
 %ldconfig_scriptlets
 
 %files
 %license GNU-LICENSE
-%doc %lang(en) %{_kf5_htmldir}/en/kwave/
-%{_kf5_applicationsdir}/org.kde.kwave.desktop
-%{_kf5_appstreamdir}/org.kde.kwave.appdata.xml
-%{_kf5_bindir}/kwave
-%{_kf5_iconsdir}/hicolor/*/*/*.svgz
-%{_kf5_libdir}/libkwave*.so.*
-%{_kf5_plugindir}/kwave/
-%{_kf5_sharedir}/kwave/
+%doc %lang(en) %{_kf6_htmldir}/en/kwave/
+%{_kf6_applicationsdir}/org.kde.kwave.desktop
+%{_kf6_appstreamdir}/org.kde.kwave.appdata.xml
+%{_kf6_bindir}/kwave
+%{_kf6_iconsdir}/hicolor/*/*/*.svgz
+%{_kf6_libdir}/libkwave*.so.*
+%{_kf6_plugindir}/kwave/
+%{_kf6_sharedir}/kwave/
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/kwave/
 
 %changelog

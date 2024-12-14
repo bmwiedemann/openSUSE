@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kolourpaint
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Paint Program
 # See boo#717722 for license details
@@ -35,7 +35,6 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  fdupes
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
 BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
@@ -45,11 +44,10 @@ BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(KSaneWidgets6)
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
-# FIXME not ported or CMakeLists.txt error
-# BuildRequires: cmake(KF5Sane)
 Provides:       kolourpaint5 = %{version}
 Obsoletes:      kolourpaint5 < %{version}
 
@@ -70,8 +68,6 @@ Paint program by KDE
 %kf6_install
 
 %find_lang %{name} --with-html --all-name
-
-%suse_update_desktop_file org.kde.kolourpaint RasterGraphics
 
 %fdupes %{buildroot}%{_kf6_sharedir}
 

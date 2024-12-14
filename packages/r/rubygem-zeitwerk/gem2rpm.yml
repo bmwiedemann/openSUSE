@@ -15,7 +15,9 @@
 # ## used by gem2rpm
 # :disable_automatic_rdoc_dep: true
 # ## used by gem2rpm
-# :preamble: |-
+#:preamble: |-
+#  %define rb_build_versions  ruby32     ruby33
+#  %define rb_build_ruby_abis ruby:3.2.0 ruby:2.3.0
 #   BuildRequires: foobar
 #   Requires: foobar
 # ## used by gem2rpm

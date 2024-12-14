@@ -9,18 +9,19 @@ Mon Dec  9 11:53:41 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
     alignment-threshold is too small.
   + decodebin3: Unify collection switching checks.
   + discoverer:
-    - Don't print channel layout for more than 64 channels.
+    - Don't print channel layout for more than 64 channels
+      (boo#1233453 CVE-2024-47600).
     - Make sure the missing elements details array is
       NULL-terminated in a thread-safe way.
     - Fix segfault in race condition adding a new uri.
   + id3v2: Don't try parsing extended header if not enough data is
-    available.
+    available (boo#1234460 CVE-2024-47542).
   + glupload: dmabuf: Fix emulated tiled import.
   + gl:
     - cocoa: fix rendering artifacts in retina displays.
     - meson: Don't use libdrm_dep in cc.has_header().
   + oggstream: fix invalid ogg_packet->packet accesses, address
-    invalid writes CVE.
+    invalid writes CVE (boo#1234456 CVE-2024-47615).
   + opusdec: Set at most 64 channels to NONE position.
   + playbin: Fix caps leak in get_n_common_capsfeatures().
   + playbin3: ERROR when setting new HLS URI with instant-uri=true.
@@ -28,11 +29,12 @@ Mon Dec  9 11:53:41 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
   + ssaparse: Search for closing brace after opening brace.
   + splitmuxsrc: Convert part reader to a bin with a non-async bus.
   + subparse: Check for NULL return of strchr() when parsing LRC
-    subtitles.
+    subtitles (boo#1234450 CVE-2024-47835).
   + streamsynchronizer: Only send GAP events out of source pads.
   + urisourcebin: Also use event probe for HLS use-cases.
   + video-converter: Set TIME segment format on appsrc.
-  + vorbisdec: Set at most 64 channels to NONE position.
+  + vorbisdec: Set at most 64 channels to NONE position
+    (boo#1234415 CVE-2024-47538).
   + Translation for gst-plugins-base 1.24.0 not sync-ed with
     Translation Project.
   + Updated translations.

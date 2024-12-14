@@ -17,12 +17,12 @@
 
 
 %define mlt_version 7.14.0
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kdenlive
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Non-linear video editor
 License:        GPL-3.0-or-later

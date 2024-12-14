@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           alligator
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        RSS/Atom feed reader
 License:        GPL-2.0-or-later
@@ -33,9 +33,11 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  update-desktop-files
+BuildRequires:  cmake(KF6ColorScheme) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6Kirigami) >= %{kf6_version}
 BuildRequires:  cmake(KF6KirigamiAddons)
 BuildRequires:  cmake(KF6Syndication) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}

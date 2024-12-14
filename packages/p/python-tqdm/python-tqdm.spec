@@ -28,7 +28,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-tqdm%{pkg_suffix}
-Version:        4.67.0
+Version:        4.67.1
 Release:        0
 Summary:        An extensible progress meter
 License:        MIT AND MPL-2.0
@@ -48,7 +48,8 @@ Enhances:       python-ipython
 BuildArch:      noarch
 %if %{with test}
 # SECTION test requirements
-BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-asyncio >= 0.24}
+BuildRequires:  %{python_module nbval}
 # Conditional required for SLE-15-SP4+
 BuildRequires:  %{python_module numpy if (python-base without python36-base)}
 BuildRequires:  %{python_module pytest-timeout}

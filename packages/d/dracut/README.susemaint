@@ -387,3 +387,4 @@ d2ade8a6 fix(dm): remove 59-persistent-storage-dm.rules
 a1c51af1 fix(dracut): don't apply aggressive strip to kernel modules
 ad36b61e fix(dracut.sh): omit compressed kernel modules from find searching exec files
 bfa00c2a fix(pcsc): add libpcsclite_real.so.*
+0df92885 fix(systemd-tmpfiles): copy 20-systemd-stub.conf into the initrd

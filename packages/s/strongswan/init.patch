@@ -1,0 +1,31 @@
+From c58507ff186ae9cf014c0b54082c8bf74aef3219 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Tue, 3 Dec 2024 21:56:33 +0100
+Subject: [PATCH] init: put strongswan-starter.service behind USE_FILE_CONFIG
+References: https://github.com/strongswan/strongswan/pull/2553
+
+stroke is no longer enabled by default, but the systemd unit
+still is copied on `make install`. Fix that.
+---
+ init/Makefile.am | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/init/Makefile.am b/init/Makefile.am
+index 54c090cea..824ebd695 100644
+--- a/init/Makefile.am
++++ b/init/Makefile.am
+@@ -3,9 +3,11 @@ SUBDIRS =
+ 
+ if USE_LEGACY_SYSTEMD
+ if USE_CHARON
++if USE_FILE_CONFIG
+   SUBDIRS += systemd-starter
+ endif
+ endif
++endif
+ 
+ if USE_SYSTEMD
+ if USE_SWANCTL
+-- 
+2.47.1
+

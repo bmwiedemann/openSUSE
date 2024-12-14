@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 
 %bcond_without  released
 Name:           keysmith
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        OTP client
 License:        GPL-3.0-or-later
@@ -35,6 +35,7 @@ BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6Kirigami) >= %{kf6_version}
 BuildRequires:  cmake(KF6QQC2DesktopStyle) >= %{kf6_version}

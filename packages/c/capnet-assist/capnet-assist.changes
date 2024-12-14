@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 13 05:26:30 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.0.1:
+  * Add CTRL+Q quit shortcut
+  * Updated translations
+
+-------------------------------------------------------------------
 Fri Nov  1 20:47:45 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - remove %suse_update_desktop_file, as it's deprecated

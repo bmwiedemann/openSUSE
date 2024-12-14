@@ -177,4 +177,41 @@
   * gopls: update x/telemetry dependency (forwarded request 1199066 from jfkw)</comment>
     <requestid>1199067</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>56c143e60a1d07a91a93fc883ae1ea8a</srcmd5>
+    <version>0.17.0</version>
+    <time>1734125869</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.17.0:
+  * gopls: update go.mod for v0.17.0-pre.5
+  * internal/typesinternal: rollback of Zero{Value,Expr} for gopls
+  * gopls: update go.mod for v0.17.0-pre.4
+  * gopls/internal/golang: support extract variable at top level
+  * gopls/internal/golang: ignore effects for change signature refactoring
+  * gopls/internal/golang: add &quot;Extract constant&quot; counterpart
+  * gopls/internal/golang/stubmethods: refine crash into bug report
+  * gopls/internal/golang: don't offer to move variadic parameters
+  * gopls/internal/test/marker: add reproducers for moveparam bug bash bugs
+  * gopls/internal/analysis/yield: add comment about dataflow
+  * gopls/internal/golang: avoid crash in lookupDocLinkSymbol
+  * gopls/internal/golang/completion: fix crash with extra results
+  * gopls/internal/settings: enable 'waitgroup' analyzer
+  * gopls/internal/golang: Disable test generation for generic functions
+  * gopls/internal/analysis/yield: peephole-optimize phi(false, x)
+  * gopls/internal/golang: fix folding range for function calls
+  * gopls/internal/golang/completion: add alias support for literals
+  * gopls/internal/undeclaredname: add missing colon when appropriate
+  * gopls/internal/golang: simplify package name collection in add test
+  * gopls: update go.mod for v0.17.0-pre.3
+  * gopls/internal/golang: refactor.extract.variable: allow all exprs
+  * gopls/internal/cache/methodsets: refine crash for missing object path
+  * gopls/internal/golang: refine crash golang/go#70553
+  * gopls/internal/golang: change signature via renaming 'func'
+  * gopls/internal/golang: support parameter movement refactorings
+  * gopls/doc/features: enable and document source.addTest code action
+  * gopls/internal/golang: improve test package name selection for new file
+  * gopls/internal/golang: don't lose ... when split/joining variadics
+  * gopls/internal/crash: don't crash in xrefs on out of bound nodes (forwarded request 1230664 from jfkw)</comment>
+    <requestid>1230665</requestid>
+  </revision>
 </revisionlist>

@@ -71,14 +71,10 @@ donttest="(test_http_aiohttp and not TestAiohttpHttpNode)"
 donttest="$donttest or test_tls_versions"
 donttest="$donttest or test_assert_fingerprint_in_cert_chain"
 donttest="$donttest or (test_ssl_assert_fingerprint and httpx)"
-# gh#elastic/elastic-transport-python#96
-donttest="$donttest or test_url_to_node_config[https://[::1]:0/-https://[::1]:0-]"
-# pytest 8.x failures
-donttest="$donttest or test_sniff_before_requests"
-donttest="$donttest or test_sniff_on_node_failure"
-donttest="$donttest or test_sniffed_nodes_added_to_pool"
 # Fails in 3.12 with DeprecationWarning
 donttest="$donttest or test_simple_request"
+# Mocking error with httpx 0.28 / patched respx
+donttest="$donttest or (TestHttpxAsyncNode and not Creation)"
 # Flaky test
 donttest="$donttest or test_decimal_serialization[OrjsonSerializer]"
 %pytest -W ignore::DeprecationWarning -k "not ($donttest)"

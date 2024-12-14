@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kcharselect
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        KDE Character Selector
 License:        GPL-2.0-or-later
@@ -32,7 +32,6 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF6Bookmarks) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
@@ -62,8 +61,6 @@ KCharSelect is the KDE character selector tool.
 %kf6_install
 
 %find_lang %{name} --with-html --all-name
-
-%suse_update_desktop_file org.kde.kcharselect Utility Accessibility
 
 %files
 %license LICENSES/*

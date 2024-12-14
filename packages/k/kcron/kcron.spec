@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kcron
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Cron job configuration tool
 License:        GPL-2.0-or-later
@@ -35,13 +35,16 @@ BuildRequires:  kf6-extra-cmake-modules  >= %{kf6_version}
 BuildRequires:  cmake(KF6Auth) >= %{kf6_version}
 BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Declarative) >= %{kf6_version}
 BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6KCMUtils) >= %{kf6_version}
+BuildRequires:  cmake(KF6KirigamiAddons) >= 0.11.76
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
-BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
+Requires:       kirigami-addons6 >= 0.11.76
 Obsoletes:      kcron5 < %{version}
 Provides:       kcron5 = %{version}
 
@@ -72,7 +75,7 @@ KCron allows you to change your cron jobs setup.
 %{_kf6_appstreamdir}/org.kde.kcron.metainfo.xml
 %{_kf6_dbuspolicydir}/local.kcron.crontab.conf
 %{_kf6_debugdir}/kcron.categories
-%{_kf6_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_cron.so
+%{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_cron.so
 %{_kf6_sharedir}/dbus-1/system-services/local.kcron.crontab.service
 %{_kf6_sharedir}/polkit-1/actions/local.kcron.crontab.policy
 %{_kf6_libexecdir}/kauth/kcron_helper

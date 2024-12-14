@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec 11 02:26:34 UTC 2024 - William Brown <william.brown@suse.com>
+
+- bsc#1232667 - SLFO:Main requires changes for gcc version detection
+
+-------------------------------------------------------------------
+Tue Dec 10 04:48:08 UTC 2024 - William Brown <william.brown@suse.com>
+
+- add patch: 0001-Disable-pidfs-tests-for-15SP3.patch
+
+-------------------------------------------------------------------
 Tue Dec  3 09:51:18 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add support for loongarch64

@@ -96,4 +96,16 @@
     <comment></comment>
     <requestid>1176154</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>b8ca247532628db36bb380e1d023ccc5</srcmd5>
+    <version>0.21.1</version>
+    <time>1734125591</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1230633 from bnavigator
+
+- Add patches for httpx 0.28
+    * respx-pr267-httpx0.28.patch gh#lundberg/respx#267
+    * respx-pr278-httpx0.28.patch gh#lundberg/respx#278</comment>
+    <requestid>1230776</requestid>
+  </revision>
 </revisionlist>

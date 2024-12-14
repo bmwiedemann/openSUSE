@@ -30,6 +30,11 @@ Source1:        https://ftp.gnu.org/gnu/nettle/nettle-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
 Source4:        %{name}-rpmlintrc
+# PATCH-FIX-UPSTREAM [jsc#PED-9904] ppcl64le: POWER10 performance enhancements for cryptography
+Patch1:         libnettle-powerpc64-remove-m4_unquote-sha256.patch
+Patch2:         libnettle-powerpc64-sha256-adjust-stack-offset-for-non-volatile-registers.patch
+Patch3:         libnettle-powerpc64-sha256-fix-loading-overreads.patch
+Patch4:         libnettle-powerpc64-skip-AES-GCM-test.patch
 BuildRequires:  autoconf
 BuildRequires:  fipscheck
 BuildRequires:  gmp-devel >= 6.1.0

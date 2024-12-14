@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.2.3
+%define kpim6_version 6.3.0
 
 %bcond_without released
 Name:           pim-data-exporter
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Data exporter for KDE PIM applications
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -51,7 +51,6 @@ BuildRequires:  cmake(KF6TextCustomEditor)
 BuildRequires:  cmake(KF6UserFeedback) >= %{kf6_version}
 BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
 BuildRequires:  cmake(KPim6Akonadi) >= %{kpim6_version}
-BuildRequires:  cmake(KPim6AkonadiNotes) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6IdentityManagementCore) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6MailCommon) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6MailTransport) >= %{kpim6_version}

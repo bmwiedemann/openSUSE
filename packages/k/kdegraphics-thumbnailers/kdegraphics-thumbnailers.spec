@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kdegraphics-thumbnailers
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Graphics file thumbnail generators
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

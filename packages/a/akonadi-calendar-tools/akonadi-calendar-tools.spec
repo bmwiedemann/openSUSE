@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.2.3
+%define kpim6_version 6.3.0
 
 %bcond_without released
 Name:           akonadi-calendar-tools
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Console applications and utilities for managing calendars
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

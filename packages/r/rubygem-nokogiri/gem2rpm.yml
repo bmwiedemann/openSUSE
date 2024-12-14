@@ -16,8 +16,6 @@
 # :disable_automatic_rdoc_dep: true
 # ## used by gem2rpm
 :preamble: |-
-  %define rb_build_versions     ruby33
-  %define rb_build_ruby_abis    ruby:3.3.0
   BuildRequires:  %{rubygem mini_portile2 >= 2.8.2}
   BuildRequires:  %{rubygem openssl}
   BuildRequires:  %{rubygem pkg-config}

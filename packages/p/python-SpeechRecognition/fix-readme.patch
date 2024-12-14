@@ -1,8 +1,8 @@
-Index: speech_recognition-3.8.1/README.rst
+Index: speech_recognition-3.12.0/README.rst
 ===================================================================
---- speech_recognition-3.8.1.orig/README.rst
-+++ speech_recognition-3.8.1/README.rst
-@@ -270,9 +270,7 @@ To hack on this library, first make sure
+--- speech_recognition-3.12.0.orig/README.rst
++++ speech_recognition-3.12.0/README.rst
+@@ -283,9 +283,7 @@ To hack on this library, first make sure
  
  -  Most of the library code lives in ``speech_recognition/__init__.py``.
  -  Examples live under the ``examples/`` `directory <https://github.com/Uberi/speech_recognition/tree/master/examples>`__, and the demo script lives in ``speech_recognition/__main__.py``.
@@ -10,11 +10,11 @@ Index: speech_recognition-3.8.1/README.rst
  -  Documentation can be found in the ``reference/`` `directory <https://github.com/Uberi/speech_recognition/tree/master/reference>`__.
 --  Third-party libraries, utilities, and reference material are in the ``third-party/`` `directory <https://github.com/Uberi/speech_recognition/tree/master/third-party>`__.
  
- To install/reinstall the library locally, run ``python setup.py install`` in the project `root directory <https://github.com/Uberi/speech_recognition>`__.
+ To install/reinstall the library locally, run ``python -m pip install -e .[dev]`` in the project `root directory <https://github.com/Uberi/speech_recognition>`__.
  
-@@ -301,41 +299,6 @@ Testing is also done automatically by Tr
-     python -m flake8 --ignore=E501,E701 speech_recognition tests examples setup.py # ignore errors for long lines and multi-statement lines
-     python -m rstcheck README.rst reference/*.rst # ensure RST is well-formed
+@@ -316,41 +314,6 @@ To ensure RST is well-formed:
+ 
+ Testing is also done automatically by GitHub Actions, upon every push.
  
 -FLAC Executables
 -~~~~~~~~~~~~~~~~
@@ -54,7 +54,7 @@ Index: speech_recognition-3.8.1/README.rst
  Authors
  -------
  
-@@ -374,9 +337,3 @@ Copyright 2014-2017 `Anthony Zhang (Uber
+@@ -389,9 +352,3 @@ Copyright 2014-2017 `Anthony Zhang (Uber
  SpeechRecognition is made available under the 3-clause BSD license. See ``LICENSE.txt`` in the project's `root directory <https://github.com/Uberi/speech_recognition>`__ for more information.
  
  For convenience, all the official distributions of SpeechRecognition already include a copy of the necessary copyright notices and licenses. In your project, you can simply **say that licensing information for SpeechRecognition can be found within the SpeechRecognition README, and make sure SpeechRecognition is visible to users if they wish to see it**.

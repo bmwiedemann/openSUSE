@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define plasma6_version 5.27.80
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           spectacle
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Screen Capture Program
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -76,6 +76,7 @@ BuildRequires:  pkgconfig(xcb-image)
 BuildRequires:  pkgconfig(xcb-randr)
 BuildRequires:  pkgconfig(xcb-util)
 BuildRequires:  pkgconfig(xcb-xfixes)
+Requires:       qt6-imageformats >= %{qt6_version}
 
 %description
 Spectactle is a screenshot-taking program made by KDE. It allows taking screenshots

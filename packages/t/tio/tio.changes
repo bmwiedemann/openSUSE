@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Nov 30 11:26:22 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.8
+  * Clean up lua API.
+  * Rename modem_send() to send().
+  * Rename send to write().
+  * Zero initialize buffer in read_string().
+  * Fix memory leak in base62_encode().
+  * Fix name declaration conflict with socket send().
+  * Add clang-format spec.
+  * Add system timestamps to lua read() and new lua read_line() per
+    global options.
+  * Add missing timestamp-format epoch.
+  * Update send_ to use fsync and tcdrain like normal tty_sync
+    does.
+  * Rework read_line to save partial line at timeout.
+  * Simplified read_line to reduce cyclomatic complexity.
+  * renamed example files read.lua and read_line.lua.
+  * moved #define READ_LINE_SIZE to top of file.
+  * renamed g_linebuf to linebuf, and moved it into read_line as
+    a static variable.
+
+-------------------------------------------------------------------
 Sat Aug 31 08:43:30 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.7

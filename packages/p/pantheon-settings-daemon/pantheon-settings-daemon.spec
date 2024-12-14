@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.settings-daemon
 Name:           pantheon-settings-daemon
-Version:        8.1.0
+Version:        8.1.1
 Release:        0
 Summary:        A daemon for the Pantheon Desktop
 License:        GPL-3.0-or-later

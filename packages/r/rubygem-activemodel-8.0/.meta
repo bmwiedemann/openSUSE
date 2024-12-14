@@ -1,0 +1,5 @@
+<package name="rubygem-activemodel-8.0" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-activemodel-8.0"/>
+</package>

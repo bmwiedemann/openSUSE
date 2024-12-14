@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           cervisia
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        CVS Frontend
 License:        GPL-2.0-only AND GFDL-1.2-only AND LGPL-2.0-only
@@ -30,7 +30,6 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  subversion-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5IconThemes)
@@ -53,21 +52,19 @@ Cervisia is a tool to browse and work with CVS repositories.
 %autosetup -p1
 
 %build
-%ifarch ppc64
-RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
-%endif
 export CXXFLAGS="%{optflags} -fPIC"
 export CFLAGS="%{optflags} -fPIC"
-  %cmake_kf5 -d build -- -DCMAKE_CXXFLAGS="%{optflags}" -DCMAKE_CFLAGS="%{optflags}"
-  %cmake_build
+
+%cmake_kf5 -d build -- -DCMAKE_CXXFLAGS="%{optflags}" -DCMAKE_CFLAGS="%{optflags}"
+
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
 
 %find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
 
-%suse_update_desktop_file org.kde.cervisia Development RevisionControl
+%{kf5_find_htmldocs}
 
 %ldconfig_scriptlets
 

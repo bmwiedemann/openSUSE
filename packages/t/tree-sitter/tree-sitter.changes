@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Dec 13 05:01:22 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.24.5:
+  * fix(lib): correct next sibling of zero width node
+  * fix(lib): use clock_gettime on macOS again
+  * feat: move scripts to xtasks
+  * build: configure clippy lints at the workspace level
+  * chore: remove unnecessary fuzz and profile helpers
+  * build: tune compiler warnings
+  * fix: compiler warning
+  * build: treat incompatible pointer warning as error
+  * fix(lib): handle compiler warnings
+  * build(cmake): link wasmtime dependencies
+  * fix: sync cmake with master
+
+-------------------------------------------------------------------
 Mon Nov 11 00:46:35 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.24.4:

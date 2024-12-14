@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kcachegrind
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Frontend for Cachegrind
 License:        GPL-2.0-only AND BSD-4-Clause AND GFDL-1.2-only
@@ -32,7 +32,6 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
@@ -57,12 +56,6 @@ KCachegrind is a frontend for cachegrind.
 %autosetup -p1
 
 %build
-%ifarch ppc64
-RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
-%endif
-export CXXFLAGS="%{optflags} -fPIC"
-export CFLAGS="%{optflags} -fPIC"
-
 %cmake_kf6
 
 %kf6_build
@@ -71,8 +64,6 @@ export CFLAGS="%{optflags} -fPIC"
 %kf6_install
 
 %find_lang %{name} --with-html --all-name --with-qt
-
-%suse_update_desktop_file org.kde.kcachegrind Development Profiling
 
 %files
 %license LICENSES/*

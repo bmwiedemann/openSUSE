@@ -21,7 +21,7 @@
 %if "%{flavor}" == "qt6"
 %define qt6 1
 %define pkg_suffix -qt6
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 %define library_name libKExiv2Qt6
 %define so_suffix -0
@@ -34,7 +34,7 @@
 %endif
 %bcond_without released
 Name:           libkexiv2%{?pkg_suffix}
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Library to manipulate picture meta data
 License:        GPL-2.0-or-later

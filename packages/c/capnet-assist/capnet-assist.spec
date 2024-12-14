@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.capnet-assist
 Name:           capnet-assist
-Version:        8.0.0
+Version:        8.0.1
 Release:        0
 Summary:        Captive Portal Assistant
 License:        GPL-3.0-or-later

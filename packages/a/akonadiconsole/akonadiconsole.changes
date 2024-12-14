@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Dec  8 09:26:51 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.0/
+- No code change since 24.11.90
+
+-------------------------------------------------------------------
+Mon Dec  2 08:42:18 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.90
+  * New feature release
+- No code change since 24.11.80
+
+-------------------------------------------------------------------
+Sat Nov 16 17:28:53 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.80
+  * New feature release
+- Changes since 24.08.3:
+  * Add craft build support
+  * Prepare to add craft support
+  * Add windows CI support
+  * Remove unused KStandardAction
+  * Use KStandardActions where is possible
+  * Reformat code with clang-format
+  * Don't look at build dir folder for clang format
+  * Fix compile against new api
+  * setDynamicSortFilter(true); is default
+  * Use @option:check
+
+-------------------------------------------------------------------
 Tue Nov  5 10:42:31 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.3

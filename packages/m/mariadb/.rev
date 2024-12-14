@@ -1968,4 +1968,12 @@ See http://lists.opensuse.org/opensuse-factory/2013-01/msg00544.html for more co
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1228777</requestid>
   </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>4ffd258c220c0a3001b111d879b9b4a0</srcmd5>
+    <version>11.6.2</version>
+    <time>1734125476</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1230057</requestid>
+  </revision>
 </revisionlist>

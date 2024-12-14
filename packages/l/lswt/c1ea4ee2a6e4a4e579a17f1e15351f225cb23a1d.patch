@@ -1,0 +1,110 @@
+From c1ea4ee2a6e4a4e579a17f1e15351f225cb23a1d Mon Sep 17 00:00:00 2001
+From: Leon Henrik Plickat <leonhenrik.plickat@stud.uni-goettingen.de>
+Date: Sun, 19 May 2024 09:17:05 +0200
+Subject: [PATCH] use landlock on linux to restrict fs access
+
+---
+ lswt.c | 60 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 59 insertions(+), 1 deletion(-)
+
+diff --git a/lswt.c b/lswt.c
+index 4e4bb16..0963da3 100644
+--- a/lswt.c
++++ b/lswt.c
+@@ -31,6 +31,8 @@
+ #ifdef __linux__
+ #include <features.h>
+ #include <linux/landlock.h>
++#include <linux/prctl.h>
++#include <sys/prctl.h>
+ #include <sys/syscall.h>
+ #ifdef __GLIBC__
+ #include<execinfo.h>
+@@ -44,6 +46,8 @@
+ 
+ #define VERSION "2.0.1-dev"
+ 
++#define max_supported_landlock_abi 3
++
+ const char usage[] =
+ 	"Usage: lswt [options...]\n"
+ 	"  -h,       --help           Print this helpt text and exit.\n"
+@@ -1135,7 +1139,7 @@ static void free_data (void)
+ 
+ 	struct Toplevel *t, *tmp;
+ 	wl_list_for_each_safe(t, tmp, &toplevels, link)
+-		toplevel_destroy(t);
++	toplevel_destroy(t);
+ }
+ 
+ static void handle_interrupt (int signum)
+@@ -1195,12 +1199,66 @@ static void handle_error (int signum)
+ 	kill(getpid(), signum);
+ }
+ 
++static void lock_the_land (void)
++{
++	/* For ABI versions 1 to 3 repsectively. */
++	static uint64_t landlock_access_rights[max_supported_landlock_abi] = {
++		(1ULL << 13) - 1, (1ULL << 14) - 1, (1ULL << 15) - 1
++	};
++
++	/* Query for supported ABI, if any. */
++	long int abi = syscall(
++		SYS_landlock_create_ruleset,
++		NULL, 0, LANDLOCK_CREATE_RULESET_VERSION
++	);
++
++	if ( abi < 0 )
++	{
++		/* Landlock unsupported or disabled. */
++		if ( errno == ENOSYS || errno == EOPNOTSUPP )
++			return;
++
++		fprintf(stderr, "ERROR: landlock_create_ruledset: %s\n", strerror(errno));
++		return;
++	}
++
++	if ( abi > max_supported_landlock_abi )
++		abi = max_supported_landlock_abi;
++
++	if ( prctl(PR_SET_NO_NEW_PRIVS, 1, 0, 0, 0) < 0 )
++	{
++		fprintf(stderr, "ERROR: prctl: %s\n", strerror(errno));
++		return;
++	}
++
++	struct landlock_ruleset_attr attr = {
++		.handled_access_fs = landlock_access_rights[abi - 1],
++	};
++
++	int ruleset_fd = (int)syscall(
++		SYS_landlock_create_ruleset,
++		&attr, sizeof(attr), 0
++	);
++	if ( ruleset_fd < 0 )
++	{
++		fprintf(stderr, "ERROR: landlock_create_ruleset: %s\n", strerror(errno));
++		return;
++	}
++
++	if ( syscall(SYS_landlock_restrict_self, ruleset_fd, 0) != 0 )
++		fprintf(stderr, "ERROR: landlock_restrict_self: %s\n", strerror(errno));
++
++	close(ruleset_fd);
++}
++
+ int main(int argc, char *argv[])
+ {
+ 	signal(SIGSEGV, handle_error);
+ 	signal(SIGFPE, handle_error);
+ 	signal(SIGINT, handle_interrupt);
+ 
++	lock_the_land();
++
+ 	if ( argc > 0 ) for (int i = 1; i < argc; i++)
+ 	{
+ 		if ( strcmp(argv[i], "-j") == 0 || strcmp(argv[i], "--json") == 0 )
+-- 
+2.45.2
+

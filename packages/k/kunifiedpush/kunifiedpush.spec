@@ -18,11 +18,11 @@
 
 %bcond_without released
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.5.0
 #
 Name:           kunifiedpush
-Version:        1.0.0
+Version:        24.12.0
 Release:        0
 Summary:        UnifiedPush client components
 License:        LGPL-2.0-or-later
@@ -30,7 +30,7 @@ URL:            https://www.kde.org/
 Source:         https://download.kde.org/stable/kunifiedpush/%{name}-%{version}.tar.xz
 %if %{with released}
 Source1:        https://download.kde.org/stable/kunifiedpush/%{name}-%{version}.tar.xz.sig
-Source2:        kunifiedpush.keyring
+Source2:        applications.keyring
 %endif
 # For %%check
 BuildRequires:  dbus-1

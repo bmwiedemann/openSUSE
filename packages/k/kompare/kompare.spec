@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kompare
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        File Comparator
 License:        GPL-2.0-or-later
@@ -32,7 +32,6 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
@@ -66,11 +65,6 @@ Development files for the File Comparator package
 %autosetup -p1
 
 %build
-%ifarch ppc64
-RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
-%endif
-export CXXFLAGS="%{optflags} -fPIC"
-export CFLAGS="%{optflags} -fPIC"
 %cmake_kf6
 
 %kf6_build
@@ -79,8 +73,6 @@ export CFLAGS="%{optflags} -fPIC"
 %kf6_install
 
 %find_lang %{name} --with-html --all-name
-
-%suse_update_desktop_file -r org.kde.kompare Utility TextEditor
 
 %ldconfig_scriptlets
 

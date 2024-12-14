@@ -283,7 +283,7 @@ export NSPR_INCLUDE_DIR=`nspr-config --includedir`
 export NSPR_LIB_DIR=`nspr-config --libdir`
 export OPT_FLAGS="%{optflags} -fno-strict-aliasing -fPIE -pie"
 export LIBDIR=%{_libdir}
-%ifarch x86_64 s390x ppc64 ppc64le ia64 aarch64 riscv64
+%ifarch x86_64 s390x ppc64 ppc64le ia64 aarch64 riscv64 loongarch64
 export USE_64=1
 %endif
 export NSS_DISABLE_GTESTS=1

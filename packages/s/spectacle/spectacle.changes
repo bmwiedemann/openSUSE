@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Sun Dec  8 09:28:37 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.0/
+- No code change since 24.11.90
+
+-------------------------------------------------------------------
+Mon Dec  2 08:44:09 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.90
+  * New feature release
+- Changes since 24.11.80:
+  * Fix webp capitalization
+  * Add warning notification when WebP support is missing
+  * Revert "Require webp for recording system tray icon"
+
+-------------------------------------------------------------------
+Sat Nov 16 17:30:49 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.80
+  * New feature release
+- Changes since 24.08.3:
+  * Don't include quiet packages in feature_summary
+  * Require webp for recording system tray icon
+  * Use kstandardactions
+  * Fix negative animation duration without capture on click support (kde#495216)
+  * cmake: remove excess include dir
+  * work around bugged qmlcachegen (kde#494281)
+  * AnnotationViewport: fix stretching odd sized images
+  * ImagePlatformKWin: Use a 60 second timeout for CaptureInteractive
+  * ExportManager: fix crash when saving while timezone is misconfigured (kde#493191)
+  * ExportManager: rename removeEmptyPlaceholderAndSeparators to removePlaceholderAndSeparators
+  * ExportManager: Fix Save As using default filename template and wrong folder for filename formatting (kde#493370)
+  * ExportManager: Make Placeholder a bit more efficient
+  * Use blur and pixelate icons for blur and pixelate tools
+  * Generate wayland code with PRIVATE_CODE
+  * Round mouse positions to physical pixels (kde#489448)
+  * Set fallback icon theme (kde#492824)
+  * Reuse tooltip for annotation tool buttons
+  * Make it easier to click annotation tool buttons
+  * Don't disable AnnotationEditor with NoTool selected
+  * Move undo/redo shortcuts to AnnotationEditor
+  * Fix InlineMessage headers/appearance on "no screenshot" dialog
+  * Set suggested filename for copied images
+  * Go back to copying images with setImageData (kde#485096)
+  * Set maximum pending frame buffer size based on available memory
+  * VideoPlatformWayland: remove inaccurate comment
+  * Fix deprecated version
+  * Set up crash handling
+  * Sanitise html in barcodes
+
+-------------------------------------------------------------------
 Tue Nov  5 10:44:22 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.3

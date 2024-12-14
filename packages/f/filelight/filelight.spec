@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           filelight
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Graphical disk usage viewer
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -32,7 +32,6 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
@@ -67,8 +66,6 @@ and the sizes of files and directories on the system.
 %kf6_install
 
 %find_lang %{name} --with-html --all-name
-
-%suse_update_desktop_file org.kde.filelight System Filesystem
 
 %files
 %license LICENSES/*

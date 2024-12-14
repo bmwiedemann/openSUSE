@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 12 18:25:14 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- remove curl and sed from the image
+
+-------------------------------------------------------------------
 Tue Dec  3 13:26:37 UTC 2024 - SUSE Update Bot <bci-internal@suse.de>
 
 - Change attribute order in _service

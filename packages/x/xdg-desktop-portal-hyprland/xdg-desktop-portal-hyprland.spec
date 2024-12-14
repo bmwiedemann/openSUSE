@@ -19,7 +19,7 @@
 %global __builder ninja
 
 Name:           xdg-desktop-portal-hyprland
-Version:        1.3.6
+Version:        1.3.8
 Release:        0
 Summary:        Extended xdg-desktop-portal backend for Hyprland
 License:        MIT
@@ -52,7 +52,7 @@ BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(pangocairo)
-BuildRequires:  pkgconfig(sdbus-c++)
+BuildRequires:  pkgconfig(sdbus-c++) >= 2.0.0
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(wayland-client)

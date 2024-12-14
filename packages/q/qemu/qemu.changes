@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 10 17:36:14 UTC 2024 - dfaggioli@suse.com
+
+- Fix bsc#1232712. The problem must be addressed upstream. This is
+  only a temporary measure, that should be reverted as soon as
+  possible:
+  * Revert "ui/curses: Do not use console_select()" (bsc#1232712)
+  * Revert "hw/xen: Register framebuffer backend via xen_backend_init()" (bsc#1232712)
+
+-------------------------------------------------------------------
 Tue Nov 26 16:06:49 UTC 2024 - dfaggioli@suse.com
 
 - Fix bsc#1233530:

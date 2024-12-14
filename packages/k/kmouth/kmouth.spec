@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kmouth
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Speech Synthesizer Frontend
 License:        GPL-2.0-or-later
@@ -78,6 +78,7 @@ The computer "speaks" the entered text for talking with people.
 %{_kf6_appstreamdir}/org.kde.kmouth.appdata.xml
 %{_kf6_bindir}/kmouth
 %{_kf6_iconsdir}/hicolor/*/*/*.png
+%{_kf6_iconsdir}/hicolor/*/*/kmouth.svg
 %{_kf6_sharedir}/kmouth/
 
 %files lang -f %{name}.lang

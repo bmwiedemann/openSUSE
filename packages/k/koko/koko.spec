@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           koko
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Kirigami based gallery application
 License:        LGPL-2.1-or-later
@@ -53,6 +53,7 @@ BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6Kirigami) >= %{kf6_version}
+BuildRequires:  cmake(KF6KirigamiAddons)
 BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Positioning) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
@@ -66,6 +67,7 @@ BuildRequires:  cmake(exiv2) >= 0.21
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-atom)
 Requires:       kf6-kirigami-imports >= %{kf6_version}
+Requires:       kirigami-addons6
 Requires:       kquickimageeditor6-imports
 Requires:       qt6-sql-sqlite >= %{qt6_version}
 
@@ -88,9 +90,6 @@ cp %{SOURCE3} %{SOURCE4} %{SOURCE5} src/
 %install
 %kf6_install
 
-# Not needed
-rm %{buildroot}%{_kf6_libdir}/libkokocommon.so
-
 %find_lang %{name} --all-name
 
 %ldconfig_scriptlets
@@ -102,9 +101,7 @@ rm %{buildroot}%{_kf6_libdir}/libkokocommon.so
 %{_kf6_appstreamdir}/org.kde.koko.appdata.xml
 %{_kf6_bindir}/koko
 %{_kf6_iconsdir}/hicolor/scalable/apps/org.kde.koko.svg
-%{_kf6_libdir}/libkokocommon.so.*
 %{_kf6_notificationsdir}/koko.notifyrc
-%{_kf6_qmldir}/org/kde/koko/
 %{_kf6_sharedir}/koko/
 
 %files lang -f %{name}.lang

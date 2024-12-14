@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kde-dev-utils
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        KDE SDK Package
 License:        GPL-2.0-only AND GFDL-1.2-only AND LGPL-2.0-only
@@ -32,7 +32,6 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
@@ -65,14 +64,7 @@ Displays Qt Designer UI files
 %autosetup -p1
 
 %build
-%ifarch ppc64
-RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
-%endif
-
-export CXXFLAGS="%{optflags} -fPIC"
-export CFLAGS="%{optflags} -fPIC"
-
-%cmake_kf6 -DCMAKE_CXXFLAGS="%{optflags}" -DCMAKE_CFLAGS="%{optflags}"
+%cmake_kf6
 
 %kf6_build
 
@@ -81,8 +73,6 @@ export CFLAGS="%{optflags} -fPIC"
 
 %find_lang kuiviewer
 %find_lang kpartloader
-
-%suse_update_desktop_file org.kde.kuiviewer Development GUIDesigner
 
 %ldconfig_scriptlets -n kuiviewer
 

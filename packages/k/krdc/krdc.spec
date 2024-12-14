@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define plasma6_version 5.27.80
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           krdc
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Remote Desktop Connection
 License:        GPL-2.0-or-later
@@ -33,13 +33,14 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 BuildRequires:  LibVNCServer-devel
-BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  freerdp-server
 BuildRequires:  kf6-breeze-icons
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  libssh-devel
 BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
+BuildRequires:  shared-mime-info
 BuildRequires:  cmake(FreeRDP) >= 2.10
 BuildRequires:  cmake(FreeRDP-Client) >= 2.10
-BuildRequires:  freerdp-server
 BuildRequires:  cmake(KF6Bookmarks) >= %{kf6_version}
 BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
@@ -61,8 +62,8 @@ BuildRequires:  cmake(PlasmaActivities) >= %{plasma6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
 BuildRequires:  cmake(WinPR)
-Requires:       kf6-breeze-icons
 Requires:       freerdp
+Requires:       kf6-breeze-icons
 
 %description
 Krdc allows to connect to VNC and RDP compatible servers.
@@ -104,10 +105,11 @@ cp %{_kf6_iconsdir}/breeze/apps/48/krdc.svg %{buildroot}%{_kf6_iconsdir}/hicolor
 %{_kf6_appstreamdir}/org.kde.krdc.appdata.xml
 %{_kf6_bindir}/krdc
 %{_kf6_configkcfgdir}/krdc.kcfg
+%{_kf6_debugdir}/krdc.categories
 %{_kf6_iconsdir}/hicolor/scalable/apps/krdc.svg
 %{_kf6_libdir}/libkrdccore.so.*
 %{_kf6_plugindir}/krdc/
-%{_kf6_debugdir}/krdc.categories
+%{_kf6_sharedir}/mime/packages/org.kde.krdc-mime.xml
 
 %files devel
 %{_includedir}/krdc/

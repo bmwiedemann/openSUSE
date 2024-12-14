@@ -1,0 +1,9 @@
+<package name="rubygem-fugit" project="openSUSE:Factory">
+  <title>time tools for flor</title>
+  <description>Time tools for flor and the floraison project. Cron parsing and occurrence
+computing. Timestamps and more.
+
+</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-fugit"/>
+  <url>http://github.com/floraison/fugit</url>
+</package>

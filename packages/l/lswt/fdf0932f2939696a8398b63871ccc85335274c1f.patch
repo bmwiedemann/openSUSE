@@ -1,0 +1,37 @@
+From fdf0932f2939696a8398b63871ccc85335274c1f Mon Sep 17 00:00:00 2001
+From: Joe Edmonds <joe@elem.com>
+Date: Thu, 27 Jun 2024 09:27:00 +0200
+Subject: [PATCH] support titles with backslashes
+
+---
+ lswt.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/lswt.c b/lswt.c
+index 82f64b2..47dcfdd 100644
+--- a/lswt.c
++++ b/lswt.c
+@@ -13,7 +13,7 @@
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
++ sdcsdc * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+  */
+ 
+ #include <ctype.h>
+@@ -648,6 +648,11 @@ static void quoted_fputs (size_t *len, char *str, FILE *restrict f)
+ 			l += 2;
+ 			fputs("\\t", f);
+ 		}
++		else if ( *str == '\\' )
++		{
++			l += 2;
++			fputs("\\\\", f);
++		}
+ 		else
+ 		{
+ 			l += 1;
+-- 
+2.45.2
+

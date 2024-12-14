@@ -23,11 +23,11 @@
 %define sover 2
 %bcond_without released
 Name:           kaccounts-integration-kf5
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        KDE Accounts Providers
 License:        GPL-2.0-or-later
-Source0:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
 %if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
 Source2:        applications.keyring

@@ -42,7 +42,7 @@
 %endif
 
 Name:           gpgme%{psuffix}
-Version:        1.24.0
+Version:        1.24.1
 Release:        0
 Summary:        Programmatic library interface to GnuPG
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later

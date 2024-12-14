@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sun Dec  8 09:28:41 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/24.12.0/
+- No code change since 24.11.90
+
+-------------------------------------------------------------------
+Mon Dec  2 08:44:13 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.90
+  * New feature release
+- No code change since 24.11.80
+
+-------------------------------------------------------------------
+Sat Nov 16 17:30:53 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 24.11.80
+  * New feature release
+- Changes since 24.08.3:
+  * Prepare windows build support
+  * Fix concurrency queries, similar to previous commit
+  * Fix doubled projects after unchecking and checking again a data source
+  * akonadilivequeryhelperstest: factorize duplicated code
+  * const'ify pointer
+  * use nullptr
+  * Make compile with new api
+  * setDynamicSortFilter is true by default
+  * Add qDebug support to domain objects (and their sharedptrs)
+  * Remove unused includes, detected by clangd in vscode
+  * Show contexts in non-context pages, as 'bubbles'
+  * Fix warning when deleting the currently running task
+  * Fix syntax in kde-ci.yml: failing tests still weren't failing CI
+  * Adapt pageviewtest after commit "Update main view to be more frameless"
+  * Port away from deprecated qSetGlobalQHashSeed
+  * Fix obvious typo, gcc warned about use of null pointer
+  * .reuse file didn't need license but REUSE.toml needs it
+  * Convert .reuse/dep5 to REUSE.toml
+  * Actually initialize KCrash
+  * Remove virtual keyword when we use override
+  * Add kcrash support
+
+-------------------------------------------------------------------
 Tue Nov  5 10:44:25 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.08.3

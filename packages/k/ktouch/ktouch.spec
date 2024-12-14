@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           ktouch
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Touch Typing Tutor
 License:        GPL-2.0-or-later
@@ -30,7 +30,6 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5CoreAddons)
@@ -74,19 +73,16 @@ A KDE program that helps you to learn and practice touch typing.
 %autosetup -p1
 
 %build
-%ifarch ppc ppc64
-export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
-%endif
 %cmake_kf5 -d build
+
 %cmake_build
 
 %install
 %kf5_makeinstall -C build
 
 %find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
 
-%suse_update_desktop_file org.kde.ktouch X-KDE-Edu-Teaching
+%{kf5_find_htmldocs}
 
 %files
 %license LICENSES/*

@@ -4721,4 +4721,14 @@ make it easier to directly use the Factory package in SUSE projects.</comment>
     https://libvirt.org/news.html#v10-10-0-2024-12-02</comment>
     <requestid>1228124</requestid>
   </revision>
+  <revision rev="409" vrev="2">
+    <srcmd5>8b959b9d0710ce934faef8e3ba9e32f6</srcmd5>
+    <version>10.10.0</version>
+    <time>1734125579</time>
+    <user>anag+factory</user>
+    <comment>- qemu: tpm: do not update profile name for transient domains
+  Fixes a crash when starting a transient domain
+  boo#1234438</comment>
+    <requestid>1230648</requestid>
+  </revision>
 </revisionlist>

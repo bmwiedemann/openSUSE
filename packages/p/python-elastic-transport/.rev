@@ -123,4 +123,15 @@
     <comment></comment>
     <requestid>1228532</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>19b4a9a6ec3a367d448aad4d6e874777</srcmd5>
+    <version>8.15.1</version>
+    <time>1734125593</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1230637 from bnavigator
+
+- Update test runs: pytest 8 is supported, httpx 0.28 creates
+    problems</comment>
+    <requestid>1230777</requestid>
+  </revision>
 </revisionlist>

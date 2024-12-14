@@ -17,13 +17,22 @@
 
 
 %global libMAJOR 28
+%define kf6_version 6.6.0
+%define qt6_version 6.6.0
 
-# TODO Reenable when cantor is ported to KF6/Qt6
-%bcond_with analitza
+%ifarch x86_64 %{x86_64} aarch64 riscv64
+%define with_qtwebengine 1
+%endif
 
+# luajit isn't available on ppc64le and riscv64
+%ifarch %{ix86} x86_64 %{x86_64} %{arm} aarch64 s390x
+%define with_luajit 1
+%endif
+
+%bcond_without analitza
 %bcond_without released
 Name:           cantor
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Worksheet GUI for mathematical software
 License:        GPL-2.0-or-later
@@ -35,44 +44,57 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  R-base
 BuildRequires:  R-base-devel
-BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  gcc-fortran
-BuildRequires:  help2man
-BuildRequires:  libpoppler-qt5-devel
+# julia-devel is unresolvable in factory
+# BuildRequires:  julia-devel
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  libspectre-devel
 BuildRequires:  perl
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  shared-mime-info
 %if %{with analitza}
-BuildRequires:  cmake(Analitza5)
+BuildRequires:  cmake(Analitza6)
 %endif
-BuildRequires:  cmake(KF5Archive)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5KDELibs4Support)
-BuildRequires:  cmake(KF5NewStuff)
-BuildRequires:  cmake(KF5Parts)
-BuildRequires:  cmake(KF5Pty)
-BuildRequires:  cmake(KF5SyntaxHighlighting)
-BuildRequires:  cmake(KF5TextEditor)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Help)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5WebEngine)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5Xml)
-BuildRequires:  cmake(Qt5XmlPatterns)
+BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
+BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6NewStuff) >= %{kf6_version}
+BuildRequires:  cmake(KF6NewStuffCore) >= %{kf6_version}
+BuildRequires:  cmake(KF6Parts) >= %{kf6_version}
+BuildRequires:  cmake(KF6SyntaxHighlighting) >= %{kf6_version}
+BuildRequires:  cmake(KF6TextEditor) >= %{kf6_version}
+BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
+BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
+%if 0%{?with_qtwebengine}
+BuildRequires:  cmake(Qt6Help) >= %{qt6_version}
+BuildRequires:  cmake(Qt6WebEngineWidgets) >= %{qt6_version}
+%endif
 BuildRequires:  pkgconfig(libqalculate)
+BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(libxslt)
+%if 0%{?with_luajit}
 BuildRequires:  pkgconfig(luajit)
+%endif
+BuildRequires:  pkgconfig(poppler-qt6)
 Recommends:     maxima
 Recommends:     octave
-Obsoletes:      %{name}5 < %{version}
-Provides:       %{name}5 = %{version}
-# Only build on archs where Qt5WebEngine is available
-ExcludeArch:    ppc ppc64 ppc64le s390 s390x
+Obsoletes:      cantor5 < %{version}
+Provides:       cantor5 = %{version}
 
 %description
 A frontend to several existing mathematical software such as R, Sage
@@ -82,17 +104,17 @@ those backends and is not targeted to kids but to scientists.
 %package devel
 Summary:        Worksheet GUI for mathematical software
 Requires:       libcantorlibs%{libMAJOR} = %{version}
-Requires:       libpoppler-qt5-devel
+Requires:       pkgconfig(poppler-qt6)
 Requires:       libspectre-devel
-Requires:       cmake(KF5Archive)
-Requires:       cmake(KF5Completion)
-Requires:       cmake(KF5Config)
-Requires:       cmake(KF5I18n)
-Requires:       cmake(KF5IconThemes)
-Requires:       cmake(KF5KIO)
-Requires:       cmake(KF5XmlGui)
-Requires:       cmake(Qt5Svg)
-Requires:       cmake(Qt5Xml)
+Requires:       cmake(KF6Archive) >= %{kf6_version}
+Requires:       cmake(KF6Completion) >= %{kf6_version}
+Requires:       cmake(KF6Config) >= %{kf6_version}
+Requires:       cmake(KF6I18n) >= %{kf6_version}
+Requires:       cmake(KF6IconThemes) >= %{kf6_version}
+Requires:       cmake(KF6KIO) >= %{kf6_version}
+Requires:       cmake(KF6XmlGui) >= %{kf6_version}
+Requires:       cmake(Qt6Svg) >= %{qt6_version}
+Requires:       cmake(Qt6Xml) >= %{qt6_version}
 
 %description devel
 A frontend to several existing mathematical software such as R, Sage
@@ -111,102 +133,102 @@ Shared libraries for package cantor.
 %autosetup -p1
 
 mkdir .doc
-cd src/backends
-for d in *
-do ! ln -T "${d}/DESIGN" "../../.doc/${d}"
+pushd src/backends
+for d in R maxima sage; do
+  ln -T "${d}/DESIGN" "../../.doc/${d}"
 done
+popd
 
 %build
-export RPM_OPT_FLAGS="%{optflags}"
-%ifarch ppc ppc64
-export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
+# Julia uses <> instead of "" in some files, so it has to be a system include
+# export RPM_OPT_FLAGS="%%{optflags} -isystem %%{_includedir}/julia -isystem $PWD/src/lib/test -isystem %%{_includedir}/qt6/QtTest"
+# export CFLAGS="%%{optflags}"
+# export CXXFLAGS="%%{optflags}"
+
+%cmake_kf6 \
+%if !0%{?with_qtwebengine}
+  -DENABLE_EMBEDDED_DOCUMENTATION:BOOL=FALSE
 %endif
-  # Julia uses <> instead of "" in some files, so it has to be a system include
-  # export RPM_OPT_FLAGS="%{optflags} -isystem %{_includedir}/julia -isystem $PWD/src/lib/test -isystem %{_includedir}/qt5/QtTest"
-  export CFLAGS="%{optflags}"
-  export CXXFLAGS="%{optflags}"
-  %cmake_kf5 -d build
-  %cmake_build
+%{nil}
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
+%find_lang %{name} --with-html --all-name
 
 %ldconfig_scriptlets -n libcantorlibs%{libMAJOR}
 
-%files devel
-%dir %{_kf5_cmakedir}/Cantor
-%{_kf5_cmakedir}/Cantor/CantorConfig.cmake
-%{_kf5_cmakedir}/Cantor/CantorConfigVersion.cmake
-%{_kf5_cmakedir}/Cantor/CantorTargets-none.cmake
-%{_kf5_cmakedir}/Cantor/CantorTargets.cmake
-%{_kf5_libdir}/libcantorlibs.so
-%{_kf5_prefix}/include/cantor/
-
 %files
 %doc README.md DESIGN .doc/*
-%{_kf5_knsrcfilesdir}/*.knsrc
-%doc %lang(en) %{_kf5_htmldir}/en/*/
-%{_kf5_applicationsdir}/org.kde.cantor.desktop
-%{_kf5_appstreamdir}/org.kde.cantor.appdata.xml
-%{_kf5_bindir}/cantor
-%{_kf5_bindir}/cantor_pythonserver
-%{_kf5_bindir}/cantor_rserver
-%{_kf5_bindir}/cantor_scripteditor
-%{_kf5_configkcfgdir}/*backend.kcfg
-%{_kf5_configkcfgdir}/cantor.kcfg
-%{_kf5_configkcfgdir}/cantor_libs.kcfg
-%{_kf5_configkcfgdir}/rserver.kcfg
-%{_kf5_configkcfgdir}/octavebackend.kcfg.in
-%{_kf5_iconsdir}/hicolor/*/apps/*
-%{_kf5_libdir}/libcantor_config.so
-%{_kf5_libdir}/cantor_pythonbackend.so
-%dir %{_kf5_plugindir}/cantor
-%dir %{_kf5_plugindir}/cantor/assistants
-%{_kf5_plugindir}/cantor/assistants/cantor_advancedplotassistant.so
-%{_kf5_plugindir}/cantor/assistants/cantor_creatematrixassistant.so
-%{_kf5_plugindir}/cantor/assistants/cantor_differentiateassistant.so
-%{_kf5_plugindir}/cantor/assistants/cantor_eigenvaluesassistant.so
-%{_kf5_plugindir}/cantor/assistants/cantor_eigenvectorsassistant.so
-%{_kf5_plugindir}/cantor/assistants/cantor_importpackageassistant.so
-%{_kf5_plugindir}/cantor/assistants/cantor_integrateassistant.so
-%{_kf5_plugindir}/cantor/assistants/cantor_invertmatrixassistant.so
-%{_kf5_plugindir}/cantor/assistants/cantor_plot2dassistant.so
-%{_kf5_plugindir}/cantor/assistants/cantor_plot3dassistant.so
-%{_kf5_plugindir}/cantor/assistants/cantor_runscriptassistant.so
-%{_kf5_plugindir}/cantor/assistants/cantor_solveassistant.so
-%{_kf5_plugindir}/cantor/assistants/cantor_qalculateplotassistant.so
-%dir %{_kf5_plugindir}/cantor/backends
+%doc %lang(en) %{_kf6_htmldir}/en/*/
+%{_kf6_applicationsdir}/org.kde.cantor.desktop
+%{_kf6_appstreamdir}/org.kde.cantor.appdata.xml
+%{_kf6_bindir}/cantor
+%{_kf6_bindir}/cantor_pythonserver
+%{_kf6_bindir}/cantor_rserver
+%{_kf6_bindir}/cantor_scripteditor
+%{_kf6_configkcfgdir}/*backend.kcfg
+%{_kf6_configkcfgdir}/cantor.kcfg
+%{_kf6_configkcfgdir}/cantor_libs.kcfg
+%{_kf6_configkcfgdir}/octavebackend.kcfg.in
+%{_kf6_configkcfgdir}/rserver.kcfg
+%{_kf6_iconsdir}/hicolor/*/apps/*
+%{_kf6_knsrcfilesdir}/*.knsrc
+%{_kf6_libdir}/cantor_pythonbackend.so
+%{_kf6_libdir}/libcantor_config.so
+%dir %{_kf6_plugindir}/cantor_plugins
+%dir %{_kf6_plugindir}/cantor_plugins/assistants
+%{_kf6_plugindir}/cantor_plugins/assistants/cantor_advancedplotassistant.so
+%{_kf6_plugindir}/cantor_plugins/assistants/cantor_creatematrixassistant.so
+%{_kf6_plugindir}/cantor_plugins/assistants/cantor_differentiateassistant.so
+%{_kf6_plugindir}/cantor_plugins/assistants/cantor_eigenvaluesassistant.so
+%{_kf6_plugindir}/cantor_plugins/assistants/cantor_eigenvectorsassistant.so
+%{_kf6_plugindir}/cantor_plugins/assistants/cantor_importpackageassistant.so
+%{_kf6_plugindir}/cantor_plugins/assistants/cantor_integrateassistant.so
+%{_kf6_plugindir}/cantor_plugins/assistants/cantor_invertmatrixassistant.so
+%{_kf6_plugindir}/cantor_plugins/assistants/cantor_plot2dassistant.so
+%{_kf6_plugindir}/cantor_plugins/assistants/cantor_plot3dassistant.so
+%{_kf6_plugindir}/cantor_plugins/assistants/cantor_qalculateplotassistant.so
+%{_kf6_plugindir}/cantor_plugins/assistants/cantor_runscriptassistant.so
+%{_kf6_plugindir}/cantor_plugins/assistants/cantor_solveassistant.so
+%dir %{_kf6_plugindir}/cantor_plugins/backends
 %if %{with analitza}
-%{_kf5_plugindir}/cantor/backends/cantor_kalgebrabackend.so
+%{_kf6_plugindir}/cantor_plugins/backends/cantor_kalgebrabackend.so
 %endif
-%{_kf5_plugindir}/cantor/backends/cantor_maximabackend.so
-%{_kf5_plugindir}/cantor/backends/cantor_octavebackend.so
-%{_kf5_plugindir}/cantor/backends/cantor_pythonbackend.so
-%{_kf5_plugindir}/cantor/backends/cantor_rbackend.so
-%{_kf5_plugindir}/cantor/backends/cantor_sagebackend.so
-%{_kf5_plugindir}/cantor/backends/cantor_scilabbackend.so
-%{_kf5_plugindir}/cantor/backends/cantor_qalculatebackend.so
-%{_kf5_plugindir}/cantor/backends/cantor_luabackend.so
-%dir %{_kf5_plugindir}/cantor/panels
-%{_kf5_plugindir}/cantor/panels/cantor_helppanelplugin.so
-%{_kf5_plugindir}/cantor/panels/cantor_variablemanagerplugin.so
-%{_kf5_plugindir}/cantor/panels/cantor_filebrowserpanelplugin.so
-%{_kf5_plugindir}/cantor/panels/cantor_tocpanelplugin.so
-%{_kf5_plugindir}/cantor/panels/cantor_documentationpanelplugin.so
-
-%dir %{_kf5_plugindir}/kf5
-%dir %{_kf5_plugindir}/kf5/parts
-%{_kf5_plugindir}/kf5/parts/cantorpart.so
-%{_kf5_sharedir}/cantor/
-%{_kf5_sharedir}/mime/packages/cantor.xml
+%if 0%{?with_luajit}
+%{_kf6_plugindir}/cantor_plugins/backends/cantor_luabackend.so
+%endif
+%{_kf6_plugindir}/cantor_plugins/backends/cantor_maximabackend.so
+%{_kf6_plugindir}/cantor_plugins/backends/cantor_octavebackend.so
+%{_kf6_plugindir}/cantor_plugins/backends/cantor_pythonbackend.so
+%{_kf6_plugindir}/cantor_plugins/backends/cantor_qalculatebackend.so
+%{_kf6_plugindir}/cantor_plugins/backends/cantor_rbackend.so
+%{_kf6_plugindir}/cantor_plugins/backends/cantor_sagebackend.so
+%{_kf6_plugindir}/cantor_plugins/backends/cantor_scilabbackend.so
+%dir %{_kf6_plugindir}/cantor_plugins/panels
+%if 0%{?with_qtwebengine}
+%{_kf6_plugindir}/cantor_plugins/panels/cantor_documentationpanelplugin.so
+%endif
+%{_kf6_plugindir}/cantor_plugins/panels/cantor_filebrowserpanelplugin.so
+%{_kf6_plugindir}/cantor_plugins/panels/cantor_helppanelplugin.so
+%{_kf6_plugindir}/cantor_plugins/panels/cantor_tocpanelplugin.so
+%{_kf6_plugindir}/cantor_plugins/panels/cantor_variablemanagerplugin.so
+%{_kf6_plugindir}/kf6/parts/cantorpart.so
+%{_kf6_sharedir}/cantor/
+%{_kf6_sharedir}/mime/packages/cantor.xml
 
 %files -n libcantorlibs%{libMAJOR}
 %license LICENSES/*
-%{_kf5_libdir}/libcantorlibs.so.*
+%{_kf6_libdir}/libcantorlibs.so.*
+
+%files devel
+%{_kf6_cmakedir}/Cantor
+%{_kf6_libdir}/libcantorlibs.so
+%{_includedir}/cantor/
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/*/
 
 %changelog

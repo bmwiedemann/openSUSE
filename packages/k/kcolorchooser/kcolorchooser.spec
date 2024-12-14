@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.6.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kcolorchooser
-Version:        24.08.3
+Version:        24.12.0
 Release:        0
 Summary:        Color Chooser
 License:        MIT
@@ -32,7 +32,6 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
@@ -57,8 +56,6 @@ This is an color chooser application by KDE.
 %kf6_install
 
 %find_lang %{name} --all-name
-
-%suse_update_desktop_file -r org.kde.kcolorchooser Utility DesktopUtility
 
 %files
 %license COPYING*

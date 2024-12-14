@@ -1,2 +1,7 @@
-addFilter("^docker-bash-completion.noarch: (E|W): non-executable-script /usr/share/bash-completion/completions/docker")
-addFilter("^docker-zsh-completion.noarch: W: non-conffile-in-etc /etc/zsh_completion.d/_docker")
+addFilter("^docker-(stable-)?bash-completion.noarch: (E|W): non-executable-script /usr/share/bash-completion/completions/docker")
+addFilter("^docker-(stable-)?zsh-completion.noarch: W: non-conffile-in-etc /etc/zsh_completion.d/_docker")
+
+# The docker-integration-tests-devel package contains all of the source code of
+# Docker, which causes a bunch of warnings. Note that
+# docker-integration-tests-devel is used internally and isn't actually shipped.
+addFilter("^docker-(stable-)?integration-tests-devel\..*: (E|W): .*")
