@@ -18,7 +18,7 @@
 %define soversion 1
 
 Name:           coin-or-Clp
-Version:        1.17.9
+Version:        1.17.10
 Release:        0
 Summary:        COIN-OR Linear Programming Solver
 License:        EPL-2.0
