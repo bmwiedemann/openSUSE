@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-activemodel-8.0
-Version:        8.0.0
+Version:        8.0.0.1
 Release:        0
 %define mod_name activemodel
 %define mod_full_name %{mod_name}-%{version}
