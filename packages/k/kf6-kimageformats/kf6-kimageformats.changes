@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Dec  8 10:09:18 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.9.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.9.0
+- Changes since 6.8.0:
+  * Update dependency version to 6.9.0
+  * jxl: Disable color conversion for animations
+  * Improve CMYK writing support
+  * Improved write test
+  * JXL: load error with some lossless file
+  * JXR: jxrlib cannot write HDP and WDP formats
+  * heif: avoid crash in heif_image_handle_has_alpha_channel
+  * Bump KF and QT versions in ecm_set_disabled_deprecation_versions
+  * ci: add Alpine/musl job
+  * RGB: avoid to read wrong data
+  * JXL: Fix OSS Fuzz issue 377971416
+  * Fix compilation warnings
+  * JXR: Fix libraries link under FreeBSD
+  * JXL: fixed bug when saving grayscale images without color profile
+  * PFM: extended to half float format
+  * Rename SCT plugin for OSS-FUZZ
+  * PCX: support for more formats
+  * SCT: added read only support
+  * Update version to 6.9.0
+
+-------------------------------------------------------------------
 Mon Nov  4 11:18:09 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.8.0
