@@ -81,4 +81,12 @@
   headers.</comment>
     <requestid>1224098</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d395a3d8ca528cb7a831fb425d5f6813</srcmd5>
+    <version>6.9.0</version>
+    <time>1734262474</time>
+    <user>anag+factory</user>
+    <comment>KDE Frameworks 6.9.0 (forwarded request 1229222 from krop)</comment>
+    <requestid>1230825</requestid>
+  </revision>
 </revisionlist>

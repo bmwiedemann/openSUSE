@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Dec  8 10:09:30 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.9.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.9.0
+- Changes since 6.8.0:
+  * Update dependency version to 6.9.0
+  * Fix since version for KAdjustingScrollArea
+  * kmessagebox: Add option to force label to be plain text
+  * Install python bindings into site-packages dir
+  * Add python examples
+  * It compiles fine without deprecated methods
+  * Add Python bindings
+  * ci: add Alpine/musl job
+  * KPageView: Strip mnemonics before matching search text
+  * KPasswordDialog: Vertically center prompt
+  * Introduce KAdjustingScrollArea
+  * kratingwidget: Draw icon at native resolution
+  * Update version to 6.9.0
+
+-------------------------------------------------------------------
 Mon Nov  4 11:18:21 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.8.0

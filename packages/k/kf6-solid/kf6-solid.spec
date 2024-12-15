@@ -21,7 +21,7 @@
 %define rname solid
 %bcond_without released
 Name:           kf6-solid
-Version:        6.8.0
+Version:        6.9.1
 Release:        0
 Summary:        KDE Desktop hardware abstraction
 License:        LGPL-2.1-or-later

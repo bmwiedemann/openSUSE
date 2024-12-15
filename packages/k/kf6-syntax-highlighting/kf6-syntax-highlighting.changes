@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Dec  8 10:09:35 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.9.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.9.0
+- Changes since 6.8.0:
+  * Update dependency version to 6.9.0
+  * Update odin highlighting
+  * The lua indenter was removed long ago in ktexteditor
+  * odin: Fix numbers getting highlighted in the middle of words
+  * Highlight odin 'context' keyword differently
+  * Improve odin lang highlighting
+  * Bump KF and QT versions in ecm_set_disabled_deprecation_versions
+  * cmake.xml: updates for the recently released CMake 3.31
+  * Update version to 6.9.0
+
+-------------------------------------------------------------------
 Mon Nov  4 11:18:26 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.8.0

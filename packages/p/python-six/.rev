@@ -441,4 +441,12 @@
   - Issue #53: Make the fake modules six.moves puts into sys.modules</comment>
     <requestid>1136277</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>9a431ba898cc448a260fb31ef0cb2fe0</srcmd5>
+    <version>1.17.0</version>
+    <time>1734262462</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1230762</requestid>
+  </revision>
 </revisionlist>

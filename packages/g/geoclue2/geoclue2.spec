@@ -19,7 +19,7 @@
 %define _name geoclue
 
 Name:           geoclue2
-Version:        2.7.1
+Version:        2.7.2
 Release:        0
 Summary:        GeoLocation Framework
 License:        GPL-2.0-or-later
@@ -40,7 +40,7 @@ BuildRequires:  pkgconfig(avahi-client) >= 0.6.10
 BuildRequires:  pkgconfig(avahi-glib) >= 0.6.10
 BuildRequires:  pkgconfig(gio-2.0) >= 2.68.0
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.68.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.68.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.74.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(json-glib-1.0) >= 0.14
 BuildRequires:  pkgconfig(libnotify)

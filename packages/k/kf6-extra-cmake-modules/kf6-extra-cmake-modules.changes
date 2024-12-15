@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Dec  8 10:09:05 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.9.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.9.0
+- Changes since 6.8.0:
+  * Align multi-language catalog loading with KI18n
+  * EGPF: Handle case where INTERFACE_INCLUDE_DIRECTORIES is empty (kde#496781)
+  * KDEClangFormat: Avoid spammy warnings with cmake >= 3.31.0 (kde#496537)
+  * Consider all QLocale::uiLanguages for QM catalog loading
+  * ECMGeneratePythonBindings: Build without system isolation
+  * ECMGeneratePythonBindings: Remove broken RPATH settings
+  * Include Qt's translations in what we bundle on Android
+  * Fix FindLibMount without pkgconfig
+  * Don't use KDEInstallDirs6 for the new ECMGeneratePkgConfigFile test
+  * Fix reproducible build issue with ECMGeneratedHeaders
+  * Update version to 6.9.0
+
+-------------------------------------------------------------------
 Mon Nov  4 11:17:55 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.8.0

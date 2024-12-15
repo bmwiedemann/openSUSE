@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 13 12:51:24 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- the post scriptlet calls udevadm but Requires(post): udev is missing,
+  adding it
+
+-------------------------------------------------------------------
 Fri May  3 14:14:50 UTC 2024 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 Update to version 4.1:

@@ -19,13 +19,13 @@
 %define qt6_version 6.7.0
 
 %define rname kguiaddons
-# Full KF6 version (e.g. 6.8.0)
+# Full KF6 version (e.g. 6.9.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 # Last major and minor KF6 version (e.g. 6.0)
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kguiaddons
-Version:        6.8.0
+Version:        6.9.0
 Release:        0
 Summary:        Utilities for graphical user interfaces
 License:        LGPL-2.1-or-later
@@ -45,7 +45,7 @@ BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
-BuildRequires:  pkgconfig(wayland-client) >= 1.9
+BuildRequires:  pkgconfig(wayland-client) >= 1.15
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
 Requires:       libKF6GuiAddons6 = %{version}

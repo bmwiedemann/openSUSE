@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Dec 13 10:00:05 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.32.0:
+  * e2e test for recreate volume
+  * build(deps): bump google.golang.org/grpc from 1.68.0 to 1.68.1
+  * build(deps): bump golang.org/x/crypto from 0.27.0 to 0.31.0
+  * build(deps): bump golang.org/x/sys from 0.27.0 to 0.28.0
+  * prompt user to confirm volume recreation
+  * Recreate container on volume configuration change
+  * introduce watch restart action
+  * bump otel dependencies to v1.28.0 and v0.53.0 to align with
+    buildx, buildkit and engine versions
+  * bump docker/buildx to latest release
+  * fix support for service.mac_address
+  * update xx to v1.6.1 for compatibility with alpine 3.21 and file
+    5.46+
+  * build(deps): bump golang.org/x/sync from 0.9.0 to 0.10.0
+  * Update pkg/e2e/watch_test.go
+  * first watch action for a file event wins
+  * fix
+  * revisit TestDebounceBatching
+  * introduce sync+exec watch action
+  * log configuration error as a watch log event
+  * do not require a build section but for `rebuild` action
+  * pull --quiet should not drop status message, only progress
+  * use latest engine tags
+  * Bump buildx to 0.19.1
+  * be sure everything has been cleanup at the end of each tests
+  * add local config.json to test configuration dir if exists
+  * disable failing TestBuildSSH test
+  * fix build with bake
+
+-------------------------------------------------------------------
 Fri Nov 29 12:45:19 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.31.0:

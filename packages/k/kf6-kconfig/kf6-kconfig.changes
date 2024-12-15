@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Dec  8 10:09:10 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.9.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.9.0
+- Changes since 6.8.0:
+  * Update dependency version to 6.9.0
+  * Add QML_REGISTRATION option to the config macro documentation
+  * KWindowStateSaver: Increase the rate limit on the slow part of config saving
+  * It compiles fine without deprecated methods
+  * Now we depend against qt6.6.0
+  * Fix restoration of maximization state for QtQuick windows (for real) (kde#494359)
+  * Update version to 6.9.0
+
+-------------------------------------------------------------------
 Mon Nov  4 11:18:01 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.8.0

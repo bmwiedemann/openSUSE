@@ -121,4 +121,16 @@
   * fix regression</comment>
     <requestid>1030487</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>38d0692c059dce9752c6123ee2807413</srcmd5>
+    <version>0.9.12</version>
+    <time>1734262468</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.9.12
+  * configure: Use LT_INIT from libtool 2 instead of deprecated AC_PROG_LIBTOOL
+  * Ensure all BufAlloc calls have trailing semicolon
+  * XRenderQueryFormats: add missing allocation failure check
+  * Ensure XRenderInfo pointers are appropriately aligned</comment>
+    <requestid>1230913</requestid>
+  </revision>
 </revisionlist>

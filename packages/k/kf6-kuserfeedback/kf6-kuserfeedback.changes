@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Dec  8 10:09:29 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.9.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.9.0
+- Changes since 6.8.0:
+  * Update dependency version to 6.9.0
+  * Don't include quiet packages in feature_summary
+  * Update version to 6.9.0
+
+-------------------------------------------------------------------
 Mon Nov  4 11:18:20 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.8.0

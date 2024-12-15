@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Dec  8 10:09:04 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.9.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.9.0
+- Changes since 6.8.0:
+  * Update dependency version to 6.9.0
+  * Bring back directory symlinks for breeze-dark (kde#482648)
+  * Add symbolic version of system-software-update for small sizes (kde#399139)
+  * Also link to 22px versions for Duplicate icons
+  * Add symbolic version of preferences-desktop-keyboard-shortcut
+  * Add transport-mode-flight icon
+  * Add symbolic version of preferences-system-users
+  * Add symbolic version of preferences-desktop-notification-symbolic
+  * Add symbolic version of preferences-desktop-theme-global
+  * Generate index.theme unconditionally to fix qrc/rcc
+  * Make qrc generation fail if no *.theme file was found
+  * Add missing CSS properties for `blur` and `pixelate` icons (kde#495755)
+  * Fix class attribute for places/32/folder-{log,podcast}.svg
+  * Add boost and boost-boosted icons
+  * Update WINE app icons to match new symbolic versions
+  * Add wine-symbolic icon (kde#494450)
+  * Add favorite-favorited, change favorite to non-filled
+  * Make base donate and help-donate icons be hearts
+  * Add love
+  * Improve README with more guidelines and contributing information
+  * Add icon for keyboard shortcut preferences
+  * Add dialog-password icon
+  * optimize-svg: Clarify that you need to install svgo globally
+  * Add laser printer icon
+  * Update version to 6.9.0
+
+-------------------------------------------------------------------
 Mon Nov  4 11:17:55 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.8.0

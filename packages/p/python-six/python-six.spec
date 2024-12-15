@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-six
 #
 # Copyright (c) 2024 SUSE LLC
 #
@@ -30,7 +30,7 @@
 %define mypython python
 %{?sle15_python_module_pythons}
 Name:           python-six%{psuffix}
-Version:        1.16.0
+Version:        1.17.0
 Release:        0
 Summary:        Python 2 and 3 compatibility utilities
 License:        MIT
@@ -80,7 +80,7 @@ This package provides documentation for %{name}.
 %endif
 
 %prep
-%setup -q -n six-%{version}
+%autosetup -n six-%{version}
 
 %build
 %pyproject_wheel

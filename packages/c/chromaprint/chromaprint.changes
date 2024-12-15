@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 11 12:25:42 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Use kissfft for shared library, ffmpeg is only needed for the
+  standalone fpcalc tool.
+
+-------------------------------------------------------------------
 Wed Nov  8 12:38:27 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop unused and unneeded libtag-devel Requires from devel package

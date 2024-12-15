@@ -1,7 +1,7 @@
 #
 # spec file for package chromaprint
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -80,7 +80,7 @@ fingerprinting.
 %cmake \
     -DCMAKE_SKIP_RPATH=TRUE \
     -DCMAKE_BUILD_WITH_INSTALL_RPATH=FALSE \
-    -DUSE_AVFFT=ON -DFFT_LIB=avfft \
+    -DUSE_AVFFT=ON -DFFT_LIB=kissfft \
     -DBUILD_TESTS=OFF -DBUILD_TOOLS=ON
 
 %cmake_build

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Dec  8 10:09:19 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.9.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.9.0
+- Changes since 6.8.0:
+  * Update dependency version to 6.9.0
+  * adapt test to new error code
+  * [ftp] Give better error message when creating files is not allowed
+  * file_unix: check chown return when setting owner
+  * CommandLauncherJob: fail when launch an non-existing executable
+  * don't static cast qobjects
+  * kpropertiesdialog: fix user display to actually use the user data (kde#496745)
+  * Add autotest for parsing bug and actually report error status
+  * Fix out of bounds for KRunMX1::expandEscapedMacro (kde#495606)
+  * kcoredirlister: Remove iterator assert, use if instead (kde#493319)
+  * Haiku support: Disable SHM, link to libnetwork, further fixes
+  * It compiles fine without deprecated methods
+  * KDirOperator: improve handling of forward/back mouse buttons
+  * KUrlNavigator: Fix Tab order
+  * Haiku build fixes
+  * [previewjob] Assert that path is absolute
+  * Deprecate http_update_cache
+  * KUrlNavigatorDropDownButton: Add text and tooltip
+  * Update version to 6.9.0
+
+-------------------------------------------------------------------
 Mon Nov  4 11:18:10 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.8.0

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Dec 13 12:14:51 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.3.0:
+  * fix(uninstall):remove kubearmor annotations from kubernetes
+    resources (#440)
+  * fixing snyk
+  * enabling alert throttling by default
+  * fix gosec
+  * fix(sysdump): ensure AppArmor tar is gzipped in sysdump
+  * probe added to sysdump
+  * chore(logs): add output format option to `logs` command (#447)
+  * Update label and add debug print statement for KubeArmor pods
+  * Updated the static policies under res/out and updated kubearmor
+    dependency
+
+-------------------------------------------------------------------
 Mon Jun 24 18:55:53 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.2.3:

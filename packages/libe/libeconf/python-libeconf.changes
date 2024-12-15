@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 13 13:03:47 UTC 2024 - schubi@suse.com
+
+- Update to version 0.7.6:
+  * Do not try to parse files with name like ".." and "." (#227)
+  * using econf_readConfig in econftool
+
+-------------------------------------------------------------------
 Mon Dec 09 16:33:49 UTC 2024 - schubi@suse.com
 
 - Update to version 0.7.5:

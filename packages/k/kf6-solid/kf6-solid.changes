@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Dec 14 13:38:33 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.9.1
+  * Add null check for StorageAccess interface in
+    storageAccessFromPath (kde#497299)
+
+-------------------------------------------------------------------
+Sun Dec  8 10:09:34 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.9.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.9.0
+- Changes since 6.8.0:
+  * Update dependency version to 6.9.0
+  * battery: Add cycleCount
+  * Bump KF and QT versions in cem_set_disabled_deprecation_versions
+  * fstab: Fix memory leak when a network or overlay mount has changed
+  * Fix build on Haiku
+  * Consistenly use correct include statements for libmount
+  * Add support for rclone mounts and fstab entries
+  * Update version to 6.9.0
+
+-------------------------------------------------------------------
 Mon Nov  4 11:18:25 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.8.0

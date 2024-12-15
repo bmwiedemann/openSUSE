@@ -24,7 +24,9 @@ Summary:        Linux-native io_uring I/O access library
 License:        (GPL-2.0-only AND LGPL-2.1-or-later) OR MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/axboe/liburing
-Source:         https://github.com/axboe/liburing/archive/refs/tags/%{name}-%{version}.tar.gz
+Source0:        https://brick.kernel.dk/snaps/%{name}-%{version}.tar.gz
+Source1:        https://brick.kernel.dk/snaps/%{name}-%{version}.tar.gz.asc
+Source2:        https://git.kernel.org/pub/scm/docs/kernel/pgpkeys.git/plain/keys/F7D358FB2971E0A6.asc#/%{name}.keyring
 Patch0:         0001-test-init-mem-zero-the-ringbuf-memory.patch
 Patch1:         0001-test-rsrc_tags-use-correct-buffer-index-for-test.patch
 BuildRequires:  fdupes
@@ -67,7 +69,7 @@ This package provides header files to include and libraries to link with
 for the Linux-native io_uring.
 
 %prep
-%autosetup -p1 -n liburing-liburing-%{version}
+%autosetup -p1
 
 %build
 # not autotools, so configure macro doesn't work

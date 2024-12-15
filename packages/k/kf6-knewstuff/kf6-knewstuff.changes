@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Dec  8 10:09:21 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.9.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.9.0
+- Changes since 6.8.0:
+  * Update dependency version to 6.9.0
+  * transaction: use cache2 not the deprecated legacy cache
+  * do not finish the transaction before it actually did anything (kde#496551)
+  * cache: become a facade for Cache2
+  * Use isEmpty() vs count() > 0
+  * Bump KF and QT versions in ecm_set_disabled_deprecation_versions
+  * providerbase: split done signal from loaded signal
+  * staticxmlprovider: remove unused member
+  * ci: add Alpine/musl job
+  * ResultsStream: Restore the providers upon ::fetchMore
+  * fixup! the grand API refactor of 2024
+  * the grand API refactor of 2024
+  * Port test away from deprecated API
+  * Add missing KNEWSTUFFCORE_BUILD_DEPRECATED_SINCE
+  * fix random timeouts in attica test
+  * transaction: deprecate ambiguous install function
+  * Update version to 6.9.0
+
+-------------------------------------------------------------------
 Mon Nov  4 11:18:12 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.8.0

@@ -55,6 +55,7 @@ BuildRequires:  pkgconfig(uuid)
 # owned by root and files are opened before dropping privileges. The passwd
 # entry seems not to be evaluated.
 Requires(pre):  user(tss)
+Requires(post): udev
 
 %description
 The tpm2-0-tss package provides a TPM 2.0 TSS implementation. This

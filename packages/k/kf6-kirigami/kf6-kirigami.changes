@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Dec  8 10:09:19 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.9.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.9.0
+- Changes since 6.8.0:
+  * Update dependency version to 6.9.0
+  * Chip: Add visible hover state
+  * Fix accessibility of InlineMessage
+  * ActionMenuItem: make a11y press work
+  * PrivateActionToolButton: make a11y press work
+  * SelectableLabel: Allow disabling the built-in context menu
+  * Always use a ToolBar for pages on the stack
+  * SelectableLabel: Make selection persistent (kde#496214)
+  * PlaceholderMessage: Let use overwrite icon color
+  * PlaceholderMessage: Forward icon.width/icon.height to internal Icon
+  * NavigationTabBar: Fix warning related to assigning a Repeater instead of a AbstractButton
+  * Use border for keyboard active focus in NavigationTabButton
+  * SelectableLabel: Remove onLinkActivated
+  * [SelectableLabel] restore font property
+  * Add missing REQUIRED for ECM
+  * Remove Useless empty contentItem
+  * Fix mobile mode
+  * Fix doc for PlatformTheme::ColorSet
+  * ColumnView: Note that FixedColumns is the default value for columnResizeMode
+  * Add optional Breeze style import also for static builds
+  * Update version to 6.9.0
+
+-------------------------------------------------------------------
 Mon Nov  4 11:18:10 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.8.0

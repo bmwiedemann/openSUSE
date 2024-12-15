@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec 13 10:10:49 UTC 2024 - cathy.hu@suse.com
+
+- Update to version 20241213:
+  * Add policy for importctl (bsc#1232670)
+
+-------------------------------------------------------------------
+Wed Dec 11 11:33:51 UTC 2024 - Cathy Hu <cathy.hu@suse.com>
+
+- Fix minimum policy by readding rpm module (bsc#1234314) 
+
+-------------------------------------------------------------------
 Fri Dec 06 16:01:26 UTC 2024 - cathy.hu@suse.com
 
 - Update to version 20241206:

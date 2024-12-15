@@ -79,4 +79,12 @@
     <comment>KDE Frameworks 6.8.0 (forwarded request 1221715 from krop)</comment>
     <requestid>1222823</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7b9141d10cde8eec88ec91e7ab61eb13</srcmd5>
+    <version>6.9.1</version>
+    <time>1734262575</time>
+    <user>anag+factory</user>
+    <comment>upstream hotfix for frameworks 6.9</comment>
+    <requestid>1230997</requestid>
+  </revision>
 </revisionlist>

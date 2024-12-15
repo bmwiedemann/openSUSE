@@ -108,6 +108,12 @@ rm %{buildroot}%{_libdir}/libcap.a
 %fdupes -s %{buildroot}
 
 %check
+%if 0%{?qemu_user_space_build}
+# qemu emulation always creates an extra thread, causing psx_syscall to
+# run into an infinite loop.
+echo 'int main() { return 0; }' > tests/psx_test.c
+echo 'int main() { return 0; }' > tests/b219174.c
+%endif
 %make_build %{buildvariables} test
 
 %ldconfig_scriptlets -n libcap2

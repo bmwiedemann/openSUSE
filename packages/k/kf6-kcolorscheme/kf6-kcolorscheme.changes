@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Dec  8 10:09:09 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.9.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.9.0
+- Changes since 6.8.0:
+  * Update dependency version to 6.9.0
+  * Fix isKdePlatformTheme for Flatpaks (kde#494734)
+  * It compiles fine without deprecated methods
+  * Now we depend against qt6.6
+  * ci: add Alpine/musl job
+  * Update version to 6.9.0
+
+-------------------------------------------------------------------
 Mon Nov  4 11:18:00 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.8.0

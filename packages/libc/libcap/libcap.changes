@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec  9 14:15:56 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Disable psx_test and b219174 tests in qemu emulation
+
+-------------------------------------------------------------------
 Mon Dec  2 21:18:04 UTC 2024 - Petr Vorel <pvorel@suse.cz>
 
 - update to 2.73:

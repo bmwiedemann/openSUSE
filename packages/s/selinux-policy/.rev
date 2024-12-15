@@ -1263,4 +1263,15 @@ https://build.opensuse.org/request/show/1178504 </comment>
 </comment>
     <requestid>1228810</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>3f3c0779f0d92a321501433cdb8bc06f</srcmd5>
+    <version>20241213</version>
+    <time>1734262461</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20241213:
+  * Add policy for importctl (bsc#1232670)
+- Fix minimum policy by readding rpm module (bsc#1234314) 
+</comment>
+    <requestid>1230760</requestid>
+  </revision>
 </revisionlist>

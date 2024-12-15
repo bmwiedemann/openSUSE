@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Dec  8 10:09:27 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.9.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.9.0
+- Changes since 6.8.0:
+  * Update dependency version to 6.9.0
+  * sort and remove duplicates in outRanges in Kate::TextBuffer::rangesForLine
+  * Add test case for line unwrapping crash
+  * don't leave non-multiblock Kate::TextRange in m_buffer->m_multilineRanges
+  * don't crash on insert at lastLine + 1 (kde#496612)
+  * avoid closeUrl() call
+  * Clear all references/uses of aboutToDeleteMovingInterfaceContent
+  * Align completion with the word being completed (kde#485885)
+  * try to relax unstable test
+  * Use a QLabel for scrollbar linenumbers tooltip
+  * Add functions for jumping to next/prev blank line
+  * Disable ENABLE_KAUTH_DEFAULT on Haiku also
+  * Remove misleading dead code
+  * Fix crash if feedback or dyn attr is cleared before deletion (kde#495925)
+  * Fix ranges with dynamic attribute dont notify deletion
+  * Deprecate aboutToDeleteMovingInterfaceContent
+  * Remove m_ranges from buffer
+  * Dont take ownership of the MovingRange/MovingCursor
+  * buffer: Remove m_invalidCursors
+  * allow shifted numbers for Dvorak and Co. (kde#388138)
+  * keep hinting as set by the user (kde#482659)
+  * Update version to 6.9.0
+
+-------------------------------------------------------------------
 Mon Nov  4 11:18:18 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.8.0

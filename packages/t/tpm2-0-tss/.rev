@@ -513,4 +513,13 @@ This is required for Kanidm as it requires openssl-3 and tpm2-0-tss. (forwarded 
     - fapi: Fix test provisioning with template (skip test without self generated certificate).</comment>
     <requestid>1172147</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>101cad7f804615923e2b44e6486eebd3</srcmd5>
+    <version>4.1.0</version>
+    <time>1734262466</time>
+    <user>anag+factory</user>
+    <comment>- the post scriptlet calls udevadm but Requires(post): udev is missing,
+  adding it (forwarded request 1230795 from gcomes.obs)</comment>
+    <requestid>1230896</requestid>
+  </revision>
 </revisionlist>
