@@ -338,4 +338,32 @@
     labeled or unlabeled event type, it misses information about the label added (forwarded request 1224536 from rrahl0)</comment>
     <requestid>1224537</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>8bd9e5558ea4ed108ff0c54d031d8b47</srcmd5>
+    <version>9.0.3</version>
+    <time>1734262639</time>
+    <user>anag+factory</user>
+    <comment>- update to 9.0.3:
+  * When Forgejo is configured to run the internal ssh server with
+    [server].START_SSH_SERVER=true, it was possible for a registered user to
+    impersonate another user
+  * Revert &quot;allow synchronizing user status from OAuth2 login providers&quot; Fix
+  * wiki search overflowing on wide screens Do not rewrite ssh keys files when
+  * deleting a user without one fix: doctor fails with pq: syntax error at or
+  * near &quot;.&quot; whilst counting
+    Authorization token without existing User
+  * fix: Do not delete global Oauth2 applications Strict matching of allowed
+  * content for sanitizer for asciicast
+    and csv rendering
+  * fix: remove softbreak from github legacy callout fix: correct permission
+  * loading for limited organisation fix: clean up log files that no longer
+  * exist fix: return correct type in GetSubModule Improve Swagger documentation
+  * for user endpoints fix: normalize guessed languages from enry Show page
+  * titles in wiki search results fix(test): TestGitAttributeCheckerError must
+  * allow broken pipe fix: check read permissions for code owner review requests
+  * fix: use better code to group UID and stopwatches fix: api repo compare with
+  * commit hashes bug: correctly generate oauth2 jwt signing key
+- disable gpg verification for this release (forwarded request 1230940 from rrahl0)</comment>
+    <requestid>1230941</requestid>
+  </revision>
 </revisionlist>

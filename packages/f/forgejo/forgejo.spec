@@ -30,15 +30,15 @@
 %endif
 %endif
 Name:           forgejo
-Version:        9.0.2
+Version:        9.0.3
 Release:        0
 Summary:        Self-hostable forge
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Version Control
 URL:            https://forgejo.org
 Source0:        https://codeberg.org/%{name}/%{name}/releases/download/v%{version}/%{name}-src-%{version}.tar.gz
-Source1:        https://codeberg.org/%{name}/%{name}/releases/download/v%{version}/%{name}-src-%{version}.tar.gz.asc
-Source2:        https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xeb114f5e6c0dc2bcdd183550a4b61a2dc5923710#/%{name}.keyring
+#Source1:        https://codeberg.org/%{name}/%{name}/releases/download/v%{version}/%{name}-src-%{version}.tar.gz.asc
+#Source2:        https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xeb114f5e6c0dc2bcdd183550a4b61a2dc5923710#/%{name}.keyring
 Source3:        package-lock.json
 Source4:        node_modules.spec.inc
 %include        %{_sourcedir}/node_modules.spec.inc
