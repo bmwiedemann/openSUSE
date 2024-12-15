@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-railties-8.0
-Version:        8.0.0
+Version:        8.0.0.1
 Release:        0
 %define mod_name railties
 %define mod_full_name %{mod_name}-%{version}
