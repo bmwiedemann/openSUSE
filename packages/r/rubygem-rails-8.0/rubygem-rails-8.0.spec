@@ -24,24 +24,26 @@
 #
 
 Name:           rubygem-rails-8.0
-Version:        8.0.0
+Version:        8.0.0.1
 Release:        0
 %define mod_name rails
 %define mod_full_name %{mod_name}-%{version}
 %define mod_version_suffix -8.0
 # MANUAL
-BuildRequires:  %{rubygem activesupport = 8.0.0}
-BuildRequires:  %{rubygem actionpack = 8.0.0}
-BuildRequires:  %{rubygem actionview = 8.0.0}
-BuildRequires:  %{rubygem activemodel = 8.0.0}
-BuildRequires:  %{rubygem activerecord = 8.0.0}
-BuildRequires:  %{rubygem actionmailer = 8.0.0}
-BuildRequires:  %{rubygem activejob = 8.0.0}
-BuildRequires:  %{rubygem actioncable = 8.0.0}
-BuildRequires:  %{rubygem activestorage = 8.0.0}
-BuildRequires:  %{rubygem actionmailbox = 8.0.0}
-BuildRequires:  %{rubygem actiontext = 8.0.0}
-BuildRequires:  %{rubygem railties = 8.0.0}
+#define rb_build_versions     %{my_apps_rb_build_versions}
+#define rb_build_ruby_abis    %{my_apps_rb_build_abi}
+BuildRequires:  %{rubygem activesupport = %{version}}
+BuildRequires:  %{rubygem actionpack = %{version}}
+BuildRequires:  %{rubygem actionview = %{version}}
+BuildRequires:  %{rubygem activemodel = %{version}}
+BuildRequires:  %{rubygem activerecord = %{version}}
+BuildRequires:  %{rubygem actionmailer = %{version}}
+BuildRequires:  %{rubygem activejob = %{version}}
+BuildRequires:  %{rubygem actioncable = %{version}}
+BuildRequires:  %{rubygem activestorage = %{version}}
+BuildRequires:  %{rubygem actionmailbox = %{version}}
+BuildRequires:  %{rubygem actiontext = %{version}}
+BuildRequires:  %{rubygem railties = %{version}}
 BuildRequires:  %{rubygem bundler >= 1.15.0}
 
 # help scheduler
