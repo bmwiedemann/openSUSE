@@ -3,7 +3,7 @@
         <param name="url">https://gitlab.torproject.org/tpo/core/arti.git</param>
         <param name="versionformat">@PARENT_TAG@~@TAG_OFFSET@</param>
         <param name="scm">git</param>
-        <param name="revision">arti-v1.3.0</param>
+        <param name="revision">arti-v1.3.1</param>
         <param name="match-tag">*</param>
         <param name="versionrewrite-pattern">arti-v(\d+\.\d+\.\d+)</param>
         <param name="versionrewrite-replacement">\1</param>
