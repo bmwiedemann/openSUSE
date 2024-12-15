@@ -34,8 +34,8 @@
 %endif
 
 Name:           incus
-Version:        6.7
-%define tag_version 6.7.0
+Version:        6.8
+%define tag_version 6.8.0
 Release:        0
 Summary:        Container hypervisor based on LXC
 License:        Apache-2.0
@@ -60,9 +60,6 @@ Source121:      %{name}-startup.service
 Source130:      %{name}-config.yml
 # Additional runtime configuration.
 Source201:      %{name}.dnsmasq
-# UPSTREAM-FIX: Backport of <https://github.com/lxc/incus/pull/1384>.
-Patch1:         0001-incusd-storage-zfs-Fix-deletion-of-unavailable-pools.patch
-Patch2:         0002-zfs-load-keys-for-encrypted-datasets-during-pool-imp.patch
 BuildRequires:  fdupes
 BuildRequires:  file
 BuildRequires:  go >= 1.22.7

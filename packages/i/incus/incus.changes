@@ -1,4 +1,127 @@
 -------------------------------------------------------------------
+Fri Dec 13 07:07:01 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 6.8:
+  * exec: Consume websocket pings for stderr by @stefanor in #1380
+  * incus-simplestreams: Add prune command by @presztak in #1381
+  * internal/instance: Fix validation of volatile.cpu.nodes by
+    @stgraber in #1394
+  * Add a function to clone map and use it where appropriate by
+    @montag451 in #1397
+  * cgo/process_utils: fix 32bit builds by @brauner in #1398
+  * Start using goimports by @stgraber in #1399
+  * instance/config: Mark user keys as live updatable by @stgraber
+    in #1404
+  * incus/internal/server/instance/drivers/: Fix incorrect Vars
+    file mapping in edk2 driver by @cmspam in #1406
+  * zfs: load keys for encrypted datasets during pool import by
+    @cyphar in #1384
+  * incusd/instance: Lock image access by @stgraber in #1408
+  * incus/image: Make use of server-side alias handling by
+    @stgraber in #1409
+  * incusd/cluster: Validate cluster HTTPS address on join too by
+    @stgraber in #1411
+  * Remove metadata info from space usage calculation by @presztak
+    in #1417
+  * Add ability to set the initial owner of a custom volume by
+    @presztak in #1415
+  * Allow local live-migration between storage pools by @presztak
+    in #1410
+  * incus: Add aliases completion by @montag451 in #1385
+  * golangci: Add local prefixes for goimports by @breml in #1401
+  * client: invalidate simple streams cache by @breml in #1424
+  * incusd/instances_post: Fix cluster internal migrations by
+    @stgraber in #1427
+  * Fix DHCP client keeping container up by @stgraber in #1430
+  * Add support for VGA console screenshots by @breml in #1431
+  * Add --reuse to incus image import by @presztak in #1428
+  * Fix random ETag values due to map ordering by @stgraber in
+    #1432
+  * incusd/task: Fix wait group logic (more entries than running
+    tasks) by @stgraber in #1433
+  * Allow setting aliases during raw image upload by @stgraber in
+    #1434
+  * Fixes an issue when copying a custom volume using the --refresh
+    flag by @presztak in #1437
+  * Openfga improvements by @stgraber in #1435
+  * doc/instance/properties: Add missing instance properties by
+    @stgraber in #1439
+  * incusd/daemon_storage: Ensure corect symlinks for
+    images/backups by @stgraber in #1441
+  * incusd/storage/lvm: Handle newer LVM by @stgraber in #1442
+  * Tweak rendering of manpage in doc by @stgraber in #1443
+  * incusd/storage/lvm: Require 512-bytes physical block size for
+    VM images by @stgraber in #1444
+  * incusd: Fill ExpiryDate and remove LastUsedDate in
+    volumeSnapshotToProtobuf by @presztak in #1448
+  * incusd/device/tpm: Wait for swtpm to be ready by @stgraber in
+    #1447
+  * incus: Improve completion for file push and file pull by
+    @montag451 in #1445
+  * incusd/auth/tls: Restrict config access to non-admin by
+    @stgraber in #1451
+  * incusd/storage: Handle default disk size in GetInstanceUsage by
+    @stgraber in #1452
+  * incus: Improve completion for some file sub-commmands by
+    @montag451 in #1453
+  * incus: Fix completion for profile copy by @montag451 in #1454
+  * incus: Add completion for image alias subcommands by @montag451
+    in #1457
+  * doc/installing: Update Fedora instructions by @stgraber in
+    #1456
+  * Fix gap in validation of pre-existing certificates when
+    switching to PKI mode by @stgraber in #1458
+  * doc/network_forwards: Split configuration into own table by
+    @stgraber in #1460
+  * chore: Happy path on the left, early return by @breml in #1461
+  * incus: Fix completion for image alias create by @montag451 in
+    #1459
+  * incus/top: Ignore CPU idle time by @stgraber in #1462
+  * incus: Display the alias expansion when execution of an alias
+    fails by @montag451 in #1464
+  * lint: disallow restricted licenses in go-licenses by @breml in
+    #1466
+  * chore: code structure, Go identifier shaddowing by @breml in
+    #1465
+  * incus: Fix alias arguments handling by @montag451 in #1463
+  * incus/file/push Use SFTP client instead of file API by
+    @HassanAlsamahi in #1468
+  * Fix TPM fd leaks and OpenFGA patching issue by @stgraber in
+    #1469
+  * Clarify device override syntax by @stgraber in #1471
+  * incusd/auth/openfga: refresh model before applying patches by
+    @stgraber in #1472
+  * Add authorization scriptlet by @bensmrs in #1412
+  * doc: add openSUSE installation instructions by @cyphar in #1475
+  * OCI image debugging improvements by @danbiagini in #1478
+  * Add function checks to scriptlet validation by @bensmrs in
+    #1484
+  * incus/project: Fix handling of default (unset) project in
+    get-current by @irhndt in #1476
+  * Translations update from Hosted Weblate by @weblate in #1492
+  * Add --force flag to the console command by @presztak in #1491
+  * Accept io.Writer in RenderTable by @breml in #1490
+  * doc/network_bridge: Fix missing escaping around variable by
+    @irhndt in #1493
+  * incusd/cluster: Skip project restrictions during join by
+    @stgraber in #1497
+  * incusd/instance/lxc: Skip instances without idmap allocation
+    yet by @stgraber in #1495
+  * incusd/storage/drivers/common: Truncate/Discard ahead of sparse
+    write by @stgraber in #1496
+  * Add AskPassword/AskPasswordOnce to Asker by @breml in #1499
+  * Add additional check to Cancel method for ConsoleShow operation
+    by @presztak in #1500
+  * Improve console disconnections by @stgraber in #1501
+  * Fix duplicate OVN load-balancer entries by @stgraber in #1502
+  * Improve SFTP performance by @stgraber in #1503
+  * incusd/instance_post: Expand profiles in scriptlet context by
+    @stgraber in #1504
+- remove patches:
+  * 0001-incusd-storage-zfs-Fix-deletion-of-unavailable-pools.patch
+  * 0002-zfs-load-keys-for-encrypted-datasets-during-pool-imp.patch
+
+-------------------------------------------------------------------
 Fri Nov 22 13:36:58 UTC 2024 - Aleksa Sarai <asarai@suse.com>
 
 - Remove the incus.sysctl drop-in file. This setting file overlaps with lxd's
