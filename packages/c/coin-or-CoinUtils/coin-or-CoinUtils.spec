@@ -1,7 +1,7 @@
 #
 # spec file for package coin-or-CoinUtils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define soversion 3
 
 Name:           coin-or-CoinUtils
-Version:        2.11.10
+Version:        2.11.12
 Release:        0
 Summary:        COIN-OR Utilities
 Group:          Productivity/Scientific/Math
