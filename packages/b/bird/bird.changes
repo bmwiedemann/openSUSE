@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Dec  8 07:05:22 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.16
+  * BFD: Set password per session
+  * BFD: Accept zero checksum for IPv6-UDP
+  * BMP: Refactoring and optimizations
+  * OSPF: Allow loopback nexthop in OSPFv3-IPv4
+  * RPKI: TCP-MD5 authentication option
+  * Filters: Add enum types to filter grammar
+  * CLI: Configurable additional control sockets
+  * CLI: Timeformat command
+  * CLI: Dump commands need a target file
+  * ASPA support in filters, Static and RPKI
+  * Formalized contributions and credits policy
+  * Many bugfixes and improvements
+
+-------------------------------------------------------------------
 Sun Apr  7 08:33:35 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.15.1
