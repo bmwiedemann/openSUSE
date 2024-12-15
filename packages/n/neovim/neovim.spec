@@ -16,9 +16,6 @@
 #
 
 
-%ifarch s390x
-%bcond_without  make_optional
-%endif
 %ifarch ppc64le
 %bcond_with luajit
 %else
@@ -34,9 +31,6 @@ Source0:        https://github.com/neovim/neovim/archive/v%{version}/%{name}-%{v
 Source1:        sysinit.vim
 Source3:        suse-spec-template
 Source4:        spec.vim
-# This patch is from AlpineLinux, which enables us to reenable neovim on s390x or as an optional flag to build
-# This patch only makes the tree-sitter plugins optional, not tree-sitter in itself
-Patch0:         make-tree-sitter-optional.patch
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -61,15 +55,10 @@ BuildRequires:  unzip
 BuildRequires:  pkgconfig(libluv)
 BuildRequires:  pkgconfig(libutf8proc)
 BuildRequires:  pkgconfig(libuv) >= 1.42.0
-BuildRequires:  pkgconfig(tree-sitter) >= 0.20.9
-%if %{with luajit}
 BuildRequires:  pkgconfig(luajit)
-%else
-BuildRequires:  lua51-BitOp
-BuildRequires:  pkgconfig(lua5.1)
-%endif
 BuildRequires:  pkgconfig(msgpack-c)
 BuildRequires:  pkgconfig(termkey)
+BuildRequires:  pkgconfig(tree-sitter) >= 0.20.9
 BuildRequires:  pkgconfig(unibilium) >= 2.0.0
 BuildRequires:  pkgconfig(vterm) >= 0.3.3
 Requires:       gperf
@@ -80,8 +69,6 @@ Requires:       lua51-lpeg
 Requires:       lua51-luarocks
 Requires:       lua51-luv
 Requires:       lua51-mpack
-Requires:       xdg-utils
-%if %{without make_optional}
 Requires:       tree-sitter-c >= 0.21.3
 Requires:       tree-sitter-lua
 Requires:       tree-sitter-markdown
@@ -89,7 +76,7 @@ Requires:       tree-sitter-python
 Requires:       tree-sitter-query >= 0.4.0
 Requires:       tree-sitter-vim
 Requires:       tree-sitter-vimdoc >= 3.0.0
-%endif
+Requires:       xdg-utils
 Recommends:     python3-neovim
 Recommends:     wl-clipboard
 Recommends:     xsel
@@ -108,10 +95,7 @@ excisions, Neovim is Vim. It is built for users who want the good
 parts of Vim, without compromise, and more.
 
 %prep
-%autosetup -N
-%if %{with make_optional}
-%patch -P0 -p1
-%endif
+%autosetup
 
 # Remove __DATE__ and __TIME__.
 BUILD_TIME=$(LC_ALL=C date -ur %{_sourcedir}/%{name}.changes +'%{H}:%{M}')

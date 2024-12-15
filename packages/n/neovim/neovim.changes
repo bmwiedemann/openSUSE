@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Dec 14 03:15:08 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- now that s390x has tree-sitter, we can remove make-tree-sitter-optional.patch
+
+-------------------------------------------------------------------
 Thu Oct  3 16:06:51 UTC 2024 - Michal Vyskocil <michal.vyskocil@gmail.com>
 
 - Update to 0.10.2

@@ -1449,4 +1449,12 @@ FIXES (LSP):
  * runtime: Sync bundled treesitter queries (forwarded request 1205561 from mvyskocil)</comment>
     <requestid>1205619</requestid>
   </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>e5ade2f2c50e296732b890a564d0ade0</srcmd5>
+    <version>0.10.2</version>
+    <time>1734262667</time>
+    <user>anag+factory</user>
+    <comment>- now that s390x has tree-sitter, we can remove make-tree-sitter-optional.patch (forwarded request 1230959 from rrahl0)</comment>
+    <requestid>1230960</requestid>
+  </revision>
 </revisionlist>
