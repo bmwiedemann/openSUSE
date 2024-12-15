@@ -1,7 +1,7 @@
 #
 # spec file for package coin-or-Cbc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 %define soversion 3
 
 Name:           coin-or-Cbc
-Version:        2.10.11
+Version:        2.10.12
 Release:        0
 Summary:        COIN-OR Branch-and-Cut solver
 License:        EPL-2.0
