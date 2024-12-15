@@ -20,7 +20,7 @@
 %define cli_package_name tetragon-cli
 
 Name:           tetragon
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Summary:        eBPF-based Security Observability and Runtime Enforcement
 License:        Apache-2.0
