@@ -1,7 +1,7 @@
 #
 # spec file for package coin-or-Cgl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 %define soversion 1
 
 Name:           coin-or-Cgl
-Version:        0.60.8
+Version:        0.60.9
 Release:        0
 Summary:        COIN-OR Cut Generator Library
 License:        EPL-2.0
