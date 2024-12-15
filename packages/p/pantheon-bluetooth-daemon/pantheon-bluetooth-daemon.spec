@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.bluetooth
 Name:           pantheon-bluetooth-daemon
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Send and receive files via Bluetooth
 License:        GPL-3.0-or-later

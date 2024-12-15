@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 13 21:26:13 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.1:
+  * Bluetooth in the title case
+  * Updated translations
+
+-------------------------------------------------------------------
 Wed Nov  6 08:19:48 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - remove %suse_update_desktop_file, as it's deprecated
