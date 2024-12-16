@@ -307,4 +307,13 @@
     for images with non-standard aspect ratios. Closes #197.</comment>
     <requestid>1203263</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>39dc33a24857748ab36384434073c8bb</srcmd5>
+    <version>1.14.0</version>
+    <time>1734373077</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.14:
+  * Fixed displays detection on X11 #203 #202.</comment>
+    <requestid>1231383</requestid>
+  </revision>
 </revisionlist>

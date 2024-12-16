@@ -18,13 +18,13 @@
 
 %{!?python_sitelib: %global python_sitelib %(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
 Name:           azote
-Version:        1.13.1
+Version:        1.14.0
 Release:        0
 Summary:        Wallpaper manager for Sway, i3 and some other WMs
 License:        GPL-3.0-only
 Group:          Productivity/Graphics/Viewers
 URL:            https://github.com/nwg-piotr/azote
-Source:         https://github.com/nwg-piotr/azote/archive/refs/tags/%{version}.tar.gz
+Source:         https://github.com/nwg-piotr/azote/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
 BuildRequires:  python3-Pillow

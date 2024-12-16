@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 16 11:28:32 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.14:
+  * Fixed displays detection on X11 #203 #202.
+
+-------------------------------------------------------------------
 Wed Sep 25 06:27:21 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.13.1:
