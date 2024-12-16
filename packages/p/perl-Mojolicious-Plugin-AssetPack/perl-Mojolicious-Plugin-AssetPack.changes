@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Dec 12 16:36:04 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- Remove mojolicious-deprecate-spurt.patch, sass-trace.patch (fixed upstream)
+
+-------------------------------------------------------------------
+Thu Dec 12 16:31:38 UTC 2024 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.150.0 (2.15)
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-AssetPack/Changes
+
+  2.15  2024-12-06
+    - Fixed reporting of sass errors.
+      Contributor: Jan Baier
+    - Use sass trace for easier error detection.
+      Contributor: Tina Mueller
+    - Updates for latest Mojolicious.
+      Contributor: Oliver Kurz
+
+-------------------------------------------------------------------
 Mon Jun 17 15:38:49 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Add sass-trace.patch. See https://github.com/mojolicious/mojo-assetpack/pull/150

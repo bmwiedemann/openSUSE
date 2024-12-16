@@ -4,16 +4,12 @@
 #sources:
 #  - source1
 #  - source2
-patches:
-  mojolicious-deprecate-spurt.patch: -p1 PATCH-FIX-UPSTREAM https://github.com/mojolicious/mojo-assetpack/pull/149
-  sass-trace.patch: -p1 PATCH-FIX-UPSTREAM https://github.com/mojolicious/mojo-assetpack/pull/150
+#patches:
 #  bar.patch:
-preamble: |-
-  BuildRequires:  perl(Mojolicious) >= 9.34
-  Requires:       perl(Mojolicious) >= 9.34
+#preamble: |-
 #post_prep: |-
 # hunspell=`pkg-config --libs hunspell | sed -e 's,-l,,; s,  *,,g'`
-# sed -i -e "s,hunspell-X,$hunspell," t/00-prereq.t Makefile.PL 
+# sed -i -e "s,hunspell-X,$hunspell," t/00-prereq.t Makefile.PL
 #post_install: |-
 # sed on %{name}.files
 #license: SUSE-NonFree
