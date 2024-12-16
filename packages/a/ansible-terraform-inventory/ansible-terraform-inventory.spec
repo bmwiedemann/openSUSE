@@ -65,7 +65,7 @@ provider label for examples.
 %autosetup -p 1 -a 1
 
 %build
-%ifarch i586
+%ifarch i586 riscv64
 CGO_ENABLED=1 go build \
 %else
 CGO_ENABLED=0 go build \

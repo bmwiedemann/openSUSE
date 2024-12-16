@@ -7,4 +7,12 @@
     <comment>new package ansible-terraform-inventory: generate a dynamic Ansible inventory from a Terraform state file</comment>
     <requestid>1206238</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>15f8d53ce1b1bcbaa51395ff8b209548</srcmd5>
+    <version>0.10</version>
+    <time>1734373114</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1231524</requestid>
+  </revision>
 </revisionlist>
