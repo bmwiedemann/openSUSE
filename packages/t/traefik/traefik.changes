@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Dec 16 13:27:07 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Version 3.2.3 
+  - acme
+    * Update go-acme/lego to v4.20.4 (gh#traefik/traefik#11295)
+  - http3
+    * Update github.com/quic-go/quic-go to v0.48.2 (gh#traefik/traefik#11320)
+  - docker,docker/swarm
+    * Rename traefik.docker.* labels for Docker Swarm to traefik.swarm.* (gh#traefik/traefik#11247)
+  - plugins
+    * Fix WASM settings (gh#traefik/traefik#11321)
+  - rules
+    * Fix models mechanism for default rule syntax (gh#traefik/traefik#11300)
+  - server
+    * Update golang.org/x dependencies (gh#traefik/traefik#11336, CVE-2024-45337, boo#1234502)
+
+-------------------------------------------------------------------
 Thu Nov 21 15:19:14 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - golang-jwt has been updated to version 4.5.1 to fix CVE-2024-51744 and boo#1232940
