@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 16 09:19:20 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- added directory
+
+-------------------------------------------------------------------
 Mon Feb 26 13:25:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

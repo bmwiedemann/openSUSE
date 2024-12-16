@@ -1,7 +1,7 @@
 #
 # spec file for package sleuth
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,6 +60,7 @@ install -m 644 check.conf %{buildroot}%{apache_serverroot}/cgi-bin
 %files
 %doc README THANKS README.SUSE
 %{_bindir}/*
+%dir %{apache_serverroot}/cgi-bin/
 %attr(755,root,root) %{apache_serverroot}/cgi-bin/check.cgi
 %attr(644,root,root) %{apache_serverroot}/cgi-bin/check.conf
 %config %{_sysconfdir}/*

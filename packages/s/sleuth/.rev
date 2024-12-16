@@ -133,4 +133,12 @@
     <comment>Prepare for RPM 4.20 (forwarded request 1151544 from dimstar)</comment>
     <requestid>1151589</requestid>
   </revision>
+  <revision rev="21" vrev="63">
+    <srcmd5>bc9a323d22601a956455d356db2db088</srcmd5>
+    <version>1.4.4</version>
+    <time>1734373070</time>
+    <user>anag+factory</user>
+    <comment>- added directory (forwarded request 1231369 from msmeissn)</comment>
+    <requestid>1231370</requestid>
+  </revision>
 </revisionlist>
