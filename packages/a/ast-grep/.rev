@@ -655,4 +655,23 @@
   * fix(deps): update babel monorepo b8803ce</comment>
     <requestid>1226814</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>08547fba68187b634ee3b5a9632dce10</srcmd5>
+    <version>0.31.1</version>
+    <time>1734373083</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.31.1:
+  * feat: update tree-sitter dependency to 0.24.4 91a2b46
+  * fix(deps): update dependency @swc/core to v1.10.0 526648b
+  * fix: fix new clippy error ebfcbcd
+
+- Update to 0.31.0:
+  * feat: only scan rule senstive files #1635
+  * feat: better error handling for dynamic lib loading #1631
+  * Breaking change: feat: support character based column number #1594
+  * Breaking change: refactor: expose new struct Position for abstracting column b87dad7
+  * refactor: Use the utf-corrected row and column methods for the range matcher 2b30f56
+  * feat: Add support for range matcher 4fb2c52</comment>
+    <requestid>1231386</requestid>
+  </revision>
 </revisionlist>

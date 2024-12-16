@@ -17,7 +17,7 @@
 
 
 Name:           ast-grep
-Version:        0.30.1
+Version:        0.31.1
 Release:        0
 Summary:        A CLI tool for code structural search, lint and rewriting
 License:        MIT
