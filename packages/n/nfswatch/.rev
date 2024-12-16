@@ -81,4 +81,12 @@
     <comment></comment>
     <requestid>1153948</requestid>
   </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>18b2c5279a650b88a628290a5f7f7a1b</srcmd5>
+    <version>4.99.11</version>
+    <time>1734373087</time>
+    <user>anag+factory</user>
+    <comment>- nfswatch-fix-proto.patch: fixed build with gcc14. (forwarded request 1231396 from msmeissn)</comment>
+    <requestid>1231397</requestid>
+  </revision>
 </revisionlist>

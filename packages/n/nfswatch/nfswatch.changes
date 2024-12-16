@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 16 12:55:20 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- nfswatch-fix-proto.patch: fixed build with gcc14.
+
+-------------------------------------------------------------------
 Thu Feb 22 14:09:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

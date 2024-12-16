@@ -1,0 +1,22 @@
+Index: nfswatch-4.99.11/rpcutil.c
+===================================================================
+--- nfswatch-4.99.11.orig/rpcutil.c
++++ nfswatch-4.99.11/rpcutil.c
+@@ -82,7 +82,7 @@
+ #include "rpcdefs.h"
+ 
+ /* get rpc arguments		*/
+-static bool_t rpcxdr_getargs(SVCXPRT *, xdrproc_t, caddr_t);
++static bool_t rpcxdr_getargs(struct __rpc_svcxprt *, xdrproc_t, void*);
+ 
+ /*
+  * Operations on the SVCXPRT structure.  We're only going to use
+@@ -223,7 +223,7 @@ udprpc_recv(char *data, u_int length, st
+  * rpcxdr_getargs - called by SVC_GETARGS.
+  */
+ static bool_t
+-rpcxdr_getargs(SVCXPRT *xprt, xdrproc_t xdr_args, caddr_t args_ptr)
++rpcxdr_getargs(struct __rpc_svcxprt *xprt, xdrproc_t xdr_args, void* args_ptr)
+ {
+ 	return((*xdr_args)(&(su_data(xprt)->su_xdrs), args_ptr));
+ }
