@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 16 11:55:27 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Enable cgo on riscv64
+
+-------------------------------------------------------------------
 Mon Sep 16 18:22:25 UTC 2024 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Add ifarch with  CGO_ENABLED=1 for fixing failed builds

@@ -1,7 +1,7 @@
 #
 # spec file for package kubectl-browse-pvc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,7 +47,7 @@ cleans up the pod when you disconnect.
 %autosetup -a 1 -p 1
 
 %build
-%ifarch s390x i586 
+%ifarch s390x i586 riscv64
 CGO_ENABLED=1 \
 %else
 CGO_ENABLED=0 \
