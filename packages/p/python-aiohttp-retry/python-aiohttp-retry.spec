@@ -34,10 +34,12 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-aiohttp
+Requires:       python-aiohttp-retry
 Recommends:     python-yarl
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module aiohttp}
+BuildRequires:  %{python_module aiohttp-retry}
 BuildRequires:  %{python_module pytest-aiohttp}
 BuildRequires:  %{python_module pytest}
 # /SECTION
