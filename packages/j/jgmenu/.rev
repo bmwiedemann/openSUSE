@@ -376,4 +376,30 @@
   %python3_fix_shebang macro, [bsc#1212476]</comment>
     <requestid>1157172</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>922132c1184e8c3812866fa243fa931f</srcmd5>
+    <version>4.5.0</version>
+    <time>1734373078</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.5.0:
+  * Add config option search_empty_string so that the default ''
+    can be overridden. (#232)
+  * Ignore entries with empty commands when de-duplicating search results. This
+    makes a search for &quot;aa&quot; with the csv data below render two results rather
+    than one. (#227)
+  * jgmenu-apps: add config options --prepend-file and --append-file (#215)
+  * Do not focus any item on launch/awake to increase consistency with most
+    other menus (#209)
+  * Make librsvg dependency optional. Also support both 2.40.x and newer.
+  * Escape special characters (&lt;, &gt; and &amp;) in @search widget to render
+    correctly with pango markup. (#194)
+  * contrib/xfce4-panel:
+    + Fix xfce4-panel registration.
+    + Add X-XFCE-API=2.0 to .desktop file to make the plugin work with the
+      latest xfce4-panel
+  * jgmenu-apps: handle name and generic-name containing commas (#192)
+  * Fix widgets button-release bug by not executing widget action on button
+    release if pointer has moved outside widget area since pressed (#189)</comment>
+    <requestid>1231387</requestid>
+  </revision>
 </revisionlist>
