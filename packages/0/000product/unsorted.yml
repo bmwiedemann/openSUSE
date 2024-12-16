@@ -1677,6 +1677,7 @@ unsorted:
   - bstone 
   - btar 
   - btcflash 
+  - btfdump 
   - btfs 
   - btop 
   - btrfs-extent-same 
@@ -2511,6 +2512,8 @@ unsorted:
   - compleat-bash 
   - compleat-fish 
   - complexity 
+  - composefs 
+  - composefs-devel 
   - compsize 
   - compton 
   - compton-conf 
@@ -4932,8 +4935,6 @@ unsorted:
   - gaupol 
   - gavl 
   - gbdfed 
-  - gbrainy 
-  - gbrainy-lang 
   - gc-devel 
   - gcab-devel 
   - gcad3d 
@@ -7485,8 +7486,6 @@ unsorted:
   - gnome-shell-theme-matcha 
   - gnome-shell-theme-yaru 
   - gnome-software-devel 
-  - gnome-subtitles 
-  - gnome-subtitles-lang 
   - gnome-taquin 
   - gnome-taquin-lang 
   - gnome-tetravex 
@@ -7631,6 +7630,10 @@ unsorted:
   - go1.23-doc 
   - go1.23-libstd 
   - go1.23-race 
+  - go1.24 
+  - go1.24-doc 
+  - go1.24-libstd 
+  - go1.24-race 
   - go1.9 
   - go1.9-doc 
   - go1.9-race 
@@ -8535,7 +8538,6 @@ unsorted:
   - hcloud-upload-image-bash-completion 
   - hcloud-upload-image-fish-completion 
   - hcloud-upload-image-zsh-completion 
-  - hcode 
   - hda-verb 
   - hdajackretask 
   - hdajacksensetest 
@@ -10436,6 +10438,8 @@ unsorted:
   - kompare-devel 
   - kompose 
   - kompose-bash-completion 
+  - kompose-fish-completion 
+  - kompose-zsh-completion 
   - kongress 
   - kongress-lang 
   - konkretcmpi-devel 
@@ -12658,6 +12662,7 @@ unsorted:
   - libcompel1 
   - libcompizconfig 
   - libcompizconfig-devel 
+  - libcomposefs1 
   - libcomps-devel 
   - libcomps-doc 
   - libcomps0 
@@ -14169,7 +14174,7 @@ unsorted:
   - libjacknet0-32bit 
   - libjackserver0 
   - libjackserver0-32bit 
-  - libjanet1_36 
+  - libjanet1_37 
   - libjansson-devel 
   - libjasper-devel 
   - libjasper7-32bit 
@@ -18505,8 +18510,6 @@ unsorted:
   - matio-tools 
   - matomo 
   - matomo-apache 
-  - matrix-quaternion 
-  - matrix-quaternion-lang 
   - matrix-synapse 
   - matthewlib-java 
   - matthewlib-java-javadoc 
@@ -20945,7 +20948,6 @@ unsorted:
   - osslsigncode 
   - ossp-uuid 
   - osv-scanner 
-  - oto 
   - otpclient 
   - otter-browser 
   - otter-browser-lang 
@@ -26031,7 +26033,6 @@ unsorted:
   - python310-jedi 
   - python310-jeepney 
   - python310-jellyfish 
-  - python310-jenkinsapi 
   - python310-jfscripts 
   - python310-jinja2-fsloader 
   - python310-jinja2-pluralize 
@@ -26667,7 +26668,6 @@ unsorted:
   - python310-pip-api 
   - python310-pip-licenses 
   - python310-pip-run 
-  - python310-pip-tools 
   - python310-pip-wheel 
   - python310-pipdeptree 
   - python310-pipreqs 
@@ -26870,6 +26870,7 @@ unsorted:
   - python310-pyfeyn 
   - python310-pyfiglet 
   - python310-pyflakes 
+  - python310-pyforgejo 
   - python310-pyftpdlib 
   - python310-pyfuse3 
   - python310-pygal 
@@ -29658,7 +29659,6 @@ unsorted:
   - python311-jedi 
   - python311-jeepney 
   - python311-jellyfish 
-  - python311-jenkinsapi 
   - python311-jfscripts 
   - python311-jinja2-fsloader 
   - python311-jinja2-pluralize 
@@ -30265,7 +30265,6 @@ unsorted:
   - python311-pip-api 
   - python311-pip-licenses 
   - python311-pip-run 
-  - python311-pip-tools 
   - python311-pip-wheel 
   - python311-pipdeptree 
   - python311-pipreqs 
@@ -30457,6 +30456,7 @@ unsorted:
   - python311-pyfeyn 
   - python311-pyfiglet 
   - python311-pyflakes 
+  - python311-pyforgejo 
   - python311-pyftpdlib 
   - python311-pyfuse3 
   - python311-pygal 
@@ -33276,7 +33276,6 @@ unsorted:
   - python312-jedi 
   - python312-jeepney 
   - python312-jellyfish 
-  - python312-jenkinsapi 
   - python312-jfscripts 
   - python312-jinja2-fsloader 
   - python312-jinja2-pluralize 
@@ -33912,7 +33911,6 @@ unsorted:
   - python312-pip-api 
   - python312-pip-licenses 
   - python312-pip-run 
-  - python312-pip-tools 
   - python312-pip-wheel 
   - python312-pipdeptree 
   - python312-pipreqs 
@@ -34114,6 +34112,7 @@ unsorted:
   - python312-pyfeyn 
   - python312-pyfiglet 
   - python312-pyflakes 
+  - python312-pyforgejo 
   - python312-pyftpdlib 
   - python312-pyfuse3 
   - python312-pygal 
@@ -35496,6 +35495,7 @@ unsorted:
   - python313-abseil 
   - python313-accessible-pygments 
   - python313-acefile 
+  - python313-acitoolkit 
   - python313-acme 
   - python313-actdiag 
   - python313-adal 
@@ -36375,6 +36375,7 @@ unsorted:
   - python313-django-dj-inmemorystorage 
   - python313-django-environ 
   - python313-django-eremaea2 
+  - python313-django-extensions 
   - python313-django-extra-views 
   - python313-django-filter 
   - python313-django-formtools 
@@ -37740,6 +37741,7 @@ unsorted:
   - python313-pybugz 
   - python313-pycairo 
   - python313-pycairo-devel 
+  - python313-pycapnp 
   - python313-pycares 
   - python313-pycdio 
   - python313-pycdlib 
@@ -37788,6 +37790,7 @@ unsorted:
   - python313-pyfeyn 
   - python313-pyfiglet 
   - python313-pyflakes 
+  - python313-pyforgejo 
   - python313-pyftpdlib 
   - python313-pyfuse3 
   - python313-pygal 
@@ -38318,6 +38321,7 @@ unsorted:
   - python313-scikit-build-core-pyproject 
   - python313-scikit-dsp-comm 
   - python313-scikit-hep-testdata 
+  - python313-scikit-image 
   - python313-scikit-learn 
   - python313-scikit-sound 
   - python313-scikit-sparse 
@@ -38401,6 +38405,7 @@ unsorted:
   - python313-slixmpp 
   - python313-sly 
   - python313-slycot 
+  - python313-smart-open 
   - python313-smartypants 
   - python313-smbprotocol 
   - python313-smmap 
@@ -40633,7 +40638,6 @@ unsorted:
   - scim-lang 
   - scim-m17n 
   - scim-pinyin 
-  - scim-skk 
   - scim-sunpinyin 
   - scim-tables 
   - scim-tables-additional 
@@ -41071,15 +41075,11 @@ unsorted:
   - soundkonverter 
   - soundtouch 
   - soundtouch-devel 
-  - soup-sharp 
-  - soup-sharp-devel 
   - source-highlight 
   - source-highlight-cgi 
   - sox 
   - sox-devel 
   - soxr-devel 
-  - spacefm 
-  - spacefm-lang 
   - spack 
   - spack-build-dependencies 
   - spack-info 
@@ -52725,8 +52725,6 @@ unsorted:
   - xf86-input-void 
   - xf86-input-wacom-devel 
   - xf86-video-amdgpu 
-  - xf86-video-fbturbo 
-  - xf86-video-fbturbo-live 
   - xf86-video-intel-32bit 
   - xf86-video-openchrome 
   - xf86dga 
