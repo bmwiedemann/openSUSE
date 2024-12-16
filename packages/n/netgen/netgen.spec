@@ -46,6 +46,8 @@ Patch10:        0001-Fix-netgen-executable-and-library-RUNPATHs.patch
 Patch11:        0001-Fix-ODR-violation-for-struct-class-Line.patch
 # PATCH-FIX-OPENSUSE
 Patch12:        0002-Add-missing-includes-for-std-string-std-cerr-fix-nam.patch
+# PATCH-FIX-UPSTREAM -- https://github.com/NGSolve/netgen/issues/200
+Patch13:        0001-Do-not-EXPORT-python-modules-as-CMake-targets.patch
 %if %{with opencascade}
 BuildRequires:  occt-devel
 BuildRequires:  (pkgconfig(catch2) >= 2.13.4 with pkgconfig(catch2) < 3)

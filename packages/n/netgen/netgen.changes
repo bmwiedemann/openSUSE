@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec 15 20:11:26 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove erroneous dependency on the python module, add
+  * 0001-Do-not-EXPORT-python-modules-as-CMake-targets.patch
+
+-------------------------------------------------------------------
 Thu Dec  5 16:28:50 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to version 6.2.2404

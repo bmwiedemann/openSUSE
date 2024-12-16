@@ -1,0 +1,39 @@
+From bdda2186743ce98bd538337f6a7114152d5615a2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Sun, 15 Dec 2024 21:11:15 +0100
+Subject: [PATCH] Do not EXPORT python modules as CMake targets
+
+These are not build time linkable libraries, thus not useful targets,
+and EXPORTing these make them (and all transitive python dependencies)
+a hard dependency in the CMake config.
+
+Fixes #200.
+---
+ ng/CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/ng/CMakeLists.txt b/ng/CMakeLists.txt
+index b5a1985..51bc03c 100644
+--- a/ng/CMakeLists.txt
++++ b/ng/CMakeLists.txt
+@@ -45,7 +45,7 @@ if(USE_PYTHON)
+         set_target_properties( ngpy PROPERTIES OUTPUT_NAME "libngpy")
+     endif()
+     set_target_properties(ngpy PROPERTIES INSTALL_RPATH "${NG_RPATH_TOKEN}/../${NETGEN_PYTHON_RPATH}")
+-    install(TARGETS ngpy DESTINATION ${NG_INSTALL_DIR_PYTHON}/${NG_INSTALL_SUFFIX} COMPONENT netgen EXPORT netgen-targets)
++    install(TARGETS ngpy DESTINATION ${NG_INSTALL_DIR_PYTHON}/${NG_INSTALL_SUFFIX} COMPONENT netgen)
+ 
+     if(USE_GUI)
+         add_library(ngguipy SHARED ngguipy.cpp)
+@@ -57,7 +57,7 @@ if(USE_PYTHON)
+             set_target_properties( ngguipy PROPERTIES OUTPUT_NAME "libngguipy")
+         endif()
+         set_target_properties(ngguipy PROPERTIES INSTALL_RPATH "${NG_RPATH_TOKEN}/../${NETGEN_PYTHON_RPATH}")
+-        install(TARGETS ngguipy DESTINATION ${NG_INSTALL_DIR_PYTHON}/${NG_INSTALL_SUFFIX} COMPONENT netgen EXPORT netgen-targets)
++        install(TARGETS ngguipy DESTINATION ${NG_INSTALL_DIR_PYTHON}/${NG_INSTALL_SUFFIX} COMPONENT netgen)
+     endif(USE_GUI)
+ endif(USE_PYTHON)
+ 
+-- 
+2.47.1
+
