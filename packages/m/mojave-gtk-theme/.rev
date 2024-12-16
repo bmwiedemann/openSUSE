@@ -149,4 +149,14 @@
   * Add NixOS icon #238</comment>
     <requestid>1102295</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5f1ccad882a6783e4657cb2cbe44d314</srcmd5>
+    <version>20241115</version>
+    <time>1734373068</time>
+    <user>anag+factory</user>
+    <comment>- Update to 20241115:
+  * Fix gnome-shell 47 issues
+  * Add small to xfwm4 #248</comment>
+    <requestid>1231377</requestid>
+  </revision>
 </revisionlist>
