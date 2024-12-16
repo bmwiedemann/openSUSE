@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 16 13:10:18 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- xar-fix-prototype.patch: fixed prototypes
+
+-------------------------------------------------------------------
 Mon Feb 26 12:04:08 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

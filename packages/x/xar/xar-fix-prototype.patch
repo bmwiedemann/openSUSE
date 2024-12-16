@@ -1,0 +1,24 @@
+Index: xar-xar-1.6.1/xar/lib/ext2.c
+===================================================================
+--- xar-xar-1.6.1.orig/xar/lib/ext2.c
++++ xar-xar-1.6.1/xar/lib/ext2.c
+@@ -46,6 +46,7 @@
+ #include "arcmod.h"
+ #include <errno.h>
+ #include <string.h>
++#include <stdlib.h>
+ #include <fcntl.h>
+ #include <sys/types.h>
+ #include <sys/ioctl.h>
+Index: xar-xar-1.6.1/xar/lib/linuxattr.c
+===================================================================
+--- xar-xar-1.6.1.orig/xar/lib/linuxattr.c
++++ xar-xar-1.6.1/xar/lib/linuxattr.c
+@@ -44,6 +44,7 @@
+ #include "b64.h"
+ #include <errno.h>
+ #include <string.h>
++#include <stdlib.h>
+ #include "util.h"
+ #include "linuxattr.h"
+ #include "io.h"

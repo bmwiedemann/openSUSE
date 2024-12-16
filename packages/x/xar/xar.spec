@@ -1,7 +1,7 @@
 #
 # spec file for package xar
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Source:         https://github.com/mackyle/xar/archive/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM ext2.patch gh#mackyle/xar#10
 Patch0:         ext2.patch
 Patch1:         openssl-checks.patch
+Patch2:         xar-fix-prototype.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  e2fsprogs-devel
@@ -79,6 +80,7 @@ table of content's rich meta-data.
 %setup -q -n %{name}-%{name}-%{version}
 %patch -P 0
 %patch -P 1 -p1
+%patch -P 2 -p1
 
 %build
 pushd xar
