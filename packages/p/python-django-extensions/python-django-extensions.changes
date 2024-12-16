@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 16 10:27:01 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Fix build
+  * use older Django, not compatible with the new one
+  * skip tests failing with new pytest
+
+-------------------------------------------------------------------
 Tue Feb  6 01:12:01 UTC 2024 - John Vandenberg <jayvdb@gmail.com>
 
 - Fix Python 3.12 by disabling mail_debug testing.

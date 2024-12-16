@@ -26,7 +26,8 @@ URL:            https://github.com/django-extensions/django-extensions
 Source:         https://github.com/django-extensions/django-extensions/archive/%{version}.tar.gz#/django-extensions-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-Requires:       python-Django >= 3.2
+# not compatible with Django 5.1 yet
+Requires:       (python-Django >= 3.2 with python-Django < 5.1)
 Recommends:     python-Pygments
 Recommends:     python-Werkzeug
 Recommends:     python-django-json-widget
@@ -41,7 +42,7 @@ BuildArch:      noarch
 # SECTION test requirements
 # See https://github.com/django-extensions/django-extensions/issues/1617
 # for optional dependency django-pdb
-BuildRequires:  %{python_module Django >= 3.2}
+BuildRequires:  %{python_module Django >= 3.2 with %python-Django < 5.1}
 BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module Werkzeug}
 BuildRequires:  %{python_module django-json-widget}
@@ -97,6 +98,9 @@ skips="$skips or test_migration_is_last_applied or test_installed_apps_no_resolv
 # test_should_colorize_noclasses_with_default_lexer can sometimes fail with minor html output differences
 # when pygments is updated.  Uncomment this when that occurs, and raise an issue upstream.
 #skips="$skips or test_should_colorize_noclasses_with_default_lexer"
+
+# many DumpScriptTests fail with pytest 8 https://github.com/django-extensions/django-extensions/issues/1877
+skips="$skips or DumpScriptTests"
 
 # test_export_emails, test_set_fake_emails and test_set_fake_emails fail in setup due to missing fixtures in sdist
 %pytest -rs -v -k "not ($skips)" --ignore tests/management/commands/test_set_fake_passwords.py --ignore tests/management/commands/test_set_fake_emails.py --ignore tests/management/commands/test_export_emails.py
