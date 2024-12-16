@@ -299,4 +299,18 @@
     go-xmpp &gt;= 0.2.5).</comment>
     <requestid>1226437</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>6ee40268fd07f57991254a6acbbe8579</srcmd5>
+    <version>0.13.0</version>
+    <time>1734373072</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.13.0:
+  Added:
+  * Add --anonymous to support anonymous authentication (requires go-xmpp &gt;= 0.2.8).
+  * Add XEP-0480: SASL Upgrade Tasks support (requires go-xmpp &gt;= 0.2.8).
+  * Add support for see-other-host stream error (requires go-xmpp &gt;= 0.2.8).
+  Changed:
+  * Don't automatically try other auth mechanisms if FAST authentication fails.</comment>
+    <requestid>1231375</requestid>
+  </revision>
 </revisionlist>
