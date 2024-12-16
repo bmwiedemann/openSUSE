@@ -697,6 +697,9 @@ Prefer: -liboqs-devel-32bit
 # have choice for libz.so.1: libz-ng-compat1-32bit libz1-32bit
 Prefer: -libz-ng-compat1-32bit
 
+# have choice for pkgconfig(capi20): libcapi20-devel libcapi20-devel-32bit
+Prefer: -libcapi20-devel-32bit
+
 #---
 
 %if "%_repository" != "ports"
