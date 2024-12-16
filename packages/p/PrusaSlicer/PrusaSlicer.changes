@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec 15 11:12:17 UTC 2024 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fixed loading STEP files
+- Added PrusaSlicer-2.8.1-pr13761-fix-occtwrapper.patch
+- Removed up-occt-version.patch
+
+-------------------------------------------------------------------
 Sun Dec  8 16:40:40 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Changelog for 2.8.1

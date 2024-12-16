@@ -405,4 +405,12 @@ Resubmitting in the hope that all bots and maintainers pick it up this time. The
     where printer is selected does not use this information - it</comment>
     <requestid>1229138</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>42424a8db9629a744b19e3678bf0b2ed</srcmd5>
+    <version>2.8.1</version>
+    <time>1734373110</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1231522</requestid>
+  </revision>
 </revisionlist>

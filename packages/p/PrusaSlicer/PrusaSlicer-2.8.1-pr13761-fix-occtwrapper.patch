@@ -1,0 +1,121 @@
+From db3232171448d68ed7a206c9683b5aa968181e22 Mon Sep 17 00:00:00 2001
+From: Andreas Schneider <asn@cryptomilk.org>
+Date: Sun, 15 Dec 2024 10:36:34 +0100
+Subject: [PATCH 1/2] Install OCCTWrapper into libdir on Linux
+
+The FHS says that libraries should be installed in the library
+directory on Linux.
+---
+ src/libslic3r/Format/STEP.cpp   | 6 +++---
+ src/occt_wrapper/CMakeLists.txt | 7 +++++--
+ 2 files changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/src/libslic3r/Format/STEP.cpp b/src/libslic3r/Format/STEP.cpp
+index c2761e07c04..d6bf6c26dac 100644
+--- a/src/libslic3r/Format/STEP.cpp
++++ b/src/libslic3r/Format/STEP.cpp
+@@ -39,8 +39,8 @@ LoadStepFn get_load_step_fn()
+ #endif
+ 
+     if (!load_step_fn) {
+-        auto libpath = boost::dll::program_location().parent_path();
+ #ifdef _WIN32
++        auto libpath = boost::dll::program_location().parent_path();
+         libpath /= "OCCTWrapper.dll";
+         HMODULE module = LoadLibraryW(libpath.wstring().c_str());
+         if (module == NULL)
+@@ -61,8 +61,8 @@ LoadStepFn get_load_step_fn()
+ #elif __APPLE__
+         load_step_fn = &load_step_internal;
+ #else
+-        libpath /= "OCCTWrapper.so";
+-        void *plugin_ptr = dlopen(libpath.c_str(), RTLD_NOW | RTLD_GLOBAL);
++        // This is installed into /usr/lib(64)/ and dlopen will search there.
++        void *plugin_ptr = dlopen("OCCTWrapper.so", RTLD_NOW | RTLD_GLOBAL);
+ 
+         if (plugin_ptr) {
+             load_step_fn = reinterpret_cast<LoadStepFn>(dlsym(plugin_ptr, fn_name));
+diff --git a/src/occt_wrapper/CMakeLists.txt b/src/occt_wrapper/CMakeLists.txt
+index f6df6e7a605..f156516dd28 100644
+--- a/src/occt_wrapper/CMakeLists.txt
++++ b/src/occt_wrapper/CMakeLists.txt
+@@ -59,5 +59,8 @@ target_link_libraries(OCCTWrapper libslic3r admesh)
+ 
+ include(GNUInstallDirs)
+ 
+-install(TARGETS OCCTWrapper DESTINATION "${CMAKE_INSTALL_BINDIR}")
+-
++if (WIN32 OR APPLE)
++    install(TARGETS OCCTWrapper DESTINATION "${CMAKE_INSTALL_BINDIR}")
++else()
++    install(TARGETS OCCTWrapper DESTINATION "${CMAKE_INSTALL_LIBDIR}")
++endif()
+
+From 4fa91caa73b66827c434e5d67e2f090d8bc71063 Mon Sep 17 00:00:00 2001
+From: Andreas Schneider <asn@cryptomilk.org>
+Date: Sun, 15 Dec 2024 10:49:43 +0100
+Subject: [PATCH 2/2] Bump OpenCASCADE requirement and implement version check
+
+This implements a saner version check.
+
+We only have to link against TKDESTEP. The target has all the needed
+dependencies set.
+---
+ src/occt_wrapper/CMakeLists.txt | 42 ++++++++++++---------------------
+ 1 file changed, 15 insertions(+), 27 deletions(-)
+
+diff --git a/src/occt_wrapper/CMakeLists.txt b/src/occt_wrapper/CMakeLists.txt
+index f156516dd28..d10fd23407f 100644
+--- a/src/occt_wrapper/CMakeLists.txt
++++ b/src/occt_wrapper/CMakeLists.txt
+@@ -19,35 +19,23 @@ include(GenerateExportHeader)
+ 
+ generate_export_header(OCCTWrapper)
+ 
+-find_package(OpenCASCADE 7.6.1 REQUIRED)
++find_package(OpenCASCADE REQUIRED)
++# OpenCASCADE has an exact version match even if you don't specify the EXACT
++# keyword in the find_package(). So lets implement it on our own.
++set(OPENCASCADE_MODULE_VERSION
++    "${OpenCASCADE_MAJOR_VERSION}.${OpenCASCADE_MINOR_VERSION}.${OpenCASCADE_MAINTENANCE_VERSION}")
++set(OPENCASCADE_REQUIRED_VERSION "7.8.0")
++if (${OPENCASCADE_MODULE_VERSION} VERSION_LESS ${OPENCASCADE_REQUIRED_VERSION})
++    message(
++        FATAL_ERROR
++        "Coun't find a compatible OpenCASCADE version - "
++        "required: ${OPENCASCADE_REQUIRED_VERSION}, found: "
++        "${OPENCASCADE_MODULE_VERSION}"
++    )
++endif()
+ 
+ set(OCCT_LIBS
+-    TKXDESTEP
+-    TKSTEP
+-    TKSTEP209
+-    TKSTEPAttr
+-    TKSTEPBase
+-    TKXCAF
+-    TKXSBase
+-    TKVCAF
+-    TKCAF
+-    TKLCAF
+-    TKCDF
+-    TKV3d
+-    TKService
+-    TKMesh
+-    TKBO
+-    TKPrim
+-    TKHLR
+-    TKShHealing
+-    TKTopAlgo
+-    TKGeomAlgo
+-    TKBRep
+-    TKGeomBase
+-    TKG3d
+-    TKG2d
+-    TKMath
+-    TKernel
++    TKDESTEP
+ )
+ 
+ slic3r_remap_configs("${OCCT_LIBS}" RelWithDebInfo Release)

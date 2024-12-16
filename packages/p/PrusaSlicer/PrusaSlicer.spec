@@ -29,8 +29,8 @@ Source0:        https://github.com/prusa3d/PrusaSlicer/archive/version_%{version
 Patch1:         PrusaSlicer-2.7.1-slic3r-wxWidgets-3.2.4.patch
 # PATCH-FIX-UPSTREAM PrusaSlicer-2.8.1-pr13609-fix-build.patch gh#prusa3d/PrusaSlicer#13609
 Patch2:         PrusaSlicer-2.8.1-pr13609-fix-build.patch
-# PATCH-FIX-OPENSUSE up-occt-version.patch mike.chikov@gmail.com -- install wrapper so into libdir, not bindir
-Patch10:        up-occt-version.patch
+# PATCH-FIX-OPENSUSE PrusaSlicer-2.8.1-pr13761-fix-occtwrapper.patch gh#prusa3d/PrusaSlicer#13761
+Patch10:        PrusaSlicer-2.8.1-pr13761-fix-occtwrapper.patch
 # PATCH-FIX-OPENSUSE PrusaSlicer-2.6.0-octoprint-name-fix.patch -- cast lambda expression to same type
 Patch11:        PrusaSlicer-2.6.0-octoprint-name-fix.patch
 BuildRequires:  blosc-devel
