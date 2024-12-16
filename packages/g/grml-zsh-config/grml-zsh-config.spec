@@ -17,12 +17,12 @@
 
 
 Name:           grml-zsh-config
-Version:        0.19.8
+Version:        0.19.9
 Release:        0
 Summary:        Zsh config used by grml
 License:        GPL-2.0-only
 URL:            https://grml.org/zsh/
-Source:         https://deb.grml.org/pool/main/g/grml-etc-core/grml-etc-core_%{version}.tar.gz
+Source:         https://github.com/grml/grml-etc-core/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:  python3-txt2tags
 Requires:       grep
 Requires:       procps

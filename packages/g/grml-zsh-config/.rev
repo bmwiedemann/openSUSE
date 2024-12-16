@@ -45,4 +45,15 @@
   * debian: update Vcs-Git and Vcs-Browser</comment>
     <requestid>1226436</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5c578fa8ff2c680213f99f5f7a4b1906</srcmd5>
+    <version>0.19.9</version>
+    <time>1734373081</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.19.9:
+  * fix(zshrc): keep existing history restrictions
+  * zshenv: add ~/.local/bin to default PATH
+  * zshrc: increase HISTSIZE + SAVEHIST to our defaults also for live system</comment>
+    <requestid>1231389</requestid>
+  </revision>
 </revisionlist>

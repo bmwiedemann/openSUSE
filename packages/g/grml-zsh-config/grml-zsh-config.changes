@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 16 11:55:05 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.19.9:
+  * fix(zshrc): keep existing history restrictions
+  * zshenv: add ~/.local/bin to default PATH
+  * zshrc: increase HISTSIZE + SAVEHIST to our defaults also for live system 
+
+-------------------------------------------------------------------
 Tue Nov 26 07:46:40 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.19.8:
