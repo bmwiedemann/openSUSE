@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Dec 16 14:15:30 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.23.0:
+  * Fix cluster-wide resource readiness check
+  * build(deps): bump the ci group across 1 directory with 5
+    updates
+  * Use `#MetaComponent` in test module
+  * Allow disabling waiting for specific resources
+  * Add the `Bundle` Go type to the public API
+  * Update dependencies to Kubernetes 1.32.0
+  * Add --digest flag to timoni build
+  * Bumps CUE to version 0.11.0
+  * Add --digest flag to timoni apply
+  * Update importer tests
+  * Regenerate CRD types
+  * Add test case for Flagger CRDs
+  * Import Flagger CRDs
+  * Update tests
+  * Update CUE to cue-lang/cue@v0.11.0
+  * Fix CLI autocompletion on ZSH when installed with Homebrew
+  * Fix typo in website home
+  * build(deps): bump the ci group with 4 updates
+
+-------------------------------------------------------------------
 Wed Oct 23 09:45:23 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.22.1:

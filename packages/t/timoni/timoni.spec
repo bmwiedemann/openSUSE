@@ -17,7 +17,7 @@
 
 
 Name:           timoni
-Version:        0.22.1
+Version:        0.23.0
 Release:        0
 Summary:        Package manager for Kubernetes, powered by CUE and inspired by Helm
 License:        Apache-2.0
