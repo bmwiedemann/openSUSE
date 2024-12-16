@@ -1,7 +1,7 @@
-Index: hawk2-2.6.5+git.1733657357.36d3ca16/hawk/Gemfile
+Index: hawk2-2.6.6+git.1734344973.d7058a83/hawk/Gemfile
 ===================================================================
---- hawk2-2.6.5+git.1733657357.36d3ca16.orig/hawk/Gemfile
-+++ hawk2-2.6.5+git.1733657357.36d3ca16/hawk/Gemfile
+--- hawk2-2.6.6+git.1734344973.d7058a83.orig/hawk/Gemfile
++++ hawk2-2.6.6+git.1734344973.d7058a83/hawk/Gemfile
 @@ -16,15 +16,15 @@
  # trying to build packaged software?
  #
@@ -22,10 +22,10 @@ Index: hawk2-2.6.5+git.1733657357.36d3ca16/hawk/Gemfile
  gem "kramdown", ">= 1.14"
  gem "uglifier", ">= 3"
  
-Index: hawk2-2.6.5+git.1733657357.36d3ca16/hawk/config/application.rb
+Index: hawk2-2.6.6+git.1734344973.d7058a83/hawk/config/application.rb
 ===================================================================
---- hawk2-2.6.5+git.1733657357.36d3ca16.orig/hawk/config/application.rb
-+++ hawk2-2.6.5+git.1733657357.36d3ca16/hawk/config/application.rb
+--- hawk2-2.6.6+git.1734344973.d7058a83.orig/hawk/config/application.rb
++++ hawk2-2.6.6+git.1734344973.d7058a83/hawk/config/application.rb
 @@ -44,6 +44,11 @@ module Hawk
        config.middleware.use Rack::Deflater
      end
@@ -38,10 +38,10 @@ Index: hawk2-2.6.5+git.1733657357.36d3ca16/hawk/config/application.rb
      config.x.hawk_is_sles = system("cat /etc/os-release | grep 'ID=.*sles' >/dev/null 2>&1")
  
      def lookup_daemon_dir
-Index: hawk2-2.6.5+git.1733657357.36d3ca16/hawk/config/boot.rb
+Index: hawk2-2.6.6+git.1734344973.d7058a83/hawk/config/boot.rb
 ===================================================================
---- hawk2-2.6.5+git.1733657357.36d3ca16.orig/hawk/config/boot.rb
-+++ hawk2-2.6.5+git.1733657357.36d3ca16/hawk/config/boot.rb
+--- hawk2-2.6.6+git.1734344973.d7058a83.orig/hawk/config/boot.rb
++++ hawk2-2.6.6+git.1734344973.d7058a83/hawk/config/boot.rb
 @@ -38,7 +38,7 @@ else
    gem "virtus", version: "~> 1.0"
    require "virtus"
@@ -51,10 +51,10 @@ Index: hawk2-2.6.5+git.1733657357.36d3ca16/hawk/config/boot.rb
    require "js-routes"
  
    gem "fast_gettext", version: "~> 1.4"
-Index: hawk2-2.6.5+git.1733657357.36d3ca16/hawk/config/environments/development.rb
+Index: hawk2-2.6.6+git.1734344973.d7058a83/hawk/config/environments/development.rb
 ===================================================================
---- hawk2-2.6.5+git.1733657357.36d3ca16.orig/hawk/config/environments/development.rb
-+++ hawk2-2.6.5+git.1733657357.36d3ca16/hawk/config/environments/development.rb
+--- hawk2-2.6.6+git.1734344973.d7058a83.orig/hawk/config/environments/development.rb
++++ hawk2-2.6.6+git.1734344973.d7058a83/hawk/config/environments/development.rb
 @@ -27,7 +27,7 @@ Rails.application.configure do
  
    config.cache_store = :memory_store

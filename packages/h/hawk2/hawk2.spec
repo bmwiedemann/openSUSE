@@ -39,7 +39,7 @@ Name:           hawk2
 Summary:        HA Web Konsole
 License:        GPL-2.0-only
 Group:          %{pkg_group}
-Version:        2.6.5+git.1733657357.36d3ca16
+Version:        2.6.6+git.1734344973.d7058a83
 Release:        0
 URL:            http://www.clusterlabs.org/wiki/Hawk
 Source:         %{name}-%{version}.tar.bz2
@@ -72,8 +72,8 @@ BuildRequires:  distribution-release
 BuildRequires:  timezone
 BuildRequires:  rubygem(%{rb_build_abi}:bundler)
 Requires:       rubygem(%{rb_build_abi}:bundler)
-BuildRequires:  rubygem(%{rb_build_abi}:rails) >= 7
-Requires:       rubygem(%{rb_build_abi}:rails) >= 7
+BuildRequires:  rubygem(%{rb_build_abi}:rails) >= 8
+Requires:       rubygem(%{rb_build_abi}:rails) >= 8
 BuildRequires:  rubygem(%{rb_build_abi}:websocket-driver:0.7.6)
 Requires:       rubygem(%{rb_build_abi}:websocket-driver:0.7.6)
 BuildRequires:  rubygem(%{rb_build_abi}:puma) >= 5

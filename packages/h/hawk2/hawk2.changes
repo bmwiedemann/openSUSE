@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 16 10:32:19 UTC 2024 - aburlakov@suse.com
+
+- Update to version 2.6.6+git.1734344973.d7058a83:
+  * Dev: bump rails-7 --> rails-8
+  * Test: test_check_cluster_configuration: relax required resource options
+
+-------------------------------------------------------------------
 Sun Dec 08 11:59:58 UTC 2024 - aburlakov@suse.com
 
 - Update to version 2.6.5+git.1733657357.36d3ca16:
