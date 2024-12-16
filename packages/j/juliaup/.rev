@@ -553,4 +553,14 @@
 </comment>
     <requestid>1228518</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>ccafeef9aff18f2aba5db15947c04269</srcmd5>
+    <version>1.17.10</version>
+    <time>1734373090</time>
+    <user>anag+factory</user>
+    <comment>- Update vendored dependencies.
+  * resolves bsc#1233963
+</comment>
+    <requestid>1231407</requestid>
+  </revision>
 </revisionlist>
