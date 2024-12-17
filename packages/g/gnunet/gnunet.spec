@@ -19,7 +19,7 @@
 
 
 Name:           gnunet
-Version:        0.22.2
+Version:        0.23.0
 Release:        0
 Summary:        Security focused Peer-to-Peer Framework
 License:        AGPL-3.0-or-later
