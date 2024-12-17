@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 17 13:20:39 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Update to docker-buildx 0.19.3. See upstream changelog online at
+  <https://github.com/docker/buildx/releases/tag/v0.19.3>
+
+-------------------------------------------------------------------
 Wed Dec 11 10:14:56 UTC 2024 - Aleksa Sarai <asarai@suse.com>
 
 - Update docker-buildx to v0.19.2. See upstream changelog online at
