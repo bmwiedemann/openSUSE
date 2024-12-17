@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Dec 16 08:31:13 UTC 2024 - madhankumar.chellamuthu@suse.com
+
+- Update to version 2.0.2:
+  * update containerd-fuse-overlayfs (2.1.0)
+  * update BuildKit (0.18.1)
+  * build(deps): bump tonistiigi/xx from 1.5.0 to 1.6.0
+  * build(deps): bump the docker group with 2 updates
+  * [doc] rootlesskit port driver configuration
+  * build(deps): bump github.com/cyphar/filepath-securejoin
+  * build(deps): bump the golang-x group with 6 updates
+  * fix: Fix --env-file flag behavior in nerdctl compose
+  * Cleanup namespace validation
+  * validatePathComponent tests
+  * Remove dependency on misplaced helper CreateBuildContext for next-gen tests
+  * Increase timeouts on CI
+  * gocontext -> context
+  * gocni -> cni
+  * Create directory for bypass4netns pid file
+  * Fix hosts.toml resolution for docker domain
+  * Enhance CNI config load error condition UX
+  * Marking TestCreate/logs as flaky
+  * feat: add force-recreate and no-recreate for compose up command
+  * Relax compose concurrency lock
+  * fix nerdctl ps slow on heavy IO system by using goroutine
+
+-------------------------------------------------------------------
 Tue Dec 03 08:53:13 UTC 2024 - madhankumar.chellamuthu@suse.com
 
 - Update to version 2.0.1:
