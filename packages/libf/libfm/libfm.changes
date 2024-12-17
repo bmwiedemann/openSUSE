@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 17 09:11:31 UTC 2024 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Add patch to support gcc14 -Werror=incompatible-pointer-types
+  fix-gcc14.patch
+
+-------------------------------------------------------------------
 Thu Feb 29 16:22:43 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
