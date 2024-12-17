@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Dec 17 13:24:25 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Update to aquamarine-0.5.1:
+  * A minor update with some stability improvements.
+  * Fixes:
+    - buffer: remove useless forward def
+    - drm: Validate conn before dereference in
+      CDRMAtomicRequest::commit()
+    - clearer flow when rescanning connectors
+    - allow multigpu blit from explicit to implicit
+
+- Changes from aquamarine-0.5.0:
+  * A new major update with a few fixes.
+    This update breaks ABI and API compatibility. Sover has been
+    bumped to 4.
+  * Fixes:
+    - Fix fences according to spec
+    - scan only cards and not outputs, safeguard against null
+      renderer
+
+- Changes from aquamarine-0.4.5:
+  * A small update to add a drm_dumb allocator.
+
+-------------------------------------------------------------------
 Sat Nov  9 16:40:43 UTC 2024 - Florian "spirit" <sp1rit@disroot.org>
 
 - Update to aquamarine-0.4.4:

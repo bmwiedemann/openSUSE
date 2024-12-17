@@ -16,13 +16,13 @@
 #
 
 
-%define sover   3
+%define sover   4
 %define _description %{expand:
 Aquamarine is a very light linux rendering backend library. It
 provides basic abstractions for an application to render on a Wayland
 session (in a window) or a native DRM session.}
 Name:           aquamarine
-Version:        0.4.4
+Version:        0.5.1
 Release:        0
 Summary:        Rendering backend library
 License:        BSD-3-Clause
