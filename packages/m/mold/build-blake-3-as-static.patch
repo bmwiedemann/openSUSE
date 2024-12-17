@@ -1,9 +1,9 @@
 diff --git a/third-party/blake3/c/CMakeLists.txt b/third-party/blake3/c/CMakeLists.txt
-index 3aa6c15..4790918 100644
+index ebcca1db..4c7508aa 100644
 --- a/third-party/blake3/c/CMakeLists.txt
 +++ b/third-party/blake3/c/CMakeLists.txt
-@@ -31,7 +31,7 @@ set(BLAKE3_X86_NAMES i686 x86 X86)
- endif()
+@@ -111,7 +111,7 @@ endif()
+ mark_as_advanced(BLAKE3_SIMD_TYPE)
  
  # library target
 -add_library(blake3

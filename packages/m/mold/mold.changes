@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Dec 17 06:02:19 UTC 2024 - Martin Liška <martin.liska@hey.com>
+
+- Update to version 2.35.1
+  * mold guarantees that outputs are reproducible, meaning that if you provide the
+    exact same set of input files and command-line options to the same version of
+    mold, the output is assured to be byte-for-byte identical. However, there was a
+    bug where the --icf option caused outputs to be indeterministic, even though all
+    possible outputs were logically correct (#1377). This issue has now been
+    resolved. (2a78b1b)
+  * [RISC-V] Support for obsolete GP-relative relocations has been removed. These
+    relocations were ratified (riscv-non-isa/riscv-elf-psabi-doc@d49e480) but then
+    removed (riscv-non-isa/riscv-elf-psabi-doc@ad02546) from the processor-specific
+    ABI. There are no known real-world use cases for these relocations. (04066d1)
+
+-------------------------------------------------------------------
 Sun Dec  8 08:58:41 UTC 2024 - Martin Liška <martin.liska@hey.com>
 
 - Update to version 2.35.0
