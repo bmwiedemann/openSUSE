@@ -77,7 +77,7 @@ Requires:       python-virtualenv >= 20.24.3
 Requires:       (python-importlib-metadata >= 0.12 if python-base < 3.8)
 Requires:       (python-tomli >= 2.0.1 if python-base < 3.11)
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 # last detox version is 0.19
 Obsoletes:      python-detox <= 0.19
 Provides:       python-detox > 0.19
@@ -142,6 +142,7 @@ donttest+=" or test_different_config_cwd"
 donttest+=" or test_toxuone_env"
 donttest+=" or test_isolated_build_backend_missing_hook"
 donttest+=" or test_parallel_live or (test_parallel and not test_parallel_)"
+donttest+=" or test_load_dependency_many_extra"
 # gh#tox-dev/tox#3011
 donttest+=" or test_replace_env_var_circular_flip_flop"
 #

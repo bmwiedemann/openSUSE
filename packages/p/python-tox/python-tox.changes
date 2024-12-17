@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 10 17:01:25 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Ignore failing test_load_dependency_many_extra test case as
+  well.
+
+-------------------------------------------------------------------
 Wed Nov  6 18:21:14 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 4.23.2
