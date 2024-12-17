@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Dec 17 10:03:21 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 1.24.2:
+  * added "1:1" icons to local contrast and texture boost panels
+  * added function getExecutablePath()
+  * added support for reading color labels from xmp metadata
+    embedded in the image
+  * camconst: added dcraw matrix for SIGMA DP1
+  * camconst: removed hardcoded (wrong) black level for Nikon D5
+  * CTL: ensure we keep a reference to Ctl::Interpreter around
+    while there are Ctl::FunctionCallPtrS alive
+  * filecatalog: use idle_register instead of GThreadLock for GUI
+    updates from other threads
+  * fixed compilation error when not using libraw
+  * fixed propagation of scroll events to the shortcut manager
+  * fixed truncation of local contrast curve when initially opened
+  * gauss: use AlignedBuffer instead of stack-allocated arrays
+  * getExecutablePath: change argument type to const char *
+  * improved handling of omp pragmas in evaluating CTL scripts
+  * improved keyboard navigation in the batch queue
+  * pathutils: added missing include directive
+  * print messages about CLF and CTL cache misses when verbosity >
+    1
+  * rawimage: do not read black/white levels from camconst for
+    foveon cameras when using libraw
+  * rawimage: don't recompute black levels for DNG files
+  * removed (confusing) option to partially copy a profile to the
+    clipboard
+  * search for language translation files also in the ctlscripts
+    directories
+  * simplified implementation of FileCatalog::_refreshProgressBar
+  * smoothing: added wavelets mode
+  * take into account the selected UI font size in the inspector
+    and editor info panels
+  * updated Hungarian translation
+
+-------------------------------------------------------------------
 Sat Oct 12 12:56:59 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to 1.24.1:
