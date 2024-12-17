@@ -106,4 +106,13 @@
 </comment>
     <requestid>1206533</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>5f64cfe7b641d27301c0ac89c815b3cc</srcmd5>
+    <version>1.29.1</version>
+    <time>1734459945</time>
+    <user>anag+factory</user>
+    <comment>- removed lua_bindings.patch as the autoconf tolls don't work any 
+  more</comment>
+    <requestid>1231724</requestid>
+  </revision>
 </revisionlist>

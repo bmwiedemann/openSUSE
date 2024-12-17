@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 17 15:40:54 UTC 2024 - Christian Goll <cgoll@suse.com>
+
+- removed lua_bindings.patch as the autoconf tolls don't work any 
+  more
+
+-------------------------------------------------------------------
 Wed Oct  9 12:58:01 UTC 2024 - Christian Goll <cgoll@suse.com>
 
 - update to 1.29.1 which increased the internal buffer in nodeattr for large

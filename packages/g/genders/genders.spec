@@ -30,8 +30,6 @@ Group:          System/Management
 Source:         https://github.com/chaos/genders/archive/genders-%{slash_ver}/%{name}-%{version}.tar.gz
 Patch1:         Fix-Python-package-installation-use-root.patch
 Patch2:         Remove-PERL_DESTDIR-use-DESTDIR-instead.patch
-Patch4:         lua_bindings.patch
-#Patch5:         also-check-for-python3.patch
 URL:            https://github.com/chaos/genders
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
@@ -41,6 +39,7 @@ BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  lua-devel
+BuildRequires:  luajit2-devel
 BuildRequires:  patchelf
 BuildRequires:  python3-devel
 BuildRequires:  perl(ExtUtils::MakeMaker)
@@ -85,15 +84,6 @@ Requires:       %{name} = %{version}
 
 %description -n python3-%{name}
 Necessary files for using genders with Python.
-
-%package -n lua-%{name}
-Summary:        Lua bindings for genders
-Group:          Development/Languages/Lua
-Requires:       %{name} = %{version}
-Requires:       lua
-
-%description -n lua-%{name}
-Necessary files for using genders with lua.
 
 %package -n perl-%{name}
 Summary:        Perl bindings for genders
@@ -160,7 +150,6 @@ export GENDERS_LIBDIR=%{_libdir}
     %{?_without_python_extensions} \
     %{?_with_cplusplus_extensions} \
     %{?_without_cplusplus_extensions} \
-    --with-lua-extensions \
     --without-java-extensions \
     --disable-static
 
@@ -183,7 +172,6 @@ for file in %{buildroot}%{_prefix}/lib/genders/*.pl; do grep '#!/usr/bin/perl' $
 rm -v %{buildroot}%{_libdir}/libgendersplusplus.la
 %endif
 rm -v %{buildroot}%{_libdir}/libgenders.la
-find %{buildroot}%{_libdir}/lua -name \*.la -delete
 mkdir -p  %{buildroot}%{_sysconfdir}
 # create sample config, but remove comments
 cat > %{buildroot}%{_sysconfdir}/genders <<EOF
@@ -248,9 +236,6 @@ chmod 444 $brklib
 %files -n python3-%{name}
 %{_libdir}/python*
 %endif
-
-%files -n lua-%{name}
-%{_libdir}/lua
 
 %if %{?_with_perl_extensions:1}%{!?_with_perl_extensions:0}
 %files -n perl-%{name}
