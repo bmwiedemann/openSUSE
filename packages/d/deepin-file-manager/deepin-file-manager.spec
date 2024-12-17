@@ -241,7 +241,12 @@ mkdir build
 pushd build
 mkdir polkit
 mv %{buildroot}%{_datadir}/polkit-1/actions/* polkit/
-tar -cvf polkit.tar.gz polkit
+reproducibletarflags="
+      --sort=name
+      --mtime=@${SOURCE_DATE_EPOCH:-$(date +%%s)}
+      --owner=0 --group=0 --numeric-owner
+      --pax-option=exthdr.name=%%d/PaxHeaders/%%f,delete=atime,delete=ctime"
+tar $reproducibletarflags -cvf polkit.tar.gz polkit
 install -m 0644 polkit.tar.gz %{buildroot}%{_datadir}/%{_name}/
 
 mkdir dbus
@@ -249,7 +254,7 @@ mkdir dbus/system-services
 mkdir dbus/system.d
 mv %{buildroot}%{_datadir}/dbus-1/system-services/* dbus/system-services
 mv %{buildroot}%{_sysconfdir}/dbus-1/system.d/* dbus/system.d
-tar -cvf dbus.tar.gz dbus
+tar $reproducibletarflags -cvf dbus.tar.gz dbus
 install -m 0644 dbus.tar.gz %{buildroot}%{_datadir}/%{_name}/
 popd
 

@@ -114,4 +114,12 @@
     <comment>- Add include-string_utils_h.patch to fix build on Tumbleweed (forwarded request 1205705 from hillwood)</comment>
     <requestid>1205706</requestid>
   </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>5073d2d2ffe7ceba47cd7a49a7bd6121</srcmd5>
+    <version>5.6.4</version>
+    <time>1734459885</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1231504</requestid>
+  </revision>
 </revisionlist>

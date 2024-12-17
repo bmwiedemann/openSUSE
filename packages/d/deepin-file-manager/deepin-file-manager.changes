@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 11 09:57:39 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Make tarball creation reproducible (boo#1218191)
+
+-------------------------------------------------------------------
 Fri Oct  4 13:21:20 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
 
 - Add include-string_utils_h.patch to fix build on Tumbleweed 
