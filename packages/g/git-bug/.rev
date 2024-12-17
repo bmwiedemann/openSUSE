@@ -174,4 +174,21 @@ Also switch to _service and generated tarball
 (🤖: Submission of git-bug via https://src.opensuse.org/pool/git-bug/pulls/1 by mcepl)</comment>
     <requestid>1205581</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bb2eb774c98c95619be24665460297f7</srcmd5>
+    <version>0.8.0+git.1733745604.d499b6e</version>
+    <time>1734459924</time>
+    <user>anag+factory</user>
+    <comment>Cve 2024 45337 Crypto Bump
+
+- Update to version 0.8.0+git.1733745604.d499b6e:
+  * fix typos in docs (#1266)
+  * build(deps): bump github.com/go-git/go-billy/v5 from 5.5.0 to 5.6.0 (#1289)
+- Add CVE-2024-45337-bump-go-crypto.patch to bump
+  golang.org/x/crypto from v0.26.0 to v0.31.0 (fix for
+  CVE-2024-45337, bsc#1234565).
+
+(🤖: Submission of git-bug via https://src.opensuse.org/pool/git-bug/pulls/2 by mcepl)</comment>
+    <requestid>1231700</requestid>
+  </revision>
 </revisionlist>

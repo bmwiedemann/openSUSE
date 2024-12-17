@@ -1,7 +1,7 @@
 #
 # spec file for package git-bug
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,26 @@
 
 
 Name:           git-bug
-Version:        0.8.0+git.1725552198.b0cc690
+Version:        0.8.0+git.1733745604.d499b6e
 Release:        0
 Summary:        Distributed, offline-first bug tracker embedded in git, with bridges
 License:        MIT
 URL:            https://github.com/MichaelMure/git-bug
 # Source0:        https://github.com/MichaelMure/%%{name}/archive/refs/tags/v%%{version}.tar.gz#/git-bug-%%{version}.tar.gz
 Source0:        git-bug-%{version}.tar.gz
+Source1:        vendor.tar.gz
 # PATCH-FIX-UPSTREAM remote-config.patch gh#MichaelMure/git-bug!1076 mcepl@suse.com
 # try reading git-bug.remote config value before defaulting to 'origin' when no explicit REMOTE argument
 Patch0:         remote-config.patch
-Source1:        vendor.tar.gz
+# PATCH-FIX-UPSTREAM CVE-2024-45337-bump-go-crypto.patch bsc#1234565 mcepl@suse.com
+# bump golang.org/x/crypto from v0.26.0 to v0.31.0
+Patch1:         CVE-2024-45337-bump-go-crypto.patch
+BuildRequires:  golang(API) = 1.22
 # # PATCH-FEATURE-UPSTREAM 501-export.patch gh#MichaelMure/git-bug!501 mcepl@suse.com
 # # add a command to export bugs as raw operations
 # Patch0:         501-export.patch
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) = 1.22
+BuildRequires:  git
 
 %description
 git-bug is a bug tracker that:
@@ -86,7 +90,7 @@ zsh shell completions for git-bug
 %autosetup -p1 -a1
 
 %build
-go build -v -x -mod=vendor -buildmode=pie
+%make_build build
 
 %install
 install -Dm755 git-bug %{buildroot}%{_bindir}/git-bug
@@ -101,7 +105,8 @@ install -Dm0644 misc/completion/zsh/git-bug  \
     %{buildroot}%{_sysconfdir}/zsh_completion.d/git-bug
 
 %check
-go test -v -s TestValidateUsername -mod=vendor -bench=. ./...
+# before we mark network requiring tests (gh#git-bug/git-bug#1313)
+%make_build test || true
 
 %files
 %license LICENSE

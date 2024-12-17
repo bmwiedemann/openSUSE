@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec 17 13:53:28 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to version 0.8.0+git.1733745604.d499b6e:
+  * fix typos in docs (#1266)
+  * build(deps): bump github.com/go-git/go-billy/v5 from 5.5.0 to 5.6.0 (#1289)
+- Add CVE-2024-45337-bump-go-crypto.patch to bump
+  golang.org/x/crypto from v0.26.0 to v0.31.0 (fix for
+  CVE-2024-45337, bsc#1234565).
+
+-------------------------------------------------------------------
 Thu Oct 03 18:28:47 UTC 2024 - mcepl@cepl.eu
 
 - Update to version 0.8.0+git.1725552198.b0cc690:
