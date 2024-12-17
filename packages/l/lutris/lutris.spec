@@ -65,6 +65,8 @@ Requires:       python3-pypresence
 Requires:       python3-moddb
 %endif
 %else
+BuildRequires:  apparmor-abstractions
+BuildRequires:  apparmor-rpm-macros
 BuildRequires:  fdupes
 BuildRequires:  gettext-tools
 BuildRequires:  gobject-introspection

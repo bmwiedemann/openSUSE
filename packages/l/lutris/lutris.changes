@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 16 17:52:17 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Add BuildRequires apparmor-abstractions, apparmor-rpm-macros for
+  Leap, fix for build error: directories not owned by a package:
+  /etc/apparmor.d
+
+-------------------------------------------------------------------
 Mon Dec  2 12:15:11 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.5.18:
