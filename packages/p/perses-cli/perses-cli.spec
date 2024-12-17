@@ -26,6 +26,8 @@ License:        Apache-2.0
 URL:            https://github.com/perses/perses
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/perses/perses/pull/2416
+Patch1:         https://github.com/perses/perses/commit/b04061023c941d879460d81e6e4c6019621dbc16.patch
 BuildRequires:  bash-completion
 BuildRequires:  fish
 BuildRequires:  go1.22 >= 1.22.5
