@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec 16 17:35:42 UTC 2024 - valentin.lefebvre@suse.com
+
+- Update to version 1.4.1+0.g2720d37:
+  * Release to 1.4.1
+  * bootloaders: remove installed uki
+  * bootloaders: all-ukis option
+  * COMMON_KERNEL_MODULESDIR variable
+
+-------------------------------------------------------------------
 Mon Sep 09 16:41:34 UTC 2024 - valentin.lefebvre@suse.com
 
 - Update to version 1.4.0+0.g50e5885:
