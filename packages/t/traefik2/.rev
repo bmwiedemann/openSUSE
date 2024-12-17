@@ -49,4 +49,12 @@ This is Traefik LTS version</comment>
     <comment></comment>
     <requestid>1225612</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2a31ee10b6f973f6cdaa310eb5dade6e</srcmd5>
+    <version>2.11.16</version>
+    <time>1734459880</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1231663</requestid>
+  </revision>
 </revisionlist>
