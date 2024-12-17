@@ -1,7 +1,0 @@
-<package name="nemiver" project="openSUSE:Factory">
-  <title>Nemiver graphical debugger</title>
-  <description>Nemiver is a standalone graphical debugger that integrates well in the
-GNOME desktop environment. It currently features a backend which uses
-the well known GNU Debugger gdb to debug C / C++ programs.</description>
-  <devel project="GNOME:Apps" package="nemiver"/>
-</package>
