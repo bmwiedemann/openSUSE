@@ -15,4 +15,12 @@
     <comment>with right license (forwarded request 1176682 from mslacken)</comment>
     <requestid>1176683</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>284fabd43f161d3888524ef188fab31e</srcmd5>
+    <version>3.4.2</version>
+    <time>1734459942</time>
+    <user>anag+factory</user>
+    <comment>updated vendored sources (forwarded request 1231712 from mslacken)</comment>
+    <requestid>1231713</requestid>
+  </revision>
 </revisionlist>

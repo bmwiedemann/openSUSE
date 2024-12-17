@@ -16,13 +16,12 @@
 #
 
 
-%define llamavers a3f03b7
-%define komputevers c339310
+%define llamavers 58a55ef
+%define komputevers 7c20efa
 
 %{?sle15_python_module_pythons}
-
 Name:           python-gpt4all
-Version:        2.7.3
+Version:        3.4.2
 Release:        0
 Summary:        open source llms for all
 License:        Apache-2.0 AND MIT
@@ -30,9 +29,9 @@ URL:            https://github.com/nomic-ai/gpt4all
 #MIT
 Source0:        https://github.com/nomic-ai/gpt4all/archive/refs/tags/v%{version}.tar.gz#/%{name}-v%{version}.tar.gz
 #MIT
-Source1:        https://github.com/nomic-ai/llama.cpp/archive/%{llamavers}.tar.gz
+Source1:        https://github.com/nomic-ai/llama.cpp/archive/%{llamavers}.tar.gz#/llama.cpp-%{llamavers}.tar.gz
 # Apache-2.0
-Source2:        https://github.com/nomic-ai/kompute/archive/c339310.tar.gz
+Source2:        https://github.com/nomic-ai/kompute/archive/%{komputevers}.tar.gz#/kompute-%{komputevers}.tar.gz
 Source3:        %{name}.rpmlintrc
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  cmake
@@ -44,22 +43,26 @@ BuildRequires:  gcc-c++
 %endif
 BuildRequires:  fmt-devel
 BuildRequires:  python-rpm-macros
+BuildRequires:  qt6-base-common-devel
 BuildRequires:  qt6-httpserver-devel
+BuildRequires:  qt6-linguist-devel
 BuildRequires:  qt6-pdf-devel
 BuildRequires:  qt6-quickdialogs2-devel
 BuildRequires:  qt6-sql-devel
 BuildRequires:  qt6-svg-devel
 BuildRequires:  qt6-wayland-devel
+BuildRequires:  rapidjson-devel
 BuildRequires:  shaderc
 BuildRequires:  shaderc-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  vulkan-devel
 BuildRequires:  vulkan-utility-libraries-devel
-Requires:       %{python_module importlib-metadata}
-Requires:       %{python_module requests}
-Requires:       %{python_module tqdm}
-Requires:       %{python_module typer}
-Requires:       %{python_module typing_extensions}
+Requires:       python-importlib-metadata
+Requires:       python-jinja2
+Requires:       python-requests
+Requires:       python-tqdm
+Requires:       python-typer
+Requires:       python-typing_extensions
 %python_subpackages
 
 %description
@@ -83,11 +86,12 @@ Libnrairy for aessing the models
 
 %prep
 %setup -n gpt4all-%{version}
-cd gpt4all-backend
+
+cd gpt4all-backend/deps/
 rmdir llama.cpp-mainline
 tar xzf %{S:1}
 mv llama.cpp-%{llamavers}* llama.cpp-mainline
-cd llama.cpp-mainline
+cd llama.cpp-mainline/ggml/src
 rmdir kompute
 tar xzf %{S:2}
 mv kompute-%{komputevers}* kompute
@@ -100,16 +104,7 @@ export CC=gcc-12
 cd gpt4all-backend
 %cmake -DLLAMA_KOMPUTE=ON \
        -DLLMODEL_CUDA=OFF \
-       -DLLMODEL_VULKAN=ON \
-       -DKOMPUTE_OPT_USE_BUILT_IN_VULKAN_HEADER=OFF \
-       -DKOMPUTE_OPT_DISABLE_VULKAN_VERSION_CHECK=ON \
-       -DKOMPUTE_OPT_USE_BUILT_IN_FMT=OFF \
-       -DCMAKE_BUILD_TYPE=RelWithDebInfo
-%cmake_build
-cd ../../gpt4all-chat
-%cmake -DLLAMA_KOMPUTE=ON \
-       -DLLMODEL_CUDA=OFF \
-       -DLLMODEL_VULKAN=ON \
+       -DLLMODEL_VULKAN=OFF \
        -DKOMPUTE_OPT_USE_BUILT_IN_VULKAN_HEADER=OFF \
        -DKOMPUTE_OPT_DISABLE_VULKAN_VERSION_CHECK=ON \
        -DKOMPUTE_OPT_USE_BUILT_IN_FMT=OFF \
@@ -122,40 +117,8 @@ cd ../../gpt4all-bindings/python
 %install
 cd gpt4all-bindings/python
 %python_install
-%python_expand %fdupes %{buildroot}%{$python_sitearch}
-install -D -m 0755 ../cli/app.py %{buildroot}/%{_bindir}/gpt4all-app
-%{python_expand # fix shebang
-sed -i 's|%{_bindir}/env python.*$|%{_bindir}/$python|' %{buildroot}/%{_bindir}/gpt4all-app
-}
-%python_clone -a %{buildroot}/%{_bindir}/gpt4all-app
-cd ../../gpt4all-chat
-%cmake_install
-
-%suse_update_desktop_file -c gpt4all-chat chat "Open-source assistant-style large language models that run locally on your CPU" gpt4all-chat gpt4all-chat.svg
-
-mv %{buildroot}%{_bindir}/chat %{buildroot}%{_bindir}/gpt4all-chat
-rm -v  %{buildroot}%{_prefix}/lib/*.a
-mkdir -p %{buildroot}%{_libdir}
-mv -v %{buildroot}%{_prefix}/lib/libllmodel.so* %{buildroot}%{_libdir}
-
-%post
-%python_install_alternative gpt4all-app
-
-%postun
-%python_uninstall_alternative gpt4all-app
 
 %files %{python_files}
 %{python_sitelib}/*
-%python_alternative %{_bindir}/gpt4all-app
-
-%files -n gpt4all-chat
-%{_bindir}/gpt4all-chat
-%{_prefix}/lib/libgptj*
-%{_prefix}/lib/libllamamodel*
-%{_prefix}/lib/libbert*
-%{_datadir}/applications/gpt4all-chat.desktop
-
-%files -n libllmodel0
-%{_libdir}/libllmodel.so*
 
 %changelog
