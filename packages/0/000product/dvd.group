@@ -2488,7 +2488,6 @@
     <package name="libnsl3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libnss_usrfiles2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libntfs-3g89" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libntlm0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libnuma1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libnumbertext-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libnumbertext-data" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->

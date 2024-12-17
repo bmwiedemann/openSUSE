@@ -615,9 +615,6 @@ unsorted:
   - angelfish 
   - angelfish-lang 
   - angelscript-devel 
-  - anjuta 
-  - anjuta-devel 
-  - anjuta-lang 
   - ansible 
   - ansible-10 
   - ansible-9 
@@ -2144,7 +2141,6 @@ unsorted:
   - chck-devel 
   - chealpix-devel 
   - cheat 
-  - check-a11y 
   - check-create-certificate 
   - check-devel 
   - check_postgres 
@@ -2325,7 +2321,6 @@ unsorted:
   - clpeak 
   - clthreads-devel 
   - clucene-core-devel 
-  - clustduct 
   - cluster-glue 
   - cluster-glue-devel 
   - cluster-glue-libs 
@@ -5085,9 +5080,6 @@ unsorted:
   - gdk-pixbuf-loader-rsvg-32bit 
   - gdk-pixbuf-query-loaders-32bit 
   - gdk-pixbuf-xlib-devel 
-  - gdl-devel 
-  - gdl-lang 
-  - gdlmm-devel 
   - gdm-branding-MicroOS 
   - gdm-branding-upstream 
   - gdm-devel 
@@ -7217,7 +7209,6 @@ unsorted:
   - glab-fish-completion 
   - glab-zsh-completion 
   - glade 
-  - glade-catalog-anjuta 
   - glade-catalog-evolution 
   - glade-catalog-gitg 
   - glade-catalog-gtkdatabox 
@@ -8004,7 +7995,6 @@ unsorted:
   - gpsd-clients 
   - gpsd-devel 
   - gpsd-qt5-devel 
-  - gpt4all-chat 
   - gptfdisk-fixparts 
   - gpu-screen-recorder 
   - gpu-screen-recorder-gtk 
@@ -8375,9 +8365,6 @@ unsorted:
   - gtkmm4-doc 
   - gtkmm4-tutorial 
   - gtkmm4-tutorial-lang 
-  - gtkpod 
-  - gtkpod-devel 
-  - gtkpod-lang 
   - gtksourceview-devel 
   - gtksourceview-theme-yaru 
   - gtksourceview2-devel 
@@ -10952,7 +10939,6 @@ unsorted:
   - ldap-proxy 
   - ldap-yp-tools 
   - ldapfuse 
-  - ldapvi 
   - ldas-tools-al-devel 
   - ldas-tools-al-swig 
   - ldas-tools-cmake 
@@ -11955,7 +11941,6 @@ unsorted:
   - libancient2 
   - libangelscript2_36_1 
   - libangelscript_addons2_36_1 
-  - libanjuta-3-0 
   - libansilove-devel 
   - libansilove1 
   - libanthy0 
@@ -11981,7 +11966,7 @@ unsorted:
   - libapr-util1-0-dbd-mysql 
   - libapr-util1-0-dbd-pgsql 
   - libapr-util1-0-dbd-sqlite3 
-  - libaquamarine3 
+  - libaquamarine4 
   - libaravis-0_8-0 
   - libaravis-0_8-devel 
   - libarchive-devel 
@@ -12050,7 +12035,6 @@ unsorted:
   - libatomic1-gcc7 
   - libatomic1-gcc7-32bit 
   - libatomic_ops-devel 
-  - libatomicparsley0 
   - libatopology2-32bit 
   - libatrildocument3 
   - libatrilview3 
@@ -13464,8 +13448,6 @@ unsorted:
   - libgdiplus0 
   - libgdk_pixbuf-2_0-0-32bit 
   - libgdk_pixbuf_xlib-2_0-0 
-  - libgdl-3-5 
-  - libgdlmm-3_0-2 
   - libgdruntime3 
   - libgdruntime3-32bit 
   - libgdruntime4 
@@ -13602,7 +13584,7 @@ unsorted:
   - libgnunetgns0 
   - libgnunetgnsrecord0 
   - libgnunetgnsrecordjson0 
-  - libgnunetgtk3 
+  - libgnunetgtk4 
   - libgnunethello0 
   - libgnunetidentity1 
   - libgnunetjson0 
@@ -13791,7 +13773,6 @@ unsorted:
   - libgtkhtml-editor-4_0-0 
   - libgtkimageview0 
   - libgtkmm-2_4-1 
-  - libgtkpod1 
   - libgtksourceview-2_0-0 
   - libgtksourceviewmm-3_0-0 
   - libgtksourceviewmm-4_0-0 
@@ -14447,7 +14428,6 @@ unsorted:
   - liblldb18 
   - liblldb19 
   - liblldpctl4 
-  - libllmodel0 
   - liblmdb-0_9_30-32bit 
   - liblms7002m-devel 
   - liblms7compact0 
@@ -14999,6 +14979,7 @@ unsorted:
   - libntk1 
   - libntl44 
   - libntlm-devel 
+  - libntlm0 
   - libntpc1 
   - libnuma-devel 
   - libnuma1-32bit 
@@ -17891,7 +17872,6 @@ unsorted:
   - lua-Hamliblua 
   - lua-clingo 
   - lua-fennel 
-  - lua-genders 
   - lua-language-server 
   - lua-libguestfs 
   - lua-libprelude 
@@ -19782,9 +19762,6 @@ unsorted:
   - nekohtml-demo 
   - nekohtml-javadoc 
   - nemesis 
-  - nemiver 
-  - nemiver-devel 
-  - nemiver-lang 
   - nemo 
   - nemo-devel 
   - nemo-extension-audio-tab 
@@ -20020,8 +19997,6 @@ unsorted:
   - notify-osd 
   - notify-sharp 
   - notify-sharp-devel 
-  - notify-sharp3 
-  - notify-sharp3-devel 
   - notmuch 
   - notmuch-devel 
   - notmuch-doc 
@@ -23653,7 +23628,6 @@ unsorted:
   - prometheus-ha_cluster_exporter 
   - prometheus-postgres_exporter 
   - prometheus-sap_host_exporter 
-  - prometheus-saptune_exporter 
   - prometheus-simpleclient-java 
   - prometheus-simpleclient-java-bom 
   - prometheus-simpleclient-java-caffeine 
@@ -34638,6 +34612,7 @@ unsorted:
   - python312-sanlock 
   - python312-sarge 
   - python312-sarif-om 
+  - python312-sat-search 
   - python312-sat-stac 
   - python312-schedule 
   - python312-schema 
@@ -36743,6 +36718,7 @@ unsorted:
   - python313-gprof2dot 
   - python313-gps3 
   - python313-gpstime 
+  - python313-gpt4all 
   - python313-gpxpy 
   - python313-graphene 
   - python313-graphene-django 
@@ -37031,6 +37007,7 @@ unsorted:
   - python313-keyring-keyutils 
   - python313-keyring-pass 
   - python313-keyrings.alt 
+  - python313-khal 
   - python313-khard 
   - python313-kismet-rest 
   - python313-kismetdb 
@@ -38313,6 +38290,7 @@ unsorted:
   - python313-sanlock 
   - python313-sarge 
   - python313-sarif-om 
+  - python313-sat-search 
   - python313-sat-stac 
   - python313-schedule 
   - python313-schema 
@@ -38662,6 +38640,7 @@ unsorted:
   - python313-ttp 
   - python313-ttp-templates 
   - python313-tvm 
+  - python313-tweepy 
   - python313-twine 
   - python313-twitter 
   - python313-twython 
@@ -38742,6 +38721,7 @@ unsorted:
   - python313-vcrpy 
   - python313-vcver 
   - python313-vcversioner 
+  - python313-vdirsyncer 
   - python313-vega 
   - python313-vega_datasets 
   - python313-venusian 
@@ -39569,6 +39549,7 @@ unsorted:
   - quazip-qt6-devel 
   - qubesome 
   - qucs-s 
+  - queue 
   - quick-webapps 
   - quilt 
   - quilter 
@@ -51502,7 +51483,6 @@ unsorted:
   - tycho-bootstrap 
   - tycho-javadoc 
   - typelib-1_0-Accounts-1_0 
-  - typelib-1_0-Anjuta-3_0 
   - typelib-1_0-AppStream-1.0 
   - typelib-1_0-AppStream-compose-1.0 
   - typelib-1_0-AppStreamGlib-1_0 
@@ -51595,7 +51575,6 @@ unsorted:
   - typelib-1_0-Gda-6_0 
   - typelib-1_0-Gdaui-6_0 
   - typelib-1_0-GdkPixdata-2_0 
-  - typelib-1_0-Gdl-3 
   - typelib-1_0-Gee-0_8 
   - typelib-1_0-Gegl-0_4 
   - typelib-1_0-GeocodeGlib-1_0 
