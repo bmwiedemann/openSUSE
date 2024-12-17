@@ -26,7 +26,7 @@ FROM opensuse/tumbleweed:latest AS builder
 COPY --from=target / /target
 
 RUN set -euo pipefail; \
-    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends valkey; \
+    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends valkey sed; \
     zypper -n clean; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
 # sanity check that the version from the tag is equal to the version of valkey that we expect
@@ -52,8 +52,10 @@ LABEL org.opensuse.release-stage="released"
 # endlabelprefix
 LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/valkey-image/README.md"
 ENTRYPOINT ["/usr/bin/valkey-server"]
+CMD ["/etc/valkey/valkey.conf"]
 EXPOSE 6379/tcp
 
+RUN set -euo pipefail; sed -e 's/^protected-mode yes/protected-mode no/' -e 's/^bind .*//' < /etc/valkey/default.conf.example > /etc/valkey/valkey.conf
 RUN set -euo pipefail; install -o valkey -g valkey -m 750 -d /data
 WORKDIR /data
 USER valkey
