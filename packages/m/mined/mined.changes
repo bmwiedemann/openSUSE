@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 17 14:40:03 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add do-not-use-gets-function.patch, use fgets instead of gets function.
+
+-------------------------------------------------------------------
 Fri Dec 23 12:21:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - use disabled services so that it can be included in Factory 

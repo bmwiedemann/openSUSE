@@ -168,4 +168,12 @@
     <comment></comment>
     <requestid>1045008</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>6ec915dd5881ab5b4044c12d1f712e48</srcmd5>
+    <version>2022.27</version>
+    <time>1734459932</time>
+    <user>anag+factory</user>
+    <comment>- Add do-not-use-gets-function.patch, use fgets instead of gets function. (forwarded request 1231710 from hillwood)</comment>
+    <requestid>1231711</requestid>
+  </revision>
 </revisionlist>

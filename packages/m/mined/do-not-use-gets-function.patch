@@ -1,0 +1,12 @@
+diff -Nur mined-2022.27/src/handescr/insutf8ch.c mined-2022.27-new/src/handescr/insutf8ch.c
+--- mined-2022.27/src/handescr/insutf8ch.c	2022-12-23 16:44:41.000000000 +0800
++++ mined-2022.27-new/src/handescr/insutf8ch.c	2024-12-17 22:37:01.235345846 +0800
+@@ -127,7 +127,7 @@
+ 		if (argv[1][1] == 'd')
+ 			dec = 1;
+ 
+-	while (gets (buf)) {
++	while (fgets(buf, 9998, stdin)) {
+ 		char * U_ = strstr (buf, "U+");
+ 		if (U_) {
+ 			char * s = U_ + 2;

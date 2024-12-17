@@ -1,7 +1,7 @@
 #
 # spec file for package mined
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,9 @@ Group:          Productivity/Editors/Other
 URL:            https://mined.github.io/
 Source:         https://github.com/mined/mined/archive/refs/tags/%{version}.tar.gz
 Source2:        http://unicode.org/Public/UNIDATA/Unihan.zip
+# PATCH-FIX-UPSTREAM do-not-use-gets-function.patch hillwood@opensuee.org
+# Use fgets instead of gets function
+Patch0:         do-not-use-gets-function.patch
 BuildRequires:  fdupes
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
@@ -65,6 +68,7 @@ It was the first editor that supported Unicode in a plain-text terminal
 
 %prep
 %setup -q
+%patch -P 0 -p1
 # desktop file fix
 sed -i "s/mined.xpm/mined/" ./usrshare/setup_install/mined.desktop
 sed -i s/Utility/Utility\;/ ./usrshare/setup_install/mined.desktop
@@ -72,10 +76,10 @@ sed -i s/Utility/Utility\;/ ./usrshare/setup_install/mined.desktop
 %build
 cp -p %{SOURCE2} src
 %configure
-make OPT="%{optflags}" USRLIBDIR=%{_libdir} ROOTLIBDIR=/%{_lib} %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 
 # fix links
 rm -rf %{buildroot}%{_bindir}/{minmacs,mpico,mstar}
