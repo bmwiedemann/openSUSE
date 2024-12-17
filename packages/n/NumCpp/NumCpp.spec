@@ -1,7 +1,7 @@
 #
 # spec file for package NumCpp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define __builder ninja
+# %%define __builder ninja
 Name:           NumCpp
 Version:        2.12.1
 Release:        0
@@ -24,8 +24,11 @@ Summary:        C++ implementation of the Python Numpy library
 License:        MIT
 URL:            https://github.com/dpilger26/NumCpp
 Source:         %{url}/archive/refs/tags/Version_%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM NumCpp-disable-pytest.patch badshah400@gmail.com -- Disable pytests that are incorrectly setup for pybind11
+Patch0:         NumCpp-disable-pytest.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
+BuildRequires:  doxygen
 BuildRequires:  gtest
 BuildRequires:  libboost_date_time-devel
 BuildRequires:  libboost_log-devel
@@ -33,7 +36,9 @@ BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
+BuildRequires:  python3
 BuildRequires:  python3-devel
+BuildRequires:  python3-pybind11-devel
 BuildRequires:  pkgconfig(eigen3)
 BuildRequires:  pkgconfig(tbb)
 
@@ -56,7 +61,7 @@ BuildArch:      noarch
 This package provides the header files for compiling code using NumCpp.
 
 %prep
-%autosetup -n %{name}-Version_%{version}
+%autosetup -p1 -n %{name}-Version_%{version}
 
 %build
 %cmake \
