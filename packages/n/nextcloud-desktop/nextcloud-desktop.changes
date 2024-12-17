@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec 17 05:59:24 UTC 2024 - Natasha Ament <stacheldrahtje@gmail.com>
+
+- Update to version 3.15.2:
+  * chore(i18n): Corrected spelling and improved grammar 
+    (gh#nextcloud/desktop#7666)
+  * improvement of error message (gh#nextcloud/desktop#7671)
+  * Fix a bug preventing sync root in folder on drive roots 
+    (gh#nextcloud/desktop#7672)
+  * Bugfix/lnk folder virtual files (gh#nextcloud/desktop#7673) 
+
+-------------------------------------------------------------------
 Fri Dec 13 13:27:38 UTC 2024 - RN <R_Nik_C@proton.me>
 
 - Update to version 3.15.1:
