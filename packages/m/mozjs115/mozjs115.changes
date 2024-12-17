@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Dec 11 13:12:28 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+
+- Add mozjs115-CVE-2024-11498.patch:
+  Backporting bf4781a2 from upstream, Check height limit in modular
+  trees. Also rewrite the implementation to use iterative checking
+  instead of recursive checking of tree property values, to ensure
+  stack usage is low. Before, it was possible for
+  appropriately-crafted files to use a significant amount of stack.
+  (CVE-2024-11498, bsc#1233786)
+
+-------------------------------------------------------------------
+Thu Dec 09 11:28:05 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+
+- Add mozjs115-CVE-2024-11403.patch:
+  Backporting 9cc451b9 from upstream, Port the Huffman lookup table
+  size fix from brunsli.
+  (CVE-2024-11403, bsc#1233766)
+
+-------------------------------------------------------------------
 Thu Dec 05 15:06:01 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 
 - Add mozjs115-CVE-2024-50602.patch:
