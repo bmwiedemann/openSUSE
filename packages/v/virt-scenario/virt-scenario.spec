@@ -67,7 +67,7 @@ This is the Gtk interface for %{name}.
 # move yaml file to /etc/virt-scenario
 mkdir -p %{buildroot}%{_sysconfdir}/%{name}/vmconfig
 mv %{buildroot}%{_datadir}/%{name}/*.yaml %{buildroot}%{_sysconfdir}/%{name}/
-mv src/demo_api_usage.py %{buildroot}%{_datadir}/%name/
+mv src/demo_api_usage.py %{buildroot}%{_datadir}/%{name}/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
@@ -80,11 +80,13 @@ mv src/demo_api_usage.py %{buildroot}%{_datadir}/%name/
 %{python_sitelib}/virt_select_firmware
 %{python_sitelib}/virtscenario_launch
 %{python_sitelib}/*.egg-info
-%attr(0644,root,root) %{_datadir}/%name
+#%attr(0644,root,root) %{_datadir}/%name
 %{_mandir}/man1/%{name}.1%{ext_man}
 %{_mandir}/man1/%{name}-settings.1%{ext_man}
-%attr(0644,root,root) %{_datadir}/%{name}/
-%attr(0644,root,root) %config(noreplace) %{_sysconfdir}/%{name}
+#%attr(0644,root,root) %{_datadir}/%{name}/
+%{_datadir}/%{name}/
+#%attr(0644,root,root) %config(noreplace) %{_sysconfdir}/%{name}
+%config(noreplace) %{_sysconfdir}/%{name}
 
 %files gtk
 %{_bindir}/virt-scenario-gtk
