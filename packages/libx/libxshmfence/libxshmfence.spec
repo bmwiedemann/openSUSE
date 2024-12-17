@@ -1,7 +1,7 @@
 #
 # spec file for package libxshmfence
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname   libxshmfence1
 Name:           libxshmfence
-Version:        1.3.2
+Version:        1.3.3
 Release:        0
 Summary:        A tiny library that exposes a event API on top of Linux futexes
 License:        HPND

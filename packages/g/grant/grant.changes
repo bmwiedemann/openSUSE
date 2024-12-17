@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Dec 15 15:33:39 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.2.5:
+  * chore: update syft/stereoscope for release (#167)
+  * chore(deps): bump golang.org/x/crypto from 0.30.0 to 0.31.0
+    (#166)
+  * add update anchore dependencies workflow (#165)
+  * chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.6.2 to
+    6.6.4 (#163)
+  * chore(deps): bump github.com/anchore/syft from 1.17.0 to 1.18.0
+    (#164)
+  * chore(deps): bump github.com/charmbracelet/bubbletea from 1.2.3
+    to 1.2.4 (#159)
+  * chore(deps): bump github.com/stretchr/testify from 1.9.0 to
+    1.10.0 (#158)
+
+-------------------------------------------------------------------
 Fri Dec 06 06:37:53 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.2.4:

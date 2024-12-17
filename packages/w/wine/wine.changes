@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Sat Dec 14 09:38:46 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- update to 10.0-rc2 release:
+  - Bug fixes only, we are in code freeze.
+- update staging to 10.0-rc2 release
+
+-------------------------------------------------------------------
+Sat Dec  7 12:52:09 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- update to 10.0-rc1 release:
+  - Bundled vkd3d upgraded to version 1.14.
+  - Mono engine updated to version 9.4.0.
+  - Initial version of a Bluetooth driver.
+  - UTF-8 support in the C runtime functions.
+  - Support for split debug info using build ids.
+  - Various bug fixes.
+- update staging to 10.0-rc1 release
+
+-------------------------------------------------------------------
+Sat Nov 23 08:39:34 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- update to 9.22 release:
+  - Support for display mode virtualization.
+  - Locale data updated to Unicode CLDR 46.
+  - More support for network sessions in DirectPlay.
+  - Wayland driver enabled in default configuration.
+  - Various bug fixes.
+- update staging to 9.22 release
+
+-------------------------------------------------------------------
+Sun Nov 10 09:35:28 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- readd wine-devel to baselibs.conf
+- readd _service and adjust get-sources.sh
+- readd find-requires
+
+-------------------------------------------------------------------
+Sat Nov  9 00:56:55 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 9.21 release:
+  - More support for network sessions in DirectPlay.
+  - Header fixes for C++ compilation.
+  - I/O completion fixes.
+  - More formats supported in D3DX9.
+  - Various bug fixes.
+- update staging to 9.21 release
+- remove wisotool, as it should not be useful anymore
+- remove dosbox as a runtime dependency
+- remove desktop integration, as most users who use wine directly,
+  don't use them, and most people use wine bottle managers
+- spec file overhauled, using pkgconfig, removing Leap < 1500
+
+-------------------------------------------------------------------
 Sat Oct 19 09:50:06 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 9.20 release

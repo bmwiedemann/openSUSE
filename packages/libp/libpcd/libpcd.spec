@@ -1,7 +1,7 @@
 #
 # spec file for package libpcd
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,63 +12,51 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define sover 2
-
 Name:           libpcd
 Version:        1.0.1
 Release:        0
 Summary:        Library For Reading PhotoCD Images
-License:        GPL-2.0+
-Group:          Development/Libraries/C and C++
-Url:            http://bytesex.org/libpcd.html
+License:        GPL-2.0-or-later
+URL:            http://bytesex.org/libpcd.html
 Source:         http://www.kraxel.org/releases/libpcd/%{name}_%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Libraries for reading PhotoCD images.
 
 %package -n %{name}%{sover}
 Summary:        Library For Reading PhotoCD Images
-Group:          Development/Libraries/C and C++
 
 %description -n %{name}%{sover}
 Libraries for reading PhotoCD images.
 
 %package      devel
 Summary:        Library For Reading PhotoCD Images
-Group:          Development/Libraries/C and C++
 Requires:       %{name}%{sover} = %{version}
 
 %description devel
 Header files for library for reading PhotoCD images.
 
 %prep
-%setup -q
+%autosetup
 
 %build
-make prefix=%{_prefix} CFLAGS="%{optflags}" libdir=%{_libdir}  all
+%make_build prefix=%{_prefix} CFLAGS="%{optflags}" libdir=%{_libdir}  all
 
 %install
 make prefix=%{_prefix} CFLAGS="%{optflags}" DESTDIR=%{buildroot} libdir=%{buildroot}%{_libdir} install
 rm -f %{buildroot}%{_libdir}/libpcd.a
 
-%clean
-rm -rf %{buildroot}
-
-%post -n %{name}%{sover} -p /sbin/ldconfig
-
-%postun -n %{name}%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{name}%{sover}
 
 %files -n %{name}%{sover}
-%defattr(-,root,root)
 %{_libdir}/libpcd.so.%{sover}*
 
 %files devel
-%defattr(-,root,root)
 %doc pcd.html pcd.css
 %doc README
 %{_includedir}/pcd.h

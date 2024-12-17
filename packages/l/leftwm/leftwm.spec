@@ -17,7 +17,7 @@
 
 
 Name:           leftwm
-Version:        0.5.1
+Version:        0.5.3
 Release:        0
 Summary:        A tiling window manager for adventurers
 License:        Apache-2.0 AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT OR MPL-2.0) AND BSD-2-Clause AND BSD-3-Clause AND (MIT OR Unlicense)
@@ -26,7 +26,7 @@ URL:            https://github.com/leftwm/leftwm
 Source0:        https://github.com/leftwm/leftwm/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 Source2:        %{name}-rpmlintrc
-BuildRequires:  cargo
+BuildRequires:  cargo >= 1.74
 BuildRequires:  cargo-packaging
 BuildRequires:  libX11-devel
 BuildRequires:  libXinerama-devel

@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Mon Dec 16 07:09:20 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.25.0:
+  * New Features
+    + Add the new Gray-Level Co-occurrence Matrix (GLCM) properties "mean",
+      "variance", "standard deviation" and "entropy" to
+      skimage.feature.texture.graycoprops (#7375).
+    + Add the new skimage.morphology.footprint_rectangle supporting
+      generation of rectangular or hyper-rectangular footprints in one
+      function (#7566).
+  * API Changes
+    + Complete the deprecation of and remove skimage.feature.plot_matches.
+      Use skimage.feature.plot_matched_features going forward (#7487).
+    + Deprecate skimage.io.imshow, skimage.io.imshow_collection and
+      skimage.io.show. Please use matplotlib, napari, etc. to visualize
+      images (#7508).
+    + Remove deprecated skimage.morphology.skeletonize_3d; use
+      skimage.morphology.skeletonize instead (#7572).
+    + Deprecate skimage.io plugin infrastructure (#7353).
+    + Switched to using the scipy.sparse array interface. For more details,
+      see the note about the new scipy.sparse array interface here (#7576).
+    + Deprecate skimage.morphology.rectangle in favor of the new function
+      skimage.morphology.footprint_rectangle (#7566).
+    + Deprecate skimage.morphology.square in favor of the new function
+      skimage.morphology.footprint_rectangle (#7566).
+    + Deprecate skimage.morphology.cube in favor of the new function
+      skimage.morphology.footprint_rectangle (#7566).
+  * Enhancements
+    + Improve numerical stability of skimage.morphology.local_minima for
+      extremely small floats (#7534).
+    + Make sure that skimage.feature.plot_matched_features uses the same
+      random colors, if matches_color isn't provided explicitly (#7541).
+    + Allow passing a sequence of colors to the parameter matches_color in
+      skimage.feature.plot_matched_features (#7541).
+  * Performance
+    + skimage.feature.peak_local_max will now skip unnecessary distance
+      computations in the case of min_distance=1. This results in performance
+      improvements to functions like skimage.feature.blob_dog,
+      skimage.feature.blob_log, skimage.feature.blob_doh and
+      skimage.feature.corner_peaks that call peak_local_max
+      internally (#7548).
+    + In skimage.featurepeak_local_max, skip unnecessary check for cases
+      where min_distance > 1 is passed (#7548).
+  * Bug Fixes
+    + Ensure that skimage.morphology.remove_objects_by_distance doesn't fail
+      if the given integer dtype cannot be safely cast to the architecture
+      specific size of intp, e.g. on i386 architectures (#7453).
+    + Fix degeneracy in skimage.draw.ellipsoid_stats when all semi-axes have
+      the same length (#7473).
+    + Prevent skimage.morphology.thin from accidentally modifying the input
+      image in case it is of dtype uint8 (#7469).
+    + Fix numerical precision error in skimage.measure.ransac. In some cases,
+      ransac was stopping at the first iteration (#7065).
+    + Fix numerical precision error in skimage.measure.ransac; very small
+      probabilities lead to -0 number of max trials (#7496).
+    + Ensure that RegionProperties objects returned by
+      skimage.measure.regionprops can be deserialized with pickle (#7569).
+    + Fix edge case where setting watershed_lines=True in
+      skimage.segmentation.watershed resulted in an incorrect
+      solution (#7071).
+    + Fix the behavior of skimage.segmentation.watershed when the markers
+      don't align with local minima by making sure every marker is
+      evaluated before successive pixels (#7071).
+    + Fix dtype promotion in skimage.segmentation.join_segmentations if
+      numpy.uint is used with NumPy<2 (#7292).
+  * Maintenance
+    + Set -DNPY_NO_DEPRECATED_API=NPY_1_23_API_VERSION on build (#7538).
+    + Don't use deprecated io.show and io.imshow (#7556).
+    + Drop Python 3.9 support (#7561).
+    + Support Python 3.13 (#7565).
+    + Remove deprecated gaussian output parameter (#7574).
+
+-------------------------------------------------------------------
 Mon Dec  2 21:16:40 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Not ready for python313 yet: gh#scikit-image/scikit-image#7585

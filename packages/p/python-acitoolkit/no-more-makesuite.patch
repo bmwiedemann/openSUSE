@@ -1,0 +1,238 @@
+Index: acitoolkit-0.4/tests/aciConcreteLib_test.py
+===================================================================
+--- acitoolkit-0.4.orig/tests/aciConcreteLib_test.py
++++ acitoolkit-0.4/tests/aciConcreteLib_test.py
+@@ -1023,6 +1023,6 @@ class TestConcreteCdpAdjEp(unittest.Test
+ 
+ if __name__ == '__main__':
+     offline = unittest.TestSuite()
+-    offline.addTest(unittest.makeSuite(TestConcreteArp))
+-    offline.addTest(unittest.makeSuite(TestConcreteArpDomain))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestConcreteArp))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestConcreteArpDomain))
+     unittest.main()
+Index: acitoolkit-0.4/tests/aciTable_test.py
+===================================================================
+--- acitoolkit-0.4.orig/tests/aciTable_test.py
++++ acitoolkit-0.4/tests/aciTable_test.py
+@@ -348,6 +348,6 @@ class TestTable(unittest.TestCase):
+ if __name__ == '__main__':
+ 
+     offline = unittest.TestSuite()
+-    offline.addTest(unittest.makeSuite(TestTable))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestTable))
+ 
+     unittest.main()
+Index: acitoolkit-0.4/tests/aciphysobject_test.py
+===================================================================
+--- acitoolkit-0.4.orig/tests/aciphysobject_test.py
++++ acitoolkit-0.4/tests/aciphysobject_test.py
+@@ -1401,23 +1401,23 @@ class TestInterface(unittest.TestCase):
+ if __name__ == '__main__':
+     offline = unittest.TestSuite()
+ 
+-    offline.addTest(unittest.makeSuite(TestPod))
+-    offline.addTest(unittest.makeSuite(TestNode))
+-    offline.addTest(unittest.makeSuite(TestLink))
+-    offline.addTest(unittest.makeSuite(TestFan))
+-    offline.addTest(unittest.makeSuite(TestPowerSupply))
+-    offline.addTest(unittest.makeSuite(TestLinecard))
+-    offline.addTest(unittest.makeSuite(TestSupervisor))
+-    offline.addTest(unittest.makeSuite(TestSystemcontroller))
+-    offline.addTest(unittest.makeSuite(TestExternalSwitch))
+-    offline.addTest(unittest.makeSuite(TestFind))
+-    offline.addTest(unittest.makeSuite(TestInterface))
+-    offline.addTest(unittest.makeSuite(TestCluster))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestPod))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestNode))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestLink))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestFan))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestPowerSupply))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestLinecard))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestSupervisor))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestSystemcontroller))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestExternalSwitch))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestFind))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestInterface))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestCluster))
+ 
+     live = unittest.TestSuite()
+-    live.addTest(unittest.makeSuite(TestLiveAPIC))
+-    live.addTest(unittest.makeSuite(TestLivePod))
+-    live.addTest(unittest.makeSuite(TestLiveCluster))
++    live.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestLiveAPIC))
++    live.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestLivePod))
++    live.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestLiveCluster))
+ 
+     full = unittest.TestSuite([live, offline])
+ 
+Index: acitoolkit-0.4/tests/acitoolkit_fakeapic_test.py
+===================================================================
+--- acitoolkit-0.4.orig/tests/acitoolkit_fakeapic_test.py
++++ acitoolkit-0.4/tests/acitoolkit_fakeapic_test.py
+@@ -148,5 +148,5 @@ if __name__ == '__main__':
+ 
+     # Run the tests
+     fake = unittest.TestSuite()
+-    fake.addTest(unittest.makeSuite(TestFakeApic))
++    fake.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestFakeApic))
+     unittest.main(defaultTest='fake', argv=sys.argv[:1] + unittest_args)
+Index: acitoolkit-0.4/tests/acitoolkit_test.py
+===================================================================
+--- acitoolkit-0.4.orig/tests/acitoolkit_test.py
++++ acitoolkit-0.4/tests/acitoolkit_test.py
+@@ -5480,76 +5480,76 @@ class TestLiveHealthScores(TestLiveAPIC)
+ 
+ if __name__ == '__main__':
+     live = unittest.TestSuite()
+-    live.addTest(unittest.makeSuite(TestLiveHealthScores))
+-    live.addTest(unittest.makeSuite(TestLiveTenant))
+-    live.addTest(unittest.makeSuite(TestLiveAPIC))
+-    live.addTest(unittest.makeSuite(TestLiveCertAuth))
+-    live.addTest(unittest.makeSuite(TestLiveAppcenterSubscription))
+-    live.addTest(unittest.makeSuite(TestLiveInterface))
+-    live.addTest(unittest.makeSuite(TestLivePortChannel))
+-    live.addTest(unittest.makeSuite(TestLiveAppProfile))
+-    live.addTest(unittest.makeSuite(TestLiveEPG))
+-    live.addTest(unittest.makeSuite(TestLiveAnyEPG))
+-    live.addTest(unittest.makeSuite(TestLiveAnyEPGWithTenantCommonContracts))
+-    live.addTest(unittest.makeSuite(TestLiveL2ExtDomain))
+-    live.addTest(unittest.makeSuite(TestLiveL3ExtDomain))
+-    live.addTest(unittest.makeSuite(TestLiveEPGDomain))
+-    live.addTest(unittest.makeSuite(TestLiveFilter))
+-    live.addTest(unittest.makeSuite(TestLiveFilterEntry))
+-    live.addTest(unittest.makeSuite(TestLiveContracts))
+-    live.addTest(unittest.makeSuite(TestLiveContractSubject))
+-    live.addTest(unittest.makeSuite(TestLiveEndpoint))
+-    live.addTest(unittest.makeSuite(TestApic))
+-    live.addTest(unittest.makeSuite(TestLivePhysDomain))
+-    live.addTest(unittest.makeSuite(TestLiveVmmDomain))
+-    live.addTest(unittest.makeSuite(TestLiveVmm))
+-    live.addTest(unittest.makeSuite(TestLiveSubscription))
+-    live.addTest(unittest.makeSuite(TestLiveOSPF))
+-    live.addTest(unittest.makeSuite(TestLiveMonitorPolicy))
+-    live.addTest(unittest.makeSuite(TestLiveOutsideL3))
+-    live.addTest(unittest.makeSuite(TestLiveOutsideEPG))
+-    live.addTest(unittest.makeSuite(TestLiveContractInterface))
+-    live.addTest(unittest.makeSuite(TestLiveSession))
++    live.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestLiveHealthScores))
++    live.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestLiveTenant))
++    live.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestLiveAPIC))
++    live.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestLiveCertAuth))
++    live.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestLiveAppcenterSubscription))
++    live.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestLiveInterface))
++    live.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestLivePortChannel))
++    live.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestLiveAppProfile))
++    live.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestLiveEPG))
++    live.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestLiveAnyEPG))
++    live.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestLiveAnyEPGWithTenantCommonContracts))
++    live.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestLiveL2ExtDomain))
++    live.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestLiveL3ExtDomain))
++    live.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestLiveEPGDomain))
++    live.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestLiveFilter))
++    live.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestLiveFilterEntry))
++    live.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestLiveContracts))
++    live.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestLiveContractSubject))
++    live.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestLiveEndpoint))
++    live.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestApic))
++    live.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestLivePhysDomain))
++    live.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestLiveVmmDomain))
++    live.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestLiveVmm))
++    live.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestLiveSubscription))
++    live.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestLiveOSPF))
++    live.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestLiveMonitorPolicy))
++    live.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestLiveOutsideL3))
++    live.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestLiveOutsideEPG))
++    live.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestLiveContractInterface))
++    live.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestLiveSession))
+ 
+     offline = unittest.TestSuite()
+-    offline.addTest(unittest.makeSuite(TestBaseRelation))
+-    offline.addTest(unittest.makeSuite(TestBaseACIObject))
+-    offline.addTest(unittest.makeSuite(TestTenant))
+-    offline.addTest(unittest.makeSuite(TestSession))
+-    offline.addTest(unittest.makeSuite(TestAppProfile))
+-    offline.addTest(unittest.makeSuite(TestBridgeDomain))
+-    offline.addTest(unittest.makeSuite(TestL2Interface))
+-    offline.addTest(unittest.makeSuite(TestL3Interface))
+-    offline.addTest(unittest.makeSuite(TestBaseContract))
+-    offline.addTest(unittest.makeSuite(TestContract))
+-    offline.addTest(unittest.makeSuite(TestContractInterface))
+-    offline.addTest(unittest.makeSuite(TestContractSubject))
+-    offline.addTest(unittest.makeSuite(TestFilter))
+-    offline.addTest(unittest.makeSuite(TestFilterEntry))
+-    offline.addTest(unittest.makeSuite(TestTaboo))
+-    offline.addTest(unittest.makeSuite(TestEPG))
+-    offline.addTest(unittest.makeSuite(TestOutsideEPG))
+-    offline.addTest(unittest.makeSuite(TestPhysDomain))
+-    offline.addTest(unittest.makeSuite(TestJson))
+-    offline.addTest(unittest.makeSuite(TestEPGDomain))
+-    offline.addTest(unittest.makeSuite(TestPortChannel))
+-    offline.addTest(unittest.makeSuite(TestContext))
+-    offline.addTest(unittest.makeSuite(TestOspf))
+-    offline.addTest(unittest.makeSuite(TestBGP))
+-    offline.addTest(unittest.makeSuite(TestEndpoint))
+-    offline.addTest(unittest.makeSuite(TestMonitorPolicy))
+-    offline.addTest(unittest.makeSuite(TestAttributeCriterion))
+-    offline.addTest(unittest.makeSuite(TestOutsideL2))
+-    offline.addTest(unittest.makeSuite(TestOutsideNetwork))
+-    offline.addTest(unittest.makeSuite(TestTunnelInterface))
+-    offline.addTest(unittest.makeSuite(TestFexInterface))
+-    offline.addTest(unittest.makeSuite(TestInputTerminal))
+-    offline.addTest(unittest.makeSuite(TestOutputTerminal))
+-    offline.addTest(unittest.makeSuite(TestAnyEPG))
+-    offline.addTest(unittest.makeSuite(TestOutsideL2EPG))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestBaseRelation))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestBaseACIObject))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestTenant))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestSession))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestAppProfile))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestBridgeDomain))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestL2Interface))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestL3Interface))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestBaseContract))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestContract))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestContractInterface))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestContractSubject))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestFilter))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestFilterEntry))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestTaboo))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestEPG))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestOutsideEPG))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestPhysDomain))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestJson))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestEPGDomain))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestPortChannel))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestContext))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestOspf))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestBGP))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestEndpoint))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestMonitorPolicy))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestAttributeCriterion))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestOutsideL2))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestOutsideNetwork))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestTunnelInterface))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestFexInterface))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestInputTerminal))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestOutputTerminal))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestAnyEPG))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestOutsideL2EPG))
+ 
+     graphs = unittest.TestSuite()
+-    graphs.addTest(unittest.makeSuite(TestAcitoolkitGraphBuilder))
++    graphs.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestAcitoolkitGraphBuilder))
+ 
+     full = unittest.TestSuite([live, offline, graphs])
+ 
+Index: acitoolkit-0.4/tests/acitoolkitlib_test.py
+===================================================================
+--- acitoolkit-0.4.orig/tests/acitoolkitlib_test.py
++++ acitoolkit-0.4/tests/acitoolkitlib_test.py
+@@ -72,6 +72,6 @@ class TestCredentials(unittest.TestCase)
+ if __name__ == '__main__':
+ 
+     offline = unittest.TestSuite()
+-    offline.addTest(unittest.makeSuite(TestCredentials))
++    offline.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestCredentials))
+ 
+     unittest.main()

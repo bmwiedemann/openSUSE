@@ -5341,4 +5341,41 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 9.20 release</comment>
     <requestid>1216664</requestid>
   </revision>
+  <revision rev="453" vrev="1">
+    <srcmd5>4fe1a47ca7c0e50400e92d90f9d7cb9e</srcmd5>
+    <version>10.0~rc2</version>
+    <time>1734373045</time>
+    <user>anag+factory</user>
+    <comment>- update to 10.0-rc2 release:
+  - Bug fixes only, we are in code freeze.
+- update staging to 10.0-rc2 release
+
+- update to 10.0-rc1 release:
+  - Bundled vkd3d upgraded to version 1.14.
+  - Mono engine updated to version 9.4.0.
+  - Initial version of a Bluetooth driver.
+  - UTF-8 support in the C runtime functions.
+  - Support for split debug info using build ids.
+  - Various bug fixes.
+- update staging to 10.0-rc1 release
+
+- update to 9.22 release:
+  - Support for display mode virtualization.
+  - Locale data updated to Unicode CLDR 46.
+  - More support for network sessions in DirectPlay.
+  - Wayland driver enabled in default configuration.
+  - Various bug fixes.
+- update staging to 9.22 release
+
+- readd wine-devel to baselibs.conf
+- readd _service and adjust get-sources.sh
+- readd find-requires
+
+- update to 9.21 release:
+  - More support for network sessions in DirectPlay.
+  - Header fixes for C++ compilation.
+  - I/O completion fixes.
+  - More formats supported in D3DX9.</comment>
+    <requestid>1231349</requestid>
+  </revision>
 </revisionlist>

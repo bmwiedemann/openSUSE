@@ -1,7 +1,7 @@
 #
 # spec file for package libICE
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname	libICE6
 Name:           libICE
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        X11 Inter-Client Exchange Library
 License:        MIT

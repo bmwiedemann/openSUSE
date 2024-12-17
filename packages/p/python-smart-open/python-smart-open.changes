@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec 16 03:17:47 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove upper pin on urllib3.
+- Drop moto_server set up and teardown, it is for one testcase.
+- Drop patch skip-gzip-tests-python312.patch, not required.
+- Add patch support-python-313.patch:
+  * Support Python 3.13 changes.
+
+-------------------------------------------------------------------
 Wed Oct 30 19:30:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.0.5:

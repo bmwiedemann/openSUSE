@@ -74,4 +74,17 @@
     <comment></comment>
     <requestid>1045901</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f5033667d648075f34d7bca2b61110b7</srcmd5>
+    <version>1.3.3</version>
+    <time>1734372541</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.3.3
+  * configure: Use LT_INIT from libtool 2 instead of deprecated AC_PROG_LIBTOOL
+  * configure: replace deprecated AC_HELP_STRING with AS_HELP_STRING
+  * configure: replace deprecated AC_TRY_COMPILE with AC_COMPILE_IFELSE
+  * alloc: Allow disabling memfd usage at runtime with XSHMFENCE_NO_MEMFD=1
+  * src/xshmfence_futex.h: fix build on 32-bit architectures using 64-bit time_t</comment>
+    <requestid>1230956</requestid>
+  </revision>
 </revisionlist>

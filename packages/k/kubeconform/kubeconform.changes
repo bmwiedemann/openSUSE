@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Dec 15 07:45:34 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- workaround build failures by building with go1.22
+
+-------------------------------------------------------------------
 Thu Aug 01 07:36:37 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.6.7:

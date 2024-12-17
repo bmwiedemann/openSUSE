@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 16 10:54:10 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.8:
+  * Provide compatibility with e2fsprogs >= 1.47.2 (#154)
+  * Accept -j arguments greater than FSA_MAX_COMPJOBS (#146)
+
+-------------------------------------------------------------------
 Mon Feb 26 08:47:27 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

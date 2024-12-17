@@ -865,4 +865,23 @@
   * Fix typo --get-repos-no-status to --git-repos-no-status</comment>
     <requestid>1226432</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>f44df47a2e839f6ad915957b083092b3</srcmd5>
+    <version>0.20.12</version>
+    <time>1734373065</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.20.12:
+  Bug Fixes:
+  * Add unicode-3.0 license
+  * Use safe terminal_size_of
+  * Use terminal_size_of with borrowed raw handle
+  Features:
+  * Move MSRV to 1.74 and deep bump cargo deps
+  * Add Gleam lang icon
+
+- Update to 0.20.11:
+  Bug Fixes:
+  * Bump libc from 0.2.165 to 0.2.167</comment>
+    <requestid>1231373</requestid>
+  </revision>
 </revisionlist>

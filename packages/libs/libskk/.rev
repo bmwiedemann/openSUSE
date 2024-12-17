@@ -62,4 +62,21 @@
     <comment></comment>
     <requestid>1153879</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>31f156e219d22316f2e884dab1b31a2d</srcmd5>
+    <version>1.2.0+git20180916+1.0.5</version>
+    <time>1734372950</time>
+    <user>anag+factory</user>
+    <comment>- Update version to 1.0.5(1.2.0+git20180916+1.0.5)
+  * Don't consume key release events
+  * Improve hankaku katakana conversion
+  * Use the same typing rule in dict-edit mode
+  * Add abort-to-latin and abort-to-latin-unhandled command 
+  * Add more z-* shortcuts from DDSKK
+  * Fix memory leak caused by Vala array conversion
+  * Bump build requirements (glib &gt;= 2.36, valadoc &gt;= 0.40)
+  * build: Use libxkbcommon to resolve keysyms
+- Add fix-build-on-gcc14+.patch. (forwarded request 1231231 from hillwood)</comment>
+    <requestid>1231233</requestid>
+  </revision>
 </revisionlist>

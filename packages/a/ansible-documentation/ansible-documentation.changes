@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Dec 03 05:52:36 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.18.1:
+  * ci: refresh dev dependencies (#2231)
+  * Add package to getting started ee (#2228) (#2237)
+  * ci: refresh dev dependencies (#2226)
+  * update intersphinx links for Ansible 11 (#2212) (#2221)
+  * [stable-2.18] Update docs build dependencies; bump
+    antsibull-docs to 2.16.1 (#2218)
+  * fix anisble 11 changelog link (#2213) (#2214)
+  * LICENSE and DCO in CODEOWNERS (#2205)
+  * update release table for Ansible 11 (#2158) (#2204)
+  * update version switcher for Ansible 11 (#2159) (#2202)
+  * Add porting guide for Ansible 11.0.0 (#2197) (#2198)
+  * fix bad formating (#2192) (#2196)
+  * add note and link for galaxy.yml details (#2092) (#2118)
+  * update backport instructions (#2183) (#2191)
+  * update release table with 2.15 EOL (#2184) (#2189)
+  * Update some info on distribution servers (#2119) (#2182)
+  * fix: Remove stray reference to group_by_module (#2142) (#2146)
+  * remove swiftype search engine (#2140) (#2154)
+  * update latest doc version to 11 (#2160)
+  * ci: refresh dev dependencies (#2173)
+  * [stable-2.18] Update docs build dependencies, use
+    antsibull-docs 2.16.0 (#2169)
+  * Fix the misspelled word 'not' (#2161) (#2166)
+  * Add porting guide for Ansible 11.0.0rc1 (#2135) (#2139)
+  * comment the extra banner to remove community survey (#2132)
+    (#2137)
+  * build_execution_environment: add working version of Fedora
+    (#2126) (#2129)
+  * Update Ansible 11 porting guide. (#2113) (#2114)
+  * Update ansible-core 2.18 and Ansible 11 porting guides (#2108)
+    (#2109)
+  * Add porting guide for Ansible 11.0.0b1 (#2101) (#2107)
+  * Add porting guide for Ansible 10.6.0 (#2100) (#2105)
+  * Add porting guide for Ansible 9.12.0 (#2099) (#2102)
+  * update version switcher for 2.18 (#2090) (#2098)
+  * Change 2.18 to correct version (#2089)
+
+-------------------------------------------------------------------
 Sat Nov 23 07:32:47 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.18.0:

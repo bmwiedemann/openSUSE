@@ -7,3 +7,4 @@ diff -Nur deepin-system-monitor-5.8.27/src/CMakeLists.txt deepin-system-monitor-
  set(CMAKE_CXX_STANDARD_REQUIRED True)
  
  set(APP_NAME ${CMAKE_PROJECT_NAME})
+

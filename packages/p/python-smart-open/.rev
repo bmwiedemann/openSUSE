@@ -103,4 +103,16 @@ optional dep of https://build.opensuse.org/package/show/devel:languages:python/p
   * Add support for `get_blob_kwargs` to GCS blob read operations</comment>
     <requestid>1219711</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>5f4b19ac1fc0ea358d7fa5de28d71ae7</srcmd5>
+    <version>7.0.5</version>
+    <time>1734373023</time>
+    <user>anag+factory</user>
+    <comment>- Remove upper pin on urllib3.
+- Drop moto_server set up and teardown, it is for one testcase.
+- Drop patch skip-gzip-tests-python312.patch, not required.
+- Add patch support-python-313.patch:
+  * Support Python 3.13 changes.</comment>
+    <requestid>1231284</requestid>
+  </revision>
 </revisionlist>

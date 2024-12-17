@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Dec 09 07:10:04 UTC 2024 - jslaby@suse.cz
+
+- Update to version 3.1+20241105:
+  * Add LLVM 18 and 19 as known versions in test/lit.cfg
+  * Handle libunwind in recent LLVM versions (17+)
+  * Fix warnings about mismatched capitalisation (FROM ... as -> FROM ... AS)
+  * Support LLVM 19
+  * Fix compatibility with LLVM 17
+  * When handling the ABC dependency of STP, compare the version with 2.3.4 instead of master, which will also handle future releases
+  * Add functions for comparing versions to build scripts
+  * STP now needs libtinfo-dev installed
+  * STP now has ABC as a dependency -- keep libabc build results
+  * STP master branch now uses submodules -- initialise them
+  * Fix bug in PATH cleaning, more robust installation detection
+  * Use a virtual environment for Python3 while testing under MacOS
+  * Install 'less' in the Docker container
+  * Use `unique_ptr` within `getAllIndependentConstraintsSets`
+  * Prefer `unique_ptr` over raw pointer in `IndependentSolver`
+  * Whitespace fix
+  * Specialize the build for some expensive components for Arch & Debian.
+  * fix(klee-replay): add missing `<limits.h>` includes
+
+-------------------------------------------------------------------
 Fri Jun 28 07:39:18 UTC 2024 - jslaby@suse.cz
 
 - Update to version 3.1+20240614:

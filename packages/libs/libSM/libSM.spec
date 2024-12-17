@@ -1,7 +1,7 @@
 #
 # spec file for package libSM
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname	libSM6
 Name:           libSM
-Version:        1.2.4
+Version:        1.2.5
 Release:        0
 Summary:        X Session Management library
 License:        MIT

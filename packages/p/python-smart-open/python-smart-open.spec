@@ -23,7 +23,8 @@ Summary:        Python utils for streaming large files
 License:        MIT
 URL:            https://github.com/piskvorky/smart_open
 Source:         https://github.com/piskvorky/smart_open/archive/refs/tags/v%{version}.tar.gz#/smart_open-%{version}.tar.gz
-Patch0:         skip-gzip-tests-python312.patch
+# PATCH-FIX-UPSTREAM gh#piskvorky/smart_open#847
+Patch0:         support-python-313.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -39,9 +40,6 @@ Requires:       python-wrapt
 Requires:       python-zstandard
 Suggests:       python-paramiko
 BuildArch:      noarch
-# see https://github.com/piskvorky/smart_open/issues/784
-BuildRequires:  %{python_module urllib3 < 2}
-Requires:       python-urllib3 < 2
 # SECTION test requirements
 BuildRequires:  %{python_module azure-common}
 BuildRequires:  %{python_module azure-core}
@@ -74,12 +72,7 @@ Includes support for S3, HDFS, gzip, bz2, etc.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-moto_server -p5000 2>/dev/null &
-server_pid=$!
-export SO_ENABLE_MOTO_SERVER=1
-# Requires network
-%pytest -rs -k 'not (test_http_gz or test_s3_gzip_compress_sanity)' smart_open/
-kill $server_pid
+%pytest
 
 %files %{python_files}
 %doc README.rst

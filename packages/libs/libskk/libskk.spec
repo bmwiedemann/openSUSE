@@ -1,7 +1,7 @@
 #
 # spec file for package libskk
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 %define sover 0
-%define real_version 1.0.3
+%define real_version 1.0.5
 Name:           libskk
-# Note this is 1.0.2 release version
+# Note this is 1.0.5 release version
 # Some package maintainer once specified wrong version number
 # so we have to keep 1.2.0
-Version:        1.2.0+git20171110+%{real_version}
+Version:        1.2.0+git20180916+%{real_version}
 Release:        0
 Summary:        A statistical language model based Japanese input method engine
 License:        GPL-3.0-or-later
@@ -32,6 +32,8 @@ Source0:        %{name}-%{real_version}.tar.xz
 Source1:        %{name}-%{real_version}.tar.xz.sig
 Source99:       baselibs.conf
 Patch0:         libskk-typlib-dependencies.patch
+# PATCH-FIX-UPSTREAM fix-build-on-gcc14+.patch hillwood@opensuse.org - Support gcc 14+
+Patch1:         fix-build-on-gcc14+.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gnome-common
@@ -45,6 +47,7 @@ BuildRequires:  xz
 BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
+BuildRequires:  pkgconfig(xkbcommon)
 
 %description
 SKK is a statistical language model based Japanese input method engine.

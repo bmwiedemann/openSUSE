@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Thu Dec 12 14:49:21 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- refactor spec
+- add zsh and fish completion subpackages
+- Update to version 1.35.0:
+  * 1.35.0 Release (#1971)
+  * docs: correcting the method name
+  * docs(configs): included configs section in conversion matrix
+  * docs: included notes for configs support
+  * feat(config-content): added support for content in config
+  * chore(deps)(deps): bump golang.org/x/tools from 0.25.0 to
+    0.27.0
+  * improve error output for git commands
+  * chore(deps)(deps): bump github.com/compose-spec/compose-go/v2
+  * test(deploy-label): rename expected ephemeral label for test
+  * clean double to lower
+  * fix upercas issue
+  * fix retract issue
+  * chore(deps): bump pre-commit hook versions
+  * chore(deps): bump rexml from 3.2.5 to 3.3.9 in /docs
+  * Update kubernetes.go
+  * chore(deps)(deps): bump k8s.io/api from 0.31.1 to 0.31.2
+  * test: added test for the ephemeral storage labels
+  * refactor: changed the deploy label to use the convention
+  * feat(deploy): support ephemeral storage requests limits labels
+  * chore(deps)(deps): bump github.com/compose-spec/compose-go/v2
+    (#1931)
+  * chore(deps)(deps): bump k8s.io/api from 0.30.3 to 0.31.1
+    (#1933)
+  * [completion] Add header #compdef (#1915)
+  * chore(deps)(deps): bump golang.org/x/tools from 0.24.0 to
+    0.25.0
+  * feature: support UID:GID in the user key
+  * chore(deps)(deps): bump github.com/fsouza/go-dockerclient
+  * chore(deps)(deps): bump k8s.io/api from 0.30.0 to 0.30.3
+    (#1910)
+  * chore(deps)(deps): bump k8s.io/apimachinery from 0.30.0 to
+    0.30.3 (#1911)
+  * chore(deps)(deps): bump golang.org/x/tools from 0.20.0 to
+    0.24.0 (#1918)
+  * chore(deps)(deps): bump github.com/compose-spec/compose-go/v2
+    (#1919)
+  * chore(deps)(deps): bump github.com/spf13/cast from 1.6.0 to
+    1.7.0 (#1920)
+  * chore: upgrade fsouza/godockerclient and docker/docker packages
+    (#1921)
+
+-------------------------------------------------------------------
 Mon Jun 03 06:19:45 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.34.0:

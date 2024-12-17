@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Dec 16 10:51:32 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.20.12:
+  Bug Fixes:
+  * Add unicode-3.0 license
+  * Use safe terminal_size_of
+  * Use terminal_size_of with borrowed raw handle
+  Features:
+  * Move MSRV to 1.74 and deep bump cargo deps
+  * Add Gleam lang icon
+
+-------------------------------------------------------------------
+Mon Dec 16 10:51:05 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.20.11:
+  Bug Fixes:
+  * Bump libc from 0.2.165 to 0.2.167
+
+-------------------------------------------------------------------
 Tue Nov 26 07:17:19 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.20.9:

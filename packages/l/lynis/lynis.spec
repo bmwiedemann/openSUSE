@@ -23,7 +23,7 @@
 %define _pluginsdir       %{_datadir}/lynis/plugins
 %define _dbdir            %{_datadir}/lynis/db
 Name:           lynis
-Version:        3.1.2
+Version:        3.1.3
 Release:        0
 Summary:        Security and System auditing tool
 License:        GPL-3.0-only

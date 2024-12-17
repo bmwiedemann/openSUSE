@@ -41,6 +41,8 @@ Patch1:         fix-c++17.patch
 %if 0%{?suse_version} > 1500
 # PATCH-FOR-OPENSUSE fix-procps-link.patch hillwood@opensuse.org - Backport support for procps 4.0
 Patch2:         fix-procps-link.patch
+# PATCH—FIX-OPENSUSE redefine-dmi_string.patch hillwood@opensuse.org - Fix dmi_string function error
+Patch3:         redefine-dmi_string.patch
 %endif
 %ifarch ppc ppc64 ppc64le s390 s390x
 BuildRequires:  deepin-desktop-base

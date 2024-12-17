@@ -232,4 +232,14 @@
     <comment></comment>
     <requestid>1151302</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>4e9b7cac369012157bd441be6338ed6a</srcmd5>
+    <version>0.8.8</version>
+    <time>1734373064</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.8.8:
+  * Provide compatibility with e2fsprogs &gt;= 1.47.2 (#154)
+  * Accept -j arguments greater than FSA_MAX_COMPJOBS (#146)</comment>
+    <requestid>1231374</requestid>
+  </revision>
 </revisionlist>

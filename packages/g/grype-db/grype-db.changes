@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Dec 14 21:22:51 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.27.4:
+  * chore(deps): update anchore dependencies (#455)
+  * chore(deps): Bump actions/checkout from 4.2.1 to 4.2.2 (#453)
+  * chore(deps): Bump actions/setup-go from 5.1.0 to 5.2.0 (#454)
+  * add update anchore dependencies workflow (#452)
+
+-------------------------------------------------------------------
+Wed Dec 11 07:06:24 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.27.3:
+  * chore(deps): update anchore dependencies (#451)
+  * chore(deps): Bump golang.org/x/sync from 0.9.0 to 0.10.0 (#448)
+  * chore(deps): Bump actions/cache from 4.1.2 to 4.2.0 (#450)
+  * Enable packaging v6 DBs (#437)
+  * Add transformers for v6 DB schema (#436)
+  * fix: use timestamp from only provider if only one provider
+    (#445)
+  * add request retry count for nvd (#444)
+  * chore(deps): Bump github.com/Masterminds/semver/v3 from 3.3.0
+    to 3.3.1 (#430)
+  * chore(deps): Bump github.com/stretchr/testify from 1.9.0 to
+    1.10.0 (#439)
+  * Update grype-db bootstrap tools to latest versions. (#442)
+  * add more retrys for NVD provider (#443)
+
+-------------------------------------------------------------------
 Tue Nov 26 14:04:51 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.27.2:

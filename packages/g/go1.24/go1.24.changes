@@ -1,0 +1,8 @@
+-------------------------------------------------------------------
+Fri Dec 13 16:52:10 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.24rc1 (released 2024-12-13) is a release candidate version of
+  go1.24 cut from the master branch at the revision tagged
+  go1.24rc1.
+  * go1.24 requires the final point release of go1.22 or later
+    for bootstrap.

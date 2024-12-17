@@ -219,4 +219,16 @@
 - do not configure with --enable-release as &quot;things might break&quot; (and they do).</comment>
     <requestid>1146145</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>cd1ca67274cbda691558fe1fb34fb55a</srcmd5>
+    <version>1.4+git.20240531</version>
+    <time>1734373039</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.4+git.20240531:
+  * disable locale data download in default configuration for x86-64
+  * add local uClibc-locale-030818.tgz file
+- switch to obs_scm
+- drop our uClibc-locale-030818.tgz as it is now in the tarball</comment>
+    <requestid>1231330</requestid>
+  </revision>
 </revisionlist>

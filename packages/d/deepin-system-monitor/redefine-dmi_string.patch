@@ -1,0 +1,36 @@
+diff -Nurp deepin-system-monitor-5.8.27/3rdparty/dmidecode/dmidecode.c deepin-system-monitor-5.8.27-new/3rdparty/dmidecode/dmidecode.c
+--- deepin-system-monitor-5.8.27/3rdparty/dmidecode/dmidecode.c	2022-05-31 14:13:04.000000000 +0800
++++ deepin-system-monitor-5.8.27-new/3rdparty/dmidecode/dmidecode.c	2024-12-16 15:54:11.624561839 +0800
+@@ -94,6 +94,7 @@ u16 CurrentCPUFreq = 0;
+ #define SYS_FIRMWARE_DIR "/sys/firmware/dmi/tables"
+ #define SYS_ENTRY_FILE SYS_FIRMWARE_DIR "/smbios_entry_point"
+ #define SYS_TABLE_FILE SYS_FIRMWARE_DIR "/DMI"
++#define dmi_string dmidecode_dmi_string
+ 
+ /*
+  * Type-independant Stuff
+diff -Nurp deepin-system-monitor-5.8.27/3rdparty/dmidecode/dmioem.c deepin-system-monitor-5.8.27-new/3rdparty/dmidecode/dmioem.c
+--- deepin-system-monitor-5.8.27/3rdparty/dmidecode/dmioem.c	2022-05-31 14:13:04.000000000 +0800
++++ deepin-system-monitor-5.8.27-new/3rdparty/dmidecode/dmioem.c	2024-12-16 16:40:41.435654127 +0800
+@@ -28,7 +28,7 @@
+ #include "dmioem.h"
+ #include "dmiopt.h"
+ #include "dmioutput.h"
+-
++#define dmi_string dmidecode_dmi_string
+ /*
+  * Globals for vendor-specific decodes
+  */
+diff -Nurp deepin-system-monitor-5.8.27/3rdparty/dmidecode/dmioem.h deepin-system-monitor-5.8.27-new/3rdparty/dmidecode/dmioem.h
+--- deepin-system-monitor-5.8.27/3rdparty/dmidecode/dmioem.h	2022-05-31 14:13:04.000000000 +0800
++++ deepin-system-monitor-5.8.27-new/3rdparty/dmidecode/dmioem.h	2024-12-16 16:34:47.826916443 +0800
+@@ -19,7 +19,9 @@
+  *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+  */
+ 
++#include "dmidecode.h"
+ struct dmi_header;
+ 
+ void dmi_set_vendor(const char *s, const char *p);
+ int dmi_decode_oem(const struct dmi_header *h);
++extern const char *dmidecode_dmi_string(const struct dmi_header *dm, u8 s);

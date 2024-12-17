@@ -118,4 +118,15 @@ for :adi:116
     <comment></comment>
     <requestid>1085249</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>60f741fa3bb087baed793834569a2927</srcmd5>
+    <version>4.13.1</version>
+    <time>1734372996</time>
+    <user>anag+factory</user>
+    <comment>- Fix build with latest GCC, add
+  0001-Fix-failing-build-due-to-missing-iomanip.h-include.patch
+- Minor spec file cleanup
+</comment>
+    <requestid>1231262</requestid>
+  </revision>
 </revisionlist>

@@ -22,12 +22,11 @@ Name:           klee-uclibc
 Summary:        Libc library for Klee
 License:        LGPL-2.1-or-later
 Group:          Development/Languages/Other
-Version:        1.4
+Version:        1.4+git.20240531
 Release:        0
 URL:            https://github.com/klee/klee-uclibc
-Source0:        https://github.com/klee/klee-uclibc/archive/klee_uclibc_v%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
-Source2:        uClibc-locale-030818.tgz
 Patch1:         proper-compiler-flags-check.patch
 Patch2:         0001-strtod-fix-__strtofpmax.patch
 BuildRequires:  clang%{llvm_version}
@@ -35,7 +34,6 @@ BuildRequires:  llvm%{llvm_version}-devel
 BuildRequires:  make
 BuildRequires:  ncurses-devel
 BuildRequires:  python3-base
-BuildRequires:  xz
 ExclusiveArch:  x86_64
 
 %description
@@ -56,16 +54,14 @@ LLVM bytecode packed by `ar`. Klee uses this to emulate the POSIX runtime
 development symbolically.
 
 %prep
-%autosetup -p1 -n %{name}-klee_uclibc_v%{version}
-cp %{SOURCE2} extra/locale/
-sed -i 's@UCLIBC_DOWNLOAD_PREGENERATED_LOCALE_DATA=y@@' klee-premade-configs/x86_64/config
+%autosetup -p1
 
 %build
 ./configure \
 	--make-llvm-lib
 # README.md says: "Warning things might break if you do this." about this:
 	#--enable-release
-make %{?_smp_mflags} V=1 KLEE_CFLAGS=-g lib/libc.a
+%make_build KLEE_CFLAGS=-g lib/libc.a
 
 %install
 install -d %{buildroot}%{_libdir}/%{name}/lib/

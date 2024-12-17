@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Dec 14 02:13:48 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 2.1.4:
+  * feat(unstable): support caching npm dependencies only as they're needed
+  * refactor(lint): manage schema files for linter in Deno repo
+  * fix(outdated): error when there are no config files
+  * chore(tests): Deprecate remaining usages of itest in check tests
+  * fix(lint): do not error providing --allow-import
+  * fix(outdated): respect --quiet flag for hints
+  * perf(compile): improve FileBackedVfsFile
+  * fix: replace the @deno-types with @ts-types
+  * fix(outdated): show a suggestion for updating
+  * fix(compile): correct read length for transpiled typescript files
+  * chore: reduce allocations in a few places
+  * fix(unstable): don't unwrap optional state in otel
+  * fix: do not error when subpath has an @ symbol
+  * fix(node): update list of builtin node modules, add missing export to _http_common
+  * fix(ext/node): handle Float16Array in node:v8 module
+  * refactor: Make `deno_runtime::shared` module public
+  * fix(task): do not always kill child on ctrl+c on windows
+  * fix: do not panic when fetching invalid file url on Windows
+  * test(ext/node): remove flaky node:dgram compat test case
+  * fix(ext/node): accept file descriptor in fs.readFile(Sync)
+  * chore: add script to check remaining node compat cases
+
+-------------------------------------------------------------------
 Sat Dec  7 14:32:55 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 2.1.3:

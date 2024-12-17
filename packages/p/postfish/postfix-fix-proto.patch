@@ -1,0 +1,13 @@
+Index: postfish-svn17492/windowbutton.c
+===================================================================
+--- postfish-svn17492.orig/windowbutton.c
++++ postfish-svn17492/windowbutton.c
+@@ -116,7 +116,7 @@ static void windowbutton_draw_indicator
+   gint focus_pad;
+   gboolean interior_focus;
+   
+-  if (gtk_widget_is_drawable (check_button)){
++  if (gtk_widget_is_drawable (GTK_WIDGET (check_button))){
+     
+     widget = GTK_WIDGET (check_button);
+     button = GTK_BUTTON (check_button);

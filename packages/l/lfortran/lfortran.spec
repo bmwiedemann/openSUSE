@@ -18,7 +18,7 @@
 
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 
-Version:        0.32.0
+Version:        0.42.0
 %global         sover 0
 Name:           lfortran
 Release:        0
@@ -48,7 +48,7 @@ BuildRequires:  libunwind-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  libzstd-devel
 BuildRequires:  libzstd-devel-static
-BuildRequires:  llvm16-devel
+BuildRequires:  llvm18-devel
 BuildRequires:  python3-devel
 BuildRequires:  rapidjson-devel
 BuildRequires:  re2c
@@ -96,7 +96,7 @@ This package contains static runtime library for %{name}.
 %autosetup -p1
 
 %build
-%cmake -DCMAKE_PREFIX_PATH=%{_libdir}/llvm16/ \
+%cmake -DCMAKE_PREFIX_PATH=%{_libdir}/llvm18/ \
        -DWITH_LLVM=ON \
        -DWITH_RUNTIME_LIBRARY=ON \
        -DWITH_FMT=ON \
@@ -133,6 +133,9 @@ This package contains static runtime library for %{name}.
 %{_includedir}/lfortran/impure/lfortran_intrinsics.h
 %{_libdir}/liblfortran_runtime.so
 %{_libdir}/lfortran_*.mod
+%dir %{_datadir}/lfortran
+%{_datadir}/lfortran/*.py
+%{_libdir}/omp_lib.mod
 
 %files devel-static
 %{_libdir}/liblfortran_runtime_static.a

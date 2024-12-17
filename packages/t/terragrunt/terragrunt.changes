@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Dec 14 21:14:42 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.69.13:
+  * Don't require HOME if TERRAGRUNT_PROVIDER_CACHE_DIR is set
+    (#3649)
+  * Add redirect for unused contact page. (#3653)
+  * feat: Incorporating user feedback on the Getting Started guide
+    (#3648)
+
+-------------------------------------------------------------------
 Fri Dec 13 06:12:34 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.69.12:

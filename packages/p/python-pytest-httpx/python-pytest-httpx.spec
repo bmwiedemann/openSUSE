@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-httpx
-Version:        0.34.0
+Version:        0.35.0
 Release:        0
 Summary:        Send responses to httpx
 License:        MIT
@@ -30,13 +30,13 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module httpx >= 0.27.0 with %python-httpx < 0.28}
+BuildRequires:  %{python_module httpx >= 0.28.0 with %python-httpx < 0.29}
 BuildRequires:  %{python_module pytest >= 8.0}
 BuildRequires:  %{python_module pytest-asyncio >= 0.24.0}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-pytest >= 8.0
-Requires:       (python-httpx >= 0.27.0 with python-httpx < 0.28)
+Requires:       (python-httpx >= 0.28.0 with python-httpx < 0.29)
 BuildArch:      noarch
 %python_subpackages
 

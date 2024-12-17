@@ -1546,4 +1546,21 @@ Dropped CVE-2019-11372_CVE-2019-11373.patch (merged upstream)
 </comment>
     <requestid>1223200</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>242e020a1ecdc44bb2ec1a225056b3e4</srcmd5>
+    <version>24.12</version>
+    <time>1734372664</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 24.12
+  Added features:
+  * AVC: Chroma Subsampling Position
+  * PNG: adapt cLLi/mdCv letter case due to spec draft update
+  Fixed bugs:
+  * RIFF: fix bad seek in big chunks e.g. aXML with odd size
+  * ADM: fix buffer over-read
+  *FFV1: MaxSliceCount was not in XML or JSON report
+  
+</comment>
+    <requestid>1231175</requestid>
+  </revision>
 </revisionlist>

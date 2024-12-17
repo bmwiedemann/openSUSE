@@ -28,4 +28,18 @@
   * meson: Add initial darwin_versions</comment>
     <requestid>990112</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7a4df07c7a3ea4677bd69a9690e98d5c</srcmd5>
+    <version>0.1.3</version>
+    <time>1734372539</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.1.3
+  * cvt: fix -Wmissing-prototypes warning for cvt_is_standard
+  * ci: Update CI and enable static analysis
+  * README: remove double dollar sign
+  * Fix hsync_start computation
+  * Fix too-small back porch at very low resolutions
+  * Rename constant to CVT_MIN_V_PORCH_RND</comment>
+    <requestid>1230955</requestid>
+  </revision>
 </revisionlist>

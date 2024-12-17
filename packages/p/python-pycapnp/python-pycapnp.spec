@@ -37,6 +37,8 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(capnp)
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -56,18 +58,12 @@ export CFLAGS="%{optflags}"
 %{python_expand rm %{buildroot}%{$python_sitearch}/capnp/helpers/*.h
 %fdupes %{buildroot}%{$python_sitearch}
 }
-%python_expand find %{buildroot}%{$python_sitearch}
 
 %check
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
 mv capnp/ /tmp
-if [[ "$python" == "python3" || "$python" == "python3.6" ]]; then
-  $python -m pytest -k 'not async'
-else
-  $python -m pytest
-fi
+# Attempts to resolve names
+%pytest_arch -k 'not (test_ssl_async_example or test_ssl_reconnecting_async_example or test_async_ssl_calculator_example)'
 mv /tmp/capnp/ .
-}
 
 %post
 %python_install_alternative capnpc-cython
@@ -79,6 +75,7 @@ mv /tmp/capnp/ .
 %doc CHANGELOG.md README.md
 %license LICENSE.md
 %python_alternative %{_bindir}/capnpc-cython
-%{python_sitearch}/*
+%{python_sitearch}/capnp
+%{python_sitearch}/pycapnp-%{version}.dist-info
 
 %changelog

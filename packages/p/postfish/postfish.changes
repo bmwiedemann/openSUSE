@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 16 09:14:59 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- postfix-fix-proto.patch: fix prototype
+
+-------------------------------------------------------------------
 Wed Apr 17 08:26:40 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch for deterministic wisdomrc

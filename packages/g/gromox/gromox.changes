@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Dec  7 11:21:28 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.38
+  * oxcical: ignore zero-length PidLidTimeZoneStruct on export
+    rather than failing the operation
+  * freebusy: process events with recurrence patterns > 510 bytes
+  * mbop-get-freeubsy: respect the absence of start_time,end_time
+    (-a/-b) parameters
+  * mapi_lib: support TNEF export of messages without
+    PR_INTERNET_CPID
+  * email_lib: no longer reject import of time-based recurrent
+    series (`RRULE` line with `UNTIL` specifier) with a single
+    occurrence
+  * midb: deal with folder changes that occurr during times when
+    midb is not running
+  * exm2eml: add TNEF file export support
+  * imap: reject creating extant folder
+  * midb: change M-COPY from a read-write cycle to server-side
+    copy, thereby preserving mail headers from now on
+  * midb/imapd: folder names are now treated case-sensitive, just
+    like MAPI did it already
+
+-------------------------------------------------------------------
 Wed Nov 20 10:58:49 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.37

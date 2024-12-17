@@ -74,6 +74,8 @@ Patch23:        mozjs78-CVE-2024-45490-part01-5c1a3164.patch
 Patch24:        mozjs78-CVE-2024-45491.patch
 # PATCH-FIX-UPSTREAM mozjs78-CVE-2024-45492.patch CVE-2024-45492 bsc#1230038 qzhao@suse.com -- Detect integer overflow in function nextScaffoldPart.
 Patch25:        mozjs78-CVE-2024-45492.patch
+# PATCH-FIX-UPSTREAM mozjs78-CVE-2024-50602.patch CVE-2024-50602 bsc#1232599 bsc#1232602 qzhao@suse.com -- Make XML_StopParser refuse to stop/suspend an unstarted.
+Patch26:        mozjs78-CVE-2024-50602.patch
 BuildRequires:  autoconf213
 BuildRequires:  cargo
 BuildRequires:  ccache
@@ -160,6 +162,7 @@ pushd ../..
 %patch -P 23 -p1
 %patch -P 24 -p1
 %patch -P 25 -p1
+%patch -P 26 -p1
 
 %if %{pkg_vcmp libicu-devel >= 76.1}
 sed -i 's/icu-i18n/icu-uc &/' js/moz.configure

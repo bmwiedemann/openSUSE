@@ -1,0 +1,84 @@
+-------------------------------------------------------------------
+Sat Dec 14 17:35:39 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.7:
+  * Relicense most code under GPL-2.0-or-later OR Apache-2.0
+  * mkcomposefs: make it cpuset aware
+  * README.md: Add a "tagline"
+  * mkcomposefs: Document external sandboxing
+  * meson.build: raise used C standard to C11
+  * libcomposefs: include linux/limits.h to satisfy usage of XATTR_NAME_MAX
+  * tests: Fix should-fail-self-hardlink to conform to latest syntax
+  * Fix clang warnings
+  * Add a libcomposefs-internal
+  * internal: Rewrite byteswapping macros
+  * tests: Add a flow for integration test with fsverity enabled
+  * README.md: Link to community forums
+  * Add a CONTRIBUTING.md
+  * MAINTAINERS.md: New file
+  * writer: Add O_DIRECTORY
+  * writer: Use blocksize constant
+  * Fixed typos in README.md
+  * lib: Add expansion comments to header
+- add tests
+
+-------------------------------------------------------------------
+Thu Oct  3 03:36:33 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.6:
+  * fix rust bindings
+  * fix a potential CVE
+  * Autotools build system dropped
+  * mkcomposefs: Process last content in dumpfile without newline
+  * dump: Support --filter
+  * lib: Bail on xattr names > XATTR_NAME_MAX
+  * lib: Verify mode values
+  * Reject an empty name
+  * Two more testing improvements
+  * More validation
+  * rust/dumpfile: Minor optimization for unescape_to_path_canonical
+  * rust: Attempt to fix build on docs.rs
+  * rust: Add wrapping for composefs-info dump
+  * Various fixes to the fsverity part of test-units.sh
+  * Replace custom clang-format bits with stock meson targets
+  * Add 64bit rdev APIs
+  * libcomposefs: detect short erofs files
+  * rust: Accept 64 bit values for rdev
+  * A few cleanups around symlinks
+  * tests: Move sha verification after other checks
+  * dumpfile: Add some test code to convert to tar
+  * mkcomposefs: Add a hidden CFS_PARSE_STRICT
+  * Results from running honggfuzz, plus some more manual auditing
+  * lib: Move validation out of lcfs_node_add_child()
+  * writer: Clarifications around our usage of EROFS_NULL_ADDR
+- fix licensing
+- rename libcomposefs-devel to composefs-devel, as this is the opensuse way
+
+-------------------------------------------------------------------
+Wed Sep 11 20:25:13 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.5:
+  * test: use correct composefs-info binary
+  * rust: Some doc and misc tweaks
+  * test: remove hardcoded /tmp
+  * rust: Add mandatory description field, other misc changes
+  * composefs-core: Drop incorrect include
+  * rust: Two minor patches
+  * composefs-info: specify locale to isgraph/isprint
+  * Add meson as an alternative to autotools
+  * info: Add missing terminator for longopts
+  * mount: Consistently use composefs as source
+  * meson.build: Allow use as a meson subproject
+  * mkcompose: report close() errors
+  * libcomposefs: do not override errno
+  * libcomposefs: drop using "ro" option
+  * Minor rust lints
+  * Verify payload length early on
+- switch to meson buildsystem
+- switch (permanently?) to tags not releases, as they forgot to add
+  meson build files in release files
+
+-------------------------------------------------------------------
+Wed Jul 17 08:30:47 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Initial package for bootc on openSUSE.

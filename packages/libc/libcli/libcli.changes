@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 16 08:32:51 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- libcli-fix-calloc.patch: fix bad calloc arg order for gcc14
+
+-------------------------------------------------------------------
 Thu Feb 29 15:52:13 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

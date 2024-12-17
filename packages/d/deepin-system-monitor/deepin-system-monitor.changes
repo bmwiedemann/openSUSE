@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 16 08:37:39 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add redefine-dmi_string.patch, fix dmi_string function error.
+
+-------------------------------------------------------------------
 Thu Aug 15 13:16:03 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
 
 - Add fix-procps-link.patch, backport support for procps 4.0 

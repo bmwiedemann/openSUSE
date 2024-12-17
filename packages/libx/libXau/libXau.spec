@@ -1,7 +1,7 @@
 #
 # spec file for package libXau
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname	libXau6
 Name:           libXau
-Version:        1.0.11
+Version:        1.0.12
 Release:        0
 Summary:        X11 authorization protocol library
 License:        MIT
@@ -31,6 +31,7 @@ Source1:        baselibs.conf
 #git#BuildRequires:	autoconf >= 2.60, automake
 BuildRequires:  fdupes
 BuildRequires:  libtool
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(xorg-macros) >= 1.8
 BuildRequires:  pkgconfig(xproto)
@@ -78,12 +79,11 @@ in %{lname}.
 %setup -q
 
 %build
-%configure --disable-static
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
 %fdupes %{buildroot}/%{_prefix}
 
 %post -n %{lname} -p /sbin/ldconfig

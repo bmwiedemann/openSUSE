@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Dec 16 06:21:41 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.18.1:
+  * fix error
+  * also drop util.RightJoinMap
+  * undo whitespace change
+  * remove unnecessary util.Dedup method
+
+-------------------------------------------------------------------
+Sat Dec 14 21:14:54 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.18.0:
+  * build(deps): bump chainguard.dev/apko from 0.21.0 to 0.22.1
+  * build(deps): bump
+    go.opentelemetry.io/otel/exporters/stdout/stdouttrace
+  * build(deps): bump dagger.io/dagger in the gomod group
+  * upgrade to 3.13
+  * sign: switch to SHA2-256 signature by default
+  * feat(pipelines/cargo): add support for rustflags (#1698)
+  * pipelines/split/dev - grab files in /usr/share/cmake
+
+-------------------------------------------------------------------
 Thu Dec 12 05:56:35 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.17.7:

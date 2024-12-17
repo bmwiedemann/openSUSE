@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Dec 14 03:36:20 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 1.1.2
+  * configure: Use LT_INIT from libtool 2 instead of deprecated AC_PROG_LIBTOOL
+  * Set close-on-exec when opening files
+  * gitlab CI: Update to latest CI templates
+  * gitlab CI: add xz-utils to container for "make distcheck"
+  * IceOpenConnection: stop processing messages if connection was closed
+  * ConnectToPeer: return failure if malloc() fails
+  * EXTRACT_STRING: Avoid writing to NULL pointer if malloc fails
+  * _IceAddOpcodeMapping: Avoid writing to NULL pointer if malloc fails
+  * Clear some -Wuseless-cast warnings from gcc 14.1
+  * IceReadCompleteMessage: callers need to check if malloc() failed
+  * ProcessConnectionSetup: avoid writing to NULL pointer if malloc() failed
+  * ProcessProtocolSetup: return failure if malloc() failed for ProtocolName
+  * IceProtocolSetup: return failure if malloc() failed for authIndices
+  * IceRegisterForProtocolSetup: return failure if malloc() failed
+  * AuthRequired: avoid undefined behavior in memcpy() call
+  * write_counted_string: avoid undefined behavior in fwrite() call
+  * ICElibint.h: add do ... while (0) around macro definitions
+  * ProcessAuthReply: Handle -Wconditional-uninitialized warning
+  * libICE : Dereferencing a possible NULL pointer in error.c
+
+-------------------------------------------------------------------
 Thu Dec  8 20:57:53 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.1:

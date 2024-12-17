@@ -125,4 +125,14 @@
   * Allow disabling readline support in Makefile.</comment>
     <requestid>1143406</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>49ff61071ebe6a72e9fbce393b3cb775</srcmd5>
+    <version>1.3.5</version>
+    <time>1734372534</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 1.3.5
+  * https://git.ghostscript.com/?p=mujs.git;a=log;h=refs/tags/1.3.5
+  * Fixed bug with String.prototype.split(RegExp).</comment>
+    <requestid>1230945</requestid>
+  </revision>
 </revisionlist>

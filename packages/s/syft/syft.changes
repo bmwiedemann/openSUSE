@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Dec 14 21:15:40 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.18.1:
+  * chore(deps): update anchore dependencies (#3525)
+  * chore(deps): bump github/codeql-action from 3.27.7 to 3.27.9
+    (#3524)
+  * chore(deps): bump golang.org/x/crypto from 0.30.0 to 0.31.0
+    (#3523)
+  * chore(deps): bump actions/setup-go from 5.1.0 to 5.2.0 (#3519)
+  * chore(deps): bump actions/checkout from 4.2.1 to 4.2.2 (#3518)
+  * chore: make fixes field in PR template match auto-close regex
+    (#3520)
+  * fix: stop omitting redundantly parenthesized licenses in CDX
+    formatter (#3517)
+  * chore: migrate syft to use the anchore fork of archiver without
+    replace (#3516)
+  * Make pre-release integration PRs (#3370)
+  * chore(deps): bump github.com/docker/docker (#3512)
+  * chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.6.3 to
+    6.6.4 (#3513)
+  * chore(deps): bump github/codeql-action from 3.27.6 to 3.27.7
+    (#3514)
+
+-------------------------------------------------------------------
 Tue Dec 10 08:48:44 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.18.0:

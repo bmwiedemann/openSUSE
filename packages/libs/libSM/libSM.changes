@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Dec 14 03:43:58 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 1.2.5:
+  * Remove "All rights reserved" from Oracle copyright notices
+  * configure: Use LT_INIT from libtool 2 instead of deprecated AC_PROG_LIBTOOL
+  * gitlab CI: add xz-utils to container for "make distcheck"
+  * unifdef __UNIXWARE__
+  * unifdef MNX_TCPCONN
+  * SmcOpenConnection: remove cast of return value from getenv()
+  * IceReadCompleteMessage callers need to check if malloc() failed
+
+-------------------------------------------------------------------
 Fri Dec 23 08:18:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.4:

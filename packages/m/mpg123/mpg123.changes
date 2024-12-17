@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Dec 14 19:05:04 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.32.10
+  * scripts/tag_lyrics.py: fix for python3
+  * libout123: Use strtok_r() to avoid conflicts multithreaded
+    contexts (both sides should avoid plain strtok()!
+  * libmpg123: Un-break DLL builds that need I/O functions
+    defined in libmpg123.c
+  * ports/cmake: More fixup to also produce .pc files with
+    Libs.private.
+
+-------------------------------------------------------------------
 Sat Nov  2 13:09:30 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.32.9

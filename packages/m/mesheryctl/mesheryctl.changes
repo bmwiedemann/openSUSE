@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Dec 15 10:39:39 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.169:
+  * General
+    - Meshsync api enhancement @aabidsofi19 (#12870)
+    - Removed a trailing slash in README.md @Ajay-singh1 (#12865)
+  * Meshery CLI
+    - Create tests for mesheryctl exp relationship command
+      @yaten2302 (#12792)
+
+-------------------------------------------------------------------
 Tue Dec 10 08:49:44 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.7.168:

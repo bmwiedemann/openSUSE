@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 05 15:06:01 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+
+- Add mozjs128-CVE-2024-50602.patch:
+  Backporting 51c70190 from upstream,
+  * lib: Make XML_StopParser refuse to stop/suspend an unstarted parser.
+  * lib: Be explicit about XML_PARSING in XML_StopParser.
+  (CVE-2024-50602, bsc#1232599, bsc#1232602)
+
+-------------------------------------------------------------------
 Tue Dec  3 08:05:03 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 128.5.1:

@@ -1,0 +1,322 @@
+From 1266ddb5d671d08ba1da45db963d0102de00cae4 Mon Sep 17 00:00:00 2001
+From: ddelange <14880945+ddelange@users.noreply.github.com>
+Date: Sun, 15 Dec 2024 09:28:01 +0100
+Subject: [PATCH 1/2] Add cp313 to CI
+
+---
+ .github/workflows/python-package.yml | 4 ++++
+ setup.py                             | 2 ++
+ 2 files changed, 6 insertions(+)
+
+diff --git a/.github/workflows/python-package.yml b/.github/workflows/python-package.yml
+index 58302d60..be6a7228 100644
+--- a/.github/workflows/python-package.yml
++++ b/.github/workflows/python-package.yml
+@@ -31,6 +31,7 @@ jobs:
+           - {python-version: '3.10', os: ubuntu-20.04}
+           - {python-version: '3.11', os: ubuntu-20.04}
+           - {python-version: '3.12', os: ubuntu-20.04}
++          - {python-version: '3.13', os: ubuntu-20.04}
+ 
+           - {python-version: '3.8', os: windows-2019}
+           - {python-version: '3.9', os: windows-2019}
+@@ -67,6 +68,7 @@ jobs:
+           - {python-version: '3.10', os: ubuntu-20.04}
+           - {python-version: '3.11', os: ubuntu-20.04}
+           - {python-version: '3.12', os: ubuntu-20.04}
++          - {python-version: '3.13', os: ubuntu-20.04}
+ 
+           #
+           # Some of the doctests don't pass on Windows because of Windows-specific
+@@ -104,6 +106,7 @@ jobs:
+           - {python-version: '3.10', os: ubuntu-20.04}
+           - {python-version: '3.11', os: ubuntu-20.04}
+           - {python-version: '3.12', os: ubuntu-20.04}
++          - {python-version: '3.13', os: ubuntu-20.04}
+ 
+           # Not sure why we exclude these, perhaps for historical reasons?
+           #
+@@ -153,6 +156,7 @@ jobs:
+           - {python-version: '3.10', os: ubuntu-20.04}
+           - {python-version: '3.11', os: ubuntu-20.04}
+           - {python-version: '3.12', os: ubuntu-20.04}
++          - {python-version: '3.13', os: ubuntu-20.04}
+ 
+           # - {python-version: '3.7', os: windows-2019}
+           # - {python-version: '3.8', os: windows-2019}
+diff --git a/setup.py b/setup.py
+index 9e738bea..d099c283 100644
+--- a/setup.py
++++ b/setup.py
+@@ -102,6 +102,8 @@ def read(fname):
+         'Programming Language :: Python :: 3.9',
+         'Programming Language :: Python :: 3.10',
+         'Programming Language :: Python :: 3.11',
++        'Programming Language :: Python :: 3.12',
++        'Programming Language :: Python :: 3.13',
+         'Topic :: System :: Distributed Computing',
+         'Topic :: Database :: Front-Ends',
+     ],
+
+From c3105cc3d326cdfc50b6d0cb3d1544ca8522be29 Mon Sep 17 00:00:00 2001
+From: ddelange <14880945+ddelange@users.noreply.github.com>
+Date: Sun, 15 Dec 2024 23:42:55 +0100
+Subject: [PATCH 2/2] Fix tests
+
+---
+ .github/workflows/python-package.yml | 10 ++++++
+ smart_open/azure.py                  | 52 +++++++++++++++++-----------
+ smart_open/hdfs.py                   | 22 +++++++++---
+ smart_open/tests/test_azure.py       | 10 ++++++
+ 4 files changed, 69 insertions(+), 25 deletions(-)
+
+diff --git a/.github/workflows/python-package.yml b/.github/workflows/python-package.yml
+index be6a7228..abd387cf 100644
+--- a/.github/workflows/python-package.yml
++++ b/.github/workflows/python-package.yml
+@@ -38,6 +38,7 @@ jobs:
+           - {python-version: '3.10', os: windows-2019}
+           - {python-version: '3.11', os: windows-2019}
+           - {python-version: '3.12', os: windows-2019}
++          - {python-version: '3.13', os: windows-2019}
+     steps:
+       - uses: actions/checkout@v2
+ 
+@@ -78,6 +79,9 @@ jobs:
+           # - {python-version: '3.8', os: windows-2019}
+           # - {python-version: '3.9', os: windows-2019}
+           # - {python-version: '3.10', os: windows-2019}
++          # - {python-version: '3.11', os: windows-2019}
++          # - {python-version: '3.12', os: windows-2019}
++          # - {python-version: '3.13', os: windows-2019}
+ 
+     steps:
+       - uses: actions/checkout@v2
+@@ -114,6 +118,9 @@ jobs:
+           # - {python-version: '3.8', os: windows-2019}
+           # - {python-version: '3.9', os: windows-2019}
+           # - {python-version: '3.10', os: windows-2019}
++          # - {python-version: '3.11', os: windows-2019}
++          # - {python-version: '3.12', os: windows-2019}
++          # - {python-version: '3.13', os: windows-2019}
+ 
+     steps:
+       - uses: actions/checkout@v2
+@@ -162,6 +169,9 @@ jobs:
+           # - {python-version: '3.8', os: windows-2019}
+           # - {python-version: '3.9', os: windows-2019}
+           # - {python-version: '3.10', os: windows-2019}
++          # - {python-version: '3.11', os: windows-2019}
++          # - {python-version: '3.12', os: windows-2019}
++          # - {python-version: '3.13', os: windows-2019}
+ 
+     steps:
+       - uses: actions/checkout@v2
+diff --git a/smart_open/azure.py b/smart_open/azure.py
+index 1c991f05..f467992c 100644
+--- a/smart_open/azure.py
++++ b/smart_open/azure.py
+@@ -195,8 +195,9 @@ class Reader(io.BufferedIOBase):
+     Implements the io.BufferedIOBase interface of the standard library.
+ 
+     :raises azure.core.exceptions.ResourceNotFoundError: Raised when the blob to read from does not exist.
+-
+     """
++    _blob = None  # always initialized so closed property is functional in case _get_blob_client fails
++
+     def __init__(
+             self,
+             container,
+@@ -207,9 +208,10 @@ def __init__(
+             max_concurrency=DEFAULT_MAX_CONCURRENCY,
+     ):
+         self._container_name = container
++        self._blob_name = blob
+ 
+-        self._blob = _get_blob_client(client, container, blob)
+         # type: azure.storage.blob.BlobClient
++        self._blob = _get_blob_client(client, container, blob)
+ 
+         if self._blob is None:
+             raise azure.core.exceptions.ResourceNotFoundError(
+@@ -236,8 +238,13 @@ def __init__(
+     def close(self):
+         """Flush and close this stream."""
+         logger.debug("close: called")
+-        self._blob = None
+-        self._raw_reader = None
++        if not self.closed:
++            self._blob = None
++            self._raw_reader = None
++
++    @property
++    def closed(self):
++        return self._blob is None
+ 
+     def readable(self):
+         """Return True if the stream can be read from."""
+@@ -369,20 +376,26 @@ def __exit__(self, exc_type, exc_val, exc_tb):
+         self.close()
+ 
+     def __str__(self):
+-        return "(%s, %r, %r)" % (self.__class__.__name__,
+-                                 self._container_name,
+-                                 self._blob.blob_name)
++        return "(%s, %r, %r)" % (
++            self.__class__.__name__,
++            self._container_name,
++            self._blob_name
++        )
+ 
+     def __repr__(self):
+         return "%s(container=%r, blob=%r)" % (
+-            self.__class__.__name__, self._container_name, self._blob.blob_name,
++            self.__class__.__name__,
++            self._container_name,
++            self._blob_name,
+         )
+ 
+ 
+ class Writer(io.BufferedIOBase):
+     """Writes bytes to Azure Blob Storage.
+ 
+-    Implements the io.BufferedIOBase interface of the standard library."""
++    Implements the io.BufferedIOBase interface of the standard library.
++    """
++    _blob = None  # always initialized so closed property is functional in case _get_blob_client fails
+ 
+     def __init__(
+             self,
+@@ -392,21 +405,19 @@ def __init__(
+             blob_kwargs=None,
+             min_part_size=_DEFAULT_MIN_PART_SIZE,
+     ):
+-        self._is_closed = False
+         self._container_name = container
+-
+-        self._blob = _get_blob_client(client, container, blob)
++        self._blob_name = blob
+         self._blob_kwargs = blob_kwargs or {}
+-        # type: azure.storage.blob.BlobClient
+-
+         self._min_part_size = min_part_size
+-
+         self._total_size = 0
+         self._total_parts = 0
+         self._bytes_uploaded = 0
+         self._current_part = io.BytesIO()
+         self._block_list = []
+ 
++        # type: azure.storage.blob.BlobClient
++        self._blob = _get_blob_client(client, container, blob)
++
+         #
+         # This member is part of the io.BufferedIOBase interface.
+         #
+@@ -424,25 +435,26 @@ def terminate(self):
+         logger.debug('%s: terminating multipart upload', self)
+         if not self.closed:
+             self._block_list = []
+-            self._is_closed = True
++            self._blob = None
+         logger.debug('%s: terminated multipart upload', self)
+ 
+     #
+     # Override some methods from io.IOBase.
+     #
+     def close(self):
++        logger.debug("close: called")
+         if not self.closed:
+             logger.debug('%s: completing multipart upload', self)
+             if self._current_part.tell() > 0:
+                 self._upload_part()
+             self._blob.commit_block_list(self._block_list, **self._blob_kwargs)
+             self._block_list = []
+-            self._is_closed = True
++            self._blob = None
+             logger.debug('%s: completed multipart upload', self)
+ 
+     @property
+     def closed(self):
+-        return self._is_closed
++        return self._blob is None
+ 
+     def writable(self):
+         """Return True if the stream supports writing."""
+@@ -528,13 +540,13 @@ def __str__(self):
+         return "(%s, %r, %r)" % (
+             self.__class__.__name__,
+             self._container_name,
+-            self._blob.blob_name
++            self._blob_name
+         )
+ 
+     def __repr__(self):
+         return "%s(container=%r, blob=%r, min_part_size=%r)" % (
+             self.__class__.__name__,
+             self._container_name,
+-            self._blob.blob_name,
++            self._blob_name,
+             self._min_part_size
+         )
+diff --git a/smart_open/hdfs.py b/smart_open/hdfs.py
+index a247d3e3..772d7591 100644
+--- a/smart_open/hdfs.py
++++ b/smart_open/hdfs.py
+@@ -84,8 +84,13 @@ def __init__(self, uri):
+     def close(self):
+         """Flush and close this stream."""
+         logger.debug("close: called")
+-        self._sub.terminate()
+-        self._sub = None
++        if not self.closed:
++            self._sub.terminate()
++            self._sub = None
++
++    @property
++    def closed(self):
++        return self._sub is None
+ 
+     def readable(self):
+         """Return True if the stream can be read from."""
+@@ -136,9 +141,16 @@ def __init__(self, uri):
+         self.raw = None
+ 
+     def close(self):
+-        self.flush()
+-        self._sub.stdin.close()
+-        self._sub.wait()
++        logger.debug("close: called")
++        if not self.closed:
++            self.flush()
++            self._sub.stdin.close()
++            self._sub.wait()
++            self._sub = None
++
++    @property
++    def closed(self):
++        return self._sub is None
+ 
+     def flush(self):
+         self._sub.stdin.flush()
+diff --git a/smart_open/tests/test_azure.py b/smart_open/tests/test_azure.py
+index a82dbf17..2eb23a0e 100644
+--- a/smart_open/tests/test_azure.py
++++ b/smart_open/tests/test_azure.py
+@@ -554,6 +554,16 @@ def test_read_blob_client(self):
+ 
+         assert data == content
+ 
++    def test_nonexisting_container(self):
++        with self.assertRaises(azure.core.exceptions.ResourceNotFoundError):
++            with smart_open.azure.open(
++                    'thiscontainerdoesntexist',
++                    'mykey',
++                    'rb',
++                    CLIENT
++            ) as fin:
++                fin.read()
++
+ 
+ class WriterTest(unittest.TestCase):
+     """Test writing into Azure Blob files."""

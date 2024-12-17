@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Dec 14 13:45:02 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20241213.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20241213
+  * Added 3.4.0-rc1
+  * Avoid array subscript error when checking OpenSSL versions by @mislav in #2461
+  * Allow named pipes as build definition argument by @mislav in #2462
+  * Clarify --list and --definitions in the README by @eregon in #2464
+  * Suggest to install rubies in a user-writable directory in the README by @eregon in #2465
+  * Add an environment variable to always build openssl/libssl by @eregon in #2466
+  * Warn that Ruby 3.1 support ends in less than 6 months by @mislav in #2471
+  * Update OpenSSL 3.0.15 by @hsbt in #2477
+
+-------------------------------------------------------------------
 Wed Nov  6 03:12:32 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20241105.

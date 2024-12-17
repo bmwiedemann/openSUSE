@@ -311,4 +311,12 @@
     <comment>- Update to release 2.37</comment>
     <requestid>1225314</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>81e539fd2f6ea458322d9055771405c8</srcmd5>
+    <version>2.38</version>
+    <time>1734372662</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1231170</requestid>
+  </revision>
 </revisionlist>

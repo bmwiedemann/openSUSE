@@ -90,4 +90,16 @@
     <comment></comment>
     <requestid>1007249</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>009e75d60c61e62255a88e0c50746cb6</srcmd5>
+    <version>1.1.6</version>
+    <time>1734372543</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.1.6
+  * Remove &quot;All rights reserved&quot; from Oracle copyright notices
+  * configure: Use LT_INIT from libtool 2 instead of deprecated AC_PROG_LIBTOOL
+  * Add X.Org's standard C warning flags to AM_CFLAGS
+  * Add -no-undefined flag to LDFLAGS to fix Windows builds</comment>
+    <requestid>1230958</requestid>
+  </revision>
 </revisionlist>

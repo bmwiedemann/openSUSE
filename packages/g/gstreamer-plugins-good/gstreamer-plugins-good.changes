@@ -19,8 +19,9 @@ Mon Dec  9 11:58:04 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
   + qtdemux:
     - Header and sample table parsing fixes (boo#1234414
       boo#1234417 boo#1234424 boo#1234425 boo#1234426 boo#1234462
-      CVE-2024-47537 CVE-2024-47539 CVE-2024-47596 CVE-2024-47597
-      CVE-2024-47598 CVE-2024-47543).
+      boo#1234473 boo#1234476 boo#1234477 CVE-2024-47537
+      CVE-2024-47539 CVE-2024-47596 CVE-2024-47597 CVE-2024-47598
+      CVE-2024-47543 CVE-2024-47544 CVE-2024-47545 CVE-2024-47546).
     - Avoid integer overflow in theora extension parsing
       (boo#1234449 CVE-2024-47606).
   + qt(6)/material: ensure that we always update the context in

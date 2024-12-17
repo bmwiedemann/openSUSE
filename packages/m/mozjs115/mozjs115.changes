@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 05 15:06:01 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+
+- Add mozjs115-CVE-2024-50602.patch:
+  Backporting 51c70190 from upstream,
+  * lib: Make XML_StopParser refuse to stop/suspend an unstarted parser.
+  * lib: Be explicit about XML_PARSING in XML_StopParser.
+  (CVE-2024-50602, bsc#1232599, bsc#1232602)
+
+-------------------------------------------------------------------
 Wed Nov 20 16:47:26 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Fix build against icu 76.1: link the correct libraries (icu-uc

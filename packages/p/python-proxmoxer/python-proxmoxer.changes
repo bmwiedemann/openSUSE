@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Dec 15 08:01:01 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.2.0:
+  * Bump version to 2.2.0 and add release to changelog
+  * Small meta/project changes
+  * fix: decode parameters if needed (#189)
+  * Don't error when Proxmox task ID is returned (#187)
+  * Fix commandline backends prefixing with host
+  * Add support to pass in an optional cert/tuple that is used in
+    the connection to proxmox. Usecase: proxmox is behind a service
+    like teleport where it proxies the connection using local
+    certificates after you login.
+  * update tests
+  * fix url for local requests
+
+-------------------------------------------------------------------
 Fri Sep 20 11:23:13 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - add sle15_python_module_pythons

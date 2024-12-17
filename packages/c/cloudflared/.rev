@@ -89,4 +89,12 @@
   * TUN-8701: Simplify flow registration logs for datagram v3 (forwarded request 1226300 from hillwood)</comment>
     <requestid>1226301</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1b41aa019bb3684d40824cf7609a8b35</srcmd5>
+    <version>2024.12.1</version>
+    <time>1734372574</time>
+    <user>anag+factory</user>
+    <comment>- Add update-vendor.patch, fix CVE-2024-45337 and boo#1234582 (forwarded request 1230992 from hillwood)</comment>
+    <requestid>1230993</requestid>
+  </revision>
 </revisionlist>

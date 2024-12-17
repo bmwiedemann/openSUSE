@@ -1,7 +1,7 @@
 #
 # spec file for package python-acitoolkit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,12 +21,12 @@ Version:        0.4
 Release:        0
 Summary:        Python library for programming ACI
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/datacenter/acitoolkit
 Source:         https://github.com/datacenter/acitoolkit/archive/v%{version}.tar.gz
 Patch0:         remove-app-dependency.patch
 # https://github.com/datacenter/acitoolkit/commit/629b84887dd0f0183b81efc8adb16817f985541a
 Patch1:         python-acitoolkit-python-310.patch
+Patch2:         no-more-makesuite.patch
 BuildRequires:  %{python_module graphviz}
 BuildRequires:  %{python_module jsonschema}
 BuildRequires:  %{python_module pbr}
@@ -52,14 +52,15 @@ Infrastructure Controller.
 
 %package -n %{name}-doc
 Summary:        Documentation for the Python acitoolkit library
-Group:          Documentation/Other
 
 %description -n %{name}-doc
-Documentation for %{name}.
+Python Library for configuring the Cisco Application Policy
+Infrastructure Controller.
+
+This package contains the documentation.
 
 %package -n %{name}-doc-applications
 Summary:        Applications for the Python acitoolkit library
-Group:          Development/Languages/Python
 Requires:       python-acitoolkit-doc
 Requires:       python3-Flask
 Requires:       python3-Flask-Admin
@@ -76,7 +77,6 @@ Python applications using acitoolkit for programming ACI.
 
 %package -n %{name}-doc-samples
 Summary:        Sample code for the Python acitoolkit library
-Group:          Development/Languages/Python
 Requires:       %{name}-doc
 Requires:       python3-PyMySQL
 
@@ -137,6 +137,6 @@ find %{buildroot}%{_defaultdocdir}/%{name}/ -type f -exec chmod a-x \{\} \;
 %doc README.md
 %license LICENSE NOTICE
 %{python_sitelib}/acitoolkit
-%{python_sitelib}/acitoolkit-%{version}*-info
+%{python_sitelib}/acitoolkit-%{version}.dist-info
 
 %changelog

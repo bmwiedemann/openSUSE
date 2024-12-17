@@ -1,14 +1,18 @@
 <services>
-  <service name="tar_scm" mode="disabled">
+  <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/klee/klee-uclibc</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
     <param name="revision">klee_0_9_29</param>
-    <param name="versionformat">1.0.0+git.%cd</param>
+    <param name="versionformat">@PARENT_TAG@+git.%cd</param>
+    <param name="versionrewrite-pattern">klee_uclibc_v(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
   </service>
-  <service name="recompress" mode="disabled">
+  <service name="set_version" mode="manual" />
+
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
     <param name="file">klee-uclibc*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service name="set_version" mode="disabled" />
 </services>

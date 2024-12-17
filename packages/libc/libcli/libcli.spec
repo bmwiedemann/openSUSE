@@ -1,7 +1,7 @@
 #
 # spec file for package libcli
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/dparrish/libcli
 Source:         %{name}-%{version}.tar.xz
 Patch0:         libcli-Makefile-lib64.diff
+Patch1:         libcli-fix-calloc.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description

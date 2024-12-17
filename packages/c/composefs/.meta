@@ -1,0 +1,6 @@
+<package name="composefs" project="openSUSE:Factory">
+  <title>composefs</title>
+  <description>a file system for mounting container images</description>
+  <devel project="Virtualization:containers" package="composefs"/>
+  <url>https://github.com/containers/composefs</url>
+</package>

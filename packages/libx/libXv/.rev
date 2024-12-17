@@ -102,4 +102,17 @@
   * Handle implicit conversion warnings from clang</comment>
     <requestid>1040224</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>643b0d85bc69e6b6d92baa3b1a4ea28a</srcmd5>
+    <version>1.0.13</version>
+    <time>1734372541</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.13 
+  * Remove &quot;All rights reserved&quot; from Oracle copyright notices
+  * configure: Use LT_INIT from libtool 2 instead of deprecated AC_PROG_LIBTOOL
+  * Use calloc instead of malloc and manual loops to zero array contents
+  * XvQueryEncodings: avoid NULL deref if length is 0, but num_encodings is not
+  * XvQueryAdaptors: avoid NULL deref if length is 0, but num_adaptors is not</comment>
+    <requestid>1230957</requestid>
+  </revision>
 </revisionlist>

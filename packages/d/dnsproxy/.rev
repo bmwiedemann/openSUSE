@@ -340,4 +340,16 @@
     <comment>- Update to version 0.73.2: (forwarded request 1208517 from VaiTon)</comment>
     <requestid>1208519</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>8fdd219c0465999b711e81fc628b3350</srcmd5>
+    <version>0.73.4</version>
+    <time>1734372579</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.73.4:
+  * Improved resource consumption
+- Update to version 0.73.3:
+  * Fixed cache related log messages
+  * Updated golibs dependency (forwarded request 1230950 from VaiTon)</comment>
+    <requestid>1230995</requestid>
+  </revision>
 </revisionlist>

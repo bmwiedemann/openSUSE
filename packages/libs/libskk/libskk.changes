@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Dec 15 13:40:49 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.0.5(1.2.0+git20180916+1.0.5)
+  * Don't consume key release events
+  * Improve hankaku katakana conversion
+  * Use the same typing rule in dict-edit mode
+  * Add abort-to-latin and abort-to-latin-unhandled command 
+  * Add more z-* shortcuts from DDSKK
+  * Fix memory leak caused by Vala array conversion
+  * Bump build requirements (glib >= 2.36, valadoc >= 0.40)
+  * build: Use libxkbcommon to resolve keysyms
+- Add fix-build-on-gcc14+.patch.
+
+-------------------------------------------------------------------
 Fri Mar  1 09:36:55 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

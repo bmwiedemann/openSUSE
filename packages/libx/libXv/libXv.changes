@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Dec 14 04:11:34 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.13 
+  * Remove "All rights reserved" from Oracle copyright notices
+  * configure: Use LT_INIT from libtool 2 instead of deprecated AC_PROG_LIBTOOL
+  * Use calloc instead of malloc and manual loops to zero array contents
+  * XvQueryEncodings: avoid NULL deref if length is 0, but num_encodings is not
+  * XvQueryAdaptors: avoid NULL deref if length is 0, but num_adaptors is not
+
+-------------------------------------------------------------------
 Mon Dec  5 10:37:03 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.0.12:

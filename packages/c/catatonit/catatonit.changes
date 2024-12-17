@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Dec 14 09:18:44 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Update to catatonit v0.2.1. See the upstream changelog at
+  <https://github.com/openSUSE/catatonit/releases/tag/v0.2.1>
+  * catatonit will now chdir to / in order to avoid keeping the directory
+    it was running in busy. This was causing issues with rootless Podman's
+    pause container keeping some /home/... paths busy and blocking umounts.
+
+-------------------------------------------------------------------
 Mon Oct  2 05:48:52 UTC 2023 - Aleksa Sarai <asarai@suse.com>
 
 - Update to catatonit v0.2.0.

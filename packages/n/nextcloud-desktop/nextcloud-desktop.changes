@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Dec 13 13:27:38 UTC 2024 - RN <R_Nik_C@proton.me>
+
+- Update to version 3.15.1:
+  * fix regressions in automated tests for bulk upload 
+    (gh#nextcloud/desktop#7588)
+  * when updating a virtual file after lock/unlock: avoid setting 
+    modtime (gh#nextcloud/desktop#7587)
+  * mac-crafter: Fix codesigning of app bundle when auto-updater is 
+    excluded (gh#nextcloud/desktop#7617)
+  * Fix text strings (gh#nextcloud/desktop#7598)
+  * gui/tray: Fix tray window corners (gh#nextcloud/desktop#7618)
+  * gui/tray: Fix activity icon colours (gh#nextcloud/desktop#7619)
+  * when locking a file set If-Match header to ensure etag is 
+    correct (gh#nextcloud/desktop#7620)
+  * Bugfix/handle windows directory junction 
+    (gh#nextcloud/desktop#7621)
+  * gui: Remove content margins account settings subsections 
+    (gh#nextcloud/desktop#7624)
+  * Disable legacy import dialog (gh#nextcloud/desktop#7627)
+  * chore(i18n): Aligned error messages (gh#nextcloud/desktop#7628)
+  * gui/tray: Ensure colour of featured app icon is consistent with 
+    other header buttons (gh#nextcloud/desktop#7629)
+  * doc: Rename first header on macos vfs doc entry, fixing title 
+    in index (gh#nextcloud/desktop#7630)
+  * mac-crafter: Close isExecutable command outpipe file handle 
+    after use (gh#nextcloud/desktop#7631)
+  * Bug fix import of unbranded account (gh#nextcloud/desktop#7637)
+  * improve definition of MIRALL_VERSION_SUFFIX and 
+    MIRALL_VERSION_BUILD (gh#nextcloud/desktop#7638)
+  * Backport/7642/stable 3.15 (gh#nextcloud/desktop#7643)
+  * optionally install PDB files when building them 
+    (gh#nextcloud/desktop#7645)
+  * Include folders when displaying the local metadata about a 
+    conflict. (gh#nextcloud/desktop#7646)
+  * Fix: correctly detects network drive. (gh#nextcloud/desktop#7648)
+
+-------------------------------------------------------------------
 Tue Nov 26 02:05:52 UTC 2024 - RN <R_Nik_C@proton.me>
 
 - Update to version 3.15.0:

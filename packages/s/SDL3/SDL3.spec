@@ -28,6 +28,7 @@ URL:            https://libsdl.org/
 #Git-Clone:     https://github.com/libsdl-org/SDL
 Source:         https://github.com/libsdl-org/SDL/releases/download/preview-%version/SDL3-%version.tar.gz
 Source3:        %name.keyring
+Source4:        baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libdecor-devel

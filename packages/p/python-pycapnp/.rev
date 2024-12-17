@@ -50,4 +50,14 @@
     <comment></comment>
     <requestid>1168460</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>cdb7e1376581ebeeea73ca45e4e3c06c</srcmd5>
+    <version>2.0.0</version>
+    <time>1734373021</time>
+    <user>anag+factory</user>
+    <comment>- Skip a few tests that attempt name resolution.
+- Switch to pytest macro.
+- No more greedy globs in %files.</comment>
+    <requestid>1231283</requestid>
+  </revision>
 </revisionlist>

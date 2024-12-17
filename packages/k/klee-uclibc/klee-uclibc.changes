@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec 09 06:54:14 UTC 2024 - jslaby@suse.cz
+
+- Update to version 1.4+git.20240531:
+  * disable locale data download in default configuration for x86-64
+  * add local uClibc-locale-030818.tgz file
+- switch to obs_scm
+- drop our uClibc-locale-030818.tgz as it is now in the tarball
+
+-------------------------------------------------------------------
 Fri Feb  9 11:26:13 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
 
 - generate debuginfo into the lib using -g

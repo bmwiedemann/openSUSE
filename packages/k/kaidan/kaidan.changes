@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Dec 15 09:05:42 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.10.1
+  * Fix displaying files of each message in appropriate message
+    bubble
+  * Fix sending fallback messages for clients not supporting
+    XEP-0447: Stateless file sharing
+  * Fix margins within message bubbles
+  * Fix hiding hidden message part
+  * Fix displaying marker for new messages
+
+-------------------------------------------------------------------
 Thu Dec 12 08:26:48 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.10.0:

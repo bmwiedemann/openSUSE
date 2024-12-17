@@ -1,0 +1,24 @@
+From 83336f5ce831da0686df3d40a7b97d756a25248a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Wed, 27 Nov 2024 06:42:18 +0100
+Subject: [PATCH] Fix failing build due to missing iomanip.h include
+
+---
+ tests/utils/StringTest.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tests/utils/StringTest.cpp b/tests/utils/StringTest.cpp
+index e6ade37..ab48e82 100644
+--- a/tests/utils/StringTest.cpp
++++ b/tests/utils/StringTest.cpp
+@@ -5,6 +5,7 @@
+ 
+ #include <../src/utils/IntPoint.h>
+ #include <../src/utils/string.h> //The file under test.
++#include <iomanip>
+ 
+ namespace cura
+ {
+-- 
+2.47.0
+

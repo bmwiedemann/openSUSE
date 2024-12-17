@@ -21,7 +21,7 @@
 %define executable_name k8up
 
 Name:           k8up-cli
-Version:        2.11.2
+Version:        2.11.3
 Release:        0
 Summary:        CLI for the K8up Kubernetes and OpenShift Backup Operator
 License:        Apache-2.0

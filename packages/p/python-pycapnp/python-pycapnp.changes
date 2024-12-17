@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 16 01:24:52 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Skip a few tests that attempt name resolution.
+- Switch to pytest macro.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Tue Apr 16 08:24:15 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.0.0

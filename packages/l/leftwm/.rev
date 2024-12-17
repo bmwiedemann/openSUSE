@@ -58,4 +58,26 @@
 </comment>
     <requestid>1157063</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5cefb0da96efc40b8f0c31356c76ad22</srcmd5>
+    <version>0.5.3</version>
+    <time>1734372680</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.5.3:
+  * This is just a quick fix of the xlib-display-server and leftwm crates
+    to get them back to building for 32-bit systems.
+- Changes since 0.5.2:
+  * New window rule options, window_hiding_strategy, default_height and default_width were introduced.
+  * X11RB server backend has been added.
+  * Directional focus for window switching!
+  * Scratchpads can now be called with arguments!
+  * Window history is now cleaned up, which should fix focusing issues!
+  * LeftWM is back to building on MSRV and later Rust Versions.
+  * Hidden windows can now be captured by screen recorders, if needed!
+  * 32 bit builds are working again.
+  * Visible and busy workspaces no longer come together for downstream programs.
+  * The currently supported MSRV is 1.74.0
+</comment>
+    <requestid>1231180</requestid>
+  </revision>
 </revisionlist>

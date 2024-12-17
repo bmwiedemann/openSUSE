@@ -72,4 +72,15 @@
     <comment>- change license to GPL-3.0-only (forwarded request 1230732 from rrahl0)</comment>
     <requestid>1230733</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>683cacaba87276fd2af9a182ee21efb9</srcmd5>
+    <version>51.17</version>
+    <time>1734372615</time>
+    <user>anag+factory</user>
+    <comment>- update to 51.17:
+  * Update DXVK subtitles to include Direct3D 8
+  * Restore line accidentally deleted
+  * Fixed a regression that makes the bottle's preferences page blank in some cases (forwarded request 1231013 from rrahl0)</comment>
+    <requestid>1231015</requestid>
+  </revision>
 </revisionlist>

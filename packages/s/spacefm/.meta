@@ -1,5 +1,0 @@
-<package name="spacefm" project="openSUSE:Factory">
-  <title>Multi-panel tabbed file and desktop manager</title>
-  <description>SpaceFM is a multi-panel tabbed file and desktop manager for GNU/Linux with built-in VFS, udev-based device manager, customizable menu system and bash integration. SpaceFM is popular among novice and power users alike for its stability, speed, convenience and flexibility.</description>
-  <devel project="X11:Utilities" package="spacefm"/>
-</package>

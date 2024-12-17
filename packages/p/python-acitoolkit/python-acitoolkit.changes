@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 16 04:37:22 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch no-more-makesuite.patch:
+  * Do not use unittest.makeSuite()
+
+-------------------------------------------------------------------
 Fri Oct 13 16:21:03 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
 
 - Clean up the SPEC file

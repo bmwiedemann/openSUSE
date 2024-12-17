@@ -26,11 +26,8 @@
 %bcond_with test
 %endif
 
-# Not ready for python313 yet: gh#scikit-image/scikit-image#7585
-%define skip_python313 1
-
 Name:           python-scikit-image%{psuffix}
-Version:        0.24.0
+Version:        0.25.0
 Release:        0
 Summary:        Collection of algorithms for image processing in Python
 License:        BSD-3-Clause
@@ -51,7 +48,6 @@ BuildRequires:  freeimage-devel
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
 Requires:       python-Pillow >= 9.1
-Requires:       python-PyWavelets >= 1.1.1
 Requires:       python-imageio >= 2.33
 Requires:       python-lazy-loader >= 0.4
 Requires:       python-networkx >= 2.8
@@ -61,6 +57,7 @@ Requires:       python-scipy >= 1.9
 Requires:       python-tifffile >= 2022.8.12
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+Recommends:     python-PyWavelets >= 1.6
 Recommends:     python-QtPy
 Recommends:     python-SimpleITK
 Recommends:     python-astropy >= 3.1.2
@@ -69,7 +66,7 @@ Recommends:     python-dask-array >= 1.0.0
 Recommends:     python-imread >= 0.5.1
 Recommends:     python-matplotlib >= 3.6
 Recommends:     python-pooch >= 1.3.0
-Recommends:     python-pyamg
+Recommends:     python-pyamg >= 5.2
 %if %{with test}
 BuildRequires:  %{python_module dask-array >= 1.0.0}
 BuildRequires:  %{python_module matplotlib >= 3.6}
@@ -89,7 +86,7 @@ It is available free of charge and free of restriction.
 %prep
 %if !%{with test}
 %autosetup -p1 -n %{srcname}-%{version}
-sed -Ei "1{s@/usr/bin/env python@%{_bindir}/python3@}" ./skimage/_build_utils/*.py
+sed -Ei "1{s@/usr/bin/env python\$@%{_bindir}/python3@}" ./skimage/_build_utils/*.py
 chmod -x skimage/measure/{__init__,_find_contours}.py
 %else
 %setup -q -c scikit-image-%{version}-test -D -T
@@ -120,6 +117,12 @@ donttest+=" or test_thresholds_dask_compatibility"
 #donttest+=" or test_clear_border_non_binary_out"
 # test collection with xdist not in deterministic order gh#pytest-dev/pytest-xdist#432
 notparallel="test_all_numeric_types"
+# These try to copy an array if we're on 32 bits
+if [ $(getconf LONG_BIT) -eq 32 ]; then
+    donttest+=" or test_binary_descriptors_rotation_crosscheck"
+    donttest+=" or test_normal_mode or test_uniform_mode or test_border"
+    donttest+=" or test_independent_rng"
+fi
 export PYTEST_DEBUG_TEMPROOT=$(mktemp -d -p ./)
 %pytest_arch -v --pyargs skimage -n auto -k "not ($donttest or $notparallel)"
 %pytest_arch -v --pyargs skimage -k "not ($donttest) and ($notparallel)"
@@ -128,7 +131,7 @@ export PYTEST_DEBUG_TEMPROOT=$(mktemp -d -p ./)
 %if !%{with test}
 %files %{python_files}
 %license LICENSE.txt
-%doc CONTRIBUTORS.txt TODO.txt
+%doc CONTRIBUTORS.md TODO.txt
 %{python_sitearch}/skimage/
 %{python_sitearch}/scikit_image-%{version}.dist-info
 %endif

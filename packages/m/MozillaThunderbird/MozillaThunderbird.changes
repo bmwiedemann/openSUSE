@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Dec 11 15:48:02 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 128.5.2
+  * Large virtual folders could be very slow
+  * Message could disappear after moving from IMAP folder followed
+    by Undo and Redo
+  * XMPP chat did not display messages sent inside a CDATA element
+  * Selected calendar day did not move forward at midnight
+  * Today pane agenda sometimes scrolled for no apparent reason
+  * CalDAV calendars without offline support could degrade start-up
+    performance
+  * Visual and UX improvements
+  MFSA 2024-69
+  * CVE-2024-50336 (bmo#1929264)
+    matrix-js-sdk has insufficient MXC URI validation which could
+    allow client-side path traversal
+
+-------------------------------------------------------------------
 Tue Dec  3 07:41:29 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 128.5.1

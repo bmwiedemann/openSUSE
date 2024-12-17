@@ -28,3 +28,4 @@ diff -Nur deepin-system-monitor-5.8.27/src/CMakeLists.txt deepin-system-monitor-
      ICU::i18n
      ICU::uc
      ${LIB_XCB}
+

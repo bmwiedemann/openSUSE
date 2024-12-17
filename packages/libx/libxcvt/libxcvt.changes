@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Dec 14 04:02:00 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.1.3
+  * cvt: fix -Wmissing-prototypes warning for cvt_is_standard
+  * ci: Update CI and enable static analysis
+  * README: remove double dollar sign
+  * Fix hsync_start computation
+  * Fix too-small back porch at very low resolutions
+  * Rename constant to CVT_MIN_V_PORCH_RND
+
+-------------------------------------------------------------------
 Tue Jul 19 09:52:49 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 0.1.2

@@ -63,4 +63,13 @@
 </comment>
     <requestid>1117697</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>63c9464ea684e2bf0598d240eeb3884a</srcmd5>
+    <version>0.4</version>
+    <time>1734373027</time>
+    <user>anag+factory</user>
+    <comment>- Add patch no-more-makesuite.patch:
+  * Do not use unittest.makeSuite()</comment>
+    <requestid>1231289</requestid>
+  </revision>
 </revisionlist>

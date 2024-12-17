@@ -39,4 +39,12 @@
     <comment>- Update to preview release 3.1.6</comment>
     <requestid>1220188</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>45bff530c364fde3e262d852944a393d</srcmd5>
+    <version>3.1.6</version>
+    <time>1734373019</time>
+    <user>anag+factory</user>
+    <comment>- Add baselibs.conf</comment>
+    <requestid>1231277</requestid>
+  </revision>
 </revisionlist>

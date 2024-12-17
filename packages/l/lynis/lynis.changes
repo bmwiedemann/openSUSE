@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Dec 16 10:16:18 UTC 2024 - Robert Frohl <rfrohl@suse.com>
+
+- Update to 3.1.3:
+  * Added
+    - Detection of Buildroot, Fedora Linux Asahi Remix, Garden Linux, Peppermint OS
+    - Support for blog posts and articles to enhance suggestions
+  * Changed
+    - BOOT-5264 - Changed output of systemd-analyze test and added link
+    - FILE-6398 - Test temporarily disabled as on modern kernels JDB support is built-in
+    - FIRE-4508 - Several changes to expand the test, make it more generic, resolve minor issues
+    - KRNL-5622 - Test if systemctl binary is set
+    - Several improvements for busybox
+    - Update of translations: Italian, Russian, Spanish
+
+
+-------------------------------------------------------------------
 Thu Sep 26 15:14:10 UTC 2024 - Robert Frohl <rfrohl@suse.com>
 
 - Update to 3.1.2:

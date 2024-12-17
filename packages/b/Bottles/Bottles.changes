@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Dec 14 17:46:13 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 51.17:
+  * Update DXVK subtitles to include Direct3D 8
+  * Restore line accidentally deleted
+  * Fixed a regression that makes the bottle's preferences page blank in some cases
+
+-------------------------------------------------------------------
 Fri Dec 13 05:35:30 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 51.16:

@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Sat Dec 14 19:32:03 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.4:
+  * trip whitespace in readme 
+  * add advice about harabat/openapi-python-client fork for development
+  * increment version and publish on pypi
+  * add tests section to readme
+  * add refactoring warning
+
+-------------------------------------------------------------------
+Fri Mar  8 07:48:14 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- update to 1.0.2:
+  * add activitypub endpoints following
+  * add advice about harabat/openapi-python-client fork for development
+  * add warning about missing parsed data and detailed methods
+
+-------------------------------------------------------------------
+Thu Feb 22 13:08:25 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- initial packaging

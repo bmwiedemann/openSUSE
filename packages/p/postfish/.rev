@@ -153,4 +153,12 @@
     <comment></comment>
     <requestid>1169140</requestid>
   </revision>
+  <revision rev="23" vrev="19">
+    <srcmd5>8e5f729abc617f4aa72cd766ccae9680</srcmd5>
+    <version>svn17492</version>
+    <time>1734373058</time>
+    <user>anag+factory</user>
+    <comment>- postfix-fix-proto.patch: fix prototype (forwarded request 1231353 from msmeissn)</comment>
+    <requestid>1231354</requestid>
+  </revision>
 </revisionlist>

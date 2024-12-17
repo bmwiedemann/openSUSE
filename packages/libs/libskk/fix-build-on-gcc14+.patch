@@ -1,0 +1,337 @@
+diff -Nur libskk-1.0.5/libskk/context.c libskk-1.0.5-new/libskk/context.c
+--- libskk-1.0.5/libskk/context.c	2018-09-16 13:34:15.000000000 +0800
++++ libskk-1.0.5-new/libskk/context.c	2024-12-15 21:24:29.153983933 +0800
+@@ -2423,7 +2423,7 @@
+ 	g_return_val_if_fail (self != NULL, NULL);
+ 	_tmp0_ = self->priv->_dictionaries;
+ 	_tmp2_ = gee_collection_to_array ((GeeCollection*) _tmp0_, &_tmp1_);
+-	_tmp3_ = _tmp2_;
++	_tmp3_ = (SkkDict **)_tmp2_;
+ 	_tmp3__length1 = _tmp1_;
+ 	if (result_length1) {
+ 		*result_length1 = _tmp3__length1;
+diff -Nur libskk-1.0.5/libskk/file-dict.c libskk-1.0.5-new/libskk/file-dict.c
+--- libskk-1.0.5/libskk/file-dict.c	2018-09-16 13:34:15.000000000 +0800
++++ libskk-1.0.5-new/libskk/file-dict.c	2024-12-15 21:31:00.920064837 +0800
+@@ -242,11 +242,11 @@
+ 	GString* _tmp23_;
+ 	const gchar* _tmp24_;
+ 	gchar* _tmp25_;
+-	g_return_val_if_fail (self != NULL, NULL);
++	g_return_val_if_fail(self != NULL, FALSE);
+ 	_tmp0_ = self->priv->mmap;
+ 	_tmp1_ = skk_memory_mapped_file_get_length (_tmp0_);
+ 	_tmp2_ = _tmp1_;
+-	g_return_val_if_fail (((gsize) (*offset)) < _tmp2_, NULL);
++	g_return_val_if_fail(((gsize) (*offset)) < _tmp2_, FALSE);
+ 	_tmp3_ = self->priv->mmap;
+ 	_tmp4_ = skk_memory_mapped_file_get_memory (_tmp3_);
+ 	_tmp5_ = _tmp4_;
+@@ -337,8 +337,8 @@
+ {
+ 	gchar* result = NULL;
+ 	gchar* _tmp0_;
+-	g_return_val_if_fail (self != NULL, NULL);
+-	g_return_val_if_fail (line != NULL, NULL);
++	g_return_val_if_fail(self != NULL, FALSE);
++	g_return_val_if_fail(line != NULL, FALSE);
+ 	if ((*pos) < ((glong) 2)) {
+ 		result = NULL;
+ 		return result;
+@@ -364,8 +364,8 @@
+ 	gint _tmp5_;
+ 	gint _tmp6_;
+ 	gchar* _tmp7_;
+-	g_return_val_if_fail (self != NULL, NULL);
+-	g_return_val_if_fail (line != NULL, NULL);
++	g_return_val_if_fail(self != NULL, FALSE);
++	g_return_val_if_fail(line != NULL, FALSE);
+ 	_tmp0_ = strlen (line);
+ 	_tmp1_ = _tmp0_;
+ 	_tmp2_ = self->priv->mmap;
+@@ -398,7 +398,7 @@
+ 	_tmp0_ = self->priv->mmap;
+ 	_tmp1_ = skk_memory_mapped_file_get_length (_tmp0_);
+ 	_tmp2_ = _tmp1_;
+-	g_return_val_if_fail (((gsize) (*offset)) < _tmp2_, NULL);
++	g_return_val_if_fail(((gsize) (*offset)) < _tmp2_, FALSE);
+ 	while (TRUE) {
+ 		gint _tmp3_;
+ 		gint _tmp4_;
+@@ -734,7 +734,7 @@
+ 	gboolean _tmp4_ = FALSE;
+ 	gboolean _tmp6_ = FALSE;
+ 	gchar* _tmp8_;
+-	g_return_val_if_fail (self != NULL, NULL);
++	g_return_val_if_fail(self != NULL, FALSE);
+ 	_tmp0_ = strlen (self);
+ 	_tmp1_ = _tmp0_;
+ 	string_length = (glong) _tmp1_;
+@@ -755,7 +755,7 @@
+ 	} else {
+ 		_tmp4_ = FALSE;
+ 	}
+-	g_return_val_if_fail (_tmp4_, NULL);
++	g_return_val_if_fail(_tmp4_, FALSE);
+ 	if (end >= ((glong) 0)) {
+ 		glong _tmp7_;
+ 		_tmp7_ = string_length;
+@@ -763,8 +763,8 @@
+ 	} else {
+ 		_tmp6_ = FALSE;
+ 	}
+-	g_return_val_if_fail (_tmp6_, NULL);
+-	g_return_val_if_fail (start <= end, NULL);
++	g_return_val_if_fail(_tmp6_, FALSE);
++	g_return_val_if_fail(start <= end, FALSE);
+ 	_tmp8_ = g_strndup (((gchar*) self) + start, (gsize) (end - start));
+ 	result = _tmp8_;
+ 	return result;
+@@ -923,7 +923,7 @@
+ 	gint _tmp51__length1;
+ 	GError * _inner_error_ = NULL;
+ 	self = (SkkFileDict*) base;
+-	g_return_val_if_fail (midasi != NULL, NULL);
++	g_return_val_if_fail(midasi != NULL, FALSE);
+ 	_tmp0_ = self->priv->mmap;
+ 	_tmp1_ = skk_memory_mapped_file_get_memory (_tmp0_);
+ 	_tmp2_ = _tmp1_;
+@@ -1016,7 +1016,7 @@
+ 	_tmp20_ = _midasi;
+ 	_tmp21_ = start_offset;
+ 	_tmp22_ = end_offset;
+-	_tmp23_ = g_strcmp0;
++	_tmp23_ = (GCompareFunc)g_strcmp0;
+ 	_tmp26_ = skk_file_dict_search_pos (self, _tmp20_, _tmp21_, _tmp22_, _tmp23_, &_tmp24_, &_tmp25_, _tmp19_);
+ 	pos = _tmp24_;
+ 	_g_free0 (line);
+@@ -1147,7 +1147,7 @@
+ 		result = 0;
+ 		return result;
+ 	}
+-	_tmp0_ = g_strcmp0;
++	_tmp0_ = (GCompareFunc)g_strcmp0;
+ 	result = _tmp0_ (a, b);
+ 	return result;
+ }
+@@ -1200,7 +1200,7 @@
+ 	gint _tmp80__length1;
+ 	GError * _inner_error_ = NULL;
+ 	self = (SkkFileDict*) base;
+-	g_return_val_if_fail (midasi != NULL, NULL);
++	g_return_val_if_fail(midasi != NULL, FALSE);
+ 	_tmp0_ = self->priv->mmap;
+ 	_tmp1_ = skk_memory_mapped_file_get_memory (_tmp0_);
+ 	_tmp2_ = _tmp1_;
+@@ -1260,7 +1260,7 @@
+ 		g_warning ("file-dict.vala:254: can't decode %s: %s", midasi, _tmp15_);
+ 		_tmp16_ = completion;
+ 		_tmp18_ = gee_collection_to_array ((GeeCollection*) _tmp16_, &_tmp17_);
+-		_tmp19_ = _tmp18_;
++		_tmp19_ = (gchar **)_tmp18_;
+ 		_tmp19__length1 = _tmp17_;
+ 		if (result_length1) {
+ 			*result_length1 = _tmp19__length1;
+@@ -1507,7 +1507,7 @@
+ 	}
+ 	_tmp77_ = completion;
+ 	_tmp79_ = gee_collection_to_array ((GeeCollection*) _tmp77_, &_tmp78_);
+-	_tmp80_ = _tmp79_;
++	_tmp80_ = (gchar **)_tmp79_;
+ 	_tmp80__length1 = _tmp78_;
+ 	if (result_length1) {
+ 		*result_length1 = _tmp80__length1;
+@@ -1544,8 +1544,8 @@
+ 	SkkEncodingConverter* _tmp5_;
+ 	SkkEncodingConverter* _tmp6_;
+ 	GError * _inner_error_ = NULL;
+-	g_return_val_if_fail (path != NULL, NULL);
+-	g_return_val_if_fail (encoding != NULL, NULL);
++	g_return_val_if_fail(path != NULL, FALSE);
++	g_return_val_if_fail(encoding != NULL, FALSE);
+ 	self = (SkkFileDict*) skk_dict_construct (object_type);
+ 	_tmp0_ = g_file_new_for_path (path);
+ 	_g_object_unref0 (self->priv->file);
+diff -Nur libskk-1.0.5/libskk/key-event.c libskk-1.0.5-new/libskk/key-event.c
+--- libskk-1.0.5/libskk/key-event.c	2018-09-16 13:34:15.000000000 +0800
++++ libskk-1.0.5-new/libskk/key-event.c	2024-12-15 20:42:32.333098717 +0800
+@@ -1243,7 +1243,7 @@
+ 		gee_abstract_collection_add ((GeeAbstractCollection*) _tmp29_, NULL);
+ 		_tmp30_ = elements;
+ 		_tmp32_ = gee_collection_to_array ((GeeCollection*) _tmp30_, &_tmp31_);
+-		array = _tmp32_;
++		array = (gchar **)_tmp32_;
+ 		array_length1 = _tmp31_;
+ 		_array_size_ = array_length1;
+ 		_tmp33_ = array;
+diff -Nur libskk-1.0.5/libskk/nicola.c libskk-1.0.5-new/libskk/nicola.c
+--- libskk-1.0.5/libskk/nicola.c	2018-09-16 13:34:15.000000000 +0800
++++ libskk-1.0.5-new/libskk/nicola.c	2024-12-15 21:07:05.608987806 +0800
+@@ -1376,7 +1376,7 @@
+ 	parent_class = G_OBJECT_CLASS (skk_nicola_key_event_filter_parent_class);
+ 	obj = parent_class->constructor (type, n_construct_properties, construct_properties);
+ 	self = G_TYPE_CHECK_INSTANCE_CAST (obj, SKK_TYPE_NICOLA_KEY_EVENT_FILTER, SkkNicolaKeyEventFilter);
+-	_tmp0_ = (SKK_NICOLA_KEY_EVENT_FILTER_SPECIAL_DOUBLES != NULL) ? _vala_array_dup6 (SKK_NICOLA_KEY_EVENT_FILTER_SPECIAL_DOUBLES, G_N_ELEMENTS (SKK_NICOLA_KEY_EVENT_FILTER_SPECIAL_DOUBLES)) : ((gpointer) SKK_NICOLA_KEY_EVENT_FILTER_SPECIAL_DOUBLES);
++	_tmp0_ = (SKK_NICOLA_KEY_EVENT_FILTER_SPECIAL_DOUBLES != NULL) ? _vala_array_dup6 ((gchar **)SKK_NICOLA_KEY_EVENT_FILTER_SPECIAL_DOUBLES, G_N_ELEMENTS (SKK_NICOLA_KEY_EVENT_FILTER_SPECIAL_DOUBLES)) : ((gpointer) SKK_NICOLA_KEY_EVENT_FILTER_SPECIAL_DOUBLES);
+ 	_tmp0__length1 = G_N_ELEMENTS (SKK_NICOLA_KEY_EVENT_FILTER_SPECIAL_DOUBLES);
+ 	self->special_doubles = (_vala_array_free (self->special_doubles, self->special_doubles_length1, (GDestroyNotify) g_free), NULL);
+ 	self->special_doubles = _tmp0_;
+diff -Nur libskk-1.0.5/libskk/state.c libskk-1.0.5-new/libskk/state.c
+--- libskk-1.0.5/libskk/state.c	2018-09-16 13:34:15.000000000 +0800
++++ libskk-1.0.5-new/libskk/state.c	2024-12-15 21:06:06.175820314 +0800
+@@ -1097,7 +1097,7 @@
+ 	_tmp4_ = skk_rom_kana_converter_new ();
+ 	_g_object_unref0 (self->okuri_rom_kana_converter);
+ 	self->okuri_rom_kana_converter = _tmp4_;
+-	_tmp5_ = (SKK_AUTO_START_HENKAN_KEYWORDS != NULL) ? _vala_array_dup3 (SKK_AUTO_START_HENKAN_KEYWORDS, G_N_ELEMENTS (SKK_AUTO_START_HENKAN_KEYWORDS)) : ((gpointer) SKK_AUTO_START_HENKAN_KEYWORDS);
++	_tmp5_ = (SKK_AUTO_START_HENKAN_KEYWORDS != NULL) ? _vala_array_dup3 ((gchar **)SKK_AUTO_START_HENKAN_KEYWORDS, G_N_ELEMENTS (SKK_AUTO_START_HENKAN_KEYWORDS)) : ((gpointer) SKK_AUTO_START_HENKAN_KEYWORDS);
+ 	_tmp5__length1 = G_N_ELEMENTS (SKK_AUTO_START_HENKAN_KEYWORDS);
+ 	self->auto_start_henkan_keywords = (_vala_array_free (self->auto_start_henkan_keywords, self->auto_start_henkan_keywords_length1, (GDestroyNotify) g_free), NULL);
+ 	self->auto_start_henkan_keywords = _tmp5_;
+diff -Nur libskk-1.0.5/libskk/user-dict.c libskk-1.0.5-new/libskk/user-dict.c
+--- libskk-1.0.5/libskk/user-dict.c	2018-09-16 13:34:15.000000000 +0800
++++ libskk-1.0.5-new/libskk/user-dict.c	2024-12-15 21:35:13.279872747 +0800
+@@ -339,7 +339,7 @@
+ 		gsize _tmp2_;
+ 		gchar* _tmp3_ = NULL;
+ 		_tmp0_ = self->priv->file;
+-		g_file_load_contents (_tmp0_, NULL, &_tmp1_, &_tmp2_, &_tmp3_, &_inner_error_);
++		g_file_load_contents(_tmp0_, NULL, (char **)&_tmp1_, &_tmp2_, &_tmp3_, &_inner_error_);
+ 		contents = (g_free (contents), NULL);
+ 		contents = _tmp1_;
+ 		contents_length1 = _tmp2_;
+@@ -1042,7 +1042,7 @@
+ 	const gchar* _tmp4_;
+ 	g_return_val_if_fail (a != NULL, 0);
+ 	g_return_val_if_fail (b != NULL, 0);
+-	_tmp0_ = g_strcmp0;
++	_tmp0_ = (GCompareFunc)g_strcmp0;
+ 	_tmp1_ = gee_map_entry_get_key (a);
+ 	_tmp2_ = _tmp1_;
+ 	_tmp3_ = gee_map_entry_get_key (b);
+@@ -1064,7 +1064,7 @@
+ 	const gchar* _tmp4_;
+ 	g_return_val_if_fail (a != NULL, 0);
+ 	g_return_val_if_fail (b != NULL, 0);
+-	_tmp0_ = g_strcmp0;
++	_tmp0_ = (GCompareFunc)g_strcmp0;
+ 	_tmp1_ = gee_map_entry_get_key (b);
+ 	_tmp2_ = _tmp1_;
+ 	_tmp3_ = gee_map_entry_get_key (a);
+@@ -1121,7 +1121,7 @@
+ 		_tmp8_ = gee_map_entry_get_value (_tmp7_);
+ 		_tmp9_ = _tmp8_;
+ 		_tmp11_ = gee_collection_to_array ((GeeCollection*) ((GeeList*) _tmp9_), &_tmp10_);
+-		_tmp12_ = _tmp11_;
++		_tmp12_ = (SkkCandidate **)_tmp11_;
+ 		_tmp12__length1 = _tmp10_;
+ 		_tmp13_ = skk_dict_join_candidates ((SkkDict*) self, _tmp12_, _tmp10_);
+ 		_tmp14_ = _tmp13_;
+@@ -1308,7 +1308,7 @@
+ 	_tmp41_ = _tmp40_;
+ 	_tmp41__length1 = _tmp40__length1;
+ 	_tmp42_ = self->priv->etag;
+-	g_file_replace_contents (_tmp38_, _tmp41_, (gsize) _tmp41__length1, _tmp42_, FALSE, G_FILE_CREATE_PRIVATE, &_tmp43_, NULL, &_inner_error_);
++	g_file_replace_contents(_tmp38_, (const char *)_tmp41_, (gsize) _tmp41__length1, _tmp42_, FALSE, G_FILE_CREATE_PRIVATE, &_tmp43_, NULL, &_inner_error_);
+ 	_g_free0 (self->priv->etag);
+ 	self->priv->etag = _tmp43_;
+ 	if (G_UNLIKELY (_inner_error_ != NULL)) {
+@@ -1383,7 +1383,7 @@
+ 		_tmp3_ = gee_map_get (_tmp2_, midasi);
+ 		_tmp4_ = (GeeList*) _tmp3_;
+ 		_tmp6_ = gee_collection_to_array ((GeeCollection*) _tmp4_, &_tmp5_);
+-		_tmp7_ = _tmp6_;
++		_tmp7_ = (SkkCandidate **)_tmp6_;
+ 		_tmp7__length1 = _tmp5_;
+ 		_g_object_unref0 (_tmp4_);
+ 		_tmp8_ = _tmp7_;
+@@ -1518,7 +1518,7 @@
+ 	}
+ 	_tmp24_ = completion;
+ 	_tmp26_ = gee_collection_to_array ((GeeCollection*) _tmp24_, &_tmp25_);
+-	_tmp27_ = _tmp26_;
++	_tmp27_ = (gchar **)_tmp26_;
+ 	_tmp27__length1 = _tmp25_;
+ 	if (result_length1) {
+ 		*result_length1 = _tmp27__length1;
+@@ -2032,3 +2032,4 @@
+ 
+ 
+ 
++
+diff -Nur libskk-1.0.5/libskk/util.c libskk-1.0.5-new/libskk/util.c
+--- libskk-1.0.5/libskk/util.c	2018-09-16 13:34:15.000000000 +0800
++++ libskk-1.0.5-new/libskk/util.c	2024-12-15 21:19:43.561434305 +0800
+@@ -738,7 +738,7 @@
+ 	_data1_->_ref_count_ = 1;
+ 	_tmp0_ = g_string_new ("");
+ 	_data1_->builder = _tmp0_;
+-	skk_util_foreach_katakana (kana, ___lambda4__gfunc, _data1_);
++	skk_util_foreach_katakana (kana, (GFunc)___lambda4__gfunc, _data1_);
+ 	_tmp1_ = _data1_->builder->str;
+ 	_tmp2_ = g_strdup (_tmp1_);
+ 	result = _tmp2_;
+@@ -810,7 +810,7 @@
+ 	_data2_->_ref_count_ = 1;
+ 	_tmp0_ = g_string_new ("");
+ 	_data2_->builder = _tmp0_;
+-	skk_util_foreach_katakana (kana, ___lambda5__gfunc, _data2_);
++	skk_util_foreach_katakana (kana, (GFunc)___lambda5__gfunc, _data2_);
+ 	_tmp1_ = _data2_->builder->str;
+ 	_tmp2_ = g_strdup (_tmp1_);
+ 	result = _tmp2_;
+@@ -882,7 +882,7 @@
+ 	_data3_->_ref_count_ = 1;
+ 	_tmp0_ = g_string_new ("");
+ 	_data3_->builder = _tmp0_;
+-	skk_util_foreach_katakana (kana, ___lambda6__gfunc, _data3_);
++	skk_util_foreach_katakana (kana, (GFunc)___lambda6__gfunc, _data3_);
+ 	_tmp1_ = _data3_->builder->str;
+ 	_tmp2_ = g_strdup (_tmp1_);
+ 	result = _tmp2_;
+@@ -1136,21 +1136,21 @@
+ 		case SKK_NUMERIC_CONVERSION_TYPE_KANJI_NUMERAL:
+ 		{
+ 			gchar* _tmp5_;
+-			_tmp5_ = skk_util_get_kanji_numeric (numeric, SKK_UTIL_KanjiNumericTable, G_N_ELEMENTS (SKK_UTIL_KanjiNumericTable), NULL, 0);
++			_tmp5_ = skk_util_get_kanji_numeric (numeric, (gchar **)SKK_UTIL_KanjiNumericTable, G_N_ELEMENTS (SKK_UTIL_KanjiNumericTable), NULL, 0);
+ 			result = _tmp5_;
+ 			return result;
+ 		}
+ 		case SKK_NUMERIC_CONVERSION_TYPE_KANJI:
+ 		{
+ 			gchar* _tmp6_;
+-			_tmp6_ = skk_util_get_kanji_numeric (numeric, SKK_UTIL_KanjiNumericTable, G_N_ELEMENTS (SKK_UTIL_KanjiNumericTable), SKK_UTIL_KanjiNumericalPositionTable, G_N_ELEMENTS (SKK_UTIL_KanjiNumericalPositionTable));
++			_tmp6_ = skk_util_get_kanji_numeric (numeric, (gchar **)SKK_UTIL_KanjiNumericTable, G_N_ELEMENTS (SKK_UTIL_KanjiNumericTable), (gchar **)SKK_UTIL_KanjiNumericalPositionTable, G_N_ELEMENTS (SKK_UTIL_KanjiNumericalPositionTable));
+ 			result = _tmp6_;
+ 			return result;
+ 		}
+ 		case SKK_NUMERIC_CONVERSION_TYPE_DAIJI:
+ 		{
+ 			gchar* _tmp7_;
+-			_tmp7_ = skk_util_get_kanji_numeric (numeric, SKK_UTIL_DaijiNumericTable, G_N_ELEMENTS (SKK_UTIL_DaijiNumericTable), SKK_UTIL_DaijiNumericalPositionTable, G_N_ELEMENTS (SKK_UTIL_DaijiNumericalPositionTable));
++			_tmp7_ = skk_util_get_kanji_numeric (numeric, (gchar **)SKK_UTIL_DaijiNumericTable, G_N_ELEMENTS (SKK_UTIL_DaijiNumericTable), (gchar **)SKK_UTIL_DaijiNumericalPositionTable, G_N_ELEMENTS (SKK_UTIL_DaijiNumericalPositionTable));
+ 			result = _tmp7_;
+ 			return result;
+ 		}
+@@ -1254,7 +1254,7 @@
+ 	}
+ 	_tmp20_ = dirs;
+ 	_tmp22_ = gee_collection_to_array ((GeeCollection*) _tmp20_, &_tmp21_);
+-	_tmp23_ = _tmp22_;
++	_tmp23_ = (gchar **)_tmp22_;
+ 	_tmp23__length1 = _tmp21_;
+ 	if (result_length1) {
+ 		*result_length1 = _tmp23__length1;
+diff -Nur libskk-1.0.5/tools/skk.c libskk-1.0.5-new/tools/skk.c
+--- libskk-1.0.5/tools/skk.c	2018-09-16 13:34:29.000000000 +0800
++++ libskk-1.0.5-new/tools/skk.c	2024-12-15 21:37:22.566339445 +0800
+@@ -570,7 +570,7 @@
+ 	}
+ 	_tmp78_ = dictionaries;
+ 	_tmp80_ = gee_collection_to_array ((GeeCollection*) _tmp78_, &_tmp79_);
+-	_tmp81_ = _tmp80_;
++	_tmp81_ = (SkkDict **)_tmp80_;
+ 	_tmp81__length1 = _tmp79_;
+ 	_tmp82_ = skk_context_new (_tmp81_, _tmp79_);
+ 	_tmp83_ = _tmp82_;

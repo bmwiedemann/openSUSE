@@ -7193,4 +7193,16 @@
   * CVE-2024-11698 (bmo#1916152)</comment>
     <requestid>1226801</requestid>
   </revision>
+  <revision rev="444" vrev="1">
+    <srcmd5>cf04a7d498bae2ccbe7b7125eb8e1cf6</srcmd5>
+    <version>133.0.3</version>
+    <time>1734372549</time>
+    <user>anag+factory</user>
+    <comment>- Mozilla Firefox 133.0.3
+  * Fixed the missing scrollbar in the Library window, such as when
+    viewing History or Bookmarks. (bmo#1934482)
+  * Fixed blurry line drawing on some Canvas elements when hardware
+    acceleration is enabled. (bmo#1933668)</comment>
+    <requestid>1231224</requestid>
+  </revision>
 </revisionlist>

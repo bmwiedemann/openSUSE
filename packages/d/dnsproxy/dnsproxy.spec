@@ -17,7 +17,7 @@
 
 
 Name:           dnsproxy
-Version:        0.73.2
+Version:        0.73.4
 Release:        0
 Summary:        A DNS proxy server
 License:        Apache-2.0

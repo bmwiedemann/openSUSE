@@ -169,4 +169,13 @@
   * `httpx.TimeoutException` message issued in case of unmatched</comment>
     <requestid>1226222</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6c307bda6ffef391c7371cc1f267d918</srcmd5>
+    <version>0.35.0</version>
+    <time>1734373025</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.35.0:
+  * Requires httpx==0.28.*</comment>
+    <requestid>1231288</requestid>
+  </revision>
 </revisionlist>

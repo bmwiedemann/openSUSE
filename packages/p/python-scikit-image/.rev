@@ -226,4 +226,41 @@
 </comment>
     <requestid>1227865</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>15ea286592a06e959531309f4d461763</srcmd5>
+    <version>0.25.0</version>
+    <time>1734373034</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.25.0:
+  * New Features
+    + Add the new Gray-Level Co-occurrence Matrix (GLCM) properties &quot;mean&quot;,
+      &quot;variance&quot;, &quot;standard deviation&quot; and &quot;entropy&quot; to
+      skimage.feature.texture.graycoprops (#7375).
+    + Add the new skimage.morphology.footprint_rectangle supporting
+      generation of rectangular or hyper-rectangular footprints in one
+      function (#7566).
+  * API Changes
+    + Complete the deprecation of and remove skimage.feature.plot_matches.
+      Use skimage.feature.plot_matched_features going forward (#7487).
+    + Deprecate skimage.io.imshow, skimage.io.imshow_collection and
+      skimage.io.show. Please use matplotlib, napari, etc. to visualize
+      images (#7508).
+    + Remove deprecated skimage.morphology.skeletonize_3d; use
+      skimage.morphology.skeletonize instead (#7572).
+    + Deprecate skimage.io plugin infrastructure (#7353).
+    + Switched to using the scipy.sparse array interface. For more details,
+      see the note about the new scipy.sparse array interface here (#7576).
+    + Deprecate skimage.morphology.rectangle in favor of the new function
+      skimage.morphology.footprint_rectangle (#7566).
+    + Deprecate skimage.morphology.square in favor of the new function
+      skimage.morphology.footprint_rectangle (#7566).
+    + Deprecate skimage.morphology.cube in favor of the new function
+      skimage.morphology.footprint_rectangle (#7566).
+  * Enhancements
+    + Improve numerical stability of skimage.morphology.local_minima for
+      extremely small floats (#7534).
+    + Make sure that skimage.feature.plot_matched_features uses the same
+      random colors, if matches_color isn't provided explicitly (#7541).</comment>
+    <requestid>1231321</requestid>
+  </revision>
 </revisionlist>

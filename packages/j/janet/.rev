@@ -135,4 +135,23 @@
 </comment>
     <requestid>1199895</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4e0f154734a63ac9c1d6b4b173779ee4</srcmd5>
+    <version>1.37.1</version>
+    <time>1734372683</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.37.1:
+  * Fix meson cross compilation
+  * Update timeout documentation for networking APIs: timeouts raise errors and do not return nil.
+  * Add janet_addtimeout_nil(double sec); to the C API.
+  * Change string hashing.
+  * Fix string equality bug.
+  * Add assertf
+  * Change how JANET_PROFILE is loaded to allow more easily customizing the environment.
+  * Add *repl-prompt* dynamic binding to allow customizing the built in repl.
+  * Add multiple path support in the JANET_PATH environment variables. This lets user more easily import modules from many directories.
+  * Add nth and only-tags PEG specials to select from sub-captures while dropping the rest.
+</comment>
+    <requestid>1231181</requestid>
+  </revision>
 </revisionlist>

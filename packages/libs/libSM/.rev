@@ -95,4 +95,19 @@ Sun Feb 12 03:35:24 UTC 2012 - jengelh@medozas.de
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1057077</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>17d6877066a2293edda82709e6d479f6</srcmd5>
+    <version>1.2.5</version>
+    <time>1734372537</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.2.5:
+  * Remove &quot;All rights reserved&quot; from Oracle copyright notices
+  * configure: Use LT_INIT from libtool 2 instead of deprecated AC_PROG_LIBTOOL
+  * gitlab CI: add xz-utils to container for &quot;make distcheck&quot;
+  * unifdef __UNIXWARE__
+  * unifdef MNX_TCPCONN
+  * SmcOpenConnection: remove cast of return value from getenv()
+  * IceReadCompleteMessage callers need to check if malloc() failed</comment>
+    <requestid>1230953</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec 15 10:14:29 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.11.3:
+  * Make sure the backup cleanup is always triggered
+  * Fix tag
+  * Bump K8up version
+
+-------------------------------------------------------------------
 Tue Dec 10 08:46:26 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.11.2:

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Dec 14 14:16:06 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 133.0.3
+  * Fixed the missing scrollbar in the Library window, such as when
+    viewing History or Bookmarks. (bmo#1934482)
+  * Fixed blurry line drawing on some Canvas elements when hardware
+    acceleration is enabled. (bmo#1933668)
+
+-------------------------------------------------------------------
 Mon Nov 25 11:00:38 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 133.0

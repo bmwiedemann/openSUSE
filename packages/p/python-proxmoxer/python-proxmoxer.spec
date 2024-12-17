@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-proxmoxer
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Python Wrapper for the Proxmox 2x API (HTTP and SSH)
 License:        MIT

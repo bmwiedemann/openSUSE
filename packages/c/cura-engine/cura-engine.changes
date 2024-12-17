@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 27 05:47:22 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with latest GCC, add
+  0001-Fix-failing-build-due-to-missing-iomanip.h-include.patch
+- Minor spec file cleanup
+
+-------------------------------------------------------------------
 Tue May  2 08:45:11 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add add-missing-include.patch: Add missing include <cstdint>

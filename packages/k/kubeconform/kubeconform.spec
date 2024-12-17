@@ -24,7 +24,7 @@ License:        Apache-2.0
 URL:            https://github.com/yannh/kubeconform/
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.22
+BuildRequires:  go1.22
 
 %description
 Kubeconform is a Kubernetes manifests validation tool. It is inspired by, contains

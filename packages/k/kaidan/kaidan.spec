@@ -17,7 +17,7 @@
 
 
 Name:           kaidan
-Version:        0.10.0
+Version:        0.10.1
 Release:        0
 Summary:        A XMPP client based on KDE Framework
 License:        AML AND GPL-3.0-or-later AND SUSE-GPL-3.0+-with-openssl-exception AND MIT AND CC-BY-SA-4.0

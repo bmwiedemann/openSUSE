@@ -17,7 +17,7 @@
 
 
 Name:           minio-client
-Version:        20241117T193525Z
+Version:        20241121T172154Z
 Release:        0
 Summary:        Client for MinIO
 License:        AGPL-3.0-only

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Dec 14 21:30:05 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.14
+  * Fix issue with STK and buffer length checks.
+  * Fix issue with SMS and buffer length checks.
+  * Fix issue with QMI and handling RAT detection.
+  * Fix issue with QMI and handling call forwarding.
+  * Add support for handling MHI network interfaces.
+
+-------------------------------------------------------------------
 Sun Nov 24 14:24:47 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.13

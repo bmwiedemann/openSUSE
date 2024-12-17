@@ -17,7 +17,7 @@
 
 
 Name:           cloudflared
-Version:        2024.11.1
+Version:        2024.12.1
 Release:        0
 Summary:        Cloudflare Tunnel client
 License:        Apache-2.0
@@ -29,7 +29,9 @@ Source1:        vendor.tar.gz
 Patch0:         001-skip-test.patch
 # PATCH-FIX-OPENSUSE 002-use-pie.patch hillwood@opensuse.org
 Patch1:         002-use-pie.patch
-Patch2:         reproducible.patch
+# PATHC-FIX-UPSTREAN update-vendor.patch hillwood@opensuse.org - Fix CVE-2024-45337 boo#1234582
+Patch2:         update-vendor.patch
+Patch3:         reproducible.patch
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  golang-packaging
@@ -48,9 +50,11 @@ Tunnel section of the Cloudflare Docs. All usages related with proxying to your
 origins are available under cloudflared tunnel help.
 
 %prep
-%autosetup -p1 -a1 -n %{name}-%{version}
+%autosetup -p1 -n %{name}-%{version}
 
 %build
+rm -rf vendor
+tar -zxf %{SOURCE1}
 %make_build GOARCH=$(go env GOARCH)
 
 %install

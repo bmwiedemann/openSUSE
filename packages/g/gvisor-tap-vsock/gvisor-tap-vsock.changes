@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Mon Dec 16 07:28:46 UTC 2024 - madhankumar.chellamuthu@suse.com
+
+- Update to version 0.8.1:
+  * build(deps): bump github.com/onsi/gomega from 1.35.1 to 1.36.0
+  * win-sshproxy.tid created before thread id is available
+  * build(deps): bump github.com/stretchr/testify from 1.9.0 to 1.10.0
+  * Avoid crash with empty resolv.conf
+  * Use all configured ipv4 dns services
+  * build(deps): bump golang.org/x/crypto from 0.28.0 to 0.29.0
+  * build(deps): bump github.com/coreos/stream-metadata-go
+  * build(deps): bump github.com/fsnotify/fsnotify from 1.7.0 to 1.8.0
+  * build(deps): bump github.com/onsi/gomega from 1.34.2 to 1.35.1
+  * Update to gvisor release-20240916.0
+  * tcpproxy: remove unused functions
+  * tcpproxy: add `nolint:errcheck`
+  * go.mod: remove `replace inet.af/tcpproxy => github.com/inetaf/tcpproxy`
+  * Move several log messages to the debug level
+  * build(deps): bump github.com/fsnotify/fsnotify from 1.4.9 to 1.7.0
+  * build(deps): bump golang.org/x/crypto from 0.27.0 to 0.28.0
+  * Disable ssh port forwarding when value of -ssh-port is -1
+  * Check 'hosts' file records, during handling DNS requests
+  * Update to gvisor release-20240826.0
+  * Bump gvisor.dev/gvisor to 20240729.0
+  * gha: Update go versions
+  * packit: Don't attempt to build on f39
+  * build(deps): bump github.com/onsi/gomega from 1.34.1 to 1.34.2
+  * Fix consistent udp packet loss after the proxy read loop stopped
+  * OWNERS: Add Yevhen to 'reviewers'
+  * dns: Fix UDP and TCP request handling
+  * Replace multiple "resolver.*" fn cals with single "dns.Exchange()" fn.
+  * build(deps): bump golang.org/x/crypto from 0.26.0 to 0.27.0
+  * Add dependency on "github.com/qdm12/dns/v2"
+  * Add 'addLocalAnswers' helper
+  * Add DNS server test
+  * Add "IdentitiesOnly" SSH option to fix running tests when known_hosts has multiple records
+  * build(deps): bump github.com/vishvananda/netlink from 1.2.1 to 1.3.0
+  * build(deps): bump github.com/vishvananda/netlink
+  * test: Use crc.dev records for DNS tests
+  * lint: Fix non-constant format string error
+  * deps: Update golangci-lint to v1.60.1
+  * gha: Use 'make lint' instead of golangci-lint-action
+  * deps: Revert inetaf/tcpproxy commit 2862066
+  * build(deps): bump golang.org/x/crypto from 0.25.0 to 0.26.0
+  * build(deps): bump github.com/miekg/dns from 1.1.61 to 1.1.62
+  * build(deps): bump golang.org/x/sys from 0.22.0 to 0.24.0
+  * build(deps): bump github.com/onsi/gomega from 1.33.1 to 1.34.1
+  * ghactions: Automatically create gh releases
+
+-------------------------------------------------------------------
 Mon Jul 29 06:42:27 UTC 2024 - danish.prakash@suse.com
 
 - Update to version 0.7.4:

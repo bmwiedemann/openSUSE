@@ -111,4 +111,15 @@
     <comment></comment>
     <requestid>1045918</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>50ffd8ce12737062037bb86e4493bea4</srcmd5>
+    <version>1.0.12</version>
+    <time>1734372539</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.12
+  * This release adds support for building with meson as well as
+    autoconf, thanks to the work of Dylan Baker.
+- switched to meson build system</comment>
+    <requestid>1230954</requestid>
+  </revision>
 </revisionlist>

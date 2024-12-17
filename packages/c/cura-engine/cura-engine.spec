@@ -1,7 +1,7 @@
 #
 # spec file for package cura-engine
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,16 +30,16 @@ Source1:        CuraEngine.1
 Patch1:         fix-build.patch
 # PATCH-FIX-UPSTREAM add-missing-include.patch -- Add missing include <cstdint>
 Patch2:         add-missing-include.patch
+# PATCH-FIX-OPENSUSE
+Patch3:         0001-Fix-failing-build-due-to-missing-iomanip.h-include.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gmock
 BuildRequires:  gtest
 BuildRequires:  libArcus-devel >= %{version}
 BuildRequires:  stb-devel
-%if 0%{suse_version} >= 1550
 BuildRequires:  cmake(RapidJSON)
 BuildRequires:  pkgconfig(polyclipping)
-%endif
 # No 32bit support anymore
 ExcludeArch:    %ix86 %arm s390
 
@@ -49,8 +49,7 @@ instruction for Ultimaker and other GCode-based 3D printers.
 It is part of the larger project called "Cura".
 
 %prep
-%setup -q -n CuraEngine-%sversion
-%autopatch -p1
+%autosetup -p1 -n CuraEngine-%sversion
 # the test is hardcoding the version number
 sed -i -e 's,"master","%{version}",' tests/GCodeExportTest.cpp
 
@@ -59,9 +58,7 @@ sed -i -e 's,"master","%{version}",' tests/GCodeExportTest.cpp
 %cmake -DCURA_ENGINE_VERSION=%version \
        -DCMAKE_POSITION_INDEPENDENT_CODE="true" \
        -DBUILD_SHARED_LIBS="false" \
-%if 0%{suse_version} >= 1550
        -DUSE_SYSTEM_LIBS=ON \
-%endif
        -DBUILD_TESTS=ON
 %cmake_build
 
@@ -71,9 +68,8 @@ sed -i -e 's,"master","%{version}",' tests/GCodeExportTest.cpp
 install -Dm0644 %{SOURCE1} %{buildroot}%{_mandir}/man1/CuraEngine.1
 
 %check
-cd build
 # we don't use "make test" to get the output on failure
-/usr/bin/ctest --force-new-ctest-process --output-on-failure
+%ctest
 
 %files
 %license LICENSE

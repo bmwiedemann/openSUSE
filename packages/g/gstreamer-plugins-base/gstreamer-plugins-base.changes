@@ -10,7 +10,7 @@ Mon Dec  9 11:53:41 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
   + decodebin3: Unify collection switching checks.
   + discoverer:
     - Don't print channel layout for more than 64 channels
-      (boo#1233453 CVE-2024-47600).
+      (boo#1234453 CVE-2024-47600).
     - Make sure the missing elements details array is
       NULL-terminated in a thread-safe way.
     - Fix segfault in race condition adding a new uri.

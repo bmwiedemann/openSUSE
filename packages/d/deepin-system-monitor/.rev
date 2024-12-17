@@ -184,4 +184,12 @@
     <comment> (forwarded request 1194139 from hillwood)</comment>
     <requestid>1194141</requestid>
   </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>d55a51bfcce3ff78b301ee0475b6f4b8</srcmd5>
+    <version>5.8.27</version>
+    <time>1734373047</time>
+    <user>anag+factory</user>
+    <comment>- Add redefine-dmi_string.patch, fix dmi_string function error. (forwarded request 1231338 from hillwood)</comment>
+    <requestid>1231339</requestid>
+  </revision>
 </revisionlist>
