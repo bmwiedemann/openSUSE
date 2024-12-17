@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 17 17:05:49 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNUnet-gtk 0.23.1:
+  * Finished (?) extensive API rework to allow users of
+    libgnunetgtk to use different installation paths
+
+-------------------------------------------------------------------
 Sun Oct 20 10:49:22 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - initial package (0.22.0)

@@ -7,4 +7,12 @@
     <comment>GTK gui for gnunet</comment>
     <requestid>1222459</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6772ac3101ce0eab686859f717bdc7d4</srcmd5>
+    <version>0.23.1</version>
+    <time>1734467682</time>
+    <user>anag+factory</user>
+    <comment>GNUnet-gtk 0.23.1</comment>
+    <requestid>1231736</requestid>
+  </revision>
 </revisionlist>
