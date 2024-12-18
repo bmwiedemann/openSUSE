@@ -7500,7 +7500,8 @@ unsorted:
   - gnu-compilers-hpc-devel 
   - gnu-compilers-hpc-macros-devel 
   - gnu-crypto 
-  - gnu-efi 
+  - gnu-efi-apps 
+  - gnu-efi-devel 
   - gnu-free-fonts 
   - gnu-getopt 
   - gnu-getopt-javadoc 
@@ -8791,6 +8792,7 @@ unsorted:
   - hypre_2_20_0-gnu-mpich-hpc-devel 
   - hypre_2_20_0-gnu-mvapich2-hpc-devel 
   - hypre_2_20_0-gnu-openmpi4-hpc-devel 
+  - hyprgraphics-devel 
   - hypridle 
   - hyprland 
   - hyprland-bash-completion 
@@ -9732,6 +9734,9 @@ unsorted:
   - judy-devel 
   - judy-doc 
   - jujutsu 
+  - jujutsu-bash-completion 
+  - jujutsu-fish-completion 
+  - jujutsu-zsh-completion 
   - juk 
   - juk-lang 
   - jul-to-slf4j 
@@ -11678,7 +11683,7 @@ unsorted:
   - libSM-devel 
   - libSM-devel-32bit 
   - libSM6-32bit 
-  - libSPIRV-Tools-2024_4_rc1-32bit 
+  - libSPIRV-Tools-2024_4_rc2-32bit 
   - libSampleICC-devel 
   - libSampleICC2 
   - libSavitar-devel 
@@ -13994,6 +13999,7 @@ unsorted:
   - libhydrogen-core-devel 
   - libhyphen0-32bit 
   - libhyprcursor0 
+  - libhyprgraphics0 
   - libhyprlang2 
   - libhyprutils1 
   - libi2c0 
@@ -19733,7 +19739,6 @@ unsorted:
   - ncmpcpp 
   - nco 
   - nco-doc 
-  - ncspot 
   - ncurses-devel 
   - ncurses-devel-32bit 
   - ncurses-devel-static 
@@ -20939,7 +20944,7 @@ unsorted:
   - owasp-modsecurity-crs-apache2 
   - owncloud-client 
   - owncloud-dolphin 
-  - owncloud-icons 
+  - owncloud-extensions-resources 
   - owntone 
   - oxipng 
   - oxygen5-icon-theme 
@@ -25694,6 +25699,7 @@ unsorted:
   - python310-fpdf2 
   - python310-fqdn 
   - python310-framel 
+  - python310-framework16_inputmodule 
   - python310-freeipa 
   - python310-freetype-py 
   - python310-freezegun 
@@ -25896,6 +25902,7 @@ unsorted:
   - python310-hvac 
   - python310-hvplot 
   - python310-hyfetch 
+  - python310-hypercorn 
   - python310-hyperframe 
   - python310-hyperlink 
   - python310-hypothesis 
@@ -27610,6 +27617,7 @@ unsorted:
   - python310-tabulate 
   - python310-tap.py 
   - python310-targetcli-fb 
+  - python310-taskgroup 
   - python310-tasklib 
   - python310-taskw 
   - python310-tbb 
@@ -29336,6 +29344,7 @@ unsorted:
   - python311-fpdf2 
   - python311-fqdn 
   - python311-framel 
+  - python311-framework16_inputmodule 
   - python311-freeipa 
   - python311-freetype-py 
   - python311-freezegun 
@@ -31176,6 +31185,7 @@ unsorted:
   - python311-tabulate 
   - python311-tap.py 
   - python311-targetcli-fb 
+  - python311-taskgroup 
   - python311-tasklib 
   - python311-taskw 
   - python311-tbb 
@@ -32937,6 +32947,7 @@ unsorted:
   - python312-fpdf2 
   - python312-fqdn 
   - python312-framel 
+  - python312-framework16_inputmodule 
   - python312-freeipa 
   - python312-freetype-py 
   - python312-freezegun 
@@ -34854,6 +34865,7 @@ unsorted:
   - python312-tabulate 
   - python312-tap.py 
   - python312-targetcli-fb 
+  - python312-taskgroup 
   - python312-tasklib 
   - python312-taskw 
   - python312-tbb 
@@ -36618,6 +36630,7 @@ unsorted:
   - python313-fpdf2 
   - python313-fqdn 
   - python313-framel 
+  - python313-framework16_inputmodule 
   - python313-freeipa 
   - python313-freetype-py 
   - python313-freezegun 
@@ -38535,6 +38548,7 @@ unsorted:
   - python313-tabulate 
   - python313-tap.py 
   - python313-targetcli-fb 
+  - python313-taskgroup 
   - python313-tasklib 
   - python313-taskw 
   - python313-tbb 
