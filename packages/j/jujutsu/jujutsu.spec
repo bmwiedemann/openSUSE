@@ -32,6 +32,10 @@ BuildRequires:  gnupg
 BuildRequires:  openssh-common
 BuildRequires:  openssl-devel
 BuildRequires:  zstd
+# dependencies for completion subpackages
+BuildRequires:  bash-completion
+BuildRequires:  fish
+BuildRequires:  zsh
 
 # serde_bser fails to compile on s390x
 # error[E0599]: no method named `put_f64_be` found for struct `Vec<u8>` in the current scope
@@ -59,6 +63,37 @@ stable, and most developers use it daily for all their needs, there may still
 be work-in-progress features, suboptimal UX, and workflow gaps that make it
 unusable for your particular use.
 
+%package -n %{name}-bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
+
+%description -n %{name}-bash-completion
+Bash command line completion support for %{name}.
+
+%package -n %{name}-fish-completion
+Summary:        Fish Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Supplements:    (%{name} and fish)
+BuildArch:      noarch
+
+%description -n %{name}-fish-completion
+Fish command line completion support for %{name}.
+
+%package -n %{name}-zsh-completion
+Summary:        Zsh Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Supplements:    (%{name} and zsh)
+BuildArch:      noarch
+
+%description -n %{name}-zsh-completion
+zsh command line completion support for %{name}.
+
 %prep
 %autosetup -p 1 -a 1
 
@@ -69,6 +104,18 @@ unusable for your particular use.
 install -D -d -m 0755 %{buildroot}%{_bindir}
 install -m 0755 %{_builddir}/%{name}-%{version}/target/release/%{binary_name} %{buildroot}%{_bindir}/%{binary_name}
 
+# create the bash completion file
+mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
+%{buildroot}/%{_bindir}/%{binary_name} util completion bash > %{buildroot}%{_datarootdir}/bash-completion/completions/%{binary_name}
+
+# create the fish completion file
+mkdir -p %{buildroot}%{_datarootdir}/fish/vendor_completions.d/
+%{buildroot}/%{_bindir}/%{binary_name} util completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{binary_name}.fish
+
+# create the zsh completion file
+mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
+%{buildroot}/%{_bindir}/%{binary_name} util completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{binary_name}
+
 %check
 rm -rf tests/contest/
 %{cargo_test}
@@ -77,5 +124,14 @@ rm -rf tests/contest/
 %doc README.md
 %license LICENSE
 %{_bindir}/%{binary_name}
+
+%files -n %{name}-bash-completion
+%{_datarootdir}/bash-completion/completions/%{binary_name}
+
+%files -n %{name}-fish-completion
+%{_datarootdir}/fish/vendor_completions.d/%{binary_name}.fish
+
+%files -n %{name}-zsh-completion
+%{_datarootdir}/zsh/site-functions/_%{binary_name}
 
 %changelog
