@@ -1,4 +1,173 @@
 -------------------------------------------------------------------
+Wed Dec 11 15:57:23 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 6.3.0+git20241211.e4692fa2:
+  * #4363 fixup control refactoring
+  * remove unused method
+  * #4363 use the same network handling code for all control commands
+  * add missing auth modules, name them correctly
+  * #4363 move control commands to shared location
+  * #4438 add http-header authentication module
+  * add 'proxy_request_buffering'
+  * derps
+  * #4435 multiple server proxying and advanced options
+  * #4435 add basic nginx doc
+  * derp: pre-read must now be an iterable
+  * load_menu should always return a dict
+  * missing type hints
+  * #4437 option to trust 'X-Forwarded-Proto' http header
+  * stronger type for '_pre_read' protocol attribute
+  * minor linter warning
+  * match refactoring
+  * oops: missing f-string prefix
+  * use a stronger type to match intent
+  * #4436 add option to trust a connection
+  * #3376 quic is always encrypted
+  * derp
+  * use symlinks for agent socket
+  * cosmetic: better variable naming
+  * gitignore excluded this file during refactoring
+  * fix 8-bit image compression breakage
+  * we need to distingush r210 with and without alpha
+  * some subcommands can connect to client sockets
+  * refactoring: move code to common location
+  * 30 bit windows do not have an alpha channel
+  * don't modify image rowstride
+  * most picture encoders can't handle 30-bit data
+  * avoid http log spam
+  * #4434 move auth module to top level
+  * #4433 preserve socket options when wrapping with ssl
+  * stronger type hints
+  * rebuild for ce7327683b35a6c1f6e2f767767d80f673c36571
+  * use the documented way of creating an HMAC object
+  * better debug logging
+  * avoid logging a backtrace for SSLV3_ALERT_CERTIFICATE_UNKNOWN errors
+  * #4427 set and send 'auto' encoding value
+  * #4427 unset also means 'auto'
+  * stronger type hint
+  * other encodings support speed setting
+  * simplify: we don't support Fedora versions older than 40
+  * spec file needs to support per-arch cuda pkgconfig
+
+-------------------------------------------------------------------
+Mon Dec 02 14:57:37 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 6.3.0+git20241202.85535a73:
+  * remove now unused function
+  * better type hints
+  * make it a 'valid' packet format
+  * actually use pick_vnc_display and try to make it useful
+  * stronger type hint, (0, 0) now means unset
+  * minor type hint tweaks and linter warnings
+  * simplify: remove unused code
+  * prettify
+  * simplify: require the cairo bindings
+  * python3-wheel 0.45.1
+  * minor cleanup
+  * use python to get a reliable glob without using a shell
+  * #4050 get package info from pip as fallback
+  * do cheap opengl check first
+  * #4429 disable win32 workspace support
+  * argb encoder error with more unusual bit depths
+  * show machine instead of 'bits'
+  * #4429 make it possible to disable comtypes
+
+-------------------------------------------------------------------
+Fri Nov 29 01:23:04 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 6.3.0+git20241129.7a78e260:
+  * #3532 better arch detection on MSYS2 aarch64
+  * #3532 try to install missing aarch64 packages separately
+  * #3941 simplify and make it easier to override PACMAN
+  * #1765 enable YUVA rendering
+  * type hint
+  * oops: version in accelerate also needs patching
+  * #1765 YUVA shaders, constants, etc
+  * #1765 simplify decoder interface
+
+-------------------------------------------------------------------
+Sun Nov 24 18:17:57 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 6.3.0+git20241123.d6d153f8:
+  * #4426 only enable 'exit-with-application' if we have one
+  * #4365 clamp 'vrefresh' to a useful range
+  * #4050 record cuda package properly
+  * #4050 add sbom icons
+  * BAT files need a shell
+  * oops: missed from 278bd6da8d2afea655c43800aa2f78a9d43112b1
+  * #4245 + #4416 add install-lts-repo subcommand
+  * 'stable' is a better alias for 'dists'
+  * smaller icon to squeeze more information on wiki
+  * #4425 also protect against rgb image overflows
+  * #4425 prevent padded image overflows
+  * the openh264 home page states that 4k is the encoder limit
+  * don't bother trying to load svg with pillow
+  * only clear icondata variable after we've used it
+  * add '--no-XYZ' as an alias for '--without-XYZ'
+  * handle missing pillow more gracefully
+  * dummy driver is managed using 'Xdummy' flag
+  * need clang to build the cuda kernels
+  * add links to mesa docs
+  * update `drivers.py` reference
+  * #3255 enable parallel builds for more packages
+  * add missing changelog entry
+  * use arch specific pkg-config for cuda, if found
+  * don't use a log file when running from a terminal
+  * #3666 timeout is a connection attribute
+  * #4050 add instructions for setting up sbom export support
+  * windows server needs help with the codepage
+  * ignore pointless Gtk warning
+  * can't use backticks for code docs in shell script
+  * Update pdfium.py
+  * #4050 pyvda has been merged upstream
+  * derp
+  * #3666 we don't support binding to hyperv sockets yet
+  * #3666 add hyper-v socket URL parsing
+  * don't import from itself (was due to refactoring)
+
+-------------------------------------------------------------------
+Tue Nov 12 15:06:27 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 6.3.0+git20241111.854231f1:
+  * minor linter fixes
+  * support build arguments via env var
+  * fix du calculation for plain files
+  * fix remnants of the old build info format
+  * typo
+  * #4408 py2app does not package cffi properly
+  * #4050 delete extra modules before recording sbom
+  * #4050 more dependency tweaks
+  * #4408 add pyopenssl to the dependencies docs
+  * #4050 more dependency tweaks
+  * warn about missing python-dbus just once
+  * this unused attribute has been removed
+  * #4050 bundle some optional libraries
+  * #4050 skip some optional components
+  * #4050 bundle some gio modules
+  * make it work on MS Windows
+  * #4416 specify the target repository
+  * #4416 add lts repository files
+  * #4050 add_build_info can take much longer now on macos
+  * pyopengl 3.1.8 (switch to github)
+  * make this less confusing and add docstring
+  * more correct (longer) loop input delay
+  * safer to verify we can change colors before trying
+  * typedict keys can be numbers too
+  * don't call dictget to see if a key exists
+  * curses color initialization can fail on some platforms
+  * #4050 add a switch for browser_cookie3 support
+  * #4050 ignore more optional dependencies
+  * cosmetic
+  * #4050 always trim the pixbuf loaders
+  * #4050 ignore more dependencies we don't bundle
+  * #4050 handle virtual packages provided by others
+  * openh264 2.5.0
+  * #4414 signature must have 644 permission
+  * #4050 add note about requiring another Python installation
+  * libspng is now installed via MSYS2
+  * #4050 make it easier to locate an sbom entry
+
+-------------------------------------------------------------------
 Fri Nov 08 15:55:50 UTC 2024 - scott.bradnick@suse.com
 
 - Update to version 6.3.0+git20241102.0dfe55ed:
