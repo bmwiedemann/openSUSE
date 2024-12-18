@@ -1,0 +1,5 @@
+<package name="queue" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="utilities" package="queue"/>
+</package>

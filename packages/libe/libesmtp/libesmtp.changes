@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 16 03:08:37 UTC 2024 - David Disseldorp <ddiss@suse.com>
+
+- Disable support for insecure NTLM authentication; jsc#PED-11790
+
+-------------------------------------------------------------------
 Wed Jul 10 14:41:09 UTC 2024 - Martin Jambor <mjambor@suse.com>
 
 - Added libesmtp-c99.patch which adds a required feature macro

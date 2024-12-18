@@ -1,0 +1,23 @@
+From dea6a5fd8e44699732bfc1b72afb9e26945664d2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Baltaz=C3=A1r=20Radics?= <baltazar.radics@gmail.com>
+Date: Sun, 8 Dec 2024 16:05:42 +0100
+Subject: [PATCH] input/libinput: fix parsing input drag_lock command
+
+Regression introduced by by b160fac9f7a
+---
+ sway/commands/input/drag_lock.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sway/commands/input/drag_lock.c b/sway/commands/input/drag_lock.c
+index 55a39a64a7..915a7ada12 100644
+--- a/sway/commands/input/drag_lock.c
++++ b/sway/commands/input/drag_lock.c
+@@ -16,7 +16,7 @@ struct cmd_results *input_cmd_drag_lock(int argc, char **argv) {
+ 	}
+ 
+ #if HAVE_LIBINPUT_CONFIG_DRAG_LOCK_ENABLED_STICKY
+-	if (strcmp(argv[0], "enabled_sticky")) {
++	if (strcmp(argv[0], "enabled_sticky") == 0) {
+ 		ic->drag_lock = LIBINPUT_CONFIG_DRAG_LOCK_ENABLED_STICKY;
+ 	} else
+ #endif

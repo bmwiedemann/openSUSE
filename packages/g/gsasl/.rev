@@ -7,4 +7,12 @@
     <comment>Replaces libgsasl - ring1</comment>
     <requestid>1145289</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>63dfebcebb623726e61526de401a06e1</srcmd5>
+    <version>2.2.1</version>
+    <time>1734459736</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1231344</requestid>
+  </revision>
 </revisionlist>

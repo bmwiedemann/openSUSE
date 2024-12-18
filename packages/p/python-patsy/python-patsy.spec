@@ -16,40 +16,26 @@
 #
 
 
-# Tests have dependency loop with pandas
-%global flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == "test"
-%define test 1
-%define pkg_suffix -test
-%bcond_without test
-%else
-%define pkg_suffix %{nil}
-%bcond_with test
-%endif
-%define skip_python36 1
 %{?sle15allpythons}
-Name:           python-patsy%{pkg_suffix}
-Version:        0.5.6
+Name:           python-patsy
+Version:        1.0.1
 Release:        0
 Summary:        A Python package for statistical models and design matrices
 License:        BSD-2-Clause
 URL:            https://github.com/pydata/patsy
 Source:         https://files.pythonhosted.org/packages/source/p/patsy/patsy-%{version}.tar.gz
-# https://github.com/pydata/patsy/pull/209
-Patch0:         python-patsy-no-python2.patch
 BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy
 Recommends:     python-scipy
 BuildArch:      noarch
-%if %{with test}
 BuildRequires:  %{python_module pandas}
-BuildRequires:  %{python_module patsy = %{version}}
 BuildRequires:  %{python_module pytest}
-%endif
 %python_subpackages
 
 %description
@@ -62,29 +48,20 @@ mini-language used in `R <http://www.r-project.org/>`_ and
 %prep
 %autosetup -p1 -n patsy-%{version}
 
-%if !%{with test}
 %build
-%python_build
-%endif
+%pyproject_wheel
 
-%if !%{with test}
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%endif
 
-%if %{with test}
 %check
-# skip 6 tests, fail with Numpy 2 - https://github.com/pydata/patsy/issues/210
-%pytest -k "not ((test_highlevel and (test_formula_likes or test_builtins or test_incremental)) or (test_state and (test_Center or test_stateful_transform_wrapper)) or (util and test_asarray_or_pandas))"
-%endif
+%pytest
 
-%if !%{with test}
 %files %{python_files}
 %license LICENSE.txt
 %doc README.md
 %{python_sitelib}/patsy/
-%{python_sitelib}/patsy-%{version}-py*.egg-info
-%endif
+%{python_sitelib}/patsy-%{version}.dist-info
 
 %changelog

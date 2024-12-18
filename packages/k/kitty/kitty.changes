@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Dec 16 17:14:11 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 0.38.0:
+  * Allow specifying individual color themes to use so that kitty changes
+    colors automatically following the OS dark/light mode
+    - https://sw.kovidgoyal.net/kitty/kittens/themes/#auto-color-scheme
+  * notify_on_cmd_finish: Automatically remove notifications when the window
+    gains focus or the next notification is shown. Clearing behavior can be
+    configured (#8100)
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.notify_on_cmd_finish
+  * Discard OSC 9 notifications that start with 4; because some misguided
+    software is using it for “progress reporting” (#8011)
+  * Wayland GNOME: Workaround bug in mutter causing double tap on titlebar to
+    not always work (#8054)
+  * clipboard kitten: Fix a bug causing kitten to hang in filter mode when
+    input data size is not divisible by 3 and larger than 8KB (#8059)
+  * Wayland: Fix an abort when a client program tries to set an invalid title
+    containing interleaved escape codes and UTF-8 multi-byte characters (#8067)
+  * Graphics protocol: Fix delete by number not deleting newest image with the
+    specified number (#8071)
+  * Fix dashed and dotted underlines not being drawn at the same y position as
+    straight underlines at all font sizes (#8074)
+  * panel kitten: Allow creating floating and on-top panels with arbitrary
+    placement and size on Wayland (#8068)
+  * remote_control_password: Fix using a password without any actions not
+    working (#8082)
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.remote_control_password
+  * Fix enlarging window when a long line is wrapped between the first line of
+    the scrollback buffer and the screen inserting a spurious newline (#7033)
+  * When re-attaching a detached tab preserve internal layout state such as
+    biases and orientations (#8106)
+  * hints/unicode_input kittens: Do not lose keypresses that are sent very
+    rapidly via an automation tool immediately after the kitten is
+    launched (#7089)
+
+-------------------------------------------------------------------
 Wed Oct 30 16:41:14 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to 0.37.0:

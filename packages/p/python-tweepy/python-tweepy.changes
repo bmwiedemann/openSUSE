@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 17 00:36:07 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python-313.patch:
+  * Fall back to mimetypes if imghdr isn't available.
+- Add patch loosen-requests-oauthlib.patch:
+  * We can also work with requests-oauthlib < 3.
+
+-------------------------------------------------------------------
 Wed Mar 13 06:06:29 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.14.0:

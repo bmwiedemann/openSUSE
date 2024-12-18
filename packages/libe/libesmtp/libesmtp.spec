@@ -33,7 +33,6 @@ BuildRequires:  libtool
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  openssl-devel >= 1.1.0
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libntlm)
 
 %description
 libESMTP is a library to manage posting (or submission of) electronic
@@ -69,7 +68,7 @@ This subpackage contains the API definition files.
 
 %build
 %meson \
-  -Dntlm=enabled
+  -Dntlm=disabled
 %meson_build
 
 %install

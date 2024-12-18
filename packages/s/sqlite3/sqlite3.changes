@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 16 15:40:43 UTC 2024 - Reinhard Max <max@suse.com>
+
+- Add sqlite3-6216bfcb.patch to fix a test suite regression in
+  3.47.0 on s390x. Only the test was broken, not the code itself.
+  https://sqlite.org/forum/forumpost/7b2bab04c5
+
+-------------------------------------------------------------------
 Mon Dec  9 11:26:23 UTC 2024 - Reinhard Max <max@suse.com>
 
 - Update to release 3.47.2:

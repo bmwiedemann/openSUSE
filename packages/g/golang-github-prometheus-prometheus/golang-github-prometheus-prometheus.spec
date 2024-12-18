@@ -55,8 +55,7 @@ BuildRequires:  firewall-macros
 # with -buildmode=pie
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-github-prometheus-promu >= 0.14.0
-BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.21
+BuildRequires:  golang(API) >= 1.22
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if 0%{?suse_version} >= 1500
 Recommends:     firewalld-prometheus-config
@@ -67,8 +66,6 @@ Requires(post): %fillup_prereq
 Provides:       prometheus = %{version}
 ExcludeArch:    s390
 %systemd_ordering
-
-%go_nostrip
 
 %description
 Prometheus's main features are:
@@ -85,8 +82,15 @@ Prometheus's main features are:
 %autosetup -D -a2 -p1 -n prometheus-%{version}
 
 %build
-%goprep github.com/prometheus/prometheus
-GOPATH=%{_builddir}/go promu build -v
+%ifarch i586 s390x armv7hl armv7l armv7l:armv6l:armv5tel armv6hl
+export BUILD_CGO_FLAG="--cgo"
+%endif
+export GOFLAGS="-buildmode=pie"
+promu build -v $BUILD_CGO_FLAG
+
+%check
+./prometheus --version
+./promtool --version
 
 %install
 install -D -m0755 %{_builddir}/prometheus-%{version}/prometheus %{buildroot}/%{_bindir}/prometheus
@@ -111,7 +115,6 @@ install -Dd -m 0750 %{buildroot}%{_localstatedir}/lib/prometheus/data
 install -Dd -m 0750 %{buildroot}%{_localstatedir}/lib/prometheus/metrics
 
 install -D -m0644 %{SOURCE7} %{buildroot}/%{_defaultlicensedir}/%{name}/npm_licenses.tar.bz2
-%gofilelist
 
 %fdupes %{buildroot}/%{_prefix}
 

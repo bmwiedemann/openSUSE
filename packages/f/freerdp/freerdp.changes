@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Dec 16 16:01:45 UTC 2024 - Joan Torres <joan.torres@suse.com>
+
+- Update to 3.10.2
+  * Fix initializing ComputerName setting (#10985)
+  * Fix some warnings and possible leaks (#10985)
+  * Add FreeBSD as architecture build to our ci (#10980 and others)
+  * Fix empty include directory creation (#10981)
+  * Fix SIMD detection (#10968)
+  * Improve settings unit test coverage (#10966)
+  * Fix sending server redirection PDU (#10963)
+  * Fix return and use of GetComputerNameA (#10962)
+
+-------------------------------------------------------------------
+Thu Dec 12 12:27:58 UTC 2024 - Joan Torres <joan.torres@suse.com>
+
+- Update to 3.10.0
+  So, what is new:
+  * Enforce use of a supported build type (#10777)
+  * Enable FDK-AAC support for nightly packages (#10875, #10781)
+  * Better AAD/AVD support (#10796)
+  * Build system updates (#10844)
+  * Enforce spell checking (#10881)
+  * Split unit tests so a subset can be run during package build (#10776)
+  * We're shipping a .desktop file now (#10465)
+  * Build scripts for nightly packages (#10835, #10783)
+
+  Noteworthy changes:
+  * Fix wStream API bugs (#10885)
+  * Autoreconnect fixes (#10915)
+  * Fix monitor layout checks (#10905)
+  * Enforce code formatting for CMake files (#10895)
+  * Enable SIMD optimizations by default (#10894)
+  * WinPR types not based on stdint.h et al (#10754)
+  * Improve code assertions (#10768)
+  * Code cleanups (#10763, #10914)
+
+  * Fixes bsc#1233824
+
+-------------------------------------------------------------------
 Wed Oct 23 05:10:01 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.9.0

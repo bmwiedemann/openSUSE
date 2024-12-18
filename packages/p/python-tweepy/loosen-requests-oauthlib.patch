@@ -1,0 +1,22 @@
+From 5b43f6be94aad0ff248c07539def70883dd33462 Mon Sep 17 00:00:00 2001
+From: Ryan Barrett <git@ryanb.org>
+Date: Thu, 11 Apr 2024 09:48:38 -0700
+Subject: [PATCH] deps: bump requests-oauthlib to <3 to allow v2.0.0
+
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 50548a312..c097abfe2 100644
+--- a/setup.py
++++ b/setup.py
+@@ -36,7 +36,7 @@
+     install_requires=[
+         "oauthlib>=3.2.0,<4",
+         "requests>=2.27.0,<3",
+-        "requests-oauthlib>=1.2.0,<2",
++        "requests-oauthlib>=1.2.0,<3",
+     ],
+     extras_require={
+         "async": [

@@ -117,4 +117,18 @@ Needed by python-seaborn, see request 436927</comment>
     <comment></comment>
     <requestid>1221737</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>92a6444f603120f1a954ad8797ac82f6</srcmd5>
+    <version>1.0.1</version>
+    <time>1734459844</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.0.1:
+  * Add explicit support for Python 3.13.
+  * Drop support for Python 2.7, and remove dependency on the six module.
+  * Fix compatibility with numpy &gt;= 2.
+- Remove multibuild, no longer in a loop with pandas.
+- Drop patch python-patsy-no-python2.patch, included upstream.
+- Switch to pyproject macros.</comment>
+    <requestid>1231597</requestid>
+  </revision>
 </revisionlist>

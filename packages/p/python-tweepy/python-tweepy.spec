@@ -23,6 +23,10 @@ Summary:        Twitter library for python
 License:        MIT
 URL:            https://github.com/tweepy/tweepy
 Source:         https://github.com/tweepy/tweepy/archive/v%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Based on gh#tweepy/tweepy#2205
+Patch0:         support-python-313.patch
+# PATCH-FIX-UPSTREAM gh#tweepy/tweepy#2179
+Patch1:         loosen-requests-oauthlib.patch
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module async-lru}
 BuildRequires:  %{python_module pip}
@@ -45,7 +49,7 @@ A library for accessing the Twitter.com API. Supports OAuth, covers the entire
 API, and streaming API.
 
 %prep
-%setup -q -n tweepy-%{version}
+%autosetup -p1 -n tweepy-%{version}
 
 %build
 %pyproject_wheel

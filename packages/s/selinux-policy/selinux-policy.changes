@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 16 16:19:03 UTC 2024 - cathy.hu@suse.com
+
+- Update to version 20241216:
+  * Allow vhostmd_t list virtqemud pid dirs (bsc#1230961)
+
+-------------------------------------------------------------------
 Fri Dec 13 10:10:49 UTC 2024 - cathy.hu@suse.com
 
 - Update to version 20241213:

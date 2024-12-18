@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Dec 17 05:46:52 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.7.1:
+  * What's Changed
+    - [release/v1.7] go generate by @rancherbot in #3748
+    - [v1.7] Update GitHub Actions dependencies by @chiukapoor in
+      #3750
+    - [release/v1.7] go generate by @rancherbot in #3751
+    - [release/v1.7] Add ACI-CNI 6.0.4.4 variables by
+      @jeffinkottaram in #3754
+    - [release/v1.7] go generate by @rancherbot in #3756
+  * RKE Kubernetes versions
+    - v1.28.15-rancher1-1
+    - v1.29.11-rancher1-1
+    - v1.30.7-rancher1-1
+    - v1.31.3-rancher1-1 (default)
+
+-------------------------------------------------------------------
 Wed Nov 13 10:13:20 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.7.0:

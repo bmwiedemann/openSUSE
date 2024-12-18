@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Dec 13 11:39:57 UTC 2024 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Explicitly set CGO_ENABLED=1 for architectures which require it
+
+-------------------------------------------------------------------
+Fri Dec  6 15:58:05 UTC 2024 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Packaging improvements:
+  * Require Go >= 1.22 for building
+  * Drop BuildRequires: golang-packaging
+  * Build PIE
+
+-------------------------------------------------------------------
 Sat Nov 30 16:10:34 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 3.0.1:

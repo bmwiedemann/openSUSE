@@ -1,9 +1,0 @@
-<package name="ldapvi" project="openSUSE:Factory">
-  <title></title>
-  <description>ldapvi is an interactive LDAP client for Unix terminals.
-Using it, you can update LDAP entries with a text editor.
-Think of it as vipw(1) for LDAP.
-
-This version contains additional patches from https://github.com/nutznboltz/ldapvi</description>
-  <devel project="network:ldap" package="ldapvi"/>
-</package>

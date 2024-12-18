@@ -1,4 +1,322 @@
 -------------------------------------------------------------------
+Mon Dec 16 08:34:01 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to v2.0.0 (jsc#PED-9661, jsc#PED-10668)
+  - Core
+    - hmem/cuda: avoid stub loading at runtime
+    - Makefile.am: Keep using libfabric.so.1 as the soname
+    - xpmem: Cleanup xpmem before monitors
+    - Remove redundant windows.h
+    - hmem/cuda: Add env variable to enable/disable CUDA DMABUF
+    - Update ofi_vrb_speed
+    - xpmem: Fix compilation warning
+    - Change the xpmem log level to info
+    - Clarify FI_HMEM support of inject calls
+    - Introduce Sub-MR
+    - Define capbility for directed receive without wildcard src_addr
+    - Define capability for tagged message only directed recv
+    - Define capability bit for tagged multi receive
+    - Define flag for single use MR
+    - Move flags only used for memory registration calls to fi_domain.h
+    - windows/osd.h: fix and refactor logical operations on complex numbers
+    - man/fi_peer: update peer fid initialization language
+    - Remove CURRENT_SYMVER() macro
+    - 1.8 ABI compat
+    - hmem/ze: Fix mistmatched library name in an error message
+    - Add FI_PEER as a capability
+    - Add missing FI_AV_USER_ID to cap tostr
+    - Update and clarify peer SRX API flow
+    - Prefix public xpmem symbols with ofi
+    - Add rbmap foreach node utility function
+    - ofi_mem: Add release bufpool validity check
+    - hmem/rocr: Don't attempt to get device info when pointer type is unknown.
+    - hmem: Added handle field to close_handle
+    - Introduce new atomic datatypes and operation
+    - Define new tag formats
+    - Add new peer group feature
+    - Add fi_fabric2() API
+    - Deprecate old MR modes
+    - Deprecate FI_WAIT_MUTEX_COND
+    - Deprecate wait set and poll set
+    - Require using libfabric APIs to allocate fi_info structures
+    - Cleanup FI_ORDER flags
+    - Deprecate support for async memory registration
+    - Remove total_buffered_recv
+    - Deprecate comp_order attribute
+    - Simplify progress definition
+    - Simplify threading models
+    - Move FI_BUFFERED_RECV to internal flag
+    - Simplify the AV API
+    - Remove internally used definitions from public headers
+    - hmem/cuda: Modify the logging for nvml dlopen
+    - hmem/rocr: Fix dmabuf for amd gpu implementation
+  - CXI
+    - Add FI_OPT_CUDA_API_PERMITTED tests
+    - Define FI_CXI_FORCE_DEV_REG_COPY
+    - Support FI_OPT_CUDA_API_PERMITTED
+    - Testing FI_RM_ENABLED
+    - Correct checking of MR test rc
+    - Update unit test for collectives
+    - Add test for invalid client RKEY
+    - Fix broken client key check
+    - Ignore FLT_OVERFLOW and FLT_INVALID errors
+    - Update CXI man page.
+    - Enable dmabuf for ROCR by default.
+    - Remove disable_dmabuf_cuda and disable_dmabuf_rocr
+    - Disable use of dmabuf by default for cuda
+    - Remove use of deprecated FI_ORDER_NONE
+    - Report RMA order used in debug output
+    - Remove srx unittests
+    - Add FI_PEER capability bit
+    - Support shared receive queues
+    - Implement shared Completion Queues
+    - Update provider man page
+    - Update version to 2.0
+    - Remove setting total_buffered_recv
+    - Update CXI provider
+    - FI_PATH_MAX is removed in 2.0 API
+  - EFA
+    - Skip rx pkt refill under certain threshold
+    - Fix efa multi recv setopt segfault
+    - Add tracepoints for rma operations
+    - Adjust the location of tracepoint
+    - Implement the rma interface
+    - Fix efa_msg flags
+    - Remove efa_send_wr, send_wr_pool and recv_wr_pool from dgram_ep
+    - Fix the read_bad_recv_status unit test
+    - Implement efa_msg interface
+    - Implement FI_MORE for fi_recv in zero copy recv mode
+    - Fix the error path of zero copy recv
+    - Move inject sizes from rdm ep to base ep
+    - Fix the ep list scan in cq/cntr read
+    - Fix the error handling for unsolicited recv
+    - Fall back to zero sl when non-zero sl qp creation failed
+    - Disable zero copy receive if p2p is not available
+    - Initialize efa fork support in EFA_INI
+    - Update efa_hmem and efa_fork_support log to FI_LOG_CORE
+    - Make efa_hmem_info a global variable
+    - Set max rma order size correctly
+    - Remove unused fields from various data structures
+    - Update efa shm implementation to allocate fi_peer_srx_context
+    - Avoid gdr_pin/gdr_map for dmabuf mrs
+    - Only do dmabuf reg when FI_MR_DMABUF is set
+    - Report correct inject_msg_size for zcpy rx
+    - Add setopt/getopt support for remaining EP sizes
+    - Split RDM EP inject size field into MSG,RMA variants
+    - Use tclass to prioritize the messages from an ep
+    - Remove tx_size and rx_size from efa_rdm_ep
+    - Remove tx_iov_limit and rx_iov_limit from efa_rdm_ep
+    - Remove DC NACK packet from rxe map after recv completed
+    - Correctly handle fallback longcts-rtw send completion
+    - Differentiate unresponsive receiver errors following rdma-core
+    - Make NACK protocol fall back to DC longCTS when DC is requested
+    - Update help message for inter_min_read_write_size
+    - Adjust log level for setopt/getopt
+    - Add dependency header file in fi_ext_efa.h
+    - Test: Disable shm via fi_setopt
+    - Rename p2p_available to mr_p2p_available
+    - Always use p2p for system memory
+    - Test: Use correct qp num in the mock
+    - Shrink the size of extra_info array
+    - Improve the zero-copy recv error message.
+    - Update read nack protocol docs
+    - Receiver send NACK if p2p is unavailable
+    - Sender switch to emulated long CTS write if p2p unavailable
+    - Adjust log level for shm disabling.
+    - Check p2p support to use rdma read
+    - Add device to host copy for inject rdma write
+    - Copy user buffer for fi_sendmsg with FI_INJECT
+    - Respect FI_MR_LOCAL in transport path
+    - Zero the cq entry array in dgram ep progress
+    - Remove unit test for libfabric 1.1 API
+    - Replace deprecated MR modes
+    - Remove deprecated FI_ORDER flag
+    - Update EP's `inject_size` in zero-copy mode
+    - Add support for `FI_OPT_INJECT_RMA_SIZE`
+    - Query for shm's FI_PEER capability
+    - Require FI_MR_LOCAL for zero-copy receive
+    - Correctly handle fallback longcts-rtm send completion
+    - Adjust the logging for pke exhaustion
+    - Fix a memory leak in local read
+    - Use dlist_foreach_container_safe to iterate progressed ep list
+    - refactor hmem interface initialization
+    - Fix a memory leak in efa_rdm_ep_post_handshake
+    - disable zero-copy receive if p2p is not supported
+    - Update data types for various IOV operations
+    - Require shm to be disabled for using zero-copy recv
+    - Register user recv buffer for zero-copy receive mode
+    - Make fi_cancel return EOPNOTSUPP for zero copy receive mode.
+    - Handle receive window overflow
+    - Introduce FI_EFA_IFACE to restrict visible NICs
+    - Allow disabling unsolicited write recv via env
+  - Hook
+    - Fix the preprocessor
+    - Trace: Add trace log for domain_attr.
+  - LNX
+    - Initialize flags to 0
+    - Convert peer table to use buffer pools
+    - Fix av strncpy
+    - Fix various issues with initial commit
+    - Initial addition
+  - LPP
+    - Initial addition
+  - OPX
+    - Use page_sizes[OFI_PAGE_SIZE] instead of PAGE_SIZE
+    - Set immediate ACK requested bit when sending last packet of RMA PUT
+    - Add debug check for zero-byte length data packets
+    - Conditionally set FI_REMOTE_CQ_DATA on receive
+    - Include less immediate data in RTS packet to improve rendezvous performance
+    - Investigate and address indeterminate behavior or segfault resulting from ignored context creation error
+    - fi_info -e fix for FI_OPX_UUID env var
+    - Fix last_bytes field for replay over sdma
+    - Fix eager and mp eager
+    - Fix payload copy
+    - Add FI_OPX_TID_MIN_PAYLOAD_BYTES param
+    - Fix incorrect calculation of immediate block offset in send rendezvous
+    - Initialize nic info in fi_info
+    - Simplify fi_opx_check_rma() function.
+    - added OPX Tracer points to RMA code paths
+    - Fix credit return
+    - Remove polling call from internal rma write
+    - Support 16B SDMA CTS work
+    - Fix uepkt 16B headers
+    - 16B SDMA header support
+    - Man: Document OPX max ping envvars
+    - Link bounce support for OPX WFR
+    - Scb/hdr changes
+    - Updated configure.m4 for ROCR
+    - Capitalized env var used for production override, also added opx to the front.
+    - Remove FI_CONTEXT2 requirement
+    - Only posting one completion for rzv truncation receives.
+    - Fixing bug for credit check in inject code path.
+    - Resolve coverity scan defects uncovered after upstream
+    - Replace fi_opx_context_slist with slist
+    - Remove assert from find pkt by tag
+    - Add OPX Tracer EP lock and Recv entries
+    - CN5000/JKR: Changes needed to get RMA working in 16B
+    - Added GDRCopy logging and failure path
+    - Initial 16B header support
+    - Fix wrong function used when copying from HMEM/rocr.
+    - Create GPU-specific SDMA/RZV thresholds
+    - Don't try to get HMEM iface for NULL pointers
+    - Limit the number of reliability pings on credit-constrained flows
+    - Remove function table entries for reliability types other than ONLOAD
+  - PSM3
+    - Fix logical atomic function calls
+    - Check atomic op error code
+    - Disable complex comparison combinations
+    - Fix incorrect unlock function
+  - PSM2
+    - Check return value of asprintf
+    - Fix incorrect unlock function
+  - RXM
+    - Fix rxm multi recv setopt segfault
+    - Replace rxm managed srx with util srx, support FI_PEER
+    - Add rxm support for using a peer CQs and counters
+    - Add FI_AV_USER_ID support
+    - Fix definition of the rxm SAR segment enum
+  - SHM
+    - Fix shm multi recv setopt segfault
+    - Cleanup op flags
+    - Add unmap_region function
+    - Use owner-allocated srx
+    - Fix incorrect capability set
+    - Make progress errors ints instead of unit64
+    - Remove unused err path from progress_iov
+    - Refactor initialization process
+    - Put smr_map memory into av
+    - Add FI_PEER capability
+    - Refactor ze ipc path to use pidfd
+  - TCP
+    - Fix incorrect usage of av insert apis when multiplexing
+    - Initialize addr_size when duplicating an av
+    - Introduce sub-domains to support FI_THREAD_COMPLETION
+  - Sockets
+    - Fixed coverity issue for unchecked return value.
+  - UCX
+    - Fix segfault in ucx_send_callback
+    - Fix incorrect return value checking for fi_param_get()
+    - Support FI_OPT_CUDA_API_PERMITTED in fi_setopt()
+    - Fix error code for fi_setopt()/fi_getopt()
+  - Util
+    - Set srx completion flags and msg_len properly
+    - fi_pingpong: Fix coverity issue about integer overflow
+    - Change uffd stop routine to use pipe
+    - Integrate kdreg2 into libfabric
+    - mr_cache: Support compile default monitor
+    - Handle page faults in uffd monitor
+    - Allow providers to update cache MR IOV
+    - Log AV insert with AV's specified address format
+    - Add uffd user mode flag for kernels
+    - Initialize ROCR name in memory monitor struct
+    - Support specific placement of addr into the av
+  - Verbs
+    - Fix coverity issue about overflowed return value
+    - Enable implicit dmabuf mr reg for more HMEM ifaces
+    - Fix resource leak in error handling path
+    - Replace __BITS_PER_LONG with LONG_WIDTH
+    - Fix issue while displaying addresses with fi_info -a <addr_format>
+  - Fabtests
+    - Add opts.min_multi_recv_size to set opt before enable
+    - Add FI_MORE pytest for fi_recv in zcpy recv mode
+    - Allow tests with FI_MORE flag by using fi_recvmsg
+    - New fabtest fi_flood to test over subscription of resources
+    - test_configs/ofi_rxm/tcp.test: remove cntr RMA testing
+    - Fix compiler warning about unitialized variable
+    - Fix compilation error about CMPLX with C99
+    - Added -E/env option to multinode test script
+    - Change xfer-method variable to xfer_method in runmultinode.sh
+    - Fix complex fill cast
+    - efa: Remove rnr cq error message check
+    - efa: Loose assertion for read request counters
+    - runfabtests.cmd: add atomic tests to windows testing
+    - runfabtests.sh: add rdm_atomic validation tests
+    - rdm_atomic: add data validation
+    - Change ZE memset to use uint8
+    - Change sync message to be 0 bytes instead of 1 byte
+    - Fix atomic buffer
+    - Add hmem support to common atomic validation
+    - Move ubertest atomic validation code to common
+    - Use new synapse api
+    - Update fi_multinode test
+    - Update runmultinode.py with args
+    - Added inband sync to ft_init_fabric_cm
+    - lpp: remove deprecated FI_MR_BASIC
+    - Add option for conditionally building lpp
+    - Make building efa conditional
+    - Call provider specific configure
+    - efa: Skip inter_min_write_write_size test when rdma write is on
+    - efa: Add efa_rdma_checker
+    - lpp: remove invalid condition in fi_tsenddata
+    - Support no prepost RX pingpong test
+    - Split out ft_sync logic
+    - Define common run pingpong function
+    - Move pingpong logic into pre-posted func
+    - lpp: update version and protocol in fi_getinfo
+    - lpp: fix compile warnings
+    - Remove multi_ep from tcp exclude
+    - runfabtests.sh: add more multi_ep tests
+    - Add common threading option
+    - multi_ep: use common long ops, switch shared-av and cq opts
+    - multi_ep: add closing and reopening of MRs
+    - multi_ep: add RMA validation
+    - Create common raw key functions
+    - multi_ep: separate MR resources per EP
+    - efa: Skip memory registration that hit device limit
+    - efa: Avoid testing duplicate mixed memory type workload
+    - lpp: Fix compiler warning about unused variables
+    - Remove deprecated MR modes
+    - Remove fi_poll and fi_dgram_waitset tests (deprecated feature)
+    - Add LPP specific fabtests
+    - Add `inject_size` to `ft_opts`
+    - Add pytests for FI_MORE Test fi_rma_bw and fi_rdm_tagged_bw with flag FI_MORE.
+    - Use fi_writemsg to test rma write/writedata with FI_MORE
+    - Use fi_sendmsg to test rdm_tagged_bw with FI_MORE
+    - Add option for running tests with FI_MORE
+    - synapse: Remove dependency of scal
+    - Pass `memory_type` to client server test
+
+-------------------------------------------------------------------
 Mon Dec  2 08:47:15 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Completely remove building for AVX/AVX2 in PSM3  (bsc#1213538, bsc#1233356, bsc#1234014)

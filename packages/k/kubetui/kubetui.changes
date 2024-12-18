@@ -1,4 +1,150 @@
 -------------------------------------------------------------------
+Sun Dec 15 15:34:38 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.5.4:
+  * Release version 1.5.4
+  * feat(clipboard): update arboard features for wayland
+  * chore(deps): update arboard to version 3.4.1
+  * Revert "feat(clipboard): update arboard features for wayland"
+  * feat(clipboard): remove clipboard from render
+  * feat(clipboard): update arboard features for wayland
+  * fix(deps): update rust crate thiserror to v2.0.7 (#672)
+  * chore(deps): lock file maintenance (#671)
+  * fix(deps): update rust crate serde to v1.0.216 (#670)
+  * fix(deps): update rust crate chrono to v0.4.39 (#669)
+  * fix(deps): update rust crate thiserror to v2.0.6 (#668)
+  * fix(deps): update rust crate thiserror to v2.0.5 (#667)
+  * fix(deps): update rust crate clap to v4.5.23 (#666)
+  * chore(deps): update rust crate tokio to v1.42.0 (#662)
+  * fix(deps): update rust crate http to v1.2.0 (#665)
+  * fix(deps): update rust crate clap to v4.5.22 (#664)
+  * fix(deps): update rust crate anyhow to v1.0.94 (#663)
+  * fix(deps): update rust crate thiserror to v2.0.4 (#661)
+  * chore(config): migrate config renovate.json
+  * chore: Update renovate.json
+  * fix(deps): update rust crate kube to 0.97.0 (#655)
+  * fix(deps): update rust crate thiserror to v2
+  * chore(deps): lock file maintenance (#658)
+  * fix(deps): update rust crate bytes to v1.9.0 (#657)
+  * feat(clipboard): integrate arboard for clipboard handling
+  * chore(deps): lock file maintenance (#656)
+  * chore(deps): update rust crate mockall to v0.13.1 (#654)
+  * fix(deps): update rust crate serde_json to v1.0.133 (#653)
+  * fix(deps): update rust crate flate2 to v1.0.35 (#651)
+  * fix(deps): update rust crate clap to v4.5.21 (#650)
+  * fix(deps): update rust crate serde to v1.0.215 (#649)
+  * fix(deps): update rust crate thiserror to v1.0.69 (#648)
+  * fix(deps): update all dependencies (#646)
+  * fix(deps): update rust crate thiserror to v1.0.68
+  * fix(deps): update rust crate thiserror to v1.0.67
+  * fix(deps): update rust crate anyhow to v1.0.92
+  * fix(deps): update rust crate thiserror to v1.0.66
+  * chore(deps): lock file maintenance
+  * fix(deps): update rust crate serde to v1.0.214
+  * refactor(ui): update Table widget to use row_highlight_style
+  * refactor(widget): remove unused chunk_index field
+  * refactor(ui/single_select): remove unused chunk_index field
+  * refactor(ui/table): remove unused show_status and chunk_index
+  * fix(deps): update rust crate ratatui to 0.29.0
+  * refactor: remove derivative crate and update impls
+  * fix(deps): update rust crate bytes to v1.8.0
+  * chore(deps): update rust crate tokio to v1.41.0
+  * fix(deps): update rust crate regex to v1.11.1
+  * fix(deps): update rust crate serde to v1.0.213
+  * fix(deps): update all dependencies
+  * chore(deps): update actions/checkout digest to 11bd719
+  * fix(ui/single_select): Added a Default implementation for
+    SelectForm using SelectFormBuilder
+  * refactor(widget): modularize SelectForm and FilterForm for
+    MultipleSelect
+  * refactor(widget): move SingleSelectBuilder to top
+  * refactor(widget): modularize SelectForm and SingleSelect
+  * refactor: replace InputForm with FilterForm in SingleSelect
+  * fix(deps): update rust crate serde_json to v1.0.132
+  * fix(deps): update rust crate serde_json to v1.0.131
+  * fix(deps): update rust crate serde_json to v1.0.130
+  * fix(deps): update rust crate anyhow to v1.0.90
+  * chore(deps): lock file maintenance
+  * fix(deps): update rust crate serde_json to v1.0.129
+  * fix(deps): update rust crate kube to 0.96.0
+  * fix(deps): update rust crate clap to v4.5.20
+  * chore(deps): update actions/checkout digest to eef6144
+  * refactor(ui/input): add allow dead_code attribute to suffix method
+  * refactor: remove unnecessary references in widget_base
+  * fix(deps): update rust crate once_cell to v1.20.2
+  * fix(deps): update rust crate futures to v0.3.31
+  * refactor: rename popup to dialog in AppleScript files
+  * refactor: rename popup to dialog in UI components
+  * fix(deps): update rust crate clap to v4.5.19
+  * fix(deps): update rust crate regex to v1.11.0
+  * fix(deps): update rust crate once_cell to v1.20.1
+  * fix(deps): update rust crate regex-syntax to v0.8.5
+  * chore(deps): update rust crate rstest to 0.23.0
+  * refactor(wrap): rename function and reduce nesting
+  * refactor: rename spans module to line for clarity
+  * refactor: rename generate_style_from_ansi_color to ansi_to_style
+  * refactor(ui): add FilterForm with fixed height for Table widget
+  * refactor(ui): add SearchForm with fixed height for Text widget
+  * refactor(input): add allow(dead_code) attribute
+  * refactor(widget): restructure and rename modules
+  * refactor(widget): change module visibility and imports
+  * refactor(config): rename WidgetConfig to WidgetBase
+  * chore(deps): lock file maintenance
+  * fix(deps): update rust crate flate2 to v1.0.34
+  * fix(deps): update rust crate async-trait to v0.1.83
+  * fix(deps): update rust crate thiserror to v1.0.64
+  * fix(deps): update rust crate clap to v4.5.18
+  * fix(deps): update rust crate unicode-width to 0.2.0
+  * feat(ui): change ansi color reset sequence handling from
+    Style::reset() to Style::default() in ansi_color.rs
+  * fix(deps): update rust crate bytes to v1.7.2
+  * fix(deps): update rust crate unicode-segmentation to v1.12.0
+  * fix(deps): update kube-rs (kube, kube-runtime, k8s-openapi)
+  * chore(deps): update rust crate tokio to v1.40.0
+  * fix(deps): update rust crate serde to v1.0.210
+  * fix(deps): update all dependencies
+  * fix(deps): update rust crate kube to 0.94.0
+  * refactor(ui): remove unused layout field from InputForm
+  * refactor(ui): merge FilterForm and SearchForm into InputForm
+  * refactor: replace deprecated methods and rename variables
+  * fix(k8s): reset table header style using code `\x1b[39m`
+  * fix(deps): update rust crate ratatui to v0.28.1
+  * fix(deps): update rust crate flate2 to v1.0.33
+  * fix(deps): update rust crate serde to v1.0.209
+  * fix(deps): update rust crate serde_json to v1.0.127
+  * chore(deps): lock file maintenance
+  * fix(deps): update rust crate flate2 to v1.0.32
+  * chore(deps): update rust crate tokio to v1.39.3
+  * fix(deps): update rust crate clap to v4.5.16
+  * chore(deps): lock file maintenance
+  * fix(deps): update rust crate serde to v1.0.208
+  * fix(deps): update rust crate serde_json to v1.0.125
+  * fix(deps): update rust crate ctrlc to v3.4.5
+  * fix(deps): update rust crate serde to v1.0.207
+  * fix(deps): update rust crate serde_json to v1.0.124
+  * fix(deps): update rust crate serde_json to v1.0.123
+  * fix(deps): update rust crate serde to v1.0.206
+  * fix(deps): update rust crate clap to v4.5.15
+  * docs(readme): add installation for Arch Linux
+  * fix(deps): update rust crate clap to v4.5.14
+  * fix(deps): update rust crate serde to v1.0.205
+  * fix(deps): update rust crate ratatui to 0.28.0
+  * chore(deps): update rust crate rstest to 0.22.0
+  * fix(deps): update rust crate flate2 to v1.0.31
+  * fix(deps): update rust crate regex to v1.10.6
+  * fix(deps): update all dependencies
+  * fix(deps): update rust crate clap to v4.5.13
+  * fix(deps): update rust crate clap to v4.5.12
+  * fix(deps): update rust crate bytes to v1.7.0
+  * fix(deps): update rust crate serde_json to v1.0.121
+  * chore(deps): update rust crate tokio to v1.39.2
+  * fix(deps): update rust crate clap to v4.5.11
+  * chore(deps): update rust crate tokio to v1.39.1
+  * fix(deps): update rust crate clap to v4.5.10
+  * chore(script): Add script to toggle split direction in iTerm
+  * fix(deps): update rust crate kube to v0.93.1
+
+-------------------------------------------------------------------
 Wed Jul 24 14:05:30 UTC 2024 - ekr59uv25@gmail.com
 
 - Update to version 1.5.3:

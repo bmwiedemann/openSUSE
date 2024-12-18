@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec 17 03:22:37 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.0.1:
+  * Add explicit support for Python 3.13.
+  * Drop support for Python 2.7, and remove dependency on the six module.
+  * Fix compatibility with numpy >= 2.
+- Remove multibuild, no longer in a loop with pandas.
+- Drop patch python-patsy-no-python2.patch, included upstream.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Wed Nov  6 10:57:29 UTC 2024 - pgajdos@suse.com
 
 - drop python 2 support

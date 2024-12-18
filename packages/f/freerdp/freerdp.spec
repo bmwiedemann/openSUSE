@@ -37,7 +37,7 @@
 %define uwac_package %{uwac_version}-%{uwac_version}
 
 Name:           freerdp
-Version:        3.9.0
+Version:        3.10.2
 Release:        0
 Summary:        Remote Desktop Viewer Client
 License:        Apache-2.0
@@ -326,11 +326,10 @@ export CXX=g++-12
         -DCHANNEL_URBDRC=ON \
         -DCHANNEL_URBDRC_CLIENT=ON
 
-%make_build
+%cmake_build
 
 %install
-cd build
-%make_install
+%cmake_install
 %fdupes %{buildroot}%{_libdir}/cmake/
 
 %ldconfig_scriptlets -n lib%{name}%{libfreerdp_package}
@@ -347,7 +346,6 @@ cd build
 %files sdl
 %{_bindir}/sdl-%{name}
 %{_mandir}/man1/sdl-freerdp.1%{?ext_man}
-
 
 %files wayland
 %{_bindir}/wl%{name}

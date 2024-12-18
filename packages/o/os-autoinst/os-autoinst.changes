@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Dec 16 19:14:36 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1734363783.193a720:
+  * Add script/check_qemu_oom to fully covered paths on codecov
+  * Add lockapi fully coverage 100% in codecov
+  * Add lockapi::mutex_wait test in t/30-mmapi.t
+  * Export handle_read_error function from read_json
+  * Set a bmwqemu diag uncoverable
+  * Refactor utility functions for myjsonrpc
+  * Avoid adding message about termination from myjsonrpc as reason
+
+-------------------------------------------------------------------
 Mon Dec 16 14:24:35 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1734344267.de97b92:

@@ -374,4 +374,12 @@
 	* Added new code generation model - recursive functions (enabled with --recursive-functions), primarily to be used for functional languages.</comment>
     <requestid>1228247</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>5d570000906acf7ebdf0b8964e7f5d4d</srcmd5>
+    <version>4.0.2</version>
+    <time>1734459729</time>
+    <user>anag+factory</user>
+    <comment>update to version 4.0.2</comment>
+    <requestid>1231356</requestid>
+  </revision>
 </revisionlist>

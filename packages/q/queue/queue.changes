@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Mon Dec 16 15:56:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %python3_pyproject_wheel instead of all-python-flavors
+  %pyproject_wheel and do not redefine pythons. It's just more in
+  line of what the package is actually about.
+
+-------------------------------------------------------------------
+Mon Dec 16 14:42:05 UTC 2024 - Dominik Heidler <dheidler@suse.de>
+
+- Version 1.0.0
+- Add config option to use pager
+- Print info when starting runner
+- Fix issues with timestamps on the exact second (with ms=0)
+
+-------------------------------------------------------------------
+Tue Dec 10 00:32:06 UTC 2024 - Dominik Heidler <dheidler@suse.de>
+
+- Initial checkin.
+

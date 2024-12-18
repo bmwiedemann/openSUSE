@@ -172,6 +172,7 @@ Obsoletes:      nxml-mode < 20041004
 Provides:       epg = 1.0.0
 Obsoletes:      epg < 1.0.0
 Provides:       emacs(ELPA)
+Requires:       bubblewrap
 Requires:       emacs-info = %{version}
 Requires:       emacs_program = %{version}-%{release}
 Requires:       etags
@@ -216,6 +217,7 @@ Patch24:        emacs-25.2-ImageMagick7.patch
 Patch25:        emacs-26.1-xft4x11.patch
 Patch26:        emacs-27.1-pdftex.patch
 Patch29:        emacs-27.1-Xauthority4server.patch
+Patch30:        emacs-CVE-2024-53920.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{expand: %%global include_info %(test -s /usr/share/info/info.info* && echo 0 || echo 1)}
 %{expand: %%global _exec_prefix %(type -p pkg-config &>/dev/null && pkg-config --variable prefix x11 || echo /usr/X11R6)}
@@ -378,6 +380,7 @@ and most assembler-like syntaxes.
 %patch -P25 -p0 -b .xft
 %patch -P26 -p0 -b .fmt
 %patch -P29 -p0 -b .xauth
+%patch -P30 -p0 -b .cve202453920
 %patch -P0  -p0 -b .0
 %if %{without tex4pdf}
 pushd etc/refcards/
@@ -736,6 +739,7 @@ rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/fast-lock.el.flc
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/obsolete/fast-lock.el.flc
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/loaddefs.el.flc
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/progmodes/python.el.python
+rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/progmodes/flymake.el.cve202453920
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/textmodes/flyspell.el.flyspell
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/obsolete/spell.el.obsolate
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/cmuscheme.el.0
@@ -749,6 +753,7 @@ rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/mouse.el.prime
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/dynamic-setting.el.custfnt
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/server.el.xauth
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/htmlfontify.el.cve202248339
+rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/progmodes/elisp-mode.el.el.cve202453920
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/progmodes/ruby-mode.el.cve202248338
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/etc/emacsclient-mail.desktop.cve202327985
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/etc/emacsclient-mail.desktop.cve202327986

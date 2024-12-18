@@ -17,7 +17,7 @@
 
 
 Name:           strip-nondeterminism
-Version:        1.13.1
+Version:        1.14.0
 Release:        0
 Summary:        A tool for stripping non-deterministic information
 License:        GPL-3.0-or-later
@@ -35,10 +35,8 @@ BuildRequires:  perl-base
 BuildRequires:  perl-macros
 BuildRequires:  perl(Archive::Cpio)
 BuildRequires:  perl(Archive::Zip)
-BuildRequires:  perl(Sub::Override)
 Requires:       perl-base
 Requires:       perl(Archive::Zip)
-Requires:       perl(Sub::Override)
 Recommends:     perl(Archive::Cpio)
 %{perl_requires}
 

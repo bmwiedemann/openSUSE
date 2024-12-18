@@ -1756,4 +1756,14 @@ CVE-2020-13871 boo#1172646</comment>
 - Enable the session extension, because NodeJS 22 needs it.</comment>
     <requestid>1229466</requestid>
   </revision>
+  <revision rev="156" vrev="2">
+    <srcmd5>af4e137a9a07ea80f66087055f7b6d07</srcmd5>
+    <version>3.47.2</version>
+    <time>1734459757</time>
+    <user>anag+factory</user>
+    <comment>- Add sqlite3-6216bfcb.patch to fix a test suite regression in
+  3.47.0 on s390x. Only the test was broken, not the code itself.
+  https://sqlite.org/forum/forumpost/7b2bab04c5</comment>
+    <requestid>1231554</requestid>
+  </revision>
 </revisionlist>

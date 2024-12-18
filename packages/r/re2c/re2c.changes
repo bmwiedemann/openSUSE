@@ -1,5 +1,14 @@
 -------------------------------------------------------------------
-Wed De  4 09:23:26 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+Sat Dec 14 16:15:14 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.0.2
+  * CMake build system: fixed bug (#515) where language-specific
+    binaries erroneously defaulted to generating code for C.
+  * Playground: address bar now reflects navigation between
+    examples, editors use a more high-contrast CSS theme.
+
+-------------------------------------------------------------------
+Wed Dec  4 09:23:26 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 4.0.1:
   * Added missing doc sources to the distribution tarball (#503)

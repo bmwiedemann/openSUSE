@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 13 13:03:39 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with OpenCASCADE 7.8, add
+  0001-OpenCASCADE-7.8-compatibility-replace-homegrown-Find.patch
+
+-------------------------------------------------------------------
 Thu Apr  4 14:14:45 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
 
 - added support for COLLADA plugin (.dae files) 

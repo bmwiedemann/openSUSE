@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec 17 13:57:13 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require AppStream-compose instead of
+  /usr/libexec/appstreamcli-compose: binaries below /usr/libexec
+  are not automatically added to the rpm provides capabilities.
+
+-------------------------------------------------------------------
+Wed Dec 11 15:42:02 UTC 2024 - Luna D Dragon <luna.dragon@suse.com>
+
+- depend on appstreamcli-compose not appstream-compose
+
+-------------------------------------------------------------------
 Wed Dec 11 14:43:40 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.4.4:

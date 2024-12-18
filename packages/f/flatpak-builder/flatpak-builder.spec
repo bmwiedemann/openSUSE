@@ -52,9 +52,9 @@ BuildRequires:  pkgconfig(libelf) >= 0.8.12
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.4
 BuildRequires:  pkgconfig(ostree-1) >= 2017.14
 BuildRequires:  pkgconfig(yaml-0.1)
-Requires:       %{_bindir}/appstream-compose
 Requires:       %{_bindir}/appstreamcli
 Requires:       %{_bindir}/bzip2
+Requires:       AppStream-compose
 Recommends:     %{_bindir}/bzr
 Requires:       %{_bindir}/eu-strip
 Requires:       %{_bindir}/git

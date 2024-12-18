@@ -27,18 +27,19 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-zope.configuration%{psuffix}
-Version:        5.0.1
+Version:        6.0
 Release:        0
 Summary:        Zope Configuration Markup Language (ZCML)
 License:        ZPL-2.1
-Group:          Development/Languages/Python
 URL:            http://www.python.org/pypi/zope.configuration
-Source:         https://files.pythonhosted.org/packages/source/z/zope.configuration/zope.configuration-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/z/zope.configuration/zope_configuration-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-setuptools
 Requires:       python-zope.i18nmessageid
 Requires:       python-zope.interface
 Requires:       python-zope.schema >= 4.9
@@ -63,15 +64,15 @@ configuration choices. The intent is that the language be pluggable. An XML
 language is provided by default.
 
 %prep
-%setup -q -n zope.configuration-%{version}
+%setup -q -n zope_configuration-%{version}
 rm -rf zope.configuration.egg-info
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -84,7 +85,10 @@ rm -rf zope.configuration.egg-info
 %files %{python_files}
 %license LICENSE.txt
 %doc CHANGES.rst COPYRIGHT.txt README.rst
-%{python_sitelib}/*
+%dir %{python_sitelib}/zope
+%{python_sitelib}/zope/configuration
+%{python_sitelib}/zope.configuration-%{version}.dist-info
+%{python_sitelib}/zope.configuration-6.0-*-nspkg.pth
 %endif
 
 %changelog

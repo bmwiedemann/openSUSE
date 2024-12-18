@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Sat Dec 14 18:32:44 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.13
+  Fixed
+  * [AOG][HWR] Fix weapon position when toggle widescreen.
+  * Hide back-to-demo menu item when there is no mission active.
+  * Informants Die Upon Reloading a QuickSave.
+  * Fizzle fade on death.
+  * Don't increase a turn speed when running.
+  * [AOG] Walking sounds for Cyborg Warrior and Bio-Mech Guardian.
+  * "Full map" cheat.
+  * Asleep enemies when dumps info to log.
+  * [Windows] DPI awarness.
+  * [HWR] Render walls on both sides of a door to avoid a possible
+    gap.
+  * Possible saved game corruption.
+  * Load maps from https://legacy.3drealms.com/stuff/bsflrs.zip.
+  * Boss spawning in AOG.
+  * Error at startup when profile directory is empty.
+  * Buffer overflow for textured ceiling or floor.
+  * [CFG] Escape argument string on serialization.
+  * Sprite extraction error "Sprite page index out of range."
+  * "Actor is in actorat" condition.
+  * Order buttons inside the message box from right to left.
+  * Possible out of range index access in ClearNClose.
+  * [HWR] Crash on E5M14.
+  * [SDL] Audio mixer crash on exit.
+  * Crash when playing UI sound and there is no audio devices
+    detected.
+  Added
+  * [#503] If the player score for the level is above 96%, the
+    informant will tell the location of a single missing enemy or
+    item.
+  * [CMake] Option BSTONE_INTERNAL_SDL2 to use bundled SDL2 source
+    code.
+  * CVar facility.
+  * Add tool to trim file paths in the executable.
+  * Add option to control checking for error of 3D renderer API.
+  * [PS] Add option to toggle a map in stats like in AOG.
+  * Add Git commit's hash to the version.
+  * Log error when message box fails.
+  * Option extract_levels to extract levels in MapEdit format (FLR).
+  * Button to error message box to open a log file.
+  Changed
+  * [#383] Change description of "is windowed" for windowed
+    fullscreen.
+  * Relicense completely new source code under MIT license.
+  * [AUDIO] Rename audio driver type 2d_sdl to system.
+  * [AUDIO] Rename audio driver type 3d_openal to openal.
+  * Rename cvar vid_aa_kind to vid_aa_type.
+  * [CVAR] Rename audio drivers (r2_sdl -> system, 
+    r3_openal -> openal).
+  * Rename cvar vid_aa_kind to vid_aa_type.
+  * Use multiple search paths (data, mod) for external resources.
+  * Update Nuked OPL3 to cfedb09efc03f1d7b5fc1f04dd449d77d8c49d50.
+  * Update stb (stb_image.h v2.29; stb_image_write.h v1.16).
+  * Set CMake minimum version to v3.5.0.
+  * Option --data_dir does not affect auto-detection of original
+    assets.
+- Drop patch:
+  * bstone-fix-build-with-gcc13.patch
+
+-------------------------------------------------------------------
 Thu Feb 22 10:31:29 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

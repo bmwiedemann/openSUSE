@@ -88,4 +88,19 @@ New dependency of python-pyramid</comment>
   * Fix tests when running from a distribution.</comment>
     <requestid>1158479</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4b301cca91ba408a5b145911a9739fa3</srcmd5>
+    <version>6.0</version>
+    <time>1734459840</time>
+    <user>anag+factory</user>
+    <comment>- Update to 6.0:
+  * Add support for checking environment variables in zcml conditions. Use
+    envvar or not-envvar. not-envvar is true when the variable is not set,
+    is empty, or has one of the usual 'false' values like '0'.
+  * Add support for Python 3.12, 3.13.
+  * Drop support for Python 3.7.
+- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1231599</requestid>
+  </revision>
 </revisionlist>

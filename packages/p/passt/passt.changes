@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Dec 12 13:41:51 UTC 2024 - dcermak@suse.com
+
+- Update to version 20241211.09478d5:
+  * treewide: Dodge dynamic memory allocation in strerror() from glibc > 2.40
+  * pasta: make it possible to disable socket splicing
+  * tap: Call vu_init() with --fd
+  * tap: Use a common function to start a new connection
+  * udp_vu: update segment size
+  * flow: Remove over-zealous sanity checks in flow_sidx_hash()
+  * udp: Improve detail of UDP endpoint sanity checking
+  * perf/passt_vu_tcp: Make it shine
+  * tcp_vu: Compute IPv4 header checksum if dlen changes
+  * Makefile: Use make internal string functions
+  * tcp_vu: Remove unnecessary tcp_vu_update_check() function
+  * tcp: Merge tcp_fill_headers[46]() with each other
+  * tcp: Merge tcp_update_check_tcp[46]()
+  * tcp: Pass TCP header and payload separately to tcp_fill_headers[46]()
+  * tcp: Pass TCP header and payload separately to tcp_update_check_tcp[46]()
+  * iov, checksum: Replace csum_iov() with csum_iov_tail()
+  * iov: iov tail helpers
+  * tcp_vu: Change 'dlen' to ssize_t in tcp_vu_data_from_sock()
+  * Fix build on 32bit target
+  * virtio: check if avail ring is configured
+  * tcp: Move tcp_l2_buf_fill_headers() to tcp_buf.c
+  * test: Add tests for passt in vhost-user mode
+  * vhost-user: add vhost-user
+  * passt: rename tap_sock_init() to tap_backend_init()
+  * tcp: Export headers functions
+  * udp: Prepare udp.c to be shared with vhost-user
+  * vhost-user: introduce vhost-user API
+  * vhost-user: introduce virtio API
+  * packet: replace struct desc by struct iovec
+
+-------------------------------------------------------------------
 Wed Nov 27 14:19:40 UTC 2024 - dcermak@suse.com
 
 - Update to version 20241127.c0fbc7e:

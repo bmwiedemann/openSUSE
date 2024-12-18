@@ -152,4 +152,12 @@ on SELinux-enabled projects e.g. SLFO. (forwarded request 1186132 from danishpra
     <comment></comment>
     <requestid>1226923</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0b273844dac16c37a755004c51324df0</srcmd5>
+    <version>20241211.09478d5</version>
+    <time>1734459752</time>
+    <user>anag+factory</user>
+    <comment>new upstream release 20241211.09478d5 (forwarded request 1230600 from dancermak)</comment>
+    <requestid>1231541</requestid>
+  </revision>
 </revisionlist>

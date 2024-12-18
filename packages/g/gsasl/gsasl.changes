@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 16 00:58:46 UTC 2024 - David Disseldorp <ddiss@suse.com>
+
+- Disable support for insecure NTLM authentication; jsc#PED-11790
+
+-------------------------------------------------------------------
 Wed Feb  7 00:33:27 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.2.1

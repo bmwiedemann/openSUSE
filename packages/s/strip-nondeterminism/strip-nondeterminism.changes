@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 16 09:53:25 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update to version 1.14.0
+  * Stop requiring Sub::Override
+- Improve usage examples in the macro file
+
+-------------------------------------------------------------------
 Fri Jul 28 16:19:49 UTC 2023 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - Update to version 1.13.1

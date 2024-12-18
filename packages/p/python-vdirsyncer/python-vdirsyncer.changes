@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Dec 17 00:59:32 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.19.3:
+  * Added a no_delete option to the storage configuration. :gh:`1090`
+  * Fix crash when running vdirsyncer repair on a collection. :gh:`1019`
+  * Add an option to request vCard v4.0. :gh:`1066`
+  * Require matching BEGIN and END lines in vobjects. :gh:`1103`
+  * Implement digest auth. :gh:`1137`
+  * Add filter_hook parameter to :storage:`http`. :gh:`1136`
+- Drop patch 3eb9ce5ae4320d52e6c876874511ff96a8a45f51.patch, included.
+- Switch to pyproject macros.
+- Stop skipping so many tests.
+
+-------------------------------------------------------------------
 Fri Dec  8 16:14:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.19.2:

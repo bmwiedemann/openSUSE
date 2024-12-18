@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 17 01:53:28 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- No longer skip building for Python 3.12.
+- Switch to pyproject and autosetup macros.
+- Add patch use-importlib.patch:
+  * Use importlib, rather than imp.
+
+-------------------------------------------------------------------
 Thu Mar 14 10:06:06 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - skip build for python 3.12

@@ -51,13 +51,15 @@ Summary:        3D graphics toolkit
 # Ticket opened to clear license situation: https://github.com/openscenegraph/OpenSceneGraph/issues/552
 License:        LGPL-2.1-only WITH WxWindows-exception-3.1
 Group:          Productivity/Graphics/Other
-URL:            http://openscenegraph.org/projects/osg
+URL:            https://openscenegraph.github.io/openscenegraph.io/
 Source0:        https://github.com/openscenegraph/%{name}/archive/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE - fix build with asio >= 1.14.0, https://github.com/openscenegraph/OpenSceneGraph/issues/921
 Patch0:         0001-Replace-boost-bind-usage-with-std-bind.patch
 Patch1:         0002-Replace-obsoleted-asio-basic_stream_socket-get_io_se.patch
 # PATCH-FIX-UPSTREAM - Fix build with OCCT 7.6
 Patch2:         0001-Use-non-deprecated-methods-to-access-OpenCascade-Tri.patch
+# PATCH-FIX-OPENSUSE - Fix build with OCCT 7.8
+Patch3:         0001-OpenCASCADE-7.8-compatibility-replace-homegrown-Find.patch
 BuildRequires:  cmake
 BuildRequires:  curl-devel
 %if %{with ffmpeg}
@@ -310,6 +312,7 @@ This package contains some example applications built with OpenSceneGraph
 %patch -P 1 -p1
 %endif
 %patch -P 2 -p1
+%patch -P 3 -p1
 
 for file in *.md *.txt; do
 	sed -i "s/\r//g" "$file"

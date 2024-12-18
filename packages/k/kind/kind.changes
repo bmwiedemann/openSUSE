@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Dec 17 05:43:38 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.26.0:
+  * version v0.26.0
+  * Bump actions/setup-go from 5.1.0 to 5.2.0 in the actions group
+  * add new push-node.sh that uses pre-compiled upstream releases
+  * update default node image to 1.32 with upgraded containerd etc
+  * upgrade local path images to latest
+  * update local-path-provisioner with changes from v0.0.24 to
+    v0.30.0 in usptream yaml, document the changes we apply
+  * use latest kindnetd image build
+  * fix local-path-provisioner build
+  * update local-path-provisioner build to v0.30.0
+  * bump base image
+  * increase golangci-lint timeout 50%
+  * update go mod for tools to 1.23
+  * update generated.sh for gengo changes
+  * upgrade tools
+  * bump base image dependencies
+  * bump go to 1.23.4
+  * add fallback version detection for tarballs < v1.31
+  * update ingress docs
+  * update install docs to v0.25.0
+  * version v0.26.0-alpha
+  * Add note to configuration about HA control plane
+  * cleanup docs references too --loglevel
+  * remove long-deprecated --loglevel flag
+  * clean up kube-root references in docs
+  * drop long-deprecated --kube-root flag
+
+-------------------------------------------------------------------
 Sun Nov 10 01:36:02 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.25.0:

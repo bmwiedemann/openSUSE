@@ -152,4 +152,15 @@
 - Restrict to urllib3 to &lt; 2, due to vcrpy changes.</comment>
     <requestid>1157416</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>5a384016faad3246078acf2505e25fd9</srcmd5>
+    <version>4.14.0</version>
+    <time>1734459769</time>
+    <user>anag+factory</user>
+    <comment>- Add patch support-python-313.patch:
+  * Fall back to mimetypes if imghdr isn't available.
+- Add patch loosen-requests-oauthlib.patch:
+  * We can also work with requests-oauthlib &lt; 3.</comment>
+    <requestid>1231587</requestid>
+  </revision>
 </revisionlist>

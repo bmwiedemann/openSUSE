@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Dec 10 04:42:17 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 0.3.6:
+  * alpha-modifier-v1: implement protocol
+  * build: load tablet-v2 protocol from its new location
+  * docs: clarify input device name description
+  * docs: fix broken repology link
+  * docs: mention key repeat defaults
+  * input: support scroll button lock config
+  * layer-surface: fix clip box coordinates
+  * Output: don't configure uninitialized layer surfaces
+  * Output: workaround wlroots headless output bug
+  * Root: simplify scene tree reparenting
+  * tearing-control: fix security-context related assert
+  * tearing-control-v1: implement
+
+-------------------------------------------------------------------
 Tue Sep 24 10:48:03 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - Completion package requires main package

@@ -5,7 +5,7 @@ index 4ea26b6..df82974 100644
 @@ -76,6 +76,8 @@ NCURSES_SP_NAME(unget_wch) (NCURSES_SP_DCLx const wchar_t wch)
  
      init_mb(state);
-     length = _nc_wcrtomb(0, wch, &state);
+     length = _nc_wcrtomb(NULL, wch, &state);
 +    if (length < MB_CUR_MAX)
 +      length = MB_CUR_MAX;
  

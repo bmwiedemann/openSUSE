@@ -25,4 +25,15 @@
 - Update to version 0.3.0</comment>
     <requestid>1157927</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>a9e3caca8d1ab0825e9cfc5410d452db</srcmd5>
+    <version>0.3.0</version>
+    <time>1734459813</time>
+    <user>anag+factory</user>
+    <comment>- No longer skip building for Python 3.12.
+- Switch to pyproject and autosetup macros.
+- Add patch use-importlib.patch:
+  * Use importlib, rather than imp.</comment>
+    <requestid>1231591</requestid>
+  </revision>
 </revisionlist>

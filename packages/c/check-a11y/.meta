@@ -1,6 +1,0 @@
-<package name="check-a11y" project="openSUSE:Factory">
-  <title>Tool to check whether the accessibility stack is working</title>
-  <description></description>
-  <devel project="X11:Utilities" package="check-a11y"/>
-  <url>https://salsa.debian.org/a11y-team/check-a11y</url>
-</package>

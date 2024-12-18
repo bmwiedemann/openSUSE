@@ -17,7 +17,7 @@
 
 
 Name:           re2c
-Version:        4.0.1
+Version:        4.0.2
 Release:        0
 Summary:        Tool for generating C-based recognizers from regular expressions
 License:        SUSE-Public-Domain

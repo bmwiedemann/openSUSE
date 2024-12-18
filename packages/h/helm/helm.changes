@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 16 21:45:40 UTC 2024 - dmueller@suse.com
+
+- Update to version 3.16.4 (bsc#1234482, CVE-2024-45337):
+  * Bump golang.org/x/crypto from 0.30.0 to 0.31.0
+  * Bump the k8s-io group with 7 updates
+
+-------------------------------------------------------------------
 Thu Nov 14 13:05:38 UTC 2024 - dmueller@suse.com
 
 - Update to version 3.16.3:

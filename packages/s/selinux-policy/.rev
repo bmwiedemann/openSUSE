@@ -1274,4 +1274,14 @@ https://build.opensuse.org/request/show/1178504 </comment>
 </comment>
     <requestid>1230760</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>324894bb0587b232f5e18654b3d343d0</srcmd5>
+    <version>20241216</version>
+    <time>1734459755</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20241216:
+  * Allow vhostmd_t list virtqemud pid dirs (bsc#1230961)
+</comment>
+    <requestid>1231553</requestid>
+  </revision>
 </revisionlist>

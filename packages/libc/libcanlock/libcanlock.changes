@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Dec 14 21:32:31 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.3.1
+  * Bugfix: Add path "$PREFIX/include" to pkg-config files. The
+     former "$PREFIX/include/libcanlock-3" is still present for
+     compatibility to existing code. The "libcanlock-3" directory
+     should be part of preprocessor directives (as documented)
+  * Bugfix: Replace license name "MIT-like" with "ICU". Note that
+     the license terms are unchanged (only the name was fixed).
+  * Add machine readable SPDX license identifiers.
+
+-------------------------------------------------------------------
 Sat May 28 15:56:33 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.3.0

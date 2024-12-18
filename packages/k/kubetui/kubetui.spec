@@ -17,25 +17,26 @@
 
 
 Name:           kubetui
-Version:        1.5.3
+Version:        1.5.4
 Release:        0
 Summary:        A terminal UI for Kubernetes
 License:        MIT
 URL:            https://github.com/sarub0b0/kubetui
 Source0:        kubetui-%{version}.tar.zst
 Source1:        vendor.tar.zst
-Source2:        cargo_config
 BuildRequires:  cargo-packaging
+BuildRequires:  cargo1.82
 BuildRequires:  zstd
 
 %description
 
-Kubetui is a terminal user interface (TUI) tool designed for monitoring Kubernetes resources.
-It provides an easy-to-use interface for developers and operators to access important information about their applications and infrastructure.
+Kubetui is a terminal user interface (TUI) tool designed for monitoring
+Kubernetes resources.  It provides an easy-to-use interface for developers and
+operators to access important information about their applications and
+infrastructure.
 
 %prep
 %autosetup -a1
-install -D -m 0644 %{SOURCE2} .cargo/config
 
 %build
 %{cargo_build}

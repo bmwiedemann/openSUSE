@@ -1,6 +1,0 @@
-# Triggers from kiwi are empty and hidden files
-addFilter("zero-length")
-addFilter("hidden-file-or-dir")
-# files are duplicated on purpose as they could be used on different images
-addFilter("files-duplicate")
-

@@ -21,11 +21,11 @@
 %define libname_event libdevmapper-event1_03
 %define _udevdir %(pkg-config --variable=udevdir udev)
 %define cmdlib liblvm2cmd2_03
-%define lvm2_version              2.03.24
+%define lvm2_version              2.03.29
 # For device_mapper_version, it's package version, see bsc#1199074.
 # Also note there is another dm version on below "sed -ie ... VERSION_DM".
-%define upstream_device_mapper_version  1.02.198
-%define device_mapper_version           %{lvm2_version}_1.02.198
+%define upstream_device_mapper_version  1.02.203
+%define device_mapper_version           %{lvm2_version}_1.02.203
 %define thin_provisioning_version 0.7.0
 %define _supportsanlock 1
 %define dlm_version     4.0.9
@@ -123,6 +123,7 @@ BuildRequires:  pkgconfig(blkid)
 BuildRequires:  pkgconfig(corosync)
 %if %{with lockd}
 BuildRequires:  libdlm-devel >= %{dlm_version}
+BuildRequires:  pkgconfig(systemd)
 %if 0%{_supportsanlock} == 1
 BuildRequires:  sanlock-devel >= %{sanlock_version}
 %endif
@@ -180,9 +181,9 @@ extra_opts="
     --with-default-locking-dir=/run/lock/lvm
     --with-default-pid-dir=/run
     --with-default-run-dir=/run/lvm
-    --with-cluster=internal
     --enable-lvmlockd-dlm
     --enable-lvmlockd-dlmcontrol
+    --enable-sd-notify
 %if 0%{_supportsanlock} == 1
     --enable-lvmlockd-sanlock
 %endif
@@ -258,6 +259,8 @@ sed -ie "s/%{upstream_device_mapper_version}/1.03.01/g" VERSION_DM
   rm %{buildroot}%{_unitdir}/lvm2-lvmpolld.socket
   rm %{buildroot}%{_unitdir}/lvmlockd.service
   rm %{buildroot}%{_unitdir}/lvmlocks.service
+  rm %{buildroot}%{_unitdir}/lvm-devices-import.path
+  rm %{buildroot}%{_unitdir}/lvm-devices-import.service
 
   # compat symlinks in /sbin remove with Leap 43
   %if 0%{?suse_version} < 1550
@@ -735,6 +738,8 @@ LVM commands use lvmlockd to coordinate access to shared storage.
 %{_unitdir}/lvm2-monitor.service
 %{_unitdir}/lvm2-lvmpolld.socket
 %{_unitdir}/lvm2-lvmpolld.service
+%{_unitdir}/lvm-devices-import.path
+%{_unitdir}/lvm-devices-import.service
 %dir %{_libdir}/device-mapper
 %{_libdir}/device-mapper/libdevmapper-event-lvm2*.so
 %{_libdir}/libdevmapper-event-lvm2*.so

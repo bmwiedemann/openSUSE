@@ -33,7 +33,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(krb5-gssapi)
 BuildRequires:  pkgconfig(libgcrypt) >= 1.4.4
 BuildRequires:  pkgconfig(libidn)
-BuildRequires:  pkgconfig(libntlm) >= 0.3.5
 
 %description
 GNU SASL is an implementation of the Simple Authentication and
@@ -59,7 +58,6 @@ Requires:       libgsasl18 = %{version}
 Requires:       pkgconfig(krb5-gssapi)
 Requires:       pkgconfig(libgcrypt)
 Requires:       pkgconfig(libidn)
-Requires:       pkgconfig(libntlm)
 Obsoletes:      libgsasl-devel < %{version}-%{release}
 Provides:       libgsasl-devel = %{version}-%{release}
 
@@ -77,6 +75,7 @@ from clients, and in clients to authenticate against servers.
 %build
 %configure \
 	--disable-static \
+	--disable-ntlm \
 	--with-gssapi-impl=mit \
 #
 %make_build

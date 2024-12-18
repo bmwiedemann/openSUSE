@@ -18,7 +18,6 @@
 
 %{?sle15_python_module_pythons}
 %define packagename sat-search
-%global skip_python312 1
 Name:           python-sat-search
 Version:        0.3.0
 Release:        0
@@ -27,9 +26,13 @@ License:        MIT
 URL:            https://github.com/sat-utils/sat-search
 Source:         https://files.pythonhosted.org/packages/source/s/sat-search/sat-search-%{version}.tar.gz
 Source99:       https://raw.githubusercontent.com/sat-utils/sat-search/master/LICENSE
+# PATCH-FIX-UPSTREAM gh#sat-utils/sat-search#136
+Patch0:         use-importlib.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 2.8.2}
 BuildRequires:  %{python_module sat-stac}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-sat-stac
@@ -44,16 +47,16 @@ and downloading publicly available satellite imagery using a conformant
 API such as sat-api.
 
 %prep
-%setup -q -n %{packagename}-%{version}
+%autosetup -p1 -n %{packagename}-%{version}
 cp %{SOURCE99} .
 
 sed -i -e '/pytest-runner/d' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 for p in %{packagename} ; do
     %python_clone -a %{buildroot}%{_bindir}/$p
 done
@@ -76,6 +79,6 @@ done
 %license LICENSE
 %python_alternative %{_bindir}/%{packagename}
 %{python_sitelib}/satsearch
-%{python_sitelib}/*egg-info
+%{python_sitelib}/sat_search-%{version}.dist-info
 
 %changelog

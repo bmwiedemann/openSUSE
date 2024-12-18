@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 17 05:42:30 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.32.1:
+  * e2e test to prevent future regression
+  * only check volume mounts for updated config
+
+-------------------------------------------------------------------
 Fri Dec 13 10:00:05 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.32.0:

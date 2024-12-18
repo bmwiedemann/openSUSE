@@ -31,6 +31,7 @@ URL:            https://www.sqlite.org/
 Source0:        https://www.sqlite.org/2023/sqlite-src-%{tarversion}.zip
 Source1:        baselibs.conf
 Source2:        https://www.sqlite.org/2023/sqlite-doc-%{docversion}.zip
+Patch0:         sqlite3-6216bfcb.patch
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig

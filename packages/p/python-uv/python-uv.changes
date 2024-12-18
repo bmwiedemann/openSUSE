@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Tue Dec 17 00:47:44 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 0.5.9:
+  * Fork version selection based on requires-python requirements
+  * Patch sysconfig data at install time
+  * Remove -isysroot when patching sysconfig
+  * Introduce a --fork-strategy preference mode
+  * Add support for UV_OFFLINE
+  * Avoid panic!() when current directory does not exist
+  * Avoid reusing interpreter metadata when running under Rosetta
+  * Avoid trailing slash when deserializing from lockfile
+  * Fix bug in terms when collapsing unavailable versions in resolver errors
+  * Fix suggestion to use uv help python on invalid install requests
+  * Skip root when assessing prefix viability
+  * Avoid spurious 'Upgraded tool environment' in uv tool upgrade
+  * Upgrade minimum Rust version to 1.83
+  * Document the --fork-strategy setting
+  * Build backend: Allow underscores in entrypoints
+  * Omit empty resolution markers in lockfile
+  * Add --install-dir to to uv python install and uninstall commands
+  * Add --show-urls and --only-downloads to uv python list
+  * Add uv python list --all-arches
+  * Add uv run --gui-script flag for running Python scripts with pythonw.exe
+  * Allow --gui-script on Unix
+  * Allow download of Python distribution variants optimized for newer x86_64 microarchitectures
+  * Allow execution of pyw files on Unix
+  * Allow users to specify URLs in project.dependencies and tool.uv.sources
+  * Encode mutually-incompatible pairs of markers
+  * Improve the error message when a Python install request is not valid
+  * Preserve directory-level standalone build symlinks
+  * Add support for uv publish --index <name>
+  * Reframe --locked and --frozen as --check operations for uv lock
+  * Rename Python install scratch directory from .cache -> .temp
+  * Enable uv tool uninstall uv on Windows
+  * Improve self-dependency hint to make shadowing clear
+  * Refactor unavailable metadata to shrink the resolver
+  * Show 'depends on itself' for proxy packages
+  * Show a dedicated error for missing subdirectories
+  * Show a dedicated hint for missing git+ prefixes
+  * Eagerly error when parsing pyproject.toml requirements
+  * Use copy-on-write when normalizing paths
+  * Avoid enforcing non-conflicts in uv export
+  * Don't drop comments between items in TOML tables
+  * Don't fail with --no-build when static metadata is available
+  * Don't filter non-patch registry version
+  * Don't read metadata from stale .egg-info files
+  * Enforce correctness of self-dependencies
+  * Fix projects's typo in resolver error messages
+  * Ignore . prefixed directories during managed Python installation discovery
+  * Improve handling of invalid virtual environments during interpreter discovery
+  * Normalize relative paths when --project is specified
+  * Respect self-constraints on recursive extras
+  * Respect user settings for tracing coloring
+  * Retry on tar extraction errors
+  * Add conflict markers to the lock file
+  * De-duplicate resolution markers
+  * Avoid 403 error hint for PyTorch URLs
+  * Avoid treating non-existent --find-links as relative URLs
+  * Omit Windows Store python3.13.exe et al
+  * Replace executables with broken symlinks during uv python install
+  * Fix build failure links
+  * Ignore dynamic version in source dist
+  * Improve build frontend error handling
+  * Un-hide uv build --no-build-logs option
+  * Flag version mismatch between sdist and wheel during uv build
+  * Improve message when updater receipt is for a different uv executable
+  * Add environment variable to disable writing installer metadata files
+  * Add managed downloads for the latest CPython releases: 3.9.21, 3.10.16, 3.11.11, 3.12.8, and 3.13.1
+  * Build backend: Add hint on import with preview disabled
+  * Build backend: Add direct builds to the resolver and installer
+  * Build backend: Add integration test for scripts
+  * Build backend: Add template to uv init
+  * Build backend: Add --list option
+  * Create missing parent directories for output file of uv export / uv pip compile
+  * Fix missing display of non-freethreaded Python 3.13 in python list
+  * Implement Ord and PartialOrd without origin for Requirement
+  * Include more sources to avoid lowest bound warning
+  * Respect build tag priority in uv.lock
+  * Add build-essentials note to build failures doc
+  * Add entry-point for distroless image in GitLab documentation
+  * Add documentation for uv python pin without a REQUEST argument
+  * Add a link to uv python pin reference docs
+
+-------------------------------------------------------------------
 Thu Dec  5 01:30:16 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 0.5.6:

@@ -2061,4 +2061,14 @@ Now one could consider building emacs with gsettings support (both debian and fe
     <comment>- Avoid trouble with unknown X pointer shapes below Wayland (boo#1233795)</comment>
     <requestid>1226819</requestid>
   </revision>
+  <revision rev="196" vrev="11">
+    <srcmd5>67643a06ca203621813ba1e034b226be</srcmd5>
+    <version>29.4</version>
+    <time>1734459744</time>
+    <user>anag+factory</user>
+    <comment>- Add patch emacs-CVE-2024-53920.patch (bsc#1233894, CVE-2024-53920) 
+  * Disable flymake on start and save to avoid to be attacked with
+    elisp code from foreign source.</comment>
+    <requestid>1231394</requestid>
+  </revision>
 </revisionlist>

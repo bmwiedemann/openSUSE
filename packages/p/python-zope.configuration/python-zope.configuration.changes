@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec 17 05:07:47 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 6.0:
+  * Add support for checking environment variables in zcml conditions. Use
+    envvar or not-envvar. not-envvar is true when the variable is not set,
+    is empty, or has one of the usual 'false' values like '0'.
+  * Add support for Python 3.12, 3.13.
+  * Drop support for Python 3.7.
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Sat Mar 16 13:11:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.0.1:

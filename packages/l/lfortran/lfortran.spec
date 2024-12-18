@@ -48,7 +48,7 @@ BuildRequires:  libunwind-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  libzstd-devel
 BuildRequires:  libzstd-devel-static
-BuildRequires:  llvm18-devel
+BuildRequires:  llvm19-devel
 BuildRequires:  python3-devel
 BuildRequires:  rapidjson-devel
 BuildRequires:  re2c
@@ -96,15 +96,20 @@ This package contains static runtime library for %{name}.
 %autosetup -p1
 
 %build
+# WITH_ZSD is just used to fix static linking of llvm
+# not needed on Fedora
+# WASM=OFF due to lfortran/lfortran#3899
 %cmake -DCMAKE_PREFIX_PATH=%{_libdir}/llvm18/ \
        -DWITH_LLVM=ON \
+       -DWITH_ZSTD=OFF \
        -DWITH_RUNTIME_LIBRARY=ON \
        -DWITH_FMT=ON \
        -DWITH_JSON=ON \
        -DWITH_KOKKOS=ON \
-       -DWITH_STACKTRACE=OFF \
+       -DWITH_STACKTRACE=ON \
+       -DWITH_TARGET_WASM=OFF \
        -DWITH_UNWIND=ON \
-       -DWITH_WHEREAMI=OFF \
+       -DWITH_WHEREAMI=ON \
        -DWITH_XEUS=OFF \
        -DWITH_ZLIB=ON \
        ..

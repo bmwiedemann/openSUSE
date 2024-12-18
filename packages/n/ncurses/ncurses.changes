@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Dec  9 07:09:56 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch +20241207
+  + strict compiler-warning fixes for upcoming gcc15
+- Port patches means same fixes as above
+  * FORTIFY_SOURCE_3-fix.patch
+  * ncurses-6.4.dif
+
+-------------------------------------------------------------------
+Tue Dec  3 07:58:36 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20241130
+  + improve configure check for lint program.
+  + adjust options in test-programs to allow for consistent use of -c/-l
+    for command/logging.
+  + modify win_driver.c for MinGW to handle shift-tab and control-tab as
+    back-tab (report by Axel Reinhold)
+
+-------------------------------------------------------------------
 Mon Nov 25 13:12:58 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20241123

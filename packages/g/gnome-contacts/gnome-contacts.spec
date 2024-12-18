@@ -21,7 +21,7 @@
 %define glib_version 2.64
 
 Name:           gnome-contacts
-Version:        47.0
+Version:        47.1.1
 Release:        0
 Summary:        Contacts Manager for GNOME
 License:        GPL-2.0-or-later

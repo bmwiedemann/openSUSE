@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Dec 17 05:42:17 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.16.3:
+  * fix
+  * fix(build) trim ssh flag for legacy docker build
+  * chore(docs): fix ref link
+  * chore: release 2.16.3
+  * chore(channels): bump alpha
+  * fix(deploy): autorollback in converge was always disabled
+  * refactor(build): remove ssh sock from conveyor and add default
+    agent  (#6489)
+  * chore(ci): fix depricated warnings (#6485)
+  * refactor(test): use go task to build dev binary (#6483)
+  * fix(build): fix data races (#6477)
+  * chore(ci): fix workflow_dispatch notification
+  * chore(release): alpha,beta,ea,stable
+
+-------------------------------------------------------------------
 Tue Dec 10 13:10:13 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.16.2:

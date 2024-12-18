@@ -1371,4 +1371,94 @@
 </comment>
     <requestid>1194106</requestid>
   </revision>
+  <revision rev="170" vrev="1">
+    <srcmd5>0667f59d236f986f8432de0c625267cd</srcmd5>
+    <version>2.03.29</version>
+    <time>1734459731</time>
+    <user>anag+factory</user>
+    <comment>- Update lvm2 from LVM2.2.03.24 to LVM2.2.03.29
+  *** WHATS_NEW from 2.03.24 to 2.03.29 ***
+  Version 2.03.29 - 09th December 2024
+  ====================================
+    Configure --enable/disable-sd-notify to control lvmlockd build with sd-notify.
+    Allow test mode when lvmlockd is built without dlm support.
+    Add a note about RAID + integrity synchronization to lvmraid(7) man page.
+    Add a function for running lvconvert --repair on RAID LVs to lvmdbusd.
+    Improve option section of man pages for listing commands ({pv,lv,vg}{s,display}).
+    Fix renaming of raid sub LVs when converting a volume to raid (2.03.28).
+    Fix segfault/VG write error for raid LV lvextend -i|--stripes -I|--stripesize.
+    Revert ignore -i|--stripes, -I|--stripesize for lvextend on raid0 LV (2.03.27).
+  Version 2.03.28 - 04th November 2024
+  ====================================
+    Use radix_tree to lookup for UUID within committed metadata.
+    Use radix_tree to lookup LV list entry within VG struct.
+    Introduce setting config/validate_metadata = full | none.
+    Restore fs resize call for lvresize -r on the same size LV (2.03.17).
+    Correct off-by-one devicesfile backup counting.
+    Replace use of dm_hash with radix_tree for lv names and uuids.
+    Refactor vg_validate with uniq_insert and better use of CPU caches.
+    Add radix_tree_uniq_insert.
+    Update DM cache when taking next VG lock instead of dropping it.
+    Generate json string id only for json reporting.
+    For vgsummary use new API call dm_config_parse_only_section().
+    Use radix_tree for PV names mapping.
+    Split check_lv_segment into separate _in/complete_vg variant.
+    Use find_lv instead of find_lv_in_vg when possible.
+    Do a mirror fixup only when mirrors with logs are imported.
+    Add faster crc32 calculation from zlib code for x86_64.
+    Fall back to direct zeroing if BLKZEROOUT fails during new LV initialization.
+  Version 2.03.27 - 02nd October 2024
+  ===================================
+    Fix swap device size detection using blkid for lvresize/lvreduce/lvextend.
+    Detect GPT partition table and pass partition filter if no partitions defined.
+    Add global/sanlock_align_size option to configure sanlock lease size.
+    Disable mem locking when activation/reserved_stack or reserved_memory is 0.
+    Fix locking issues in lvmlockd leaving thin pool locked.
+    Deprecate vdo settings vdo_write_policy and vdo_write_policy.
+    Lots of typo fixes across lvm2 code base (codespell).
+    Corrected integrity parameter interleave_sectors for DM table line.
+    Ignore -i|--stripes, -I|--stripesize for lvextend on raid0 LV, like raid10.
+    Do not accept duplicate device names for pvcreate.
+  Version 2.03.26 - 23rd August 2024
+  ==================================
+    Fix internal error reported by pvmove on a VG with single PV.
+    Also accept --mknodes --refresh for vgscan.
+    Fix vgmknodes --refresh to wait for udev before checking /dev content.
+    Use log/report_command_log=1 config setting by default for JSON output format.
+    Fix unreleased memory pools on RAID lvextend.
+    Add --integritysettings option to manipulate dm-integrity settings.
+  Version 2.03.25 - 12nd July 2024
+  ================================
+    Utilize more radix_tree instead of dm_hash and btree.
+    Refactor DM uuid caching from device_mapper directory.
+    Enhance checking for DM uuid device.
+    Fix lvm shell command completion on tab key (2.03.24).
+    Avoid lockd_vg call to lvmlockd for local VGs.
+    Allow forced change of locktype from none.
+    Handle OPTIONS defined in /etc/sysconfig/lvmlockd.
+  *** WHATS_NEW_DM from 1.02.198 to 1.02.203 ***
+  Version 1.02.203 - 09th December 2024
+  =====================================
+  Version 1.02.202 - 04th November 2024
+  =====================================
+    Introduce dm_config_parse_only_section to stop parsing after section.
+    For shorter string use on stack buffers when generating sections.
+    Enhance dm_config tokenizer.
+  Version 1.02.201 - 02nd October 2024
+  ====================================
+    Cleanup udev sync semaphore if dm_{udev_create,task_set}_cookie fails.
+    Improve error messages on failed udev cookie create/inc/dec operation.
+  Version 1.02.200 - 23rd August 2024
+  ===================================
+  Version 1.02.199 - 12nd July 2024
+  =================================
+- update lvm2.spec
+  - change lvm2_version to 2.03.29
+  - change upstream_device_mapper_version and device_mapper_version to 1.02.203
+  - include new systemed files lvm-devices-import.path and lvm-devices-import.service in lvm2 package
+  - add build dependency 'pkgconfig(systemd)' and configure option '--enable-sd-notify' for lvmlockd
+  - remove unrecognized (since 2.03.01) configure parameter '--with-cluster' from lvmlockd
+</comment>
+    <requestid>1231309</requestid>
+  </revision>
 </revisionlist>

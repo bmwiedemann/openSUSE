@@ -32,6 +32,7 @@ Source3:        sway-portals.conf
 Source4:        https://github.com/OctopusET/sway-contrib/archive/refs/tags/%{contribver}-contrib.0.tar.gz#/sway-contrib-%{contribver}.tar.gz
 Source5:        sway.rpmlintrc
 Patch1:         https://github.com/swaywm/sway/pull/8470.patch#/libinput-drag-lock-enabled-sticky.patch
+Patch2:         https://github.com/swaywm/sway/pull/8491.patch#/libinput-drag-lock-enabled-sticky-fix-condition.patch
 BuildRequires:  gcc-c++
 #BuildRequires:  libxslt-tools
 BuildRequires:  libevdev-devel

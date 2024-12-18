@@ -2,7 +2,11 @@
 # %?strip_all_nondeterminism
 # or
 # %if 0%?have_strip_nondeterminism > 0
-#    strip_nondeterminism path/to/file.zip
+#    strip-nondeterminism path/to/file.zip
+# %endif
+# or
+# %if 0%?have_strip_nondeterminism > 0
+#    strip-all-nondeterminism /full/path/
 # %endif
 
 %have_strip_nondeterminism 1

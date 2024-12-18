@@ -1,0 +1,57 @@
+From 1cd1f4e51948b20dea9814ba27dfda271f299b99 Mon Sep 17 00:00:00 2001
+From: Christian Clauss <cclauss@me.com>
+Date: Sat, 11 May 2024 07:24:17 +0200
+Subject: [PATCH 1/2] GitHub Actions: Test on Python 3.13 beta
+
+https://www.python.org/downloads/release/python-3130b1/
+
+Raises an error because https://docs.python.org/3/library/imghdr.html was removed from the Standard Library in Python 3.13.
+---
+ .github/workflows/test.yml | 7 ++++---
+ tests/test_api.py          | 4 ++++
+ tweepy/api.py              | 5 ++++-
+ 3 files changed, 12 insertions(+), 4 deletions(-)
+
+Index: tweepy-4.14.0/tweepy/api.py
+===================================================================
+--- tweepy-4.14.0.orig/tweepy/api.py
++++ tweepy-4.14.0/tweepy/api.py
+@@ -4,7 +4,6 @@
+ 
+ import contextlib
+ import functools
+-import imghdr
+ import logging
+ import mimetypes
+ from platform import python_version
+@@ -3382,15 +3381,22 @@ class API:
+         ----------
+         https://developer.twitter.com/en/docs/twitter-api/v1/media/upload-media/overview
+         """
+-        h = None
+-        if file is not None:
+-            location = file.tell()
+-            h = file.read(32)
+-            file.seek(location)
+-        file_type = imghdr.what(filename, h=h)
+-        if file_type is not None:
+-            file_type = 'image/' + file_type
++        file_type = None
++        try:
++            import imghdr
++        except ModuleNotFoundError:
++            # imghdr was removed in Python 3.13
++            pass
+         else:
++            h = None
++            if file is not None:
++                location = file.tell()
++                h = file.read(32)
++                file.seek(location)
++            file_type = imghdr.what(filename, h=h)
++            if file_type is not None:
++                file_type = 'image/' + file_type
++        if file_type is None:
+             file_type = mimetypes.guess_type(filename)[0]
+ 
+         if chunked or file_type.startswith('video/'):

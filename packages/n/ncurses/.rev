@@ -4815,4 +4815,23 @@
   + compiler-warning fixes</comment>
     <requestid>1226567</requestid>
   </revision>
+  <revision rev="278" vrev="51">
+    <srcmd5>e11a1ba08f294bc64583f2e8d68c998d</srcmd5>
+    <version>unknown</version>
+    <time>1734459724</time>
+    <user>anag+factory</user>
+    <comment>- Add ncurses patch +20241207
+  + strict compiler-warning fixes for upcoming gcc15
+- Port patches means same fixes as above
+  * FORTIFY_SOURCE_3-fix.patch
+  * ncurses-6.4.dif
+
+- Add ncurses patch 20241130
+  + improve configure check for lint program.
+  + adjust options in test-programs to allow for consistent use of -c/-l
+    for command/logging.
+  + modify win_driver.c for MinGW to handle shift-tab and control-tab as
+    back-tab (report by Axel Reinhold)</comment>
+    <requestid>1231345</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Dec 15 22:37:21 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.1.1:
+  + Fixed the problem of the "Cancel" button no longer working in
+    certain cases (for example when editing a contact).
+  + The app name is again properly passed on to the system, fixing
+    an issue where it wouldn't show up properly on some systems.
+  + On some systems, taking a picture with the camera didn't work
+    if graphics drivers aren't installed. This is now fixed.
+
+-------------------------------------------------------------------
 Tue Sep 17 20:50:23 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.0:
