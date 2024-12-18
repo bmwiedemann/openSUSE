@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Dec 18 14:35:49 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.4.0
+  * Allow to clean up room history when room was not opened from
+    long time.
+  * Add restore button in administrator server settings dialog.
+  * Improve changing password (show validation info).
+  * Improve register new account (Add reason support).
+  * Implement mute/unmute user.
+  * Add color to the text in the account tab.
+  * Allow to show private installed applications.
+  * Fix editing message.
+  * Show permissions in Rocket.Chat Marketplace.
+  * Fix reconnect server.
+  * Fix single application on Windows/MacOs
+  * Fix select created room/discussion/teams
+  * Fix filter discussion in administrator mode
+  * Fix message video support
+  * Fix highlight text in quoted message
+  * Fix open discussion channel
+  * Allow to show application market settings
+
+-------------------------------------------------------------------
 Tue Nov 26 11:36:25 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 2.3.2

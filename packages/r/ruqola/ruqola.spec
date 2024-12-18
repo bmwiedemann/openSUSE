@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.3.0
-%define qt6_version 6.6.0
+%define kf6_version 6.5.0
+%define qt6_version 6.7.0
 
 %bcond_without released
 Name:           ruqola
-Version:        2.3.2
+Version:        2.4.0
 Release:        0
 Summary:        Rocket.chat Client
 License:        GPL-2.0-or-later
@@ -65,7 +65,7 @@ BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
-BuildRequires:  cmake(Qt6Keychain) >= 0.14.1
+BuildRequires:  cmake(Qt6Keychain) >= 0.14.2
 BuildRequires:  cmake(Qt6MultimediaWidgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
 BuildRequires:  cmake(Qt6NetworkAuth) >= %{qt6_version}
