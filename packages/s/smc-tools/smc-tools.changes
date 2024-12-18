@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec 18 11:43:06 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade smc-tools to v1.8.4 (jsc#PED-3280, jsc#PED-3227)
+  * Changes:
+   - smcd/smcr statistics: add statistics on sndbufs/RMBs usage
+  * Bug fixes:
+    - smc_rnics: Fix smc_rnics showing the wrong physical port
+    - util.h: Fix build with CFLAGS="-g"
+    - smc_run: Fix segfault issue during creating concurrent sockets
+    - Makefile: Make sure to show the right release number 
+
+-------------------------------------------------------------------
 Wed Sep 13 05:29:49 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgrade to vesion 1.8.3 (jsc#PED-5438)

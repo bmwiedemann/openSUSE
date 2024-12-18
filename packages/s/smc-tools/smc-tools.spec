@@ -1,7 +1,7 @@
 #
 # spec file for package smc-tools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           smc-tools
-Version:        1.8.3
+Version:        1.8.4
 Release:        0
 Summary:        Shared Memory Communication via RDMA
 License:        EPL-1.0
