@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Wed Dec 11 15:51:05 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 17.0+git20241211.dad0d37:
+  * #323 move gendigest to 'Utility.js'
+  * move more functions to 'Utilities.js'
+  * #16 #26 Delete bootstrap.css
+  * #16 #26 Delete Bootstrap from signin.css (now connect.css)
+  * Fix the xdg menu bugfix that didn't do anything
+  * workaround chrome obfuscation
+  * Update ancient Material icons
+  * Delete unused icons
+  * Fix issue with desktops using the --use-display flag being shifted 2.25px down
+  * useful debugging function
+
+-------------------------------------------------------------------
+Mon Dec 02 14:54:17 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 17.0+git20241202.6272dea:
+  * Add pointer lock feature (game cursor)
+  * #336 keep modal windows on top
+  * #328 10 seconds to open a TCP connection should be enough
+  * Fix the float menu keyboard icon not changing colors
+
+-------------------------------------------------------------------
+Fri Nov 29 01:30:24 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 17.0+git20241129.932a9c4:
+  * Fix bug where a startmenu of length zero would still visible and have a shadow
+  * Remove .husky and nonexistent node_modules from .gitignore
+  * Add NodeJS-less formatting script and configure the formatter
+  * Set correct button codes for horizontal scrolling
+
+-------------------------------------------------------------------
+Sun Nov 24 18:13:48 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 17.0+git20241123.21e283c:
+  * Add noVNC-style vertical retractable floating menu
+  * 'draw' debugging caused paint errors
+
+-------------------------------------------------------------------
+Tue Nov 12 15:13:30 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 17.0+git20241112.988b150:
+  * changing the SSL toggle changes the 'offscreen' availability
+  * offscreen option must override client default
+  * group offscreen code together
+  * cosmetic
+  * the build scripts now require this file
+
+-------------------------------------------------------------------
+Fri Nov 08 17:00:33 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 17.0+git20241102.8eb10d3:
+  * #327 remove unused file
+
+-------------------------------------------------------------------
+Tue Oct 08 15:02:54 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 17.0+git20241007.ed0b9fc:
+  * #314 handle iv packet prefix
+  * #314 compatibility with xpra 6.2 AES
+  * #314 simpler (and correct) padding calculation
+  * cosmetic
+  * undo some dumb formatting changes
+  * don't send clipboard packets to servers that don't want them
+  * #314 doh: use the header data specified
+  * #314 subtle.encrypt returns an ArrayBuffer, we want a Uint8Array..
+  * #314 use correct Uint8Array size, better error messages
+  * show packet data as hex
+  * derp: remove the padding, as subtle.crypto does automatically
+  * add more (failing) test samples
+  * #314 simplify using 'encryption' namespace
+  * #314 oops, no local 'params' var here
+  * debug logging tweaks
+  * #314 cbc padding is only 128 bits
+  * #314 more thorough roundtrip verification
+  * #314 better key stretch iterations range
+  * #314 error handler was now missing 'proto_flags' var
+  * #314 decrypted packet data must be in a Uint8Array
+  * #314 test with 10000 iterations
+  * check for rencodeplus as early as possible
+  * #314 send key salt as raw bytes
+  * #314 correct PKCS#7 padding is always at least one byte
+  * #314 also verify decryption of pre-defined message
+  * #314 add crypto test page
+  * #314 use crypto.subtle for hmac authentication
+
+-------------------------------------------------------------------
 Wed Sep 25 14:08:04 UTC 2024 - scott.bradnick@suse.com
 
 - Update to version 17.0+git20240925.0aa7703:

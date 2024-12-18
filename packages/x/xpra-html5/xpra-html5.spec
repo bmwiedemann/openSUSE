@@ -22,7 +22,7 @@
 
 Name:           xpra-html5
 Release:        0
-Version:        17.0+git20240925.0aa7703
+Version:        17.0+git20241211.dad0d37
 Summary:        HTML5 client for Xpra
 License:        GPL-2.0+ AND BSD-3-Clause AND LGPL-3.0+ AND MIT
 URL:            https://xpra.org/
@@ -49,14 +49,14 @@ Requires:       python3-pyinotify
 Requires:       python3-pyxdg
 Requires:       python3-websockify
 Requires:       python3-zeroconf
-Provides:       bundled(js-aurora)
-Provides:       bundled(js-bencode)
-Provides:       bundled(js-broadway)
-Provides:       bundled(js-forge)
-Provides:       bundled(js-jquery) = 3.1.1
-Provides:       bundled(js-jquery-ui) = 1.12.1
-Provides:       bundled(js-lz4)
-Provides:       bundled(js-zlib)
+#Provides:       bundled(js-aurora)
+#Provides:       bundled(js-bencode)
+#Provides:       bundled(js-broadway)
+#Provides:       bundled(js-forge)
+#Provides:       bundled(js-jquery) = 3.1.1
+#Provides:       bundled(js-jquery-ui) = 1.12.1
+#Provides:       bundled(js-lz4)
+#Provides:       bundled(js-zlib)
 BuildArch:      noarch
 ExcludeArch:    %ix86
 
