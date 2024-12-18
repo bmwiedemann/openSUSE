@@ -185,4 +185,13 @@
     <comment></comment>
     <requestid>1230718</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>c77a29d7764c2b5c752423a7070d56e6</srcmd5>
+    <version>1.78.3</version>
+    <time>1734552548</time>
+    <user>anag+factory</user>
+    <comment>- add patch fix-CVE-2024-45337.patch, to circumevent a possibility
+  of exploiting the golang-x-crypto security hole. (fix #1234506) (forwarded request 1231943 from rrahl0)</comment>
+    <requestid>1231944</requestid>
+  </revision>
 </revisionlist>

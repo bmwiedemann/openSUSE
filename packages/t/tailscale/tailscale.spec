@@ -26,6 +26,8 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        %{name}d.service
 Source3:        %{name}d.defaults
+# FIX-CVE-2024-45337
+Patch0:         https://github.com/tailscale/tailscale/commit/73128e25230fda8c82696ed0ffef991bce68cecc.patch#/fix-CVE-2024-45337.patch
 Patch1:         build-verbose.patch
 Patch2:         disable-auto-update.patch
 BuildRequires:  bash-completion
