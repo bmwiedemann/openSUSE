@@ -17,7 +17,7 @@
 
 
 Name:           neomutt
-Version:        20241114
+Version:        20241212
 Release:        0
 Summary:        A command line mail reader (or MUA), a fork of Mutt with added features
 License:        GPL-2.0-or-later

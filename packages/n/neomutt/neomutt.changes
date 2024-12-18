@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Wed Dec 18 14:24:10 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 20241212:
+ - Features
+    * show message preview in compose view
+    * add trailing commas when editing addresses
+  - Bug Fixes
+    * expando: fix overflow
+    * Spaces can be wide
+    * Remove BOM from UTF-8 text
+    * Bug with wrong fingerprints in certificate_file
+    * fix postponed sorting assertion failure
+    * fix: save_attachment_open() when overwriting
+    * add text-wrapping to compose message preview pager
+    * edit_headers: cleanup temporary file on error
+    * expando: fix crash on empty %[] date
+    * expando: fix container formatting
+    * browser: fix 'tag-' display
+    * query: fix memory leak
+    * fix more arrow_cursor + search
+  - Changed Config
+    * Config Renames:
+        $pgp_sort_keys -> $pgp_key_sort
+        $sidebar_sort_method -> $sidebar_sort
+        $sort_alias -> $alias_sort
+        $sort_browser -> $browser_sort
+    * Changed Defaults:
+        set alias_format = "%3i %f%t %-15a %-56A | %C%> %Y"
+        set query_format = "%3i %t %-25N %-25E | %C%> %Y"
+  - Translations
+    * 100% German
+    * 100% Lithuanian
+    * 100% Serbian
+    * 100% Turkish
+    * 89% French
+    * 39% Chinese (Traditional)
+  - Docs
+    * alias tags
+  - Build
+    * only use struct tm.tm_gmtoff if available
+  - Code
+    * refactor memory allocation
+    * remove unused fields from ComposeSharedData
+    * refactor 'sort' constants
+    * add mutt_window_swap()
+    * unify Menu data
+    * move config to libraries
+    * unify Alias/Query
+    * expando factor out callbacks
+    * refactor simple_dialog_new()
+    * test: add TEST_CHECK_NUM_EQ()
+    * fopen: tidy read-only
+
+-------------------------------------------------------------------
 Fri Nov 15 15:53:09 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 20241114:
