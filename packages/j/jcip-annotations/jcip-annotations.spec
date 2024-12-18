@@ -17,51 +17,50 @@
 
 
 Name:           jcip-annotations
-Version:        1.0
+Version:        1.0.1
 Release:        0
-Summary:        Java Concurrency in Practice
-License:        CC-BY-2.5
+Summary:        A clean room implementation of the JCIP Annotations
+License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://www.jcip.net/
-Source0:        http://www.jcip.net/jcip-annotations-src.jar
-Source1:        https://repo1.maven.org/maven2/net/jcip/jcip-annotations/1.0/jcip-annotations-1.0.pom
+URL:            https://github.com/stephenc/jcip-annotations
+Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
-BuildRequires:  unzip
 BuildArch:      noarch
 
 %description
-Class, field, and method level annotations for describing thread-safety
-policies.
+A clean room implementation of the JCIP Annotations based entirely on the
+specification provided by the javadocs.
 
 %package javadoc
-Summary:        Javadoc for %{name}
+Summary:        API documentation for %{name}
 Group:          Development/Libraries/Java
 
 %description javadoc
-Class, field, and method level annotations for describing thread-safety
-policies.
+A clean room implementation of the JCIP Annotations based entirely on the
+specification provided by the javadocs.
+
+This package contains the API documentation.
 
 %prep
-%setup -q -c
-mkdir -p target/site/apidocs/
-mkdir -p target/classes/
-mkdir -p src/main/java/
-mv net src/main/java
+%setup -q
+
+# Remove unnecessary dependency on parent POM
+%pom_remove_parent
+
+# Remove unnecessary dependency on JUnit
+%pom_remove_dep junit:junit
 
 %build
-javac -source 1.8 -target 1.8 -d target/classes $(find src/main/java -name "*.java")
-javadoc -source 1.8 -notimestamp -d target/site/apidocs -sourcepath src/main/java net.jcip.annotations
-for f in $(find aQute/ -type f -not -name "*.class"); do
-    cp $f target/classes/$f
-done
+javac -source 1.8 -target 1.8 -encoding utf-8 -d target/classes $(find src/main/java -name "*.java")
+javadoc -source 1.8 -notimestamp -encoding utf-8 -d target/site/apidocs -sourcepath src/main/java net.jcip.annotations
 pushd target/classes
 jar \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
     --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
 %endif
-    --create --manifest=../../META-INF/MANIFEST.MF --file=../%{name}-%{version}.jar *
+    --create --file=../%{name}-%{version}.jar *
 popd
 
 %install
@@ -72,8 +71,8 @@ install -pm 0644 target/%{name}-%{version}.jar \
 
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}
-install -pm 0644 %{SOURCE1} %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
-%add_maven_depmap JPP-%{name}.pom %{name}.jar -a "com.github.stephenc.jcip:%{name}"
+install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
+%add_maven_depmap JPP-%{name}.pom %{name}.jar -a "net.jcip:%{name}"
 
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
@@ -81,8 +80,11 @@ cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
 %files -f .mfiles
+%license LICENSE.txt
+%doc README.md
 
 %files javadoc
 %{_javadocdir}/%{name}
+%license LICENSE.txt
 
 %changelog

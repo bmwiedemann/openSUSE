@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 18 16:09:47 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Switch to clean room implementation, as original implementation
+  uses CC-BY-2.5 licence. The clean room implementation is under
+  Apache-2.0
+
+-------------------------------------------------------------------
 Sun Dec  8 20:13:14 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - The pom file is simple, so it does not need to be installed
