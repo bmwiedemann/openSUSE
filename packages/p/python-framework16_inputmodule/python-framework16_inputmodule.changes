@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Wed Dec  4 12:38:51 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
+
+- enable Python3.13 build again
+- drop extra LICENSE file as it is included in the github tarball
+
+-------------------------------------------------------------------
+Mon Dec  2 15:44:58 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
+
+- fix dependency on renamed package framework-inputmodule-control
+
+-------------------------------------------------------------------
+Mon Dec  2 10:39:55 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
+
+- switch version to git revision to include important fixes
+  * Use tkinter build GUI instead of PySimpleGUI
+  * docs: Add details about developing python
+- drop replace-pysimplegui.patch, merged upstream
+
+-------------------------------------------------------------------
+Tue Nov 19 15:24:41 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
+
+- add sle15_python_module_pythons macro
+
+-------------------------------------------------------------------
+Tue Nov 19 15:16:09 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
+
+- temporarily disable Python3.13 until modules are stable
+
+-------------------------------------------------------------------
+Tue Nov 19 12:03:40 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
+
+- Add replace-pysimplegui.patch to replace PySimpleGUI dependency with tkinter
+  * https://github.com/FrameworkComputer/inputmodule-rs/pull/130
+
+-------------------------------------------------------------------
+Mon Nov 18 16:01:44 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
+
+- initial version 0.1.1
