@@ -23,6 +23,8 @@ Summary:        PDF Generator Using HTML and CSS
 License:        Apache-2.0
 URL:            https://github.com/xhtml2pdf/xhtml2pdf
 Source:         https://github.com/xhtml2pdf/xhtml2pdf/archive/refs/tags/v%{version}.tar.gz#/xhtml2pdf-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/xhtml2pdf/xhtml2pdf/pull/784 fix reDOS CVE in getColor function
+Patch0:         CVE-2024-25885.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
