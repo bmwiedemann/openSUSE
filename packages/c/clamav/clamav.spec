@@ -2,6 +2,7 @@
 # spec file for package clamav
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,14 +26,14 @@
 %if 0%{?suse_version} <= 1500
 %define vgcc 13
 %if 0%{?sle_version} < 150400
-%define vrust 1.69
+%define vrust 1.78
 %define vcmake 3
 %endif
 %endif
 %global confdir %_prefix%_sysconfdir
 
 Name:           clamav
-Version:        1.3.1
+Version:        1.4.1
 Release:        0
 Summary:        Antivirus Toolkit
 License:        GPL-2.0-only
@@ -55,15 +56,12 @@ Patch5:         clamav-obsolete-config.patch
 Patch12:        clamav-fips.patch
 Patch14:        clamav-document-maxsize.patch
 Patch15:        clamav-format.patch
-Patch16:        https://github.com/Cisco-Talos/clamav/pull/1305.patch
 ExcludeArch:    %{arml}
 
 BuildRequires:  cargo%{?vrust}
 BuildRequires:  cmake%{?vcmake}
 BuildRequires:  gcc%{?vgcc}
 BuildRequires:  gcc%{?vgcc}-c++
-# temp for Patch16
-BuildRequires:  git-core
 BuildRequires:  libbz2-devel
 BuildRequires:  libjson-c-devel
 BuildRequires:  libopenssl-devel >= 1.0.2
@@ -187,7 +185,6 @@ that want to make use of libclamav.
 %patch -P 12
 %patch -P 14
 %patch -P 15
-git apply %{PATCH16}
 chmod -x docs/html/images/flamegraph.svg
 
 %build
@@ -209,6 +206,7 @@ chmod -x docs/html/images/flamegraph.svg
     -DENABLE_CLAMONACC=ON \
     -DENABLE_MILTER=ON \
     -DSYSTEMD_UNIT_DIR=%{_unitdir} \
+    -DPCRE2_LIBRARY=%{_libdir}/libpcre2-8.so \
 %if %{without clammspack}
     -DENABLE_EXTERNAL_MSPACK=ON
 %endif

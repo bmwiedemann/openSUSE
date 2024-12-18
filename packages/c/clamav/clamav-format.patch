@@ -64,7 +64,7 @@
      }
 --- libclamav/pe.c.orig
 +++ libclamav/pe.c
-@@ -5185,12 +5185,12 @@ cl_error_t cli_peheader(fmap_t *map, str
+@@ -5117,12 +5117,12 @@ cl_error_t cli_peheader(fmap_t *map, str
  
                  /* If a section is truncated, adjust its size value */
                  if (!CLI_ISCONTAINED_0_TO(fsize, section->raw, section->rsz)) {
@@ -81,7 +81,7 @@
              }
 --- libfreshclam/libfreshclam_internal.c.orig
 +++ libfreshclam/libfreshclam_internal.c
-@@ -226,7 +226,7 @@ fc_error_t load_freshclam_dat(void)
+@@ -229,7 +229,7 @@ fc_error_t load_freshclam_dat(void)
              if (-1 == lseek(handle, strlen(MIRRORS_DAT_MAGIC), SEEK_SET)) {
                  char error_message[260];
                  cli_strerror(errno, error_message, 260);
@@ -92,7 +92,7 @@
  
 --- unit_tests/check_clamav.c.orig
 +++ unit_tests/check_clamav.c
-@@ -1939,7 +1939,7 @@ void diff_file_mem(int fd, const char *r
+@@ -1925,7 +1925,7 @@ void diff_file_mem(int fd, const char *r
  
      ck_assert_msg(!!buf, "unable to malloc buffer: %zu", len);
      p = read(fd, buf, len);
@@ -101,7 +101,7 @@
      p = 0;
      while (len > 0) {
          c1 = ref[p];
-@@ -1950,10 +1950,10 @@ void diff_file_mem(int fd, const char *r
+@@ -1936,10 +1936,10 @@ void diff_file_mem(int fd, const char *r
          len--;
      }
      if (len > 0)
@@ -114,7 +114,7 @@
      close(fd);
  }
  
-@@ -1969,7 +1969,7 @@ void diff_files(int fd, int ref_fd)
+@@ -1955,7 +1955,7 @@ void diff_files(int fd, int ref_fd)
  
      ck_assert_msg(lseek(ref_fd, 0, SEEK_SET) == 0, "lseek failed");
      nread = read(ref_fd, ref, siz);
@@ -154,7 +154,7 @@
      rc = memcmp(p, expect, expect_len);
 --- libclamav/others_common.c.orig
 +++ libclamav/others_common.c
-@@ -312,7 +312,7 @@ char *cli_strdup(const char *s)
+@@ -362,7 +362,7 @@ char *cli_safer_strdup(const char *s)
      }
  
      alloc = strdup(s);
@@ -162,4 +162,4 @@
 +    
      if (!alloc) {
          perror("strdup_problem");
-         cli_errmsg("cli_strdup(): Can't allocate memory (%u bytes).\n", (unsigned int)strlen(s));
+         cli_errmsg("cli_safer_strdup(): Can't allocate memory (%u bytes).\n", (unsigned int)strlen(s));
