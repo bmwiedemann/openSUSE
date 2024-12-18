@@ -640,4 +640,25 @@
 </comment>
     <requestid>1227810</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>162fa43005c23fa000eed003dd0e6259</srcmd5>
+    <version>2.56.0</version>
+    <time>1734549057</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.56.0:
+  - Features
+    * feat: Use textconv with external diff commands
+    * feat: Add interactive config variable
+    * feat: Add initial policy on LLM-generated contributions
+    * feat: Warn about future removal of insecure hashes
+    * feat: Add .chezmoi.destDir template variable
+  - Fixes
+    * fix: Replace Expand-Archive with System.IO.Compression.ZipFile
+    * fix: More reliable arch detection in install.ps1
+    * fix: YAML parsing error by escaping | in title
+  - Documentation updates
+    * docs: Describe how to use tools installed with Flatpak
+</comment>
+    <requestid>1231909</requestid>
+  </revision>
 </revisionlist>

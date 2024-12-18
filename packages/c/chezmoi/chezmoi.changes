@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Dec 18 14:07:15 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.56.0:
+  - Features
+    * feat: Use textconv with external diff commands
+    * feat: Add interactive config variable
+    * feat: Add initial policy on LLM-generated contributions
+    * feat: Warn about future removal of insecure hashes
+    * feat: Add .chezmoi.destDir template variable
+  - Fixes
+    * fix: Replace Expand-Archive with System.IO.Compression.ZipFile
+    * fix: More reliable arch detection in install.ps1
+    * fix: YAML parsing error by escaping | in title
+  - Documentation updates
+    * docs: Describe how to use tools installed with Flatpak
+
+-------------------------------------------------------------------
 Mon Dec  2 16:21:47 UTC 2024 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.55.0:
