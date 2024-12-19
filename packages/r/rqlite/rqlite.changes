@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 19 14:07:39 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 8.36.1:
+  * Support executes as raw POST bodies
+  * Improved logging
+  * Minor DB-layer improvements
+
+-------------------------------------------------------------------
 Sun Nov 17 12:05:09 UTC 2024 - andreas.stieger@gmx.de
 
 - initiial version
