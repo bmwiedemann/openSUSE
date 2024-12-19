@@ -24,8 +24,8 @@
 # will work properly as expected.
 %bcond_with librubberband
 Name:           hydrogen
-Version:        1.2.3
-%define soversion 1_2_3
+Version:        1.2.4
+%define soversion 1_2_4
 Release:        0
 Summary:        A Real-Time Drum Machine and Sequencer
 License:        GPL-2.0-or-later
