@@ -39,4 +39,15 @@
     <comment></comment>
     <requestid>1166661</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>122c814a319db30926ddc36f99df855b</srcmd5>
+    <version>0.19.1</version>
+    <time>1734640913</time>
+    <user>anag+factory</user>
+    <comment>- version update to 0.19.1
+  * Remove legacy code that is unused because of minimum requirements.
+  * Cleanup HTML in rendered forms.
+  * Documentation cleanups and improvements. (forwarded request 1230113 from pgajdos)</comment>
+    <requestid>1232178</requestid>
+  </revision>
 </revisionlist>

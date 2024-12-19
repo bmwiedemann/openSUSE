@@ -18,19 +18,20 @@
 
 %define upstream_name mod_auth_mellon
 Name:           apache2-mod_auth_mellon
-Version:        0.19.0
+Version:        0.19.1
 Release:        0
 Summary:        A SAML 2.0 authentication module for the Apache Server
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Servers
 URL:            https://github.com/latchset/%{upstream_name}
-Source0:        https://github.com/latchset/%{upstream_name}/releases/download/v%{version}/%{upstream_name}-%{version}.tar.gz
+Source0:        https://github.com/latchset/%{upstream_name}/archive/refs/tags/v%{version}.tar.gz#/%{upstream_name}-%{version}.tar.gz
 Source1:        %{upstream_name}.conf
 Source2:        %{name}.conf
 Source3:        README.diagnostics
 Patch0:         mod_auth_mellon-0.16.0-env-script-interpreter.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel
+BuildRequires:  automake
 BuildRequires:  curl-devel
 BuildRequires:  gcc
 BuildRequires:  glib2-devel
@@ -72,6 +73,7 @@ in the doc directory for instructions on using the diagnostics build.
 %autosetup -n %{upstream_name}-%{version}
 
 %build
+autoreconf -fi
 export APXS=%{_httpd_apxs}
 %configure --enable-diagnostics
 %make_build clean
