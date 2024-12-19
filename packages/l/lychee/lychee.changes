@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Dec 19 13:29:15 UTC 2024 - alessio.biancalana@suse.com
+
+- Update to version 0.18.0~0:
+  * chore: release v0.18.0 (#1554)
+  * Fix nightly docker image (#1590)
+  * Bump the dependencies group across 1 directory with 11 updates (#1589)
+  * Introduce --root-dir (#1576)
+  * Allow Docker pushes on release branches (#1568)
+  * Fix retries (#1573)
+  * Pass along --max-retries config option (#1572)
+  * Bump the dependencies group with 4 updates (#1571)
+  * Bump the dependencies group with 4 updates (#1570)
+  * Bump the dependencies group with 4 updates (#1566)
+  * Rename `fail_map` to `error_map` for improved clarity in response statistics (#1560)
+  * Add quirks support for `youtube-nocookie.com` and youtube embed URLs (#1563)
+  * Update all Docker images to Debian Bookworm (#1558)
+  * Support excluded paths in `--dump-inputs` (#1556)
+  * Improve robustness of cache integration test (#1557)
+  * Support underscores in Markdown URLs (#1555)
+  * Bump the dependencies group across 1 directory with 7 updates (#1552)
+  * Fix: Bring back error output for links (#1553)
+
+-------------------------------------------------------------------
 Sat Nov 09 10:10:11 UTC 2024 - alessio.biancalana@suse.com
 
 - Update to version 0.17.0~0:
