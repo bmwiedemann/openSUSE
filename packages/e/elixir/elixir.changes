@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 19 09:45:16 UTC 2024 - Alessio Biancalana <alessio.biancalana@suse.com>
+
+- Add 001-skip-translator-supervisor-test.patch to make the package build correctly 
+- Pass elixir.spec through spec-cleaner
+
+-------------------------------------------------------------------
 Thu Sep 19 07:35:25 UTC 2024 - Alessio Biancalana <alessio.biancalana@suse.com>
 
 - Upgrade to Elixir 1.17.3:

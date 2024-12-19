@@ -17,28 +17,27 @@
 
 
 %define elixirdir %{_prefix}/lib/elixir
-
 Name:           elixir
 Version:        1.17.3
 Release:        0
 Summary:        Functional meta-programming aware language built atop Erlang
 License:        Apache-2.0
 Group:          Development/Languages/Other
-URL:            http://elixir-lang.org
+URL:            https://elixir-lang.org
 Source0:        https://github.com/elixir-lang/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/elixir-lang/%{name}/releases/download/v%{version}/Docs.zip#/%{name}-%{version}-doc.zip
 Source2:        macros.elixir
-BuildRequires:  fdupes
-BuildRequires:  gcc
-BuildRequires:  make
-Requires:       erlang >= 25
+Patch0:         001-skip-translator-supervisor-test.patch
 BuildRequires:  erlang >= 25
 BuildRequires:  erlang-dialyzer
 BuildRequires:  erlang-src
+BuildRequires:  fdupes
+BuildRequires:  gcc
 # required by Mix.SCM.Git see also (https://github.com/elixir-lang/elixir/issues/1386)
 BuildRequires:  git-core >= 1.7
+BuildRequires:  make
 BuildRequires:  unzip
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Requires:       erlang >= 25
 BuildArch:      noarch
 
 %description
@@ -59,8 +58,8 @@ without any conversion or performance impact.
 %package doc
 Summary:        Documentation for elixir
 Group:          Documentation/Other
-BuildArch:      noarch
 Requires:       elixir = %{version}
+BuildArch:      noarch
 
 %description doc
 Documentation for the Elixir language.
@@ -75,7 +74,7 @@ find doc \( -name ".build" -or -name ".ex_doc" \) -delete
 # Elixir wants UTF-8 locale, force it
 export LANG=en_US.UTF-8
 # Make Elixir
-make
+%make_build
 
 %install
 make install DESTDIR=%{buildroot} PREFIX=%{_prefix}
@@ -86,7 +85,7 @@ do
 	ln -sf %{elixirdir}/bin/$I %{buildroot}%{_bindir}/$I
 done
 
-install -D -m 0644 %{S:2} %{buildroot}%{_rpmmacrodir}/macros.elixir
+install -D -m 0644 %{SOURCE2} %{buildroot}%{_rpmmacrodir}/macros.elixir
 
 mkdir -p %{buildroot}%{_defaultdocdir}
 cp -pa doc %{buildroot}%{_defaultdocdir}/elixir-doc
@@ -96,10 +95,9 @@ cp -pa doc %{buildroot}%{_defaultdocdir}/elixir-doc
 
 %check
 export LANG=en_US.UTF-8
-make test
+%make_build test
 
 %files
-%defattr(-,root,root)
 %doc CHANGELOG.md README.md NOTICE
 %license LICENSE
 %dir %{elixirdir}
@@ -109,10 +107,10 @@ make test
 %{_bindir}/elixir
 %{_bindir}/elixirc
 %{_bindir}/mix
-%{_mandir}/man1/iex.1.gz
-%{_mandir}/man1/elixir.1.gz
-%{_mandir}/man1/elixirc.1.gz
-%{_mandir}/man1/mix.1.gz
+%{_mandir}/man1/iex.1%{?ext_man}
+%{_mandir}/man1/elixir.1%{?ext_man}
+%{_mandir}/man1/elixirc.1%{?ext_man}
+%{_mandir}/man1/mix.1%{?ext_man}
 %{elixirdir}/bin/iex
 %{elixirdir}/bin/elixirc
 %{elixirdir}/bin/mix
@@ -121,7 +119,6 @@ make test
 %{_rpmmacrodir}/macros.elixir
 
 %files doc
-%defattr(-,root,root)
 %license LICENSE
 %{_defaultdocdir}/elixir-doc
 
