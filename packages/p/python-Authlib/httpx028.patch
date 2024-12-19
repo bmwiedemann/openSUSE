@@ -1,0 +1,106 @@
+Index: authlib-1.3.2/authlib/integrations/httpx_client/oauth2_client.py
+===================================================================
+--- authlib-1.3.2.orig/authlib/integrations/httpx_client/oauth2_client.py
++++ authlib-1.3.2/authlib/integrations/httpx_client/oauth2_client.py
+@@ -62,6 +62,11 @@ class AsyncOAuth2Client(_OAuth2Client, h
+ 
+         # extract httpx.Client kwargs
+         client_kwargs = self._extract_session_request_params(kwargs)
++        # app keyword was dropped!
++        app_value = client_kwargs.pop('app', None)
++        if app_value is not None:
++            client_kwargs['transport'] = httpx.ASGITransport(app=app_value)
++
+         httpx.AsyncClient.__init__(self, **client_kwargs)
+ 
+         # We use a Lock to synchronize coroutines to prevent
+@@ -177,6 +182,11 @@ class OAuth2Client(_OAuth2Client, httpx.
+ 
+         # extract httpx.Client kwargs
+         client_kwargs = self._extract_session_request_params(kwargs)
++        # app keyword was dropped!
++        app_value = client_kwargs.pop('app', None)
++        if app_value is not None:
++            client_kwargs['transport'] = httpx.WSGITransport(app=app_value)
++
+         httpx.Client.__init__(self, **client_kwargs)
+ 
+         _OAuth2Client.__init__(
+Index: authlib-1.3.2/tests/clients/test_httpx/test_async_oauth2_client.py
+===================================================================
+--- authlib-1.3.2.orig/tests/clients/test_httpx/test_async_oauth2_client.py
++++ authlib-1.3.2/tests/clients/test_httpx/test_async_oauth2_client.py
+@@ -4,7 +4,7 @@ import pytest
+ from unittest import mock
+ from copy import deepcopy
+ 
+-from httpx import AsyncClient
++from httpx import AsyncClient, ASGITransport
+ 
+ from authlib.common.security import generate_token
+ from authlib.common.urls import url_encode
+@@ -96,7 +96,7 @@ async def test_add_token_to_streaming_re
+         token_placement="header",
+         app=AsyncMockDispatch({'a': 'a'}, assert_func=assert_token_in_header)
+     ),
+-    AsyncClient(app=AsyncMockDispatch({'a': 'a'}))
++    AsyncClient(transport=ASGITransport(app=AsyncMockDispatch({'a': 'a'})))
+ ])
+ async def test_httpx_client_stream_match(client):
+     async with client as client_entered:
+Index: authlib-1.3.2/authlib/integrations/httpx_client/oauth1_client.py
+===================================================================
+--- authlib-1.3.2.orig/authlib/integrations/httpx_client/oauth1_client.py
++++ authlib-1.3.2/authlib/integrations/httpx_client/oauth1_client.py
+@@ -34,6 +34,11 @@ class AsyncOAuth1Client(_OAuth1Client, h
+                  force_include_body=False, **kwargs):
+ 
+         _client_kwargs = extract_client_kwargs(kwargs)
++        # app keyword was dropped!
++        app_value = _client_kwargs.pop('app', None)
++        if app_value is not None:
++            _client_kwargs['transport'] = httpx.ASGITransport(app=app_value)
++
+         httpx.AsyncClient.__init__(self, **_client_kwargs)
+ 
+         _OAuth1Client.__init__(
+@@ -87,6 +92,11 @@ class OAuth1Client(_OAuth1Client, httpx.
+                  force_include_body=False, **kwargs):
+ 
+         _client_kwargs = extract_client_kwargs(kwargs)
++        # app keyword was dropped!
++        app_value = _client_kwargs.pop('app', None)
++        if app_value is not None:
++            _client_kwargs['transport'] = httpx.WSGITransport(app=app_value)
++
+         httpx.Client.__init__(self, **_client_kwargs)
+ 
+         _OAuth1Client.__init__(
+Index: authlib-1.3.2/authlib/integrations/httpx_client/assertion_client.py
+===================================================================
+--- authlib-1.3.2.orig/authlib/integrations/httpx_client/assertion_client.py
++++ authlib-1.3.2/authlib/integrations/httpx_client/assertion_client.py
+@@ -22,6 +22,11 @@ class AsyncAssertionClient(_AssertionCli
+                  claims=None, token_placement='header', scope=None, **kwargs):
+ 
+         client_kwargs = extract_client_kwargs(kwargs)
++        # app keyword was dropped!
++        app_value = client_kwargs.pop('app', None)
++        if app_value is not None:
++            client_kwargs['transport'] = httpx.ASGITransport(app=app_value)
++
+         httpx.AsyncClient.__init__(self, **client_kwargs)
+ 
+         _AssertionClient.__init__(
+@@ -61,6 +66,11 @@ class AssertionClient(_AssertionClient,
+                  claims=None, token_placement='header', scope=None, **kwargs):
+ 
+         client_kwargs = extract_client_kwargs(kwargs)
++        # app keyword was dropped!
++        app_value = client_kwargs.pop('app', None)
++        if app_value is not None:
++            client_kwargs['transport'] = httpx.WSGITransport(app=app_value)
++
+         httpx.Client.__init__(self, **client_kwargs)
+ 
+         _AssertionClient.__init__(

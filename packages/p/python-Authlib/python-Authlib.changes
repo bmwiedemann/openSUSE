@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 19 13:57:51 UTC 2024 - Markéta Machová <mmachova@suse.com>
+
+- Add httpx028.patch to add compatibility with new httpx
+
+-------------------------------------------------------------------
 Thu Oct 31 09:13:27 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add py313-tests.patch

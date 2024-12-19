@@ -26,6 +26,8 @@ License:        BSD-3-Clause
 URL:            https://authlib.org/
 Source:         https://github.com/lepture/%{modname}/archive/refs/tags/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
 Patch1:         https://github.com/lepture/authlib/commit/d282c1afad676cf8ed3670e60fd43516fc9615de.patch#/py313-tests.patch
+# PATCH-FIX-UPSTREAM https://github.com/lepture/authlib/pull/695 Support httpx 0.28
+Patch2:         httpx028.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
