@@ -26,18 +26,18 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-hatch%{psuffix}
-Version:        1.12.0
+Version:        1.14.0
 Release:        0
 Summary:        Modern, extensible Python project management
 License:        MIT
 URL:            https://hatch.pypa.io/latest/
 # SourceRepository: https://github.com/pypa/hatch
 Source:         https://github.com/pypa/hatch/archive/refs/tags/hatch-v%{version}.tar.gz
-# PATCH-FIX-OPENSUSE fix-tests.patch
-Patch0:         fix-tests.patch
+# PATCH-FIX-UPSTREAM fix-with-latest-hatchling.patch gh#f8a2eaa gh#28f233c gh#fc25690
+Patch0:         fix-with-latest-hatchling.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatch-vcs >= 0.3}
-BuildRequires:  %{python_module hatchling >= 1.19}
+BuildRequires:  %{python_module hatchling >= 1.26.3}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -126,6 +126,7 @@ donttest="$donttest or test_context_formatting"
 donttest+=" or test_uv_env"
 # Fails with python 3.12
 donttest+=" or test_pyenv or test_no_open or test_open"
+# Fails with hatchling >= 1.26
 
 %pytest -v -k "not ($donttest)"
 %endif

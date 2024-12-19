@@ -1,0 +1,924 @@
+From f8a2eaa2e0ce80a931837539d8f565ceeab75961 Mon Sep 17 00:00:00 2001
+From: Ofek Lev <ofekmeister@gmail.com>
+Date: Sat, 9 Nov 2024 11:35:16 -0500
+Subject: [PATCH] Bump `packaging` to 24.2 (#1788)
+
+---
+ hatch.toml                                  |   4 -
+ pyproject.toml                              |   2 +-
+ src/hatch/template/default.py               |   2 +-
+ tests/backend/licenses/__init__.py          |   0
+ tests/backend/licenses/test_parse.py        |  56 --
+ tests/backend/licenses/test_supported.py    |  31 -
+ tests/backend/metadata/test_core.py         |   2 +-
+ 15 files changed, 11 insertions(+), 974 deletions(-)
+ delete mode 100644 tests/backend/licenses/__init__.py
+ delete mode 100644 tests/backend/licenses/test_parse.py
+ delete mode 100644 tests/backend/licenses/test_supported.py
+
+Index: hatch-hatch-v1.14.0/hatch.toml
+===================================================================
+--- hatch-hatch-v1.14.0.orig/hatch.toml
++++ hatch-hatch-v1.14.0/hatch.toml
+@@ -114,11 +114,7 @@ update-hatch = [
+   "update-distributions",
+   "update-ruff",
+ ]
+-update-hatchling = [
+-  "update-licenses",
+-]
+ update-distributions = "python scripts/update_distributions.py"
+-update-licenses = "python backend/scripts/update_licenses.py"
+ update-ruff = [
+   "{env:HATCH_UV} pip install --upgrade ruff",
+   "python scripts/update_ruff.py",
+Index: hatch-hatch-v1.14.0/pyproject.toml
+===================================================================
+--- hatch-hatch-v1.14.0.orig/pyproject.toml
++++ hatch-hatch-v1.14.0/pyproject.toml
+@@ -44,7 +44,7 @@ dependencies = [
+   "httpx>=0.22.0",
+   "hyperlink>=21.0.0",
+   "keyring>=23.5.0",
+-  "packaging>=23.2",
++  "packaging>=24.2",
+   "pexpect~=4.8",
+   "platformdirs>=2.5.0",
+   "rich>=11.2.0",
+Index: hatch-hatch-v1.14.0/src/hatch/template/default.py
+===================================================================
+--- hatch-hatch-v1.14.0.orig/src/hatch/template/default.py
++++ hatch-hatch-v1.14.0/src/hatch/template/default.py
+@@ -38,7 +38,7 @@ class DefaultTemplate(TemplateInterface)
+             license_file_name = f'{license_id}.txt'
+             cached_license_path = cached_licenses_dir / license_file_name
+             if not cached_license_path.is_file():
+-                from hatchling.licenses.supported import VERSION
++                from packaging.licenses._spdx import VERSION  # noqa: PLC2701
+ 
+                 url = f'https://raw.githubusercontent.com/spdx/license-list-data/v{VERSION}/text/{license_file_name}'
+                 for _ in range(5):
+Index: hatch-hatch-v1.14.0/tests/backend/licenses/test_parse.py
+===================================================================
+--- hatch-hatch-v1.14.0.orig/tests/backend/licenses/test_parse.py
++++ /dev/null
+@@ -1,56 +0,0 @@
+-import re
+-
+-import pytest
+-
+-from hatchling.licenses.parse import normalize_license_expression
+-
+-
+-@pytest.mark.parametrize(
+-    'expression',
+-    [
+-        'or',
+-        'and',
+-        'with',
+-        'mit or',
+-        'mit and',
+-        'mit with',
+-        'or mit',
+-        'and mit',
+-        'with mit',
+-        '(mit',
+-        'mit)',
+-        'mit or or apache-2.0',
+-        'mit or apache-2.0 (bsd-3-clause and MPL-2.0)',
+-    ],
+-)
+-def test_syntax_errors(expression):
+-    with pytest.raises(ValueError, match=re.escape(f'invalid license expression: {expression}')):
+-        normalize_license_expression(expression)
+-
+-
+-def test_unknown_license():
+-    with pytest.raises(ValueError, match='unknown license: foo'):
+-        normalize_license_expression('mit or foo')
+-
+-
+-def test_unknown_license_exception():
+-    with pytest.raises(ValueError, match='unknown license exception: foo'):
+-        normalize_license_expression('mit with foo')
+-
+-
+-@pytest.mark.parametrize(
+-    ('raw', 'normalized'),
+-    [
+-        ('mIt', 'MIT'),
+-        ('mit or apache-2.0', 'MIT OR Apache-2.0'),
+-        ('mit and apache-2.0', 'MIT AND Apache-2.0'),
+-        ('gpl-2.0-or-later with bison-exception-2.2', 'GPL-2.0-or-later WITH Bison-exception-2.2'),
+-        ('mit or apache-2.0 and (bsd-3-clause or mpl-2.0)', 'MIT OR Apache-2.0 AND (BSD-3-Clause OR MPL-2.0)'),
+-        ('mit and (apache-2.0+ or mpl-2.0+)', 'MIT AND (Apache-2.0+ OR MPL-2.0+)'),
+-        # Valid non-SPDX values
+-        ('licenseref-public-domain', 'LicenseRef-Public-Domain'),
+-        ('licenseref-proprietary', 'LicenseRef-Proprietary'),
+-    ],
+-)
+-def test_normalization(raw, normalized):
+-    assert normalize_license_expression(raw) == normalized
+Index: hatch-hatch-v1.14.0/tests/backend/licenses/test_supported.py
+===================================================================
+--- hatch-hatch-v1.14.0.orig/tests/backend/licenses/test_supported.py
++++ /dev/null
+@@ -1,31 +0,0 @@
+-from hatchling.licenses.supported import EXCEPTIONS, LICENSES
+-
+-
+-def test_licenses():
+-    assert isinstance(LICENSES, dict)
+-    assert list(LICENSES) == sorted(LICENSES)
+-
+-    for name, data in LICENSES.items():
+-        assert isinstance(data, dict)
+-
+-        assert 'id' in data
+-        assert isinstance(data['id'], str)
+-        assert data['id'].lower() == name
+-
+-        assert 'deprecated' in data
+-        assert isinstance(data['deprecated'], bool)
+-
+-
+-def test_exceptions():
+-    assert isinstance(EXCEPTIONS, dict)
+-    assert list(EXCEPTIONS) == sorted(EXCEPTIONS)
+-
+-    for name, data in EXCEPTIONS.items():
+-        assert isinstance(data, dict)
+-
+-        assert 'id' in data
+-        assert isinstance(data['id'], str)
+-        assert data['id'].lower() == name
+-
+-        assert 'deprecated' in data
+-        assert isinstance(data['deprecated'], bool)
+Index: hatch-hatch-v1.14.0/tests/backend/metadata/test_core.py
+===================================================================
+--- hatch-hatch-v1.14.0.orig/tests/backend/metadata/test_core.py
++++ hatch-hatch-v1.14.0/tests/backend/metadata/test_core.py
+@@ -558,7 +558,7 @@ class TestLicense:
+     def test_invalid_expression(self, isolation):
+         metadata = ProjectMetadata(str(isolation), None, {'project': {'license': 'mit or foo'}})
+ 
+-        with pytest.raises(ValueError, match='Error parsing field `project.license` - unknown license: foo'):
++        with pytest.raises(ValueError, match="Error parsing field `project.license` - Unknown license: 'foo'"):
+             _ = metadata.core.license_expression
+ 
+     def test_multiple_options(self, isolation):
+@@ -621,54 +621,16 @@ class TestLicenseFiles:
+         ):
+             _ = metadata.core.license_files
+ 
+-    def test_not_table(self, isolation):
++    def test_not_array(self, isolation):
+         metadata = ProjectMetadata(str(isolation), None, {'project': {'license-files': 9000}})
+ 
+-        with pytest.raises(TypeError, match='Field `project.license-files` must be a table'):
+-            _ = metadata.core.license_files
+-
+-    def test_multiple_options(self, isolation):
+-        metadata = ProjectMetadata(str(isolation), None, {'project': {'license-files': {'paths': [], 'globs': []}}})
+-
+-        with pytest.raises(
+-            ValueError, match='Cannot specify both `paths` and `globs` in the `project.license-files` table'
+-        ):
+-            _ = metadata.core.license_files
+-
+-    def test_no_option(self, isolation):
+-        metadata = ProjectMetadata(str(isolation), None, {'project': {'license-files': {}}})
+-
+-        with pytest.raises(
+-            ValueError, match='Must specify either `paths` or `globs` in the `project.license-files` table if defined'
+-        ):
+-            _ = metadata.core.license_files
+-
+-    def test_paths_not_array(self, isolation):
+-        metadata = ProjectMetadata(str(isolation), None, {'project': {'license-files': {'paths': 9000}}})
+-
+-        with pytest.raises(TypeError, match='Field `paths` in the `project.license-files` table must be an array'):
++        with pytest.raises(TypeError, match='Field `project.license-files` must be an array'):
+             _ = metadata.core.license_files
+ 
+-    def test_paths_entry_not_string(self, isolation):
+-        metadata = ProjectMetadata(str(isolation), None, {'project': {'license-files': {'paths': [9000]}}})
+-
+-        with pytest.raises(
+-            TypeError, match='Entry #1 in field `paths` in the `project.license-files` table must be a string'
+-        ):
+-            _ = metadata.core.license_files
+-
+-    def test_globs_not_array(self, isolation):
+-        metadata = ProjectMetadata(str(isolation), None, {'project': {'license-files': {'globs': 9000}}})
+-
+-        with pytest.raises(TypeError, match='Field `globs` in the `project.license-files` table must be an array'):
+-            _ = metadata.core.license_files
+-
+-    def test_globs_entry_not_string(self, isolation):
+-        metadata = ProjectMetadata(str(isolation), None, {'project': {'license-files': {'globs': [9000]}}})
++    def test_entry_not_string(self, isolation):
++        metadata = ProjectMetadata(str(isolation), None, {'project': {'license-files': [9000]}})
+ 
+-        with pytest.raises(
+-            TypeError, match='Entry #1 in field `globs` in the `project.license-files` table must be a string'
+-        ):
++        with pytest.raises(TypeError, match='Entry #1 of field `project.license-files` must be a string'):
+             _ = metadata.core.license_files
+ 
+     def test_default_globs_no_licenses(self, isolation):
+@@ -693,7 +655,7 @@ class TestLicenseFiles:
+         assert metadata.core.license_files == sorted(expected)
+ 
+     def test_globs_with_licenses(self, temp_dir):
+-        metadata = ProjectMetadata(str(temp_dir), None, {'project': {'license-files': {'globs': ['LICENSES/*']}}})
++        metadata = ProjectMetadata(str(temp_dir), None, {'project': {'license-files': ['LICENSES/*']}})
+ 
+         licenses_dir = temp_dir / 'LICENSES'
+         licenses_dir.mkdir()
+@@ -709,7 +671,7 @@ class TestLicenseFiles:
+         metadata = ProjectMetadata(
+             str(temp_dir),
+             None,
+-            {'project': {'license-files': {'paths': ['LICENSES/Apache-2.0.txt', 'LICENSES/MIT.txt', 'COPYING']}}},
++            {'project': {'license-files': ['LICENSES/Apache-2.0.txt', 'LICENSES/MIT.txt', 'COPYING']}},
+         )
+ 
+         licenses_dir = temp_dir / 'LICENSES'
+@@ -722,20 +684,6 @@ class TestLicenseFiles:
+ 
+         assert metadata.core.license_files == ['COPYING', 'LICENSES/Apache-2.0.txt', 'LICENSES/MIT.txt']
+ 
+-    def test_paths_missing_license(self, temp_dir):
+-        metadata = ProjectMetadata(
+-            str(temp_dir),
+-            None,
+-            {'project': {'license-files': {'paths': ['LICENSES/MIT.txt']}}},
+-        )
+-
+-        licenses_dir = temp_dir / 'LICENSES'
+-        licenses_dir.mkdir()
+-        (licenses_dir / 'Apache-2.0.txt').touch()
+-
+-        with pytest.raises(OSError, match='License file does not exist: LICENSES/MIT.txt'):
+-            _ = metadata.core.license_files
+-
+ 
+ class TestAuthors:
+     def test_dynamic(self, isolation):
+@@ -1661,7 +1609,7 @@ class TestMetadataConversion:
+         raw_metadata = {
+             'name': 'My.App',
+             'version': '0.0.1',
+-            'license-files': {'paths': ['LICENSES/Apache-2.0.txt', 'LICENSES/MIT.txt']},
++            'license-files': ['LICENSES/Apache-2.0.txt', 'LICENSES/MIT.txt'],
+         }
+         metadata = ProjectMetadata(str(temp_dir), None, {'project': raw_metadata})
+ 
+Index: hatch-hatch-v1.14.0/tests/backend/builders/test_wheel.py
+===================================================================
+--- hatch-hatch-v1.14.0.orig/tests/backend/builders/test_wheel.py
++++ hatch-hatch-v1.14.0/tests/backend/builders/test_wheel.py
+@@ -909,7 +909,7 @@ class TestBuildStandard:
+         (project_path / 'LICENSES' / 'test').mkdir()
+ 
+         config = {
+-            'project': {'name': project_name, 'dynamic': ['version'], 'license-files': {'globs': ['LICENSES/*']}},
++            'project': {'name': project_name, 'dynamic': ['version'], 'license-files': ['LICENSES/*']},
+             'tool': {
+                 'hatch': {
+                     'version': {'path': 'my_app/__about__.py'},
+Index: hatch-hatch-v1.14.0/tests/backend/metadata/test_spec.py
+===================================================================
+--- hatch-hatch-v1.14.0.orig/tests/backend/metadata/test_spec.py
++++ hatch-hatch-v1.14.0/tests/backend/metadata/test_spec.py
+@@ -131,7 +131,7 @@ License-File: LICENSES/MIT.txt
+         assert project_metadata_from_core_metadata(core_metadata) == {
+             'name': 'My.App',
+             'version': '0.1.0',
+-            'license-files': {'paths': ['LICENSES/Apache-2.0.txt', 'LICENSES/MIT.txt']},
++            'license-files': ['LICENSES/Apache-2.0.txt', 'LICENSES/MIT.txt'],
+         }
+ 
+     def test_license_expression(self):
+@@ -419,6 +419,22 @@ class TestCoreMetadataV12:
+             """
+         )
+ 
++    def test_license_expression(self, constructor, isolation, helpers):
++        metadata = ProjectMetadata(
++            str(isolation),
++            None,
++            {'project': {'name': 'My.App', 'version': '0.1.0', 'license': 'mit'}},
++        )
++
++        assert constructor(metadata) == helpers.dedent(
++            """
++            Metadata-Version: 1.2
++            Name: My.App
++            Version: 0.1.0
++            License: MIT
++            """
++        )
++
+     def test_keywords_single(self, constructor, isolation, helpers):
+         metadata = ProjectMetadata(
+             str(isolation), None, {'project': {'name': 'My.App', 'version': '0.1.0', 'keywords': ['foo']}}
+@@ -762,7 +778,7 @@ class TestCoreMetadataV21:
+             Metadata-Version: 2.1
+             Name: My.App
+             Version: 0.1.0
+-            License-Expression: MIT
++            License: MIT
+             """
+         )
+ 
+@@ -961,7 +977,6 @@ class TestCoreMetadataV21:
+             Maintainer-email: foo <bar@domain>
+             License: foo
+                     bar
+-            License-File: LICENSE.txt
+             Keywords: bar,foo
+             Classifier: Programming Language :: Python :: 3.9
+             Classifier: Programming Language :: Python :: 3.11
+@@ -1202,7 +1217,7 @@ class TestCoreMetadataV22:
+             Metadata-Version: 2.2
+             Name: My.App
+             Version: 0.1.0
+-            License-Expression: MIT
++            License: MIT
+             """
+         )
+ 
+@@ -1431,7 +1446,6 @@ class TestCoreMetadataV22:
+             Maintainer-email: foo <bar@domain>
+             License: foo
+                     bar
+-            License-File: LICENSE.txt
+             Keywords: bar,foo
+             Classifier: Programming Language :: Python :: 3.9
+             Classifier: Programming Language :: Python :: 3.11
+@@ -1664,7 +1678,7 @@ class TestCoreMetadataV23:
+         metadata = ProjectMetadata(
+             str(isolation),
+             None,
+-            {'project': {'name': 'My.App', 'version': '0.1.0', 'license': 'mit or apache-2.0'}},
++            {'project': {'name': 'My.App', 'version': '0.1.0', 'license': 'mit'}},
+         )
+ 
+         assert constructor(metadata) == helpers.dedent(
+@@ -1672,6 +1686,445 @@ class TestCoreMetadataV23:
+             Metadata-Version: 2.3
+             Name: My.App
+             Version: 0.1.0
++            License: MIT
++            """
++        )
++
++    def test_keywords_single(self, constructor, isolation, helpers):
++        metadata = ProjectMetadata(
++            str(isolation), None, {'project': {'name': 'My.App', 'version': '0.1.0', 'keywords': ['foo']}}
++        )
++
++        assert constructor(metadata) == helpers.dedent(
++            """
++            Metadata-Version: 2.3
++            Name: My.App
++            Version: 0.1.0
++            Keywords: foo
++            """
++        )
++
++    def test_keywords_multiple(self, constructor, isolation, helpers):
++        metadata = ProjectMetadata(
++            str(isolation), None, {'project': {'name': 'My.App', 'version': '0.1.0', 'keywords': ['foo', 'bar']}}
++        )
++
++        assert constructor(metadata) == helpers.dedent(
++            """
++            Metadata-Version: 2.3
++            Name: My.App
++            Version: 0.1.0
++            Keywords: bar,foo
++            """
++        )
++
++    def test_classifiers(self, constructor, isolation, helpers):
++        classifiers = [
++            'Programming Language :: Python :: 3.11',
++            'Programming Language :: Python :: 3.9',
++        ]
++        metadata = ProjectMetadata(
++            str(isolation), None, {'project': {'name': 'My.App', 'version': '0.1.0', 'classifiers': classifiers}}
++        )
++
++        assert constructor(metadata) == helpers.dedent(
++            """
++            Metadata-Version: 2.3
++            Name: My.App
++            Version: 0.1.0
++            Classifier: Programming Language :: Python :: 3.9
++            Classifier: Programming Language :: Python :: 3.11
++            """
++        )
++
++    def test_requires_python(self, constructor, isolation, helpers):
++        metadata = ProjectMetadata(
++            str(isolation), None, {'project': {'name': 'My.App', 'version': '0.1.0', 'requires-python': '>=1,<2'}}
++        )
++
++        assert constructor(metadata) == helpers.dedent(
++            """
++            Metadata-Version: 2.3
++            Name: My.App
++            Version: 0.1.0
++            Requires-Python: <2,>=1
++            """
++        )
++
++    def test_dependencies(self, constructor, isolation, helpers):
++        metadata = ProjectMetadata(
++            str(isolation),
++            None,
++            {'project': {'name': 'My.App', 'version': '0.1.0', 'dependencies': ['foo==1', 'bar==5']}},
++        )
++
++        assert constructor(metadata) == helpers.dedent(
++            """
++            Metadata-Version: 2.3
++            Name: My.App
++            Version: 0.1.0
++            Requires-Dist: bar==5
++            Requires-Dist: foo==1
++            """
++        )
++
++    def test_optional_dependencies(self, constructor, isolation, helpers):
++        metadata = ProjectMetadata(
++            str(isolation),
++            None,
++            {
++                'project': {
++                    'name': 'My.App',
++                    'version': '0.1.0',
++                    'optional-dependencies': {
++                        'feature2': ['foo==1; python_version < "3"', 'bar==5'],
++                        'feature1': ['foo==1', 'bar==5; python_version < "3"'],
++                    },
++                }
++            },
++        )
++
++        assert constructor(metadata) == helpers.dedent(
++            """
++            Metadata-Version: 2.3
++            Name: My.App
++            Version: 0.1.0
++            Provides-Extra: feature1
++            Requires-Dist: bar==5; (python_version < '3') and extra == 'feature1'
++            Requires-Dist: foo==1; extra == 'feature1'
++            Provides-Extra: feature2
++            Requires-Dist: bar==5; extra == 'feature2'
++            Requires-Dist: foo==1; (python_version < '3') and extra == 'feature2'
++            """
++        )
++
++    def test_extra_runtime_dependencies(self, constructor, isolation, helpers):
++        metadata = ProjectMetadata(
++            str(isolation),
++            None,
++            {'project': {'name': 'My.App', 'version': '0.1.0', 'dependencies': ['foo==1', 'bar==5']}},
++        )
++
++        assert constructor(metadata, extra_dependencies=['baz==9']) == helpers.dedent(
++            """
++            Metadata-Version: 2.3
++            Name: My.App
++            Version: 0.1.0
++            Requires-Dist: bar==5
++            Requires-Dist: foo==1
++            Requires-Dist: baz==9
++            """
++        )
++
++    def test_readme(self, constructor, isolation, helpers):
++        metadata = ProjectMetadata(
++            str(isolation),
++            None,
++            {
++                'project': {
++                    'name': 'My.App',
++                    'version': '0.1.0',
++                    'readme': {'content-type': 'text/markdown', 'text': 'test content\n'},
++                }
++            },
++        )
++
++        assert constructor(metadata) == helpers.dedent(
++            """
++            Metadata-Version: 2.3
++            Name: My.App
++            Version: 0.1.0
++            Description-Content-Type: text/markdown
++
++            test content
++            """
++        )
++
++    def test_all(self, constructor, temp_dir, helpers):
++        metadata = ProjectMetadata(
++            str(temp_dir),
++            None,
++            {
++                'project': {
++                    'name': 'My.App',
++                    'version': '0.1.0',
++                    'description': 'foo',
++                    'urls': {'foo': 'bar', 'bar': 'baz'},
++                    'authors': [{'email': 'bar@domain', 'name': 'foo'}],
++                    'maintainers': [{'email': 'bar@domain', 'name': 'foo'}],
++                    'keywords': ['foo', 'bar'],
++                    'classifiers': [
++                        'Programming Language :: Python :: 3.11',
++                        'Programming Language :: Python :: 3.9',
++                    ],
++                    'requires-python': '>=1,<2',
++                    'dependencies': ['foo==1', 'bar==5'],
++                    'optional-dependencies': {
++                        'feature2': ['foo==1; python_version < "3"', 'bar==5'],
++                        'feature1': ['foo==1', 'bar==5; python_version < "3"'],
++                        'feature3': ['baz @ file:///path/to/project'],
++                    },
++                    'readme': {'content-type': 'text/markdown', 'text': 'test content\n'},
++                },
++                'tool': {'hatch': {'metadata': {'allow-direct-references': True}}},
++            },
++        )
++
++        licenses_dir = temp_dir / 'LICENSES'
++        licenses_dir.mkdir()
++        (licenses_dir / 'MIT.txt').touch()
++        (licenses_dir / 'Apache-2.0.txt').touch()
++
++        assert constructor(metadata) == helpers.dedent(
++            """
++            Metadata-Version: 2.3
++            Name: My.App
++            Version: 0.1.0
++            Summary: foo
++            Project-URL: foo, bar
++            Project-URL: bar, baz
++            Author-email: foo <bar@domain>
++            Maintainer-email: foo <bar@domain>
++            Keywords: bar,foo
++            Classifier: Programming Language :: Python :: 3.9
++            Classifier: Programming Language :: Python :: 3.11
++            Requires-Python: <2,>=1
++            Requires-Dist: bar==5
++            Requires-Dist: foo==1
++            Provides-Extra: feature1
++            Requires-Dist: bar==5; (python_version < '3') and extra == 'feature1'
++            Requires-Dist: foo==1; extra == 'feature1'
++            Provides-Extra: feature2
++            Requires-Dist: bar==5; extra == 'feature2'
++            Requires-Dist: foo==1; (python_version < '3') and extra == 'feature2'
++            Provides-Extra: feature3
++            Requires-Dist: baz@ file:///path/to/project ; extra == 'feature3'
++            Description-Content-Type: text/markdown
++
++            test content
++            """
++        )
++
++
++@pytest.mark.parametrize('constructor', [get_core_metadata_constructors()['2.4']])
++class TestCoreMetadataV24:
++    def test_default(self, constructor, isolation, helpers):
++        metadata = ProjectMetadata(str(isolation), None, {'project': {'name': 'My.App', 'version': '0.1.0'}})
++
++        assert constructor(metadata) == helpers.dedent(
++            """
++            Metadata-Version: 2.4
++            Name: My.App
++            Version: 0.1.0
++            """
++        )
++
++    def test_description(self, constructor, isolation, helpers):
++        metadata = ProjectMetadata(
++            str(isolation), None, {'project': {'name': 'My.App', 'version': '0.1.0', 'description': 'foo'}}
++        )
++
++        assert constructor(metadata) == helpers.dedent(
++            """
++            Metadata-Version: 2.4
++            Name: My.App
++            Version: 0.1.0
++            Summary: foo
++            """
++        )
++
++    def test_dynamic(self, constructor, isolation, helpers):
++        metadata = ProjectMetadata(
++            str(isolation),
++            None,
++            {'project': {'name': 'My.App', 'version': '0.1.0', 'dynamic': ['authors', 'classifiers']}},
++        )
++
++        assert constructor(metadata) == helpers.dedent(
++            """
++            Metadata-Version: 2.4
++            Name: My.App
++            Version: 0.1.0
++            Dynamic: Author
++            Dynamic: Author-email
++            Dynamic: Classifier
++            """
++        )
++
++    def test_urls(self, constructor, isolation, helpers):
++        metadata = ProjectMetadata(
++            str(isolation),
++            None,
++            {'project': {'name': 'My.App', 'version': '0.1.0', 'urls': {'foo': 'bar', 'bar': 'baz'}}},
++        )
++
++        assert constructor(metadata) == helpers.dedent(
++            """
++            Metadata-Version: 2.4
++            Name: My.App
++            Version: 0.1.0
++            Project-URL: foo, bar
++            Project-URL: bar, baz
++            """
++        )
++
++    def test_authors_name(self, constructor, isolation, helpers):
++        metadata = ProjectMetadata(
++            str(isolation), None, {'project': {'name': 'My.App', 'version': '0.1.0', 'authors': [{'name': 'foo'}]}}
++        )
++
++        assert constructor(metadata) == helpers.dedent(
++            """
++            Metadata-Version: 2.4
++            Name: My.App
++            Version: 0.1.0
++            Author: foo
++            """
++        )
++
++    def test_authors_email(self, constructor, isolation, helpers):
++        metadata = ProjectMetadata(
++            str(isolation),
++            None,
++            {'project': {'name': 'My.App', 'version': '0.1.0', 'authors': [{'email': 'foo@domain'}]}},
++        )
++
++        assert constructor(metadata) == helpers.dedent(
++            """
++            Metadata-Version: 2.4
++            Name: My.App
++            Version: 0.1.0
++            Author-email: foo@domain
++            """
++        )
++
++    def test_authors_name_and_email(self, constructor, isolation, helpers):
++        metadata = ProjectMetadata(
++            str(isolation),
++            None,
++            {'project': {'name': 'My.App', 'version': '0.1.0', 'authors': [{'email': 'bar@domain', 'name': 'foo'}]}},
++        )
++
++        assert constructor(metadata) == helpers.dedent(
++            """
++            Metadata-Version: 2.4
++            Name: My.App
++            Version: 0.1.0
++            Author-email: foo <bar@domain>
++            """
++        )
++
++    def test_authors_multiple(self, constructor, isolation, helpers):
++        metadata = ProjectMetadata(
++            str(isolation),
++            None,
++            {'project': {'name': 'My.App', 'version': '0.1.0', 'authors': [{'name': 'foo'}, {'name': 'bar'}]}},
++        )
++
++        assert constructor(metadata) == helpers.dedent(
++            """
++            Metadata-Version: 2.4
++            Name: My.App
++            Version: 0.1.0
++            Author: foo, bar
++            """
++        )
++
++    def test_maintainers_name(self, constructor, isolation, helpers):
++        metadata = ProjectMetadata(
++            str(isolation), None, {'project': {'name': 'My.App', 'version': '0.1.0', 'maintainers': [{'name': 'foo'}]}}
++        )
++
++        assert constructor(metadata) == helpers.dedent(
++            """
++            Metadata-Version: 2.4
++            Name: My.App
++            Version: 0.1.0
++            Maintainer: foo
++            """
++        )
++
++    def test_maintainers_email(self, constructor, isolation, helpers):
++        metadata = ProjectMetadata(
++            str(isolation),
++            None,
++            {'project': {'name': 'My.App', 'version': '0.1.0', 'maintainers': [{'email': 'foo@domain'}]}},
++        )
++
++        assert constructor(metadata) == helpers.dedent(
++            """
++            Metadata-Version: 2.4
++            Name: My.App
++            Version: 0.1.0
++            Maintainer-email: foo@domain
++            """
++        )
++
++    def test_maintainers_name_and_email(self, constructor, isolation, helpers):
++        metadata = ProjectMetadata(
++            str(isolation),
++            None,
++            {
++                'project': {
++                    'name': 'My.App',
++                    'version': '0.1.0',
++                    'maintainers': [{'email': 'bar@domain', 'name': 'foo'}],
++                }
++            },
++        )
++
++        assert constructor(metadata) == helpers.dedent(
++            """
++            Metadata-Version: 2.4
++            Name: My.App
++            Version: 0.1.0
++            Maintainer-email: foo <bar@domain>
++            """
++        )
++
++    def test_maintainers_multiple(self, constructor, isolation, helpers):
++        metadata = ProjectMetadata(
++            str(isolation),
++            None,
++            {'project': {'name': 'My.App', 'version': '0.1.0', 'maintainers': [{'name': 'foo'}, {'name': 'bar'}]}},
++        )
++
++        assert constructor(metadata) == helpers.dedent(
++            """
++            Metadata-Version: 2.4
++            Name: My.App
++            Version: 0.1.0
++            Maintainer: foo, bar
++            """
++        )
++
++    def test_license(self, constructor, isolation, helpers):
++        metadata = ProjectMetadata(
++            str(isolation), None, {'project': {'name': 'My.App', 'version': '0.1.0', 'license': {'text': 'foo\nbar'}}}
++        )
++
++        assert constructor(metadata) == helpers.dedent(
++            """
++            Metadata-Version: 2.4
++            Name: My.App
++            Version: 0.1.0
++            License: foo
++                    bar
++            """
++        )
++
++    def test_license_expression(self, constructor, isolation, helpers):
++        metadata = ProjectMetadata(
++            str(isolation),
++            None,
++            {'project': {'name': 'My.App', 'version': '0.1.0', 'license': 'mit or apache-2.0'}},
++        )
++
++        assert constructor(metadata) == helpers.dedent(
++            """
++            Metadata-Version: 2.4
++            Name: My.App
++            Version: 0.1.0
+             License-Expression: MIT OR Apache-2.0
+             """
+         )
+@@ -1680,7 +2133,7 @@ class TestCoreMetadataV23:
+         metadata = ProjectMetadata(
+             str(temp_dir),
+             None,
+-            {'project': {'name': 'My.App', 'version': '0.1.0', 'license-files': {'globs': ['LICENSES/*']}}},
++            {'project': {'name': 'My.App', 'version': '0.1.0', 'license-files': ['LICENSES/*']}},
+         )
+ 
+         licenses_dir = temp_dir / 'LICENSES'
+@@ -1690,7 +2143,7 @@ class TestCoreMetadataV23:
+ 
+         assert constructor(metadata) == helpers.dedent(
+             """
+-            Metadata-Version: 2.3
++            Metadata-Version: 2.4
+             Name: My.App
+             Version: 0.1.0
+             License-File: LICENSES/Apache-2.0.txt
+@@ -1705,7 +2158,7 @@ class TestCoreMetadataV23:
+ 
+         assert constructor(metadata) == helpers.dedent(
+             """
+-            Metadata-Version: 2.3
++            Metadata-Version: 2.4
+             Name: My.App
+             Version: 0.1.0
+             Keywords: foo
+@@ -1719,7 +2172,7 @@ class TestCoreMetadataV23:
+ 
+         assert constructor(metadata) == helpers.dedent(
+             """
+-            Metadata-Version: 2.3
++            Metadata-Version: 2.4
+             Name: My.App
+             Version: 0.1.0
+             Keywords: bar,foo
+@@ -1737,7 +2190,7 @@ class TestCoreMetadataV23:
+ 
+         assert constructor(metadata) == helpers.dedent(
+             """
+-            Metadata-Version: 2.3
++            Metadata-Version: 2.4
+             Name: My.App
+             Version: 0.1.0
+             Classifier: Programming Language :: Python :: 3.9
+@@ -1752,7 +2205,7 @@ class TestCoreMetadataV23:
+ 
+         assert constructor(metadata) == helpers.dedent(
+             """
+-            Metadata-Version: 2.3
++            Metadata-Version: 2.4
+             Name: My.App
+             Version: 0.1.0
+             Requires-Python: <2,>=1
+@@ -1768,7 +2221,7 @@ class TestCoreMetadataV23:
+ 
+         assert constructor(metadata) == helpers.dedent(
+             """
+-            Metadata-Version: 2.3
++            Metadata-Version: 2.4
+             Name: My.App
+             Version: 0.1.0
+             Requires-Dist: bar==5
+@@ -1794,7 +2247,7 @@ class TestCoreMetadataV23:
+ 
+         assert constructor(metadata) == helpers.dedent(
+             """
+-            Metadata-Version: 2.3
++            Metadata-Version: 2.4
+             Name: My.App
+             Version: 0.1.0
+             Provides-Extra: feature1
+@@ -1815,7 +2268,7 @@ class TestCoreMetadataV23:
+ 
+         assert constructor(metadata, extra_dependencies=['baz==9']) == helpers.dedent(
+             """
+-            Metadata-Version: 2.3
++            Metadata-Version: 2.4
+             Name: My.App
+             Version: 0.1.0
+             Requires-Dist: bar==5
+@@ -1839,7 +2292,7 @@ class TestCoreMetadataV23:
+ 
+         assert constructor(metadata) == helpers.dedent(
+             """
+-            Metadata-Version: 2.3
++            Metadata-Version: 2.4
+             Name: My.App
+             Version: 0.1.0
+             Description-Content-Type: text/markdown
+@@ -1861,7 +2314,7 @@ class TestCoreMetadataV23:
+                     'authors': [{'email': 'bar@domain', 'name': 'foo'}],
+                     'maintainers': [{'email': 'bar@domain', 'name': 'foo'}],
+                     'license': 'mit or apache-2.0',
+-                    'license-files': {'globs': ['LICENSES/*']},
++                    'license-files': ['LICENSES/*'],
+                     'keywords': ['foo', 'bar'],
+                     'classifiers': [
+                         'Programming Language :: Python :: 3.11',
+@@ -1887,7 +2340,7 @@ class TestCoreMetadataV23:
+ 
+         assert constructor(metadata) == helpers.dedent(
+             """
+-            Metadata-Version: 2.3
++            Metadata-Version: 2.4
+             Name: My.App
+             Version: 0.1.0
+             Summary: foo
