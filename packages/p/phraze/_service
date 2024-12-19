@@ -2,7 +2,7 @@
   <service mode="disabled" name="obs_scm">
     <param name="url">https://github.com/sts10/phraze.git</param>
     <param name="scm">git</param>
-    <param name="revision">v0.3.15</param>
+    <param name="revision">v0.3.17</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">.*v(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>

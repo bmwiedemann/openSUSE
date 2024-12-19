@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 28 10:04:08 UTC 2024 - felix.niederwanger@suse.de
+
+- Update to version 0.3.17:
+  * update and re-configure cargo-dist to (hopefully) create a musl binary
+  * a few small fixes in the reame
+  * small formatting tweaks to readme
+  * update internal version
+  * add ability to check licenses with cargo deny
+
+-------------------------------------------------------------------
 Tue Sep 24 07:24:51 UTC 2024 - felix.niederwanger@suse.de
 
 - Update to version 0.3.15:
