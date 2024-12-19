@@ -1,24 +1,23 @@
 #
-# spec file for package prometheus-ha_cluster_exporter
+# Copyright 2019-2024 SUSE LLC
 #
-# Copyright (c) 2023 SUSE LLC
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
 #
-# All modifications and additions to the file contributed by third parties
-# remain the property of their copyright owners, unless otherwise agreed
-# upon. The license for this file, and modifications and additions to the
-# file, is the same license as for the pristine package itself (unless the
-# license for the pristine package is not an Open Source License, in which
-# case the license is the MIT License). An "Open Source License" is a
-# license that conforms to the Open Source Definition (Version 1.9)
-# published by the Open Source Initiative.
-
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#    https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 #
 
 
 Name:           prometheus-ha_cluster_exporter
 # Version will be processed via set_version source service
-Version:        1.3.3+git.1683650163.1000ba6
+Version:        1.4.0+git.2.1734607520.57bbe75
 Release:        0
 Summary:        Prometheus exporter for Pacemaker HA clusters metrics
 License:        Apache-2.0
@@ -26,7 +25,7 @@ Group:          System/Monitoring
 URL:            https://github.com/ClusterLabs/ha_cluster_exporter
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.20
+BuildRequires:  golang(API) >= 1.23
 Requires(post): %fillup_prereq
 Provides:       ha_cluster_exporter = %{version}-%{release}
 Provides:       prometheus(ha_cluster_exporter) = %{version}-%{release}
@@ -47,8 +46,11 @@ Prometheus exporter for Pacemaker HA clusters metrics
 %define shortname ha_cluster_exporter
 
 %build
-
-export CGO_ENABLED=0
+%ifarch s390x
+  export CGO_ENABLED=1
+%else
+  export CGO_ENABLED=0
+%endif
 go build -mod=vendor \
          -buildmode=pie \
          -ldflags="-s -w -X github.com/prometheus/common/version.Version=%{version}" \
@@ -68,6 +70,9 @@ install -D -m 0644 %{shortname}.sysconfig %{buildroot}%{_fillupdir}/sysconfig.%{
 # Install compat wrapper for legacy init systems
 install -Dd -m 0755 %{buildroot}%{_sbindir}
 ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rc%{name}
+
+# Install supportconfig plugin
+install -D -m 755 supportconfig-ha_cluster_exporter %{buildroot}%{_prefix}/lib/supportconfig/plugins/%{shortname}
 
 %pre
 %service_add_pre %{name}.service
@@ -94,5 +99,8 @@ ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rc%{name}
 %{_unitdir}/%{name}.service
 %{_fillupdir}/sysconfig.%{name}
 %{_sbindir}/rc%{name}
+%dir %{_prefix}/lib/supportconfig
+%dir %{_prefix}/lib/supportconfig/plugins
+%{_prefix}/lib/supportconfig/plugins/%{shortname}
 
 %changelog
