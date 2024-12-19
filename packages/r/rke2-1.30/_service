@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/rancher/rke2</param>
     <param name="scm">git</param>
-    <param name="revision">v1.30.7+rke2r1</param>
+    <param name="revision">v1.30.8+rke2r1</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="package-meta">yes</param>
     <param name="changesgenerate">disable</param>
