@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 18 14:10:40 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- gcc.patch: avoid implicits when using more strict GCC14
+
+-------------------------------------------------------------------
 Tue Feb 13 13:38:19 UTC 2024 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Remove the hardcoded libopenssl-1_1-devel and replace it with

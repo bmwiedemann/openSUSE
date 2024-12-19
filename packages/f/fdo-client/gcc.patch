@@ -1,6 +1,8 @@
---- org/network/network_if_linux.c	2022-12-09 09:44:34.000000000 +0100
-+++ patch/network/network_if_linux.c	2023-03-02 16:05:07.625074915 +0100
-@@ -246,7 +246,7 @@
+Index: fdo-client-1.1.4+git20221209.c8ef757/network/network_if_linux.c
+===================================================================
+--- fdo-client-1.1.4+git20221209.c8ef757.orig/network/network_if_linux.c
++++ fdo-client-1.1.4+git20221209.c8ef757/network/network_if_linux.c
+@@ -246,7 +246,7 @@ bool fdo_curl_proxy(fdo_ip_address_t *ip
  		goto err;
  	}
  
@@ -9,7 +11,7 @@
  		ip_ascii = fdo_alloc(IP_TAG_LEN);
  		if (!ip_ascii) {
  			goto err;
-@@ -331,7 +331,7 @@
+@@ -331,7 +331,7 @@ int fdo_curl_setup(fdo_ip_address_t *ip_
  		}
  	}
  
@@ -18,9 +20,11 @@
  		ip_ascii = fdo_alloc(IP_TAG_LEN);
  		if (!ip_ascii) {
  			goto err;
---- org/lib/credentials_from_file.c	2022-12-09 09:44:34.000000000 +0100
-+++ patch/lib/credentials_from_file.c	2023-03-02 16:34:46.597314561 +0100
-@@ -231,7 +231,6 @@
+Index: fdo-client-1.1.4+git20221209.c8ef757/lib/credentials_from_file.c
+===================================================================
+--- fdo-client-1.1.4+git20221209.c8ef757.orig/lib/credentials_from_file.c
++++ fdo-client-1.1.4+git20221209.c8ef757/lib/credentials_from_file.c
+@@ -231,7 +231,6 @@ bool read_normal_device_credentials(cons
  		return true;
  	}
  
@@ -28,10 +32,22 @@
  
  	fdor = fdo_alloc(sizeof(fdor_t));
  	if (!fdor || !fdor_init(fdor) || !fdo_block_alloc_with_size(&fdor->b, dev_cred_len)) {
-@@ -531,4 +530,4 @@
+@@ -531,4 +530,4 @@ static bool validate_state(fdo_sdk_devic
  		return true;
  	}
  	return false;
 -}
-\ Kein Zeilenumbruch am Dateiende.
+\ No newline at end of file
 +}
+Index: fdo-client-1.1.4+git20221209.c8ef757/safestringlib-1.0.0+git20171208.5da1bad/makefile
+===================================================================
+--- fdo-client-1.1.4+git20221209.c8ef757.orig/safestringlib-1.0.0+git20171208.5da1bad/makefile
++++ fdo-client-1.1.4+git20221209.c8ef757/safestringlib-1.0.0+git20171208.5da1bad/makefile
+@@ -1,6 +1,6 @@
+ IDIR = include
+ CC=gcc
+-CFLAGS=-I$(IDIR) -fstack-protector-strong -fPIE -fPIC -O2 -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security
++CFLAGS=-I$(IDIR) -fstack-protector-strong -fPIE -fPIC -O2 -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security -DHAVE_STDLIB_H -DSTDC_HEADERS
+ LDFLAGS=-z noexecstack -z relo -z now
+ 
+ ODIR=obj

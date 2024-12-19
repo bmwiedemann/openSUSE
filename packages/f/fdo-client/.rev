@@ -39,4 +39,12 @@
     <comment></comment>
     <requestid>1146546</requestid>
   </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>9a70b89b0762e766d347233ccf66544f</srcmd5>
+    <version>1.1.4+git20221209.c8ef757</version>
+    <time>1734640895</time>
+    <user>anag+factory</user>
+    <comment>- gcc.patch: avoid implicits when using more strict GCC14</comment>
+    <requestid>1232036</requestid>
+  </revision>
 </revisionlist>
