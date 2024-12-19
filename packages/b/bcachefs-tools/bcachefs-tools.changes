@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec 18 18:33:29 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.13.0:
+  * posix_to_bcachefs: fix missing copy_xattrs() error checking
+  * Change lingering set-option texts to set-fs-option
+  * change setattr to set-file-option in docs/usage
+- update to 1.11.1:
+  * bch_bindgen: Remove memoffset dep
+  * cmd_list: open with noexcl
+  * fuse: graceful shutdown when startup fails
+
+-------------------------------------------------------------------
 Sun Aug 18 23:46:46 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.11.0
