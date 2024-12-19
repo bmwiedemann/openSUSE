@@ -393,4 +393,41 @@ Bugfixes
   - replace multi-provider .conf &quot;issuer_specific_redirect_uri&quot; boolean with &quot;response_require_iss&quot; boolean (forwarded request 1201556 from pgajdos)</comment>
     <requestid>1202153</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>eff95db213e9567755c389295c9c187d</srcmd5>
+    <version>2.4.16.6</version>
+    <time>1734640912</time>
+    <user>anag+factory</user>
+    <comment>- version update to 2.4.16.6
+  12/05/2024
+  - metadata: fix caching of JWKs from jwks_uri when using the default expiry setting (i.e. not using OIDCJWKSRefreshInterval)
+    and avoid fetching JWKs from the jwks_uri for each user login; also addresses Redis cache
+    error entries the log [ERR invalid expire time in 'setex' command]
+  - avoid segfault and improve error reporting in case apr_temp_dir_get fails when a temp directory cannot be found
+    on the system upon initalizing cache mutexes and file cache; see #1288; thanks @ErmakovDmitriy
+  11/21/2024
+  - add option to set local address for outgoing HTTP requests; see #1283; thanks @studersi
+    using e.g. SetEnvIfExpr true OIDC_CURL_INTERFACE=192.168.10.2
+  - try and address metris cleanup segmentation fault on shutdown; see #1207
+    by not flushing metrics to the shared memory segment upon exit
+  11/14/2024
+  - allow specific settings Strict|Lax|None|Disabled for OIDCCookieSameSite in addition to On(=Lax)|Off(=None)
+  - fix: default behaviour Lax
+  - fix: apply OIDCCookieSameSite Off/None properly to state cookies instead of always setting Lax
+  - re-introduces the option to configure a Strict SameSite session cookie policy, which will turn the initial
+    Lax session cookie - set upon receving the response to the Redirect URI - into a Strict session cookie
+    immediately after the first application request
+  - allows for a &quot;Disabled&quot; value that does not set any SameSite flag on the cookies, in which case a browser
+    falls back to its default browser behaviour (which should be Lax by spec)
+  11/07/2024
+  - info: fix requests to the info hook with extend_session=false; see #1279; thanks @fnieri-cdp
+  - properly reflect the (unmodified) inactivity timeout in the response (&quot;timeout&quot;)
+  - avoid refreshing an access token (since the session is not saved)
+  - avoid refreshing claims from the user info endpoint, and possibly refreshing the access token
+  10/23/2024
+  - metadata: allow plain HTTP URLs in metadata elements `jwks_uri` and `signed_jwks_uri`
+    to ensure backwards compatibility with &lt;=2.4.15.7 and to support private/test deployments
+  10/22/2024 (forwarded request 1230123 from pgajdos)</comment>
+    <requestid>1232177</requestid>
+  </revision>
 </revisionlist>
