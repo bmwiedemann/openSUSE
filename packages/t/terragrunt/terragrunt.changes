@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Thu Dec 19 07:49:40 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.70.4:
+  * fix: Fixing configurable `root` include (#3683)
+  * fix: Fixing `root-file-name` default (#3682)
+
+-------------------------------------------------------------------
+Thu Dec 19 07:35:41 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.70.3:
+  * build(deps): bump
+    go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc
+    (#3666)
+  * build(deps): bump
+    go.opentelemetry.io/otel/exporters/stdout/stdoutmetric (#3664)
+  * build(deps): bump
+    go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp
+    (#3663)
+  * build(deps): bump go.opentelemetry.io/otel from 1.32.0 to
+    1.33.0 (#3662)
+  * build(deps): bump filippo.io/age from 1.2.0 to 1.2.1 (#3680)
+
+-------------------------------------------------------------------
+Thu Dec 19 07:33:19 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.70.2:
+  * fix: Adding `tf-command-args` support (#3679)
+
+-------------------------------------------------------------------
+Thu Dec 19 07:27:13 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.70.1:
+  * fix: Adding GitHub Enterprise support for catalog (#3678)
+
+-------------------------------------------------------------------
+Thu Dec 19 07:24:33 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.70.0:
+  * fix: Reintroduce symlink work behind experiment flag (#3672)
+  * feat: Deprecating `terragrunt.hcl` as root (#3588)
+  * fix: Adding redirect entries for all the pages that were
+    renamed (#3676)
+  * Lint fixes (#3670)
+  * Updated json formatting (#3668)
+  * chore: Reorganizing the features section of the docs (#3640)
+  * build(deps): bump google.golang.org/grpc from 1.68.0 to 1.68.1
+    (#3638)
+  * build(deps): bump ruby/setup-ruby from 1.202.0 to 1.204.0
+    (#3660)
+  * build(deps): bump github.com/stretchr/testify from 1.9.0 to
+    1.10.0 (#3634)
+  * build(deps): bump github.com/charmbracelet/lipgloss from 0.13.0
+    to 1.0.0 (#3635)
+  * build(deps): bump github.com/zclconf/go-cty from 1.14.2 to
+    1.15.1 (#3636)
+  * build(deps): bump golang.org/x/oauth2 from 0.23.0 to 0.24.0
+    (#3637)
+  * fix: `ProviderCacheWithProviderCacheDir` test (#3656)
+
+-------------------------------------------------------------------
 Sat Dec 14 21:14:42 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.69.13:
