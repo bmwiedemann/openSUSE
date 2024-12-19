@@ -1,4 +1,231 @@
 -------------------------------------------------------------------
+Thu Dec 19 10:47:17 UTC 2024 - felix.niederwanger@suse.com
+
+- Update to version 1.0.0:
+  * Release 1.0.0.
+  * Fix NEWS.
+  * Align `sq download` with `sq verify`.
+  * Fix displaying preferred user IDs.
+  * Write to temporary file first, then persist it under the final name.
+  * Avoid using absolute paths in name of scratch files.
+  * Automatically import certificates from GnuPG's certificate store.
+  * Escape user IDs.
+  * Escape preferred keyserver and policy URI.
+  * Escape notation name and data.
+
+-------------------------------------------------------------------
+Wed Dec 04 10:48:32 UTC 2024 - felix.niederwanger@suse.de
+
+- Update to version 0.40.0:
+  * Release 0.40.0.
+  * Support thiserror 2.0.
+  * Update Cargo.lock.
+  * Mark `sq keyring filter` experimental.
+  * Update MSRV to 1.79, which is subplot's current MSRV.
+  * Add a configuration file and associated management commands.
+  * Align user ID designators in `sq pki {link,vouch} {add,authorize}`.
+  * Require self-signed user IDs when publishing certs in a WKD.
+  * Update sequoia-keystore to 0.6.2.
+  * Remove argument `sq key subkey export --cert-file`.
+  * Fix message.
+  * Remove argument `sq cert lint --export-secret-keys`.
+  * Change sq pki link retract to use the NULL policy.
+  * Improve hint.
+  * To revoke a user ID, require the cert be valid under the current policy.
+  * Improve message when a certificate can't be used for encryption.
+  * tests: Add more tests for sq encrypt.
+  * Don't use revoked certificates for encryption.
+  * Improve sq key password's output.
+  * Make sq key password change the password of weakly bound keys.
+  * tests: Add tests for sq key password.
+  * Improve how sq key delete handles ambiguous associations.
+  * Change sq key {delete,password} to work with more certificates.
+  * Change sq key delete to refuse to work with weakly bound subkeys.
+  * Update to subplot 0.11.0.
+  * Fix hint.
+  * Improve documentation.
+  * New mandatory switches `sq key generate <--own-key|--shared-key>`.
+  * Improve status messages when publishing a WKD.
+  * Fix copying the policy file if no updates happened.
+  * Make `sq network wkd publish` work without a cert store.
+  * Change sq key subkey {password,delete} to work with weak bindings.
+  * Rename --notation to --signature-notation.
+  * Add `sq encrypt --signature-notation`.
+  * Fix examples.
+  * Add missing examples for the network commands.
+  * Add a builder-style interface to the example framework.
+  * Certify newly created keys with a per-host shadow CA.
+  * Differentiate the help texts for `--notation` slightly.
+  * Fix sq cert lint.
+  * Check for the cert / key store before doing work.
+  * Improve no cert store / no key store error messages.
+  * Catch clap errors, and display them better.
+  * Rename `sq pki vouch certify` to `sq pki vouch add`.
+  * Make `sq key import` read from stdin if no files are given.
+  * Move the CLI parser for sq key import to its own module.
+  * update container examples in readme
+  * make container a single-user environment
+  * add dockerignore file
+  * add bash completion and manpages to container
+  * improve OCI compatibility of Containerfile
+  * rename Dockerfile to vendor-neutral Containerfile
+  * Change sq network wkd generate to avoid unnecessary churn.
+  * Improve sq network wkd generate's error messages.
+  * Fail if the user tries to create an empty WKD.
+  * Make sq network wkd publish more chatty.
+  * Make sq network wkd publish more robust.
+  * Fix sq packet join to not panic if there is no input.
+  * Show an issuer's user ID, if we know it.
+  * Rename sq packet split --prefix to --output-prefix.
+  * Add a hint to sq packet split's output.
+  * Change sq packet split to write to stdout by default.
+  * Improve the "waiting for input on stdin" message.
+  * Limit width when wrapping help texts to increase readability.
+  * Use a simpler word separator algorithm to keep URLs intact.
+  * Don't break lines if stderr is not a terminal.
+  * Don't limit the width of emitted text.
+  * Remove `sq toolbox extract-cert`.
+  * Remove test framework for toolbox strip-userid.
+  * Fix hints to do packet dump.
+  * Change sq decrypt to not use rpassword directly.
+  * Change sq decrypt to respect --batch.
+  * Make `sq cert lint` read from stdin again.
+  * Only display hint for live certs.
+  * Align spelling of cert-store with the command line argument.
+  * Show sources of data when fetching certs over the network.
+  * In sq key list, prefer weakly bound user IDs to nothing.
+  * Change sq key list to display more user IDs.
+  * Refactor common::get_keys to be less clever.
+  * Fix sq pki path to use Sq::resolve_cert.
+  * Remove unnecessary lookup.
+  * Fix documentation.
+  * Don't add approvals for non-exportable certifications or certs.
+  * Move the ca_creation_time function to the common module.
+  * Change the packet dumper to show the issuer, when available.
+  * Remove the `--binary` flag from all commands emitting certs or keys.
+  * Use `--cert-` prefix for all cert designators.
+  * Remove `sq toolbox strip-userid`.
+  * Turn `sq key approvals --add-authenticated` into a flag.
+  * When searching by fingerprint, show any unauthenticated certificate.
+  * Rearrange the order of the user ID designator arguments.
+  * Rename --add-userid to --userid-or-add, etc.
+  * Add support for examples that are only syntax checked.
+  * Add some tracing.
+  * Fix sq cert list for fingerprints and key IDs.
+  * Implement From<KeyHandle> for CertDesignators.
+  * When listing who made a certification, show the fingerprint.
+  * When listing approvals, indicate whether there are any pending.
+  * Make sq key approvals more transparent.
+  * Make sq key approvals update require an action.
+  * Lint user IDs that would be added and are not self signed.
+  * Rename sq toolbox dearmor to sq packet dearmor.
+  * Rename sq toolbox armor to sq packet armor.
+  * Move sq toolbox packet to sq packet.
+  * Move sq toolbox keyring to sq keyring.
+  * Fix comment.
+  * tests: Fix check.
+  * Show standard usage if no arguments are supplied to sq cert export.
+  * Port sq toolbox userid-strip to the user ID designator framework.
+  * Port sq cert list and two more to the user ID designator framework.
+  * Upgrade sequoia-wot.
+  * Move the authenticate function to its own module under common.
+  * Improve the format of error messages for failing examples.
+  * Revise the authenticate code's linting.
+  * Port sq pki {authenticate,identify} to the cert designator framework.
+  * Move the sq pki identify cli definition to its own module.
+  * Move the sq pki lookup cli definition to its own module.
+  * Move the sq pki authenticate cli definition to its own module.
+  * Improve documentation.
+  * Expand ~ in state directories.
+  * Make `sq encrypt --set-metadata-filename` take a simple string.
+  * Remove `sq encrypt --set-metadata-time`.
+  * Port sq pki path to the user ID designator framework.
+  * Add support for adding a user ID by display name.
+  * Make sq pki path's user ID argument a named argument.
+  * Move the sq pki path cli definition to its own module.
+  * Move the sq pki path implementation to its own module.
+  * Make `sq download --output` mandatory.
+  * Port sq key userid revoke to the user ID designator framework.
+  * Add support for adding a user ID by display name.
+  * When printing self-signed user IDs, also show invalid user IDs.
+  * Port sq key approvals update to the user ID designator framework.
+  * Port sq key approvals list to the user ID designator framework.
+  * Add support for designating a self-signed user ID by display name.
+  * Improve naming.
+  * Optimize downloading of data files with detached signatures.
+  * Forbid `--output` when verifying detached signatures.
+  * Add note.
+  * Cause sq download to fail faster if the output file can't be used.
+  * Split the argument `sq network wkd publish --create` into two.
+  * Use cert designators for the signer arguments of `sq encrypt`.
+  * Use cert designators for the signer arguments of `sq sign`.
+  * Change --email and --add-email to only match user IDs unambiguously.
+  * Add `sq sign --mode` to create binary or text signatures.
+  * Change --add-userid from a flag to two arguments.
+  * Generalize active_certifications.
+  * tests: When calling sq pki authenticate include --show-paths.
+  * tests: Abstract user ID argument passing.
+  * Drop debugging remnant.
+  * Replace `--no-cert-store` and `--no-key-store`.
+  * Make home directory optional.
+  * Introduce accessors.
+  * Require explicit mode, and align `sq sign` and `sq verify`.
+  * Make tests less expensive.
+  * Change sq key list to not filter out unauthenticated certificates.
+  * Add a DWIM search parameter to sq key list.
+  * Remove `sq cert lint --list-keys`.
+  * Set signature creation times closer to where the builder is created.
+  * Expand the designated signers to user ID, email, and domain queries.
+  * Use only designated signers to verify signatures.
+  * Make `sq pki link add` honor `sq --time`.
+  * Move struct VHelper to commands::verify.
+  * Disable the help subcommand everywhere except at the top-level.
+  * Add new command sq download.
+  * Don't move when passing a reference will do.
+  * Add new argument, --cli-version, to require a CLI version.
+  * Rename OutputVersion to Version and move it to its own module.
+  * Fix sq toolbox packet dump's help text.
+  * Don't show the progress bar if --batch is specified.
+  * Print out the certificate that decrypted a message.
+  * Show more information about certificates in sq key list.
+  * Normalize output.
+  * Show more information about certificates in sq cert list.
+  * Finish renaming attestation to approval.
+  * Make sq key expire's expiration argument required.
+  * Use key designators for sq key subkey revoke.
+  * Fix documentation.
+  * Use key designators for sq key subkey {delete,password}.
+  * Change sq key subkey export to require the certificate to export.
+  * Move the bind module.
+  * Move the sq key subkey revoke implementation to its own module.
+  * Move the sq key subkey expire implementation to its own module.
+  * Move the sq key subkey password implementation to its own module.
+  * Move the sq key subkey delete implementation to its own module.
+  * Move the sq key subkey export implementation to its own module.
+  * Move the sq key subkey add implementation to its own module.
+  * Move cli parser for sq key subkey bind to its own module.
+  * Move cli parser for sq key subkey revoke to its own module.
+  * Move cli parser for sq key subkey expire to its own module.
+  * Move cli parser for sq key subkey password to its own module.
+  * Move cli parser for sq key subkey delete to its own module.
+  * Move cli parser for sq key subkey export to its own module.
+  * Move cli parser for sq key subkey add to its own module.
+  * Add a new key designator type.
+  * Use more qualified names to reduce ambiguity.
+  * Don't extend the expiration of invalid components.
+  * Change sq key subkey bind to use the expriation type.
+  * Extend Time to support relative timestamps.
+  * Move the Time type to its own module.
+  * Make it clearer that we don't support ISO 8601 durations.
+  * Dry out sq key expire's expiration argument.
+  * Add a global option, --policy-as-of, to select a crypto policy.
+  * If decryption fails, delete the output file.
+  * tests: Generalize Sq::encrypt and Sq::decrypt to work with files.
+  * If signature verification fails, delete the output file.
+  * Add support for merging bare revocation certificates.
+  * Dry out the keyring merge function.
+
+-------------------------------------------------------------------
 Mon Nov 04 07:40:40 UTC 2024 - felix.niederwanger@suse.de
 
 - Update to version 0.39.0:
