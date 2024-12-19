@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Dec 19 13:31:49 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 14.2.2:
+  * No release notes.
+- Changes from version 14.2.0:
+  * faster handling of symmetric matrices by inv(), rcond(),
+    powmat().
+  * faster handling of hermitian matrices by inv(), rcond(),
+    powmat(), cond(), pinv(), rank().
+  * added solve_opts::force_sym option to solve() to force use of
+    the symmetric/hermitian solver (not limited to sympd
+    matrices).
+  * more efficient handling of compound expressions by solve().
+
+-------------------------------------------------------------------
 Mon Jul  8 19:50:54 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 14.0.1:
