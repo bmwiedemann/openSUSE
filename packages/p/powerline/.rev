@@ -140,4 +140,12 @@ editors status lines (vim) and WM widgets for specific WMs (awesome, qtile)</com
     <comment></comment>
     <requestid>1144133</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b683d8fa83b0f336b33a3b810065dae5</srcmd5>
+    <version>2.8.4</version>
+    <time>1734640929</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1232604</requestid>
+  </revision>
 </revisionlist>

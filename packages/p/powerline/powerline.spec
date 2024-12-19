@@ -18,15 +18,13 @@
 
 %define powerline_python_sitelib %{python3_sitelib}
 Name:           powerline
-Version:        2.8.3
+Version:        2.8.4
 Release:        0
 Summary:        Status line and prompt utility
 License:        MIT
 Group:          System/Console
 URL:            https://github.com/powerline/powerline
 Source0:        https://github.com/powerline/powerline/archive/%{version}/powerline-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM powerline-python3.11-compat.patch gh#powerline/powerline#2209 badshah400@gmail.com -- Make powerline compatible with python 3.11
-Patch0:         https://patch-diff.githubusercontent.com/raw/powerline/powerline/pull/2212.patch#/powerline-python3.11-compat.patch
 BuildRequires:  fdupes
 BuildRequires:  fontconfig
 BuildRequires:  git-core
