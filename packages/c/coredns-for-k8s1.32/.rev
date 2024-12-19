@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9887bc8d9869898b86f11c7dcbbf7bb9</srcmd5>
+    <version>1.11.3</version>
+    <time>1734640943</time>
+    <user>anag+factory</user>
+    <comment>Initial package version 1.11.3
+  * Version specified in kubernetes v1.32.0 - https://github.com/kubernetes/kubernetes/blob/v1.32.0/build/dependencies.yaml#L32-L34</comment>
+    <requestid>1232555</requestid>
+  </revision>
+</revisionlist>
