@@ -1,17 +1,18 @@
 <?xml version="1.0"?>
 <services>
-  <service name="tar_scm" mode="localonly">
+  <service name="obs_scm" mode="manual">
     <param name="filename">goldendict-ng</param>
     <param name="scm">git</param>
     <param name="url">git@github.com:xiaoyifang/goldendict-ng.git</param>
-    <param name="version">23.05.03</param>
-    <param name="revision">136d1cb03b3c2ed98d9be095ca39de845efdaefc</param>
+    <param name="version">24.09.1</param>
+    <param name="revision">v24.09.1-Release.ca9dd133</param>
     <param name="exclude">winlibs/*</param>
     <param name="submodules">disable</param>
   </service>
-  <service name="recompress" mode="localonly">
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service name="set_version" mode="localonly"/>
+  <service name="set_version" mode="manual"/>
 </services>

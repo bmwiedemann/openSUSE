@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Dec 16 10:39:58 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 24.09.1:
+  * Fix a Qt6.8 build error
+  * Fix a minor, somewhat easy to trigger crash (Ctrl+F with no
+    articles opened.)
+- Switch to Qt6 builds.
+- Use cmake for builds, qmake is no longer supported as a build
+  tool by upstream.
+- Pass CMAKE_SKIP_INSTALL_RPATH option to cmake to avoid rpaths in
+  final executable.
+- Drop Qt5 build support.
+- Use ninja for build.
+- Switch to obs_scm service (instead of tar_scm).
+
+-------------------------------------------------------------------
 Tue Jun  6 15:03:42 UTC 2023 - slb <shenlebantongying@gmail.com>
 
 - Drop the version.txt patch
