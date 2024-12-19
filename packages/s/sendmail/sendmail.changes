@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 17 12:20:45 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add sendmail.8.18.1-reproducibleuname.patch to not embed
+  the build machine's kernel version in debuginfo (boo#1234629)
+
+-------------------------------------------------------------------
 Mon Feb 26 13:07:48 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

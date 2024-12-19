@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 17 12:52:06 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Add some missing packages to kvm-and-xen-{grub-bls,sdboot} profiles
+  (boo#1234610)
+- Remove outdated comment about kernel-default-base lacking dm-crypt
+- Avoid duplicate uefi_mbr inclusion
+
+-------------------------------------------------------------------
 Tue Nov 12 12:25:21 UTC 2024 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Use the enrollment packages from sdbootutil

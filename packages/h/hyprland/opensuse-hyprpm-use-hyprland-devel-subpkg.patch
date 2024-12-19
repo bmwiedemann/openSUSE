@@ -1,4 +1,4 @@
-From 59baf7887afbb81fc56fc211571f50c6f6806be0 Mon Sep 17 00:00:00 2001
+From 1046bd52a4725819fd0ab00391b29adeb0d1eeef Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Florian=20sp1rit=E2=80=8B?= <sp1rit@disroot.org>
 Date: Fri, 14 Jun 2024 23:43:46 +0200
 Subject: [PATCH] openSUSE: Use hyprland-devel instead of downloading from
@@ -34,7 +34,7 @@ index fb8679d..a1c7026 100644
  
  void DataState::ensureStateStoreExists() {
 diff --git a/hyprpm/src/core/PluginManager.cpp b/hyprpm/src/core/PluginManager.cpp
-index 57c6764..7f2ca09 100644
+index 48b108c..b0f590b 100644
 --- a/hyprpm/src/core/PluginManager.cpp
 +++ b/hyprpm/src/core/PluginManager.cpp
 @@ -17,6 +17,7 @@
@@ -45,18 +45,18 @@ index 57c6764..7f2ca09 100644
  #include <pwd.h>
  #include <unistd.h>
  
-@@ -412,141 +413,27 @@ bool CPluginManager::updateHeaders(bool force) {
-     const auto HLVER = getHyprlandVersion();
+@@ -436,141 +437,27 @@ bool CPluginManager::updateHeaders(bool force) {
+     const auto HLVER = getHyprlandVersion(false);
  
      if (!hasDeps()) {
--        std::println("\n{}", failureString("Could not update. Dependencies not satisfied. Hyprpm requires: cmake, meson, cpio"));
-+        std::println("\n{}", failureString("Could not update. Dependencies not satisfied. Hyprpm requires: hyprland-devel, cmake, meson, cpio"));
+-        std::println("\n{}", failureString("Could not update. Dependencies not satisfied. Hyprpm requires: cmake, meson, cpio, pkg-config"));
++        std::println("\n{}", failureString("Could not update. Dependencies not satisfied. Hyprpm requires: hyprland-devel, cmake, meson, cpio, pkg-config"));
          return false;
      }
  
--    if (!std::filesystem::exists("/tmp/hyprpm")) {
--        std::filesystem::create_directory("/tmp/hyprpm");
--        std::filesystem::permissions("/tmp/hyprpm", std::filesystem::perms::all, std::filesystem::perm_options::replace);
+-    if (!std::filesystem::exists(getTempRoot())) {
+-        std::filesystem::create_directory(getTempRoot());
+-        std::filesystem::permissions(getTempRoot(), std::filesystem::perms::owner_all, std::filesystem::perm_options::replace);
 -    }
 -
 -    if (!force && headersValid() == HEADERS_OK) {
@@ -72,7 +72,7 @@ index 57c6764..7f2ca09 100644
 -    progress.print();
 -
 -    const std::string USERNAME   = getpwuid(getuid())->pw_name;
--    const auto        WORKINGDIR = "/tmp/hyprpm/hyprland-" + USERNAME;
+-    const auto        WORKINGDIR = getTempRoot() + "hyprland-" + USERNAME;
 -
 -    if (!createSafeDirectory(WORKINGDIR)) {
 -        std::println("\n{}", failureString("Could not prepare working dir for hl"));
@@ -90,12 +90,12 @@ index 57c6764..7f2ca09 100644
 -    if (m_bVerbose && bShallow)
 -        progress.printMessageAbove(verboseString("will shallow since: {}", SHALLOW_DATE));
 -
--    std::string ret =
--        execAndGet("cd /tmp/hyprpm && git clone --recursive https://github.com/hyprwm/Hyprland hyprland-" + USERNAME + (bShallow ? " --shallow-since='" + SHALLOW_DATE + "'" : ""));
+-    std::string ret = execAndGet(std::format("cd {} && git clone --recursive https://github.com/hyprwm/Hyprland hyprland-{}{}", getTempRoot(), USERNAME,
+-                                             (bShallow ? " --shallow-since='" + SHALLOW_DATE + "'" : "")));
 -
 -    if (!std::filesystem::exists(WORKINGDIR)) {
 -        progress.printMessageAbove(failureString("Clone failed. Retrying without shallow."));
--        ret = execAndGet("cd /tmp/hyprpm && git clone --recursive https://github.com/hyprwm/hyprland hyprland-" + USERNAME);
+-        ret = execAndGet(std::format("cd {} && git clone --recursive https://github.com/hyprwm/hyprland hyprland-{}", getTempRoot(), USERNAME));
 -    }
 -
 -    if (!std::filesystem::exists(WORKINGDIR + "/.git")) {
@@ -131,9 +131,8 @@ index 57c6764..7f2ca09 100644
 -    progress.printMessageAbove(successString("checked out to running ver"));
 -    progress.m_iSteps           = 3;
 -    progress.m_szCurrentMessage = "Building Hyprland";
-+    progress.m_szCurrentMessage = "Checking headers";
-     progress.print();
- 
+-    progress.print();
+-
 -    progress.printMessageAbove(statusString("!", Colors::YELLOW, "configuring Hyprland"));
 -
 -    if (m_bVerbose)
@@ -161,8 +160,9 @@ index 57c6764..7f2ca09 100644
 -    progress.printMessageAbove(successString("configured Hyprland"));
 -    progress.m_iSteps           = 4;
 -    progress.m_szCurrentMessage = "Installing sources";
--    progress.print();
--
++    progress.m_szCurrentMessage = "Checking headers";
+     progress.print();
+ 
 -    const std::string& cmd =
 -        std::format("sed -i -e \"s#PREFIX = /usr/local#PREFIX = {}#\" {}/Makefile && cd {} && make installheaders", DataState::getHeadersPath(), WORKINGDIR, WORKINGDIR);
 -    if (m_bVerbose)
@@ -192,7 +192,7 @@ index 57c6764..7f2ca09 100644
          progress.m_szCurrentMessage = "Failed";
          progress.print();
  
-@@ -910,6 +797,19 @@ std::string CPluginManager::headerErrorShort(const eHeadersErrors err) {
+@@ -953,6 +840,19 @@ std::string CPluginManager::headerErrorShort(const eHeadersErrors err) {
  }
  
  bool CPluginManager::hasDeps() {

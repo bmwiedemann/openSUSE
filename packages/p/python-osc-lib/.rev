@@ -323,4 +323,20 @@
   - Add pre-commit</comment>
     <requestid>1171411</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8c5fa7ef1d6ef646fad426ac66fea760</srcmd5>
+    <version>3.1.0</version>
+    <time>1734549027</time>
+    <user>anag+factory</user>
+    <comment>- update to version 3.1.0
+  - Fix branch selection in zuul config
+  - Update master for stable/2024.1
+  - reno: Update master for unmaintained/victoria
+  - zuul: Use openstack-python3-jobs template
+  - reno: Update master for unmaintained/zed
+  - reno: Update master for unmaintained/wallaby
+  - reno: Update master for unmaintained/xena
+  - Drop dependency on simplejson</comment>
+    <requestid>1231833</requestid>
+  </revision>
 </revisionlist>

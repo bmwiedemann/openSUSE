@@ -5,10 +5,10 @@ References:
 Upstream: submitted
 
 
-Index: dump-0.4b46/rmt/Makefile.am
+Index: b/rmt/Makefile.am
 ===================================================================
---- dump-0.4b46.orig/rmt/Makefile.am
-+++ dump-0.4b46/rmt/Makefile.am
+--- a/rmt/Makefile.am
++++ b/rmt/Makefile.am
 @@ -1,17 +1,23 @@
  AM_CPPFLAGS = -I$(top_srcdir)/compat/include
  DISTCLEANFILES =
@@ -36,7 +36,7 @@ Index: dump-0.4b46/rmt/Makefile.am
 -DISTCLEANFILES += rmt.8
 -EXTRA_DIST += rmt.8.in
 -
- rmt_SOURCES = rmt.c
+ rmt_SOURCES = rmt.c rmt.h
  rmt_LDADD = ../compat/lib/libcompat.la $(EXT2FS_LIBS)
  
 @@ -22,3 +28,8 @@ rmt.8: rmt.8.in
@@ -48,13 +48,13 @@ Index: dump-0.4b46/rmt/Makefile.am
 +	sed -e "s|__DATE__|$(DATE)|g" \
 +	    -e "s|__VERSION__|$(VERSION)|g" $< > $@
 +
-Index: dump-0.4b46/configure.ac
+Index: b/configure.ac
 ===================================================================
---- dump-0.4b46.orig/configure.ac
-+++ dump-0.4b46/configure.ac
-@@ -80,9 +80,6 @@ AC_MSG_CHECKING([whether to build ermt])
+--- a/configure.ac
++++ b/configure.ac
+@@ -87,9 +87,6 @@ AC_MSG_CHECKING([whether to build ermt])
  BUILD_ERMT=no
- AC_ARG_ENABLE([ermt], [AC_HELP_STRING([--enable-ermt], [compile ermt, an encrypting version of rmt @<:@default=no@:>@])])
+ AC_ARG_ENABLE([ermt], [AS_HELP_STRING([--enable-ermt],[compile ermt, an encrypting version of rmt @<:@default=no@:>@])])
  if test "$enable_ermt" = "yes"; then
 -	if test "$BUILD_RMT" != "yes"; then
 -		AC_MSG_ERROR([ermt requires --enable-rmt])
@@ -62,18 +62,18 @@ Index: dump-0.4b46/configure.ac
  	BUILD_ERMT=yes
  fi
  AM_CONDITIONAL([BUILD_ERMT], [test "$BUILD_ERMT" = "yes"])
-Index: dump-0.4b46/Makefile.am
+Index: b/Makefile.am
 ===================================================================
---- dump-0.4b46.orig/Makefile.am
-+++ dump-0.4b46/Makefile.am
+--- a/Makefile.am
++++ b/Makefile.am
 @@ -1,9 +1,6 @@
  ACLOCAL_AMFLAGS = -I m4
  
--SUBDIRS = compat/lib common dump restore
+-SUBDIRS = compat/lib common dump restore faketape
 -if BUILD_RMT
 -SUBDIRS += rmt
 -endif
-+SUBDIRS = compat/lib common dump restore rmt
++SUBDIRS = compat/lib common dump restore rmt faketape
  
  EXTRA_DIST = \
  	dump.lsm KNOWNBUGS MAINTAINERS REPORTING-BUGS \

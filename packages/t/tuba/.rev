@@ -43,4 +43,41 @@
   * Segfault when closing the mediaviewer before the spinner timeout finishes (forwarded request 1199904 from rrahl0)</comment>
     <requestid>1199905</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>28de7b005893863a20b3ba83313097a5</srcmd5>
+    <version>0.9.0</version>
+    <time>1734548981</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9.0:
+  * Audio Visualizer
+  * Focus Picker
+  * Scheduled Posts
+  * Draft Posts
+  * Bold search query in results
+  * Mute expiration and notification hiding switch
+  * Verified Authors section on preview cards
+  * Link discussion timelines on explore tab news
+  * Accent colors and other GNOME 47 changes
+  * Numeric style for counters
+  * Adw.Spinners
+  * Attachment thumbnail in alt text dialog
+  * Custom picture widget that can display thumbnails at their defined focus position
+  * tuba://share
+  * Removed the pre 0.8 cache cleaner
+  * Muting your own posts
+  * Copy attachment on CtrlC in the Media Viewer
+  * Auto-fill author button in Advanced Search Dialog
+  * Hashtag extracting from the end of a post to a separate section
+  * Removed GL renderer preference
+  * Poll animations
+  * Poll show and refresh results buttons
+  * Full emoji reaction and stats support when possible
+  * Opt-in anonymous preference popularity analytics
+  * Improved the profile posts, replies, media filter UX
+  * Use TextView for the alt text dialog
+  * Sync post language and spellchecker language
+  * #FediWrapped
+  * Account suggestions for new fediverse users (forwarded request 1231768 from rrahl0)</comment>
+    <requestid>1231769</requestid>
+  </revision>
 </revisionlist>

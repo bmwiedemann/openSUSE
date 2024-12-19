@@ -36,7 +36,7 @@
 %bcond_with     setuptools
 %bcond_without  mono
 Name:           meson%{name_ext}
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        Python-based build system
 License:        Apache-2.0
@@ -51,8 +51,6 @@ Patch0:         meson-test-installed-bin.patch
 Patch1:         extend-test-timeout-on-qemu-builds.patch
 # PATCH-FIX-OPENSUSE meson-distutils.patch -- meson is ring0 and therefor setuptools is not available
 Patch2:         meson-distutils.patch
-# PATCH-FIX-UPSTREAM -- Fix test suite with rust 1.83
-Patch3:         https://patch-diff.githubusercontent.com/raw/mesonbuild/meson/pull/13935.patch
 
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  fdupes
@@ -190,7 +188,6 @@ Vim/NeoVim.
 %if !%{with setuptools}
 %patch -P 2 -p1
 %endif
-%patch -P 3 -p1
 
 %if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000
 # AddressSanitizer fails here because of ulimit.

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec 18 06:50:01 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.36.1:
+  * build(deps): bump the go-dependencies group with 2 updates
+  * build(deps): bump the go-dependencies group with 7 updates
+  * Correct wording for `buildpack new` targets flag
+  * build(deps): bump the go-dependencies group across 1 directory
+    with 4 updates
+  * build(deps): bump buildpacks/github-actions from 5.8.1 to 5.8.3
+  * acceptance tests on arm64
+
+-------------------------------------------------------------------
 Wed Nov 27 09:55:16 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.36.0:

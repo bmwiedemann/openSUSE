@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec 15 21:51:35 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 15.1
+  * Add Vulkan 1.4 target and client
+  * Implement GLSL_NV_cooperative_matrix2
+  * Emit OpModfStruct instead of depracated OpModf
+
+-------------------------------------------------------------------
 Thu Sep 26 19:29:05 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 15

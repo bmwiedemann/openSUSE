@@ -1,4 +1,145 @@
 -------------------------------------------------------------------
+Tue Dec 17 19:35:11 UTC 2024 - Florian "spirit" <sp1rit@disroot.org>
+
+- Update to version 0.46.1:
+  + A minor release with a patch backported from main.
+  + Fixes backported:
+    - windowrules: fixup duplicate rule enum tags
+
+-------------------------------------------------------------------
+Tue Dec 17 11:20:07 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Update to version 0.46.0:
+  + The Hyprland overlord (also known as Santa in December) is
+    proudly bringing you 0.46.0.
+    Merry Hypr Christmas!
+  + Breaking changes
+    - window/layer rule regexes now require a full match (not any
+      match) to trigger.
+    - cursor:dumb_copy is gone in favor of cursor:use_cpu_buffer.
+      This should allow no-downsides Nvidia hardware cursors. Please
+      note it's experimental.
+  + New features:
+    - binds: add option to allow fullscreening a pinned window
+      (#8526)
+    - config: add 'force' option for
+      'cursor:warp_on_change_workspace' (#8681)
+    - core: Add support for hyprqtutils' update screen (#8651)
+    - core: add a few festive splashes
+    - core: move colorspace handling to oklab (#8635)
+    - dispatchers: Add an option to prioritize focus change within
+      groups with movefocus (#8601)
+    - hooks: add pre connected/disconnected monitor events (#8503)
+    - hyprctl: add an inhibitingIdle field to windows
+    - hyprctl: add directScanout to hyprctl monitors
+    - hyprctl: add json output on hyprctl -j plugins list (#8480)
+    - input: add warp_back_after_non_mouse_input
+    - logging: Add some context to config error logs (#8326)
+    - pointer: add drm dumb buffers for cursors (#8399)
+    - renderer: add lockdead_screen_delay (#8467)
+    - renderer: add option to blur IME popups (#8521)
+    - version: add link versions for other utils (#8619)
+    - windowrules: add rules for mouse and touchpad scroll factors
+      (#8655)
+    - xwayland: Support cross DnD from Wayland (#8708)
+  + Fixes:
+    - animationmgr: fixup stack-use-after-return
+    - compositor: fix monitor arrangement with mixed auto directions
+    - core/data-device: expand damage region to fix minor px errors
+    - core: Fix workspace selector parsing (#8687)
+    - data-device: fixup wrong box expansion
+    - defaultConfig: fixup smart gaps rules
+    - hyprpm: fix incomplete unmet dependencies message
+    - internal: fix changeWindowZOrder reordering incorrectly (#8494)
+    - internal: fix some misused configStringToInt conversions
+    - internal: fixup some missed updateColorsOk() calls
+    - layerrules: fix ignorezero not working
+    - monitor: fix default focus when switching to a fs workspace
+    - opengl: fixup invalid ogl uniform reads
+    - opengl: fixup missed /4 in oklab parsing
+    - renderer: fix incorrect early return (#8590)
+    - renderer: fixup blur optimization considitons
+    - seat: fix double scrolling in some applications (#8583)
+    - shm: fix shm fd size check before creating or resizing shm_pool
+      (#8572)
+    - windowrules: fix prop rules with boolean values
+    - workspace: fix missing name via focusworkspaceoncurrentmonitor
+      (#8484)
+  + Other:
+    - bezier: optimize setup of bezier curves (#8528)
+    - bind: new long press option (#8302)
+    - cleanup: remove leftover var in ThreadManager.cpp (#8611)
+    - config: Changed the default value of
+      decoration:blur:ignore_opacity to true (#8418)
+    - config: don't overwrite errors in gradients
+    - config: throw an error explicitly when parsing colors in
+      gradients
+    - config: update the configStringToInt implementation (#8476)
+    - constraints: don't warp pointer position on release (#8491)
+    - core/data: Use pointer focus for DnD operations (#8707)
+    - core/output: don't send enter too aggresively
+    - core: Move regex from stdlib to re2 (#8736)
+    - core: Optimize window/layer rule application and scanning
+      (#8735)
+    - core: drop using deques in favor of vectors
+    - core: feeling a bit quirky today.
+    - core: guard pmonitor in focuswindow
+    - core: move to os/Process from hyprutils
+    - core: move version include to hyprctl
+    - core: removed Herobrine
+    - core: workspace-related function cleanup / refactor
+    - crashreporter: avoid clang warning
+    - debug: clean up fetching of the contents of /proc/device-tree
+      (#8413)
+    - debug: clean up opening of files in HyprCtl (#8401)
+    - descriptions: change allow_pin_fullscreen value to false
+      (#8592)
+    - drm: enable explit out fence in AQ (#8431)
+    - hyprctl: avoid crash on null pwuid
+    - hyprctl: verify runtime dir exists in instances()
+    - hyprland-uwsm.desktop: Just reference plain entry (#8553)
+    - hyprpm: move temp files to XDG_RUNTIME_DIR
+    - hyprpm: target installed instead of running version (#8634)
+    - internal: minor cleanups for color results
+    - keybinds: actually suppress internal keybinds instead of
+      passing them along (#8538)
+    - keybinds: allow repeating multiple binds (#8290)
+    - keybinds: don't animate fullscreen size/pos changes coming in
+    - keybinds: move to managed pointers
+    - layersurface: use lastMonitor and not monitor from cursor for
+      new ls
+    - master: make center ignore reserved areas (#8625)
+    - meson: autodetect systemd
+    - miscfunctions: move configStringToInt to std::expected
+    - pointer: map devices across all outputs by default (#8352)
+    - protocols: mark primarySelection as not privileged
+    - rename hyprland-systemd.desktop and remove
+      hyprland-session.service
+    - renderer: don't render unmapped popups
+    - renderer: drop requesting OUT_FENCE_PTR
+    - renderer: restore discard mode after IME render pass
+    - renderer: scaled surfaces could have zero area (#8423)
+    - renderer: simplify blur enabling logic
+    - shell: don't use fgrep, prefer grep -F
+    - shell: propagate new machanism from hyprctl to miscfunctions
+    - snap: account for position of multiple monitors (#8543)
+    - snap: bias reserved area when its size is greater than zero
+      (#8694)
+    - snap: check which corner is being grabbed for monitor snapping
+      (#8637)
+    - snap: use the bit mask to check if snapping occurred (#8659)
+    - systemd: hyprland-systemd.desktop -> hyprland-uwsm.desktop
+    - versionkeeper: init version to 0.0.0 if no file is present
+    - windows/xdg: minor cleanup of min/max size calculations
+    - windows: allow replacing existing fullscreen (#8566)
+    - workspace: update hasFullscreenWindow in updateWindows
+    - workspacerules: Do not check 'on-created-empty' if using a
+      workspace windowrule (#8486)
+    - xcursors: store themes in a std:set to order it (#8474)
+    - xdg-shell: don't report invalid min/max sizes on unset
+    - xdg-shell: even more robust layout min/max size
+
+-------------------------------------------------------------------
 Wed Nov 20 13:55:57 UTC 2024 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Update to version 0.45.2:

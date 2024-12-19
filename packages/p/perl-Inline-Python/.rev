@@ -31,4 +31,13 @@
     <comment></comment>
     <requestid>1080866</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>9af8dc5dbd799927d33f395212f4c7ea</srcmd5>
+    <version>0.57</version>
+    <time>1734549013</time>
+    <user>anag+factory</user>
+    <comment>- add initperl_prototype.diff to fix compiler issue
+</comment>
+    <requestid>1231823</requestid>
+  </revision>
 </revisionlist>

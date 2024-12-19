@@ -1,0 +1,12 @@
+diff -ur Inline-Python-0.57/Python.xs Inline-Python-0.57_fix/Python.xs
+--- Inline-Python-0.57/Python.xs	2022-09-18 13:07:09.299412240 +0200
++++ Inline-Python-0.57_fix/Python.xs	2024-12-18 10:02:00.459704530 +0100
+@@ -8,6 +8,8 @@
+ #include "py2pl.h"
+ #include "util.h"
+ 
++void initperl(void);
++
+ #ifdef EXPOSE_PERL
+ #include "perlmodule.h"
+ #endif

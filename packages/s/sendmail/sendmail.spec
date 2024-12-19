@@ -154,6 +154,7 @@ Patch4:         sendmail-8.14.8-m4header.patch
 Patch5:         sendmail-fd-passing-libmilter.patch
 # PATCH-FIX-OPENSUSE: make build result reproducible
 Patch8:         sendmail-8.15.2-reproducible.patch
+Patch9:         sendmail.8.18.1-reproducibleuname.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %global         _sysconfdir	%{_sysconfdir}
 %global         _mailcnfdir	%{_sysconfdir}/mail
@@ -250,6 +251,7 @@ processed mail on to the MTA (e.g. sendmail).
 %patch -P 5 -p1 -b .fdmilt
 %patch -P 0 -p0 -b .p0
 %patch -P 8 -p1 -b .reproducible
+%patch -P 9 -p1 -b .reproducibleuname
     tar --strip-components=1 -xf %{S:1}
     set -f
     cat <<-EOF > file-list

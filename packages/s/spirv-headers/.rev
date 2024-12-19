@@ -354,4 +354,12 @@
     <comment>- Update to release 1.6.4+sdk296</comment>
     <requestid>1206373</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>d034444c0608c9493dadb5c7cc8408ce</srcmd5>
+    <version>1.6.4+sdk303</version>
+    <time>1734548919</time>
+    <user>anag+factory</user>
+    <comment>- Update to snapshot 1.6.4+sdk303</comment>
+    <requestid>1231573</requestid>
+  </revision>
 </revisionlist>

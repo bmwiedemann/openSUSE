@@ -20,14 +20,12 @@
 %if "%{flavor}" == "test"
 %define psuffix -test
 %bcond_without test
-# python310-hypercorn doesn't exist
-%define skip_python310 1
 %else
 %define psuffix %{nil}
 %bcond_with test
 %endif
 Name:           python-httpx-socks%{psuffix}
-Version:        0.9.2
+Version:        0.10.0
 Release:        0
 Summary:        Proxy (HTTP, SOCKS) transports for httpx
 License:        Apache-2.0
@@ -42,13 +40,11 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module anyio}
 BuildRequires:  %{python_module async-timeout}
 BuildRequires:  %{python_module flake8}
-BuildRequires:  %{python_module httpcore}
-BuildRequires:  %{python_module httpx}
+BuildRequires:  %{python_module httpx-socks = %{version}}
 BuildRequires:  %{python_module hypercorn}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-trio}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-socks}
 BuildRequires:  %{python_module starlette}
 BuildRequires:  %{python_module tiny-proxy}
 BuildRequires:  %{python_module trio}

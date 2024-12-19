@@ -17,13 +17,13 @@
 
 
 Name:           python-oslo.serialization
-Version:        5.4.0
+Version:        5.5.0
 Release:        0
 Summary:        OpenStack serialization library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.serialization
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.serialization/oslo.serialization-5.4.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.serialization/oslo.serialization-5.5.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-msgpack >= 0.5.2
 BuildRequires:  python3-netaddr
@@ -61,7 +61,7 @@ in transmittable and storable formats, such as Base64, JSON and MessagePack.
 This package contains the documentation.
 
 %prep
-%autosetup -p1 -n oslo.serialization-5.4.0
+%autosetup -p1 -n oslo.serialization-5.5.0
 sed -i -e "s,bandit.*,," test-requirements.txt
 %py_req_cleanup
 

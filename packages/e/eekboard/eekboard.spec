@@ -1,7 +1,7 @@
 #
 # spec file for package eekboard
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,9 +24,12 @@ Release:        0
 Summary:        An easy to use virtual keyboard toolkit
 License:        GPL-3.0-or-later
 Group:          System/GUI/Other
-URL:            http://github.com/ueno/eekboard
-Source0:        %{name}-%{version}.tar.gz
+URL:            https://github.com/ueno/eekboard
+Source0:        https://github.com/ueno/eekboard/archive/%{name}-%{version}/%{name}-%{version}.tar.gz
 Patch0:         port-to-python3.patch
+Patch1:         fix-compile-on-gcc14.patch
+BuildRequires:  gnome-common
+BuildRequires:  pkgconfig(eek-0.90)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
@@ -75,10 +78,10 @@ Requires:       %{name} = %{version}
 The eekboard-devel package contains the header files.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-%{name}-%{version}
 
 %build
-# ./autogen.sh
+NOCONFIGURE=1 ./autogen.sh
 %configure --enable-introspection \
            --enable-vala \
            --enable-atspi \
@@ -86,7 +89,8 @@ The eekboard-devel package contains the header files.
            --enable-xtest \
 %endif
            --disable-schemas-compile \
-           --enable-libcanberra=yes
+           --enable-libcanberra=yes \
+           --enable-gtk-doc
 
 make %{?_smp_mflags}
 
@@ -110,7 +114,8 @@ rm -rf %{buildroot}%{_libdir}/*.la
 
 %files -f %{name}.lang
 %defattr(-,root,root)
-%doc COPYING README AUTHORS
+%doc README AUTHORS
+%license COPYING
 %{_bindir}/eekboard
 %{_bindir}/eekboard-server
 %{_libdir}/libeek*.so.*

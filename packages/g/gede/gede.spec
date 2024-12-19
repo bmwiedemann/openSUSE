@@ -16,7 +16,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-Version:        2.21.1
+Version:        2.22.1
 Release:        0
 
 %if "@BUILD_FLAVOR@" == "qt6"

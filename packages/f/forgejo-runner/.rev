@@ -91,4 +91,13 @@
   * fix: it wasn't possible to mount the docker socket in each container (forwarded request 1226862 from rrahl0)</comment>
     <requestid>1226863</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>79a31e6df21c0ce7a2bf044202e4513b</srcmd5>
+    <version>5.0.4</version>
+    <time>1734548977</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 5.0.4:
+  * feat: use FORGEJO_TOKEN as runtime token (forwarded request 1231766 from rrahl0)</comment>
+    <requestid>1231767</requestid>
+  </revision>
 </revisionlist>

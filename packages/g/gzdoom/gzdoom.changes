@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec 18 00:52:50 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.14.0
+  * FOV scales ortho up to 180 degrees
+  * Interpolate non-Burn screen wipes
+  * Added net id functions for ACS
+  * Fixed bouncing on 3D floors
+  * Fixed A_SprayDecal not working on 3D floors
+
+-------------------------------------------------------------------
 Sat Nov  2 16:40:47 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.13.2

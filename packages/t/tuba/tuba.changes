@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Tue Dec 17 23:31:35 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.9.0:
+  * Audio Visualizer
+  * Focus Picker
+  * Scheduled Posts
+  * Draft Posts
+  * Bold search query in results
+  * Mute expiration and notification hiding switch
+  * Verified Authors section on preview cards
+  * Link discussion timelines on explore tab news
+  * Accent colors and other GNOME 47 changes
+  * Numeric style for counters
+  * Adw.Spinners
+  * Attachment thumbnail in alt text dialog
+  * Custom picture widget that can display thumbnails at their defined focus position
+  * tuba://share
+  * Removed the pre 0.8 cache cleaner
+  * Muting your own posts
+  * Copy attachment on CtrlC in the Media Viewer
+  * Auto-fill author button in Advanced Search Dialog
+  * Hashtag extracting from the end of a post to a separate section
+  * Removed GL renderer preference
+  * Poll animations
+  * Poll show and refresh results buttons
+  * Full emoji reaction and stats support when possible
+  * Opt-in anonymous preference popularity analytics
+  * Improved the profile posts, replies, media filter UX
+  * Use TextView for the alt text dialog
+  * Sync post language and spellchecker language
+  * #FediWrapped
+  * Account suggestions for new fediverse users
+  * Clean up timelines when blocking / muting accounts
+  * Moved accounts note
+  * Dedicated quote button when appropriate
+  * Viewing which ones of the people you follow also follow an account
+  * Refreshing outdated profile info on cached users
+  * Placing favorite lists to the sidebar
+  * Simpler UX for list member removals
+  * Bubble timeline on supported backends
+  * Moved notification policy settings to the notification view settings dialog
+  * Hide window controls from the Media Viewer to avoid accidentally closing Tuba
+  * Many accessibility improvements
+  * Account birthday style
+  * Thread root post refresh on load
+  * Removed timeline refreshing on network change
+  * Avatar and Header alt text viewing and editing on supported backends
+  * Improved UI of the New Account Dialog to better match the HIG
+  * Handle status notification type
+  * Handle moderation_warning notification type
+  * Window icon as a fallback
+  * Alt text publishing on Akkoma
+  * Dialog titles not following the HIG
+  * Jarring Media Viewer scale animation states
+  * Completion providers returning incorrect results due to the prefix in some backends
+  * Crashes due to custom widgets types not being available sometimes
+  * Floating button area being unclickable and unscrollable
+  * Headerbar having a big minimum width
+  * Use UriLauncher when appropriate
+  * Utility dialogs headerbar UX not following the HIG
+  * List creation and editing on Akkoma
+  * Media Viewer auto-hide timeout match Gtk.Video's
+  * Filter creation and editing on GoToSocial
+  * Timestamp tooltip text format not being converted to the local timezone from UTC
+  * RTL versions of icons not being set or missing
+
+-------------------------------------------------------------------
 Tue Sep 10 15:42:14 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.8.4:
@@ -123,7 +190,6 @@ Sat Jun 22 11:34:02 UTC 2024 - Richard Rahl <rrahl0@disroot.org>
   * Crash when opening the composer while the instance doesn't have custom emojis due to optional chaining
   * Some strings not being marked for translations
   * Other bug and memory leak fixes
-
 
 -------------------------------------------------------------------
 Sun Apr 21 02:24:03 UTC 2024 - Richard Rahl <rrahl0@disroot.org>

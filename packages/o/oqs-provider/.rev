@@ -90,4 +90,16 @@
     keys and signatures (bsc#1226468) (forwarded request 1181500 from msmeissn)</comment>
     <requestid>1181501</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6c3ba4f832466b2582bcac139805c6bb</srcmd5>
+    <version>0.7.0</version>
+    <time>1734549040</time>
+    <user>anag+factory</user>
+    <comment>- updated to 0.7.0:
+  - Adds support for MAYO from Round 1 of NIST’s Post-Quantum Signature On-Ramp process.
+  - Adds support for CROSS from Round 1 of NIST’s Post-Quantum Signature On-Ramp process.
+  - Updates ML-KEM's code points in line with internet draft draft-kwiatkowski-tls-ecdhe-mlkem-02.
+  - Reverses keyshares for X25519MLKEM768 and X448-ML-KEM-768 TLS hybrids in line with draft-kwiatkowski-tls-ecdhe-mlkem-02. (forwarded request 1231843 from msmeissn)</comment>
+    <requestid>1231844</requestid>
+  </revision>
 </revisionlist>

@@ -176,4 +176,27 @@
     <comment></comment>
     <requestid>1011998</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e5d8363a5413718f023a9bcd32a7c41f</srcmd5>
+    <version>3.0.0</version>
+    <time>1734549022</time>
+    <user>anag+factory</user>
+    <comment>- update to version 3.0.0
+  - Use py3 as the default runtime for tox
+  - Update python classifier in setup.cfg
+  - Publish release notes
+  - Restore Python 3.6/7 support
+  - Replace assertItemsEqual with assertCountEqual
+  - [community goal] Update contributor documentation
+  - Stop using deprecated 'message' attribute in Exception
+  - Drop direct execution of run.py
+  - Remove format function
+  - Update CI to use unversioned jobs template
+  - Bump hacking
+  - Migrate from testr to stestr
+  - Remove translation sections from setup.cfg
+  - Remove shebang from setup.py
+  - setup.cfg: Replace dashes by underscores</comment>
+    <requestid>1231829</requestid>
+  </revision>
 </revisionlist>

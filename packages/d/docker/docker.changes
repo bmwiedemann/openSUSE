@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Dec 18 12:29:07 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Update to Docker 27.4.1-ce. See upstream changelog online at
+  <https://docs.docker.com/engine/release-notes/27/#2741>
+- Rebase patches:
+  * 0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+  * 0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+  * 0003-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
+  * 0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+  * 0005-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
+  * cli-0001-docs-include-required-tools-in-source-tree.patch
+
+-------------------------------------------------------------------
+Tue Dec 17 13:20:39 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Update to docker-buildx 0.19.3. See upstream changelog online at
+  <https://github.com/docker/buildx/releases/tag/v0.19.3>
+
+-------------------------------------------------------------------
+Fri Dec 13 06:12:25 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Update to Docker 27.4.0-ce. See upstream changelog online at
+  <https://docs.docker.com/engine/release-notes/27/#274>
+- Rebase patches:
+  * 0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+  * 0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+  * 0003-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
+  * 0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+  * 0005-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
+  * cli-0001-docs-include-required-tools-in-source-tree.patch
+- Remove upstreamed patches:
+  - 0006-bsc1221916-update-to-patched-buildkit-version-to-fix.patch
+  - 0007-bsc1214855-volume-use-AtomicWriteFile-to-save-volume.patch
+
+-------------------------------------------------------------------
 Wed Dec 11 10:14:56 UTC 2024 - Aleksa Sarai <asarai@suse.com>
 
 - Update docker-buildx to v0.19.2. See upstream changelog online at
@@ -6,7 +41,7 @@ Wed Dec 11 10:14:56 UTC 2024 - Aleksa Sarai <asarai@suse.com>
 
   Some notable changelogs from the last update:
     * <https://github.com/docker/buildx/releases/tag/v0.19.0>
-	* <https://github.com/docker/buildx/releases/tag/v0.18.0>
+    * <https://github.com/docker/buildx/releases/tag/v0.18.0>
 - Update to Go 1.22.
 
 -------------------------------------------------------------------
@@ -186,6 +221,7 @@ Mon Mar 25 12:34:56 UTC 2024 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Docker 25.0.5-ce. See upstream changelog online at
   <https://docs.docker.com/engine/release-notes/25.0/#2505> bsc#1223409
+  bsc#1234089 CVE-2024-29018
 - Rebase patches:
   * 0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
   * 0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch

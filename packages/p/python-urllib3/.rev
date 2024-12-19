@@ -862,4 +862,12 @@
     + Fixed HTTPConnection.proxy_is_verified and</comment>
     <requestid>1205339</requestid>
   </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>ad60f9b912e3dc810e5adeb386d348db</srcmd5>
+    <version>2.2.3</version>
+    <time>1734548950</time>
+    <user>anag+factory</user>
+    <comment>- Ignore DeprecationWarning in tests (bsc#1234681)</comment>
+    <requestid>1231820</requestid>
+  </revision>
 </revisionlist>

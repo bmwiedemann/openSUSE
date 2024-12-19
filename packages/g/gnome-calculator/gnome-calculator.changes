@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Dec 16 17:53:12 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 47.1:
+  + Announce the calculation result even when done through the
+    buttons.
+  + Set "Insert Character Code" dialog as modal.
+  + Fixed incorrect units in financial mode.
+  + Changed history view default size.
+  + Fixed incorrectly sized text entry.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Sep 15 12:14:06 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 47.0:

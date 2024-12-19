@@ -1,0 +1,1196 @@
+From db8677f66fd4164f1fe4463391026192042e78b5 Mon Sep 17 00:00:00 2001
+From: Callum Farmer <gmbr3@opensuse.org>
+Date: Tue, 24 Sep 2024 13:44:22 +0100
+Subject: [PATCH 1/4] ARM32 crt0: Split headers and code
+
+I finally figured out how to best achieve this without breaking GNU ld
+
+* Force code to be at known dest of 4096
+* Move _start into .text
+* Load the _start symbol address and then minus 4096 to get the load address
+
+This should make the binary more PE32 compatible
+
+Change in ncroxon/gnu-efi#45
+
+Signed-off-by: Callum Farmer <gmbr3@opensuse.org>
+---
+ efi/crt0/crt0-efi-arm.S | 19 ++++++++++---------
+ efi/lds/elf_arm_efi.lds |  1 +
+ 2 files changed, 11 insertions(+), 9 deletions(-)
+
+diff --git a/efi/crt0/crt0-efi-arm.S b/efi/crt0/crt0-efi-arm.S
+index 2c00906..af75d74 100644
+--- a/efi/crt0/crt0-efi-arm.S
++++ b/efi/crt0/crt0-efi-arm.S
+@@ -45,11 +45,11 @@ optional_header:
+ 	.2byte	0x10b				// PE32+ format
+ 	.byte	0x02				// MajorLinkerVersion
+ 	.byte	0x14				// MinorLinkerVersion
+-	.4byte	_etext - _start		// SizeOfCode
++	.4byte	_text_size - ImageBase		// SizeOfCode
+ 	.4byte	_alldata_size - ImageBase		// SizeOfInitializedData
+ 	.4byte	0				// SizeOfUninitializedData
+ 	.4byte	_start - ImageBase		// AddressOfEntryPoint
+-	.4byte	_start - ImageBase		// BaseOfCode
++	.4byte	_text - ImageBase		// BaseOfCode
+ 	.4byte	_reloc - ImageBase		// BaseOfData
+ 
+ extra_header_fields:
+@@ -67,7 +67,7 @@ extra_header_fields:
+ 	.4byte	_image_end - ImageBase		// SizeOfImage
+ 
+ 	// Everything before the kernel image is considered part of the header
+-	.4byte	_start - ImageBase		// SizeOfHeaders
++	.4byte	_text - ImageBase		// SizeOfHeaders
+ 	.4byte	0				// CheckSum
+ 	.2byte	EFI_SUBSYSTEM			// Subsystem
+ 	.2byte	0				// DllCharacteristics
+@@ -100,10 +100,10 @@ extra_header_fields:
+ section_table:
+ 
+ 	.ascii	".text\0\0\0"
+-	.4byte	_evtext - _start // VirtualSize
+-	.4byte	_start - ImageBase	// VirtualAddress
+-	.4byte	_etext - _start		// SizeOfRawData
+-	.4byte	_start - ImageBase	// PointerToRawData
++	.4byte	_text_vsize - ImageBase // VirtualSize
++	.4byte	_text - ImageBase	// VirtualAddress
++	.4byte	_text_size - ImageBase		// SizeOfRawData
++	.4byte	_text - ImageBase	// PointerToRawData
+ 	.4byte	0		// PointerToRelocations (0 for executables)
+ 	.4byte	0		// PointerToLineNumbers (0 for executables)
+ 	.2byte	0		// NumberOfRelocations  (0 for executables)
+@@ -173,7 +173,7 @@ section_table:
+ 	.4byte	0x40000040	// Characteristics (section flags)
+ #endif
+ 
+-.balign 256
++.text
+ .globl	_start
+ .type _start,%function
+ _start:
+@@ -184,7 +184,8 @@ _start:
+ 	adr		r1, .L_DYNAMIC
+ 	ldr		r0, [r1]
+ 	add		r1, r0, r1
+-	adr		r0, ImageBase
++	adr		r0, _start
++	sub		r0, r0, #0x1000
+ 	bl		_relocate
+ 	teq		r0, #0
+ 	bne		0f
+diff --git a/efi/lds/elf_arm_efi.lds b/efi/lds/elf_arm_efi.lds
+index 0ec597a..4aade31 100644
+--- a/efi/lds/elf_arm_efi.lds
++++ b/efi/lds/elf_arm_efi.lds
+@@ -5,6 +5,7 @@ SECTIONS
+ {
+   .text 0 : {
+     *(.text.head)
++    . = 0x1000;
+     _text = .;
+     *(.text)
+     *(.text.*)
+
+From 7645a77e2c947846613555bdec4c60a549fd8fc3 Mon Sep 17 00:00:00 2001
+From: Callum Farmer <gmbr3@opensuse.org>
+Date: Tue, 24 Sep 2024 19:18:28 +0100
+Subject: [PATCH 2/4] Support using objcopy with RISC-V
+
+* Add system lds file so we can add the SBAT and SBOM sections
+* RISC-V requires objcopy 2.42
+
+Change made in ncroxon/gnu-efi@353984bb9720f31f7e27ac761a718f7fa564ba82
+
+Signed-off-by: Callum Farmer <gmbr3@opensuse.org>
+---
+ efi/lds/elf_riscv64_efi_system.lds | 150 +++++++++++++++++++++++++++++
+ efi/meson.build                    |  12 ++-
+ 2 files changed, 159 insertions(+), 3 deletions(-)
+ create mode 100644 efi/lds/elf_riscv64_efi_system.lds
+
+diff --git a/efi/lds/elf_riscv64_efi_system.lds b/efi/lds/elf_riscv64_efi_system.lds
+new file mode 100644
+index 0000000..b245b2b
+--- /dev/null
++++ b/efi/lds/elf_riscv64_efi_system.lds
+@@ -0,0 +1,150 @@
++/* SPDX-License-Identifier: GPL-2.0-or-later OR BSD-2-Clause */
++
++OUTPUT_FORMAT("elf64-littleriscv", "elf64-littleriscv", "elf64-littleriscv")
++OUTPUT_ARCH(riscv)
++ENTRY(_start)
++SECTIONS
++{
++  . = 0;
++  ImageBase = .;
++  /* .hash and/or .gnu.hash MUST come first! */
++  .hash : { *(.hash) }
++  .gnu.hash : { *(.gnu.hash) }
++  . = ALIGN(4096);
++  .eh_frame : { *(.eh_frame) }
++  .eh_frame_hdr : { *(.eh_frame_hdr) }
++  .gcc_except_table : { *(.gcc_except_table*) }
++  . = ALIGN(4096);
++  .text : {
++    _text = .;
++    *(.text)
++    *(.text.*)
++    *(.gnu.linkonce.t.*)
++    *(.plt)
++    . = ALIGN(16);
++  }
++  _etext = .;
++  _text_size = _etext - _text;
++  . = ALIGN(65536);
++  .reloc :
++  {
++    KEEP (*(.reloc))
++  }
++  . = ALIGN(4096);
++  _DYNAMIC = .;
++  .dynamic  : { *(.dynamic) }
++  . = ALIGN(4096);
++  .data :
++  {
++   _data = .;
++   *(.sdata)
++   *(.data)
++   *(.data1)
++   *(.data.*)
++   *(.got.plt)
++   *(.got)
++
++   /*
++    * Note that these aren't the using the GNU "CONSTRUCTOR" output section
++    * command, so they don't start with a size.  Because of p2align and the
++    * end/END definitions, and the fact that they're mergeable, they can also
++    * have NULLs which aren't guaranteed to be at the end.
++    */
++   . = ALIGN(16);
++   __init_array_start = .;
++   *(SORT(.init_array.*))
++   *(.init_array)
++   __init_array_end = .;
++  . = ALIGN(16);
++   __CTOR_LIST__ = .;
++   *(SORT(.ctors.*))
++   *(.ctors)
++   __CTOR_END__ = .;
++  . = ALIGN(16);
++   __DTOR_LIST__ = .;
++   *(SORT(.dtors.*))
++   *(.dtors)
++   __DTOR_END__ = .;
++   . = ALIGN(16);
++   __fini_array_start = .;
++   *(SORT(.fini_array.*))
++   *(.fini_array)
++   __fini_array_end = .;
++
++   /* the EFI loader doesn't seem to like a .bss section, so we stick
++      it all into .data: */
++   . = ALIGN(16);
++   _bss = .;
++   *(.sbss)
++   *(.scommon)
++   *(.dynbss)
++   *(.bss*)
++   *(COMMON)
++   *(.rel.local)
++   . = ALIGN(16);
++
++   _bss_end = .;
++  }
++
++  . = ALIGN(4096);
++  .rela :
++  {
++    *(.rela.text*)
++    *(.rela.data*)
++    *(.rela.got)
++    *(.rela.dyn)
++    *(.rela.stab)
++    *(.rela.init_array*)
++    *(.rela.fini_array*)
++    *(.rela.ctors*)
++    *(.rela.dtors*)
++
++  }
++  . = ALIGN(4096);
++  .rela.plt : { *(.rela.plt) }
++  . = ALIGN(4096);
++  .rodata : { *(.rodata*) }
++  /*
++   * Note that _sbat must be the beginning of the data, and _esbat must be the
++   * end and must be before any section padding.  The sbat self-check uses
++   * _esbat to find the bounds of the data, and if the padding is included, the
++   * CSV parser (correctly) rejects the data as having NUL values in one of the
++   * required columns.
++   */
++  . = ALIGN(4096);
++  .sbat :
++  {
++    _sbat = .;
++    *(.sbat)
++    *(.sbat.*)
++    _esbat = .;
++    . = ALIGN(4096);
++    _epsbat = .;
++  }
++  _sbat_size = _epsbat - _sbat;
++  _sbat_vsize = _esbat - _sbat;
++  . = ALIGN(4096);
++  .sbom :
++  {
++    _sbom = .;
++    *(.sbom)
++    _epsbom = .;
++  }
++  _sbom_size = _epsbom - _sbom;
++  . = ALIGN(512);
++  _edata = .;
++  _data_size = _edata - _data;
++
++  . = ALIGN(4096);
++  .dynsym   : { *(.dynsym) }
++  . = ALIGN(4096);
++  .dynstr   : { *(.dynstr) }
++  . = ALIGN(4096);
++  .note.gnu.build-id : { *(.note.gnu.build-id) }
++  .ignored.reloc :
++  {
++    *(.rela.reloc)
++    *(.note.GNU-stack)
++  }
++  .comment 0 : { *(.comment) }
++}
+\ No newline at end of file
+diff --git a/efi/meson.build b/efi/meson.build
+index 36dfa5d..0f5014b 100644
+--- a/efi/meson.build
++++ b/efi/meson.build
+@@ -91,12 +91,18 @@ endif
+ 
+ # older objcopy for Aarch64, ARM32 and RISC-V are not EFI capable.
+ # Use 'binary' instead, and add required symbols manually.
+-if host_cpu == 'arm' or host_cpu == 'riscv64' or (host_cpu == 'aarch64' and (objcopy_version.version_compare ('< 2.38') or coff_header_in_crt0 or uswid.found()))
++if host_cpu == 'arm'
++  objcopy_manualsymbols = true
++  generate_binary_extra = ['--objcopy-manualsymbols']
++elif host_cpu == 'aarch64' and (objcopy_version.version_compare ('< 2.38') or coff_header_in_crt0 or uswid.found())
+   objcopy_manualsymbols = true
+   generate_binary_extra = ['--objcopy-manualsymbols']
+ elif host_cpu == 'loongarch64' and (objcopy_version.version_compare ('< 2.41') or coff_header_in_crt0)
+   objcopy_manualsymbols = true
+   generate_binary_extra = ['--objcopy-manualsymbols']
++elif host_cpu == 'riscv64' and (objcopy_version.version_compare ('< 2.42') or coff_header_in_crt0 or uswid.found())
++  objcopy_manualsymbols = true
++  generate_binary_extra = ['--objcopy-manualsymbols']
+ else
+   objcopy_manualsymbols = false
+   generate_binary_extra = []
+@@ -143,8 +149,8 @@ if objcopy_manualsymbols
+   endif
+ endif
+ 
+-# Check aligned lds and crt0 on ARM64 this breaks otherwise
+-if host_cpu == 'aarch64' and not objcopy_manualsymbols
++# Check aligned lds and crt0 on ARM64/RISCV64 this breaks otherwise
++if (host_cpu == 'aarch64' or host_cpu == 'riscv64') and not objcopy_manualsymbols
+   if efi_ldsdir == join_paths(meson.current_source_dir(), 'lds')
+       arch_lds = 'elf_@0@@1@_efi_system.lds'.format(gnu_efi_arch, lds_os)
+   endif
+
+From de727cfa52c5aa08f4a0989cd65f44bb2e658dfa Mon Sep 17 00:00:00 2001
+From: Callum Farmer <gmbr3@opensuse.org>
+Date: Fri, 22 Nov 2024 14:45:17 +0000
+Subject: [PATCH 3/4] Update crt0/lds from GNU-EFI 4.0
+
+* Align CRT0 exit function naming
+* Push .reloc after .data
+* Make our dummy .reloc sections not depend on section order.
+
+Signed-off-by: Callum Farmer <gmbr3@opensuse.org>
+---
+ efi/crt0/crt0-efi-aarch64.S        | 47 +++++++++++++-------------
+ efi/crt0/crt0-efi-arm.S            | 43 +++++++++++++-----------
+ efi/crt0/crt0-efi-loongarch64.S    | 37 +++++++++++----------
+ efi/crt0/crt0-efi-riscv64.S        | 44 +++++++++++++------------
+ efi/lds/elf_aarch64_efi.lds        | 24 +++++++-------
+ efi/lds/elf_aarch64_efi_system.lds | 53 +++++++++++-------------------
+ efi/lds/elf_arm_efi.lds            | 25 +++++++-------
+ efi/lds/elf_loongarch64_efi.lds    | 23 +++++++------
+ efi/lds/elf_riscv64_efi.lds        | 24 +++++++-------
+ efi/lds/elf_riscv64_efi_system.lds | 20 ++++-------
+ efi/lds/elf_x86_64_efi.lds         | 11 ++++---
+ 11 files changed, 171 insertions(+), 180 deletions(-)
+
+diff --git a/efi/crt0/crt0-efi-aarch64.S b/efi/crt0/crt0-efi-aarch64.S
+index edd1fa1..970dbc5 100644
+--- a/efi/crt0/crt0-efi-aarch64.S
++++ b/efi/crt0/crt0-efi-aarch64.S
+@@ -1,5 +1,6 @@
++
+ /*
+- * crt0-efi-aarch64.S - PE/COFF header for AArch64 EFI applications
++ * crt0-efi-aarch64-local.S - PE/COFF header for AArch64 EFI applications (without suitable objcopy)
+  *
+  * Copyright (C) 2014 Linaro Ltd. <ard.biesheuvel@linaro.org>
+  *
+@@ -108,6 +109,17 @@ section_table:
+ 	.2byte	0		// NumberOfLineNumbers  (0 for executables)
+ 	.4byte	0x60000020	// Characteristics (section flags)
+ 
++	.ascii	".data\0\0\0"
++	.4byte	_data_vsize - ImageBase			// VirtualSize
++	.4byte	_data - ImageBase			// VirtualAddress
++	.4byte	_data_size - ImageBase			// SizeOfRawData
++	.4byte	_data - ImageBase			// PointerToRawData
++	.4byte	0			// PointerToRelocations
++	.4byte	0			// PointerToLineNumbers
++	.2byte	0			// NumberOfRelocations
++	.2byte	0			// NumberOfLineNumbers
++	.4byte	0xC0000040		// Characteristics (section flags)
++
+ 	/*
+ 	 * The EFI application loader requires a relocation section
+ 	 * because EFI applications must be relocatable.  This is a
+@@ -124,17 +136,6 @@ section_table:
+ 	.2byte	0			// NumberOfLineNumbers
+ 	.4byte	0x42000040		// Characteristics (section flags)
+ 
+-	.ascii	".data\0\0\0"
+-	.4byte	_data_vsize - ImageBase			// VirtualSize
+-	.4byte	_data - ImageBase			// VirtualAddress
+-	.4byte	_data_size - ImageBase			// SizeOfRawData
+-	.4byte	_data - ImageBase			// PointerToRawData
+-	.4byte	0			// PointerToRelocations
+-	.4byte	0			// PointerToLineNumbers
+-	.2byte	0			// NumberOfRelocations
+-	.2byte	0			// NumberOfLineNumbers
+-	.4byte	0xC0000040		// Characteristics (section flags)
+-
+ 	.ascii	".rodata\0"
+ 	.4byte	_rodata_vsize - ImageBase			// VirtualSize
+ 	.4byte	_rodata - ImageBase			// VirtualAddress
+@@ -145,7 +146,7 @@ section_table:
+ 	.2byte	0			// NumberOfRelocations
+ 	.2byte	0			// NumberOfLineNumbers
+ 	.4byte	0x40000040		// Characteristics (section flags)
+-	
++
+ #ifdef USING_SBAT
+ 	.ascii	".sbat\0\0\0"
+ 	.4byte	_sbat_vsize - ImageBase		// VirtualSize
+@@ -173,6 +174,7 @@ section_table:
+ 	.4byte	0x40000040	// Characteristics (section flags)
+ #endif
+ 
++
+ 	.text
+ 	.globl _start
+ 	.type _start,%function
+@@ -187,23 +189,24 @@ _start:
+ 	adrp		x1, _DYNAMIC
+ 	add		x1, x1, #:lo12:_DYNAMIC
+ 	bl		_relocate
+-	cbnz		x0, 0f
++	cbnz		x0, .L_exit
+ 
+ 	ldp		x0, x1, [sp, #16]
+-	bl		efi_main
++	bl		_entry
+ 
+-0:	ldp		x29, x30, [sp], #32
++.L_exit:
++	ldp		x29, x30, [sp], #32
+ 	ret
+-	
+-// hand-craft a dummy .reloc section so EFI knows it's a relocatable executable:
++
++	// hand-craft a dummy .reloc section so EFI knows it's a relocatable executable:
+  
+  	.data
+-dummy:	.4byte	0
++dummy0:	.4byte	0
++dummy1:	.4byte	0
+ 
+ #define IMAGE_REL_ABSOLUTE	0
+- 	.section .reloc, "a"
+-label1:
+-	.4byte	dummy-label1				// Page RVA
++ 	.section .reloc, "a", %progbits
++	.4byte	dummy1 - dummy0				// Page RVA
+ 	.4byte	12					// Block Size (2*4+2*2), must be aligned by 32 Bits
+ 	.2byte	(IMAGE_REL_ABSOLUTE<<12) +  0		// reloc for dummy
+ 	.2byte	(IMAGE_REL_ABSOLUTE<<12) +  0		// reloc for dummy
+diff --git a/efi/crt0/crt0-efi-arm.S b/efi/crt0/crt0-efi-arm.S
+index af75d74..0956d9b 100644
+--- a/efi/crt0/crt0-efi-arm.S
++++ b/efi/crt0/crt0-efi-arm.S
+@@ -31,7 +31,7 @@ pe_header:
+ 	.2byte 	0
+ coff_header:
+ 	.2byte	0x1c2				// Mixed ARM/Thumb
+-	.2byte	NR_SECTIONS		        // nr_sections
++	.2byte	NR_SECTIONS				// nr_sections
+ 	.4byte	0 				// TimeDateStamp
+ 	.4byte	0				// PointerToSymbolTable
+ 	.4byte	0				// NumberOfSymbols
+@@ -48,9 +48,9 @@ optional_header:
+ 	.4byte	_text_size - ImageBase		// SizeOfCode
+ 	.4byte	_alldata_size - ImageBase		// SizeOfInitializedData
+ 	.4byte	0				// SizeOfUninitializedData
+-	.4byte	_start - ImageBase		// AddressOfEntryPoint
++	.4byte	_text - ImageBase		// AddressOfEntryPoint
+ 	.4byte	_text - ImageBase		// BaseOfCode
+-	.4byte	_reloc - ImageBase		// BaseOfData
++	.4byte	_data - ImageBase		// BaseOfData
+ 
+ extra_header_fields:
+ 	.4byte	0				// ImageBase
+@@ -110,6 +110,17 @@ section_table:
+ 	.2byte	0		// NumberOfLineNumbers  (0 for executables)
+ 	.4byte	0x60000020	// Characteristics (section flags)
+ 
++	.ascii	".data\0\0\0"
++	.4byte	_data_vsize - ImageBase			// VirtualSize
++	.4byte	_data - ImageBase			// VirtualAddress
++	.4byte	_data_size - ImageBase			// SizeOfRawData
++	.4byte	_data - ImageBase			// PointerToRawData
++	.4byte	0			// PointerToRelocations
++	.4byte	0			// PointerToLineNumbers
++	.2byte	0			// NumberOfRelocations
++	.2byte	0			// NumberOfLineNumbers
++	.4byte	0xC0000040		// Characteristics (section flags)
++
+ 	/*
+ 	 * The EFI application loader requires a relocation section
+ 	 * because EFI applications must be relocatable.  This is a
+@@ -126,17 +137,6 @@ section_table:
+ 	.2byte	0			// NumberOfLineNumbers
+ 	.4byte	0x42000040		// Characteristics (section flags)
+ 
+-	.ascii	".data\0\0\0"
+-	.4byte	_data_vsize - ImageBase			// VirtualSize
+-	.4byte	_data - ImageBase			// VirtualAddress
+-	.4byte	_data_size - ImageBase			// SizeOfRawData
+-	.4byte	_data - ImageBase			// PointerToRawData
+-	.4byte	0			// PointerToRelocations
+-	.4byte	0			// PointerToLineNumbers
+-	.2byte	0			// NumberOfRelocations
+-	.2byte	0			// NumberOfLineNumbers
+-	.4byte	0xC0000040		// Characteristics (section flags)
+-
+ 	.ascii	".rodata\0"
+ 	.4byte	_rodata_vsize - ImageBase			// VirtualSize
+ 	.4byte	_rodata - ImageBase			// VirtualAddress
+@@ -147,6 +147,7 @@ section_table:
+ 	.2byte	0			// NumberOfRelocations
+ 	.2byte	0			// NumberOfLineNumbers
+ 	.4byte	0x40000040		// Characteristics (section flags)
++
+ #ifdef USING_SBAT
+ 	.ascii	".sbat\0\0\0"
+ 	.4byte	_sbat_vsize - ImageBase			// VirtualSize
+@@ -188,12 +189,13 @@ _start:
+ 	sub		r0, r0, #0x1000
+ 	bl		_relocate
+ 	teq		r0, #0
+-	bne		0f
++	bne		.L_exit
+ 
+ 	ldmfd		sp, {r0-r1}
+-	bl		efi_main
++	bl		_entry
+ 
+-0:	add		sp, sp, #12
++.L_exit:
++	add		sp, sp, #12
+ 	ldr		pc, [sp], #4
+ 
+ .L_DYNAMIC:
+@@ -202,11 +204,12 @@ _start:
+ // hand-craft a dummy .reloc section so EFI knows it's a relocatable executable:
+  
+  	.data
+-dummy:	.4byte	0
++dummy0:	.4byte	0
++dummy1:	.4byte	0
+ 
+ #define IMAGE_REL_ABSOLUTE	0
+- 	.section .areloc
+- 	.4byte	dummy					// Page RVA
++ 	.section .areloc, "a", %progbits
++ 	.4byte	dummy1 - dummy0					// Page RVA
+ 	.4byte	12					// Block Size (2*4+2*2), must be aligned by 32 Bits
+ 	.2byte	(IMAGE_REL_ABSOLUTE<<12) +  0		// reloc for dummy
+ 	.2byte	(IMAGE_REL_ABSOLUTE<<12) +  0		// reloc for dummy
+diff --git a/efi/crt0/crt0-efi-loongarch64.S b/efi/crt0/crt0-efi-loongarch64.S
+index 1e697a9..3d9e3a3 100644
+--- a/efi/crt0/crt0-efi-loongarch64.S
++++ b/efi/crt0/crt0-efi-loongarch64.S
+@@ -108,6 +108,17 @@ section_table:
+ 	.2byte	0		// NumberOfLineNumbers  (0 for executables)
+ 	.4byte	0x60000020	// Characteristics (section flags)
+ 
++	.ascii	".data\0\0\0"
++	.4byte	_data_vsize - ImageBase			// VirtualSize
++	.4byte	_data - ImageBase			// VirtualAddress
++	.4byte	_data_size - ImageBase			// SizeOfRawData
++	.4byte	_data - ImageBase			// PointerToRawData
++	.4byte	0			// PointerToRelocations
++	.4byte	0			// PointerToLineNumbers
++	.2byte	0			// NumberOfRelocations
++	.2byte	0			// NumberOfLineNumbers
++	.4byte	0xC0000040		// Characteristics (section flags)
++
+ 	/*
+ 	 * The EFI application loader requires a relocation section
+ 	 * because EFI applications must be relocatable.  This is a
+@@ -124,17 +135,6 @@ section_table:
+ 	.2byte	0			// NumberOfLineNumbers
+ 	.4byte	0x42000040		// Characteristics (section flags)
+ 
+-	.ascii	".data\0\0\0"
+-	.4byte	_data_vsize - ImageBase			// VirtualSize
+-	.4byte	_data - ImageBase			// VirtualAddress
+-	.4byte	_data_size - ImageBase			// SizeOfRawData
+-	.4byte	_data - ImageBase			// PointerToRawData
+-	.4byte	0			// PointerToRelocations
+-	.4byte	0			// PointerToLineNumbers
+-	.2byte	0			// NumberOfRelocations
+-	.2byte	0			// NumberOfLineNumbers
+-	.4byte	0xC0000040		// Characteristics (section flags)
+-
+ 	.ascii	".rodata\0"
+ 	.4byte	_rodata_vsize - ImageBase			// VirtualSize
+ 	.4byte	_rodata - ImageBase			// VirtualAddress
+@@ -187,25 +187,26 @@ _start:
+ 	la.local  $a0, ImageBase	// a0: ImageBase
+ 	la.local  $a1, _DYNAMIC		// a1: DynamicSection
+ 	bl        _relocate
+-	bnez	  $a0, 0f
++	bnez	  $a0, .L_exit
+ 
+ 	ld.d	  $a0, $sp, 8
+ 	ld.d	  $a1, $sp, 16
+ 	bl 	  efi_main
+ 
+-0:	ld.d	  $ra, $sp, 0
++.L_exit:
++	ld.d	  $ra, $sp, 0
+ 	addi.d	  $sp, $sp, 24
+ 	jr        $ra
+ 	.end	  _start
+ // hand-craft a dummy .reloc section so EFI knows it's a relocatable executable:
+ 
+- 	.data
+-dummy:	.4byte	0
++ 	 	.data
++dummy0:	.4byte	0
++dummy1:	.4byte	0
+ 
+ #define IMAGE_REL_ABSOLUTE	0
+- 	.section .reloc, "a"
+-label1:
+-	.4byte	dummy-label1				// Page RVA
++ 	.section .reloc, "a", %progbits
++	.4byte	dummy1 - dummy0				// Page RVA
+ 	.4byte	12					// Block Size (2*4+2*2), must be aligned by 32 Bits
+ 	.2byte	(IMAGE_REL_ABSOLUTE<<12) +  0		// reloc for dummy
+ 	.2byte	(IMAGE_REL_ABSOLUTE<<12) +  0		// reloc for dummy
+diff --git a/efi/crt0/crt0-efi-riscv64.S b/efi/crt0/crt0-efi-riscv64.S
+index 9754bc2..95b2e05 100644
+--- a/efi/crt0/crt0-efi-riscv64.S
++++ b/efi/crt0/crt0-efi-riscv64.S
+@@ -1,5 +1,7 @@
+-/* SPDX-License-Identifier: GPL-2.0+ OR BSD-2-Clause */
++/* SPDX-License-Identifier: GPL-2.0-or-later OR BSD-2-Clause */
+ /*
++ * crt0-efi-riscv64-local.S - PE/COFF header for RISC-V 64 EFI applications (without suitable objcopy)
++ *
+  * Copyright (C) 2014 Linaro Ltd. <ard.biesheuvel@linaro.org>
+  * Copyright (C) 2018 Alexander Graf <agraf@suse.de>
+  *
+@@ -16,7 +18,6 @@
+  * either version 2 of the License, or (at your option) any later version.
+  */
+ 
+-
+ 	.section	.text.head
+ 
+ 	/*
+@@ -68,7 +69,7 @@ extra_header_fields:
+ 	// Everything before the kernel image is considered part of the header
+ 	.4byte	_text - ImageBase		// SizeOfHeaders
+ 	.4byte	0				// CheckSum
+-	.2byte	EFI_SUBSYSTEM			// Subsystem
++	.2byte	EFI_SUBSYSTEM				// Subsystem
+ 	.2byte	0				// DllCharacteristics
+ 	.8byte	0				// SizeOfStackReserve
+ 	.8byte	0				// SizeOfStackCommit
+@@ -109,6 +110,17 @@ section_table:
+ 	.2byte	0		// NumberOfLineNumbers  (0 for executables)
+ 	.4byte	0x60000020	// Characteristics (section flags)
+ 
++	.ascii	".data\0\0\0"
++	.4byte	_data_vsize - ImageBase			// VirtualSize
++	.4byte	_data - ImageBase			// VirtualAddress
++	.4byte	_data_size - ImageBase			// SizeOfRawData
++	.4byte	_data - ImageBase			// PointerToRawData
++	.4byte	0			// PointerToRelocations
++	.4byte	0			// PointerToLineNumbers
++	.2byte	0			// NumberOfRelocations
++	.2byte	0			// NumberOfLineNumbers
++	.4byte	0xC0000040		// Characteristics (section flags)
++
+ 	/*
+ 	 * The EFI application loader requires a relocation section
+ 	 * because EFI applications must be relocatable.  This is a
+@@ -125,17 +137,6 @@ section_table:
+ 	.2byte	0			// NumberOfLineNumbers
+ 	.4byte	0x42000040		// Characteristics (section flags)
+ 
+-	.ascii	".data\0\0\0"
+-	.4byte	_data_vsize - ImageBase			// VirtualSize
+-	.4byte	_data - ImageBase			// VirtualAddress
+-	.4byte	_data_size - ImageBase			// SizeOfRawData
+-	.4byte	_data - ImageBase			// PointerToRawData
+-	.4byte	0			// PointerToRelocations
+-	.4byte	0			// PointerToLineNumbers
+-	.2byte	0			// NumberOfRelocations
+-	.2byte	0			// NumberOfLineNumbers
+-	.4byte	0xC0000040		// Characteristics (section flags)
+-
+ 	.ascii	".rodata\0"
+ 	.4byte	_rodata_vsize - ImageBase			// VirtualSize
+ 	.4byte	_rodata - ImageBase			// VirtualAddress
+@@ -185,23 +186,24 @@ _start:
+ 	lla		a0, ImageBase
+ 	lla		a1, _DYNAMIC
+ 	call		_relocate
+-	bne		a0, zero, 0f
++	bne		a0, zero, .L_exit
+ 	ld		a1, 8(sp)
+ 	ld		a0, 0(sp)
+-	call		efi_main
++	call		_entry
+ 	ld		ra, 16(sp)
+-0:	addi		sp, sp, 24
++.L_exit:
++	addi		sp, sp, 24
+ 	ret
+ 
+ // hand-craft a dummy .reloc section so EFI knows it's a relocatable executable:
+  
+  	.data
+-dummy:	.4byte	0
++dummy0:	.4byte	0
++dummy1:	.4byte	0
+ 
+ #define IMAGE_REL_ABSOLUTE	0
+- 	.section .reloc, "a"
+-label1:
+-	.4byte	dummy-label1				// Page RVA
++ 	.section .reloc, "a", %progbits
++	.4byte	dummy1 - dummy0				// Page RVA
+ 	.4byte	12					// Block Size (2*4+2*2), must be aligned by 32 Bits
+ 	.2byte	(IMAGE_REL_ABSOLUTE<<12) +  0		// reloc for dummy
+ 	.2byte	(IMAGE_REL_ABSOLUTE<<12) +  0		// reloc for dummy
+diff --git a/efi/lds/elf_aarch64_efi.lds b/efi/lds/elf_aarch64_efi.lds
+index c976853..7c03edb 100644
+--- a/efi/lds/elf_aarch64_efi.lds
++++ b/efi/lds/elf_aarch64_efi.lds
+@@ -19,17 +19,8 @@ SECTIONS
+   _text_vsize = _evtext - _text;
+   _text_size = _etext - _text;
+   . = ALIGN(65536);
+-  _reloc = .;
+-  .reloc : {
+-    *(.reloc)
+-    _evreloc = .;
+-    . = ALIGN(4096);
+-    _ereloc = .;
+-  } =0
+-  _reloc_vsize = _evreloc - _reloc;
+-  _reloc_size = _ereloc - _reloc;
+-  . = ALIGN(4096);
+   _data = .;
++  _DYNAMIC = .;
+   .dynamic  : { *(.dynamic) }
+   . = ALIGN(4096);
+   .data :
+@@ -86,7 +77,16 @@ SECTIONS
+   } =0
+   _data_vsize = _evdata - _data;
+   _data_size = _edata - _data;
+-
++  . = ALIGN(4096);
++  _reloc = .;
++  .reloc : {
++    *(.reloc)
++    _evreloc = .;
++    . = ALIGN(4096);
++    _ereloc = .;
++  } =0
++  _reloc_vsize = _evreloc - _reloc;
++  _reloc_size = _ereloc - _reloc;
+   . = ALIGN(4096);
+   _rodata = .;
+   .rela :
+@@ -144,7 +144,7 @@ SECTIONS
+   _sbom_size = _epsbom - _sbom;
+   _sbom_vsize = _esbom - _sbom;
+   _image_end = .;
+-  _alldata_size = _image_end - _reloc;
++  _alldata_size = _image_end - _data;
+ 
+   . = ALIGN(4096);
+   .dynsym   : { *(.dynsym) }
+diff --git a/efi/lds/elf_aarch64_efi_system.lds b/efi/lds/elf_aarch64_efi_system.lds
+index e3af2c5..d9cdba4 100644
+--- a/efi/lds/elf_aarch64_efi_system.lds
++++ b/efi/lds/elf_aarch64_efi_system.lds
+@@ -20,29 +20,20 @@ SECTIONS
+     *(.gnu.linkonce.t.*)
+     *(.plt)
+     . = ALIGN(16);
+-    _etext = .;
+   }
++  _etext = .;
+   _text_size = _etext - _text;
+   . = ALIGN(65536);
+-  _reloc = .;
+-  .reloc : {
+-    *(.reloc)
+-    _ereloc = .;
+-  }
+-  _reloc_size = _ereloc - _reloc;
+-  . = ALIGN(4096);
+-  _data = .;
+-  .dynamic  : { *(.dynamic) }
+-  . = ALIGN(4096);
+   .data :
+   {
++   _data = .;
+    *(.sdata)
+    *(.data)
+    *(.data1)
+    *(.data.*)
+    *(.got.plt)
+    *(.got)
+-   
++
+    /*
+     * Note that these aren't the using the GNU "CONSTRUCTOR" output section
+     * command, so they don't start with a size.  Because of p2align and the
+@@ -77,17 +68,22 @@ SECTIONS
+    *(.sbss)
+    *(.scommon)
+    *(.dynbss)
+-   *(.bss)
+-   *(.bss.*)
++   *(.bss*)
+    *(COMMON)
++   *(.rel.local)
+    . = ALIGN(16);
++
+    _bss_end = .;
+-   _edata = .;
+   }
+-  _data_size = _edata - _data;
+-
+   . = ALIGN(4096);
+-  _rodata = .;
++  .reloc :
++  {
++    KEEP (*(.reloc))
++  }
++  . = ALIGN(4096);
++  _DYNAMIC = .;
++  .dynamic  : { *(.dynamic) }
++  . = ALIGN(4096);
+   .rela :
+   {
+     *(.rela.text*)
+@@ -104,11 +100,7 @@ SECTIONS
+   . = ALIGN(4096);
+   .rela.plt : { *(.rela.plt) }
+   . = ALIGN(4096);
+-  .rodata : {
+-    *(.rodata*)
+-    _erodata = .;
+-  }
+-  _rodata_size = _erodata - _rodata;
++  .rodata : { *(.rodata*) }
+   /*
+    * Note that _sbat must be the beginning of the data, and _esbat must be the
+    * end and must be before any section padding.  The sbat self-check uses
+@@ -129,15 +121,10 @@ SECTIONS
+   _sbat_size = _epsbat - _sbat;
+   _sbat_vsize = _esbat - _sbat;
+   . = ALIGN(4096);
+-  .sbom :
+-  {
+-    _sbom = .;
+-    *(.sbom)
+-    _epsbom = .;
+-  }
+-  _sbom_size = _epsbom - _sbom;
+-  _image_end = .;
+-  _alldata_size = _image_end - _reloc;
++  .sbom : { *(.sbom) }
++  . = ALIGN(512);
++  _edata = .;
++  _data_size = _edata - _data;
+ 
+   . = ALIGN(4096);
+   .dynsym   : { *(.dynsym) }
+@@ -145,7 +132,7 @@ SECTIONS
+   .dynstr   : { *(.dynstr) }
+   . = ALIGN(4096);
+   .note.gnu.build-id : { *(.note.gnu.build-id) }
+-  /DISCARD/ :
++  .ignored.reloc :
+   {
+     *(.rela.reloc)
+     *(.note.GNU-stack)
+diff --git a/efi/lds/elf_arm_efi.lds b/efi/lds/elf_arm_efi.lds
+index 4aade31..e7883da 100644
+--- a/efi/lds/elf_arm_efi.lds
++++ b/efi/lds/elf_arm_efi.lds
+@@ -19,17 +19,8 @@ SECTIONS
+   _text_vsize = _evtext - _text;
+   _text_size = _etext - _text;
+   . = ALIGN(4096);
+-  _reloc = .;
+-  .areloc : {
+-    *(.areloc)
+-    _evreloc = .;
+-    . = ALIGN(4096);
+-    _ereloc = .;
+-  } =0
+-  _reloc_vsize = _evreloc - _reloc;
+-  _reloc_size = _ereloc - _reloc;
+-  . = ALIGN(4096);
+   _data = .;
++  _DYNAMIC = .;
+   .dynamic  : { *(.dynamic) }
+   . = ALIGN(4096);
+   .data :
+@@ -86,6 +77,16 @@ SECTIONS
+   } =0
+   _data_vsize = _evdata - _data;
+   _data_size = _edata - _data;
++  . = ALIGN(4096);
++  _reloc = .;
++  .areloc : {
++    *(.areloc)
++    _evreloc = .;
++    . = ALIGN(4096);
++    _ereloc = .;
++  } =0
++  _reloc_vsize = _evreloc - _reloc;
++  _reloc_size = _ereloc - _reloc;
+ 
+   . = ALIGN(4096);
+   _rodata = .;
+@@ -113,7 +114,7 @@ SECTIONS
+   } =0
+   _rodata_vsize = _evrodata - _rodata;
+   _rodata_size = _erodata - _rodata;
+-  /*
++/*
+    * Note that _sbat must be the beginning of the data, and _esbat must be the
+    * end and must be before any section padding.  The sbat self-check uses
+    * _esbat to find the bounds of the data, and if the padding is included, the
+@@ -144,7 +145,7 @@ SECTIONS
+   _sbom_size = _epsbom - _sbom;
+   _sbom_vsize = _esbom - _sbom;
+   _image_end = .;
+-  _alldata_size = _image_end - _reloc;
++  _alldata_size = _image_end - _data;
+ 
+   . = ALIGN(4096);
+   .dynsym   : { *(.dynsym) }
+diff --git a/efi/lds/elf_loongarch64_efi.lds b/efi/lds/elf_loongarch64_efi.lds
+index c7a77a3..7b711b9 100644
+--- a/efi/lds/elf_loongarch64_efi.lds
++++ b/efi/lds/elf_loongarch64_efi.lds
+@@ -18,16 +18,6 @@ SECTIONS
+   } =0
+   _text_vsize = _evtext - _text;
+   _text_size = _etext - _text;
+-  . = ALIGN(4096);
+-  _reloc = .;
+-  .reloc : {
+-    *(.reloc)
+-    _evreloc = .;
+-    . = ALIGN(4096);
+-    _ereloc = .;
+-  } =0
+-  _reloc_vsize = _evreloc - _reloc;
+-  _reloc_size = _ereloc - _reloc;
+   . = ALIGN(65536);
+   _data = .;
+   .dynamic  : { *(.dynamic) }
+@@ -86,7 +76,16 @@ SECTIONS
+   } =0
+   _data_vsize = _evdata - _data;
+   _data_size = _edata - _data;
+-
++  . = ALIGN(4096);
++  _reloc = .;
++  .reloc : {
++    *(.reloc)
++    _evreloc = .;
++    . = ALIGN(4096);
++    _ereloc = .;
++  } =0
++  _reloc_vsize = _evreloc - _reloc;
++  _reloc_size = _ereloc - _reloc;
+   . = ALIGN(4096);
+   _rodata = .;
+   .rela :
+@@ -144,7 +143,7 @@ SECTIONS
+   _sbom_size = _epsbom - _sbom;
+   _sbom_vsize = _esbom - _sbom;
+   _image_end = .;
+-  _alldata_size = _image_end - _reloc;
++  _alldata_size = _image_end - _data;
+ 
+   . = ALIGN(4096);
+   .dynsym   : { *(.dynsym) }
+diff --git a/efi/lds/elf_riscv64_efi.lds b/efi/lds/elf_riscv64_efi.lds
+index b5577d1..d386ac2 100644
+--- a/efi/lds/elf_riscv64_efi.lds
++++ b/efi/lds/elf_riscv64_efi.lds
+@@ -21,17 +21,8 @@ SECTIONS
+   _text_vsize = _evtext - _text;
+   _text_size = _etext - _text;
+   . = ALIGN(4096);
+-  _reloc = .;
+-  .reloc : {
+-    *(.reloc)
+-    _evreloc = .;
+-    . = ALIGN(4096);
+-    _ereloc = .;
+-  } =0
+-  _reloc_vsize = _evreloc - _reloc;
+-  _reloc_size = _ereloc - _reloc;
+-  . = ALIGN(4096);
+   _data = .;
++  _DYNAMIC = .;
+   .dynamic  : { *(.dynamic) }
+   . = ALIGN(4096);
+   .data :
+@@ -88,6 +79,16 @@ SECTIONS
+   } =0
+   _data_vsize = _evdata - _data;
+   _data_size = _edata - _data;
++  . = ALIGN(4096);
++  _reloc = .;
++  .reloc : {
++    *(.reloc)
++    _evreloc = .;
++    . = ALIGN(4096);
++    _ereloc = .;
++  } =0
++  _reloc_vsize = _evreloc - _reloc;
++  _reloc_size = _ereloc - _reloc;
+ 
+   . = ALIGN(4096);
+   _rodata = .;
+@@ -146,7 +147,7 @@ SECTIONS
+   _sbom_size = _epsbom - _sbom;
+   _sbom_vsize = _esbom - _sbom;
+   _image_end = .;
+-  _alldata_size = _image_end - _reloc;
++  _alldata_size = _image_end - _data;
+ 
+   . = ALIGN(4096);
+   .dynsym   : { *(.dynsym) }
+@@ -170,4 +171,3 @@ SECTIONS
+   }
+   .comment 0 : { *(.comment) }
+ }
+-
+diff --git a/efi/lds/elf_riscv64_efi_system.lds b/efi/lds/elf_riscv64_efi_system.lds
+index b245b2b..e67a288 100644
+--- a/efi/lds/elf_riscv64_efi_system.lds
++++ b/efi/lds/elf_riscv64_efi_system.lds
+@@ -26,11 +26,6 @@ SECTIONS
+   _etext = .;
+   _text_size = _etext - _text;
+   . = ALIGN(65536);
+-  .reloc :
+-  {
+-    KEEP (*(.reloc))
+-  }
+-  . = ALIGN(4096);
+   _DYNAMIC = .;
+   .dynamic  : { *(.dynamic) }
+   . = ALIGN(4096);
+@@ -85,6 +80,11 @@ SECTIONS
+ 
+    _bss_end = .;
+   }
++  . = ALIGN(4096);
++  .reloc :
++  {
++    KEEP (*(.reloc))
++  }
+ 
+   . = ALIGN(4096);
+   .rela :
+@@ -124,13 +124,7 @@ SECTIONS
+   _sbat_size = _epsbat - _sbat;
+   _sbat_vsize = _esbat - _sbat;
+   . = ALIGN(4096);
+-  .sbom :
+-  {
+-    _sbom = .;
+-    *(.sbom)
+-    _epsbom = .;
+-  }
+-  _sbom_size = _epsbom - _sbom;
++  .sbom : { *(.sbom) }
+   . = ALIGN(512);
+   _edata = .;
+   _data_size = _edata - _data;
+@@ -147,4 +141,4 @@ SECTIONS
+     *(.note.GNU-stack)
+   }
+   .comment 0 : { *(.comment) }
+-}
+\ No newline at end of file
++}
+diff --git a/efi/lds/elf_x86_64_efi.lds b/efi/lds/elf_x86_64_efi.lds
+index d274f7e..012b94a 100644
+--- a/efi/lds/elf_x86_64_efi.lds
++++ b/efi/lds/elf_x86_64_efi.lds
+@@ -25,11 +25,6 @@ SECTIONS
+   }
+   _etext = .;
+   _text_size = _etext - _text;
+-  . = ALIGN(4096);
+-  .reloc :
+-  {
+-   KEEP (*(.reloc))
+-  }
+ 
+   . = ALIGN(4096);
+   .data :
+@@ -81,6 +76,12 @@ SECTIONS
+   _edata = .;
+   _data_size = _edata - _etext;
+   . = ALIGN(4096);
++  .reloc :
++  {
++   KEEP (*(.reloc))
++  }
++  . = ALIGN(4096);
++  _DYNAMIC = .;
+   .dynamic  : { *(.dynamic) }
+   . = ALIGN(4096);
+   .rela :
+
+From e59a0bc8320253b0068e7e5d2d973c4bd669446c Mon Sep 17 00:00:00 2001
+From: Callum Farmer <gmbr3@opensuse.org>
+Date: Fri, 22 Nov 2024 15:01:44 +0000
+Subject: [PATCH 4/4] Use pkgconfig for gnu-efi paths
+
+* In use since 3.0.18 fixes bad detection on RISC-V
+
+Signed-off-by: Callum Farmer <gmbr3@opensuse.org>
+---
+ efi/meson.build   | 44 ++++++++++++--------------------------------
+ meson_options.txt |  2 +-
+ 2 files changed, 13 insertions(+), 33 deletions(-)
+
+diff --git a/efi/meson.build b/efi/meson.build
+index 0f5014b..a15b705 100644
+--- a/efi/meson.build
++++ b/efi/meson.build
+@@ -23,6 +23,10 @@ endif
+ efi_ldsdir = get_option('efi-ldsdir')
+ efi_incdir = get_option('efi-includedir')
+ 
++if efi_incdir == ''
++  efi_incdir = join_paths(gnuefi.get_variable(pkgconfig: 'includedir'), 'efi')
++endif
++
+ gnu_efi_path_arch = ''
+ foreach name : [gnu_efi_arch, EFI_MACHINE_TYPE_NAME]
+   if (gnu_efi_path_arch == '' and name != '' and
+@@ -37,12 +41,7 @@ endif
+ 
+ efi_libdir = get_option('efi-libdir')
+ if efi_libdir == ''
+-  fs = import('fs')
+-  multi = run_command(cc.cmd_array(), '-print-multi-os-directory', check: true).stdout().strip()
+-  efi_libdir = join_paths('/usr/lib/', multi)
+-  if not fs.is_dir(join_paths(efi_libdir, 'gnuefi'))
+-    efi_libdir = '/usr/lib'
+-  endif
++  efi_libdir = gnuefi.get_variable(pkgconfig: 'libdir')
+ endif
+ 
+ # The name we need to look for on this arch and OS: elf_x86_64_fbsd_efi.lds
+@@ -51,34 +50,15 @@ if host_cpu == 'x86_64' and host_machine.system() == 'freebsd'
+   lds_os = '_fbsd'
+ endif
+ 
+-arch_lds = 'efi.lds'
+-arch_crt = 'crt0.o'
++
+ if efi_ldsdir == ''
+-  efi_ldsdir = join_paths(efi_libdir, 'gnuefi', gnu_efi_path_arch)
+-  cmd = run_command('test', '-f', join_paths(efi_ldsdir, arch_lds), check: false)
+-  if cmd.returncode() != 0
+-    arch_lds = 'elf_@0@@1@_efi.lds'.format(gnu_efi_path_arch, lds_os)
+-    arch_crt = 'crt0-efi-@0@.o'.format(gnu_efi_path_arch)
+-    efi_ldsdir = join_paths(efi_libdir, 'gnuefi')
+-    cmd = run_command('test', '-f', join_paths(efi_ldsdir, arch_lds), check: false)
+-  endif
+-  if cmd.returncode() != 0
+     efi_ldsdir = efi_libdir
+-    cmd = run_command('test', '-f', join_paths(efi_ldsdir, arch_lds), check: false)
+-    if cmd.returncode() != 0
+-      error('Cannot find @0@'.format(arch_lds))
+-    endif
+-  endif
+-else
+-  cmd = run_command('test', '-f', join_paths(efi_ldsdir, arch_lds), check: false)
+-  if cmd.returncode() != 0
+-    arch_lds = 'elf_@0@@1@_efi.lds'.format(gnu_efi_path_arch, lds_os)
+-    arch_crt = 'crt0-efi-@0@.o'.format(gnu_efi_path_arch)
+-    cmd = run_command('test', '-f', join_paths(efi_ldsdir, arch_lds), check: false)
+-  endif
+-  if cmd.returncode() != 0
+-    error('Cannot find @0@'.format(arch_lds))
+-  endif
++endif
++arch_lds = 'elf_@0@@1@_efi.lds'.format(gnu_efi_path_arch, lds_os)
++arch_crt = 'crt0-efi-@0@.o'.format(gnu_efi_path_arch)
++cmd = run_command('test', '-f', join_paths(efi_ldsdir, arch_lds), check: false)
++if cmd.returncode() != 0
++  error('Cannot find @0@'.format(arch_lds))
+ endif
+ efi_crtdir = efi_ldsdir
+ 
+diff --git a/meson_options.txt b/meson_options.txt
+index 5f6f521..9984cff 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -1,6 +1,6 @@
+ option('efi-libdir', type : 'string', description : 'path to the EFI lib directory')
+ option('efi-ldsdir', type : 'string', description : 'path to the EFI lds directory')
+-option('efi-includedir', type : 'string', value : '/usr/include/efi', description : 'path to the EFI header directory')
++option('efi-includedir', type : 'string', value : '', description : 'path to the EFI header directory')
+ option('efi_sbat_fwupd_generation', type : 'integer', value : 1, description : 'SBAT fwupd generation')
+ option('efi_sbat_distro_id', type : 'string', value : '', description : 'SBAT distribution ID, e.g. fedora')
+ option('efi_sbat_distro_summary', type : 'string', value : '', description : 'SBAT distribution summary, e.g. Fedora')

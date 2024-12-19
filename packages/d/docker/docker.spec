@@ -51,8 +51,8 @@
 %endif
 
 # MANUAL: This needs to be updated with every docker update.
-%define docker_real_version 26.1.5
-%define docker_git_version 411e817ddf71
+%define docker_real_version 27.4.1
+%define docker_git_version c710b88579fc
 %define docker_version %{docker_real_version}_ce
 # This "nice version" is so that docker --version gives a result that can be
 # parsed by other people. boo#1182476
@@ -60,7 +60,7 @@
 
 %if %{with buildx}
 # MANUAL: This needs to be updated with every docker-buildx update.
-%define buildx_version 0.19.2
+%define buildx_version 0.19.3
 %endif
 
 # Used when generating the "build" information for Docker version. The value of
@@ -68,7 +68,7 @@
 # helpfully injects into our build environment from the changelog). If you want
 # to generate a new git_commit_epoch, use this:
 #  $ date --date="$(git show --format=fuller --date=iso $COMMIT_ID | grep -oP '(?<=^CommitDate: ).*')" '+%s'
-%define git_commit_epoch 1721763388
+%define git_commit_epoch 1734439831
 
 Name:           docker%{flavour}
 Version:        %{docker_version}
@@ -104,11 +104,6 @@ Patch200:       0003-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
 Patch201:       0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
 # UPSTREAM: Revert of upstream patches to make apparmor work on SLE 12.
 Patch202:       0005-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
-# UPSTREAM: Backport of <https://github.com/moby/buildkit/pull/4896> and
-#           <https://github.com/moby/buildkit/pull/5060>.
-Patch203:       0006-bsc1221916-update-to-patched-buildkit-version-to-fix.patch
-# UPSTREAM: Backport of <https://github.com/moby/moby/pull/48034>.
-Patch204:       0007-bsc1214855-volume-use-AtomicWriteFile-to-save-volume.patch
 # UPSTREAM: Backport of <https://github.com/docker/cli/pull/4228>.
 Patch900:       cli-0001-docs-include-required-tools-in-source-tree.patch
 BuildRequires:  audit
@@ -367,10 +362,6 @@ cp %{SOURCE130} .
 %patch -P201 -p1
 # Solves apparmor issues on SLE-12, but okay for newer SLE versions too.
 %patch -P202 -p1
-# bsc#1221916
-%patch -P203 -p1
-# bsc#1214855
-%patch -P204 -p1
 
 %build
 %sysusers_generate_pre %{SOURCE160} %{name} docker.conf
@@ -402,8 +393,8 @@ export BUILDTIME="$(date -u -d "@$SOURCE_DATE_EPOCH" --rfc-3339 ns 2>/dev/null |
 
 pushd "%{docker_builddir}"
 # use go module for build
-ln -s {vendor,go}.mod
-ln -s {vendor,go}.sum
+cp {vendor,go}.mod
+cp {vendor,go}.sum
 ./hack/make.sh dynbinary
 
 %if %{with integration_tests}
@@ -428,8 +419,8 @@ popd
 
 pushd "%{cli_builddir}"
 # use go module for build
-ln -s {vendor,go}.mod
-ln -s {vendor,go}.sum
+cp {vendor,go}.mod
+cp {vendor,go}.sum
 make DISABLE_WARN_OUTSIDE_CONTAINER=1 dynbinary manpages
 popd
 

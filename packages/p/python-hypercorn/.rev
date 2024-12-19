@@ -24,4 +24,12 @@
     <comment></comment>
     <requestid>1190921</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>235cc87bb983de03ff0a613e315e6d5a</srcmd5>
+    <version>0.17.3</version>
+    <time>1734548947</time>
+    <user>anag+factory</user>
+    <comment>- Enable Python 3.10 builds.</comment>
+    <requestid>1231775</requestid>
+  </revision>
 </revisionlist>

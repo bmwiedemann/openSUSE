@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec 15 20:43:19 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 1.6.4+sdk303
+  * Add SPV_EXT_optnone, SPV_EXT_arithmetic_fence,
+    SPV_NV_cooperative_matrix2, SPV_NV_tensor_addressing
+- Delete 0001-Add-SPV_EXT_optnone-449.patch,
+  0002-Reserve-SPIR-V-enums-for-MediaTek-451.patch (unmerged)
+
+-------------------------------------------------------------------
 Tue Oct  8 16:04:45 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.6.4+sdk296 based on Git tag/release

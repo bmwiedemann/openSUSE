@@ -130,7 +130,7 @@ skiplist+=" or test_requesting_large_resources_via_ssl"
 skiplist+=" or test_deprecated_no_scheme"
 # weird threading issues on OBS runners
 skiplist+=" or test_http2_probe_blocked_per_thread"
-%pytest %{?jobs:-n %jobs} -k "not (${skiplist})" --ignore test/with_dummyserver/test_socketlevel.py
+%pytest -W ignore::DeprecationWarning %{?jobs:-n %jobs} -k "not (${skiplist})" --ignore test/with_dummyserver/test_socketlevel.py
 %endif
 
 %if ! %{with test}

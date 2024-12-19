@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep  2 17:30:41 UTC 2024 - cloud-devel@suse.de
+
+- update to version 5.5.0
+  - reno: Update master for unmaintained/wallaby
+  - reno: Update master for unmaintained/xena
+  - Update master for stable/2024.1
+  - Remove old excludes
+  - reno: Update master for unmaintained/victoria
+  - [jsonutils] Add handling of datetime.date format
+  - reno: Update master for unmaintained/zed
+
+-------------------------------------------------------------------
 Thu May  2 22:11:41 UTC 2024 - cloud-devel@suse.de
 
 - update to version 5.4.0

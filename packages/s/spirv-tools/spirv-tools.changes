@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Dec 15 18:56:06 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2024.4~rc2
+  * General:
+  * Add FPEncoding operand type. (#5726)
+  * Support SPV_KHR_untyped_pointers, SPV_INTEL_global_variable_host_access,
+    SPV_KHR_compute_shader_derivative
+  * Vulkan 1.4 support (#5899)
+  * Optimizer: Add knowledge of cooperative matrice
+- Delete 0001-SPV_KHR_untyped_pointers-Fix-verification-for-OpenCL.patch
+  (merged)
+
+-------------------------------------------------------------------
 Tue Oct  8 16:12:56 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2024.4~rc1

@@ -1,7 +1,7 @@
 #
 # spec file for package python-yaql
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %global oldpython python
 Name:           python-yaql
-Version:        2.0.0
+Version:        3.0.0
 Release:        0
 Summary:        YAQL - Yet Another Query Language
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/yaql
-Source0:        https://files.pythonhosted.org/packages/source/y/yaql/yaql-2.0.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/y/yaql/yaql-3.0.0.tar.gz
 BuildRequires:  openstack-macros
 # for testing
 BuildRequires:  python3-Sphinx
@@ -33,7 +33,8 @@ BuildRequires:  python3-pbr
 BuildRequires:  python3-ply
 BuildRequires:  python3-python-dateutil
 BuildRequires:  python3-python-subunit
-BuildRequires:  python3-testrepository
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-stestr
 BuildRequires:  python3-testscenarios
 BuildRequires:  python3-testtools
 BuildArch:      noarch
@@ -62,7 +63,7 @@ written in python and is distributed via PyPI.
 This package contains the Python 3.x module.
 
 %prep
-%autosetup -p1 -n yaql-2.0.0
+%autosetup -p1 -n yaql-3.0.0
 %py_req_cleanup
 
 %build
@@ -72,7 +73,7 @@ This package contains the Python 3.x module.
 %{py3_install}
 
 %check
-PYTHON=python3 python3 setup.py testr
+%{openstack_stestr_run}
 
 %files -n python3-yaql
 %license LICENSE

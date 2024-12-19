@@ -2,6 +2,7 @@
 # spec file for package bind
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -67,7 +68,7 @@ Source1:        https://downloads.isc.org/isc/bind9/%{version}/bind-%{version}.t
 Source2:        vendor-files.tar.bz2
 # from http://www.isc.org/about/openpgp/ ... changes yearly apparently.
 Source3:        %{name}.keyring
-Source9:        ftp://ftp.internic.net/domain/named.root
+Source9:        https://www.internic.net/domain/named.root
 Source40:       dnszone-schema.txt
 Source60:       dlz-schema.txt
 # configuration file for systemd-tmpfiles

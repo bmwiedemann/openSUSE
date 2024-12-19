@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Sep  3 13:16:34 UTC 2024 - cloud-devel@suse.de
+
+- update to version 18.7.0
+  - tox: Add Python-specific functional envs
+  - Fix Python 3.12 compatibility
+  - support get and list server's metadata
+  - reno: Update master for unmaintained/victoria
+  - functional: Handle multiple networks
+  - reno: Update master for unmaintained/wallaby
+  - Update master for stable/2024.1
+  - [doc] change directive noindex to no-index
+  - reno: Update master for unmaintained/xena
+  - Remove old excludes
+  - reno: Update master for unmaintained/zed
+
+-------------------------------------------------------------------
 Sun Mar 24 20:11:48 UTC 2024 - cloud-devel@suse.de
 
 - update to version 18.6.0

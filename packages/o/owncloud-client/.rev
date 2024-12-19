@@ -400,4 +400,18 @@
     <comment></comment>
     <requestid>1170255</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>4bf4024c3ec941282d9091e9dbdfb5db</srcmd5>
+    <version>5.3.1</version>
+    <time>1734548959</time>
+    <user>anag+factory</user>
+    <comment>- Add patch:
+  * owncloud-qt68.patch
+
+- Update to upstream version 5.3.1 
+- Drop package owncloud-icons from this build, it is coming in a
+  separate package called owncloud-extensions-resources which is 
+  used by all shell extensions for ownCloud</comment>
+    <requestid>1231725</requestid>
+  </revision>
 </revisionlist>

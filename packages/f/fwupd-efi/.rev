@@ -39,4 +39,13 @@
     <comment></comment>
     <requestid>1074627</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8fee4724b3515d6d3040b509eea2f12a</srcmd5>
+    <version>1.7</version>
+    <time>1734548939</time>
+    <user>anag+factory</user>
+    <comment>Staging:H
+fwupd-efi 1.7 for gnu-efi 4.0</comment>
+    <requestid>1231689</requestid>
+  </revision>
 </revisionlist>

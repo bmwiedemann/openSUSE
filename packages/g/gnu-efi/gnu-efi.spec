@@ -1,7 +1,7 @@
 #
 # spec file for package gnu-efi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           gnu-efi
-Version:        3.0.15
+Version:        4.0.0
 Release:        0
 Summary:        Library for EFI Applications
 License:        BSD-3-Clause AND GPL-2.0-or-later
 Group:          Development/Libraries/Other
-URL:            https://sourceforge.net/projects/gnu-efi
-Source0:        https://download.sourceforge.net/project/gnu-efi/gnu-efi-%{version}.tar.bz2
-Source1:        %{name}-rpmlintrc
-Patch0:         gnu-efi-bsc1182057-support-sbat-section.patch
+URL:            https://github.com/ncroxon/gnu-efi
+Source0:        https://github.com/ncroxon/gnu-efi/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  kernel-source
 ExclusiveArch:  ia64 %{ix86} x86_64 aarch64 %{arm} riscv64
 
@@ -34,33 +32,48 @@ Library to develop EFI applications for IA-64 (IPF), IA-32 (x86), x86_64,
 ARM-32, and ARM-64 platforms using the GNU toolchain and the EFI development
 environment.
 
+%package devel
+Summary:        Development files for gnu-efi
+Group:          Development/Libraries/Other
+Provides:       gnu-efi = %{version}-%{release}
+Obsoletes:      gnu-efi < %{version}-%{release}
+
+%description devel
+A package containing the development files for gnu-efi,
+which is used for developing EFI applications using the GNU toolchain
+
+%package apps
+Summary:        Example and test files for gnu-efi
+Group:          Development/Tools/Other
+
+%description apps
+A package containing the example and UEFI testing files created by gnu-efi
+
+
 %prep
 %autosetup -p1
 
 %build
-##########################
-## DO NOT ADD RPM OPT FLAGS! THIS DOES NOT BUILD AGAINST GLIBC
-##
-##########################
-# Trick spec-cleaner in avoiding a make_build expansion
-%{_bindir}/make %{?_smp_mflags} LINUX_HEADERS=%{_prefix}/src/linux
+# DO NOT ADD RPM OPTFLAGS! UEFI is freestanding only!!
+%make_build LINUX_HEADERS=%{_prefix}/src/linux LIBDIR=%{_libdir} PREFIX=%{_prefix}
 
 %install
-make install INSTALLROOT=%{buildroot} LIBDIR=%{_libdir} PREFIX=%{_prefix}
-%if 0
-mkdir %{buildroot}%{_libdir}/%{name}
-cp -p apps/*.efi %{buildroot}%{_libdir}/%{name}
-%endif
+%make_install INSTALLROOT=%{buildroot} LIBDIR=%{_libdir} PREFIX=%{_prefix}
 
-%files
-%doc README.*
+%files devel
 %{_includedir}/efi
 %{_libdir}/crt0-efi-*.o
 %{_libdir}/elf_*_efi.lds
+%ifarch %{ix86} riscv64 aarch64
+%{_libdir}/elf_*_efi_local.lds
+%endif
 %{_libdir}/libefi.a
 %{_libdir}/libgnuefi.a
-%if 0
-%{_libdir}/%{name}
-%endif
+%{_libdir}/pkgconfig/%{name}.pc
+
+%files apps
+%doc README.md SECURITY.md docs/*
+%license LICENSE licenses/*
+%{_libdir}/gnuefi
 
 %changelog

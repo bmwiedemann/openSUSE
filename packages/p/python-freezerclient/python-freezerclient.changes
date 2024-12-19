@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 10 16:50:13 UTC 2024 - cloud-devel@suse.de
+
+- update to version 5.2.0
+  - Dropped the python 3.6/3.7 in zed cycle testing runtime
+  - Drop lower-constraints.txt and its testing
+  - Update arm ci jobs
+  - Add zed test jobs
+
+-------------------------------------------------------------------
 Tue May 24 21:01:04 UTC 2022 - cloud-devel@suse.de
 
 - update to version 4.4.0

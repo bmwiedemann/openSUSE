@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Dec 18 06:41:11 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.9.1:
+  * Update version page
+  * CONTRIBUTING.md fix dead links
+  * Bump golang.org/x/net
+  * Bump golang.org/x/crypto
+  * book: fix versions.md for v1.32
+  * Set v1.7 EOL date and update CoreDns version table
+  * Allow scalability to have custom deletion timeout
+  * Bump default kind image to v1.32.0
+  * machine: remove solved todo comment
+  * Bump Kubernetes in tests to v1.32.0 and claim support for v1.32
+  * 📖 Update clusterctl version to v1.9.x in quick start
+  * 📖 add release 1.8 book link
+
+-------------------------------------------------------------------
 Wed Dec 11 08:49:50 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.9.0:

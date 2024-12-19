@@ -113,10 +113,11 @@ Patch201:       0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
 # UPSTREAM: Revert of upstream patches to make apparmor work on SLE 12.
 Patch202:       0005-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
 # UPSTREAM: Backport of several BuildKit patches:
+#           (Various patches.) CVE-2024-23650
 #           <https://github.com/moby/buildkit/pull/4604> CVE-2024-23651
 #           <https://github.com/moby/buildkit/pull/4603> CVE-2024-23652
 #           <https://github.com/moby/buildkit/pull/4602> CVE-2024-23653
-Patch203:       0006-CVE-2024-23653-update-buildkit-to-include-CVE-patche.patch
+Patch203:       0006-CVE-2024-2365x-update-buildkit-to-include-CVE-patche.patch
 # UPSTREAM: Backport of <https://github.com/moby/buildkit/pull/4896> and
 #           <https://github.com/moby/buildkit/pull/5060>. bsc#1221916
 Patch204:       0007-bsc1221916-update-to-patched-buildkit-version-to-fix.patch
@@ -125,9 +126,11 @@ Patch205:       0008-bsc1214855-volume-use-AtomicWriteFile-to-save-volume.patch
 # UPSTREAM: Backport of <https://github.com/moby/moby/security/advisories/GHSA-v23v-6jw2-98fq>
 #           fix. CVE-2024-41110
 Patch206:       0009-CVE-2024-41110-AuthZ-plugin-securty-fixes.patch
+# UPSTREAM: Backport of <https://github.com/moby/moby/pull/46609>. CVE-2024-29018
+Patch207:       0010-CVE-2024-29018-libnet-Don-t-forward-to-upstream-reso.patch
 # UPSTREAM: Backport of <https://github.com/moby/moby/pull/46307> and
 #                       <https://github.com/moby/moby/pull/49061>.
-Patch299:       0010-TESTS-backport-fixes-for-integration-tests.patch
+Patch299:       0011-TESTS-backport-fixes-for-integration-tests.patch
 # UPSTREAM: Backport of <https://github.com/docker/cli/pull/4228>.
 Patch900:       cli-0001-docs-include-required-tools-in-source-tree.patch
 BuildRequires:  audit
@@ -394,6 +397,8 @@ cp %{SOURCE130} .
 %patch -P205 -p1
 # CVE-2024-41110
 %patch -P206 -p1
+# CVE-2024-29018
+%patch -P207 -p1
 %if %{with integration_tests}
 # integration-tests patches
 %patch -P299 -p1

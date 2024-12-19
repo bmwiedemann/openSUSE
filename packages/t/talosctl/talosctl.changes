@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Dec 18 06:26:48 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.9.0:
+  Large update, full changelog is here:
+  https://github.com/siderolabs/talos/releases/tag/v1.9.0
+  * Auditd
+    - Talos Linux now starts an auditd service by default.
+      Logs can be read with talosctl logs auditd.
+  * talosctl cgroups
+    - The talosctl cgroups command has been added to the talosctl
+      tool. This command allows you to view the cgroup resource
+      consumption and limits for a machine, e.g.  talosctl cgroups
+      --preset memory.
+  * talosctl disks
+    - The command talosctl disks was removed, please use talosctl
+      get disks, talosctl get systemdisk, and talosctl get
+      blockdevices instead.
+  * talosctl wipe
+    - The new command talosctl wipe disk allows to wipe a disk or a
+      partition which is not used as a volume.
+
+-------------------------------------------------------------------
 Fri Dec 13 10:11:20 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.8.4

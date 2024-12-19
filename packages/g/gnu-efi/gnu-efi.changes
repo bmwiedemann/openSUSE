@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sun Dec  8 15:28:22 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
+
+- Split into apps and devel packages
+- Remove rpmlintrc: All errors are now fixed
+
+-------------------------------------------------------------------
+Tue Dec  3 13:58:03 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to gnu-efi 4.0.0:
+  * Add MP Services Protocol Support
+  * Add some more pkgconfig variables
+  * Replace 'Copright' with 'Copyright'
+  * Add clear documentation for building and packaging
+  * Align CRT0 exit function naming
+  * Now built and verified using GitHub Actions
+  * Fix SetMem/CopyMem again
+  * Move ReallocatePool/CompareGuid/CopyMem to EDK2 ABI
+  * Add non-objcopy CRT0/LDS for ARM64/RISCV64/IA32
+- Remove gnu-efi-bsc1182057-support-sbat-section.patch:
+  * no longer needed; fwupd-efi has been fixed upstream
+    (by me)
+
+-------------------------------------------------------------------
+Thu Jun 29 14:18:10 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to gnu-efi 3.0.18:
+  * Add pkgconfig file
+  * Make ELF constructors and destructors work
+  * Make CHAR8 and similar be defined the same way edk2 does it
+  * Switch to -fPIE
+  * Merge all rela sections into one
+- gnu-efi-bsc1182057-support-sbat-section.patch:
+  * Restore ARM32 SBAT crt0 patch as binutils doesn't actually
+    support it
+  * Add SBAT support for RISC-V 64
+
+-------------------------------------------------------------------
 Wed Oct  5 13:08:31 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to gnu-efi 3.0.15:

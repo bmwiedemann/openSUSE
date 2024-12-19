@@ -17,14 +17,14 @@
 
 
 Name:           python-novaclient
-Version:        18.6.0
+Version:        18.7.0
 Release:        0
 Epoch:          0
 Summary:        Python API and CLI for OpenStack Nova
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-novaclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-novaclient/python-novaclient-18.6.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-novaclient/python-novaclient-18.7.0.tar.gz
 BuildRequires:  openssl
 BuildRequires:  openstack-macros
 BuildRequires:  python3-cinderclient
@@ -34,7 +34,7 @@ BuildRequires:  python3-glanceclient
 BuildRequires:  python3-keystoneclient
 BuildRequires:  python3-os-client-config
 BuildRequires:  python3-osprofiler
-BuildRequires:  python3-pbr >= 2.0.0
+BuildRequires:  python3-pbr >= 3.0.0
 BuildRequires:  python3-requests-mock
 BuildRequires:  python3-stestr
 BuildRequires:  python3-testscenarios
@@ -54,9 +54,9 @@ Requires:       python3-PrettyTable >= 0.7.2
 Requires:       python3-iso8601 >= 0.1.11
 Requires:       python3-keystoneauth1 >= 3.5.0
 Requires:       python3-oslo.i18n >= 3.15.3
-Requires:       python3-oslo.serialization >= 2.18.0
+Requires:       python3-oslo.serialization >= 2.20.0
 Requires:       python3-oslo.utils >= 3.33.0
-Requires:       python3-pbr >= 2.0.0
+Requires:       python3-pbr >= 3.0.0
 Requires:       python3-simplejson
 %if 0%{?suse_version}
 Obsoletes:      python2-novaclient < 16.0.0
@@ -89,7 +89,7 @@ This package contains auto-generated documentation.
 %build
 %{py3_build}
 
-PBR_VERSION=18.6.0 %sphinx_build -b html -d doc/build/doctrees doc/source doc/build/html
+PBR_VERSION=18.7.0 %sphinx_build -b html -d doc/build/doctrees doc/source doc/build/html
 # Fix hidden-file-or-dir warnings
 rm -fr doc/build/html/.doctrees doc/build/html/.buildinfo
 

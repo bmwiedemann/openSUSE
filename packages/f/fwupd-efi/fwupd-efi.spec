@@ -1,7 +1,7 @@
 #
 # spec file for package fwupd-efi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,26 +28,20 @@
 %define sbat_distro_url mailto:security@suse.de
 %endif
 Name:           fwupd-efi
-Version:        1.3
+Version:        1.7
 Release:        0
 Summary:        Firmware update EFI binaries
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Management
 URL:            https://github.com/fwupd/fwupd-efi
-# Do not use upstream tarball, we are using source service!
-Source0:        %{name}-%{version}.tar.xz
-Patch0:         binutils-2.38-arm-objcopy.patch
-Patch1:         binutils-2.38-arm-system-crt0.patch
-Patch2:         ARM-fixes.patch
-
-BuildRequires:  gnu-efi
-BuildRequires:  meson >= 0.47.0
+Source0:        https://github.com/fwupd/fwupd-efi/archive/%{version}/%{name}-%{version}.tar.gz
+Patch0:         106.patch
+BuildRequires:  meson >= 0.62.0
 BuildRequires:  pesign-obs-integration
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(efiboot)
-BuildRequires:  pkgconfig(efivar) >= 33
-Requires:       shim >= 11
-ExclusiveArch:  x86_64 aarch64
+BuildRequires:  pkgconfig(gnu-efi) >= 3.0.18
+BuildRequires:  python3-pefile
+ExclusiveArch:  x86_64 aarch64 %{arm} %{ix86} riscv64
 
 %description
 A UEFI binary for the fwupd project for installing updates using the UpdateCapsule
@@ -69,6 +63,8 @@ executable releases to follow a different cadence.
   -Defi_sbat_distro_pkgname="%{name}" \
   -Defi_sbat_distro_version="%{version}" \
   -Defi_sbat_distro_url="%{sbat_distro_url}" \
+  -Dgenpeimg=disabled \
+  %{nil}
 %meson_build
 
 %install

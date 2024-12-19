@@ -17,30 +17,29 @@
 
 
 %define _lto_cflags %nil
-%define lname libSPIRV-Tools-2024_4_rc1
+%define lname libSPIRV-Tools-2024_4_rc2
 
 Name:           spirv-tools
-Version:        2024.4~rc1
+Version:        2024.4~rc2
 Release:        0
 Summary:        API and commands for processing SPIR-V modules
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/KhronosGroup/SPIRV-Tools
-Source:         https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/v2024.4.rc1.tar.gz
+Source:         https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/v2024.4.rc2.tar.gz
 Source9:        baselibs.conf
 Patch1:         ver.diff
-Patch2:         0001-SPV_KHR_untyped_pointers-Fix-verification-for-OpenCL.patch
 BuildRequires:  bison
 BuildRequires:  cmake >= 3.17.2
 %if 0%{?suse_version} >= 1599
 BuildRequires:  gcc-c++
 %else
-BuildRequires:  gcc11-c++
+BuildRequires:  gcc12-c++
 %endif
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
 BuildRequires:  python3-xml
-BuildRequires:  spirv-headers >= 1.6.1+sdk283+g8
+BuildRequires:  spirv-headers >= 1.6.4+sdk303
 
 %description
 The package includes an assembler, binary module parser,
@@ -68,13 +67,13 @@ validator, and is used in the standalone tools whilst also enabling
 integration into other code bases directly.
 
 %prep
-%autosetup -p1 -n SPIRV-Tools-2024.4.rc1
+%autosetup -p1 -n SPIRV-Tools-2024.4.rc2
 find . -type f -name CMakeLists.txt -exec \
 	perl -i -pe 's{\@PACKAGE_VERSION\@}{%version}' CMakeLists.txt {} +
 
 %build
 %if 0%{?suse_version} && 0%{?suse_version} < 1599
-export CXX=g++-11
+export CXX=g++-12
 %endif
 %cmake -DSPIRV-Headers_SOURCE_DIR="%_prefix" \
 	-DSPIRV_TOOLS_BUILD_STATIC:BOOL=OFF -DBUILD_SHARED_LIBS:BOOL=ON
@@ -87,8 +86,7 @@ for i in "" "-diff" "-link" "-lint" "-opt" "-reduce" "-shared"; do
 	ln -s "libSPIRV-Tools$i-%version.so" "%buildroot/%_libdir/libSPIRV-Tools$i.so"
 done
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files
 %_bindir/spirv-*

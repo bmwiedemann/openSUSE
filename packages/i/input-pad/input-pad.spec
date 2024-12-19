@@ -1,7 +1,7 @@
 #
 # spec file for package input-pad
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,16 +23,14 @@
 %define build_xtest    (0%{suse_version} > 1210)
 
 Name:           input-pad
-Version:        1.0.99.20140916
+Version:        1.0.99.20210817
 Release:        0
 Summary:        On-screen Input Pad to Send Characters with Mouse
 License:        LGPL-2.0-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/fujiwarat/input-pad
-Source0:        %{name}-%{version}.tar.gz
-
+Source0:        https://github.com/fujiwarat/input-pad/releases/download/%{version}/%{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
 BuildRequires:  gettext-devel
 BuildRequires:  gtk2-devel
 BuildRequires:  gtk3-devel

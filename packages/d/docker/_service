@@ -3,24 +3,24 @@
     <param name="url">https://github.com/moby/moby.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="versionformat">26.1.5_ce_%h</param>
-    <param name="revision">v26.1.5</param>
+    <param name="versionformat">27.4.1_ce_%h</param>
+    <param name="revision">v27.4.1</param>
     <param name="filename">docker</param>
   </service>
   <service name="tar_scm" mode="manual">
     <param name="url">https://github.com/docker/cli.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="versionformat">26.1.5_ce</param>
-    <param name="revision">v26.1.5</param>
+    <param name="versionformat">27.4.1_ce</param>
+    <param name="revision">v27.4.1</param>
     <param name="filename">docker-cli</param>
   </service>
   <service name="tar_scm" mode="manual">
     <param name="url">https://github.com/docker/buildx.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="versionformat">0.19.2</param>
-    <param name="revision">v0.19.2</param>
+    <param name="versionformat">0.19.3</param>
+    <param name="revision">v0.19.3</param>
     <param name="filename">docker-buildx</param>
   </service>
   <service name="recompress" mode="manual">

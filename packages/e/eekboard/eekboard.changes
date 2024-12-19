@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 18 08:34:56 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add fix-compile-on-gcc14.patch. 
+
+-------------------------------------------------------------------
 Thu Feb 22 11:36:44 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

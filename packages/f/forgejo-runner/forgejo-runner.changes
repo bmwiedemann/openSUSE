@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 18 00:03:40 UTC 2024 - rrahl0@opensuse.org
+
+- Update to version 5.0.4:
+  * feat: use FORGEJO_TOKEN as runtime token
+
+-------------------------------------------------------------------
 Wed Nov 27 10:20:13 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 5.0.3:

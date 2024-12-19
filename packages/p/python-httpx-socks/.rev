@@ -17,4 +17,15 @@
   * Include tests in MANIFEST.in</comment>
     <requestid>1224010</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d05ff31855737eaec075fe329857006a</srcmd5>
+    <version>0.10.0</version>
+    <time>1734548984</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.10.0:
+  * Minor fixes for httpx 0.28.x
+- hypercorn now builds for 3.10, so don't skip testing there.
+- Tighten up test BuildRequires.</comment>
+    <requestid>1231776</requestid>
+  </revision>
 </revisionlist>

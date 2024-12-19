@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Dec 18 08:40:42 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.0.99.20210817
+  * Removed duplicated entry in str.xml
+  * Fixed a build error of I_ since eek-types.h has the duplicated one
+  * Fixed to use deprecated APIs in GTK 3.12
+  * Imported code.google.com/p/input-pad
+  * Updated str.xml.in for Emoji and Japanese Acronym
+  * Fixed CSS data of GtkButton for GTK 3.20
+  * configure: Repalced AC_PROG_LIBTOOL with LT_INIT
+  * Fix some typos in translatable text and make some texts easier to translate
+  * Run input-pad with GDK X11 backend
+  * Updated translations 
+
+-------------------------------------------------------------------
 Wed Jul 21 05:07:48 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove unneeded BuildRequires on python-devel 

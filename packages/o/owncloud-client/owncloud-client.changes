@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Dec 17 15:39:28 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Add patch:
+  * owncloud-qt68.patch
+
+-------------------------------------------------------------------
+Wed Oct 16 15:18:15 UTC 2024 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to upstream version 5.3.1 
+- Drop package owncloud-icons from this build, it is coming in a
+  separate package called owncloud-extensions-resources which is 
+  used by all shell extensions for ownCloud 
+
+-------------------------------------------------------------------
 Thu Apr 18 06:07:15 UTC 2024 - thod_@gmx.de
 
 - Fix build for Leap which is missing /usr/etc

@@ -1,8 +1,8 @@
-Index: dump-0.4b46/dump/dump.8.in
+Index: b/dump/dump.8.in
 ===================================================================
---- dump-0.4b46.orig/dump/dump.8.in
-+++ dump-0.4b46/dump/dump.8.in
-@@ -199,7 +199,7 @@ exist, dump doesn't create a new remote
+--- a/dump/dump.8.in
++++ b/dump/dump.8.in
+@@ -211,7 +211,7 @@ exist, dump doesn't create a new remote
  The default path name of the remote
  .BR rmt (8)
  program is
@@ -11,10 +11,10 @@ Index: dump-0.4b46/dump/dump.8.in
  this can be overridden by the environment variable
  .BR RMT .
  .TP
-Index: dump-0.4b46/dump/Makefile.am
+Index: b/dump/Makefile.am
 ===================================================================
---- dump-0.4b46.orig/dump/Makefile.am
-+++ dump-0.4b46/dump/Makefile.am
+--- a/dump/Makefile.am
++++ b/dump/Makefile.am
 @@ -5,7 +5,6 @@ EXTRA_DIST =
  man_MANS = dump.8
  DISTCLEANFILES += dump.8
@@ -31,10 +31,10 @@ Index: dump-0.4b46/dump/Makefile.am
  
  uninstall-hook:
  	$(RM) -f $(DESTDIR)$(sbindir)/rdump
-Index: dump-0.4b46/restore/Makefile.am
+Index: b/restore/Makefile.am
 ===================================================================
---- dump-0.4b46.orig/restore/Makefile.am
-+++ dump-0.4b46/restore/Makefile.am
+--- a/restore/Makefile.am
++++ b/restore/Makefile.am
 @@ -5,7 +5,6 @@ EXTRA_DIST =
  man_MANS = restore.8
  DISTCLEANFILES += restore.8

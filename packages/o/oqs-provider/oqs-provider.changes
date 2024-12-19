@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 12 15:15:59 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.7.0:
+  - Adds support for MAYO from Round 1 of NIST’s Post-Quantum Signature On-Ramp process.
+  - Adds support for CROSS from Round 1 of NIST’s Post-Quantum Signature On-Ramp process.
+  - Updates ML-KEM's code points in line with internet draft draft-kwiatkowski-tls-ecdhe-mlkem-02.
+  - Reverses keyshares for X25519MLKEM768 and X448-ML-KEM-768 TLS hybrids in line with draft-kwiatkowski-tls-ecdhe-mlkem-02.
+
+-------------------------------------------------------------------
 Tue Jun 18 12:44:27 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - updated to 0.6.1

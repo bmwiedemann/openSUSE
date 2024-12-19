@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 18 11:19:57 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.4.17:
+  * Update examples/operator templates and values
+  * added deployment strategy attribute support
+
+-------------------------------------------------------------------
 Tue Nov 19 08:18:39 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.4.16:

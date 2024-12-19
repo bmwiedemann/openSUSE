@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Dec 18 05:53:11 UTC 2024 - Aleksa Sarai <asarai@suse.com>
+
+- Add backport for CVE-2024-29018 fix. bsc#1234089
+  + 0010-CVE-2024-29018-libnet-Don-t-forward-to-upstream-reso.patch
+- Add backport for CVE-2024-23650 fix. bsc#1219437
+  - 0006-CVE-2024-23653-update-buildkit-to-include-CVE-patche.patch
+  + 0006-CVE-2024-2365x-update-buildkit-to-include-CVE-patche.patch
+- Reorder and rebase patches:
+  * 0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+  * 0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+  * 0003-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
+  * 0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+  * 0005-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
+  * 0007-bsc1221916-update-to-patched-buildkit-version-to-fix.patch
+  * 0008-bsc1214855-volume-use-AtomicWriteFile-to-save-volume.patch
+  * 0009-CVE-2024-41110-AuthZ-plugin-securty-fixes.patch
+  - 0010-TESTS-backport-fixes-for-integration-tests.patch
+  + 0011-TESTS-backport-fixes-for-integration-tests.patch
+
+-------------------------------------------------------------------
 Tue Dec 17 13:20:39 UTC 2024 - Aleksa Sarai <asarai@suse.com>
 
 - Update to docker-buildx 0.19.3. See upstream changelog online at

@@ -1,7 +1,7 @@
-From b6213c77313f15ac74a551b9a03670fce06280fb Mon Sep 17 00:00:00 2001
+From 12c8b7a22f7140b5b4d2c87a7e5d70da082fe558 Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <cyphar@cyphar.com>
 Date: Wed, 19 Jun 2024 16:30:49 +1000
-Subject: [PATCH 08/13] bsc1214855: volume: use AtomicWriteFile to save volume
+Subject: [PATCH 08/11] bsc1214855: volume: use AtomicWriteFile to save volume
  options
 
 If the system (or Docker) crashes while saivng the volume options, on
@@ -22,6 +22,7 @@ that has the wrong config is better than Docker not being able to start.
 [1]: commit b05b2370757d ("Support mount opts for `local` volume driver")
 
 SUSE-Bugs: https://bugzilla.suse.com/show_bug.cgi?id=1214855
+(Cherry-picked from commit b4c20da143502e5fc21cc4996b63e83691c515bf.)
 Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
 ---
  volume/local/local.go | 3 ++-
@@ -49,5 +50,5 @@ index b4f3a3669a84..077b26f1b813 100644
  		return errdefs.System(errors.Wrap(err, "error while persisting volume options"))
  	}
 -- 
-2.47.0
+2.47.1
 

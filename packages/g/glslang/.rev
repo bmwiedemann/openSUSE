@@ -433,4 +433,12 @@
     <comment>- Update to release 15</comment>
     <requestid>1203991</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>2be6a1a2dafd1aa774bdf6abdb065514</srcmd5>
+    <version>15.1.0</version>
+    <time>1734548920</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 15.1</comment>
+    <requestid>1231576</requestid>
+  </revision>
 </revisionlist>

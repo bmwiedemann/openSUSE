@@ -24,7 +24,7 @@
 %endif
 
 Name:           owncloud-client
-Version:        5.2.1
+Version:        5.3.1
 Release:        0
 Summary:        The ownCloud synchronization client
 License:        GPL-2.0-only AND GPL-3.0-only
@@ -34,6 +34,8 @@ Source0:        ownCloud_os-%{version}.tar.xz
 Source2:        69-sync-inotify.conf
 Source3:        README.source
 Source4:        ownCloud.conf
+# PATCH-FIX-UPSTREAM
+Patch0:         owncloud-qt68.patch
 
 BuildRequires:  cmake >= 2.8.11
 BuildRequires:  extra-cmake-modules
@@ -60,7 +62,7 @@ BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(zlib)
 Requires:       libowncloudsync0 = %{version}
-Requires:       owncloud-icons = %{version}
+Requires:       owncloud-extensions-resources
 Requires:       qt6-sql-sqlite
 Suggests:       %{name}-nautilus
 Suggests:       %{name}-nemo
@@ -117,15 +119,6 @@ Development files for the ownCloud synchronization library. It
 implements the ownCloud sync algorithm that keeps a local directory
 in sync with the content on your cloud.
 
-%package -n owncloud-icons
-Summary:        Icons for the ownCloud client shell integrations
-Group:          Productivity/Networking/Other
-BuildArch:      noarch
-
-%description -n owncloud-icons
-Icons for the visual representation of the sync state in various file
-managers on the desktop.
-
 %prep
 %autosetup -p1 -n ownCloud_os-%{version}
 
@@ -144,14 +137,10 @@ install -m 0644 -D %{SOURCE2} %{buildroot}/%{_sysctldir}/69-sync-inotify.conf
 # do not allow to call home
 install -m 0644 -D %{SOURCE4} -t %{buildroot}%{_distconfdir}/ownCloud/
 
+# remove the icons that this version of the source tarball still contains
+rm %{buildroot}%{_datadir}/icons/hicolor/*/apps/ownCloud_*png
+
 %suse_update_desktop_file -n owncloud
-# workaround for https://github.com/owncloud/ownbrander/issues/322
-for desktop_icon_dir in %{buildroot}%{_datadir}/icons/hicolor/*/apps; do
-  # copy shortname to executable name, if missing.
-  if [ -f $desktop_icon_dir/owncloud.png -a ! -f $desktop_icon_dir/owncloud.png ]; then
-    cp $desktop_icon_dir/owncloud.png $desktop_icon_dir/owncloud.png
-  fi
-done
 
 %ldconfig_scriptlets -n libowncloudsync0
 
@@ -170,13 +159,6 @@ done
 %config %{_distconfdir}/ownCloud
 # https://github.com/owncloud/client/issues/4107
 %{_sysctldir}/69-sync-inotify.conf
-
-%files -n owncloud-icons
-%{_datadir}/icons/hicolor/*/apps/ownCloud_*.png
-%if 0%{?suse_version} < 1550
-%dir %{_datadir}/icons/hicolor/1024x1024
-%dir %{_datadir}/icons/hicolor/1024x1024/apps
-%endif
 
 %files -n libowncloudsync0
 %{_libdir}/libowncloudsync.so.*

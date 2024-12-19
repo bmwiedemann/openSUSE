@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Tue Dec 17 21:51:02 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- update to 5.4.0:
+  - Option to continuously display result while editing
+    expression
+  - Option to specify number of displayed significant digits,
+    instead of using precision
+  - New functions: tripleProduct(), multilimit()
+  - Improve decision to automatically convert unchanged quantity
+    with unit
+  - Improve ability to abort matrix functions
+  - Add plot() function example, and support expression in y=f(x)
+    format
+  - Place "approx." on same line as value (instead of as equals
+    sign) in qalc
+  - Display "aborted" for long aborted result in qalc
+  - Updated French translation
+  - Fix case conversion of µ to M and similar
+  - Fix segfault with very large integer raised by very large
+    integer
+  - Fix wrong output of converted unit with non-numerical
+    exponent in some cases (e.g. ft^x converted to m without
+    expansion)
+  - Fix "sqrt(x-1/x)+sqrt(1-1/x)-x=0" when approximation is not
+    exact
+  - Fix clear using Ctrl+L when input line is not empty
+  - Minor bug fixes and feature enhancements
+- update to 5.3.0:
+  - Fix memory leaks
+  - Fix segfault with recursive (self-referencing) function
+  - Fix input of negative exponent in scientific e notation with
+    RPN syntax
+  - Fix parsing of 1°2'3" as 1°+2'+3"
+  - Fix definite integral for 1/sqrt(1-x^2), with limits
+    higher/lower than or equal to -1 and 1
+  - Fix crash with empty vector in plot function, e.g. plot([])
+  - Fix "did you mean..." warning for two implicitly
+    multiplicated functions without space between (e.g.
+    "atan2(a,b)atan2(c,d)")
+  - Fix inability to abort randpoisson() with very high rate
+    value
+  - Fix Calculator::reset()
+  - Improve handling of "where" expressions with inequalities
+  - Place n and C last in variable isolation priority order
+  - Remove unnecessary calculation for output of integers
+    with non-decimal number base (fixes delay with very high
+    precision)
+  - Add nmi symbol for nautical mile
+  - Add free_thread_caches() function
+  - Add Calculator::parseToExpression()
+  - Disable load() and export() functions when --disable-insecure
+    compile option is enabled
+  - Fix saving of percentage interpretation in qalc
+  - Fix save definitions option in qalc
+  - Fix interpretation of mH₂O, and related units with Unicode
+    subscript in qalc
+  - Fix line break for output from command line expression or
+    file, before interactive mode
+  - Avoid asking questions when reading commands/expressions from
+    file before interactive mode
+  - "unkeep" command (reverse of "keep")
+  - Support abbreviations for scientific (sci) and engineering
+    (eng) as options for scientific notation (exp)
+  - Show error for unrecognized command line options when
+    expression is separated from options by "--"
+  - Do not show single input decimal number as fraction by
+    default if small or large enough to be displayed using
+    scientific notation
+  - Minor bug fixes and feature enhancements
+
+-------------------------------------------------------------------
 Tue Jul 30 11:00:57 UTC 2024 - pgajdos@suse.com
 
 - version update to 5.2.0

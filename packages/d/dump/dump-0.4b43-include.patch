@@ -1,11 +1,13 @@
---- dump/main.c
-+++ dump/main.c
-@@ -67,6 +67,8 @@
+Index: b/dump/main.c
+===================================================================
+--- a/dump/main.c
++++ b/dump/main.c
+@@ -60,6 +60,8 @@
  #include <ext2fs/ext2fs.h>
  #include <sys/stat.h>
  #include <bsdcompat.h>
 +
 +#define pgoff_t unsigned long
  #include <linux/fs.h>	/* for definition of BLKFLSBUF */
- #elif defined sunos
- #include <sys/vnode.h>
+ 
+ #include <protocols/dumprestore.h>

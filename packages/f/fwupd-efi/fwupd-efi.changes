@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Dec 17 12:50:10 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 1.7:
+  * Fix compilation with GNU-EFI 4.0
+- Use upstream tarball: source service isn't useful on this
+  package
+- Add 106.patch:
+  * Improves ARM32 crt0 by splitting header and code
+  * Use pkgconfig for gnu-efi - fixes RISC-V build
+  * Update lds from gnu-efi 4.0
+
+-------------------------------------------------------------------
+Thu Aug 29 12:30:08 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 1.6:
+  * Require gnu-efi 3.0.18 or later
+  * Ship an objcopy capable LDS for ARM64
+  * Detect gnu-efi via pkgconfig
+  * Backport the ctors and dtors work from gnu-efi upstream
+  * Tidy up crt0 generator
+  * Add RISC-V support
+  * Fix per NX bit and UEFI 2.10 Microsoft requirements
+- Remove un-needed BRs:
+  * pkgconfig(efiboot)
+  * pkgconfig(efivar)
+- Remove shim requirement: it doesn't need it, it's a UEFI binary
+- Restore ix86 and ARM32 support
+- Add RISC-V support
+- Remove patches (fixed upstream):
+  * binutils-2.38-arm-objcopy.patch
+  * binutils-2.38-arm-system-crt0.patch
+  * ARM-fixes.patch
+
+-------------------------------------------------------------------
 Fri Feb 24 23:50:42 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 
 - Disable ix86 and arm32: shim doesn't build on these platforms

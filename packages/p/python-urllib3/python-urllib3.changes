@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 18 08:41:22 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Ignore DeprecationWarning in tests (bsc#1234681)
+
+-------------------------------------------------------------------
 Thu Oct  3 05:10:09 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.2.3:

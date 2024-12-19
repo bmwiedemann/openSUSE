@@ -21,7 +21,7 @@
 
 %define lname   libmpv2
 Name:           mpv
-Version:        0.39.0+git20240923.b64c53f730bd
+Version:        0.39.0+git20241217.32d103c58072
 Release:        0
 Summary:        Advanced general-purpose multimedia player
 License:        GPL-2.0-or-later
@@ -31,7 +31,6 @@ Source:         %{name}-%{version}.tar.xz
 Source2:        %{name}.changes
 # PATCH-FIX-OPENSUSE do not require equal libav versions, obs rebuilds as needed
 Patch0:         mpv-make-ffmpeg-version-check-non-fatal.patch
-Patch1:         https://patch-diff.githubusercontent.com/raw/mpv-player/mpv/pull/14904.patch
 BuildRequires:  bash
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  linux-kernel-headers
@@ -93,10 +92,6 @@ BuildRequires:  pkgconfig(xv)
 BuildRequires:  pkgconfig(zimg) >= 2.9
 BuildRequires:  pkgconfig(zlib)
 Requires:       hicolor-icon-theme
-Requires(post): hicolor-icon-theme
-Requires(post): update-desktop-files
-Requires(postun): hicolor-icon-theme
-Requires(postun): update-desktop-files
 # Used via LUA scripts
 Recommends:     yt-dlp
 Conflicts:      mpv-plugin-mpris < 0.4

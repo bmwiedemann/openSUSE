@@ -1,11 +1,11 @@
 <services>
-  <service mode="disabled" name="renderspec">
+  <service mode="manual" name="renderspec">
     <param name="input-template">https://opendev.org/openstack/rpm-packaging/raw/master/openstack/yaql/yaql.spec.j2</param>
     <param name="output-name">python-yaql.spec</param>
     <param name="changelog-email">cloud-devel@suse.de</param>
     <param name="changelog-provider">gh,openstack,yaql</param>
   </service>
-  <service mode="disabled" name="download_files">
+  <service mode="manual" name="download_files">
   </service>
-  <service name="format_spec_file" mode="disabled"/>
+  <service name="format_spec_file" mode="manual"/>
 </services>

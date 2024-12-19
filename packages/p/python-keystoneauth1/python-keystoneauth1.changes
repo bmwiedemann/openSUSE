@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Sep  2 17:35:47 UTC 2024 - cloud-devel@suse.de
+
+- update to version 5.8.0
+  - reno: Update master for unmaintained/wallaby
+  - reno: Update master for unmaintained/victoria
+  - Drop unused reno from test requirements
+  - Output verification_uri_complete by logger
+  - Remove old excludes
+  - Python 3.12: do not use datetime.utcnow()
+  - reno: Update master for unmaintained/zed
+  - Update requests of device flow for public client
+  - Add OTP to v3OIDCpassword plugin
+  - Update master for stable/2024.1
+  - Do not log sensitive info in OIDC
+  - reno: Update master for unmaintained/xena
+  - tox: Migrate to tox v4
+
+-------------------------------------------------------------------
 Thu May  2 22:06:33 UTC 2024 - cloud-devel@suse.de
 
 - update to version 5.6.0

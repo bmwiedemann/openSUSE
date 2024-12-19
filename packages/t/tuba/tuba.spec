@@ -18,7 +18,7 @@
 
 %define         appname dev.geopjr.Tuba
 Name:           tuba
-Version:        0.8.4
+Version:        0.9.0
 Release:        0
 Summary:        Browse the Fediverse
 License:        GPL-3.0-only
@@ -27,14 +27,14 @@ Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  appstream-glib
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
-BuildRequires:  git-core
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson >= 0.56
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  vala >= 0.48
 BuildRequires:  pkgconfig(clapper-0.0)
 BuildRequires:  pkgconfig(gee-0.8) >= 0.8.5
+BuildRequires:  pkgconfig(gstreamer-1.0)
+BuildRequires:  pkgconfig(gstreamer-base-1.0)
 BuildRequires:  pkgconfig(gtksourceview-5)
 BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.4.4
@@ -63,7 +63,6 @@ BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.10
 %install
 %meson_install
 %find_lang %{appname}
-%suse_update_desktop_file %{appname}
 
 %check
 %meson_test
@@ -78,7 +77,7 @@ BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.10
 %{_datadir}/gtksourceview-5/styles/fedi*
 %{_iconsdir}/hicolor/scalable/apps/%{appname}.svg
 %{_iconsdir}/hicolor/symbolic/apps/%{appname}-symbolic.svg
-%{_mandir}/man1/%{appname}.1.gz
+%{_mandir}/man?/%{appname}.?%{?ext_man}
 %{_datadir}/metainfo/%{appname}.metainfo.xml
 
 %files lang -f %{appname}.lang

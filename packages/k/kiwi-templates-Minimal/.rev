@@ -193,4 +193,15 @@
     <comment></comment>
     <requestid>1224096</requestid>
   </revision>
+  <revision rev="25" vrev="25">
+    <srcmd5>bd99212e4dffa0a99d277784d5b449f3</srcmd5>
+    <version>84.87.1</version>
+    <time>1734548942</time>
+    <user>anag+factory</user>
+    <comment>- Add some missing packages to kvm-and-xen-{grub-bls,sdboot} profiles
+  (boo#1234610)
+- Remove outdated comment about kernel-default-base lacking dm-crypt
+- Avoid duplicate uefi_mbr inclusion</comment>
+    <requestid>1231691</requestid>
+  </revision>
 </revisionlist>

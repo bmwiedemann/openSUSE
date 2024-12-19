@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri May 10 08:42:45 UTC 2024 - cloud-devel@suse.de
+
+- update to version 3.0.0
+  - Use py3 as the default runtime for tox
+  - Update python classifier in setup.cfg
+  - Publish release notes
+  - Restore Python 3.6/7 support
+  - Replace assertItemsEqual with assertCountEqual
+  - [community goal] Update contributor documentation
+  - Stop using deprecated 'message' attribute in Exception
+  - Drop direct execution of run.py
+  - Remove format function
+  - Update CI to use unversioned jobs template
+  - Bump hacking
+  - Migrate from testr to stestr
+  - Remove translation sections from setup.cfg
+  - Remove shebang from setup.py
+  - setup.cfg: Replace dashes by underscores
+
+-------------------------------------------------------------------
 Fri Oct 14 12:35:15 UTC 2022 - pgajdos@suse.com
 
 - does not require python-six

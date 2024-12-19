@@ -359,6 +359,7 @@
         <package name="dracut-kiwi-oem-repart"/>
     </packages>
 
+    <!-- GRUB everywhere except for -grub-bls and -sdboot flavors -->
     <packages type="image" profiles="kvm-and-xen,VMware,MS-HyperV,Cloud,RaspberryPi">
         <package name="grub2"/>
         <package name="grub2-arm64-efi" arch="aarch64"/>
@@ -391,18 +392,16 @@
         <package name="shim" arch="aarch64,x86_64"/>
     </packages>
 
-    <packages type="image" profiles="kvm-and-xen">
+    <packages type="image" profiles="kvm-and-xen,kvm-and-xen-sdboot,kvm-and-xen-grub-bls">
         <package name="xen-tools-domU"/>
         <package name="xen-libs"/>
         <package name="kernel-default-base"/>
     </packages>
-    <packages type="image" profiles="kvm-and-xen,Cloud">
+    <packages type="image" profiles="kvm-and-xen,kvm-and-xen-sdboot,kvm-and-xen-grub-bls,Cloud">
         <package name="qemu-guest-agent"/>
     </packages>
 
     <packages type="image" profiles="kvm-and-xen-sdboot,kvm-and-xen-grub-bls">
-        <!-- kernel-default-base lacks dm-crypt -->
-        <package name="kernel-default-base"/>
         <package name="sdbootutil-snapper"/>
         <package name="sdbootutil-jeos-firstboot-enroll"/>
         <package name="efibootmgr"/>
@@ -419,7 +418,6 @@
 
     <packages type="image" profiles="kvm-and-xen-grub-bls">
         <package name="patterns-base-bootloader"/>
-        <package name="uefi_mbr" arch="x86_64"/>
         <package name="grub2-x86_64-efi-bls" arch="x86_64"/>
         <package name="grub2-arm64-efi-bls" arch="aarch64"/>
     </packages>

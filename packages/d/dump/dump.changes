@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Tue Dec 17 20:03:34 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 0.4b49:
+  * Reworking of regression tests and test harness
+  * Import some patches from the Debian package.
+  * restore -N should never change the fs. Fixes #154
+  * Support outputting list of files from restore -t with '\0' separator
+    (Patch from debian bug 703564 by Heiko Schlittermann)
+  * Fix reading of QFA file when listing tape.
+  * Support restoring to filesystems with a blocksize that isn't a multiple
+    of TP_BSIZE (debian bug 995992). This is a different fix to the one
+    currently in debian. The advantage of using a common multiple, if
+    available, is that every FS block will only be written to once.
+    Fixed an issue where the alignment between blocksize and writing pos
+    becomes misaligned when a sparse hole doesn't occupy a full fs block
+    (happens when restoring to a FS with a different, larger blocksize than
+    the one the dump was taken on.
+  * Numerous other minor patches from the Debian package
+  * Don't read off end of buffer when restoring symlinks
+  * Fix some weirdness around dumping a subdirectory. Do not include the
+    inodes for all of the items in the subdirectories - which then give a
+    restore error "inode not found on tape"
+  * Fix EA problem when EAs blocks are read immediately before a tape change.
+  * Allow compressed dumps to work when -b blocksize setting is the maximum
+    a tape drive supports.
+  * Remove code added for building on systems other than __linux__
+  * Major reworking of how reading from disk and tape works. Dump now
+    supports writing a compressed dump to a file and then writing that to
+    tape. There is now only one "read" function. We do not have separate
+    functions for reading tapes, files, compressed tapes, compressed files.
+  * Improve the efficiency of TS_ADDR (and TS_INODE) record for
+    representing larger files. A single TS_ADDR record can now represent up
+    to 4GB of file rather than just 512K. Dumps written by 0.4b49 cannot be
+    restored using 0.4b48 and before.
+- 0.4b48 changelog:
+  * Handle fs with more than 2^32 blocks (Greg Oster)
+  * Handle EA stored in blocks with address >2^32.
+  * Handle the case were EAs are stored across two blocks. Fixes several
+    reported bugs regarding the restore of directory attributes.
+    Additionally, now restore -C passes too. Originally restore -C was
+    patched for files, but not directories, in debian bug#940473 by
+    Alexander Zangerl.  Substantially redone and extended to directory
+    attributes here.
+  * Do not record garbage data in dump for files with
+    EXT2_EXTENT_FLAGS_UNINIT set indicating that the disk block has not
+    been written to and should be assumed to be all zeros.
+  * Dump small files on ext4 partitions with -O inline-data set.
+  * Major performance enhancements on the restoring and verifying of very
+    sparse files.
+  * Handle dumps that are over 2^32 (tape) blocks long (>4T)
+  * Handle restoring sparse files that start with a hole from dump versions
+    0.4b42/43. Previously they were restored but corrupted as some of the
+    initial hole was moved to the end.
+  * Many cleanups. Move to autoconf v0.71. Remove need to build with
+    -fcommon. Build with -W -Wall and without compiler warnings. Add some
+    compile time checks for structures that are written to tape and must
+    not change.
+  * Extensive regression tests. Every bug fixed by 0.4b48 release is now
+    covered by a regression test along with testing the restore of a historical
+    dump created by the previous versions from 0.4b5 through 0.4b47.
+- Use autopatch
+- Refresh patches
+
+-------------------------------------------------------------------
 Mon Feb 26 07:54:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

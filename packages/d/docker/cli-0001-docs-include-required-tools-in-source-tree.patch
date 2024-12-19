@@ -1,6 +1,6 @@
-From 3701285f1cf678dda730e3f9a4860d74ca54057d Mon Sep 17 00:00:00 2001
-From: danishprakash <danish.prakash@suse.com>
-Date: Mon, 12 Feb 2024 18:07:06 +0530
+From 8fbd3c8cfba959ec3b0db555d10158745cd01456 Mon Sep 17 00:00:00 2001
+From: Aleksa Sarai <cyphar@cyphar.com>
+Date: Mon, 16 Dec 2024 17:21:02 +1100
 Subject: [PATCH] docs: include required tools in source tree
 
 In order to be able to build the documentation without internet access
@@ -14,41 +14,40 @@ the tools (by modifying go.mod as part of the docs build script).
 This pattern also maked documentation builds less reproducible since the
 tool version used was not based on the source code version.
 
-Fixes: commit 7dc35c03fca5 ("validate manpages target")
-Fixes: commit a650f4ddd008 ("switch to cli-docs-tool for yaml docs generation")
-Signed-off-by: Aleksa Sarai <asarai@suse.de>
+Fixes: 7dc35c03fca5 ("validate manpages target")
+Fixes: a650f4ddd008 ("switch to cli-docs-tool for yaml docs generation")
+Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
 ---
  docs/generate/go.mod                          |   13 -
  docs/generate/tools.go                        |    8 -
- import.go                                     |   17 +
- man/tools.go                                  |   11 -
- scripts/docs/generate-man.sh                  |   33 +-
- scripts/docs/generate-md.sh                   |   36 +-
- scripts/docs/generate-yaml.sh                 |   29 +-
- vendor.mod                                    |    5 +
- vendor.sum                                    |    4 +
+ man/go.mod                                    |   15 -
+ man/tools.go                                  |    3 -
+ scripts/docs/generate-man.sh                  |   30 +-
+ scripts/docs/generate-md.sh                   |   26 +-
+ scripts/docs/generate-yaml.sh                 |   26 +-
+ vendor.mod                                    |    3 +
+ vendor.sum                                    |    2 +
  .../cpuguy83/go-md2man/v2/.gitignore          |    2 +
  .../cpuguy83/go-md2man/v2/.golangci.yml       |    6 +
- .../cpuguy83/go-md2man/v2/Dockerfile          |   20 +
+ .../cpuguy83/go-md2man/v2/Dockerfile          |   14 +
  .../cpuguy83/go-md2man/v2/LICENSE.md          |   21 +
- .../github.com/cpuguy83/go-md2man/v2/Makefile |   35 +
+ .../github.com/cpuguy83/go-md2man/v2/Makefile |   49 +
  .../cpuguy83/go-md2man/v2/README.md           |   15 +
  .../cpuguy83/go-md2man/v2/go-md2man.1.md      |   28 +
  .../cpuguy83/go-md2man/v2/md2man.go           |   53 +
  .../cpuguy83/go-md2man/v2/md2man/md2man.go    |   16 +
- .../cpuguy83/go-md2man/v2/md2man/roff.go      |  348 ++
+ .../cpuguy83/go-md2man/v2/md2man/roff.go      |  382 +++
  .../docker/cli-docs-tool/.dockerignore        |    2 +
  .../docker/cli-docs-tool/.gitignore           |    2 +
  .../docker/cli-docs-tool/.golangci.yml        |   37 +
  .../docker/cli-docs-tool/Dockerfile           |   86 +
- .../github.com/docker/cli-docs-tool/LICENSE   |  202 ++
  .../github.com/docker/cli-docs-tool/README.md |   67 +
- .../cli-docs-tool/annotation/annotation.go    |   25 +
- .../docker/cli-docs-tool/clidocstool.go       |  123 +
- .../docker/cli-docs-tool/clidocstool_md.go    |  280 ++
- .../docker/cli-docs-tool/clidocstool_yaml.go  |  435 +++
+ .../docker/cli-docs-tool/clidocstool.go       |  191 ++
+ .../docker/cli-docs-tool/clidocstool_man.go   |   74 +
+ .../docker/cli-docs-tool/clidocstool_md.go    |  277 ++
+ .../docker/cli-docs-tool/clidocstool_yaml.go  |  378 ++
  .../docker/cli-docs-tool/docker-bake.hcl      |   51 +
- .../docker/cli-docs-tool/markdown.go          |   87 +
+ .../docker/cli-docs-tool/markdown.go          |  100 +
  .../russross/blackfriday/v2/.gitignore        |    8 +
  .../russross/blackfriday/v2/.travis.yml       |   17 +
  .../russross/blackfriday/v2/LICENSE.txt       |   29 +
@@ -83,12 +82,11 @@ Signed-off-by: Aleksa Sarai <asarai@suse.de>
  vendor/gopkg.in/yaml.v3/yaml.go               |  698 ++++
  vendor/gopkg.in/yaml.v3/yamlh.go              |  807 +++++
  vendor/gopkg.in/yaml.v3/yamlprivateh.go       |  198 ++
- vendor/modules.txt                            |   15 +
- 66 files changed, 22631 insertions(+), 96 deletions(-)
+ vendor/modules.txt                            |   12 +
+ 65 files changed, 22503 insertions(+), 101 deletions(-)
  delete mode 100644 docs/generate/go.mod
  delete mode 100644 docs/generate/tools.go
- create mode 100644 import.go
- delete mode 100644 man/tools.go
+ delete mode 100644 man/go.mod
  create mode 100644 vendor/github.com/cpuguy83/go-md2man/v2/.gitignore
  create mode 100644 vendor/github.com/cpuguy83/go-md2man/v2/.golangci.yml
  create mode 100644 vendor/github.com/cpuguy83/go-md2man/v2/Dockerfile
@@ -103,10 +101,9 @@ Signed-off-by: Aleksa Sarai <asarai@suse.de>
  create mode 100644 vendor/github.com/docker/cli-docs-tool/.gitignore
  create mode 100644 vendor/github.com/docker/cli-docs-tool/.golangci.yml
  create mode 100644 vendor/github.com/docker/cli-docs-tool/Dockerfile
- create mode 100644 vendor/github.com/docker/cli-docs-tool/LICENSE
  create mode 100644 vendor/github.com/docker/cli-docs-tool/README.md
- create mode 100644 vendor/github.com/docker/cli-docs-tool/annotation/annotation.go
  create mode 100644 vendor/github.com/docker/cli-docs-tool/clidocstool.go
+ create mode 100644 vendor/github.com/docker/cli-docs-tool/clidocstool_man.go
  create mode 100644 vendor/github.com/docker/cli-docs-tool/clidocstool_md.go
  create mode 100644 vendor/github.com/docker/cli-docs-tool/clidocstool_yaml.go
  create mode 100644 vendor/github.com/docker/cli-docs-tool/docker-bake.hcl
@@ -148,7 +145,7 @@ Signed-off-by: Aleksa Sarai <asarai@suse.de>
 
 diff --git a/docs/generate/go.mod b/docs/generate/go.mod
 deleted file mode 100644
-index d62ff455713a..000000000000
+index 451d2965338c..000000000000
 --- a/docs/generate/go.mod
 +++ /dev/null
 @@ -1,13 +0,0 @@
@@ -157,11 +154,11 @@ index d62ff455713a..000000000000
 -// dummy go.mod to avoid dealing with dependencies specific
 -// to docs generation and not really part of the project.
 -
--go 1.16
+-go 1.22.0
 -
 -//require (
 -//	github.com/docker/cli v0.0.0+incompatible
--//	github.com/docker/cli-docs-tool v0.5.0
+-//	github.com/docker/cli-docs-tool v0.8.0
 -//)
 -//
 -//replace github.com/docker/cli v0.0.0+incompatible => ../../
@@ -179,70 +176,57 @@ index 47510bc49a89..000000000000
 -import (
 -	_ "github.com/docker/cli-docs-tool"
 -)
-diff --git a/import.go b/import.go
-new file mode 100644
-index 000000000000..662a6055146c
---- /dev/null
-+++ b/import.go
-@@ -0,0 +1,17 @@
-+// This is only used to define imports we need for doc generation.
-+
-+//go:build never
-+// +build never
-+
-+package cli
-+
-+import (
-+	// Used for md and yaml doc generation.
-+	_ "github.com/docker/cli-docs-tool"
-+
-+	// Used for man page generation.
-+	_ "github.com/cpuguy83/go-md2man/v2"
-+	_ "github.com/spf13/cobra"
-+	_ "github.com/spf13/cobra/doc"
-+	_ "github.com/spf13/pflag"
-+)
-diff --git a/man/tools.go b/man/tools.go
+diff --git a/man/go.mod b/man/go.mod
 deleted file mode 100644
-index 3cafe6533aff..000000000000
---- a/man/tools.go
+index 1bb09dabf10a..000000000000
+--- a/man/go.mod
 +++ /dev/null
-@@ -1,11 +0,0 @@
--//go:build tools
--// +build tools
+@@ -1,15 +0,0 @@
+-module github.com/docker/cli/man
 -
--package main
+-// dummy go.mod to avoid dealing with dependencies specific
+-// to manpages generation and not really part of the project.
 -
--import (
--	_ "github.com/cpuguy83/go-md2man/v2"
+-go 1.22.0
+-
+-//require (
+-//	github.com/docker/cli v0.0.0+incompatible
+-//	github.com/cpuguy83/go-md2man/v2 v2.0.5
+-//	github.com/spf13/cobra v1.2.1
+-//	github.com/spf13/pflag v1.0.5
+-//)
+-//
+-//replace github.com/docker/cli v0.0.0+incompatible => ../
+diff --git a/man/tools.go b/man/tools.go
+index 3cafe6533aff..3998dc709072 100644
+--- a/man/tools.go
++++ b/man/tools.go
+@@ -5,7 +5,4 @@ package main
+ 
+ import (
+ 	_ "github.com/cpuguy83/go-md2man/v2"
 -	_ "github.com/spf13/cobra"
 -	_ "github.com/spf13/cobra/doc"
 -	_ "github.com/spf13/pflag"
--)
+ )
 diff --git a/scripts/docs/generate-man.sh b/scripts/docs/generate-man.sh
-index 12a4b81199db..1e12a95e9c9a 100755
+index 711041b6d399..15d0cf85b185 100755
 --- a/scripts/docs/generate-man.sh
 +++ b/scripts/docs/generate-man.sh
-@@ -1,35 +1,22 @@
- #!/usr/bin/env bash
+@@ -4,32 +4,18 @@ set -eu
  
--set -eu
+ : "${MD2MAN_VERSION=v2.0.5}"
+ 
+-export GO111MODULE=auto
 -
--: "${MD2MAN_VERSION=v2.0.3}"
-+set -Eeuo pipefail
- 
- export GO111MODULE=auto
- 
 -function clean {
 -  rm -rf "$buildir"
-+# temporary "go.mod" to make -modfile= work
-+touch go.mod
-+
 +function clean() {
-+  rm -f "$(pwd)/go.mod"
++	rm -f go.mod
  }
  
 -buildir=$(mktemp -d -t docker-cli-docsgen.XXXXXXXXXX)
++export GO111MODULE=auto
  trap clean EXIT
  
 -(
@@ -262,6 +246,7 @@ index 12a4b81199db..1e12a95e9c9a 100755
 -  # build go-md2man
 -  go build -mod=vendor -modfile=vendor.mod -o /tmp/go-md2man ./vendor/github.com/cpuguy83/go-md2man/v2
 -)
++./scripts/vendor init
 +# build gen-manpages
 +go build -mod=vendor -modfile=vendor.mod -tags manpages -o /tmp/gen-manpages ./man/generate.go
 +# build go-md2man
@@ -270,31 +255,23 @@ index 12a4b81199db..1e12a95e9c9a 100755
  mkdir -p man/man1
  (set -x ; /tmp/gen-manpages --root "." --target "$(pwd)/man/man1")
 diff --git a/scripts/docs/generate-md.sh b/scripts/docs/generate-md.sh
-index 4caa01eaed23..0af86843bbe4 100755
+index 3fe1ca917646..b9eaed3aed9f 100755
 --- a/scripts/docs/generate-md.sh
 +++ b/scripts/docs/generate-md.sh
-@@ -1,33 +1,29 @@
- #!/usr/bin/env bash
+@@ -4,30 +4,16 @@ set -eu
  
--set -eu
+ : "${CLI_DOCS_TOOL_VERSION=v0.8.0}"
+ 
+-export GO111MODULE=auto
 -
--: "${CLI_DOCS_TOOL_VERSION=v0.7.0}"
-+set -Eeuo pipefail
- 
- export GO111MODULE=auto
- 
-+# temporary "go.mod" to make -modfile= work
-+touch go.mod
-+
- function clean {
+-function clean {
 -  rm -rf "$buildir"
-+  rm -f "$(pwd)/go.mod"
-+  if [ -f "$(pwd)/docs/reference/commandline/docker.md" ]; then
-+    mv "$(pwd)/docs/reference/commandline/docker.md" "$(pwd)/docs/reference/commandline/cli.md"
-+  fi
++function clean() {
++	rm -f go.mod
  }
  
 -buildir=$(mktemp -d -t docker-cli-docsgen.XXXXXXXXXX)
++export GO111MODULE=auto
  trap clean EXIT
  
 -(
@@ -304,7 +281,7 @@ index 4caa01eaed23..0af86843bbe4 100755
 -  # init dummy go.mod
 -  ./scripts/vendor init
 -  # install cli-docs-tool and copy docs/tools.go in root folder
--  # to be able to fetch the required depedencies
+-  # to be able to fetch the required dependencies
 -  go mod edit -modfile=vendor.mod -require=github.com/docker/cli-docs-tool@${CLI_DOCS_TOOL_VERSION}
 -  cp docs/generate/tools.go .
 -  # update vendor
@@ -312,41 +289,30 @@ index 4caa01eaed23..0af86843bbe4 100755
 -  # build docsgen
 -  go build -mod=vendor -modfile=vendor.mod -tags docsgen -o /tmp/docsgen ./docs/generate/generate.go
 -)
++./scripts/vendor init
 +# build docsgen
 +go build -mod=vendor -modfile=vendor.mod -tags docsgen -o /tmp/docsgen ./docs/generate/generate.go
-+
-+# yaml generation on docs repo needs the cli.md file: https://github.com/docker/cli/pull/3924#discussion_r1059986605
-+# but markdown generation docker.md atm. While waiting for a fix in cli-docs-tool
-+# we need to first move the cli.md file to docker.md, do the generation and
-+# then move it back in trap handler.
-+mv "$(pwd)/docs/reference/commandline/cli.md" "$(pwd)/docs/reference/commandline/docker.md"
  
  (
    set -x
 diff --git a/scripts/docs/generate-yaml.sh b/scripts/docs/generate-yaml.sh
-index 0d67c5e5bb09..7d98e161df5d 100755
+index c4ed0d567de3..7da8d1a2fa95 100755
 --- a/scripts/docs/generate-yaml.sh
 +++ b/scripts/docs/generate-yaml.sh
-@@ -1,33 +1,20 @@
- #!/usr/bin/env bash
+@@ -4,30 +4,16 @@ set -eu
  
--set -eu
+ : "${CLI_DOCS_TOOL_VERSION=v0.8.0}"
+ 
+-export GO111MODULE=auto
 -
--: "${CLI_DOCS_TOOL_VERSION=v0.7.0}"
-+set -Eeuo pipefail
- 
- export GO111MODULE=auto
- 
 -function clean {
 -  rm -rf "$buildir"
-+# temporary "go.mod" to make -modfile= work
-+touch go.mod
-+
 +function clean() {
-+  rm -f "$(pwd)/go.mod"
++	rm -f go.mod
  }
  
 -buildir=$(mktemp -d -t docker-cli-docsgen.XXXXXXXXXX)
++export GO111MODULE=auto
  trap clean EXIT
  
 -(
@@ -356,7 +322,7 @@ index 0d67c5e5bb09..7d98e161df5d 100755
 -  # init dummy go.mod
 -  ./scripts/vendor init
 -  # install cli-docs-tool and copy docs/tools.go in root folder
--  # to be able to fetch the required depedencies
+-  # to be able to fetch the required dependencies
 -  go mod edit -modfile=vendor.mod -require=github.com/docker/cli-docs-tool@${CLI_DOCS_TOOL_VERSION}
 -  cp docs/generate/tools.go .
 -  # update vendor
@@ -364,68 +330,51 @@ index 0d67c5e5bb09..7d98e161df5d 100755
 -  # build docsgen
 -  go build -mod=vendor -modfile=vendor.mod -tags docsgen -o /tmp/docsgen ./docs/generate/generate.go
 -)
++./scripts/vendor init
 +# build docsgen
 +go build -mod=vendor -modfile=vendor.mod -tags docsgen -o /tmp/docsgen ./docs/generate/generate.go
  
  mkdir -p docs/yaml
  set -x
 diff --git a/vendor.mod b/vendor.mod
-index 3bc5ce327f0f..a654f78703d6 100644
+index e1e7975baebc..1ceb5d5c6fa2 100644
 --- a/vendor.mod
 +++ b/vendor.mod
-@@ -11,6 +11,7 @@ require (
- 	github.com/containerd/platforms v0.2.0
- 	github.com/creack/pty v1.1.21
- 	github.com/distribution/reference v0.5.0
-+	github.com/docker/cli-docs-tool v0.6.0
- 	github.com/docker/distribution v2.8.3+incompatible
- 	github.com/docker/docker v26.1.4-0.20240605103321-de5c9cf0b96e+incompatible // 26.1 branch (v26.1.4-dev)
- 	github.com/docker/docker-credential-helpers v0.8.1
-@@ -53,6 +54,8 @@ require (
- 	tags.cncf.io/container-device-interface v0.7.2
- )
- 
-+require github.com/cpuguy83/go-md2man/v2 v2.0.3
-+
+@@ -9,6 +9,7 @@ go 1.22.0
  require (
- 	github.com/Azure/go-ansiterm v0.0.0-20210617225240-d185dfc1b5a1 // indirect
- 	github.com/Microsoft/go-winio v0.6.2 // indirect
-@@ -83,6 +86,7 @@ require (
+ 	dario.cat/mergo v1.0.1
+ 	github.com/containerd/platforms v0.2.1
++	github.com/cpuguy83/go-md2man/v2 v2.0.4
+ 	github.com/creack/pty v1.1.21
+ 	github.com/distribution/reference v0.6.0
+ 	github.com/docker/cli-docs-tool v0.8.0
+@@ -87,6 +88,7 @@ require (
  	github.com/prometheus/common v0.44.0 // indirect
- 	github.com/prometheus/procfs v0.12.0 // indirect
+ 	github.com/prometheus/procfs v0.15.1 // indirect
  	github.com/rivo/uniseg v0.2.0 // indirect
 +	github.com/russross/blackfriday/v2 v2.1.0 // indirect
+ 	github.com/stretchr/testify v1.9.0 // indirect
  	github.com/xeipuuv/gojsonpointer v0.0.0-20190905194746-02993c407bfb // indirect
  	github.com/xeipuuv/gojsonreference v0.0.0-20180127040603-bd5ef7bd5415 // indirect
- 	go.etcd.io/etcd/raft/v3 v3.5.6 // indirect
-@@ -96,4 +100,5 @@ require (
- 	google.golang.org/genproto/googleapis/rpc v0.0.0-20231016165738-49dd2c1f3d0b // indirect
- 	google.golang.org/grpc v1.60.1 // indirect
- 	google.golang.org/protobuf v1.33.0 // indirect
+@@ -102,4 +104,5 @@ require (
+ 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240604185151-ef581f913117 // indirect
+ 	google.golang.org/grpc v1.66.3 // indirect
+ 	google.golang.org/protobuf v1.35.1 // indirect
 +	gopkg.in/yaml.v3 v3.0.1 // indirect
  )
 diff --git a/vendor.sum b/vendor.sum
-index 6a31c9b2cf62..a0905e657c37 100644
+index 204aad33c6cb..7f450e74144e 100644
 --- a/vendor.sum
 +++ b/vendor.sum
-@@ -46,6 +46,7 @@ github.com/containerd/log v0.1.0/go.mod h1:VRRf09a7mHDIRezVKTRCrOq78v577GXq3bSa3
- github.com/containerd/platforms v0.2.0 h1:clGNvVIcY3k39VJSYdFGohI1b3bP/eeBUVR5+XA28oo=
- github.com/containerd/platforms v0.2.0/go.mod h1:XOM2BS6kN6gXafPLg80V6y/QUib+xoLyC3qVmHzibko=
+@@ -42,6 +42,7 @@ github.com/containerd/log v0.1.0/go.mod h1:VRRf09a7mHDIRezVKTRCrOq78v577GXq3bSa3
+ github.com/containerd/platforms v0.2.1 h1:zvwtM3rz2YHPQsF2CHYM8+KtB5dvhISiXh5ZpSBQv6A=
+ github.com/containerd/platforms v0.2.1/go.mod h1:XHCb+2/hzowdiut9rkudds9bE5yJ7npe7dG/wG+uFPw=
  github.com/coreos/go-systemd/v22 v22.3.2/go.mod h1:Y58oyj3AT4RCenI/lSvhwexgC+NSVTIJ3seZv2GcEnc=
-+github.com/cpuguy83/go-md2man/v2 v2.0.3 h1:qMCsGGgs+MAzDFyp9LpAe1Lqy/fY/qCovCm0qnXZOBM=
- github.com/cpuguy83/go-md2man/v2 v2.0.3/go.mod h1:tgQtvFlXSQOSOSIRvRPT7W67SCa46tRHOmNcaadrF8o=
++github.com/cpuguy83/go-md2man/v2 v2.0.4 h1:wfIWP927BUkWJb2NmU/kNDYIBTh/ziUX91+lVfRxZq4=
+ github.com/cpuguy83/go-md2man/v2 v2.0.4/go.mod h1:tgQtvFlXSQOSOSIRvRPT7W67SCa46tRHOmNcaadrF8o=
  github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ33E=
  github.com/creack/pty v1.1.21 h1:1/QdRyBaHHJP61QkWMXlOIBfsgdDeeKfK8SYVUWJKf0=
-@@ -56,6 +57,8 @@ github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSs
- github.com/denisenkom/go-mssqldb v0.0.0-20191128021309-1d7a30a10f73/go.mod h1:xbL0rPBG9cCiLr28tMa8zpbdarY27NDyej4t/EjAShU=
- github.com/distribution/reference v0.5.0 h1:/FUIFXtfc/x2gpa5/VGfiGLuOIdYa1t65IKK2OFGvA0=
- github.com/distribution/reference v0.5.0/go.mod h1:BbU0aIcezP1/5jX/8MP0YiH4SdvB5Y4f/wlDRiLyi3E=
-+github.com/docker/cli-docs-tool v0.6.0 h1:Z9x10SaZgFaB6jHgz3OWooynhSa40CsWkpe5hEnG/qA=
-+github.com/docker/cli-docs-tool v0.6.0/go.mod h1:zMjqTFCU361PRh8apiXzeAZ1Q/xupbIwTusYpzCXS/o=
- github.com/docker/distribution v2.7.1+incompatible/go.mod h1:J2gT2udsDAN96Uj4KfcMRqY0/ypR+oyYUYmja8H+y+w=
- github.com/docker/distribution v2.8.3+incompatible h1:AtKxIZ36LoNK51+Z6RpzLpddBirtxJnzDrHLEKxTAYk=
- github.com/docker/distribution v2.8.3+incompatible/go.mod h1:J2gT2udsDAN96Uj4KfcMRqY0/ypR+oyYUYmja8H+y+w=
-@@ -241,6 +244,7 @@ github.com/rivo/uniseg v0.2.0 h1:S1pD9weZBuJdFmowNwbpi7BJ8TNftyUImj/0WQi72jY=
+@@ -249,6 +250,7 @@ github.com/rivo/uniseg v0.2.0 h1:S1pD9weZBuJdFmowNwbpi7BJ8TNftyUImj/0WQi72jY=
  github.com/rivo/uniseg v0.2.0/go.mod h1:J6wj4VEh+S6ZtnVlnTBMWIodfgj8LQOQFoIToxlJtxc=
  github.com/rogpeppe/go-internal v1.11.0 h1:cWPaGQEPrBb5/AsnsZesgZZ9yb1OQ+GOISoDNXVBh4M=
  github.com/rogpeppe/go-internal v1.11.0/go.mod h1:ddIwULY96R17DhadqLgMfk9H9tvdUzkipdSkR5nkCZA=
@@ -455,29 +404,23 @@ index 000000000000..71f073f3c6b9
 +
 diff --git a/vendor/github.com/cpuguy83/go-md2man/v2/Dockerfile b/vendor/github.com/cpuguy83/go-md2man/v2/Dockerfile
 new file mode 100644
-index 000000000000..7181c5306f41
+index 000000000000..b9fc4dfdb52a
 --- /dev/null
 +++ b/vendor/github.com/cpuguy83/go-md2man/v2/Dockerfile
-@@ -0,0 +1,20 @@
-+ARG GO_VERSION=1.18
-+ARG GO_IMAGE=golang:${GO_VERSION}
+@@ -0,0 +1,14 @@
++ARG GO_VERSION=1.21
 +
-+FROM --platform=$BUILDPLATFORM $GO_IMAGE AS build
++FROM --platform=${BUILDPLATFORM} golang:${GO_VERSION} AS build
 +COPY . /go/src/github.com/cpuguy83/go-md2man
 +WORKDIR /go/src/github.com/cpuguy83/go-md2man
-+ARG TARGETOS
-+ARG TARGETARCH
-+ARG TARGETVARIANT
++ARG TARGETOS TARGETARCH TARGETVARIANT
 +RUN \
-+    export GOOS="${TARGETOS}"; \
-+    export GOARCH="${TARGETARCH}"; \
-+    if [ "${TARGETARCH}" = "arm" ] && [ "${TARGETVARIANT}" ]; then \
-+    export GOARM="${TARGETVARIANT#v}"; \
-+    fi; \
-+    CGO_ENABLED=0 go build
++    --mount=type=cache,target=/go/pkg/mod \
++    --mount=type=cache,target=/root/.cache/go-build \
++    make build
 +
 +FROM scratch
-+COPY --from=build /go/src/github.com/cpuguy83/go-md2man/go-md2man /go-md2man
++COPY --from=build /go/src/github.com/cpuguy83/go-md2man/bin/go-md2man /go-md2man
 +ENTRYPOINT ["/go-md2man"]
 diff --git a/vendor/github.com/cpuguy83/go-md2man/v2/LICENSE.md b/vendor/github.com/cpuguy83/go-md2man/v2/LICENSE.md
 new file mode 100644
@@ -508,14 +451,40 @@ index 000000000000..1cade6cef6a1
 +SOFTWARE.
 diff --git a/vendor/github.com/cpuguy83/go-md2man/v2/Makefile b/vendor/github.com/cpuguy83/go-md2man/v2/Makefile
 new file mode 100644
-index 000000000000..437fc9997926
+index 000000000000..5f4a423d6f25
 --- /dev/null
 +++ b/vendor/github.com/cpuguy83/go-md2man/v2/Makefile
-@@ -0,0 +1,35 @@
+@@ -0,0 +1,49 @@
 +GO111MODULE ?= on
-+LINTER_BIN ?= golangci-lint
 +
 +export GO111MODULE
++
++GOOS ?= $(if $(TARGETOS),$(TARGETOS),)
++GOARCH ?= $(if $(TARGETARCH),$(TARGETARCH),)
++
++ifeq ($(TARGETARCH),amd64)
++GOAMD64 ?= $(TARGETVARIANT)
++endif
++
++ifeq ($(TARGETARCH),arm)
++GOARM ?= $(TARGETVARIANT:v%=%)
++endif
++
++ifneq ($(GOOS),)
++export GOOS
++endif
++
++ifneq ($(GOARCH),)
++export GOARCH
++endif
++
++ifneq ($(GOAMD64),)
++export GOAMD64
++endif
++
++ifneq ($(GOARM),)
++export GOARM
++endif
 +
 +.PHONY:
 +build: bin/go-md2man
@@ -528,25 +497,13 @@ index 000000000000..437fc9997926
 +test:
 +	@go test $(TEST_FLAGS) ./...
 +
-+bin/go-md2man: actual_build_flags := $(BUILD_FLAGS) -o bin/go-md2man
-+bin/go-md2man: bin
-+	@CGO_ENABLED=0 go build $(actual_build_flags)
-+
-+bin:
-+	@mkdir ./bin
++bin/go-md2man: go.mod go.sum md2man/* *.go
++	@mkdir -p bin
++	CGO_ENABLED=0 go build $(BUILD_FLAGS) -o $@
 +
 +.PHONY: mod
 +mod:
 +	@go mod tidy
-+
-+.PHONY: check-mod
-+check-mod: # verifies that module changes for go.mod and go.sum are checked in
-+	@hack/ci/check_mods.sh
-+
-+.PHONY: vendor
-+vendor: mod
-+	@go mod vendor -v
-+
 diff --git a/vendor/github.com/cpuguy83/go-md2man/v2/README.md b/vendor/github.com/cpuguy83/go-md2man/v2/README.md
 new file mode 100644
 index 000000000000..0e30d341483c
@@ -685,13 +642,14 @@ index 000000000000..42bf32aab003
 +}
 diff --git a/vendor/github.com/cpuguy83/go-md2man/v2/md2man/roff.go b/vendor/github.com/cpuguy83/go-md2man/v2/md2man/roff.go
 new file mode 100644
-index 000000000000..4b19188d90fd
+index 000000000000..8a290f1972a2
 --- /dev/null
 +++ b/vendor/github.com/cpuguy83/go-md2man/v2/md2man/roff.go
-@@ -0,0 +1,348 @@
+@@ -0,0 +1,382 @@
 +package md2man
 +
 +import (
++	"bufio"
 +	"bytes"
 +	"fmt"
 +	"io"
@@ -712,34 +670,35 @@ index 000000000000..4b19188d90fd
 +}
 +
 +const (
-+	titleHeader      = ".TH "
-+	topLevelHeader   = "\n\n.SH "
-+	secondLevelHdr   = "\n.SH "
-+	otherHeader      = "\n.SS "
-+	crTag            = "\n"
-+	emphTag          = "\\fI"
-+	emphCloseTag     = "\\fP"
-+	strongTag        = "\\fB"
-+	strongCloseTag   = "\\fP"
-+	breakTag         = "\n.br\n"
-+	paraTag          = "\n.PP\n"
-+	hruleTag         = "\n.ti 0\n\\l'\\n(.lu'\n"
-+	linkTag          = "\n\\[la]"
-+	linkCloseTag     = "\\[ra]"
-+	codespanTag      = "\\fB"
-+	codespanCloseTag = "\\fR"
-+	codeTag          = "\n.EX\n"
-+	codeCloseTag     = "\n.EE\n"
-+	quoteTag         = "\n.PP\n.RS\n"
-+	quoteCloseTag    = "\n.RE\n"
-+	listTag          = "\n.RS\n"
-+	listCloseTag     = "\n.RE\n"
-+	dtTag            = "\n.TP\n"
-+	dd2Tag           = "\n"
-+	tableStart       = "\n.TS\nallbox;\n"
-+	tableEnd         = ".TE\n"
-+	tableCellStart   = "T{\n"
-+	tableCellEnd     = "\nT}\n"
++	titleHeader       = ".TH "
++	topLevelHeader    = "\n\n.SH "
++	secondLevelHdr    = "\n.SH "
++	otherHeader       = "\n.SS "
++	crTag             = "\n"
++	emphTag           = "\\fI"
++	emphCloseTag      = "\\fP"
++	strongTag         = "\\fB"
++	strongCloseTag    = "\\fP"
++	breakTag          = "\n.br\n"
++	paraTag           = "\n.PP\n"
++	hruleTag          = "\n.ti 0\n\\l'\\n(.lu'\n"
++	linkTag           = "\n\\[la]"
++	linkCloseTag      = "\\[ra]"
++	codespanTag       = "\\fB"
++	codespanCloseTag  = "\\fR"
++	codeTag           = "\n.EX\n"
++	codeCloseTag      = ".EE\n" // Do not prepend a newline character since code blocks, by definition, include a newline already (or at least as how blackfriday gives us on).
++	quoteTag          = "\n.PP\n.RS\n"
++	quoteCloseTag     = "\n.RE\n"
++	listTag           = "\n.RS\n"
++	listCloseTag      = "\n.RE\n"
++	dtTag             = "\n.TP\n"
++	dd2Tag            = "\n"
++	tableStart        = "\n.TS\nallbox;\n"
++	tableEnd          = ".TE\n"
++	tableCellStart    = "T{\n"
++	tableCellEnd      = "\nT}\n"
++	tablePreprocessor = `'\" t`
 +)
 +
 +// NewRoffRenderer creates a new blackfriday Renderer for generating roff documents
@@ -766,6 +725,16 @@ index 000000000000..4b19188d90fd
 +
 +// RenderHeader handles outputting the header at document start
 +func (r *roffRenderer) RenderHeader(w io.Writer, ast *blackfriday.Node) {
++	// We need to walk the tree to check if there are any tables.
++	// If there are, we need to enable the roff table preprocessor.
++	ast.Walk(func(node *blackfriday.Node, entering bool) blackfriday.WalkStatus {
++		if node.Type == blackfriday.Table {
++			out(w, tablePreprocessor+"\n")
++			return blackfriday.Terminate
++		}
++		return blackfriday.GoToNext
++	})
++
 +	// disable hyphenation
 +	out(w, ".nh\n")
 +}
@@ -1013,6 +982,28 @@ index 000000000000..4b19188d90fd
 +}
 +
 +func escapeSpecialChars(w io.Writer, text []byte) {
++	scanner := bufio.NewScanner(bytes.NewReader(text))
++
++	// count the number of lines in the text
++	// we need to know this to avoid adding a newline after the last line
++	n := bytes.Count(text, []byte{'\n'})
++	idx := 0
++
++	for scanner.Scan() {
++		dt := scanner.Bytes()
++		if idx < n {
++			idx++
++			dt = append(dt, '\n')
++		}
++		escapeSpecialCharsLine(w, dt)
++	}
++
++	if err := scanner.Err(); err != nil {
++		panic(err)
++	}
++}
++
++func escapeSpecialCharsLine(w io.Writer, text []byte) {
 +	for i := 0; i < len(text); i++ {
 +		// escape initial apostrophe or period
 +		if len(text) >= 1 && (text[0] == '\'' || text[0] == '.') {
@@ -1188,214 +1179,6 @@ index 000000000000..f0e2739faa7c
 +
 +FROM scratch AS test-coverage
 +COPY --from=test /tmp/coverage.txt /coverage.txt
-diff --git a/vendor/github.com/docker/cli-docs-tool/LICENSE b/vendor/github.com/docker/cli-docs-tool/LICENSE
-new file mode 100644
-index 000000000000..d64569567334
---- /dev/null
-+++ b/vendor/github.com/docker/cli-docs-tool/LICENSE
-@@ -0,0 +1,202 @@
-+
-+                                 Apache License
-+                           Version 2.0, January 2004
-+                        http://www.apache.org/licenses/
-+
-+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
-+
-+   1. Definitions.
-+
-+      "License" shall mean the terms and conditions for use, reproduction,
-+      and distribution as defined by Sections 1 through 9 of this document.
-+
-+      "Licensor" shall mean the copyright owner or entity authorized by
-+      the copyright owner that is granting the License.
-+
-+      "Legal Entity" shall mean the union of the acting entity and all
-+      other entities that control, are controlled by, or are under common
-+      control with that entity. For the purposes of this definition,
-+      "control" means (i) the power, direct or indirect, to cause the
-+      direction or management of such entity, whether by contract or
-+      otherwise, or (ii) ownership of fifty percent (50%) or more of the
-+      outstanding shares, or (iii) beneficial ownership of such entity.
-+
-+      "You" (or "Your") shall mean an individual or Legal Entity
-+      exercising permissions granted by this License.
-+
-+      "Source" form shall mean the preferred form for making modifications,
-+      including but not limited to software source code, documentation
-+      source, and configuration files.
-+
-+      "Object" form shall mean any form resulting from mechanical
-+      transformation or translation of a Source form, including but
-+      not limited to compiled object code, generated documentation,
-+      and conversions to other media types.
-+
-+      "Work" shall mean the work of authorship, whether in Source or
-+      Object form, made available under the License, as indicated by a
-+      copyright notice that is included in or attached to the work
-+      (an example is provided in the Appendix below).
-+
-+      "Derivative Works" shall mean any work, whether in Source or Object
-+      form, that is based on (or derived from) the Work and for which the
-+      editorial revisions, annotations, elaborations, or other modifications
-+      represent, as a whole, an original work of authorship. For the purposes
-+      of this License, Derivative Works shall not include works that remain
-+      separable from, or merely link (or bind by name) to the interfaces of,
-+      the Work and Derivative Works thereof.
-+
-+      "Contribution" shall mean any work of authorship, including
-+      the original version of the Work and any modifications or additions
-+      to that Work or Derivative Works thereof, that is intentionally
-+      submitted to Licensor for inclusion in the Work by the copyright owner
-+      or by an individual or Legal Entity authorized to submit on behalf of
-+      the copyright owner. For the purposes of this definition, "submitted"
-+      means any form of electronic, verbal, or written communication sent
-+      to the Licensor or its representatives, including but not limited to
-+      communication on electronic mailing lists, source code control systems,
-+      and issue tracking systems that are managed by, or on behalf of, the
-+      Licensor for the purpose of discussing and improving the Work, but
-+      excluding communication that is conspicuously marked or otherwise
-+      designated in writing by the copyright owner as "Not a Contribution."
-+
-+      "Contributor" shall mean Licensor and any individual or Legal Entity
-+      on behalf of whom a Contribution has been received by Licensor and
-+      subsequently incorporated within the Work.
-+
-+   2. Grant of Copyright License. Subject to the terms and conditions of
-+      this License, each Contributor hereby grants to You a perpetual,
-+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
-+      copyright license to reproduce, prepare Derivative Works of,
-+      publicly display, publicly perform, sublicense, and distribute the
-+      Work and such Derivative Works in Source or Object form.
-+
-+   3. Grant of Patent License. Subject to the terms and conditions of
-+      this License, each Contributor hereby grants to You a perpetual,
-+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
-+      (except as stated in this section) patent license to make, have made,
-+      use, offer to sell, sell, import, and otherwise transfer the Work,
-+      where such license applies only to those patent claims licensable
-+      by such Contributor that are necessarily infringed by their
-+      Contribution(s) alone or by combination of their Contribution(s)
-+      with the Work to which such Contribution(s) was submitted. If You
-+      institute patent litigation against any entity (including a
-+      cross-claim or counterclaim in a lawsuit) alleging that the Work
-+      or a Contribution incorporated within the Work constitutes direct
-+      or contributory patent infringement, then any patent licenses
-+      granted to You under this License for that Work shall terminate
-+      as of the date such litigation is filed.
-+
-+   4. Redistribution. You may reproduce and distribute copies of the
-+      Work or Derivative Works thereof in any medium, with or without
-+      modifications, and in Source or Object form, provided that You
-+      meet the following conditions:
-+
-+      (a) You must give any other recipients of the Work or
-+          Derivative Works a copy of this License; and
-+
-+      (b) You must cause any modified files to carry prominent notices
-+          stating that You changed the files; and
-+
-+      (c) You must retain, in the Source form of any Derivative Works
-+          that You distribute, all copyright, patent, trademark, and
-+          attribution notices from the Source form of the Work,
-+          excluding those notices that do not pertain to any part of
-+          the Derivative Works; and
-+
-+      (d) If the Work includes a "NOTICE" text file as part of its
-+          distribution, then any Derivative Works that You distribute must
-+          include a readable copy of the attribution notices contained
-+          within such NOTICE file, excluding those notices that do not
-+          pertain to any part of the Derivative Works, in at least one
-+          of the following places: within a NOTICE text file distributed
-+          as part of the Derivative Works; within the Source form or
-+          documentation, if provided along with the Derivative Works; or,
-+          within a display generated by the Derivative Works, if and
-+          wherever such third-party notices normally appear. The contents
-+          of the NOTICE file are for informational purposes only and
-+          do not modify the License. You may add Your own attribution
-+          notices within Derivative Works that You distribute, alongside
-+          or as an addendum to the NOTICE text from the Work, provided
-+          that such additional attribution notices cannot be construed
-+          as modifying the License.
-+
-+      You may add Your own copyright statement to Your modifications and
-+      may provide additional or different license terms and conditions
-+      for use, reproduction, or distribution of Your modifications, or
-+      for any such Derivative Works as a whole, provided Your use,
-+      reproduction, and distribution of the Work otherwise complies with
-+      the conditions stated in this License.
-+
-+   5. Submission of Contributions. Unless You explicitly state otherwise,
-+      any Contribution intentionally submitted for inclusion in the Work
-+      by You to the Licensor shall be under the terms and conditions of
-+      this License, without any additional terms or conditions.
-+      Notwithstanding the above, nothing herein shall supersede or modify
-+      the terms of any separate license agreement you may have executed
-+      with Licensor regarding such Contributions.
-+
-+   6. Trademarks. This License does not grant permission to use the trade
-+      names, trademarks, service marks, or product names of the Licensor,
-+      except as required for reasonable and customary use in describing the
-+      origin of the Work and reproducing the content of the NOTICE file.
-+
-+   7. Disclaimer of Warranty. Unless required by applicable law or
-+      agreed to in writing, Licensor provides the Work (and each
-+      Contributor provides its Contributions) on an "AS IS" BASIS,
-+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
-+      implied, including, without limitation, any warranties or conditions
-+      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
-+      PARTICULAR PURPOSE. You are solely responsible for determining the
-+      appropriateness of using or redistributing the Work and assume any
-+      risks associated with Your exercise of permissions under this License.
-+
-+   8. Limitation of Liability. In no event and under no legal theory,
-+      whether in tort (including negligence), contract, or otherwise,
-+      unless required by applicable law (such as deliberate and grossly
-+      negligent acts) or agreed to in writing, shall any Contributor be
-+      liable to You for damages, including any direct, indirect, special,
-+      incidental, or consequential damages of any character arising as a
-+      result of this License or out of the use or inability to use the
-+      Work (including but not limited to damages for loss of goodwill,
-+      work stoppage, computer failure or malfunction, or any and all
-+      other commercial damages or losses), even if such Contributor
-+      has been advised of the possibility of such damages.
-+
-+   9. Accepting Warranty or Additional Liability. While redistributing
-+      the Work or Derivative Works thereof, You may choose to offer,
-+      and charge a fee for, acceptance of support, warranty, indemnity,
-+      or other liability obligations and/or rights consistent with this
-+      License. However, in accepting such obligations, You may act only
-+      on Your own behalf and on Your sole responsibility, not on behalf
-+      of any other Contributor, and only if You agree to indemnify,
-+      defend, and hold each Contributor harmless for any liability
-+      incurred by, or claims asserted against, such Contributor by reason
-+      of your accepting any such warranty or additional liability.
-+
-+   END OF TERMS AND CONDITIONS
-+
-+   APPENDIX: How to apply the Apache License to your work.
-+
-+      To apply the Apache License to your work, attach the following
-+      boilerplate notice, with the fields enclosed by brackets "[]"
-+      replaced with your own identifying information. (Don't include
-+      the brackets!)  The text should be enclosed in the appropriate
-+      comment syntax for the file format. We also recommend that a
-+      file or class name and description of purpose be included on the
-+      same "printed page" as the copyright notice for easier
-+      identification within third-party archives.
-+
-+   Copyright [yyyy] [name of copyright owner]
-+
-+   Licensed under the Apache License, Version 2.0 (the "License");
-+   you may not use this file except in compliance with the License.
-+   You may obtain a copy of the License at
-+
-+       http://www.apache.org/licenses/LICENSE-2.0
-+
-+   Unless required by applicable law or agreed to in writing, software
-+   distributed under the License is distributed on an "AS IS" BASIS,
-+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-+   See the License for the specific language governing permissions and
-+   limitations under the License.
 diff --git a/vendor/github.com/docker/cli-docs-tool/README.md b/vendor/github.com/docker/cli-docs-tool/README.md
 new file mode 100644
 index 000000000000..4d5ee6474f8f
@@ -1469,43 +1252,12 @@ index 000000000000..4d5ee6474f8f
 +
 +Want to contribute? Awesome! You can find information about contributing to
 +this project in the [CONTRIBUTING.md](/.github/CONTRIBUTING.md)
-diff --git a/vendor/github.com/docker/cli-docs-tool/annotation/annotation.go b/vendor/github.com/docker/cli-docs-tool/annotation/annotation.go
-new file mode 100644
-index 000000000000..021846af6e07
---- /dev/null
-+++ b/vendor/github.com/docker/cli-docs-tool/annotation/annotation.go
-@@ -0,0 +1,25 @@
-+// Copyright 2021 cli-docs-tool authors
-+//
-+// Licensed under the Apache License, Version 2.0 (the "License");
-+// you may not use this file except in compliance with the License.
-+// You may obtain a copy of the License at
-+//
-+//    http://www.apache.org/licenses/LICENSE-2.0
-+//
-+// Unless required by applicable law or agreed to in writing, software
-+// distributed under the License is distributed on an "AS IS" BASIS,
-+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-+// See the License for the specific language governing permissions and
-+// limitations under the License.
-+
-+package annotation
-+
-+const (
-+	// ExternalURL specifies an external link annotation
-+	ExternalURL = "docs.external.url"
-+	// CodeDelimiter specifies the char that will be converted as code backtick.
-+	// Can be used on cmd for inheritance or a specific flag.
-+	CodeDelimiter = "docs.code-delimiter"
-+	// DefaultValue specifies the default value for a flag.
-+	DefaultValue = "docs.default-value"
-+)
 diff --git a/vendor/github.com/docker/cli-docs-tool/clidocstool.go b/vendor/github.com/docker/cli-docs-tool/clidocstool.go
 new file mode 100644
-index 000000000000..d4aeaba3f126
+index 000000000000..a9d2f649953d
 --- /dev/null
 +++ b/vendor/github.com/docker/cli-docs-tool/clidocstool.go
-@@ -0,0 +1,123 @@
+@@ -0,0 +1,191 @@
 +// Copyright 2017 cli-docs-tool authors
 +//
 +// Licensed under the Apache License, Version 2.0 (the "License");
@@ -1525,10 +1277,13 @@ index 000000000000..d4aeaba3f126
 +import (
 +	"errors"
 +	"io"
++	"log"
 +	"os"
++	"path/filepath"
 +	"strings"
 +
 +	"github.com/spf13/cobra"
++	"github.com/spf13/cobra/doc"
 +)
 +
 +// Options defines options for cli-docs-tool
@@ -1537,6 +1292,8 @@ index 000000000000..d4aeaba3f126
 +	SourceDir string
 +	TargetDir string
 +	Plugin    bool
++
++	ManHeader *doc.GenManHeader
 +}
 +
 +// Client represents an active cli-docs-tool object
@@ -1545,6 +1302,8 @@ index 000000000000..d4aeaba3f126
 +	source string
 +	target string
 +	plugin bool
++
++	manHeader *doc.GenManHeader
 +}
 +
 +// New initializes a new cli-docs-tool client
@@ -1556,9 +1315,10 @@ index 000000000000..d4aeaba3f126
 +		return nil, errors.New("source dir required")
 +	}
 +	c := &Client{
-+		root:   opts.Root,
-+		source: opts.SourceDir,
-+		plugin: opts.Plugin,
++		root:      opts.Root,
++		source:    opts.SourceDir,
++		plugin:    opts.Plugin,
++		manHeader: opts.ManHeader,
 +	}
 +	if len(opts.TargetDir) == 0 {
 +		c.target = c.source
@@ -1581,7 +1341,67 @@ index 000000000000..d4aeaba3f126
 +	if err = c.GenYamlTree(c.root); err != nil {
 +		return err
 +	}
++	if err = c.GenManTree(c.root); err != nil {
++		return err
++	}
 +	return nil
++}
++
++// loadLongDescription gets long descriptions and examples from markdown.
++func (c *Client) loadLongDescription(cmd *cobra.Command, generator string) error {
++	if cmd.HasSubCommands() {
++		for _, sub := range cmd.Commands() {
++			if err := c.loadLongDescription(sub, generator); err != nil {
++				return err
++			}
++		}
++	}
++	name := cmd.CommandPath()
++	if i := strings.Index(name, " "); i >= 0 {
++		// remove root command / binary name
++		name = name[i+1:]
++	}
++	if name == "" {
++		return nil
++	}
++	mdFile := strings.ReplaceAll(name, " ", "_") + ".md"
++	sourcePath := filepath.Join(c.source, mdFile)
++	content, err := os.ReadFile(sourcePath)
++	if os.IsNotExist(err) {
++		log.Printf("WARN: %s does not exist, skipping Markdown examples for %s docs\n", mdFile, generator)
++		return nil
++	}
++	if err != nil {
++		return err
++	}
++	applyDescriptionAndExamples(cmd, string(content))
++	return nil
++}
++
++// applyDescriptionAndExamples fills in cmd.Long and cmd.Example with the
++// "Description" and "Examples" H2 sections in  mdString (if present).
++func applyDescriptionAndExamples(cmd *cobra.Command, mdString string) {
++	sections := getSections(mdString)
++	var (
++		anchors []string
++		md      string
++	)
++	if sections["description"] != "" {
++		md, anchors = cleanupMarkDown(sections["description"])
++		cmd.Long = md
++		anchors = append(anchors, md)
++	}
++	if sections["examples"] != "" {
++		md, anchors = cleanupMarkDown(sections["examples"])
++		cmd.Example = md
++		anchors = append(anchors, md)
++	}
++	if len(anchors) > 0 {
++		if cmd.Annotations == nil {
++			cmd.Annotations = make(map[string]string)
++		}
++		cmd.Annotations["anchors"] = strings.Join(anchors, ",")
++	}
 +}
 +
 +func fileExists(f string) bool {
@@ -1629,12 +1449,92 @@ index 000000000000..d4aeaba3f126
 +	}
 +	return aliases
 +}
+diff --git a/vendor/github.com/docker/cli-docs-tool/clidocstool_man.go b/vendor/github.com/docker/cli-docs-tool/clidocstool_man.go
+new file mode 100644
+index 000000000000..e043f9934e42
+--- /dev/null
++++ b/vendor/github.com/docker/cli-docs-tool/clidocstool_man.go
+@@ -0,0 +1,74 @@
++// Copyright 2016 cli-docs-tool authors
++//
++// Licensed under the Apache License, Version 2.0 (the "License");
++// you may not use this file except in compliance with the License.
++// You may obtain a copy of the License at
++//
++//    http://www.apache.org/licenses/LICENSE-2.0
++//
++// Unless required by applicable law or agreed to in writing, software
++// distributed under the License is distributed on an "AS IS" BASIS,
++// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++// See the License for the specific language governing permissions and
++// limitations under the License.
++
++package clidocstool
++
++import (
++	"fmt"
++	"log"
++	"os"
++	"strconv"
++	"time"
++
++	"github.com/spf13/cobra"
++	"github.com/spf13/cobra/doc"
++)
++
++// GenManTree generates a man page for the command and all descendants.
++// If SOURCE_DATE_EPOCH is set, in order to allow reproducible package
++// builds, we explicitly set the build time to SOURCE_DATE_EPOCH.
++func (c *Client) GenManTree(cmd *cobra.Command) error {
++	if err := c.loadLongDescription(cmd, "man"); err != nil {
++		return err
++	}
++
++	if epoch := os.Getenv("SOURCE_DATE_EPOCH"); c.manHeader != nil && epoch != "" {
++		unixEpoch, err := strconv.ParseInt(epoch, 10, 64)
++		if err != nil {
++			return fmt.Errorf("invalid SOURCE_DATE_EPOCH: %v", err)
++		}
++		now := time.Unix(unixEpoch, 0)
++		c.manHeader.Date = &now
++	}
++
++	return c.genManTreeCustom(cmd)
++}
++
++func (c *Client) genManTreeCustom(cmd *cobra.Command) error {
++	for _, sc := range cmd.Commands() {
++		if err := c.genManTreeCustom(sc); err != nil {
++			return err
++		}
++	}
++
++	// always disable the addition of [flags] to the usage
++	cmd.DisableFlagsInUseLine = true
++
++	// always disable "spf13/cobra" auto gen tag
++	cmd.DisableAutoGenTag = true
++
++	// Skip the root command altogether, to prevent generating a useless
++	// md file for plugins.
++	if c.plugin && !cmd.HasParent() {
++		return nil
++	}
++
++	log.Printf("INFO: Generating Man for %q", cmd.CommandPath())
++
++	return doc.GenManTreeFromOpts(cmd, doc.GenManTreeOptions{
++		Header:           c.manHeader,
++		Path:             c.target,
++		CommandSeparator: "-",
++	})
++}
 diff --git a/vendor/github.com/docker/cli-docs-tool/clidocstool_md.go b/vendor/github.com/docker/cli-docs-tool/clidocstool_md.go
 new file mode 100644
-index 000000000000..1dee58c06ca1
+index 000000000000..a35b62d76082
 --- /dev/null
 +++ b/vendor/github.com/docker/cli-docs-tool/clidocstool_md.go
-@@ -0,0 +1,280 @@
+@@ -0,0 +1,277 @@
 +// Copyright 2021 cli-docs-tool authors
 +//
 +// Licensed under the Apache License, Version 2.0 (the "License");
@@ -1877,10 +1777,7 @@ index 000000000000..1dee58c06ca1
 +			}
 +			name += mdMakeLink("`--"+f.Name+"`", f.Name, f, isLink)
 +
-+			var ftype string
-+			if f.Value.Type() != "bool" {
-+				ftype = "`" + f.Value.Type() + "`"
-+			}
++			ftype := "`" + f.Value.Type() + "`"
 +
 +			var defval string
 +			if v, ok := f.Annotations[annotation.DefaultValue]; ok && len(v) > 0 {
@@ -1890,7 +1787,7 @@ index 000000000000..1dee58c06ca1
 +				} else if cd, ok := cmd.Annotations[annotation.CodeDelimiter]; ok {
 +					defval = strings.ReplaceAll(defval, cd, "`")
 +				}
-+			} else if f.DefValue != "" && (f.Value.Type() != "bool" && f.DefValue != "true") && f.DefValue != "[]" {
++			} else if f.DefValue != "" && ((f.Value.Type() != "bool" && f.DefValue != "true") || (f.Value.Type() == "bool" && f.DefValue == "true")) && f.DefValue != "[]" {
 +				defval = "`" + f.DefValue + "`"
 +			}
 +
@@ -1917,10 +1814,10 @@ index 000000000000..1dee58c06ca1
 +}
 diff --git a/vendor/github.com/docker/cli-docs-tool/clidocstool_yaml.go b/vendor/github.com/docker/cli-docs-tool/clidocstool_yaml.go
 new file mode 100644
-index 000000000000..523524297af4
+index 000000000000..acf5f2ba6b90
 --- /dev/null
 +++ b/vendor/github.com/docker/cli-docs-tool/clidocstool_yaml.go
-@@ -0,0 +1,435 @@
+@@ -0,0 +1,378 @@
 +// Copyright 2017 cli-docs-tool authors
 +//
 +// Licensed under the Apache License, Version 2.0 (the "License");
@@ -2001,7 +1898,7 @@ index 000000000000..523524297af4
 +// it is undefined which help output will be in the file `cmd-sub-third.1`.
 +func (c *Client) GenYamlTree(cmd *cobra.Command) error {
 +	emptyStr := func(s string) string { return "" }
-+	if err := c.loadLongDescription(cmd); err != nil {
++	if err := c.loadLongDescription(cmd, "yaml"); err != nil {
 +		return err
 +	}
 +	return c.genYamlTreeCustom(cmd, emptyStr)
@@ -2294,63 +2191,6 @@ index 000000000000..523524297af4
 +	return false
 +}
 +
-+// loadLongDescription gets long descriptions and examples from markdown.
-+func (c *Client) loadLongDescription(parentCmd *cobra.Command) error {
-+	for _, cmd := range parentCmd.Commands() {
-+		if cmd.HasSubCommands() {
-+			if err := c.loadLongDescription(cmd); err != nil {
-+				return err
-+			}
-+		}
-+		name := cmd.CommandPath()
-+		if i := strings.Index(name, " "); i >= 0 {
-+			// remove root command / binary name
-+			name = name[i+1:]
-+		}
-+		if name == "" {
-+			continue
-+		}
-+		mdFile := strings.ReplaceAll(name, " ", "_") + ".md"
-+		sourcePath := filepath.Join(c.source, mdFile)
-+		content, err := os.ReadFile(sourcePath)
-+		if os.IsNotExist(err) {
-+			log.Printf("WARN: %s does not exist, skipping Markdown examples for YAML doc\n", mdFile)
-+			continue
-+		}
-+		if err != nil {
-+			return err
-+		}
-+		applyDescriptionAndExamples(cmd, string(content))
-+	}
-+	return nil
-+}
-+
-+// applyDescriptionAndExamples fills in cmd.Long and cmd.Example with the
-+// "Description" and "Examples" H2 sections in  mdString (if present).
-+func applyDescriptionAndExamples(cmd *cobra.Command, mdString string) {
-+	sections := getSections(mdString)
-+	var (
-+		anchors []string
-+		md      string
-+	)
-+	if sections["description"] != "" {
-+		md, anchors = cleanupMarkDown(sections["description"])
-+		cmd.Long = md
-+		anchors = append(anchors, md)
-+	}
-+	if sections["examples"] != "" {
-+		md, anchors = cleanupMarkDown(sections["examples"])
-+		cmd.Example = md
-+		anchors = append(anchors, md)
-+	}
-+	if len(anchors) > 0 {
-+		if cmd.Annotations == nil {
-+			cmd.Annotations = make(map[string]string)
-+		}
-+		cmd.Annotations["anchors"] = strings.Join(anchors, ",")
-+	}
-+}
-+
 +type byName []*cobra.Command
 +
 +func (s byName) Len() int           { return len(s) }
@@ -2415,10 +2255,10 @@ index 000000000000..4a5f44f83018
 +}
 diff --git a/vendor/github.com/docker/cli-docs-tool/markdown.go b/vendor/github.com/docker/cli-docs-tool/markdown.go
 new file mode 100644
-index 000000000000..32849236ed9c
+index 000000000000..bd8548707408
 --- /dev/null
 +++ b/vendor/github.com/docker/cli-docs-tool/markdown.go
-@@ -0,0 +1,87 @@
+@@ -0,0 +1,100 @@
 +// Copyright 2017 cli-docs-tool authors
 +//
 +// Licensed under the Apache License, Version 2.0 (the "License");
@@ -2450,6 +2290,9 @@ index 000000000000..32849236ed9c
 +	// for our use-case; DO NOT consider using this as a generic regex, or at least
 +	// not before reading https://stackoverflow.com/a/1732454/1811501.
 +	htmlAnchor = regexp.MustCompile(`<a\s+(?:name|id)="?([^"]+)"?\s*></a>\s*`)
++	// relativeLink matches parts of internal links between .md documents
++	// e.g. "](buildx_build.md)"
++	relativeLink = regexp.MustCompile(`\]\((\.\/)?[a-z-_]+\.md(#.*)?\)`)
 +)
 +
 +// getSections returns all H2 sections by title (lowercase)
@@ -2478,6 +2321,16 @@ index 000000000000..32849236ed9c
 +	mdString = strings.TrimSpace(mdString)
 +	mdString = strings.ReplaceAll(mdString, "\t", "    ")
 +	mdString = strings.ReplaceAll(mdString, "https://docs.docker.com", "")
++
++	// Rewrite internal links, replacing relative paths with absolute path
++	// e.g. from [docker buildx build](buildx_build.md#build-arg)
++	// to [docker buildx build](/reference/cli/docker/buildx/build/#build-arg)
++	mdString = relativeLink.ReplaceAllStringFunc(mdString, func(link string) string {
++		link = strings.TrimLeft(link, "](./")
++		link = strings.ReplaceAll(link, "_", "/")
++		link = strings.ReplaceAll(link, ".md", "/")
++		return "](/reference/cli/docker/" + link
++	})
 +
 +	var id string
 +	// replace trailing whitespace per line, and handle custom anchors
@@ -10886,7 +10739,7 @@ index 000000000000..3a220e94247d
 +}
 diff --git a/vendor/github.com/spf13/cobra/doc/man_docs.go b/vendor/github.com/spf13/cobra/doc/man_docs.go
 new file mode 100644
-index 000000000000..b8c15ce88543
+index 000000000000..2138f24882b3
 --- /dev/null
 +++ b/vendor/github.com/spf13/cobra/doc/man_docs.go
 @@ -0,0 +1,246 @@
@@ -11025,7 +10878,7 @@ index 000000000000..b8c15ce88543
 +		}
 +		header.Date = &now
 +	}
-+	header.date = (*header.Date).Format("Jan 2006")
++	header.date = header.Date.Format("Jan 2006")
 +	if header.Source == "" && !disableAutoGen {
 +		header.Source = "Auto generated by spf13/cobra"
 +	}
@@ -11138,7 +10991,7 @@ index 000000000000..b8c15ce88543
 +}
 diff --git a/vendor/github.com/spf13/cobra/doc/md_docs.go b/vendor/github.com/spf13/cobra/doc/md_docs.go
 new file mode 100644
-index 000000000000..f98fe2a3b8f3
+index 000000000000..12592223ba47
 --- /dev/null
 +++ b/vendor/github.com/spf13/cobra/doc/md_docs.go
 @@ -0,0 +1,158 @@
@@ -11272,7 +11125,7 @@ index 000000000000..f98fe2a3b8f3
 +	return GenMarkdownTreeCustom(cmd, dir, emptyStr, identity)
 +}
 +
-+// GenMarkdownTreeCustom is the the same as GenMarkdownTree, but
++// GenMarkdownTreeCustom is the same as GenMarkdownTree, but
 +// with custom filePrepender and linkHandler.
 +func GenMarkdownTreeCustom(cmd *cobra.Command, dir string, filePrepender, linkHandler func(string) string) error {
 +	for _, c := range cmd.Commands() {
@@ -11302,7 +11155,7 @@ index 000000000000..f98fe2a3b8f3
 +}
 diff --git a/vendor/github.com/spf13/cobra/doc/rest_docs.go b/vendor/github.com/spf13/cobra/doc/rest_docs.go
 new file mode 100644
-index 000000000000..2cca6fd778de
+index 000000000000..c33acc2baa91
 --- /dev/null
 +++ b/vendor/github.com/spf13/cobra/doc/rest_docs.go
 @@ -0,0 +1,186 @@
@@ -11448,7 +11301,7 @@ index 000000000000..2cca6fd778de
 +	return GenReSTTreeCustom(cmd, dir, emptyStr, defaultLinkHandler)
 +}
 +
-+// GenReSTTreeCustom is the the same as GenReSTTree, but
++// GenReSTTreeCustom is the same as GenReSTTree, but
 +// with custom filePrepender and linkHandler.
 +func GenReSTTreeCustom(cmd *cobra.Command, dir string, filePrepender func(string) string, linkHandler func(string, string) string) error {
 +	for _, c := range cmd.Commands() {
@@ -11494,7 +11347,7 @@ index 000000000000..2cca6fd778de
 +}
 diff --git a/vendor/github.com/spf13/cobra/doc/util.go b/vendor/github.com/spf13/cobra/doc/util.go
 new file mode 100644
-index 000000000000..0aaa07a166d8
+index 000000000000..4de4ceee87a3
 --- /dev/null
 +++ b/vendor/github.com/spf13/cobra/doc/util.go
 @@ -0,0 +1,52 @@
@@ -11540,7 +11393,7 @@ index 000000000000..0aaa07a166d8
 +// that do not contain \n.
 +func forceMultiLine(s string) string {
 +	if len(s) > 60 && !strings.Contains(s, "\n") {
-+		s = s + "\n"
++		s += "\n"
 +	}
 +	return s
 +}
@@ -23326,31 +23179,29 @@ index 000000000000..e88f9c54aecb
 +
 +}
 diff --git a/vendor/modules.txt b/vendor/modules.txt
-index 4e0448570ce9..577e9de880c6 100644
+index 9c7ffb832403..224253dd728a 100644
 --- a/vendor/modules.txt
 +++ b/vendor/modules.txt
-@@ -33,12 +33,20 @@ github.com/containerd/log
- # github.com/containerd/platforms v0.2.0
+@@ -29,6 +29,10 @@ github.com/containerd/log
+ # github.com/containerd/platforms v0.2.1
  ## explicit; go 1.20
  github.com/containerd/platforms
-+# github.com/cpuguy83/go-md2man/v2 v2.0.3
++# github.com/cpuguy83/go-md2man/v2 v2.0.4
 +## explicit; go 1.11
 +github.com/cpuguy83/go-md2man/v2
 +github.com/cpuguy83/go-md2man/v2/md2man
  # github.com/creack/pty v1.1.21
  ## explicit; go 1.13
  github.com/creack/pty
- # github.com/distribution/reference v0.5.0
- ## explicit; go 1.20
+@@ -37,6 +41,7 @@ github.com/creack/pty
  github.com/distribution/reference
-+# github.com/docker/cli-docs-tool v0.6.0
-+## explicit; go 1.18
+ # github.com/docker/cli-docs-tool v0.8.0
+ ## explicit; go 1.18
 +github.com/docker/cli-docs-tool
-+github.com/docker/cli-docs-tool/annotation
+ github.com/docker/cli-docs-tool/annotation
  # github.com/docker/distribution v2.8.3+incompatible
  ## explicit
- github.com/docker/distribution
-@@ -252,12 +260,16 @@ github.com/prometheus/procfs/internal/util
+@@ -263,12 +268,16 @@ github.com/prometheus/procfs/internal/util
  # github.com/rivo/uniseg v0.2.0
  ## explicit; go 1.12
  github.com/rivo/uniseg
@@ -23360,14 +23211,14 @@ index 4e0448570ce9..577e9de880c6 100644
  # github.com/sirupsen/logrus v1.9.3
  ## explicit; go 1.13
  github.com/sirupsen/logrus
- # github.com/spf13/cobra v1.8.0
+ # github.com/spf13/cobra v1.8.1
  ## explicit; go 1.15
  github.com/spf13/cobra
 +github.com/spf13/cobra/doc
  # github.com/spf13/pflag v1.0.5
  ## explicit; go 1.12
  github.com/spf13/pflag
-@@ -498,6 +510,9 @@ google.golang.org/protobuf/types/known/wrapperspb
+@@ -519,6 +528,9 @@ google.golang.org/protobuf/types/known/wrapperspb
  # gopkg.in/yaml.v2 v2.4.0
  ## explicit; go 1.15
  gopkg.in/yaml.v2
@@ -23378,5 +23229,5 @@ index 4e0448570ce9..577e9de880c6 100644
  ## explicit; go 1.17
  gotest.tools/v3/assert
 -- 
-2.45.2
+2.47.1
 

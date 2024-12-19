@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 18 06:24:17 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.2.2:
+  * revert: restore kustomize in the cli binary (#4630) (#4632)
+
+-------------------------------------------------------------------
 Wed Dec 11 06:52:18 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.2.1:

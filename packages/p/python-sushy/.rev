@@ -302,4 +302,18 @@
   - reno: Update master for unmaintained/xena</comment>
     <requestid>1178612</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b626c7e83ad5d7c1ecd0e96abd1ffb90</srcmd5>
+    <version>5.2.0</version>
+    <time>1734549024</time>
+    <user>anag+factory</user>
+    <comment>- update to version 5.2.0
+  - avoid MAC addresses that are the empty string
+  - Trivial: fix duplicated docstring
+  - When ManagedBy attribute is missing from System retry with Managers
+  - Name is not mandatory for Storage/StorageControllers
+  - Fix link to bugs
+  - Log the response when unable to parse JSON</comment>
+    <requestid>1231830</requestid>
+  </revision>
 </revisionlist>

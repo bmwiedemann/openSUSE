@@ -1,12 +1,12 @@
 <services>
-  <service mode="disabled" name="renderspec">
+  <service mode="manual" name="renderspec">
     <param name="input-template">https://opendev.org/openstack/rpm-packaging/raw/master/openstack/python-freezerclient/python-freezerclient.spec.j2</param>
     <param name="output-name">python-freezerclient.spec</param>
     <param name="requirements">https://opendev.org/openstack/python-freezerclient/raw/branch/master/requirements.txt</param>
     <param name="changelog-email">cloud-devel@suse.de</param>
     <param name="changelog-provider">gh,openstack,python-freezerclient</param>
   </service>
-  <service mode="disabled" name="download_files">
+  <service mode="manual" name="download_files">
   </service>
-  <service name="format_spec_file" mode="disabled"/>
+  <service name="format_spec_file" mode="manual"/>
 </services>

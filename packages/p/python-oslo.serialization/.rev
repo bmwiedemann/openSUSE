@@ -331,4 +331,19 @@
   - jsonutils: Raise ValueError in case the input can't be converted</comment>
     <requestid>1171466</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>8fab4dc8ebc34c659d6a1cd7de6898ae</srcmd5>
+    <version>5.5.0</version>
+    <time>1734549026</time>
+    <user>anag+factory</user>
+    <comment>- update to version 5.5.0
+  - reno: Update master for unmaintained/wallaby
+  - reno: Update master for unmaintained/xena
+  - Update master for stable/2024.1
+  - Remove old excludes
+  - reno: Update master for unmaintained/victoria
+  - [jsonutils] Add handling of datetime.date format
+  - reno: Update master for unmaintained/zed</comment>
+    <requestid>1231832</requestid>
+  </revision>
 </revisionlist>

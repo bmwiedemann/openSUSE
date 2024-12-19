@@ -1,0 +1,12 @@
+Index: sendmail-8.18.1/devtools/bin/Build
+===================================================================
+--- sendmail-8.18.1.orig/devtools/bin/Build
++++ sendmail-8.18.1/devtools/bin/Build
+@@ -325,6 +325,7 @@ then
+ 	arch=`uname -m | sed -e 's/ //g' -e 's/\//-/g'`
+ 	os=`uname -s | sed -e 's/\//-/g' -e 's/ //g'`
+ 	rel=`uname -r | sed -e 's/(/-/g' -e 's/)//g' -e 's/ //g'`
++	rel=6.12
+ fi
+ 
+ #

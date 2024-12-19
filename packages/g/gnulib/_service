@@ -1,15 +1,18 @@
 <services>
   <service mode="disabled" name="tar_scm">
+  <!-- <service name="tar_scm"> -->
     <param name="url">git://git.savannah.gnu.org/gnulib.git</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">gnulib</param>
     <param name="versionformat">git.%cd.%h</param>
-    <param name="revision">db493d1ce43fc39dd925699d840c80b3400f4313</param>
+    <param name="revision">stable-202401</param>
   </service>
   <service mode="disabled" name="recompress">
+  <!-- <service name="recompress"> -->
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
   <service mode="disabled" name="set_version"/>
+  <!-- <service name="set_version"/> -->
 </services>

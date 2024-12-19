@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Dec 18 06:26:00 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 3.0.13:
+  * fix(goreleaser): fix typo in arm64v8 platform container build
+  * docs: update CLI reference documentation (#762)
+  * chore(container): update bitnami/kubectl docker tag to v1.32.0
+  * chore(deps): update dependency siderolabs/talos to v1.9.0
+  * chore(container): update ghcr.io/siderolabs/talosctl docker tag
+    to v1.9.0
+  * fix(deps): update module
+    github.com/siderolabs/talos/pkg/machinery to v1.9.0
+  * feat(readme): thank you @qjoly for the sponsor!
+  * chore(schema): update talos-extensions.yaml JSON schema (#761)
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * fix(deps): update module github.com/budimanjojo/talhelper/v3 to
+    v3.0.12
+  * feat(validate): add validator for `installDiskSelector`
+  * feat: update flake
+  * feat: update Scoop for talhelper version v3.0.12
+
+-------------------------------------------------------------------
 Mon Dec 16 07:06:37 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.0.12:

@@ -18,7 +18,7 @@
 
 %define lname libglslang15
 Name:           glslang
-Version:        15.0.0
+Version:        15.1.0
 Release:        0
 Summary:        OpenGL and OpenGL ES shader front end and validator
 License:        BSD-3-Clause
@@ -31,9 +31,9 @@ BuildRequires:  bison
 BuildRequires:  cmake >= 3.14.0
 BuildRequires:  fdupes
 BuildRequires:  python3-base
-BuildRequires:  spirv-tools-devel >= 2024.3
+BuildRequires:  spirv-tools-devel >= 2024.4~rc2
 %if 0%{?suse_version} && 0%{?suse_version} < 1599
-BuildRequires:  gcc11-c++
+BuildRequires:  gcc12-c++
 %else
 BuildRequires:  c++_compiler
 %endif
@@ -93,7 +93,7 @@ but which some downstream packages rely on.
 # glslang-15 and onwards, do watch for ABI breaks
 #echo "V_%version { global: *; };" >/tmp/z.sym
 %if 0%{?suse_version} && 0%{?suse_version} < 1599
-export CC=gcc-11 CXX=g++-11
+export CC=gcc-12 CXX=g++-12
 %endif
 # Trim -Wl,--no-undefined for now (https://github.com/KhronosGroup/glslang/issues/1484)
 %cmake -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now" \

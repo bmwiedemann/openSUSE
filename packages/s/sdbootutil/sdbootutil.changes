@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec 17 11:50:04 UTC 2024 - aplanas@suse.com
+
+- Update to version 1+git20241217.5aeb4e9:
+  * Use only the first output line of findmount in free space calc
+
+-------------------------------------------------------------------
+Tue Dec 17 09:15:39 UTC 2024 - aplanas@suse.com
+
+- Update to version 1+git20241217.1370153:
+  * Add trigger for grub2-bls
+
+-------------------------------------------------------------------
 Fri Dec 06 09:09:56 UTC 2024 - aplanas@suse.com
 
 - Update to version 1+git20241206.dccea55:

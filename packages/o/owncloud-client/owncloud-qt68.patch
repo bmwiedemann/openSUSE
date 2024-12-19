@@ -1,0 +1,33 @@
+From b2ff293ee10cb86c7c083e0ec10148e3f4b019f6 Mon Sep 17 00:00:00 2001
+From: Hannah von Reth <hannah.vonreth@owncloud.com>
+Date: Fri, 18 Oct 2024 12:40:53 +0200
+Subject: [PATCH] fix: Qt6.8 build fix (#11943)
+
+---
+ test/testcredentialmanager.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/test/testcredentialmanager.cpp b/test/testcredentialmanager.cpp
+index 8881cb98388..90bead31e2a 100644
+--- a/test/testcredentialmanager.cpp
++++ b/test/testcredentialmanager.cpp
+@@ -112,8 +112,8 @@ private Q_SLOTS:
+         QTest::qWait(1000);
+         for (const auto s : spies) {
+             QCOMPARE(s->count(), 1);
+-            s->deleteLater();
+         }
++        qDeleteAll(spies);
+         spies.clear();
+         {
+             auto jobs = creds->clear(QStringLiteral("foo"));
+@@ -131,8 +131,8 @@ private Q_SLOTS:
+             QTest::qWait(1000);
+             for (const auto s : spies) {
+                 QCOMPARE(s->count(), 1);
+-                s->deleteLater();
+             }
++            qDeleteAll(spies);
+         }
+     }
+ };

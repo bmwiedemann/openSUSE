@@ -1,7 +1,7 @@
 #
 # spec file for package gnulib
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global module1 git-merge-changelog
 
 Name:           gnulib
-Version:        git.20211127.db493d1ce
+Version:        git.20240213.c99c8d4918
 Release:        0
 Summary:        GNU Portability Library
 License:        GPL-2.0-or-later AND SUSE-Public-Domain AND GPL-3.0-only AND GPL-3.0-or-later AND LGPL-2.0-only AND LGPL-2.1-or-later AND LGPL-3.0-or-later
@@ -155,6 +155,8 @@ cp -rp build-aux lib m4 modules config tests %{buildroot}%{_datadir}/%{name}/
 # relocatable.texi is needed during compilation of PSPP. See rh#1474792 and
 # https://src.fedoraproject.org/rpms/gnulib/c/cea2f6f12fe24479e282900341575352689d7cfe?branch=master
 cp -p doc/relocatable.texi %{buildroot}%{_datadir}/%{name}/doc
+# Needed for jitter
+cp -p doc/{gendocs_template,gendocs_template_min,INSTALL} %{buildroot}%{_datadir}/%{name}/doc
 
 cp -p doc/gnulib.info %{buildroot}%{_infodir}/
 cp -p doc/gnulib.html MODULES.html NEWS COPYING ChangeLog users.txt doc/COPYING* %{buildroot}%{_docdir}/%{name}/
@@ -176,7 +178,7 @@ fi
 
 %files docs
 %defattr(-,root,root)
-%{_infodir}/gnulib.info.gz
+%{_infodir}/gnulib.info*
 %{_docdir}/%{name}/gnulib.html
 %{_docdir}/%{name}/MODULES.html
 # license text is included directly in info and html files.

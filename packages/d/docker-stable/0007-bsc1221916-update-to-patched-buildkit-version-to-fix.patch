@@ -1,7 +1,7 @@
-From 7719675180f785c4e92df7efc25df9adc882b289 Mon Sep 17 00:00:00 2001
+From b760758157cd0d00f46f37f86a9cbee7810cb666 Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <cyphar@cyphar.com>
 Date: Thu, 2 May 2024 22:50:23 +1000
-Subject: [PATCH 07/13] bsc1221916: update to patched buildkit version to fix
+Subject: [PATCH 07/11] bsc1221916: update to patched buildkit version to fix
  symlink resolution
 
 SUSE-Bugs: https://bugzilla.suse.com/show_bug.cgi?id=1221916
@@ -16,46 +16,46 @@ Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
  6 files changed, 314 insertions(+), 252 deletions(-)
 
 diff --git a/builder/builder-next/worker/worker.go b/builder/builder-next/worker/worker.go
-index 210218bf5a37..e36517da2914 100644
+index 64d7b9131b16..7b40ac63ce7f 100644
 --- a/builder/builder-next/worker/worker.go
 +++ b/builder/builder-next/worker/worker.go
 @@ -50,7 +50,7 @@ import (
  )
  
  func init() {
--	version.Version = "v0.11.7+5d3afed3f7b4"
-+	version.Version = "v0.11.7+ea1ca9670261"
+-	version.Version = "v0.11.7+cd804dd86389"
++	version.Version = "v0.11.7+6b814972ef19"
  }
  
  const labelCreatedAt = "buildkit/createdat"
 diff --git a/vendor.mod b/vendor.mod
-index 7946cbb75613..878ec24cee4b 100644
+index 2eb13746cacd..021d62b21d19 100644
 --- a/vendor.mod
 +++ b/vendor.mod
 @@ -99,7 +99,7 @@ require (
  )
  
- // github.com/cyphar/buildkit suse-stable-v24.0.9
--replace github.com/moby/buildkit => github.com/cyphar/buildkit v0.0.0-20240814025459-5d3afed3f7b4
-+replace github.com/moby/buildkit => github.com/cyphar/buildkit v0.0.0-20240814030244-ea1ca9670261
+ // github.com/SUSE/buildkit suse-stable-v24.0.9
+-replace github.com/moby/buildkit => github.com/SUSE/buildkit v0.0.0-20241218053907-cd804dd86389
++replace github.com/moby/buildkit => github.com/SUSE/buildkit v0.0.0-20241218053911-6b814972ef19
  
  require (
  	cloud.google.com/go v0.102.1 // indirect
 diff --git a/vendor.sum b/vendor.sum
-index a426cdb147ce..187a4138d110 100644
+index 716245c80413..4bdbbeb3f073 100644
 --- a/vendor.sum
 +++ b/vendor.sum
-@@ -446,8 +446,8 @@ github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ3
- github.com/creack/pty v1.1.11/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ33E=
- github.com/creack/pty v1.1.18 h1:n56/Zwd5o6whRC5PMGretI4IdRLlmBXYNjScPaBgsbY=
- github.com/creack/pty v1.1.18/go.mod h1:MOBLtS5ELjhRRrroQr9kyvTxUAFNvYEK993ew/Vr4O4=
--github.com/cyphar/buildkit v0.0.0-20240814025459-5d3afed3f7b4 h1:e2A5JTqDADxy9xYHM0KxRXfYl9wCISpo5TitiaUmfGw=
--github.com/cyphar/buildkit v0.0.0-20240814025459-5d3afed3f7b4/go.mod h1:bMQDryngJKGvJ/ZuRFhrejurbvYSv3NkGCheQ59X4AM=
-+github.com/cyphar/buildkit v0.0.0-20240814030244-ea1ca9670261 h1:xcmjjOjBMdaa2Z3Blblc3J2FraOISKtT6I/cjGG/244=
-+github.com/cyphar/buildkit v0.0.0-20240814030244-ea1ca9670261/go.mod h1:bMQDryngJKGvJ/ZuRFhrejurbvYSv3NkGCheQ59X4AM=
- github.com/cyphar/filepath-securejoin v0.2.2/go.mod h1:FpkQEhXnPnOthhzymB7CGsFk2G9VLXONKD9G7QGMM+4=
- github.com/cyphar/filepath-securejoin v0.2.3/go.mod h1:aPGpWjXOXUn2NCNjFvBE6aRxGGx79pTxQpKOJNYHHl4=
- github.com/cyphar/filepath-securejoin v0.2.4 h1:Ugdm7cg7i6ZK6x3xDF1oEu1nfkyfH53EtKeQYTC3kyg=
+@@ -141,8 +141,8 @@ github.com/PuerkitoBio/urlesc v0.0.0-20160726150825-5bd2802263f2/go.mod h1:uGdko
+ github.com/PuerkitoBio/urlesc v0.0.0-20170810143723-de5bf2ad4578/go.mod h1:uGdkoq3SwY9Y+13GIhn11/XLaGBb4BfwItxLd5jeuXE=
+ github.com/RackSec/srslog v0.0.0-20180709174129-a4725f04ec91 h1:vX+gnvBc56EbWYrmlhYbFYRaeikAke1GL84N4BEYOFE=
+ github.com/RackSec/srslog v0.0.0-20180709174129-a4725f04ec91/go.mod h1:cDLGBht23g0XQdLjzn6xOGXDkLK182YfINAaZEQLCHQ=
+-github.com/SUSE/buildkit v0.0.0-20241218053907-cd804dd86389 h1:EKne0CAOXpf1QuZ3+jj7PTpOtSn+q1Yz5H6pAwrOktY=
+-github.com/SUSE/buildkit v0.0.0-20241218053907-cd804dd86389/go.mod h1:bMQDryngJKGvJ/ZuRFhrejurbvYSv3NkGCheQ59X4AM=
++github.com/SUSE/buildkit v0.0.0-20241218053911-6b814972ef19 h1:3gfqJcXxLASvlAfgd+TFPrrhNrM+O26HplOhi3BNT+A=
++github.com/SUSE/buildkit v0.0.0-20241218053911-6b814972ef19/go.mod h1:bMQDryngJKGvJ/ZuRFhrejurbvYSv3NkGCheQ59X4AM=
+ github.com/Shopify/logrus-bugsnag v0.0.0-20171204204709-577dee27f20d/go.mod h1:HI8ITrYtUY+O+ZhtlqUnD8+KwNPOyugEhfP9fdUIaEQ=
+ github.com/agext/levenshtein v1.2.3 h1:YB2fHEn0UJagG8T1rrWknE3ZQzWM06O8AMAatNn7lmo=
+ github.com/agext/levenshtein v1.2.3/go.mod h1:JEDfjyjHDjOF/1e4FlBE/PkbqA9OfWu2ki2W0IB5558=
 diff --git a/vendor/github.com/moby/buildkit/cache/contenthash/checksum.go b/vendor/github.com/moby/buildkit/cache/contenthash/checksum.go
 index dcf424a6b4fc..13a74be24c4e 100644
 --- a/vendor/github.com/moby/buildkit/cache/contenthash/checksum.go
@@ -875,15 +875,15 @@ index 42b7fd8349c7..ae950f713241 100644
 +	return filepath.Join(root, finalPath), nil
  }
 diff --git a/vendor/modules.txt b/vendor/modules.txt
-index 2a3b597c5858..335c85392288 100644
+index 9adbc22b99fc..27bc31dfd397 100644
 --- a/vendor/modules.txt
 +++ b/vendor/modules.txt
 @@ -577,7 +577,7 @@ github.com/mistifyio/go-zfs/v3
  # github.com/mitchellh/hashstructure/v2 v2.0.2
  ## explicit; go 1.14
  github.com/mitchellh/hashstructure/v2
--# github.com/moby/buildkit v0.11.7-0.20240124010513-435cb77e369c => github.com/cyphar/buildkit v0.0.0-20240814025459-5d3afed3f7b4
-+# github.com/moby/buildkit v0.11.7-0.20240124010513-435cb77e369c => github.com/cyphar/buildkit v0.0.0-20240814030244-ea1ca9670261
+-# github.com/moby/buildkit v0.11.7-0.20240124010513-435cb77e369c => github.com/SUSE/buildkit v0.0.0-20241218053907-cd804dd86389
++# github.com/moby/buildkit v0.11.7-0.20240124010513-435cb77e369c => github.com/SUSE/buildkit v0.0.0-20241218053911-6b814972ef19
  ## explicit; go 1.18
  github.com/moby/buildkit/api/services/control
  github.com/moby/buildkit/api/types
@@ -891,8 +891,8 @@ index 2a3b597c5858..335c85392288 100644
  # resenje.org/singleflight v0.3.0
  ## explicit; go 1.18
  resenje.org/singleflight
--# github.com/moby/buildkit => github.com/cyphar/buildkit v0.0.0-20240814025459-5d3afed3f7b4
-+# github.com/moby/buildkit => github.com/cyphar/buildkit v0.0.0-20240814030244-ea1ca9670261
+-# github.com/moby/buildkit => github.com/SUSE/buildkit v0.0.0-20241218053907-cd804dd86389
++# github.com/moby/buildkit => github.com/SUSE/buildkit v0.0.0-20241218053911-6b814972ef19
 -- 
-2.47.0
+2.47.1
 

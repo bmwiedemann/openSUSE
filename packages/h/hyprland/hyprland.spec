@@ -22,7 +22,7 @@
 %define shortname hypr
 
 Name:           hyprland
-Version:        0.45.2
+Version:        0.46.1
 Release:        0
 Summary:        Dynamic tiling Wayland compositor
 License:        BSD-3-Clause
@@ -37,15 +37,16 @@ BuildRequires:  git
 BuildRequires:  glslang-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(aquamarine) >= 0.4.2
+BuildRequires:  pkgconfig(aquamarine) >= 0.4.5
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(gbm) >= 17.1.0
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(hyprcursor) >= 0.1.9
+BuildRequires:  pkgconfig(hyprgraphics) >= 0.1.1
 BuildRequires:  pkgconfig(hyprlang) >= 0.3.2
-BuildRequires:  pkgconfig(hyprutils) >= 0.2.1
+BuildRequires:  pkgconfig(hyprutils) >= 0.2.4
 BuildRequires:  pkgconfig(hyprwayland-scanner) >= 0.3.8
 BuildRequires:  pkgconfig(libdrm) >= 2.4.118
 BuildRequires:  pkgconfig(libinput) >= 1.14.0
@@ -53,6 +54,7 @@ BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(pangocairo)
 BuildRequires:  pkgconfig(pixman-1) >= 0.42.0
+BuildRequires:  pkgconfig(re2)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(tomlplusplus)
 BuildRequires:  pkgconfig(uuid)
@@ -161,6 +163,7 @@ sed -i 's;REPLACE_ME_WITH_PREFIX;%{_prefix};' hyprpm/src/core/DataState.cpp
 
 %build
 %meson \
+     -Duwsm=disabled \
 	 -Dwlroots-hyprland:xcb-errors=%{?with_xcb_errors:enabled}%{!?with_xcb_errors:disabled}
 %meson_build
 
@@ -179,7 +182,6 @@ sed -i 's;REPLACE_ME_WITH_PREFIX;%{_prefix};' hyprpm/src/core/DataState.cpp
 %{_datadir}/%{shortname}/lockdead2.png
 %dir %{_datadir}/wayland-sessions/
 %{_datadir}/wayland-sessions/%{name}.desktop
-%{_datadir}/wayland-sessions/%{name}-systemd.desktop
 %dir %{_datadir}/xdg-desktop-portal
 %{_datadir}/xdg-desktop-portal/%{name}-portals.conf
 %{_mandir}/man1/Hyprland.*

@@ -17,7 +17,7 @@
 
 
 Name:           efm-langserver
-Version:        0.0.53
+Version:        0.0.54
 Release:        0
 Summary:        General purpose language server
 License:        MIT

@@ -389,4 +389,25 @@ update to version 2.12.0
   - Add doc of OAuth 2.0 Mutual-TLS Authenticate</comment>
     <requestid>1171461</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9ad36c217c15f8913b495083ec1608d3</srcmd5>
+    <version>5.8.0</version>
+    <time>1734549031</time>
+    <user>anag+factory</user>
+    <comment>- update to version 5.8.0
+  - reno: Update master for unmaintained/wallaby
+  - reno: Update master for unmaintained/victoria
+  - Drop unused reno from test requirements
+  - Output verification_uri_complete by logger
+  - Remove old excludes
+  - Python 3.12: do not use datetime.utcnow()
+  - reno: Update master for unmaintained/zed
+  - Update requests of device flow for public client
+  - Add OTP to v3OIDCpassword plugin
+  - Update master for stable/2024.1
+  - Do not log sensitive info in OIDC
+  - reno: Update master for unmaintained/xena
+  - tox: Migrate to tox v4</comment>
+    <requestid>1231835</requestid>
+  </revision>
 </revisionlist>

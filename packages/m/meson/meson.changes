@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec 17 07:21:30 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.6.1:
+  + Handle top level options set in subprojects.
+  + modernize Rust template.
+  + CMakeToolchain: Log output on compiler state failure.
+  + rust: fix computation of library directory.
+  + modules/rust: Add support for autolib field in the Cargo.toml.
+- Drop 13935.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Tue Dec 10 14:17:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop meson-testsuite-with-cmake-3.31.patch: the actual fix was

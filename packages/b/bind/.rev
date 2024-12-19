@@ -2429,4 +2429,13 @@ New Features
     <comment>- Update to release 9.20.3</comment>
     <requestid>1216662</requestid>
   </revision>
+  <revision rev="213" vrev="2">
+    <srcmd5>3ae6141e4557acb978a2c9288722f21b</srcmd5>
+    <version>9.20.3</version>
+    <time>1734548916</time>
+    <user>anag+factory</user>
+    <comment>- update root hints file to 2024-11-20 version (boo#1234406)
+</comment>
+    <requestid>1231270</requestid>
+  </revision>
 </revisionlist>

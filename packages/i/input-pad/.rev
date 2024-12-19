@@ -84,4 +84,22 @@
     <comment></comment>
     <requestid>907466</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>89997c73bd0cb6399182a467c2944486</srcmd5>
+    <version>1.0.99.20210817</version>
+    <time>1734549015</time>
+    <user>anag+factory</user>
+    <comment>- Update version to 1.0.99.20210817
+  * Removed duplicated entry in str.xml
+  * Fixed a build error of I_ since eek-types.h has the duplicated one
+  * Fixed to use deprecated APIs in GTK 3.12
+  * Imported code.google.com/p/input-pad
+  * Updated str.xml.in for Emoji and Japanese Acronym
+  * Fixed CSS data of GtkButton for GTK 3.20
+  * configure: Repalced AC_PROG_LIBTOOL with LT_INIT
+  * Fix some typos in translatable text and make some texts easier to translate
+  * Run input-pad with GDK X11 backend
+  * Updated translations (forwarded request 1231811 from hillwood)</comment>
+    <requestid>1231814</requestid>
+  </revision>
 </revisionlist>

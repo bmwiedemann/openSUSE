@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Dec 18 06:43:48 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 5.0.3
+  Bug fixes:
+  * Discard obsolete "state update" events after torrent is
+    reloaded
+  * Fix incorrect SQL column definition
+  * Avoid redundant requests of announce entries from libtorrent
+  Web UI:
+  * Fix removing tracker URL with '|' character
+  * Fix reloading page after login
+  Web API:
+  * Fix incorrect key in torrent creator
+  RSS:
+  * Don't add duplicate episodes to previously matched
+  * Use cached current time when parsing RSS feed
+
+-------------------------------------------------------------------
 Mon Nov 18 11:00:27 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 5.0.2

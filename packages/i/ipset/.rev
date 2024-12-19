@@ -420,4 +420,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1180191</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>589b053b0beccf2ca6990115230c4337</srcmd5>
+    <version>7.23</version>
+    <time>1734548918</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 7.23</comment>
+    <requestid>1231572</requestid>
+  </revision>
 </revisionlist>

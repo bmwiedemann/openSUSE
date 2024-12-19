@@ -1,0 +1,6 @@
+<package name="owncloud-extensions-resources" project="openSUSE:Factory">
+  <title>Resources for the ownCloud client and desktop shell integrations</title>
+  <description>This package provides resources like icons for the ownCloud client and the shell integrations</description>
+  <devel project="KDE:Extra" package="owncloud-extensions-resources"/>
+  <url>https://owncloud.org/download</url>
+</package>

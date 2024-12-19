@@ -1,7 +1,7 @@
-From 8829bb8ec53399fd41dd6f46e2bad64e773e8eaa Mon Sep 17 00:00:00 2001
+From e06f78e09fa03680ce51c8a080447fbc62156d3d Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <asarai@suse.de>
 Date: Fri, 29 Jun 2018 17:59:30 +1000
-Subject: [PATCH 4/7] bsc1073877: apparmor: clobber docker-default profile on
+Subject: [PATCH 4/5] bsc1073877: apparmor: clobber docker-default profile on
  start
 
 In the process of making docker-default reloading far less expensive,
@@ -69,10 +69,10 @@ index be4938f5b61a..2b326fea5829 100644
  	return nil
  }
 diff --git a/daemon/daemon.go b/daemon/daemon.go
-index e7ca77d8cbfc..13b39538fb00 100644
+index f152685e6026..dee4c33471d5 100644
 --- a/daemon/daemon.go
 +++ b/daemon/daemon.go
-@@ -916,8 +916,9 @@ func NewDaemon(ctx context.Context, config *config.Config, pluginStore *plugin.S
+@@ -941,8 +941,9 @@ func NewDaemon(ctx context.Context, config *config.Config, pluginStore *plugin.S
  		log.G(ctx).Warnf("Failed to configure golang's threads limit: %v", err)
  	}
  
@@ -81,9 +81,9 @@ index e7ca77d8cbfc..13b39538fb00 100644
 +	// Make sure we clobber any pre-existing docker-default profile to ensure
 +	// that upgrades to the profile actually work smoothly.
 +	if err := clobberDefaultAppArmorProfile(); err != nil {
- 		log.G(ctx).Errorf(err.Error())
+ 		log.G(ctx).WithError(err).Error("Failed to ensure default apparmor profile is loaded")
  	}
  
 -- 
-2.45.2
+2.47.1
 

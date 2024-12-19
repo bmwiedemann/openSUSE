@@ -1,7 +1,7 @@
 #
 # spec file for package dump
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dump
-Version:        0.4b47
+Version:        0.4b49
 Release:        0
 Summary:        Programs for backing up and restoring ext2/3/4 filesystems
 License:        BSD-3-Clause
@@ -57,7 +57,7 @@ restore a full backup of a file system.
 Summary:        Provides certain programs with access to remote tape devices
 Group:          Productivity/Archiving/Backup
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Provides:       rmt
 
 %description	rmt
@@ -68,9 +68,7 @@ restoring files from a backup), tar (an archiving program) and cpio.
 %prep
 %setup -q
 cp %{SOURCE1} rmt/
-%patch -P 0 -p1
-%patch -P 1 -p1
-%patch -P 3
+%autopatch -p1
 
 %build
 autoreconf -fiv

@@ -16,8 +16,6 @@
 #
 
 
-# avoid taskgroup backports
-%define skip_python310 1
 Name:           python-hypercorn
 Version:        0.17.3
 Release:        0
@@ -36,6 +34,7 @@ BuildRequires:  %{python_module priority}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-trio}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module taskgroup if %python-base < 3.11}
 BuildRequires:  %{python_module trio >= 0.22.0}
 BuildRequires:  %{python_module wsproto >= 0.14.0}
 BuildRequires:  fdupes
@@ -44,6 +43,12 @@ Requires:       python-h11
 Requires:       python-h2 >= 3.1.0
 Requires:       python-priority
 Requires:       python-wsproto >= 0.14.0
+%if %{python_version_nodots} < 311
+Requires:       python-exceptiongroup >= 1.1
+Requires:       python-taskgroup
+Requires:       python-tomli
+Requires:       python-typing-extensions
+%endif
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
@@ -81,6 +86,8 @@ sed -i 's/--no-cov-on-fail//' pyproject.toml
 %python_uninstall_alternative hypercorn
 
 %files %{python_files}
+%doc README.rst
+%license LICENSE
 %{python_sitelib}/hypercorn
 %{python_sitelib}/hypercorn-%{version}.dist-info
 %python_alternative %{_bindir}/hypercorn

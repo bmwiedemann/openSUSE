@@ -17,24 +17,19 @@
 
 
 Name:           flashrom
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        A universal flash programming utility
 License:        GPL-2.0-only
 Group:          Development/Tools/Other
-URL:            https://flashrom.org/Flashrom
-Source0:        https://download.flashrom.org/releases/%{name}-%{version}.tar.xz
-Source1:        https://download.flashrom.org/releases/%{name}-%{version}.tar.xz.asc#/%{name}-%{version}.tar.bz2.sig
-# Got the key from David Hendricks
+URL:            https://www.flashrom.org/
+Source0:        https://download.flashrom.org/releases/%{name}-v%{version}.tar.xz
+Source1:        https://download.flashrom.org/releases/%{name}-v%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 BuildRequires:  meson >= 0.56.0
 BuildRequires:  pkgconfig
-%if 0%{?suse_version} > 1600
-BuildRequires:  python3-Sphinx
-%else
-BuildRequires:  python311-Sphinx
-%endif
 BuildRequires:  pkgconfig(cmocka)
+BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libftdi1)
 BuildRequires:  pkgconfig(libjaylink)
 BuildRequires:  pkgconfig(libpci)
@@ -42,6 +37,11 @@ BuildRequires:  pkgconfig(libusb)
 BuildRequires:  pkgconfig(zlib)
 Recommends:     %{name}-doc = %{version}
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
+%if 0%{?suse_version} > 1600
+BuildRequires:  python3-Sphinx
+%else
+BuildRequires:  python311-Sphinx
+%endif
 
 %description
 flashrom is a utility for reading, writing, verifying and erasing flash ROM
@@ -84,7 +84,7 @@ cards (NICs), SATA controller cards, and other external devices which can
 program flash chips.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-v%{version}
 
 %package devel
 Summary:        A universal flash programming utility
