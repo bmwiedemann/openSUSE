@@ -1,0 +1,8 @@
+<package name="akamai-purge" project="openSUSE:Factory">
+  <title>akamai-purge</title>
+  <description>Akamai CLI for Purge allows you to purge cached content from the Edge using FastPurge (CCUv3).
+
+FastPurge will typically invalidate (recommended), or delete cached content in under five seconds.</description>
+  <devel project="devel:languages:go" package="akamai-purge"/>
+  <url>https://github.com/akamai/cli-purge</url>
+</package>
