@@ -69,6 +69,8 @@ It was the first editor that supported Unicode in a plain-text terminal
 %prep
 %setup -q
 %patch -P 0 -p1
+# Use generic makefile also for arm
+sed -i s/arm/never/ makemined
 # desktop file fix
 sed -i "s/mined.xpm/mined/" ./usrshare/setup_install/mined.desktop
 sed -i s/Utility/Utility\;/ ./usrshare/setup_install/mined.desktop
@@ -76,7 +78,7 @@ sed -i s/Utility/Utility\;/ ./usrshare/setup_install/mined.desktop
 %build
 cp -p %{SOURCE2} src
 %configure
-%make_build
+%make_build CCFLAGS="%{optflags}" LIBDIR=/%{_lib}
 
 %install
 %make_install
