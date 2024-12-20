@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Dec 20 12:04:57 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.90.0:
+  * deps(go): bump module github.com/goccy/go-yaml (#3324)
+  * Merge commit from fork
+  * chore(deps): Bump codecov/codecov-action from 4 to 5 (#3052)
+  * chore(deps): Bump filippo.io/age from 1.2.0 to 1.2.1 (#3314)
+  * deps(go): bump module cuelang.org/go (#3313)
+  * deps(go): bump module helm.sh/helm/v3 (#3306)
+  * deps(go): bump module github.com/goccy/go-yaml (#3298)
+  * feat(maven): Support settings.xml for setting credentials and
+    mirrors (#3270)
+  * feat: allow to deepmerge multiple values file (#3291)
+  * Update SECURITY.md (#3277)
+  * chore(deps): Bump golang.org/x/crypto from 0.29.0 to 0.31.0
+    (#3271)
+  * deps(go): bump module github.com/goccy/go-yaml (#3267)
+  * deps: bump updatecli version to v0.89.0 (#3263)
+
+-------------------------------------------------------------------
 Mon Dec 09 09:42:37 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.89.0:
