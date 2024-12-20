@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           diun
-Version:        4.28.0
+Version:        4.29.0
 Release:        0
 Summary:        Receive notifications when an image is updated on a Docker registry
 License:        MIT
