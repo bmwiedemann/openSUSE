@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 21 11:46:03 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace wxWidgets-3_0-devel for wxWidgets-devel BuildRequires:
+  Package builds just fine with the newer 3.2 version.
+
+-------------------------------------------------------------------
 Tue May 17 08:21:13 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop unused BuildRequire on SDL-devel.

@@ -25,7 +25,7 @@ BuildRequires:  boost-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libtiff-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  wxWidgets-3_0-devel
+BuildRequires:  wxWidgets-devel
 BuildRequires:  xorg-x11
 Version:        0.5
 Release:        0
