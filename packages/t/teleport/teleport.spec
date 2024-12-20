@@ -17,7 +17,7 @@
 
 
 Name:           teleport
-Version:        17.0.5
+Version:        17.1.0
 Release:        0
 Summary:        Identity-aware, multi-protocol access proxy
 License:        AGPL-3.0-only
@@ -32,7 +32,7 @@ Source5:        tbot.yaml
 # Rust vendoring
 Source6:        vendor.tar.zst
 BuildRequires:  bash-completion
-BuildRequires:  cargo >= 1.69
+BuildRequires:  cargo >= 1.82
 BuildRequires:  cargo-packaging
 BuildRequires:  git-core
 BuildRequires:  go >= 1.23.4
