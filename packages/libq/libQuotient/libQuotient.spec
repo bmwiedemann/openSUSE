@@ -29,7 +29,7 @@ ExclusiveArch: do_not_build
 %define sonum 0.9
 %define rname libQuotient
 Name:           libQuotient%{?pkg_suffix}
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 Summary:        Library for Qt Matrix Clients
 License:        LGPL-2.1-only

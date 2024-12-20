@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Dec 20 14:19:50 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.9.1
+  * Added Connection::isOnline()
+  * Room::pendingEventAdded() signal doesn't carry a dangling
+    event ref any more
+  * MediaThumbnailJob now checks for the correct spec version
+    for auth media
+  * Unsupported RoomType values don't litter logs with warnings
+    any more
+  * Cleanup and code modernization
+  * Access tokens are actually saved to the keychain again
+  * The text provided by the server is used for the error
+    message on media endpoints
+  * Connection::supportedMatrixSpecVersions() regression fix
+  * Downloading encrypted files to a temporary location fixed
+  * Configurable job backoff strategies; fix the regression with
+    syncs frequently timing out just before getting a response
+    from the homeserver
+
+-------------------------------------------------------------------
 Mon Oct 28 09:02:30 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Fix dependencies
