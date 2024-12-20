@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec 20 05:52:08 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.22.3:
+  * Make GID its own type to prevent defaulting to 0 (#1449)
+  * Create codeql.yml (#1439)
+  * build(deps): bump google.golang.org/api from 0.211.0 to 0.213.0
+    (#1446)
+  * Add a unit test for the sort ordering change. (#1444)
+  * Add an explicit sort to squash diffs. (#1443)
+
+-------------------------------------------------------------------
 Sat Dec 14 21:34:51 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.22.2:
