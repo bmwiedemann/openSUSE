@@ -103,7 +103,11 @@ cp %{_sourcedir}/*.jar lib/
 pushd gritty
 mkdir -p classes
 javac -d classes -source 8 -target 8 -cp %{SOURCE20}:%{SOURCE25} $(find . -name \*.java | xargs)
-jar -cf ../lib/gritty.jar -C classes .
+jar \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+%endif
+  --create --file=../lib/gritty.jar -C classes .
 popd
 
 %{ant}

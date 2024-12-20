@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 11 07:19:06 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Normalize jar mtimes for reproducible builds (boo#1134568)
+
+-------------------------------------------------------------------
 Mon Feb 26 12:39:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
