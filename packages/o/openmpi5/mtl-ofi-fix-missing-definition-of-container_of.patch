@@ -1,0 +1,24 @@
+commit 75b6dad5959ba75fcba8c64cc0a364d820e03ebc
+Author: Nicolas Morey <nmorey@suse.com>
+Date:   Fri Dec 20 12:44:38 2024 +0100
+
+    mtl: ofi: fix missing definition of container_of
+    
+    Signed-off-by: Nicolas Morey <nmorey@suse.com>
+
+diff --git ompi/mca/mtl/ofi/mtl_ofi_request.h ompi/mca/mtl/ofi/mtl_ofi_request.h
+index f68c2a91baa0..6d748fd59bdc 100644
+--- ompi/mca/mtl/ofi/mtl_ofi_request.h
++++ ompi/mca/mtl/ofi/mtl_ofi_request.h
+@@ -15,6 +15,11 @@
+ 
+ #include "mtl_ofi.h"
+ 
++#ifndef container_of
++#define container_of(ptr, type, field) \
++        ((type *) ((char *)ptr - offsetof(type, field)))
++#endif
++
+ #define TO_OFI_REQ(_ptr_ctx) \
+     container_of((_ptr_ctx), struct ompi_mtl_ofi_request_t, ctx)
+ 

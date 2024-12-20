@@ -42,7 +42,7 @@
 # % define build_static_devel 1
 
 %define pname openmpi
-%define _vers 5_0_5
+%define _vers 5_0_6
 %define m_f_ver 5
 %bcond_with ringdisabled
 
@@ -113,7 +113,7 @@ ExclusiveArch:  do_not_build
 %global hpc_openmpi_pack_version %{hpc_openmpi_dep_version}
 %endif
 
-%define git_ver .0.ca64c52a8227
+%define git_ver .0.8a5c2ef25dc8
 
 #############################################################################
 #
@@ -122,7 +122,7 @@ ExclusiveArch:  do_not_build
 #############################################################################
 
 Name:           %{package_name}%{?testsuite:-testsuite}
-Version:        5.0.5
+Version:        5.0.6
 Release:        0
 Summary:        An implementation of MPI/SHMEM (Version %{m_f_ver})
 License:        BSD-3-Clause
@@ -134,6 +134,7 @@ Source3:        macros.hpc-openmpi
 Source4:        mpivars.sh
 Source5:        mpivars.csh
 Patch1:         romio341-backport-fixes-from-mpich.patch
+Patch2:         mtl-ofi-fix-missing-definition-of-container_of.patch
 Provides:       mpi
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # Exclude 32b archs
@@ -146,7 +147,6 @@ BuildRequires:  hwloc-devel
 BuildRequires:  libevent-devel
 BuildRequires:  libfabric-devel
 BuildRequires:  libibumad-devel
-BuildRequires:  libibverbs-devel
 BuildRequires:  libtool
 # net-tools is required to run hostname
 BuildRequires:  net-tools
@@ -267,7 +267,6 @@ shared libraries.
 Summary:        SDK for openMPI %{?with_hpc:HPC} version %{version}
 Group:          Development/Libraries/Parallel
 Requires:       libibumad-devel
-Requires:       libibverbs-devel
 %if %{without hpc}
 Requires:       libstdc++-devel
 %if 0%{?default_openmpi}
@@ -419,7 +418,13 @@ sed -i -e 's/^greek=.*$/greek=%{git_ver}/' -e 's/^repo_rev=.*$/repo_rev=%{versio
 export USER=OBS
 export HOSTNAME=OBS
 # OBS sets SOURCE_DATE_EPOCH
-%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+# OpenPMIx does not support LTO:
+# configure: WARNING: Configure has detected the presence of the -flto
+# configure: WARNING: compiler directive in CFLAGS. PMIx does not currently
+# configure: WARNING: support this flag as it conflicts with the
+# configure: WARNING: plugin architecture of the PMIx library.
+# configure: error: Please remove this directive and re-run configure.
+%global _lto_cflags %{nil}
 %{?with_hpc:%hpc_debug}
 # Remove .gitmodules so autogen.pl does not try to run git commands
 find . -name .gitmodules -delete
@@ -442,7 +447,7 @@ find . -name .gitmodules -delete
            %{?build_static_devel:--enable-static}  \
            %{!?build_static_devel:--disable-static}  \
            --enable-builtin-atomics \
-           --with-verbs \
+           --without-verbs \
            --with-libfabric \
 %if 0%{?with_ucx}
            --with-ucx \

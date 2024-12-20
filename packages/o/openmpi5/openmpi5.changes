@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Dec 20 11:50:25 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Add mtl-ofi-fix-missing-definition-of-container_of.patch to fix
+  compilation issue with libfabric >= 2.0
+
+-------------------------------------------------------------------
+Tue Nov 26 07:14:11 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to 5.0.6 (jsc#PED-11356):
+  - Session Management Enhancements:
+    - Finalization Control: Ensures proper finalization of classes when references
+      to the OPAL utility layer reach zero. A new smoke test has been added to
+      validate this behavior.
+    - Multiple Init/Finalize Handling: Improvements to handling session multiple
+      initializations and finalizations, addressing issues with parameter
+      management and session destruction.
+  - MPI Communication and Resource Management:
+    - Info Duplication: Enhanced `MPI_Info_dup` function to ensure consistent
+      key management across duplicated info objects, supporting better memory
+      and resource handling.
+    - OFI/Initialization Improvements: Refactored code for OFI common components
+      to support session-based initialization models per MPI 4 standards.
+    - Resource Leak Fixes: Addressed memory leaks and reference count issues
+      in several components to improve memory management and stability in
+      high-demand environments.
+  - Detailed Locking Protocol: Modified default file-locking protocols in UFS
+    component to ensure data consistency, especially when using data-sieving
+    operations, which require broader locking.
+  - MPI_T Interface Enhancements: Modified MCA parameter settings to allow
+    runtime tuning of collectives through the MPI_T interface, adding flexibility
+    for dynamic rules in collective operations.
+  - Corrected various documentation typos and clarified parameter settings in
+    several API references, improving readability and usability for end users.
+- Disable LTO as it is not supported by OpenPMIX
+- Disable direct verbs (openib) support. It has been deprecated since v4.x.
+  RDMA devices should now be used through ofi/libfabric.
+
+-------------------------------------------------------------------
 Mon Aug 12 09:52:54 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Update to 5.0.5
