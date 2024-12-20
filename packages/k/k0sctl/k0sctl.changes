@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 19 07:35:28 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.21.0:
+  * Bump golang.org/x/crypto from 0.29.0 to 0.31.0 (#810)
+  * Bump k8s.io/client-go from 0.31.3 to 0.32.0 (#808)
+  * Capture error output of k0s reset (#809)
+  * Remove telemetry (#687)
+
+-------------------------------------------------------------------
 Mon Dec 09 09:42:59 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.20.0:
