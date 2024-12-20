@@ -17,7 +17,7 @@
 
 
 Name:           hypridle
-Version:        0.1.2
+Version:        0.1.5
 Release:        0
 Summary:        Hyprland's idle daemon
 License:        BSD-3-Clause
@@ -26,8 +26,11 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        hypridle.conf
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+## Added for directory ownership
+BuildRequires:  hyprland
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(hyprlang) >= 0.4.2
+BuildRequires:  pkgconfig(hyprutils)
 BuildRequires:  pkgconfig(sdbus-c++)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-protocols)
@@ -54,6 +57,7 @@ install -Dm 0644 %{SOURCE1} %buildroot/%_docdir/%name/hypridle.conf.example
 %license LICENSE
 %doc README.md hypridle.conf.example
 %{_bindir}/hypridle
+%{_datadir}/hypr/hypridle.conf
 %{_userunitdir}/hypridle.service
 
 %changelog
