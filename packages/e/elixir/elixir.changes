@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 20 08:33:57 UTC 2024 - Alessio Biancalana <alessio.biancalana@suse.com>
+
+- Upgrade to Elixir 1.18.0:
+  * Changelog available at https://hexdocs.pm/elixir/1.18.0/changelog.html
+
+-------------------------------------------------------------------
 Thu Dec 19 09:45:16 UTC 2024 - Alessio Biancalana <alessio.biancalana@suse.com>
 
 - Add 001-skip-translator-supervisor-test.patch to make the package build correctly 
