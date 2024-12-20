@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec 19 21:18:33 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1734613653.b57c68a:
+  * Slightly simplify autotest
+  * Remove _typing_limit subroutine because it's never used
+  * Update t/08-autotest.t
+  * Remove subs on vnc_base that are already declared on base
+  * Enable more unit test code for codecoverage
+  * Add more subtests for autotest.pm
+
+-------------------------------------------------------------------
 Wed Dec 18 23:58:20 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1734521846.22cc1e5:

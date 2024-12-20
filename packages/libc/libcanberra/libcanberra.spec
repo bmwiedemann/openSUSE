@@ -18,19 +18,17 @@
 
 %define debug_package_requires libcanberra0 = %{version}-%{release}
 Name:           libcanberra
-Version:        0.30
+Version:        0.30+2
 Release:        0
 Summary:        Portable sound event library
 License:        LGPL-2.0-or-later
 Group:          Development/Libraries/GNOME
 URL:            http://0pointer.de/lennart/projects/libcanberra
-Source:         http://0pointer.de/lennart/projects/libcanberra/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.zst
 Source1:        libcanberra-gtk-module.sh
 Source99:       baselibs.conf
 # PATCH-FIX-UPSTREAM libcanberra-multi-backend.patch boo#753243 fdo#51662 dimstar@opensuse.org -- Set the multi backend as default and allow it actually to work.
 Patch0:         libcanberra-multi-backend.patch
-# PATCH-FIX-UPSTREAM libcanberra-broadway-fix.patch boo#789066 michael.meeks@suse.com
-Patch1:         libcanberra-broadway-fix.patch
 BuildRequires:  gtk-doc
 BuildRequires:  libltdl-devel
 BuildRequires:  pkgconfig
@@ -217,13 +215,15 @@ This package provides the development files for libcanberra-gtk2.
 cp %{SOURCE1} libcanberra-gtk-module.sh
 
 %build
-%configure \
-  --disable-static   \
-  --enable-pulse     \
-  --enable-alsa      \
-  --enable-null      \
-  --disable-oss      \
-  --enable-udev      \
+./autogen.sh
+%configure                       \
+  --disable-static               \
+  --enable-pulse                 \
+  --enable-alsa                  \
+  --enable-null                  \
+  --disable-oss                  \
+  --enable-udev                  \
+  --with-systemdsystemunitdir=no \
   --with-builtin=dso
 make %{?_smp_mflags} V=1
 
@@ -231,7 +231,6 @@ make %{?_smp_mflags} V=1
 %make_install
 install -Dpm 0755 libcanberra-gtk-module.sh \
   %{buildroot}%{_sysconfdir}/X11/xinit/xinitrc.d/libcanberra-gtk-module.sh
-rm %{buildroot}%{_datadir}/doc/libcanberra/README
 
 %suse_update_desktop_file %{buildroot}%{_datadir}/gnome/autostart/libcanberra-login-sound.desktop
 %suse_update_desktop_file %{buildroot}%{_datadir}/gdm/autostart/LoginWindow/libcanberra-ready-sound.desktop
@@ -246,14 +245,13 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun gtk3-0 -p /sbin/ldconfig
 
 %files -n libcanberra0
-%doc README
 %license LGPL
 %{_libdir}/libcanberra.so.*
-%dir %{_libdir}/libcanberra-%{version}/
-%{_libdir}/libcanberra-%{version}/libcanberra-alsa.so
-%{_libdir}/libcanberra-%{version}/libcanberra-multi.so
-%{_libdir}/libcanberra-%{version}/libcanberra-null.so
-%{_libdir}/libcanberra-%{version}/libcanberra-pulse.so
+%dir %{_libdir}/libcanberra-*/
+%{_libdir}/libcanberra-*/libcanberra-alsa.so
+%{_libdir}/libcanberra-*/libcanberra-multi.so
+%{_libdir}/libcanberra-*/libcanberra-null.so
+%{_libdir}/libcanberra-*/libcanberra-pulse.so
 
 %files gtk0
 %{_libdir}/libcanberra-gtk.so.*
@@ -299,7 +297,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/pkgconfig/libcanberra-gtk3.pc
 
 %files devel
-%doc %{_datadir}/gtk-doc/html/libcanberra/
 %{_includedir}/canberra.h
 %{_includedir}/canberra-gtk.h
 %{_libdir}/libcanberra.so

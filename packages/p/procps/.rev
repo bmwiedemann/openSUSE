@@ -1413,4 +1413,41 @@ There are also man pages translations but they doesn't get installed automatical
     <comment></comment>
     <requestid>1198682</requestid>
   </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>70471a3d5c1a6aab46f3811ce1421980</srcmd5>
+    <version>4.0.5</version>
+    <time>1734704656</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to procps-ng-4.0.5
+  * library
+    increment current, revision and age to 0: 1:0:0
+    internal: days/users when value is 0                   issue #303
+    internal: dont print 60s but increment minute          issue #302
+    internal: stat api fixed remaining cpu distortions     issue #321
+    internal: only count user sessions
+    internal: Recover from meminfo seek using LXC          Debian #1072831
+    internal: stat api no longer counts guest tics twice   issue #339
+    external: zswap &amp; zswapped added to meminfo api
+    external: schedule class added to pids api
+    external: disk sleep added to pids api, sleep revised  issue #265
+    external: docker containers added to pids api
+    external: procps_users new exported function
+    external: procps_uptime_snprint uses given upseconds
+    external: procps_container_uptime
+    external: meminfo api adds SecPageTables, Unaccepted
+    external: pids api now provides open file descriptors
+    external: 'info' parm removed from all 'VAL' macros    issue #332
+    external: Add procps_sigmask_names
+    external: Add procps_capability_names
+    external: Add PIDS_CAP__PRM Permitted Capabilities
+  * build-sys: Added --disable-pidwait and fixed logic     issue #352
+  * kill: Correctly parse negative pids                    issue #354
+  * pgrep: select process by environment variable          issue #167
+  * pgrep: Rework pidfile reading to include stdin         issue #318
+  * pmap: Don't escape correct UTF-8 characters
+  * ps: Add environ field
+  * ps: Add htprv and htshr fields for HugeTables
+  * ps: restore lost tasks for options --sort with -H      issue #304</comment>
+    <requestid>1232618</requestid>
+  </revision>
 </revisionlist>

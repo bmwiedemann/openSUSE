@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Thu Dec 19 14:34:39 UTC 2024 - Dr. Werner Fink <werner@suse.de>
+
+- Update to procps-ng-4.0.5
+  * library
+    increment current, revision and age to 0: 1:0:0
+    internal: days/users when value is 0                   issue #303
+    internal: dont print 60s but increment minute          issue #302
+    internal: stat api fixed remaining cpu distortions     issue #321
+    internal: only count user sessions
+    internal: Recover from meminfo seek using LXC          Debian #1072831
+    internal: stat api no longer counts guest tics twice   issue #339
+    external: zswap & zswapped added to meminfo api
+    external: schedule class added to pids api
+    external: disk sleep added to pids api, sleep revised  issue #265
+    external: docker containers added to pids api
+    external: procps_users new exported function
+    external: procps_uptime_snprint uses given upseconds
+    external: procps_container_uptime
+    external: meminfo api adds SecPageTables, Unaccepted
+    external: pids api now provides open file descriptors
+    external: 'info' parm removed from all 'VAL' macros    issue #332
+    external: Add procps_sigmask_names
+    external: Add procps_capability_names
+    external: Add PIDS_CAP__PRM Permitted Capabilities
+  * build-sys: Added --disable-pidwait and fixed logic     issue #352
+  * kill: Correctly parse negative pids                    issue #354
+  * pgrep: select process by environment variable          issue #167
+  * pgrep: Rework pidfile reading to include stdin         issue #318
+  * pmap: Don't escape correct UTF-8 characters
+  * ps: Add environ field
+  * ps: Add htprv and htshr fields for HugeTables
+  * ps: restore lost tasks for options --sort with -H      issue #304
+  * ps: add 'docker' containers field, similar to 'lxc'
+  * ps: Restore AIX free-format                            issue #323
+  * ps: can display open file descriptors for each task
+  * ps: Fix signames scanning                              issue #341
+  * ps: Add -o pcap,pcaps to show permitted capabilities
+  * ps: Zombies show <defunct> in the commandname          issue #355
+  * ps: Use quick mode if possible                         merge #239
+  * slabtop: Add --human option for slab size
+  * snice: Minor fix for help screen                       Debian #1086441
+  * sysctl: Add glob excludes                              merge #206
+  * sysctl: --all skips stat_refresh                       Debian #978688
+  * top: added a 'CLS' scheduling class field, like ps
+  * top: exploit library addition of 'disk sleep'          issue #265
+  * top: add 'docker' containers field, similar to 'lxc'
+  * top: provides additional control over colors
+  * top: can display open file descriptors for each task
+  * top: corrected cpu % for hosts with qemu processes     issue #339
+  * top: remains functional if /proc mounted subset=pid
+  * top: can display a task's permitted capabilities (^A)
+  * uptime: Add container uptime option                    issue #300
+  * vmstat: Add page allocation to --stats
+  * vmstat.8: si/so are changed by --unit                  Debian #1061944
+  * w: Don't segfault with -s option                       issue #301
+  * w: Cache pids list                                     issue #305
+  * w: Add container uptime option
+  * w.1: Note utmp is for non-systemd                      Debian #1080333
+  * watch: use clock_gettime                               issue #295
+  * watch.1: --chgexit only works for visible changes      Debian #729569
+  * hugetop: a new utility to show huge page information   merge #214
+- Remove patches now upstream or fixed
+  * 79042e07.patch
+  * procps-ng-4.0.4-idletime-no-tty.patch
+  * procps-ng-4.0.4-w-array-bounds.patch
+- Port patches
+  * procps-ng-3.3.10-errno.patch
+  * procps-ng-3.3.10-slab.patch
+  * procps-ng-3.3.10-xen.dif
+  * procps-ng-3.3.11-pmap4suse.patch
+  * procps-ng-3.3.8-ignore-scan_unevictable_pages.patch
+  * procps-ng-3.3.8-petabytes.patch
+  * procps-ng-3.3.8-readeof.patch
+  * procps-ng-3.3.8-tinfo.dif
+  * procps-ng-3.3.8-vmstat-terabyte.dif
+  * procps-ng-3.3.9-w-notruncate.diff
+  * procps-ng-4.0.0-floats.dif
+  * procps-ng-4.0.0-integer-overflow.patch
+  * procps-ng-4.0.4-ignore-sysctl_conf.patch
+  * procps-v3.3.3-columns.dif
+  * procps-v3.3.3-read-sysctls-also-from-boot-sysctl.conf-kernelversion.diff
+
+-------------------------------------------------------------------
 Wed Sep  4 08:18:44 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - procps-ng-4.0.4-idletime-no-tty.patch: don't print idle time without tty

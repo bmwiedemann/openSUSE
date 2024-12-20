@@ -1,60 +1,55 @@
-Index: gnome-shell-extensions-43.rc/extensions/apps-menu/extension.js
+Index: gnome-shell-extensions-47.2/extensions/apps-menu/extension.js
 ===================================================================
---- gnome-shell-extensions-43.rc.orig/extensions/apps-menu/extension.js
-+++ gnome-shell-extensions-43.rc/extensions/apps-menu/extension.js
-@@ -5,6 +5,8 @@ const {
-     Atk, Clutter, Gio, GLib, GMenu, GObject, Gtk, Meta, Shell, St,
- } = imports.gi;
- const {EventEmitter} = imports.misc.signals;
-+const BoxPointer = imports.ui.boxpointer;
-+const AppFavorites = imports.ui.appFavorites;
+--- gnome-shell-extensions-47.2.orig/extensions/apps-menu/extension.js
++++ gnome-shell-extensions-47.2/extensions/apps-menu/extension.js
+@@ -23,6 +23,8 @@ import * as DND from 'resource:///org/gn
+ import * as Main from 'resource:///org/gnome/shell/ui/main.js';
+ import * as PanelMenu from 'resource:///org/gnome/shell/ui/panelMenu.js';
+ import * as PopupMenu from 'resource:///org/gnome/shell/ui/popupMenu.js';
++import * as AppFavorites from 'resource:///org/gnome/shell/ui/appFavorites.js';
++import * as BoxPointer from 'resource:///org/gnome/shell/ui/boxpointer.js';
  
- const DND = imports.ui.dnd;
- const ExtensionUtils = imports.misc.extensionUtils;
-@@ -48,8 +50,19 @@ class ApplicationMenuItem extends PopupM
-         let textureCache = St.TextureCache.get_default();
-         let iconThemeChangedId = textureCache.connect('icon-theme-changed',
-             this._updateIcon.bind(this));
-+
-+        this.actor.connect('button-press-event', this._onButtonPress.bind(this));
-+        this.actor.connect('popup-menu', this._onKeyboardPopupMenu.bind(this));
+ const appSys = Shell.AppSystem.get_default();
+ 
+@@ -60,6 +62,9 @@ class ApplicationMenuItem extends PopupM
+             () => this._updateIcon(), this);
+         this._updateIcon();
+ 
 +        this._menu = null;
 +        this._menuManager = new PopupMenu.PopupMenuManager(this);
 +
-         this.connect('destroy', () => {
-             textureCache.disconnect(iconThemeChangedId);
-+            if (this._menu) {
-+                this._menu.destroy();
-+                this._menu = null;
-+                this._menuManager = null;
-+            }
-         });
-         this._updateIcon();
+         this._delegate = this;
+         let draggable = DND.makeDraggable(this);
  
-@@ -64,6 +77,107 @@ class ApplicationMenuItem extends PopupM
-         };
+@@ -72,6 +77,24 @@ class ApplicationMenuItem extends PopupM
      }
  
-+    _onKeyboardPopupMenu() {
-+        this.popupMenu();
-+        this._menu.actor.navigate_focus(null, Gtk.DirectionType.TAB_FORWARD, false);
-+    }
-+
-+    _onButtonPress(actor, event) {
+     activate(event) {
 +        // close any opened menu to avoid input focus grab
 +        if (this._menu && this._menu.isOpen) {
 +            this._menu.close();
-+            return Clutter.EVENT_STOP;
++            return;
 +        }
 +
 +        let button = event.get_button();
 +        if (button == 3) {
 +            this.popupMenu();
-+            return Clutter.EVENT_STOP;
++            return;
 +        }
-+        return Clutter.EVENT_PROPAGATE
-+    }
 +
++        let symbol = event.get_key_symbol();
++        if (symbol === Clutter.KEY_space) {
++            this.popupMenu();
++            return;
++        }
++
+         this._app.open_new_window(-1);
+         this._button.selectCategory(null);
+         this._button.menu.toggle();
+@@ -80,6 +103,87 @@ class ApplicationMenuItem extends PopupM
+         Main.overview.hide();
+     }
+ 
 +    popupMenu() {
 +        if (!this._menu) {
 +            this._menu = new PopupMenu.PopupMenu(this.actor, 0.0, St.Side.TOP, 0);
@@ -125,7 +120,7 @@ Index: gnome-shell-extensions-43.rc/extensions/apps-menu/extension.js
 +                this._button.menu.toggle();
 +            });
 +
-+            Main.uiGroup.add_actor(this._menu.actor);
++            Main.uiGroup.add_child(this._menu.actor);
 +
 +            this._menuManager.addMenu(this._menu);
 +        }
@@ -136,6 +131,6 @@ Index: gnome-shell-extensions-43.rc/extensions/apps-menu/extension.js
 +        return false;
 +    }
 +
-     activate(event) {
-         this._app.open_new_window(-1);
-         this._button.selectCategory(null);
+     setActive(active, params) {
+         if (active)
+             this._button.scrollToButton(this);

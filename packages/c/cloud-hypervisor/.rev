@@ -7,4 +7,20 @@
     <comment></comment>
     <requestid>1230224</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>79f49786703a53cb71a642a9a5b30718</srcmd5>
+    <version>43.0</version>
+    <time>1734704853</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 43.0:
+  * Live Migration over TCP Connections
+  * Notable Performance Improvements
+  * Cloud Hypervisor now accepts VFIO devices that use I/O PCI BARs
+    on non x86-64
+  * Command line groups were adjusted to ensure that at least one payload
+    parameter was provided
+- remove unsafe-device-attr.patch, as upstream carries this commit
+- enable unit-tests (forwarded request 1232730 from rrahl0)</comment>
+    <requestid>1232731</requestid>
+  </revision>
 </revisionlist>

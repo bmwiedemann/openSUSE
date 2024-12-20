@@ -4,19 +4,26 @@
  2 files changed, 14 insertions(+)
 
 --- man/sysctl.8
-+++ man/sysctl.8	2022-03-29 10:21:47.926686046 +0000
-@@ -123,6 +123,8 @@ will read files from directories in the
- order from top to bottom. Once a file of a given filename is loaded, any
- file of the same name in subsequent directories is ignored.
- 
-+/boot/sysctl.conf-<kernelversion>
-+.br
- /etc/sysctl.d/*.conf
- .br
- /run/sysctl.d/*.conf
++++ man/sysctl.8	2024-09-24 07:44:00.717403660 +0000
+@@ -123,6 +123,7 @@ Display version information and exit.
+ .TS
+ Li.
+ /proc/sys
++/boot/sysctl.conf\-\fR<kernelversion>\fP
+ /etc/sysctl.d/\fR*\fP.conf
+ /run/sysctl.d/\fR*\fP.conf
+ /usr/local/lib/sysctl.d/\fR*\fP.conf
+@@ -140,6 +141,7 @@ file of the same name in subsequent dire
+ .P
+ .TS
+ Li.
++/boot/sysctl.conf\-\fR<kernelversion>\fP
+ /etc/sysctl.d/\fR*\fP.conf
+ /run/sysctl.d/\fR*\fP.conf
+ /usr/local/lib/sysctl.d/\fR*\fP.conf
 --- src/sysctl.c
-+++ src/sysctl.c	2022-03-29 10:20:51.795708321 +0000
-@@ -45,6 +45,7 @@
++++ src/sysctl.c	2024-09-24 07:41:02.012637471 +0000
+@@ -46,6 +46,7 @@
  #include <string.h>
  #include <sys/stat.h>
  #include <sys/types.h>
@@ -24,7 +31,7 @@
  #include <unistd.h>
  #include <ctype.h>
  
-@@ -808,6 +809,7 @@ static int sortpairs(const void *A, cons
+@@ -831,6 +832,7 @@ static int sortpairs(const void *A, cons
  static int PreloadSystem(SettingList *setlist)
  {
  	unsigned di, i;
@@ -32,7 +39,7 @@
  	const char *dirs[] = {
  		"/etc/sysctl.d",
  		"/run/sysctl.d",
-@@ -872,6 +874,16 @@ static int PreloadSystem(SettingList *se
+@@ -895,6 +897,16 @@ static int PreloadSystem(SettingList *se
  	}
  	qsort(cfgs, ncfgs, sizeof(struct cfg *), sortpairs);
  

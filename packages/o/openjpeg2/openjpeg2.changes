@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Dec 16 11:15:35 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.5.3:
+  * No API/ABI break compared to v2.5.2
+  New Features:
+  * Use TLM (Tile Length Marker) segments to optimize decoding #1538
+  * Add AVX2 and AVX512 optimization #1552
+  * Support setting enumcs for CMYK and EYCC color space #1529
+  Bug fixes:
+  * Do not turn on 'TPsot==TNsot detection fix' when TNsot==1, and
+    add a OPJ_DPARAMETERS_DISABLE_TPSOT_FIX flag to disable it #1560
+  * opj_j2k_setup_encoder(): set numgbits = 1 for Cinema2K #1559
+  * fix: when EPH markers are specified, they are required. #1547
+  * sycc422_to_rgb(): fix out-of-bounds read accesses when 2 *
+    width_component_1_or_2 + 1 == with_component_0 #1566
+  * Avoid heap-buffer-overflow read on corrupted image in non-strict mode #1536
+  * opj_j2k_read_sod(): validate opj_stream_read_data() return to
+    avoid potential later heap-buffer-overflow in in opj_t1_decode_cblk when disabling strict mode #1534
+  * fix integer Overflow at j2k.c:9614 #1530
+  * Memory leak fixes in error code path of opj_compress #1567
+  * opj_j2k_decode_tiles(): avoid use of uninitialized l_current_tile_no variable #1528
+  * Do not allow header length to be zero in non-zero length packet #1526
+  * Fix building on OpenBSD big endian hosts #1520
+  Changes in third party components:
+  * thirdparty/libz: update to zlib-1.3.1 #1542
+  * thirdparty/libpng: update to libpng-1.6.43 #1541
+  * thirdparty/libtiff: update to libtiff 4.6.0 #1540
+
+-------------------------------------------------------------------
 Fri Aug 16 16:59:14 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Make version check for the work around reliable to not silently

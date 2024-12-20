@@ -4,7 +4,7 @@
 
 --- library/meminfo.c
 +++ library/meminfo.c	2022-03-29 09:50:45.076823155 +0000
-@@ -710,7 +710,9 @@ static int meminfo_read_failed (
+@@ -744,7 +744,9 @@ static int meminfo_read_failed (
      mHr(derived_mem_used) = (unsigned long)mem_used;
  
      if (mHr(HighFree) < mHr(HighTotal))
@@ -15,7 +15,7 @@
  
      if (0 == mHr(LowTotal)) {
          mHr(LowTotal) = mHr(MemTotal);
-@@ -718,6 +720,8 @@ static int meminfo_read_failed (
+@@ -752,6 +754,8 @@ static int meminfo_read_failed (
      }
      if (mHr(LowFree) < mHr(LowTotal))
          mHr(derived_mem_lo_used) = mHr(LowTotal) - mHr(LowFree);

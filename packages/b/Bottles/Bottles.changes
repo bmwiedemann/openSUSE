@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 19 15:28:26 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Remove patch that disables the donation button. It does go over the line to remove it. boo#1234728
+  * dont-support.patch
+- Rename patch to not exit when running outside of the sandbox to a more neutral name
+  * dont-care-about-sandbox.patch -> sandbox-dont-exit.patch
+  * Label patch according to packaging patch guidelines
+  
+-------------------------------------------------------------------
 Sat Dec 14 17:46:13 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 51.17:

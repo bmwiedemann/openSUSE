@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Dec 20 02:30:23 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 43.0:
+  * Live Migration over TCP Connections
+  * Notable Performance Improvements
+  * Cloud Hypervisor now accepts VFIO devices that use I/O PCI BARs
+    on non x86-64
+  * Command line groups were adjusted to ensure that at least one payload
+    parameter was provided
+- remove unsafe-device-attr.patch, as upstream carries this commit
+- enable unit-tests
+
+-------------------------------------------------------------------
 Wed Dec 11 23:27:05 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - restrict building only for arches which are supported

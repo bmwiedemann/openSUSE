@@ -3,25 +3,25 @@
  1 file changed, 25 deletions(-)
 
 --- testsuite/pmap.test/pmap.exp
-+++ testsuite/pmap.test/pmap.exp	2023-11-15 15:34:02.613151770 +0000
-@@ -69,31 +69,6 @@ if  { [ file readable "/proc/self/smaps"
-     expect_pass $test "$pmap_initname\$"
++++ testsuite/pmap.test/pmap.exp	2024-12-19 15:07:47.150871855 +0000
+@@ -74,31 +74,6 @@ if  { [ file readable "/proc/self/smaps"
+     }
  }
  
 -
 -proc expect_twice_total { test } {
 -    set totkb 0
 -    expect {
--        -re "\r\n\\s+(\\d+)\[0-9 \]*KB" {
+-        -re "\r\n\\s+(\\d+)\\s+.*KB" {
 -            set totkb $expect_out(1,string)
 -            expect {
 -                -re "\r\n\\s+$totkb\[0-9 \]*KB" { pass "$test" }
--                eof { fail "$test" }
--                timeout { fail "$test" }
+-                eof { fail "$test: first match" }
+-                timeout { fail "$test: first match" }
 -            }
 -        }
--        eof { fail "$test" }
--        timeout { fail "$test" }
+-        eof { fail "$test: second match" }
+-        timeout { fail "$test: second match" }
 -    }
 -}
 -

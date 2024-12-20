@@ -1,0 +1,46 @@
+From 28bbaa5a17ed1ac39be63b1ecd9bd7e187a7db2e Mon Sep 17 00:00:00 2001
+From: Henry Schreiner <HenrySchreinerIII@gmail.com>
+Date: Thu, 12 Dec 2024 21:44:02 -0500
+Subject: [PATCH] tests: fix broken mock on CPython 3.12.8+ (#903)
+
+Signed-off-by: Henry Schreiner <henryschreineriii@gmail.com>
+---
+ nox/command.py        | 4 +++-
+ tests/test_command.py | 2 +-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+Index: nox-2024.04.15/nox/command.py
+===================================================================
+--- nox-2024.04.15.orig/nox/command.py
++++ nox-2024.04.15/nox/command.py
+@@ -36,6 +36,8 @@ if TYPE_CHECKING:
+ 
+ ExternalType = Literal["error", True, False]
+ 
++_PLATFORM = sys.platform
++
+ 
+ class CommandFailed(Exception):
+     """Raised when an executed command returns a non-success status code."""
+@@ -67,7 +69,7 @@ def _clean_env(env: Mapping[str, str | N
+     clean_env = {k: v for k, v in env.items() if v is not None}
+ 
+     # Ensure systemroot is passed down, otherwise Windows will explode.
+-    if sys.platform == "win32":
++    if _PLATFORM.startswith("win"):
+         clean_env.setdefault("SYSTEMROOT", os.environ.get("SYSTEMROOT", ""))
+ 
+     return clean_env
+Index: nox-2024.04.15/tests/test_command.py
+===================================================================
+--- nox-2024.04.15.orig/tests/test_command.py
++++ nox-2024.04.15/tests/test_command.py
+@@ -157,7 +157,7 @@ def test_run_env_remove(monkeypatch):
+     )
+ 
+ 
+-@mock.patch("sys.platform", "win32")
++@mock.patch("nox.command._PLATFORM", "win32")
+ def test_run_env_systemroot():
+     systemroot = os.environ.setdefault("SYSTEMROOT", "sigil")
+ 

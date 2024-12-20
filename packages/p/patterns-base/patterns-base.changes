@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 19 13:12:09 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- base: suggest tar to avoid busybox-tar in default installs
+
+-------------------------------------------------------------------
 Tue Nov 26 13:17:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - fips: change description from 140-2 to 140-3

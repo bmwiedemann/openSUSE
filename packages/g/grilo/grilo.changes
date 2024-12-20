@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 17 14:43:43 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Increase test timeout on s390x. lib-net test can be slow and
+  sometimes times out in our builds.
+
+-------------------------------------------------------------------
 Tue May  9 21:14:08 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.3.16:

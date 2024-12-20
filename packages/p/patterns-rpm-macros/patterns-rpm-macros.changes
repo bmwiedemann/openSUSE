@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 19 10:04:32 UTC 2024 - Frederic Crozat <fcrozat@suse.com>
+
+- Add requires_on_transactional_recommends_otherwise,
+  requires_on_traditional, requires_on_transactional and
+  recommends_on_traditional macros, allowing to merge patterns from 
+  various products.
+
+-------------------------------------------------------------------
 Fri Aug 27 12:55:30 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add budgie desktop macro (boo#1176164)

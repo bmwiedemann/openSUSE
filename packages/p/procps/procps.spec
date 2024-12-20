@@ -16,7 +16,7 @@
 #
 
 
-%define somajor 0
+%define somajor 1
 %define libname libproc2-%{somajor}
 %if 0%{?suse_version} < 1550
 %bcond_with     bin2usr
@@ -26,7 +26,7 @@
 %bcond_without  pidof
 %bcond_without  nls
 Name:           procps
-Version:        4.0.4
+Version:        4.0.5
 Release:        0
 Summary:        The ps utilities for /proc
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -38,7 +38,6 @@ Source1:        https://downloads.sourceforge.net/project/procps-ng/Production/p
 Source2:        procps-rpmlintrc
 Source3:        procps.keyring
 # PATCH-FIX-USTREAM -- w: Don't crash when using short option
-Patch0:         79042e07.patch
 Patch1:         procps-v3.3.3-ia64.diff
 Patch3:         procps-ng-3.3.9-w-notruncate.diff
 Patch7:         procps-ng-3.3.8-readeof.patch
@@ -64,8 +63,6 @@ Patch37:        procps-ng-4.0.0-floats.dif
 Patch38:        procps-ng-4.0.4-pmapX-not-twice-anymore.patch
 # PATCH-FIX-SUSE -- ignore dangling symlink to missing /etc/sysctl.conf file
 Patch39:        procps-ng-4.0.4-ignore-sysctl_conf.patch
-Patch40:        procps-ng-4.0.4-idletime-no-tty.patch
-Patch41:        procps-ng-4.0.4-w-array-bounds.patch
 BuildRequires:  automake
 BuildRequires:  dejagnu
 BuildRequires:  diffutils
@@ -135,7 +132,6 @@ the process information pseudo-file system.
 
 %prep
 %setup -q -n procps-ng-%{version}
-%patch -P0 -p1
 %patch -P1
 %patch -P3 -p1 -b .trcate
 %patch -P7 -b .rof
@@ -152,10 +148,8 @@ the process information pseudo-file system.
 %patch -P32 -b .p32
 %patch -P33 -b .pmap4us
 %patch -P37
-%patch -P38
+%patch -P38 -b .p38
 %patch -P39
-%patch -P40 -p1
-%patch -P41 -p1
 
 %build
 test -s .tarball-version || echo %{version} > .tarball-version
@@ -379,7 +373,7 @@ test $error = no || exit 1
 %{_bindir}/slabtop
 %{_bindir}/snice
 %{_bindir}/tload
-%{_bindir}/top
+%{_bindir}/*top
 %{_bindir}/vmstat
 %{_bindir}/w
 %{_bindir}/watch
@@ -397,7 +391,7 @@ test $error = no || exit 1
 %{_mandir}/man1/slabtop.1%{?ext_man}
 %{_mandir}/man1/snice.1%{?ext_man}
 %{_mandir}/man1/tload.1%{?ext_man}
-%{_mandir}/man1/top.1%{?ext_man}
+%{_mandir}/man1/*top.1%{?ext_man}
 %{_mandir}/man1/w.1%{?ext_man}
 %{_mandir}/man1/watch.1%{?ext_man}
 %{_mandir}/man5/sysctl.conf.5%{?ext_man}

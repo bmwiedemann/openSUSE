@@ -23,10 +23,14 @@ Summary:        Interactive Connectivity Establishment implementation
 License:        LGPL-2.1-only OR MPL-1.1
 Group:          Development/Libraries/GNOME
 URL:            https://nice.freedesktop.org/
-Source:         https://nice.freedesktop.org/releases/%{name}-%{version}.tar.gz
+Source:         %{url}/releases/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 # PATCH-FIX-UPSTREAM libnice-port-gupnp-igd-bump.patch -- Port to new gupnp-igd
 Patch1:         libnice-port-gupnp-igd-bump.patch
+# PATCH-FIX-UPSTREAM c47a7ea6289187857a38e0118bd8528cab9171c9.patch -- meson: Add glib debug, assert and check options
+Patch2:         https://gitlab.freedesktop.org/libnice/libnice/-/commit/c47a7ea6289187857a38e0118bd8528cab9171c9.patch
+# PATCH-FIX-UPSTREAM 37eeeb1a750bf2dd6d5769d759069e95dd1b8493.patch -- test-new-trickle: Remove cancellable as a wakeup mechanism
+Patch3:         https://gitlab.freedesktop.org/libnice/libnice/-/commit/37eeeb1a750bf2dd6d5769d759069e95dd1b8493.patch
 
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -94,7 +98,11 @@ sed -e 's/^  '\''test-set-port-range'\''/#&/'  -i tests/meson.build
 %meson_install
 
 %check
+%ifarch s390x
+%meson_test -t 5
+%else
 %meson_test
+%endif
 
 %ldconfig_scriptlets -n libnice10
 

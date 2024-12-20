@@ -28,4 +28,12 @@
     <comment>- Update to version 2.38.5:</comment>
     <requestid>1229472</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>889b16af18671a4025dffe95a03b792d</srcmd5>
+    <version>2.38.6</version>
+    <time>1734704832</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 2.38.6</comment>
+    <requestid>1232662</requestid>
+  </revision>
 </revisionlist>

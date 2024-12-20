@@ -4,7 +4,7 @@
  2 files changed, 44 insertions(+), 20 deletions(-)
 
 --- src/pmap.c
-+++ src/pmap.c	2023-09-12 12:23:39.537610124 +0000
++++ src/pmap.c	2024-09-24 07:54:47.345701003 +0000
 @@ -59,7 +59,9 @@ const char *nls_Address,
  	   *nls_Kbytes,
  	   *nls_Mode,
@@ -39,7 +39,7 @@
  
  static unsigned shm_minor = ~0u;
  
-@@ -544,12 +548,17 @@ static int one_proc (struct pids_stack *
+@@ -548,12 +552,17 @@ static int one_proc (struct pids_stack *
  	char perms[32] = "";
  	const char *cp2 = NULL;
  	unsigned long long rss = 0ull;
@@ -55,9 +55,9 @@
  	int maxw1=0, maxw2=0, maxw3=0, maxw4=0, maxw5=0;
 +	int maxw6=0, maxw7=0;
  
- 	printf("%u:   %s\n", PIDS_VAL(tgid, s_int, p, Pids_info), PIDS_VAL(cmdline, str, p, Pids_info));
+ 	printf("%u:   %s\n", PIDS_VAL(tgid, s_int, p), PIDS_VAL(cmdline, str, p));
  
-@@ -572,13 +581,15 @@ static int one_proc (struct pids_stack *
+@@ -576,13 +585,15 @@ static int one_proc (struct pids_stack *
  	if (x_option) {
  		maxw1 = 16;
  		if (sizeof(long) == 4) maxw1 = 8;
@@ -74,7 +74,7 @@
  			maxw5 = justify_print(nls_Mode, maxw5, 0);
  			justify_print(nls_Mapping, 0, 0);
  		}
-@@ -618,6 +629,11 @@ static int one_proc (struct pids_stack *
+@@ -622,6 +633,11 @@ static int one_proc (struct pids_stack *
  					total_rss += smap_value;
  					continue;
  				}
@@ -86,7 +86,7 @@
  				if (strcmp("Shared_Dirty", smap_key) == 0) {
  					shared_dirty = smap_value;
  					total_shared_dirty += smap_value;
-@@ -630,16 +646,20 @@ static int one_proc (struct pids_stack *
+@@ -634,16 +650,20 @@ static int one_proc (struct pids_stack *
  				}
  				if (strcmp("Swap", smap_key) == 0) {
  					/* doesn't matter as long as last */
@@ -109,7 +109,7 @@
                      diff = end = 0;
                      perms[0] = '\0';
                      cp2 = NULL;
-@@ -673,7 +693,6 @@ static int one_proc (struct pids_stack *
+@@ -681,7 +701,6 @@ static int one_proc (struct pids_stack *
  		if (perms[3] == 's')
  			total_shared += diff;
  		if (perms[3] == 'p') {
@@ -117,7 +117,7 @@
  			if (perms[1] == 'w')
  				total_private_writeable += diff;
  			else
-@@ -725,17 +744,21 @@ static int one_proc (struct pids_stack *
+@@ -733,17 +752,21 @@ static int one_proc (struct pids_stack *
  				justify_print("----------------", maxw1, 0);
  			justify_print("-------", maxw2, 1);
  			justify_print("-------", maxw3, 1);
@@ -141,7 +141,7 @@
  		}
  		if (d_option) {
  			printf
-@@ -1052,16 +1075,18 @@ int main(int argc, char **argv)
+@@ -1060,16 +1083,18 @@ int main(int argc, char **argv)
  	while ((c = getopt_long(argc, argv, "xXrdqA:hVcC:nN:p", longopts, NULL)) != -1)
  		switch (c) {
  		case 'x':
@@ -163,7 +163,7 @@
  		case 'q':
  			q_option = 1;
 --- testsuite/pmap.test/pmap.exp
-+++ testsuite/pmap.test/pmap.exp	2023-09-12 12:25:22.375764402 +0000
++++ testsuite/pmap.test/pmap.exp	2024-09-24 07:52:40.843990587 +0000
 @@ -8,16 +8,16 @@ set pmap_procname "${mypid}:\\s+\\S+\[^\
  set pmap_initname "1:\\s+\\S+\[^\\r\]+\\s+"
  set pmap_std_header $pmap_procname

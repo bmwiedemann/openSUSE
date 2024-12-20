@@ -6,16 +6,16 @@
  4 files changed, 24 insertions(+), 3 deletions(-)
 
 --- library/meminfo.c
-+++ library/meminfo.c	2023-09-12 12:08:41.033738450 +0000
++++ library/meminfo.c	2024-09-24 07:35:28.750667635 +0000
 @@ -3,6 +3,7 @@
   *
-  * Copyright © 2015-2023 Jim Warner <james.warner@comcast.net>
+  * Copyright © 2015-2024 Jim Warner <james.warner@comcast.net>
   * Copyright © 2015-2023 Craig Small <csmall@dropbear.xyz>
 + * Copyright © 2008 Bart Van Assche.
   *
   * This library is free software; you can redistribute it and/or
   * modify it under the terms of the GNU Lesser General Public
-@@ -640,6 +641,7 @@ static int meminfo_read_failed (
+@@ -666,6 +667,7 @@ static int meminfo_read_failed (
      int size;
      unsigned long *valptr;
      signed long mem_used;
@@ -23,7 +23,7 @@
  
      // remember history from last time around
      memcpy(&info->hist.old, &info->hist.new, sizeof(struct meminfo_data));
-@@ -692,7 +694,10 @@ static int meminfo_read_failed (
+@@ -726,7 +728,10 @@ static int meminfo_read_failed (
  
      if (0 == mHr(MemAvailable))
          mHr(MemAvailable) = mHr(MemFree);
@@ -36,7 +36,7 @@
      /* if 'available' is greater than 'total' or our calculation of mem_used
         overflows, that's symptomatic of running within a lxc container where
 --- man/free.1
-+++ man/free.1	2023-09-12 12:08:41.029738522 +0000
++++ man/free.1	2024-09-24 07:34:16.775969885 +0000
 @@ -110,6 +110,12 @@ Switch to the wide mode. The wide mode p
  than 80 characters. In this mode \fBbuffers\fR and \fBcache\fR
  are reported in two separate columns.
@@ -51,8 +51,8 @@
  Display the result
  .I count
 --- src/free.c
-+++ src/free.c	2023-09-12 12:10:26.647842455 +0000
-@@ -92,6 +92,7 @@ static void __attribute__ ((__noreturn__
++++ src/free.c	2024-09-24 07:34:16.775969885 +0000
+@@ -91,6 +91,7 @@ static void __attribute__ ((__noreturn__
  	fputs(_(" -v, --committed     show committed memory and commit limit\n"), out);
  	fputs(_(" -s N, --seconds N   repeat printing every N seconds\n"), out);
  	fputs(_(" -c N, --count N     repeat printing N times, then exit\n"), out);
@@ -60,7 +60,7 @@
  	fputs(_(" -w, --wide          wide output\n"), out);
  	fputs(USAGE_SEPARATOR, out);
  	fputs(_("     --help     display this help and exit\n"), out);
-@@ -244,6 +245,7 @@ int main(int argc, char **argv)
+@@ -179,6 +180,7 @@ int main(int argc, char **argv)
  		{  "committed",	no_argument,	    NULL,  'v'		},
  		{  "seconds",	required_argument,  NULL,  's'		},
  		{  "count",	required_argument,  NULL,  'c'		},
@@ -68,7 +68,7 @@
  		{  "wide",	no_argument,	    NULL,  'w'		},
  		{  "help",	no_argument,	    NULL,  HELP_OPTION	},
  		{  "version",	no_argument,	    NULL,  'V'		},
-@@ -263,7 +265,7 @@ int main(int argc, char **argv)
+@@ -198,7 +200,7 @@ int main(int argc, char **argv)
  	textdomain(PACKAGE);
  	atexit(close_stdout);
  
@@ -77,7 +77,7 @@
  		switch (c) {
  		case 'b':
  		        check_unit_set(&unit_set);
-@@ -352,6 +354,9 @@ int main(int argc, char **argv)
+@@ -287,6 +289,9 @@ int main(int argc, char **argv)
  		case 'w':
  			flags |= FREE_WIDE;
  			break;
@@ -88,7 +88,7 @@
  			usage(stdout);
  		case 'V':
 --- src/vmstat.c
-+++ src/vmstat.c	2023-09-12 12:08:41.033738450 +0000
++++ src/vmstat.c	2024-09-24 07:34:16.775969885 +0000
 @@ -230,6 +230,7 @@ static void __attribute__ ((__noreturn__
      fputs(_(" -p, --partition <dev>  partition specific statistics\n"), out);
      fputs(_(" -S, --unit <char>      define display unit\n"), out);
@@ -97,7 +97,7 @@
      fputs(_(" -t, --timestamp        show timestamp\n"), out);
      fputs(_(" -y, --no-first         skips first line of output\n"), out);
      fputs(USAGE_SEPARATOR, out);
-@@ -951,6 +952,7 @@ int main(int argc, char *argv[])
+@@ -987,6 +988,7 @@ int main(int argc, char *argv[])
          {"partition", required_argument, NULL, 'p'},
          {"unit", required_argument, NULL, 'S'},
          {"wide", no_argument, NULL, 'w'},
@@ -105,7 +105,7 @@
          {"timestamp", no_argument, NULL, 't'},
          {"help", no_argument, NULL, 'h'},
          {"version", no_argument, NULL, 'V'},
-@@ -967,7 +969,7 @@ int main(int argc, char *argv[])
+@@ -1003,7 +1005,7 @@ int main(int argc, char *argv[])
      atexit(close_stdout);
  
      while ((c =
@@ -114,7 +114,7 @@
          switch (c) {
          case 'V':
              printf(PROCPS_NG_VERSION);
-@@ -1034,6 +1036,9 @@ int main(int argc, char *argv[])
+@@ -1070,6 +1072,9 @@ int main(int argc, char *argv[])
          case 't':
              t_option = 1;
              break;

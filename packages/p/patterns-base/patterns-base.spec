@@ -174,6 +174,8 @@ Suggests:       openssl-1_1
 Suggests:       postfix
 # We have two providers of psmisc, favour the regular one (not the busybox one)
 Suggests:       psmisc
+# rather than busybox-tar
+Suggests:       tar
 # we have two providers for 'pulseaudio' - prefer pipewire or pipewire depending on suse_version
 # we have two providers for 'service(network)' - prefer NM or wicked depending on suse_version
 %if 0%{?suse_version} > 1500

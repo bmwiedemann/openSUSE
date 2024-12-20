@@ -16,15 +16,16 @@
 #
 
 
-%define realversion 2023-04
+%define realversion 2024-07
 Name:           picocom
-Version:        2023.04
+Version:        2024.07
 Release:        0
 Summary:        Minimal dumb-terminal emulation program
 License:        BSD-2-Clause AND GPL-2.0-or-later
 Group:          Hardware/Modem
 URL:            https://gitlab.com/wsakernel/picocom/
 Source:         https://gitlab.com/wsakernel/picocom/-/archive/%{realversion}/%{name}-%{realversion}.tar.bz2
+BuildRequires:  go-md2man
 Provides:       bundled(linenoise) = 1.0
 
 %description
@@ -50,6 +51,7 @@ Bash completion script for %{name}.
 
 %build
 %make_build CFLAGS="%{optflags}"
+%make_build doc
 
 %install
 install -Dpm 755 picocom %{buildroot}%{_bindir}/picocom

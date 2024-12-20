@@ -4,7 +4,7 @@
 
 --- src/sysctl.c
 +++ src/sysctl.c	2023-12-14 13:46:09.181625220 +0000
-@@ -772,6 +772,8 @@ static int Preload(SettingList *setlist,
+@@ -795,6 +795,8 @@ static int Preload(SettingList *setlist,
  		fp = (globbuf.gl_pathv[j][0] == '-' && !globbuf.gl_pathv[j][1])
  		    ? stdin : fopen(globbuf.gl_pathv[j], "r");
  		if (!fp) {

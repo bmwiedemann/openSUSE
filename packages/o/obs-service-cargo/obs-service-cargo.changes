@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 20 03:27:35 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 4.4.1:
+  * fix: avoid infinite recursion causing stack overflow
+  * tests: add just to the test vendored files
+
+-------------------------------------------------------------------
 Thu Dec 19 00:48:57 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 4.4.0:

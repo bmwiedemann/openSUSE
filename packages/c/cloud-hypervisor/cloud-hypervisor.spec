@@ -17,18 +17,13 @@
 
 
 Name:           cloud-hypervisor
-Version:        42.0
+Version:        43.0
 Release:        0
 Summary:        A Virtual Machine Monitor
 License:        Apache-2.0 AND BSD-3-Clause
 URL:            https://cloudhypervisor.org
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-Source2:        Cargo.toml
-Source3:        Cargo.lock
-Source4:        cargo.config
-## FIX-UPSTREAM remove by 43.0 get_device_attr is now an unsafe call
-Patch0:         https://github.com/cloud-hypervisor/cloud-hypervisor/commit/838a8573115efc344648efac29e07ccaa2d008fa.patch#/unsafe-device-attr.patch
 BuildRequires:  bison
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
@@ -38,7 +33,7 @@ BuildRequires:  qemu-tools
 BuildRequires:  rust >= 1.77
 BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(ossp-uuid)
-# restrict to aarch64 x86_64 (and from 43.0 riscv64)
+#riscv is still not ready
 ExclusiveArch:  aarch64 x86_64
 
 %description
@@ -60,11 +55,7 @@ Summary:        Remote tool for accessing a cloud hypervisor instance
 %{summary}.
 
 %prep
-%autosetup -a1 -p1
-cp %{SOURCE2} .
-cp %{SOURCE3} .
-mkdir -p .cargo
-cp %{SOURCE4} .cargo/config.toml
+%autosetup -a1
 
 %build
 %{cargo_build}
@@ -72,6 +63,9 @@ cp %{SOURCE4} .cargo/config.toml
 %install
 install -Dm0755 ./target/release/%{name} %{buildroot}%{_bindir}/%{name}
 install -Dm0755 ./target/release/ch-remote %{buildroot}%{_bindir}/ch-remote
+
+%check
+%{cargo_test} -- --test unit_tests::
 
 %files
 %license LICENSES/Apache-2.0.txt LICENSES/BSD-3-Clause.txt LICENSES/CC-BY-4.0.txt

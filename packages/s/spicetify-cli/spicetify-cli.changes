@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec 19 18:04:22 UTC 2024 - jan.kuzilek@suse.com
+
+- Update to version 2.38.6:
+  * fix(wrapper): set `priority` to 1 in `OnChunksLoaded`
+  * feat: add ability to change cors proxy server
+  * feat(css-map): add classes for `navLinks` in `1.2.53`
+  * chore(deps): bump golang.org/x/net from 0.31.0 to 0.32.0 (#3236)
+  * chore(deps): bump actions/attest-build-provenance from 1 to 2 (#3235)
+  * fix(update): use `GetSpotifyPath` from `cmd`
+  * fix(shuffle+): update GraphQL handling (#3229)
+
+-------------------------------------------------------------------
 Mon Dec 09 17:36:20 UTC 2024 - jan.kuzilek@suse.com
 
 - Update to version 2.38.5:

@@ -1749,4 +1749,36 @@
   * fix(deps): update golang.org/x/exp digest to 1443442 (#3758) (forwarded request 1230301 from ph03nix)</comment>
     <requestid>1230627</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>19d679cec390f9600400d7348829db11</srcmd5>
+    <version>3.87.2</version>
+    <time>1734704835</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.87.2:
+  * fix(deps): update module golang.org/x/net to v0.33.0 [security] (#3800)
+  * [fix] - integer types (#3793)
+
+- Update to version 3.87.0:
+  * fix(deps): update module github.com/elastic/go-elasticsearch/v8 to v8.17.0 (#3789)
+  * fix const type (#3792)
+  * fix(deps): update module google.golang.org/api to v0.213.0 (#3790)
+  * fix(deps): update golang.org/x/exp digest to b2144cd (#3788)
+  * fix(deps): update module google.golang.org/protobuf to v1.36.0 (#3787)
+  * fix(deps): update module google.golang.org/api to v0.212.0 (#3786)
+  * fix(deps): update github.com/mholt/archives digest to 23e0af8 (#3785)
+  * fix(deps): update golang.org/x/exp digest to 4a55095 (#3779)
+  * fix(deps): update module github.com/go-ldap/ldap/v3 to v3.4.9 (#3781)
+  * feat(engine): make |detectionTimeout| configurable (#3768)
+  * updated pusher channel key detector and fixed it's integration tests (#3782)
+  * fix: corrected verification endpoint &amp; validation logic for bombbomb (#3462)
+  * fix test (#3780)
+  * fix(deps): update module pault.ag/go/debian to v0.18.0 (#3778)
+  * fix(deps): update module github.com/jedib0t/go-pretty/v6 to v6.6.5 (#3777)
+  * fixed vouchery detector integration tests (#3775)
+  * updated and added pattern tests for detectors w-z (#3771)
+  * updated and fixed typeform detectors (#3769)
+  * [UPDATE] Updated plaidkey detector results, and added uniqueness check (#3709)
+  * Added pattern unit tests for detectors starting with the letters r through s (#3752) (forwarded request 1232102 from ph03nix)</comment>
+    <requestid>1232671</requestid>
+  </revision>
 </revisionlist>

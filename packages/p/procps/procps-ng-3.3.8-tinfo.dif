@@ -5,7 +5,7 @@
 
 --- Makefile.am
 +++ Makefile.am	2022-10-20 13:21:37.505517043 +0000
-@@ -191,7 +191,7 @@ src_top_top_SOURCES += local/strverscmp.
+@@ -204,7 +204,7 @@ src_top_top_SOURCES += local/strverscmp.
  endif
  
  src_top_top_CFLAGS = @NCURSES_CFLAGS@
@@ -16,7 +16,7 @@
  if BUILD_SKILL
 --- configure.ac
 +++ configure.ac	2022-10-20 13:23:50.707138810 +0000
-@@ -281,6 +281,14 @@ fi
+@@ -264,6 +264,14 @@ fi
  #  else
  #    WATCH_NCURSES_LIBS="$NCURSES_LIBS"
  #  fi

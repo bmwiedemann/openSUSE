@@ -17,7 +17,7 @@
 
 
 Name:           erofs-utils
-Version:        1.8.2
+Version:        1.8.3
 Release:        0
 Summary:        Utilities for the Extendable Read-Only Filesystem (EROFS)
 License:        GPL-2.0-or-later
@@ -33,7 +33,7 @@ BuildRequires:  libuuid-devel
 BuildRequires:  pkg-config
 BuildRequires:  xz
 BuildRequires:  pkgconfig(liblzma)
-%if 0%{?suse_version} >= 150600
+%if 0%{?sle_version} >= 150600
 BuildRequires:  pkgconfig(libzstd) >= 5.3.2
 %endif
 BuildRequires:  pkgconfig(zlib)

@@ -25,8 +25,8 @@ License:        GPL-3.0-only
 URL:            https://usebottles.com/
 Source0:        https://github.com/bottlesdevs/Bottles/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         disable-core-preferences.patch
-Patch1:         dont-care-about-sandbox.patch
-Patch2:         dont-support.patch
+# PATCH-FIX-OPENSUSE Don't exit when not running in sandbox
+Patch1:         sandbox-dont-exit.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gtk4-tools

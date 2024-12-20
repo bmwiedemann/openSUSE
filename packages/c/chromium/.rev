@@ -5263,4 +5263,17 @@ boo#1224178</comment>
   * Various fixes from internal audits, fuzzing and other initiatives</comment>
     <requestid>1230050</requestid>
   </revision>
+  <revision rev="442" vrev="1">
+    <srcmd5>ba49a76200963c2cb8e9a3d63d1dc0cd</srcmd5>
+    <version>131.0.6778.204</version>
+    <time>1734704686</time>
+    <user>dimstar_suse</user>
+    <comment>- Chromium 131.0.6778.204 (boo#1234704)
+  * CVE-2024-12692: Type Confusion in V8
+  * CVE-2024-12693: Out of bounds memory access in V8
+  * CVE-2024-12694: Use after free in Compositing
+  * CVE-2024-12695: Out of bounds write in V8
+  * Various fixes from internal audits, fuzzing and other initiatives</comment>
+    <requestid>1232602</requestid>
+  </revision>
 </revisionlist>

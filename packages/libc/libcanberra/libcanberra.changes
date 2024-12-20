@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Dec 19 10:17:46 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version v0.30+2:
+  + gtk: Don't assume all GdkDisplays are GdkX11Displays.
+- Migrate package to obs_scm: we don't expect changes in git to
+  happen anymore, but it's the line used across all GNOME packages.
+- Call autogen.sh in build section: the git checkout is not
+  bootstrapped.
+- Drop libcanberra-broadway-fix.patch: part of the upstream git
+  tree.
+- Pass --with-systemdunitdir=no to configure: dbus-broker newly
+  pulls in systemd, but we have been running without those service
+  files for like ever. With libcanberra being in maintenance only
+  mode, there seems to be no justification to change this now.
+- Do not package documentation: building them requires lynx, which
+  seems a bit exaggerated.
+
+-------------------------------------------------------------------
 Thu Apr  4 12:56:22 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Don't recommend the gtk modules unconditionally. They already have

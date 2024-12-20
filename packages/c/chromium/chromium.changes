@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec 19 14:58:31 CET 2024 - ro@suse.de
+
+- Chromium 131.0.6778.204 (boo#1234704)
+  * CVE-2024-12692: Type Confusion in V8
+  * CVE-2024-12693: Out of bounds memory access in V8
+  * CVE-2024-12694: Use after free in Compositing
+  * CVE-2024-12695: Out of bounds write in V8
+  * Various fixes from internal audits, fuzzing and other initiatives
+ 
+-------------------------------------------------------------------
 Wed Dec 11 01:24:06 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 131.0.6778.139 (boo#1234361)

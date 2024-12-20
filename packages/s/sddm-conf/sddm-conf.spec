@@ -24,13 +24,15 @@ Summary:        SDDM configuration editor
 License:        MIT
 URL:            https://github.com/qtilities/sddm-conf
 Source0:        https://github.com/qtilities/sddm-conf/archive/refs/tags/%{version}.tar.gz
+BuildRequires:  extra-cmake-modules >= 6.0
 BuildRequires:  cmake >= 3.15
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  qtilitools
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Widgets)
 Conflicts:      sddm-config-editor
 
 %description
@@ -43,12 +45,11 @@ C++.
 %autosetup -p1
 
 %build
-%define __builder ninja
-%cmake
-%ninja_build
+%cmake_kf6 -DPROJECT_QT_VERSION=6
+%kf6_build
 
 %install
-%ninja_install -C build
+%kf6_install
 %suse_update_desktop_file -r -G "Display Manager Configuration" -N "SDDM Configuration" %{_name} Qt Settings System
 
 %find_lang %{name} --with-qt

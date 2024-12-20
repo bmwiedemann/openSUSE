@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 19 02:15:06 UTC 2024 - Simon Lees <sflees@suse.de>
+
+- Requires(pre): systemd >= 253.6 to ensure scripts in %post are
+  run correctly, (bsc#1234697) Thanks to Thorsten for the detailed
+  report.
+
+-------------------------------------------------------------------
 Tue Aug  6 13:27:48 UTC 2024 - Simon Lees <sflees@suse.de>
 
 - Looks like we need systemd_user_ scripts for some upgrades to

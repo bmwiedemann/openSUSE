@@ -27,7 +27,6 @@ Source1:        sysusers.attr
 Source2:        sysusers-generate-pre
 Source3:        macros.sysusers
 Source4:        sysusers2shadow.sh
-Patch0:         disable-systemd-sysusers.patch
 BuildArch:      noarch
 Requires:       sysuser-shadow
 #!BuildIgnore:  sysuser-shadow
@@ -43,12 +42,6 @@ Group:          System/Packages
 Requires(pre):  (/usr/sbin/useradd or busybox)
 # prefer original shadow over busybox by default
 Suggests:       shadow
-# sysusers2shdow uses sysusers2shadow uses systemd-sysusers if available. And we might pass --replace to it
-# --replace only appeared in systemd 238,so we want to ensure: if we have systemd, it must be recent enough
-# the Requires(pre) statement is to ensure we get it at any moment recent enough, not only at the end of
-# transactions, otherwise upgrades might randomly fail
-Requires(pre):  (systemd >= 238 if systemd)
-Requires:       (systemd >= 238 if systemd)
 
 %description -n sysuser-shadow
 This package contians a tool, which expects as input a sysusers.d
@@ -57,9 +50,6 @@ and groups from it like systemd-sysusers would do.
 
 %prep
 %setup -qcT
-%if 0%{?suse_version} <= 1500
-patch < %_sourcedir/disable-systemd-sysusers.patch %_sourcedir/sysusers2shadow.sh
-%endif
 
 %build
 

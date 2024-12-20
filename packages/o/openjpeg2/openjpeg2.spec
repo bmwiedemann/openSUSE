@@ -19,7 +19,7 @@
 %define library_name  libopenjp2-7
 %define base_version 2.5
 Name:           openjpeg2
-Version:        2.5.2
+Version:        2.5.3
 Release:        0
 Summary:        Opensource JPEG 2000 Codec Implementation
 License:        BSD-2-Clause

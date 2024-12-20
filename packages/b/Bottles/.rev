@@ -83,4 +83,12 @@
   * Fixed a regression that makes the bottle's preferences page blank in some cases (forwarded request 1231013 from rrahl0)</comment>
     <requestid>1231015</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>10ac2b7cd223e831196f846e5c581d45</srcmd5>
+    <version>51.17</version>
+    <time>1734704849</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1232727</requestid>
+  </revision>
 </revisionlist>

@@ -42,6 +42,7 @@ BuildRequires:  pkgconfig(libcap-ng) >= 0.6
 BuildRequires:  pkgconfig(libselinux) >= 3.2
 BuildRequires:  pkgconfig(libsystemd) >= 230
 BuildRequires:  pkgconfig(systemd) >= 230
+Requires(pre):  systemd >= 253.6
 Provides:       dbus-service
 Provides:       bundled(c-dvar) = 1+
 Provides:       bundled(c-ini) = 1+

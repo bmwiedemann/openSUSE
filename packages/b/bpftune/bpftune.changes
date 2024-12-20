@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Dec 19 20:21:02 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 0.1~20241219:
+  * netdev budget: fix criteria for budget increase
+  * reduce drop threshold to 1/64th of segs sent
+  * tcp_buffer_tuner: reduce tcp_[rw]mem max when correlated with latency increase
+  * Fix compiling on i386
+  * budget_test: increase budget used
+  * tcp_conn_tuner: notice retransmit events for tcp conn, apply BBR
+  * note need for libnl-route-3-dev for Debian
+  * net_buffer_tuner: correlate netdev budget increases with scheduler
+  * net_buffer_tuner: update netdev_budget_usecs also
+  * net_buffer_tuner: document netdev_budget handling
+  * net_buffer_tuner: increase netdev_budget if we see time_squeeze events
+  * libbpftune: ensure we only init ".so" objects
+  * Basic debian packaging
+  * remove ref to route tuner
+  * update README.md to mention frag tuner, point at man pages
+  * libbpftune: fix bpftune_netns_info() checks when searching for netns cookie
+  * test: fix frag tests
+  * test: add podman tests
+  * ip_frag_tuner: tunables are not namespaced
+  * test: improve debugging for wmem/rmem/many_netns tests
+  * libbpftune: fix va_args handling in scenario logging
+  * libbpftune: fix logging for non-global netns
+  * sysctl_tuner: show command associated with process that sets sysctl
+  * fix global namespace disable
+  * ip frag tuner improvements
+  * libbpftune: only send events to active tuners
+  * improve makefile dependencies
+  * test: add tests for fd leaks when many netns are in use
+  * libbpftune: fix netns fd leaks
+  * libbpftune: support quiet mode for bpftune_netns_set()
+  * libbpftune: mark netns as _GONE if we cannot setns()
+
+-------------------------------------------------------------------
 Tue Nov 19 21:30:49 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - initial package

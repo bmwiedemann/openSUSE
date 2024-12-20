@@ -4,7 +4,7 @@
 
 --- src/vmstat.c
 +++ src/vmstat.c	2023-02-08 08:59:05.175343180 +0000
-@@ -333,8 +333,8 @@ static void new_header(void)
+@@ -341,8 +341,8 @@ static void new_header(void)
  
  static unsigned long unitConvert(unsigned long size)
  {

@@ -153,7 +153,11 @@ install -d %{buildroot}%{_datadir}/grilo-0.3/plugins
 %fdupes %{buildroot}%{_datadir}
 
 %check
+%ifarch s390x
+%meson_test -t 5
+%else
 %meson_test
+%endif
 
 %ldconfig_scriptlets -n libgrilo-0_3-0
 %ldconfig_scriptlets -n libgrlnet-0_3-0

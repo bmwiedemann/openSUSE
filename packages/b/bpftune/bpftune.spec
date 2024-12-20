@@ -18,10 +18,10 @@
 
 %define soname 0_1_3
 Name:           bpftune
-Version:        0.1~20241025
+Version:        0.1~20241219
 Release:        0
 Summary:        BPF/tracing tools for auto-tuning Linux
-License:        GPL-2.0 WITH Linux-syscall-note
+License:        GPL-2.0-only WITH Linux-syscall-note
 URL:            https://github.com/oracle/bpftune/
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  bpftool >= 4.18

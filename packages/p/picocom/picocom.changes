@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Aug  3 19:22:37 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2024.07
+  * bug fixes (UUCP locking, flush queue before fork())
+  * added mappings for lowercase and uppercase
+  * '--version' and '--minimal-cmds' options added
+  * simplified generation of docs
+  * can now be compiled without fork() for MMU-less systems
+
+-------------------------------------------------------------------
 Wed Feb 14 16:56:45 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Reevaluate sources and add/update bundled()/License: lines.

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 19 19:50:08 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 19.1.6.
+  * This release contains bug-fixes for the LLVM 19.1.0 release.
+    This release is API and ABI compatible with 19.1.0.
+- Rebase llvm-do-not-install-static-libraries.patch.
+
+-------------------------------------------------------------------
 Thu Dec  5 22:56:24 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 19.1.5.

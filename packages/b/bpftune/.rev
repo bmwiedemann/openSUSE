@@ -7,4 +7,12 @@
     <comment>BPF/tracing tools for auto-tuning Linux </comment>
     <requestid>1225216</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>85fe253cc29ad64f8945968b4067616a</srcmd5>
+    <version>0.1~20241219</version>
+    <time>1734704837</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1232677</requestid>
+  </revision>
 </revisionlist>

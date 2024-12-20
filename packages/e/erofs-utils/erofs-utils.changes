@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Dec 18 19:48:43 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.8.3:
+  * mkfs: fix -Eall-fragments for multi-threaded compression
+  * mkfs: fix unexpected errors for chunk-based images
+  * lib: report leftovers for partially filled blocks
+  * mkfs: Fix input offset counting in headerball mode
+  * lib: capture errors from {mkfs,rebuild}_handle_inode()
+  * fix "Not a directory" error for incremental builds
+  * avoid silent corruption caused by c_root_xattr_isize
+  * rebuild: set the appropriate dev field for dirs
+  * lib: fix user-after-free in xattr.c
+  * lib: get rid of pthread_cancel() for workqueue
+  * mkfs: add -U <clear|random> support
+  * add --hard-dereference option
+  * lib: correct erofsfuse build script
+
+-------------------------------------------------------------------
 Thu Nov 14 00:35:14 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.8.2

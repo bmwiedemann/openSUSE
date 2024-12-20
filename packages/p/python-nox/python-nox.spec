@@ -25,7 +25,9 @@ Summary:        Flexible test automation
 License:        Apache-2.0
 URL:            https://nox.thea.codes
 Source:         https://github.com/wntrblm/nox/archive/refs/tags/%{padded_version}.tar.gz#/nox-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.5}
+# PATCH-FIX-UPSTREAM fix-broken-mock-test.patch (gh#28bbaa5)
+Patch0:         fix-broken-mock-test.patch
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
@@ -34,8 +36,8 @@ BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
 Requires:       python-argcomplete >= 1.9.4
 Requires:       python-colorlog >= 2.6.1
-Requires:       python-setuptools
 Requires:       python-virtualenv >= 14.0.0
+Requires:       (python-tomli if python-base < 3.11)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Suggests:       python-Jinja2

@@ -69,3 +69,16 @@ Provides: pattern-category() = Server%20Functions
 %pattern_xfcedesktop \
 Provides: pattern-category() = XFCE%20Desktop
 
+%requires_on_transactional_recommends_otherwise() \
+Requires:       ( %1 if (product(MicroOS) or product(SL-Micro))) \
+Recommends:     ( %1 if (product(openSUSE) or product(SLES) or product(SLES-SAP)))
+
+%requires_on_traditional() \
+Requires:       ( %1 if (product(openSUSE) or product(SLES) or product(SLES-SAP)))
+
+%recommends_on_traditional() \
+Recommends:     ( %1 if (product(openSUSE) or product(SLES) or product(SLES-SAP)))
+
+%requires_on_transactional() \
+Requires:       ( %1 if (product(MicroOS) or product(SL-Micro)))
+

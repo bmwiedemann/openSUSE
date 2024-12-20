@@ -114,9 +114,7 @@ This GNOME Shell extension displays system usage information in the top bar.
 %lang_package -n %{name}-common
 
 %prep
-%autosetup -N
-# Needs rebase
-#patch1 -p1
+%autosetup -p1
 
 # In openSUSE GNOME, we don't launch gnome-session directly, but wrap this through a shell script, /usr/bin/gnome
 sed -i "s:Exec=gnome-session:Exec=gnome:g" data/gnome-classic.desktop.in

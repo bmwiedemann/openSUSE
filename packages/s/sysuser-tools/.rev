@@ -263,4 +263,18 @@
     <comment></comment>
     <requestid>1204306</requestid>
   </revision>
+  <revision rev="32" vrev="7">
+    <srcmd5>9f53c21ed3ec5fdcd5e930793e7ff47d</srcmd5>
+    <version>3.3</version>
+    <time>1734704676</time>
+    <user>dimstar_suse</user>
+    <comment>- Directly check return value of systemd-sysusers 
+
+- Drop SLE15 support and remove disable-systemd-sysusers.patch
+
+- sysuser-shadow: remove systemd 238 dependency, this does not
+  work in a single RPM transaction [bsc#1234277]. Call
+  systemd-sysuser instead again without --replace.</comment>
+    <requestid>1232687</requestid>
+  </revision>
 </revisionlist>
