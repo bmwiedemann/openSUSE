@@ -27,12 +27,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-doctestplus%{psuffix}
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Summary:        Pytest plugin with advanced doctest features
 License:        BSD-3-Clause
 URL:            https://github.com/scientific-python/pytest-doctestplus
-Source:         https://files.pythonhosted.org/packages/source/p/pytest-doctestplus/pytest-doctestplus-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pytest-doctestplus/pytest_doctestplus-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM add-missing-xfail-version.patch (gh#23eb3de)
+Patch0:         add-missing-xfail-version.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
@@ -41,7 +43,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-packaging >= 17.0
 Requires:       python-pytest >= 4.6
-Requires:       python-setuptools >= 30.3.0
 %if %{with test}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module numpy-devel}
@@ -61,7 +62,7 @@ advanced doctest support and enables the testing of various text files, such
 as reStructuredText (".rst"), markdown (".md"), and TeX (".tex").
 
 %prep
-%setup -q -n pytest-doctestplus-%{version}
+%autosetup -p1 -n pytest_doctestplus-%{version}
 
 %build
 %pyproject_wheel

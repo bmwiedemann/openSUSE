@@ -1,0 +1,22 @@
+From 23eb3de76bc4581dfc8261b07a8a55cc03fea45b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Brigitta=20Sip=C5=91cz?= <bsipocz@gmail.com>
+Date: Mon, 16 Dec 2024 19:05:07 -0800
+Subject: [PATCH] TST: one more version to xfail
+
+---
+ tests/test_doctestplus.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/test_doctestplus.py b/tests/test_doctestplus.py
+index a88ca7b..fb0ac37 100644
+--- a/tests/test_doctestplus.py
++++ b/tests/test_doctestplus.py
+@@ -1142,7 +1142,7 @@ def f():
+ 
+ 
+ @pytest.mark.xfail(
+-        python_version() in ('3.11.9', '3.11.10', '3.12.3'),
++        python_version() in ('3.11.9', '3.11.10', '3.11.11', '3.12.3'),
+         reason='broken by https://github.com/python/cpython/pull/115440')
+ def test_ufunc(testdir):
+     pytest.importorskip('numpy')
