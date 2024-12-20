@@ -266,4 +266,12 @@ depends on 1159012</comment>
     <comment></comment>
     <requestid>1231825</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>1088c64c1460b66846d777525afddaa6</srcmd5>
+    <version>0.46.2</version>
+    <time>1734704905</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1232787</requestid>
+  </revision>
 </revisionlist>

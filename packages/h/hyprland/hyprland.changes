@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Dec 20 07:58:25 UTC 2024 - Florian "spirit" <sp1rit@disroot.org>
+
+- Update to version 0.46.2:
+  + Fixes backported:
+    - windowrules: fixup duplicate rule enum tags
+    - hyprctl: fix hyprctl batch json command (#8749)
+    - core: avoid activating toplevel-less surfaces
+    - xwayland: fixes to no_xwayland builds
+    - xwm: fixup targets in selection requests
+    - core: unbreak build on FreeBSD (#8762)
+    - hyprpm: fix hyprpm sometimes returning 0 despite errors
+	  occurring (#8761)
+    - core: fix possible crash on null workspace
+    - layout: apply groups after window creation (#8779)
+
+-------------------------------------------------------------------
 Tue Dec 17 19:35:11 UTC 2024 - Florian "spirit" <sp1rit@disroot.org>
 
 - Update to version 0.46.1:
