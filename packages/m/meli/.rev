@@ -7,4 +7,12 @@
     <comment>I want to submit this package to openSUSE:Factory</comment>
     <requestid>1229169</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bb905ce3415af2fae93a2629762903af</srcmd5>
+    <version>0.8.10</version>
+    <time>1734704872</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1232766</requestid>
+  </revision>
 </revisionlist>

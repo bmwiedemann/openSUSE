@@ -1,7 +1,7 @@
 #
 # spec file for package meli
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,11 +25,13 @@ Group:          Productivity/Networking/Email/Clients
 URL:            https://meli-email.org/
 Source0:        https://github.com/meli/meli/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
+Patch0:         release-profile.patch
+Patch1:         0001-Revert-accounts-cancel-any-previous-mailbox-fetches.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  libopenssl-devel
-BuildRequires:  sqlite3-devel
 BuildRequires:  mandoc-bin
+BuildRequires:  sqlite3-devel
 
 %description
 Terminal email client with support for multiple accounts and Maildir / mbox / notmuch / IMAP / JMAP.
@@ -38,7 +40,7 @@ Terminal email client with support for multiple accounts and Maildir / mbox / no
 %autosetup -a1 -p1
 
 %build
-%{cargo_build}
+%{cargo_build} -F debug-tracing,imap-trace
 
 %install
 mkdir -p %{buildroot}%{_bindir}

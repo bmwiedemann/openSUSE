@@ -2,6 +2,7 @@
   <service mode="manual" name="download_files" />
   <service name="cargo_vendor" mode="manual">
      <param name="src">meli*.tar.gz</param>
-     <param name="update">true</param>
+     <param name="update">false</param>
+     <param name="respect-lockfile">true</param>
   </service>
 </services>

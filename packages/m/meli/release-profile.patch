@@ -1,0 +1,10 @@
+--- a/Cargo.toml	2024-12-13 19:30:59.062868522 +0800
++++ b/Cargo.toml	2024-12-13 19:31:09.232899444 +0800
+@@ -10,5 +10,5 @@
+ lto = "fat"
+ codegen-units = 1
+ opt-level = "s"
+-debug = false
+-strip = true
++debug = true
++strip = false

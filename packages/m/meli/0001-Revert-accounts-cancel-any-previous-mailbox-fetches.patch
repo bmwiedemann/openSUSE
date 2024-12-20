@@ -1,0 +1,36 @@
+From 525bae71e5ad671934980bed9c4514302be31d06 Mon Sep 17 00:00:00 2001
+From: Soc Virnyl Estela <contact@uncomfyhalomacro.pl>
+Date: Sat, 14 Dec 2024 21:25:10 +0800
+Subject: [PATCH] Revert "accounts: cancel any previous mailbox fetches"
+
+This reverts commit 53b0d035e46d0178adb3c6620a5d5af02cc892de.
+
+Signed-off-by: Soc Virnyl Estela <contact@uncomfyhalomacro.pl>
+---
+ meli/src/accounts.rs | 10 ----------
+ 1 file changed, 10 deletions(-)
+
+diff --git a/meli/src/accounts.rs b/meli/src/accounts.rs
+index 7557da4c..0560b5ea 100644
+--- a/meli/src/accounts.rs
++++ b/meli/src/accounts.rs
+@@ -912,16 +912,6 @@ impl Account {
+             }
+             MailboxStatus::None => {
+                 if force && !self.active_jobs.values().any(|j| j.is_fetch(mailbox_hash)) {
+-                    for ev in self.active_jobs.values().filter_map(|j| {
+-                        if j.is_any_fetch() && !j.is_fetch(mailbox_hash) {
+-                            j.cancel()
+-                        } else {
+-                            None
+-                        }
+-                    }) {
+-                        self.main_loop_handler
+-                            .send(ThreadEvent::UIEvent(UIEvent::StatusEvent(ev)));
+-                    }
+                     self.mailbox_entries
+                         .entry(mailbox_hash)
+                         .and_modify(|entry| {
+-- 
+2.47.1
+
