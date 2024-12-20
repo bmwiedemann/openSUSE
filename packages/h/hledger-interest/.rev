@@ -144,4 +144,12 @@
     <comment>version update</comment>
     <requestid>1218583</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>71ffeb97ddeba3e30fce9b62c738d421</srcmd5>
+    <version>1.6.7</version>
+    <time>1734732681</time>
+    <user>dimstar_suse</user>
+    <comment>version update for ghc-9.10.1</comment>
+    <requestid>1231498</requestid>
+  </revision>
 </revisionlist>
