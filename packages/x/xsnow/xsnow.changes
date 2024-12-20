@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Dec 20 13:27:38 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 3.8.1:
+    01: xpm2cairo-gdk.c: use xpm2gdk() as replacement for deprecated 
+        gdk_pixbuf_new_from_xpm_data().
+    02: ui.c: clicking on a tab in the headerbar triggers a call to
+        WriteFlags().
+    03: main.c: Activation of WriteFlags now via do_write_flags() callback,
+        which checks the value of global.time_to_write_flags.
+
+- Update to version 3.8.0:
+    01: configure.ac: add warning if msgmerge is not found.
+        In that case, no 'make dist' or 'xsnow -selfrep' is possible.
+        data/xsnow.appdata.xml.in: make it conform "appstreamcli validate"
+        xdo_search.c:37: Correct call to calloc, parameters were switched
+    02: test2.sh: Add tests: xsnow running in Xvfb, use xdotool to click buttons.
+        Output screen locations of buttons to ~/.xsnowrc.
+        main.c: Use SIGUSR1 to force rewrite of ~/.xsnowrc.
+        This does not work in Debian's autopkgtest :-(.
+        Makefile.am: make check only in src/
+        src/{xdo.c,xdo.h,clientwin.c,clientwin.h,dsimple.c,dsimple.h,
+             kdtree.c,kdtree.h,xdo_version.h,xdo_util.h,xdo_version.h} :
+         remove GPL 3 license: these files had already an own license.
+        src/xdo.c, configure.ac: remove dependency for libxkbcommon.
+
+-------------------------------------------------------------------
 Sat May 11 08:57:51 UTC 2024 - jun wang <jgwang@suse.com>
 
 - Update to version 3.7.9 

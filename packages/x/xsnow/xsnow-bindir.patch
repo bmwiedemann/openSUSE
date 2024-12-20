@@ -1,7 +1,8 @@
-diff -auNr xsnow-3.7.9-orig/src/Makefile.am xsnow-3.7.9/src/Makefile.am
---- xsnow-3.7.9-orig/src/Makefile.am	2024-05-11 16:53:57.108275667 +0800
-+++ xsnow-3.7.9/src/Makefile.am	2024-05-11 16:54:46.612038737 +0800
-@@ -23,7 +23,7 @@
+Index: xsnow-3.8.1/src/Makefile.am
+===================================================================
+--- xsnow-3.8.1.orig/src/Makefile.am
++++ xsnow-3.8.1/src/Makefile.am
+@@ -23,7 +23,7 @@ SUBDIRS = Pixmaps
  TOCC     = $(top_srcdir)/src/tocc.sh
  TOASCII  = $(top_srcdir)/src/toascii.sh
  
@@ -10,10 +11,11 @@ diff -auNr xsnow-3.7.9-orig/src/Makefile.am xsnow-3.7.9/src/Makefile.am
  games_PROGRAMS = xsnow
  
  noinst_PROGRAMS = makeman
-diff -auNr xsnow-3.7.9-orig/src/Makefile.in xsnow-3.7.9/src/Makefile.in
---- xsnow-3.7.9-orig/src/Makefile.in	2024-05-11 16:53:57.111609029 +0800
-+++ xsnow-3.7.9/src/Makefile.in	2024-05-11 16:54:30.005227777 +0800
-@@ -665,7 +665,7 @@
+Index: xsnow-3.8.1/src/Makefile.in
+===================================================================
+--- xsnow-3.8.1.orig/src/Makefile.in
++++ xsnow-3.8.1/src/Makefile.in
+@@ -668,7 +668,7 @@ top_srcdir = @top_srcdir@
  SUBDIRS = Pixmaps
  TOCC = $(top_srcdir)/src/tocc.sh
  TOASCII = $(top_srcdir)/src/toascii.sh
