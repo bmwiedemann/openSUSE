@@ -30,11 +30,13 @@
 %global mirplatformsover 30
 %global lomirisover 5
 %global miralsover 7
-%global mirserversover 61
+%global mirserversover 62
 %global mirwaylandsover 5
+%global mirserverplatformsover 22
+%global mirevdevsover 10
 
 Name:           mir
-Version:        2.19.0
+Version:        2.19.2
 Release:        0
 Summary:        Libraries for building Wayland shells
 License:        (GPL-2.0-only OR GPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only)
@@ -103,6 +105,8 @@ Requires:       %{name}-test-libs-static = %{version}
 Requires:       libmircommon%{commonlibsover} = %{version}
 Requires:       libmiroil%{lomirisover} = %{version}
 Requires:       libmirserver%{mirserversover} = %{version}
+Requires:       libmirserverplatform%{mirserverplatformsover} = %{version}
+Requires:       libmirevdev%{mirevdevsover} = %{version}
 
 %description devel
 This package provides the development files to create compositors built on Mir
@@ -153,6 +157,8 @@ Component library of the Mir compositing stack
 %package -n libmirserver%{mirserversover}
 Summary:        Mir server library
 License:        GPL-2.0-only OR GPL-3.0-only
+Conflicts:      libmirserver61 <= %{version}
+Obsoletes:      libmirserver61 <= %{version}
 
 %description -n libmirserver%{mirserversover}
 Component library of the Mir compositing stack
@@ -162,7 +168,25 @@ Summary:        Mir Wayland library
 License:        LGPL-2.1-only OR LGPL-3.0-only
 
 %description -n libmirwayland%{mirwaylandsover}
-Component library of the Mir compsiting stack
+Component library of the Mir compositing stack
+
+%package -n libmirserverplatform%{mirserverplatformsover}
+Summary:        Mir Server Platform Library
+License:        LGPL-2.1-only OR LGPL-3.0-only
+Conflicts:      libmirserver61 <= %{version}
+Obsoletes:      libmirserver61 <= %{version}
+
+%description -n libmirserverplatform%{mirserverplatformsover}
+Component library of the Mir server platform
+
+%package -n libmirevdev%{mirevdevsover}
+Summary:        Evdev support for Mir
+License:        LGPL-2.1-only OR LGPL-3.0-only
+Conflicts:      libmirserver61 <= %{version}
+Obsoletes:      libmirserver61 <= %{version}
+
+%description -n libmirevdev%{mirevdevsover}
+evdev support library for the Mir server platform
 
 %package test-tools
 Summary:        Testing tools for Mir
@@ -229,6 +253,8 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/miral-shell.desktop
 %ldconfig_scriptlets -n libmiral%{miralsover}
 %ldconfig_scriptlets -n libmirserver%{mirserversover}
 %ldconfig_scriptlets -n libmirwayland%{mirwaylandsover}
+%ldconfig_scriptlets -n libmirserverplatform%{mirserverplatformsover}
+%ldconfig_scriptlets -n libmirevdev%{mirevdevsover}
 
 %files devel
 %license COPYING.*
@@ -266,18 +292,26 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/miral-shell.desktop
 %files -n libmirserver%{mirserversover}
 %license COPYING.GPL*
 %doc README.md
-%dir %{_libdir}/mir/server-platform
-%{_libdir}/mir/server-platform/graphics-eglstream-kms.so.*
-%{_libdir}/mir/server-platform/graphics-gbm-kms.so.*
-%{_libdir}/mir/server-platform/graphics-wayland.so.*
-%{_libdir}/mir/server-platform/input-evdev.so.*
-%{_libdir}/mir/server-platform/renderer-egl-generic.so.*
-%{_libdir}/mir/server-platform/server-virtual.so.*
-%{_libdir}/mir/server-platform/server-x11.so.*
 %{_libdir}/libmirserver.so.%{mirserversover}
 
 %files -n libmirwayland%{mirwaylandsover}
 %{_libdir}/libmirwayland.so.%{mirwaylandsover}
+
+%files -n libmirserverplatform%{mirserverplatformsover}
+%license COPYING.GPL*
+%doc README.md
+%dir %{_libdir}/mir/server-platform
+%{_libdir}/mir/server-platform/graphics-eglstream-kms.so.%{mirserverplatformsover}
+%{_libdir}/mir/server-platform/graphics-gbm-kms.so.%{mirserverplatformsover}
+%{_libdir}/mir/server-platform/graphics-wayland.so.%{mirserverplatformsover}
+%{_libdir}/mir/server-platform/renderer-egl-generic.so.%{mirserverplatformsover}
+%{_libdir}/mir/server-platform/server-virtual.so.%{mirserverplatformsover}
+%{_libdir}/mir/server-platform/server-x11.so.%{mirserverplatformsover}
+
+%files -n libmirevdev%{mirevdevsover}
+%license COPYING.GPL*
+%doc README.md
+%{_libdir}/mir/server-platform/input-evdev.so.%{mirevdevsover}
 
 %files test-tools
 %license COPYING.GPL*

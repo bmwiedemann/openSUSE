@@ -17,4 +17,18 @@ Will be a requirement for forthcoming miriway submission</comment>
     <comment></comment>
     <requestid>1228085</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e335239294ce8d97bc81be6f654d18ef</srcmd5>
+    <version>2.19.2</version>
+    <time>1734732709</time>
+    <user>dimstar_suse</user>
+    <comment>- Created libmirserverplatform22 and libmirevdev10 subpackages to
+  align with shlib packaging policy, and clear conflicts with
+  libmirserver61
+
+- Update to 2.19.2:
+  * Fix: mirserver ABI should have been bumped to 62 in 2.19.0
+  * v2.19.1 was burned/skipped</comment>
+    <requestid>1232879</requestid>
+  </revision>
 </revisionlist>

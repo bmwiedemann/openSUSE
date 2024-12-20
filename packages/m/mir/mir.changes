@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec 19 21:38:02 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Created libmirserverplatform22 and libmirevdev10 subpackages to
+  align with shlib packaging policy, and clear conflicts with
+  libmirserver61
+
+-------------------------------------------------------------------
+Wed Dec  4 21:14:47 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 2.19.2:
+  * Fix: mirserver ABI should have been bumped to 62 in 2.19.0
+  * v2.19.1 was burned/skipped
+
+-------------------------------------------------------------------
 Mon Dec  2 22:13:35 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 2.19.0:
