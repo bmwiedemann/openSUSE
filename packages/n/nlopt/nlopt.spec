@@ -28,7 +28,7 @@
 %define pname nlopt
 
 Name:           nlopt%{?psuffix}
-Version:        2.9.0
+Version:        2.9.1
 Release:        0
 Summary:        A library for nonlinear optimization
 License:        LGPL-2.1-or-later
