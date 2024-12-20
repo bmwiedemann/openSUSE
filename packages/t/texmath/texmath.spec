@@ -20,26 +20,19 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        0.12.8.11
+Version:        0.12.8.12
 Release:        0
 Summary:        Conversion between math formats
 License:        GPL-2.0-or-later
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
-BuildRequires:  ghc-aeson-devel
-BuildRequires:  ghc-aeson-prof
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
-BuildRequires:  ghc-bytestring-devel
-BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-mtl-prof
-BuildRequires:  ghc-network-uri-devel
-BuildRequires:  ghc-network-uri-prof
 BuildRequires:  ghc-pandoc-types-devel
 BuildRequires:  ghc-pandoc-types-prof
 BuildRequires:  ghc-parsec-devel
@@ -59,10 +52,14 @@ BuildRequires:  ghc-xml-devel
 BuildRequires:  ghc-xml-prof
 ExcludeArch:    %{ix86}
 %if %{with tests}
+BuildRequires:  ghc-bytestring-devel
+BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-directory-prof
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-filepath-prof
+BuildRequires:  ghc-pretty-show-devel
+BuildRequires:  ghc-pretty-show-prof
 BuildRequires:  ghc-tagged-devel
 BuildRequires:  ghc-tagged-prof
 BuildRequires:  ghc-tasty-devel
@@ -128,12 +125,11 @@ This package provides the Haskell %{pkg_name} profiling library.
 %autosetup
 
 %build
-%define cabal_configure_options -fexecutable
+%define cabal_configure_options -f+executable
 %ghc_lib_build
 
 %install
 %ghc_lib_install
-%ghc_fix_rpath %{pkg_name}-%{version}
 
 %check
 %cabal_test
@@ -147,7 +143,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 %files
 %license LICENSE
 %doc README.markdown changelog
-%{_bindir}/%{name}
+%{_bindir}/texmath
 
 %files -n ghc-%{name} -f ghc-%{name}.files
 %license LICENSE
