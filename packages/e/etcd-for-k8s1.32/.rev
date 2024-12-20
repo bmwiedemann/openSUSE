@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>74f08a05ccc1b09252026dac804bf73e</srcmd5>
+    <version>3.5.16</version>
+    <time>1734704899</time>
+    <user>dimstar_suse</user>
+    <comment>Initial package version 3.5.16:
+* Version specified in kubernetes v1.32.0 https://github.com/kubernetes/kubernetes/blob/v1.32.0/build/dependencies.yaml#L65-L67</comment>
+    <requestid>1232783</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/etcd-io/etcd.git</param>
+              <param name="changesrevision">f20bbadd404b57c776d1e8876cefd1ac29b03fb5</param></service></servicedata>
