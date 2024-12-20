@@ -1,0 +1,12 @@
+Only in iwlib-0.1.2-patched: dist
+diff -ubr iwlib-0.1.2/iwlib.cabal iwlib-0.1.2-patched/iwlib.cabal
+--- iwlib-0.1.2/iwlib.cabal	2001-09-09 01:46:40.000000000 +0000
++++ iwlib-0.1.2-patched/iwlib.cabal	2024-11-21 11:50:52.468886653 +0000
+@@ -24,5 +24,5 @@
+   includes:            iwlib.h
+   default-language:    Haskell2010
+   exposed-modules:     Network.IWlib
+-  extra-libraries:     iw
++  extra-libraries:     iw m
+   ghc-options:         -Wall
+\ No newline at end of file
