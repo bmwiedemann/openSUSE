@@ -1,0 +1,20 @@
+diff -Nur libclaw-1.8.2/cmake/package/CMakeLists.txt new/cmake/package/CMakeLists.txt
+--- libclaw-1.8.2/cmake/package/CMakeLists.txt	2024-01-24 21:45:29.000000000 +0100
++++ new/cmake/package/CMakeLists.txt	2024-12-19 11:31:13.606087720 +0100
+@@ -1,6 +1,6 @@
+ install(
+   EXPORT claw
+-  DESTINATION lib/cmake/claw/
++  DESTINATION lib${LIB_SUFFIX}/cmake/claw/
+   FILE claw-config-generated.cmake
+   )
+ 
+@@ -19,7 +19,7 @@
+   FILES
+     ${CMAKE_CURRENT_BINARY_DIR}/claw-config.cmake
+     ${CMAKE_CURRENT_BINARY_DIR}/claw-config-version.cmake
+-  DESTINATION lib/cmake/claw/
++  DESTINATION lib${LIB_SUFFIX}/cmake/claw/
+   )
+ 
+ 

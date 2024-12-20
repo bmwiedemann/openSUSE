@@ -31,4 +31,23 @@
     <comment></comment>
     <requestid>897688</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3f0cc0c578b828c836b00152df281732</srcmd5>
+    <version>1.8.2</version>
+    <time>1734704914</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v1.8.2
+  * Refresh the source tree.
+  * Switch to C++11 and remove dependency to Boost.
+- Removed upstream merged patches:
+  * libclaw-1.7.0-libdir.patch
+  * libclaw-doxy-w-date-time.patch
+  * fix-cmake.patch
+  * libclaw-1.7.4-gcc7.patch
+  * no-boost-math.patch
+  * libclaw-1.6.1-nostrip.patch
+- Added patch to fix installation of CMake files on openSUSE:
+  lib64-installation-path.diff (forwarded request 1232181 from susnux)</comment>
+    <requestid>1232793</requestid>
+  </revision>
 </revisionlist>

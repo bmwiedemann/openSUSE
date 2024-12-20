@@ -1,7 +1,7 @@
 #
 # spec file for package libclaw
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,27 +17,17 @@
 
 
 Name:           libclaw
-Version:        1.7.4
+Version:        1.8.2
 Release:        0
 Summary:        C++ library of various utility functions
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-URL:            http://libclaw.sourceforge.net/
-Source:         http://downloads.sf.net/%{name}/%{name}-%{version}.tar.gz
-# PATCH-FEATURE-OPENSUSE not to strip libs.
-Patch0:         libclaw-1.6.1-nostrip.patch
-# PATCH-FEATURE-UPSTREAM libclaw-1.7.0-libdir.patch -- https://github.com/j-jorge/libclaw/pull/4
-Patch1:         libclaw-1.7.0-libdir.patch
-# PATCH-FIX-OPENSUSE libclaw-doxy-w-date-time.patch -- https://github.com/j-jorge/libclaw/pull/5
-Patch2:         libclaw-doxy-w-date-time.patch
-# PATCH-FIX-UPSTREAM fix-cmake.patch -- https://github.com/j-jorge/libclaw/commit/ff4d26816ded3da87c393b1accd07a63ee8a91cb
-Patch3:         fix-cmake.patch
-# PATCH-FIX-UPSTREAM libclaw-1.7.4-gcc7.patch -- modified https://github.com/j-jorge/libclaw/commit/6033275773313fe052f6e222321a8ec87587fbe6
-Patch4:         libclaw-1.7.4-gcc7.patch
-# PATCH-FIX-UPSTREAM no-boost-math.patch -- https://github.com/j-jorge/libclaw/pull/3
-Patch5:         no-boost-math.patch
+URL:            https://github.com/j-jorge/libclaw
+Source:         https://github.com/j-jorge/libclaw/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE lib64-installation-path.diff -- ..
+Patch0:         lib64-installation-path.diff
 BuildRequires:  boost-devel >= 1.42
-BuildRequires:  cmake >= 2.8.8
+BuildRequires:  cmake >= 3.14
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -82,7 +72,7 @@ libclaw.
 %prep
 %autosetup -p1
 # Fix encoding of examples
-find examples -type f |
+find example -type f |
 while read F
 do
         iconv -f iso8859-1 -t utf-8 $F |sed 's/\r//' >.utf8
@@ -91,13 +81,16 @@ do
 done
 
 %build
+pushd cmake
 %cmake
 %make_build
+popd
 
 %install
+pushd cmake
 %cmake_install
-cp -R examples %{buildroot}%{_datadir}/doc/%{name}1/examples
-rm %{buildroot}%{_libdir}/*.a
+popd
+cp -R example %{buildroot}%{_datadir}/doc/%{name}1/examples
 %fdupes -s %{buildroot}%{_datadir}/doc/%{name}1
 %find_lang %{name}
 
@@ -109,8 +102,7 @@ rm %{buildroot}%{_libdir}/*.a
 %{_libdir}/%{name}*.so.*
 
 %files devel
-%{_bindir}/claw-config
-%{_datadir}/cmake/libclaw/
+%{_libdir}/cmake/claw/
 %{_includedir}/claw/
 %{_libdir}/%{name}*.so
 

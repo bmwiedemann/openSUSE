@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Dec 19 09:28:21 UTC 2024 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to v1.8.2
+  * Refresh the source tree.
+  * Switch to C++11 and remove dependency to Boost.
+- Removed upstream merged patches:
+  * libclaw-1.7.0-libdir.patch
+  * libclaw-doxy-w-date-time.patch
+  * fix-cmake.patch
+  * libclaw-1.7.4-gcc7.patch
+  * no-boost-math.patch
+  * libclaw-1.6.1-nostrip.patch
+- Added patch to fix installation of CMake files on openSUSE:
+  lib64-installation-path.diff
+
+-------------------------------------------------------------------
 Fri Jun  4 22:31:50 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Refresh no-boost-math.patch, limits header is missing in public
