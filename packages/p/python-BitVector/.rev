@@ -29,4 +29,15 @@
     <comment></comment>
     <requestid>911997</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>d8eac864e6a7a78bf4bc9d1f36f113be</srcmd5>
+    <version>3.5.0</version>
+    <time>1734704856</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to autosetup, pyproject and pyunittest macros.
+- No more greedy globs in %files.
+- Add patch no-makesuite.patch:
+  * Use the load tests protocol to run the testsuite.</comment>
+    <requestid>1232732</requestid>
+  </revision>
 </revisionlist>

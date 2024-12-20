@@ -1,0 +1,142 @@
+Index: BitVector-3.5.0/TestBitVector/Test.py
+===================================================================
+--- BitVector-3.5.0.orig/TestBitVector/Test.py
++++ BitVector-3.5.0/TestBitVector/Test.py
+@@ -1,38 +1,8 @@
+ #!/usr/bin/env python
+ 
+ import unittest
+-import TestBooleanLogic
+-import TestConstructors
+-import TestComparisonOps
+-import TestPermutations
+-import TestCircularShifts
++
+ 
+ class BitVectorTestCase( unittest.TestCase ):
+     def checkVersion(self):
+         import BitVector
+-
+-
+-testSuites = [unittest.makeSuite(BitVectorTestCase, 'check')] 
+-
+-for test_type in [
+-            TestConstructors,
+-            TestBooleanLogic,
+-            TestComparisonOps,
+-            TestPermutations,
+-            TestCircularShifts,
+-    ]:
+-    testSuites.append(test_type.getTestSuites('check'))
+-
+-def getTestDirectory():
+-    try:
+-        return os.path.abspath(os.path.dirname(__file__))
+-    except:
+-        return '.'
+-
+-import os
+-
+-os.chdir(getTestDirectory())
+-
+-runner = unittest.TextTestRunner()
+-runner.run(unittest.TestSuite(testSuites))
+-
+Index: BitVector-3.5.0/TestBitVector/TestBooleanLogic.py
+===================================================================
+--- BitVector-3.5.0.orig/TestBitVector/TestBooleanLogic.py
++++ BitVector-3.5.0/TestBitVector/TestBooleanLogic.py
+@@ -36,8 +36,3 @@ class BooleanLogicTestCase(unittest.Test
+                 if ( args[0].size == args[1].size ):
+                     print(e)
+                     print("        BOOLEAN LOGIC TEST FAILED")
+-
+-def getTestSuites(type):
+-    return unittest.TestSuite([
+-            unittest.makeSuite(BooleanLogicTestCase, type)
+-                ])                    
+Index: BitVector-3.5.0/TestBitVector/TestCircularShifts.py
+===================================================================
+--- BitVector-3.5.0.orig/TestBitVector/TestCircularShifts.py
++++ BitVector-3.5.0/TestBitVector/TestCircularShifts.py
+@@ -24,8 +24,3 @@ class CircularShiftTestCase(unittest.Tes
+             except Exception as e:
+                 print(e)
+                 print("        CIRCULAR SHIFT TEST FAILED")
+-
+-def getTestSuites(type):
+-    return unittest.TestSuite([
+-            unittest.makeSuite(CircularShiftTestCase, type)
+-                ])                    
+Index: BitVector-3.5.0/TestBitVector/TestComparisonOps.py
+===================================================================
+--- BitVector-3.5.0.orig/TestBitVector/TestComparisonOps.py
++++ BitVector-3.5.0/TestBitVector/TestComparisonOps.py
+@@ -39,8 +39,3 @@ class ComparisonTestCases(unittest.TestC
+             except Exception as e:
+                 print(e)
+                 print("        COMPARISON TEST FAILED")
+-
+-def getTestSuites(type):
+-    return unittest.TestSuite([
+-            unittest.makeSuite(ComparisonTestCases, type)
+-                             ])                    
+Index: BitVector-3.5.0/TestBitVector/TestConstructors.py
+===================================================================
+--- BitVector-3.5.0.orig/TestBitVector/TestConstructors.py
++++ BitVector-3.5.0/TestBitVector/TestConstructors.py
+@@ -11,7 +11,7 @@ constructorTests = [
+     (('intVal', '5678'), '1011000101110'),    
+     (('bitstring', '00110011'), '00110011'),
+     (('streamobject', '111100001111'), '111100001111'),
+-    (('filename', 'testinput1.txt'), '0100000100100000011010000111010101101110011001110111001001111001'),
++    (('filename', 'TestBitVector/testinput1.txt'), '0100000100100000011010000111010101101110011001110111001001111001'),
+     ]
+ 
+ class ConstructorTestCases(unittest.TestCase):
+@@ -43,8 +43,3 @@ class ConstructorTestCases(unittest.Test
+             except Exception as e:
+                 print(e)
+                 print("        CONSTRUCTOR TEST FAILED")
+-
+-def getTestSuites(type):
+-    return unittest.TestSuite([
+-            unittest.makeSuite(ConstructorTestCases, type)
+-                ])                    
+Index: BitVector-3.5.0/TestBitVector/TestPermutations.py
+===================================================================
+--- BitVector-3.5.0.orig/TestBitVector/TestPermutations.py
++++ BitVector-3.5.0/TestBitVector/TestPermutations.py
+@@ -24,8 +24,3 @@ class PermutationTestCase(unittest.TestC
+             except Exception as e:
+                 print(e)
+                 print("Permutation test failed")
+-
+-def getTestSuites(type):
+-    return unittest.TestSuite([
+-            unittest.makeSuite(PermutationTestCase, type)
+-                ])                    
+Index: BitVector-3.5.0/TestBitVector/__init__.py
+===================================================================
+--- /dev/null
++++ BitVector-3.5.0/TestBitVector/__init__.py
+@@ -0,0 +1,19 @@
++import os
++import unittest
++
++
++def getTestDirectory():
++    try:
++        return os.path.abspath(os.path.dirname(__file__))
++    except:
++        return '.'
++
++
++def load_tests(loader, tests, pattern):
++    loader.testMethodPrefix = 'check'
++    tests.addTests(loader.discover(start_dir=getTestDirectory(), pattern="Test*.py"))
++    return tests
++
++
++if __name__ == '__main__':
++    unittest.main()

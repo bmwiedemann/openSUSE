@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 20 04:15:58 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup, pyproject and pyunittest macros.
+- No more greedy globs in %files.
+- Add patch no-makesuite.patch:
+  * Use the load tests protocol to run the testsuite.
+
+-------------------------------------------------------------------
 Fri Aug 13 13:55:15 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.5.0:

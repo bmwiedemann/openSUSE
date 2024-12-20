@@ -1,7 +1,7 @@
 #
 # spec file for package python-BitVector
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,18 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-BitVector
 Version:        3.5.0
 Release:        0
 Summary:        A memory-efficient packed representation for bit arrays in pure Python
 License:        Python-2.0
-Group:          Development/Languages/Python
 URL:            https://engineering.purdue.edu/kak/dist/
 Source:         https://files.pythonhosted.org/packages/source/B/BitVector/BitVector-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Use load tests protocol to run the testsuite
+Patch0:         no-makesuite.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -40,20 +42,21 @@ applications such as computer security, computer vision,
 etc.
 
 %prep
-%setup -q -n BitVector-%{version}
+%autosetup -p1 -n BitVector-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand $python TestBitVector/Test.py
+%pyunittest -v TestBitVector
 
 %files %{python_files}
 %doc README
-%{python_sitelib}/*
+%{python_sitelib}/BitVector
+%{python_sitelib}/BitVector-%{version}.dist-info
 
 %changelog
