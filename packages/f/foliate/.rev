@@ -462,4 +462,12 @@
   * Fixed handling of bare search template URL in OPDS feeds. (forwarded request 1227001 from Dead_Mozay)</comment>
     <requestid>1227084</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>ed34dc24e76779ae660dfb2b2de15de5</srcmd5>
+    <version>3.2.1</version>
+    <time>1734732693</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1232842</requestid>
+  </revision>
 </revisionlist>
