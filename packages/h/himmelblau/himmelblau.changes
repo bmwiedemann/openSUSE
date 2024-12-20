@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Thu Dec 19 22:26:54 UTC 2024 - david.mulder@suse.com
+
+- Update to version 0.8.0+git.0.249ba5f:
+  * Branch version stable-0.8.x
+  * Passwordless auth doesn't provide polling numbers
+  * Resolve deadlock introduced by Fido auth
+  * Implement NGC Passwordless authentication
+  * Remove unused commit checklist
+  * deps(rust): update bindgen requirement from 0.70.1 to 0.71.1
+  * Update libhimmelblau version
+  * Custom domains matching
+  * Fix IdmapError to indicate the failure
+  * Fix Fedora build dependencies
+  * Add Fido MFA
+  * Add Debian 12 packaging
+  * Disable SELinux labeling on build container volume mounts
+  * Update github CI dependencies
+  * Implement Hello Pin changes via PAM
+  * Formatting fix
+  * Utilize HimmelblauConfig directly in pam and nss
+  * Add config parsing unit tests
+  * Fix incorrect default domain
+  * Fix config hsm type Tpm error
+  * Include multi-domain important info in himmelblau.conf man
+  * Update to the latest libhimmelblau
+  * Add DAG flow as a fallback for MFA
+  * Fix CVE-2024-11738: rustls network-reachable panic in `Acceptor::accept`
+  * Update README.md with build requires
+  * Enable module for utf8proc-devel in Rocky8
+  * Remove the org.samba.himmelblau dbus service
+  * Fix missing dependency utf8proc_NFKC_Casefold
+  * The tasks daemon needs /etc/groups write access
+  * Revert "Fix Ubuntu PAM fallback to password prompt"
+  * Fix Ubuntu PAM fallback to password prompt
+  * Increase the cache timeout to 5 minutes
+  * Always fetch and cache the graph url
+  * Package Siemens Linux Entra SSO for Himmelblau
+  * Add Kerberos CCache support
+  * Update the tasks daemon man page
+  * Add a himmelblau.conf man page, and package the man pages
+  * Add SLE15SP6 packaging
+  * Add Fedora 41 packaging
+  * Add Fedora Rawhide packaging
+  * Provide enhancement request template
+  * Create an issue template
+  * Hello support depends on openssl3
+  * Fix sshd rpm depends
+  * Resolve RPM dependencies automatically
+  * Revert "deps(rust): update notify-debouncer-full requirement from 0.3 to 0.4"
+  * Add openSUSE Tumbleweed packaging
+  * Fix RPM packaging placement of systemd files
+  * Remove the failed attempt at debian packaging
+  * Add stable-0.7.x to CI workflows
+  * Version 0.8.0
+
+-------------------------------------------------------------------
 Thu Dec 12 15:14:46 UTC 2024 - david.mulder@suse.com
 
 - Update to version 0.7.13+git.0.d790d31:

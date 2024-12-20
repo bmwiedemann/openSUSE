@@ -17,7 +17,7 @@
 
 
 Name:           himmelblau
-Version:        0.7.13+git.0.d790d31
+Version:        0.8.0+git.0.249ba5f
 Release:        0
 Summary:        Interoperability suite for Microsoft Azure Entra Id
 License:        GPL-3.0-or-later
@@ -55,6 +55,7 @@ BuildRequires:  pango-devel
 BuildRequires:  python3-gyp
 BuildRequires:  webkit2gtk3-devel
 %endif
+BuildRequires:  systemd-devel
 ExclusiveArch:  %{rust_tier1_arches}
 Recommends:     libnss_himmelblau2
 Recommends:     pam-himmelblau
@@ -62,7 +63,7 @@ Provides:       aad-cli
 Provides:       aad-common
 Provides:       authd
 Provides:       authd-msentraid
-%if !0%{?is_opensuse}
+%if 0%{?is_opensuse}
 Suggests:       himmelblau-sso
 %endif
 Requires:       man
@@ -111,7 +112,7 @@ Himmelblau is an interoperability suite for Microsoft Azure Entra Id,
 which allows users to sign into a Linux machine using Azure
 Entra Id credentials.
 
-%if !0%{?is_opensuse}
+%if 0%{?is_opensuse}
 # SLE doesn't provide python3-pydbus
 %package -n himmelblau-sso
 Summary:        Azure Entra Id Firefox SSO Configuration
@@ -178,9 +179,11 @@ install -D -d -m 0755 %{buildroot}%{_datarootdir}/dbus-1/services
 install -m 0644 %{_builddir}/%{name}-%{version}/platform/opensuse/com.microsoft.identity.broker1.service %{buildroot}%{_datarootdir}/dbus-1/services/
 install -D -d -m 0755 %{buildroot}%{_sysconfdir}/ssh/sshd_config.d
 install -m 0644 %{_builddir}/%{name}-%{version}/platform/el/sshd_config %{buildroot}%{_sysconfdir}/ssh/sshd_config.d/himmelblau.conf
+install -D -d -m 0755 %{buildroot}%{_sysconfdir}/krb5.conf.d
+install -m 0644 %{_builddir}/%{name}-%{version}/src/config/krb5_himmelblau.conf %{buildroot}%{_sysconfdir}/krb5.conf.d/krb5_himmelblau.conf
 
 # Firefox Single Sign On
-%if !0%{?is_opensuse}
+%if 0%{?is_opensuse}
 install -m 0755 %{_builddir}/%{name}-%{version}/src/sso/src/linux-entra-sso.py %{buildroot}/%{_bindir}/linux-entra-sso
 sed -i 's/#!\/usr\/bin\/env python3/#!\/usr\/bin\/python3/' %{buildroot}/%{_bindir}/linux-entra-sso
 install -D -d -m 0755 %{buildroot}%{_libdir}/mozilla/native-messaging-hosts
@@ -213,6 +216,7 @@ install -m 0644 %{_builddir}/%{name}-%{version}/man/man8/himmelblaud_tasks.8 %{b
 %files
 %dir %{_sysconfdir}/himmelblau
 %config(noreplace) %{_sysconfdir}/himmelblau/himmelblau.conf
+%{_sysconfdir}/krb5.conf.d/krb5_himmelblau.conf
 %{_sbindir}/himmelblaud
 %{_sbindir}/rchimmelblaud
 %{_sbindir}/himmelblaud_tasks
@@ -241,7 +245,7 @@ install -m 0644 %{_builddir}/%{name}-%{version}/man/man8/himmelblaud_tasks.8 %{b
 %endif
 %config %{_sysconfdir}/ssh/sshd_config.d/himmelblau.conf
 
-%if !0%{?is_opensuse}
+%if 0%{?is_opensuse}
 %files -n himmelblau-sso
 %{_bindir}/linux-entra-sso
 %dir %{_libdir}/mozilla
