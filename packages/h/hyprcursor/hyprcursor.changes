@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Dec 20 14:37:57 UTC 2024 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- Update to version 0.1.10:
+  + A standard, nice update
+  + Fixes:
+    - docs: mention timeouts to be > 0
+    - core: initialize C shape data fully
+  + Other:
+    - Add wiki to readme
+    - only alloc as much as needed when reading in cursor images
+    - Use XDG_DATA_DIRS to query themes
+    - nix: pkg: add missing dep xcur2png
+    - Correction in hotspot coordinates documentation
+
+-------------------------------------------------------------------
 Mon Jun 10 17:39:28 UTC 2024 - Florian "spirit" <sp1rit@disroot.org>
 
 - Update to version 0.1.9:
