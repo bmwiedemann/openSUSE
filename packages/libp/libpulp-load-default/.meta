@@ -1,0 +1,5 @@
+<package name="libpulp-load-default" project="openSUSE:Factory">
+  <title>Default libpulp to load on all processes</title>
+  <description>This package adds libpulp.so into /etc/ld.so.preload to add livepatching capabilities into all processes in the system.</description>
+  <devel project="devel:tools" package="libpulp-load-default"/>
+</package>
