@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Dec 20 08:54:43 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 7.23.0
+  * New Features
+    - Happy holidays to everyone!
+    -Content server: Allow managing the data files associated with
+      a book by clicking the three dots in the top right corner of
+      the book's page and choosing "Manage data files"
+    - Edit metadata dialog: Allow right clicking on the cover to
+      view it in a popup window at larger size
+    - Add an option to expand the Tag browser tree to show the
+      item that was current when the library was closed
+    - Add import and export stored template to
+      Preferences / template functions
+    - Various Quality-of-Life improvements to the dialog used to
+      edit columns with fixed sets of values
+    - Resolve doi.org links when pasting identifiers
+  * Bug Fixes
+    - Viewer: Fix some HTMLZ files not opening on some systems
+    - Amazon metadata plugin: Update for changed markup for some
+      books on amazon search results page
+
+-------------------------------------------------------------------
 Sat Nov 30 10:25:47 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 7.22.0

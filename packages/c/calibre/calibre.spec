@@ -20,7 +20,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           calibre
-Version:        7.22.0
+Version:        7.23.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -116,9 +116,9 @@ BuildRequires:  pkgconfig(hunspell) >= 1.7.0
 ###BuildRequires:  pkgconfig(icu-i18n) < 76.0
 BuildRequires:  pkgconfig(icu-i18n) >= 73.2
 # Upstream use 6.1.2
-BuildRequires:  ffmpeg-7-libavutil-devel >= 6.1.2
-BuildRequires:  ffmpeg-7-libavcodec-devel >= 6.1.2
-BuildRequires:  ffmpeg-7-libavformat-devel >= 6.1.2
+BuildRequires:  ffmpeg-7-libavutil-devel >= 7.1
+BuildRequires:  ffmpeg-7-libavcodec-devel >= 7.1
+BuildRequires:  ffmpeg-7-libavformat-devel >= 7.1
 BuildRequires:  pkgconfig(libffi) >= 3.4.4
 BuildRequires:  pkgconfig(libgcrypt) >= 1.9.4
 BuildRequires:  pkgconfig(libmspack)
