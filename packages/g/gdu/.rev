@@ -21,4 +21,16 @@
   * feat: add --sequential option for sequential scanning by @dundee in #322 (forwarded request 1170032 from dheidler)</comment>
     <requestid>1170089</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ce5b89cb2c0c1ce8e19b601d5c8d1176</srcmd5>
+    <version>5.29.0</version>
+    <time>1734732707</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 5.29.0
+  * feat: support for reading gzip, bzip2 and xz files by @dundee in #363
+  * feat: add --show-mtime (-M) option by @dundee in #350
+  * feat: add option --no-unicode to disable unicode symbols by @dundee in #362
+  * fix: division by zero error in formatFileRow by @xroberx in #359 (forwarded request 1232835 from timos2543)</comment>
+    <requestid>1232877</requestid>
+  </revision>
 </revisionlist>

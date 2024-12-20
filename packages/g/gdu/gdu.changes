@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec 20 12:42:26 UTC 2024 - Timo Schwaak <opensuse@tschwaak.de>
+
+- Version 5.29.0
+  * feat: support for reading gzip, bzip2 and xz files by @dundee in #363
+  * feat: add --show-mtime (-M) option by @dundee in #350
+  * feat: add option --no-unicode to disable unicode symbols by @dundee in #362
+  * fix: division by zero error in formatFileRow by @xroberx in #359
+
+
+-------------------------------------------------------------------
 Wed Apr 24 12:08:01 UTC 2024 - Dominik Heidler <dheidler@suse.de>
 
 - Version 5.28.0
