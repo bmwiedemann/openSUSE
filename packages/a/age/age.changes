@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec 18 17:31:35 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.1
+  * This release fixes a security vulnerability that could allow
+    an attacker to execute an arbitrary binary under certain
+    conditions.
+    See: https://github.com/FiloSottile/age/security/advisories/GHSA-32gq-x56h-299c
+  * Plugin names may now only contain alphanumeric characters or
+    the four special characters +-._.
+
+-------------------------------------------------------------------
 Tue Jul  2 12:40:17 UTC 2024 - Jan Kužílek <jan.kuzilek@suse.com>
 
 - Update to version 1.2.0
