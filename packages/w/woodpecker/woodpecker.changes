@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec 20 09:15:48 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.8.2:
+  * Add changelog for v2.8.2 (#4594)
+  * Fix version.json updates (#4593)
+  * Backport gitea and forgejo sdk updates (#4592)
+  * Do not log forge tokens (#4551) (#4590)
+  * Don't log DB passwords (#4583) (#4589)
+  * Backport golang security updates (#4587)
+
+-------------------------------------------------------------------
 Sun Dec 15 10:18:26 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.8.1:
