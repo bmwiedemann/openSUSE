@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Dec 20 11:31:47 2024 UTC - shap-staff@suse.de
+
+- Release 0.7.0
+
+  ## What's Changed
+
+  * add supportconfig plugin (jsc#PED-2560) by @angelabriel in https://github.com/SUSE/sap_host_exporter/pull/77
+  * Fix code scanning alert no. 1: Incorrect conversion between integer types by @stefanotorresi in https://github.com/SUSE/sap_host_exporter/pull/88
+  * update CI workflows and scripts
+  * bump minimum Go version to 1.23
+  * update README
+  * change default version command behaviour
+
+  ### Dependabot updates
+  * Bump github.com/spf13/viper from 1.15.0 to 1.16.0 by @dependabot in https://github.com/SUSE/sap_host_exporter/pull/73
+  * Bump google.golang.org/protobuf from 1.30.0 to 1.33.0 by @dependabot in https://github.com/SUSE/sap_host_exporter/pull/78
+  * Bump github.com/prometheus/client_golang from 1.15.1 to 1.16.0 by @dependabot in https://github.com/SUSE/sap_host_exporter/pull/76
+  * Bump github.com/stretchr/testify from 1.8.3 to 1.8.4 by @dependabot in https://github.com/SUSE/sap_host_exporter/pull/74
+  * Bump github.com/spf13/viper from 1.16.0 to 1.19.0 by @dependabot in https://github.com/SUSE/sap_host_exporter/pull/84
+  * Bump github.com/prometheus/client_golang from 1.16.0 to 1.20.5 by @dependabot in https://github.com/SUSE/sap_host_exporter/pull/86
+  * Bump github.com/sirupsen/logrus from 1.9.2 to 1.9.3 by @dependabot in https://github.com/SUSE/sap_host_exporter/pull/75
+  * Bump github.com/stretchr/testify from 1.9.0 to 1.10.0 by @dependabot in https://github.com/SUSE/sap_host_exporter/pull/87
+
+  ## New Contributors
+  * @angelabriel made their first contribution in https://github.com/SUSE/sap_host_exporter/pull/77
+
+  **Full Changelog**: https://github.com/SUSE/sap_host_exporter/compare/0.6.0...0.7.0
+
+-------------------------------------------------------------------
 Thu Jun  1 14:34:20 2023 UTC - shap-staff@suse.de
 
 - Release 0.6.0

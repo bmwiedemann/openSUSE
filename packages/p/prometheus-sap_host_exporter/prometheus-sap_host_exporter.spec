@@ -1,34 +1,31 @@
 #
-# spec file for package prometheus-sap_host_exporter
+# Copyright 2020-2024 SUSE LLC
 #
-# Copyright (c) 2023 SUSE LLC
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
 #
-# All modifications and additions to the file contributed by third parties
-# remain the property of their copyright owners, unless otherwise agreed
-# upon. The license for this file, and modifications and additions to the
-# file, is the same license as for the pristine package itself (unless the
-# license for the pristine package is not an Open Source License, in which
-# case the license is the MIT License). An "Open Source License" is a
-# license that conforms to the Open Source Definition (Version 1.9)
-# published by the Open Source Initiative.
-
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#    https://www.apache.org/licenses/LICENSE-2.0
 #
-
-
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
 Name:           prometheus-sap_host_exporter
 # Version will be processed via set_version source service
-Version:        0.6.0+git.1685628435.48c4099
+Version:        0.7.0
 Release:        0
 License:        Apache-2.0
 Summary:        Prometheus exporter for SAP hosts
 Group:          System/Monitoring
-URL:            https://github.com/SUSE/sap_host_exporter
+Url:            https://github.com/SUSE/sap_host_exporter
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 ExclusiveArch:  aarch64 x86_64 ppc64le s390x
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  golang(API) >= 1.20
+BuildRequires:  golang(API) >= 1.23
 Provides:       sap_host_exporter = %{version}-%{release}
 Provides:       prometheus(sap_host_exporter) = %{version}-%{release}
 
@@ -43,8 +40,11 @@ to collect data about SAP systems like NetWeaver and S4/HANA.
 %define shortname sap_host_exporter
 
 %build
-
-export CGO_ENABLED=0
+%ifarch s390x
+  export CGO_ENABLED=1
+%else
+  export CGO_ENABLED=0
+%endif
 go build -mod=vendor \
          -buildmode=pie \
          -ldflags="-s -w -X main.version=%{version}" \
@@ -64,6 +64,10 @@ install -D -m 0600 doc/%{shortname}.yaml "%{buildroot}/etc/%{shortname}/default.
 # Install compat wrapper for legacy init systems
 install -Dd -m 0755 %{buildroot}%{_sbindir}
 ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rc%{name}
+
+# Install supportconfig plugin
+install -D -m 755 supportconfig-sap_host_exporter %{buildroot}%{_prefix}/lib/supportconfig/plugins/%{shortname}
+
 
 %pre
 %service_add_pre %{name}@.service
@@ -91,5 +95,8 @@ ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rc%{name}
 %{_sbindir}/rc%{name}
 %dir /etc/%{shortname}/
 %config /etc/%{shortname}/default.yaml
+%dir %{_prefix}/lib/supportconfig
+%dir %{_prefix}/lib/supportconfig/plugins
+%{_prefix}/lib/supportconfig/plugins/%{shortname}
 
 %changelog
