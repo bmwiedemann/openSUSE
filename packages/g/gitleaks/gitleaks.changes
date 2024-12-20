@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Dec 20 06:06:58 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- add completion subpackages
+
+-------------------------------------------------------------------
+Fri Dec 20 05:58:24 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 8.21.3:
+  * go mod 1.23
+  * Ensure keywords are downcased (#1633)
+  * feat: add settlemint api keys detection (#1663)
+  * feat(dir): better chunking (#1665)
+  * feat(report): allow user-defined templates (#1650)
+  * Add support for GitLab routable tokens (#1656)
+  * Add freemius secret key detection (#1611)
+  * fix(kubernetes): only match 'kind: secret' (#1649)
+  * feat: use STDOUT when report file not specified (#1642)
+  * fix(dir): skip opening file&dir if allowlist matches (#1653)
+  * fix: increase chunk size 10kb -> 100kb (#1652)
+  * feat: detect sentry.io tokens in the new format (#1640)
+  * refactor: pre-commit hooks (#1627)
+  * fix(easypost): only detect tokens of correct length (#1628)
+  * feat(dir): continue on permission error (#1621)
+  * Add human readable description for curl rules (#1625)
+  * Add option to include `Line` field in report (#1616)
+  * hm
+  * Update README.md
+  * nop for stupid build
+  * Add new jira api token pattern (#1601)
+  * feat: update global & generic allowlist (#1618)
+  * fix(vault-service-token): ensure that TPS contains digits
+    (#1614)
+  * Generate comprehensive secret samples (#1484)
+  * fix(aws): detect token in url (#1615)
+  * fix(rules): entropy, uppercase in samples (#1593)
+  * feat: tweak rules (#1608)
+
+-------------------------------------------------------------------
 Tue Oct 29 14:00:10 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 8.21.2:

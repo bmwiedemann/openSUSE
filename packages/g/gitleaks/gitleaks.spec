@@ -17,40 +17,93 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           gitleaks
-Version:        8.21.2
+Version:        8.21.3
 Release:        0
 Summary:        Protect and discover secrets using Gitleaks
 License:        MIT
 URL:            https://github.com/gitleaks/gitleaks
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.19
+BuildRequires:  bash-completion
+BuildRequires:  fish
+BuildRequires:  go >= 1.23
+BuildRequires:  zsh
 
 %description
 Gitleaks is a SAST tool for detecting and preventing hardcoded secrets like
 passwords, api keys, and tokens in git repos. Gitleaks is an easy-to-use,
 all-in-one solution for detecting secrets, past or present, in your code.
 
+%package -n %{name}-bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
+
+%description -n %{name}-bash-completion
+Bash command line completion support for %{name}.
+
+%package -n %{name}-fish-completion
+Summary:        Fish Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Supplements:    (%{name} and fish)
+BuildArch:      noarch
+
+%description -n %{name}-fish-completion
+Fish command line completion support for %{name}.
+
+%package -n %{name}-zsh-completion
+Summary:        Zsh Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Supplements:    (%{name} and zsh)
+BuildArch:      noarch
+
+%description -n %{name}-zsh-completion
+zsh command line completion support for %{name}.
+
 %prep
-%setup -q
-%setup -q -T -D -a 1
+%autosetup -a 1
 
 %build
 go build \
    -mod=vendor \
    -buildmode=pie \
-   -ldflags="-X=github.com/zricethezav/gitleaks/v8/cmd.Version=%{version}"
+   -ldflags="-X=github.com/zricethezav/gitleaks/v8/cmd.Version=%{version}" \
+   -o bin/%{name}
 
 %install
 # Install the binary.
-install -D -m 0755 %{name} "%{buildroot}/%{_bindir}/%{name}"
+install -D -m 0755 bin/%{name} %{buildroot}/%{_bindir}/%{name}
+
+# create the bash completion file
+mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
+%{buildroot}/%{_bindir}/%{name} completion bash > %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
+
+# create the fish completion file
+mkdir -p %{buildroot}%{_datarootdir}/fish/vendor_completions.d/
+%{buildroot}/%{_bindir}/%{name} completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
+
+# create the zsh completion file
+mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
+%{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{name}
 
 %files
 %doc README.md
 %license LICENSE
 %{_bindir}/%{name}
+
+%files -n %{name}-bash-completion
+%{_datarootdir}/bash-completion/completions/%{name}
+
+%files -n %{name}-fish-completion
+%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
+
+%files -n %{name}-zsh-completion
+%{_datarootdir}/zsh/site-functions/_%{name}
 
 %changelog
