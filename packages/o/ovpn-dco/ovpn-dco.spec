@@ -17,7 +17,7 @@
 
 
 Name:           ovpn-dco
-Version:        0.2.20240712~git0.d22d04e
+Version:        0.2.20241216~git0.a08b2fd
 Release:        0
 Summary:        OpenVPN Data Channel Offload in the Linux kernel
 License:        GPL-2.0-only

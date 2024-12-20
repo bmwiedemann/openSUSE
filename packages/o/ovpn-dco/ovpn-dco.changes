@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Dec 20 07:40:02 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.2.20241216~git0.a08b2fd:
+  * linux-compat: fix typ0 in comment
+  * ovpn-dco: port to 6.12 and add related compat hacks
+  * linux-compat: move UDP_ENCAP_OVPNINUDP to compat file
+  * linux-compat: NLA_POLICY_MAX_LEN will be released in 6.13
+
+-------------------------------------------------------------------
 Fri Sep 13 13:39:32 UTC 2024 - jeffm@suse.com
 
 - Update to version 0.2.20240712~git0.d22d04e:

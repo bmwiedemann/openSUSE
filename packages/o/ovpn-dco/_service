@@ -3,8 +3,7 @@
     <param name="scm">git</param>
     <param name="filename">ovpn-dco</param>
     <param name="url">https://github.com/OpenVPN/ovpn-dco</param>
-    <param name="revision">master</param>
-    <param name="parent-tag">v0.2.20240712</param>
+    <param name="revision">v0.2.20241216</param>
     <param name="versionformat">@PARENT_TAG@~git@TAG_OFFSET@.%h</param>
     <param name="versionrewrite-pattern">v([0-9\.]*)</param>
     <param name="versionrewrite-replacement">\1</param>
