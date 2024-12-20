@@ -22,7 +22,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-tokenizers
-Version:        0.20.3
+Version:        0.21.0
 Release:        0
 Summary:        Provides an implementation of today's most used tokenizers
 License:        Apache-2.0

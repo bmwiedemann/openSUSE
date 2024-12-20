@@ -25,13 +25,14 @@ URL:            http://docs.python-zeep.org
 Source:         https://files.pythonhosted.org/packages/source/z/zeep/zeep-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE xfail tests that require network access
 Patch0:         xfail-network-tests.patch
+# PATCH-FIX-UPSTREAM gh#mvantellingen/python-zeep#1447
+Patch1:         support-new-httpx.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-attrs >= 17.2.0
-Requires:       python-cached-property >= 1.3.0
 Requires:       python-isodate >= 0.5.4
 Requires:       python-lxml >= 4.6.0
 Requires:       python-platformdirs >= 1.4.0
@@ -39,6 +40,8 @@ Requires:       python-pytz
 Requires:       python-requests >= 2.7.0
 Requires:       python-requests-file >= 1.5.1
 Requires:       python-requests-toolbelt >= 0.7.1
+Recommends:     python-httpx >= 0.15.0
+Recommends:     python-packaging
 Recommends:     python-xmlsec >= 0.6.1
 BuildArch:      noarch
 # SECTION test requirements
@@ -46,10 +49,10 @@ BuildRequires:  %{python_module platformdirs >= 1.4.0}
 BuildRequires:  %{python_module aiohttp >= 1.0}
 BuildRequires:  %{python_module aioresponses >= 0.4.1}
 BuildRequires:  %{python_module attrs >= 17.2.0}
-BuildRequires:  %{python_module cached-property >= 1.3.0}
 BuildRequires:  %{python_module freezegun >= 0.3.15}
 BuildRequires:  %{python_module isodate >= 0.5.4}
 BuildRequires:  %{python_module lxml >= 4.6.0}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pretend >= 1.0.9}
 BuildRequires:  %{python_module pytest >= 6.0.1}
 BuildRequires:  %{python_module pytest-asyncio}

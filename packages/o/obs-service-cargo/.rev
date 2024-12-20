@@ -435,4 +435,21 @@ packages. This library is fasted, easier to maintain and easier for a user to co
 </comment>
     <requestid>1229221</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>a81084d17414f7d855431c2baf4b339d</srcmd5>
+    <version>4.4.0</version>
+    <time>1734640843</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.4.0:
+  * chore: apply clippy suggestions
+  * improvement: ensure paths are handled. also output the hashes of lockfiles before and after.
+  * fix: it should be using custom_root and not setup_workdir
+  * fix tests
+  * tests: from_str to from in PathBuf
+  * chore: set MSRV to 1.83
+  * chore: update Cargo.lock
+  * tests: add tokenizers for registry method testing
+</comment>
+    <requestid>1231974</requestid>
+  </revision>
 </revisionlist>

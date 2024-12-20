@@ -30,6 +30,8 @@ Source:         https://files.pythonhosted.org/packages/source/s/softlayer-zeep/
 Patch0:         skip-networked-test.patch
 # PATCH-FIX-UPSTREAM gh#mvantellingen/python-zeep#d1b0257 Fix regression in parsing xsd:Date with negative timezone
 Patch1:         xsd-date.patch
+# PATCH-FIX-UPSTREAM Based on gh#mvantellingen/python-zeep#1447
+Patch2:         support-new-httpx.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes

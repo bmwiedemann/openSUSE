@@ -67,4 +67,15 @@
     <comment></comment>
     <requestid>1221502</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>1c1d54f9b0cc85a47eafcc994ace14d0</srcmd5>
+    <version>0.9.8</version>
+    <time>1734640816</time>
+    <user>anag+factory</user>
+    <comment>- Use regular %%pynittest macro instead of running the test
+  script directly.
+- add patch no-six.patch to get rid of six
+</comment>
+    <requestid>1232101</requestid>
+  </revision>
 </revisionlist>

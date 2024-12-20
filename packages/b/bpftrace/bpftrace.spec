@@ -45,7 +45,7 @@
 %endif
 
 Name:           bpftrace
-Version:        0.21.2
+Version:        0.21.3
 Release:        0
 Summary:        High-level tracing language for Linux eBPF
 License:        Apache-2.0

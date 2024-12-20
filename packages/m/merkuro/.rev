@@ -136,4 +136,12 @@
     <comment>KDE release gear 24.12.0 (forwarded request 1230034 from krop)</comment>
     <requestid>1230537</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>1fe439ac0bc4049b51637864f5b5f284</srcmd5>
+    <version>24.12.0</version>
+    <time>1734640825</time>
+    <user>anag+factory</user>
+    <comment>- Update runtime requirements</comment>
+    <requestid>1231952</requestid>
+  </revision>
 </revisionlist>

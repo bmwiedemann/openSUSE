@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Dec 19 07:22:36 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.17.0:
+  * chore: release 2.17.0 (#6504)
+  * feat(build, secrets): include plain secret values in
+    giterminism scope (#6495)
+  * chore(release): 1.2 stable, 2 beta,ea,rock-solid
+  * chore(ci): rename project name (#6502)
+  * refactor(deploy): freeze helm/nelm/kubedog and werf deploy code
+    for `werf helm` commands
+  * chore(ci): update notification (#6499)
+  * docs(build): remove outdated note about staged dockerfile
+    (#6501)
+  * chore(ci): сonsider images in test clusters during deletion
+    (#6492)
+
+-------------------------------------------------------------------
 Tue Dec 17 05:42:17 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.16.3:

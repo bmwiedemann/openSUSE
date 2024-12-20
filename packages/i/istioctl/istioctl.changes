@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec 19 07:24:47 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- upate to 1.24.2:
+  https://istio.io/latest/news/releases/1.24.x/announcing-1.24.2/
+  no istioctl-related changes mentioned in the changelog
+
+-------------------------------------------------------------------
 Tue Nov 26 14:10:51 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
-- update to 1.24.0:
+- update to 1.24.1:
   https://istio.io/latest/news/releases/1.24.x/announcing-1.24.1/
   CLI-related changes:
   * Fixed an issue where istioctl install was not working as

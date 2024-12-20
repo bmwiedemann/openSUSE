@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec 18 23:58:20 UTC 2024 - okurz@suse.com
+
+- Update to version 4.6.1734521846.22cc1e5:
+  * Remove _typing_limit subroutine because it's never used
+  * Update t/08-autotest.t
+  * Remove subs on vnc_base that are already declared on base
+  * Enable more unit test code for codecoverage
+  * Add more subtests for autotest.pm
+  * Add script/check_qemu_oom to fully covered paths on codecov
+
+-------------------------------------------------------------------
 Tue Dec 17 19:31:10 UTC 2024 - okurz@suse.com
 
 - Update to version 4.6.1734460765.0a6685b:

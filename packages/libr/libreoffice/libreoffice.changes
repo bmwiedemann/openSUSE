@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 11 14:14:16 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Don't use system abseil-cpp on versions lower than Tumbleweed or SLE16.
+
+-------------------------------------------------------------------
 Thu Nov 14 13:17:22 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 24.8.3.2 (24.8.3 final)

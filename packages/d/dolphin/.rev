@@ -1024,4 +1024,17 @@
     <comment>KDE release gear 24.12.0 (forwarded request 1230034 from krop)</comment>
     <requestid>1230346</requestid>
   </revision>
+  <revision rev="128" vrev="2">
+    <srcmd5>dc43252bcd170d955942533fb0e2f806</srcmd5>
+    <version>24.12.0</version>
+    <time>1734640820</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream fixes:
+  * 0001-DolphinViewContainer-make-sure-searchbox-is-initiali.patch (kde#497021)
+  * 0001-dolphinview-Update-thumbnail-on-filename-change.patch (kde#497555)
+  * 0001-ViewProperties-Return-nullptr-if-viewPropertiesStrin.patch (kde#495878)
+
+- Fix Desktopfile to start in super user mode as dbus-launch is no longer part of the basesystem (boo#1234692)</comment>
+    <requestid>1232641</requestid>
+  </revision>
 </revisionlist>

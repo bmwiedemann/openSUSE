@@ -1,0 +1,129 @@
+Index: vobject-0.9.8/vobject/base.py
+===================================================================
+--- vobject-0.9.8.orig/vobject/base.py
++++ vobject-0.9.8/vobject/base.py
+@@ -6,7 +6,7 @@ import copy
+ import codecs
+ import logging
+ import re
+-import six
++import io
+ import sys
+ 
+ # ------------------------------------ Python 2/3 compatibility challenges  ----
+@@ -913,7 +913,7 @@ def getLogicalLines(fp, allowQP=True):
+     Quoted-printable data will be decoded in the Behavior decoding phase.
+ 
+     # We're leaving this test in for awhile, because the unittest was ugly and dumb.
+-    >>> from six import StringIO
++    >>> from io import StringIO
+     >>> f=StringIO(testLines)
+     >>> for n, l in enumerate(getLogicalLines(f)):
+     ...     print("Line %s: %s" % (n, l[0]))
+@@ -936,7 +936,7 @@ def getLogicalLines(fp, allowQP=True):
+ 
+     else:
+         quotedPrintable = False
+-        newbuffer = six.StringIO
++        newbuffer = io.StringIO
+         logicalLine = newbuffer()
+         lineNumber = 0
+         lineStartNumber = 0
+@@ -1050,7 +1050,7 @@ def defaultSerialize(obj, buf, lineLengt
+     """
+     Encode and fold obj and its children, write to buf or return a string.
+     """
+-    outbuf = buf or six.StringIO()
++    outbuf = buf or io.StringIO()
+ 
+     if isinstance(obj, Component):
+         if obj.group is None:
+@@ -1072,7 +1072,7 @@ def defaultSerialize(obj, buf, lineLengt
+         if obj.behavior and not startedEncoded:
+             obj.behavior.encode(obj)
+ 
+-        s = six.StringIO()
++        s = io.StringIO()
+ 
+         if obj.group is not None:
+             s.write(obj.group + ".")
+@@ -1141,7 +1141,7 @@ def readComponents(
+     Generate one Component at a time from a stream.
+     """
+     if isinstance(streamOrString, basestring):
+-        stream = six.StringIO(streamOrString)
++        stream = io.StringIO(streamOrString)
+     else:
+         stream = streamOrString
+ 
+Index: vobject-0.9.8/vobject/hcalendar.py
+===================================================================
+--- vobject-0.9.8.orig/vobject/hcalendar.py
++++ vobject-0.9.8/vobject/hcalendar.py
+@@ -28,7 +28,7 @@ and an equivalent event in hCalendar for
+ </span>
+ """
+ 
+-import six
++import io
+ 
+ from datetime import date, datetime, timedelta
+ 
+@@ -45,7 +45,7 @@ class HCalendar(VCalendar2_0):
+         Serialize iCalendar to HTML using the hCalendar microformat (http://microformats.org/wiki/hcalendar)
+         """
+ 
+-        outbuf = buf or six.StringIO()
++        outbuf = buf or io.StringIO()
+         level = 0  # holds current indentation level
+         tabwidth = 3
+ 
+Index: vobject-0.9.8/vobject/icalendar.py
+===================================================================
+--- vobject-0.9.8.orig/vobject/icalendar.py
++++ vobject-0.9.8/vobject/icalendar.py
+@@ -10,7 +10,7 @@ import string
+ import base64
+ 
+ from dateutil import rrule, tz
+-import six
++import io
+ 
+ try:
+     import pytz
+@@ -65,7 +65,7 @@ def toUnicode(s):
+     """
+     Take a string or unicode, turn it into unicode, decoding as utf-8
+     """
+-    if isinstance(s, six.binary_type):
++    if isinstance(s, bytes):
+         s = s.decode("utf-8")
+     return s
+ 
+@@ -154,7 +154,7 @@ class TimezoneComponent(Component):
+             "tzid",
+         )
+         # serialize encodes as utf-8, cStringIO will leave utf-8 alone
+-        buffer = six.StringIO()
++        buffer = io.StringIO()
+         # allow empty VTIMEZONEs
+         if len(self.contents) == 0:
+             return None
+@@ -607,7 +607,7 @@ class RecurringComponent(Component):
+                     self.add(name).value = setlist
+             elif name in RULENAMES:
+                 for rule in setlist:
+-                    buf = six.StringIO()
++                    buf = io.StringIO()
+                     buf.write("FREQ=")
+                     buf.write(FREQUENCIES[rule._freq])
+ 
+@@ -1074,7 +1074,7 @@ class VCalendar2_0(VCalendarComponentBeh
+             transformed = obj
+             undoTransform = False
+         out = None
+-        outbuf = buf or six.StringIO()
++        outbuf = buf or io.StringIO()
+         if obj.group is None:
+             groupString = ""
+         else:

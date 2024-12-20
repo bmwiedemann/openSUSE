@@ -48,6 +48,8 @@ Patch11:        0001-Fix-ODR-violation-for-struct-class-Line.patch
 Patch12:        0002-Add-missing-includes-for-std-string-std-cerr-fix-nam.patch
 # PATCH-FIX-UPSTREAM -- https://github.com/NGSolve/netgen/issues/200
 Patch13:        0001-Do-not-EXPORT-python-modules-as-CMake-targets.patch
+# PATCH-FIX-UPSTREAM -- https://github.com/NGSolve/netgen/issues/201
+Patch14:        0001-Fix-static-initialization-order-for-UserFormatRegist.patch
 %if %{with opencascade}
 BuildRequires:  occt-devel
 BuildRequires:  (pkgconfig(catch2) >= 2.13.4 with pkgconfig(catch2) < 3)
@@ -213,6 +215,9 @@ find %{buildroot}%{python3_sitearch} -iname \*.pyi -exec sed -i -e '/^_[^_].*=/ 
 export LD_LIBRARY_PATH=%{buildroot}%{_libdir}/%{name}
 export PYTHONDONTWRITEBYTECODE=1
 %ctest %{!?with_pytest: --exclude-regex pytest}
+
+# Test if the binary actually works
+%{buildroot}/%{_bindir}/netgen -batchmode || true
 
 %files
 %license LICENSE

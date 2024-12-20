@@ -16,18 +16,18 @@
 #
 
 
-%define srcversion 6.11
-%define patchversion 6.11.8
+%define srcversion 6.12
+%define patchversion 6.12.6
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
 
-%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
+%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-armv7l
-Version:        6.11.8
+Version:        6.12.6
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g099023b
+Release:        <RELEASE>.gfb072de
 %else
 Release:        0
 %endif
@@ -90,7 +90,6 @@ Source73:       dtb.spec.in.in
 Source74:       mkspec-dtb
 Source75:       release-projects
 Source76:       check-module-license
-Source77:       klp-symbols
 Source78:       modules.fips
 Source79:       splitflist
 Source80:       mergedep
@@ -160,7 +159,6 @@ NoSource:       73
 NoSource:       74
 NoSource:       75
 NoSource:       76
-NoSource:       77
 NoSource:       78
 NoSource:       79
 NoSource:       80

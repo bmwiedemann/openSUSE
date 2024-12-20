@@ -59,6 +59,13 @@
 %bcond_with firebird
 %endif
 
+# Disable system abseil-cpp on versions lower than TW / SLE16
+%if 0%{?suse_version} < 1600
+%bcond_with system_abseil_cpp
+%else
+%bcond_without system_abseil_cpp
+%endif
+
 # Use system gpgme and curl on TW and SLE15-SP4 or newer
 %if 0%{?suse_version} > 1500
 %bcond_without system_gpgme
@@ -165,9 +172,11 @@ BuildRequires:  fontforge
 BuildRequires:  frozen-devel
 BuildRequires:  glm-devel
 # Needed for tests
-BuildRequires:  google-carlito-fonts
+%if %{with system_abseil_cpp}
 BuildRequires:  abseil-cpp-devel
+%endif
 BuildRequires:  dragonbox-devel
+BuildRequires:  google-carlito-fonts
 BuildRequires:  gperf >= 3.1
 BuildRequires:  graphviz
 BuildRequires:  hyphen-devel
@@ -1245,6 +1254,11 @@ export NOCONFIGURE=yes
         --enable-firebird-sdbc \
 %else
         --disable-firebird-sdbc \
+%endif
+%if %{with system_abseil_cpp}
+        --with-system-abseil \
+%else
+        --without-system-abseil \
 %endif
 %if 0%{?suse_version} < 1550
         --without-system-boost \

@@ -16,21 +16,21 @@
 #
 
 
-%define srcversion 6.11
-%define patchversion 6.11.8
-%define git_commit 099023b3ad8e1f4420d5eb954f757ec8d0cc4a5a
+%define srcversion 6.12
+%define patchversion 6.12.6
+%define git_commit fb072de4a85c526a0cdd2ea92aaf6185dedecc20
 %define variant %{nil}
 %define build_html 1
 %define build_pdf 0
 
 %include %_sourcedir/kernel-spec-macros
 
-%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
+%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-docs
-Version:        6.11.8
+Version:        6.12.6
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g099023b
+Release:        <RELEASE>.gfb072de
 %else
 Release:        0
 %endif
@@ -133,7 +133,6 @@ Source73:       dtb.spec.in.in
 Source74:       mkspec-dtb
 Source75:       release-projects
 Source76:       check-module-license
-Source77:       klp-symbols
 Source78:       modules.fips
 Source79:       splitflist
 Source80:       mergedep
@@ -203,7 +202,6 @@ NoSource:       73
 NoSource:       74
 NoSource:       75
 NoSource:       76
-NoSource:       77
 NoSource:       78
 NoSource:       79
 NoSource:       80

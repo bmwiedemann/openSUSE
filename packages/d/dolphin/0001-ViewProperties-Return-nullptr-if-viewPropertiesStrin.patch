@@ -1,0 +1,257 @@
+From 86609f89358243c08ebe4de8498a0fa6dff8370e Mon Sep 17 00:00:00 2001
+From: Akseli Lahtinen <akselmo@akselmo.dev>
+Date: Mon, 16 Dec 2024 20:52:51 +0000
+Subject: [PATCH] ViewProperties: Return nullptr if viewPropertiesString is
+ empty
+
+If viewPropertiesString is empty, return a nullptr.
+This will later used in the stack by the defaultProperties call.
+
+In defaultProperties, if we can't find the global directory,
+create new one with a tempfile. If tempfiles can't be created,
+use default instead.
+
+This will ensure that view settings are saved and loaded correctly
+if user has separate view properties per folder.
+
+This will also add an unit test, where we create a global directory,
+modify it and make sure the changes are reflected in the unmodified
+folder.
+
+BUG:495878
+
+
+(cherry picked from commit 8d155558e980197b4dc2180660ea9bc61a23f3d3)
+
+97d9a70c ViewProperties: Return nullptr if viewPropertiesString is empty
+60a3da35 Create lambda for creating temporary files
+
+Co-authored-by: Akseli Lahtinen <akselmo@akselmo.dev>
+---
+ src/tests/viewpropertiestest.cpp | 75 +++++++++++++++++++++++++++++---
+ src/views/viewproperties.cpp     | 59 ++++++++++++++++---------
+ 2 files changed, 108 insertions(+), 26 deletions(-)
+
+diff --git a/src/tests/viewpropertiestest.cpp b/src/tests/viewpropertiestest.cpp
+index 9c2c9466b..e4d434383 100644
+--- a/src/tests/viewpropertiestest.cpp
++++ b/src/tests/viewpropertiestest.cpp
+@@ -28,6 +28,7 @@ private Q_SLOTS:
+     void testParamMigrationToFileAttr();
+     void testParamMigrationToFileAttrKeepDirectory();
+     void testExtendedAttributeFull();
++    void testUseAsDefaultViewSettings();
+ 
+ private:
+     bool m_globalViewProps;
+@@ -37,6 +38,9 @@ private:
+ void ViewPropertiesTest::initTestCase()
+ {
+     QStandardPaths::setTestModeEnabled(true);
++
++    GeneralSettings::self()->setViewPropsTimestamp(QDateTime::currentDateTime());
++    QVERIFY(GeneralSettings::self()->save());
+ }
+ 
+ void ViewPropertiesTest::init()
+@@ -82,28 +86,30 @@ void ViewPropertiesTest::testReadOnlyBehavior()
+ 
+ void ViewPropertiesTest::testReadOnlyDirectory()
+ {
+-    auto localFolder = m_testDir->url().toLocalFile();
+-    QString dotDirectoryFile = localFolder + "/.directory";
++    const QUrl testDirUrl = m_testDir->url();
++    const QString localFolder = testDirUrl.toLocalFile();
++    const QString dotDirectoryFile = localFolder + "/.directory";
+     QVERIFY(!QFile::exists(dotDirectoryFile));
+ 
+     // restrict write permissions
+     QVERIFY(QFile(localFolder).setPermissions(QFileDevice::ReadOwner));
+ 
+-    QScopedPointer<ViewProperties> props(new ViewProperties(m_testDir->url()));
++    QScopedPointer<ViewProperties> props(new ViewProperties(testDirUrl));
++    const QString destinationDir = props->destinationDir(QStringLiteral("local")) + localFolder;
++
+     QVERIFY(props->isAutoSaveEnabled());
+     props->setSortRole("someNewSortRole");
+     props.reset();
+ 
+-    const auto destinationDir = props->destinationDir(QStringLiteral("local")) + localFolder;
+     qDebug() << destinationDir;
+     QVERIFY(QDir(destinationDir).exists());
+ 
+     QVERIFY(!QFile::exists(dotDirectoryFile));
+     KFileMetaData::UserMetaData metadata(localFolder);
+-    auto viewProperties = metadata.attribute(QStringLiteral("kde.fm.viewproperties#1"));
++    const QString viewProperties = metadata.attribute(QStringLiteral("kde.fm.viewproperties#1"));
+     QVERIFY(viewProperties.isEmpty());
+ 
+-    props.reset(new ViewProperties(m_testDir->url()));
++    props.reset(new ViewProperties(testDirUrl));
+     QVERIFY(props->isAutoSaveEnabled());
+     QCOMPARE(props->sortRole(), "someNewSortRole");
+     props.reset();
+@@ -276,6 +282,63 @@ void ViewPropertiesTest::testExtendedAttributeFull()
+     }
+ }
+ 
++void ViewPropertiesTest::testUseAsDefaultViewSettings()
++{
++    // Create new test directory for this test to make sure the settings are defaults
++    auto testDir = new TestDir(QDir::homePath() + "/.viewPropertiesTest-");
++    auto cleanupTestDir = qScopeGuard([testDir] {
++        delete testDir;
++    });
++
++    // Create a global viewproperties folder
++    QUrl globalPropertiesPath =
++        QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation).append("/view_properties/").append(QStringLiteral("global")));
++    QVERIFY(QDir().mkpath(globalPropertiesPath.toLocalFile()));
++    auto cleanupGlobalDir = qScopeGuard([globalPropertiesPath] {
++        QDir().rmdir(globalPropertiesPath.toLocalFile());
++    });
++    ViewProperties globalProps(globalPropertiesPath);
++
++    // Check that theres no .directory file and metadata is supported
++    QString dotDirectoryFile = testDir->url().toLocalFile() + "/.directory";
++    QVERIFY(!QFile::exists(dotDirectoryFile));
++    KFileMetaData::UserMetaData testDirMetadata(testDir->url().toLocalFile());
++    KFileMetaData::UserMetaData globalDirMetadata(globalPropertiesPath.toLocalFile());
++    if (!testDirMetadata.isSupported()) {
++        QSKIP("need extended attribute/filesystem metadata to be usefull");
++    }
++
++    const auto newDefaultViewMode = DolphinView::Mode::DetailsView;
++
++    // Equivalent of useAsDefault in ViewPropertiesDialog
++    // This sets the DetailsView as default viewMode
++    GeneralSettings::setGlobalViewProps(true);
++    globalProps.setViewMode(newDefaultViewMode);
++    globalProps.setDirProperties(globalProps);
++    globalProps.save();
++    GeneralSettings::setGlobalViewProps(false);
++
++    // Load default data
++    QScopedPointer<ViewProperties> globalDirProperties(new ViewProperties(globalPropertiesPath));
++    auto defaultData = globalDirProperties.data();
++
++    // Load testdir data
++    QScopedPointer<ViewProperties> testDirProperties(new ViewProperties(testDir->url()));
++    auto testData = testDirProperties.data();
++
++    // Make sure globalDirProperties are not empty, so they will be used
++    auto globalDirPropString = globalDirMetadata.attribute(QStringLiteral("kde.fm.viewproperties#1"));
++    QVERIFY(!globalDirPropString.isEmpty());
++
++    // Make sure testDirProperties is empty, so default values are used for it
++    auto testDirPropString = testDirMetadata.attribute(QStringLiteral("kde.fm.viewproperties#1"));
++    QVERIFY(testDirPropString.isEmpty());
++
++    // Compare that default and new folder viewMode is the new default
++    QCOMPARE(defaultData->viewMode(), newDefaultViewMode);
++    QCOMPARE(testData->viewMode(), defaultData->viewMode());
++}
++
+ QTEST_GUILESS_MAIN(ViewPropertiesTest)
+ 
+ #include "viewpropertiestest.moc"
+diff --git a/src/views/viewproperties.cpp b/src/views/viewproperties.cpp
+index 0536e028d..7e589019a 100644
+--- a/src/views/viewproperties.cpp
++++ b/src/views/viewproperties.cpp
+@@ -42,19 +42,26 @@ ViewPropertySettings *ViewProperties::loadProperties(const QString &folderPath)
+         return new ViewPropertySettings(KSharedConfig::openConfig(settingsFile, KConfig::SimpleConfig));
+     }
+ 
+-    QTemporaryFile tempFile;
+-    tempFile.setAutoRemove(false);
+-    if (!tempFile.open()) {
+-        qCWarning(DolphinDebug) << "Could not open temp file";
+-        return nullptr;
+-    }
++    auto createTempFile = []() -> QTemporaryFile * {
++        QTemporaryFile *tempFile = new QTemporaryFile;
++        tempFile->setAutoRemove(false);
++        if (!tempFile->open()) {
++            qCWarning(DolphinDebug) << "Could not open temp file";
++            return nullptr;
++        }
++        return tempFile;
++    };
+ 
+     if (QFile::exists(settingsFile)) {
+         // copy settings to tempfile to load them separately
+-        QFile::remove(tempFile.fileName());
+-        QFile::copy(settingsFile, tempFile.fileName());
++        const QTemporaryFile *tempFile = createTempFile();
++        if (!tempFile) {
++            return nullptr;
++        }
++        QFile::remove(tempFile->fileName());
++        QFile::copy(settingsFile, tempFile->fileName());
+ 
+-        auto config = KConfig(tempFile.fileName(), KConfig::SimpleConfig);
++        auto config = KConfig(tempFile->fileName(), KConfig::SimpleConfig);
+         // ignore settings that are outside of dolphin scope
+         if (config.hasGroup("Dolphin") || config.hasGroup("Settings")) {
+             const auto groupList = config.groupList();
+@@ -63,25 +70,30 @@ ViewPropertySettings *ViewProperties::loadProperties(const QString &folderPath)
+                     config.deleteGroup(group);
+                 }
+             }
+-            return new ViewPropertySettings(KSharedConfig::openConfig(tempFile.fileName(), KConfig::SimpleConfig));
++            return new ViewPropertySettings(KSharedConfig::openConfig(tempFile->fileName(), KConfig::SimpleConfig));
+ 
+         } else if (!config.groupList().isEmpty()) {
+             // clear temp file content
+-            QFile::remove(tempFile.fileName());
++            QFile::remove(tempFile->fileName());
+         }
+     }
+ 
+     // load from metadata
+     const QString viewPropertiesString = metadata.attribute(QStringLiteral("kde.fm.viewproperties#1"));
+-    if (!viewPropertiesString.isEmpty()) {
+-        // load view properties from xattr to temp file then loads into ViewPropertySettings
+-        // clear the temp file
+-        QFile outputFile(tempFile.fileName());
+-        outputFile.open(QIODevice::WriteOnly);
+-        outputFile.write(viewPropertiesString.toUtf8());
+-        outputFile.close();
++    if (viewPropertiesString.isEmpty()) {
++        return nullptr;
++    }
++    // load view properties from xattr to temp file then loads into ViewPropertySettings
++    // clear the temp file
++    const QTemporaryFile *tempFile = createTempFile();
++    if (!tempFile) {
++        return nullptr;
+     }
+-    return new ViewPropertySettings(KSharedConfig::openConfig(tempFile.fileName(), KConfig::SimpleConfig));
++    QFile outputFile(tempFile->fileName());
++    outputFile.open(QIODevice::WriteOnly);
++    outputFile.write(viewPropertiesString.toUtf8());
++    outputFile.close();
++    return new ViewPropertySettings(KSharedConfig::openConfig(tempFile->fileName(), KConfig::SimpleConfig));
+ }
+ 
+ ViewPropertySettings *ViewProperties::defaultProperties() const
+@@ -89,7 +101,14 @@ ViewPropertySettings *ViewProperties::defaultProperties() const
+     auto props = loadProperties(destinationDir(QStringLiteral("global")));
+     if (props == nullptr) {
+         qCWarning(DolphinDebug) << "Could not load default global viewproperties";
+-        props = new ViewPropertySettings;
++        QTemporaryFile tempFile;
++        tempFile.setAutoRemove(false);
++        if (!tempFile.open()) {
++            qCWarning(DolphinDebug) << "Could not open temp file";
++            props = new ViewPropertySettings;
++        } else {
++            props = new ViewPropertySettings(KSharedConfig::openConfig(tempFile.fileName(), KConfig::SimpleConfig));
++        }
+     }
+ 
+     return props;
+-- 
+2.47.1
+

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 19 07:20:32 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Skip some flaky tests that fail sometimes in OBS (bsc#1234681)
+
+-------------------------------------------------------------------
 Wed Dec 18 08:41:22 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Ignore DeprecationWarning in tests (bsc#1234681)

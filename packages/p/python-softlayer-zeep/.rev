@@ -42,4 +42,13 @@
   and is more up-to-date on a lower version</comment>
     <requestid>1224301</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>96a7d0cecfb7a3a8e89e7865d8eb03da</srcmd5>
+    <version>5.0.0</version>
+    <time>1734640850</time>
+    <user>anag+factory</user>
+    <comment>- Add patch support-new-httpx.patch:
+  * Support new arguments for httpx 0.28.0+</comment>
+    <requestid>1232010</requestid>
+  </revision>
 </revisionlist>

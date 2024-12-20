@@ -45,6 +45,7 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gthread-2.0)
+BuildRequires:  strip-nondeterminism
 Requires:       java >= 1.8
 Requires:       xprop
 
@@ -73,6 +74,8 @@ make %{?_smp_mflags}
 make -C jni install DESTDIR=%{buildroot}
 install wrapper/java-atk-wrapper.jar %{buildroot}%{_libdir}/%{name}/
 find %{buildroot} -type f -name "*.la" -delete -print
+cd %{buildroot}%{_libdir}/%{name}/
+%?strip_all_nondeterminism
 
 %files
 %doc AUTHORS

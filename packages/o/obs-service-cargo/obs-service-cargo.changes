@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Dec 19 00:48:57 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 4.4.0:
+  * chore: apply clippy suggestions
+  * improvement: ensure paths are handled. also output the hashes of lockfiles before and after.
+  * fix: it should be using custom_root and not setup_workdir
+  * fix tests
+  * tests: from_str to from in PathBuf
+  * chore: set MSRV to 1.83
+  * chore: update Cargo.lock
+  * tests: add tokenizers for registry method testing
+
+-------------------------------------------------------------------
 Mon Dec  9 08:06:20 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 4.3.6:

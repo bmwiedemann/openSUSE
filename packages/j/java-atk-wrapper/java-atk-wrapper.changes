@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 12 15:59:47 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Normalize jar mtimes for reproducible builds (boo#1134568)
+
+-------------------------------------------------------------------
 Tue Feb 20 15:44:04 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

@@ -130,6 +130,9 @@ skiplist+=" or test_requesting_large_resources_via_ssl"
 skiplist+=" or test_deprecated_no_scheme"
 # weird threading issues on OBS runners
 skiplist+=" or test_http2_probe_blocked_per_thread"
+# flaky test, works locally but fails in OBS with
+# TypeError: _wrap_bio() argument 'incoming' must be _ssl.MemoryBIO, not _ssl.MemoryBIO
+skiplist+=" or test_https_proxy_forwarding_for_https or test_https_headers_forwarding_for_https"
 %pytest -W ignore::DeprecationWarning %{?jobs:-n %jobs} -k "not (${skiplist})" --ignore test/with_dummyserver/test_socketlevel.py
 %endif
 

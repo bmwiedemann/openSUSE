@@ -2,7 +2,7 @@
 <services>
   <service mode="manual" name="download_files" />
   <service name="cargo_vendor" mode="manual">
-     <param name="src">tokenizers*.tar.gz</param>
+     <param name="src">tokenizers-*.tar.gz</param>
      <param name="method">registry</param>
      <param name="update">true</param>
      <param name="compression">zst</param>

@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Thu Dec 19 07:27:29 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.9.2:
+  * chore: v1.9.2 Changelog (#1455)
+  * chore: cherry-pick fixes to v1 (#1459)
+  * chore: Update test dockerfile node hash
+  * chore(deps): update alpine docker tag to v3.21 (#1431)
+  * test(maven): remove the test of transitive scanning on native
+    data source (#1425)
+  * chore: update golangci-lint to version 1.62.2 (#1426)
+  * test: update snapshots (#1421)
+  * ci: add versions fixture generator for Red Hat (#1356)
+  * docs: clarify commit message requirements in `contribution.md`
+    (#1416)
+  * chore(deps): lock file maintenance (#1415)
+  * feat(output): show package view for container scanning table
+    result (#1407)
+  * feat: warn if a vulnerability is ignored multiple times in the
+    same config (#1377)
+  * fix(guided remediation): handle extraneous/missing packages in
+    package-lock.json more leniently (#1394)
+  * feat(output): add a unified output result (#1397)
+  * chore(deps): update codecov/codecov-action action to v5 (#1403)
+  * chore(deps): lock file maintenance (#1404)
+  * fix(deps): update osv-scanner minor (#1402)
+  * chore(deps): update alpine:3.20 docker digest to 1e42bbe
+    (#1401)
+  * chore(deps): update workflows (#1393)
+  * chore(deps): update golang docker tag to v1.23.3 (#1392)
+  * test: use internal utility for creating tmp directory (#1371)
+  * test: rewrite `models` to use snapshots and tables (#1382)
+  * docs: corrected field names in osv scanner results in the JSON
+    doc (#1398)
+  * chore: update snapshots (#1399)
+  * feat(output): update HTML output to a new design (#1383)
+  * fix: add "slices" import back in (#1395)
+  * feat: support evaluating spdx license expressions (#1329)
+  * feat(container-scanning): set unimportant vulns as uncalled
+    (#1385)
+  * feat: add support for comparing Red Hat versions locally
+    (#1355)
+  * fix(deps): update osv-scanner minor (#1348)
+  * chore(deps): lock file maintenance (#1384)
+  * fix(deps): update module github.com/charmbracelet/lipgloss to
+    v1 (#1373)
+  * chore(deps): update workflows (#1347)
+  * chore(deps): update dependency webrick to v1.9.0 (#1372)
+  * test: use traditional `tt` variable name and remove unneeded
+    loop-copy-var (#1381)
+  * chore: update snapshots (#1375)
+  * test(semantic): include ecosystems not supported by `lockfile`
+    (#1364)
+  * refactor: rename internal struct to avoid stuttering (#1370)
+  * chore: remove deprecated internal functions (#1369)
+  * test: update snapshots (#1368)
+  * refactor(semantic): simplify comparing of "pre" letters in PyPI
+    versions (#1366)
+  * refactor(semantic): remove unneeded condition in PyPI version
+    comparator (#1362)
+  * refactor(semantic): simplify comparing of RubyGem version
+    components (#1361)
+  * refactor(semantic): remove unneeded logic in parsing
+    semver-like versions (#1360)
+  * fix(semantic): support parsing versions without a numeric
+    component (#1365)
+  * refactor(semantic): sort ecosystems by name (#1363)
+  * fix: parsing crash on malformed pnpm lockfile (#1327)
+
+-------------------------------------------------------------------
 Thu Oct 31 10:47:27 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.9.1:

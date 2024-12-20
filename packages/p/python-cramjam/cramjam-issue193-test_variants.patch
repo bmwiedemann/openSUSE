@@ -1,0 +1,28 @@
+Index: cramjam-2.9.1/tests/test_variants.py
+===================================================================
+--- cramjam-2.9.1.orig/tests/test_variants.py
++++ cramjam-2.9.1/tests/test_variants.py
+@@ -104,7 +104,7 @@ def test_variants_raise_exception(varian
+     "output_type", (bytes, bytearray, "numpy", cramjam.Buffer, cramjam.File, memoryview)
+ )
+ @pytest.mark.parametrize("variant_str", VARIANTS)
+-@given(raw_data=st.binary())
++@given(raw_data=st.binary(min_size=2))
+ def test_variants_compress_into(
+     variant_str, input_type, output_type, raw_data, tmp_path_factory, is_pypy
+ ):
+@@ -174,13 +174,10 @@ def test_variants_compress_into(
+     "output_type", (bytes, bytearray, "numpy", cramjam.Buffer, cramjam.File, memoryview)
+ )
+ @pytest.mark.parametrize("variant_str", VARIANTS)
+-@given(raw_data=st.binary())
++@given(raw_data=st.binary(min_size=2))
+ def test_variants_decompress_into(
+     variant_str, input_type, output_type, tmp_path_factory, raw_data, is_pypy
+ ):
+-    if variant_str == "izlib" and output_type == "memoryview":
+-        pytest.skip("See issue https://github.com/milesgranger/cramjam/issues/193")
+-
+     variant = getattr(cramjam, variant_str)
+ 
+     compressed = variant.compress(raw_data)

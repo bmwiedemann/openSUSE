@@ -238,6 +238,7 @@ Patch:          5001-Revert-udev-update-devlink-with-the-newer-device-nod.patch
 Patch:          5002-Revert-udev-revert-workarounds-for-issues-caused-by-.patch
 Patch:          5004-disable-session-freeze.patch
 Patch:          5005-Revert-boot-Make-initrd_prepare-semantically-equival.patch
+Patch:          5006-tpm2-util-Also-retry-unsealing-after-policy_pcr-retu.patch
 %endif
 
 %description

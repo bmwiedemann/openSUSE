@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Dec 19 08:25:43 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.4.23
+
+- Update 2.4.23
+  * README: explain using multiple versions by @Finkregh in #3126
+  * Support PACKAGE_CPPFLAGS and PACKAGE_LDFLAGS by @native-api in #3130
+  * Adjust suggested shell startup code to support Pyenv with Pyenv-Win in WSL by @native-api in #3132
+  * Support nonexistent versions being present and set in a local .python-version by @native-api in #3134
+  * Add CPython 3.14.0a3 by @nedbat in #3135
+
+-------------------------------------------------------------------
+Sun Dec  8 08:50:38 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.4.22
+
+- Update 2.4.22
+  * Speed up building bundled OpenSSL by @native-api in #3124
+  * CI: add building modified scripts with bundled MacOS dependencies by @native-api in #3123
+  * CL: + test modified scripts with tar.gz source by @native-api in #3125
+  * Fix 404 for openssl-3.4.0 release in build 3.13.1 by @dlamblin in #3122
+
+-------------------------------------------------------------------
+Sun Dec  8 08:50:00 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.4.21
+
+- Update 2.4.21
+  * Add CPython 3.13.1t by @makukha in #3120
+  * Prefer tcl-tk@8 from Homebrew due to release of Tcl/Tk 9 with which
+    only 3.12+ are compatible by @native-api in #3118
+
+-------------------------------------------------------------------
 Wed Dec  4 07:05:00 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.4.20
 
 - Update 2.4.20

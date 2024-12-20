@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 18 17:37:07 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.8
+  Bug Fixes
+  * Rolled back undocumented changes to printing functions
+    introduced in 2.5.0.
+
+-------------------------------------------------------------------
 Sat Nov 23 11:09:05 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.5.7

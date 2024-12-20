@@ -24,6 +24,8 @@ License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://github.com/stephenc/jcip-annotations
 Source0:        %{name}-%{version}.tar.xz
+Source1:        %{name}-build.xml
+BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
@@ -45,6 +47,7 @@ This package contains the API documentation.
 
 %prep
 %setup -q
+cp %{SOURCE1} build.xml
 
 # Remove unnecessary dependency on parent POM
 %pom_remove_parent
@@ -53,21 +56,12 @@ This package contains the API documentation.
 %pom_remove_dep junit:junit
 
 %build
-javac -source 1.8 -target 1.8 -encoding utf-8 -d target/classes $(find src/main/java -name "*.java")
-javadoc -source 1.8 -notimestamp -encoding utf-8 -d target/site/apidocs -sourcepath src/main/java net.jcip.annotations
-pushd target/classes
-jar \
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
-    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
-%endif
-    --create --file=../%{name}-%{version}.jar *
-popd
+ant jar javadoc
 
 %install
 # jars
 install -dm 0755 %{buildroot}%{_javadir}
-install -pm 0644 target/%{name}-%{version}.jar \
-  %{buildroot}%{_javadir}/%{name}.jar
+install -pm 0644 target/%{name}.jar %{buildroot}%{_javadir}/%{name}.jar
 
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}

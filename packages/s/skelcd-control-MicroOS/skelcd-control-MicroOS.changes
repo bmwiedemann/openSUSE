@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 18 08:31:09 UTC 2024 - Stefan Schubert <schubi@suse.de>
+
+- Added systemd.show_status=1 to kernel params (jsc#SMO-382).
+- 20241218
+
+-------------------------------------------------------------------
 Tue Oct 15 09:29:52 UTC 2024 - Josef Reidinger <jreidinger@suse.com>
 
 - Update dependencies as micro role dialog is moved to

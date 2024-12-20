@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec 18 14:20:07 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 0.21.0:
+  * More cache options.
+  * Disable caching for long strings.
+  * Testing ABI3 wheels to reduce number of wheels
+  * Adding an API for decode streaming.
+  * Decode stream python
+  * Fix encode_batch and encode_batch_fast to accept ndarrays again
+
+-------------------------------------------------------------------
 Thu Nov  7 11:30:50 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Select only rust tier 1 arches. 

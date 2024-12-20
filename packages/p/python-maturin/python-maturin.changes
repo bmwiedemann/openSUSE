@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Wed Dec 18 12:01:14 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.7.8
+  * Fix aarch64 Windows cross compilation by @messense in #2359
+- Release 1.7.7
+  * fix abi3 interpreter discovery on Windows by @davidhewitt in
+    #2333
+  * fix: remove extra indent in generated CI by @jsstevenson in
+    #2340
+  * Upgrade cargo-xwin to unify rustls versions by @kornelski in
+    #2222
+  * Normalize python source directory path by @messense in #2343
+  * Enable fat LTO for maturin release workflow by @messense in
+    #2344
+  * Use different binding dirs for different uniffi modules by
+    @messense in #2348
+  * Update minimal Python minor version for pyo3 0.23 by @messense
+    in #2350
+  * Limit minimal PyPy version based on bindings crate version by
+    @messense in #2351
+  * Remove hard coded pip show in fix_direct_url by @mbway in #2352
+  * Do not use xwin to compile on Windows when MSVC compiler can
+    build for the target by @messense in #2353
+- Release 1.7.6
+ * allow -i 3.13t by @davidhewitt in #2324
+ * propagate abiflags to wheel name on Windows by @davidhewitt in
+   #2325
+ * Add free-threaded wheel build to generate-ci by default by
+   @messense in #2329
+ * Bump metadata version to 2.4 to fix license bug by @konstin in
+   #2332
+- Release 1.7.5
+ * Auto detect Python 3.13 by @messense in #2248
+ * feat: add skip attestation option to maturin ci github by
+   @moldhouse in #2254
+ * generate-ci: use macos-13 runner for x86_64 build job by
+   @messense in #2255
+ * Improve wheel reproducibility by sorting libs by @ycongal-smile
+   in #2261
+ * Fix inverted workspace inclusions by @konstin in #2262
+ * Fix broken links to PyO3 building docs by @laurentS in #2270
+ * Update goblin to 0.9 by @musicinmybrain in #2284
+ * Don't resolve python interpreter when building sdist only by
+   @messense in #2292
+ * include timestamps in the suggested log format by @mbway in
+   #2304
+ * Add support for GNU/Hurd by @sthibaul in #2306
+ * Fix __init__ exports when using multiple UniFFI bindings by
+   @Nickersoft in #2305
+ * Add free-threaded Python support by @messense in #2310
+- Fix _service file for cargo_vendor
+- Update description
+
+-------------------------------------------------------------------
 Sat Sep 28 12:41:34 UTC 2024 - Mia Herkt <mia@0x0.st>
 
 - Update to 1.7.4

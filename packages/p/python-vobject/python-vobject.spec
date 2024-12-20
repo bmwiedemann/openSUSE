@@ -26,6 +26,8 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/py-vobject/vobject/
 Source:         https://files.pythonhosted.org/packages/source/v/vobject/%{modname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/py-vobject/vobject/pull/87 remove six
+Patch0:         no-six.patch
 BuildRequires:  %{python_module PyICU}
 BuildRequires:  %{python_module devel >= 2.7}
 BuildRequires:  %{python_module python-dateutil >= 2.7.0}
@@ -35,7 +37,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-python-dateutil >= 2.7.0
 Requires:       python-pytz
-Requires:       python-six
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
 Recommends:     python-PyICU
@@ -51,7 +52,7 @@ structures to iCalendar, vCard, or (experimentally) hCalendar
 unicode strings.
 
 %prep
-%setup -q -n %{modname}-%{version}
+%autosetup -p1 -n %{modname}-%{version}
 # Fix wrong-file-end-of-line-encoding
 sed -i 's/\r$//' ACKNOWLEDGEMENTS.txt
 
@@ -66,7 +67,7 @@ done
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec tests.py
+%pyunittest -v tests.py
 
 %post
 %python_install_alternative change_tz

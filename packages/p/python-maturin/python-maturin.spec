@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-maturin
-Version:        1.7.4
+Version:        1.7.8
 Release:        0
 Summary:        Rust/Python Interoperability
 License:        Apache-2.0 OR MIT
@@ -42,12 +42,11 @@ Requires:       python-tomli >= 1.1.0
 %python_subpackages
 
 %description
-Build and publish crates with pyo3, rust-cpython and cffi bindings
+Build and publish crates with pyo3, cffi and uniffi bindings
 as well as rust binaries as python packages.
 
-This project is a zero-configuration replacement for
-setuptools-rust milksnake. It supports building wheels for Python
-3.6+, can upload them to PyPI and has basic PyPy support.
+It supports building wheels for Python 3.8+, can upload them
+to PyPI and has basic PyPy and GraalPy support.
 
 %prep
 %autosetup -a1 -p1 -n maturin-%{version}
@@ -75,6 +74,6 @@ sed -i 's/--locked/--offline/' setup.py
 %doc Changelog.md README.md
 %python_alternative %{_bindir}/maturin
 %{python_sitearch}/maturin
-%{python_sitearch}/maturin-%{version}*-info
+%{python_sitearch}/maturin-%{version}.dist-info
 
 %changelog

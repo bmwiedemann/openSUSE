@@ -1,18 +1,36 @@
-From b74697b6151f78b3952c8378f98ecbff3b6f9f73 Mon Sep 17 00:00:00 2001
+From 795acce76a715ac34afd0cfa093350502ac90dfa Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
 Date: Wed, 13 Jul 2022 15:58:16 +0200
 Subject: [PATCH] Include filesystem from experimental for GCC 7
 
 ---
- libsrc/core/archive.hpp      | 16 +++++++++++-----
- libsrc/core/utils.cpp        |  6 ++----
- libsrc/core/utils.hpp        | 13 +++++++------
- libsrc/general/mystring.hpp  |  5 +++++
- libsrc/meshing/meshclass.hpp |  7 ++++++-
- 5 files changed, 31 insertions(+), 16 deletions(-)
+ libsrc/core/CMakeLists.txt     |  3 +++
+ libsrc/core/archive.hpp        | 16 +++++++++++-----
+ libsrc/core/utils.cpp          | 12 +++++-------
+ libsrc/core/utils.hpp          | 21 +++++++++++----------
+ libsrc/general/gzstream.cpp    |  6 +++---
+ libsrc/general/gzstream.h      | 22 +++++++++++++++-------
+ libsrc/general/mystring.hpp    |  5 +++++
+ libsrc/interface/writeuser.hpp | 10 +++++++---
+ libsrc/meshing/meshclass.hpp   |  7 ++++++-
+ 9 files changed, 66 insertions(+), 36 deletions(-)
 
+diff --git a/libsrc/core/CMakeLists.txt b/libsrc/core/CMakeLists.txt
+index 39d7fd6..a85a414 100644
+--- a/libsrc/core/CMakeLists.txt
++++ b/libsrc/core/CMakeLists.txt
+@@ -46,6 +46,9 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+       target_compile_options(ngcore PUBLIC "-fabi-version=${cxx_abi_version}")
+     endif()
+   endif(USE_PYTHON)
++  if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS 8)
++    target_link_libraries(ngcore PRIVATE stdc++fs)
++  endif()
+ endif()
+ 
+ if(USE_PYTHON)
 diff --git a/libsrc/core/archive.hpp b/libsrc/core/archive.hpp
-index 4271e725..a4dee54b 100644
+index d754606..3f41665 100644
 --- a/libsrc/core/archive.hpp
 +++ b/libsrc/core/archive.hpp
 @@ -5,7 +5,13 @@
@@ -30,7 +48,7 @@ index 4271e725..a4dee54b 100644
  #include <fstream>              // for ifstream, ofstream
  #include <functional>           // for function
  #include <map>                  // for map
-@@ -741,7 +747,7 @@ namespace ngcore
+@@ -860,7 +866,7 @@ namespace ngcore
      BinaryOutArchive(std::shared_ptr<std::ostream>&& astream)
        : Archive(true), stream(std::move(astream))
      { }
@@ -39,7 +57,7 @@ index 4271e725..a4dee54b 100644
        : BinaryOutArchive(std::make_shared<std::ofstream>(filename)) {}
      ~BinaryOutArchive () override { FlushBuffer(); }
  
-@@ -829,7 +835,7 @@ namespace ngcore
+@@ -956,7 +962,7 @@ namespace ngcore
      BinaryInArchive (std::shared_ptr<std::istream>&& astream)
        : Archive(false), stream(std::move(astream))
      { }
@@ -48,7 +66,7 @@ index 4271e725..a4dee54b 100644
        : BinaryInArchive(std::make_shared<std::ifstream>(filename)) { ; }
  
      using Archive::operator&;
-@@ -904,7 +910,7 @@ namespace ngcore
+@@ -1056,7 +1062,7 @@ namespace ngcore
      TextOutArchive (std::shared_ptr<std::ostream>&& astream)
        : Archive(true), stream(std::move(astream))
      { }
@@ -57,7 +75,7 @@ index 4271e725..a4dee54b 100644
        TextOutArchive(std::make_shared<std::ofstream>(filename)) { }
  
      using Archive::operator&;
-@@ -959,7 +965,7 @@ namespace ngcore
+@@ -1111,7 +1117,7 @@ namespace ngcore
      TextInArchive (std::shared_ptr<std::istream>&& astream) :
        Archive(false), stream(std::move(astream))
      { }
@@ -67,10 +85,10 @@ index 4271e725..a4dee54b 100644
  
      using Archive::operator&;
 diff --git a/libsrc/core/utils.cpp b/libsrc/core/utils.cpp
-index 62d4d136..184342ae 100644
+index 4ab08f3..ba454f6 100644
 --- a/libsrc/core/utils.cpp
 +++ b/libsrc/core/utils.cpp
-@@ -7,8 +7,6 @@
+@@ -13,8 +13,6 @@
  #endif //WIN32
  //
  #include <array>
@@ -79,7 +97,7 @@ index 62d4d136..184342ae 100644
  #include <regex>
  #include <string>
  #include <thread>
-@@ -112,10 +110,10 @@ namespace ngcore
+@@ -135,16 +133,16 @@ namespace ngcore
  #endif
    }
  
@@ -92,8 +110,33 @@ index 62d4d136..184342ae 100644
        path += ".temp_netgen_file_"+ToString(counter++)+"_"+ToString(GetTimeCounter());
        return path;
    }
+ 
+ 
+-  SharedLibrary :: SharedLibrary(const std::filesystem::path & lib_name_, std::optional<std::filesystem::path> directory_to_delete_, bool global )
++  SharedLibrary :: SharedLibrary(const filesystem::path & lib_name_, std::optional<filesystem::path> directory_to_delete_, bool global )
+       : lib_name(lib_name_),directory_to_delete(directory_to_delete_)
+   {
+     Load(lib_name, global);
+@@ -160,7 +158,7 @@ namespace ngcore
+         // wait for it to finish (up to a second)
+         try
+         {
+-          std::filesystem::remove_all(*directory_to_delete);
++          filesystem::remove_all(*directory_to_delete);
+           directory_to_delete = std::nullopt;
+           break;
+         }
+@@ -173,7 +171,7 @@ namespace ngcore
+       std::cerr << "Could not delete " << directory_to_delete->string() << std::endl;
+   }
+ 
+-  void SharedLibrary :: Load( const std::filesystem::path & lib_name_, bool global )
++  void SharedLibrary :: Load( const filesystem::path & lib_name_, bool global )
+   {
+     Unload();
+     lib_name = lib_name_;
 diff --git a/libsrc/core/utils.hpp b/libsrc/core/utils.hpp
-index d072be47..32f4c9f6 100644
+index 323fe67..8f1b15d 100644
 --- a/libsrc/core/utils.hpp
 +++ b/libsrc/core/utils.hpp
 @@ -3,7 +3,13 @@
@@ -110,7 +153,7 @@ index d072be47..32f4c9f6 100644
  #include <map>
  #include <ostream>
  #include <optional>
-@@ -96,11 +102,6 @@ namespace ngcore
+@@ -99,11 +105,6 @@ namespace ngcore
      return res;
    }
  
@@ -122,7 +165,7 @@ index d072be47..32f4c9f6 100644
  
  
    template <class T>
-@@ -221,7 +222,7 @@ namespace ngcore
+@@ -346,7 +347,7 @@ namespace ngcore
    NGCORE_API int GetCompiledSIMDSize();
    NGCORE_API bool IsRangeCheckEnabled();
  
@@ -130,9 +173,132 @@ index d072be47..32f4c9f6 100644
 +  NGCORE_API filesystem::path GetTempFilename();
  
    NGCORE_API void* GetRawSymbol( std::string func_name );
-
+ 
+@@ -359,13 +360,13 @@ namespace ngcore
+   // Class to handle/load shared libraries
+   class NGCORE_API SharedLibrary
+   {
+-    std::filesystem::path lib_name;
+-    std::optional<std::filesystem::path> directory_to_delete = std::nullopt;
++    filesystem::path lib_name;
++    std::optional<filesystem::path> directory_to_delete = std::nullopt;
+     void *lib = nullptr;
+ 
+   public:
+     SharedLibrary() = default;
+-    SharedLibrary(const std::filesystem::path & lib_name_, std::optional<std::filesystem::path> directory_to_delete_ = std::nullopt, bool global = false );
++    SharedLibrary(const filesystem::path & lib_name_, std::optional<filesystem::path> directory_to_delete_ = std::nullopt, bool global = false );
+ 
+     SharedLibrary(const SharedLibrary &) = delete;
+     SharedLibrary & operator =(const SharedLibrary &) = delete;
+@@ -378,7 +379,7 @@ namespace ngcore
+       return reinterpret_cast<TFunc>(GetRawSymbol(func_name));
+     }
+ 
+-    void Load( const std::filesystem::path & lib_name_, bool global = true);
++    void Load( const filesystem::path & lib_name_, bool global = true);
+     void Unload();
+     void* GetRawSymbol( std::string func_name );
+   };
+diff --git a/libsrc/general/gzstream.cpp b/libsrc/general/gzstream.cpp
+index 968c07f..78a67a3 100644
+--- a/libsrc/general/gzstream.cpp
++++ b/libsrc/general/gzstream.cpp
+@@ -44,7 +44,7 @@ namespace GZSTREAM_NAMESPACE {
+ // class gzstreambuf:
+ // --------------------------------------
+ 
+-  gzstreambuf* gzstreambuf::open( const std::filesystem::path & name, int open_mode) {
++  gzstreambuf* gzstreambuf::open( const filesystem::path & name, int open_mode) {
+     if ( is_open())
+         return (gzstreambuf*)0;
+     mode = open_mode;
+@@ -143,7 +143,7 @@ int gzstreambuf::sync() {
+ // class gzstreambase:
+ // --------------------------------------
+ 
+-  gzstreambase::gzstreambase( const std::filesystem::path & name, int mode) {
++  gzstreambase::gzstreambase( const filesystem::path & name, int mode) {
+     init( &buf);
+     open( name.c_str(), mode);
+ }
+@@ -152,7 +152,7 @@ gzstreambase::~gzstreambase() {
+     buf.close();
+ }
+ 
+-  void gzstreambase::open( const std::filesystem::path & name, int open_mode) {
++  void gzstreambase::open( const filesystem::path & name, int open_mode) {
+     if ( ! buf.open( name.c_str(), open_mode))
+         clear( rdstate() | std::ios::badbit);
+ }
+diff --git a/libsrc/general/gzstream.h b/libsrc/general/gzstream.h
+index 20a7779..d05826a 100644
+--- a/libsrc/general/gzstream.h
++++ b/libsrc/general/gzstream.h
+@@ -34,6 +34,14 @@
+ #include <fstream>
+ #include <zlib.h>
+ 
++#if defined(__GNUC__) && (__GNUC__ < 8)
++#include <experimental/filesystem>
++namespace filesystem = std::experimental::filesystem;
++#else
++#include <filesystem>           // for filesystem::path
++namespace filesystem = std::filesystem;
++#endif
++
+ #ifdef GZSTREAM_NAMESPACE
+ namespace GZSTREAM_NAMESPACE {
+ #endif
+@@ -62,7 +70,7 @@ public:
+         // ASSERT: both input & output capabilities will not be used together
+     }
+     int is_open() { return opened; }
+-    gzstreambuf* open( const std::filesystem::path & name, int open_mode);
++    gzstreambuf* open( const filesystem::path & name, int open_mode);
+     gzstreambuf* close();
+     ~gzstreambuf() { close(); }
+     
+@@ -76,9 +84,9 @@ protected:
+     gzstreambuf buf;
+ public:
+     gzstreambase() { init(&buf); }
+-    gzstreambase( const std::filesystem::path & name, int open_mode);
++    gzstreambase( const filesystem::path & name, int open_mode);
+     ~gzstreambase();
+-    void open( const std::filesystem::path & name, int open_mode);
++    void open( const filesystem::path & name, int open_mode);
+     void close();
+     gzstreambuf* rdbuf() { return &buf; }
+ };
+@@ -92,10 +100,10 @@ public:
+ class DLL_HEADER igzstream : public gzstreambase, public std::istream {
+ public:
+     igzstream() : std::istream( &buf) {} 
+-    igzstream( const std::filesystem::path & name, int open_mode = std::ios::in)
++    igzstream( const filesystem::path & name, int open_mode = std::ios::in)
+         : gzstreambase( name, open_mode), std::istream( &buf) {}  
+     gzstreambuf* rdbuf() { return gzstreambase::rdbuf(); }
+-    void open( const std::filesystem::path & name, int open_mode = std::ios::in) {
++    void open( const filesystem::path & name, int open_mode = std::ios::in) {
+         gzstreambase::open( name, open_mode);
+     }
+ };
+@@ -103,10 +111,10 @@ public:
+ class DLL_HEADER ogzstream : public gzstreambase, public std::ostream {
+ public:
+     ogzstream() : std::ostream( &buf) {}
+-    ogzstream( const std::filesystem::path & name, int mode = std::ios::out)
++    ogzstream( const filesystem::path & name, int mode = std::ios::out)
+         : gzstreambase( name, mode), std::ostream( &buf) {}  
+     gzstreambuf* rdbuf() { return gzstreambase::rdbuf(); }
+-    void open( const std::filesystem::path & name, int open_mode = std::ios::out) {
++    void open( const filesystem::path & name, int open_mode = std::ios::out) {
+         gzstreambase::open( name, open_mode);
+     }
+ };
 diff --git a/libsrc/general/mystring.hpp b/libsrc/general/mystring.hpp
-index ee364d77..5eb39df9 100644
+index ee364d7..5eb39df 100644
 --- a/libsrc/general/mystring.hpp
 +++ b/libsrc/general/mystring.hpp
 @@ -19,7 +19,12 @@
@@ -148,8 +314,36 @@ index ee364d77..5eb39df9 100644
  
  namespace netgen
  {
+diff --git a/libsrc/interface/writeuser.hpp b/libsrc/interface/writeuser.hpp
+index 99dc21e..1835707 100644
+--- a/libsrc/interface/writeuser.hpp
++++ b/libsrc/interface/writeuser.hpp
+@@ -7,7 +7,13 @@
+ /* Date:    10. Dec. 97                                                   */
+ /**************************************************************************/
+ 
+-#include <filesystem>
++#if defined(__GNUC__) && (__GNUC__ < 8)
++#include <experimental/filesystem>
++namespace filesystem = std::experimental::filesystem;
++#else
++#include <filesystem>           // for filesystem::path
++namespace filesystem = std::filesystem;
++#endif
+ #include <functional>
+ #include <optional>
+ 
+@@ -15,8 +21,6 @@
+ 
+ namespace netgen {
+ 
+-using namespace std::filesystem;
+-
+ typedef std::function<void (const Mesh & mesh, const filesystem::path & filename)> FWrite;
+ typedef std::function<void (Mesh & mesh, const filesystem::path & filename)> FRead;
+ typedef std::function<bool (const filesystem::path & filename)> FTest;
 diff --git a/libsrc/meshing/meshclass.hpp b/libsrc/meshing/meshclass.hpp
-index 0d063963..5f278107 100644
+index 0c7fd57..d786e33 100644
 --- a/libsrc/meshing/meshclass.hpp
 +++ b/libsrc/meshing/meshclass.hpp
 @@ -11,7 +11,12 @@
@@ -167,5 +361,5 @@ index 0d063963..5f278107 100644
  #include <gprim/adtree.hpp>
  #include <gprim/transform3d.hpp>
 -- 
-2.37.0
+2.47.1
 

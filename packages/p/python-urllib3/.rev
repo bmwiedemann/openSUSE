@@ -870,4 +870,12 @@
     <comment>- Ignore DeprecationWarning in tests (bsc#1234681)</comment>
     <requestid>1231820</requestid>
   </revision>
+  <revision rev="70" vrev="3">
+    <srcmd5>d34437d5f367e054189ba20a54b99524</srcmd5>
+    <version>2.2.3</version>
+    <time>1734640818</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1232162</requestid>
+  </revision>
 </revisionlist>

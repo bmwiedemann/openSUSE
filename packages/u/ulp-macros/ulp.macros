@@ -2,11 +2,14 @@
 # Enable livepatching support for SLE15-SP4 onwards. It requires
 # compiler support introduced there.
 
-# Currently only supported on x86_64.
+# Currently only supported on x86_64 and ppc64le.
 
 # Expand to the necessary livepatching compilation flags if the macro
 # livepatching is defined in the spec file.
-%cflags_livepatching %{lua: if rpm.expand("%livepatchable") == "1" then if rpm.expand("%_arch") == "x86_64" then print("-fpatchable-function-entry=16,14 -fdump-ipa-clones") end end}
+%cflags_livepatching %{lua: if rpm.expand("%livepatchable") == "1" then \
+  if rpm.expand("%_arch") == "x86_64"  then print("-fpatchable-function-entry=16,14 -fdump-ipa-clones") end \
+  if rpm.expand("%_arch") == "ppc64le" then print("-fpatchable-function-entry=17,16 -fdump-ipa-clones") end \
+end }
 
 %tar_lp_basename %{name}-livepatch-%{version}-%{release}
 %tar_lp_package_name %{tar_lp_basename}.%{_arch}.tar.xz
@@ -17,7 +20,7 @@
 # correctly. These files are intended to be used by the livepatch
 # developers and may be retrieved by using `osc getbinaries`.
 %pack_ipa_dumps \
-  %if 0%{?livepatchable} && "%{_arch}" == "x86_64" \
+  %if 0%{?livepatchable} && ("%{_arch}" == "x86_64" || "%{_arch}" == "ppc64le") \
     mkdir -p ipa-clones/%{clones_dest_dir} \
     find . -name "*.ipa-clones" ! -empty -exec cp -t ipa-clones/%{clones_dest_dir} --parents {} + \
     tar -cJf %{tar_lp_package_name} -C ipa-clones --owner root --group root --sort name %{tar_lp_basename} \

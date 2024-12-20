@@ -97,4 +97,13 @@
     <comment></comment>
     <requestid>1223763</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>6cf8140ffb99b6a956d0c059a87f2b67</srcmd5>
+    <version>4.3.1</version>
+    <time>1734640849</time>
+    <user>anag+factory</user>
+    <comment>- Add patch support-new-httpx.patch:
+  * Support argument changes with httpx 0.28.0+.</comment>
+    <requestid>1231983</requestid>
+  </revision>
 </revisionlist>

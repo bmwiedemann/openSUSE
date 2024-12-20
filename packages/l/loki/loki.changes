@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Dec 18 18:29:38 UTC 2024 - mrueckert@suse.de
+
+- Update to version 3.3.2: (pulls in fix for CVE-2024-45337)
+  * fix: fix the docker driver build (backport release-3.3.x) (#15478)
+  * docs: fix admonition, line spacing (#15462) (#15480)
+  * docs: add exception to spelling rule (backport release-3.3.x) (#15473)
+  * docs: fixing broken command (backport release-3.3.x) (#15470)
+  * docs: add URL to Log entry deletion page (backport release-3.3.x) (#15461)
+  * docs: adding exceptions to Vale rule (backport release-3.3.x) (#15446)
+  * docs: fix docs for bloom filters query acceleration hyperlink (backport release-3.3.x) (#15445)
+  * docs: Update LogCLI topic (#15376) (#15413)
+  * fix(deps): backport update module golang.org/x/crypto to v0.31.0 (#15394)
+  * docs: removed compactor options from minIO deployment (backport release-3.3.x) (#15375)
+  * docs: Logcli tutorial and sandbox (backport release-3.3.x) (#15369)
+  * docs: sandbox fix for quickstart (backport release-3.3.x) (#15363)
+  * ci: fix docker driver pipeline
+  * docs: Fixing some Vale linter errors (backport release-3.3.x) (#15350)
+  * chore: Document `approx_topk` keyword. (backport release-3.3.x) (#15347)
+  * ci: fix docker driver publishing
+  * feat: present DF bytes values in queryable format (backport release-3.3.x) (#15320)
+  * fix: enable metric aggregation in `loki-local-config.yaml` (backport release-3.3.x) (#15319)
+  * docs: correct dates in 2.9.x release notes (backport release-3.3.x) (#15303)
+  * docs: Release notes for 2.9.11 (backport release-3.3.x) (#15289)
+  * docs: Release notes for 3.3.2 (backport release-3.3.x) (#15286)
+  * docs: Release notes for 3.2.2 (backport release-3.3.x) (#15282)
+  * chore(release-3.3.x): release 3.3.1 (#15148)
+
+-------------------------------------------------------------------
+Mon Dec 16 11:56:07 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Enable cgo on riscv64
+
+-------------------------------------------------------------------
+Mon Dec  9 22:54:30 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- use golang(API) to force the proper version 
+
+-------------------------------------------------------------------
 Mon Dec 09 10:04:09 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.3.1:

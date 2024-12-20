@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 19 02:46:22 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use ant to build
+
+-------------------------------------------------------------------
 Wed Dec 18 16:09:47 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Switch to clean room implementation, as original implementation

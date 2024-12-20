@@ -1,0 +1,102 @@
+-------------------------------------------------------------------
+Wed Dec 18 16:10:14 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Omit modules following architectures. Use a variable in the dracut cmd.
+
+-------------------------------------------------------------------
+Tue Dec 17 17:08:25 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Use signed_override to allow the build of a sign initrd.
+- BuildRequires pesign-obs-integration only when it is needed
+
+-------------------------------------------------------------------
+Wed Sep 25 14:08:23 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Fix unresolved build requires adding update-bootloader.
+
+-------------------------------------------------------------------
+Mon Jul  8 09:14:16 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Use macro "build_signed" to control the build of the signed package
+- Add kernel-default Requires for the unsigned one.
+
+-------------------------------------------------------------------
+Wed Jul  3 15:27:44 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Rename the package in static-initrd
+- Build only the unsigned one and comment the signed package.
+  * Need grub patches only available in the PoC.
+
+-------------------------------------------------------------------
+Mon Dec 11 11:06:12 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Update the initrd version to %{version}_k%{kernel_version}
+- Get the kernel version from the one installed
+
+-------------------------------------------------------------------
+Thu Sep 28 08:13:20 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- initrd-default add modules
+  - systemd-pcrphase and libtss2 to enable the PCR measurment
+  - Add missing dependencies to integrate more non-hostonly modules 
+
+-------------------------------------------------------------------
+Mon Jul 10 14:04:42 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- remove unified kernel image creation
+- Re-work kernel version dependence 
+
+-------------------------------------------------------------------
+Fri Jun  2 07:38:54 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Add Unified Kernel Image Creation/package
+
+-------------------------------------------------------------------
+Tue Apr 25 02:10:19 UTC 2023 - Michael Chang <mchang@suse.com>
+
+- Wrap initrd as PE image for signing via grub2-wrap
+
+-------------------------------------------------------------------
+Thu Mar 30 15:32:13 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Don't build the rngd module for s390x arch 
+
+-------------------------------------------------------------------
+Thu Mar 30 15:04:39 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Add the conf renamed files
+- correct the x86_64 condition 
+
+-------------------------------------------------------------------
+Thu Mar 30 14:30:10 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Update the dracut modules provided
+- Check if modules are in the list of dracut list. To avoid adding a wrong one
+  due to a missing by the architecture. 
+
+-------------------------------------------------------------------
+Thu Mar 30 12:45:53 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Omit rgnd module from the s390x arch
+
+-------------------------------------------------------------------
+Thu Mar 30 09:31:24 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Remove the noarch 
+
+-------------------------------------------------------------------
+Thu Mar 30 08:40:30 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Update some build requiers for architectures 
+
+-------------------------------------------------------------------
+Wed Mar 29 16:10:18 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Remove unecessary Requires to grub extra
+- Remove the exclusivity arch
+
+-------------------------------------------------------------------
+Wed Mar 29 13:57:57 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Create the package initrd-dracut
+  * Build an inird thanks dracut with different flavors 

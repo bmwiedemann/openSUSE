@@ -1,0 +1,211 @@
+From 0fe6544079a23769e8f19ee2f09b5c149f404d5a Mon Sep 17 00:00:00 2001
+From: Akseli Lahtinen <akselmo@akselmo.dev>
+Date: Thu, 19 Dec 2024 10:04:16 +0000
+Subject: [PATCH] dolphinview: Update thumbnail on filename change
+
+If filename of an item was updated previously, it would modify the model
+before the file was actually changed. This led to the model calling
+a signal that would try to run a previewjob, but since the filename
+is not actually changed yet on disk, it would fail.
+
+This patch moves the model updating after copyjob. Copyjob
+will take care of the file renaming if there is already existing file.
+We just need to update the model correctly after the job has succeeded.
+
+BUG:497555
+
+(cherry picked from commit eca160ae5a2dbd5590e4bae22cddde488dbacf74)
+---
+ src/kitemviews/kfileitemlistview.h            |  1 +
+ src/kitemviews/kfileitemmodelrolesupdater.cpp |  1 +
+ src/kitemviews/kfileitemmodelrolesupdater.h   |  3 ++
+ src/kitemviews/kitemlistview.h                |  2 +
+ src/tests/dolphinmainwindowtest.cpp           | 49 +++++++++++++++++++
+ src/views/dolphinview.cpp                     | 25 +++-------
+ 6 files changed, 64 insertions(+), 17 deletions(-)
+
+diff --git a/src/kitemviews/kfileitemlistview.h b/src/kitemviews/kfileitemlistview.h
+index 4c48c52ab..d6ffd3d0f 100644
+--- a/src/kitemviews/kfileitemlistview.h
++++ b/src/kitemviews/kfileitemlistview.h
+@@ -136,6 +136,7 @@ private:
+     QTimer *m_updateIconSizeTimer;
+ 
+     friend class KFileItemListViewTest; // For unit testing
++    friend class DolphinMainWindowTest; // For unit testing
+ };
+ 
+ #endif
+diff --git a/src/kitemviews/kfileitemmodelrolesupdater.cpp b/src/kitemviews/kfileitemmodelrolesupdater.cpp
+index ac14ed795..8811401b0 100644
+--- a/src/kitemviews/kfileitemmodelrolesupdater.cpp
++++ b/src/kitemviews/kfileitemmodelrolesupdater.cpp
+@@ -575,6 +575,7 @@ void KFileItemModelRolesUpdater::slotGotPreview(const KFileItem &item, const QPi
+     disconnect(m_model, &KFileItemModel::itemsChanged, this, &KFileItemModelRolesUpdater::slotItemsChanged);
+     m_model->setData(index, data);
+     connect(m_model, &KFileItemModel::itemsChanged, this, &KFileItemModelRolesUpdater::slotItemsChanged);
++    Q_EMIT previewJobFinished(); // For unit testing
+ 
+     m_finishedItems.insert(item);
+ }
+diff --git a/src/kitemviews/kfileitemmodelrolesupdater.h b/src/kitemviews/kfileitemmodelrolesupdater.h
+index aa9ca5fc0..cba5b21a8 100644
+--- a/src/kitemviews/kfileitemmodelrolesupdater.h
++++ b/src/kitemviews/kfileitemmodelrolesupdater.h
+@@ -178,6 +178,9 @@ public:
+      */
+     void setHoverSequenceState(const QUrl &itemUrl, int seqIdx);
+ 
++Q_SIGNALS:
++    void previewJobFinished(); // For unit testing
++
+ private Q_SLOTS:
+     void slotItemsInserted(const KItemRangeList &itemRanges);
+     void slotItemsRemoved(const KItemRangeList &itemRanges);
+diff --git a/src/kitemviews/kitemlistview.h b/src/kitemviews/kitemlistview.h
+index 7be08302c..30ce4d871 100644
+--- a/src/kitemviews/kitemlistview.h
++++ b/src/kitemviews/kitemlistview.h
+@@ -794,6 +794,8 @@ private:
+     friend class KItemListControllerTest;
+     friend class KItemListViewAccessible;
+     friend class KItemListDelegateAccessible;
++
++    friend class DolphinMainWindowTest;
+ };
+ 
+ /**
+diff --git a/src/tests/dolphinmainwindowtest.cpp b/src/tests/dolphinmainwindowtest.cpp
+index a57632a1d..8fd2a5ecb 100644
+--- a/src/tests/dolphinmainwindowtest.cpp
++++ b/src/tests/dolphinmainwindowtest.cpp
+@@ -10,10 +10,12 @@
+ #include "dolphintabwidget.h"
+ #include "dolphinviewcontainer.h"
+ #include "kitemviews/kfileitemmodel.h"
++#include "kitemviews/kfileitemmodelrolesupdater.h"
+ #include "kitemviews/kitemlistcontainer.h"
+ #include "kitemviews/kitemlistcontroller.h"
+ #include "kitemviews/kitemlistselectionmanager.h"
+ #include "testdir.h"
++#include "views/dolphinitemlistview.h"
+ 
+ #include <KActionCollection>
+ #include <KConfig>
+@@ -55,6 +57,7 @@ private Q_SLOTS:
+     void testOpenFiles();
+     void testAccessibilityAncestorTree();
+     void testAutoSaveSession();
++    void testThumbnailAfterRename();
+     void cleanupTestCase();
+ 
+ private:
+@@ -836,6 +839,52 @@ void DolphinMainWindowTest::testAutoSaveSession()
+     m_mainWindow->setSessionAutoSaveEnabled(false);
+ }
+ 
++void DolphinMainWindowTest::testThumbnailAfterRename()
++{
++    // Create testdir and red square jpg for testing
++    QScopedPointer<TestDir> testDir{new TestDir()};
++    QImage testImage(256, 256, QImage::Format_Mono);
++    testImage.setColorCount(1);
++    testImage.setColor(0, qRgba(255, 0, 0, 255)); // Index #0 = Red
++    for (short x = 0; x < 256; ++x) {
++        for (short y = 0; y < 256; ++y) {
++            testImage.setPixel(x, y, 0);
++        }
++    }
++    testImage.save(testDir.data()->path() + "/a.jpg");
++
++    // Open dir and show it
++    m_mainWindow->openDirectories({testDir->url()}, false);
++    DolphinView *view = m_mainWindow->activeViewContainer()->view();
++    // Prepare signal spies
++    QSignalSpy viewDirectoryLoadingCompletedSpy(view, &DolphinView::directoryLoadingCompleted);
++    QSignalSpy itemsChangedSpy(view->m_model, &KFileItemModel::itemsChanged);
++    QSignalSpy modelDirectoryLoadingCompletedSpy(view->m_model, &KFileItemModel::directoryLoadingCompleted);
++    QSignalSpy previewUpdatedSpy(view->m_view->m_modelRolesUpdater, &KFileItemModelRolesUpdater::previewJobFinished);
++    // Show window and check that our preview has been updated, then wait for it to appear
++    m_mainWindow->show();
++    QVERIFY(viewDirectoryLoadingCompletedSpy.wait());
++    QVERIFY(previewUpdatedSpy.wait());
++    QVERIFY(QTest::qWaitForWindowExposed(m_mainWindow.data()));
++    QVERIFY(m_mainWindow->isVisible());
++    QTest::qWait(500); // we need to wait for the file widgets to become visible
++
++    // Set image selected and rename it to b.jpg, make sure editing role is working
++    view->markUrlsAsSelected({QUrl(testDir->url().toString() + "/a.jpg")});
++    view->updateViewState();
++    view->renameSelectedItems();
++    QVERIFY(view->m_view->m_editingRole);
++    QTest::keyClick(QApplication::focusWidget(), Qt::Key_B);
++    QTest::keyClick(QApplication::focusWidget(), Qt::Key_Enter);
++    QVERIFY(itemsChangedSpy.wait()); // Make sure that rename worked
++
++    // Check that preview gets updated and filename is correct
++    QVERIFY(previewUpdatedSpy.wait());
++    QVERIFY(!view->m_view->m_editingRole);
++    QCOMPARE(view->m_model->fileItem(0).name(), "b.jpg");
++    QCOMPARE(view->m_model->count(), 1);
++}
++
+ void DolphinMainWindowTest::cleanupTestCase()
+ {
+     m_mainWindow->showNormal();
+diff --git a/src/views/dolphinview.cpp b/src/views/dolphinview.cpp
+index 6da285a87..3c097d14a 100644
+--- a/src/views/dolphinview.cpp
++++ b/src/views/dolphinview.cpp
+@@ -1888,15 +1888,18 @@ void DolphinView::selectNextItem()
+ 
+ void DolphinView::slotRenamingResult(KJob *job)
+ {
+-    if (job->error()) {
++    // Change model data after renaming has succeeded. On failure we do nothing.
++    // If there is already an item with the newUrl, the copyjob will open a dialog for it, and
++    // KFileItemModel will update the data when the dir lister signals that the file name has changed.
++    if (!job->error()) {
+         KIO::CopyJob *copyJob = qobject_cast<KIO::CopyJob *>(job);
+         Q_ASSERT(copyJob);
+         const QUrl newUrl = copyJob->destUrl();
++        const QUrl oldUrl = copyJob->srcUrls().at(0);
+         const int index = m_model->index(newUrl);
+-        if (index >= 0) {
++        if (m_model->index(oldUrl) == index) {
+             QHash<QByteArray, QVariant> data;
+-            const QUrl oldUrl = copyJob->srcUrls().at(0);
+-            data.insert("text", oldUrl.fileName());
++            data.insert("text", newUrl.fileName());
+             m_model->setData(index, data);
+         }
+     }
+@@ -2031,24 +2034,12 @@ void DolphinView::slotRoleEditingFinished(int index, const QByteArray &role, con
+             }
+ #endif
+ 
+-            const bool newNameExistsAlready = (m_model->index(newUrl) >= 0);
+-            if (!newNameExistsAlready && m_model->index(oldUrl) == index) {
+-                // Only change the data in the model if no item with the new name
+-                // is in the model yet. If there is an item with the new name
+-                // already, calling KIO::CopyJob will open a dialog
+-                // asking for a new name, and KFileItemModel will update the
+-                // data when the dir lister signals that the file name has changed.
+-                QHash<QByteArray, QVariant> data;
+-                data.insert(role, retVal.newName);
+-                m_model->setData(index, data);
+-            }
+-
+             KIO::Job *job = KIO::moveAs(oldUrl, newUrl);
+             KJobWidgets::setWindow(job, this);
+             KIO::FileUndoManager::self()->recordJob(KIO::FileUndoManager::Rename, {oldUrl}, newUrl, job);
+             job->uiDelegate()->setAutoErrorHandlingEnabled(true);
+ 
+-            if (!newNameExistsAlready) {
++            if (m_model->index(newUrl) < 0) {
+                 forceUrlsSelection(newUrl, {newUrl});
+                 updateSelectionState();
+ 
+-- 
+2.47.1
+

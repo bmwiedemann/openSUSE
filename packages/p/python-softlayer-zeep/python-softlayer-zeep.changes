@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 19 06:04:42 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-new-httpx.patch:
+  * Support new arguments for httpx 0.28.0+
+
+-------------------------------------------------------------------
 Thu Nov 14 12:18:00 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Add xsd-date.patch to fix test failure

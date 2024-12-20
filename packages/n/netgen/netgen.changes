@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 18 00:09:50 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Amend patches for Leap 15.x
+  * 0001-Include-filesystem-from-experimental-for-GCC-7.patch
+- Fix crash due to wrong initialization order, add
+  * 0001-Fix-static-initialization-order-for-UserFormatRegist.patch
+
+-------------------------------------------------------------------
 Sun Dec 15 20:11:26 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Remove erroneous dependency on the python module, add

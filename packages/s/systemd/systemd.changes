@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 16 18:11:24 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Add 5006-tpm2-util-Also-retry-unsealing-after-policy_pcr-retu.patch
+
+  Backport of https://github.com/systemd/systemd/pull/35657, which fixes
+  https://github.com/systemd/systemd/issues/35490 (boo#1233752, bsc#1234313).
+
+-------------------------------------------------------------------
 Tue Dec  3 14:27:15 UTC 2024 - Franck Bui <fbui@suse.com>
 
 - Add 5005-Revert-boot-Make-initrd_prepare-semantically-equival.patch
@@ -157,6 +165,10 @@ Thu Jul  4 09:07:28 UTC 2024 - Franck Bui <fbui@suse.com>
 - Upgrade to v256.1 (commit dd15bf4f6430d8646e546ee0b980448c7d0c9699)
 
   See https://github.com/openSUSE/systemd/blob/SUSE/v256/NEWS for details.
+
+  - This includes the following bug fixes:
+
+    - commit 3b2e7dc5a285edbbb1bf6aed2d88b889d801613f (bsc#1234015)
 
   - Added pam.systemd-run0
 

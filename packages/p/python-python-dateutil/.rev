@@ -198,4 +198,14 @@
   - Drop no-utcfromtimestamp.patch</comment>
     <requestid>1157042</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>a7e37a43e3149f2063c8dfcaae9bae3b</srcmd5>
+    <version>2.9.0.post0</version>
+    <time>1734640795</time>
+    <user>anag+factory</user>
+    <comment>- Add remove-six.patch to remove dependency on six module
+  (gh#dateutil/dateutil!1403).
+</comment>
+    <requestid>1231764</requestid>
+  </revision>
 </revisionlist>

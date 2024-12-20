@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Dec 19 07:24:13 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 1.16.5:
+  * Prepare for v1.16.5 release
+  * chore(deps): update actions/setup-go action to v5.2.0
+  * Remove Dockerfile
+  * chore(deps): update golang to v1.23.4
+  * chore(deps): update docker.io/library/alpine:3.21.0 docker
+    digest to 21dc606
+  * chore(deps): update docker.io/library/alpine docker tag to
+    v3.21.0
+  * chore(deps): update docker/build-push-action action to v6.10.0
+  * release: Remove the step to post a Slack message
+  * chore(deps): update dependency cilium/cilium to v1.16.4
+  * Update stable release to 1.16.4
+
+-------------------------------------------------------------------
 Fri Nov 22 09:35:35 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.16.4:

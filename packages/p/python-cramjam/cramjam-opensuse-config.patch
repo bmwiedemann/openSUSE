@@ -1,0 +1,29 @@
+--- cramjam/pyproject.toml	2024-12-18 12:38:18.002576474 +0100
++++ cramjam.patch/pyproject.toml	2024-12-18 14:11:22.834831651 +0100
+@@ -14,7 +14,25 @@
+ build-backend = "maturin"
+ 
+ [tool.maturin]
+-strip = true
++no-default-features = true
++features = [
++	  "extension-module",
++		"snappy",
++		"lz4",
++		"bzip2",
++		"brotli",
++		"zstd",
++		"xz-shared",
++		"igzip-shared",
++		"ideflate-shared",
++		"izlib-shared",
++		"use-system-isal-shared",
++		"gzip-shared",
++		"zlib-shared",
++		"deflate-shared",
++		"blosc2-shared",
++		"use-system-blosc2-shared"
++]
+ 
+ [project.optional-dependencies]
+ dev = [

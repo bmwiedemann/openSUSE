@@ -29,24 +29,37 @@
 %define modname cramjam
 %{?sle15_python_module_pythons}
 Name:           python-cramjam%{psuffix}
-Version:        2.8.1
+Version:        2.9.1
 Release:        0
 Summary:        Thin Python bindings to de/compression algorithms in Rust
 License:        MIT
 URL:            https://github.com/milesgranger/cramjam
 Source:         %{modname}-%{version}.tar.xz
 Source1:        vendor.tar.xz
-BuildRequires:  %{python_module base >= 3.7}
+# PATCH-FEATURE-OPENSUSE cramjam-opensuse-config.patch code@bnavigator.de -- Use system libraries and avoid static linking
+Patch0:         cramjam-opensuse-config.patch
+# PATCH-FIX-UPSTREAM cramjam-issue193-test_variants.patch gh#milesgranger/cramjam#193
+Patch1:         cramjam-issue193-test_variants.patch
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module maturin >= 0.13}
 BuildRequires:  %{python_module pip}
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  cargo-packaging
+BuildRequires:  cmake
+BuildRequires:  libtool
+BuildRequires:  nasm
 BuildRequires:  python-rpm-macros
+BuildRequires:  pkgconfig(blosc2)
+BuildRequires:  pkgconfig(libisal)
+BuildRequires:  pkgconfig(libzstd)
 # SECTION test dependencies
 %if %{with test}
 BuildRequires:  %{python_module %{modname} = %{version}}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module memory_profiler}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 %endif
 # /SECTION
@@ -58,25 +71,23 @@ Extremely thin Python bindings to de/compression algorithms in Rust.
 Allows for using algorithms such as Snappy, without any system dependencies.
 
 %prep
-%setup -q -n %{modname}-%{version} -a1
+%autosetup -p1 -n %{modname}-%{version} -a1
 
 %build
 %if %{without test}
-pushd %{modname}-python
+export ZSTD_SYS_USE_PKG_CONFIG=1
 %pyproject_wheel
 %endif
 
 %install
 %if %{without test}
-pushd %{modname}-python
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 %endif
 
 %check
 %if %{with test}
-pushd %{modname}-python
-%pytest_arch --ignore benchmarks
+%pytest_arch -n auto --ignore benchmarks
 %endif
 
 %if %{without test}

@@ -524,4 +524,12 @@ Full Changelog: https://github.com/pyenv/pyenv/compare/v2.4.7...v2.4.8</comment>
     * Add CPython 3.9.21, 3.10.16, 3.11.11, 3.12.8 and 3.13.1 by @edgarrmondragon in #3117</comment>
     <requestid>1228384</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>6a101b50bd967fee86debde3cbacf1d3</srcmd5>
+    <version>2.4.23</version>
+    <time>1734640889</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1232037</requestid>
+  </revision>
 </revisionlist>

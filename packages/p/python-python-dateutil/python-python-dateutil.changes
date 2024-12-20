@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 17 23:25:58 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add remove-six.patch to remove dependency on six module
+  (gh#dateutil/dateutil!1403).
+
+-------------------------------------------------------------------
 Tue Mar  5 13:44:20 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.9.0.post0

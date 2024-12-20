@@ -21,7 +21,7 @@
 %define kf6_version 6.6.0
 %define qt6_version 6.6.0
 %define kpim6_version 6.3.0
-%define plasma6_version 5.27.80
+%define plasma6_version 6.2.0
 
 %bcond_without released
 Name:           merkuro
@@ -77,9 +77,17 @@ Requires:       kalendarac
 Requires:       kdepim-addons
 Requires:       kdepim-runtime
 # No automatic qmlimport requires for embedded resources :-/
+Requires:       kf6-kdeclarative-imports >= %{kf6_version}
 Requires:       kf6-kirigami-imports >= %{kf6_version}
 Requires:       kf6-kitemmodels-imports >= %{kf6_version}
+Requires:       kf6-ksvg-imports >= %{kf6_version}
+Requires:       kidentitymanagement-imports
+Requires:       libPlasma6 >= %{plasma6_version}
+Requires:       libplasma6-components >= %{plasma6_version}
+Requires:       mimetreeparser-imports
 Requires:       qt6-declarative-imports >= %{qt6_version}
+Requires:       qt6-location >= %{qt6_version}
+Requires:       qt6-positioning-imports >= %{qt6_version}
 Provides:       kalendar = %{version}
 Obsoletes:      kalendar < %{version}
 # merkuro has a runtime dependency on QtWebEngine
@@ -90,8 +98,8 @@ Calendar application using Akonadi to sync with external services (NextCloud, GM
 
 %package plasmoid
 Summary:        Plasma widget to view address book contacts
-Supplements:    (merkuro and plasma6-workspace)
 Requires:       merkuro = %{version}
+Supplements:    (merkuro and plasma6-workspace)
 Provides:       kalendar-plasmoid = %{version}
 Obsoletes:      kalendar-plasmoid < %{version}
 

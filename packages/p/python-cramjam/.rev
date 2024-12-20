@@ -60,4 +60,12 @@
     <comment>- use modern python on sle15</comment>
     <requestid>1193956</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d63d74a60265dd8b90d08d55581a4a9e</srcmd5>
+    <version>2.9.1</version>
+    <time>1734640885</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1232032</requestid>
+  </revision>
 </revisionlist>

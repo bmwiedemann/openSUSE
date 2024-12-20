@@ -33,16 +33,17 @@ Summary:        A Python Datetime Library
 License:        Apache-2.0 OR BSD-3-Clause
 URL:            https://dateutil.readthedocs.org/en/latest/
 Source0:        https://files.pythonhosted.org/packages/source/p/python-dateutil/python-dateutil-%{version}.tar.gz
+# PATCH-FEATURE-UPSTREAM remove-six.patch gh#dateutil/dateutil!1403 mcepl@suse.com
+# remove dependency on the six module
+Patch0:         remove-six.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 24.3}
 # Don't pin to <8 like upstream does: gh#dateutil/dateutil#1346
 BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module six >= 1.5}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six >= 1.5
 Obsoletes:      python-dateutil < %{version}-%{release}
 Provides:       python-dateutil = %{version}-%{release}
 Provides:       python-python_dateutil = %{version}-%{release}

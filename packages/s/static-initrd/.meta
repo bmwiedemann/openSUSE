@@ -1,0 +1,5 @@
+<package name="static-initrd" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Base:System" package="static-initrd"/>
+</package>

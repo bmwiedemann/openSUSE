@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Dec 18 11:40:10 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.9.1
+  * Add Cargo.lock and bump patch version by @milesgranger in #192
+- Release 2.9.0
+  * Bump libcramjam/isal-rs by @milesgranger in #183
+  * Add cramjam.zlib, cramjam.experimental.izlib, and
+    cramjam.experimental.ideflate by @milesgranger in #184
+- Release 2.8.4
+  * Add cramjam.experimental.blosc2
+  * Add cramjam.experimental.igzip (on 64bit targets)
+  * Add wasm32 emscripten build and test for pyodide
+- Release 2.8.3
+  * Move LZMA / XZ out of experimental to xz submodule by
+    @milesgranger in #133
+  * Remove unused Cargo.lock files by @milesgranger in #149
+  * Fix tests that assume C char is signed by @musicinmybrain in
+    #150
+- Release 2.8.2
+  * Remove zstd-safe dep in libcramjam by @milesgranger in #132
+  * Remove relative libcramjam dep for python builds by
+    @milesgranger in #131
+  * Impl eq for python Buffer by @milesgranger in #135
+  * Fix missing LICENSE file in cramjam-cli by @musicinmybrain in
+    #137
+  * Adjust the binary name in the cramjam-cli example by
+    @musicinmybrain in #138
+  * Cargo.toml: set workspace.resolver to 2 by @veprbl in #140
+- Add cramjam-opensuse-config.patch: Use some system libraries and
+  avoid static linking
+- Add cramjam-issue193-test_variants.patch
+  gh#milesgranger/cramjam#193
+
+-------------------------------------------------------------------
 Wed Aug 14 15:11:07 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - use modern python on sle15

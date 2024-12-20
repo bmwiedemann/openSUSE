@@ -21,7 +21,7 @@
 %global promtail_datadir /var/lib/promtail
 
 Name:           loki
-Version:        3.3.1
+Version:        3.3.2
 Release:        0
 Summary:        Loki: like Prometheus, but for logs
 License:        Apache-2.0
@@ -35,9 +35,9 @@ Source4:        sysconfig.promtail
 Source99:       series
 Patch0:         proper-data-directories.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  go >= 1.23
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-devel
+BuildRequires:  golang(API) = 1.23
 Requires:       logcli = %{version}
 Requires(pre):  group(loki)
 Requires(pre):  user(loki)
@@ -90,7 +90,7 @@ This package contains the lokitool command-line tool.
 DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
 BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")
 
-%ifarch %{ix86} s390 s390x armv7l armv7hl armv7l:armv6l:armv5tel
+%ifarch %{ix86} s390 s390x armv7l armv7hl armv7l:armv6l:armv5tel riscv64
     export CGO_ENABLED=1
 %else
     export CGO_ENABLED=0

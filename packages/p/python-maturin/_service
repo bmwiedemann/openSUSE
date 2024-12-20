@@ -1,6 +1,7 @@
 <services>
+  <service name="download_files" mode="manual" />
   <service name="cargo_vendor" mode="manual">
-    <param name="srcdir">maturin</param>
+    <param name="srctar">maturin-*.tar.gz</param>
     <param name="compression">xz</param>
     <param name="update">true</param>
   </service>

@@ -17,9 +17,9 @@
 # needssslcertforbuild
 
 
-%define srcversion 6.11
-%define patchversion 6.11.8
-%define git_commit 099023b3ad8e1f4420d5eb954f757ec8d0cc4a5a
+%define srcversion 6.12
+%define patchversion 6.12.6
+%define git_commit fb072de4a85c526a0cdd2ea92aaf6185dedecc20
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -34,12 +34,12 @@
 
 %include %_sourcedir/kernel-spec-macros
 
-%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
+%(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-kvmsmall
-Version:        6.11.8
+Version:        6.12.6
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g099023b
+Release:        <RELEASE>.gfb072de
 %else
 Release:        0
 %endif
@@ -135,7 +135,7 @@ ExclusiveArch:  do_not_build
 %define cpu_arch_flavor %cpu_arch/%build_flavor
 
 %if 0%{?_project:1} && ( %(echo %_project | grep -Ex -f %_sourcedir/release-projects | grep -vc ^PTF) || %(echo %_project | grep -Ec "^(Devel:)?Kernel:") )
-	%define klp_symbols 1
+	%define klp_ipa_clones 1
 %endif
 
 # Define some CONFIG variables as rpm macros as well. (rpm cannot handle
@@ -145,7 +145,7 @@ ExclusiveArch:  do_not_build
 %define split_extra ("%CONFIG_MODULES" == "y" && "%CONFIG_SUSE_KERNEL_SUPPORTED" == "y")
 
 %if "%CONFIG_MODULES" != "y"
-	%define klp_symbols 0
+	%define klp_ipa_clones 0
 %endif
 
 %global certs %( space="" ; for f in %_sourcedir/*.crt; do                                              \
@@ -209,7 +209,6 @@ Source73:       dtb.spec.in.in
 Source74:       mkspec-dtb
 Source75:       release-projects
 Source76:       check-module-license
-Source77:       klp-symbols
 Source78:       modules.fips
 Source79:       splitflist
 Source80:       mergedep
@@ -279,7 +278,6 @@ NoSource:       73
 NoSource:       74
 NoSource:       75
 NoSource:       76
-NoSource:       77
 NoSource:       78
 NoSource:       79
 NoSource:       80
@@ -824,7 +822,6 @@ relink ../../linux-%{kernelrelease}%{variant}-obj/"%cpu_arch_flavor" /usr/src/li
 %dir /usr/src/linux-obj
 %dir /usr/src/linux-obj/%cpu_arch
 %ghost /usr/src/linux-obj/%cpu_arch_flavor
-%exclude %obj_install_dir/%cpu_arch_flavor/Symbols.list
 %if %generate_compile_commands
 %exclude %obj_install_dir/%cpu_arch_flavor/compile_commands.json
 %endif
@@ -863,17 +860,14 @@ static, unlike the %{patch_package}-<kernel-version>-flavor package names.
 %dir %modules_dir
 %endif
 
-%if 0%{?klp_symbols} && "%livepatch" != ""
+%if 0%{?klp_ipa_clones} && "%livepatch" != "" && "%CONFIG_LIVEPATCH_IPA_CLONES" == "y"
 %package %{livepatch}-devel
 Summary:	Kernel symbols file used during kGraft patch development
 Group:		System/Kernel
-Provides:	klp-symbols = %version
 
 %description %{livepatch}-devel
-This package brings a file named Symbols.list, which contains a list of all
-kernel symbols and its respective kernel object . This list is to be used by
-the klp-convert tool, which helps livepatch developers by enabling automatic
-symbol resolution.
+This package brings ipa-clones files, which are used to to track
+set of functions where a code from another function can eventually occur.
 
 %files %{livepatch}-devel -f livepatch-files
 %endif
@@ -1484,14 +1478,9 @@ while true; do
     fi
 done
 
-# Generate list of symbols that are used to create kernel livepatches
-%if 0%{?klp_symbols}
-	%_sourcedir/klp-symbols . Symbols.list
-
-    %if %generate_compile_commands
-        # Generate compile_commands.json
-        make compile_commands.json
-    %endif
+%if 0%{?klp_ipa_clones} && %generate_compile_commands
+    # Generate compile_commands.json
+    make compile_commands.json
 %endif
 
 %install
@@ -1680,27 +1669,22 @@ if [ %CONFIG_MODULES = y ]; then
     mkdir -p %rpm_install_dir/%cpu_arch/%build_flavor
     cp Module.symvers %rpm_install_dir/%cpu_arch/%build_flavor
 
-    # List of symbols that are used to generate kernel livepatches
-    %if 0%{?klp_symbols}
-        cp Symbols.list %rpm_install_dir/%cpu_arch/%build_flavor
-        echo %obj_install_dir/%cpu_arch/%build_flavor/Symbols.list > %my_builddir/livepatch-files.no_dir
-
+    # List of ipa-clones that are used to to track set of functions where a code from another function can eventually occur.
+    %if 0%{?klp_ipa_clones} && "%CONFIG_LIVEPATCH_IPA_CLONES" == "y"
         %if %generate_compile_commands
 		    cp compile_commands.json %rpm_install_dir/%cpu_arch/%build_flavor
 		    echo %obj_install_dir/%cpu_arch/%build_flavor/compile_commands.json >> %my_builddir/livepatch-files.no_dir
         %endif
 
-        %if "%CONFIG_LIVEPATCH_IPA_CLONES" == "y"
-            find %kernel_build_dir -name "*.ipa-clones" ! -size 0 | sed -e 's|^%kernel_build_dir/||' | sort > ipa-clones.list
-            cp ipa-clones.list %rpm_install_dir/%cpu_arch/%build_flavor
-            echo %obj_install_dir/%cpu_arch/%build_flavor/ipa-clones.list >> %my_builddir/livepatch-files.no_dir
-            tar -C %kernel_build_dir \
+        find %kernel_build_dir -name "*.ipa-clones" ! -size 0 | sed -e 's|^%kernel_build_dir/||' | sort > ipa-clones.list
+        cp ipa-clones.list %rpm_install_dir/%cpu_arch/%build_flavor
+        echo %obj_install_dir/%cpu_arch/%build_flavor/ipa-clones.list >> %my_builddir/livepatch-files.no_dir
+        tar -C %kernel_build_dir \
 %if ! 0%{?suse_version} || 0%{?suse_version} >= 1500
-		    --verbatim-files-from \
+            --verbatim-files-from \
 %endif
-		    -T ipa-clones.list -cf- | tar -C %rpm_install_dir/%cpu_arch/%build_flavor -xvf-
-            cat ipa-clones.list | sed -e 's|^|%obj_install_dir/%cpu_arch/%build_flavor/|' >> %my_builddir/livepatch-files.no_dir
-        %endif
+            -T ipa-clones.list -cf- | tar -C %rpm_install_dir/%cpu_arch/%build_flavor -xvf-
+        cat ipa-clones.list | sed -e 's|^|%obj_install_dir/%cpu_arch/%build_flavor/|' >> %my_builddir/livepatch-files.no_dir
     %endif
 
     # Table of types used in exported symbols (for modversion debugging).
@@ -1814,7 +1798,8 @@ if [ %CONFIG_MODULES = y ]; then
             %rpm_install_dir/%cpu_arch_flavor \
             $(echo %srcversion | sed -r 's/^([0-9]+)\.([0-9]+).*/\1 \2/')
     else
-       echo include ../../../%{basename:%src_install_dir}/Makefile > %rpm_install_dir/%cpu_arch_flavor/Makefile
+       echo "export KBUILD_OUTPUT = %obj_install_dir/%cpu_arch_flavor" > %rpm_install_dir/%cpu_arch_flavor/Makefile
+       echo "include ../../../%{basename:%src_install_dir}/Makefile" >> %rpm_install_dir/%cpu_arch_flavor/Makefile
     fi
 fi
 
@@ -1895,7 +1880,7 @@ shopt -s nullglob dotglob
     fi
 } | add_dirs_to_filelist >%my_builddir/kernel-devel.files
 ( cd %buildroot ; find .%obj_install_dir/%cpu_arch_flavor -type f ; ) | \
-sed -e 's/^[.]//' | grep -v -e '[.]ipa-clones$' -e '/Symbols[.]list$' -e '/ipa-clones[.]list$'| \
+sed -e 's/^[.]//' | grep -v -e '[.]ipa-clones$' -e '/ipa-clones[.]list$'| \
 add_dirs_to_filelist >> %my_builddir/kernel-devel.files
 
 {   echo %ghost /boot/%image
