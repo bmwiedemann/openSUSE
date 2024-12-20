@@ -47,8 +47,6 @@ BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-cairo-devel
 BuildRequires:  ghc-cairo-prof
-BuildRequires:  ghc-cereal-devel
-BuildRequires:  ghc-cereal-prof
 BuildRequires:  ghc-colour-devel
 BuildRequires:  ghc-colour-prof
 BuildRequires:  ghc-containers-devel
@@ -71,6 +69,8 @@ BuildRequires:  ghc-http-conduit-devel
 BuildRequires:  ghc-http-conduit-prof
 BuildRequires:  ghc-http-types-devel
 BuildRequires:  ghc-http-types-prof
+BuildRequires:  ghc-iwlib-devel
+BuildRequires:  ghc-iwlib-prof
 BuildRequires:  ghc-libmpd-devel
 BuildRequires:  ghc-libmpd-prof
 BuildRequires:  ghc-mtl-devel
@@ -131,7 +131,6 @@ This package provides the Haskell %{name} shared library.
 Summary:        Haskell %{name} library development files
 Requires:       ghc-%{name} = %{version}-%{release}
 Requires:       ghc-compiler = %{ghc_version}
-Requires:       libXpm-devel
 Requires:       libXrandr-devel
 Requires:       libXrender-devel
 Requires(post): ghc-compiler = %{ghc_version}
@@ -158,9 +157,10 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -p1
+cabal-tweak-dep-ver base '< 4.20' '< 5'
 
 %build
-%define cabal_configure_options -fall_extensions
+%define cabal_configure_options -f+all_extensions
 %ghc_lib_build
 
 %install
