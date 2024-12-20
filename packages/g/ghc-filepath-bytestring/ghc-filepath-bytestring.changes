@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov  6 14:36:38 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update filepath-bytestring to version 1.5.2.0.0.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/filepath-bytestring-1.5.2.0.0/src/CHANGELOG
+
+-------------------------------------------------------------------
 Mon Jul 29 23:41:34 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update filepath-bytestring to version 1.4.100.3.2.

@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.4.100.3.2
+Version:        1.5.2.0.0
 Release:        0
 Summary:        Library for manipulating RawFilePaths in a cross platform way
 License:        BSD-3-Clause
@@ -31,6 +31,8 @@ BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-bytestring-prof
+BuildRequires:  ghc-filepath-devel
+BuildRequires:  ghc-filepath-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-unix-devel
 BuildRequires:  ghc-unix-prof
@@ -38,8 +40,6 @@ ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-QuickCheck-prof
-BuildRequires:  ghc-filepath-devel
-BuildRequires:  ghc-filepath-prof
 %endif
 
 %description
@@ -92,6 +92,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
+cabal-tweak-dep-ver base '< 4.20' '< 5'
 
 %build
 %ghc_lib_build
