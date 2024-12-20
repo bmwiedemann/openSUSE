@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 13 11:29:33 UTC 2024 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.089:
+  * Fix presense in header x-media-version when empty (#548)
+  * Add /app/efficiency reporting cache hit rate (#547)
+  * Do not verify redirects of unversioned files on HEAD requests (#546)
+
+-------------------------------------------------------------------
 Mon Dec  2 18:37:12 UTC 2024 - Elisei Roca <eroca@suse.com>
 
 - Update assets cache and improve update-cache.sh script
