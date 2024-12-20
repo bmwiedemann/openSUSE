@@ -17,7 +17,7 @@
 
 
 Name:           rancher-cli
-Version:        2.10.0
+Version:        2.10.1
 Release:        0
 Summary:        Rancher CLI
 License:        Apache-2.0

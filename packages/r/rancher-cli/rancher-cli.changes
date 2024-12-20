@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 20 06:08:01 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.1:
+  * Bump rancher to v2.10.1 (#407)
+  * [2.10] Avoid permissions errors on Windows (#401)
+
+-------------------------------------------------------------------
 Wed Nov 20 07:52:16 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.10.0:
