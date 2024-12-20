@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec 20 09:22:13 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add %{?sle15allpythons} call
+
+-------------------------------------------------------------------
 Tue Sep  3 10:38:51 UTC 2024 - pgajdos@suse.com
 
 - version update to 1.2.0

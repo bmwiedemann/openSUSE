@@ -16,7 +16,7 @@
 #
 
 
-%global skip_python2 1
+%{?sle15allpythons}
 Name:           python-suds
 Version:        1.2.0
 Release:        0

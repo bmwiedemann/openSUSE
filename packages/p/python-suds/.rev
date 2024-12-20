@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>1198642</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>f18dfb9f3f4197469156cb2e0d6fa1c8</srcmd5>
+    <version>1.2.0</version>
+    <time>1734704908</time>
+    <user>dimstar_suse</user>
+    <comment>- Add %{?sle15allpythons} call
+</comment>
+    <requestid>1232802</requestid>
+  </revision>
 </revisionlist>
