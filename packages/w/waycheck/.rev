@@ -126,4 +126,16 @@
   + Add additional keys to desktop file</comment>
     <requestid>1207664</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5f6fdf490f3ae0fbe67fd6b84b806a25</srcmd5>
+    <version>1.5.0</version>
+    <time>1734733660</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.0
+  + Update upstream protocol list to v1.39
+  + Add detection of COSMIC overlap notify protocol
+  + Remove margins on tab view
+  + Detect COSMIC protocols properly</comment>
+    <requestid>1232893</requestid>
+  </revision>
 </revisionlist>

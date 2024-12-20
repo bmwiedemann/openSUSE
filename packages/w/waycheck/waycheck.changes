@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Dec 20 21:58:31 UTC 2024 - Neal Gompa <ngompa@opensuse.org>
+
+- Update to 1.5.0
+  + Update upstream protocol list to v1.39
+  + Add detection of COSMIC overlap notify protocol
+  + Remove margins on tab view
+  + Detect COSMIC protocols properly
+
+-------------------------------------------------------------------
 Sun Oct 13 20:57:26 UTC 2024 - Neal Gompa <ngompa@opensuse.org>
 
 - Update to 1.4.0

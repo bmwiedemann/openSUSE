@@ -19,7 +19,7 @@
 %global qt6_minver 6.5
 
 Name:           waycheck
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        GUI that displays protocols implemented by a Wayland compositor
 
