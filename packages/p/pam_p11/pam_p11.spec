@@ -1,7 +1,7 @@
 #
 # spec file for package pam_p11
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pam_p11
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        PAM Authentication Module for Using Cryptographic Tokens
 License:        LGPL-2.1-or-later
@@ -50,14 +50,16 @@ CFLAGS="%optflags -Wno-error=deprecated-declarations"
 	--with-pamdir=/%{_pam_moduledir} \
 	--disable-static \
 	--docdir=%{_docdir}/%{name}
-
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 # remove .la files
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name} %{name}.mo
+
+%check
+# Upstream has testing in the github actions, which are not in the dist
 
 %files -f %{name}.mo
 %license COPYING

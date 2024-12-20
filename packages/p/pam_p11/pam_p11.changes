@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 19 17:49:29 UTC 2024 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to version 0.6.0
+  * fixed key_login() that always succeeded on error
+  * Add Japanese translation
+
+-------------------------------------------------------------------
 Tue Aug 29 13:36:20 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Update to version 0.5.0
