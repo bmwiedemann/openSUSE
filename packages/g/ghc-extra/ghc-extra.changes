@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov 19 13:35:44 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update extra to version 1.8.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/extra-1.8/src/CHANGES.txt
+
+-------------------------------------------------------------------
 Tue Oct 22 22:59:37 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update extra to version 1.7.16 revision 1.

@@ -325,4 +325,12 @@ are simple additions, filling out missing functionality.</comment>
     <comment>version update</comment>
     <requestid>1218553</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>c898f0915a2adfc0ad0dcfeb3ea7aee5</srcmd5>
+    <version>1.8</version>
+    <time>1734732687</time>
+    <user>dimstar_suse</user>
+    <comment>version update for ghc-9.10.1</comment>
+    <requestid>1231511</requestid>
+  </revision>
 </revisionlist>
