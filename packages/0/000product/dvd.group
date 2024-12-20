@@ -3581,7 +3581,7 @@
     <package name="powerdevil6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="powerdevil6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="powerprofilesctl-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="powerprofilesctl-zsh-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="powerprofilesctl-zsh-completion" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ppp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="pptp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="pragha" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -3648,7 +3648,7 @@
     <package name="python311-charset-normalizer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python311-click" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-cmdln" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="python311-configobj" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="python311-configobj" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="python311-constantly" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-contextvars" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-cryptography" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3681,7 +3681,7 @@
     <package name="python311-ldap" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python311-libvirt-python" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
     <package name="python311-libxml2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
-    <package name="python311-linux-procfs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="python311-linux-procfs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="python311-looseversion" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-lxml" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="python311-markdown-it-py" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
@@ -3716,7 +3716,7 @@
     <package name="python311-pysmbc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python311-python-dateutil" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python311-python-slugify" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
-    <package name="python311-pyudev" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="python311-pyudev" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="python311-pyzmq" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-requests" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python311-requests-gssapi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -3730,7 +3730,7 @@
     <package name="python311-setools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python311-setuptools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python311-simplejson" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
-    <package name="python311-six" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="python311-six" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="python311-sniffio" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-speechd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python311-text-unidecode" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
@@ -4096,7 +4096,7 @@
     <package name="tumbler-folder-thumbnailer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="tumbler-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="tumbler-webp-thumbnailer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="tuned" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="tuned" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="typelib-1_0-AccountsService-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-Adw-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-Amtk-5" supportstatus="unsupported"/> <!-- reason: dvd:gedit -->
@@ -4222,7 +4222,7 @@
     <package name="virt-v2v" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="virt-v2v-bash-completion" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="virt-viewer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
-    <package name="virt-what" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="virt-what" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="virtiofsd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="virtualbox-guest-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="virtualbox-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->

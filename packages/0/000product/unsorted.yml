@@ -519,6 +519,7 @@ unsorted:
   - aisleriot 
   - aisleriot-lang 
   - aisleriot-themes 
+  - akamai-purge 
   - akonadi-apparmor 
   - akonadi-calendar-devel 
   - akonadi-contacts-devel 
@@ -2602,6 +2603,8 @@ unsorted:
   - coredns-for-k8s1.30-extras 
   - coredns-for-k8s1.31 
   - coredns-for-k8s1.31-extras 
+  - coredns-for-k8s1.32 
+  - coredns-for-k8s1.32-extras 
   - coreos-installer 
   - corepack-default 
   - corepack22 
@@ -9954,7 +9957,6 @@ unsorted:
   - kcalendarcore-devel 
   - kcalutils-devel 
   - kccmp 
-  - kchmviewer 
   - kclock 
   - kclock-lang 
   - kcm_fcitx5 
@@ -10089,7 +10091,6 @@ unsorted:
   - kernel-syms-longterm 
   - kernel-vanilla 
   - kernel-vanilla-devel 
-  - kernel-vanilla-livepatch-devel 
   - kernel-vanilla-vdso 
   - kernelshark 
   - kernelshark-devel 
@@ -13995,7 +13996,7 @@ unsorted:
   - libhwloc15 
   - libhwy1-32bit 
   - libhx509-5 
-  - libhydrogen-core-1_2_3 
+  - libhydrogen-core-1_2_4 
   - libhydrogen-core-devel 
   - libhyphen0-32bit 
   - libhyprcursor0 
@@ -41228,6 +41229,9 @@ unsorted:
   - starship 
   - startup-notification-devel 
   - statgrab 
+  - static-initrd-base-unsigned 
+  - static-initrd-generic-unsigned 
+  - static-initrd-network-unsigned 
   - statserial 
   - stax-ex 
   - stax-ex-javadoc 
@@ -51432,6 +51436,7 @@ unsorted:
   - tumbleweed-cli 
   - tunctl 
   - tuned-gtk 
+  - tuned-ppd 
   - tuned-profiles-atomic 
   - tuned-profiles-nfv 
   - tuned-profiles-openshift 
