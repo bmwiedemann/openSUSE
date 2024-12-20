@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Dec 20 16:22:29 UTC 2024 - emiliano.langella@suse.com
+
+- Update to version 4.14.1+git0.48e67e7:
+  * prepare for 4.14.1
+  * introduce new github workflows
+  * Update README.asciidoc
+  * fix regress tests on msvc
+  * DiffUtils from gnuwin32 are necessary for ninja test on msvc
+  * info about using meson
+  * fix meson.build for msvc
+  * support for meson
+
+-------------------------------------------------------------------
 Tue Nov 26 09:18:32 UTC 2024 - emiliano.langella@suse.com
 
 - Update to version 4.14.0+git0.f0ecbd3:
