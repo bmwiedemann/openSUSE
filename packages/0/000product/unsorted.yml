@@ -1809,6 +1809,7 @@ unsorted:
   - busybox-bind-utils 
   - busybox-cpio 
   - busybox-dos2unix 
+  - busybox-findutils 
   - busybox-hexedit 
   - busybox-iproute2 
   - busybox-iputils 
@@ -1829,6 +1830,7 @@ unsorted:
   - busybox-sharutils 
   - busybox-syslogd 
   - busybox-sysvinit-tools 
+  - busybox-tar 
   - busybox-telnet 
   - busybox-testsuite 
   - busybox-tftp 
@@ -3934,6 +3936,7 @@ unsorted:
   - etcd-for-k8s1.29 
   - etcd-for-k8s1.30 
   - etcd-for-k8s1.31 
+  - etcd-for-k8s1.32 
   - etcdctl 
   - etcdutl 
   - etckeeper 
@@ -5873,11 +5876,27 @@ unsorted:
   - ghc-ghc-compact-prof 
   - ghc-ghc-devel 
   - ghc-ghc-doc 
+  - ghc-ghc-experimental 
+  - ghc-ghc-experimental-devel 
+  - ghc-ghc-experimental-doc 
+  - ghc-ghc-experimental-prof 
   - ghc-ghc-heap 
   - ghc-ghc-heap-devel 
   - ghc-ghc-heap-doc 
   - ghc-ghc-heap-prof 
+  - ghc-ghc-internal 
+  - ghc-ghc-internal-devel 
+  - ghc-ghc-internal-doc 
+  - ghc-ghc-internal-prof 
+  - ghc-ghc-platform 
+  - ghc-ghc-platform-devel 
+  - ghc-ghc-platform-doc 
+  - ghc-ghc-platform-prof 
   - ghc-ghc-prof 
+  - ghc-ghc-toolchain 
+  - ghc-ghc-toolchain-devel 
+  - ghc-ghc-toolchain-doc 
+  - ghc-ghc-toolchain-prof 
   - ghc-ghci 
   - ghc-ghci-devel 
   - ghc-ghci-doc 
@@ -6231,6 +6250,10 @@ unsorted:
   - ghc-mmorph-devel 
   - ghc-mmorph-doc 
   - ghc-mmorph-prof 
+  - ghc-modern-uri 
+  - ghc-modern-uri-devel 
+  - ghc-modern-uri-doc 
+  - ghc-modern-uri-prof 
   - ghc-monad-control 
   - ghc-monad-control-devel 
   - ghc-monad-control-doc 
@@ -6303,6 +6326,10 @@ unsorted:
   - ghc-old-time-devel 
   - ghc-old-time-doc 
   - ghc-old-time-prof 
+  - ghc-open-browser 
+  - ghc-open-browser-devel 
+  - ghc-open-browser-doc 
+  - ghc-open-browser-prof 
   - ghc-optics-core 
   - ghc-optics-core-devel 
   - ghc-optics-core-doc 
@@ -6448,6 +6475,10 @@ unsorted:
   - ghc-random-devel 
   - ghc-random-doc 
   - ghc-random-prof 
+  - ghc-raw-strings-qq 
+  - ghc-raw-strings-qq-devel 
+  - ghc-raw-strings-qq-doc 
+  - ghc-raw-strings-qq-prof 
   - ghc-recv 
   - ghc-recv-devel 
   - ghc-recv-doc 
@@ -6721,6 +6752,10 @@ unsorted:
   - ghc-text-conversions-prof 
   - ghc-text-devel 
   - ghc-text-doc 
+  - ghc-text-icu 
+  - ghc-text-icu-devel 
+  - ghc-text-icu-doc 
+  - ghc-text-icu-prof 
   - ghc-text-iso8601 
   - ghc-text-iso8601-devel 
   - ghc-text-iso8601-doc 
@@ -7187,6 +7222,9 @@ unsorted:
   - gitg-lang 
   - gitk 
   - gitleaks 
+  - gitleaks-bash-completion 
+  - gitleaks-fish-completion 
+  - gitleaks-zsh-completion 
   - gitolite 
   - gitopper 
   - gitoxide 
@@ -8662,6 +8700,7 @@ unsorted:
   - himeno 
   - himmelblau 
   - himmelblau-sshd-config 
+  - himmelblau-sso 
   - hiredis 
   - hiredis-devel 
   - hitori 
@@ -8710,9 +8749,6 @@ unsorted:
   - hsqldb-javadoc 
   - hsqldb-manual 
   - ht 
-  - htdig 
-  - htdig-devel 
-  - htdig-doc 
   - hte 
   - html-dtd 
   - html-xml-utils 
@@ -14691,11 +14727,13 @@ unsorted:
   - libmiral7 
   - libmircommon11 
   - libmircore2 
+  - libmirevdev10 
   - libmirisdr-devel 
   - libmirisdr0 
   - libmiroil5 
   - libmirplatform30 
-  - libmirserver61 
+  - libmirserver62 
+  - libmirserverplatform22 
   - libmirwayland5 
   - libmjpegutils-2_2-0-32bit 
   - libmjpegutils-devel 
@@ -15129,7 +15167,7 @@ unsorted:
   - libopenmpi4-gnu-hpc 
   - libopenmpi5-gnu-hpc 
   - libopenmpi_4_1_7-gnu-hpc 
-  - libopenmpi_5_0_5-gnu-hpc 
+  - libopenmpi_5_0_6-gnu-hpc 
   - libopenmpt-devel 
   - libopenmpt-modplug-devel 
   - libopenmpt0-32bit 
@@ -15577,6 +15615,7 @@ unsorted:
   - libptytty-devel 
   - libptytty0 
   - libpugixml1 
+  - libpulp-load-default 
   - libpulp-tools 
   - libpulp0 
   - libpulse-devel 
@@ -20694,12 +20733,12 @@ unsorted:
   - openmpi_4_1_7-gnu-hpc-docs 
   - openmpi_4_1_7-gnu-hpc-macros-devel 
   - openmpi_4_1_7-gnu-hpc-testsuite 
-  - openmpi_5_0_5-gnu-hpc 
-  - openmpi_5_0_5-gnu-hpc-devel 
-  - openmpi_5_0_5-gnu-hpc-devel-static 
-  - openmpi_5_0_5-gnu-hpc-docs 
-  - openmpi_5_0_5-gnu-hpc-macros-devel 
-  - openmpi_5_0_5-gnu-hpc-testsuite 
+  - openmpi_5_0_6-gnu-hpc 
+  - openmpi_5_0_6-gnu-hpc-devel 
+  - openmpi_5_0_6-gnu-hpc-devel-static 
+  - openmpi_5_0_6-gnu-hpc-docs 
+  - openmpi_5_0_6-gnu-hpc-macros-devel 
+  - openmpi_5_0_6-gnu-hpc-testsuite 
   - openmpt123 
   - openmw 
   - opennlp 
@@ -23543,12 +23582,6 @@ unsorted:
   - prelude-lml 
   - prelude-lml-devel 
   - prelude-lml-rules 
-  - prelude-manager 
-  - prelude-manager-db-plugin 
-  - prelude-manager-devel 
-  - prelude-manager-smtp-plugin 
-  - prelude-manager-snmp-plugin 
-  - prelude-manager-xml-plugin 
   - prelude-tools 
   - preludedb-tools 
   - premake4 
@@ -35242,6 +35275,7 @@ unsorted:
   - python313-BTrees-devel 
   - python313-Babel 
   - python313-Beaker 
+  - python313-BitVector 
   - python313-Bottleneck 
   - python313-Brotli 
   - python313-CCColUtils 
@@ -40559,7 +40593,6 @@ unsorted:
   - sbsigntools 
   - sbt-boilerplate 
   - sbt-boilerplate-javadoc 
-  - sc 
   - sc-controller 
   - sc-im 
   - sca-patterns-alp1 
@@ -51436,7 +51469,6 @@ unsorted:
   - tumbleweed-cli 
   - tunctl 
   - tuned-gtk 
-  - tuned-ppd 
   - tuned-profiles-atomic 
   - tuned-profiles-nfv 
   - tuned-profiles-openshift 
@@ -52576,7 +52608,6 @@ unsorted:
   - wxMaxima-lang 
   - wxQt-3_2-devel 
   - wxWidgets-3_0-devel 
-  - wxWidgets-3_0-docs 
   - wxWidgets-3_0-nostl-devel 
   - wxWidgets-3_0-plugin-sound_sdlu-3_0 
   - wxWidgets-3_2-devel 
@@ -52927,14 +52958,10 @@ unsorted:
   - xpenguins 
   - xpinguin 
   - xplanet 
-  - xplayer 
-  - xplayer-devel 
-  - xplayer-lang 
   - xplayer-plparser 
   - xplayer-plparser-devel 
   - xplayer-plparser-doc 
   - xplayer-plparser-lang 
-  - xplayer-plugins 
   - xplr 
   - xpp3 
   - xpp3-javadoc 
